@@ -1,50 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXPTc-0000iY-7O
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 03:30:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39559)
+	id 1YXPvh-000700-1q
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 03:59:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44579)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YXPTV-0000YC-Vo
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 03:30:15 -0400
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YXPvc-0006uM-B4
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 03:59:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YXPTP-0003ge-TO
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 03:30:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37893)
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YXPvT-0004IQ-4a
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 03:59:12 -0400
+Received: from e28smtp05.in.ibm.com ([122.248.162.5]:41673)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YXPTI-0003Vy-Bq; Mon, 16 Mar 2015 03:29:56 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8FBF38EFE8;
-	Mon, 16 Mar 2015 07:29:55 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-43.ams2.redhat.com
-	[10.36.116.43])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2G7TrEh003392
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 16 Mar 2015 03:29:54 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id BCD8D303F19F; Mon, 16 Mar 2015 08:29:52 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1426326454-7216-1-git-send-email-zhaoshenglong@huawei.com>
-	<55040865.8050908@weilnetz.de> <55054F1D.2080408@redhat.com>
-	<55055DBA.9040804@msgid.tls.msk.ru> <55059324.8030202@redhat.com>
-Date: Mon, 16 Mar 2015 08:29:52 +0100
-In-Reply-To: <55059324.8030202@redhat.com> (Paolo Bonzini's message of "Sun,
-	15 Mar 2015 15:11:48 +0100")
-Message-ID: <87a8zd4cy7.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <aneesh.kumar@linux.vnet.ibm.com>) id 1YXPvS-0004Hl-H1
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 03:59:03 -0400
+Received: from /spool/local
+	by e28smtp05.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <aneesh.kumar@linux.vnet.ibm.com>;
+	Mon, 16 Mar 2015 13:28:58 +0530
+Received: from d28dlp03.in.ibm.com (9.184.220.128)
+	by e28smtp05.in.ibm.com (192.168.1.135) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 16 Mar 2015 13:28:55 +0530
+Received: from d28relay04.in.ibm.com (d28relay04.in.ibm.com [9.184.220.61])
+	by d28dlp03.in.ibm.com (Postfix) with ESMTP id 1F21A125804B;
+	Mon, 16 Mar 2015 13:30:24 +0530 (IST)
+Received: from d28av01.in.ibm.com (d28av01.in.ibm.com [9.184.220.63])
+	by d28relay04.in.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	t2G7wqUd31653960; Mon, 16 Mar 2015 13:28:53 +0530
+Received: from d28av01.in.ibm.com (localhost [127.0.0.1])
+	by d28av01.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	t2G7wqOP011726; Mon, 16 Mar 2015 13:28:52 +0530
+Received: from skywalker.linux.vnet.ibm.com (skywalker.in.ibm.com
+	[9.124.35.26])
+	by d28av01.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t2G7wqK3011711
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Mon, 16 Mar 2015 13:28:52 +0530
+From: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+In-Reply-To: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Notmuch/0.19+30~gd241a48 (http://notmuchmail.org) Emacs/24.3.1
+	(x86_64-pc-linux-gnu)
+Date: Mon, 16 Mar 2015 13:28:51 +0530
+Message-ID: <87egopmkzo.fsf@linux.vnet.ibm.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15031607-0017-0000-0000-0000041EA9E8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-Received-From: 122.248.162.5
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/bt/sdp: Fix resource
-	leak detect by coverity
+	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
+	shannon.zhao@linaro.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs/virtio-9p-proxy: Fix possible
+	overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,28 +67,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2015 07:30:15 -0000
+X-List-Received-Date: Mon, 16 Mar 2015 07:59:15 -0000
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+Shannon Zhao <zhaoshenglong@huawei.com> writes:
 
-> On 15/03/2015 11:23, Michael Tokarev wrote:
->> Or, alternatively, to keep this `data' pointer in sdp to use it in
->> bt_l2cap_sdp_close_ch().
+> It's detected by coverity. As max of sockaddr_un.sun_path is
+> sizeof(helper.sun_path), should check the length of source
+> and use strncpy instead of strcpy.
 >
-> Yes.
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>  hw/9pfs/virtio-9p-proxy.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >
->>> > In any case, it seems simpler to just leave this code aside.
->> How many times this code is called?
->> 
->> We have many many places in qemu where resources are allocated once
->> at startup and never freed just because there's no need to.
->
-> Well, in this case the bug in bt_l2cap_sdp_close_ch is much worse than a
-> resource leak.  But bluetooth is not the utmost priority in QEMU
-> development...
+> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+> index 59c7445..fb1ab7b 100644
+> --- a/hw/9pfs/virtio-9p-proxy.c
+> +++ b/hw/9pfs/virtio-9p-proxy.c
+> @@ -1102,12 +1102,13 @@ static int connect_namedsocket(const char *path)
+>      int sockfd, size;
+>      struct sockaddr_un helper;
+>  
+> +    g_assert(strlen(path) < sizeof(helper.sun_path));
 
-To put it more bluntly: it's rotting in peace.
+Since we are doing this from within Qemu, I did the below and folded
+that into other sockadd_un.sun_path size checking patch.
 
-Occasional drive-by fixes won't stop the rot, a dedicated maintener
-could.
+diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+index 6bb191ee6ab8..71b6198bbd22 100644
+--- a/hw/9pfs/virtio-9p-proxy.c
++++ b/hw/9pfs/virtio-9p-proxy.c
+@@ -1100,6 +1100,10 @@ static int connect_namedsocket(const char *path)
+     int sockfd, size;
+     struct sockaddr_un helper;
+ 
++    if (strlen(path) >= sizeof(helper.sun_path)) {
++        fprintf(stderr, "Socket name too large\n");
++        return -1;
++    }
+     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (sockfd < 0) {
+         fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+
+
+Let me know if that is ok for you.
+         
+>      sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+>      if (sockfd < 0) {
+>          fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+>          return -1;
+>      }
+> -    strcpy(helper.sun_path, path);
+> +    strncpy(helper.sun_path, path, sizeof(helper.sun_path));
+>      helper.sun_family = AF_UNIX;
+>      size = strlen(helper.sun_path) + sizeof(helper.sun_family);
+>      if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
+> -- 
+> 1.8.3.1
+
 
