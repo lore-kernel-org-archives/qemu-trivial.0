@@ -1,61 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXTXh-0000BU-Q2
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 07:50:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59750)
+	id 1YXYtw-0006U0-UU
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 13:34:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34434)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YXTXd-00007X-7Y
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 07:50:44 -0400
+	(envelope-from <armbru@redhat.com>) id 1YXYtu-0006R9-FF
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 13:34:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YXTXO-0004Q6-0W
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 07:50:41 -0400
-Received: from e06smtp17.uk.ibm.com ([195.75.94.113]:38267)
+	(envelope-from <armbru@redhat.com>) id 1YXYtt-0004ro-IN
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 13:34:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37823)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YXTXN-0004Pn-Hi
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 07:50:25 -0400
-Received: from /spool/local
-	by e06smtp17.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Mon, 16 Mar 2015 11:50:23 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp17.uk.ibm.com (192.168.101.147) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 16 Mar 2015 11:50:22 -0000
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
-	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 9E34717D805A; 
-	Mon, 16 Mar 2015 11:50:45 +0000 (GMT)
-Received: from d06av07.portsmouth.uk.ibm.com (d06av07.portsmouth.uk.ibm.com
-	[9.149.37.248])
-	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2GBoLdW8847724; Mon, 16 Mar 2015 11:50:21 GMT
-Received: from d06av07.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2GBoLjm025783; Mon, 16 Mar 2015 07:50:21 -0400
-Received: from oc7435384737.ibm.com (dyn-9-152-224-100.boeblingen.de.ibm.com
-	[9.152.224.100])
-	by d06av07.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2GBoLaO025771; Mon, 16 Mar 2015 07:50:21 -0400
-Date: Mon, 16 Mar 2015 12:50:20 +0100
-From: Thomas Huth <thuth@linux.vnet.ibm.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20150316125020.5da0ce16@oc7435384737.ibm.com>
-In-Reply-To: <1426322228-465-1-git-send-email-sw@weilnetz.de>
-References: <1426322228-465-1-git-send-email-sw@weilnetz.de>
-Organization: IBM
-X-Mailer: Claws Mail 3.9.0 (GTK+ 2.24.23; x86_64-redhat-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15031611-0029-0000-0000-000003CA071D
+	(envelope-from <armbru@redhat.com>)
+	id 1YXYto-0004qQ-8i; Mon, 16 Mar 2015 13:33:56 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2GHXtoR013259
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 16 Mar 2015 13:33:55 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-43.ams2.redhat.com
+	[10.36.116.43])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2GHXrr2023325
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 16 Mar 2015 13:33:54 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C41E6303F19F; Mon, 16 Mar 2015 18:33:52 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 16 Mar 2015 18:33:52 +0100
+Message-Id: <1426527232-15044-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.113
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] elf-loader: Fix truncation
- warning from coverity
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, ehabkost@redhat.com, afaerber@suse.de
+Subject: [Qemu-trivial] [PATCH] qdev: Make -device FOO,
+	help help again when FOO is not pluggable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,39 +46,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2015 11:50:44 -0000
+X-List-Received-Date: Mon, 16 Mar 2015 17:34:03 -0000
 
-On Sat, 14 Mar 2015 09:37:08 +0100
-Stefan Weil <sw@weilnetz.de> wrote:
+Doesn't work since commit 31bed55 changed qdev_device_help() to reject
+abstract devices and devices that have
+cannot_instantiate_with_device_add_yet set.
 
-> Coverity reports a truncation due to cast operation on operand
-> reltab->sh_size from 64 bits to 32 bits for calls of load_at.
-> 
-> Fix the types of the function arguments to match their use in
-> function load_at: the offset is used for lseek which takes an
-> off_t parameter, the size is used for g_malloc and read.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/core/loader.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 76d8aca..d4c441f 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -267,7 +267,7 @@ int load_aout(const char *filename, hwaddr addr, int max_sz,
-> 
->  /* ELF loader */
-> 
-> -static void *load_at(int fd, int offset, int size)
-> +static void *load_at(int fd, off_t offset, size_t size)
->  {
->      void *ptr;
->      if (lseek(fd, offset, SEEK_SET) < 0)
+The former makes sense: abstract devices are purely internal, and the
+implementation of the help feature can't cope with them.
 
-Sounds reasonable.
+The latter makes less sense: the implementation works fine, and even
+though you can't -device such a device, the help may still be useful
+elsewhere, for instance with -global.
 
-Reviewed-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+Revert the latter by moving the cannot_instantiate_with_device_add_yet
+check back to the other caller of qdev_get_device_class(),
+qdev_device_add().
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ qdev-monitor.c | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/qdev-monitor.c b/qdev-monitor.c
+index 5d30ac5..b0b8cf1 100644
+--- a/qdev-monitor.c
++++ b/qdev-monitor.c
+@@ -180,10 +180,14 @@ static const char *find_typename_by_alias(const char *alias)
+     return NULL;
+ }
+ 
++
++/**
++ * Return DeviceClass for concrete device type @driver.
++ * On error, store an error through @errp if non-null, and return %NULL.
++ */
+ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
+ {
+     ObjectClass *oc;
+-    DeviceClass *dc;
+ 
+     oc = object_class_by_name(*driver);
+     if (!oc) {
+@@ -206,15 +210,7 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
+         return NULL;
+     }
+ 
+-    dc = DEVICE_CLASS(oc);
+-    if (dc->cannot_instantiate_with_device_add_yet ||
+-        (qdev_hotplug && !dc->hotpluggable)) {
+-        error_set(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                  "pluggable device type");
+-        return NULL;
+-    }
+-
+-    return dc;
++    return DEVICE_CLASS(oc);
+ }
+ 
+ 
+@@ -512,6 +508,12 @@ DeviceState *qdev_device_add(QemuOpts *opts)
+         error_free(err);
+         return NULL;
+     }
++    if (dc->cannot_instantiate_with_device_add_yet ||
++        (qdev_hotplug && !dc->hotpluggable)) {
++        qerror_report(QERR_INVALID_PARAMETER_VALUE, "driver",
++                      "pluggable device type");
++        return NULL;
++    }
+ 
+     /* find bus */
+     path = qemu_opt_get(opts, "bus");
+-- 
+1.9.3
 
 
