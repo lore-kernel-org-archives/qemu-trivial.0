@@ -1,60 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXQ9p-0001lp-26
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 04:13:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46129)
+	id 1YXRRU-0007sl-8C
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 05:36:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YXQ9m-0001kI-QR
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 04:13:51 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YXRRR-0007pu-8N
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 05:36:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YXQ9m-00008m-3n
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 04:13:50 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:35128)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YXRRO-0002Y7-2F
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 05:36:09 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:15741)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YXQ9h-00007s-Ko; Mon, 16 Mar 2015 04:13:45 -0400
-Received: by wibdy8 with SMTP id dy8so30853399wib.0;
-	Mon, 16 Mar 2015 01:13:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=QqfDmGmu9XZtD+WB4NBsw07X2McXVIokpNK7BRWw4P4=;
-	b=Jg7nQwW/JBjPDnmEHUp3Uow5mh8Wk7FXKFvNSGjaHV4KULL6WaNGWXB+j9kj2wdp75
-	gZWp3Wv221mSqIGhRigNW64r4Ci1q9Omwy66Gqvxkfa8rsbHMUZjnTZ4T1ROYScPQCZy
-	8BilfYNbiPDJ8gF3qsNUqUaYQ5iQraK6n2SrG/lGI39eNnlZh/R9zoSEloM2Oe3tn5ND
-	3YZMSFV7l6MjVHLzYXxmcce2ANpVtVzcNew5HBqBrLxLb0hbomsn2lllUeu1rBtdbOi4
-	+UMNnZj7sNsYIClOiUAo8I2Y0sPxXCt8L5zze1xT51QSJfIUL4Zp7Ohx3ZpYBtFo0Atp
-	Pxpw==
-X-Received: by 10.194.134.68 with SMTP id pi4mr121242023wjb.101.1426493625111; 
-	Mon, 16 Mar 2015 01:13:45 -0700 (PDT)
-Received: from [192.168.10.150] (net-188-216-23-124.cust.vodafonedsl.it.
-	[188.216.23.124]) by mx.google.com with ESMTPSA id
-	dj5sm14233699wjb.28.2015.03.16.01.13.42
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Mar 2015 01:13:43 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <550690B4.7000506@redhat.com>
-Date: Mon, 16 Mar 2015 09:13:40 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1YXRRN-0002Xj-8y; Mon, 16 Mar 2015 05:36:05 -0400
+Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CIN73273; Mon, 16 Mar 2015 17:30:36 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1;
+	Mon, 16 Mar 2015 17:30:27 +0800
+Message-ID: <5506A2B0.3030208@huawei.com>
+Date: Mon, 16 Mar 2015 17:30:24 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1426326454-7216-1-git-send-email-zhaoshenglong@huawei.com>	<55040865.8050908@weilnetz.de>
-	<55054F1D.2080408@redhat.com>	<55055DBA.9040804@msgid.tls.msk.ru>
-	<55059324.8030202@redhat.com>
-	<87a8zd4cy7.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87a8zd4cy7.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=windows-1252
+To: "Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>,
+	<qemu-devel@nongnu.org>
+References: <1426244956-5316-1-git-send-email-zhaoshenglong@huawei.com>
+	<87egopmkzo.fsf@linux.vnet.ibm.com>
+In-Reply-To: <87egopmkzo.fsf@linux.vnet.ibm.com>
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH] hw/bt/sdp: Fix resource leak detect by
-	coverity
+	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
+	shannon.zhao@linaro.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] hw/9pfs/virtio-9p-proxy: Fix possible
+	overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,22 +52,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2015 08:13:51 -0000
+X-List-Received-Date: Mon, 16 Mar 2015 09:36:10 -0000
 
-
-
-On 16/03/2015 08:29, Markus Armbruster wrote:
-> > Well, in this case the bug in bt_l2cap_sdp_close_ch is much worse than a
-> > resource leak.  But bluetooth is not the utmost priority in QEMU
-> > development...
+On 2015/3/16 15:58, Aneesh Kumar K.V wrote:
+> Shannon Zhao <zhaoshenglong@huawei.com> writes:
 > 
-> To put it more bluntly: it's rotting in peace.
+>> It's detected by coverity. As max of sockaddr_un.sun_path is
+>> sizeof(helper.sun_path), should check the length of source
+>> and use strncpy instead of strcpy.
+>>
+>> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+>> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+>> ---
+>>  hw/9pfs/virtio-9p-proxy.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+>> index 59c7445..fb1ab7b 100644
+>> --- a/hw/9pfs/virtio-9p-proxy.c
+>> +++ b/hw/9pfs/virtio-9p-proxy.c
+>> @@ -1102,12 +1102,13 @@ static int connect_namedsocket(const char *path)
+>>      int sockfd, size;
+>>      struct sockaddr_un helper;
+>>  
+>> +    g_assert(strlen(path) < sizeof(helper.sun_path));
 > 
-> Occasional drive-by fixes won't stop the rot, a dedicated maintener
-> could.
+> Since we are doing this from within Qemu, I did the below and folded
+> that into other sockadd_un.sun_path size checking patch.
+> 
+> diff --git a/hw/9pfs/virtio-9p-proxy.c b/hw/9pfs/virtio-9p-proxy.c
+> index 6bb191ee6ab8..71b6198bbd22 100644
+> --- a/hw/9pfs/virtio-9p-proxy.c
+> +++ b/hw/9pfs/virtio-9p-proxy.c
+> @@ -1100,6 +1100,10 @@ static int connect_namedsocket(const char *path)
+>      int sockfd, size;
+>      struct sockaddr_un helper;
+>  
+> +    if (strlen(path) >= sizeof(helper.sun_path)) {
+> +        fprintf(stderr, "Socket name too large\n");
+> +        return -1;
+> +    }
+>      sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+>      if (sockfd < 0) {
+>          fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+> 
+> 
+> Let me know if that is ok for you.
+> 
 
-I disagree.  The code is not that good, but apparently it works.
-Samsung folks are using it and presented their work at KVM Forum 2014.
+That's OK. :-)
 
-Paolo
+-- 
+Thanks,
+Shannon
+
+>>      sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+>>      if (sockfd < 0) {
+>>          fprintf(stderr, "failed to create socket: %s\n", strerror(errno));
+>>          return -1;
+>>      }
+>> -    strcpy(helper.sun_path, path);
+>> +    strncpy(helper.sun_path, path, sizeof(helper.sun_path));
+>>      helper.sun_family = AF_UNIX;
+>>      size = strlen(helper.sun_path) + sizeof(helper.sun_family);
+>>      if (connect(sockfd, (struct sockaddr *)&helper, size) < 0) {
+>> -- 
+>> 1.8.3.1
+> 
+> 
+> .
+> 
+
+
+
+
 
