@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXMUh-0004wk-BC
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 00:19:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39797)
+	id 1YXOI2-0000q6-Mv
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 02:14:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YXMUf-0004tv-5R
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 00:19:09 -0400
+	(envelope-from <famz@redhat.com>) id 1YXOI0-0000nT-9i
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 02:14:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YXMUb-0001Eo-6i
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 00:19:09 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:7974)
+	(envelope-from <famz@redhat.com>) id 1YXOHz-0006st-9F
+	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 02:14:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54813)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YXMUa-0001EL-D2; Mon, 16 Mar 2015 00:19:05 -0400
-Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKV39114; Mon, 16 Mar 2015 12:18:45 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml428-hub.china.huawei.com
-	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
-	Mon, 16 Mar 2015 12:18:37 +0800
-Message-ID: <5506599B.8070608@huawei.com>
-Date: Mon, 16 Mar 2015 12:18:35 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <famz@redhat.com>)
+	id 1YXOHu-0006rx-8d; Mon, 16 Mar 2015 02:14:06 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 16DDB8F309;
+	Mon, 16 Mar 2015 06:14:05 +0000 (UTC)
+Received: from localhost (dhcp-14-137.nay.redhat.com [10.66.14.137])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2G6E3uq006341; Mon, 16 Mar 2015 02:14:04 -0400
+Date: Mon, 16 Mar 2015 14:14:02 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20150316061402.GB15098@ad.nay.redhat.com>
+References: <1426410988-3695-1-git-send-email-pbonzini@redhat.com>
 MIME-Version: 1.0
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, <qemu-devel@nongnu.org>
-References: <1426326735-11448-1-git-send-email-zhaoshenglong@huawei.com>
-	<5506316D.2050001@huawei.com>
-In-Reply-To: <5506316D.2050001@huawei.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	sw@weilnetz.de, mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	shannon.zhao@linaro.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2] qga/commands-posix: Fix resource leak
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1426410988-3695-1-git-send-email-pbonzini@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] vl: fix resource leak
+ with monitor_fdset_add_fd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,47 +47,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2015 04:19:10 -0000
+X-List-Received-Date: Mon, 16 Mar 2015 06:14:13 -0000
 
-On 2015/3/16 9:27, zhanghailiang wrote:
-> On 2015/3/14 17:52, Shannon Zhao wrote:
->> It's detected by coverity. Close the dirfd.
->>
+On Sun, 03/15 10:16, Paolo Bonzini wrote:
+> monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
+> command add_fd).  Free it.
 > 
-> Reviewed-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Hi zhanghailiang,
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
-Thanks for your review.
-
-Shannon
-
->> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
->> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
->> ---
->>      v1->v2: close after use [Stefan Weil]
->> ---
->>   qga/commands-posix.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
->> index d5bb5cb..ba8de62 100644
->> --- a/qga/commands-posix.c
->> +++ b/qga/commands-posix.c
->> @@ -2283,6 +2283,7 @@ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
->>
->>       buf = g_malloc0(20);
->>       ga_read_sysfs_file(dirfd, "block_size_bytes", buf, 20, &local_err);
->> +    close(dirfd);
->>       if (local_err) {
->>           g_free(buf);
->>           error_propagate(errp, local_err);
->>
+> ---
+> 	v1->v2: line length [Fam], pass &error_abort [Shannon]
+>         v2->v3: use "!!" instead of "? true : false" [Markus]
+> ---
+>  vl.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/vl.c b/vl.c
+> index eba5d4c..5985680 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -1011,6 +1011,7 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
+>      int fd, dupfd, flags;
+>      int64_t fdset_id;
+>      const char *fd_opaque = NULL;
+> +    AddfdInfo *fdinfo;
+>  
+>      fd = qemu_opt_get_number(opts, "fd", -1);
+>      fdset_id = qemu_opt_get_number(opts, "set", -1);
+> @@ -1060,8 +1061,9 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
+>      }
+>  
+>      /* add the duplicate fd, and optionally the opaque string, to the fd set */
+> -    monitor_fdset_add_fd(dupfd, true, fdset_id, fd_opaque ? true : false,
+> -                         fd_opaque, NULL);
+> +    fdinfo = monitor_fdset_add_fd(dupfd, true, fdset_id, !!fd_opaque, fd_opaque,
+> +                                  &error_abort);
+> +    g_free(fdinfo);
+>  
+>      return 0;
+>  }
+> -- 
+> 2.3.0
 > 
 > 
-> 
-> .
-> 
-
 
