@@ -1,42 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXlit-0005fC-Ej
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 03:15:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40727)
+	id 1YXljT-0006Md-S2
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 03:16:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40894)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YXliq-0005ee-Tb
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:15:29 -0400
+	(envelope-from <armbru@redhat.com>) id 1YXljR-0006J7-MR
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:16:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1YXlim-0003B5-Lg
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:15:28 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:24342)
+	(envelope-from <armbru@redhat.com>) id 1YXljQ-0003HH-IM
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:16:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40748)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1YXlil-00034p-BI; Tue, 17 Mar 2015 03:15:24 -0400
-Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CKW95231; Tue, 17 Mar 2015 15:15:17 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml431-hub.china.huawei.com
-	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 17 Mar 2015 15:15:13 +0800
-Message-ID: <5507D480.1000505@huawei.com>
-Date: Tue, 17 Mar 2015 15:15:12 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <armbru@redhat.com>)
+	id 1YXljK-0003G3-6l; Tue, 17 Mar 2015 03:15:58 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2H7Fv8c016326
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 17 Mar 2015 03:15:57 -0400
+Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2H7FsPg006706
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 17 Mar 2015 03:15:56 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C17C03042B6D; Tue, 17 Mar 2015 08:15:53 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+References: <1426527232-15044-1-git-send-email-armbru@redhat.com>
+	<20150316181357.GK3513@thinpad.lan.raisama.net>
+Date: Tue, 17 Mar 2015 08:15:53 +0100
+In-Reply-To: <20150316181357.GK3513@thinpad.lan.raisama.net> (Eduardo
+	Habkost's message of "Mon, 16 Mar 2015 15:13:57 -0300")
+Message-ID: <87k2ygm6vq.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: <qemu-devel@nongnu.org>
-References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, "Edgar E.
-	Iglesias" <edgar.iglesias@gmail.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev: Make -device FOO,
+	help help again when FOO is not pluggable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,64 +53,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 07:15:29 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 07:16:07 -0000
 
-On 2015/3/5 11:05, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> When not assign a -dtb argument, the variable dtb_filename
-> storage returned from qemu_find_file(), which should be freed
-> after use. Alternatively we define a local variable filename,
-> with 'char *' type, free after use.
-> 
-> Cc: Michael Tokarev <mjt@tls.msk.ru>
-> Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> ---
-> v2: fix a complier error.
-> ---
->  hw/microblaze/boot.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
-> 
+Eduardo Habkost <ehabkost@redhat.com> writes:
 
-Ping...
+> On Mon, Mar 16, 2015 at 06:33:52PM +0100, Markus Armbruster wrote:
+>> Doesn't work since commit 31bed55 changed qdev_device_help() to reject
+>> abstract devices and devices that have
+>> cannot_instantiate_with_device_add_yet set.
+>> 
+>> The former makes sense: abstract devices are purely internal, and the
+>> implementation of the help feature can't cope with them.
+>> 
+>> The latter makes less sense: the implementation works fine, and even
+>> though you can't -device such a device, the help may still be useful
+>> elsewhere, for instance with -global.
+>> 
+>> Revert the latter by moving the cannot_instantiate_with_device_add_yet
+>> check back to the other caller of qdev_get_device_class(),
+>> qdev_device_add().
+>
+> This reintroduces the following crash:
+>
+>   $ ./x86_64-softmmu/qemu-system-x86_64    -device host-x86_64-cpu,help
+>   qemu-system-x86_64: /home/ehabkost/rh/proj/virt/qemu/target-i386/cpu.c:1391: host_x86_cpu_initfn: Assertion `(kvm_allowed)' failed.
+>   Aborted (core dumped)
+>
+> And this (which is not x86-specific because other arches also call
+> cpu_exec_init() inside instance_init):
+>
+>   $ ./x86_64-softmmu/qemu-system-x86_64    -monitor stdio
+>   QEMU 2.2.50 monitor - type 'help' for more information
+>   (qemu) device_add Nehalem-x86_64-cpu,help
+>   Nehalem-x86_64-cpu.filtered-features=X86CPUFeatureWordInfo
+>   Nehalem-x86_64-cpu.feature-words=X86CPUFeatureWordInfo
+>   Nehalem-x86_64-cpu.apic-id=int
+>   Nehalem-x86_64-cpu.tsc-frequency=int
+>   Nehalem-x86_64-cpu.model-id=string
+>   Nehalem-x86_64-cpu.vendor=string
+>   Nehalem-x86_64-cpu.xlevel=int
+>   Nehalem-x86_64-cpu.level=int
+>   Nehalem-x86_64-cpu.stepping=int
+>   Nehalem-x86_64-cpu.model=int
+>   Nehalem-x86_64-cpu.family=int
+>   Nehalem-x86_64-cpu.kvm=bool
+>   Nehalem-x86_64-cpu.enforce=bool
+>   Nehalem-x86_64-cpu.check=bool
+>   Nehalem-x86_64-cpu.hv-time=bool
+>   Nehalem-x86_64-cpu.hv-vapic=bool
+>   Nehalem-x86_64-cpu.hv-relaxed=bool
+>   Nehalem-x86_64-cpu.hv-spinlocks=int
+>   Nehalem-x86_64-cpu.pmu=bool
+>   (qemu) Segmentation fault (core dumped)
 
-> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-> index a2843cd..352ccb1 100644
-> --- a/hw/microblaze/boot.c
-> +++ b/hw/microblaze/boot.c
-> @@ -113,15 +113,15 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
->      const char *kernel_filename;
->      const char *kernel_cmdline;
->      const char *dtb_arg;
-> +    char *filename = NULL;
->  
->      machine_opts = qemu_get_machine_opts();
->      kernel_filename = qemu_opt_get(machine_opts, "kernel");
->      kernel_cmdline = qemu_opt_get(machine_opts, "append");
->      dtb_arg = qemu_opt_get(machine_opts, "dtb");
-> -    if (dtb_arg) { /* Preference a -dtb argument */
-> -        dtb_filename = dtb_arg;
-> -    } else { /* default to pcbios dtb as passed by machine_init */
-> -        dtb_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
-> +    /* default to pcbios dtb as passed by machine_init */
-> +    if (!dtb_arg) {
-> +        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
->      }
->  
->      boot_info.machine_cpu_reset = machine_cpu_reset;
-> @@ -203,7 +203,8 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
->                              boot_info.initrd_start,
->                              boot_info.initrd_end,
->                              kernel_cmdline,
-> -                            dtb_filename);
-> +                            /* Preference a -dtb argument */
-> +                            dtb_arg ? dtb_arg : filename);
->      }
-> -
-> +    g_free(filename);
->  }
-> 
+I foolishly assumed that I can object_new() any device, so testing one
+with cannot_instantiate_with_device_add_yet was enough.  Thanks for
+paying attention.
 
+We clearly need a test that object_new()s every known type.  Could this
+be done with -object?  Probably not if we want to catch known bad side
+effects.  Ideas?
 
+> Should we:
+>
+> 1) Live with the crashes until we move all code with side-effects outside
+>    instance_init (including bot not limited to cpu_exec_init() calls on most
+>    CPU classes);
+>
+> 2) add a "instance_init_is_unsafe" flag to those classes classes; or
+
+To honor Anthony's long and distinguished service, we should name it
+cannot_even_create_with_object_new_yet ;-P
+
+If my working idea "you can object_new() any type, and in fact you have
+to for introspection" is correct, then this as a stop gap, not a
+solution.  If it's not correct, please educate me.
+
+> 3) Keep the current code until we fix the classes that have unsafe
+>    instance_init functions?
+
+The help regression is already in 2.2, which reduces the urgency of
+fixing it a bit.
+
+Once we know which types's instance_init misbehave, (2) is easy.  (1)
+might be, can't say.
+
+"Until we fix" is potentially unbounded time, which makes me wary of
+both (1) and (3).  If we pick either of them now, and a fix doesn't
+appear during the next development cycle, I'd like us to switch to (2)
+as a stop gap for 2.4.
 
