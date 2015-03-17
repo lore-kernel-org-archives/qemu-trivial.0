@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXZWj-0005RK-5s
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Mar 2015 14:14:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46109)
+	id 1YXlit-0005fC-Ej
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 03:15:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1YXZWh-0005P6-3Q
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 14:14:08 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1YXliq-0005ee-Tb
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:15:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1YXZWf-0003FK-LR
-	for qemu-trivial@nongnu.org; Mon, 16 Mar 2015 14:14:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36608)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YXlim-0003B5-Lg
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 03:15:28 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:24342)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1YXZWa-0003EB-UT; Mon, 16 Mar 2015 14:14:01 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2GIDx6v030855
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 16 Mar 2015 14:14:00 -0400
-Received: from localhost (ovpn-113-187.phx2.redhat.com [10.3.113.187])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2GIDwaG020673; Mon, 16 Mar 2015 14:13:59 -0400
-Date: Mon, 16 Mar 2015 15:13:57 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20150316181357.GK3513@thinpad.lan.raisama.net>
-References: <1426527232-15044-1-git-send-email-armbru@redhat.com>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YXlil-00034p-BI; Tue, 17 Mar 2015 03:15:24 -0400
+Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CKW95231; Tue, 17 Mar 2015 15:15:17 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml431-hub.china.huawei.com
+	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 17 Mar 2015 15:15:13 +0800
+Message-ID: <5507D480.1000505@huawei.com>
+Date: Tue, 17 Mar 2015 15:15:12 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1426527232-15044-1-git-send-email-armbru@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, afaerber@suse.de
-Subject: Re: [Qemu-trivial] [PATCH] qdev: Make -device FOO,
- help help again when FOO is not pluggable
+To: <qemu-devel@nongnu.org>
+References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, "Edgar E.
+	Iglesias" <edgar.iglesias@gmail.com>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,126 +48,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Mar 2015 18:14:08 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 07:15:29 -0000
 
-On Mon, Mar 16, 2015 at 06:33:52PM +0100, Markus Armbruster wrote:
-> Doesn't work since commit 31bed55 changed qdev_device_help() to reject
-> abstract devices and devices that have
-> cannot_instantiate_with_device_add_yet set.
+On 2015/3/5 11:05, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
 > 
-> The former makes sense: abstract devices are purely internal, and the
-> implementation of the help feature can't cope with them.
+> When not assign a -dtb argument, the variable dtb_filename
+> storage returned from qemu_find_file(), which should be freed
+> after use. Alternatively we define a local variable filename,
+> with 'char *' type, free after use.
 > 
-> The latter makes less sense: the implementation works fine, and even
-> though you can't -device such a device, the help may still be useful
-> elsewhere, for instance with -global.
-> 
-> Revert the latter by moving the cannot_instantiate_with_device_add_yet
-> check back to the other caller of qdev_get_device_class(),
-> qdev_device_add().
-
-This reintroduces the following crash:
-
-  $ ./x86_64-softmmu/qemu-system-x86_64    -device host-x86_64-cpu,help
-  qemu-system-x86_64: /home/ehabkost/rh/proj/virt/qemu/target-i386/cpu.c:1391: host_x86_cpu_initfn: Assertion `(kvm_allowed)' failed.
-  Aborted (core dumped)
-
-And this (which is not x86-specific because other arches also call
-cpu_exec_init() inside instance_init):
-
-  $ ./x86_64-softmmu/qemu-system-x86_64    -monitor stdio
-  QEMU 2.2.50 monitor - type 'help' for more information
-  (qemu) device_add Nehalem-x86_64-cpu,help
-  Nehalem-x86_64-cpu.filtered-features=X86CPUFeatureWordInfo
-  Nehalem-x86_64-cpu.feature-words=X86CPUFeatureWordInfo
-  Nehalem-x86_64-cpu.apic-id=int
-  Nehalem-x86_64-cpu.tsc-frequency=int
-  Nehalem-x86_64-cpu.model-id=string
-  Nehalem-x86_64-cpu.vendor=string
-  Nehalem-x86_64-cpu.xlevel=int
-  Nehalem-x86_64-cpu.level=int
-  Nehalem-x86_64-cpu.stepping=int
-  Nehalem-x86_64-cpu.model=int
-  Nehalem-x86_64-cpu.family=int
-  Nehalem-x86_64-cpu.kvm=bool
-  Nehalem-x86_64-cpu.enforce=bool
-  Nehalem-x86_64-cpu.check=bool
-  Nehalem-x86_64-cpu.hv-time=bool
-  Nehalem-x86_64-cpu.hv-vapic=bool
-  Nehalem-x86_64-cpu.hv-relaxed=bool
-  Nehalem-x86_64-cpu.hv-spinlocks=int
-  Nehalem-x86_64-cpu.pmu=bool
-  (qemu) Segmentation fault (core dumped)
-
-Should we:
-
-1) Live with the crashes until we move all code with side-effects outside
-   instance_init (including bot not limited to cpu_exec_init() calls on most
-   CPU classes);
-2) add a "instance_init_is_unsafe" flag to those classes classes; or
-3) Keep the current code until we fix the classes that have unsafe
-   instance_init functions?
-
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Cc: Michael Tokarev <mjt@tls.msk.ru>
+> Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 > ---
->  qdev-monitor.c | 22 ++++++++++++----------
->  1 file changed, 12 insertions(+), 10 deletions(-)
-> 
-> diff --git a/qdev-monitor.c b/qdev-monitor.c
-> index 5d30ac5..b0b8cf1 100644
-> --- a/qdev-monitor.c
-> +++ b/qdev-monitor.c
-> @@ -180,10 +180,14 @@ static const char *find_typename_by_alias(const char *alias)
->      return NULL;
->  }
->  
-> +
-> +/**
-> + * Return DeviceClass for concrete device type @driver.
-> + * On error, store an error through @errp if non-null, and return %NULL.
-> + */
->  static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
->  {
->      ObjectClass *oc;
-> -    DeviceClass *dc;
->  
->      oc = object_class_by_name(*driver);
->      if (!oc) {
-> @@ -206,15 +210,7 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
->          return NULL;
->      }
->  
-> -    dc = DEVICE_CLASS(oc);
-> -    if (dc->cannot_instantiate_with_device_add_yet ||
-> -        (qdev_hotplug && !dc->hotpluggable)) {
-> -        error_set(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
-> -                  "pluggable device type");
-> -        return NULL;
-> -    }
-> -
-> -    return dc;
-> +    return DEVICE_CLASS(oc);
->  }
->  
->  
-> @@ -512,6 +508,12 @@ DeviceState *qdev_device_add(QemuOpts *opts)
->          error_free(err);
->          return NULL;
->      }
-> +    if (dc->cannot_instantiate_with_device_add_yet ||
-> +        (qdev_hotplug && !dc->hotpluggable)) {
-> +        qerror_report(QERR_INVALID_PARAMETER_VALUE, "driver",
-> +                      "pluggable device type");
-> +        return NULL;
-> +    }
->  
->      /* find bus */
->      path = qemu_opt_get(opts, "bus");
-> -- 
-> 1.9.3
+> v2: fix a complier error.
+> ---
+>  hw/microblaze/boot.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
 > 
 
--- 
-Eduardo
+Ping...
+
+> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+> index a2843cd..352ccb1 100644
+> --- a/hw/microblaze/boot.c
+> +++ b/hw/microblaze/boot.c
+> @@ -113,15 +113,15 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
+>      const char *kernel_filename;
+>      const char *kernel_cmdline;
+>      const char *dtb_arg;
+> +    char *filename = NULL;
+>  
+>      machine_opts = qemu_get_machine_opts();
+>      kernel_filename = qemu_opt_get(machine_opts, "kernel");
+>      kernel_cmdline = qemu_opt_get(machine_opts, "append");
+>      dtb_arg = qemu_opt_get(machine_opts, "dtb");
+> -    if (dtb_arg) { /* Preference a -dtb argument */
+> -        dtb_filename = dtb_arg;
+> -    } else { /* default to pcbios dtb as passed by machine_init */
+> -        dtb_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
+> +    /* default to pcbios dtb as passed by machine_init */
+> +    if (!dtb_arg) {
+> +        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
+>      }
+>  
+>      boot_info.machine_cpu_reset = machine_cpu_reset;
+> @@ -203,7 +203,8 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
+>                              boot_info.initrd_start,
+>                              boot_info.initrd_end,
+>                              kernel_cmdline,
+> -                            dtb_filename);
+> +                            /* Preference a -dtb argument */
+> +                            dtb_arg ? dtb_arg : filename);
+>      }
+> -
+> +    g_free(filename);
+>  }
+> 
+
+
 
