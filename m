@@ -1,45 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXmy3-0002ig-Tk
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 04:35:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57967)
+	id 1YXnBE-0008HP-Ik
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 04:48:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YXmy1-0002gF-Lo
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 04:35:14 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YXnBB-0008DY-Nt
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 04:48:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YXmy0-0003yZ-TN
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 04:35:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58777)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1YXnBA-0008OE-PI
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 04:48:49 -0400
+Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:37428)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YXmxq-0003ds-Vr; Tue, 17 Mar 2015 04:35:03 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 53F658E3D9;
-	Tue, 17 Mar 2015 08:35:02 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
-	[10.36.116.36])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2H8Z0MV006378
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 17 Mar 2015 04:35:01 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 63BD03042B6D; Tue, 17 Mar 2015 09:34:59 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-References: <5501776A.20202@siemens.com>
-Date: Tue, 17 Mar 2015 09:34:59 +0100
-In-Reply-To: <5501776A.20202@siemens.com> (Jan Kiszka's message of "Thu, 12
-	Mar 2015 12:24:26 +0100")
-Message-ID: <87d248t424.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1YXnB5-0008Mv-PJ; Tue, 17 Mar 2015 04:48:43 -0400
+Received: by wixw10 with SMTP id w10so4758216wix.0;
+	Tue, 17 Mar 2015 01:48:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=x/dBRxDU5ROAqdpBbAE4jacsDQj0i8kDBwXWPbLiAyI=;
+	b=MWfxoc+WkVsGi7+k+REuOGAkTqER2YwccUAFZut2zGo6j3xi+2p2CG5/f6NwQjbopK
+	S+fuUd/kUdVCg1hvWPiFvL3yfAEkr0XBZJ3wPETfG1rTHlD86jQHjmE+VxSOZE6iu8PG
+	nASEmpLZda8QeHArlDP0CxpNWd4ADq12Jn67T9E3slPf/EjDskIaSqCBHlcuQnuIORNC
+	dlW36H+54pX1Sl9CcHdfaw6C3FNieS4qNp0/ArnF3uNHtQ2vSYtLjdBrth+sx6i+1EHb
+	ORH1IcgBDvyrasAOFOiUFUCxRqkbtfdNi0Bnj44XDeCe7TkjoIQNIk4w/Fl15wEXJOFu
+	lYSQ==
+X-Received: by 10.194.222.197 with SMTP id qo5mr128336945wjc.142.1426582123074;
+	Tue, 17 Mar 2015 01:48:43 -0700 (PDT)
+Received: from [192.168.10.150] (net-37-117-129-240.cust.vodafonedsl.it.
+	[37.117.129.240]) by mx.google.com with ESMTPSA id
+	i10sm18937884wja.40.2015.03.17.01.48.40
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 17 Mar 2015 01:48:41 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <5507EA65.6010407@redhat.com>
+Date: Tue, 17 Mar 2015 09:48:37 +0100
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] coverity: Fix
-	g_malloc_n-like models
+To: Markus Armbruster <armbru@redhat.com>, 
+	qemu-trivial <qemu-trivial@nongnu.org>
+References: <5501776A.20202@siemens.com> <87d248t424.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87d248t424.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::233
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] coverity: Fix g_malloc_n-like models
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,14 +60,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 08:35:14 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 08:48:50 -0000
 
-Jan Kiszka <jan.kiszka@siemens.com> writes:
 
-> Allocate the calculated overall size, not only the size of a single
-> element.
->
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 
-I'm feeding this to Coverity locally to gauge its impact.
+On 17/03/2015 09:34, Markus Armbruster wrote:
+> Jan Kiszka <jan.kiszka@siemens.com> writes:
+> 
+>> Allocate the calculated overall size, not only the size of a single
+>> element.
+>>
+>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> 
+> I'm feeding this to Coverity locally to gauge its impact.
+
+I got no changes.
+
+Paolo
 
