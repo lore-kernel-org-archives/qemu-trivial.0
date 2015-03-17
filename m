@@ -1,45 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXtN9-0003DF-3z
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 11:25:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50274)
+	id 1YXuwO-00013A-84
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 13:06:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55934)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YXtN1-0002xl-Lv
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 11:25:33 -0400
+	(envelope-from <stefanha@gmail.com>) id 1YXuwJ-0000wv-6B
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 13:06:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YXtMw-0001jz-Q4
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 11:25:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43792)
+	(envelope-from <stefanha@gmail.com>) id 1YXuwI-0006Zf-3T
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 13:05:59 -0400
+Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:35789)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YXtMw-0001i6-Hj; Tue, 17 Mar 2015 11:25:22 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2HFOw9o008030
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 17 Mar 2015 11:24:59 -0400
-Received: from [10.3.113.105] (ovpn-113-105.phx2.redhat.com [10.3.113.105])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2HFOv0j003095; Tue, 17 Mar 2015 11:24:58 -0400
-Message-ID: <55084749.4030607@redhat.com>
-Date: Tue, 17 Mar 2015 09:24:57 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1YXuwA-0006Ya-HC; Tue, 17 Mar 2015 13:05:50 -0400
+Received: by wibdy8 with SMTP id dy8so68614674wib.0;
+	Tue, 17 Mar 2015 10:05:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=rurju8wZWAbyPTITZYw6WSaOW7k0p99Yjg3Ur7aUbPs=;
+	b=UdLaE1duSldjzZuxwNfx7NjFZw2Vkythr+QkqTq/XkIBYHwdBKBxX66VAlOGlTkQPA
+	X+iB8ZlFzy74aM6EgThj3eSCWKb2/vLqReqkZsMoR+AgoZDnWeIPNMOYyeKTfDyrEy4k
+	Q304HxLemShutWeiWvW3S8KPB0iyH0OVlF+nxt1aFW6FD8SfzSiCXZj0erh4pwX1Q6zz
+	CaQi5TrBDbVLTruDcQ9vB5HXdRl1oNJQMCCejrq2JGwdQHLbgUqKa/GNOMfjntP64+9B
+	JUCsj4hYGZzCEENIiOvR2jSLHqGXq6/M/nl/Agylb0jj2qgmnUA2Xt0a/wbffPKh66W8
+	lGMQ==
+X-Received: by 10.194.19.197 with SMTP id h5mr131961892wje.109.1426611949907; 
+	Tue, 17 Mar 2015 10:05:49 -0700 (PDT)
+Received: from localhost (host109-148-191-84.range109-148.btcentralplus.com.
+	[109.148.191.84])
+	by mx.google.com with ESMTPSA id s19sm3429560wik.18.2015.03.17.10.05.47
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 17 Mar 2015 10:05:47 -0700 (PDT)
+Date: Tue, 17 Mar 2015 17:05:45 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Message-ID: <20150317170545.GA13669@stefanha-thinkpad.redhat.com>
+References: <1426224119-8352-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-To: Viswesh <visweshn92@gmail.com>, qemu-devel@nongnu.org
-References: <1426603988-3541-1-git-send-email-visweshn92@gmail.com>
-In-Reply-To: <1426603988-3541-1-git-send-email-visweshn92@gmail.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="JUskqUqpu8k02nebT4mmQgK2ePUu026Wt"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kbastian@mail.uni-paderborn.de,
-	aneesh.kumar@linux.vnet.ibm.com, peter.maydell@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Fix typos in comments
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="OXfL5xGRrasGEqWY"
+Content-Disposition: inline
+In-Reply-To: <1426224119-8352-1-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22c
+Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com, shannon.zhao@linaro.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/e1000: fix integer
+	endianness
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,58 +61,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 15:25:33 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 17:06:03 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---JUskqUqpu8k02nebT4mmQgK2ePUu026Wt
-Content-Type: text/plain; charset=utf-8
+
+--OXfL5xGRrasGEqWY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 03/17/2015 08:53 AM, Viswesh wrote:
-> The commit message is changed per review comments of Peter Maydell.
-> This should be good now.
-
-These two sentences...
-
+On Fri, Mar 13, 2015 at 01:21:59PM +0800, Shannon Zhao wrote:
+> It's detected by coverity.In is_vlan_packet s->mac_reg[VET] is
+> unsigned int but is dereferenced as a narrower unsigned short.
+> This may lead to unexpected results depending on machine
+> endianness.
 >=20
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Viswesh <visweshn92@gmail.com>
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 > ---
+>  hw/net/e1000.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-=2E..belong better here.  They describe how the patch changed from v1, an=
-d
-not the patch itself (that is, a year from now when reading 'git log',
-we won't care how many revisions it took to get to the patch that was
-accepted, we will only care about the one revision that was accepted).
+Thanks, applied to my net tree:
+https://github.com/stefanha/qemu/commits/net
 
->  fsdev/virtfs-proxy-helper.c |  2 +-
->  target-tricore/translate.c  | 22 +++++++++++-----------
->  2 files changed, 12 insertions(+), 12 deletions(-)
->=20
+Stefan
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---JUskqUqpu8k02nebT4mmQgK2ePUu026Wt
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+--OXfL5xGRrasGEqWY
+Content-Type: application/pgp-signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJVCEdJAAoJEKeha0olJ0Nq4hIH/2o6CrRZl8MGuf1AFJQSXek+
-dbF4kb/aYpWgNetfC5vDmBicdeIMvHwJqWYdlBuVJk/Sisjm75Cu4U1HpjUDDT8S
-jXW6zItRxfv/TEXO8IjxQFNTuR371iLsjPTKyuvLrIGSVW1cFb7PULquYTsIuyQv
-H0rsSs5qsTiDkYKxXQr3dD/MQjcHdyBf91KfER81KW5Mx4yIi1g7Htyt1deEwvq7
-H1TwZ/Imzo+2zilCdKAnXrrl5mKvMum0KYrnr7AtVQoD1esJJdhHebDzrLF36Kpe
-yF4bCHwse8WA08Tu8BOWSTI2vnn4WhrXRnG2CdOxHV7Hn4Klx4jgdlR4Wa5JjzQ=
-=F9LK
+iQEcBAEBAgAGBQJVCF7pAAoJEJykq7OBq3PIX9cIAJQ4KE9mq2Umbs/uYLiDMqb3
+2RGvBCeZ4sMP1pkznlOtJnI+v6RM6GAXR9OtlMg1xUR9zmgIvSa/7tc6ipQpO9S9
+dVWVUYJ0MF2Xwk6zEsYNsOyEln/wkUNk3u3V61jcN6Rg5I04tRSln8G/l0NJHZfq
+nlLZu1hYoB0khBjWZPIqbUn34K/TbVMpp/ni7P2g/5I1f6IqyVxjfXGXYP1xJqwr
+TnJUzSIt3cH9hltp3YO2tCkw9kBoMhLVr8TXt0DS3XFhRE07eS8SabWhCweDw1ba
+v35Oaid9kP6XeXJJv7DN9/u1wmVfuYe/xYsGq2i4U4BzxLyLM8BgjjFXk+rqklw=
+=K1vV
 -----END PGP SIGNATURE-----
 
---JUskqUqpu8k02nebT4mmQgK2ePUu026Wt--
+--OXfL5xGRrasGEqWY--
 
