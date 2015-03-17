@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXqpB-0003kN-JV
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 08:42:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39197)
+	id 1YXr8p-0002vF-26
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 09:02:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1YXqp9-0003ji-Kc
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 08:42:20 -0400
+	(envelope-from <kraxel@redhat.com>) id 1YXr8h-0002k2-SS
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 09:02:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1YXqp6-0003Kj-V4
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 08:42:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38991)
+	(envelope-from <kraxel@redhat.com>) id 1YXr8c-0000WJ-VK
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 09:02:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44089)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>)
-	id 1YXqp6-0003Ka-N4; Tue, 17 Mar 2015 08:42:16 -0400
+	(envelope-from <kraxel@redhat.com>)
+	id 1YXr8P-0000Tg-PK; Tue, 17 Mar 2015 09:02:13 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2HCgAuV001024
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2HD29nL007984
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 17 Mar 2015 08:42:14 -0400
-Received: from localhost (ovpn-116-56.ams2.redhat.com [10.36.116.56])
+	verify=FAIL); Tue, 17 Mar 2015 09:02:10 -0400
+Received: from [10.36.116.18] (ovpn-116-18.ams2.redhat.com [10.36.116.18])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2HCg9WK029587; Tue, 17 Mar 2015 08:42:10 -0400
-From: Juan Quintela <quintela@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <1425146983-16015-2-git-send-email-sw@weilnetz.de> (Stefan Weil's
-	message of "Sat, 28 Feb 2015 19:09:41 +0100")
-References: <1425146983-16015-1-git-send-email-sw@weilnetz.de>
-	<1425146983-16015-2-git-send-email-sw@weilnetz.de>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.4 (gnu/linux)
-Date: Tue, 17 Mar 2015 13:42:08 +0100
-Message-ID: <87egonkd7j.fsf@neno.neno>
-MIME-Version: 1.0
-Content-Type: text/plain
+	id t2HD27Ol010062; Tue, 17 Mar 2015 09:02:07 -0400
+Message-ID: <1426597326.27188.104.camel@nilsson.home.kraxel.org>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Thomas Huth <thuth@linux.vnet.ibm.com>
+Date: Tue, 17 Mar 2015 14:02:06 +0100
+In-Reply-To: <20150317134056.5485884b@oc7435384737.ibm.com>
+References: <1426311215-12764-1-git-send-email-thuth@linux.vnet.ibm.com>
+	<1426593930.27188.96.camel@nilsson.home.kraxel.org>
+	<1426594797.27188.103.camel@nilsson.home.kraxel.org>
+	<20150317134056.5485884b@oc7435384737.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] migration: Fix coding style
-	(whitespace issues)
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] hw/usb: Include USB files only if
+	necessary
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: quintela@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -50,15 +49,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 12:42:20 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 13:02:37 -0000
 
-Stefan Weil <sw@weilnetz.de> wrote:
-> * Remove trailing whitespace (fixes 9 errors from checkpatch.pl).
->   One comment line was longer than 80 characters, so wrap it
->   and fix a typo, too.
-> * Replace tabs by blanks (fixes 1 error).
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Applied, thanks.
+> Oh, sorry, seems like I missed the "--enable-usb-redir" configure
+> option ... I'll have a look and rework my patch...
+
+Oh, right, that can hide the failure.
+Note there also is --enable-libusb
+
+cheers,
+  Gerd
+
+
 
