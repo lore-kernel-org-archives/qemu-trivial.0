@@ -1,47 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXssI-0005oi-3k
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 10:53:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40802)
+	id 1YXswa-00014b-1q
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 10:58:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41765)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <visweshn92@gmail.com>) id 1YXssD-0005hB-HW
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 10:53:40 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1YXswX-00011Y-Pa
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 10:58:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <visweshn92@gmail.com>) id 1YXss7-0006f2-Jd
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 10:53:37 -0400
-Received: from mail-pd0-x230.google.com ([2607:f8b0:400e:c02::230]:35007)
+	(envelope-from <ehabkost@redhat.com>) id 1YXswU-00084b-J1
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 10:58:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59620)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <visweshn92@gmail.com>)
-	id 1YXss2-0006do-Ip; Tue, 17 Mar 2015 10:53:26 -0400
-Received: by pdbop1 with SMTP id op1so11740037pdb.2;
-	Tue, 17 Mar 2015 07:53:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=TyH2KbjT9ZJyg53iSAr2YHFWAoeiVaIqonAoiBIgW4A=;
-	b=pQdOZ9XDz46qbBaBHJC9BjDYv0EVyvMCM1exFFa65SzcTJGHbZ3BnnFdWlbNHWQchw
-	l9fhL/EA9jJq97eDUPjo4vmgR59liN+MXgyIpa5ciyyNONt238YWfBkIg8cgsZXPZJsq
-	zep3Ou1lLyTIS0xJq/7TLCvMG1ptcCIlVKWy+1GirhIXa2xF36TQGm61h6AMVDnOGcGi
-	UQUrNVbMuo2fkfqyrtCb4PapYf7P/DE59YwzL6+LQahSsAQ87WfQpuMduUv9Jj3aZ6dh
-	NFczzaoUzXMwnNO1GYjzuWO4zsk2ClBwlb90K53OkHRYuHO1ITWEKWi1o1axBAbEpK9T
-	6p8A==
-X-Received: by 10.70.101.226 with SMTP id fj2mr110304597pdb.23.1426604005689; 
-	Tue, 17 Mar 2015 07:53:25 -0700 (PDT)
-Received: from localhost.localdomain ([59.189.207.205])
-	by mx.google.com with ESMTPSA id
-	xx7sm22919320pab.21.2015.03.17.07.53.21
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 17 Mar 2015 07:53:24 -0700 (PDT)
-From: Viswesh <visweshn92@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 17 Mar 2015 22:53:08 +0800
-Message-Id: <1426603988-3541-1-git-send-email-visweshn92@gmail.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::230
-Cc: qemu-trivial@nongnu.org, kbastian@mail.uni-paderborn.de,
-	Viswesh <visweshn92@gmail.com>, aneesh.kumar@linux.vnet.ibm.com,
-	peter.maydell@linaro.org
-Subject: [Qemu-trivial] [PATCH v2] Fix typos in comments
+	(envelope-from <ehabkost@redhat.com>)
+	id 1YXswJ-00082k-Vh; Tue, 17 Mar 2015 10:57:52 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 65468C1F97;
+	Tue, 17 Mar 2015 14:57:51 +0000 (UTC)
+Received: from localhost (ovpn-113-187.phx2.redhat.com [10.3.113.187])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2HEvo30027256; Tue, 17 Mar 2015 10:57:50 -0400
+Date: Tue, 17 Mar 2015 11:57:49 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20150317145749.GL3513@thinpad.lan.raisama.net>
+References: <1426527232-15044-1-git-send-email-armbru@redhat.com>
+	<20150316181357.GK3513@thinpad.lan.raisama.net>
+	<87k2ygm6vq.fsf@blackfin.pond.sub.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87k2ygm6vq.fsf@blackfin.pond.sub.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev: Make -device FOO,
+ help help again when FOO is not pluggable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,135 +49,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 14:53:40 -0000
+X-List-Received-Date: Tue, 17 Mar 2015 14:58:07 -0000
 
-The commit message is changed per review comments of Peter Maydell.
-This should be good now.
+On Tue, Mar 17, 2015 at 08:15:53AM +0100, Markus Armbruster wrote:
+> Eduardo Habkost <ehabkost@redhat.com> writes:
+> 
+> > On Mon, Mar 16, 2015 at 06:33:52PM +0100, Markus Armbruster wrote:
+> >> Doesn't work since commit 31bed55 changed qdev_device_help() to reject
+> >> abstract devices and devices that have
+> >> cannot_instantiate_with_device_add_yet set.
+> >> 
+> >> The former makes sense: abstract devices are purely internal, and the
+> >> implementation of the help feature can't cope with them.
+> >> 
+> >> The latter makes less sense: the implementation works fine, and even
+> >> though you can't -device such a device, the help may still be useful
+> >> elsewhere, for instance with -global.
+> >> 
+> >> Revert the latter by moving the cannot_instantiate_with_device_add_yet
+> >> check back to the other caller of qdev_get_device_class(),
+> >> qdev_device_add().
+> >
+> > This reintroduces the following crash:
+> >
+> >   $ ./x86_64-softmmu/qemu-system-x86_64    -device host-x86_64-cpu,help
+> >   qemu-system-x86_64: /home/ehabkost/rh/proj/virt/qemu/target-i386/cpu.c:1391: host_x86_cpu_initfn: Assertion `(kvm_allowed)' failed.
+> >   Aborted (core dumped)
+> >
+> > And this (which is not x86-specific because other arches also call
+> > cpu_exec_init() inside instance_init):
+> >
+> >   $ ./x86_64-softmmu/qemu-system-x86_64    -monitor stdio
+> >   QEMU 2.2.50 monitor - type 'help' for more information
+> >   (qemu) device_add Nehalem-x86_64-cpu,help
+> >   Nehalem-x86_64-cpu.filtered-features=X86CPUFeatureWordInfo
+> >   Nehalem-x86_64-cpu.feature-words=X86CPUFeatureWordInfo
+> >   Nehalem-x86_64-cpu.apic-id=int
+> >   Nehalem-x86_64-cpu.tsc-frequency=int
+> >   Nehalem-x86_64-cpu.model-id=string
+> >   Nehalem-x86_64-cpu.vendor=string
+> >   Nehalem-x86_64-cpu.xlevel=int
+> >   Nehalem-x86_64-cpu.level=int
+> >   Nehalem-x86_64-cpu.stepping=int
+> >   Nehalem-x86_64-cpu.model=int
+> >   Nehalem-x86_64-cpu.family=int
+> >   Nehalem-x86_64-cpu.kvm=bool
+> >   Nehalem-x86_64-cpu.enforce=bool
+> >   Nehalem-x86_64-cpu.check=bool
+> >   Nehalem-x86_64-cpu.hv-time=bool
+> >   Nehalem-x86_64-cpu.hv-vapic=bool
+> >   Nehalem-x86_64-cpu.hv-relaxed=bool
+> >   Nehalem-x86_64-cpu.hv-spinlocks=int
+> >   Nehalem-x86_64-cpu.pmu=bool
+> >   (qemu) Segmentation fault (core dumped)
+> 
+> I foolishly assumed that I can object_new() any device, so testing one
+> with cannot_instantiate_with_device_add_yet was enough.  Thanks for
+> paying attention.
+> 
+> We clearly need a test that object_new()s every known type.  Could this
+> be done with -object?  Probably not if we want to catch known bad side
+> effects.  Ideas?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Viswesh <visweshn92@gmail.com>
----
- fsdev/virtfs-proxy-helper.c |  2 +-
- target-tricore/translate.c  | 22 +++++++++++-----------
- 2 files changed, 12 insertions(+), 12 deletions(-)
+The ones above are easy ones: one crashes QEMU immediately after
+device_add, another one crashes QEMU immediately. But I would like to
+find a way to catch the side effects we aren't even aware of. Does
+anybody know some trick that would allow us to easily detect any memory
+writes outside the object struct while running the instance_init
+functions?
 
-diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-index 13fe032..a698e2d 100644
---- a/fsdev/virtfs-proxy-helper.c
-+++ b/fsdev/virtfs-proxy-helper.c
-@@ -117,7 +117,7 @@ error:
- 
- static int init_capabilities(void)
- {
--    /* helper needs following capbabilities only */
-+    /* helper needs following capabilities only */
-     cap_value_t cap_list[] = {
-         CAP_CHOWN,
-         CAP_DAC_OVERRIDE,
-diff --git a/target-tricore/translate.c b/target-tricore/translate.c
-index 15a24f7..0b7cf06 100644
---- a/target-tricore/translate.c
-+++ b/target-tricore/translate.c
-@@ -1111,7 +1111,7 @@ gen_m16add32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
-     TCGv temp2 = tcg_temp_new();
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -1131,7 +1131,7 @@ gen_m16adds32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
-     TCGv temp2 = tcg_temp_new();
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -1156,7 +1156,7 @@ gen_m16add64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
- 
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -1188,7 +1188,7 @@ gen_m16adds64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
- 
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -1975,7 +1975,7 @@ gen_m16sub32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
-     TCGv temp2 = tcg_temp_new();
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -1995,7 +1995,7 @@ gen_m16subs32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
-     TCGv temp2 = tcg_temp_new();
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -2020,7 +2020,7 @@ gen_m16sub64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
- 
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -2052,7 +2052,7 @@ gen_m16subs64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
- 
-     if (n == 0) {
-         tcg_gen_mul_tl(temp, arg2, arg3);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(temp, arg2, arg3);
-         tcg_gen_shli_tl(temp, temp, 1);
-         /* catch special case r1 = r2 = 0x8000 */
-@@ -2560,7 +2560,7 @@ gen_mul_q(TCGv rl, TCGv rh, TCGv arg1, TCGv arg2, uint32_t n, uint32_t up_shift)
-         }
-         /* reset v bit */
-         tcg_gen_movi_tl(cpu_PSW_V, 0);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_ext_i32_i64(temp_64, arg1);
-         tcg_gen_ext_i32_i64(temp2_64, arg2);
- 
-@@ -2572,7 +2572,7 @@ gen_mul_q(TCGv rl, TCGv rh, TCGv arg1, TCGv arg2, uint32_t n, uint32_t up_shift)
-             tcg_gen_shri_i64(temp_64, temp_64, up_shift - 1);
-         }
-         tcg_gen_extr_i64_i32(rl, rh, temp_64);
--        /* overflow only occours if r1 = r2 = 0x8000 */
-+        /* overflow only occurs if r1 = r2 = 0x8000 */
-         if (up_shift == 0) {/* result is 64 bit */
-             tcg_gen_setcondi_tl(TCG_COND_EQ, cpu_PSW_V, rh,
-                                 0x80000000);
-@@ -2605,7 +2605,7 @@ gen_mul_q_16(TCGv ret, TCGv arg1, TCGv arg2, uint32_t n)
-     TCGv temp = tcg_temp_new();
-     if (n == 0) {
-         tcg_gen_mul_tl(ret, arg1, arg2);
--    } else { /* n is exspected to be 1 */
-+    } else { /* n is expected to be 1 */
-         tcg_gen_mul_tl(ret, arg1, arg2);
-         tcg_gen_shli_tl(ret, ret, 1);
-         /* catch special case r1 = r2 = 0x8000 */
+> 
+> > Should we:
+> >
+> > 1) Live with the crashes until we move all code with side-effects outside
+> >    instance_init (including bot not limited to cpu_exec_init() calls on most
+> >    CPU classes);
+> >
+> > 2) add a "instance_init_is_unsafe" flag to those classes classes; or
+> 
+> To honor Anthony's long and distinguished service, we should name it
+> cannot_even_create_with_object_new_yet ;-P
+> 
+> If my working idea "you can object_new() any type, and in fact you have
+> to for introspection" is correct, then this as a stop gap, not a
+> solution.  If it's not correct, please educate me.
+
+Yes, this would be a stop gap. The problem is that the issue seems to
+affect most CPU classes on most architectures, so we may take a while to
+fix all of them.
+
+I have just ran a script which tried "device_add $DEV,help" on all
+no-user classes on qemu-system-x86_64, and the only crashes I've seen
+were on the CPU classes. I think it's likely that we will need to set
+the flag only on TYPE_CPU.
+
+> 
+> > 3) Keep the current code until we fix the classes that have unsafe
+> >    instance_init functions?
+> 
+> The help regression is already in 2.2, which reduces the urgency of
+> fixing it a bit.
+> 
+> Once we know which types's instance_init misbehave, (2) is easy.  (1)
+> might be, can't say.
+
+Well, (1) is the easiest solution, because it means doing nothing and
+live with the crashes until we fix them. But the "fixing the crashes"
+part may take a while.
+
+> 
+> "Until we fix" is potentially unbounded time, which makes me wary of
+> both (1) and (3).  If we pick either of them now, and a fix doesn't
+> appear during the next development cycle, I'd like us to switch to (2)
+> as a stop gap for 2.4.
+
+Makes sense to me.
+
 -- 
-1.9.1
-
+Eduardo
 
