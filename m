@@ -1,34 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YXyZM-0003y8-Rr
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 16:58:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54375)
+	id 1YY2nH-0005HZ-4M
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Mar 2015 21:29:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YXyZK-0003vd-EY
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 16:58:31 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YY2nF-0005HP-1w
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 21:29:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1YXyZJ-0003u6-Nt
-	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 16:58:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58996)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YY2nB-0007iu-6I
+	for qemu-trivial@nongnu.org; Tue, 17 Mar 2015 21:29:08 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:40594)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1YXyZD-0003rU-6F; Tue, 17 Mar 2015 16:58:23 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 70E0DC63F1;
-	Tue, 17 Mar 2015 20:58:22 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2HKwLib005109; Tue, 17 Mar 2015 16:58:21 -0400
-From: John Snow <jsnow@redhat.com>
-To: qemu-block@nongnu.org
-Date: Tue, 17 Mar 2015 16:58:19 -0400
-Message-Id: <1426625899-25348-1-git-send-email-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] qtest/ahci: Fix clang 3.5.0 error
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1YY2nA-0007iN-F8; Tue, 17 Mar 2015 21:29:05 -0400
+Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CIQ24159; Wed, 18 Mar 2015 09:28:47 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 18 Mar 2015 09:28:36 +0800
+Message-ID: <5508D4C4.5030509@huawei.com>
+Date: Wed, 18 Mar 2015 09:28:36 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Stefan Hajnoczi <stefanha@gmail.com>
+References: <1426224119-8352-1-git-send-email-zhaoshenglong@huawei.com>
+	<20150317170545.GA13669@stefanha-thinkpad.redhat.com>
+In-Reply-To: <20150317170545.GA13669@stefanha-thinkpad.redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com, shannon.zhao@linaro.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/e1000: fix integer
+	endianness
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,30 +51,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Mar 2015 20:58:31 -0000
+X-List-Received-Date: Wed, 18 Mar 2015 01:29:10 -0000
 
-A thinko that clang 3.5.0 caught.
-Thankfully does not introduce any new failures.
+On 2015/3/18 1:05, Stefan Hajnoczi wrote:
+> On Fri, Mar 13, 2015 at 01:21:59PM +0800, Shannon Zhao wrote:
+>> It's detected by coverity.In is_vlan_packet s->mac_reg[VET] is
+>> unsigned int but is dereferenced as a narrower unsigned short.
+>> This may lead to unexpected results depending on machine
+>> endianness.
+>>
+>> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+>> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+>> ---
+>>  hw/net/e1000.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> Thanks, applied to my net tree:
+> https://github.com/stefanha/qemu/commits/net
+> 
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- tests/ahci-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks :-)
 
-diff --git a/tests/ahci-test.c b/tests/ahci-test.c
-index cf0b98b..169e83b 100644
---- a/tests/ahci-test.c
-+++ b/tests/ahci-test.c
-@@ -583,7 +583,7 @@ static void ahci_test_port_spec(AHCIQState *ahci, uint8_t port)
-         ASSERT_BIT_CLEAR(reg, AHCI_PX_CMD_MPSP);
-     }
-     /* If, via CPD or MPSP we detect a drive, HPCP must be on. */
--    if (BITANY(reg, AHCI_PX_CMD_CPD || AHCI_PX_CMD_MPSP)) {
-+    if (BITANY(reg, AHCI_PX_CMD_CPD | AHCI_PX_CMD_MPSP)) {
-         ASSERT_BIT_SET(reg, AHCI_PX_CMD_HPCP);
-     }
-     /* HPCP and ESP cannot both be active. */
--- 
-2.1.0
+Shannon
 
 
