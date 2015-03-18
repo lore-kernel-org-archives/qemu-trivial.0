@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YYDsk-0002Mf-E7
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Mar 2015 09:19:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59001)
+	id 1YYDtz-0006Aw-PA
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Mar 2015 09:20:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1YYDsg-0002FU-RP
-	for qemu-trivial@nongnu.org; Wed, 18 Mar 2015 09:19:32 -0400
+	(envelope-from <mst@redhat.com>) id 1YYDtx-00064C-HY
+	for qemu-trivial@nongnu.org; Wed, 18 Mar 2015 09:20:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1YYDsd-0002JG-K7
-	for qemu-trivial@nongnu.org; Wed, 18 Mar 2015 09:19:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34848)
+	(envelope-from <mst@redhat.com>) id 1YYDtw-0003Lx-MG
+	for qemu-trivial@nongnu.org; Wed, 18 Mar 2015 09:20:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58807)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1YYDsd-0002J8-Cq; Wed, 18 Mar 2015 09:19:27 -0400
+	id 1YYDts-0003Ks-FE; Wed, 18 Mar 2015 09:20:44 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2IDJNQv021681
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 18 Mar 2015 09:19:23 -0400
+	by mx1.redhat.com (Postfix) with ESMTPS id 198DBC408A;
+	Wed, 18 Mar 2015 13:20:44 +0000 (UTC)
 Received: from redhat.com (ovpn-116-40.ams2.redhat.com [10.36.116.40])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id t2IDJLeR003971; Wed, 18 Mar 2015 09:19:22 -0400
-Date: Wed, 18 Mar 2015 14:19:20 +0100
+	id t2IDKgR2005439; Wed, 18 Mar 2015 09:20:42 -0400
+Date: Wed, 18 Mar 2015 14:20:41 +0100
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Thomas Huth <thuth@linux.vnet.ibm.com>
-Message-ID: <20150318141703-mutt-send-email-mst@redhat.com>
-References: <1425922215-20819-1-git-send-email-thuth@linux.vnet.ibm.com>
-	<1425922215-20819-4-git-send-email-thuth@linux.vnet.ibm.com>
+Message-ID: <20150318142021-mutt-send-email-mst@redhat.com>
+References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
+	<1426313974-25607-4-git-send-email-thuth@linux.vnet.ibm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1425922215-20819-4-git-send-email-thuth@linux.vnet.ibm.com>
+In-Reply-To: <1426313974-25607-4-git-send-email-thuth@linux.vnet.ibm.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [PATCH 3/8] pci: Remove unused functions
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2 3/7] pci: Remove unused function
+	ich9_d2pbr_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,26 +46,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Mar 2015 13:19:32 -0000
+X-List-Received-Date: Wed, 18 Mar 2015 13:20:50 -0000
 
-On Mon, Mar 09, 2015 at 06:30:10PM +0100, Thomas Huth wrote:
-> The functions pcie_ari_init(), pcie_cap_is_arifwd_enabled()
-> and ich9_d2pbr_init() are completely unused and thus can
-> be deleted.
+On Sat, Mar 14, 2015 at 07:19:30AM +0100, Thomas Huth wrote:
+> The function ich9_d2pbr_init() is completely unused and
+> thus can be deleted.
 > 
 > Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
 > Cc: Michael S. Tsirkin <mst@redhat.com>
-> Cc: Anthony Liguori <aliguori@amazon.com>
 
-Pls split this out to two patches. ARI might be useful in the future.
-ich9_d2pbr_init can go I think.
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+I assume all this will go in for 2.4 through the trivial tree?
 
 > ---
 >  hw/pci-bridge/i82801b11.c |   21 ---------------------
->  hw/pci/pcie.c             |   25 -------------------------
 >  include/hw/i386/ich9.h    |    1 -
->  include/hw/pci/pcie.h     |    3 ---
->  4 files changed, 0 insertions(+), 50 deletions(-)
+>  2 files changed, 0 insertions(+), 22 deletions(-)
 > 
 > diff --git a/hw/pci-bridge/i82801b11.c b/hw/pci-bridge/i82801b11.c
 > index 14cd7fd..7e79bc0 100644
@@ -100,46 +96,6 @@ ich9_d2pbr_init can go I think.
 >  static void d2pbr_register(void)
 >  {
 >      type_register_static(&i82801b11_bridge_info);
-> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-> index 1abbbb1..9b9f63d 100644
-> --- a/hw/pci/pcie.c
-> +++ b/hw/pci/pcie.c
-> @@ -515,19 +515,6 @@ void pcie_cap_arifwd_reset(PCIDevice *dev)
->      pci_long_test_and_clear_mask(devctl2, PCI_EXP_DEVCTL2_ARI);
->  }
->  
-> -bool pcie_cap_is_arifwd_enabled(const PCIDevice *dev)
-> -{
-> -    if (!pci_is_express(dev)) {
-> -        return false;
-> -    }
-> -    if (!dev->exp.exp_cap) {
-> -        return false;
-> -    }
-> -
-> -    return pci_get_long(dev->config + dev->exp.exp_cap + PCI_EXP_DEVCTL2) &
-> -        PCI_EXP_DEVCTL2_ARI;
-> -}
-> -
->  /**************************************************************************
->   * pci express extended capability list management functions
->   * uint16_t ext_cap_id (16 bit)
-> @@ -621,15 +608,3 @@ void pcie_add_capability(PCIDevice *dev,
->      /* Check capability by default */
->      memset(dev->cmask + offset, 0xFF, size);
->  }
-> -
-> -/**************************************************************************
-> - * pci express extended capability helper functions
-> - */
-> -
-> -/* ARI */
-> -void pcie_ari_init(PCIDevice *dev, uint16_t offset, uint16_t nextfn)
-> -{
-> -    pcie_add_capability(dev, PCI_EXT_CAP_ID_ARI, PCI_ARI_VER,
-> -                        offset, PCI_ARI_SIZEOF);
-> -    pci_set_long(dev->config + offset + PCI_ARI_CAP, (nextfn & 0xff) << 8);
-> -}
 > diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
 > index 59ea25b..5cede9b 100644
 > --- a/include/hw/i386/ich9.h
@@ -152,27 +108,6 @@ ich9_d2pbr_init can go I think.
 >  I2CBus *ich9_smb_init(PCIBus *bus, int devfn, uint32_t smb_io_base);
 >  
 >  #define ICH9_CC_SIZE                            (16 * 1024)     /* 16KB */
-> diff --git a/include/hw/pci/pcie.h b/include/hw/pci/pcie.h
-> index b48a7a2..ae0969a 100644
-> --- a/include/hw/pci/pcie.h
-> +++ b/include/hw/pci/pcie.h
-> @@ -106,7 +106,6 @@ void pcie_cap_flr_write_config(PCIDevice *dev,
->  /* ARI forwarding capability and control */
->  void pcie_cap_arifwd_init(PCIDevice *dev);
->  void pcie_cap_arifwd_reset(PCIDevice *dev);
-> -bool pcie_cap_is_arifwd_enabled(const PCIDevice *dev);
->  
->  /* PCI express extended capability helper functions */
->  uint16_t pcie_find_capability(PCIDevice *dev, uint16_t cap_id);
-> @@ -114,8 +113,6 @@ void pcie_add_capability(PCIDevice *dev,
->                           uint16_t cap_id, uint8_t cap_ver,
->                           uint16_t offset, uint16_t size);
->  
-> -void pcie_ari_init(PCIDevice *dev, uint16_t offset, uint16_t nextfn);
-> -
->  extern const VMStateDescription vmstate_pcie_device;
->  
->  #define VMSTATE_PCIE_DEVICE(_field, _state) {                        \
 > -- 
 > 1.7.1
 > 
