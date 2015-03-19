@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YYWVa-0002Zo-L5
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2015 05:12:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60639)
+	id 1YYWVc-0002di-TK
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2015 05:12:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YYWVU-0002Nn-C3
-	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:12:53 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YYWVX-0002Sx-90
+	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:12:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YYWVT-0007nb-Mt
-	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:12:48 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53117)
+	(envelope-from <mjt@tls.msk.ru>) id 1YYWVS-0007nN-S3
+	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:12:51 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53089)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YYWVJ-0007id-GA; Thu, 19 Mar 2015 05:12:37 -0400
+	id 1YYWVJ-0007ih-GL; Thu, 19 Mar 2015 05:12:37 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8E6A841E3E;
+	by isrv.corpit.ru (Postfix) with ESMTP id AEEB841E47;
 	Thu, 19 Mar 2015 12:12:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id D948893C;
+	by tsrv.corpit.ru (Postfix) with SMTP id F14FC93E;
 	Thu, 19 Mar 2015 12:05:46 +0300 (MSK)
-Received: (nullmailer pid 361 invoked by uid 1000);
+Received: (nullmailer pid 373 invoked by uid 1000);
 	Thu, 19 Mar 2015 09:05:44 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 19 Mar 2015 12:05:36 +0300
-Message-Id: <636a30a890c50f734c90ee929e16492fbc6c73e3.1426755483.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 19 Mar 2015 12:05:42 +0300
+Message-Id: <8ce1ee4618f4a557959f5a5731f6726b30416df5.1426755483.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1426755483.git.mjt@msgid.tls.msk.ru>
 References: <cover.1426755483.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 18/24] vl: fix resource leak with
-	monitor_fdset_add_fd
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: [Qemu-trivial] [PULL 24/24] qga/commands-posix: Fix resource leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,45 +44,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Mar 2015 09:12:53 -0000
+X-List-Received-Date: Thu, 19 Mar 2015 09:12:55 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Shannon Zhao <zhaoshenglong@huawei.com>
 
-monitor_fdset_add_fd returns an AddfdInfo struct (used by the QMP
-command add_fd).  Free it.
+It's detected by coverity. Close the dirfd.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Fam Zheng <famz@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- vl.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ qga/commands-posix.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/vl.c b/vl.c
-index 694deb4..69617d6 100644
---- a/vl.c
-+++ b/vl.c
-@@ -1012,6 +1012,7 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
-     int fd, dupfd, flags;
-     int64_t fdset_id;
-     const char *fd_opaque = NULL;
-+    AddfdInfo *fdinfo;
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index d5bb5cb..ba8de62 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -2283,6 +2283,7 @@ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
  
-     fd = qemu_opt_get_number(opts, "fd", -1);
-     fdset_id = qemu_opt_get_number(opts, "set", -1);
-@@ -1061,8 +1062,9 @@ static int parse_add_fd(QemuOpts *opts, void *opaque)
-     }
- 
-     /* add the duplicate fd, and optionally the opaque string, to the fd set */
--    monitor_fdset_add_fd(dupfd, true, fdset_id, fd_opaque ? true : false,
--                         fd_opaque, NULL);
-+    fdinfo = monitor_fdset_add_fd(dupfd, true, fdset_id, !!fd_opaque, fd_opaque,
-+                                  &error_abort);
-+    g_free(fdinfo);
- 
-     return 0;
- }
+     buf = g_malloc0(20);
+     ga_read_sysfs_file(dirfd, "block_size_bytes", buf, 20, &local_err);
++    close(dirfd);
+     if (local_err) {
+         g_free(buf);
+         error_propagate(errp, local_err);
 -- 
 2.1.4
 
