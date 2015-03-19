@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YYWfG-0004jK-92
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2015 05:22:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35480)
+	id 1YYWfI-0004oM-HG
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Mar 2015 05:22:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35502)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YYWfA-0004Xt-IW
-	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:22:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YYWfC-0004bV-54
+	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:22:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YYWf9-00032S-EM
-	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:22:48 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59203)
+	(envelope-from <mjt@tls.msk.ru>) id 1YYWf7-00031V-Q3
+	for qemu-trivial@nongnu.org; Thu, 19 Mar 2015 05:22:50 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42006)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YYWf1-0002ud-3g; Thu, 19 Mar 2015 05:22:39 -0400
+	id 1YYWf1-0002ug-3g; Thu, 19 Mar 2015 05:22:39 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7BD0C41E3E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 9B15941E49;
 	Thu, 19 Mar 2015 12:22:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 395A192E;
-	Thu, 19 Mar 2015 12:05:46 +0300 (MSK)
-Received: (nullmailer pid 335 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 96F54949;
+	Thu, 19 Mar 2015 12:05:48 +0300 (MSK)
+Received: (nullmailer pid 365 invoked by uid 1000);
 	Thu, 19 Mar 2015 09:05:44 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 19 Mar 2015 12:05:24 +0300
-Message-Id: <327e9759f11a001545f2fbbf796a85d3d55f1b15.1426755483.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 19 Mar 2015 12:05:38 +0300
+Message-Id: <de7ad4ce1f13ea59dfb35fc9985a1c90966646a8.1426755483.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1426755483.git.mjt@msgid.tls.msk.ru>
 References: <cover.1426755483.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>, Leon Alrae <leon.alrae@imgtec.com>
-Subject: [Qemu-trivial] [PULL 06/24] target-mips: Fix warning from Sparse
+Cc: qemu-trivial@nongnu.org, Viswesh <visweshn92@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 20/24] Fix typos in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,35 +43,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Mar 2015 09:22:53 -0000
+X-List-Received-Date: Thu, 19 Mar 2015 09:22:54 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Viswesh <visweshn92@gmail.com>
 
-Sparse report:
-
-target-mips/dsp_helper.c:3681:5: warning: returning void-valued expression
-
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Cc: Leon Alrae <leon.alrae@imgtec.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Viswesh <visweshn92@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-mips/dsp_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ fsdev/virtfs-proxy-helper.c |  2 +-
+ target-tricore/translate.c  | 22 +++++++++++-----------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
-index 349f2a0..46528de 100644
---- a/target-mips/dsp_helper.c
-+++ b/target-mips/dsp_helper.c
-@@ -3678,7 +3678,7 @@ void cpu_wrdsp(uint32_t rs, uint32_t mask_num, CPUMIPSState *env)
+diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+index 13fe032..a698e2d 100644
+--- a/fsdev/virtfs-proxy-helper.c
++++ b/fsdev/virtfs-proxy-helper.c
+@@ -117,7 +117,7 @@ error:
  
- void helper_wrdsp(target_ulong rs, target_ulong mask_num, CPUMIPSState *env)
+ static int init_capabilities(void)
  {
--    return cpu_wrdsp(rs, mask_num, env);
-+    cpu_wrdsp(rs, mask_num, env);
- }
+-    /* helper needs following capbabilities only */
++    /* helper needs following capabilities only */
+     cap_value_t cap_list[] = {
+         CAP_CHOWN,
+         CAP_DAC_OVERRIDE,
+diff --git a/target-tricore/translate.c b/target-tricore/translate.c
+index 15a24f7..0b7cf06 100644
+--- a/target-tricore/translate.c
++++ b/target-tricore/translate.c
+@@ -1111,7 +1111,7 @@ gen_m16add32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
+     TCGv temp2 = tcg_temp_new();
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -1131,7 +1131,7 @@ gen_m16adds32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
+     TCGv temp2 = tcg_temp_new();
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -1156,7 +1156,7 @@ gen_m16add64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
  
- uint32_t cpu_rddsp(uint32_t mask_num, CPUMIPSState *env)
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -1188,7 +1188,7 @@ gen_m16adds64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
+ 
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -1975,7 +1975,7 @@ gen_m16sub32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
+     TCGv temp2 = tcg_temp_new();
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -1995,7 +1995,7 @@ gen_m16subs32_q(TCGv ret, TCGv arg1, TCGv arg2, TCGv arg3, uint32_t n)
+     TCGv temp2 = tcg_temp_new();
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -2020,7 +2020,7 @@ gen_m16sub64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
+ 
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -2052,7 +2052,7 @@ gen_m16subs64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
+ 
+     if (n == 0) {
+         tcg_gen_mul_tl(temp, arg2, arg3);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(temp, arg2, arg3);
+         tcg_gen_shli_tl(temp, temp, 1);
+         /* catch special case r1 = r2 = 0x8000 */
+@@ -2560,7 +2560,7 @@ gen_mul_q(TCGv rl, TCGv rh, TCGv arg1, TCGv arg2, uint32_t n, uint32_t up_shift)
+         }
+         /* reset v bit */
+         tcg_gen_movi_tl(cpu_PSW_V, 0);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_ext_i32_i64(temp_64, arg1);
+         tcg_gen_ext_i32_i64(temp2_64, arg2);
+ 
+@@ -2572,7 +2572,7 @@ gen_mul_q(TCGv rl, TCGv rh, TCGv arg1, TCGv arg2, uint32_t n, uint32_t up_shift)
+             tcg_gen_shri_i64(temp_64, temp_64, up_shift - 1);
+         }
+         tcg_gen_extr_i64_i32(rl, rh, temp_64);
+-        /* overflow only occours if r1 = r2 = 0x8000 */
++        /* overflow only occurs if r1 = r2 = 0x8000 */
+         if (up_shift == 0) {/* result is 64 bit */
+             tcg_gen_setcondi_tl(TCG_COND_EQ, cpu_PSW_V, rh,
+                                 0x80000000);
+@@ -2605,7 +2605,7 @@ gen_mul_q_16(TCGv ret, TCGv arg1, TCGv arg2, uint32_t n)
+     TCGv temp = tcg_temp_new();
+     if (n == 0) {
+         tcg_gen_mul_tl(ret, arg1, arg2);
+-    } else { /* n is exspected to be 1 */
++    } else { /* n is expected to be 1 */
+         tcg_gen_mul_tl(ret, arg1, arg2);
+         tcg_gen_shli_tl(ret, ret, 1);
+         /* catch special case r1 = r2 = 0x8000 */
 -- 
 2.1.4
 
