@@ -1,62 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YYrY3-0005vz-Kx
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 03:40:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36482)
+	id 1YYzlA-0007Ig-Dr
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 12:26:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YYrY0-0005va-EP
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 03:40:49 -0400
+	(envelope-from <eblake@redhat.com>) id 1YYzl2-00078X-Vn
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:26:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YYrXw-0004YQ-DE
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 03:40:48 -0400
-Received: from e06smtp10.uk.ibm.com ([195.75.94.106]:60038)
+	(envelope-from <eblake@redhat.com>) id 1YYzkw-0005kp-Ke
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:26:48 -0400
+Received: from resqmta-po-06v.sys.comcast.net ([96.114.154.165]:41423)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@linux.vnet.ibm.com>) id 1YYrXw-0004YB-2g
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 03:40:44 -0400
-Received: from /spool/local
-	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <thuth@linux.vnet.ibm.com>;
-	Fri, 20 Mar 2015 07:40:42 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 20 Mar 2015 07:40:39 -0000
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
-	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 6B9B317D8042; 
-	Fri, 20 Mar 2015 07:41:04 +0000 (GMT)
-Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
-	[9.149.37.249])
-	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2K7ecs910879380; Fri, 20 Mar 2015 07:40:38 GMT
-Received: from d06av08.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2K7ec8T012679; Fri, 20 Mar 2015 01:40:38 -0600
-Received: from oc7435384737.ibm.com (dyn-9-152-224-100.boeblingen.de.ibm.com
-	[9.152.224.100])
-	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2K7ecBE012672; Fri, 20 Mar 2015 01:40:38 -0600
-Date: Fri, 20 Mar 2015 08:40:36 +0100
-From: Thomas Huth <thuth@linux.vnet.ibm.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20150320084036.2f8cda73@oc7435384737.ibm.com>
-In-Reply-To: <20150318142021-mutt-send-email-mst@redhat.com>
-References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
-	<1426313974-25607-4-git-send-email-thuth@linux.vnet.ibm.com>
-	<20150318142021-mutt-send-email-mst@redhat.com>
-Organization: IBM
-X-Mailer: Claws Mail 3.9.0 (GTK+ 2.24.23; x86_64-redhat-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15032007-0041-0000-0000-000003A76B33
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.106
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2 3/7] pci: Remove unused function
-	ich9_d2pbr_init()
+	(envelope-from <eblake@redhat.com>) id 1YYzkw-0005kg-Ch
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:26:42 -0400
+Received: from resomta-po-11v.sys.comcast.net ([96.114.154.235])
+	by resqmta-po-06v.sys.comcast.net with comcast
+	id 5sRy1q00154zqzk01sShXk; Fri, 20 Mar 2015 16:26:41 +0000
+Received: from red.redhat.com ([24.10.254.122])
+	by resomta-po-11v.sys.comcast.net with comcast
+	id 5sSb1q00c2fD5rL01sSgo6; Fri, 20 Mar 2015 16:26:41 +0000
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 20 Mar 2015 10:26:29 -0600
+Message-Id: <1426868789-20873-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 2.1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20140121; t=1426868801;
+	bh=o/Eh1ptQNdYNVFLTtli0/plN6301nT1Mbxme1ps+NUI=;
+	h=Received:Received:From:To:Subject:Date:Message-Id;
+	b=BbC6zyc42F7Ih+kZBwCbEWuV53Wd0wp19w5wQHtg9UDswt4c4HLuJggKH/nrvVbaR
+	AvLQFRbizQeS+SxqxfqXanc2Yn3/hjQ6w2y/PD+VSBZFY/MauBmUeQQ6iTuNG1AYr1
+	ytrQtjeymALUbMHiZUME9QxQPkV2BgShDTtkR7HJV6Bsp0goQHsbL/Nnbsg4YeISKe
+	vX4OWoG+SvxFpb6XsLJxzR0G8tybwSBezPTBsWTIY4IcKPOVi4/eR40/iuINcAE7l3
+	svBqoL8+FwpvVuYZV6vlYIhYG4BX7O6mT80w1AAK5CmXbrYmrLPWxgKYzBlo4aiYgR
+	a2yTK9cDX/MMQ==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 96.114.154.165
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [for-2.3 PATCH] gitignore: Ignore more .pod files.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -68,28 +49,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2015 07:40:49 -0000
+X-List-Received-Date: Fri, 20 Mar 2015 16:26:55 -0000
 
-On Wed, 18 Mar 2015 14:20:41 +0100
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+kvm_stat.{1,pod} started showing up as untracked files in my
+directory, and I nearly accidentally merged them into a commit
+with my usual habit of 'git add .'.  Rather than naming every
+such generated doc file, just exclude the pattern.
 
-> On Sat, Mar 14, 2015 at 07:19:30AM +0100, Thomas Huth wrote:
-> > The function ich9_d2pbr_init() is completely unused and
-> > thus can be deleted.
-> > 
-> > Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
-> > Cc: Michael S. Tsirkin <mst@redhat.com>
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> I assume all this will go in for 2.4 through the trivial tree?
+Signed-off-by: Eric Blake <eblake@redhat.com>
+CC: qemu-trivial@nongnu.org
+---
+ .gitignore | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-The patch that removes unused functions from the migration code has
-already been picked up in the migration tree ... so I also don't mind
-whether you want to take this through the pci tree or not. Just if
-the patches are not picked up through other trees, they should finally
-go through trivial, I think.
-
- Thomas
+diff --git a/.gitignore b/.gitignore
+index e32a584..da5413d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -37,14 +37,8 @@
+ /qemu-tech.html
+ /qemu-doc.info
+ /qemu-tech.info
+-/qemu.1
+-/qemu.pod
+-/qemu-img.1
+-/qemu-img.pod
+ /qemu-img
+ /qemu-nbd
+-/qemu-nbd.8
+-/qemu-nbd.pod
+ /qemu-options.def
+ /qemu-options.texi
+ /qemu-img-cmds.texi
+@@ -56,8 +50,7 @@
+ /qmp-commands.txt
+ /vscclient
+ /fsdev/virtfs-proxy-helper
+-/fsdev/virtfs-proxy-helper.1
+-/fsdev/virtfs-proxy-helper.pod
++*.1
+ *.a
+ *.aux
+ *.cp
+@@ -70,6 +63,7 @@
+ *.ky
+ *.log
+ *.pdf
++*.pod
+ *.cps
+ *.fns
+ *.kys
+-- 
+2.1.0
 
 
