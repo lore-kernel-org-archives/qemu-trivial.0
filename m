@@ -1,47 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YZ0I4-0007je-U9
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 13:00:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50525)
+	id 1YZ0Sv-0004Jv-09
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 13:12:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52721)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YZ0Hz-0007b5-MA
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 13:00:55 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1YZ0Ss-0004Gb-7Y
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 13:12:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1YZ0Hv-0007kE-2v
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 13:00:51 -0400
-Received: from [2a03:4000:1::4e2f:c7ac:d] (port=56025
-	helo=v220110690675601.yourvserver.net)
+	(envelope-from <stefan@weilnetz.de>) id 1YZ0Sr-0002pn-CX
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 13:12:06 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:33717)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1YZ0Hn-0007fP-AN; Fri, 20 Mar 2015 13:00:39 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2637D1180F74; Fri, 20 Mar 2015 18:00:37 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id 6rRgXYh4e0DJ; Fri, 20 Mar 2015 18:00:25 +0100 (CET)
-Received: from [192.168.178.24] (p54AC83B6.dip0.t-ipconnect.de
-	[84.172.131.182])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	C8DF31180041; Fri, 20 Mar 2015 18:00:25 +0100 (CET)
-Message-ID: <550C5229.9030108@weilnetz.de>
-Date: Fri, 20 Mar 2015 18:00:25 +0100
+	(envelope-from <stefan@weilnetz.de>)
+	id 1YZ0Sp-0002pL-KB; Fri, 20 Mar 2015 13:12:03 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 9EDAD17F629; Fri, 20 Mar 2015 18:11:59 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+To: QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Fri, 20 Mar 2015 18:11:58 +0100
+Message-Id: <1426871518-2761-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 1.7.10.4
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-References: <1426869044-21338-1-git-send-email-eblake@redhat.com>
-In-Reply-To: <1426869044-21338-1-git-send-email-eblake@redhat.com>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a03:4000:1::4e2f:c7ac:d
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [for-2.3 PATCH v2] gitignore:
-	Ignore more .pod files.
+X-Received-From: 2a03:4000:2:362::1
+Cc: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [Qemu-trivial] [PATCH] acpi: Add missing GCC_FMT_ATTR to local
+	function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,64 +40,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2015 17:00:55 -0000
+X-List-Received-Date: Fri, 20 Mar 2015 17:12:07 -0000
 
-Am 20.03.2015 um 17:30 schrieb Eric Blake:
-> kvm_stat.{1,pod} started showing up as untracked files in my
-> directory, and I nearly accidentally merged them into a commit
-> with my usual habit of 'git add .'.  Rather than spelling out
-> each such file, just ignore the entire pattern.
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> CC: qemu-trivial@nongnu.org
-> ---
->
-> v2: fix man page pattern
->
->   .gitignore | 10 ++--------
->   1 file changed, 2 insertions(+), 8 deletions(-)
->
-> diff --git a/.gitignore b/.gitignore
-> index e32a584..aed0e1f 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -37,14 +37,8 @@
->   /qemu-tech.html
->   /qemu-doc.info
->   /qemu-tech.info
-> -/qemu.1
-> -/qemu.pod
-> -/qemu-img.1
-> -/qemu-img.pod
->   /qemu-img
->   /qemu-nbd
-> -/qemu-nbd.8
-> -/qemu-nbd.pod
->   /qemu-options.def
->   /qemu-options.texi
->   /qemu-img-cmds.texi
-> @@ -56,8 +50,7 @@
->   /qmp-commands.txt
->   /vscclient
->   /fsdev/virtfs-proxy-helper
-> -/fsdev/virtfs-proxy-helper.1
-> -/fsdev/virtfs-proxy-helper.pod
-> +*.[1-9]
->   *.a
->   *.aux
->   *.cp
-> @@ -70,6 +63,7 @@
->   *.ky
->   *.log
->   *.pdf
-> +*.pod
->   *.cps
->   *.fns
->   *.kys
+This fixes these gcc warnings (not enabled in default build):
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+hw/acpi/aml-build.c:83:5: warning:
+ function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
+rmat attribute [-Wsuggest-attribute=3Dformat]
+hw/acpi/aml-build.c:88:5: warning:
+ function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
+rmat attribute [-Wsuggest-attribute=3Dformat]
 
-What about only supporting out-of-tree builds for future versions of QEMU?
-.gitignore could be reduced to a few lines then.
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/acpi/aml-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 6242908..d7945f6 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -68,7 +68,7 @@ build_append_nameseg(GArray *array, const char *seg)
+     g_array_append_vals(array, "____", ACPI_NAMESEG_LEN - len);
+ }
+=20
+-static void
++static void GCC_FMT_ATTR(2, 0)
+ build_append_namestringv(GArray *array, const char *format, va_list ap)
+ {
+     /* It would be nicer to use g_string_vprintf but it's only there in =
+2.22 */
+--=20
+2.1.4
 
 
