@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YYzoB-0000Ky-2T
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 12:30:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42326)
+	id 1YYzp5-0001P0-1F
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Mar 2015 12:30:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42567)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YYzo4-0000Kd-Td
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:30:01 -0400
+	(envelope-from <eblake@redhat.com>) id 1YYzp2-0001In-Fc
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:30:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YYzo0-0006KC-ET
-	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:29:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33129)
+	(envelope-from <eblake@redhat.com>) id 1YYzow-00074g-V2
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:30:56 -0400
+Received: from resqmta-po-05v.sys.comcast.net ([96.114.154.164]:35002)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YYzo0-0006K7-6B; Fri, 20 Mar 2015 12:29:52 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2KGTpT0027813
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 20 Mar 2015 12:29:51 -0400
-Received: from [10.3.113.47] (ovpn-113-47.phx2.redhat.com [10.3.113.47])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2KGToFc016770; Fri, 20 Mar 2015 12:29:51 -0400
-Message-ID: <550C4AFE.6080007@redhat.com>
-Date: Fri, 20 Mar 2015 10:29:50 -0600
+	(envelope-from <eblake@redhat.com>) id 1YYzow-00074K-Qw
+	for qemu-trivial@nongnu.org; Fri, 20 Mar 2015 12:30:50 -0400
+Received: from resomta-po-19v.sys.comcast.net ([96.114.154.243])
+	by resqmta-po-05v.sys.comcast.net with comcast
+	id 5sVj1q0095FMDhs01sWqrj; Fri, 20 Mar 2015 16:30:50 +0000
+Received: from red.redhat.com ([24.10.254.122])
+	by resomta-po-19v.sys.comcast.net with comcast
+	id 5sWl1q00D2fD5rL01sWpj0; Fri, 20 Mar 2015 16:30:49 +0000
 From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
-MIME-Version: 1.0
 To: qemu-devel@nongnu.org
-References: <1426868789-20873-1-git-send-email-eblake@redhat.com>
-In-Reply-To: <1426868789-20873-1-git-send-email-eblake@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="ESpMuIi5w9xiI7FtqVeQM3sTObxIbh3I8"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+Date: Fri, 20 Mar 2015 10:30:44 -0600
+Message-Id: <1426869044-21338-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 2.1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20140121; t=1426869050;
+	bh=zIst+eSitxFSd/Hw7CPnXYqoF0Wn4CyYhJ4/toHdQwc=;
+	h=Received:Received:From:To:Subject:Date:Message-Id;
+	b=Dxgi9m0e2IYr1yHVNgHLygvH1VVjrLUuXM7QZ2BEwEhHTmKFRIfpNDY+vyC//75oG
+	y/b+lsON02QwEk0CdnAovJktvCYCGDCJOj7XW6uQQTSTq9cRRCdYvtM/8mO5f9cvH8
+	7HUc3SmUC2yI01r8vKz2n2xaPp6Sfnmvo00z6ldsw2Y8vMJyTfG8gj6wPBjUtP7HSN
+	FAyBJlUIFMAVd5lDF7hy0oC4R9hBm9+dICmL+ETRROxxk8gdPBGpVD/5+csWp/QGB4
+	7cLEgfiVZ0AScyFwUBlAnjKgBepCR2F8Y9tdLb4re0Ye7oa9+Z97vZwwY+2DJZiA1F
+	cQLZTJuwAOEwA==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 96.114.154.164
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [for-2.3 PATCH] gitignore: Ignore
-	more .pod files.
+Subject: [Qemu-trivial] [for-2.3 PATCH v2] gitignore: Ignore more .pod files.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,54 +49,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Mar 2015 16:30:01 -0000
+X-List-Received-Date: Fri, 20 Mar 2015 16:30:57 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ESpMuIi5w9xiI7FtqVeQM3sTObxIbh3I8
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+kvm_stat.{1,pod} started showing up as untracked files in my
+directory, and I nearly accidentally merged them into a commit
+with my usual habit of 'git add .'.  Rather than spelling out
+each such file, just ignore the entire pattern.
 
-On 03/20/2015 10:26 AM, Eric Blake wrote:
-> kvm_stat.{1,pod} started showing up as untracked files in my
-> directory, and I nearly accidentally merged them into a commit
-> with my usual habit of 'git add .'.  Rather than naming every
-> such generated doc file, just exclude the pattern.
->=20
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> CC: qemu-trivial@nongnu.org
-> ---
+Signed-off-by: Eric Blake <eblake@redhat.com>
+CC: qemu-trivial@nongnu.org
+---
 
-> -/qemu-nbd.8
+v2: fix man page pattern
 
-> +*.1
+ .gitignore | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-Blech. Serves me right for not saving my buffer before hitting send.  v2
-coming up that doesn't leak qemu-nbd.8 (or any other man page we might
-add outside of section 1).
+diff --git a/.gitignore b/.gitignore
+index e32a584..aed0e1f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -37,14 +37,8 @@
+ /qemu-tech.html
+ /qemu-doc.info
+ /qemu-tech.info
+-/qemu.1
+-/qemu.pod
+-/qemu-img.1
+-/qemu-img.pod
+ /qemu-img
+ /qemu-nbd
+-/qemu-nbd.8
+-/qemu-nbd.pod
+ /qemu-options.def
+ /qemu-options.texi
+ /qemu-img-cmds.texi
+@@ -56,8 +50,7 @@
+ /qmp-commands.txt
+ /vscclient
+ /fsdev/virtfs-proxy-helper
+-/fsdev/virtfs-proxy-helper.1
+-/fsdev/virtfs-proxy-helper.pod
++*.[1-9]
+ *.a
+ *.aux
+ *.cp
+@@ -70,6 +63,7 @@
+ *.ky
+ *.log
+ *.pdf
++*.pod
+ *.cps
+ *.fns
+ *.kys
+-- 
+2.1.0
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---ESpMuIi5w9xiI7FtqVeQM3sTObxIbh3I8
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJVDEr+AAoJEKeha0olJ0NqSosH/2ahiwyJq+0ZDe8NoOU6WMhr
-SeE78/GuQEx8u7sLCz5hoaeqxUmCaAGN1IqDGpwQdDv4y/un4eQgI9j+FNoOQ6Tt
-223+xwO2l0Rda80T5TAmDuhk71/rFMjFv6u5GvAAZW2Vxd7VheyppnB9nc9VwBEC
-g78kRsw17wiJ3ui7wiXgYCwapadCpyXhb+rmgGn4CGl7CgH8N4SpXUYSh7jHWD5d
-Rjnhy7whrXwFmGIni46VydJuZNoGn8AXWDQZJN6HuYPYxHzwV26lD7TZswqtG6d3
-/8UJnUAmN7zxpHvbPsiXKySYg6/HTeXuPZ/G1F8jWufgamOvSt7RlZ7jR8c6NMc=
-=4Sbz
------END PGP SIGNATURE-----
-
---ESpMuIi5w9xiI7FtqVeQM3sTObxIbh3I8--
 
