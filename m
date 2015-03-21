@@ -1,49 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YZEJV-0005P1-IX
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2015 03:59:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45994)
+	id 1YZKNb-0003Oc-6z
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2015 10:27:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1YZCsS-0000nq-KY
-	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 02:27:23 -0400
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YZKNY-0003N8-E8
+	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 10:27:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1YZCsI-0002w7-Jv
-	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 02:27:20 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:50845)
+	(envelope-from <stefan@bib.uni-mannheim.de>) id 1YZKNV-00031U-8T
+	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 10:27:56 -0400
+Received: from p54ac8333.dip0.t-ipconnect.de ([84.172.131.51]:53811 helo=edv32)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1YZCsI-0002w0-GO
-	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 02:27:10 -0400
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 03B1E20710
-	for <qemu-trivial@nongnu.org>; Sat, 21 Mar 2015 02:27:07 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-	by compute6.internal (MEProxy); Sat, 21 Mar 2015 02:27:10 -0400
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=
-	x-sasl-enc:from:to:cc:subject:date:message-id; s=mesmtp; bh=NqOh
-	rQ1VlLq7K/q0ggoB1BCQFhI=; b=BuPBx39KOt7hJ/sNRE5lF04rzKMCMqWf90EC
-	Ozm56ARgn4tdGtuisVvDQ3/vbYl2hw9TvpWMYC1vVKaig9pTUTkKFXGZHkAjXZUJ
-	BTMLM1QQ92v2NbvMj/iHbu/P/bYfnmIwnKwCIxS84Lb4JtI03zdKJ3kP/DIWNKs/
-	ZHzezUE=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=x-sasl-enc:from:to:cc:subject:date
-	:message-id; s=smtpout; bh=NqOhrQ1VlLq7K/q0ggoB1BCQFhI=; b=rwTG6
-	yxN6JKhGvB5N5rVbN1udKCJ1EdH5oJTwdLPCG33v9Ar/vArL/+J0btYw44UyEDNA
-	drNyAIRkE6GWJPHFI92SldaNvVp1v9kEAN98q60x629dKmoZOV+PIt5Ge1rrDlBy
-	yCBsTeoKfrzTPPQUt+h+yXvHVYb/4KaEbfmtDo=
-X-Sasl-enc: uU9iHdGKAcKpqghRgYZVKulnB+FVqQomzCuBxbR+3PHu 1426919230
-Received: from localhost (unknown [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 15C45680156;
-	Sat, 21 Mar 2015 02:27:10 -0400 (EDT)
-From: "Emilio G. Cota" <cota@braap.org>
-To: qemu-devel@nongnu.org
-Date: Sat, 21 Mar 2015 02:27:12 -0400
-Message-Id: <1426919232-20813-1-git-send-email-cota@braap.org>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.111.4.27
-X-Mailman-Approved-At: Sat, 21 Mar 2015 03:59:20 -0400
-Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] tcg: pack TCGTemp to reduce size by 8 bytes
+	(envelope-from <stefan@bib.uni-mannheim.de>)
+	id 1YZKNV-00031G-1W; Sat, 21 Mar 2015 10:27:53 -0400
+Received: from stefan by edv32 with local (Exim 4.84)
+	(envelope-from <stefan@bib.uni-mannheim.de>)
+	id 1YZJi2-0007ku-Pq; Sat, 21 Mar 2015 14:45:02 +0100
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Sat, 21 Mar 2015 14:44:58 +0100
+Message-Id: <1426945498-29777-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 84.172.131.51
+Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	QEMU Developer <qemu-devel@nongnu.org>, Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] target-tricore: Fix check which was always
+	false
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,30 +37,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2015 06:27:23 -0000
+X-List-Received-Date: Sat, 21 Mar 2015 14:27:57 -0000
 
-This brings down the size of the struct from 56 to 48 bytes.
+With a mask value of 0x00400000, the result will never be 1.
+This fixes a Coverity warning.
 
-Signed-off-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- tcg/tcg.h | 2 +-
+ target-tricore/op_helper.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index add7f75..3276924 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -429,8 +429,8 @@ typedef struct TCGTemp {
-     int val_type;
-     int reg;
-     tcg_target_long val;
--    int mem_reg;
-     intptr_t mem_offset;
-+    int mem_reg;
-     unsigned int fixed_reg:1;
-     unsigned int mem_coherent:1;
-     unsigned int mem_allocated:1;
+diff --git a/target-tricore/op_helper.c b/target-tricore/op_helper.c
+index 0e7b4e8..b7d18b2 100644
+--- a/target-tricore/op_helper.c
++++ b/target-tricore/op_helper.c
+@@ -2593,7 +2593,7 @@ void helper_rslcx(CPUTriCoreState *env)
+         /* CSU trap */
+     }
+     /* if (PCXI.UL == 1) then trap(CTYP); */
+-    if ((env->PCXI & MASK_PCXI_UL) == 1) {
++    if ((env->PCXI & MASK_PCXI_UL) != 0) {
+         /* CTYP trap */
+     }
+     /* EA = {PCXI.PCXS, 6'b0, PCXI.PCXO, 6'b0}; */
 -- 
-1.9.1
+2.1.4
 
 
