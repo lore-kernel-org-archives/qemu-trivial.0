@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YZx32-0004hj-Th
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2015 03:45:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39778)
+	id 1Ya8GM-0004XA-G9
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2015 15:43:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60176)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YZx30-0004gH-SG
-	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 03:45:19 -0400
+	(envelope-from <sw@weilnetz.de>) id 1Ya8GJ-0004UN-VK
+	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 15:43:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YZx2z-0004FE-U0
-	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 03:45:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49664)
+	(envelope-from <sw@weilnetz.de>) id 1Ya8GI-00058T-Tq
+	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 15:43:47 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=50123
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YZx2p-00047m-M7; Mon, 23 Mar 2015 03:45:07 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 7090EAE5D5;
-	Mon, 23 Mar 2015 07:45:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
-	[10.36.116.36])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2N7j3jF021502
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 23 Mar 2015 03:45:04 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 745673040D0B; Mon, 23 Mar 2015 08:45:02 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-References: <1426869044-21338-1-git-send-email-eblake@redhat.com>
-	<550C5229.9030108@weilnetz.de>
-Date: Mon, 23 Mar 2015 08:45:02 +0100
-In-Reply-To: <550C5229.9030108@weilnetz.de> (Stefan Weil's message of "Fri, 20
-	Mar 2015 18:00:25 +0100")
-Message-ID: <87oankuphd.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <sw@weilnetz.de>)
+	id 1Ya8GD-00057i-Ky; Mon, 23 Mar 2015 15:43:41 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	B44E711810A8; Mon, 23 Mar 2015 20:43:39 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id TmI7kcK4zFmw; Mon, 23 Mar 2015 20:43:37 +0100 (CET)
+Received: from [192.168.178.24] (p54AC84F7.dip0.t-ipconnect.de
+	[84.172.132.247])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	5944B1180041; Mon, 23 Mar 2015 20:43:37 +0100 (CET)
+Message-ID: <55106CE8.3080302@weilnetz.de>
+Date: Mon, 23 Mar 2015 20:43:36 +0100
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [for-2.3 PATCH v2] gitignore:
-	Ignore more .pod files.
+To: Joseph Hindin <jhindin@daynix.com>
+References: <CAJAHpUYhCjJ2viionKHDeVJX=pK22=QQjuO1DuSFRaWjQz-naA@mail.gmail.com>
+In-Reply-To: <CAJAHpUYhCjJ2viionKHDeVJX=pK22=QQjuO1DuSFRaWjQz-naA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] Revised patch for QEMU Guest Agent compilaiton
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,67 +53,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Mar 2015 07:45:19 -0000
+X-List-Received-Date: Mon, 23 Mar 2015 19:43:48 -0000
 
-Stefan Weil <sw@weilnetz.de> writes:
-
-> Am 20.03.2015 um 17:30 schrieb Eric Blake:
->> kvm_stat.{1,pod} started showing up as untracked files in my
->> directory, and I nearly accidentally merged them into a commit
->> with my usual habit of 'git add .'.  Rather than spelling out
->> each such file, just ignore the entire pattern.
->>
->> Signed-off-by: Eric Blake <eblake@redhat.com>
->> CC: qemu-trivial@nongnu.org
->> ---
->>
->> v2: fix man page pattern
->>
->>   .gitignore | 10 ++--------
->>   1 file changed, 2 insertions(+), 8 deletions(-)
->>
->> diff --git a/.gitignore b/.gitignore
->> index e32a584..aed0e1f 100644
->> --- a/.gitignore
->> +++ b/.gitignore
->> @@ -37,14 +37,8 @@
->>   /qemu-tech.html
->>   /qemu-doc.info
->>   /qemu-tech.info
->> -/qemu.1
->> -/qemu.pod
->> -/qemu-img.1
->> -/qemu-img.pod
->>   /qemu-img
->>   /qemu-nbd
->> -/qemu-nbd.8
->> -/qemu-nbd.pod
->>   /qemu-options.def
->>   /qemu-options.texi
->>   /qemu-img-cmds.texi
->> @@ -56,8 +50,7 @@
->>   /qmp-commands.txt
->>   /vscclient
->>   /fsdev/virtfs-proxy-helper
->> -/fsdev/virtfs-proxy-helper.1
->> -/fsdev/virtfs-proxy-helper.pod
->> +*.[1-9]
->>   *.a
->>   *.aux
->>   *.cp
->> @@ -70,6 +63,7 @@
->>   *.ky
->>   *.log
->>   *.pdf
->> +*.pod
->>   *.cps
->>   *.fns
->>   *.kys
+Am 23.03.2015 um 20:29 schrieb Joseph Hindin:
+> Hi
 >
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>    About a week ago I've submitted the revised patch for QEMU GA 
+> Windows cross-compilation. Since then I've not got any responses. 
+> Would you mind to look into the proposed patch?
 >
-> What about only supporting out-of-tree builds for future versions of QEMU?
-> .gitignore could be reduced to a few lines then.
+>     Regards,
+>
+>        Joseph Hindin
+>
+> http://lists.nongnu.org/archive/html/qemu-devel/2015-03/msg03155.html
 
-Yes, please!  Could you prep a patch?
+Maybe you would have got a response if you had sent that patch to Paolo 
+or me, too.
+Your patch has formal issues: it should have a short subject (< 80 
+characters typically)
+and some description. Your patch puts all text into the subject, so this 
+becomes
+rather long. Please send an updated patch with "git send-email" and use 
+scripts/checkpatch.pl
+before you send it.
+
+Is there any reason why you filter the -fstack-protector% the way you 
+did in your patch
+(and not as suggested by Paolo)?
+
+Technically I think your patch fixes the problem.
+
+Thanks,
+Stefan
+
+
 
