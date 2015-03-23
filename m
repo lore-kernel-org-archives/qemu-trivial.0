@@ -1,55 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YZOPS-0007Hu-9x
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Mar 2015 14:46:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51165)
+	id 1YZx32-0004hj-Th
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Mar 2015 03:45:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39778)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YZOPP-0007Ez-RF
-	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 14:46:08 -0400
+	(envelope-from <armbru@redhat.com>) id 1YZx30-0004gH-SG
+	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 03:45:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YZOPM-0007YP-CH
-	for qemu-trivial@nongnu.org; Sat, 21 Mar 2015 14:46:07 -0400
-Received: from mail-we0-x231.google.com ([2a00:1450:400c:c03::231]:35780)
+	(envelope-from <armbru@redhat.com>) id 1YZx2z-0004FE-U0
+	for qemu-trivial@nongnu.org; Mon, 23 Mar 2015 03:45:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49664)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YZOPM-0007YJ-5c; Sat, 21 Mar 2015 14:46:04 -0400
-Received: by webcq43 with SMTP id cq43so106180515web.2;
-	Sat, 21 Mar 2015 11:46:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=OMcX0XKb0QR6z3BTuyFa/aLj+zwQkW8OBpF/nska9UA=;
-	b=OaxGW8BSQ3uVTxAk0SLydCxtsnqswsTSuKvmI1czEZgspq5Tjbv6RPgc9wj6cOIS2V
-	g/wHEIXOSDwn9bSaKW6hc1TZ3li3yNku/ybQQZ0zxIljWNpzQfU4OQ6Rrxv7yUsgMTSx
-	2NEilIXcrTDurCkQT+8CW+9Zh+bCB2h/zhTFV66qy23vVsd2jTZ3cjSZ3E85+hufXP/1
-	P9/pMv7SEtoO0FrhyPCNJ2Jqd6NT5WyR9UwZRUXRy+5W9+1y5AVWCTuNyisH5kDQ5tLR
-	Ddzt1NWebw/PufcRrm1K6Q2cITs6XpaAaSHrAOAXmvsECwsixn6qE7zooRcrOiE7d1Iw
-	Ti2A==
-X-Received: by 10.180.101.225 with SMTP id fj1mr6254106wib.56.1426963563476;
-	Sat, 21 Mar 2015 11:46:03 -0700 (PDT)
-Received: from [192.168.10.165] (net-93-66-123-41.cust.vodafonedsl.it.
-	[93.66.123.41])
-	by mx.google.com with ESMTPSA id k4sm629717wiz.0.2015.03.21.11.46.01
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 21 Mar 2015 11:46:02 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <550DBC66.1070803@redhat.com>
-Date: Sat, 21 Mar 2015 19:45:58 +0100
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <armbru@redhat.com>)
+	id 1YZx2p-00047m-M7; Mon, 23 Mar 2015 03:45:07 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7090EAE5D5;
+	Mon, 23 Mar 2015 07:45:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
+	[10.36.116.36])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t2N7j3jF021502
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 23 Mar 2015 03:45:04 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 745673040D0B; Mon, 23 Mar 2015 08:45:02 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+References: <1426869044-21338-1-git-send-email-eblake@redhat.com>
+	<550C5229.9030108@weilnetz.de>
+Date: Mon, 23 Mar 2015 08:45:02 +0100
+In-Reply-To: <550C5229.9030108@weilnetz.de> (Stefan Weil's message of "Fri, 20
+	Mar 2015 18:00:25 +0100")
+Message-ID: <87oankuphd.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <550D8014.2020000@redhat.com>
-	<1426958949-2729-1-git-send-email-cota@braap.org>
-In-Reply-To: <1426958949-2729-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c03::231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] target-i386: remove superfluous
-	TARGET_HAS_SMC macro
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [for-2.3 PATCH v2] gitignore:
+	Ignore more .pod files.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,54 +53,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Mar 2015 18:46:08 -0000
+X-List-Received-Date: Mon, 23 Mar 2015 07:45:19 -0000
 
+Stefan Weil <sw@weilnetz.de> writes:
 
+> Am 20.03.2015 um 17:30 schrieb Eric Blake:
+>> kvm_stat.{1,pod} started showing up as untracked files in my
+>> directory, and I nearly accidentally merged them into a commit
+>> with my usual habit of 'git add .'.  Rather than spelling out
+>> each such file, just ignore the entire pattern.
+>>
+>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>> CC: qemu-trivial@nongnu.org
+>> ---
+>>
+>> v2: fix man page pattern
+>>
+>>   .gitignore | 10 ++--------
+>>   1 file changed, 2 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/.gitignore b/.gitignore
+>> index e32a584..aed0e1f 100644
+>> --- a/.gitignore
+>> +++ b/.gitignore
+>> @@ -37,14 +37,8 @@
+>>   /qemu-tech.html
+>>   /qemu-doc.info
+>>   /qemu-tech.info
+>> -/qemu.1
+>> -/qemu.pod
+>> -/qemu-img.1
+>> -/qemu-img.pod
+>>   /qemu-img
+>>   /qemu-nbd
+>> -/qemu-nbd.8
+>> -/qemu-nbd.pod
+>>   /qemu-options.def
+>>   /qemu-options.texi
+>>   /qemu-img-cmds.texi
+>> @@ -56,8 +50,7 @@
+>>   /qmp-commands.txt
+>>   /vscclient
+>>   /fsdev/virtfs-proxy-helper
+>> -/fsdev/virtfs-proxy-helper.1
+>> -/fsdev/virtfs-proxy-helper.pod
+>> +*.[1-9]
+>>   *.a
+>>   *.aux
+>>   *.cp
+>> @@ -70,6 +63,7 @@
+>>   *.ky
+>>   *.log
+>>   *.pdf
+>> +*.pod
+>>   *.cps
+>>   *.fns
+>>   *.kys
+>
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>
+> What about only supporting out-of-tree builds for future versions of QEMU?
+> .gitignore could be reduced to a few lines then.
 
-On 21/03/2015 18:29, Emilio G. Cota wrote:
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  target-i386/cpu.h | 2 --
->  translate-all.c   | 4 ----
->  2 files changed, 6 deletions(-)
-> 
-> diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-> index 15db6d7..4ee12ca 100644
-> --- a/target-i386/cpu.h
-> +++ b/target-i386/cpu.h
-> @@ -31,8 +31,6 @@
->  /* Maximum instruction code size */
->  #define TARGET_MAX_INSN_SIZE 16
->  
-> -/* target supports implicit self modifying code */
-> -#define TARGET_HAS_SMC
->  /* support for self modifying code even if the modified instruction is
->     close to the modifying instruction */
->  #define TARGET_HAS_PRECISE_SMC
-> diff --git a/translate-all.c b/translate-all.c
-> index 9f47ce7..11763c6 100644
-> --- a/translate-all.c
-> +++ b/translate-all.c
-> @@ -1334,8 +1334,6 @@ static inline void tb_alloc_page(TranslationBlock *tb,
->      p->first_tb = (TranslationBlock *)((uintptr_t)tb | n);
->      invalidate_page_bitmap(p);
->  
-> -#if defined(TARGET_HAS_SMC) || 1
-> -
->  #if defined(CONFIG_USER_ONLY)
->      if (p->flags & PAGE_WRITE) {
->          target_ulong addr;
-> @@ -1371,8 +1369,6 @@ static inline void tb_alloc_page(TranslationBlock *tb,
->          tlb_protect_code(page_addr);
->      }
->  #endif
-> -
-> -#endif /* TARGET_HAS_SMC */
->  }
->  
->  /* add a new TB and link it to the physical page tables. phys_page2 is
-> 
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Yes, please!  Could you prep a patch?
 
