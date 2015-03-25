@@ -1,38 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yan8G-0002xP-JO
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2015 11:22:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47288)
+	id 1YanPU-0003Eo-IL
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Mar 2015 11:40:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54070)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yan8D-0002sB-P3
-	for qemu-trivial@nongnu.org; Wed, 25 Mar 2015 11:22:10 -0400
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1YanPS-0003CI-NA
+	for qemu-trivial@nongnu.org; Wed, 25 Mar 2015 11:39:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yan8A-0000M0-HE
-	for qemu-trivial@nongnu.org; Wed, 25 Mar 2015 11:22:09 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41109)
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1YanPN-0000Ch-JJ
+	for qemu-trivial@nongnu.org; Wed, 25 Mar 2015 11:39:58 -0400
+Received: from mail.uni-paderborn.de ([131.234.142.9]:51214)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Yan7x-0000HN-Pz; Wed, 25 Mar 2015 11:21:53 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2E1D942654;
-	Wed, 25 Mar 2015 18:21:53 +0300 (MSK)
-Message-ID: <5512D292.8040107@msgid.tls.msk.ru>
-Date: Wed, 25 Mar 2015 18:21:54 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+	(envelope-from <kbastian@mail.uni-paderborn.de>)
+	id 1YanPC-0008Ki-Np; Wed, 25 Mar 2015 11:39:42 -0400
+Message-ID: <5512D6BC.8010300@mail.uni-paderborn.de>
+Date: Wed, 25 Mar 2015 16:39:40 +0100
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+User-Agent: Mozilla/5.0 (X11; Linux i686;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-References: <1426869044-21338-1-git-send-email-eblake@redhat.com>
-In-Reply-To: <1426869044-21338-1-git-send-email-eblake@redhat.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+To: Michael Tokarev <mjt@tls.msk.ru>, Stefan Weil <sw@weilnetz.de>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1426945498-29777-1-git-send-email-sw@weilnetz.de>
+	<5512D220.2020303@msgid.tls.msk.ru>
+In-Reply-To: <5512D220.2020303@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [for-2.3 PATCH v2] gitignore: Ignore more .pod
-	files.
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.2.0.2453472, Antispam-Engine: 2.7.2.2107409,
+	Antispam-Data: 2015.3.25.152723
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 131.234.142.9
+Cc: QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-tricore: Fix check
+ which was always false
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,15 +46,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Mar 2015 15:22:10 -0000
+X-List-Received-Date: Wed, 25 Mar 2015 15:39:59 -0000
 
-20.03.2015 19:30, Eric Blake wrote:
-> kvm_stat.{1,pod} started showing up as untracked files in my
-> directory, and I nearly accidentally merged them into a commit
-> with my usual habit of 'git add .'.  Rather than spelling out
-> each such file, just ignore the entire pattern.
 
-Applied to -trivial, thank you!
 
-/mjt
+On 03/25/2015 04:20 PM, Michael Tokarev wrote:
+> 21.03.2015 16:44, Stefan Weil wrote:
+>> With a mask value of 0x00400000, the result will never be 1.
+>> This fixes a Coverity warning.
+> Might be a bit risky if the whole thing wasn't a complete no-op.
+> I wonder maybe the whole this if statement should be removed..
+>
+> But anyway, applied to -trivial, thank you!
+>
+> /mjt
+>
+Thanks. The statement is just an indicator for a trap which needs to 
+happen there. I'm working on this right now, so it won't stay like this 
+for long :).
+
+Cheers,
+Bastian
+
 
