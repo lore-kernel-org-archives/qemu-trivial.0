@@ -1,59 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yb5gc-0004bP-2L
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Mar 2015 07:10:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60724)
+	id 1Yb7NW-0004tE-Cu
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Mar 2015 08:59:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60865)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1Yb5gW-0004VV-OK
-	for qemu-trivial@nongnu.org; Thu, 26 Mar 2015 07:10:52 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Yb7NT-0004t6-NF
+	for qemu-trivial@nongnu.org; Thu, 26 Mar 2015 08:59:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1Yb5gM-0001wa-FW
-	for qemu-trivial@nongnu.org; Thu, 26 Mar 2015 07:10:48 -0400
-Received: from e06smtp10.uk.ibm.com ([195.75.94.106]:33933)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Yb7NO-0006LY-RW
+	for qemu-trivial@nongnu.org; Thu, 26 Mar 2015 08:59:15 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:13435)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1Yb5gM-0001wL-6g
-	for qemu-trivial@nongnu.org; Thu, 26 Mar 2015 07:10:38 -0400
-Received: from /spool/local
-	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
-	Thu, 26 Mar 2015 11:10:35 -0000
-Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
-	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 26 Mar 2015 11:10:32 -0000
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
-	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
-	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 26B7A1B0804B; 
-	Thu, 26 Mar 2015 11:10:58 +0000 (GMT)
-Received: from d06av11.portsmouth.uk.ibm.com (d06av11.portsmouth.uk.ibm.com
-	[9.149.37.252])
-	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2QBAVgf3146164; Thu, 26 Mar 2015 11:10:31 GMT
-Received: from d06av11.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id t2QBAVYO027885; Thu, 26 Mar 2015 05:10:31 -0600
-Received: from smtp.lab.toulouse-stg.fr.ibm.com
-	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
-	by d06av11.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id t2QBAVEa027880; Thu, 26 Mar 2015 05:10:31 -0600
-Received: from bahia.local (sig-9-83-75-234.evts.uk.ibm.com [9.83.75.234])
-	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id 7B0AF22015D;
-	Thu, 26 Mar 2015 12:10:30 +0100 (CET)
-From: Greg Kurz <gkurz@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org
-Date: Thu, 26 Mar 2015 12:10:29 +0100
-Message-ID: <20150326111029.4249.43831.stgit@bahia.local>
-User-Agent: StGit/0.17-dirty
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Yb7NO-0006LC-2c; Thu, 26 Mar 2015 08:59:10 -0400
+Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CIZ77994; Thu, 26 Mar 2015 20:59:06 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml431-hub.china.huawei.com
+	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 26 Mar 2015 20:57:53 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 26 Mar 2015 20:57:43 +0800
+Message-ID: <1427374663-10168-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15032611-0041-0000-0000-000003B83C16
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.106
-Cc: qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] vhost: fix typo in vq_index description
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>
+Subject: [Qemu-trivial] [PATCH] misc: fix typos in copyright declaration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,25 +43,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Mar 2015 11:10:52 -0000
+X-List-Received-Date: Thu, 26 Mar 2015 12:59:17 -0000
 
-Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
+From: Gonglei <arei.gonglei@huawei.com>
+
+Add a space after comma.
+
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 ---
- include/hw/virtio/vhost.h |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ bootdevice.c              | 2 +-
+ tests/usb-hcd-ohci-test.c | 2 +-
+ tests/usb-hcd-uhci-test.c | 2 +-
+ tests/usb-hcd-xhci-test.c | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/virtio/vhost.h b/include/hw/virtio/vhost.h
-index 71ef18f..88e1e56 100644
---- a/include/hw/virtio/vhost.h
-+++ b/include/hw/virtio/vhost.h
-@@ -36,7 +36,7 @@ struct vhost_dev {
-     MemoryRegionSection *mem_sections;
-     struct vhost_virtqueue *vqs;
-     int nvqs;
--    /* the first virtuque which would be used by this vhost dev */
-+    /* the first virtqueue which would be used by this vhost dev */
-     int vq_index;
-     unsigned long long features;
-     unsigned long long acked_features;
+diff --git a/bootdevice.c b/bootdevice.c
+index 673bfef..3cdc0d7 100644
+--- a/bootdevice.c
++++ b/bootdevice.c
+@@ -1,7 +1,7 @@
+ /*
+  * QEMU Boot Device Implement
+  *
+- * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO.,LTD.
++ * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO., LTD.
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+diff --git a/tests/usb-hcd-ohci-test.c b/tests/usb-hcd-ohci-test.c
+index 1160bde..fa592d4 100644
+--- a/tests/usb-hcd-ohci-test.c
++++ b/tests/usb-hcd-ohci-test.c
+@@ -1,7 +1,7 @@
+ /*
+  * QTest testcase for USB OHCI controller
+  *
+- * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO.,LTD.
++ * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO., LTD.
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+diff --git a/tests/usb-hcd-uhci-test.c b/tests/usb-hcd-uhci-test.c
+index 6d631cf..a96b716 100644
+--- a/tests/usb-hcd-uhci-test.c
++++ b/tests/usb-hcd-uhci-test.c
+@@ -1,7 +1,7 @@
+ /*
+  * QTest testcase for USB UHCI controller
+  *
+- * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO.,LTD.
++ * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO., LTD.
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+diff --git a/tests/usb-hcd-xhci-test.c b/tests/usb-hcd-xhci-test.c
+index adf261e..56ab367 100644
+--- a/tests/usb-hcd-xhci-test.c
++++ b/tests/usb-hcd-xhci-test.c
+@@ -1,7 +1,7 @@
+ /*
+  * QTest testcase for USB xHCI controller
+  *
+- * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO.,LTD.
++ * Copyright (c) 2014 HUAWEI TECHNOLOGIES CO., LTD.
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+-- 
+1.7.12.4
+
 
 
