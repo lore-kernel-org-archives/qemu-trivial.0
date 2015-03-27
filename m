@@ -1,55 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YbViI-0003MM-OK
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Mar 2015 10:58:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44029)
+	id 1YbbVT-0004ZI-Md
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Mar 2015 17:09:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1YbViF-0003MD-NO
-	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 10:58:20 -0400
+	(envelope-from <cota@braap.org>) id 1YbbVQ-0004X2-TC
+	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 17:09:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1YbVi8-0000VC-Ao
-	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 10:58:19 -0400
-Received: from mail-qg0-x22e.google.com ([2607:f8b0:400d:c04::22e]:36042)
+	(envelope-from <cota@braap.org>) id 1YbbVN-0004Rf-Nb
+	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 17:09:28 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:44053)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1YbVi8-0000TC-5g; Fri, 27 Mar 2015 10:58:12 -0400
-Received: by qgf60 with SMTP id 60so117350698qgf.3;
-	Fri, 27 Mar 2015 07:58:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=MLz2/xcQVIYsuzlLLPY+Zp2a4D2XzqY5lDdzWzxurkM=;
-	b=ise31tlDO3LgVTs16j5MA9z9MuFgY+60/fNI8vLb1Wr5JYs4wjPJ1osBPT9+JTmmEo
-	H5Ls4srTLeTJ3ozTeCILdRxclBy6hyLif9YzLYiOjwK7UIjmYCLThyz0/Nnfr/LOr29N
-	qvA4+vbTLO1pMMob7X3uNH8ucYDMwicFg9Va8JHOUNmvpdVaCYNPq9bFyZ2+DdAPyssi
-	v2YQNSF8kBvY2+70jSxykRrfrfk0G0MKVJgK/vaK6RIGXWIk0wXmRlupYrUMQu2aC/tn
-	axkR403hsNJL3igTmjLhjHtAYwU7z3U28Bgn6faxO4VCfsN4iRy4h47icSlamP3iz8Ul
-	HCTw==
-X-Received: by 10.140.96.165 with SMTP id k34mr23905687qge.79.1427468290804;
-	Fri, 27 Mar 2015 07:58:10 -0700 (PDT)
-Received: from anchor.twiddle.net
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by mx.google.com with ESMTPSA id
-	o186sm1606723qhb.10.2015.03.27.07.58.08
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 27 Mar 2015 07:58:09 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Message-ID: <55156FFE.9050806@twiddle.net>
-Date: Fri, 27 Mar 2015 07:58:06 -0700
-From: Richard Henderson <rth@twiddle.net>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <cota@braap.org>) id 1YbbVN-0004RS-HB
+	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 17:09:25 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id 47F2A208D1
+	for <qemu-trivial@nongnu.org>; Fri, 27 Mar 2015 17:09:21 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute5.internal (MEProxy); Fri, 27 Mar 2015 17:09:24 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:subject:to:x-sasl-enc:x-sasl-enc; s=
+	mesmtp; bh=mel7o8SCr16ApMmCoMLHimQ7zH8=; b=2rSYWAnczsBk2j9kcUzba
+	fZcnjI/MoSDe/nita6IN5Ly5mx4pYAdAsZN5epdqyLKh0ouZc/2sP+SGmM5KPirJ
+	hIOZDhc5AECKTKYPgPnTJRpYsTDsX0pXGYoiAIH9YvFb6Xae9Ilg8WVd5189vOMr
+	UAFq4ItGRvIg0nTYmflKzo=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:subject:to
+	:x-sasl-enc:x-sasl-enc; s=smtpout; bh=mel7o8SCr16ApMmCoMLHimQ7zH
+	8=; b=SVqr4N+g9edN+cjijEJ/dSQ+9z6LAFjgwo0zTRJFROQ+qwsevbKI1tLycY
+	CExx5kBF8gac26h1Zu+pqlbHoz4iDBXnS3N5iXswcD0Ji/oD2lqj1l6oU3D9F0dA
+	L78jHbfrWpw/BL7FmuN2Ranr/29XiKMp+OxV5mz5C7K0pf/yk=
+X-Sasl-enc: awcDdGzSdcciZs1Xs2xigMiYVyWVnjK3Upl32mEq5V8o 1427490563
+Received: from localhost (unknown [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id DCE7F6801C2;
+	Fri, 27 Mar 2015 17:09:23 -0400 (EDT)
+Date: Fri, 27 Mar 2015 17:09:32 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+Message-ID: <20150327210932.GA17458@flamenco>
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>, Stefan Weil <sw@weilnetz.de>
-References: <5510B8C4.1050302@twiddle.net>
-	<1427313048-26772-1-git-send-email-cota@braap.org>
-In-Reply-To: <1427313048-26772-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::22e
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] tcg: optimise memory layout of TCGTemp
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <55156FFE.9050806@twiddle.net>
+ <87y4mibw94.fsf@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.111.4.26
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: optimise memory layout
+	of TCGTemp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,101 +65,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Mar 2015 14:58:20 -0000
+X-List-Received-Date: Fri, 27 Mar 2015 21:09:30 -0000
 
-On 03/25/2015 12:50 PM, Emilio G. Cota wrote:
-> This brings down the size of the struct from 56 to 32 bytes on 64-bit,
-> and to 16 bytes on 32-bit.
+On Fri, Mar 27, 2015 at 09:55:03 +0000, Alex Bennée wrote:
+> Have you been able to measure any performance improvement with these new
+> structures? In theory, if aligned with cache lines, performance should
+> improve but real numbers would be nice.
+
+I haven't benchmarked anything, which makes me very uneasy. All
+I've checked is that the system boots, and FWIW I appreciate no
+difference in boot time.
+
+Is there a benchmark suite to test TCG changes?
+
+Until proper benchmarking I wouldn't want to see this merged. For now I
+propose to merge the initial change (remove 8-byte hole in 64-bit),
+which is uncontroversial.
+
+> > The appended adds macros to prevent us from mistakenly overflowing
+> > the bitfields when more elements are added to the corresponding
+> > enums/macros.
 > 
-> The appended adds macros to prevent us from mistakenly overflowing
-> the bitfields when more elements are added to the corresponding
-> enums/macros.
+> I can see the defines but I can't see any checks. Should we be able to
+> do a compile time check if TCG_TYPE_COUNT doesn't fit into
+> TCG_TYPE_NR_BITS?
+
+> > +#define TEMP_VAL_NR_BITS 2
 > 
-> Note that reg/mem_reg need only 6 bits (for ia64) but for performance
-> is probably better to align them to a byte address.
+> A similar compile time check could be added here.
+
+Ack, addressed below.
+
+On Fri, Mar 27, 2015 at 07:58:06 -0700, Richard Henderson wrote:
+> On 03/25/2015 12:50 PM, Emilio G. Cota wrote:
+> > +#define TCG_TYPE_NR_BITS 1
 > 
-> Given that TCGTemp is used in large arrays this leads to a few KBs
-> of savings. However, unpacking the bits takes additional code, so
-> the net effect depends on the target (host is x86_64):
+> I'd rather you moved TCG_TYPE_COUNT out of the enum and into a define.  Perhaps
+> even as (1 << TCG_TYPE_NR_BITS).
+(snip)
+> > +#define TEMP_VAL_NR_BITS 2
 > 
-> Before:
-> $ find . -name 'tcg.o' | xargs size
->    text    data     bss     dec     hex filename
->   41131   29800      88   71019   1156b ./aarch64-softmmu/tcg/tcg.o
->   37969   29416      96   67481   10799 ./x86_64-linux-user/tcg/tcg.o
->   39354   28816      96   68266   10aaa ./arm-linux-user/tcg/tcg.o
->   40802   29096      88   69986   11162 ./arm-softmmu/tcg/tcg.o
->   39417   29672      88   69177   10e39 ./x86_64-softmmu/tcg/tcg.o
+> And make this an enumeration.
 > 
-> After:
-> $ find . -name 'tcg.o' | xargs size
->    text    data     bss     dec     hex filename
->   41187   29800      88   71075   115a3 ./aarch64-softmmu/tcg/tcg.o
->   37777   29416      96   67289   106d9 ./x86_64-linux-user/tcg/tcg.o
->   39162   28816      96   68074   109ea ./arm-linux-user/tcg/tcg.o
->   40858   29096      88   70042   1119a ./arm-softmmu/tcg/tcg.o
->   39473   29672      88   69233   10e71 ./x86_64-softmmu/tcg/tcg.o
+> >  typedef struct TCGTemp {
+(snip)
+> > +    unsigned int base_type:TCG_TYPE_NR_BITS;
+> > +    unsigned int type:TCG_TYPE_NR_BITS;
 > 
-> Suggested-by: Stefan Weil <sw@weilnetz.de>
-> Suggested-by: Richard Henderson <rth@twiddle.net>
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  tcg/tcg.h | 22 +++++++++++++---------
->  1 file changed, 13 insertions(+), 9 deletions(-)
+> And do *not* change these from the enumeration to an unsigned int.
 > 
-> diff --git a/tcg/tcg.h b/tcg/tcg.h
-> index add7f75..71ae7b2 100644
-> --- a/tcg/tcg.h
-> +++ b/tcg/tcg.h
-> @@ -193,7 +193,7 @@ typedef struct TCGPool {
->  typedef enum TCGType {
->      TCG_TYPE_I32,
->      TCG_TYPE_I64,
-> -    TCG_TYPE_COUNT, /* number of different types */
-> +    TCG_TYPE_COUNT, /* number of different types, see TCG_TYPE_NR_BITS */
->  
->      /* An alias for the size of the host register.  */
->  #if TCG_TARGET_REG_BITS == 32
-> @@ -217,6 +217,9 @@ typedef enum TCGType {
->  #endif
->  } TCGType;
->  
-> +/* used for bitfield packing to save space */
-> +#define TCG_TYPE_NR_BITS 1
+> I know why you did this -- to keep the compiler from warning that the TCGType
+> enum didn't fit in the bitfield, because of TCG_TYPE_COUNT being an enumerator,
+> rather than an unrelated number.  Except that's exactly the warning we want to
+> keep, on the off-chance that someone modifies the enums without modifying the
+> _NR_BITS defines.
 
-I'd rather you moved TCG_TYPE_COUNT out of the enum and into a define.  Perhaps
-even as (1 << TCG_TYPE_NR_BITS).
+Agreed, please see below.
 
-> @@ -421,16 +424,14 @@ static inline TCGCond tcg_high_cond(TCGCond c)
->  #define TEMP_VAL_REG   1
->  #define TEMP_VAL_MEM   2
->  #define TEMP_VAL_CONST 3
-> +#define TEMP_VAL_NR_BITS 2
+Thanks,
 
-And make this an enumeration.
+		E.
 
->  typedef struct TCGTemp {
-> -    TCGType base_type;
-> -    TCGType type;
-> -    int val_type;
-> -    int reg;
-> -    tcg_target_long val;
-> -    int mem_reg;
-> -    intptr_t mem_offset;
-> +    unsigned int reg:8;
-> +    unsigned int mem_reg:8;
-> +    unsigned int val_type:TEMP_VAL_NR_BITS;
-> +    unsigned int base_type:TCG_TYPE_NR_BITS;
-> +    unsigned int type:TCG_TYPE_NR_BITS;
+[No signoff due to lack of provable perf improvement, see above.]
 
-And do *not* change these from the enumeration to an unsigned int.
-
-I know why you did this -- to keep the compiler from warning that the TCGType
-enum didn't fit in the bitfield, because of TCG_TYPE_COUNT being an enumerator,
-rather than an unrelated number.  Except that's exactly the warning we want to
-keep, on the off-chance that someone modifies the enums without modifying the
-_NR_BITS defines.
-
-
-r~
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index add7f75..afd3f94 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -193,7 +193,6 @@ typedef struct TCGPool {
+ typedef enum TCGType {
+     TCG_TYPE_I32,
+     TCG_TYPE_I64,
+-    TCG_TYPE_COUNT, /* number of different types */
+ 
+     /* An alias for the size of the host register.  */
+ #if TCG_TARGET_REG_BITS == 32
+@@ -217,6 +216,10 @@ typedef enum TCGType {
+ #endif
+ } TCGType;
+ 
++/* used for bitfield packing to save space */
++#define TCG_TYPE_NR_BITS	1
++#define TCG_TYPE_COUNT		BIT(TCG_TYPE_NR_BITS)
++
+ /* Constants for qemu_ld and qemu_st for the Memory Operation field.  */
+ typedef enum TCGMemOp {
+     MO_8     = 0,
+@@ -417,20 +420,21 @@ static inline TCGCond tcg_high_cond(TCGCond c)
+     }
+ }
+ 
+-#define TEMP_VAL_DEAD  0
+-#define TEMP_VAL_REG   1
+-#define TEMP_VAL_MEM   2
+-#define TEMP_VAL_CONST 3
++typedef enum TCGTempVal {
++    TEMP_VAL_DEAD,
++    TEMP_VAL_REG,
++    TEMP_VAL_MEM,
++    TEMP_VAL_CONST,
++} TCGTempVal;
++
++#define TEMP_VAL_NR_BITS 2
+ 
+-/* XXX: optimize memory layout */
+ typedef struct TCGTemp {
+-    TCGType base_type;
+-    TCGType type;
+-    int val_type;
+-    int reg;
+-    tcg_target_long val;
+-    int mem_reg;
+-    intptr_t mem_offset;
++    unsigned int reg:8;
++    unsigned int mem_reg:8;
++    TCGTempVal val_type:TEMP_VAL_NR_BITS;
++    TCGType base_type:TCG_TYPE_NR_BITS;
++    TCGType type:TCG_TYPE_NR_BITS;
+     unsigned int fixed_reg:1;
+     unsigned int mem_coherent:1;
+     unsigned int mem_allocated:1;
+@@ -438,6 +442,9 @@ typedef struct TCGTemp {
+                                   basic blocks. Otherwise, it is not
+                                   preserved across basic blocks. */
+     unsigned int temp_allocated:1; /* never used for code gen */
++
++    tcg_target_long val;
++    intptr_t mem_offset;
+     const char *name;
+ } TCGTemp;
+ 
 
