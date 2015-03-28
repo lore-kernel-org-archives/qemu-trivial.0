@@ -1,44 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ybgdk-0006Fp-G6
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Mar 2015 22:38:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47631)
+	id 1YbguI-0003XW-VS
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Mar 2015 22:55:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Ybgdh-0006CU-LB
-	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 22:38:22 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1YbguG-0003W4-GC
+	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 22:55:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Ybgdg-00054p-Qk
-	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 22:38:21 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:43199)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1YbguF-0003CA-Np
+	for qemu-trivial@nongnu.org; Fri, 27 Mar 2015 22:55:28 -0400
+Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:33395)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Ybgda-00053N-R1; Fri, 27 Mar 2015 22:38:15 -0400
-Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CLK17349; Sat, 28 Mar 2015 10:38:05 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml432-hub.china.huawei.com
-	(10.82.67.209) with Microsoft SMTP Server id 14.3.158.1;
-	Sat, 28 Mar 2015 10:38:03 +0800
-Message-ID: <55161404.4000404@huawei.com>
-Date: Sat, 28 Mar 2015 10:37:56 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <jcmvbkbc@gmail.com>)
+	id 1YbguD-0003Bd-Ip; Fri, 27 Mar 2015 22:55:25 -0400
+Received: by oifl3 with SMTP id l3so90912689oif.0;
+	Fri, 27 Mar 2015 19:55:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=fe/uFX6H40R5NlzmyF2P6JTuJJM2ryrAQjfR+o1PAYE=;
+	b=zUKnwxFNFmRAfkIn/Czp+ebU8fwJ9ZlXcn1jNBNY47/9CDEkQAY2gSr78A2fFZbL28
+	G3w8W4qNJvBVE3SUJ788XTLZbeemxeaFqPnXQk5tQvOepha95QMzN2cR9R6vX+BnKK6A
+	+5JUDhAAAPkD7q3lnqPMg/eQCLPiU+GbMP8HSw2m5osuzBMxWBFBI2dyrpKeGxI+5F3H
+	5Jx4n6JO58BvnNdcorwzAtj9zuvEJWsgiD3bbUSli3CX7ynzKDF9yBeTBEbBAvdHkEbF
+	Kb7Ud5EgRfquMSYE6fAAarMjqX9Y1h8sTw8vGKdXCwRJ+JgY9Q9K5+tf3MuicQugXq4E
+	EnXw==
 MIME-Version: 1.0
-To: <qemu-devel@nongnu.org>
+X-Received: by 10.60.112.65 with SMTP id io1mr18481656oeb.66.1427511324652;
+	Fri, 27 Mar 2015 19:55:24 -0700 (PDT)
+Received: by 10.76.75.4 with HTTP; Fri, 27 Mar 2015 19:55:24 -0700 (PDT)
+In-Reply-To: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
 References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-	<5507D480.1000505@huawei.com>
-In-Reply-To: <5507D480.1000505@huawei.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+Date: Sat, 28 Mar 2015 05:55:24 +0300
+Message-ID: <CAMo8BfKN6EC48KoizmRqDtiZc6muKhzDKu3u8Jot2Ei-QmjMng@mail.gmail.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+To: arei.gonglei@huawei.com
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c06::22e
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] microblaze: fix memory
+	leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,73 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Mar 2015 02:38:22 -0000
+X-List-Received-Date: Sat, 28 Mar 2015 02:55:29 -0000
 
-Hi,
+On Thu, Mar 5, 2015 at 6:05 AM,  <arei.gonglei@huawei.com> wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>
+> When not assign a -dtb argument, the variable dtb_filename
+> storage returned from qemu_find_file(), which should be freed
+> after use. Alternatively we define a local variable filename,
+> with 'char *' type, free after use.
+>
+> Cc: Michael Tokarev <mjt@tls.msk.ru>
+> Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+> v2: fix a complier error.
+> ---
+>  hw/microblaze/boot.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
 
-   Ping again...  Can this patch be a raw stuff for rc2 ?
+Reviewed-by: Max Filippov <jcmvbkbc@gmail.com>
 
-Regards,
-Gonglei
-
-On 2015/3/17 15:15, Gonglei wrote:
-> On 2015/3/5 11:05, arei.gonglei@huawei.com wrote:
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> When not assign a -dtb argument, the variable dtb_filename
->> storage returned from qemu_find_file(), which should be freed
->> after use. Alternatively we define a local variable filename,
->> with 'char *' type, free after use.
->>
->> Cc: Michael Tokarev <mjt@tls.msk.ru>
->> Cc: Edgar E. Iglesias <edgar.iglesias@gmail.com>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->> v2: fix a complier error.
->> ---
->>  hw/microblaze/boot.c | 13 +++++++------
->>  1 file changed, 7 insertions(+), 6 deletions(-)
->>
-> 
-> Ping...
-> 
->> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
->> index a2843cd..352ccb1 100644
->> --- a/hw/microblaze/boot.c
->> +++ b/hw/microblaze/boot.c
->> @@ -113,15 +113,15 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
->>      const char *kernel_filename;
->>      const char *kernel_cmdline;
->>      const char *dtb_arg;
->> +    char *filename = NULL;
->>  
->>      machine_opts = qemu_get_machine_opts();
->>      kernel_filename = qemu_opt_get(machine_opts, "kernel");
->>      kernel_cmdline = qemu_opt_get(machine_opts, "append");
->>      dtb_arg = qemu_opt_get(machine_opts, "dtb");
->> -    if (dtb_arg) { /* Preference a -dtb argument */
->> -        dtb_filename = dtb_arg;
->> -    } else { /* default to pcbios dtb as passed by machine_init */
->> -        dtb_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
->> +    /* default to pcbios dtb as passed by machine_init */
->> +    if (!dtb_arg) {
->> +        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
->>      }
->>  
->>      boot_info.machine_cpu_reset = machine_cpu_reset;
->> @@ -203,7 +203,8 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
->>                              boot_info.initrd_start,
->>                              boot_info.initrd_end,
->>                              kernel_cmdline,
->> -                            dtb_filename);
->> +                            /* Preference a -dtb argument */
->> +                            dtb_arg ? dtb_arg : filename);
->>      }
->> -
->> +    g_free(filename);
->>  }
->>
-> 
-
-
+-- 
+Thanks.
+-- Max
 
