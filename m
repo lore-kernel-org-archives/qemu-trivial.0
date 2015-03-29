@@ -1,41 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YcGiT-0000TI-VC
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Mar 2015 13:09:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47231)
+	id 1YcL8W-0005rB-Tj
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Mar 2015 17:52:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YcGiR-0000Ra-SD
-	for qemu-trivial@nongnu.org; Sun, 29 Mar 2015 13:09:40 -0400
+	(envelope-from <rth7680@gmail.com>) id 1YcL8U-0005pl-HS
+	for qemu-trivial@nongnu.org; Sun, 29 Mar 2015 17:52:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YcGiR-0006Qh-5t
-	for qemu-trivial@nongnu.org; Sun, 29 Mar 2015 13:09:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51705)
+	(envelope-from <rth7680@gmail.com>) id 1YcL8T-0005Yh-Ld
+	for qemu-trivial@nongnu.org; Sun, 29 Mar 2015 17:52:50 -0400
+Received: from mail-pd0-x22c.google.com ([2607:f8b0:400e:c02::22c]:35882)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YcGiM-0006Ix-3O; Sun, 29 Mar 2015 13:09:34 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 50D4E42982;
-	Sun, 29 Mar 2015 20:09:25 +0300 (MSK)
-Message-ID: <551831C5.5020807@msgid.tls.msk.ru>
-Date: Sun, 29 Mar 2015 20:09:25 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+	(envelope-from <rth7680@gmail.com>)
+	id 1YcL8T-0005YI-EE; Sun, 29 Mar 2015 17:52:49 -0400
+Received: by pdcp1 with SMTP id p1so63498104pdc.3;
+	Sun, 29 Mar 2015 14:52:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=message-id:sender:date:subject:from:to:cc:mime-version:content-type
+	:content-transfer-encoding;
+	bh=JQCAzlseaLnf9WANqQ9KSSEVGH86Vn6rsWMKb7XTtt0=;
+	b=LIGgOxQhURDCpIr4o3xR6nFPMpGl3oDRGtQ2NbcILsM8fvX+IMk4en73OWsXyD7elg
+	arHsv/yi/9ukDEDautt1hboXNuAmAupfMrmryMO8iC2kL3QOxtrFbyTNYMPQERDzWrmB
+	OAhJYtFj+cYUq7747hCqYdqlrnwBJ+q1pU/Lc5DXB/N2gF3p+XVoLVr+1JpFYhRczlI1
+	TQKs2vUIjT1fDmjpJhd0SuWIOW9npxBfrh6sO30naC1iSvON4vo6nuDByMNeByKeccAu
+	r6XKh3Q5rmp4AA3GkM+H04o/t2vnSmpEdhXkvzCsVYFZER8ulCO0jt2GHd7uyb2xOExM
+	4w9g==
+X-Received: by 10.68.248.39 with SMTP id yj7mr53559780pbc.58.1427665967618;
+	Sun, 29 Mar 2015 14:52:47 -0700 (PDT)
+Received: from ?IPv6:2607:fb90:2c2e:4c65:c897:10e5:47a5:a7f1?
+	([2607:fb90:2c2e:4c65:c897:10e5:47a5:a7f1])
+	by mx.google.com with ESMTPSA id y5sm8387617pdh.21.2015.03.29.14.52.45
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 29 Mar 2015 14:52:46 -0700 (PDT)
+Message-ID: <5518742e.451f460a.1d9b.66ce@mx.google.com>
+Sender: Richard Henderson <rth7680@gmail.com>
+Date: Sun, 29 Mar 2015 14:52:42 -0700
+From: Richard Henderson <rth@twiddle.net>
+To: "Emilio G. Cota" <cota@braap.org>
 MIME-Version: 1.0
-To: Gonglei <arei.gonglei@huawei.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>	<5507D480.1000505@huawei.com>	<55161404.4000404@huawei.com>
-	<CAJy5ezrFVPCC1VCbvVVYYTEgx2v__AicWFUme_yh2ikuB0wOEg@mail.gmail.com>
-	<55165C4A.5080800@huawei.com>
-In-Reply-To: <55165C4A.5080800@huawei.com>
-OpenPGP: id=804465C5
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, "pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+Content-Transfer-Encoding: base64
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::22c
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	=?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: optimise memory layout
+	of TCGTemp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,25 +58,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Mar 2015 17:09:40 -0000
+X-List-Received-Date: Sun, 29 Mar 2015 21:52:51 -0000
 
-28.03.2015 10:46, Gonglei wrote:
-[]
->> Can this go through -trivial?
->>
-> It's ok, but I don't know if -trivial branch maintainer has a plan to send a pull request
-> for rc2.
-
-I do have plan to send a pull request, but this thing is ugly.  The
-original code is ugly, and your patch does not make it better.  I
-wanted to make some changes myself but didn't find fime for that.
-
-Ofcourse it is okay to apply your change to plug the leak, but..
-oh well... :(  And if we do, we'll sure forget about that completely.
-Now at least you're pinging me from time to time... ;))
-
-Thanks,
-
-/mjt
+T24gTWFyIDI3LCAyMDE1IDE0OjA5LCAiRW1pbGlvIEcuIENvdGEiIDxjb3RhQGJyYWFwLm9yZz4g
+d3JvdGU6Cj4KPiBPbiBGcmksIE1hciAyNywgMjAxNSBhdCAwOTo1NTowMyArMDAwMCwgQWxleCBC
+ZW5uw6llIHdyb3RlOiAKPiA+IEhhdmUgeW91IGJlZW4gYWJsZSB0byBtZWFzdXJlIGFueSBwZXJm
+b3JtYW5jZSBpbXByb3ZlbWVudCB3aXRoIHRoZXNlIG5ldyAKPiA+IHN0cnVjdHVyZXM/IEluIHRo
+ZW9yeSwgaWYgYWxpZ25lZCB3aXRoIGNhY2hlIGxpbmVzLCBwZXJmb3JtYW5jZSBzaG91bGQgCj4g
+PiBpbXByb3ZlIGJ1dCByZWFsIG51bWJlcnMgd291bGQgYmUgbmljZS4gCj4KPiBJIGhhdmVuJ3Qg
+YmVuY2htYXJrZWQgYW55dGhpbmcsIHdoaWNoIG1ha2VzIG1lIHZlcnkgdW5lYXN5LiBBbGwgCj4g
+SSd2ZSBjaGVja2VkIGlzIHRoYXQgdGhlIHN5c3RlbSBib290cywgYW5kIEZXSVcgSSBhcHByZWNp
+YXRlIG5vIAo+IGRpZmZlcmVuY2UgaW4gYm9vdCB0aW1lLgoKTm8gZGVjcmVhc2UgaW4gYm9vdCB0
+aW1lIGlzIGdvb2QuIFdlIC9rbm93LyB3ZSdyZSBzYXZpbmcgbWVtb3J5LCBhZnRlciBhbGwuCiAK
+Pgo+IElzIHRoZXJlIGEgYmVuY2htYXJrIHN1aXRlIHRvIHRlc3QgVENHIGNoYW5nZXM/IAoKTm8s
+IHNvcnJ5LiAKCgpyfg==
 
 
