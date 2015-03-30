@@ -1,56 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YcZlL-00033W-RJ
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2015 09:29:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44332)
+	id 1YcZzj-00063N-A3
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Mar 2015 09:44:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56896)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1YcZlJ-00031C-EM
-	for qemu-trivial@nongnu.org; Mon, 30 Mar 2015 09:29:54 -0400
+	(envelope-from <laurent.desnogues@gmail.com>) id 1YcWQ6-0004qP-TU
+	for qemu-trivial@nongnu.org; Mon, 30 Mar 2015 05:55:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1YcZlI-0002C6-CF
-	for qemu-trivial@nongnu.org; Mon, 30 Mar 2015 09:29:53 -0400
-Received: from mail-wi0-x230.google.com ([2a00:1450:400c:c05::230]:37310)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1YcWQ5-0000sx-TE
+	for qemu-trivial@nongnu.org; Mon, 30 Mar 2015 05:55:46 -0400
+Received: from mail-ob0-x22c.google.com ([2607:f8b0:4003:c01::22c]:36351)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1YcZlC-0001qk-W2; Mon, 30 Mar 2015 09:29:47 -0400
-Received: by wiaa2 with SMTP id a2so129889379wia.0;
-	Mon, 30 Mar 2015 06:29:46 -0700 (PDT)
+	(envelope-from <laurent.desnogues@gmail.com>)
+	id 1YcWQ2-0000qu-5V; Mon, 30 Mar 2015 05:55:42 -0400
+Received: by obbps3 with SMTP id ps3so3783160obb.3;
+	Mon, 30 Mar 2015 02:55:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=N2g3pbgvbJIpg5y9fz0ePKF0QBHbiWdyFFN1pchmPgM=;
-	b=gHoHfFr0QyWEhW6KePXLy4gw7RErWbiD+rEc4m3FcjChrpR1xZVigKCICJw9XRRVKr
-	H7YecDNWWqpD8NgSBZqrQpOA6ysw4wKzHj8rJA/VwC8gpuvnKCAQN98o4SKTgfRUw9z3
-	7YEOnbW2EVoLFyw/YZGCP/wxrW20m4t3PYal57GKAiMhIqBoJdcmqRqrvreCYI8GLuk+
-	osLgzYycDCo56Xy9E+5/yERt2W7b4Ka41Sfo+jTVfg4WouIlcT4rrruPMfhy1ZWOQ3d6
-	JT0WbCqGPAnbm3KQdofUvZ/TDl2x8kZfO3slkfnTybNx5WThxRBOgT3IGEhFJiZOMGw6
-	Wt+A==
-X-Received: by 10.180.75.243 with SMTP id f19mr22494369wiw.94.1427722185574;
-	Mon, 30 Mar 2015 06:29:45 -0700 (PDT)
-Received: from localhost (host109-158-220-195.range109-158.btcentralplus.com.
-	[109.158.220.195])
-	by mx.google.com with ESMTPSA id a10sm11481523wjy.0.2015.03.30.06.29.43
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 30 Mar 2015 06:29:43 -0700 (PDT)
-Date: Mon, 30 Mar 2015 14:29:41 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Message-ID: <20150330132941.GK25181@stefanha-thinkpad.redhat.com>
-References: <1426298416-884-1-git-send-email-zhaoshenglong@huawei.com>
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=EDPNrEjox14OoLbRPU37gCuMYrmvez4f8bhbrcI+MqU=;
+	b=wQYsQtF7Fw9td1GF1yqM3YJYkafbaWyGqc059ardVN8O6w/MncmvwL3vpQZzUtYtWl
+	lskozBa/0xOr9nnkapEBGGIklvL2V4sMznWwK1E6rLdbBd/URIMaHcM7BR5D4nu8bCdi
+	vfCd/Tk8esixxeJ4vm4uxtyzHBdYsnzc50ej4iTHqgCIBcxVLn5Wik3pjhGWUTRCRKdS
+	T71PK6WgoD9Ng1vS2hNBnNkMMiFXk70zNsqGamXqxkmXe5v4z/5HV9hZDCortTCiz+6S
+	1bZmeoCmoH/iZEEJbd/FH+4/lCrZd46vdhCpOvTuway2DW6OdKUBqI7nf7IPLQC4yBW0
+	zL7A==
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="opg8F0UgoHELSI+9"
-Content-Disposition: inline
-In-Reply-To: <1426298416-884-1-git-send-email-zhaoshenglong@huawei.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.182.87.74 with SMTP id v10mr25808677obz.50.1427709341300;
+	Mon, 30 Mar 2015 02:55:41 -0700 (PDT)
+Received: by 10.182.53.195 with HTTP; Mon, 30 Mar 2015 02:55:41 -0700 (PDT)
+In-Reply-To: <20150327210932.GA17458@flamenco>
+References: <55156FFE.9050806@twiddle.net> <87y4mibw94.fsf@linaro.org>
+	<20150327210932.GA17458@flamenco>
+Date: Mon, 30 Mar 2015 11:55:41 +0200
+Message-ID: <CABoDooNJXw9gvASSuOwa7LY1Qr5KQu_naSy8e5JpDnfvH06n6w@mail.gmail.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+To: "Emilio G. Cota" <cota@braap.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::230
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com, aneesh.kumar@linux.vnet.ibm.com,
-	pbonzini@redhat.com, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2]
- fsdev/virtfs-proxy-helper: Fix possible overflow
+X-Received-From: 2607:f8b0:4003:c01::22c
+X-Mailman-Approved-At: Mon, 30 Mar 2015 09:44:45 -0400
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: optimise memory layout
+	of TCGTemp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,61 +58,152 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Mar 2015 13:29:54 -0000
+X-List-Received-Date: Mon, 30 Mar 2015 09:55:48 -0000
 
+Hello,
 
---opg8F0UgoHELSI+9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, Mar 27, 2015 at 10:09 PM, Emilio G. Cota <cota@braap.org> wrote:
+> On Fri, Mar 27, 2015 at 09:55:03 +0000, Alex Benn=C3=A9e wrote:
+>> Have you been able to measure any performance improvement with these new
+>> structures? In theory, if aligned with cache lines, performance should
+>> improve but real numbers would be nice.
+>
+> I haven't benchmarked anything, which makes me very uneasy. All
+> I've checked is that the system boots, and FWIW I appreciate no
+> difference in boot time.
+>
+> Is there a benchmark suite to test TCG changes?
+>
+> Until proper benchmarking I wouldn't want to see this merged. For now I
+> propose to merge the initial change (remove 8-byte hole in 64-bit),
+> which is uncontroversial.
 
-On Sat, Mar 14, 2015 at 10:00:16AM +0800, Shannon Zhao wrote:
-> It's detected by coverity. As max of sockaddr_un.sun_path is
-> sizeof(helper.sun_path), should check the length of source
-> and use strncpy instead of strcpy.
->=20
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> ---
->     v1->v2: Still use strcpy [Paolo]
-> ---
->  fsdev/virtfs-proxy-helper.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> index bf2e5f3..13fe032 100644
-> --- a/fsdev/virtfs-proxy-helper.c
-> +++ b/fsdev/virtfs-proxy-helper.c
-> @@ -738,6 +738,7 @@ static int proxy_socket(const char *path, uid_t uid, =
-gid_t gid)
->          return -1;
+I tested the patch attached to your mail and saw no performance
+difference on an ARM image booting Linux and then running
+Sunspider with Google v8.  I also tested on one of the 176.gcc
+inputs with QEMU ARM user mode and again saw no difference.
+
+Thanks,
+
+Laurent
+
+>> > The appended adds macros to prevent us from mistakenly overflowing
+>> > the bitfields when more elements are added to the corresponding
+>> > enums/macros.
+>>
+>> I can see the defines but I can't see any checks. Should we be able to
+>> do a compile time check if TCG_TYPE_COUNT doesn't fit into
+>> TCG_TYPE_NR_BITS?
+>
+>> > +#define TEMP_VAL_NR_BITS 2
+>>
+>> A similar compile time check could be added here.
+>
+> Ack, addressed below.
+>
+> On Fri, Mar 27, 2015 at 07:58:06 -0700, Richard Henderson wrote:
+>> On 03/25/2015 12:50 PM, Emilio G. Cota wrote:
+>> > +#define TCG_TYPE_NR_BITS 1
+>>
+>> I'd rather you moved TCG_TYPE_COUNT out of the enum and into a define.  =
+Perhaps
+>> even as (1 << TCG_TYPE_NR_BITS).
+> (snip)
+>> > +#define TEMP_VAL_NR_BITS 2
+>>
+>> And make this an enumeration.
+>>
+>> >  typedef struct TCGTemp {
+> (snip)
+>> > +    unsigned int base_type:TCG_TYPE_NR_BITS;
+>> > +    unsigned int type:TCG_TYPE_NR_BITS;
+>>
+>> And do *not* change these from the enumeration to an unsigned int.
+>>
+>> I know why you did this -- to keep the compiler from warning that the TC=
+GType
+>> enum didn't fit in the bitfield, because of TCG_TYPE_COUNT being an enum=
+erator,
+>> rather than an unrelated number.  Except that's exactly the warning we w=
+ant to
+>> keep, on the off-chance that someone modifies the enums without modifyin=
+g the
+>> _NR_BITS defines.
+>
+> Agreed, please see below.
+>
+> Thanks,
+>
+>                 E.
+>
+> [No signoff due to lack of provable perf improvement, see above.]
+>
+> diff --git a/tcg/tcg.h b/tcg/tcg.h
+> index add7f75..afd3f94 100644
+> --- a/tcg/tcg.h
+> +++ b/tcg/tcg.h
+> @@ -193,7 +193,6 @@ typedef struct TCGPool {
+>  typedef enum TCGType {
+>      TCG_TYPE_I32,
+>      TCG_TYPE_I64,
+> -    TCG_TYPE_COUNT, /* number of different types */
+>
+>      /* An alias for the size of the host register.  */
+>  #if TCG_TARGET_REG_BITS =3D=3D 32
+> @@ -217,6 +216,10 @@ typedef enum TCGType {
+>  #endif
+>  } TCGType;
+>
+> +/* used for bitfield packing to save space */
+> +#define TCG_TYPE_NR_BITS       1
+> +#define TCG_TYPE_COUNT         BIT(TCG_TYPE_NR_BITS)
+> +
+>  /* Constants for qemu_ld and qemu_st for the Memory Operation field.  */
+>  typedef enum TCGMemOp {
+>      MO_8     =3D 0,
+> @@ -417,20 +420,21 @@ static inline TCGCond tcg_high_cond(TCGCond c)
 >      }
-> =20
-> +    g_assert(strlen(path) < sizeof(proxy.sun_path));
->      sock =3D socket(AF_UNIX, SOCK_STREAM, 0);
-
-path is user input.  While the assertion check silences Coverity, it is
-not suitable for input validation.  Users expect a graceful exit with an
-error message, not an assertion failure if the given path is too long.
-
-I will send a patch.
-
-Stefan
-
---opg8F0UgoHELSI+9
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJVGU/FAAoJEJykq7OBq3PIPU0IAKKAskU2JS35Y+dxYw5Mx7es
-U8hfsBVi6lDae2s/0RRW/NmeUAu5HbFWSCt6Z3IqGoz3uHYJ8dnm4TqKtmf1Ciza
-p5G3Gs9WFq6zvn3RrXDgVcIw80F34RJcoQUKahUqdfhRCymVOqKUmlrDyS0pkThK
-T5Nt6beISzRd7pG8wx58nxYHjz3URHtUPWPRXmS7E+IHQstofKYSdQOpwpJr86bz
-KFNqA6w6YzFf4ug/qc+iBfAjA8AK50WOI02tFbg+afyIKaUEzfgnHXhGECNwvy19
-KYNGlczQksaHIzvRPsFJqakHVp0oX+Y4k86PPA6OFjmBJ1FgQiIytFV2G6CUI0Q=
-=aos+
------END PGP SIGNATURE-----
-
---opg8F0UgoHELSI+9--
+>  }
+>
+> -#define TEMP_VAL_DEAD  0
+> -#define TEMP_VAL_REG   1
+> -#define TEMP_VAL_MEM   2
+> -#define TEMP_VAL_CONST 3
+> +typedef enum TCGTempVal {
+> +    TEMP_VAL_DEAD,
+> +    TEMP_VAL_REG,
+> +    TEMP_VAL_MEM,
+> +    TEMP_VAL_CONST,
+> +} TCGTempVal;
+> +
+> +#define TEMP_VAL_NR_BITS 2
+>
+> -/* XXX: optimize memory layout */
+>  typedef struct TCGTemp {
+> -    TCGType base_type;
+> -    TCGType type;
+> -    int val_type;
+> -    int reg;
+> -    tcg_target_long val;
+> -    int mem_reg;
+> -    intptr_t mem_offset;
+> +    unsigned int reg:8;
+> +    unsigned int mem_reg:8;
+> +    TCGTempVal val_type:TEMP_VAL_NR_BITS;
+> +    TCGType base_type:TCG_TYPE_NR_BITS;
+> +    TCGType type:TCG_TYPE_NR_BITS;
+>      unsigned int fixed_reg:1;
+>      unsigned int mem_coherent:1;
+>      unsigned int mem_allocated:1;
+> @@ -438,6 +442,9 @@ typedef struct TCGTemp {
+>                                    basic blocks. Otherwise, it is not
+>                                    preserved across basic blocks. */
+>      unsigned int temp_allocated:1; /* never used for code gen */
+> +
+> +    tcg_target_long val;
+> +    intptr_t mem_offset;
+>      const char *name;
+>  } TCGTemp;
+>
+>
 
