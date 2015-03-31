@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yd1E4-0006it-Dr
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Mar 2015 14:49:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56963)
+	id 1Yd1E5-0006kg-Ie
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Mar 2015 14:49:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1E2-0006ij-Ig
-	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:49:23 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1E4-0006ir-4V
+	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:49:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1Dx-0005oi-GN
-	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:49:22 -0400
-Received: from e36.co.us.ibm.com ([32.97.110.154]:56049)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1Dx-0005ox-HR
+	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:49:24 -0400
+Received: from e33.co.us.ibm.com ([32.97.110.151]:60976)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1Dx-0005oD-97
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd1Dx-0005oW-92
 	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:49:17 -0400
 Received: from /spool/local
-	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	by e33.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
 	Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Tue, 31 Mar 2015 12:49:15 -0600
-Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
-	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
+	Tue, 31 Mar 2015 12:49:16 -0600
+Received: from d03dlp03.boulder.ibm.com (9.17.202.179)
+	by e33.co.us.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
 	Tue, 31 Mar 2015 12:49:14 -0600
-Received: from b03cxnp08028.gho.boulder.ibm.com
-	(b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
-	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id C2D231FF001E;
-	Tue, 31 Mar 2015 12:40:24 -0600 (MDT)
+Received: from b03cxnp08026.gho.boulder.ibm.com
+	(b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+	by d03dlp03.boulder.ibm.com (Postfix) with ESMTP id 4D85A19D8041;
+	Tue, 31 Mar 2015 12:40:20 -0600 (MDT)
 Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
-	by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t2VIn2Lq36110542; Tue, 31 Mar 2015 11:49:02 -0700
+	by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t2VInI2h44237024; Tue, 31 Mar 2015 11:49:18 -0700
 Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
 	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
-	id t2VInDAV008685; Tue, 31 Mar 2015 12:49:13 -0600
+	id t2VInDLB008751; Tue, 31 Mar 2015 12:49:13 -0600
 Received: from k-d941e-10.watson.ibm.com (dhcp-9-2-140-32.watson.ibm.com
 	[9.2.140.32])
 	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t2VInCSj008636; Tue, 31 Mar 2015 12:49:12 -0600
+	t2VInCSk008636; Tue, 31 Mar 2015 12:49:13 -0600
 From: Stefan Berger <stefanb@linux.vnet.ibm.com>
 To: qemu-trivial@nongnu.org
-Date: Tue, 31 Mar 2015 14:49:09 -0400
-Message-Id: <1427827750-610946-1-git-send-email-stefanb@linux.vnet.ibm.com>
+Date: Tue, 31 Mar 2015 14:49:10 -0400
+Message-Id: <1427827750-610946-2-git-send-email-stefanb@linux.vnet.ibm.com>
 X-Mailer: git-send-email 1.9.3
+In-Reply-To: <1427827750-610946-1-git-send-email-stefanb@linux.vnet.ibm.com>
+References: <1427827750-610946-1-git-send-email-stefanb@linux.vnet.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15033118-0021-0000-0000-0000098B887A
+x-cbid: 15033118-0009-0000-0000-000009CDB838
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 32.97.110.154
+X-Received-From: 32.97.110.151
 Cc: qemu-devel@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH 1/2] tpm: Cast 64bit variables to int when
-	used in DPRINTF
+Subject: [Qemu-trivial] [PATCH 2/2] tpm: Modify DPRINTF to enable -Wformat
+	checking
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,56 +61,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Mar 2015 18:49:23 -0000
+X-List-Received-Date: Tue, 31 Mar 2015 18:49:25 -0000
 
-Cast 64bit variables to int when used in DPRINTF. They only contain
-32bit of data.
+Modify DPRINTF to always enable -Wformat checking.
 
 Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 ---
- hw/tpm/tpm_tis.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/tpm/tpm_passthrough.c | 16 +++++++---------
+ hw/tpm/tpm_tis.c         | 14 ++++++--------
+ 2 files changed, 13 insertions(+), 17 deletions(-)
 
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+index 2a45071..73ca906 100644
+--- a/hw/tpm/tpm_passthrough.c
++++ b/hw/tpm/tpm_passthrough.c
+@@ -34,15 +34,13 @@
+ #include "sysemu/tpm_backend_int.h"
+ #include "tpm_tis.h"
+ 
+-/* #define DEBUG_TPM */
+-
+-#ifdef DEBUG_TPM
+-#define DPRINTF(fmt, ...) \
+-    do { fprintf(stderr, fmt, ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) \
+-    do { } while (0)
+-#endif
++#define DEBUG_TPM 0
++
++#define DPRINTF(fmt, ...) do { \
++    if (DEBUG_TPM) { \
++        fprintf(stderr, fmt, ## __VA_ARGS__); \
++    } \
++} while (0);
+ 
+ #define TYPE_TPM_PASSTHROUGH "tpm-passthrough"
+ #define TPM_PASSTHROUGH(obj) \
 diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
-index 815c8ea..cb9c7c8 100644
+index cb9c7c8..4b6d601 100644
 --- a/hw/tpm/tpm_tis.c
 +++ b/hw/tpm/tpm_tis.c
-@@ -421,7 +421,7 @@ static void tpm_tis_dump_state(void *opaque, hwaddr addr)
+@@ -30,15 +30,13 @@
+ #include "qemu-common.h"
+ #include "qemu/main-loop.h"
  
-     for (idx = 0; regs[idx] != 0xfff; idx++) {
-         DPRINTF("tpm_tis: 0x%04x : 0x%08x\n", regs[idx],
--                (uint32_t)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
-+                (int)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
-     }
+-/*#define DEBUG_TIS */
++#define DEBUG_TIS 0
  
-     DPRINTF("tpm_tis: read offset   : %d\n"
-@@ -555,7 +555,7 @@ static uint64_t tpm_tis_mmio_read(void *opaque, hwaddr addr,
-         val >>= shift;
-     }
+-#ifdef DEBUG_TIS
+-#define DPRINTF(fmt, ...) \
+-    do { fprintf(stderr, fmt, ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) \
+-    do { } while (0)
+-#endif
++#define DPRINTF(fmt, ...) do { \
++    if (DEBUG_TIS) { \
++        printf(fmt, ## __VA_ARGS__); \
++    } \
++} while (0);
  
--    DPRINTF("tpm_tis:  read.%u(%08x) = %08x\n", size, (int)addr, (uint32_t)val);
-+    DPRINTF("tpm_tis:  read.%u(%08x) = %08x\n", size, (int)addr, (int)val);
- 
-     return val;
- }
-@@ -578,7 +578,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
-     uint16_t len;
-     uint32_t mask = (size == 1) ? 0xff : ((size == 2) ? 0xffff : ~0);
- 
--    DPRINTF("tpm_tis: write.%u(%08x) = %08x\n", size, (int)addr, (uint32_t)val);
-+    DPRINTF("tpm_tis: write.%u(%08x) = %08x\n", size, (int)addr, (int)val);
- 
-     if (locty == 4 && !hw_access) {
-         DPRINTF("tpm_tis: Access to locality 4 only allowed from hardware\n");
-@@ -815,7 +815,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
-             /* drop the byte */
-         } else {
-             DPRINTF("tpm_tis: Data to send to TPM: %08x (size=%d)\n",
--                    val, size);
-+                    (int)val, size);
-             if (tis->loc[locty].state == TPM_TIS_STATE_READY) {
-                 tis->loc[locty].state = TPM_TIS_STATE_RECEPTION;
-                 tpm_tis_sts_set(&tis->loc[locty],
+ /* whether the STS interrupt is supported */
+ #define RAISE_STS_IRQ
 -- 
 1.9.3
 
