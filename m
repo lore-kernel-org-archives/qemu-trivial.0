@@ -1,39 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yd02B-0006Ec-D4
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Mar 2015 13:33:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40452)
+	id 1Yd0WC-0000s4-4H
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Mar 2015 14:04:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47076)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Yd029-0006BH-05
-	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 13:33:01 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd0W9-0000oV-G8
+	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:04:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Yd028-00007T-5A
-	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 13:33:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35296)
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd0W0-0004WY-F5
+	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:04:01 -0400
+Received: from e31.co.us.ibm.com ([32.97.110.149]:52195)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1Yd023-00006B-4s; Tue, 31 Mar 2015 13:32:55 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t2VHWqZs015722
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 31 Mar 2015 13:32:53 -0400
-Received: from localhost (ovpn-113-153.phx2.redhat.com [10.3.113.153])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t2VHWpnB023912; Tue, 31 Mar 2015 13:32:52 -0400
-Date: Tue, 31 Mar 2015 13:32:51 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20150331133251.5be10dd6@redhat.com>
-Organization: Red Hat
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1Yd0W0-0004WI-7c
+	for qemu-trivial@nongnu.org; Tue, 31 Mar 2015 14:03:52 -0400
+Received: from /spool/local
+	by e31.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Tue, 31 Mar 2015 12:03:51 -0600
+Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
+	by e31.co.us.ibm.com (192.168.1.131) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 31 Mar 2015 12:03:49 -0600
+Received: from b03cxnp08027.gho.boulder.ibm.com
+	(b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id DCD2B3E40047;
+	Tue, 31 Mar 2015 12:03:48 -0600 (MDT)
+Received: from d03av04.boulder.ibm.com (d03av04.boulder.ibm.com [9.17.195.170])
+	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t2VI3mRg35586098; Tue, 31 Mar 2015 11:03:48 -0700
+Received: from d03av04.boulder.ibm.com (loopback [127.0.0.1])
+	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
+	id t2VI3mwd002391; Tue, 31 Mar 2015 12:03:48 -0600
+Received: from k-d941e-10.watson.ibm.com (dhcp-9-2-140-32.watson.ibm.com
+	[9.2.140.32])
+	by d03av04.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t2VI3lc5002322; Tue, 31 Mar 2015 12:03:48 -0600
+Message-ID: <551AE183.10609@linux.vnet.ibm.com>
+Date: Tue, 31 Mar 2015 14:03:47 -0400
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+To: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
+References: <1427814318-541552-1-git-send-email-stefanb@linux.vnet.ibm.com>
+	<551AD054.40802@redhat.com>
+In-Reply-To: <551AD054.40802@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15033118-8236-0000-0000-00000A7A9D1F
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, eblake@redhat.com, armbru@redhat.com
-Subject: [Qemu-trivial] [PATCH] balloon: improve error msg when adding
-	second device
+X-Received-From: 32.97.110.149
+Cc: qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tpm_tis: fix format for
+	64bit variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,97 +66,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Mar 2015 17:33:01 -0000
+X-List-Received-Date: Tue, 31 Mar 2015 18:04:02 -0000
 
-A VM supports only one balloon device, but due to several changes
-in infrastructure the error message got messed up when trying
-to add a second device. Fix it.
+On 03/31/2015 12:50 PM, Eric Blake wrote:
+> On 03/31/2015 09:05 AM, Stefan Berger wrote:
+>> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+>> ---
+>>   hw/tpm/tpm_tis.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Before this fix
+Then let me withdraw this one and fix it as you suggested now.
 
-Command-line:
-
-qemu-qmp: -device virtio-balloon-pci,id=balloon0: Another balloon device already registered
-qemu-qmp: -device virtio-balloon-pci,id=balloon0: Adding balloon handler failed
-qemu-qmp: -device virtio-balloon-pci,id=balloon0: Device 'virtio-balloon-pci' could not be initialized
-
-HMP:
-
-Another balloon device already registered
-Adding balloon handler failed
-Device 'virtio-balloon-pci' could not be initialized
-
-QMP:
-
-{ "execute": "device_add", "arguments": { "driver": "virtio-balloon-pci", "id": "balloon0" } }
-{
-	"error": {
-		"class": "GenericError",
-		"desc": "Adding balloon handler failed"
-	}
-}
-
-After this fix
-
-Command-line:
-
-qemu-qmp: -device virtio-balloon-pci,id=balloon0: Only one balloon device is supported
-qemu-qmp: -device virtio-balloon-pci,id=balloon0: Device 'virtio-balloon-pci' could not be initialized
-
-HMP:
-
-(qemu) device_add virtio-balloon-pci,id=balloon0
-Only one balloon device is supported
-Device 'virtio-balloon-pci' could not be initialized
-(qemu)
-
-QMP:
-
-{ "execute": "device_add",
-          "arguments": { "driver": "virtio-balloon-pci", "id": "balloon0" } }
-{
-    "error": {
-        "class": "GenericError",
-        "desc": "Only one balloon device is supported"
-    }
-}
-
-Signed-off-by: Luiz Capitulino <lcapitulino@redhat.com>
----
-
-I think this can go through in via -trivial. I also think this
-is so simple and useful that it could be merged during freeze.
-
- balloon.c                  | 1 -
- hw/virtio/virtio-balloon.c | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/balloon.c b/balloon.c
-index 70c00f5..c7033e3 100644
---- a/balloon.c
-+++ b/balloon.c
-@@ -58,7 +58,6 @@ int qemu_add_balloon_handler(QEMUBalloonEvent *event_func,
-         /* We're already registered one balloon handler.  How many can
-          * a guest really have?
-          */
--        error_report("Another balloon device already registered");
-         return -1;
-     }
-     balloon_event_fn = event_func;
-diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
-index 95b0643..484c3c3 100644
---- a/hw/virtio/virtio-balloon.c
-+++ b/hw/virtio/virtio-balloon.c
-@@ -383,7 +383,7 @@ static void virtio_balloon_device_realize(DeviceState *dev, Error **errp)
-                                    virtio_balloon_stat, s);
- 
-     if (ret < 0) {
--        error_setg(errp, "Adding balloon handler failed");
-+        error_setg(errp, "Only one balloon device is supported");
-         virtio_cleanup(vdev);
-         return;
-     }
--- 
-1.9.3
+     Stefan
 
 
