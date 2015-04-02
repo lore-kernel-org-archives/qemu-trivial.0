@@ -1,39 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YdVcq-0007Te-MI
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Apr 2015 23:17:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52642)
+	id 1YdaxK-000404-L0
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Apr 2015 04:58:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1YdVck-0007Ju-Hd
-	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 23:16:58 -0400
+	(envelope-from <stefanha@gmail.com>) id 1YdaxI-0003xU-HE
+	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 04:58:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1YdVcg-0007ru-FV
-	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 23:16:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36081)
+	(envelope-from <stefanha@gmail.com>) id 1YdaxH-0001vy-Qu
+	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 04:58:28 -0400
+Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:38709)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1YdVcW-0007qo-9w; Wed, 01 Apr 2015 23:16:40 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t323GbKQ010948
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 1 Apr 2015 23:16:38 -0400
-Received: from localhost (vpn1-6-114.pek2.redhat.com [10.72.6.114])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t323Gac9022014; Wed, 1 Apr 2015 23:16:36 -0400
-Date: Thu, 2 Apr 2015 11:16:35 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20150402031634.GB15412@fam-t430.nay.redhat.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1YdaxD-0001uh-LI; Thu, 02 Apr 2015 04:58:23 -0400
+Received: by wibgn9 with SMTP id gn9so97206569wib.1;
+	Thu, 02 Apr 2015 01:58:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=azDnWYk6Bd+6Cc+RNZ1ZeNqG+FcT3xGW5Y4DJRUnNRs=;
+	b=lSQmKqLoFVx7XC1wl4UaI3aBPG2Y35KS1LtMxbeDgz1jPO2X3zmNsxJYNSd6Phy6Wa
+	VRrBDuh1oNmyeOredyR/1iHfm+vkazJ+gboGADm2Z7+1nVM+k8ShpFRQECmcfYWzemBa
+	oolWXPr0xMrZxuQic6/w0FqlMM4ffJ0cKdvdbovPSb2Tfxy5QhTH4FOtpyKBxu++xbnW
+	MoF0hY0V/MNXJ64VxtpoBjiYRQQsBk6kt96cux2MP43CLGjcXsLMdIYUn6zMiJYLDsUh
+	GY778Rr2OYvO3h+VP9OswKI5FuIM7uaqu8RS8UkCZyJq7N1FBqUhnzvNp6BQqDc6bIZF
+	CU/Q==
+X-Received: by 10.194.110.69 with SMTP id hy5mr93842633wjb.121.1427965102919; 
+	Thu, 02 Apr 2015 01:58:22 -0700 (PDT)
+Received: from localhost (host109-158-220-195.range109-158.btcentralplus.com.
+	[109.158.220.195]) by mx.google.com with ESMTPSA id
+	dn7sm29058502wid.12.2015.04.02.01.58.20
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 02 Apr 2015 01:58:22 -0700 (PDT)
+Date: Thu, 2 Apr 2015 09:58:18 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Ed Maste <emaste@freebsd.org>
+Message-ID: <20150402085818.GD20229@stefanha-thinkpad.redhat.com>
 References: <1427911118-21905-1-git-send-email-emaste@freebsd.org>
-	<551C3CB7.2030308@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="x4pBfXISqBoDm8sr"
 Content-Disposition: inline
-In-Reply-To: <551C3CB7.2030308@weilnetz.de>
+In-Reply-To: <1427911118-21905-1-git-send-email-emaste@freebsd.org>
 User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::233
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Use $(MAKE) for recursive
 	make
@@ -48,42 +59,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Apr 2015 03:16:58 -0000
+X-List-Received-Date: Thu, 02 Apr 2015 08:58:29 -0000
 
-On Wed, 04/01 20:45, Stefan Weil wrote:
-> Am 01.04.2015 um 19:58 schrieb Ed Maste:
-> >On BSDs "make" is typically BSD make, while "gmake" is GNU make.
-> >
-> >Signed-off-by: Ed Maste <emaste@freebsd.org>
-> >---
-> >  Makefile | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> >diff --git a/Makefile b/Makefile
-> >index 88bce56..ee40397 100644
-> >--- a/Makefile
-> >+++ b/Makefile
-> >@@ -331,8 +331,8 @@ distclean: clean
-> >  	rm -rf $$d || exit 1 ; \
-> >          done
-> >  	rm -Rf .sdk
-> >-	if test -f pixman/config.log; then make -C pixman distclean; fi
-> >-	if test -f dtc/version_gen.h; then make $(DTC_MAKE_ARGS) clean; fi
-> >+	if test -f pixman/config.log; then $(MAKE) -C pixman distclean; fi
-> >+	if test -f dtc/version_gen.h; then $(MAKE) $(DTC_MAKE_ARGS) clean; fi
-> >  KEYMAPS=da     en-gb  et  fr     fr-ch  is  lt  modifiers  no  pt-br  sv \
-> >  ar      de     en-us  fi  fr-be  hr     it  lv  nl         pl  ru     th \
-> 
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
-> 
-> 
 
-One more occasion below:
+--x4pBfXISqBoDm8sr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-	$(INSTALLER): $(SRC_PATH)/qemu.nsi
-		make install prefix=${INSTDIR}
+On Wed, Apr 01, 2015 at 01:58:38PM -0400, Ed Maste wrote:
+> On BSDs "make" is typically BSD make, while "gmake" is GNU make.
+>=20
+> Signed-off-by: Ed Maste <emaste@freebsd.org>
+> ---
+>  Makefile | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-But this is already helpful:
+Same on Solaris, if I remember correctly.
 
-Reviewed-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--x4pBfXISqBoDm8sr
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJVHQSqAAoJEJykq7OBq3PInN4H/1HQYR5unaoRtZDAWTG48Mxc
+/Ne3cTQ6XGvkZ/qR5fxLG4w9UFvGKU/pVi0I+eS7c3mRIyUOwj+6p/qDfjl2dBKT
+3GqdcFtGQxwJYkdZuXDSlMSlP69dGO+e2cpetSAcRYzCdvFWVfu9kfBKlrHxQhOV
+hNI3zjKL7da0hGMBXpPKgd6bZxK6FkPj7JaceHa0WjDB1ZVxejwpjFS2jxEq2ngC
+R98OQxmJiG3wRWeUTnr6nTkwKne2W0Xlhzip5Zba/yX/WKsugoKb6ig78E3igvFz
+rKfd8atSUUZ3eH06aK6HzvxoAOj9I0OFyeTi8VcEE53Ub06r1buOtTV44gBgvKo=
+=/33n
+-----END PGP SIGNATURE-----
+
+--x4pBfXISqBoDm8sr--
 
