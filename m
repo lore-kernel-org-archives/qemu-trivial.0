@@ -1,50 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YdROp-0005Ub-PB
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Apr 2015 18:46:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34302)
+	id 1YdVcq-0007Te-MI
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Apr 2015 23:17:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52642)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YdROm-0005QD-Ml
-	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 18:46:13 -0400
+	(envelope-from <famz@redhat.com>) id 1YdVck-0007Ju-Hd
+	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 23:16:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YdROj-0007ig-E2
-	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 18:46:12 -0400
-Received: from mail-ie0-f181.google.com ([209.85.223.181]:33257)
+	(envelope-from <famz@redhat.com>) id 1YdVcg-0007ru-FV
+	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 23:16:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36081)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YdROj-0007iL-39
-	for qemu-trivial@nongnu.org; Wed, 01 Apr 2015 18:46:09 -0400
-Received: by iebmp1 with SMTP id mp1so48749542ieb.0
-	for <qemu-trivial@nongnu.org>; Wed, 01 Apr 2015 15:46:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=uqMlw2Kg3nqlq3Z5oHRqDdwvgH3Ftd8otp3W8pHtvjE=;
-	b=P9UXBmOqpNEEvrxOw9wfnMDwYyDDUVjucVMSmDtVW5k1Bz3JY0jGGnPUwFxFzE2M5k
-	35JN6SwdAl0GbiAQ5j25gOirC6HcHndgIZypaalrGsDcubnFe/FhU+VFgr9YoHOFsXlX
-	rCcOpNTNukUtQM/U8zVJpdZ8lF5huxd/NeHi8JLqxnNYWmbg9keWkxF1beAfxkPQsDyW
-	Vo6Zx/wVnAF2hdVb/gng0X0qtjEH2hLZgGIodjkP1yGjxOHL8IsL3p0Y/S4taHW44/0k
-	jA6S4GGARu/cxzZgkCf+aanc+FK9RkNFEo+IlloOW+UO3XTlneCOOzmveQoY7qoIegUJ
-	04uQ==
-X-Gm-Message-State: ALoCoQklpr//Cy4e+QbQG5tm/IqJ7TGlTN3WIZsfdZVpInXk8pcRgzKtjSI/5SmyETcV+kNCEX1W
-X-Received: by 10.50.43.197 with SMTP id y5mr9800001igl.14.1427928368392; Wed,
-	01 Apr 2015 15:46:08 -0700 (PDT)
+	(envelope-from <famz@redhat.com>)
+	id 1YdVcW-0007qo-9w; Wed, 01 Apr 2015 23:16:40 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t323GbKQ010948
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 1 Apr 2015 23:16:38 -0400
+Received: from localhost (vpn1-6-114.pek2.redhat.com [10.72.6.114])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t323Gac9022014; Wed, 1 Apr 2015 23:16:36 -0400
+Date: Thu, 2 Apr 2015 11:16:35 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20150402031634.GB15412@fam-t430.nay.redhat.com>
+References: <1427911118-21905-1-git-send-email-emaste@freebsd.org>
+	<551C3CB7.2030308@weilnetz.de>
 MIME-Version: 1.0
-Received: by 10.107.51.201 with HTTP; Wed, 1 Apr 2015 15:45:48 -0700 (PDT)
-In-Reply-To: <551C5FAF.7010303@redhat.com>
-References: <1427911244-22565-1-git-send-email-emaste@freebsd.org>
-	<551C5DE7.70904@redhat.com> <551C5FAF.7010303@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 1 Apr 2015 23:45:48 +0100
-Message-ID: <CAFEAcA-CLb6WNqgxjsys=kfDoTe9KEeNZ8W-7ax=A1dqBVo0eQ@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.223.181
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, John Snow <jsnow@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest: Add assertion that
- required environment variable is set
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <551C3CB7.2030308@weilnetz.de>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Use $(MAKE) for recursive
+	make
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,30 +48,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Apr 2015 22:46:13 -0000
+X-List-Received-Date: Thu, 02 Apr 2015 03:16:58 -0000
 
-On 1 April 2015 at 22:14, Paolo Bonzini <pbonzini@redhat.com> wrote:
->
->
-> On 01/04/2015 23:06, John Snow wrote:
->>
->> if (qemu == NULL) {
->>   fprintf(stderr, "...");
->>   g_assert_not_reached();
->> }
->>
->> Though that does read a little strangely. ("Here's a nice error message
->> for something we are asserting will never happen.")
->
-> Just "exit(1);" then.  :)
->
-> Good idea, this is annoying.
+On Wed, 04/01 20:45, Stefan Weil wrote:
+> Am 01.04.2015 um 19:58 schrieb Ed Maste:
+> >On BSDs "make" is typically BSD make, while "gmake" is GNU make.
+> >
+> >Signed-off-by: Ed Maste <emaste@freebsd.org>
+> >---
+> >  Makefile | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> >diff --git a/Makefile b/Makefile
+> >index 88bce56..ee40397 100644
+> >--- a/Makefile
+> >+++ b/Makefile
+> >@@ -331,8 +331,8 @@ distclean: clean
+> >  	rm -rf $$d || exit 1 ; \
+> >          done
+> >  	rm -Rf .sdk
+> >-	if test -f pixman/config.log; then make -C pixman distclean; fi
+> >-	if test -f dtc/version_gen.h; then make $(DTC_MAKE_ARGS) clean; fi
+> >+	if test -f pixman/config.log; then $(MAKE) -C pixman distclean; fi
+> >+	if test -f dtc/version_gen.h; then $(MAKE) $(DTC_MAKE_ARGS) clean; fi
+> >  KEYMAPS=da     en-gb  et  fr     fr-ch  is  lt  modifiers  no  pt-br  sv \
+> >  ar      de     en-us  fi  fr-be  hr     it  lv  nl         pl  ru     th \
+> 
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+> 
+> 
 
-Also irritating is the way it silently requires
-the binary to have a name in the shape it was
-expecting, which can catch you out if you were
-trying to set it to a wrapper shell script that
-invokes valgrind or something...
+One more occasion below:
 
--- PMM
+	$(INSTALLER): $(SRC_PATH)/qemu.nsi
+		make install prefix=${INSTDIR}
+
+But this is already helpful:
+
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
