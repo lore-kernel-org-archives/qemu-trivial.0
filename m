@@ -1,47 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ydwjf-000678-1x
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2015 04:13:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47028)
+	id 1Ydzcq-0005ci-LF
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2015 07:19:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ydwjc-00063b-DQ
-	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 04:13:49 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Ydzck-0005Wf-UN
+	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ydwjb-0002S3-8o
-	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 04:13:48 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:46981)
+	(envelope-from <peter.maydell@linaro.org>) id 1Ydzca-0008Np-IC
+	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:54 -0400
+Received: from mail-ig0-f179.google.com ([209.85.213.179]:36833)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1YdwjV-0002Qm-LW; Fri, 03 Apr 2015 04:13:41 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	E525211810A5; Fri,  3 Apr 2015 10:13:39 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id XHOyHmcn0UyH; Fri,  3 Apr 2015 10:13:37 +0200 (CEST)
-Received: from [192.168.178.24] (p54AC87CE.dip0.t-ipconnect.de
-	[84.172.135.206])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	0D5511180041; Fri,  3 Apr 2015 10:13:36 +0200 (CEST)
-Message-ID: <551E4BB0.1090407@weilnetz.de>
-Date: Fri, 03 Apr 2015 10:13:36 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Ydzca-0008Nd-ED
+	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:44 -0400
+Received: by igblo3 with SMTP id lo3so4571952igb.1
+	for <qemu-trivial@nongnu.org>; Fri, 03 Apr 2015 04:18:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=hTsxD48HheE4ir50ykANr6Py93fPXt2VDwcIxOcOF0Y=;
+	b=QAlYfoB0Jb00nbwBxRir9FyZkOq5QYEeISD3b4TMCRZYD3m0/t6lktcry1vVV8BINE
+	DwTpQixmsrtqBRuGoR6sWo2fL0+u5b+f1Ig7ZCy4FnIiLW0Phd4xe0pbapP2mCqYsW/q
+	vB+oTq5RQq6N4HJO9l4E3t39AFtvT4OSFQfUyTNx9FXegf7E00rZRSnJx9/UZY+Nkcjm
+	3nlUdGn11XLUDX5K0LUjxxliQfWcZxTLo6w6DcFqJPkxTnwYKkbbM24PDJ2ARJwWPB8z
+	vDXvvHiHEZ3ecZnWg2RXD8Ukd5Os539ni841SRYjuEKuJ14/0EA8ff6Uzn5bmEtUMHTD
+	6UvQ==
+X-Gm-Message-State: ALoCoQmByEpqPyZPPIJ00l7d+j8iaI2YUILzKX2pxW9dsGBUGCAzE3E7HbWcpj3G9yj58fZK2/Uk
+X-Received: by 10.50.137.37 with SMTP id qf5mr3827330igb.1.1428059923635; Fri,
+	03 Apr 2015 04:18:43 -0700 (PDT)
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>
-References: <5518E291.6020708@weilnetz.de>
-	<1428019673-920-1-git-send-email-cota@braap.org>
-In-Reply-To: <1428019673-920-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, Laurent Desnogues <laurent.desnogues@gmail.com>,
-	=?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH v2] tcg: optimise memory layout of TCGTemp
+Received: by 10.107.51.201 with HTTP; Fri, 3 Apr 2015 04:18:23 -0700 (PDT)
+In-Reply-To: <CAPyFy2B=rTfz+6JyVmufLTOxsddXyJWDD0wAGROqbodeNicUtQ@mail.gmail.com>
+References: <1427911244-22565-1-git-send-email-emaste@freebsd.org>
+	<551C5DE7.70904@redhat.com> <551C5FAF.7010303@redhat.com>
+	<CAFEAcA-CLb6WNqgxjsys=kfDoTe9KEeNZ8W-7ax=A1dqBVo0eQ@mail.gmail.com>
+	<CAPyFy2B=rTfz+6JyVmufLTOxsddXyJWDD0wAGROqbodeNicUtQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Apr 2015 12:18:23 +0100
+Message-ID: <CAFEAcA8nyMCnYOAhjfYxJ1q6Ei_04L5Jr2ERrMUQaE+KCqKDRw@mail.gmail.com>
+To: Ed Maste <emaste@freebsd.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.179
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest: Add assertion that
+ required environment variable is set
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,114 +58,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Apr 2015 08:13:49 -0000
+X-List-Received-Date: Fri, 03 Apr 2015 11:18:59 -0000
 
-Am 03.04.2015 um 02:07 schrieb Emilio G. Cota:
-> This brings down the size of the struct from 56 to 32 bytes on 64-bit,
-> and to 20 bytes on 32-bit. This leads to memory savings:
+On 2 April 2015 at 20:31, Ed Maste <emaste@freebsd.org> wrote:
+> On 1 April 2015 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Also irritating is the way it silently requires
+>> the binary to have a name in the shape it was
+>> expecting, which can catch you out if you were
+>> trying to set it to a wrapper shell script that
+>> invokes valgrind or something...
 >
-> Before:
-> $ find . -name 'tcg.o' | xargs size
->     text    data     bss     dec     hex filename
->    41131   29800      88   71019   1156b ./aarch64-softmmu/tcg/tcg.o
->    37969   29416      96   67481   10799 ./x86_64-linux-user/tcg/tcg.o
->    39354   28816      96   68266   10aaa ./arm-linux-user/tcg/tcg.o
->    40802   29096      88   69986   11162 ./arm-softmmu/tcg/tcg.o
->    39417   29672      88   69177   10e39 ./x86_64-softmmu/tcg/tcg.o
->
-> After:
-> $ find . -name 'tcg.o' | xargs size
->     text    data     bss     dec     hex filename
->    40883   29800      88   70771   11473 ./aarch64-softmmu/tcg/tcg.o
->    37473   29416      96   66985   105a9 ./x86_64-linux-user/tcg/tcg.o
->    38858   28816      96   67770   108ba ./arm-linux-user/tcg/tcg.o
->    40554   29096      88   69738   1106a ./arm-softmmu/tcg/tcg.o
->    39169   29672      88   68929   10d41 ./x86_64-softmmu/tcg/tcg.o
->
-> Note that using an entire byte for some enums that need less than
-> that wastes a few bits (noticeable in 32 bits, where we use
-> 20 bytes instead of 16) but avoids extraction code, which overall
-> is a win--I've tested several variations of the patch, and the appended
-> is the best performer for OpenSSL's bntest by a very small margin:
->
-> Before:
-> $ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
-> [...]
->   Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
->
->        10538.479833 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.38% )
->                 772 context-switches          #    0.073 K/sec                    ( +-  2.03% )
->                   0 cpu-migrations            #    0.000 K/sec                    ( +-100.00% )
->               2,207 page-faults               #    0.209 K/sec                    ( +-  0.08% )
->        10.552871687 seconds time elapsed                                          ( +-  0.39% )
->
-> After:
-> $ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
->   Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
->
->        10459.968847 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.30% )
->                 739 context-switches          #    0.071 K/sec                    ( +-  1.71% )
->                   0 cpu-migrations            #    0.000 K/sec                    ( +- 68.14% )
->               2,204 page-faults               #    0.211 K/sec                    ( +-  0.10% )
->        10.473900411 seconds time elapsed                                          ( +-  0.30% )
->
-> Suggested-by: Stefan Weil <sw@weilnetz.de>
-> Suggested-by: Richard Henderson <rth@twiddle.net>
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->   tcg/tcg.h | 26 ++++++++++++++------------
->   1 file changed, 14 insertions(+), 12 deletions(-)
->
-> diff --git a/tcg/tcg.h b/tcg/tcg.h
-> index add7f75..7f95132 100644
-> --- a/tcg/tcg.h
-> +++ b/tcg/tcg.h
-> @@ -417,20 +417,19 @@ static inline TCGCond tcg_high_cond(TCGCond c)
->       }
->   }
->   
-> -#define TEMP_VAL_DEAD  0
-> -#define TEMP_VAL_REG   1
-> -#define TEMP_VAL_MEM   2
-> -#define TEMP_VAL_CONST 3
-> +typedef enum TCGTempVal {
-> +    TEMP_VAL_DEAD,
-> +    TEMP_VAL_REG,
-> +    TEMP_VAL_MEM,
-> +    TEMP_VAL_CONST,
-> +} TCGTempVal;
->   
-> -/* XXX: optimize memory layout */
->   typedef struct TCGTemp {
-> -    TCGType base_type;
-> -    TCGType type;
-> -    int val_type;
-> -    int reg;
-> -    tcg_target_long val;
-> -    int mem_reg;
-> -    intptr_t mem_offset;
-> +    unsigned int reg:8;
-> +    unsigned int mem_reg:8;
-> +    TCGTempVal val_type:8;
-> +    TCGType base_type:8;
-> +    TCGType type:8;
->       unsigned int fixed_reg:1;
->       unsigned int mem_coherent:1;
->       unsigned int mem_allocated:1;
-> @@ -438,6 +437,9 @@ typedef struct TCGTemp {
->                                     basic blocks. Otherwise, it is not
->                                     preserved across basic blocks. */
->       unsigned int temp_allocated:1; /* never used for code gen */
-> +
-> +    tcg_target_long val;
-> +    intptr_t mem_offset;
->       const char *name;
->   } TCGTemp;
+> I don't really have enough context to propose a good user-facing
+> message with a tip for manually executing this, so hopefully someone
+> else can provide one. I just noticed one other instance that already
+> had an assertion on getenv("QTEST_QEMU_BINARY") being non-null.
 
-Thanks for doing those tests. There are some smaller cosmetics which
-might be changed, too (uint8_t for unsigned int with 8 bit, bool for
-boolean bit values), but I think your patch is a real gain.
+Yes, that was just me venting about something that caught me
+out in the past rather than review comment on this patch :-)
+Sorry for any confusion.
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
+-- PMM
 
