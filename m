@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YdkqC-0004PA-3P
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Apr 2015 15:31:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37124)
+	id 1Ydp9M-0002kT-I2
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Apr 2015 20:07:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1Ydkq9-0004Ku-JQ
-	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 15:31:46 -0400
+	(envelope-from <cota@braap.org>) id 1Ydp9K-0002kA-2T
+	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 20:07:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>) id 1Ydkq8-0004bO-KY
-	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 15:31:45 -0400
-Received: from mail-ie0-x235.google.com ([2607:f8b0:4001:c03::235]:34972)
+	(envelope-from <cota@braap.org>) id 1Ydp9C-00009H-03
+	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 20:07:50 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:57501)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carpeddiem@gmail.com>)
-	id 1Ydkq3-0004ah-T1; Thu, 02 Apr 2015 15:31:39 -0400
-Received: by ierf6 with SMTP id f6so76818944ier.2;
-	Thu, 02 Apr 2015 12:31:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type;
-	bh=kdSjIQb3G0GCRBvmPyci7/n4O/f3cat1moGNnpMOOzc=;
-	b=vON8G5tc1h4DrqxZrvAAhZuYecj1hU/L9qOUdxAXIH0+wgeLLUjgo10jgiCowFsrXQ
-	L/l15TmpRPXZTqkBLIG0s18voF+7ZjDjSZjY2gSjSUJtag5APikABxw4guP9JRehmiwe
-	DJojtDVz3XBnuy8JmsJRqQgfyXAFYD29R8qaNkxefQ6CRE2Q4E5yHPKjBHe5VbTeVIO3
-	lILfwEs7nRmszGIWczsL32vx4ZP0cdlM/EKauc0GBgmIZUYbLGorm+dHCa96/uGnSmni
-	3j5dRApGvUM+XaCybmCLry5R0ExMA5RmD3FSYz4pW4jBig6AsWj902kiPV81Zyzd7Jdt
-	UM+g==
-X-Received: by 10.107.13.136 with SMTP id 130mr36704825ion.70.1428003099021;
-	Thu, 02 Apr 2015 12:31:39 -0700 (PDT)
-MIME-Version: 1.0
-Sender: carpeddiem@gmail.com
-Received: by 10.107.158.19 with HTTP; Thu, 2 Apr 2015 12:31:18 -0700 (PDT)
-In-Reply-To: <CAFEAcA-CLb6WNqgxjsys=kfDoTe9KEeNZ8W-7ax=A1dqBVo0eQ@mail.gmail.com>
-References: <1427911244-22565-1-git-send-email-emaste@freebsd.org>
-	<551C5DE7.70904@redhat.com> <551C5FAF.7010303@redhat.com>
-	<CAFEAcA-CLb6WNqgxjsys=kfDoTe9KEeNZ8W-7ax=A1dqBVo0eQ@mail.gmail.com>
-From: Ed Maste <emaste@freebsd.org>
-Date: Thu, 2 Apr 2015 15:31:18 -0400
-X-Google-Sender-Auth: Sun9NoJ8vzcrPASIvwa_e23162Y
-Message-ID: <CAPyFy2B=rTfz+6JyVmufLTOxsddXyJWDD0wAGROqbodeNicUtQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4001:c03::235
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest: Add assertion that
- required environment variable is set
+	(envelope-from <cota@braap.org>) id 1Ydp9B-000090-Sl
+	for qemu-trivial@nongnu.org; Thu, 02 Apr 2015 20:07:41 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.nyi.internal (Postfix) with ESMTP id 885AE20AD3
+	for <qemu-trivial@nongnu.org>; Thu,  2 Apr 2015 20:07:36 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute3.internal (MEProxy); Thu, 02 Apr 2015 20:07:39 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
+	:date:from:in-reply-to:message-id:references:subject:to
+	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=2stWy7RI/AIwDeOzK30sMTinnz8
+	=; b=O20gJtcNVXb2MP847usA2oOgiQUjKnjpxsBmK6CigwwkQbsN0ZUlMHeLfvY
+	MVAkCmtXnBtt2meSnmFqd0M3lCE5ZeWt44toR6kVLIDPwyRrDhgV01b/h03Ybeix
+	IpjcfUGPSZEf2US2YPJQYWtkSsWHpIk5okPh1kwj32Y+lleA=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:in-reply-to:message-id
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=2stW
+	y7RI/AIwDeOzK30sMTinnz8=; b=AFgwZQ65a/zmefN7QFd/nsxVXqYifb/gyQ/H
+	2gDLdisfjoPV1PHrFxjWz6NuWmGi7hOEGsbbRjtKcyzioZOSqkGZyA/vG7ngano+
+	ereY0bOR+Zt468vhWkRlQJfYy5AfWoHg5ywNIEk6B3nFXikvy/ObzLr/4m5N+gth
+	bB2dP9w=
+X-Sasl-enc: pmaBgFnwA6J5/OwqjwobnaH4DqYNEWbuBQ7ZR1PKoLDi 1428019659
+Received: from localhost (unknown [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 95A28C0001D;
+	Thu,  2 Apr 2015 20:07:39 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: Stefan Weil <sw@weilnetz.de>
+Date: Thu,  2 Apr 2015 20:07:53 -0400
+Message-Id: <1428019673-920-1-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <5518E291.6020708@weilnetz.de>
+References: <5518E291.6020708@weilnetz.de>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.111.4.26
+Cc: qemu-trivial@nongnu.org, Laurent Desnogues <laurent.desnogues@gmail.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH v2] tcg: optimise memory layout of TCGTemp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,34 +59,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Apr 2015 19:31:46 -0000
+X-List-Received-Date: Fri, 03 Apr 2015 00:07:51 -0000
 
-On 1 April 2015 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 1 April 2015 at 22:14, Paolo Bonzini <pbonzini@redhat.com> wrote:
->> On 01/04/2015 23:06, John Snow wrote:
->>>
->>> if (qemu == NULL) {
->>>   fprintf(stderr, "...");
->>>   g_assert_not_reached();
->>> }
->>>
->>> Though that does read a little strangely. ("Here's a nice error message
->>> for something we are asserting will never happen.")
->>
->> Just "exit(1);" then.  :)
->>
->> Good idea, this is annoying.
->
-> Also irritating is the way it silently requires
-> the binary to have a name in the shape it was
-> expecting, which can catch you out if you were
-> trying to set it to a wrapper shell script that
-> invokes valgrind or something...
+This brings down the size of the struct from 56 to 32 bytes on 64-bit,
+and to 20 bytes on 32-bit. This leads to memory savings:
 
-I don't really have enough context to propose a good user-facing
-message with a tip for manually executing this, so hopefully someone
-else can provide one. I just noticed one other instance that already
-had an assertion on getenv("QTEST_QEMU_BINARY") being non-null.
+Before:
+$ find . -name 'tcg.o' | xargs size
+   text    data     bss     dec     hex filename
+  41131   29800      88   71019   1156b ./aarch64-softmmu/tcg/tcg.o
+  37969   29416      96   67481   10799 ./x86_64-linux-user/tcg/tcg.o
+  39354   28816      96   68266   10aaa ./arm-linux-user/tcg/tcg.o
+  40802   29096      88   69986   11162 ./arm-softmmu/tcg/tcg.o
+  39417   29672      88   69177   10e39 ./x86_64-softmmu/tcg/tcg.o
 
--Ed
+After:
+$ find . -name 'tcg.o' | xargs size
+   text    data     bss     dec     hex filename
+  40883   29800      88   70771   11473 ./aarch64-softmmu/tcg/tcg.o
+  37473   29416      96   66985   105a9 ./x86_64-linux-user/tcg/tcg.o
+  38858   28816      96   67770   108ba ./arm-linux-user/tcg/tcg.o
+  40554   29096      88   69738   1106a ./arm-softmmu/tcg/tcg.o
+  39169   29672      88   68929   10d41 ./x86_64-softmmu/tcg/tcg.o
+
+Note that using an entire byte for some enums that need less than
+that wastes a few bits (noticeable in 32 bits, where we use
+20 bytes instead of 16) but avoids extraction code, which overall
+is a win--I've tested several variations of the patch, and the appended
+is the best performer for OpenSSL's bntest by a very small margin:
+
+Before:
+$ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
+[...]
+ Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
+
+      10538.479833 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.38% )
+               772 context-switches          #    0.073 K/sec                    ( +-  2.03% )
+                 0 cpu-migrations            #    0.000 K/sec                    ( +-100.00% )
+             2,207 page-faults               #    0.209 K/sec                    ( +-  0.08% )
+      10.552871687 seconds time elapsed                                          ( +-  0.39% )
+
+After:
+$ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
+ Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
+
+      10459.968847 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.30% )
+               739 context-switches          #    0.071 K/sec                    ( +-  1.71% )
+                 0 cpu-migrations            #    0.000 K/sec                    ( +- 68.14% )
+             2,204 page-faults               #    0.211 K/sec                    ( +-  0.10% )
+      10.473900411 seconds time elapsed                                          ( +-  0.30% )
+
+Suggested-by: Stefan Weil <sw@weilnetz.de>
+Suggested-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+---
+ tcg/tcg.h | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index add7f75..7f95132 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -417,20 +417,19 @@ static inline TCGCond tcg_high_cond(TCGCond c)
+     }
+ }
+ 
+-#define TEMP_VAL_DEAD  0
+-#define TEMP_VAL_REG   1
+-#define TEMP_VAL_MEM   2
+-#define TEMP_VAL_CONST 3
++typedef enum TCGTempVal {
++    TEMP_VAL_DEAD,
++    TEMP_VAL_REG,
++    TEMP_VAL_MEM,
++    TEMP_VAL_CONST,
++} TCGTempVal;
+ 
+-/* XXX: optimize memory layout */
+ typedef struct TCGTemp {
+-    TCGType base_type;
+-    TCGType type;
+-    int val_type;
+-    int reg;
+-    tcg_target_long val;
+-    int mem_reg;
+-    intptr_t mem_offset;
++    unsigned int reg:8;
++    unsigned int mem_reg:8;
++    TCGTempVal val_type:8;
++    TCGType base_type:8;
++    TCGType type:8;
+     unsigned int fixed_reg:1;
+     unsigned int mem_coherent:1;
+     unsigned int mem_allocated:1;
+@@ -438,6 +437,9 @@ typedef struct TCGTemp {
+                                   basic blocks. Otherwise, it is not
+                                   preserved across basic blocks. */
+     unsigned int temp_allocated:1; /* never used for code gen */
++
++    tcg_target_long val;
++    intptr_t mem_offset;
+     const char *name;
+ } TCGTemp;
+ 
+-- 
+1.9.1
+
 
