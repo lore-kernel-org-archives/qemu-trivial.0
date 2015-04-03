@@ -1,52 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ydzcq-0005ci-LF
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2015 07:19:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54697)
+	id 1Ye2QC-0006vM-GC
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Apr 2015 10:18:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33719)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ydzck-0005Wf-UN
-	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:58 -0400
+	(envelope-from <rth7680@gmail.com>) id 1Ye2QA-0006v2-Ap
+	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 10:18:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ydzca-0008Np-IC
-	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:54 -0400
-Received: from mail-ig0-f179.google.com ([209.85.213.179]:36833)
+	(envelope-from <rth7680@gmail.com>) id 1Ye2Q3-000505-TI
+	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 10:18:06 -0400
+Received: from mail-qg0-x233.google.com ([2607:f8b0:400d:c04::233]:35130)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Ydzca-0008Nd-ED
-	for qemu-trivial@nongnu.org; Fri, 03 Apr 2015 07:18:44 -0400
-Received: by igblo3 with SMTP id lo3so4571952igb.1
-	for <qemu-trivial@nongnu.org>; Fri, 03 Apr 2015 04:18:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=hTsxD48HheE4ir50ykANr6Py93fPXt2VDwcIxOcOF0Y=;
-	b=QAlYfoB0Jb00nbwBxRir9FyZkOq5QYEeISD3b4TMCRZYD3m0/t6lktcry1vVV8BINE
-	DwTpQixmsrtqBRuGoR6sWo2fL0+u5b+f1Ig7ZCy4FnIiLW0Phd4xe0pbapP2mCqYsW/q
-	vB+oTq5RQq6N4HJO9l4E3t39AFtvT4OSFQfUyTNx9FXegf7E00rZRSnJx9/UZY+Nkcjm
-	3nlUdGn11XLUDX5K0LUjxxliQfWcZxTLo6w6DcFqJPkxTnwYKkbbM24PDJ2ARJwWPB8z
-	vDXvvHiHEZ3ecZnWg2RXD8Ukd5Os539ni841SRYjuEKuJ14/0EA8ff6Uzn5bmEtUMHTD
-	6UvQ==
-X-Gm-Message-State: ALoCoQmByEpqPyZPPIJ00l7d+j8iaI2YUILzKX2pxW9dsGBUGCAzE3E7HbWcpj3G9yj58fZK2/Uk
-X-Received: by 10.50.137.37 with SMTP id qf5mr3827330igb.1.1428059923635; Fri,
-	03 Apr 2015 04:18:43 -0700 (PDT)
+	(envelope-from <rth7680@gmail.com>)
+	id 1Ye2Q3-0004zx-Ow; Fri, 03 Apr 2015 10:17:59 -0400
+Received: by qgej70 with SMTP id j70so7566070qge.2;
+	Fri, 03 Apr 2015 07:17:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=BOu4/zK9UHW5PrP04JcS/wgb+n2HJhJSLueQUYShXvE=;
+	b=sPU114f0fOJRUlrBzxSLBvIx4eiQiZANJHUwbsfvmlUfSQa5a9s6j9hUIb/vZTOb/p
+	bxSVvdbVpbQ+MXSE+kgt1aiTA+qsIk17K0XROIn60uBGQI4Vo59YF9x9+Baz/p7SAFUB
+	vQjDfAtKFW3kcsrWqTzNbk5evmHwx7IUmuQg3u8tUfGhOLUpoNJpeoPA0dEbAmPpcFW4
+	WyyqYUbAN49ZYQo938PbDyGKq8lFVmLAoHI/IrtF/PeBxRrxUqiQfQAVidsUv4twi37S
+	7zIr9UQ1DegIwSeiPIMdfbPC7efZl59x0j+kNnSnHSkp/WDMo6fNugzj20+vHxmFOKH/
+	39fw==
+X-Received: by 10.140.87.10 with SMTP id q10mr2772750qgd.67.1428070678545;
+	Fri, 03 Apr 2015 07:17:58 -0700 (PDT)
+Received: from pike.twiddle.home
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by mx.google.com with ESMTPSA id 133sm3647260qhu.15.2015.04.03.07.17.56
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 03 Apr 2015 07:17:57 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Message-ID: <551EA111.5040808@twiddle.net>
+Date: Fri, 03 Apr 2015 07:17:53 -0700
+From: Richard Henderson <rth@twiddle.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
 MIME-Version: 1.0
-Received: by 10.107.51.201 with HTTP; Fri, 3 Apr 2015 04:18:23 -0700 (PDT)
-In-Reply-To: <CAPyFy2B=rTfz+6JyVmufLTOxsddXyJWDD0wAGROqbodeNicUtQ@mail.gmail.com>
-References: <1427911244-22565-1-git-send-email-emaste@freebsd.org>
-	<551C5DE7.70904@redhat.com> <551C5FAF.7010303@redhat.com>
-	<CAFEAcA-CLb6WNqgxjsys=kfDoTe9KEeNZ8W-7ax=A1dqBVo0eQ@mail.gmail.com>
-	<CAPyFy2B=rTfz+6JyVmufLTOxsddXyJWDD0wAGROqbodeNicUtQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Apr 2015 12:18:23 +0100
-Message-ID: <CAFEAcA8nyMCnYOAhjfYxJ1q6Ei_04L5Jr2ERrMUQaE+KCqKDRw@mail.gmail.com>
-To: Ed Maste <emaste@freebsd.org>
+To: "Emilio G. Cota" <cota@braap.org>, Stefan Weil <sw@weilnetz.de>
+References: <5518E291.6020708@weilnetz.de>
+	<1428019673-920-1-git-send-email-cota@braap.org>
+In-Reply-To: <1428019673-920-1-git-send-email-cota@braap.org>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.179
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest: Add assertion that
- required environment variable is set
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c04::233
+Cc: qemu-trivial@nongnu.org, Laurent Desnogues <laurent.desnogues@gmail.com>,
+	=?UTF-8?B?QWxleCBCZW5u?= =?UTF-8?B?w6ll?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2] tcg: optimise memory layout of TCGTemp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,24 +62,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Apr 2015 11:18:59 -0000
+X-List-Received-Date: Fri, 03 Apr 2015 14:18:07 -0000
 
-On 2 April 2015 at 20:31, Ed Maste <emaste@freebsd.org> wrote:
-> On 1 April 2015 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
->> Also irritating is the way it silently requires
->> the binary to have a name in the shape it was
->> expecting, which can catch you out if you were
->> trying to set it to a wrapper shell script that
->> invokes valgrind or something...
->
-> I don't really have enough context to propose a good user-facing
-> message with a tip for manually executing this, so hopefully someone
-> else can provide one. I just noticed one other instance that already
-> had an assertion on getenv("QTEST_QEMU_BINARY") being non-null.
+On 04/02/2015 05:07 PM, Emilio G. Cota wrote:
+> After:
+> $ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
+>  Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
+> 
+>       10459.968847 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.30% )
+>                739 context-switches          #    0.071 K/sec                    ( +-  1.71% )
+>                  0 cpu-migrations            #    0.000 K/sec                    ( +- 68.14% )
+>              2,204 page-faults               #    0.211 K/sec                    ( +-  0.10% )
+>       10.473900411 seconds time elapsed                                          ( +-  0.30% )
+> 
+> Suggested-by: Stefan Weil <sw@weilnetz.de>
+> Suggested-by: Richard Henderson <rth@twiddle.net>
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
+> ---
+>  tcg/tcg.h | 26 ++++++++++++++------------
+>  1 file changed, 14 insertions(+), 12 deletions(-)
 
-Yes, that was just me venting about something that caught me
-out in the past rather than review comment on this patch :-)
-Sorry for any confusion.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
--- PMM
+I'll put this in a queue for 2.4.
+
+
+r~
 
