@@ -1,41 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YfUy2-0006Jg-Rp
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Apr 2015 10:59:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52998)
+	id 1YfvcH-0005de-FO
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Apr 2015 15:26:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59579)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1YfUxw-0006JQ-K2
-	for qemu-trivial@nongnu.org; Tue, 07 Apr 2015 10:59:04 -0400
+	(envelope-from <cmchao@gmail.com>) id 1YfuKv-0001WP-PB
+	for qemu-trivial@nongnu.org; Wed, 08 Apr 2015 14:04:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1YfUxt-00005a-Dk
-	for qemu-trivial@nongnu.org; Tue, 07 Apr 2015 10:59:00 -0400
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:48600 helo=socrates.bennee.com)
+	(envelope-from <cmchao@gmail.com>) id 1YfuKv-0001JF-2R
+	for qemu-trivial@nongnu.org; Wed, 08 Apr 2015 14:04:25 -0400
+Received: from mail-pd0-x22a.google.com ([2607:f8b0:400e:c02::22a]:35376)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1YfUxt-000051-7W; Tue, 07 Apr 2015 10:58:57 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1YfW5h-0008NZ-2b; Tue, 07 Apr 2015 18:11:05 +0200
-References: <5518E291.6020708@weilnetz.de>
-	<1428019673-920-1-git-send-email-cota@braap.org>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Emilio G. Cota" <cota@braap.org>
-In-reply-to: <1428019673-920-1-git-send-email-cota@braap.org>
-Date: Tue, 07 Apr 2015 15:59:02 +0100
-Message-ID: <877fto3ryh.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Laurent Desnogues <laurent.desnogues@gmail.com>,
-	qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH v2] tcg: optimise memory layout of TCGTemp
+	(envelope-from <cmchao@gmail.com>)
+	id 1YfuKq-0001HY-LE; Wed, 08 Apr 2015 14:04:20 -0400
+Received: by pddn5 with SMTP id n5so123209572pdd.2;
+	Wed, 08 Apr 2015 11:04:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=9w+7sh03ISz89uE8dq5zibhxat7to4uwjgTrWs9RXX8=;
+	b=oZh7EEQmyp7vHbBI68FeogxoCseqT/+7vCIw1+ZGmR5uRmcKN3udzZKiqcTcJMcG93
+	CiYnif09aX+FurlYzKZdL896msr8kWogU+JB5lVBNDWsGrdoCMnUZ+4NyxNVHJsjaysc
+	4wfM8llKoRGW+t08GKYOxiad9kEHavnVEoASqp55zimlVuXWQQ5LBwbdwRyyDb0VPMAJ
+	NM5/MIo/4S4Kk4YfPGrgu869zlzalLGMGBWcYIwfdhMpqT0ySAV7mvg11L9CFhNaOLZk
+	rxG0AM2hMwRedxLKPu05eeGiyviXC5O+m6F6v/dtKcPhDjhB+abJI1jWUUtsrwV8ubQv
+	4tDQ==
+X-Received: by 10.66.232.8 with SMTP id tk8mr47968247pac.5.1428516259034;
+	Wed, 08 Apr 2015 11:04:19 -0700 (PDT)
+Received: from localhost.localdomain (118-167-152-188.dynamic.hinet.net.
+	[118.167.152.188])
+	by mx.google.com with ESMTPSA id w1sm11968593pdp.25.2015.04.08.11.04.17
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 08 Apr 2015 11:04:18 -0700 (PDT)
+From: Chih-Min Chao <cmchao@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  9 Apr 2015 02:04:09 +0800
+Message-Id: <1428516254-23054-1-git-send-email-cmchao@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::22a
+X-Mailman-Approved-At: Wed, 08 Apr 2015 15:26:23 -0400
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH 0/5] fix coding style and use of typedef type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,118 +52,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Apr 2015 14:59:05 -0000
+X-List-Received-Date: Wed, 08 Apr 2015 18:04:27 -0000
+
+    patch 1-2 
+        fix the coding style related to space indent and brance position
+
+    patch 3-5 
+        remove the 'struct' from the type which has been typedef
 
 
-Emilio G. Cota <cota@braap.org> writes:
+Chih-Min Chao (5):
+  bitops : fix coding style
+  ui/vnc : fix coding style
+  ui/vnc : remove 'struct' of 'typedef struct'
+  ui/console : remove 'struct' from 'typedef struct' type
+  hw/display : remove 'struct' from 'typedef QXL struct'
 
-> This brings down the size of the struct from 56 to 32 bytes on 64-bit,
-> and to 20 bytes on 32-bit. This leads to memory savings:
->
-> Before:
-> $ find . -name 'tcg.o' | xargs size
->    text    data     bss     dec     hex filename
->   41131   29800      88   71019   1156b ./aarch64-softmmu/tcg/tcg.o
->   37969   29416      96   67481   10799 ./x86_64-linux-user/tcg/tcg.o
->   39354   28816      96   68266   10aaa ./arm-linux-user/tcg/tcg.o
->   40802   29096      88   69986   11162 ./arm-softmmu/tcg/tcg.o
->   39417   29672      88   69177   10e39 ./x86_64-softmmu/tcg/tcg.o
->
-> After:
-> $ find . -name 'tcg.o' | xargs size
->    text    data     bss     dec     hex filename
->   40883   29800      88   70771   11473 ./aarch64-softmmu/tcg/tcg.o
->   37473   29416      96   66985   105a9 ./x86_64-linux-user/tcg/tcg.o
->   38858   28816      96   67770   108ba ./arm-linux-user/tcg/tcg.o
->   40554   29096      88   69738   1106a ./arm-softmmu/tcg/tcg.o
->   39169   29672      88   68929   10d41 ./x86_64-softmmu/tcg/tcg.o
->
-> Note that using an entire byte for some enums that need less than
-> that wastes a few bits (noticeable in 32 bits, where we use
-> 20 bytes instead of 16) but avoids extraction code, which overall
-> is a win--I've tested several variations of the patch, and the appended
-> is the best performer for OpenSSL's bntest by a very small margin:
->
-> Before:
-> $ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
-> [...]
->  Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
->
->       10538.479833 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.38% )
->                772 context-switches          #    0.073 K/sec                    ( +-  2.03% )
->                  0 cpu-migrations            #    0.000 K/sec                    ( +-100.00% )
->              2,207 page-faults               #    0.209 K/sec                    ( +-  0.08% )
->       10.552871687 seconds time elapsed                                          ( +-  0.39% )
->
-> After:
-> $ taskset -c 0 perf stat -r 15 -- x86_64-linux-user/qemu-x86_64 img/bntest-x86_64 >/dev/null
->  Performance counter stats for 'x86_64-linux-user/qemu-x86_64 img/bntest-x86_64' (15 runs):
->
->       10459.968847 task-clock (msec)         #    0.999 CPUs utilized            ( +-  0.30% )
->                739 context-switches          #    0.071 K/sec                    ( +-  1.71% )
->                  0 cpu-migrations            #    0.000 K/sec                    ( +- 68.14% )
->              2,204 page-faults               #    0.211 K/sec                    ( +-  0.10% )
->       10.473900411 seconds time elapsed
->                ( +-  0.30% )
-
-I'll take that as a win condition ;-)
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
->
-> Suggested-by: Stefan Weil <sw@weilnetz.de>
-> Suggested-by: Richard Henderson <rth@twiddle.net>
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  tcg/tcg.h | 26 ++++++++++++++------------
->  1 file changed, 14 insertions(+), 12 deletions(-)
->
-> diff --git a/tcg/tcg.h b/tcg/tcg.h
-> index add7f75..7f95132 100644
-> --- a/tcg/tcg.h
-> +++ b/tcg/tcg.h
-> @@ -417,20 +417,19 @@ static inline TCGCond tcg_high_cond(TCGCond c)
->      }
->  }
->  
-> -#define TEMP_VAL_DEAD  0
-> -#define TEMP_VAL_REG   1
-> -#define TEMP_VAL_MEM   2
-> -#define TEMP_VAL_CONST 3
-> +typedef enum TCGTempVal {
-> +    TEMP_VAL_DEAD,
-> +    TEMP_VAL_REG,
-> +    TEMP_VAL_MEM,
-> +    TEMP_VAL_CONST,
-> +} TCGTempVal;
->  
-> -/* XXX: optimize memory layout */
->  typedef struct TCGTemp {
-> -    TCGType base_type;
-> -    TCGType type;
-> -    int val_type;
-> -    int reg;
-> -    tcg_target_long val;
-> -    int mem_reg;
-> -    intptr_t mem_offset;
-> +    unsigned int reg:8;
-> +    unsigned int mem_reg:8;
-> +    TCGTempVal val_type:8;
-> +    TCGType base_type:8;
-> +    TCGType type:8;
->      unsigned int fixed_reg:1;
->      unsigned int mem_coherent:1;
->      unsigned int mem_allocated:1;
-> @@ -438,6 +437,9 @@ typedef struct TCGTemp {
->                                    basic blocks. Otherwise, it is not
->                                    preserved across basic blocks. */
->      unsigned int temp_allocated:1; /* never used for code gen */
-> +
-> +    tcg_target_long val;
-> +    intptr_t mem_offset;
->      const char *name;
->  } TCGTemp;
+ hw/display/qxl.c       |  2 +-
+ include/qemu/bitops.h  | 61 +++++++++++++++++++++++++-------------------------
+ ui/console.c           |  4 ++--
+ ui/spice-display.c     |  8 +++----
+ ui/vnc-auth-vencrypt.c |  8 ++++---
+ ui/vnc-tls.c           | 10 ++++-----
+ ui/vnc-ws.c            |  4 ++--
+ ui/vnc.c               |  2 +-
+ 8 files changed, 51 insertions(+), 48 deletions(-)
 
 -- 
-Alex Bennée
+1.9.1
+
 
