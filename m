@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YfvcI-0005g9-9O
+	id 1YfvcI-0005fX-26
 	for mharc-qemu-trivial@gnu.org; Wed, 08 Apr 2015 15:26:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59690)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cmchao@gmail.com>) id 1YfuL2-0001hz-9Z
+	(envelope-from <cmchao@gmail.com>) id 1YfuL2-0001hx-B0
 	for qemu-trivial@nongnu.org; Wed, 08 Apr 2015 14:04:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cmchao@gmail.com>) id 1YfuKz-0001MC-0m
+	(envelope-from <cmchao@gmail.com>) id 1YfuKz-0001MJ-93
 	for qemu-trivial@nongnu.org; Wed, 08 Apr 2015 14:04:32 -0400
-Received: from mail-pd0-x231.google.com ([2607:f8b0:400e:c02::231]:35987)
+Received: from mail-pd0-x234.google.com ([2607:f8b0:400e:c02::234]:35994)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <cmchao@gmail.com>)
-	id 1YfuKr-0001I5-TE; Wed, 08 Apr 2015 14:04:22 -0400
-Received: by pdea3 with SMTP id a3so123242680pde.3;
-	Wed, 08 Apr 2015 11:04:20 -0700 (PDT)
+	id 1YfuKx-0001K0-73; Wed, 08 Apr 2015 14:04:27 -0400
+Received: by pdea3 with SMTP id a3so123245482pde.3;
+	Wed, 08 Apr 2015 11:04:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=Ix8Y5K6edrnOio9Ir+0iO+yi7mTXVjVhtesrgAme9v4=;
-	b=Q4paz/I5C3i0HT4mBGXetRQC1279Oi4OHTxVxdvCzJw1nydsnKsMO1zAOHjgcV7O4h
-	DB8DfkFjOYAG8/15IBbYwHqNGqXZ00mwI5xHqEWKISJ+R8EkZFXEilKrQXEiNg8Zk6cS
-	bW/4i7y+VzzUFQuwAooMywQXHbnUHH+Q+IdmwBwa9fJNY7OEZ2VNUgRy1tkMUsXvoxZK
-	nZxFxOR5XyLyxhUg/pyWjzRYthV3UxKXxD7av0aRfuAUHvPidnoRj22F6GQVPjmzsgUd
-	il5WE9dYHfIxeY/FVa/VHlF4O/gM9oBss+yZ16jNgXHoq0tSsGDYv9KjK2pmkow9tBPc
-	u12g==
-X-Received: by 10.66.120.40 with SMTP id kz8mr30076293pab.86.1428516260931;
-	Wed, 08 Apr 2015 11:04:20 -0700 (PDT)
+	bh=M3tus+4psLTTpQM2Pe38ZVuFa4PdCLfM8YxY41tlbeA=;
+	b=idk7JE+zQ07FIvd837uz17ZW+5S5VjRgL7ADzLECqaOE1u29WVjx8AtMZE7Ykbdt7I
+	FnJpbdXmSlcRYLjgjGCGswEekWhRtkYavo2cI4UfNRYzE/O9jQXBkxUUmu7DEcku0IuO
+	Yu8Qi48ZaWKzvtJu9FEsrxwQ4dvczbzNr+iJ+3Fl7NS3gR0dzoGzgdq4H7oroR9YcZQU
+	kKrB0AJgKSYKy9BpQpQY6CaYmx7QNd3k5+cdr7gce2QQSnhFktn8XeddCy01DcJqIMFi
+	Gz0ys8bw7SQ1lslnUMgaOsO7+JGYsVRVyv73XVsCHpUIZb+iXWU8CVMIBNAH4S2mnbj1
+	LEKQ==
+X-Received: by 10.70.49.77 with SMTP id s13mr41033438pdn.120.1428516266559;
+	Wed, 08 Apr 2015 11:04:26 -0700 (PDT)
 Received: from localhost.localdomain (118-167-152-188.dynamic.hinet.net.
 	[118.167.152.188])
-	by mx.google.com with ESMTPSA id w1sm11968593pdp.25.2015.04.08.11.04.19
+	by mx.google.com with ESMTPSA id w1sm11968593pdp.25.2015.04.08.11.04.24
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 08 Apr 2015 11:04:20 -0700 (PDT)
+	Wed, 08 Apr 2015 11:04:25 -0700 (PDT)
 From: Chih-Min Chao <cmchao@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Thu,  9 Apr 2015 02:04:10 +0800
-Message-Id: <1428516254-23054-2-git-send-email-cmchao@gmail.com>
+Date: Thu,  9 Apr 2015 02:04:13 +0800
+Message-Id: <1428516254-23054-5-git-send-email-cmchao@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1428516254-23054-1-git-send-email-cmchao@gmail.com>
 References: <1428516254-23054-1-git-send-email-cmchao@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::231
+X-Received-From: 2607:f8b0:400e:c02::234
 X-Mailman-Approved-At: Wed, 08 Apr 2015 15:26:23 -0400
 Cc: qemu-trivial@nongnu.org, kraxel@redhat.com,
 	Chih-Min Chao <cmchao@gmail.com>
-Subject: [Qemu-trivial] [PATCH 1/5] bitops : fix coding style
+Subject: [Qemu-trivial] [PATCH 4/5] ui/console : remove 'struct' from
+	'typedef struct' type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,147 +58,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 08 Apr 2015 18:04:33 -0000
 
-    don't mix tab and space. The rule is 4 spaces
-
 Signed-off-by: Chih-Min Chao <cmchao@gmail.com>
 ---
- include/qemu/bitops.h | 61 ++++++++++++++++++++++++++-------------------------
- 1 file changed, 31 insertions(+), 30 deletions(-)
+ ui/console.c       | 4 ++--
+ ui/spice-display.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
-index 90ca8df..8abdcf9 100644
---- a/include/qemu/bitops.h
-+++ b/include/qemu/bitops.h
-@@ -20,10 +20,10 @@
- #define BITS_PER_BYTE           CHAR_BIT
- #define BITS_PER_LONG           (sizeof (unsigned long) * BITS_PER_BYTE)
- 
--#define BIT(nr)			(1UL << (nr))
--#define BIT_MASK(nr)		(1UL << ((nr) % BITS_PER_LONG))
--#define BIT_WORD(nr)		((nr) / BITS_PER_LONG)
--#define BITS_TO_LONGS(nr)	DIV_ROUND_UP(nr, BITS_PER_BYTE * sizeof(long))
-+#define BIT(nr)                 (1UL << (nr))
-+#define BIT_MASK(nr)            (1UL << ((nr) % BITS_PER_LONG))
-+#define BIT_WORD(nr)            ((nr) / BITS_PER_LONG)
-+#define BITS_TO_LONGS(nr)       DIV_ROUND_UP(nr, BITS_PER_BYTE * sizeof(long))
- 
- /**
-  * set_bit - Set a bit in memory
-@@ -32,10 +32,10 @@
-  */
- static inline void set_bit(long nr, unsigned long *addr)
- {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
- 
--	*p  |= mask;
-+    *p  |= mask;
+diff --git a/ui/console.c b/ui/console.c
+index b15ca87..d8d268c 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -269,7 +269,7 @@ void graphic_hw_invalidate(QemuConsole *con)
+     }
  }
  
- /**
-@@ -45,10 +45,10 @@ static inline void set_bit(long nr, unsigned long *addr)
-  */
- static inline void clear_bit(long nr, unsigned long *addr)
+-static void ppm_save(const char *filename, struct DisplaySurface *ds,
++static void ppm_save(const char *filename, DisplaySurface *ds,
+                      Error **errp)
  {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
+     int width = pixman_image_get_width(ds->image);
+@@ -1535,7 +1535,7 @@ void dpy_text_update(QemuConsole *con, int x, int y, int w, int h)
+ void dpy_text_resize(QemuConsole *con, int w, int h)
+ {
+     DisplayState *s = con->ds;
+-    struct DisplayChangeListener *dcl;
++    DisplayChangeListener *dcl;
  
--	*p &= ~mask;
-+    *p &= ~mask;
+     if (!qemu_console_is_visible(con)) {
+         return;
+diff --git a/ui/spice-display.c b/ui/spice-display.c
+index 1644185..6767d08 100644
+--- a/ui/spice-display.c
++++ b/ui/spice-display.c
+@@ -715,7 +715,7 @@ static void display_update(DisplayChangeListener *dcl,
  }
  
- /**
-@@ -58,10 +58,10 @@ static inline void clear_bit(long nr, unsigned long *addr)
-  */
- static inline void change_bit(long nr, unsigned long *addr)
+ static void display_switch(DisplayChangeListener *dcl,
+-                           struct DisplaySurface *surface)
++                           DisplaySurface *surface)
  {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
- 
--	*p ^= mask;
-+    *p ^= mask;
- }
- 
- /**
-@@ -71,12 +71,12 @@ static inline void change_bit(long nr, unsigned long *addr)
-  */
- static inline int test_and_set_bit(long nr, unsigned long *addr)
- {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
--	unsigned long old = *p;
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long old = *p;
- 
--	*p = old | mask;
--	return (old & mask) != 0;
-+    *p = old | mask;
-+    return (old & mask) != 0;
- }
- 
- /**
-@@ -86,12 +86,12 @@ static inline int test_and_set_bit(long nr, unsigned long *addr)
-  */
- static inline int test_and_clear_bit(long nr, unsigned long *addr)
- {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
--	unsigned long old = *p;
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long old = *p;
- 
--	*p = old & ~mask;
--	return (old & mask) != 0;
-+    *p = old & ~mask;
-+    return (old & mask) != 0;
- }
- 
- /**
-@@ -101,12 +101,12 @@ static inline int test_and_clear_bit(long nr, unsigned long *addr)
-  */
- static inline int test_and_change_bit(long nr, unsigned long *addr)
- {
--	unsigned long mask = BIT_MASK(nr);
--        unsigned long *p = addr + BIT_WORD(nr);
--	unsigned long old = *p;
-+    unsigned long mask = BIT_MASK(nr);
-+    unsigned long *p = addr + BIT_WORD(nr);
-+    unsigned long old = *p;
- 
--	*p = old ^ mask;
--	return (old & mask) != 0;
-+    *p = old ^ mask;
-+    return (old & mask) != 0;
- }
- 
- /**
-@@ -116,7 +116,7 @@ static inline int test_and_change_bit(long nr, unsigned long *addr)
-  */
- static inline int test_bit(long nr, const unsigned long *addr)
- {
--	return 1UL & (addr[BIT_WORD(nr)] >> (nr & (BITS_PER_LONG-1)));
-+    return 1UL & (addr[BIT_WORD(nr)] >> (nr & (BITS_PER_LONG-1)));
- }
- 
- /**
-@@ -136,7 +136,8 @@ unsigned long find_last_bit(const unsigned long *addr,
-  * @size: The bitmap size in bits
-  */
- unsigned long find_next_bit(const unsigned long *addr,
--				   unsigned long size, unsigned long offset);
-+                            unsigned long size,
-+                            unsigned long offset);
- 
- /**
-  * find_next_zero_bit - find the next cleared bit in a memory region
+     SimpleSpiceDisplay *ssd = container_of(dcl, SimpleSpiceDisplay, dcl);
+     qemu_spice_display_switch(ssd, surface);
 -- 
 1.9.1
 
