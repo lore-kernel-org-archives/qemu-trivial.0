@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YltbG-0004qc-JF
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Apr 2015 02:30:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47535)
+	id 1Ym16e-0003rW-KO
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Apr 2015 10:30:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53933)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YltbD-0004qQ-MJ
-	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 02:30:00 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1Ym16c-0003nq-6U
+	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 10:30:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yltb8-0006ea-Ie
-	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 02:29:59 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36108)
+	(envelope-from <lcapitulino@redhat.com>) id 1Ym16b-0007oF-EY
+	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 10:30:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55022)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YltWC-00055n-GU; Sat, 25 Apr 2015 02:24:48 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3F33242320;
-	Sat, 25 Apr 2015 09:24:47 +0300 (MSK)
-Message-ID: <553B332E.5010800@msgid.tls.msk.ru>
-Date: Sat, 25 Apr 2015 09:24:46 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.6.0
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1Ym16X-0007kP-6D; Sat, 25 Apr 2015 10:30:49 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t3PEUkml018897
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Sat, 25 Apr 2015 10:30:47 -0400
+Received: from localhost (ovpn-113-99.phx2.redhat.com [10.3.113.99])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t3PEUiZm029510; Sat, 25 Apr 2015 10:30:45 -0400
+Date: Sat, 25 Apr 2015 10:30:43 -0400
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20150425103043.67d5859c@redhat.com>
+In-Reply-To: <553B306A.1010808@msgid.tls.msk.ru>
+References: <20150331133251.5be10dd6@redhat.com>
+	<553B306A.1010808@msgid.tls.msk.ru>
+Organization: Red Hat
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1428604359-17067-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1428604359-17067-1-git-send-email-sw@weilnetz.de>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: Kevin Wolf <kwolf@redhat.com>, Alexander Graf <agraf@suse.de>,
-	QEMU Developer <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Jiri Slaby <jslaby@suse.cz>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] misc: Fix new collection of typos
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, qemu-devel@nongnu.org,
+	armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] balloon: improve error msg when adding
+	second device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,13 +49,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Apr 2015 06:30:00 -0000
+X-List-Received-Date: Sat, 25 Apr 2015 14:30:55 -0000
 
-09.04.2015 21:32, Stefan Weil wrote:
-> All of them were reported by codespell.
-> Most typos are in comments, one is in an error message.
+On Sat, 25 Apr 2015 09:12:58 +0300
+Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-Applied to -trivial, thank you!
+> 31.03.2015 20:32, Luiz Capitulino wrote:
+> > A VM supports only one balloon device, but due to several changes
+> > in infrastructure the error message got messed up when trying
+> > to add a second device. Fix it.
+> ...
+> Heh.  Such a huge commit message ;)
+> 
+> Applied to -trivial now.  In the large commit text I missed your
+> comment about the patch is okay to go during the freeze, so doing
+> it after :)
 
-/mjt
+I've applied it to my own tree and posted a pull request already.
 
