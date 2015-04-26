@@ -1,43 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ym16e-0003rW-KO
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Apr 2015 10:30:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53933)
+	id 1YmOgG-0004bP-6f
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Apr 2015 11:41:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Ym16c-0003nq-6U
-	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 10:30:54 -0400
+	(envelope-from <th.huth@gmail.com>) id 1YmMQr-0006j1-IK
+	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 09:17:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1Ym16b-0007oF-EY
-	for qemu-trivial@nongnu.org; Sat, 25 Apr 2015 10:30:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55022)
+	(envelope-from <th.huth@gmail.com>) id 1YmMQq-0001zC-IB
+	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 09:17:13 -0400
+Received: from mail-wi0-f181.google.com ([209.85.212.181]:36265)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1Ym16X-0007kP-6D; Sat, 25 Apr 2015 10:30:49 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t3PEUkml018897
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Sat, 25 Apr 2015 10:30:47 -0400
-Received: from localhost (ovpn-113-99.phx2.redhat.com [10.3.113.99])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t3PEUiZm029510; Sat, 25 Apr 2015 10:30:45 -0400
-Date: Sat, 25 Apr 2015 10:30:43 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150425103043.67d5859c@redhat.com>
-In-Reply-To: <553B306A.1010808@msgid.tls.msk.ru>
-References: <20150331133251.5be10dd6@redhat.com>
-	<553B306A.1010808@msgid.tls.msk.ru>
-Organization: Red Hat
+	(envelope-from <th.huth@gmail.com>)
+	id 1YmMQm-0001yc-Ag; Sun, 26 Apr 2015 09:17:08 -0400
+Received: by wizk4 with SMTP id k4so70539538wiz.1;
+	Sun, 26 Apr 2015 06:17:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=date:from:to:cc:subject:message-id:in-reply-to:references
+	:mime-version:content-type:content-transfer-encoding;
+	bh=MrgcuxHEayvfVNP7k/esWFn1rFCetqtY2t1dWt/eRVs=;
+	b=EFBawbjm2xPXQK+vFoGK/e3DfHSDyCOpTMjKwTw6EBsolzZ+ngdUWsJ9JCiOvCQ3u/
+	3wbeAeh9bqChV7kTuvTZAJ8yfHxHmvDABeP13DnfQTBFlueNC1SMnfF5hLruElRfFZcf
+	UY1yw3gn+yAGSolzgb0frkgT6i+78MYDrUH91+dy4mXPIxdI340kQQz0JgtkPwhnQppH
+	wg6VQqpgiip0Va/Fb0JgWzCccD2VZhdzr3HOK2FXwwu9Zu2qC3+1HerXiLW52eQUQuCD
+	9k81m9uFK5PwI1FQgB8WMXFSlBHsrgRWR9TJQuWyGeFAd7VcXiXjeozrWIy8i2Bo5aLN
+	qhRw==
+X-Received: by 10.180.82.100 with SMTP id h4mr12805232wiy.84.1430054227087;
+	Sun, 26 Apr 2015 06:17:07 -0700 (PDT)
+Received: from tpl530 (p57AEC2C2.dip0.t-ipconnect.de. [87.174.194.194])
+	by mx.google.com with ESMTPSA id r9sm25097808wjo.26.2015.04.26.06.17.05
+	(version=SSLv3 cipher=RC4-SHA bits=128/128);
+	Sun, 26 Apr 2015 06:17:06 -0700 (PDT)
+Date: Sun, 26 Apr 2015 15:17:03 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20150426151703.161075bb@tpl530>
+In-Reply-To: <20150318122235.7eb71f08@oc7435384737.ibm.com>
+References: <20150318122235.7eb71f08@oc7435384737.ibm.com>
+X-Mailer: Claws Mail 3.9.3 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, eblake@redhat.com, qemu-devel@nongnu.org,
-	armbru@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] balloon: improve error msg when adding
-	second device
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.181
+X-Mailman-Approved-At: Sun, 26 Apr 2015 11:41:15 -0400
+Cc: Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: Re: [Qemu-trivial] [PATCH v2 0/7] Remove more unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,21 +58,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Apr 2015 14:30:55 -0000
+X-List-Received-Date: Sun, 26 Apr 2015 13:17:14 -0000
 
-On Sat, 25 Apr 2015 09:12:58 +0300
-Michael Tokarev <mjt@tls.msk.ru> wrote:
+Am Wed, 18 Mar 2015 12:22:35 +0100
+schrieb Thomas Huth <thuth@linux.vnet.ibm.com>:
 
-> 31.03.2015 20:32, Luiz Capitulino wrote:
-> > A VM supports only one balloon device, but due to several changes
-> > in infrastructure the error message got messed up when trying
-> > to add a second device. Fix it.
-> ...
-> Heh.  Such a huge commit message ;)
 > 
-> Applied to -trivial now.  In the large commit text I missed your
-> comment about the patch is okay to go during the freeze, so doing
-> it after :)
+> Here are some more patches to remove completely unused functions
+> from QEMU. Please review carefully, some of the functions might
+> still get usefull in the future again, so if you discover one,
+> please let me know, then I'll remove it from the patch series
+> again.
+> 
+> v2: Changed series according to review comment from v1:
+> - Dropped the patch to remove portio_list_destroy() and
+> portio_list_del()
+> - Keep the ARI functions in the pci patch since they might get useful
+> again
+> 
+> Thomas Huth (7):
+>   migration: Remove unused functions
+>   vmxnet: Remove unused function vmxnet_rx_pkt_get_num_frags()
+>   pci: Remove unused function ich9_d2pbr_init()
+>   monitor: Remove unused functions
+>   usb: Remove unused functions
+>   util: Remove unused functions
+>   Remove various unused functions
 
-I've applied it to my own tree and posted a pull request already.
+Ping! Now that 2.3.0 (congrats!) has been tagged, could somebody
+(Michael via qemu-trivial tree?) please pick up patches 2 to 7? As far
+as I know, there haven't been any complaints about them anymore, so I
+think it should be ok to include them.
+(patch 1 has already been included via the migration tree, so that's
+already fine)
+
+ Cheers,
+  Thomas
 
