@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YmSkt-0007YO-56
-	for mharc-qemu-trivial@gnu.org; Sun, 26 Apr 2015 16:02:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56217)
+	id 1YmSku-0007at-7N
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Apr 2015 16:02:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56234)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1YmRx1-00022w-QK
-	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 15:10:48 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1YmRx2-00023C-99
+	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 15:10:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1YmRx0-0006tM-Vk
-	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 15:10:47 -0400
-Received: from mail-pd0-x22f.google.com ([2607:f8b0:400e:c02::22f]:35085)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1YmRx1-0006ts-GL
+	for qemu-trivial@nongnu.org; Sun, 26 Apr 2015 15:10:48 -0400
+Received: from mail-pa0-x22f.google.com ([2607:f8b0:400e:c03::22f]:35403)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1YmRwv-0006rA-Ki; Sun, 26 Apr 2015 15:10:41 -0400
-Received: by pdbqd1 with SMTP id qd1so104895162pdb.2;
-	Sun, 26 Apr 2015 12:10:39 -0700 (PDT)
+	id 1YmRwz-0006sX-Fc; Sun, 26 Apr 2015 15:10:45 -0400
+Received: by pabtp1 with SMTP id tp1so105432589pab.2;
+	Sun, 26 Apr 2015 12:10:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=vLmofVuAUJSuJsYFCMh0PUH1GWeKPL9IGMPoIMcwEfw=;
-	b=K3lQIYAmzVdGRd1QXGIX1BEV7MXHqv5JD2dM55XY57Ilgbw6H87Kt6nl2KKs+HoXUN
-	TGCmnNVi8g2MHtt13WZWWbIooMNhz874ZYgdX81pEpGPSPQIpyNp+1ze5mPbX0C0GJBg
-	022+R/y5GDROROKVBTbh7phSYoQqlgzELieaVn+B23YkbI9UVoWD0KGH1UtrOvqu9VXp
-	EfhZs5nc+n/XjESq/xnU/6gvQGCb3szaMN7Zsys67lLomKSY6mBZAj5b1X1P6QzJKal/
-	jvQ1y/6pKzbDoXkVZ0Gb1k+bNzL6Pb8YocX6kBmKHgEVLL6py4jg0gw1+sl4f2ZrW7ZB
-	QeEw==
-X-Received: by 10.68.194.6 with SMTP id hs6mr15704006pbc.58.1430075439612;
-	Sun, 26 Apr 2015 12:10:39 -0700 (PDT)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=xgKhn8ifnAwCXsI7m3c30CqPT/VH1NT3nmMh2ZxDCUc=;
+	b=FQ/h++D9rBKDDtf5sMyYDfd5f7PQjwP0Lq7gCpvZmgHuKZDmciabZkDNhpMPvNsK6W
+	dd9jeX7/+6gqC4fSgtAEGvVTnBhXq+YT1tUNKud0mK0PCS5qHy9Z1X8OyWfxMZzTqHKK
+	88lEm+vCLE8LJnArZjvr8TXNqcGpAyEA+R5FZbud1YSE0CLV3LUHbNlTL5DKqY3YryJc
+	a9NYtVEHKlp36bhLbfcxD6K+mNa2nGMQ9eZIlBGPuOOWZFs37Go76ossLcjG/xaso950
+	M5IVDwC5fWHe/5X2SgGpLe7MQxWKrG/w59i8W9FItP++KNQ2WIWW4LUWQDY4boNS6NJS
+	5uMw==
+X-Received: by 10.68.210.46 with SMTP id mr14mr15589162pbc.73.1430075444571;
+	Sun, 26 Apr 2015 12:10:44 -0700 (PDT)
 Received: from pcrost-laptop.hsd1.ca.comcast.net
 	(c-24-5-157-48.hsd1.ca.comcast.net. [24.5.157.48])
 	by mx.google.com with ESMTPSA id
-	ux4sm16997226pbc.61.2015.04.26.12.10.37
+	ux4sm16997226pbc.61.2015.04.26.12.10.43
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 26 Apr 2015 12:10:38 -0700 (PDT)
+	Sun, 26 Apr 2015 12:10:43 -0700 (PDT)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 26 Apr 2015 12:10:18 -0700
-Message-Id: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
+Date: Sun, 26 Apr 2015 12:10:21 -0700
+Message-Id: <1430075424-25975-4-git-send-email-crosthwaite.peter@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
+References: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c02::22f
+X-Received-From: 2607:f8b0:400e:c03::22f
 X-Mailman-Approved-At: Sun, 26 Apr 2015 16:02:16 -0400
 Cc: qemu-trivial@nongnu.org, edgari@xilinx.com,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: [Qemu-trivial] [PATCH microblaze v1 0/6] Microblaze Cleanups
+Subject: [Qemu-trivial] [PATCH microblaze v1 3/6] mb: cpu: Remote unused
+	cpu_get_pc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,29 +58,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Apr 2015 19:10:48 -0000
+X-List-Received-Date: Sun, 26 Apr 2015 19:10:49 -0000
 
-Hi Edgar,
+This function is not used by anything. Remove.
 
-This is some code cleanup of Microblaze. Mainly unused code
-deletion but also code share of the defconfig (P1).
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+---
+ target-microblaze/cpu.h | 5 -----
+ 1 file changed, 5 deletions(-)
 
-Regards,
-Peter
-
-Peter Crosthwaite (6):
-  defconfigs: Piggyback microblazeel on microblaze
-  mb: mmu: Delete flip_um fn prototype
-  mb: cpu: Remote unused cpu_get_pc
-  mb: cpu: Remove unused CC_OP enum
-  mb: cpu: Delete EXCP_NMI
-  mb: cpu: delete unused cpu_interrupts_enabled
-
- default-configs/microblazeel-softmmu.mak | 10 +---------
- target-microblaze/cpu.h                  | 17 -----------------
- target-microblaze/mmu.h                  |  1 -
- 3 files changed, 1 insertion(+), 27 deletions(-)
-
+diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
+index 7d06227..2c18b49 100644
+--- a/target-microblaze/cpu.h
++++ b/target-microblaze/cpu.h
+@@ -333,11 +333,6 @@ static inline int cpu_interrupts_enabled(CPUMBState *env)
+ 
+ #include "exec/cpu-all.h"
+ 
+-static inline target_ulong cpu_get_pc(CPUMBState *env)
+-{
+-    return env->sregs[SR_PC];
+-}
+-
+ static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
+                                         target_ulong *cs_base, int *flags)
+ {
 -- 
 1.9.1
 
