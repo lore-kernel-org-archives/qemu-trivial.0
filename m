@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ymm9v-00046g-9l
+	id 1Ymm9v-00047b-Rj
 	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 12:45:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39306)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9m-0003p4-Cg
+	(envelope-from <cota@braap.org>) id 1Ymm9n-0003r6-7B
 	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001UC-CL
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:18 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:41251)
+	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Ut-Sz
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:19 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:39603)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001TI-8j
+	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Ul-Gk
 	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:13 -0400
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 6673520B4B
-	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 12:45:12 -0400 (EDT)
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailout.nyi.internal (Postfix) with ESMTP id 4EFE120B24
+	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 12:45:13 -0400 (EDT)
 Received: from frontend2 ([10.202.2.161])
-	by compute6.internal (MEProxy); Mon, 27 Apr 2015 12:45:12 -0400
+	by compute1.internal (MEProxy); Mon, 27 Apr 2015 12:45:13 -0400
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
 	:date:from:in-reply-to:message-id:references:subject:to
-	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=DnlbAyz5R3nK4yquBXcoXO4PeIQ
-	=; b=zRts/55JjKx8LMjXGrj44Tu6ko7iDIrpa6VCMTOei5aio5NEVaxi2oxGXw1
-	+a7CDqfMSHwpeS3/P4iMv/L86J/fNmfMz74Uy/nkJg5eXKvb0E1wO/jO86tC36BT
-	m1ZUo92En68rQPDkl9ugYQw7o0gMa4ev6RTbH1naJTrRSpZo=
+	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=Iu3kK4WVvNuVl8ktdBQ/9OOXhws
+	=; b=DOP6yfSbuKyWwvciyIq/KHdIs30YPqJt6HVYYbttPPNveB/XNm3EIzyqsbe
+	VxAhyLOJFYEJk4Lp3Nsk6Q4+fSjvmpPOcZCvm3Juuc7+fwJaq8OXxd7d7/GAgFWE
+	H+NCLv0kiFaGu2MLKhiz6uO2XRKQfm/Xe57UxAbS0nAph9bw=
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:date:from:in-reply-to:message-id
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=Dnlb
-	Ayz5R3nK4yquBXcoXO4PeIQ=; b=mt/27GoEBaMf22LmxOtn4dZPaojq5zisMLFE
-	0ClWhHjHbCpzx73Pooqe4X++1lc4uVbRpYWAeAGamol9IkNjd0Y15HifNjUhCOPm
-	I7qlxzwuxkMyi/54GBDqlIYhNkjs9+DWdkVoK07iJ0Gr7xSqaCVJ9casmJ29sqfI
-	rrt08cc=
-X-Sasl-enc: oVa2SfIoRNeVDTd0W/n3ceawBhMYtdDQyN24PJUAAL/M 1430153112
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=Iu3k
+	K4WVvNuVl8ktdBQ/9OOXhws=; b=efErQF9c/PCEk42qy8rkSmXa88rgB05V6zRO
+	XFRdQ5UNgZs4HkmdKBZp6WbGXLab0qNXEAmGF5LlJTZu+2Bp7musLaN2jn7cHWPE
+	4cewe/gsMmUHbypXLhI9ZUMhroNmrTrrN1qo7ngyTFa2c0WGv9xxy1PqmIWmhLo9
+	zGzVmKI=
+X-Sasl-enc: DRGaEW/gzmyoQCpvhRlUpmJkkHA8nKMEzXE9WkP9QNi8 1430153113
 Received: from localhost (unknown [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 24802680226;
-	Mon, 27 Apr 2015 12:45:12 -0400 (EDT)
+	by mail.messagingengine.com (Postfix) with ESMTPA id 1378D680110;
+	Mon, 27 Apr 2015 12:45:13 -0400 (EDT)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 27 Apr 2015 12:45:29 -0400
-Message-Id: <1430153133-30988-3-git-send-email-cota@braap.org>
+Date: Mon, 27 Apr 2015 12:45:33 -0400
+Message-Id: <1430153133-30988-7-git-send-email-cota@braap.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1430153133-30988-1-git-send-email-cota@braap.org>
 References: <1430153133-30988-1-git-send-email-cota@braap.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 66.111.4.25
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [Qemu-trivial] [PATCH 2/6] input: remove unused mouse_handlers list
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
+Subject: [Qemu-trivial] [PATCH 6/6] linux-user/elfload: use QTAILQ_FOREACH
+	instead of open-coding it
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,26 +58,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 16:45:20 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 16:45:21 -0000
 
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- ui/input-legacy.c | 2 --
- 1 file changed, 2 deletions(-)
+ linux-user/elfload.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/ui/input-legacy.c b/ui/input-legacy.c
-index 2d4ca19..3e9bb38 100644
---- a/ui/input-legacy.c
-+++ b/ui/input-legacy.c
-@@ -57,8 +57,6 @@ struct QEMUPutLEDEntry {
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 399c021..0ba9706 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2887,8 +2887,7 @@ static int write_note_info(struct elf_note_info *info, int fd)
+             return (error);
  
- static QTAILQ_HEAD(, QEMUPutLEDEntry) led_handlers =
-     QTAILQ_HEAD_INITIALIZER(led_handlers);
--static QTAILQ_HEAD(, QEMUPutMouseEntry) mouse_handlers =
--    QTAILQ_HEAD_INITIALIZER(mouse_handlers);
- 
- int index_from_key(const char *key)
- {
+     /* write prstatus for each thread */
+-    for (ets = info->thread_list.tqh_first; ets != NULL;
+-         ets = ets->ets_link.tqe_next) {
++    QTAILQ_FOREACH(ets, &info->thread_list, ets_link) {
+         if ((error = write_note(&ets->notes[0], fd)) != 0)
+             return (error);
+     }
 -- 
 1.9.1
 
