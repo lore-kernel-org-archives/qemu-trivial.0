@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yml9i-0001FH-F8
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 11:41:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46236)
+	id 1YmlwB-00035n-Fd
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 12:31:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35089)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Yml9f-0001CV-2v
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 11:41:08 -0400
+	(envelope-from <jsnow@redhat.com>) id 1Ymlw7-0002yl-JK
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:31:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Yml9b-0004ZT-Uj
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 11:41:07 -0400
-Received: from mail-wg0-x22a.google.com ([2a00:1450:400c:c00::22a]:35077)
+	(envelope-from <jsnow@redhat.com>) id 1Ymlw6-0003SG-Nk
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:31:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55661)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Yml9b-0004ZK-OO; Mon, 27 Apr 2015 11:41:03 -0400
-Received: by wgyo15 with SMTP id o15so120463830wgy.2;
-	Mon, 27 Apr 2015 08:41:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=CiPzBourYIpJkFgdx0OphZVAuF/vV3Tr6H+YuncBFh0=;
-	b=X7+BWCbDh7xfsayefvf8Pp9I3rcA1k3JBEPKSjF5RVpuK3oaLs3AgqEC3m8xaNhdkT
-	53OOJFwIt+KFn9uos5J2Fs69GIX+hUsuESY6/YnjuGUAQmfz8nQOLPDQp1zcZuPi7mBU
-	k0cMKrFExIvgO5/6xPfY0nDdSW5jnm7Ct8Q2y/4iwS84ARnxbOJhZMNcs8+8ZV/kvlhK
-	fQ3jk5A/unBVvyuDzy84REoZ6DWtfpVuA68uFEV4HXLJ1CKvR5qScpaKzohOAcGcq5e/
-	6//PwNleKjNYMMnKBrmoL9S6qp4uMVtvxQ55FRbeS5l6ERChz8nDQiyfACVkDsWovhUl
-	oTHw==
-X-Received: by 10.180.107.70 with SMTP id ha6mr21407062wib.20.1430149263044;
-	Mon, 27 Apr 2015 08:41:03 -0700 (PDT)
-Received: from [192.168.10.165] (net-37-116-199-255.cust.vodafonedsl.it.
-	[37.116.199.255]) by mx.google.com with ESMTPSA id
-	jq3sm29919654wjc.22.2015.04.27.08.41.00
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 27 Apr 2015 08:41:01 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <553E588B.7050603@redhat.com>
-Date: Mon, 27 Apr 2015 17:40:59 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <jsnow@redhat.com>)
+	id 1Ymlw0-0003PU-KA; Mon, 27 Apr 2015 12:31:04 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3E3FD8EB54;
+	Mon, 27 Apr 2015 16:31:03 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t3RGV1XC019357; Mon, 27 Apr 2015 12:31:02 -0400
+Message-ID: <553E6445.20309@redhat.com>
+Date: Mon, 27 Apr 2015 12:31:01 -0400
+From: John Snow <jsnow@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <1430085867-22514-1-git-send-email-cota@braap.org>
-In-Reply-To: <1430085867-22514-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=windows-1252
+To: Eric Blake <eblake@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+References: <1430122397-2807-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<553E4C5C.7010705@redhat.com>
+In-Reply-To: <553E4C5C.7010705@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22a
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Laszlo Ersek <lersek@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] i440fx-test: remove ARRAY_SIZE
-	redefinition
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options: trivial
+	spelling fix (messsage)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,35 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 15:41:08 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 16:31:13 -0000
 
-On 27/04/2015 00:04, Emilio G. Cota wrote:
-> It's defined in osdep.h and shouldn't be redefined here.
-> 
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  tests/i440fx-test.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
-> index d0bc8de..33a7ecb 100644
-> --- a/tests/i440fx-test.c
-> +++ b/tests/i440fx-test.c
-> @@ -27,8 +27,6 @@
->  
->  #define BROKEN 1
->  
-> -#define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
-> -
->  typedef struct TestData
->  {
->      int num_cpus;
-> 
 
-Looks good; I am CCing qemu-trivial@nongnu.org so that Michael will
-notice this patch.
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+On 04/27/2015 10:49 AM, Eric Blake wrote:
+> On 04/27/2015 02:13 AM, Michael Tokarev wrote:
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+>> ---
+>>   qemu-options.hx | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+>
+> But while at it...
+>
+>>
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 319d971..ec356f6 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -3106,7 +3106,7 @@ executed often has little or no correlation with actual performance.
+>>   to synchronise the host clock and the virtual clock. The goal is to
+>
+> Is there any consensus on whether we should prefer US spelling
+> (synchronize) over UK spelling in our user-facing text?
+>
 
-Paolo
+I would just go with whatever the prevailing standard currently is.
+
+Can we run a spellchecker over our code in a UK mode and then again in a 
+US mode, and we'll just go with whatever has the least errors currently?
+
+--js
 
