@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ymm9v-00047b-Rj
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 12:45:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39374)
+	id 1Ymm9w-000490-FY
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 12:45:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39363)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9n-0003r6-7B
+	(envelope-from <cota@braap.org>) id 1Ymm9n-0003r0-5P
 	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Ut-Sz
+	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Uc-Du
 	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:19 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:39603)
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:44333)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Ul-Gk
+	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Tp-9k
 	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:13 -0400
 Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.nyi.internal (Postfix) with ESMTP id 4EFE120B24
+	by mailout.nyi.internal (Postfix) with ESMTP id 1733E20B12
 	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 12:45:13 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
+Received: from frontend1 ([10.202.2.160])
 	by compute1.internal (MEProxy); Mon, 27 Apr 2015 12:45:13 -0400
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
 	:date:from:in-reply-to:message-id:references:subject:to
-	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=Iu3kK4WVvNuVl8ktdBQ/9OOXhws
-	=; b=DOP6yfSbuKyWwvciyIq/KHdIs30YPqJt6HVYYbttPPNveB/XNm3EIzyqsbe
-	VxAhyLOJFYEJk4Lp3Nsk6Q4+fSjvmpPOcZCvm3Juuc7+fwJaq8OXxd7d7/GAgFWE
-	H+NCLv0kiFaGu2MLKhiz6uO2XRKQfm/Xe57UxAbS0nAph9bw=
+	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=p7IaamHw3qGeCd3ElUJAua2jf+Q
+	=; b=MSkg6hyobksqyN6twSk8bp3VgZgfUu4Tstp+cwoNGJXo3lqVGkHwGrIg83a
+	1pIoFvYlsBY7hXP3cUFNGgLWwRov2jPxhTb+M0qN7jmH7sGJfLcBP0rpiWKv1xbU
+	Tmvepcwn/eS1vYVjqFJROKrCRivgbgB6/7yiKCTBXnim+30w=
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:date:from:in-reply-to:message-id
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=Iu3k
-	K4WVvNuVl8ktdBQ/9OOXhws=; b=efErQF9c/PCEk42qy8rkSmXa88rgB05V6zRO
-	XFRdQ5UNgZs4HkmdKBZp6WbGXLab0qNXEAmGF5LlJTZu+2Bp7musLaN2jn7cHWPE
-	4cewe/gsMmUHbypXLhI9ZUMhroNmrTrrN1qo7ngyTFa2c0WGv9xxy1PqmIWmhLo9
-	zGzVmKI=
-X-Sasl-enc: DRGaEW/gzmyoQCpvhRlUpmJkkHA8nKMEzXE9WkP9QNi8 1430153113
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=p7Ia
+	amHw3qGeCd3ElUJAua2jf+Q=; b=HH5jIOvxafW+kYNJP5r/5pcBPajxsghVPf4k
+	A5T9QO+i6lb6/Xnl46tsBAsVz0fqZ0QtfDX5ctSn77oI8x6XluE52yaqF5/T/IN9
+	iEaoL9wHLOOZ2f4ai+Fu3Zs73QMbpvoDAYUroQYKQZgDc3sgehr7M/wXECbCg8MK
+	t6IY/k0=
+X-Sasl-enc: oVaqTvgwWtiFDTJ7RPP3ceawBhMYtdDQyN24PJUAAL/M 1430153112
 Received: from localhost (unknown [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 1378D680110;
-	Mon, 27 Apr 2015 12:45:13 -0400 (EDT)
+	by mail.messagingengine.com (Postfix) with ESMTPA id D2F20C00019;
+	Mon, 27 Apr 2015 12:45:12 -0400 (EDT)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 27 Apr 2015 12:45:33 -0400
-Message-Id: <1430153133-30988-7-git-send-email-cota@braap.org>
+Date: Mon, 27 Apr 2015 12:45:32 -0400
+Message-Id: <1430153133-30988-6-git-send-email-cota@braap.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1430153133-30988-1-git-send-email-cota@braap.org>
 References: <1430153133-30988-1-git-send-email-cota@braap.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 66.111.4.25
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
-Subject: [Qemu-trivial] [PATCH 6/6] linux-user/elfload: use QTAILQ_FOREACH
-	instead of open-coding it
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 5/6] coroutine: remove unnecessary
+	parentheses in qemu_co_queue_empty
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,23 +62,22 @@ X-List-Received-Date: Mon, 27 Apr 2015 16:45:21 -0000
 
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- linux-user/elfload.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ qemu-coroutine-lock.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 399c021..0ba9706 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2887,8 +2887,7 @@ static int write_note_info(struct elf_note_info *info, int fd)
-             return (error);
+diff --git a/qemu-coroutine-lock.c b/qemu-coroutine-lock.c
+index e4860ae..6b49033 100644
+--- a/qemu-coroutine-lock.c
++++ b/qemu-coroutine-lock.c
+@@ -108,7 +108,7 @@ bool qemu_co_enter_next(CoQueue *queue)
  
-     /* write prstatus for each thread */
--    for (ets = info->thread_list.tqh_first; ets != NULL;
--         ets = ets->ets_link.tqe_next) {
-+    QTAILQ_FOREACH(ets, &info->thread_list, ets_link) {
-         if ((error = write_note(&ets->notes[0], fd)) != 0)
-             return (error);
-     }
+ bool qemu_co_queue_empty(CoQueue *queue)
+ {
+-    return (QTAILQ_FIRST(&queue->entries) == NULL);
++    return QTAILQ_FIRST(&queue->entries) == NULL;
+ }
+ 
+ void qemu_co_mutex_init(CoMutex *mutex)
 -- 
 1.9.1
 
