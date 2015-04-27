@@ -1,52 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ymm9w-000490-FY
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 12:45:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39363)
+	id 1YmnTs-0002MY-5v
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 14:10:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9n-0003r0-5P
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:20 -0400
+	(envelope-from <sw@weilnetz.de>) id 1YmnTp-0002I3-Aw
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:10:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Uc-Du
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:19 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:44333)
+	(envelope-from <sw@weilnetz.de>) id 1YmnTo-0005LJ-Ic
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:10:05 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=53227
+	helo=v220110690675601.yourvserver.net)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1Ymm9h-0001Tp-9k
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 12:45:13 -0400
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.nyi.internal (Postfix) with ESMTP id 1733E20B12
-	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 12:45:13 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-	by compute1.internal (MEProxy); Mon, 27 Apr 2015 12:45:13 -0400
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
-	:date:from:in-reply-to:message-id:references:subject:to
-	:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=p7IaamHw3qGeCd3ElUJAua2jf+Q
-	=; b=MSkg6hyobksqyN6twSk8bp3VgZgfUu4Tstp+cwoNGJXo3lqVGkHwGrIg83a
-	1pIoFvYlsBY7hXP3cUFNGgLWwRov2jPxhTb+M0qN7jmH7sGJfLcBP0rpiWKv1xbU
-	Tmvepcwn/eS1vYVjqFJROKrCRivgbgB6/7yiKCTBXnim+30w=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:date:from:in-reply-to:message-id
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=smtpout; bh=p7Ia
-	amHw3qGeCd3ElUJAua2jf+Q=; b=HH5jIOvxafW+kYNJP5r/5pcBPajxsghVPf4k
-	A5T9QO+i6lb6/Xnl46tsBAsVz0fqZ0QtfDX5ctSn77oI8x6XluE52yaqF5/T/IN9
-	iEaoL9wHLOOZ2f4ai+Fu3Zs73QMbpvoDAYUroQYKQZgDc3sgehr7M/wXECbCg8MK
-	t6IY/k0=
-X-Sasl-enc: oVaqTvgwWtiFDTJ7RPP3ceawBhMYtdDQyN24PJUAAL/M 1430153112
-Received: from localhost (unknown [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id D2F20C00019;
-	Mon, 27 Apr 2015 12:45:12 -0400 (EDT)
-From: "Emilio G. Cota" <cota@braap.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 27 Apr 2015 12:45:32 -0400
-Message-Id: <1430153133-30988-6-git-send-email-cota@braap.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1430153133-30988-1-git-send-email-cota@braap.org>
-References: <1430153133-30988-1-git-send-email-cota@braap.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.111.4.25
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 5/6] coroutine: remove unnecessary
-	parentheses in qemu_co_queue_empty
+	(envelope-from <sw@weilnetz.de>)
+	id 1YmnTi-0005BG-8E; Mon, 27 Apr 2015 14:09:58 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	9F01A1181894; Mon, 27 Apr 2015 20:09:56 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id f0k7DeTFuywv; Mon, 27 Apr 2015 20:09:50 +0200 (CEST)
+Received: from [192.168.178.24] (p54ACA1E8.dip0.t-ipconnect.de
+	[84.172.161.232])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	9DD6E118188E; Mon, 27 Apr 2015 20:09:50 +0200 (CEST)
+Message-ID: <553E7B6E.1070505@weilnetz.de>
+Date: Mon, 27 Apr 2015 20:09:50 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.6.0
+MIME-Version: 1.0
+To: Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@linux.vnet.ibm.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <1426313974-25607-1-git-send-email-thuth@linux.vnet.ibm.com>
+	<553E1D34.4020203@msgid.tls.msk.ru>
+In-Reply-To: <553E1D34.4020203@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/7] Remove more unused
+	functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,27 +54,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 16:45:21 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 18:10:06 -0000
 
-Signed-off-by: Emilio G. Cota <cota@braap.org>
----
- qemu-coroutine-lock.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Am 27.04.2015 um 13:27 schrieb Michael Tokarev:
+> 14.03.2015 09:19, Thomas Huth wrote:
+>> Here are some more patches to remove completely unused functions
+>> from QEMU. Please review carefully, some of the functions might
+>> still get usefull in the future again, so if you discover one,
+>> please let me know, then I'll remove it from the patch series
+>> again.
+> Applied to -trivial, thank you!
+>
+> /mjt
 
-diff --git a/qemu-coroutine-lock.c b/qemu-coroutine-lock.c
-index e4860ae..6b49033 100644
---- a/qemu-coroutine-lock.c
-+++ b/qemu-coroutine-lock.c
-@@ -108,7 +108,7 @@ bool qemu_co_enter_next(CoQueue *queue)
- 
- bool qemu_co_queue_empty(CoQueue *queue)
- {
--    return (QTAILQ_FIRST(&queue->entries) == NULL);
-+    return QTAILQ_FIRST(&queue->entries) == NULL;
- }
- 
- void qemu_co_mutex_init(CoMutex *mutex)
--- 
-1.9.1
+
+I'm sorry that I did not notice this series earlier.
+
+The function serial_set_frequency() is used in my personal branch for 
+MIPS AR7. That's not a sufficient reason to keep it, but I think that 
+other (maybe most) systems have a serial clock with a typical frequency 
+which can be changed by software (as it is the case for AR7). So if this 
+function is currently unused, this simply means that the serial device 
+emulations are incomplete.
+
+Regards
+Stefan
 
 
