@@ -1,33 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YmhHU-0008Ny-7H
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 07:32:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33373)
+	id 1YmhaD-0004Ea-9s
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 07:52:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36927)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1YmhHO-0008HC-Uz
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 07:32:54 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ymha9-000495-JK
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 07:52:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1YmhHO-0006kV-2W
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 07:32:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52755)
+	(envelope-from <mjt@tls.msk.ru>) id 1Ymha8-00074C-Nw
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 07:52:13 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57933)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1YmhHI-0006jB-By; Mon, 27 Apr 2015 07:32:44 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id EAAD88E670;
-	Mon, 27 Apr 2015 11:32:42 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-82.ams2.redhat.com
-	[10.36.116.82])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t3RBWdKY008578; Mon, 27 Apr 2015 07:32:40 -0400
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, lersek@redhat.com
-Date: Mon, 27 Apr 2015 13:32:35 +0200
-Message-Id: <1430134355-8657-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] docs/atomics.txt: fix two typos
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Ymha3-00072c-3X; Mon, 27 Apr 2015 07:52:07 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id DE86442746;
+	Mon, 27 Apr 2015 14:52:05 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id C5F1C8FC;
+	Mon, 27 Apr 2015 14:52:05 +0300 (MSK)
+Received: (nullmailer pid 32486 invoked by uid 1000);
+	Mon, 27 Apr 2015 11:52:05 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 27 Apr 2015 14:51:56 +0300
+Message-Id: <1430135516-32438-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Peter Wu <peter@lekensteyn.nl>,
+	Kevin Wolf <kwolf@redhat.com>
+Subject: [Qemu-trivial] [PATCH v2] block/dmg: make it modular
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,37 +42,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 11:32:55 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 11:52:15 -0000
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+dmg can optionally utilize libbz2, make it modular
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/atomics.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ block/Makefile.objs | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/docs/atomics.txt b/docs/atomics.txt
-index 6f2997b..ef285e3 100644
---- a/docs/atomics.txt
-+++ b/docs/atomics.txt
-@@ -281,7 +281,7 @@ note that the other barrier may actually be in a driver that runs in
- the guest!
- 
- For the purposes of pairing, smp_read_barrier_depends() and smp_rmb()
--both count as read barriers.  A read barriers shall pair with a write
-+both count as read barriers.  A read barrier shall pair with a write
- barrier or a full barrier; a write barrier shall pair with a read
- barrier or a full barrier.  A full barrier can pair with anything.
- For example:
-@@ -294,7 +294,7 @@ For example:
-                              smp_rmb();
-                              y = a;
- 
--Note that the "writing" thread are accessing the variables in the
-+Note that the "writing" thread is accessing the variables in the
- opposite order as the "reading" thread.  This is expected: stores
- before the write barrier will normally match the loads after the
- read barrier, and vice versa.  The same is true for more than 2
+diff --git a/block/Makefile.objs b/block/Makefile.objs
+index db2933e..179e71d 100644
+--- a/block/Makefile.objs
++++ b/block/Makefile.objs
+@@ -1,4 +1,4 @@
+-block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o dmg.o bochs.o vpc.o vvfat.o
++block-obj-y += raw_bsd.o qcow.o vdi.o vmdk.o cloop.o bochs.o vpc.o vvfat.o
+ block-obj-y += qcow2.o qcow2-refcount.o qcow2-cluster.o qcow2-snapshot.o qcow2-cache.o
+ block-obj-y += qed.o qed-gencb.o qed-l2-cache.o qed-table.o qed-cluster.o
+ block-obj-y += qed-check.o
+@@ -37,6 +37,7 @@ gluster.o-libs     := $(GLUSTERFS_LIBS)
+ ssh.o-cflags       := $(LIBSSH2_CFLAGS)
+ ssh.o-libs         := $(LIBSSH2_LIBS)
+ archipelago.o-libs := $(ARCHIPELAGO_LIBS)
++block-obj-m        += dmg.o
+ dmg.o-libs         := $(BZIP2_LIBS)
+ qcow.o-libs        := -lz
+ linux-aio.o-libs   := -laio
 -- 
-1.8.3.1
+2.1.4
 
 
