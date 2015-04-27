@@ -1,48 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YmnVH-0003sW-Im
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 14:11:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37095)
+	id 1YmnlK-0007tk-Lk
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 14:28:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YmnVF-0003mb-9X
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:11:34 -0400
+	(envelope-from <eblake@redhat.com>) id 1YmnlH-0007nx-S3
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:28:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YmnVB-0005n8-2p
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:11:33 -0400
-Received: from mail-qc0-f173.google.com ([209.85.216.173]:33146)
+	(envelope-from <eblake@redhat.com>) id 1YmnlH-0004jQ-0V
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:28:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52868)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YmnVA-0005mv-VX
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 14:11:29 -0400
-Received: by qcrf4 with SMTP id f4so58961747qcr.0
-	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 11:11:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=4AFu3aoHp7BVEsSKMh+ShonRXj3Pwt8oVF6/yA9Iro4=;
-	b=P9LFOfVRV20nym1Ne/e8q+6bBv1NfD0GiWMQYiD5Tzr+iO0KM+KA+TWM+igSyl094p
-	aJ0YjAQuUMgzimRtybXoOkJL18iz78fk8j/PQKzXigL8N4RJi9FKIHJQkGpy7W3Euk4t
-	aPkdkY8DHxblSU95SlJ4BJwBxSMzl05duK7A/rItGcbfN4Ulb9t/xkBgywAXwXuArbIN
-	u0p08954HHeXYYlM/Tn2sQSi5w+LGxyLvv5hAoAbiDEWactg/0O1skU71jlXUi/P3joY
-	gwGjusBvTheT0mM9BpghptT5usLQZcCCfdvzanqh/t9qhkpiT0iw0Y5qeZ32lxF9QyiZ
-	nlUA==
-X-Gm-Message-State: ALoCoQnsubsvmMR9Ys7HmYRqz2REGPzBUfe6VQ19cwO8+LRAQz5CG9iu970h9T+vJYDtmyvOWkki
+	(envelope-from <eblake@redhat.com>)
+	id 1YmnlB-0004ic-Tf; Mon, 27 Apr 2015 14:28:02 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 58FF48EB3B;
+	Mon, 27 Apr 2015 18:28:01 +0000 (UTC)
+Received: from [10.3.113.161] (ovpn-113-161.phx2.redhat.com [10.3.113.161])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t3RIS0vw001856; Mon, 27 Apr 2015 14:28:00 -0400
+Message-ID: <553E7FB0.1020404@redhat.com>
+Date: Mon, 27 Apr 2015 12:28:00 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-X-Received: by 10.55.23.78 with SMTP id i75mr13328954qkh.82.1430158288580;
-	Mon, 27 Apr 2015 11:11:28 -0700 (PDT)
-Sender: peter.crosthwaite@petalogix.com
-Received: by 10.96.97.41 with HTTP; Mon, 27 Apr 2015 11:11:28 -0700 (PDT)
-In-Reply-To: <1430153133-30988-5-git-send-email-cota@braap.org>
-References: <1430153133-30988-1-git-send-email-cota@braap.org>
-	<1430153133-30988-5-git-send-email-cota@braap.org>
-Date: Mon, 27 Apr 2015 11:11:28 -0700
-X-Google-Sender-Auth: Y5Bgrh0JJ0R2AkSNM4f4Ski08GQ
-Message-ID: <CAEgOgz5LL=9EChHirsppPBVqP4vM2td5ZMdm+1g_tAsTo2WejQ@mail.gmail.com>
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-To: "Emilio G. Cota" <cota@braap.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.173
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	"Emilio G. Cota" <cota@braap.org>
+References: <1430153133-30988-1-git-send-email-cota@braap.org>	<1430153133-30988-5-git-send-email-cota@braap.org>
+	<CAEgOgz5LL=9EChHirsppPBVqP4vM2td5ZMdm+1g_tAsTo2WejQ@mail.gmail.com>
+In-Reply-To: <CAEgOgz5LL=9EChHirsppPBVqP4vM2td5ZMdm+1g_tAsTo2WejQ@mail.gmail.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="Lf7M4OOqQLTeXlKG85PJijnDqDp4umTsL"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/6] gitignore: ignore
@@ -58,58 +53,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 18:11:34 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 18:28:09 -0000
 
-On Mon, Apr 27, 2015 at 9:45 AM, Emilio G. Cota <cota@braap.org> wrote:
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  .gitignore | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/.gitignore b/.gitignore
-> index aed0e1f..025a841 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -62,6 +62,7 @@
->  *.fn
->  *.ky
->  *.log
-> +*.patch
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Lf7M4OOqQLTeXlKG85PJijnDqDp4umTsL
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-This Issue is discussed and I think it was concluded to not gitignore
-patches. See:
+On 04/27/2015 12:11 PM, Peter Crosthwaite wrote:
 
-commit f3a22014e94dfaacb57277dafce66b41cd994869
-Author: Michael Tokarev <mjt@tls.msk.ru>
-Date:   Thu Jun 6 01:14:54 2013 +0400
+>> +++ b/.gitignore
+>> @@ -62,6 +62,7 @@
+>>  *.fn
+>>  *.ky
+>>  *.log
+>> +*.patch
+>=20
+> This Issue is discussed and I think it was concluded to not gitignore
+> patches. See:
+>=20
+> commit f3a22014e94dfaacb57277dafce66b41cd994869
+> Author: Michael Tokarev <mjt@tls.msk.ru>
+> Date:   Thu Jun 6 01:14:54 2013 +0400
+>=20
+>     gitignore: unignore *.patch
 
-    gitignore: unignore *.patch
+You can always ignore them locally:
+echo '*.patch' >> .git/info/exclude
 
-    This partially reverts:
+without requiring everyone to ignore them (I actually like seeing them
+show up, to know when I have not yet hit send on a series).
 
-     commit 082369e62c5bbaba89f173c2b803bc24115bb111
-     Author: liguang <lig.fnst@cn.fujitsu.com>
-     Date:   Fri Mar 22 16:44:13 2013 +0800
-
-        gitignore: ignore more files
-
-    I'm not sure how this went in.  The thing is that
-    ignoring *.patch, in my opinion, is just wrong.
-    Especially for downstreams who apply patches for
-    real.
-
-    Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
-Regards,
-Peter
+--Lf7M4OOqQLTeXlKG85PJijnDqDp4umTsL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
->  *.pdf
->  *.pod
->  *.cps
-> --
-> 1.9.1
->
->
+iQEcBAEBCAAGBQJVPn+wAAoJEKeha0olJ0NqXwgH/jMsxhUH6oEpM4gdV5x4ZThW
+YUXoWecCSMB8O/ANH3/3kNXExQJ35Xqc3UuUZSX+vKW9yLDGBPUKdmfgFKVpT9vw
+x2SIofVw//+DJ4ruZPmCRmHJqS8oeaitzGwCOlm1Q2471MVfBLzlgXNZ1UunRoCn
+roryJ8P7/i3hokk/i5wMdzVee8IVVBysqJtKCtdgIavj/C2iXWHdYx+yhXftHGFn
+lAHgAA5RC174OANHVyuD9kWQApiQuepLCMI45T06qsjmX6KECIThPVvTWbD2VeMl
+ZkHpRt/8hke3ThkXq5XvFvR1MdRtCLWBsl8z4Qv/eOhdOR/2q/hVaB7IuUQjGR8=
+=7iwk
+-----END PGP SIGNATURE-----
+
+--Lf7M4OOqQLTeXlKG85PJijnDqDp4umTsL--
 
