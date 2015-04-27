@@ -1,57 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YmoQm-0007om-VI
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 15:11:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52104)
+	id 1YmpTM-0003F7-3x
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 16:17:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40173)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YmoQl-0007oX-94
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 15:11:00 -0400
+	(envelope-from <cota@braap.org>) id 1YmpTJ-0003BZ-6K
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 16:17:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YmoQg-0007V7-PV
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 15:10:59 -0400
-Received: from mail-ie0-f170.google.com ([209.85.223.170]:35632)
+	(envelope-from <cota@braap.org>) id 1YmpTB-0005PG-Ad
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 16:17:41 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:36969)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YmoQg-0007Uy-Kp
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 15:10:54 -0400
-Received: by iejt8 with SMTP id t8so1719168iej.2
-	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 12:10:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=wAp5X3dZZt8hMvTsnK2XERwMSydYHeW/5o/j10ejPVc=;
-	b=FrbAR/N8WDxmlAx+5x0G2iAriUa1Y8Lg2V6ms4IjH6TDsbe3a/0Sget/XA9mDbgVM0
-	x/ydbb8hPvdnmBIQWgqhL+0Tuc9rQfYGe6pEmzIkOZElK7Fz9hcKWoOd7oR7cwNoosga
-	7czdtZPBqk8Mu4PNv0+tpVm30oR/DDxjTBfvssqsjoLmNSmEwXTBNf0908fxypkLQBoj
-	4lMiIRRmdOult3/1WDVUeW2/lGDGmD8xddBDcPmqwtezXnl8NmOsqFxFKFHuFTjo05lY
-	0/pJJzQ525MBL0J3bVzyNtKAl05+VJEH2XEYtqlb9DLkJ2AX+ZcGsEHWj0CnRMXkBN1u
-	KJJg==
-X-Gm-Message-State: ALoCoQmH0Dif50ytxkejQkvD0d5ztHcSwc1OoLRFBhWmpXxOlPka5hiOoN7ApX13ZulVtvQPyHIy
-X-Received: by 10.43.60.14 with SMTP id wq14mr14193305icb.60.1430161854273;
-	Mon, 27 Apr 2015 12:10:54 -0700 (PDT)
+	(envelope-from <cota@braap.org>) id 1YmpTB-0005Oq-6c
+	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 16:17:33 -0400
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
+	by mailout.nyi.internal (Postfix) with ESMTP id C034620B61
+	for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2015 16:17:32 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute2.internal (MEProxy); Mon, 27 Apr 2015 16:17:32 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=yE21R
+	OdqGNmf/QaxOCMqUXP4coM=; b=KWiB2yh93YzvrVoviC2yHuf3Eesynyn81AjE5
+	D0JrjqQovtIKEkcp2Jkv52ZC8ba/ubeNhJcPunNMktsKPJwABKmpDIbS8lSo1Qjt
+	3PsJpaI6jAKm4aWeC7B/1dxROMt0esRcEAiCTOpRh/8vEbA4uIkvbqv8866dmm3r
+	W43L9M=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-sasl-enc
+	:x-sasl-enc; s=smtpout; bh=yE21ROdqGNmf/QaxOCMqUXP4coM=; b=Z/ehv
+	IEwLoqhbKm/ba/R/JmX4HytQ6pwWKt3i+CRj4hdfMyUXPoDLQAVF8GrxFYnKdv8Z
+	lzXv0R2V8p5XWJ0jtm371JN0IApHeZR2OmEnVqxHQboWo4rY8tWBPP7FX/bXjxU8
+	QbjiUvWN5x2O7X+YjLrGiPSv0yLSKPW/wffpgU=
+X-Sasl-enc: WRbMoIc3i6BQjJ6Rt24M47SMvcmZNglfFYjjvKMsNpXx 1430165852
+Received: from localhost (unknown [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 8571AC00011;
+	Mon, 27 Apr 2015 16:17:32 -0400 (EDT)
+Date: Mon, 27 Apr 2015 16:18:06 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20150427201806.GA9078@flamenco>
+References: <1430153133-30988-1-git-send-email-cota@braap.org>
+	<1430153133-30988-5-git-send-email-cota@braap.org>
+	<CAEgOgz5LL=9EChHirsppPBVqP4vM2td5ZMdm+1g_tAsTo2WejQ@mail.gmail.com>
+	<553E7FB0.1020404@redhat.com>
 MIME-Version: 1.0
-Received: by 10.107.136.220 with HTTP; Mon, 27 Apr 2015 12:10:34 -0700 (PDT)
-In-Reply-To: <CAEgOgz5-hThXXxUZJRswFH1LgUEzFYGXGL+ON-R9K0NWfdhkew@mail.gmail.com>
-References: <cover.1430096379.git.crosthwaite.peter@gmail.com>
-	<a07c62df4232de834d97e01a981281c68d97fbbc.1430096379.git.crosthwaite.peter@gmail.com>
-	<553E2571.2000700@msgid.tls.msk.ru>
-	<CAFEAcA-a==mJ2kfb6E=So+agg1uZ9VsWMNYwS0BwzEM+RKUAWQ@mail.gmail.com>
-	<CAFEAcA8t7_9BzOGekyJpz+_d_qYxT6rTXa=domd4JH0c6zRJUA@mail.gmail.com>
-	<CAEgOgz5-hThXXxUZJRswFH1LgUEzFYGXGL+ON-R9K0NWfdhkew@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2015 20:10:34 +0100
-Message-ID: <CAFEAcA8f4VDRT1GSGtWG0nzTp=qGUoP3dt8n=B7hLQSVDU7MJQ@mail.gmail.com>
-To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.223.170
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH target-arm 2/2] arm: cpu.h:
-	Delete unused cpu_pc_from_tb()
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <553E7FB0.1020404@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.111.4.25
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/6] gitignore: ignore
+	*.patch files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,19 +68,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 19:11:00 -0000
+X-List-Received-Date: Mon, 27 Apr 2015 20:17:42 -0000
 
-On 27 April 2015 at 20:06, Peter Crosthwaite
-<peter.crosthwaite@xilinx.com> wrote:
-> On Mon, Apr 27, 2015 at 12:00 PM, Peter Maydell
-> <peter.maydell@linaro.org> wrote:
->> I think I go for "just update the comment"...
->>
->
-> Does that mean a respin of this patch or should the tricore fix and
-> the comment be a follow up?
+On Mon, Apr 27, 2015 at 12:28:00 -0600, Eric Blake wrote:
+> On 04/27/2015 12:11 PM, Peter Crosthwaite wrote:
+> > This Issue is discussed and I think it was concluded to not gitignore
+> > patches. See:
+> > 
+> > commit f3a22014e94dfaacb57277dafce66b41cd994869
+> > Author: Michael Tokarev <mjt@tls.msk.ru>
+> > Date:   Thu Jun 6 01:14:54 2013 +0400
+> > 
+> >     gitignore: unignore *.patch
+> 
+> You can always ignore them locally:
+> echo '*.patch' >> .git/info/exclude
+> 
+> without requiring everyone to ignore them (I actually like seeing them
+> show up, to know when I have not yet hit send on a series).
 
-I have no preference either way.
+Thanks for the tip!
 
--- PMM
+All: please ignore this patch in the series.
+
+		Emilio
 
