@@ -1,55 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YmsSK-0002EZ-7f
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Apr 2015 19:28:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51315)
+	id 1YmzAc-00047A-Si
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 02:39:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1YmsSH-0002Dd-BH
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 19:28:50 -0400
+	(envelope-from <th.huth@gmail.com>) id 1YmzAa-00045d-MK
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 02:39:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1YmsSE-0005m6-4i
-	for qemu-trivial@nongnu.org; Mon, 27 Apr 2015 19:28:49 -0400
-Received: from mail-pa0-x22f.google.com ([2607:f8b0:400e:c03::22f]:33646)
+	(envelope-from <th.huth@gmail.com>) id 1YmzAZ-00052y-Qe
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 02:39:00 -0400
+Received: from mail-wi0-f179.google.com ([209.85.212.179]:38363)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1YmsSD-0005lh-TG; Mon, 27 Apr 2015 19:28:46 -0400
-Received: by pacwv17 with SMTP id wv17so122924765pac.0;
-	Mon, 27 Apr 2015 16:28:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=F5fAbzh0Wep23xcy/ROxcC4JUlb4VnI14hPRlV+svS4=;
-	b=xPsxQxr2c+C8l3IhYZ85JtgPdxSnFA9Vyc6SDjwXmya6IfATemq7Ht009d4uETwX12
-	2ion9Cz6tkuOWIuI05z9LRfhBs5KwLSe4EQToLTcPQAqhwNb8yZbJEOLiKOfQ6BUnlgd
-	bn1Ogk1KW7ou6NwmMaKuzzWAAdBvUppZml+5qrsC20KaaC8a/K/a8L+6nZVmuqUT2G+0
-	ZT+qWEs+MMOUKJhaS/TKON3QwL8fWftuJF3hJVFoxcoK7tOQbvdjhfIeIhPnwCA6i646
-	5Ul/F1aaV8RI+IjOchB5YROgWe5PLYpNbWM0IArGhGJpq7Feh3j4oY1ElZmHoYEi74bw
-	fBMQ==
-X-Received: by 10.66.63.72 with SMTP id e8mr25974425pas.3.1430177324960;
-	Mon, 27 Apr 2015 16:28:44 -0700 (PDT)
-Received: from localhost ([203.126.243.116])
-	by mx.google.com with ESMTPSA id v7sm20472708pde.81.2015.04.27.16.28.43
-	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-	Mon, 27 Apr 2015 16:28:43 -0700 (PDT)
-Date: Tue, 28 Apr 2015 09:25:36 +1000
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150427232536.GB19252@toto>
-References: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
-	<1430075424-25975-6-git-send-email-crosthwaite.peter@gmail.com>
-	<20150427092838.GE17116@toto> <553E3C79.6020702@msgid.tls.msk.ru>
+	(envelope-from <th.huth@gmail.com>)
+	id 1YmzAT-0004pd-CV; Tue, 28 Apr 2015 02:38:53 -0400
+Received: by wiun10 with SMTP id n10so16469788wiu.1;
+	Mon, 27 Apr 2015 23:38:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=date:from:to:subject:message-id:in-reply-to:references:mime-version
+	:content-type:content-transfer-encoding;
+	bh=l0X4G4QG7kg41DibDMOCrzI2Va3l3ze/bpkrLH4CUh4=;
+	b=MKOLaj9x6k/4g+uwG8THQ+z3dCGPmkllbpD6Dw9DhaRzvj0GhkP5Prj12wsQsQZ+dh
+	RoBXsqy212+3UerL/GESgoYnZRABGHc9HaSICKR5Ieu+RzZa471LV3pCKABK5nNpwopS
+	qZPqI8YLPrVVimj/x0A9HBbawKy7euZOZmSN96RKZfE4kSS+K/cIx2O0hholtqVNZZzP
+	VN+anYISHasv5OtfDQhZpoi2X1lFzr2AWB+ZuZAMeJNHmYXKTlm4S4xcAlmG3jPZmFyB
+	3msO2MCqfQ1GmkNRTvluSUGYQFq7n3clfIZ2WunQBQByZnlqzjSvM6//8dXQbhNC4srd
+	EfxA==
+X-Received: by 10.180.8.34 with SMTP id o2mr26873638wia.18.1430203132304;
+	Mon, 27 Apr 2015 23:38:52 -0700 (PDT)
+Received: from tpl530 (p57AEE0A8.dip0.t-ipconnect.de. [87.174.224.168])
+	by mx.google.com with ESMTPSA id u6sm32559535wjy.13.2015.04.27.23.38.49
+	(version=SSLv3 cipher=RC4-SHA bits=128/128);
+	Mon, 27 Apr 2015 23:38:51 -0700 (PDT)
+Date: Tue, 28 Apr 2015 08:38:49 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Stefan Weil
+	<sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20150428083849.5319c456@tpl530>
+In-Reply-To: <20150428082846.1348066e@thh440s>
+References: <20150428082846.1348066e@thh440s>
+X-Mailer: Claws Mail 3.9.3 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <553E3C79.6020702@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::22f
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	edgari@xilinx.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH microblaze v1 5/6] mb: cpu: Delete
-	EXCP_NMI
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.179
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/7] Remove more unused
+	functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,41 +58,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Apr 2015 23:28:50 -0000
+X-List-Received-Date: Tue, 28 Apr 2015 06:39:01 -0000
 
-On Mon, Apr 27, 2015 at 04:41:13PM +0300, Michael Tokarev wrote:
-> 27.04.2015 12:28, Edgar E. Iglesias wrote:
-> > On Sun, Apr 26, 2015 at 12:10:23PM -0700, Peter Crosthwaite wrote:
-> >> This define is unused. Remove.
-> >>
-> >> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> > 
-> > Hi,
-> > 
-> > Any reason not to shift down the numbering?
-> > 
-> > Otherwise the whole series looks good to me.
+> Date: Mon, 27 Apr 2015 20:09:50 +0200
+> From: Stefan Weil <sw@weilnetz.de>
 > 
-> What does this mean, "looks good", is it your R-b? :)
+> Am 27.04.2015 um 13:27 schrieb Michael Tokarev:
+> > 14.03.2015 09:19, Thomas Huth wrote:
+> >> Here are some more patches to remove completely unused functions
+> >> from QEMU. Please review carefully, some of the functions might
+> >> still get usefull in the future again, so if you discover one,
+> >> please let me know, then I'll remove it from the patch series
+> >> again.
+> > Applied to -trivial, thank you!
+> >
+> > /mjt
+> 
+> I'm sorry that I did not notice this series earlier.
+> 
+> The function serial_set_frequency() is used in my personal branch for 
+> MIPS AR7.
 
-Sure, with the change:
+Ok, since this function still could be again useful in the future,
+could you simply drop the related patch from your queue again, Michael?
+(or just drop the related hunks in the patch if you've got some spare
+time to rework it? If not, I could do that at a later point in time and
+send a new patch).
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-> 
-> >> @@ -36,7 +36,6 @@ typedef struct CPUMBState CPUMBState;
-> >>  
-> >>  #define ELF_MACHINE	EM_MICROBLAZE
-> >>  
-> >> -#define EXCP_NMI        1
-> >>  #define EXCP_MMU        2
-> >>  #define EXCP_IRQ        3
-> >>  #define EXCP_BREAK      4
-> 
-> I can renumber this on commit just fine, there's no need
-> to resend whole thing, is it okay with you Peter?
-> 
-> Thanks,
-> 
-> /mjt
+ Thanks,
+  Thomas
 
