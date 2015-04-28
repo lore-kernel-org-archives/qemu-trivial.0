@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yn1s5-0008Mo-NR
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 05:32:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46834)
+	id 1Yn4K5-0006GS-LU
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 08:09:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1s3-0008Mc-Ls
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:32:04 -0400
+	(envelope-from <afaerber@suse.de>) id 1Yn4Jy-000607-C7
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 08:09:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1s0-0000gN-Bg
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:32:03 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:56441)
+	(envelope-from <afaerber@suse.de>) id 1Yn4Jt-0002gD-9I
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 08:09:02 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:38612 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Yn1rz-0000fl-Ld; Tue, 28 Apr 2015 05:32:00 -0400
-Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CMW67589; Tue, 28 Apr 2015 17:28:34 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml434-hub.china.huawei.com
-	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 28 Apr 2015 17:27:13 +0800
-Message-ID: <553F5281.2080006@huawei.com>
-Date: Tue, 28 Apr 2015 17:27:29 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <afaerber@suse.de>)
+	id 1Yn4Jg-0002Os-G9; Tue, 28 Apr 2015 08:08:44 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 040AAAC35;
+	Tue, 28 Apr 2015 12:08:44 +0000 (UTC)
+Message-ID: <553F784A.4040004@suse.de>
+Date: Tue, 28 Apr 2015 14:08:42 +0200
+From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, "Edgar E. Iglesias"
-	<edgar.iglesias@gmail.com>
-References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>	<5507D480.1000505@huawei.com>	<55161404.4000404@huawei.com>
-	<CAJy5ezrFVPCC1VCbvVVYYTEgx2v__AicWFUme_yh2ikuB0wOEg@mail.gmail.com>
-	<55165C4A.5080800@huawei.com> <551831C5.5020807@msgid.tls.msk.ru>
-In-Reply-To: <551831C5.5020807@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, "pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1430212264-9672-1-git-send-email-arei.gonglei@huawei.com>
+	<1430212264-9672-4-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1430212264-9672-4-git-send-email-arei.gonglei@huawei.com>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] vhost-user: remove
+ superfluous '\n' around error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,30 +46,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Apr 2015 09:32:04 -0000
+X-List-Received-Date: Tue, 28 Apr 2015 12:09:08 -0000
 
-On 2015/3/30 1:09, Michael Tokarev wrote:
-> 28.03.2015 10:46, Gonglei wrote:
-> []
->>> Can this go through -trivial?
->>>
->> It's ok, but I don't know if -trivial branch maintainer has a plan to send a pull request
->> for rc2.
-> 
-> I do have plan to send a pull request, but this thing is ugly.  The
-> original code is ugly, and your patch does not make it better.  I
-> wanted to make some changes myself but didn't find fime for that.
-> 
-> Ofcourse it is okay to apply your change to plug the leak, but..
-> oh well... :(  And if we do, we'll sure forget about that completely.
-> Now at least you're pinging me from time to time... ;))
-> 
+Am 28.04.2015 um 11:11 schrieb arei.gonglei@huawei.com:
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  hw/virtio/vhost-user.c | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/hw/virtio/vhost-user.c b/hw/virtio/vhost-user.c
+> index aefe0bb..e7ab829 100644
+> --- a/hw/virtio/vhost-user.c
+> +++ b/hw/virtio/vhost-user.c
+> @@ -128,7 +128,7 @@ static int vhost_user_read(struct vhost_dev *dev, V=
+hostUserMsg *msg)
+> =20
+>      r =3D qemu_chr_fe_read_all(chr, p, size);
+>      if (r !=3D size) {
+> -        error_report("Failed to read msg header. Read %d instead of %d=
+.\n", r,
+> +        error_report("Failed to read msg header. Read %d instead of %d=
+.", r,
+>                  size);
+>          goto fail;
+>      }
+> @@ -136,7 +136,7 @@ static int vhost_user_read(struct vhost_dev *dev, V=
+hostUserMsg *msg)
+>      /* validate received flags */
+>      if (msg->flags !=3D (VHOST_USER_REPLY_MASK | VHOST_USER_VERSION)) =
+{
+>          error_report("Failed to read msg header."
+> -                " Flags 0x%x instead of 0x%x.\n", msg->flags,
+> +                " Flags 0x%x instead of 0x%x.", msg->flags,
+>                  VHOST_USER_REPLY_MASK | VHOST_USER_VERSION);
+>          goto fail;
+>      }
+> @@ -144,7 +144,7 @@ static int vhost_user_read(struct vhost_dev *dev, V=
+hostUserMsg *msg)
+>      /* validate message size is sane */
+>      if (msg->size > VHOST_USER_PAYLOAD_SIZE) {
+>          error_report("Failed to read msg header."
+> -                " Size %d exceeds the maximum %zu.\n", msg->size,
+> +                " Size %d exceeds the maximum %zu.", msg->size,
+>                  VHOST_USER_PAYLOAD_SIZE);
+>          goto fail;
+>      }
+> @@ -155,7 +155,7 @@ static int vhost_user_read(struct vhost_dev *dev, V=
+hostUserMsg *msg)
+>          r =3D qemu_chr_fe_read_all(chr, p, size);
+>          if (r !=3D size) {
+>              error_report("Failed to read msg payload."
+> -                         " Read %d instead of %d.\n", r, msg->size);
+> +                         " Read %d instead of %d.", r, msg->size);
+>              goto fail;
+>          }
+>      }
+> @@ -235,8 +235,8 @@ static int vhost_user_call(struct vhost_dev *dev, u=
+nsigned long int request,
+>          msg.memory.nregions =3D fd_num;
+> =20
+>          if (!fd_num) {
+> -            error_report("Failed initializing vhost-user memory map\n"
+> -                    "consider using -object memory-backend-file share=3D=
+on\n");
+> +            error_report("Failed initializing vhost-user memory map, "
+> +                    "consider using -object memory-backend-file share=3D=
+on");
 
-Maybe you are waiting for my ping, right?  :)
-Do you have any time for this leak or code optimization now?
+This one is not just dropping a trailing \n, but looks good to me,
 
-Regards,
--Gonglei
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+
+Thanks,
+Andreas
+
+>              return -1;
+>          }
+> =20
+> @@ -280,7 +280,7 @@ static int vhost_user_call(struct vhost_dev *dev, u=
+nsigned long int request,
+>          }
+>          break;
+>      default:
+> -        error_report("vhost-user trying to send unhandled ioctl\n");
+> +        error_report("vhost-user trying to send unhandled ioctl");
+>          return -1;
+>          break;
+>      }
+> @@ -296,27 +296,27 @@ static int vhost_user_call(struct vhost_dev *dev,=
+ unsigned long int request,
+> =20
+>          if (msg_request !=3D msg.request) {
+>              error_report("Received unexpected msg type."
+> -                    " Expected %d received %d\n", msg_request, msg.req=
+uest);
+> +                    " Expected %d received %d", msg_request, msg.reque=
+st);
+>              return -1;
+>          }
+> =20
+>          switch (msg_request) {
+>          case VHOST_USER_GET_FEATURES:
+>              if (msg.size !=3D sizeof(m.u64)) {
+> -                error_report("Received bad msg size.\n");
+> +                error_report("Received bad msg size.");
+>                  return -1;
+>              }
+>              *((__u64 *) arg) =3D msg.u64;
+>              break;
+>          case VHOST_USER_GET_VRING_BASE:
+>              if (msg.size !=3D sizeof(m.state)) {
+> -                error_report("Received bad msg size.\n");
+> +                error_report("Received bad msg size.");
+>                  return -1;
+>              }
+>              memcpy(arg, &msg.state, sizeof(struct vhost_vring_state));
+>              break;
+>          default:
+> -            error_report("Received unexpected msg type.\n");
+> +            error_report("Received unexpected msg type.");
+>              return -1;
+>              break;
+>          }
+>=20
 
 
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Felix Imend=F6rffer, Jane Smithard, Jennifer Guild, Dilip Upmanyu,
+Graham Norton; HRB 21284 (AG N=FCrnberg)
 
