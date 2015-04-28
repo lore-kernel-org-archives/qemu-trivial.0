@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yn1Yo-00057A-3C
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 05:12:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39845)
+	id 1Yn1s5-0008Mo-NR
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 05:32:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1Yl-00050s-BE
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:12:08 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1s3-0008Mc-Ls
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:32:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1Yh-0000aM-2q
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:12:07 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:63228)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Yn1s0-0000gN-Bg
+	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 05:32:03 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:56441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Yn1Yg-0000Yn-G2; Tue, 28 Apr 2015 05:12:03 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	id 1Yn1rz-0000fl-Ld; Tue, 28 Apr 2015 05:32:00 -0400
+Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BFF62302; Tue, 28 Apr 2015 17:11:13 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 28 Apr 2015 17:11:01 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 28 Apr 2015 17:11:02 +0800
-Message-ID: <1430212264-9672-2-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
-In-Reply-To: <1430212264-9672-1-git-send-email-arei.gonglei@huawei.com>
-References: <1430212264-9672-1-git-send-email-arei.gonglei@huawei.com>
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CMW67589; Tue, 28 Apr 2015 17:28:34 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 28 Apr 2015 17:27:13 +0800
+Message-ID: <553F5281.2080006@huawei.com>
+Date: Tue, 28 Apr 2015 17:27:29 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
+To: Michael Tokarev <mjt@tls.msk.ru>, "Edgar E. Iglesias"
+	<edgar.iglesias@gmail.com>
+References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>	<5507D480.1000505@huawei.com>	<55161404.4000404@huawei.com>
+	<CAJy5ezrFVPCC1VCbvVVYYTEgx2v__AicWFUme_yh2ikuB0wOEg@mail.gmail.com>
+	<55165C4A.5080800@huawei.com> <551831C5.5020807@msgid.tls.msk.ru>
+In-Reply-To: <551831C5.5020807@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.177.19.102]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.553F4EB1.0105, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 9a0fe9ad3a7fb45c2d9398a5f3173cb5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Leon Alrae <leon.alrae@imgtec.com>
-Subject: [Qemu-trivial] [PATCH 1/3] target-mips: fix memory leak
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, "pbonzini@redhat.com" <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,60 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Apr 2015 09:12:08 -0000
+X-List-Received-Date: Tue, 28 Apr 2015 09:32:04 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+On 2015/3/30 1:09, Michael Tokarev wrote:
+> 28.03.2015 10:46, Gonglei wrote:
+> []
+>>> Can this go through -trivial?
+>>>
+>> It's ok, but I don't know if -trivial branch maintainer has a plan to send a pull request
+>> for rc2.
+> 
+> I do have plan to send a pull request, but this thing is ugly.  The
+> original code is ugly, and your patch does not make it better.  I
+> wanted to make some changes myself but didn't find fime for that.
+> 
+> Ofcourse it is okay to apply your change to plug the leak, but..
+> oh well... :(  And if we do, we'll sure forget about that completely.
+> Now at least you're pinging me from time to time... ;))
+> 
 
-Coveristy reports that variable prom_buf/params_buf going
-out of scope leaks the storage it points to.
+Maybe you are waiting for my ping, right?  :)
+Do you have any time for this leak or code optimization now?
 
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Cc: Leon Alrae <leon.alrae@imgtec.com>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- hw/mips/mips_fulong2e.c | 1 +
- hw/mips/mips_malta.c    | 1 +
- hw/mips/mips_r4k.c      | 1 +
- 3 files changed, 3 insertions(+)
-
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 4aae64a..dea941a 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -168,6 +168,7 @@ static int64_t load_kernel (CPUMIPSState *env)
-     rom_add_blob_fixed("prom", prom_buf, prom_size,
-                        cpu_mips_kseg0_to_phys(NULL, ENVP_ADDR));
- 
-+    g_free(prom_buf);
-     return kernel_entry;
- }
- 
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index b0fa71a..482250d 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -861,6 +861,7 @@ static int64_t load_kernel (void)
-     rom_add_blob_fixed("prom", prom_buf, prom_size,
-                        cpu_mips_kseg0_to_phys(NULL, ENVP_ADDR));
- 
-+    g_free(prom_buf);
-     return kernel_entry;
- }
- 
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index 66e2a58..f4dcacd 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -139,6 +139,7 @@ static int64_t load_kernel(void)
-     rom_add_blob_fixed("params", params_buf, params_size,
-                        (16 << 20) - 264);
- 
-+    g_free(params_buf);
-     return entry;
- }
- 
--- 
-1.7.12.4
+Regards,
+-Gonglei
 
 
 
