@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YnLis-0004PY-JD
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 02:43:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56768)
+	id 1YnLnp-0000Q7-LI
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 02:49:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57589)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1YnLip-0004LG-MF
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:43:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YnLno-0000Nr-1T
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:49:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1YnLio-0000gq-QS
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:43:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53683)
+	(envelope-from <mjt@tls.msk.ru>) id 1YnLnn-0002P3-04
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:48:59 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1YnLii-0000d8-G4; Wed, 29 Apr 2015 02:43:44 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t3T6hgeN019001
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Wed, 29 Apr 2015 02:43:43 -0400
-Received: from thh440s (vpn1-7-79.ams2.redhat.com [10.36.7.79])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t3T6hcwL022479
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 29 Apr 2015 02:43:40 -0400
-Date: Wed, 29 Apr 2015 08:43:35 +0200
-From: Thomas Huth <thuth@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150429084335.24fbeb31@thh440s>
-In-Reply-To: <55407B8B.1010803@msgid.tls.msk.ru>
-References: <1430153944-24368-1-git-send-email-thuth@redhat.com>
-	<55407B8B.1010803@msgid.tls.msk.ru>
-Organization: Red Hat
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YnLng-0002OQ-Ve; Wed, 29 Apr 2015 02:48:53 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id BCF4942A5D;
+	Wed, 29 Apr 2015 09:48:51 +0300 (MSK)
+Message-ID: <55407ED3.102@msgid.tls.msk.ru>
+Date: Wed, 29 Apr 2015 09:48:51 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1430212264-9672-1-git-send-email-arei.gonglei@huawei.com>
+	<1430212264-9672-3-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1430212264-9672-3-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] kvm: Silence warning from valgrind
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Hans de Goede <hdegoede@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/3] xhci: remove unused code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,59 +45,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Apr 2015 06:43:52 -0000
+X-List-Received-Date: Wed, 29 Apr 2015 06:49:01 -0000
 
-On Wed, 29 Apr 2015 09:34:51 +0300
-Michael Tokarev <mjt@tls.msk.ru> wrote:
-
-> 27.04.2015 19:59, Thomas Huth wrote:
-> > valgrind complains here about uninitialized bytes with the following message:
-> > 
-> > ==17814== Syscall param ioctl(generic) points to uninitialised byte(s)
-> > ==17814==    at 0x466A780: ioctl (in /usr/lib64/power8/libc-2.17.so)
-> > ==17814==    by 0x100735B7: kvm_vm_ioctl (kvm-all.c:1920)
-> > ==17814==    by 0x10074583: kvm_set_ioeventfd_mmio (kvm-all.c:574)
-> > 
-> > Let's fix it by using a proper struct initializer in kvm_set_ioeventfd_mmio().
-> > 
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  kvm-all.c | 14 +++++++-------
-> >  1 file changed, 7 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/kvm-all.c b/kvm-all.c
-> > index dd44f8c..077b0ed 100644
-> > --- a/kvm-all.c
-> > +++ b/kvm-all.c
-> > @@ -552,13 +552,13 @@ static int kvm_set_ioeventfd_mmio(int fd, hwaddr addr, uint32_t val,
-> >                                    bool assign, uint32_t size, bool datamatch)
-> >  {
-> >      int ret;
-> > -    struct kvm_ioeventfd iofd;
-> > -
-> > -    iofd.datamatch = datamatch ? adjust_ioeventfd_endianness(val, size) : 0;
-> > -    iofd.addr = addr;
-> > -    iofd.len = size;
-> > -    iofd.flags = 0;
-> > -    iofd.fd = fd;
-> > +    struct kvm_ioeventfd iofd = {
-> > +        .datamatch = datamatch ? adjust_ioeventfd_endianness(val, size) : 0,
-> > +        .addr = addr,
-> > +        .len = size,
-> > +        .flags = 0,
-> > +        .fd = fd,
-> > +    };
+28.04.2015 12:11, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
 > 
-> Hm.  So, what's the difference?  The same fields are assigned the same
-> values, why in first case we have some uninitialized data and in second
-> case everything is initialized?  Does struct initializer zero-fills all
-> other places (alignments, missing fields etc) ?
+> Value from xfer->packet.ep is assigned to ep here, but that
+> stored value is not used before it is overwritten. Remove it.
+> 
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  hw/usb/hcd-xhci.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+> index ba15ae0..99f11fc 100644
+> --- a/hw/usb/hcd-xhci.c
+> +++ b/hw/usb/hcd-xhci.c
+> @@ -2204,7 +2204,6 @@ static void xhci_kick_ep(XHCIState *xhci, unsigned int slotid,
+>          if (epid == 1) {
+>              if (xhci_fire_ctl_transfer(xhci, xfer) >= 0) {
+>                  epctx->next_xfer = (epctx->next_xfer + 1) % TD_QUEUE;
+> -                ep = xfer->packet.ep;
+>              } else {
+>                  DPRINTF("xhci: error firing CTL transfer\n");
+>              }
 
-Right, the struct initializer fills the remaining fields with zeros.
+This one is somewhat fun.  ep variable is not used in whole this
+function until the very end, with the code:
 
-> If yes, there's no need to assign zero to flags, btw ;)
 
-True. Shall I sent a patch without that line?
+    ep = xhci_epid_to_usbep(xhci, slotid, epid);
+    if (ep) {
+        usb_device_flush_ep_queue(ep->dev, ep);
+    }
 
- Thomas
+There are only 2 assignments to it here, it is the NULL
+initializer and this place which is being removed by this
+patch (which is obviously unused).
+
+So, I think if we were to drop this assignment, we should
+remove the initializer too.  But before doing this, I think
+we should try to remember _why_ this assignment is here in
+the first place. The code looks like after the loop, this
+ep variable was supposed to be used for something.  Or is
+it just a leftover from 518ad5f2a075 (Cc'ing the author)?
+
+I haven't looked at all this in more details without good
+knowlege of the protocol and background.
+
+Thanks,
+
+/mjt
 
