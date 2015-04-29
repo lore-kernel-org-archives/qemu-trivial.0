@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YnBM6-0001NG-5c
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Apr 2015 15:39:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33771)
+	id 1YnKjK-0002zR-J3
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 01:40:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YnBM3-0001Kj-T9
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 15:39:40 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YnKjI-0002w4-M4
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 01:40:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YnBM3-0006TQ-0b
-	for qemu-trivial@nongnu.org; Tue, 28 Apr 2015 15:39:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40552)
+	(envelope-from <mjt@tls.msk.ru>) id 1YnKjH-0004U5-Rt
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 01:40:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37753)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YnBLy-0006S2-BA; Tue, 28 Apr 2015 15:39:34 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t3SJdXfj002152
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 28 Apr 2015 15:39:33 -0400
-Received: from [10.3.113.25] (ovpn-113-25.phx2.redhat.com [10.3.113.25])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t3SJdWLZ026796; Tue, 28 Apr 2015 15:39:33 -0400
-Message-ID: <553FE1F4.2020403@redhat.com>
-Date: Tue, 28 Apr 2015 13:39:32 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
-MIME-Version: 1.0
-To: John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org
-References: <1430248841-26558-1-git-send-email-jsnow@redhat.com>
-In-Reply-To: <1430248841-26558-1-git-send-email-jsnow@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="5X8sOACIcEGeKkAIGWulCQlMIFRxBa5M1"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-commands: Fix typo
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YnKjD-0004Ax-K7; Wed, 29 Apr 2015 01:40:11 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 8C6EA42A19;
+	Wed, 29 Apr 2015 08:40:02 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 71D1593D;
+	Wed, 29 Apr 2015 08:40:02 +0300 (MSK)
+Received: (nullmailer pid 2556 invoked by uid 1000);
+	Wed, 29 Apr 2015 05:40:01 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Wed, 29 Apr 2015 08:40:01 +0300
+Message-Id: <1430286001-2473-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH] mb: cpu: Renumber EXCP_* constants to close
+	gap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,46 +43,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Apr 2015 19:39:40 -0000
+X-List-Received-Date: Wed, 29 Apr 2015 05:40:17 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---5X8sOACIcEGeKkAIGWulCQlMIFRxBa5M1
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+After removal of EXCP_NMI there's a gap in EXCP_*
+numbering. Let's remove it.
 
-On 04/28/2015 01:20 PM, John Snow wrote:
-> Just a trivial patch to correct a QMP example in qmp-commands.hx.
->=20
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  qmp-commands.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+Since I applied Peter's series already, without renumbering,
+b/c he wanted to make no code changes and that's a good plan,
+I send this renumbering as a separate change.  Hopefully this
+way it is possible to get Reviewed-by from Edgar for the whole
+series including this my change in a separate patch, because
+Edgar only gave his R-b for the series with the change :)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+ target-microblaze/cpu.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
+index 6522af7..d389597 100644
+--- a/target-microblaze/cpu.h
++++ b/target-microblaze/cpu.h
+@@ -36,11 +36,11 @@ typedef struct CPUMBState CPUMBState;
+ 
+ #define ELF_MACHINE	EM_MICROBLAZE
+ 
+-#define EXCP_MMU        2
+-#define EXCP_IRQ        3
+-#define EXCP_BREAK      4
+-#define EXCP_HW_BREAK   5
+-#define EXCP_HW_EXCP    6
++#define EXCP_MMU        1
++#define EXCP_IRQ        2
++#define EXCP_BREAK      3
++#define EXCP_HW_BREAK   4
++#define EXCP_HW_EXCP    5
+ 
+ /* MicroBlaze-specific interrupt pending bits.  */
+ #define CPU_INTERRUPT_NMI       CPU_INTERRUPT_TGT_EXT_3
+-- 
+2.1.4
 
-
---5X8sOACIcEGeKkAIGWulCQlMIFRxBa5M1
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJVP+H0AAoJEKeha0olJ0Nq6KkH/innGwZ4H+O83GgK8vBiF4dT
-eAHEemQd+QxuhC9rf/mvP/muBrvzr15pTIT7ygX1Wp4ywE3N/zfQN4VH62il5Nn/
-70XjVBiajf2bW/uIzDrp3ahiXa5+l1NDl/Ua7A73YFK14k8uatVXy6bzH21wI6i6
-uXIJ6CCEoG8P5uVZyu4UV2pHt+jdxyg6DVw/zXipnLtddXndwCq2ftDaiIa/Qy/B
-ywRuHVyxrpvsg8sbiCAc+Zh10c31bbaI+krG2JLnXY3/cDtzdxoQTcAO1cMLUoz+
-TlXiLNN72siGpKzessjtRZaspJaUi2J/LefSyEHO8kYOBhjl+c/OHkiQ7LuEokg=
-=KRNY
------END PGP SIGNATURE-----
-
---5X8sOACIcEGeKkAIGWulCQlMIFRxBa5M1--
 
