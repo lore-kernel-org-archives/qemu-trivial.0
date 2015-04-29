@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YnKpi-0008M8-2z
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 01:46:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43173)
+	id 1YnLJf-0006FG-3M
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 02:17:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnKpb-00089c-3S
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 01:46:47 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YnLJa-00066G-8p
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:17:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnKpa-0006Rf-9E
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 01:46:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59526)
+	(envelope-from <mjt@tls.msk.ru>) id 1YnLJZ-00083O-8n
+	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 02:17:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42328)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YnKpU-0006Qg-6l; Wed, 29 Apr 2015 01:46:40 -0400
+	id 1YnLJU-00082P-Mg; Wed, 29 Apr 2015 02:17:40 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3D5EF42A19;
-	Wed, 29 Apr 2015 08:46:39 +0300 (MSK)
-Message-ID: <5540703F.7060600@msgid.tls.msk.ru>
-Date: Wed, 29 Apr 2015 08:46:39 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id A5F9342A44;
+	Wed, 29 Apr 2015 09:17:39 +0300 (MSK)
+Message-ID: <55407783.5090606@msgid.tls.msk.ru>
+Date: Wed, 29 Apr 2015 09:17:39 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.6.0
 MIME-Version: 1.0
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, 
- qemu-devel@nongnu.org
-References: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
-	<553E4BEA.2070403@msgid.tls.msk.ru>
-In-Reply-To: <553E4BEA.2070403@msgid.tls.msk.ru>
+To: Thomas Huth <huth@tuxfamily.org>, qemu-devel@nongnu.org, 
+	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
+References: <20150428082846.1348066e@thh440s> <20150428083849.5319c456@tpl530>
+In-Reply-To: <20150428083849.5319c456@tpl530>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, edgari@xilinx.com,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH microblaze v1 0/6] Microblaze Cleanups
+Subject: Re: [Qemu-trivial] [PATCH v2 0/7] Remove more unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,25 +43,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Apr 2015 05:46:48 -0000
+X-List-Received-Date: Wed, 29 Apr 2015 06:17:47 -0000
 
-27.04.2015 17:47, Michael Tokarev wrote:
-> 26.04.2015 22:10, Peter Crosthwaite wrote:
->> Hi Edgar,
+28.04.2015 09:38, Thomas Huth wrote:
+>> Date: Mon, 27 Apr 2015 20:09:50 +0200
+>> From: Stefan Weil <sw@weilnetz.de>
 >>
->> This is some code cleanup of Microblaze. Mainly unused code
->> deletion but also code share of the defconfig (P1).
+>> Am 27.04.2015 um 13:27 schrieb Michael Tokarev:
+>>> 14.03.2015 09:19, Thomas Huth wrote:
+>>>> Here are some more patches to remove completely unused functions
+>>>> from QEMU. Please review carefully, some of the functions might
+>>>> still get usefull in the future again, so if you discover one,
+>>>> please let me know, then I'll remove it from the patch series
+>>>> again.
+>>> Applied to -trivial, thank you!
+>>>
+>> I'm sorry that I did not notice this series earlier.
+>>
+>> The function serial_set_frequency() is used in my personal branch for 
+>> MIPS AR7.
 > 
-> Applied all 6 to -trivial, as is, since the whole series
-> does not perform any code changes.  Renumbering EXCP_*
-> constants can be done later.
+> Ok, since this function still could be again useful in the future,
+> could you simply drop the related patch from your queue again, Michael?
+> (or just drop the related hunks in the patch if you've got some spare
+> time to rework it? If not, I could do that at a later point in time and
+> send a new patch).
 
-(Just sent the renumbering change separately, to hopefully
-get final R-b from Edgar ;)
+Piggy-back.  Oh well :)
 
-But one more thing.  I'd like to rename "mb:" in subjects
-to be "microblaze:", since the top message (this 0/6) wont
-be in git and "mb:" prefix is somewhat too short ;)
+I removed the patch named "Remove various unused functions" for now.
+Because if I'll try to edit it, it'll be difficult for me to retain
+your s-o-b.
+
+You can resend this one with the right set of functions being removed.
 
 Thanks,
 
