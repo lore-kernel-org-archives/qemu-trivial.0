@@ -1,46 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynu8O-0001PZ-Gh
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 15:28:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51843)
+	id 1Ynufx-0006L8-Bz
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 16:03:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ynu8M-0001MY-8c
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 15:28:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Ynufu-0006JZ-2B
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 16:03:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Ynu8L-0007hJ-3r
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 15:28:30 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:39726)
+	(envelope-from <peter.maydell@linaro.org>) id 1Ynufp-0001Q3-9T
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 16:03:09 -0400
+Received: from mail-ig0-f173.google.com ([209.85.213.173]:36857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Ynu8G-0007gS-At; Thu, 30 Apr 2015 15:28:24 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	3A5D41181897; Thu, 30 Apr 2015 21:28:22 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Ccw9GHOVgleE; Thu, 30 Apr 2015 21:28:20 +0200 (CEST)
-Received: from [192.168.178.24] (p54AC809E.dip0.t-ipconnect.de
-	[84.172.128.158])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	16B13118188E; Thu, 30 Apr 2015 21:28:20 +0200 (CEST)
-Message-ID: <55428253.5020300@weilnetz.de>
-Date: Thu, 30 Apr 2015 21:28:19 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.6.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Ynufp-0001PG-2f
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 16:03:05 -0400
+Received: by igblo3 with SMTP id lo3so23684601igb.1
+	for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2015 13:03:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=p+2uPF2w7JaYf3OlTBXAvX41gozpPrwAI/xZqtPrEZ0=;
+	b=M7sTgsqHDQR4bluYW6DdKEaCJrK0jjncik1Cof4eHw17qot5Zl7AMxCFBqyoX19kec
+	SnjccKs4ogdXe4/wdJlffTNBOz//+ZtKY+y+J27MCHYCqB4vKBOF+iZVpA8wm6Uys+Zb
+	gwOdAGA1AhRoQVX1gXp1hbpdhJQjpSAP2wFpLhq0L/JZFfpIDagpeIH3oYIoT4Xxzd8V
+	tZS8ctLho1mZhJH0iwBKoCZq87Ckfojm6n8iyTxmhkM/uWk0VW7OflgC23ShxVlmGJqX
+	l4f5Jvil+1QgIEEeFxIaqikAzHrrF5C3cS8I7XTKSkGb3tJcz1mq8WY8WolL/G59fTaJ
+	BZyw==
+X-Gm-Message-State: ALoCoQn9HUXA7+UeDdEYuYQ+qcJyJ3Vm/aWKgXGGgwl4SH4zURoqqK4dD1vtKftkxI6X5G7wC5fO
+X-Received: by 10.50.138.232 with SMTP id qt8mr5943477igb.28.1430424184530;
+	Thu, 30 Apr 2015 13:03:04 -0700 (PDT)
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
+Received: by 10.107.136.220 with HTTP; Thu, 30 Apr 2015 13:02:44 -0700 (PDT)
+In-Reply-To: <55428253.5020300@weilnetz.de>
 References: <CAFEAcA_g1SgYSPqaiP-eewaY1AbKLAJoReWYgD5kvhEW5JbW8w@mail.gmail.com>
 	<1430421390-2787-1-git-send-email-cota@braap.org>
-In-Reply-To: <1430421390-2787-1-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
+	<55428253.5020300@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2015 21:02:44 +0100
+Message-ID: <CAFEAcA-49fPQBmWLec2iSkVvt2QPkskq9-_JVVWuyjsyRh9wCA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.173
+Cc: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>, "Emilio G. Cota" <cota@braap.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] i440fx-test: guard
  ARRAY_SIZE definition with #ifndef
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,36 +59,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 19:28:31 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 20:03:11 -0000
 
-Am 30.04.2015 um 21:16 schrieb Emilio G. Cota:
-> ARRAY_SIZE is defined in osdep.h so having an unconditional
-> definition here is fragile.
->
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->   tests/i440fx-test.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
-> index d0bc8de..d610e66 100644
-> --- a/tests/i440fx-test.c
-> +++ b/tests/i440fx-test.c
-> @@ -27,7 +27,9 @@
->   
->   #define BROKEN 1
->   
-> +#ifndef ARRAY_SIZE
->   #define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
-> +#endif
->   
->   typedef struct TestData
->   {
+On 30 April 2015 at 20:28, Stefan Weil <sw@weilnetz.de> wrote:
+> Am 30.04.2015 um 21:16 schrieb Emilio G. Cota:
+>>
+>> ARRAY_SIZE is defined in osdep.h so having an unconditional
+>> definition here is fragile.
 
-Why not include osdep.h via qemu-common.h and remove all other include 
-statements which then are no longer needed? I'd prefer that variant.
+FWIW, the original patch of this failed to build on x86 too,
+so I don't think we currently include osdep.h from this file in
+any circumstances... Where do you get the ARRAY_SIZE definition
+from that presumably lets you build without this one?
 
-Cheers
-Stefan
+> Why not include osdep.h via qemu-common.h and remove all other include
+> statements which then are no longer needed? I'd prefer that variant.
 
+Can we include qemu-common.h in these libqos standalone test
+executables? I forget... The rtl8139 test seems to though, so
+I guess it's OK.
+
+-- PMM
 
