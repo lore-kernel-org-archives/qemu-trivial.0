@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynh0C-0000s1-Km
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 01:27:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49364)
+	id 1Ynh0D-0000tw-82
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 01:27:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynh05-0000e7-Lq
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:27:06 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynh06-0000eV-6c
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:27:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynh04-0000dg-TD
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynh04-0000dq-VP
 	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:27:05 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39662)
+Received: from isrv.corpit.ru ([86.62.121.231]:38472)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Yngzx-0000bG-AZ; Thu, 30 Apr 2015 01:26:57 -0400
+	id 1Yngzx-0000bH-At; Thu, 30 Apr 2015 01:26:57 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 96F8C42B8E;
+	by isrv.corpit.ru (Postfix) with ESMTP id A557C42B8F;
 	Thu, 30 Apr 2015 08:26:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id AD6AC967;
-	Thu, 30 Apr 2015 08:09:00 +0300 (MSK)
-Received: (nullmailer pid 4374 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id B8DA6946;
+	Thu, 30 Apr 2015 08:08:57 +0300 (MSK)
+Received: (nullmailer pid 4294 invoked by uid 1000);
 	Thu, 30 Apr 2015 05:08:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 30 Apr 2015 08:08:53 +0300
-Message-Id: <bcb983e5cd718f0e8ea7c1fdf7b670c327c5ec04.1430370396.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 30 Apr 2015 08:08:14 +0300
+Message-Id: <1ceca3dc79da677ffc2694dcaf326b308b70776e.1430370396.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 40/42] kvm: Silence warning from valgrind
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PULL 01/42] tpm: Cast 64bit variables to int when
+	used in DPRINTF
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,50 +44,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 05:27:06 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 05:27:07 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
-valgrind complains here about uninitialized bytes with the following message:
+Cast 64bit variables to int when used in DPRINTF. They only contain
+32bit of data.
 
-==17814== Syscall param ioctl(generic) points to uninitialised byte(s)
-==17814==    at 0x466A780: ioctl (in /usr/lib64/power8/libc-2.17.so)
-==17814==    by 0x100735B7: kvm_vm_ioctl (kvm-all.c:1920)
-==17814==    by 0x10074583: kvm_set_ioeventfd_mmio (kvm-all.c:574)
-
-Let's fix it by using a proper struct initializer in kvm_set_ioeventfd_mmio().
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- kvm-all.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ hw/tpm/tpm_tis.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/kvm-all.c b/kvm-all.c
-index 2a717e5..37cc2cf 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -552,13 +552,13 @@ static int kvm_set_ioeventfd_mmio(int fd, hwaddr addr, uint32_t val,
-                                   bool assign, uint32_t size, bool datamatch)
- {
-     int ret;
--    struct kvm_ioeventfd iofd;
--
--    iofd.datamatch = datamatch ? adjust_ioeventfd_endianness(val, size) : 0;
--    iofd.addr = addr;
--    iofd.len = size;
--    iofd.flags = 0;
--    iofd.fd = fd;
-+    struct kvm_ioeventfd iofd = {
-+        .datamatch = datamatch ? adjust_ioeventfd_endianness(val, size) : 0,
-+        .addr = addr,
-+        .len = size,
-+        .flags = 0,
-+        .fd = fd,
-+    };
+diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+index 815c8ea..cb9c7c8 100644
+--- a/hw/tpm/tpm_tis.c
++++ b/hw/tpm/tpm_tis.c
+@@ -421,7 +421,7 @@ static void tpm_tis_dump_state(void *opaque, hwaddr addr)
  
-     if (!kvm_enabled()) {
-         return -ENOSYS;
+     for (idx = 0; regs[idx] != 0xfff; idx++) {
+         DPRINTF("tpm_tis: 0x%04x : 0x%08x\n", regs[idx],
+-                (uint32_t)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
++                (int)tpm_tis_mmio_read(opaque, base + regs[idx], 4));
+     }
+ 
+     DPRINTF("tpm_tis: read offset   : %d\n"
+@@ -555,7 +555,7 @@ static uint64_t tpm_tis_mmio_read(void *opaque, hwaddr addr,
+         val >>= shift;
+     }
+ 
+-    DPRINTF("tpm_tis:  read.%u(%08x) = %08x\n", size, (int)addr, (uint32_t)val);
++    DPRINTF("tpm_tis:  read.%u(%08x) = %08x\n", size, (int)addr, (int)val);
+ 
+     return val;
+ }
+@@ -578,7 +578,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
+     uint16_t len;
+     uint32_t mask = (size == 1) ? 0xff : ((size == 2) ? 0xffff : ~0);
+ 
+-    DPRINTF("tpm_tis: write.%u(%08x) = %08x\n", size, (int)addr, (uint32_t)val);
++    DPRINTF("tpm_tis: write.%u(%08x) = %08x\n", size, (int)addr, (int)val);
+ 
+     if (locty == 4 && !hw_access) {
+         DPRINTF("tpm_tis: Access to locality 4 only allowed from hardware\n");
+@@ -815,7 +815,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
+             /* drop the byte */
+         } else {
+             DPRINTF("tpm_tis: Data to send to TPM: %08x (size=%d)\n",
+-                    val, size);
++                    (int)val, size);
+             if (tis->loc[locty].state == TPM_TIS_STATE_READY) {
+                 tis->loc[locty].state = TPM_TIS_STATE_RECEPTION;
+                 tpm_tis_sts_set(&tis->loc[locty],
 -- 
 2.1.4
 
