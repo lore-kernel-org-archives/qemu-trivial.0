@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynjxg-0003WT-Ly
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:36:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56186)
+	id 1Ynk3y-0005Wr-AA
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:43:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Ynjxb-0003R6-CC
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:36:44 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Ynk3w-0005Wg-55
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:43:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1YnjxY-0001O7-4L
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:36:43 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Ynk3q-0003MK-9v
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:43:16 -0400
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:46137 helo=socrates.bennee.com)
+	([88.198.71.155]:46153 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1YnjxX-0001No-Tj; Thu, 30 Apr 2015 04:36:40 -0400
+	id 1Ynk3q-0003LR-3q; Thu, 30 Apr 2015 04:43:10 -0400
 Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1YnlAq-0006mL-43; Thu, 30 Apr 2015 11:54:28 +0200
-References: <1430379532-7300-1-git-send-email-crosthwaite.peter@gmail.com>
+	id 1YnlH9-0006oM-7K; Thu, 30 Apr 2015 12:00:59 +0200
+References: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
+	<1430075424-25975-4-git-send-email-crosthwaite.peter@gmail.com>
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-In-reply-to: <1430379532-7300-1-git-send-email-crosthwaite.peter@gmail.com>
-Date: Thu, 30 Apr 2015 09:37:17 +0100
-Message-ID: <87k2wu1076.fsf@linaro.org>
+In-reply-to: <1430075424-25975-4-git-send-email-crosthwaite.peter@gmail.com>
+Date: Thu, 30 Apr 2015 09:43:48 +0100
+Message-ID: <87ioce0zwb.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
@@ -31,10 +32,10 @@ X-SA-Exim-Mail-From: alex.bennee@linaro.org
 X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	qemu-devel@nongnu.org, proljc@gmail.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] openrisc: cpu: Remove
-	unused cpu_get_pc
+Cc: qemu-trivial@nongnu.org, edgari@xilinx.com, qemu-devel@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH microblaze v1 3/6] mb: cpu:
+	Remote unused cpu_get_pc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,7 +47,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 08:36:44 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 08:43:17 -0000
 
 
 Peter Crosthwaite <crosthwaitepeter@gmail.com> writes:
@@ -55,27 +56,30 @@ Peter Crosthwaite <crosthwaitepeter@gmail.com> writes:
 >
 > Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 > ---
->  target-openrisc/cpu.h | 5 -----
+>  target-microblaze/cpu.h | 5 -----
 >  1 file changed, 5 deletions(-)
 >
-> diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
-> index b25324b..9e23cd0 100644
-> --- a/target-openrisc/cpu.h
-> +++ b/target-openrisc/cpu.h
-> @@ -415,9 +415,4 @@ static inline int cpu_mmu_index(CPUOpenRISCState *env)
+> diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
+> index 7d06227..2c18b49 100644
+> --- a/target-microblaze/cpu.h
+> +++ b/target-microblaze/cpu.h
+> @@ -333,11 +333,6 @@ static inline int cpu_interrupts_enabled(CPUMBState *env)
 >  
->  #include "exec/exec-all.h"
+>  #include "exec/cpu-all.h"
 >  
-> -static inline target_ulong cpu_get_pc(CPUOpenRISCState *env)
+> -static inline target_ulong cpu_get_pc(CPUMBState *env)
 > -{
-> -    return env->pc;
+> -    return env->sregs[SR_PC];
 > -}
 > -
->  #endif /* CPU_OPENRISC_H */
+>  static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
+>                                          target_ulong *cs_base, int *flags)
+>  {
 
-Are you going to clean up the the microblaze one as well?
+Ahh I see that now ;-)
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
 
 -- 
 Alex Bennée
