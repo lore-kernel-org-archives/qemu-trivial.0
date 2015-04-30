@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynk3y-0005Wr-AA
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:43:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56792)
+	id 1Ynk7f-0006nb-If
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:47:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Ynk3w-0005Wg-55
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:43:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7a-0006e4-Ra
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Ynk3q-0003MK-9v
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:43:16 -0400
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:46153 helo=socrates.bennee.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7a-0004bU-0X
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:02 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52453)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Ynk3q-0003LR-3q; Thu, 30 Apr 2015 04:43:10 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1YnlH9-0006oM-7K; Thu, 30 Apr 2015 12:00:59 +0200
-References: <1430075424-25975-1-git-send-email-crosthwaite.peter@gmail.com>
-	<1430075424-25975-4-git-send-email-crosthwaite.peter@gmail.com>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-In-reply-to: <1430075424-25975-4-git-send-email-crosthwaite.peter@gmail.com>
-Date: Thu, 30 Apr 2015 09:43:48 +0100
-Message-ID: <87ioce0zwb.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, edgari@xilinx.com, qemu-devel@nongnu.org,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH microblaze v1 3/6] mb: cpu:
-	Remote unused cpu_get_pc
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Ynk7V-0004ZO-PI; Thu, 30 Apr 2015 04:46:57 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id C2B5142BC3;
+	Thu, 30 Apr 2015 11:46:56 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id E79CC960;
+	Thu, 30 Apr 2015 08:08:59 +0300 (MSK)
+Received: (nullmailer pid 4360 invoked by uid 1000);
+	Thu, 30 Apr 2015 05:08:57 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Thu, 30 Apr 2015 08:08:46 +0300
+Message-Id: <56e7a6da4d31e61c025b79941c038d8fa1bd5883.1430370396.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
+References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, "Emilio G. Cota" <cota@braap.org>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 33/42] qemu-char: remove unused list node from
+	FDCharDriver
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,40 +44,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 08:43:17 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 08:47:03 -0000
 
+From: "Emilio G. Cota" <cota@braap.org>
 
-Peter Crosthwaite <crosthwaitepeter@gmail.com> writes:
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-char.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> This function is not used by anything. Remove.
->
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> ---
->  target-microblaze/cpu.h | 5 -----
->  1 file changed, 5 deletions(-)
->
-> diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
-> index 7d06227..2c18b49 100644
-> --- a/target-microblaze/cpu.h
-> +++ b/target-microblaze/cpu.h
-> @@ -333,11 +333,6 @@ static inline int cpu_interrupts_enabled(CPUMBState *env)
->  
->  #include "exec/cpu-all.h"
->  
-> -static inline target_ulong cpu_get_pc(CPUMBState *env)
-> -{
-> -    return env->sregs[SR_PC];
-> -}
-> -
->  static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
->                                          target_ulong *cs_base, int *flags)
->  {
-
-Ahh I see that now ;-)
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-
-
+diff --git a/qemu-char.c b/qemu-char.c
+index a405d76..d0c1564 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -973,7 +973,6 @@ typedef struct FDCharDriver {
+     CharDriverState *chr;
+     GIOChannel *fd_in, *fd_out;
+     int max_size;
+-    QTAILQ_ENTRY(FDCharDriver) node;
+ } FDCharDriver;
+ 
+ /* Called with chr_write_lock held.  */
 -- 
-Alex Bennée
+2.1.4
+
 
