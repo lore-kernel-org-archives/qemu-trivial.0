@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynk7g-0006pP-7R
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:47:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57466)
+	id 1Ynk7h-0006qx-0Z
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 04:47:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57481)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7a-0006e5-Vf
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:03 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7b-0006e8-Di
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7a-0004bf-5j
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53574)
+	(envelope-from <mjt@tls.msk.ru>) id 1Ynk7a-0004br-AN
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 04:47:03 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34413)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Ynk7W-0004aG-FC; Thu, 30 Apr 2015 04:46:58 -0400
+	id 1Ynk7V-0004ZJ-PB; Thu, 30 Apr 2015 04:46:58 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CB6AA42BC4;
+	by isrv.corpit.ru (Postfix) with ESMTP id B757142BC1;
 	Thu, 30 Apr 2015 11:46:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1341B93E;
-	Thu, 30 Apr 2015 08:08:58 +0300 (MSK)
-Received: (nullmailer pid 4314 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 87A00966;
+	Thu, 30 Apr 2015 08:09:00 +0300 (MSK)
+Received: (nullmailer pid 4337 invoked by uid 1000);
 	Thu, 30 Apr 2015 05:08:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 30 Apr 2015 08:08:24 +0300
-Message-Id: <0b3beae70cdb859101d028cafd818e60364b2955.1430370396.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 30 Apr 2015 08:08:35 +0300
+Message-Id: <dfc2848090a11f09ec399c35ffaea610b0b2103f.1430370396.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PULL 11/42] tpm: fix coding style
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 22/42] libcacard: stop including qemu-common.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,38 +45,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 30 Apr 2015 08:47:04 -0000
 
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Fix coding style in one instance.
+This is a small step towards making libcacard standalone.
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/tpm/tpm_tis.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ libcacard/cac.c            | 5 ++++-
+ libcacard/card_7816.c      | 4 +++-
+ libcacard/event.c          | 2 +-
+ libcacard/vcard.c          | 4 +++-
+ libcacard/vcard_emul_nss.c | 2 +-
+ libcacard/vreader.c        | 4 +++-
+ libcacard/vscclient.c      | 8 +++++++-
+ 7 files changed, 22 insertions(+), 7 deletions(-)
 
-diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
-index 4b6d601..b8235d5 100644
---- a/hw/tpm/tpm_tis.c
-+++ b/hw/tpm/tpm_tis.c
-@@ -842,7 +842,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
-                 (tis->loc[locty].sts & TPM_TIS_STS_EXPECT)) {
-                 /* we have a packet length - see if we have all of it */
- #ifdef RAISE_STS_IRQ
--                bool needIrq = !(tis->loc[locty].sts & TPM_TIS_STS_VALID);
-+                bool need_irq = !(tis->loc[locty].sts & TPM_TIS_STS_VALID);
+diff --git a/libcacard/cac.c b/libcacard/cac.c
+index f38fdce..bc84534 100644
+--- a/libcacard/cac.c
++++ b/libcacard/cac.c
+@@ -5,7 +5,10 @@
+  * See the COPYING.LIB file in the top-level directory.
+  */
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
++
++#include <string.h>
++#include <stdbool.h>
+ 
+ #include "cac.h"
+ #include "vcard.h"
+diff --git a/libcacard/card_7816.c b/libcacard/card_7816.c
+index 814fa16..22fd334 100644
+--- a/libcacard/card_7816.c
++++ b/libcacard/card_7816.c
+@@ -5,7 +5,9 @@
+  * See the COPYING.LIB file in the top-level directory.
+  */
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
++
++#include <string.h>
+ 
+ #include "vcard.h"
+ #include "vcard_emul.h"
+diff --git a/libcacard/event.c b/libcacard/event.c
+index 4c551e4..63f4057 100644
+--- a/libcacard/event.c
++++ b/libcacard/event.c
+@@ -5,7 +5,7 @@
+  * See the COPYING.LIB file in the top-level directory.
+  */
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
+ 
+ #include "vcard.h"
+ #include "vreader.h"
+diff --git a/libcacard/vcard.c b/libcacard/vcard.c
+index d140a8e..1a87208 100644
+--- a/libcacard/vcard.c
++++ b/libcacard/vcard.c
+@@ -5,7 +5,9 @@
+  * See the COPYING.LIB file in the top-level directory.
+  */
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
++
++#include <string.h>
+ 
+ #include "vcard.h"
+ #include "vcard_emul.h"
+diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+index 950edee..6955f69 100644
+--- a/libcacard/vcard_emul_nss.c
++++ b/libcacard/vcard_emul_nss.c
+@@ -25,7 +25,7 @@
+ #include <prthread.h>
+ #include <secerr.h>
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
+ 
+ #include "vcard.h"
+ #include "card_7816t.h"
+diff --git a/libcacard/vreader.c b/libcacard/vreader.c
+index 0315dd8..9725f46 100644
+--- a/libcacard/vreader.c
++++ b/libcacard/vreader.c
+@@ -10,7 +10,9 @@
  #endif
-                 len = tpm_tis_get_size_from_buffer(&tis->loc[locty].w_buffer);
-                 if (len > tis->loc[locty].w_offset) {
-@@ -853,7 +853,7 @@ static void tpm_tis_mmio_write_intern(void *opaque, hwaddr addr,
-                     tpm_tis_sts_set(&tis->loc[locty], TPM_TIS_STS_VALID);
-                 }
- #ifdef RAISE_STS_IRQ
--                if (needIrq) {
-+                if (need_irq) {
-                     tpm_tis_raise_irq(s, locty, TPM_TIS_INT_STS_VALID);
-                 }
+ #define G_LOG_DOMAIN "libcacard"
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
++
++#include <string.h>
+ 
+ #include "vcard.h"
+ #include "vcard_emul.h"
+diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+index fa6041d..0652684 100644
+--- a/libcacard/vscclient.c
++++ b/libcacard/vscclient.c
+@@ -10,14 +10,20 @@
+  * See the COPYING.LIB file in the top-level directory.
+  */
+ 
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #ifndef _WIN32
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <netdb.h>
++#include <unistd.h>
+ #define closesocket(x) close(x)
++#else
++#include <getopt.h>
  #endif
+ 
+-#include "qemu-common.h"
++#include "glib-compat.h"
+ 
+ #include "vscard_common.h"
+ 
 -- 
 2.1.4
 
