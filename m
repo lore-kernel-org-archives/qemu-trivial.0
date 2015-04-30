@@ -1,37 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ynj1x-0002SK-CF
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 03:37:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45087)
+	id 1Ynj41-0007CC-8h
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 03:39:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynj1s-0002GN-K8
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 03:37:06 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Ynj3y-00075o-6x
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 03:39:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Ynj1r-0006CU-Aj
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 03:37:04 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37328)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Ynj3x-0007IT-GF
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 03:39:14 -0400
+Received: from mail-pa0-x22d.google.com ([2607:f8b0:400e:c03::22d]:33729)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Ynj1l-00069E-VY; Thu, 30 Apr 2015 03:36:58 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 98DD442BAA;
-	Thu, 30 Apr 2015 10:36:56 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id CF48B94A;
-	Thu, 30 Apr 2015 08:08:57 +0300 (MSK)
-Received: (nullmailer pid 4308 invoked by uid 1000);
-	Thu, 30 Apr 2015 05:08:57 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1Ynj3s-0007Hg-Si; Thu, 30 Apr 2015 03:39:09 -0400
+Received: by pacwv17 with SMTP id wv17so52087077pac.0;
+	Thu, 30 Apr 2015 00:39:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=UGp5k5RvdwR7U3RKzLYYEli5n70lVjYxyAhQpcyXsTQ=;
+	b=JB9+4UZ0D2tW4zZ+K6jz93hQ/nk7QaiEAc8r/Ox6mEiqNUoypsHI0PMIKmEmjzPLQh
+	b5wYDILOvsIzOdqc/ddXwSt8F7kiC1AQWDovLLi5Bv2ySFmPbvDoD8gphGsk/mx+nmDT
+	XxhCEJFmsHjkzd6GxGSmIfNmdFpullnsoWov17i6Lt7P517to7N4t8LRmdbD+51UELPg
+	Bra6wepvuz/ro7NkvOw1lRwSoaLdmJ5ghIXLhvqxc3nwY2up0fQcNbhbxxoO0djq1khQ
+	KGfhdRYGRFTzuHLrfAmqjCoatv2lxRkFsjEUBRGMRKI3E/4RgcQMoIxhGuLczpfjf22S
+	IzKQ==
+X-Received: by 10.66.119.238 with SMTP id kx14mr5851679pab.2.1430379548080;
+	Thu, 30 Apr 2015 00:39:08 -0700 (PDT)
+Received: from pcrost-laptop.hsd1.ca.comcast.net
+	(c-24-5-157-48.hsd1.ca.comcast.net. [24.5.157.48])
+	by mx.google.com with ESMTPSA id
+	ef15sm1267926pad.38.2015.04.30.00.39.06
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 30 Apr 2015 00:39:06 -0700 (PDT)
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 30 Apr 2015 08:08:21 +0300
-Message-Id: <6ad815923b6343403636a10df9361f5ee804d396.1430370396.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
-References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 08/42] misc: Fix new collection of typos
+Date: Thu, 30 Apr 2015 00:38:52 -0700
+Message-Id: <1430379532-7300-1-git-send-email-crosthwaite.peter@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::22d
+Cc: qemu-trivial@nongnu.org, proljc@gmail.com,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: [Qemu-trivial] [PATCH] openrisc: cpu: Remove unused cpu_get_pc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,156 +54,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 07:37:06 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 07:39:15 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+This function is not used by anything. Remove.
 
-All of them were reported by codespell.
-Most typos are in comments, one is in an error message.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
- hw/block/virtio-blk.c     | 2 +-
- hw/misc/edu.c             | 2 +-
- hw/net/virtio-net.c       | 2 +-
- hw/ppc/spapr.c            | 2 +-
- qga/qapi-schema.json      | 2 +-
- target-s390x/mmu_helper.c | 8 ++++----
- target-s390x/translate.c  | 2 +-
- tests/libqos/ahci.c       | 4 ++--
- 8 files changed, 12 insertions(+), 12 deletions(-)
+ target-openrisc/cpu.h | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 9546fd2..e6afe97 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -515,7 +515,7 @@ void virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-     type = virtio_ldl_p(VIRTIO_DEVICE(req->dev), &req->out.type);
+diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
+index b25324b..9e23cd0 100644
+--- a/target-openrisc/cpu.h
++++ b/target-openrisc/cpu.h
+@@ -415,9 +415,4 @@ static inline int cpu_mmu_index(CPUOpenRISCState *env)
  
-     /* VIRTIO_BLK_T_OUT defines the command direction. VIRTIO_BLK_T_BARRIER
--     * is an optional flag. Altough a guest should not send this flag if
-+     * is an optional flag. Although a guest should not send this flag if
-      * not negotiated we ignored it in the past. So keep ignoring it. */
-     switch (type & ~(VIRTIO_BLK_T_OUT | VIRTIO_BLK_T_BARRIER)) {
-     case VIRTIO_BLK_T_IN:
-diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-index f601069..fe50b42 100644
---- a/hw/misc/edu.c
-+++ b/hw/misc/edu.c
-@@ -279,7 +279,7 @@ static const MemoryRegionOps edu_mmio_ops = {
- };
+ #include "exec/exec-all.h"
  
- /*
-- * We purposedly use a thread, so that users are forced to wait for the status
-+ * We purposely use a thread, so that users are forced to wait for the status
-  * register.
-  */
- static void *edu_fact_thread(void *opaque)
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 59f76bc..67ab228 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -1590,7 +1590,7 @@ static void virtio_net_device_realize(DeviceState *dev, Error **errp)
-     n->max_queues = MAX(n->nic_conf.peers.queues, 1);
-     if (n->max_queues * 2 + 1 > VIRTIO_PCI_QUEUE_MAX) {
-         error_setg(errp, "Invalid number of queues (= %" PRIu32 "), "
--                   "must be a postive integer less than %d.",
-+                   "must be a positive integer less than %d.",
-                    n->max_queues, (VIRTIO_PCI_QUEUE_MAX - 1) / 2);
-         virtio_cleanup(vdev);
-         return;
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 61ddc79..644689a 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -1029,7 +1029,7 @@ static int spapr_post_load(void *opaque, int version_id)
-     sPAPREnvironment *spapr = (sPAPREnvironment *)opaque;
-     int err = 0;
- 
--    /* In earlier versions, there was no seperate qdev for the PAPR
-+    /* In earlier versions, there was no separate qdev for the PAPR
-      * RTC, so the RTC offset was stored directly in sPAPREnvironment.
-      * So when migrating from those versions, poke the incoming offset
-      * value into the RTC device */
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index 95f49e3..5c4cd40 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -808,7 +808,7 @@
- #
- # An enumeration of memory block operation result.
- #
--# @sucess: the operation of online/offline memory block is successful.
-+# @success: the operation of online/offline memory block is successful.
- # @not-found: can't find the corresponding memoryXXX directory in sysfs.
- # @operation-not-supported: for some old kernels, it does not support
- #                           online or offline memory block.
-diff --git a/target-s390x/mmu_helper.c b/target-s390x/mmu_helper.c
-index b061c85..7baf5e9 100644
---- a/target-s390x/mmu_helper.c
-+++ b/target-s390x/mmu_helper.c
-@@ -303,8 +303,8 @@ static int mmu_translate_asce(CPUS390XState *env, target_ulong vaddr,
-  * @param asc    address space control (one of the PSW_ASC_* modes)
-  * @param raddr  the translated address is stored to this pointer
-  * @param flags  the PAGE_READ/WRITE/EXEC flags are stored to this pointer
-- * @param exc    true = inject a program check if a fault occured
-- * @return       0 if the translation was successfull, -1 if a fault occured
-+ * @param exc    true = inject a program check if a fault occurred
-+ * @return       0 if the translation was successful, -1 if a fault occurred
-  */
- int mmu_translate(CPUS390XState *env, target_ulong vaddr, int rw, uint64_t asc,
-                   target_ulong *raddr, int *flags, bool exc)
-@@ -436,9 +436,9 @@ static int translate_pages(S390CPU *cpu, vaddr addr, int nr_pages,
-  * s390_cpu_virt_mem_rw:
-  * @laddr:     the logical start address
-  * @hostbuf:   buffer in host memory. NULL = do only checks w/o copying
-- * @len:       length that should be transfered
-+ * @len:       length that should be transferred
-  * @is_write:  true = write, false = read
-- * Returns:    0 on success, non-zero if an exception occured
-+ * Returns:    0 on success, non-zero if an exception occurred
-  *
-  * Copy from/to guest memory using logical addresses. Note that we inject a
-  * program interrupt in case there is an error while accessing the memory.
-diff --git a/target-s390x/translate.c b/target-s390x/translate.c
-index 4f82edd..8784112 100644
---- a/target-s390x/translate.c
-+++ b/target-s390x/translate.c
-@@ -2990,7 +2990,7 @@ static ExitStatus op_sam(DisasContext *s, DisasOps *o)
-         break;
-     }
- 
--    /* Bizzare but true, we check the address of the current insn for the
-+    /* Bizarre but true, we check the address of the current insn for the
-        specification exception, not the next to be executed.  Thus the PoO
-        documents that Bad Things Happen two bytes before the end.  */
-     if (s->pc & ~mask) {
-diff --git a/tests/libqos/ahci.c b/tests/libqos/ahci.c
-index b0f39a5..be00db2 100644
---- a/tests/libqos/ahci.c
-+++ b/tests/libqos/ahci.c
-@@ -364,7 +364,7 @@ void ahci_port_clear(AHCIQState *ahci, uint8_t port)
-     ahci_px_wreg(ahci, port, AHCI_PX_IS, reg);
-     g_assert_cmphex(ahci_px_rreg(ahci, port, AHCI_PX_IS), ==, 0);
- 
--    /* Wipe the FIS-Recieve Buffer */
-+    /* Wipe the FIS-Receive Buffer */
-     qmemset(ahci->port[port].fb, 0x00, 0x100);
- }
- 
-@@ -442,7 +442,7 @@ void ahci_port_check_pio_sanity(AHCIQState *ahci, uint8_t port,
- {
-     PIOSetupFIS *pio = g_malloc0(0x20);
- 
--    /* We cannot check the Status or E_Status registers, becuase
-+    /* We cannot check the Status or E_Status registers, because
-      * the status may have again changed between the PIO Setup FIS
-      * and the conclusion of the command with the D2H Register FIS. */
-     memread(ahci->port[port].fb + 0x20, pio, 0x20);
+-static inline target_ulong cpu_get_pc(CPUOpenRISCState *env)
+-{
+-    return env->pc;
+-}
+-
+ #endif /* CPU_OPENRISC_H */
 -- 
-2.1.4
+1.9.1
 
 
