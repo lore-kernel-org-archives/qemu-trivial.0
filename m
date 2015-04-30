@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YnVcb-0008Jg-A3
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Apr 2015 13:18:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41815)
+	id 1Yngii-0000KR-HO
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 01:09:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnVcY-0008Dz-0L
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 13:18:03 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Yngid-00007m-8i
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:09:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnVcW-0006tw-RT
-	for qemu-trivial@nongnu.org; Wed, 29 Apr 2015 13:18:01 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51604)
+	(envelope-from <mjt@tls.msk.ru>) id 1Yngic-0003m6-GH
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:09:03 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41181)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YnVcR-0006rj-IB; Wed, 29 Apr 2015 13:17:55 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5ADA04237A;
-	Wed, 29 Apr 2015 20:17:54 +0300 (MSK)
-Message-ID: <55411242.3090301@msgid.tls.msk.ru>
-Date: Wed, 29 Apr 2015 20:17:54 +0300
+	id 1YngiY-0003kQ-3w; Thu, 30 Apr 2015 01:08:58 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 7F9EF42B89;
+	Thu, 30 Apr 2015 08:08:57 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 6459794D;
+	Thu, 30 Apr 2015 08:08:57 +0300 (MSK)
+Received: (nullmailer pid 4316 invoked by uid 1000);
+	Thu, 30 Apr 2015 05:08:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.6.0
-MIME-Version: 1.0
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-In-Reply-To: <1425524720-11376-1-git-send-email-arei.gonglei@huawei.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Thu, 30 Apr 2015 08:08:25 +0300
+Message-Id: <f984604ba17717ef2404592abdce7a205b1d73c4.1430370396.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
+References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] microblaze: fix memory leak
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 12/42] hostmem: Fix mem-path property name in
+	error report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,22 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Apr 2015 17:18:03 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 05:09:04 -0000
 
-05.03.2015 06:05, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
-> 
-> When not assign a -dtb argument, the variable dtb_filename
-> storage returned from qemu_find_file(), which should be freed
-> after use. Alternatively we define a local variable filename,
-> with 'char *' type, free after use.
+From: Jan Kiszka <jan.kiszka@siemens.com>
 
-Actually now when I look at it all again I think this is the
-solution I was thinking about when saying about a "better fix".
-I dunno why I haven't seen this before.
+The subtle difference between "property not found" and "property not
+set" is already confusing enough.
 
-I just applied this patch to -trivial. Thank you very much for
-your patience!
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ backends/hostmem-file.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
+index 5179994..4b55361 100644
+--- a/backends/hostmem-file.c
++++ b/backends/hostmem-file.c
+@@ -43,7 +43,7 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+         return;
+     }
+     if (!fb->mem_path) {
+-        error_setg(errp, "mem_path property not set");
++        error_setg(errp, "mem-path property not set");
+         return;
+     }
+ #ifndef CONFIG_LINUX
+-- 
+2.1.4
+
 
