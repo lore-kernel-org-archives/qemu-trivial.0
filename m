@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YnhOq-00024P-8U
+	id 1YnhOq-00026A-RZ
 	for mharc-qemu-trivial@gnu.org; Thu, 30 Apr 2015 01:52:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53064)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53085)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnhOl-0001rc-M4
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:52:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YnhOn-0001vv-4u
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:52:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YnhOk-0008CM-PG
-	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:52:35 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38912)
+	(envelope-from <mjt@tls.msk.ru>) id 1YnhOm-0008Ct-2o
+	for qemu-trivial@nongnu.org; Thu, 30 Apr 2015 01:52:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40164)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1YnhOf-00088n-KX; Thu, 30 Apr 2015 01:52:29 -0400
+	id 1YnhOf-00088l-KO; Thu, 30 Apr 2015 01:52:29 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1512442B96;
-	Thu, 30 Apr 2015 08:46:57 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id E6E1642B84;
+	Thu, 30 Apr 2015 08:46:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 723F7965;
-	Thu, 30 Apr 2015 08:09:00 +0300 (MSK)
-Received: (nullmailer pid 4379 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 3851F958;
+	Thu, 30 Apr 2015 08:08:59 +0300 (MSK)
+Received: (nullmailer pid 4327 invoked by uid 1000);
 	Thu, 30 Apr 2015 05:08:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 30 Apr 2015 08:08:55 +0300
-Message-Id: <fe31d3e6e6945b509e5b4ab03d38aae1266fe64e.1430370396.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 30 Apr 2015 08:08:30 +0300
+Message-Id: <6b20216d93807cb7f966b1067f9895e6b3c0be06.1430370396.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 References: <cover.1430370396.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 42/42] microblaze: fix memory leak
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Thomas Huth <thuth@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PULL 17/42] usb: Remove unused functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,58 +43,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Apr 2015 05:52:37 -0000
+X-List-Received-Date: Thu, 30 Apr 2015 05:52:38 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+From: Thomas Huth <thuth@linux.vnet.ibm.com>
 
-When not assign a -dtb argument, the variable dtb_filename
-storage returned from qemu_find_file(), which should be freed
-after use. Alternatively we define a local variable filename,
-with 'char *' type, free after use.
+Delete set_usb_string(), usb_ep_get_ifnum(), usb_ep_get_max_packet_size()
+usb_ep_get_max_streams() and usb_ep_set_pipeline() since they are
+not used anymore.
 
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Thomas Huth <thuth@linux.vnet.ibm.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/microblaze/boot.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ hw/usb/core.c    | 41 -----------------------------------------
+ include/hw/usb.h |  5 -----
+ 2 files changed, 46 deletions(-)
 
-diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index 38c59db..4c44317 100644
---- a/hw/microblaze/boot.c
-+++ b/hw/microblaze/boot.c
-@@ -113,15 +113,15 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-     const char *kernel_filename;
-     const char *kernel_cmdline;
-     const char *dtb_arg;
-+    char *filename = NULL;
- 
-     machine_opts = qemu_get_machine_opts();
-     kernel_filename = qemu_opt_get(machine_opts, "kernel");
-     kernel_cmdline = qemu_opt_get(machine_opts, "append");
-     dtb_arg = qemu_opt_get(machine_opts, "dtb");
--    if (dtb_arg) { /* Preference a -dtb argument */
--        dtb_filename = dtb_arg;
--    } else { /* default to pcbios dtb as passed by machine_init */
--        dtb_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
-+    /* default to pcbios dtb as passed by machine_init */
-+    if (!dtb_arg) {
-+        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, dtb_filename);
-     }
- 
-     boot_info.machine_cpu_reset = machine_cpu_reset;
-@@ -203,7 +203,8 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-                             boot_info.initrd_start,
-                             boot_info.initrd_end,
-                             kernel_cmdline,
--                            dtb_filename);
-+                            /* Preference a -dtb argument */
-+                            dtb_arg ? dtb_arg : filename);
-     }
--
-+    g_free(filename);
+diff --git a/hw/usb/core.c b/hw/usb/core.c
+index cf34755..d0025db 100644
+--- a/hw/usb/core.c
++++ b/hw/usb/core.c
+@@ -331,23 +331,6 @@ void usb_generic_async_ctrl_complete(USBDevice *s, USBPacket *p)
+     usb_packet_complete(s, p);
  }
+ 
+-/* XXX: fix overflow */
+-int set_usb_string(uint8_t *buf, const char *str)
+-{
+-    int len, i;
+-    uint8_t *q;
+-
+-    q = buf;
+-    len = strlen(str);
+-    *q++ = 2 * len + 2;
+-    *q++ = 3;
+-    for(i = 0; i < len; i++) {
+-        *q++ = str[i];
+-        *q++ = 0;
+-    }
+-    return q - buf;
+-}
+-
+ USBDevice *usb_find_device(USBPort *port, uint8_t addr)
+ {
+     USBDevice *dev = port->dev;
+@@ -749,12 +732,6 @@ void usb_ep_set_type(USBDevice *dev, int pid, int ep, uint8_t type)
+     uep->type = type;
+ }
+ 
+-uint8_t usb_ep_get_ifnum(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->ifnum;
+-}
+-
+ void usb_ep_set_ifnum(USBDevice *dev, int pid, int ep, uint8_t ifnum)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+@@ -782,12 +759,6 @@ void usb_ep_set_max_packet_size(USBDevice *dev, int pid, int ep,
+     uep->max_packet_size = size * microframes;
+ }
+ 
+-int usb_ep_get_max_packet_size(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->max_packet_size;
+-}
+-
+ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+@@ -801,18 +772,6 @@ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw)
+     }
+ }
+ 
+-int usb_ep_get_max_streams(USBDevice *dev, int pid, int ep)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    return uep->max_streams;
+-}
+-
+-void usb_ep_set_pipeline(USBDevice *dev, int pid, int ep, bool enabled)
+-{
+-    struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+-    uep->pipeline = enabled;
+-}
+-
+ void usb_ep_set_halted(USBDevice *dev, int pid, int ep, bool halted)
+ {
+     struct USBEndpoint *uep = usb_ep_get(dev, pid, ep);
+diff --git a/include/hw/usb.h b/include/hw/usb.h
+index 5be2937..c8b6e7b 100644
+--- a/include/hw/usb.h
++++ b/include/hw/usb.h
+@@ -445,15 +445,11 @@ void usb_ep_reset(USBDevice *dev);
+ void usb_ep_dump(USBDevice *dev);
+ struct USBEndpoint *usb_ep_get(USBDevice *dev, int pid, int ep);
+ uint8_t usb_ep_get_type(USBDevice *dev, int pid, int ep);
+-uint8_t usb_ep_get_ifnum(USBDevice *dev, int pid, int ep);
+ void usb_ep_set_type(USBDevice *dev, int pid, int ep, uint8_t type);
+ void usb_ep_set_ifnum(USBDevice *dev, int pid, int ep, uint8_t ifnum);
+ void usb_ep_set_max_packet_size(USBDevice *dev, int pid, int ep,
+                                 uint16_t raw);
+-int usb_ep_get_max_packet_size(USBDevice *dev, int pid, int ep);
+ void usb_ep_set_max_streams(USBDevice *dev, int pid, int ep, uint8_t raw);
+-int usb_ep_get_max_streams(USBDevice *dev, int pid, int ep);
+-void usb_ep_set_pipeline(USBDevice *dev, int pid, int ep, bool enabled);
+ void usb_ep_set_halted(USBDevice *dev, int pid, int ep, bool halted);
+ USBPacket *usb_ep_find_packet_by_id(USBDevice *dev, int pid, int ep,
+                                     uint64_t id);
+@@ -469,7 +465,6 @@ void usb_port_reset(USBPort *port);
+ void usb_device_reset(USBDevice *dev);
+ void usb_wakeup(USBEndpoint *ep, unsigned int stream);
+ void usb_generic_async_ctrl_complete(USBDevice *s, USBPacket *p);
+-int set_usb_string(uint8_t *buf, const char *str);
+ 
+ /* usb-linux.c */
+ USBDevice *usb_host_device_open(USBBus *bus, const char *devname);
 -- 
 2.1.4
 
