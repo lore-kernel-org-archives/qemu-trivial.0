@@ -1,46 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ypa69-0001BH-MW
-	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2015 06:29:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38080)
+	id 1Ypa9a-0007wV-A2
+	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2015 06:32:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38734)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Ypa66-00014U-BY
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:29:07 -0400
+	(envelope-from <stefanha@gmail.com>) id 1Ypa9X-0007qV-0e
+	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:32:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Ypa65-0004v6-BB
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:29:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39596)
+	(envelope-from <stefanha@gmail.com>) id 1Ypa9W-00067u-9x
+	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:32:38 -0400
+Received: from mail-wg0-x230.google.com ([2a00:1450:400c:c00::230]:35899)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Ypa65-0004up-3K; Tue, 05 May 2015 06:29:05 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t45AT0OE027919
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 5 May 2015 06:29:01 -0400
-Received: from [10.36.112.84] (ovpn-112-84.ams2.redhat.com [10.36.112.84])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t45ASuIR016753
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 5 May 2015 06:28:58 -0400
-Message-ID: <55489B67.1070007@redhat.com>
-Date: Tue, 05 May 2015 12:28:55 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1Ypa9Q-00065k-2v; Tue, 05 May 2015 06:32:32 -0400
+Received: by wgiu9 with SMTP id u9so14434432wgi.3;
+	Tue, 05 May 2015 03:32:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=WnsSqUWWnH1C2Hrk9zDe2gtP/10x+q/O+RUBxvsC9xU=;
+	b=b43qzGeuBl7pn88K+3whReSTCmZJjLUibHLEE2CZbUvlWxIaLuLcHT3fgfjnTshZkr
+	1wcq9lXgOkvaQJUtmt4tmAWoQgWZktTX/sY0leCPDZZcKjGsZEOtdUMfrN6JgxapaYip
+	sleOb85JIMZaGhHwspOieL+h9rBR7/anNPmLA1ChK+1f+Tw44MPFrEefPILrhgR2uwQQ
+	fEMCZxZzHfjsWjOl/4JzyA1HQBUkmX92w5epD4Osk9PI9giQTGGS1kd/3tjifb+A5uDV
+	uGdFYdPhk9CeMD90XrL8J5hv4RYQUN5NhpWUhEOrIwu+HTfTrGezcARa7hHwSl6KXS01
+	UQRQ==
+X-Received: by 10.194.122.200 with SMTP id lu8mr11041315wjb.30.1430821951552; 
+	Tue, 05 May 2015 03:32:31 -0700 (PDT)
+Received: from localhost (host109-158-220-195.range109-158.btcentralplus.com.
+	[109.158.220.195])
+	by mx.google.com with ESMTPSA id ha4sm15474059wib.0.2015.05.05.03.32.30
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 05 May 2015 03:32:30 -0700 (PDT)
+Date: Tue, 5 May 2015 11:32:29 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <20150505103229.GD3149@stefanha-thinkpad.redhat.com>
+References: <20150503104722.3b3670c7@tpl530>
 MIME-Version: 1.0
-To: "Emilio G. Cota" <cota@braap.org>, Peter Maydell <peter.maydell@linaro.org>
-References: <20150430222138.GA9389@flamenco>
-In-Reply-To: <20150430222138.GA9389@flamenco>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] tests: consolidate common includes under
-	libqtest.h
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="uxuisgdDHaNETlh8"
+Content-Disposition: inline
+In-Reply-To: <20150503104722.3b3670c7@tpl530>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::230
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove various unused
+	functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,41 +59,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 May 2015 10:29:07 -0000
+X-List-Received-Date: Tue, 05 May 2015 10:32:40 -0000
 
-On 01/05/2015 00:21, Emilio G. Cota wrote:
-> Something like the appended?
-> 
-> Cheers,
-> 
-> 		Emilio
 
-Pretty good, but I wouldn't use qemu-common.h, at least not until all
-the function and macro declarations are moved to separate headers (some
-of them may indeed move to osdep.h, in fact).
+--uxuisgdDHaNETlh8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Paolo
+On Sun, May 03, 2015 at 10:47:22AM +0200, Thomas Huth wrote:
+>=20
+> The functions tpm_backend_thread_tpm_reset() and iothread_find()
+> are completely unused, let's remove them.
+>=20
+> Signed-off-by: Thomas Huth <huth@tuxfamily.org>
+> ---
+>  backends/tpm.c                   | 11 -----------
+>  include/sysemu/iothread.h        |  1 -
+>  include/sysemu/tpm_backend_int.h |  2 --
+>  iothread.c                       | 12 ------------
+>  4 files changed, 26 deletions(-)
 
-> commit eb415d0695bb49d9df78aedaf4ed3c7083a1a574
-> Author: Emilio G. Cota <cota@braap.org>
-> Date:   Thu Apr 30 18:00:01 2015 -0400
-> 
->     tests: consolidate common includes under libqtest.h
->     
->     Source files in tests/ include very common headers,
->     such as glib.h or qemu/osdep.h.
->     
->     Consolidate these includes by including qemu-common.h from
->     libqtest.h, which is a common include in tests/.
->     
->     Two things worth mentioning:
->     
->     - i440fx-test drops its ARRAY_SIZE definition, which comes now
->       from osdep.h via qemu-common.h.
->     
->     - vhost-user-test.c does keep its include of glib.h, since
->       it has to do some contortions to support old glib versions.
->       See commit "bd95939f qtest: fix qtest for vhost-user".
->     
->     Signed-off-by: Emilio G. Cota <cota@braap.org>
+Happy with iothread change, we can always bring it back later if needed.
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--uxuisgdDHaNETlh8
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJVSJw9AAoJEJykq7OBq3PIkawH/j4rVh/6OkLudYNofCRuBpb+
+xIonNBJog3mRLZr2U4Visz5EgchMT+QcmpjhPoHvv0p8oyjQvKdmudmkXGm7c7u1
+4zNwIoTEvrGaTiNX6xpHjJ9dytRE911Qen8oERKRWeX+Tc33Dsl70gDQzk/CO0tw
+HcaEqxHFhAkb7fl2TPzxO5iD3sHsHFo81nHMU6hmesNXLCi6AL9n0zcdXuKEybuK
+9C/P8ZSt0xn53IZEobdYgf4sOJ0RQ59NJsjeG1wO8SiTBJGcvIdWOFdgUvPD+sGT
+JN3J6i99KTZ731PlONf0tA28Fbk93rW3h87fzrJIPKYrB7RfFu8PLXUMYTilbU0=
+=cAOk
+-----END PGP SIGNATURE-----
+
+--uxuisgdDHaNETlh8--
 
