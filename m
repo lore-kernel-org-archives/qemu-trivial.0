@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YpZfQ-0003Qs-8q
-	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2015 06:01:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56370)
+	id 1YpZvi-0006HY-MA
+	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2015 06:18:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60354)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YpZfL-0003Gy-Ud
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:01:31 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YpZvg-0006D6-IX
+	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:18:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1YpZfG-0001B1-GW
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:01:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43320)
+	(envelope-from <mjt@tls.msk.ru>) id 1YpZvf-0007Wp-Oa
+	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:18:20 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58890)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1YpZek-0000zN-0H; Tue, 05 May 2015 06:00:50 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t45A0kCS006429
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Tue, 5 May 2015 06:00:46 -0400
-Received: from [10.36.116.78] (ovpn-116-78.ams2.redhat.com [10.36.116.78])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t45A0geM028866; Tue, 5 May 2015 06:00:44 -0400
-Message-ID: <1430820041.28106.6.camel@nilsson.home.kraxel.org>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: "Emilio G. Cota" <cota@braap.org>
-Date: Tue, 05 May 2015 12:00:41 +0200
-In-Reply-To: <1430153133-30988-3-git-send-email-cota@braap.org>
-References: <1430153133-30988-1-git-send-email-cota@braap.org>
-	<1430153133-30988-3-git-send-email-cota@braap.org>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YpZva-0007Tg-Un; Tue, 05 May 2015 06:18:15 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 0ABC3403CB;
+	Tue,  5 May 2015 13:18:05 +0300 (MSK)
+Message-ID: <554898DD.4010708@msgid.tls.msk.ru>
+Date: Tue, 05 May 2015 13:18:05 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.6.0
+MIME-Version: 1.0
+To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
+References: <1430212264-9672-1-git-send-email-arei.gonglei@huawei.com>
+	<1430212264-9672-3-git-send-email-arei.gonglei@huawei.com>
+In-Reply-To: <1430212264-9672-3-git-send-email-arei.gonglei@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/6] input: remove unused mouse_handlers
-	list
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/3] xhci: remove unused code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,11 +44,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 May 2015 10:01:31 -0000
+X-List-Received-Date: Tue, 05 May 2015 10:18:21 -0000
 
-On Mo, 2015-04-27 at 12:45 -0400, Emilio G. Cota wrote:
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
+Applied to -trivial, thanks!
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-
+/mjt
 
