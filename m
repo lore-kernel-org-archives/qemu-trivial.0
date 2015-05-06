@@ -1,53 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ypa9a-0007wV-A2
-	for mharc-qemu-trivial@gnu.org; Tue, 05 May 2015 06:32:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38734)
+	id 1YpvYN-00062y-8Q
+	for mharc-qemu-trivial@gnu.org; Wed, 06 May 2015 05:23:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49312)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Ypa9X-0007qV-0e
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:32:39 -0400
+	(envelope-from <laurent.desnogues@gmail.com>) id 1YpvYK-00060Z-VG
+	for qemu-trivial@nongnu.org; Wed, 06 May 2015 05:23:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Ypa9W-00067u-9x
-	for qemu-trivial@nongnu.org; Tue, 05 May 2015 06:32:38 -0400
-Received: from mail-wg0-x230.google.com ([2a00:1450:400c:c00::230]:35899)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1YpvYJ-0007rC-Qf
+	for qemu-trivial@nongnu.org; Wed, 06 May 2015 05:23:40 -0400
+Received: from mail-ob0-x22f.google.com ([2607:f8b0:4003:c01::22f]:33040)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Ypa9Q-00065k-2v; Tue, 05 May 2015 06:32:32 -0400
-Received: by wgiu9 with SMTP id u9so14434432wgi.3;
-	Tue, 05 May 2015 03:32:31 -0700 (PDT)
+	(envelope-from <laurent.desnogues@gmail.com>)
+	id 1YpvYH-0007qZ-79; Wed, 06 May 2015 05:23:37 -0400
+Received: by obblk2 with SMTP id lk2so2662751obb.0;
+	Wed, 06 May 2015 02:23:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=WnsSqUWWnH1C2Hrk9zDe2gtP/10x+q/O+RUBxvsC9xU=;
-	b=b43qzGeuBl7pn88K+3whReSTCmZJjLUibHLEE2CZbUvlWxIaLuLcHT3fgfjnTshZkr
-	1wcq9lXgOkvaQJUtmt4tmAWoQgWZktTX/sY0leCPDZZcKjGsZEOtdUMfrN6JgxapaYip
-	sleOb85JIMZaGhHwspOieL+h9rBR7/anNPmLA1ChK+1f+Tw44MPFrEefPILrhgR2uwQQ
-	fEMCZxZzHfjsWjOl/4JzyA1HQBUkmX92w5epD4Osk9PI9giQTGGS1kd/3tjifb+A5uDV
-	uGdFYdPhk9CeMD90XrL8J5hv4RYQUN5NhpWUhEOrIwu+HTfTrGezcARa7hHwSl6KXS01
-	UQRQ==
-X-Received: by 10.194.122.200 with SMTP id lu8mr11041315wjb.30.1430821951552; 
-	Tue, 05 May 2015 03:32:31 -0700 (PDT)
-Received: from localhost (host109-158-220-195.range109-158.btcentralplus.com.
-	[109.158.220.195])
-	by mx.google.com with ESMTPSA id ha4sm15474059wib.0.2015.05.05.03.32.30
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 05 May 2015 03:32:30 -0700 (PDT)
-Date: Tue, 5 May 2015 11:32:29 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Thomas Huth <huth@tuxfamily.org>
-Message-ID: <20150505103229.GD3149@stefanha-thinkpad.redhat.com>
-References: <20150503104722.3b3670c7@tpl530>
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=ZnUZrMdkHR2F/HLFOSYmWMwIJ7FhVuQAlEuAYEFTpKQ=;
+	b=uLitxX5QHfxZRLlqBL3fgyrRl8A+UfMQAvTNwi8mjHLmBrsDozhAw1S6jELha53aP7
+	0KJRYtlXNPGVbkQIHHuW/69dZo6sWkIew7B0OB4+vwliydZy5VLXh7bV0Ot4/zzFev1Y
+	EpnQR8Wbpr530VF/GcRqkY7XyoD1ecC5ZNy7qk3K8i1ukr1ZwYZ/POBrwzBYyE0U28bo
+	QjXGZP58mVp9Q+o9DEMhmc4QYKk3rOEUgCQ2xM2GByk0YOSlyG5e6yDyR646fBVqxU7m
+	VufPM9w/9iW3krKTcNwwAYo9x6KMk0h48h5qMnBx3qBXqgzZHiEGEBtL9ss9uoYK7jWi
+	BkQg==
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="uxuisgdDHaNETlh8"
-Content-Disposition: inline
-In-Reply-To: <20150503104722.3b3670c7@tpl530>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Received: by 10.202.183.214 with SMTP id h205mr1413628oif.87.1430904216578; 
+	Wed, 06 May 2015 02:23:36 -0700 (PDT)
+Received: by 10.182.14.68 with HTTP; Wed, 6 May 2015 02:23:36 -0700 (PDT)
+In-Reply-To: <1430141220-20123-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1430141220-20123-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 6 May 2015 11:23:36 +0200
+Message-ID: <CABoDooPkbFvVsC8i0XF9-9+dZQK16aJGDVoE7LAd_L9=COagqA@mail.gmail.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::230
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove various unused
-	functions
+X-Received-From: 2607:f8b0:4003:c01::22f
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] libcacard: stop
+	including qemu-common.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,45 +53,152 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 May 2015 10:32:40 -0000
+X-List-Received-Date: Wed, 06 May 2015 09:23:42 -0000
 
+Hello,
 
---uxuisgdDHaNETlh8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, Apr 27, 2015 at 3:27 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> From: Paolo Bonzini <pbonzini@redhat.com>
+>
+> This is a small step towards making libcacard standalone.
 
-On Sun, May 03, 2015 at 10:47:22AM +0200, Thomas Huth wrote:
->=20
-> The functions tpm_backend_thread_tpm_reset() and iothread_find()
-> are completely unused, let's remove them.
->=20
-> Signed-off-by: Thomas Huth <huth@tuxfamily.org>
+on my system the removal of qemu-common.h inclusion broke compilation
+due to assert being used in glib-compat.h.  A fix might be to include
+assert.h in glib-compat.h.
+
+Thanks,
+
+Laurent
+
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->  backends/tpm.c                   | 11 -----------
->  include/sysemu/iothread.h        |  1 -
->  include/sysemu/tpm_backend_int.h |  2 --
->  iothread.c                       | 12 ------------
->  4 files changed, 26 deletions(-)
-
-Happy with iothread change, we can always bring it back later if needed.
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---uxuisgdDHaNETlh8
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJVSJw9AAoJEJykq7OBq3PIkawH/j4rVh/6OkLudYNofCRuBpb+
-xIonNBJog3mRLZr2U4Visz5EgchMT+QcmpjhPoHvv0p8oyjQvKdmudmkXGm7c7u1
-4zNwIoTEvrGaTiNX6xpHjJ9dytRE911Qen8oERKRWeX+Tc33Dsl70gDQzk/CO0tw
-HcaEqxHFhAkb7fl2TPzxO5iD3sHsHFo81nHMU6hmesNXLCi6AL9n0zcdXuKEybuK
-9C/P8ZSt0xn53IZEobdYgf4sOJ0RQ59NJsjeG1wO8SiTBJGcvIdWOFdgUvPD+sGT
-JN3J6i99KTZ731PlONf0tA28Fbk93rW3h87fzrJIPKYrB7RfFu8PLXUMYTilbU0=
-=cAOk
------END PGP SIGNATURE-----
-
---uxuisgdDHaNETlh8--
+> v2: update vscclient.c too, use unistd.h on !WIN32 and getopt.h on *nix
+>
+>  libcacard/cac.c            | 5 ++++-
+>  libcacard/card_7816.c      | 4 +++-
+>  libcacard/event.c          | 2 +-
+>  libcacard/vcard.c          | 4 +++-
+>  libcacard/vcard_emul_nss.c | 2 +-
+>  libcacard/vreader.c        | 4 +++-
+>  libcacard/vscclient.c      | 8 +++++++-
+>  7 files changed, 22 insertions(+), 7 deletions(-)
+>
+> diff --git a/libcacard/cac.c b/libcacard/cac.c
+> index f38fdce..bc84534 100644
+> --- a/libcacard/cac.c
+> +++ b/libcacard/cac.c
+> @@ -5,7 +5,10 @@
+>   * See the COPYING.LIB file in the top-level directory.
+>   */
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+> +
+> +#include <string.h>
+> +#include <stdbool.h>
+>
+>  #include "cac.h"
+>  #include "vcard.h"
+> diff --git a/libcacard/card_7816.c b/libcacard/card_7816.c
+> index 814fa16..22fd334 100644
+> --- a/libcacard/card_7816.c
+> +++ b/libcacard/card_7816.c
+> @@ -5,7 +5,9 @@
+>   * See the COPYING.LIB file in the top-level directory.
+>   */
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+> +
+> +#include <string.h>
+>
+>  #include "vcard.h"
+>  #include "vcard_emul.h"
+> diff --git a/libcacard/event.c b/libcacard/event.c
+> index 4c551e4..63f4057 100644
+> --- a/libcacard/event.c
+> +++ b/libcacard/event.c
+> @@ -5,7 +5,7 @@
+>   * See the COPYING.LIB file in the top-level directory.
+>   */
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+>
+>  #include "vcard.h"
+>  #include "vreader.h"
+> diff --git a/libcacard/vcard.c b/libcacard/vcard.c
+> index d140a8e..1a87208 100644
+> --- a/libcacard/vcard.c
+> +++ b/libcacard/vcard.c
+> @@ -5,7 +5,9 @@
+>   * See the COPYING.LIB file in the top-level directory.
+>   */
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+> +
+> +#include <string.h>
+>
+>  #include "vcard.h"
+>  #include "vcard_emul.h"
+> diff --git a/libcacard/vcard_emul_nss.c b/libcacard/vcard_emul_nss.c
+> index 950edee..6955f69 100644
+> --- a/libcacard/vcard_emul_nss.c
+> +++ b/libcacard/vcard_emul_nss.c
+> @@ -25,7 +25,7 @@
+>  #include <prthread.h>
+>  #include <secerr.h>
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+>
+>  #include "vcard.h"
+>  #include "card_7816t.h"
+> diff --git a/libcacard/vreader.c b/libcacard/vreader.c
+> index 0315dd8..9725f46 100644
+> --- a/libcacard/vreader.c
+> +++ b/libcacard/vreader.c
+> @@ -10,7 +10,9 @@
+>  #endif
+>  #define G_LOG_DOMAIN "libcacard"
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+> +
+> +#include <string.h>
+>
+>  #include "vcard.h"
+>  #include "vcard_emul.h"
+> diff --git a/libcacard/vscclient.c b/libcacard/vscclient.c
+> index fa6041d..0652684 100644
+> --- a/libcacard/vscclient.c
+> +++ b/libcacard/vscclient.c
+> @@ -10,14 +10,20 @@
+>   * See the COPYING.LIB file in the top-level directory.
+>   */
+>
+> +#include <stdio.h>
+> +#include <stdlib.h>
+> +#include <string.h>
+>  #ifndef _WIN32
+>  #include <sys/socket.h>
+>  #include <netinet/in.h>
+>  #include <netdb.h>
+> +#include <unistd.h>
+>  #define closesocket(x) close(x)
+> +#else
+> +#include <getopt.h>
+>  #endif
+>
+> -#include "qemu-common.h"
+> +#include "glib-compat.h"
+>
+>  #include "vscard_common.h"
+>
+> --
+> 2.1.4
+>
+>
 
