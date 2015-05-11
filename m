@@ -1,34 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YqqJi-0006i9-9O
-	for mharc-qemu-trivial@gnu.org; Fri, 08 May 2015 18:00:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45175)
+	id 1YroMg-0007NZ-2g
+	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2015 10:07:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YqqJb-0006VS-JT
-	for qemu-trivial@nongnu.org; Fri, 08 May 2015 18:00:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1YroMc-0007F2-81
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 10:07:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1YqqJa-0005l5-N5
-	for qemu-trivial@nongnu.org; Fri, 08 May 2015 18:00:15 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57947)
+	(envelope-from <peter.maydell@linaro.org>) id 1YroMW-0000Hq-Kd
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 10:07:22 -0400
+Received: from mail-ie0-f176.google.com ([209.85.223.176]:35979)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1YqqJU-0005XT-Bu; Fri, 08 May 2015 18:00:08 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B89C840761;
-	Sat,  9 May 2015 01:00:06 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 9E8106E2;
-	Sat,  9 May 2015 01:00:06 +0300 (MSK)
-Received: (nullmailer pid 10310 invoked by uid 1000);
-	Fri, 08 May 2015 22:00:06 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Sat,  9 May 2015 01:00:00 +0300
-Message-Id: <cover.1431122325.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <peter.maydell@linaro.org>) id 1YroMW-0000Hd-H8
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 10:07:16 -0400
+Received: by iecmd7 with SMTP id md7so30848369iec.3
+	for <qemu-trivial@nongnu.org>; Mon, 11 May 2015 07:07:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=J+vQbcOjp01HZ5BN/J+nhESCFImAIbWYzWjecIjnQ9E=;
+	b=kTWH2PqFC3XsyaqaZZ/6lcIlybt5cC5hAW5nXFO2aHVn7W5Su1sVRAugiH6T/JcglN
+	5tmpPUSsbLIZEbTSiocXh7aAAwXhzH8fgMLPi297MP3bEQSZ7CA4a6Wa1LicD/JkBUjp
+	4Y8Iof6hC00g1AvUhch5LJf6uA0v3BavCldivB0cB5t31qqD5YrPvSiviy+bHMHiyo70
+	OaVAxTugbsksQmxbfFQhRp5ZD1ulycDNQlqCWGn4MQdQe/h08gNfJIy4LrJ8bU0Pxx60
+	8EXUbXVwA6BtLKZ/6fRCv+pn2xbMcqGZlbBKUKQLgeu5l38ALE45HGhaMrdH1mt1A6kY
+	EV/g==
+X-Gm-Message-State: ALoCoQnEvbX2SfspugcgIw4cXqmWgL7BRYOW+ULzQg0+pXp/v63QNx3uUyLsDfSnBDe/H+GyBkds
+X-Received: by 10.50.138.232 with SMTP id qt8mr14345252igb.28.1431353235996;
+	Mon, 11 May 2015 07:07:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.107.136.220 with HTTP; Mon, 11 May 2015 07:06:55 -0700 (PDT)
+In-Reply-To: <cover.1431122325.git.mjt@msgid.tls.msk.ru>
+References: <cover.1431122325.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 11 May 2015 15:06:55 +0100
+Message-ID: <CAFEAcA9OOEq6GXSUUFWT6ek9xPGroBPc8p=-S3hdKTdGBCH1_A@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 0/5] Trivial patches for 2015-05-09
+	[fuzzy]
+X-Received-From: 209.85.223.176
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/5] Trivial patches for
+	2015-05-09
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,55 +55,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 May 2015 22:00:16 -0000
+X-List-Received-Date: Mon, 11 May 2015 14:07:23 -0000
 
-Here's a next trivial-patches tree pull request.  There aren't many patches
-this time, but one of them (replacing assert with g_assert) is a build fix.
-Please consider applying.
+On 8 May 2015 at 23:00, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's a next trivial-patches tree pull request.  There aren't many patches
+> this time, but one of them (replacing assert with g_assert) is a build fix.
+> Please consider applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit f8340b360b9bc29d48716ba8aca79df2b9544979:
+>
+>   hw/ptimer: Do not artificially limit timers when using icount (2015-05-08 17:15:23 +1000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-05-09
+>
+> for you to fetch changes up to 0caef8f6df4a9426bd6333ab843ce51ce005d7d0:
+>
+>   docs: update BLOCK_IMAGE_CORRUPTED documentation (2015-05-08 14:11:10 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2015-05-09
+>
 
-Thanks,
+Applied, thanks.
 
-/mjt
-
-The following changes since commit f8340b360b9bc29d48716ba8aca79df2b9544979:
-
-  hw/ptimer: Do not artificially limit timers when using icount (2015-05-08 17:15:23 +1000)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-05-09
-
-for you to fetch changes up to 0caef8f6df4a9426bd6333ab843ce51ce005d7d0:
-
-  docs: update BLOCK_IMAGE_CORRUPTED documentation (2015-05-08 14:11:10 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2015-05-09
-
-----------------------------------------------------------------
-Alberto Garcia (1):
-      docs: update BLOCK_IMAGE_CORRUPTED documentation
-
-Gonglei (1):
-      xhci: remove unused code
-
-Michael Tokarev (1):
-      glib-compat.h: change assert to g_assert
-
-Thomas Huth (1):
-      Remove various unused functions
-
-zhanghailiang (1):
-      sheepdog: fix resource leak with sd_snapshot_create
-
- backends/tpm.c                   | 11 -----------
- block/sheepdog.c                 |  1 +
- docs/qmp/qmp-events.txt          |  5 +++--
- hw/usb/hcd-xhci.c                |  1 -
- include/glib-compat.h            |  6 +++---
- include/sysemu/iothread.h        |  1 -
- include/sysemu/tpm_backend_int.h |  2 --
- iothread.c                       | 12 ------------
- qapi/block-core.json             |  2 +-
- 9 files changed, 8 insertions(+), 33 deletions(-)
+-- PMM
 
