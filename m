@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ys14t-0007Bv-7f
-	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2015 23:41:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44043)
+	id 1Ys14w-0007HT-Hs
+	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2015 23:41:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44207)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Yrzsz-0008K3-1Q
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:35 -0400
+	(envelope-from <shannon.zhao@linaro.org>) id 1YrztC-00007C-M6
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Yrzsv-0007lP-MJ
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:32 -0400
-Received: from mail-pa0-f51.google.com ([209.85.220.51]:35077)
+	(envelope-from <shannon.zhao@linaro.org>) id 1Yrzt9-0007pe-HN
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:46 -0400
+Received: from mail-pd0-f176.google.com ([209.85.192.176]:35818)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Yrzsv-0007l7-8m
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:29 -0400
-Received: by pabtp1 with SMTP id tp1so126755795pab.2
-	for <qemu-trivial@nongnu.org>; Mon, 11 May 2015 19:25:28 -0700 (PDT)
+	(envelope-from <shannon.zhao@linaro.org>) id 1Yrzt9-0007pK-DG
+	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:43 -0400
+Received: by pdbqd1 with SMTP id qd1so162917871pdb.2
+	for <qemu-trivial@nongnu.org>; Mon, 11 May 2015 19:25:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=ypKAWpqBuLUHOT6ymKeBKewDC7pGqKckUHAx7prJqac=;
-	b=mIqEgVmd40pKxTwTOLGyItruIyLDklSfnf3vk0oex9abYBG7T4KVZ0ejDSCfMRKavm
-	6wZlxB1iNsg6x/ffVasQTR2HU9wb4TPKcdLXyV+m3DLZOBUstOMv+U7RVMWW/tEDgK0x
-	QXkofhQc2OdNcUd9o+hakFNoszi0mc+DOw1cH+yaskc2Ci5w7zI7ETBCsG60Fmkn44Ug
-	g7lfPNtNsNP8BD/YsLZWVistBpv6jmGMWETb4jUWMrEqJiD8LrxIo4O+JhB2RJtnetnF
-	19SpqxxwCciTb1Uo7qaZ25FJJBicbt08rFsZbGf31YkfedLy8NQREH5XrnpB4KEHhC1G
-	kShA==
-X-Gm-Message-State: ALoCoQlpNgR0YoRGSZhOyxwjygjWvZwor8vhIZZxmqXga/T5tIVXbD5IxKBUaCGaifE6g7fvUK2X
-X-Received: by 10.70.101.200 with SMTP id fi8mr23820220pdb.161.1431397528145; 
-	Mon, 11 May 2015 19:25:28 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=dmOwNO820xL9v2+iqcwTEy23Yxo4bdA5aJN7qmoXAdw=;
+	b=EvIZqXkF7JanrM7FMUlEUX/eK1Ef1UmhZCERiRl0ypzSKIxkJbl2zYexjOzuSnhtvx
+	F7DPoy/ytrPh1cBEsxH8/LSCp5A6NHbMXiwKldIRlIJziT6765lZ2KKiMk/mtjWG89RC
+	4q/b0gGyvKOqpKKRcrfIRuOwNaJqe8tu2K+oImpTy92M0MgFRI7PdrCNLn2NwNeuMb6R
+	r6mjTFPkoAbMiyxnsetRIGXr9fzMTtACIIHU8JWtfauFrOut3TAJejUSIdcv8YjyLnKp
+	bxfYJ0IR28Zl8NgBDPvjKpWaEMbM0ezGTyyHY3V+a8yXbX/rrATdQi71tqozyu8Dh4NO
+	sfQg==
+X-Gm-Message-State: ALoCoQnorPqFr5k1j+eNQc9uKUECX/JjMAQMz54RNjZyZLwTBnwPvCiUiMbkSiWMhT9KB/LDM4/f
+X-Received: by 10.68.57.226 with SMTP id l2mr24222166pbq.104.1431397542784;
+	Mon, 11 May 2015 19:25:42 -0700 (PDT)
 Received: from localhost ([180.150.141.243])
-	by mx.google.com with ESMTPSA id t9sm14416582pas.3.2015.05.11.19.25.26
+	by mx.google.com with ESMTPSA id pc9sm14414325pdb.6.2015.05.11.19.25.40
 	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 11 May 2015 19:25:27 -0700 (PDT)
+	Mon, 11 May 2015 19:25:41 -0700 (PDT)
 From: shannon.zhao@linaro.org
 To: qemu-devel@nongnu.org
-Date: Tue, 12 May 2015 10:25:15 +0800
-Message-Id: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+Date: Tue, 12 May 2015 10:25:17 +0800
+Message-Id: <1431397521-2316-3-git-send-email-shannon.zhao@linaro.org>
 X-Mailer: git-send-email 1.9.5.msysgit.1
+In-Reply-To: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.220.51
-X-Mailman-Approved-At: Mon, 11 May 2015 23:41:53 -0400
+X-Received-From: 209.85.192.176
+X-Mailman-Approved-At: Mon, 11 May 2015 23:41:57 -0400
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
 	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
 	zhaoshenglong@huawei.com, christoffer.dall@linaro.org
-Subject: [Qemu-trivial] [PATCH 0/6] Blank property cleanup
+Subject: [Qemu-trivial] [PATCH 2/6] hw/virtio/virtio-balloon: Remove
+	meaningless blank Property
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,59 +59,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2015 02:25:35 -0000
+X-List-Received-Date: Tue, 12 May 2015 02:25:47 -0000
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
-After [1]"s390-virtio: use common features" and [2]"virtio: Move host
-features to backends" applied, there are some Property arrays which only
-contain the list terminator DEFINE_PROP_END_OF_LIST. This patchset
-removes those arrays and other meaningless Property arrays and also adds
-comma after DEFINE_PROP_END_OF_LIST().
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ hw/virtio/virtio-balloon.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-[1] http://lists.gnu.org/archive/html/qemu-devel/2015-05/msg00259.html
-[2] http://lists.gnu.org/archive/html/qemu-devel/2015-04/threads.html
-
-Shannon Zhao (6):
-  hw/s390x/s390-virtio-bus: Remove meaningless blank Property
-  hw/virtio/virtio-balloon: Remove meaningless blank Property
-  hw/virtio/virtio-pci: Remove meaningless blank Property
-  hw/gpio/zaurus: Remove meaningless blank Property
-  hw/arm/spitz: Remove meaningless blank Property
-  Add comma after DEFINE_PROP_END_OF_LIST()
-
- hw/arm/spitz.c                     |  5 -----
- hw/audio/intel-hda.c               |  2 +-
- hw/char/virtio-serial-bus.c        |  2 +-
- hw/core/platform-bus.c             |  2 +-
- hw/dma/i82374.c                    |  2 +-
- hw/gpio/zaurus.c                   |  5 -----
- hw/i386/kvm/ioapic.c               |  2 +-
- hw/i386/xen/xen_pvdevice.c         |  2 +-
- hw/ide/mmio.c                      |  2 +-
- hw/ipack/ipack.c                   |  2 +-
- hw/isa/pc87312.c                   |  2 +-
- hw/misc/arm11scu.c                 |  2 +-
- hw/misc/macio/cuda.c               |  2 +-
- hw/misc/macio/macio.c              |  2 +-
- hw/nvram/mac_nvram.c               |  2 +-
- hw/pci-bridge/ioh3420.c            |  2 +-
- hw/pci-bridge/xio3130_downstream.c |  2 +-
- hw/pci-host/prep.c                 |  2 +-
- hw/pci-host/versatile.c            |  2 +-
- hw/pci/pci.c                       |  2 +-
- hw/pci/pcie_port.c                 |  4 ++--
- hw/s390x/s390-virtio-bus.c         | 15 ---------------
- hw/timer/a9gtimer.c                |  2 +-
- hw/timer/arm_mptimer.c             |  2 +-
- hw/usb/bus.c                       |  2 +-
- hw/virtio/virtio-balloon.c         |  5 -----
- hw/virtio/virtio-pci.c             |  5 -----
- target-arm/cpu.c                   |  2 +-
- target-i386/cpu.c                  |  4 ++--
- tests/test-qdev-global-props.c     |  2 +-
- 30 files changed, 27 insertions(+), 62 deletions(-)
-
+diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+index 484c3c3..a3f5709 100644
+--- a/hw/virtio/virtio-balloon.c
++++ b/hw/virtio/virtio-balloon.c
+@@ -417,16 +417,11 @@ static void virtio_balloon_device_unrealize(DeviceState *dev, Error **errp)
+     virtio_cleanup(vdev);
+ }
+ 
+-static Property virtio_balloon_properties[] = {
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+ static void virtio_balloon_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);
+ 
+-    dc->props = virtio_balloon_properties;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+     vdc->realize = virtio_balloon_device_realize;
+     vdc->unrealize = virtio_balloon_device_unrealize;
 -- 
 2.1.0
 
