@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ys14z-0007Mg-4t
-	for mharc-qemu-trivial@gnu.org; Mon, 11 May 2015 23:42:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44294)
+	id 1Ys4AO-00011I-3n
+	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2015 02:59:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YrztM-0000Uh-Nr
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:57 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Ys4AL-00010v-RN
+	for qemu-trivial@nongnu.org; Tue, 12 May 2015 02:59:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YrztJ-0007rv-Ih
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:56 -0400
-Received: from mail-pa0-f41.google.com ([209.85.220.41]:34670)
+	(envelope-from <peter.maydell@linaro.org>) id 1Ys4AI-00019X-Kp
+	for qemu-trivial@nongnu.org; Tue, 12 May 2015 02:59:45 -0400
+Received: from mail-ig0-f170.google.com ([209.85.213.170]:36570)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YrztJ-0007rq-DM
-	for qemu-trivial@nongnu.org; Mon, 11 May 2015 22:25:53 -0400
-Received: by pacyx8 with SMTP id yx8so126708952pac.1
-	for <qemu-trivial@nongnu.org>; Mon, 11 May 2015 19:25:53 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1Ys4AI-00019L-GX
+	for qemu-trivial@nongnu.org; Tue, 12 May 2015 02:59:42 -0400
+Received: by igbpi8 with SMTP id pi8so94149528igb.1
+	for <qemu-trivial@nongnu.org>; Mon, 11 May 2015 23:59:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=oJVXgg9MPVKLGaCh418p6/WnFZd7kHWkPSmt/gZ/uEM=;
-	b=AJzJM7o35zMxtnAw0PSQE24QenNXZPSevcVDMqxckofycpMLuFddYrWEYhEuusEejQ
-	R8Jf9DwitmOB9PgZ+vEPeCSZWD5d0GGnS7yTKQ2+Wz7C0Z/xNG3jx8BlG52ZcFgObN+W
-	SqvJTxWqLgtzwJ50SqnyKU+fdkW2b+5OJnNsSS1IxNFt3DKKetT7NpaiVUKAftY0MJoZ
-	owJistSbmkAwg7pD23rCDfBt8eyFZr8+/RXEMcRvGGv1eIldP4YMcW845jzC1LhzLyZJ
-	abeOEP8cCx5OoT9rKv+SkDIWx3s3Mz95rJXdf7+P1Eo/RbMWkjdyK/YEoYeqbxmT2LN0
-	Cuvg==
-X-Gm-Message-State: ALoCoQn5uE0Zwi/HjBx6OZp39+n3fGNU/teLkY0/PZlXwH58DqdFFp5sE4D0X4Yyr17GYxtPWec3
-X-Received: by 10.66.228.130 with SMTP id si2mr23970195pac.92.1431397553031;
-	Mon, 11 May 2015 19:25:53 -0700 (PDT)
-Received: from localhost ([180.150.141.243])
-	by mx.google.com with ESMTPSA id sb7sm5489260pbb.94.2015.05.11.19.25.51
-	(version=TLSv1 cipher=RC4-SHA bits=128/128);
-	Mon, 11 May 2015 19:25:51 -0700 (PDT)
-From: shannon.zhao@linaro.org
-To: qemu-devel@nongnu.org
-Date: Tue, 12 May 2015 10:25:19 +0800
-Message-Id: <1431397521-2316-5-git-send-email-shannon.zhao@linaro.org>
-X-Mailer: git-send-email 1.9.5.msysgit.1
-In-Reply-To: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=JPSiUErwTJzAZ38BUkMq16xRl1VZ4sm7PCfl/S9Ffio=;
+	b=ddO4/e9xmu8njR4UoMpIDfgWYnqWwF7ryY8iaKOjWKP1vhh1kxcJ4ibDQ2PEzYzboO
+	fB+ky9cM54EuQIQ2h8VxKgA5V8M8nOuhiBqwFJk/wIMkQLyinvQtyY6mrFZF5lKlkf4s
+	6mmtEqivR/vg6ZuOuTgKZgvJI2gwkpabV0UyJRABC3MnvZCJLaDB20DpH2iNJhERLOCc
+	opdiHnQHe5j1+ebxjr3LoLmjny2gWMU0L6xXmyOBKBgyRoyrGERIou8QFd0YsPeNvIDP
+	EwSMx3p8VfDLwGkCA08Hi2s0Np9LQZCEDKsxCONH++ei5/sEIzKXivhF1abyc2J9oX/n
+	mhyQ==
+X-Gm-Message-State: ALoCoQnt++5X3/KhajeO0b6A42dvslfXGJMn22j3Hy+zaONCj4dfqtVm2e2zJk6q9AMhcbr5wtqR
+X-Received: by 10.50.109.138 with SMTP id hs10mr1826190igb.48.1431413981784;
+	Mon, 11 May 2015 23:59:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.107.136.220 with HTTP; Mon, 11 May 2015 23:59:21 -0700 (PDT)
+In-Reply-To: <1431397521-2316-7-git-send-email-shannon.zhao@linaro.org>
 References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+	<1431397521-2316-7-git-send-email-shannon.zhao@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 May 2015 07:59:21 +0100
+Message-ID: <CAFEAcA9+Gd+-WOHJjMrA7f7pcW7usccRSuL2i8E3Uc=tp1Eifw@mail.gmail.com>
+To: Shannon Zhao <shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.220.41
-X-Mailman-Approved-At: Mon, 11 May 2015 23:41:58 -0400
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	zhaoshenglong@huawei.com, christoffer.dall@linaro.org
-Subject: [Qemu-trivial] [PATCH 4/6] hw/gpio/zaurus: Remove meaningless blank
-	Property
+X-Received-From: 209.85.213.170
+Cc: hangaohuai@huawei.com, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH 6/6] Add comma after
+	DEFINE_PROP_END_OF_LIST()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,40 +59,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2015 02:25:57 -0000
+X-List-Received-Date: Tue, 12 May 2015 06:59:46 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+On 12 May 2015 at 03:25,  <shannon.zhao@linaro.org> wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+>
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+> diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+> index 433463e..d2b3f37 100644
+> --- a/hw/audio/intel-hda.c
+> +++ b/hw/audio/intel-hda.c
+> @@ -31,7 +31,7 @@
+>
+>  static Property hda_props[] = {
+>      DEFINE_PROP_UINT32("cad", HDACodecDevice, cad, -1),
+> -    DEFINE_PROP_END_OF_LIST()
+> +    DEFINE_PROP_END_OF_LIST(),
+>  };
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- hw/gpio/zaurus.c | 5 -----
- 1 file changed, 5 deletions(-)
+Why do we need to do this? The usual reason for having a comma
+after the last item in an array is so that if we add another
+item after it later we don't have to edit the line that used to
+be last. But with these lists the DEFINE_PROP_END_OF_LIST()
+line remains last by definition -- new entries will always go
+above it, and anything below it would be a bug. So there's no
+point in having a comma after it.
 
-diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-index 24a7727..aa8ee5f 100644
---- a/hw/gpio/zaurus.c
-+++ b/hw/gpio/zaurus.c
-@@ -235,10 +235,6 @@ static const VMStateDescription vmstate_scoop_regs = {
-     },
- };
- 
--static Property scoop_sysbus_properties[] = {
--    DEFINE_PROP_END_OF_LIST(),
--};
--
- static void scoop_sysbus_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -247,7 +243,6 @@ static void scoop_sysbus_class_init(ObjectClass *klass, void *data)
-     k->init = scoop_init;
-     dc->desc = "Scoop2 Sharp custom ASIC";
-     dc->vmsd = &vmstate_scoop_regs;
--    dc->props = scoop_sysbus_properties;
- }
- 
- static const TypeInfo scoop_sysbus_info = {
--- 
-2.1.0
-
+-- PMM
 
