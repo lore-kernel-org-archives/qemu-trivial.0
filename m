@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YsSGU-0005MO-0i
-	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2015 04:43:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39087)
+	id 1YsSOx-0008OC-3N
+	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2015 04:52:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41824)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YsSGR-0005M4-4x
-	for qemu-trivial@nongnu.org; Wed, 13 May 2015 04:43:40 -0400
+	(envelope-from <famz@redhat.com>) id 1YsSOv-0008Mn-Fn
+	for qemu-trivial@nongnu.org; Wed, 13 May 2015 04:52:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YsSGJ-00066g-4P
-	for qemu-trivial@nongnu.org; Wed, 13 May 2015 04:43:39 -0400
-Received: from mail-wi0-x22e.google.com ([2a00:1450:400c:c05::22e]:33193)
+	(envelope-from <famz@redhat.com>) id 1YsSOu-0003gD-Hs
+	for qemu-trivial@nongnu.org; Wed, 13 May 2015 04:52:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35548)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YsSGI-00066S-UL; Wed, 13 May 2015 04:43:31 -0400
-Received: by wicmx19 with SMTP id mx19so4954781wic.0;
-	Wed, 13 May 2015 01:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=xBJJF3VwWRaOHopca+ISeu0XunU9mqYgWm/65GndQ00=;
-	b=U7bZiEj0XAw8CszxaejIULh1TuA+1W8hP+97Tx/861celJtmkRYhhLT4uGCCA3LOBW
-	aj6YXveJ/G310OTPSaSwyOfOXIoBJUECXPqRiX8x7jAjA6ph6bOjuqffm6T4YpyKMQyb
-	aBHovsroO2BcOqhKu9SEKqQCAjKbJAYuaGZebfixOjI6iam/tFzUgirsG74cddjYVEru
-	OirAGx5HF+4/y1ygn504OHnLmFGuVyGCSoW/Jzr4rzOpPaFs2si0V0XitzDzBJQ15uTd
-	Kfw6Le18LrtN7e9qMWNePxRBbS8q8sYSFI6Fy6peAW6CyHVINBSn+STgqkALL3A2MFiP
-	K8OA==
-X-Received: by 10.180.208.84 with SMTP id mc20mr12584090wic.38.1431506610282; 
-	Wed, 13 May 2015 01:43:30 -0700 (PDT)
-Received: from [192.168.10.165] (dynamic-adsl-94-39-186-233.clienti.tiscali.it.
-	[94.39.186.233])
-	by mx.google.com with ESMTPSA id gj7sm6873093wib.4.2015.05.13.01.43.28
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 13 May 2015 01:43:29 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <55530EAD.5070104@redhat.com>
-Date: Wed, 13 May 2015 10:43:25 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
-MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+	(envelope-from <famz@redhat.com>)
+	id 1YsSOp-0003ak-7H; Wed, 13 May 2015 04:52:19 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id A9B9FC4080;
+	Wed, 13 May 2015 08:52:18 +0000 (UTC)
+Received: from localhost (dhcp-14-155.nay.redhat.com [10.66.14.155])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4D8qGON009374; Wed, 13 May 2015 04:52:17 -0400
+Date: Wed, 13 May 2015 16:52:16 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20150513085216.GA30644@ad.nay.redhat.com>
 References: <1431522928-5292-1-git-send-email-famz@redhat.com>
-In-Reply-To: <1431522928-5292-1-git-send-email-famz@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22e
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] iscsi: Remove pointless runtime check of
-	macro value
+	<55530EAD.5070104@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <55530EAD.5070104@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] iscsi: Remove pointless
+ runtime check of macro value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,42 +47,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 May 2015 08:43:40 -0000
+X-List-Received-Date: Wed, 13 May 2015 08:52:26 -0000
 
-
-
-On 13/05/2015 15:15, Fam Zheng wrote:
-> raw_bsd already has QEMU_BUILD_BUG_ON(BDRV_SECTOR_SIZE != 512), so iscsi
-> should relax.
-
-It's okay to have the same QEMU_BUILD_BUG_ON in different places.
-However, you're right that this should be a compile-time check rather
-than run-time check.
-
-Paolo
-
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  block/iscsi.c | 7 -------
->  1 file changed, 7 deletions(-)
+On Wed, 05/13 10:43, Paolo Bonzini wrote:
 > 
-> diff --git a/block/iscsi.c b/block/iscsi.c
-> index 8fca1d3..14e97a6 100644
-> --- a/block/iscsi.c
-> +++ b/block/iscsi.c
-> @@ -1323,13 +1323,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *options, int flags,
->      const char *filename;
->      int i, ret = 0;
->  
-> -    if ((BDRV_SECTOR_SIZE % 512) != 0) {
-> -        error_setg(errp, "iSCSI: Invalid BDRV_SECTOR_SIZE. "
-> -                   "BDRV_SECTOR_SIZE(%lld) is not a multiple "
-> -                   "of 512", BDRV_SECTOR_SIZE);
-> -        return -EINVAL;
-> -    }
-> -
->      opts = qemu_opts_create(&runtime_opts, NULL, 0, &error_abort);
->      qemu_opts_absorb_qdict(opts, options, &local_err);
->      if (local_err) {
+> 
+> On 13/05/2015 15:15, Fam Zheng wrote:
+> > raw_bsd already has QEMU_BUILD_BUG_ON(BDRV_SECTOR_SIZE != 512), so iscsi
+> > should relax.
+> 
+> It's okay to have the same QEMU_BUILD_BUG_ON in different places.
+> However, you're right that this should be a compile-time check rather
+> than run-time check.
+
+I agree with you, but I can't imaging this value could ever change, so there is
+little gain to duplicate in this case.
+
+Fam
+
+> 
+> Paolo
+> 
+> > Signed-off-by: Fam Zheng <famz@redhat.com>
+> > ---
+> >  block/iscsi.c | 7 -------
+> >  1 file changed, 7 deletions(-)
+> > 
+> > diff --git a/block/iscsi.c b/block/iscsi.c
+> > index 8fca1d3..14e97a6 100644
+> > --- a/block/iscsi.c
+> > +++ b/block/iscsi.c
+> > @@ -1323,13 +1323,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *options, int flags,
+> >      const char *filename;
+> >      int i, ret = 0;
+> >  
+> > -    if ((BDRV_SECTOR_SIZE % 512) != 0) {
+> > -        error_setg(errp, "iSCSI: Invalid BDRV_SECTOR_SIZE. "
+> > -                   "BDRV_SECTOR_SIZE(%lld) is not a multiple "
+> > -                   "of 512", BDRV_SECTOR_SIZE);
+> > -        return -EINVAL;
+> > -    }
+> > -
+> >      opts = qemu_opts_create(&runtime_opts, NULL, 0, &error_abort);
+> >      qemu_opts_absorb_qdict(opts, options, &local_err);
+> >      if (local_err) {
+> > 
 > 
 
