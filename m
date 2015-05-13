@@ -1,46 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YsCCs-0000tZ-8E
-	for mharc-qemu-trivial@gnu.org; Tue, 12 May 2015 11:34:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50319)
+	id 1YsP12-0006zL-3q
+	for mharc-qemu-trivial@gnu.org; Wed, 13 May 2015 01:15:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1YsCCp-0000pu-TM
-	for qemu-trivial@nongnu.org; Tue, 12 May 2015 11:34:52 -0400
+	(envelope-from <famz@redhat.com>) id 1YsP10-0006wl-BQ
+	for qemu-trivial@nongnu.org; Wed, 13 May 2015 01:15:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1YsCCp-0005EL-1Z
-	for qemu-trivial@nongnu.org; Tue, 12 May 2015 11:34:51 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:9942 helo=smtp4.mundo-r.com)
+	(envelope-from <famz@redhat.com>) id 1YsP0z-0005vc-Ga
+	for qemu-trivial@nongnu.org; Wed, 13 May 2015 01:15:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53769)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1YsCCk-00056U-F1; Tue, 12 May 2015 11:34:46 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: AssGAAYdUlVbdWOb/2dsb2JhbABcgw+BMrMkAQEBAQEBBQGBBAGYVgKBOkwBAQEBAQGBC4QhAQEDATo/BQsLDhMlDwEsGwYBEogkDAHJZgEBAQEBAQEDAQEBAQEdhhaFI4UFB4QtAQS0IiNhgxg8MYJGAQEB
-X-IPAS-Result: AssGAAYdUlVbdWOb/2dsb2JhbABcgw+BMrMkAQEBAQEBBQGBBAGYVgKBOkwBAQEBAQGBC4QhAQEDATo/BQsLDhMlDwEsGwYBEogkDAHJZgEBAQEBAQEDAQEBAQEdhhaFI4UFB4QtAQS0IiNhgxg8MYJGAQEB
-X-IronPort-AV: E=Sophos;i="5.13,415,1427752800"; d="scan'208";a="360313409"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 12 May 2015 17:33:40 +0200
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.0:RSA_AES_256_CBC_SHA1:32) (Exim)
-	id 1YsCBg-0006M8-5H; Tue, 12 May 2015 17:33:40 +0200
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1YsCBf-0006Sv-Vr; Tue, 12 May 2015 17:33:40 +0200
-From: Alberto Garcia <berto@igalia.com>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-In-Reply-To: <1431443456-21605-1-git-send-email-eblake@redhat.com>
-References: <1431443456-21605-1-git-send-email-eblake@redhat.com>
-User-Agent: Notmuch/0.13.2 (http://notmuchmail.org) Emacs/23.2.1
-	(i486-pc-linux-gnu)
-Date: Tue, 12 May 2015 17:33:39 +0200
-Message-ID: <w51iobx7quk.fsf@maestria.local.igalia.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Cc: qemu-block@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] qemu-io: Use getopt()
-	correctly
+	(envelope-from <famz@redhat.com>)
+	id 1YsP0v-0005tt-1f; Wed, 13 May 2015 01:15:25 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t4D5FOMt018826
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Wed, 13 May 2015 01:15:24 -0400
+Received: from cpc-pc.redhat.com (vpn1-5-226.pek2.redhat.com [10.72.5.226])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4D5FLOZ032584; Wed, 13 May 2015 01:15:22 -0400
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 May 2015 13:15:28 +0000
+Message-Id: <1431522928-5292-1-git-send-email-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] iscsi: Remove pointless runtime check of
+	macro value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,17 +41,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 May 2015 15:34:53 -0000
+X-List-Received-Date: Wed, 13 May 2015 05:15:31 -0000
 
-On Tue 12 May 2015 05:10:56 PM CEST, Eric Blake <eblake@redhat.com> wrote:
+raw_bsd already has QEMU_BUILD_BUG_ON(BDRV_SECTOR_SIZE != 512), so iscsi
+should relax.
 
-> POSIX says getopt() returns -1 on completion.  While Linux happens
-> to define EOF as -1, this definition is not required by POSIX, and
-> there may be platforms where checking for EOF instead of -1 would
-> lead to an infinite loop.
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Alberto Garcia <berto@igalia.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ block/iscsi.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-Berto
+diff --git a/block/iscsi.c b/block/iscsi.c
+index 8fca1d3..14e97a6 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -1323,13 +1323,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *options, int flags,
+     const char *filename;
+     int i, ret = 0;
+ 
+-    if ((BDRV_SECTOR_SIZE % 512) != 0) {
+-        error_setg(errp, "iSCSI: Invalid BDRV_SECTOR_SIZE. "
+-                   "BDRV_SECTOR_SIZE(%lld) is not a multiple "
+-                   "of 512", BDRV_SECTOR_SIZE);
+-        return -EINVAL;
+-    }
+-
+     opts = qemu_opts_create(&runtime_opts, NULL, 0, &error_abort);
+     qemu_opts_absorb_qdict(opts, options, &local_err);
+     if (local_err) {
+-- 
+2.4.0
+
 
