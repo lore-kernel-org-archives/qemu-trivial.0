@@ -1,45 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YsszD-00088u-Kv
-	for mharc-qemu-trivial@gnu.org; Thu, 14 May 2015 09:15:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48765)
+	id 1Ysztb-0006nr-Tv
+	for mharc-qemu-trivial@gnu.org; Thu, 14 May 2015 16:38:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martin@c-home.cz>) id 1YsrWG-0006iS-Sc
-	for qemu-trivial@nongnu.org; Thu, 14 May 2015 07:41:41 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1YsztZ-0006ko-OB
+	for qemu-trivial@nongnu.org; Thu, 14 May 2015 16:38:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <martin@c-home.cz>) id 1YsrWG-00063W-0g
-	for qemu-trivial@nongnu.org; Thu, 14 May 2015 07:41:40 -0400
-Received: from gw.c-home.cz ([89.24.150.100]:59224 helo=dmz.c-home.cz)
+	(envelope-from <stefan@weilnetz.de>) id 1YsztY-0005Tc-Ue
+	for qemu-trivial@nongnu.org; Thu, 14 May 2015 16:38:17 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:40715)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <martin@c-home.cz>)
-	id 1YsrW9-00060W-S4; Thu, 14 May 2015 07:41:34 -0400
-Received: from dmz.c-home.cz (localhost [127.0.0.1])
-	by dmz.c-home.cz (8.14.4+Sun/8.14.4) with ESMTP id t4EBfOML025502;
-	Thu, 14 May 2015 13:41:24 +0200 (CEST)
-Received: from localhost (martin@localhost)
-	by dmz.c-home.cz (8.14.4+Sun/8.14.4/Submit) with ESMTP id
-	t4EBfNr4025499; Thu, 14 May 2015 13:41:24 +0200 (CEST)
-X-Authentication-Warning: dmz.c-home.cz: martin owned process doing -bs
-Date: Thu, 14 May 2015 13:41:23 +0200 (CEST)
-From: Martin Cerveny <martin@c-home.cz>
-To: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <55547221.4030109@redhat.com>
-Message-ID: <alpine.GSO.2.00.1505141317030.24664@dmz.c-home.cz>
-References: <1431519294-8873-1-git-send-email-M.Cerveny@computer.org>
-	<1431519294-8873-3-git-send-email-M.Cerveny@computer.org>
-	<55547221.4030109@redhat.com>
-User-Agent: Alpine 2.00 (GSO 1167 2008-08-23)
-MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: Solaris 10
-X-Received-From: 89.24.150.100
-X-Mailman-Approved-At: Thu, 14 May 2015 09:15:37 -0400
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/2] scripts: qom-tree: add support of
-	path as argument
+	(envelope-from <stefan@weilnetz.de>)
+	id 1YsztW-0005RV-Va; Thu, 14 May 2015 16:38:15 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 1C16917F768; Thu, 14 May 2015 22:38:13 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Thu, 14 May 2015 22:38:12 +0200
+Message-Id: <1431635892-31996-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a03:4000:2:362::1
+Cc: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>
+Subject: [Qemu-trivial] [PATCH] pci: Fix compiler warning (MinGW-w64 gcc 4.9)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: Martin Cerveny <M.Cerveny@computer.org>
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -48,48 +35,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 May 2015 11:41:42 -0000
+X-List-Received-Date: Thu, 14 May 2015 20:38:18 -0000
 
-Hello.
+i686-w64-mingw32-gcc 4.9.1 from Debian Jessie complains:
 
-Ternary/if/else >= python 2.5 (I use the same coding as in scripts/qmp/qemu-ga-client).
-"import json" >= python 2.6 (scripts/qmp/qmp.py)
-"import argparse" >= python 2.7 (scripts/analyze-migration.py, scripts/vmstate-static-checker.py)
-"import optparse" < python 2.7 (deprecated, scripts/qmp/qemu-ga-client)
-....
+hw/pci/pci.c:938:29: warning:
+ array subscript is above array bounds [-Warray-bounds]
 
-Of course there is no problem to use traditional syntax.
-(My platform (centos5.10) has python2.4, I must also replace json imports:
-try:
-     import json
-except ImportError:
-     import simplejson as json
-)
+Using g_assert instead of assert fixes this warning.
 
-Which version of python is officialy minimum supported ?
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/pci/pci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks for explanation of python status.
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 48f19a3..34f71dc 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -927,8 +927,8 @@ void pci_register_bar(PCIDevice *pci_dev, int region_num,
+     uint64_t wmask;
+     pcibus_t size = memory_region_size(memory);
+ 
+-    assert(region_num >= 0);
+-    assert(region_num < PCI_NUM_REGIONS);
++    g_assert(region_num >= 0);
++    g_assert(region_num < PCI_NUM_REGIONS);
+     if (size & (size-1)) {
+         fprintf(stderr, "ERROR: PCI region size must be pow2 "
+                     "type=0x%x, size=0x%"FMT_PCIBUS"\n", type, size);
+-- 
+2.1.4
 
-M.C>
-
-On Thu, 14 May 2015, Paolo Bonzini wrote:
-
->
->
-> On 13/05/2015 14:14, Martin Cerveny wrote:
->>      for item in items:
->>          if item['type'].startswith('child<'):
->> -            list_node(path + '/' + item['name'])
->> +            list_node((path if (path != '/') else '')  + '/' + item['name'])
->
-> I'm not sure which Python version introduced if...else.  The more
-> traditional idiom would be
->
-> 	path != '/' and path or ''
->
-> Can you use it, and move the expression out of the 'for item in items'
-> loop into a variable?
->
-> Paolo
->
 
