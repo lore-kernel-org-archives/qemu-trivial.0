@@ -1,46 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YtEfP-0000N4-Ff
-	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2015 08:24:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41835)
+	id 1YtGxK-0006Z8-Ar
+	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2015 10:51:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YtEfL-0000FT-9F
-	for qemu-trivial@nongnu.org; Fri, 15 May 2015 08:24:36 -0400
+	(envelope-from <liang.z.li@intel.com>) id 1YtBlo-00025K-E3
+	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YtEfJ-0008Fe-S2
-	for qemu-trivial@nongnu.org; Fri, 15 May 2015 08:24:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36988)
+	(envelope-from <liang.z.li@intel.com>) id 1YtBll-00019M-3B
+	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:04 -0400
+Received: from mga11.intel.com ([192.55.52.93]:19770)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YtEfF-0008Eq-7G; Fri, 15 May 2015 08:24:29 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t4FCORlB006643
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Fri, 15 May 2015 08:24:28 -0400
-Received: from blackfin.pond.sub.org (ovpn-116-59.ams2.redhat.com
-	[10.36.116.59])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t4FCOPO9006438
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 15 May 2015 08:24:27 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 18CA93040D28; Fri, 15 May 2015 14:24:25 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Krempa <pkrempa@redhat.com>
-References: <4d325283e37f8f4ebf42b2e3ca41985f2e69e26c.1431682266.git.pkrempa@redhat.com>
-Date: Fri, 15 May 2015 14:24:25 +0200
-In-Reply-To: <4d325283e37f8f4ebf42b2e3ca41985f2e69e26c.1431682266.git.pkrempa@redhat.com>
-	(Peter Krempa's message of "Fri, 15 May 2015 11:31:43 +0200")
-Message-ID: <874mneghae.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <liang.z.li@intel.com>) id 1YtBlk-000196-VP
+	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:01 -0400
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga102.fm.intel.com with ESMTP; 15 May 2015 02:18:59 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.13,433,1427785200"; d="scan'208";a="710613348"
+Received: from kmsmsx152.gar.corp.intel.com ([172.21.73.87])
+	by fmsmga001.fm.intel.com with ESMTP; 15 May 2015 02:18:55 -0700
+Received: from shsmsx103.ccr.corp.intel.com (10.239.110.14) by
+	KMSMSX152.gar.corp.intel.com (172.21.73.87) with Microsoft SMTP Server
+	(TLS) id 14.3.224.2; Fri, 15 May 2015 17:12:46 +0800
+Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.109]) by
+	SHSMSX103.ccr.corp.intel.com ([169.254.4.23]) with mapi id
+	14.03.0224.002; Fri, 15 May 2015 17:12:45 +0800
+From: "Li, Liang Z" <liang.z.li@intel.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, "qemu-trivial@nongnu.org"
+	<qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH] arch_init: Clean up the duplicate variable 'len'
+	defining in ram_load()
+Thread-Index: AQHQju3PqFkL0fjDSE2Ik397CH1Rgp18v6vA
+Date: Fri, 15 May 2015 09:12:45 +0000
+Message-ID: <F2CBF3009FA73547804AE4C663CAB28E524A32@shsmsx102.ccr.corp.intel.com>
+References: <1431680403-5776-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1431680403-5776-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] util: socket: Add
-	missing localaddr and localport option for DGRAM socket
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.93
+X-Mailman-Approved-At: Fri, 15 May 2015 10:51:16 -0400
+Cc: "qemu-devel@nongnu.or" <qemu-devel@nongnu.or>,
+	"quintela@redhat.com" <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] arch_init: Clean up the duplicate
+ variable 'len' defining in ram_load()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,40 +61,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 May 2015 12:24:37 -0000
+X-List-Received-Date: Fri, 15 May 2015 09:19:08 -0000
 
-Peter Krempa <pkrempa@redhat.com> writes:
+> Cc: quintela@redhat.com; Li, Liang Z; qemu-devel@nongnu.or; zhanghailiang
+> Subject: [PATCH] arch_init: Clean up the duplicate variable 'len' definin=
+g in
+> ram_load()
+>=20
+> There are two places that define 'len' variable, It's OK for compiling, b=
+ut
+> makes it difficult for reading.
+>=20
+> Remove the local one which defined in the inside 'while' loop.
+>=20
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> ---
+>  arch_init.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/arch_init.c b/arch_init.c
+> index 23d3feb..8918f6c 100644
+> --- a/arch_init.c
+> +++ b/arch_init.c
+> @@ -1593,7 +1593,6 @@ static int ram_load(QEMUFile *f, void *opaque, int
+> version_id)
+>              total_ram_bytes =3D addr;
+>              while (!ret && total_ram_bytes) {
+>                  RAMBlock *block;
+> -                uint8_t len;
+>                  char id[256];
+>                  ram_addr_t length;
+>=20
+> --
 
-> The 'socket_optslist' structure does not contain the 'localaddr' and
-> 'localport' options that are parsed in case you are creating a
-> 'connect' type UDP character device.
->
-> I've noticed it happening after commit f43e47dbf6de24db20ec9b588bb6cc762
-> made qemu abort() after seeing the invalid option.
->
-> A minimal reproducer for the case is:
-> $ qemu-system-x86_64 -chardev udp,id=charrng0,host=127.0.0.1,port=1234,localaddr=,localport=1234
-> qemu-system-x86_64: -chardev udp,id=charrng0,host=127.0.0.1,port=1234,localaddr=,localport=1234: Invalid parameter 'localaddr'
-> Aborted (core dumped)
->
-> Prior to the commit mentioned above the error would be printed but the
-> value for localaddr and localport was simply ignored. I did not go
-> trhough the code to find out when it was broken.
+Yes, It's true.
 
-s/trhough/through/
-
-Perhaps this can be touched up on commit.
-
->
-> Add the two fields so that the options can again be parsed correctly and
-> qemu doesn't abort().
->
-> Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1220252
->
-> Signed-off-by: Peter Krempa <pkrempa@redhat.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-
-File has no maintainer.  Adding qemu-trivial.
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Liang
 
