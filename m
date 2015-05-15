@@ -1,55 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YtGxK-0006Z8-Ar
-	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2015 10:51:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54807)
+	id 1YtILk-0005YZ-2W
+	for mharc-qemu-trivial@gnu.org; Fri, 15 May 2015 12:20:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liang.z.li@intel.com>) id 1YtBlo-00025K-E3
-	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:08 -0400
+	(envelope-from <eblake@redhat.com>) id 1YtILg-0005Vz-T9
+	for qemu-trivial@nongnu.org; Fri, 15 May 2015 12:20:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liang.z.li@intel.com>) id 1YtBll-00019M-3B
-	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:04 -0400
-Received: from mga11.intel.com ([192.55.52.93]:19770)
+	(envelope-from <eblake@redhat.com>) id 1YtILf-0003aB-Qi
+	for qemu-trivial@nongnu.org; Fri, 15 May 2015 12:20:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57386)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liang.z.li@intel.com>) id 1YtBlk-000196-VP
-	for qemu-trivial@nongnu.org; Fri, 15 May 2015 05:19:01 -0400
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-	by fmsmga102.fm.intel.com with ESMTP; 15 May 2015 02:18:59 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.13,433,1427785200"; d="scan'208";a="710613348"
-Received: from kmsmsx152.gar.corp.intel.com ([172.21.73.87])
-	by fmsmga001.fm.intel.com with ESMTP; 15 May 2015 02:18:55 -0700
-Received: from shsmsx103.ccr.corp.intel.com (10.239.110.14) by
-	KMSMSX152.gar.corp.intel.com (172.21.73.87) with Microsoft SMTP Server
-	(TLS) id 14.3.224.2; Fri, 15 May 2015 17:12:46 +0800
-Received: from shsmsx102.ccr.corp.intel.com ([169.254.2.109]) by
-	SHSMSX103.ccr.corp.intel.com ([169.254.4.23]) with mapi id
-	14.03.0224.002; Fri, 15 May 2015 17:12:45 +0800
-From: "Li, Liang Z" <liang.z.li@intel.com>
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, "qemu-trivial@nongnu.org"
-	<qemu-trivial@nongnu.org>
-Thread-Topic: [PATCH] arch_init: Clean up the duplicate variable 'len'
-	defining in ram_load()
-Thread-Index: AQHQju3PqFkL0fjDSE2Ik397CH1Rgp18v6vA
-Date: Fri, 15 May 2015 09:12:45 +0000
-Message-ID: <F2CBF3009FA73547804AE4C663CAB28E524A32@shsmsx102.ccr.corp.intel.com>
-References: <1431680403-5776-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1431680403-5776-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <eblake@redhat.com>)
+	id 1YtILZ-0003XX-Hb; Fri, 15 May 2015 12:20:25 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3C6648E67C;
+	Fri, 15 May 2015 16:20:25 +0000 (UTC)
+Received: from [10.3.113.14] ([10.3.113.14])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4FGKOt1000671; Fri, 15 May 2015 12:20:24 -0400
+Message-ID: <55561CC7.10404@redhat.com>
+Date: Fri, 15 May 2015 10:20:23 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 192.55.52.93
-X-Mailman-Approved-At: Fri, 15 May 2015 10:51:16 -0400
-Cc: "qemu-devel@nongnu.or" <qemu-devel@nongnu.or>,
-	"quintela@redhat.com" <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] arch_init: Clean up the duplicate
- variable 'len' defining in ram_load()
+To: Markus Armbruster <armbru@redhat.com>, Stefan Weil <sw@weilnetz.de>
+References: <1431635892-31996-1-git-send-email-sw@weilnetz.de>
+	<87y4kqnuc2.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87y4kqnuc2.fsf@blackfin.pond.sub.org>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="4HqxJotUf7IfvhJtcUEWvdr052bjr3nAS"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pci: Fix compiler warning
+ (MinGW-w64 gcc 4.9)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,40 +52,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 May 2015 09:19:08 -0000
+X-List-Received-Date: Fri, 15 May 2015 16:20:34 -0000
 
-> Cc: quintela@redhat.com; Li, Liang Z; qemu-devel@nongnu.or; zhanghailiang
-> Subject: [PATCH] arch_init: Clean up the duplicate variable 'len' definin=
-g in
-> ram_load()
->=20
-> There are two places that define 'len' variable, It's OK for compiling, b=
-ut
-> makes it difficult for reading.
->=20
-> Remove the local one which defined in the inside 'while' loop.
->=20
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> ---
->  arch_init.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/arch_init.c b/arch_init.c
-> index 23d3feb..8918f6c 100644
-> --- a/arch_init.c
-> +++ b/arch_init.c
-> @@ -1593,7 +1593,6 @@ static int ram_load(QEMUFile *f, void *opaque, int
-> version_id)
->              total_ram_bytes =3D addr;
->              while (!ret && total_ram_bytes) {
->                  RAMBlock *block;
-> -                uint8_t len;
->                  char id[256];
->                  ram_addr_t length;
->=20
-> --
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--4HqxJotUf7IfvhJtcUEWvdr052bjr3nAS
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Yes, It's true.
+On 05/15/2015 02:00 AM, Markus Armbruster wrote:
+> Stefan Weil <sw@weilnetz.de> writes:
+>=20
+>> i686-w64-mingw32-gcc 4.9.1 from Debian Jessie complains:
+>>
 
-Liang
+>=20
+> This is obviously a bug in that version of MinGW.  Have you reported it=
+?
+
+I don't know if Debian has a bug filed against mingw yet, but I
+mentioned elsewhere in the thread that I filed a bug for Fedora which is
+also impacted.
+
+> Do we really want to work around it?
+
+That, I'm not sure.  It takes a while for updated mingw headers to
+propagate, and the fix is small enough that it won't hurt to leave the
+fix in place even after updated headers are available.  But since the
+problem is a missing attribute in the header causing a compiler warning,
+it could be worked around by turning off compiler warnings until a new
+header is present.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--4HqxJotUf7IfvhJtcUEWvdr052bjr3nAS
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVVhzHAAoJEKeha0olJ0Nq9B4H/1GJevOc/i/aONmFzByVQBdE
+Y9yioBSIBEcd2sC2z4hzY77be9JEA7wh8Z5WRUZGfFkDxt8bd6XnB5AGhKV4ox9T
+2D/uIcq1m5ne8jARi4gD6yKiVfCcqxnXZbmOlvpmdVcJowcjbn9/uBncYbXH5WxS
+DswuqmDezRYI45z4X2uOxxL2yQbomfED3sxyGB3jv6/jlhvWzuc+AyafKhfkT18Q
+mYnmfF7Niflf412QBGjTpNCUe0vMqHSlMBGs5udixcGW+howziksZZr2IB0+unIK
+6MD4IuSH0paa2ijAyv8HvDR2wnj5p+I+J0gydRa9y8HKUs7/p88GHVrJs77Y8Ro=
+=FVbn
+-----END PGP SIGNATURE-----
+
+--4HqxJotUf7IfvhJtcUEWvdr052bjr3nAS--
 
