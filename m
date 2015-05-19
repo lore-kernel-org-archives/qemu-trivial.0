@@ -1,39 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yuh00-0007ig-KS
-	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2015 08:51:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50627)
+	id 1Yui1D-0000ju-2B
+	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2015 09:57:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Yugzu-0007Yz-Ss
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 08:51:55 -0400
+	(envelope-from <eblake@redhat.com>) id 1Yui17-0000d5-O5
+	for qemu-trivial@nongnu.org; Tue, 19 May 2015 09:57:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Yugzq-00085n-SB
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 08:51:50 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:35815 helo=mx2.suse.de)
+	(envelope-from <eblake@redhat.com>) id 1Yui13-0006nO-Vb
+	for qemu-trivial@nongnu.org; Tue, 19 May 2015 09:57:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46703)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1Yugzi-000829-4Q; Tue, 19 May 2015 08:51:38 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 6F291ACC2;
-	Tue, 19 May 2015 12:51:37 +0000 (UTC)
-Message-ID: <555B31D9.2090806@suse.de>
-Date: Tue, 19 May 2015 14:51:37 +0200
-From: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
+	(envelope-from <eblake@redhat.com>)
+	id 1Yui0v-0006hA-Ia; Tue, 19 May 2015 09:56:57 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 949F02655;
+	Tue, 19 May 2015 13:56:56 +0000 (UTC)
+Received: from [10.3.113.128] (ovpn-113-128.phx2.redhat.com [10.3.113.128])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4JDutBG019244; Tue, 19 May 2015 09:56:55 -0400
+Message-ID: <555B4127.4030700@redhat.com>
+Date: Tue, 19 May 2015 07:56:55 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
-To: Martin Cerveny <M.Cerveny@computer.org>, qemu-devel@nongnu.org
+To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>,
+	Martin Cerveny <M.Cerveny@computer.org>, qemu-devel@nongnu.org
 References: <1431519294-8873-1-git-send-email-M.Cerveny@computer.org>
 	<1431519294-8873-2-git-send-email-M.Cerveny@computer.org>
-In-Reply-To: <1431519294-8873-2-git-send-email-M.Cerveny@computer.org>
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
+	<555B31D9.2090806@suse.de>
+In-Reply-To: <555B31D9.2090806@suse.de>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="AxPn34jUE8ls0hU7QkowFmdIla0xMtu4W"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
 	Luiz Capitulino <lcapitulino@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] scripts: qom-*: add
 	network syntax
@@ -48,149 +55,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 May 2015 12:51:55 -0000
+X-List-Received-Date: Tue, 19 May 2015 13:57:13 -0000
 
-Am 13.05.2015 um 14:14 schrieb Martin Cerveny:
-> Add network syntax parsing (ip address, port) to qom-* scripts.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--AxPn34jUE8ls0hU7QkowFmdIla0xMtu4W
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 05/19/2015 06:51 AM, Andreas F=C3=A4rber wrote:
+> Am 13.05.2015 um 14:14 schrieb Martin Cerveny:
+>> Add network syntax parsing (ip address, port) to qom-* scripts.
+>>
+>> Signed-off-by: Martin Cerveny <M.Cerveny@computer.org>
+>> ---
+>>  scripts/qmp/qom-fuse |   13 ++++++++++++-
+>>  scripts/qmp/qom-get  |   12 +++++++++++-
+>>  scripts/qmp/qom-list |   12 +++++++++++-
+>>  scripts/qmp/qom-set  |   12 +++++++++++-
+>>  scripts/qmp/qom-tree |   12 +++++++++++-
+>>  5 files changed, 56 insertions(+), 5 deletions(-)
 >=20
-> Signed-off-by: Martin Cerveny <M.Cerveny@computer.org>
-> ---
->  scripts/qmp/qom-fuse |   13 ++++++++++++-
->  scripts/qmp/qom-get  |   12 +++++++++++-
->  scripts/qmp/qom-list |   12 +++++++++++-
->  scripts/qmp/qom-set  |   12 +++++++++++-
->  scripts/qmp/qom-tree |   12 +++++++++++-
->  5 files changed, 56 insertions(+), 5 deletions(-)
+> Could some Python guru please take a look at this?
 
-Could some Python guru please take a look at this?
+That disqualifies me (still a python newbie), but I still see something
+questionable:
 
-Martin, could you clarify what this fixes or adds exactly so that we can
-extend the commit message accordingly?
+>> =20
+>> -srv =3D QEMUMonitorProtocol(socket_path)
+>> +connection =3D socket_path.split(':')
+>> +if len(connection) =3D=3D 2:
+>> +    try:
+>> +         port =3D int(connection[1])
+>> +    except ValueError:
+>> +         raise QMPBadPort
+>> +    connection =3D ( connection[0], port )
 
-Thanks,
-Andreas
-
->=20
-> diff --git a/scripts/qmp/qom-fuse b/scripts/qmp/qom-fuse
-> index 5c6754a..d49f36d 100755
-> --- a/scripts/qmp/qom-fuse
-> +++ b/scripts/qmp/qom-fuse
-> @@ -134,5 +134,16 @@ class QOMFS(Fuse):
->  if __name__ =3D=3D '__main__':
->      import sys, os
-> =20
-> -    fs =3D QOMFS(QEMUMonitorProtocol(os.environ['QMP_SOCKET']))
-> +    socket_path =3D os.environ['QMP_SOCKET']
-> +    connection =3D socket_path.split(':')
-> +    if len(connection) =3D=3D 2:
-> +        try:
-> +            port =3D int(connection[1])
-> +        except ValueError:
-> +            raise QMPBadPort
-> +        connection =3D ( connection[0], port )
-> +    else:
-> +        connection =3D socket_path
-> +
-> +    fs =3D QOMFS(QEMUMonitorProtocol(connection))
->      fs.main(sys.argv)
-> diff --git a/scripts/qmp/qom-get b/scripts/qmp/qom-get
-> index 0172c69..f12eb52 100755
-> --- a/scripts/qmp/qom-get
-> +++ b/scripts/qmp/qom-get
-> @@ -56,7 +56,17 @@ if len(args) > 0:
->  else:
->      usage_error("not enough arguments")
-> =20
-> -srv =3D QEMUMonitorProtocol(socket_path)
-> +connection =3D socket_path.split(':')
-> +if len(connection) =3D=3D 2:
-> +    try:
-> +         port =3D int(connection[1])
-> +    except ValueError:
-> +         raise QMPBadPort
-> +    connection =3D ( connection[0], port )
-> +else:
-> +    connection =3D socket_path
-> +
-> +srv =3D QEMUMonitorProtocol(connection)
->  srv.connect()
-> =20
->  rsp =3D srv.command('qom-get', path=3Dpath, property=3Dprop)
-> diff --git a/scripts/qmp/qom-list b/scripts/qmp/qom-list
-> index 1e7cc6c..fadcce4 100755
-> --- a/scripts/qmp/qom-list
-> +++ b/scripts/qmp/qom-list
-> @@ -48,7 +48,17 @@ if not socket_path:
->      else:
->          usage_error("no QMP socket path or address given");
-> =20
-> -srv =3D QEMUMonitorProtocol(socket_path)
-> +connection =3D socket_path.split(':')
-> +if len(connection) =3D=3D 2:
-> +    try:
-> +         port =3D int(connection[1])
-> +    except ValueError:
-> +         raise QMPBadPort
-> +    connection =3D ( connection[0], port )
-> +else:
-> +    connection =3D socket_path
-> +
-> +srv =3D QEMUMonitorProtocol(connection)
->  srv.connect()
-> =20
->  if len(args) =3D=3D 0:
-> diff --git a/scripts/qmp/qom-set b/scripts/qmp/qom-set
-> index 54ecfec..b05fae3 100755
-> --- a/scripts/qmp/qom-set
-> +++ b/scripts/qmp/qom-set
-> @@ -58,7 +58,17 @@ if len(args) > 1:
->  else:
->      usage_error("not enough arguments")
-> =20
-> -srv =3D QEMUMonitorProtocol(socket_path)
-> +connection =3D socket_path.split(':')
-> +if len(connection) =3D=3D 2:
-> +    try:
-> +         port =3D int(connection[1])
-> +    except ValueError:
-> +         raise QMPBadPort
-> +    connection =3D ( connection[0], port )
-> +else:
-> +    connection =3D socket_path
-> +
-> +srv =3D QEMUMonitorProtocol(connection)
->  srv.connect()
-> =20
->  print srv.command('qom-set', path=3Dpath, property=3Dprop, value=3Dsys=
-.argv[2])
-> diff --git a/scripts/qmp/qom-tree b/scripts/qmp/qom-tree
-> index aea11d4..07f8a9d 100755
-> --- a/scripts/qmp/qom-tree
-> +++ b/scripts/qmp/qom-tree
-> @@ -50,7 +50,17 @@ if not socket_path:
->      else:
->          usage_error("no QMP socket path or address given");
-> =20
-> -srv =3D QEMUMonitorProtocol(socket_path)
-> +connection =3D socket_path.split(':')
-> +if len(connection) =3D=3D 2:
-> +    try:
-> +         port =3D int(connection[1])
-> +    except ValueError:
-> +         raise QMPBadPort
-> +    connection =3D ( connection[0], port )
-> +else:
-> +    connection =3D socket_path
-> +
-> +srv =3D QEMUMonitorProtocol(connection)
->  srv.connect()
-> =20
->  def list_node(path):
->=20
-
+Won't that mishandle IPv6 connections, such as something like [::1]:8000
+for connecting to port 8000 on localhost, since it splits into more than
+2 pieces when splitting on :?
 
 --=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Dilip Upmanyu, Graham Norton; HRB
-21284 (AG N=FCrnberg)
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--AxPn34jUE8ls0hU7QkowFmdIla0xMtu4W
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVW0EnAAoJEKeha0olJ0Nq87sH/3WNQ3gKEcggTz7XpDMNYYM/
+nPiqvhH0KRFB+QE2e6DU7qoJAgwWSFGUTOtdd8Vdlt0IRY2OWpwgLO8w0FArNtRX
+E9qd3vv1eAIZJUSacJrsV5r392xQ6xDlomp16SPxdNShqIJlNStt6lJhiRuhiOK1
+6maYtULUUwzq2VE3FIqQyVCPdYB9v41n3C+eUoa1qbMkUoCdmX52StynQwWQIH31
+J9frQEmK+IjYUuzCeLBuyV6GPCWFry9+M+bgZYhDCPvVd1C4WFPeHtJki5OTsk5a
+Usm5xiIrH9NI3W+bqdwEQ9lIckfEpWCTYcMvTB+IDw/K7EtjRME4NxMXPWQBDHM=
+=pWWu
+-----END PGP SIGNATURE-----
+
+--AxPn34jUE8ls0hU7QkowFmdIla0xMtu4W--
 
