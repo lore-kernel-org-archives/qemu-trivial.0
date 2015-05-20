@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YuiQx-0005kC-RY
-	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2015 10:23:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58511)
+	id 1YusSp-0000Ix-93
+	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2015 21:06:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60036)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1YuiQr-0005YD-3r
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 10:23:50 -0400
+	(envelope-from <shannon.zhao@linaro.org>) id 1YusSn-0000In-Lq
+	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1YuiQm-0002xx-PA
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 10:23:44 -0400
-Received: from cantor2.suse.de ([195.135.220.15]:58913 helo=mx2.suse.de)
+	(envelope-from <shannon.zhao@linaro.org>) id 1YusSj-0004B4-AQ
+	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:25 -0400
+Received: from mail-pa0-f47.google.com ([209.85.220.47]:36559)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1YuiQc-0002uR-SG; Tue, 19 May 2015 10:23:31 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 1FBA4AC62;
-	Tue, 19 May 2015 14:23:29 +0000 (UTC)
-Message-ID: <555B4761.6020104@suse.de>
-Date: Tue, 19 May 2015 16:23:29 +0200
-From: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	(envelope-from <shannon.zhao@linaro.org>) id 1YusSj-0004Aq-57
+	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:21 -0400
+Received: by pabts4 with SMTP id ts4so46301016pab.3
+	for <qemu-trivial@nongnu.org>; Tue, 19 May 2015 18:06:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=xrR02BxD0ZXyFqaLplelyDSQLL6s3RvFbDwfOAQwoF8=;
+	b=amCRSvzrPwrwmKybQ4ZvliI+BddzxgNH/1486XYe8af7rY2lyUTw0fTFh1FbrDS/vp
+	Ja64Lghh6EmsBN/F5AZZFjQT2QOyp2j4ne8ZEQmn+JUkYmktaGVjJKU3Yqm8ORcI9FUw
+	z+TtBAubW7y5besEpKtVHIG3tCxJuVHPYBvERNQ0OPCzG7PfQED/+zSt7/hRo1rJ3uYt
+	qWyPZ/nGiEjvfsoz6G1uA4iO7D0cIJgEWyCmw1z1hAkyUEUysMK0XYB2xB8udoPskVWA
+	mKpvFpK5RG+5OIyT8SBZL+sJ01xVLrV/MNp+bFev5I+hvY/qzJ3wIXJMLe2Orux+NbnC
+	Dz5Q==
+X-Gm-Message-State: ALoCoQmnq4dMi0ZqclFyAcTwfqG59ByEE+J0RbEugt5xfopZ13Qiy4eO4Fts4WorjOee7vJjcByu
+X-Received: by 10.70.6.161 with SMTP id c1mr58593663pda.76.1432083979492;
+	Tue, 19 May 2015 18:06:19 -0700 (PDT)
+Received: from [10.13.29.54] ([180.150.152.123])
+	by mx.google.com with ESMTPSA id
+	fk10sm14296349pab.18.2015.05.19.18.06.15
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 19 May 2015 18:06:18 -0700 (PDT)
+Message-ID: <555BDE05.9010100@linaro.org>
+Date: Wed, 20 May 2015 09:06:13 +0800
+From: Shannon Zhao <shannon.zhao@linaro.org>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
 	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, 
- Martin Cerveny <M.Cerveny@computer.org>
-References: <1431519294-8873-1-git-send-email-M.Cerveny@computer.org>
-	<1431519294-8873-2-git-send-email-M.Cerveny@computer.org>
-	<555B31D9.2090806@suse.de> <555B4127.4030700@redhat.com>
-	<alpine.GSO.2.00.1505191601120.6069@dmz.c-home.cz>
-	<555B45E2.5090008@redhat.com>
-In-Reply-To: <555B45E2.5090008@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature";
-	boundary="dDahtKqBtHb0CXUH8hK1pgSaPEJSco9eg"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] scripts: qom-*: add
-	network syntax
+To: qemu-devel@nongnu.org
+References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+In-Reply-To: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.220.47
+Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
+	zhaoshenglong@huawei.com, christoffer.dall@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH 0/6] Blank property cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,97 +63,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 May 2015 14:23:50 -0000
+X-List-Received-Date: Wed, 20 May 2015 01:06:26 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---dDahtKqBtHb0CXUH8hK1pgSaPEJSco9eg
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Ping...
 
-Am 19.05.2015 um 16:17 schrieb Eric Blake:
-> On 05/19/2015 08:12 AM, Martin Cerveny wrote:
->> Hello.
->>
->> On Tue, 19 May 2015, Eric Blake wrote:
->>> On 05/19/2015 06:51 AM, Andreas F=C3=A4rber wrote:
->>>> Am 13.05.2015 um 14:14 schrieb Martin Cerveny:
->>>>> Add network syntax parsing (ip address, port) to qom-* scripts.
->>>>>
->>>>> Signed-off-by: Martin Cerveny <M.Cerveny@computer.org>
->>>>> ---
->>>>>  scripts/qmp/qom-fuse |   13 ++++++++++++-
->>>>>  scripts/qmp/qom-get  |   12 +++++++++++-
->>>>>  scripts/qmp/qom-list |   12 +++++++++++-
->>>>>  scripts/qmp/qom-set  |   12 +++++++++++-
->>>>>  scripts/qmp/qom-tree |   12 +++++++++++-
->>>>>  5 files changed, 56 insertions(+), 5 deletions(-)
->>>>
->>>> Could some Python guru please take a look at this?
->=20
->>>>> +if len(connection) =3D=3D 2:
->>>>> +    try:
->>>>> +         port =3D int(connection[1])
->>>>> +    except ValueError:
->>>>> +         raise QMPBadPort
->>>>> +    connection =3D ( connection[0], port )
->>>
->>> Won't that mishandle IPv6 connections, such as something like [::1]:8=
-000
->>> for connecting to port 8000 on localhost, since it splits into more t=
-han
->>> 2 pieces when splitting on :?
->>
->> Yes, this is problem, but I copy-paste the same construct from
->> scripts/qmp/qmp-shell to be compatible.
->=20
-> Might be worth mentioning that, as justification in the commit message.=
+On 2015/5/12 10:25, shannon.zhao@linaro.org wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+> 
+> After [1]"s390-virtio: use common features" and [2]"virtio: Move host
+> features to backends" applied, there are some Property arrays which only
+> contain the list terminator DEFINE_PROP_END_OF_LIST. This patchset
+> removes those arrays and other meaningless Property arrays and also adds
+> comma after DEFINE_PROP_END_OF_LIST().
+> 
+> [1] http://lists.gnu.org/archive/html/qemu-devel/2015-05/msg00259.html
+> [2] http://lists.gnu.org/archive/html/qemu-devel/2015-04/threads.html
+> 
+> Shannon Zhao (6):
+>   hw/s390x/s390-virtio-bus: Remove meaningless blank Property
+>   hw/virtio/virtio-balloon: Remove meaningless blank Property
+>   hw/virtio/virtio-pci: Remove meaningless blank Property
+>   hw/gpio/zaurus: Remove meaningless blank Property
+>   hw/arm/spitz: Remove meaningless blank Property
+>   Add comma after DEFINE_PROP_END_OF_LIST()
+> 
+>  hw/arm/spitz.c                     |  5 -----
+>  hw/audio/intel-hda.c               |  2 +-
+>  hw/char/virtio-serial-bus.c        |  2 +-
+>  hw/core/platform-bus.c             |  2 +-
+>  hw/dma/i82374.c                    |  2 +-
+>  hw/gpio/zaurus.c                   |  5 -----
+>  hw/i386/kvm/ioapic.c               |  2 +-
+>  hw/i386/xen/xen_pvdevice.c         |  2 +-
+>  hw/ide/mmio.c                      |  2 +-
+>  hw/ipack/ipack.c                   |  2 +-
+>  hw/isa/pc87312.c                   |  2 +-
+>  hw/misc/arm11scu.c                 |  2 +-
+>  hw/misc/macio/cuda.c               |  2 +-
+>  hw/misc/macio/macio.c              |  2 +-
+>  hw/nvram/mac_nvram.c               |  2 +-
+>  hw/pci-bridge/ioh3420.c            |  2 +-
+>  hw/pci-bridge/xio3130_downstream.c |  2 +-
+>  hw/pci-host/prep.c                 |  2 +-
+>  hw/pci-host/versatile.c            |  2 +-
+>  hw/pci/pci.c                       |  2 +-
+>  hw/pci/pcie_port.c                 |  4 ++--
+>  hw/s390x/s390-virtio-bus.c         | 15 ---------------
+>  hw/timer/a9gtimer.c                |  2 +-
+>  hw/timer/arm_mptimer.c             |  2 +-
+>  hw/usb/bus.c                       |  2 +-
+>  hw/virtio/virtio-balloon.c         |  5 -----
+>  hw/virtio/virtio-pci.c             |  5 -----
+>  target-arm/cpu.c                   |  2 +-
+>  target-i386/cpu.c                  |  4 ++--
+>  tests/test-qdev-global-props.c     |  2 +-
+>  30 files changed, 27 insertions(+), 62 deletions(-)
+> 
 
->=20
->> Is the IPv6 support for utilities mandatory ?
->=20
-> I don't have any strong feelings about it (I'm okay if you don't).  But=
-
-> others might.
->=20
->> If yes I can make V2.
->=20
-> If so, it would be good to fix qmp-shell, too - which makes it sound
-> like it would be a separate commit.
-
-Is there a chance this can be fixed in a way that we don't need to
-replicate that code? :)
-
-Andreas
-
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Felix Imend=C3=B6rffer, Jane Smithard, Dilip Upmanyu, Graham Norton; =
-HRB
-21284 (AG N=C3=BCrnberg)
-
-
---dDahtKqBtHb0CXUH8hK1pgSaPEJSco9eg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBAgAGBQJVW0dhAAoJEPou0S0+fgE/a98QAJAyML4nEN37haOjKyxvczHc
-DKkXaed9fbyBbNdj2knsNBp1wXSwzKe7crHLbg88kKnLKaDuVn7DrwllBW+GheZA
-zVpc0Ozq3INytrKMhf4OlgazxzJeXpQ2wSbQ7wDcvhavG1td3k9ETPFDrf7EBHpz
-HEymwIT10GlUUfD7NxUme835JjLi/Irg4vN58qVfRXTw+KC3PjjWUc10njTJXenJ
-meMg9+QAKbH7SjhmfbIA/xIsNbo1NO+F4NUMl3+/J+2/5tgXVu/VM0LjwwfvX1Wc
-/QyFHKphYisNX+u74FBlNyEmSft0PG5AQXK2gK9iFZNM2oz6T9SOF/UM/ZkBOa73
-ijUiGhVFbuqPdnf3XRGOav3U3B0pEtv/fX03P8yOeSRysA6PNsy1JF/t/Y4O2qf8
-Sa6fxyzHAJSFxAvfkOWQtqsWM9coV/YdRpQdzynDep9zwgxVN3FpwgEphVDID85c
-Hw8sfuSepM/vlcB06knvBeGKaMoOJ66jPWpadljywdrJELVqIq9mFMNIZ5y5WOJ5
-pdXEzIZk54zwvVNdKhnGISQ0Jrm7Jh10HLcGZ2AXpdFSEYtTWSo5gaWNYOp/qchq
-xs8I97Xjkbyt11xCOB4MGOn6oCeePGLj3RbrSR4VNH010lYCnuWnwipUQHHMBbcE
-pFSQUx/+R7T8xCdIb+l+
-=kwQB
------END PGP SIGNATURE-----
-
---dDahtKqBtHb0CXUH8hK1pgSaPEJSco9eg--
+-- 
+Shannon
 
