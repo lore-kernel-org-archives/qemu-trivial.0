@@ -1,57 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YusSp-0000Ix-93
-	for mharc-qemu-trivial@gnu.org; Tue, 19 May 2015 21:06:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60036)
+	id 1YvGeQ-0000qd-Gz
+	for mharc-qemu-trivial@gnu.org; Wed, 20 May 2015 22:56:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50851)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YusSn-0000In-Lq
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:26 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1YvGeO-0000qV-Oz
+	for qemu-trivial@nongnu.org; Wed, 20 May 2015 22:56:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YusSj-0004B4-AQ
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:25 -0400
-Received: from mail-pa0-f47.google.com ([209.85.220.47]:36559)
+	(envelope-from <arei.gonglei@huawei.com>) id 1YvGeK-00084K-OW
+	for qemu-trivial@nongnu.org; Wed, 20 May 2015 22:56:00 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:56301)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1YusSj-0004Aq-57
-	for qemu-trivial@nongnu.org; Tue, 19 May 2015 21:06:21 -0400
-Received: by pabts4 with SMTP id ts4so46301016pab.3
-	for <qemu-trivial@nongnu.org>; Tue, 19 May 2015 18:06:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=xrR02BxD0ZXyFqaLplelyDSQLL6s3RvFbDwfOAQwoF8=;
-	b=amCRSvzrPwrwmKybQ4ZvliI+BddzxgNH/1486XYe8af7rY2lyUTw0fTFh1FbrDS/vp
-	Ja64Lghh6EmsBN/F5AZZFjQT2QOyp2j4ne8ZEQmn+JUkYmktaGVjJKU3Yqm8ORcI9FUw
-	z+TtBAubW7y5besEpKtVHIG3tCxJuVHPYBvERNQ0OPCzG7PfQED/+zSt7/hRo1rJ3uYt
-	qWyPZ/nGiEjvfsoz6G1uA4iO7D0cIJgEWyCmw1z1hAkyUEUysMK0XYB2xB8udoPskVWA
-	mKpvFpK5RG+5OIyT8SBZL+sJ01xVLrV/MNp+bFev5I+hvY/qzJ3wIXJMLe2Orux+NbnC
-	Dz5Q==
-X-Gm-Message-State: ALoCoQmnq4dMi0ZqclFyAcTwfqG59ByEE+J0RbEugt5xfopZ13Qiy4eO4Fts4WorjOee7vJjcByu
-X-Received: by 10.70.6.161 with SMTP id c1mr58593663pda.76.1432083979492;
-	Tue, 19 May 2015 18:06:19 -0700 (PDT)
-Received: from [10.13.29.54] ([180.150.152.123])
-	by mx.google.com with ESMTPSA id
-	fk10sm14296349pab.18.2015.05.19.18.06.15
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 May 2015 18:06:18 -0700 (PDT)
-Message-ID: <555BDE05.9010100@linaro.org>
-Date: Wed, 20 May 2015 09:06:13 +0800
-From: Shannon Zhao <shannon.zhao@linaro.org>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1YvGeK-00083I-AP; Wed, 20 May 2015 22:55:56 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id COD20403; Thu, 21 May 2015 10:54:54 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml428-hub.china.huawei.com
+	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 21 May 2015 10:54:44 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 21 May 2015 10:54:35 +0800
+Message-ID: <1432176875-5984-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
-References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
-In-Reply-To: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.220.47
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru, peter.huangpeng@huawei.com,
-	zhaoshenglong@huawei.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH 0/6] Blank property cleanup
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	Eric Blake <eblake@redhat.com>
+Subject: [Qemu-trivial] [PATCH] qemu-error: make the timestamp more obvious
+	and clear
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,63 +45,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 May 2015 01:06:26 -0000
+X-List-Received-Date: Thu, 21 May 2015 02:56:01 -0000
 
-Ping...
+From: Gonglei <arei.gonglei@huawei.com>
 
-On 2015/5/12 10:25, shannon.zhao@linaro.org wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
-> 
-> After [1]"s390-virtio: use common features" and [2]"virtio: Move host
-> features to backends" applied, there are some Property arrays which only
-> contain the list terminator DEFINE_PROP_END_OF_LIST. This patchset
-> removes those arrays and other meaningless Property arrays and also adds
-> comma after DEFINE_PROP_END_OF_LIST().
-> 
-> [1] http://lists.gnu.org/archive/html/qemu-devel/2015-05/msg00259.html
-> [2] http://lists.gnu.org/archive/html/qemu-devel/2015-04/threads.html
-> 
-> Shannon Zhao (6):
->   hw/s390x/s390-virtio-bus: Remove meaningless blank Property
->   hw/virtio/virtio-balloon: Remove meaningless blank Property
->   hw/virtio/virtio-pci: Remove meaningless blank Property
->   hw/gpio/zaurus: Remove meaningless blank Property
->   hw/arm/spitz: Remove meaningless blank Property
->   Add comma after DEFINE_PROP_END_OF_LIST()
-> 
->  hw/arm/spitz.c                     |  5 -----
->  hw/audio/intel-hda.c               |  2 +-
->  hw/char/virtio-serial-bus.c        |  2 +-
->  hw/core/platform-bus.c             |  2 +-
->  hw/dma/i82374.c                    |  2 +-
->  hw/gpio/zaurus.c                   |  5 -----
->  hw/i386/kvm/ioapic.c               |  2 +-
->  hw/i386/xen/xen_pvdevice.c         |  2 +-
->  hw/ide/mmio.c                      |  2 +-
->  hw/ipack/ipack.c                   |  2 +-
->  hw/isa/pc87312.c                   |  2 +-
->  hw/misc/arm11scu.c                 |  2 +-
->  hw/misc/macio/cuda.c               |  2 +-
->  hw/misc/macio/macio.c              |  2 +-
->  hw/nvram/mac_nvram.c               |  2 +-
->  hw/pci-bridge/ioh3420.c            |  2 +-
->  hw/pci-bridge/xio3130_downstream.c |  2 +-
->  hw/pci-host/prep.c                 |  2 +-
->  hw/pci-host/versatile.c            |  2 +-
->  hw/pci/pci.c                       |  2 +-
->  hw/pci/pcie_port.c                 |  4 ++--
->  hw/s390x/s390-virtio-bus.c         | 15 ---------------
->  hw/timer/a9gtimer.c                |  2 +-
->  hw/timer/arm_mptimer.c             |  2 +-
->  hw/usb/bus.c                       |  2 +-
->  hw/virtio/virtio-balloon.c         |  5 -----
->  hw/virtio/virtio-pci.c             |  5 -----
->  target-arm/cpu.c                   |  2 +-
->  target-i386/cpu.c                  |  4 ++--
->  tests/test-qdev-global-props.c     |  2 +-
->  30 files changed, 27 insertions(+), 62 deletions(-)
-> 
+before:
+   (qemu) 2015-05-21T02:07:43.695065Z qemu-system-x86_64: test....
+after applying this patch:
+   (qemu) [2015-05-21T02:21:46.023619Z UTC] qemu-system-x86_64: test....
 
+Cc: Eric Blake <eblake@redhat.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ util/qemu-error.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/qemu-error.c b/util/qemu-error.c
+index 9bba5f5..0b91cbc 100644
+--- a/util/qemu-error.c
++++ b/util/qemu-error.c
+@@ -212,7 +212,7 @@ void error_vreport(const char *fmt, va_list ap)
+     if (enable_timestamp_msg) {
+         g_get_current_time(&tv);
+         timestr = g_time_val_to_iso8601(&tv);
+-        error_printf("%s ", timestr);
++        error_printf("[%s UTC] ", timestr);
+         g_free(timestr);
+     }
+ 
 -- 
-Shannon
+1.7.12.4
+
+
 
