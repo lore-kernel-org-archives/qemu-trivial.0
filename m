@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Ywstd-00048R-8k
-	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2015 09:58:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48862)
+	id 1YwzGI-00028q-Il
+	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2015 16:46:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1YwstX-00041L-2P
-	for qemu-trivial@nongnu.org; Mon, 25 May 2015 09:58:23 -0400
+	(envelope-from <agraf@suse.de>) id 1YwzGG-00025Z-3f
+	for qemu-trivial@nongnu.org; Mon, 25 May 2015 16:46:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1YwstT-00066j-Aa
-	for qemu-trivial@nongnu.org; Mon, 25 May 2015 09:58:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35104)
+	(envelope-from <agraf@suse.de>) id 1YwzGF-0001DL-8X
+	for qemu-trivial@nongnu.org; Mon, 25 May 2015 16:46:12 -0400
+Received: from cantor2.suse.de ([195.135.220.15]:56454 helo=mx2.suse.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1YwstL-00065Z-6E; Mon, 25 May 2015 09:58:07 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (8.14.4/8.14.4) with ESMTP id t4PDvn7H028539
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 25 May 2015 09:57:49 -0400
-Received: from nial.brq.redhat.com (nial.brq.redhat.com [10.34.26.56])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t4PDvlro032692; Mon, 25 May 2015 09:57:47 -0400
-Date: Mon, 25 May 2015 15:57:46 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Message-ID: <20150525155746.042a41c7@nial.brq.redhat.com>
-In-Reply-To: <1432543077-12656-4-git-send-email-zhaoshenglong@huawei.com>
-References: <1432543077-12656-1-git-send-email-zhaoshenglong@huawei.com>
-	<1432543077-12656-4-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <agraf@suse.de>)
+	id 1YwzGB-0001By-2J; Mon, 25 May 2015 16:46:07 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 20664AC69;
+	Mon, 25 May 2015 20:46:06 +0000 (UTC)
+Message-ID: <55638A0C.1000902@suse.de>
+Date: Mon, 25 May 2015 22:46:04 +0200
+From: Alexander Graf <agraf@suse.de>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] hw/i386/acpi-build:
-	decref after use
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, 
+ qemu-devel@nongnu.org
+References: <1432498814-1469-1-git-send-email-crosthwaite.peter@gmail.com>
+In-Reply-To: <1432498814-1469-1-git-send-email-crosthwaite.peter@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, afaerber@suse.de,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: Re: [Qemu-trivial] [PATCH v2] device-tree: Make a common-obj
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,47 +45,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 May 2015 13:58:23 -0000
+X-List-Received-Date: Mon, 25 May 2015 20:46:13 -0000
 
-On Mon, 25 May 2015 16:37:57 +0800
-Shannon Zhao <zhaoshenglong@huawei.com> wrote:
 
-> From: Shannon Zhao <shannon.zhao@linaro.org>
-> 
-> valgrind complains about:
-> ==16447== 48 bytes in 2 blocks are definitely lost in loss record 2,033 of 3,310
-> ==16447==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-> ==16447==    by 0x2E4FD7: malloc_and_trace (vl.c:2546)
-> ==16447==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-> ==16447==    by 0x53EC3F: qint_from_int (qint.c:33)
-> ==16447==    by 0x53B426: qmp_output_type_int (qmp-output-visitor.c:162)
-> ==16447==    by 0x539257: visit_type_uint32 (qapi-visit-core.c:147)
-> ==16447==    by 0x471D07: property_get_uint32_ptr (object.c:1651)
-> ==16447==    by 0x47000C: object_property_get (object.c:822)
-> ==16447==    by 0x472428: object_property_get_qobject (qom-qobject.c:37)
-> ==16447==    by 0x25701A: build_append_pci_bus_devices (acpi-build.c:520)
-> ==16447==    by 0x25902E: build_ssdt (acpi-build.c:1004)
-> ==16447==    by 0x25A0A8: acpi_build (acpi-build.c:1420)
-> 
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+On 24.05.15 22:20, Peter Crosthwaite wrote:
+> There is no reason for device tree API to be built per-target.
+> common-obj it. There is an extraneous inclusion of config.h that
+> needs to be removed.
+>=20
+> Cc: Alexander Graf <agraf@suse.de>
+> Reviewed-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+
+Doesn't this mean that we're now linking against libfdt on
+qemu-system-x86_64?
+
+
+Alex
 
 > ---
->  hw/i386/acpi-build.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index d0a5c85..1b566c9 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -648,6 +648,7 @@ static void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus,
->          }
->      }
->      aml_append(parent_scope, method);
-> +    qobject_decref(bsel);
->  }
->  
->  static void
-
+>  Makefile.objs   | 2 ++
+>  Makefile.target | 1 -
+>  device_tree.c   | 1 -
+>  3 files changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/Makefile.objs b/Makefile.objs
+> index 28999d3..4881d2c 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -76,6 +76,8 @@ common-obj-$(CONFIG_SECCOMP) +=3D qemu-seccomp.o
+> =20
+>  common-obj-$(CONFIG_SMARTCARD_NSS) +=3D $(libcacard-y)
+> =20
+> +common-obj-$(CONFIG_FDT) +=3D device_tree.o
+> +
+>  ######################################################################
+>  # qapi
+> =20
+> diff --git a/Makefile.target b/Makefile.target
+> index 1083377..5100013 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -129,7 +129,6 @@ ifdef CONFIG_SOFTMMU
+>  obj-y +=3D arch_init.o cpus.o monitor.o gdbstub.o balloon.o ioport.o n=
+uma.o
+>  obj-y +=3D qtest.o bootdevice.o
+>  obj-y +=3D hw/
+> -obj-$(CONFIG_FDT) +=3D device_tree.o
+>  obj-$(CONFIG_KVM) +=3D kvm-all.o
+>  obj-y +=3D memory.o savevm.o cputlb.o
+>  obj-y +=3D memory_mapping.o
+> diff --git a/device_tree.c b/device_tree.c
+> index 3d119ef..d2de580 100644
+> --- a/device_tree.c
+> +++ b/device_tree.c
+> @@ -18,7 +18,6 @@
+>  #include <unistd.h>
+>  #include <stdlib.h>
+> =20
+> -#include "config.h"
+>  #include "qemu-common.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/device_tree.h"
+>=20
 
