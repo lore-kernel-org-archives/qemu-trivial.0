@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yx408-0001Od-2M
-	for mharc-qemu-trivial@gnu.org; Mon, 25 May 2015 21:49:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55617)
+	id 1Yx8X0-0005aN-Aw
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2015 02:40:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Yx405-0001LP-R2
-	for qemu-trivial@nongnu.org; Mon, 25 May 2015 21:49:50 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Yx8Wx-0005Uf-7a
+	for qemu-trivial@nongnu.org; Tue, 26 May 2015 02:40:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Yx404-00034p-3G
-	for qemu-trivial@nongnu.org; Mon, 25 May 2015 21:49:49 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:24407)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Yx8Ww-0001AW-Es
+	for qemu-trivial@nongnu.org; Tue, 26 May 2015 02:40:03 -0400
+Received: from mail-pd0-x229.google.com ([2607:f8b0:400e:c02::229]:36861)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1Yx403-00034V-Gr; Mon, 25 May 2015 21:49:48 -0400
-Received: from 172.24.2.119 (EHLO szxeml427-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BGN88726; Tue, 26 May 2015 09:46:27 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml427-hub.china.huawei.com (10.82.67.182) with Microsoft SMTP
-	Server id 14.3.158.1; Tue, 26 May 2015 09:46:18 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 26 May 2015 09:46:05 +0800
-Message-ID: <1432604767-5964-2-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1432604767-5964-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1432604767-5964-1-git-send-email-zhaoshenglong@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.5563D073.010A, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: d722a8d7b451eebc97a8edc34edc89d1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 1/3] hw/i386/pc_piix: Fix memory leak
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1Yx8Wr-0000tP-7n; Tue, 26 May 2015 02:39:57 -0400
+Received: by pdfh10 with SMTP id h10so83697304pdf.3;
+	Mon, 25 May 2015 23:39:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=YV0kFc0A8hhmnhogcyOCD3YdvBBDB2o6cIe7nZt0Xw8=;
+	b=Dj4HxzAUofjIv9XKMvHWx5YLVZyBXpWrmEKJZdiyWTbjQX4mdwrJ07QnE8OZDhUuSu
+	4caL5z8dGPdMxf8gtx87/uApNlsGTbJXaKaXkAmrjmHIiAT4l2lE0MtKjyU72hOzjoXw
+	OLYh53mvpWVCQ3q/ZtgZchj8I5e5z+U3HoW26PRqs6ZoqqYGn+f2/28YYqR1HSSzpi6Y
+	cJTXwDh+jCpwM8BUyKQVfRLTpuaWDW5FT+SFMVJU23FHMG5NpFnqcURhkdkz5Hxrvggb
+	2KzZlQP2+/cd4ouM8uzum05//F5Rq7FtmuooiUqUT6Q86twdIP0sk1oTrZedI70bh0tm
+	iu9A==
+X-Received: by 10.69.17.130 with SMTP id ge2mr45412004pbd.75.1432622396215;
+	Mon, 25 May 2015 23:39:56 -0700 (PDT)
+Received: from pcrost-laptop.hsd1.ca.comcast.net
+	(c-24-5-157-48.hsd1.ca.comcast.net. [24.5.157.48])
+	by mx.google.com with ESMTPSA id a5sm11888995pdk.58.2015.05.25.23.39.54
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 25 May 2015 23:39:54 -0700 (PDT)
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 25 May 2015 23:38:22 -0700
+Message-Id: <1432622302-6798-1-git-send-email-crosthwaite.peter@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c02::229
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: [Qemu-trivial] [PATCH] memory_mapping: Use qemu_common.h include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,74 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2015 01:49:50 -0000
+X-List-Received-Date: Tue, 26 May 2015 06:40:04 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+Rather than an explicit inclusion of cpu.h. This maked it more
+consistent with other core code files, which either just rely on
+qemu-common.h inclusion or preceed cpu.h with qemu-common.h anyway.
 
-valgrind complains about:
-==16447== 8 bytes in 1 blocks are definitely lost in loss record 552 of 3,310
-==16447==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-==16447==    by 0x2E4FD7: malloc_and_trace (vl.c:2546)
-==16447==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-==16447==    by 0x36FB47: qemu_extend_irqs (irq.c:55)
-==16447==    by 0x36FBD3: qemu_allocate_irqs (irq.c:64)
-==16447==    by 0x24E622: pc_init1 (pc_piix.c:287)
-==16447==    by 0x24E76A: pc_init_pci (pc_piix.c:310)
-==16447==    by 0x2E9360: main (vl.c:4226)
-
-==16447== 128 bytes in 1 blocks are definitely lost in loss record 2,569 of 3,310
-==16447==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-==16447==    by 0x2E4FD7: malloc_and_trace (vl.c:2546)
-==16447==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-==16447==    by 0x36FB47: qemu_extend_irqs (irq.c:55)
-==16447==    by 0x36FBD3: qemu_allocate_irqs (irq.c:64)
-==16447==    by 0x25BEB2: kvm_i8259_init (i8259.c:133)
-==16447==    by 0x24E1F1: pc_init1 (pc_piix.c:219)
-==16447==    by 0x24E76A: pc_init_pci (pc_piix.c:310)
-==16447==    by 0x2E9360: main (vl.c:4226)
-
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
- hw/i386/pc_piix.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Picked up by my multi arch WIP where target-multi/cpu.h cant handle
+random core code inclusion without preceeded qemu-common.h. I guess
+this is the only one in tree?
+---
+ memory_mapping.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 1fe7bfb..d567887 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -89,7 +89,7 @@ static void pc_init1(MachineState *machine,
-     qemu_irq *cpu_irq;
-     qemu_irq *gsi;
-     qemu_irq *i8259;
--    qemu_irq *smi_irq;
-+    qemu_irq smi_irq;
-     GSIState *gsi_state;
-     DriveInfo *hd[MAX_IDE_BUS * MAX_IDE_DEVS];
-     BusState *idebus[MAX_IDE_BUS];
-@@ -227,6 +227,7 @@ static void pc_init1(MachineState *machine,
-     for (i = 0; i < ISA_NUM_IRQS; i++) {
-         gsi_state->i8259_irq[i] = i8259[i];
-     }
-+    g_free(i8259);
-     if (pci_enabled) {
-         ioapic_init_gsi(gsi_state, "i440fx");
-     }
-@@ -284,10 +285,10 @@ static void pc_init1(MachineState *machine,
-         DeviceState *piix4_pm;
-         I2CBus *smbus;
+diff --git a/memory_mapping.c b/memory_mapping.c
+index 7b69801..7cf5548 100644
+--- a/memory_mapping.c
++++ b/memory_mapping.c
+@@ -13,8 +13,7 @@
  
--        smi_irq = qemu_allocate_irqs(pc_acpi_smi_interrupt, first_cpu, 1);
-+        smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt, first_cpu, 0);
-         /* TODO: Populate SPD eeprom data.  */
-         smbus = piix4_pm_init(pci_bus, piix3_devfn + 3, 0xb100,
--                              gsi[9], *smi_irq,
-+                              gsi[9], smi_irq,
-                               kvm_enabled(), fw_cfg, &piix4_pm);
-         smbus_eeprom_init(smbus, 8, NULL, 0);
+ #include <glib.h>
  
+-#include "cpu.h"
+-#include "exec/cpu-all.h"
++#include "qemu-common.h"
+ #include "sysemu/memory_mapping.h"
+ #include "exec/memory.h"
+ #include "exec/address-spaces.h"
 -- 
-2.0.4
-
+1.9.1
 
 
