@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YxE7V-0007ii-Nf
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2015 08:38:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47420)
+	id 1YxIIF-0005zZ-5p
+	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2015 13:05:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50017)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1YxAjE-0007Ol-No
-	for qemu-trivial@nongnu.org; Tue, 26 May 2015 05:00:58 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YxII9-0005mh-9V
+	for qemu-trivial@nongnu.org; Tue, 26 May 2015 13:05:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1YxAjA-0007Yr-Gd
-	for qemu-trivial@nongnu.org; Tue, 26 May 2015 05:00:52 -0400
-Received: from mail-lb0-x22d.google.com ([2a00:1450:4010:c04::22d]:35811)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YxII2-0008Uy-Q1
+	for qemu-trivial@nongnu.org; Tue, 26 May 2015 13:05:25 -0400
+Received: from mail-qg0-f43.google.com ([209.85.192.43]:34768)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>)
-	id 1YxAjA-0007YY-13; Tue, 26 May 2015 05:00:48 -0400
-Received: by lbbuc2 with SMTP id uc2so65555274lbb.2;
-	Tue, 26 May 2015 02:00:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:reply-to:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=WT+1F1YSSJs5MAp/KhxlskKiSTd3EOu7ptqnAjRGyKo=;
-	b=wG7bxUmBO3nGPy+L3rkLdFiW11Bu/AObTwvc+R3JJ7tca8YoreMt+F8m2j/jxihDYr
-	jGbt152qNICkPbLIk2mNOn8ClW1SQNzZBaKmSeLYHPgeamf40Ezl+3yDAV42IRitDVQY
-	qUsSuLIPVV2ph+dT2ccbxIM2ytqgZ+Mvfdo6UiaEphn+JFjuKL9O/mlai6tQcXGFz1+U
-	i5BNSysinxfxY2P5blwgMzOwPxlLQCq283HN6s2IlHb28turM1o1NeefMCkynLM3QYrD
-	yZC4BRnoAKfp73FRtLRtWn55yte0cUWJJ3VJiKF2sfCYqsAxpIKbRutQ8FU8ifBlrdO9
-	HbHg==
-X-Received: by 10.152.19.162 with SMTP id g2mr21572193lae.46.1432630847138;
-	Tue, 26 May 2015 02:00:47 -0700 (PDT)
-Received: from [10.0.0.6] (87.68.245.222.adsl.012.net.il. [87.68.245.222])
-	by mx.google.com with ESMTPSA id c2sm2878233laa.43.2015.05.26.02.00.44
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 26 May 2015 02:00:46 -0700 (PDT)
-Message-ID: <5564363A.9090100@gmail.com>
-Date: Tue, 26 May 2015 12:00:42 +0300
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.5.0
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YxII2-0008Ui-Hg
+	for qemu-trivial@nongnu.org; Tue, 26 May 2015 13:05:18 -0400
+Received: by qgez61 with SMTP id z61so65719778qge.1
+	for <qemu-trivial@nongnu.org>; Tue, 26 May 2015 10:05:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=3e6SgobPJjVT9KQSMYnt7QzGLw6555pYlDkad1DELhM=;
+	b=Q7gqcncmttnYXKlfog633PWeefyFAowCsBOXZKhJ9TGpYUhF2o5m026D9oNxWOSjPL
+	80R65vcoDTtDFY3hrkqHFDOuz0IbcNqJLhGmEZ9Ap7nNm/u6hvA8sib/8VqyCFc7kL9h
+	7sGkcMrXrHV3JtwpzeZgKaW0HTV6p8RDGPbk7syizFmyF+k3069aUJlpgAZpHT/5kUQS
+	szG4jK6BcxJJw8Ecaecww13JtqpDcoIP3IPkfk+5Q00L4+3/XL969eDlpwFJLQRqkzyV
+	vmlOnIPg7dh9WPgSnTBWbq+MoNcfNrAO7GPhB9GGcMFPhzBZT/OfPfP90Zdc9niYQprq
+	hWHA==
+X-Gm-Message-State: ALoCoQk+nvGUpxr7J7F00eO8vAA/sjoQu5vtaXqTYd/IyNE1CItiRGiZ8rSeOiGBEwdyVSVX2MRy
 MIME-Version: 1.0
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-References: <1432604767-5964-1-git-send-email-zhaoshenglong@huawei.com>
-	<1432604767-5964-2-git-send-email-zhaoshenglong@huawei.com>
-In-Reply-To: <1432604767-5964-2-git-send-email-zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c04::22d
-X-Mailman-Approved-At: Tue, 26 May 2015 08:38:07 -0400
-Cc: qemu-trivial@nongnu.org, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v2 1/3] hw/i386/pc_piix: Fix memory leak
+X-Received: by 10.55.33.23 with SMTP id h23mr12568413qkh.61.1432659918083;
+	Tue, 26 May 2015 10:05:18 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.96.45.2 with HTTP; Tue, 26 May 2015 10:05:17 -0700 (PDT)
+In-Reply-To: <55642B01.3010305@redhat.com>
+References: <1432622302-6798-1-git-send-email-crosthwaite.peter@gmail.com>
+	<55642B01.3010305@redhat.com>
+Date: Tue, 26 May 2015 10:05:17 -0700
+X-Google-Sender-Auth: q5Yr_rIuKAqglnyDwBDRUmYuMgQ
+Message-ID: <CAEgOgz6MwXzMG7u_WdMLDDYy1A27eqLTiLvZtKyYXOQSnf2HjQ@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.192.43
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory_mapping: Use
+	qemu_common.h include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: marcel@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -60,78 +60,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 May 2015 09:00:58 -0000
+X-List-Received-Date: Tue, 26 May 2015 17:05:29 -0000
 
-On 05/26/2015 04:46 AM, Shannon Zhao wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
+On Tue, May 26, 2015 at 1:12 AM, Paolo Bonzini <pbonzini@redhat.com> wrote:
 >
-> valgrind complains about:
-> ==16447== 8 bytes in 1 blocks are definitely lost in loss record 552 of 3,310
-> ==16447==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-> ==16447==    by 0x2E4FD7: malloc_and_trace (vl.c:2546)
-> ==16447==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-> ==16447==    by 0x36FB47: qemu_extend_irqs (irq.c:55)
-> ==16447==    by 0x36FBD3: qemu_allocate_irqs (irq.c:64)
-> ==16447==    by 0x24E622: pc_init1 (pc_piix.c:287)
-> ==16447==    by 0x24E76A: pc_init_pci (pc_piix.c:310)
-> ==16447==    by 0x2E9360: main (vl.c:4226)
 >
-> ==16447== 128 bytes in 1 blocks are definitely lost in loss record 2,569 of 3,310
-> ==16447==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-> ==16447==    by 0x2E4FD7: malloc_and_trace (vl.c:2546)
-> ==16447==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-> ==16447==    by 0x36FB47: qemu_extend_irqs (irq.c:55)
-> ==16447==    by 0x36FBD3: qemu_allocate_irqs (irq.c:64)
-> ==16447==    by 0x25BEB2: kvm_i8259_init (i8259.c:133)
-> ==16447==    by 0x24E1F1: pc_init1 (pc_piix.c:219)
-> ==16447==    by 0x24E76A: pc_init_pci (pc_piix.c:310)
-> ==16447==    by 0x2E9360: main (vl.c:4226)
+> On 26/05/2015 08:38, Peter Crosthwaite wrote:
+>> Rather than an explicit inclusion of cpu.h. This maked it more
+>> consistent with other core code files, which either just rely on
+>> qemu-common.h inclusion or preceed cpu.h with qemu-common.h anyway.
 >
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> ---
->   hw/i386/pc_piix.c | 7 ++++---
->   1 file changed, 4 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 1fe7bfb..d567887 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -89,7 +89,7 @@ static void pc_init1(MachineState *machine,
->       qemu_irq *cpu_irq;
->       qemu_irq *gsi;
->       qemu_irq *i8259;
-> -    qemu_irq *smi_irq;
-> +    qemu_irq smi_irq;
->       GSIState *gsi_state;
->       DriveInfo *hd[MAX_IDE_BUS * MAX_IDE_DEVS];
->       BusState *idebus[MAX_IDE_BUS];
-> @@ -227,6 +227,7 @@ static void pc_init1(MachineState *machine,
->       for (i = 0; i < ISA_NUM_IRQS; i++) {
->           gsi_state->i8259_irq[i] = i8259[i];
->       }
-> +    g_free(i8259);
->       if (pci_enabled) {
->           ioapic_init_gsi(gsi_state, "i440fx");
->       }
-> @@ -284,10 +285,10 @@ static void pc_init1(MachineState *machine,
->           DeviceState *piix4_pm;
->           I2CBus *smbus;
->
-> -        smi_irq = qemu_allocate_irqs(pc_acpi_smi_interrupt, first_cpu, 1);
-> +        smi_irq = qemu_allocate_irq(pc_acpi_smi_interrupt, first_cpu, 0);
->           /* TODO: Populate SPD eeprom data.  */
->           smbus = piix4_pm_init(pci_bus, piix3_devfn + 3, 0xb100,
-> -                              gsi[9], *smi_irq,
-> +                              gsi[9], smi_irq,
->                                 kvm_enabled(), fw_cfg, &piix4_pm);
->           smbus_eeprom_init(smbus, 8, NULL, 0);
->
+> I'd rather keep the cpu.h inclusion.  It would be nice to get rid of the
+> automagic inclusion of cpu.h from qemu-common.h.
 >
 
-Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
+OK, but it is an odd one out, would you be willing to accept
+the double include that seems to be widespread?
 
-Thanks,
-Marcel
++#include "qemu_common.h"
+ #include "cpu.h"
+-#include "exec/cpu-all.h"
 
+Regards,
+Peter
+
+> Paolo
+>
+>> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>> ---
+>> Picked up by my multi arch WIP where target-multi/cpu.h cant handle
+>> random core code inclusion without preceeded qemu-common.h. I guess
+>> this is the only one in tree?
+>> ---
+>>  memory_mapping.c | 3 +--
+>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/memory_mapping.c b/memory_mapping.c
+>> index 7b69801..7cf5548 100644
+>> --- a/memory_mapping.c
+>> +++ b/memory_mapping.c
+>> @@ -13,8 +13,7 @@
+>>
+>>  #include <glib.h>
+>>
+>> -#include "cpu.h"
+>> -#include "exec/cpu-all.h"
+>> +#include "qemu-common.h"
+>>  #include "sysemu/memory_mapping.h"
+>>  #include "exec/memory.h"
+>>  #include "exec/address-spaces.h"
+>> -- 1.9.1
+>
 
