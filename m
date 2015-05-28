@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YxQ8Q-0003b7-Vw
-	for mharc-qemu-trivial@gnu.org; Tue, 26 May 2015 21:27:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35312)
+	id 1Yxvlw-0004La-Dm
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:14:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>) id 1YxQ8O-0003aA-EN
-	for qemu-trivial@nongnu.org; Tue, 26 May 2015 21:27:53 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Yxvlr-0004E9-G3
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:14:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>) id 1YxQ8L-00078v-9R
-	for qemu-trivial@nongnu.org; Tue, 26 May 2015 21:27:52 -0400
-Received: from [59.151.112.132] (port=2857 helo=heian.cn.fujitsu.com)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Yxvlo-0001Tw-N5
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:14:43 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:18562)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>) id 1YxQ8K-00077P-TV
-	for qemu-trivial@nongnu.org; Tue, 26 May 2015 21:27:49 -0400
-X-IronPort-AV: E=Sophos;i="5.01,1,1399996800"; 
-   d="scan'208";a="95898814"
-Received: from localhost (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 27 May 2015 09:32:12 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id t4R1QHHa003135;
-	Wed, 27 May 2015 09:26:17 +0800
-Received: from G08CNEXMBPEKD02.g08.fujitsu.local ([10.167.33.84]) by
-	G08CNEXCHPEKD03.g08.fujitsu.local ([10.167.33.85]) with mapi id
-	14.03.0181.006; Wed, 27 May 2015 09:27:46 +0800
-From: "Chen, Hanxiao" <chenhanxiao@cn.fujitsu.com>
-To: Markus Armbruster <armbru@redhat.com>
-Thread-Topic: [Qemu-devel][PATCH] docs/writing-qmp-commands: fix a typo
-Thread-Index: AQHQl6OrRyuvO+6guUaxUMD4OhJfK52PCTNg
-Date: Wed, 27 May 2015 01:27:47 +0000
-Message-ID: <5871495633F38949900D2BF2DC04883E73900C0F@G08CNEXMBPEKD02.g08.fujitsu.local>
-References: <1432632341-5201-1-git-send-email-chenhanxiao@cn.fujitsu.com>
-	<87lhgb8utk.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87lhgb8utk.fsf@blackfin.pond.sub.org>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.167.226.34]
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1Yxvln-0001Jr-Vm; Thu, 28 May 2015 07:14:40 -0400
+Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CMA87047; Thu, 28 May 2015 19:14:25 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml432-hub.china.huawei.com (10.82.67.209) with Microsoft SMTP
+	Server id 14.3.158.1; Thu, 28 May 2015 19:14:16 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 28 May 2015 19:13:43 +0800
+Message-ID: <1432811625-13392-3-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] docs/writing-qmp-commands:
-	fix a typo
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, mjt@tls.msk.ru,
+	shannon.zhao@linaro.org
+Subject: [Qemu-trivial] [PATCH 2/4] hw/alpha/dp264.c: Fix memory leak
+	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,32 +47,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 May 2015 01:27:53 -0000
+X-List-Received-Date: Thu, 28 May 2015 11:14:44 -0000
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTWFya3VzIEFybWJydXN0
-ZXIgW21haWx0bzphcm1icnVAcmVkaGF0LmNvbV0NCj4gU2VudDogVHVlc2RheSwgTWF5IDI2LCAy
-MDE1IDc6MDMgUE0NCj4gVG86IENoZW4sIEhhbnhpYW8vs8Ig6s/P9g0KPiBDYzogcWVtdS10cml2
-aWFsQG5vbmdudS5vcmcNCj4gU3ViamVjdDogUmU6IFtRZW11LWRldmVsXVtQQVRDSF0gZG9jcy93
-cml0aW5nLXFtcC1jb21tYW5kczogZml4IGEgdHlwbw0KPiANCj4gQ2hlbiBIYW54aWFvIDxjaGVu
-aGFueGlhb0Bjbi5mdWppdHN1LmNvbT4gd3JpdGVzOg0KPiANCj4gPiBzL2ludGVyYXRpb24vaXRl
-cmF0aW9uDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaGVuIEhhbnhpYW8gPGNoZW5oYW54aWFv
-QGNuLmZ1aml0c3UuY29tPg0KPiA+IC0tLQ0KPiA+ICBkb2NzL3dyaXRpbmctcW1wLWNvbW1hbmRz
-LnR4dCB8IDIgKy0NCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0
-aW9uKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvZG9jcy93cml0aW5nLXFtcC1jb21tYW5kcy50
-eHQgYi9kb2NzL3dyaXRpbmctcW1wLWNvbW1hbmRzLnR4dA0KPiA+IGluZGV4IGYzZGYyMDYuLmFi
-MWZkZDMgMTAwNjQ0DQo+ID4gLS0tIGEvZG9jcy93cml0aW5nLXFtcC1jb21tYW5kcy50eHQNCj4g
-PiArKysgYi9kb2NzL3dyaXRpbmctcW1wLWNvbW1hbmRzLnR4dA0KPiA+IEBAIC01OTgsNyArNTk4
-LDcgQEAgc3RvcmVkIGluIGl0cyAidmFsdWUiIG1lbWJlci4gSW4gb3VyIGV4YW1wbGUsIHRoZQ0K
-PiA+ICJ2YWx1ZSIgbWVtYmVyIGlzIGEgcG9pbnRlcg0KPiA+ICB0byBhbiBUaW1lckFsYXJtTWV0
-aG9kIGluc3RhbmNlLg0KPiA+DQo+ID4gIE5vdGljZSB0aGF0IHRoZSAiY3VycmVudCIgdmFyaWFi
-bGUgaXMgdXNlZCBhcyAidHJ1ZSIgb25seSBpbiB0aGUgZmlyc3QNCj4gPiAtaW50ZXJhdGlvbiBv
-ZiB0aGUgbG9vcC4gVGhhdCdzIGJlY2F1c2UgdGhlIGFsYXJtIHRpbWVyIG1ldGhvZCBpbiB1c2Ug
-aXMgdGhlDQo+ID4gK2l0ZXJhdGlvbiBvZiB0aGUgbG9vcC4gVGhhdCdzIGJlY2F1c2UgdGhlIGFs
-YXJtIHRpbWVyIG1ldGhvZCBpbiB1c2UgaXMgdGhlDQo+ID4gIGZpcnN0IGVsZW1lbnQgb2YgdGhl
-IGFsYXJtX3RpbWVycyBhcnJheS4gQWxzbyBub3RpY2UgdGhhdCBRQVBJIGxpc3RzDQo+ID4gYXJl
-IGhhbmRsZWQNCj4gPiAgYnkgaGFuZCBhbmQgd2UgcmV0dXJuIHRoZSBoZWFkIG9mIHRoZSBsaXN0
-Lg0KPiANCj4gSSdtIGFmcmFpZCB5b3UgbmVlZCB0byByZXNlbmQNCj4gDQo+ICAgICBUbzogcWVt
-dS1kZXZlbEBub25nbnUub3JnDQo+ICAgICBDYzogcWVtdS10cml2aWFsQG5vbmdudS5vcmcsIC4u
-Lg0KDQoNClRoYW5rcywgSSdsbCByZXNlbmQgaXQgbGF0ZXIuDQoNClJlZ2FyZHMsDQotIENoZW4N
-Cg==
+From: Shannon Zhao <shannon.zhao@linaro.org>
+
+valgrind complains about:
+==7055== 58 bytes in 1 blocks are definitely lost in loss record 1,471 of 2,192
+==7055==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7055==    by 0x24410F: malloc_and_trace (vl.c:2556)
+==7055==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==7055==    by 0x64DEFD7: g_strndup (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==7055==    by 0x650181A: g_vasprintf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==7055==    by 0x64DF0CC: g_strdup_vprintf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==7055==    by 0x64DF188: g_strdup_printf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==7055==    by 0x242F81: qemu_find_file (vl.c:2121)
+==7055==    by 0x217A32: clipper_init (dp264.c:105)
+==7055==    by 0x2484DA: main (vl.c:4249)
+
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ hw/alpha/dp264.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index 9fe7e8b..0c5395f 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -56,6 +56,7 @@ static void clipper_init(MachineState *machine)
+     qemu_irq rtc_irq;
+     long size, i;
+     const char *palcode_filename;
++    char *filename;
+     uint64_t palcode_entry, palcode_low, palcode_high;
+     uint64_t kernel_entry, kernel_low, kernel_high;
+ 
+@@ -102,18 +103,20 @@ static void clipper_init(MachineState *machine)
+        but one explicitly written for the emulation, we might as
+        well load it directly from and ELF image.  */
+     palcode_filename = (bios_name ? bios_name : "palcode-clipper");
+-    palcode_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, palcode_filename);
+-    if (palcode_filename == NULL) {
++    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, palcode_filename);
++    if (filename == NULL) {
+         hw_error("no palcode provided\n");
+         exit(1);
+     }
+-    size = load_elf(palcode_filename, cpu_alpha_superpage_to_phys,
++    size = load_elf(filename, cpu_alpha_superpage_to_phys,
+                     NULL, &palcode_entry, &palcode_low, &palcode_high,
+                     0, EM_ALPHA, 0);
+     if (size < 0) {
+-        hw_error("could not load palcode '%s'\n", palcode_filename);
++        hw_error("could not load palcode '%s'\n", filename);
++        g_free(filename);
+         exit(1);
+     }
++    g_free(filename);
+ 
+     /* Start all cpus at the PALcode RESET entry point.  */
+     for (i = 0; i < smp_cpus; ++i) {
+-- 
+2.0.4
+
+
 
