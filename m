@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yxwfe-0004tB-KD
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 08:12:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59109)
+	id 1Yxwff-0004v6-B2
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 08:12:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59114)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YxwfY-0004gZ-6M
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:12:19 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YxwfY-0004gx-Cg
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:12:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YxwfU-0004Pp-Fm
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YxwfU-0004Pu-Km
 	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:12:16 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:42475)
+Received: from szxga02-in.huawei.com ([119.145.14.65]:42477)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YxwfM-0004KH-D3; Thu, 28 May 2015 08:12:04 -0400
+	id 1YxwfM-0004KO-D3; Thu, 28 May 2015 08:12:04 -0400
 Received: from 172.24.2.119 (EHLO SZXEML429-HUB.china.huawei.com)
 	([172.24.2.119])
 	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CMA92612; Thu, 28 May 2015 20:11:53 +0800 (CST)
+	with ESMTP id CMA92615; Thu, 28 May 2015 20:11:54 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
-	Server id 14.3.158.1; Thu, 28 May 2015 20:10:19 +0800
+	Server id 14.3.158.1; Thu, 28 May 2015 20:10:18 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 28 May 2015 20:08:48 +0800
-Message-ID: <1432814932-12608-26-git-send-email-zhaoshenglong@huawei.com>
+Date: Thu, 28 May 2015 20:08:47 +0800
+Message-ID: <1432814932-12608-25-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
 In-Reply-To: <1432814932-12608-1-git-send-email-zhaoshenglong@huawei.com>
 References: <1432814932-12608-1-git-send-email-zhaoshenglong@huawei.com>
@@ -34,8 +34,8 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.65
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, mjt@tls.msk.ru,
 	shannon.zhao@linaro.org, peter.maydell@linaro.org
-Subject: [Qemu-trivial] [PATCH 25/29] hw/arm/palm.c: Fix memory leak spotted
-	by valgrind
+Subject: [Qemu-trivial] [PATCH 24/29] hw/arm/omap_sx1.c: Fix memory leak
+	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,34 +52,40 @@ X-List-Received-Date: Thu, 28 May 2015 12:12:20 -0000
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
 valgrind complains about:
-==27206== 56 bytes in 1 blocks are definitely lost in loss record 2,000 of 3,127
-==27206==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-==27206==    by 0x35479F: malloc_and_trace (vl.c:2556)
-==27206==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-==27206==    by 0x3ED99B: qemu_extend_irqs (irq.c:55)
-==27206==    by 0x3EDA27: qemu_allocate_irqs (irq.c:64)
-==27206==    by 0x283C8B: palmte_gpio_setup (palm.c:168)
-==27206==    by 0x2840FA: palmte_init (palm.c:239)
-==27206==    by 0x358B6A: main (vl.c:4249)
+==19440== 248 bytes in 1 blocks are definitely lost in loss record 2,340 of 2,934
+==19440==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19440==    by 0x354793: malloc_and_trace (vl.c:2556)
+==19440==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==19440==    by 0x2833DB: sx1_init (omap_sx1.c:106)
+==19440==    by 0x2838C9: sx1_init_v2 (omap_sx1.c:217)
+==19440==    by 0x358B5E: main (vl.c:4249)
 
 Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- hw/arm/palm.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/omap_sx1.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-index 7f1cfb8..4e00695 100644
---- a/hw/arm/palm.c
-+++ b/hw/arm/palm.c
-@@ -173,6 +173,7 @@ static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
-     qdev_connect_gpio_out(cpu->gpio, 13,			misc_gpio[4]);
-     omap_mpuio_out_set(cpu->mpuio, 1,				misc_gpio[5]);
-     omap_mpuio_out_set(cpu->mpuio, 3,				misc_gpio[6]);
-+    g_free(misc_gpio);
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index 671e02c..4b0f7f9 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -103,7 +103,6 @@ static void sx1_init(MachineState *machine, const int version)
+     struct omap_mpu_state_s *mpu;
+     MemoryRegion *address_space = get_system_memory();
+     MemoryRegion *flash = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+     MemoryRegion *cs = g_new(MemoryRegion, 4);
+     static uint32_t cs0val = 0x00213090;
+     static uint32_t cs1val = 0x00215070;
+@@ -165,6 +164,7 @@ static void sx1_init(MachineState *machine, const int version)
  
-     /* Reset some inputs to initial state.  */
-     qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
+     if ((version == 1) &&
+             (dinfo = drive_get(IF_PFLASH, 0, fl_idx)) != NULL) {
++        MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+         memory_region_init_ram(flash_1, NULL, "omap_sx1.flash1-0", flash1_size,
+                                &error_abort);
+         vmstate_register_ram_global(flash_1);
 -- 
 2.0.4
 
