@@ -1,51 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YxwkO-0005Qt-H5
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 08:17:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60762)
+	id 1YxwnC-0002gJ-8Q
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 08:20:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YxwkG-0005Cu-Rb
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:17:12 -0400
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1Yxwn3-0002PK-JG
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:20:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YxwkC-00067p-Qu
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:17:08 -0400
-Received: from mail-ie0-f180.google.com ([209.85.223.180]:33785)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1Yxwmy-0006rL-H5
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:20:01 -0400
+Received: from s16892447.onlinehome-server.info ([82.165.15.123]:53839)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1YxwkC-00067a-N5
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 08:17:04 -0400
-Received: by iebgx4 with SMTP id gx4so36536578ieb.0
-	for <qemu-trivial@nongnu.org>; Thu, 28 May 2015 05:17:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=VPghFf4RvFH8IZEGNbWedmq2bgFxTaj3agzkyYaLTX8=;
-	b=d2V4176cRtZxpYfE+2JyYgoxKs+6SdpdohFrCsUc2O00pT/FEpvtHnJznf7z7saqBN
-	/BWIKa9RSR/S0uHRRX0flJHp8c6LmYjTjfC2RL8ETIx1mzbZluEpEKkJD5gLCBy75H1c
-	UcN5OQuRnNa78ALee0IPmXGyLuHlm+t4ZU7PpsDll67MxW0MWx7cs8cA8vhCcCXvV7w8
-	vpVSH2N78FfmBwbEf1D61Vv3aF0pn1toCk7sD3ey7yrgWW7zg7yN/oVzzS0qhct2sZll
-	6MAERdODoGOinLohAaKgyUSpqeUIw7sG6jbBD88DCylgxK2ig6jEvIty63cvL06UWJfh
-	vAcw==
-X-Gm-Message-State: ALoCoQma5vTA4T9Ap1fJpgBE0fqBCaoMhLHTqYrs3z06gbJITSj0Rj8fI+xQrXjGCL4JRaTcjx6A
-X-Received: by 10.107.133.154 with SMTP id p26mr2971419ioi.7.1432815424215;
-	Thu, 28 May 2015 05:17:04 -0700 (PDT)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1Yxwmy-0006nx-Bx; Thu, 28 May 2015 08:19:56 -0400
+Received: from 4e56a460.skybroadband.com ([78.86.164.96] helo=[192.168.1.87])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1Yxwmj-0003Jt-Lb; Thu, 28 May 2015 13:19:42 +0100
+Message-ID: <556707D2.50800@ilande.co.uk>
+Date: Thu, 28 May 2015 13:19:30 +0100
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.7.0
 MIME-Version: 1.0
-Received: by 10.107.181.6 with HTTP; Thu, 28 May 2015 05:16:43 -0700 (PDT)
-In-Reply-To: <1432814932-12608-2-git-send-email-zhaoshenglong@huawei.com>
-References: <1432814932-12608-1-git-send-email-zhaoshenglong@huawei.com>
-	<1432814932-12608-2-git-send-email-zhaoshenglong@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2015 13:16:43 +0100
-Message-ID: <CAFEAcA_ya9V+kLVCrqU-wuG7cbJNf4ZX+xS9OsLgmzBveyXT1g@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.223.180
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH 01/29] hw/ide/ahci.c: Fix memory leak
-	spotted by valgrind
+To: Michael Tokarev <mjt@tls.msk.ru>, Shannon Zhao <zhaoshenglong@huawei.com>,
+	qemu-devel@nongnu.org
+References: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>	<1432811625-13392-5-git-send-email-zhaoshenglong@huawei.com>	<556701E8.1040801@msgid.tls.msk.ru>
+	<556703B2.8050606@msgid.tls.msk.ru>
+In-Reply-To: <556703B2.8050606@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 78.86.164.96
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, shannon.zhao@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] hw/display/tcx.c: Fix
+ memory leak spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,46 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 May 2015 12:17:13 -0000
+X-List-Received-Date: Thu, 28 May 2015 12:20:08 -0000
 
-On 28 May 2015 at 13:08, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
->
-> valgrind complains about:
-> ==23381== 8 bytes in 1 blocks are definitely lost in loss record 438 of 2,785
-> ==23381==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-> ==23381==    by 0x35478F: malloc_and_trace (vl.c:2556)
-> ==23381==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-> ==23381==    by 0x3ED98B: qemu_extend_irqs (irq.c:55)
-> ==23381==    by 0x3EDA17: qemu_allocate_irqs (irq.c:64)
-> ==23381==    by 0x43D767: ahci_init (ahci.c:1356)
-> ==23381==    by 0x43DAC5: sysbus_ahci_realize (ahci.c:1520)
-> ==23381==    by 0x3EA4CC: device_set_realized (qdev.c:1058)
-> ==23381==    by 0x516CD2: property_set_bool (object.c:1514)
-> ==23381==    by 0x5155CC: object_property_set (object.c:837)
-> ==23381==    by 0x5178EE: object_property_set_qobject (qom-qobject.c:24)
-> ==23381==    by 0x51583B: object_property_set_bool (object.c:905)
->
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> ---
->  hw/ide/ahci.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-> index 9e5d862..4702a05 100644
-> --- a/hw/ide/ahci.c
-> +++ b/hw/ide/ahci.c
-> @@ -1367,6 +1367,7 @@ void ahci_init(AHCIState *s, DeviceState *qdev, AddressSpace *as, int ports)
->          ad->port.dma->ops = &ahci_dma_ops;
->          ide_register_restart_cb(&ad->port);
->      }
-> +    g_free(irqs);
->  }
+On 28/05/15 13:01, Michael Tokarev wrote:
 
-Freeing the return value of qemu_allocate_irqs()
-directly rather than using qemu_free_irqs() looks
-dubious to me.
+> 28.05.2015 14:54, Michael Tokarev wrote:
+>> Applied to -trivial, thanks!
+> 
+> ..or not applied yet... :)
+> 
+> This is again the same situation with the error message as with
+> 1/4 hw/display/cg3.c, and the same question - is the error fatal?
+> 
+> And note that you're the number-one person who made changes to
+> this file... ;)
+> 
+> /mjt
 
--- PMM
+The FCode ROMs supplied for CG3/TCX are used to both initialise various
+DT entries for the graphic adapters and also provide a minimal driver to
+allow OpenBIOS (or Sun PROM) to initialise and use the adapter at boot.
+
+I'd say at the moment the error should be fatal, since the correct way
+to have a headless system would be not to have the virtual graphics
+adapter plugged into the system in the first place. Otherwise I can see
+that the skeleton DT nodes generated by the PROM would be missing
+several properties generated by the FCode (such as the framebuffer
+address), which would be utterly confusing for any client trying to use
+the graphics adapter.
+
+
+ATB,
+
+Mark.
+
 
