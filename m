@@ -1,51 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yxxku-0001lp-MX
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 09:21:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52271)
+	id 1YxyRa-00050d-11
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 10:05:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Yxxkp-0001dd-0M
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 09:21:50 -0400
+	(envelope-from <armbru@redhat.com>) id 1YxyRR-0004tb-0S
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 10:05:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Yxxkk-0004Mh-Sy
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 09:21:46 -0400
-Received: from mail-ig0-f181.google.com ([209.85.213.181]:36295)
+	(envelope-from <armbru@redhat.com>) id 1YxyRK-0003hi-Vz
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 10:05:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45389)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Yxxkk-0004Lv-OW
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 09:21:42 -0400
-Received: by igbpi8 with SMTP id pi8so111350434igb.1
-	for <qemu-trivial@nongnu.org>; Thu, 28 May 2015 06:21:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=5IW0/FpHYMHi8wOW0hc/8g1xPb97e8tGu+q+w+jF5zY=;
-	b=LuWZEkEypI5bGSNh/pygsdT+J+RVNVDuevkV+D1xj75GoVLwxZMaN2nftEOl2/mIf7
-	Scn92unzJiftoU1Y6V7GrLvyzfD0Rlyc/9sURLWxiCf7AnWdNyfyPuJ9sggHVrGYy+dE
-	6TtkS9jjF7/entj5IYpfAJkFwduhoXQX9EYO6sNWs+W9VzfSMukbcU31QxsPXy62tK8f
-	HDImjAXZFEbS0N9Y0dHrbti9yowpBrX5z34cixJyNxdwMe9qe1ctAgQaRLeUWBKbV9hJ
-	cM6Mr37XNfv+Rv4gK9Qfajv6Af8KqnXUHRh7EM26xA/9QIZnQdi/9+zUuUmvA1K+nkBF
-	uDBQ==
-X-Gm-Message-State: ALoCoQmkTRLGO80pLMEJCLPqNhZz1y+mwhYeLo45mwGUt8C9Bi7UMtSIleQUZ6Ml8upZlBi4PkOE
-X-Received: by 10.107.131.141 with SMTP id n13mr3352663ioi.74.1432819302252;
-	Thu, 28 May 2015 06:21:42 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>)
+	id 1YxyRA-0003fd-6p; Thu, 28 May 2015 10:05:32 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7440A35C813;
+	Thu, 28 May 2015 14:05:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
+	[10.36.116.60])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4SE5SRZ027415
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 28 May 2015 10:05:30 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E3AC53008AAF; Thu, 28 May 2015 16:05:27 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1432632341-5201-1-git-send-email-chenhanxiao@cn.fujitsu.com>
+	<5566FCBA.2000500@msgid.tls.msk.ru>
+	<87twuwaoju.fsf@blackfin.pond.sub.org>
+	<55670998.1030505@msgid.tls.msk.ru>
+Date: Thu, 28 May 2015 16:05:27 +0200
+In-Reply-To: <55670998.1030505@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Thu, 28 May 2015 15:27:04 +0300")
+Message-ID: <87iobckdaw.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.107.181.6 with HTTP; Thu, 28 May 2015 06:21:21 -0700 (PDT)
-In-Reply-To: <1432814932-12608-30-git-send-email-zhaoshenglong@huawei.com>
-References: <1432814932-12608-1-git-send-email-zhaoshenglong@huawei.com>
-	<1432814932-12608-30-git-send-email-zhaoshenglong@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2015 14:21:21 +0100
-Message-ID: <CAFEAcA8J7ZbuH-rzBToaSWLKM_3U1O9JzFqPjOAQ8Tx8ohOP2A@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.181
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH 29/29] hw/s390x/sclpcpu.c: Fix memory
-	leak spotted by valgrind
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs/writing-qmp-commands:
+	fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,22 +54,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 May 2015 13:21:51 -0000
+X-List-Received-Date: Thu, 28 May 2015 14:05:56 -0000
 
-On 28 May 2015 at 13:08, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> @@ -81,7 +81,10 @@ static void trigger_signal(void *opaque, int n, int level)
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
+> 28.05.2015 15:12, Markus Armbruster wrote:
+>> Michael Tokarev <mjt@tls.msk.ru> writes:
+> []
+>>> Marcus: I don't think such obvious and trivial changes needs to be re-sent
+>>> to -devel. Ofcourse it is better to send things to -devel rigth away, but
+>>> requiring to resent is a bit over the top.  I think anyway :)
+>> 
+>> Patches must be posted to -devel for review.
+>> 
+>> If you accept patches sent just to -trivial, then the only post to
+>> -devel will be your pull request, where it most probably won't get
+>> review.
 >
->  static int irq_cpu_hotplug_init(SCLPEvent *event)
->  {
-> -    irq_cpu_hotplug = qemu_allocate_irqs(trigger_signal, event, 1);
-> +    qemu_irq irq = qemu_allocate_irq(trigger_signal, event, 0);
-> +
-> +    irq_cpu_hotplug = irq;
-> +    qemu_free_irq(irq);
->      return 0;
+> Obvious typo fix in comment or doc don't really need a big review.
+> That's where the "too trivial" border can be drawn.
 
-Huh? Surely we can't validly use the irq once you've
-called qemu_free_irq() on it?
+I don't want us to get into the "is this trivial enough to go in without
+review" business.
 
--- PMM
+[...]
 
