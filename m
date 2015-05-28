@@ -1,36 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yxvn4-00063N-Ln
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:15:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40702)
+	id 1Yxvn6-000665-Vw
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:16:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yxvmy-0005yG-Bi
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:56 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Yxvn3-000627-HG
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yxvmx-0002uN-5L
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54924)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Yxvmz-0002xA-1G
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:57 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:19707)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Yxvms-0002oM-2l; Thu, 28 May 2015 07:15:46 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id DC04C42715;
-	Thu, 28 May 2015 14:15:44 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id C606193A;
-	Thu, 28 May 2015 14:15:44 +0300 (MSK)
-Received: (nullmailer pid 2509 invoked by uid 1000);
-	Thu, 28 May 2015 11:15:44 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu, 28 May 2015 14:15:43 +0300
-Message-Id: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PATCH] slirp: use less predictable directory name
-	in /tmp for smb config (CVE-2015-4037)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1Yxvmy-0002tj-G6; Thu, 28 May 2015 07:15:52 -0400
+Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CMA87066; Thu, 28 May 2015 19:14:30 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml432-hub.china.huawei.com (10.82.67.209) with Microsoft SMTP
+	Server id 14.3.158.1; Thu, 28 May 2015 19:14:21 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 28 May 2015 19:13:45 +0800
+Message-ID: <1432811625-13392-5-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, mjt@tls.msk.ru,
+	shannon.zhao@linaro.org
+Subject: [Qemu-trivial] [PATCH 4/4] hw/display/tcx.c: Fix memory leak
+	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,46 +47,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 May 2015 11:15:56 -0000
+X-List-Received-Date: Thu, 28 May 2015 11:15:58 -0000
 
-In this version I used mkdtemp(3) which is:
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-        _BSD_SOURCE
-        || /* Since glibc 2.10: */
-            (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
+valgrind complains about:
+==23693== 55 bytes in 1 blocks are definitely lost in loss record 1,277 of 2,014
+==23693==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23693==    by 0x21B93F: malloc_and_trace (vl.c:2556)
+==23693==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==23693==    by 0x64DEFD7: g_strndup (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==23693==    by 0x650181A: g_vasprintf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==23693==    by 0x64DF0CC: g_strdup_vprintf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==23693==    by 0x64DF188: g_strdup_printf (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==23693==    by 0x21A7B1: qemu_find_file (vl.c:2121)
+==23693==    by 0x1E4F6E: tcx_realizefn (tcx.c:1013)
+==23693==    by 0x26CC20: device_set_realized (qdev.c:1058)
+==23693==    by 0x2B6766: property_set_bool (object.c:1514)
+==23693==    by 0x2B5060: object_property_set (object.c:837)
 
-so should be available on systems we care about.
-
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- net/slirp.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ hw/display/tcx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/net/slirp.c b/net/slirp.c
-index 9bbed74..0ad32ad 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -481,7 +481,6 @@ static void slirp_smb_cleanup(SlirpState *s)
- static int slirp_smb(SlirpState* s, const char *exported_dir,
-                      struct in_addr vserver_addr)
- {
--    static int instance;
-     char smb_conf[128];
-     char smb_cmdline[128];
-     struct passwd *passwd;
-@@ -505,9 +504,8 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
-         return -1;
-     }
- 
--    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
--             (long)getpid(), instance++);
--    if (mkdir(s->smb_dir, 0700) < 0) {
-+    strcpy(s->smb_dir, "/tmp/qemu-smb.XXXXXX");
-+    if (!mkdtemp(s->smb_dir)) {
-         error_report("could not create samba server dir '%s'", s->smb_dir);
-         return -1;
-     }
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+index a9f9f66..6c5e584 100644
+--- a/hw/display/tcx.c
++++ b/hw/display/tcx.c
+@@ -1014,6 +1014,7 @@ static void tcx_realizefn(DeviceState *dev, Error **errp)
+     if (fcode_filename) {
+         ret = load_image_targphys(fcode_filename, s->prom_addr,
+                                   FCODE_MAX_ROM_SIZE);
++        g_free(fcode_filename);
+         if (ret < 0 || ret > FCODE_MAX_ROM_SIZE) {
+             error_report("tcx: could not load prom '%s'", TCX_ROM_FILE);
+         }
 -- 
-2.1.4
+2.0.4
+
 
 
