@@ -1,40 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YxvmQ-000587-Ps
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:15:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40345)
+	id 1Yxvn4-00063N-Ln
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:15:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YxvmJ-0004u6-Tc
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:17 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Yxvmy-0005yG-Bi
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YxvmG-0002BA-Oz
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:11 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:18611)
+	(envelope-from <mjt@tls.msk.ru>) id 1Yxvmx-0002uN-5L
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:15:52 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54924)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YxvmG-0001P6-6g; Thu, 28 May 2015 07:15:08 -0400
-Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CMA87043; Thu, 28 May 2015 19:14:25 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml432-hub.china.huawei.com (10.82.67.209) with Microsoft SMTP
-	Server id 14.3.158.1; Thu, 28 May 2015 19:14:14 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 28 May 2015 19:13:42 +0800
-Message-ID: <1432811625-13392-2-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, mjt@tls.msk.ru,
-	shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH 1/4] hw/display/cg3.c: Fix memory leak
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Yxvms-0002oM-2l; Thu, 28 May 2015 07:15:46 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id DC04C42715;
+	Thu, 28 May 2015 14:15:44 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id C606193A;
+	Thu, 28 May 2015 14:15:44 +0300 (MSK)
+Received: (nullmailer pid 2509 invoked by uid 1000);
+	Thu, 28 May 2015 11:15:44 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Thu, 28 May 2015 14:15:43 +0300
+Message-Id: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH] slirp: use less predictable directory name
+	in /tmp for smb config (CVE-2015-4037)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,30 +42,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 May 2015 11:15:18 -0000
+X-List-Received-Date: Thu, 28 May 2015 11:15:56 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+In this version I used mkdtemp(3) which is:
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+        _BSD_SOURCE
+        || /* Since glibc 2.10: */
+            (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
+
+so should be available on systems we care about.
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/display/cg3.c | 1 +
- 1 file changed, 1 insertion(+)
+ net/slirp.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index 1e6ff2b..b86e5c0 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -302,6 +302,7 @@ static void cg3_realizefn(DeviceState *dev, Error **errp)
-     if (fcode_filename) {
-         ret = load_image_targphys(fcode_filename, s->prom_addr,
-                                   FCODE_MAX_ROM_SIZE);
-+        g_free(fcode_filename);
-         if (ret < 0 || ret > FCODE_MAX_ROM_SIZE) {
-             error_report("cg3: could not load prom '%s'", CG3_ROM_FILE);
-         }
+diff --git a/net/slirp.c b/net/slirp.c
+index 9bbed74..0ad32ad 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -481,7 +481,6 @@ static void slirp_smb_cleanup(SlirpState *s)
+ static int slirp_smb(SlirpState* s, const char *exported_dir,
+                      struct in_addr vserver_addr)
+ {
+-    static int instance;
+     char smb_conf[128];
+     char smb_cmdline[128];
+     struct passwd *passwd;
+@@ -505,9 +504,8 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
+         return -1;
+     }
+ 
+-    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
+-             (long)getpid(), instance++);
+-    if (mkdir(s->smb_dir, 0700) < 0) {
++    strcpy(s->smb_dir, "/tmp/qemu-smb.XXXXXX");
++    if (!mkdtemp(s->smb_dir)) {
+         error_report("could not create samba server dir '%s'", s->smb_dir);
+         return -1;
+     }
 -- 
-2.0.4
-
+2.1.4
 
 
