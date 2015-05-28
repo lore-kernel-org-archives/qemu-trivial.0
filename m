@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yxvwz-0002Eh-Ts
-	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:26:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45711)
+	id 1Yxw2t-0006g4-KF
+	for mharc-qemu-trivial@gnu.org; Thu, 28 May 2015 07:32:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yxvwu-00027i-ER
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:26:11 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Yxw2q-0006bp-J7
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:32:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yxvwq-00046f-Mw
-	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:26:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55349)
+	(envelope-from <mjt@tls.msk.ru>) id 1Yxw2p-0007AV-O2
+	for qemu-trivial@nongnu.org; Thu, 28 May 2015 07:32:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42898)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Yxvwk-00045e-62; Thu, 28 May 2015 07:25:58 -0400
+	id 1Yxw2l-00077w-Dl; Thu, 28 May 2015 07:32:11 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8E17742715;
-	Thu, 28 May 2015 14:25:57 +0300 (MSK)
-Message-ID: <5566FB45.1090502@msgid.tls.msk.ru>
-Date: Thu, 28 May 2015 14:25:57 +0300
+	by isrv.corpit.ru (Postfix) with ESMTP id 7D7E6426CE;
+	Thu, 28 May 2015 14:32:10 +0300 (MSK)
+Message-ID: <5566FCBA.2000500@msgid.tls.msk.ru>
+Date: Thu, 28 May 2015 14:32:10 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.6.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, Peter Krempa <pkrempa@redhat.com>
-References: <4d325283e37f8f4ebf42b2e3ca41985f2e69e26c.1431682266.git.pkrempa@redhat.com>
-	<874mneghae.fsf@blackfin.pond.sub.org>
-In-Reply-To: <874mneghae.fsf@blackfin.pond.sub.org>
+To: Chen Hanxiao <chenhanxiao@cn.fujitsu.com>, 
+	Markus Armbruster <armbru@redhat.com>
+References: <1432632341-5201-1-git-send-email-chenhanxiao@cn.fujitsu.com>
+In-Reply-To: <1432632341-5201-1-git-send-email-chenhanxiao@cn.fujitsu.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v2] util: socket: Add missing localaddr
- and localport option for DGRAM socket
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] docs/writing-qmp-commands: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,18 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 May 2015 11:26:12 -0000
+X-List-Received-Date: Thu, 28 May 2015 11:32:17 -0000
 
-15.05.2015 15:24, Markus Armbruster wrote:
-> Peter Krempa <pkrempa@redhat.com> writes:
+26.05.2015 12:25, Chen Hanxiao wrote:
+> s/interation/iteration
 > 
->> The 'socket_optslist' structure does not contain the 'localaddr' and
->> 'localport' options that are parsed in case you are creating a
->> 'connect' type UDP character device.
-..
+> Signed-off-by: Chen Hanxiao <chenhanxiao@cn.fujitsu.com>
+> ---
+>  docs/writing-qmp-commands.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/writing-qmp-commands.txt b/docs/writing-qmp-commands.txt
+> index f3df206..ab1fdd3 100644
+> --- a/docs/writing-qmp-commands.txt
+> +++ b/docs/writing-qmp-commands.txt
+> @@ -598,7 +598,7 @@ stored in its "value" member. In our example, the "value" member is a pointer
+>  to an TimerAlarmMethod instance.
+>  
+>  Notice that the "current" variable is used as "true" only in the first
+> -interation of the loop. That's because the alarm timer method in use is the
+> +iteration of the loop. That's because the alarm timer method in use is the
+>  first element of the alarm_timers array. Also notice that QAPI lists are handled
+>  by hand and we return the head of the list.
 
-Applied to -trivial, with commit message fixup suggested by Markus.
-Thanks!
+Applied to -trivial, thank you!
+
+Marcus: I don't think such obvious and trivial changes needs to be re-sent
+to -devel. Ofcourse it is better to send things to -devel rigth away, but
+requiring to resent is a bit over the top.  I think anyway :)
 
 /mjt
 
