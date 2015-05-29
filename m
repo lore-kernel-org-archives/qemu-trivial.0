@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YyD0d-0006Gc-Vb
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 01:39:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42614)
+	id 1YyDcy-0002XL-A1
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 02:18:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YyD0b-0006FU-Lc
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:39:06 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YyDcv-0002SS-PQ
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 02:18:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YyD0Y-0000er-82
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:39:05 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:25173)
+	(envelope-from <mjt@tls.msk.ru>) id 1YyDcv-0005Qz-2N
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 02:18:41 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:32866)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YyD0X-0000ea-Kq; Fri, 29 May 2015 01:39:02 -0400
-Received: from 172.24.2.119 (EHLO SZXEML429-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BGS74890; Fri, 29 May 2015 13:38:50 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
-	Server id 14.3.158.1; Fri, 29 May 2015 13:38:42 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Fri, 29 May 2015 13:38:34 +0800
-Message-ID: <1432877914-13552-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YyDcq-0005Q0-U9; Fri, 29 May 2015 02:18:37 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 96AEC42883;
+	Fri, 29 May 2015 09:18:35 +0300 (MSK)
+Message-ID: <556804BB.4090702@msgid.tls.msk.ru>
+Date: Fri, 29 May 2015 09:18:35 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.7.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.5567FB6B.006D, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 8bb665d00a7629fbf5d6d9bcaf2f3a79
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH v2] hw/arm/omap_sx1.c: Fix memory leak
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+References: <1432811625-13392-1-git-send-email-zhaoshenglong@huawei.com>	<1432811625-13392-5-git-send-email-zhaoshenglong@huawei.com>	<556701E8.1040801@msgid.tls.msk.ru>	<556703B2.8050606@msgid.tls.msk.ru>
+	<556707D2.50800@ilande.co.uk>
+In-Reply-To: <556707D2.50800@ilande.co.uk>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, shannon.zhao@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH 4/4] hw/display/tcx.c: Fix memory leak
 	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -49,50 +46,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2015 05:39:06 -0000
+X-List-Received-Date: Fri, 29 May 2015 06:18:42 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+28.05.2015 15:19, Mark Cave-Ayland wrote:
+[]
+> The FCode ROMs supplied for CG3/TCX are used to both initialise various
+> DT entries for the graphic adapters and also provide a minimal driver to
+> allow OpenBIOS (or Sun PROM) to initialise and use the adapter at boot.
+> 
+> I'd say at the moment the error should be fatal, [...]
 
-valgrind complains about:
-==19440== 248 bytes in 1 blocks are definitely lost in loss record 2,340 of 2,934
-==19440==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-==19440==    by 0x354793: malloc_and_trace (vl.c:2556)
-==19440==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-==19440==    by 0x2833DB: sx1_init (omap_sx1.c:106)
-==19440==    by 0x2838C9: sx1_init_v2 (omap_sx1.c:217)
-==19440==    by 0x358B5E: main (vl.c:4249)
+So it looks like some exit(1) or similar is missing after error_report()
+in these cases, which should be added :)  Thanks!
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
-    This is split from my previous patchset [1]
-    [1] [PATCH 00/29] Fix memory leak relevant to calling qemu_allocate_irqs
----
- hw/arm/omap_sx1.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index 671e02c..4b0f7f9 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -103,7 +103,6 @@ static void sx1_init(MachineState *machine, const int version)
-     struct omap_mpu_state_s *mpu;
-     MemoryRegion *address_space = get_system_memory();
-     MemoryRegion *flash = g_new(MemoryRegion, 1);
--    MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
-     MemoryRegion *cs = g_new(MemoryRegion, 4);
-     static uint32_t cs0val = 0x00213090;
-     static uint32_t cs1val = 0x00215070;
-@@ -165,6 +164,7 @@ static void sx1_init(MachineState *machine, const int version)
- 
-     if ((version == 1) &&
-             (dinfo = drive_get(IF_PFLASH, 0, fl_idx)) != NULL) {
-+        MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
-         memory_region_init_ram(flash_1, NULL, "omap_sx1.flash1-0", flash1_size,
-                                &error_abort);
-         vmstate_register_ram_global(flash_1);
--- 
-2.0.4
-
-
+/mjt
 
