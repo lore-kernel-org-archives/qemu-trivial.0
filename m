@@ -1,55 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YyN9z-0007IX-9c
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 12:29:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50802)
+	id 1YyPOz-0001Pp-E3
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 14:53:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YyN9w-0007Fi-F6
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 12:29:25 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1YyPOy-0001Nl-3V
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 14:53:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1YyN9v-00087J-Hy
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 12:29:24 -0400
-Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:34629)
+	(envelope-from <dgilbert@redhat.com>) id 1YyPOx-0006En-97
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 14:53:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46444)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1YyN9r-00086e-CJ; Fri, 29 May 2015 12:29:19 -0400
-Received: by wicmc15 with SMTP id mc15so20709647wic.1;
-	Fri, 29 May 2015 09:29:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=trLl/cOUy3hm0tRSJVlfg4OJfvk6gZChfDKKkuF2nPw=;
-	b=XKLkewxGO4YH3o8kEkUQMHiFSnUwSmUg5XfTqX5Gxrku5gX1nykKSA8s+IY8AFevOg
-	3k2aQH8ZA2IsWpAiDFjvhQneblOszTB1+MpEgsoRYacJ/DV2XP0bbWHhUT3+NObsp59n
-	pK5mzYXrXj0c/oIOZxpXsBtXT1HwbMoGRHNjZXbVsK9bWmP0SrpriEQMR8qJtI5q/lEr
-	FMadnaviE/9Irc38kvfO5VTQaBcw24autsPmJuUhzsGJyNXhlTs2fnOacCEkCP4Ta8y9
-	/kYIWlvz3wpEJMR3yD6K3XlWY8EksTxTiloPZgnFp8IXeBgLzN8lbKmNlHue1Itgjp0A
-	65BA==
-X-Received: by 10.194.79.225 with SMTP id m1mr17032415wjx.8.1432916958687;
-	Fri, 29 May 2015 09:29:18 -0700 (PDT)
-Received: from [192.168.10.165] (dynamic-adsl-94-39-199-114.clienti.tiscali.it.
-	[94.39.199.114])
-	by mx.google.com with ESMTPSA id ex5sm3847221wib.2.2015.05.29.09.29.16
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 29 May 2015 09:29:16 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <556893DB.9030502@redhat.com>
-Date: Fri, 29 May 2015 18:29:15 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
-MIME-Version: 1.0
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-References: <1432897012-1423-1-git-send-email-alex.bennee@linaro.org>	<55684995.3070205@redhat.com>
-	<877frrii83.fsf@linaro.org>
-In-Reply-To: <877frrii83.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: don't apply -O2 if
-	extra-cflags sets -O
+	(envelope-from <dgilbert@redhat.com>)
+	id 1YyPOq-0006Db-2Z; Fri, 29 May 2015 14:52:56 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 9D220BBB36;
+	Fri, 29 May 2015 18:52:54 +0000 (UTC)
+Received: from dgilbert-t530.redhat.com (ovpn-116-107.ams2.redhat.com
+	[10.36.116.107])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t4TIqqML021960; Fri, 29 May 2015 14:52:53 -0400
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 29 May 2015 19:52:52 +0100
+Message-Id: <1432925572-487-1-git-send-email-dgilbert@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com, quintela@redhat.com--dry-run
+Subject: [Qemu-trivial] [PATCH 1/1] Add -incoming help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,32 +40,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2015 16:29:25 -0000
+X-List-Received-Date: Fri, 29 May 2015 18:53:05 -0000
 
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
+The help/man text for
 
-On 29/05/2015 16:14, Alex Bennée wrote:
-> You mean just do:
-> 
-> diff --git a/configure b/configure
-> index b707429..f13831a 100755
-> --- a/configure
-> +++ b/configure
-> @@ -353,7 +353,7 @@ for opt do
->    ;;
->    --cpu=*) cpu="$optarg"
->    ;;
-> -  --extra-cflags=*) QEMU_CFLAGS="$optarg $QEMU_CFLAGS"
-> +  --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
->                      EXTRA_CFLAGS="$optarg"
->    ;;
->    --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
-> 
-> I guess at the time I was trying to be clean and avoiding multiple -O
-> calls. But I guess that will have the same effect.
+-incoming defer
 
-Yes, that.  Most other QEMU_CFLAGS assignments add at the beginning, so
-I guess the remaining ones (including the --extra-cflags one) should too.
+didn't make it through the merge of the code that implemented it.
 
-Paolo
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ qemu-options.hx | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index dad49cf..3085412 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3238,7 +3238,9 @@ DEF("incoming", HAS_ARG, QEMU_OPTION_incoming, \
+     "-incoming fd:fd\n" \
+     "-incoming exec:cmdline\n" \
+     "                accept incoming migration on given file descriptor\n" \
+-    "                or from given external command\n",
++    "                or from given external command\n" \
++    "-incoming defer\n" \
++    "                wait for the URI to be specified via migrate_incoming\n",
+     QEMU_ARCH_ALL)
+ STEXI
+ @item -incoming tcp:[@var{host}]:@var{port}[,to=@var{maxport}][,ipv4][,ipv6]
+@@ -3254,6 +3256,8 @@ Accept incoming migration from a given filedescriptor.
+ 
+ @item -incoming exec:@var{cmdline}
+ Accept incoming migration as an output from specified external command.
++@item -incoming defer
++Wait for the URI to be specified via migrate_incoming.
+ ETEXI
+ 
+ DEF("nodefaults", 0, QEMU_OPTION_nodefaults, \
+-- 
+2.4.1
+
 
