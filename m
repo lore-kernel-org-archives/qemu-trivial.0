@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YyCqT-00070R-A7
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 01:28:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39858)
+	id 1YyD0d-0006Gc-Vb
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 01:39:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YyCqM-0006m9-QZ
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:28:31 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YyD0b-0006FU-Lc
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:39:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YyCqI-0005KI-PV
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:28:30 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:5373)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YyD0Y-0000er-82
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 01:39:05 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:25173)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YyCqG-0005IV-8j; Fri, 29 May 2015 01:28:24 -0400
+	id 1YyD0X-0000ea-Kq; Fri, 29 May 2015 01:39:02 -0400
 Received: from 172.24.2.119 (EHLO SZXEML429-HUB.china.huawei.com)
 	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CMB71967; Fri, 29 May 2015 13:28:16 +0800 (CST)
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BGS74890; Fri, 29 May 2015 13:38:50 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
-	Server id 14.3.158.1; Fri, 29 May 2015 13:28:07 +0800
+	Server id 14.3.158.1; Fri, 29 May 2015 13:38:42 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri, 29 May 2015 13:27:11 +0800
-Message-ID: <1432877231-5136-14-git-send-email-zhaoshenglong@huawei.com>
+Date: Fri, 29 May 2015 13:38:34 +0800
+Message-ID: <1432877914-13552-1-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1432877231-5136-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1432877231-5136-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020204.5567FB6B.006D, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 8bb665d00a7629fbf5d6d9bcaf2f3a79
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, mjt@tls.msk.ru,
-	shannon.zhao@linaro.org, peter.maydell@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 13/13] hw/display/tc6393xb.c: Fix misusing
-	qemu_allocate_irqs for single irq
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, shannon.zhao@linaro.org
+Subject: [Qemu-trivial] [PATCH v2] hw/arm/omap_sx1.c: Fix memory leak
+	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,40 +49,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2015 05:28:31 -0000
+X-List-Received-Date: Fri, 29 May 2015 05:39:06 -0000
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
 valgrind complains about:
-==3169== 8 bytes in 1 blocks are definitely lost in loss record 424 of 2,779
-==3169==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
-==3169==    by 0x3547D3: malloc_and_trace (vl.c:2556)
-==3169==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
-==3169==    by 0x3ED9CF: qemu_extend_irqs (irq.c:55)
-==3169==    by 0x3EDA5B: qemu_allocate_irqs (irq.c:64)
-==3169==    by 0x426F74: tc6393xb_init (tc6393xb.c:574)
-==3169==    by 0x28B7B4: tosa_init (tosa.c:235)
-==3169==    by 0x358B9E: main (vl.c:4249)
+==19440== 248 bytes in 1 blocks are definitely lost in loss record 2,340 of 2,934
+==19440==    at 0x4C2845D: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==19440==    by 0x354793: malloc_and_trace (vl.c:2556)
+==19440==    by 0x64C770E: g_malloc (in /usr/lib64/libglib-2.0.so.0.3600.3)
+==19440==    by 0x2833DB: sx1_init (omap_sx1.c:106)
+==19440==    by 0x2838C9: sx1_init_v2 (omap_sx1.c:217)
+==19440==    by 0x358B5E: main (vl.c:4249)
 
 Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- hw/display/tc6393xb.c | 2 +-
+    This is split from my previous patchset [1]
+    [1] [PATCH 00/29] Fix memory leak relevant to calling qemu_allocate_irqs
+---
+ hw/arm/omap_sx1.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-index 66b7ade..f5f3f3e 100644
---- a/hw/display/tc6393xb.c
-+++ b/hw/display/tc6393xb.c
-@@ -571,7 +571,7 @@ TC6393xbState *tc6393xb_init(MemoryRegion *sysmem, uint32_t base, qemu_irq irq)
-     s->irq = irq;
-     s->gpio_in = qemu_allocate_irqs(tc6393xb_gpio_set, s, TC6393XB_GPIOS);
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index 671e02c..4b0f7f9 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -103,7 +103,6 @@ static void sx1_init(MachineState *machine, const int version)
+     struct omap_mpu_state_s *mpu;
+     MemoryRegion *address_space = get_system_memory();
+     MemoryRegion *flash = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+     MemoryRegion *cs = g_new(MemoryRegion, 4);
+     static uint32_t cs0val = 0x00213090;
+     static uint32_t cs1val = 0x00215070;
+@@ -165,6 +164,7 @@ static void sx1_init(MachineState *machine, const int version)
  
--    s->l3v = *qemu_allocate_irqs(tc6393xb_l3v, s, 1);
-+    s->l3v = qemu_allocate_irq(tc6393xb_l3v, s, 0);
-     s->blanked = 1;
- 
-     s->sub_irqs = qemu_allocate_irqs(tc6393xb_sub_irq, s, TC6393XB_NR_IRQS);
+     if ((version == 1) &&
+             (dinfo = drive_get(IF_PFLASH, 0, fl_idx)) != NULL) {
++        MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+         memory_region_init_ram(flash_1, NULL, "omap_sx1.flash1-0", flash1_size,
+                                &error_abort);
+         vmstate_register_ram_global(flash_1);
 -- 
 2.0.4
 
