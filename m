@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YyHMi-0006ru-40
-	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 06:18:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42267)
+	id 1YyHyH-0002TQ-Mt
+	for mharc-qemu-trivial@gnu.org; Fri, 29 May 2015 06:57:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48434)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>) id 1YyHMb-0006pn-Ne
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 06:18:09 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1YyHyE-0002M5-1v
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 06:56:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>) id 1YyHMa-00055V-Ka
-	for qemu-trivial@nongnu.org; Fri, 29 May 2015 06:18:05 -0400
-Received: from [59.151.112.132] (port=19590 helo=heian.cn.fujitsu.com)
+	(envelope-from <alex.bennee@linaro.org>) id 1YyHy8-0008PL-Sf
+	for qemu-trivial@nongnu.org; Fri, 29 May 2015 06:56:57 -0400
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:34562 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chenhanxiao@cn.fujitsu.com>)
-	id 1YyHMU-000543-CJ; Fri, 29 May 2015 06:18:00 -0400
-X-IronPort-AV: E=Sophos;i="5.01,1,1399996800"; 
-   d="scan'208";a="96069647"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 29 May 2015 18:22:13 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id t4TAGI5P031670;
-	Fri, 29 May 2015 18:16:18 +0800
-Received: from localhost.localdomain (10.167.226.38) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Fri, 29 May 2015 18:17:46 +0800
-From: Chen Hanxiao <chenhanxiao@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-Date: Fri, 29 May 2015 06:16:07 -0400
-Message-ID: <1432894567-12554-1-git-send-email-chenhanxiao@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1YyHy8-0008Ov-MD; Fri, 29 May 2015 06:56:52 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaroharston)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1YyJIQ-0004gr-2D; Fri, 29 May 2015 14:21:54 +0200
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-trivial@nongnu.org
+Date: Fri, 29 May 2015 11:56:51 +0100
+Message-Id: <1432897012-1423-1-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.4.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.38]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [Qemu-devel][PATCH] docs/writing-qmp-commands: fix a
-	typo
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 88.198.71.155
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: don't apply -O2 if extra-cflags
+	sets -O
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +45,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 May 2015 10:18:09 -0000
+X-List-Received-Date: Fri, 29 May 2015 10:56:59 -0000
 
-s/interation/iteration
+If your trying to debug and want to force -O0 then don't allow the
+configure script to try and set -O2. You can use --enable-debug but that
+enables a lot more stuff by default.
 
-Signed-off-by: Chen Hanxiao <chenhanxiao@cn.fujitsu.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/writing-qmp-commands.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/docs/writing-qmp-commands.txt b/docs/writing-qmp-commands.txt
-index f3df206..ab1fdd3 100644
---- a/docs/writing-qmp-commands.txt
-+++ b/docs/writing-qmp-commands.txt
-@@ -598,7 +598,7 @@ stored in its "value" member. In our example, the "value" member is a pointer
- to an TimerAlarmMethod instance.
+diff --git a/configure b/configure
+index b707429..be1f354 100755
+--- a/configure
++++ b/configure
+@@ -4240,7 +4240,10 @@ if test "$gcov" = "yes" ; then
+   CFLAGS="-fprofile-arcs -ftest-coverage -g $CFLAGS"
+   LDFLAGS="-fprofile-arcs -ftest-coverage $LDFLAGS"
+ elif test "$debug" = "no" ; then
+-  CFLAGS="-O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 $CFLAGS"
++    if test "${EXTRA_CFLAGS#*-O}" = "$EXTRA_CFLAGS"; then
++        CFLAGS="-O2 $CFLAGS"
++    fi
++    CFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 $CFLAGS"
+ fi
  
- Notice that the "current" variable is used as "true" only in the first
--interation of the loop. That's because the alarm timer method in use is the
-+iteration of the loop. That's because the alarm timer method in use is the
- first element of the alarm_timers array. Also notice that QAPI lists are handled
- by hand and we return the head of the list.
- 
+ ##########################################
 -- 
-2.1.0
+2.4.1
 
 
