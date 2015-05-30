@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YybfE-00020l-9h
-	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2015 03:58:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52752)
+	id 1Yye6F-00062Q-IE
+	for mharc-qemu-trivial@gnu.org; Sat, 30 May 2015 06:34:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1YybfB-0001us-7U
-	for qemu-trivial@nongnu.org; Sat, 30 May 2015 03:58:38 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Yye6C-00061v-Ov
+	for qemu-trivial@nongnu.org; Sat, 30 May 2015 06:34:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Yybf7-0000XR-WD
-	for qemu-trivial@nongnu.org; Sat, 30 May 2015 03:58:37 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:28721)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1Yye68-0004Jr-PR
+	for qemu-trivial@nongnu.org; Sat, 30 May 2015 06:34:40 -0400
+Received: from mail-wg0-x230.google.com ([2a00:1450:400c:c00::230]:33250)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1Yybf7-0000X3-Ds; Sat, 30 May 2015 03:58:33 -0400
-Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BGU05482; Sat, 30 May 2015 15:55:11 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml431-hub.china.huawei.com (10.82.67.208) with Microsoft SMTP
-	Server id 14.3.158.1; Sat, 30 May 2015 15:55:03 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Sat, 30 May 2015 15:54:35 +0800
-Message-ID: <1432972477-13504-6-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1432972477-13504-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1432972477-13504-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1Yye68-0004Jl-Iu; Sat, 30 May 2015 06:34:36 -0400
+Received: by wgez8 with SMTP id z8so80314268wge.0;
+	Sat, 30 May 2015 03:34:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=j6RssYEzeRQHfz7NNstwzEhlilBXv6iScMAyqQ8gjbQ=;
+	b=fOmZ2PwlDLS6q/28betYFIfohs0tK4XSAzQbq+yQQGtwA2Z3JsPrdVLdbeKulOnAca
+	PsKEff0qO7G6VBUfDIi3DZy4SIC9vhTdrGTivY/H1P4YRPq98g9ADEmDoHnZiK1iAm4B
+	kzbnC5fftmvHn7cScF1lIxhKz9swrYhxXcPq4xUc/vXmxR06h4RziVNRO1wbZIEdC3gh
+	uz0IPEpZMA5gF4vEQ+K8SVATIyDnWedfRjwt/CiQ1jpx7MhN4FBxUXHdDT5scjM3I14p
+	379JLVeNfmDy72VXbe1EzB6QrBnLzEw6CgBzh3owQYMT93pbHu3H/+bwsIIkriGjwc0N
+	7+gA==
+X-Received: by 10.180.91.76 with SMTP id cc12mr3891108wib.67.1432982075997;
+	Sat, 30 May 2015 03:34:35 -0700 (PDT)
+Received: from [192.168.10.165] (dynamic-adsl-94-39-199-114.clienti.tiscali.it.
+	[94.39.199.114])
+	by mx.google.com with ESMTPSA id fb3sm6977410wib.21.2015.05.30.03.34.33
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 30 May 2015 03:34:34 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+Message-ID: <55699237.7070702@redhat.com>
+Date: Sat, 30 May 2015 12:34:31 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.55696CE0.000C, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: c2324483f50d8e162f9ddf521a4959ea
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+References: <1432814932-12608-1-git-send-email-zhaoshenglong@huawei.com>
+	<1432814932-12608-30-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1432814932-12608-30-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::230
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, mjt@tls.msk.ru,
 	shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH v2 5/7] hw/arm/palm.c: Store irq array in
-	MachineState to fix memory leak
+Subject: Re: [Qemu-trivial] [PATCH 29/29] hw/s390x/sclpcpu.c: Fix memory
+ leak spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,49 +62,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 May 2015 07:58:38 -0000
-
-From: Shannon Zhao <shannon.zhao@linaro.org>
-
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- hw/arm/palm.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-index 7f1cfb8..6fe28e5 100644
---- a/hw/arm/palm.c
-+++ b/hw/arm/palm.c
-@@ -156,7 +156,7 @@ static void palmte_onoff_gpios(void *opaque, int line, int level)
-     }
- }
- 
--static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
-+static qemu_irq *palmte_gpio_setup(struct omap_mpu_state_s *cpu)
- {
-     qemu_irq *misc_gpio;
- 
-@@ -183,6 +183,8 @@ static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
-     qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[6]);
-     qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[7]);
-     qemu_irq_raise(omap_mpuio_in_get(cpu->mpuio)[11]);
-+
-+    return misc_gpio;
- }
- 
- static struct arm_boot_info palmte_binfo = {
-@@ -236,7 +238,7 @@ static void palmte_init(MachineState *machine)
- 
-     qemu_add_kbd_event_handler(palmte_button_event, mpu);
- 
--    palmte_gpio_setup(mpu);
-+    machine->irqs = palmte_gpio_setup(mpu);
- 
-     /* Setup initial (reset) machine state */
-     if (nb_option_roms) {
--- 
-2.0.4
+X-List-Received-Date: Sat, 30 May 2015 10:34:41 -0000
 
 
+
+On 28/05/2015 14:08, Shannon Zhao wrote:
+> -static qemu_irq *irq_cpu_hotplug; /* Only used in this file */
+> +static qemu_irq irq_cpu_hotplug; /* Only used in this file */
+>  
+>  #define EVENT_QUAL_CPU_CHANGE  1
+>  
+>  void raise_irq_cpu_hotplug(void)
+>  {
+> -    qemu_irq_raise(*irq_cpu_hotplug);
+> +    qemu_irq_raise(irq_cpu_hotplug);
+>  }
+>  
+>  static unsigned int send_mask(void)
+> @@ -81,7 +81,10 @@ static void trigger_signal(void *opaque, int n, int level)
+>  
+>  static int irq_cpu_hotplug_init(SCLPEvent *event)
+>  {
+> -    irq_cpu_hotplug = qemu_allocate_irqs(trigger_signal, event, 1);
+> +    qemu_irq irq = qemu_allocate_irq(trigger_signal, event, 0);
+> +
+> +    irq_cpu_hotplug = irq;
+> +    qemu_free_irq(irq);
+>      return 0;
+
+This is wrong, you cannot free the IRQ after you have stored it in
+irq_cpu_hotplug.
+
+Paolo
 
