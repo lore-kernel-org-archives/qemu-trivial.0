@@ -1,49 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzNp7-00019x-Q9
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 07:24:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46638)
+	id 1YzNwj-0006w8-TF
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 07:31:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YzNp5-00017Z-MH
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:24:04 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1YzNwh-0006qe-7C
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:31:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1YzNp4-0002CL-Nr
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:24:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56701)
+	(envelope-from <pbonzini@redhat.com>) id 1YzNwg-0005hc-Dp
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:31:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60151)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1YzNov-000274-JB; Mon, 01 Jun 2015 07:23:53 -0400
+	(envelope-from <pbonzini@redhat.com>)
+	id 1YzNwa-0005em-1O; Mon, 01 Jun 2015 07:31:48 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 4065A3679F9;
-	Mon,  1 Jun 2015 11:23:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
+	by mx1.redhat.com (Postfix) with ESMTPS id 688718F27E;
+	Mon,  1 Jun 2015 11:31:47 +0000 (UTC)
+Received: from [10.36.112.76] (ovpn-112-76.ams2.redhat.com [10.36.112.76])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t51BNp6m011624
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 1 Jun 2015 07:23:52 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CC17330408A8; Mon,  1 Jun 2015 13:23:50 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
-	<87bngzluvg.fsf@blackfin.pond.sub.org>
-	<556C1B70.3060209@msgid.tls.msk.ru>
-Date: Mon, 01 Jun 2015 13:23:50 +0200
-In-Reply-To: <556C1B70.3060209@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Mon, 01 Jun 2015 11:44:32 +0300")
-Message-ID: <87382bekop.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	id t51BVhd0016999
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 1 Jun 2015 07:31:45 -0400
+Message-ID: <556C429F.3070802@redhat.com>
+Date: Mon, 01 Jun 2015 13:31:43 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
+To: "Michael S. Tsirkin" <mst@redhat.com>, Gonglei <arei.gonglei@huawei.com>
+References: <1431477807-12220-1-git-send-email-arei.gonglei@huawei.com>
+	<555AEA20.3090501@huawei.com> <556C0B7A.3070601@huawei.com>
+	<20150601122437-mutt-send-email-mst@redhat.com>
+In-Reply-To: <20150601122437-mutt-send-email-mst@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: pmatouse@redhat.com, P J P <pjp@fedoraproject.org>, qemu-trivial@nongnu.org,
-	Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel@nongnu.org,
-	Miroslav Rezanina <mrezanin@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: use less predictable
-	directory name in /tmp for smb config (CVE-2015-4037)
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 0/6] pci/isa: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,36 +51,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2015 11:24:04 -0000
+X-List-Received-Date: Mon, 01 Jun 2015 11:31:56 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
 
-> 01.06.2015 11:01, Markus Armbruster wrote:
-> []
->>> -    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
->>> -             (long)getpid(), instance++);
->>> -    if (mkdir(s->smb_dir, 0700) < 0) {
->>> +    strcpy(s->smb_dir, "/tmp/qemu-smb.XXXXXX");
->>> +    if (!mkdtemp(s->smb_dir)) {
->>>          error_report("could not create samba server dir '%s'", s->smb_dir);
->>>          return -1;
->>>      }
->> 
->> Uh, I have to suspend my R-by.  This clobbers s->smb_dir[] when
->> mkdtemp() fails.  Is that safe?  Explain why, and get my R-by back.
->
-> At least this is not different from the original behavour.
 
-Fair enough, R-by unsuspended.
+On 01/06/2015 12:25, Michael S. Tsirkin wrote:
+>> > Hi, Michael, Paolo
+>> > 
+>> > Can you please ack or review those patches?
+>> > 
+>> > Regards,
+>> > -Gonglei
+> I think this belongs in the QOM tree, not mine.
 
-> The only place where this variable is used is in the slirp_smb_cleanup()
-> function, which, if smb_dir[0] != 0, does rm -rf on it.
-> I think it will be better to add s->smb_dir[0] = 0 here before return.
+Recently Gerd at least has taken similar patches, so I guess it belongs
+all over the place, including Xen, KVM and PC trees.
 
-Makes sense.
+Let's say it belongs in qemu-trivial (CCed)...
 
-> On the other hand this isn't really that important given when we can
-> expect mkdtemp() to fail.
-
-Not sure I got this part.  Not sure I need to :)
+Paolo
 
