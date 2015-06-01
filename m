@@ -1,36 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzPGG-0000WV-T9
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 08:56:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59355)
+	id 1YzT6N-0006UJ-Tn
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 13:02:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrezanin@redhat.com>) id 1YzOWW-00007Y-JP
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:57 -0400
+	(envelope-from <eblake@redhat.com>) id 1YzT6F-0006Fr-WB
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 13:02:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mrezanin@redhat.com>) id 1YzOWP-0002Vz-PF
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:56 -0400
-Received: from 212-4-128-36.cust.selfnet.cz ([212.4.128.36]:51146
-	helo=workimage.brq.redhat.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mrezanin@redhat.com>) id 1YzOWP-0002VZ-Gn
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:49 -0400
-Received: by workimage.brq.redhat.com (Postfix, from userid 1000)
-	id EB79B409F2E1; Mon,  1 Jun 2015 13:28:56 +0200 (CEST)
-Date: Mon, 1 Jun 2015 13:28:56 +0200
-From: Miroslav Rezanina <mrezanin@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150601112856.GA22121@lws.brq.redhat.com>
-References: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <eblake@redhat.com>) id 1YzT6F-0003lV-6I
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 13:02:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42509)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eblake@redhat.com>)
+	id 1YzT68-0003jx-Ov; Mon, 01 Jun 2015 13:02:00 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id D6FE236D044;
+	Mon,  1 Jun 2015 17:01:59 +0000 (UTC)
+Received: from [10.3.113.29] (ovpn-113-29.phx2.redhat.com [10.3.113.29])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t51H1x64029826; Mon, 1 Jun 2015 13:01:59 -0400
+Message-ID: <556C9006.6010001@redhat.com>
+Date: Mon, 01 Jun 2015 11:01:58 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.22.1 (2013-10-16)
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1433145235-13941-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1433145235-13941-1-git-send-email-pbonzini@redhat.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 212.4.128.36
-X-Mailman-Approved-At: Mon, 01 Jun 2015 08:56:11 -0400
-Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: use less predictable
- directory name in /tmp for smb config (CVE-2015-4037)
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] translate-all: delete
+ prototype for non-existent function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,58 +50,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2015 12:08:57 -0000
+X-List-Received-Date: Mon, 01 Jun 2015 17:02:14 -0000
 
-On Thu, May 28, 2015 at 02:15:43PM +0300, Michael Tokarev wrote:
-> In this version I used mkdtemp(3) which is:
-> 
->         _BSD_SOURCE
->         || /* Since glibc 2.10: */
->             (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
-> 
-> so should be available on systems we care about.
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 06/01/2015 01:53 AM, Paolo Bonzini wrote:
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+
+Missed in commit 3a808cc40
+
 > ---
->  net/slirp.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/net/slirp.c b/net/slirp.c
-> index 9bbed74..0ad32ad 100644
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -481,7 +481,6 @@ static void slirp_smb_cleanup(SlirpState *s)
->  static int slirp_smb(SlirpState* s, const char *exported_dir,
->                       struct in_addr vserver_addr)
->  {
-> -    static int instance;
->      char smb_conf[128];
->      char smb_cmdline[128];
->      struct passwd *passwd;
-> @@ -505,9 +504,8 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
->          return -1;
->      }
->  
-> -    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
-> -             (long)getpid(), instance++);
-> -    if (mkdir(s->smb_dir, 0700) < 0) {
-> +    strcpy(s->smb_dir, "/tmp/qemu-smb.XXXXXX");
-> +    if (!mkdtemp(s->smb_dir)) {
->          error_report("could not create samba server dir '%s'", s->smb_dir);
->          return -1;
->      }
-> -- 
-> 2.1.4
-> 
-> 
+>  translate-all.h | 1 -
+>  1 file changed, 1 deletion(-)
 
-I suggest to go with this patch as:
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-1) It was sent first
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-2) Is simplier
 
-3) Keep original behavior
+--K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVbJAGAAoJEKeha0olJ0NqncAH/jAjNOCQHxuDcziUl/mWXgFC
+aeusf0XDYVpu6WO2cK083HAdtrtEfmLKsX/SxbfdI61vpG5KHqUUrZWttQseqbjd
+29YAlBGDbE+hqYJw/zpf5iFOfjOr411RAdkq0LxKzrwkBwslQZhsVrPGsvG5GykP
+fKU8fV/cXhE7ZQg2Nh4bqtHadkrfkcMvSmTSlHUFli808329jimdZqZt7z22FGTJ
+Xv49CWDkxdwZwNdc5y2Ay2C1uujKmlouzdIZuGk3EZq2vHdRGw1viTrALtOav3or
+CI3yYaG0MTkLyGbA2/X9S9/RwXZCHPaTk8l/UPG2MUuhryTSszGKGlieMJw80rE=
+=bITT
+-----END PGP SIGNATURE-----
+
+--K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH--
 
