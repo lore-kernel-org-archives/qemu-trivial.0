@@ -1,45 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzNwj-0006w8-TF
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 07:31:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50257)
+	id 1YzPGG-0000WV-T9
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 08:56:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YzNwh-0006qe-7C
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:31:55 -0400
+	(envelope-from <mrezanin@redhat.com>) id 1YzOWW-00007Y-JP
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1YzNwg-0005hc-Dp
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 07:31:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60151)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1YzNwa-0005em-1O; Mon, 01 Jun 2015 07:31:48 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 688718F27E;
-	Mon,  1 Jun 2015 11:31:47 +0000 (UTC)
-Received: from [10.36.112.76] (ovpn-112-76.ams2.redhat.com [10.36.112.76])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t51BVhd0016999
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 1 Jun 2015 07:31:45 -0400
-Message-ID: <556C429F.3070802@redhat.com>
-Date: Mon, 01 Jun 2015 13:31:43 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	(envelope-from <mrezanin@redhat.com>) id 1YzOWP-0002Vz-PF
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:56 -0400
+Received: from 212-4-128-36.cust.selfnet.cz ([212.4.128.36]:51146
+	helo=workimage.brq.redhat.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mrezanin@redhat.com>) id 1YzOWP-0002VZ-Gn
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 08:08:49 -0400
+Received: by workimage.brq.redhat.com (Postfix, from userid 1000)
+	id EB79B409F2E1; Mon,  1 Jun 2015 13:28:56 +0200 (CEST)
+Date: Mon, 1 Jun 2015 13:28:56 +0200
+From: Miroslav Rezanina <mrezanin@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20150601112856.GA22121@lws.brq.redhat.com>
+References: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-To: "Michael S. Tsirkin" <mst@redhat.com>, Gonglei <arei.gonglei@huawei.com>
-References: <1431477807-12220-1-git-send-email-arei.gonglei@huawei.com>
-	<555AEA20.3090501@huawei.com> <556C0B7A.3070601@huawei.com>
-	<20150601122437-mutt-send-email-mst@redhat.com>
-In-Reply-To: <20150601122437-mutt-send-email-mst@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1432811743-2423-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.22.1 (2013-10-16)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH 0/6] pci/isa: QOMify
+X-Received-From: 212.4.128.36
+X-Mailman-Approved-At: Mon, 01 Jun 2015 08:56:11 -0400
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] slirp: use less predictable
+ directory name in /tmp for smb config (CVE-2015-4037)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,23 +42,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2015 11:31:56 -0000
+X-List-Received-Date: Mon, 01 Jun 2015 12:08:57 -0000
 
+On Thu, May 28, 2015 at 02:15:43PM +0300, Michael Tokarev wrote:
+> In this version I used mkdtemp(3) which is:
+> 
+>         _BSD_SOURCE
+>         || /* Since glibc 2.10: */
+>             (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
+> 
+> so should be available on systems we care about.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  net/slirp.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 9bbed74..0ad32ad 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -481,7 +481,6 @@ static void slirp_smb_cleanup(SlirpState *s)
+>  static int slirp_smb(SlirpState* s, const char *exported_dir,
+>                       struct in_addr vserver_addr)
+>  {
+> -    static int instance;
+>      char smb_conf[128];
+>      char smb_cmdline[128];
+>      struct passwd *passwd;
+> @@ -505,9 +504,8 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
+>          return -1;
+>      }
+>  
+> -    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
+> -             (long)getpid(), instance++);
+> -    if (mkdir(s->smb_dir, 0700) < 0) {
+> +    strcpy(s->smb_dir, "/tmp/qemu-smb.XXXXXX");
+> +    if (!mkdtemp(s->smb_dir)) {
+>          error_report("could not create samba server dir '%s'", s->smb_dir);
+>          return -1;
+>      }
+> -- 
+> 2.1.4
+> 
+> 
 
+I suggest to go with this patch as:
 
-On 01/06/2015 12:25, Michael S. Tsirkin wrote:
->> > Hi, Michael, Paolo
->> > 
->> > Can you please ack or review those patches?
->> > 
->> > Regards,
->> > -Gonglei
-> I think this belongs in the QOM tree, not mine.
+1) It was sent first
 
-Recently Gerd at least has taken similar patches, so I guess it belongs
-all over the place, including Xen, KVM and PC trees.
+2) Is simplier
 
-Let's say it belongs in qemu-trivial (CCed)...
+3) Keep original behavior
 
-Paolo
+Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
 
