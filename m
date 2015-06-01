@@ -1,42 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzT6N-0006UJ-Tn
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 13:02:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51459)
+	id 1YzUbU-0005Mi-1F
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jun 2015 14:38:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YzT6F-0006Fr-WB
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 13:02:13 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YzUbQ-0005JN-5n
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 14:38:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1YzT6F-0003lV-6I
-	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 13:02:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42509)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YzUbM-0002nl-Oc
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 14:38:24 -0400
+Received: from mail-qk0-f182.google.com ([209.85.220.182]:35764)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1YzT68-0003jx-Ov; Mon, 01 Jun 2015 13:02:00 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id D6FE236D044;
-	Mon,  1 Jun 2015 17:01:59 +0000 (UTC)
-Received: from [10.3.113.29] (ovpn-113-29.phx2.redhat.com [10.3.113.29])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t51H1x64029826; Mon, 1 Jun 2015 13:01:59 -0400
-Message-ID: <556C9006.6010001@redhat.com>
-Date: Mon, 01 Jun 2015 11:01:58 -0600
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1YzUbM-0002nZ-Le
+	for qemu-trivial@nongnu.org; Mon, 01 Jun 2015 14:38:20 -0400
+Received: by qkhq76 with SMTP id q76so60134716qkh.2
+	for <qemu-trivial@nongnu.org>; Mon, 01 Jun 2015 11:38:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=J9qbeB/3xGKWI+CXLyVBuLuul0gtVB/stNRgp2O/oZQ=;
+	b=C9hiWV+M3acQ6Yqfe+H0ajTa//QltNbZMUO60bZFKfEmLX27ilKJ6Aw7iLnX1xTkUf
+	paVFl1102fmxqYR8WKXYHg+qrDNUKM3xvTUSD+m9+q7cbB318mjc4loMsAH3dEeYKef3
+	khypBvD99T7goDv9HfsZqop2sY/5FRzkFSqoKiQ0E5Zv8DL5XeG58DSK8MXvTCGpNYm/
+	qsCeosvREnz5Wg9RhKUeXurAZah2WfvQxTilIRoqRKzQSnf8EtD5fpQt6c7nHOhMwFWc
+	L5jpq12IIwpexBv3a+PYyVcYiNrd/GJVfcyeRPqBLmNg8ZwdaCL9dD/KnW6mJwVVn0Yv
+	mAPA==
+X-Gm-Message-State: ALoCoQkt8zIFENCSrqgxdJwPkzvDZP3rOvEU8k0k54vBKYB4o8tiNGocUw51LTQQ5SY20Hc5Ba9W
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1433145235-13941-1-git-send-email-pbonzini@redhat.com>
+X-Received: by 10.55.16.33 with SMTP id a33mr40817523qkh.51.1433183900172;
+	Mon, 01 Jun 2015 11:38:20 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.96.45.2 with HTTP; Mon, 1 Jun 2015 11:38:20 -0700 (PDT)
 In-Reply-To: <1433145235-13941-1-git-send-email-pbonzini@redhat.com>
-OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
+References: <1433145235-13941-1-git-send-email-pbonzini@redhat.com>
+Date: Mon, 1 Jun 2015 11:38:20 -0700
+X-Google-Sender-Auth: y8oT251DTKoqMiPtJNWl_U2H93k
+Message-ID: <CAEgOgz7fU2EgmxcT_fHu2iBAS5LcytVz8KsNw72Wf-UAOTfk8g@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.220.182
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] translate-all: delete
  prototype for non-existent function
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,47 +57,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jun 2015 17:02:14 -0000
+X-List-Received-Date: Mon, 01 Jun 2015 18:38:25 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 06/01/2015 01:53 AM, Paolo Bonzini wrote:
+On Mon, Jun 1, 2015 at 12:53 AM, Paolo Bonzini <pbonzini@redhat.com> wrote:
 > Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Missed in commit 3a808cc40
+[pcrost@xsjsorenbubuntu qemu-mainline]$ git grep cpu_unlink_tb
+translate-all.h:24:void cpu_unlink_tb(CPUState *cpu);
+
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
 > ---
 >  translate-all.h | 1 -
 >  1 file changed, 1 deletion(-)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJVbJAGAAoJEKeha0olJ0NqncAH/jAjNOCQHxuDcziUl/mWXgFC
-aeusf0XDYVpu6WO2cK083HAdtrtEfmLKsX/SxbfdI61vpG5KHqUUrZWttQseqbjd
-29YAlBGDbE+hqYJw/zpf5iFOfjOr411RAdkq0LxKzrwkBwslQZhsVrPGsvG5GykP
-fKU8fV/cXhE7ZQg2Nh4bqtHadkrfkcMvSmTSlHUFli808329jimdZqZt7z22FGTJ
-Xv49CWDkxdwZwNdc5y2Ay2C1uujKmlouzdIZuGk3EZq2vHdRGw1viTrALtOav3or
-CI3yYaG0MTkLyGbA2/X9S9/RwXZCHPaTk8l/UPG2MUuhryTSszGKGlieMJw80rE=
-=bITT
------END PGP SIGNATURE-----
-
---K3mqqJFGdmn7TRFpx07NSxnMKSxi4DeoH--
+>
+> diff --git a/translate-all.h b/translate-all.h
+> index ef9166c..0384640 100644
+> --- a/translate-all.h
+> +++ b/translate-all.h
+> @@ -24,7 +24,6 @@ void tb_invalidate_phys_page_fast(tb_page_addr_t start, int len);
+>  void tb_invalidate_phys_page_range(tb_page_addr_t start, tb_page_addr_t end,
+>                                     int is_cpu_write_access);
+>  void tb_invalidate_phys_range(tb_page_addr_t start, tb_page_addr_t end);
+> -void cpu_unlink_tb(CPUState *cpu);
+>  void tb_check_watchpoint(CPUState *cpu);
+>
+>  #ifdef CONFIG_USER_ONLY
+> --
+> 2.4.1
+>
+>
 
