@@ -1,42 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzjPG-0005HN-CC
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 06:26:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51059)
+	id 1Yzm2X-0000YD-7m
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 09:15:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57793)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1YzjPE-0005EJ-PZ
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 06:26:49 -0400
+	(envelope-from <mkletzan@redhat.com>) id 1YzhCv-0002bH-9K
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 04:05:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1YzjPD-0008AP-VB
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 06:26:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45200)
+	(envelope-from <mkletzan@redhat.com>) id 1YzhCu-00022H-EW
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 04:05:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42520)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1YzjP8-00085B-57; Tue, 02 Jun 2015 06:26:42 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id C0CA98F29E;
-	Tue,  2 Jun 2015 10:26:40 +0000 (UTC)
-Received: from localhost (dhcp-14-104.nay.redhat.com [10.66.14.104])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t52AQcOO003125; Tue, 2 Jun 2015 06:26:39 -0400
-Date: Tue, 2 Jun 2015 18:26:37 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20150602102637.GD22059@dhcp-14-238.nay.redhat.com>
-References: <1433237561-10846-1-git-send-email-famz@redhat.com>
-	<556D8266.8060004@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <556D8266.8060004@msgid.tls.msk.ru>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <mkletzan@redhat.com>)
+	id 1YzhCl-000203-FF; Tue, 02 Jun 2015 04:05:47 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id C77033679FD;
+	Tue,  2 Jun 2015 08:05:46 +0000 (UTC)
+Received: from wheatley.brq.redhat.com (dhcp129-92.brq.redhat.com
+	[10.34.129.92])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5285joJ020907; Tue, 2 Jun 2015 04:05:45 -0400
+From: Martin Kletzander <mkletzan@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  2 Jun 2015 10:05:29 +0200
+Message-Id: <1433232329-14983-1-git-send-email-mkletzan@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	Jeff Cody <jcody@redhat.com>, qemu-devel@nongnu.org, qemu-block@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] sheepdog: Fix error message if failed to
-	load vmstate
+X-Mailman-Approved-At: Tue, 02 Jun 2015 09:15:32 -0400
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-trivial] [PATCH] arm: Fix invalid assert logic in op_helper.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,33 +41,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2015 10:26:49 -0000
+X-List-Received-Date: Tue, 02 Jun 2015 08:05:58 -0000
 
-On Tue, 06/02 13:16, Michael Tokarev wrote:
-> 02.06.2015 12:32, Fam Zheng wrote:
-> >          if (ret < 0) {
-> > -            error_report("failed to save vmstate %s", strerror(errno));
-> > +            if (load) {
-> > +                error_report("failed to load vmstate %s", strerror(errno));
-> > +            } else {
-> > +                error_report("failed to save vmstate %s", strerror(errno));
-> > +            }
-> 
->  +            error_report("failed to %s vmstate: %s", load ? "load" : "save", strerror(errno));
+Boolean value '!arm_current_el(env)' can never be equal to 3.  Fix it
+according to the comment above as currently the build fails with
+gcc-5.1.0.
 
-The reason I didn't use a one-liner was, "git grep 'failed to load vmstate'"
-in the code base would just work, besides my eyes also like the readability.
+Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
+---
+ target-arm/op_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
-> (note also the addition of ":")
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index 3f5b9ab5963b..7583ae71217b 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -421,7 +421,7 @@ void HELPER(access_check_cp_reg)(CPUARMState *env, void *rip, uint32_t syndrome)
+         /* Requesting a trap to EL2 when we're in EL3 or S-EL0/1 is
+          * a bug in the access function.
+          */
+-        assert(!arm_is_secure(env) && !arm_current_el(env) == 3);
++        assert(!arm_is_secure(env) && arm_current_el(env) != 3);
+         target_el = 2;
+         break;
+     case CP_ACCESS_TRAP_EL3:
+-- 
+2.4.2
 
-Yes that applies to all error_report() in this file.
-
-> (besides what Kevin said).
-> 
-> Thanks,
-
-Thanks,
-
-Fam
 
