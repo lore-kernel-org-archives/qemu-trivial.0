@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yzf9L-0000OR-Se
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 01:54:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43152)
+	id 1YzfZP-0005No-60
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 02:21:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52049)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yzf9J-0000Kj-Kt
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 01:54:06 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YzfZM-0005Kl-SB
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 02:21:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Yzf9H-0007MF-4y
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 01:54:05 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:35445)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1YzfZL-0001aT-Ok
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 02:21:00 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:11789)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Yzf9C-0007KH-P3; Tue, 02 Jun 2015 01:53:58 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 22C2240423;
-	Tue,  2 Jun 2015 08:53:52 +0300 (MSK)
-Message-ID: <556D44EF.1030704@msgid.tls.msk.ru>
-Date: Tue, 02 Jun 2015 08:53:51 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.7.0
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1YzfZF-0001Xq-9z; Tue, 02 Jun 2015 02:20:55 -0400
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CMG06405; Tue, 02 Jun 2015 14:20:46 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1; Tue, 2 Jun 2015
+	14:20:07 +0800
+Message-ID: <556D4B13.5020707@huawei.com>
+Date: Tue, 2 Jun 2015 14:20:03 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-To: qemu-devel@nongnu.org
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
 References: <1432993766-5528-1-git-send-email-mjt@msgid.tls.msk.ru>
 In-Reply-To: <1432993766-5528-1-git-send-email-mjt@msgid.tls.msk.ru>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH 1/2] hw/display/cg3.c: cg3_realizefn: fix
  memory leak, make FCode loading error fatal and improve error message
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,24 +48,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2015 05:54:06 -0000
+X-List-Received-Date: Tue, 02 Jun 2015 06:21:02 -0000
 
-Shannon Zhao: can you please add your s-o-b or r-o-b for this
-version, for this and the next patch?
 
-This started from your original patch which just adds g_free(),
-later you also added error message improvements to this piece,
-on my request, but apparently this place needs more tweeking,
-since failing to load firmware is fatal to the code, so instead
-of requesting you to change it further I created my version,
-identical for two files.
 
-Thanks,
-
-/mjt
-
-30.05.2015 16:49, Michael Tokarev wrote:
+On 2015/5/30 21:49, Michael Tokarev wrote:
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+
 > ---
 >  hw/display/cg3.c | 8 +++++---
 >  1 file changed, 5 insertions(+), 3 deletions(-)
@@ -88,5 +82,8 @@ Thanks,
 >      memory_region_init_ram(&s->vram_mem, NULL, "cg3.vram", s->vram_size,
 >                             &error_abort);
 > 
+
+-- 
+Shannon
 
 
