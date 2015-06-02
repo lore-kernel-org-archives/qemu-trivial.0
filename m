@@ -1,41 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1YzilT-0001lg-Tr
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 05:45:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35590)
+	id 1YzjF4-0007G4-0t
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 06:16:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48058)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YzilR-0001j2-E0
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 05:45:42 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1YzjF1-0007CI-Ry
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 06:16:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1YzilQ-0003di-Cs
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 05:45:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43304)
+	(envelope-from <mjt@tls.msk.ru>) id 1YzjF1-0000Qn-5u
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 06:16:15 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56719)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>)
-	id 1YzilJ-0003bl-U9; Tue, 02 Jun 2015 05:45:34 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 6ED442E6CEB;
-	Tue,  2 Jun 2015 09:45:33 +0000 (UTC)
-Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
-	[10.33.192.197])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id t529jVDd017295; Tue, 2 Jun 2015 05:45:31 -0400
-Date: Tue, 2 Jun 2015 11:45:31 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Fam Zheng <famz@redhat.com>
-Message-ID: <20150602094531.GH3765@noname.str.redhat.com>
-References: <1433237561-10846-1-git-send-email-famz@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1YzjEu-0000IV-7j; Tue, 02 Jun 2015 06:16:08 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id EEECB4047C;
+	Tue,  2 Jun 2015 13:16:06 +0300 (MSK)
+Message-ID: <556D8266.8060004@msgid.tls.msk.ru>
+Date: Tue, 02 Jun 2015 13:16:06 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+References: <1433237561-10846-1-git-send-email-famz@redhat.com>
 In-Reply-To: <1433237561-10846-1-git-send-email-famz@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Jeff Cody <jcody@redhat.com>, qemu-devel@nongnu.org,
-	mitake.hitoshi@lab.ntt.co.jp, namei.unix@gmail.com
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+	Jeff Cody <jcody@redhat.com>, qemu-block@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH] sheepdog: Fix error message if failed to
 	load vmstate
 X-BeenThere: qemu-trivial@nongnu.org
@@ -49,23 +45,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2015 09:45:42 -0000
+X-List-Received-Date: Tue, 02 Jun 2015 10:16:16 -0000
 
-[ CC to Sheepdog maintainers ]
-
-Am 02.06.2015 um 11:32 hat Fam Zheng geschrieben:
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  block/sheepdog.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/block/sheepdog.c b/block/sheepdog.c
-> index bd7cbed..a22f838 100644
-> --- a/block/sheepdog.c
-> +++ b/block/sheepdog.c
-> @@ -2556,7 +2556,11 @@ static int do_load_save_vmstate(BDRVSheepdogState *s, uint8_t *data,
->          }
->  
+02.06.2015 12:32, Fam Zheng wrote:
 >          if (ret < 0) {
 > -            error_report("failed to save vmstate %s", strerror(errno));
 > +            if (load) {
@@ -73,18 +55,13 @@ Am 02.06.2015 um 11:32 hat Fam Zheng geschrieben:
 > +            } else {
 > +                error_report("failed to save vmstate %s", strerror(errno));
 > +            }
->              goto cleanup;
->          }
 
-Why do we even print this message? We usually don't do this for a failed
-request, and much less so if we don't actually add any information that
-isn't covered by the return code. qemu_savevm_state() will already set
-an error that is even visible in QMP.
+ +            error_report("failed to %s vmstate: %s", load ? "load" : "save", strerror(errno));
 
-In fact, errno doesn't even contain anything relevant here, or in most
-(all?) other places that it's used in the sheepdog block driver.
+(note also the addition of ":")
+(besides what Kevin said).
 
-I think we might be better off just removing the message.
+Thanks,
 
-Kevin
+/mjt
 
