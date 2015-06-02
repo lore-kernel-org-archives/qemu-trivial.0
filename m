@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Yzfaf-0006dp-Lb
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 02:22:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52435)
+	id 1Yzh8B-0008Iy-K8
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jun 2015 04:01:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56707)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Yzfad-0006b4-NX
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 02:22:20 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Yzh84-0008EP-Hk
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 04:01:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Yzfab-0002BV-C9
-	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 02:22:19 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:13780)
+	(envelope-from <alex.bennee@linaro.org>) id 1Yzh80-0008TQ-Dh
+	for qemu-trivial@nongnu.org; Tue, 02 Jun 2015 04:00:56 -0400
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:50366 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1YzfaW-00029a-51; Tue, 02 Jun 2015 02:22:13 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CMG06612; Tue, 02 Jun 2015 14:22:09 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1; Tue, 2 Jun 2015
-	14:20:25 +0800
-Message-ID: <556D4B25.1020003@huawei.com>
-Date: Tue, 2 Jun 2015 14:20:21 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Yzh7v-0008Qt-Vj; Tue, 02 Jun 2015 04:00:48 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1YziT9-0001KX-1A; Tue, 02 Jun 2015 11:26:47 +0200
+References: <1432897012-1423-1-git-send-email-alex.bennee@linaro.org>
+	<55684995.3070205@redhat.com> <877frrii83.fsf@linaro.org>
+	<556893DB.9030502@redhat.com> <556D43C4.2070309@msgid.tls.msk.ru>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
+In-reply-to: <556D43C4.2070309@msgid.tls.msk.ru>
+Date: Tue, 02 Jun 2015 09:01:01 +0100
+Message-ID: <87vbf6bkua.fsf@linaro.org>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1432994083-5677-1-git-send-email-mjt@msgid.tls.msk.ru>
-In-Reply-To: <1432994083-5677-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 2/2] hw/display/tcx.c: tcx_realizefn: fix
- memory leak, make FCode loading error fatal and improve error message
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 88.198.71.155
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] configure: don't apply -O2 if
+	extra-cflags sets -O
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,43 +48,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jun 2015 06:22:20 -0000
+X-List-Received-Date: Tue, 02 Jun 2015 08:01:02 -0000
 
 
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-On 2015/5/30 21:54, Michael Tokarev wrote:
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> 29.05.2015 19:29, Paolo Bonzini wrote:
+>> On 29/05/2015 16:14, Alex Bennée wrote:
+>>> You mean just do:
+>>>
+>>> diff --git a/configure b/configure
+>>> index b707429..f13831a 100755
+>>> --- a/configure
+>>> +++ b/configure
+>>> @@ -353,7 +353,7 @@ for opt do
+>>>    ;;
+>>>    --cpu=*) cpu="$optarg"
+>>>    ;;
+>>> -  --extra-cflags=*) QEMU_CFLAGS="$optarg $QEMU_CFLAGS"
+>>> +  --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
+>>>                      EXTRA_CFLAGS="$optarg"
+>>>    ;;
+>>>    --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
+>>>
+>>> I guess at the time I was trying to be clean and avoiding multiple -O
+>>> calls. But I guess that will have the same effect.
+>> 
+>> Yes, that.  Most other QEMU_CFLAGS assignments add at the beginning, so
+>> I guess the remaining ones (including the --extra-cflags one) should too.
+>
+> So, what's the final version of this patch?
 
-Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+I can send the second patch but I'm wary about changing all instances to
+QEMU_CFLAGS to append additional flags.
 
-> ---
->  hw/display/tcx.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/display/tcx.c b/hw/display/tcx.c
-> index a9f9f66..c2b32c3 100644
-> --- a/hw/display/tcx.c
-> +++ b/hw/display/tcx.c
-> @@ -1014,10 +1014,13 @@ static void tcx_realizefn(DeviceState *dev, Error **errp)
->      if (fcode_filename) {
->          ret = load_image_targphys(fcode_filename, s->prom_addr,
->                                    FCODE_MAX_ROM_SIZE);
-> -        if (ret < 0 || ret > FCODE_MAX_ROM_SIZE) {
-> -            error_report("tcx: could not load prom '%s'", TCX_ROM_FILE);
-> -        }
->      }
-> +    if (!fcode_filename || ret < 0 || ret > FCODE_MAX_ROM_SIZE) {
-> +        error_report("tcx: could not load prom '%s'",
-> +                     fcode_filename ? fcode_filename : TCX_ROM_FILE);
-> +        exit(1);
-> +    }
-> +    g_free(fcode_filename);
->  
->      /* 0/DFB8 : 8-bit plane */
->      s->vram = vram_base;
-> 
+>
+> Thanks,
+>
+> /mjt
 
 -- 
-Shannon
-
+Alex Bennée
 
