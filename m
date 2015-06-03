@@ -1,51 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z08q8-0005by-Kp
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 09:36:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45197)
+	id 1Z090E-0005BN-C9
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 09:46:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43867)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1Z02g4-0006rO-Or
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 03:01:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z090B-000583-RR
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:46:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1Z02g4-0000Vz-15
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 03:01:28 -0400
-Received: from mail-oi0-x22b.google.com ([2607:f8b0:4003:c06::22b]:36040)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z090A-0000t1-SJ
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:46:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41669)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1Z02fx-0000LD-7t; Wed, 03 Jun 2015 03:01:21 -0400
-Received: by oihb142 with SMTP id b142so694874oih.3;
-	Wed, 03 Jun 2015 00:01:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type;
-	bh=GJVgZlp55T4h9ILfBSpDO/C7BWbOrW2C3hn4y3LAto0=;
-	b=O4bLDdvrkbyBhN9l6GMHsnVlCCAvMPnMcnji9L3GwjgxDWONHczbKzzcBl4gBlbB1s
-	Y6kbzO4fmcSo3WUQ8JQ8lYEz8e2kEcTRxqj9QaH2SsEDG1Em1aelOqwXIq20hsdt8etl
-	IIM/Wnak3HCpa3d3i9bLoMMLeqyAVUFEdXcfUKzObVGGEN1APAsuBV9kQ1a+4grlvNKw
-	zImWUeuL3DFe9MQFlX52A6vlYMVAIrGOXEON9tXYgzMH4jIFQ9sqOonNL1A4qV+qZp/S
-	898rS03xQPC4fj3LtT8XDLlt7KBIXE+aHmell05VMadTkgDqMy8HoTR9fw4l/HEgU3Sq
-	WOmA==
-X-Received: by 10.182.81.229 with SMTP id d5mr7863446oby.28.1433314880775;
-	Wed, 03 Jun 2015 00:01:20 -0700 (PDT)
-MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.182.213.33 with HTTP; Wed, 3 Jun 2015 00:00:50 -0700 (PDT)
-In-Reply-To: <14e62e727b01a64c188921b7ef2862f0f92734e4.1432711923.git.alistair.francis@xilinx.com>
-References: <14e62e727b01a64c188921b7ef2862f0f92734e4.1432711923.git.alistair.francis@xilinx.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 3 Jun 2015 17:00:50 +1000
-X-Google-Sender-Auth: w8q0uiUwQ9ZTMvs2tPRd4AvfTPk
-Message-ID: <CAKmqyKNT8GChxJOcWE4c3TR_A9edxtvM6yF6OcD05rHJCGeKJA@mail.gmail.com>
-To: Alistair Francis <alistair.francis@xilinx.com>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c06::22b
-X-Mailman-Approved-At: Wed, 03 Jun 2015 09:36:15 -0400
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, saipava@xilinx.com,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v1 1/1] xilinx_axidma.c: Fix up the
-	stream_running() function
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Z0906-0000pj-BD; Wed, 03 Jun 2015 09:46:34 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 54AF0407B6;
+	Wed,  3 Jun 2015 16:46:33 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 68602A61;
+	Wed,  3 Jun 2015 16:08:54 +0300 (MSK)
+Received: (nullmailer pid 27449 invoked by uid 1000);
+	Wed, 03 Jun 2015 13:08:52 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Wed,  3 Jun 2015 16:08:38 +0300
+Message-Id: <ca43b97b5f6fa57e79adc7f167b12d3e0545c7e1.1433336870.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
+References: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: [Qemu-trivial] [PULL 18/30] hw/sparc/sun4m.c: Fix misusing
+	qemu_allocate_irqs for single irq
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,45 +45,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2015 07:01:29 -0000
+X-List-Received-Date: Wed, 03 Jun 2015 13:46:40 -0000
 
-On Wed, May 27, 2015 at 5:37 PM, Alistair Francis
-<alistair.francis@xilinx.com> wrote:
-> Previously the stream_running() function didn't check
-> if the DMA was halted. This caused hangs in recent versions
-> of MicroBlaze u-boot. Correct stream_running() to check
-> DMASR_HALTED as well as DMACR_RUNSTOP.
->
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Reviewed-by: Sai Pavan Boddu <saipava@xilinx.com>
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Ping!
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/sparc/sun4m.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Also add QEMU Trivial.
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index a69bf2d..8a3599c 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -897,7 +897,6 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+         espdma_irq, ledma_irq;
+     qemu_irq esp_reset, dma_enable;
+     qemu_irq fdc_tc;
+-    qemu_irq *cpu_halt;
+     unsigned long kernel_size;
+     DriveInfo *fd[MAX_FD];
+     FWCfgState *fw_cfg;
+@@ -1024,9 +1023,8 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+     escc_init(hwdef->serial_base, slavio_irq[15], slavio_irq[15],
+               serial_hds[0], serial_hds[1], ESCC_CLOCK, 1);
+ 
+-    cpu_halt = qemu_allocate_irqs(cpu_halt_signal, NULL, 1);
+     if (hwdef->apc_base) {
+-        apc_init(hwdef->apc_base, cpu_halt[0]);
++        apc_init(hwdef->apc_base, qemu_allocate_irq(cpu_halt_signal, NULL, 0));
+     }
+ 
+     if (hwdef->fd_base) {
+@@ -1036,7 +1034,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+         sun4m_fdctrl_init(slavio_irq[22], hwdef->fd_base, fd,
+                           &fdc_tc);
+     } else {
+-        fdc_tc = *qemu_allocate_irqs(dummy_fdc_tc, NULL, 1);
++        fdc_tc = qemu_allocate_irq(dummy_fdc_tc, NULL, 0);
+     }
+ 
+     slavio_misc_init(hwdef->slavio_base, hwdef->aux1_base, hwdef->aux2_base,
+-- 
+2.1.4
 
-Thanks,
-
-Alistair
-
-> ---
->  hw/dma/xilinx_axidma.c |    3 ++-
->  1 files changed, 2 insertions(+), 1 deletions(-)
->
-> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> index d06002d..27fba40 100644
-> --- a/hw/dma/xilinx_axidma.c
-> +++ b/hw/dma/xilinx_axidma.c
-> @@ -154,7 +154,8 @@ static inline int stream_resetting(struct Stream *s)
->
->  static inline int stream_running(struct Stream *s)
->  {
-> -    return s->regs[R_DMACR] & DMACR_RUNSTOP;
-> +    return s->regs[R_DMACR] & DMACR_RUNSTOP &&
-> +           !(s->regs[R_DMASR] & DMASR_HALTED);
->  }
->
->  static inline int stream_idle(struct Stream *s)
-> --
-> 1.7.1
->
 
