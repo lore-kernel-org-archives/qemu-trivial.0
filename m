@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z09d8-00047U-Od
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 10:26:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59767)
+	id 1Z09d9-00047v-4a
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 10:26:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59782)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z09d1-0003tE-R0
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 10:26:50 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z09d2-0003uz-T1
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 10:26:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z09cv-0006z2-Uh
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 10:26:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50567)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z09cy-000702-UL
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 10:26:48 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57910)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z09cq-0006vU-Gl; Wed, 03 Jun 2015 10:26:36 -0400
+	id 1Z09cq-0006vW-GL; Wed, 03 Jun 2015 10:26:36 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id EF4C0407C7;
+	by isrv.corpit.ru (Postfix) with ESMTP id EF55E407C8;
 	Wed,  3 Jun 2015 17:26:33 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id C31D7A5B;
-	Wed,  3 Jun 2015 16:08:53 +0300 (MSK)
-Received: (nullmailer pid 27451 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id C2604A65;
+	Wed,  3 Jun 2015 16:08:54 +0300 (MSK)
+Received: (nullmailer pid 27437 invoked by uid 1000);
 	Wed, 03 Jun 2015 13:08:52 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed,  3 Jun 2015 16:08:39 +0300
-Message-Id: <aaaee0b273082ee2836dcc2f61a878ee291a8d9b.1433336870.git.mjt@msgid.tls.msk.ru>
+Date: Wed,  3 Jun 2015 16:08:32 +0300
+Message-Id: <9f9b026dc60398224fb035eb27ae0ed083d2d66f.1433336870.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
 References: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
@@ -32,8 +32,8 @@ X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Shannon Zhao <shannon.zhao@linaro.org>,
 	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: [Qemu-trivial] [PULL 19/30] hw/ppc/prep.c: Fix misusing
-	qemu_allocate_irqs for single irq
+Subject: [Qemu-trivial] [PULL 12/30] hw/arm/omap_sx1.c: Fix memory leak
+	spotted by valgrind
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,35 +53,29 @@ Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/ppc/prep.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/arm/omap_sx1.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 7f52662..998ee2d 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -528,7 +528,6 @@ static void ppc_prep_init(MachineState *machine)
-     PCIDevice *pci;
-     ISABus *isa_bus;
-     ISADevice *isa;
--    qemu_irq *cpu_exit_irq;
-     int ppc_boot_device;
-     DriveInfo *hd[MAX_IDE_BUS * MAX_IDE_DEVS];
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index 671e02c..4b0f7f9 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -103,7 +103,6 @@ static void sx1_init(MachineState *machine, const int version)
+     struct omap_mpu_state_s *mpu;
+     MemoryRegion *address_space = get_system_memory();
+     MemoryRegion *flash = g_new(MemoryRegion, 1);
+-    MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+     MemoryRegion *cs = g_new(MemoryRegion, 4);
+     static uint32_t cs0val = 0x00213090;
+     static uint32_t cs1val = 0x00215070;
+@@ -165,6 +164,7 @@ static void sx1_init(MachineState *machine, const int version)
  
-@@ -625,11 +624,11 @@ static void ppc_prep_init(MachineState *machine)
- 
-     /* PCI -> ISA bridge */
-     pci = pci_create_simple(pci_bus, PCI_DEVFN(1, 0), "i82378");
--    cpu_exit_irq = qemu_allocate_irqs(cpu_request_exit, NULL, 1);
-     cpu = POWERPC_CPU(first_cpu);
-     qdev_connect_gpio_out(&pci->qdev, 0,
-                           cpu->env.irq_inputs[PPC6xx_INPUT_INT]);
--    qdev_connect_gpio_out(&pci->qdev, 1, *cpu_exit_irq);
-+    qdev_connect_gpio_out(&pci->qdev, 1,
-+                          qemu_allocate_irq(cpu_request_exit, NULL, 0));
-     sysbus_connect_irq(&pcihost->busdev, 0, qdev_get_gpio_in(&pci->qdev, 9));
-     sysbus_connect_irq(&pcihost->busdev, 1, qdev_get_gpio_in(&pci->qdev, 11));
-     sysbus_connect_irq(&pcihost->busdev, 2, qdev_get_gpio_in(&pci->qdev, 9));
+     if ((version == 1) &&
+             (dinfo = drive_get(IF_PFLASH, 0, fl_idx)) != NULL) {
++        MemoryRegion *flash_1 = g_new(MemoryRegion, 1);
+         memory_region_init_ram(flash_1, NULL, "omap_sx1.flash1-0", flash1_size,
+                                &error_abort);
+         vmstate_register_ram_global(flash_1);
 -- 
 2.1.4
 
