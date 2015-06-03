@@ -1,39 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z04TT-0000vU-Ko
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 04:56:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42980)
+	id 1Z04UD-0002FJ-DV
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 04:57:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z04TR-0000ui-0E
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:56:33 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Z04UA-0002BU-G4
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:57:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z04TN-0001Ii-Qq
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:56:32 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Z04U9-0003Aj-BR
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:57:18 -0400
 Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:35633 helo=socrates.bennee.com)
+	([88.198.71.155]:35640 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z04TN-0001EO-LE; Wed, 03 Jun 2015 04:56:29 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaroharston)
+	id 1Z04U4-0002zh-BV; Wed, 03 Jun 2015 04:57:12 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
 	by socrates.bennee.com with esmtp (Exim 4.80)
 	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z05oq-0001VY-8u; Wed, 03 Jun 2015 12:22:44 +0200
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-trivial@nongnu.org
-Date: Wed,  3 Jun 2015 09:56:37 +0100
-Message-Id: <1433321798-13398-1-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.4.2
+	id 1Z05pV-0001Vq-AS; Wed, 03 Jun 2015 12:23:25 +0200
+References: <1432897012-1423-1-git-send-email-alex.bennee@linaro.org>
+	<55684995.3070205@redhat.com> <877frrii83.fsf@linaro.org>
+	<556893DB.9030502@redhat.com>
+	<556D43C4.2070309@msgid.tls.msk.ru> <87vbf6bkua.fsf@linaro.org>
+	<556DB8F3.3000204@redhat.com>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+In-reply-to: <556DB8F3.3000204@redhat.com>
+Date: Wed, 03 Jun 2015 09:57:26 +0100
+Message-ID: <87r3ptb24p.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 127.0.0.1
 X-SA-Exim-Mail-From: alex.bennee@linaro.org
 X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 88.198.71.155
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] configure: postfix --extra-cflags to
-	QEMU_CFLAGS
+Subject: Re: [Qemu-trivial] [PATCH] configure: don't apply -O2 if
+	extra-cflags sets -O
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,35 +50,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2015 08:56:33 -0000
+X-List-Received-Date: Wed, 03 Jun 2015 08:57:19 -0000
 
-It makes sense that extra-cflags should be appended after the normal
-CFLAGS so they don't get overridden by default behaviour. This way if
-you specify something like:
 
-  ./configure --extra-cflags="-O0"
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-You will see the requested behaviour.
+> On 02/06/2015 10:01, Alex Bennée wrote:
+>> 
+>> Michael Tokarev <mjt@tls.msk.ru> writes:
+>> 
+>>> 29.05.2015 19:29, Paolo Bonzini wrote:
+>>>> On 29/05/2015 16:14, Alex Bennée wrote:
+>>>>> You mean just do:
+>>>>>
+>>>>> diff --git a/configure b/configure
+>>>>> index b707429..f13831a 100755
+>>>>> --- a/configure
+>>>>> +++ b/configure
+>>>>> @@ -353,7 +353,7 @@ for opt do
+>>>>>    ;;
+>>>>>    --cpu=*) cpu="$optarg"
+>>>>>    ;;
+>>>>> -  --extra-cflags=*) QEMU_CFLAGS="$optarg $QEMU_CFLAGS"
+>>>>> +  --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
+>>>>>                      EXTRA_CFLAGS="$optarg"
+>>>>>    ;;
+>>>>>    --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
+>>>>>
+>>>>> I guess at the time I was trying to be clean and avoiding multiple -O
+>>>>> calls. But I guess that will have the same effect.
+>>>>
+>>>> Yes, that.  Most other QEMU_CFLAGS assignments add at the beginning, so
+>>>> I guess the remaining ones (including the --extra-cflags one) should too.
+>>>
+>>> So, what's the final version of this patch?
+>> 
+>> I can send the second patch but I'm wary about changing all instances to
+>> QEMU_CFLAGS to append additional flags.
+>
+> Sure, that's a separate change.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cool, sent to qemu-trvial: "[PATCH] configure: postfix --extra-cflags to QEMU_CFLAGS"
 
-diff --git a/configure b/configure
-index b707429..f13831a 100755
---- a/configure
-+++ b/configure
-@@ -353,7 +353,7 @@ for opt do
-   ;;
-   --cpu=*) cpu="$optarg"
-   ;;
--  --extra-cflags=*) QEMU_CFLAGS="$optarg $QEMU_CFLAGS"
-+  --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
-                     EXTRA_CFLAGS="$optarg"
-   ;;
-   --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
+>
+> Paolo
+
 -- 
-2.4.2
-
+Alex Bennée
 
