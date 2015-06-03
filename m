@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z08XP-0007M0-Mm
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 09:16:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35091)
+	id 1Z08cs-0005i0-PH
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 09:22:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36799)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z08XH-000745-Bj
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:16:52 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Z08cq-0005hu-RC
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:22:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z08XB-0004QJ-BS
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:16:47 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:43314)
+	(envelope-from <alex.bennee@linaro.org>) id 1Z08ck-0001t7-QZ
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 09:22:32 -0400
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:42937 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z08X4-0004Kq-RW; Wed, 03 Jun 2015 09:16:35 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7C7DA407A3;
-	Wed,  3 Jun 2015 16:16:33 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id AFB70A64;
-	Wed,  3 Jun 2015 16:08:54 +0300 (MSK)
-Received: (nullmailer pid 27447 invoked by uid 1000);
-	Wed, 03 Jun 2015 13:08:52 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Wed,  3 Jun 2015 16:08:37 +0300
-Message-Id: <b64127244d669c33a4ffdcc47e076559497785af.1433336870.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
-References: <cover.1433336870.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: [Qemu-trivial] [PULL 17/30] hw/timer/arm_timer.c: Fix misusing
-	qemu_allocate_irqs for single irq
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Z08ck-0001sM-LK; Wed, 03 Jun 2015 09:22:26 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaroharston)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Z09yG-0003OB-Oq; Wed, 03 Jun 2015 16:48:44 +0200
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-trivial@nongnu.org
+Date: Wed,  3 Jun 2015 14:22:41 +0100
+Message-Id: <1433337761-32314-1-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.4.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 88.198.71.155
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] configure: append --extra-ldflags to LDFLAGS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,39 +44,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2015 13:16:53 -0000
+X-List-Received-Date: Wed, 03 Jun 2015 13:22:33 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+The help text says --extra-ldflags is appended to LDFLAGS so make it so.
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/timer/arm_timer.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 1452910..d53f39a 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -280,14 +280,12 @@ static int sp804_init(SysBusDevice *sbd)
- {
-     DeviceState *dev = DEVICE(sbd);
-     SP804State *s = SP804(dev);
--    qemu_irq *qi;
- 
--    qi = qemu_allocate_irqs(sp804_set_irq, s, 2);
-     sysbus_init_irq(sbd, &s->irq);
-     s->timer[0] = arm_timer_init(s->freq0);
-     s->timer[1] = arm_timer_init(s->freq1);
--    s->timer[0]->irq = qi[0];
--    s->timer[1]->irq = qi[1];
-+    s->timer[0]->irq = qemu_allocate_irq(sp804_set_irq, s, 0);
-+    s->timer[1]->irq = qemu_allocate_irq(sp804_set_irq, s, 1);
-     memory_region_init_io(&s->iomem, OBJECT(s), &sp804_ops, s,
-                           "sp804", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
+diff --git a/configure b/configure
+index d1b7b1c..cfccdfa 100755
+--- a/configure
++++ b/configure
+@@ -356,7 +356,7 @@ for opt do
+   --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
+                     EXTRA_CFLAGS="$optarg"
+   ;;
+-  --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
++  --extra-ldflags=*) LDFLAGS="$LDFLAGS $optarg"
+                      EXTRA_LDFLAGS="$optarg"
+   ;;
+   --enable-debug-info) debug_info="yes"
 -- 
-2.1.4
+2.4.2
 
 
