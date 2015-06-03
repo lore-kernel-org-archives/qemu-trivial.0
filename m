@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z04UD-0002FJ-DV
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 04:57:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43219)
+	id 1Z06Sa-0006Dj-Hu
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jun 2015 07:03:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z04UA-0002BU-G4
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:57:19 -0400
+	(envelope-from <armbru@redhat.com>) id 1Z06SX-00068G-Hg
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 07:03:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z04U9-0003Aj-BR
-	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 04:57:18 -0400
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:35640 helo=socrates.bennee.com)
+	(envelope-from <armbru@redhat.com>) id 1Z06SW-00062T-Qn
+	for qemu-trivial@nongnu.org; Wed, 03 Jun 2015 07:03:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40132)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z04U4-0002zh-BV; Wed, 03 Jun 2015 04:57:12 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaro.local)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z05pV-0001Vq-AS; Wed, 03 Jun 2015 12:23:25 +0200
-References: <1432897012-1423-1-git-send-email-alex.bennee@linaro.org>
-	<55684995.3070205@redhat.com> <877frrii83.fsf@linaro.org>
-	<556893DB.9030502@redhat.com>
-	<556D43C4.2070309@msgid.tls.msk.ru> <87vbf6bkua.fsf@linaro.org>
-	<556DB8F3.3000204@redhat.com>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-In-reply-to: <556DB8F3.3000204@redhat.com>
-Date: Wed, 03 Jun 2015 09:57:26 +0100
-Message-ID: <87r3ptb24p.fsf@linaro.org>
+	(envelope-from <armbru@redhat.com>)
+	id 1Z06SR-0005x5-M6; Wed, 03 Jun 2015 07:03:39 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 2E9AEB7CE6;
+	Wed,  3 Jun 2015 11:03:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-58.ams2.redhat.com
+	[10.36.116.58])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t53B3bu9006969
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 3 Jun 2015 07:03:38 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id CE67A303F809; Wed,  3 Jun 2015 13:03:36 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1433223995-26725-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 03 Jun 2015 13:03:36 +0200
+In-Reply-To: <1433223995-26725-1-git-send-email-mjt@msgid.tls.msk.ru> (Michael
+	Tokarev's message of "Tue, 2 Jun 2015 08:46:35 +0300")
+Message-ID: <87vbf5njef.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] configure: don't apply -O2 if
-	extra-cflags sets -O
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Miroslav Rezanina <mrezanin@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] slirp: use less
+	predictable directory name in /tmp for smb config (CVE-2015-4037)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,51 +52,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jun 2015 08:57:19 -0000
+X-List-Received-Date: Wed, 03 Jun 2015 11:03:46 -0000
 
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
-
-> On 02/06/2015 10:01, Alex Bennée wrote:
->> 
->> Michael Tokarev <mjt@tls.msk.ru> writes:
->> 
->>> 29.05.2015 19:29, Paolo Bonzini wrote:
->>>> On 29/05/2015 16:14, Alex Bennée wrote:
->>>>> You mean just do:
->>>>>
->>>>> diff --git a/configure b/configure
->>>>> index b707429..f13831a 100755
->>>>> --- a/configure
->>>>> +++ b/configure
->>>>> @@ -353,7 +353,7 @@ for opt do
->>>>>    ;;
->>>>>    --cpu=*) cpu="$optarg"
->>>>>    ;;
->>>>> -  --extra-cflags=*) QEMU_CFLAGS="$optarg $QEMU_CFLAGS"
->>>>> +  --extra-cflags=*) QEMU_CFLAGS="$QEMU_CFLAGS $optarg"
->>>>>                      EXTRA_CFLAGS="$optarg"
->>>>>    ;;
->>>>>    --extra-ldflags=*) LDFLAGS="$optarg $LDFLAGS"
->>>>>
->>>>> I guess at the time I was trying to be clean and avoiding multiple -O
->>>>> calls. But I guess that will have the same effect.
->>>>
->>>> Yes, that.  Most other QEMU_CFLAGS assignments add at the beginning, so
->>>> I guess the remaining ones (including the --extra-cflags one) should too.
->>>
->>> So, what's the final version of this patch?
->> 
->> I can send the second patch but I'm wary about changing all instances to
->> QEMU_CFLAGS to append additional flags.
+> In this version I used mkdtemp(3) which is:
 >
-> Sure, that's a separate change.
-
-Cool, sent to qemu-trvial: "[PATCH] configure: postfix --extra-cflags to QEMU_CFLAGS"
-
+>         _BSD_SOURCE
+>         || /* Since glibc 2.10: */
+>             (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
 >
-> Paolo
+> (POSIX.1-2008), so should be available on systems we care about.
+>
+> While at it, reset the resulting directory name within smb structure
+> on error so cleanup function wont try to remove directory which we
+> failed to create.
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+> v2:
+> Add resetting of the dirname on failure so that cleanup function
+> does not try to remove directory which we failed to create.
+>
+> Use snprintf() as was in the original code, not strcpy(): while
+> in this very case it does not matter at all since both strings
+> are of known size, some people dislike strcpy() in principle.
 
--- 
-Alex Bennée
+I guess I would've used pstrcpy(), but your use of snprintf() is just
+fine.
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
