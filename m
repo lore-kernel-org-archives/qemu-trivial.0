@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z0VwL-0008Nk-VT
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2015 10:16:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44729)
+	id 1Z0Vyx-00013G-Fb
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2015 10:18:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45210)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1Z0VwG-0008HU-Oh
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 10:16:13 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z0Vyv-00011w-Gh
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 10:18:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1Z0VwF-0006oG-Io
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 10:16:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34454)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z0Vyu-0007ae-LY
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 10:18:53 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58113)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>)
-	id 1Z0Vw8-0006mX-Sf; Thu, 04 Jun 2015 10:16:01 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 5BF9119CBFB;
-	Thu,  4 Jun 2015 14:16:00 +0000 (UTC)
-Received: from redhat.com (wlan-5-24.fab.redhat.com [10.33.5.24])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t54EFvll022147
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 4 Jun 2015 10:15:59 -0400
-Date: Thu, 4 Jun 2015 15:15:56 +0100
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20150604141556.GC27201@redhat.com>
-References: <1433424607-3429-1-git-send-email-berrange@redhat.com>
-	<CAFEAcA-HAZRJ8jBvWM8tnN-BkYuzBtToPFgzTNEU8oxtqmUtfQ@mail.gmail.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Z0Vyp-0007Zq-Az; Thu, 04 Jun 2015 10:18:47 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9C6D740937;
+	Thu,  4 Jun 2015 17:18:46 +0300 (MSK)
+Message-ID: <55705E46.4010106@msgid.tls.msk.ru>
+Date: Thu, 04 Jun 2015 17:18:46 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-HAZRJ8jBvWM8tnN-BkYuzBtToPFgzTNEU8oxtqmUtfQ@mail.gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, John Snow <jsnow@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Add .dir-locals.el file
- to configure emacs coding style
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+References: <1432972477-13504-1-git-send-email-zhaoshenglong@huawei.com>
+	<1432972477-13504-3-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1432972477-13504-3-git-send-email-zhaoshenglong@huawei.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, shannon.zhao@linaro.org
+Subject: Re: [Qemu-trivial] [PATCH v2 2/7] hw/mips/mips_jazz.c: Store irq
+ array in MachineState to fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -52,74 +45,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jun 2015 14:16:13 -0000
+X-List-Received-Date: Thu, 04 Jun 2015 14:18:54 -0000
 
-On Thu, Jun 04, 2015 at 02:41:42PM +0100, Peter Maydell wrote:
-> On 4 June 2015 at 14:30, Daniel P. Berrange <berrange@redhat.com> wrote:
-> > Some default emacs setups indent by 2 spaces and uses tabs
-> > which is counter to the QEMU coding style rules. Adding a
-> > .dir-locals.el file in the top level of the GIT repo will
-> > inform emacs about the QEMU coding style, and so assist
-> > contributors in avoiding common style mistakes before
-> > they submit patches.
-> >
-> > Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
-> > ---
-> >  .dir-locals.el | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >  create mode 100644 .dir-locals.el
-> >
-> > diff --git a/.dir-locals.el b/.dir-locals.el
-> > new file mode 100644
-> > index 0000000..3ac0cfc
-> > --- /dev/null
-> > +++ b/.dir-locals.el
-> > @@ -0,0 +1,2 @@
-> > +((c-mode . ((c-file-style . "stroustrup")
-> > +           (indent-tabs-mode . nil))))
-> 
-> My .emacs defines a style like this:
-> 
-> (defconst qemu-c-style
->   '((indent-tabs-mode . nil)
->     (c-basic-offset . 4)
->     (tab-width . 8)
->     (c-comment-only-line-offset . 0)
->     (c-offsets-alist . ((statement-block-intro . +)
->                         (substatement-open . 0)
->                         (label . 0)
->                         (statement-cont . +)
->                         (innamespace . 0)
->                         (inline-open . 0)
->                         ))
->     (c-hanging-braces-alist .
->                             ((brace-list-open)
->                              (brace-list-intro)
->                              (brace-list-entry)
->                              (brace-list-close)
->                              (brace-entry-open)
->                              (block-close . c-snug-do-while)
->                              ;; structs have hanging braces on open
->                              (class-open . (after))
->                              ;; ditto if statements
->                              (substatement-open . (after))
->                              ;; and no auto newline at the end
->                              (class-close)
->                              ))
->     )
->   "QEMU C Programming Style")
-> 
-> which is a superset of Stroustrup and gets a few more
-> corner cases right, I think.
+30.05.2015 10:54, Shannon Zhao =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+>=20
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>  hw/mips/mips_jazz.c | 28 ++++++++++++++--------------
+>  1 file changed, 14 insertions(+), 14 deletions(-)
+>=20
+> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+> index 2c153e0..259458b 100644
+> --- a/hw/mips/mips_jazz.c
+> +++ b/hw/mips/mips_jazz.c
+> @@ -135,7 +135,7 @@ static void mips_jazz_init(MachineState *machine,
+>      MIPSCPU *cpu;
+>      CPUClass *cc;
+>      CPUMIPSState *env;
+> -    qemu_irq *rc4030, *i8259;
+> +    qemu_irq *i8259;
 
-I'm not fussed about what we use as long as we have something, so I'm
-happy to do a v3 using your suggested style instead :)
+Hm. Why do you only cover rc4030, not i8259?
 
-Regards,
-Daniel
--- 
-|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
-|: http://libvirt.org              -o-             http://virt-manager.org :|
-|: http://autobuild.org       -o-         http://search.cpan.org/~danberr/ :|
-|: http://entangle-photo.org       -o-       http://live.gnome.org/gtk-vnc :|
+Besides, in order to keep the changes smaller, I think it is okay to
+keep the variables like that, here and in the rest of the function,
+and only add assignment of it to machine->irqs.  This way, we also
+keep semantic names of the variables, rc4030[i] is easier to understand
+than machine->irqs[i], the former's more specific.
+
+BTW, there's also cpu_exit_irq in this function whose allocation also
+suffers from qemu_allocate_irqs(..., 1) API abuse.
+
+/mjt
 
