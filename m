@@ -1,41 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z0Wta-0005zq-S3
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2015 11:17:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38129)
+	id 1Z0Wzo-00026L-N6
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2015 11:23:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z0WtY-0005wq-BA
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:17:25 -0400
+	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzn-000258-0J
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z0WtX-0005Yl-DC
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:17:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38110)
+	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzf-0007za-V0
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:50 -0400
+Received: from mail-pd0-f170.google.com ([209.85.192.170]:33408)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z0WtT-0005Xf-Ey; Thu, 04 Jun 2015 11:17:19 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id DB4814091E;
-	Thu,  4 Jun 2015 18:17:18 +0300 (MSK)
-Message-ID: <55706BFE.1020408@msgid.tls.msk.ru>
-Date: Thu, 04 Jun 2015 18:17:18 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.7.0
+	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzf-0007zL-P4
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:43 -0400
+Received: by pdbqa5 with SMTP id qa5so33161682pdb.0
+	for <qemu-trivial@nongnu.org>; Thu, 04 Jun 2015 08:23:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
+	:cc:subject:references:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=gSeRmwwTEamZMKQZQT50KMdtDQ6wBNO8s8e3nhCkqVs=;
+	b=KCTPOC6cgwT7SHciAjxLDa1Au9roSRuwuv/csEdC6mDYiAew59Arrx2cDjwS4iuksf
+	Zlji59ajx8fO0EAHwGA3DhS0lluOwjG/0Y3pUI/RbjAwEeur4EQeWh7mes1vQkcVHpB4
+	IBeodEN4S3pGY4XcU1pVUkEXuIEmDCBAgh6SOuZKNoXiTNeT8u/gxTxLswe+Vdmf6WQb
+	3RbzZTfPx7GX8Ps4utB5TSry90lehICYIB/9Tn/JyNhcUxv4LPag4TDW9n+hqSIoXWZv
+	bux9zBrmCNgORvpZq/w3zQDh6r4DkxTkXvkzDurNDp9thMWr4Dsn5G3SPVSF5R5pYQHy
+	U5iA==
+X-Gm-Message-State: ALoCoQmTGXLCBRwMFRBOhmXyCvEy8qXlKasVi7qNVY9Ij85B08KOFD+yIphyc+SdtERan/cGNjO8
+X-Received: by 10.68.205.33 with SMTP id ld1mr32826174pbc.22.1433431423058;
+	Thu, 04 Jun 2015 08:23:43 -0700 (PDT)
+Received: from [10.14.6.62] ([167.160.116.183])
+	by mx.google.com with ESMTPSA id ow6sm4103040pbc.59.2015.06.04.08.23.33
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 04 Jun 2015 08:23:42 -0700 (PDT)
+Message-ID: <55706D76.9000106@linaro.org>
+Date: Thu, 04 Jun 2015 23:23:34 +0800
+From: Shannon Zhao <shannon.zhao@linaro.org>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
-To: Shannon Zhao <shannon.zhao@linaro.org>, 
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
+To: Michael Tokarev <mjt@tls.msk.ru>, Shannon Zhao <zhaoshenglong@huawei.com>,
+	qemu-devel@nongnu.org
 References: <1432972477-13504-1-git-send-email-zhaoshenglong@huawei.com>
 	<1432972477-13504-3-git-send-email-zhaoshenglong@huawei.com>
 	<55705E46.4010106@msgid.tls.msk.ru> <55706108.9070903@linaro.org>
 	<55706186.5070701@msgid.tls.msk.ru> <557065ED.7010409@linaro.org>
-	<55706775.7090204@msgid.tls.msk.ru> <55706A17.80601@linaro.org>
-	<55706B62.3060304@msgid.tls.msk.ru>
-In-Reply-To: <55706B62.3060304@msgid.tls.msk.ru>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
+	<55706775.7090204@msgid.tls.msk.ru> <55706BF2.2040005@linaro.org>
+In-Reply-To: <55706BF2.2040005@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
+	[fuzzy]
+X-Received-From: 209.85.192.170
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
 Subject: Re: [Qemu-trivial] [PATCH v2 2/7] hw/mips/mips_jazz.c: Store irq
  array in MachineState to fix memory leak
@@ -50,32 +66,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jun 2015 15:17:25 -0000
+X-List-Received-Date: Thu, 04 Jun 2015 15:23:52 -0000
 
-04.06.2015 18:14, Michael Tokarev wrote:
-> 04.06.2015 18:09, Shannon Zhao wrote:
->> On 2015/6/4 22:57, Michael Tokarev wrote:
->>> 04.06.2015 17:51, Shannon Zhao wrote:
->>>>> Yeah, but I think something like below would work.
->>>>>
->>>>>     cpu_exit_irq = &qemu_allocate_irq(cpu_request_exit, NULL, 0);
->>>>>     DMA_init(0, cpu_exit_irq);
->>> NO!!!:)
->>
->> Hmm...really?
-> 
-> Really-really :)
-> 
-> You're getting an address of a temporary local variable
-> returned from qemu_allocate_irq,
 
-If this is valid at all, to which I'm not sure.
 
-Even for this:
+On 2015/6/4 23:17, Shannon Zhao wrote:
+>
+>
+> On 2015/6/4 22:57, Michael Tokarev wrote:
+>> 04.06.2015 17:51, Shannon Zhao wrote:
+>>> >Yeah, but I think something like below would work.
+>>> >
+>>> >     cpu_exit_irq = &qemu_allocate_irq(cpu_request_exit, NULL, 0);
+>>> >     DMA_init(0, cpu_exit_irq);
+>> NO!!!:)
+>
+> Oh, will rethink about it. But I think maybe it's unnecessary to fix it
+> as it actually requires a pointer which stores qemu_irq.
 
- int foo();
+And if we want to use qemu_allocate_irq here, it will be something like:
 
- int *var = &foo();
+cpu_exit_irq = g_new(qemu_irq, 1);
+cpu_exit_irq[0] = qemu_allocate_irq(cpu_request_exit, NULL, 0);
+DMA_init(0, cpu_exit_irq);
 
-/mjt\
+This is what exactly qemu_allocate_irqs does.
+
+Or we modify the DMA_init to make it take qemu_irq as parameter not 
+qemu_irq *
+
+-- 
+Shannon
 
