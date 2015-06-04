@@ -1,48 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z1ibc-0001yU-4i
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Jun 2015 17:59:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53688)
+	id 1Z1n7n-00085T-5w
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Jun 2015 22:49:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46493)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1Z1ibZ-0001uf-6C
-	for qemu-trivial@nongnu.org; Sun, 07 Jun 2015 17:59:46 -0400
+	(envelope-from <mrezanin@redhat.com>) id 1Z1n7k-00080R-JT
+	for qemu-trivial@nongnu.org; Sun, 07 Jun 2015 22:49:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1Z1ibY-00077B-4m
-	for qemu-trivial@nongnu.org; Sun, 07 Jun 2015 17:59:45 -0400
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:36469)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1Z1ibT-00076l-Pd; Sun, 07 Jun 2015 17:59:39 -0400
-Received: by qkx62 with SMTP id 62so69170267qkx.3;
-	Sun, 07 Jun 2015 14:59:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=AoapN1Dt5P0wjG0W9VIDrV+IBYWfDIHsqxW3qkgnsX0=;
-	b=UiJN3i0pUpZTewDhbm+0jAaSAnv/409MvMstdRabbLzVnd1TpgMLSrVEfh2BeUEQHF
-	dncuYut5BX4/+LKnuW2t0qK/hyyXj53RQv54M40BijaXWz7XDh9JdW9lH8wKNX1hkbGz
-	2WBdRCsUmWXaEV//bzJ5oA1x9dKWgqCuCIRrHY+ZzOSEWMHwUn5TgXfmvpBE86QUdebP
-	qXN68p5AeGknJNDE+e/RiDNZXdnwCPIcBQouyZ88AFA1Tbeo7E6R7H/23HBBxW/+7KBw
-	WKbv7TBUVCpiJAXZCXxmh6q5tFhPb/OKbHXUX4+xcu2hH5ULXJe+UTJNIXAH7qA3Ko7d
-	/4Yg==
-X-Received: by 10.55.41.211 with SMTP id p80mr26246221qkp.32.1433714378466;
-	Sun, 07 Jun 2015 14:59:38 -0700 (PDT)
-Received: from pcrost-laptop.hsd1.ca.comcast.net
-	(c-24-5-157-48.hsd1.ca.comcast.net. [24.5.157.48])
-	by mx.google.com with ESMTPSA id p84sm366658qkh.10.2015.06.07.14.59.36
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 07 Jun 2015 14:59:37 -0700 (PDT)
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sun,  7 Jun 2015 14:59:09 -0700
-Message-Id: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c09::233
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: [Qemu-trivial] [PATCH v2] memory_mapping: Rework cpu related
-	includes
+	(envelope-from <mrezanin@redhat.com>) id 1Z1n7j-0000qi-4J
+	for qemu-trivial@nongnu.org; Sun, 07 Jun 2015 22:49:16 -0400
+Received: from 212-4-128-36.cust.selfnet.cz ([212.4.128.36]:43955
+	helo=workimage.brq.redhat.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mrezanin@redhat.com>)
+	id 1Z1n7d-0000pK-RA; Sun, 07 Jun 2015 22:49:09 -0400
+Received: by workimage.brq.redhat.com (Postfix, from userid 1000)
+	id A100440A8FF7; Thu,  4 Jun 2015 06:38:53 +0200 (CEST)
+Date: Thu, 4 Jun 2015 06:38:53 +0200
+From: Miroslav Rezanina <mrezanin@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20150604043853.GA2485@lws.brq.redhat.com>
+References: <1433223995-26725-1-git-send-email-mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1433223995-26725-1-git-send-email-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.22.1 (2013-10-16)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 212.4.128.36
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] slirp: use less
+ predictable directory name in /tmp for smb config (CVE-2015-4037)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,41 +41,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Jun 2015 21:59:46 -0000
+X-List-Received-Date: Mon, 08 Jun 2015 02:49:17 -0000
 
-This makes it more consistent with all other core code files, which
-either just rely on qemu-common.h inclusion or precede cpu.h with
-qemu-common.h.
-
-cpu-all.h should not be included in addition to cpu.h. Remove it.
-
-Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
----
-changed since v1:
-Leave in cpu.h include
-
-Picked up by my multi arch WIP where target-multi/cpu.h cant handle
-random core code inclusion without preceeded qemu-common.h. I guess
-this is the only one in tree?
----
- memory_mapping.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/memory_mapping.c b/memory_mapping.c
-index 7b69801..36d6b26 100644
---- a/memory_mapping.c
-+++ b/memory_mapping.c
-@@ -13,8 +13,8 @@
- 
- #include <glib.h>
- 
-+#include "qemu-common.h"
- #include "cpu.h"
--#include "exec/cpu-all.h"
- #include "sysemu/memory_mapping.h"
- #include "exec/memory.h"
- #include "exec/address-spaces.h"
--- 
-1.9.1
-
+On Tue, Jun 02, 2015 at 08:46:35AM +0300, Michael Tokarev wrote:
+> In this version I used mkdtemp(3) which is:
+> 
+>         _BSD_SOURCE
+>         || /* Since glibc 2.10: */
+>             (_POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700)
+> 
+> (POSIX.1-2008), so should be available on systems we care about.
+> 
+> While at it, reset the resulting directory name within smb structure
+> on error so cleanup function wont try to remove directory which we
+> failed to create.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+> v2:
+> Add resetting of the dirname on failure so that cleanup function
+> does not try to remove directory which we failed to create.
+> 
+> Use snprintf() as was in the original code, not strcpy(): while
+> in this very case it does not matter at all since both strings
+> are of known size, some people dislike strcpy() in principle.
+> 
+>  net/slirp.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 0e15cf6..3533837 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -481,7 +481,6 @@ static void slirp_smb_cleanup(SlirpState *s)
+>  static int slirp_smb(SlirpState* s, const char *exported_dir,
+>                       struct in_addr vserver_addr)
+>  {
+> -    static int instance;
+>      char smb_conf[128];
+>      char smb_cmdline[128];
+>      struct passwd *passwd;
+> @@ -505,10 +504,10 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
+>          return -1;
+>      }
+>  
+> -    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.%ld-%d",
+> -             (long)getpid(), instance++);
+> -    if (mkdir(s->smb_dir, 0700) < 0) {
+> +    snprintf(s->smb_dir, sizeof(s->smb_dir), "/tmp/qemu-smb.XXXXXX");
+> +    if (!mkdtemp(s->smb_dir)) {
+>          error_report("could not create samba server dir '%s'", s->smb_dir);
+> +        s->smb_dir[0] = 0;
+>          return -1;
+>      }
+>      snprintf(smb_conf, sizeof(smb_conf), "%s/%s", s->smb_dir, "smb.conf");
+> -- 
+> 2.1.4
+> 
+> 
+Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
 
