@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z0rqL-00065e-4a
+	id 1Z0rqL-00066C-JV
 	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2015 09:39:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43288)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43382)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDN-0006rD-Mk
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:02 -0400
+	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDm-0007M2-3J
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDM-0000AC-1H
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:01 -0400
-Received: from mail-qc0-x235.google.com ([2607:f8b0:400d:c01::235]:36598)
+	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDk-0000PP-Ry
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:26 -0400
+Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:36556)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <don.slutz@gmail.com>)
-	id 1Z0ZDH-00007m-GB; Thu, 04 Jun 2015 13:45:55 -0400
-Received: by qcxw10 with SMTP id w10so20748209qcx.3;
-	Thu, 04 Jun 2015 10:45:54 -0700 (PDT)
+	id 1Z0ZDf-0000FN-Ci; Thu, 04 Jun 2015 13:46:19 -0400
+Received: by qkx62 with SMTP id 62so27769724qkx.3;
+	Thu, 04 Jun 2015 10:46:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:message-id:date:user-agent:mime-version:to:cc:subject
 	:references:in-reply-to:content-type:content-transfer-encoding;
 	bh=j+Dv9kDIERvQhec4T+iTj3VVRJzDw2yKQH4V+EJqmo0=;
-	b=uKh6rnHSOB+8O/JcxXdLEcyqit5m1BLPGqOYBg16Bmm4tJbRekGr4jihHP3SVkb8Gf
-	oNnWzfrexbNpx5iwIRkjSLwrC/c+xGriVM3c7qMuGZ4WKhjkigdzaefwByb6Efytentl
-	4Lhiuhm0K46DmlFdVijWzl4QFzURsRq9Lb/6WPZWmHhT5Urce/Maob/v0/E0oGbNGpCd
-	U8vNGHF7q98jCjbhOsW7BjeV/llB87Iwbwhj21ze0HxIHlqxb0ZVkmtT9Lm5g8u/r6F+
-	SPbNq/KxfCVsIP0azX/j3ZWmg4f/NFx/eXIX7NUsZJd8OPoeGQZbDwYRx7GWUFasp7zh
-	SJsw==
-X-Received: by 10.140.238.8 with SMTP id j8mr46266401qhc.78.1433439954143;
-	Thu, 04 Jun 2015 10:45:54 -0700 (PDT)
+	b=FShYQPQ3DSmfIMNUEEX72PAHKqzPbPb53BeSifpVyvyk6MHici2i7QdFcCq0h33zVL
+	E4PGj2X7r7TiA9YuEsxKV/0p2z4zqhsF/UGdp7vdz0fmpc/nRq8MjCWhzj541pr5hzw0
+	ImBz7yXlCyH+u5c9PPLh8XPoj3wuP/6JjDkdOprX0PuONSedtIaKal9sWMeIRBk6924T
+	cOreM0I0A6FylhH0AmZHukb0+qvtJlP8u0N/LKrZEhQ91zbGB7iBXIrpcjUFYRhVYe/n
+	rQJSN09H7azP9hfHygEpnpinogK4dMop4wKcy3koCr4lRoOFhb5ZJ+S72sbSYb8/rG90
+	EP6w==
+X-Received: by 10.140.84.104 with SMTP id k95mr43414773qgd.45.1433439978974;
+	Thu, 04 Jun 2015 10:46:18 -0700 (PDT)
 Received: from don-760.CloudSwitch.com ([65.209.111.106])
-	by mx.google.com with ESMTPSA id f90sm2737819qgf.2.2015.06.04.10.45.52
+	by mx.google.com with ESMTPSA id 67sm2740000qkx.38.2015.06.04.10.46.17
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 04 Jun 2015 10:45:52 -0700 (PDT)
+	Thu, 04 Jun 2015 10:46:18 -0700 (PDT)
 From: Don Slutz <don.slutz@gmail.com>
 X-Google-Original-From: Don Slutz <Don.Slutz@Gmail.com>
-Message-ID: <55708ECF.5070005@Gmail.com>
-Date: Thu, 04 Jun 2015 13:45:51 -0400
+Message-ID: <55708EE8.3000603@Gmail.com>
+Date: Thu, 04 Jun 2015 13:46:16 -0400
 User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
@@ -46,8 +46,8 @@ Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c01::235
-X-Mailman-Approved-At: Fri, 05 Jun 2015 09:39:26 -0400
+X-Received-From: 2607:f8b0:400d:c09::22d
+X-Mailman-Approved-At: Fri, 05 Jun 2015 09:39:27 -0400
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add .dir-locals.el file to
  configure emacs coding style
@@ -62,7 +62,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jun 2015 17:46:03 -0000
+X-List-Received-Date: Thu, 04 Jun 2015 17:46:30 -0000
 
 On 06/04/15 09:30, Daniel P. Berrange wrote:
 > On Wed, Jun 03, 2015 at 09:47:24AM +0200, Markus Armbruster wrote:
