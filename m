@@ -1,60 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z0Wzo-00026L-N6
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jun 2015 11:23:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40636)
+	id 1Z0rqL-00065e-4a
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Jun 2015 09:39:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43288)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzn-000258-0J
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:51 -0400
+	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDN-0006rD-Mk
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzf-0007za-V0
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:50 -0400
-Received: from mail-pd0-f170.google.com ([209.85.192.170]:33408)
+	(envelope-from <don.slutz@gmail.com>) id 1Z0ZDM-0000AC-1H
+	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 13:46:01 -0400
+Received: from mail-qc0-x235.google.com ([2607:f8b0:400d:c01::235]:36598)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1Z0Wzf-0007zL-P4
-	for qemu-trivial@nongnu.org; Thu, 04 Jun 2015 11:23:43 -0400
-Received: by pdbqa5 with SMTP id qa5so33161682pdb.0
-	for <qemu-trivial@nongnu.org>; Thu, 04 Jun 2015 08:23:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:message-id:date:from:user-agent:mime-version:to
-	:cc:subject:references:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=gSeRmwwTEamZMKQZQT50KMdtDQ6wBNO8s8e3nhCkqVs=;
-	b=KCTPOC6cgwT7SHciAjxLDa1Au9roSRuwuv/csEdC6mDYiAew59Arrx2cDjwS4iuksf
-	Zlji59ajx8fO0EAHwGA3DhS0lluOwjG/0Y3pUI/RbjAwEeur4EQeWh7mes1vQkcVHpB4
-	IBeodEN4S3pGY4XcU1pVUkEXuIEmDCBAgh6SOuZKNoXiTNeT8u/gxTxLswe+Vdmf6WQb
-	3RbzZTfPx7GX8Ps4utB5TSry90lehICYIB/9Tn/JyNhcUxv4LPag4TDW9n+hqSIoXWZv
-	bux9zBrmCNgORvpZq/w3zQDh6r4DkxTkXvkzDurNDp9thMWr4Dsn5G3SPVSF5R5pYQHy
-	U5iA==
-X-Gm-Message-State: ALoCoQmTGXLCBRwMFRBOhmXyCvEy8qXlKasVi7qNVY9Ij85B08KOFD+yIphyc+SdtERan/cGNjO8
-X-Received: by 10.68.205.33 with SMTP id ld1mr32826174pbc.22.1433431423058;
-	Thu, 04 Jun 2015 08:23:43 -0700 (PDT)
-Received: from [10.14.6.62] ([167.160.116.183])
-	by mx.google.com with ESMTPSA id ow6sm4103040pbc.59.2015.06.04.08.23.33
+	(envelope-from <don.slutz@gmail.com>)
+	id 1Z0ZDH-00007m-GB; Thu, 04 Jun 2015 13:45:55 -0400
+Received: by qcxw10 with SMTP id w10so20748209qcx.3;
+	Thu, 04 Jun 2015 10:45:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:message-id:date:user-agent:mime-version:to:cc:subject
+	:references:in-reply-to:content-type:content-transfer-encoding;
+	bh=j+Dv9kDIERvQhec4T+iTj3VVRJzDw2yKQH4V+EJqmo0=;
+	b=uKh6rnHSOB+8O/JcxXdLEcyqit5m1BLPGqOYBg16Bmm4tJbRekGr4jihHP3SVkb8Gf
+	oNnWzfrexbNpx5iwIRkjSLwrC/c+xGriVM3c7qMuGZ4WKhjkigdzaefwByb6Efytentl
+	4Lhiuhm0K46DmlFdVijWzl4QFzURsRq9Lb/6WPZWmHhT5Urce/Maob/v0/E0oGbNGpCd
+	U8vNGHF7q98jCjbhOsW7BjeV/llB87Iwbwhj21ze0HxIHlqxb0ZVkmtT9Lm5g8u/r6F+
+	SPbNq/KxfCVsIP0azX/j3ZWmg4f/NFx/eXIX7NUsZJd8OPoeGQZbDwYRx7GWUFasp7zh
+	SJsw==
+X-Received: by 10.140.238.8 with SMTP id j8mr46266401qhc.78.1433439954143;
+	Thu, 04 Jun 2015 10:45:54 -0700 (PDT)
+Received: from don-760.CloudSwitch.com ([65.209.111.106])
+	by mx.google.com with ESMTPSA id f90sm2737819qgf.2.2015.06.04.10.45.52
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 04 Jun 2015 08:23:42 -0700 (PDT)
-Message-ID: <55706D76.9000106@linaro.org>
-Date: Thu, 04 Jun 2015 23:23:34 +0800
-From: Shannon Zhao <shannon.zhao@linaro.org>
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64;
+	Thu, 04 Jun 2015 10:45:52 -0700 (PDT)
+From: Don Slutz <don.slutz@gmail.com>
+X-Google-Original-From: Don Slutz <Don.Slutz@Gmail.com>
+Message-ID: <55708ECF.5070005@Gmail.com>
+Date: Thu, 04 Jun 2015 13:45:51 -0400
+User-Agent: Mozilla/5.0 (X11; Linux i686 on x86_64;
 	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Shannon Zhao <zhaoshenglong@huawei.com>,
-	qemu-devel@nongnu.org
-References: <1432972477-13504-1-git-send-email-zhaoshenglong@huawei.com>
-	<1432972477-13504-3-git-send-email-zhaoshenglong@huawei.com>
-	<55705E46.4010106@msgid.tls.msk.ru> <55706108.9070903@linaro.org>
-	<55706186.5070701@msgid.tls.msk.ru> <557065ED.7010409@linaro.org>
-	<55706775.7090204@msgid.tls.msk.ru> <55706BF2.2040005@linaro.org>
-In-Reply-To: <55706BF2.2040005@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.192.170
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v2 2/7] hw/mips/mips_jazz.c: Store irq
- array in MachineState to fix memory leak
+To: "Daniel P. Berrange" <berrange@redhat.com>, 
+	Markus Armbruster <armbru@redhat.com>
+References: <1433258768-28946-1-git-send-email-berrange@redhat.com>	<87twupxmgj.fsf@blackfin.pond.sub.org>
+	<20150604133034.GB27201@redhat.com>
+In-Reply-To: <20150604133034.GB27201@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c01::235
+X-Mailman-Approved-At: Fri, 05 Jun 2015 09:39:26 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add .dir-locals.el file to
+ configure emacs coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,35 +62,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jun 2015 15:23:52 -0000
+X-List-Received-Date: Thu, 04 Jun 2015 17:46:03 -0000
 
+On 06/04/15 09:30, Daniel P. Berrange wrote:
+> On Wed, Jun 03, 2015 at 09:47:24AM +0200, Markus Armbruster wrote:
+>> "Daniel P. Berrange" <berrange@redhat.com> writes:
+>>
+>>> The default emacs setup indents by 2 spaces and uses tabs
+>>> which is counter to the QEMU coding style rules. Adding a
+>>> .dir-locals.el file in the top level of the GIT repo will
+>>> inform emacs about the QEMU coding style, and so assist
+>>> contributors in avoiding common style mistakes before
+>>> they submit patches.
+>>
+>> Yes, please!
+>>
+>>> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+>>> ---
+>>>  .dir-locals.el | 8 ++++++++
+>>>  1 file changed, 8 insertions(+)
+>>>  create mode 100644 .dir-locals.el
+>>>
+>>> diff --git a/.dir-locals.el b/.dir-locals.el
+>>> new file mode 100644
+>>> index 0000000..ddb2fae
+>>> --- /dev/null
+>>> +++ b/.dir-locals.el
+>>> @@ -0,0 +1,8 @@
+>>> +(
+>>> + (c-mode . (
+>>> +            (c-file-style . "K&R")
+>>> +            (indent-tabs-mode . nil)
+>>> +            (c-indent-level . 4)
+>>> +            (c-basic-offset . 4)
+>>> +            ))
+>>> +)
+> 
+> [snip]
+> 
+>> Does the following .dir-locals.el work for you equally well?
+>>
+>> ((c-mode . ((c-file-style . "stroustrup")
+>>             (indent-tabs-mode . nil))))
+> 
+> Yes, that is fine too.
+> 
 
+I got this from someone on the list, see
 
-On 2015/6/4 23:17, Shannon Zhao wrote:
->
->
-> On 2015/6/4 22:57, Michael Tokarev wrote:
->> 04.06.2015 17:51, Shannon Zhao wrote:
->>> >Yeah, but I think something like below would work.
->>> >
->>> >     cpu_exit_irq = &qemu_allocate_irq(cpu_request_exit, NULL, 0);
->>> >     DMA_init(0, cpu_exit_irq);
->> NO!!!:)
->
-> Oh, will rethink about it. But I think maybe it's unnecessary to fix it
-> as it actually requires a pointer which stores qemu_irq.
+https://wiki.linaro.org/PeterMaydell/QemuEmacsStyle
 
-And if we want to use qemu_allocate_irq here, it will be something like:
+Which then allows me to do:
 
-cpu_exit_irq = g_new(qemu_irq, 1);
-cpu_exit_irq[0] = qemu_allocate_irq(cpu_request_exit, NULL, 0);
-DMA_init(0, cpu_exit_irq);
+((c-mode . ((c-file-style . "qemu"))))
 
-This is what exactly qemu_allocate_irqs does.
+in .dir-locals.el
 
-Or we modify the DMA_init to make it take qemu_irq as parameter not 
-qemu_irq *
+But this is not a good general change :(
 
--- 
-Shannon
+But I would like at least the the stroustrup version.
+
+   -Don Slutz
+
+> Regards,
+> Daniel
+> 
 
