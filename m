@@ -1,43 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z1ub4-0007Nl-16
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2015 06:48:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36128)
+	id 1Z28R5-0003bo-Fz
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jun 2015 21:34:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Z1uaz-0007GL-Bs
-	for qemu-trivial@nongnu.org; Mon, 08 Jun 2015 06:47:58 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z28R2-0003Yz-KE
+	for qemu-trivial@nongnu.org; Mon, 08 Jun 2015 21:34:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Z1uay-0007cl-Ct
-	for qemu-trivial@nongnu.org; Mon, 08 Jun 2015 06:47:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52565)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z28R1-0003x7-Nx
+	for qemu-trivial@nongnu.org; Mon, 08 Jun 2015 21:34:36 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:22135)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1Z1uav-0007aE-W8; Mon, 08 Jun 2015 06:47:54 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8FB2A9176E;
-	Mon,  8 Jun 2015 10:47:53 +0000 (UTC)
-Received: from [10.36.112.50] (ovpn-112-50.ams2.redhat.com [10.36.112.50])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t58AlnFX003198
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 8 Jun 2015 06:47:51 -0400
-Message-ID: <557572D5.3050103@redhat.com>
-Date: Mon, 08 Jun 2015 12:47:49 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z28Qv-0003wR-7D; Mon, 08 Jun 2015 21:34:29 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BHJ88124; Tue, 09 Jun 2015 09:34:16 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml428-hub.china.huawei.com
+	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1; Tue, 9 Jun 2015
+	09:34:04 +0800
+Message-ID: <5576428A.4030603@huawei.com>
+Date: Tue, 9 Jun 2015 09:34:02 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-devel@nongnu.org
-References: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>
-In-Reply-To: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>
-Content-Type: text/plain; charset=windows-1252
+To: Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+References: <1431477807-12220-1-git-send-email-arei.gonglei@huawei.com>
+	<555AEA20.3090501@huawei.com> <556C0B7A.3070601@huawei.com>
+	<20150601122437-mutt-send-email-mst@redhat.com>
+	<556C429F.3070802@redhat.com>
+In-Reply-To: <556C429F.3070802@redhat.com>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] memory_mapping: Rework cpu related
-	includes
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.55764299.00B0, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: dc0be77c511b63bda9b254bcd654b2f6
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, "mjt@tls.msk.ru >>
+	Michael Tokarev" <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Subject: Re: [Qemu-trivial] [PATCH 0/6] pci/isa: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,48 +57,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jun 2015 10:47:58 -0000
+X-List-Received-Date: Tue, 09 Jun 2015 01:34:37 -0000
 
-
-
-On 07/06/2015 23:59, Peter Crosthwaite wrote:
-> This makes it more consistent with all other core code files, which
-> either just rely on qemu-common.h inclusion or precede cpu.h with
-> qemu-common.h.
+On 2015/6/1 19:31, Paolo Bonzini wrote:
 > 
-> cpu-all.h should not be included in addition to cpu.h. Remove it.
 > 
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> ---
-> changed since v1:
-> Leave in cpu.h include
+> On 01/06/2015 12:25, Michael S. Tsirkin wrote:
+>>>> Hi, Michael, Paolo
+>>>>
+>>>> Can you please ack or review those patches?
+>>>>
+>>>> Regards,
+>>>> -Gonglei
+>> I think this belongs in the QOM tree, not mine.
 > 
-> Picked up by my multi arch WIP where target-multi/cpu.h cant handle
-> random core code inclusion without preceeded qemu-common.h. I guess
-> this is the only one in tree?
-> ---
->  memory_mapping.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Recently Gerd at least has taken similar patches, so I guess it belongs
+> all over the place, including Xen, KVM and PC trees.
 > 
-> diff --git a/memory_mapping.c b/memory_mapping.c
-> index 7b69801..36d6b26 100644
-> --- a/memory_mapping.c
-> +++ b/memory_mapping.c
-> @@ -13,8 +13,8 @@
->  
->  #include <glib.h>
->  
-> +#include "qemu-common.h"
->  #include "cpu.h"
-> -#include "exec/cpu-all.h"
->  #include "sysemu/memory_mapping.h"
->  #include "exec/memory.h"
->  #include "exec/address-spaces.h"
+> Let's say it belongs in qemu-trivial (CCed)...
 > 
+OK.
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+/mjt, what's your opinion? Thanks
 
-About to leave on vacation, so someone else will have to pick it up.
+Regards,
+-Gonglei
 
-Paolo
 
