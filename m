@@ -1,39 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z306t-0003lY-VG
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jun 2015 06:53:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48806)
+	id 1Z33sO-0003wi-4z
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jun 2015 10:54:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z306s-0003kp-8K
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 06:53:23 -0400
+	(envelope-from <fziglio@redhat.com>) id 1Z32N8-000122-M2
+	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 09:18:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1Z306n-0001hc-En
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 06:53:22 -0400
-Received: from static.88-198-71-155.clients.your-server.de
-	([88.198.71.155]:52222 helo=socrates.bennee.com)
+	(envelope-from <fziglio@redhat.com>) id 1Z32N2-0005Zq-Va
+	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 09:18:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40420)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z306n-0001gt-81; Thu, 11 Jun 2015 06:53:17 -0400
-Received: from localhost ([127.0.0.1] helo=zen.linaroharston)
-	by socrates.bennee.com with esmtp (Exim 4.80)
-	(envelope-from <alex.bennee@linaro.org>)
-	id 1Z31UC-0008V1-75; Thu, 11 Jun 2015 14:21:32 +0200
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-trivial@nongnu.org
-Date: Thu, 11 Jun 2015 11:53:35 +0100
-Message-Id: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.4.2
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 127.0.0.1
-X-SA-Exim-Mail-From: alex.bennee@linaro.org
-X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
+	(envelope-from <fziglio@redhat.com>)
+	id 1Z32Mw-0005Y4-UF; Thu, 11 Jun 2015 09:18:07 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 656EABBB58;
+	Thu, 11 Jun 2015 13:18:06 +0000 (UTC)
+Received: from rhwork.redhat.com (vpn1-7-156.ams2.redhat.com [10.36.7.156])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5BDI3aE008890; Thu, 11 Jun 2015 09:18:04 -0400
+From: Frediano Ziglio <fziglio@redhat.com>
+To: fziglio@redhat.com, Gerd Hoffmann <kraxel@redhat.com>
+Date: Thu, 11 Jun 2015 14:17:56 +0100
+Message-Id: <1434028677-26160-1-git-send-email-fziglio@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 88.198.71.155
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org
-Subject: [Qemu-trivial] [PATCH] target-arm/cpu.h: remove pending_exception
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Thu, 11 Jun 2015 10:54:39 -0400
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH 1/2] Constify some variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,29 +40,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jun 2015 10:53:23 -0000
+X-List-Received-Date: Thu, 11 Jun 2015 13:18:21 -0000
 
-This isn't used by any of the code. In fact it looks like it was never
-used as it came in with ARMv7 support.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
 ---
- target-arm/cpu.h | 1 -
- 1 file changed, 1 deletion(-)
+ hw/display/qxl-logger.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 21b5b8e..7c1d95c 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -384,7 +384,6 @@ typedef struct CPUARMState {
-         uint32_t control;
-         int current_sp;
-         int exception;
--        int pending_exception;
-     } v7m;
+diff --git a/hw/display/qxl-logger.c b/hw/display/qxl-logger.c
+index c900c2c..d944d3f 100644
+--- a/hw/display/qxl-logger.c
++++ b/hw/display/qxl-logger.c
+@@ -22,7 +22,7 @@
+ #include "qemu/timer.h"
+ #include "qxl.h"
  
-     /* Information associated with an exception about to be taken:
+-static const char *qxl_type[] = {
++static const char *const qxl_type[] = {
+     [ QXL_CMD_NOP ]     = "nop",
+     [ QXL_CMD_DRAW ]    = "draw",
+     [ QXL_CMD_UPDATE ]  = "update",
+@@ -31,7 +31,7 @@ static const char *qxl_type[] = {
+     [ QXL_CMD_SURFACE ] = "surface",
+ };
+ 
+-static const char *qxl_draw_type[] = {
++static const char *const qxl_draw_type[] = {
+     [ QXL_DRAW_NOP         ] = "nop",
+     [ QXL_DRAW_FILL        ] = "fill",
+     [ QXL_DRAW_OPAQUE      ] = "opaque",
+@@ -48,7 +48,7 @@ static const char *qxl_draw_type[] = {
+     [ QXL_DRAW_ALPHA_BLEND ] = "alpha-blend",
+ };
+ 
+-static const char *qxl_draw_effect[] = {
++static const char *const qxl_draw_effect[] = {
+     [ QXL_EFFECT_BLEND            ] = "blend",
+     [ QXL_EFFECT_OPAQUE           ] = "opaque",
+     [ QXL_EFFECT_REVERT_ON_DUP    ] = "revert-on-dup",
+@@ -59,12 +59,12 @@ static const char *qxl_draw_effect[] = {
+     [ QXL_EFFECT_OPAQUE_BRUSH     ] = "opaque-brush",
+ };
+ 
+-static const char *qxl_surface_cmd[] = {
++static const char *const qxl_surface_cmd[] = {
+    [ QXL_SURFACE_CMD_CREATE  ] = "create",
+    [ QXL_SURFACE_CMD_DESTROY ] = "destroy",
+ };
+ 
+-static const char *spice_surface_fmt[] = {
++static const char *const spice_surface_fmt[] = {
+    [ SPICE_SURFACE_FMT_INVALID  ] = "invalid",
+    [ SPICE_SURFACE_FMT_1_A      ] = "alpha/1",
+    [ SPICE_SURFACE_FMT_8_A      ] = "alpha/8",
+@@ -74,14 +74,14 @@ static const char *spice_surface_fmt[] = {
+    [ SPICE_SURFACE_FMT_32_ARGB  ] = "ARGB/32",
+ };
+ 
+-static const char *qxl_cursor_cmd[] = {
++static const char *const qxl_cursor_cmd[] = {
+    [ QXL_CURSOR_SET   ] = "set",
+    [ QXL_CURSOR_MOVE  ] = "move",
+    [ QXL_CURSOR_HIDE  ] = "hide",
+    [ QXL_CURSOR_TRAIL ] = "trail",
+ };
+ 
+-static const char *spice_cursor_type[] = {
++static const char *const spice_cursor_type[] = {
+    [ SPICE_CURSOR_TYPE_ALPHA   ] = "alpha",
+    [ SPICE_CURSOR_TYPE_MONO    ] = "mono",
+    [ SPICE_CURSOR_TYPE_COLOR4  ] = "color4",
+@@ -91,7 +91,7 @@ static const char *spice_cursor_type[] = {
+    [ SPICE_CURSOR_TYPE_COLOR32 ] = "color32",
+ };
+ 
+-static const char *qxl_v2n(const char *n[], size_t l, int v)
++static const char *qxl_v2n(const char *const n[], size_t l, int v)
+ {
+     if (v >= l || !n[v]) {
+         return "???";
 -- 
-2.4.2
+2.1.0
 
 
