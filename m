@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z2y3P-0005ME-0T
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jun 2015 04:41:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58467)
+	id 1Z306t-0003lY-VG
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jun 2015 06:53:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Z2y3L-0005Hb-Uy
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 04:41:36 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1Z306s-0003kp-8K
+	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 06:53:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1Z2y3L-0003CG-8T
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 04:41:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52731)
+	(envelope-from <alex.bennee@linaro.org>) id 1Z306n-0001hc-En
+	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 06:53:22 -0400
+Received: from static.88-198-71-155.clients.your-server.de
+	([88.198.71.155]:52222 helo=socrates.bennee.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1Z2y3E-00037Q-2z; Thu, 11 Jun 2015 04:41:28 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 9F4FFBBB2C;
-	Thu, 11 Jun 2015 08:41:27 +0000 (UTC)
-Received: from localhost (dhcp-14-104.nay.redhat.com [10.66.14.104])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5B8fPPQ027729; Thu, 11 Jun 2015 04:41:26 -0400
-Date: Thu, 11 Jun 2015 16:41:24 +0800
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20150611084124.GC22459@ad.nay.redhat.com>
-References: <1432272908-8330-1-git-send-email-famz@redhat.com>
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Z306n-0001gt-81; Thu, 11 Jun 2015 06:53:17 -0400
+Received: from localhost ([127.0.0.1] helo=zen.linaroharston)
+	by socrates.bennee.com with esmtp (Exim 4.80)
+	(envelope-from <alex.bennee@linaro.org>)
+	id 1Z31UC-0008V1-75; Thu, 11 Jun 2015 14:21:32 +0200
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-trivial@nongnu.org
+Date: Thu, 11 Jun 2015 11:53:35 +0100
+Message-Id: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.4.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1432272908-8330-1-git-send-email-famz@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 127.0.0.1
+X-SA-Exim-Mail-From: alex.bennee@linaro.org
+X-SA-Exim-Scanned: No (on socrates.bennee.com); SAEximRunCond expanded to false
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/2] Makefile: Generate
- tag files under $SRC_PATH
+X-Received-From: 88.198.71.155
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: [Qemu-trivial] [PATCH] target-arm/cpu.h: remove pending_exception
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,25 +45,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jun 2015 08:41:36 -0000
+X-List-Received-Date: Thu, 11 Jun 2015 10:53:23 -0000
 
-On Fri, 05/22 13:35, Fam Zheng wrote:
+This isn't used by any of the code. In fact it looks like it was never
+used as it came in with ARMv7 support.
 
-Ping :)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target-arm/cpu.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-Fam
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 21b5b8e..7c1d95c 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -384,7 +384,6 @@ typedef struct CPUARMState {
+         uint32_t control;
+         int current_sp;
+         int exception;
+-        int pending_exception;
+     } v7m;
+ 
+     /* Information associated with an exception about to be taken:
+-- 
+2.4.2
 
-> 
-> 
-> Fam Zheng (2):
->   Makefile: Fix "make cscope TAGS"
->   Makefile: Add "make ctags"
-> 
->  Makefile | 20 +++++++++++++++-----
->  1 file changed, 15 insertions(+), 5 deletions(-)
-> 
-> -- 
-> 2.4.1
-> 
-> 
 
