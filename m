@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z36nT-00055D-FN
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jun 2015 14:01:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38068)
+	id 1Z3Pis-0006C3-Ev
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2015 10:14:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41690)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1Z36nN-0004vx-LE
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 14:01:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pin-00062v-Fv
+	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1Z36nM-0002jV-TM
-	for qemu-trivial@nongnu.org; Thu, 11 Jun 2015 14:01:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53185)
+	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pii-0005tx-H7
+	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:13 -0400
+Received: from mail-vn0-f43.google.com ([209.85.216.43]:39582)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1Z36nI-0002ag-JZ; Thu, 11 Jun 2015 14:01:36 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id CE4218E6F0;
-	Thu, 11 Jun 2015 18:01:35 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5BI1Z1S015288; Thu, 11 Jun 2015 14:01:35 -0400
-Message-ID: <5579CCFE.5060200@redhat.com>
-Date: Thu, 11 Jun 2015 14:01:34 -0400
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pii-0005tr-Dt
+	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:08 -0400
+Received: by vnbg190 with SMTP id g190so6216036vnb.6
+	for <qemu-trivial@nongnu.org>; Fri, 12 Jun 2015 07:14:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=ZlBumMcFXiXS5ZtBDHDUXEAZe0s8oKnS64ETuft1Uwk=;
+	b=LfW9or+7O4IvfICurQDu7lve68eJY3T5BDfitR4fToTzJBqdc1a0T6DIEm6+B1CHby
+	jcIWx81pDGmJyigAjAUKVH5RC9D/oK9zsMB0f3HYVxtQtx8Rp5uWD3G0ehWYXUvcZOS3
+	rUinULcaAxzrB3bUiO9ZKYw4qxpvrwrxmx3NfP0YUGPZ0q0u8Va8FKtQ78/caudMOv2T
+	o4wqIRSDcY+T3EQSOSXYnp+ezUXvJz+4GwESIfsEObH+X92u9gxVGLAXSDiud8k/CB67
+	Y9CxM9YJK0M6pNFFBUHT7NR9qyvi4dNwN0rk+S+0H2j4r4/LORI+FS0SSgfDq6ic7nFO
+	HElw==
+X-Gm-Message-State: ALoCoQmzS1n1iOpTljRNfVVKh1bWKwsLbsn28gpuGWY5gO3DIN05Ofqf1YVqqqRbDet2k7xJsBhy
+X-Received: by 10.52.114.163 with SMTP id jh3mr8440819vdb.93.1434118448056;
+	Fri, 12 Jun 2015 07:14:08 -0700 (PDT)
 MIME-Version: 1.0
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <1432272908-8330-1-git-send-email-famz@redhat.com>
-	<20150611084124.GC22459@ad.nay.redhat.com>
-In-Reply-To: <20150611084124.GC22459@ad.nay.redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/2] Makefile: Generate
- tag files under $SRC_PATH
+Received: by 10.31.153.135 with HTTP; Fri, 12 Jun 2015 07:13:47 -0700 (PDT)
+In-Reply-To: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
+References: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Jun 2015 15:13:47 +0100
+Message-ID: <CAFEAcA88heku+bkgX8egM432kok2i0=c4UZAJ94vnbMcU4G-oA@mail.gmail.com>
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.216.43
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] target-arm/cpu.h: remove
+	pending_exception
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,34 +56,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jun 2015 18:01:45 -0000
+X-List-Received-Date: Fri, 12 Jun 2015 14:14:15 -0000
 
+On 11 June 2015 at 11:53, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+> This isn't used by any of the code. In fact it looks like it was never
+> used as it came in with ARMv7 support.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  target-arm/cpu.h | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 21b5b8e..7c1d95c 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -384,7 +384,6 @@ typedef struct CPUARMState {
+>          uint32_t control;
+>          int current_sp;
+>          int exception;
+> -        int pending_exception;
+>      } v7m;
+>
+>      /* Information associated with an exception about to be taken:
 
+Applied, thanks.
 
-On 06/11/2015 04:41 AM, Fam Zheng wrote:
-> On Fri, 05/22 13:35, Fam Zheng wrote:
-> 
-> Ping :)
-> 
-> Fam
-> 
->>
->>
->> Fam Zheng (2):
->>   Makefile: Fix "make cscope TAGS"
->>   Makefile: Add "make ctags"
->>
->>  Makefile | 20 +++++++++++++++-----
->>  1 file changed, 15 insertions(+), 5 deletions(-)
->>
->> -- 
->> 2.4.1
->>
->>
-> 
-
-Looks good to me -- this has long been a major annoyance of mine when I
-want to review code (and zip around) without trying to configure it first.
-
-Reviewed-by: John Snow <jsnow@redhat.com>
+-- PMM
 
