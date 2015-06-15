@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z3Pis-0006C3-Ev
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jun 2015 10:14:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41690)
+	id 1Z4Tcb-0003Iw-UD
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2015 08:36:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pin-00062v-Fv
-	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:14 -0400
+	(envelope-from <armbru@redhat.com>) id 1Z4TcY-0003Bq-0H
+	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 08:36:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pii-0005tx-H7
-	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:13 -0400
-Received: from mail-vn0-f43.google.com ([209.85.216.43]:39582)
+	(envelope-from <armbru@redhat.com>) id 1Z4TcX-0002Us-0Y
+	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 08:36:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36120)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z3Pii-0005tr-Dt
-	for qemu-trivial@nongnu.org; Fri, 12 Jun 2015 10:14:08 -0400
-Received: by vnbg190 with SMTP id g190so6216036vnb.6
-	for <qemu-trivial@nongnu.org>; Fri, 12 Jun 2015 07:14:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=ZlBumMcFXiXS5ZtBDHDUXEAZe0s8oKnS64ETuft1Uwk=;
-	b=LfW9or+7O4IvfICurQDu7lve68eJY3T5BDfitR4fToTzJBqdc1a0T6DIEm6+B1CHby
-	jcIWx81pDGmJyigAjAUKVH5RC9D/oK9zsMB0f3HYVxtQtx8Rp5uWD3G0ehWYXUvcZOS3
-	rUinULcaAxzrB3bUiO9ZKYw4qxpvrwrxmx3NfP0YUGPZ0q0u8Va8FKtQ78/caudMOv2T
-	o4wqIRSDcY+T3EQSOSXYnp+ezUXvJz+4GwESIfsEObH+X92u9gxVGLAXSDiud8k/CB67
-	Y9CxM9YJK0M6pNFFBUHT7NR9qyvi4dNwN0rk+S+0H2j4r4/LORI+FS0SSgfDq6ic7nFO
-	HElw==
-X-Gm-Message-State: ALoCoQmzS1n1iOpTljRNfVVKh1bWKwsLbsn28gpuGWY5gO3DIN05Ofqf1YVqqqRbDet2k7xJsBhy
-X-Received: by 10.52.114.163 with SMTP id jh3mr8440819vdb.93.1434118448056;
-	Fri, 12 Jun 2015 07:14:08 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Fri, 12 Jun 2015 07:13:47 -0700 (PDT)
-In-Reply-To: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
-References: <1434020015-8868-1-git-send-email-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jun 2015 15:13:47 +0100
-Message-ID: <CAFEAcA88heku+bkgX8egM432kok2i0=c4UZAJ94vnbMcU4G-oA@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.43
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] target-arm/cpu.h: remove
-	pending_exception
+	(envelope-from <armbru@redhat.com>)
+	id 1Z4TcR-0002Sl-5X; Mon, 15 Jun 2015 08:36:03 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id E73D119F201;
+	Mon, 15 Jun 2015 12:36:01 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-51.ams2.redhat.com
+	[10.36.116.51])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5FCa0wZ032673
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 15 Jun 2015 08:36:01 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id B36683043025; Mon, 15 Jun 2015 14:35:59 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 15 Jun 2015 14:35:58 +0200
+Message-Id: <1434371759-29592-2-git-send-email-armbru@redhat.com>
+In-Reply-To: <1434371759-29592-1-git-send-email-armbru@redhat.com>
+References: <1434371759-29592-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH 1/2] qemu-options: Improve -global
+	documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,31 +47,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jun 2015 14:14:15 -0000
+X-List-Received-Date: Mon, 15 Jun 2015 12:36:11 -0000
 
-On 11 June 2015 at 11:53, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> This isn't used by any of the code. In fact it looks like it was never
-> used as it came in with ARMv7 support.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  target-arm/cpu.h | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 21b5b8e..7c1d95c 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -384,7 +384,6 @@ typedef struct CPUARMState {
->          uint32_t control;
->          int current_sp;
->          int exception;
-> -        int pending_exception;
->      } v7m;
->
->      /* Information associated with an exception about to be taken:
+Recent commit 3751d7c "vl: allow full-blown QemuOpts syntax for
+-global" overloaded its existing argument syntax DRIVER.PROP=VALUE
+with QemuOpts syntax.  Unambigious as long as no DRIVER contains '='.
 
-Applied, thanks.
+Its documentation claims that "the two syntaxes are equivalent."
+Improve it to spell out how exactly the old syntax gets desugared into
+the new one.
 
--- PMM
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ qemu-options.hx | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 1d281f6..b7afec5 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -189,8 +189,9 @@ In particular, you can use this to set driver properties for devices which are
+ created automatically by the machine model. To create a device which is not 
+ created automatically and set properties on it, use -@option{device}.
+ 
+-The two syntaxes are equivalent.  The longer one works for drivers whose name
+-contains a dot.
++-global @var{driver}.@var{prop}=@var{value} is shorthand for -global
++driver=@var{driver},property=@var{prop},value=@var{value}.  The
++longhand syntax works even when @var{driver} contains a dot.
+ ETEXI
+ 
+ DEF("boot", HAS_ARG, QEMU_OPTION_boot,
+-- 
+1.9.3
+
 
