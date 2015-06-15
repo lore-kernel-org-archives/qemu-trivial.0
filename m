@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z4UDC-0004dp-DI
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2015 09:14:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37038)
+	id 1Z4Vws-000090-C3
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jun 2015 11:05:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50155)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1Z4UD7-0004XV-3k
-	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 09:14:00 -0400
+	(envelope-from <eblake@redhat.com>) id 1Z4Vwm-0008Oc-Aw
+	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 11:05:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1Z4UD6-0002ra-9h
-	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 09:13:57 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:13211 helo=smtp4.mundo-r.com)
+	(envelope-from <eblake@redhat.com>) id 1Z4Vwg-00070e-RG
+	for qemu-trivial@nongnu.org; Mon, 15 Jun 2015 11:05:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38176)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1Z4UD0-0002Xs-OT; Mon, 15 Jun 2015 09:13:50 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: AgsIAHPOflVbdWOb/2dsb2JhbABcgxABgTKrUgUBgQSDDI9WhgeBNUwBAQEBAQFpIoUiT040iDMByjqGGolLZR2EFwWLe2mEEIJni0KJKYN/LYo7JmNmAQEIgilsgQOBRAEBAQ
-X-IPAS-Result: AgsIAHPOflVbdWOb/2dsb2JhbABcgxABgTKrUgUBgQSDDI9WhgeBNUwBAQEBAQFpIoUiT040iDMByjqGGolLZR2EFwWLe2mEEIJni0KJKYN/LYo7JmNmAQEIgilsgQOBRAEBAQ
-X-IronPort-AV: E=Sophos;i="5.13,618,1427752800"; d="scan'208";a="365917873"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 15 Jun 2015 15:13:13 +0200
-Received: from dsl-hkibrasgw4-50df50-128.dhcp.inet.fi ([80.223.80.128]
-	helo=perseus.local) by fanzine.igalia.com with esmtpsa 
-	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
-	id 1Z4UCO-0002Z5-S1; Mon, 15 Jun 2015 15:13:13 +0200
-Received: from berto by perseus.local with local (Exim 4.85)
-	(envelope-from <berto@igalia.com>)
-	id 1Z4UCB-0005uf-Hc; Mon, 15 Jun 2015 16:12:59 +0300
-From: Alberto Garcia <berto@igalia.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 15 Jun 2015 16:12:52 +0300
-Message-Id: <1434373972-22694-1-git-send-email-berto@igalia.com>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Cc: qemu-trivial@nongnu.org, Alberto Garcia <berto@igalia.com>,
-	Eric Blake <eblake@redhat.com>
-Subject: [Qemu-trivial] [PATCH] throttle: Fix typo in the documentation of
-	block_set_io_throttle
+	(envelope-from <eblake@redhat.com>)
+	id 1Z4VwZ-0006mX-B5; Mon, 15 Jun 2015 11:04:59 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id E798CB6F28;
+	Mon, 15 Jun 2015 15:04:58 +0000 (UTC)
+Received: from [10.3.113.115] (ovpn-113-115.phx2.redhat.com [10.3.113.115])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5FF4w1G031335; Mon, 15 Jun 2015 11:04:58 -0400
+Message-ID: <557EE995.3040608@redhat.com>
+Date: Mon, 15 Jun 2015 09:04:53 -0600
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <1434371759-29592-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1434371759-29592-1-git-send-email-armbru@redhat.com>
+OpenPGP: url=http://people.redhat.com/eblake/eblake.gpg
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="NWOdXojMoscWaLSInMO6UL0UcmihGrQgq"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] qemu-options: Minor doc
+	improvements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,27 +50,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jun 2015 13:14:00 -0000
+X-List-Received-Date: Mon, 15 Jun 2015 15:05:17 -0000
 
-Signed-off-by: Alberto Garcia <berto@igalia.com>
----
- qapi/block-core.json | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--NWOdXojMoscWaLSInMO6UL0UcmihGrQgq
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/qapi/block-core.json b/qapi/block-core.json
-index afa9d3d..793a01e 100644
---- a/qapi/block-core.json
-+++ b/qapi/block-core.json
-@@ -1083,7 +1083,7 @@
- #
- # I/O limits can be disabled by setting all of them to 0. In this case
- # the device will be removed from its group and the rest of its
--# members will no be affected. The 'group' parameter is ignored.
-+# members will not be affected. The 'group' parameter is ignored.
- #
- # @device: The name of the device
- #
--- 
-2.1.4
+On 06/15/2015 06:35 AM, Markus Armbruster wrote:
+> Markus Armbruster (2):
+>   qemu-options: Improve -global documentation
+>   qemu-options: Use @itemx where appropriate
 
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--NWOdXojMoscWaLSInMO6UL0UcmihGrQgq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVfumZAAoJEKeha0olJ0NqNDEIAInBvGkHQ279M1kcjsmGjEsj
+vj1Yz7JI4yG2s8m+qpVbTXOVCTnSz/0zy6y9XEnBYmqvzv94SNdfXQ8OkCtvXeb0
+sDzYwgFUyn5Hhgyjz2wvIvEi6mfI99gdtJj9QnfGjRmp4I4/Qs8g+L59s8uECthc
+vzCuQhi7T6pnJ+Yw8hvAdjYCbNImQ6u6D5fIVIEo+lUt+QnuZQBjgylGzB/6u83y
+V4ahlUe5wFE2ya/LJ/c/BJZPorPikPVzar/YpnnT1llaK6v01d1aCDztrdMQVCGr
+4arMM2OXbKYr4+SE5mbDG93LmWy2lcbmAF1yGELPUKlqtxoGw9xqfCpsjzrbfMU=
+=zAav
+-----END PGP SIGNATURE-----
+
+--NWOdXojMoscWaLSInMO6UL0UcmihGrQgq--
 
