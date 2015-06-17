@@ -1,38 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z57ne-0007ON-DK
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2015 03:30:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45051)
+	id 1Z59A5-0004Qo-2k
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jun 2015 04:57:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43437)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z57nb-0007LD-GE
-	for qemu-trivial@nongnu.org; Wed, 17 Jun 2015 03:30:16 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1Z59A2-0004Lo-6G
+	for qemu-trivial@nongnu.org; Wed, 17 Jun 2015 04:57:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z57na-0004qK-JB
-	for qemu-trivial@nongnu.org; Wed, 17 Jun 2015 03:30:15 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37156)
+	(envelope-from <pbonzini@redhat.com>) id 1Z59A1-0000qz-CD
+	for qemu-trivial@nongnu.org; Wed, 17 Jun 2015 04:57:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52253)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z57nV-0004Sb-VI; Wed, 17 Jun 2015 03:30:10 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id AEBD141725;
-	Wed, 17 Jun 2015 10:30:01 +0300 (MSK)
-Message-ID: <558121F9.6010804@msgid.tls.msk.ru>
-Date: Wed, 17 Jun 2015 10:30:01 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
+	(envelope-from <pbonzini@redhat.com>)
+	id 1Z599s-0000oH-Do; Wed, 17 Jun 2015 04:57:20 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id D822C37020E;
+	Wed, 17 Jun 2015 08:57:19 +0000 (UTC)
+Received: from [10.36.112.25] (ovpn-112-25.ams2.redhat.com [10.36.112.25])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5H8vFXT029708
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 17 Jun 2015 04:57:17 -0400
+Message-ID: <5581366B.3010302@redhat.com>
+Date: Wed, 17 Jun 2015 10:57:15 +0200
+From: Paolo Bonzini <pbonzini@redhat.com>
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.7.0
+	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
 MIME-Version: 1.0
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org
-References: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
-In-Reply-To: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
-OpenPGP: id=804465C5
+To: Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+References: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>	<557572D5.3050103@redhat.com>
+	<CAEgOgz6md-U4nAZM1MEqAqMnt6wk4APhGuU5tptXijq0umZQ+Q@mail.gmail.com>
+In-Reply-To: <CAEgOgz6md-U4nAZM1MEqAqMnt6wk4APhGuU5tptXijq0umZQ+Q@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v3 0/8] Add a member in MachineState to
-	store irq array
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] memory_mapping: Rework
+	cpu related includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,44 +55,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jun 2015 07:30:16 -0000
+X-List-Received-Date: Wed, 17 Jun 2015 08:57:31 -0000
 
-17.06.2015 05:59, Shannon Zhao wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
->=20
-> These are relevant to memory leak in machine init function. Here we add
-> a member in MachineState to store irq array returned from
-> qemu_allocate_irqs.
->=20
-> PS. These patches are split from my previous patchset [1] since they ar=
-e
-> relevant to MachineState.
->=20
-> Thanks,
-> Shannon
->=20
-> [1] [PATCH 00/29] Fix memory leak relevant to calling qemu_allocate_irq=
-s
->=20
-> changes since v2=EF=BC=9A
->   * Rebased on QEMU upstream
->   * Add a member in MachineState first, then fix the memory leak [mjt]
 
-Um.  This is not what I asked.  It was a small suggestion, to add
-infrastructure first use it in subsequent patches.
 
-But the main question was what this infrastructure, what this patchset
-actually brings us?  You just store the irq pointer in machine state,
-that's okay, but WHAT FOR?  If your intention is to free resources,
-this intention isn't met.  The end result of this whole change is a no-op=
-,
-there's nothing changed, the memory which has been allocated isn't being
-freed.
+On 09/06/2015 09:42, Peter Crosthwaite wrote:
+> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> >
+> > About to leave on vacation, so someone else will have to pick it up.
+>
+> Enjoy. If you are not back before soft freeze would you object to me
+> sending a [PULL] for some of the multi-arch related mainloop header
+> patches for which I have RB from Richard from?
 
-So the actual question is: what's the point of this patchset?
+I don't object to you sending a pull request for any multi-arch related
+changes.  Anything that makes fewer patches go through my "misc" pull
+requests is a good thing for me.
 
-Thanks,
+Just consult with Andreas when he's back about what he prefers to go
+through his tree.
 
-/mjt
-
+Paolo
 
