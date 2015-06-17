@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z53b6-0000ws-4D
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2015 23:01:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58692)
+	id 1Z53dv-0005e8-2t
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jun 2015 23:03:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59686)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Z53b0-0000t7-80
-	for qemu-trivial@nongnu.org; Tue, 16 Jun 2015 23:00:59 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Z53dr-0005Zf-FV
+	for qemu-trivial@nongnu.org; Tue, 16 Jun 2015 23:03:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Z53au-0005qw-Od
-	for qemu-trivial@nongnu.org; Tue, 16 Jun 2015 23:00:57 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:52273)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1Z53dn-0006wH-5u
+	for qemu-trivial@nongnu.org; Tue, 16 Jun 2015 23:03:55 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:40375)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1Z53at-0005Pu-PC; Tue, 16 Jun 2015 23:00:52 -0400
+	id 1Z53dm-0006vl-G7; Tue, 16 Jun 2015 23:03:51 -0400
 Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BHU84639; Wed, 17 Jun 2015 11:00:29 +0800 (CST)
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CPP53199; Wed, 17 Jun 2015 11:00:31 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.158.1; Wed, 17 Jun 2015 11:00:18 +0800
+	Server id 14.3.158.1; Wed, 17 Jun 2015 11:00:22 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-devel@nongnu.org>
-Date: Wed, 17 Jun 2015 10:59:54 +0800
-Message-ID: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
+Date: Wed, 17 Jun 2015 10:59:56 +0800
+Message-ID: <1434510002-6976-3-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.5580E2CE.002C, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: e3f2c8bebb84eb666a33d94a331dad4e
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
+X-Received-From: 58.251.152.64
 Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH v3 0/8] Add a member in MachineState to store
-	irq array
+Subject: [Qemu-trivial] [PATCH v3 2/8] hw/ppc/ppc440_bamboo.c: Store irq
+	array in MachineState to fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,50 +46,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jun 2015 03:01:00 -0000
+X-List-Received-Date: Wed, 17 Jun 2015 03:03:57 -0000
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
-These are relevant to memory leak in machine init function. Here we add
-a member in MachineState to store irq array returned from
-qemu_allocate_irqs.
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ hw/ppc/ppc440_bamboo.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-PS. These patches are split from my previous patchset [1] since they are
-relevant to MachineState.
-
-Thanks,
-Shannon
-
-[1] [PATCH 00/29] Fix memory leak relevant to calling qemu_allocate_irqs
-
-changes since v2：
-  * Rebased on QEMU upstream
-  * Add a member in MachineState first, then fix the memory leak [mjt]
-
-changes since v1：
-  * Add a member in MachineState to store irq array [Peter]
-
-Shannon Zhao (8):
-  include/hw/boards.h: Add a member in MachineState to store irq array
-  hw/ppc/ppc440_bamboo.c: Store irq array in MachineState to fix memory
-    leak
-  hw/sparc/leon3.c: Store irq array in MachineState to fix memory leak
-  hw/m68k/an5206.c: Store irq array in MachineState to fix memory leak
-  hw/sh4/r2d.c: Store irq array in MachineState to fix memory leak
-  hw/arm/palm.c: Store irq array in MachineState to fix memory leak
-  hw/arm/spitz.c: Store irq array in MachineState to fix memory leak
-  hw/arm/tosa.c: Store irq array in MachineState to fix memory leak
-
- hw/arm/palm.c          |  6 ++++--
- hw/arm/spitz.c         |  8 +++++---
- hw/arm/tosa.c          | 10 +++++-----
- hw/m68k/an5206.c       |  2 +-
- hw/ppc/ppc440_bamboo.c |  1 +
- hw/sh4/r2d.c           |  1 +
- hw/sparc/leon3.c       |  1 +
- include/hw/boards.h    |  1 +
- 8 files changed, 19 insertions(+), 11 deletions(-)
-
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index 778970a..944999d 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -203,6 +203,7 @@ static void bamboo_init(MachineState *machine)
+     irqs[PPCUIC_OUTPUT_INT] = ((qemu_irq *)env->irq_inputs)[PPC40x_INPUT_INT];
+     irqs[PPCUIC_OUTPUT_CINT] = ((qemu_irq *)env->irq_inputs)[PPC40x_INPUT_CINT];
+     pic = ppcuic_init(env, irqs, 0x0C0, 0, 1);
++    machine->irqs = pic;
+ 
+     /* SDRAM controller */
+     memset(ram_bases, 0, sizeof(ram_bases));
 -- 
 2.0.4
 
