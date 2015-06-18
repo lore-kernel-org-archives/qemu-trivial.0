@@ -1,46 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z5YPn-0007St-Iu
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 07:55:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42768)
+	id 1Z5ZEE-000483-8C
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 08:47:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34943)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Z5YPf-0007JI-Nv
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 07:55:25 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Z5ZEA-00045r-HD
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 08:47:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Z5YPe-0004zQ-Kk
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 07:55:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52847)
+	(envelope-from <peter.maydell@linaro.org>) id 1Z5ZE6-0003mS-H7
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 08:47:30 -0400
+Received: from mail-yh0-f47.google.com ([209.85.213.47]:35988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Z5YPY-0004wp-I0; Thu, 18 Jun 2015 07:55:12 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id C5C46388865;
-	Thu, 18 Jun 2015 11:55:11 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-36.ams2.redhat.com
-	[10.36.116.36])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5IBtAcG015500
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 18 Jun 2015 07:55:11 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7D9E5303F904; Thu, 18 Jun 2015 13:55:09 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-trivial <qemu-trivial@nongnu.org>
-References: <1432749229-4861-1-git-send-email-armbru@redhat.com>
-	<87y4jki2jy.fsf@blackfin.pond.sub.org>
-Date: Thu, 18 Jun 2015 13:55:09 +0200
-In-Reply-To: <87y4jki2jy.fsf@blackfin.pond.sub.org> (Markus Armbruster's
-	message of "Tue, 16 Jun 2015 08:34:57 +0200")
-Message-ID: <87twu5s02q.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1Z5ZE6-0003mC-CD
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 08:47:26 -0400
+Received: by yhan67 with SMTP id n67so55149642yha.3
+	for <qemu-trivial@nongnu.org>; Thu, 18 Jun 2015 05:47:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=2VauLDpMJVCOlOBcbX7jJQ/mrkCLKdkSChhBOhI7qcc=;
+	b=GU9HIGJLeiACtOU6lHqYdrNVMUf49ReGNgoZXPCdniBacap3py4HQ/GKPGIgcdTmCV
+	sSpUcpcCMBLL6vTXupREL0DRq3xrQTumiJq1aVNNZsTX2XFmzOzRwAoQ9yPXYP7fxiJh
+	84EppBfAQMYl+4IczknTOGDAr1u7tAcJ3ciD5r+P4GWWLFB+UgnjKRDqzAWkcBU6ALPF
+	bsndkhsMknn6y4NodRuh2fGi7LPahFq81nZOxcO5Bpnwbxo5eZJfR4Yp67Cu9izTgD4u
+	KZ7M0MSrPFrRJQtBHzWB/h1TXcSObr61CLL7S2iSDMJoXu6b3CE/y2LAKnTx3kCdbqHF
+	SAIg==
+X-Gm-Message-State: ALoCoQldfifmS+UISyTqixrmPr1s97mKVI3i05LzuGhYRF7G7xuyShw6QeVhRtDtESZQTMnz8BGH
+X-Received: by 10.52.114.42 with SMTP id jd10mr8248491vdb.90.1434631645793;
+	Thu, 18 Jun 2015 05:47:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Revert "guest agent: remove g_strcmp0
-	usage"
+Received: by 10.31.153.135 with HTTP; Thu, 18 Jun 2015 05:47:05 -0700 (PDT)
+In-Reply-To: <87twu5z7px.fsf@blackfin.pond.sub.org>
+References: <1433424607-3429-1-git-send-email-berrange@redhat.com>
+	<CAFEAcA-HAZRJ8jBvWM8tnN-BkYuzBtToPFgzTNEU8oxtqmUtfQ@mail.gmail.com>
+	<87twu5z7px.fsf@blackfin.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 18 Jun 2015 13:47:05 +0100
+Message-ID: <CAFEAcA8ukn66k8OaBFmn08kPRPa1q2HUrOwq9Uep1aMbuWePtw@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.47
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, John Snow <jsnow@redhat.com>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Add .dir-locals.el file
+ to configure emacs coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,40 +58,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2015 11:55:25 -0000
+X-List-Received-Date: Thu, 18 Jun 2015 12:47:31 -0000
 
-Falling back to qemu-trivial, hope that's okay.
+On 18 June 2015 at 10:28, Markus Armbruster <armbru@redhat.com> wrote:
+> However, I can't see how I could define a new C style there without
+> pushing the "local variables" feature well beyond its intended use, and
+> triggering the confirmation prompts.
 
-Markus Armbruster <armbru@redhat.com> writes:
+We wouldn't want to define a new C style, but in general the items
+I have in my config over the Stroustrup defaults are going to be there
+because I've noticed something where Stroustrup doesn't indent right...
 
-> Ping?
->
-> Markus Armbruster <armbru@redhat.com> writes:
->
->> Since we now require GLib 2.22+ (commit f40685c), we don't have to
->> work around lack of g_strcmp0() anymore.
->>
->> This reverts commit 8f4774789947bc4bc4c8d026a289fe980d3d2ee1.
->>
->> Conflicts:
->> 	qemu-ga.c
->>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  qga/main.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/qga/main.c b/qga/main.c
->> index 9939a2b..0b788e1 100644
->> --- a/qga/main.c
->> +++ b/qga/main.c
->> @@ -274,7 +274,7 @@ static void ga_log(const gchar *domain, GLogLevelFlags level,
->>  
->>      level &= G_LOG_LEVEL_MASK;
->>  #ifndef _WIN32
->> -    if (domain && strcmp(domain, "syslog") == 0) {
->> +    if (g_strcmp0(domain, "syslog") == 0) {
->>          syslog(LOG_INFO, "%s: %s", level_str, msg);
->>      } else if (level & s->log_level) {
->>  #else
+> If we take Dan's patch, every Emacs user who hasn't already configured a
+> suitable style profits.  Users who have may have to adjust their
+> configuration to work with or around Dan's patch.
+
+Is there some way to tell whether your emacs has picked up the local
+style info rather than the one you have in your .emacs ?
+
+-- PMM
 
