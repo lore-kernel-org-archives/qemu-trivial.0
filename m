@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z5WbC-0003Ci-Tc
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 05:59:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59165)
+	id 1Z5WuK-0002mC-QI
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 06:18:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fziglio@redhat.com>) id 1Z5WbA-00039V-Et
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 05:59:05 -0400
+	(envelope-from <kraxel@redhat.com>) id 1Z5WuJ-0002lH-0W
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:18:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <fziglio@redhat.com>) id 1Z5Wb9-0001Lo-Lo
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 05:59:04 -0400
-Received: from mx6-phx2.redhat.com ([209.132.183.39]:34187)
+	(envelope-from <kraxel@redhat.com>) id 1Z5WuI-00048n-A6
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:18:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60482)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fziglio@redhat.com>)
-	id 1Z5Wb4-0001JW-Bc; Thu, 18 Jun 2015 05:58:58 -0400
-Received: from zmail25.collab.prod.int.phx2.redhat.com
-	(zmail25.collab.prod.int.phx2.redhat.com [10.5.83.31])
-	by mx6-phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t5I9wuB7017746;
-	Thu, 18 Jun 2015 05:58:56 -0400
-Date: Thu, 18 Jun 2015 05:58:56 -0400 (EDT)
-From: Frediano Ziglio <fziglio@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <834587703.17443662.1434621536154.JavaMail.zimbra@redhat.com>
-In-Reply-To: <5581CA0E.6080906@msgid.tls.msk.ru>
+	(envelope-from <kraxel@redhat.com>)
+	id 1Z5WuE-00045v-3r; Thu, 18 Jun 2015 06:18:46 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id BC0D23674DE;
+	Thu, 18 Jun 2015 10:18:45 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-40.ams2.redhat.com
+	[10.36.116.40])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5IAIhg8024982; Thu, 18 Jun 2015 06:18:44 -0400
+Message-ID: <1434622723.4968.16.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Frediano Ziglio <fziglio@redhat.com>
+Date: Thu, 18 Jun 2015 12:18:43 +0200
+In-Reply-To: <834587703.17443662.1434621536154.JavaMail.zimbra@redhat.com>
 References: <1434028677-26160-1-git-send-email-fziglio@redhat.com>
 	<1434028677-26160-2-git-send-email-fziglio@redhat.com>
 	<5581CA0E.6080906@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	<834587703.17443662.1434621536154.JavaMail.zimbra@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.36.7.76]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF38 (Linux)/8.0.6_GA_5922)
-Thread-Topic: Check value for invalid negative values
-Thread-Index: YwJljRucI4dW5NK3k7C+6gHNG0ztgA==
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.39
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Check value for
-	invalid	negative values
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Check value for invalid
+ negative values
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,51 +50,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2015 09:59:05 -0000
+X-List-Received-Date: Thu, 18 Jun 2015 10:18:51 -0000
 
-For the same reason there is the v >= l test.
-The v >= l test state that the value can be out of range so it not always a constant in the range.
-Adding the v < 0 check for every invalid value. As these are executed only for logging should not be a performance penalty.
-I also hope the compiler is able to optimize
+On Do, 2015-06-18 at 05:58 -0400, Frediano Ziglio wrote:
+> For the same reason there is the v >= l test.
+> The v >= l test state that the value can be out of range so it not always a constant in the range.
+> Adding the v < 0 check for every invalid value. As these are executed only for logging should not be a performance penalty.
+> I also hope the compiler is able to optimize
+> 
+> if (v < 0 || v >= l)
+> 
+> with 
+> 
+> if ((unsigned) v >= l)
 
-if (v < 0 || v >= l)
+Just make v explicitly unsigned?
 
-with 
+cheers,
+  Gerd
 
-if ((unsigned) v >= l)
 
-Frediano
-
-> 
-> 11.06.2015 16:17, Frediano Ziglio wrote:
-> > In qxl_v2n check that value is not negative.
-> 
-> Why do you think it is necessary?
-> 
-> Thanks,
-> 
-> /mjt
-> 
-> > Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
-> > ---
-> >  hw/display/qxl-logger.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/hw/display/qxl-logger.c b/hw/display/qxl-logger.c
-> > index d944d3f..faed869 100644
-> > --- a/hw/display/qxl-logger.c
-> > +++ b/hw/display/qxl-logger.c
-> > @@ -93,7 +93,7 @@ static const char *const spice_cursor_type[] = {
-> >  
-> >  static const char *qxl_v2n(const char *const n[], size_t l, int v)
-> >  {
-> > -    if (v >= l || !n[v]) {
-> > +    if (v < 0 || v >= l || !n[v]) {
-> >          return "???";
-> >      }
-> >      return n[v];
-> 
-> 
-> 
-> 
 
