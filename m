@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z5X5L-0001MC-Fb
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 06:30:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44703)
+	id 1Z5XKl-0000XE-W8
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jun 2015 06:46:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49451)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Z5X5J-0001IV-8G
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:30:14 -0400
+	(envelope-from <fziglio@redhat.com>) id 1Z5XKf-0000NM-Ci
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:46:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1Z5X5I-0003uT-AZ
-	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:30:13 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:32448)
+	(envelope-from <fziglio@redhat.com>) id 1Z5XKe-0005dq-JF
+	for qemu-trivial@nongnu.org; Thu, 18 Jun 2015 06:46:05 -0400
+Received: from mx5-phx2.redhat.com ([209.132.183.37]:52287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1Z5X5A-0003Z3-AR; Thu, 18 Jun 2015 06:30:04 -0400
-Received: from 172.24.2.119 (EHLO szxeml431-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CPR33652; Thu, 18 Jun 2015 18:29:49 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml431-hub.china.huawei.com
-	(10.82.67.208) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 18 Jun 2015 18:29:44 +0800
-Message-ID: <55829D96.1040607@huawei.com>
-Date: Thu, 18 Jun 2015 18:29:42 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <fziglio@redhat.com>)
+	id 1Z5XKT-0005Z9-K7; Thu, 18 Jun 2015 06:45:53 -0400
+Received: from zmail25.collab.prod.int.phx2.redhat.com
+	(zmail25.collab.prod.int.phx2.redhat.com [10.5.83.31])
+	by mx5-phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t5IAjqkV026456;
+	Thu, 18 Jun 2015 06:45:52 -0400
+Date: Thu, 18 Jun 2015 06:45:52 -0400 (EDT)
+From: Frediano Ziglio <fziglio@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <789608027.17460503.1434624352586.JavaMail.zimbra@redhat.com>
+In-Reply-To: <1434622723.4968.16.camel@redhat.com>
+References: <1434028677-26160-1-git-send-email-fziglio@redhat.com>
+	<1434028677-26160-2-git-send-email-fziglio@redhat.com>
+	<5581CA0E.6080906@msgid.tls.msk.ru>
+	<834587703.17443662.1434621536154.JavaMail.zimbra@redhat.com>
+	<1434622723.4968.16.camel@redhat.com>
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1434510002-6976-1-git-send-email-zhaoshenglong@huawei.com>
-	<558121F9.6010804@msgid.tls.msk.ru>
-In-Reply-To: <558121F9.6010804@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, shannon.zhao@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH v3 0/8] Add a member in MachineState to
-	store irq array
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.36.7.76]
+X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF38 (Linux)/8.0.6_GA_5922)
+Thread-Topic: Check value for invalid negative values
+Thread-Index: w99+YQJHl8U89/3v9BIS5zA6hl2yzQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.37
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Check value for invalid
+ negative values
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,54 +50,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jun 2015 10:30:14 -0000
+X-List-Received-Date: Thu, 18 Jun 2015 10:46:10 -0000
 
-
-
-On 2015/6/17 15:30, Michael Tokarev wrote:
-> 17.06.2015 05:59, Shannon Zhao wrote:
->> From: Shannon Zhao <shannon.zhao@linaro.org>
->>
->> These are relevant to memory leak in machine init function. Here we add
->> a member in MachineState to store irq array returned from
->> qemu_allocate_irqs.
->>
->> PS. These patches are split from my previous patchset [1] since they are
->> relevant to MachineState.
->>
->> Thanks,
->> Shannon
->>
->> [1] [PATCH 00/29] Fix memory leak relevant to calling qemu_allocate_irqs
->>
->> changes since v2：
->>   * Rebased on QEMU upstream
->>   * Add a member in MachineState first, then fix the memory leak [mjt]
+ 
+> On Do, 2015-06-18 at 05:58 -0400, Frediano Ziglio wrote:
+> > For the same reason there is the v >= l test.
+> > The v >= l test state that the value can be out of range so it not always a
+> > constant in the range.
+> > Adding the v < 0 check for every invalid value. As these are executed only
+> > for logging should not be a performance penalty.
+> > I also hope the compiler is able to optimize
+> > 
+> > if (v < 0 || v >= l)
+> > 
+> > with
+> > 
+> > if ((unsigned) v >= l)
 > 
-> Um.  This is not what I asked.  It was a small suggestion, to add
-> infrastructure first use it in subsequent patches.
+> Just make v explicitly unsigned?
 > 
-> But the main question was what this infrastructure, what this patchset
-> actually brings us?  You just store the irq pointer in machine state,
-> that's okay, but WHAT FOR?  If your intention is to free resources,
-> this intention isn't met.  The end result of this whole change is a no-op,
-> there's nothing changed, the memory which has been allocated isn't being
-> freed.
+> cheers,
+>   Gerd
 > 
 
-Ok, will rethink about.
+Do you mean in the prototype? Well, this could have side effect due to different conversions so is not a so trivial patch.
+Explicitly casting to unsigned would do but is IMHO less easy to read that an explicit check.
 
-> So the actual question is: what's the point of this patchset?
-> 
-> Thanks,
-> 
-> /mjt
-> 
-> 
-> .
-> 
-
--- 
-Shannon
-
+Frediano
 
