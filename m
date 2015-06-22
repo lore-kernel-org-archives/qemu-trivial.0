@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z6zyt-0005SF-RK
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:33:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55145)
+	id 1Z6zyu-0005Ts-CE
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:33:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55174)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zym-0005EG-Es
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:33 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zyn-0005HZ-MN
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zyl-0008At-8p
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56064)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zym-0008BO-FB
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:33 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37496)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z6zyf-00088I-8l; Mon, 22 Jun 2015 07:33:25 -0400
+	id 1Z6zyg-00089N-0Y; Mon, 22 Jun 2015 07:33:26 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 399A541E48;
+	by isrv.corpit.ru (Postfix) with ESMTP id 4552541E4C;
 	Mon, 22 Jun 2015 14:33:24 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 764B1A8B;
-	Mon, 22 Jun 2015 14:17:31 +0300 (MSK)
-Received: (nullmailer pid 9300 invoked by uid 1000);
-	Mon, 22 Jun 2015 11:17:30 -0000
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 43C27A55;
+	Mon, 22 Jun 2015 14:16:31 +0300 (MSK)
+Received: (nullmailer pid 9248 invoked by uid 1000);
+	Mon, 22 Jun 2015 11:16:30 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Jun 2015 14:16:28 +0300
-Message-Id: <43ce995c79c09595e6fbdcabecd1c8b43cf9e4a4.1434971627.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 22 Jun 2015 14:16:12 +0300
+Message-Id: <da19bd0c92ee4859702ca1329f01f198b9f8a822.1434971627.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Wolfgang Bumiller <w.bumiller@proxmox.com>,
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 21/21] util/qemu-sockets: improve ai_flag
-	hints for ipv6 hosts
+Subject: [Qemu-trivial] [PULL 05/21] pci-assign: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,73 +43,185 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jun 2015 11:33:33 -0000
+X-List-Received-Date: Mon, 22 Jun 2015 11:33:35 -0000
 
-From: Wolfgang Bumiller <w.bumiller@proxmox.com>
+From: Gonglei <arei.gonglei@huawei.com>
 
-*) Do not use AI_ADDRCONFIG on listening sockets, because this flag
-makes it impossible to explicitly listen on '127.0.0.1' if no global
-ipv4 address is configured additionally, making this a very
-uncomfortable option.
-*) Add AI_V4MAPPED hint for connecting sockets.
-
-If your system is globally only connected via ipv6 you often still want
-to be able to use '127.0.0.1' and 'localhost' (even if localhost doesn't
-also have an ipv6 entry).
-For example, PVE - unless explicitly asking for insecure mode - uses
-ipv4 loopback addresses with QEMU for live migrations tunneled over SSH.
-These fail to start because AI_ADDRCONFIG makes getaddrinfo refuse to
-work with '127.0.0.1'.
-
-As for the AI_V4MAPPED flag: glibc uses it by default, and providing
-non-0 flags removes it. I think it makes sense to use it.
-
-I also want to point out that glibc explicitly sidesteps POSIX standards
-when passing 0 as hints by then assuming both AI_V4MAPPED and
-AI_ADDRCONFIG (the latter being a rather weird choice IMO), while
-according to POSIX.1-2001 it should be assumed 0. (glibc considers its
-choice an improvement.)
-Since either AI_CANONNAME or AI_PASSIVE are passed in our cases, glibc's
-default flags in turn are disabled again unless explicitly added, which
-I do with this patch.
-
-Signed-off-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- util/qemu-sockets.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/i386/kvm/pci-assign.c | 39 +++++++++++++++++++++------------------
+ 1 file changed, 21 insertions(+), 18 deletions(-)
 
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 4026314..64b6a06 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -118,7 +118,7 @@ int inet_listen_opts(QemuOpts *opts, int port_offset, Error **errp)
-     int slisten, rc, to, port_min, port_max, p;
+diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
+index 9db7c77..74d22f4 100644
+--- a/hw/i386/kvm/pci-assign.c
++++ b/hw/i386/kvm/pci-assign.c
+@@ -141,6 +141,9 @@ typedef struct AssignedDevice {
+     int32_t bootindex;
+ } AssignedDevice;
  
-     memset(&ai,0, sizeof(ai));
--    ai.ai_flags = AI_PASSIVE | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_PASSIVE;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_STREAM;
++#define TYPE_PCI_ASSIGN "kvm-pci-assign"
++#define PCI_ASSIGN(obj) OBJECT_CHECK(AssignedDevice, (obj), TYPE_PCI_ASSIGN)
++
+ static void assigned_dev_update_irq_routing(PCIDevice *dev);
  
-@@ -335,7 +335,7 @@ static struct addrinfo *inet_parse_connect_opts(QemuOpts *opts, Error **errp)
+ static void assigned_dev_load_option_rom(AssignedDevice *dev);
+@@ -257,7 +260,7 @@ static const MemoryRegionOps slow_bar_ops = {
+ static void assigned_dev_iomem_setup(PCIDevice *pci_dev, int region_num,
+                                      pcibus_t e_size)
+ {
+-    AssignedDevice *r_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *r_dev = PCI_ASSIGN(pci_dev);
+     AssignedDevRegion *region = &r_dev->v_addrs[region_num];
+     PCIRegion *real_region = &r_dev->real_device.regions[region_num];
  
-     memset(&ai, 0, sizeof(ai));
+@@ -289,7 +292,7 @@ static const MemoryRegionOps assigned_dev_ioport_ops = {
+ static void assigned_dev_ioport_setup(PCIDevice *pci_dev, int region_num,
+                                       pcibus_t size)
+ {
+-    AssignedDevice *r_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *r_dev = PCI_ASSIGN(pci_dev);
+     AssignedDevRegion *region = &r_dev->v_addrs[region_num];
  
--    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_STREAM;
+     region->e_size = size;
+@@ -303,7 +306,7 @@ static void assigned_dev_ioport_setup(PCIDevice *pci_dev, int region_num,
  
-@@ -435,7 +435,7 @@ int inet_dgram_opts(QemuOpts *opts, Error **errp)
+ static uint32_t assigned_dev_pci_read(PCIDevice *d, int pos, int len)
+ {
+-    AssignedDevice *pci_dev = DO_UPCAST(AssignedDevice, dev, d);
++    AssignedDevice *pci_dev = PCI_ASSIGN(d);
+     uint32_t val;
+     ssize_t ret;
+     int fd = pci_dev->real_device.config_fd;
+@@ -328,7 +331,7 @@ static uint8_t assigned_dev_pci_read_byte(PCIDevice *d, int pos)
  
-     /* lookup peer addr */
-     memset(&ai,0, sizeof(ai));
--    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_DGRAM;
+ static void assigned_dev_pci_write(PCIDevice *d, int pos, uint32_t val, int len)
+ {
+-    AssignedDevice *pci_dev = DO_UPCAST(AssignedDevice, dev, d);
++    AssignedDevice *pci_dev = PCI_ASSIGN(d);
+     ssize_t ret;
+     int fd = pci_dev->real_device.config_fd;
  
+@@ -946,7 +949,7 @@ static void deassign_device(AssignedDevice *dev)
+  */
+ static void assigned_dev_update_irq_routing(PCIDevice *dev)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(dev);
+     Error *err = NULL;
+     int r;
+ 
+@@ -961,7 +964,7 @@ static void assigned_dev_update_irq_routing(PCIDevice *dev)
+ 
+ static void assigned_dev_update_msi(PCIDevice *pci_dev)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
+     uint8_t ctrl_byte = pci_get_byte(pci_dev->config + pci_dev->msi_cap +
+                                      PCI_MSI_FLAGS);
+     int r;
+@@ -1015,7 +1018,7 @@ static void assigned_dev_update_msi(PCIDevice *pci_dev)
+ 
+ static void assigned_dev_update_msi_msg(PCIDevice *pci_dev)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
+     uint8_t ctrl_byte = pci_get_byte(pci_dev->config + pci_dev->msi_cap +
+                                      PCI_MSI_FLAGS);
+ 
+@@ -1048,7 +1051,7 @@ static bool assigned_dev_msix_skipped(MSIXTableEntry *entry)
+ 
+ static int assigned_dev_update_msix_mmio(PCIDevice *pci_dev)
+ {
+-    AssignedDevice *adev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *adev = PCI_ASSIGN(pci_dev);
+     uint16_t entries_nr = 0;
+     int i, r = 0;
+     MSIXTableEntry *entry = adev->msix_table;
+@@ -1113,7 +1116,7 @@ static int assigned_dev_update_msix_mmio(PCIDevice *pci_dev)
+ 
+ static void assigned_dev_update_msix(PCIDevice *pci_dev)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
+     uint16_t ctrl_word = pci_get_word(pci_dev->config + pci_dev->msix_cap +
+                                       PCI_MSIX_FLAGS);
+     int r;
+@@ -1163,7 +1166,7 @@ static void assigned_dev_update_msix(PCIDevice *pci_dev)
+ static uint32_t assigned_dev_pci_read_config(PCIDevice *pci_dev,
+                                              uint32_t address, int len)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
+     uint32_t virt_val = pci_default_read_config(pci_dev, address, len);
+     uint32_t real_val, emulate_mask, full_emulation_mask;
+ 
+@@ -1184,7 +1187,7 @@ static uint32_t assigned_dev_pci_read_config(PCIDevice *pci_dev,
+ static void assigned_dev_pci_write_config(PCIDevice *pci_dev, uint32_t address,
+                                           uint32_t val, int len)
+ {
+-    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
+     uint16_t old_cmd = pci_get_word(pci_dev->config + PCI_COMMAND);
+     uint32_t emulate_mask, full_emulation_mask;
+     int ret;
+@@ -1244,7 +1247,7 @@ static void assigned_dev_setup_cap_read(AssignedDevice *dev, uint32_t offset,
+ 
+ static int assigned_device_pci_cap_init(PCIDevice *pci_dev, Error **errp)
+ {
+-    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
+     PCIRegion *pci_region = dev->real_device.regions;
+     int ret, pos;
+     Error *local_err = NULL;
+@@ -1684,8 +1687,8 @@ static const VMStateDescription vmstate_assigned_device = {
+ 
+ static void reset_assigned_device(DeviceState *dev)
+ {
+-    PCIDevice *pci_dev = DO_UPCAST(PCIDevice, qdev, dev);
+-    AssignedDevice *adev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    PCIDevice *pci_dev = PCI_DEVICE(dev);
++    AssignedDevice *adev = PCI_ASSIGN(pci_dev);
+     char reset_file[64];
+     const char reset[] = "1";
+     int fd, ret;
+@@ -1740,7 +1743,7 @@ static void reset_assigned_device(DeviceState *dev)
+ 
+ static void assigned_realize(struct PCIDevice *pci_dev, Error **errp)
+ {
+-    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
+     uint8_t e_intx;
+     int r;
+     Error *local_err = NULL;
+@@ -1836,7 +1839,7 @@ exit_with_error:
+ 
+ static void assigned_exitfn(struct PCIDevice *pci_dev)
+ {
+-    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
++    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
+ 
+     deassign_device(dev);
+     free_assigned_device(dev);
+@@ -1845,7 +1848,7 @@ static void assigned_exitfn(struct PCIDevice *pci_dev)
+ static void assigned_dev_instance_init(Object *obj)
+ {
+     PCIDevice *pci_dev = PCI_DEVICE(obj);
+-    AssignedDevice *d = DO_UPCAST(AssignedDevice, dev, PCI_DEVICE(obj));
++    AssignedDevice *d = PCI_ASSIGN(pci_dev);
+ 
+     device_add_bootindex_property(obj, &d->bootindex,
+                                   "bootindex", NULL,
+@@ -1879,7 +1882,7 @@ static void assign_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo assign_info = {
+-    .name               = "kvm-pci-assign",
++    .name               = TYPE_PCI_ASSIGN,
+     .parent             = TYPE_PCI_DEVICE,
+     .instance_size      = sizeof(AssignedDevice),
+     .class_init         = assign_class_init,
 -- 
 2.1.4
 
