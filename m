@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z6zyu-0005Ts-CE
+	id 1Z6zyu-0005Ss-2w
 	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:33:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55174)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55150)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zyn-0005HZ-MN
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zym-0008BO-FB
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zym-0005EX-Jn
 	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37496)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zyl-0008Ay-As
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:33:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:59422)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z6zyg-00089N-0Y; Mon, 22 Jun 2015 07:33:26 -0400
+	id 1Z6zyf-00088M-8R; Mon, 22 Jun 2015 07:33:25 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4552541E4C;
+	by isrv.corpit.ru (Postfix) with ESMTP id 412D441E4B;
 	Mon, 22 Jun 2015 14:33:24 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 43C27A55;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 681ECA56;
 	Mon, 22 Jun 2015 14:16:31 +0300 (MSK)
-Received: (nullmailer pid 9248 invoked by uid 1000);
+Received: (nullmailer pid 9250 invoked by uid 1000);
 	Mon, 22 Jun 2015 11:16:30 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Jun 2015 14:16:12 +0300
-Message-Id: <da19bd0c92ee4859702ca1329f01f198b9f8a822.1434971627.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 22 Jun 2015 14:16:13 +0300
+Message-Id: <6b5aff23d85680022d5324ea911657930034e1c5.1434971627.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
@@ -31,7 +31,7 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 05/21] pci-assign: QOMify
+Subject: [Qemu-trivial] [PULL 06/21] piix: piix3 QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,185 +43,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jun 2015 11:33:35 -0000
+X-List-Received-Date: Mon, 22 Jun 2015 11:33:34 -0000
 
 From: Gonglei <arei.gonglei@huawei.com>
 
 Signed-off-by: Gonglei <arei.gonglei@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/i386/kvm/pci-assign.c | 39 +++++++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 18 deletions(-)
+ hw/pci-host/piix.c | 57 +++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 31 insertions(+), 26 deletions(-)
 
-diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-index 9db7c77..74d22f4 100644
---- a/hw/i386/kvm/pci-assign.c
-+++ b/hw/i386/kvm/pci-assign.c
-@@ -141,6 +141,9 @@ typedef struct AssignedDevice {
-     int32_t bootindex;
- } AssignedDevice;
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index ed2424c..ad55f99 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -91,6 +91,10 @@ typedef struct PIIX3State {
+     MemoryRegion rcr_mem;
+ } PIIX3State;
  
-+#define TYPE_PCI_ASSIGN "kvm-pci-assign"
-+#define PCI_ASSIGN(obj) OBJECT_CHECK(AssignedDevice, (obj), TYPE_PCI_ASSIGN)
++#define TYPE_PIIX3_PCI_DEVICE "pci-piix3"
++#define PIIX3_PCI_DEVICE(obj) \
++    OBJECT_CHECK(PIIX3State, (obj), TYPE_PIIX3_PCI_DEVICE)
 +
- static void assigned_dev_update_irq_routing(PCIDevice *dev);
- 
- static void assigned_dev_load_option_rom(AssignedDevice *dev);
-@@ -257,7 +260,7 @@ static const MemoryRegionOps slow_bar_ops = {
- static void assigned_dev_iomem_setup(PCIDevice *pci_dev, int region_num,
-                                      pcibus_t e_size)
+ #define TYPE_I440FX_PCI_DEVICE "i440FX"
+ #define I440FX_PCI_DEVICE(obj) \
+     OBJECT_CHECK(PCII440FXState, (obj), TYPE_I440FX_PCI_DEVICE)
+@@ -368,13 +372,15 @@ PCIBus *i440fx_init(PCII440FXState **pi440fx_state,
+      * connected to the IOAPIC directly.
+      * These additional routes can be discovered through ACPI. */
+     if (xen_enabled()) {
+-        piix3 = DO_UPCAST(PIIX3State, dev,
+-                pci_create_simple_multifunction(b, -1, true, "PIIX3-xen"));
++        PCIDevice *pci_dev = pci_create_simple_multifunction(b,
++                             -1, true, "PIIX3-xen");
++        piix3 = PIIX3_PCI_DEVICE(pci_dev);
+         pci_bus_irqs(b, xen_piix3_set_irq, xen_pci_slot_get_pirq,
+                 piix3, XEN_PIIX_NUM_PIRQS);
+     } else {
+-        piix3 = DO_UPCAST(PIIX3State, dev,
+-                pci_create_simple_multifunction(b, -1, true, "PIIX3"));
++        PCIDevice *pci_dev = pci_create_simple_multifunction(b,
++                             -1, true, "PIIX3");
++        piix3 = PIIX3_PCI_DEVICE(pci_dev);
+         pci_bus_irqs(b, piix3_set_irq, pci_slot_get_pirq, piix3,
+                 PIIX_NUM_PIRQS);
+         pci_bus_set_route_irq_fn(b, piix3_route_intx_pin_to_irq);
+@@ -480,7 +486,7 @@ static void piix3_write_config(PCIDevice *dev,
  {
--    AssignedDevice *r_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *r_dev = PCI_ASSIGN(pci_dev);
-     AssignedDevRegion *region = &r_dev->v_addrs[region_num];
-     PCIRegion *real_region = &r_dev->real_device.regions[region_num];
+     pci_default_write_config(dev, address, val, len);
+     if (ranges_overlap(address, len, PIIX_PIRQC, 4)) {
+-        PIIX3State *piix3 = DO_UPCAST(PIIX3State, dev, dev);
++        PIIX3State *piix3 = PIIX3_PCI_DEVICE(dev);
+         int pic_irq;
  
-@@ -289,7 +292,7 @@ static const MemoryRegionOps assigned_dev_ioport_ops = {
- static void assigned_dev_ioport_setup(PCIDevice *pci_dev, int region_num,
-                                       pcibus_t size)
+         pci_bus_fire_intx_routing_notifier(piix3->dev.bus);
+@@ -634,7 +640,7 @@ static const MemoryRegionOps rcr_ops = {
+ 
+ static void piix3_realize(PCIDevice *dev, Error **errp)
  {
--    AssignedDevice *r_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *r_dev = PCI_ASSIGN(pci_dev);
-     AssignedDevRegion *region = &r_dev->v_addrs[region_num];
+-    PIIX3State *d = DO_UPCAST(PIIX3State, dev, dev);
++    PIIX3State *d = PIIX3_PCI_DEVICE(dev);
  
-     region->e_size = size;
-@@ -303,7 +306,7 @@ static void assigned_dev_ioport_setup(PCIDevice *pci_dev, int region_num,
- 
- static uint32_t assigned_dev_pci_read(PCIDevice *d, int pos, int len)
- {
--    AssignedDevice *pci_dev = DO_UPCAST(AssignedDevice, dev, d);
-+    AssignedDevice *pci_dev = PCI_ASSIGN(d);
-     uint32_t val;
-     ssize_t ret;
-     int fd = pci_dev->real_device.config_fd;
-@@ -328,7 +331,7 @@ static uint8_t assigned_dev_pci_read_byte(PCIDevice *d, int pos)
- 
- static void assigned_dev_pci_write(PCIDevice *d, int pos, uint32_t val, int len)
- {
--    AssignedDevice *pci_dev = DO_UPCAST(AssignedDevice, dev, d);
-+    AssignedDevice *pci_dev = PCI_ASSIGN(d);
-     ssize_t ret;
-     int fd = pci_dev->real_device.config_fd;
- 
-@@ -946,7 +949,7 @@ static void deassign_device(AssignedDevice *dev)
-  */
- static void assigned_dev_update_irq_routing(PCIDevice *dev)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(dev);
-     Error *err = NULL;
-     int r;
- 
-@@ -961,7 +964,7 @@ static void assigned_dev_update_irq_routing(PCIDevice *dev)
- 
- static void assigned_dev_update_msi(PCIDevice *pci_dev)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
-     uint8_t ctrl_byte = pci_get_byte(pci_dev->config + pci_dev->msi_cap +
-                                      PCI_MSI_FLAGS);
-     int r;
-@@ -1015,7 +1018,7 @@ static void assigned_dev_update_msi(PCIDevice *pci_dev)
- 
- static void assigned_dev_update_msi_msg(PCIDevice *pci_dev)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
-     uint8_t ctrl_byte = pci_get_byte(pci_dev->config + pci_dev->msi_cap +
-                                      PCI_MSI_FLAGS);
- 
-@@ -1048,7 +1051,7 @@ static bool assigned_dev_msix_skipped(MSIXTableEntry *entry)
- 
- static int assigned_dev_update_msix_mmio(PCIDevice *pci_dev)
- {
--    AssignedDevice *adev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *adev = PCI_ASSIGN(pci_dev);
-     uint16_t entries_nr = 0;
-     int i, r = 0;
-     MSIXTableEntry *entry = adev->msix_table;
-@@ -1113,7 +1116,7 @@ static int assigned_dev_update_msix_mmio(PCIDevice *pci_dev)
- 
- static void assigned_dev_update_msix(PCIDevice *pci_dev)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
-     uint16_t ctrl_word = pci_get_word(pci_dev->config + pci_dev->msix_cap +
-                                       PCI_MSIX_FLAGS);
-     int r;
-@@ -1163,7 +1166,7 @@ static void assigned_dev_update_msix(PCIDevice *pci_dev)
- static uint32_t assigned_dev_pci_read_config(PCIDevice *pci_dev,
-                                              uint32_t address, int len)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
-     uint32_t virt_val = pci_default_read_config(pci_dev, address, len);
-     uint32_t real_val, emulate_mask, full_emulation_mask;
- 
-@@ -1184,7 +1187,7 @@ static uint32_t assigned_dev_pci_read_config(PCIDevice *pci_dev,
- static void assigned_dev_pci_write_config(PCIDevice *pci_dev, uint32_t address,
-                                           uint32_t val, int len)
- {
--    AssignedDevice *assigned_dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *assigned_dev = PCI_ASSIGN(pci_dev);
-     uint16_t old_cmd = pci_get_word(pci_dev->config + PCI_COMMAND);
-     uint32_t emulate_mask, full_emulation_mask;
-     int ret;
-@@ -1244,7 +1247,7 @@ static void assigned_dev_setup_cap_read(AssignedDevice *dev, uint32_t offset,
- 
- static int assigned_device_pci_cap_init(PCIDevice *pci_dev, Error **errp)
- {
--    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
-     PCIRegion *pci_region = dev->real_device.regions;
-     int ret, pos;
-     Error *local_err = NULL;
-@@ -1684,8 +1687,8 @@ static const VMStateDescription vmstate_assigned_device = {
- 
- static void reset_assigned_device(DeviceState *dev)
- {
--    PCIDevice *pci_dev = DO_UPCAST(PCIDevice, qdev, dev);
--    AssignedDevice *adev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    PCIDevice *pci_dev = PCI_DEVICE(dev);
-+    AssignedDevice *adev = PCI_ASSIGN(pci_dev);
-     char reset_file[64];
-     const char reset[] = "1";
-     int fd, ret;
-@@ -1740,7 +1743,7 @@ static void reset_assigned_device(DeviceState *dev)
- 
- static void assigned_realize(struct PCIDevice *pci_dev, Error **errp)
- {
--    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
-     uint8_t e_intx;
-     int r;
-     Error *local_err = NULL;
-@@ -1836,7 +1839,7 @@ exit_with_error:
- 
- static void assigned_exitfn(struct PCIDevice *pci_dev)
- {
--    AssignedDevice *dev = DO_UPCAST(AssignedDevice, dev, pci_dev);
-+    AssignedDevice *dev = PCI_ASSIGN(pci_dev);
- 
-     deassign_device(dev);
-     free_assigned_device(dev);
-@@ -1845,7 +1848,7 @@ static void assigned_exitfn(struct PCIDevice *pci_dev)
- static void assigned_dev_instance_init(Object *obj)
- {
-     PCIDevice *pci_dev = PCI_DEVICE(obj);
--    AssignedDevice *d = DO_UPCAST(AssignedDevice, dev, PCI_DEVICE(obj));
-+    AssignedDevice *d = PCI_ASSIGN(pci_dev);
- 
-     device_add_bootindex_property(obj, &d->bootindex,
-                                   "bootindex", NULL,
-@@ -1879,7 +1882,7 @@ static void assign_class_init(ObjectClass *klass, void *data)
+     isa_bus_new(DEVICE(d), get_system_memory(),
+                 pci_address_space_io(dev));
+@@ -647,7 +653,7 @@ static void piix3_realize(PCIDevice *dev, Error **errp)
+     qemu_register_reset(piix3_reset, d);
  }
  
- static const TypeInfo assign_info = {
--    .name               = "kvm-pci-assign",
-+    .name               = TYPE_PCI_ASSIGN,
-     .parent             = TYPE_PCI_DEVICE,
-     .instance_size      = sizeof(AssignedDevice),
-     .class_init         = assign_class_init,
+-static void piix3_class_init(ObjectClass *klass, void *data)
++static void pci_piix3_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+@@ -656,7 +662,6 @@ static void piix3_class_init(ObjectClass *klass, void *data)
+     dc->vmsd        = &vmstate_piix3;
+     dc->hotpluggable   = false;
+     k->realize      = piix3_realize;
+-    k->config_write = piix3_write_config;
+     k->vendor_id    = PCI_VENDOR_ID_INTEL;
+     /* 82371SB PIIX3 PCI-to-ISA bridge (Step A1) */
+     k->device_id    = PCI_DEVICE_ID_INTEL_82371SB_0;
+@@ -668,38 +673,37 @@ static void piix3_class_init(ObjectClass *klass, void *data)
+     dc->cannot_instantiate_with_device_add_yet = true;
+ }
+ 
++static const TypeInfo piix3_pci_type_info = {
++    .name = TYPE_PIIX3_PCI_DEVICE,
++    .parent = TYPE_PCI_DEVICE,
++    .instance_size = sizeof(PIIX3State),
++    .abstract = true,
++    .class_init = pci_piix3_class_init,
++};
++
++static void piix3_class_init(ObjectClass *klass, void *data)
++{
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++
++    k->config_write = piix3_write_config;
++}
++
+ static const TypeInfo piix3_info = {
+     .name          = "PIIX3",
+-    .parent        = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(PIIX3State),
++    .parent        = TYPE_PIIX3_PCI_DEVICE,
+     .class_init    = piix3_class_init,
+ };
+ 
+ static void piix3_xen_class_init(ObjectClass *klass, void *data)
+ {
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+ 
+-    dc->desc        = "ISA bridge";
+-    dc->vmsd        = &vmstate_piix3;
+-    dc->hotpluggable   = false;
+-    k->realize      = piix3_realize;
+     k->config_write = piix3_write_config_xen;
+-    k->vendor_id    = PCI_VENDOR_ID_INTEL;
+-    /* 82371SB PIIX3 PCI-to-ISA bridge (Step A1) */
+-    k->device_id    = PCI_DEVICE_ID_INTEL_82371SB_0;
+-    k->class_id     = PCI_CLASS_BRIDGE_ISA;
+-    /*
+-     * Reason: part of PIIX3 southbridge, needs to be wired up by
+-     * pc_piix.c's pc_init1()
+-     */
+-    dc->cannot_instantiate_with_device_add_yet = true;
+ };
+ 
+ static const TypeInfo piix3_xen_info = {
+     .name          = "PIIX3-xen",
+-    .parent        = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(PIIX3State),
++    .parent        = TYPE_PIIX3_PCI_DEVICE,
+     .class_init    = piix3_xen_class_init,
+ };
+ 
+@@ -772,6 +776,7 @@ static const TypeInfo i440fx_pcihost_info = {
+ static void i440fx_register_types(void)
+ {
+     type_register_static(&i440fx_info);
++    type_register_static(&piix3_pci_type_info);
+     type_register_static(&piix3_info);
+     type_register_static(&piix3_xen_info);
+     type_register_static(&i440fx_pcihost_info);
 -- 
 2.1.4
 
