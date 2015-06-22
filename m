@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z6zic-0008G0-6a
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:16:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50803)
+	id 1Z6zpF-0003js-Qc
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:23:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52518)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6ziW-00085v-9V
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:16:49 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zp9-0003XI-Sv
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:23:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6ziV-0002uZ-3Y
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:16:44 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:43359)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zp4-00054E-It
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:23:31 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37208)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z6ziQ-0002s3-Gu; Mon, 22 Jun 2015 07:16:38 -0400
+	id 1Z6zoz-00052t-AZ; Mon, 22 Jun 2015 07:23:25 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CB52040C2D;
-	Mon, 22 Jun 2015 14:16:30 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 7DCE941E48;
+	Mon, 22 Jun 2015 14:23:24 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id BF8A5A50;
-	Mon, 22 Jun 2015 14:16:30 +0300 (MSK)
-Received: (nullmailer pid 9239 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A841AA58;
+	Mon, 22 Jun 2015 14:16:31 +0300 (MSK)
+Received: (nullmailer pid 9278 invoked by uid 1000);
 	Mon, 22 Jun 2015 11:16:30 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Jun 2015 14:16:08 +0300
-Message-Id: <bf9320806f21a7373816741b3dd1886b915a6c36.1434971627.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 22 Jun 2015 14:16:26 +0300
+Message-Id: <08fbd77fdcb79d7ec6e10a04e9ab5411cc8b686a.1434971627.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [Qemu-trivial] [PULL 01/21] configure: append --extra-ldflags to
-	LDFLAGS
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: [Qemu-trivial] [PULL 19/21] hw/display/cg3.c: Fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,32 +44,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jun 2015 11:16:49 -0000
+X-List-Received-Date: Mon, 22 Jun 2015 11:23:40 -0000
 
-From: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-The help text says --extra-ldflags is appended to LDFLAGS so make it so.
-
-Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/cg3.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index 222694f..a5d8924 100755
---- a/configure
-+++ b/configure
-@@ -354,7 +354,7 @@ for opt do
-   --extra-cflags=3D*) QEMU_CFLAGS=3D"$QEMU_CFLAGS $optarg"
-                     EXTRA_CFLAGS=3D"$optarg"
-   ;;
--  --extra-ldflags=3D*) LDFLAGS=3D"$optarg $LDFLAGS"
-+  --extra-ldflags=3D*) LDFLAGS=3D"$LDFLAGS $optarg"
-                      EXTRA_LDFLAGS=3D"$optarg"
-   ;;
-   --enable-debug-info) debug_info=3D"yes"
---=20
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index b94e5e0..34dcbc3 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -303,6 +303,7 @@ static void cg3_realizefn(DeviceState *dev, Error **errp)
+     if (fcode_filename) {
+         ret = load_image_targphys(fcode_filename, s->prom_addr,
+                                   FCODE_MAX_ROM_SIZE);
++        g_free(fcode_filename);
+         if (ret < 0 || ret > FCODE_MAX_ROM_SIZE) {
+             error_report("cg3: could not load prom '%s'", CG3_ROM_FILE);
+         }
+-- 
 2.1.4
 
 
