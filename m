@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z70uv-0008H4-C3
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 08:33:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45651)
+	id 1Z74BJ-00036M-JQ
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 12:02:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z70us-0008Ce-6C
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 08:33:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Z74BG-00035l-DK
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z70uq-0003rK-4L
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 08:33:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59348)
+	(envelope-from <peter.maydell@linaro.org>) id 1Z74BB-0002Ap-E6
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:42 -0400
+Received: from mail-vn0-f51.google.com ([209.85.216.51]:38290)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z70uj-0003pM-Em; Mon, 22 Jun 2015 08:33:25 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4413040C2D;
-	Mon, 22 Jun 2015 15:33:24 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 18E6CA50;
-	Mon, 22 Jun 2015 14:16:31 +0300 (MSK)
-Received: (nullmailer pid 9242 invoked by uid 1000);
-	Mon, 22 Jun 2015 11:16:30 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Mon, 22 Jun 2015 14:16:09 +0300
-Message-Id: <cbda6abf340e6ceb87984cac1db3ca6f39d9f10a.1434971627.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <peter.maydell@linaro.org>) id 1Z74BB-0002Ad-8o
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:37 -0400
+Received: by vnbf1 with SMTP id f1so8133804vnb.5
+	for <qemu-trivial@nongnu.org>; Mon, 22 Jun 2015 09:02:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=m2fcj1H+SkI4vPZfGlO9oHoEe7mdO0WMYTEH5tNswzc=;
+	b=dpmQYkJTjTC1DV+xnwGcoVXLklAeEbxc4zcf0tl91AOzF4Cvcuo0hVkbHtGdpbD86i
+	3QJuXmlDSjErVlF23HsItHHqgeSqmOREXZHN4k8wrtZXW+vRheCrTNjjOKZ6Sj9vDH3I
+	Od+ZjDspv8ePZAuTtluxyZwmcqbNz/oZwSHXzlE/RAutuQlE2YJ4eKJRv7neqjU6VQjd
+	scKNcgZzsC3/K0sF/8rBbaNLG6l2TRRCzjv43IwJzV4/Y9gs3ZtCAg/iIr03+IGOV09k
+	OcWakXeI0ao5EMhoqMqIV5AnvRhvQOq5s720MFMvIdJLnBDWKhL7//ZWEvWTfbr2FfB4
+	2m8A==
+X-Gm-Message-State: ALoCoQkAci6FDkYdPowrRTZRCfs2cyw87lbOtPlGkwTMooRjzizczNQXsSYIPgu7fOmUdvXo+U3f
+X-Received: by 10.52.26.5 with SMTP id h5mr1111663vdg.3.1434988956707; Mon, 22
+	Jun 2015 09:02:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.153.135 with HTTP; Mon, 22 Jun 2015 09:02:17 -0700 (PDT)
 In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Jun 2015 17:02:17 +0100
+Message-ID: <CAFEAcA9ru4tyzXNUW0USsN13wEP4v5hGOREbPZWVOkrLDS41=Q@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 02/21] remove
-	libdecnumber/dpd/decimal128Local.h
+	[fuzzy]
+X-Received-From: 209.85.216.51
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/21] Trivial patches for
+	2015-06-22
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,82 +56,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jun 2015 12:33:35 -0000
+X-List-Received-Date: Mon, 22 Jun 2015 16:02:43 -0000
 
-Commit 72ac97cdfc added two equivalent versions of decimal128Local.h,
-one in libdecnumber/dpd/ and another in include/libdecnumber/dpd/.
-Being identical by the code, the two files however differs in the
-licensing terms.  The one in libdecnumber/dpd/ (which is being
-removed by this patch) is licensed as GPL3.1 (plus gcc runtime
-exception), which, as far as I know, is not compatible with GPL-2.
-This file is not used (it is included from
-include/libdecnumber/dpd/decimal128.h, so version in include/ is
-used).
+On 22 June 2015 at 12:16, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> There are a few random thing here and there.  I especially
+> want to note 2 of them:
+>
+>  - QOMification series by Gonglei
+>  - rearrangement of ./configure --help output by me
+>
+> Other than that, the stuff is really trivial.
+>
+> Please consider applying/pulling.
+>
+> /mjt
+>
+> The following changes since commit ad7020a7e7b27d468ecc2aacb04ba4eb090170=
+74:
+>
+>   target-microblaze: Remove dead code (2015-06-21 17:20:16 +1000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-06-22
+>
+> for you to fetch changes up to 43ce995c79c09595e6fbdcabecd1c8b43cf9e4a4:
+>
+>   util/qemu-sockets: improve ai_flag hints for ipv6 hosts (2015-06-22 14:=
+08:25 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2015-06-22
 
-More, the version in include/ can also be removed, since none
-of the 3 defines from that file are actually used by the code.
-Even more, one of the defines from there, decimal128SetSign,
-is redefined (to equivalent value) in libdecnumber/dpd/decimal128.c,
-but again, never used.
+Fails to build on Windows:
 
-What a mess...
+util/qemu-sockets.c: In function =E2=80=98inet_parse_connect_opts=E2=80=99:
+util/qemu-sockets.c:338: error: =E2=80=98AI_V4MAPPED=E2=80=99 undeclared (f=
+irst use in
+this function)
+util/qemu-sockets.c:338: error: (Each undeclared identifier is
+reported only once
+util/qemu-sockets.c:338: error: for each function it appears in.)
+util/qemu-sockets.c: In function =E2=80=98inet_dgram_opts=E2=80=99:
+util/qemu-sockets.c:438: error: =E2=80=98AI_V4MAPPED=E2=80=99 undeclared (f=
+irst use in
+this function)
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- libdecnumber/dpd/decimal128Local.h | 42 --------------------------------------
- 1 file changed, 42 deletions(-)
- delete mode 100644 libdecnumber/dpd/decimal128Local.h
+(Also I had to resolve a conflict in configure, so if you rebase
+on current master you'll save me having to do it twice...)
 
-diff --git a/libdecnumber/dpd/decimal128Local.h b/libdecnumber/dpd/decimal128Local.h
-deleted file mode 100644
-index 1963678..0000000
---- a/libdecnumber/dpd/decimal128Local.h
-+++ /dev/null
-@@ -1,42 +0,0 @@
--/* Local definitions for use with the decNumber C Library.
--   Copyright (C) 2007, 2009 Free Software Foundation, Inc.
--
--   This file is part of GCC.
--
--   GCC is free software; you can redistribute it and/or modify it under
--   the terms of the GNU General Public License as published by the Free
--   Software Foundation; either version 3, or (at your option) any later
--   version.
--
--   GCC is distributed in the hope that it will be useful, but WITHOUT ANY
--   WARRANTY; without even the implied warranty of MERCHANTABILITY or
--   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
--   for more details.
--
--Under Section 7 of GPL version 3, you are granted additional
--permissions described in the GCC Runtime Library Exception, version
--3.1, as published by the Free Software Foundation.
--
--You should have received a copy of the GNU General Public License and
--a copy of the GCC Runtime Library Exception along with this program;
--see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
--<http://www.gnu.org/licenses/>.  */
--
--#if !defined(DECIMAL128LOCAL)
--
--/* The compiler needs sign manipulation functions for decimal128 which
--   are not part of the decNumber package.  */
--
--/* Set sign; this assumes the sign was previously zero.  */
--#define decimal128SetSign(d,b) \
--  { (d)->bytes[WORDS_BIGENDIAN ? 0 : 15] |= ((unsigned) (b) << 7); }
--
--/* Clear sign.  */
--#define decimal128ClearSign(d) \
--  { (d)->bytes[WORDS_BIGENDIAN ? 0 : 15] &= ~0x80; }
--
--/* Flip sign.  */
--#define decimal128FlipSign(d) \
--  { (d)->bytes[WORDS_BIGENDIAN ? 0 : 15] ^= 0x80; }
--
--#endif
--- 
-2.1.4
-
+thanks
+-- PMM
 
