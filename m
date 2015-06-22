@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z6zpK-0003rm-DC
+	id 1Z6zpK-0003ss-Op
 	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 07:23:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52621)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zpF-0003jm-Og
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zpG-0003jz-3c
 	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:23:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z6zpE-000565-QF
+	(envelope-from <mjt@tls.msk.ru>) id 1Z6zpF-00056C-1U
 	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 07:23:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42358)
+Received: from isrv.corpit.ru ([86.62.121.231]:56943)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z6zoz-00052s-AI; Mon, 22 Jun 2015 07:23:25 -0400
+	id 1Z6zoz-00052x-AW; Mon, 22 Jun 2015 07:23:25 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8323541E4B;
+	by isrv.corpit.ru (Postfix) with ESMTP id 692F941E47;
 	Mon, 22 Jun 2015 14:23:24 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id BAD49A6F;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 582CAA6A;
 	Mon, 22 Jun 2015 14:16:32 +0300 (MSK)
-Received: (nullmailer pid 9274 invoked by uid 1000);
+Received: (nullmailer pid 9276 invoked by uid 1000);
 	Mon, 22 Jun 2015 11:16:30 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Jun 2015 14:16:24 +0300
-Message-Id: <f994a9cd67edb0b47fa914fc7b6a16a419032a5e.1434971627.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 22 Jun 2015 14:16:25 +0300
+Message-Id: <1c6391fb03e7086bd60707a6291a3a3ff5ec7bf7.1434971627.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
 References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
@@ -31,7 +31,7 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Fam Zheng <famz@redhat.com>
-Subject: [Qemu-trivial] [PULL 17/21] Makefile: Fix "make cscope TAGS"
+Subject: [Qemu-trivial] [PULL 18/21] Makefile: Add "make ctags"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,64 +47,40 @@ X-List-Received-Date: Mon, 22 Jun 2015 11:23:43 -0000
 
 From: Fam Zheng <famz@redhat.com>
 
-Cscope and TAGS files work in source directory rather than the build
-directory, also, don't ask users to run configure first, because they
-may have an out of tree build.
+This generates ctags file
 
 Signed-off-by: Fam Zheng <famz@redhat.com>
 Reviewed-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- Makefile | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ Makefile | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 3f97904..8d36076 100644
+index 8d36076..e0343f3 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -3,6 +3,11 @@
- # Always point to the root of the build tree (needs GNU make).
- BUILD_DIR=$(CURDIR)
+@@ -6,7 +6,7 @@ BUILD_DIR=$(CURDIR)
+ # Before including a proper config-host.mak, assume we are in the source tree
+ SRC_PATH=.
  
-+# Before including a proper config-host.mak, assume we are in the source tree
-+SRC_PATH=.
-+
-+UNCHECKED_GOALS := %clean TAGS cscope
-+
+-UNCHECKED_GOALS := %clean TAGS cscope
++UNCHECKED_GOALS := %clean TAGS cscope ctags
+ 
  # All following code might depend on configuration variables
  ifneq ($(wildcard config-host.mak),)
- # Put the all: rule here so that config-host.mak can contain dependencies.
-@@ -38,7 +43,7 @@ config-host.mak: $(SRC_PATH)/configure
- 	fi
- else
- config-host.mak:
--ifneq ($(filter-out %clean,$(MAKECMDGOALS)),$(if $(MAKECMDGOALS),,fail))
-+ifneq ($(filter-out $(UNCHECKED_GOALS),$(MAKECMDGOALS)),$(if $(MAKECMDGOALS),,fail))
- 	@echo "Please call configure before running make!"
- 	@exit 1
- endif
-@@ -433,9 +438,9 @@ TAGS:
- 	find "$(SRC_PATH)" -name '*.[hc]' -exec etags --append {} +
+@@ -432,6 +432,11 @@ endif
+ test speed: all
+ 	$(MAKE) -C tests/tcg $@
  
- cscope:
--	rm -f ./cscope.*
--	find "$(SRC_PATH)" -name "*.[chsS]" -print | sed 's,^\./,,' > ./cscope.files
--	cscope -b
-+	rm -f "$(SRC_PATH)"/cscope.*
-+	find "$(SRC_PATH)/" -name "*.[chsS]" -print | sed 's,^\./,,' > "$(SRC_PATH)/cscope.files"
-+	cscope -b -i"$(SRC_PATH)/cscope.files"
- 
- # opengl shader programs
- ui/shader/%-vert.h: $(SRC_PATH)/ui/shader/%.vert $(SRC_PATH)/scripts/shaderinclude.pl
-@@ -578,7 +583,7 @@ endif # CONFIG_WIN
- 
- # Add a dependency on the generated files, so that they are always
- # rebuilt before other object files
--ifneq ($(filter-out %clean,$(MAKECMDGOALS)),$(if $(MAKECMDGOALS),,fail))
-+ifneq ($(filter-out $(UNCHECKED_GOALS),$(MAKECMDGOALS)),$(if $(MAKECMDGOALS),,fail))
- Makefile: $(GENERATED_HEADERS)
- endif
- 
++.PHONY: ctags
++ctags:
++	rm -f $@
++	find "$(SRC_PATH)" -name '*.[hc]' -exec ctags --append {} +
++
+ .PHONY: TAGS
+ TAGS:
+ 	rm -f $@
 -- 
 2.1.4
 
