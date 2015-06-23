@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7D4z-00064i-Gy
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 21:32:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56996)
+	id 1Z7DP4-0001ZJ-Fo
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 21:53:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Z7D4x-00064c-Fs
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:32:48 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7DP1-0001Z7-Uq
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:53:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Z7D4t-0000Nx-De
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:32:47 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:12542)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7DOy-00030v-PA
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:53:31 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:28751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1Z7D4s-0000J6-RZ
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:32:43 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z7DOy-0002xN-2I; Mon, 22 Jun 2015 21:53:28 -0400
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
 	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BIA96562; Tue, 23 Jun 2015 09:32:31 +0800 (CST)
-Received: from localhost (10.177.22.69) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 23 Jun 2015 09:32:22 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-To: <qemu-trivial@nongnu.org>
-Date: Tue, 23 Jun 2015 09:31:51 +0800
-Message-ID: <1435023111-8780-1-git-send-email-zhang.zhanghailiang@huawei.com>
-X-Mailer: git-send-email 1.9.2.msysgit.0
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CPV49876; Tue, 23 Jun 2015 09:53:19 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 23 Jun 2015 09:53:08 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 23 Jun 2015 09:53:03 +0800
+Message-ID: <1435024385-9084-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.177.22.69]
+X-Originating-IP: [10.177.19.102]
 X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.5588B730.0064, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 402e5d2c9794376882b4effaf7277ba5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: jiri@resnulli.us, sfeldma@gmail.com,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>, pbonzini@redhat.com
-Subject: [Qemu-trivial] [PATCH] rocker: Fix memory leak reported by coverity
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>, mst@redhat.com
+Subject: [Qemu-trivial] [PATCH 0/2] fix two overflow problems
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,25 +43,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 01:32:48 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 01:53:32 -0000
 
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
----
- hw/net/rocker/rocker.c | 1 +
- 1 file changed, 1 insertion(+)
+From: Gonglei <arei.gonglei@huawei.com>
 
-diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-index 4d25842..d06116e 100644
---- a/hw/net/rocker/rocker.c
-+++ b/hw/net/rocker/rocker.c
-@@ -103,6 +103,7 @@ RockerSwitch *qmp_query_rocker(const char *name, Error **errp)
-     if (!r) {
-         error_set(errp, ERROR_CLASS_GENERIC_ERROR,
-                   "rocker %s not found", name);
-+        g_free(rocker);
-         return NULL;
-     }
- 
+
+Gonglei (2):
+  virito-pci: fix OVERRUN problem
+  qdev: fix OVERFLOW_BEFORE_WIDEN
+
+ hw/core/qdev-properties.c | 2 +-
+ hw/virtio/virtio-pci.c    | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
 -- 
 1.7.12.4
 
