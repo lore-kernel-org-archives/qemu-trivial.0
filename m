@@ -1,50 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z74BJ-00036M-JQ
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 12:02:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51548)
+	id 1Z7Cb3-0001PL-AA
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 21:01:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z74BG-00035l-DK
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:43 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7Cb1-0001Nn-2R
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:01:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z74BB-0002Ap-E6
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:42 -0400
-Received: from mail-vn0-f51.google.com ([209.85.216.51]:38290)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7Cax-0000gf-R0
+	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:01:51 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:59953)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z74BB-0002Ad-8o
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 12:02:37 -0400
-Received: by vnbf1 with SMTP id f1so8133804vnb.5
-	for <qemu-trivial@nongnu.org>; Mon, 22 Jun 2015 09:02:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=m2fcj1H+SkI4vPZfGlO9oHoEe7mdO0WMYTEH5tNswzc=;
-	b=dpmQYkJTjTC1DV+xnwGcoVXLklAeEbxc4zcf0tl91AOzF4Cvcuo0hVkbHtGdpbD86i
-	3QJuXmlDSjErVlF23HsItHHqgeSqmOREXZHN4k8wrtZXW+vRheCrTNjjOKZ6Sj9vDH3I
-	Od+ZjDspv8ePZAuTtluxyZwmcqbNz/oZwSHXzlE/RAutuQlE2YJ4eKJRv7neqjU6VQjd
-	scKNcgZzsC3/K0sF/8rBbaNLG6l2TRRCzjv43IwJzV4/Y9gs3ZtCAg/iIr03+IGOV09k
-	OcWakXeI0ao5EMhoqMqIV5AnvRhvQOq5s720MFMvIdJLnBDWKhL7//ZWEvWTfbr2FfB4
-	2m8A==
-X-Gm-Message-State: ALoCoQkAci6FDkYdPowrRTZRCfs2cyw87lbOtPlGkwTMooRjzizczNQXsSYIPgu7fOmUdvXo+U3f
-X-Received: by 10.52.26.5 with SMTP id h5mr1111663vdg.3.1434988956707; Mon, 22
-	Jun 2015 09:02:36 -0700 (PDT)
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z7Cax-0000a4-2a; Mon, 22 Jun 2015 21:01:47 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CPV43028; Tue, 23 Jun 2015 09:01:34 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml428-hub.china.huawei.com
+	(10.82.67.183) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 23 Jun 2015 09:01:23 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 23 Jun 2015 09:01:10 +0800
+Message-ID: <1435021270-7768-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Mon, 22 Jun 2015 09:02:17 -0700 (PDT)
-In-Reply-To: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
-References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Jun 2015 17:02:17 +0100
-Message-ID: <CAFEAcA9ru4tyzXNUW0USsN13wEP4v5hGOREbPZWVOkrLDS41=Q@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.51
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/21] Trivial patches for
-	2015-06-22
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH] ossaudio: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,55 +44,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jun 2015 16:02:43 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 01:01:52 -0000
 
-On 22 June 2015 at 12:16, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> There are a few random thing here and there.  I especially
-> want to note 2 of them:
->
->  - QOMification series by Gonglei
->  - rearrangement of ./configure --help output by me
->
-> Other than that, the stuff is really trivial.
->
-> Please consider applying/pulling.
->
-> /mjt
->
-> The following changes since commit ad7020a7e7b27d468ecc2aacb04ba4eb090170=
-74:
->
->   target-microblaze: Remove dead code (2015-06-21 17:20:16 +1000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-06-22
->
-> for you to fetch changes up to 43ce995c79c09595e6fbdcabecd1c8b43cf9e4a4:
->
->   util/qemu-sockets: improve ai_flag hints for ipv6 hosts (2015-06-22 14:=
-08:25 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2015-06-22
+From: Gonglei <arei.gonglei@huawei.com>
 
-Fails to build on Windows:
+Variable "conf" going out of scope leaks the storage
+it points to in line 856.
 
-util/qemu-sockets.c: In function =E2=80=98inet_parse_connect_opts=E2=80=99:
-util/qemu-sockets.c:338: error: =E2=80=98AI_V4MAPPED=E2=80=99 undeclared (f=
-irst use in
-this function)
-util/qemu-sockets.c:338: error: (Each undeclared identifier is
-reported only once
-util/qemu-sockets.c:338: error: for each function it appears in.)
-util/qemu-sockets.c: In function =E2=80=98inet_dgram_opts=E2=80=99:
-util/qemu-sockets.c:438: error: =E2=80=98AI_V4MAPPED=E2=80=99 undeclared (f=
-irst use in
-this function)
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+ audio/ossaudio.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-(Also I had to resolve a conflict in configure, so if you rebase
-on current master you'll save me having to do it twice...)
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index 11e76a1..7dbe333 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -853,6 +853,7 @@ static void *oss_audio_init (void)
+ 
+     if (access(conf->devpath_in, R_OK | W_OK) < 0 ||
+         access(conf->devpath_out, R_OK | W_OK) < 0) {
++        g_free(conf);
+         return NULL;
+     }
+     return conf;
+-- 
+1.7.12.4
 
-thanks
--- PMM
+
 
