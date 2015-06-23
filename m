@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7Iwd-00043h-J0
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 03:48:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56549)
+	id 1Z7J56-0006zy-S8
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 03:57:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Z7Iwb-00041O-51
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 03:48:33 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7J54-0006zh-FW
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 03:57:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1Z7Iwa-0000GV-7s
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 03:48:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43702)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7J50-0004EN-Ch
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 03:57:18 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:24771)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1Z7IwU-0000FG-9z; Tue, 23 Jun 2015 03:48:26 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id D57B82CD856;
-	Tue, 23 Jun 2015 07:48:25 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-26.ams2.redhat.com
-	[10.36.116.26])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5N7mNCo007957; Tue, 23 Jun 2015 03:48:24 -0400
-Message-ID: <1435045703.10077.47.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: arei.gonglei@huawei.com
-Date: Tue, 23 Jun 2015 09:48:23 +0200
-In-Reply-To: <1435024385-9084-3-git-send-email-arei.gonglei@huawei.com>
-References: <1435024385-9084-1-git-send-email-arei.gonglei@huawei.com>
-	<1435024385-9084-3-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, mst@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH 2/2] qdev: fix OVERFLOW_BEFORE_WIDEN
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z7J4z-0004E6-LT; Tue, 23 Jun 2015 03:57:14 -0400
+Received: from 172.24.2.119 (EHLO szxeml433-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CPV98997; Tue, 23 Jun 2015 15:56:55 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 23 Jun 2015 15:56:40 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 23 Jun 2015 15:56:38 +0800
+Message-ID: <1435046198-10200-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: quintela@redhat.com, qemu-trivial@nongnu.org, armbru@redhat.com,
+	Gonglei <arei.gonglei@huawei.com>, mrhines@us.ibm.com,
+	amit.shah@redhat.com, pbonzini@redhat.com
+Subject: [Qemu-trivial] [PATCH v2] rdma: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,16 +45,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 07:48:34 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 07:57:19 -0000
 
-On Di, 2015-06-23 at 09:53 +0800, arei.gonglei@huawei.com wrote:
->  static uint64_t qdev_get_prop_mask64(Property *prop)
->  {
->      assert(prop->info == &qdev_prop_bit);
-> -    return 0x1 << prop->bitnr;
-> +    return 0x1ull << prop->bitnr;
->  }
+From: Gonglei <arei.gonglei@huawei.com>
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Variable "r" going out of scope leaks the storage
+it points to in line 3268.
+
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+Reviewed-by: Amit Shah <amit.shah@redhat.com>
+---
+ v2:
+  - Drop needless initialization. (Markus & Paolo)
+  - add Amit's R-by.
+---
+ migration/rdma.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/migration/rdma.c b/migration/rdma.c
+index cf5de7e..b5f9f82 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -3262,12 +3262,13 @@ static const QEMUFileOps rdma_write_ops = {
+ 
+ static void *qemu_fopen_rdma(RDMAContext *rdma, const char *mode)
+ {
+-    QEMUFileRDMA *r = g_malloc0(sizeof(QEMUFileRDMA));
++    QEMUFileRDMA *r;
+ 
+     if (qemu_file_mode_is_not_valid(mode)) {
+         return NULL;
+     }
+ 
++    r = g_malloc0(sizeof(QEMUFileRDMA));
+     r->rdma = rdma;
+ 
+     if (mode[0] == 'w') {
+-- 
+1.7.12.4
+
 
 
