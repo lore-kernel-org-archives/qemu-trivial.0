@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7Rtp-0005L1-7m
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 13:22:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45787)
+	id 1Z7Rtt-0005To-Fm
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 13:22:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtm-0005G0-NK
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:15 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtr-0005OY-DF
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtl-0001XT-JE
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:14 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44577)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtn-0001Y8-Dx
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:19 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38103)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Z7Rtc-0001Uk-O3; Tue, 23 Jun 2015 13:22:04 -0400
+	id 1Z7Rtc-0001Uc-GG; Tue, 23 Jun 2015 13:22:04 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 29121420E4;
-	Tue, 23 Jun 2015 20:22:04 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 7033442051;
+	Tue, 23 Jun 2015 20:22:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 1778D951;
-	Tue, 23 Jun 2015 20:22:04 +0300 (MSK)
-Received: (nullmailer pid 14730 invoked by uid 1000);
-	Tue, 23 Jun 2015 17:22:04 -0000
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 62692951;
+	Tue, 23 Jun 2015 20:22:03 +0300 (MSK)
+Received: (nullmailer pid 14724 invoked by uid 1000);
+	Tue, 23 Jun 2015 17:22:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 Jun 2015 20:22:02 +0300
-Message-Id: <2bf6b5e90b4226d67c05fadbe105265b4c8e39ea.1435079841.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 23 Jun 2015 20:22:00 +0300
+Message-Id: <cover.1435079841.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1435079841.git.mjt@msgid.tls.msk.ru>
-References: <cover.1435079841.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Wolfgang Bumiller <w.bumiller@proxmox.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 21/21] util/qemu-sockets: improve ai_flag
-	hints for ipv6 hosts
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 00/21] Trivial patches for 2015-06-23
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,84 +43,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 17:22:15 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 17:22:20 -0000
 
-From: Wolfgang Bumiller <w.bumiller@proxmox.com>
+This is a repeat of previous pull request
+(2015-06-22) but with 2 changes:
 
-*) Do not use AI_ADDRCONFIG on listening sockets, because this flag
-makes it impossible to explicitly listen on '127.0.0.1' if no global
-ipv4 address is configured additionally, making this a very
-uncomfortable option.
-*) Add AI_V4MAPPED hint for connecting sockets.
+1) patch 21 util-qemu-sockets-improve-ai_flag-hints-for-ipv6-hos.patch
+   has new change:
 
-If your system is globally only connected via ipv6 you often still want
-to be able to use '127.0.0.1' and 'localhost' (even if localhost doesn't
-also have an ipv6 entry).
-For example, PVE - unless explicitly asking for insecure mode - uses
-ipv4 loopback addresses with QEMU for live migrations tunneled over SSH.
-These fail to start because AI_ADDRCONFIG makes getaddrinfo refuse to
-work with '127.0.0.1'.
-
-As for the AI_V4MAPPED flag: glibc uses it by default, and providing
-non-0 flags removes it. I think it makes sense to use it.
-
-I also want to point out that glibc explicitly sidesteps POSIX standards
-when passing 0 as hints by then assuming both AI_V4MAPPED and
-AI_ADDRCONFIG (the latter being a rather weird choice IMO), while
-according to POSIX.1-2001 it should be assumed 0. (glibc considers its
-choice an improvement.)
-Since either AI_CANONNAME or AI_PASSIVE are passed in our cases, glibc's
-default flags in turn are disabled again unless explicitly added, which
-I do with this patch.
-
-Signed-off-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- util/qemu-sockets.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 4026314..2add83a 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -29,6 +29,9 @@
- #ifndef AI_ADDRCONFIG
- # define AI_ADDRCONFIG 0
- #endif
 +#ifndef AI_V4MAPPED
 +# define AI_V4MAPPED 0
 +#endif
- 
- /* used temporarily until all users are converted to QemuOpts */
- QemuOptsList socket_optslist = {
-@@ -118,7 +121,7 @@ int inet_listen_opts(QemuOpts *opts, int port_offset, Error **errp)
-     int slisten, rc, to, port_min, port_max, p;
- 
-     memset(&ai,0, sizeof(ai));
--    ai.ai_flags = AI_PASSIVE | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_PASSIVE;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_STREAM;
- 
-@@ -335,7 +338,7 @@ static struct addrinfo *inet_parse_connect_opts(QemuOpts *opts, Error **errp)
- 
-     memset(&ai, 0, sizeof(ai));
- 
--    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_STREAM;
- 
-@@ -435,7 +438,7 @@ int inet_dgram_opts(QemuOpts *opts, Error **errp)
- 
-     /* lookup peer addr */
-     memset(&ai,0, sizeof(ai));
--    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
-+    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
-     ai.ai_family = PF_UNSPEC;
-     ai.ai_socktype = SOCK_DGRAM;
- 
--- 
-2.1.4
 
+so that it wont fail on systems where AI_V4MAPPED is not defined.
+
+2) patch 12 configure-rearrange-help-and-consolidate-enable-disa.patch
+   rebased on top of 9dacf32d2cbd6 "qemu-ga: Building Windows MSI install=
+ation",
+   incorporating --enable-guest-agent-msi option.
+
+Resending only the 2 changed patches, the rest is the same
+as in previous pull request.  So expect only 12/21 and 21/21
+patches in reply to this email.
+
+Please consider pulling/applying.
+
+Thanks,
+
+/mjt
+
+The following changes since commit 6966b2a07190004e18ede33ce50a65009b36f3=
+a6:
+
+  Merge remote-tracking branch 'remotes/kraxel/tags/pull-input-20150623-1=
+' into staging (2015-06-23 13:32:50 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-06-23
+
+for you to fetch changes up to 2bf6b5e90b4226d67c05fadbe105265b4c8e39ea:
+
+  util/qemu-sockets: improve ai_flag hints for ipv6 hosts (2015-06-23 19:=
+59:39 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-06-23
+
+----------------------------------------------------------------
+Alberto Garcia (1):
+      throttle: Fix typo in the documentation of block_set_io_throttle
+
+Alex Benn=C3=A9e (1):
+      configure: append --extra-ldflags to LDFLAGS
+
+Dr. David Alan Gilbert (2):
+      Grammar: 'as to'->'as for'
+      Print error when failing to load PCI config data
+
+Fam Zheng (2):
+      Makefile: Fix "make cscope TAGS"
+      Makefile: Add "make ctags"
+
+Frediano Ziglio (1):
+      hw/display/qxl-logger.c: Constify some variable
+
+Gonglei (6):
+      pci-assign: QOMify
+      piix: piix3 QOMify
+      piix4: QOMify
+      wdt_i6300esb: QOMify
+      xen_pt: QOMify
+      vt82c686: QOMify
+
+Markus Armbruster (2):
+      qemu-options: Improve -global documentation
+      qemu-options: Use @itemx where appropriate
+
+Michael Tokarev (3):
+      remove libdecnumber/dpd/decimal128Local.h
+      libcacard: pkgconfig: tidy dependent libs
+      configure: rearrange --help and consolidate enable/disable together
+
+Shannon Zhao (2):
+      hw/display/cg3.c: Fix memory leak
+      hw/display/tcx.c: Fix memory leak
+
+Wolfgang Bumiller (1):
+      util/qemu-sockets: improve ai_flag hints for ipv6 hosts
+
+ Makefile                           |  20 +++-
+ configure                          | 201 ++++++++++++++-----------------=
+------
+ hw/display/cg3.c                   |   1 +
+ hw/display/qxl-logger.c            |  16 +--
+ hw/display/tcx.c                   |   1 +
+ hw/i386/kvm/pci-assign.c           |  39 +++----
+ hw/isa/piix4.c                     |   8 +-
+ hw/isa/vt82c686.c                  |  47 ++++++---
+ hw/pci-host/piix.c                 |  57 ++++++-----
+ hw/pci/pci.c                       |   4 +
+ hw/watchdog/wdt_i6300esb.c         |  14 ++-
+ hw/xen/xen_pt.c                    |  10 +-
+ hw/xen/xen_pt.h                    |   4 +
+ libcacard/libcacard.pc.in          |   2 +-
+ libdecnumber/dpd/decimal128Local.h |  42 --------
+ qapi/block-core.json               |   2 +-
+ qemu-options.hx                    |  57 +++++------
+ qmp-commands.hx                    |   2 +-
+ util/qemu-sockets.c                |   9 +-
+ 19 files changed, 251 insertions(+), 285 deletions(-)
+ delete mode 100644 libdecnumber/dpd/decimal128Local.h
 
