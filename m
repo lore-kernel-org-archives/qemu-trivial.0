@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7J8v-0002S8-6o
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 04:01:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60064)
+	id 1Z7JBo-00043I-NE
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 04:04:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60979)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Z7J8t-0002Rz-5S
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:01:15 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7JBn-00040f-2M
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:04:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Z7J8m-00060U-Hs
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:01:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48247)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7JBj-0006jT-1a
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:04:14 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:51640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1Z7J8m-00060O-CH
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:01:08 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8E1BDB599E;
-	Tue, 23 Jun 2015 08:01:07 +0000 (UTC)
-Received: from [10.36.112.33] (ovpn-112-33.ams2.redhat.com [10.36.112.33])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5N814o3014209
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 23 Jun 2015 04:01:06 -0400
-Message-ID: <5589123F.8080505@redhat.com>
-Date: Tue, 23 Jun 2015 10:01:03 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z7JBi-0006hj-FK; Tue, 23 Jun 2015 04:04:10 -0400
+Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CNK28288; Tue, 23 Jun 2015 16:03:55 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml430-hub.china.huawei.com
+	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
+	Tue, 23 Jun 2015 16:03:41 +0800
+Message-ID: <558912DD.3060509@huawei.com>
+Date: Tue, 23 Jun 2015 16:03:41 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-To: Scott Feldman <sfeldma@gmail.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-References: <1435023111-8780-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<CAE4R7bCCSh6dd_t42rzSiYs_+nEc8FreT2ij1F0iRGem+TjWow@mail.gmail.com>
-In-Reply-To: <CAE4R7bCCSh6dd_t42rzSiYs_+nEc8FreT2ij1F0iRGem+TjWow@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+To: Markus Armbruster <armbru@redhat.com>
+References: <1435021270-7768-1-git-send-email-arei.gonglei@huawei.com>
+	<87si9izxkq.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87si9izxkq.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?B?SmnFmcOtIFDDrXJrbw==?= <jiri@resnulli.us>
-Subject: Re: [Qemu-trivial] [PATCH] rocker: Fix memory leak reported by
-	coverity
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ossaudio: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,19 +48,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 08:01:16 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 08:04:16 -0000
 
+On 2015/6/23 15:35, Markus Armbruster wrote:
+> <arei.gonglei@huawei.com> writes:
+> 
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Variable "conf" going out of scope leaks the storage
+>> it points to in line 856.
+>>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>> ---
+>>  audio/ossaudio.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+>> index 11e76a1..7dbe333 100644
+>> --- a/audio/ossaudio.c
+>> +++ b/audio/ossaudio.c
+>> @@ -853,6 +853,7 @@ static void *oss_audio_init (void)
+>    static void *oss_audio_init (void)
+>    {
+>        OSSConf *conf = g_malloc(sizeof(OSSConf));
+>        *conf = glob_conf;
+>>  
+>>      if (access(conf->devpath_in, R_OK | W_OK) < 0 ||
+>>          access(conf->devpath_out, R_OK | W_OK) < 0) {
+>> +        g_free(conf);
+>>          return NULL;
+>>      }
+>>      return conf;
+>    }
+> 
+> Simpler (untested):
+> 
+>    static void *oss_audio_init (void)
+>    {
+>        if (access(globconf.devpath_in, R_OK | W_OK) < 0 ||
+>            access(globconf.devpath_out, R_OK | W_OK) < 0) {
+>            return NULL;
+>        }
+>        return g_memdup(&glob_conf, sizeof(glob_conf));
+>    }
+> 
+I think your approach is better :)
+Do you want to submit a patch? Or let me post v2 for this?
 
+Regards,
+-Gonglei
 
-On 23/06/2015 07:23, Scott Feldman wrote:
-> +    rocker = g_malloc0(sizeof(*rocker));
-> +    if (!rocker) {
-> +        error_set(errp, ERROR_CLASS_GENERIC_ERROR, "out-of-memory");
-> +        return NULL;
-> +    }
-> +
-
-g_malloc0 aborts on OOM, so this is not necessary.
-
-Paolo
 
