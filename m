@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7SHn-0007VJ-GO
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 13:47:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53805)
+	id 1Z7St4-0002ty-S4
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 14:25:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Z7SHl-0007Ri-44
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:47:02 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1Z7St2-0002tQ-Di
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 14:25:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1Z7SHk-0004rq-6q
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:47:01 -0400
-Received: from [2a03:4000:1::4e2f:c7ac:d] (port=40024
-	helo=v220110690675601.yourvserver.net)
+	(envelope-from <peter.maydell@linaro.org>) id 1Z7Ssz-0006f8-4R
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 14:25:32 -0400
+Received: from mail-vn0-f44.google.com ([209.85.216.44]:44172)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1Z7SHb-0004mt-TB; Tue, 23 Jun 2015 13:46:52 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	C8E291181899; Tue, 23 Jun 2015 19:46:50 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id SX-Nxfbxe_yt; Tue, 23 Jun 2015 19:46:48 +0200 (CEST)
-Received: from [192.168.178.24] (p54AC9134.dip0.t-ipconnect.de [84.172.145.52])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	9F0A6118188E; Tue, 23 Jun 2015 19:46:48 +0200 (CEST)
-Message-ID: <55899B88.30103@weilnetz.de>
-Date: Tue, 23 Jun 2015 19:46:48 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.7.0
+	(envelope-from <peter.maydell@linaro.org>) id 1Z7Ssz-0006eA-0v
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 14:25:29 -0400
+Received: by vnbg7 with SMTP id g7so2843576vnb.11
+	for <qemu-trivial@nongnu.org>; Tue, 23 Jun 2015 11:25:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=7om/AvvuvqQaTN1V5oLM/SL3xcenFhLkWc39NRZMf4s=;
+	b=OHyuIhz+Iusa9kqgqpEATmpmdqwcF0SNK9TFIbWfhlLnM2ls/KZzBFxK8LVDjUgJ6B
+	Ad1VmKYgIhE97o6LneTDzRM11IQrTYb1d1dmcLG6y2jEy+YOS/9sld35UAunp56DLLSP
+	92qEGTDdsVC1UlehG2A5k7y+X1RK0uFCSxRvkz8A+LeIeWzPue7f0daVmZnzWnAtSZLK
+	Z2tsPBfuiXT7zyTDKzEDOWyIhnFYophTq+Cw48CgZtc2fK2stI58Yt3ZdaOuMMcN7Y6v
+	NJqKwTinkM9gzPWjOKmO4ZACET9HB8gQvyGBX/fTkLQtQPDCF2rPuhK4baB+Z0C6LQ1m
+	W/dA==
+X-Gm-Message-State: ALoCoQn8NUqoYB6WitjGwghPtQD995BiNnvhXwcNjPL9mwl0buuwVPUo69GzCRFFQ5xm21ji9E81
+X-Received: by 10.52.52.133 with SMTP id t5mr33325530vdo.56.1435083928560;
+	Tue, 23 Jun 2015 11:25:28 -0700 (PDT)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	Michal Privoznik <mprivozn@redhat.com>
-References: <58e7daaa2977c903b46c3b0dde64e81ce191b5d6.1435062620.git.mprivozn@redhat.com>	<CAFEAcA_AYg5okJgU61CYQasH9yY8rjsQQxpLq5xPvFyHLtJdgw@mail.gmail.com>	<5589543B.1020309@redhat.com>
-	<20150623144917.372248b1@thh440s>	<558960A3.5010509@redhat.com>
-	<CAFEAcA9Rx6AyWqVuOAgyXE236v5dsB7xhRCMx+WNkZMU3p21Ag@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Rx6AyWqVuOAgyXE236v5dsB7xhRCMx+WNkZMU3p21Ag@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a03:4000:1::4e2f:c7ac:d
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+Received: by 10.31.153.135 with HTTP; Tue, 23 Jun 2015 11:25:09 -0700 (PDT)
+In-Reply-To: <cover.1435080226.git.mjt@msgid.tls.msk.ru>
+References: <cover.1435080226.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Jun 2015 19:25:09 +0100
+Message-ID: <CAFEAcA-FGyn+WmtV5guO+socwwrKY5VdT401zGu=kUxjDKz71g@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.216.44
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Properly order
- build targets 'all' and 'check'
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/21] Trivial patches for
+	2015-06-23
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,35 +55,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 17:47:02 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 18:25:33 -0000
 
-Am 23.06.2015 um 19:31 schrieb Peter Maydell:
-> On 23 June 2015 at 14:35, Michal Privoznik <mprivozn@redhat.com> wrote:
->> Yeah, that could work too. For some reason I thought that having it
->> there would result in making 'all' just under tests/. But Now that I
->> tried it out it works just nicely.
-> Have you tested both "build in the source tree" and "build in
-> a separate directory from the source tree", by the way?
+On 23 June 2015 at 18:25, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> ..and another, with a typo fix with rebasing of the configure --help
+> changes (missing space) :)
 >
-> thanks
-> -- PMM
+> /mjt
+>
+> The following changes since commit 6966b2a07190004e18ede33ce50a65009b36f3a6:
+>
+>   Merge remote-tracking branch 'remotes/kraxel/tags/pull-input-20150623-1' into staging (2015-06-23 13:32:50 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-06-23
+>
+> for you to fetch changes up to 3de3d698d942d1116152417f882c897b26b44e41:
+>
+>   util/qemu-sockets: improve ai_flag hints for ipv6 hosts (2015-06-23 20:23:39 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2015-06-23
+>
 
-Both will work, as the modification only adds a dependency.
+Applied, thanks.
 
-Do we care that running "make check" will take longer with this
-patch? Make needs some time to check all dependencies for
-"all", even if nothing has to be done.
-
-I feel a little bit uneasy with something depending on all.
-Maybe some day we'll want to include check in the default
-build. Then all would depend on check which depends on
-all which depends on check and so on. An intermediate
-make target could solve that:
-
-all: full-build
-check: full-build
-full-build: $(DOCS) $(TOOLS) $(HELPERS-y) recurse-all modules
-
-Stefan
-
+-- PMM
 
