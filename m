@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7DPJ-00023G-Gz
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jun 2015 21:53:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60348)
+	id 1Z7Fa2-0001Ap-Jn
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 00:13:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36278)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7DPG-0001wi-OQ
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:53:47 -0400
+	(envelope-from <amit.shah@redhat.com>) id 1Z7Fa0-00018R-Br
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 00:13:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7DPD-0003G4-Ci
-	for qemu-trivial@nongnu.org; Mon, 22 Jun 2015 21:53:46 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:28996)
+	(envelope-from <amit.shah@redhat.com>) id 1Z7FZz-0002RO-Ic
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 00:13:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59489)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Z7DPC-0003EB-O1; Mon, 22 Jun 2015 21:53:43 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CPV49947; Tue, 23 Jun 2015 09:53:36 +0800 (CST)
-Received: from localhost (10.177.19.102) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 23 Jun 2015 09:53:10 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 23 Jun 2015 09:53:05 +0800
-Message-ID: <1435024385-9084-3-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
-In-Reply-To: <1435024385-9084-1-git-send-email-arei.gonglei@huawei.com>
-References: <1435024385-9084-1-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <amit.shah@redhat.com>)
+	id 1Z7FZv-0002QY-A5; Tue, 23 Jun 2015 00:12:55 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4DEA68F282;
+	Tue, 23 Jun 2015 04:12:54 +0000 (UTC)
+Received: from localhost (dhcp193-78.pnq.redhat.com [10.65.193.78])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5N4Cqw8028762; Tue, 23 Jun 2015 00:12:53 -0400
+Date: Tue, 23 Jun 2015 09:42:51 +0530
+From: Amit Shah <amit.shah@redhat.com>
+To: arei.gonglei@huawei.com
+Message-ID: <20150623041251.GA2058@grmbl.mre>
+References: <1435021348-9156-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Gonglei <arei.gonglei@huawei.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, mst@redhat.com
-Subject: [Qemu-trivial] [PATCH 2/2] qdev: fix OVERFLOW_BEFORE_WIDEN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1435021348-9156-1-git-send-email-arei.gonglei@huawei.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, mrhines@us.ibm.com, qemu-devel@nongnu.org,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, quintela@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] rdma: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,37 +45,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 01:53:47 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 04:13:01 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+On (Tue) 23 Jun 2015 [09:02:28], arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+> 
+> Variable "r" going out of scope leaks the storage
+> it points to in line 3268.
 
-Potentially overflowing expression "1 << prop->bitnr" with
-type "int" (32 bits, signed) is evaluated using 32-bit arithmetic,
-and then used in a context that expects an expression of type
-"uint64_t" (64 bits, unsigned).
+Interestingly Dave posted a different patch for the same issue.  I
+prefer this approach.
 
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- hw/core/qdev-properties.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Amit Shah <amit.shah@redhat.com>
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index a1606de..f78b335 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -130,7 +130,7 @@ PropertyInfo qdev_prop_bit = {
- static uint64_t qdev_get_prop_mask64(Property *prop)
- {
-     assert(prop->info == &qdev_prop_bit);
--    return 0x1 << prop->bitnr;
-+    return 0x1ull << prop->bitnr;
- }
- 
- static void bit64_prop_set(DeviceState *dev, Property *props, bool val)
--- 
-1.7.12.4
-
-
+		Amit
 
