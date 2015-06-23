@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7JBo-00043I-NE
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 04:04:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60979)
+	id 1Z7JPJ-0001R7-Jc
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 04:18:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7JBn-00040f-2M
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:04:15 -0400
+	(envelope-from <quintela@redhat.com>) id 1Z7JPD-0001Ke-Qs
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:18:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7JBj-0006jT-1a
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:04:14 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:51640)
+	(envelope-from <quintela@redhat.com>) id 1Z7JPC-0003zW-UW
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 04:18:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47387)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Z7JBi-0006hj-FK; Tue, 23 Jun 2015 04:04:10 -0400
-Received: from 172.24.2.119 (EHLO szxeml430-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CNK28288; Tue, 23 Jun 2015 16:03:55 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml430-hub.china.huawei.com
-	(10.82.67.185) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 23 Jun 2015 16:03:41 +0800
-Message-ID: <558912DD.3060509@huawei.com>
-Date: Tue, 23 Jun 2015 16:03:41 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <quintela@redhat.com>)
+	id 1Z7JP5-0003xz-IU; Tue, 23 Jun 2015 04:17:59 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7E09D32C406;
+	Tue, 23 Jun 2015 08:17:58 +0000 (UTC)
+Received: from localhost (ovpn-116-85.ams2.redhat.com [10.36.116.85])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5N8Hv4l018095; Tue, 23 Jun 2015 04:17:57 -0400
+From: Juan Quintela <quintela@redhat.com>
+To: <arei.gonglei@huawei.com>
+In-Reply-To: <1435046198-10200-1-git-send-email-arei.gonglei@huawei.com> (arei
+	gonglei's message of "Tue, 23 Jun 2015 15:56:38 +0800")
+References: <1435046198-10200-1-git-send-email-arei.gonglei@huawei.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+Date: Tue, 23 Jun 2015 10:17:56 +0200
+Message-ID: <87ioaerg7f.fsf@neno.neno>
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1435021270-7768-1-git-send-email-arei.gonglei@huawei.com>
-	<87si9izxkq.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87si9izxkq.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ossaudio: fix memory leak
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, armbru@redhat.com,
+	mrhines@us.ibm.com, amit.shah@redhat.com, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2] rdma: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
+Reply-To: quintela@redhat.com
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -48,54 +47,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 08:04:16 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 08:18:11 -0000
 
-On 2015/6/23 15:35, Markus Armbruster wrote:
-> <arei.gonglei@huawei.com> writes:
-> 
->> From: Gonglei <arei.gonglei@huawei.com>
->>
->> Variable "conf" going out of scope leaks the storage
->> it points to in line 856.
->>
->> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->> ---
->>  audio/ossaudio.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/audio/ossaudio.c b/audio/ossaudio.c
->> index 11e76a1..7dbe333 100644
->> --- a/audio/ossaudio.c
->> +++ b/audio/ossaudio.c
->> @@ -853,6 +853,7 @@ static void *oss_audio_init (void)
->    static void *oss_audio_init (void)
->    {
->        OSSConf *conf = g_malloc(sizeof(OSSConf));
->        *conf = glob_conf;
->>  
->>      if (access(conf->devpath_in, R_OK | W_OK) < 0 ||
->>          access(conf->devpath_out, R_OK | W_OK) < 0) {
->> +        g_free(conf);
->>          return NULL;
->>      }
->>      return conf;
->    }
-> 
-> Simpler (untested):
-> 
->    static void *oss_audio_init (void)
->    {
->        if (access(globconf.devpath_in, R_OK | W_OK) < 0 ||
->            access(globconf.devpath_out, R_OK | W_OK) < 0) {
->            return NULL;
->        }
->        return g_memdup(&glob_conf, sizeof(glob_conf));
->    }
-> 
-I think your approach is better :)
-Do you want to submit a patch? Or let me post v2 for this?
+<arei.gonglei@huawei.com> wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>
+> Variable "r" going out of scope leaks the storage
+> it points to in line 3268.
+>
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> Reviewed-by: Amit Shah <amit.shah@redhat.com>
+> ---
+>  v2:
+>   - Drop needless initialization. (Markus & Paolo)
+>   - add Amit's R-by.
+> ---
+>  migration/rdma.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Regards,
--Gonglei
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
+Applied, thanks.
+
+
+>
+> diff --git a/migration/rdma.c b/migration/rdma.c
+> index cf5de7e..b5f9f82 100644
+> --- a/migration/rdma.c
+> +++ b/migration/rdma.c
+> @@ -3262,12 +3262,13 @@ static const QEMUFileOps rdma_write_ops = {
+>  
+>  static void *qemu_fopen_rdma(RDMAContext *rdma, const char *mode)
+>  {
+> -    QEMUFileRDMA *r = g_malloc0(sizeof(QEMUFileRDMA));
+> +    QEMUFileRDMA *r;
+>  
+>      if (qemu_file_mode_is_not_valid(mode)) {
+>          return NULL;
+>      }
+>  
+> +    r = g_malloc0(sizeof(QEMUFileRDMA));
+>      r->rdma = rdma;
+>  
+>      if (mode[0] == 'w') {
 
