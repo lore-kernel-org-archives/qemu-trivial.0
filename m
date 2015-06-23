@@ -1,52 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7Rnw-000136-DQ
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 13:16:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43243)
+	id 1Z7Rtp-0005L1-7m
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 13:22:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z7Rnr-00012f-Hw
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:16:11 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtm-0005G0-NK
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z7Rng-00070l-Oh
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:16:07 -0400
-Received: from mail-vn0-f45.google.com ([209.85.216.45]:34830)
+	(envelope-from <mjt@tls.msk.ru>) id 1Z7Rtl-0001XT-JE
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:22:14 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Z7Rng-00070a-Jx
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 13:15:56 -0400
-Received: by vnbg129 with SMTP id g129so2564855vnb.2
-	for <qemu-trivial@nongnu.org>; Tue, 23 Jun 2015 10:15:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=OuNMau9QOy/hml2C+aRAep6TrMX+UlRzwLQncLIDq0M=;
-	b=cRGevlUdVSKBb3tYVOG+O9B8eBMoILtzQmP9nacJCwY2J42goNOsnEnAPDcTI3N9hj
-	cvkfU3OWu1DXl5O/qvJFXoP9AtWqjKRoZqzVj37xauHKjpSNeXKnKYEwHHOUFOjvtQ7x
-	kbSYW9QUwqgMvfRXqPtOMASEknKlhQfRFQyDnIGxFoVTCBR3sWjOSgq9ahT8rQoUeQMV
-	YZ97Pxgm2Nmk+G7nbKrVALIhrGrrl/Ljzc5XTlcAoqwYbeedLyEl2zIZRqKigdJwzaAS
-	mLaK5LHy8c8thz9BKq2boOFKQIFNeudFQJCSqnphdiTYugB0YBH9jmcO8lNu4G8PkNEO
-	jrkw==
-X-Gm-Message-State: ALoCoQluvsfdWGxfNdZnte4qgRaI36YMuwUtOi80jFycpTtPo8n/F/MlxLumFtrDPzj1uLBvNGoS
-X-Received: by 10.52.114.163 with SMTP id jh3mr32764811vdb.93.1435079756095;
-	Tue, 23 Jun 2015 10:15:56 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Tue, 23 Jun 2015 10:15:36 -0700 (PDT)
-In-Reply-To: <55899291.306@msgid.tls.msk.ru>
-References: <cover.1434971627.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA9ru4tyzXNUW0USsN13wEP4v5hGOREbPZWVOkrLDS41=Q@mail.gmail.com>
-	<55899291.306@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Jun 2015 18:15:36 +0100
-Message-ID: <CAFEAcA9f=Joj8M+saF-LdrAEpXZu_ZeCm+8sjXzPPDFbU1vuWg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Z7Rtc-0001Uk-O3; Tue, 23 Jun 2015 13:22:04 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 29121420E4;
+	Tue, 23 Jun 2015 20:22:04 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 1778D951;
+	Tue, 23 Jun 2015 20:22:04 +0300 (MSK)
+Received: (nullmailer pid 14730 invoked by uid 1000);
+	Tue, 23 Jun 2015 17:22:04 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Jun 2015 20:22:02 +0300
+Message-Id: <2bf6b5e90b4226d67c05fadbe105265b4c8e39ea.1435079841.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1435079841.git.mjt@msgid.tls.msk.ru>
+References: <cover.1435079841.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.45
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Wolfgang Bumiller <w.bumiller@proxmox.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PULL 00/21] Trivial patches for 2015-06-22
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Wolfgang Bumiller <w.bumiller@proxmox.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 21/21] util/qemu-sockets: improve ai_flag
+	hints for ipv6 hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,45 +44,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 17:16:11 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 17:22:15 -0000
 
-On 23 June 2015 at 18:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 22.06.2015 19:02, Peter Maydell wrote:
->> Fails to build on Windows:
->>
->> util/qemu-sockets.c: In function =E2=80=98inet_parse_connect_opts=E2=80=
-=99:
->> util/qemu-sockets.c:338: error: =E2=80=98AI_V4MAPPED=E2=80=99 undeclared=
- (first use in this function)
->
-> Hmm.  Does WIN really have no AI_V4MAPPED?  Does it have getaddrinfo
-> in the first place?  If yes, it should have AI_V4MAPPED too.
->
-> I added a conditional #define AI_V4MAPPED to 0 at the top of this
-> file, the same way AI_ADDRCONFIG is handled.
+From: Wolfgang Bumiller <w.bumiller@proxmox.com>
 
-https://msdn.microsoft.com/en-us/library/windows/desktop/ms738520%28v=3Dvs.=
-85%29.aspx
-says AI_V4MAPPED is supported on Windows Vista and later. Likely
-this compile error is elderly-mingw again (though I haven't
-checked with a newer one to see if it's correctly reflecting
-the Windows SDK addition to the headers).
+*) Do not use AI_ADDRCONFIG on listening sockets, because this flag
+makes it impossible to explicitly listen on '127.0.0.1' if no global
+ipv4 address is configured additionally, making this a very
+uncomfortable option.
+*) Add AI_V4MAPPED hint for connecting sockets.
 
-(Similarly, AI_V4MAPPED in glibc is only present from 2.3.3 and up.)
+If your system is globally only connected via ipv6 you often still want
+to be able to use '127.0.0.1' and 'localhost' (even if localhost doesn't
+also have an ipv6 entry).
+For example, PVE - unless explicitly asking for insecure mode - uses
+ipv4 loopback addresses with QEMU for live migrations tunneled over SSH.
+These fail to start because AI_ADDRCONFIG makes getaddrinfo refuse to
+work with '127.0.0.1'.
 
->> (Also I had to resolve a conflict in configure, so if you rebase
->> on current master you'll save me having to do it twice...)
->
-> Immediately before sending the pull request, I did a rebase and rebuild.
-> Apparently you pulled some other change before trying to pull this.
-> I usually rebase right before sending the request.  Just did the
-> rebase again, and fixed he conflict with guest-agent-msi change.
+As for the AI_V4MAPPED flag: glibc uses it by default, and providing
+non-0 flags removes it. I think it makes sense to use it.
 
-Yeah, this kind of thing just happens from bad luck sometimes
-(I process pull requests oldest-first and they take a few hours
-to complete). I would just have resolved the conflict locally if
-there hadn't been the other problem too.
+I also want to point out that glibc explicitly sidesteps POSIX standards
+when passing 0 as hints by then assuming both AI_V4MAPPED and
+AI_ADDRCONFIG (the latter being a rather weird choice IMO), while
+according to POSIX.1-2001 it should be assumed 0. (glibc considers its
+choice an improvement.)
+Since either AI_CANONNAME or AI_PASSIVE are passed in our cases, glibc's
+default flags in turn are disabled again unless explicitly added, which
+I do with this patch.
 
-thanks
--- PMM
+Signed-off-by: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ util/qemu-sockets.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 4026314..2add83a 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -29,6 +29,9 @@
+ #ifndef AI_ADDRCONFIG
+ # define AI_ADDRCONFIG 0
+ #endif
++#ifndef AI_V4MAPPED
++# define AI_V4MAPPED 0
++#endif
+ 
+ /* used temporarily until all users are converted to QemuOpts */
+ QemuOptsList socket_optslist = {
+@@ -118,7 +121,7 @@ int inet_listen_opts(QemuOpts *opts, int port_offset, Error **errp)
+     int slisten, rc, to, port_min, port_max, p;
+ 
+     memset(&ai,0, sizeof(ai));
+-    ai.ai_flags = AI_PASSIVE | AI_ADDRCONFIG;
++    ai.ai_flags = AI_PASSIVE;
+     ai.ai_family = PF_UNSPEC;
+     ai.ai_socktype = SOCK_STREAM;
+ 
+@@ -335,7 +338,7 @@ static struct addrinfo *inet_parse_connect_opts(QemuOpts *opts, Error **errp)
+ 
+     memset(&ai, 0, sizeof(ai));
+ 
+-    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
++    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
+     ai.ai_family = PF_UNSPEC;
+     ai.ai_socktype = SOCK_STREAM;
+ 
+@@ -435,7 +438,7 @@ int inet_dgram_opts(QemuOpts *opts, Error **errp)
+ 
+     /* lookup peer addr */
+     memset(&ai,0, sizeof(ai));
+-    ai.ai_flags = AI_CANONNAME | AI_ADDRCONFIG;
++    ai.ai_flags = AI_CANONNAME | AI_V4MAPPED | AI_ADDRCONFIG;
+     ai.ai_family = PF_UNSPEC;
+     ai.ai_socktype = SOCK_DGRAM;
+ 
+-- 
+2.1.4
+
 
