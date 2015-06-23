@@ -1,48 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7KZk-0003sr-Kn
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 05:33:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51153)
+	id 1Z7NMD-0005ZP-7c
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 08:31:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7KZh-0003pR-KT
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 05:33:02 -0400
+	(envelope-from <mprivozn@redhat.com>) id 1Z7NM9-0005RG-1M
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 08:31:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z7KZe-0005At-FE
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 05:33:01 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:41303)
+	(envelope-from <mprivozn@redhat.com>) id 1Z7NM7-0001OD-Hr
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 08:31:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33932)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Z7KZd-0005AF-T8; Tue, 23 Jun 2015 05:32:58 -0400
-Received: from 172.24.2.119 (EHLO szxeml432-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BIB63288; Tue, 23 Jun 2015 17:32:52 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml432-hub.china.huawei.com
-	(10.82.67.209) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 23 Jun 2015 17:32:28 +0800
-Message-ID: <558927A9.6000709@huawei.com>
-Date: Tue, 23 Jun 2015 17:32:25 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
+	(envelope-from <mprivozn@redhat.com>)
+	id 1Z7NM3-0001MT-4F; Tue, 23 Jun 2015 08:31:07 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id C38113679F9;
+	Tue, 23 Jun 2015 12:31:06 +0000 (UTC)
+Received: from lisa.brq.redhat.com (dhcp129-181.brq.redhat.com [10.34.129.181])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5NCV4WF001475; Tue, 23 Jun 2015 08:31:06 -0400
+From: Michal Privoznik <mprivozn@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Jun 2015 14:30:20 +0200
+Message-Id: <5a1b06f5d050beab1b9b6d8ff6d5185f4576e3fa.1435062620.git.mprivozn@redhat.com>
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>
-References: <1435021348-9156-1-git-send-email-arei.gonglei@huawei.com>	<87oak6zxio.fsf@blackfin.pond.sub.org>
-	<87h9py232f.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87h9py232f.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.558927C6.0017, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 178b0dee9d8219f67caaf875f510a06c
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: qemu-trivial@nongnu.org, amit.shah@redhat.com, quintela@redhat.com,
-	qemu-devel@nongnu.org, mrhines@us.ibm.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] rdma: fix memory leak
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] gitignore: Ignore shader generated files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,58 +42,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jun 2015 09:33:02 -0000
+X-List-Received-Date: Tue, 23 Jun 2015 12:31:15 -0000
 
-On 2015/6/23 17:20, Markus Armbruster wrote:
-> Markus Armbruster <armbru@redhat.com> writes:
-> 
->> <arei.gonglei@huawei.com> writes:
->>
->>> From: Gonglei <arei.gonglei@huawei.com>
->>>
->>> Variable "r" going out of scope leaks the storage
->>> it points to in line 3268.
->>>
->>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
->>> ---
->>>  migration/rdma.c | 3 ++-
->>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/migration/rdma.c b/migration/rdma.c
->>> index cf5de7e..de80860 100644
->>> --- a/migration/rdma.c
->>> +++ b/migration/rdma.c
->>> @@ -3262,12 +3262,13 @@ static const QEMUFileOps rdma_write_ops = {
->>>  
->>>  static void *qemu_fopen_rdma(RDMAContext *rdma, const char *mode)
->>>  {
->>> -    QEMUFileRDMA *r = g_malloc0(sizeof(QEMUFileRDMA));
->>> +    QEMUFileRDMA *r = NULL;
->>
->> Dead initialization, please drop.
->>
->>>  
->>>      if (qemu_file_mode_is_not_valid(mode)) {
->>>          return NULL;
->>>      }
->>>  
->>> +    r = g_malloc0(sizeof(QEMUFileRDMA));
->>>      r->rdma = rdma;
->>>  
->>>      if (mode[0] == 'w') {
->>
->> Looks good otherwise.
-> 
-> Since you're touching this, you could
-> 
->     r = g_new0(QEMUFileRDMA, 1)
-> 
-> See commit 5839e53.
-> 
-I noticed this, but this whole file is using g_malloc, maybe using
-another patch fix them is better. This path is just fix memory leak. :)
+As of d98bc0b65 there are two files that are automatically generated:
+ui/shader/texture-blit-frag.h and /ui/shader/texture-blit-vert.h. None
+of them is wanted to be tracked by git. Put them into the ignore file
+then.
 
-Regards,
--Gonglei
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ .gitignore | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/.gitignore b/.gitignore
+index aed0e1f..61bc492 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -17,6 +17,8 @@
+ /trace/generated-tcg-tracers.h
+ /trace/generated-ust-provider.h
+ /trace/generated-ust.c
++/ui/shader/texture-blit-frag.h
++/ui/shader/texture-blit-vert.h
+ /libcacard/trace/generated-tracers.c
+ *-timestamp
+ /*-softmmu
+--=20
+2.3.6
 
 
