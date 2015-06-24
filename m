@@ -1,34 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7hFq-0004FP-U8
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 05:46:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39445)
+	id 1Z7jIK-0000qC-Gh
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 07:56:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33212)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1Z7hFo-0004DS-GH
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 05:46:01 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1Z7jII-0000mc-4m
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 07:56:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1Z7hFn-0007Wx-Et
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 05:46:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59200)
+	(envelope-from <pbonzini@redhat.com>) id 1Z7jIH-0007jU-6A
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 07:56:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46059)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1Z7hFZ-0007OH-C7; Wed, 24 Jun 2015 05:45:45 -0400
+	(envelope-from <pbonzini@redhat.com>)
+	id 1Z7jIA-0007fs-Sf; Wed, 24 Jun 2015 07:56:34 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0B79936B4F0;
-	Wed, 24 Jun 2015 09:45:44 +0000 (UTC)
-Received: from dgilbert-t530.redhat.com (ovpn-116-87.ams2.redhat.com
-	[10.36.116.87])
+	by mx1.redhat.com (Postfix) with ESMTPS id 981E719CBAA;
+	Wed, 24 Jun 2015 11:56:33 +0000 (UTC)
+Received: from donizetti.redhat.com (ovpn-112-66.ams2.redhat.com
+	[10.36.112.66])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5O9jgQU012142; Wed, 24 Jun 2015 05:45:42 -0400
-From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+	id t5OBuVvG021494; Wed, 24 Jun 2015 07:56:32 -0400
+From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 24 Jun 2015 10:45:42 +0100
-Message-Id: <1435139142-21227-1-git-send-email-dgilbert@redhat.com>
+Date: Wed, 24 Jun 2015 13:56:31 +0200
+Message-Id: <1435146991-305-1-git-send-email-pbonzini@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
-Subject: [Qemu-trivial] [PATCH 1/1] Fix glib_subprocess test
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] hw: fix mask for ColdFire UART command
+	register
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,33 +41,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2015 09:46:01 -0000
+X-List-Received-Date: Wed, 24 Jun 2015 11:56:43 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+The "miscellaneous commands" part of the register is 3 bits wide.
+Spotted by Coverity and confirmed in the datasheet, downloadable from
+http://cache.freescale.com/files/32bit/doc/ref_manual/MCF5307BUM.pdf
+(figure 14-6).
 
-A typo means that the tests dependent on glib with subprocess
-support are never run.
-
-Fixes: 9d41401b90fa10b335d2e739149d36437cfbf622
-
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- configure | 2 +-
+ hw/char/mcf_uart.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index f02510b..3063739 100755
---- a/configure
-+++ b/configure
-@@ -4773,7 +4773,7 @@ if test "$bluez" = "yes" ; then
-   echo "CONFIG_BLUEZ=y" >> $config_host_mak
-   echo "BLUEZ_CFLAGS=$bluez_cflags" >> $config_host_mak
- fi
--if test "glib_subprocess" = "yes" ; then
-+if test "$glib_subprocess" = "yes" ; then
-   echo "CONFIG_HAS_GLIB_SUBPROCESS_TESTS=y" >> $config_host_mak
- fi
- echo "GLIB_CFLAGS=$glib_cflags" >> $config_host_mak
+diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
+index 98fd44e..cda22ee 100644
+--- a/hw/char/mcf_uart.c
++++ b/hw/char/mcf_uart.c
+@@ -126,7 +126,7 @@ static void mcf_uart_do_tx(mcf_uart_state *s)
+ static void mcf_do_command(mcf_uart_state *s, uint8_t cmd)
+ {
+     /* Misc command.  */
+-    switch ((cmd >> 4) & 3) {
++    switch ((cmd >> 4) & 7) {
+     case 0: /* No-op.  */
+         break;
+     case 1: /* Reset mode register pointer.  */
 -- 
 2.4.3
 
