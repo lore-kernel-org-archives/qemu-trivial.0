@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7YTS-0007ph-3p
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 20:23:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52667)
+	id 1Z7YU8-0000S6-JX
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jun 2015 20:24:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YTO-0007pJ-SA
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:23:27 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YU5-0000OX-Uh
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:24:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YTI-0004fK-Vg
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:23:26 -0400
-Received: from mail-yh0-f48.google.com ([209.85.213.48]:35251)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YU1-0004sV-NQ
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:24:09 -0400
+Received: from mail-yk0-f173.google.com ([209.85.160.173]:32948)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YTI-0004fA-S2
-	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:23:20 -0400
-Received: by yhak3 with SMTP id k3so10629825yha.2
-	for <qemu-trivial@nongnu.org>; Tue, 23 Jun 2015 17:23:20 -0700 (PDT)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1Z7YU1-0004sJ-HK
+	for qemu-trivial@nongnu.org; Tue, 23 Jun 2015 20:24:05 -0400
+Received: by ykdt186 with SMTP id t186so15333367ykd.0
+	for <qemu-trivial@nongnu.org>; Tue, 23 Jun 2015 17:24:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type
-	:content-transfer-encoding;
-	bh=9CxrETWrpr+biacPkbXaNpjAjfK/XKkeun6ddZWb2I4=;
-	b=BW9uuK/6SMjhUhHoSHVp1L/4LtBtb/FsPdIP1lWwvsMqxCOTjy8XqnASerskhlbgxn
-	cdlm7TqOaZMtM4e6qcrm3hu49aQuMJelVb54Y13A5rQBc3n0w+C+wa73UakHKhQd7fIF
-	7xwx9Qv/plcCWQeerDNFM8amfHt8P84kwdOh5SsZtIqeculC+39F1YSeFW2+pjqg51ks
-	zVqhdiexbltZalizRgUtKTtLVA6lKorrWGsFPT2N6+a8gpbzCNoZehB0bkTMnCti1/cm
-	+3DuDu+CEeB1tW6EsZFLxEvHCZb5GYv9DLd/2P3ADmQNSr+5vyoMX0pOsdxwwEn2p8Sr
-	/gsQ==
-X-Gm-Message-State: ALoCoQnch1a0Vz8+FrldHr7l+D070wCBEFkK2jccwD8ZDn1F5CfaGfUI2s+Mboa2j3X5Pr+29qCx
+	:message-id:subject:from:to:cc:content-type;
+	bh=4KnmadGbBUxp9iGmcA1lGp3WxCsR3yHy5fFlylkuSHQ=;
+	b=GAzXEwwiQWrBoVrVqSbUFZvw94jUXzvVhUTWIdLzA1gDEdkGnXsxC+l2aXagn7bpe8
+	yX/EGA7rOc8Ezz4ThflMVNzykinKfa1kjTjb/r4xAIhFSeh/8o/HCqwViQublh3lq/Po
+	vs5naDTL3OrSSPkI8PwRyQp3WIeeB/ex7eG+6C09Cqnec9RBeoIXBPtOlcUY3+5f1ePE
+	QPWUonknGkVGe4cqYAQ8FVB9bcjBHkqOQ4Wp7MgdShgvvWcFfxBd5pxUfjLymDazm93+
+	fzTr89WUsnGIc282vSrCKumzjfhwCuySXh44I3zkP2NEuLt4FIb2YJu7JqL8DNqFgLt3
+	PyyQ==
+X-Gm-Message-State: ALoCoQl6+mSGYVouysKVwghYrl0wqWGWwu5hlPpf1LypNcFi8MZoWohbPKAr32f7Dd4UEC4oKz4u
 MIME-Version: 1.0
-X-Received: by 10.170.43.193 with SMTP id 184mr535736ykl.119.1435105400389;
-	Tue, 23 Jun 2015 17:23:20 -0700 (PDT)
+X-Received: by 10.13.204.142 with SMTP id o136mr45438150ywd.171.1435105445203; 
+	Tue, 23 Jun 2015 17:24:05 -0700 (PDT)
 Sender: peter.crosthwaite@petalogix.com
-Received: by 10.37.50.201 with HTTP; Tue, 23 Jun 2015 17:23:20 -0700 (PDT)
-In-Reply-To: <5589F7F1.5080900@vivier.eu>
-References: <1435104444-2550-1-git-send-email-laurent@vivier.eu>
-	<CAEgOgz7wZFZcwU=TeM+Y9wZGM3G9fJcBn336L2Udm9uHQp-GhA@mail.gmail.com>
-	<5589F7F1.5080900@vivier.eu>
-Date: Tue, 23 Jun 2015 17:23:20 -0700
-X-Google-Sender-Auth: UHdvDpPkIekUq_FqfXmMEVT40ZU
-Message-ID: <CAEgOgz6zLvjSpc9Z7mWKuTNQqjjMuZbLkaNJwPfSBeoi-RXu0A@mail.gmail.com>
+Received: by 10.37.50.201 with HTTP; Tue, 23 Jun 2015 17:24:05 -0700 (PDT)
+In-Reply-To: <1435100422-30667-1-git-send-email-laurent@vivier.eu>
+References: <1435100422-30667-1-git-send-email-laurent@vivier.eu>
+Date: Tue, 23 Jun 2015 17:24:05 -0700
+X-Google-Sender-Auth: L6XfZczkXt0fuGcB3EwRQbPmC-U
+Message-ID: <CAEgOgz7wRA=S46V8FoseAQ79rgucktbxgkQ_8xyncpQ46MC+SQ@mail.gmail.com>
 From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 To: Laurent Vivier <laurent@vivier.eu>, qemu-trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.213.48
+X-Received-From: 209.85.160.173
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] m68k: remove useless file
-	m68k-qreg.h
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] m68k: is_mem is useless
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,38 +56,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2015 00:23:27 -0000
+X-List-Received-Date: Wed, 24 Jun 2015 00:24:11 -0000
 
-On Tue, Jun 23, 2015 at 5:21 PM, Laurent Vivier <laurent@vivier.eu> wrote:
+cc trivial.
+
+On Tue, Jun 23, 2015 at 4:00 PM, Laurent Vivier <laurent@vivier.eu> wrote:
+> Remove is_mem as it is never tested anymore since:
 >
+>     commit bfa50bc2638d877cf2900712b7503be22e8811cb
+>     Author: aliguori <aliguori@c046a42c-6fe2-441c-8c8c-71466251a162>
+>     Date:   Tue Nov 18 20:26:41 2008 +0000
 >
-> Le 24/06/2015 02:19, Peter Crosthwaite a =C3=A9crit :
->> On Tue, Jun 23, 2015 at 5:07 PM, Laurent Vivier <laurent@vivier.eu> wrot=
-e:
->>> Unused since:
->>>
->>>     commit e1f3808e03f73e7a7fa966afbed2455dd052202e
->>>     Author: pbrook <pbrook@c046a42c-6fe2-441c-8c8c-71466251a162>
->>>     Date:   Sat May 24 22:29:16 2008 +0000
->>>
->>>         Convert m68k target to TCG.
->>>
->>> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
->>
->> You should cc qemu-trivial on dead-code deletions and the like. This
->> is also a patch queue in its own right so there is no need to identify
->> m68k owner for this.
+>         Remove premature memop TB terminations (Jan Kiszka)
 >
-> OK, thank you. Should I resend them ?
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  target-m68k/translate.c | 7 -------
+>  1 file changed, 7 deletions(-)
 >
-
-No should be ok, I think the maintainer can handle it via
-after-the-fact CCs. I have ccd this one just now.
-
-Regards,
-Peter
-
-
-> Laurent
+> diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+> index 96d75bf..ce1fc92 100644
+> --- a/target-m68k/translate.c
+> +++ b/target-m68k/translate.c
+> @@ -129,7 +129,6 @@ typedef struct DisasContext {
+>      uint32_t fpcr;
+>      struct TranslationBlock *tb;
+>      int singlestep_enabled;
+> -    int is_mem;
+>      TCGv_i64 mactmp;
+>      int done_mac;
+>  } DisasContext;
+> @@ -179,7 +178,6 @@ static inline TCGv gen_load(DisasContext * s, int opsize, TCGv addr, int sign)
+>  {
+>      TCGv tmp;
+>      int index = IS_USER(s);
+> -    s->is_mem = 1;
+>      tmp = tcg_temp_new_i32();
+>      switch(opsize) {
+>      case OS_BYTE:
+> @@ -209,7 +207,6 @@ static inline TCGv_i64 gen_load64(DisasContext * s, TCGv addr)
+>  {
+>      TCGv_i64 tmp;
+>      int index = IS_USER(s);
+> -    s->is_mem = 1;
+>      tmp = tcg_temp_new_i64();
+>      tcg_gen_qemu_ldf64(tmp, addr, index);
+>      gen_throws_exception = gen_last_qop;
+> @@ -220,7 +217,6 @@ static inline TCGv_i64 gen_load64(DisasContext * s, TCGv addr)
+>  static inline void gen_store(DisasContext *s, int opsize, TCGv addr, TCGv val)
+>  {
+>      int index = IS_USER(s);
+> -    s->is_mem = 1;
+>      switch(opsize) {
+>      case OS_BYTE:
+>          tcg_gen_qemu_st8(val, addr, index);
+> @@ -241,7 +237,6 @@ static inline void gen_store(DisasContext *s, int opsize, TCGv addr, TCGv val)
+>  static inline void gen_store64(DisasContext *s, TCGv addr, TCGv_i64 val)
+>  {
+>      int index = IS_USER(s);
+> -    s->is_mem = 1;
+>      tcg_gen_qemu_stf64(val, addr, index);
+>      gen_throws_exception = gen_last_qop;
+>  }
+> @@ -2227,7 +2222,6 @@ DISAS_INSN(fpu)
+>              mask = 0x80;
+>              for (i = 0; i < 8; i++) {
+>                  if (ext & mask) {
+> -                    s->is_mem = 1;
+>                      dest = FREG(i, 0);
+>                      if (ext & (1 << 13)) {
+>                          /* store */
+> @@ -2999,7 +2993,6 @@ gen_intermediate_code_internal(M68kCPU *cpu, TranslationBlock *tb,
+>      dc->singlestep_enabled = cs->singlestep_enabled;
+>      dc->fpcr = env->fpcr;
+>      dc->user = (env->sr & SR_S) == 0;
+> -    dc->is_mem = 0;
+>      dc->done_mac = 0;
+>      lj = -1;
+>      num_insns = 0;
+> --
+> 2.4.3
+>
 >
 
