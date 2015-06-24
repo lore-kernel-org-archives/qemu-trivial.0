@@ -1,51 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7kDv-0000OW-AD
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 08:56:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53615)
+	id 1Z7mPn-0007b9-K1
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 11:16:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1Z7kDt-0000O0-DS
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 08:56:14 -0400
+	(envelope-from <stefanha@redhat.com>) id 1Z7mPl-0007ZG-Vk
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 11:16:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1Z7kDo-0005KU-1A
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 08:56:13 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:57085)
+	(envelope-from <stefanha@redhat.com>) id 1Z7mPk-0001ja-Sj
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 11:16:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50626)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1Z7kDn-0005KH-O1; Wed, 24 Jun 2015 08:56:07 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue003) with ESMTPSA (Nemesis) id 0M4mmf-1YtfHo3KyT-00yzXX;
-	Wed, 24 Jun 2015 14:56:01 +0200
-Message-ID: <558AA8DF.4050708@vivier.eu>
-Date: Wed, 24 Jun 2015 14:55:59 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	(envelope-from <stefanha@redhat.com>)
+	id 1Z7mPV-0001XJ-88; Wed, 24 Jun 2015 11:16:21 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3FD56B82C7;
+	Wed, 24 Jun 2015 15:16:20 +0000 (UTC)
+Received: from localhost (ovpn-112-73.ams2.redhat.com [10.36.112.73])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5OFGJRh014366; Wed, 24 Jun 2015 11:16:19 -0400
+Date: Wed, 24 Jun 2015 16:16:18 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: arei.gonglei@huawei.com
+Message-ID: <20150624151618.GF7454@stefanha-thinkpad.redhat.com>
+References: <1435138164-11728-1-git-send-email-arei.gonglei@huawei.com>
 MIME-Version: 1.0
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1435146991-305-1-git-send-email-pbonzini@redhat.com>
-In-Reply-To: <1435146991-305-1-git-send-email-pbonzini@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:TkfXX2ADoCk7Tf8se3wCmLwPXZGUH+od4YE2QxRKODMZGVz+BNM
-	YGT/67CJXu8zxRYmpZ0G0KTscF02FFVCxrvglzE2BFvogiJ57RK3LWZH87i3q+quOpZyj7t
-	uYt/Kd2klbvkd+RSJmQCQHoGOfLGuncIrlUi1ZrlGi2Q2edQWYLSvS4M2IOBb+OyLdL0XbX
-	MvNwYIjc24Hx7yhQslztQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:rygIBXT0IUI=:kVmTuC3/xOAbaYlbhw9j3w
-	woG1Lca3UlT4/InzcrQpXhpG+eYrIQeEf9BEAw7amP3Rcy8t+bY8rr0ZtyHxP5BoqgKS5LQ6O
-	xqcip2IWCA9jpWiE5MpvGCJBb9IrlBaavxXVC9eEyesC8h8yqtRn63gCNJ2hbHby6lpRpoBb3
-	n//cPD/iYKHQll7OR9PRr/wrV68NeCP8CUunVb0mdj4eck0OcID3ZHu+WPJlIxu5TN3KrGaUK
-	1iI4TysOLKWIJA9gZQ1E13nDc87xUlubPabkiCvP0qZOV42o3Z07crfdZYmKrCA/CkeD+dZVp
-	Io7TF/smos1j8+R6ZMwl465ccHBqL8aTxTJkMbEjt537ZdqvOKly75J+/E3inUQuPNNewq0Yn
-	rZfSDm29cgTRJVXHXpuuODnjBe72iaoDEy/pThO66tDiXunT00efF7fG9rfkz6ScjQs9c5ywt
-	h3Jxgd1E2EYcHj2P+jaw0idzWrD619Qij8iGiGZdhBNI2H5s95ti6cyry9ODeLs3Oh7bllC0n
-	WpDUBOOVxi1rE2dplnZLdXbmhK30tqDc7bYz+dEHs1eHUEkxpciFE0ZftvjHUgBb/tGajxFEA
-	LmCRHCdZalKXQRTph9w5sRaBQHtib1XY/tbUXRVU32GIpXoLKdaO5kWj6CtKojL8SGtvzOUpt
-	lOtNevSKvqD3iOG9JbGQq9BWT0MrSsDjh+kXVqsyJ+MEc7w==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 212.227.126.187
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw: fix mask for ColdFire
-	UART command register
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="udcq9yAoWb9A4FsZ"
+Content-Disposition: inline
+In-Reply-To: <1435138164-11728-1-git-send-email-arei.gonglei@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] virito-blk: drop duplicate check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,17 +46,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2015 12:56:14 -0000
+X-List-Received-Date: Wed, 24 Jun 2015 15:16:38 -0000
 
 
+--udcq9yAoWb9A4FsZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Le 24/06/2015 13:56, Paolo Bonzini a écrit :
-> The "miscellaneous commands" part of the register is 3 bits wide.
-> Spotted by Coverity and confirmed in the datasheet, downloadable from
-> http://cache.freescale.com/files/32bit/doc/ref_manual/MCF5307BUM.pdf
-> (figure 14-6).
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+On Wed, Jun 24, 2015 at 05:29:24PM +0800, arei.gonglei@huawei.com wrote:
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> in_num =3D req->elem.in_num, and req->elem.in_num is
+> checked in line 489, so the check about in_num variable
+> is superflous, let's drop it.
+>=20
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  hw/block/virtio-blk.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
+
+Stefan
+
+--udcq9yAoWb9A4FsZ
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJVisnCAAoJEJykq7OBq3PIDWcIAImigMBdxkAv1/VL7GWuQzOa
+DXfH7Q3kprvq1eBG/Ek6WFgxGDgP/lMZ8+wC646ZUO8J5sjbBqZWznBm1JVAzkg4
+ox3vAhrD4briCZy7sFrlbBuKBWAFufnYKR+XryAW8KR/nX57TX6jpuei7634xFRe
+EhSBRP2WLI4eFmDKBOQLhnu4a9ueUp4uujvM8AyAKzALeroN5O4dblaC5sIBii9O
+3ZPPVZFuAq64MxW0lIRvhB9LZ/VFcTKUPM5Lwc8ttKHz3klw2d1FT3/0gD6VlSz0
+sCts/+WgWcXg6u+5vT671MTjPBzsQX48603DY4zqA7vE/ubHaPK9y+Kv4iYOK7Q=
+=JY7C
+-----END PGP SIGNATURE-----
+
+--udcq9yAoWb9A4FsZ--
 
