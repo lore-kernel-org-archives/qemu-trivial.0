@@ -1,40 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7mPn-0007b9-K1
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 11:16:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52783)
+	id 1Z7q6Z-0002Xh-8G
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 15:13:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1Z7mPl-0007ZG-Vk
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 11:16:38 -0400
+	(envelope-from <th.huth@gmail.com>) id 1Z7q6W-0002Sh-E5
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 15:13:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1Z7mPk-0001ja-Sj
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 11:16:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50626)
+	(envelope-from <th.huth@gmail.com>) id 1Z7q6V-0005CL-HJ
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 15:13:00 -0400
+Received: from mail-wg0-f41.google.com ([74.125.82.41]:33955)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1Z7mPV-0001XJ-88; Wed, 24 Jun 2015 11:16:21 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 3FD56B82C7;
-	Wed, 24 Jun 2015 15:16:20 +0000 (UTC)
-Received: from localhost (ovpn-112-73.ams2.redhat.com [10.36.112.73])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t5OFGJRh014366; Wed, 24 Jun 2015 11:16:19 -0400
-Date: Wed, 24 Jun 2015 16:16:18 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: arei.gonglei@huawei.com
-Message-ID: <20150624151618.GF7454@stefanha-thinkpad.redhat.com>
-References: <1435138164-11728-1-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <th.huth@gmail.com>)
+	id 1Z7q6Q-00058Q-D2; Wed, 24 Jun 2015 15:12:54 -0400
+Received: by wgqq4 with SMTP id q4so44272713wgq.1;
+	Wed, 24 Jun 2015 12:12:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=date:from:to:cc:subject:message-id:in-reply-to:references
+	:mime-version:content-type:content-transfer-encoding;
+	bh=YYoDzl0xjh8NoJ4rQJjH9Y0+LKFwhK5fogNTODOkkmY=;
+	b=YWEszTfzz6iO5ANGLFxygob+ki22WeHGWALe23vThGEwDJDD4ObiXvyLucGPz0QsER
+	ekgovcrC+W/nlPK2jiZD1siP2js/kji+Xn33gOw6kSH94hKAexuJFFvp8ajuK8wsnCyv
+	inV0gPfwD4F9TSsg70KxN7EnVib0yHkcQwLZV284hPRFxpUrOmyYKlMfPmU/f15iFdM7
+	vGGsWoHQ7sBJKG0sLQyOSA23i5HhQj+eoRsvm148lHNOE0CYEm5S3KC/Jfy+az0vf9D1
+	X9oU7mCu9XXI4rdwRdRoZushz+7ENchkGV/Uu3UHe5rrNZEoC1qlhLRtEldwvJHqmhXU
+	KWmA==
+X-Received: by 10.180.36.103 with SMTP id p7mr7594812wij.88.1435173173444;
+	Wed, 24 Jun 2015 12:12:53 -0700 (PDT)
+Received: from thh440s (p57AEC007.dip0.t-ipconnect.de. [87.174.192.7])
+	by mx.google.com with ESMTPSA id
+	tl3sm42057743wjc.20.2015.06.24.12.12.51
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 24 Jun 2015 12:12:52 -0700 (PDT)
+Date: Wed, 24 Jun 2015 21:12:49 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Message-ID: <20150624211249.1fe44976@thh440s>
+In-Reply-To: <1435104444-2550-1-git-send-email-laurent@vivier.eu>
+References: <1435104444-2550-1-git-send-email-laurent@vivier.eu>
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.22; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="udcq9yAoWb9A4FsZ"
-Content-Disposition: inline
-In-Reply-To: <1435138164-11728-1-git-send-email-arei.gonglei@huawei.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] virito-blk: drop duplicate check
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.41
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] m68k: remove useless file
+	m68k-qreg.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,45 +59,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2015 15:16:38 -0000
+X-List-Received-Date: Wed, 24 Jun 2015 19:13:01 -0000
 
+On Wed, 24 Jun 2015 02:07:24 +0200
+Laurent Vivier <laurent@vivier.eu> wrote:
 
---udcq9yAoWb9A4FsZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jun 24, 2015 at 05:29:24PM +0800, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> in_num =3D req->elem.in_num, and req->elem.in_num is
-> checked in line 489, so the check about in_num variable
-> is superflous, let's drop it.
->=20
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> Unused since:
+> 
+>     commit e1f3808e03f73e7a7fa966afbed2455dd052202e
+>     Author: pbrook <pbrook@c046a42c-6fe2-441c-8c8c-71466251a162>
+>     Date:   Sat May 24 22:29:16 2008 +0000
+> 
+>         Convert m68k target to TCG.
+> 
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 > ---
->  hw/block/virtio-blk.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  target-m68k/m68k-qreg.h | 11 -----------
+>  1 file changed, 11 deletions(-)
+>  delete mode 100644 target-m68k/m68k-qreg.h
+> 
+> diff --git a/target-m68k/m68k-qreg.h b/target-m68k/m68k-qreg.h
+> deleted file mode 100644
+> index c224d5e..0000000
+> --- a/target-m68k/m68k-qreg.h
+> +++ /dev/null
+> @@ -1,11 +0,0 @@
+> -enum {
+> -#define DEFO32(name, offset) QREG_##name,
+> -#define DEFR(name, reg, mode) QREG_##name,
+> -#define DEFF64(name, offset) QREG_##name,
+> -    QREG_NULL,
+> -#include "qregs.def"
+> -    TARGET_NUM_QREGS = 0x100
+> -#undef DEFO32
+> -#undef DEFR
+> -#undef DEFF64
+> -};
 
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
-
-Stefan
-
---udcq9yAoWb9A4FsZ
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJVisnCAAoJEJykq7OBq3PIDWcIAImigMBdxkAv1/VL7GWuQzOa
-DXfH7Q3kprvq1eBG/Ek6WFgxGDgP/lMZ8+wC646ZUO8J5sjbBqZWznBm1JVAzkg4
-ox3vAhrD4briCZy7sFrlbBuKBWAFufnYKR+XryAW8KR/nX57TX6jpuei7634xFRe
-EhSBRP2WLI4eFmDKBOQLhnu4a9ueUp4uujvM8AyAKzALeroN5O4dblaC5sIBii9O
-3ZPPVZFuAq64MxW0lIRvhB9LZ/VFcTKUPM5Lwc8ttKHz3klw2d1FT3/0gD6VlSz0
-sCts/+WgWcXg6u+5vT671MTjPBzsQX48603DY4zqA7vE/ubHaPK9y+Kv4iYOK7Q=
-=JY7C
------END PGP SIGNATURE-----
-
---udcq9yAoWb9A4FsZ--
+Reviewed-by: Thomas Huth <huth@tuxfamily.org>
 
