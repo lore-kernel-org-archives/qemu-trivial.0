@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z7gSQ-00059W-Vc
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 04:54:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48455)
+	id 1Z7gpd-0006NA-JH
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jun 2015 05:18:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59458)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Z7gSO-00058P-9U
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 04:54:57 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7gpb-0006KV-9m
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 05:18:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Z7gSK-0006MG-LH
-	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 04:54:56 -0400
-Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:33141)
+	(envelope-from <arei.gonglei@huawei.com>) id 1Z7gpa-0003CO-Fa
+	for qemu-trivial@nongnu.org; Wed, 24 Jun 2015 05:18:55 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:19937)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Z7gSK-0006LT-Eq; Wed, 24 Jun 2015 04:54:52 -0400
-Received: by wiwl6 with SMTP id l6so88725187wiw.0;
-	Wed, 24 Jun 2015 01:54:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=Pvxr/eItLTEl82NyPNG5gBIX9mOkBFogpaAUjPkEVW0=;
-	b=qcso4b467suOgP7CCVMwVktPRmlTkN4nO3f5h//lL9p7MQ/BLJt2JJMNdJaJZVuiJ5
-	h6ucQIWl1Om6ga1BNBo9A4wF69ABP20gu2brTZSbFq6XY9ygURtnPMfPMPfoy7plsAfw
-	VAuJ/OopW5trL7tUHvzRu6d2ecHwZlbnkUTHSHapU/pmFIiFy3SUz7dRqIBocw0XPqMW
-	syqtjvq/w01chNxMM332LPKdsyOYiduaI41sQgI9xGr7vJ9O2137K+Phj4QyRgVgkcJH
-	AkSiWwge/XMciLQsaolGpk6noPmU9dGQ0wfg6XeQcYIpCHpaCSjU4hCrzSGBHZHMtJew
-	oUZQ==
-X-Received: by 10.180.86.129 with SMTP id p1mr2845742wiz.71.1435136090915;
-	Wed, 24 Jun 2015 01:54:50 -0700 (PDT)
-Received: from [192.168.10.165] (dynamic-adsl-94-39-132-37.clienti.tiscali.it.
-	[94.39.132.37])
-	by mx.google.com with ESMTPSA id ee1sm1441616wic.8.2015.06.24.01.54.49
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 24 Jun 2015 01:54:50 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Message-ID: <558A7059.9080001@redhat.com>
-Date: Wed, 24 Jun 2015 10:54:49 +0200
-From: Paolo Bonzini <pbonzini@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.6.0
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1Z7gpT-00039g-9f; Wed, 24 Jun 2015 05:18:47 -0400
+Received: from 172.24.2.119 (EHLO szxeml426-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BID19940; Wed, 24 Jun 2015 17:18:38 +0800 (CST)
+Received: from localhost (10.177.19.102) by szxeml426-hub.china.huawei.com
+	(10.82.67.181) with Microsoft SMTP Server id 14.3.158.1;
+	Wed, 24 Jun 2015 17:18:27 +0800
+From: <arei.gonglei@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 24 Jun 2015 17:18:17 +0800
+Message-ID: <1435137497-11972-1-git-send-email-arei.gonglei@huawei.com>
+X-Mailer: git-send-email 1.7.3.1.msysgit.0
 MIME-Version: 1.0
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, 
- qemu-devel@nongnu.org
-References: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>
-In-Reply-To: <1433714349-7262-1-git-send-email-crosthwaite.peter@gmail.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22d
-Cc: qemu-trivial@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH v2] memory_mapping: Rework cpu related
-	includes
+Content-Type: text/plain
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020201.558A75F0.0056, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 01bbc1d90e2815f966b704eda8998419
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: qemu-trivial@nongnu.org, Gonglei <arei.gonglei@huawei.com>,
+	kraxel@redhat.com, armbru@redhat.com
+Subject: [Qemu-trivial] [PATCH v2] ossaudio: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,47 +49,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Jun 2015 08:54:57 -0000
+X-List-Received-Date: Wed, 24 Jun 2015 09:18:56 -0000
+
+From: Gonglei <arei.gonglei@huawei.com>
+
+Variable "conf" going out of scope leaks the storage
+it points to in line 856.
+
+Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+---
+v2:
+ using an better way to avoid memory leak. (Markus) 
+---
+ audio/ossaudio.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index 11e76a1..94b473b 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -848,14 +848,11 @@ static OSSConf glob_conf = {
+ 
+ static void *oss_audio_init (void)
+ {
+-    OSSConf *conf = g_malloc(sizeof(OSSConf));
+-    *conf = glob_conf;
+-
+-    if (access(conf->devpath_in, R_OK | W_OK) < 0 ||
+-        access(conf->devpath_out, R_OK | W_OK) < 0) {
++    if (access(glob_conf.devpath_in, R_OK | W_OK) < 0 ||
++        access(glob_conf.devpath_out, R_OK | W_OK) < 0) {
+         return NULL;
+     }
+-    return conf;
++    return g_memdup(&glob_conf, sizeof(glob_conf));
+ }
+ 
+ static void oss_audio_fini (void *opaque)
+-- 
+1.7.12.4
 
 
-
-On 07/06/2015 23:59, Peter Crosthwaite wrote:
-> This makes it more consistent with all other core code files, which
-> either just rely on qemu-common.h inclusion or precede cpu.h with
-> qemu-common.h.
-> 
-> cpu-all.h should not be included in addition to cpu.h. Remove it.
-> 
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
-Applied, will send a pull request today or tomorrow.
-
-Paolo
-
-> ---
-> changed since v1:
-> Leave in cpu.h include
-> 
-> Picked up by my multi arch WIP where target-multi/cpu.h cant handle
-> random core code inclusion without preceeded qemu-common.h. I guess
-> this is the only one in tree?
-> ---
->  memory_mapping.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/memory_mapping.c b/memory_mapping.c
-> index 7b69801..36d6b26 100644
-> --- a/memory_mapping.c
-> +++ b/memory_mapping.c
-> @@ -13,8 +13,8 @@
->  
->  #include <glib.h>
->  
-> +#include "qemu-common.h"
->  #include "cpu.h"
-> -#include "exec/cpu-all.h"
->  #include "sysemu/memory_mapping.h"
->  #include "exec/memory.h"
->  #include "exec/address-spaces.h"
-> 
 
