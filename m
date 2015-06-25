@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z80ai-000747-Kg
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2015 02:24:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55410)
+	id 1Z80zA-00005D-Rn
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2015 02:50:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35319)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z80ag-00071Q-IJ
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 02:24:51 -0400
+	(envelope-from <kraxel@redhat.com>) id 1Z80z8-0008Ss-AL
+	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 02:50:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z80af-0002cb-KE
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 02:24:50 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:25632)
+	(envelope-from <kraxel@redhat.com>) id 1Z80z7-0005ZR-HA
+	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 02:50:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36354)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Z80aX-0002Ux-HW; Thu, 25 Jun 2015 02:24:43 -0400
-Received: from 172.24.2.119 (EHLO SZXEML429-HUB.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CQA74011; Thu, 25 Jun 2015 14:24:28 +0800 (CST)
-Received: from localhost (10.177.19.102) by SZXEML429-HUB.china.huawei.com
-	(10.82.67.184) with Microsoft SMTP Server id 14.3.158.1;
-	Thu, 25 Jun 2015 14:24:21 +0800
-From: <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 25 Jun 2015 14:24:10 +0800
-Message-ID: <1435213450-6700-1-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 1.7.3.1.msysgit.0
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, jiri@resnulli.us,
-	Gonglei <arei.gonglei@huawei.com>, sfeldma@gmail.com
-Subject: [Qemu-trivial] [PATCH] rocker: fix memory leak
+	(envelope-from <kraxel@redhat.com>)
+	id 1Z80z3-0005RP-6r; Thu, 25 Jun 2015 02:50:01 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 35FE7365066;
+	Thu, 25 Jun 2015 06:50:00 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-16.ams2.redhat.com
+	[10.36.116.16])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5P6nvR4030170; Thu, 25 Jun 2015 02:49:58 -0400
+Message-ID: <1435214997.18484.6.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: arei.gonglei@huawei.com
+Date: Thu, 25 Jun 2015 08:49:57 +0200
+In-Reply-To: <1435137497-11972-1-git-send-email-arei.gonglei@huawei.com>
+References: <1435137497-11972-1-git-send-email-arei.gonglei@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, armbru@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2] ossaudio: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,41 +45,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jun 2015 06:24:51 -0000
+X-List-Received-Date: Thu, 25 Jun 2015 06:50:07 -0000
 
-From: Gonglei <arei.gonglei@huawei.com>
+On Mi, 2015-06-24 at 17:18 +0800, arei.gonglei@huawei.com wrote:
+> Variable "conf" going out of scope leaks the storage
+> it points to in line 856.
+> 
+Added to audio queue.
 
-Meanwhile, using g_new0 instead of g_malloc0,
-refer to commit 5839e53.
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- hw/net/rocker/rocker.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-index 4d25842..7e06015 100644
---- a/hw/net/rocker/rocker.c
-+++ b/hw/net/rocker/rocker.c
-@@ -96,7 +96,7 @@ World *rocker_get_world(Rocker *r, enum rocker_world_type type)
- 
- RockerSwitch *qmp_query_rocker(const char *name, Error **errp)
- {
--    RockerSwitch *rocker = g_malloc0(sizeof(*rocker));
-+    RockerSwitch *rocker;
-     Rocker *r;
- 
-     r = rocker_find(name);
-@@ -106,6 +106,7 @@ RockerSwitch *qmp_query_rocker(const char *name, Error **errp)
-         return NULL;
-     }
- 
-+    rocker = g_new0(RockerSwitch, 1);
-     rocker->name = g_strdup(r->name);
-     rocker->id = r->switch_id;
-     rocker->ports = r->fp_ports;
--- 
-1.7.12.4
+thanks,
+  Gerd
 
 
 
