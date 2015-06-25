@@ -1,53 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z880k-0000qW-96
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2015 10:20:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44745)
+	id 1Z88Wp-0005Bt-Sk
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2015 10:53:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Z880g-0000le-Ny
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:20:11 -0400
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1Z88Wh-0005BN-RR
+	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:53:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1Z880c-0001KX-6h
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:20:10 -0400
-Received: from mail-wg0-x22f.google.com ([2a00:1450:400c:c00::22f]:34876)
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1Z88Wb-000796-6E
+	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:53:15 -0400
+Received: from mail.uni-paderborn.de ([131.234.142.9]:45528)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1Z880R-00019P-5Z; Thu, 25 Jun 2015 10:19:55 -0400
-Received: by wgbhy7 with SMTP id hy7so63955634wgb.2;
-	Thu, 25 Jun 2015 07:19:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=Njj41hzv2+mg5Fk7Prpz+A54bfNtTvjVGEV1CYi4QI4=;
-	b=Al5fqHQjJ8nZDqwa2LPUCJxRVo1MNLPzmwQBQ1xC37g6DY5J8U1oPGCWwrj/w8Tg2D
-	VaM3N1BXq1Ljk7/m7czLpWHuHcb/YYypy45OGGlEzthVNOi6hzt91NkSNyeMrOYaw0Uu
-	Au7eft6IxlXoOXrTj28OBl4LRHAKCkzDOcUVl+ajXdzCM3qcd9Er+CWgbAUMT+cRDXRN
-	KSUKGBuqjQNxJphO5fKz63pXEpvcqayqfi2qxjlwUhLC760LCX92NWDLEaxCDcquS6zV
-	vvggxDuu86pA1dBDXQneCRjIJqy0YB7cUiLikOAy6eL322IgAfxMsGdGwYz+5L/ID72b
-	Qt3w==
-X-Received: by 10.180.98.134 with SMTP id ei6mr6044032wib.49.1435241994581;
-	Thu, 25 Jun 2015 07:19:54 -0700 (PDT)
-Received: from localhost (host86-153-218-221.range86-153.btcentralplus.com.
-	[86.153.218.221])
-	by mx.google.com with ESMTPSA id fa8sm7851833wib.14.2015.06.25.07.19.52
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 25 Jun 2015 07:19:52 -0700 (PDT)
-Date: Thu, 25 Jun 2015 15:19:51 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: arei.gonglei@huawei.com
-Message-ID: <20150625141951.GM4419@stefanha-thinkpad.redhat.com>
-References: <1435213450-6700-1-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <kbastian@mail.uni-paderborn.de>)
+	id 1Z88Wa-00078j-VR; Thu, 25 Jun 2015 10:53:09 -0400
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1435147270-1040-1-git-send-email-pbonzini@redhat.com>
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Message-ID: <558C15D0.40302@mail.uni-paderborn.de>
+Date: Thu, 25 Jun 2015 16:53:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.0.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="oiL9LJXJsdjS5rzq"
-Content-Disposition: inline
-In-Reply-To: <1435213450-6700-1-git-send-email-arei.gonglei@huawei.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c00::22f
-Cc: qemu-trivial@nongnu.org, sfeldma@gmail.com, jiri@resnulli.us,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] rocker: fix memory leak
+In-Reply-To: <1435147270-1040-1-git-send-email-pbonzini@redhat.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.2.1.2493963, Antispam-Engine: 2.7.2.2107409,
+	Antispam-Data: 2015.6.25.144815
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 131.234.142.9
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-tricore: fix
+ depositing bits from PCXI into ICR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,44 +44,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jun 2015 14:20:12 -0000
+X-List-Received-Date: Thu, 25 Jun 2015 14:53:22 -0000
 
-
---oiL9LJXJsdjS5rzq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Jun 25, 2015 at 02:24:10PM +0800, arei.gonglei@huawei.com wrote:
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> Meanwhile, using g_new0 instead of g_malloc0,
-> refer to commit 5839e53.
->=20
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+On 06/24/2015 02:01 PM, Paolo Bonzini wrote:
+> Spotted by Coverity, because (env->PCXI & MASK_PCXI_PCPN) >> 24
+> is always zero.  The immediately preceding assignment is also
+> wrong though.
+>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->  hw/net/rocker/rocker.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>   target-tricore/op_helper.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/target-tricore/op_helper.c b/target-tricore/op_helper.c
+> index 10ed541..53edbda 100644
+> --- a/target-tricore/op_helper.c
+> +++ b/target-tricore/op_helper.c
+> @@ -2545,10 +2545,10 @@ void helper_rfm(CPUTriCoreState *env)
+>       env->PC = (env->gpr_a[11] & ~0x1);
+>       /* ICR.IE = PCXI.PIE; */
+>       env->ICR = (env->ICR & ~MASK_ICR_IE) |
+> -               ((env->PCXI & ~MASK_PCXI_PIE) >> 15);
+> +               ((env->PCXI & MASK_PCXI_PIE) >> 15);
+>       /* ICR.CCPN = PCXI.PCPN; */
+>       env->ICR = (env->ICR & ~MASK_ICR_CCPN) |
+> -               ((env->PCXI & ~MASK_PCXI_PCPN) >> 24);
+> +               ((env->PCXI & MASK_PCXI_PCPN) >> 24);
+>       /* {PCXI, PSW, A[10], A[11]} = M(DCX, 4 * word); */
+>       env->PCXI = cpu_ldl_data(env, env->DCX);
+>       psw_write(env, cpu_ldl_data(env, env->DCX+4));
+Thanks, applied it to my tricore-next branch.
 
-Thanks, applied to my net tree:
-https://github.com/stefanha/qemu/commits/net
-
-Stefan
-
---oiL9LJXJsdjS5rzq
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJVjA4HAAoJEJykq7OBq3PIkA8IALcfc8DI5hoXo2EIlFWBEui3
-VY1qSEv/F3PBMyq7zNK/15Ai8K4mJiG71l03bYGF0133tnh02P51cFS99u4XBbph
-n6DhP2Yyvdl0TjDABeRD6+LdbI9FUnM1KHFTifZ7rCfKx/WFjM0bFRh37M+Qs3QY
-gpumkyRU8eXBDO83Q2fxeNdh78VKEO+tdKavj4W2r5KdJWWvD+nzDgrnCU0vijcF
-K+U/0CMRfF8n52HN6c1h69zNhc0fHWo56Qj/52D+l0zvqsygv2FvNwi6D7d31JYG
-iyl7jbVLsVFYQeNVTl6BrxxSqaXTD0Vc4wIIyqzhlSM+99a9hISAgB0O/NrSGA0=
-=dP00
------END PGP SIGNATURE-----
-
---oiL9LJXJsdjS5rzq--
+Cheers,
+Bastian
 
