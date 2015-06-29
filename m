@@ -1,38 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z88Wp-0005Bt-Sk
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jun 2015 10:53:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33342)
+	id 1Z9cM4-00066T-8A
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2015 12:56:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37608)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1Z88Wh-0005BN-RR
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:53:22 -0400
+	(envelope-from <schlatow@ida.ing.tu-bs.de>) id 1Z9bG4-0005U6-Ei
+	for qemu-trivial@nongnu.org; Mon, 29 Jun 2015 11:46:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1Z88Wb-000796-6E
-	for qemu-trivial@nongnu.org; Thu, 25 Jun 2015 10:53:15 -0400
-Received: from mail.uni-paderborn.de ([131.234.142.9]:45528)
+	(envelope-from <schlatow@ida.ing.tu-bs.de>) id 1Z9bFz-0003Vp-6b
+	for qemu-trivial@nongnu.org; Mon, 29 Jun 2015 11:46:08 -0400
+Received: from bender.ida.ing.tu-bs.de ([134.169.117.232]:35414)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>)
-	id 1Z88Wa-00078j-VR; Thu, 25 Jun 2015 10:53:09 -0400
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1435147270-1040-1-git-send-email-pbonzini@redhat.com>
-From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Message-ID: <558C15D0.40302@mail.uni-paderborn.de>
-Date: Thu, 25 Jun 2015 16:53:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.0.1
+	(envelope-from <schlatow@ida.ing.tu-bs.de>) id 1Z9bFy-0003Mb-Nv
+	for qemu-trivial@nongnu.org; Mon, 29 Jun 2015 11:46:03 -0400
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by bender.ida.ing.tu-bs.de (8.14.4/8.14.4) with ESMTP id t5TFjeCg010474
+	for <qemu-trivial@nongnu.org>; Mon, 29 Jun 2015 17:45:40 +0200
+Authentication-Results: bender.ida.ing.tu-bs.de (amavisd-new);
+	dkim=pass (1024-bit key) reason="pass (just generated, assumed good)"
+	header.d=ida.ing.tu-bs.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ida.ing.tu-bs.de;
+	h=content-transfer-encoding:content-type:content-type
+	:mime-version:x-mailer:message-id:subject:subject:from:from:date
+	:date:received:received; s=ida1; t=1435592734; bh=JuRU2+j6of1ZJj
+	LjEvdppQRdvF/7o8ex73DlG+uEG14=; b=rm8Ql1Kp7LYpWns30kJoNy3LMJ6xmQ
+	Z8hbtm/6glhyhF4UccKZ4duxQ1L7UVeZGm8XOlIvv1injejO3vQQyXFmilhtroup
+	3b0xf+HPhfeenV5N+2Cf7jGtq6VjjL+dcNuNIIFnD88AT565areoJo4ECbVutpM8
+	/snG4G9NSfFRI=
+X-Virus-Scanned: amavisd-new at ida.ing.tu-bs.de
+Received: from bender.ida.ing.tu-bs.de ([127.0.0.1])
+	by localhost (bender.ida.ing.tu-bs.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with LMTP id YOMyr2cegvCU; Mon, 29 Jun 2015 17:45:34 +0200 (CEST)
+Received: from johanness-latitude (dhcp139.event.etc.tu-bs.de [134.169.60.139])
+	(authenticated bits=0)
+	by bender.ida.ing.tu-bs.de (8.14.4/8.14.4/RX) with ESMTP id
+	t5TFjU4G010424
+	(version=TLSv1/SSLv3 cipher=AES128-GCM-SHA256 bits=128 verify=NO);
+	Mon, 29 Jun 2015 17:45:30 +0200
+Date: Mon, 29 Jun 2015 17:45:41 +0200
+From: Johannes Schlatow <schlatow@ida.ing.tu-bs.de>
+To: qemu-trivial@nongnu.org
+Message-ID: <20150629174541.25e4226c@johanness-latitude>
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.28; x86_64-unknown-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <1435147270-1040-1-git-send-email-pbonzini@redhat.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-IMT-Spam-Score: 0.0 ()
-X-PMX-Version: 6.2.1.2493963, Antispam-Engine: 2.7.2.2107409,
-	Antispam-Data: 2015.6.25.144815
-X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 131.234.142.9
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-tricore: fix
- depositing bits from PCXI into ICR
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 134.169.117.232
+X-Mailman-Approved-At: Mon, 29 Jun 2015 12:56:23 -0400
+Subject: [Qemu-trivial] [PATCH] Fix Cortex-A9 global timer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,37 +60,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jun 2015 14:53:22 -0000
+X-List-Received-Date: Mon, 29 Jun 2015 15:46:09 -0000
 
-On 06/24/2015 02:01 PM, Paolo Bonzini wrote:
-> Spotted by Coverity, because (env->PCXI & MASK_PCXI_PCPN) >> 24
-> is always zero.  The immediately preceding assignment is also
-> wrong though.
->
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->   target-tricore/op_helper.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/target-tricore/op_helper.c b/target-tricore/op_helper.c
-> index 10ed541..53edbda 100644
-> --- a/target-tricore/op_helper.c
-> +++ b/target-tricore/op_helper.c
-> @@ -2545,10 +2545,10 @@ void helper_rfm(CPUTriCoreState *env)
->       env->PC = (env->gpr_a[11] & ~0x1);
->       /* ICR.IE = PCXI.PIE; */
->       env->ICR = (env->ICR & ~MASK_ICR_IE) |
-> -               ((env->PCXI & ~MASK_PCXI_PIE) >> 15);
-> +               ((env->PCXI & MASK_PCXI_PIE) >> 15);
->       /* ICR.CCPN = PCXI.PCPN; */
->       env->ICR = (env->ICR & ~MASK_ICR_CCPN) |
-> -               ((env->PCXI & ~MASK_PCXI_PCPN) >> 24);
-> +               ((env->PCXI & MASK_PCXI_PCPN) >> 24);
->       /* {PCXI, PSW, A[10], A[11]} = M(DCX, 4 * word); */
->       env->PCXI = cpu_ldl_data(env, env->DCX);
->       psw_write(env, cpu_ldl_data(env, env->DCX+4));
-Thanks, applied it to my tricore-next branch.
+The auto increment bit of the timer control register was wrongly
+defined.
 
-Cheers,
-Bastian
+See Cortex-A9 MPcore Technical Reference Manual, Section 4.4.2.
+
+Signed-off-by: Johannes Schlatow <schlatow@ida.ing.tu-bs.de>
+---
+ include/hw/timer/a9gtimer.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
+index b88c02a..98d8e0a 100644
+--- a/include/hw/timer/a9gtimer.h
++++ b/include/hw/timer/a9gtimer.h
+@@ -37,7 +37,7 @@
+ #define R_CONTROL_TIMER_ENABLE      (1 << 0)
+ #define R_CONTROL_COMP_ENABLE       (1 << 1)
+ #define R_CONTROL_IRQ_ENABLE        (1 << 2)
+-#define R_CONTROL_AUTO_INCREMENT    (1 << 2)
++#define R_CONTROL_AUTO_INCREMENT    (1 << 3)
+ #define R_CONTROL_PRESCALER_SHIFT   8
+ #define R_CONTROL_PRESCALER_LEN     8
+ #define R_CONTROL_PRESCALER_MASK    (((1 << R_CONTROL_PRESCALER_LEN) - 1) << \
+-- 
+2.4.2
+
 
