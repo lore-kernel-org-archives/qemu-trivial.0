@@ -1,42 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Z9k4q-0002kQ-Gc
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jun 2015 21:11:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59149)
+	id 1Z9rYA-0003d2-KB
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jun 2015 05:09:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z9k4j-0002ZP-BK
-	for qemu-trivial@nongnu.org; Mon, 29 Jun 2015 21:11:06 -0400
+	(envelope-from <kraxel@redhat.com>) id 1Z9rY8-0003Zn-9p
+	for qemu-trivial@nongnu.org; Tue, 30 Jun 2015 05:09:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1Z9k4Y-0000hR-8J
-	for qemu-trivial@nongnu.org; Mon, 29 Jun 2015 21:11:01 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:23653)
+	(envelope-from <kraxel@redhat.com>) id 1Z9rY7-00071o-CH
+	for qemu-trivial@nongnu.org; Tue, 30 Jun 2015 05:09:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43808)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1Z9k4G-0000WM-Ky; Mon, 29 Jun 2015 21:10:33 -0400
-Received: from 172.24.2.119 (EHLO szxeml425-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CNV49117; Tue, 30 Jun 2015 09:10:13 +0800 (CST)
-Received: from [127.0.0.1] (10.177.19.102) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.158.1;
-	Tue, 30 Jun 2015 09:10:09 +0800
-Message-ID: <5591EC63.40305@huawei.com>
-Date: Tue, 30 Jun 2015 09:09:55 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
-MIME-Version: 1.0
-To: John Snow <jsnow@redhat.com>, <qemu-devel@nongnu.org>
-References: <1435611386-29316-1-git-send-email-jsnow@redhat.com>
-In-Reply-To: <1435611386-29316-1-git-send-email-jsnow@redhat.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.19.102]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] trivial: remove trailing
- newline from error_report
+	(envelope-from <kraxel@redhat.com>)
+	id 1Z9rY1-0006yY-8y; Tue, 30 Jun 2015 05:09:45 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C78819F229;
+	Tue, 30 Jun 2015 09:09:44 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-37.ams2.redhat.com
+	[10.36.116.37])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t5U99h2k014832; Tue, 30 Jun 2015 05:09:43 -0400
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id D2810807CB; Tue, 30 Jun 2015 11:09:40 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 30 Jun 2015 11:09:34 +0200
+Message-Id: <1435655374-20741-1-git-send-email-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH] move QemuOpts from qemu/option.h to
+	qemu/typedefs.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,18 +43,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jun 2015 01:11:06 -0000
+X-List-Received-Date: Tue, 30 Jun 2015 09:09:53 -0000
 
-On 2015/6/30 4:56, John Snow wrote:
-> Minor cleanup.
-> 
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  hw/ide/ahci.c      | 2 +-
->  hw/vfio/platform.c | 2 +-
->  net/tap-linux.c    | 4 ++--
->  3 files changed, 4 insertions(+), 4 deletions(-)
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/qemu/option.h   | 2 +-
+ include/qemu/typedefs.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Gonglei <arei.gonglei@huawei.com>
+diff --git a/include/qemu/option.h b/include/qemu/option.h
+index 57e51c9..28195ba 100644
+--- a/include/qemu/option.h
++++ b/include/qemu/option.h
+@@ -28,6 +28,7 @@
+ 
+ #include <stdint.h>
+ #include "qemu/queue.h"
++#include "qemu/typedefs.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp/qdict.h"
+ 
+@@ -45,7 +46,6 @@ bool has_help_option(const char *param);
+ bool is_valid_option_list(const char *param);
+ 
+ typedef struct QemuOpt QemuOpt;
+-typedef struct QemuOpts QemuOpts;
+ typedef struct QemuOptsList QemuOptsList;
+ 
+ enum QemuOptType {
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 6fdcbcd..690ff69 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -66,6 +66,7 @@ typedef struct QEMUBH QEMUBH;
+ typedef struct QemuConsole QemuConsole;
+ typedef struct QEMUFile QEMUFile;
+ typedef struct QEMUMachine QEMUMachine;
++typedef struct QemuOpts QemuOpts;
+ typedef struct QEMUSGList QEMUSGList;
+ typedef struct QEMUSizedBuffer QEMUSizedBuffer;
+ typedef struct QEMUTimerListGroup QEMUTimerListGroup;
+-- 
+1.8.3.1
 
 
