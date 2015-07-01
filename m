@@ -1,49 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZAKZV-0003Eh-EE
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2015 12:09:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53374)
+	id 1ZAMht-0005b8-Rl
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2015 14:26:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41648)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZAKZS-0003Aq-EC
-	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 12:09:11 -0400
+	(envelope-from <jsnow@redhat.com>) id 1ZAMhr-0005YO-JA
+	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 14:26:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZAKZR-00033v-KB
-	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 12:09:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59437)
+	(envelope-from <jsnow@redhat.com>) id 1ZAMhq-0001NS-PP
+	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 14:25:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34227)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZAKZM-00031e-Bc; Wed, 01 Jul 2015 12:09:04 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id EB8882CD854;
-	Wed,  1 Jul 2015 16:09:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-37.ams2.redhat.com
-	[10.36.116.37])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t61G92DW009871
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 1 Jul 2015 12:09:03 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D1C24303FEAE; Wed,  1 Jul 2015 18:09:00 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <1435655374-20741-1-git-send-email-kraxel@redhat.com>
-	<CAFEAcA8iq5Q84NH59zjS67O93Vq7a1u=9iyoVXB-GeuxA4BVag@mail.gmail.com>
-	<1435663095.30958.54.camel@redhat.com>
-Date: Wed, 01 Jul 2015 18:09:00 +0200
-In-Reply-To: <1435663095.30958.54.camel@redhat.com> (Gerd Hoffmann's message
-	of "Tue, 30 Jun 2015 13:18:15 +0200")
-Message-ID: <87fv57hnc3.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	(envelope-from <jsnow@redhat.com>)
+	id 1ZAMhl-0001M0-CP; Wed, 01 Jul 2015 14:25:53 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id D865119CBE2;
+	Wed,  1 Jul 2015 18:25:52 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t61IPqom031255; Wed, 1 Jul 2015 14:25:52 -0400
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  1 Jul 2015 14:25:49 -0400
+Message-Id: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] move QemuOpts from
-	qemu/option.h to qemu/typedefs.h
+Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>, mjt@tls.msk.ru,
+	lcapitulino@redhat.com
+Subject: [Qemu-trivial] [PATCH] qmp-shell: add documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,24 +40,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jul 2015 16:09:11 -0000
+X-List-Received-Date: Wed, 01 Jul 2015 18:26:00 -0000
 
-Gerd Hoffmann <kraxel@redhat.com> writes:
+I should probably document the changes that were made.
 
-> On Di, 2015-06-30 at 10:15 +0100, Peter Maydell wrote:
->> On 30 June 2015 at 10:09, Gerd Hoffmann <kraxel@redhat.com> wrote:
->> > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
->> > ---
->> >  include/qemu/option.h   | 2 +-
->> >  include/qemu/typedefs.h | 1 +
->> >  2 files changed, 2 insertions(+), 1 deletion(-)
->> 
->> I don't object necessarily, but it would be nice if the
->> commit message said what the rationale for the change was...
->
-> Build failure, with not-yet submitted patches,
-> due to QemuOpts being undeclared.
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ scripts/qmp/qmp-shell | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-Recommend to post it right before a patch that breaks without it,
-because that makes explaining why easier.
+diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
+index 65280d2..fa39bf0 100755
+--- a/scripts/qmp/qmp-shell
++++ b/scripts/qmp/qmp-shell
+@@ -29,6 +29,41 @@
+ # (QEMU) device_add driver=e1000 id=net1
+ # {u'return': {}}
+ # (QEMU)
++#
++# key=value pairs also support Python or JSON object literal subset notations,
++# without spaces. Dictionaries/objects {} are supported as are arrays [].
++#
++#    example-command arg-name1={'key':'value','obj'={'prop':"value"}}
++#
++# Both JSON and Python formatting should work, including both styles of
++# string literal quotes. Both paradigms of literal values should work,
++# including null/true/false for JSON and None/True/False for Python.
++#
++#
++# Transactions have the following multi-line format:
++#
++#    transaction(
++#    action-name1 [ arg-name1=arg1 ] ... [arg-nameN=argN ]
++#    ...
++#    action-nameN [ arg-name1=arg1 ] ... [arg-nameN=argN ]
++#    )
++#
++# One line transactions are also supported:
++#
++#    transaction( action-name1 ... )
++#
++# For example:
++#
++#     (QEMU) transaction(
++#     TRANS> block-dirty-bitmap-add node=drive0 name=bitmap1
++#     TRANS> block-dirty-bitmap-clear node=drive0 name=bitmap0
++#     TRANS> )
++#     {"return": {}}
++#     (QEMU)
++#
++# Use the -v and -p options to activate the verbose and pretty-print options,
++# which will echo back the properly formatted JSON-compliant QMP that is being
++# sent to QEMU, which is useful for debugging and documentation generation.
+ 
+ import qmp
+ import json
+-- 
+2.1.0
+
 
