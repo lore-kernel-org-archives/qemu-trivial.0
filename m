@@ -1,37 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZAb8m-00012c-4r
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2015 05:50:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36443)
+	id 1ZAgSM-0006j9-7a
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2015 11:31:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1ZAb8i-00010P-I5
-	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 05:50:41 -0400
+	(envelope-from <lcapitulino@redhat.com>) id 1ZAgSG-0006Zp-UV
+	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 11:31:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1ZAb8g-0000CX-Iv
-	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 05:50:40 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:57726)
+	(envelope-from <lcapitulino@redhat.com>) id 1ZAgSF-0005C2-Uv
+	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 11:31:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46821)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1ZAb8g-0007rT-1F; Thu, 02 Jul 2015 05:50:38 -0400
-Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CNZ28099; Thu, 02 Jul 2015 17:49:53 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
-	Server id 14.3.158.1; Thu, 2 Jul 2015 17:49:45 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 2 Jul 2015 17:49:13 +0800
-Message-ID: <1435830563-3072-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1ZAgSB-00059D-Cm; Thu, 02 Jul 2015 11:31:07 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 62A7C374A02;
+	Thu,  2 Jul 2015 15:31:06 +0000 (UTC)
+Received: from localhost (ovpn-113-155.phx2.redhat.com [10.3.113.155])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t62FV2dI021011; Thu, 2 Jul 2015 11:31:03 -0400
+Date: Thu, 2 Jul 2015 11:31:02 -0400
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Message-ID: <20150702113102.39ab42a5@redhat.com>
+In-Reply-To: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
+References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, shannon.zhao@linaro.org
-Subject: [Qemu-trivial] [PATCH 00/10] fix memory leak
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] qmp-shell: add documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,51 +46,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jul 2015 09:50:42 -0000
+X-List-Received-Date: Thu, 02 Jul 2015 15:31:13 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+On Wed,  1 Jul 2015 14:25:49 -0400
+John Snow <jsnow@redhat.com> wrote:
 
-This patch series are going to fix the memory leak caused by
-qemu_allocate_irqs. Patch 1-5 convert the device to QOM and store
-the irqs in DeviceState. Patch 6-10 use qemu_allocate_irq instead of
-qemu_allocate_irqs.
+> I should probably document the changes that were made.
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
-Shannon Zhao (10):
-  hw/ppc/ppc4xx_devs.c: Convert ppcuic to QOM
-  include/hw/sparc/grlib.h: Store irqs in DeviceState
-  hw/m68k/mcf5206.c: convert m5206_mbar to QOM
-  hw/m68k/mcf_intc.c: convert mcf_intc to QOM
-  hw/sh4/r2d.c: convert r2d_fpga to QOM
-  hw/arm/palm.c: Fix misusing qemu_allocate_irqs
-  hw/arm/spitz.c: Fix misusing qemu_allocate_irqs
-  hw/arm/tosa.c: Fix misusing qemu_allocate_irqs
-  hw/mips/mips_int.c: use qemu_allocate_irq to fix memory leak
-  hw/openrisc/pic_cpu.c: use qemu_allocate_irq to fix memory leak
+Looks good to me, CC'ing maintainer.
 
- hw/arm/palm.c            | 24 +++++++++------
- hw/arm/spitz.c           | 23 ++++++++------
- hw/arm/tosa.c            | 13 +++++---
- hw/m68k/an5206.c         |  2 +-
- hw/m68k/mcf5206.c        | 75 ++++++++++++++++++++++++++++++++++++---------
- hw/m68k/mcf5208.c        | 22 +++++++------
- hw/m68k/mcf_intc.c       | 69 +++++++++++++++++++++++++++++++++++------
- hw/mips/mips_int.c       |  5 ++-
- hw/net/mcf_fec.c         | 14 ++++++---
- hw/openrisc/pic_cpu.c    |  4 +--
- hw/ppc/ppc405.h          |  6 ++--
- hw/ppc/ppc405_boards.c   |  6 ++--
- hw/ppc/ppc405_uc.c       | 68 ++++++++++++++++++++--------------------
- hw/ppc/ppc440_bamboo.c   | 19 +++++++-----
- hw/ppc/ppc4xx_devs.c     | 55 ++++++++++++++++++++++++++++-----
- hw/sh4/r2d.c             | 80 ++++++++++++++++++++++++++++++++++++++----------
- hw/sparc/leon3.c         | 10 +++---
- include/hw/m68k/mcf.h    | 11 +++----
- include/hw/ppc/ppc4xx.h  |  4 +--
- include/hw/sparc/grlib.h | 12 +++-----
- 20 files changed, 358 insertions(+), 164 deletions(-)
-
--- 
-2.0.4
-
+> ---
+>  scripts/qmp/qmp-shell | 35 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+> 
+> diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
+> index 65280d2..fa39bf0 100755
+> --- a/scripts/qmp/qmp-shell
+> +++ b/scripts/qmp/qmp-shell
+> @@ -29,6 +29,41 @@
+>  # (QEMU) device_add driver=e1000 id=net1
+>  # {u'return': {}}
+>  # (QEMU)
+> +#
+> +# key=value pairs also support Python or JSON object literal subset notations,
+> +# without spaces. Dictionaries/objects {} are supported as are arrays [].
+> +#
+> +#    example-command arg-name1={'key':'value','obj'={'prop':"value"}}
+> +#
+> +# Both JSON and Python formatting should work, including both styles of
+> +# string literal quotes. Both paradigms of literal values should work,
+> +# including null/true/false for JSON and None/True/False for Python.
+> +#
+> +#
+> +# Transactions have the following multi-line format:
+> +#
+> +#    transaction(
+> +#    action-name1 [ arg-name1=arg1 ] ... [arg-nameN=argN ]
+> +#    ...
+> +#    action-nameN [ arg-name1=arg1 ] ... [arg-nameN=argN ]
+> +#    )
+> +#
+> +# One line transactions are also supported:
+> +#
+> +#    transaction( action-name1 ... )
+> +#
+> +# For example:
+> +#
+> +#     (QEMU) transaction(
+> +#     TRANS> block-dirty-bitmap-add node=drive0 name=bitmap1
+> +#     TRANS> block-dirty-bitmap-clear node=drive0 name=bitmap0
+> +#     TRANS> )
+> +#     {"return": {}}
+> +#     (QEMU)
+> +#
+> +# Use the -v and -p options to activate the verbose and pretty-print options,
+> +# which will echo back the properly formatted JSON-compliant QMP that is being
+> +# sent to QEMU, which is useful for debugging and documentation generation.
+>  
+>  import qmp
+>  import json
 
 
