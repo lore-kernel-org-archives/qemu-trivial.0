@@ -1,34 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZAMht-0005b8-Rl
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jul 2015 14:26:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41648)
+	id 1ZAb8L-0000NY-NS
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Jul 2015 05:50:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36095)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZAMhr-0005YO-JA
-	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 14:26:00 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1ZAb8I-0000Li-Jg
+	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 05:50:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZAMhq-0001NS-PP
-	for qemu-trivial@nongnu.org; Wed, 01 Jul 2015 14:25:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34227)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1ZAb8E-0008OY-9A
+	for qemu-trivial@nongnu.org; Thu, 02 Jul 2015 05:50:14 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:58085)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1ZAMhl-0001M0-CP; Wed, 01 Jul 2015 14:25:53 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id D865119CBE2;
-	Wed,  1 Jul 2015 18:25:52 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t61IPqom031255; Wed, 1 Jul 2015 14:25:52 -0400
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed,  1 Jul 2015 14:25:49 -0400
-Message-Id: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>, mjt@tls.msk.ru,
-	lcapitulino@redhat.com
-Subject: [Qemu-trivial] [PATCH] qmp-shell: add documentation
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1ZAb8D-0008Nf-Ma; Thu, 02 Jul 2015 05:50:10 -0400
+Received: from 172.24.2.119 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.2.119])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CNZ28134; Thu, 02 Jul 2015 17:50:00 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
+	Server id 14.3.158.1; Thu, 2 Jul 2015 17:49:50 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 2 Jul 2015 17:49:19 +0800
+Message-ID: <1435830563-3072-7-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1435830563-3072-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1435830563-3072-1-git-send-email-zhaoshenglong@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, shannon.zhao@linaro.org
+Subject: [Qemu-trivial] [PATCH 06/10] hw/arm/palm.c: Fix misusing
+	qemu_allocate_irqs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -40,62 +46,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jul 2015 18:26:00 -0000
+X-List-Received-Date: Thu, 02 Jul 2015 09:50:16 -0000
 
-I should probably document the changes that were made.
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Signed-off-by: John Snow <jsnow@redhat.com>
+Use qemu_allocate_irq instead of qemu_allocate_irqs to fix memory leak.
+
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- scripts/qmp/qmp-shell | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ hw/arm/palm.c | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
 
-diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
-index 65280d2..fa39bf0 100755
---- a/scripts/qmp/qmp-shell
-+++ b/scripts/qmp/qmp-shell
-@@ -29,6 +29,41 @@
- # (QEMU) device_add driver=e1000 id=net1
- # {u'return': {}}
- # (QEMU)
-+#
-+# key=value pairs also support Python or JSON object literal subset notations,
-+# without spaces. Dictionaries/objects {} are supported as are arrays [].
-+#
-+#    example-command arg-name1={'key':'value','obj'={'prop':"value"}}
-+#
-+# Both JSON and Python formatting should work, including both styles of
-+# string literal quotes. Both paradigms of literal values should work,
-+# including null/true/false for JSON and None/True/False for Python.
-+#
-+#
-+# Transactions have the following multi-line format:
-+#
-+#    transaction(
-+#    action-name1 [ arg-name1=arg1 ] ... [arg-nameN=argN ]
-+#    ...
-+#    action-nameN [ arg-name1=arg1 ] ... [arg-nameN=argN ]
-+#    )
-+#
-+# One line transactions are also supported:
-+#
-+#    transaction( action-name1 ... )
-+#
-+# For example:
-+#
-+#     (QEMU) transaction(
-+#     TRANS> block-dirty-bitmap-add node=drive0 name=bitmap1
-+#     TRANS> block-dirty-bitmap-clear node=drive0 name=bitmap0
-+#     TRANS> )
-+#     {"return": {}}
-+#     (QEMU)
-+#
-+# Use the -v and -p options to activate the verbose and pretty-print options,
-+# which will echo back the properly formatted JSON-compliant QMP that is being
-+# sent to QEMU, which is useful for debugging and documentation generation.
+diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+index 7f1cfb8..f73c8a2 100644
+--- a/hw/arm/palm.c
++++ b/hw/arm/palm.c
+@@ -158,21 +158,25 @@ static void palmte_onoff_gpios(void *opaque, int line, int level)
  
- import qmp
- import json
+ static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
+ {
+-    qemu_irq *misc_gpio;
+-
+     omap_mmc_handlers(cpu->mmc,
+                     qdev_get_gpio_in(cpu->gpio, PALMTE_MMC_WP_GPIO),
+                     qemu_irq_invert(omap_mpuio_in_get(cpu->mpuio)
+                             [PALMTE_MMC_SWITCH_GPIO]));
+ 
+-    misc_gpio = qemu_allocate_irqs(palmte_onoff_gpios, cpu, 7);
+-    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,	misc_gpio[0]);
+-    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,	misc_gpio[1]);
+-    qdev_connect_gpio_out(cpu->gpio, 11,			misc_gpio[2]);
+-    qdev_connect_gpio_out(cpu->gpio, 12,			misc_gpio[3]);
+-    qdev_connect_gpio_out(cpu->gpio, 13,			misc_gpio[4]);
+-    omap_mpuio_out_set(cpu->mpuio, 1,				misc_gpio[5]);
+-    omap_mpuio_out_set(cpu->mpuio, 3,				misc_gpio[6]);
++    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,
++                          qemu_allocate_irq(palmte_onoff_gpios, cpu, 0));
++    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,
++                          qemu_allocate_irq(palmte_onoff_gpios, cpu, 1));
++    qdev_connect_gpio_out(cpu->gpio, 11,
++                          qemu_allocate_irq(palmte_onoff_gpios, cpu, 2));
++    qdev_connect_gpio_out(cpu->gpio, 12,
++                          qemu_allocate_irq(palmte_onoff_gpios, cpu, 3));
++    qdev_connect_gpio_out(cpu->gpio, 13,
++                          qemu_allocate_irq(palmte_onoff_gpios, cpu, 4));
++    omap_mpuio_out_set(cpu->mpuio, 1,
++                       qemu_allocate_irq(palmte_onoff_gpios, cpu, 5));
++    omap_mpuio_out_set(cpu->mpuio, 3,
++                       qemu_allocate_irq(palmte_onoff_gpios, cpu, 6));
+ 
+     /* Reset some inputs to initial state.  */
+     qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
 -- 
-2.1.0
+2.0.4
+
 
 
