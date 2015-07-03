@@ -1,48 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZB1nU-000543-Ki
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2015 10:18:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52961)
+	id 1ZB1nd-0005GK-3r
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jul 2015 10:18:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZB1nS-00050D-7T
-	for qemu-trivial@nongnu.org; Fri, 03 Jul 2015 10:18:31 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ZB1na-0005BF-89
+	for qemu-trivial@nongnu.org; Fri, 03 Jul 2015 10:18:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZB1nR-0002WY-2g
-	for qemu-trivial@nongnu.org; Fri, 03 Jul 2015 10:18:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56947)
+	(envelope-from <pm215@archaic.org.uk>) id 1ZB1nV-0002XW-Er
+	for qemu-trivial@nongnu.org; Fri, 03 Jul 2015 10:18:38 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:57091)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZB1nJ-0002So-3s; Fri, 03 Jul 2015 10:18:21 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 81B41C2304;
-	Fri,  3 Jul 2015 14:18:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-44.ams2.redhat.com
-	[10.36.116.44])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t63EIIlr031321
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 3 Jul 2015 10:18:20 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 2CA2C303FEAE; Fri,  3 Jul 2015 16:18:18 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?= <dirty.ice.hu@gmail.com>
-References: <c7aaec779e13932db2c7dd4cce2700b41f162092.1435923273.git.DirtY.iCE.hu@gmail.com>
-	<87616175u3.fsf@blackfin.pond.sub.org> <5596927F.5000407@gmail.com>
-Date: Fri, 03 Jul 2015 16:18:18 +0200
-In-Reply-To: <5596927F.5000407@gmail.com> (=?utf-8?B?IkvFkXbDoWfDsyBab2x0?=
-	=?utf-8?B?w6FuIidz?= message of "Fri, 3 Jul 2015 15:47:43 +0200")
-Message-ID: <87y4ix1g0l.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.3 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <pm215@archaic.org.uk>) id 1ZB1nV-0002XQ-6w
+	for qemu-trivial@nongnu.org; Fri, 03 Jul 2015 10:18:33 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZB1nM-0003xt-N9; Fri, 03 Jul 2015 15:18:24 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri,  3 Jul 2015 15:18:24 +0100
+Message-Id: <1435933104-15216-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel@nongnu.org, "open list:Block layer core" <qemu-block@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] opts: produce valid command
-	line in qemu_opts_print
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] Stop including qemu-common.h in memory.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,86 +35,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jul 2015 14:18:31 -0000
+X-List-Received-Date: Fri, 03 Jul 2015 14:18:39 -0000
 
-"K=C5=91v=C3=A1g=C3=B3 Zolt=C3=A1n" <dirty.ice.hu@gmail.com> writes:
+Including qemu-common.h from other header files is generally a bad
+idea, because it means it's very easy to end up with a circular
+dependency. For instance, if we wanted to include memory.h from
+qom/cpu.h we'd end up with this loop:
+ memory.h -> qemu-common.h -> cpu.h -> cpu-qom.h -> qom/cpu.h -> memory.h
 
-> 2015-07-03 15:01 keltez=C3=A9ssel, Markus Armbruster =C3=ADrta:
->> "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com> writes:
->>
->>> This will let us print options in a format that the user would actually
->>> write it on the command line (foo=3Dbar,baz=3Dasd,etc=3Ddef), without
->>> prepending a spurious comma at the beginning of the list, or quoting
->>> values unnecessarily.  This patch provides the following changes:
->>> * write and id=3D, if the option has an id
->>> * do not print separator before the first element
->>> * do not quote string arguments
->>> * properly escape commas (,) for QEMU
->>>
->>> Signed-off-by: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <DirtY.iCE.hu@gmail.c=
-om>
->>> ---
->>>
->>> Changes from patch submitted as part of `qapi flattening':
->>> * no longer tries to do proper escaping for the shell
->>>
->>>   block.c            |  2 +-
->>>   util/qemu-option.c | 30 +++++++++++++++++++++++++++---
->>>   2 files changed, 28 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/block.c b/block.c
->>> index 7e130cc..78a5304 100644
->>> --- a/block.c
->>> +++ b/block.c
->>> @@ -3813,7 +3813,7 @@ void bdrv_img_create(const char *filename, const =
-char *fmt,
->>>       }
->>>
->>>       if (!quiet) {
->>> -        printf("Formatting '%s', fmt=3D%s", filename, fmt);
->>> +        printf("Formatting '%s', fmt=3D%s ", filename, fmt);
->>>           qemu_opts_print(opts, " ");
->>>           puts("");
->>>       }
->>> diff --git a/util/qemu-option.c b/util/qemu-option.c
->>> index efe9d27..55ef172 100644
->>> --- a/util/qemu-option.c
->>> +++ b/util/qemu-option.c
->>> @@ -730,14 +730,36 @@ void qemu_opts_del(QemuOpts *opts)
->>>       g_free(opts);
->>>   }
->>>
->>> -void qemu_opts_print(QemuOpts *opts, const char *sep)
->>> +/* print value, escaping any commas in value */
->>> +static void escaped_print(const char *value)
->>
->> Have you searched the tree for existing code doing this?
->
-> I didn't found any function like that.
+Remove the include from memory.h. This requires us to fix up a few
+other files which were inadvertently getting declarations indirectly
+through memory.h.
 
-Okay.
+The biggest change is splitting the fprintf_function typedef out
+into its own header so other headers can get at it without having
+to include qemu-common.h.
 
->>> +{
->>> +    const char *ptr;
->>> +
->>> +    for (ptr =3D value; *ptr; ++ptr) {
->>> +        if (*ptr =3D=3D ',') {
->>> +            printf(",,");
->>> +        } else {
->>> +            putchar(*ptr);
->>> +        }
->>> +    }
->>
->> Slightly simpler:
->>
->>          if (*ptr =3D=3D ',') {
->>              putchar(',');
->>          }
->>          putchar(*ptr);
->>
->> Matter of taste.
->
-> I also like it better that way. Should I send a v2 patch?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I originally wrote this because I thought I was going to need to
+include memory.h in qom/cpu.h. In fact I managed to avoid that in
+the end, but this still seems like useful cleanup.
 
-If it's not too much trouble...  Feel free to keep my R-by then.
+
+ include/exec/cpu-common.h |  2 ++
+ include/exec/memory.h     |  1 -
+ include/hw/arm/arm.h      |  1 +
+ include/qemu-common.h     |  4 +---
+ include/qemu/fprintf-fn.h | 16 ++++++++++++++++
+ target-s390x/mmu_helper.c |  2 +-
+ 6 files changed, 21 insertions(+), 5 deletions(-)
+ create mode 100644 include/qemu/fprintf-fn.h
+
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index de8a720..9fb1d54 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -13,6 +13,8 @@
+ 
+ #include "qemu/bswap.h"
+ #include "qemu/queue.h"
++#include "qemu/fprintf-fn.h"
++#include "qemu/typedefs.h"
+ 
+ /**
+  * CPUListState:
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 8ae004e..1881320 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -23,7 +23,6 @@
+ 
+ #include <stdint.h>
+ #include <stdbool.h>
+-#include "qemu-common.h"
+ #include "exec/cpu-common.h"
+ #ifndef CONFIG_USER_ONLY
+ #include "exec/hwaddr.h"
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index 760804c..4dcd4f9 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -14,6 +14,7 @@
+ #include "exec/memory.h"
+ #include "hw/irq.h"
+ #include "qemu/notify.h"
++#include "cpu.h"
+ 
+ /* armv7m.c */
+ qemu_irq *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index d52d09c..09b8c06 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -15,6 +15,7 @@
+ #include "qemu/compiler.h"
+ #include "config-host.h"
+ #include "qemu/typedefs.h"
++#include "qemu/fprintf-fn.h"
+ 
+ #if defined(__arm__) || defined(__sparc__) || defined(__mips__) || defined(__hppa__) || defined(__ia64__)
+ #define WORDS_ALIGNED
+@@ -85,9 +86,6 @@
+ # error Unknown pointer size
+ #endif
+ 
+-typedef int (*fprintf_function)(FILE *f, const char *fmt, ...)
+-    GCC_FMT_ATTR(2, 3);
+-
+ #ifdef _WIN32
+ #define fsync _commit
+ #if !defined(lseek)
+diff --git a/include/qemu/fprintf-fn.h b/include/qemu/fprintf-fn.h
+new file mode 100644
+index 0000000..4f66d45
+--- /dev/null
++++ b/include/qemu/fprintf-fn.h
+@@ -0,0 +1,16 @@
++/*
++ * Typedef for fprintf-alike function pointers.
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef FPRINTF_FN_H
++
++#include "qemu/compiler.h"
++#include <stdio.h>
++
++typedef int (*fprintf_function)(FILE *f, const char *fmt, ...)
++    GCC_FMT_ATTR(2, 3);
++
++#endif
+diff --git a/target-s390x/mmu_helper.c b/target-s390x/mmu_helper.c
+index 815ff42..1ea6d81 100644
+--- a/target-s390x/mmu_helper.c
++++ b/target-s390x/mmu_helper.c
+@@ -17,8 +17,8 @@
+ 
+ #include "qemu/error-report.h"
+ #include "exec/address-spaces.h"
+-#include "sysemu/kvm.h"
+ #include "cpu.h"
++#include "sysemu/kvm.h"
+ 
+ /* #define DEBUG_S390 */
+ /* #define DEBUG_S390_PTE */
+-- 
+1.9.1
+
 
