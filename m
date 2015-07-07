@@ -1,40 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZCHZQ-0000Ad-7N
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2015 21:21:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41276)
+	id 1ZCHlp-0002rR-SQ
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jul 2015 21:34:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45553)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1ZCHZN-00009V-NB
-	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:21:10 -0400
+	(envelope-from <sfeldma@gmail.com>) id 1ZCHln-0002qY-AH
+	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:34:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1ZCHZK-0001mY-Fm
-	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:21:09 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:28820)
+	(envelope-from <sfeldma@gmail.com>) id 1ZCHlm-0007Gm-86
+	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:33:59 -0400
+Received: from mail-oi0-x22b.google.com ([2607:f8b0:4003:c06::22b]:36747)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1ZCHZJ-0001lw-TD
-	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:21:06 -0400
-Received: from 172.24.2.119 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.2.119])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id CQR87079; Tue, 07 Jul 2015 09:20:57 +0800 (CST)
-Received: from [127.0.0.1] (10.177.22.69) by szxeml434-hub.china.huawei.com
-	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1; Tue, 7 Jul 2015
-	09:20:47 +0800
-Message-ID: <559B296C.2080608@huawei.com>
-Date: Tue, 7 Jul 2015 09:20:44 +0800
-From: zhanghailiang <zhang.zhanghailiang@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:31.0) Gecko/20100101 Thunderbird/31.1.1
+	(envelope-from <sfeldma@gmail.com>) id 1ZCHlm-0007GP-16
+	for qemu-trivial@nongnu.org; Mon, 06 Jul 2015 21:33:58 -0400
+Received: by oiaf66 with SMTP id f66so99338840oia.3
+	for <qemu-trivial@nongnu.org>; Mon, 06 Jul 2015 18:33:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=G5kkaUF+lwXtYF+e+Z4f1l5KPqHSz8ns0CYD4gNpZlQ=;
+	b=tSMFIajMEBXeA/goypvYHadlZIQ/+lscHKwvpt9fSshSFE7h4PbV3FtM7muAYP4SdJ
+	PCT+MlwHvRc/pZnVDBdhPWajvxL5YT5qKdTVxXNgf1yFbaxS7rDGS8cKTW92pqT77SJt
+	V6rgDdQerhbbDmIM3scGiAgPBtK293LXa5ED+I/t0XUt2ItrOG5RBdtqfjbWEiJ4aQBC
+	bOE08sRgXxWA/xYlorVP9cnalg4JmYEHEEgFuzebAYwb6dhB+MM83wlO9Q/CjIGYYa0s
+	JHXGMfQfLSxw6Kf1Zx+5KRa/mMuHMbUEnYnP3KaSF2c+MMNQ9DzXmEnM+DEq3AiEk0rj
+	9U0g==
+X-Received: by 10.202.85.200 with SMTP id j191mr1409063oib.101.1436232836783; 
+	Mon, 06 Jul 2015 18:33:56 -0700 (PDT)
 MIME-Version: 1.0
-To: Scott Feldman <sfeldma@gmail.com>
+Received: by 10.76.56.212 with HTTP; Mon, 6 Jul 2015 18:33:37 -0700 (PDT)
+In-Reply-To: <559B296C.2080608@huawei.com>
 References: <1435023111-8780-1-git-send-email-zhang.zhanghailiang@huawei.com>
 	<CAE4R7bAXEXtHKsKHnFqbqXOf8sdHBSH_Mq4XyOXbZN4+G6aDpw@mail.gmail.com>
-In-Reply-To: <CAE4R7bAXEXtHKsKHnFqbqXOf8sdHBSH_Mq4XyOXbZN4+G6aDpw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.22.69]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
+	<559B296C.2080608@huawei.com>
+From: Scott Feldman <sfeldma@gmail.com>
+Date: Mon, 6 Jul 2015 18:33:37 -0700
+Message-ID: <CAE4R7bABiPUSj+XRNoz2mn_x2Yt-xy6+QhU06z3nsLRP3Ger4A@mail.gmail.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c06::22b
 Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?B?SmnFmcOtIFDDrXJrbw==?= <jiri@resnulli.us>,
 	peter.huangpeng@huawei.com
@@ -51,20 +56,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jul 2015 01:21:10 -0000
+X-List-Received-Date: Tue, 07 Jul 2015 01:34:00 -0000
 
-ping ?
-
-Will anyone pick this up ?
-
-On 2015/6/23 14:06, Scott Feldman wrote:
-> On Mon, Jun 22, 2015 at 6:31 PM, zhanghailiang
-> <zhang.zhanghailiang@huawei.com> wrote:
->> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+On Mon, Jul 6, 2015 at 6:20 PM, zhanghailiang
+<zhang.zhanghailiang@huawei.com> wrote:
+> ping ?
 >
-> Acked-by: Scott Feldman <sfeldma@gmail.com>
->
->
+> Will anyone pick this up ?
+
+Hi zhanghailiang, Stefan picked up a similar version which uses g_new0:
+
+http://lists.nongnu.org/archive/html/qemu-devel/2015-06/msg06584.html
+http://lists.nongnu.org/archive/html/qemu-devel/2015-06/msg06686.html
 
 
+>
+> On 2015/6/23 14:06, Scott Feldman wrote:
+>>
+>> On Mon, Jun 22, 2015 at 6:31 PM, zhanghailiang
+>> <zhang.zhanghailiang@huawei.com> wrote:
+>>>
+>>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>>
+>>
+>> Acked-by: Scott Feldman <sfeldma@gmail.com>
+>>
+>>
+>
+>
 
