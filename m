@@ -1,42 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZCVoW-0003qw-V9
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jul 2015 12:33:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44116)
+	id 1ZD92J-0003Qa-Lr
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jul 2015 06:26:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZCVoU-0003oL-HR
-	for qemu-trivial@nongnu.org; Tue, 07 Jul 2015 12:33:43 -0400
+	(envelope-from <stefanha@gmail.com>) id 1ZD92G-0003NE-Kn
+	for qemu-trivial@nongnu.org; Thu, 09 Jul 2015 06:26:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZCVoT-0007Hs-If
-	for qemu-trivial@nongnu.org; Tue, 07 Jul 2015 12:33:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32995)
+	(envelope-from <stefanha@gmail.com>) id 1ZD92F-0006cF-O1
+	for qemu-trivial@nongnu.org; Thu, 09 Jul 2015 06:26:32 -0400
+Received: from mail-wg0-x231.google.com ([2a00:1450:400c:c00::231]:36364)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1ZCVoO-0007E5-61; Tue, 07 Jul 2015 12:33:36 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 3685038880B;
-	Tue,  7 Jul 2015 16:33:35 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-29.bos.redhat.com [10.18.17.29])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t67GXWCM012503; Tue, 7 Jul 2015 12:33:32 -0400
-Message-ID: <559BFF5B.4050405@redhat.com>
-Date: Tue, 07 Jul 2015 12:33:31 -0400
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1ZD92B-0006Zs-5F; Thu, 09 Jul 2015 06:26:27 -0400
+Received: by wgxm20 with SMTP id m20so36075691wgx.3;
+	Thu, 09 Jul 2015 03:26:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=UKHzYwt82sasj+U5PJxisO1LtmKDWl4+0gaQiUCNpLg=;
+	b=byUE3epMLuBNUPrug5rt4nwbkMx4w4ajdbGe5AWXeXiaUei8lbcUHx1V0NXfCK/yFw
+	hyiaRfuvPB1K5xMHja0gL2pyYAVKqM1zLX7pc/pSYSriRAmlgAGRwPorwLgNenkoteFZ
+	tik/5AJVqku/TR6swKlEpM4VYJoRNRPY8mu8BhYrg/gX5mrv8/DcLegwA3az9SZIOkU6
+	JJ3EfJazin88K/QHIWwaO+Cq1U3nbSJUSJ856Ss3DfDjMcvMQ4raykqaXuKyAQFD2gmv
+	hh/oh4o1b0NZugKte3wRP9mOq2JIOmvi+HcCcIPeClO5XrVgFUPOavDojJKnIeJnZqJR
+	AKvQ==
+X-Received: by 10.180.86.73 with SMTP id n9mr118843785wiz.78.1436437586347;
+	Thu, 09 Jul 2015 03:26:26 -0700 (PDT)
+Received: from localhost (host86-153-218-221.range86-153.btcentralplus.com.
+	[86.153.218.221])
+	by smtp.gmail.com with ESMTPSA id q3sm8033823wjr.38.2015.07.09.03.26.24
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 09 Jul 2015 03:26:25 -0700 (PDT)
+Date: Thu, 9 Jul 2015 11:26:23 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: John Snow <jsnow@redhat.com>
+Message-ID: <20150709102623.GC28530@stefanha-thinkpad.redhat.com>
+References: <1435611386-29316-1-git-send-email-jsnow@redhat.com>
 MIME-Version: 1.0
-To: Luiz Capitulino <lcapitulino@redhat.com>
-References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
-	<20150702113102.39ab42a5@redhat.com>
-In-Reply-To: <20150702113102.39ab42a5@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-shell: add documentation
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="0lnxQi9hkpPO77W3"
+Content-Disposition: inline
+In-Reply-To: <1435611386-29316-1-git-send-email-jsnow@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c00::231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] trivial: remove trailing
+ newline from error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,80 +59,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jul 2015 16:33:43 -0000
+X-List-Received-Date: Thu, 09 Jul 2015 10:26:33 -0000
 
 
+--0lnxQi9hkpPO77W3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 07/02/2015 11:31 AM, Luiz Capitulino wrote:
-> On Wed,  1 Jul 2015 14:25:49 -0400
-> John Snow <jsnow@redhat.com> wrote:
-> 
->> I should probably document the changes that were made.
->>
->> Signed-off-by: John Snow <jsnow@redhat.com>
-> 
-> Looks good to me, CC'ing maintainer.
-> 
+On Mon, Jun 29, 2015 at 04:56:26PM -0400, John Snow wrote:
+> Minor cleanup.
+>=20
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  hw/ide/ahci.c      | 2 +-
+>  hw/vfio/platform.c | 2 +-
+>  net/tap-linux.c    | 4 ++--
+>  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Whoops, didn't realize Markus took this file over, too. Sorry Luiz.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Markus, would you consider staging this? It's purely a documentation
-update for only a dev tool, so it doesn't really matter /when/ it lands
-either way, just shoring up some changes I made a while back to the
-interpreter here.
+Laszlo Ersek suggested a compile-time check (e.g. BUILD_BUG_ON()).  Have
+you looked into this?
 
-tldr: "ping"
+Perhaps something along the lines of:
 
->> ---
->>  scripts/qmp/qmp-shell | 35 +++++++++++++++++++++++++++++++++++
->>  1 file changed, 35 insertions(+)
->>
->> diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
->> index 65280d2..fa39bf0 100755
->> --- a/scripts/qmp/qmp-shell
->> +++ b/scripts/qmp/qmp-shell
->> @@ -29,6 +29,41 @@
->>  # (QEMU) device_add driver=e1000 id=net1
->>  # {u'return': {}}
->>  # (QEMU)
->> +#
->> +# key=value pairs also support Python or JSON object literal subset notations,
->> +# without spaces. Dictionaries/objects {} are supported as are arrays [].
->> +#
->> +#    example-command arg-name1={'key':'value','obj'={'prop':"value"}}
->> +#
->> +# Both JSON and Python formatting should work, including both styles of
->> +# string literal quotes. Both paradigms of literal values should work,
->> +# including null/true/false for JSON and None/True/False for Python.
->> +#
->> +#
->> +# Transactions have the following multi-line format:
->> +#
->> +#    transaction(
->> +#    action-name1 [ arg-name1=arg1 ] ... [arg-nameN=argN ]
->> +#    ...
->> +#    action-nameN [ arg-name1=arg1 ] ... [arg-nameN=argN ]
->> +#    )
->> +#
->> +# One line transactions are also supported:
->> +#
->> +#    transaction( action-name1 ... )
->> +#
->> +# For example:
->> +#
->> +#     (QEMU) transaction(
->> +#     TRANS> block-dirty-bitmap-add node=drive0 name=bitmap1
->> +#     TRANS> block-dirty-bitmap-clear node=drive0 name=bitmap0
->> +#     TRANS> )
->> +#     {"return": {}}
->> +#     (QEMU)
->> +#
->> +# Use the -v and -p options to activate the verbose and pretty-print options,
->> +# which will echo back the properly formatted JSON-compliant QMP that is being
->> +# sent to QEMU, which is useful for debugging and documentation generation.
->>  
->>  import qmp
->>  import json
-> 
-> 
+BUILD_BUG_ON(__builtin_constant_p(fmt) &&
+             __builtin_strlen(fmt) > 0 &&
+	     fmt[__builtin_strlen(fmt) - 1] =3D=3D '\n')
+
+--0lnxQi9hkpPO77W3
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJVnkxPAAoJEJykq7OBq3PI/E4H/RlyTdn/95j4RxZy8ZdcTTsb
+1Uq/BGUs5dTmxX97KuEcPLskqGRkKL7dx9Jmxi7TEM/8xQcP/19+mI9liElJjbST
+P/B7vUmbDZJjmxd87ZZXckfPcfqdvTH0NKs8t+1CwB9UtH+vVPPmi+5Vs3MSlvUC
+OdB0Hz56uhgJ0TtZOH8/2PtSglvUZzdz16FaXGWutqoZtY5dI7qnJT/JpzAGr7su
+k0DEnOobJp7D8vAjzld3QboTJoHMwrHrmYsOCvzZIL0+R36gUxEayIJgZH3sD686
+8OhT01K6PyzaskhIesS9Hp4Vfu8n9Lfc3bZSnTgI9o4XY5s3Ah7g0uxa+Vw+YNM=
+=6BT2
+-----END PGP SIGNATURE-----
+
+--0lnxQi9hkpPO77W3--
 
