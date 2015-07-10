@@ -1,42 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZDXpD-00049b-Ry
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2015 08:54:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47479)
+	id 1ZDdNN-00027y-UZ
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2015 14:50:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37508)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZDXpA-00047L-QE
-	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 08:54:41 -0400
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNI-00023V-86
+	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZDXpA-0001Sk-1v
-	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 08:54:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37430)
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNC-0005ac-LW
+	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:16 -0400
+Received: from e32.co.us.ibm.com ([32.97.110.150]:59278)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZDXp2-0001GU-2L; Fri, 10 Jul 2015 08:54:32 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 843BE388B85;
-	Fri, 10 Jul 2015 12:54:30 +0000 (UTC)
-Received: from [10.36.112.60] (ovpn-112-60.ams2.redhat.com [10.36.112.60])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6ACsQJX027875
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 10 Jul 2015 08:54:29 -0400
-To: arei.gonglei@huawei.com, qemu-devel@nongnu.org
-References: <1436489490-236-1-git-send-email-arei.gonglei@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <559FC082.9010605@redhat.com>
-Date: Fri, 10 Jul 2015 14:54:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.0.1
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNC-0005aT-Dq
+	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:10 -0400
+Received: from /spool/local
+	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
+	Fri, 10 Jul 2015 12:50:09 -0600
+Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
+	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 10 Jul 2015 12:50:07 -0600
+X-Helo: d03dlp01.boulder.ibm.com
+X-MailFrom: mdroth@linux.vnet.ibm.com
+X-RcptTo: qemu-trivial@nongnu.org
+Received: from b03cxnp08027.gho.boulder.ibm.com
+	(b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 7B4C01FF0043;
+	Fri, 10 Jul 2015 12:41:17 -0600 (MDT)
+Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
+	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id t6AIo67636110542; Fri, 10 Jul 2015 11:50:07 -0700
+Received: from d03av01.boulder.ibm.com (localhost [127.0.0.1])
+	by d03av01.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
+	id t6AIo6Z6014935; Fri, 10 Jul 2015 12:50:06 -0600
+Received: from localhost ([9.41.105.109])
+	by d03av01.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t6AIo4s7014839; Fri, 10 Jul 2015 12:50:04 -0600
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <1436489490-236-1-git-send-email-arei.gonglei@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Content-Transfer-Encoding: quoted-printable
+To: <arei.gonglei@huawei.com>, qemu-devel@nongnu.org
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+In-Reply-To: <1436489490-236-3-git-send-email-arei.gonglei@huawei.com>
+References: <1436489490-236-1-git-send-email-arei.gonglei@huawei.com>
+	<1436489490-236-3-git-send-email-arei.gonglei@huawei.com>
+Message-ID: <20150710184950.22411.10593@loki>
+User-Agent: alot/0.3.6
+Date: Fri, 10 Jul 2015 13:49:50 -0500
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15071018-0005-0000-0000-0000137FBF6B
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 0/4] fix memory leak
+X-Received-From: 32.97.110.150
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Gonglei <arei.gonglei@huawei.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/4] ppc/spapr_drc: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,29 +67,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2015 12:54:41 -0000
+X-List-Received-Date: Fri, 10 Jul 2015 18:50:17 -0000
 
-
-
-On 10/07/2015 02:51, arei.gonglei@huawei.com wrote:
+Quoting arei.gonglei@huawei.com (2015-07-09 19:51:28)
 > From: Gonglei <arei.gonglei@huawei.com>
-> 
-> Spotted by Coverity.
-> 
-> Gonglei (4):
->   cpu: fix memory leak
->   ppc/spapr_drc: fix memory leak
->   arm/xlnx-zynqmp: fix memory leak
->   vl.c: fix memory leak
-> 
->  hw/arm/xlnx-zynqmp.c | 4 ++--
->  hw/ppc/spapr_drc.c   | 1 +
->  target-i386/cpu.c    | 2 +-
->  vl.c                 | 5 ++++-
->  4 files changed, 8 insertions(+), 4 deletions(-)
-> 
+> =
 
-Eduardo posted a patch for 1, too.
+> fix CID 1311373.
+> =
 
-Paolo
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+
+Reviewed-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+
+> ---
+>  hw/ppc/spapr_drc.c | 1 +
+>  1 file changed, 1 insertion(+)
+> =
+
+> diff --git a/hw/ppc/spapr_drc.c b/hw/ppc/spapr_drc.c
+> index ef98538..ee87432 100644
+> --- a/hw/ppc/spapr_drc.c
+> +++ b/hw/ppc/spapr_drc.c
+> @@ -422,6 +422,7 @@ static void realize(DeviceState *d, Error **errp)
+>          error_free(err);
+>          object_unref(OBJECT(drc));
+>      }
+> +    g_free(child_name);
+>      DPRINTFN("drc realize complete");
+>  }
+> =
+
+> -- =
+
+> 1.7.12.4
+> =
+
+> =
+
+>=20
+
 
