@@ -1,61 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZDdNN-00027y-UZ
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jul 2015 14:50:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37508)
+	id 1ZDqYO-0000KE-LF
+	for mharc-qemu-trivial@gnu.org; Sat, 11 Jul 2015 04:54:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNI-00023V-86
-	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:17 -0400
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ZDqYL-0000II-I3
+	for qemu-trivial@nongnu.org; Sat, 11 Jul 2015 04:54:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNC-0005ac-LW
-	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:16 -0400
-Received: from e32.co.us.ibm.com ([32.97.110.150]:59278)
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ZDqYI-0008E1-Bx
+	for qemu-trivial@nongnu.org; Sat, 11 Jul 2015 04:54:33 -0400
+Received: from mail-yk0-f169.google.com ([209.85.160.169]:33366)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1ZDdNC-0005aT-Dq
-	for qemu-trivial@nongnu.org; Fri, 10 Jul 2015 14:50:10 -0400
-Received: from /spool/local
-	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Fri, 10 Jul 2015 12:50:09 -0600
-Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
-	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 10 Jul 2015 12:50:07 -0600
-X-Helo: d03dlp01.boulder.ibm.com
-X-MailFrom: mdroth@linux.vnet.ibm.com
-X-RcptTo: qemu-trivial@nongnu.org
-Received: from b03cxnp08027.gho.boulder.ibm.com
-	(b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
-	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 7B4C01FF0043;
-	Fri, 10 Jul 2015 12:41:17 -0600 (MDT)
-Received: from d03av01.boulder.ibm.com (d03av01.boulder.ibm.com [9.17.195.167])
-	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id t6AIo67636110542; Fri, 10 Jul 2015 11:50:07 -0700
-Received: from d03av01.boulder.ibm.com (localhost [127.0.0.1])
-	by d03av01.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
-	id t6AIo6Z6014935; Fri, 10 Jul 2015 12:50:06 -0600
-Received: from localhost ([9.41.105.109])
-	by d03av01.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t6AIo4s7014839; Fri, 10 Jul 2015 12:50:04 -0600
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <peter.crosthwaite@petalogix.com>) id 1ZDqYI-0008Ds-7E
+	for qemu-trivial@nongnu.org; Sat, 11 Jul 2015 04:54:30 -0400
+Received: by ykeo3 with SMTP id o3so160140513yke.0
+	for <qemu-trivial@nongnu.org>; Sat, 11 Jul 2015 01:54:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=4gm60T2R5Me9NvewsqXw6CWHQwPFOa8/ok+BaDvIMps=;
+	b=bb4Q7UDRTJmpqaeyltqM5upd1KkbOp2J4WH0Epz3594wcR7yOzGGvpgkpO4/vZiZ3j
+	FHxJW1yFP3ok8Ckt32E55S9wzvXf3bdFzs9akNSG3EzZIRMBhcRVUWqwgKEiMnUVw0V0
+	i1GyC1Km5s2mqgYkW7x5spdhd24NOFgwUk489u4BmKrw5xhjs13OYGZV23ENkbDL92Ym
+	JBO5/p46YD81zN+TR9HgTDkotZBiKRK5Qc0rB1rINjki1YjuscWDkEMrU8DRAd0mtyxB
+	/1WOtjkBwQl1DaOgvfIZ6Pg60K0ZSumXusGBD+WA0GBG/O0OlZScHvUqd3KruBEyIP3x
+	7sqQ==
+X-Gm-Message-State: ALoCoQnjFNsol2xOZpJ8rHHT+LQOKAE2BfZJ0VPhAJyM46j23IIhdZUj7+I5XCGai1UXBiuGHB64
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: <arei.gonglei@huawei.com>, qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <1436489490-236-3-git-send-email-arei.gonglei@huawei.com>
+X-Received: by 10.170.218.86 with SMTP id k83mr28011223ykf.6.1436604869496;
+	Sat, 11 Jul 2015 01:54:29 -0700 (PDT)
+Sender: peter.crosthwaite@petalogix.com
+Received: by 10.37.42.88 with HTTP; Sat, 11 Jul 2015 01:54:29 -0700 (PDT)
+In-Reply-To: <1436489490-236-4-git-send-email-arei.gonglei@huawei.com>
 References: <1436489490-236-1-git-send-email-arei.gonglei@huawei.com>
-	<1436489490-236-3-git-send-email-arei.gonglei@huawei.com>
-Message-ID: <20150710184950.22411.10593@loki>
-User-Agent: alot/0.3.6
-Date: Fri, 10 Jul 2015 13:49:50 -0500
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15071018-0005-0000-0000-0000137FBF6B
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 32.97.110.150
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Gonglei <arei.gonglei@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH 2/4] ppc/spapr_drc: fix memory leak
+	<1436489490-236-4-git-send-email-arei.gonglei@huawei.com>
+Date: Sat, 11 Jul 2015 01:54:29 -0700
+X-Google-Sender-Auth: uSYMAyRFoYC6-5FxWn04xtlMzzo
+Message-ID: <CAEgOgz7HNsZn24PB0X5SU56FMBJZ07bmvKWV69MpxCuSJqMYPA@mail.gmail.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+To: gonglei <arei.gonglei@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.160.169
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] arm/xlnx-zynqmp: fix
+	memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,44 +58,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jul 2015 18:50:17 -0000
+X-List-Received-Date: Sat, 11 Jul 2015 08:54:35 -0000
 
-Quoting arei.gonglei@huawei.com (2015-07-09 19:51:28)
+On Thu, Jul 9, 2015 at 5:51 PM,  <arei.gonglei@huawei.com> wrote:
 > From: Gonglei <arei.gonglei@huawei.com>
-> =
-
-> fix CID 1311373.
-> =
-
+>
+> fix CID 1311372.
+>
 > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-
-Reviewed-by: Michael Roth <mdroth@linux.vnet.ibm.com>
-
 > ---
->  hw/ppc/spapr_drc.c | 1 +
->  1 file changed, 1 insertion(+)
-> =
+>  hw/arm/xlnx-zynqmp.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 5e72078..00c5943 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -144,7 +144,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          } else {
+>              s->boot_cpu_ptr = &s->apu_cpu[i];
+>          }
+> -
 
-> diff --git a/hw/ppc/spapr_drc.c b/hw/ppc/spapr_drc.c
-> index ef98538..ee87432 100644
-> --- a/hw/ppc/spapr_drc.c
-> +++ b/hw/ppc/spapr_drc.c
-> @@ -422,6 +422,7 @@ static void realize(DeviceState *d, Error **errp)
->          error_free(err);
->          object_unref(OBJECT(drc));
->      }
-> +    g_free(child_name);
->      DPRINTFN("drc realize complete");
->  }
-> =
+Thanks,
 
-> -- =
+Please keep this blank line here and below. The g_gree should group
+with the above code.
 
+Otherwise,
+
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+
+Regards,
+Peter
+
+> +        g_free(name);
+>          object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
+>                                  "reset-cbar", &err);
+>          if (err) {
+> @@ -181,7 +181,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          } else {
+>              s->boot_cpu_ptr = &s->rpu_cpu[i];
+>          }
+> -
+> +        g_free(name);
+>          object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
+>                                   &err);
+>          if (err != NULL) {
+> --
 > 1.7.12.4
-> =
-
-> =
-
->=20
-
+>
+>
+>
 
