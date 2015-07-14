@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZEvbh-00071o-AY
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2015 04:30:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55070)
+	id 1ZF0JJ-0003K5-Rr
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jul 2015 09:31:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50596)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZEvbg-00070U-1n
-	for qemu-trivial@nongnu.org; Tue, 14 Jul 2015 04:30:28 -0400
+	(envelope-from <kraxel@redhat.com>) id 1ZF0JH-0003FY-Kr
+	for qemu-trivial@nongnu.org; Tue, 14 Jul 2015 09:31:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZEvbe-0002MU-Um
-	for qemu-trivial@nongnu.org; Tue, 14 Jul 2015 04:30:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43853)
+	(envelope-from <kraxel@redhat.com>) id 1ZF0JG-00046g-M5
+	for qemu-trivial@nongnu.org; Tue, 14 Jul 2015 09:31:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36240)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZEvbS-0002IP-4w; Tue, 14 Jul 2015 04:30:14 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 814362B9DDE;
-	Tue, 14 Jul 2015 08:30:13 +0000 (UTC)
-Received: from [10.36.112.33] (ovpn-112-33.ams2.redhat.com [10.36.112.33])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6E8U9DC028681
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 14 Jul 2015 04:30:11 -0400
-To: John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <1436815589-19194-1-git-send-email-jsnow@redhat.com>
-	<CAFEAcA_hE0eepawDhF2DBidhd6iXvOx2f6w11+gFk-nh3Ju1XQ@mail.gmail.com>
-	<55A41474.8000004@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <55A4C890.70402@redhat.com>
-Date: Tue, 14 Jul 2015 10:30:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.0.1
-MIME-Version: 1.0
-In-Reply-To: <55A41474.8000004@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <kraxel@redhat.com>)
+	id 1ZF0J8-00044N-Jg; Tue, 14 Jul 2015 09:31:38 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id A511D376B6E;
+	Tue, 14 Jul 2015 13:31:37 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-52.ams2.redhat.com
+	[10.36.116.52])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t6EDVaXb010846; Tue, 14 Jul 2015 09:31:37 -0400
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id 1783581DA6; Tue, 14 Jul 2015 15:31:35 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 14 Jul 2015 15:31:29 +0200
+Message-Id: <1436880689-15526-2-git-send-email-kraxel@redhat.com>
+In-Reply-To: <1436880689-15526-1-git-send-email-kraxel@redhat.com>
+References: <1436880689-15526-1-git-send-email-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>, Qemu-block <qemu-block@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ide: coverity touchups
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH 2/2] virtio-input: enable on non-linux hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,27 +45,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jul 2015 08:30:28 -0000
+X-List-Received-Date: Tue, 14 Jul 2015 13:31:48 -0000
 
+As we include a copy of the linux input layer header file in the qemu
+source tree (include/standard-headers/linux/input.h) the virtio-input
+bits (except pass-through) should build and work just fine on non-linux
+hosts too.  Tweak Makefile accordingly.
 
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/input/Makefile.objs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 13/07/2015 21:41, John Snow wrote:
->>> >> s->ports should never exceed 32, but coverity doesn't know that.
->>> >> ncq_tfs->sector_count should also never exceed 64K.
->> > 
->> > Personally I tend to mark that kind of thing as a false
->> > positive in the coverity UI and move on...
->> > 
->> > -- PMM
->> > 
-> Either way; Paolo pinged me about the NCQ one so I figured I'd just do it.
+diff --git a/hw/input/Makefile.objs b/hw/input/Makefile.objs
+index 624ba7e..7715d72 100644
+--- a/hw/input/Makefile.objs
++++ b/hw/input/Makefile.objs
+@@ -8,9 +8,9 @@ common-obj-$(CONFIG_STELLARIS_INPUT) += stellaris_input.o
+ common-obj-$(CONFIG_TSC2005) += tsc2005.o
+ common-obj-$(CONFIG_VMMOUSE) += vmmouse.o
+ 
+-ifeq ($(CONFIG_LINUX),y)
+ common-obj-$(CONFIG_VIRTIO) += virtio-input.o
+ common-obj-$(CONFIG_VIRTIO) += virtio-input-hid.o
++ifeq ($(CONFIG_LINUX),y)
+ common-obj-$(CONFIG_VIRTIO) += virtio-input-host.o
+ endif
+ 
+-- 
+1.8.3.1
 
-Yeah, neither is particularly optimal.  Every now and then (a couple
-years, say) you do have to re-evaluate false positives, so it's better
-to fix them if possible.  On the other hand the code is uglier.
-
-Let's ignore these in Coverity---with a triaging comment there about why
-they are false positives.
-
-Paolo
 
