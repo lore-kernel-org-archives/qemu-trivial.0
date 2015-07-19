@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZGTVw-0002u9-3q
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Jul 2015 10:54:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41501)
+	id 1ZGvIE-0004qC-UB
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Jul 2015 16:34:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1ZGTVt-0002p5-7W
-	for qemu-trivial@nongnu.org; Sat, 18 Jul 2015 10:54:54 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ZGvIC-0004kd-BZ
+	for qemu-trivial@nongnu.org; Sun, 19 Jul 2015 16:34:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1ZGTVs-0002VA-Ak
-	for qemu-trivial@nongnu.org; Sat, 18 Jul 2015 10:54:53 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:58551)
+	(envelope-from <pm215@archaic.org.uk>) id 1ZGvI7-0002Vz-AC
+	for qemu-trivial@nongnu.org; Sun, 19 Jul 2015 16:34:36 -0400
+Received: from mnementh.archaic.org.uk ([81.2.115.146]:57199)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1ZGTVn-0002UL-KM; Sat, 18 Jul 2015 10:54:47 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 8E2EB17F6DE; Sat, 18 Jul 2015 16:54:45 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 18 Jul 2015 16:54:44 +0200
-Message-Id: <1437231284-17455-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 37.221.198.45
-Cc: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>
-Subject: [Qemu-trivial] [PATCH for-2.4] tests: Fix broken targets
-	check-report-qtest-*
+	(envelope-from <pm215@archaic.org.uk>) id 1ZGvI6-0002Vt-VI
+	for qemu-trivial@nongnu.org; Sun, 19 Jul 2015 16:34:31 -0400
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZGvHy-0006v8-Ac; Sun, 19 Jul 2015 21:34:22 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Sun, 19 Jul 2015 21:34:22 +0100
+Message-Id: <1437338062-26577-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 81.2.115.146
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: [Qemu-trivial] [PATCH] qemu-common.h: Document cutils.c string
+	functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,37 +36,158 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Jul 2015 14:54:54 -0000
+X-List-Received-Date: Sun, 19 Jul 2015 20:34:38 -0000
 
-They need QTEST_QEMU_IMG. Without it, the tests raise an assertion:
+Add documentation comments for various utility string functions
+which we have implemented in util/cutils.c:
+ pstrcpy()
+ strpadcpy()
+ pstrcat()
+ strstart()
+ stristart()
+ qemu_strnlen()
+ qemu_strsep()
 
-$ make -C bin check-report-qtest-i386.xml
-make: Entering directory 'bin'
-GTESTER check-report-qtest-i386.xml
-blkdebug: Suspended request 'A'
-blkdebug: Resuming request 'A'
-ahci-test: tests/libqos/libqos.c:162:
- mkimg: Assertion `qemu_img_path' failed.
-main-loop: WARNING: I/O thread spun for 1000 iterations
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/Makefile | 1 +
- 1 file changed, 1 insertion(+)
+We recommend pstrcpy() &c in HACKING but that's not very helpful
+if we don't actually document their behaviour...
 
-diff --git a/tests/Makefile b/tests/Makefile
-index 2c4b8dc..8d26736 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
-@@ -478,6 +478,7 @@ $(patsubst %, check-%, $(check-unit-y)): check-%: %
+ include/qemu-common.h | 114 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 113 insertions(+), 1 deletion(-)
+
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 237d654..fb3da6c 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -148,13 +148,125 @@ static inline bool is_help_option(const char *s)
+     return !strcmp(s, "?") || !strcmp(s, "help");
+ }
  
- $(patsubst %, check-report-qtest-%.xml, $(QTEST_TARGETS)): check-report-qtest-%.xml: $(check-qtest-y)
- 	$(call quiet-command,QTEST_QEMU_BINARY=$*-softmmu/qemu-system-$* \
-+		QTEST_QEMU_IMG=qemu-img$(EXESUF) \
- 	  gtester -q $(GTESTER_OPTIONS) -o $@ -m=$(SPEED) $(check-qtest-$*-y),"GTESTER $@")
- 
- check-report-unit.xml: $(check-unit-y)
+-/* cutils.c */
++/* util/cutils.c */
++/**
++ * pstrcpy:
++ * @buf: buffer to copy string into
++ * @buf_size: size of @buf in bytes
++ * @str: string to copy
++ *
++ * Copy @str into @buf, including the trailing NUL, but do not
++ * write more than @buf_size bytes. The resulting buffer is
++ * always NUL terminated (even if the source string was too long).
++ * If @buf_size is zero or negative then no bytes are copied.
++ *
++ * This function is similar to strncpy(), but avoids two of that
++ * function's problems:
++ *  * if @str fits in the buffer, pstrcpy() does not zero-fill the
++ *    remaining space at the end of @buf
++ *  * if @str is too long, pstrcpy() will copy the first @buf_size-1
++ *    bytes and then add a NUL
++ */
+ void pstrcpy(char *buf, int buf_size, const char *str);
++/**
++ * strpadcpy:
++ * @buf: buffer to copy string into
++ * @buf_size: size of @buf in bytes
++ * @str: string to copy
++ * @pad: character to pad the remainder of @buf with
++ *
++ * Copy @str into @buf (but *not* its trailing NUL!), and then pad the
++ * rest of the buffer with the @pad character. If @str is too large
++ * for the buffer then it is truncated, so that @buf contains the
++ * first @buf_size characters of @str, with no terminator.
++ */
+ void strpadcpy(char *buf, int buf_size, const char *str, char pad);
++/**
++ * pstrcat:
++ * @buf: buffer containing existing string
++ * @buf_size: size of @buf in bytes
++ * @s: string to concatenate to @buf
++ *
++ * Append a copy of @s to the string already in @buf, but do not
++ * allow the buffer to overflow. If the existing contents of @buf
++ * plus @str would total more than @buf_size bytes, then write
++ * as much of @str as will fit followed by a NUL terminator.
++ *
++ * @buf must already contain a NUL-terminated string, or the
++ * behaviour is undefined.
++ *
++ * Returns: @buf.
++ */
+ char *pstrcat(char *buf, int buf_size, const char *s);
++/**
++ * strstart:
++ * @str: string to test
++ * @val: prefix string to look for
++ * @ptr: NULL, or pointer to be written to indicate start of
++ *       the remainder of the string
++ *
++ * Test whether @str starts with the prefix @val.
++ * If it does (including the degenerate case where @str and @val
++ * are equal) then return true. If @ptr is not NULL then a
++ * pointer to the first character following the prefix is written
++ * to it. If @val is not a prefix of @str then return false (and
++ * @ptr is not written to).
++ *
++ * Returns: true if @str starts with prefix @val, false otherwise.
++ */
+ int strstart(const char *str, const char *val, const char **ptr);
++/**
++ * stristart:
++ * @str: string to test
++ * @val: prefix string to look for
++ * @ptr: NULL, or pointer to be written to indicate start of
++ *       the remainder of the string
++ *
++ * Test whether @str starts with the case-insensitive prefix @val.
++ * This function behaves identically to strstart(), except that the
++ * comparison is made after calling qemu_toupper() on each pair of
++ * characters.
++ *
++ * Returns: true if @str starts with case-insensitive prefix @val,
++ *          false otherwise.
++ */
+ int stristart(const char *str, const char *val, const char **ptr);
++/**
++ * qemu_strnlen:
++ * @s: string
++ * @max_len: maximum number of bytes in @s to scan
++ *
++ * Return the length of the string @s, like strlen(), but do not
++ * examine more than @max_len bytes of the memory pointed to by @s.
++ * If no NUL terminator is found within @max_len bytes, then return
++ * @max_len instead.
++ *
++ * This function has the same behaviour as the POSIX strnlen()
++ * function.
++ *
++ * Returns: length of @s in bytes, or @max_len, whichever is smaller.
++ */
+ int qemu_strnlen(const char *s, int max_len);
++/**
++ * qemu_strsep:
++ * @input: pointer to string to parse
++ * @delim: string containing delimiter characters to search for
++ *
++ * Locate the first occurrence of any character in @delim within
++ * the string referenced by @input, and replace it with a NUL.
++ * The location of the next character after the delimiter character
++ * is stored into @input.
++ * If the end of the string was reached without finding a delimiter
++ * character, then NULL is stored into @input.
++ * If @input points to a NULL pointer on entry, return NULL.
++ * The return value is always the original value of *@input (and
++ * so now points to a NUL-terminated string corresponding to the
++ * part of the input up to the first delimiter).
++ *
++ * This function has the same behaviour as the BSD strsep() function.
++ *
++ * Returns: the pointer originally in @input.
++ */
+ char *qemu_strsep(char **input, const char *delim);
+ time_t mktimegm(struct tm *tm);
+ int qemu_fls(int i);
 -- 
-2.1.4
+2.2.1
 
 
