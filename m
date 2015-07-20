@@ -1,50 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZH8bo-0006Uq-Bi
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2015 06:47:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49039)
+	id 1ZHDYM-0004MM-Ng
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2015 12:04:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZH8bi-0006Qe-So
-	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 06:47:42 -0400
+	(envelope-from <eblake@redhat.com>) id 1ZHDYG-0004E8-IW
+	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 12:04:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZH8be-0001hx-Pq
-	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 06:47:38 -0400
-Received: from mail-vn0-f44.google.com ([209.85.216.44]:36596)
+	(envelope-from <eblake@redhat.com>) id 1ZHDYC-0007FX-BI
+	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 12:04:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56327)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZH8be-0001hn-M9
-	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 06:47:34 -0400
-Received: by vnk197 with SMTP id 197so21365372vnk.3
-	for <qemu-trivial@nongnu.org>; Mon, 20 Jul 2015 03:47:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=u8AAg2pdFFPeOuWN25Tmw6q5X+jFok9vfrBCzfeX5Ak=;
-	b=jv6v8PXJb4E3btFJV8wdCANEPi883Ih6A6yav3NWyuF88A50hogEMhI/9Cc/5BIX+s
-	CoEdjI7mlTPzgUXUl0DKY/GtrcR++JftasAxocHO+j+E/09OA0t8yjtbVRZsfvbXHnRs
-	ybSBR0tls0+tQts6RvN4g5hZk942LRkFd05VHVHJ0Mmu8EIGvaUCK9+sCmdFKZbBbUgu
-	y5nfReOwbmFGLDA3mqS7cpwaWNvsvoJfYmCYUm9FmpZZWRdnnL+xh08d5r8mSjNG2Zec
-	Wo9fiNCC5A5aaG2lWlZlXuTVwqFdzUue7Wx+CtyNn56YpMxui/r117PsHnhvJg1x2oQk
-	k0VQ==
-X-Gm-Message-State: ALoCoQkt3p2LfhGO/BHYWrafBh7zOAUeS3Q0Ucv5wKgzlmnYWE+9T2RAy3hTZDIvJ0j8XKvYCfgL
-X-Received: by 10.52.114.42 with SMTP id jd10mr36006765vdb.90.1437389254012;
-	Mon, 20 Jul 2015 03:47:34 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>)
+	id 1ZHDY5-0007C2-Ps; Mon, 20 Jul 2015 12:04:13 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 08CEC9239B;
+	Mon, 20 Jul 2015 16:04:13 +0000 (UTC)
+Received: from [10.3.113.112] (ovpn-113-112.phx2.redhat.com [10.3.113.112])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t6KG4C0Q011059; Mon, 20 Jul 2015 12:04:12 -0400
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1437338062-26577-1-git-send-email-peter.maydell@linaro.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <55AD1BF7.4020305@redhat.com>
+Date: Mon, 20 Jul 2015 10:04:07 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Mon, 20 Jul 2015 03:47:14 -0700 (PDT)
-In-Reply-To: <CAFEAcA9UhSNVMQ0KDRmQH6pjo=eYRHC+BACCvdoaSGePFH6asQ@mail.gmail.com>
-References: <1437208027-14584-1-git-send-email-sw@weilnetz.de>
-	<CAFEAcA9UhSNVMQ0KDRmQH6pjo=eYRHC+BACCvdoaSGePFH6asQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Jul 2015 11:47:14 +0100
-Message-ID: <CAFEAcA8BP3kPOFVEKgGiC-uwraQ7xz0OC7waOEOWsnTCcVtq_g@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.216.44
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH for-2.4] disas/arm-a64: Add missing
-	compiler attribute GCC_FMT_ATTR
+In-Reply-To: <1437338062-26577-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="OgCmAS3wIlvLfLPuVbmIiJT4TRccG9qNR"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-common.h: Document
+ cutils.c string functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,25 +50,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2015 10:47:42 -0000
+X-List-Received-Date: Mon, 20 Jul 2015 16:04:27 -0000
 
-On 18 July 2015 at 10:13, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 18 July 2015 at 09:27, Stefan Weil <sw@weilnetz.de> wrote:
->> Type fprintf_function which fits here was defined with this attribute.
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>
->> This is an optional trivial patch for 2.4 which fixes compiler warnings
->> in my build environment (with -Wextra).
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->
-> No objection if you want to put it in 2.4, though I'm a bit
-> surprised that missing GCC_FMT_ATTR provokes warnings.
-> The cleanup is nice anyway.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--OgCmAS3wIlvLfLPuVbmIiJT4TRccG9qNR
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-I've applied this to target-arm.next. Thanks.
+On 07/19/2015 02:34 PM, Peter Maydell wrote:
+> Add documentation comments for various utility string functions
+> which we have implemented in util/cutils.c:
+>  pstrcpy()
+>  strpadcpy()
+>  pstrcat()
+>  strstart()
+>  stristart()
+>  qemu_strnlen()
+>  qemu_strsep()
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> We recommend pstrcpy() &c in HACKING but that's not very helpful
+> if we don't actually document their behaviour...
 
--- PMM
+Don't know if we care about US vs. UK spelling in doc comments, so I'll
+ignore it, and give:
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+>=20
+>  include/qemu-common.h | 114 ++++++++++++++++++++++++++++++++++++++++++=
++++++++-
+>  1 file changed, 113 insertions(+), 1 deletion(-)
+>=20
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--OgCmAS3wIlvLfLPuVbmIiJT4TRccG9qNR
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJVrRv3AAoJEKeha0olJ0Nq9xIIAJTT9iU75uLuRZcx/cHP9QgJ
+BMhDKFk/9WNufBjtmf1GRuT4lKQ2xHXZzCzO+dH0W59eF0vndR+9d/Flw6cLn1XJ
++YTKsx/q3D27qEX5IizqPbmXdbw66R120lGHTXxRrlHQon70x2Tvl7M5d7M7dumO
+sn3pnLrHKpyYH8FL7XtV5eoJsJzPhTFfiWXb58aI5NHTlHLmBfLWVANKDFCFfLbp
+bjoXLfFE6i9ijo3Jua1sLnDTAsfh70P9Rc//Cgc5dvEznfWfYMzwQ0Ihf+VYmGFT
+IaS565DLZAeSpPFHywUyxYk7UBielQXPzKS/sXTdTZZD+mu5Ss0OBpA59YHdMIQ=
+=jAs3
+-----END PGP SIGNATURE-----
+
+--OgCmAS3wIlvLfLPuVbmIiJT4TRccG9qNR--
 
