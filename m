@@ -1,43 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZHDsn-0005ZU-4X
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jul 2015 12:25:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34962)
+	id 1ZHuZ0-0001if-Sf
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jul 2015 10:00:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52951)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZHDsk-0005X7-Gu
-	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 12:25:35 -0400
+	(envelope-from <thuth@redhat.com>) id 1ZHuYy-0001fP-JH
+	for qemu-trivial@nongnu.org; Wed, 22 Jul 2015 10:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZHDsj-0001uQ-Hf
-	for qemu-trivial@nongnu.org; Mon, 20 Jul 2015 12:25:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49376)
+	(envelope-from <thuth@redhat.com>) id 1ZHuYx-0000js-RH
+	for qemu-trivial@nongnu.org; Wed, 22 Jul 2015 10:00:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50351)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1ZHDsb-0001rp-5h; Mon, 20 Jul 2015 12:25:25 -0400
+	(envelope-from <thuth@redhat.com>)
+	id 1ZHuYs-0000i3-Nx; Wed, 22 Jul 2015 09:59:54 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id BE51AC6569;
-	Mon, 20 Jul 2015 16:25:24 +0000 (UTC)
-Received: from scv.usersys.redhat.com (vpn-56-218.rdu2.redhat.com
-	[10.10.56.218])
+	by mx1.redhat.com (Postfix) with ESMTPS id 37655ADAE5;
+	Wed, 22 Jul 2015 13:59:54 +0000 (UTC)
+Received: from thh440s.redhat.com (vpn1-4-243.ams2.redhat.com [10.36.4.243])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6KGPLVv020579; Mon, 20 Jul 2015 12:25:22 -0400
-Message-ID: <55AD20F1.9070607@redhat.com>
-Date: Mon, 20 Jul 2015 12:25:21 -0400
-From: John Snow <jsnow@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
-MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1437231284-17455-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1437231284-17455-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+	id t6MDxpdQ016909; Wed, 22 Jul 2015 09:59:52 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 22 Jul 2015 15:59:50 +0200
+Message-Id: <1437573590-2801-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.4] tests: Fix broken
-	targets check-report-qtest-*
+Cc: qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
+Subject: [Qemu-trivial] [PATCH] Add another sanity check to smp_parse()
+	function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,47 +40,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jul 2015 16:25:35 -0000
+X-List-Received-Date: Wed, 22 Jul 2015 14:00:01 -0000
 
+The code in smp_parse already checks the topology information for
+sockets * cores * threads < cpus and bails out with an error in
+that case. However, it is still possible to supply a bad configuration
+the other way round, e.g. with:
 
+ qemu-system-xxx -smp 4,sockets=1,cores=4,threads=2
 
-On 07/18/2015 10:54 AM, Stefan Weil wrote:
-> They need QTEST_QEMU_IMG. Without it, the tests raise an assertion:
-> 
-> $ make -C bin check-report-qtest-i386.xml
-> make: Entering directory 'bin'
-> GTESTER check-report-qtest-i386.xml
-> blkdebug: Suspended request 'A'
-> blkdebug: Resuming request 'A'
-> ahci-test: tests/libqos/libqos.c:162:
->  mkimg: Assertion `qemu_img_path' failed.
-> main-loop: WARNING: I/O thread spun for 1000 iterations
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  tests/Makefile | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/Makefile b/tests/Makefile
-> index 2c4b8dc..8d26736 100644
-> --- a/tests/Makefile
-> +++ b/tests/Makefile
-> @@ -478,6 +478,7 @@ $(patsubst %, check-%, $(check-unit-y)): check-%: %
->  
->  $(patsubst %, check-report-qtest-%.xml, $(QTEST_TARGETS)): check-report-qtest-%.xml: $(check-qtest-y)
->  	$(call quiet-command,QTEST_QEMU_BINARY=$*-softmmu/qemu-system-$* \
-> +		QTEST_QEMU_IMG=qemu-img$(EXESUF) \
->  	  gtester -q $(GTESTER_OPTIONS) -o $@ -m=$(SPEED) $(check-qtest-$*-y),"GTESTER $@")
->  
->  check-report-unit.xml: $(check-unit-y)
-> 
+QEMU then still starts the guest, with topology configuration that
+is rather incomprehensible and likely not what the user wanted.
+So let's add another check to refuse such wrong configurations.
 
-Tentatively:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ vl.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-Thanks, applied to my IDE tree:
+diff --git a/vl.c b/vl.c
+index 5856396..c8d24b1 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1224,7 +1224,13 @@ static void smp_parse(QemuOpts *opts)
+             exit(1);
+         }
+ 
+-        max_cpus = qemu_opt_get_number(opts, "maxcpus", 0);
++        max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
++        if (sockets * cores * threads > max_cpus) {
++            fprintf(stderr, "cpu topology: error: "
++                    "sockets (%u) * cores (%u) * threads (%u) > maxcpus (%u)\n",
++                    sockets, cores, threads, max_cpus);
++            exit(1);
++        }
+ 
+         smp_cpus = cpus;
+         smp_cores = cores > 0 ? cores : 1;
+-- 
+1.8.3.1
 
-https://github.com/jnsnow/qemu/commits/ide
-https://github.com/jnsnow/qemu.git
-
---js
 
