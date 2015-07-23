@@ -1,48 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZI8WJ-0007Zm-Eh
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2015 00:54:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35698)
+	id 1ZI9Bx-0001uD-8U
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2015 01:37:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wency@cn.fujitsu.com>) id 1ZI5V3-0002mQ-VI
-	for qemu-trivial@nongnu.org; Wed, 22 Jul 2015 21:40:42 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1ZI9Bv-0001s2-Eu
+	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 01:37:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wency@cn.fujitsu.com>) id 1ZI5V3-0007qs-3g
-	for qemu-trivial@nongnu.org; Wed, 22 Jul 2015 21:40:41 -0400
-Received: from [59.151.112.132] (port=8455 helo=heian.cn.fujitsu.com)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1ZI9Bu-0002OJ-L5
+	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 01:37:11 -0400
+Received: from mail-wi0-x234.google.com ([2a00:1450:400c:c05::234]:36157)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wency@cn.fujitsu.com>)
-	id 1ZI5Ux-0007Zq-9Q; Wed, 22 Jul 2015 21:40:35 -0400
-X-IronPort-AV: E=Sophos;i="5.15,520,1432569600"; d="scan'208";a="98748468"
-Received: from bogon (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 23 Jul 2015 09:44:06 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id t6N1cbFX024220;
-	Thu, 23 Jul 2015 09:38:37 +0800
-Received: from [10.167.226.52] (10.167.226.52) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.181.6; Thu, 23 Jul 2015 09:40:25 +0800
-To: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1ZI9Bq-0002NM-L4; Thu, 23 Jul 2015 01:37:06 -0400
+Received: by wicgb10 with SMTP id gb10so126471813wic.1;
+	Wed, 22 Jul 2015 22:37:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=lR9cg3MmhywDMfdvVqIiaJeG1YudCov/QAhoDAnjku4=;
+	b=C5kgCsAUsC3+bZ5l1Dm0Pb0gVVZEx3BZHa6tjwKbsO/6GnQOe7IS5xzhohFDf3w+k6
+	IBwFi1WJ8bm+idIVrkW3/CP6JEbhEF56EmFvAL6wE7ZvJ3Rzcy1m1+1WYUp/m9bKjDH+
+	11k6cDBWUegOu84skwTfBkOFRqIXcG/MbX2zxeE0gpovT3Blo1kNDnpe6aHXkBJNovkV
+	1k1QylyRZrKF8Ez/cIbF66cbnlzEPXisFRwjzMALZr5+jbnab2OMN7ooIXKWyhfWP7nz
+	rejMlO5NXK8rVGxwoQKU0qygrLCc0S1njcdyzdC6BertoJUmTJgKrAcmTjuedKwA/izj
+	SbIw==
+X-Received: by 10.194.5.74 with SMTP id q10mr11830990wjq.27.1437629825998;
+	Wed, 22 Jul 2015 22:37:05 -0700 (PDT)
+Received: from [192.168.10.165] (dynamic-adsl-94-39-188-187.clienti.tiscali.it.
+	[94.39.188.187]) by smtp.googlemail.com with ESMTPSA id
+	k4sm6674193wix.19.2015.07.22.22.37.04
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 22 Jul 2015 22:37:05 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Wen Congyang <wency@cn.fujitsu.com>, Stefan Weil <sw@weilnetz.de>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
 References: <1437587610-26433-1-git-send-email-sw@weilnetz.de>
-From: Wen Congyang <wency@cn.fujitsu.com>
-Message-ID: <55B046DA.6040308@cn.fujitsu.com>
-Date: Thu, 23 Jul 2015 09:43:54 +0800
+	<55B046DA.6040308@cn.fujitsu.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <55B07D80.5070607@redhat.com>
+Date: Thu, 23 Jul 2015 07:37:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	Thunderbird/38.0.1
 MIME-Version: 1.0
-In-Reply-To: <1437587610-26433-1-git-send-email-sw@weilnetz.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.167.226.52]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Thu, 23 Jul 2015 00:54:10 -0400
+In-Reply-To: <55B046DA.6040308@cn.fujitsu.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::234
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.4] vl: Fix compiler
- warning for builds without VLC
+Subject: Re: [Qemu-trivial] [PATCH for-2.4] vl: Fix compiler warning for
+	builds without VLC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,47 +64,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jul 2015 01:40:42 -0000
+X-List-Received-Date: Thu, 23 Jul 2015 05:37:12 -0000
 
-On 07/23/2015 01:53 AM, Stefan Weil wrote:
-> This regression was caused by commit 70b94331.
 
-vnc, not vlc in the title.
 
-Reviewed-by: Wen Congyang <wency@cn.fujitsu.com>
+On 23/07/2015 03:43, Wen Congyang wrote:
+> On 07/23/2015 01:53 AM, Stefan Weil wrote:
+>> > This regression was caused by commit 70b94331.
+> vnc, not vlc in the title.
+> 
+> Reviewed-by: Wen Congyang <wency@cn.fujitsu.com>
+> 
 
->=20
->   CC    vl.o
-> vl.c: In function =E2=80=98select_display=E2=80=99:
-> vl.c:2064:12: error: unused variable =E2=80=98err=E2=80=99 [-Werror=3Dunu=
-sed-variable]
->      Error *err =3D NULL;
->             ^
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  vl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/vl.c b/vl.c
-> index 5856396..0adbbd6 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -2061,7 +2061,6 @@ static void select_vgahw (const char *p)
-> =20
->  static DisplayType select_display(const char *p)
->  {
-> -    Error *err =3D NULL;
->      const char *opts;
->      DisplayType display =3D DT_DEFAULT;
-> =20
-> @@ -2130,6 +2129,7 @@ static DisplayType select_display(const char *p)
->      } else if (strstart(p, "vnc", &opts)) {
->  #ifdef CONFIG_VNC
->          if (*opts =3D=3D '=3D') {
-> +            Error *err =3D NULL;
->              if (vnc_parse(opts + 1, &err) =3D=3D NULL) {
->                  error_report_err(err);
->                  exit(1);
->=20
+Thanks, queued for 2.4.
 
+Paolo
 
