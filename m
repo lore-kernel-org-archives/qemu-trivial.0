@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZIFHy-0001SB-AM
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2015 08:07:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58918)
+	id 1ZIFdg-0007CG-3V
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jul 2015 08:30:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35254)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ZIFHw-0001Qb-9q
-	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 08:07:49 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1ZIFdd-000794-Cb
+	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 08:30:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1ZIFHv-0001FW-50
-	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 08:07:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49885)
+	(envelope-from <arei.gonglei@huawei.com>) id 1ZIFdc-0002vJ-Ik
+	for qemu-trivial@nongnu.org; Thu, 23 Jul 2015 08:30:13 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:7516)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1ZIFHm-0001CI-S1; Thu, 23 Jul 2015 08:07:38 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 1B1F432C424;
-	Thu, 23 Jul 2015 12:07:38 +0000 (UTC)
-Received: from igors-macbook-pro.local (ovpn-204-18.brq.redhat.com
-	[10.40.204.18])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6NC7ZkB029243; Thu, 23 Jul 2015 08:07:36 -0400
-Date: Thu, 23 Jul 2015 14:07:29 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Message-ID: <20150723140729.6da9c1f5@igors-macbook-pro.local>
-In-Reply-To: <1437573590-2801-1-git-send-email-thuth@redhat.com>
-References: <1437573590-2801-1-git-send-email-thuth@redhat.com>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1ZIFdV-0002eb-T4; Thu, 23 Jul 2015 08:30:08 -0400
+Received: from 172.24.1.50 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.1.50])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CPE95615; Thu, 23 Jul 2015 20:26:43 +0800 (CST)
+Received: from [127.0.0.1] (10.177.19.102) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.158.1;
+	Thu, 23 Jul 2015 20:26:41 +0800
+Message-ID: <55B0DD76.4080400@huawei.com>
+Date: Thu, 23 Jul 2015 20:26:30 +0800
+From: Gonglei <arei.gonglei@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:31.0) Gecko/20100101 Thunderbird/31.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1435917057-9396-1-git-send-email-arei.gonglei@huawei.com>
+	<CAFEAcA98iYE=p2vi=5YuUHRV5g-WwVk=dKtQo2qU4OXDa0GBpQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA98iYE=p2vi=5YuUHRV5g-WwVk=dKtQo2qU4OXDa0GBpQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add another sanity check to
- smp_parse() function
+X-Originating-IP: [10.177.19.102]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc: fix typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,48 +49,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jul 2015 12:07:49 -0000
+X-List-Received-Date: Thu, 23 Jul 2015 12:30:14 -0000
 
-On Wed, 22 Jul 2015 15:59:50 +0200
-Thomas Huth <thuth@redhat.com> wrote:
+On 2015/7/3 17:59, Peter Maydell wrote:
+> On 3 July 2015 at 10:50,  <arei.gonglei@huawei.com> wrote:
+>> From: Gonglei <arei.gonglei@huawei.com>
+>>
+>> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> thanks
+> -- PMM
+> 
+Hi, Paolo
 
-> The code in smp_parse already checks the topology information for
-> sockets * cores * threads < cpus and bails out with an error in
-> that case. However, it is still possible to supply a bad configuration
-> the other way round, e.g. with:
-> 
->  qemu-system-xxx -smp 4,sockets=1,cores=4,threads=2
-> 
-> QEMU then still starts the guest, with topology configuration that
-> is rather incomprehensible and likely not what the user wanted.
-> So let's add another check to refuse such wrong configurations.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  vl.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/vl.c b/vl.c
-> index 5856396..c8d24b1 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -1224,7 +1224,13 @@ static void smp_parse(QemuOpts *opts)
->              exit(1);
->          }
->  
-> -        max_cpus = qemu_opt_get_number(opts, "maxcpus", 0);
-> +        max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-> +        if (sockets * cores * threads > max_cpus) {
-> +            fprintf(stderr, "cpu topology: error: "
-> +                    "sockets (%u) * cores (%u) * threads (%u) >
-> maxcpus (%u)\n",
-just a nit, maybe s/maxcpus/[max]cpus/
+Would you pick up this patch for 2.4-rc3?
+It's trivial but make sense and no harm.
 
-> +                    sockets, cores, threads, max_cpus);
-> +            exit(1);
-> +        }
->  
->          smp_cpus = cpus;
->          smp_cores = cores > 0 ? cores : 1;
+Regards,
+-Gonglei
 
 
