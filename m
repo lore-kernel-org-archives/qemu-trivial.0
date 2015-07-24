@@ -1,45 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZIbYJ-0005tC-Re
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2015 07:54:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59450)
+	id 1ZIdCw-0007pt-Ef
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2015 09:40:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZIbYH-0005qX-6V
-	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 07:54:10 -0400
+	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZIYCj-00046W-7V
+	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 04:19:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZIbYG-0006Zm-5h
-	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 07:54:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55477)
+	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZIYCe-0007zM-8s
+	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 04:19:41 -0400
+Received: from e23smtp04.au.ibm.com ([202.81.31.146]:53933)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1ZIbY7-0006BO-I5; Fri, 24 Jul 2015 07:53:59 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 03BD129330C;
-	Fri, 24 Jul 2015 11:53:57 +0000 (UTC)
-Received: from [10.36.6.222] (vpn1-6-222.ams2.redhat.com [10.36.6.222])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6OBrsJi009211
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 24 Jul 2015 07:53:56 -0400
-Message-ID: <55B22752.5040306@redhat.com>
-Date: Fri, 24 Jul 2015 13:53:54 +0200
-From: Thomas Huth <thuth@redhat.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.8.0
-MIME-Version: 1.0
-To: Igor Mammedov <imammedo@redhat.com>
-References: <1437573590-2801-1-git-send-email-thuth@redhat.com>
-	<20150723140729.6da9c1f5@igors-macbook-pro.local>
-In-Reply-To: <20150723140729.6da9c1f5@igors-macbook-pro.local>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZIYCb-0007ve-Pz
+	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 04:19:36 -0400
+Received: from /spool/local
+	by e23smtp04.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <kamalesh@linux.vnet.ibm.com>;
+	Fri, 24 Jul 2015 18:19:25 +1000
+Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	by e23smtp04.au.ibm.com (202.81.31.210) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 24 Jul 2015 18:19:22 +1000
+X-Helo: d23dlp03.au.ibm.com
+X-MailFrom: kamalesh@linux.vnet.ibm.com
+X-RcptTo: qemu-trivial@nongnu.org
+Received: from d23relay08.au.ibm.com (d23relay08.au.ibm.com [9.185.71.33])
+	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 0C84A357804F
+	for <qemu-trivial@nongnu.org>; Fri, 24 Jul 2015 18:19:22 +1000 (EST)
+Received: from d23av04.au.ibm.com (d23av04.au.ibm.com [9.190.235.139])
+	by d23relay08.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	t6O8J7nc60751952
+	for <qemu-trivial@nongnu.org>; Fri, 24 Jul 2015 18:19:18 +1000
+Received: from d23av04.au.ibm.com (localhost [127.0.0.1])
+	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	t6O8IkrZ025928
+	for <qemu-trivial@nongnu.org>; Fri, 24 Jul 2015 18:18:47 +1000
+Received: from Kepler.in.ibm.com ([9.124.158.136])
+	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	t6O8IjII025723; Fri, 24 Jul 2015 18:18:46 +1000
+From: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
+To: qemu-trivial@nongnu.org
+Date: Fri, 24 Jul 2015 13:48:13 +0530
+Message-Id: <1437725893-21994-1-git-send-email-kamalesh@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.1.2
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 15072408-0013-0000-0000-000001A09B72
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add another sanity check to
- smp_parse() function
+X-Received-From: 202.81.31.146
+X-Mailman-Approved-At: Fri, 24 Jul 2015 09:40:12 -0400
+Cc: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH] device_tree: Fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,50 +62,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jul 2015 11:54:10 -0000
+X-List-Received-Date: Fri, 24 Jul 2015 08:19:42 -0000
 
-On 23/07/15 14:07, Igor Mammedov wrote:
-> On Wed, 22 Jul 2015 15:59:50 +0200
-> Thomas Huth <thuth@redhat.com> wrote:
-> 
->> The code in smp_parse already checks the topology information for
->> sockets * cores * threads < cpus and bails out with an error in
->> that case. However, it is still possible to supply a bad configuration
->> the other way round, e.g. with:
->>
->>  qemu-system-xxx -smp 4,sockets=1,cores=4,threads=2
->>
->> QEMU then still starts the guest, with topology configuration that
->> is rather incomprehensible and likely not what the user wanted.
->> So let's add another check to refuse such wrong configurations.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  vl.c | 8 +++++++-
->>  1 file changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/vl.c b/vl.c
->> index 5856396..c8d24b1 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -1224,7 +1224,13 @@ static void smp_parse(QemuOpts *opts)
->>              exit(1);
->>          }
->>  
->> -        max_cpus = qemu_opt_get_number(opts, "maxcpus", 0);
->> +        max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
->> +        if (sockets * cores * threads > max_cpus) {
->> +            fprintf(stderr, "cpu topology: error: "
->> +                    "sockets (%u) * cores (%u) * threads (%u) >
->> maxcpus (%u)\n",
-> just a nit, maybe s/maxcpus/[max]cpus/
+Fix spelling of 'allocting' -> 'allocating'.
 
-I think it should be pretty obvious for the user that maxcpus = cpus
-when the "maxcpus" option has not been specified but only the "cpus"
-option. So I'd prefer to keep it the way without the square brackets,
-it's IMHO easier to read.
+Signed-off-by: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
+---
+ device_tree.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- Thomas
+diff --git a/device_tree.c b/device_tree.c
+index d2de5809474e..a9f5f8e598d3 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -241,7 +241,7 @@ uint32_t qemu_fdt_alloc_phandle(void *fdt)
 
+     /*
+      * We need to find out if the user gave us special instruction at
+-     * which phandle id to start allocting phandles.
++     * which phandle id to start allocating phandles.
+      */
+     if (!phandle) {
+         phandle = machine_phandle_start(current_machine);
+--
+2.1.2
 
 
