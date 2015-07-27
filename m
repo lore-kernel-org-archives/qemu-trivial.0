@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZJoTq-0003JV-LY
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2015 15:54:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58053)
+	id 1ZJoZt-0001At-Sh
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jul 2015 16:00:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZJoTm-000385-4u
-	for qemu-trivial@nongnu.org; Mon, 27 Jul 2015 15:54:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZJoZq-00018m-G1
+	for qemu-trivial@nongnu.org; Mon, 27 Jul 2015 16:00:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZJoTk-0002d0-Uh
-	for qemu-trivial@nongnu.org; Mon, 27 Jul 2015 15:54:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55290)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZJoZp-0005bH-Ee
+	for qemu-trivial@nongnu.org; Mon, 27 Jul 2015 16:00:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56457)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZJoTe-0002a3-E1; Mon, 27 Jul 2015 15:54:22 -0400
+	id 1ZJoZj-0005VH-86; Mon, 27 Jul 2015 16:00:39 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A138D425AD;
-	Mon, 27 Jul 2015 22:54:20 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id CBC09425A7;
+	Mon, 27 Jul 2015 23:00:37 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 79CF7A65;
-	Mon, 27 Jul 2015 22:54:20 +0300 (MSK)
-Received: (nullmailer pid 9531 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A3B5FA71;
+	Mon, 27 Jul 2015 22:54:21 +0300 (MSK)
+Received: (nullmailer pid 9536 invoked by uid 1000);
 	Mon, 27 Jul 2015 19:54:20 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Mon, 27 Jul 2015 22:54:11 +0300
-Message-Id: <786f9ce20382704249883d7052f6869011d44281.1438026619.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 27 Jul 2015 22:54:13 +0300
+Message-Id: <226d007dbd75ec8d0f12d0f9e1ce66caf55d49e4.1438026619.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1438026619.git.mjt@msgid.tls.msk.ru>
 References: <cover.1438026619.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Johannes Schlatow <schlatow@ida.ing.tu-bs.de>
-Subject: [Qemu-trivial] [PULL 08/10] Fix Cortex-A9 global timer
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 10/10] gdbstub: Set current CPU on
+	interruptions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,34 +44,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jul 2015 19:54:31 -0000
+X-List-Received-Date: Mon, 27 Jul 2015 20:00:47 -0000
 
-From: Johannes Schlatow <schlatow@ida.ing.tu-bs.de>
+From: Jan Kiszka <jan.kiszka@siemens.com>
 
-The auto increment bit of the timer control register was wrongly
-defined.
+gdb expects that the thread ID for c and g-class operations is set to
+the CPU we provide when reporting VM stop conditions. If the stub is
+still tuned to a different CPU, the wrong information is delivered to
+the gdb frontend.
 
-See Cortex-A9 MPcore Technical Reference Manual, Section 4.4.2.
-
-Signed-off-by: Johannes Schlatow <schlatow@ida.ing.tu-bs.de>
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/hw/timer/a9gtimer.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ gdbstub.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
-index b88c02a..98d8e0a 100644
---- a/include/hw/timer/a9gtimer.h
-+++ b/include/hw/timer/a9gtimer.h
-@@ -37,7 +37,7 @@
- #define R_CONTROL_TIMER_ENABLE      (1 << 0)
- #define R_CONTROL_COMP_ENABLE       (1 << 1)
- #define R_CONTROL_IRQ_ENABLE        (1 << 2)
--#define R_CONTROL_AUTO_INCREMENT    (1 << 2)
-+#define R_CONTROL_AUTO_INCREMENT    (1 << 3)
- #define R_CONTROL_PRESCALER_SHIFT   8
- #define R_CONTROL_PRESCALER_LEN     8
- #define R_CONTROL_PRESCALER_MASK    (((1 << R_CONTROL_PRESCALER_LEN) - 1) << \
+diff --git a/gdbstub.c b/gdbstub.c
+index 92b2f81..ffe7e6e 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1285,6 +1285,7 @@ static void gdb_vm_state_change(void *opaque, int running, RunState state)
+         ret = GDB_SIGNAL_UNKNOWN;
+         break;
+     }
++    gdb_set_stop_cpu(cpu);
+     snprintf(buf, sizeof(buf), "T%02xthread:%02x;", ret, cpu_index(cpu));
+ 
+ send_packet:
 -- 
 2.1.4
 
