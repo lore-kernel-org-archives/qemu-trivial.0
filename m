@@ -1,37 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZIhWB-0004XS-3o
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jul 2015 14:16:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51187)
+	id 1ZJZ7U-0004w3-JO
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Jul 2015 23:30:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ZIhW7-0004Pb-K2
-	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 14:16:20 -0400
+	(envelope-from <jsnow@redhat.com>) id 1ZJZ7Q-0004t0-Io
+	for qemu-trivial@nongnu.org; Sun, 26 Jul 2015 23:30:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ZIhW6-0001ic-96
-	for qemu-trivial@nongnu.org; Fri, 24 Jul 2015 14:16:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37865)
+	(envelope-from <jsnow@redhat.com>) id 1ZJZ7P-0003Ev-CM
+	for qemu-trivial@nongnu.org; Sun, 26 Jul 2015 23:30:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34468)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1ZIhW0-0001fG-W4; Fri, 24 Jul 2015 14:16:13 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id C6A0737C82B;
-	Fri, 24 Jul 2015 18:16:11 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com ([10.10.116.31])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t6OIG8dg020543; Fri, 24 Jul 2015 14:16:09 -0400
-From: Laszlo Ersek <lersek@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 24 Jul 2015 20:15:59 +0200
-Message-Id: <1437761762-19798-1-git-send-email-lersek@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	(envelope-from <jsnow@redhat.com>)
+	id 1ZJZ7J-0003A6-HP; Sun, 26 Jul 2015 23:30:17 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5279991D00;
+	Mon, 27 Jul 2015 03:30:16 +0000 (UTC)
+Received: from scv.usersys.redhat.com (vpn-56-220.rdu2.redhat.com
+	[10.10.56.220])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t6R3UCwV017542; Sun, 26 Jul 2015 23:30:13 -0400
+Message-ID: <55B5A5C3.2070705@redhat.com>
+Date: Sun, 26 Jul 2015 23:30:11 -0400
+From: John Snow <jsnow@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+MIME-Version: 1.0
+To: Markus Armbruster <armbru@redhat.com>
+References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>	<20150702113102.39ab42a5@redhat.com>
+	<559BFF5B.4050405@redhat.com>
+	<87615biaux.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87615biaux.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Andreas Faerber <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH for-2.4-rc3 0/3] a tiny bit late SMM fixups
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	Luiz Capitulino <lcapitulino@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-shell: add documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,39 +50,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jul 2015 18:16:21 -0000
+X-List-Received-Date: Mon, 27 Jul 2015 03:30:26 -0000
 
-So, I just happened to resume my SMM-for-OVMF work today, with
-v2.4.0-rc2-2-g12e21eb, and I suddenly realized that these patches never
-made upstream. The first two are trivial and I kinda "insist" on them
-:), the last one (from Paolo) doesn't seem that trivial (to me at
-least), and I don't strictly need it for my work just yet. I'll let you
-guys decide.
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Andreas Faerber <afaerber@suse.de>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Richard Henderson <rth@twiddle.net>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org
 
-Thanks
-Laszlo
+On 07/23/2015 03:36 AM, Markus Armbruster wrote:
+> John Snow <jsnow@redhat.com> writes:
+> 
+>> On 07/02/2015 11:31 AM, Luiz Capitulino wrote:
+>>> On Wed,  1 Jul 2015 14:25:49 -0400
+>>> John Snow <jsnow@redhat.com> wrote:
+>>>
+>>>> I should probably document the changes that were made.
+> 
+> John, what do you mean here?
+> 
 
-Laszlo Ersek (2):
-  hw/acpi/ich9: clear smi_en on reset
-  hw/acpi/ich9: clean up stale comment about KVM not supporting SMM
+I'm sorry, Markus.
 
-Paolo Bonzini (1):
-  target-i386: wake up processors that receive an SMI
+It's a giant circle of people just barely out of the loop. During the
+2.4 window I augmented the QMP shell tool to be able to issue
+transactional commands, and improved the json/python parsing for the
+key=value pairs.
 
- hw/acpi/ich9.c    | 4 ++--
- target-i386/cpu.c | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+It was primarily motivated by wanting an easy way to issue and test
+bitmap commands.
 
--- 
-1.8.3.1
+Eric Blake knows the most about the improvements, as he was the original
+reviewer, but you know how this list likes to strip him out of the CC
+fields.
 
+>>>> Signed-off-by: John Snow <jsnow@redhat.com>
+>>>
+>>> Looks good to me, CC'ing maintainer.
+> 
+> Luiz, is this a R-by?
+> 
+>> Whoops, didn't realize Markus took this file over, too. Sorry Luiz.
+> 
+> Don't worry about our maintainer reshuffling.
+> 
+>> Markus, would you consider staging this? It's purely a documentation
+>> update for only a dev tool, so it doesn't really matter /when/ it lands
+>> either way, just shoring up some changes I made a while back to the
+>> interpreter here.
+>>
+>> tldr: "ping"
+> 
+> I'm happy to include this in the next pull after it got reviewed.  I'm
+> ignorant about qmp-shell, because I don't use it myself, so I'd have to
+> dig through it to verify your documentation is accurate and reasonably
+> complete.
+> 
+> Fishing for more qualified reviewers:
+> 
+>     $ scripts/get_maintainer.pl --git-blame -f scripts/qmp/qmp-shell 
+>     Markus Armbruster <armbru@redhat.com> (supporter:QMP)
+>     Luiz Capitulino <lcapitulino@redhat.com> (authored lines:230/390=59%,commits:10/10=100%)
+>     John Snow <jsnow@redhat.com> (authored lines:117/390=30%,commits:4/10=40%)
+>     "Daniel P. Berrange" <berrange@redhat.com> (authored lines:27/390=7%)
+>     Eric Blake <eblake@redhat.com> (commits:6/10=60%)
+>     Stefan Hajnoczi <stefanha@redhat.com> (commits:2/10=20%)
+>     Benoit Canet <benoit@irqsave.net> (commits:1/10=10%)
+> 
+> Luiz, can you review for accuracy and reasonable completeness?
+> 
+> Of course, I'm the reviewer of last resort for anything I maintain,
+> whether I understand it or not :)
+> 
 
