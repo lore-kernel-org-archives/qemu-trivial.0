@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZK427-0002D8-1p
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Jul 2015 08:30:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49475)
+	id 1ZK68q-0005EA-LL
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jul 2015 10:46:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ZK423-0002BS-Bg
-	for qemu-trivial@nongnu.org; Tue, 28 Jul 2015 08:30:56 -0400
+	(envelope-from <kchamart@redhat.com>) id 1ZJzfj-0003EB-5b
+	for qemu-trivial@nongnu.org; Tue, 28 Jul 2015 03:51:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ZK422-00089R-HP
-	for qemu-trivial@nongnu.org; Tue, 28 Jul 2015 08:30:55 -0400
-Received: from mail-ob0-x236.google.com ([2607:f8b0:4003:c01::236]:34172)
+	(envelope-from <kchamart@redhat.com>) id 1ZJzfh-0002Hy-Lh
+	for qemu-trivial@nongnu.org; Tue, 28 Jul 2015 03:51:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51682)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1ZK41s-00081O-Cd; Tue, 28 Jul 2015 08:30:44 -0400
-Received: by obre1 with SMTP id e1so82861201obr.1;
-	Tue, 28 Jul 2015 05:30:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=MSdBZXmOvRvsILDnDkfSMKD3IGgvgFW2gzRyG5C0oK0=;
-	b=J44Qsipeyc0oA7LZXh1jmQbhfXqrFbrOyw5xcZJjsTYph6OitumqO/BKYBkwMBsXVX
-	kiro0Suh2Ht7LC8ErxptHRWudnGqq9GyUqSoyV5VxIc3Y/f/aJbXZ4KeDxnxfKy7yOSN
-	VuukPiFjCpMc6ao1zodwTa8z9GBYBJOhrOfcK5QUYr/vvgklbWb949KeRWaXTETI9iA4
-	p1yczGOA7W5lebACOJc+39TZJqWlZh8XEbTrTIgSNErcaXP8ws9G4HVxDXNQm8jGRyUd
-	87I1km2DLLPk+/nzJxNsuL7QoKC/syW3iZyKR07Y1md8V2TCrW4OEIrO8HALPft6ek9F
-	2yVw==
+	(envelope-from <kchamart@redhat.com>)
+	id 1ZJzfb-0002GZ-9C; Tue, 28 Jul 2015 03:51:27 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3832291DB3;
+	Tue, 28 Jul 2015 07:51:26 +0000 (UTC)
+Received: from tesla.localdomain (ovpn-116-77.ams2.redhat.com [10.36.116.77])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id t6S7pMhn018109
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 28 Jul 2015 03:51:23 -0400
+Received: by tesla.localdomain (Postfix, from userid 1000)
+	id 02509240E56; Tue, 28 Jul 2015 09:51:21 +0200 (CEST)
+Date: Tue, 28 Jul 2015 09:51:21 +0200
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Message-ID: <20150728075121.GA13890@tesla.redhat.com>
+References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
 MIME-Version: 1.0
-X-Received: by 10.182.213.227 with SMTP id nv3mr33104317obc.10.1438086643824; 
-	Tue, 28 Jul 2015 05:30:43 -0700 (PDT)
-Received: by 10.76.22.164 with HTTP; Tue, 28 Jul 2015 05:30:43 -0700 (PDT)
-In-Reply-To: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
-References: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
-Date: Tue, 28 Jul 2015 13:30:43 +0100
-Message-ID: <CAJSP0QXj07FKi9g0B6mF9nbZi-inPQMEFrVZ_a6w5WPwbJycLQ@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?= <dirty.ice.hu@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c01::236
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] opts: produce valid
-	command line in qemu_opts_print
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
+User-Agent: Mutt/1.5.23.1-rc1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Tue, 28 Jul 2015 10:46:03 -0400
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, qemu-devel@nongnu.org,
+	lcapitulino@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-shell: add documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,25 +51,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Jul 2015 12:30:56 -0000
+X-List-Received-Date: Tue, 28 Jul 2015 07:51:36 -0000
 
-On Tue, Jul 7, 2015 at 3:42 PM, K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.i=
-ce.hu@gmail.com> wrote:
-> This will let us print options in a format that the user would actually
-> write it on the command line (foo=3Dbar,baz=3Dasd,etc=3Ddef), without
-> prepending a spurious comma at the beginning of the list, or quoting
-> values unnecessarily.  This patch provides the following changes:
-> * write and id=3D, if the option has an id
-> * do not print separator before the first element
-> * do not quote string arguments
-> * properly escape commas (,) for QEMU
->
-> Signed-off-by: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <DirtY.iCE.hu@gmail.com=
->
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+On Wed, Jul 01, 2015 at 02:25:49PM -0400, John Snow wrote:
+> I should probably document the changes that were made.
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  scripts/qmp/qmp-shell | 35 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
 
-Feel free to send a "Ping" email reply if your patches haven't been
-reviewed after about 1 week.
+Since I did some tests[1] when you wrote these improvements to
+qmp-shell, the change looks good, FWIW:
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+    Reviewed-By: Kashyap Chamarthy <kchamart@redhat.com>
+
+[1]
+https://lists.nongnu.org/archive/html/qemu-devel/2015-04/msg04201.html
+
+> diff --git a/scripts/qmp/qmp-shell b/scripts/qmp/qmp-shell
+> index 65280d2..fa39bf0 100755
+> --- a/scripts/qmp/qmp-shell
+> +++ b/scripts/qmp/qmp-shell
+> @@ -29,6 +29,41 @@
+>  # (QEMU) device_add driver=e1000 id=net1
+>  # {u'return': {}}
+>  # (QEMU)
+> +#
+> +# key=value pairs also support Python or JSON object literal subset notations,
+> +# without spaces. Dictionaries/objects {} are supported as are arrays [].
+> +#
+> +#    example-command arg-name1={'key':'value','obj'={'prop':"value"}}
+> +#
+> +# Both JSON and Python formatting should work, including both styles of
+> +# string literal quotes. Both paradigms of literal values should work,
+> +# including null/true/false for JSON and None/True/False for Python.
+> +#
+> +#
+> +# Transactions have the following multi-line format:
+> +#
+> +#    transaction(
+> +#    action-name1 [ arg-name1=arg1 ] ... [arg-nameN=argN ]
+> +#    ...
+> +#    action-nameN [ arg-name1=arg1 ] ... [arg-nameN=argN ]
+> +#    )
+> +#
+> +# One line transactions are also supported:
+> +#
+> +#    transaction( action-name1 ... )
+> +#
+> +# For example:
+> +#
+> +#     (QEMU) transaction(
+> +#     TRANS> block-dirty-bitmap-add node=drive0 name=bitmap1
+> +#     TRANS> block-dirty-bitmap-clear node=drive0 name=bitmap0
+> +#     TRANS> )
+> +#     {"return": {}}
+> +#     (QEMU)
+> +#
+> +# Use the -v and -p options to activate the verbose and pretty-print options,
+> +# which will echo back the properly formatted JSON-compliant QMP that is being
+> +# sent to QEMU, which is useful for debugging and documentation generation.
+>  
+>  import qmp
+>  import json
+> -- 
+> 2.1.0
+> 
+> 
+
+-- 
+/kashyap
 
