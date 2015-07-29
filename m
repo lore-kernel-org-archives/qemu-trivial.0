@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZKXHB-0005rN-7X
+	id 1ZKXHB-0005rq-Ey
 	for mharc-qemu-trivial@gnu.org; Wed, 29 Jul 2015 15:44:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36106)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <leonid@daynix.com>) id 1ZKUsr-0007JS-EE
-	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:18 -0400
+	(envelope-from <leonid@daynix.com>) id 1ZKUst-0007Ly-9h
+	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <leonid@daynix.com>) id 1ZKUsl-0006yb-S3
-	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:13 -0400
-Received: from mail-wi0-f177.google.com ([209.85.212.177]:37518)
+	(envelope-from <leonid@daynix.com>) id 1ZKUsn-0006z6-Op
+	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:15 -0400
+Received: from mail-wi0-f182.google.com ([209.85.212.182]:37556)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <leonid@daynix.com>) id 1ZKUsl-0006yD-Mz
-	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:07 -0400
-Received: by wibud3 with SMTP id ud3so35376772wib.0
-	for <qemu-trivial@nongnu.org>; Wed, 29 Jul 2015 10:11:07 -0700 (PDT)
+	(envelope-from <leonid@daynix.com>) id 1ZKUsn-0006yz-JB
+	for qemu-trivial@nongnu.org; Wed, 29 Jul 2015 13:11:09 -0400
+Received: by wibud3 with SMTP id ud3so35377794wib.0
+	for <qemu-trivial@nongnu.org>; Wed, 29 Jul 2015 10:11:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:subject:date:message-id;
-	bh=L1poGYTvrgzX1N421yFhQWIui1bVNgsKm+gVxga5hQg=;
-	b=iyLBTZbpp7hsFp3i6GYAnFwft5d0WwDKUjlEZoBWu9plb8tKCuAAvx/AJkSgWyipdQ
-	njXJsj8kfIlgmiyF2TCSsxAf9Zmd83gwen2b0spiqFd7TFlskZQeQKm29meDdLDUfygj
-	mrkETZ+2bGfSK2yn1Zz4sA9LJzbZ9P9c31wP1da+QfOs8h8KOb78ZVsD2QHwS2KxxyYi
-	Xju22ytPGIr7LT4c4YBnxWdX2J4LRK50Rm1VftM3HZPaXqh7xZDTe2TfQt3wwgf2osrc
-	Q3rD8kvEHJpUo3FSP7Jt4go54ouQZ8oKY24xy1VoyyPj1TESqbJ+jNf7ZJpYaQJ0aYSp
-	9e5g==
-X-Gm-Message-State: ALoCoQmQCjdYQRKChT6qpGEXDbf5uODex+IiI/WeG0MTAcQnbUKJj1z5wcIUxL3Evh12E5mhy3LW
-X-Received: by 10.180.100.74 with SMTP id ew10mr8175309wib.12.1438189867229;
-	Wed, 29 Jul 2015 10:11:07 -0700 (PDT)
+	h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+	:references;
+	bh=tICQz1HsMFhjrRDbAiN/8KZICR+o9yxz+moqD899wDc=;
+	b=kO9CSStrz7YY+CGjgTmvpsgs/hS9Y9tkP7+cBWhOxM8aEkvdPlw61JDCZRNwDMlN2B
+	viqR22tEe6YXfjJkLyYv+YFCOTV3ihvhMKi3/wvAhaRGd4JTeNM7sRQk9VF072DkgyOm
+	IZl/PT1yRpxDQDD2uv84r6NNb3rfrEjuC1tKh9poJOVZFYLFWvA2qO2E9I9Ufpf20vx6
+	KkAUqZSHox8c6Jyt4yGx619/jdz2P8YG/17IyOQ6Npbf2zfEL0riFpg1VGZAKn/08Qyq
+	cVQ2MXROK9kDhnH1GifcsjsWiIicsajjKYv5KzlAhXOISaNv82enAzneQAy3s6jzR2dg
+	98Rg==
+X-Gm-Message-State: ALoCoQm/yghAjb77L7fKVvMl57hDQ2EOsvH6x3y63vI0eC8bDP4Xurid7tgcphXTMFa6UyJ+dl/8
+X-Received: by 10.180.83.72 with SMTP id o8mr8049501wiy.27.1438189869048;
+	Wed, 29 Jul 2015 10:11:09 -0700 (PDT)
 Received: from bark.daynix ([5.102.236.99]) by smtp.gmail.com with ESMTPSA id
-	fb3sm25316946wib.21.2015.07.29.10.11.05 for <qemu-trivial@nongnu.org>
+	fb3sm25316946wib.21.2015.07.29.10.11.07 for <qemu-trivial@nongnu.org>
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 29 Jul 2015 10:11:06 -0700 (PDT)
+	Wed, 29 Jul 2015 10:11:08 -0700 (PDT)
 From: Leonid Bloch <leonid@daynix.com>
 To: qemu-trivial@nongnu.org
-Date: Wed, 29 Jul 2015 20:10:50 +0300
-Message-Id: <1438189851-688-1-git-send-email-leonid@daynix.com>
+Date: Wed, 29 Jul 2015 20:10:51 +0300
+Message-Id: <1438189851-688-2-git-send-email-leonid@daynix.com>
 X-Mailer: git-send-email 2.4.3
+In-Reply-To: <1438189851-688-1-git-send-email-leonid@daynix.com>
+References: <1438189851-688-1-git-send-email-leonid@daynix.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.212.177
+X-Received-From: 209.85.212.182
 X-Mailman-Approved-At: Wed, 29 Jul 2015 15:44:27 -0400
-Subject: [Qemu-trivial] [PATCH 1/2] qemu-ga: Add .msi files to .gitignore
+Subject: [Qemu-trivial] [PATCH 2/2] qemu-ga: Two MSI related cosmetic changes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,25 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jul 2015 17:11:19 -0000
+X-List-Received-Date: Wed, 29 Jul 2015 17:11:20 -0000
 
 Signed-off-by: Leonid Bloch <leonid@daynix.com>
 ---
- .gitignore | 1 +
- 1 file changed, 1 insertion(+)
+ Makefile                  | 2 +-
+ qga/installer/qemu-ga.wxs | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index aed0e1f..1a5cbda 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -56,6 +56,7 @@
- *.cp
- *.dvi
- *.exe
-+*.msi
- *.dll
- *.so
- *.mo
+diff --git a/Makefile b/Makefile
+index c9be643..fc22da5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -295,7 +295,7 @@ qemu-ga$(EXESUF): $(qga-obj-y) libqemuutil.a libqemustub.a
+ ifdef QEMU_GA_MSI_ENABLED
+ QEMU_GA_MSI=qemu-ga-$(ARCH).msi
+ 
+-msi: ${QEMU_GA_MSI}
++msi: $(QEMU_GA_MSI)
+ 
+ $(QEMU_GA_MSI): qemu-ga.exe
+ 
+diff --git a/qga/installer/qemu-ga.wxs b/qga/installer/qemu-ga.wxs
+index 2c43f1b..4e917a9 100644
+--- a/qga/installer/qemu-ga.wxs
++++ b/qga/installer/qemu-ga.wxs
+@@ -126,7 +126,8 @@
+               Property="cmd"
+               Impersonate="no"
+               Return="check"
+-              ></CustomAction>
++              >
++    </CustomAction>
+     <?endif?>
+ 
+     <Feature Id="QEMUFeature" Title="QEMU Guest Agent" Level="1">
 -- 
 2.4.3
 
