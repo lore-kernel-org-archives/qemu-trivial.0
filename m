@@ -1,55 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZKqGk-0003JV-Sg
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jul 2015 12:01:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41069)
+	id 1ZL9Lk-0006u5-2t
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Jul 2015 08:23:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40976)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZKqGh-0003EO-QA
-	for qemu-trivial@nongnu.org; Thu, 30 Jul 2015 12:01:17 -0400
+	(envelope-from <berrange@redhat.com>) id 1ZL9Lh-0006oE-St
+	for qemu-trivial@nongnu.org; Fri, 31 Jul 2015 08:23:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZKqGc-0001vj-IV
-	for qemu-trivial@nongnu.org; Thu, 30 Jul 2015 12:01:15 -0400
-Received: from e28smtp04.in.ibm.com ([122.248.162.4]:43380)
+	(envelope-from <berrange@redhat.com>) id 1ZL9Ld-0002AD-8s
+	for qemu-trivial@nongnu.org; Fri, 31 Jul 2015 08:23:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56974)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kamalesh@linux.vnet.ibm.com>) id 1ZKqGb-0001tn-UH
-	for qemu-trivial@nongnu.org; Thu, 30 Jul 2015 12:01:10 -0400
-Received: from /spool/local
-	by e28smtp04.in.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <kamalesh@linux.vnet.ibm.com>;
-	Thu, 30 Jul 2015 21:31:05 +0530
-Received: from d28dlp02.in.ibm.com (9.184.220.127)
-	by e28smtp04.in.ibm.com (192.168.1.134) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 30 Jul 2015 21:30:59 +0530
-X-Helo: d28dlp02.in.ibm.com
-X-MailFrom: kamalesh@linux.vnet.ibm.com
-X-RcptTo: qemu-trivial@nongnu.org
-Received: from d28relay03.in.ibm.com (d28relay03.in.ibm.com [9.184.220.60])
-	by d28dlp02.in.ibm.com (Postfix) with ESMTP id 82A693940062
-	for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2015 21:30:59 +0530 (IST)
-Received: from d28av03.in.ibm.com (d28av03.in.ibm.com [9.184.220.65])
-	by d28relay03.in.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	t6UG0wRJ43581534
-	for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2015 21:30:58 +0530
-Received: from d28av03.in.ibm.com (localhost [127.0.0.1])
-	by d28av03.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	t6UG0uRo002764
-	for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2015 21:30:57 +0530
-Received: from Kepler.in.ibm.com ([9.77.193.43])
-	by d28av03.in.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	t6UG0tfk002629; Thu, 30 Jul 2015 21:30:55 +0530
-From: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
-To: qemu-trivial@nongnu.org
-Date: Thu, 30 Jul 2015 21:30:42 +0530
-Message-Id: <1438272042-3769-1-git-send-email-kamalesh@linux.vnet.ibm.com>
-X-Mailer: git-send-email 2.1.2
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 15073016-0013-0000-0000-0000068BE5A4
+	(envelope-from <berrange@redhat.com>)
+	id 1ZL9LY-0001zU-9l; Fri, 31 Jul 2015 08:23:32 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id C8012A0CA8;
+	Fri, 31 Jul 2015 12:23:31 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn1-4-231.ams2.redhat.com
+	[10.36.4.231])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t6VCNU81026023; Fri, 31 Jul 2015 08:23:30 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 31 Jul 2015 13:23:23 +0100
+Message-Id: <1438345403-32467-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 122.248.162.4
-Cc: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH] s390x/kvm: Fix couple of typos
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PATCH] configure: only add CONFIG_RDMA to
+	config-host.h once
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,33 +41,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jul 2015 16:01:17 -0000
+X-List-Received-Date: Fri, 31 Jul 2015 12:23:42 -0000
 
-Fix spellings of 'transfered' -> 'transferred' and
-'occured' -> 'occurred'.
+For unknown reasons (probably a git rebase merge mistake)
 
-Signed-off-by: Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>
+  commit 2da776db4846eadcb808598a5d3484d149773c05
+  Author: Michael R. Hines <mrhines@us.ibm.com>
+  Date:   Mon Jul 22 10:01:54 2013 -0400
+
+    rdma: core logic
+
+Adds CONFIG_RDMA to config-host.h twice, as can be seen
+in the generated file:
+
+ $ grep CONFIG_RDMA config-host.h
+ #define CONFIG_RDMA 1
+ #define CONFIG_RDMA 1
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
 ---
- target-s390x/kvm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ configure | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/target-s390x/kvm.c b/target-s390x/kvm.c
-index ae3a0affec9c..7e39045826cd 100644
---- a/target-s390x/kvm.c
-+++ b/target-s390x/kvm.c
-@@ -588,9 +588,9 @@ int kvm_s390_set_clock(uint8_t *tod_high, uint64_t *tod_low)
-  * @addr:      the logical start address in guest memory
-  * @ar:        the access register number
-  * @hostbuf:   buffer in host memory. NULL = do only checks w/o copying
-- * @len:       length that should be transfered
-+ * @len:       length that should be transferred
-  * @is_write:  true = write, false = read
-- * Returns:    0 on success, non-zero if an exception or error occured
-+ * Returns:    0 on success, non-zero if an exception or error occurred
-  *
-  * Use KVM ioctl to read/write from/to guest memory. An access exception
-  * is injected into the vCPU in case of translation errors.
---
-2.1.2
+diff --git a/configure b/configure
+index a14dc44..8f35400b 100755
+--- a/configure
++++ b/configure
+@@ -5635,10 +5635,6 @@ if [ "$pixman" = "internal" ]; then
+   echo "config-host.h: subdir-pixman" >> $config_host_mak
+ fi
+ 
+-if test "$rdma" = "yes" ; then
+-echo "CONFIG_RDMA=y" >> $config_host_mak
+-fi
+-
+ if [ "$dtc_internal" = "yes" ]; then
+   echo "config-host.h: subdir-dtc" >> $config_host_mak
+ fi
+-- 
+2.4.3
 
 
