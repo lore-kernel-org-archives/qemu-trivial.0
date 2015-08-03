@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMBqB-0005tN-IB
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2015 05:15:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41304)
+	id 1ZMBqD-0005zW-RV
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2015 05:15:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpv-0005QG-1a
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpw-0005SV-CY
 	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpq-0003Gp-I7
-	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:10 -0400
-Received: from mail-wi0-f181.google.com ([209.85.212.181]:32841)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBps-0003MR-Re
+	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:12 -0400
+Received: from mail-wi0-f176.google.com ([209.85.212.176]:38645)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpq-0003Fj-DD
-	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:06 -0400
-Received: by wicmv11 with SMTP id mv11so127065457wic.0
-	for <qemu-trivial@nongnu.org>; Mon, 03 Aug 2015 02:15:06 -0700 (PDT)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBps-0003Lf-G5
+	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:08 -0400
+Received: by wibxm9 with SMTP id xm9so105252157wib.1
+	for <qemu-trivial@nongnu.org>; Mon, 03 Aug 2015 02:15:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-type:content-transfer-encoding;
-	bh=azxQZtlRzlPvW1G+LI78OCUqwENVH+FG0V+M2ArObDk=;
-	b=fyQydPwu45jgXSjkw0rD7AJ+gx1A9Dzn9yHxIZ+UNz0IkmkAEcFHz2Tmye5jhthUYB
-	NzWwEyCLeieKq/16njxh5OeY0GNKGtRV949shAhmAIctuNunPJWAiHdGs7gbvQc1LzMp
-	E81i+LTM3jXO9cx1YU8Hq9C+M+baIfW6uAAfTGD4JlRkj4SqZC9sJ0rsqqZWrsE4/inh
-	dROLGo8LTkW/fpWn1F3yYpRxI6fOCWSKIQwyUNyuJJN9BZ6VEyoE/bJUMqsK5PplaRLe
-	WP4Qi/ke5s0UF43rGSWDtdgxSPnOZaVzRkJ82Bm9CCgkmdEkwXuDpAWqWZI3aJkV1qBg
-	BonQ==
-X-Gm-Message-State: ALoCoQlM3PfdC18IPH7xqzyilBLgcsxHiqlAiA8RIGBPafweLOHBwlIRF1Fmq26aZ5e9PTrRniC6
-X-Received: by 10.181.13.36 with SMTP id ev4mr32072115wid.65.1438593305874;
-	Mon, 03 Aug 2015 02:15:05 -0700 (PDT)
+	bh=w0jSUrUnF0+W93GMCFPBUQIEJD+iuV5rQvoCGdytRlI=;
+	b=kQq6pPh9yzYPUTMwXg74490iERBKoaBJSnAKmm7eT0N4KXOWT2Ua6XDzQ9QENE6rQg
+	51MpncVMSx4xVlHbCf36I5TxQhD1CHf5E+Fu860d0wJ1jG2P60doO96Z3Ug9eqEMdWUq
+	Aowvjmcn5Iofe1Wahja7IrxNIPG7FEw5uL8LU7SlsPvQicaB3IfZOXFa4bDWVMkDhfYe
+	epH236zysrpuvCbaB+DPjL4XwH7418ABPHC7CdlZQd0UTXfn8JyPbgfU4GP0QBDTbpT8
+	Rgl8cZXLG6Rk7mzDQS+8uwnSXu4epwjGUfyONJGJnRpTHPg1tLgsmxbE/kWd8oLevEDU
+	SIuw==
+X-Gm-Message-State: ALoCoQmbyLL0CTcWCk+ZYjSKbW1g0sit52IaH5PYysH3ck9P9YGAKHiuSSAhvunk3zR2v/L9V9n9
+X-Received: by 10.194.158.34 with SMTP id wr2mr31808391wjb.23.1438593308063;
+	Mon, 03 Aug 2015 02:15:08 -0700 (PDT)
 Received: from zen.linaro.local ([81.128.185.34])
 	by smtp.gmail.com with ESMTPSA id
-	gw7sm12524907wib.15.2015.08.03.02.15.03
+	fq15sm21866093wjc.12.2015.08.03.02.15.04
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 03 Aug 2015 02:15:04 -0700 (PDT)
+	Mon, 03 Aug 2015 02:15:07 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 98C133E0817;
+	by zen.linaro.local (Postfix) with ESMTP id E9F313E08D6;
 	Mon,  3 Aug 2015 10:15:00 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon,  3 Aug 2015 10:14:46 +0100
-Message-Id: <1438593291-27109-7-git-send-email-alex.bennee@linaro.org>
+Date: Mon,  3 Aug 2015 10:14:50 +0100
+Message-Id: <1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
@@ -48,11 +48,11 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.212.181
+X-Received-From: 209.85.212.176
 Cc: qemu-trivial@nongnu.org, crosthwaitepeter@gmail.com, pbonzini@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v4 06/11] qemu-log: support simple pid
-	substitution in logfile
+Subject: [Qemu-trivial] [PATCH v4 10/11] vl.c: log system invocation when
+	enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,50 +64,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Aug 2015 09:15:15 -0000
+X-List-Received-Date: Mon, 03 Aug 2015 09:15:16 -0000
 
-When debugging stuff that occurs over several forks it would be useful
-not to keep overwriting the one logfile you've set-up. This allows a
-simple %d to be included once in the logfile parameter which is
-substituted with getpid().
+This makes it a little easier to remember how you generated that 100Mb
+trace log you saved for a future date.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Leandro Dorileo <l@dorileo.org>
 ---
- qemu-log.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ configure |  2 +-
+ vl.c      | 18 ++++++++++++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/qemu-log.c b/qemu-log.c
-index 7036076..77ed7bc 100644
---- a/qemu-log.c
-+++ b/qemu-log.c
-@@ -70,11 +70,24 @@ void do_qemu_set_log(int log_flags, bool use_own_buffers)
-         qemu_log_close();
-     }
- }
--
-+/*
-+ * Allow the user to include %d in their logfile which will be
-+ * substituted with the current PID. This is useful for debugging many
-+ * nested linux-user tasks but will result in lots of logs.
-+ */
- void qemu_set_log_filename(const char *filename)
- {
-     g_free(logfilename);
--    logfilename = g_strdup(filename);
-+    if (g_strrstr(filename, "%d")) {
-+        /* if we are going to format this we'd better validate first */
-+        if (g_regex_match_simple("^[^%]+%d[^%]+$", filename, 0, 0)) {
-+            logfilename = g_strdup_printf(filename, getpid());
-+        } else {
-+            g_error("Bad logfile format: %s", filename);
+diff --git a/configure b/configure
+index 704b34c..9cc6a48 100755
+--- a/configure
++++ b/configure
+@@ -1445,7 +1445,7 @@ else
+ fi
+ 
+ gcc_flags="-Wold-style-declaration -Wold-style-definition -Wtype-limits"
+-gcc_flags="-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers $gcc_flags"
++gcc_flags="-Wformat-security -Wno-format-y2k -Winit-self -Wignored-qualifiers $gcc_flags"
+ gcc_flags="-Wmissing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
+ gcc_flags="-Wendif-labels $gcc_flags"
+ gcc_flags="-Wno-initializer-overrides $gcc_flags"
+diff --git a/vl.c b/vl.c
+index 05211cf..6f0ae74 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4094,12 +4094,30 @@ int main(int argc, char **argv, char **envp)
+ 
+     if (log_mask) {
+         int mask;
++        char fmt_time[512];
++        time_t start_time = time(NULL);
++        struct tm *local_start = localtime(&start_time);
++
++
++        if (log_file) {
++            qemu_set_log_filename(log_file);
 +        }
-+    } else {
-+        logfilename = g_strdup(filename);
-+    }
-     qemu_log_close();
-     qemu_set_log(qemu_loglevel);
- }
++
+         mask = qemu_str_to_log_mask(log_mask);
+         if (!mask) {
+             qemu_print_log_usage(stdout);
+             exit(1);
+         }
+         qemu_set_log(mask);
++
++        if (strftime(fmt_time, sizeof(fmt_time), "%c", local_start) > 0) {
++            qemu_log("System Emulation started at %s\n", fmt_time);
++            qemu_log("Invocation:");
++            for (i = 0; i < argc; i++) {
++                qemu_log("%s ", argv[i]);
++            }
++            qemu_log("\n");
++        }
+     }
+ 
+     if (!is_daemonized()) {
 -- 
 2.5.0
 
