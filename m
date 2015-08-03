@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMBqD-0005zW-RV
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2015 05:15:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41355)
+	id 1ZMBqF-000619-2d
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Aug 2015 05:15:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41335)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpw-0005SV-CY
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpw-0005Rh-0g
 	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBps-0003MR-Re
-	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:12 -0400
-Received: from mail-wi0-f176.google.com ([209.85.212.176]:38645)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpp-0003DB-GW
+	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:11 -0400
+Received: from mail-wi0-f180.google.com ([209.85.212.180]:38564)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMBps-0003Lf-G5
-	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:08 -0400
-Received: by wibxm9 with SMTP id xm9so105252157wib.1
-	for <qemu-trivial@nongnu.org>; Mon, 03 Aug 2015 02:15:08 -0700 (PDT)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMBpp-0003Br-6B
+	for qemu-trivial@nongnu.org; Mon, 03 Aug 2015 05:15:05 -0400
+Received: by wibxm9 with SMTP id xm9so105250126wib.1
+	for <qemu-trivial@nongnu.org>; Mon, 03 Aug 2015 02:15:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-type:content-transfer-encoding;
-	bh=w0jSUrUnF0+W93GMCFPBUQIEJD+iuV5rQvoCGdytRlI=;
-	b=kQq6pPh9yzYPUTMwXg74490iERBKoaBJSnAKmm7eT0N4KXOWT2Ua6XDzQ9QENE6rQg
-	51MpncVMSx4xVlHbCf36I5TxQhD1CHf5E+Fu860d0wJ1jG2P60doO96Z3Ug9eqEMdWUq
-	Aowvjmcn5Iofe1Wahja7IrxNIPG7FEw5uL8LU7SlsPvQicaB3IfZOXFa4bDWVMkDhfYe
-	epH236zysrpuvCbaB+DPjL4XwH7418ABPHC7CdlZQd0UTXfn8JyPbgfU4GP0QBDTbpT8
-	Rgl8cZXLG6Rk7mzDQS+8uwnSXu4epwjGUfyONJGJnRpTHPg1tLgsmxbE/kWd8oLevEDU
-	SIuw==
-X-Gm-Message-State: ALoCoQmbyLL0CTcWCk+ZYjSKbW1g0sit52IaH5PYysH3ck9P9YGAKHiuSSAhvunk3zR2v/L9V9n9
-X-Received: by 10.194.158.34 with SMTP id wr2mr31808391wjb.23.1438593308063;
-	Mon, 03 Aug 2015 02:15:08 -0700 (PDT)
+	bh=Ppbh8qtfboKmKByk3eYnZ4+cNRLePfrLt6MO97F70Dw=;
+	b=W8QlzaHh1tzREZS8RPtPSOZLgKQcM/IGcQOfZwxziOFTaIsCugUx1YcmTdlmhTJ0/N
+	QjV3saELVCRUIt3P9K3lGyqpRekWQmoG1j6bYWoB3A8n5VjnF3aUTD3VxaoVxORo8ErB
+	gU/NALJS9YalEpOBEHk3MJMm4V00vL3PKJgozXOq28oGzveNXl2Mp8skrcQUa4FrrJlV
+	zr2Nk3zpOofyobvj14eHD3Ta9+ZYvMNgm2I3QxnS+mRK87Bb5U3Ut3SHwUxyMQk9dIHX
+	ivHmw6rgcMPT8rDYs4yiIgeZkayyF2wNMtEdzjLOgI4xoKPsT+SVYvgyRGDWmQmnGXrd
+	stqg==
+X-Gm-Message-State: ALoCoQl/N+Wz+8LaurrJytWxMtUrzu/2zXGe0BiNUTpIiR0PMKUaTfpR3oZ6FfxT3wJcTSEvGkaZ
+X-Received: by 10.180.206.211 with SMTP id lq19mr33320318wic.81.1438593304754; 
+	Mon, 03 Aug 2015 02:15:04 -0700 (PDT)
 Received: from zen.linaro.local ([81.128.185.34])
 	by smtp.gmail.com with ESMTPSA id
-	fq15sm21866093wjc.12.2015.08.03.02.15.04
+	hd6sm12510441wib.19.2015.08.03.02.15.01
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 03 Aug 2015 02:15:07 -0700 (PDT)
+	Mon, 03 Aug 2015 02:15:03 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id E9F313E08D6;
+	by zen.linaro.local (Postfix) with ESMTP id 61C043E0779;
 	Mon,  3 Aug 2015 10:15:00 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon,  3 Aug 2015 10:14:50 +0100
-Message-Id: <1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
+Date: Mon,  3 Aug 2015 10:14:43 +0100
+Message-Id: <1438593291-27109-4-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
@@ -48,11 +48,11 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.212.176
+X-Received-From: 209.85.212.180
 Cc: qemu-trivial@nongnu.org, crosthwaitepeter@gmail.com, pbonzini@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>, rth@twiddle.net
-Subject: [Qemu-trivial] [PATCH v4 10/11] vl.c: log system invocation when
-	enabled
+Subject: [Qemu-trivial] [PATCH v4 03/11] qemu-log: correct help text for -d
+	cpu
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,63 +66,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 03 Aug 2015 09:15:16 -0000
 
-This makes it a little easier to remember how you generated that 100Mb
-trace log you saved for a future date.
+This doesn't just dump CPU state on translation but on every block
+entrance.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure |  2 +-
- vl.c      | 18 ++++++++++++++++++
- 2 files changed, 19 insertions(+), 1 deletion(-)
+Reviewed-by: Andreas Färber <afaerber@suse.de>
 
-diff --git a/configure b/configure
-index 704b34c..9cc6a48 100755
---- a/configure
-+++ b/configure
-@@ -1445,7 +1445,7 @@ else
- fi
- 
- gcc_flags="-Wold-style-declaration -Wold-style-definition -Wtype-limits"
--gcc_flags="-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers $gcc_flags"
-+gcc_flags="-Wformat-security -Wno-format-y2k -Winit-self -Wignored-qualifiers $gcc_flags"
- gcc_flags="-Wmissing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
- gcc_flags="-Wendif-labels $gcc_flags"
- gcc_flags="-Wno-initializer-overrides $gcc_flags"
-diff --git a/vl.c b/vl.c
-index 05211cf..6f0ae74 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4094,12 +4094,30 @@ int main(int argc, char **argv, char **envp)
- 
-     if (log_mask) {
-         int mask;
-+        char fmt_time[512];
-+        time_t start_time = time(NULL);
-+        struct tm *local_start = localtime(&start_time);
-+
-+
-+        if (log_file) {
-+            qemu_set_log_filename(log_file);
-+        }
-+
-         mask = qemu_str_to_log_mask(log_mask);
-         if (!mask) {
-             qemu_print_log_usage(stdout);
-             exit(1);
-         }
-         qemu_set_log(mask);
-+
-+        if (strftime(fmt_time, sizeof(fmt_time), "%c", local_start) > 0) {
-+            qemu_log("System Emulation started at %s\n", fmt_time);
-+            qemu_log("Invocation:");
-+            for (i = 0; i < argc; i++) {
-+                qemu_log("%s ", argv[i]);
-+            }
-+            qemu_log("\n");
-+        }
-     }
- 
-     if (!is_daemonized()) {
+---
+v4
+  - add r-b tag
+---
+ qemu-log.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qemu-log.c b/qemu-log.c
+index 13f3813..be8405e 100644
+--- a/qemu-log.c
++++ b/qemu-log.c
+@@ -105,7 +105,7 @@ const QEMULogItem qemu_log_items[] = {
+     { CPU_LOG_EXEC, "exec",
+       "show trace before each executed TB (lots of logs)" },
+     { CPU_LOG_TB_CPU, "cpu",
+-      "show CPU state before block translation" },
++      "show CPU registers before each executed TB (lots of logs)" },
+     { CPU_LOG_MMU, "mmu",
+       "log MMU-related activities" },
+     { CPU_LOG_PCALL, "pcall",
 -- 
 2.5.0
 
