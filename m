@@ -1,38 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMbtC-0000Zf-0H
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 09:04:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43641)
+	id 1ZMc3q-0002O8-2S
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 09:15:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZMXZg-0001gb-RV
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 04:27:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMc3l-0002Bs-Fw
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 09:15:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZMXZf-0002If-VI
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 04:27:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55246)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMc3f-0007zM-AY
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 09:15:12 -0400
+Received: from mail-vk0-f51.google.com ([209.85.213.51]:36371)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>)
-	id 1ZMXZb-0002Gh-C0; Tue, 04 Aug 2015 04:27:47 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8BEDFA4A1B;
-	Tue,  4 Aug 2015 08:27:46 +0000 (UTC)
-Received: from thinkpad.redhat.com (vpn1-5-188.ams2.redhat.com [10.36.5.188])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id t748RgZp006065; Tue, 4 Aug 2015 04:27:43 -0400
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue,  4 Aug 2015 10:27:31 +0200
-Message-Id: <1438676851-10684-1-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
-References: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Tue, 04 Aug 2015 09:04:16 -0400
-Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	"Richard W.M. Jones" <rjones@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-trivial] [PATCH][TRIVIAL] i6300esb: fix timer overflow
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMc3f-0007y9-2P
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 09:15:07 -0400
+Received: by vkci6 with SMTP id i6so3352951vkc.3
+	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 06:15:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=RXV74LVAPVG48X1mTQe4TakLwFpyfgslOSCuB0ePXhA=;
+	b=ZLy+wy/bT8g+QgquVOCEE7hjWcikpklhJ6YLjZCp0+pu7NISZpvqixCjuZ1TQfNSn8
+	N8azLRc+XALEix65m+Fvq09FxLqurUzwW2npsBQ7YIzOGbGjEiKwg9jO+3tLRmbV0gDm
+	eIqNo2fYAK1ahUXQ2HkTdE71swIswMNz6EAtVFtRuHR3BjGp1YRPgsh7h2i7GuEax52L
+	RGg1BKrKPPQw2mhMSiJqr7rEoESAjg4Wp6CraQE3Q9kai9MCcK4atK16l0xh02SG+ysd
+	DJlnsjgPGmmfUJx+OfUTL1tu0JNPTTbj+XZFG6DZQXxPnpLp5x95hICw2shbWRmDR4Gp
+	Xiog==
+X-Gm-Message-State: ALoCoQms0GhgF/NUeHrmr9GX6CT8K7ux/Z97suT/R94JtpEDRtUe639u1LxHAuYJbmYGkYjYOH83
+X-Received: by 10.52.166.18 with SMTP id zc18mr4541732vdb.41.1438694106586;
+	Tue, 04 Aug 2015 06:15:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.153.135 with HTTP; Tue, 4 Aug 2015 06:14:47 -0700 (PDT)
+In-Reply-To: <20150804124658.GC6574@aurel32.net>
+References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
+	<1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
+	<CAFEAcA8--05_aOX7eYPmVhPa51G7Ba=WU-18o0uVWbL+f8DrFw@mail.gmail.com>
+	<20150804124658.GC6574@aurel32.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Aug 2015 14:14:47 +0100
+Message-ID: <CAFEAcA_8QL2n2pKprmvx=kWEVquQHfcJwX9TTJVRcTL5eAJu=A@mail.gmail.com>
+To: Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.51
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 10/11] vl.c: log system
+	invocation when enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,46 +63,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 08:27:54 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 13:15:14 -0000
 
-We use muldiv64() to compute the time to wait:
+On 4 August 2015 at 13:46, Aurelien Jarno <aurelien@aurel32.net> wrote:
+> On 2015-08-04 13:40, Peter Maydell wrote:
+>> On 3 August 2015 at 10:14, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>> >  gcc_flags=3D"-Wold-style-declaration -Wold-style-definition -Wtype-li=
+mits"
+>> > -gcc_flags=3D"-Wformat-security -Wformat-y2k -Winit-self -Wignored-qua=
+lifiers $gcc_flags"
+>> > +gcc_flags=3D"-Wformat-security -Wno-format-y2k -Winit-self -Wignored-=
+qualifiers $gcc_flags"
+>>
+>> Why do we need this warning switch change?
+>
+> Some locales might have the year on 2 digits only, so this triggers a
+> warning. That's also a reason I suggested to use a fixed date format.
 
-    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
+Agreed -- we don't want locale-specific log formats.
 
-but get_ticks_per_sec() is 10^9 (30 bit value) and timeout
-is a 35 bit value.
-
-Whereas muldiv64 is:
-
-    uint64_t muldiv64(uint64_t a, uint32_t b, uint32_t c)
-
-So we loose 3 bits of timeout.
-
-Swapping get_ticks_per_sec() and timeout fixes it.
-
-We can also replace it by a multiplication by 30 ns,
-but this changes PCI clock frequency from 33MHz to 33.333333MHz
-and we need to do this on all the QEMU PCI devices (later...)
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- hw/watchdog/wdt_i6300esb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
-index cfa2b1b..3e07d44 100644
---- a/hw/watchdog/wdt_i6300esb.c
-+++ b/hw/watchdog/wdt_i6300esb.c
-@@ -136,7 +136,7 @@ static void i6300esb_restart_timer(I6300State *d, int stage)
-      * multiply here can exceed 64-bits, before we divide by 33MHz, so
-      * we use a higher-precision intermediate result.
-      */
--    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
-+    timeout = muldiv64(timeout, get_ticks_per_sec(), 33000000);
- 
-     i6300esb_debug("stage %d, timeout %" PRIi64 "\n", d->stage, timeout);
- 
--- 
-2.1.0
-
+thanks
+-- PMM
 
