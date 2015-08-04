@@ -1,49 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMbcX-0007LF-PN
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 08:47:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57210)
+	id 1ZMbkS-0003kJ-74
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 08:55:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMbcU-0007KQ-RY
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:47:03 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkL-0003i7-Sv
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMbcT-0003NV-Sn
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:47:02 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:41017)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkG-0007kF-4F
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:09 -0400
+Received: from mail-wi0-f177.google.com ([209.85.212.177]:34149)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMbcT-0003NL-Mm; Tue, 04 Aug 2015 08:47:01 -0400
-Received: from weber.rr44.fr ([2001:bc8:30d7:120:7e05:7ff:fe0d:f152])
-	by hall.aurel32.net with esmtps
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMbcR-0008Vx-NH; Tue, 04 Aug 2015 14:46:59 +0200
-Received: from aurel32 by weber.rr44.fr with local (Exim 4.85)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMbcR-0002jC-0R; Tue, 04 Aug 2015 14:46:59 +0200
-Date: Tue, 4 Aug 2015 14:46:59 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20150804124658.GC6574@aurel32.net>
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkF-0007jT-UJ
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:04 -0400
+Received: by wibud3 with SMTP id ud3so175850887wib.1
+	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 05:55:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-type:content-transfer-encoding;
+	bh=q+AnGqfnSm+1Kl5T5eFmn9f9n0/tGHe/wkGeYAwSuQ4=;
+	b=RFSti0MDu7Fn2fBj45MtQVxjaBZvc64sCR9WlEhg8vqAIsnhb5LH/CHnec09EKoECf
+	zujWqEzCs8ax6N5QlUqAjpHROtGSJbD2pesGo1uCx7G9svkWUnja7l6rT8GeQ+hlAy7F
+	zoEfXYE8sb+We4MTdwyM/o+OK9lF9S1Cqu6yxdsKdU3Q/q5CBSEiQ9B8u5hwDt+IVLqD
+	ALsshxHkclxDM6l0eKb3Y39Yq1HmoPLnEWe6JHeTa6LoNb3lksVcH040KGpK7ZjM/9Gt
+	9WX2bLJ4rC91nWn19OoWlryxgiRGaZ11eWIiSfN8hnW28U++MtsnvDR8aM6+kGm5TW5J
+	5eaQ==
+X-Gm-Message-State: ALoCoQl3j88XSLmrPPCZqu9kObQEYlON26nW3Z0ov75EIsC+XlRAiv23rK4jyUdHL/srEKNiRdS7
+X-Received: by 10.180.74.115 with SMTP id s19mr43209897wiv.18.1438692903254;
+	Tue, 04 Aug 2015 05:55:03 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	bu12sm1702578wjb.44.2015.08.04.05.55.01
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 04 Aug 2015 05:55:01 -0700 (PDT)
+Received: from zen.linaro.local (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id BA3343E0557;
+	Tue,  4 Aug 2015 13:55:00 +0100 (BST)
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
-	<CAFEAcA8--05_aOX7eYPmVhPa51G7Ba=WU-18o0uVWbL+f8DrFw@mail.gmail.com>
+	<1438593291-27109-2-git-send-email-alex.bennee@linaro.org>
+	<55BF6F68.1090103@redhat.com> <87k2tblcxq.fsf@linaro.org>
+	<20150804115957.GA6574@aurel32.net>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Aurelien Jarno <aurelien@aurel32.net>
+In-reply-to: <20150804115957.GA6574@aurel32.net>
+Date: Tue, 04 Aug 2015 13:55:00 +0100
+Message-ID: <87io8vkycb.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <CAFEAcA8--05_aOX7eYPmVhPa51G7Ba=WU-18o0uVWbL+f8DrFw@mail.gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:bc8:30d7:100::1
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-15?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 10/11] vl.c: log system
- invocation when enabled
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.177
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	crosthwaitepeter@gmail.com, qemu-devel@nongnu.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH v4 01/11] tcg: add ability to dump
+	/tmp/perf-<pid>.map files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,39 +66,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 12:47:03 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 12:55:14 -0000
 
-On 2015-08-04 13:40, Peter Maydell wrote:
-> On 3 August 2015 at 10:14, Alex Benn=E9e <alex.bennee@linaro.org> wrote:
-> > This makes it a little easier to remember how you generated that 100Mb
-> > trace log you saved for a future date.
-> >
-> > Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
-> > ---
-> >  configure |  2 +-
-> >  vl.c      | 18 ++++++++++++++++++
-> >  2 files changed, 19 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/configure b/configure
-> > index 704b34c..9cc6a48 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -1445,7 +1445,7 @@ else
-> >  fi
-> >
-> >  gcc_flags=3D"-Wold-style-declaration -Wold-style-definition -Wtype-lim=
-its"
-> > -gcc_flags=3D"-Wformat-security -Wformat-y2k -Winit-self -Wignored-qual=
-ifiers $gcc_flags"
-> > +gcc_flags=3D"-Wformat-security -Wno-format-y2k -Winit-self -Wignored-q=
-ualifiers $gcc_flags"
->=20
-> Why do we need this warning switch change?
 
-Some locales might have the year on 2 digits only, so this triggers a
-warning. That's also a reason I suggested to use a fixed date format.
+Aurelien Jarno <aurelien@aurel32.net> writes:
 
---=20
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+> On 2015-08-04 08:39, Alex Bennée wrote:
+>> 
+>> Paolo Bonzini <pbonzini@redhat.com> writes:
+>> 
+>> > On 03/08/2015 11:14, Alex Bennée wrote:
+>> >> This allows the perf tool to map samples to each individual translation
+>> >> block. This could be expanded for user space but currently it gives
+>> >> enough information to find any hotblocks by other means.
+>> >> 
+>> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> >
+>> > What happens if you encounter a tb_flush?
+>> 
+>> At the point of a tb_flush all bets are off as we will re-generate all
+>> the blocks at potentially different locations in the translation buffer.
+>> However for most analysis cases you are unlikely to cause the code
+>> buffer to overflow. Most other uses of tb_flush are the result
+>> debugging.
+>> 
+>> I could add a printf when --perfmap is enabled to flag when a flush
+>> happens to signal to the user? I guess some more caveats in the flag
+>> description wouldn't hurt.
+>> 
+>> We could consider truncating and re-starting the JIT dump at each flush?
+>
+> You also need to take care about TB invalidation. When the last
+> generated TB is invalidated, the code pointer is rolled back to the
+> end of the previous TB. In that case the last entry of the dump might
+> should be replaced by the new value. If the invalidated TB is not the
+> last one, it is just left in the generated code.
+
+Can we only invalidate the previous TB and not any earlier ones?
+
+We could keep the output line until the next TB is generated but then
+you would never have a mapping for the last TB generated.
+
+-- 
+Alex Bennée
 
