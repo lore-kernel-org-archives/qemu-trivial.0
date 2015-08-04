@@ -1,46 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMhTS-0002t2-VO
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 15:02:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58962)
+	id 1ZMhZw-00054N-0P
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 15:08:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60580)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMhTK-0002iE-4g
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:02:03 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZt-000546-PS
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMhTC-00036v-NZ
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:01:56 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:43024)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZn-0005yo-GG
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:45 -0400
+Received: from mail-wi0-f177.google.com ([209.85.212.177]:36281)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMhTC-00035y-HK; Tue, 04 Aug 2015 15:01:50 -0400
-Received: from weber.rr44.fr ([2001:bc8:30d7:120:7e05:7ff:fe0d:f152])
-	by hall.aurel32.net with esmtps
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMhT8-00022r-RF; Tue, 04 Aug 2015 21:01:46 +0200
-Received: from aurel32 by weber.rr44.fr with local (Exim 4.85)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMhT8-00006O-37; Tue, 04 Aug 2015 21:01:46 +0200
-Date: Tue, 4 Aug 2015 21:01:46 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Alex =?iso-8859-15?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Message-ID: <20150804190146.GW11361@aurel32.net>
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZn-0005yh-AC
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:39 -0400
+Received: by wicgj17 with SMTP id gj17so163600132wic.1
+	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 12:08:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-type:content-transfer-encoding;
+	bh=2gwW0avFQ9N53kpGkzl38JRoOhdjImwKlOvZqCRO57Y=;
+	b=ABsfpmOPxapk5SMeiVdgqy6gv6/O5C8CrnO7UyAEZ1QrlgmUt/4vNCJ8OY2OonCcEc
+	5sJnry/V0CaYVDG1Y5QUshG7/r5LeMGx9w6IOvCfo69w2WjNqVOPBFVdGjSmglB2twDx
+	tT2mBAtbnLUgEOEXx90OPNHfItfWhwHk74hkYM1QxxoesM0+fQwKLqmWyUzpCf48yjPV
+	bQStXGoJCsvySIlZosCx9HfDA9/nGWvyPe3oGhPhOW443ggxVwtLV++fpL4Bo42sVIYC
+	Wxaczh7n0C9oAOl9w/pwa8Uw/EJtF6NBMXlK7yatDDGcRiUwRhNbuhmXhTtmEcltr3/+
+	Z1Hw==
+X-Gm-Message-State: ALoCoQlG89koWZSS7kTFby4X/CI1dLwRM3d1cvGuq3daHEROqOJdX0NweMKkWDWBm/JOewyVqVXm
+X-Received: by 10.180.90.81 with SMTP id bu17mr1767080wib.35.1438715318711;
+	Tue, 04 Aug 2015 12:08:38 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	lm16sm3779697wic.18.2015.08.04.12.08.37
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 04 Aug 2015 12:08:37 -0700 (PDT)
+Received: from zen.linaro.local (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id B00B53E0557;
+	Tue,  4 Aug 2015 20:08:36 +0100 (BST)
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-2-git-send-email-alex.bennee@linaro.org>
-	<55BF6F68.1090103@redhat.com> <87k2tblcxq.fsf@linaro.org>
-	<20150804115957.GA6574@aurel32.net> <87io8vkycb.fsf@linaro.org>
+	<1438593291-27109-4-git-send-email-alex.bennee@linaro.org>
+	<20150804121616.GA8192@aurel32.net> <87h9ofks0j.fsf@linaro.org>
+	<CAFEAcA9o7TOHEr_Uojan-uYWhvBpniYzG9hxG6102CAg+uWiwg@mail.gmail.com>
+	<55C0D879.90404@twiddle.net> <87d1z3klyh.fsf@linaro.org>
+	<55C0FFE2.5010502@twiddle.net>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <rth@twiddle.net>
+In-reply-to: <55C0FFE2.5010502@twiddle.net>
+Date: Tue, 04 Aug 2015 20:08:36 +0100
+Message-ID: <87a8u6lvm3.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <87io8vkycb.fsf@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2001:bc8:30d7:100::1
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	crosthwaitepeter@gmail.com, qemu-devel@nongnu.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 01/11] tcg: add ability
- to dump /tmp/perf-<pid>.map files
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.177
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 03/11] qemu-log: correct
+	help text for -d cpu
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,58 +71,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 19:02:04 -0000
-
-On 2015-08-04 13:55, Alex Benn=E9e wrote:
->=20
-> Aurelien Jarno <aurelien@aurel32.net> writes:
->=20
-> > On 2015-08-04 08:39, Alex Benn=E9e wrote:
-> >>=20
-> >> Paolo Bonzini <pbonzini@redhat.com> writes:
-> >>=20
-> >> > On 03/08/2015 11:14, Alex Benn=E9e wrote:
-> >> >> This allows the perf tool to map samples to each individual transla=
-tion
-> >> >> block. This could be expanded for user space but currently it gives
-> >> >> enough information to find any hotblocks by other means.
-> >> >>=20
-> >> >> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
-> >> >
-> >> > What happens if you encounter a tb_flush?
-> >>=20
-> >> At the point of a tb_flush all bets are off as we will re-generate all
-> >> the blocks at potentially different locations in the translation buffe=
-r.
-> >> However for most analysis cases you are unlikely to cause the code
-> >> buffer to overflow. Most other uses of tb_flush are the result
-> >> debugging.
-> >>=20
-> >> I could add a printf when --perfmap is enabled to flag when a flush
-> >> happens to signal to the user? I guess some more caveats in the flag
-> >> description wouldn't hurt.
-> >>=20
-> >> We could consider truncating and re-starting the JIT dump at each flus=
-h?
-> >
-> > You also need to take care about TB invalidation. When the last
-> > generated TB is invalidated, the code pointer is rolled back to the
-> > end of the previous TB. In that case the last entry of the dump might
-> > should be replaced by the new value. If the invalidated TB is not the
-> > last one, it is just left in the generated code.
->=20
-> Can we only invalidate the previous TB and not any earlier ones?
->=20
-> We could keep the output line until the next TB is generated but then
-> you would never have a mapping for the last TB generated.
-
-I have just looked at the cde and it can (at least currently) happen only
-when executing with nocache, so only in icount mode.
-
-Aurelin
+X-List-Received-Date: Tue, 04 Aug 2015 19:08:46 -0000
 
 
---=20
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+Richard Henderson <rth@twiddle.net> writes:
+
+> On 08/04/2015 10:22 AM, Alex Bennée wrote:
+>> 
+>> Richard Henderson <rth@twiddle.net> writes:
+>> 
+>>> On 08/04/2015 08:15 AM, Peter Maydell wrote:
+>>>> On 4 August 2015 at 16:11, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>>>> Aurelien Jarno <aurelien@aurel32.net> writes:
+>>>>>> On 2015-08-03 10:14, Alex Bennée wrote:
+>>>>>> In practice this is not true for linked TB. Should we also disable TB
+>>>>>> linking when this option is enabled?
+>>>>>
+>>>>> Good question. I suspect yes because if you've gone to level of wanting
+>>>>> exec tracing you'll probably get confused by the chaining. Of course it
+>>>>> will run a lot slower then.
+>>>>
+>>>> Unless the bug you were trying to track down is caused by the exec
+>>>> chaining, of course... But yes, I think we get more people wanting
+>>>> chaining to be disableable.
+>>>>
+>>>> Not sure we want to tie it to the 'cpu' debug option, though -- it
+>>>> applies just as much to 'exec'.
+>>>
+>>> Does it make more sense to have a 'nochain' debug option, and not tie it to
+>>> either 'cpu' or 'exec'?  It might be occasionally useful on its own, simply to
+>>> determine if a bug does exist in the exec chaining.
+>> 
+>> Would that make sense as a debug option or should we have a specific set
+>> of TCG options to alter its behaviour?
+>
+>
+> That's what I'm saying -- probably a separate debug option is better.
+
+Sorry I meant should we add it to -d (as in -d nochain) or have some tcg
+opts (--tcg nochain,blah)
+
+>
+>
+> r~
+
+-- 
+Alex Bennée
 
