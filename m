@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMhZw-00054N-0P
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 15:08:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60580)
+	id 1ZMhhZ-0007EM-Pm
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 15:16:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34148)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZt-000546-PS
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:46 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ZMhhX-0007B5-IR
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:16:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZn-0005yo-GG
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:45 -0400
-Received: from mail-wi0-f177.google.com ([209.85.212.177]:36281)
+	(envelope-from <rth7680@gmail.com>) id 1ZMhhW-0001NG-Gr
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:16:39 -0400
+Received: from mail-qg0-x235.google.com ([2607:f8b0:400d:c04::235]:35783)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMhZn-0005yh-AC
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 15:08:39 -0400
-Received: by wicgj17 with SMTP id gj17so163600132wic.1
-	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 12:08:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-type:content-transfer-encoding;
-	bh=2gwW0avFQ9N53kpGkzl38JRoOhdjImwKlOvZqCRO57Y=;
-	b=ABsfpmOPxapk5SMeiVdgqy6gv6/O5C8CrnO7UyAEZ1QrlgmUt/4vNCJ8OY2OonCcEc
-	5sJnry/V0CaYVDG1Y5QUshG7/r5LeMGx9w6IOvCfo69w2WjNqVOPBFVdGjSmglB2twDx
-	tT2mBAtbnLUgEOEXx90OPNHfItfWhwHk74hkYM1QxxoesM0+fQwKLqmWyUzpCf48yjPV
-	bQStXGoJCsvySIlZosCx9HfDA9/nGWvyPe3oGhPhOW443ggxVwtLV++fpL4Bo42sVIYC
-	Wxaczh7n0C9oAOl9w/pwa8Uw/EJtF6NBMXlK7yatDDGcRiUwRhNbuhmXhTtmEcltr3/+
-	Z1Hw==
-X-Gm-Message-State: ALoCoQlG89koWZSS7kTFby4X/CI1dLwRM3d1cvGuq3daHEROqOJdX0NweMKkWDWBm/JOewyVqVXm
-X-Received: by 10.180.90.81 with SMTP id bu17mr1767080wib.35.1438715318711;
-	Tue, 04 Aug 2015 12:08:38 -0700 (PDT)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	lm16sm3779697wic.18.2015.08.04.12.08.37
+	(envelope-from <rth7680@gmail.com>)
+	id 1ZMhhS-0001LS-26; Tue, 04 Aug 2015 15:16:34 -0400
+Received: by qgal6 with SMTP id l6so4134703qga.2;
+	Tue, 04 Aug 2015 12:16:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=u+geJwdZQUF3+VppUjaccomcCspo31HX/lf8QYwurVg=;
+	b=kpeoZ3Gigt/naTv04XurdKVkVL4ELKuwQtEyWJbCCFzTU9OhpOQNyomW7nnhOSP98a
+	9C+/wxmvYluG2PTRMCMRJjAOiI9WSmX18IN/7cY97yEf5qT01ril1oqBTy6etS23TmFN
+	EI9D8yLgi5E/lmDnOUi1+NgRIoUQ/zPDh/6Hzl++3KOybBjar+G1eX9qpk3+uZOrN18Q
+	y+ZSF7yCeOlJRzBbp6+lrqZsijA5O/bFZwkD1KhEUBLNzlWJCz8+Iqm7KdN/n+4SZDkx
+	fArJF/+GauzCgPDySgoQRWcYazwFAtJUwIeqclv001XM9V579XULz7idJqGitpN93TNu
+	nZZQ==
+X-Received: by 10.140.41.9 with SMTP id y9mr9354375qgy.28.1438715793671;
+	Tue, 04 Aug 2015 12:16:33 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by smtp.googlemail.com with ESMTPSA id
+	z76sm136624qge.22.2015.08.04.12.16.31
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Aug 2015 12:08:37 -0700 (PDT)
-Received: from zen.linaro.local (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id B00B53E0557;
-	Tue,  4 Aug 2015 20:08:36 +0100 (BST)
+	Tue, 04 Aug 2015 12:16:32 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
 	<1438593291-27109-4-git-send-email-alex.bennee@linaro.org>
 	<20150804121616.GA8192@aurel32.net> <87h9ofks0j.fsf@linaro.org>
 	<CAFEAcA9o7TOHEr_Uojan-uYWhvBpniYzG9hxG6102CAg+uWiwg@mail.gmail.com>
 	<55C0D879.90404@twiddle.net> <87d1z3klyh.fsf@linaro.org>
-	<55C0FFE2.5010502@twiddle.net>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <rth@twiddle.net>
-In-reply-to: <55C0FFE2.5010502@twiddle.net>
-Date: Tue, 04 Aug 2015 20:08:36 +0100
-Message-ID: <87a8u6lvm3.fsf@linaro.org>
+	<55C0FFE2.5010502@twiddle.net> <87a8u6lvm3.fsf@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <55C10F8D.3030400@twiddle.net>
+Date: Tue, 4 Aug 2015 12:16:29 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
+In-Reply-To: <87a8u6lvm3.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.212.177
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c04::235
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 03/11] qemu-log: correct
-	help text for -d cpu
+ help text for -d cpu
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,50 +70,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 19:08:46 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 19:16:40 -0000
+
+On 08/04/2015 12:08 PM, Alex Bennée wrote:
+>>> Would that make sense as a debug option or should we have a specific set
+>>> of TCG options to alter its behaviour?
+>>
+>>
+>> That's what I'm saying -- probably a separate debug option is better.
+> 
+> Sorry I meant should we add it to -d (as in -d nochain) or have some tcg
+> opts (--tcg nochain,blah)
+
+I was suggesting the former: -d nochain.
 
 
-Richard Henderson <rth@twiddle.net> writes:
+r~
 
-> On 08/04/2015 10:22 AM, Alex Bennée wrote:
->> 
->> Richard Henderson <rth@twiddle.net> writes:
->> 
->>> On 08/04/2015 08:15 AM, Peter Maydell wrote:
->>>> On 4 August 2015 at 16:11, Alex Bennée <alex.bennee@linaro.org> wrote:
->>>>> Aurelien Jarno <aurelien@aurel32.net> writes:
->>>>>> On 2015-08-03 10:14, Alex Bennée wrote:
->>>>>> In practice this is not true for linked TB. Should we also disable TB
->>>>>> linking when this option is enabled?
->>>>>
->>>>> Good question. I suspect yes because if you've gone to level of wanting
->>>>> exec tracing you'll probably get confused by the chaining. Of course it
->>>>> will run a lot slower then.
->>>>
->>>> Unless the bug you were trying to track down is caused by the exec
->>>> chaining, of course... But yes, I think we get more people wanting
->>>> chaining to be disableable.
->>>>
->>>> Not sure we want to tie it to the 'cpu' debug option, though -- it
->>>> applies just as much to 'exec'.
->>>
->>> Does it make more sense to have a 'nochain' debug option, and not tie it to
->>> either 'cpu' or 'exec'?  It might be occasionally useful on its own, simply to
->>> determine if a bug does exist in the exec chaining.
->> 
->> Would that make sense as a debug option or should we have a specific set
->> of TCG options to alter its behaviour?
->
->
-> That's what I'm saying -- probably a separate debug option is better.
-
-Sorry I meant should we add it to -d (as in -d nochain) or have some tcg
-opts (--tcg nochain,blah)
-
->
->
-> r~
-
--- 
-Alex Bennée
 
