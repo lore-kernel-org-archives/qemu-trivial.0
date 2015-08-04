@@ -1,41 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMcYu-00083I-5W
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 09:47:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45191)
+	id 1ZMdS4-0001rh-CI
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 10:44:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1ZMcYo-0007wh-5a
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 09:47:22 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ZMdRz-0001kG-Sa
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 10:44:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1ZMcYn-00061b-60
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 09:47:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46404)
+	(envelope-from <rth7680@gmail.com>) id 1ZMdRu-0007p0-Ty
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 10:44:19 -0400
+Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:33950)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>)
-	id 1ZMcYf-0005wr-Tc; Tue, 04 Aug 2015 09:47:10 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 3AFE78F23A;
-	Tue,  4 Aug 2015 13:47:09 +0000 (UTC)
-Received: from localhost (vpn1-5-210.ams2.redhat.com [10.36.5.210])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t74Dl7Rq024165; Tue, 4 Aug 2015 09:47:08 -0400
-Date: Tue, 4 Aug 2015 14:47:07 +0100
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20150804134707.GT29283@redhat.com>
-References: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
-	<1438676851-10684-1-git-send-email-lvivier@redhat.com>
+	(envelope-from <rth7680@gmail.com>)
+	id 1ZMdRu-0007or-PE; Tue, 04 Aug 2015 10:44:14 -0400
+Received: by qkfc129 with SMTP id c129so3982134qkf.1;
+	Tue, 04 Aug 2015 07:44:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=+KmQ1Ejo6YEHpswKVFxcXOr5S9JkBbnSduMVfdnF4z8=;
+	b=capzq9rx9orGM40thzm7MUbwNJCOlIQR4dggZPGfXvwObvaPFWv8DxQOcwv/97CjUz
+	np2gNK/cCOIM4F7q2eAHbfo/krdOKFel3CNBLx614Kq8cgx6ek9+ItkcpjVHUvrHCWSW
+	tf1pCY00j5WG7Qe0havSki+fgClKwHIGUrJExUT6eXx5eurLKtfUlgF+xGxYVM2wiSyN
+	zQUqp7oyiTtiDm4jTV33pklSnUiC+CEpXCxgIMurxVCe2h9TubJswPzYNkskkFmrdui6
+	g5Wz0mL1ZYcJZ94Dno+HebMls1awDkdXzwaMkUNR/E7ZutF7ESiT8l0Y45AOVcXDlSbR
+	+a4A==
+X-Received: by 10.55.18.219 with SMTP id 88mr7227932qks.100.1438699454316;
+	Tue, 04 Aug 2015 07:44:14 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by smtp.googlemail.com with ESMTPSA id
+	f204sm567470qhc.35.2015.08.04.07.44.11
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 04 Aug 2015 07:44:13 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
+	<1438593291-27109-10-git-send-email-alex.bennee@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <55C0CFB9.3090105@twiddle.net>
+Date: Tue, 4 Aug 2015 07:44:09 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1438676851-10684-1-git-send-email-lvivier@redhat.com>
-User-Agent: Mutt/1.5.20 (2009-12-10)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [PATCH][TRIVIAL] i6300esb: fix timer overflow
+In-Reply-To: <1438593291-27109-10-git-send-email-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c09::233
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, crosthwaitepeter@gmail.com,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH v4 09/11] target-arm: dfilter support for
+ in_asm, op, opt_op
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,40 +64,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 13:47:22 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 14:44:21 -0000
 
-On Tue, Aug 04, 2015 at 10:27:31AM +0200, Laurent Vivier wrote:
-> --- a/hw/watchdog/wdt_i6300esb.c
-> +++ b/hw/watchdog/wdt_i6300esb.c
-> @@ -136,7 +136,7 @@ static void i6300esb_restart_timer(I6300State *d, int stage)
->       * multiply here can exceed 64-bits, before we divide by 33MHz, so
->       * we use a higher-precision intermediate result.
->       */
-> -    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
-> +    timeout = muldiv64(timeout, get_ticks_per_sec(), 33000000);
+On 08/03/2015 02:14 AM, Alex Bennée wrote:
+> Each individual architecture needs to use the qemu_log_in_addr_range()
+> feature for enabling in_asm and marking blocks for op/opt_op output.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  target-arm/translate-a64.c | 6 ++++--
+>  target-arm/translate.c     | 6 ++++--
+>  2 files changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+> index 689f2be..0b0f4ae 100644
+> --- a/target-arm/translate-a64.c
+> +++ b/target-arm/translate-a64.c
+> @@ -11026,7 +11026,8 @@ void gen_intermediate_code_internal_a64(ARMCPU *cpu,
+>              gen_io_start();
+>          }
 >  
->      i6300esb_debug("stage %d, timeout %" PRIi64 "\n", d->stage, timeout);
+> -        if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP | CPU_LOG_TB_OP_OPT))) {
+> +        if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP | CPU_LOG_TB_OP_OPT) &&
+> +                     qemu_log_in_addr_range(dc->pc))) {
+>              tcg_gen_debug_insn_start(dc->pc);
+>          }
 
-Here are the test results for this (v2) patch:
+If there's more than one or two ranges, it's probably quicker to
+generate the debug opcode regardless of the range.  Remember, this
+check is happening once per insn, not once per tb.
 
-  Requested timeout     Observed timeout
-       60                    58
-      120                   120
-      250                   253
-      270                   274
-      500                   507
-      520                   529
-     1010                  1026
-     1030                  1045
-     2046                  2078
-     2500    ioctl: WDIOC_SETTIMEOUT: error setting timeout: Invalid argument
 
-Rich.
-
--- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-Read my programming and virtualization blog: http://rwmj.wordpress.com
-virt-p2v converts physical machines to virtual machines.  Boot with a
-live CD or over the network (PXE) and turn machines into KVM guests.
-http://libguestfs.org/virt-v2v
+r~
 
