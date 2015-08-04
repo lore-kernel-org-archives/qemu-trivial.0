@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMdS4-0001rh-CI
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 10:44:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33172)
+	id 1ZMdsl-0004Nn-KW
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 11:11:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44210)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ZMdRz-0001kG-Sa
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 10:44:20 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMdsc-0004Ic-JC
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 11:11:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1ZMdRu-0007p0-Ty
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 10:44:19 -0400
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:33950)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMdsX-0004xX-KP
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 11:11:50 -0400
+Received: from mail-wi0-f175.google.com ([209.85.212.175]:38652)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1ZMdRu-0007or-PE; Tue, 04 Aug 2015 10:44:14 -0400
-Received: by qkfc129 with SMTP id c129so3982134qkf.1;
-	Tue, 04 Aug 2015 07:44:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=+KmQ1Ejo6YEHpswKVFxcXOr5S9JkBbnSduMVfdnF4z8=;
-	b=capzq9rx9orGM40thzm7MUbwNJCOlIQR4dggZPGfXvwObvaPFWv8DxQOcwv/97CjUz
-	np2gNK/cCOIM4F7q2eAHbfo/krdOKFel3CNBLx614Kq8cgx6ek9+ItkcpjVHUvrHCWSW
-	tf1pCY00j5WG7Qe0havSki+fgClKwHIGUrJExUT6eXx5eurLKtfUlgF+xGxYVM2wiSyN
-	zQUqp7oyiTtiDm4jTV33pklSnUiC+CEpXCxgIMurxVCe2h9TubJswPzYNkskkFmrdui6
-	g5Wz0mL1ZYcJZ94Dno+HebMls1awDkdXzwaMkUNR/E7ZutF7ESiT8l0Y45AOVcXDlSbR
-	+a4A==
-X-Received: by 10.55.18.219 with SMTP id 88mr7227932qks.100.1438699454316;
-	Tue, 04 Aug 2015 07:44:14 -0700 (PDT)
-Received: from anchor.twiddle.net
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by smtp.googlemail.com with ESMTPSA id
-	f204sm567470qhc.35.2015.08.04.07.44.11
+	(envelope-from <alex.bennee@linaro.org>) id 1ZMdsX-0004wV-F4
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 11:11:45 -0400
+Received: by wibxm9 with SMTP id xm9so28335004wib.1
+	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 08:11:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-type:content-transfer-encoding;
+	bh=lPznzpu5HlGKW7amm9t22+vBNWVxxNkuV06jb7LaFNg=;
+	b=APtiIqQl/gqKeLIoqVG/yrYedDZukWGlDyQbySk/LOiVgpKzDbj+044ITpPX1JJh8J
+	0H7S8kKZ7DzWZFZSvtQXH2ZXxmS/5Gkn37gvijknB2Ss22qGK08YLmF630K+jVWE6kPa
+	wo92TFxhpTMRqPkF9TVbsPbBs3er50A0if0Ge+KRFAsEVVGFWqwlK/NwUO71LxA2pb7e
+	ohPpH9K19Evpe1eEKIO+JbfvezaRTOha78rca0env+u93QHItzCrP2cYMgArOzjT+WWO
+	hAd8hRIRLpUwm0PEYEB6n9wiSpfWkm41la08EUO0sN6A3za7ka6eCB7036dyMEdf18bO
+	c75g==
+X-Gm-Message-State: ALoCoQl6jI25VQ3glUzpJ/rjfi/GYVDMGeDs/3DMHD5mKcL41TRVALPLKaaLcPFTgKE61c/Yy1Jl
+X-Received: by 10.180.78.35 with SMTP id y3mr45977448wiw.62.1438701104898;
+	Tue, 04 Aug 2015 08:11:44 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	bm9sm2873467wib.10.2015.08.04.08.11.41
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Aug 2015 07:44:13 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org
+	Tue, 04 Aug 2015 08:11:43 -0700 (PDT)
+Received: from zen.linaro.local (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id EB8DD3E0557;
+	Tue,  4 Aug 2015 16:11:40 +0100 (BST)
 References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-10-git-send-email-alex.bennee@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <55C0CFB9.3090105@twiddle.net>
-Date: Tue, 4 Aug 2015 07:44:09 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	<1438593291-27109-4-git-send-email-alex.bennee@linaro.org>
+	<20150804121616.GA8192@aurel32.net>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Aurelien Jarno <aurelien@aurel32.net>
+In-reply-to: <20150804121616.GA8192@aurel32.net>
+Date: Tue, 04 Aug 2015 16:11:40 +0100
+Message-ID: <87h9ofks0j.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1438593291-27109-10-git-send-email-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c09::233
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.175
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, crosthwaitepeter@gmail.com,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH v4 09/11] target-arm: dfilter support for
- in_asm, op, opt_op
+	qemu-devel@nongnu.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH v4 03/11] qemu-log: correct help text for
+	-d cpu
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,36 +65,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 14:44:21 -0000
-
-On 08/03/2015 02:14 AM, Alex Bennée wrote:
-> Each individual architecture needs to use the qemu_log_in_addr_range()
-> feature for enabling in_asm and marking blocks for op/opt_op output.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  target-arm/translate-a64.c | 6 ++++--
->  target-arm/translate.c     | 6 ++++--
->  2 files changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-> index 689f2be..0b0f4ae 100644
-> --- a/target-arm/translate-a64.c
-> +++ b/target-arm/translate-a64.c
-> @@ -11026,7 +11026,8 @@ void gen_intermediate_code_internal_a64(ARMCPU *cpu,
->              gen_io_start();
->          }
->  
-> -        if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP | CPU_LOG_TB_OP_OPT))) {
-> +        if (unlikely(qemu_loglevel_mask(CPU_LOG_TB_OP | CPU_LOG_TB_OP_OPT) &&
-> +                     qemu_log_in_addr_range(dc->pc))) {
->              tcg_gen_debug_insn_start(dc->pc);
->          }
-
-If there's more than one or two ranges, it's probably quicker to
-generate the debug opcode regardless of the range.  Remember, this
-check is happening once per insn, not once per tb.
+X-List-Received-Date: Tue, 04 Aug 2015 15:11:57 -0000
 
 
-r~
+Aurelien Jarno <aurelien@aurel32.net> writes:
+
+> On 2015-08-03 10:14, Alex Bennée wrote:
+>> This doesn't just dump CPU state on translation but on every block
+>> entrance.
+>> 
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> Reviewed-by: Andreas Färber <afaerber@suse.de>
+>> 
+>> ---
+>> v4
+>>   - add r-b tag
+>> ---
+>>  qemu-log.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>> 
+>> diff --git a/qemu-log.c b/qemu-log.c
+>> index 13f3813..be8405e 100644
+>> --- a/qemu-log.c
+>> +++ b/qemu-log.c
+>> @@ -105,7 +105,7 @@ const QEMULogItem qemu_log_items[] = {
+>>      { CPU_LOG_EXEC, "exec",
+>>        "show trace before each executed TB (lots of logs)" },
+>>      { CPU_LOG_TB_CPU, "cpu",
+>> -      "show CPU state before block translation" },
+>> +      "show CPU registers before each executed TB (lots of logs)" },
+>>      { CPU_LOG_MMU, "mmu",
+>>        "log MMU-related activities" },
+>>      { CPU_LOG_PCALL, "pcall",
+>
+> In practice this is not true for linked TB. Should we also disable TB
+> linking when this option is enabled?
+
+Good question. I suspect yes because if you've gone to level of wanting
+exec tracing you'll probably get confused by the chaining. Of course it
+will run a lot slower then.
+
+
+-- 
+Alex Bennée
 
