@@ -1,60 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMbkS-0003kJ-74
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 08:55:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60557)
+	id 1ZMbtC-0000Zf-0H
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 09:04:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkL-0003i7-Sv
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:14 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZMXZg-0001gb-RV
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 04:27:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkG-0007kF-4F
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:09 -0400
-Received: from mail-wi0-f177.google.com ([209.85.212.177]:34149)
+	(envelope-from <lvivier@redhat.com>) id 1ZMXZf-0002If-VI
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 04:27:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55246)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1ZMbkF-0007jT-UJ
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:55:04 -0400
-Received: by wibud3 with SMTP id ud3so175850887wib.1
-	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 05:55:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-type:content-transfer-encoding;
-	bh=q+AnGqfnSm+1Kl5T5eFmn9f9n0/tGHe/wkGeYAwSuQ4=;
-	b=RFSti0MDu7Fn2fBj45MtQVxjaBZvc64sCR9WlEhg8vqAIsnhb5LH/CHnec09EKoECf
-	zujWqEzCs8ax6N5QlUqAjpHROtGSJbD2pesGo1uCx7G9svkWUnja7l6rT8GeQ+hlAy7F
-	zoEfXYE8sb+We4MTdwyM/o+OK9lF9S1Cqu6yxdsKdU3Q/q5CBSEiQ9B8u5hwDt+IVLqD
-	ALsshxHkclxDM6l0eKb3Y39Yq1HmoPLnEWe6JHeTa6LoNb3lksVcH040KGpK7ZjM/9Gt
-	9WX2bLJ4rC91nWn19OoWlryxgiRGaZ11eWIiSfN8hnW28U++MtsnvDR8aM6+kGm5TW5J
-	5eaQ==
-X-Gm-Message-State: ALoCoQl3j88XSLmrPPCZqu9kObQEYlON26nW3Z0ov75EIsC+XlRAiv23rK4jyUdHL/srEKNiRdS7
-X-Received: by 10.180.74.115 with SMTP id s19mr43209897wiv.18.1438692903254;
-	Tue, 04 Aug 2015 05:55:03 -0700 (PDT)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	bu12sm1702578wjb.44.2015.08.04.05.55.01
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Aug 2015 05:55:01 -0700 (PDT)
-Received: from zen.linaro.local (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id BA3343E0557;
-	Tue,  4 Aug 2015 13:55:00 +0100 (BST)
-References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-2-git-send-email-alex.bennee@linaro.org>
-	<55BF6F68.1090103@redhat.com> <87k2tblcxq.fsf@linaro.org>
-	<20150804115957.GA6574@aurel32.net>
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Aurelien Jarno <aurelien@aurel32.net>
-In-reply-to: <20150804115957.GA6574@aurel32.net>
-Date: Tue, 04 Aug 2015 13:55:00 +0100
-Message-ID: <87io8vkycb.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.212.177
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	crosthwaitepeter@gmail.com, qemu-devel@nongnu.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [PATCH v4 01/11] tcg: add ability to dump
-	/tmp/perf-<pid>.map files
+	(envelope-from <lvivier@redhat.com>)
+	id 1ZMXZb-0002Gh-C0; Tue, 04 Aug 2015 04:27:47 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 8BEDFA4A1B;
+	Tue,  4 Aug 2015 08:27:46 +0000 (UTC)
+Received: from thinkpad.redhat.com (vpn1-5-188.ams2.redhat.com [10.36.5.188])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id t748RgZp006065; Tue, 4 Aug 2015 04:27:43 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Tue,  4 Aug 2015 10:27:31 +0200
+Message-Id: <1438676851-10684-1-git-send-email-lvivier@redhat.com>
+In-Reply-To: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
+References: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Tue, 04 Aug 2015 09:04:16 -0400
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"Richard W.M. Jones" <rjones@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: [Qemu-trivial] [PATCH][TRIVIAL] i6300esb: fix timer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,47 +44,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 12:55:14 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 08:27:54 -0000
 
+We use muldiv64() to compute the time to wait:
 
-Aurelien Jarno <aurelien@aurel32.net> writes:
+    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
 
-> On 2015-08-04 08:39, Alex Bennée wrote:
->> 
->> Paolo Bonzini <pbonzini@redhat.com> writes:
->> 
->> > On 03/08/2015 11:14, Alex Bennée wrote:
->> >> This allows the perf tool to map samples to each individual translation
->> >> block. This could be expanded for user space but currently it gives
->> >> enough information to find any hotblocks by other means.
->> >> 
->> >> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> >
->> > What happens if you encounter a tb_flush?
->> 
->> At the point of a tb_flush all bets are off as we will re-generate all
->> the blocks at potentially different locations in the translation buffer.
->> However for most analysis cases you are unlikely to cause the code
->> buffer to overflow. Most other uses of tb_flush are the result
->> debugging.
->> 
->> I could add a printf when --perfmap is enabled to flag when a flush
->> happens to signal to the user? I guess some more caveats in the flag
->> description wouldn't hurt.
->> 
->> We could consider truncating and re-starting the JIT dump at each flush?
->
-> You also need to take care about TB invalidation. When the last
-> generated TB is invalidated, the code pointer is rolled back to the
-> end of the previous TB. In that case the last entry of the dump might
-> should be replaced by the new value. If the invalidated TB is not the
-> last one, it is just left in the generated code.
+but get_ticks_per_sec() is 10^9 (30 bit value) and timeout
+is a 35 bit value.
 
-Can we only invalidate the previous TB and not any earlier ones?
+Whereas muldiv64 is:
 
-We could keep the output line until the next TB is generated but then
-you would never have a mapping for the last TB generated.
+    uint64_t muldiv64(uint64_t a, uint32_t b, uint32_t c)
 
+So we loose 3 bits of timeout.
+
+Swapping get_ticks_per_sec() and timeout fixes it.
+
+We can also replace it by a multiplication by 30 ns,
+but this changes PCI clock frequency from 33MHz to 33.333333MHz
+and we need to do this on all the QEMU PCI devices (later...)
+
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+ hw/watchdog/wdt_i6300esb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index cfa2b1b..3e07d44 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -136,7 +136,7 @@ static void i6300esb_restart_timer(I6300State *d, int stage)
+      * multiply here can exceed 64-bits, before we divide by 33MHz, so
+      * we use a higher-precision intermediate result.
+      */
+-    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
++    timeout = muldiv64(timeout, get_ticks_per_sec(), 33000000);
+ 
+     i6300esb_debug("stage %d, timeout %" PRIi64 "\n", d->stage, timeout);
+ 
 -- 
-Alex Bennée
+2.1.0
+
 
