@@ -1,43 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMbA3-00064V-36
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 08:17:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49626)
+	id 1ZMbX5-0003gn-Gn
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 08:41:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMb9w-0005wv-6y
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:17:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMbWz-0003fE-TO
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:41:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMb9s-0006QN-CR
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:17:32 -0400
-Received: from hall.aurel32.net ([195.154.112.97]:39132)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMbWt-0000T4-Pb
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:41:21 -0400
+Received: from mail-vk0-f44.google.com ([209.85.213.44]:36368)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1ZMb9s-0006QD-7H
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:17:28 -0400
-Received: from weber.rr44.fr ([2001:bc8:30d7:120:7e05:7ff:fe0d:f152])
-	by hall.aurel32.net with esmtps
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMb9p-0007T7-A1; Tue, 04 Aug 2015 14:17:25 +0200
-Received: from aurel32 by weber.rr44.fr with local (Exim 4.85)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1ZMb9o-0002I8-Kk; Tue, 04 Aug 2015 14:17:24 +0200
-Date: Tue, 4 Aug 2015 14:17:24 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Alex =?iso-8859-15?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Message-ID: <20150804121724.GA8421@aurel32.net>
-References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-7-git-send-email-alex.bennee@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1ZMbWt-0000Ss-LH
+	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 08:41:15 -0400
+Received: by vkci6 with SMTP id i6so2985081vkc.3
+	for <qemu-trivial@nongnu.org>; Tue, 04 Aug 2015 05:41:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=VnM4Y1m1x2szIqYlVfGURSvZdc2N+hwmOOsgcfHundI=;
+	b=K7Hql2j7n41Hwq+lBDaiOFlvx2afRqu2SysaIgPa2VcwMIewJVWhTVNlc7iiq2AS2w
+	3kHpFrQe6bV1cb26IhSds6izcqX2UVGKsihAwbQLItX1Vljs2LSbQLVHVBGQ/aa2yAzE
+	KDJ4wj6gfDZ5xB4XaRoycPIWT05DeaDV49YUAWK28Fjk00YMNsxJoCdAYjxLA58+vMZB
+	iNonLtlZToAqT3qoIPma/CUJqtL8Nsj/eVrCSUIvLYlPKDyrL6QJoy4nxb2E54c1EGE7
+	XGaChWHh4zqO1HGVfbv0LCk5VTMIA0g1TJRc03x9cHVQ/l8E6KiBoeP4QB5aTRCEtlNv
+	o2kQ==
+X-Gm-Message-State: ALoCoQl6BzWyBW1qrBwhvKAM7rJyo1OTL1OJVLV5bQDgwY8q3XcYXlzijWPj9pi//cDiCrBbiMhy
+X-Received: by 10.52.135.4 with SMTP id po4mr4673096vdb.78.1438692075032; Tue,
+	04 Aug 2015 05:41:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
+Received: by 10.31.153.135 with HTTP; Tue, 4 Aug 2015 05:40:55 -0700 (PDT)
+In-Reply-To: <1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
+References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
+	<1438593291-27109-11-git-send-email-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Aug 2015 13:40:55 +0100
+Message-ID: <CAFEAcA8--05_aOX7eYPmVhPa51G7Ba=WU-18o0uVWbL+f8DrFw@mail.gmail.com>
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <1438593291-27109-7-git-send-email-alex.bennee@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 195.154.112.97
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, crosthwaitepeter@gmail.com,
-	qemu-devel@nongnu.org, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [PATCH v4 06/11] qemu-log: support simple pid
- substitution in logfile
+	[fuzzy]
+X-Received-From: 209.85.213.44
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 10/11] vl.c: log system
+	invocation when enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,57 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Aug 2015 12:17:37 -0000
+X-List-Received-Date: Tue, 04 Aug 2015 12:41:24 -0000
 
-On 2015-08-03 10:14, Alex Benn=E9e wrote:
-> When debugging stuff that occurs over several forks it would be useful
-> not to keep overwriting the one logfile you've set-up. This allows a
-> simple %d to be included once in the logfile parameter which is
-> substituted with getpid().
->=20
-> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
-> Reviewed-by: Leandro Dorileo <l@dorileo.org>
+On 3 August 2015 at 10:14, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+> This makes it a little easier to remember how you generated that 100Mb
+> trace log you saved for a future date.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
->  qemu-log.c | 17 +++++++++++++++--
->  1 file changed, 15 insertions(+), 2 deletions(-)
->=20
-> diff --git a/qemu-log.c b/qemu-log.c
-> index 7036076..77ed7bc 100644
-> --- a/qemu-log.c
-> +++ b/qemu-log.c
-> @@ -70,11 +70,24 @@ void do_qemu_set_log(int log_flags, bool use_own_buff=
-ers)
->          qemu_log_close();
->      }
->  }
-> -
-> +/*
-> + * Allow the user to include %d in their logfile which will be
-> + * substituted with the current PID. This is useful for debugging many
-> + * nested linux-user tasks but will result in lots of logs.
-> + */
->  void qemu_set_log_filename(const char *filename)
->  {
->      g_free(logfilename);
-> -    logfilename =3D g_strdup(filename);
-> +    if (g_strrstr(filename, "%d")) {
-> +        /* if we are going to format this we'd better validate first */
-> +        if (g_regex_match_simple("^[^%]+%d[^%]+$", filename, 0, 0)) {
-> +            logfilename =3D g_strdup_printf(filename, getpid());
-> +        } else {
-> +            g_error("Bad logfile format: %s", filename);
-> +        }
-> +    } else {
-> +        logfilename =3D g_strdup(filename);
-> +    }
->      qemu_log_close();
->      qemu_set_log(qemu_loglevel);
->  }
+>  configure |  2 +-
+>  vl.c      | 18 ++++++++++++++++++
+>  2 files changed, 19 insertions(+), 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index 704b34c..9cc6a48 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1445,7 +1445,7 @@ else
+>  fi
+>
+>  gcc_flags=3D"-Wold-style-declaration -Wold-style-definition -Wtype-limit=
+s"
+> -gcc_flags=3D"-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualif=
+iers $gcc_flags"
+> +gcc_flags=3D"-Wformat-security -Wno-format-y2k -Winit-self -Wignored-qua=
+lifiers $gcc_flags"
 
-Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+Why do we need this warning switch change?
 
-
---=20
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+thanks
+-- PMM
 
