@@ -1,36 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMm97-0005oj-Qw
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Aug 2015 20:01:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55309)
+	id 1ZMvKe-0002Za-G0
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Aug 2015 05:49:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ZMm94-0005ka-Sj
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 20:01:23 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZMvKb-0002W2-CR
+	for qemu-trivial@nongnu.org; Wed, 05 Aug 2015 05:49:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ZMm93-0007TM-Sy
-	for qemu-trivial@nongnu.org; Tue, 04 Aug 2015 20:01:22 -0400
-Received: from ozlabs.org ([103.22.144.67]:45257)
+	(envelope-from <armbru@redhat.com>) id 1ZMvKa-0004ft-CD
+	for qemu-trivial@nongnu.org; Wed, 05 Aug 2015 05:49:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43496)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1ZMm8z-0007Ru-AO; Tue, 04 Aug 2015 20:01:17 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id ED4A41402C0; Wed,  5 Aug 2015 10:01:13 +1000 (AEST)
-Date: Wed, 5 Aug 2015 10:01:02 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20150805000102.GB7739@voom.redhat.com>
-References: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
-	<1438676851-10684-1-git-send-email-lvivier@redhat.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1ZMvKV-0004Xg-05; Wed, 05 Aug 2015 05:49:47 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id E8B378C1B8;
+	Wed,  5 Aug 2015 09:49:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-21.ams2.redhat.com
+	[10.36.116.21])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t759ng2v023809
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 5 Aug 2015 05:49:44 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 72F513011FA4; Wed,  5 Aug 2015 11:49:41 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Luiz Capitulino <lcapitulino@redhat.com>
+References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
+	<20150702113102.39ab42a5@redhat.com> <559BFF5B.4050405@redhat.com>
+	<87615biaux.fsf@blackfin.pond.sub.org>
+	<20150730104824.1e87989d@redhat.com>
+Date: Wed, 05 Aug 2015 11:49:41 +0200
+In-Reply-To: <20150730104824.1e87989d@redhat.com> (Luiz Capitulino's message
+	of "Thu, 30 Jul 2015 10:48:24 -0400")
+Message-ID: <87r3niqd3e.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="DBIVS5p969aUjpLe"
-Content-Disposition: inline
-In-Reply-To: <1438676851-10684-1-git-send-email-lvivier@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org, "Richard W.M. Jones" <rjones@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH][TRIVIAL] i6300esb: fix timer overflow
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>, mjt@tls.msk.ru,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-shell: add documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,70 +54,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Aug 2015 00:01:23 -0000
+X-List-Received-Date: Wed, 05 Aug 2015 09:49:54 -0000
 
+Luiz Capitulino <lcapitulino@redhat.com> writes:
 
---DBIVS5p969aUjpLe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Thu, 23 Jul 2015 09:36:38 +0200
+> Markus Armbruster <armbru@redhat.com> wrote:
+>
+>> John Snow <jsnow@redhat.com> writes:
+>> 
+>> > On 07/02/2015 11:31 AM, Luiz Capitulino wrote:
+>> >> On Wed,  1 Jul 2015 14:25:49 -0400
+>> >> John Snow <jsnow@redhat.com> wrote:
+>> >> 
+>> >>> I should probably document the changes that were made.
+>> 
+>> John, what do you mean here?
+>> 
+>> >>> Signed-off-by: John Snow <jsnow@redhat.com>
+>> >> 
+>> >> Looks good to me, CC'ing maintainer.
+>> 
+>> Luiz, is this a R-by?
+>
+> Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+>
+> This one is :)
 
-On Tue, Aug 04, 2015 at 10:27:31AM +0200, Laurent Vivier wrote:
-> We use muldiv64() to compute the time to wait:
->=20
->     timeout =3D muldiv64(get_ticks_per_sec(), timeout, 33000000);
->=20
-> but get_ticks_per_sec() is 10^9 (30 bit value) and timeout
-> is a 35 bit value.
->=20
-> Whereas muldiv64 is:
->=20
->     uint64_t muldiv64(uint64_t a, uint32_t b, uint32_t c)
->=20
-> So we loose 3 bits of timeout.
->=20
-> Swapping get_ticks_per_sec() and timeout fixes it.
->=20
-> We can also replace it by a multiplication by 30 ns,
-> but this changes PCI clock frequency from 33MHz to 33.333333MHz
-> and we need to do this on all the QEMU PCI devices (later...)
->=20
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-Hah.  32-bit second argument.  Totally missed that when I put the
-muldiv64() in there.  So I didn't eliminate the overflow, just pushed
-it out some bits.
-
-Thanks for finding this.
-
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---DBIVS5p969aUjpLe
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJVwVI+AAoJEGw4ysog2bOSQxEQAMm7RpR5KbgvzLi6VOhGV6x9
-jhwezlpvV0n4+UrzeBwDg4kk56qivQTZTtAM4YnOk+mID8JrhNIq5r1FYM6sLEn4
-28rdhnBdxA+UrYyBq0Ld9MkjEOqokzs/dmG+dXkaIAcDIqVgTCiUia+AeVtHABP0
-tH5g009eQzqll+75UDF00gg/rKq//HoIFY4PYrUC9cbJRRsqbNV7XLb0vLff/3Gq
-4pFWaYWdxj3nDzYido1jLtIgtxhwwT/RsYETeOPP66yj621q/FUe0gf5EeB67LJi
-95kzxsbQvj83/IU9RcdxKG1i3MiwYXqcXSTc8aJHMm4JgAJOD44xpGUaVpYeUwnf
-jKaQPNC9X0Sng1Gw0fM6fSHFaLxz4iq14i9cMhrtOXtu32gOdczggbpw3K1TpCzo
-terePp8wZVFMOdw/peSBwnEpum35MSR+xaFEM880erxkLMiNGxCcpmHux4lNzyvB
-frJw0PKn3uJK+f9RhkGlXhewsXaHwsCzaTIbyhIOuQliKE728gtt4CoMjkH4y8Xs
-Ay2xPhgrDo8lTTlDny1w3CdW1xOnqtTgMVuLWUPQyY00mdqn4ezH9OlxxSCfqSuv
-2pzMXtwCpRnqyRiIUSdtnTgq6iuhBZNmApBAbKS6n9wGOsM9+AJb2PCmsUOp075y
-aPiuTYulll5gkK2pT3XJ
-=+C5+
------END PGP SIGNATURE-----
-
---DBIVS5p969aUjpLe--
+Applied to my qapi-next branch, with "Cc: qemu-trivial@nongnu.org" added
+to commit message, thanks!
 
