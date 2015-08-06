@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZMvKe-0002Za-G0
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Aug 2015 05:49:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49656)
+	id 1ZNNcO-0003JU-4Z
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Aug 2015 12:02:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41794)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZMvKb-0002W2-CR
-	for qemu-trivial@nongnu.org; Wed, 05 Aug 2015 05:49:54 -0400
+	(envelope-from <grangeleo@gmail.com>) id 1ZNNEj-0007ED-22
+	for qemu-trivial@nongnu.org; Thu, 06 Aug 2015 11:37:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZMvKa-0004ft-CD
-	for qemu-trivial@nongnu.org; Wed, 05 Aug 2015 05:49:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43496)
+	(envelope-from <grangeleo@gmail.com>) id 1ZNNEd-0006uL-7M
+	for qemu-trivial@nongnu.org; Thu, 06 Aug 2015 11:37:41 -0400
+Received: from mail-wi0-x22a.google.com ([2a00:1450:400c:c05::22a]:35412)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZMvKV-0004Xg-05; Wed, 05 Aug 2015 05:49:47 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id E8B378C1B8;
-	Wed,  5 Aug 2015 09:49:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t759ng2v023809
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 5 Aug 2015 05:49:44 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 72F513011FA4; Wed,  5 Aug 2015 11:49:41 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Luiz Capitulino <lcapitulino@redhat.com>
-References: <1435775149-17285-1-git-send-email-jsnow@redhat.com>
-	<20150702113102.39ab42a5@redhat.com> <559BFF5B.4050405@redhat.com>
-	<87615biaux.fsf@blackfin.pond.sub.org>
-	<20150730104824.1e87989d@redhat.com>
-Date: Wed, 05 Aug 2015 11:49:41 +0200
-In-Reply-To: <20150730104824.1e87989d@redhat.com> (Luiz Capitulino's message
-	of "Thu, 30 Jul 2015 10:48:24 -0400")
-Message-ID: <87r3niqd3e.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>, mjt@tls.msk.ru,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp-shell: add documentation
+	(envelope-from <grangeleo@gmail.com>) id 1ZNNEd-0006tY-0F
+	for qemu-trivial@nongnu.org; Thu, 06 Aug 2015 11:37:35 -0400
+Received: by wibxm9 with SMTP id xm9so27757269wib.0
+	for <qemu-trivial@nongnu.org>; Thu, 06 Aug 2015 08:37:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=l6LDHfuw33JpNbGUqebtIdmLykEGv+6AFTJRJlgLJxg=;
+	b=TRMNIMElRgd990UNc7boyWERdqrKtD+u0bRBgjIoazEilCn09SuSFpoW5skBNdrMni
+	nZYst0+Dtt9Y79qcKyySB+Es1i8jK6gYKCrJXY7RJjozhg9DOV2JCyaxLFsGe6uQvTPa
+	fcSbGBVU64zH8hXfSD6kOL869ZPWgMr9EmcjWkTLg/yn1PZpFmBuMudVB3sGCajEUsIV
+	NjTRw4FHLuNCn1VuhOqr/+Ev75yyyDeLkL3TylwOONbjo/NPovRWoWUwb9UkXGZ1y8oV
+	AQDSJOOfSIIlKRB561lzMTNtM3Ojv5E+yQf6D94EeXtZztPHJleEc0Elb+GXdV7G4Mxb
+	S2AQ==
+X-Received: by 10.180.85.74 with SMTP id f10mr7208746wiz.45.1438875453202;
+	Thu, 06 Aug 2015 08:37:33 -0700 (PDT)
+Received: from niicer.localdomain (85-171-249-45.rev.numericable.fr.
+	[85.171.249.45]) by smtp.gmail.com with ESMTPSA id
+	bu12sm10059605wjb.44.2015.08.06.08.37.32
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 06 Aug 2015 08:37:32 -0700 (PDT)
+From: Leo Grange <grangeleo@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Thu,  6 Aug 2015 17:36:32 +0200
+Message-Id: <1438875392-9620-1-git-send-email-grangeleo@gmail.com>
+X-Mailer: git-send-email 2.5.0
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::22a
+X-Mailman-Approved-At: Thu, 06 Aug 2015 12:02:04 -0400
+Cc: Leo Grange <grangeleo@gmail.com>, kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH][TRIVIAL] spice: fix checking for surface bpp
+	match
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,33 +53,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Aug 2015 09:49:54 -0000
+X-List-Received-Date: Thu, 06 Aug 2015 15:37:42 -0000
 
-Luiz Capitulino <lcapitulino@redhat.com> writes:
+Spice surface_switch fast-path was checking only width/height matching,
+which leads to a crash when surface bpp has been increased but size
+didn't change (and probably other issues if bpp has been decreased).
 
-> On Thu, 23 Jul 2015 09:36:38 +0200
-> Markus Armbruster <armbru@redhat.com> wrote:
->
->> John Snow <jsnow@redhat.com> writes:
->> 
->> > On 07/02/2015 11:31 AM, Luiz Capitulino wrote:
->> >> On Wed,  1 Jul 2015 14:25:49 -0400
->> >> John Snow <jsnow@redhat.com> wrote:
->> >> 
->> >>> I should probably document the changes that were made.
->> 
->> John, what do you mean here?
->> 
->> >>> Signed-off-by: John Snow <jsnow@redhat.com>
->> >> 
->> >> Looks good to me, CC'ing maintainer.
->> 
->> Luiz, is this a R-by?
->
-> Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
->
-> This one is :)
+Signed-off-by: Leo Grange <grangeleo@gmail.com>
+---
+ ui/spice-display.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Applied to my qapi-next branch, with "Cc: qemu-trivial@nongnu.org" added
-to commit message, thanks!
+diff --git a/ui/spice-display.c b/ui/spice-display.c
+index 0360abf..d1e0972 100644
+--- a/ui/spice-display.c
++++ b/ui/spice-display.c
+@@ -406,10 +406,11 @@ void qemu_spice_display_switch(SimpleSpiceDisplay *ssd,
+     SimpleSpiceUpdate *update;
+     bool need_destroy;
+ 
+-    if (surface && ssd->surface &&
++    if (surface && ssd->surface && ssd->ds &&
+         surface_width(surface) == pixman_image_get_width(ssd->surface) &&
+-        surface_height(surface) == pixman_image_get_height(ssd->surface)) {
+-        /* no-resize fast path: just swap backing store */
++        surface_height(surface) == pixman_image_get_height(ssd->surface) &&
++		surface_bits_per_pixel(surface) == surface_bits_per_pixel(ssd->ds)) {
++        /* no-resize and no bpp change fast path: just swap backing store */
+         dprint(1, "%s/%d: fast (%dx%d)\n", __func__, ssd->qxl.id,
+                surface_width(surface), surface_height(surface));
+         qemu_mutex_lock(&ssd->lock);
+-- 
+2.5.0
+
 
