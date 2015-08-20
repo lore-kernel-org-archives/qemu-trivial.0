@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZSS9A-0000sd-IL
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Aug 2015 11:52:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59653)
+	id 1ZSZmx-000668-AY
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Aug 2015 20:02:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1ZSS96-0000pM-Hu
-	for qemu-trivial@nongnu.org; Thu, 20 Aug 2015 11:52:53 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZSRHY-0000BF-35
+	for qemu-trivial@nongnu.org; Thu, 20 Aug 2015 10:57:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1ZSS91-0006LI-C3
-	for qemu-trivial@nongnu.org; Thu, 20 Aug 2015 11:52:52 -0400
-Received: from bh-25.webhostbox.net ([208.91.199.152]:58795)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZSRHX-0005Nc-5U
+	for qemu-trivial@nongnu.org; Thu, 20 Aug 2015 10:57:31 -0400
+Received: from mail-ob0-x232.google.com ([2607:f8b0:4003:c01::232]:36486)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>)
-	id 1ZSS91-0006L8-4j; Thu, 20 Aug 2015 11:52:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=roeck-us.net;
-	s=default; h=Message-Id:Date:Subject:Cc:To:From;
-	bh=Hexk0jbQqy/Y2anB8+NfsIo5X2x9UT66lfPdxG4T/l0=; 
-	b=N5DLtTUuqJ2S8vjYHQkQoexdxiPvTWGvdMZ472l7Deeb6g+k72ZOOAEJFCxLRNWYkkCc7mplhgRFHiYRFccHSwoX4BZA+T0w0sW516+UXkhCsaggXJ42/pVp2zqvEGA8y/Irvo/EUDkZv+FezqqpQqNlp5OrnaT5zeREhD9QMAI=;
-Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
-	([108.223.40.66]:60418 helo=localhost)
-	by bh-25.webhostbox.net with esmtpa (Exim 4.85)
-	(envelope-from <linux@roeck-us.net>)
-	id 1ZSS8x-000Ly6-Dt; Thu, 20 Aug 2015 15:52:43 +0000
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Chubb <peter.chubb@nicta.com.au>
-Date: Thu, 20 Aug 2015 08:52:35 -0700
-Message-Id: <1440085955-27951-1-git-send-email-linux@roeck-us.net>
-X-Mailer: git-send-email 2.1.4
-X-Authenticated_sender: guenter@roeck-us.net
-X-OutGoing-Spam-Status: No, score=-1.0
-X-AntiAbuse: This header was added to track abuse,
-	please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - roeck-us.net
-X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
-	guenter@roeck-us.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 208.91.199.152
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Guenter Roeck <linux@roeck-us.net>
-Subject: [Qemu-trivial] [PATCH] imx_serial: Generate interrupt on tx empty
-	if enabled
+	(envelope-from <marcandre.lureau@gmail.com>)
+	id 1ZSRHT-0005Lb-Jh; Thu, 20 Aug 2015 10:57:27 -0400
+Received: by obkg7 with SMTP id g7so34093136obk.3;
+	Thu, 20 Aug 2015 07:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=hzjYALkNwtwPstVCQzOCbv6bM2L/BWY4rfwPoX4qCDI=;
+	b=g+Vjiab3NjcNYfddI6XvLytMUlMbjsFCh3U1gCe0rZNW/Z1LXl1ROJTHwoR+aeAdxx
+	VLCajWdzIYlYDmKtFQyiOYqmBygqHRGjtwbKdOXWrYqub7lquGqS5SA0Te+af2mLKEFi
+	mQKckUO9dRmpC9xsvS1Tt517lvdM6SRh3Xc2ry3VidcOgLbpMbpYn4ukdF36dDHTfsgy
+	YmTcVvlP8vLsM3uWQX8ph+LW51stijKE54xuWIctXlPQPnIs5/fDGqAh6uX3q3tCGmUw
+	S9CZoaCBim3ooHLsWVvVUcBxJRjHXI5StOeiO4jjRICnAaI7DDe/RIuD/sT9ajD9NnIv
+	oNRA==
+MIME-Version: 1.0
+X-Received: by 10.182.28.67 with SMTP id z3mr3195600obg.69.1440082643567; Thu,
+	20 Aug 2015 07:57:23 -0700 (PDT)
+Received: by 10.76.76.164 with HTTP; Thu, 20 Aug 2015 07:57:23 -0700 (PDT)
+In-Reply-To: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
+References: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
+Date: Thu, 20 Aug 2015 16:57:23 +0200
+Message-ID: <CAJ+F1CJ_D+CRRLJyqaQic28-cf-u0wzp3OoGTUUMjadezhaxZA@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+To: =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?= <dirty.ice.hu@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c01::232
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	QEMU <qemu-devel@nongnu.org>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] opts: produce valid
+	command line in qemu_opts_print
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,36 +56,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Aug 2015 15:52:54 -0000
+X-List-Received-Date: Fri, 21 Aug 2015 00:02:30 -0000
 
-Generate an interrupt if the tx buffer is empty and the tx empty interrupt
-is enabled. This fixes a problem seen when running a Linux image since
-Linux commit 55c3cb1358e ("serial: imx: remove unneeded imx_transmit_buffer()
-from imx_start_tx()"). Linux now waits for the tx empty interrupt before
-starting to send data, causing transmit stalls until there is an interrupt
-for another reason.
+On Tue, Jul 7, 2015 at 4:42 PM, K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.i=
+ce.hu@gmail.com> wrote:
+> This will let us print options in a format that the user would actually
+> write it on the command line (foo=3Dbar,baz=3Dasd,etc=3Ddef), without
+> prepending a spurious comma at the beginning of the list, or quoting
+> values unnecessarily.  This patch provides the following changes:
+> * write and id=3D, if the option has an id
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- hw/char/imx_serial.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+you can remove the first "and" here
 
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index f3fbc77..8dc791d 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -145,7 +145,9 @@ static void imx_update(IMXSerialState *s)
-     uint32_t flags;
- 
-     flags = (s->usr1 & s->ucr1) & (USR1_TRDY|USR1_RRDY);
--    if (!(s->ucr1 & UCR1_TXMPTYEN)) {
-+    if (s->ucr1 & UCR1_TXMPTYEN) {
-+        flags |= (s->uts1 & UTS1_TXEMPTY);
-+    } else {
-         flags &= ~USR1_TRDY;
-     }
- 
--- 
-2.1.4
+> * do not print separator before the first element
+> * do not quote string arguments
+> * properly escape commas (,) for QEMU
 
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
