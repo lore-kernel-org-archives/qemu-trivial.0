@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUYt8-0005WA-Nx
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 07:29:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56855)
+	id 1ZUYvX-0007Ms-Kp
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 07:31:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUYt6-0005Ta-Jc
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:29:05 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUYvV-0007Jm-M4
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:31:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUYt6-00050d-1j
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:29:04 -0400
-Received: from mail-oi0-x22b.google.com ([2607:f8b0:4003:c06::22b]:32825)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUYvR-0006hJ-Qz
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:31:33 -0400
+Received: from mail-ob0-x22d.google.com ([2607:f8b0:4003:c01::22d]:35456)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <marcandre.lureau@gmail.com>)
-	id 1ZUYt4-000501-MZ; Wed, 26 Aug 2015 07:29:02 -0400
-Received: by oieu205 with SMTP id u205so48949165oie.0;
-	Wed, 26 Aug 2015 04:29:02 -0700 (PDT)
+	id 1ZUYvQ-0006g7-8L; Wed, 26 Aug 2015 07:31:28 -0400
+Received: by obbwr7 with SMTP id wr7so168505573obb.2;
+	Wed, 26 Aug 2015 04:31:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type:content-transfer-encoding;
-	bh=UkvphbI/53F7WRXoNylMObTFbVH83xH9mppdr8IRl7M=;
-	b=COzCdg1ac1Zo6p48k+hqgGTG6rHrcIGpES8KNgbSUsynqQIDQdbt+uPSCln3Uy7Idr
-	lvjBIVEg1g8rn7ySkERq2HCdJB9yxs3IfoUFZFZ9p3zdpUGbUdM8vR05O2kkO4z4O54D
-	ZOHzaRr68rE6ocyLdhqpd7L6b7X4du483VgOFpzk3rJ3HEE9KR/K13axEKaIgmNxoBUQ
-	p6ssCZDxlb7pulvfLr9nHPZmjNrikhfAg3P5bZrOJXj0yGjyrnsBNlE7F0eFe7oTXJCm
-	VZ0+3iPDkfKGmUuApib5UkAVkHN8xhGEVkxSy1zdf4jiyjAQPklwH3839FQuUfWhUnZI
-	Xe3w==
+	bh=U1JvilAcbDJzz94myZxHPNxg+je2gpYPcgOEQzfuoGA=;
+	b=eFA87u/tGU5xsBw6hYJYu9G5POeAMWiA2N0YXfhwsOQdPthRjvRAoqL0bD8jZz8dlB
+	BD2CiKdADIczGWgYBb2hJDphltegYpuv5IPyvdFKfpK+v46uJFJh2lwAeXkbWPF4+NmR
+	+MtZ4YQivJC2nEvL0pqbjG/e4nt31C7DSjRitk3zboRqYX69egykhQqQslbm4Iyzk0BK
+	zDagQNprVaBrIf/8YTeE36CH+8SGSIutipZU9u6KLv311oz+/05BzIlWoixGJ2eFDbTL
+	9KNBfkGT0Ny3w1pXGVFVoLSDHblBs/1t5/3ABWglh8Ymd190JmOnwemgzNv69Ok/lPmW
+	6lYQ==
 MIME-Version: 1.0
-X-Received: by 10.202.198.212 with SMTP id w203mr30587843oif.72.1440588542332; 
-	Wed, 26 Aug 2015 04:29:02 -0700 (PDT)
-Received: by 10.76.76.164 with HTTP; Wed, 26 Aug 2015 04:29:02 -0700 (PDT)
-In-Reply-To: <1440587838-25595-2-git-send-email-berrange@redhat.com>
+X-Received: by 10.60.177.103 with SMTP id cp7mr31273915oec.38.1440588687853;
+	Wed, 26 Aug 2015 04:31:27 -0700 (PDT)
+Received: by 10.76.76.164 with HTTP; Wed, 26 Aug 2015 04:31:27 -0700 (PDT)
+In-Reply-To: <1440587838-25595-3-git-send-email-berrange@redhat.com>
 References: <1440587838-25595-1-git-send-email-berrange@redhat.com>
-	<1440587838-25595-2-git-send-email-berrange@redhat.com>
-Date: Wed, 26 Aug 2015 13:29:02 +0200
-Message-ID: <CAJ+F1CKq+RRykdb4Qu4968QFva8CsK14w=HF3Rfht9WhTmfkoQ@mail.gmail.com>
+	<1440587838-25595-3-git-send-email-berrange@redhat.com>
+Date: Wed, 26 Aug 2015 13:31:27 +0200
+Message-ID: <CAJ+F1CJxN1dJmVXXSe5zKTcDxB_0k-PqhR-kVEgnPRS-Q_cpFw@mail.gmail.com>
 From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
 To: "Daniel P. Berrange" <berrange@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c06::22b
+X-Received-From: 2607:f8b0:4003:c01::22d
 Cc: qemu-trivial@nongnu.org, QEMU <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/7] maint: remove double
-	semicolons in many files
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/7] maint: remove / fix
+	many doubled words
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,13 +54,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2015 11:29:05 -0000
+X-List-Received-Date: Wed, 26 Aug 2015 11:31:34 -0000
+
+nice :)
 
 Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
-
-
---=20
-Marc-Andr=C3=A9 Lureau
 
