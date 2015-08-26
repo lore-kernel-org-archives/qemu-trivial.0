@@ -1,42 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUN40-0005as-07
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Aug 2015 18:51:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49081)
+	id 1ZUYi5-0002zk-4w
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 07:17:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZUN3x-0005ZQ-WD
-	for qemu-trivial@nongnu.org; Tue, 25 Aug 2015 18:51:30 -0400
+	(envelope-from <berrange@redhat.com>) id 1ZUYhy-0002q5-O7
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZUN3t-0000E6-0s
-	for qemu-trivial@nongnu.org; Tue, 25 Aug 2015 18:51:29 -0400
-Received: from mx4-phx2.redhat.com ([209.132.183.25]:44161)
+	(envelope-from <berrange@redhat.com>) id 1ZUYhx-00085D-Nr
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38200)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZUN3s-0000Dz-HV; Tue, 25 Aug 2015 18:51:24 -0400
-Received: from zmail13.collab.prod.int.phx2.redhat.com
-	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
-	by mx4-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id t7PMp83A008665;
-	Tue, 25 Aug 2015 18:51:08 -0400
-Date: Tue, 25 Aug 2015 18:51:08 -0400 (EDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <285075347.18984776.1440543068614.JavaMail.zimbra@redhat.com>
-In-Reply-To: <1440535491-4511-1-git-send-email-lvivier@redhat.com>
-References: <1440535491-4511-1-git-send-email-lvivier@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.4.164.1, 10.5.101.130]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF39 (Linux)/8.0.6_GA_5922)
-Thread-Topic: remove useless muldiv64()
-Thread-Index: pg3kXloippDX/GP5iT3WaHQHFNBZdg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 209.132.183.25
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jia Liu <proljc@gmail.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	qemu-trivial <qemu-trivial@nongnu.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, Leon Alrae <leon.alrae@imgtec.com>
-Subject: Re: [Qemu-trivial] [PATCH 0/7] remove useless muldiv64()
+	(envelope-from <berrange@redhat.com>)
+	id 1ZUYhr-00082n-Re; Wed, 26 Aug 2015 07:17:28 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5866CA2C12;
+	Wed, 26 Aug 2015 11:17:27 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn1-4-60.ams2.redhat.com
+	[10.36.4.60])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t7QBHODq028642; Wed, 26 Aug 2015 07:17:26 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 26 Aug 2015 12:17:12 +0100
+Message-Id: <1440587838-25595-2-git-send-email-berrange@redhat.com>
+In-Reply-To: <1440587838-25595-1-git-send-email-berrange@redhat.com>
+References: <1440587838-25595-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PATCH 1/7] maint: remove double semicolons in many
+	files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,32 +43,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Aug 2015 22:51:31 -0000
+X-List-Received-Date: Wed, 26 Aug 2015 11:17:36 -0000
 
-> Originally, timers were ticks based, and it made sense to
-> add ticks to current time to know when to trigger an alarm.
-> 
-> But since commit:
-> 
-> 7447545 change all other clock references to use nanosecond resolution
-> accessors
-> 
-> All timers use nanoseconds and we need to convert ticks to nanoseconds, by
-> doing something like:
-> 
->      y = muldiv64(x, get_ticks_per_sec(), TIMER_FREQ)
-> 
-> where x is the number of device ticks and y the number of system ticks.
-> 
-> y is used as nanoseconds in timer functions,
-> it works because 1 tick is 1 nanosecond.
-> (get_ticks_per_sec() is 10^9)
-> 
-> But if get_ticks_per_sec() / TIMER_FREQ is an integer, we can do:
-> 
->     y = x * TIMER_PERIOD;
+A number of source files have statements accidentally
+terminated by a double semicolon - eg 'foo = bar;;'.
+This is harmless but a mistake none the less.
 
-Cc: qemu-trivial@nongnu.org
+The tcg/ia64/tcg-target.c file is whitelisted because
+it has valid use of ';;' in a comment containing assembly
+code.
 
-Paolo
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ block/vhdx.c         | 2 +-
+ hw/arm/vexpress.c    | 4 ++--
+ hw/intc/arm_gic.c    | 2 +-
+ numa.c               | 2 +-
+ qga/commands-win32.c | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/block/vhdx.c b/block/vhdx.c
+index 0776de7..f05c7a9 100644
+--- a/block/vhdx.c
++++ b/block/vhdx.c
+@@ -1454,7 +1454,7 @@ static int vhdx_create_new_metadata(BlockDriverState *bs,
+     uint32_t offset = 0;
+     void *buffer = NULL;
+     void *entry_buffer;
+-    VHDXMetadataTableHeader *md_table;;
++    VHDXMetadataTableHeader *md_table;
+     VHDXMetadataTableEntry  *md_table_entry;
+ 
+     /* Metadata entries */
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index da21788..0f8bf1c 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -541,7 +541,7 @@ static void vexpress_common_init(MachineState *machine)
+ {
+     VexpressMachineState *vms = VEXPRESS_MACHINE(machine);
+     VexpressMachineClass *vmc = VEXPRESS_MACHINE_GET_CLASS(machine);
+-    VEDBoardInfo *daughterboard = vmc->daughterboard;;
++    VEDBoardInfo *daughterboard = vmc->daughterboard;
+     DeviceState *dev, *sysctl, *pl041;
+     qemu_irq pic[64];
+     uint32_t sys_id;
+@@ -762,7 +762,7 @@ static void vexpress_a9_class_init(ObjectClass *oc, void *data)
+     mc->name = TYPE_VEXPRESS_A9_MACHINE;
+     mc->desc = "ARM Versatile Express for Cortex-A9";
+ 
+-    vmc->daughterboard = &a9_daughterboard;;
++    vmc->daughterboard = &a9_daughterboard;
+ }
+ 
+ static void vexpress_a15_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index a8c5d19..46ebc3f 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -239,7 +239,7 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
+      * for the case where this GIC supports grouping and the pending interrupt
+      * is in the wrong group.
+      */
+-    irq = gic_get_current_pending_irq(s, cpu, attrs);;
++    irq = gic_get_current_pending_irq(s, cpu, attrs);
+ 
+     if (irq >= GIC_MAXIRQ) {
+         DPRINTF("ACK, no pending interrupt or it is hidden: %d\n", irq);
+diff --git a/numa.c b/numa.c
+index 402804b..eed8f5d 100644
+--- a/numa.c
++++ b/numa.c
+@@ -280,7 +280,7 @@ static void validate_numa_cpus(void)
+             bitmap_and(seen_cpus, seen_cpus,
+                        numa_info[i].node_cpu, MAX_CPUMASK_BITS);
+             error_report("CPU(s) present in multiple NUMA nodes: %s",
+-                         enumerate_cpus(seen_cpus, max_cpus));;
++                         enumerate_cpus(seen_cpus, max_cpus));
+             exit(EXIT_FAILURE);
+         }
+         bitmap_or(seen_cpus, seen_cpus,
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index a7822d5..203664c 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -657,7 +657,7 @@ static GuestFilesystemInfo *build_guest_fsinfo(char *guid, Error **errp)
+         fs->mountpoint = g_strndup(mnt_point, len);
+     }
+     fs->type = g_strdup(fs_name);
+-    fs->disk = build_guest_disk_info(guid, errp);;
++    fs->disk = build_guest_disk_info(guid, errp);
+ free:
+     g_free(mnt_point);
+     return fs;
+-- 
+2.4.3
+
 
