@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUYi8-000359-9P
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 07:17:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53281)
+	id 1ZUYiB-00039t-63
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 07:17:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53333)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1ZUYi0-0002rM-2r
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:37 -0400
+	(envelope-from <berrange@redhat.com>) id 1ZUYi5-00031l-U0
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1ZUYhy-000864-JW
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46629)
+	(envelope-from <berrange@redhat.com>) id 1ZUYhz-00086t-OI
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 07:17:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38228)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <berrange@redhat.com>)
-	id 1ZUYhw-000847-BY; Wed, 26 Aug 2015 07:17:32 -0400
+	id 1ZUYhx-00084n-Fy; Wed, 26 Aug 2015 07:17:33 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id E5D388CF5B;
-	Wed, 26 Aug 2015 11:17:31 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 112308C1CB;
+	Wed, 26 Aug 2015 11:17:33 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn1-4-60.ams2.redhat.com
 	[10.36.4.60])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t7QBHODu028642; Wed, 26 Aug 2015 07:17:31 -0400
+	id t7QBHODv028642; Wed, 26 Aug 2015 07:17:32 -0400
 From: "Daniel P. Berrange" <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 26 Aug 2015 12:17:16 +0100
-Message-Id: <1440587838-25595-6-git-send-email-berrange@redhat.com>
+Date: Wed, 26 Aug 2015 12:17:17 +0100
+Message-Id: <1440587838-25595-7-git-send-email-berrange@redhat.com>
 In-Reply-To: <1440587838-25595-1-git-send-email-berrange@redhat.com>
 References: <1440587838-25595-1-git-send-email-berrange@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
-Subject: [Qemu-trivial] [PATCH 5/7] maint: remove unused include for signal.h
+Subject: [Qemu-trivial] [PATCH 6/7] maint: remove unused include for
+	strings.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,145 +43,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2015 11:17:37 -0000
+X-List-Received-Date: Wed, 26 Aug 2015 11:17:45 -0000
 
-A number of files were including signal.h but not using any
+A number of files were including strings.h but not using any
 of the functions it provides
 
 Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
 ---
- bsd-user/signal.c       | 1 -
- hw/block/xen_disk.c     | 1 -
- hw/net/xen_nic.c        | 1 -
- hw/usb/redirect.c       | 1 -
- os-win32.c              | 1 -
- target-i386/translate.c | 1 -
- target-mips/helper.c    | 1 -
- target-sh4/helper.c     | 1 -
- target-tricore/helper.c | 1 -
- tests/tcg/testthread.c  | 1 -
- 10 files changed, 10 deletions(-)
+ disas/microblaze.c  | 1 -
+ hw/pci/shpc.c       | 1 -
+ page_cache.c        | 1 -
+ tests/test-xbzrle.c | 1 -
+ 4 files changed, 4 deletions(-)
 
-diff --git a/bsd-user/signal.c b/bsd-user/signal.c
-index 445f69e..e4ee2d0 100644
---- a/bsd-user/signal.c
-+++ b/bsd-user/signal.c
-@@ -21,7 +21,6 @@
- #include <string.h>
- #include <stdarg.h>
- #include <unistd.h>
--#include <signal.h>
- #include <errno.h>
+diff --git a/disas/microblaze.c b/disas/microblaze.c
+index c14ab89..92cd4b1 100644
+--- a/disas/microblaze.c
++++ b/disas/microblaze.c
+@@ -582,7 +582,6 @@ static const char pvr_register_prefix[] = "rpvr";
+ #endif /* MICROBLAZE_OPC */
  
- #include "qemu.h"
-diff --git a/hw/block/xen_disk.c b/hw/block/xen_disk.c
-index 267d8a8..36d7398 100644
---- a/hw/block/xen_disk.c
-+++ b/hw/block/xen_disk.c
-@@ -24,7 +24,6 @@
- #include <stdarg.h>
- #include <string.h>
- #include <unistd.h>
--#include <signal.h>
- #include <inttypes.h>
- #include <time.h>
- #include <fcntl.h>
-diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
-index d7cbfc1..0da16b4 100644
---- a/hw/net/xen_nic.c
-+++ b/hw/net/xen_nic.c
-@@ -24,7 +24,6 @@
- #include <stdarg.h>
- #include <string.h>
- #include <unistd.h>
--#include <signal.h>
- #include <inttypes.h>
- #include <fcntl.h>
- #include <errno.h>
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 34cf60d..38086cd 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -34,7 +34,6 @@
- #include "sysemu/char.h"
+ #include "disas/bfd.h"
+-#include <strings.h>
  
- #include <sys/ioctl.h>
--#include <signal.h>
- #include <usbredirparser.h>
- #include <usbredirfilter.h>
- 
-diff --git a/os-win32.c b/os-win32.c
-index c0daf8e..cc09196 100644
---- a/os-win32.c
-+++ b/os-win32.c
-@@ -26,7 +26,6 @@
- #include <mmsystem.h>
- #include <unistd.h>
- #include <fcntl.h>
--#include <signal.h>
- #include <time.h>
- #include <errno.h>
- #include <sys/time.h>
-diff --git a/target-i386/translate.c b/target-i386/translate.c
-index 82e2245..b1a5ad9 100644
---- a/target-i386/translate.c
-+++ b/target-i386/translate.c
-@@ -21,7 +21,6 @@
+ #define get_field_rd(instr) get_field(instr, RD_MASK, RD_LOW)
+ #define get_field_r1(instr) get_field(instr, RA_MASK, RA_LOW)
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index bfb4d31..d34fdf3 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -1,5 +1,4 @@
+ #include "qemu-common.h"
+-#include <strings.h>
+ #include <stdint.h>
+ #include "qemu/range.h"
+ #include "qemu/error-report.h"
+diff --git a/page_cache.c b/page_cache.c
+index cf8878d..a9eb076 100644
+--- a/page_cache.c
++++ b/page_cache.c
+@@ -15,7 +15,6 @@
+ #include <stdint.h>
  #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "qemu/host-utils.h"
- #include "cpu.h"
-diff --git a/target-mips/helper.c b/target-mips/helper.c
-index f44edbb..37bba67 100644
---- a/target-mips/helper.c
-+++ b/target-mips/helper.c
-@@ -21,7 +21,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- #include "sysemu/kvm.h"
-diff --git a/target-sh4/helper.c b/target-sh4/helper.c
-index a533f08..dc101cb 100644
---- a/target-sh4/helper.c
-+++ b/target-sh4/helper.c
-@@ -21,7 +21,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- 
-diff --git a/target-tricore/helper.c b/target-tricore/helper.c
-index f52504c..1808b28 100644
---- a/target-tricore/helper.c
-+++ b/target-tricore/helper.c
-@@ -20,7 +20,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- 
-diff --git a/tests/tcg/testthread.c b/tests/tcg/testthread.c
-index 2679af1..810ba5d 100644
---- a/tests/tcg/testthread.c
-+++ b/tests/tcg/testthread.c
-@@ -2,7 +2,6 @@
  #include <stdlib.h>
- #include <stdio.h>
+-#include <strings.h>
  #include <string.h>
--#include <signal.h>
- #include <unistd.h>
- #include <inttypes.h>
- #include <pthread.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+diff --git a/tests/test-xbzrle.c b/tests/test-xbzrle.c
+index b5ee8bb..1cd8cb7 100644
+--- a/tests/test-xbzrle.c
++++ b/tests/test-xbzrle.c
+@@ -13,7 +13,6 @@
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <strings.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include "qemu-common.h"
 -- 
 2.4.3
 
