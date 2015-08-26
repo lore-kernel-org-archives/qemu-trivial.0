@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUdGd-000788-Kh
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 12:09:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38594)
+	id 1ZUf54-0004Py-FZ
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 14:05:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50221)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZUdGb-000746-18
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 12:09:38 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZUf51-0004Lc-VK
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 14:05:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZUdGZ-0000oh-79
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 12:09:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51731)
+	(envelope-from <lvivier@redhat.com>) id 1ZUf51-0000ei-21
+	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 14:05:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZUdGU-0000nI-5f; Wed, 26 Aug 2015 12:09:30 -0400
+	(envelope-from <lvivier@redhat.com>)
+	id 1ZUf4w-0000dm-Sw; Wed, 26 Aug 2015 14:05:42 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 873E68E751;
-	Wed, 26 Aug 2015 16:09:29 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-105.ams2.redhat.com
-	[10.36.116.105])
+	by mx1.redhat.com (Postfix) with ESMTPS id 35FA0341AE0;
+	Wed, 26 Aug 2015 18:05:42 +0000 (UTC)
+Received: from thinkpad.redhat.com (vpn1-5-59.ams2.redhat.com [10.36.5.59])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t7QG9RQf020631
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 26 Aug 2015 12:09:28 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E36E1303F90B; Wed, 26 Aug 2015 18:09:26 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-References: <1440587838-25595-1-git-send-email-berrange@redhat.com>
-	<1440587838-25595-8-git-send-email-berrange@redhat.com>
-	<87lhcyp89e.fsf@blackfin.pond.sub.org> <55DDB6B1.2060104@redhat.com>
-Date: Wed, 26 Aug 2015 18:09:26 +0200
-In-Reply-To: <55DDB6B1.2060104@redhat.com> (Eric Blake's message of "Wed, 26
-	Aug 2015 06:53:05 -0600")
-Message-ID: <87lhcyjakp.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
+	id t7QI5cZL026740; Wed, 26 Aug 2015 14:05:39 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Leon Alrae <leon.alrae@imgtec.com>, Jia Liu <proljc@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, crosthwaitepeter@gmail.com,
+	qemu-trivial@nongnu.org
+Date: Wed, 26 Aug 2015 20:05:31 +0200
+Message-Id: <1440612338-5912-1-git-send-email-lvivier@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 7/7] maint: avoid useless
-	"if (foo) free(foo)" pattern
+Subject: [Qemu-trivial] [PATCH v2 0/7] remove useless muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,271 +44,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2015 16:09:38 -0000
+X-List-Received-Date: Wed, 26 Aug 2015 18:05:48 -0000
 
-Eric Blake <eblake@redhat.com> writes:
+Originally, timers were ticks based, and it made sense to
+add ticks to current time to know when to trigger an alarm.
 
-> On 08/26/2015 06:02 AM, Markus Armbruster wrote:
->> "Daniel P. Berrange" <berrange@redhat.com> writes:
->> 
->>> The free() and g_free() functions both happily accept
->>> NULL on any platform QEMU builds on.
->> 
->> Do systems where free(NULL) doesn't work even exist?  Even C89
->> guarantees it does nothing.
->
-> Solaris 4 was the last (pre-C89) system I am aware of that didn't like
-> free(NULL).  Ancient history nowadays.
->
->> 
->> My Coccinelle semantic patch finds a few more, because it also fixes up
->> the equally pointless conditional
->> 
->>     if (foo) {
->>         free(foo);
->>         foo = NULL;
->>     }
->
-> The assignment to foo is not pointless, but removing the conditional is
-> indeed nice.  gnulib's perl script is a lot weaker than coccinelle,
-> obviously :)
+But since commit:
 
-I only called the conditional pointless :)
+7447545 change all other clock references to use nanosecond resolution accessors
 
->> 
->> @@
->> expression E;
->> @@
->> -	if (E != NULL) {
->> -	    g_free(E);
->> -           E = NULL;
->> -	}
->> +       g_free(E);
->> +       E = NULL;
->
-> This only checks for g_free() before assignment to NULL; are there any
-> uses of raw free() that do the same?
+All timers use nanoseconds and we need to convert ticks to nanoseconds, by
+doing something like:
 
-Running Coccinelle again...  wait...  wait...  yes, but only in
-libdecnumber/, which we stole from GCC.  Not sure we want to mess with
-it.  Patch appended anyway.
+     y = muldiv64(x, get_ticks_per_sec(), TIMER_FREQ)
 
->> Result (feel free to squash it into your patch):
->> 
->
-> Whether squashed in or separate, these additional changes and the
-> original patch are:
-> Reviewed-by: Eric Blake <eblake@redhat.com>
+where x is the number of device ticks and y the number of system ticks.
 
-diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
-index 58211e7..c5b5f66 100644
---- a/libdecnumber/decNumber.c
-+++ b/libdecnumber/decNumber.c
-@@ -779,7 +779,7 @@ decNumber * decNumberFromString(decNumber *dn, const char chars[],
-     /* decNumberShow(dn); */
-     } while(0);				/* [for break] */
- 
--  if (allocres!=NULL) free(allocres);	/* drop any storage used */
-+  free(allocres);	/* drop any storage used */
-   if (status!=0) decStatus(dn, status, set);
-   return dn;
-   } /* decNumberFromString */
-@@ -1038,8 +1038,8 @@ decNumber * decNumberCompareTotalMag(decNumber *res, const decNumber *lhs,
-     decCompareOp(res, lhs, rhs, set, COMPTOTAL, &status);
-     } while(0);				/* end protected */
- 
--  if (allocbufa!=NULL) free(allocbufa); /* drop any storage used */
--  if (allocbufb!=NULL) free(allocbufb); /* .. */
-+  free(allocbufa); /* drop any storage used */
-+  free(allocbufb); /* .. */
-   if (status!=0) decStatus(res, status, set);
-   return res;
-   } /* decNumberCompareTotalMag */
-@@ -1142,7 +1142,7 @@ decNumber * decNumberExp(decNumber *res, const decNumber *rhs,
-     } while(0);				/* end protected */
- 
-   #if DECSUBSET
--  if (allocrhs !=NULL) free(allocrhs);	/* drop any storage used */
-+  free(allocrhs);	/* drop any storage used */
-   #endif
-   /* apply significant status */
-   if (status!=0) decStatus(res, status, set);
-@@ -1237,7 +1237,7 @@ decNumber * decNumberFMA(decNumber *res, const decNumber *lhs,
-     decAddOp(res, acc, fhs, set, 0, &status);
-     } while(0);				/* end protected */
- 
--  if (allocbufa!=NULL) free(allocbufa); /* drop any storage used */
-+  free(allocbufa); /* drop any storage used */
-   if (status!=0) decStatus(res, status, set);
-   #if DECCHECK
-   decCheckInexact(res, set);
-@@ -1364,7 +1364,7 @@ decNumber * decNumberLn(decNumber *res, const decNumber *rhs,
-     } while(0);				/* end protected */
- 
-   #if DECSUBSET
--  if (allocrhs !=NULL) free(allocrhs);	/* drop any storage used */
-+  free(allocrhs);	/* drop any storage used */
-   #endif
-   /* apply significant status */
-   if (status!=0) decStatus(res, status, set);
-@@ -1577,10 +1577,10 @@ decNumber * decNumberLog10(decNumber *res, const decNumber *rhs,
-     decDivideOp(res, a, b, &aset, DIVIDE, &status); /* into result */
-     } while(0);				/* [for break] */
- 
--  if (allocbufa!=NULL) free(allocbufa); /* drop any storage used */
--  if (allocbufb!=NULL) free(allocbufb); /* .. */
-+  free(allocbufa); /* drop any storage used */
-+  free(allocbufb); /* .. */
-   #if DECSUBSET
--  if (allocrhs !=NULL) free(allocrhs);	/* .. */
-+  free(allocrhs);	/* .. */
-   #endif
-   /* apply significant status */
-   if (status!=0) decStatus(res, status, set);
-@@ -2320,11 +2320,11 @@ decNumber * decNumberPower(decNumber *res, const decNumber *lhs,
-     #endif
-     } while(0);				/* end protected */
- 
--  if (allocdac!=NULL) free(allocdac);	/* drop any storage used */
--  if (allocinv!=NULL) free(allocinv);	/* .. */
-+  free(allocdac);	/* drop any storage used */
-+  free(allocinv);	/* .. */
-   #if DECSUBSET
--  if (alloclhs!=NULL) free(alloclhs);	/* .. */
--  if (allocrhs!=NULL) free(allocrhs);	/* .. */
-+  free(alloclhs);	/* .. */
-+  free(allocrhs);	/* .. */
-   #endif
-   if (status!=0) decStatus(res, status, set);
-   #if DECCHECK
-@@ -2415,7 +2415,7 @@ decNumber * decNumberReduce(decNumber *res, const decNumber *rhs,
-     } while(0);				     /* end protected */
- 
-   #if DECSUBSET
--  if (allocrhs !=NULL) free(allocrhs);	     /* .. */
-+  free(allocrhs);	     /* .. */
-   #endif
-   if (status!=0) decStatus(res, status, set);/* then report status */
-   return res;
-@@ -3169,11 +3169,11 @@ decNumber * decNumberSquareRoot(decNumber *res, const decNumber *rhs,
-     decNumberCopy(res, a);		     /* a is now the result */
-     } while(0);				     /* end protected */
- 
--  if (allocbuff!=NULL) free(allocbuff);	     /* drop any storage used */
--  if (allocbufa!=NULL) free(allocbufa);	     /* .. */
--  if (allocbufb!=NULL) free(allocbufb);	     /* .. */
-+  free(allocbuff);	     /* drop any storage used */
-+  free(allocbufa);	     /* .. */
-+  free(allocbufb);	     /* .. */
-   #if DECSUBSET
--  if (allocrhs !=NULL) free(allocrhs);	     /* .. */
-+  free(allocrhs);	     /* .. */
-   #endif
-   if (status!=0) decStatus(res, status, set);/* then report status */
-   #if DECCHECK
-@@ -4187,10 +4187,10 @@ static decNumber * decAddOp(decNumber *res, const decNumber *lhs,
-       }
-     } while(0);				     /* end protected */
- 
--  if (allocacc!=NULL) free(allocacc);	     /* drop any storage used */
-+  free(allocacc);	     /* drop any storage used */
-   #if DECSUBSET
--  if (allocrhs!=NULL) free(allocrhs);	     /* .. */
--  if (alloclhs!=NULL) free(alloclhs);	     /* .. */
-+  free(allocrhs);	     /* .. */
-+  free(alloclhs);	     /* .. */
-   #endif
-   return res;
-   } /* decAddOp */
-@@ -4839,11 +4839,11 @@ static decNumber * decDivideOp(decNumber *res,
-     #endif
-     } while(0);				     /* end protected */
- 
--  if (varalloc!=NULL) free(varalloc);	/* drop any storage used */
--  if (allocacc!=NULL) free(allocacc);	/* .. */
-+  free(varalloc);	/* drop any storage used */
-+  free(allocacc);	/* .. */
-   #if DECSUBSET
--  if (allocrhs!=NULL) free(allocrhs);	/* .. */
--  if (alloclhs!=NULL) free(alloclhs);	/* .. */
-+  free(allocrhs);	/* .. */
-+  free(alloclhs);	/* .. */
-   #endif
-   return res;
-   } /* decDivideOp */
-@@ -5184,14 +5184,14 @@ static decNumber * decMultiplyOp(decNumber *res, const decNumber *lhs,
-     decFinish(res, set, &residue, status);   /* final cleanup */
-     } while(0);				/* end protected */
- 
--  if (allocacc!=NULL) free(allocacc);	/* drop any storage used */
-+  free(allocacc);	/* drop any storage used */
-   #if DECSUBSET
--  if (allocrhs!=NULL) free(allocrhs);	/* .. */
--  if (alloclhs!=NULL) free(alloclhs);	/* .. */
-+  free(allocrhs);	/* .. */
-+  free(alloclhs);	/* .. */
-   #endif
-   #if FASTMUL
--  if (allocrhi!=NULL) free(allocrhi);	/* .. */
--  if (alloclhi!=NULL) free(alloclhi);	/* .. */
-+  free(allocrhi);	/* .. */
-+  free(alloclhi);	/* .. */
-   #endif
-   return res;
-   } /* decMultiplyOp */
-@@ -5540,9 +5540,9 @@ static decNumber *decExpOp(decNumber *res, const decNumber *rhs,
-     decFinish(res, set, &residue, status);	 /* cleanup/set flags */
-     } while(0);				/* end protected */
- 
--  if (allocrhs !=NULL) free(allocrhs);	/* drop any storage used */
--  if (allocbufa!=NULL) free(allocbufa); /* .. */
--  if (allocbuft!=NULL) free(allocbuft); /* .. */
-+  free(allocrhs);	/* drop any storage used */
-+  free(allocbufa); /* .. */
-+  free(allocbuft); /* .. */
-   /* [status is handled by caller] */
-   return res;
-   } /* decExpOp */
-@@ -5852,8 +5852,8 @@ static decNumber *decLnOp(decNumber *res, const decNumber *rhs,
-     decFinish(res, set, &residue, status);	 /* cleanup/set flags */
-     } while(0);				/* end protected */
- 
--  if (allocbufa!=NULL) free(allocbufa); /* drop any storage used */
--  if (allocbufb!=NULL) free(allocbufb); /* .. */
-+  free(allocbufa); /* drop any storage used */
-+  free(allocbufb); /* .. */
-   /* [status is handled by caller] */
-   return res;
-   } /* decLnOp */
-@@ -6017,8 +6017,8 @@ static decNumber * decQuantizeOp(decNumber *res, const decNumber *lhs,
-     } while(0);				/* end protected */
- 
-   #if DECSUBSET
--  if (allocrhs!=NULL) free(allocrhs);	/* drop any storage used */
--  if (alloclhs!=NULL) free(alloclhs);	/* .. */
-+  free(allocrhs);	/* drop any storage used */
-+  free(alloclhs);	/* .. */
-   #endif
-   return res;
-   } /* decQuantizeOp */
-@@ -6200,8 +6200,8 @@ static decNumber *decCompareOp(decNumber *res, const decNumber *lhs,
-       }
-     }
-   #if DECSUBSET
--  if (allocrhs!=NULL) free(allocrhs);	/* free any storage used */
--  if (alloclhs!=NULL) free(alloclhs);	/* .. */
-+  free(allocrhs);	/* free any storage used */
-+  free(alloclhs);	/* .. */
-   #endif
-   return res;
-   } /* decCompareOp */
-@@ -6335,7 +6335,7 @@ static Int decUnitCompare(const Unit *a, Int alength,
-     result=(*u==0 ? 0 : +1);
-     }
-   /* clean up and return the result */
--  if (allocacc!=NULL) free(allocacc);	/* drop any storage used */
-+  free(allocacc);	/* drop any storage used */
-   return result;
-   } /* decUnitCompare */
- 
+y is used as nanoseconds in timer functions,
+it works because 1 tick is 1 nanosecond.
+(get_ticks_per_sec() is 10^9)
+
+But if get_ticks_per_sec() / TIMER_FREQ is an integer, we can do:
+
+    y = x * TIMER_PERIOD;
+
+v2:
+4/4 For target-arm, don't remove muldiv64() but clarify
+    the use of the values.
+7/7 Replace qemu_clock_get_ns()/1000 by qemu_clock_get_us()
+
+Laurent Vivier (7):
+  PCI: remove muldiv64()
+  mips: remove muldiv64()
+  openrisc: remove muldiv64()
+  arm: clarify the use of muldiv64()
+  hpet: remove muldiv64()
+  bt: remove muldiv64()
+  net: remove muldiv64()
+
+ hw/bt/hci.c                |  4 ++--
+ hw/mips/cputimer.c         | 19 ++++++++-----------
+ hw/net/pcnet.c             |  3 +--
+ hw/net/rtl8139.c           | 14 ++++++--------
+ hw/openrisc/cputimer.c     |  7 +++----
+ hw/timer/hpet.c            |  6 +++---
+ hw/watchdog/wdt_i6300esb.c | 11 +++--------
+ include/hw/timer/hpet.h    |  4 ++--
+ net/dump.c                 |  2 +-
+ target-arm/helper.c        | 14 ++++++++------
+ tests/rtl8139-test.c       |  2 +-
+ 11 files changed, 38 insertions(+), 48 deletions(-)
+
+-- 
+2.1.0
+
 
