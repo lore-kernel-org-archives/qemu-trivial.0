@@ -1,51 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUxG8-0007B8-5W
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 09:30:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50604)
+	id 1ZV2vH-0006iI-NR
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 15:33:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUujw-0000Ve-Ga
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 06:49:05 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZV2vF-0006el-Fn
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 15:33:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZUujv-0008Mb-Kr
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 06:49:04 -0400
-Received: from mail-wi0-x22d.google.com ([2a00:1450:400c:c05::22d]:38877)
+	(envelope-from <lvivier@redhat.com>) id 1ZV2vE-0007xx-Og
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 15:33:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46402)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>)
-	id 1ZUujq-0008Ja-74; Thu, 27 Aug 2015 06:48:58 -0400
-Received: by wicgk12 with SMTP id gk12so5020599wic.1;
-	Thu, 27 Aug 2015 03:48:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=AFIjSd50ceR3Ew7cva0leNWUD6XQciAZaU5x6I6iHNc=;
-	b=REvouoazj6VfvazvzD5w3BRyKeAd9Xm7QxglBw+Wr3rEfswEFjJopXEZ3eqq+Mhipa
-	PwstJM2jzb3VhcTIl2OQVsrdFRIRrVQyrseKs9pG6oCm1e8wQyEu7vDu3K4twhLea6r5
-	PirlboTseMXg2uoA51bmv/b/6ZktucZZ97MgxxiDaryWKDajeemKYROAwGu1sE7WMCVI
-	dAzgrmvoqAz/r2Lsh/piUqErGN2p5YnZ5SBIFeguBTYhWTHeI5nqabaYSULFq6m9Ym0f
-	Ibxn6k4TiTiFym2tUIicj/YSV5ev6GEvXF75XDSRZOKSi5Yy2tDeciKhHdLjdgZ9t2S7
-	gdNg==
-X-Received: by 10.180.74.167 with SMTP id u7mr17729030wiv.44.1440672537448;
-	Thu, 27 Aug 2015 03:48:57 -0700 (PDT)
-Received: from localhost ([149.6.167.210])
-	by smtp.gmail.com with ESMTPSA id i1sm2449928wjq.42.2015.08.27.03.48.56
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Aug 2015 03:48:56 -0700 (PDT)
-Sender: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Date: Thu, 27 Aug 2015 12:48:35 +0200
-Message-Id: <1440672515-19053-1-git-send-email-marcandre.lureau@redhat.com>
-X-Mailer: git-send-email 2.4.3
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22d
-X-Mailman-Approved-At: Thu, 27 Aug 2015 09:30:27 -0400
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [Qemu-trivial] [PATCH] docs: fix a qga/qapi-schema.json comment
+	(envelope-from <lvivier@redhat.com>)
+	id 1ZV2vA-0007ua-5C; Thu, 27 Aug 2015 15:33:12 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F369C1C57C4;
+	Thu, 27 Aug 2015 19:33:11 +0000 (UTC)
+Received: from thinkpad.redhat.com (vpn1-7-222.ams2.redhat.com [10.36.7.222])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id t7RJX7Zh024823; Thu, 27 Aug 2015 15:33:08 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Leon Alrae <leon.alrae@imgtec.com>, Jia Liu <proljc@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, crosthwaitepeter@gmail.com,
+	qemu-trivial@nongnu.org
+Date: Thu, 27 Aug 2015 21:32:58 +0200
+Message-Id: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v3 0/9] remove useless muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,39 +44,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2015 10:49:05 -0000
+X-List-Received-Date: Thu, 27 Aug 2015 19:33:18 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+Originally, timers were ticks based, and it made sense to
+add ticks to current time to know when to trigger an alarm.
 
-For consistency with the rest of the comment blocks.
+But since commit:
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- qga/qapi-schema.json | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+7447545 change all other clock references to use nanosecond resolution accessors
 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index 6b0bd16..82894c6 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -12,6 +12,7 @@
- ##
- 
- ##
-+# @guest-sync-delimited:
- #
- # Echo back a unique integer value, and prepend to response a
- # leading sentinel byte (0xFF) the client can check scan for.
-@@ -41,7 +42,7 @@
- # Returns: The unique integer id passed in by the client
- #
- # Since: 1.1
--# ##
-+##
- { 'command': 'guest-sync-delimited',
-   'data':    { 'id': 'int' },
-   'returns': 'int' }
+All timers use nanoseconds and we need to convert ticks to nanoseconds, by
+doing something like:
+
+     y = muldiv64(x, get_ticks_per_sec(), TIMER_FREQ)
+
+where x is the number of device ticks and y the number of system ticks.
+
+y is used as nanoseconds in timer functions,
+it works because 1 tick is 1 nanosecond.
+(get_ticks_per_sec() is 10^9)
+
+But if get_ticks_per_sec() / TIMER_FREQ is an integer, we can do:
+
+    y = x * TIMER_PERIOD;
+
+v3:
+Split "PCI: remove muldiv64()" in 3 patches:
+    i6300esb: remove muldiv64()
+    rtl8139: remove muldiv64()
+    pcnet: remove muldiv64()
+v2:
+4/4 For target-arm, don't remove muldiv64() but clarify
+    the use of the values.
+7/7 Replace qemu_clock_get_ns()/1000 by qemu_clock_get_us()
+
+Laurent Vivier (9):
+  i6300esb: remove muldiv64()
+  rtl8139: remove muldiv64()
+  pcnet: remove muldiv64()
+  mips: remove muldiv64()
+  openrisc: remove muldiv64()
+  arm: clarify the use of muldiv64()
+  hpet: remove muldiv64()
+  bt: remove muldiv64()
+  net: remove muldiv64()
+
+ hw/bt/hci.c                |  4 ++--
+ hw/mips/cputimer.c         | 19 ++++++++-----------
+ hw/net/pcnet.c             |  3 +--
+ hw/net/rtl8139.c           | 14 ++++++--------
+ hw/openrisc/cputimer.c     |  7 +++----
+ hw/timer/hpet.c            |  6 +++---
+ hw/watchdog/wdt_i6300esb.c | 11 +++--------
+ include/hw/timer/hpet.h    |  4 ++--
+ net/dump.c                 |  2 +-
+ target-arm/helper.c        | 14 ++++++++------
+ tests/rtl8139-test.c       |  2 +-
+ 11 files changed, 38 insertions(+), 48 deletions(-)
+
 -- 
-2.4.3
+2.1.0
 
 
