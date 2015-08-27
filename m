@@ -1,59 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZUjEl-0004GS-2j
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Aug 2015 18:32:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43063)
+	id 1ZUv77-0007K4-Tv
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 07:13:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58297)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dirty.ice.hu@gmail.com>) id 1ZUjEi-0004CZ-3H
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 18:32:05 -0400
+	(envelope-from <mst@redhat.com>) id 1ZUv74-0007EI-Iu
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 07:12:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dirty.ice.hu@gmail.com>) id 1ZUjEh-0008V5-Cq
-	for qemu-trivial@nongnu.org; Wed, 26 Aug 2015 18:32:04 -0400
-Received: from mail-wi0-x231.google.com ([2a00:1450:400c:c05::231]:38587)
+	(envelope-from <mst@redhat.com>) id 1ZUv73-0004Xh-85
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 07:12:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58343)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dirty.ice.hu@gmail.com>)
-	id 1ZUjEb-0008Rx-E9; Wed, 26 Aug 2015 18:31:57 -0400
-Received: by wicja10 with SMTP id ja10so28116423wic.1;
-	Wed, 26 Aug 2015 15:31:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:subject:to:references:cc:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=ydtOlyGvN4MaPrfVu5NvwWt6BQUnd+DMeosmmPT6qEo=;
-	b=Pr0NLJdKeS9B1Kh6Zwsxb15n8T+klgRsLt+TuAeo9JAtTMhrP7Jx7vwGXJy6vpGIr8
-	/K/78TyvAOgMRqrp8bP/n8RCrPsyxEJb6Oq/2NKrmBE4XzbvYdJdkmP3cZmeLHOcb8MW
-	lLBoKls+iTC5t4BjfmnyZNwGFe7LmgV8hPbZ0V1qLmjyQ3WRi1+UBF3A4oO3JOgId4FS
-	6sSNAo86qieXzUc6VTHe6sXbIRWzhrxh7spmCdf9TsJzXv6bcun5pga6rzS/emI2wvJr
-	YJ+2yWuXq6eot7L+RsqBXrYnainAQsx+ZSw5epN6XFihFRzLclxSrSeRo36tbJBvtTEO
-	bC1w==
-X-Received: by 10.194.238.168 with SMTP id vl8mr748102wjc.128.1440628316299;
-	Wed, 26 Aug 2015 15:31:56 -0700 (PDT)
-Received: from [10.248.117.5] (92-249-200-64.pool.digikabel.hu.
-	[92.249.200.64]) by smtp.googlemail.com with ESMTPSA id
-	uo6sm181556wjc.1.2015.08.26.15.31.55
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 26 Aug 2015 15:31:55 -0700 (PDT)
-From: "=?UTF-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?=" <dirty.ice.hu@gmail.com>
-X-Google-Original-From: =?UTF-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?=
-	<DirtY.iCE.hu@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>, Stefan Hajnoczi <stefanha@gmail.com>
-References: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
-	<CAJSP0QXj07FKi9g0B6mF9nbZi-inPQMEFrVZ_a6w5WPwbJycLQ@mail.gmail.com>
-	<878u8ynqbx.fsf@blackfin.pond.sub.org>
-Message-ID: <55DE3E58.4070906@gmail.com>
-Date: Thu, 27 Aug 2015 00:31:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <mst@redhat.com>)
+	id 1ZUv6y-0004VA-Ld; Thu, 27 Aug 2015 07:12:52 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id ED2EC461DD;
+	Thu, 27 Aug 2015 11:12:51 +0000 (UTC)
+Received: from redhat.com (ovpn-116-110.ams2.redhat.com [10.36.116.110])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id t7RBCnSJ006415; Thu, 27 Aug 2015 07:12:50 -0400
+Date: Thu, 27 Aug 2015 14:12:49 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <20150827140927-mutt-send-email-mst@redhat.com>
+References: <1440612338-5912-1-git-send-email-lvivier@redhat.com>
+	<1440612338-5912-2-git-send-email-lvivier@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <878u8ynqbx.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::231
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	"open list:Block layer core" <qemu-block@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] opts: produce valid
- command line in qemu_opts_print
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1440612338-5912-2-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH v2 1/7] PCI: remove muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,34 +46,154 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Aug 2015 22:32:05 -0000
+X-List-Received-Date: Thu, 27 Aug 2015 11:12:59 -0000
 
-2015-08-26 15:15 keltezéssel, Markus Armbruster írta:
-> Stefan Hajnoczi <stefanha@gmail.com> writes:
->
->> On Tue, Jul 7, 2015 at 3:42 PM, Kővágó, Zoltán <dirty.ice.hu@gmail.com> wrote:
->>> This will let us print options in a format that the user would actually
->>> write it on the command line (foo=bar,baz=asd,etc=def), without
->>> prepending a spurious comma at the beginning of the list, or quoting
->>> values unnecessarily.  This patch provides the following changes:
->>> * write and id=, if the option has an id
->>> * do not print separator before the first element
->>> * do not quote string arguments
->>> * properly escape commas (,) for QEMU
->>>
->>> Signed-off-by: Kővágó, Zoltán <DirtY.iCE.hu@gmail.com>
->>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>
->> Feel free to send a "Ping" email reply if your patches haven't been
->> reviewed after about 1 week.
->>
->> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
->
-> Route via qemu-trivial or qemu-block?
->
+On Wed, Aug 26, 2015 at 08:05:32PM +0200, Laurent Vivier wrote:
+> Originally, timers were ticks based, and it made sense to
+> add ticks to current time to know when to trigger an alarm.
+> 
+> But since commit:
+> 
+> 7447545 change all other clock references to use nanosecond resolution accessors
+> 
+> All timers use nanoseconds and we need to convert ticks to nanoseconds, by
+> doing something like:
+> 
+>     y = muldiv64(x, get_ticks_per_sec(), PCI_FREQUENCY)
+> 
+> where x is the number of device ticks and y the number of system ticks.
+> 
+> y is used as nanoseconds in timer functions,
+> it works because 1 tick is 1 nanosecond.
+> (get_ticks_per_sec() is 10^9)
+> 
+> But as PCI frequency is 33 MHz, we can also do:
+> 
+>     y = x * 30; /* 33 MHz PCI period is 30 ns */
+> 
+> Which is much more simple.
+> 
+> This implies a 33.333333 MHz PCI frequency,
+> but this is correct.
+> 
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 
-Hmm, I originally intended qemu-trivial, qemu-block was added via 
-scripts/get_maintainer.pl.
+I think you should split this with a patch per devices.
+Otherwise, it's up to net maintainers: pls Cc them all.
+And I don't think qemu-trivial is appropriate here.
 
-Zoltan
+> ---
+>  hw/net/pcnet.c             |  3 +--
+>  hw/net/rtl8139.c           | 14 ++++++--------
+>  hw/watchdog/wdt_i6300esb.c | 11 +++--------
+>  tests/rtl8139-test.c       |  2 +-
+>  4 files changed, 11 insertions(+), 19 deletions(-)
+> 
+> diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+> index 3437376..0eb3cc4 100644
+> --- a/hw/net/pcnet.c
+> +++ b/hw/net/pcnet.c
+> @@ -670,8 +670,7 @@ static inline hwaddr pcnet_rdra_addr(PCNetState *s, int idx)
+>  static inline int64_t pcnet_get_next_poll_time(PCNetState *s, int64_t current_time)
+>  {
+>      int64_t next_time = current_time +
+> -        muldiv64(65536 - (CSR_SPND(s) ? 0 : CSR_POLL(s)),
+> -                 get_ticks_per_sec(), 33000000L);
+> +                        (65536 - (CSR_SPND(s) ? 0 : CSR_POLL(s))) * 30;
+>      if (next_time <= current_time)
+>          next_time = current_time + 1;
+>      return next_time;
+> diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+> index edbb61c..1e119e6 100644
+> --- a/hw/net/rtl8139.c
+> +++ b/hw/net/rtl8139.c
+> @@ -63,7 +63,7 @@
+>  /* debug RTL8139 card */
+>  //#define DEBUG_RTL8139 1
+>  
+> -#define PCI_FREQUENCY 33000000L
+> +#define PCI_PERIOD 30    /* 30 ns period = 33.333333 Mhz frequency */
+>  
+>  #define SET_MASKED(input, mask, curr) \
+>      ( ( (input) & ~(mask) ) | ( (curr) & (mask) ) )
+
+Pls rename this RTL8139_PCI_PERIOD to avoid namespace pollution.
+
+> @@ -2881,8 +2881,7 @@ static void rtl8139_io_writew(void *opaque, uint8_t addr, uint32_t val)
+>  
+>  static void rtl8139_set_next_tctr_time(RTL8139State *s)
+>  {
+> -    const uint64_t ns_per_period =
+> -        muldiv64(0x100000000LL, get_ticks_per_sec(), PCI_FREQUENCY);
+> +    const uint64_t ns_per_period = (uint64_t)PCI_PERIOD << 32;
+>  
+>      DPRINTF("entered rtl8139_set_next_tctr_time\n");
+>  
+> @@ -2900,7 +2899,7 @@ static void rtl8139_set_next_tctr_time(RTL8139State *s)
+>      if (!s->TimerInt) {
+>          timer_del(s->timer);
+>      } else {
+> -        uint64_t delta = muldiv64(s->TimerInt, get_ticks_per_sec(), PCI_FREQUENCY);
+> +        uint64_t delta = (uint64_t)s->TimerInt * PCI_PERIOD;
+>          if (s->TCTR_base + delta <= qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)) {
+>              delta += ns_per_period;
+>          }
+> @@ -3174,8 +3173,8 @@ static uint32_t rtl8139_io_readl(void *opaque, uint8_t addr)
+>              break;
+>  
+>          case Timer:
+> -            ret = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - s->TCTR_base,
+> -                           PCI_FREQUENCY, get_ticks_per_sec());
+> +            ret = (qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - s->TCTR_base) /
+> +                  PCI_PERIOD;
+>              DPRINTF("TCTR Timer read val=0x%08x\n", ret);
+>              break;
+>  
+> @@ -3269,8 +3268,7 @@ static void rtl8139_pre_save(void *opaque)
+>      int64_t current_time = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>  
+>      /* for migration to older versions */
+> -    s->TCTR = muldiv64(current_time - s->TCTR_base, PCI_FREQUENCY,
+> -                       get_ticks_per_sec());
+> +    s->TCTR = (current_time - s->TCTR_base) / PCI_PERIOD;
+>      s->rtl8139_mmio_io_addr_dummy = 0;
+>  }
+>  
+> diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+> index cfa2b1b..a91c8fd 100644
+> --- a/hw/watchdog/wdt_i6300esb.c
+> +++ b/hw/watchdog/wdt_i6300esb.c
+> @@ -129,14 +129,9 @@ static void i6300esb_restart_timer(I6300State *d, int stage)
+>      else
+>          timeout <<= 5;
+>  
+> -    /* Get the timeout in units of ticks_per_sec.
+> -     *
+> -     * ticks_per_sec is typically 10^9 == 0x3B9ACA00 (30 bits), with
+> -     * 20 bits of user supplied preload, and 15 bits of scale, the
+> -     * multiply here can exceed 64-bits, before we divide by 33MHz, so
+> -     * we use a higher-precision intermediate result.
+> -     */
+> -    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
+> +    /* Get the timeout in nanoseconds. */
+> +
+> +    timeout = timeout * 30; /* on a PCI bus, 1 tick is 30 ns*/
+>  
+>      i6300esb_debug("stage %d, timeout %" PRIi64 "\n", d->stage, timeout);
+>  
+> diff --git a/tests/rtl8139-test.c b/tests/rtl8139-test.c
+> index e749be3..ba62851 100644
+> --- a/tests/rtl8139-test.c
+> +++ b/tests/rtl8139-test.c
+> @@ -20,7 +20,7 @@ static void nop(void)
+>  {
+>  }
+>  
+> -#define CLK 33000000
+> +#define CLK 33333333
+>  
+>  static QPCIBus *pcibus;
+>  static QPCIDevice *dev;
+> -- 
+> 2.1.0
 
