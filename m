@@ -1,35 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZV2vR-000726-Rf
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 15:33:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39974)
+	id 1ZV3iN-0007S9-IM
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 16:24:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZV2vO-0006wB-GQ
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 15:33:27 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZV3iK-0007P0-JP
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 16:24:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZV2vN-00082Z-KH
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 15:33:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52466)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZV3iJ-00052n-QW
+	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 16:24:00 -0400
+Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:38199)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>)
-	id 1ZV2vL-000817-Sp; Thu, 27 Aug 2015 15:33:23 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B92FC1A40C4;
-	Thu, 27 Aug 2015 19:33:23 +0000 (UTC)
-Received: from thinkpad.redhat.com (vpn1-7-222.ams2.redhat.com [10.36.7.222])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id t7RJX7Zp024823; Thu, 27 Aug 2015 15:33:22 -0400
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
-Date: Thu, 27 Aug 2015 21:33:06 +0200
-Message-Id: <1440703987-29012-9-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1ZV3iH-00052I-Gq; Thu, 27 Aug 2015 16:23:57 -0400
+Received: by wicgk12 with SMTP id gk12so2957035wic.1;
+	Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=fey9WbUMzaD9MbetM0EsnJh6SUGT55zMd3L/BHZI/r0=;
+	b=wTbYAztmU2IrxlATOoyCKQqIpK4z5SIcHNC4QzUd8b6q9M5Mj25O8DAYx5pkFrk46A
+	TXwpPGloTRxIfPZcZedfvKRmekzaEbFNh+glgtqMyCCACl9IHLRih0yRW8C8qfZZtsXx
+	oOjdO2WLc14Re7GBJD9Bj4fYZ3qeoK6J7PcOs0S/Afm5X1SZL0sae/IPgE41tDY3dyHz
+	ApzS9aEK2JCEKH3nPSk+Mg3cP081qz7/R9zIpV3Ulu+rlplKR7ehRgIN4rgm9kzh6o9o
+	ptTzZDVoyV87Zj6imqY+8MVz9kzUhSTNf9cA17Dvmj6jz4Bn+BfgNnG66UVeQVJbiW4J
+	azzA==
+MIME-Version: 1.0
+X-Received: by 10.180.108.136 with SMTP id hk8mr391891wib.47.1440707036845;
+	Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
+Received: by 10.28.0.215 with HTTP; Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
+In-Reply-To: <1440703987-29012-7-git-send-email-lvivier@redhat.com>
 References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v3 8/9] bt: remove muldiv64()
+	<1440703987-29012-7-git-send-email-lvivier@redhat.com>
+Date: Thu, 27 Aug 2015 13:23:56 -0700
+Message-ID: <CAPokK=pMG7AP-g+3Z58943JYuVmdQF2-mN==u+=_Chi4Rwprvg@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c05::233
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 6/9] arm: clarify the use
+	of muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,55 +54,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2015 19:33:27 -0000
+X-List-Received-Date: Thu, 27 Aug 2015 20:24:01 -0000
 
-Originally, timers were ticks based, and it made sense to
-add ticks to current time to know when to trigger an alarm.
+On Thu, Aug 27, 2015 at 12:33 PM, Laurent Vivier <lvivier@redhat.com> wrote:
+> muldiv64() is used to convert microseconds into CPU ticks.
+>
+> But it is not clear and not commented. This patch uses macro
+> to clearly identify what is used: time, CPU frequency and ticks.
+> For an elapsed time and a given frequency, we compute how many ticks
+>  we have.
+>
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 
-But since commit:
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 
-7447545 change all other clock references to use nanosecond resolution accessors
-
-All timers use nanoseconds and we need to convert ticks to nanoseconds.
-
-As get_ticks_per_sec() is 10^9,
-
-    a = muldiv64(b, get_ticks_per_sec(), 100);
-    y = muldiv64(x, get_ticks_per_sec(), 1000000);
-
-can be converted to
-
-    a = b * 10000000;
-    y = x * 1000;
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- hw/bt/hci.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/bt/hci.c b/hw/bt/hci.c
-index 7ea3dc6..585ee2e 100644
---- a/hw/bt/hci.c
-+++ b/hw/bt/hci.c
-@@ -595,7 +595,7 @@ static void bt_hci_inquiry_result(struct bt_hci_s *hci,
- static void bt_hci_mod_timer_1280ms(QEMUTimer *timer, int period)
- {
-     timer_mod(timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
--                   muldiv64(period << 7, get_ticks_per_sec(), 100));
-+                     (uint64_t)(period << 7) * 10000000);
- }
- 
- static void bt_hci_inquiry_start(struct bt_hci_s *hci, int length)
-@@ -1099,7 +1099,7 @@ static int bt_hci_mode_change(struct bt_hci_s *hci, uint16_t handle,
-     bt_hci_event_status(hci, HCI_SUCCESS);
- 
-     timer_mod(link->acl_mode_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
--                   muldiv64(interval * 625, get_ticks_per_sec(), 1000000));
-+                                    ((uint64_t)interval * 625) * 1000);
-     bt_hci_lmp_mode_change_master(hci, link->link, mode, interval);
- 
-     return 0;
--- 
-2.1.0
-
+> ---
+> v2: replace "arm: remove muldiv64()"
+>  target-arm/helper.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
+>
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 7df1f06..4455761 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -12,6 +12,8 @@
+>  #include <zlib.h> /* For crc32 */
+>  #include "exec/semihost.h"
+>
+> +#define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+> +
+>  #ifndef CONFIG_USER_ONLY
+>  static inline bool get_phys_addr(CPUARMState *env, target_ulong address,
+>                                   int access_type, ARMMMUIdx mmu_idx,
+> @@ -678,8 +680,8 @@ void pmccntr_sync(CPUARMState *env)
+>  {
+>      uint64_t temp_ticks;
+>
+> -    temp_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+> -                          get_ticks_per_sec(), 1000000);
+> +    temp_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> +                          ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
+>
+>      if (env->cp15.c9_pmcr & PMCRD) {
+>          /* Increment once every 64 processor clock cycles */
+> @@ -717,8 +719,8 @@ static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>          return env->cp15.c15_ccnt;
+>      }
+>
+> -    total_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+> -                           get_ticks_per_sec(), 1000000);
+> +    total_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> +                           ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
+>
+>      if (env->cp15.c9_pmcr & PMCRD) {
+>          /* Increment once every 64 processor clock cycles */
+> @@ -738,8 +740,8 @@ static void pmccntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>          return;
+>      }
+>
+> -    total_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
+> -                           get_ticks_per_sec(), 1000000);
+> +    total_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
+> +                           ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
+>
+>      if (env->cp15.c9_pmcr & PMCRD) {
+>          /* Increment once every 64 processor clock cycles */
+> --
+> 2.1.0
+>
+>
 
