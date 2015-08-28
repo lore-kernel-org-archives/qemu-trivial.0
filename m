@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZV3iN-0007S9-IM
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Aug 2015 16:24:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57422)
+	id 1ZVGWB-00059E-C2
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Aug 2015 06:04:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZV3iK-0007P0-JP
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 16:24:01 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZVGW6-00054D-Iq
+	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 06:04:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZV3iJ-00052n-QW
-	for qemu-trivial@nongnu.org; Thu, 27 Aug 2015 16:24:00 -0400
-Received: from mail-wi0-x233.google.com ([2a00:1450:400c:c05::233]:38199)
+	(envelope-from <armbru@redhat.com>) id 1ZVGW5-0005ea-OJ
+	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 06:04:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52089)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ZV3iH-00052I-Gq; Thu, 27 Aug 2015 16:23:57 -0400
-Received: by wicgk12 with SMTP id gk12so2957035wic.1;
-	Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=fey9WbUMzaD9MbetM0EsnJh6SUGT55zMd3L/BHZI/r0=;
-	b=wTbYAztmU2IrxlATOoyCKQqIpK4z5SIcHNC4QzUd8b6q9M5Mj25O8DAYx5pkFrk46A
-	TXwpPGloTRxIfPZcZedfvKRmekzaEbFNh+glgtqMyCCACl9IHLRih0yRW8C8qfZZtsXx
-	oOjdO2WLc14Re7GBJD9Bj4fYZ3qeoK6J7PcOs0S/Afm5X1SZL0sae/IPgE41tDY3dyHz
-	ApzS9aEK2JCEKH3nPSk+Mg3cP081qz7/R9zIpV3Ulu+rlplKR7ehRgIN4rgm9kzh6o9o
-	ptTzZDVoyV87Zj6imqY+8MVz9kzUhSTNf9cA17Dvmj6jz4Bn+BfgNnG66UVeQVJbiW4J
-	azzA==
+	(envelope-from <armbru@redhat.com>)
+	id 1ZVGVx-0005bk-Gw; Fri, 28 Aug 2015 06:04:05 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 0E2168F017;
+	Fri, 28 Aug 2015 10:04:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-73.ams2.redhat.com
+	[10.36.116.73])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t7SA43XF011633
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 28 Aug 2015 06:04:04 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 754ED303F90B; Fri, 28 Aug 2015 12:04:02 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?= <dirty.ice.hu@gmail.com>
+References: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
+	<CAJSP0QXj07FKi9g0B6mF9nbZi-inPQMEFrVZ_a6w5WPwbJycLQ@mail.gmail.com>
+	<878u8ynqbx.fsf@blackfin.pond.sub.org> <55DE3E58.4070906@gmail.com>
+Date: Fri, 28 Aug 2015 12:04:02 +0200
+In-Reply-To: <55DE3E58.4070906@gmail.com> (=?utf-8?B?IkvFkXbDoWfDsyBab2x0?=
+	=?utf-8?B?w6FuIidz?= message of "Thu, 27 Aug 2015 00:31:52 +0200")
+Message-ID: <87zj1bbugd.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-X-Received: by 10.180.108.136 with SMTP id hk8mr391891wib.47.1440707036845;
-	Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
-Received: by 10.28.0.215 with HTTP; Thu, 27 Aug 2015 13:23:56 -0700 (PDT)
-In-Reply-To: <1440703987-29012-7-git-send-email-lvivier@redhat.com>
-References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
-	<1440703987-29012-7-git-send-email-lvivier@redhat.com>
-Date: Thu, 27 Aug 2015 13:23:56 -0700
-Message-ID: <CAPokK=pMG7AP-g+3Z58943JYuVmdQF2-mN==u+=_Chi4Rwprvg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::233
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 6/9] arm: clarify the use
-	of muldiv64()
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>,
+	Stefan Hajnoczi <stefanha@gmail.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	qemu-devel <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] opts: produce valid
+	command line in qemu_opts_print
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,73 +57,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Aug 2015 20:24:01 -0000
+X-List-Received-Date: Fri, 28 Aug 2015 10:04:18 -0000
 
-On Thu, Aug 27, 2015 at 12:33 PM, Laurent Vivier <lvivier@redhat.com> wrote:
-> muldiv64() is used to convert microseconds into CPU ticks.
->
-> But it is not clear and not commented. This patch uses macro
-> to clearly identify what is used: time, CPU frequency and ticks.
-> For an elapsed time and a given frequency, we compute how many ticks
->  we have.
->
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+"K=C5=91v=C3=A1g=C3=B3 Zolt=C3=A1n" <dirty.ice.hu@gmail.com> writes:
 
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+> 2015-08-26 15:15 keltez=C3=A9ssel, Markus Armbruster =C3=ADrta:
+>> Stefan Hajnoczi <stefanha@gmail.com> writes:
+>>
+>>> On Tue, Jul 7, 2015 at 3:42 PM, K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n
+>>> <dirty.ice.hu@gmail.com> wrote:
+>>>> This will let us print options in a format that the user would actually
+>>>> write it on the command line (foo=3Dbar,baz=3Dasd,etc=3Ddef), without
+>>>> prepending a spurious comma at the beginning of the list, or quoting
+>>>> values unnecessarily.  This patch provides the following changes:
+>>>> * write and id=3D, if the option has an id
+>>>> * do not print separator before the first element
+>>>> * do not quote string arguments
+>>>> * properly escape commas (,) for QEMU
+>>>>
+>>>> Signed-off-by: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <DirtY.iCE.hu@gmail.=
+com>
+>>>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>>>
+>>> Feel free to send a "Ping" email reply if your patches haven't been
+>>> reviewed after about 1 week.
+>>>
+>>> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+>>
+>> Route via qemu-trivial or qemu-block?
+>>
+>
+> Hmm, I originally intended qemu-trivial, qemu-block was added via
+> scripts/get_maintainer.pl.
 
-> ---
-> v2: replace "arm: remove muldiv64()"
->  target-arm/helper.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 7df1f06..4455761 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -12,6 +12,8 @@
->  #include <zlib.h> /* For crc32 */
->  #include "exec/semihost.h"
->
-> +#define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
-> +
->  #ifndef CONFIG_USER_ONLY
->  static inline bool get_phys_addr(CPUARMState *env, target_ulong address,
->                                   int access_type, ARMMMUIdx mmu_idx,
-> @@ -678,8 +680,8 @@ void pmccntr_sync(CPUARMState *env)
->  {
->      uint64_t temp_ticks;
->
-> -    temp_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
-> -                          get_ticks_per_sec(), 1000000);
-> +    temp_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-> +                          ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
->
->      if (env->cp15.c9_pmcr & PMCRD) {
->          /* Increment once every 64 processor clock cycles */
-> @@ -717,8 +719,8 @@ static uint64_t pmccntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
->          return env->cp15.c15_ccnt;
->      }
->
-> -    total_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
-> -                           get_ticks_per_sec(), 1000000);
-> +    total_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-> +                           ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
->
->      if (env->cp15.c9_pmcr & PMCRD) {
->          /* Increment once every 64 processor clock cycles */
-> @@ -738,8 +740,8 @@ static void pmccntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->          return;
->      }
->
-> -    total_ticks = muldiv64(qemu_clock_get_us(QEMU_CLOCK_VIRTUAL),
-> -                           get_ticks_per_sec(), 1000000);
-> +    total_ticks = muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-> +                           ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
->
->      if (env->cp15.c9_pmcr & PMCRD) {
->          /* Increment once every 64 processor clock cycles */
-> --
-> 2.1.0
->
->
+If I remember correctly, the initial patch didn't include the iotests
+updates.  The current one does.
+
+Let's give the block maintainers a few days to take this patch.  If none
+of them bites, it's -trivial.
 
