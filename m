@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZVGWB-00059E-C2
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Aug 2015 06:04:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60548)
+	id 1ZVKP1-0000Tw-Jh
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Aug 2015 10:13:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZVGW6-00054D-Iq
-	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 06:04:18 -0400
+	(envelope-from <stefanha@redhat.com>) id 1ZVKOx-0000Nu-55
+	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 10:13:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZVGW5-0005ea-OJ
-	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 06:04:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52089)
+	(envelope-from <stefanha@redhat.com>) id 1ZVKOr-0004xa-CP
+	for qemu-trivial@nongnu.org; Fri, 28 Aug 2015 10:13:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43015)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZVGVx-0005bk-Gw; Fri, 28 Aug 2015 06:04:05 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0E2168F017;
-	Fri, 28 Aug 2015 10:04:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-73.ams2.redhat.com
-	[10.36.116.73])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t7SA43XF011633
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 28 Aug 2015 06:04:04 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 754ED303F90B; Fri, 28 Aug 2015 12:04:02 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?= <dirty.ice.hu@gmail.com>
-References: <cff8241a8e30f0d39e0f50a435965cdd130cd5d5.1436279924.git.DirtY.iCE.hu@gmail.com>
-	<CAJSP0QXj07FKi9g0B6mF9nbZi-inPQMEFrVZ_a6w5WPwbJycLQ@mail.gmail.com>
-	<878u8ynqbx.fsf@blackfin.pond.sub.org> <55DE3E58.4070906@gmail.com>
-Date: Fri, 28 Aug 2015 12:04:02 +0200
-In-Reply-To: <55DE3E58.4070906@gmail.com> (=?utf-8?B?IkvFkXbDoWfDsyBab2x0?=
-	=?utf-8?B?w6FuIidz?= message of "Thu, 27 Aug 2015 00:31:52 +0200")
-Message-ID: <87zj1bbugd.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <stefanha@redhat.com>)
+	id 1ZVKOm-0004uF-Db; Fri, 28 Aug 2015 10:12:56 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id D1E83C1C4BA1;
+	Fri, 28 Aug 2015 14:12:55 +0000 (UTC)
+Received: from localhost (ovpn-112-44.ams2.redhat.com [10.36.112.44])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t7SECrXH007301; Fri, 28 Aug 2015 10:12:54 -0400
+Date: Fri, 28 Aug 2015 15:12:51 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <20150828141251.GC30542@stefanha-thinkpad.redhat.com>
+References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
+	<1440703987-29012-10-git-send-email-lvivier@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1440703987-29012-10-git-send-email-lvivier@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] opts: produce valid
-	command line in qemu_opts_print
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v3 9/9] net: remove muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,42 +47,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Aug 2015 10:04:18 -0000
+X-List-Received-Date: Fri, 28 Aug 2015 14:13:09 -0000
 
-"K=C5=91v=C3=A1g=C3=B3 Zolt=C3=A1n" <dirty.ice.hu@gmail.com> writes:
+On Thu, Aug 27, 2015 at 09:33:07PM +0200, Laurent Vivier wrote:
+> muldiv64() is used to convert nanoseconds to microseconds.
+> 
+>     x = muldiv64(qemu_clock_get_ns(..), 1000000, get_ticks_per_sec());
+> 
+> As  get_ticks_per_sec() is 10^9, it can be replaced by:
+> 
+>     x = qemu_clock_get_us(..);
+> 
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+> v2: use qemu_clock_get_us() instead of qemu_clock_get_ns()/1000
+>  net/dump.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 2015-08-26 15:15 keltez=C3=A9ssel, Markus Armbruster =C3=ADrta:
->> Stefan Hajnoczi <stefanha@gmail.com> writes:
->>
->>> On Tue, Jul 7, 2015 at 3:42 PM, K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n
->>> <dirty.ice.hu@gmail.com> wrote:
->>>> This will let us print options in a format that the user would actually
->>>> write it on the command line (foo=3Dbar,baz=3Dasd,etc=3Ddef), without
->>>> prepending a spurious comma at the beginning of the list, or quoting
->>>> values unnecessarily.  This patch provides the following changes:
->>>> * write and id=3D, if the option has an id
->>>> * do not print separator before the first element
->>>> * do not quote string arguments
->>>> * properly escape commas (,) for QEMU
->>>>
->>>> Signed-off-by: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <DirtY.iCE.hu@gmail.=
-com>
->>>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>>
->>> Feel free to send a "Ping" email reply if your patches haven't been
->>> reviewed after about 1 week.
->>>
->>> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
->>
->> Route via qemu-trivial or qemu-block?
->>
->
-> Hmm, I originally intended qemu-trivial, qemu-block was added via
-> scripts/get_maintainer.pl.
-
-If I remember correctly, the initial patch didn't include the iotests
-updates.  The current one does.
-
-Let's give the block maintainers a few days to take this patch.  If none
-of them bites, it's -trivial.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
