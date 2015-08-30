@@ -1,45 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZW4hy-0003fo-ST
-	for mharc-qemu-trivial@gnu.org; Sun, 30 Aug 2015 11:39:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50320)
+	id 1ZW8Pc-0001di-Bo
+	for mharc-qemu-trivial@gnu.org; Sun, 30 Aug 2015 15:37:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40904)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1ZW4hw-0003eJ-GX
-	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 11:39:49 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ZW8PZ-0001bf-Kf
+	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 15:37:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1ZW4hv-0002D2-JT
-	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 11:39:48 -0400
-Received: from v220110690675601.yourvserver.net ([37.221.199.173]:60855)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1ZW8PS-000115-31
+	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 15:37:02 -0400
+Received: from mail-la0-x236.google.com ([2a00:1450:4010:c03::236]:34142)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1ZW4hq-0002Bi-I1; Sun, 30 Aug 2015 11:39:42 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
-	2B68111822A6; Sun, 30 Aug 2015 17:39:41 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from v220110690675601.yourvserver.net ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id lB4VVC_aFCjl; Sun, 30 Aug 2015 17:39:39 +0200 (CEST)
-Received: from [192.168.178.24] (p54ACAA4C.dip0.t-ipconnect.de [84.172.170.76])
-	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
-	1DDBD118188E; Sun, 30 Aug 2015 17:39:39 +0200 (CEST)
-Message-ID: <55E323BA.8030402@weilnetz.de>
-Date: Sun, 30 Aug 2015 17:39:38 +0200
-From: Stefan Weil <sw@weilnetz.de>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1ZW8PR-00010n-L0; Sun, 30 Aug 2015 15:36:58 -0400
+Received: by laba3 with SMTP id a3so59291184lab.1;
+	Sun, 30 Aug 2015 12:36:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=YPrwZigRj7KmacmXky6QEPZTuJeHv9KDJY4icWiUrkY=;
+	b=i8LgllSExF7BCVYxRqTeNUzPeSIRNla8DGR2/errASOFghk4Qac0pKfNwN4LXRNFPM
+	VJlcDFF57S2qbUtXVMHJjvF8f0hNvGcC6xeovFCS9q5ZkZUCPYNSQigRq8430m7gPQPR
+	yeXIs6qKOMmE1FHRRsWHtlY1ov6ILWvPbKZ7zHivuB6pSoN4xuodmheQmm53X0Py48Zx
+	8C+HUpzs5x0qnRNlxfeStVCozIb65XPhdR0s5BGfRH25UsHuRtqruIM02prGN9QDLF34
+	gjK5MEJDGJ3l9NiQwFBFPgEzZcbN0y5TgFQ4fj70xkyoRnk5HQMuUz6lq6+v3+PLCVKv
+	/4xQ==
+X-Received: by 10.112.234.165 with SMTP id uf5mr8592288lbc.91.1440963416455;
+	Sun, 30 Aug 2015 12:36:56 -0700 (PDT)
+Received: from localhost (h248n4-ld-c-a31.ias.bredband.telia.com.
+	[81.234.130.248])
+	by smtp.gmail.com with ESMTPSA id o6sm3296870lah.20.2015.08.30.12.36.55
+	(version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+	Sun, 30 Aug 2015 12:36:55 -0700 (PDT)
+Date: Sun, 30 Aug 2015 12:36:53 -0700
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20150830193653.GA5289@toto>
+References: <1440834273-6023-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-To: Samuel Thibault <samuel.thibault@gnu.org>
-References: <20150830141909.GA13186@var.home> <20150830151213.GE3238@var.home>
-In-Reply-To: <20150830151213.GE3238@var.home>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] baum: Fix build with
-	debugging enabled
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1440834273-6023-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c03::236
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] disas/microblaze: Remove unused code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,65 +58,184 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 30 Aug 2015 15:39:49 -0000
+X-List-Received-Date: Sun, 30 Aug 2015 19:37:07 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
+On Sat, Aug 29, 2015 at 09:44:33AM +0200, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Am 30.08.2015 um 17:12 schrieb Samuel Thibault:
-> cur and buf are pointers, so the difference is a ptrdiff_t
->
-> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
->
-> diff --git a/backends/baum.c b/backends/baum.c
-> index a69aaff..1f9288e 100644
-> --- a/backends/baum.c
-> +++ b/backends/baum.c
-> @@ -303,7 +303,7 @@ static int baum_eat_packet(BaumDriverState *baum, c=
-onst uint8_t *buf, int len)
->                  return 0;
->              cur++;
->          }
-> -        DPRINTF("Dropped %d bytes!\n", cur - buf);
-> +        DPRINTF("Dropped %td bytes!\n", cur - buf);
->      }
-> =20
->  #define EAT(c) do {\
->
-
-Please don't send patches as reply to previous e-mails
-and use a subject which shows the patch revision (here
-"[PATCH v2] baum: Fix build with debugging enabled")
-for future patches.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
-
---S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBCAAGBQJV4yO6AAoJEOCMIdVndFCtDxkP/0SiTqCRWA3qwV9ShwXOSDIx
-4ZK3DfBiOnR5ysnlrHgIB3Gc6Ee52Dv0l1JHcivboO9rLpOPtdJup2+LpKwPzuaG
-w3mcQRqlGBvEMiMuPmRVLRwnr2YlaPAhW9e0an1cGLYmn31bhVN2eK3BLvK8eWuR
-ovScz1pX/tS/i0SpBNhfOxs4NDVlgFT2qFeOcqWcBefutpqcGPt4cInP29aezWsY
-6zHYms+noX4ypyrzLGF4RpYYQ1T2bKStKIcMIfW1jz2WVFdeLhidGBu74vZJwNB3
-klr7n3Ll3f372w2dXUcGuRtRmGkBeQxO9aDIEdw1ND1AedhGk4E1iZXkWesnY5Ph
-gtXCQwa3aEMuD0ZxsCAwmpR5Dh54Awuttny8KfNySCRe7S/h+UasL2DDgWk9pWgJ
-OPo6fhwgy3GVCT9mXM5QIwS8Hzi1cerd7NIdqff1uDznYt2/amlMs9u1Xg3eNWmO
-WMbX2Rfzo/ILhXas5vCn3VASnAhYaiqhOYsAUPr8WzOEeWprqpf6BSevvZZd7lyV
-gwH8JjY8kMPOUtutG4ctM/+xQ8oeuF0rVJXVYdKJWC6nwX/bB/JsbjKTAz0ctzob
-6E5NDt/povDtYi8/gWsem0+wVaAk+k+Ku/4szjkAWVIxZeLr4F2VQxjF6KUbPz6h
-4yGAu6Hi7nPoESSwUVtw
-=fyok
------END PGP SIGNATURE-----
-
---S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb--
+> ---
+>  disas/microblaze.c | 150 -----------------------------------------------------
+>  1 file changed, 150 deletions(-)
+> 
+> diff --git a/disas/microblaze.c b/disas/microblaze.c
+> index c14ab89..3588235 100644
+> --- a/disas/microblaze.c
+> +++ b/disas/microblaze.c
+> @@ -604,25 +604,6 @@ char * get_field_special (long instr, struct op_code_struct * op);
+>  unsigned long read_insn_microblaze (bfd_vma memaddr, 
+>  		      struct disassemble_info *info,
+>  		      struct op_code_struct **opr);
+> -enum microblaze_instr get_insn_microblaze (long inst,
+> -  		     bfd_boolean *isunsignedimm,
+> -  		     enum microblaze_instr_type *insn_type,
+> -  		     short *delay_slots);
+> -short get_delay_slots_microblaze (long inst);
+> -enum microblaze_instr microblaze_decode_insn (long insn,
+> -		        int *rd, 
+> -			int *ra, 
+> -			int *rb, 
+> -			int *imm);
+> -unsigned long
+> -microblaze_get_target_address (long inst,
+> -			       bfd_boolean immfound,
+> -			       int immval,
+> -			       long pcval,
+> -			       long r1val,
+> -			       long r2val,
+> -			       bfd_boolean *targetvalid,
+> -			       bfd_boolean *unconditionalbranch);
+>  
+>  static char *
+>  get_field (long instr, long mask, unsigned short low)
+> @@ -968,134 +949,3 @@ print_insn_microblaze (bfd_vma memaddr, struct disassemble_info * info)
+>    /* Say how many bytes we consumed? */
+>    return 4;
+>  }
+> -
+> -enum microblaze_instr
+> -get_insn_microblaze (long inst,
+> -  		     bfd_boolean *isunsignedimm,
+> -  		     enum microblaze_instr_type *insn_type,
+> -  		     short *delay_slots)
+> -{
+> -  struct op_code_struct * op;
+> -  *isunsignedimm = FALSE;
+> -
+> -  /* Just a linear search of the table.  */
+> -  for (op = opcodes; op->name != 0; op ++)
+> -    if (op->bit_sequence == (inst & op->opcode_mask))
+> -      break;
+> -
+> -  if (op->name == 0)
+> -    return invalid_inst;
+> -  else {
+> -    *isunsignedimm = (op->inst_type == INST_TYPE_RD_R1_UNSIGNED_IMM);
+> -    *insn_type = op->instr_type;
+> -    *delay_slots = op->delay_slots;
+> -    return op->instr;
+> -  }
+> -}
+> -
+> -short
+> -get_delay_slots_microblaze (long inst)
+> -{
+> -  bfd_boolean isunsignedimm;
+> -  enum microblaze_instr_type insn_type;
+> -  enum microblaze_instr op;
+> -  short delay_slots;
+> -
+> -  op = get_insn_microblaze( inst, &isunsignedimm, &insn_type, &delay_slots);
+> -  if (op == invalid_inst)
+> -    return 0;
+> -  else 
+> -    return delay_slots;
+> -}
+> -
+> -enum microblaze_instr
+> -microblaze_decode_insn (long insn,
+> -		        int *rd, 
+> -			int *ra, 
+> -			int *rb, 
+> -			int *imm)
+> -{
+> -  enum microblaze_instr op;
+> -  bfd_boolean t1;
+> -  enum microblaze_instr_type t2;
+> -  short t3;
+> -
+> -  op = get_insn_microblaze(insn, &t1, &t2, &t3);
+> -  *rd = (insn & RD_MASK) >> RD_LOW;
+> -  *ra = (insn & RA_MASK) >> RA_LOW;
+> -  *rb = (insn & RB_MASK) >> RB_LOW;
+> -  t3 = (insn & IMM_MASK) >> IMM_LOW;
+> -  *imm = (int) t3;
+> -  return (op);
+> -}
+> -
+> -unsigned long
+> -microblaze_get_target_address (long inst,
+> -			       bfd_boolean immfound,
+> -			       int immval,
+> -			       long pcval,
+> -			       long r1val,
+> -			       long r2val,
+> -			       bfd_boolean *targetvalid,
+> -			       bfd_boolean *unconditionalbranch)
+> -{
+> -  struct op_code_struct * op;
+> -  long targetaddr = 0;
+> -
+> -  *unconditionalbranch = FALSE;
+> -  /* Just a linear search of the table.  */
+> -  for (op = opcodes; op->name != 0; op ++)
+> -    if (op->bit_sequence == (inst & op->opcode_mask))
+> -      break;
+> -
+> -  if (op->name == 0) {
+> -    *targetvalid = FALSE;
+> -  } else if (op->instr_type == branch_inst) {
+> -    switch (op->inst_type) {
+> -    case INST_TYPE_R2:
+> -      *unconditionalbranch = TRUE;
+> -      /* fallthru */
+> -    case INST_TYPE_RD_R2:
+> -    case INST_TYPE_R1_R2:
+> -      targetaddr = r2val;
+> -      *targetvalid = TRUE;
+> -      if (op->inst_offset_type == INST_PC_OFFSET)
+> -	targetaddr += pcval;
+> -      break;
+> -    case INST_TYPE_IMM:
+> -      *unconditionalbranch = TRUE;
+> -      /* fallthru */
+> -    case INST_TYPE_RD_IMM:
+> -    case INST_TYPE_R1_IMM:
+> -      if (immfound) {
+> -	targetaddr = (immval << 16) & 0xffff0000;
+> -	targetaddr |= (get_int_field_imm(inst) & 0x0000ffff);
+> -      } else {
+> -	targetaddr = get_int_field_imm(inst);
+> -	if (targetaddr & 0x8000)
+> -	  targetaddr |= 0xFFFF0000;
+> -      }
+> -      if (op->inst_offset_type == INST_PC_OFFSET)
+> -	targetaddr += pcval;
+> -      *targetvalid = TRUE;
+> -      break;
+> -    default:
+> -      *targetvalid = FALSE;
+> -      break;
+> -    }
+> -  } else if (op->instr_type == return_inst) {
+> -      if (immfound) {
+> -	targetaddr = (immval << 16) & 0xffff0000;
+> -	targetaddr |= (get_int_field_imm(inst) & 0x0000ffff);
+> -      } else {
+> -	targetaddr = get_int_field_imm(inst);
+> -	if (targetaddr & 0x8000)
+> -	  targetaddr |= 0xFFFF0000;
+> -      }
+> -      targetaddr += r1val;
+> -      *targetvalid = TRUE;
+> -  } else {
+> -    *targetvalid = FALSE;
+> -  }
+> -  return targetaddr;
+> -}
+> -- 
+> 2.1.4
+> 
 
