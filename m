@@ -1,49 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZVd31-0004Zt-OV
-	for mharc-qemu-trivial@gnu.org; Sat, 29 Aug 2015 06:07:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53598)
+	id 1ZW4hy-0003fo-ST
+	for mharc-qemu-trivial@gnu.org; Sun, 30 Aug 2015 11:39:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZVd2z-0004VW-Mw
-	for qemu-trivial@nongnu.org; Sat, 29 Aug 2015 06:07:42 -0400
+	(envelope-from <sw@weilnetz.de>) id 1ZW4hw-0003eJ-GX
+	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 11:39:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZVd2w-0007Ec-FJ
-	for qemu-trivial@nongnu.org; Sat, 29 Aug 2015 06:07:41 -0400
-Received: from mail-vk0-f53.google.com ([209.85.213.53]:34947)
+	(envelope-from <sw@weilnetz.de>) id 1ZW4hv-0002D2-JT
+	for qemu-trivial@nongnu.org; Sun, 30 Aug 2015 11:39:48 -0400
+Received: from v220110690675601.yourvserver.net ([37.221.199.173]:60855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZVd2w-0007DC-AR
-	for qemu-trivial@nongnu.org; Sat, 29 Aug 2015 06:07:38 -0400
-Received: by vkaw128 with SMTP id w128so19581351vka.2
-	for <qemu-trivial@nongnu.org>; Sat, 29 Aug 2015 03:07:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=UUnB/bNxIl3rwmRsAqC2/XmPPkXRN4TocqKtt7ctCbQ=;
-	b=d2zmtjBzYA8gw+D4jPk8a9Rvv75cNJXQ7uJsMHLUWihpBuqSkw04nDfLhwDovmaiNP
-	0U5qIfj0QgpwR9DsThA5xDA+oVwRrngppjih+GWSFzrNNhCezLY5RrKPCn7OtXveHT98
-	iIa7t2Lxx6ecNWHBz7Tgz0ZqH4EUAFbKDV5wnnLPn5eukHrm+NecBHqlOn8cfYj8ulTL
-	pTPac6svmL9kgymCpoq882Sbmpt/uGS3fw7+NIXLcalAQa2RzIVelnyp/fUrdlm9IRFI
-	F4w0LA2U7A4YpFtLIb6eMXJNY6KcS8JtHilmjiOLq4BAlHwpkZyYbsXWbDaO0Laah55K
-	20pw==
-X-Gm-Message-State: ALoCoQlDChQiYCXfBtBCgK1nJoDBVPpZa/69oYiCwwjdZ6HgAGKgEVGu6oID1rsTcBKrY+pHGVpT
-X-Received: by 10.52.9.68 with SMTP id x4mr12901327vda.90.1440842856690; Sat,
-	29 Aug 2015 03:07:36 -0700 (PDT)
+	(envelope-from <sw@weilnetz.de>)
+	id 1ZW4hq-0002Bi-I1; Sun, 30 Aug 2015 11:39:42 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTP id
+	2B68111822A6; Sun, 30 Aug 2015 17:39:41 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from v220110690675601.yourvserver.net ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id lB4VVC_aFCjl; Sun, 30 Aug 2015 17:39:39 +0200 (CEST)
+Received: from [192.168.178.24] (p54ACAA4C.dip0.t-ipconnect.de [84.172.170.76])
+	by v220110690675601.yourvserver.net (Postfix) with ESMTPSA id
+	1DDBD118188E; Sun, 30 Aug 2015 17:39:39 +0200 (CEST)
+Message-ID: <55E323BA.8030402@weilnetz.de>
+Date: Sun, 30 Aug 2015 17:39:38 +0200
+From: Stefan Weil <sw@weilnetz.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Sat, 29 Aug 2015 03:07:17 -0700 (PDT)
-In-Reply-To: <1440833392-5555-1-git-send-email-sw@weilnetz.de>
-References: <1440833392-5555-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 29 Aug 2015 11:07:17 +0100
-Message-ID: <CAFEAcA8dQqYo=ajLCRDyFBkgzXzyu9d3cBbGyQzA6NqAHyT6Bw@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.53
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Fix warnings
- caused by missing 'static' attribute
+To: Samuel Thibault <samuel.thibault@gnu.org>
+References: <20150830141909.GA13186@var.home> <20150830151213.GE3238@var.home>
+In-Reply-To: <20150830151213.GE3238@var.home>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] baum: Fix build with
+	debugging enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,25 +51,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Aug 2015 10:07:42 -0000
+X-List-Received-Date: Sun, 30 Aug 2015 15:39:49 -0000
 
-On 29 August 2015 at 08:29, Stefan Weil <sw@weilnetz.de> wrote:
-> Warnings from the Sparse static analysis tool:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Am 30.08.2015 um 17:12 schrieb Samuel Thibault:
+> cur and buf are pointers, so the difference is a ptrdiff_t
 >
-> linux-user/main.c:40:12: warning:
->  symbol 'filename' was not declared. Should it be static?
-> linux-user/main.c:41:12: warning:
->  symbol 'argv0' was not declared. Should it be static?
-> linux-user/main.c:42:5: warning:
->  symbol 'gdbstub_port' was not declared. Should it be static?
-> linux-user/main.c:43:11: warning:
->  symbol 'envlist' was not declared. Should it be static?
+> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
 >
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
+> diff --git a/backends/baum.c b/backends/baum.c
+> index a69aaff..1f9288e 100644
+> --- a/backends/baum.c
+> +++ b/backends/baum.c
+> @@ -303,7 +303,7 @@ static int baum_eat_packet(BaumDriverState *baum, c=
+onst uint8_t *buf, int len)
+>                  return 0;
+>              cur++;
+>          }
+> -        DPRINTF("Dropped %d bytes!\n", cur - buf);
+> +        DPRINTF("Dropped %td bytes!\n", cur - buf);
+>      }
+> =20
+>  #define EAT(c) do {\
+>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Please don't send patches as reply to previous e-mails
+and use a subject which shows the patch revision (here
+"[PATCH v2] baum: Fix build with debugging enabled")
+for future patches.
 
-thanks
--- PMM
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+
+
+--S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBCAAGBQJV4yO6AAoJEOCMIdVndFCtDxkP/0SiTqCRWA3qwV9ShwXOSDIx
+4ZK3DfBiOnR5ysnlrHgIB3Gc6Ee52Dv0l1JHcivboO9rLpOPtdJup2+LpKwPzuaG
+w3mcQRqlGBvEMiMuPmRVLRwnr2YlaPAhW9e0an1cGLYmn31bhVN2eK3BLvK8eWuR
+ovScz1pX/tS/i0SpBNhfOxs4NDVlgFT2qFeOcqWcBefutpqcGPt4cInP29aezWsY
+6zHYms+noX4ypyrzLGF4RpYYQ1T2bKStKIcMIfW1jz2WVFdeLhidGBu74vZJwNB3
+klr7n3Ll3f372w2dXUcGuRtRmGkBeQxO9aDIEdw1ND1AedhGk4E1iZXkWesnY5Ph
+gtXCQwa3aEMuD0ZxsCAwmpR5Dh54Awuttny8KfNySCRe7S/h+UasL2DDgWk9pWgJ
+OPo6fhwgy3GVCT9mXM5QIwS8Hzi1cerd7NIdqff1uDznYt2/amlMs9u1Xg3eNWmO
+WMbX2Rfzo/ILhXas5vCn3VASnAhYaiqhOYsAUPr8WzOEeWprqpf6BSevvZZd7lyV
+gwH8JjY8kMPOUtutG4ctM/+xQ8oeuF0rVJXVYdKJWC6nwX/bB/JsbjKTAz0ctzob
+6E5NDt/povDtYi8/gWsem0+wVaAk+k+Ku/4szjkAWVIxZeLr4F2VQxjF6KUbPz6h
+4yGAu6Hi7nPoESSwUVtw
+=fyok
+-----END PGP SIGNATURE-----
+
+--S9vBuE1uvQT5TNfo0hMPkFEOkecCqHoxb--
 
