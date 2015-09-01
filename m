@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZWjZF-00069f-QN
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2015 07:17:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50533)
+	id 1ZWjep-0000y0-3N
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Sep 2015 07:23:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53382)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZWjZD-00068L-6W
-	for qemu-trivial@nongnu.org; Tue, 01 Sep 2015 07:17:31 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZWjem-0000u9-5t
+	for qemu-trivial@nongnu.org; Tue, 01 Sep 2015 07:23:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZWjZ8-0003eg-Ce
-	for qemu-trivial@nongnu.org; Tue, 01 Sep 2015 07:17:31 -0400
-Received: from mail-vk0-f44.google.com ([209.85.213.44]:34492)
+	(envelope-from <lvivier@redhat.com>) id 1ZWjel-0006Mb-FW
+	for qemu-trivial@nongnu.org; Tue, 01 Sep 2015 07:23:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50465)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZWjZ8-0003ea-90
-	for qemu-trivial@nongnu.org; Tue, 01 Sep 2015 07:17:26 -0400
-Received: by vkhf67 with SMTP id f67so54692768vkh.1
-	for <qemu-trivial@nongnu.org>; Tue, 01 Sep 2015 04:17:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=zVuJhK11iu8lYmhBtmy2Zc8nAOCU1cbPLQ8sCoSe6BE=;
-	b=fS3x6M8xfrpml+EdJPpA5+zINap51wKnWNSEXAMGfMBN89wjVjPDC+RvrMJSbtq9Px
-	1MNsNBhL9x+65wJmQa/47O8iYtSPisSlYAqVdwuTn7eJ62pm/EzlSQAHqbwIXeZc1MId
-	CwC4+b5LBKcJS6pD6ZuHJPE6OXxlS6N48teqHeubgl3l3QimIzBIl69R27tO+xOekUkO
-	nIxrQ4m7K3QXpP6ics/jJpKZbhpagK7yDlKrZgiW3/Ktc5Rr/MJdQwHZUJE9PaO5JqCp
-	V9c0k34qK/Rdtj1/cUZ2vR6kle/hP0qOOg4e1Hb5OTl1MkU75PNm5lvFxNSdZkZbsvud
-	iGOw==
-X-Gm-Message-State: ALoCoQky7IrCp+Q1apOT9IRfyDLASMK2KKW4tG2QKtJaGNkvy5zhyZ9vL5ZbA6tN9Q6vUANnQLTq
-X-Received: by 10.52.176.195 with SMTP id ck3mr14260355vdc.78.1441106245777;
-	Tue, 01 Sep 2015 04:17:25 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Tue, 1 Sep 2015 04:17:06 -0700 (PDT)
-In-Reply-To: <1440703987-29012-7-git-send-email-lvivier@redhat.com>
+	(envelope-from <lvivier@redhat.com>)
+	id 1ZWjeg-0006Ku-E0; Tue, 01 Sep 2015 07:23:10 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id BF315368E3;
+	Tue,  1 Sep 2015 11:23:09 +0000 (UTC)
+Received: from [10.36.6.39] (vpn1-6-39.ams2.redhat.com [10.36.6.39])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t81BN8KE010088; Tue, 1 Sep 2015 07:23:08 -0400
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
 	<1440703987-29012-7-git-send-email-lvivier@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Sep 2015 12:17:06 +0100
-Message-ID: <CAFEAcA9cm4g0wOEAXGmhNZkWbD82o+eWkWpK4R-uorfFtJyOXA@mail.gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.44
+	<CAFEAcA9cm4g0wOEAXGmhNZkWbD82o+eWkWpK4R-uorfFtJyOXA@mail.gmail.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <55E58A9B.5060200@redhat.com>
+Date: Tue, 1 Sep 2015 13:23:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9cm4g0wOEAXGmhNZkWbD82o+eWkWpK4R-uorfFtJyOXA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [PATCH v3 6/9] arm: clarify the use of muldiv64()
@@ -55,40 +49,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Sep 2015 11:17:32 -0000
+X-List-Received-Date: Tue, 01 Sep 2015 11:23:17 -0000
 
-On 27 August 2015 at 20:33, Laurent Vivier <lvivier@redhat.com> wrote:
-> muldiv64() is used to convert microseconds into CPU ticks.
->
-> But it is not clear and not commented. This patch uses macro
-> to clearly identify what is used: time, CPU frequency and ticks.
-> For an elapsed time and a given frequency, we compute how many ticks
->  we have.
->
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
-> v2: replace "arm: remove muldiv64()"
->  target-arm/helper.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 7df1f06..4455761 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -12,6 +12,8 @@
->  #include <zlib.h> /* For crc32 */
->  #include "exec/semihost.h"
->
-> +#define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
 
-LL suffix for large constants, please.
 
-Otherwise
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
+On 01/09/2015 13:17, Peter Maydell wrote:
+> On 27 August 2015 at 20:33, Laurent Vivier <lvivier@redhat.com> wrote:
+>> muldiv64() is used to convert microseconds into CPU ticks.
+>>
+>> But it is not clear and not commented. This patch uses macro
+>> to clearly identify what is used: time, CPU frequency and ticks.
+>> For an elapsed time and a given frequency, we compute how many ticks
+>>  we have.
+>>
+>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+>> ---
+>> v2: replace "arm: remove muldiv64()"
+>>  target-arm/helper.c | 14 ++++++++------
+>>  1 file changed, 8 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/target-arm/helper.c b/target-arm/helper.c
+>> index 7df1f06..4455761 100644
+>> --- a/target-arm/helper.c
+>> +++ b/target-arm/helper.c
+>> @@ -12,6 +12,8 @@
+>>  #include <zlib.h> /* For crc32 */
+>>  #include "exec/semihost.h"
+>>
+>> +#define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+> 
+> LL suffix for large constants, please.
 
-(assuming you're planning to put this somewhere other than the
-target-arm tree).
+In fact, I didn't put the LL suffix to not force the use of a 64bit on a
+32bit machines. Moreover in muldiv64() it is used as a 32bit value.
 
-thanks
--- PMM
+But if you think it is better, I will. Have I to resend the whole series
+or only this patch ? Perhaps the commiter can edit it ?
+
+> 
+> Otherwise
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> (assuming you're planning to put this somewhere other than the
+> target-arm tree).
+> 
+> thanks
+> -- PMM
+> 
 
