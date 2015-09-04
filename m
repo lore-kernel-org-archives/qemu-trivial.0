@@ -1,44 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZXwlC-0001Im-IX
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 15:34:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52553)
+	id 1ZXwrW-0004sw-22
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 15:41:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53308)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZXwlA-0001Ep-2M
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:34:53 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZXwrT-0004pl-DD
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:41:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZXwl9-00032w-6R
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:34:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46095)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZXwrS-0005vk-Hs
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:41:23 -0400
+Received: from mail-qg0-x22a.google.com ([2607:f8b0:400d:c04::22a]:33339)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1ZXwl3-0002wN-Pt; Fri, 04 Sep 2015 15:34:45 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0BEAFABE;
-	Fri,  4 Sep 2015 19:34:45 +0000 (UTC)
-Received: from [10.3.113.113] (ovpn-113-113.phx2.redhat.com [10.3.113.113])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t84JYiUk030609; Fri, 4 Sep 2015 15:34:44 -0400
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	marcandre.lureau@gmail.com, qemu-trivial@nongnu.org
-References: <1441395005-14907-1-git-send-email-lvivier@redhat.com>
-	<1441395005-14907-3-git-send-email-lvivier@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <55E9F253.6010903@redhat.com>
-Date: Fri, 4 Sep 2015 13:34:43 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <marcandre.lureau@gmail.com>)
+	id 1ZXwrO-0005uZ-CC; Fri, 04 Sep 2015 15:41:18 -0400
+Received: by qgev79 with SMTP id v79so24434587qge.0;
+	Fri, 04 Sep 2015 12:41:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:mime-version:content-type
+	:content-transfer-encoding;
+	bh=weBNZZ0nh5HSykS49iONfTmvjk7swdTc8TB/p30GIP8=;
+	b=QHwbL0GyK8exoFYb8674QqSQhwtBG1I2FcVlQ8yl4Sftz3PfmbBU3rrb+Bqzim4qwy
+	IXYrMSrCDFn7BvnoAE/MgmzQbOQD8zyVYRVfunM6aeEhEbQIRw1pb6XBPIzQtT+b02Rk
+	xmsvRCD77TH1kOtluBmbOmXOhY/iwpi/Cc3VY88CFjihUqCRF8a89i8hkhAItAkAcbe4
+	6TCU9rP5/rBahAbv720U/Rd+7VTj4QPrjT8cM9nG2gS18gM9vZLWVxGwy0F4C3tas+Os
+	hkzOmPA7U89aNHCvTJzNuvDPH7CHcB7ms2fH91BKU8HK+zchKSqbfG0KwJXQ8JAD2ZjS
+	6JCw==
+X-Received: by 10.140.132.133 with SMTP id 127mr8430120qhe.6.1441395677631;
+	Fri, 04 Sep 2015 12:41:17 -0700 (PDT)
+Received: from localhost (bne75-h02-31-39-163-232.dsl.sta.abo.bbox.fr.
+	[31.39.163.232]) by smtp.gmail.com with ESMTPSA id
+	g71sm1917260qkh.30.2015.09.04.12.41.15
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 04 Sep 2015 12:41:16 -0700 (PDT)
+Sender: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Date: Fri,  4 Sep 2015 21:41:01 +0200
+Message-Id: <1441395661-22447-1-git-send-email-marcandre.lureau@redhat.com>
+X-Mailer: git-send-email 2.4.3
 MIME-Version: 1.0
-In-Reply-To: <1441395005-14907-3-git-send-email-lvivier@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="ItkvoUF3mgA4HOXPq5UHmamwu98Nsb5ji"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v4 2/3] help: fix typo
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400d:c04::22a
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [Qemu-trivial] [PATCH] qapi-schema: remove legacy<> from doc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,66 +57,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Sep 2015 19:34:53 -0000
+X-List-Received-Date: Fri, 04 Sep 2015 19:41:24 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ItkvoUF3mgA4HOXPq5UHmamwu98Nsb5ji
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-On 09/04/2015 01:30 PM, Laurent Vivier wrote:
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  qemu-options.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+The legacy<> type is no longer used since 7ce7ffe02.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ qapi-schema.json | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-Subject line might have been more obvious as 'help: add missing newline'
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 67fef37..884d476 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -1632,13 +1632,10 @@
+ #        1) A primitive type such as 'u8', 'u16', 'bool', 'str', or 'double'.
+ #           These types are mapped to the appropriate JSON type.
+ #
+-#        2) A legacy type in the form 'legacy<subtype>' where subtype is the
+-#           legacy qdev typename.  These types are always treated as strings.
+-#
+-#        3) A child type in the form 'child<subtype>' where subtype is a qdev
++#        2) A child type in the form 'child<subtype>' where subtype is a qdev
+ #           device type name.  Child properties create the composition tree.
+ #
+-#        4) A link type in the form 'link<subtype>' where subtype is a qdev
++#        3) A link type in the form 'link<subtype>' where subtype is a qdev
+ #           device type name.  Link properties form the device model graph.
+ #
+ # Since: 1.2
+@@ -1689,10 +1686,10 @@
+ #
+ # @property: The property name to read
+ #
+-# Returns: The property value.  The type depends on the property type.  legacy<>
+-#          properties are returned as #str.  child<> and link<> properties are
+-#          returns as #str pathnames.  All integer property types (u8, u16, etc)
+-#          are returned as #int.
++# Returns: The property value.  The type depends on the property
++#          type. child<> and link<> properties are returns as #str
++#          pathnames.  All integer property types (u8, u16, etc) are
++#          returned as #int.
+ #
+ # Since: 1.2
+ ##
+-- 
+2.4.3
 
->=20
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 77f5853..ab1af02 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -3510,7 +3510,7 @@ DEF("dump-vmstate", HAS_ARG, QEMU_OPTION_dump_vms=
-tate,
->      "                Output vmstate information in JSON format to file=
-=2E\n"
->      "                Use the scripts/vmstate-static-checker.py file to=
-\n"
->      "                check for possible regressions in migration code\=
-n"
-> -    "                by comparing two such vmstate dumps.",
-> +    "                by comparing two such vmstate dumps.\n",
->      QEMU_ARCH_ALL)
->  STEXI
->  @item -dump-vmstate @var{file}
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---ItkvoUF3mgA4HOXPq5UHmamwu98Nsb5ji
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJV6fJTAAoJEKeha0olJ0NqAH0IAIBbHK3EBrxPB1nIDhr4T+FP
-D6aIlb3bHKDpHJGcLNezdb3bbctF41+jAM6cIPrsOG3OsMxGC9JXwL0doGx9BFw8
-R5jzM8NrtxyS193SRJiUQHNEcFQGlb0D0fC19J6J4+A7psuh+E104CG6QlpWvcWc
-Y4j7Patwx5k6Tmmy+kBdsI75zrI44U0ycXcdpgnA6gCuSTIOdaAdURvSnT+VY7Lh
-9UmZ2L24MFXd+5sfrjd9cExl4UGIQG387gPd31mz/qqO1G2ct1Bu4PLEfQgKen0S
-7gMqvBJXkecqVfMhDSBMofWklnGAtpmLeuJgG/FwQ60UeLQCsGN/KwcrQvqR6aA=
-=i/3C
------END PGP SIGNATURE-----
-
---ItkvoUF3mgA4HOXPq5UHmamwu98Nsb5ji--
 
