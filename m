@@ -1,50 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZXyvk-0002Sa-MG
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 17:53:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59657)
+	id 1ZY1zW-0000u1-SG
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 21:10:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49558)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZXyvg-0002ME-UM
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 17:53:53 -0400
+	(envelope-from <shraddha.6596@gmail.com>) id 1ZXwXc-0000ed-25
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:20:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZXyve-0003hT-Tf
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 17:53:51 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:36194)
+	(envelope-from <shraddha.6596@gmail.com>) id 1ZXwXb-0004uo-9N
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:20:52 -0400
+Received: from mail-pa0-x22d.google.com ([2607:f8b0:400e:c03::22d]:36347)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ZXyvU-0003d6-ID; Fri, 04 Sep 2015 17:53:40 -0400
-Received: by wibz8 with SMTP id z8so29933290wib.1;
-	Fri, 04 Sep 2015 14:53:31 -0700 (PDT)
+	(envelope-from <shraddha.6596@gmail.com>)
+	id 1ZXwXW-0004oo-0T; Fri, 04 Sep 2015 15:20:46 -0400
+Received: by pacwi10 with SMTP id wi10so32543994pac.3;
+	Fri, 04 Sep 2015 12:20:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=MeKxnMg0VG/uKHYCYllXG6o5ORe1A77Q8MmTlQgZ/To=;
-	b=aCRdgxkKPa/Ey2ZnnyqFhAM/O7LlNFhhhZcV88UK+RVPqIHyL0im5zA+PNBBAPNrHQ
-	wYNgIpxplJiNjZSBnmLl0V6PeoZ5a+zDblPjwkbRZmT3daKqhRzXhAA2OB3yZq/9ionz
-	666rZwPcXiVlQvpspB5Cox5MUE/NwU0lR8JVDOLe2UiB1Zt1b4CA4AwMvtYJaBrZIfyB
-	sOOSBhQN5s1+irjRyVWktpHRa/1JhC/qweSai9ccYVcYCrsGktKWLKXj9k6x+jj+aRB9
-	/DAsB0b65zz2zHy7EY7PHoOV6jzoiVz9eI+kPVc6GVzzyA1BqyeEdKcGvn0m+vakxIg0
-	9lPg==
-MIME-Version: 1.0
-X-Received: by 10.194.60.243 with SMTP id k19mr10729277wjr.8.1441403611830;
-	Fri, 04 Sep 2015 14:53:31 -0700 (PDT)
-Received: by 10.28.134.18 with HTTP; Fri, 4 Sep 2015 14:53:31 -0700 (PDT)
-In-Reply-To: <CAJ+F1C+xQfojq58qzbZcmqe9sHQYDUjGrCCA3V5QN9AJvn5B5w@mail.gmail.com>
-References: <1441400485-29167-1-git-send-email-marcandre.lureau@redhat.com>
-	<CAPokK=rjOTto8oNJVQKLx4ib87nQbvawtez1PhgUDcprGk3d0g@mail.gmail.com>
-	<CAJ+F1C+xQfojq58qzbZcmqe9sHQYDUjGrCCA3V5QN9AJvn5B5w@mail.gmail.com>
-Date: Fri, 4 Sep 2015 14:53:31 -0700
-Message-ID: <CAPokK=rVAcwz+2_LK4YKqxB_WeeYfmqw8RJvAS_ms=65KMGvVg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	h=from:to:cc:subject:date:message-id;
+	bh=cTNCkyQM7OxqMr+8662Y//YC1OCeNvOLwnWFeOhQIJY=;
+	b=YssWX/5bOJSHAw02Ywh1WHBGm8ZDjrRfo0LmoGzAcES9NwjJotDe3RKLz+DOxVJ/Y+
+	iB/LiLVo0+nlXgiqnwkBS1v1NmyPtHOaCPUQ3mGcjFZBa04TJ4aP0fJ/aTS0LCzcRR1k
+	2MmoliNw06Wxe85RH1YNUhDVmbOXYZe5ghVeYyHv5NyeLQyVHltc/bXLAzcsbiES/+4T
+	Le4NPoKfOyHfbyVVja3t4wSB8ve5njTzWC5bEaTBUkOziBZlzSQK38lM0PKGWf9dCXnm
+	JECctZ6omphKLRUrWNnW0QLMzUCBZqhUIYCpm1h60fopWLxAC0Tv0nJzr1NuGHwp4vv6
+	z+kw==
+X-Received: by 10.66.117.200 with SMTP id kg8mr11316072pab.37.1441394444667;
+	Fri, 04 Sep 2015 12:20:44 -0700 (PDT)
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in
+	([103.225.100.51])
+	by smtp.gmail.com with ESMTPSA id i3sm3371885pdp.73.2015.09.04.12.20.40
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 04 Sep 2015 12:20:43 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: Alexander Graf <agraf@suse.de>, qemu-ppc@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Sat,  5 Sep 2015 00:50:28 +0530
+Message-Id: <1441394428-6910-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer: 0000001
+X-CTCH-Spam: Unknown
+X-CTCH-VOD: Unknown
+X-CTCH-Flags: 0
+X-CTCH-RefID: str=0001.0A150204.55E9EF0B.0068, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0
+X-CTCH-Score: 0.000
+X-CTCH-ScoreCust: 0.000
+X-CTCH-Rules: 
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
-Cc: qemu-trivial@nongnu.org,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom/object.h: remove some
-	child/parent doc
+X-Received-From: 2607:f8b0:400e:c03::22d
+X-Mailman-Approved-At: Fri, 04 Sep 2015 21:10:01 -0400
+Cc: Shraddha Barke <shraddha.6596@gmail.com>
+Subject: [Qemu-trivial] [PATCH] Target-ppc: Remove unnecessary variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,43 +64,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Sep 2015 21:53:54 -0000
+X-List-Received-Date: Fri, 04 Sep 2015 19:20:53 -0000
 
-On Fri, Sep 4, 2015 at 2:42 PM, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@gmail.com> wrote:
-> Hi
->
-> On Fri, Sep 4, 2015 at 11:25 PM, Peter Crosthwaite
-> <crosthwaitepeter@gmail.com> wrote:
->> On Fri, Sep 4, 2015 at 2:01 PM,  <marcandre.lureau@redhat.com> wrote:
->>> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->>>
->>> It looks like this documentation is obsolete: a child object may lookup
->>> its parent stored in the Object struct.
->>>
->>
->> Using a function wrapper or direct access to Object structure field?
->
-> By direct access to the struct field.
->
->>
->> The latter would indicate they are workarounds. Which legit uses of
->> parent identification are you referring to?
->
-> I am not saying this is legit or not to use this field, it's just
-> wrong documentation to me: the relationship is bidirectionnal. That's
-> one of the few differences with the link<> properties.
->
+Compress lines and remove the variable ret.
 
-It is biderctional for the implementation but not for the QOM API. I
-think the comment is correct as long as there is no exposed API to do
-this.
+Change made using Coccinelle script
 
-Regards,
-Peter
+@@
+expression ret;
+@@
+- if (ret) return ret;
+- return 0;
++ return ret;
+@@
+local idexpression ret;
+expression e;
+@@
+- ret = e;
+- return ret;
++ return e;
+@@
+type T; identifier i;
+@@
+- T i;
+... when != i
 
-> regards
->
-> --
-> Marc-Andr=C3=A9 Lureau
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ target-ppc/translate_init.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
+index 16d7b16..b541473 100644
+--- a/target-ppc/translate_init.c
++++ b/target-ppc/translate_init.c
+@@ -8577,11 +8577,7 @@ static int register_ind_insn (opc_handler_t **ppc_opcodes,
+                               unsigned char idx1, unsigned char idx2,
+                               opc_handler_t *handler)
+ {
+-    int ret;
+-
+-    ret = register_ind_in_table(ppc_opcodes, idx1, idx2, handler);
+-
+-    return ret;
++    return register_ind_in_table(ppc_opcodes, idx1, idx2, handler);
+ }
+ 
+ static int register_dblind_insn (opc_handler_t **ppc_opcodes,
+@@ -9350,8 +9346,7 @@ static ObjectClass *ppc_cpu_class_by_name(const char *name)
+                 break;
+         }
+         if (i == 8) {
+-            ret = OBJECT_CLASS(ppc_cpu_class_by_pvr(strtoul(name, NULL, 16)));
+-            return ret;
++            return OBJECT_CLASS(ppc_cpu_class_by_pvr(strtoul(name, NULL, 16)));
+         }
+     }
+ 
+-- 
+2.1.4
+
 
