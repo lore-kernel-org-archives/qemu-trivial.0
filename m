@@ -1,51 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZXwrW-0004sw-22
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 15:41:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53308)
+	id 1ZXwu5-0007Dk-CJ
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Sep 2015 15:44:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZXwrT-0004pl-DD
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:41:24 -0400
+	(envelope-from <eblake@redhat.com>) id 1ZXwu2-0007Ap-Tl
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:44:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZXwrS-0005vk-Hs
-	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:41:23 -0400
-Received: from mail-qg0-x22a.google.com ([2607:f8b0:400d:c04::22a]:33339)
+	(envelope-from <eblake@redhat.com>) id 1ZXwu1-0006re-Pe
+	for qemu-trivial@nongnu.org; Fri, 04 Sep 2015 15:44:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52064)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>)
-	id 1ZXwrO-0005uZ-CC; Fri, 04 Sep 2015 15:41:18 -0400
-Received: by qgev79 with SMTP id v79so24434587qge.0;
-	Fri, 04 Sep 2015 12:41:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=weBNZZ0nh5HSykS49iONfTmvjk7swdTc8TB/p30GIP8=;
-	b=QHwbL0GyK8exoFYb8674QqSQhwtBG1I2FcVlQ8yl4Sftz3PfmbBU3rrb+Bqzim4qwy
-	IXYrMSrCDFn7BvnoAE/MgmzQbOQD8zyVYRVfunM6aeEhEbQIRw1pb6XBPIzQtT+b02Rk
-	xmsvRCD77TH1kOtluBmbOmXOhY/iwpi/Cc3VY88CFjihUqCRF8a89i8hkhAItAkAcbe4
-	6TCU9rP5/rBahAbv720U/Rd+7VTj4QPrjT8cM9nG2gS18gM9vZLWVxGwy0F4C3tas+Os
-	hkzOmPA7U89aNHCvTJzNuvDPH7CHcB7ms2fH91BKU8HK+zchKSqbfG0KwJXQ8JAD2ZjS
-	6JCw==
-X-Received: by 10.140.132.133 with SMTP id 127mr8430120qhe.6.1441395677631;
-	Fri, 04 Sep 2015 12:41:17 -0700 (PDT)
-Received: from localhost (bne75-h02-31-39-163-232.dsl.sta.abo.bbox.fr.
-	[31.39.163.232]) by smtp.gmail.com with ESMTPSA id
-	g71sm1917260qkh.30.2015.09.04.12.41.15
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 04 Sep 2015 12:41:16 -0700 (PDT)
-Sender: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Date: Fri,  4 Sep 2015 21:41:01 +0200
-Message-Id: <1441395661-22447-1-git-send-email-marcandre.lureau@redhat.com>
-X-Mailer: git-send-email 2.4.3
+	(envelope-from <eblake@redhat.com>)
+	id 1ZXwtx-0006qR-Dm; Fri, 04 Sep 2015 15:43:57 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1E439C0AF3D4;
+	Fri,  4 Sep 2015 19:43:57 +0000 (UTC)
+Received: from [10.3.113.113] (ovpn-113-113.phx2.redhat.com [10.3.113.113])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t84JhuGE000328; Fri, 4 Sep 2015 15:43:56 -0400
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+References: <1441395661-22447-1-git-send-email-marcandre.lureau@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <55E9F47C.8080807@redhat.com>
+Date: Fri, 4 Sep 2015 13:43:56 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::22a
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [Qemu-trivial] [PATCH] qapi-schema: remove legacy<> from doc
+In-Reply-To: <1441395661-22447-1-git-send-email-marcandre.lureau@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="G2j1KsF6FFTcSLErhqArghOSee7DU41NE"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi-schema: remove
+	legacy<> from doc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,53 +50,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Sep 2015 19:41:24 -0000
+X-List-Received-Date: Fri, 04 Sep 2015 19:44:04 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--G2j1KsF6FFTcSLErhqArghOSee7DU41NE
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-The legacy<> type is no longer used since 7ce7ffe02.
+On 09/04/2015 01:41 PM, marcandre.lureau@redhat.com wrote:
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>=20
+> The legacy<> type is no longer used since 7ce7ffe02.
+>=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  qapi-schema.json | 15 ++++++---------
+>  1 file changed, 6 insertions(+), 9 deletions(-)
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- qapi-schema.json | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+> @@ -1689,10 +1686,10 @@
+>  #
+>  # @property: The property name to read
+>  #
+> -# Returns: The property value.  The type depends on the property type.=
+  legacy<>
+> -#          properties are returned as #str.  child<> and link<> proper=
+ties are
+> -#          returns as #str pathnames.  All integer property types (u8,=
+ u16, etc)
+> -#          are returned as #int.
+> +# Returns: The property value.  The type depends on the property
+> +#          type. child<> and link<> properties are returns as #str
 
-diff --git a/qapi-schema.json b/qapi-schema.json
-index 67fef37..884d476 100644
---- a/qapi-schema.json
-+++ b/qapi-schema.json
-@@ -1632,13 +1632,10 @@
- #        1) A primitive type such as 'u8', 'u16', 'bool', 'str', or 'double'.
- #           These types are mapped to the appropriate JSON type.
- #
--#        2) A legacy type in the form 'legacy<subtype>' where subtype is the
--#           legacy qdev typename.  These types are always treated as strings.
--#
--#        3) A child type in the form 'child<subtype>' where subtype is a qdev
-+#        2) A child type in the form 'child<subtype>' where subtype is a qdev
- #           device type name.  Child properties create the composition tree.
- #
--#        4) A link type in the form 'link<subtype>' where subtype is a qdev
-+#        3) A link type in the form 'link<subtype>' where subtype is a qdev
- #           device type name.  Link properties form the device model graph.
- #
- # Since: 1.2
-@@ -1689,10 +1686,10 @@
- #
- # @property: The property name to read
- #
--# Returns: The property value.  The type depends on the property type.  legacy<>
--#          properties are returned as #str.  child<> and link<> properties are
--#          returns as #str pathnames.  All integer property types (u8, u16, etc)
--#          are returned as #int.
-+# Returns: The property value.  The type depends on the property
-+#          type. child<> and link<> properties are returns as #str
-+#          pathnames.  All integer property types (u8, u16, etc) are
-+#          returned as #int.
- #
- # Since: 1.2
- ##
--- 
-2.4.3
+While at it, please fix the pre-existing typo:
 
+s/returns/returned/
+
+> +#          pathnames.  All integer property types (u8, u16, etc) are
+> +#          returned as #int.
+
+With that fixed,
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--G2j1KsF6FFTcSLErhqArghOSee7DU41NE
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJV6fR8AAoJEKeha0olJ0Nqr34H/3QK/wr4EINl10zJMJU0qCKk
+4qFXPLLcwI42gcCs8FyNhsEhNskrspVppX0cOPMTYJtodU43ZZwObrGNI+a8EjzQ
+GeAusgCjlVKVbRa7/9QiQimbskQtixt2bc3XSmySmYOA97eODCTpgqxsZIa5B3gj
+cU05MmYQvMd8D9BnrwJHrBRcN1iiHLdmPw4V/cze2i/MNygatesqHyrMF7i71aIl
+bLA49hDB6mpuxk+/YRVBWkVajEfvDDp8ubNVAnrnuokPj2abNTqCNP6TUrA1Q2LY
+zaCTm/9fWsmgU7odhgy6TpsypDlG+TLAt5lEV1tyB1LBe7Y5H0hT+5kvhSzC8Gc=
+=PNkH
+-----END PGP SIGNATURE-----
+
+--G2j1KsF6FFTcSLErhqArghOSee7DU41NE--
 
