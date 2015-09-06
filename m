@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYXoK-0001Ms-4y
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2015 07:08:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50140)
+	id 1ZYXr8-0002kL-Hs
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2015 07:11:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50627)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZYXoI-0001Km-3o
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:08:34 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZYXr6-0002i4-6H
+	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:11:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZYXoH-0004Te-GC
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:08:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53787)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZYXr5-000672-H7
+	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:11:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:35920)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZYXoC-0004Qu-Fm; Sun, 06 Sep 2015 07:08:28 -0400
+	id 1ZYXr0-00063e-J7; Sun, 06 Sep 2015 07:11:22 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C623A409B9;
-	Sun,  6 Sep 2015 14:08:27 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id D85FC409B9;
+	Sun,  6 Sep 2015 14:11:21 +0300 (MSK)
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id B0C93A76;
-	Sun,  6 Sep 2015 14:08:27 +0300 (MSK)
-Message-ID: <55EC1EAB.60300@msgid.tls.msk.ru>
-Date: Sun, 06 Sep 2015 14:08:27 +0300
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id B8A4BA76;
+	Sun,  6 Sep 2015 14:11:21 +0300 (MSK)
+Message-ID: <55EC1F59.3060409@msgid.tls.msk.ru>
+Date: Sun, 06 Sep 2015 14:11:21 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-To: Stefan Weil <sw@weilnetz.de>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <1440834273-6023-1-git-send-email-sw@weilnetz.de>
-In-Reply-To: <1440834273-6023-1-git-send-email-sw@weilnetz.de>
+To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
+References: <1441143203-15044-1-git-send-email-lersek@redhat.com>
+In-Reply-To: <1441143203-15044-1-git-send-email-lersek@redhat.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] disas/microblaze: Remove unused code
+Cc: qemu-trivial@nongnu.org, Don Koch <dkoch@verizon.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [trivial PATCH] hw/pci: fix
+ pci_update_mappings() trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,7 +48,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Sep 2015 11:08:35 -0000
+X-List-Received-Date: Sun, 06 Sep 2015 11:11:28 -0000
+
+02.09.2015 00:33, Laszlo Ersek wrote:
+> Stick with the conventional BDF notation.
 
 Applied to -trivial, thanks!
 
