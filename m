@@ -1,40 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYXkp-0008CB-Lh
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2015 07:04:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49725)
+	id 1ZYXmS-0000Ac-Mf
+	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2015 07:06:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZYXko-00089v-5i
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:04:58 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZYXmQ-00007B-2q
+	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:06:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZYXkn-0002sf-7Y
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:04:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42904)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZYXmP-0003i3-Eg
+	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 07:06:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38807)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZYXki-0002qx-8Y; Sun, 06 Sep 2015 07:04:52 -0400
+	id 1ZYXmK-0003g0-F1; Sun, 06 Sep 2015 07:06:32 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 99EE0409B9;
-	Sun,  6 Sep 2015 14:04:51 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id C4416409B9;
+	Sun,  6 Sep 2015 14:06:31 +0300 (MSK)
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 890FCA76;
-	Sun,  6 Sep 2015 14:04:51 +0300 (MSK)
-Message-ID: <55EC1DD3.6020801@msgid.tls.msk.ru>
-Date: Sun, 06 Sep 2015 14:04:51 +0300
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id B1B33A76;
+	Sun,  6 Sep 2015 14:06:31 +0300 (MSK)
+Message-ID: <55EC1E37.7090306@msgid.tls.msk.ru>
+Date: Sun, 06 Sep 2015 14:06:31 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-To: Shraddha Barke <shraddha.6596@gmail.com>, Alexander Graf <agraf@suse.de>,
-	qemu-ppc@nongnu.org, qemu-trivial <qemu-trivial@nongnu.org>
-References: <1441394428-6910-1-git-send-email-shraddha.6596@gmail.com>
-In-Reply-To: <1441394428-6910-1-git-send-email-shraddha.6596@gmail.com>
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org, 
+	marcandre.lureau@gmail.com, eblake@redhat.com, 
+	qemu-trivial <qemu-trivial@nongnu.org>
+References: <1441395005-14907-1-git-send-email-lvivier@redhat.com>
+	<1441395005-14907-3-git-send-email-lvivier@redhat.com>
+In-Reply-To: <1441395005-14907-3-git-send-email-lvivier@redhat.com>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] Target-ppc: Remove unnecessary variable
+Subject: Re: [Qemu-trivial] [PATCH v4 2/3] help: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,13 +48,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Sep 2015 11:04:58 -0000
+X-List-Received-Date: Sun, 06 Sep 2015 11:06:38 -0000
 
-04.09.2015 22:20, Shraddha Barke wrote:
-> Compress lines and remove the variable ret.
-
-Applied to -trivial, thanks!
+Applied to -trivial, with subject line change as suggested by Eric.
+Thanks!
 
 /mjt
-
 
