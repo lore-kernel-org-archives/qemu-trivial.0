@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYbDp-00049u-Ai
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Sep 2015 10:47:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59231)
+	id 1ZYq0f-0004LW-K7
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 02:34:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37011)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ZYbDn-00049T-Uc
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 10:47:08 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZYq0e-0004Ks-7S
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 02:34:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ZYbDk-0007dR-P2
-	for qemu-trivial@nongnu.org; Sun, 06 Sep 2015 10:47:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:62969)
+	(envelope-from <armbru@redhat.com>) id 1ZYq0d-0008Sr-Bl
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 02:34:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35222)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1ZYbDk-0007cv-EX; Sun, 06 Sep 2015 10:47:04 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue004) with ESMTPSA (Nemesis) id 0M1TKv-1YfxFC2UtF-00tTkn;
-	Sun, 06 Sep 2015 16:41:31 +0200
-To: Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1438609948-3744-1-git-send-email-lvivier@redhat.com>
-	<1438676851-10684-1-git-send-email-lvivier@redhat.com>
-	<55EC1590.4000102@msgid.tls.msk.ru> <55EC4F3E.8070705@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <55EC5093.30707@vivier.eu>
-Date: Sun, 6 Sep 2015 16:41:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.2.0
+	(envelope-from <armbru@redhat.com>)
+	id 1ZYq0Z-0008S8-4t; Mon, 07 Sep 2015 02:34:27 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 45BE591C0C;
+	Mon,  7 Sep 2015 06:34:26 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-17.ams2.redhat.com
+	[10.36.116.17])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t876YMRl004561
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 7 Sep 2015 02:34:23 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 97331303F90E; Mon,  7 Sep 2015 08:34:21 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1438235203-31311-1-git-send-email-sw@weilnetz.de>
+	<55EC14A1.4030600@msgid.tls.msk.ru>
+Date: Mon, 07 Sep 2015 08:34:21 +0200
+In-Reply-To: <55EC14A1.4030600@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Sun, 06 Sep 2015 13:25:37 +0300")
+Message-ID: <87y4givitu.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <55EC4F3E.8070705@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:eeQBDQoNJMRZC7bYiJpH1LgwYt6Gj3is353xiykd7DCDrOkFWhR
-	iqn7w6rOMoLk15TeJmk9I6IhFMoP62oQj2C/3TFOV8G5e38ePiqXVxEQA/UTaQfmMObgl3M
-	zPUE9X5D6uH2JNunASko7YkjsGuPdyxJ8vM1SsbTo3dqG1Zfsn4T4isaboVXbWAHudLyzSi
-	s6meRMgVSpIlrqvHQoRsA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:9bplarMwkNk=:dfEdGIMi7refPU/FBJAArs
-	FDZ3dll7tM8UpKj+QDv2QVvb7CbXLp72e1zrydFEJQdFRayJP5vxECeFSpm+BxxBr1duwlvxi
-	3A833oeTGg8M7iZ7mQZJYpvY3Ar/FCT9P9hAtk62NfDRHiW9uJoYOHpl+zxVHSBynZdwujr8Q
-	L02PQOe81qfMUK50Kz6kStl0H4WU7wlRIMwMrYQixU645STJ5FfD3ASMbl3Frlkgy99HcYA4s
-	v0/rFljBXGxJjfUEAuuCDBdujlUUnKoEDHIVUxA+g8PoketMlrJHch0VdXgeuBAnis9kKvHsg
-	DobtwzIyq10PxinadLIjUV9seI+FQefkeJnILfZzfsywEFBMET8Jhg/+1az5Z3IR1NIoHsAG0
-	tVoyp+zo5jDBHOSqGOABV5P0d9etHiQMTtUrCxaqzfVxj92T7OjjRf7xv+X5I0HhAh1Vvpu78
-	oRGNsjkehkI7xsr7u/hc9/lH/rX9yUpY34ps8UAvXv5hMvj8TRhYOLRO09GQSZblNplHEWiv2
-	+OGpVD8L0Os2QcSf21hHMCppE7xMqF8+Nwcg6NUFtoFbmOD3qRmL6pOMfdyAQLbqyDBU6Fjl8
-	PXzdqt+eVFVCd4rT66k5SFn+NVGQtYgVkye2MUB2e8sSsT5hkI3if0iS7aOtAJii5zr4UfHBq
-	ep5ru/zK6kyaIszggo7N4QDVLmlGxt/iG93mlkNLD/Stj6Dr2JFWydy8b9fAxwiyB3/tHIZeG
-	+DQ3VfDf7NkulyXG
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Cc: "Richard W.M. Jones" <rjones@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH][TRIVIAL] i6300esb: fix
-	timer overflow
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?utf-8?B?w4Frb3MgS292w6Fjcw==?= <akoskovacs@gmx.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	Ozan =?utf-8?B?w4dhxJ9sYXlhbg==?= <ozancag@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.4] Update language
+	files for QEMU 2.4.0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,26 +57,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Sep 2015 14:47:08 -0000
+X-List-Received-Date: Mon, 07 Sep 2015 06:34:33 -0000
 
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
+> Applied to -trivial-patches, unfortunately not for 2.4 but at least for 2.5 :)
 
-Le 06/09/2015 16:35, Paolo Bonzini a écrit :
-> 
-> 
-> On 06/09/2015 12:29, Michael Tokarev wrote:
->> 04.08.2015 11:27, Laurent Vivier wrote:
->>> We use muldiv64() to compute the time to wait:
->>>
->>>     timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
->> ...
->>
->> Applied to -trivial, thank you!
-> 
-> I think this was superseded by a later patch.
-
-Yes, but as the later has not already be taken, I prefer this one taken
-and I'll update the other.
-
-Laurent
+Should we add "Cc: qemu-stable@nongnu.org" to the commit message?
 
