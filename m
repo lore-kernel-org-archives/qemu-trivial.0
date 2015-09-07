@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYvPK-0007yF-Oy
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 08:20:22 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:34627)
+	id 1ZYyIZ-0000Cg-Pk
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 11:25:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZYtUM-0002Dk-KL
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 06:17:30 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZYyIV-00006w-DR
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:25:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZYtUI-0000f9-VF
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 06:17:25 -0400
-Received: from mail-vk0-f51.google.com ([209.85.213.51]:35300)
+	(envelope-from <armbru@redhat.com>) id 1ZYyIU-000490-Dh
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:25:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZYtUI-0000ey-SW
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 06:17:22 -0400
-Received: by vkaw128 with SMTP id w128so40830407vka.2
-	for <qemu-trivial@nongnu.org>; Mon, 07 Sep 2015 03:17:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=t2+SYFfiuQb88CE3cDS0k8u5G8hARWuw0CnZagxAVfs=;
-	b=TTW8v+yS2IwNYHnQ2yXAa2vcv/E82LEVXgF3TIMJ8Qp+5eHMFxTVmkugpVQEd9+asS
-	+onbNkSDlKyRC/pL0PfTQZ6+Okml9gUoOnFn14Mn/wkK1N8buDLC1dvIpc0HYKxxY3hx
-	wLiLmIe7tGb4h4exqanu32IRYW2z259MxBzuRmNZnYyhYZDFeZTs7cdBmJ1l7Y2WJ0Ix
-	hZU+MgKymg1Or2rWlM7IaeWAxTJy19LTZSE66ulHujlVDFRfYVZ6Oz6eMWMw53B4iQuM
-	6UmwKwTB/q/upB2TcSZomvcuQDxa365mwRozdzZnC16uGmj3KMaovXYor6GGFhJMbEid
-	oelw==
-X-Gm-Message-State: ALoCoQkwfxjuKwq3rNVgK72ByLmhS4j7x12l2+Ol2JvbUAo9PTnQ/4ehcTzR05Da9+MWIFz/Hb/y
-X-Received: by 10.52.9.68 with SMTP id x4mr25626344vda.90.1441621042291; Mon,
-	07 Sep 2015 03:17:22 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>)
+	id 1ZYyIO-000487-Tu; Mon, 07 Sep 2015 11:25:25 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 979C1AED5B;
+	Mon,  7 Sep 2015 15:25:24 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-17.ams2.redhat.com
+	[10.36.116.17])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t87FPNW7031369
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 7 Sep 2015 11:25:24 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7C345303F90E; Mon,  7 Sep 2015 17:25:22 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Veres Lajos <vlajos@gmail.com>
+References: <alpine.DEB.2.02.1508092307540.14941@citymarket.hu>
+	<alpine.DEB.2.02.1508102239060.14941@citymarket.hu>
+	<55EC183F.3090107@msgid.tls.msk.ru>
+	<87twr6vi8c.fsf@blackfin.pond.sub.org>
+	<alpine.DEB.2.02.1509070914130.7825@citymarket.hu>
+Date: Mon, 07 Sep 2015 17:25:22 +0200
+In-Reply-To: <alpine.DEB.2.02.1509070914130.7825@citymarket.hu> (Veres Lajos's
+	message of "Mon, 7 Sep 2015 09:14:54 +0100 (BST)")
+Message-ID: <87h9n65k0t.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Mon, 7 Sep 2015 03:17:02 -0700 (PDT)
-In-Reply-To: <55ED5F65.3060809@redhat.com>
-References: <1441612292-14845-1-git-send-email-pbonzini@redhat.com>
-	<CAFEAcA921SoB9wj79tm7OLrFfV_sZLy90NYOuePSdQ60GttJ5g@mail.gmail.com>
-	<55ED5F65.3060809@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 7 Sep 2015 11:17:02 +0100
-Message-ID: <CAFEAcA_ZCV0dmNEXPthSLSRQWoKG-sc5_vQEFrBxczEhYj8s8A@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.51
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] add macro file for
-	coccinelle
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] typofixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,33 +55,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2015 12:20:20 -0000
+X-List-Received-Date: Mon, 07 Sep 2015 15:25:32 -0000
 
-On 7 September 2015 at 10:56, Paolo Bonzini <pbonzini@redhat.com> wrote:
+Veres Lajos <vlajos@gmail.com> writes:
+
+> On Mon, 7 Sep 2015, Markus Armbruster wrote:
 >
->
-> On 07/09/2015 11:22, Peter Maydell wrote:
->> On 7 September 2015 at 08:51, Paolo Bonzini <pbonzini@redhat.com> wrote:
->>> Coccinelle chokes on some idioms from compiler.h and queue.h.
->>> Extract those in a macro file, to be used with "--macro-file
->>> scripts/cocci-macro-file.h".
+>> Michael Tokarev <mjt@tls.msk.ru> writes:
 >>
->> Can we put the "how to use this" instructions in the file
->> itself as well as in the commit message, please?
+>> > 11.08.2015 00:42, Veres Lajos wrote:
+>> >> On Sun, 9 Aug 2015, Veres Lajos wrote:
+>> >>
+>> >>> Hi,
+>> >>>
+>> >>> Please find attached a couple of typo fixes, mostly in comments/docs.
+>> >>> I hope it meets the trivial criteria...
+>> >
+>> > Now that's a bunch of typos ;)
+>> >
+>> > Applied everything to -trivial. Thank you!
+>> >
+>> > Please the next time send it to qemu-devel too,
+>> > so that people will be able to review.
+>>
+>> Yes.  Has a copy been sent to qemu-devel meanwhile?
 >
-> Like this?
->
-> /* Coccinelle only does limited parsing of headers, and chokes on some idioms
->  * defined in compiler.h and queue.h.  Macros that Coccinelle must know about
->  * in order to parse .c files must be in a separate macro file---which is
->  * exactly what you're staring at now.
->  *
->  * To use this file, add the "--macro-file scripts/cocci-macro-file.h" to the
->  * Coccinelle command line.
->  */
+> No. Not yet. Should I send?
 
-Yeah, sounds about right.
+Yes, please.
 
-thanks
--- PMM
+See also
+http://lists.gnu.org/archive/html/qemu-devel/2015-05/msg05887.html
 
