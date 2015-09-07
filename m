@@ -1,49 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYyIZ-0000Cg-Pk
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 11:25:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34565)
+	id 1ZYydJ-0008VG-Gf
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 11:47:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZYyIV-00006w-DR
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:25:32 -0400
+	(envelope-from <afaerber@suse.de>) id 1ZYydH-0008QL-0H
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:46:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZYyIU-000490-Dh
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:25:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40786)
+	(envelope-from <afaerber@suse.de>) id 1ZYydG-0000Gg-6n
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 11:46:58 -0400
+Received: from mx2.suse.de ([195.135.220.15]:54237)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZYyIO-000487-Tu; Mon, 07 Sep 2015 11:25:25 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 979C1AED5B;
-	Mon,  7 Sep 2015 15:25:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-17.ams2.redhat.com
-	[10.36.116.17])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t87FPNW7031369
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 7 Sep 2015 11:25:24 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7C345303F90E; Mon,  7 Sep 2015 17:25:22 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Veres Lajos <vlajos@gmail.com>
-References: <alpine.DEB.2.02.1508092307540.14941@citymarket.hu>
-	<alpine.DEB.2.02.1508102239060.14941@citymarket.hu>
-	<55EC183F.3090107@msgid.tls.msk.ru>
-	<87twr6vi8c.fsf@blackfin.pond.sub.org>
-	<alpine.DEB.2.02.1509070914130.7825@citymarket.hu>
-Date: Mon, 07 Sep 2015 17:25:22 +0200
-In-Reply-To: <alpine.DEB.2.02.1509070914130.7825@citymarket.hu> (Veres Lajos's
-	message of "Mon, 7 Sep 2015 09:14:54 +0100 (BST)")
-Message-ID: <87h9n65k0t.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <afaerber@suse.de>)
+	id 1ZYydB-0000GM-Sl; Mon, 07 Sep 2015 11:46:54 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 07170ABCF;
+	Mon,  7 Sep 2015 15:46:52 +0000 (UTC)
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+References: <1441400485-29167-1-git-send-email-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+Message-ID: <55EDB16B.6080205@suse.de>
+Date: Mon, 7 Sep 2015 17:46:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] typofixes
+In-Reply-To: <1441400485-29167-1-git-send-email-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom/object.h: remove some
+	child/parent doc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,35 +45,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2015 15:25:32 -0000
+X-List-Received-Date: Mon, 07 Sep 2015 15:46:59 -0000
 
-Veres Lajos <vlajos@gmail.com> writes:
+Am 04.09.2015 um 23:01 schrieb marcandre.lureau@redhat.com:
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>=20
+> It looks like this documentation is obsolete: a child object may lookup
+> its parent stored in the Object struct.
+>=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  include/qom/object.h | 3 ---
+>  1 file changed, 3 deletions(-)
 
-> On Mon, 7 Sep 2015, Markus Armbruster wrote:
->
->> Michael Tokarev <mjt@tls.msk.ru> writes:
->>
->> > 11.08.2015 00:42, Veres Lajos wrote:
->> >> On Sun, 9 Aug 2015, Veres Lajos wrote:
->> >>
->> >>> Hi,
->> >>>
->> >>> Please find attached a couple of typo fixes, mostly in comments/docs.
->> >>> I hope it meets the trivial criteria...
->> >
->> > Now that's a bunch of typos ;)
->> >
->> > Applied everything to -trivial. Thank you!
->> >
->> > Please the next time send it to qemu-devel too,
->> > so that people will be able to review.
->>
->> Yes.  Has a copy been sent to qemu-devel meanwhile?
->
-> No. Not yet. Should I send?
+Either once again you are trying to do stuff behind my back, or your
+setup is really broken: I double-checked that include/qom/ is listed in
+MAINTAINERS, so I should've been CC'ed rather than just -trivial.
 
-Yes, please.
+It's been a valid rule not to mess with these internal fields, therefore
+this is not trivial at all, and that's one reason why my x86 CPU series
+using it was an RFC. We should either come up with a proper wrapper
+function object_get_parent(), or with a wrapper function adding a link<>
+property (where we would need to be careful with ref counts) - long time
+only the composition tree needed to mess with an object's parent.
 
-See also
-http://lists.gnu.org/archive/html/qemu-devel/2015-05/msg05887.html
+If you have a concrete use case of parent access, please point to it.
+
+Regards,
+Andreas
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=
+=C3=BCrnberg)
 
