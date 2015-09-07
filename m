@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZYrZz-0002iK-0b
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 04:15:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34720)
+	id 1ZYsdo-0005S9-5K
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Sep 2015 05:23:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53142)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vlajos@gmail.com>) id 1ZYrZv-0002ho-5f
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 04:15:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ZYsdi-0005Je-IU
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 05:23:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vlajos@gmail.com>) id 1ZYrZu-0005SL-8V
-	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 04:15:03 -0400
-Received: from citymarket.hu ([188.227.225.139]:32927 helo=www.citymarket.hu)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZYsdd-0002Ww-Aw
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 05:23:02 -0400
+Received: from mail-vk0-f45.google.com ([209.85.213.45]:33519)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vlajos@gmail.com>)
-	id 1ZYrZo-0005P4-VL; Mon, 07 Sep 2015 04:14:57 -0400
-Received: from www.citymarket.hu (localhost [127.0.0.1])
-	by www.citymarket.hu (Postfix) with ESMTP id 915D8102057;
-	Mon,  7 Sep 2015 10:14:54 +0200 (CEST)
-Received: by www.citymarket.hu (Postfix, from userid 1000)
-	id 70A641020E7; Mon,  7 Sep 2015 10:14:54 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by www.citymarket.hu (Postfix) with ESMTP id 5F2A3102057;
-	Mon,  7 Sep 2015 09:14:54 +0100 (BST)
-Date: Mon, 7 Sep 2015 09:14:54 +0100 (BST)
-From: Veres Lajos <vlajos@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-In-Reply-To: <87twr6vi8c.fsf@blackfin.pond.sub.org>
-Message-ID: <alpine.DEB.2.02.1509070914130.7825@citymarket.hu>
-References: <alpine.DEB.2.02.1508092307540.14941@citymarket.hu>
-	<alpine.DEB.2.02.1508102239060.14941@citymarket.hu>
-	<55EC183F.3090107@msgid.tls.msk.ru>
-	<87twr6vi8c.fsf@blackfin.pond.sub.org>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZYsdd-0002Wp-7k
+	for qemu-trivial@nongnu.org; Mon, 07 Sep 2015 05:22:57 -0400
+Received: by vkbf67 with SMTP id f67so40221413vkb.0
+	for <qemu-trivial@nongnu.org>; Mon, 07 Sep 2015 02:22:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=MgoHL7VThrQLdTBoeJ53t1owS8pxjhqwgSRk4d0jr6Y=;
+	b=h8KJARcIXBnJWQnbtRHOvSJiHmr5dN5EHWZaMEl0rwAXWuq0blYdxZkrdYpd6HusA0
+	U9lmVkIFn45hsdEfVeAUIoDEcxjxkQmI5KgP0t8Zk+RUQbyFc5DajTX3+qq5/0hXi9hH
+	ComPCCxzX1F9F2+zo5lGSKoAdM5HU5oHtKmRnSXBKcNC808cm6iBpfU8Bgy0zHTGxvJo
+	7z/mwmKDd1EBMRvZxz2vd4bpNr4WJq4TC6cBkPnpdcWDhKSllXVmFRaqytHokTsUQkhp
+	i85swJhMNpWJukimnJuByiC4Re2YSvSBHYzm0SesdkxVloKlNx12P0hSe/HLUaGtYmvo
+	Bm7A==
+X-Gm-Message-State: ALoCoQn7B9h3XSs3b4CiTiaQa+V0Ah5WlpobBGXFm2YndiLma4cma/3br+BbqxqqsifaW44MsbYN
+X-Received: by 10.52.74.1 with SMTP id p1mr24008120vdv.1.1441617776950; Mon,
+	07 Sep 2015 02:22:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 188.227.225.139
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] typofixes
+Received: by 10.31.153.135 with HTTP; Mon, 7 Sep 2015 02:22:37 -0700 (PDT)
+In-Reply-To: <1441612292-14845-1-git-send-email-pbonzini@redhat.com>
+References: <1441612292-14845-1-git-send-email-pbonzini@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 7 Sep 2015 10:22:37 +0100
+Message-ID: <CAFEAcA921SoB9wj79tm7OLrFfV_sZLy90NYOuePSdQ60GttJ5g@mail.gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.45
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] add macro file for
+	coccinelle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,33 +56,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Sep 2015 08:15:04 -0000
+X-List-Received-Date: Mon, 07 Sep 2015 09:23:03 -0000
 
-On Mon, 7 Sep 2015, Markus Armbruster wrote:
+On 7 September 2015 at 08:51, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> Coccinelle chokes on some idioms from compiler.h and queue.h.
+> Extract those in a macro file, to be used with "--macro-file
+> scripts/cocci-macro-file.h".
 
-> Michael Tokarev <mjt@tls.msk.ru> writes:
->
-> > 11.08.2015 00:42, Veres Lajos wrote:
-> >> On Sun, 9 Aug 2015, Veres Lajos wrote:
-> >>
-> >>> Hi,
-> >>>
-> >>> Please find attached a couple of typo fixes, mostly in comments/docs.
-> >>> I hope it meets the trivial criteria...
-> >
-> > Now that's a bunch of typos ;)
-> >
-> > Applied everything to -trivial. Thank you!
-> >
-> > Please the next time send it to qemu-devel too,
-> > so that people will be able to review.
->
-> Yes.  Has a copy been sent to qemu-devel meanwhile?
+Can we put the "how to use this" instructions in the file
+itself as well as in the commit message, please?
 
-No. Not yet. Should I send?
-
--- 
-Veres Lajos
-vlajos@gmail.com
-+36 20 438 5909
+thanks
+-- PMM
 
