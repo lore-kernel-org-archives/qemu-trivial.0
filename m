@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZZIGn-0005tk-Hg
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 08:45:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59615)
+	id 1ZZIQx-0006TL-PC
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 08:55:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZZIGi-0005ps-0u
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:45:00 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZZIQu-0006OA-T9
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZZIGf-0000Ob-Bd
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:44:59 -0400
-Received: from mx3-phx2.redhat.com ([209.132.183.24]:60481)
+	(envelope-from <lvivier@redhat.com>) id 1ZZIQu-0006ZF-2G
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52950)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZZIGf-0000OB-3p; Tue, 08 Sep 2015 08:44:57 -0400
-Received: from zmail13.collab.prod.int.phx2.redhat.com
-	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
-	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id t88CisJt024832;
-	Tue, 8 Sep 2015 08:44:54 -0400
-Date: Tue, 8 Sep 2015 08:44:53 -0400 (EDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <1829681137.27366603.1441716293187.JavaMail.zimbra@redhat.com>
-In-Reply-To: <87h9n5p3ou.fsf@blackfin.pond.sub.org>
-References: <1441621264-23812-1-git-send-email-pbonzini@redhat.com>
-	<87h9n5p3ou.fsf@blackfin.pond.sub.org>
+	(envelope-from <lvivier@redhat.com>)
+	id 1ZZIQp-0006YR-NB; Tue, 08 Sep 2015 08:55:27 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5BD2D8EA2F;
+	Tue,  8 Sep 2015 12:55:27 +0000 (UTC)
+Received: from [10.36.5.129] (vpn1-5-129.ams2.redhat.com [10.36.5.129])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t88CtPlO013263; Tue, 8 Sep 2015 08:55:26 -0400
+To: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
+	<1440703987-29012-8-git-send-email-lvivier@redhat.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <55EEDABD.5090305@redhat.com>
+Date: Tue, 8 Sep 2015 14:55:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1440703987-29012-8-git-send-email-lvivier@redhat.com>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.4.164.1, 10.5.101.130]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF39 (Win)/8.0.6_GA_5922)
-Thread-Topic: add macro file for coccinelle
-Thread-Index: JC4wRYFI4j6htFNNaIHSAeCnhYTD5w==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 209.132.183.24
-Cc: qemu-trivial@nongnu.org, peter maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] add macro file for
-	coccinelle
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 7/9] hpet: remove
+	muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,43 +48,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2015 12:45:00 -0000
+X-List-Received-Date: Tue, 08 Sep 2015 12:55:34 -0000
 
-> > +/* From qemu/compiler.h */
-> > +#define QEMU_GNUC_PREREQ(maj, min) 1
-> > +#define QEMU_NORETURN __attribute__ ((__noreturn__))
-> > +#define QEMU_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
-> > +#define QEMU_SENTINEL __attribute__((sentinel))
-> > +#define QEMU_ARTIFICIAL __attribute__((always_inline, artificial))
-> > +#define QEMU_PACKED __attribute__((gcc_struct, packed))
-> > +
-> > +#define cat(x,y) x ## y
-> > +#define cat2(x,y) cat(x,y)
+ping ?
+
+On 27/08/2015 21:33, Laurent Vivier wrote:
+> hpet defines a clock period in femtoseconds but
+> then converts it to nanoseconds to use the internal
+> timers.
 > 
-> Why not reuse glue()?
-
-Because the duplication is already in compiler.h, which should
-use glue() instead of cat2().  Separate patch IMHO, but thanks
-for noticing. :-)
-
-Paolo
-
-> > +#define QEMU_BUILD_BUG_ON(x) \
-> > + typedef char cat2(qemu_build_bug_on__,__LINE__)[(x)?-1:1]
-> > __attribute__((unused));
-> > +
-> > +#define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))
-> > +
-> > +#define xglue(x, y) x ## y
-> > +#define glue(x, y) xglue(x, y)
-> > +#define stringify(s)	tostring(s)
-> > +#define tostring(s)	#s
-> > +
-> > +#define typeof_field(type, field) typeof(((type *)0)->field)
-> > +#define type_check(t1,t2) ((t1*)0 - (t2*)0)
-> > +
-> [...]
+> We can define the period in nanoseconds and use it
+> directly, this allows to remove muldiv64().
 > 
-> Preferably with cat2() replaced by glue():
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> We only need to convert the period to femtoseconds
+> to put it in internal hpet capability register.
+> 
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  hw/timer/hpet.c         | 6 +++---
+>  include/hw/timer/hpet.h | 4 ++--
+>  2 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+> index 2bb6221..3037bef 100644
+> --- a/hw/timer/hpet.c
+> +++ b/hw/timer/hpet.c
+> @@ -126,12 +126,12 @@ static uint32_t hpet_time_after64(uint64_t a, uint64_t b)
+>  
+>  static uint64_t ticks_to_ns(uint64_t value)
+>  {
+> -    return (muldiv64(value, HPET_CLK_PERIOD, FS_PER_NS));
+> +    return value * HPET_CLK_PERIOD;
+>  }
+>  
+>  static uint64_t ns_to_ticks(uint64_t value)
+>  {
+> -    return (muldiv64(value, FS_PER_NS, HPET_CLK_PERIOD));
+> +    return value / HPET_CLK_PERIOD;
+>  }
+>  
+>  static uint64_t hpet_fixup_reg(uint64_t new, uint64_t old, uint64_t mask)
+> @@ -758,7 +758,7 @@ static void hpet_realize(DeviceState *dev, Error **errp)
+>      /* 64-bit main counter; LegacyReplacementRoute. */
+>      s->capability = 0x8086a001ULL;
+>      s->capability |= (s->num_timers - 1) << HPET_ID_NUM_TIM_SHIFT;
+> -    s->capability |= ((HPET_CLK_PERIOD) << 32);
+> +    s->capability |= ((uint64_t)(HPET_CLK_PERIOD * FS_PER_NS) << 32);
+>  
+>      qdev_init_gpio_in(dev, hpet_handle_legacy_irq, 2);
+>      qdev_init_gpio_out(dev, &s->pit_enabled, 1);
+> diff --git a/include/hw/timer/hpet.h b/include/hw/timer/hpet.h
+> index 773953b..d872909 100644
+> --- a/include/hw/timer/hpet.h
+> +++ b/include/hw/timer/hpet.h
+> @@ -16,9 +16,9 @@
+>  #include "qom/object.h"
+>  
+>  #define HPET_BASE               0xfed00000
+> -#define HPET_CLK_PERIOD         10000000ULL /* 10000000 femtoseconds == 10ns*/
+> +#define HPET_CLK_PERIOD         10 /* 10 ns*/
+>  
+> -#define FS_PER_NS 1000000
+> +#define FS_PER_NS 1000000       /* 1000000 femtoseconds == 1 ns */
+>  #define HPET_MIN_TIMERS         3
+>  #define HPET_MAX_TIMERS         32
+>  
+> 
 
