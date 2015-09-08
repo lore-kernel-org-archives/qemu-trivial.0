@@ -1,41 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZZITW-0000NT-JM
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 08:58:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36581)
+	id 1ZZIdD-0008Ug-EB
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 09:08:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZZITL-0000Lm-W9
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:58:13 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZZIdB-0008S8-8j
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 09:08:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZZITI-0008DK-RQ
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:58:03 -0400
-Received: from mx5-phx2.redhat.com ([209.132.183.37]:50194)
+	(envelope-from <armbru@redhat.com>) id 1ZZIdA-0005ph-Cd
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 09:08:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56011)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZZITI-0008D2-JU; Tue, 08 Sep 2015 08:58:00 -0400
-Received: from zmail13.collab.prod.int.phx2.redhat.com
-	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
-	by mx5-phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t88CvxbE063009;
-	Tue, 8 Sep 2015 08:57:59 -0400
-Date: Tue, 8 Sep 2015 08:57:59 -0400 (EDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <1996699172.27374631.1441717079495.JavaMail.zimbra@redhat.com>
-In-Reply-To: <55EEDACB.2040009@redhat.com>
-References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
-	<1440703987-29012-9-git-send-email-lvivier@redhat.com>
-	<55EEDACB.2040009@redhat.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1ZZId6-0005mY-2k; Tue, 08 Sep 2015 09:08:08 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id A83628F301;
+	Tue,  8 Sep 2015 13:08:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t88D85X7015566
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 8 Sep 2015 09:08:07 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5142A300111B; Tue,  8 Sep 2015 15:08:05 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1441621264-23812-1-git-send-email-pbonzini@redhat.com>
+	<87h9n5p3ou.fsf@blackfin.pond.sub.org>
+	<1829681137.27366603.1441716293187.JavaMail.zimbra@redhat.com>
+Date: Tue, 08 Sep 2015 15:08:05 +0200
+In-Reply-To: <1829681137.27366603.1441716293187.JavaMail.zimbra@redhat.com>
+	(Paolo Bonzini's message of "Tue, 8 Sep 2015 08:44:53 -0400 (EDT)")
+Message-ID: <87io7lkqiy.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.4.164.1, 10.5.101.130]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF39 (Win)/8.0.6_GA_5922)
-Thread-Topic: remove muldiv64()
-Thread-Index: uJYEZky5b1ydt58ueA4bvroh76G6+Q==
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.37
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 8/9] bt: remove muldiv64()
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] add macro file for
+	coccinelle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,65 +54,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2015 12:58:13 -0000
+X-List-Received-Date: Tue, 08 Sep 2015 13:08:14 -0000
 
-> ping ?
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-Not really the most alive part of QEMU. :-)
+>> > +/* From qemu/compiler.h */
+>> > +#define QEMU_GNUC_PREREQ(maj, min) 1
+>> > +#define QEMU_NORETURN __attribute__ ((__noreturn__))
+>> > +#define QEMU_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
+>> > +#define QEMU_SENTINEL __attribute__((sentinel))
+>> > +#define QEMU_ARTIFICIAL __attribute__((always_inline, artificial))
+>> > +#define QEMU_PACKED __attribute__((gcc_struct, packed))
+>> > +
+>> > +#define cat(x,y) x ## y
+>> > +#define cat2(x,y) cat(x,y)
+>> 
+>> Why not reuse glue()?
+>
+> Because the duplication is already in compiler.h, which should
+> use glue() instead of cat2().  Separate patch IMHO, but thanks
+> for noticing. :-)
 
-> On 27/08/2015 21:33, Laurent Vivier wrote:
-> > Originally, timers were ticks based, and it made sense to
-> > add ticks to current time to know when to trigger an alarm.
-> > 
-> > But since commit:
-> > 
-> > 7447545 change all other clock references to use nanosecond resolution
-> > accessors
-> > 
-> > All timers use nanoseconds and we need to convert ticks to nanoseconds.
-> > 
-> > As get_ticks_per_sec() is 10^9,
-> > 
-> >     a = muldiv64(b, get_ticks_per_sec(), 100);
-> >     y = muldiv64(x, get_ticks_per_sec(), 1000000);
-> > 
-> > can be converted to
-> > 
-> >     a = b * 10000000;
-> >     y = x * 1000;
-> > 
-> > Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> > ---
-> >  hw/bt/hci.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/hw/bt/hci.c b/hw/bt/hci.c
-> > index 7ea3dc6..585ee2e 100644
-> > --- a/hw/bt/hci.c
-> > +++ b/hw/bt/hci.c
-> > @@ -595,7 +595,7 @@ static void bt_hci_inquiry_result(struct bt_hci_s *hci,
-> >  static void bt_hci_mod_timer_1280ms(QEMUTimer *timer, int period)
-> >  {
-> >      timer_mod(timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-> > -                   muldiv64(period << 7, get_ticks_per_sec(), 100));
-> > +                     (uint64_t)(period << 7) * 10000000);
-> >  }
-> >  
-> >  static void bt_hci_inquiry_start(struct bt_hci_s *hci, int length)
-> > @@ -1099,7 +1099,7 @@ static int bt_hci_mode_change(struct bt_hci_s *hci,
-> > uint16_t handle,
-> >      bt_hci_event_status(hci, HCI_SUCCESS);
-> >  
-> >      timer_mod(link->acl_mode_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)
-> >      +
-> > -                   muldiv64(interval * 625, get_ticks_per_sec(),
-> > 1000000));
-> > +                                    ((uint64_t)interval * 625) * 1000);
-> >      bt_hci_lmp_mode_change_master(hci, link->link, mode, interval);
-> >  
-> >      return 0;
-> > 
-> 
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+The separate patch is commit 24134c4 :)
 
