@@ -1,49 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZZEF0-0006oq-B7
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 04:26:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53397)
+	id 1ZZFCZ-0000H7-Qd
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 05:28:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZZEEx-0006ne-Hy
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 04:26:56 -0400
+	(envelope-from <berrange@redhat.com>) id 1ZZFCT-00007L-A6
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 05:28:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZZEEs-0005WV-Gj
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 04:26:55 -0400
-Received: from mail-yk0-f174.google.com ([209.85.160.174]:35824)
+	(envelope-from <berrange@redhat.com>) id 1ZZFCN-0000tG-W2
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 05:28:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59714)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZZEEs-0005WH-D8
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 04:26:50 -0400
-Received: by ykdu9 with SMTP id u9so31995588ykd.2
-	for <qemu-trivial@nongnu.org>; Tue, 08 Sep 2015 01:26:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=S7V15ElSAklc+WsIpD708PrPQ/UBVNfOEcRsIl4WiKU=;
-	b=Xf5Q5Vl8HuSS/OPy+m92PyFnrmBW/r7OAZxmAqyRM0PNgtTTmKzcpz4mlgQ2ZA/G9p
-	gVSW8YzVqgyZxgVYillJnmbz4J65eIFAK4ymbKFBUIHlTtUmbu4PocLkqI2NoJ0TH6CC
-	088HDgGJncouixj3o2Mf2PJ1dacEpZSZhqa4XZel8DfrhAOuqAHpoXJeG/V6067m3um9
-	LABOVPIA6sH9bdtlWCncSFDuQV3tt6dZl6S2DqYTxRfi8LNTwfOWVazcvnK2BFh9DR12
-	rIyrlTkNy7PeoMGwuW/PRrLBKRZU+o0pnDPRbH5ZbR8MpMvrWYwaiyHcvxKAG7blKcu8
-	RE2A==
-X-Gm-Message-State: ALoCoQmn4voJS6R7c5O3iCC1Vc28slNfyxspQ0UZrHo1urW+qrRpS8YSHIaqIHvEyikQ4CT0FDFZ
-X-Received: by 10.170.133.144 with SMTP id z138mr26273872ykb.111.1441700810003;
-	Tue, 08 Sep 2015 01:26:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.135 with HTTP; Tue, 8 Sep 2015 01:26:30 -0700 (PDT)
-In-Reply-To: <alpine.DEB.2.02.1509072243451.7825@citymarket.hu>
-References: <alpine.DEB.2.02.1508092307540.14941@citymarket.hu>
-	<alpine.DEB.2.02.1509072243451.7825@citymarket.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Sep 2015 09:26:30 +0100
-Message-ID: <CAFEAcA8e8zXxZj09NdJ30CGEYbvsuVvdOy823DiTuaqAuwvR5g@mail.gmail.com>
-To: Veres Lajos <vlajos@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.174
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] typofixes
+	(envelope-from <berrange@redhat.com>)
+	id 1ZZFCI-0000pq-5A; Tue, 08 Sep 2015 05:28:14 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5DF478AE6C;
+	Tue,  8 Sep 2015 09:28:13 +0000 (UTC)
+Received: from dhcp-1-214.lcy.redhat.com (dhcp-1-214.lcy.redhat.com
+	[10.32.224.214])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t889SATu023581; Tue, 8 Sep 2015 05:28:11 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  8 Sep 2015 10:28:08 +0100
+Message-Id: <1441704488-9512-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Subject: [Qemu-trivial] [PATCH repost] gtk: avoid redefining _WIN32_WINNT
+	macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,30 +42,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2015 08:26:56 -0000
+X-List-Received-Date: Tue, 08 Sep 2015 09:28:30 -0000
 
-On 7 September 2015 at 22:45, Veres Lajos <vlajos@gmail.com> wrote:
-> Hi,
->
-> Please find attached a couple of typo fixes, mostly in comments/docs.
-> (Please cc me directly, I am not on the list.)
+When building for Mingw64 target on Fedora 22 a warning
+is issued about _WIN32_WINNT being redefined.
 
-That patch includes at least one change to linux-headers/,
-which is definitely wrong. Typos in the kernel headers need
-to be sent to the kernel list, and we will get them next time
-we do a header sync. It also has a change to disas/libvixl,
-which is also a bit pointless as that is an external project
-which we sync with. Further, it mixes changes to comments and
-docs (totally safe) with changes to code function names etc
-(needs closer review), and it's pretty huge so it's hard to
-review the latter very easily.
+In file included from ui/gtk.c:40:0:
+include/ui/gtk.h:5:0: warning: "_WIN32_WINNT" redefined
+ # define _WIN32_WINNT 0x0601 /* needed to get definition of MAPVK_VK_TO_VSC */
+  ^
+In file included from /usr/i686-w64-mingw32/sys-root/mingw/include/crtdefs.h:10:0,
+                 from /usr/i686-w64-mingw32/sys-root/mingw/include/stdio.h:9,
+                 from /home/berrange/src/virt/qemu/include/qemu/fprintf-fn.h:12,
+                 from /home/berrange/src/virt/qemu/include/qemu-common.h:18,
+                 from ui/gtk.c:37:
+/usr/i686-w64-mingw32/sys-root/mingw/include/_mingw.h:225:0: note: this is the location of the previous definition
+ #define _WIN32_WINNT 0x502
+ ^
 
-MJT: can you drop this patch from the trivial queue, please?
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ include/ui/gtk.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Veres: can you drop the libvixl and linux-headers changes,
-and at least split the remainder into docs/comments vs
-code changes, and resend the patches to qemu-devel, please?
+diff --git a/include/ui/gtk.h b/include/ui/gtk.h
+index ee6dffd..7796231 100644
+--- a/include/ui/gtk.h
++++ b/include/ui/gtk.h
+@@ -2,7 +2,9 @@
+ #define UI_GTK_H
+ 
+ #ifdef _WIN32
+-# define _WIN32_WINNT 0x0601 /* needed to get definition of MAPVK_VK_TO_VSC */
++# ifndef _WIN32_WINNT
++#  define _WIN32_WINNT 0x0601 /* needed to get definition of MAPVK_VK_TO_VSC */
++# endif
+ #endif
+ 
+ #ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
+-- 
+2.4.3
 
-thanks
--- PMM
 
