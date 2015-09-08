@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZZIQx-0006TL-PC
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 08:55:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34475)
+	id 1ZZIRC-0006gv-59
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Sep 2015 08:55:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZZIQu-0006OA-T9
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:33 -0400
+	(envelope-from <lvivier@redhat.com>) id 1ZZIR9-0006fE-Fp
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1ZZIQu-0006ZF-2G
-	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52950)
+	(envelope-from <lvivier@redhat.com>) id 1ZZIR8-0006fF-5z
+	for qemu-trivial@nongnu.org; Tue, 08 Sep 2015 08:55:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lvivier@redhat.com>)
-	id 1ZZIQp-0006YR-NB; Tue, 08 Sep 2015 08:55:27 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 5BD2D8EA2F;
-	Tue,  8 Sep 2015 12:55:27 +0000 (UTC)
+	id 1ZZIR3-0006cU-Lj; Tue, 08 Sep 2015 08:55:41 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F791C0AE692;
+	Tue,  8 Sep 2015 12:55:41 +0000 (UTC)
 Received: from [10.36.5.129] (vpn1-5-129.ams2.redhat.com [10.36.5.129])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t88CtPlO013263; Tue, 8 Sep 2015 08:55:26 -0400
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t88CtdFf032040; Tue, 8 Sep 2015 08:55:40 -0400
 To: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
 References: <1440703987-29012-1-git-send-email-lvivier@redhat.com>
-	<1440703987-29012-8-git-send-email-lvivier@redhat.com>
+	<1440703987-29012-9-git-send-email-lvivier@redhat.com>
 From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <55EEDABD.5090305@redhat.com>
-Date: Tue, 8 Sep 2015 14:55:25 +0200
+Message-ID: <55EEDACB.2040009@redhat.com>
+Date: Tue, 8 Sep 2015 14:55:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.1.0
 MIME-Version: 1.0
-In-Reply-To: <1440703987-29012-8-git-send-email-lvivier@redhat.com>
+In-Reply-To: <1440703987-29012-9-git-send-email-lvivier@redhat.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 7/9] hpet: remove
-	muldiv64()
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 8/9] bt: remove muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,70 +47,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Sep 2015 12:55:34 -0000
+X-List-Received-Date: Tue, 08 Sep 2015 12:55:48 -0000
 
 ping ?
 
 On 27/08/2015 21:33, Laurent Vivier wrote:
-> hpet defines a clock period in femtoseconds but
-> then converts it to nanoseconds to use the internal
-> timers.
+> Originally, timers were ticks based, and it made sense to
+> add ticks to current time to know when to trigger an alarm.
 > 
-> We can define the period in nanoseconds and use it
-> directly, this allows to remove muldiv64().
+> But since commit:
 > 
-> We only need to convert the period to femtoseconds
-> to put it in internal hpet capability register.
+> 7447545 change all other clock references to use nanosecond resolution accessors
+> 
+> All timers use nanoseconds and we need to convert ticks to nanoseconds.
+> 
+> As get_ticks_per_sec() is 10^9,
+> 
+>     a = muldiv64(b, get_ticks_per_sec(), 100);
+>     y = muldiv64(x, get_ticks_per_sec(), 1000000);
+> 
+> can be converted to
+> 
+>     a = b * 10000000;
+>     y = x * 1000;
 > 
 > Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 > ---
->  hw/timer/hpet.c         | 6 +++---
->  include/hw/timer/hpet.h | 4 ++--
->  2 files changed, 5 insertions(+), 5 deletions(-)
+>  hw/bt/hci.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-> index 2bb6221..3037bef 100644
-> --- a/hw/timer/hpet.c
-> +++ b/hw/timer/hpet.c
-> @@ -126,12 +126,12 @@ static uint32_t hpet_time_after64(uint64_t a, uint64_t b)
->  
->  static uint64_t ticks_to_ns(uint64_t value)
+> diff --git a/hw/bt/hci.c b/hw/bt/hci.c
+> index 7ea3dc6..585ee2e 100644
+> --- a/hw/bt/hci.c
+> +++ b/hw/bt/hci.c
+> @@ -595,7 +595,7 @@ static void bt_hci_inquiry_result(struct bt_hci_s *hci,
+>  static void bt_hci_mod_timer_1280ms(QEMUTimer *timer, int period)
 >  {
-> -    return (muldiv64(value, HPET_CLK_PERIOD, FS_PER_NS));
-> +    return value * HPET_CLK_PERIOD;
+>      timer_mod(timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> -                   muldiv64(period << 7, get_ticks_per_sec(), 100));
+> +                     (uint64_t)(period << 7) * 10000000);
 >  }
 >  
->  static uint64_t ns_to_ticks(uint64_t value)
->  {
-> -    return (muldiv64(value, FS_PER_NS, HPET_CLK_PERIOD));
-> +    return value / HPET_CLK_PERIOD;
->  }
+>  static void bt_hci_inquiry_start(struct bt_hci_s *hci, int length)
+> @@ -1099,7 +1099,7 @@ static int bt_hci_mode_change(struct bt_hci_s *hci, uint16_t handle,
+>      bt_hci_event_status(hci, HCI_SUCCESS);
 >  
->  static uint64_t hpet_fixup_reg(uint64_t new, uint64_t old, uint64_t mask)
-> @@ -758,7 +758,7 @@ static void hpet_realize(DeviceState *dev, Error **errp)
->      /* 64-bit main counter; LegacyReplacementRoute. */
->      s->capability = 0x8086a001ULL;
->      s->capability |= (s->num_timers - 1) << HPET_ID_NUM_TIM_SHIFT;
-> -    s->capability |= ((HPET_CLK_PERIOD) << 32);
-> +    s->capability |= ((uint64_t)(HPET_CLK_PERIOD * FS_PER_NS) << 32);
+>      timer_mod(link->acl_mode_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> -                   muldiv64(interval * 625, get_ticks_per_sec(), 1000000));
+> +                                    ((uint64_t)interval * 625) * 1000);
+>      bt_hci_lmp_mode_change_master(hci, link->link, mode, interval);
 >  
->      qdev_init_gpio_in(dev, hpet_handle_legacy_irq, 2);
->      qdev_init_gpio_out(dev, &s->pit_enabled, 1);
-> diff --git a/include/hw/timer/hpet.h b/include/hw/timer/hpet.h
-> index 773953b..d872909 100644
-> --- a/include/hw/timer/hpet.h
-> +++ b/include/hw/timer/hpet.h
-> @@ -16,9 +16,9 @@
->  #include "qom/object.h"
->  
->  #define HPET_BASE               0xfed00000
-> -#define HPET_CLK_PERIOD         10000000ULL /* 10000000 femtoseconds == 10ns*/
-> +#define HPET_CLK_PERIOD         10 /* 10 ns*/
->  
-> -#define FS_PER_NS 1000000
-> +#define FS_PER_NS 1000000       /* 1000000 femtoseconds == 1 ns */
->  #define HPET_MIN_TIMERS         3
->  #define HPET_MAX_TIMERS         32
->  
+>      return 0;
 > 
 
