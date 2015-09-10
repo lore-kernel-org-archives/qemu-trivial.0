@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZZxzq-0000zJ-24
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2015 05:18:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37635)
+	id 1ZZy8Z-0006J8-5l
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Sep 2015 05:27:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40398)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ZZxzh-0000lY-RB
-	for qemu-trivial@nongnu.org; Thu, 10 Sep 2015 05:18:19 -0400
+	(envelope-from <mst@redhat.com>) id 1ZZy8U-0006AN-5Z
+	for qemu-trivial@nongnu.org; Thu, 10 Sep 2015 05:27:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1ZZxzg-0004an-Lx
-	for qemu-trivial@nongnu.org; Thu, 10 Sep 2015 05:18:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39080)
+	(envelope-from <mst@redhat.com>) id 1ZZy8T-0001u5-3G
+	for qemu-trivial@nongnu.org; Thu, 10 Sep 2015 05:27:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47216)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1ZZxza-0004ZV-DH; Thu, 10 Sep 2015 05:18:06 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id E9FAFC0AA273;
-	Thu, 10 Sep 2015 09:18:05 +0000 (UTC)
+	id 1ZZy8Q-0001sZ-S0; Thu, 10 Sep 2015 05:27:15 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F655A2C16;
+	Thu, 10 Sep 2015 09:27:14 +0000 (UTC)
 Received: from redhat.com (ovpn-116-92.ams2.redhat.com [10.36.116.92])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id t8A9I370019822; Thu, 10 Sep 2015 05:18:04 -0400
-Date: Thu, 10 Sep 2015 12:18:03 +0300
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id t8A9RCiM028320; Thu, 10 Sep 2015 05:27:12 -0400
+Date: Thu, 10 Sep 2015 12:27:11 +0300
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Message-ID: <1441876643-7467-8-git-send-email-mst@redhat.com>
@@ -29,7 +29,7 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1441876643-7467-1-git-send-email-mst@redhat.com>
 X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -47,7 +47,8 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Sep 2015 09:18:19 -0000
+X-List-Received-Date: Thu, 10 Sep 2015 09:27:21 -0000
+Message-ID: <20150910092711._3pAPA6g9FYXAIb-GPoKCDJmOQpP_5ySXOTw4gyDhMs@z>
 
 From: Laszlo Ersek <lersek@redhat.com>
 
@@ -117,5 +118,6 @@ index 0a82f0c..1684a95 100644
  pcnet_s_reset(void *s) "s=%p"
 -- 
 MST
+
 
 
