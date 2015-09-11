@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaNL7-0006rT-6w
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 08:22:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49137)
+	id 1ZaNL3-0006jN-AG
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 08:21:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaNL1-0006ft-8u
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:58 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKy-0006bH-Av
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKx-0000SH-71
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:55 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46896)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKx-0000SM-AL
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:52 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58692)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaNKs-0000MN-D0; Fri, 11 Sep 2015 08:21:46 -0400
+	id 1ZaNKs-0000MO-Cx; Fri, 11 Sep 2015 08:21:46 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 478F34143E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 33B63413F3;
 	Fri, 11 Sep 2015 15:21:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id E5ADDA65;
-	Fri, 11 Sep 2015 14:03:52 +0300 (MSK)
-Received: (nullmailer pid 22768 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id CB757A87;
+	Fri, 11 Sep 2015 14:03:54 +0300 (MSK)
+Received: (nullmailer pid 22791 invoked by uid 1000);
 	Fri, 11 Sep 2015 11:03:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 11 Sep 2015 14:03:32 +0300
-Message-Id: <1618d2ae7f1728ea26fa38cb661253f134d389ed.1441969369.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 14:03:43 +0300
+Message-Id: <76621d1faa25405ab13cfe73890f9069b2890ed4.1441969369.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 References: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	"Daniel P. Berrange" <berrange@redhat.com>
-Subject: [Qemu-trivial] [PULL 08/26] maint: remove unused include for
-	signal.h
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 19/26] disas/microblaze: Remove unused code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,149 +43,182 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 12:21:59 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 12:21:53 -0000
 
-From: "Daniel P. Berrange" <berrange@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-A number of files were including signal.h but not using any
-of the functions it provides
-
-Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- bsd-user/signal.c       | 1 -
- hw/block/xen_disk.c     | 1 -
- hw/net/xen_nic.c        | 1 -
- hw/usb/redirect.c       | 1 -
- os-win32.c              | 1 -
- target-i386/translate.c | 1 -
- target-mips/helper.c    | 1 -
- target-sh4/helper.c     | 1 -
- target-tricore/helper.c | 1 -
- tests/tcg/testthread.c  | 1 -
- 10 files changed, 10 deletions(-)
+ disas/microblaze.c | 150 -----------------------------------------------------
+ 1 file changed, 150 deletions(-)
 
-diff --git a/bsd-user/signal.c b/bsd-user/signal.c
-index 445f69e..e4ee2d0 100644
---- a/bsd-user/signal.c
-+++ b/bsd-user/signal.c
-@@ -21,7 +21,6 @@
- #include <string.h>
- #include <stdarg.h>
- #include <unistd.h>
--#include <signal.h>
- #include <errno.h>
+diff --git a/disas/microblaze.c b/disas/microblaze.c
+index 92cd4b1..5d15907 100644
+--- a/disas/microblaze.c
++++ b/disas/microblaze.c
+@@ -603,25 +603,6 @@ char * get_field_special (long instr, struct op_code_struct * op);
+ unsigned long read_insn_microblaze (bfd_vma memaddr, 
+ 		      struct disassemble_info *info,
+ 		      struct op_code_struct **opr);
+-enum microblaze_instr get_insn_microblaze (long inst,
+-  		     bfd_boolean *isunsignedimm,
+-  		     enum microblaze_instr_type *insn_type,
+-  		     short *delay_slots);
+-short get_delay_slots_microblaze (long inst);
+-enum microblaze_instr microblaze_decode_insn (long insn,
+-		        int *rd, 
+-			int *ra, 
+-			int *rb, 
+-			int *imm);
+-unsigned long
+-microblaze_get_target_address (long inst,
+-			       bfd_boolean immfound,
+-			       int immval,
+-			       long pcval,
+-			       long r1val,
+-			       long r2val,
+-			       bfd_boolean *targetvalid,
+-			       bfd_boolean *unconditionalbranch);
  
- #include "qemu.h"
-diff --git a/hw/block/xen_disk.c b/hw/block/xen_disk.c
-index 267d8a8..36d7398 100644
---- a/hw/block/xen_disk.c
-+++ b/hw/block/xen_disk.c
-@@ -24,7 +24,6 @@
- #include <stdarg.h>
- #include <string.h>
- #include <unistd.h>
--#include <signal.h>
- #include <inttypes.h>
- #include <time.h>
- #include <fcntl.h>
-diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
-index d7cbfc1..0da16b4 100644
---- a/hw/net/xen_nic.c
-+++ b/hw/net/xen_nic.c
-@@ -24,7 +24,6 @@
- #include <stdarg.h>
- #include <string.h>
- #include <unistd.h>
--#include <signal.h>
- #include <inttypes.h>
- #include <fcntl.h>
- #include <errno.h>
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 34cf60d..38086cd 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -34,7 +34,6 @@
- #include "sysemu/char.h"
- 
- #include <sys/ioctl.h>
--#include <signal.h>
- #include <usbredirparser.h>
- #include <usbredirfilter.h>
- 
-diff --git a/os-win32.c b/os-win32.c
-index c0daf8e..cc09196 100644
---- a/os-win32.c
-+++ b/os-win32.c
-@@ -26,7 +26,6 @@
- #include <mmsystem.h>
- #include <unistd.h>
- #include <fcntl.h>
--#include <signal.h>
- #include <time.h>
- #include <errno.h>
- #include <sys/time.h>
-diff --git a/target-i386/translate.c b/target-i386/translate.c
-index 82e2245..b1a5ad9 100644
---- a/target-i386/translate.c
-+++ b/target-i386/translate.c
-@@ -21,7 +21,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "qemu/host-utils.h"
- #include "cpu.h"
-diff --git a/target-mips/helper.c b/target-mips/helper.c
-index f44edbb..37bba67 100644
---- a/target-mips/helper.c
-+++ b/target-mips/helper.c
-@@ -21,7 +21,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- #include "sysemu/kvm.h"
-diff --git a/target-sh4/helper.c b/target-sh4/helper.c
-index a533f08..dc101cb 100644
---- a/target-sh4/helper.c
-+++ b/target-sh4/helper.c
-@@ -21,7 +21,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- 
-diff --git a/target-tricore/helper.c b/target-tricore/helper.c
-index f52504c..1808b28 100644
---- a/target-tricore/helper.c
-+++ b/target-tricore/helper.c
-@@ -20,7 +20,6 @@
- #include <stdio.h>
- #include <string.h>
- #include <inttypes.h>
--#include <signal.h>
- 
- #include "cpu.h"
- 
-diff --git a/tests/tcg/testthread.c b/tests/tcg/testthread.c
-index 2679af1..810ba5d 100644
---- a/tests/tcg/testthread.c
-+++ b/tests/tcg/testthread.c
-@@ -2,7 +2,6 @@
- #include <stdlib.h>
- #include <stdio.h>
- #include <string.h>
--#include <signal.h>
- #include <unistd.h>
- #include <inttypes.h>
- #include <pthread.h>
+ static char *
+ get_field (long instr, long mask, unsigned short low)
+@@ -967,134 +948,3 @@ print_insn_microblaze (bfd_vma memaddr, struct disassemble_info * info)
+   /* Say how many bytes we consumed? */
+   return 4;
+ }
+-
+-enum microblaze_instr
+-get_insn_microblaze (long inst,
+-  		     bfd_boolean *isunsignedimm,
+-  		     enum microblaze_instr_type *insn_type,
+-  		     short *delay_slots)
+-{
+-  struct op_code_struct * op;
+-  *isunsignedimm = FALSE;
+-
+-  /* Just a linear search of the table.  */
+-  for (op = opcodes; op->name != 0; op ++)
+-    if (op->bit_sequence == (inst & op->opcode_mask))
+-      break;
+-
+-  if (op->name == 0)
+-    return invalid_inst;
+-  else {
+-    *isunsignedimm = (op->inst_type == INST_TYPE_RD_R1_UNSIGNED_IMM);
+-    *insn_type = op->instr_type;
+-    *delay_slots = op->delay_slots;
+-    return op->instr;
+-  }
+-}
+-
+-short
+-get_delay_slots_microblaze (long inst)
+-{
+-  bfd_boolean isunsignedimm;
+-  enum microblaze_instr_type insn_type;
+-  enum microblaze_instr op;
+-  short delay_slots;
+-
+-  op = get_insn_microblaze( inst, &isunsignedimm, &insn_type, &delay_slots);
+-  if (op == invalid_inst)
+-    return 0;
+-  else 
+-    return delay_slots;
+-}
+-
+-enum microblaze_instr
+-microblaze_decode_insn (long insn,
+-		        int *rd, 
+-			int *ra, 
+-			int *rb, 
+-			int *imm)
+-{
+-  enum microblaze_instr op;
+-  bfd_boolean t1;
+-  enum microblaze_instr_type t2;
+-  short t3;
+-
+-  op = get_insn_microblaze(insn, &t1, &t2, &t3);
+-  *rd = (insn & RD_MASK) >> RD_LOW;
+-  *ra = (insn & RA_MASK) >> RA_LOW;
+-  *rb = (insn & RB_MASK) >> RB_LOW;
+-  t3 = (insn & IMM_MASK) >> IMM_LOW;
+-  *imm = (int) t3;
+-  return (op);
+-}
+-
+-unsigned long
+-microblaze_get_target_address (long inst,
+-			       bfd_boolean immfound,
+-			       int immval,
+-			       long pcval,
+-			       long r1val,
+-			       long r2val,
+-			       bfd_boolean *targetvalid,
+-			       bfd_boolean *unconditionalbranch)
+-{
+-  struct op_code_struct * op;
+-  long targetaddr = 0;
+-
+-  *unconditionalbranch = FALSE;
+-  /* Just a linear search of the table.  */
+-  for (op = opcodes; op->name != 0; op ++)
+-    if (op->bit_sequence == (inst & op->opcode_mask))
+-      break;
+-
+-  if (op->name == 0) {
+-    *targetvalid = FALSE;
+-  } else if (op->instr_type == branch_inst) {
+-    switch (op->inst_type) {
+-    case INST_TYPE_R2:
+-      *unconditionalbranch = TRUE;
+-      /* fallthru */
+-    case INST_TYPE_RD_R2:
+-    case INST_TYPE_R1_R2:
+-      targetaddr = r2val;
+-      *targetvalid = TRUE;
+-      if (op->inst_offset_type == INST_PC_OFFSET)
+-	targetaddr += pcval;
+-      break;
+-    case INST_TYPE_IMM:
+-      *unconditionalbranch = TRUE;
+-      /* fallthru */
+-    case INST_TYPE_RD_IMM:
+-    case INST_TYPE_R1_IMM:
+-      if (immfound) {
+-	targetaddr = (immval << 16) & 0xffff0000;
+-	targetaddr |= (get_int_field_imm(inst) & 0x0000ffff);
+-      } else {
+-	targetaddr = get_int_field_imm(inst);
+-	if (targetaddr & 0x8000)
+-	  targetaddr |= 0xFFFF0000;
+-      }
+-      if (op->inst_offset_type == INST_PC_OFFSET)
+-	targetaddr += pcval;
+-      *targetvalid = TRUE;
+-      break;
+-    default:
+-      *targetvalid = FALSE;
+-      break;
+-    }
+-  } else if (op->instr_type == return_inst) {
+-      if (immfound) {
+-	targetaddr = (immval << 16) & 0xffff0000;
+-	targetaddr |= (get_int_field_imm(inst) & 0x0000ffff);
+-      } else {
+-	targetaddr = get_int_field_imm(inst);
+-	if (targetaddr & 0x8000)
+-	  targetaddr |= 0xFFFF0000;
+-      }
+-      targetaddr += r1val;
+-      *targetvalid = TRUE;
+-  } else {
+-    *targetvalid = FALSE;
+-  }
+-  return targetaddr;
+-}
 -- 
 2.1.4
 
