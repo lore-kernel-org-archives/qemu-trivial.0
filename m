@@ -1,44 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaOaR-0005ZA-0C
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 09:41:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41960)
+	id 1ZaOzQ-0004Lw-Tt
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 10:07:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZaOaO-0005Wp-Th
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 09:41:53 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1ZaOzO-0004Li-Tj
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 10:07:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZaOaO-0000MS-0i
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 09:41:52 -0400
-Received: from mx2.suse.de ([195.135.220.15]:55017)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZaOzK-0005oR-Tf
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 10:07:42 -0400
+Received: from mail-wi0-f169.google.com ([209.85.212.169]:33860)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1ZaOaJ-0000KP-Rw; Fri, 11 Sep 2015 09:41:47 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 52F58ADD0;
-	Fri, 11 Sep 2015 13:41:47 +0000 (UTC)
+	(envelope-from <alex.bennee@linaro.org>) id 1ZaOzK-0005oE-NX
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 10:07:38 -0400
+Received: by wicfx3 with SMTP id fx3so65633497wic.1
+	for <qemu-trivial@nongnu.org>; Fri, 11 Sep 2015 07:07:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-type:content-transfer-encoding;
+	bh=BKoZSfZNVGLuGqp4w3WW4dA7YDNI/GHsfHR6j6NAsA4=;
+	b=D78QdZbZyqZvGhgPIGksC5Ku2rsCidpd4jHggI1QGsKxSspiD+g6BcxHd0x41U+OcU
+	3oUyNf6oYG19OTOGZ4E1sIziVOY7+oPrnzbFWls/oLHSVceBVHHYjinoie9qGiSUTzbT
+	zZ0aAEqpku5/KJ/6VcbOD58E6dcBrySMBWsfj6UVRFiu+AcBBBM0su0ztPz3tvbxkAr1
+	htfgFDAYlTNsItMHNz1eQwV66OJLFcb3TjE4TIeinwHbvGnV0AZ2xpbf8PBs+HrtMotF
+	VYgY3y31aOlM5EnW3V1krl9cS4JTqmob1Vtu3FY0V0sfQ0Y369UuBY3neuTP3V74OkBp
+	eHyQ==
+X-Gm-Message-State: ALoCoQnH3lcToWAaSlvyTrUV9AfgRM/BqAggUXTk5cUz/SD7Dga9ZD4pckqzCIopxTUWbkZi/iEr
+X-Received: by 10.194.111.232 with SMTP id il8mr82151516wjb.117.1441980457672; 
+	Fri, 11 Sep 2015 07:07:37 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id cm6sm836706wib.22.2015.09.11.07.07.36
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 11 Sep 2015 07:07:37 -0700 (PDT)
+Received: from zen.linaro.local (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 6BADA3E0218;
+	Fri, 11 Sep 2015 15:07:36 +0100 (BST)
+References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
+	<55F2889B.4040109@msgid.tls.msk.ru>
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
-	<1431397521-2316-2-git-send-email-shannon.zhao@linaro.org>
-	<55F28A17.3080800@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-Message-ID: <55F2DA1B.2040502@suse.de>
-Date: Fri, 11 Sep 2015 15:41:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+In-reply-to: <55F2889B.4040109@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 15:07:36 +0100
+Message-ID: <87pp1p82xj.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <55F28A17.3080800@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
-	shannon.zhao@linaro.org, zhaoshenglong@huawei.com,
-	christoffer.dall@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/6]
- hw/s390x/s390-virtio-bus: Remove meaningless blank Property
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.212.169
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, crosthwaitepeter@gmail.com,
+	qemu-devel@nongnu.org, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH v4 00/11] qemu-log,
+	perfmap and other logging tweaks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,23 +63,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 13:41:53 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 14:07:43 -0000
 
-Michael,
 
-Am 11.09.2015 um 10:00 schrieb Michael Tokarev:
-> Applied (finally!) to -trivial, without already fixed -net and -scsi bi=
-ts.
-> Thanks!
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-Can you please tweak the subjects? I found "blank Property" a very
-troubling thing to read. In fact it's an empty Property[] array.
+> 03.08.2015 12:14, Alex Bennée wrote:
+>> Hi,
+>> 
+>> This is mostly just a re-base to keep current with master. I've added
+>> a couple of outstanding s-o-b and r-b tags. There are also two new
+>> patches in this series which seemed to be worth keeping together:
+>> 
+>>  - a simple patch to dump invocation info in the log
+>>  - the cputlb logging clean-up posted as an RFC last month
+>> 
+>> Could folks interested in TCG stuff have a look over the light
+>> re-factor and perf map patches please?
+>> 
+>> It would be nice to get these in the next cycle but I'm unsure who's
+>> tree I should be targeting? Most of the top level files touched
+>> (cputlb, translate-all, qemu-log) just have the list marked as the
+>> maintainer ;-)
+>
+> With this many review comments and somewhat hot discussion about some
+> patches, I think I have a good excuse to not apply this series
+> to qemu-tivial tree ;)
 
-Thanks,
-Andreas
+Yeah makes sense. I'll do a re-spin and probably drop the perfmap stuff
+for now. There is a proposal for better JIT tracking in perf for JAVA so
+I suspect we should target that.
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
+It's a handy patch to keep around for your own analysis though ;-)
+
+>
+> Keep up the good work please!
+>
+> /mjt
+
+-- 
+Alex Bennée
 
