@@ -1,39 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaMiT-00015Q-Bq
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:42:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38659)
+	id 1ZaMiU-00017b-IV
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:42:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaMiQ-00010h-QF
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:42:03 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaMiO-0000uM-4N
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:42:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaMiN-0004vm-LN
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:42:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53773)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaMiK-0004vL-9a
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:42:00 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56698)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaMiC-0004sA-7M; Fri, 11 Sep 2015 07:41:48 -0400
+	id 1ZaMiC-0004sD-7P; Fri, 11 Sep 2015 07:41:48 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0330A4143D;
-	Fri, 11 Sep 2015 14:41:46 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id EB58D4143B;
+	Fri, 11 Sep 2015 14:41:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 90179A84;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 71617A83;
 	Fri, 11 Sep 2015 14:03:54 +0300 (MSK)
-Received: (nullmailer pid 22799 invoked by uid 1000);
+Received: (nullmailer pid 22785 invoked by uid 1000);
 	Fri, 11 Sep 2015 11:03:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 11 Sep 2015 14:03:47 +0300
-Message-Id: <6328d69de09243929d90665eb6a6e0c96c4d06fc.1441969369.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 14:03:40 +0300
+Message-Id: <70cbae1dd85c9b4bb7c42bb282baacaaed0dd9bd.1441969369.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 References: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: [Qemu-trivial] [PULL 23/26] hw/virtio/virtio-pci: Remove
-	meaningless blank Property
+Cc: qemu-trivial@nongnu.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Michael Tokarev <mjt@tls.msk.ru>, Samuel Thibault <samuel.thibault@gnu.org>
+Subject: [Qemu-trivial] [PULL 16/26] baum: Fix build with debugging enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,40 +43,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 11:42:04 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 11:42:05 -0000
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+From: Samuel Thibault <samuel.thibault@gnu.org>
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+cur and buf are pointers, so the difference is a ptrdiff_t
+
+Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/virtio/virtio-pci.c | 5 -----
- 1 file changed, 5 deletions(-)
+ backends/baum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index 43b300f..eda8205 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -2007,10 +2007,6 @@ static const TypeInfo virtio_net_pci_info = {
+diff --git a/backends/baum.c b/backends/baum.c
+index a69aaff..a17f625 100644
+--- a/backends/baum.c
++++ b/backends/baum.c
+@@ -303,7 +303,7 @@ static int baum_eat_packet(BaumDriverState *baum, const uint8_t *buf, int len)
+                 return 0;
+             cur++;
+         }
+-        DPRINTF("Dropped %d bytes!\n", cur - buf);
++        DPRINTF("Dropped %td bytes!\n", cur - buf);
+     }
  
- /* virtio-rng-pci */
- 
--static Property virtio_rng_pci_properties[] = {
--    DEFINE_PROP_END_OF_LIST(),
--};
--
- static void virtio_rng_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
- {
-     VirtIORngPCI *vrng = VIRTIO_RNG_PCI(vpci_dev);
-@@ -2037,7 +2033,6 @@ static void virtio_rng_pci_class_init(ObjectClass *klass, void *data)
- 
-     k->realize = virtio_rng_pci_realize;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
--    dc->props = virtio_rng_pci_properties;
- 
-     pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
-     pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_RNG;
+ #define EAT(c) do {\
 -- 
 2.1.4
 
