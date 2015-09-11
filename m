@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaJaK-0007mT-W7
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 04:21:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55781)
+	id 1ZaKPD-0001JZ-2o
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 05:14:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaJaI-0007je-8E
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:21:26 -0400
+	(envelope-from <kraxel@redhat.com>) id 1ZaKPA-0001Gb-E0
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 05:14:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaJaH-0002ex-Cy
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:21:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54174)
+	(envelope-from <kraxel@redhat.com>) id 1ZaKP9-0005LG-P2
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 05:14:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56492)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaJaC-0002Zk-UT; Fri, 11 Sep 2015 04:21:21 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E771C41420;
-	Fri, 11 Sep 2015 11:21:18 +0300 (MSK)
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id D2AA8A52;
-	Fri, 11 Sep 2015 11:21:18 +0300 (MSK)
-Message-ID: <55F28EFE.6030109@msgid.tls.msk.ru>
-Date: Fri, 11 Sep 2015 11:21:18 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
-MIME-Version: 1.0
-To: shannon.zhao@linaro.org, qemu-devel@nongnu.org
-References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
-	<1431397521-2316-7-git-send-email-shannon.zhao@linaro.org>
-In-Reply-To: <1431397521-2316-7-git-send-email-shannon.zhao@linaro.org>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
+	(envelope-from <kraxel@redhat.com>)
+	id 1ZaKP5-0005JT-Od; Fri, 11 Sep 2015 05:13:55 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 58160550CC;
+	Fri, 11 Sep 2015 09:13:55 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-57.ams2.redhat.com
+	[10.36.116.57])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t8B9DrTA020128; Fri, 11 Sep 2015 05:13:54 -0400
+Message-ID: <1441962833.29362.16.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Date: Fri, 11 Sep 2015 11:13:53 +0200
+In-Reply-To: <55F2830C.1000308@msgid.tls.msk.ru>
+References: <1436788726-20590-1-git-send-email-kraxel@redhat.com>
+	<55F2830C.1000308@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
-	peter.huangpeng@huawei.com, zhaoshenglong@huawei.com,
-	christoffer.dall@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH 6/6] Add comma after
-	DEFINE_PROP_END_OF_LIST()
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] virtio-vga: enable for i386
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,18 +47,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 08:21:27 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 09:14:01 -0000
 
-12.05.2015 05:25, shannon.zhao@linaro.org wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
-[]
-> -    DEFINE_PROP_END_OF_LIST()
-> +    DEFINE_PROP_END_OF_LIST(),
-[]
+On Fr, 2015-09-11 at 10:30 +0300, Michael Tokarev wrote:
+> 13.07.2015 14:58, Gerd Hoffmann wrote:
+> > Cc: Paolo Bonzini <pbonzini@redhat.com>
+> > Cc: qemu-trivial@nongnu.org
+> > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> 
+> Gerd, -trivial received 3 patches like this enabling various virtio
+> bits for various architectures.  I never got any reviewed-by or ACK
+> on these patches, so they're not applied still.  Maybe you can add
+> some explanation as to why you think it's a good idea, or else it
+> doesn't seem like a trivial change? :)
 
-I don't see a reason doing this.
+This one just syncs x86_64 and i386.  Dunno about the other ones, have a
+pointer?
 
-Thanks,
+cheers,
+  Gerd
 
-/mjt
+
 
