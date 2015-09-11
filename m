@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaMIM-0001wC-Ac
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:15:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60281)
+	id 1ZaMOz-0005e4-VN
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:21:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZaMIK-0001rH-0L
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:15:04 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaMOv-0005Uv-0l
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:21:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZaMIJ-0006VQ-0j
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:15:03 -0400
-Received: from mx2.suse.de ([195.135.220.15]:41360)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaMOu-00027A-5d
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:21:53 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:41481)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1ZaMID-0006Rl-Sn; Fri, 11 Sep 2015 07:14:58 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 5B1EDADD0;
-	Fri, 11 Sep 2015 11:14:55 +0000 (UTC)
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1441400485-29167-1-git-send-email-marcandre.lureau@redhat.com>
-	<55EDB16B.6080205@suse.de> <55F2A942.4040500@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-Message-ID: <55F2B7AF.1060306@suse.de>
-Date: Fri, 11 Sep 2015 13:14:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <55F2A942.4040500@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] qom/object.h: remove some child/parent
-	doc
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZaMOq-00022h-D0; Fri, 11 Sep 2015 07:21:48 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 12D574143D;
+	Fri, 11 Sep 2015 14:21:46 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 06142A66;
+	Fri, 11 Sep 2015 14:03:53 +0300 (MSK)
+Received: (nullmailer pid 22758 invoked by uid 1000);
+	Fri, 11 Sep 2015 11:03:51 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Fri, 11 Sep 2015 14:03:27 +0300
+Message-Id: <fee562e9e41290a22623de83b673a8929ec5280d.1441969369.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
+References: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 03/26] i6300esb: fix timer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,59 +43,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 11:15:05 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 11:21:54 -0000
 
-Am 11.09.2015 um 12:13 schrieb Michael Tokarev:
-> 07.09.2015 18:46, Andreas F=C3=A4rber wrote:
->> Am 04.09.2015 um 23:01 schrieb marcandre.lureau@redhat.com:
->>> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->>>
->>> It looks like this documentation is obsolete: a child object may look=
-up
->>> its parent stored in the Object struct.
->>>
->>> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->>> ---
->>>  include/qom/object.h | 3 ---
->>>  1 file changed, 3 deletions(-)
->>
->> Either once again you are trying to do stuff behind my back, or your
->> setup is really broken: I double-checked that include/qom/ is listed i=
-n
->> MAINTAINERS, so I should've been CC'ed rather than just -trivial.
->>
->> It's been a valid rule not to mess with these internal fields, therefo=
-re
->> this is not trivial at all, and that's one reason why my x86 CPU serie=
-s
->> using it was an RFC. We should either come up with a proper wrapper
->> function object_get_parent(), or with a wrapper function adding a link=
-<>
->> property (where we would need to be careful with ref counts) - long ti=
-me
->> only the composition tree needed to mess with an object's parent.
->>
->> If you have a concrete use case of parent access, please point to it.
->=20
-> So, should the current documentation remain, or should the patch be
-> applied?  If the latter, Andreas, please take care of it.
+From: Laurent Vivier <lvivier@redhat.com>
 
-This patch should not be applied, NACK.
+We use muldiv64() to compute the time to wait:
 
-I outlined ideas for a v2 series above though.
+    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
 
-Thanks,
-Andreas
+but get_ticks_per_sec() is 10^9 (30 bit value) and timeout
+is a 35 bit value.
 
->=20
-> Thanks,
->=20
-> /mjt
->=20
+Whereas muldiv64 is:
 
+    uint64_t muldiv64(uint64_t a, uint32_t b, uint32_t c)
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=
-=C3=BCrnberg)
+So we loose 3 bits of timeout.
+
+Swapping get_ticks_per_sec() and timeout fixes it.
+
+We can also replace it by a multiplication by 30 ns,
+but this changes PCI clock frequency from 33MHz to 33.333333MHz
+and we need to do this on all the QEMU PCI devices (later...)
+
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/watchdog/wdt_i6300esb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index cfa2b1b..3e07d44 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -136,7 +136,7 @@ static void i6300esb_restart_timer(I6300State *d, int stage)
+      * multiply here can exceed 64-bits, before we divide by 33MHz, so
+      * we use a higher-precision intermediate result.
+      */
+-    timeout = muldiv64(get_ticks_per_sec(), timeout, 33000000);
++    timeout = muldiv64(timeout, get_ticks_per_sec(), 33000000);
+ 
+     i6300esb_debug("stage %d, timeout %" PRIi64 "\n", d->stage, timeout);
+ 
+-- 
+2.1.4
+
 
