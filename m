@@ -1,37 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaNL2-0006iX-F7
+	id 1ZaNL2-0006jA-TN
 	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 08:21:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49042)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKx-0006bE-MY
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKx-0006bF-NH
 	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKw-0000S8-V8
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaNKw-0000S3-Us
 	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 08:21:51 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48236)
+Received: from isrv.corpit.ru ([86.62.121.231]:51688)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaNKs-0000MQ-D2; Fri, 11 Sep 2015 08:21:46 -0400
+	id 1ZaNKs-0000MP-Cz; Fri, 11 Sep 2015 08:21:46 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 53D3C41440;
+	by isrv.corpit.ru (Postfix) with ESMTP id 4B2A74143F;
 	Fri, 11 Sep 2015 15:21:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 19DA0A67;
-	Fri, 11 Sep 2015 14:03:53 +0300 (MSK)
-Received: (nullmailer pid 22756 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 17B69A81;
+	Fri, 11 Sep 2015 14:03:54 +0300 (MSK)
+Received: (nullmailer pid 22797 invoked by uid 1000);
 	Fri, 11 Sep 2015 11:03:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 11 Sep 2015 14:03:26 +0300
-Message-Id: <6883de6c9b647d5629ffe131ed5d97c06bb0db1a.1441969369.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 14:03:46 +0300
+Message-Id: <01630e24b0993adb4874b5416e897646c964bb8f.1441969369.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 References: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Andrey Korolyov <andrey@xdel.ru>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 02/26] Trivial: fix commandline help message
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: [Qemu-trivial] [PULL 22/26] hw/s390x/s390-virtio-bus: Remove
+	meaningless blank Property
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,29 +47,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 11 Sep 2015 12:21:52 -0000
 
-From: Andrey Korolyov <andrey@xdel.ru>
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Fix obvious typo in printed help for qemu-nbd.
-
-Signed-off-by: Andrey Korolyov <andrey@xdel.ru>
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Acked-by: Cornelia Huck <cornelia.huck@de.ibm.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-nbd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/s390x/s390-virtio-bus.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/qemu-nbd.c b/qemu-nbd.c
-index d9644b2..9518b75 100644
---- a/qemu-nbd.c
-+++ b/qemu-nbd.c
-@@ -102,7 +102,7 @@ static void usage(const char *name)
- "      --aio=MODE            set AIO mode (native or threads)\n"
- #endif
- "      --discard=MODE        set discard mode (ignore, unmap)\n"
--"      --detect-zeroes=MODE  set detect-zeroes mode (off, on, discard)\n"
-+"      --detect-zeroes=MODE  set detect-zeroes mode (off, on, unmap)\n"
- "\n"
- "Report bugs to <qemu-devel@nongnu.org>\n"
-     , name, NBD_DEFAULT_PORT, "DEVICE");
+diff --git a/hw/s390x/s390-virtio-bus.c b/hw/s390x/s390-virtio-bus.c
+index 77aec8a..98cb129 100644
+--- a/hw/s390x/s390-virtio-bus.c
++++ b/hw/s390x/s390-virtio-bus.c
+@@ -577,17 +577,12 @@ static const TypeInfo s390_virtio_blk = {
+     .class_init    = s390_virtio_blk_class_init,
+ };
+ 
+-static Property s390_virtio_serial_properties[] = {
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+ static void s390_virtio_serial_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     VirtIOS390DeviceClass *k = VIRTIO_S390_DEVICE_CLASS(klass);
+ 
+     k->realize = s390_virtio_serial_realize;
+-    dc->props = s390_virtio_serial_properties;
+     set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+ }
+ 
 -- 
 2.1.4
 
