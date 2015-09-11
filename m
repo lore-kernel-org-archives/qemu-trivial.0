@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaM7m-0004uR-Fs
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:04:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57783)
+	id 1ZaM7g-0004iU-43
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 07:04:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaM7f-0004gx-De
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:04:04 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaM7c-0004cD-7H
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:04:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaM7e-0006tq-Ch
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:04:03 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:43172)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaM7b-0006s6-7g
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 07:04:00 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37661)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaM7W-0006os-2B; Fri, 11 Sep 2015 07:03:54 -0400
+	id 1ZaM7W-0006pW-SD; Fri, 11 Sep 2015 07:03:55 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 29B3441439;
+	by isrv.corpit.ru (Postfix) with ESMTP id 6ED1A4143C;
 	Fri, 11 Sep 2015 14:03:52 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id EFCA6A59;
-	Fri, 11 Sep 2015 14:03:51 +0300 (MSK)
-Received: (nullmailer pid 22782 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 46C6BA52;
+	Fri, 11 Sep 2015 14:03:52 +0300 (MSK)
+Received: (nullmailer pid 22770 invoked by uid 1000);
 	Fri, 11 Sep 2015 11:03:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri, 11 Sep 2015 14:03:39 +0300
-Message-Id: <8cb76755615326dd824ee3c7f3588afcd17acb28.1441969369.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 14:03:33 +0300
+Message-Id: <4595a48a10e576638795950b61957f83d2ed09b4.1441969369.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 References: <cover.1441969369.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 15/26] linux-user: Fix warnings caused by
-	missing 'static' attribute
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	"Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PULL 09/26] maint: remove unused include for
+	strings.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,47 +44,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 11:04:04 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 11:04:01 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: "Daniel P. Berrange" <berrange@redhat.com>
 
-Warnings from the Sparse static analysis tool:
+A number of files were including strings.h but not using any
+of the functions it provides
 
-linux-user/main.c:40:12: warning:
- symbol 'filename' was not declared. Should it be static?
-linux-user/main.c:41:12: warning:
- symbol 'argv0' was not declared. Should it be static?
-linux-user/main.c:42:5: warning:
- symbol 'gdbstub_port' was not declared. Should it be static?
-linux-user/main.c:43:11: warning:
- symbol 'envlist' was not declared. Should it be static?
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ disas/microblaze.c  | 1 -
+ hw/pci/shpc.c       | 1 -
+ page_cache.c        | 1 -
+ tests/test-xbzrle.c | 1 -
+ 4 files changed, 4 deletions(-)
 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 06dd296..829ee64 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -37,10 +37,10 @@
- char *exec_path;
+diff --git a/disas/microblaze.c b/disas/microblaze.c
+index c14ab89..92cd4b1 100644
+--- a/disas/microblaze.c
++++ b/disas/microblaze.c
+@@ -582,7 +582,6 @@ static const char pvr_register_prefix[] = "rpvr";
+ #endif /* MICROBLAZE_OPC */
  
- int singlestep;
--const char *filename;
--const char *argv0;
--int gdbstub_port;
--envlist_t *envlist;
-+static const char *filename;
-+static const char *argv0;
-+static int gdbstub_port;
-+static envlist_t *envlist;
- static const char *cpu_model;
- unsigned long mmap_min_addr;
- unsigned long guest_base;
+ #include "disas/bfd.h"
+-#include <strings.h>
+ 
+ #define get_field_rd(instr) get_field(instr, RD_MASK, RD_LOW)
+ #define get_field_r1(instr) get_field(instr, RA_MASK, RA_LOW)
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index bfb4d31..d34fdf3 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -1,5 +1,4 @@
+ #include "qemu-common.h"
+-#include <strings.h>
+ #include <stdint.h>
+ #include "qemu/range.h"
+ #include "qemu/error-report.h"
+diff --git a/page_cache.c b/page_cache.c
+index cf8878d..a9eb076 100644
+--- a/page_cache.c
++++ b/page_cache.c
+@@ -15,7 +15,6 @@
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <strings.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+diff --git a/tests/test-xbzrle.c b/tests/test-xbzrle.c
+index b5ee8bb..1cd8cb7 100644
+--- a/tests/test-xbzrle.c
++++ b/tests/test-xbzrle.c
+@@ -13,7 +13,6 @@
+ #include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <strings.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include "qemu-common.h"
 -- 
 2.1.4
 
