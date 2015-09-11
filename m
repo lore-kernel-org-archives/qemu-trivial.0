@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZaJJw-00016W-7j
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 04:04:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48245)
+	id 1ZaJKO-0001jJ-6n
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Sep 2015 04:05:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48294)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaJJt-00014O-VN
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:04:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaJKL-0001gA-Sb
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:04:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZaJJt-0000s3-AC
-	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:04:29 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38953)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZaJKL-0001AE-3V
+	for qemu-trivial@nongnu.org; Fri, 11 Sep 2015 04:04:57 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:48038)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZaJJl-0000pn-6Y; Fri, 11 Sep 2015 04:04:21 -0400
+	id 1ZaJKG-00018m-6x; Fri, 11 Sep 2015 04:04:52 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8D29B41420;
-	Fri, 11 Sep 2015 11:04:20 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 80CE941422;
+	Fri, 11 Sep 2015 11:04:51 +0300 (MSK)
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 720A2A52;
-	Fri, 11 Sep 2015 11:04:20 +0300 (MSK)
-Message-ID: <55F28B04.5010201@msgid.tls.msk.ru>
-Date: Fri, 11 Sep 2015 11:04:20 +0300
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 6A3CDA52;
+	Fri, 11 Sep 2015 11:04:51 +0300 (MSK)
+Message-ID: <55F28B23.1030905@msgid.tls.msk.ru>
+Date: Fri, 11 Sep 2015 11:04:51 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
@@ -27,8 +27,8 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 MIME-Version: 1.0
 To: shannon.zhao@linaro.org, qemu-devel@nongnu.org
 References: <1431397521-2316-1-git-send-email-shannon.zhao@linaro.org>
-	<1431397521-2316-5-git-send-email-shannon.zhao@linaro.org>
-In-Reply-To: <1431397521-2316-5-git-send-email-shannon.zhao@linaro.org>
+	<1431397521-2316-6-git-send-email-shannon.zhao@linaro.org>
+In-Reply-To: <1431397521-2316-6-git-send-email-shannon.zhao@linaro.org>
 OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
@@ -37,7 +37,7 @@ X-Received-From: 86.62.121.231
 Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, qemu-trivial@nongnu.org,
 	peter.huangpeng@huawei.com, zhaoshenglong@huawei.com,
 	christoffer.dall@linaro.org
-Subject: Re: [Qemu-trivial] [PATCH 4/6] hw/gpio/zaurus: Remove meaningless
+Subject: Re: [Qemu-trivial] [PATCH 5/6] hw/arm/spitz: Remove meaningless
 	blank Property
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -50,9 +50,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Sep 2015 08:04:30 -0000
+X-List-Received-Date: Fri, 11 Sep 2015 08:04:59 -0000
 
-Applied (finally!) to -trivial, thanks!
+Aplied (finally!) to -trivial, thanks!
 
 /mjt
 
