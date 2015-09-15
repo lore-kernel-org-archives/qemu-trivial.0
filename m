@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zblu4-00067P-JA
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2015 04:47:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36617)
+	id 1Zbpwx-0005ko-6y
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Sep 2015 09:07:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54935)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Zblu1-000655-R6
-	for qemu-trivial@nongnu.org; Tue, 15 Sep 2015 04:47:50 -0400
+	(envelope-from <dddgogo000@gmail.com>) id 1Zbk5U-00060k-3F
+	for qemu-trivial@nongnu.org; Tue, 15 Sep 2015 02:51:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1Zblu1-0007Bz-2p
-	for qemu-trivial@nongnu.org; Tue, 15 Sep 2015 04:47:49 -0400
-Received: from mail-wi0-x22c.google.com ([2a00:1450:400c:c05::22c]:37845)
+	(envelope-from <dddgogo000@gmail.com>) id 1Zbk5S-0004Jm-UA
+	for qemu-trivial@nongnu.org; Tue, 15 Sep 2015 02:51:32 -0400
+Received: from mail-wi0-x22a.google.com ([2a00:1450:400c:c05::22a]:38681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1Zbltv-00079p-2u; Tue, 15 Sep 2015 04:47:43 -0400
-Received: by wicfx3 with SMTP id fx3so16898566wic.0;
-	Tue, 15 Sep 2015 01:47:42 -0700 (PDT)
+	(envelope-from <dddgogo000@gmail.com>)
+	id 1Zbk5O-0004Ce-Gy; Tue, 15 Sep 2015 02:51:26 -0400
+Received: by wiclk2 with SMTP id lk2so12994753wic.1;
+	Mon, 14 Sep 2015 23:51:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=QKRwxSOX81dIPJayPqIiIUEh29ywYD6Ns11VcwQCc/A=;
-	b=VNSG1Hhl0dCzkkc/qIRWWgLsmNLQl+26HbmwhLmfMnDm7xBmVs3v2np0Q9A0GF08CW
-	nIe1PONUBbo457Mfcse6nBEoo5RrJQ89zja+opxEpYAcJvkVahM11jesHewihKG8/bAF
-	da1v3sQrRfYIb0NHC+8Z2D7KY2/KBshIIaL1qNalabjePTkE1OYlCNN6OePgdixjeMeX
-	j3e531hdINRlMyq7jkqM11O7aHUVcPKrxhWlpkHkCHEEQ+ECpTf+YqMjXeytf+lXaUZY
-	4hOtqm/NwFkYrbGlG2PzSUHZ0qqvKAs4tUnQB0490iDoyACyu7nN5/SLjJw6jQL36eFQ
-	ak4A==
-X-Received: by 10.194.87.74 with SMTP id v10mr29748827wjz.114.1442306862444;
-	Tue, 15 Sep 2015 01:47:42 -0700 (PDT)
-Received: from donizetti.lan. ([94.39.138.45])
-	by smtp.gmail.com with ESMTPSA id
-	hk5sm19857193wjb.6.2015.09.15.01.47.41
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 15 Sep 2015 01:47:41 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 15 Sep 2015 10:47:36 +0200
-Message-Id: <1442306856-11153-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.5.0
+	h=mime-version:date:message-id:subject:from:to:content-type;
+	bh=vA7MViISg+ETlAM2l7Bz+P5NG7glxJzj3NA7rYMNS4U=;
+	b=x95Nv/L8ZH2gfSJnYIduIz2ESfYL/MHNiDPRbSMpY5RdI7jEuJey+QsKe4nuqSX6VW
+	w63Ej4P/YX1ESiMKK7Ke9pQmgVedZhe03yg6eT6ZKiI8B/CeY2XQx0nuPaYolnanE+a1
+	eJQxCcWSN4L5N76uHNRX3lnGAMfTyGlPR4qW9w2W6LdzRDjHiNztCtqHUeZQ4JiHJKtw
+	4KefqzQNNhZUjy9jZUYsROj6D4XyyfwrvbTkr6a6iPwLrbkYq4KCOQrM9a9eIFL1e6dA
+	RiEX/mcb2ZQIzDoV2dkJdlppcXWxteXumKR9bnmzZetwND4p9Y2IJMgkNr8wHn4CTMH4
+	xm5A==
+MIME-Version: 1.0
+X-Received: by 10.180.20.166 with SMTP id o6mr3923432wie.48.1442299884828;
+	Mon, 14 Sep 2015 23:51:24 -0700 (PDT)
+Received: by 10.27.108.142 with HTTP; Mon, 14 Sep 2015 23:51:24 -0700 (PDT)
+Date: Tue, 15 Sep 2015 14:51:24 +0800
+Message-ID: <CAFuKiSqtU13bLgZzunsDbvqcRDuTzSy5ZRB9on0d7EtNR8n+Gg@mail.gmail.com>
+From: tseng gogo <dddgogo000@gmail.com>
+To: qemu-stable@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary=bcaec53f37014b7c90051fc39c49
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c05::22c
-Cc: qemu-trivial@nongnu.org, Houcheng Lin <houcheng@gmail.com>
-Subject: [Qemu-trivial] [PATCH] pci-assign: do not include sys/io.h
+X-Received-From: 2a00:1450:400c:c05::22a
+X-Mailman-Approved-At: Tue, 15 Sep 2015 09:07:05 -0400
+Subject: [Qemu-trivial] About qemu-kvm branch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,30 +48,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Sep 2015 08:47:50 -0000
+X-List-Received-Date: Tue, 15 Sep 2015 06:51:33 -0000
 
-This file does not exist on bionic libc and the functions it defines
-are in fact not used by pci-assign.c.  Remove it.
+--bcaec53f37014b7c90051fc39c49
+Content-Type: text/plain; charset=UTF-8
 
-Reported-by: Houcheng Lin <houcheng@gmail.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/i386/kvm/pci-assign.c | 1 -
- 1 file changed, 1 deletion(-)
+Hi ,
 
-diff --git a/hw/i386/kvm/pci-assign.c b/hw/i386/kvm/pci-assign.c
-index 57f14f1..3df8e6c 100644
---- a/hw/i386/kvm/pci-assign.c
-+++ b/hw/i386/kvm/pci-assign.c
-@@ -22,7 +22,6 @@
-  */
- #include <stdio.h>
- #include <unistd.h>
--#include <sys/io.h>
- #include <sys/mman.h>
- #include <sys/types.h>
- #include <sys/stat.h>
--- 
-2.5.0
+    Sorry in advance that I am not sure that if I ask this question here is
+appropriate. I am new to use KVM and want to do some research in qemu-kvm
+live migration.
 
+    In my environment, I install centos 7.0 with rpm install qemu-kvm
+1.5.3, but what I want to do research is the source code. So I try to find
+qemu-kvm 1.5.3 on the Internet, but there is nothing I can find.
+
+    I tried to git clone to git://
+git.kernel.org/pub/scm/virt/kvm/qemu-kvm.git, but the qemu-kvm which I git
+clone is version 1.2.5.
+
+    Can someone tell me that where can I find the qemu-kvm 1.5.3 source
+code branch? Also what I have googled saying that qemu-kvm fork is
+deprecated, is this mean that if we want to use the latest version
+qemu-kvm, we should download the qemu and configure it?
+
+    Thank everyone in advance!
+
+--bcaec53f37014b7c90051fc39c49
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi ,</div><div><br></div><div>=C2=A0 =C2=A0 Sorry in =
+advance that I am not sure that if I ask this question here is appropriate.=
+ I am new to use KVM and want to do some research in qemu-kvm live migratio=
+n.</div><div><br></div><div>=C2=A0 =C2=A0 In my environment, I install cent=
+os 7.0 with rpm install qemu-kvm 1.5.3, but what I want to do research is t=
+he source code. So I try to find qemu-kvm 1.5.3 on the Internet, but there =
+is nothing I can find.</div><div><br></div><div>=C2=A0 =C2=A0 I tried to gi=
+t clone to git://<a href=3D"http://git.kernel.org/pub/scm/virt/kvm/qemu-kvm=
+.git">git.kernel.org/pub/scm/virt/kvm/qemu-kvm.git</a>, but the qemu-kvm wh=
+ich I git clone is version 1.2.5.</div><div><br></div><div>=C2=A0 =C2=A0 Ca=
+n someone tell me that where can I find the qemu-kvm 1.5.3 source code bran=
+ch? Also what I have googled saying that qemu-kvm fork is deprecated, is th=
+is mean that if we want to use the latest version qemu-kvm, we should downl=
+oad the qemu and configure it?</div><div><br></div><div>=C2=A0 =C2=A0 Thank=
+ everyone in advance!=C2=A0</div></div>
+
+--bcaec53f37014b7c90051fc39c49--
 
