@@ -1,45 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zc9wi-0006Ti-8q
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2015 06:28:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36451)
+	id 1Zc9yF-0008DO-8K
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Sep 2015 06:29:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36820)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zc9wg-0006Qn-Db
-	for qemu-trivial@nongnu.org; Wed, 16 Sep 2015 06:28:11 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Zc9yC-00089J-Th
+	for qemu-trivial@nongnu.org; Wed, 16 Sep 2015 06:29:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zc9wf-000619-HP
-	for qemu-trivial@nongnu.org; Wed, 16 Sep 2015 06:28:10 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:34414)
+	(envelope-from <mjt@tls.msk.ru>) id 1Zc9yC-0006I0-64
+	for qemu-trivial@nongnu.org; Wed, 16 Sep 2015 06:29:44 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44545)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Zc9wb-00060d-6x; Wed, 16 Sep 2015 06:28:05 -0400
+	id 1Zc9y7-0006HP-TT; Wed, 16 Sep 2015 06:29:40 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A09B841B11;
-	Wed, 16 Sep 2015 13:28:04 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 68BEA41B11;
+	Wed, 16 Sep 2015 13:29:39 +0300 (MSK)
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 855DEA6E;
-	Wed, 16 Sep 2015 13:28:04 +0300 (MSK)
-Message-ID: <55F94434.10603@msgid.tls.msk.ru>
-Date: Wed, 16 Sep 2015 13:28:04 +0300
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 5B585A6E;
+	Wed, 16 Sep 2015 13:29:39 +0300 (MSK)
+Message-ID: <55F94493.3030908@msgid.tls.msk.ru>
+Date: Wed, 16 Sep 2015 13:29:39 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, 
-	Jean-Christophe Dubois <jcd@tribudubois.net>
-References: <1440085955-27951-1-git-send-email-linux@roeck-us.net>	<55F284A8.8060404@msgid.tls.msk.ru>
-	<CAPokK=oHBqhrwXgx5VM3xHFqu2KTtBfOikhQbSUy5azRTO2LsA@mail.gmail.com>
-In-Reply-To: <CAPokK=oHBqhrwXgx5VM3xHFqu2KTtBfOikhQbSUy5azRTO2LsA@mail.gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1442229154-2052-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <1442229154-2052-1-git-send-email-pbonzini@redhat.com>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [Qemu-trivial] [PATCH] imx_serial: Generate interrupt on tx
-	empty if enabled
+Cc: qemu-trivial@nongnu.org, jcody@redhat.com, rjones@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] block/ssh: remove dead code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,26 +46,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Sep 2015 10:28:11 -0000
+X-List-Received-Date: Wed, 16 Sep 2015 10:29:45 -0000
 
-13.09.2015 23:17, Peter Crosthwaite wrote:
-> On Fri, Sep 11, 2015 at 12:37 AM, Michael Tokarev <mjt@tls.msk.ru> wrote:
->>
->> Can we please have some r-b or ACK for this? :)
->>
->> 20.08.2015 18:52, Guenter Roeck wrote:
->>> Generate an interrupt if the tx buffer is empty and the tx empty interrupt
->>> is enabled. This fixes a problem seen when running a Linux image since
->>> Linux commit 55c3cb1358e ("serial: imx: remove unneeded imx_transmit_buffer()
->>> from imx_start_tx()"). Linux now waits for the tx empty interrupt before
->>> starting to send data, causing transmit stalls until there is an interrupt
->>> for another reason.
->>>
->>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> 
-> Looks right, Jean-Christophe may know more though.
+14.09.2015 14:12, Paolo Bonzini wrote:
+> The "err" label cannot be reached with qp != NULL.  Remove the free-ing
+> of qp and avoid future regressions by removing the initializer.
 
-Thanks, applied to the trivial-patches tree :)
+Applied to -trivial, thank you!
 
 /mjt
+
 
