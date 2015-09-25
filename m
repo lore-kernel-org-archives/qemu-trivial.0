@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZfEIo-0003bl-SS
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Sep 2015 17:43:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34260)
+	id 1ZfOWH-0005Yn-Ag
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Sep 2015 04:38:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44060)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jiri@resnulli.us>) id 1ZfBZ1-0007VX-0s
-	for qemu-trivial@nongnu.org; Thu, 24 Sep 2015 14:48:18 -0400
+	(envelope-from <shraddha.6596@gmail.com>) id 1ZfOWE-0005XA-T4
+	for qemu-trivial@nongnu.org; Fri, 25 Sep 2015 04:38:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jiri@resnulli.us>) id 1ZfBYw-0006Rz-1f
-	for qemu-trivial@nongnu.org; Thu, 24 Sep 2015 14:48:14 -0400
-Received: from mail-wi0-f178.google.com ([209.85.212.178]:34327)
+	(envelope-from <shraddha.6596@gmail.com>) id 1ZfOWB-0003Cx-Lj
+	for qemu-trivial@nongnu.org; Fri, 25 Sep 2015 04:38:14 -0400
+Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:35590)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jiri@resnulli.us>) id 1ZfBYv-0006Ra-SS
-	for qemu-trivial@nongnu.org; Thu, 24 Sep 2015 14:48:09 -0400
-Received: by wicfx3 with SMTP id fx3so41039578wic.1
-	for <qemu-trivial@nongnu.org>; Thu, 24 Sep 2015 11:48:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=3IMMF45wJGsAqVSYbee2+WLnr6kVvx+R5Bz2nmUIFZ4=;
-	b=Lrc7YBhvryxs626PxNYnnZu1gjDqxcSJdzsv/WAkgcmpzrC/qdACqMsD10SU5xao3X
-	tKGNwf266m1jvecO38UVT7Tkiqh7ba6o7OX/9NNc5m3E2Ve7t3sjWRktNhzyw3uuf9rA
-	iqV/5c46yau1OuC69tWEipO6BmPIygMvSyVwc1S9xgwtbD7NPGQIHTKt8jtj5lZUPoNs
-	thge5GREj0y0/4EMtsFu5Y7rennPKw8yqCkmwXc1k4nKhHBUy6mSTfh70cnTPkUqMc5a
-	Tf2rZognXUu0/4zjClhJXuZbZ0+WegZXQsMGeoq9YVicypoQZZaX5emmC1i+iPu7VGC/
-	RcVA==
-X-Gm-Message-State: ALoCoQnRUTgMhblkIHEQ0cB7fxfaufpJsHwxsZ8Ygcm/TkpInJk59HB3KJpPS+q7UDEazDRavC1W
-X-Received: by 10.181.13.241 with SMTP id fb17mr1945254wid.45.1443120488842;
-	Thu, 24 Sep 2015 11:48:08 -0700 (PDT)
-Received: from localhost ([2001:470:6f:505:6af7:28ff:fe89:d4d1])
-	by smtp.gmail.com with ESMTPSA id
-	lm3sm13520129wjc.39.2015.09.24.11.48.07
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 24 Sep 2015 11:48:08 -0700 (PDT)
-Date: Thu, 24 Sep 2015 20:48:07 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20150924184807.GA2123@nanopsycho.orion>
-References: <1442231543-23446-1-git-send-email-armbru@redhat.com>
-	<87oagrbxjw.fsf@blackfin.pond.sub.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87oagrbxjw.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.212.178
-X-Mailman-Approved-At: Thu, 24 Sep 2015 17:43:41 -0400
-Cc: qemu-trivial@nongnu.org, sfeldma@gmail.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] rocker: Use g_new() & friends where that
- makes obvious sense
+	(envelope-from <shraddha.6596@gmail.com>)
+	id 1ZfOWB-0003Cj-GG; Fri, 25 Sep 2015 04:38:11 -0400
+Received: by pacfv12 with SMTP id fv12so101727012pac.2;
+	Fri, 25 Sep 2015 01:38:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=9DenzOSzpl6IaX0z2QVBVwAS3RP67flmu4wRrCf+REM=;
+	b=MkIHNNRSaI26Pid0nx54drP+zKmoJg8pPtJ4FyvKFMjvfU02Yo8pRwdC0eD+IKtOHt
+	NRGL8k9NVBpM1/KEF1dz+W3Wei4O/nA4M6CColOmDGgEvCdi/pHWEfMH5gAkeia5B5Jd
+	SPChBNujmVemDsrOx1JVx1ka0zmDf2hXpfDeQ6LRYiqOAsc1tmEvtAsS0gMjw8Ew7fUo
+	2hFUTdqXtY3MGShbDw5wwSUngOfROnggEbTfgk/bUHjwrlVyY2tAYM2zQXuxY4StbDGT
+	OlpZumgHaFhiVVDtNa4SsXKQw6a0GcdwEEcw5A6kDfOB5Quc3akcVoVSns2kq5g/ttmN
+	E9kw==
+X-Received: by 10.68.220.132 with SMTP id pw4mr5540569pbc.149.1443170290505;
+	Fri, 25 Sep 2015 01:38:10 -0700 (PDT)
+Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in
+	([103.225.100.51])
+	by smtp.gmail.com with ESMTPSA id w5sm2619014pbs.31.2015.09.25.01.38.05
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 25 Sep 2015 01:38:09 -0700 (PDT)
+From: Shraddha Barke <shraddha.6596@gmail.com>
+To: kvm@vger.kernel.org, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Fri, 25 Sep 2015 14:07:56 +0530
+Message-Id: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-Cyberoam-smtpxy-version: 1.0.6.3
+X-Cyberoam-AV-Policy: default
+X-CTCH-PVer: 0000001
+X-CTCH-Spam: Unknown
+X-CTCH-VOD: Unknown
+X-CTCH-Flags: 0
+X-CTCH-RefID: str=0001.0A150209.560507F1.0084, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0
+X-CTCH-Score: 0.000
+X-CTCH-ScoreCust: 0.000
+X-CTCH-Rules: 
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::229
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+	Shraddha Barke <shraddha.6596@gmail.com>
+Subject: [Qemu-trivial] [PATCH 1/3] Target-microblaze: Remove unnecessary
+	variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,11 +65,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Sep 2015 18:48:18 -0000
+X-List-Received-Date: Fri, 25 Sep 2015 08:38:15 -0000
 
-Thu, Sep 24, 2015 at 06:18:43PM CEST, armbru@redhat.com wrote:
->Michael, could you take this one through trivial?  Assuming Scott and
->Jiri don't mind, and with s/patchas/patch as/ in the commit message.
+Compress lines and remove the variable .
 
-I don't mind :)
+Change made using Coccinelle script
+
+@@
+expression ret;
+@@
+- if (ret) return ret;
+- return 0;
++ return ret;
+@@
+local idexpression ret;
+expression e;
+@@
+- ret = e;
+- return ret;
++ return e;
+@@
+type T; identifier i;
+@@
+- T i;
+... when != i
+
+Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+---
+ target-microblaze/op_helper.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/target-microblaze/op_helper.c b/target-microblaze/op_helper.c
+index d2b3624..d2f411a 100644
+--- a/target-microblaze/op_helper.c
++++ b/target-microblaze/op_helper.c
+@@ -151,9 +151,7 @@ uint32_t helper_clz(uint32_t t0)
+ 
+ uint32_t helper_carry(uint32_t a, uint32_t b, uint32_t cf)
+ {
+-    uint32_t ncf;
+-    ncf = compute_carry(a, b, cf);
+-    return ncf;
++    return compute_carry(a, b, cf);
+ }
+ 
+ static inline int div_prepare(CPUMBState *env, uint32_t a, uint32_t b)
+-- 
+2.1.4
+
 
