@@ -1,46 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZfsEp-0007k9-2L
-	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2015 12:22:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49471)
+	id 1ZfsFJ-00007f-Ug
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2015 12:22:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZfsEm-0007hV-Ot
-	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:13 -0400
+	(envelope-from <laurent@vivier.eu>) id 1ZfsF4-00089K-MU
+	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZfsEl-0006IY-St
-	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41753)
+	(envelope-from <laurent@vivier.eu>) id 1ZfsF1-0006VK-Dh
+	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:30 -0400
+Received: from smtp4-g21.free.fr ([212.27.42.4]:28761)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1ZfsEh-0006HC-Kk; Sat, 26 Sep 2015 12:22:07 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0ADE98E68A;
-	Sat, 26 Sep 2015 16:15:40 +0000 (UTC)
-Received: from [10.3.113.141] (ovpn-113-141.phx2.redhat.com [10.3.113.141])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t8QGFYnI014595; Sat, 26 Sep 2015 12:15:35 -0400
-To: Shraddha Barke <shraddha.6596@gmail.com>, kvm@vger.kernel.org,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-References: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>
-	<1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <5606C4A1.60509@redhat.com>
-Date: Sat, 26 Sep 2015 10:15:29 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.2.0
-MIME-Version: 1.0
-In-Reply-To: <1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="EuoraqkL6ibUvVDmOciV2opmg4guD8Orm"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] Target-ppc: Remove
-	unnecessary variable
+	(envelope-from <laurent@vivier.eu>)
+	id 1ZfsEt-0006Mh-Vr; Sat, 26 Sep 2015 12:22:20 -0400
+Received: from Quad.localdomain (unknown [78.238.229.36])
+	by smtp4-g21.free.fr (Postfix) with ESMTPS id 1F3534C80A3;
+	Sat, 26 Sep 2015 18:22:19 +0200 (CEST)
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-trivial@nongnu.org
+Date: Sat, 26 Sep 2015 18:22:08 +0200
+Message-Id: <1443284532-8634-7-git-send-email-laurent@vivier.eu>
+X-Mailer: git-send-email 2.4.3
+In-Reply-To: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
+References: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+	[fuzzy]
+X-Received-From: 212.27.42.4
+Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	John Snow <jsnow@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Subject: [Qemu-trivial] [PATCH 06/10][TRIVIAL] macio-ide: add to storage
+	category
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,53 +42,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 26 Sep 2015 16:22:13 -0000
+X-List-Received-Date: Sat, 26 Sep 2015 16:22:31 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---EuoraqkL6ibUvVDmOciV2opmg4guD8Orm
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+macio-ide is an IDE controller, so add it
+to the storage category.
 
-On 09/25/2015 02:37 AM, Shraddha Barke wrote:
-> Compress lines and remove the variable.
->=20
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/ide/macio.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> +++ b/target-ppc/kvm.c
-> @@ -1782,8 +1782,7 @@ uint32_t kvmppc_get_tbfreq(void)
-> =20
->      ns++;
-> =20
-> -    retval =3D atoi(ns);
-> -    return retval;
-> +    return atoi(ns);
+diff --git a/hw/ide/macio.c b/hw/ide/macio.c
+index 66ac2ba..893c9b9 100644
+--- a/hw/ide/macio.c
++++ b/hw/ide/macio.c
+@@ -590,6 +590,7 @@ static void macio_ide_class_init(ObjectClass *oc, void *data)
+     dc->realize = macio_ide_realizefn;
+     dc->reset = macio_ide_reset;
+     dc->vmsd = &vmstate_pmac;
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
+ 
+ static const TypeInfo macio_ide_type_info = {
+-- 
+2.4.3
 
-atoi() is lousy; it cannot properly detect user input errors.  This
-should probably be converted to use the appropriate qemu_strtol variant
-instead.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---EuoraqkL6ibUvVDmOciV2opmg4guD8Orm
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWBsSmAAoJEKeha0olJ0NqhKAH/2yu7OdT83+/AGDc95MwT2Lp
-hif8cllpZR0ILRezGDwQp++/B3XnSwXxvGlMLXvNh9uXVRKiFkbGEdOViq1vva2j
-RW5rrvz0syRo+O1fNZ32pad4zuSdASP2HNq4e/xm8Z4aYNLvNlmyvnlRfdPaVIqL
-wM+VCOuX+SHa1jNG9QdSxCJUNfwWlRqNYbhOWBTj6bvaV0+dsb+VQygmtabzfrIT
-UpnTNnZJCWI61O+bekSWoSDpCRGkpjc/putLiYAdCFCF3h+EmabkNOpslabB9dOl
-y6f+bmwBIWV/iIDLNDGDyp6g2IMgrGDJG3kTdnK3vN30a0sqlwvN+cSC6afI18Q=
-=iT3e
------END PGP SIGNATURE-----
-
---EuoraqkL6ibUvVDmOciV2opmg4guD8Orm--
 
