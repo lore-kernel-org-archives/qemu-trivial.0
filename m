@@ -1,49 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zfb10-0006JB-M2
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Sep 2015 17:58:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55914)
+	id 1ZfsEp-0007k9-2L
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Sep 2015 12:22:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49471)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zfb0y-0006IC-Tm
-	for qemu-trivial@nongnu.org; Fri, 25 Sep 2015 17:58:49 -0400
+	(envelope-from <eblake@redhat.com>) id 1ZfsEm-0007hV-Ot
+	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zfb0v-0004LR-OT
-	for qemu-trivial@nongnu.org; Fri, 25 Sep 2015 17:58:48 -0400
-Received: from mail-vk0-f52.google.com ([209.85.213.52]:36858)
+	(envelope-from <eblake@redhat.com>) id 1ZfsEl-0006IY-St
+	for qemu-trivial@nongnu.org; Sat, 26 Sep 2015 12:22:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41753)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zfb0v-0004LA-Lx
-	for qemu-trivial@nongnu.org; Fri, 25 Sep 2015 17:58:45 -0400
-Received: by vkfp126 with SMTP id p126so64168456vkf.3
-	for <qemu-trivial@nongnu.org>; Fri, 25 Sep 2015 14:58:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=h/tZZOQ31mgjzUz9d44Pt5byX9jAcOM0dr6dkkkIJhY=;
-	b=DP2rPz66cVgbRs/n2OXCu1SaCg68XHXwOZIZyDPkiVFZkO4Ss+dBOmI0SK4w8vquLN
-	haQZnsSBh41dSL1GzleChOnTgMugbQYUWZYlftrbrIr85dI97G0mOkiZx1gMG2EKsfgE
-	AIj1wEwg1lc3k7dI+At7L/DxWdahNFSfCv+Uif1lfTIF23qshRveud0jn/8gFaE+JT3a
-	X5NX57hxGGZEfs0PxJURg6CHE3Z515a0k/rNZsaIouI3MPNCuwyXZ1KVlmAnk8GzmVC8
-	eGFbYo+sC+8aw181yaBEtD/J0y9Afr8aUROUB6axVlLt8ONHfsG1yx6vAQ8XTtwYcs+0
-	pbDg==
-X-Gm-Message-State: ALoCoQnmLrQblJJA1Nke6TEdcauQ6rVegbX9GT4xOnOc/2FW2xI4dcAB2eCIcxRLHZRK0G++0OE0
-X-Received: by 10.31.14.15 with SMTP id 15mr4707291vko.82.1443218325200; Fri,
-	25 Sep 2015 14:58:45 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>)
+	id 1ZfsEh-0006HC-Kk; Sat, 26 Sep 2015 12:22:07 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 0ADE98E68A;
+	Sat, 26 Sep 2015 16:15:40 +0000 (UTC)
+Received: from [10.3.113.141] (ovpn-113-141.phx2.redhat.com [10.3.113.141])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t8QGFYnI014595; Sat, 26 Sep 2015 12:15:35 -0400
+To: Shraddha Barke <shraddha.6596@gmail.com>, kvm@vger.kernel.org,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+References: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>
+	<1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <5606C4A1.60509@redhat.com>
+Date: Sat, 26 Sep 2015 10:15:29 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.2.0
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 25 Sep 2015 14:58:25 -0700 (PDT)
-In-Reply-To: <1443213733-9807-1-git-send-email-sw@weilnetz.de>
-References: <1443213733-9807-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Sep 2015 14:58:25 -0700
-Message-ID: <CAFEAcA-tmZ_HhYL+v-fu_aFRbxBUytG_qiaKKuHoNBNMMw7+ug@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.52
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] target-arm: Add missing 'static'
-	attribute
+In-Reply-To: <1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="EuoraqkL6ibUvVDmOciV2opmg4guD8Orm"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] Target-ppc: Remove
+	unnecessary variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,31 +52,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Sep 2015 21:58:49 -0000
+X-List-Received-Date: Sat, 26 Sep 2015 16:22:13 -0000
 
-On 25 September 2015 at 13:42, Stefan Weil <sw@weilnetz.de> wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  target-arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 8367997..584f6df 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -5194,7 +5194,7 @@ void switch_mode(CPUARMState *env, int mode)
->   *        BIT IRQ     IMO      Non-secure         Secure
->   *        EL3 FIQ  RW FMO   EL0 EL1 EL2 EL3   EL0 EL1 EL2 EL3
->   */
-> -const int8_t target_el_table[2][2][2][2][2][4] = {
-> +static const int8_t target_el_table[2][2][2][2][2][4] = {
->      {{{{/* 0   0   0   0 */{ 1,  1,  2, -1 },{ 3, -1, -1,  3 },},
->         {/* 0   0   0   1 */{ 2,  2,  2, -1 },{ 3, -1, -1,  3 },},},
->        {{/* 0   0   1   0 */{ 1,  1,  2, -1 },{ 3, -1, -1,  3 },},
-> --
-> 2.1.4
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--EuoraqkL6ibUvVDmOciV2opmg4guD8Orm
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Applied to target-arm.next, thanks.
+On 09/25/2015 02:37 AM, Shraddha Barke wrote:
+> Compress lines and remove the variable.
+>=20
 
--- PMM
+> +++ b/target-ppc/kvm.c
+> @@ -1782,8 +1782,7 @@ uint32_t kvmppc_get_tbfreq(void)
+> =20
+>      ns++;
+> =20
+> -    retval =3D atoi(ns);
+> -    return retval;
+> +    return atoi(ns);
+
+atoi() is lousy; it cannot properly detect user input errors.  This
+should probably be converted to use the appropriate qemu_strtol variant
+instead.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--EuoraqkL6ibUvVDmOciV2opmg4guD8Orm
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJWBsSmAAoJEKeha0olJ0NqhKAH/2yu7OdT83+/AGDc95MwT2Lp
+hif8cllpZR0ILRezGDwQp++/B3XnSwXxvGlMLXvNh9uXVRKiFkbGEdOViq1vva2j
+RW5rrvz0syRo+O1fNZ32pad4zuSdASP2HNq4e/xm8Z4aYNLvNlmyvnlRfdPaVIqL
+wM+VCOuX+SHa1jNG9QdSxCJUNfwWlRqNYbhOWBTj6bvaV0+dsb+VQygmtabzfrIT
+UpnTNnZJCWI61O+bekSWoSDpCRGkpjc/putLiYAdCFCF3h+EmabkNOpslabB9dOl
+y6f+bmwBIWV/iIDLNDGDyp6g2IMgrGDJG3kTdnK3vN30a0sqlwvN+cSC6afI18Q=
+=iT3e
+-----END PGP SIGNATURE-----
+
+--EuoraqkL6ibUvVDmOciV2opmg4guD8Orm--
 
