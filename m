@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZgrX9-00005l-82
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2015 05:49:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40745)
+	id 1ZgtSq-0007E0-AW
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Sep 2015 07:52:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZgZRW-0002ln-DO
-	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 10:30:19 -0400
+	(envelope-from <eblake@redhat.com>) id 1Zga0o-0004hC-73
+	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 11:06:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZgZRQ-0003o7-R0
-	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 10:30:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33091)
+	(envelope-from <eblake@redhat.com>) id 1Zga0k-0002pw-AV
+	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 11:06:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56505)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1ZgZR7-0003S6-By; Mon, 28 Sep 2015 10:29:49 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id E066BA0B49;
-	Mon, 28 Sep 2015 14:29:47 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-163.bos.redhat.com
-	[10.18.17.163])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t8SETkl9015966; Mon, 28 Sep 2015 10:29:46 -0400
-To: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-References: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
-	<1443284532-8634-7-git-send-email-laurent@vivier.eu>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <56094EDA.6080505@redhat.com>
-Date: Mon, 28 Sep 2015 10:29:46 -0400
+	(envelope-from <eblake@redhat.com>)
+	id 1Zga0b-0002oi-In; Mon, 28 Sep 2015 11:06:29 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 89F09C0B64CD;
+	Mon, 28 Sep 2015 15:06:28 +0000 (UTC)
+Received: from [10.3.113.188] (ovpn-113-188.phx2.redhat.com [10.3.113.188])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t8SF6Rgn023322; Mon, 28 Sep 2015 11:06:27 -0400
+To: Stefan Weil <sw@weilnetz.de>, Markus Armbruster <armbru@redhat.com>
+References: <1443211950-8207-1-git-send-email-sw@weilnetz.de>
+	<871tdjni3w.fsf@blackfin.pond.sub.org> <5608F9BC.603@weilnetz.de>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <5609576F.2060407@redhat.com>
+Date: Mon, 28 Sep 2015 09:06:23 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.2.0
 MIME-Version: 1.0
-In-Reply-To: <1443284532-8634-7-git-send-email-laurent@vivier.eu>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+In-Reply-To: <5608F9BC.603@weilnetz.de>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="1eL7uoHSJVR8SDMPOuUXtAjEnWuCwM9nQ"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org, qemu-block@nongnu.org,
-	Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/10][TRIVIAL] macio-ide:
- add to storage category
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace/simple: Fix warning
+ and wrong trace file name for MinGW
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,38 +53,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Sep 2015 14:30:19 -0000
+X-List-Received-Date: Mon, 28 Sep 2015 15:06:47 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--1eL7uoHSJVR8SDMPOuUXtAjEnWuCwM9nQ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 09/28/2015 02:26 AM, Stefan Weil wrote:
+
+>> Can you explain why osdep.h's
+>>
+>>     #define FMT_pid "%" PRId64
+>>
+>> is appropriate for Windows?
+>=20
+> Don't blame me for any strangeness which you might find in Windows. :-)=
+
+>=20
+> Mingw-w64 sys/types.h defines pid_t to be either an int or an __int64.
+> FMT_pid must match these definitions.
+>=20
+> But getpid returns an int, not a pid_t...
+
+Can we 1) file a bug against mingw for their buggy getpid(), and 2)
+write a wrapper that makes getpid() always return pid_t in the meantime?
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--1eL7uoHSJVR8SDMPOuUXtAjEnWuCwM9nQ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-On 09/26/2015 12:22 PM, Laurent Vivier wrote:
-> macio-ide is an IDE controller, so add it
-> to the storage category.
-> 
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-> ---
->  hw/ide/macio.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/ide/macio.c b/hw/ide/macio.c
-> index 66ac2ba..893c9b9 100644
-> --- a/hw/ide/macio.c
-> +++ b/hw/ide/macio.c
-> @@ -590,6 +590,7 @@ static void macio_ide_class_init(ObjectClass *oc, void *data)
->      dc->realize = macio_ide_realizefn;
->      dc->reset = macio_ide_reset;
->      dc->vmsd = &vmstate_pmac;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  }
->  
->  static const TypeInfo macio_ide_type_info = {
-> 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-Thanks,
+iQEcBAEBCAAGBQJWCVdvAAoJEKeha0olJ0NqkVYIAJBcxwB0pi4t6TEOpxFafhic
+dbiRIVD6im6PCnFWJk33YPwMbhO+nINPDH0L8SMtDT2X95cSmH4eMBhZd3PS46uv
+rJoT+V2QOnQbNPTNlfcbLRKSbIkYW6EVvvOtRUGnUTk8R0Y4kuB1H+LE1a0YyxKf
+PWR1GYTpdmDsMvdqP/0UqpzmuQmQQvWkVVFlyowU0gHQJqdlGkK1Xe/lQLBDswa6
+rpB0S0zb2EQxNt/fQ2hDtFYOiJLXS/WRIi3PYXPSZE/33Pxyy+UJbEwETR9rEaYa
+zYgt4KzN4ylHJRYl23KNLncQ4kU6ARI98ty4h2TsFGyJ+V7T6sLkdfh+czePWqA=
+=yGVi
+-----END PGP SIGNATURE-----
 
-Reviewed-by: John Snow <jsnow@redhat.com>
-
-I'll leave this to be staged by whomever stages the entire series.
-
---js
+--1eL7uoHSJVR8SDMPOuUXtAjEnWuCwM9nQ--
 
