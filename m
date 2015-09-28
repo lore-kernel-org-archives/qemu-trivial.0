@@ -1,47 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZgYNu-0006D0-PY
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2015 09:22:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54747)
+	id 1Zgg8T-0000P7-T5
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Sep 2015 17:39:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1ZgTlq-00032H-HP
-	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 04:26:54 -0400
+	(envelope-from <thuth@redhat.com>) id 1ZgVve-0002Pl-1p
+	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 06:45:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1ZgTll-0007BH-Ta
-	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 04:26:50 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:54184)
+	(envelope-from <thuth@redhat.com>) id 1ZgVva-0000gy-7f
+	for qemu-trivial@nongnu.org; Mon, 28 Sep 2015 06:45:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44965)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1ZgTlg-00078X-Dn; Mon, 28 Sep 2015 04:26:40 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 928D0101279;
-	Mon, 28 Sep 2015 10:26:37 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (smtp.mail.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id Ce63lGoEo3xc; Mon, 28 Sep 2015 10:26:37 +0200 (CEST)
-Received: from [134.155.36.73] (edv13.bib.uni-mannheim.de [134.155.36.73])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id 6F1781011CF;
-	Mon, 28 Sep 2015 10:26:37 +0200 (CEST)
-To: Markus Armbruster <armbru@redhat.com>
-References: <1443211950-8207-1-git-send-email-sw@weilnetz.de>
-	<871tdjni3w.fsf@blackfin.pond.sub.org>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <5608F9BC.603@weilnetz.de>
-Date: Mon, 28 Sep 2015 10:26:36 +0200
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	(envelope-from <thuth@redhat.com>)
+	id 1ZgVvT-0000al-0I; Mon, 28 Sep 2015 06:44:55 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id E3BC58EA30;
+	Mon, 28 Sep 2015 10:44:53 +0000 (UTC)
+Received: from [10.36.7.147] (vpn1-7-147.ams2.redhat.com [10.36.7.147])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t8SAioX8003475
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 28 Sep 2015 06:44:51 -0400
+To: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+References: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
+	<1443284532-8634-2-git-send-email-laurent@vivier.eu>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <56091A21.2030304@redhat.com>
+Date: Mon, 28 Sep 2015 12:44:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.2.0
 MIME-Version: 1.0
-In-Reply-To: <871tdjni3w.fsf@blackfin.pond.sub.org>
+In-Reply-To: <1443284532-8634-2-git-send-email-laurent@vivier.eu>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 134.155.96.80
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace/simple: Fix warning
- and wrong trace file name for MinGW
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/10][TRIVIAL] adb: add to
+	input category
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,61 +52,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Sep 2015 08:26:54 -0000
+X-List-Received-Date: Mon, 28 Sep 2015 10:45:11 -0000
 
-Am 28.09.2015 um 09:00 schrieb Markus Armbruster:
-> Stefan Weil <sw@weilnetz.de> writes:
->
->> On Windows, getpid() always returns an int value, but pid_t (which is
->> expected by the format string) is either a 32 bit or a 64 bit value.
->>
->> Without a type cast (or a modified format string), the compiler prints
->> a warning when building for 64 bit Windows and the resulting trace_fil=
-e_name
->> will include a wrong pid:
->>
->> trace/simple.c:332:9: warning:
->>  format =E2=80=98%lld=E2=80=99 expects argument of type =E2=80=98long =
-long int=E2=80=99,
->>  but argument 2 has type =E2=80=98int=E2=80=99 [-Wformat=3D]
->>
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  trace/simple.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/trace/simple.c b/trace/simple.c
->> index 11ad030..56a624c 100644
->> --- a/trace/simple.c
->> +++ b/trace/simple.c
->> @@ -329,7 +329,8 @@ bool st_set_trace_file(const char *file)
->>      g_free(trace_file_name);
->> =20
->>      if (!file) {
->> -        trace_file_name =3D g_strdup_printf(CONFIG_TRACE_FILE, getpid=
-());
->> +        /* Type cast needed for Windows where getpid() returns an int=
-. */
->> +        trace_file_name =3D g_strdup_printf(CONFIG_TRACE_FILE, (pid_t=
-)getpid());
->>      } else {
->>          trace_file_name =3D g_strdup_printf("%s", file);
->>      }
-> First we go to the trouble of defining a platform-dependent FMT_pid, an=
-d
-> then we get to cast anyway.  Meh.
->
-> Can you explain why osdep.h's
->
->     #define FMT_pid "%" PRId64
->
-> is appropriate for Windows?
+On 26/09/15 18:22, Laurent Vivier wrote:
+> The Apple Desktop Bus is used to connect a keyboard and a mouse,
+> so add it to the input category.
+> 
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  hw/input/adb.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/input/adb.c b/hw/input/adb.c
+> index a18eea2..09eead9 100644
+> --- a/hw/input/adb.c
+> +++ b/hw/input/adb.c
+> @@ -362,6 +362,7 @@ static void adb_kbd_class_init(ObjectClass *oc, void *data)
+>  
+>      akc->parent_realize = dc->realize;
+>      dc->realize = adb_kbd_realizefn;
+> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>  
+>      adc->devreq = adb_kbd_request;
+>      dc->reset = adb_kbd_reset;
+> @@ -566,6 +567,7 @@ static void adb_mouse_class_init(ObjectClass *oc, void *data)
+>  
+>      amc->parent_realize = dc->realize;
+>      dc->realize = adb_mouse_realizefn;
+> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>  
+>      adc->devreq = adb_mouse_request;
+>      dc->reset = adb_mouse_reset;
 
-Don't blame me for any strangeness which you might find in Windows. :-)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Mingw-w64 sys/types.h defines pid_t to be either an int or an __int64.
-FMT_pid must match these definitions.
-
-But getpid returns an int, not a pid_t...
 
 
