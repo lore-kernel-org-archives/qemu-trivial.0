@@ -1,38 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk4UE-0006H6-CE
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 02:15:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34237)
+	id 1Zk4qR-0002og-1h
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 02:38:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48551)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ZhAPg-0000Gz-OT
-	for qemu-trivial@nongnu.org; Wed, 30 Sep 2015 01:58:49 -0400
+	(envelope-from <jsnow@redhat.com>) id 1Zhgtm-0008FB-L5
+	for qemu-trivial@nongnu.org; Thu, 01 Oct 2015 12:40:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ZhAPf-0006qh-WB
-	for qemu-trivial@nongnu.org; Wed, 30 Sep 2015 01:58:48 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:36344)
+	(envelope-from <jsnow@redhat.com>) id 1Zhgtl-0000LF-Tq
+	for qemu-trivial@nongnu.org; Thu, 01 Oct 2015 12:40:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34156)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1ZhAPb-0006pH-8l; Wed, 30 Sep 2015 01:58:43 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id AB884140D24; Wed, 30 Sep 2015 15:58:40 +1000 (AEST)
-Date: Wed, 30 Sep 2015 15:58:58 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <20150930055858.GD23574@voom>
-References: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
+	(envelope-from <jsnow@redhat.com>)
+	id 1Zhgte-0000Is-F0; Thu, 01 Oct 2015 12:39:54 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 11402A2C36;
+	Thu,  1 Oct 2015 16:39:54 +0000 (UTC)
+Received: from scv.usersys.redhat.com (vpn-48-83.rdu2.redhat.com [10.10.48.83])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t91Gdr9q020271; Thu, 1 Oct 2015 12:39:53 -0400
+To: qemu-devel@nongnu.org
+References: <1442868929-17777-1-git-send-email-jsnow@redhat.com>
+From: John Snow <jsnow@redhat.com>
+X-Enigmail-Draft-Status: N1110
+Message-ID: <560D61D9.3030609@redhat.com>
+Date: Thu, 1 Oct 2015 12:39:53 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.2.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="JwB53PgKC5A7+0Ej"
-Content-Disposition: inline
-In-Reply-To: <1443284532-8634-1-git-send-email-laurent@vivier.eu>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2401:3900:2:1::2
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 00/10][TRIVIAL] Define
- categories for some PPC devices
+In-Reply-To: <1442868929-17777-1-git-send-email-jsnow@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qtest/ahci: fix redundant
+	assertion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,50 +48,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Sep 2015 05:58:49 -0000
+X-List-Received-Date: Thu, 01 Oct 2015 16:40:06 -0000
 
 
---JwB53PgKC5A7+0Ej
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Sat, Sep 26, 2015 at 06:22:02PM +0200, Laurent Vivier wrote:
-> Some PPC devices appear uncategorized in the output of
-> "-device ?". This series tries to categorize some of
-> them.
+On 09/21/2015 04:55 PM, John Snow wrote:
+> Fixes https://bugs.launchpad.net/qemu/+bug/1497711
+> 
+> (!ncq || (ncq && lba48)) is the same as
+> (!ncq || lba48).
+> 
+> The intention is simply: "If a command is NCQ,
+> it must also be LBA48."
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  tests/libqos/ahci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/libqos/ahci.c b/tests/libqos/ahci.c
+> index cf66b3e..adb2665 100644
+> --- a/tests/libqos/ahci.c
+> +++ b/tests/libqos/ahci.c
+> @@ -742,7 +742,7 @@ AHCICommand *ahci_command_create(uint8_t command_name)
+>      g_assert(!(props->lba28 && props->lba48));
+>      g_assert(!(props->read && props->write));
+>      g_assert(!props->size || props->data);
+> -    g_assert(!props->ncq || (props->ncq && props->lba48));
+> +    g_assert(!props->ncq || props->lba48);
+>  
+>      /* Defaults and book-keeping */
+>      cmd->props = props;
+> 
 
-These all look good to me.
+Tentatively staged. Barring objections, I will send a pull request for
+this tomorrow, thanks.
 
-I've merged them to a new 'ppc-next' staging branch at
-git://github.com/dgibson/qemu.git
+https://github.com/jnsnow/qemu/commits/ide
+https://github.com/jnsnow/qemu.git
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---JwB53PgKC5A7+0Ej
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWC3ohAAoJEGw4ysog2bOSM2MP+wcMyuV5xx3t31a2V6cPt1p7
-/ce2cV6hm0dxSqpv3iZppzrC7pxjQQ/KzsYZ9vmIo51pOEZoptsazXNA0xGtf4M5
-9RQ+i4/nSCxTAWn9IjaL7/XZSZCP/Fi5PBCS7hsvG7QPBrxCReOSWGbYsJ1FDB2a
-dgXf8Zz3L0yXr7RnOzXWe15o9hCAD74qxuvX2yCMKvhENlI7ch+AkLXEJm5/If6k
-BqeAIoigIVM9IlmfQORpvBHkB2F02TXvm8X0QV/Qg18kevZOMZyphsqcoAgvKKAn
-UdrDSPYOq2eQpwLJv1cGSBA2EoAgblXJPxWdRpv0Hj2jBvh0q7AdmoLUtxgiIh/K
-PcfuVmXrlIsUWQJJrjCICqC3oDyckDuornv/B/DzM/xGlBXevnvZNeG0ZM3Yl9PX
-/+3SdaRqIfVnNap/b0mJRuLGGHMq7/MTuANnTWAqf+ZjNIwoUFjeKq8ova0NZPz4
-ggAesAcYurtddZTo9fHAxY4TFQPyeXcr5iMaODZ48CR7BtEc2DbOmTYRYKwuCbCH
-eDUqqFoxnPHKloejnvsI+iA8Qgdf6bUoHxGlUUaQm5j1fD4eNrccMDCGFRBiUwUf
-ea23Tq5VA35Pc/0CbuX0IuCxWH/gQPML+hJEeFNyGXJ3ikrwDtW7rr8d4xuQY4HL
-FbePJDVcsPvwUdYtsf3D
-=xQDj
------END PGP SIGNATURE-----
-
---JwB53PgKC5A7+0Ej--
+--js
 
