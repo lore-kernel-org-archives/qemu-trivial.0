@@ -1,35 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk5G6-0005Lg-KW
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 03:04:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45310)
+	id 1Zk5GL-0005Wn-Ih
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 03:05:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57289)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1Zj3ZE-0000MR-Mo
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 07:04:29 -0400
+	(envelope-from <eblake@redhat.com>) id 1Zj7rW-0003zc-T3
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 11:39:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1Zj3ZD-0000WG-II
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 07:04:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60240)
+	(envelope-from <eblake@redhat.com>) id 1Zj7rR-00070M-BY
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 11:39:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37175)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>)
-	id 1Zj3Z9-0000T9-8l; Mon, 05 Oct 2015 07:04:23 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id B45878EA27;
-	Mon,  5 Oct 2015 11:04:22 +0000 (UTC)
-Received: from dgilbert-t530.redhat.com (ovpn-116-104.ams2.redhat.com
-	[10.36.116.104])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t95B4LxB021468; Mon, 5 Oct 2015 07:04:21 -0400
-From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  5 Oct 2015 12:04:20 +0100
-Message-Id: <1444043060-22835-1-git-send-email-dgilbert@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	(envelope-from <eblake@redhat.com>)
+	id 1Zj7rM-0006uX-1S; Mon, 05 Oct 2015 11:39:28 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 8A3EF461E3;
+	Mon,  5 Oct 2015 15:39:27 +0000 (UTC)
+Received: from [10.3.113.192] (ovpn-113-192.phx2.redhat.com [10.3.113.192])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t95FdQSN013487; Mon, 5 Oct 2015 11:39:26 -0400
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, qemu-devel@nongnu.org
+References: <1444043060-22835-1-git-send-email-dgilbert@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <561299AE.1050703@redhat.com>
+Date: Mon, 5 Oct 2015 09:39:26 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <1444043060-22835-1-git-send-email-dgilbert@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="oUjSwT6FPseAaST79QaKG6o6enlGW5eGa"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, afaerber@suse.de
-Subject: [Qemu-trivial] [PATCH] tests: Unique test path for
-	/string-visitor/output
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Unique test path for
+ /string-visitor/output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,73 +50,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2015 11:04:29 -0000
+X-List-Received-Date: Mon, 05 Oct 2015 15:39:42 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--oUjSwT6FPseAaST79QaKG6o6enlGW5eGa
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Newer GLib's want unique test paths, and thus moan at dupes.
-(Seen on Fedora 23 which has glib 2.46)
+On 10/05/2015 05:04 AM, Dr. David Alan Gilbert (git) wrote:
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>=20
+> Newer GLib's want unique test paths, and thus moan at dupes.
+> (Seen on Fedora 23 which has glib 2.46)
+>=20
+> Uniqueify the paths.
 
-Uniqueify the paths.
+Not sure if "Uniquify" is any better spelling for a made-up word?
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
- tests/test-string-output-visitor.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+>=20
+> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> ---
+>  tests/test-string-output-visitor.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/tests/test-string-output-visitor.c b/tests/test-string-output-visitor.c
-index 101fb27..fd5e67b 100644
---- a/tests/test-string-output-visitor.c
-+++ b/tests/test-string-output-visitor.c
-@@ -248,39 +248,39 @@ int main(int argc, char **argv)
- 
-     output_visitor_test_add("/string-visitor/output/int",
-                             &out_visitor_data, test_visitor_out_int, false);
--    output_visitor_test_add("/string-visitor/output/int",
-+    output_visitor_test_add("/string-visitor/output/int-human",
-                             &out_visitor_data, test_visitor_out_int, true);
-     output_visitor_test_add("/string-visitor/output/bool",
-                             &out_visitor_data, test_visitor_out_bool, false);
--    output_visitor_test_add("/string-visitor/output/bool",
-+    output_visitor_test_add("/string-visitor/output/bool-human",
-                             &out_visitor_data, test_visitor_out_bool, true);
-     output_visitor_test_add("/string-visitor/output/number",
-                             &out_visitor_data, test_visitor_out_number, false);
--    output_visitor_test_add("/string-visitor/output/number",
-+    output_visitor_test_add("/string-visitor/output/number-human",
-                             &out_visitor_data, test_visitor_out_number, true);
-     output_visitor_test_add("/string-visitor/output/string",
-                             &out_visitor_data, test_visitor_out_string, false);
--    output_visitor_test_add("/string-visitor/output/string",
-+    output_visitor_test_add("/string-visitor/output/string-human",
-                             &out_visitor_data, test_visitor_out_string, true);
-     output_visitor_test_add("/string-visitor/output/no-string",
-                             &out_visitor_data, test_visitor_out_no_string,
-                             false);
--    output_visitor_test_add("/string-visitor/output/no-string",
-+    output_visitor_test_add("/string-visitor/output/no-string-human",
-                             &out_visitor_data, test_visitor_out_no_string,
-                             true);
-     output_visitor_test_add("/string-visitor/output/enum",
-                             &out_visitor_data, test_visitor_out_enum, false);
--    output_visitor_test_add("/string-visitor/output/enum",
-+    output_visitor_test_add("/string-visitor/output/enum-human",
-                             &out_visitor_data, test_visitor_out_enum, true);
-     output_visitor_test_add("/string-visitor/output/enum-errors",
-                             &out_visitor_data, test_visitor_out_enum_errors,
-                             false);
--    output_visitor_test_add("/string-visitor/output/enum-errors",
-+    output_visitor_test_add("/string-visitor/output/enum-errors-human",
-                             &out_visitor_data, test_visitor_out_enum_errors,
-                             true);
-     output_visitor_test_add("/string-visitor/output/intList",
-                             &out_visitor_data, test_visitor_out_intList, false);
--    output_visitor_test_add("/string-visitor/output/intList",
-+    output_visitor_test_add("/string-visitor/output/intList-human",
-                             &out_visitor_data, test_visitor_out_intList, true);
- 
-     g_test_run();
--- 
-2.5.0
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--oUjSwT6FPseAaST79QaKG6o6enlGW5eGa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJWEpmuAAoJEKeha0olJ0Nq3T0H+gJ4wtFLxxKzP0paVsTR+3xU
+bpttwtNcGno4Wirv2GSa5h9g1uGesnl0jkJK/yCAnAyQlB1O0UcQtYvoeAg9PF+d
+lnuL+mceaAS2en7bWkq8YGnUvx57fOAAcwUvGEdAdOaTocCKWn5jDH48VnSBFi8v
+hRrSHU9tRo1nW+Z2LhHHDMzCUMAPMGMGMOqdXOmFvxmfAEQOvCzsL6vbdSwT5I6S
+MDihAOGP+XnnbJCIN/CR4E/9oAecNIrkqnO0/vQ2+OdgTRXf3RCweDGQvJb66fJ8
+gLMBZ8ulFCFQ8MwDZJ0LnRN88HAFoJtMdiP+V6ab4isT75+JfBSCQ8Zf4ueyxD8=
+=Kj4o
+-----END PGP SIGNATURE-----
+
+--oUjSwT6FPseAaST79QaKG6o6enlGW5eGa--
 
