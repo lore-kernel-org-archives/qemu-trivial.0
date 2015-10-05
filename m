@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk82m-00008k-1n
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 06:03:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35671)
+	id 1Zk82o-0000A9-5R
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 06:03:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zj034-0006Sb-O3
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:19:03 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Zj0Gg-0001fs-TM
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:33:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zj033-0006F7-TT
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:19:02 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60622)
+	(envelope-from <mjt@tls.msk.ru>) id 1Zj0Gf-00045G-TS
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:33:06 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46512)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Zj02z-00065T-Fa; Mon, 05 Oct 2015 03:18:57 -0400
+	id 1Zj0Gb-0003yD-Ki; Mon, 05 Oct 2015 03:33:01 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id DD08D4044C;
-	Mon,  5 Oct 2015 10:18:47 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 444A84045D;
+	Mon,  5 Oct 2015 10:32:58 +0300 (MSK)
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id C8C1EA68;
-	Mon,  5 Oct 2015 10:18:47 +0300 (MSK)
-Message-ID: <56122457.4060903@msgid.tls.msk.ru>
-Date: Mon, 05 Oct 2015 10:18:47 +0300
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 32A3CA69;
+	Mon,  5 Oct 2015 10:32:58 +0300 (MSK)
+Message-ID: <561227AA.9030705@msgid.tls.msk.ru>
+Date: Mon, 05 Oct 2015 10:32:58 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
 Organization: Telecom Service, JSC
 User-Agent: Mozilla/5.0 (X11; Linux x86_64;
 	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
 To: Markus Armbruster <armbru@redhat.com>
-References: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>	<56100743.4010604@msgid.tls.msk.ru>
-	<87d1wtao6l.fsf@blackfin.pond.sub.org>
-In-Reply-To: <87d1wtao6l.fsf@blackfin.pond.sub.org>
+References: <1443189844-20341-1-git-send-email-marcandre.lureau@redhat.com>	<1443189844-20341-22-git-send-email-marcandre.lureau@redhat.com>	<56057193.5060508@redhat.com>
+	<56100875.3060408@msgid.tls.msk.ru>
+	<87h9m5aokh.fsf@blackfin.pond.sub.org>
+In-Reply-To: <87h9m5aokh.fsf@blackfin.pond.sub.org>
 OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Shraddha Barke <shraddha.6596@gmail.com>, kvm@vger.kernel.org,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] Target-microblaze: Remove
-	unnecessary variable
+Cc: qemu-trivial <qemu-trivial@nongnu.org>, marcandre.lureau@redhat.com,
+	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 21/36] misc: spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,45 +49,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2015 07:19:03 -0000
+X-List-Received-Date: Mon, 05 Oct 2015 07:33:08 -0000
 
-05.10.2015 08:18, Markus Armbruster wrote:
+05.10.2015 08:09, Markus Armbruster =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
 > Michael Tokarev <mjt@tls.msk.ru> writes:
-> 
->> 25.09.2015 11:37, Shraddha Barke wrote:
->>> Compress lines and remove the variable .
+>=20
+>> 25.09.2015 19:08, Eric Blake wrote:
+>>> On 09/25/2015 08:03 AM, marcandre.lureau@redhat.com wrote:
+>>>> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+[]
+>>> Reviewed-by: Eric Blake <eblake@redhat.com>
 >>
->> Applied to -trivial, removing this piece of commit message:
+>> Note there's no S-o-b line in the original patch (whole series,
+>> looks like).  Hopefully it is okay for such a really trivial
+>> patch :)
 >>
->> ---
->>> Change made using Coccinelle script
-[..snip..]
->> ---
-> 
-> Why?  I like having the semantic patch in the commit message when
-> there's any chance we'll want do the same mechanical change again later.
-> 
-> You could save space and include it by reference, though: "Same
-> Coccinelle semantic patch as is commit 74c373e".
+>> Applied, thanks!
+>=20
+> It may be legally safe, but do we really want to engage in judging
+> whether patches are copyrightable or not?  Besides, it sets a bad
+> example.
 
-git commit messages aren't good documentation for various scripts
-like this, this info will be lost in the noize.  If it might be
-better to keep such scripts in a separate file where it is easier
-to find, or in a wiki page on the site. The key point is where to
-find the info, git log is difficult for that, especially when you
-don't know what to search for or that such a script exists in
-there in the first place.
+Sometimes I question our own sanity.  Even for a trivial spelling fix
+we require significantly more beaurocracy(sp) than the fix is worth,
+and want formal rules instead of using common sense. This is a common
+trend in the world, to formalize everything instead of thinking, the
+world is becoming "candy".  This reminded me an old movie, "Demolition
+Man", -- the cops in the future reads instructions about what to do
+in each situation they happened to come.  But oh well, no one want to
+take responsibility, that's okay ;)
 
-On the other hand, when git log is cluttered by such a long messages
-for such small changes, it becomes more difficult to find info which
-you really look in git log -- namely, which changes were made that
-might have introduced this regression, things like that.
+Sorry for somewhat non-technical answer, I'll revert this patch,
+waiting for more beaurocracy.
 
-So to me, the shorter and cleaner the commit message is, the better.
+> Marc-Andr=C3=A9, please repost your patches ready for -trivial with you=
+r
+> S-o-B, cc: qemu-trivial.
 
-BTW, I've no idea why this email has been Cc'd to kvm@vger :)
+Mind you, it was a large series, with wasn't intended for -trivial
+at all.  That's more rules and more beaurocracy.  And many other
+patches in that series didn't have s-o-b line too.
 
 Thanks,
 
 /mjt
+
 
