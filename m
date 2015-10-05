@@ -1,54 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk5Fy-0005FH-AT
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 03:04:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54988)
+	id 1Zk5G6-0005Lg-KW
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 03:04:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zj0at-0000Hc-HY
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:54:00 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1Zj3ZE-0000MR-Mo
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 07:04:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zj0ap-0006RN-GL
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:53:59 -0400
-Received: from mail-vk0-f48.google.com ([209.85.213.48]:35504)
+	(envelope-from <dgilbert@redhat.com>) id 1Zj3ZD-0000WG-II
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 07:04:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60240)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1Zj0ap-0006RE-CJ
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 03:53:55 -0400
-Received: by vkao3 with SMTP id o3so91250413vka.2
-	for <qemu-trivial@nongnu.org>; Mon, 05 Oct 2015 00:53:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=0n79of1iu/yvBQPxuC87rtd461OzkKeCFGSboQqE3V0=;
-	b=dZpSHz5TBgKTag9NVHxek1L+71IAn3BxkFKYYbBzXnD9VfOBpZPHW3ga9gyTjOUvN3
-	V3yP4k9Ip/YwzwoiIUeAS8PVjQbW06EprojkDGCyXkKkxYq29N8KXAOap1KSZx5PW+FF
-	swkrKPTUYW4ycm+/iAeagAeneCSPRiTL+JkqVyD9i0pffDR3teN9tglE1QUg8b8wAEyn
-	aV8BLANd1A84+FIebfw6qEwXLSUbOMTUF8OQeIPrk1AeNVnLM6J6E5LRy9AjoNkTWl0/
-	dWewY9z+YuZ5cCAAbcSgWwFMRdRRfk8qK5rgqGvpzP24vjrwvva7fzuJcUmo73KVmWrg
-	qJsw==
-X-Gm-Message-State: ALoCoQlEpcp3EUFYTodq7mwY/gTvMBwM4bpC1m7Gp1cl8qhhCn7UuEuwNi0FtM97LErKcZkeRVSS
-X-Received: by 10.31.136.9 with SMTP id k9mr19004494vkd.92.1444031634835; Mon,
-	05 Oct 2015 00:53:54 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Mon, 5 Oct 2015 00:53:35 -0700 (PDT)
-In-Reply-To: <56122457.4060903@msgid.tls.msk.ru>
-References: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>
-	<56100743.4010604@msgid.tls.msk.ru>
-	<87d1wtao6l.fsf@blackfin.pond.sub.org>
-	<56122457.4060903@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Oct 2015 08:53:35 +0100
-Message-ID: <CAFEAcA_a9XPZ31jfKkuFvjEeBQ-5-dKqgne1NrOD292Xq161kg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.48
-Cc: kvm-devel <kvm@vger.kernel.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	qemu-devel <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
-	Shraddha Barke <shraddha.6596@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] Target-microblaze:
-	Remove unnecessary variable
+	(envelope-from <dgilbert@redhat.com>)
+	id 1Zj3Z9-0000T9-8l; Mon, 05 Oct 2015 07:04:23 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id B45878EA27;
+	Mon,  5 Oct 2015 11:04:22 +0000 (UTC)
+Received: from dgilbert-t530.redhat.com (ovpn-116-104.ams2.redhat.com
+	[10.36.116.104])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t95B4LxB021468; Mon, 5 Oct 2015 07:04:21 -0400
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  5 Oct 2015 12:04:20 +0100
+Message-Id: <1444043060-22835-1-git-send-email-dgilbert@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, afaerber@suse.de
+Subject: [Qemu-trivial] [PATCH] tests: Unique test path for
+	/string-visitor/output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,40 +41,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2015 07:54:00 -0000
+X-List-Received-Date: Mon, 05 Oct 2015 11:04:29 -0000
 
-On 5 October 2015 at 08:18, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 05.10.2015 08:18, Markus Armbruster wrote:
->> Why?  I like having the semantic patch in the commit message when
->> there's any chance we'll want do the same mechanical change again later.
->>
->> You could save space and include it by reference, though: "Same
->> Coccinelle semantic patch as is commit 74c373e".
->
-> git commit messages aren't good documentation for various scripts
-> like this, this info will be lost in the noize.  If it might be
-> better to keep such scripts in a separate file where it is easier
-> to find, or in a wiki page on the site. The key point is where to
-> find the info, git log is difficult for that, especially when you
-> don't know what to search for or that such a script exists in
-> there in the first place.
->
-> On the other hand, when git log is cluttered by such a long messages
-> for such small changes, it becomes more difficult to find info which
-> you really look in git log -- namely, which changes were made that
-> might have introduced this regression, things like that.
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-I think it can be useful when you're looking at a commit
-to know that it was automatically created, especially if
-it's a big commit. It means that if you're looking for
-a bug in it you can concentrate on the script that created
-it rather than the possibly large set of changes it produced,
-or if you're trying to cherry-pick it into another branch you
-can just apply the script instead.
+Newer GLib's want unique test paths, and thus moan at dupes.
+(Seen on Fedora 23 which has glib 2.46)
 
-In a commit with a change this small it's not very significant
-either way, though.
+Uniqueify the paths.
 
-thanks
--- PMM
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ tests/test-string-output-visitor.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test-string-output-visitor.c b/tests/test-string-output-visitor.c
+index 101fb27..fd5e67b 100644
+--- a/tests/test-string-output-visitor.c
++++ b/tests/test-string-output-visitor.c
+@@ -248,39 +248,39 @@ int main(int argc, char **argv)
+ 
+     output_visitor_test_add("/string-visitor/output/int",
+                             &out_visitor_data, test_visitor_out_int, false);
+-    output_visitor_test_add("/string-visitor/output/int",
++    output_visitor_test_add("/string-visitor/output/int-human",
+                             &out_visitor_data, test_visitor_out_int, true);
+     output_visitor_test_add("/string-visitor/output/bool",
+                             &out_visitor_data, test_visitor_out_bool, false);
+-    output_visitor_test_add("/string-visitor/output/bool",
++    output_visitor_test_add("/string-visitor/output/bool-human",
+                             &out_visitor_data, test_visitor_out_bool, true);
+     output_visitor_test_add("/string-visitor/output/number",
+                             &out_visitor_data, test_visitor_out_number, false);
+-    output_visitor_test_add("/string-visitor/output/number",
++    output_visitor_test_add("/string-visitor/output/number-human",
+                             &out_visitor_data, test_visitor_out_number, true);
+     output_visitor_test_add("/string-visitor/output/string",
+                             &out_visitor_data, test_visitor_out_string, false);
+-    output_visitor_test_add("/string-visitor/output/string",
++    output_visitor_test_add("/string-visitor/output/string-human",
+                             &out_visitor_data, test_visitor_out_string, true);
+     output_visitor_test_add("/string-visitor/output/no-string",
+                             &out_visitor_data, test_visitor_out_no_string,
+                             false);
+-    output_visitor_test_add("/string-visitor/output/no-string",
++    output_visitor_test_add("/string-visitor/output/no-string-human",
+                             &out_visitor_data, test_visitor_out_no_string,
+                             true);
+     output_visitor_test_add("/string-visitor/output/enum",
+                             &out_visitor_data, test_visitor_out_enum, false);
+-    output_visitor_test_add("/string-visitor/output/enum",
++    output_visitor_test_add("/string-visitor/output/enum-human",
+                             &out_visitor_data, test_visitor_out_enum, true);
+     output_visitor_test_add("/string-visitor/output/enum-errors",
+                             &out_visitor_data, test_visitor_out_enum_errors,
+                             false);
+-    output_visitor_test_add("/string-visitor/output/enum-errors",
++    output_visitor_test_add("/string-visitor/output/enum-errors-human",
+                             &out_visitor_data, test_visitor_out_enum_errors,
+                             true);
+     output_visitor_test_add("/string-visitor/output/intList",
+                             &out_visitor_data, test_visitor_out_intList, false);
+-    output_visitor_test_add("/string-visitor/output/intList",
++    output_visitor_test_add("/string-visitor/output/intList-human",
+                             &out_visitor_data, test_visitor_out_intList, true);
+ 
+     g_test_run();
+-- 
+2.5.0
+
 
