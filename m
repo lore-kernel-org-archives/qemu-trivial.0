@@ -1,43 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk5AS-0000Si-4C
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 02:59:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52822)
+	id 1Zk5BM-00015P-1Y
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 03:00:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZiQ1P-0004gh-Da
-	for qemu-trivial@nongnu.org; Sat, 03 Oct 2015 12:50:56 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZiyAF-0003HE-2N
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 01:18:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZiQ1O-0003mS-KQ
-	for qemu-trivial@nongnu.org; Sat, 03 Oct 2015 12:50:55 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53888)
+	(envelope-from <armbru@redhat.com>) id 1ZiyAE-0006HY-4t
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 01:18:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43053)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZiQ1H-0003hV-JD; Sat, 03 Oct 2015 12:50:47 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 08BDE4035E;
-	Sat,  3 Oct 2015 19:50:47 +0300 (MSK)
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id B7E48A66;
-	Sat,  3 Oct 2015 19:50:46 +0300 (MSK)
-Message-ID: <56100766.6070700@msgid.tls.msk.ru>
-Date: Sat, 03 Oct 2015 19:50:46 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
-MIME-Version: 1.0
-To: Shraddha Barke <shraddha.6596@gmail.com>, kvm@vger.kernel.org, 
-	qemu-trivial@nongnu.org
+	(envelope-from <armbru@redhat.com>)
+	id 1ZiyA9-0006EN-SS; Mon, 05 Oct 2015 01:18:13 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 39035157743;
+	Mon,  5 Oct 2015 05:18:13 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-24.ams2.redhat.com
+	[10.36.116.24])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t955IBrp003738
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 5 Oct 2015 01:18:12 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id ADE3F300253F; Mon,  5 Oct 2015 07:18:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
 References: <1443170278-9318-1-git-send-email-shraddha.6596@gmail.com>
-	<1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
-In-Reply-To: <1443170278-9318-3-git-send-email-shraddha.6596@gmail.com>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 3/3] Target-ppc: Remove unnecessary
-	variable
+	<56100743.4010604@msgid.tls.msk.ru>
+Date: Mon, 05 Oct 2015 07:18:10 +0200
+In-Reply-To: <56100743.4010604@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Sat, 03 Oct 2015 19:50:11 +0300")
+Message-ID: <87d1wtao6l.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Shraddha Barke <shraddha.6596@gmail.com>, kvm@vger.kernel.org,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] Target-microblaze:
+	Remove unnecessary variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,37 +54,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Oct 2015 16:50:56 -0000
+X-List-Received-Date: Mon, 05 Oct 2015 05:18:20 -0000
 
-25.09.2015 11:37, Shraddha Barke wrote:
-> Compress lines and remove the variable.
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-Applied to -trivial, removing this piece of commit message:
+> 25.09.2015 11:37, Shraddha Barke wrote:
+>> Compress lines and remove the variable .
+>
+> Applied to -trivial, removing this piece of commit message:
+>
+> ---
+>> Change made using Coccinelle script
+>> 
+>> @@
+>> expression ret;
+>> @@
+>> - if (ret) return ret;
+>> - return 0;
+>> + return ret;
+>> @@
+>> local idexpression ret;
+>> expression e;
+>> @@
+>> - ret = e;
+>> - return ret;
+>> + return e;
+>> @@
+>> type T; identifier i;
+>> @@
+>> - T i;
+>> ... when != i
+> ---
 
----
-> Change made using Coccinelle script
-> 
-> @@
-> expression ret;
-> @@
-> - if (ret) return ret;
-> - return 0;
-> + return ret;
-> @@
-> local idexpression ret;
-> expression e;
-> @@
-> - ret = e;
-> - return ret;
-> + return e;
-> @@
-> type T; identifier i;
-> @@
-> - T i;
-> ... when != i
----
+Why?  I like having the semantic patch in the commit message when
+there's any chance we'll want do the same mechanical change again later.
 
-Thanks,
-
-/mjt
+You could save space and include it by reference, though: "Same
+Coccinelle semantic patch as is commit 74c373e".
 
