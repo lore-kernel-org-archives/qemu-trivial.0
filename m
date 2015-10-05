@@ -1,48 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zk69Z-0000D7-Ef
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 04:02:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42174)
+	id 1Zk6Aq-0000Wg-HT
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 04:03:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Ziy2E-0000pz-Ka
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 01:10:03 -0400
+	(envelope-from <eblake@redhat.com>) id 1Zj7iB-0000Ow-IM
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 11:30:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1Ziy2D-00033G-Pp
-	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 01:10:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40482)
+	(envelope-from <eblake@redhat.com>) id 1Zj7iA-00020z-Ig
+	for qemu-trivial@nongnu.org; Mon, 05 Oct 2015 11:29:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1Ziy27-0002vY-Ol; Mon, 05 Oct 2015 01:09:55 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 32C9BC0B1B26;
-	Mon,  5 Oct 2015 05:09:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-24.ams2.redhat.com
-	[10.36.116.24])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9559ph6000669
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 5 Oct 2015 01:09:52 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 68C8E300253F; Mon,  5 Oct 2015 07:09:50 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1443189844-20341-1-git-send-email-marcandre.lureau@redhat.com>
-	<1443189844-20341-22-git-send-email-marcandre.lureau@redhat.com>
-	<56057193.5060508@redhat.com> <56100875.3060408@msgid.tls.msk.ru>
-Date: Mon, 05 Oct 2015 07:09:50 +0200
-In-Reply-To: <56100875.3060408@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Sat, 03 Oct 2015 19:55:17 +0300")
-Message-ID: <87h9m5aokh.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <eblake@redhat.com>)
+	id 1Zj7i1-0001ud-TF; Mon, 05 Oct 2015 11:29:49 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 88EF28E690;
+	Mon,  5 Oct 2015 15:29:49 +0000 (UTC)
+Received: from [10.3.113.192] (ovpn-113-192.phx2.redhat.com [10.3.113.192])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t95FTm0m032681; Mon, 5 Oct 2015 11:29:48 -0400
+To: Michael Tokarev <mjt@tls.msk.ru>, Shraddha Barke <shraddha.6596@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org
+References: <1443191763-3445-1-git-send-email-shraddha.6596@gmail.com>
+	<1443191763-3445-2-git-send-email-shraddha.6596@gmail.com>
+	<5610097E.5090306@msgid.tls.msk.ru>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <5612976B.3060809@redhat.com>
+Date: Mon, 5 Oct 2015 09:29:47 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+In-Reply-To: <5610097E.5090306@msgid.tls.msk.ru>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="7KadcS8wS4l4nQtlFLLUt8FEoqC5Qrovm"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, marcandre.lureau@redhat.com,
-	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 21/36] misc: spelling
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Hw: timer: Remove
+	unnecessary variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,32 +53,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Oct 2015 05:10:03 -0000
+X-List-Received-Date: Mon, 05 Oct 2015 15:37:52 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--7KadcS8wS4l4nQtlFLLUt8FEoqC5Qrovm
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-> 25.09.2015 19:08, Eric Blake wrote:
->> On 09/25/2015 08:03 AM, marcandre.lureau@redhat.com wrote:
->>> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->>>
->>> ---
->>>  monitor.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>=20
->> Trivial, can be applied now without waiting for pending qapi patches.
->>=20
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->
-> Note there's no S-o-b line in the original patch (whole series,
-> looks like).  Hopefully it is okay for such a really trivial
-> patch :)
->
-> Applied, thanks!
+On 10/03/2015 10:59 AM, Michael Tokarev wrote:
+> 25.09.2015 17:36, Shraddha Barke wrote:
+>> Compress lines and remove the variable.
+>=20
+> Applied to -trivial, removing the Coccinelle script
+> from the commit message.
 
-It may be legally safe, but do we really want to engage in judging
-whether patches are copyrightable or not?  Besides, it sets a bad
-example.
+Why cripple the commit message? The coccinelle recipe is useful for
+someone trying to backport the script to a different branch where a
+straight backport doesn't quite work, but rerunning the coccinelle
+recipe does.
 
-Marc-Andr=C3=A9, please repost your patches ready for -trivial with your
-S-o-B, cc: qemu-trivial.
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--7KadcS8wS4l4nQtlFLLUt8FEoqC5Qrovm
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJWEpdrAAoJEKeha0olJ0NqUbEIAJtev69Ktv5w9M45gBYsPjHT
+yn91WxF1CQiXJnxLG+7BGY9y+c8Bst3yMxwJmuVsJ+gTDbeev9c8Kkv2EysFS8B7
+l3ZoXtkkLQg96rs0zE9nahNIF/ZE6XblRoIjyXzmQ2t1PB0w+XvjJNsL8HDESytU
+lbuDmJZtpZ9AJ7wmOitufo5f6/gOxUcyUiTbaIKci/6H+GWpWRXIQKAgAW5bLq5P
+8zm905jsJRhb/BCMQGdgeX2Uhr0w9JcwfhgtB01y7iHND1o3CKRP/mInX2xrxU2L
+yGnKbwTpBRDwXlFEd3FRlULcVMPvmtb1xGTxEo6MIMbTQbjPTKn7DJKBZLysC5w=
+=VaTA
+-----END PGP SIGNATURE-----
+
+--7KadcS8wS4l4nQtlFLLUt8FEoqC5Qrovm--
 
