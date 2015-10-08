@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkiOf-0005KC-FS
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 20:52:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45072)
+	id 1ZkiOQ-0005EF-EQ
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 20:52:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52156)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZkGyU-0004cF-1s
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:38 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkEbv-0006Ir-RN
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:05:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZkGyP-0006Go-9z
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39088)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkEal-0004j3-4g
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:04:05 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57999)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1ZkGyN-0006G3-Cc; Thu, 08 Oct 2015 15:35:27 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id DE4108EA3C;
-	Thu,  8 Oct 2015 19:35:26 +0000 (UTC)
-Received: from thh440s.redhat.com (vpn1-6-90.ams2.redhat.com [10.36.6.90])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t98JZH3J009701; Thu, 8 Oct 2015 15:35:24 -0400
-From: Thomas Huth <thuth@redhat.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZkEZn-0002rH-RC; Thu, 08 Oct 2015 13:02:00 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 96B0740A5F;
+	Thu,  8 Oct 2015 20:01:49 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 9EEBEA99;
+	Thu,  8 Oct 2015 19:52:32 +0300 (MSK)
+Received: (nullmailer pid 12015 invoked by uid 1000);
+	Thu, 08 Oct 2015 16:52:30 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu,  8 Oct 2015 21:35:13 +0200
-Message-Id: <1444332916-16476-3-git-send-email-thuth@redhat.com>
-In-Reply-To: <1444332916-16476-1-git-send-email-thuth@redhat.com>
-References: <1444332916-16476-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Alexander Graf <agraf@suse.de>, David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-trivial] [PATCH 2/5] hw/scsi/spapr_vscsi: Remove superfluous
-	memset
+Date: Thu,  8 Oct 2015 19:52:28 +0300
+Message-Id: <deb847bfba7ee0ab8151842f5e9cb12d4daad3a3.1444323071.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [Qemu-trivial] [PULL 19/19] tests: Unique test path for
+	/string-visitor/output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,32 +44,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 19:35:38 -0000
+X-List-Received-Date: Thu, 08 Oct 2015 17:23:01 -0000
 
-g_malloc0 already clears the memory, so no need for
-the additional memset here.
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Alexander Graf <agraf@suse.de>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Newer GLib's want unique test paths, and thus moan at dupes.
+(Seen on Fedora 23 which has glib 2.46)
+
+Uniquify the paths.
+
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/scsi/spapr_vscsi.c | 1 -
- 1 file changed, 1 deletion(-)
+ tests/test-string-output-visitor.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
-index 891424f..f4f5140 100644
---- a/hw/scsi/spapr_vscsi.c
-+++ b/hw/scsi/spapr_vscsi.c
-@@ -750,7 +750,6 @@ static void vscsi_report_luns(VSCSIState *s, vscsi_req *req)
-     len = n+8;
+diff --git a/tests/test-string-output-visitor.c b/tests/test-string-output-visitor.c
+index 101fb27..fd5e67b 100644
+--- a/tests/test-string-output-visitor.c
++++ b/tests/test-string-output-visitor.c
+@@ -248,39 +248,39 @@ int main(int argc, char **argv)
  
-     resp_data = g_malloc0(len);
--    memset(resp_data, 0, len);
-     stl_be_p(resp_data, n);
-     i = found_lun0 ? 8 : 16;
-     QTAILQ_FOREACH(kid, &s->bus.qbus.children, sibling) {
+     output_visitor_test_add("/string-visitor/output/int",
+                             &out_visitor_data, test_visitor_out_int, false);
+-    output_visitor_test_add("/string-visitor/output/int",
++    output_visitor_test_add("/string-visitor/output/int-human",
+                             &out_visitor_data, test_visitor_out_int, true);
+     output_visitor_test_add("/string-visitor/output/bool",
+                             &out_visitor_data, test_visitor_out_bool, false);
+-    output_visitor_test_add("/string-visitor/output/bool",
++    output_visitor_test_add("/string-visitor/output/bool-human",
+                             &out_visitor_data, test_visitor_out_bool, true);
+     output_visitor_test_add("/string-visitor/output/number",
+                             &out_visitor_data, test_visitor_out_number, false);
+-    output_visitor_test_add("/string-visitor/output/number",
++    output_visitor_test_add("/string-visitor/output/number-human",
+                             &out_visitor_data, test_visitor_out_number, true);
+     output_visitor_test_add("/string-visitor/output/string",
+                             &out_visitor_data, test_visitor_out_string, false);
+-    output_visitor_test_add("/string-visitor/output/string",
++    output_visitor_test_add("/string-visitor/output/string-human",
+                             &out_visitor_data, test_visitor_out_string, true);
+     output_visitor_test_add("/string-visitor/output/no-string",
+                             &out_visitor_data, test_visitor_out_no_string,
+                             false);
+-    output_visitor_test_add("/string-visitor/output/no-string",
++    output_visitor_test_add("/string-visitor/output/no-string-human",
+                             &out_visitor_data, test_visitor_out_no_string,
+                             true);
+     output_visitor_test_add("/string-visitor/output/enum",
+                             &out_visitor_data, test_visitor_out_enum, false);
+-    output_visitor_test_add("/string-visitor/output/enum",
++    output_visitor_test_add("/string-visitor/output/enum-human",
+                             &out_visitor_data, test_visitor_out_enum, true);
+     output_visitor_test_add("/string-visitor/output/enum-errors",
+                             &out_visitor_data, test_visitor_out_enum_errors,
+                             false);
+-    output_visitor_test_add("/string-visitor/output/enum-errors",
++    output_visitor_test_add("/string-visitor/output/enum-errors-human",
+                             &out_visitor_data, test_visitor_out_enum_errors,
+                             true);
+     output_visitor_test_add("/string-visitor/output/intList",
+                             &out_visitor_data, test_visitor_out_intList, false);
+-    output_visitor_test_add("/string-visitor/output/intList",
++    output_visitor_test_add("/string-visitor/output/intList-human",
+                             &out_visitor_data, test_visitor_out_intList, true);
+ 
+     g_test_run();
 -- 
-1.8.3.1
+2.1.4
 
 
