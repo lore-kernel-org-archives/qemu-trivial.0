@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkIMG-0000xn-Pb
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 17:04:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38682)
+	id 1ZkLMv-00073K-DF
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 20:17:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZkIJ7-0008Lj-0t
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 17:01:01 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkLLp-0006Qx-2M
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 20:17:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZkIJ1-0003oP-UP
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 17:00:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60236)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkLLQ-0007GI-NH
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 20:15:56 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44755)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1ZkIIg-0003gW-Aw; Thu, 08 Oct 2015 17:00:30 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id DADB28EA37;
-	Thu,  8 Oct 2015 21:00:29 +0000 (UTC)
-Received: from [10.3.113.202] (ovpn-113-202.phx2.redhat.com [10.3.113.202])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t98L0SHx013041; Thu, 8 Oct 2015 17:00:29 -0400
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1444332916-16476-1-git-send-email-thuth@redhat.com>
-	<1444332916-16476-3-git-send-email-thuth@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <5616D96C.70604@redhat.com>
-Date: Thu, 8 Oct 2015 15:00:28 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <1444332916-16476-3-git-send-email-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="0ATHR1RVcF8NsVIOMcvHpHMQUPvmtQlNN"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Alexander Graf <agraf@suse.de>, David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/5] hw/scsi/spapr_vscsi:
- Remove superfluous memset
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZkEQs-0000kW-T0; Thu, 08 Oct 2015 12:52:46 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 63CC940A5A;
+	Thu,  8 Oct 2015 19:52:30 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 47D61A85;
+	Thu,  8 Oct 2015 19:52:30 +0300 (MSK)
+Received: (nullmailer pid 11980 invoked by uid 1000);
+	Thu, 08 Oct 2015 16:52:30 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Thu,  8 Oct 2015 19:52:11 +0300
+Message-Id: <be9c5ddeabb73e9dee2d6922c03ffee4e1f4c8ec.1444323071.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, qemu-trivial@nongnu.org,
+	Sai Pavan Boddu <saipava@xilinx.com>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 02/19] sdhci: use PRIx64 for uint64_t type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,50 +43,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 21:01:01 -0000
+X-List-Received-Date: Fri, 09 Oct 2015 00:17:03 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---0ATHR1RVcF8NsVIOMcvHpHMQUPvmtQlNN
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 
-On 10/08/2015 01:35 PM, Thomas Huth wrote:
-> g_malloc0 already clears the memory, so no need for
-> the additional memset here.
->=20
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> Cc: Alexander Graf <agraf@suse.de>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/scsi/spapr_vscsi.c | 1 -
->  1 file changed, 1 deletion(-)
+Fix compile time warnings, because of type mismatch for unsigned long
+long type.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Sai Pavan Boddu <saipava@xilinx.com>
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/sd/sdhci.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 65304cf..436448c 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -22,6 +22,7 @@
+  * with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <inttypes.h>
+ #include "hw/hw.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+@@ -719,7 +720,8 @@ static void sdhci_do_adma(SDHCIState *s)
+             break;
+         case SDHC_ADMA_ATTR_ACT_LINK:   /* link to next descriptor table */
+             s->admasysaddr = dscr.addr;
+-            DPRINT_L1("ADMA link: admasysaddr=0x%lx\n", s->admasysaddr);
++            DPRINT_L1("ADMA link: admasysaddr=0x%" PRIx64 "\n",
++                      s->admasysaddr);
+             break;
+         default:
+             s->admasysaddr += dscr.incr;
+@@ -727,7 +729,8 @@ static void sdhci_do_adma(SDHCIState *s)
+         }
+ 
+         if (dscr.attr & SDHC_ADMA_ATTR_INT) {
+-            DPRINT_L1("ADMA interrupt: admasysaddr=0x%lx\n", s->admasysaddr);
++            DPRINT_L1("ADMA interrupt: admasysaddr=0x%" PRIx64 "\n",
++                      s->admasysaddr);
+             if (s->norintstsen & SDHC_NISEN_DMA) {
+                 s->norintsts |= SDHC_NIS_DMA;
+             }
+-- 
+2.1.4
 
-
---0ATHR1RVcF8NsVIOMcvHpHMQUPvmtQlNN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWFtlsAAoJEKeha0olJ0NqsM8H/RpcNYo/gSbi/zt8+sROgbIA
-qFLLmI+ZF2Nas+5t9gndMH9AZddCIbdMJ+Pzm74Lj16wYSgBFQdziwNP73NDJEss
-ZGyiP6D02SUOqGcHptmx/42MshLvbAs4zwul+lLX+vLRAeDsPsjVYckzXeTjagYu
-1XYg3Td1FWaLN4MNEva1aJY5dz2bL7yE4i2Ox8btzA54mTaaJyYx7LITL18b0FJv
-ZOnq+E8ikfDthgQZ8bEn9py+2mpvyhg7UtDyiVMB/OrsdxQCqIKoZtMizWij9P5R
-NI9UObbNh3+6IcZ2XW9BWUqFyLazpPWqJ5nzmwIn6yvb4mXw1rnvIDUjg+ofgek=
-=sMEw
------END PGP SIGNATURE-----
-
---0ATHR1RVcF8NsVIOMcvHpHMQUPvmtQlNN--
 
