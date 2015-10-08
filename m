@@ -1,36 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkH2z-000823-O6
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 15:40:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45181)
+	id 1ZkHor-0006xA-MB
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 16:29:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZkGyX-0004dW-GZ
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:38 -0400
+	(envelope-from <lersek@redhat.com>) id 1ZkHjz-0005CG-E9
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 16:24:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ZkGyW-0006Le-4z
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52420)
+	(envelope-from <lersek@redhat.com>) id 1ZkHjy-0007lP-K5
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 16:24:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40165)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1ZkGyP-0006GY-8I; Thu, 08 Oct 2015 15:35:29 -0400
+	(envelope-from <lersek@redhat.com>)
+	id 1ZkHju-0007jp-Az; Thu, 08 Oct 2015 16:24:34 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id F2CF9C0B83CB;
-	Thu,  8 Oct 2015 19:35:28 +0000 (UTC)
-Received: from thh440s.redhat.com (vpn1-6-90.ams2.redhat.com [10.36.6.90])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7E08EA381D;
+	Thu,  8 Oct 2015 20:24:33 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-97.phx2.redhat.com
+	[10.3.113.97])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t98JZH3K009701; Thu, 8 Oct 2015 15:35:27 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 Oct 2015 21:35:14 +0200
-Message-Id: <1444332916-16476-4-git-send-email-thuth@redhat.com>
-In-Reply-To: <1444332916-16476-1-git-send-email-thuth@redhat.com>
+	id t98KOVSW005734; Thu, 8 Oct 2015 16:24:32 -0400
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
 References: <1444332916-16476-1-git-send-email-thuth@redhat.com>
+	<1444332916-16476-5-git-send-email-thuth@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <5616D0FF.5030909@redhat.com>
+Date: Thu, 8 Oct 2015 22:24:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <1444332916-16476-5-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH 3/5] hw/input/tsc210x: Remove superfluous
-	memset
+Subject: Re: [Qemu-trivial] [PATCH 4/5] tests/i44fx-test: No need for
+ zeroing memory before memset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,44 +50,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 19:35:38 -0000
+X-List-Received-Date: Thu, 08 Oct 2015 20:24:40 -0000
 
-g_malloc0 already clears the memory, so no need for additional
-memsets here. And while we're at it, let's also remove the
-superfluous typecasts for the return values of g_malloc0.
+On 10/08/15 21:35, Thomas Huth wrote:
+> Change a g_malloc0 into g_malloc since the following
+> memset fills the whole buffer anyway.
+> 
+> Cc: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/i440fx-test.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
+> index d0bc8de..7fa1709 100644
+> --- a/tests/i440fx-test.c
+> +++ b/tests/i440fx-test.c
+> @@ -191,7 +191,7 @@ static void write_area(uint32_t start, uint32_t end, uint8_t value)
+>      uint32_t size = end - start + 1;
+>      uint8_t *data;
+>  
+> -    data = g_malloc0(size);
+> +    data = g_malloc(size);
+>      memset(data, value, size);
+>      memwrite(start, data, size);
+>  
+> 
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/input/tsc210x.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+Technically you are right of course, but I remember some historical mess
+around this, in this file.
 
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index fae3385..92b076a 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -1086,9 +1086,7 @@ uWireSlave *tsc2102_init(qemu_irq pint)
- {
-     TSC210xState *s;
- 
--    s = (TSC210xState *)
--            g_malloc0(sizeof(TSC210xState));
--    memset(s, 0, sizeof(TSC210xState));
-+    s = g_malloc0(sizeof(TSC210xState));
-     s->x = 160;
-     s->y = 160;
-     s->pressure = 0;
-@@ -1135,9 +1133,7 @@ uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav)
- {
-     TSC210xState *s;
- 
--    s = (TSC210xState *)
--            g_malloc0(sizeof(TSC210xState));
--    memset(s, 0, sizeof(TSC210xState));
-+    s = g_malloc0(sizeof(TSC210xState));
-     s->x = 400;
-     s->y = 240;
-     s->pressure = 0;
--- 
-1.8.3.1
+Plus I vaguely recall g_new[0]() being the most recent preference.
 
+https://developer.gnome.org/glib/stable/glib-Memory-Allocation.html#g-new
+
+See e.g. commit 97f3ad3551. Markus?
+
+Thanks
+Laszlo
 
