@@ -1,38 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zkdcu-0003rN-V1
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 15:46:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56049)
+	id 1Zkdd1-0003u5-Er
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 15:46:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkF4F-0004Uz-6r
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:34:29 -0400
+	(envelope-from <thuth@redhat.com>) id 1ZkGyL-0004at-U3
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkF3e-0000Hv-Pb
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:33:22 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51011)
+	(envelope-from <thuth@redhat.com>) id 1ZkGyL-0006Ek-3a
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 15:35:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZkF2k-0007G3-Ns; Thu, 08 Oct 2015 13:31:50 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4C4D340A61;
-	Thu,  8 Oct 2015 20:31:49 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 1B9EBA88;
-	Thu,  8 Oct 2015 19:52:32 +0300 (MSK)
-Received: (nullmailer pid 11984 invoked by uid 1000);
-	Thu, 08 Oct 2015 16:52:30 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <thuth@redhat.com>)
+	id 1ZkGyJ-0006DR-7U; Thu, 08 Oct 2015 15:35:23 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id E94D367;
+	Thu,  8 Oct 2015 19:35:22 +0000 (UTC)
+Received: from thh440s.redhat.com (vpn1-6-90.ams2.redhat.com [10.36.6.90])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t98JZH3I009701; Thu, 8 Oct 2015 15:35:21 -0400
+From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu,  8 Oct 2015 19:52:13 +0300
-Message-Id: <dc1442204a2235b1ad0c4bdceb3580c97f71f1b5.1444323071.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
-References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Guenter Roeck <linux@roeck-us.net>
-Subject: [Qemu-trivial] [PULL 04/19] imx_serial: Generate interrupt on tx
-	empty if enabled
+Date: Thu,  8 Oct 2015 21:35:12 +0200
+Message-Id: <1444332916-16476-2-git-send-email-thuth@redhat.com>
+In-Reply-To: <1444332916-16476-1-git-send-email-thuth@redhat.com>
+References: <1444332916-16476-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH 1/5] hw/dma/pxa2xx: Remove superfluous memset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,40 +41,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 17:35:23 -0000
+X-List-Received-Date: Thu, 08 Oct 2015 19:35:27 -0000
 
-From: Guenter Roeck <linux@roeck-us.net>
+g_malloc0 already clears the memory, so no need for
+the additional memset here.
 
-Generate an interrupt if the tx buffer is empty and the tx empty interrupt
-is enabled. This fixes a problem seen when running a Linux image since
-Linux commit 55c3cb1358e ("serial: imx: remove unneeded imx_transmit_buffer()
-from imx_start_tx()"). Linux now waits for the tx empty interrupt before
-starting to send data, causing transmit stalls until there is an interrupt
-for another reason.
-
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/char/imx_serial.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/dma/pxa2xx_dma.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index e8f32c4..f0c4c72 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -66,7 +66,9 @@ static void imx_update(IMXSerialState *s)
-     uint32_t flags;
+diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
+index d4501fb..3f0a720 100644
+--- a/hw/dma/pxa2xx_dma.c
++++ b/hw/dma/pxa2xx_dma.c
+@@ -461,7 +461,6 @@ static int pxa2xx_dma_init(SysBusDevice *sbd)
  
-     flags = (s->usr1 & s->ucr1) & (USR1_TRDY|USR1_RRDY);
--    if (!(s->ucr1 & UCR1_TXMPTYEN)) {
-+    if (s->ucr1 & UCR1_TXMPTYEN) {
-+        flags |= (s->uts1 & UTS1_TXEMPTY);
-+    } else {
-         flags &= ~USR1_TRDY;
-     }
+     s->chan = g_malloc0(sizeof(PXA2xxDMAChannel) * s->channels);
+ 
+-    memset(s->chan, 0, sizeof(PXA2xxDMAChannel) * s->channels);
+     for (i = 0; i < s->channels; i ++)
+         s->chan[i].state = DCSR_STOPINTR;
  
 -- 
-2.1.4
+1.8.3.1
 
 
