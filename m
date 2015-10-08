@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkEji-0003FX-E7
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 13:12:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45097)
+	id 1ZkFFz-0007PE-Sl
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Oct 2015 13:45:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43348)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkEjc-00033i-1x
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:12:06 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkFFS-0007IA-5R
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:44:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkEjV-00044D-Pd
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:12:03 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50464)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkFFR-0002wi-Fi
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:44:58 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44507)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZkEjQ-0003vC-3j; Thu, 08 Oct 2015 13:11:52 -0400
+	id 1ZkEQz-0000sq-9s; Thu, 08 Oct 2015 12:52:49 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 80AF840A62;
-	Thu,  8 Oct 2015 20:11:49 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 7735740A5D;
+	Thu,  8 Oct 2015 19:52:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 82713A97;
-	Thu,  8 Oct 2015 19:52:32 +0300 (MSK)
-Received: (nullmailer pid 12003 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5EF7CA85;
+	Thu,  8 Oct 2015 19:52:31 +0300 (MSK)
+Received: (nullmailer pid 11986 invoked by uid 1000);
 	Thu, 08 Oct 2015 16:52:30 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu,  8 Oct 2015 19:52:22 +0300
-Message-Id: <bf5f78efed26054c2ce71e6f4c30ece13bf06e87.1444323071.git.mjt@msgid.tls.msk.ru>
+Date: Thu,  8 Oct 2015 19:52:14 +0300
+Message-Id: <eab2ac9d3c1675a58989000c2647aa33e440906a.1444323071.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
 References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Shraddha Barke <shraddha.6596@gmail.com>
-Subject: [Qemu-trivial] [PULL 13/19] hw: timer: Remove unnecessary variable
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 05/19] block/ssh: remove dead code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,34 +43,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 17:12:06 -0000
+X-List-Received-Date: Thu, 08 Oct 2015 17:44:58 -0000
 
-From: Shraddha Barke <shraddha.6596@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Compress lines and remove the variable.
+The "err" label cannot be reached with qp != NULL.  Remove the free-ing
+of qp and avoid future regressions by removing the initializer.
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+ACKed-by: Richard W.M. Jones <rjones@redhat.com>
+Reviewed-by: Fam Zheng <famz@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/timer/m48t59.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ block/ssh.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/hw/timer/m48t59.c b/hw/timer/m48t59.c
-index 8ab683d..b3df8f9 100644
---- a/hw/timer/m48t59.c
-+++ b/hw/timer/m48t59.c
-@@ -590,10 +590,8 @@ static void nvram_writel (void *opaque, hwaddr addr, uint32_t value)
- static uint32_t nvram_readb (void *opaque, hwaddr addr)
+diff --git a/block/ssh.c b/block/ssh.c
+index 8d06739..d35b51f 100644
+--- a/block/ssh.c
++++ b/block/ssh.c
+@@ -193,7 +193,7 @@ sftp_error_report(BDRVSSHState *s, const char *fs, ...)
+ static int parse_uri(const char *filename, QDict *options, Error **errp)
  {
-     M48t59State *NVRAM = opaque;
--    uint32_t retval;
+     URI *uri = NULL;
+-    QueryParams *qp = NULL;
++    QueryParams *qp;
+     int i;
  
--    retval = m48t59_read(NVRAM, addr);
--    return retval;
-+    return m48t59_read(NVRAM, addr);
- }
+     uri = uri_parse(filename);
+@@ -249,9 +249,6 @@ static int parse_uri(const char *filename, QDict *options, Error **errp)
+     return 0;
  
- static uint32_t nvram_readw (void *opaque, hwaddr addr)
+  err:
+-    if (qp) {
+-      query_params_free(qp);
+-    }
+     if (uri) {
+       uri_free(uri);
+     }
 -- 
 2.1.4
 
