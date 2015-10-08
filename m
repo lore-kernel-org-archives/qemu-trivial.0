@@ -1,38 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkiOQ-0005Dt-1v
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 20:52:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56401)
+	id 1ZkiOL-0005BY-1l
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 20:52:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkEdR-0007zs-CS
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:05:54 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkESD-0000Uc-Jd
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 12:55:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZkEcL-0000sn-NX
-	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 13:05:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45570)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZkEPn-0005Jf-BN
+	for qemu-trivial@nongnu.org; Thu, 08 Oct 2015 12:54:05 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZkEZt-00038Q-8U; Thu, 08 Oct 2015 13:02:01 -0400
+	id 1ZkENc-0001vC-WD; Thu, 08 Oct 2015 12:49:21 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9ADF540A60;
-	Thu,  8 Oct 2015 20:01:49 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 6A2E0A96;
-	Thu,  8 Oct 2015 19:52:32 +0300 (MSK)
-Received: (nullmailer pid 12013 invoked by uid 1000);
-	Thu, 08 Oct 2015 16:52:30 -0000
+	by isrv.corpit.ru (Postfix) with ESMTP id 1E21D40A55;
+	Thu,  8 Oct 2015 19:49:20 +0300 (MSK)
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id F34E6A83;
+	Thu,  8 Oct 2015 19:49:19 +0300 (MSK)
+Message-ID: <56169E8F.9060808@msgid.tls.msk.ru>
+Date: Thu, 08 Oct 2015 19:49:19 +0300
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 Oct 2015 19:52:27 +0300
-Message-Id: <d1c002b6ae2dc81d97bbe23fe65e1960abdba9a4.1444323071.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
-References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.8.0
+MIME-Version: 1.0
+To: Eric Blake <eblake@redhat.com>, 
+	"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>, qemu-devel@nongnu.org
+References: <1444043060-22835-1-git-send-email-dgilbert@redhat.com>
+	<561299AE.1050703@redhat.com>
+In-Reply-To: <561299AE.1050703@redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 18/19] linux-user: Remove type casts to union
-	type
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, afaerber@suse.de
+Subject: Re: [Qemu-trivial] [PATCH] tests: Unique test path for
+	/string-visitor/output
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,59 +49,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Oct 2015 17:19:19 -0000
+X-List-Received-Date: Thu, 08 Oct 2015 16:55:11 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+05.10.2015 18:39, Eric Blake wrote:
+> On 10/05/2015 05:04 AM, Dr. David Alan Gilbert (git) wrote:
+>> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>>
+>> Newer GLib's want unique test paths, and thus moan at dupes.
+>> (Seen on Fedora 23 which has glib 2.46)
+>>
+>> Uniqueify the paths.
+> 
+> Not sure if "Uniquify" is any better spelling for a made-up word?
 
-Casting to a union type is a gcc (and clang) extension. Other compilers
-might not support it. This is not a problem today, but the type casts
-can be removed easily. Smatch now no longer complains like before:
+It looks like "Uniquify" actually is a word in use
+(and I for one used it before myself).
 
-linux-user/syscall.c:3190:18: warning: cast to non-scalar
-linux-user/syscall.c:7348:44: warning: cast to non-scalar
+Applied to -trivial, with the spelling fix from Eric :)
 
-Cc: Riku Voipio <riku.voipio@iki.fi>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- linux-user/syscall.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Thanks!
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index b8ce208..8bfb24f 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -2728,8 +2728,9 @@ static inline abi_long host_to_target_semarray(int semid, abi_ulong target_addr,
- }
- 
- static inline abi_long do_semctl(int semid, int semnum, int cmd,
--                                 union target_semun target_su)
-+                                 abi_ulong target_arg)
- {
-+    union target_semun target_su = { .buf = target_arg };
-     union semun arg;
-     struct semid_ds dsarg;
-     unsigned short *array = NULL;
-@@ -3251,8 +3252,7 @@ static abi_long do_ipc(unsigned int call, abi_long first,
-          * ptr argument. */
-         abi_ulong atptr;
-         get_user_ual(atptr, ptr);
--        ret = do_semctl(first, second, third,
--                (union target_semun) atptr);
-+        ret = do_semctl(first, second, third, atptr);
-         break;
-     }
- 
-@@ -7550,7 +7550,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
- #endif
- #ifdef TARGET_NR_semctl
-     case TARGET_NR_semctl:
--        ret = do_semctl(arg1, arg2, arg3, (union target_semun)(abi_ulong)arg4);
-+        ret = do_semctl(arg1, arg2, arg3, arg4);
-         break;
- #endif
- #ifdef TARGET_NR_msgctl
--- 
-2.1.4
-
+/mjt
 
