@@ -1,45 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkZTw-00045Y-MB
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 11:21:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41852)
+	id 1ZkZUc-0004o0-Uu
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 11:21:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55772)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ZkSjM-0000Sj-MI
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 04:08:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRo-0003zc-7p
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ZkSjL-0008UC-H7
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 04:08:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34575)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRi-0005nl-KV
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:48 -0400
+Received: from mail-vk0-f49.google.com ([209.85.213.49]:35640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1ZkSjG-0008SB-Tg; Fri, 09 Oct 2015 04:08:39 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 680792F90CF;
-	Fri,  9 Oct 2015 08:08:38 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-67.phx2.redhat.com
-	[10.3.113.67])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9988ade013313; Fri, 9 Oct 2015 04:08:37 -0400
-To: Markus Armbruster <armbru@redhat.com>
-References: <1444332916-16476-1-git-send-email-thuth@redhat.com>
-	<1444332916-16476-5-git-send-email-thuth@redhat.com>
-	<5616D0FF.5030909@redhat.com> <87fv1k1qu8.fsf@blackfin.pond.sub.org>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56177603.40307@redhat.com>
-Date: Fri, 9 Oct 2015 10:08:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRi-0005nd-Go
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:42 -0400
+Received: by vkao3 with SMTP id o3so48933196vka.2
+	for <qemu-trivial@nongnu.org>; Fri, 09 Oct 2015 04:02:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=iLuyMg6JiR2VxJxQ9IAcJhQuvaNlRjmGne98H17dVuY=;
+	b=WsI21MQN2xgh2vITYuTScWdVeaKyd3Qcd5IBathGyLFmE89Aj1GgWOp81qqPbPyQVs
+	WRR5NwCxG/RivUKl+VoP3zY3Nnhi9knWsU7JMeWfDdtNBfuHK3QdR/wVhWGfYqcebVs/
+	d9Jk6sJvKpzUAqoRE54VqUQkM250dUY7cmMkXmuCPXvgOCKXDX9sCmxyEH1YtfImufx5
+	heT2zkEs58F48VaaLGU/KxodeIugZZ/65ruPC7+aa5niAEJI61x/hqD6L477VT5r71hK
+	WGL8Z4LV708LY3ZQIdcgjNgI9C+RJgo9iT8cqxi7qK0fHkPv6sy8XY9byT8ccpPTis1P
+	GcxQ==
+X-Gm-Message-State: ALoCoQnvUQiCBvwJ6cUwuRB8gTgsqXpoVbquX/TV1LLLtl/zNZQLf2mUDKaGKkfVkmOy/TJPrScl
+X-Received: by 10.31.56.72 with SMTP id f69mr7432346vka.27.1444388561858; Fri,
+	09 Oct 2015 04:02:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87fv1k1qu8.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/5] tests/i44fx-test: No
- need for zeroing memory before memset
+Received: by 10.31.153.15 with HTTP; Fri, 9 Oct 2015 04:02:22 -0700 (PDT)
+In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 Oct 2015 12:02:22 +0100
+Message-ID: <CAFEAcA_DJ2dQzX40iY10Fagm+3oFh6NcSyxXOP9WmUw2c5dyFw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.213.49
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/19] Trivial patches for
+	2015-10-08
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,90 +55,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2015 08:08:45 -0000
+X-List-Received-Date: Fri, 09 Oct 2015 11:02:52 -0000
 
-On 10/09/15 08:46, Markus Armbruster wrote:
-> Laszlo Ersek <lersek@redhat.com> writes:
-> 
->> On 10/08/15 21:35, Thomas Huth wrote:
->>> Change a g_malloc0 into g_malloc since the following
->>> memset fills the whole buffer anyway.
->>>
->>> Cc: Laszlo Ersek <lersek@redhat.com>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  tests/i440fx-test.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/tests/i440fx-test.c b/tests/i440fx-test.c
->>> index d0bc8de..7fa1709 100644
->>> --- a/tests/i440fx-test.c
->>> +++ b/tests/i440fx-test.c
->>> @@ -191,7 +191,7 @@ static void write_area(uint32_t start, uint32_t end, uint8_t value)
->>>      uint32_t size = end - start + 1;
->>>      uint8_t *data;
->>>  
->>> -    data = g_malloc0(size);
->>> +    data = g_malloc(size);
->>>      memset(data, value, size);
->>>      memwrite(start, data, size);
->>>  
->>>
->>
->> Technically you are right of course, but I remember some historical mess
->> around this, in this file.
->>
->> Plus I vaguely recall g_new[0]() being the most recent preference.
->>
->> https://developer.gnome.org/glib/stable/glib-Memory-Allocation.html#g-new
->>
->> See e.g. commit 97f3ad3551. Markus?
-> 
-> TL;DR: the patch is fine.
-> 
-> The argument of g_malloc() isn't always the size of a type.  But when it
-> is, you should be using g_new() instead.  The commit message explains:
-> 
->     g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
->     for two reasons.  One, it catches multiplication overflowing size_t.
->     Two, it returns T * rather than void *, which lets the compiler catch
->     more type errors.
->     
-> The multiplication argument applies only when n != 1.
-> 
-> The type checking argument applies regardless of n.  That's why the
-> commit also transfroms patterns like g_malloc(sizeof(T)).
-> 
-> When the argument isn't written as sizeof a type, but could be, we enter
-> "matter of taste" territory.  For instance, some may perefer the
-> idiomatic T *p = g_malloc(sizeof(*p)) to the more tightly typed
-> p = g_new(T, 1).  I therefore leave them alone.  Commit messsage again:
-> 
->     This commit only touches allocations with size arguments of the form
->     sizeof(T).
-> 
-> A separate issue is a zeroing memset() after allocation.  Please use a
-> zeroing allocator instead, because that's more concise.  Precedence:
-> commit 0bd0adb.
-> 
-> Now let's apply this to the patch.
-> 
-> The memset() isn't zeroing, so "use a zeroing allocator instead" doesn't
-> apply.  Before the patch, the code uses one additionally, which is
-> wasteful.  The patch stops the waste.
-> 
-> The size argument is not the size of any type.  You could still write
-> 
->     data = g_new(uint8_t, size);
-> 
-> but the extra verbosity pretty clearly outweighs what we could gain from
-> type checking here.
-> 
+On 8 October 2015 at 17:52, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Another trivial-patches pull request.
+> Everything's trivial in there this time.
+>
+> Please consider applying/pulling.
+>
+> Thank you!
+>
+> /mjt
+>
+> The following changes since commit 31c9bd164ddb653915b9029ba0edd40cd57530d9:
+>
+>   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20151007' into staging (2015-10-08 15:33:56 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-10-08
+>
+> for you to fetch changes up to deb847bfba7ee0ab8151842f5e9cb12d4daad3a3:
+>
+>   tests: Unique test path for /string-visitor/output (2015-10-08 19:48:17 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2015-10-08
+>
+> ----------------------------------------------------------------
 
-Okay, thanks!
+Applied, thanks.
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-
-Cheers
-Laszlo
+-- PMM
 
