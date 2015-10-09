@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZkZUc-0004o0-Uu
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 11:21:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55772)
+	id 1ZkZUu-00058r-Rf
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Oct 2015 11:22:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48349)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRo-0003zc-7p
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:52 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZkWkF-0000NB-N5
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 08:25:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRi-0005nl-KV
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:48 -0400
-Received: from mail-vk0-f49.google.com ([209.85.213.49]:35640)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ZkWkE-00013t-RU
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 08:25:55 -0400
+Received: from mail-oi0-x235.google.com ([2607:f8b0:4003:c06::235]:33185)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZkVRi-0005nd-Go
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 07:02:42 -0400
-Received: by vkao3 with SMTP id o3so48933196vka.2
-	for <qemu-trivial@nongnu.org>; Fri, 09 Oct 2015 04:02:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=iLuyMg6JiR2VxJxQ9IAcJhQuvaNlRjmGne98H17dVuY=;
-	b=WsI21MQN2xgh2vITYuTScWdVeaKyd3Qcd5IBathGyLFmE89Aj1GgWOp81qqPbPyQVs
-	WRR5NwCxG/RivUKl+VoP3zY3Nnhi9knWsU7JMeWfDdtNBfuHK3QdR/wVhWGfYqcebVs/
-	d9Jk6sJvKpzUAqoRE54VqUQkM250dUY7cmMkXmuCPXvgOCKXDX9sCmxyEH1YtfImufx5
-	heT2zkEs58F48VaaLGU/KxodeIugZZ/65ruPC7+aa5niAEJI61x/hqD6L477VT5r71hK
-	WGL8Z4LV708LY3ZQIdcgjNgI9C+RJgo9iT8cqxi7qK0fHkPv6sy8XY9byT8ccpPTis1P
-	GcxQ==
-X-Gm-Message-State: ALoCoQnvUQiCBvwJ6cUwuRB8gTgsqXpoVbquX/TV1LLLtl/zNZQLf2mUDKaGKkfVkmOy/TJPrScl
-X-Received: by 10.31.56.72 with SMTP id f69mr7432346vka.27.1444388561858; Fri,
-	09 Oct 2015 04:02:41 -0700 (PDT)
+	(envelope-from <marcandre.lureau@gmail.com>)
+	id 1ZkWk9-00012C-Hn; Fri, 09 Oct 2015 08:25:49 -0400
+Received: by oiar126 with SMTP id r126so3542910oia.0;
+	Fri, 09 Oct 2015 05:25:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=ada2nzdPZlSpdPkYFcswxtf+U3ClSTgJUhiiAiYAcLY=;
+	b=WK7Sjs0nTvvVpZk1YNbISy1L0o/wE+IShHkxW+PWr6cyOjcWXxsbb/JIEeGakJXhB+
+	BJOmRA0D+axWY+jOXnV8Fug0kSClyC1c1dZF8uLrb2K27oxWkdUvW1GA0BEO/Xs6WlF+
+	bAYBcMrGX3EvWQGNCG+rX8ppmxPP4l31MQaQFwBrzIfWPZzrptWbMODULI1rb5Usf7LL
+	oQoGyVYK979J9c4ImHrylMxWfppYMqKpzyVCiukmKXVC0+KaahjtoZUO8pJfo1t75c+z
+	7+GGRPXLQ2yXYmjXuNUezWbIQqlArBW8wYv+V2MiAZhOylMI90sZQxO6UyUigtYghM6D
+	tmQA==
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 9 Oct 2015 04:02:22 -0700 (PDT)
-In-Reply-To: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
+X-Received: by 10.202.88.215 with SMTP id m206mr7592326oib.47.1444393549007;
+	Fri, 09 Oct 2015 05:25:49 -0700 (PDT)
+Received: by 10.76.74.40 with HTTP; Fri, 9 Oct 2015 05:25:48 -0700 (PDT)
+In-Reply-To: <91288a58a550be4dc80628456d5e1d2e91424827.1444323071.git.mjt@msgid.tls.msk.ru>
 References: <cover.1444323071.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 9 Oct 2015 12:02:22 +0100
-Message-ID: <CAFEAcA_DJ2dQzX40iY10Fagm+3oFh6NcSyxXOP9WmUw2c5dyFw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
+	<91288a58a550be4dc80628456d5e1d2e91424827.1444323071.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 9 Oct 2015 14:25:48 +0200
+Message-ID: <CAJ+F1CLBjf1Soe4EZP3udhzeRMncw2CQ4qVOV0OSpfeUANs-4Q@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>,
+	"Daniel P. Berrange" <berrange@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.213.49
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/19] Trivial patches for
-	2015-10-08
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4003:c06::235
+Cc: qemu-trivial@nongnu.org, QEMU <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 01/19] Add .dir-locals.el
+ file to configure emacs coding style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,36 +55,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2015 11:02:52 -0000
+X-List-Received-Date: Fri, 09 Oct 2015 12:25:56 -0000
 
-On 8 October 2015 at 17:52, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Another trivial-patches pull request.
-> Everything's trivial in there this time.
->
-> Please consider applying/pulling.
->
-> Thank you!
->
-> /mjt
->
-> The following changes since commit 31c9bd164ddb653915b9029ba0edd40cd57530d9:
->
->   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20151007' into staging (2015-10-08 15:33:56 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-10-08
->
-> for you to fetch changes up to deb847bfba7ee0ab8151842f5e9cb12d4daad3a3:
->
->   tests: Unique test path for /string-visitor/output (2015-10-08 19:48:17 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2015-10-08
->
-> ----------------------------------------------------------------
+Hi
 
-Applied, thanks.
+Similar to this file, I proposed a clang-format file. I also use
+emacs, but clang-format is way better at dealing with reformating,
+especially on a given region without touching the rest:
 
--- PMM
+https://lists.nongnu.org/archive/html/qemu-devel/2015-10/msg01278.html
+
+On Thu, Oct 8, 2015 at 6:52 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> From: "Daniel P. Berrange" <berrange@redhat.com>
+>
+> Some default emacs setups indent by 2 spaces and uses tabs
+> which is counter to the QEMU coding style rules. Adding a
+> .dir-locals.el file in the top level of the GIT repo will
+> inform emacs about the QEMU coding style, and so assist
+> contributors in avoiding common style mistakes before
+> they submit patches.
+>
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  .dir-locals.el | 2 ++
+>  1 file changed, 2 insertions(+)
+>  create mode 100644 .dir-locals.el
+>
+> diff --git a/.dir-locals.el b/.dir-locals.el
+> new file mode 100644
+> index 0000000..3ac0cfc
+> --- /dev/null
+> +++ b/.dir-locals.el
+> @@ -0,0 +1,2 @@
+> +((c-mode . ((c-file-style . "stroustrup")
+> +           (indent-tabs-mode . nil))))
+> --
+> 2.1.4
+>
+>
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
