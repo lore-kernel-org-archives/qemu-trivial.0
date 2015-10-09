@@ -1,45 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zknx2-0004SY-Kp
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2015 02:48:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32958)
+	id 1Zkp1Y-0004vL-TJ
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2015 03:57:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZkgcS-0004XK-5L
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 18:58:40 -0400
+	(envelope-from <thuth@redhat.com>) id 1Zka2O-0006sZ-FV
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 11:56:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZkgcP-0007sq-UQ
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 18:58:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54260)
+	(envelope-from <thuth@redhat.com>) id 1Zka2J-0005O3-Rn
+	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 11:56:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46726)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1ZkgcM-0007oB-LL; Fri, 09 Oct 2015 18:58:26 -0400
+	(envelope-from <thuth@redhat.com>)
+	id 1Zka2D-0004yp-PT; Fri, 09 Oct 2015 11:56:41 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 27CD767;
-	Fri,  9 Oct 2015 22:58:26 +0000 (UTC)
-Received: from [10.3.113.202] (ovpn-113-202.phx2.redhat.com [10.3.113.202])
+	by mx1.redhat.com (Postfix) with ESMTPS id CFAD58CF55;
+	Fri,  9 Oct 2015 15:56:40 +0000 (UTC)
+Received: from thh440s.redhat.com (vpn1-4-95.ams2.redhat.com [10.36.4.95])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t99MwPvv026631; Fri, 9 Oct 2015 18:58:25 -0400
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1444406198-6521-1-git-send-email-thuth@redhat.com>
-	<1444406198-6521-2-git-send-email-thuth@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <5618468D.5010005@redhat.com>
-Date: Fri, 9 Oct 2015 16:58:21 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <1444406198-6521-2-git-send-email-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="BIHIcAOlkarhJXAFL1bc4cuXBdbdhvbNV"
+	id t99Fud3J025235; Fri, 9 Oct 2015 11:56:39 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri,  9 Oct 2015 17:56:34 +0200
+Message-Id: <1444406198-6521-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/4] hw/dma/pxa2xx:
- Remove superfluous memset
+Subject: [Qemu-trivial] [PATCH v2 0/4] Small optimizations for code using
+	g_malloc0 + memset/memcpy
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,66 +39,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2015 22:58:40 -0000
+X-List-Received-Date: Fri, 09 Oct 2015 15:56:56 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---BIHIcAOlkarhJXAFL1bc4cuXBdbdhvbNV
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+There are a couple of spots in the QEMU code which use g_malloc0,
+directly followed by a memset or memcpy which fill the whole
+allocated buffer. In this case it either does not make sense to
+zero the buffer via g_malloc0 first (so g_malloc should be used
+instead), or if the second command is a memset(..., 0, ...), then
+the memset does not make much sense, of course, since the buffer
+has already been zeroed by the g_malloc0.
 
-On 10/09/2015 09:56 AM, Thomas Huth wrote:
-> g_malloc0 already clears the memory, so no need for
-> the additional memset here. And while we're at it,
-> also convert the g_malloc0 to the preferred g_new0.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/dma/pxa2xx_dma.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+v2:
+- Switched some of the g_malloc0()s to g_new0()s where appropriate
+- Added Reviewed-by-s
+- The spapr_vscsi patch has been picked up by David already, so not
+  sending it again
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Thomas Huth (4):
+  hw/dma/pxa2xx: Remove superfluous memset
+  hw/input/tsc210x: Remove superfluous memset
+  tests/i44fx-test: No need for zeroing memory before memset
+  linux-user/syscall: Replace g_malloc0 + memcpy with g_memdup
 
->=20
-> diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-> index d4501fb..54cdb25 100644
-> --- a/hw/dma/pxa2xx_dma.c
-> +++ b/hw/dma/pxa2xx_dma.c
-> @@ -459,9 +459,8 @@ static int pxa2xx_dma_init(SysBusDevice *sbd)
->          return -1;
->      }
-> =20
-> -    s->chan =3D g_malloc0(sizeof(PXA2xxDMAChannel) * s->channels);
-> +    s->chan =3D g_new0(PXA2xxDMAChannel, s->channels);
-> =20
-> -    memset(s->chan, 0, sizeof(PXA2xxDMAChannel) * s->channels);
->      for (i =3D 0; i < s->channels; i ++)
->          s->chan[i].state =3D DCSR_STOPINTR;
-> =20
->=20
+ hw/dma/pxa2xx_dma.c  | 3 +--
+ hw/input/tsc210x.c   | 8 ++------
+ linux-user/syscall.c | 3 +--
+ tests/i440fx-test.c  | 2 +-
+ 4 files changed, 5 insertions(+), 11 deletions(-)
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+-- 
+1.8.3.1
 
-
---BIHIcAOlkarhJXAFL1bc4cuXBdbdhvbNV
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWGEaNAAoJEKeha0olJ0Nq4FsIAJKauu/mmDHTDEN/2FgTD/nH
-auImLycQkkwHIA0zsXwbwFWqVDYJQXUaAAqzIqMmqqJD+bFQAmHNRZR3i9aRxgfR
-M+K4XF+CiAa9XOAhez5UXkHUHvh0lHb1AJKkHiPaKZBUXUcRAHn1bxO2YvDKgYzI
-6bltlQVtUN2fbm3zWek5icmUGUo7Da5WUw77wkRxE04Lsc6UHhgNtSuVsxWwWkQP
-kzTM7GyUowDtZL/i/Uwix0jy5hVXr8CMpWtopnzjBFKUAAWoVlVWnY+cn01oZeXg
-icU8Os0Xt2aFmxRjHzzKICo7QQfD/9DmHU8Sk2Y3h3NERzwh3HPtCiRtZrLnJwY=
-=Wq26
------END PGP SIGNATURE-----
-
---BIHIcAOlkarhJXAFL1bc4cuXBdbdhvbNV--
 
