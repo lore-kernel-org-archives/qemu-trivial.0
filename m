@@ -1,46 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZmkQd-0005Bk-Nz
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2015 11:26:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45801)
+	id 1ZmqXU-0004IR-1a
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2015 17:58:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZmkP8-0003wV-Qq
-	for qemu-trivial@nongnu.org; Thu, 15 Oct 2015 11:25:23 -0400
+	(envelope-from <riku.voipio@iki.fi>) id 1Zld4n-0003Np-2M
+	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 09:23:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZmkP3-00082c-Bp
-	for qemu-trivial@nongnu.org; Thu, 15 Oct 2015 11:25:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42804)
+	(envelope-from <riku.voipio@iki.fi>) id 1Zld4m-0003ON-5V
+	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 09:23:40 -0400
+Received: from jessie.kos.to ([212.47.231.226]:49665 helo=pilvi.kos.to)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZmkOu-0007uV-7H; Thu, 15 Oct 2015 11:25:04 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 6A8542653;
-	Thu, 15 Oct 2015 15:25:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-32.ams2.redhat.com
-	[10.36.116.32])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9FFP1MO024893
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 15 Oct 2015 11:25:02 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D5179300110B; Thu, 15 Oct 2015 17:25:00 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+	(envelope-from <riku.voipio@iki.fi>)
+	id 1Zld4h-0003Iz-Jp; Mon, 12 Oct 2015 09:23:35 -0400
+Received: from localhost (91-157-196-38.elisa-laajakaista.fi [91.157.196.38])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+	bits)) (No client certificate requested)
+	by pilvi.kos.to (Postfix) with ESMTPSA id 83A502C0021;
+	Mon, 12 Oct 2015 13:23:33 +0000 (UTC)
+From: Riku Voipio <riku.voipio@iki.fi>
 To: Thomas Huth <thuth@redhat.com>
-References: <1444899255-16300-1-git-send-email-thuth@redhat.com>
-Date: Thu, 15 Oct 2015 17:25:00 +0200
-In-Reply-To: <1444899255-16300-1-git-send-email-thuth@redhat.com> (Thomas
-	Huth's message of "Thu, 15 Oct 2015 10:54:15 +0200")
-Message-ID: <87zizk6to3.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+Date: Mon, 12 Oct 2015 16:23:32 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, blauwirbel@gmail.com,
-	mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/display/tcx: Remove
-	superfluous OBJECT() typecasts
+Message-ID: <d150f8f9-07aa-4ceb-ad66-8f97e2efe926@iki.fi>
+In-Reply-To: <1444406198-6521-5-git-send-email-thuth@redhat.com>
+References: <1444406198-6521-1-git-send-email-thuth@redhat.com>
+	<1444406198-6521-5-git-send-email-thuth@redhat.com>
+User-Agent: Trojita/0.5-git; Qt/5.4.2; xcb; Linux;
+	Debian GNU/Linux testing (stretch)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.47.231.226
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial]
+	=?iso-8859-1?q?=5BQemu-devel=5D_=5BPATCH_v2_4/4=5D?=
+	=?iso-8859-1?q?_linux-user/syscall=3A_Replace_g=5Fmalloc0_+_memcpy?=
+	=?iso-8859-1?q?_with_g=5Fmemdup?=
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,17 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Oct 2015 15:25:24 -0000
+X-List-Received-Date: Mon, 12 Oct 2015 13:23:48 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+On perjantaina 9. lokakuuta 2015 18.56.38 EEST, Thomas Huth wrote:
+> No need to use g_malloc0 to zero the memory if we memcpy to
+> the whole buffer afterwards anyway. Actually, there is even
+> a function which combines both steps, g_memdup, so let's use
+> this function here instead.
 
-> The tcx_initfn() function is already supplied with an
-> Object *obj pointer, so there is no need to cast the
-> state pointer back to an Object pointer all over the
-> place. And while we're at it, also remove the superfluous
-> "return;" statement in this function.
->
+Applied to linux-user, thanks
+
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> ---
+>  linux-user/syscall.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 98b5766..f2ada0a 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -5325,8 +5325,7 @@ static abi_long=20
+> do_open_by_handle_at(abi_long mount_fd, abi_long handle,
+>          return -TARGET_EFAULT;
+>      }
+> =20
+> -    fh =3D g_malloc0(total_size);
+> -    memcpy(fh, target_fh, total_size);
+> +    fh =3D g_memdup(target_fh, total_size);
+>      fh->handle_bytes =3D size;
+>      fh->handle_type =3D tswap32(target_fh->handle_type);
+> =20
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
