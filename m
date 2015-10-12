@@ -1,33 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zkp1Y-0004vL-TJ
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Oct 2015 03:57:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59488)
+	id 1ZlZ0C-0001wo-84
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Oct 2015 05:02:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1Zka2O-0006sZ-FV
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 11:56:56 -0400
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1ZlZ04-0001kn-TT
+	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 05:02:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1Zka2J-0005O3-Rn
-	for qemu-trivial@nongnu.org; Fri, 09 Oct 2015 11:56:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46726)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1Zka2D-0004yp-PT; Fri, 09 Oct 2015 11:56:41 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id CFAD58CF55;
-	Fri,  9 Oct 2015 15:56:40 +0000 (UTC)
-Received: from thh440s.redhat.com (vpn1-4-95.ams2.redhat.com [10.36.4.95])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t99Fud3J025235; Fri, 9 Oct 2015 11:56:39 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri,  9 Oct 2015 17:56:34 +0200
-Message-Id: <1444406198-6521-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1ZlZ01-0007tS-MT
+	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 05:02:32 -0400
+Received: from host-82-135-62-35.customer.m-online.net ([82.135.62.35]:3258
+	helo=mail.embedded-brains.de) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sebastian.huber@embedded-brains.de>)
+	id 1ZlYzs-0007sM-IH; Mon, 12 Oct 2015 05:02:20 -0400
+Received: from localhost (localhost.localhost [127.0.0.1])
+	by mail.embedded-brains.de (Postfix) with ESMTP id 3C21F2A181A;
+	Mon, 12 Oct 2015 10:25:27 +0200 (CEST)
+Received: from mail.embedded-brains.de ([127.0.0.1])
+	by localhost (zimbra.eb.localhost [127.0.0.1]) (amavisd-new, port 10032)
+	with ESMTP id B35sZMWUalkZ; Mon, 12 Oct 2015 10:25:25 +0200 (CEST)
+Received: from localhost (localhost.localhost [127.0.0.1])
+	by mail.embedded-brains.de (Postfix) with ESMTP id 02B842A097D;
+	Mon, 12 Oct 2015 10:25:25 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at zimbra.eb.localhost
+Received: from mail.embedded-brains.de ([127.0.0.1])
+	by localhost (zimbra.eb.localhost [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id WVDsRWh9eZQU; Mon, 12 Oct 2015 10:25:24 +0200 (CEST)
+Received: from huber-linux.eb.localhost (unknown [192.168.96.129])
+	by mail.embedded-brains.de (Postfix) with ESMTP id D65D82A097C;
+	Mon, 12 Oct 2015 10:25:24 +0200 (CEST)
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+To: qemu-devel@nongnu.org
+Date: Mon, 12 Oct 2015 10:25:01 +0200
+Message-Id: <1444638301-10401-1-git-send-email-sebastian.huber@embedded-brains.de>
+X-Mailer: git-send-email 1.8.4.5
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 0/4] Small optimizations for code using
-	g_malloc0 + memset/memcpy
+X-Received-From: 82.135.62.35
+Cc: qemu-trivial@nongnu.org,
+	Sebastian Huber <sebastian.huber@embedded-brains.de>,
+	jasowang@redhat.com, peter.crosthwaite@xilinx.com
+Subject: [Qemu-trivial] [PATCH] net: cadence_gem: Set initial MAC address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,35 +52,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Oct 2015 15:56:56 -0000
+X-List-Received-Date: Mon, 12 Oct 2015 09:02:38 -0000
 
-There are a couple of spots in the QEMU code which use g_malloc0,
-directly followed by a memset or memcpy which fill the whole
-allocated buffer. In this case it either does not make sense to
-zero the buffer via g_malloc0 first (so g_malloc should be used
-instead), or if the second command is a memset(..., 0, ...), then
-the memset does not make much sense, of course, since the buffer
-has already been zeroed by the g_malloc0.
+Set initial MAC address to the one specified by the command line.
 
-v2:
-- Switched some of the g_malloc0()s to g_new0()s where appropriate
-- Added Reviewed-by-s
-- The spapr_vscsi patch has been picked up by David already, so not
-  sending it again
+Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Reviewed-by: Jason Wang <jasowang@redhat.com>
+Reviewed-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+---
+ hw/net/cadence_gem.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Thomas Huth (4):
-  hw/dma/pxa2xx: Remove superfluous memset
-  hw/input/tsc210x: Remove superfluous memset
-  tests/i44fx-test: No need for zeroing memory before memset
-  linux-user/syscall: Replace g_malloc0 + memcpy with g_memdup
-
- hw/dma/pxa2xx_dma.c  | 3 +--
- hw/input/tsc210x.c   | 8 ++------
- linux-user/syscall.c | 3 +--
- tests/i440fx-test.c  | 2 +-
- 4 files changed, 5 insertions(+), 11 deletions(-)
-
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 1127223..3639fc1 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -964,6 +964,7 @@ static void gem_reset(DeviceState *d)
+ {
+     int i;
+     CadenceGEMState *s = CADENCE_GEM(d);
++    const uint8_t *a;
+ 
+     DB_PRINT("\n");
+ 
+@@ -982,6 +983,11 @@ static void gem_reset(DeviceState *d)
+     s->regs[GEM_DESCONF5] = 0x002f2145;
+     s->regs[GEM_DESCONF6] = 0x00000200;
+ 
++    /* Set MAC address */
++    a = &s->conf.macaddr.a[0];
++    s->regs[GEM_SPADDR1LO] = a[0] | (a[1] << 8) | (a[2] << 16) | (a[3] << 24);
++    s->regs[GEM_SPADDR1HI] = a[4] | (a[5] << 8);
++
+     for (i = 0; i < 4; i++) {
+         s->sar_active[i] = false;
+     }
 -- 
-1.8.3.1
+1.8.4.5
 
 
