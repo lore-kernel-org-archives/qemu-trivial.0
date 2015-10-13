@@ -1,48 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZmqXV-0004JN-D6
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2015 17:58:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55467)
+	id 1ZmqZZ-0005Jr-67
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Oct 2015 18:00:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32988)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZldC0-0000Ab-NX
-	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 09:31:14 -0400
+	(envelope-from <kwolf@redhat.com>) id 1ZluAs-0008CJ-15
+	for qemu-trivial@nongnu.org; Tue, 13 Oct 2015 03:39:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ZldBv-0006GF-6o
-	for qemu-trivial@nongnu.org; Mon, 12 Oct 2015 09:31:08 -0400
-Received: from mail-oi0-x235.google.com ([2607:f8b0:4003:c06::235]:34121)
+	(envelope-from <kwolf@redhat.com>) id 1ZluAr-0006Hh-2P
+	for qemu-trivial@nongnu.org; Tue, 13 Oct 2015 03:39:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48342)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>)
-	id 1ZldBt-0006Fg-Io; Mon, 12 Oct 2015 09:31:01 -0400
-Received: by oiak8 with SMTP id k8so61094115oia.1;
-	Mon, 12 Oct 2015 06:31:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=XzaZVsQBCndzIT22+H/7Osx/LFk43A3ew1pPUn2gDRY=;
-	b=wryv9k7rw4lQ7He6qJKYLnRtKpA8CLo5glKwmQK7GI34m+niKvXjZpM5gUsbbENxKw
-	9O/8TgcoA5+HJEhzeoRMcLuVcbi5LJqeNIEAjvZlswzj1gv8WrWtCLgu0x+6Tdh/WOAx
-	4NTHIsDQTtzmhWRpvpPX4GuE8DzPQmwPd9sUuXv4oqp62YwmZwBLdglOsfYegoushv91
-	t7oBwQCCksOKcTkQ6LkbmwRHxk219u+q+03I1uoz5pLwTzTEmV9d5GZLfxEjuJe8e5RT
-	SFW1LgW4RuyR827E4ghVA38Cha04FfpCzyiEGYAvIR3kjurrWcV6mD4zhw/TAgQNy0Et
-	N62Q==
-MIME-Version: 1.0
-X-Received: by 10.202.97.196 with SMTP id v187mr15356411oib.91.1444656661013; 
-	Mon, 12 Oct 2015 06:31:01 -0700 (PDT)
-Received: by 10.76.74.40 with HTTP; Mon, 12 Oct 2015 06:31:00 -0700 (PDT)
-In-Reply-To: <1444647299-28642-2-git-send-email-marcandre.lureau@redhat.com>
-References: <1444647299-28642-1-git-send-email-marcandre.lureau@redhat.com>
-	<1444647299-28642-2-git-send-email-marcandre.lureau@redhat.com>
-Date: Mon, 12 Oct 2015 15:31:00 +0200
-Message-ID: <CAJ+F1CKT2jgey_8xXjh+dEEmHrdhtUcDvr-NTDGzHAO3BY0cHw@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-To: QEMU <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4003:c06::235
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH 1/3] hw/acpi/aml-build: remove useless
-	glib version check
+	(envelope-from <kwolf@redhat.com>)
+	id 1ZluAl-0006GB-0a; Tue, 13 Oct 2015 03:38:59 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id A27318EA3A;
+	Tue, 13 Oct 2015 07:38:58 +0000 (UTC)
+Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
+	[10.33.192.197])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t9D7cvYT027601; Tue, 13 Oct 2015 03:38:57 -0400
+From: Kevin Wolf <kwolf@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 13 Oct 2015 09:38:50 +0200
+Message-Id: <1444721930-5121-1-git-send-email-kwolf@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-stable@nongnu.org
+Subject: [Qemu-trivial] [PATCH] gdbstub: Fix buffer overflows in
+	gdb_handle_packet()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,41 +41,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Oct 2015 13:31:14 -0000
+X-List-Received-Date: Tue, 13 Oct 2015 07:39:07 -0000
 
-to qemu-trivial
+Some places in gdb_handle_packet() can get an arbitrary length (most
+times directly from the client) and either didn't check it at all or
+checked against the wrong value, potentially causing buffer overflows.
 
-On Mon, Oct 12, 2015 at 12:54 PM,  <marcandre.lureau@redhat.com> wrote:
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> 2.22 is the minimum version required
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  hw/acpi/aml-build.c | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 0d4b324..a00a0ab 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -1163,9 +1163,7 @@ void *acpi_data_push(GArray *table_data, unsigned s=
-ize)
->
->  unsigned acpi_data_len(GArray *table)
->  {
-> -#if GLIB_CHECK_VERSION(2, 22, 0)
->      assert(g_array_get_element_size(table) =3D=3D 1);
-> -#endif
->      return table->len;
->  }
->
-> --
-> 2.4.3
->
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+---
+ gdbstub.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
+diff --git a/gdbstub.c b/gdbstub.c
+index d2c95b5..9c29aa0 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -956,6 +956,13 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+         if (*p == ',')
+             p++;
+         len = strtoull(p, NULL, 16);
++
++        /* memtohex() doubles the required space */
++        if (len > MAX_PACKET_LENGTH / 2) {
++            put_packet (s, "E22");
++            break;
++        }
++
+         if (target_memory_rw_debug(s->g_cpu, addr, mem_buf, len, false) != 0) {
+             put_packet (s, "E14");
+         } else {
+@@ -970,6 +977,12 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+         len = strtoull(p, (char **)&p, 16);
+         if (*p == ':')
+             p++;
++
++        /* hextomem() reads 2*len bytes */
++        if (len > strlen(p) / 2) {
++            put_packet (s, "E22");
++            break;
++        }
+         hextomem(mem_buf, p, len);
+         if (target_memory_rw_debug(s->g_cpu, addr, mem_buf, len,
+                                    true) != 0) {
+@@ -1107,7 +1120,8 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+             cpu = find_cpu(thread);
+             if (cpu != NULL) {
+                 cpu_synchronize_state(cpu);
+-                len = snprintf((char *)mem_buf, sizeof(mem_buf),
++                /* memtohex() doubles the required space */
++                len = snprintf((char *)mem_buf, sizeof(buf) / 2,
+                                "CPU#%d [%s]", cpu->cpu_index,
+                                cpu->halted ? "halted " : "running");
+                 memtohex(buf, mem_buf, len);
+@@ -1136,8 +1150,8 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+                 put_packet(s, "E01");
+                 break;
+             }
+-            hextomem(mem_buf, p + 5, len);
+             len = len / 2;
++            hextomem(mem_buf, p + 5, len);
+             mem_buf[len++] = 0;
+             qemu_chr_be_write(s->mon_chr, mem_buf, len);
+             put_packet(s, "OK");
+-- 
+1.8.3.1
 
-
---=20
-Marc-Andr=C3=A9 Lureau
 
