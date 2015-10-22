@@ -1,54 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zp2cA-0007Qs-Sj
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Oct 2015 19:16:15 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:49556)
+	id 1ZpEPF-0004Rq-ST
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Oct 2015 07:51:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44131)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1Zp2c6-0007NE-VJ
-	for qemu-trivial@nongnu.org; Wed, 21 Oct 2015 19:16:11 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1ZpEPD-0004Pm-Hf
+	for qemu-trivial@nongnu.org; Thu, 22 Oct 2015 07:51:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1Zp2c1-0000md-W8
-	for qemu-trivial@nongnu.org; Wed, 21 Oct 2015 19:16:10 -0400
-Received: from mail-qg0-x22b.google.com ([2607:f8b0:400d:c04::22b]:35902)
+	(envelope-from <pbonzini@redhat.com>) id 1ZpEPC-0003Pe-K4
+	for qemu-trivial@nongnu.org; Thu, 22 Oct 2015 07:51:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55478)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1Zp2c1-0000mU-Rw; Wed, 21 Oct 2015 19:16:05 -0400
-Received: by qgad10 with SMTP id d10so41948527qga.3;
-	Wed, 21 Oct 2015 16:16:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=REu+YlA0n+YrFXbtUqY5++2VlAtuARUuCUm20HcL6tI=;
-	b=I0BGT5mUOHWHmziaFuhn72xyfhozp7pAEgOmLlPJYsxLElip/WWeSjgAg3cN38z3P+
-	jh0dOdhf9WSYSB87t07T0eqwFAX3/kAHqGj+4m+7xGGd0y0EOsuWCFRSEluoBs77cr5b
-	Kt5TOFCldtmqwKiTzomCvqmEclkSjhhMKC1AQZKIMgqgY6uH8d4ggmy2vVvvaQDwEHCi
-	nPilDwYNbk9RVg1FJ4+feYp7bYPKbSZKEWL8OxcM4lZ6MFIsOz0lV5zSSP8YmybrzRpm
-	GNdDd3B30kWTvu1HrcaL3g6bu3ZjOCiEz8nRycbEBZ1t/sH6rB0hTqBxSMYv4N7ItWIi
-	VgKQ==
-X-Received: by 10.140.237.72 with SMTP id i69mr15686791qhc.56.1445469365341;
-	Wed, 21 Oct 2015 16:16:05 -0700 (PDT)
-Received: from bigtime.twiddle.net (cpe-50-113-10-46.hawaii.res.rr.com.
-	[50.113.10.46]) by smtp.googlemail.com with ESMTPSA id
-	n14sm4242793qkl.13.2015.10.21.16.16.02
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 21 Oct 2015 16:16:04 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1445263720-6765-1-git-send-email-pbonzini@redhat.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <56281CAE.1060505@twiddle.net>
-Date: Wed, 21 Oct 2015 13:15:58 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <1445263720-6765-1-git-send-email-pbonzini@redhat.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::22b
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-alpha: fix
-	uninitialized variable
+	(envelope-from <pbonzini@redhat.com>)
+	id 1ZpEP6-0003Om-SI; Thu, 22 Oct 2015 07:51:32 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 790BFC0BEA9F;
+	Thu, 22 Oct 2015 11:51:32 +0000 (UTC)
+Received: from donizetti.redhat.com (ovpn-112-60.ams2.redhat.com
+	[10.36.112.60])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t9MBpUsr011608; Thu, 22 Oct 2015 07:51:31 -0400
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 22 Oct 2015 13:51:30 +0200
+Message-Id: <1445514690-7883-1-git-send-email-pbonzini@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, cota@braap.org
+Subject: [Qemu-trivial] [PATCH] exec: avoid unnecessary cacheline bounce on
+	ram_list.mru_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,24 +41,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Oct 2015 23:16:12 -0000
+X-List-Received-Date: Thu, 22 Oct 2015 11:51:40 -0000
 
-On 10/19/2015 04:08 AM, Paolo Bonzini wrote:
-> I am not sure why the compiler does not catch it.  There is no
-> semantic change since gen_excp returns EXIT_NORETURN, but the
-> old code is wrong.
->
-> Reported by Coverity.
->
-> Signed-off-by: Paolo Bonzini<pbonzini@redhat.com>
-> ---
->   target-alpha/translate.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Whenever the MRU cache hits for the list of RAM blocks, qemu_get_ram_block
+does an unnecessary write that causes a processor cache line to bounce
+from one core to another.  This causes a performance hit.
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Reported-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ exec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I assume this will go in via trivial.
+diff --git a/exec.c b/exec.c
+index 54cd70a..439b128 100644
+--- a/exec.c
++++ b/exec.c
+@@ -860,7 +860,7 @@ static RAMBlock *qemu_get_ram_block(ram_addr_t addr)
+ 
+     block = atomic_rcu_read(&ram_list.mru_block);
+     if (block && addr - block->offset < block->max_length) {
+-        goto found;
++        return block;
+     }
+     QLIST_FOREACH_RCU(block, &ram_list.blocks, next) {
+         if (addr - block->offset < block->max_length) {
+-- 
+2.5.0
 
-
-r~
 
