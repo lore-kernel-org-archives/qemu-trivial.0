@@ -1,35 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZpEPF-0004Rq-ST
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Oct 2015 07:51:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44131)
+	id 1ZpdwN-0000kY-EF
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2015 11:07:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47699)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZpEPD-0004Pm-Hf
-	for qemu-trivial@nongnu.org; Thu, 22 Oct 2015 07:51:40 -0400
+	(envelope-from <emaste@freebsd.org>) id 1ZpdwG-0000YZ-VM
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZpEPC-0003Pe-K4
-	for qemu-trivial@nongnu.org; Thu, 22 Oct 2015 07:51:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55478)
+	(envelope-from <emaste@freebsd.org>) id 1ZpdwC-0000xJ-NY
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:28 -0400
+Received: from [98.143.106.101] (port=16531 helo=freebsd.org)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZpEP6-0003Om-SI; Thu, 22 Oct 2015 07:51:32 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 790BFC0BEA9F;
-	Thu, 22 Oct 2015 11:51:32 +0000 (UTC)
-Received: from donizetti.redhat.com (ovpn-112-60.ams2.redhat.com
-	[10.36.112.60])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9MBpUsr011608; Thu, 22 Oct 2015 07:51:31 -0400
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <emaste@freebsd.org>) id 1ZpdwC-0000wn-Ih
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:24 -0400
+Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9ee9a
+	by freebsd.org (DragonFly Mail Agent 1);
+	Fri, 23 Oct 2015 10:39:36 -0400
+From: Ed Maste <emaste@freebsd.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 22 Oct 2015 13:51:30 +0200
-Message-Id: <1445514690-7883-1-git-send-email-pbonzini@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, cota@braap.org
-Subject: [Qemu-trivial] [PATCH] exec: avoid unnecessary cacheline bounce on
-	ram_list.mru_block
+Date: Fri, 23 Oct 2015 10:39:33 -0400
+Message-Id: <1445611173-57034-1-git-send-email-emaste@freebsd.org>
+X-Mailer: git-send-email 2.4.6
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
+X-Received-From: 98.143.106.101
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] tap-bsd: use user-specified tap device if it
+	already exists
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,32 +36,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Oct 2015 11:51:40 -0000
+X-List-Received-Date: Fri, 23 Oct 2015 15:07:34 -0000
 
-Whenever the MRU cache hits for the list of RAM blocks, qemu_get_ram_block
-does an unnecessary write that causes a processor cache line to bounce
-from one core to another.  This causes a performance hit.
-
-Reported-by: Emilio G. Cota <cota@braap.org>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- exec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+As an aside this was reviewed on FreeBSD's Phabricator here:
+https://reviews.freebsd.org/D3969
 
-diff --git a/exec.c b/exec.c
-index 54cd70a..439b128 100644
---- a/exec.c
-+++ b/exec.c
-@@ -860,7 +860,7 @@ static RAMBlock *qemu_get_ram_block(ram_addr_t addr)
+ net/tap-bsd.c | 38 +++++++++++++++++++++++++++++++++-----
+ 1 file changed, 33 insertions(+), 5 deletions(-)
+
+diff --git a/net/tap-bsd.c b/net/tap-bsd.c
+index 7028d9b..0103a97 100644
+--- a/net/tap-bsd.c
++++ b/net/tap-bsd.c
+@@ -109,8 +109,7 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
  
-     block = atomic_rcu_read(&ram_list.mru_block);
-     if (block && addr - block->offset < block->max_length) {
--        goto found;
-+        return block;
+ #define PATH_NET_TAP "/dev/tap"
+ 
+-int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
+-             int vnet_hdr_required, int mq_required, Error **errp)
++static int tap_open_clone(char *ifname, int ifname_size, Error **errp)
+ {
+     int fd, s, ret;
+     struct ifreq ifr;
+@@ -126,7 +125,8 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
+     ret = ioctl(fd, TAPGIFNAME, (void *)&ifr);
+     if (ret < 0) {
+         error_setg_errno(errp, errno, "could not get tap interface name");
+-        goto error;
++        close(fd);
++        return -1;
      }
-     QLIST_FOREACH_RCU(block, &ram_list.blocks, next) {
-         if (addr - block->offset < block->max_length) {
+ 
+     if (ifname[0] != '\0') {
+@@ -135,19 +135,47 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
+         if (s < 0) {
+             error_setg_errno(errp, errno,
+                              "could not open socket to set interface name");
+-            goto error;
++            close(fd);
++            return -1;
+         }
+         ifr.ifr_data = ifname;
+         ret = ioctl(s, SIOCSIFNAME, (void *)&ifr);
+         close(s);
+         if (ret < 0) {
+             error_setg(errp, "could not set tap interface name");
+-            goto error;
++            close(fd);
++            return -1;
+         }
+     } else {
+         pstrcpy(ifname, ifname_size, ifr.ifr_name);
+     }
+ 
++    return fd;
++}
++
++int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
++             int vnet_hdr_required, int mq_required, Error **errp)
++{
++    int fd = -1;
++
++    /* If the specified tap device already exists just use it. */
++    if (ifname[0] != '\0') {
++        char dname[100];
++        snprintf(dname, sizeof dname, "/dev/%s", ifname);
++        TFR(fd = open(dname, O_RDWR));
++        if (fd < 0 && errno != ENOENT) {
++            error_setg_errno(errp, errno, "could not open %s", dname);
++            return -1;
++        }
++    }
++
++    if (fd < 0) {
++        /* Tap device not specified or does not exist. */
++        if ((fd = tap_open_clone(ifname, ifname_size, errp)) < 0) {
++            return -1;
++        }
++    }
++
+     if (*vnet_hdr) {
+         /* BSD doesn't have IFF_VNET_HDR */
+         *vnet_hdr = 0;
 -- 
-2.5.0
+2.4.6
 
 
