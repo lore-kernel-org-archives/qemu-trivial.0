@@ -1,25 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZpdwN-0000kY-EF
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2015 11:07:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47699)
+	id 1ZpefN-0007QP-9v
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Oct 2015 11:54:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1ZpdwG-0000YZ-VM
-	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:34 -0400
+	(envelope-from <emaste@freebsd.org>) id 1ZpefK-0007PN-37
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:54:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1ZpdwC-0000xJ-NY
-	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:28 -0400
-Received: from [98.143.106.101] (port=16531 helo=freebsd.org)
+	(envelope-from <emaste@freebsd.org>) id 1ZpefF-0000kY-No
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:54:01 -0400
+Received: from [98.143.106.101] (port=43171 helo=freebsd.org)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <emaste@freebsd.org>) id 1ZpdwC-0000wn-Ih
-	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:07:24 -0400
+	(envelope-from <emaste@freebsd.org>) id 1ZpefF-0000kJ-Hl
+	for qemu-trivial@nongnu.org; Fri, 23 Oct 2015 11:53:57 -0400
 Received: from emaste (uid 1001) (envelope-from emaste@freebsd.org) id 9ee9a
 	by freebsd.org (DragonFly Mail Agent 1);
-	Fri, 23 Oct 2015 10:39:36 -0400
+	Fri, 23 Oct 2015 11:53:56 -0400
 From: Ed Maste <emaste@freebsd.org>
 To: qemu-devel@nongnu.org
-Date: Fri, 23 Oct 2015 10:39:33 -0400
-Message-Id: <1445611173-57034-1-git-send-email-emaste@freebsd.org>
+Date: Fri, 23 Oct 2015 11:53:55 -0400
+Message-Id: <1445615635-90549-1-git-send-email-emaste@freebsd.org>
 X-Mailer: git-send-email 2.4.6
+In-Reply-To: <1445611173-57034-1-git-send-email-emaste@freebsd.org>
+References: <1445611173-57034-1-git-send-email-emaste@freebsd.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
 X-Received-From: 98.143.106.101
 Cc: qemu-trivial@nongnu.org
@@ -36,11 +41,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Oct 2015 15:07:34 -0000
+X-List-Received-Date: Fri, 23 Oct 2015 15:54:03 -0000
 
+Acked-by: Roger Pau Monné <roger.pau@citrix.com>
+Signed-off-by: Ed Maste <emaste@freebsd.org>
 ---
 As an aside this was reviewed on FreeBSD's Phabricator here:
 https://reviews.freebsd.org/D3969
+
+Resend with Signed-off-by.
 
  net/tap-bsd.c | 38 +++++++++++++++++++++++++++++++++-----
  1 file changed, 33 insertions(+), 5 deletions(-)
