@@ -1,40 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zr0VW-000101-6p
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Oct 2015 05:25:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46108)
+	id 1Zrhb8-0003bN-E7
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 03:26:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=735afa564=roger.pau@citrix.com>)
-	id 1Zr0VT-0000v1-4l
-	for qemu-trivial@nongnu.org; Tue, 27 Oct 2015 05:25:28 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1Zrhb6-0003ZN-BJ
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 03:26:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prvs=735afa564=roger.pau@citrix.com>)
-	id 1Zr0VP-0005BG-0i
-	for qemu-trivial@nongnu.org; Tue, 27 Oct 2015 05:25:27 -0400
-Received: from smtp.citrix.com ([66.165.176.89]:30622)
+	(envelope-from <mjt@tls.msk.ru>) id 1Zrhb5-0001Q6-LT
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 03:26:08 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34454)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=735afa564=roger.pau@citrix.com>)
-	id 1Zr0VO-0005BB-S6; Tue, 27 Oct 2015 05:25:22 -0400
-X-IronPort-AV: E=Sophos;i="5.20,204,1444694400"; d="scan'208";a="308423360"
-To: Ed Maste <emaste@freebsd.org>, <qemu-devel@nongnu.org>
-References: <1445611173-57034-1-git-send-email-emaste@freebsd.org>
-	<1445615635-90549-1-git-send-email-emaste@freebsd.org>
-From: =?UTF-8?Q?Roger_Pau_Monn=c3=a9?= <roger.pau@citrix.com>
-Message-ID: <562F42FA.5040805@citrix.com>
-Date: Tue, 27 Oct 2015 10:25:14 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:38.0)
-	Gecko/20100101 Thunderbird/38.3.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1Zrhb1-0001OO-HU; Thu, 29 Oct 2015 03:26:03 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 0B5C342107;
+	Thu, 29 Oct 2015 10:25:53 +0300 (MSK)
+Message-ID: <5631CA00.9090102@msgid.tls.msk.ru>
+Date: Thu, 29 Oct 2015 10:25:52 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-In-Reply-To: <1445615635-90549-1-git-send-email-emaste@freebsd.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-DLP: MIA1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Cc: qemu-trivial@nongnu.org, Stefan
-	Hajnoczi <stefanha@redhat.com>, Anthony Liguori <aliguori@amazon.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tap-bsd: use user-specified
- tap device if it already exists
+To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+References: <1444372921-30909-1-git-send-email-famz@redhat.com>
+In-Reply-To: <1444372921-30909-1-git-send-email-famz@redhat.com>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] scripts/text2pod.pl: Escape left brace
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,96 +43,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Oct 2015 09:25:28 -0000
+X-List-Received-Date: Thu, 29 Oct 2015 07:26:09 -0000
 
-Ccing the maintainers.
+09.10.2015 09:42, Fam Zheng wrote:
+> Latest perl now deprecates "{" literal in regex and print warnings like
+> "unescaped left brace in regex is deprecated".  Add escapes to keep it
+> happy.
 
-El 23/10/15 a les 17.53, Ed Maste ha escrit:
-> Acked-by: Roger Pau Monné <roger.pau@citrix.com>
-> Signed-off-by: Ed Maste <emaste@freebsd.org>
-> ---
-> As an aside this was reviewed on FreeBSD's Phabricator here:
-> https://reviews.freebsd.org/D3969
-> 
-> Resend with Signed-off-by.
-> 
->  net/tap-bsd.c | 38 +++++++++++++++++++++++++++++++++-----
->  1 file changed, 33 insertions(+), 5 deletions(-)
-> 
-> diff --git a/net/tap-bsd.c b/net/tap-bsd.c
-> index 7028d9b..0103a97 100644
-> --- a/net/tap-bsd.c
-> +++ b/net/tap-bsd.c
-> @@ -109,8 +109,7 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
->  
->  #define PATH_NET_TAP "/dev/tap"
->  
-> -int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
-> -             int vnet_hdr_required, int mq_required, Error **errp)
-> +static int tap_open_clone(char *ifname, int ifname_size, Error **errp)
->  {
->      int fd, s, ret;
->      struct ifreq ifr;
-> @@ -126,7 +125,8 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
->      ret = ioctl(fd, TAPGIFNAME, (void *)&ifr);
->      if (ret < 0) {
->          error_setg_errno(errp, errno, "could not get tap interface name");
-> -        goto error;
-> +        close(fd);
-> +        return -1;
->      }
->  
->      if (ifname[0] != '\0') {
-> @@ -135,19 +135,47 @@ int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
->          if (s < 0) {
->              error_setg_errno(errp, errno,
->                               "could not open socket to set interface name");
-> -            goto error;
-> +            close(fd);
-> +            return -1;
->          }
->          ifr.ifr_data = ifname;
->          ret = ioctl(s, SIOCSIFNAME, (void *)&ifr);
->          close(s);
->          if (ret < 0) {
->              error_setg(errp, "could not set tap interface name");
-> -            goto error;
-> +            close(fd);
-> +            return -1;
->          }
->      } else {
->          pstrcpy(ifname, ifname_size, ifr.ifr_name);
->      }
->  
-> +    return fd;
-> +}
-> +
-> +int tap_open(char *ifname, int ifname_size, int *vnet_hdr,
-> +             int vnet_hdr_required, int mq_required, Error **errp)
-> +{
-> +    int fd = -1;
-> +
-> +    /* If the specified tap device already exists just use it. */
-> +    if (ifname[0] != '\0') {
-> +        char dname[100];
-> +        snprintf(dname, sizeof dname, "/dev/%s", ifname);
-> +        TFR(fd = open(dname, O_RDWR));
-> +        if (fd < 0 && errno != ENOENT) {
-> +            error_setg_errno(errp, errno, "could not open %s", dname);
-> +            return -1;
-> +        }
-> +    }
-> +
-> +    if (fd < 0) {
-> +        /* Tap device not specified or does not exist. */
-> +        if ((fd = tap_open_clone(ifname, ifname_size, errp)) < 0) {
-> +            return -1;
-> +        }
-> +    }
-> +
->      if (*vnet_hdr) {
->          /* BSD doesn't have IFF_VNET_HDR */
->          *vnet_hdr = 0;
-> 
 
+Applied to -trivial, thank you!
+
+/mjt
 
