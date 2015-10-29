@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZrjUc-00031p-BG
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 05:27:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34435)
+	id 1ZrpQ2-0007dO-Fo
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 11:47:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1ZrjUZ-0002y7-6u
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 05:27:32 -0400
+	(envelope-from <armbru@redhat.com>) id 1ZrpPv-0007bM-1x
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:47:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1ZrjUY-0005aS-D4
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 05:27:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35741)
+	(envelope-from <armbru@redhat.com>) id 1ZrpPt-0004uA-U5
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:47:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48433)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1ZrjUU-0005Zu-5k; Thu, 29 Oct 2015 05:27:26 -0400
+	(envelope-from <armbru@redhat.com>)
+	id 1ZrpPp-0004tg-1E; Thu, 29 Oct 2015 11:47:01 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 7274EA37CF;
-	Thu, 29 Oct 2015 09:27:25 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-39.ams2.redhat.com
-	[10.36.116.39])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1A5438F263;
+	Thu, 29 Oct 2015 15:46:59 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-44.ams2.redhat.com
+	[10.36.116.44])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9T9RN2L031342; Thu, 29 Oct 2015 05:27:23 -0400
-Message-ID: <1446110842.5722.19.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Date: Thu, 29 Oct 2015 10:27:22 +0100
-In-Reply-To: <5631D48D.90007@msgid.tls.msk.ru>
-References: <1438875392-9620-1-git-send-email-grangeleo@gmail.com>
-	<CAAOQwLqXeshTGTYxc+Hq62t+mvi=0nbHDg3Z+=87mCGXwYPFTQ@mail.gmail.com>
-	<56010629.3080307@msgid.tls.msk.ru> <5631D48D.90007@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+	id t9TFkvg7025397
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 29 Oct 2015 11:46:59 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 1FA88303F916; Thu, 29 Oct 2015 16:46:57 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 29 Oct 2015 16:46:57 +0100
+Message-Id: <1446133617-30840-1-git-send-email-armbru@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org,
-	=?ISO-8859-1?Q?L=E9o?= Grange <grangeleo@gmail.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH][TRIVIAL] spice: fix checking for surface
-	bpp match
+Cc: qemu-trivial@nongnu.org, alex.williamson@redhat.com
+Subject: [Qemu-trivial] [PATCH] vfio: Use g_new() & friends where that makes
+	obvious sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,37 +45,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2015 09:27:32 -0000
+X-List-Received-Date: Thu, 29 Oct 2015 15:47:13 -0000
 
-On Do, 2015-10-29 at 11:10 +0300, Michael Tokarev wrote:
-> 22.09.2015 10:41, Michael Tokarev wrote:
-> > 17.09.2015 19:18, L=C3=A9o Grange wrote:
-> >> Ping, as I had no feedback about this small patch.
-> >> Please tell me if I need to do anything else.
-> >=20
-> > Hello!
-> >=20
-> > I've seen initial version of your patch, thought it isn't exactly tri=
-vial ;),
-> > and hoped someone will comment.  Only now I realized you sent it to -=
-trivial
-> > but not to -devel, so there's no one to comment on it.  Please don't =
-do this,
-> > always include qemu-devel when sending patches, so a patch will have =
-a
-> > chance to be reviewed.  I've added qemu-devel to Cc now.
-> >=20
-> > Here, I _think_ the patch is okay, but it'd be better for it to have =
-some
-> > review still.
->=20
-> Gerd, Cc'ing you this time, can you please take a look at this patch?
+g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+for two reasons.  One, it catches multiplication overflowing size_t.
+Two, it returns T * rather than void *, which lets the compiler catch
+more type errors.
 
-Obsolete, commit b2af43cc379e1d4c30d92af257bedebf0e3f618a fixes this
-(and a few more cases).
+This commit only touches allocations with size arguments of the form
+sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
 
-cheers,
-  Gerd
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/vfio/pci-quirks.c | 16 ++++++++--------
+ hw/vfio/pci.c        |  4 ++--
+ hw/vfio/platform.c   |  2 +-
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index c675d1b..30c68a1 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -284,7 +284,7 @@ static void vfio_vga_probe_ati_3c3_quirk(VFIOPCIDevice *vdev)
+     }
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+-    quirk->mem = g_malloc0(sizeof(MemoryRegion));
++    quirk->mem = g_new0(MemoryRegion, 1);
+     quirk->nr_mem = 1;
+ 
+     memory_region_init_io(quirk->mem, OBJECT(vdev), &vfio_ati_3c3_quirk, vdev,
+@@ -319,7 +319,7 @@ static void vfio_probe_ati_bar4_quirk(VFIOPCIDevice *vdev, int nr)
+     }
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+-    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
++    quirk->mem = g_new0(MemoryRegion, 2);
+     quirk->nr_mem = 2;
+     window = quirk->data = g_malloc0(sizeof(*window) +
+                                      sizeof(VFIOConfigWindowMatch));
+@@ -368,7 +368,7 @@ static void vfio_probe_ati_bar2_quirk(VFIOPCIDevice *vdev, int nr)
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+     mirror = quirk->data = g_malloc0(sizeof(*mirror));
+-    mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
++    mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+     quirk->nr_mem = 1;
+     mirror->vdev = vdev;
+     mirror->offset = 0x4000;
+@@ -544,7 +544,7 @@ static void vfio_vga_probe_nvidia_3d0_quirk(VFIOPCIDevice *vdev)
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+     quirk->data = data = g_malloc0(sizeof(*data));
+-    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
++    quirk->mem = g_new0(MemoryRegion, 2);
+     quirk->nr_mem = 2;
+     data->vdev = vdev;
+ 
+@@ -661,7 +661,7 @@ static void vfio_probe_nvidia_bar5_quirk(VFIOPCIDevice *vdev, int nr)
+     }
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+-    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 4);
++    quirk->mem = g_new0(MemoryRegion, 4);
+     quirk->nr_mem = 4;
+     bar5 = quirk->data = g_malloc0(sizeof(*bar5) +
+                                    (sizeof(VFIOConfigWindowMatch) * 2));
+@@ -756,7 +756,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+     mirror = quirk->data = g_malloc0(sizeof(*mirror));
+-    mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
++    mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+     quirk->nr_mem = 1;
+     mirror->vdev = vdev;
+     mirror->offset = 0x88000;
+@@ -775,7 +775,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+     if (vdev->has_vga) {
+         quirk = g_malloc0(sizeof(*quirk));
+         mirror = quirk->data = g_malloc0(sizeof(*mirror));
+-        mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
++        mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+         quirk->nr_mem = 1;
+         mirror->vdev = vdev;
+         mirror->offset = 0x1800;
+@@ -938,7 +938,7 @@ static void vfio_probe_rtl8168_bar2_quirk(VFIOPCIDevice *vdev, int nr)
+     }
+ 
+     quirk = g_malloc0(sizeof(*quirk));
+-    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
++    quirk->mem = g_new0(MemoryRegion, 2);
+     quirk->nr_mem = 2;
+     quirk->data = rtl = g_malloc0(sizeof(*rtl));
+     rtl->vdev = vdev;
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 8fadbcf..e34c0c1 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -586,7 +586,7 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+ {
+     vfio_disable_interrupts(vdev);
+ 
+-    vdev->msi_vectors = g_malloc0(vdev->msix->entries * sizeof(VFIOMSIVector));
++    vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
+ 
+     vdev->interrupt = VFIO_INT_MSIX;
+ 
+@@ -622,7 +622,7 @@ static void vfio_msi_enable(VFIOPCIDevice *vdev)
+ 
+     vdev->nr_vectors = msi_nr_vectors_allocated(&vdev->pdev);
+ retry:
+-    vdev->msi_vectors = g_malloc0(vdev->nr_vectors * sizeof(VFIOMSIVector));
++    vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->nr_vectors);
+ 
+     for (i = 0; i < vdev->nr_vectors; i++) {
+         VFIOMSIVector *vector = &vdev->msi_vectors[i];
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index 5c1156c..289b498 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -478,7 +478,7 @@ static int vfio_populate_device(VFIODevice *vbasedev)
+         struct vfio_region_info reg_info = { .argsz = sizeof(reg_info) };
+         VFIORegion *ptr;
+ 
+-        vdev->regions[i] = g_malloc0(sizeof(VFIORegion));
++        vdev->regions[i] = g_new0(VFIORegion, 1);
+         ptr = vdev->regions[i];
+         reg_info.index = i;
+         ret = ioctl(vbasedev->fd, VFIO_DEVICE_GET_REGION_INFO, &reg_info);
+-- 
+2.4.3
 
 
