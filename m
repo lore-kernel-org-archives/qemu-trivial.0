@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZriZk-00086K-0v
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 04:28:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49053)
+	id 1ZrjUc-00031p-BG
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 05:27:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZriZh-00082Q-M1
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 04:28:46 -0400
+	(envelope-from <kraxel@redhat.com>) id 1ZrjUZ-0002y7-6u
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 05:27:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZriZe-0008FD-9W
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 04:28:45 -0400
-Received: from [59.151.112.132] (port=28660 helo=heian.cn.fujitsu.com)
+	(envelope-from <kraxel@redhat.com>) id 1ZrjUY-0005aS-D4
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 05:27:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35741)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1ZriZd-0008Ck-UF; Thu, 29 Oct 2015 04:28:42 -0400
-X-IronPort-AV: E=Sophos;i="5.15,520,1432569600"; d="scan'208";a="102427428"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 29 Oct 2015 16:30:52 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id t9T8S5oN010836;
-	Thu, 29 Oct 2015 16:28:05 +0800
-Received: from [10.167.226.38] (10.167.226.38) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Thu, 29 Oct 2015 16:28:38 +0800
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1445761408-10308-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<5631CE9B.5050409@msgid.tls.msk.ru> <5631D17A.4020101@cn.fujitsu.com>
-	<5631D3D5.7080105@msgid.tls.msk.ru>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <5631D8B3.1020104@cn.fujitsu.com>
-Date: Thu, 29 Oct 2015 16:28:35 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <5631D3D5.7080105@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.38]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] fix bad indentation in
-	pcie_cap_slot_write_config()
+	(envelope-from <kraxel@redhat.com>)
+	id 1ZrjUU-0005Zu-5k; Thu, 29 Oct 2015 05:27:26 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7274EA37CF;
+	Thu, 29 Oct 2015 09:27:25 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-39.ams2.redhat.com
+	[10.36.116.39])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id t9T9RN2L031342; Thu, 29 Oct 2015 05:27:23 -0400
+Message-ID: <1446110842.5722.19.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Date: Thu, 29 Oct 2015 10:27:22 +0100
+In-Reply-To: <5631D48D.90007@msgid.tls.msk.ru>
+References: <1438875392-9620-1-git-send-email-grangeleo@gmail.com>
+	<CAAOQwLqXeshTGTYxc+Hq62t+mvi=0nbHDg3Z+=87mCGXwYPFTQ@mail.gmail.com>
+	<56010629.3080307@msgid.tls.msk.ru> <5631D48D.90007@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org,
+	=?ISO-8859-1?Q?L=E9o?= Grange <grangeleo@gmail.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH][TRIVIAL] spice: fix checking for surface
+	bpp match
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,30 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2015 08:28:46 -0000
+X-List-Received-Date: Thu, 29 Oct 2015 09:27:32 -0000
+
+On Do, 2015-10-29 at 11:10 +0300, Michael Tokarev wrote:
+> 22.09.2015 10:41, Michael Tokarev wrote:
+> > 17.09.2015 19:18, L=C3=A9o Grange wrote:
+> >> Ping, as I had no feedback about this small patch.
+> >> Please tell me if I need to do anything else.
+> >=20
+> > Hello!
+> >=20
+> > I've seen initial version of your patch, thought it isn't exactly tri=
+vial ;),
+> > and hoped someone will comment.  Only now I realized you sent it to -=
+trivial
+> > but not to -devel, so there's no one to comment on it.  Please don't =
+do this,
+> > always include qemu-devel when sending patches, so a patch will have =
+a
+> > chance to be reviewed.  I've added qemu-devel to Cc now.
+> >=20
+> > Here, I _think_ the patch is okay, but it'd be better for it to have =
+some
+> > review still.
+>=20
+> Gerd, Cc'ing you this time, can you please take a look at this patch?
+
+Obsolete, commit b2af43cc379e1d4c30d92af257bedebf0e3f618a fixes this
+(and a few more cases).
+
+cheers,
+  Gerd
 
 
-
-On 10/29/2015 04:07 PM, Michael Tokarev wrote:
-
-> It is a general common sense maybe, I dunno.  There's lot of code which does not
-> comply with the coding styles, and at the very least, when you change just that
-> without actually changing the code, git blame stops working, showing your non-
-> change for everything instead of showing actual _code_ changes.  That's one of
-> the reasons why all qemu codebase hasn't been translated by some automatic
-> coding style formatting tool.
->
-
-I see. Thanks for sharing the thing about "git blame", I do not know 
-this before:)
-
-> Thanks,
->
-> /mjt
->
-
--- 
-Yours Sincerely,
-
-Cao Jin
 
