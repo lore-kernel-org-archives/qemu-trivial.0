@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZrpY9-0004wP-8m
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 11:55:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52358)
+	id 1Zrpae-0000JB-M9
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Oct 2015 11:58:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53061)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZrpY2-0004nH-UJ
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:55:32 -0400
+	(envelope-from <alex.williamson@redhat.com>) id 1Zrpab-0000Ej-Pi
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:58:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZrpY1-0007XZ-Ie
-	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:55:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40539)
+	(envelope-from <alex.williamson@redhat.com>) id 1ZrpaX-0008Bn-G0
+	for qemu-trivial@nongnu.org; Thu, 29 Oct 2015 11:58:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZrpXx-0007Ve-Bn; Thu, 29 Oct 2015 11:55:25 -0400
+	(envelope-from <alex.williamson@redhat.com>)
+	id 1ZrpaR-00088P-Tn; Thu, 29 Oct 2015 11:58:00 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 01AACAB1;
-	Thu, 29 Oct 2015 15:55:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-44.ams2.redhat.com
-	[10.36.116.44])
+	by mx1.redhat.com (Postfix) with ESMTPS id 23A068E24A;
+	Thu, 29 Oct 2015 15:57:59 +0000 (UTC)
+Received: from ul30vt.home (ovpn-113-58.phx2.redhat.com [10.3.113.58])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id t9TFtMJe012175
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 29 Oct 2015 11:55:24 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6B57F303F16C; Thu, 29 Oct 2015 16:55:22 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 29 Oct 2015 16:55:20 +0100
-Message-Id: <1446134122-32292-3-git-send-email-armbru@redhat.com>
-In-Reply-To: <1446134122-32292-1-git-send-email-armbru@redhat.com>
-References: <1446134122-32292-1-git-send-email-armbru@redhat.com>
+	id t9TFvwKl014537; Thu, 29 Oct 2015 11:57:58 -0400
+Message-ID: <1446134278.8018.438.camel@redhat.com>
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Date: Thu, 29 Oct 2015 09:57:58 -0600
+In-Reply-To: <1446133617-30840-1-git-send-email-armbru@redhat.com>
+References: <1446133617-30840-1-git-send-email-armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Subject: [Qemu-trivial] [PATCH v2 2/4] audio: Use g_new() & friends where
-	that makes obvious sense
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vfio: Use g_new() & friends where that
+ makes obvious sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,120 +45,142 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Oct 2015 15:55:32 -0000
+X-List-Received-Date: Thu, 29 Oct 2015 15:58:11 -0000
 
-g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-for two reasons.  One, it catches multiplication overflowing size_t.
-Two, it returns T * rather than void *, which lets the compiler catch
-more type errors.
+On Thu, 2015-10-29 at 16:46 +0100, Markus Armbruster wrote:
+> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+> for two reasons.  One, it catches multiplication overflowing size_t.
+> Two, it returns T * rather than void *, which lets the compiler catch
+> more type errors.
+> 
+> This commit only touches allocations with size arguments of the form
+> sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
 
-This commit only touches allocations with size arguments of the form
-sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
+Looks good to me.  I'll queue this with another patch that needs to go
+in, so no need for trivial to collect it.  Thanks,
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
- audio/alsaaudio.c    | 2 +-
- audio/coreaudio.c    | 2 +-
- audio/dsoundaudio.c  | 2 +-
- audio/ossaudio.c     | 2 +-
- audio/paaudio.c      | 2 +-
- audio/wavaudio.c     | 2 +-
- hw/audio/intel-hda.c | 2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
+Alex
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 6315b2d..76813f4 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -1125,7 +1125,7 @@ static ALSAConf glob_conf = {
- 
- static void *alsa_audio_init (void)
- {
--    ALSAConf *conf = g_malloc(sizeof(ALSAConf));
-+    ALSAConf *conf = g_new(ALSAConf, 1);
-     *conf = glob_conf;
-     return conf;
- }
-diff --git a/audio/coreaudio.c b/audio/coreaudio.c
-index 6dfd63e..6390ba4 100644
---- a/audio/coreaudio.c
-+++ b/audio/coreaudio.c
-@@ -504,7 +504,7 @@ static CoreaudioConf glob_conf = {
- 
- static void *coreaudio_audio_init (void)
- {
--    CoreaudioConf *conf = g_malloc(sizeof(CoreaudioConf));
-+    CoreaudioConf *conf = g_new(CoreaudioConf, 1);
-     *conf = glob_conf;
- 
-     atexit(coreaudio_atexit);
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index e9472c1..3949fa4 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -786,7 +786,7 @@ static void *dsound_audio_init (void)
- {
-     int err;
-     HRESULT hr;
--    dsound *s = g_malloc0(sizeof(dsound));
-+    dsound *s = g_new0(dsound, 1);
- 
-     s->conf = glob_conf;
-     hr = CoInitialize (NULL);
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 7dbe333..2614c62 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -848,7 +848,7 @@ static OSSConf glob_conf = {
- 
- static void *oss_audio_init (void)
- {
--    OSSConf *conf = g_malloc(sizeof(OSSConf));
-+    OSSConf *conf = g_new(OSSConf, 1);
-     *conf = glob_conf;
- 
-     if (access(conf->devpath_in, R_OK | W_OK) < 0 ||
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index fea6071..9c498cf 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -814,7 +814,7 @@ static PAConf glob_conf = {
- 
- static void *qpa_audio_init (void)
- {
--    paaudio *g = g_malloc(sizeof(paaudio));
-+    paaudio *g = g_new(paaudio, 1);
-     g->conf = glob_conf;
-     g->mainloop = NULL;
-     g->context = NULL;
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index c586020..f706fae 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -230,7 +230,7 @@ static WAVConf glob_conf = {
- 
- static void *wav_audio_init (void)
- {
--    WAVConf *conf = g_malloc(sizeof(WAVConf));
-+    WAVConf *conf = g_new(WAVConf, 1);
-     *conf = glob_conf;
-     return conf;
- }
-diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
-index 433463e..6074c2e 100644
---- a/hw/audio/intel-hda.c
-+++ b/hw/audio/intel-hda.c
-@@ -467,7 +467,7 @@ static void intel_hda_parse_bdl(IntelHDAState *d, IntelHDAStream *st)
-     addr = intel_hda_addr(st->bdlp_lbase, st->bdlp_ubase);
-     st->bentries = st->lvi +1;
-     g_free(st->bpl);
--    st->bpl = g_malloc(sizeof(bpl) * st->bentries);
-+    st->bpl = g_new(bpl, st->bentries);
-     for (i = 0; i < st->bentries; i++, addr += 16) {
-         pci_dma_read(&d->pci, addr, buf, 16);
-         st->bpl[i].addr  = le64_to_cpu(*(uint64_t *)buf);
--- 
-2.4.3
+>  hw/vfio/pci-quirks.c | 16 ++++++++--------
+>  hw/vfio/pci.c        |  4 ++--
+>  hw/vfio/platform.c   |  2 +-
+>  3 files changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+> index c675d1b..30c68a1 100644
+> --- a/hw/vfio/pci-quirks.c
+> +++ b/hw/vfio/pci-quirks.c
+> @@ -284,7 +284,7 @@ static void vfio_vga_probe_ati_3c3_quirk(VFIOPCIDevice *vdev)
+>      }
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+> -    quirk->mem = g_malloc0(sizeof(MemoryRegion));
+> +    quirk->mem = g_new0(MemoryRegion, 1);
+>      quirk->nr_mem = 1;
+>  
+>      memory_region_init_io(quirk->mem, OBJECT(vdev), &vfio_ati_3c3_quirk, vdev,
+> @@ -319,7 +319,7 @@ static void vfio_probe_ati_bar4_quirk(VFIOPCIDevice *vdev, int nr)
+>      }
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+> -    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
+> +    quirk->mem = g_new0(MemoryRegion, 2);
+>      quirk->nr_mem = 2;
+>      window = quirk->data = g_malloc0(sizeof(*window) +
+>                                       sizeof(VFIOConfigWindowMatch));
+> @@ -368,7 +368,7 @@ static void vfio_probe_ati_bar2_quirk(VFIOPCIDevice *vdev, int nr)
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+>      mirror = quirk->data = g_malloc0(sizeof(*mirror));
+> -    mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
+> +    mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+>      quirk->nr_mem = 1;
+>      mirror->vdev = vdev;
+>      mirror->offset = 0x4000;
+> @@ -544,7 +544,7 @@ static void vfio_vga_probe_nvidia_3d0_quirk(VFIOPCIDevice *vdev)
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+>      quirk->data = data = g_malloc0(sizeof(*data));
+> -    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
+> +    quirk->mem = g_new0(MemoryRegion, 2);
+>      quirk->nr_mem = 2;
+>      data->vdev = vdev;
+>  
+> @@ -661,7 +661,7 @@ static void vfio_probe_nvidia_bar5_quirk(VFIOPCIDevice *vdev, int nr)
+>      }
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+> -    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 4);
+> +    quirk->mem = g_new0(MemoryRegion, 4);
+>      quirk->nr_mem = 4;
+>      bar5 = quirk->data = g_malloc0(sizeof(*bar5) +
+>                                     (sizeof(VFIOConfigWindowMatch) * 2));
+> @@ -756,7 +756,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+>      mirror = quirk->data = g_malloc0(sizeof(*mirror));
+> -    mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
+> +    mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+>      quirk->nr_mem = 1;
+>      mirror->vdev = vdev;
+>      mirror->offset = 0x88000;
+> @@ -775,7 +775,7 @@ static void vfio_probe_nvidia_bar0_quirk(VFIOPCIDevice *vdev, int nr)
+>      if (vdev->has_vga) {
+>          quirk = g_malloc0(sizeof(*quirk));
+>          mirror = quirk->data = g_malloc0(sizeof(*mirror));
+> -        mirror->mem = quirk->mem = g_malloc0(sizeof(MemoryRegion));
+> +        mirror->mem = quirk->mem = g_new0(MemoryRegion, 1);
+>          quirk->nr_mem = 1;
+>          mirror->vdev = vdev;
+>          mirror->offset = 0x1800;
+> @@ -938,7 +938,7 @@ static void vfio_probe_rtl8168_bar2_quirk(VFIOPCIDevice *vdev, int nr)
+>      }
+>  
+>      quirk = g_malloc0(sizeof(*quirk));
+> -    quirk->mem = g_malloc0(sizeof(MemoryRegion) * 2);
+> +    quirk->mem = g_new0(MemoryRegion, 2);
+>      quirk->nr_mem = 2;
+>      quirk->data = rtl = g_malloc0(sizeof(*rtl));
+>      rtl->vdev = vdev;
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 8fadbcf..e34c0c1 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -586,7 +586,7 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+>  {
+>      vfio_disable_interrupts(vdev);
+>  
+> -    vdev->msi_vectors = g_malloc0(vdev->msix->entries * sizeof(VFIOMSIVector));
+> +    vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
+>  
+>      vdev->interrupt = VFIO_INT_MSIX;
+>  
+> @@ -622,7 +622,7 @@ static void vfio_msi_enable(VFIOPCIDevice *vdev)
+>  
+>      vdev->nr_vectors = msi_nr_vectors_allocated(&vdev->pdev);
+>  retry:
+> -    vdev->msi_vectors = g_malloc0(vdev->nr_vectors * sizeof(VFIOMSIVector));
+> +    vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->nr_vectors);
+>  
+>      for (i = 0; i < vdev->nr_vectors; i++) {
+>          VFIOMSIVector *vector = &vdev->msi_vectors[i];
+> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+> index 5c1156c..289b498 100644
+> --- a/hw/vfio/platform.c
+> +++ b/hw/vfio/platform.c
+> @@ -478,7 +478,7 @@ static int vfio_populate_device(VFIODevice *vbasedev)
+>          struct vfio_region_info reg_info = { .argsz = sizeof(reg_info) };
+>          VFIORegion *ptr;
+>  
+> -        vdev->regions[i] = g_malloc0(sizeof(VFIORegion));
+> +        vdev->regions[i] = g_new0(VFIORegion, 1);
+>          ptr = vdev->regions[i];
+>          reg_info.index = i;
+>          ret = ioctl(vbasedev->fd, VFIO_DEVICE_GET_REGION_INFO, &reg_info);
+
+
 
 
