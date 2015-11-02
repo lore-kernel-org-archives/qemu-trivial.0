@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtGif-0002vE-Pp
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2015 10:08:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40457)
+	id 1ZtGsU-0008Be-0D
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2015 10:18:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1ZtFyZ-0005L4-ED
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:20:48 -0500
+	(envelope-from <crobinso@redhat.com>) id 1ZtGsR-00088b-9E
+	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 10:18:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1ZtFyU-0006tA-Ra
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:20:47 -0500
-Received: from mx3-phx2.redhat.com ([209.132.183.24]:33916)
+	(envelope-from <crobinso@redhat.com>) id 1ZtGsQ-0003EJ-BY
+	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 10:18:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52096)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>)
-	id 1ZtFyU-0006sP-Gc; Mon, 02 Nov 2015 09:20:42 -0500
-Received: from zmail17.collab.prod.int.phx2.redhat.com
-	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id tA2EKYAn013869;
-	Mon, 2 Nov 2015 09:20:34 -0500
-Date: Mon, 2 Nov 2015 09:20:32 -0500 (EST)
-From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <mlureau@redhat.com>
-To: arei gonglei <arei.gonglei@huawei.com>
-Message-ID: <1638142759.891037.1446474032692.JavaMail.zimbra@redhat.com>
-In-Reply-To: <1446426828-18084-1-git-send-email-arei.gonglei@huawei.com>
-References: <1446426828-18084-1-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <crobinso@redhat.com>)
+	id 1ZtGsI-00037j-T9; Mon, 02 Nov 2015 10:18:22 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7E85FA2872;
+	Mon,  2 Nov 2015 15:18:21 +0000 (UTC)
+Received: from [10.3.113.61] (ovpn-113-61.phx2.redhat.com [10.3.113.61])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tA2FIKQ8018693; Mon, 2 Nov 2015 10:18:20 -0500
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1446473439-10701-1-git-send-email-pbonzini@redhat.com>
+From: Cole Robinson <crobinso@redhat.com>
+Message-ID: <56377EBC.5030402@redhat.com>
+Date: Mon, 2 Nov 2015 10:18:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.3.113.117]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF41 (Linux)/8.0.6_GA_5922)
-Thread-Topic: ivshmem-server: fix possible OVERRUN
-Thread-Index: Wm2xog1du2w9T1Thxz0uUUauaOr5Cg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 209.132.183.24
-X-Mailman-Approved-At: Mon, 02 Nov 2015 10:08:23 -0500
-Cc: qemu-trivial@nongnu.org, marcandre lureau <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] ivshmem-server: fix possible OVERRUN
+In-Reply-To: <1446473439-10701-1-git-send-email-pbonzini@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-sockets: do not test
+ path with access() before unlinking
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,43 +47,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2015 14:20:48 -0000
+X-List-Received-Date: Mon, 02 Nov 2015 15:18:32 -0000
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
------ Original Message -----
-> From: Gonglei <arei.gonglei@huawei.com>
->=20
-> >>>     CID 1337991:  Memory - illegal accesses  (OVERRUN)
-> >>>     Decrementing "i". The value of "i" is now 65534.
-> 218         while (i--) {
-> 219             event_notifier_cleanup(&peer->vectors[i]);
-> 220         }
->=20
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+On 11/02/2015 09:10 AM, Paolo Bonzini wrote:
+> Using access() is a time-of-check/time-of-use race condition.  It is
+> okay to use them to provide better error messages, but that is pretty
+> much it.
+> 
+> This is not one such case, so just drop the call.
+> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->  contrib/ivshmem-server/ivshmem-server.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/contrib/ivshmem-server/ivshmem-server.c
-> b/contrib/ivshmem-server/ivshmem-server.c
-> index 5e5239c..d9e26b0 100644
-> --- a/contrib/ivshmem-server/ivshmem-server.c
-> +++ b/contrib/ivshmem-server/ivshmem-server.c
-> @@ -168,7 +168,9 @@ ivshmem_server_handle_new_conn(IvshmemServer *server)
+>  util/qemu-sockets.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+> index 9142917..2833c70 100644
+> --- a/util/qemu-sockets.c
+> +++ b/util/qemu-sockets.c
+> @@ -751,8 +751,7 @@ int unix_listen_opts(QemuOpts *opts, Error **errp)
+>          qemu_opt_set(opts, "path", un.sun_path, &error_abort);
 >      }
->      if (i =3D=3D G_MAXUINT16) {
->          IVSHMEM_SERVER_DEBUG(server, "cannot allocate new client id\n");
-> -        goto fail;
-> +        close(newfd);
-> +        g_free(peer);
-> +        return -1;
->      }
->      peer->id =3D server->cur_id++;
-> =20
-> --
-> 1.7.12.4
->=20
->=20
->=20
+>  
+> -    if ((access(un.sun_path, F_OK) == 0) &&
+> -        unlink(un.sun_path) < 0) {
+> +    if (unlink(un.sun_path) < 0) {
+>          error_setg_errno(errp, errno,
+>                           "Failed to unlink socket %s", un.sun_path);
+>          goto err;
+> 
+
+This is a serious semantic change, after this patch you will get:
+
+$ ./x86_64-softmmu/qemu-system-x86_64 -vnc unix:/tmp/idontexist.sock
+qemu-system-x86_64: -vnc unix:/tmp/idontexist.sock: Failed to start VNC
+server: Failed to unlink socket /tmp/idontexist.sock: No such file or directory
+
+Previously it would 'just work'. Common libvirt usage depends on this as well
+
+Yeah there's a TOCTTOU race here, but it's very minor: if sun_path is created
+after the access() check, qemu is just going to fail to start since bind()
+will barf if the unix socket path exists.
+
+- Cole
 
