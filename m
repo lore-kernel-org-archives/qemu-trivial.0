@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtFwO-0003E0-Hl
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2015 09:18:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39646)
+	id 1ZtGif-0002vE-Pp
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2015 10:08:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtFwM-0003B9-Od
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:18:31 -0500
+	(envelope-from <mlureau@redhat.com>) id 1ZtFyZ-0005L4-ED
+	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:20:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtFwL-0006GN-Uj
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:18:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34751)
+	(envelope-from <mlureau@redhat.com>) id 1ZtFyU-0006tA-Ra
+	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 09:20:47 -0500
+Received: from mx3-phx2.redhat.com ([209.132.183.24]:33916)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZtFwG-0006FC-7A; Mon, 02 Nov 2015 09:18:24 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id BE62396CA;
-	Mon,  2 Nov 2015 14:18:23 +0000 (UTC)
-Received: from donizetti.redhat.com (ovpn-112-64.ams2.redhat.com
-	[10.36.112.64])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA2EILZ1024721; Mon, 2 Nov 2015 09:18:22 -0500
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  2 Nov 2015 15:17:37 +0100
-Message-Id: <1446473857-11934-1-git-send-email-pbonzini@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] pci-assign: do not test path with access()
-	before opening
+	(envelope-from <mlureau@redhat.com>)
+	id 1ZtFyU-0006sP-Gc; Mon, 02 Nov 2015 09:20:42 -0500
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id tA2EKYAn013869;
+	Mon, 2 Nov 2015 09:20:34 -0500
+Date: Mon, 2 Nov 2015 09:20:32 -0500 (EST)
+From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <mlureau@redhat.com>
+To: arei gonglei <arei.gonglei@huawei.com>
+Message-ID: <1638142759.891037.1446474032692.JavaMail.zimbra@redhat.com>
+In-Reply-To: <1446426828-18084-1-git-send-email-arei.gonglei@huawei.com>
+References: <1446426828-18084-1-git-send-email-arei.gonglei@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.3.113.117]
+X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF41 (Linux)/8.0.6_GA_5922)
+Thread-Topic: ivshmem-server: fix possible OVERRUN
+Thread-Index: Wm2xog1du2w9T1Thxz0uUUauaOr5Cg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.24
+X-Mailman-Approved-At: Mon, 02 Nov 2015 10:08:23 -0500
+Cc: qemu-trivial@nongnu.org, marcandre lureau <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] ivshmem-server: fix possible OVERRUN
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,42 +46,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2015 14:18:31 -0000
+X-List-Received-Date: Mon, 02 Nov 2015 14:20:48 -0000
 
-Using access() is a time-of-check/time-of-use race condition.  It is
-okay to use them to provide better error messages, but that is pretty
-much it.
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-In this case we can get the same error from fopen(), so just use
-strerror and errno there---which actually improves the error
-message most of the time.
-
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/i386/pci-assign-load-rom.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
-
-diff --git a/hw/i386/pci-assign-load-rom.c b/hw/i386/pci-assign-load-rom.c
-index 34a3a7e..e40b586 100644
---- a/hw/i386/pci-assign-load-rom.c
-+++ b/hw/i386/pci-assign-load-rom.c
-@@ -45,14 +45,10 @@ void *pci_assign_dev_load_option_rom(PCIDevice *dev, struct Object *owner,
-         return NULL;
-     }
- 
--    if (access(rom_file, F_OK)) {
--        error_report("pci-assign: Insufficient privileges for %s", rom_file);
--        return NULL;
--    }
--
-     /* Write "1" to the ROM file to enable it */
-     fp = fopen(rom_file, "r+");
-     if (fp == NULL) {
-+        error_report("pci-assign: Cannot open %s: %s", rom_file, strerror(errno));
-         return NULL;
-     }
-     val = 1;
--- 
-2.5.0
-
+----- Original Message -----
+> From: Gonglei <arei.gonglei@huawei.com>
+>=20
+> >>>     CID 1337991:  Memory - illegal accesses  (OVERRUN)
+> >>>     Decrementing "i". The value of "i" is now 65534.
+> 218         while (i--) {
+> 219             event_notifier_cleanup(&peer->vectors[i]);
+> 220         }
+>=20
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  contrib/ivshmem-server/ivshmem-server.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/contrib/ivshmem-server/ivshmem-server.c
+> b/contrib/ivshmem-server/ivshmem-server.c
+> index 5e5239c..d9e26b0 100644
+> --- a/contrib/ivshmem-server/ivshmem-server.c
+> +++ b/contrib/ivshmem-server/ivshmem-server.c
+> @@ -168,7 +168,9 @@ ivshmem_server_handle_new_conn(IvshmemServer *server)
+>      }
+>      if (i =3D=3D G_MAXUINT16) {
+>          IVSHMEM_SERVER_DEBUG(server, "cannot allocate new client id\n");
+> -        goto fail;
+> +        close(newfd);
+> +        g_free(peer);
+> +        return -1;
+>      }
+>      peer->id =3D server->cur_id++;
+> =20
+> --
+> 1.7.12.4
+>=20
+>=20
+>=20
 
