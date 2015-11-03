@@ -1,44 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtHPJ-00055Z-8i
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Nov 2015 10:52:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37785)
+	id 1ZtVcK-00053J-MD
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 02:02:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtHPG-00051Z-PA
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 10:52:27 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZtVcI-0004zQ-AC
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 02:02:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtHPF-0002k9-VC
-	for qemu-trivial@nongnu.org; Mon, 02 Nov 2015 10:52:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33556)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZtVcH-0006JN-Bx
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 02:02:50 -0500
+Received: from [59.151.112.132] (port=2842 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZtHPA-0002iS-RH; Mon, 02 Nov 2015 10:52:20 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 7E8958EA45;
-	Mon,  2 Nov 2015 15:52:20 +0000 (UTC)
-Received: from [10.36.112.64] (ovpn-112-64.ams2.redhat.com [10.36.112.64])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA2FqG2B019190
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 2 Nov 2015 10:52:19 -0500
-To: Cole Robinson <crobinso@redhat.com>, qemu-devel@nongnu.org
-References: <1446473439-10701-1-git-send-email-pbonzini@redhat.com>
-	<56377EBC.5030402@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <563786B0.9060300@redhat.com>
-Date: Mon, 2 Nov 2015 16:52:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1ZtVc0-0006Bh-Q5; Tue, 03 Nov 2015 02:02:44 -0500
+Received: from bogon (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 03 Nov 2015 15:01:58 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA32a7cx021150;
+	Tue, 3 Nov 2015 10:36:07 +0800
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.57) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Tue, 3 Nov 2015 10:36:43 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 3 Nov 2015 10:36:42 +0800
+Message-ID: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-In-Reply-To: <56377EBC.5030402@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-sockets: do not test
- path with access() before unlinking
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.57]
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, afaerber@suse.de
+Subject: [Qemu-trivial] [PATCH v2] qom/object: fix 2 comment typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,33 +45,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Nov 2015 15:52:27 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 07:02:51 -0000
 
+Also change the misleading definition of macro OBJECT_CLASS_CHECK
 
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+changelog v2:
+    modified according to peter`s suggestion
 
-On 02/11/2015 16:18, Cole Robinson wrote:
->> > -    if ((access(un.sun_path, F_OK) == 0) &&
->> > -        unlink(un.sun_path) < 0) {
->> > +    if (unlink(un.sun_path) < 0) {
->> >          error_setg_errno(errp, errno,
->> >                           "Failed to unlink socket %s", un.sun_path);
->> >          goto err;
->> > 
-> This is a serious semantic change, after this patch you will get:
-> 
-> $ ./x86_64-softmmu/qemu-system-x86_64 -vnc unix:/tmp/idontexist.sock
-> qemu-system-x86_64: -vnc unix:/tmp/idontexist.sock: Failed to start VNC
-> server: Failed to unlink socket /tmp/idontexist.sock: No such file or directory
-> 
-> Previously it would 'just work'. Common libvirt usage depends on this as well
-> 
-> Yeah there's a TOCTTOU race here, but it's very minor: if sun_path is created
-> after the access() check, qemu is just going to fail to start since bind()
-> will barf if the unix socket path exists.
+ include/qom/object.h | 10 +++++-----
+ qom/object.c         |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-You're right.  I misread how to test the change.
+diff --git a/include/qom/object.h b/include/qom/object.h
+index be7280c..0bb89d4 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -510,16 +510,16 @@ struct TypeInfo
+ 
+ /**
+  * OBJECT_CLASS_CHECK:
+- * @class: The C type to use for the return value.
+- * @obj: A derivative of @type to cast.
+- * @name: the QOM typename of @class.
++ * @class_type: The C type to use for the return value.
++ * @class: A derivative class of @class_type to cast.
++ * @name: the QOM typename of @class_type.
+  *
+  * A type safe version of @object_class_dynamic_cast_assert.  This macro is
+  * typically wrapped by each type to perform type safe casts of a class to a
+  * specific class type.
+  */
+-#define OBJECT_CLASS_CHECK(class, obj, name) \
+-    ((class *)object_class_dynamic_cast_assert(OBJECT_CLASS(obj), (name), \
++#define OBJECT_CLASS_CHECK(class_type, class, name) \
++    ((class_type *)object_class_dynamic_cast_assert(OBJECT_CLASS(class), (name), \
+                                                __FILE__, __LINE__, __func__))
+ 
+ /**
+diff --git a/qom/object.c b/qom/object.c
+index 11cd86b..fc6e161 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -204,7 +204,7 @@ static bool type_is_ancestor(TypeImpl *type, TypeImpl *target_type)
+ {
+     assert(target_type);
+ 
+-    /* Check if typename is a direct ancestor of type */
++    /* Check if target_type is a direct ancestor of type */
+     while (type) {
+         if (type == target_type) {
+             return true;
+-- 
+2.1.0
 
-The right change is what Markus proposed.
-
-Paolo
 
