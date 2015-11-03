@@ -1,60 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtboK-0006mx-01
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 08:39:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38913)
+	id 1Ztbxh-00068B-R6
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 08:49:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43793)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZtboG-0006im-Qu
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:37 -0500
+	(envelope-from <armbru@redhat.com>) id 1Ztbxf-00066S-1H
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:49:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZtboF-00069Q-O2
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:36 -0500
-Received: from mail-yk0-x22c.google.com ([2607:f8b0:4002:c07::22c]:36097)
+	(envelope-from <armbru@redhat.com>) id 1Ztbxe-0000F8-3u
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:49:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50565)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZtboF-00069C-HE
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:35 -0500
-Received: by ykba4 with SMTP id a4so15335241ykb.3
-	for <qemu-trivial@nongnu.org>; Tue, 03 Nov 2015 05:39:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=uEs15L9BHsMZl1kFDEGIYCc+psk8X3VwbRXBTrvKNpg=;
-	b=O95m7TU9q2k8go8rIv9VQOdv4NJdrGlPRcdEPWSYU333DKjhK1BEjJZrj3ENahXXua
-	bvklVCNUAh3J26vUWkKHz7mscRKt5Maa1s0WKmVQnoE1iH6fQWkY55trwnt8ij/jTszG
-	QnHAkUYrF/9iP6gRZuijcslOGatHwUyHG87hIKzxj3ent4G0S4bamwqF0RME0LsB28z+
-	dsnLJc+1gZGUxYEC1UhiyfjEEMq9/92IbOc0CdEQSnlRmXYkdEcK4PegNL01OWs3+RO8
-	9H7blTKawTDZvFYdtF/BwmYCTiBIBkm5qSc1/Hy+D9zbeh6fO/zrXi0VOE5Mt8RmhzXj
-	jmgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=uEs15L9BHsMZl1kFDEGIYCc+psk8X3VwbRXBTrvKNpg=;
-	b=Xrbbla5OvO1PV7bP+0ZT5KAAkuah56JyiZI5P5szp2cmBiPpMguHDr9xJkm5lbQigo
-	wdL9ZFdHGF6V91rcZ9nvD7MQYzudDFMcdzQpfpDz3Frx+6TKl2iLydiyqmZLhOdTgBYf
-	i01S2JzlaZfIwiadcBsRwmUfpKKV+S3q2Xl/2f7+rMlureZSc990Zx80HY7k/ue0E/B5
-	sh7ZQgwKSGPn1ZPl7+HxkCqnQv0sE2OT+iiFYO7uXNu+NvGOw2lQVWpVkop4Tc9o0k4H
-	j4ubZGFJW43ewlZTbJl095ICpCO/uF1/JWu8P2fOvT3ywwTTFbk4zKHNjw37Eh6xXv7/
-	NdCg==
-X-Gm-Message-State: ALoCoQkvypJLb2Nr5Djro0ef4jMOFN5jOAfjBJnlF7TjooangEhS6mhGoimrB50JhLnPuelmpuX0
-X-Received: by 10.31.16.3 with SMTP id g3mr16741555vki.83.1446557975043; Tue,
-	03 Nov 2015 05:39:35 -0800 (PST)
+	(envelope-from <armbru@redhat.com>)
+	id 1ZtbxY-0000ER-3E; Tue, 03 Nov 2015 08:49:12 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id ACE858F4E6;
+	Tue,  3 Nov 2015 13:49:11 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
+	[10.36.116.35])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tA3Dn9b3017987
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 3 Nov 2015 08:49:11 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4BDCC300530B; Tue,  3 Nov 2015 14:49:09 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1446134122-32292-1-git-send-email-armbru@redhat.com>
+	<1446134122-32292-2-git-send-email-armbru@redhat.com>
+	<5638A32D.90907@msgid.tls.msk.ru>
+Date: Tue, 03 Nov 2015 14:49:09 +0100
+In-Reply-To: <5638A32D.90907@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Tue, 03 Nov 2015 15:06:05 +0300")
+Message-ID: <87y4efchwq.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 3 Nov 2015 05:39:15 -0800 (PST)
-In-Reply-To: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-References: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Nov 2015 13:39:15 +0000
-Message-ID: <CAFEAcA--Rq8iXJXSXeVgwqkh3bUAre-87euBnHt3f-Ev=3eRJQ@mail.gmail.com>
-To: Cao jin <caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c07::22c
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-trivial] [PATCH v2] qom/object: fix 2 comment typos
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/4] ui: Use g_new() &
+	friends where that makes obvious sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,15 +53,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 13:39:37 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 13:49:20 -0000
 
-On 3 November 2015 at 02:36, Cao jin <caoj.fnst@cn.fujitsu.com> wrote:
-> Also change the misleading definition of macro OBJECT_CLASS_CHECK
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
+> 29.10.2015 18:55, Markus Armbruster wrote:
+>> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+>> for two reasons.  One, it catches multiplication overflowing size_t.
+>> Two, it returns T * rather than void *, which lets the compiler catch
+>> more type errors.
+>> 
+>> This commit only touches allocations with size arguments of the form
+>> sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
+>> 
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> Reviewed-by: Eric Blake <eblake@redhat.com>
+>> ---
+>>  ui/console.c      | 2 +-
+>>  ui/curses.c       | 2 +-
+>>  ui/input-legacy.c | 4 ++--
+>>  ui/keymaps.c      | 2 +-
+>>  ui/sdl.c          | 2 +-
+>>  ui/vnc-jobs.c     | 6 +++---
+>>  ui/vnc.c          | 6 +++---
+>>  7 files changed, 12 insertions(+), 12 deletions(-)
 >
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+> ui/vnc.c code has been modified by Eric Blake meanwhile,
+> in 2d32addae70987521578d8bb27c6b3f52cdcbdcb "sockets:
+> Convert to new qapi union layout".
+>
+> The patch applies for other files however.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+I can regenerate this patch easily.  Would you be willing to replace it
+in your tree by a v3?
 
