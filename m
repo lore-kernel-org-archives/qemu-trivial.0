@@ -1,39 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtaM7-0007vh-Mf
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 07:06:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32866)
+	id 1ZtaMH-0008Ds-A8
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 07:06:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZtaLz-0007gq-Tb
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:25 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1ZtaME-00089S-SN
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZtaLw-00042g-Ny
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:19 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:46890)
+	(envelope-from <pbonzini@redhat.com>) id 1ZtaME-000456-1n
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52065)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZtaLm-00041l-LV; Tue, 03 Nov 2015 07:06:06 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id CDBFF407DB;
-	Tue,  3 Nov 2015 15:06:05 +0300 (MSK)
-Message-ID: <5638A32D.90907@msgid.tls.msk.ru>
-Date: Tue, 03 Nov 2015 15:06:05 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
+	(envelope-from <pbonzini@redhat.com>)
+	id 1ZtaM9-00044O-Kf; Tue, 03 Nov 2015 07:06:29 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id DE54AC0D61D7;
+	Tue,  3 Nov 2015 12:06:27 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tA3C6N3m017808
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 3 Nov 2015 07:06:26 -0500
+To: Michael Tokarev <mjt@tls.msk.ru>, Richard Henderson <rth@twiddle.net>,
+	qemu-devel@nongnu.org
+References: <1445263720-6765-1-git-send-email-pbonzini@redhat.com>
+	<56281CAE.1060505@twiddle.net> <5638A211.3080809@msgid.tls.msk.ru>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5638A33F.50503@redhat.com>
+Date: Tue, 3 Nov 2015 13:06:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <1446134122-32292-1-git-send-email-armbru@redhat.com>
-	<1446134122-32292-2-git-send-email-armbru@redhat.com>
-In-Reply-To: <1446134122-32292-2-git-send-email-armbru@redhat.com>
-OpenPGP: id=804465C5
+In-Reply-To: <5638A211.3080809@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH v2 1/4] ui: Use g_new() & friends where
- that makes obvious sense
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] target-alpha: fix uninitialized variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,36 +50,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 12:06:25 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 12:06:36 -0000
 
-29.10.2015 18:55, Markus Armbruster wrote:
-> g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-> for two reasons.  One, it catches multiplication overflowing size_t.
-> Two, it returns T * rather than void *, which lets the compiler catch
-> more type errors.
+
+
+On 03/11/2015 13:01, Michael Tokarev wrote:
+> 22.10.2015 02:15, Richard Henderson wrote:
+>> On 10/19/2015 04:08 AM, Paolo Bonzini wrote:
+>>> I am not sure why the compiler does not catch it.  There is no
+>>> semantic change since gen_excp returns EXIT_NORETURN, but the
+>>> old code is wrong.
+>>>
+>>> Reported by Coverity.
+>>>
+>>> Signed-off-by: Paolo Bonzini<pbonzini@redhat.com>
+>>> ---
+>>>   target-alpha/translate.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> Reviewed-by: Richard Henderson <rth@twiddle.net>
+>>
+>> I assume this will go in via trivial.
 > 
-> This commit only touches allocations with size arguments of the form
-> sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> ---
->  ui/console.c      | 2 +-
->  ui/curses.c       | 2 +-
->  ui/input-legacy.c | 4 ++--
->  ui/keymaps.c      | 2 +-
->  ui/sdl.c          | 2 +-
->  ui/vnc-jobs.c     | 6 +++---
->  ui/vnc.c          | 6 +++---
->  7 files changed, 12 insertions(+), 12 deletions(-)
+> Richard, after your patch 522a0d4e3c0d397ffb45ec400d8cbd426dad9d17
+> "target-*: Advance pc after recognizing a breakpoint", this code
+> needs another review I think, as you modified the subsequent line ;)
+> Please take a look.
 
-ui/vnc.c code has been modified by Eric Blake meanwhile,
-in 2d32addae70987521578d8bb27c6b3f52cdcbdcb "sockets:
-Convert to new qapi union layout".
+It's okay, I noticed the conflict.  Assigning the return value of
+gen_excp is still the right thing to do.
 
-The patch applies for other files however.
-
-Thanks,
-
-/mjt
+Paolo
 
