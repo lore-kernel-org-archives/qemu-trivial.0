@@ -1,41 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZteCE-00060O-Lb
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 11:12:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46567)
+	id 1ZtepI-0000Ls-CO
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 11:52:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33920)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZteC7-0005qT-69
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:12:28 -0500
+	(envelope-from <julio@farjump.io>) id 1ZtepB-0000CX-IZ
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:52:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ZteC2-0002y8-5j
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:12:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42412)
+	(envelope-from <julio@farjump.io>) id 1Ztep7-0006Nm-Ei
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:52:45 -0500
+Received: from relay2-d.mail.gandi.net ([217.70.183.194]:48425)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1ZteBr-0002xV-DY; Tue, 03 Nov 2015 11:12:07 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 75E878E69D;
-	Tue,  3 Nov 2015 16:12:06 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
-	[10.36.116.35])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA3GC4Rc021866
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 3 Nov 2015 11:12:05 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D73FF300530B; Tue,  3 Nov 2015 17:12:03 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  3 Nov 2015 17:12:03 +0100
-Message-Id: <1446567123-32700-1-git-send-email-armbru@redhat.com>
-In-Reply-To: <1446134122-32292-2-git-send-email-armbru@redhat.com>
-References: <1446134122-32292-2-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	(envelope-from <julio@farjump.io>)
+	id 1Zteop-0006D1-6j; Tue, 03 Nov 2015 11:52:23 -0500
+Received: from mfilter15-d.gandi.net (mfilter15-d.gandi.net [217.70.178.143])
+	by relay2-d.mail.gandi.net (Postfix) with ESMTP id 95210C5A4E;
+	Tue,  3 Nov 2015 17:52:21 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at mfilter15-d.gandi.net
+Received: from relay2-d.mail.gandi.net ([IPv6:::ffff:217.70.183.194])
+	by mfilter15-d.gandi.net (mfilter15-d.gandi.net [::ffff:10.0.15.180])
+	(amavisd-new, port 10024)
+	with ESMTP id dZEIwTdPbjsh; Tue,  3 Nov 2015 17:52:20 +0100 (CET)
+X-Originating-IP: 209.85.215.47
+Received: from mail-lf0-f47.google.com (mail-lf0-f47.google.com
+	[209.85.215.47]) (Authenticated sender: julio@farjump.io)
+	by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id D373EC5A98;
+	Tue,  3 Nov 2015 17:52:19 +0100 (CET)
+Received: by lfbf136 with SMTP id f136so25068575lfb.0;
+	Tue, 03 Nov 2015 08:52:19 -0800 (PST)
+X-Received: by 10.112.181.164 with SMTP id dx4mr13702939lbc.29.1446569539201; 
+	Tue, 03 Nov 2015 08:52:19 -0800 (PST)
+MIME-Version: 1.0
+References: <1444844599-33161-1-git-send-email-julio@farjump.io>
+	<CAFAwnGNwFft-tH+3mhspok2gz2UKiHeiuqi_ARdB4=6k4wq4uQ@mail.gmail.com>
+	<5638A5AF.9000709@msgid.tls.msk.ru> <5638B6BC.50000@ilande.co.uk>
+In-Reply-To: <5638B6BC.50000@ilande.co.uk>
+From: Julio Guerra <julio@farjump.io>
+Date: Tue, 03 Nov 2015 16:52:09 +0000
+Message-ID: <CAFAwnGNv1ohpBQdMPV5vS-W2o7uqW-5d8QB=Ngsn4V5BFzbt8Q@mail.gmail.com>
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, 
+	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary=001a11c3690c86f2a70523a5b758
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Subject: [Qemu-trivial] [PATCH v3 1/4] ui: Use g_new() & friends where that
-	makes obvious sense
+X-Received-From: 217.70.183.194
+Cc: christophe@farjump.io, Alexander Graf <agraf@suse.de>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] taget-ppc: Fix read
+ access to IBAT registers higher than IBAT3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,158 +57,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 16:12:28 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 16:52:50 -0000
 
-g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-for two reasons.  One, it catches multiplication overflowing size_t.
-Two, it returns T * rather than void *, which lets the compiler catch
-more type errors.
+--001a11c3690c86f2a70523a5b758
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-This commit only touches allocations with size arguments of the form
-sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
+Le mar. 3 nov. 2015 =C3=A0 14:33, Mark Cave-Ayland <mark.cave-ayland@ilande=
+.co.uk>
+a =C3=A9crit :
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
-v3: Straightforward rebase: one hunk dropped from ui/vnc.c
+> On 03/11/15 12:16, Michael Tokarev wrote:
+>
+> > 03.11.2015 11:00, Julio Guerra wrote:
+> >> Ping :)
+> >
+> > Well, I'm not sure what can I do with this.  I've no idea what is IBAT
+> to start
+> > with, so while technically the patch is a one-liner, I've no idea what
+> it does
+> > and how trivial it is :)
+> >
+> > Maybe you can include some context which teaches me what it is all
+> about, and in
+> > that case it becomes really trivial, or.. I dunno :)
+>
+> FWIW PPC has a set of IBAT and DBAT registers on chip, each of which
+> indicates a large continuous physical/virtual memory mapping for
+> Instruction and Data memory respectively. The idea is that the OS can
+> use these to provide "fast" virtual to physical lookups instead of
+> invoking a time-consuming hash lookup to provide the translation.
+>
+> From casual observation comparing with spr_write_ibatu_h() in the same
+> file (which already includes the +4 offset that the patch is adding to
+> spr_read_ibat_h()), it does look like a genuine bug. However it really
+> needs someone who understands PPC architecture a bit more to give a RB
+> to ensure this is doing the right thing.
+>
+>
+I would add the reason the bug never appeared is probably due to the fact
+BATs are not likely to be read by kernels, they simply write to them to
+program a large memory mapping. In our case, we saw the bug when fully
+saving/restoring the CPU context since we were in fact reading at BAT0-3
+instead of BAT4-7 and then restoring BAT these values in BAT4-7... And the
+result can be very perverse...
 
- ui/console.c      | 2 +-
- ui/curses.c       | 2 +-
- ui/input-legacy.c | 4 ++--
- ui/keymaps.c      | 2 +-
- ui/sdl.c          | 2 +-
- ui/vnc-jobs.c     | 6 +++---
- ui/vnc.c          | 4 ++--
- 7 files changed, 11 insertions(+), 11 deletions(-)
+Linux PPC, which I think is how Alexander Graf tests qemu-ppc, probably
+does not use these higher BAT registers, they are CPU-specific.
 
-diff --git a/ui/console.c b/ui/console.c
-index f26544e..745c354 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -450,7 +450,7 @@ static void text_console_resize(QemuConsole *s)
-     if (s->width < w1)
-         w1 = s->width;
- 
--    cells = g_malloc(s->width * s->total_height * sizeof(TextCell));
-+    cells = g_new(TextCell, s->width * s->total_height);
-     for(y = 0; y < s->total_height; y++) {
-         c = &cells[y * s->width];
-         if (w1 > 0) {
-diff --git a/ui/curses.c b/ui/curses.c
-index 8edb038..db83188 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -382,7 +382,7 @@ void curses_display_init(DisplayState *ds, int full_screen)
- 
-     curses_winch_init();
- 
--    dcl = (DisplayChangeListener *) g_malloc0(sizeof(DisplayChangeListener));
-+    dcl = g_new0(DisplayChangeListener, 1);
-     dcl->ops = &dcl_ops;
-     register_displaychangelistener(dcl);
- 
-diff --git a/ui/input-legacy.c b/ui/input-legacy.c
-index a67ed32..e0a39f0 100644
---- a/ui/input-legacy.c
-+++ b/ui/input-legacy.c
-@@ -206,7 +206,7 @@ QEMUPutMouseEntry *qemu_add_mouse_event_handler(QEMUPutMouseEvent *func,
- {
-     QEMUPutMouseEntry *s;
- 
--    s = g_malloc0(sizeof(QEMUPutMouseEntry));
-+    s = g_new0(QEMUPutMouseEntry, 1);
- 
-     s->qemu_put_mouse_event = func;
-     s->qemu_put_mouse_event_opaque = opaque;
-@@ -240,7 +240,7 @@ QEMUPutLEDEntry *qemu_add_led_event_handler(QEMUPutLEDEvent *func,
- {
-     QEMUPutLEDEntry *s;
- 
--    s = g_malloc0(sizeof(QEMUPutLEDEntry));
-+    s = g_new0(QEMUPutLEDEntry, 1);
- 
-     s->put_led = func;
-     s->opaque = opaque;
-diff --git a/ui/keymaps.c b/ui/keymaps.c
-index 49410ae..1b9ba3f 100644
---- a/ui/keymaps.c
-+++ b/ui/keymaps.c
-@@ -109,7 +109,7 @@ static kbd_layout_t *parse_keyboard_layout(const name2keysym_t *table,
-     }
- 
-     if (!k) {
--        k = g_malloc0(sizeof(kbd_layout_t));
-+        k = g_new0(kbd_layout_t, 1);
-     }
- 
-     for(;;) {
-diff --git a/ui/sdl.c b/ui/sdl.c
-index 3be2910..570cb99 100644
---- a/ui/sdl.c
-+++ b/ui/sdl.c
-@@ -985,7 +985,7 @@ void sdl_display_init(DisplayState *ds, int full_screen, int no_frame)
-         sdl_grab_start();
-     }
- 
--    dcl = g_malloc0(sizeof(DisplayChangeListener));
-+    dcl = g_new0(DisplayChangeListener, 1);
-     dcl->ops = &dcl_ops;
-     register_displaychangelistener(dcl);
- 
-diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-index 22c9abc..9512b87 100644
---- a/ui/vnc-jobs.c
-+++ b/ui/vnc-jobs.c
-@@ -79,7 +79,7 @@ static void vnc_unlock_queue(VncJobQueue *queue)
- 
- VncJob *vnc_job_new(VncState *vs)
- {
--    VncJob *job = g_malloc0(sizeof(VncJob));
-+    VncJob *job = g_new0(VncJob, 1);
- 
-     job->vs = vs;
-     vnc_lock_queue(queue);
-@@ -90,7 +90,7 @@ VncJob *vnc_job_new(VncState *vs)
- 
- int vnc_job_add_rect(VncJob *job, int x, int y, int w, int h)
- {
--    VncRectEntry *entry = g_malloc0(sizeof(VncRectEntry));
-+    VncRectEntry *entry = g_new0(VncRectEntry, 1);
- 
-     entry->rect.x = x;
-     entry->rect.y = y;
-@@ -298,7 +298,7 @@ disconnected:
- 
- static VncJobQueue *vnc_queue_init(void)
- {
--    VncJobQueue *queue = g_malloc0(sizeof(VncJobQueue));
-+    VncJobQueue *queue = g_new0(VncJobQueue, 1);
- 
-     qemu_cond_init(&queue->cond);
-     qemu_mutex_init(&queue->mutex);
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 7b37e3b..fcabcf9 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -2966,7 +2966,7 @@ static void vnc_refresh(DisplayChangeListener *dcl)
- static void vnc_connect(VncDisplay *vd, int csock,
-                         bool skipauth, bool websocket)
- {
--    VncState *vs = g_malloc0(sizeof(VncState));
-+    VncState *vs = g_new0(VncState, 1);
-     int i;
- 
-     vs->csock = csock;
-@@ -2989,7 +2989,7 @@ static void vnc_connect(VncDisplay *vd, int csock,
- 
-     vs->lossy_rect = g_malloc0(VNC_STAT_ROWS * sizeof (*vs->lossy_rect));
-     for (i = 0; i < VNC_STAT_ROWS; ++i) {
--        vs->lossy_rect[i] = g_malloc0(VNC_STAT_COLS * sizeof (uint8_t));
-+        vs->lossy_rect[i] = g_new0(uint8_t, VNC_STAT_COLS);
-     }
- 
-     VNC_DEBUG("New client on socket %d\n", csock);
--- 
-2.4.3
+--001a11c3690c86f2a70523a5b758
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr">Le=C2=A0mar. 3=
+ nov. 2015 =C3=A0=C2=A014:33, Mark Cave-Ayland &lt;<a href=3D"mailto:mark.c=
+ave-ayland@ilande.co.uk">mark.cave-ayland@ilande.co.uk</a>&gt; a =C3=A9crit=
+=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">On 03/11/15 12:16, Michael =
+Tokarev wrote:<br>
+<br>
+&gt; 03.11.2015 11:00, Julio Guerra wrote:<br>
+&gt;&gt; Ping :)<br>
+&gt;<br>
+&gt; Well, I&#39;m not sure what can I do with this.=C2=A0 I&#39;ve no idea=
+ what is IBAT to start<br>
+&gt; with, so while technically the patch is a one-liner, I&#39;ve no idea =
+what it does<br>
+&gt; and how trivial it is :)<br>
+&gt;<br>
+&gt; Maybe you can include some context which teaches me what it is all abo=
+ut, and in<br>
+&gt; that case it becomes really trivial, or.. I dunno :)<br>
+<br>
+FWIW PPC has a set of IBAT and DBAT registers on chip, each of which<br>
+indicates a large continuous physical/virtual memory mapping for<br>
+Instruction and Data memory respectively. The idea is that the OS can<br>
+use these to provide &quot;fast&quot; virtual to physical lookups instead o=
+f<br>
+invoking a time-consuming hash lookup to provide the translation.<br>
+<br>
+From casual observation comparing with spr_write_ibatu_h() in the same<br>
+file (which already includes the +4 offset that the patch is adding to<br>
+spr_read_ibat_h()), it does look like a genuine bug. However it really<br>
+needs someone who understands PPC architecture a bit more to give a RB<br>
+to ensure this is doing the right thing.<br><br></blockquote><div><br></div=
+><div>I would add the reason the bug never appeared is probably due to the =
+fact BATs are not likely to be read by kernels, they simply write to them t=
+o program a large memory mapping. In our case, we saw the bug when fully sa=
+ving/restoring the CPU context since we were in fact reading at BAT0-3 inst=
+ead of BAT4-7 and then restoring BAT these values in BAT4-7... And the resu=
+lt can be very perverse...</div><div><br></div><div>Linux PPC, which I thin=
+k is how Alexander Graf tests qemu-ppc, probably does not use these higher =
+BAT registers, they are CPU-specific.</div></div></div>
+
+--001a11c3690c86f2a70523a5b758--
 
