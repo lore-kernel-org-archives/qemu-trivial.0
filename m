@@ -1,44 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtaMH-0008Ds-A8
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 07:06:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32908)
+	id 1ZtaP8-00055b-Ue
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 07:09:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33919)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtaME-00089S-SN
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:35 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ZtaP4-0004ws-LM
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:09:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ZtaME-000456-1n
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:06:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52065)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZtaP3-0004tU-Iq
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:09:30 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54280)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1ZtaM9-00044O-Kf; Tue, 03 Nov 2015 07:06:29 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id DE54AC0D61D7;
-	Tue,  3 Nov 2015 12:06:27 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA3C6N3m017808
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 3 Nov 2015 07:06:26 -0500
-To: Michael Tokarev <mjt@tls.msk.ru>, Richard Henderson <rth@twiddle.net>,
-	qemu-devel@nongnu.org
-References: <1445263720-6765-1-git-send-email-pbonzini@redhat.com>
-	<56281CAE.1060505@twiddle.net> <5638A211.3080809@msgid.tls.msk.ru>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5638A33F.50503@redhat.com>
-Date: Tue, 3 Nov 2015 13:06:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZtaOy-0004ng-Dv; Tue, 03 Nov 2015 07:09:24 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5A037407DB;
+	Tue,  3 Nov 2015 15:09:23 +0300 (MSK)
+Message-ID: <5638A3F3.5060206@msgid.tls.msk.ru>
+Date: Tue, 03 Nov 2015 15:09:23 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.8.0
 MIME-Version: 1.0
-In-Reply-To: <5638A211.3080809@msgid.tls.msk.ru>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <1446134122-32292-1-git-send-email-armbru@redhat.com>
+In-Reply-To: <1446134122-32292-1-git-send-email-armbru@redhat.com>
+OpenPGP: id=804465C5
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] target-alpha: fix uninitialized variable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2 0/4] ui audio qxl usb: Use g_new() &
+ friends where that makes obvious sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,35 +44,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 12:06:36 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 12:09:31 -0000
 
-
-
-On 03/11/2015 13:01, Michael Tokarev wrote:
-> 22.10.2015 02:15, Richard Henderson wrote:
->> On 10/19/2015 04:08 AM, Paolo Bonzini wrote:
->>> I am not sure why the compiler does not catch it.  There is no
->>> semantic change since gen_excp returns EXIT_NORETURN, but the
->>> old code is wrong.
->>>
->>> Reported by Coverity.
->>>
->>> Signed-off-by: Paolo Bonzini<pbonzini@redhat.com>
->>> ---
->>>   target-alpha/translate.c | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> Reviewed-by: Richard Henderson <rth@twiddle.net>
->>
->> I assume this will go in via trivial.
+29.10.2015 18:55, Markus Armbruster wrote:
+> v2:
+> * Trivially rebased
 > 
-> Richard, after your patch 522a0d4e3c0d397ffb45ec400d8cbd426dad9d17
-> "target-*: Advance pc after recognizing a breakpoint", this code
-> needs another review I think, as you modified the subsequent line ;)
-> Please take a look.
+> Markus Armbruster (4):
+>   ui: Use g_new() & friends where that makes obvious sense
+>   audio: Use g_new() & friends where that makes obvious sense
+>   qxl: Use g_new() & friends where that makes obvious sense
+>   usb: Use g_new() & friends where that makes obvious sense
 
-It's okay, I noticed the conflict.  Assigning the return value of
-gen_excp is still the right thing to do.
+Applied to -trivial except the audio bits and ui/vnc.c bits.
 
-Paolo
+Thanks,
+
+/mjt
 
