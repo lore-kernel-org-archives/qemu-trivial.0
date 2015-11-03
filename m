@@ -1,44 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtbfM-00079W-EV
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 08:30:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34079)
+	id 1ZtboK-0006mx-01
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 08:39:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38913)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ZtbfF-00072N-9o
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:30:22 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ZtboG-0006im-Qu
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ZtbfB-0002AV-99
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:30:17 -0500
-Received: from s16892447.onlinehome-server.info ([82.165.15.123]:35113)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZtboF-00069Q-O2
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:36 -0500
+Received: from mail-yk0-x22c.google.com ([2607:f8b0:4002:c07::22c]:36097)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1ZtbfB-000279-2S; Tue, 03 Nov 2015 08:30:13 -0500
-Received: from host31-50-136-216.range31-50.btcentralplus.com ([31.50.136.216]
-	helo=[192.168.1.65]) by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1Ztbev-0003l4-3T; Tue, 03 Nov 2015 13:30:00 +0000
-Message-ID: <5638B6BC.50000@ilande.co.uk>
-Date: Tue, 03 Nov 2015 13:29:32 +0000
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ZtboF-00069C-HE
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 08:39:35 -0500
+Received: by ykba4 with SMTP id a4so15335241ykb.3
+	for <qemu-trivial@nongnu.org>; Tue, 03 Nov 2015 05:39:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro_org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=uEs15L9BHsMZl1kFDEGIYCc+psk8X3VwbRXBTrvKNpg=;
+	b=O95m7TU9q2k8go8rIv9VQOdv4NJdrGlPRcdEPWSYU333DKjhK1BEjJZrj3ENahXXua
+	bvklVCNUAh3J26vUWkKHz7mscRKt5Maa1s0WKmVQnoE1iH6fQWkY55trwnt8ij/jTszG
+	QnHAkUYrF/9iP6gRZuijcslOGatHwUyHG87hIKzxj3ent4G0S4bamwqF0RME0LsB28z+
+	dsnLJc+1gZGUxYEC1UhiyfjEEMq9/92IbOc0CdEQSnlRmXYkdEcK4PegNL01OWs3+RO8
+	9H7blTKawTDZvFYdtF/BwmYCTiBIBkm5qSc1/Hy+D9zbeh6fO/zrXi0VOE5Mt8RmhzXj
+	jmgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=uEs15L9BHsMZl1kFDEGIYCc+psk8X3VwbRXBTrvKNpg=;
+	b=Xrbbla5OvO1PV7bP+0ZT5KAAkuah56JyiZI5P5szp2cmBiPpMguHDr9xJkm5lbQigo
+	wdL9ZFdHGF6V91rcZ9nvD7MQYzudDFMcdzQpfpDz3Frx+6TKl2iLydiyqmZLhOdTgBYf
+	i01S2JzlaZfIwiadcBsRwmUfpKKV+S3q2Xl/2f7+rMlureZSc990Zx80HY7k/ue0E/B5
+	sh7ZQgwKSGPn1ZPl7+HxkCqnQv0sE2OT+iiFYO7uXNu+NvGOw2lQVWpVkop4Tc9o0k4H
+	j4ubZGFJW43ewlZTbJl095ICpCO/uF1/JWu8P2fOvT3ywwTTFbk4zKHNjw37Eh6xXv7/
+	NdCg==
+X-Gm-Message-State: ALoCoQkvypJLb2Nr5Djro0ef4jMOFN5jOAfjBJnlF7TjooangEhS6mhGoimrB50JhLnPuelmpuX0
+X-Received: by 10.31.16.3 with SMTP id g3mr16741555vki.83.1446557975043; Tue,
+	03 Nov 2015 05:39:35 -0800 (PST)
 MIME-Version: 1.0
-To: Michael Tokarev <mjt@tls.msk.ru>, Julio Guerra <julio@farjump.io>, 
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <1444844599-33161-1-git-send-email-julio@farjump.io>	<CAFAwnGNwFft-tH+3mhspok2gz2UKiHeiuqi_ARdB4=6k4wq4uQ@mail.gmail.com>
-	<5638A5AF.9000709@msgid.tls.msk.ru>
-In-Reply-To: <5638A5AF.9000709@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 31.50.136.216
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: No (on s16892447.onlinehome-server.info); Unknown failure
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
-Cc: christophe@farjump.io, Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] taget-ppc: Fix read
- access to IBAT registers higher than IBAT3
+Received: by 10.31.153.15 with HTTP; Tue, 3 Nov 2015 05:39:15 -0800 (PST)
+In-Reply-To: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+References: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Nov 2015 13:39:15 +0000
+Message-ID: <CAFEAcA--Rq8iXJXSXeVgwqkh3bUAre-87euBnHt3f-Ev=3eRJQ@mail.gmail.com>
+To: Cao jin <caoj.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c07::22c
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-trivial] [PATCH v2] qom/object: fix 2 comment typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,35 +66,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 13:30:22 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 13:39:37 -0000
 
-On 03/11/15 12:16, Michael Tokarev wrote:
+On 3 November 2015 at 02:36, Cao jin <caoj.fnst@cn.fujitsu.com> wrote:
+> Also change the misleading definition of macro OBJECT_CLASS_CHECK
+>
+> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
 
-> 03.11.2015 11:00, Julio Guerra wrote:
->> Ping :)
-> 
-> Well, I'm not sure what can I do with this.  I've no idea what is IBAT to start
-> with, so while technically the patch is a one-liner, I've no idea what it does
-> and how trivial it is :)
-> 
-> Maybe you can include some context which teaches me what it is all about, and in
-> that case it becomes really trivial, or.. I dunno :)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-FWIW PPC has a set of IBAT and DBAT registers on chip, each of which
-indicates a large continuous physical/virtual memory mapping for
-Instruction and Data memory respectively. The idea is that the OS can
-use these to provide "fast" virtual to physical lookups instead of
-invoking a time-consuming hash lookup to provide the translation.
-
-From casual observation comparing with spr_write_ibatu_h() in the same
-file (which already includes the +4 offset that the patch is adding to
-spr_read_ibat_h()), it does look like a genuine bug. However it really
-needs someone who understands PPC architecture a bit more to give a RB
-to ensure this is doing the right thing.
-
-
-ATB,
-
-Mark.
-
+thanks
+-- PMM
 
