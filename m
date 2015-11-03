@@ -1,35 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtZre-0003xi-F5
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 06:34:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51632)
+	id 1ZtaHg-0008TL-P3
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 07:01:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1ZtZrX-0003px-VP
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 06:34:57 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ZtaHX-0008AB-Cu
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:01:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1ZtZrT-0003dy-Rh
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 06:34:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46635)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZtaHU-0002u6-6T
+	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 07:01:43 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:45865)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>)
-	id 1ZtZrK-0003cq-Il; Tue, 03 Nov 2015 06:34:38 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 261A18F4E7;
-	Tue,  3 Nov 2015 11:34:38 +0000 (UTC)
-Received: from localhost.localdomain.com (vpn1-6-163.ams2.redhat.com
-	[10.36.6.163])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA3BYa6N032507; Tue, 3 Nov 2015 06:34:37 -0500
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  3 Nov 2015 11:34:31 +0000
-Message-Id: <1446550471-19118-1-git-send-email-berrange@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
-Subject: [Qemu-trivial] [PATCH] configure: remove help string for 'vnc-tls'
-	option
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZtaHK-0002mD-9W; Tue, 03 Nov 2015 07:01:30 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 729F1407C3;
+	Tue,  3 Nov 2015 15:01:21 +0300 (MSK)
+Message-ID: <5638A211.3080809@msgid.tls.msk.ru>
+Date: Tue, 03 Nov 2015 15:01:21 +0300
+From: Michael Tokarev <mjt@tls.msk.ru>
+Organization: Telecom Service, JSC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Icedove/31.8.0
+MIME-Version: 1.0
+To: Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+References: <1445263720-6765-1-git-send-email-pbonzini@redhat.com>
+	<56281CAE.1060505@twiddle.net>
+In-Reply-To: <56281CAE.1060505@twiddle.net>
+OpenPGP: id=804465C5
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] target-alpha: fix uninitialized variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,36 +45,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 11:34:57 -0000
+X-List-Received-Date: Tue, 03 Nov 2015 12:01:51 -0000
 
-The '--enable-vnc-tls' option to configure was removed in
+22.10.2015 02:15, Richard Henderson wrote:
+> On 10/19/2015 04:08 AM, Paolo Bonzini wrote:
+>> I am not sure why the compiler does not catch it.  There is no
+>> semantic change since gen_excp returns EXIT_NORETURN, but the
+>> old code is wrong.
+>>
+>> Reported by Coverity.
+>>
+>> Signed-off-by: Paolo Bonzini<pbonzini@redhat.com>
+>> ---
+>>   target-alpha/translate.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Reviewed-by: Richard Henderson <rth@twiddle.net>
+> 
+> I assume this will go in via trivial.
 
-  commit 3e305e4a4752f70c0b5c3cf5b43ec957881714f7
-  Author: Daniel P. Berrange <berrange@redhat.com>
-  Date:   Thu Aug 6 14:39:32 2015 +0100
+Richard, after your patch 522a0d4e3c0d397ffb45ec400d8cbd426dad9d17
+"target-*: Advance pc after recognizing a breakpoint", this code
+needs another review I think, as you modified the subsequent line ;)
+Please take a look.
 
-    ui: convert VNC server to use QCryptoTLSSession
+Thanks,
 
-This removes the corresponding help string.
-
-Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
----
- configure | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/configure b/configure
-index b4a3488..761a4d6 100755
---- a/configure
-+++ b/configure
-@@ -1340,7 +1340,6 @@ disabled with --disable-FEATURE, default is enabled if available:
-   vte             vte support for the gtk UI
-   curses          curses UI
-   vnc             VNC UI support
--  vnc-tls         TLS encryption for VNC server
-   vnc-sasl        SASL encryption for VNC server
-   vnc-jpeg        JPEG lossy compression for VNC server
-   vnc-png         PNG compression for VNC server
--- 
-2.5.0
-
+/mjt
 
