@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZtepI-0000Ls-CO
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Nov 2015 11:52:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33920)
+	id 1ZttWV-0007FL-2C
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2015 03:34:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35041)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <julio@farjump.io>) id 1ZtepB-0000CX-IZ
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:52:50 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZttWS-0007Do-Ax
+	for qemu-trivial@nongnu.org; Wed, 04 Nov 2015 03:34:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <julio@farjump.io>) id 1Ztep7-0006Nm-Ei
-	for qemu-trivial@nongnu.org; Tue, 03 Nov 2015 11:52:45 -0500
-Received: from relay2-d.mail.gandi.net ([217.70.183.194]:48425)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZttWO-00043x-9u
+	for qemu-trivial@nongnu.org; Wed, 04 Nov 2015 03:34:24 -0500
+Received: from [59.151.112.132] (port=33827 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <julio@farjump.io>)
-	id 1Zteop-0006D1-6j; Tue, 03 Nov 2015 11:52:23 -0500
-Received: from mfilter15-d.gandi.net (mfilter15-d.gandi.net [217.70.178.143])
-	by relay2-d.mail.gandi.net (Postfix) with ESMTP id 95210C5A4E;
-	Tue,  3 Nov 2015 17:52:21 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at mfilter15-d.gandi.net
-Received: from relay2-d.mail.gandi.net ([IPv6:::ffff:217.70.183.194])
-	by mfilter15-d.gandi.net (mfilter15-d.gandi.net [::ffff:10.0.15.180])
-	(amavisd-new, port 10024)
-	with ESMTP id dZEIwTdPbjsh; Tue,  3 Nov 2015 17:52:20 +0100 (CET)
-X-Originating-IP: 209.85.215.47
-Received: from mail-lf0-f47.google.com (mail-lf0-f47.google.com
-	[209.85.215.47]) (Authenticated sender: julio@farjump.io)
-	by relay2-d.mail.gandi.net (Postfix) with ESMTPSA id D373EC5A98;
-	Tue,  3 Nov 2015 17:52:19 +0100 (CET)
-Received: by lfbf136 with SMTP id f136so25068575lfb.0;
-	Tue, 03 Nov 2015 08:52:19 -0800 (PST)
-X-Received: by 10.112.181.164 with SMTP id dx4mr13702939lbc.29.1446569539201; 
-	Tue, 03 Nov 2015 08:52:19 -0800 (PST)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1ZttWN-00041T-OA; Wed, 04 Nov 2015 03:34:20 -0500
+X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
+   d="scan'208";a="84842"
+Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 04 Nov 2015 16:33:49 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA48XQ3B007449;
+	Wed, 4 Nov 2015 16:33:26 +0800
+Received: from [10.167.226.57] (10.167.226.57) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Wed, 4 Nov 2015 16:34:02 +0800
+To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+References: <1446553829-28463-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<5638AB2B.5060700@msgid.tls.msk.ru>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <5639C307.7030700@cn.fujitsu.com>
+Date: Wed, 4 Nov 2015 16:34:15 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-References: <1444844599-33161-1-git-send-email-julio@farjump.io>
-	<CAFAwnGNwFft-tH+3mhspok2gz2UKiHeiuqi_ARdB4=6k4wq4uQ@mail.gmail.com>
-	<5638A5AF.9000709@msgid.tls.msk.ru> <5638B6BC.50000@ilande.co.uk>
-In-Reply-To: <5638B6BC.50000@ilande.co.uk>
-From: Julio Guerra <julio@farjump.io>
-Date: Tue, 03 Nov 2015 16:52:09 +0000
-Message-ID: <CAFAwnGNv1ohpBQdMPV5vS-W2o7uqW-5d8QB=Ngsn4V5BFzbt8Q@mail.gmail.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, 
-	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary=001a11c3690c86f2a70523a5b758
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 217.70.183.194
-Cc: christophe@farjump.io, Alexander Graf <agraf@suse.de>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] taget-ppc: Fix read
- access to IBAT registers higher than IBAT3
+In-Reply-To: <5638AB2B.5060700@msgid.tls.msk.ru>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.57]
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] set_memory_options: remove
+ code that make no sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,98 +53,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Nov 2015 16:52:50 -0000
+X-List-Received-Date: Wed, 04 Nov 2015 08:34:25 -0000
 
---001a11c3690c86f2a70523a5b758
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+hi Michael,
+     Thanks for your explanation that make me realized I am wrong about 
+my patch:-[ ...So, forget it.
 
-Le mar. 3 nov. 2015 =C3=A0 14:33, Mark Cave-Ayland <mark.cave-ayland@ilande=
-.co.uk>
-a =C3=A9crit :
-
-> On 03/11/15 12:16, Michael Tokarev wrote:
+On 11/03/2015 08:40 PM, Michael Tokarev wrote:
+> 03.11.2015 15:30, Cao jin wrote:
+>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>> ---
+>>   vl.c | 9 ---------
+>>   1 file changed, 9 deletions(-)
+>>
+>> diff --git a/vl.c b/vl.c
+>> index f5f7c3f..13f2c8b 100644
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -2860,11 +2860,6 @@ static void set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_size,
+>>       sz = 0;
+>>       mem_str = qemu_opt_get(opts, "size");
+>>       if (mem_str) {
+>> -        if (!*mem_str) {
+>> -            error_report("missing 'size' option value");
+>> -            exit(EXIT_FAILURE);
+>> -        }
 >
-> > 03.11.2015 11:00, Julio Guerra wrote:
-> >> Ping :)
-> >
-> > Well, I'm not sure what can I do with this.  I've no idea what is IBAT
-> to start
-> > with, so while technically the patch is a one-liner, I've no idea what
-> it does
-> > and how trivial it is :)
-> >
-> > Maybe you can include some context which teaches me what it is all
-> about, and in
-> > that case it becomes really trivial, or.. I dunno :)
+> I'm not sure this one is bad or good, it is indeed possible
+> to specify no value for size=, but if we're to check that,
+> we'd have to add such checks everywhere.
 >
-> FWIW PPC has a set of IBAT and DBAT registers on chip, each of which
-> indicates a large continuous physical/virtual memory mapping for
-> Instruction and Data memory respectively. The idea is that the OS can
-> use these to provide "fast" virtual to physical lookups instead of
-> invoking a time-consuming hash lookup to provide the translation.
+
+Yup..I missed to test "-m size=", just test several case with format "-m 
+###", and didn`t read get_opt_value throughly, or else will find it can 
+output a string like "\0" which I never encountered before;)
+
+> But the next one...
 >
-> From casual observation comparing with spr_write_ibatu_h() in the same
-> file (which already includes the +4 offset that the patch is adding to
-> spr_read_ibat_h()), it does look like a genuine bug. However it really
-> needs someone who understands PPC architecture a bit more to give a RB
-> to ensure this is doing the right thing.
+>>           sz = qemu_opt_get_size(opts, "size", ram_size);
+>>
+>>           /* Fix up legacy suffix-less format */
+>> @@ -2886,10 +2881,6 @@ static void set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_size,
+>>
+>>       sz = QEMU_ALIGN_UP(sz, 8192);
+>>       ram_size = sz;
+>> -    if (ram_size != sz) {
+>> -        error_report("ram size too large");
+>> -        exit(EXIT_FAILURE);
+>> -    }
+>
+> is definitely wrong.
+>
+> sz is uint64_t, while ram_size is ram_addr_t which is
+> either uint64_t or uintptr_t.  Until it is fixed to
+> always be 64bits, the above code makes (some) sense.
+>
+
+yes,I am careless... maybe
+
+#ifdef CONFIG_XEN_BACKEND
+     if (ram_size != sz) {
+         error_report("ram size too large");
+         exit(EXIT_FAILURE);
+     }
+#endif
+
+is better, but no big deal;)
+
+anyway, forget this patch:P
+> Thanks,
+>
+> /mjt
 >
 >
-I would add the reason the bug never appeared is probably due to the fact
-BATs are not likely to be read by kernels, they simply write to them to
-program a large memory mapping. In our case, we saw the bug when fully
-saving/restoring the CPU context since we were in fact reading at BAT0-3
-instead of BAT4-7 and then restoring BAT these values in BAT4-7... And the
-result can be very perverse...
 
-Linux PPC, which I think is how Alexander Graf tests qemu-ppc, probably
-does not use these higher BAT registers, they are CPU-specific.
+-- 
+Yours Sincerely,
 
---001a11c3690c86f2a70523a5b758
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr">Le=C2=A0mar. 3=
- nov. 2015 =C3=A0=C2=A014:33, Mark Cave-Ayland &lt;<a href=3D"mailto:mark.c=
-ave-ayland@ilande.co.uk">mark.cave-ayland@ilande.co.uk</a>&gt; a =C3=A9crit=
-=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex">On 03/11/15 12:16, Michael =
-Tokarev wrote:<br>
-<br>
-&gt; 03.11.2015 11:00, Julio Guerra wrote:<br>
-&gt;&gt; Ping :)<br>
-&gt;<br>
-&gt; Well, I&#39;m not sure what can I do with this.=C2=A0 I&#39;ve no idea=
- what is IBAT to start<br>
-&gt; with, so while technically the patch is a one-liner, I&#39;ve no idea =
-what it does<br>
-&gt; and how trivial it is :)<br>
-&gt;<br>
-&gt; Maybe you can include some context which teaches me what it is all abo=
-ut, and in<br>
-&gt; that case it becomes really trivial, or.. I dunno :)<br>
-<br>
-FWIW PPC has a set of IBAT and DBAT registers on chip, each of which<br>
-indicates a large continuous physical/virtual memory mapping for<br>
-Instruction and Data memory respectively. The idea is that the OS can<br>
-use these to provide &quot;fast&quot; virtual to physical lookups instead o=
-f<br>
-invoking a time-consuming hash lookup to provide the translation.<br>
-<br>
-From casual observation comparing with spr_write_ibatu_h() in the same<br>
-file (which already includes the +4 offset that the patch is adding to<br>
-spr_read_ibat_h()), it does look like a genuine bug. However it really<br>
-needs someone who understands PPC architecture a bit more to give a RB<br>
-to ensure this is doing the right thing.<br><br></blockquote><div><br></div=
-><div>I would add the reason the bug never appeared is probably due to the =
-fact BATs are not likely to be read by kernels, they simply write to them t=
-o program a large memory mapping. In our case, we saw the bug when fully sa=
-ving/restoring the CPU context since we were in fact reading at BAT0-3 inst=
-ead of BAT4-7 and then restoring BAT these values in BAT4-7... And the resu=
-lt can be very perverse...</div><div><br></div><div>Linux PPC, which I thin=
-k is how Alexander Graf tests qemu-ppc, probably does not use these higher =
-BAT registers, they are CPU-specific.</div></div></div>
-
---001a11c3690c86f2a70523a5b758--
+Cao Jin
 
