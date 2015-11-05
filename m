@@ -1,41 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZuF8f-00040C-PY
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 02:39:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59160)
+	id 1ZuMW6-0007rb-Ds
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 10:31:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46559)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuF8d-0003yD-9g
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 02:39:16 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMW3-0007nt-PX
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 10:31:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuF8c-0000ca-HB
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 02:39:15 -0500
-Received: from [59.151.112.132] (port=37449 helo=heian.cn.fujitsu.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMVy-000366-Rd
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 10:31:55 -0500
+Received: from mail-yk0-x231.google.com ([2607:f8b0:4002:c07::231]:36619)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1ZuF8S-0000aw-VF; Thu, 05 Nov 2015 02:39:05 -0500
-X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
-   d="scan'208";a="123992"
-Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 05 Nov 2015 15:38:43 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
-	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA57cJNV023415;
-	Thu, 5 Nov 2015 15:38:19 +0800
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.57) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Thu, 5 Nov 2015 15:38:55 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 5 Nov 2015 15:39:03 +0800
-Message-ID: <1446709143-19935-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMVy-00035w-Kc
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 10:31:50 -0500
+Received: by ykba4 with SMTP id a4so136538278ykb.3
+	for <qemu-trivial@nongnu.org>; Thu, 05 Nov 2015 07:31:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro_org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=f+KjdLhlQ05hPuv6xJMO6mq5opdmPDZQ26HehNkKdlI=;
+	b=APLdhti6Cnj9R+bMeNCGG5HbF27hfs+TXAdKYwQIFrpmjaIpJJEQyMTnk7/FIz/yhO
+	N7iNZ8r8ntREQK2R428zXS5W/01dSQZkPXyfE7NgJAu012V4euvGvXSJayXBkYl0FOUx
+	FEsA6xaKGrrUS6ConzTKi0wuqw1CFrqvcKBZA/x2vBVX/UDHMqMxX9zAc7N9j25QQD1a
+	hpSylZD2bOW8O+Ur6oiZF7GqN6Tr0b3bczdB+IR0hkBfHv/boPkgeIqcDU4qAflZeOOc
+	YPKDp/chzteoXbdtpb9Qvii5kAWPdnOcQzOIpqh5kYr8+ZIrY6HJ7ManKOFhVhD2siOR
+	z0Vw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=f+KjdLhlQ05hPuv6xJMO6mq5opdmPDZQ26HehNkKdlI=;
+	b=ey5lzt/3oddEVJBqapxqSRe36zu9aK73/X1mRqMrAcljIYaxVEoXZmw2xT716Errz6
+	AjOQ7s7pPJWJmqb1emDlrTb4kYLIPUdkUMLlyDHvR/24kqJacbWgGdaUL6PtR4bOj4s3
+	iy5NPsitdzXphxcwgS5IpfXrOp8doLkWk0On/aCFYcx6YW7upOlZNcSU8dgyH/IYNIir
+	4OqmtwglISC2aUcASzadiNrYKCi3CHm6Lj57fuI6mYtRPrqcVjowKgBljfPfNsqVFTYP
+	OnjYDlhVgKvTJiZfUCpzy+2wDE0gv75FyJnjNfUpblGuJ+c1iDqM1ffSE8IeNh3r492G
+	VjLQ==
+X-Gm-Message-State: ALoCoQkbpu08gni6PbR6ZVbOeEEKxAYBG/AkJZDTIdZTYTjj3Oiqq4PU4pB24f3qEv5oxtNEW96R
+X-Received: by 10.31.107.81 with SMTP id g78mr1728238vkc.6.1446737510244; Thu,
+	05 Nov 2015 07:31:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.57]
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, afaerber@suse.de
-Subject: [Qemu-trivial] [PATCH] Trivial: update comment of struct Object
+Received: by 10.31.153.15 with HTTP; Thu, 5 Nov 2015 07:31:30 -0800 (PST)
+In-Reply-To: <1446736357-17610-1-git-send-email-wei@redhat.com>
+References: <1446736357-17610-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Nov 2015 15:31:30 +0000
+Message-ID: <CAFEAcA_9bk0DONJPK3DtDN-_Ym53TDq-83pzGg9-JSt3LTdcNg@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c07::231
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH Trivial] hw/intc/arm_gic: Use pre-defined
+ macro for cpu_num in code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,30 +67,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2015 07:39:16 -0000
+X-List-Received-Date: Thu, 05 Nov 2015 15:31:56 -0000
 
-it don`t has "GSList *interfaces" anymore
+On 5 November 2015 at 15:12, Wei Huang <wei@redhat.com> wrote:
+> Given that there is a macro, NUM_CPU(s), defined for CPU number in
+> arm_gic.c, it is better to use it instead of using s->num_cpu in
+> this file. Code is more consistent after this change.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- include/qom/object.h | 3 ---
- 1 file changed, 3 deletions(-)
+Hi. I think that actually since the NUM_CPU is just a relic from
+when it used to possibly defined as something other than s->num_cpu,
+we should go in the opposite direction, and remove the macro entirely
+in favour of just using s->num_cpu directly.
 
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 0bb89d4..e46cc30 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -396,9 +396,6 @@ struct ObjectClass
-  * As a result, #Object contains a reference to the objects type as its
-  * first member.  This allows identification of the real type of the object at
-  * run time.
-- *
-- * #Object also contains a list of #Interfaces that this object
-- * implements.
-  */
- struct Object
- {
--- 
-2.1.0
+(PS: you forgot to cc qemu-devel.)
 
+thanks
+-- PMM
 
