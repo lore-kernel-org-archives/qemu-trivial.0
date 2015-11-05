@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZuCv8-0005dW-Qc
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 00:17:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60937)
+	id 1ZuCx5-0005t1-OD
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 00:19:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv5-0005ZT-WE
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:09 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCx4-0005sV-8Z
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:19:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv2-000054-R0
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:07 -0500
-Received: from [59.151.112.132] (port=65008 helo=heian.cn.fujitsu.com)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCx3-0000TO-H3
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:19:10 -0500
+Received: from [59.151.112.132] (port=49823 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv2-0008Qk-94
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:04 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1ZuCwz-0000RW-19; Thu, 05 Nov 2015 00:19:05 -0500
 X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
-   d="scan'208";a="118662"
+   d="scan'208";a="118742"
 Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 05 Nov 2015 13:16:30 +0800
+	by heian.cn.fujitsu.com with ESMTP; 05 Nov 2015 13:18:49 +0800
 Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
 	[127.0.0.1])
-	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA55G53K015007;
-	Thu, 5 Nov 2015 13:16:05 +0800
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA55IOtL015145;
+	Thu, 5 Nov 2015 13:18:24 +0800
 Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.57) by
 	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Thu, 5 Nov 2015 13:16:41 +0800
+	Server (TLS) id 14.3.181.6; Thu, 5 Nov 2015 13:19:00 +0800
 From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <=qemu-devel@nongnu.org>
-Date: Thu, 5 Nov 2015 13:16:54 +0800
-Message-ID: <1446700614-16138-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 5 Nov 2015 13:19:14 +0800
+Message-ID: <1446700754-16219-1-git-send-email-caoj.fnst@cn.fujitsu.com>
 X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
 Content-Type: text/plain
@@ -47,7 +47,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2015 05:17:09 -0000
+X-List-Received-Date: Thu, 05 Nov 2015 05:19:11 -0000
 
 g_assert & type_initialize are called in object_initialize_with_type
 
