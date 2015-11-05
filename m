@@ -1,36 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZuO6q-00018o-Gh
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 12:14:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56175)
+	id 1ZuOFW-0008LW-Ee
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 12:22:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZuO6l-00011i-Ah
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 12:13:58 -0500
+	(envelope-from <wei@redhat.com>) id 1ZuOFU-0008Iu-Dk
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 12:22:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1ZuO6h-0002q6-Gj
-	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 12:13:55 -0500
-Received: from mx2.suse.de ([195.135.220.15]:52306)
+	(envelope-from <wei@redhat.com>) id 1ZuOFT-00057X-Lj
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 12:22:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60052)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1ZuO6b-0002oj-A0; Thu, 05 Nov 2015 12:13:45 -0500
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 6E093AC61;
-	Thu,  5 Nov 2015 17:13:26 +0000 (UTC)
-To: Wei Huang <wei@redhat.com>, qemu-arm@nongnu.org
+	(envelope-from <wei@redhat.com>)
+	id 1ZuOFN-00052W-DP; Thu, 05 Nov 2015 12:22:49 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 2B94FE7067;
+	Thu,  5 Nov 2015 17:22:48 +0000 (UTC)
+Received: from [10.10.57.107] (vpn-57-107.rdu2.redhat.com [10.10.57.107])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tA5HMjbc022168
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 5 Nov 2015 12:22:47 -0500
+To: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>, qemu-arm@nongnu.org
 References: <1446743477-21579-1-git-send-email-wei@redhat.com>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-Message-ID: <563B8E48.8020407@suse.de>
-Date: Thu, 5 Nov 2015 18:13:44 +0100
+	<563B8E48.8020407@suse.de>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <563B9065.8060808@redhat.com>
+Date: Thu, 5 Nov 2015 11:22:45 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-In-Reply-To: <1446743477-21579-1-git-send-email-wei@redhat.com>
+In-Reply-To: <563B8E48.8020407@suse.de>
 Content-Type: text/plain; charset=iso-8859-15
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [PATCH Trivial] hw/intc/arm_gic: Remove the
 	definition of NUM_CPU
@@ -45,28 +50,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Nov 2015 17:13:58 -0000
+X-List-Received-Date: Thu, 05 Nov 2015 17:22:57 -0000
 
-Am 05.11.2015 um 18:11 schrieb Wei Huang:
-> arm_gic.c retrieves CPU number using either NUM_CPU(s) or s->num_cpu.
-> Such mixed-uses make source code inconsistent. This patch removes
-> NUM_CPU(s), which was defined for MPCore tweak long ago, and instead
-> favors s->num_cpu. The source is more consistent after this tweak.
+
+
+On 11/05/2015 11:13 AM, Andreas F=E4rber wrote:
+> Am 05.11.2015 um 18:11 schrieb Wei Huang:
+>> arm_gic.c retrieves CPU number using either NUM_CPU(s) or s->num_cpu.
+>> Such mixed-uses make source code inconsistent. This patch removes
+>> NUM_CPU(s), which was defined for MPCore tweak long ago, and instead
+>> favors s->num_cpu. The source is more consistent after this tweak.
+>>
+>> Signed-off-by: Wei Huang <wei@redhat.com>
+>> ---
+>>  hw/intc/arm_gic.c | 8 +++-----
+>>  1 file changed, 3 insertions(+), 5 deletions(-)
 >=20
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  hw/intc/arm_gic.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
+> I don't mind either way, and it'll go through Peter's queue I guess,
+>=20
+> Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
-I don't mind either way, and it'll go through Peter's queue I guess,
+Thanks. I sent out a wrong file which failed the compilation. So please
+ignore this file.
 
-Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
+Yeah, maybe through Peter's tree given that he is the maintainer of this
+file.
 
-Cheers,
-Andreas
+-Wei
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
+>=20
+> Cheers,
+> Andreas
+>=20
 
