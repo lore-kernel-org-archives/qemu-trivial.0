@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zu2iu-0005M3-4x
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Nov 2015 13:23:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55526)
+	id 1ZuCv8-0005dW-Qc
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Nov 2015 00:17:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Zu2ir-0005K9-Td
-	for qemu-trivial@nongnu.org; Wed, 04 Nov 2015 13:23:50 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv5-0005ZT-WE
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1Zu2iq-0006Mc-Ty
-	for qemu-trivial@nongnu.org; Wed, 04 Nov 2015 13:23:49 -0500
-Received: from mx2.suse.de ([195.135.220.15]:59552)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv2-000054-R0
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:07 -0500
+Received: from [59.151.112.132] (port=65008 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1Zu2il-0006Le-MS; Wed, 04 Nov 2015 13:23:43 -0500
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id CF1BCAAC1;
-	Wed,  4 Nov 2015 18:23:24 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Cao jin <caoj.fnst@cn.fujitsu.com>
-References: <1446518202-12162-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<CAFEAcA--Rq8iXJXSXeVgwqkh3bUAre-87euBnHt3f-Ev=3eRJQ@mail.gmail.com>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-Message-ID: <563A4D2E.6080800@suse.de>
-Date: Wed, 4 Nov 2015 19:23:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ZuCv2-0008Qk-94
+	for qemu-trivial@nongnu.org; Thu, 05 Nov 2015 00:17:04 -0500
+X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
+   d="scan'208";a="118662"
+Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 05 Nov 2015 13:16:30 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tA55G53K015007;
+	Thu, 5 Nov 2015 13:16:05 +0800
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.57) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Thu, 5 Nov 2015 13:16:41 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <=qemu-devel@nongnu.org>
+Date: Thu, 5 Nov 2015 13:16:54 +0800
+Message-ID: <1446700614-16138-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA--Rq8iXJXSXeVgwqkh3bUAre-87euBnHt3f-Ev=3eRJQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH v2] qom/object: fix 2 comment typos
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.57]
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, afaerber@suse.de
+Subject: [Qemu-trivial] [PATCH] object_new_with_type: remove redundant code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,24 +47,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Nov 2015 18:23:50 -0000
+X-List-Received-Date: Thu, 05 Nov 2015 05:17:09 -0000
 
-Am 03.11.2015 um 14:39 schrieb Peter Maydell:
-> On 3 November 2015 at 02:36, Cao jin <caoj.fnst@cn.fujitsu.com> wrote:
->> Also change the misleading definition of macro OBJECT_CLASS_CHECK
->>
->> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->=20
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+g_assert & type_initialize are called in object_initialize_with_type
 
-Thanks, applied to qom-next (tweaking the commit message):
-https://github.com/afaerber/qemu-cpu/commits/qom-next
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ qom/object.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Regards,
-Andreas
+diff --git a/qom/object.c b/qom/object.c
+index fc6e161..43ac2dd 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -423,9 +423,6 @@ Object *object_new_with_type(Type type)
+ {
+     Object *obj;
+ 
+-    g_assert(type != NULL);
+-    type_initialize(type);
+-
+     obj = g_malloc(type->instance_size);
+     object_initialize_with_type(obj, type->instance_size, type);
+     obj->free = g_free;
+-- 
+2.1.0
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=
-=C3=BCrnberg)
 
