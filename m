@@ -1,60 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZuhMP-0007a8-Ph
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 08:47:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46695)
+	id 1ZuhYV-0007aS-VI
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 08:59:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZuhMK-0007V3-Fr
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:47:20 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ZuhYT-0007W1-26
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:59:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZuhMJ-0001Qt-LZ
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:47:16 -0500
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:34718)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZuhYR-0005E9-Ti
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:59:48 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56091)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZuhMJ-0001Qi-IF
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:47:15 -0500
-Received: by vkgs66 with SMTP id s66so14250696vkg.1
-	for <qemu-trivial@nongnu.org>; Fri, 06 Nov 2015 05:47:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=d66zMKdCdvxUD7VvSUUBZ8m7iZQgmF25cdSd45S/Lr0=;
-	b=GvPYnHdYVB7xByFeN9Y4vaYR7gFw5y00bfdJuMPSe9ZJvZEuF0VZtL2IBAA3wqr6aA
-	VE8I+01oqk2mqGYHm2nRH6b2KaVjIuXRyEI4cN1ihTACO3jbneHS0ubNrKeWdFHsaGTa
-	MRpm3+Ky/k8oJrQvseIMEEIiTuM1sXpiHk5omLunmf8uMYRiakh1MuhpeQS+npVfSMPq
-	CDwcVDI0+AOI7PGPFsYStAtvSslKucvX2aBIqkTbuPNnOSwTnc0x5WGDdft5lvuNQ9NZ
-	lMLHxfXXXDdQ5QqbQOb2n7d4MkmJnxtaImWP5F2BXqzhFd6tLto8PUJTEQ4bMOXbOO7i
-	ythw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=d66zMKdCdvxUD7VvSUUBZ8m7iZQgmF25cdSd45S/Lr0=;
-	b=WoHm1CPBx69BFIJAaCbDWUYd/6ggjWUEOCX98hZr6LLNB+K4nZHIfuH5//zodraWCy
-	LZZpbVpzXcdEeXaV3Zh7MOi54G/PTKquHys/cd66Ol+xPU8j6QTGMgaFKz2zAP1E4KFZ
-	ttRjImTpMGSG6hereSx3boN4e+pBepMrH3960Cyq7migs/DKAl1eHlRyQ0rS/JXE7qqK
-	dijXS6K6juT94VgkEVAYLnw5d0x6N2M/T4hRiVQZo8mQRy/UvFxypPN4kIAkUgvHkM5F
-	rbsZ5KcEuyvsF4VLw24hWOXWuRgzvA/223JaiIZcST2YksWbe0syV7lQv1p7hefEPpPf
-	x1CQ==
-X-Gm-Message-State: ALoCoQnl6XoKyv1PLd89KrdFEXXIZM+5ukFVelji7Rx9k9YlXeOj9v5NDDoO30yJeemFB35M3eSt
-X-Received: by 10.31.54.86 with SMTP id d83mr13127760vka.139.1446817635156;
-	Fri, 06 Nov 2015 05:47:15 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 6 Nov 2015 05:46:55 -0800 (PST)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1ZuhYL-0005Bg-MW; Fri, 06 Nov 2015 08:59:41 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2BEA740D82;
+	Fri,  6 Nov 2015 16:59:39 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 802D0AC8;
+	Fri,  6 Nov 2015 15:44:05 +0300 (MSK)
+Received: (nullmailer pid 31703 invoked by uid 1000);
+	Fri, 06 Nov 2015 12:44:03 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Fri,  6 Nov 2015 15:43:52 +0300
+Message-Id: <98f343395e937fa1db3a28dfb4f303f97cfddd6c.1446813769.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Nov 2015 13:46:55 +0000
-Message-ID: <CAFEAcA_RApKQBc98prONwG+FSK25vSnn4Y_pkFrTOXGyt=jTGg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400c:c05::229
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/24] Trivial patches for
-	2015-11-06
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [Qemu-trivial] [PULL 15/24] usb: Use g_new() & friends where that
+	makes obvious sense
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,33 +44,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2015 13:47:20 -0000
+X-List-Received-Date: Fri, 06 Nov 2015 13:59:50 -0000
 
-On 6 November 2015 at 12:43, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Another trivial-patches merge request.  Lots of various small
-> things all over.  Please consider merging/applying.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 9319738080faeb09876ce2017fcaea4937c475ee:
->
->   Merge remote-tracking branch 'remotes/bonzini/tags/for-upstream-replay' into staging (2015-11-06 11:31:40 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-11-06
->
-> for you to fetch changes up to bd54a9f9435c85de190a82019faef16c5ecf8e46:
->
->   tap-bsd: use user-specified tap device if it already exists (2015-11-06 15:42:38 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2015-11-06
->
+From: Markus Armbruster <armbru@redhat.com>
 
-Applied, thanks.
+g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+for two reasons.  One, it catches multiplication overflowing size_t.
+Two, it returns T * rather than void *, which lets the compiler catch
+more type errors.
 
--- PMM
+This commit only touches allocations with size arguments of the form
+sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/usb/ccid-card-emulated.c | 4 ++--
+ hw/usb/dev-mtp.c            | 3 +--
+ hw/usb/hcd-xhci.c           | 2 +-
+ hw/usb/redirect.c           | 6 +++---
+ 4 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 72329ed..869a63c 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -166,7 +166,7 @@ static void emulated_push_event(EmulatedState *card, EmulEvent *event)
+ 
+ static void emulated_push_type(EmulatedState *card, uint32_t type)
+ {
+-    EmulEvent *event = (EmulEvent *)g_malloc(sizeof(EmulEvent));
++    EmulEvent *event = g_new(EmulEvent, 1);
+ 
+     assert(event);
+     event->p.gen.type = type;
+@@ -175,7 +175,7 @@ static void emulated_push_type(EmulatedState *card, uint32_t type)
+ 
+ static void emulated_push_error(EmulatedState *card, uint64_t code)
+ {
+-    EmulEvent *event = (EmulEvent *)g_malloc(sizeof(EmulEvent));
++    EmulEvent *event = g_new(EmulEvent, 1);
+ 
+     assert(event);
+     event->p.error.type = EMUL_ERROR;
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index 809b1cb..a276267 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -359,8 +359,7 @@ static void usb_mtp_object_readdir(MTPState *s, MTPObject *o)
+     }
+     while ((entry = readdir(dir)) != NULL) {
+         if ((o->nchildren % 32) == 0) {
+-            o->children = g_realloc(o->children,
+-                                    (o->nchildren + 32) * sizeof(MTPObject *));
++            o->children = g_renew(MTPObject *, o->children, o->nchildren + 32);
+         }
+         o->children[o->nchildren] =
+             usb_mtp_object_alloc(s, s->next_handle++, o, entry->d_name);
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index 1c57e20..268ab36 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -2188,7 +2188,7 @@ static void xhci_kick_ep(XHCIState *xhci, unsigned int slotid,
+             xfer->trbs = NULL;
+         }
+         if (!xfer->trbs) {
+-            xfer->trbs = g_malloc(sizeof(XHCITRB) * length);
++            xfer->trbs = g_new(XHCITRB, length);
+             xfer->trb_alloced = length;
+         }
+         xfer->trb_count = length;
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 38086cd..30ff742 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -322,7 +322,7 @@ static void packet_id_queue_add(struct PacketIdQueue *q, uint64_t id)
+ 
+     DPRINTF("adding packet id %"PRIu64" to %s queue\n", id, q->name);
+ 
+-    e = g_malloc0(sizeof(struct PacketIdQueueEntry));
++    e = g_new0(struct PacketIdQueueEntry, 1);
+     e->id = id;
+     QTAILQ_INSERT_TAIL(&q->head, e, next);
+     q->size++;
+@@ -468,7 +468,7 @@ static void bufp_alloc(USBRedirDevice *dev, uint8_t *data, uint16_t len,
+         dev->endpoint[EP2I(ep)].bufpq_dropping_packets = 0;
+     }
+ 
+-    bufp = g_malloc(sizeof(struct buf_packet));
++    bufp = g_new(struct buf_packet, 1);
+     bufp->data   = data;
+     bufp->len    = len;
+     bufp->offset = 0;
+@@ -2234,7 +2234,7 @@ static int usbredir_get_bufpq(QEMUFile *f, void *priv, size_t unused)
+ 
+     endp->bufpq_size = qemu_get_be32(f);
+     for (i = 0; i < endp->bufpq_size; i++) {
+-        bufp = g_malloc(sizeof(struct buf_packet));
++        bufp = g_new(struct buf_packet, 1);
+         bufp->len = qemu_get_be32(f);
+         bufp->status = qemu_get_be32(f);
+         bufp->offset = 0;
+-- 
+2.1.4
+
 
