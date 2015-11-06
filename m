@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZugSm-0005VK-4H
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 07:49:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59452)
+	id 1ZugSn-0005XU-Ah
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 07:49:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59494)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugSh-0005Lh-8V
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:47 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ZugSk-0005Rk-FW
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugSg-0001XX-Do
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:47 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40895)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZugSj-0001YK-Jh
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:50 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40990)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZugSa-0001S3-E2; Fri, 06 Nov 2015 07:49:40 -0500
+	id 1ZugSa-0001S5-E8; Fri, 06 Nov 2015 07:49:40 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2690F40DD1;
+	by isrv.corpit.ru (Postfix) with ESMTP id 1A4A540DD0;
 	Fri,  6 Nov 2015 15:49:39 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 5BABCAB7;
-	Fri,  6 Nov 2015 15:44:04 +0300 (MSK)
-Received: (nullmailer pid 31694 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5842EAD7;
+	Fri,  6 Nov 2015 15:44:06 +0300 (MSK)
+Received: (nullmailer pid 31705 invoked by uid 1000);
 	Fri, 06 Nov 2015 12:44:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 Nov 2015 15:43:48 +0300
-Message-Id: <1a13b27273cdc4f6fd18bc1e83950d47c6b5928b.1446813769.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Nov 2015 15:43:53 +0300
+Message-Id: <9f503153c78a23bcd44409cea64442c4ecd82ea5.1446813769.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 11/24] hw/dma/pxa2xx: Remove superfluous memset
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	"Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PULL 16/24] configure: remove help string for
+	'vnc-tls' option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,36 +44,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2015 12:49:48 -0000
+X-List-Received-Date: Fri, 06 Nov 2015 12:49:51 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: "Daniel P. Berrange" <berrange@redhat.com>
 
-g_malloc0 already clears the memory, so no need for
-the additional memset here. And while we're at it,
-also convert the g_malloc0 to the preferred g_new0.
+The '--enable-vnc-tls' option to configure was removed in
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+  commit 3e305e4a4752f70c0b5c3cf5b43ec957881714f7
+  Author: Daniel P. Berrange <berrange@redhat.com>
+  Date:   Thu Aug 6 14:39:32 2015 +0100
+
+    ui: convert VNC server to use QCryptoTLSSession
+
+This removes the corresponding help string.
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/dma/pxa2xx_dma.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-index d4501fb..54cdb25 100644
---- a/hw/dma/pxa2xx_dma.c
-+++ b/hw/dma/pxa2xx_dma.c
-@@ -459,9 +459,8 @@ static int pxa2xx_dma_init(SysBusDevice *sbd)
-         return -1;
-     }
- 
--    s->chan = g_malloc0(sizeof(PXA2xxDMAChannel) * s->channels);
-+    s->chan = g_new0(PXA2xxDMAChannel, s->channels);
- 
--    memset(s->chan, 0, sizeof(PXA2xxDMAChannel) * s->channels);
-     for (i = 0; i < s->channels; i ++)
-         s->chan[i].state = DCSR_STOPINTR;
- 
+diff --git a/configure b/configure
+index 60cbd84..b687764 100755
+--- a/configure
++++ b/configure
+@@ -1348,7 +1348,6 @@ disabled with --disable-FEATURE, default is enabled if available:
+   vte             vte support for the gtk UI
+   curses          curses UI
+   vnc             VNC UI support
+-  vnc-tls         TLS encryption for VNC server
+   vnc-sasl        SASL encryption for VNC server
+   vnc-jpeg        JPEG lossy compression for VNC server
+   vnc-png         PNG compression for VNC server
 -- 
 2.1.4
 
