@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zugvr-00033S-7W
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 08:19:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38536)
+	id 1Zugvt-00037e-IB
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 08:19:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38587)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zugvj-0002qj-TP
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:48 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Zugvn-0002xC-Q8
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zugvj-0002HO-3e
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:47 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:43023)
+	(envelope-from <mjt@tls.msk.ru>) id 1Zugvj-0002HJ-20
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:51 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:49966)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1Zugve-0002Co-DD; Fri, 06 Nov 2015 08:19:42 -0500
+	id 1Zugve-0002Cs-DA; Fri, 06 Nov 2015 08:19:42 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C406340DD9;
+	by isrv.corpit.ru (Postfix) with ESMTP id CAEC640DDB;
 	Fri,  6 Nov 2015 16:19:39 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id CB856AC1;
-	Fri,  6 Nov 2015 15:44:04 +0300 (MSK)
-Received: (nullmailer pid 31682 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 2274CAD3;
+	Fri,  6 Nov 2015 15:44:06 +0300 (MSK)
+Received: (nullmailer pid 31717 invoked by uid 1000);
 	Fri, 06 Nov 2015 12:44:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 Nov 2015 15:43:42 +0300
-Message-Id: <6ba9fe86957c3c8febf74c2495d901ac4061a673.1446813769.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Nov 2015 15:43:59 +0300
+Message-Id: <3ede8f699645f4ca7cdbc40d8139e5a0275b4805.1446813769.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Cao jin <caoj.fnst@cn.fujitsu.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 05/24] fix bad indentation in
-	pcie_cap_slot_write_config()
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Julio Guerra <julio@farjump.io>
+Subject: [Qemu-trivial] [PULL 22/24] taget-ppc: Fix read access to IBAT
+	registers higher than IBAT3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,42 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2015 13:19:48 -0000
+X-List-Received-Date: Fri, 06 Nov 2015 13:19:55 -0000
 
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
+From: Julio Guerra <julio@farjump.io>
 
-bad indentation conflicts with CODING_STYLE doc
+Fix the index used to read the IBAT's vector which results in IBAT0..3 instead
+of IBAT4..N.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+The bug appeared by saving/restoring contexts including IBATs values.
+
+Signed-off-by: Julio Guerra <julio@farjump.io>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/pci/pcie.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ target-ppc/translate_init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-index 32c65c2..0eab29d 100644
---- a/hw/pci/pcie.c
-+++ b/hw/pci/pcie.c
-@@ -426,13 +426,13 @@ void pcie_cap_slot_write_config(PCIDevice *dev,
-      */
-     if ((sltsta & PCI_EXP_SLTSTA_PDS) && (val & PCI_EXP_SLTCTL_PCC) &&
-         ((val & PCI_EXP_SLTCTL_PIC_OFF) == PCI_EXP_SLTCTL_PIC_OFF)) {
--            PCIBus *sec_bus = pci_bridge_get_sec_bus(PCI_BRIDGE(dev));
--            pci_for_each_device(sec_bus, pci_bus_num(sec_bus),
--                                pcie_unplug_device, NULL);
-+        PCIBus *sec_bus = pci_bridge_get_sec_bus(PCI_BRIDGE(dev));
-+        pci_for_each_device(sec_bus, pci_bus_num(sec_bus),
-+                            pcie_unplug_device, NULL);
+diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
+index 4934c80..e88dc7f 100644
+--- a/target-ppc/translate_init.c
++++ b/target-ppc/translate_init.c
+@@ -305,7 +305,7 @@ static void spr_read_ibat (DisasContext *ctx, int gprn, int sprn)
  
--            pci_word_test_and_clear_mask(exp_cap + PCI_EXP_SLTSTA,
--                                         PCI_EXP_SLTSTA_PDS);
--            pci_word_test_and_set_mask(exp_cap + PCI_EXP_SLTSTA,
-+        pci_word_test_and_clear_mask(exp_cap + PCI_EXP_SLTSTA,
-+                                     PCI_EXP_SLTSTA_PDS);
-+        pci_word_test_and_set_mask(exp_cap + PCI_EXP_SLTSTA,
-                                        PCI_EXP_SLTSTA_PDC);
-     }
+ static void spr_read_ibat_h (DisasContext *ctx, int gprn, int sprn)
+ {
+-    tcg_gen_ld_tl(cpu_gpr[gprn], cpu_env, offsetof(CPUPPCState, IBAT[sprn & 1][(sprn - SPR_IBAT4U) / 2]));
++    tcg_gen_ld_tl(cpu_gpr[gprn], cpu_env, offsetof(CPUPPCState, IBAT[sprn & 1][((sprn - SPR_IBAT4U) / 2) + 4]));
+ }
  
+ static void spr_write_ibatu (DisasContext *ctx, int sprn, int gprn)
 -- 
 2.1.4
 
