@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZugSi-0005P1-To
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 07:49:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59443)
+	id 1ZugSk-0005Rb-Ck
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 07:49:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugSg-0005L1-TA
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:47 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ZugSh-0005Ls-AS
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugSg-0001Wp-2E
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:46 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:37469)
+	(envelope-from <mjt@tls.msk.ru>) id 1ZugSg-0001XR-BT
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:49:47 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56959)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZugSa-0001S6-E2; Fri, 06 Nov 2015 07:49:40 -0500
+	id 1ZugSa-0001S2-Dp; Fri, 06 Nov 2015 07:49:40 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 29B3A40DD2;
+	by isrv.corpit.ru (Postfix) with ESMTP id 17F9340D82;
 	Fri,  6 Nov 2015 15:49:39 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id A3C9FACB;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id D6E17ACF;
 	Fri,  6 Nov 2015 15:44:05 +0300 (MSK)
-Received: (nullmailer pid 31719 invoked by uid 1000);
+Received: (nullmailer pid 31713 invoked by uid 1000);
 	Fri, 06 Nov 2015 12:44:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 Nov 2015 15:44:00 +0300
-Message-Id: <a2f31f180499593b5edb8ac5ab8ac1b92f0abcd4.1446813769.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Nov 2015 15:43:57 +0300
+Message-Id: <74de807f794ac5201b2b3c38ddadeef84a676a97.1446813769.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
@@ -31,8 +31,7 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 23/24] qemu-sockets: do not test path with
-	access() before unlinking
+Subject: [Qemu-trivial] [PULL 20/24] target-alpha: fix uninitialized variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,40 +43,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2015 12:49:47 -0000
+X-List-Received-Date: Fri, 06 Nov 2015 12:49:48 -0000
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-Using access() is a time-of-check/time-of-use race condition.  It is
-okay to use them to provide better error messages, but that is pretty
-much it.
+I am not sure why the compiler does not catch it.  There is no
+semantic change since gen_excp returns EXIT_NORETURN, but the
+old code is wrong.
 
-This is not one such case; on the other hand, access() *will* skip
-unlink() for a non-existent path, so ignore ENOENT return values from
-the unlink() system call.
+Reported by Coverity.
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- util/qemu-sockets.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ target-alpha/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index dfe4587..5a31d16 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -751,8 +751,7 @@ int unix_listen_opts(QemuOpts *opts, Error **errp)
-         qemu_opt_set(opts, "path", un.sun_path, &error_abort);
-     }
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 87950c6..9909c70 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -2916,7 +2916,7 @@ void gen_intermediate_code(CPUAlphaState *env, struct TranslationBlock *tb)
+         num_insns++;
  
--    if ((access(un.sun_path, F_OK) == 0) &&
--        unlink(un.sun_path) < 0) {
-+    if (unlink(un.sun_path) < 0 && errno != ENOENT) {
-         error_setg_errno(errp, errno,
-                          "Failed to unlink socket %s", un.sun_path);
-         goto err;
+         if (unlikely(cpu_breakpoint_test(cs, ctx.pc, BP_ANY))) {
+-            gen_excp(&ctx, EXCP_DEBUG, 0);
++            ret = gen_excp(&ctx, EXCP_DEBUG, 0);
+             /* The address covered by the breakpoint must be included in
+                [tb->pc, tb->pc + tb->size) in order to for it to be
+                properly cleared -- thus we increment the PC here so that
 -- 
 2.1.4
 
