@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZugcS-0007aw-Rj
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 07:59:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33639)
+	id 1Zugvn-0002vS-4r
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Nov 2015 08:19:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38549)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugcM-0007MK-L4
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:59:47 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1Zugvk-0002qr-CC
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ZugcL-0004qQ-AZ
-	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 07:59:46 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:39403)
+	(envelope-from <mjt@tls.msk.ru>) id 1Zugvj-0002I4-KW
+	for qemu-trivial@nongnu.org; Fri, 06 Nov 2015 08:19:48 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56919)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZugcF-0004hL-RD; Fri, 06 Nov 2015 07:59:40 -0500
+	id 1Zugve-0002Cq-D7; Fri, 06 Nov 2015 08:19:42 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1E57740DD4;
-	Fri,  6 Nov 2015 15:59:39 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id C716540DDA;
+	Fri,  6 Nov 2015 16:19:39 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 048E4AD1;
-	Fri,  6 Nov 2015 15:44:06 +0300 (MSK)
-Received: (nullmailer pid 31698 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 2BAA5AC7;
+	Fri,  6 Nov 2015 15:44:05 +0300 (MSK)
+Received: (nullmailer pid 31715 invoked by uid 1000);
 	Fri, 06 Nov 2015 12:44:03 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 Nov 2015 15:43:50 +0300
-Message-Id: <fedf0d35aafc4f1f1e5f6dbc80cb23ae1ae49f0b.1446813769.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  6 Nov 2015 15:43:58 +0300
+Message-Id: <68851b98e5bf6d397498b74f1776801274ab8d48.1446813769.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [Qemu-trivial] [PULL 13/24] ui: Use g_new() & friends where that
-	makes obvious sense
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 21/24] exec: avoid unnecessary cacheline
+	bounce on ram_list.mru_block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,158 +44,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Nov 2015 12:59:48 -0000
+X-List-Received-Date: Fri, 06 Nov 2015 13:19:49 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
-for two reasons.  One, it catches multiplication overflowing size_t.
-Two, it returns T * rather than void *, which lets the compiler catch
-more type errors.
+Whenever the MRU cache hits for the list of RAM blocks, qemu_get_ram_block
+does an unnecessary write that causes a processor cache line to bounce
+from one core to another.  This causes a performance hit.
 
-This commit only touches allocations with size arguments of the form
-sizeof(T).  Same Coccinelle semantic patch as in commit b45c03f.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reported-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- ui/console.c      | 2 +-
- ui/curses.c       | 2 +-
- ui/input-legacy.c | 4 ++--
- ui/keymaps.c      | 2 +-
- ui/sdl.c          | 2 +-
- ui/vnc-jobs.c     | 6 +++---
- ui/vnc.c          | 4 ++--
- 7 files changed, 11 insertions(+), 11 deletions(-)
+ exec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/ui/console.c b/ui/console.c
-index f26544e..745c354 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -450,7 +450,7 @@ static void text_console_resize(QemuConsole *s)
-     if (s->width < w1)
-         w1 = s->width;
+diff --git a/exec.c b/exec.c
+index ed88e72..a028961 100644
+--- a/exec.c
++++ b/exec.c
+@@ -903,7 +903,7 @@ static RAMBlock *qemu_get_ram_block(ram_addr_t addr)
  
--    cells = g_malloc(s->width * s->total_height * sizeof(TextCell));
-+    cells = g_new(TextCell, s->width * s->total_height);
-     for(y = 0; y < s->total_height; y++) {
-         c = &cells[y * s->width];
-         if (w1 > 0) {
-diff --git a/ui/curses.c b/ui/curses.c
-index 266260a..7e7e402 100644
---- a/ui/curses.c
-+++ b/ui/curses.c
-@@ -431,7 +431,7 @@ void curses_display_init(DisplayState *ds, int full_screen)
- 
-     curses_winch_init();
- 
--    dcl = (DisplayChangeListener *) g_malloc0(sizeof(DisplayChangeListener));
-+    dcl = g_new0(DisplayChangeListener, 1);
-     dcl->ops = &dcl_ops;
-     register_displaychangelistener(dcl);
- 
-diff --git a/ui/input-legacy.c b/ui/input-legacy.c
-index a67ed32..e0a39f0 100644
---- a/ui/input-legacy.c
-+++ b/ui/input-legacy.c
-@@ -206,7 +206,7 @@ QEMUPutMouseEntry *qemu_add_mouse_event_handler(QEMUPutMouseEvent *func,
- {
-     QEMUPutMouseEntry *s;
- 
--    s = g_malloc0(sizeof(QEMUPutMouseEntry));
-+    s = g_new0(QEMUPutMouseEntry, 1);
- 
-     s->qemu_put_mouse_event = func;
-     s->qemu_put_mouse_event_opaque = opaque;
-@@ -240,7 +240,7 @@ QEMUPutLEDEntry *qemu_add_led_event_handler(QEMUPutLEDEvent *func,
- {
-     QEMUPutLEDEntry *s;
- 
--    s = g_malloc0(sizeof(QEMUPutLEDEntry));
-+    s = g_new0(QEMUPutLEDEntry, 1);
- 
-     s->put_led = func;
-     s->opaque = opaque;
-diff --git a/ui/keymaps.c b/ui/keymaps.c
-index 49410ae..1b9ba3f 100644
---- a/ui/keymaps.c
-+++ b/ui/keymaps.c
-@@ -109,7 +109,7 @@ static kbd_layout_t *parse_keyboard_layout(const name2keysym_t *table,
+     block = atomic_rcu_read(&ram_list.mru_block);
+     if (block && addr - block->offset < block->max_length) {
+-        goto found;
++        return block;
      }
- 
-     if (!k) {
--        k = g_malloc0(sizeof(kbd_layout_t));
-+        k = g_new0(kbd_layout_t, 1);
-     }
- 
-     for(;;) {
-diff --git a/ui/sdl.c b/ui/sdl.c
-index 3be2910..570cb99 100644
---- a/ui/sdl.c
-+++ b/ui/sdl.c
-@@ -985,7 +985,7 @@ void sdl_display_init(DisplayState *ds, int full_screen, int no_frame)
-         sdl_grab_start();
-     }
- 
--    dcl = g_malloc0(sizeof(DisplayChangeListener));
-+    dcl = g_new0(DisplayChangeListener, 1);
-     dcl->ops = &dcl_ops;
-     register_displaychangelistener(dcl);
- 
-diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-index 22c9abc..9512b87 100644
---- a/ui/vnc-jobs.c
-+++ b/ui/vnc-jobs.c
-@@ -79,7 +79,7 @@ static void vnc_unlock_queue(VncJobQueue *queue)
- 
- VncJob *vnc_job_new(VncState *vs)
- {
--    VncJob *job = g_malloc0(sizeof(VncJob));
-+    VncJob *job = g_new0(VncJob, 1);
- 
-     job->vs = vs;
-     vnc_lock_queue(queue);
-@@ -90,7 +90,7 @@ VncJob *vnc_job_new(VncState *vs)
- 
- int vnc_job_add_rect(VncJob *job, int x, int y, int w, int h)
- {
--    VncRectEntry *entry = g_malloc0(sizeof(VncRectEntry));
-+    VncRectEntry *entry = g_new0(VncRectEntry, 1);
- 
-     entry->rect.x = x;
-     entry->rect.y = y;
-@@ -298,7 +298,7 @@ disconnected:
- 
- static VncJobQueue *vnc_queue_init(void)
- {
--    VncJobQueue *queue = g_malloc0(sizeof(VncJobQueue));
-+    VncJobQueue *queue = g_new0(VncJobQueue, 1);
- 
-     qemu_cond_init(&queue->cond);
-     qemu_mutex_init(&queue->mutex);
-diff --git a/ui/vnc.c b/ui/vnc.c
-index a47f2b3..f20c08d 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -2982,7 +2982,7 @@ static void vnc_refresh(DisplayChangeListener *dcl)
- static void vnc_connect(VncDisplay *vd, int csock,
-                         bool skipauth, bool websocket)
- {
--    VncState *vs = g_malloc0(sizeof(VncState));
-+    VncState *vs = g_new0(VncState, 1);
-     int i;
- 
-     vs->csock = csock;
-@@ -3005,7 +3005,7 @@ static void vnc_connect(VncDisplay *vd, int csock,
- 
-     vs->lossy_rect = g_malloc0(VNC_STAT_ROWS * sizeof (*vs->lossy_rect));
-     for (i = 0; i < VNC_STAT_ROWS; ++i) {
--        vs->lossy_rect[i] = g_malloc0(VNC_STAT_COLS * sizeof (uint8_t));
-+        vs->lossy_rect[i] = g_new0(uint8_t, VNC_STAT_COLS);
-     }
- 
-     VNC_DEBUG("New client on socket %d\n", csock);
+     QLIST_FOREACH_RCU(block, &ram_list.blocks, next) {
+         if (addr - block->offset < block->max_length) {
 -- 
 2.1.4
 
