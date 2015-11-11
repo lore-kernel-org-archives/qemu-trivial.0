@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZwFMk-0001Tm-5V
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Nov 2015 15:18:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51125)
+	id 1ZwJsu-0004PY-UL
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Nov 2015 20:07:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZwFMh-0001PR-UL
-	for qemu-trivial@nongnu.org; Tue, 10 Nov 2015 15:18:04 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1ZwJsr-0004Je-US
+	for qemu-trivial@nongnu.org; Tue, 10 Nov 2015 20:07:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1ZwFMh-0005YM-46
-	for qemu-trivial@nongnu.org; Tue, 10 Nov 2015 15:18:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:32963)
+	(envelope-from <dgibson@ozlabs.org>) id 1ZwJsr-00061B-0w
+	for qemu-trivial@nongnu.org; Tue, 10 Nov 2015 20:07:33 -0500
+Received: from ozlabs.org ([103.22.144.67]:49930)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1ZwFMb-0005XZ-0D; Tue, 10 Nov 2015 15:17:57 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0F12A42E5B7;
-	Tue, 10 Nov 2015 20:17:56 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-163.bos.redhat.com
-	[10.18.17.163])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tAAKHt7K008818; Tue, 10 Nov 2015 15:17:55 -0500
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1447186571-27672-1-git-send-email-thuth@redhat.com>
-	<1447186571-27672-2-git-send-email-thuth@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <564250F3.7050704@redhat.com>
-Date: Tue, 10 Nov 2015 15:17:55 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1ZwJsj-0005xC-Lp; Tue, 10 Nov 2015 20:07:25 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 0F00B1402B4; Wed, 11 Nov 2015 12:07:24 +1100 (AEDT)
+Date: Wed, 11 Nov 2015 12:03:15 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20151111010315.GB5852@voom.redhat.com>
+References: <1444844599-33161-1-git-send-email-julio@farjump.io>
+	<563C5F17.7090409@msgid.tls.msk.ru>
 MIME-Version: 1.0
-In-Reply-To: <1447186571-27672-2-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-block@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH 1/4] hw/ide: Remove superfluous return
-	statements
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="8GpibOaaTibBMecb"
+Content-Disposition: inline
+In-Reply-To: <563C5F17.7090409@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2015-06-09)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 103.22.144.67
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, christophe@farjump.io,
+	Julio Guerra <julio@farjump.io>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH v2] taget-ppc: Fix read access
+ to IBAT registers higher than IBAT3
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,50 +43,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Nov 2015 20:18:05 -0000
+X-List-Received-Date: Wed, 11 Nov 2015 01:07:35 -0000
 
 
+--8GpibOaaTibBMecb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 11/10/2015 03:16 PM, Thomas Huth wrote:
-> The "return;" statements at the end of functions do not make
-> much sense, so let's remove them.
-> 
-> Cc: John Snow <jsnow@redhat.com>
-> Cc: qemu-block@nongnu.org
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/ide/atapi.c | 1 -
->  hw/ide/macio.c | 2 --
->  2 files changed, 3 deletions(-)
-> 
-> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
-> index 747f466..347c6e7 100644
-> --- a/hw/ide/atapi.c
-> +++ b/hw/ide/atapi.c
-> @@ -737,7 +737,6 @@ static void cmd_inquiry(IDEState *s, uint8_t *buf)
->   out:
->      buf[size_idx] = idx - preamble_len;
->      ide_atapi_cmd_reply(s, idx, max_len);
-> -    return;
->  }
->  
->  static void cmd_get_configuration(IDEState *s, uint8_t *buf)
-> diff --git a/hw/ide/macio.c b/hw/ide/macio.c
-> index 893c9b9..8a56115 100644
-> --- a/hw/ide/macio.c
-> +++ b/hw/ide/macio.c
-> @@ -288,8 +288,6 @@ static void pmac_ide_atapi_transfer_cb(void *opaque, int ret)
->  done:
->      block_acct_done(blk_get_stats(s->blk), &s->acct);
->      io->dma_end(opaque);
-> -
-> -    return;
->  }
->  
->  static void pmac_ide_transfer_cb(void *opaque, int ret)
-> 
+On Fri, Nov 06, 2015 at 11:04:39AM +0300, Michael Tokarev wrote:
+> 14.10.2015 20:43, Julio Guerra wrote:
+> > Fix the index used to read the IBAT's vector which results in IBAT0..3 =
+instead
+> > of IBAT4..N.
+> >=20
+> > The bug appeared by saving/restoring contexts including IBATs values.
+>=20
+> Applied to -trivial.  It'd be *much* better if such changes were
+> accepted by the maintainers who at least knows what's the talk
+> about... :(
 
-Fair enough.
+Thanks and sorry about this.  Alex Graf who usually handles most ppc
+stuff is off on paternity leave.  I've been filling in for him, but I
+missed this one because I'm a bit swamped with my day job.
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--8GpibOaaTibBMecb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWQpPTAAoJEGw4ysog2bOSH74P/0E0BgLnfXzlb2yefX34Us84
+oztiXTj1rlGPykkP3U8+mtnh4CzvSc6uuUqBZoBpJXJUXRmIhDq63uQSP598CVQM
+7ebiO0g9ZLj9dgKXidloXdF6r3MrCAyVPOM/u0knqh/UJrnia6N9heJsaFs7aY74
+MXMeLRhu4cVa79p8uchHd90TxfGIvj61Cua6xMSkUf2aZht57SW6taT7ENNX91w6
+kQ+YylP8qkeVZ42lsuyxUqgl7HHDY6HjYEAChHu/MG+X1CGP6TxQArXJS0Qvrvew
+CSBd7pwpTn+O0nmkD5Kju8gSfLp0XClzSIPaTIUKoQKGHJfuR1rjUzeZtf8seS/8
+x6Z0Ac1ihWBLReP5SomKfFEeJQKy9rd+dY0NFbAS3o50epRADP6wNKv2dSYclCaL
+qjiOlLsUhXeMfUMQ2dIJMFoRf5Zq8A46M+lTI4oKdGtLvVw1Amr5IMc4DRzm09h7
++k/UfWPhKNDRoJQWVpJnGoGIkJAvK4d7Wvjxh5Qizb3xj7LRNE7fE3S7u5cFngPR
+vqV7IqgbKRlqvGu/m88E+pDjaIq6y6/901jK8+3M7NKgu4rO993UvfYYwH+gFQfV
+cr5PgUKXYBb5BfIHLBhV6ibHWUJC0D98grfkyxsPwIRxr+X0aABWW4RjPG2QioFD
+fJ5HKhnG2MABOGVArPVx
+=oVr5
+-----END PGP SIGNATURE-----
+
+--8GpibOaaTibBMecb--
 
