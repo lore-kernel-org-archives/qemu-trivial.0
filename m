@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zwwgl-0005kV-1H
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2015 13:33:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50704)
+	id 1Zwwh6-0006Jr-Lk
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2015 13:34:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50776)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zwwgf-0005dk-Qv
-	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:37 -0500
+	(envelope-from <eblake@redhat.com>) id 1Zwwh4-0006Fo-81
+	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1Zwwge-0005G0-TZ
-	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:33 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:33847)
+	(envelope-from <eblake@redhat.com>) id 1Zwwh0-0005MH-6x
+	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:58 -0500
+Received: from resqmta-po-11v.sys.comcast.net ([96.114.154.170]:59578)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ZwwgX-0005Ch-IM; Thu, 12 Nov 2015 13:33:25 -0500
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 22F3341335;
-	Thu, 12 Nov 2015 21:33:17 +0300 (MSK)
-Message-ID: <5644DB6D.4030308@msgid.tls.msk.ru>
-Date: Thu, 12 Nov 2015 21:33:17 +0300
-From: Michael Tokarev <mjt@tls.msk.ru>
-Organization: Telecom Service, JSC
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
-MIME-Version: 1.0
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>, 
-	qemu-devel@nongnu.org
-References: <cover.1446813768.git.mjt@msgid.tls.msk.ru>
-	<b30d80546421c6ea919096b596887f496c80af0a.1446813769.git.mjt@msgid.tls.msk.ru>
-	<5644D222.3070408@suse.de>
-In-Reply-To: <5644D222.3070408@suse.de>
-OpenPGP: id=804465C5
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Cao jin <caoj.fnst@cn.fujitsu.com>
-Subject: Re: [Qemu-trivial] [PULL 17/24] qom/object: fix 2 comment typos
+	(envelope-from <eblake@redhat.com>) id 1Zwwh0-0005Ly-2C
+	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:54 -0500
+Received: from resomta-po-11v.sys.comcast.net ([96.114.154.235])
+	by resqmta-po-11v.sys.comcast.net with comcast
+	id giZC1r00554zqzk01iZspR; Thu, 12 Nov 2015 18:33:52 +0000
+Received: from red.redhat.com ([24.10.254.122])
+	by resomta-po-11v.sys.comcast.net with comcast
+	id giZp1r0032fD5rL01iZsXL; Thu, 12 Nov 2015 18:33:52 +0000
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 12 Nov 2015 11:33:48 -0700
+Message-Id: <1447353228-30550-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 2.4.3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20140121; t=1447353232;
+	bh=WZ6Xh9RWnirCrfQIUo0Uv8ZMcIKOqQJVX8kmvCLPDQk=;
+	h=Received:Received:From:To:Subject:Date:Message-Id;
+	b=flEAuHtJTEoRYM8aY6WsNXRq+ZX8ZkDrWKY6eBkOY2TumwFtY+8qjL8gxEjqx4x2w
+	U3lKEzQQXFWYlN979ItdX6XBjjwEnZRcjy9cIxzc6RlqlIKL+T0Jrs+geSFSvMBC5a
+	V9gis2Gm329Rg/o9ugsRJHNtCOb7hzq6bpEA8RiB48DVa4hu1EFDWZtwp9X/h0f0ZK
+	rPMeGHtUqdC7+V2Zpfg0RDkcYPzpiqSvnz3w/mn9j8z3xAMcYIIOxgs704/Uzs1ZFi
+	l532zIDuuNB9G8EKjfILEwWpoPYJKdu7PsMe79+TELW2qEr2FquCb7Q9lOW1V08jhK
+	LjLZnBLZVrGfw==
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 96.114.154.170
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH] tests: Ignore test-blockjob-txn
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,38 +49,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Nov 2015 18:33:37 -0000
+X-List-Received-Date: Thu, 12 Nov 2015 18:33:59 -0000
 
-12.11.2015 20:53, Andreas F=E4rber wrote:
-> Am 06.11.2015 um 13:43 schrieb Michael Tokarev:
->> From: Cao jin <caoj.fnst@cn.fujitsu.com>
->>
->> Also change the misleading definition of macro OBJECT_CLASS_CHECK
->>
->> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->=20
-> Michael, please *STOP* queuing QOM patches! You merged the unfixed
+Commit 6c6f312d added a new test, but did not mark it for
+exclusion in .gitignore.
 
-I think I do more harm to the project than good, these days.
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
-> version now - it's supposed to have just "qom:", and the parenthesis an=
-d
-> full stop are missing, too, that I had on qom-next before it disappeare=
-d
-> with today's rebase...
->=20
-> And why was I not CC'ed on this submission as include/qom/object.h
-> maintainer? You did not reply to the patch either, where I did.
+Yeah, I know this affects only non-VPATH builds, which we don't
+recommend, but we might as well be consistent.
 
-I didn't reply there because I wanted to remove the patch, exactly
-because you replied to the thread.  It looks like I forgot to remove
-it from the -trivial tree.
+ tests/.gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-Now, in the original thread, you said you only tweaked the commit
-(subject) message.  Is it really that bad in the original submission?
+diff --git a/tests/.gitignore b/tests/.gitignore
+index e96f569..de5e793 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -9,6 +9,7 @@ check-qom-proplist
+ rcutorture
+ test-aio
+ test-bitops
++test-blockjob-txn
+ test-coroutine
+ test-crypto-cipher
+ test-crypto-hash
+-- 
+2.4.3
 
-Thanks,
-
-/mjt
 
