@@ -1,43 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1Zwwh6-0006Jr-Lk
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2015 13:34:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50776)
+	id 1ZwyMv-0000t7-1A
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Nov 2015 15:21:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Zwwh4-0006Fo-81
-	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:58 -0500
+	(envelope-from <jsnow@redhat.com>) id 1ZwyMr-0000gA-Cu
+	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 15:21:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Zwwh0-0005MH-6x
-	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:58 -0500
-Received: from resqmta-po-11v.sys.comcast.net ([96.114.154.170]:59578)
+	(envelope-from <jsnow@redhat.com>) id 1ZwyMq-0001Jf-Nk
+	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 15:21:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54310)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1Zwwh0-0005Ly-2C
-	for qemu-trivial@nongnu.org; Thu, 12 Nov 2015 13:33:54 -0500
-Received: from resomta-po-11v.sys.comcast.net ([96.114.154.235])
-	by resqmta-po-11v.sys.comcast.net with comcast
-	id giZC1r00554zqzk01iZspR; Thu, 12 Nov 2015 18:33:52 +0000
-Received: from red.redhat.com ([24.10.254.122])
-	by resomta-po-11v.sys.comcast.net with comcast
-	id giZp1r0032fD5rL01iZsXL; Thu, 12 Nov 2015 18:33:52 +0000
-From: Eric Blake <eblake@redhat.com>
+	(envelope-from <jsnow@redhat.com>)
+	id 1ZwyMk-0001IG-My; Thu, 12 Nov 2015 15:21:06 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4739D4C08B;
+	Thu, 12 Nov 2015 20:21:06 +0000 (UTC)
+Received: from scv.usersys.redhat.com (vpn-56-36.rdu2.redhat.com [10.10.56.36])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tACKL47L029782; Thu, 12 Nov 2015 15:21:05 -0500
+From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 12 Nov 2015 11:33:48 -0700
-Message-Id: <1447353228-30550-1-git-send-email-eblake@redhat.com>
-X-Mailer: git-send-email 2.4.3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
-	s=q20140121; t=1447353232;
-	bh=WZ6Xh9RWnirCrfQIUo0Uv8ZMcIKOqQJVX8kmvCLPDQk=;
-	h=Received:Received:From:To:Subject:Date:Message-Id;
-	b=flEAuHtJTEoRYM8aY6WsNXRq+ZX8ZkDrWKY6eBkOY2TumwFtY+8qjL8gxEjqx4x2w
-	U3lKEzQQXFWYlN979ItdX6XBjjwEnZRcjy9cIxzc6RlqlIKL+T0Jrs+geSFSvMBC5a
-	V9gis2Gm329Rg/o9ugsRJHNtCOb7hzq6bpEA8RiB48DVa4hu1EFDWZtwp9X/h0f0ZK
-	rPMeGHtUqdC7+V2Zpfg0RDkcYPzpiqSvnz3w/mn9j8z3xAMcYIIOxgs704/Uzs1ZFi
-	l532zIDuuNB9G8EKjfILEwWpoPYJKdu7PsMe79+TELW2qEr2FquCb7Q9lOW1V08jhK
-	LjLZnBLZVrGfw==
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 96.114.154.170
-Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH] tests: Ignore test-blockjob-txn
+Date: Thu, 12 Nov 2015 15:21:04 -0500
+Message-Id: <1447359664-25407-1-git-send-email-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>, mjt@tls.msk.ru
+Subject: [Qemu-trivial] [PATCH] tests/.gitignore: ignore test-blockjob-txn
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,17 +39,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Nov 2015 18:33:59 -0000
+X-List-Received-Date: Thu, 12 Nov 2015 20:21:14 -0000
 
-Commit 6c6f312d added a new test, but did not mark it for
-exclusion in .gitignore.
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Reported-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: John Snow <jsnow@redhat.com>
 ---
-
-Yeah, I know this affects only non-VPATH builds, which we don't
-recommend, but we might as well be consistent.
-
  tests/.gitignore | 1 +
  1 file changed, 1 insertion(+)
 
