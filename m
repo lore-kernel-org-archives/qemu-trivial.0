@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZxM6C-0008Dw-8R
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Nov 2015 16:41:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59976)
+	id 1ZyQBu-0005Pp-ES
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2015 15:15:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60367)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZxM69-000896-KR
-	for qemu-trivial@nongnu.org; Fri, 13 Nov 2015 16:41:34 -0500
+	(envelope-from <stefanha@gmail.com>) id 1ZyAnq-0003VX-P4
+	for qemu-trivial@nongnu.org; Sun, 15 Nov 2015 22:50:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ZxM68-0002SF-JQ
-	for qemu-trivial@nongnu.org; Fri, 13 Nov 2015 16:41:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42994)
+	(envelope-from <stefanha@gmail.com>) id 1ZyAnp-0005iu-Vk
+	for qemu-trivial@nongnu.org; Sun, 15 Nov 2015 22:50:02 -0500
+Received: from mail-pa0-x230.google.com ([2607:f8b0:400e:c03::230]:35988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1ZxM64-0002RN-8X; Fri, 13 Nov 2015 16:41:28 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id EC276368E3;
-	Fri, 13 Nov 2015 21:41:27 +0000 (UTC)
-Received: from [10.3.113.115] (ovpn-113-115.phx2.redhat.com [10.3.113.115])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tADLfRnc014104; Fri, 13 Nov 2015 16:41:27 -0500
-To: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org
-References: <1447436727-26484-1-git-send-email-berrange@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <56465906.50509@redhat.com>
-Date: Fri, 13 Nov 2015 14:41:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <stefanha@gmail.com>)
+	id 1ZyAnl-0005ca-J3; Sun, 15 Nov 2015 22:49:57 -0500
+Received: by pacdm15 with SMTP id dm15so160576707pac.3;
+	Sun, 15 Nov 2015 19:49:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=SllsRFNoNnqnE9tVHwdlA2gejzUNXcZX+wZNop5hFlU=;
+	b=Lwd4Q7PHeI06mzh8a/yhFS0ZGLaDFcqFAaeWKPSQtf45W+v+oYU65KrVHnqUi5YxdN
+	ZOifnlKwQB4Cm21KP9TXN3wC9OBoHvPKGmQvxoL3m1vU/NFaTuKuacnEdVxaAgU6yILB
+	GNSddhD0q4GLkYWztw3+HJzkNqQglSLOD1RmPPQPMz3ekiKl0CvGtf9Cj1hwOgRtaS3X
+	H5lwKtwVqhdAlPIezHaVKPy8BhmS9//d4GXPlvoBpaQVY85jjBcCbo+rnNQaG+ucm+om
+	W5RQD7hOhar3GVTc289CocbRzZYG0j7ffWRzlBJyH6h8SmOEBpU0CUVajiruq1lVG+ie
+	9Y5Q==
+X-Received: by 10.66.150.165 with SMTP id uj5mr50702131pab.23.1447645796667;
+	Sun, 15 Nov 2015 19:49:56 -0800 (PST)
+Received: from localhost (42-2-247-202.static.netvigator.com. [42.2.247.202])
+	by smtp.gmail.com with ESMTPSA id
+	v17sm33005953pbs.69.2015.11.15.19.49.55
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 15 Nov 2015 19:49:55 -0800 (PST)
+Date: Mon, 16 Nov 2015 11:49:53 +0800
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20151116034953.GF9498@stefanha-x1.localdomain>
+References: <1447386423-13160-1-git-send-email-eblake@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1447436727-26484-1-git-send-email-berrange@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="8RT5UvSoqf8wcB4SoU2JthfHHfcE2Nd18"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] crypto: avoid two coverity
- false positive error reports
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ni93GHxFvA+th69W"
+Content-Disposition: inline
+In-Reply-To: <1447386423-13160-1-git-send-email-eblake@redhat.com>
+User-Agent: Mutt/1.5.23 (2015-06-09)
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400e:c03::230
+Cc: qemu-trivial@nongnu.org, berto@igalia.com, qemu-devel@nongnu.org,
+	stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.5 v2] tests: Ignore
+ recent test binaries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,60 +60,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Nov 2015 21:41:34 -0000
+X-List-Received-Date: Mon, 16 Nov 2015 03:50:03 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---8RT5UvSoqf8wcB4SoU2JthfHHfcE2Nd18
-Content-Type: text/plain; charset=utf-8
+
+--ni93GHxFvA+th69W
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 11/13/2015 10:45 AM, Daniel P. Berrange wrote:
-> In qcrypto_tls_creds_get_path() coverity complains that
-> we are checking '*creds' for NULL, despite having
-> dereferenced it previously. This is harmless bug due
-> to fact that the trace call was too early. Moving it
-> after the cleanup gets the desired semantics.
+On Thu, Nov 12, 2015 at 08:47:03PM -0700, Eric Blake wrote:
+> Commits 6c6f312d and bd797fc1 added new tests (test-blockjob-txn
+> and test-timed-average, respectively), but did not mark them for
+> exclusion in .gitignore.
 >=20
-> In qcrypto_tls_creds_check_cert_key_purpose() coverity
-> complains that we're passing a pointer to a previously
-> free'd buffer into gnutls_x509_crt_get_key_purpose_oid()
-> This is harmless because we're passing a size =3D=3D 0, so
-> gnutls won't access the buffer, but rather just report
-> what size it needs to be. We can avoid it though by
-> explicitly setting the buffer to NULL after free'ing
-> it.
->=20
-> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
->  crypto/tlscreds.c     | 4 ++--
->  crypto/tlscredsx509.c | 1 +
->  2 files changed, 3 insertions(+), 2 deletions(-)
+>=20
+> v2: retitle; also ignore test-timed-average
+>=20
+>  tests/.gitignore | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Stefan
 
-
---8RT5UvSoqf8wcB4SoU2JthfHHfcE2Nd18
+--ni93GHxFvA+th69W
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Version: GnuPG v1
 
-iQEcBAEBCAAGBQJWRlkHAAoJEKeha0olJ0NqClEIAIp94/ccg8y0Q3sGlj0Id1Ww
-sF27MPaXq9snqFtSV+MAKwfnotRCvyMkI/PopedizVXP/mvdI9eU8Jle5gVMzQMB
-Z36PwrzKSf/gNgpJAWjK+eHTcGFV87lElnoRYddXNwk76WRix2V143GDFNSZTwQb
-Y9siVF1IUNGnGJ/HZAmMUwpdqdiehi4S3CxIGzlIHD92TG1XZWkZ12AdJrDTpNDp
-rXhLZfjUIdRCxqJQKBK9FFLfyDxVyJ5KEXBu047aWUDPcSslGtRu1/Rken7bDHNK
-PtBkuXkXS0NSGBoa11vAyCjgEZd5r8Mi9x78txMRL4YModnwv8N7Vzc4to8IXZA=
-=35JX
+iQEcBAEBAgAGBQJWSVJhAAoJEJykq7OBq3PIu98H/iJJvwWFNLr/mYx1Jxk/o76J
+0khjTFfo3cCnMPdVyNvBP9fjO7I85mcrASNvmVQ5rEQRSO8Q8SbsWdYcHp/LVWgv
+j61kbFfC9KckBS/+SmSepvX05u5UHN2ATeOCA17NH3bZ0HaI5TnIgTBMoqdEP/Gl
+YowKjg07bwPA9PnKheJFzm096KgOsKabEkIHf/J4eWurNgngwlZHQu2/A7F1hB0W
+eoSYR1ToTZfC3tF3csCJfdzIasSCuW3p8QPu1aIEd4fHLZ2vKIomN1N7yP99jPaG
+yVGX0RNym3pe1X7sUEy1+Eg4dRTJr7jI67yQXlYvVJQbceTEKITvop1Q54Sk54Q=
+=q8zt
 -----END PGP SIGNATURE-----
 
---8RT5UvSoqf8wcB4SoU2JthfHHfcE2Nd18--
+--ni93GHxFvA+th69W--
 
