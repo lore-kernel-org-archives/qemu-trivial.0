@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ZyQC7-0005pA-Bs
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Nov 2015 15:16:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43328)
+	id 1a02qH-00074H-MJ
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Nov 2015 02:44:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37259)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1ZyDRe-0002Y3-U5
-	for qemu-trivial@nongnu.org; Mon, 16 Nov 2015 01:39:19 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1a02qF-00070s-7X
+	for qemu-trivial@nongnu.org; Sat, 21 Nov 2015 02:44:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1ZyDRe-00059O-4j
-	for qemu-trivial@nongnu.org; Mon, 16 Nov 2015 01:39:18 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60678)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1a02qE-00024h-Fc
+	for qemu-trivial@nongnu.org; Sat, 21 Nov 2015 02:44:15 -0500
+Received: from [59.151.112.132] (port=29596 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1ZyDRY-00058a-3n; Mon, 16 Nov 2015 01:39:12 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 05F3E8C1A9;
-	Mon, 16 Nov 2015 06:39:10 +0000 (UTC)
-Received: from localhost (dhcp-14-148.nay.redhat.com [10.66.14.148])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tAG6d7oi009814; Mon, 16 Nov 2015 01:39:09 -0500
-Date: Mon, 16 Nov 2015 14:39:07 +0800
-From: Fam Zheng <famz@redhat.com>
-To: =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>
-Message-ID: <20151116063907.GE20672@ad.usersys.redhat.com>
-References: <1447363593-20637-1-git-send-email-hpoussin@reactos.org>
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1a02qA-00023N-5Z; Sat, 21 Nov 2015 02:44:10 -0500
+X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
+   d="scan'208";a="694415"
+Received: from unknown (HELO edo.cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 21 Nov 2015 15:43:55 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (localhost.localdomain
+	[127.0.0.1])
+	by edo.cn.fujitsu.com (8.14.3/8.13.1) with ESMTP id tAL7hM0c029727;
+	Sat, 21 Nov 2015 15:43:22 +0800
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.96) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Sat, 21 Nov 2015 15:44:06 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Sat, 21 Nov 2015 15:45:03 +0800
+Message-ID: <1448091903-14460-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <1447363593-20637-1-git-send-email-hpoussin@reactos.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scsi: remove scsi_req_free
-	prototype
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.96]
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, mst@redhat.com
+Subject: [Qemu-trivial] [PATCH] PCI: add param check for api
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,33 +47,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Nov 2015 06:39:19 -0000
+X-List-Received-Date: Sat, 21 Nov 2015 07:44:16 -0000
 
-On Thu, 11/12 22:26, Herv=E9 Poussineau wrote:
-> Function has been deleted in ad2d30f79d3b0812f02c741be2189796b788d6d7.
->=20
-> Signed-off-by: Herv=E9 Poussineau <hpoussin@reactos.org>
-> ---
->  include/hw/scsi/scsi.h | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/include/hw/scsi/scsi.h b/include/hw/scsi/scsi.h
-> index cdaf0f8..1915a73 100644
-> --- a/include/hw/scsi/scsi.h
-> +++ b/include/hw/scsi/scsi.h
-> @@ -250,7 +250,6 @@ SCSIRequest *scsi_req_alloc(const SCSIReqOps *reqop=
-s, SCSIDevice *d,
->  SCSIRequest *scsi_req_new(SCSIDevice *d, uint32_t tag, uint32_t lun,
->                            uint8_t *buf, void *hba_private);
->  int32_t scsi_req_enqueue(SCSIRequest *req);
-> -void scsi_req_free(SCSIRequest *req);
->  SCSIRequest *scsi_req_ref(SCSIRequest *req);
->  void scsi_req_unref(SCSIRequest *req);
-> =20
-> --=20
-> 2.1.4
->=20
->=20
+add param check for pci_add_capability2, as it is a public API.
 
-Reviewed-by: Fam Zheng <famz@redhat.com>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ hw/pci/pci.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 168b9cc..6938f64 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2144,6 +2144,9 @@ int pci_add_capability2(PCIDevice *pdev, uint8_t cap_id,
+     uint8_t *config;
+     int i, overlapping_cap;
+ 
++    assert(size > 0);
++    assert(offset >= PCI_CONFIG_HEADER_SIZE || !offset);
++
+     if (!offset) {
+         offset = pci_find_space(pdev, size);
+         if (!offset) {
+-- 
+2.1.0
+
 
