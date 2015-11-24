@@ -1,44 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a0rCR-000424-Km
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Nov 2015 08:30:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33692)
+	id 1a1Elm-0007uC-Hu
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Nov 2015 09:40:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1a0rCK-0003wE-0M
-	for qemu-trivial@nongnu.org; Mon, 23 Nov 2015 08:30:28 -0500
+	(envelope-from <armbru@redhat.com>) id 1a1Elf-0007is-6Z
+	for qemu-trivial@nongnu.org; Tue, 24 Nov 2015 09:40:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1a0rCJ-00009T-8B
-	for qemu-trivial@nongnu.org; Mon, 23 Nov 2015 08:30:23 -0500
-Received: from [59.151.112.132] (port=29380 helo=heian.cn.fujitsu.com)
+	(envelope-from <armbru@redhat.com>) id 1a1Elb-0007PS-6Y
+	for qemu-trivial@nongnu.org; Tue, 24 Nov 2015 09:40:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33743)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1a0rC7-0008Pp-5L; Mon, 23 Nov 2015 08:30:13 -0500
-X-IronPort-AV: E=Sophos;i="5.20,242,1444665600"; 
-   d="scan'208";a="747990"
-Received: from bogon (HELO cn.fujitsu.com) ([10.167.33.6])
-	by heian.cn.fujitsu.com with ESMTP; 23 Nov 2015 21:29:44 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 6F55340925CA;
-	Mon, 23 Nov 2015 21:17:26 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.96) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Mon, 23 Nov 2015 21:18:11 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 23 Nov 2015 21:19:12 +0800
-Message-ID: <1448284752-18538-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <armbru@redhat.com>)
+	id 1a1ElR-0007L9-GT; Tue, 24 Nov 2015 09:40:13 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3739D689;
+	Tue, 24 Nov 2015 14:40:13 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-47.ams2.redhat.com
+	[10.36.116.47])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tAOEeB74022502
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 24 Nov 2015 09:40:12 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 04661303F16C; Tue, 24 Nov 2015 15:40:10 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+References: <1447936168-9808-1-git-send-email-armbru@redhat.com>
+Date: Tue, 24 Nov 2015 15:40:10 +0100
+In-Reply-To: <1447936168-9808-1-git-send-email-armbru@redhat.com> (Markus
+	Armbruster's message of "Thu, 19 Nov 2015 13:29:28 +0100")
+Message-ID: <871tbfxxyt.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.167.226.96]
-X-yoursite-MailScanner-Information: Please contact the ISP for more information
-X-yoursite-MailScanner-ID: 6F55340925CA.A9AE0
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
-Subject: [Qemu-trivial] [PATCH] PCI Trivial: remove superfluous code
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] typedefs: Put them back
+	into alphabetical order
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,35 +51,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Nov 2015 13:30:29 -0000
+X-List-Received-Date: Tue, 24 Nov 2015 14:40:33 -0000
 
-remove superfluous code in do_pci_register_device(). See its caller:
-pci_qdev_realize()
+Fat-fingered the cc.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- hw/pci/pci.c | 1 -
- 1 file changed, 1 deletion(-)
+Markus Armbruster <armbru@redhat.com> writes:
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 168b9cc..4d16da0 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -878,7 +878,6 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev, PCIBus *bus,
-        return NULL;
-     }
- 
--    pci_dev->devfn = devfn;
-     dma_as = pci_device_iommu_address_space(pci_dev);
- 
-     memory_region_init_alias(&pci_dev->bus_master_enable_region,
--- 
-2.1.0
-
-
--- 
-This message has been scanned for viruses and
-dangerous content by FCNIC, and is
-believed to be clean.
-
+> "Please keep this list in alphabetical order" has been more honoured
+> in the breach than in the observance.  Clean up.
+>
+> While there, drop a redundant struct declaration.
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  include/qemu/typedefs.h | 13 ++++++-------
+>  1 file changed, 6 insertions(+), 7 deletions(-)
+>
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 6b1093d..3eedcf4 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -3,7 +3,6 @@
+>  
+>  /* A load of opaque types so that device init declarations don't have to
+>     pull in all the real definitions.  */
+> -struct Monitor;
+>  
+>  /* Please keep this list in alphabetical order */
+>  typedef struct AdapterInfo AdapterInfo;
+> @@ -19,8 +18,8 @@ typedef struct BusState BusState;
+>  typedef struct CharDriverState CharDriverState;
+>  typedef struct CompatProperty CompatProperty;
+>  typedef struct CPUAddressSpace CPUAddressSpace;
+> -typedef struct DeviceState DeviceState;
+>  typedef struct DeviceListener DeviceListener;
+> +typedef struct DeviceState DeviceState;
+>  typedef struct DisplayChangeListener DisplayChangeListener;
+>  typedef struct DisplayState DisplayState;
+>  typedef struct DisplaySurface DisplaySurface;
+> @@ -46,6 +45,7 @@ typedef struct MigrationIncomingState MigrationIncomingState;
+>  typedef struct MigrationParams MigrationParams;
+>  typedef struct MigrationState MigrationState;
+>  typedef struct Monitor Monitor;
+> +typedef struct MonitorDef MonitorDef;
+>  typedef struct MouseTransformInfo MouseTransformInfo;
+>  typedef struct MSIMessage MSIMessage;
+>  typedef struct NetClientState NetClientState;
+> @@ -63,13 +63,13 @@ typedef struct PCIESlot PCIESlot;
+>  typedef struct PCIExpressDevice PCIExpressDevice;
+>  typedef struct PCIExpressHost PCIExpressHost;
+>  typedef struct PCIHostState PCIHostState;
+> -typedef struct PCMachineState PCMachineState;
+>  typedef struct PCMachineClass PCMachineClass;
+> +typedef struct PCMachineState PCMachineState;
+>  typedef struct PCMCIACardState PCMCIACardState;
+>  typedef struct PixelFormat PixelFormat;
+>  typedef struct PostcopyDiscardState PostcopyDiscardState;
+> -typedef struct PropertyInfo PropertyInfo;
+>  typedef struct Property Property;
+> +typedef struct PropertyInfo PropertyInfo;
+>  typedef struct QEMUBH QEMUBH;
+>  typedef struct QemuConsole QemuConsole;
+>  typedef struct QEMUFile QEMUFile;
+> @@ -78,10 +78,10 @@ typedef struct QemuOpts QemuOpts;
+>  typedef struct QemuOptsList QemuOptsList;
+>  typedef struct QEMUSGList QEMUSGList;
+>  typedef struct QEMUSizedBuffer QEMUSizedBuffer;
+> -typedef struct QEMUTimerListGroup QEMUTimerListGroup;
+>  typedef struct QEMUTimer QEMUTimer;
+> -typedef struct Range Range;
+> +typedef struct QEMUTimerListGroup QEMUTimerListGroup;
+>  typedef struct RAMBlock RAMBlock;
+> +typedef struct Range Range;
+>  typedef struct SerialState SerialState;
+>  typedef struct SHPCDevice SHPCDevice;
+>  typedef struct SMBusDevice SMBusDevice;
+> @@ -89,6 +89,5 @@ typedef struct SSIBus SSIBus;
+>  typedef struct uWireSlave uWireSlave;
+>  typedef struct VirtIODevice VirtIODevice;
+>  typedef struct Visitor Visitor;
+> -typedef struct MonitorDef MonitorDef;
+>  
+>  #endif /* QEMU_TYPEDEFS_H */
 
