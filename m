@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a2HpY-0007Y4-9f
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Nov 2015 07:08:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47152)
+	id 1a2K96-0003CJ-OM
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Nov 2015 09:37:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55961)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1a2HpP-0007Q3-Vl
-	for qemu-trivial@nongnu.org; Fri, 27 Nov 2015 07:08:44 -0500
+	(envelope-from <armbru@redhat.com>) id 1a2K91-00030l-B5
+	for qemu-trivial@nongnu.org; Fri, 27 Nov 2015 09:37:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1a2HpL-0006YZ-86
-	for qemu-trivial@nongnu.org; Fri, 27 Nov 2015 07:08:39 -0500
-Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:36227)
+	(envelope-from <armbru@redhat.com>) id 1a2K90-0004In-JZ
+	for qemu-trivial@nongnu.org; Fri, 27 Nov 2015 09:37:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33012)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1a2HpG-0006Xh-Un; Fri, 27 Nov 2015 07:08:31 -0500
-Received: by wmww144 with SMTP id w144so53188382wmw.1;
-	Fri, 27 Nov 2015 04:08:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=jMlf5sN566P3oIEpE4Lkvgr5+K48umrCONeazmMJzQY=;
-	b=zjTbrgAgtEYu2s8CMcIHKvYGKX8l9hsRwBvgvZWAh0A5hs8bQ0K7bGS3kLmxQL8XYL
-	gvsAirBNCSo1qBDIwv+FgTdHPv/gu11jyepTg7DGPZ7M6/bbgZivwOcuC20o/uJrdTgP
-	+3sKMKEKDKAwO2AssFN4D63VfPzvBa/ppsBZX2EAZl3xtv4ub8FFrtdGKfCXzIT7rnJr
-	ggNHQYiynLQxgNn+GmGmmOOZiBM2RC8CrCO84x7RFXW19latf0QYekqndMcJg7pueTz4
-	k74Y975pm5YCNunkk89xc8UhXiWDdOWdx4yjbioKTxsCZ3fEVbuE+NRc5C4Ta1mgrh26
-	CTaA==
-X-Received: by 10.194.209.235 with SMTP id mp11mr64430877wjc.53.1448626110226; 
-	Fri, 27 Nov 2015 04:08:30 -0800 (PST)
-Received: from donizetti.lan. (94-39-152-11.adsl-ull.clienti.tiscali.it.
-	[94.39.152.11]) by smtp.gmail.com with ESMTPSA id
-	an7sm32486375wjc.44.2015.11.27.04.08.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 27 Nov 2015 04:08:29 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 27 Nov 2015 13:08:25 +0100
-Message-Id: <1448626105-29540-2-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.5.0
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::22d
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH for-2.5] bt: avoid unintended sign extension
+	(envelope-from <armbru@redhat.com>)
+	id 1a2K8u-0004GJ-Lw; Fri, 27 Nov 2015 09:36:56 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3F4F9341ADA;
+	Fri, 27 Nov 2015 14:36:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-61.ams2.redhat.com
+	[10.36.116.61])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tAREasd1022759
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 27 Nov 2015 09:36:55 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 0B904303F16C; Fri, 27 Nov 2015 15:36:54 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <1448626105-29540-2-git-send-email-pbonzini@redhat.com>
+Date: Fri, 27 Nov 2015 15:36:53 +0100
+In-Reply-To: <1448626105-29540-2-git-send-email-pbonzini@redhat.com> (Paolo
+	Bonzini's message of "Fri, 27 Nov 2015 13:08:25 +0100")
+Message-ID: <87si3rzeyi.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.5] bt: avoid
+	unintended sign extension
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,31 +51,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Nov 2015 12:08:45 -0000
+X-List-Received-Date: Fri, 27 Nov 2015 14:37:07 -0000
 
-In the case of a 4-byte length, shifting a value by 24 may cause
-an unintended sign extension when converting from int to size_t.
-Use a uint32_t variable instead.
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/bt/sdp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> In the case of a 4-byte length, shifting a value by 24 may cause
+> an unintended sign extension when converting from int to size_t.
+> Use a uint32_t variable instead.
+>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-diff --git a/hw/bt/sdp.c b/hw/bt/sdp.c
-index b9bcdcc..04eaeca 100644
---- a/hw/bt/sdp.c
-+++ b/hw/bt/sdp.c
-@@ -42,7 +42,7 @@ struct bt_l2cap_sdp_state_s {
- 
- static ssize_t sdp_datalen(const uint8_t **element, ssize_t *left)
- {
--    size_t len = *(*element) ++ & SDP_DSIZE_MASK;
-+    uint32_t len = *(*element) ++ & SDP_DSIZE_MASK;
- 
-     if (!*left)
-         return -1;
--- 
-2.5.0
+For 32 bit ssize_t, lengths > 0x7fffffff go to negative, same as before.
+*shrug*
 
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
