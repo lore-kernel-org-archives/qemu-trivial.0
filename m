@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4Q6r-0008Iw-Qq
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2015 04:23:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41522)
+	id 1a4ZKB-0005AR-1X
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2015 14:13:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4Q6p-0008Fg-Fg
-	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 04:23:28 -0500
+	(envelope-from <afaerber@suse.de>) id 1a4ZK8-000580-4y
+	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 14:13:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4Q6o-0002hA-NX
-	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 04:23:27 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:49335)
+	(envelope-from <afaerber@suse.de>) id 1a4ZK7-0005eI-5L
+	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 14:13:48 -0500
+Received: from mx2.suse.de ([195.135.220.15]:37136)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1a4Q6j-0002dp-BS; Thu, 03 Dec 2015 04:23:21 -0500
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9B53A40522;
-	Thu,  3 Dec 2015 12:23:11 +0300 (MSK)
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 7A9D0A6C;
-	Thu,  3 Dec 2015 12:23:11 +0300 (MSK)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <1448877445-16981-1-git-send-email-pbonzini@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
-Organization: Telecom Service, JSC
-Message-ID: <566009FF.4060409@msgid.tls.msk.ru>
-Date: Thu, 3 Dec 2015 12:23:11 +0300
+	(envelope-from <afaerber@suse.de>)
+	id 1a4ZK1-0005Wm-NO; Thu, 03 Dec 2015 14:13:41 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id B94F3ADE6;
+	Thu,  3 Dec 2015 19:13:40 +0000 (UTC)
+To: Michael Tokarev <mjt@tls.msk.ru>, Cao jin <caoj.fnst@cn.fujitsu.com>,
+	qemu-devel@nongnu.org
+References: <1446709143-19935-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<565AD80B.50207@msgid.tls.msk.ru>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+Message-ID: <56609463.10909@suse.de>
+Date: Thu, 3 Dec 2015 20:13:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.4.0
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-In-Reply-To: <1448877445-16981-1-git-send-email-pbonzini@redhat.com>
+In-Reply-To: <565AD80B.50207@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH v5] bt: check struct sizes
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Trivial: update comment of
+	struct Object
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,17 +47,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Dec 2015 09:23:28 -0000
+X-List-Received-Date: Thu, 03 Dec 2015 19:13:49 -0000
 
-30.11.2015 12:57, Paolo Bonzini wrote:
-> See http://permalink.gmane.org/gmane.linux.bluez.kernel/36505.  For historical
-> reasons these do not use sizeof, and Coverity caught a mistake in
-> EVT_ENCRYPT_CHANGE_SIZE.
-...
+Am 29.11.2015 um 11:48 schrieb Michael Tokarev:
+> 05.11.2015 10:39, Cao jin wrote:
+>> it don`t has "GSList *interfaces" anymore
+>=20
+> Andreas, should this be applied?  It's been on the list for long alread=
+y,
+> and you said I shouldn't apply qom patches...
 
-Applied to -trivial.  Oh well!.. :)
+I seem to have missed this for the last pull because it doesn't show up
+in a "qom" inbox query. Thanks for the reminder.
+
+Applied to qom-next now (with massaging of commit message).
 
 Thanks,
+Andreas
 
-/mjt
+>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>> ---
+>>  include/qom/object.h | 3 ---
+>>  1 file changed, 3 deletions(-)
+>>
+>> diff --git a/include/qom/object.h b/include/qom/object.h
+>> index 0bb89d4..e46cc30 100644
+>> --- a/include/qom/object.h
+>> +++ b/include/qom/object.h
+>> @@ -396,9 +396,6 @@ struct ObjectClass
+>>   * As a result, #Object contains a reference to the objects type as i=
+ts
+>>   * first member.  This allows identification of the real type of the =
+object at
+>>   * run time.
+>> - *
+>> - * #Object also contains a list of #Interfaces that this object
+>> - * implements.
+>>   */
+>>  struct Object
+>>  {
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
+rnberg)
 
