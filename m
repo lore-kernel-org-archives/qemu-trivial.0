@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4kJZ-0006RP-9N
+	id 1a4kJZ-0006Qk-0X
 	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 01:57:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33958)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33962)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4kJT-0006CS-5a
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJT-0006Cx-BE
 	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4kJS-0000Kb-1M
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJR-0000KR-Td
 	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:51 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:36131)
+Received: from isrv.corpit.ru ([86.62.121.231]:46509)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1a4kJN-0000ID-E2; Fri, 04 Dec 2015 01:57:45 -0500
+	id 1a4kJO-0000JY-4c; Fri, 04 Dec 2015 01:57:46 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0812140687;
+	by isrv.corpit.ru (Postfix) with ESMTP id 4F0BC4068A;
 	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id CEA0BAAF;
-	Fri,  4 Dec 2015 09:57:42 +0300 (MSK)
-Received: (nullmailer pid 7971 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 3C280AAF;
+	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
+Received: (nullmailer pid 7965 invoked by uid 1000);
 	Fri, 04 Dec 2015 06:57:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  4 Dec 2015 09:57:40 +0300
-Message-Id: <98475746b357f6c048caf9e001998d8a0618b2e4.1449211229.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  4 Dec 2015 09:57:37 +0300
+Message-Id: <63fc7375d6b0a083aef56950119af3d1d2a96e51.1449211229.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
 References: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
@@ -31,7 +31,7 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 9/9] bt: check struct sizes
+Subject: [Qemu-trivial] [PULL 6/9] gt64xxx: fix decoding of ISD register
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,98 +47,33 @@ X-List-Received-Date: Fri, 04 Dec 2015 06:57:52 -0000
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-See http://permalink.gmane.org/gmane.linux.bluez.kernel/36505.  For historical
-reasons these do not use sizeof, and Coverity caught a mistake in
-EVT_ENCRYPT_CHANGE_SIZE.
+The GT64xxx's internal registers can be placed above the first 4 GiB
+in the address space, but not above the first 64 GiB.  Correctly cast
+the register to a 64-bit integer, and mask away bits above bit 35.
 
-In addition:
-
-- remove status from create_conn_cancel_cp; the "status" field is only
-in rp structs.  Note that this means that the OCF_CREATE_CONN_CANCEL
-could never have worked (it would have failed the LENGTH_CHECK), but
-I am keeping it anyway.
-
-- OCF_READ_LINK_QUALITY similarly could never have worked, but I am
-fixing read_link_quality_cp anyway.
-
-- fix inquiry_info which is shorter by one: the kernel has a struct that
-is 14 byte long, but not counting the initial num_responses byte which
-the kernel parses separately;
-
-- remove extended_inquiry_info altogether, since it's not used and unlike
-the other inquiry structs does not have the initial num_responses byte.
+Datasheet at http://pdf.datasheetarchive.com/datasheetsmain/Datasheets-33/DSA-655889.pdf
+(bug reported by Coverity).
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/hw/bt.h | 21 ++++-----------------
- 1 file changed, 4 insertions(+), 17 deletions(-)
+ hw/mips/gt64xxx_pci.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/bt.h b/include/hw/bt.h
-index cb2a7e6..c7c7909 100644
---- a/include/hw/bt.h
-+++ b/include/hw/bt.h
-@@ -504,7 +504,6 @@ typedef struct {
+diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+index 10fcca3..f76a9fd 100644
+--- a/hw/mips/gt64xxx_pci.c
++++ b/hw/mips/gt64xxx_pci.c
+@@ -275,7 +275,8 @@ static void check_reserved_space (hwaddr *start,
  
- #define OCF_CREATE_CONN_CANCEL		0x0008
- typedef struct {
--    uint8_t	status;
-     bdaddr_t	bdaddr;
- } QEMU_PACKED create_conn_cancel_cp;
- #define CREATE_CONN_CANCEL_CP_SIZE 6
-@@ -1266,13 +1265,13 @@ typedef struct {
-     uint8_t	status;
-     uint16_t	handle;
- } QEMU_PACKED reset_failed_contact_counter_rp;
--#define RESET_FAILED_CONTACT_COUNTER_RP_SIZE 4
-+#define RESET_FAILED_CONTACT_COUNTER_RP_SIZE 3
+ static void gt64120_isd_mapping(GT64120State *s)
+ {
+-    hwaddr start = s->regs[GT_ISD] << 21;
++    /* Bits 14:0 of ISD map to bits 35:21 of the start address.  */
++    hwaddr start = ((hwaddr)s->regs[GT_ISD] << 21) & 0xFFFE00000ull;
+     hwaddr length = 0x1000;
  
- #define OCF_READ_LINK_QUALITY		0x0003
- typedef struct {
-     uint16_t	handle;
- } QEMU_PACKED read_link_quality_cp;
--#define READ_LINK_QUALITY_CP_SIZE 4
-+#define READ_LINK_QUALITY_CP_SIZE 2
- 
- typedef struct {
-     uint8_t	status;
-@@ -1332,7 +1331,7 @@ typedef struct {
-     uint8_t	dev_class[3];
-     uint16_t	clock_offset;
- } QEMU_PACKED inquiry_info;
--#define INQUIRY_INFO_SIZE 14
-+#define INQUIRY_INFO_SIZE 15
- 
- #define EVT_CONN_COMPLETE		0x03
- typedef struct {
-@@ -1381,7 +1380,7 @@ typedef struct {
-     uint16_t	handle;
-     uint8_t	encrypt;
- } QEMU_PACKED evt_encrypt_change;
--#define EVT_ENCRYPT_CHANGE_SIZE 5
-+#define EVT_ENCRYPT_CHANGE_SIZE 4
- 
- #define EVT_CHANGE_CONN_LINK_KEY_COMPLETE	0x09
- typedef struct {
-@@ -1629,18 +1628,6 @@ typedef struct {
- } QEMU_PACKED evt_sniff_subrate;
- #define EVT_SNIFF_SUBRATE_SIZE 11
- 
--#define EVT_EXTENDED_INQUIRY_RESULT	0x2F
--typedef struct {
--    bdaddr_t	bdaddr;
--    uint8_t	pscan_rep_mode;
--    uint8_t	pscan_period_mode;
--    uint8_t	dev_class[3];
--    uint16_t	clock_offset;
--    int8_t	rssi;
--    uint8_t	data[240];
--} QEMU_PACKED extended_inquiry_info;
--#define EXTENDED_INQUIRY_INFO_SIZE 254
--
- #define EVT_TESTING			0xFE
- 
- #define EVT_VENDOR			0xFF
+     if (s->ISD_length) {
 -- 
 2.1.4
 
