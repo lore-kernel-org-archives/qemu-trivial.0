@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4ZKB-0005AR-1X
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Dec 2015 14:13:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32795)
+	id 1a4kJV-0006Ib-S6
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 01:57:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1a4ZK8-000580-4y
-	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 14:13:49 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJT-0006C8-2E
+	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afaerber@suse.de>) id 1a4ZK7-0005eI-5L
-	for qemu-trivial@nongnu.org; Thu, 03 Dec 2015 14:13:48 -0500
-Received: from mx2.suse.de ([195.135.220.15]:37136)
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJR-0000KL-QR
+	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:50 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:60857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afaerber@suse.de>)
-	id 1a4ZK1-0005Wm-NO; Thu, 03 Dec 2015 14:13:41 -0500
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id B94F3ADE6;
-	Thu,  3 Dec 2015 19:13:40 +0000 (UTC)
-To: Michael Tokarev <mjt@tls.msk.ru>, Cao jin <caoj.fnst@cn.fujitsu.com>,
-	qemu-devel@nongnu.org
-References: <1446709143-19935-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<565AD80B.50207@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Linux GmbH
-Message-ID: <56609463.10909@suse.de>
-Date: Thu, 3 Dec 2015 20:13:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <565AD80B.50207@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 195.135.220.15
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Trivial: update comment of
-	struct Object
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1a4kJN-0000IH-Dn; Fri, 04 Dec 2015 01:57:45 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 36FAC40689;
+	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 25A6CAAE;
+	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
+Received: (nullmailer pid 7963 invoked by uid 1000);
+	Fri, 04 Dec 2015 06:57:42 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Fri,  4 Dec 2015 09:57:36 +0300
+Message-Id: <fccd35a04640a728f979e6d72b2c7d02c05549f0.1449211229.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
+References: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Rodrigo Rebello <rprebello@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 5/9] configure: use appropriate code fragment
+	for -fstack-protector checks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,48 +44,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Dec 2015 19:13:49 -0000
+X-List-Received-Date: Fri, 04 Dec 2015 06:57:52 -0000
 
-Am 29.11.2015 um 11:48 schrieb Michael Tokarev:
-> 05.11.2015 10:39, Cao jin wrote:
->> it don`t has "GSList *interfaces" anymore
->=20
-> Andreas, should this be applied?  It's been on the list for long alread=
-y,
-> and you said I shouldn't apply qom patches...
+From: Rodrigo Rebello <rprebello@gmail.com>
 
-I seem to have missed this for the last pull because it doesn't show up
-in a "qom" inbox query. Thanks for the reminder.
+The check for stack-protector support consisted in compiling and linking
+the test program below (output by function write_c_skeleton()) with the
+compiler flag -fstack-protector-strong first and then with
+-fstack-protector-all if the first one failed to work:
 
-Applied to qom-next now (with massaging of commit message).
+  int main(void) { return 0; }
 
-Thanks,
-Andreas
+This caused false positives when using certain toolchains in which the
+compiler accepted -fstack-protector-strong but no support was provided
+by the C library, since for this stack-protector variant the compiler
+emits canary code only for functions that meet specific conditions
+(local arrays, memory references to local variables, etc.) and the code
+fragment under test included none of them (hence no stack protection
+code generated, no link failure).
 
->> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->> ---
->>  include/qom/object.h | 3 ---
->>  1 file changed, 3 deletions(-)
->>
->> diff --git a/include/qom/object.h b/include/qom/object.h
->> index 0bb89d4..e46cc30 100644
->> --- a/include/qom/object.h
->> +++ b/include/qom/object.h
->> @@ -396,9 +396,6 @@ struct ObjectClass
->>   * As a result, #Object contains a reference to the objects type as i=
-ts
->>   * first member.  This allows identification of the real type of the =
-object at
->>   * run time.
->> - *
->> - * #Object also contains a list of #Interfaces that this object
->> - * implements.
->>   */
->>  struct Object
->>  {
+This fix changes the test program used for -fstack-protector checks to
+include a function that meets conditions which cause the compiler to
+generate canary code in all variants.
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
+Signed-off-by: Rodrigo Rebello <rprebello@gmail.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ configure | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/configure b/configure
+index 2e8a672..b9552fd 100755
+--- a/configure
++++ b/configure
+@@ -1491,6 +1491,16 @@ for flag in $gcc_flags; do
+ done
+ 
+ if test "$stack_protector" != "no"; then
++  cat > $TMPC << EOF
++int main(int argc, char *argv[])
++{
++    char arr[64], *p = arr, *c = argv[0];
++    while (*c) {
++        *p++ = *c++;
++    }
++    return 0;
++}
++EOF
+   gcc_flags="-fstack-protector-strong -fstack-protector-all"
+   sp_on=0
+   for flag in $gcc_flags; do
+-- 
+2.1.4
+
 
