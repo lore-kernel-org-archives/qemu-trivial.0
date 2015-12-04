@@ -1,60 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4onA-0004kl-41
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 06:44:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45552)
+	id 1a4pdY-0008NT-0C
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 07:38:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a4on8-0004kV-BJ
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 06:44:47 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1a4pdW-0008MQ-3b
+	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 07:38:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a4on7-00055d-67
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 06:44:46 -0500
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:34760)
+	(envelope-from <pbonzini@redhat.com>) id 1a4pdV-0006qH-4A
+	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 07:38:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53132)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a4on6-00055R-U5
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 06:44:45 -0500
-Received: by vkbs1 with SMTP id s1so63734930vkb.1
-	for <qemu-trivial@nongnu.org>; Fri, 04 Dec 2015 03:44:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro-org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	bh=xBLEzg6BrLhSks7kt86nb0ZpHG8XH8C0dVb4lLgU6J4=;
-	b=CUtq/KbQgUfCVHITIl+XP16HzkHMrp9G89dagwfuqrJc0e1HQE0vXARJawTysFfZ4A
-	KUy5fA4VYdVfoYlm9/igxB8lwVd2yETuP0uQ9okiBcpCLFKCKvhgBneV0g51iN+ODpFn
-	f7jAvoEq1XgKVXA1QrRWxOCpjsWNfdjT/kTQ9TMXV+Lvg/gj+x/lRVFbd1smn8QwVgQ5
-	vgtPDz28Ue/+gtRwIpsY2Wy+2XtSLuyZdbY6WEMmRuOAQ4rA2VoR0ZUWdncMzh3jFQYG
-	CXN4MRgkH9SySz09HqRLfaoynK8yYXRjd6zdyd4DO4ER/AVvk9dY/5G65Pjv2p0nPwJk
-	/54w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=xBLEzg6BrLhSks7kt86nb0ZpHG8XH8C0dVb4lLgU6J4=;
-	b=VtryoCrW0raOpL2WmMw8Byz51paiuEfqyo/8VCJF+WoCEzIuh0J0osNPJcOvUa+Iof
-	DUHdX4KXErAL0lyNHaxQopjVcHctGAgsNuvOrcflVC7865TZ0ldZ737rXVk5gZHkggAz
-	gvRk9dfzgnpblY4xUYSqAQUdx4sE8KhhtMTbU13FAzhXDR8Hbi28bS+h8F3F2vaA0e7C
-	of8GRdrdy7+9Xvxu+acS8eM6tfAw7R4kZ3OkliPmHS+XMNJcZ7B7Xayd2szKJrLqmDKI
-	aiiE0JLnZnONkFDf6OSNOWORwE/3fRECO2UVu1Sdmt/s0hHlad1JVqKuNKhc8AdDK6ho
-	akCQ==
-X-Gm-Message-State: ALoCoQnt3Utc4HU6zTgEwXJ68tmlDSv5Uw2A7PLRdgoslCXWfGakFk/95RYYpk4asSfE5s2czCSR
-X-Received: by 10.31.52.211 with SMTP id b202mr9496032vka.82.1449229484541;
-	Fri, 04 Dec 2015 03:44:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 4 Dec 2015 03:44:25 -0800 (PST)
-In-Reply-To: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
-References: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Dec 2015 11:44:25 +0000
-Message-ID: <CAFEAcA-3g0ZVK2Sr=EcuG_yx+PZhpJATkvJ=zfA5LNShF=4MAA@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL for-2.5 0/9] Trivial patches
-	for 2015-12-04
+	(envelope-from <pbonzini@redhat.com>)
+	id 1a4pdQ-0006ov-U7; Fri, 04 Dec 2015 07:38:49 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 79EDAC001244;
+	Fri,  4 Dec 2015 12:38:48 +0000 (UTC)
+Received: from donizetti.lan. (ovpn-112-59.ams2.redhat.com [10.36.112.59])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tB4CckLl000531; Fri, 4 Dec 2015 07:38:47 -0500
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  4 Dec 2015 13:38:46 +0100
+Message-Id: <1449232726-18984-1-git-send-email-pbonzini@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH v2] net: convert qemu_log to error_report,
+	fix message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,94 +40,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Dec 2015 11:44:47 -0000
+X-List-Received-Date: Fri, 04 Dec 2015 12:38:55 -0000
 
-On 4 December 2015 at 06:57, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Hello.
->
-> During the freeze period, let me please add my trivial pull request too ;=
-)
->
-> There are just 9 patches this time, which are either (small) bugfixes,
-> or just prettifying one or another part of code to look nicely in the
-> release tarball.  Here are all of them:
->
-> aniel P. Berrange (1):
->       crypto: avoid two coverity false positive error reports
->         this is a cleanup together with a small tracing bugfix,
->         an easy patch.  An making coverity even more useful is
->         nice too.
->
-> Herv=C3=A9 Poussineau (1):
->       scsi: remove scsi_req_free prototype
->         just removing a prototype of a single unused function
->
-> John Snow (1):
->       util/id: fully allocate names table
->         a small bugfix avoiding accessing "random" memory
->
-> Markus Armbruster (1):
->       typedefs: Put them back into alphabetical order
->         this one sorts include/qemu/typedefs.h in alphabetical order,
->         and removes duplicates while at it.  Actual set of typedefs
->         isn't changed.  We should have good-looking code conforming
->         to our own standards in the released tarball :)
->
-> Paolo Bonzini (3):
->       bt: avoid unintended sign extension
->         a simple bt bugfix
->
->       gt64xxx: fix decoding of ISD register
->         this is a small mips platform bugfix
->
->       bt: check struct sizes
->         this one is rather large, but it tries to fix real mess in BT
->         device emulation which we have now
->
-> Peter Maydell (1):
->       configure: Diagnose broken linkers directly
->         A simple patch trying to verify whenever linker works too, not
->         only compiler, at configure time before doing more complex
->         tests.
->
-> Rodrigo Rebello (1):
->       configure: use appropriate code fragment for -fstack-protector chec=
-ks
->         this is an interesting patch in context of the freeze time.
->         In short, current test for -fstack-protector gives false positive=
-s
->         (claiming the feature is available) in some configuration, becaus=
-e
->         it only verifies whenever compiler accepts this option but not
->         whenever it can compile and link a code which actually uses stack=
-.
->
-> Please consider applying.
->
-> Thanks,
->
-> /mjt
->
->
-> The following changes since commit 4c65fed8bdf96780735dbdb92a8bd0d6b6526c=
-c3:
->
->   ui: vnc: avoid floating point exception (2015-12-03 13:34:50 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-12-04
->
-> for you to fetch changes up to 98475746b357f6c048caf9e001998d8a0618b2e4:
->
->   bt: check struct sizes (2015-12-04 09:39:55 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2015-12-04
->
-> ----------------------------------------------------------------
+Ensure that the error is printed with the proper timestamp.
 
-Applied, thanks.
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+        v1->v2: remove reference to -net dump, dumping can be a network filter
+---
+ net/dump.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- PMM
+diff --git a/net/dump.c b/net/dump.c
+index ce16a4b..1c05f78 100644
+--- a/net/dump.c
++++ b/net/dump.c
+@@ -84,7 +84,7 @@ static ssize_t dump_receive_iov(DumpState *s, const struct iovec *iov, int cnt)
+     cnt = iov_copy(&dumpiov[1], cnt, iov, cnt, 0, caplen);
+ 
+     if (writev(s->fd, dumpiov, cnt + 1) != sizeof(hdr) + caplen) {
+-        qemu_log("-net dump write error - stop dump\n");
++        error_report("network dump write error - stopping dump");
+         close(s->fd);
+         s->fd = -1;
+     }
+-- 
+2.5.0
+
 
