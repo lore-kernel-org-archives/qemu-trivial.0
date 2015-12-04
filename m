@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4kJV-0006Ib-S6
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 01:57:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33956)
+	id 1a4kJX-0006Lv-8I
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 01:57:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4kJT-0006C8-2E
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJT-0006Cz-BE
 	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1a4kJR-0000KL-QR
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:50 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:60857)
+	(envelope-from <mjt@tls.msk.ru>) id 1a4kJS-0000Kp-Af
+	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 01:57:51 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:33120)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1a4kJN-0000IH-Dn; Fri, 04 Dec 2015 01:57:45 -0500
+	id 1a4kJN-0000IE-E0; Fri, 04 Dec 2015 01:57:45 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 36FAC40689;
-	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id AD1E14063A;
+	Fri,  4 Dec 2015 09:57:42 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 25A6CAAE;
-	Fri,  4 Dec 2015 09:57:43 +0300 (MSK)
-Received: (nullmailer pid 7963 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 936BAAAD;
+	Fri,  4 Dec 2015 09:57:42 +0300 (MSK)
+Received: (nullmailer pid 7952 invoked by uid 1000);
 	Fri, 04 Dec 2015 06:57:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Fri,  4 Dec 2015 09:57:36 +0300
-Message-Id: <fccd35a04640a728f979e6d72b2c7d02c05549f0.1449211229.git.mjt@msgid.tls.msk.ru>
+Date: Fri,  4 Dec 2015 09:57:31 +0300
+Message-Id: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
-References: <cover.1449211229.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Rodrigo Rebello <rprebello@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 5/9] configure: use appropriate code fragment
-	for -fstack-protector checks
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL for-2.5 0/9] Trivial patches for 2015-12-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,56 +45,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 04 Dec 2015 06:57:52 -0000
 
-From: Rodrigo Rebello <rprebello@gmail.com>
+Hello.
 
-The check for stack-protector support consisted in compiling and linking
-the test program below (output by function write_c_skeleton()) with the
-compiler flag -fstack-protector-strong first and then with
--fstack-protector-all if the first one failed to work:
+During the freeze period, let me please add my trivial pull request too ;=
+)
 
-  int main(void) { return 0; }
+There are just 9 patches this time, which are either (small) bugfixes,
+or just prettifying one or another part of code to look nicely in the
+release tarball.  Here are all of them:
 
-This caused false positives when using certain toolchains in which the
-compiler accepted -fstack-protector-strong but no support was provided
-by the C library, since for this stack-protector variant the compiler
-emits canary code only for functions that meet specific conditions
-(local arrays, memory references to local variables, etc.) and the code
-fragment under test included none of them (hence no stack protection
-code generated, no link failure).
+aniel P. Berrange (1):
+      crypto: avoid two coverity false positive error reports
+	this is a cleanup together with a small tracing bugfix,
+	an easy patch.  An making coverity even more useful is
+	nice too.
 
-This fix changes the test program used for -fstack-protector checks to
-include a function that meets conditions which cause the compiler to
-generate canary code in all variants.
+Herv=C3=A9 Poussineau (1):
+      scsi: remove scsi_req_free prototype
+	just removing a prototype of a single unused function
 
-Signed-off-by: Rodrigo Rebello <rprebello@gmail.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+John Snow (1):
+      util/id: fully allocate names table
+	a small bugfix avoiding accessing "random" memory
 
-diff --git a/configure b/configure
-index 2e8a672..b9552fd 100755
---- a/configure
-+++ b/configure
-@@ -1491,6 +1491,16 @@ for flag in $gcc_flags; do
- done
- 
- if test "$stack_protector" != "no"; then
-+  cat > $TMPC << EOF
-+int main(int argc, char *argv[])
-+{
-+    char arr[64], *p = arr, *c = argv[0];
-+    while (*c) {
-+        *p++ = *c++;
-+    }
-+    return 0;
-+}
-+EOF
-   gcc_flags="-fstack-protector-strong -fstack-protector-all"
-   sp_on=0
-   for flag in $gcc_flags; do
--- 
-2.1.4
+Markus Armbruster (1):
+      typedefs: Put them back into alphabetical order
+	this one sorts include/qemu/typedefs.h in alphabetical order,
+	and removes duplicates while at it.  Actual set of typedefs
+	isn't changed.  We should have good-looking code conforming
+	to our own standards in the released tarball :)
 
+Paolo Bonzini (3):
+      bt: avoid unintended sign extension
+	a simple bt bugfix
+
+      gt64xxx: fix decoding of ISD register
+	this is a small mips platform bugfix
+
+      bt: check struct sizes
+	this one is rather large, but it tries to fix real mess in BT
+	device emulation which we have now
+
+Peter Maydell (1):
+      configure: Diagnose broken linkers directly
+	A simple patch trying to verify whenever linker works too, not
+	only compiler, at configure time before doing more complex
+	tests.
+
+Rodrigo Rebello (1):
+      configure: use appropriate code fragment for -fstack-protector chec=
+ks
+	this is an interesting patch in context of the freeze time.
+	In short, current test for -fstack-protector gives false positives
+	(claiming the feature is available) in some configuration, because
+	it only verifies whenever compiler accepts this option but not
+	whenever it can compile and link a code which actually uses stack.
+
+Please consider applying.
+
+Thanks,
+
+/mjt
+
+
+The following changes since commit 4c65fed8bdf96780735dbdb92a8bd0d6b6526c=
+c3:
+
+  ui: vnc: avoid floating point exception (2015-12-03 13:34:50 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2015-12-04
+
+for you to fetch changes up to 98475746b357f6c048caf9e001998d8a0618b2e4:
+
+  bt: check struct sizes (2015-12-04 09:39:55 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2015-12-04
+
+----------------------------------------------------------------
+Daniel P. Berrange (1):
+      crypto: avoid two coverity false positive error reports
+
+Herv=C3=A9 Poussineau (1):
+      scsi: remove scsi_req_free prototype
+
+John Snow (1):
+      util/id: fully allocate names table
+
+Markus Armbruster (1):
+      typedefs: Put them back into alphabetical order
+
+Paolo Bonzini (3):
+      bt: avoid unintended sign extension
+      gt64xxx: fix decoding of ISD register
+      bt: check struct sizes
+
+Peter Maydell (1):
+      configure: Diagnose broken linkers directly
+
+Rodrigo Rebello (1):
+      configure: use appropriate code fragment for -fstack-protector chec=
+ks
+
+ configure               | 13 +++++++++++++
+ crypto/tlscreds.c       |  4 ++--
+ crypto/tlscredsx509.c   |  1 +
+ hw/bt/sdp.c             |  2 +-
+ hw/mips/gt64xxx_pci.c   |  3 ++-
+ include/hw/bt.h         | 21 ++++-----------------
+ include/hw/scsi/scsi.h  |  1 -
+ include/qemu/typedefs.h | 13 ++++++-------
+ util/id.c               |  4 ++--
+ 9 files changed, 31 insertions(+), 31 deletions(-)
 
