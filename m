@@ -1,30 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a4uFa-0001Z3-Ci
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Dec 2015 12:34:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59364)
+	id 1a6pOt-0004I6-JJ
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Dec 2015 19:48:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56699)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1a4uFX-0001UI-Ut
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 12:34:28 -0500
+	(envelope-from <mlureau@redhat.com>) id 1a6pOr-0004Fr-Em
+	for qemu-trivial@nongnu.org; Wed, 09 Dec 2015 19:48:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1a4uFU-0001v6-HT
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 12:34:27 -0500
-Received: from mnementh.archaic.org.uk ([81.2.115.146]:37507)
+	(envelope-from <mlureau@redhat.com>) id 1a6pOq-0003kX-RF
+	for qemu-trivial@nongnu.org; Wed, 09 Dec 2015 19:48:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33371)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1a4uFU-0001um-Aw
-	for qemu-trivial@nongnu.org; Fri, 04 Dec 2015 12:34:24 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1a4uFR-00065l-0b; Fri, 04 Dec 2015 17:34:21 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <mlureau@redhat.com>)
+	id 1a6pOn-0003jc-Uq; Wed, 09 Dec 2015 19:47:58 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 8CD5B5D;
+	Thu, 10 Dec 2015 00:47:57 +0000 (UTC)
+Received: from localhost (ovpn-113-41.phx2.redhat.com [10.3.113.41])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBA0lucA016502; Wed, 9 Dec 2015 19:47:57 -0500
+From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
-Date: Fri,  4 Dec 2015 17:34:20 +0000
-Message-Id: <1449250461-23392-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
+Date: Thu, 10 Dec 2015 01:47:46 +0100
+Message-Id: <1449708466-13366-2-git-send-email-marcandre.lureau@redhat.com>
+In-Reply-To: <1449708466-13366-1-git-send-email-marcandre.lureau@redhat.com>
+References: <1449708466-13366-1-git-send-email-marcandre.lureau@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 81.2.115.146
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] osdep.h: Include glib-compat.h in osdep.h
-	rather than qemu-common.h
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [Qemu-trivial] [PATCH 2/2] configure: fix trace backend check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,45 +45,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Dec 2015 17:34:28 -0000
+X-List-Received-Date: Thu, 10 Dec 2015 00:48:02 -0000
 
-Our use of glib is now pervasive across QEMU. Move the include of glib-compat.h
-from qemu-common.h to osdep.h so that it is more widely accessible and doesn't
-get forgotten by accident. (Failure to include it will result in build failure
-on old versions of glib which is likely to be unnoticed by most developers.)
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Found thanks to shellcheck!
+
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/qemu-common.h | 1 -
- include/qemu/osdep.h  | 2 ++
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index 405364f..22b010c 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -22,7 +22,6 @@
- 
- #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
- 
--#include "glib-compat.h"
- #include "qemu/option.h"
- #include "qemu/host-utils.h"
- 
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 84e84ac..59a7f8d 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -69,6 +69,8 @@
- #include "sysemu/os-posix.h"
- #endif
- 
-+#include "glib-compat.h"
-+
- #include "qapi/error.h"
- 
- #if defined(CONFIG_SOLARIS) && CONFIG_SOLARIS_VERSION < 10
--- 
-1.9.1
+diff --git a/configure b/configure
+index 6a971a2..ba57b3f 100755
+--- a/configure
++++ b/configure
+@@ -4816,7 +4816,7 @@ echo "libcap-ng support $cap_ng"
+ echo "vhost-net support $vhost_net"
+ echo "vhost-scsi support $vhost_scsi"
+ echo "Trace backends    $trace_backends"
+-if test "$trace_backend" =3D "simple"; then
++if have_backend "simple"; then
+ echo "Trace output file $trace_file-<pid>"
+ fi
+ if test "$spice" =3D "yes"; then
+--=20
+2.5.0
 
 
