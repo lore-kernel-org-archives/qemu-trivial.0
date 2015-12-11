@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a6rU7-0001z9-V6
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Dec 2015 22:01:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35858)
+	id 1a7Ndb-0006k0-RM
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2015 08:21:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1a6rU5-0001w7-AU
-	for qemu-trivial@nongnu.org; Wed, 09 Dec 2015 22:01:34 -0500
+	(envelope-from <qhjin_dev@163.com>) id 1a7Hmu-0003KZ-4I
+	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 02:06:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1a6rU4-0006Su-CN
-	for qemu-trivial@nongnu.org; Wed, 09 Dec 2015 22:01:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34628)
+	(envelope-from <qhjin_dev@163.com>) id 1a7Hmo-0007sb-2x
+	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 02:06:44 -0500
+Received: from m13-146.163.com ([220.181.13.146]:33651)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1a6rU0-0006Rm-72; Wed, 09 Dec 2015 22:01:28 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id C3FC9C001274;
-	Thu, 10 Dec 2015 03:01:26 +0000 (UTC)
-Received: from [10.3.113.183] (ovpn-113-183.phx2.redhat.com [10.3.113.183])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBA31QpS031140; Wed, 9 Dec 2015 22:01:26 -0500
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-References: <1449708466-13366-1-git-send-email-marcandre.lureau@redhat.com>
-	<1449708466-13366-2-git-send-email-marcandre.lureau@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <5668EB05.7050008@redhat.com>
-Date: Wed, 9 Dec 2015 20:01:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <qhjin_dev@163.com>)
+	id 1a7Hmn-0007mV-AL; Fri, 11 Dec 2015 02:06:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=Bi1+k
+	mcBhMLU41Vs83gjJjq4tKHkSsLWUxFYlLVmB48=; b=MLQtxkIRbOwnCv4aTiQnm
+	vUKsbmlI6W3s6xhTQ4JDiMiUNEy5GKvTAvMe40NtpUMujwboiApSH23t/QJR4dMJ
+	VrciiiSJTVzwiRHe91cjAOZjIAgYyZEvishity8oPDBsZQWvtrXRbFXMT53SbCsZ
+	hCcY0zvhfFRjiZQvcQN9Rs=
+Received: from qhjin_dev$163.com ( [210.22.136.227] ) by
+	ajax-webmail-wmsvr146 (Coremail) ; Fri, 11 Dec 2015 15:06:12 +0800 (CST)
+X-Originating-IP: [210.22.136.227]
+Date: Fri, 11 Dec 2015 15:06:12 +0800 (CST)
+From: "Qinghua Jin" <qhjin_dev@163.com>
+To: qemu-devel@nongnu.org
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version SP_ntes V3.5 build
+	20150911(74783.7961) Copyright (c) 2002-2015 www.mailtech.cn 163com
+X-CM-CTRLDATA: ENXbkmZvb3Rlcl9odG09MjM1Njo1Ng==
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_256623_1284534142.1449817572928"
 MIME-Version: 1.0
-In-Reply-To: <1449708466-13366-2-git-send-email-marcandre.lureau@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="nF85tfKNSEW1nopxlb0b7d1vcFVX5ogh3"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Message-ID: <6aa1b449.fb8b.1518fdc8641.Coremail.qhjin_dev@163.com>
+X-CM-TRANSID: ksGowAA3T8XkdWpWkP0EAA--.13032W
+X-CM-SenderInfo: ptkmx0hbgh4qqrwthudrp/xtbBFR7NHFXlRd9+rgACsi
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] configure: fix trace
-	backend check
+X-Received-From: 220.181.13.146
+X-Mailman-Approved-At: Fri, 11 Dec 2015 08:21:29 -0500
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
+Subject: [Qemu-trivial] [PATCH] trace: reflect the file name change
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,64 +51,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Dec 2015 03:01:34 -0000
+X-List-Received-Date: Fri, 11 Dec 2015 07:06:45 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---nF85tfKNSEW1nopxlb0b7d1vcFVX5ogh3
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+------=_Part_256623_1284534142.1449817572928
+Content-Type: text/plain; charset=GBK
+Content-Transfer-Encoding: base64
 
-On 12/09/2015 05:47 PM, marcandre.lureau@redhat.com wrote:
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->=20
-> Found thanks to shellcheck!
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+U29tZSBmdW5jdGlvbnMgd2FzIG1vdmVkIGZyb20gYmxvY2suYyB0byBibG9jay9pby5jLCBzbyB0
+aGUgdHJhY2UtZXZlbnRzIGZpbGUgc2hvdWxkIHJlZmxlY3QgdGhhdCBjaGFuZ2UuCgoKU2lnbmVk
+LW9mZi1ieTogUWluZ2h1YSBKaW4gPHFoamluX2RldkAxNjMuY29tPgotLS0KIHRyYWNlLWV2ZW50
+cyB8IDQgKysrLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigt
+KQoKCmRpZmYgLS1naXQgYS90cmFjZS1ldmVudHMgYi90cmFjZS1ldmVudHMKaW5kZXggMmZjZTk4
+ZS4uYmVjMWFhMSAxMDA2NDQKLS0tIGEvdHJhY2UtZXZlbnRzCisrKyBiL3RyYWNlLWV2ZW50cwpA
+QCAtNTksNiArNTksOSBAQCB2aXJ0aW9fY29uc29sZV9jaHJfZXZlbnQodW5zaWduZWQgaW50IHBv
+cnQsIGludCBldmVudCkgInBvcnQgJXUsIGV2ZW50ICVkIgogCiAjIGJsb2NrLmMKIGJkcnZfb3Bl
+bl9jb21tb24odm9pZCAqYnMsIGNvbnN0IGNoYXIgKmZpbGVuYW1lLCBpbnQgZmxhZ3MsIGNvbnN0
+IGNoYXIgKmZvcm1hdF9uYW1lKSAiYnMgJXAgZmlsZW5hbWUgXCIlc1wiIGZsYWdzICUjeCBmb3Jt
+YXRfbmFtZSBcIiVzXCIiCitiZHJ2X2xvY2tfbWVkaXVtKHZvaWQgKmJzLCBib29sIGxvY2tlZCkg
+ImJzICVwIGxvY2tlZCAlZCIKKworIyBibG9jay9pby5jCiBtdWx0aXdyaXRlX2NiKHZvaWQgKm1j
+YiwgaW50IHJldCkgIm1jYiAlcCByZXQgJWQiCiBiZHJ2X2Fpb19tdWx0aXdyaXRlKHZvaWQgKm1j
+YiwgaW50IG51bV9jYWxsYmFja3MsIGludCBudW1fcmVxcykgIm1jYiAlcCBudW1fY2FsbGJhY2tz
+ICVkIG51bV9yZXFzICVkIgogYmRydl9haW9fZGlzY2FyZCh2b2lkICpicywgaW50NjRfdCBzZWN0
+b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywgdm9pZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAl
+IlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBvcGFxdWUgJXAiCkBAIC02Niw3ICs2OSw2IEBAIGJkcnZf
+YWlvX2ZsdXNoKHZvaWQgKmJzLCB2b2lkICpvcGFxdWUpICJicyAlcCBvcGFxdWUgJXAiCiBiZHJ2
+X2Fpb19yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywg
+dm9pZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBv
+cGFxdWUgJXAiCiBiZHJ2X2Fpb193cml0ZXYodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251bSwg
+aW50IG5iX3NlY3RvcnMsIHZvaWQgKm9wYXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQi
+IG5iX3NlY3RvcnMgJWQgb3BhcXVlICVwIgogYmRydl9haW9fd3JpdGVfemVyb2VzKHZvaWQgKmJz
+LCBpbnQ2NF90IHNlY3Rvcl9udW0sIGludCBuYl9zZWN0b3JzLCBpbnQgZmxhZ3MsIHZvaWQgKm9w
+YXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMgJWQgZmxhZ3MgJSN4
+IG9wYXF1ZSAlcCIKLWJkcnZfbG9ja19tZWRpdW0odm9pZCAqYnMsIGJvb2wgbG9ja2VkKSAiYnMg
+JXAgbG9ja2VkICVkIgogYmRydl9jb19yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVt
+LCBpbnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAl
+ZCIKIGJkcnZfY29fY29weV9vbl9yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBp
+bnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCIK
+IGJkcnZfY29fcmVhZHZfbm9fc2VyaWFsaXNpbmcodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251
+bSwgaW50IG5iX3NlY3RvcikgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMg
+JWQiCi0tIAoyLjQuMw==
+------=_Part_256623_1284534142.1449817572928
+Content-Type: text/html; charset=GBK
+Content-Transfer-Encoding: base64
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
+Zm9udC1mYW1pbHk6QXJpYWwiPjxkaXY+PHNwYW4gc3R5bGU9ImxpbmUtaGVpZ2h0OiAxLjc7Ij5T
+b21lIGZ1bmN0aW9ucyB3YXMgbW92ZWQgZnJvbSBibG9jay5jIHRvIGJsb2NrL2lvLmMsIHNvIHRo
+ZSB0cmFjZS1ldmVudHMgZmlsZSBzaG91bGQgcmVmbGVjdCB0aGF0IGNoYW5nZS48L3NwYW4+PC9k
+aXY+PGRpdj48YnI+PC9kaXY+PGRpdj5TaWduZWQtb2ZmLWJ5OiBRaW5naHVhIEppbiAmbHQ7cWhq
+aW5fZGV2QDE2My5jb20mZ3Q7PC9kaXY+PGRpdj4tLS08L2Rpdj48ZGl2PiZuYnNwO3RyYWNlLWV2
+ZW50cyB8IDQgKysrLTwvZGl2PjxkaXY+Jm5ic3A7MSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
+cygrKSwgMSBkZWxldGlvbigtKTwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+ZGlmZiAtLWdpdCBh
+L3RyYWNlLWV2ZW50cyBiL3RyYWNlLWV2ZW50czwvZGl2PjxkaXY+aW5kZXggMmZjZTk4ZS4uYmVj
+MWFhMSAxMDA2NDQ8L2Rpdj48ZGl2Pi0tLSBhL3RyYWNlLWV2ZW50czwvZGl2PjxkaXY+KysrIGIv
+dHJhY2UtZXZlbnRzPC9kaXY+PGRpdj5AQCAtNTksNiArNTksOSBAQCB2aXJ0aW9fY29uc29sZV9j
+aHJfZXZlbnQodW5zaWduZWQgaW50IHBvcnQsIGludCBldmVudCkgInBvcnQgJXUsIGV2ZW50ICVk
+IjwvZGl2PjxkaXY+Jm5ic3A7PC9kaXY+PGRpdj4mbmJzcDsjIGJsb2NrLmM8L2Rpdj48ZGl2PiZu
+YnNwO2JkcnZfb3Blbl9jb21tb24odm9pZCAqYnMsIGNvbnN0IGNoYXIgKmZpbGVuYW1lLCBpbnQg
+ZmxhZ3MsIGNvbnN0IGNoYXIgKmZvcm1hdF9uYW1lKSAiYnMgJXAgZmlsZW5hbWUgXCIlc1wiIGZs
+YWdzICUjeCBmb3JtYXRfbmFtZSBcIiVzXCIiPC9kaXY+PGRpdj4rYmRydl9sb2NrX21lZGl1bSh2
+b2lkICpicywgYm9vbCBsb2NrZWQpICJicyAlcCBsb2NrZWQgJWQiPC9kaXY+PGRpdj4rPC9kaXY+
+PGRpdj4rIyBibG9jay9pby5jPC9kaXY+PGRpdj4mbmJzcDttdWx0aXdyaXRlX2NiKHZvaWQgKm1j
+YiwgaW50IHJldCkgIm1jYiAlcCByZXQgJWQiPC9kaXY+PGRpdj4mbmJzcDtiZHJ2X2Fpb19tdWx0
+aXdyaXRlKHZvaWQgKm1jYiwgaW50IG51bV9jYWxsYmFja3MsIGludCBudW1fcmVxcykgIm1jYiAl
+cCBudW1fY2FsbGJhY2tzICVkIG51bV9yZXFzICVkIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9haW9f
+ZGlzY2FyZCh2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywgdm9p
+ZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBvcGFx
+dWUgJXAiPC9kaXY+PGRpdj5AQCAtNjYsNyArNjksNiBAQCBiZHJ2X2Fpb19mbHVzaCh2b2lkICpi
+cywgdm9pZCAqb3BhcXVlKSAiYnMgJXAgb3BhcXVlICVwIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9h
+aW9fcmVhZHYodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251bSwgaW50IG5iX3NlY3RvcnMsIHZv
+aWQgKm9wYXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMgJWQgb3Bh
+cXVlICVwIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9haW9fd3JpdGV2KHZvaWQgKmJzLCBpbnQ2NF90
+IHNlY3Rvcl9udW0sIGludCBuYl9zZWN0b3JzLCB2b2lkICpvcGFxdWUpICJicyAlcCBzZWN0b3Jf
+bnVtICUiUFJJZDY0IiBuYl9zZWN0b3JzICVkIG9wYXF1ZSAlcCI8L2Rpdj48ZGl2PiZuYnNwO2Jk
+cnZfYWlvX3dyaXRlX3plcm9lcyh2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJf
+c2VjdG9ycywgaW50IGZsYWdzLCB2b2lkICpvcGFxdWUpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJ
+ZDY0IiBuYl9zZWN0b3JzICVkIGZsYWdzICUjeCBvcGFxdWUgJXAiPC9kaXY+PGRpdj4tYmRydl9s
+b2NrX21lZGl1bSh2b2lkICpicywgYm9vbCBsb2NrZWQpICJicyAlcCBsb2NrZWQgJWQiPC9kaXY+
+PGRpdj4mbmJzcDtiZHJ2X2NvX3JlYWR2KHZvaWQgKmJzLCBpbnQ2NF90IHNlY3Rvcl9udW0sIGlu
+dCBuYl9zZWN0b3IpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJZDY0IiBuYl9zZWN0b3JzICVkIjwv
+ZGl2PjxkaXY+Jm5ic3A7YmRydl9jb19jb3B5X29uX3JlYWR2KHZvaWQgKmJzLCBpbnQ2NF90IHNl
+Y3Rvcl9udW0sIGludCBuYl9zZWN0b3IpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJZDY0IiBuYl9z
+ZWN0b3JzICVkIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9jb19yZWFkdl9ub19zZXJpYWxpc2luZyh2
+b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9y
+X251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCI8L2Rpdj48ZGl2Pi0tJm5ic3A7PC9kaXY+PGRp
+dj4yLjQuMzwvZGl2PjwvZGl2Pjxicj48YnI+PHNwYW4gdGl0bGU9Im5ldGVhc2Vmb290ZXIiPjxw
+PiZuYnNwOzwvcD48L3NwYW4+
+------=_Part_256623_1284534142.1449817572928--
 
->=20
-> diff --git a/configure b/configure
-> index 6a971a2..ba57b3f 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4816,7 +4816,7 @@ echo "libcap-ng support $cap_ng"
->  echo "vhost-net support $vhost_net"
->  echo "vhost-scsi support $vhost_scsi"
->  echo "Trace backends    $trace_backends"
-> -if test "$trace_backend" =3D "simple"; then
-> +if have_backend "simple"; then
->  echo "Trace output file $trace_file-<pid>"
->  fi
->  if test "$spice" =3D "yes"; then
->=20
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---nF85tfKNSEW1nopxlb0b7d1vcFVX5ogh3
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWaOsFAAoJEKeha0olJ0NqNTMH/iSKfziGlFa93oBIw32CtqS1
-xNJfJl0wAQS1lcOPDHGvtM6eDwkXYuNpW30sVHp3AReU9nHHfo1p5JsNnIim4d6k
-MRYQ2DethczVhVdYkJvz5vQ4pjpJtqqF3wHIYy6Ofmt5sGi8DJFiZf82hHKLxGcE
-StDBfAFdPX6L/EyUj1IeER5pNEPUltinIWM2WOlbsN3dz+5AtTcHfeNBPrV7NSTh
-+z5VBPGzLKWvcEKVq9SHtNlgBr20alIpIVSroALCIsR4PvTalgA8YIu6ivLupq0f
-hOQO61qwpWSARCkU2Yc8OeJnIYcNOszoX4PXvUHhjgmBKPTtJbkPaphqeyaaGto=
-=BXhX
------END PGP SIGNATURE-----
-
---nF85tfKNSEW1nopxlb0b7d1vcFVX5ogh3--
 
