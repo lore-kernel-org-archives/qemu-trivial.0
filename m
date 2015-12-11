@@ -1,45 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a7Ndb-0006k0-RM
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2015 08:21:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42384)
+	id 1a7Ndc-0006lT-H8
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2015 08:21:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44822)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qhjin_dev@163.com>) id 1a7Hmu-0003KZ-4I
-	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 02:06:45 -0500
+	(envelope-from <jonathan.ashley@altran.com>) id 1a7Lt9-0003dS-E0
+	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 06:29:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <qhjin_dev@163.com>) id 1a7Hmo-0007sb-2x
-	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 02:06:44 -0500
-Received: from m13-146.163.com ([220.181.13.146]:33651)
+	(envelope-from <jonathan.ashley@altran.com>) id 1a7Lt8-0000HP-Kw
+	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 06:29:27 -0500
+Received: from smtp3.altran.com ([194.98.79.84]:47702 helo=smtp5.altran.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qhjin_dev@163.com>)
-	id 1a7Hmn-0007mV-AL; Fri, 11 Dec 2015 02:06:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=Bi1+k
-	mcBhMLU41Vs83gjJjq4tKHkSsLWUxFYlLVmB48=; b=MLQtxkIRbOwnCv4aTiQnm
-	vUKsbmlI6W3s6xhTQ4JDiMiUNEy5GKvTAvMe40NtpUMujwboiApSH23t/QJR4dMJ
-	VrciiiSJTVzwiRHe91cjAOZjIAgYyZEvishity8oPDBsZQWvtrXRbFXMT53SbCsZ
-	hCcY0zvhfFRjiZQvcQN9Rs=
-Received: from qhjin_dev$163.com ( [210.22.136.227] ) by
-	ajax-webmail-wmsvr146 (Coremail) ; Fri, 11 Dec 2015 15:06:12 +0800 (CST)
-X-Originating-IP: [210.22.136.227]
-Date: Fri, 11 Dec 2015 15:06:12 +0800 (CST)
-From: "Qinghua Jin" <qhjin_dev@163.com>
-To: qemu-devel@nongnu.org
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version SP_ntes V3.5 build
-	20150911(74783.7961) Copyright (c) 2002-2015 www.mailtech.cn 163com
-X-CM-CTRLDATA: ENXbkmZvb3Rlcl9odG09MjM1Njo1Ng==
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_256623_1284534142.1449817572928"
+	(envelope-from <jonathan.ashley@altran.com>)
+	id 1a7Lt2-0000GY-Ir; Fri, 11 Dec 2015 06:29:20 -0500
+Received: from XCH-DCFR-34.europe.corp.altran.com (unknown [10.0.6.14])
+	by Websense Email Security Gateway with ESMTPS id 0F8FBBA5719BE;
+	Fri, 11 Dec 2015 12:29:15 +0100 (CET)
+Received: from XMB-DCFR-37.europe.corp.altran.com
+	([fe80::80ba:99a3:be27:fa11]) by XCH-DCFR-34.europe.corp.altran.com
+	([10.0.6.14]) with mapi id 14.03.0248.002;
+	Fri, 11 Dec 2015 12:29:16 +0100
+From: Ashley Jonathan <jonathan.ashley@altran.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Thread-Topic: [PATCH] Keep pty slave file descriptor open until the master
+	is closed
+Thread-Index: AdE0BeDuGw5r/QTuRKe5Y8+l1lqE9A==
+Date: Fri, 11 Dec 2015 11:29:16 +0000
+Message-ID: <AC19797808C8D548ABDE0CA4A97AA30A30DEB409@XMB-DCFR-37.europe.corp.altran.com>
+Accept-Language: en-GB, fr-FR, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.0.6.253]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Message-ID: <6aa1b449.fb8b.1518fdc8641.Coremail.qhjin_dev@163.com>
-X-CM-TRANSID: ksGowAA3T8XkdWpWkP0EAA--.13032W
-X-CM-SenderInfo: ptkmx0hbgh4qqrwthudrp/xtbBFR7NHFXlRd9+rgACsi
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.13.146
-X-Mailman-Approved-At: Fri, 11 Dec 2015 08:21:29 -0500
-Cc: qemu-trivial@nongnu.org, stefanha@redhat.com
-Subject: [Qemu-trivial] [PATCH] trace: reflect the file name change
+X-Received-From: 194.98.79.84
+X-Mailman-Approved-At: Fri, 11 Dec 2015 08:21:30 -0500
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>
+Subject: [Qemu-trivial] [PATCH] Keep pty slave file descriptor open until
+ the master is closed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,92 +52,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Dec 2015 07:06:45 -0000
+X-List-Received-Date: Fri, 11 Dec 2015 11:29:28 -0000
 
-------=_Part_256623_1284534142.1449817572928
-Content-Type: text/plain; charset=GBK
-Content-Transfer-Encoding: base64
+I have experienced a minor difficulty using QEMU with the "-serial pty" opt=
+ion:
 
-U29tZSBmdW5jdGlvbnMgd2FzIG1vdmVkIGZyb20gYmxvY2suYyB0byBibG9jay9pby5jLCBzbyB0
-aGUgdHJhY2UtZXZlbnRzIGZpbGUgc2hvdWxkIHJlZmxlY3QgdGhhdCBjaGFuZ2UuCgoKU2lnbmVk
-LW9mZi1ieTogUWluZ2h1YSBKaW4gPHFoamluX2RldkAxNjMuY29tPgotLS0KIHRyYWNlLWV2ZW50
-cyB8IDQgKysrLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigt
-KQoKCmRpZmYgLS1naXQgYS90cmFjZS1ldmVudHMgYi90cmFjZS1ldmVudHMKaW5kZXggMmZjZTk4
-ZS4uYmVjMWFhMSAxMDA2NDQKLS0tIGEvdHJhY2UtZXZlbnRzCisrKyBiL3RyYWNlLWV2ZW50cwpA
-QCAtNTksNiArNTksOSBAQCB2aXJ0aW9fY29uc29sZV9jaHJfZXZlbnQodW5zaWduZWQgaW50IHBv
-cnQsIGludCBldmVudCkgInBvcnQgJXUsIGV2ZW50ICVkIgogCiAjIGJsb2NrLmMKIGJkcnZfb3Bl
-bl9jb21tb24odm9pZCAqYnMsIGNvbnN0IGNoYXIgKmZpbGVuYW1lLCBpbnQgZmxhZ3MsIGNvbnN0
-IGNoYXIgKmZvcm1hdF9uYW1lKSAiYnMgJXAgZmlsZW5hbWUgXCIlc1wiIGZsYWdzICUjeCBmb3Jt
-YXRfbmFtZSBcIiVzXCIiCitiZHJ2X2xvY2tfbWVkaXVtKHZvaWQgKmJzLCBib29sIGxvY2tlZCkg
-ImJzICVwIGxvY2tlZCAlZCIKKworIyBibG9jay9pby5jCiBtdWx0aXdyaXRlX2NiKHZvaWQgKm1j
-YiwgaW50IHJldCkgIm1jYiAlcCByZXQgJWQiCiBiZHJ2X2Fpb19tdWx0aXdyaXRlKHZvaWQgKm1j
-YiwgaW50IG51bV9jYWxsYmFja3MsIGludCBudW1fcmVxcykgIm1jYiAlcCBudW1fY2FsbGJhY2tz
-ICVkIG51bV9yZXFzICVkIgogYmRydl9haW9fZGlzY2FyZCh2b2lkICpicywgaW50NjRfdCBzZWN0
-b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywgdm9pZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAl
-IlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBvcGFxdWUgJXAiCkBAIC02Niw3ICs2OSw2IEBAIGJkcnZf
-YWlvX2ZsdXNoKHZvaWQgKmJzLCB2b2lkICpvcGFxdWUpICJicyAlcCBvcGFxdWUgJXAiCiBiZHJ2
-X2Fpb19yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywg
-dm9pZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBv
-cGFxdWUgJXAiCiBiZHJ2X2Fpb193cml0ZXYodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251bSwg
-aW50IG5iX3NlY3RvcnMsIHZvaWQgKm9wYXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQi
-IG5iX3NlY3RvcnMgJWQgb3BhcXVlICVwIgogYmRydl9haW9fd3JpdGVfemVyb2VzKHZvaWQgKmJz
-LCBpbnQ2NF90IHNlY3Rvcl9udW0sIGludCBuYl9zZWN0b3JzLCBpbnQgZmxhZ3MsIHZvaWQgKm9w
-YXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMgJWQgZmxhZ3MgJSN4
-IG9wYXF1ZSAlcCIKLWJkcnZfbG9ja19tZWRpdW0odm9pZCAqYnMsIGJvb2wgbG9ja2VkKSAiYnMg
-JXAgbG9ja2VkICVkIgogYmRydl9jb19yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVt
-LCBpbnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAl
-ZCIKIGJkcnZfY29fY29weV9vbl9yZWFkdih2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBp
-bnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCIK
-IGJkcnZfY29fcmVhZHZfbm9fc2VyaWFsaXNpbmcodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251
-bSwgaW50IG5iX3NlY3RvcikgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMg
-JWQiCi0tIAoyLjQuMw==
-------=_Part_256623_1284534142.1449817572928
-Content-Type: text/html; charset=GBK
-Content-Transfer-Encoding: base64
+If a process opens the slave pts device, writes data to it, then immediatel=
+y closes it, the data doesn't reliably get delivered to the emulated serial=
+ port. This seems to be because a read of the master pty device returns EIO=
+ on Linux if no process has the pts device open, even when data is waiting =
+"in the pipe".
 
-PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
-Zm9udC1mYW1pbHk6QXJpYWwiPjxkaXY+PHNwYW4gc3R5bGU9ImxpbmUtaGVpZ2h0OiAxLjc7Ij5T
-b21lIGZ1bmN0aW9ucyB3YXMgbW92ZWQgZnJvbSBibG9jay5jIHRvIGJsb2NrL2lvLmMsIHNvIHRo
-ZSB0cmFjZS1ldmVudHMgZmlsZSBzaG91bGQgcmVmbGVjdCB0aGF0IGNoYW5nZS48L3NwYW4+PC9k
-aXY+PGRpdj48YnI+PC9kaXY+PGRpdj5TaWduZWQtb2ZmLWJ5OiBRaW5naHVhIEppbiAmbHQ7cWhq
-aW5fZGV2QDE2My5jb20mZ3Q7PC9kaXY+PGRpdj4tLS08L2Rpdj48ZGl2PiZuYnNwO3RyYWNlLWV2
-ZW50cyB8IDQgKysrLTwvZGl2PjxkaXY+Jm5ic3A7MSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
-cygrKSwgMSBkZWxldGlvbigtKTwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+ZGlmZiAtLWdpdCBh
-L3RyYWNlLWV2ZW50cyBiL3RyYWNlLWV2ZW50czwvZGl2PjxkaXY+aW5kZXggMmZjZTk4ZS4uYmVj
-MWFhMSAxMDA2NDQ8L2Rpdj48ZGl2Pi0tLSBhL3RyYWNlLWV2ZW50czwvZGl2PjxkaXY+KysrIGIv
-dHJhY2UtZXZlbnRzPC9kaXY+PGRpdj5AQCAtNTksNiArNTksOSBAQCB2aXJ0aW9fY29uc29sZV9j
-aHJfZXZlbnQodW5zaWduZWQgaW50IHBvcnQsIGludCBldmVudCkgInBvcnQgJXUsIGV2ZW50ICVk
-IjwvZGl2PjxkaXY+Jm5ic3A7PC9kaXY+PGRpdj4mbmJzcDsjIGJsb2NrLmM8L2Rpdj48ZGl2PiZu
-YnNwO2JkcnZfb3Blbl9jb21tb24odm9pZCAqYnMsIGNvbnN0IGNoYXIgKmZpbGVuYW1lLCBpbnQg
-ZmxhZ3MsIGNvbnN0IGNoYXIgKmZvcm1hdF9uYW1lKSAiYnMgJXAgZmlsZW5hbWUgXCIlc1wiIGZs
-YWdzICUjeCBmb3JtYXRfbmFtZSBcIiVzXCIiPC9kaXY+PGRpdj4rYmRydl9sb2NrX21lZGl1bSh2
-b2lkICpicywgYm9vbCBsb2NrZWQpICJicyAlcCBsb2NrZWQgJWQiPC9kaXY+PGRpdj4rPC9kaXY+
-PGRpdj4rIyBibG9jay9pby5jPC9kaXY+PGRpdj4mbmJzcDttdWx0aXdyaXRlX2NiKHZvaWQgKm1j
-YiwgaW50IHJldCkgIm1jYiAlcCByZXQgJWQiPC9kaXY+PGRpdj4mbmJzcDtiZHJ2X2Fpb19tdWx0
-aXdyaXRlKHZvaWQgKm1jYiwgaW50IG51bV9jYWxsYmFja3MsIGludCBudW1fcmVxcykgIm1jYiAl
-cCBudW1fY2FsbGJhY2tzICVkIG51bV9yZXFzICVkIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9haW9f
-ZGlzY2FyZCh2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9ycywgdm9p
-ZCAqb3BhcXVlKSAiYnMgJXAgc2VjdG9yX251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCBvcGFx
-dWUgJXAiPC9kaXY+PGRpdj5AQCAtNjYsNyArNjksNiBAQCBiZHJ2X2Fpb19mbHVzaCh2b2lkICpi
-cywgdm9pZCAqb3BhcXVlKSAiYnMgJXAgb3BhcXVlICVwIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9h
-aW9fcmVhZHYodm9pZCAqYnMsIGludDY0X3Qgc2VjdG9yX251bSwgaW50IG5iX3NlY3RvcnMsIHZv
-aWQgKm9wYXF1ZSkgImJzICVwIHNlY3Rvcl9udW0gJSJQUklkNjQiIG5iX3NlY3RvcnMgJWQgb3Bh
-cXVlICVwIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9haW9fd3JpdGV2KHZvaWQgKmJzLCBpbnQ2NF90
-IHNlY3Rvcl9udW0sIGludCBuYl9zZWN0b3JzLCB2b2lkICpvcGFxdWUpICJicyAlcCBzZWN0b3Jf
-bnVtICUiUFJJZDY0IiBuYl9zZWN0b3JzICVkIG9wYXF1ZSAlcCI8L2Rpdj48ZGl2PiZuYnNwO2Jk
-cnZfYWlvX3dyaXRlX3plcm9lcyh2b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJf
-c2VjdG9ycywgaW50IGZsYWdzLCB2b2lkICpvcGFxdWUpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJ
-ZDY0IiBuYl9zZWN0b3JzICVkIGZsYWdzICUjeCBvcGFxdWUgJXAiPC9kaXY+PGRpdj4tYmRydl9s
-b2NrX21lZGl1bSh2b2lkICpicywgYm9vbCBsb2NrZWQpICJicyAlcCBsb2NrZWQgJWQiPC9kaXY+
-PGRpdj4mbmJzcDtiZHJ2X2NvX3JlYWR2KHZvaWQgKmJzLCBpbnQ2NF90IHNlY3Rvcl9udW0sIGlu
-dCBuYl9zZWN0b3IpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJZDY0IiBuYl9zZWN0b3JzICVkIjwv
-ZGl2PjxkaXY+Jm5ic3A7YmRydl9jb19jb3B5X29uX3JlYWR2KHZvaWQgKmJzLCBpbnQ2NF90IHNl
-Y3Rvcl9udW0sIGludCBuYl9zZWN0b3IpICJicyAlcCBzZWN0b3JfbnVtICUiUFJJZDY0IiBuYl9z
-ZWN0b3JzICVkIjwvZGl2PjxkaXY+Jm5ic3A7YmRydl9jb19yZWFkdl9ub19zZXJpYWxpc2luZyh2
-b2lkICpicywgaW50NjRfdCBzZWN0b3JfbnVtLCBpbnQgbmJfc2VjdG9yKSAiYnMgJXAgc2VjdG9y
-X251bSAlIlBSSWQ2NCIgbmJfc2VjdG9ycyAlZCI8L2Rpdj48ZGl2Pi0tJm5ic3A7PC9kaXY+PGRp
-dj4yLjQuMzwvZGl2PjwvZGl2Pjxicj48YnI+PHNwYW4gdGl0bGU9Im5ldGVhc2Vmb290ZXIiPjxw
-PiZuYnNwOzwvcD48L3NwYW4+
-------=_Part_256623_1284534142.1449817572928--
+A fix seems to be for QEMU to keep the pts file descriptor open until the p=
+ty is closed, as per the below patch.
 
+---
+ qemu-char.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/qemu-char.c b/qemu-char.c
+index 2969c44..ed03ba0 100644
+--- a/qemu-char.c
++++ b/qemu-char.c
+@@ -1198,6 +1198,7 @@ typedef struct {
+     int connected;
+     guint timer_tag;
+     guint open_tag;
++    int slave_fd;
+ } PtyCharDriver;
+=20
+ static void pty_chr_update_read_handler_locked(CharDriverState *chr);
+@@ -1373,6 +1374,7 @@ static void pty_chr_close(struct CharDriverState *chr=
+)
+=20
+     qemu_mutex_lock(&chr->chr_write_lock);
+     pty_chr_state(chr, 0);
++    close(s->slave_fd);
+     fd =3D g_io_channel_unix_get_fd(s->fd);
+     g_io_channel_unref(s->fd);
+     close(fd);
+@@ -1401,7 +1403,6 @@ static CharDriverState *qemu_chr_open_pty(const char =
+*id,
+         return NULL;
+     }
+=20
+-    close(slave_fd);
+     qemu_set_nonblock(master_fd);
+=20
+     chr =3D qemu_chr_alloc();
+@@ -1422,6 +1423,7 @@ static CharDriverState *qemu_chr_open_pty(const char =
+*id,
+     chr->explicit_be_open =3D true;
+=20
+     s->fd =3D io_channel_from_fd(master_fd);
++    s->slave_fd =3D slave_fd;
+     s->timer_tag =3D 0;
+=20
+     return chr;
+--=20
+2.1.4
+
+
+
+---
+Jonathan Ashley=20
+jonathan.ashley AT altran.com
 
