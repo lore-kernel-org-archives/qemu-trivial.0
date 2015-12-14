@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a7Ndc-0006lT-H8
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Dec 2015 08:21:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44822)
+	id 1a8ftX-0006cC-Gz
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Dec 2015 22:03:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49989)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jonathan.ashley@altran.com>) id 1a7Lt9-0003dS-E0
-	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 06:29:28 -0500
+	(envelope-from <stefanha@redhat.com>) id 1a8ftU-0006Wv-Fy
+	for qemu-trivial@nongnu.org; Mon, 14 Dec 2015 22:03:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jonathan.ashley@altran.com>) id 1a7Lt8-0000HP-Kw
-	for qemu-trivial@nongnu.org; Fri, 11 Dec 2015 06:29:27 -0500
-Received: from smtp3.altran.com ([194.98.79.84]:47702 helo=smtp5.altran.com)
+	(envelope-from <stefanha@redhat.com>) id 1a8ftT-0006dJ-K1
+	for qemu-trivial@nongnu.org; Mon, 14 Dec 2015 22:03:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54178)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jonathan.ashley@altran.com>)
-	id 1a7Lt2-0000GY-Ir; Fri, 11 Dec 2015 06:29:20 -0500
-Received: from XCH-DCFR-34.europe.corp.altran.com (unknown [10.0.6.14])
-	by Websense Email Security Gateway with ESMTPS id 0F8FBBA5719BE;
-	Fri, 11 Dec 2015 12:29:15 +0100 (CET)
-Received: from XMB-DCFR-37.europe.corp.altran.com
-	([fe80::80ba:99a3:be27:fa11]) by XCH-DCFR-34.europe.corp.altran.com
-	([10.0.6.14]) with mapi id 14.03.0248.002;
-	Fri, 11 Dec 2015 12:29:16 +0100
-From: Ashley Jonathan <jonathan.ashley@altran.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Thread-Topic: [PATCH] Keep pty slave file descriptor open until the master
-	is closed
-Thread-Index: AdE0BeDuGw5r/QTuRKe5Y8+l1lqE9A==
-Date: Fri, 11 Dec 2015 11:29:16 +0000
-Message-ID: <AC19797808C8D548ABDE0CA4A97AA30A30DEB409@XMB-DCFR-37.europe.corp.altran.com>
-Accept-Language: en-GB, fr-FR, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.0.6.253]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <stefanha@redhat.com>)
+	id 1a8ftO-0006av-IQ; Mon, 14 Dec 2015 22:03:10 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 9F3F019F96F;
+	Tue, 15 Dec 2015 03:03:09 +0000 (UTC)
+Received: from localhost (ovpn-112-24.ams2.redhat.com [10.36.112.24])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBF335QF026853; Mon, 14 Dec 2015 22:03:08 -0500
+Date: Mon, 14 Dec 2015 20:21:34 +0800
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Qinghua Jin <qhjin_dev@163.com>
+Message-ID: <20151214122134.GF5027@stefanha-x1.localdomain>
+References: <6aa1b449.fb8b.1518fdc8641.Coremail.qhjin_dev@163.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="TU+u6i6jrDPzmlWF"
+Content-Disposition: inline
+In-Reply-To: <6aa1b449.fb8b.1518fdc8641.Coremail.qhjin_dev@163.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.79.84
-X-Mailman-Approved-At: Fri, 11 Dec 2015 08:21:30 -0500
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: [Qemu-trivial] [PATCH] Keep pty slave file descriptor open until
- the master is closed
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] trace: reflect the file name change
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,69 +46,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Dec 2015 11:29:28 -0000
-
-I have experienced a minor difficulty using QEMU with the "-serial pty" opt=
-ion:
-
-If a process opens the slave pts device, writes data to it, then immediatel=
-y closes it, the data doesn't reliably get delivered to the emulated serial=
- port. This seems to be because a read of the master pty device returns EIO=
- on Linux if no process has the pts device open, even when data is waiting =
-"in the pipe".
-
-A fix seems to be for QEMU to keep the pts file descriptor open until the p=
-ty is closed, as per the below patch.
-
----
- qemu-char.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/qemu-char.c b/qemu-char.c
-index 2969c44..ed03ba0 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -1198,6 +1198,7 @@ typedef struct {
-     int connected;
-     guint timer_tag;
-     guint open_tag;
-+    int slave_fd;
- } PtyCharDriver;
-=20
- static void pty_chr_update_read_handler_locked(CharDriverState *chr);
-@@ -1373,6 +1374,7 @@ static void pty_chr_close(struct CharDriverState *chr=
-)
-=20
-     qemu_mutex_lock(&chr->chr_write_lock);
-     pty_chr_state(chr, 0);
-+    close(s->slave_fd);
-     fd =3D g_io_channel_unix_get_fd(s->fd);
-     g_io_channel_unref(s->fd);
-     close(fd);
-@@ -1401,7 +1403,6 @@ static CharDriverState *qemu_chr_open_pty(const char =
-*id,
-         return NULL;
-     }
-=20
--    close(slave_fd);
-     qemu_set_nonblock(master_fd);
-=20
-     chr =3D qemu_chr_alloc();
-@@ -1422,6 +1423,7 @@ static CharDriverState *qemu_chr_open_pty(const char =
-*id,
-     chr->explicit_be_open =3D true;
-=20
-     s->fd =3D io_channel_from_fd(master_fd);
-+    s->slave_fd =3D slave_fd;
-     s->timer_tag =3D 0;
-=20
-     return chr;
---=20
-2.1.4
+X-List-Received-Date: Tue, 15 Dec 2015 03:03:17 -0000
 
 
+--TU+u6i6jrDPzmlWF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
----
-Jonathan Ashley=20
-jonathan.ashley AT altran.com
+On Fri, Dec 11, 2015 at 03:06:12PM +0800, Qinghua Jin wrote:
+> Some functions was moved from block.c to block/io.c, so the trace-events =
+file should reflect that change.
+>=20
+>=20
+> Signed-off-by: Qinghua Jin <qhjin_dev@163.com>
+> ---
+>  trace-events | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+
+Please use git-send-email(1) in the future.  I had to manually apply
+your patch.
+
+
+Thanks, applied to my tracing-next tree:
+https://github.com/stefanha/qemu/commits/tracing-next
+
+Stefan
+
+--TU+u6i6jrDPzmlWF
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJWbrROAAoJEJykq7OBq3PIJZEIAJah4n7k0fKn3rRMzU6QuUDc
+YRlni3bIjK3uKKdZjhD8HUhhFAutspCcwlP8DawEm0K2TygaapeBb16eSUz7Tz1K
+nwpuDLLwgC3GMJqeWJmklF2YHgUC9twQ+4qEslflZ7aXfCbC71y7QETZiH074Y7b
+rZOr9Ko8Kp33+pjBQBjefHZVv1DZoV0lD+a9Iv6Q/TV0esfs6yqHSZIyUXGeJUIU
+w8IU1V9sxEQzEooDp5Qp18kXKa0HgFhTgmwCnavz3+1mrYOFmsgbKlxyrntjTcOu
+yNyT0onUs4xb4/eFdg1Z1kWBQCFyZ5CNEfg+QUNpx93xg0sSxKce2amAcQ9HVGo=
+=ahWU
+-----END PGP SIGNATURE-----
+
+--TU+u6i6jrDPzmlWF--
 
