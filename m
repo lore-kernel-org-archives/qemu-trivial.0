@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a9uln-00076H-74
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Dec 2015 08:08:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33144)
+	id 1a9uxL-0003vQ-CE
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Dec 2015 08:20:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1a9ulk-00072b-QO
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:08:25 -0500
+	(envelope-from <lcapitulino@redhat.com>) id 1a9uxJ-0003rt-Ag
+	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:20:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1a9ulj-0001qG-Sk
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:08:24 -0500
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:51597)
+	(envelope-from <lcapitulino@redhat.com>) id 1a9uxI-0004kQ-Hk
+	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:20:21 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34330)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1a9ule-0001oy-Gy; Fri, 18 Dec 2015 08:08:18 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 51DDB101E05;
-	Fri, 18 Dec 2015 14:08:17 +0100 (CET)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (smtp.mail.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id ts1jYzOq-YyY; Fri, 18 Dec 2015 14:08:17 +0100 (CET)
-Received: from [134.155.36.73] (edv13.bib.uni-mannheim.de [134.155.36.73])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id 2E7E3101A39;
-	Fri, 18 Dec 2015 14:08:17 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1450443571-14621-1-git-send-email-peter.maydell@linaro.org>
-From: Stefan Weil <sw@weilnetz.de>
-X-Enigmail-Draft-Status: N1110
-Message-ID: <56740546.7070503@weilnetz.de>
-Date: Fri, 18 Dec 2015 14:08:22 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
+	(envelope-from <lcapitulino@redhat.com>)
+	id 1a9uxE-0004id-2j; Fri, 18 Dec 2015 08:20:16 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5AD7D32D3BC;
+	Fri, 18 Dec 2015 13:20:15 +0000 (UTC)
+Received: from localhost (ovpn-113-21.phx2.redhat.com [10.3.113.21])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBIDKE2X009782; Fri, 18 Dec 2015 08:20:14 -0500
+Date: Fri, 18 Dec 2015 08:20:14 -0500
+From: Luiz Capitulino <lcapitulino@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20151218082014.57dd2b30@redhat.com>
+In-Reply-To: <87mvt7ewvu.fsf@blackfin.pond.sub.org>
+References: <1450433172-1175-1-git-send-email-marcandre.lureau@redhat.com>
+	<87mvt7ewvu.fsf@blackfin.pond.sub.org>
+Organization: Red Hat
 MIME-Version: 1.0
-In-Reply-To: <1450443571-14621-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 134.155.96.80
-Cc: Blue Swirl <blauwirbel@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, patches@linaro.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts/checkpatch.pl:
- Don't allow special cases of unspaced operators
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,62 +46,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Dec 2015 13:08:26 -0000
+X-List-Received-Date: Fri, 18 Dec 2015 13:20:22 -0000
 
-Am 18.12.2015 um 13:59 schrieb Peter Maydell:
-> The checkpatch.pl script has a special case to permit the following
-> operators to have no spaces around them:
->  <<  >>  &  ^  |  +  -  *  /  %
-> 
-> QEMU style prefers all operators to consistently have spacing around
-> them, so remove this special case handling. This avoids reviewers
-> having to manually note it during code review.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I actually thought failing to point out the lack of spaces was
-> a checkpatch parsing bug until I looked in the source and found it
-> was deliberate...
-> 
-> I say "QEMU style prefers", but possibly what I actually mean is
-> "I prefer" ? Does anybody want to defend the unspaced versions?
+On Fri, 18 Dec 2015 13:58:45 +0100
+Markus Armbruster <armbru@redhat.com> wrote:
 
+> Copying maintainer just for completeness.  I'm sure Luiz won't at all
+> mind this going through trivial ;)
+>=20
+> Let's clarify the commit message:
+>=20
+>     monitor: Spelling fix
+>=20
+> With that:
+>=20
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-I don't. Therefore
+Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-Cc'ing QEMU Trivial, maybe it can be applied there.
-
-
-> 
->  scripts/checkpatch.pl | 13 -------------
->  1 file changed, 13 deletions(-)
-> 
-> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> index b0f6e11..efca817 100755
-> --- a/scripts/checkpatch.pl
-> +++ b/scripts/checkpatch.pl
-> @@ -1890,19 +1890,6 @@ sub process {
->  						ERROR("space prohibited after that '$op' $at\n" . $hereptr);
->  					}
->  
-> -
-> -				# << and >> may either have or not have spaces both sides
-> -				} elsif ($op eq '<<' or $op eq '>>' or
-> -					 $op eq '&' or $op eq '^' or $op eq '|' or
-> -					 $op eq '+' or $op eq '-' or
-> -					 $op eq '*' or $op eq '/' or
-> -					 $op eq '%')
-> -				{
-> -					if ($ctx =~ /Wx[^WCE]|[^WCE]xW/) {
-> -						ERROR("need consistent spacing around '$op' $at\n" .
-> -							$hereptr);
-> -					}
-> -
->  				# A colon needs no spaces before when it is
->  				# terminating a case value or a label.
->  				} elsif ($opv eq ':C' || $opv eq ':L') {
-> 
+>=20
+> marcandre.lureau@redhat.com writes:
+>=20
+> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> >
+> > ---
+> >  monitor.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/monitor.c b/monitor.c
+> > index e7e7ae2..51ec4c3 100644
+> > --- a/monitor.c
+> > +++ b/monitor.c
+> > @@ -311,7 +311,7 @@ static void monitor_flush_locked(Monitor *mon)
+> >              return;
+> >          }
+> >          if (rc > 0) {
+> > -            /* partinal write */
+> > +            /* partial write */
+> >              QString *tmp =3D qstring_from_str(buf + rc);
+> >              QDECREF(mon->outbuf);
+> >              mon->outbuf =3D tmp;
+>=20
 
 
