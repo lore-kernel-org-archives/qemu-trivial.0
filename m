@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a9uxL-0003vQ-CE
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Dec 2015 08:20:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35766)
+	id 1a9zJM-0001Yq-Fs
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Dec 2015 12:59:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56436)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1a9uxJ-0003rt-Ag
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:20:21 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1a9zJJ-0001Um-SH
+	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 12:59:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1a9uxI-0004kQ-Hk
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 08:20:21 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34330)
+	(envelope-from <pbonzini@redhat.com>) id 1a9zJJ-0001DA-16
+	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 12:59:21 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:9889)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1a9uxE-0004id-2j; Fri, 18 Dec 2015 08:20:16 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 5AD7D32D3BC;
-	Fri, 18 Dec 2015 13:20:15 +0000 (UTC)
-Received: from localhost (ovpn-113-21.phx2.redhat.com [10.3.113.21])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBIDKE2X009782; Fri, 18 Dec 2015 08:20:14 -0500
-Date: Fri, 18 Dec 2015 08:20:14 -0500
-From: Luiz Capitulino <lcapitulino@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20151218082014.57dd2b30@redhat.com>
-In-Reply-To: <87mvt7ewvu.fsf@blackfin.pond.sub.org>
-References: <1450433172-1175-1-git-send-email-marcandre.lureau@redhat.com>
-	<87mvt7ewvu.fsf@blackfin.pond.sub.org>
-Organization: Red Hat
+	(envelope-from <pbonzini@redhat.com>)
+	id 1a9zJE-0001Cb-04; Fri, 18 Dec 2015 12:59:16 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 38D53C0AF3DE;
+	Fri, 18 Dec 2015 17:59:15 +0000 (UTC)
+Received: from [10.36.112.71] (ovpn-112-71.ams2.redhat.com [10.36.112.71])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBIHx9b4020381
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 18 Dec 2015 12:59:12 -0500
+To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+References: <1450436632-23980-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<1450436632-23980-2-git-send-email-caoj.fnst@cn.fujitsu.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5674496F.4000503@redhat.com>
+Date: Fri, 18 Dec 2015 18:59:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+In-Reply-To: <1450436632-23980-2-git-send-email-caoj.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: spelling
+Cc: ehabkost@redhat.com, mst@redhat.com, qemu-trivial@nongnu.org,
+	leon.alrae@imgtec.com, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [PATCH 1/5] SH PCI Host: convert to realize()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -46,46 +50,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Dec 2015 13:20:22 -0000
+X-List-Received-Date: Fri, 18 Dec 2015 17:59:22 -0000
 
-On Fri, 18 Dec 2015 13:58:45 +0100
-Markus Armbruster <armbru@redhat.com> wrote:
+Cc: qemu-trivial@nongnu.org
 
-> Copying maintainer just for completeness.  I'm sure Luiz won't at all
-> mind this going through trivial ;)
->=20
-> Let's clarify the commit message:
->=20
->     monitor: Spelling fix
->=20
-> With that:
->=20
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
-Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
-
->=20
-> marcandre.lureau@redhat.com writes:
->=20
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > ---
-> >  monitor.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/monitor.c b/monitor.c
-> > index e7e7ae2..51ec4c3 100644
-> > --- a/monitor.c
-> > +++ b/monitor.c
-> > @@ -311,7 +311,7 @@ static void monitor_flush_locked(Monitor *mon)
-> >              return;
-> >          }
-> >          if (rc > 0) {
-> > -            /* partinal write */
-> > +            /* partial write */
-> >              QString *tmp =3D qstring_from_str(buf + rc);
-> >              QDECREF(mon->outbuf);
-> >              mon->outbuf =3D tmp;
->=20
-
+On 18/12/2015 12:03, Cao jin wrote:
+> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+> ---
+>  hw/sh4/sh_pci.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+> index a2f6d9e..4509053 100644
+> --- a/hw/sh4/sh_pci.c
+> +++ b/hw/sh4/sh_pci.c
+> @@ -151,12 +151,11 @@ static int sh_pci_device_init(SysBusDevice *dev)
+>      return 0;
+>  }
+>  
+> -static int sh_pci_host_init(PCIDevice *d)
+> +static void sh_pci_host_realize(PCIDevice *d, Error **errp)
+>  {
+>      pci_set_word(d->config + PCI_COMMAND, PCI_COMMAND_WAIT);
+>      pci_set_word(d->config + PCI_STATUS, PCI_STATUS_CAP_LIST |
+>                   PCI_STATUS_FAST_BACK | PCI_STATUS_DEVSEL_MEDIUM);
+> -    return 0;
+>  }
+>  
+>  static void sh_pci_host_class_init(ObjectClass *klass, void *data)
+> @@ -164,7 +163,7 @@ static void sh_pci_host_class_init(ObjectClass *klass, void *data)
+>      PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>  
+> -    k->init = sh_pci_host_init;
+> +    k->realize = sh_pci_host_realize;
+>      k->vendor_id = PCI_VENDOR_ID_HITACHI;
+>      k->device_id = PCI_DEVICE_ID_HITACHI_SH7751R;
+>      /*
+> 
 
