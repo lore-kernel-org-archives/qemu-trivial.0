@@ -1,44 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1a9zJh-000228-4T
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Dec 2015 12:59:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56567)
+	id 1aAav7-0005df-Sj
+	for mharc-qemu-trivial@gnu.org; Sun, 20 Dec 2015 05:08:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1a9zJe-0001xu-Ez
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 12:59:43 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aAav5-0005bL-OR
+	for qemu-trivial@nongnu.org; Sun, 20 Dec 2015 05:08:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1a9zJd-0001Mb-I8
-	for qemu-trivial@nongnu.org; Fri, 18 Dec 2015 12:59:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:11656)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aAav4-0006fR-QC
+	for qemu-trivial@nongnu.org; Sun, 20 Dec 2015 05:08:51 -0500
+Received: from [59.151.112.132] (port=6446 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1a9zJY-0001KK-H6; Fri, 18 Dec 2015 12:59:36 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 01F7BC001268;
-	Fri, 18 Dec 2015 17:59:35 +0000 (UTC)
-Received: from [10.36.112.71] (ovpn-112-71.ams2.redhat.com [10.36.112.71])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBIHxTsX007857
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 18 Dec 2015 12:59:31 -0500
-To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1450436632-23980-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<1450436632-23980-5-git-send-email-caoj.fnst@cn.fujitsu.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56744982.80704@redhat.com>
-Date: Fri, 18 Dec 2015 18:59:30 +0100
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aAauy-0006dO-Qz; Sun, 20 Dec 2015 05:08:45 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="1774670"
+Received: from bogon (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 20 Dec 2015 18:06:52 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id BEAD740427FE;
+	Sun, 20 Dec 2015 18:06:43 +0800 (CST)
+Received: from [10.167.226.86] (10.167.226.86) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Sun, 20 Dec 2015 18:10:00 +0800
+To: Markus Armbruster <armbru@redhat.com>
+References: <1450428770-18215-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<87wpsbex5u.fsf@blackfin.pond.sub.org>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <56767E40.9090607@cn.fujitsu.com>
+Date: Sun, 20 Dec 2015 18:09:04 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-In-Reply-To: <1450436632-23980-5-git-send-email-caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <87wpsbex5u.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-Originating-IP: [10.167.226.86]
+X-yoursite-MailScanner-ID: BEAD740427FE.A8CFE
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
 Cc: ehabkost@redhat.com, mst@redhat.com, qemu-trivial@nongnu.org,
-	leon.alrae@imgtec.com, rth@twiddle.net
-Subject: Re: [Qemu-trivial] [PATCH 4/5] gt64120: convert to realize()
+	qemu-devel@nongnu.org, pbonzini@redhat.com, rth@twiddle.net
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Use macro instead of
+	plain text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,47 +56,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Dec 2015 17:59:43 -0000
-
-Cc: qemu-trivial@nongnu.org
+X-List-Received-Date: Sun, 20 Dec 2015 10:08:52 -0000
 
 
-On 18/12/2015 12:03, Cao jin wrote:
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> ---
->  hw/mips/gt64xxx_pci.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-> index f76a9fd..c1f3c9c 100644
-> --- a/hw/mips/gt64xxx_pci.c
-> +++ b/hw/mips/gt64xxx_pci.c
-> @@ -1193,7 +1193,7 @@ static int gt64120_init(SysBusDevice *dev)
->      return 0;
->  }
->  
-> -static int gt64120_pci_init(PCIDevice *d)
-> +static void gt64120_pci_realize(PCIDevice *d, Error **errp)
->  {
->      /* FIXME: Malta specific hw assumptions ahead */
->      pci_set_word(d->config + PCI_COMMAND, 0);
-> @@ -1207,8 +1207,6 @@ static int gt64120_pci_init(PCIDevice *d)
->      pci_set_long(d->config + PCI_BASE_ADDRESS_4, 0x14000000);
->      pci_set_long(d->config + PCI_BASE_ADDRESS_5, 0x14000001);
->      pci_set_byte(d->config + 0x3d, 0x01);
-> -
-> -    return 0;
->  }
->  
->  static void gt64120_pci_class_init(ObjectClass *klass, void *data)
-> @@ -1216,7 +1214,7 @@ static void gt64120_pci_class_init(ObjectClass *klass, void *data)
->      PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
->      DeviceClass *dc = DEVICE_CLASS(klass);
->  
-> -    k->init = gt64120_pci_init;
-> +    k->realize = gt64120_pci_realize;
->      k->vendor_id = PCI_VENDOR_ID_MARVELL;
->      k->device_id = PCI_DEVICE_ID_MARVELL_GT6412X;
->      k->revision = 0x10;
-> 
+
+On 12/18/2015 08:52 PM, Markus Armbruster wrote:
+> Cao jin <caoj.fnst@cn.fujitsu.com> writes:
+>
+>> There is TYPE_ICH9_AHCI definition in ahci.h when QOMify it, seems it
+>> is missed.
+>>
+>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>> ---
+>>   hw/i386/pc_q35.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+>> index 9a12068..aa34a07 100644
+>> --- a/hw/i386/pc_q35.c
+>> +++ b/hw/i386/pc_q35.c
+>> @@ -249,7 +249,7 @@ static void pc_q35_init(MachineState *machine)
+>>       ahci = pci_create_simple_multifunction(host_bus,
+>>                                              PCI_DEVFN(ICH9_SATA1_DEV,
+>>                                                        ICH9_SATA1_FUNC),
+>> -                                           true, "ich9-ahci");
+>> +                                           true, TYPE_ICH9_AHCI);
+>>       idebus[0] = qdev_get_child_bus(&ahci->qdev, "ide.0");
+>>       idebus[1] = qdev_get_child_bus(&ahci->qdev, "ide.1");
+>>       g_assert(MAX_SATA_PORTS == ICH_AHCI(ahci)->ahci.ports);
+>
+> I suspect there are more instances of the same problem.
+>
+> To find all similar macro definitions:
+>
+>      $ git-grep -Eh '^ *# *define +TYPE_[A-Za-z0-9_]+ +"'
+>
+> Extract the strings:
+>
+>      $ git-grep -Eh '^ *# *define +TYPE_[A-Za-z0-9_]+ +"' | sed 's/^[^"]*\("[^"]*"\).*/\1/'
+>
+> Search the source for them:
+>
+>      $ for i in `git-grep -Eh '^ *# *define +TYPE_[A-Za-z0-9_]+ +"' | sed 's/^[^"]*\("[^"]*"\).*/\1/'`; do echo "= $i ="; git-grep -F "$i"; done
+>
+> Results in more than 1000 hits for me.  Names like "device" are of
+> course very prone to false positives.
+>
+
+Yes, often seeing "plain text" style when browsing code, and after 
+seeing PMM`s explanation, I finally see why there are lots of these...
+
+> Not sure how interested we are in consistent use of these macros...
+>
+
+I didn`t pay any attention to this before. It comes to me when I make 
+the V2 "msi/msix" patch. as I said in that cover-letter: special case:)
+
+we can forget this patch now.
+
+>
+> .
+>
+
+-- 
+Yours Sincerely,
+
+Cao Jin
+
+
 
