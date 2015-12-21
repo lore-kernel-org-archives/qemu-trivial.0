@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aAb0u-0007BW-PR
-	for mharc-qemu-trivial@gnu.org; Sun, 20 Dec 2015 05:14:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52085)
+	id 1aB2nD-0007L2-A0
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Dec 2015 10:54:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aAb0r-00077A-W7
-	for qemu-trivial@nongnu.org; Sun, 20 Dec 2015 05:14:50 -0500
+	(envelope-from <eblake@redhat.com>) id 1aB2nB-0007HJ-3e
+	for qemu-trivial@nongnu.org; Mon, 21 Dec 2015 10:54:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aAb0r-0007ia-3g
-	for qemu-trivial@nongnu.org; Sun, 20 Dec 2015 05:14:49 -0500
-Received: from [59.151.112.132] (port=26518 helo=heian.cn.fujitsu.com)
+	(envelope-from <eblake@redhat.com>) id 1aB2n6-0003Zl-5O
+	for qemu-trivial@nongnu.org; Mon, 21 Dec 2015 10:54:33 -0500
+Received: from resqmta-po-04v.sys.comcast.net ([96.114.154.163]:55398)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aAb0h-0007dl-D7; Sun, 20 Dec 2015 05:14:44 -0500
-X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="1774738"
-Received: from bogon (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 20 Dec 2015 18:14:36 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 488EC4066D01;
-	Sun, 20 Dec 2015 18:14:27 +0800 (CST)
-Received: from [10.167.226.86] (10.167.226.86) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Sun, 20 Dec 2015 18:17:44 +0800
-To: Peter Maydell <peter.maydell@linaro.org>, Markus Armbruster
-	<armbru@redhat.com>
-References: <1450428770-18215-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<87wpsbex5u.fsf@blackfin.pond.sub.org>
-	<CAFEAcA8VxYbYYWHcevhOVndWnTegAWvKMnmd-HR+-p04ws8bGw@mail.gmail.com>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <5676800F.4020706@cn.fujitsu.com>
-Date: Sun, 20 Dec 2015 18:16:47 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8VxYbYYWHcevhOVndWnTegAWvKMnmd-HR+-p04ws8bGw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.86]
-X-yoursite-MailScanner-ID: 488EC4066D01.A6908
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+	(envelope-from <eblake@redhat.com>) id 1aB2n6-0003Z0-0v
+	for qemu-trivial@nongnu.org; Mon, 21 Dec 2015 10:54:28 -0500
+Received: from resomta-po-09v.sys.comcast.net ([96.114.154.233])
+	by resqmta-po-04v.sys.comcast.net with comcast
+	id wFsi1r00252QWKC01FuSvU; Mon, 21 Dec 2015 15:54:26 +0000
+Received: from red.redhat.com ([24.10.254.122])
+	by resomta-po-09v.sys.comcast.net with comcast
+	id wFuP1r0042fD5rL01FuRfi; Mon, 21 Dec 2015 15:54:26 +0000
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 21 Dec 2015 08:54:17 -0700
+Message-Id: <1450713257-17108-1-git-send-email-eblake@redhat.com>
+X-Mailer: git-send-email 2.4.3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
+	s=q20140121; t=1450713266;
+	bh=ks4sQWeCqioLjLF/E9e2Fytfzv1MTb44ATfHO91DwEE=;
+	h=Received:Received:From:To:Subject:Date:Message-Id;
+	b=EqNvhJ6jkSd7RFBjQUhEZITAfiToVQCz61XYuGb9QsCJbB4KB6B6Huf6FgK8C28Oq
+	7Ob8VBBhNe0peFLo8ucRhl4Ft8C4aIr+r95h1n3GC5N68XNVErJji18FQxl+MvtvqH
+	S41+en6Bm/CVIxI9EHxOaYawEutYiGLMUAUNkEIhfnPSweDAHlY7Z6fWuSfhVk6PtB
+	TqLagEakHO5q/1OnWfXAVfP5ShyzquCHaO/XfuDnH+886qfi04MSqGCvSSNiYRSCWQ
+	y+fEXMvwHtaizGNu5qchA27VGNccxMS6kvgEstP7JToCPUhWDKv+HK3d7cOvq5eWd2
+	VkD0uTaO3hWRg==
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 59.151.112.132
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Use macro instead of
-	plain text
+X-Received-From: 96.114.154.163
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PATCH] crypto: Fix typo in example
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,40 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 20 Dec 2015 10:14:51 -0000
+X-List-Received-Date: Mon, 21 Dec 2015 15:54:33 -0000
 
-Hi Peter,
+The example code wouldn't even compile, since it did not use
+a consistent spelling for the Error ** parameter.
 
-Thanks for the explanation, it make me aware that why there are lots of 
-"plain_text_for_device":)
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ include/crypto/tlssession.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-forget it please.
-
-On 12/18/2015 09:01 PM, Peter Maydell wrote:
-> On 18 December 2015 at 12:52, Markus Armbruster <armbru@redhat.com> wrote:
->> Cao jin <caoj.fnst@cn.fujitsu.com> writes:
->>
->>> There is TYPE_ICH9_AHCI definition in ahci.h when QOMify it, seems it
->>> is missed.
->
->> I suspect there are more instances of the same problem.
->
->> Not sure how interested we are in consistent use of these macros...
->
-> In a lot of cases we'd need to find somewhere appropriate to put the
-> TYPE_* macro which might well mean creating a new header file just
-> for the purpose. That seems like overkill...
->
-> thanks
-> -- PMM
->
->
->
-
+diff --git a/include/crypto/tlssession.h b/include/crypto/tlssession.h
+index b38fe69..d356a8d 100644
+--- a/include/crypto/tlssession.h
++++ b/include/crypto/tlssession.h
+@@ -56,7 +56,7 @@
+  *
+  * static int mysock_run_tls(int sockfd,
+  *                           QCryptoTLSCreds *creds,
+- *                           Error *erp)
++ *                           Error *errp)
+  * {
+  *    QCryptoTLSSession *sess;
+  *
 -- 
-Yours Sincerely,
-
-Cao Jin
-
+2.4.3
 
 
