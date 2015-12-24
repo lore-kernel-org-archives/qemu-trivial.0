@@ -1,45 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aB34X-0005u5-LK
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Dec 2015 11:12:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35270)
+	id 1aCTPO-000218-Mt
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Dec 2015 09:31:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58740)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1aB34V-0005r0-G7
-	for qemu-trivial@nongnu.org; Mon, 21 Dec 2015 11:12:28 -0500
+	(envelope-from <jm.ouwerkerk@gmail.com>) id 1aCEQ6-0008N2-Cz
+	for qemu-trivial@nongnu.org; Thu, 24 Dec 2015 17:31:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1aB34U-0000OV-Ge
-	for qemu-trivial@nongnu.org; Mon, 21 Dec 2015 11:12:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34402)
+	(envelope-from <jm.ouwerkerk@gmail.com>) id 1aCEQ5-0003Yw-1g
+	for qemu-trivial@nongnu.org; Thu, 24 Dec 2015 17:31:38 -0500
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35850)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>)
-	id 1aB34P-0000N3-NY; Mon, 21 Dec 2015 11:12:21 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 614BE8E25B;
-	Mon, 21 Dec 2015 16:12:21 +0000 (UTC)
-Received: from redhat.com (vpn1-5-146.ams2.redhat.com [10.36.5.146])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBLGCHqb000331
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 21 Dec 2015 11:12:20 -0500
-Date: Mon, 21 Dec 2015 16:12:17 +0000
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20151221161216.GF5316@redhat.com>
-References: <1450713257-17108-1-git-send-email-eblake@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1450713257-17108-1-git-send-email-eblake@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] crypto: Fix typo in example
+	(envelope-from <jm.ouwerkerk@gmail.com>)
+	id 1aCEQ0-0003Y5-L2; Thu, 24 Dec 2015 17:31:32 -0500
+Received: by mail-wm0-x242.google.com with SMTP id l65so14089081wmf.3;
+	Thu, 24 Dec 2015 14:31:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=9xdbok/h4b4MRqIEm02nCyL8fkO3OmUb46yJ3Jpj+qs=;
+	b=dXjwKnGplpI3vQFYQH0BTPk28Isv9eHHcsJ+BCgxbwzyZR6C2Ckxn193N1XJ0corLG
+	Ns/MVrFETyWNXFKR7bozGF+iKrOXJiu36LUENGGv8guzN3GOiARbrE71saNetzL+AoYq
+	xsXShlOc41JJpz6kHK49P1k2ymQqnny5qpJ6X57vl0T3GTVVpWfFysQvpiLWU813NaBO
+	IeTee8s/2G9Gyxu8J/mznAK8Dp+Ffqp7BlnoXCk29MFHObmfxMoS7y1CBgVDxAyCFW1J
+	rRI1c2ImPdTQ2W1orWM0z14gUB9TmTXVDcb4PJsS3uEDd1is80Q/8MjwvPMPlLmbb6YD
+	d1GA==
+X-Received: by 10.194.112.130 with SMTP id iq2mr29661929wjb.102.1450996291917; 
+	Thu, 24 Dec 2015 14:31:31 -0800 (PST)
+Received: from localhost.localdomain (g194109.upc-g.chello.nl. [80.57.194.109])
+	by smtp.gmail.com with ESMTPSA id
+	143sm34947937wmv.18.2015.12.24.14.31.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 24 Dec 2015 14:31:31 -0800 (PST)
+From: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Dec 2015 23:31:26 +0100
+Message-Id: <1450996286-23127-1-git-send-email-jm.ouwerkerk@gmail.com>
+X-Mailer: git-send-email 2.6.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::242
+X-Mailman-Approved-At: Fri, 25 Dec 2015 09:31:53 -0500
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] Add missing syscall nrs. This updates the
+	QEMU syscall tables to more recent Linux kernels.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -48,39 +52,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Dec 2015 16:12:28 -0000
+X-List-Received-Date: Thu, 24 Dec 2015 22:31:39 -0000
 
-On Mon, Dec 21, 2015 at 08:54:17AM -0700, Eric Blake wrote:
-> The example code wouldn't even compile, since it did not use
-> a consistent spelling for the Error ** parameter.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+This change covers arm, aarch64, mips. Others to follow?
 
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+The change was prompted by QEMU warning about a syscall 384 (get_random()) with Debian armhf binaries (ARMv7).
 
-> ---
->  include/crypto/tlssession.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/crypto/tlssession.h b/include/crypto/tlssession.h
-> index b38fe69..d356a8d 100644
-> --- a/include/crypto/tlssession.h
-> +++ b/include/crypto/tlssession.h
-> @@ -56,7 +56,7 @@
->   *
->   * static int mysock_run_tls(int sockfd,
->   *                           QCryptoTLSCreds *creds,
-> - *                           Error *erp)
-> + *                           Error *errp)
->   * {
->   *    QCryptoTLSSession *sess;
->   *
+Signed-off-by: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+---
+ linux-user/aarch64/syscall_nr.h | 13 +++++++++++++
+ linux-user/arm/syscall_nr.h     | 12 ++++++++++++
+ linux-user/mips/syscall_nr.h    | 12 ++++++++++++
+ 3 files changed, 37 insertions(+)
 
-Regards,
-Daniel
+diff --git a/linux-user/aarch64/syscall_nr.h b/linux-user/aarch64/syscall_nr.h
+index 743255d..74f4275 100644
+--- a/linux-user/aarch64/syscall_nr.h
++++ b/linux-user/aarch64/syscall_nr.h
+@@ -262,6 +262,19 @@
+ #define TARGET_NR_process_vm_writev 271
+ #define TARGET_NR_kcmp 272
+ #define TARGET_NR_finit_module 273
++
++#define TARGET_NR_sched_setattr 274
++#define TARGET_NR_sched_getattr 275
++#define TARGET_NR_renameat2 276
++#define TARGET_NR_seccomp 277
++#define TARGET_NR_getrandom 278
++#define TARGET_NR_memfd_create 279
++#define TARGET_NR_bpf 280
++#define TARGET_NR_execveat 281
++#define TARGET_NR_userfaultfd 282
++#define TARGET_NR_membarrier 283
++#define TARGET_NR_mlock2 284
++
+ #define TARGET_NR_open 1024
+ #define TARGET_NR_link 1025
+ #define TARGET_NR_unlink 1026
+diff --git a/linux-user/arm/syscall_nr.h b/linux-user/arm/syscall_nr.h
+index 53552be..cc9089c 100644
+--- a/linux-user/arm/syscall_nr.h
++++ b/linux-user/arm/syscall_nr.h
+@@ -384,3 +384,15 @@
+ #define TARGET_NR_process_vm_writev            (377)
+ #define TARGET_NR_kcmp                         (378)
+ #define TARGET_NR_finit_module                 (379)
++
++#define TARGET_NR_sched_setattr                (380)
++#define TARGET_NR_sched_getattr                (381)
++#define TARGET_NR_renameat2                    (382)
++#define TARGET_NR_seccomp                      (383)
++#define TARGET_NR_getrandom                    (384)
++#define TARGET_NR_memfd_create                 (385)
++#define TARGET_NR_bpf                          (386)
++#define TARGET_NR_execveat                     (387)
++#define TARGET_NR_userfaultfd                  (388)
++#define TARGET_NR_membarrier                   (389)
++#define TARGET_NR_mlock2                       (390)
+diff --git a/linux-user/mips/syscall_nr.h b/linux-user/mips/syscall_nr.h
+index 2d1a13e..6819f86 100644
+--- a/linux-user/mips/syscall_nr.h
++++ b/linux-user/mips/syscall_nr.h
+@@ -351,3 +351,15 @@
+ #define TARGET_NR_process_vm_writev     (TARGET_NR_Linux + 346)
+ #define TARGET_NR_kcmp                  (TARGET_NR_Linux + 347)
+ #define TARGET_NR_finit_module          (TARGET_NR_Linux + 348)
++
++#define TARGET_NR_sched_setattr         (TARGET_NR_Linux + 349)
++#define TARGET_NR_sched_getattr         (TARGET_NR_Linux + 350)
++#define TARGET_NR_renameat2             (TARGET_NR_Linux + 351)
++#define TARGET_NR_seccomp               (TARGET_NR_Linux + 352)
++#define TARGET_NR_getrandom             (TARGET_NR_Linux + 353)
++#define TARGET_NR_memfd_create          (TARGET_NR_Linux + 354)
++#define TARGET_NR_bpf                   (TARGET_NR_Linux + 355)
++#define TARGET_NR_execveat              (TARGET_NR_Linux + 356)
++#define TARGET_NR_userfaultfd           (TARGET_NR_Linux + 357)
++#define TARGET_NR_membarrier            (TARGET_NR_Linux + 358)
++#define TARGET_NR_mlock2                (TARGET_NR_Linux + 359)
 -- 
-|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
-|: http://libvirt.org              -o-             http://virt-manager.org :|
-|: http://autobuild.org       -o-         http://search.cpan.org/~danberr/ :|
-|: http://entangle-photo.org       -o-       http://live.gnome.org/gtk-vnc :|
+2.6.4
+
 
