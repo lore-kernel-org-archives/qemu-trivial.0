@@ -1,36 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aDqwA-0002rm-VV
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Dec 2015 04:51:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54516)
+	id 1aDrFx-0005Sx-Bs
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Dec 2015 05:11:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59217)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aDqw9-0002q4-Kb
-	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 04:51:26 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aDrFv-0005QJ-B5
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 05:11:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aDqw8-0008M5-R2
-	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 04:51:25 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:51703)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aDrFu-00049K-K8
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 05:11:51 -0500
+Received: from [59.151.112.132] (port=17145 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1aDqw2-0008K1-Lm; Tue, 29 Dec 2015 04:51:18 -0500
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id D977E42514;
-	Tue, 29 Dec 2015 12:51:17 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 3C452A81;
-	Tue, 29 Dec 2015 12:51:17 +0300 (MSK)
-Received: (nullmailer pid 5385 invoked by uid 1000);
-	Tue, 29 Dec 2015 09:51:17 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org
-Date: Tue, 29 Dec 2015 12:51:13 +0300
-Message-Id: <1451382673-5345-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
-Subject: [Qemu-trivial] [PATCH trivial] linux-user: enable sigaltstack for
-	all architectures
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aDrFq-00048n-5i; Tue, 29 Dec 2015 05:11:46 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="2063346"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 29 Dec 2015 18:11:25 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 4D41F40427FE;
+	Tue, 29 Dec 2015 18:11:14 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.86) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Tue, 29 Dec 2015 18:14:39 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 29 Dec 2015 18:13:55 +0800
+Message-ID: <1451384035-29691-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.86]
+X-yoursite-MailScanner-ID: 4D41F40427FE.AC26F
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, xen-devel@lists.xensource.com,
+	stefano.stabellini@eu.citrix.com
+Subject: [Qemu-trivial] [PATCH trivial] xen/Makefile.objs: simplify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -42,45 +50,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Dec 2015 09:51:26 -0000
+X-List-Received-Date: Tue, 29 Dec 2015 10:11:52 -0000
 
-There is no reason to limit sigaltstack syscall to just a few
-architectures and pretend it is not implemented for others.
+merge three lines into one line
 
-If some architecture is not ready for this, that architecture
-should be fixed instead.
-
-This fixes LP#1516408.
-
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
 ---
-This patch depends on a previous patch I sent, "unicore32: convert
-get_sp_from_cpustate from macro to inline", or else unicore32-user
-wont build.
----
- linux-user/syscall.c | 6 ------
- 1 file changed, 6 deletions(-)
+ hw/xen/Makefile.objs | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 6c64ba6..3ceb3e2 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8292,14 +8292,8 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
-         break;
-     }
-     case TARGET_NR_sigaltstack:
--#if defined(TARGET_I386) || defined(TARGET_ARM) || defined(TARGET_MIPS) || \
--    defined(TARGET_SPARC) || defined(TARGET_PPC) || defined(TARGET_ALPHA) || \
--    defined(TARGET_M68K) || defined(TARGET_S390X) || defined(TARGET_OPENRISC)
-         ret = do_sigaltstack(arg1, arg2, get_sp_from_cpustate((CPUArchState *)cpu_env));
-         break;
--#else
--        goto unimplemented;
--#endif
+diff --git a/hw/xen/Makefile.objs b/hw/xen/Makefile.objs
+index a9ad7e7..77806f0 100644
+--- a/hw/xen/Makefile.objs
++++ b/hw/xen/Makefile.objs
+@@ -1,6 +1,4 @@
+ # xen backend driver support
+ common-obj-$(CONFIG_XEN_BACKEND) += xen_backend.o xen_devconfig.o
  
- #ifdef CONFIG_SENDFILE
-     case TARGET_NR_sendfile:
+-obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen-host-pci-device.o
+-obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_msi.o
+-obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_msi.o xen_pt_graphics.o
++obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_msi.o xen_pt_graphics.o xen-host-pci-device.o
 -- 
-2.1.4
+2.1.0
+
+
 
 
