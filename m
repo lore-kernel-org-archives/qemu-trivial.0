@@ -1,46 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aCTPO-000218-Mt
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Dec 2015 09:31:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58740)
+	id 1aDqp1-0000xX-Mi
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Dec 2015 04:44:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52955)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jm.ouwerkerk@gmail.com>) id 1aCEQ6-0008N2-Cz
-	for qemu-trivial@nongnu.org; Thu, 24 Dec 2015 17:31:39 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aDqoz-0000vH-H6
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 04:44:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jm.ouwerkerk@gmail.com>) id 1aCEQ5-0003Yw-1g
-	for qemu-trivial@nongnu.org; Thu, 24 Dec 2015 17:31:38 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35850)
+	(envelope-from <mjt@tls.msk.ru>) id 1aDqoy-0006bJ-LH
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 04:44:01 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:33398)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jm.ouwerkerk@gmail.com>)
-	id 1aCEQ0-0003Y5-L2; Thu, 24 Dec 2015 17:31:32 -0500
-Received: by mail-wm0-x242.google.com with SMTP id l65so14089081wmf.3;
-	Thu, 24 Dec 2015 14:31:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=9xdbok/h4b4MRqIEm02nCyL8fkO3OmUb46yJ3Jpj+qs=;
-	b=dXjwKnGplpI3vQFYQH0BTPk28Isv9eHHcsJ+BCgxbwzyZR6C2Ckxn193N1XJ0corLG
-	Ns/MVrFETyWNXFKR7bozGF+iKrOXJiu36LUENGGv8guzN3GOiARbrE71saNetzL+AoYq
-	xsXShlOc41JJpz6kHK49P1k2ymQqnny5qpJ6X57vl0T3GTVVpWfFysQvpiLWU813NaBO
-	IeTee8s/2G9Gyxu8J/mznAK8Dp+Ffqp7BlnoXCk29MFHObmfxMoS7y1CBgVDxAyCFW1J
-	rRI1c2ImPdTQ2W1orWM0z14gUB9TmTXVDcb4PJsS3uEDd1is80Q/8MjwvPMPlLmbb6YD
-	d1GA==
-X-Received: by 10.194.112.130 with SMTP id iq2mr29661929wjb.102.1450996291917; 
-	Thu, 24 Dec 2015 14:31:31 -0800 (PST)
-Received: from localhost.localdomain (g194109.upc-g.chello.nl. [80.57.194.109])
-	by smtp.gmail.com with ESMTPSA id
-	143sm34947937wmv.18.2015.12.24.14.31.30
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 24 Dec 2015 14:31:31 -0800 (PST)
-From: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 24 Dec 2015 23:31:26 +0100
-Message-Id: <1450996286-23127-1-git-send-email-jm.ouwerkerk@gmail.com>
-X-Mailer: git-send-email 2.6.4
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1aDqos-0006YU-Fr; Tue, 29 Dec 2015 04:43:54 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id D11E742519;
+	Tue, 29 Dec 2015 12:43:42 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 33E89A81;
+	Tue, 29 Dec 2015 12:43:42 +0300 (MSK)
+Received: (nullmailer pid 5199 invoked by uid 1000);
+	Tue, 29 Dec 2015 09:43:42 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org
+Date: Tue, 29 Dec 2015 12:43:39 +0300
+Message-Id: <1451382219-5159-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
-X-Mailman-Approved-At: Fri, 25 Dec 2015 09:31:53 -0500
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] Add missing syscall nrs. This updates the
-	QEMU syscall tables to more recent Linux kernels.
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PATCH trivial] unicore32: convert
+	get_sp_from_cpustate from macro to inline
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,84 +44,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Dec 2015 22:31:39 -0000
+X-List-Received-Date: Tue, 29 Dec 2015 09:44:02 -0000
 
-This change covers arm, aarch64, mips. Others to follow?
+All other architectures define get_sp_from_cpustate as an inline function=
+,
+only unicore32 uses a #define.  With this, some usages are impossible, fo=
+r
+example, enabling sigaltstack in linux-user/syscall.c results in
 
-The change was prompted by QEMU warning about a syscall 384 (get_random()) with Debian armhf binaries (ARMv7).
+linux-user/syscall.c: In function =E2=80=98do_syscall=E2=80=99:
+linux-user/syscall.c:8299:39: error: dereferencing =E2=80=98void *=E2=80=99=
+ pointer [-Werror]
+  get_sp_from_cpustate(arg1, arg2, get_sp_from_cpustate((CPUArchState *)c=
+pu_env));
+                                       ^
+linux-user/syscall.c:8299:39: error: request for member =E2=80=98regs=E2=80=
+=99 in something not a structure or union
 
-Signed-off-by: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/aarch64/syscall_nr.h | 13 +++++++++++++
- linux-user/arm/syscall_nr.h     | 12 ++++++++++++
- linux-user/mips/syscall_nr.h    | 12 ++++++++++++
- 3 files changed, 37 insertions(+)
+ linux-user/unicore32/target_signal.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/aarch64/syscall_nr.h b/linux-user/aarch64/syscall_nr.h
-index 743255d..74f4275 100644
---- a/linux-user/aarch64/syscall_nr.h
-+++ b/linux-user/aarch64/syscall_nr.h
-@@ -262,6 +262,19 @@
- #define TARGET_NR_process_vm_writev 271
- #define TARGET_NR_kcmp 272
- #define TARGET_NR_finit_module 273
+diff --git a/linux-user/unicore32/target_signal.h b/linux-user/unicore32/=
+target_signal.h
+index 8b255c4..7c44238 100644
+--- a/linux-user/unicore32/target_signal.h
++++ b/linux-user/unicore32/target_signal.h
+@@ -21,6 +21,10 @@ typedef struct target_sigaltstack {
+ #define TARGET_SS_ONSTACK               1
+ #define TARGET_SS_DISABLE               2
+=20
+-#define get_sp_from_cpustate(cpustate)  (cpustate->regs[29])
++static inline abi_ulong get_sp_from_cpustate(CPUUniCore32State *state)
++{
++    return state->regs[29];
++}
 +
-+#define TARGET_NR_sched_setattr 274
-+#define TARGET_NR_sched_getattr 275
-+#define TARGET_NR_renameat2 276
-+#define TARGET_NR_seccomp 277
-+#define TARGET_NR_getrandom 278
-+#define TARGET_NR_memfd_create 279
-+#define TARGET_NR_bpf 280
-+#define TARGET_NR_execveat 281
-+#define TARGET_NR_userfaultfd 282
-+#define TARGET_NR_membarrier 283
-+#define TARGET_NR_mlock2 284
-+
- #define TARGET_NR_open 1024
- #define TARGET_NR_link 1025
- #define TARGET_NR_unlink 1026
-diff --git a/linux-user/arm/syscall_nr.h b/linux-user/arm/syscall_nr.h
-index 53552be..cc9089c 100644
---- a/linux-user/arm/syscall_nr.h
-+++ b/linux-user/arm/syscall_nr.h
-@@ -384,3 +384,15 @@
- #define TARGET_NR_process_vm_writev            (377)
- #define TARGET_NR_kcmp                         (378)
- #define TARGET_NR_finit_module                 (379)
-+
-+#define TARGET_NR_sched_setattr                (380)
-+#define TARGET_NR_sched_getattr                (381)
-+#define TARGET_NR_renameat2                    (382)
-+#define TARGET_NR_seccomp                      (383)
-+#define TARGET_NR_getrandom                    (384)
-+#define TARGET_NR_memfd_create                 (385)
-+#define TARGET_NR_bpf                          (386)
-+#define TARGET_NR_execveat                     (387)
-+#define TARGET_NR_userfaultfd                  (388)
-+#define TARGET_NR_membarrier                   (389)
-+#define TARGET_NR_mlock2                       (390)
-diff --git a/linux-user/mips/syscall_nr.h b/linux-user/mips/syscall_nr.h
-index 2d1a13e..6819f86 100644
---- a/linux-user/mips/syscall_nr.h
-+++ b/linux-user/mips/syscall_nr.h
-@@ -351,3 +351,15 @@
- #define TARGET_NR_process_vm_writev     (TARGET_NR_Linux + 346)
- #define TARGET_NR_kcmp                  (TARGET_NR_Linux + 347)
- #define TARGET_NR_finit_module          (TARGET_NR_Linux + 348)
-+
-+#define TARGET_NR_sched_setattr         (TARGET_NR_Linux + 349)
-+#define TARGET_NR_sched_getattr         (TARGET_NR_Linux + 350)
-+#define TARGET_NR_renameat2             (TARGET_NR_Linux + 351)
-+#define TARGET_NR_seccomp               (TARGET_NR_Linux + 352)
-+#define TARGET_NR_getrandom             (TARGET_NR_Linux + 353)
-+#define TARGET_NR_memfd_create          (TARGET_NR_Linux + 354)
-+#define TARGET_NR_bpf                   (TARGET_NR_Linux + 355)
-+#define TARGET_NR_execveat              (TARGET_NR_Linux + 356)
-+#define TARGET_NR_userfaultfd           (TARGET_NR_Linux + 357)
-+#define TARGET_NR_membarrier            (TARGET_NR_Linux + 358)
-+#define TARGET_NR_mlock2                (TARGET_NR_Linux + 359)
--- 
-2.6.4
+=20
+ #endif /* TARGET_SIGNAL_H */
+--=20
+2.1.4
 
 
