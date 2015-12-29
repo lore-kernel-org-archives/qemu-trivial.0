@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aDtdL-0004xp-Fp
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Dec 2015 07:44:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59537)
+	id 1aDuiT-0006iX-RH
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Dec 2015 08:53:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45771)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1aDtdJ-0004t5-9A
-	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 07:44:10 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aDuiQ-0006e5-ED
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 08:53:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1aDtdI-0001An-EF
-	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 07:44:09 -0500
-Received: from mail.weilnetz.de ([37.221.199.173]:57457)
+	(envelope-from <peter.maydell@linaro.org>) id 1aDuiP-0007RE-7y
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 08:53:30 -0500
+Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:33455)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1aDtdE-0001A2-2M; Tue, 29 Dec 2015 07:44:04 -0500
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by mail.weilnetz.de (Postfix) with ESMTP id 4201811810A9;
-	Tue, 29 Dec 2015 13:44:03 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from mail.weilnetz.de ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id NJcpyRO8fLMD; Tue, 29 Dec 2015 13:44:01 +0100 (CET)
-Received: from edv32.bib.uni-mannheim.de (p54AC8B9D.dip0.t-ipconnect.de
-	[84.172.139.157])
-	by mail.weilnetz.de (Postfix) with ESMTPSA id 0756B11810A3;
-	Tue, 29 Dec 2015 13:44:00 +0100 (CET)
-To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1451392796-30956-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <5682800F.8000001@weilnetz.de>
-Date: Tue, 29 Dec 2015 13:43:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1aDuiP-0007R8-1D
+	for qemu-trivial@nongnu.org; Tue, 29 Dec 2015 08:53:29 -0500
+Received: by mail-vk0-x229.google.com with SMTP id a188so193045347vkc.0
+	for <qemu-trivial@nongnu.org>; Tue, 29 Dec 2015 05:53:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=X2IrMumT5sWlB3Me8cdFszmiBw6Ehga2kUWEiWkANNk=;
+	b=etn4j5eiyrB5dCOe59GDONhKnBCAJ2SEFjcVImHnt/OFT4GG19uF9u+IOVJjLeEZwZ
+	Llfw6W+noLpLdcLjaR8aZDAP/Z3SFFkJQnjznIItVQuOONgh+F/U0yhYz1fONh7avjPu
+	Z5a89yzil2D/nrPiINWI1jpmnuREPX4QIVdf4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=X2IrMumT5sWlB3Me8cdFszmiBw6Ehga2kUWEiWkANNk=;
+	b=JXYXT90z8nFq+RXhYonI10JFRVeEx6vLyPvgJfB1m1OCzpnP2sNf18UNzzjwjTiDlB
+	phM5u/Jj3Bg0wVb54dY3jWdzKzBssE8qnnxWd0fb5VOQdDmlix2StynHYA32E16IgrU2
+	QTGiRkrZbcX+0hGQ6kdJxfpp9MGV0Ug7TX7JsaJB21x9dRdySAauJntaS4yIKZnR5nuQ
+	twwSaF5UXTKBkdI74dHy8ZDdjfdEDX1FLoFqw3pEuhoqnUBbvsVyqNdHAoUOnvYAQB9l
+	QFXvhIS3N93Epra9jbGlofP009z80mKh33VBkVTKVYR7b3VZarjUqdKkCDHRf+LYSbPA
+	Rhmw==
+X-Gm-Message-State: ALoCoQnp/8sQoZVgDIblRtzYCso+WMd6QIHQlKDMTmh2OcTbOzpe5QnS88hhyjI40K3ekqRRw/qSZ+xhyuFTbn5E/j61uCz4/3YMK4OclKuPJWqdXnDrsBY=
+X-Received: by 10.31.131.203 with SMTP id f194mr38846168vkd.90.1451397207556; 
+	Tue, 29 Dec 2015 05:53:27 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1451392796-30956-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="bIXnDoGcIf4FdH47KPBUMO22UomrTmeMB"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, xen-devel@lists.xensource.com,
-	stefano.stabellini@eu.citrix.com
-Subject: Re: [Qemu-trivial] [PATCH trivial v2] xen/Makefile.objs: simplify
+Received: by 10.31.153.15 with HTTP; Tue, 29 Dec 2015 05:53:07 -0800 (PST)
+In-Reply-To: <1451382219-5159-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1451382219-5159-1-git-send-email-mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 29 Dec 2015 13:53:07 +0000
+Message-ID: <CAFEAcA-KDp7FdXA=8P8ZiVXBJGKP7XR8GeP3vPiQwP-xk+2EpA@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::229
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] unicore32: convert
+ get_sp_from_cpustate from macro to inline
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,65 +62,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Dec 2015 12:44:10 -0000
+X-List-Received-Date: Tue, 29 Dec 2015 13:53:31 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---bIXnDoGcIf4FdH47KPBUMO22UomrTmeMB
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: quoted-printable
+On 29 December 2015 at 09:43, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> All other architectures define get_sp_from_cpustate as an inline function=
+,
+> only unicore32 uses a #define.  With this, some usages are impossible, fo=
+r
+> example, enabling sigaltstack in linux-user/syscall.c results in
+>
+> linux-user/syscall.c: In function =E2=80=98do_syscall=E2=80=99:
+> linux-user/syscall.c:8299:39: error: dereferencing =E2=80=98void *=E2=80=
+=99 pointer [-Werror]
+>   get_sp_from_cpustate(arg1, arg2, get_sp_from_cpustate((CPUArchState *)c=
+pu_env));
+>                                        ^
+> linux-user/syscall.c:8299:39: error: request for member =E2=80=98regs=E2=
+=80=99 in something not a structure or union
 
-Am 29.12.2015 um 13:39 schrieb Cao jin:
-> merge last two lines, keep alphabetic order.
->=20
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> ---
->  hw/xen/Makefile.objs | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->=20
-> diff --git a/hw/xen/Makefile.objs b/hw/xen/Makefile.objs
-> index a9ad7e7..d367094 100644
-> --- a/hw/xen/Makefile.objs
-> +++ b/hw/xen/Makefile.objs
-> @@ -2,5 +2,4 @@
->  common-obj-$(CONFIG_XEN_BACKEND) +=3D xen_backend.o xen_devconfig.o
-> =20
->  obj-$(CONFIG_XEN_PCI_PASSTHROUGH) +=3D xen-host-pci-device.o
-> -obj-$(CONFIG_XEN_PCI_PASSTHROUGH) +=3D xen_pt.o xen_pt_config_init.o x=
-en_pt_msi.o
-> -obj-$(CONFIG_XEN_PCI_PASSTHROUGH) +=3D xen_pt.o xen_pt_config_init.o x=
-en_pt_msi.o xen_pt_graphics.o
-> +obj-$(CONFIG_XEN_PCI_PASSTHROUGH) +=3D xen_pt.o xen_pt_config_init.o x=
-en_pt_graphics.o xen_pt_msi.o
->=20
+I think this is a bug in the macro implementation (lack of
+brackets around the macro argument on its RHS) rather than
+a macro being impossible to use for this, but I agree that
+the inline function is better both for consistency with other
+targets and as a style issue.
 
-Thanks.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-
-
---bIXnDoGcIf4FdH47KPBUMO22UomrTmeMB
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJWgoAQAAoJEOCMIdVndFCt9RoP/0Cn1m1mMD1F4QsUgnkusJ3I
-WWIQ1QvhvnEDKHdPUrtEO6mwpeuSWP0Lxu/VFRPs1OujAk+W/NV8EbMlcnUJarn6
-6LGZfy6AKzHBakIZQVJYcYlFcoTkDpapSYlcAnQFFwKPe/CB0PD1xNY0rj9YaB/N
-OBD+oI/JpILfAU/1hQR2OqkYQnZiB+DmMLBgkiAbqm3RjCevO8zwcnbY+7YKvD+a
-iCZ6KdUf9eHPJ8U0+X4gUw/+voPIhUyEQgad8lvxbtYgxnxyr3RNKKIZ9fm7QKbC
-/JrcEcqXFI00F7KVeaCLg9niubwNFv5eNr7HCNDfMG5hQqYwSkEZcjYzf12AQr9K
-h8ZStzeCvxFR9o5Fke3CIcDbWVixoTIl7ZWldVWv4pfB8yTPZ8m65AQMgjtzmsQm
-o7EqhFfOlYP7xodkYYPm+ekDhs+3Ub2IfJPickkNTa3nzjZl9RuDy6DWvYo9aL+5
-asUZ4wt0r117NAiq+2cvzjzwWJcgiP+mCTG91/R/htufxWQm36RQZMP2uReVcHbI
-kUL7inY9g4O+4fupfzhMwNy+RTtA8LQqQZqAnPtPQo4ePWO6MTQVnZupOSMMpf0i
-1mR/ZhbC73sbb43UBopZbSZrYW9+CVyBUn2rxaLJ6inEmuyAu/UiSoKwsuzTz46V
-7aeFDONAH+SonCOJbTYm
-=UOek
------END PGP SIGNATURE-----
-
---bIXnDoGcIf4FdH47KPBUMO22UomrTmeMB--
+thanks
+-- PMM
 
