@@ -1,39 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aG6Jt-0006je-FD
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jan 2016 09:41:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36329)
+	id 1aG9Ze-0004Kx-2Y
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jan 2016 13:09:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=80452ccb6=Stefano.Stabellini@citrix.com>)
-	id 1aG6Jq-0006fN-NU
-	for qemu-trivial@nongnu.org; Mon, 04 Jan 2016 09:41:11 -0500
+	(envelope-from <eblake@redhat.com>) id 1aG9Zc-0004Ii-7M
+	for qemu-trivial@nongnu.org; Mon, 04 Jan 2016 13:09:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prvs=80452ccb6=Stefano.Stabellini@citrix.com>)
-	id 1aG6Jp-00079I-Da
-	for qemu-trivial@nongnu.org; Mon, 04 Jan 2016 09:41:10 -0500
-Received: from smtp.citrix.com ([66.165.176.89]:40666)
+	(envelope-from <eblake@redhat.com>) id 1aG9Zb-0007s6-99
+	for qemu-trivial@nongnu.org; Mon, 04 Jan 2016 13:09:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55733)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=80452ccb6=Stefano.Stabellini@citrix.com>)
-	id 1aG6Jk-00078I-Vc; Mon, 04 Jan 2016 09:41:05 -0500
-X-IronPort-AV: E=Sophos;i="5.20,520,1444694400"; d="scan'208";a="322730706"
-Date: Mon, 4 Jan 2016 14:40:40 +0000
-From: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
-X-X-Sender: sstabellini@kaball.uk.xensource.com
-To: Stefan Weil <sw@weilnetz.de>
-In-Reply-To: <5682800F.8000001@weilnetz.de>
-Message-ID: <alpine.DEB.2.02.1601041439310.19710@kaball.uk.xensource.com>
-References: <1451392796-30956-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<5682800F.8000001@weilnetz.de>
-User-Agent: Alpine 2.02 (DEB 1266 2009-07-14)
+	(envelope-from <eblake@redhat.com>)
+	id 1aG9ZV-0007r7-2f; Mon, 04 Jan 2016 13:09:33 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3C2938E221;
+	Mon,  4 Jan 2016 18:09:32 +0000 (UTC)
+Received: from [10.3.113.119] (ovpn-113-119.phx2.redhat.com [10.3.113.119])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u04I9V2U030786; Mon, 4 Jan 2016 13:09:31 -0500
+To: Sitsofe Wheeler <sitsofe@yahoo.com>, qemu-devel@nongnu.org
+References: <20151230195338.GA25149@sucs.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <568AB556.4090800@redhat.com>
+Date: Mon, 4 Jan 2016 11:09:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-DLP: MIA1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 66.165.176.89
-Cc: xen-devel@lists.xensource.com, stefano.stabellini@eu.citrix.com,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Cao jin <caoj.fnst@cn.fujitsu.com>, pbonzini@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH trivial v2] xen/Makefile.objs: simplify
+In-Reply-To: <20151230195338.GA25149@sucs.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="xs5lLQuwuh2oHVspcBDVPpwCjw9j0RlAg"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] qemu-nbd: Fix
+ unintended texi verbatim formatting
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,36 +50,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Jan 2016 14:41:11 -0000
+X-List-Received-Date: Mon, 04 Jan 2016 18:09:41 -0000
 
-On Tue, 29 Dec 2015, Stefan Weil wrote:
-> Am 29.12.2015 um 13:39 schrieb Cao jin:
-> > merge last two lines, keep alphabetic order.
-> > 
-> > Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> > ---
-> >  hw/xen/Makefile.objs | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git a/hw/xen/Makefile.objs b/hw/xen/Makefile.objs
-> > index a9ad7e7..d367094 100644
-> > --- a/hw/xen/Makefile.objs
-> > +++ b/hw/xen/Makefile.objs
-> > @@ -2,5 +2,4 @@
-> >  common-obj-$(CONFIG_XEN_BACKEND) += xen_backend.o xen_devconfig.o
-> >  
-> >  obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen-host-pci-device.o
-> > -obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_msi.o
-> > -obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_msi.o xen_pt_graphics.o
-> > +obj-$(CONFIG_XEN_PCI_PASSTHROUGH) += xen_pt.o xen_pt_config_init.o xen_pt_graphics.o xen_pt_msi.o
-> > 
-> 
-> Thanks.
-> 
-> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--xs5lLQuwuh2oHVspcBDVPpwCjw9j0RlAg
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Stefano Stabellini <stefano.stabellini@eu.citrix.com>
+On 12/30/2015 12:54 PM, Sitsofe Wheeler wrote:
 
-Stefan, do you want me to pick this up or are you going to apply it to
-trivial?
+[meta-comment] When sending a patch series, it's best to also include a
+0/2 cover letter that summarizes the series.  Doable with 'git config
+format.coverLetter auto'.
+
+> Indented lines in the texi meant the perlpod produced interpreted the
+> paragraph as being verbatim (thus formatting codes were not
+> interpreted). Fix this by un-indenting problem lines.
+>=20
+> Signed-off-by: Sitsofe Wheeler <sitsofe@yahoo.com>
+> ---
+>  qemu-nbd.texi | 58 +++++++++++++++++++++++++++++----------------------=
+-------
+>  1 file changed, 29 insertions(+), 29 deletions(-)
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--xs5lLQuwuh2oHVspcBDVPpwCjw9j0RlAg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJWirVWAAoJEKeha0olJ0NquegH/jSjH7NZcOXAfAZrFbvryAaC
+QtTznDN0ZMhXNVsG/g9QKC99zvGicWBU6RxGcePZHa2IUGGDsN7sV960RQFKEWBx
+C1o6mTt8OIsRBZYRBRyFj/25QhOOhahjC64oGiw7qc3ozHfJjQVZ8WwVr1Q55VZg
+MOrFV3qF4SIZuo4c6Go22FiEgsllmKyTF7F/XquE8TgafZAhR2ySmrqeeKK4OB4R
+OzDWVWJWHOj0zmVtw/3nQT7ZpVcr0UtvPPZY3gaU/iPaM6cZq4CXYf3TMwD5jcUF
+BA9FxtEagJ1TUWfytc8XGdxEQ1kgeHyjVZiA9Lt0pClGOVUeAKmU2J8gLT+Nn2E=
+=k5Q9
+-----END PGP SIGNATURE-----
+
+--xs5lLQuwuh2oHVspcBDVPpwCjw9j0RlAg--
 
