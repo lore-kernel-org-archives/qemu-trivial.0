@@ -1,33 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aGM7o-00086A-NB
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Jan 2016 02:33:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60256)
+	id 1aGMIl-00050k-Cf
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Jan 2016 02:45:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34529)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sits@sucs.org>) id 1aGM7j-0007wF-Os
-	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:33:44 -0500
+	(envelope-from <sitsofe@yahoo.com>) id 1aGMIi-0004wz-Fi
+	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:45:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sits@sucs.org>) id 1aGM7i-0007fr-K9
-	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:33:43 -0500
-Received: from silver.sucs.swan.ac.uk ([137.44.10.1]:56286)
+	(envelope-from <sitsofe@yahoo.com>) id 1aGMIa-0001W6-HR
+	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:45:04 -0500
+Received: from nm6-vm5.bullet.mail.gq1.yahoo.com ([98.136.218.196]:53200)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sits@sucs.org>)
-	id 1aGM7g-0007cD-Bm; Tue, 05 Jan 2016 02:33:40 -0500
-Received: from sits by silver.sucs.swan.ac.uk with local (Exim 4.80)
-	(envelope-from <sits@sucs.org>)
-	id 1aGM7Y-0006eu-Tz; Tue, 05 Jan 2016 07:33:32 +0000
+	(envelope-from <sitsofe@yahoo.com>) id 1aGMIa-0001VY-64
+	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:44:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+	t=1451979894; bh=bE9aztxAS4u0MTLISaNjH+6MmPYSImrAzBBnalQ+SJ0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
+	b=oe3f78+ecD3WFodcNI2y7SyxReZIi71uho+dxJMbYqkjQfORNZg1TGnNGfWD5JxEvR/RVz3gixlHSDysNfesMJC4VgNdzlqX9Dtw5v5J/KTteN2CkjibXY1tB76LG1EmRzh66w4KAXciw++ZZes3Q7lvsn8FaiE8g28MZPlLfGLwcI2xY+wROOmSSDISBBvQ7HHRBbYkjz6VVbYIIVDEgCUhl31ozOIPyfOqKSkq7b6dh+83ccubG6CSzIQXSbMy9svizEN65dcOdpbVycy0nxE95PKXeGNlGzUth48kPzBfy/UuDq9cB/4WBAcZtAsI3s/IKtQmQj9/txqAzdiydA==
+Received: from [98.137.12.61] by nm6.bullet.mail.gq1.yahoo.com with NNFMP;
+	05 Jan 2016 07:44:54 -0000
+Received: from [208.71.42.198] by tm6.bullet.mail.gq1.yahoo.com with NNFMP;
+	05 Jan 2016 07:44:54 -0000
+Received: from [127.0.0.1] by smtp209.mail.gq1.yahoo.com with NNFMP;
+	05 Jan 2016 07:44:54 -0000
+X-Yahoo-Newman-Id: 629823.53766.bm@smtp209.mail.gq1.yahoo.com
+X-Yahoo-Newman-Property: ymail-3
+X-YMail-OSG: J33AfmcVM1mb1OgMEd0mV42eL4NfEZUgcLmWopvGJEhfiUD
+	93B9ps8OxKBpINEfq62nOUgVLsKT_ZgNe71S8CO4VIdOpiiVr3P7hxu2nVSO
+	vNIS977DKenNZI.BHpU0AxMasoXEI6oRBaaYZF7u99wJhyPCJaMtpFyEI4J6
+	BNwCGG41CllKHsnSv3zQKZRwN3.PhBAfEy.t3Nbo4xSMS6hEVfjLA4B0jcEd
+	4nZin5JG5ASXxnKzww9XD11qPye7Z_xAxMawSpm0.ZzhVLS4ySQkaXgv7GWU
+	JlzfIBUXQX91mwJF9SwH2tdCDm2UoYDdR4.8OxNOArZSQJi4EVhMm0pXdfd6
+	.o6Y0XwOQ9WPcjzYDDFa44RvkJtXKYxr2_FE_CSj4VSsaQduAUVUx7ee7o9J
+	hW6h4K5lGqCaeqsxuw6RNcczXdfnVR8QzPhwxz2QNhgqHpsRpuY32eXT5KgX
+	Dxfqf.gAKgAeX77C8jID1uxV_BMvj472PRUneKpExBuh_k0bd0cghwHJz0R1
+	b8IP1NHmDkfNcevsIsQnHhV_ZrHuwMzjEx5gaOQfQ6A--
+X-Yahoo-SMTP: mEA9emqswBDufi8V3X8MBXZonFM-
+Date: Tue, 5 Jan 2016 07:44:45 +0000
 From: Sitsofe Wheeler <sitsofe@yahoo.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  5 Jan 2016 07:33:32 +0000
-Message-Id: <1451979212-25479-4-git-send-email-sitsofe@yahoo.com>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1451979212-25479-1-git-send-email-sitsofe@yahoo.com>
-References: <1451979212-25479-1-git-send-email-sitsofe@yahoo.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 137.44.10.1
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20160105074443.GA26667@sucs.org>
+References: <20151230195338.GA25149@sucs.org> <20151230195744.GA26893@sucs.org>
+	<568AB6E3.5010302@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <568AB6E3.5010302@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 98.136.218.196
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Eric Blake <eblake@redhat.com>
-Subject: [Qemu-trivial] [PATCH v2 3/3] qemu-nbd: Fix texi sentence
-	capitalisation
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] qemu-nbd: Minor texi
+	updates
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -39,101 +63,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Jan 2016 07:33:45 -0000
+X-List-Received-Date: Tue, 05 Jan 2016 07:45:05 -0000
 
-Capitalise the first letter of sentences (and reword for grammar) the
-options section of qemu-nbd.texi.
+On Mon, Jan 04, 2016 at 11:16:03AM -0700, Eric Blake wrote:
+> On 12/30/2015 12:57 PM, Sitsofe Wheeler wrote:
+> > +@item -f, --format=@var{fmt}
+> > +force the use of the block driver for format @var{fmt} instead of
+> > +auto-detecting
+> 
+> Why are you abbreviating 'format' to 'fmt'? Oh, because that's how the
+> other duplicate one was worded.
 
-Signed-off-by: Sitsofe Wheeler <sitsofe@yahoo.com>
----
- qemu-nbd.texi | 38 +++++++++++++++++++-------------------
- 1 file changed, 19 insertions(+), 19 deletions(-)
+The problem is who to be consistent with? There are a few choices:
+o qemu(1)
+o qemu --help
+o qemu-img(1)
+o qemu-img --help
+o qemu-nbd --help
+o (For NBD options) nbd-server(1)
 
-diff --git a/qemu-nbd.texi b/qemu-nbd.texi
-index 5331d69..0027841 100644
---- a/qemu-nbd.texi
-+++ b/qemu-nbd.texi
-@@ -19,60 +19,60 @@ Export a QEMU disk image using the NBD protocol.
- 
- @table @option
- @item -p, --port=@var{port}
--port to listen on (default @samp{10809})
-+The TCP port to listen on (default @samp{10809})
- @item -o, --offset=@var{offset}
--offset into the image
-+The offset into the image
- @item -b, --bind=@var{iface}
--interface to bind to (default @samp{0.0.0.0})
-+The interface to bind to (default @samp{0.0.0.0})
- @item -k, --socket=@var{path}
- Use a unix socket with path @var{path}
- @item -f, --format=@var{fmt}
--force the use of the block driver for format @var{fmt} instead of
-+Force the use of the block driver for format @var{fmt} instead of
- auto-detecting
- @item -r, --read-only
--export read-only
-+Export the disk as read-only
- @item -P, --partition=@var{num}
--only expose partition @var{num}
-+Only expose partition @var{num}
- @item -s, --snapshot
--use @var{filename} as an external snapshot, create a temporary
-+Use @var{filename} as an external snapshot, create a temporary
- file with backing_file=@var{filename}, redirect the write to
- the temporary one
- @item -l, --load-snapshot=@var{snapshot_param}
--load an internal snapshot inside @var{filename} and export it
-+Load an internal snapshot inside @var{filename} and export it
- as an read-only device, @var{snapshot_param} format is
- 'snapshot.id=[ID],snapshot.name=[NAME]' or '[ID_OR_NAME]'
- @item -n, --nocache
- @itemx --cache=@var{cache}
--set cache mode to be used with the file.  See the documentation of
-+The cache mode to be used with the file.  See the documentation of
- the emulator's @code{-drive cache=...} option for allowed values.
- @item --aio=@var{aio}
--choose asynchronous I/O mode between @samp{threads} (the default)
-+Set the asynchronous I/O mode between @samp{threads} (the default)
- and @samp{native} (Linux only).
- @item --discard=@var{discard}
--controls whether @dfn{discard} (also known as @dfn{trim} or @dfn{unmap})
-+Control whether @dfn{discard} (also known as @dfn{trim} or @dfn{unmap})
- requests are ignored or passed to the filesystem.  @var{discard} is one of
- @samp{ignore} (or @samp{off}), @samp{unmap} (or @samp{on}).  The default is
- @samp{ignore}.
- @item --detect-zeroes=@var{detect-zeroes}
--enables the automatic conversion of plain zero writes by the OS to
-+Control the automatic conversion of plain zero writes by the OS to
- driver-specific optimized zero write commands.  @var{detect-zeroes} is one of
- @samp{off}, @samp{on} or @samp{unmap}.  @samp{unmap}
- converts a zero write to an unmap operation and can only be used if
- @var{discard} is set to @samp{unmap}.  The default is @samp{off}.
- @item -c, --connect=@var{dev}
--connect @var{filename} to NBD device @var{dev}
-+Connect @var{filename} to NBD device @var{dev}
- @item -d, --disconnect
--disconnect the specified device
-+Disconnect the device @var{dev}
- @item -e, --shared=@var{num}
--device can be shared by @var{num} clients (default @samp{1})
-+Allow up to @var{num} clients to share the device (default @samp{1})
- @item -t, --persistent
--don't exit on the last connection
-+Don't exit on the last connection
- @item -v, --verbose
--display extra debugging information
-+Display extra debugging information
- @item -h, --help
--display this help and exit
-+Display this help and exit
- @item -V, --version
--output version information and exit
-+Display version information and exit
- @end table
- 
- @c man end
+In the end I decided to try and avoid changing what was already there.
+
+> Should probably start with 'Force', to match the capitalization used
+> earlier....
+> 
+> >  @item -r, --read-only
+> >  export read-only
+> >  @item -P, --partition=@var{num}
+> > @@ -44,17 +45,22 @@ the emulator's @code{-drive cache=...} option for allowed values.
+> >  choose asynchronous I/O mode between @samp{threads} (the default)
+> >  and @samp{native} (Linux only).
+> >  @item --discard=@var{discard}
+> > -toggles whether @dfn{discard} (also known as @dfn{trim} or @dfn{unmap})
+> 
+> ...then again, later lines are not starting with upper case. Maybe
+> that's worth its own patch to make it uniformly consistent?
+
+OK I've posted an updated patch set with the capitalisation fixed as
+another patch.
+
+> > +@item --detect-zeroes=@var{detect-zeroes}
+> > +enables the automatic conversion of plain zero writes by the OS to driver
+> > +specific optimized zero write commands.  @var{detect-zeroes} is one of
+> 
+> I'd probably write this one as 'driver-specific'
+
+OK I've changed this in the updated patch set (although this makes
+things inconsistent with qemu(1)).
+
 -- 
-2.4.3
-
+Sitsofe | http://sucs.org/~sits/
 
