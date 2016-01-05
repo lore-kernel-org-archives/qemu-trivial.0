@@ -1,57 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aGMIl-00050k-Cf
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Jan 2016 02:45:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34529)
+	id 1aGPH0-0002yU-ET
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Jan 2016 05:55:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37633)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sitsofe@yahoo.com>) id 1aGMIi-0004wz-Fi
-	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:45:05 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aGPGy-0002wZ-V6
+	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 05:55:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sitsofe@yahoo.com>) id 1aGMIa-0001W6-HR
-	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:45:04 -0500
-Received: from nm6-vm5.bullet.mail.gq1.yahoo.com ([98.136.218.196]:53200)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aGPGx-0002sI-UZ
+	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 05:55:28 -0500
+Received: from [59.151.112.132] (port=4717 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sitsofe@yahoo.com>) id 1aGMIa-0001VY-64
-	for qemu-trivial@nongnu.org; Tue, 05 Jan 2016 02:44:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
-	t=1451979894; bh=bE9aztxAS4u0MTLISaNjH+6MmPYSImrAzBBnalQ+SJ0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
-	b=oe3f78+ecD3WFodcNI2y7SyxReZIi71uho+dxJMbYqkjQfORNZg1TGnNGfWD5JxEvR/RVz3gixlHSDysNfesMJC4VgNdzlqX9Dtw5v5J/KTteN2CkjibXY1tB76LG1EmRzh66w4KAXciw++ZZes3Q7lvsn8FaiE8g28MZPlLfGLwcI2xY+wROOmSSDISBBvQ7HHRBbYkjz6VVbYIIVDEgCUhl31ozOIPyfOqKSkq7b6dh+83ccubG6CSzIQXSbMy9svizEN65dcOdpbVycy0nxE95PKXeGNlGzUth48kPzBfy/UuDq9cB/4WBAcZtAsI3s/IKtQmQj9/txqAzdiydA==
-Received: from [98.137.12.61] by nm6.bullet.mail.gq1.yahoo.com with NNFMP;
-	05 Jan 2016 07:44:54 -0000
-Received: from [208.71.42.198] by tm6.bullet.mail.gq1.yahoo.com with NNFMP;
-	05 Jan 2016 07:44:54 -0000
-Received: from [127.0.0.1] by smtp209.mail.gq1.yahoo.com with NNFMP;
-	05 Jan 2016 07:44:54 -0000
-X-Yahoo-Newman-Id: 629823.53766.bm@smtp209.mail.gq1.yahoo.com
-X-Yahoo-Newman-Property: ymail-3
-X-YMail-OSG: J33AfmcVM1mb1OgMEd0mV42eL4NfEZUgcLmWopvGJEhfiUD
-	93B9ps8OxKBpINEfq62nOUgVLsKT_ZgNe71S8CO4VIdOpiiVr3P7hxu2nVSO
-	vNIS977DKenNZI.BHpU0AxMasoXEI6oRBaaYZF7u99wJhyPCJaMtpFyEI4J6
-	BNwCGG41CllKHsnSv3zQKZRwN3.PhBAfEy.t3Nbo4xSMS6hEVfjLA4B0jcEd
-	4nZin5JG5ASXxnKzww9XD11qPye7Z_xAxMawSpm0.ZzhVLS4ySQkaXgv7GWU
-	JlzfIBUXQX91mwJF9SwH2tdCDm2UoYDdR4.8OxNOArZSQJi4EVhMm0pXdfd6
-	.o6Y0XwOQ9WPcjzYDDFa44RvkJtXKYxr2_FE_CSj4VSsaQduAUVUx7ee7o9J
-	hW6h4K5lGqCaeqsxuw6RNcczXdfnVR8QzPhwxz2QNhgqHpsRpuY32eXT5KgX
-	Dxfqf.gAKgAeX77C8jID1uxV_BMvj472PRUneKpExBuh_k0bd0cghwHJz0R1
-	b8IP1NHmDkfNcevsIsQnHhV_ZrHuwMzjEx5gaOQfQ6A--
-X-Yahoo-SMTP: mEA9emqswBDufi8V3X8MBXZonFM-
-Date: Tue, 5 Jan 2016 07:44:45 +0000
-From: Sitsofe Wheeler <sitsofe@yahoo.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20160105074443.GA26667@sucs.org>
-References: <20151230195338.GA25149@sucs.org> <20151230195744.GA26893@sucs.org>
-	<568AB6E3.5010302@redhat.com>
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aGPGt-0002o8-Ax; Tue, 05 Jan 2016 05:55:23 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="2235400"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 05 Jan 2016 18:55:01 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id 96EEC41890E7;
+	Tue,  5 Jan 2016 18:54:52 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Tue, 5 Jan 2016 18:54:52 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Tue, 5 Jan 2016 18:57:49 +0800
+Message-ID: <1451991469-8893-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <568AB6E3.5010302@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 98.136.218.196
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] qemu-nbd: Minor texi
-	updates
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 96EEC41890E7.AAB2A
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] PCI Bonito: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,54 +49,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Jan 2016 07:45:05 -0000
+X-List-Received-Date: Tue, 05 Jan 2016 10:55:30 -0000
 
-On Mon, Jan 04, 2016 at 11:16:03AM -0700, Eric Blake wrote:
-> On 12/30/2015 12:57 PM, Sitsofe Wheeler wrote:
-> > +@item -f, --format=@var{fmt}
-> > +force the use of the block driver for format @var{fmt} instead of
-> > +auto-detecting
-> 
-> Why are you abbreviating 'format' to 'fmt'? Oh, because that's how the
-> other duplicate one was worded.
+Also clear the code
 
-The problem is who to be consistent with? There are a few choices:
-o qemu(1)
-o qemu --help
-o qemu-img(1)
-o qemu-img --help
-o qemu-nbd --help
-o (For NBD options) nbd-server(1)
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+Since this file don`t have maintainer & it should be simple enough for
+qemu-trival, so cc: qemu-trival.
 
-In the end I decided to try and avoid changing what was already there.
+ hw/pci-host/bonito.c | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
-> Should probably start with 'Force', to match the capitalization used
-> earlier....
-> 
-> >  @item -r, --read-only
-> >  export read-only
-> >  @item -P, --partition=@var{num}
-> > @@ -44,17 +45,22 @@ the emulator's @code{-drive cache=...} option for allowed values.
-> >  choose asynchronous I/O mode between @samp{threads} (the default)
-> >  and @samp{native} (Linux only).
-> >  @item --discard=@var{discard}
-> > -toggles whether @dfn{discard} (also known as @dfn{trim} or @dfn{unmap})
-> 
-> ...then again, later lines are not starting with upper case. Maybe
-> that's worth its own patch to make it uniformly consistent?
-
-OK I've posted an updated patch set with the capitalisation fixed as
-another patch.
-
-> > +@item --detect-zeroes=@var{detect-zeroes}
-> > +enables the automatic conversion of plain zero writes by the OS to driver
-> > +specific optimized zero write commands.  @var{detect-zeroes} is one of
-> 
-> I'd probably write this one as 'driver-specific'
-
-OK I've changed this in the updated patch set (although this makes
-things inconsistent with qemu(1)).
-
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index 4139a2c..b477679 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -180,8 +180,6 @@
+ #define PCI_ADDR(busno,devno,funno,regno)  \
+     ((((busno)<<16)&0xff0000) + (((devno)<<11)&0xf800) + (((funno)<<8)&0x700) + (regno))
+ 
+-#define TYPE_BONITO_PCI_HOST_BRIDGE "Bonito-pcihost"
+-
+ typedef struct BonitoState BonitoState;
+ 
+ typedef struct PCIBonitoState
+@@ -215,17 +213,20 @@ typedef struct PCIBonitoState
+ 
+ } PCIBonitoState;
+ 
+-#define BONITO_PCI_HOST_BRIDGE(obj) \
+-    OBJECT_CHECK(BonitoState, (obj), TYPE_BONITO_PCI_HOST_BRIDGE)
+-
+ struct BonitoState {
+     PCIHostState parent_obj;
+-
+     qemu_irq *pic;
+-
+     PCIBonitoState *pci_dev;
+ };
+ 
++#define TYPE_BONITO_PCI_HOST_BRIDGE "Bonito-pcihost"
++#define BONITO_PCI_HOST_BRIDGE(obj) \
++    OBJECT_CHECK(BonitoState, (obj), TYPE_BONITO_PCI_HOST_BRIDGE)
++
++#define TYPE_PCI_BONITO "Bonito"
++#define PCI_BONITO(obj) \
++    OBJECT_CHECK(PCIBonitoState, (obj), TYPE_PCI_BONITO)
++
+ static void bonito_writel(void *opaque, hwaddr addr,
+                           uint64_t val, unsigned size)
+ {
+@@ -723,7 +724,7 @@ static int bonito_pcihost_initfn(SysBusDevice *dev)
+ 
+ static void bonito_realize(PCIDevice *dev, Error **errp)
+ {
+-    PCIBonitoState *s = DO_UPCAST(PCIBonitoState, dev, dev);
++    PCIBonitoState *s = PCI_BONITO(dev);
+     SysBusDevice *sysbus = SYS_BUS_DEVICE(s->pcihost);
+     PCIHostState *phb = PCI_HOST_BRIDGE(s->pcihost);
+ 
+@@ -799,8 +800,8 @@ PCIBus *bonito_init(qemu_irq *pic)
+     qdev_init_nofail(dev);
+ 
+     /* set the pcihost pointer before bonito_initfn is called */
+-    d = pci_create(phb->bus, PCI_DEVFN(0, 0), "Bonito");
+-    s = DO_UPCAST(PCIBonitoState, dev, d);
++    d = pci_create(phb->bus, PCI_DEVFN(0, 0), TYPE_PCI_BONITO);
++    s = PCI_BONITO(d);
+     s->pcihost = pcihost;
+     pcihost->pci_dev = s;
+     qdev_init_nofail(DEVICE(d));
+@@ -828,7 +829,7 @@ static void bonito_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo bonito_info = {
+-    .name          = "Bonito",
++    .name          = TYPE_PCI_BONITO,
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIBonitoState),
+     .class_init    = bonito_class_init,
 -- 
-Sitsofe | http://sucs.org/~sits/
+2.1.0
+
+
+
 
