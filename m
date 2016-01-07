@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aH9GI-0002H0-7G
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jan 2016 07:01:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39930)
+	id 1aH9WZ-0006wl-Vs
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jan 2016 07:18:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43569)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aH9GG-0002Gl-9n
-	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:01:49 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aH9WX-0006vj-Cw
+	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:18:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aH9GF-0007Ld-Ek
-	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:01:48 -0500
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:36589)
+	(envelope-from <peter.maydell@linaro.org>) id 1aH9WW-0003M9-Ja
+	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:18:37 -0500
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:35791)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aH9GF-0007LX-9q
-	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:01:47 -0500
-Received: by mail-vk0-x22a.google.com with SMTP id n1so18191845vkb.3
-	for <qemu-trivial@nongnu.org>; Thu, 07 Jan 2016 04:01:47 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aH9WV-0003Lq-Cf
+	for qemu-trivial@nongnu.org; Thu, 07 Jan 2016 07:18:36 -0500
+Received: by mail-vk0-x236.google.com with SMTP id k1so172714163vkb.2
+	for <qemu-trivial@nongnu.org>; Thu, 07 Jan 2016 04:18:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=kO4yfFwSdcN364TzLxsyKpwqcQDI0G5dmt3eukmBZcM=;
-	b=gXJJmFvU2WyLzWSSI38gwWCXXRJ9PeIkERAd8qN9fMD9Cge5LmrTDk3mO+w04uAeOw
-	9NnFtgMblUU4vFec0Y3E3uU1VT4tZjKeKmWt5zzz14/r9bkaPju4uQi6r7LkJyNZtf0Z
-	y9Mj8c94YD65M3bGiYNh6Cz7gWG1oPFSU+j1o=
+	bh=yS8sjCcCjLDsV8hCM58uKi3cpsMvIUuojuRES8TjQLQ=;
+	b=TdhxkU55c3bPXvvvKqKVx6oinsvYtMCsQLpbuW9cNhwhhfnyIwrRuhjH3wn03jI0f9
+	B4Osr9KdC6IEJFuJQGrPo7ywWyNvVZoc7DdS8LbFvOeP6xVUQiwJ9jxT0qZkwH64NC+6
+	GMH/WVGXHybY9Gmg4jm8xSWr06rTwIjAf5Ex8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=kO4yfFwSdcN364TzLxsyKpwqcQDI0G5dmt3eukmBZcM=;
-	b=e+lc08CQx5oyt4euz0iqX+9TDv3SPGkGbTtsu/FASqcKBGVS6SBZVeinXh7QJ13A3w
-	KeFjzR0cKRdO5xRMkv93AoMPY2BA7KTwh20FY8lkUeZpNd1iKCVf0ApvwIzvSKEykxim
-	50+YQAptqwMB3bncouQ41kInFIzMaOBH9TtDr12F2QxHOd1lBgga3NKnE5DMdH7ewmqi
-	iD8ieXO7up1t3EAWon1qnQf1tbP+33RqyuDbMW8bs50cfnRawmD/wfJRLIiVM/Nv/1Tv
-	keKtQG9x7cYIAUv2k5T38wXqh4UIwPzAaJq+hMV5J7rwQKth5++KijpTd7xxYd6KVZ19
-	khDQ==
-X-Gm-Message-State: ALoCoQncEc1re8Sv1DcG7I1+eo1cIZgXyKGdsUJWZvjIgIFz1vlU/ATuFyFryOJTiy3oCP7aicKsg4mhqZ4dbVhCYGNdMCqBPCOtoNWDHDGc+eKazXq++v0=
-X-Received: by 10.31.52.147 with SMTP id b141mr66415286vka.82.1452168106827;
-	Thu, 07 Jan 2016 04:01:46 -0800 (PST)
+	bh=yS8sjCcCjLDsV8hCM58uKi3cpsMvIUuojuRES8TjQLQ=;
+	b=Zqvb7pjySkK8vIJz+kKnF/pPEM4/uGClSQGfsPX17KgUdHYrbJr5UpYbTLDeCgqtNo
+	YK4KgOwyFrzCZix1NeXf0SON+YAJLgSUUxAL7+UEdogy8uHmsdvSt+yeEFtvR9kF+mr/
+	V+EanokCtkTY0GO7+kco45p34xbpaxiw/Ozl1/LnEOarMzqh6VzQTPDGM9ROTHi43mvx
+	A4OR/TVujtZJK+kXxZ2VxEvIWgtMOueeoaGZYzCRKVK3Mx4OxtKnFMTiLnsMMgwarhoZ
+	xqz160ItuPPR2K7CWiGh878OsNC7pnihPps377WCpApFsPUmoZmmfeEuSPt9Qj7GGVAv
+	WegQ==
+X-Gm-Message-State: ALoCoQmp1sq0/MyT0lfBsfLlmZgmNFrlm/5CMkhnSyo+2HFQEKThVtGKSciJpooGOF3wGQ16dSwhJ+F4agStUtWvWRaVzFBJzpjKG8SOO7vyZ1Sl2m30TJA=
+X-Received: by 10.31.47.197 with SMTP id v188mr73916369vkv.6.1452169115025;
+	Thu, 07 Jan 2016 04:18:35 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Thu, 7 Jan 2016 04:01:27 -0800 (PST)
-In-Reply-To: <1450996286-23127-1-git-send-email-jm.ouwerkerk@gmail.com>
-References: <1450996286-23127-1-git-send-email-jm.ouwerkerk@gmail.com>
+Received: by 10.31.153.15 with HTTP; Thu, 7 Jan 2016 04:18:15 -0800 (PST)
+In-Reply-To: <568E56BA.8020706@physik.fu-berlin.de>
+References: <1451382673-5345-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<CAFEAcA8Vd8q5JXSwUaD6-i+Z4aHkO2NiXJ2TMSG3rfyXJijoQw@mail.gmail.com>
+	<568E56BA.8020706@physik.fu-berlin.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jan 2016 12:01:27 +0000
-Message-ID: <CAFEAcA9MmgVMBPFb70onV3cJytdzP_XukSdK0_wfzcfAJUNWjQ@mail.gmail.com>
-To: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+Date: Thu, 7 Jan 2016 12:18:15 +0000
+Message-ID: <CAFEAcA-b47=1XD2hT2iBj9HSp_MXtmKKKeWkk8XjnTzH+tqyww@mail.gmail.com>
+To: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add missing syscall nrs.
- This updates the QEMU syscall tables to more recent Linux kernels.
+X-Received-From: 2607:f8b0:400c:c05::236
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>,
+	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] linux-user: enable
+ sigaltstack for all architectures
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,28 +63,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jan 2016 12:01:49 -0000
+X-List-Received-Date: Thu, 07 Jan 2016 12:18:38 -0000
 
-On 24 December 2015 at 22:31, Johan Ouwerkerk <jm.ouwerkerk@gmail.com> wrote:
-> This change covers arm, aarch64, mips. Others to follow?
+On 7 January 2016 at 12:14, John Paul Adrian Glaubitz
+<glaubitz@physik.fu-berlin.de> wrote:
+> Hi Peter!
 >
-> The change was prompted by QEMU warning about a syscall 384 (get_random()) with Debian armhf binaries (ARMv7).
+> On 01/07/2016 12:52 PM, Peter Maydell wrote:
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Has this been committed yet? I can't see the change in cgit.
 
-It would be nice if whoever applies this patch could fix
-the overlong lines in the commit message.
-
-> Signed-off-by: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
-> ---
->  linux-user/aarch64/syscall_nr.h | 13 +++++++++++++
->  linux-user/arm/syscall_nr.h     | 12 ++++++++++++
->  linux-user/mips/syscall_nr.h    | 12 ++++++++++++
->  3 files changed, 37 insertions(+)
-
-No 64-bit mips to go with the 32-bit change?
-
-Anyway, for the changes in this patch:
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+No. "Reviewed-by" means I just code reviewed it. At some point
+it will be picked up by a subtree maintainer (either the
+-trivial subtree or the linux-user one). That person will then
+at some point send me a pull request for their subtree which
+will result in the commit getting merged into master when I
+apply that pull request.
 
 thanks
 -- PMM
