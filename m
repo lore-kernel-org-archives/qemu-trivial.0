@@ -1,54 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aIYaM-000363-5c
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jan 2016 04:16:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58666)
+	id 1aIYbI-0004A9-Fb
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jan 2016 04:17:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1aIYaJ-00035Z-MW
-	for qemu-trivial@nongnu.org; Mon, 11 Jan 2016 04:16:20 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aIYbF-000457-Nd
+	for qemu-trivial@nongnu.org; Mon, 11 Jan 2016 04:17:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1aIYaE-0008VH-Ng
-	for qemu-trivial@nongnu.org; Mon, 11 Jan 2016 04:16:19 -0500
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:36059)
+	(envelope-from <mjt@tls.msk.ru>) id 1aIYbE-0000Iy-Ne
+	for qemu-trivial@nongnu.org; Mon, 11 Jan 2016 04:17:17 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:36442)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1aIYaE-0008VD-Gd; Mon, 11 Jan 2016 04:16:14 -0500
-Received: by mail-wm0-x232.google.com with SMTP id l65so202455614wmf.1;
-	Mon, 11 Jan 2016 01:16:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=UU3iIggKaeeU4BXmmOkvR9txosCcic89MI3ZRPElDY8=;
-	b=nDmDwrvenl9zH5tKJnQgQh04Ylim750/x4tMnNBoSRQlTwaHesTBT8JD4AruzjObH4
-	HSfeClDGO+dajg5jTnXFxB1bugG6uu+qPYt47sXqj2VOgJTIuWtu2+WzvJVnzqsj9kJg
-	kjZ5VxE52r1dtXJ1FLyC1cI6Q/oVKr6KzNI+6myLbGAGNNFzX/AX24/7QznBMUVEKwVR
-	7Rtco0VeePlfs1Zt77/+v2CFYsC67LYpIElA1AekTgwOsFsnx+Rdh8lE8/oCK4qUGmD6
-	dZMNVaxyB3c2Brh4Hjqve4JGVA8HF0mB3naPyIwlkrBM3mFbxRg8aC6E0150Ow731Jk/
-	BMaA==
-X-Received: by 10.194.79.8 with SMTP id f8mr134661091wjx.6.1452503774037;
-	Mon, 11 Jan 2016 01:16:14 -0800 (PST)
-Received: from [192.168.10.165] (94-39-195-126.adsl-ull.clienti.tiscali.it.
-	[94.39.195.126]) by smtp.googlemail.com with ESMTPSA id
-	dl8sm118867921wjb.29.2016.01.11.01.16.13
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 11 Jan 2016 01:16:13 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Ashley Jonathan <jonathan.ashley@altran.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <AC19797808C8D548ABDE0CA4A97AA30A30DEB409@XMB-DCFR-37.europe.corp.altran.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <569372DC.5020606@redhat.com>
-Date: Mon, 11 Jan 2016 10:16:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
-MIME-Version: 1.0
-In-Reply-To: <AC19797808C8D548ABDE0CA4A97AA30A30DEB409@XMB-DCFR-37.europe.corp.altran.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1aIYb8-0000GK-Np; Mon, 11 Jan 2016 04:17:11 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 635B340404;
+	Mon, 11 Jan 2016 12:17:08 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 1765EAD1;
+	Mon, 11 Jan 2016 11:42:01 +0300 (MSK)
+Received: (nullmailer pid 28785 invoked by uid 1000);
+	Mon, 11 Jan 2016 08:41:59 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 11 Jan 2016 11:41:49 +0300
+Message-Id: <9763af08f816cdd6f329cde1c97597a0041998f5.1452501577.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1452501577.git.mjt@msgid.tls.msk.ru>
+References: <cover.1452501577.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::232
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] Keep pty slave file descriptor open
- until the master is closed
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Johan Ouwerkerk <jm.ouwerkerk@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 10/19] Add missing syscall nrs. according to
+	more recent Linux kernels
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,30 +44,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jan 2016 09:16:20 -0000
+X-List-Received-Date: Mon, 11 Jan 2016 09:17:19 -0000
 
+From: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 
+This change covers arm, aarch64, mips. Others to follow?
 
-On 11/12/2015 12:29, Ashley Jonathan wrote:
-> I have experienced a minor difficulty using QEMU with the "-serial
-> pty" option:
-> 
-> If a process opens the slave pts device, writes data to it, then
-> immediately closes it, the data doesn't reliably get delivered to the
-> emulated serial port. This seems to be because a read of the master
-> pty device returns EIO on Linux if no process has the pts device
-> open, even when data is waiting "in the pipe".
-> 
-> A fix seems to be for QEMU to keep the pts file descriptor open until
-> the pty is closed, as per the below patch.
+The change was prompted by QEMU warning about a syscall 384 (get_random())
+with Debian armhf binaries (ARMv7).
 
-You need to include a "Signed-off-by: Ashley Jonathan <jonathan.ashley@altran.com>"
-line in the commit message, meaning that you have read and understood the
-"Developer Certificate of Origin":
+Signed-off-by: Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ linux-user/aarch64/syscall_nr.h | 13 +++++++++++++
+ linux-user/arm/syscall_nr.h     | 12 ++++++++++++
+ linux-user/mips/syscall_nr.h    | 12 ++++++++++++
+ 3 files changed, 37 insertions(+)
 
-http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/SubmittingPatches?id=f6f94e2ab1b33f0082ac22d71f66385a60d8157f#n297
+diff --git a/linux-user/aarch64/syscall_nr.h b/linux-user/aarch64/syscall_nr.h
+index 743255d..74f4275 100644
+--- a/linux-user/aarch64/syscall_nr.h
++++ b/linux-user/aarch64/syscall_nr.h
+@@ -262,6 +262,19 @@
+ #define TARGET_NR_process_vm_writev 271
+ #define TARGET_NR_kcmp 272
+ #define TARGET_NR_finit_module 273
++
++#define TARGET_NR_sched_setattr 274
++#define TARGET_NR_sched_getattr 275
++#define TARGET_NR_renameat2 276
++#define TARGET_NR_seccomp 277
++#define TARGET_NR_getrandom 278
++#define TARGET_NR_memfd_create 279
++#define TARGET_NR_bpf 280
++#define TARGET_NR_execveat 281
++#define TARGET_NR_userfaultfd 282
++#define TARGET_NR_membarrier 283
++#define TARGET_NR_mlock2 284
++
+ #define TARGET_NR_open 1024
+ #define TARGET_NR_link 1025
+ #define TARGET_NR_unlink 1026
+diff --git a/linux-user/arm/syscall_nr.h b/linux-user/arm/syscall_nr.h
+index 53552be..cc9089c 100644
+--- a/linux-user/arm/syscall_nr.h
++++ b/linux-user/arm/syscall_nr.h
+@@ -384,3 +384,15 @@
+ #define TARGET_NR_process_vm_writev            (377)
+ #define TARGET_NR_kcmp                         (378)
+ #define TARGET_NR_finit_module                 (379)
++
++#define TARGET_NR_sched_setattr                (380)
++#define TARGET_NR_sched_getattr                (381)
++#define TARGET_NR_renameat2                    (382)
++#define TARGET_NR_seccomp                      (383)
++#define TARGET_NR_getrandom                    (384)
++#define TARGET_NR_memfd_create                 (385)
++#define TARGET_NR_bpf                          (386)
++#define TARGET_NR_execveat                     (387)
++#define TARGET_NR_userfaultfd                  (388)
++#define TARGET_NR_membarrier                   (389)
++#define TARGET_NR_mlock2                       (390)
+diff --git a/linux-user/mips/syscall_nr.h b/linux-user/mips/syscall_nr.h
+index 2d1a13e..6819f86 100644
+--- a/linux-user/mips/syscall_nr.h
++++ b/linux-user/mips/syscall_nr.h
+@@ -351,3 +351,15 @@
+ #define TARGET_NR_process_vm_writev     (TARGET_NR_Linux + 346)
+ #define TARGET_NR_kcmp                  (TARGET_NR_Linux + 347)
+ #define TARGET_NR_finit_module          (TARGET_NR_Linux + 348)
++
++#define TARGET_NR_sched_setattr         (TARGET_NR_Linux + 349)
++#define TARGET_NR_sched_getattr         (TARGET_NR_Linux + 350)
++#define TARGET_NR_renameat2             (TARGET_NR_Linux + 351)
++#define TARGET_NR_seccomp               (TARGET_NR_Linux + 352)
++#define TARGET_NR_getrandom             (TARGET_NR_Linux + 353)
++#define TARGET_NR_memfd_create          (TARGET_NR_Linux + 354)
++#define TARGET_NR_bpf                   (TARGET_NR_Linux + 355)
++#define TARGET_NR_execveat              (TARGET_NR_Linux + 356)
++#define TARGET_NR_userfaultfd           (TARGET_NR_Linux + 357)
++#define TARGET_NR_membarrier            (TARGET_NR_Linux + 358)
++#define TARGET_NR_mlock2                (TARGET_NR_Linux + 359)
+-- 
+2.1.4
 
-Just reply to this message with the above line.
-
-Paolo
 
