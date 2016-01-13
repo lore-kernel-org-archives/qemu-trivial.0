@@ -1,42 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aIzuO-0004j9-Jd
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jan 2016 09:26:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38856)
+	id 1aJGg6-0002w7-7f
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2016 03:21:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42637)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1aIzuM-0004fP-TW
-	for qemu-trivial@nongnu.org; Tue, 12 Jan 2016 09:26:51 -0500
+	(envelope-from <thuth@redhat.com>) id 1aJGg3-0002sc-Lv
+	for qemu-trivial@nongnu.org; Wed, 13 Jan 2016 03:21:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1aIzuM-0006KU-5c
-	for qemu-trivial@nongnu.org; Tue, 12 Jan 2016 09:26:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33853)
+	(envelope-from <thuth@redhat.com>) id 1aJGg2-0001Ne-Pe
+	for qemu-trivial@nongnu.org; Wed, 13 Jan 2016 03:21:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58717)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1aIzuG-0006Jf-1o; Tue, 12 Jan 2016 09:26:44 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id A55CF8E257;
-	Tue, 12 Jan 2016 14:26:43 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0CEQgVZ026070; Tue, 12 Jan 2016 09:26:43 -0500
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 8CCE0816C8; Tue, 12 Jan 2016 15:26:42 +0100 (CET)
-Message-ID: <1452608802.29014.27.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Wolfgang Bumiller <w.bumiller@proxmox.com>
-Date: Tue, 12 Jan 2016 15:26:42 +0100
-In-Reply-To: <1452603159-19782-1-git-send-email-w.bumiller@proxmox.com>
-References: <1452603159-19782-1-git-send-email-w.bumiller@proxmox.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <thuth@redhat.com>)
+	id 1aJGfy-0001My-HE; Wed, 13 Jan 2016 03:21:06 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7D05F1C5F55;
+	Wed, 13 Jan 2016 08:21:05 +0000 (UTC)
+Received: from thh440s.fritz.box (vpn1-6-147.ams2.redhat.com [10.36.6.147])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0D8L2bg023088; Wed, 13 Jan 2016 03:21:03 -0500
+From: Thomas Huth <thuth@redhat.com>
+To: Jan Kiszka <jan.kiszka@siemens.com>, qemu-devel@nongnu.org,
+	Jason Wang <jasowang@redhat.com>
+Date: Wed, 13 Jan 2016 09:21:02 +0100
+Message-Id: <1452673262-11279-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] vnc: clear vs->tlscreds after
-	unparenting it
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] qemu-doc: Do not promote deprecated -smb and
+	-redir options
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -48,27 +41,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jan 2016 14:26:51 -0000
+X-List-Received-Date: Wed, 13 Jan 2016 08:21:12 -0000
 
-On Di, 2016-01-12 at 13:52 +0100, Wolfgang Bumiller wrote:
-> This pointer should be cleared in vnc_display_close()
-> otherwise a use-after-free can happen when when using the
-> old style 'x509' and 'tls' options rather than a persistent
-> tls-creds -object, by issuing monitor commands to change
-> the vnc server like so:
->=20
-> Start with: -vnc unix:test.socket,x509,tls
-> Then use the following monitor command:
->   change vnc unix:test.socket
->=20
-> After this the pointer is still set but invalid and a crash
-> can be triggered for instance by issuing the same command a
-> second time which will try to object_unparent() the same
-> pointer again.
+Since -smb and -redir are deprecated options, we should not
+use them as examples in the documentation anymore.
 
-Added to patch queue.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qemu-doc.texi | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-thanks,
-  Gerd
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 7bc3882..2596503 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -1237,9 +1237,9 @@ echo 100 100 > /proc/sys/net/ipv4/ping_group_range
+ When using the built-in TFTP server, the router is also the TFTP
+ server.
+ 
+-When using the @option{-redir} option, TCP or UDP connections can be
+-redirected from the host to the guest. It allows for example to
+-redirect X11, telnet or SSH connections.
++When using the @option{'-netdev user,hostfwd=...'} option, TCP or UDP
++connections can be redirected from the host to the guest. It allows for
++example to redirect X11, telnet or SSH connections.
+ 
+ @subsection Connecting VLANs between QEMU instances
+ 
+@@ -1889,7 +1889,8 @@ correctly instructs QEMU to shutdown at the appropriate moment.
+ 
+ @subsubsection Share a directory between Unix and Windows
+ 
+-See @ref{sec_invocation} about the help of the option @option{-smb}.
++See @ref{sec_invocation} about the help of the option
++@option{'-netdev user,smb=...'}.
+ 
+ @subsubsection Windows XP security problem
+ 
+-- 
+1.8.3.1
 
 
