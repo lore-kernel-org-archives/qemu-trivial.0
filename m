@@ -1,31 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aJSPH-000565-65
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jan 2016 15:52:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45259)
+	id 1aJd3Y-0004jO-0Z
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Jan 2016 03:14:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sits@sucs.org>) id 1aJSPF-00052s-1q
-	for qemu-trivial@nongnu.org; Wed, 13 Jan 2016 15:52:37 -0500
+	(envelope-from <kraxel@redhat.com>) id 1aJd3V-0004hD-Vr
+	for qemu-trivial@nongnu.org; Thu, 14 Jan 2016 03:14:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sits@sucs.org>) id 1aJSPE-0002Td-3R
-	for qemu-trivial@nongnu.org; Wed, 13 Jan 2016 15:52:36 -0500
-Received: from silver.sucs.swan.ac.uk ([137.44.10.1]:54608)
+	(envelope-from <kraxel@redhat.com>) id 1aJd3V-0003cs-4x
+	for qemu-trivial@nongnu.org; Thu, 14 Jan 2016 03:14:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42589)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sits@sucs.org>)
-	id 1aJSP9-0002TB-JR; Wed, 13 Jan 2016 15:52:31 -0500
-Received: from sits by silver.sucs.swan.ac.uk with local (Exim 4.80)
-	(envelope-from <sits@sucs.org>)
-	id 1aJSP2-0006n5-89; Wed, 13 Jan 2016 20:52:25 +0000
-From: Sitsofe Wheeler <sitsofe@yahoo.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 13 Jan 2016 20:50:26 +0000
-Message-Id: <1452718226-25001-1-git-send-email-sitsofe@yahoo.com>
-X-Mailer: git-send-email 1.7.10.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 137.44.10.1
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Sitsofe Wheeler <sitsofe@yahoo.com>
-Subject: [Qemu-trivial] [PATCH] docs: Style the command and its options in
-	the synopsis
+	(envelope-from <kraxel@redhat.com>)
+	id 1aJd3M-0003YH-P9; Thu, 14 Jan 2016 03:14:44 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 36D5142E5D8;
+	Thu, 14 Jan 2016 08:14:44 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-51.ams2.redhat.com
+	[10.36.116.51])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0E8Egob017065; Thu, 14 Jan 2016 03:14:43 -0500
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id B03D181DC2; Thu, 14 Jan 2016 09:14:41 +0100 (CET)
+Message-ID: <1452759281.19513.0.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Wolfgang Bumiller <w.bumiller@proxmox.com>
+Date: Thu, 14 Jan 2016 09:14:41 +0100
+In-Reply-To: <1452681360-29239-1-git-send-email-w.bumiller@proxmox.com>
+References: <1452681360-29239-1-git-send-email-w.bumiller@proxmox.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vnc: fix tls-creds error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -37,93 +47,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jan 2016 20:52:38 -0000
+X-List-Received-Date: Thu, 14 Jan 2016 08:14:54 -0000
 
-Signed-off-by: Sitsofe Wheeler <sitsofe@yahoo.com>
----
- fsdev/virtfs-proxy-helper.texi | 2 +-
- qemu-doc.texi                  | 8 ++++----
- qemu-ga.texi                   | 2 +-
- qemu-img.texi                  | 2 +-
- 4 files changed, 7 insertions(+), 7 deletions(-)
+On Mi, 2016-01-13 at 11:36 +0100, Wolfgang Bumiller wrote:
+> The parameter is called 'tls-creds', 'credid' is just the
+> variable name in the code.
 
-diff --git a/fsdev/virtfs-proxy-helper.texi b/fsdev/virtfs-proxy-helper.texi
-index e60e3b9..9a25d7e 100644
---- a/fsdev/virtfs-proxy-helper.texi
-+++ b/fsdev/virtfs-proxy-helper.texi
-@@ -1,6 +1,6 @@
- @example
- @c man begin SYNOPSIS
--usage: virtfs-proxy-helper options
-+@command{virtfs-proxy-helper} @var{options}
- @c man end
- @end example
- 
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 7bc3882..ca4d9de 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -259,7 +259,7 @@ Linux should boot and give you a prompt.
- 
- @example
- @c man begin SYNOPSIS
--usage: qemu-system-i386 [options] [@var{disk_image}]
-+@command{qemu-system-i386} [@var{options}] [@var{disk_image}]
- @c man end
- @end example
- 
-@@ -1406,7 +1406,7 @@ no type is given, the HCI logic corresponds to @code{-bt hci,vlan=0}.
- This USB device implements the USB Transport Layer of HCI.  Example
- usage:
- @example
--qemu-system-i386 [...OPTIONS...] -usbdevice bt:hci,vlan=3 -bt device:keyboard,vlan=3
-+@command{qemu-system-i386} [...@var{OPTIONS}...] @option{-usbdevice} bt:hci,vlan=3 @option{-bt} device:keyboard,vlan=3
- @end example
- @end table
- 
-@@ -2755,7 +2755,7 @@ qemu-i386 /usr/local/qemu-i386/wine/bin/wine \
- @subsection Command line options
- 
- @example
--usage: qemu-i386 [-h] [-d] [-L path] [-s size] [-cpu model] [-g port] [-B offset] [-R size] program [arguments...]
-+@command{qemu-i386} [@option{-h]} [@option{-d]} [@option{-L} @var{path}] [@option{-s} @var{size}] [@option{-cpu} @var{model}] [@option{-g} @var{port}] [@option{-B} @var{offset}] [@option{-R} @var{size}] @var{program} [@var{arguments}...]
- @end example
- 
- @table @option
-@@ -2897,7 +2897,7 @@ qemu-sparc64 /bin/ls
- @subsection Command line options
- 
- @example
--usage: qemu-sparc64 [-h] [-d] [-L path] [-s size] [-bsd type] program [arguments...]
-+@command{qemu-sparc64} [@option{-h]} [@option{-d]} [@option{-L} @var{path}] [@option{-s} @var{size}] [@option{-bsd} @var{type}] @var{program} [@var{arguments}...]
- @end example
- 
- @table @option
-diff --git a/qemu-ga.texi b/qemu-ga.texi
-index 536a9b5..0e53bf6 100644
---- a/qemu-ga.texi
-+++ b/qemu-ga.texi
-@@ -1,6 +1,6 @@
- @example
- @c man begin SYNOPSIS
--usage: qemu-ga [OPTIONS]
-+@command{qemu-ga} [@var{OPTIONS}]
- @c man end
- @end example
- 
-diff --git a/qemu-img.texi b/qemu-img.texi
-index 55c6be3..7163a10 100644
---- a/qemu-img.texi
-+++ b/qemu-img.texi
-@@ -1,6 +1,6 @@
- @example
- @c man begin SYNOPSIS
--usage: qemu-img command [command options]
-+@command{qemu-img} @var{command} [@var{command} @var{options}]
- @c man end
- @end example
- 
--- 
-2.4.3
+Added to patch queue.
+
+thanks,
+  Gerd
 
 
