@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aK7gL-0001e4-1e
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2016 11:57:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44122)
+	id 1aK87X-0004qz-0v
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2016 12:25:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51031)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aK7gI-0001aW-9Y
-	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 11:56:59 -0500
+	(envelope-from <eblake@redhat.com>) id 1aK87U-0004oB-It
+	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 12:25:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aK7gH-0000qi-66
-	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 11:56:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56531)
+	(envelope-from <eblake@redhat.com>) id 1aK87T-0000H1-NS
+	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 12:25:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40746)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1aK7gC-0000pu-M4; Fri, 15 Jan 2016 11:56:52 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 14766C0A1603;
-	Fri, 15 Jan 2016 16:56:52 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0FGuTwY020925
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 15 Jan 2016 11:56:34 -0500
-To: Sitsofe Wheeler <sitsofe@yahoo.com>, qemu-devel@nongnu.org
-References: <1452718226-25001-1-git-send-email-sitsofe@yahoo.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <569924BC.8080704@redhat.com>
-Date: Fri, 15 Jan 2016 17:56:28 +0100
+	(envelope-from <eblake@redhat.com>)
+	id 1aK87P-0000By-FB; Fri, 15 Jan 2016 12:24:59 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 583FEA0792;
+	Fri, 15 Jan 2016 17:24:58 +0000 (UTC)
+Received: from [10.3.113.164] (ovpn-113-164.phx2.redhat.com [10.3.113.164])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0FHOvGv012065; Fri, 15 Jan 2016 12:24:58 -0500
+To: Greg Kurz <gkurz@linux.vnet.ibm.com>, Michael Tokarev <mjt@tls.msk.ru>
+References: <20160111173036.24764.59878.stgit@bahia.huguette.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <56992B69.4090605@redhat.com>
+Date: Fri, 15 Jan 2016 10:24:57 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
+	Thunderbird/38.5.0
 MIME-Version: 1.0
-In-Reply-To: <1452718226-25001-1-git-send-email-sitsofe@yahoo.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+In-Reply-To: <20160111173036.24764.59878.stgit@bahia.huguette.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="AxjxqSfGSDKwBx6QrmUxdAhww0U55L518"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] docs: Style the command and its options
-	in the synopsis
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace: drop trailing empty
+	strings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,98 +50,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2016 16:56:59 -0000
+X-List-Received-Date: Fri, 15 Jan 2016 17:25:05 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--AxjxqSfGSDKwBx6QrmUxdAhww0U55L518
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+On 01/11/2016 10:30 AM, Greg Kurz wrote:
+> Also fix a typo in the virtio_balloon_handle_output() trace while here.=
 
-On 13/01/2016 21:50, Sitsofe Wheeler wrote:
-> Signed-off-by: Sitsofe Wheeler <sitsofe@yahoo.com>
+>=20
+> Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
 > ---
->  fsdev/virtfs-proxy-helper.texi | 2 +-
->  qemu-doc.texi                  | 8 ++++----
->  qemu-ga.texi                   | 2 +-
->  qemu-img.texi                  | 2 +-
->  4 files changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/fsdev/virtfs-proxy-helper.texi b/fsdev/virtfs-proxy-helper.texi
-> index e60e3b9..9a25d7e 100644
-> --- a/fsdev/virtfs-proxy-helper.texi
-> +++ b/fsdev/virtfs-proxy-helper.texi
-> @@ -1,6 +1,6 @@
->  @example
->  @c man begin SYNOPSIS
-> -usage: virtfs-proxy-helper options
-> +@command{virtfs-proxy-helper} @var{options}
->  @c man end
->  @end example
->  
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 7bc3882..ca4d9de 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -259,7 +259,7 @@ Linux should boot and give you a prompt.
->  
->  @example
->  @c man begin SYNOPSIS
-> -usage: qemu-system-i386 [options] [@var{disk_image}]
-> +@command{qemu-system-i386} [@var{options}] [@var{disk_image}]
->  @c man end
->  @end example
->  
-> @@ -1406,7 +1406,7 @@ no type is given, the HCI logic corresponds to @code{-bt hci,vlan=0}.
->  This USB device implements the USB Transport Layer of HCI.  Example
->  usage:
->  @example
-> -qemu-system-i386 [...OPTIONS...] -usbdevice bt:hci,vlan=3 -bt device:keyboard,vlan=3
-> +@command{qemu-system-i386} [...@var{OPTIONS}...] @option{-usbdevice} bt:hci,vlan=3 @option{-bt} device:keyboard,vlan=3
->  @end example
->  @end table
->  
-> @@ -2755,7 +2755,7 @@ qemu-i386 /usr/local/qemu-i386/wine/bin/wine \
->  @subsection Command line options
->  
->  @example
-> -usage: qemu-i386 [-h] [-d] [-L path] [-s size] [-cpu model] [-g port] [-B offset] [-R size] program [arguments...]
-> +@command{qemu-i386} [@option{-h]} [@option{-d]} [@option{-L} @var{path}] [@option{-s} @var{size}] [@option{-cpu} @var{model}] [@option{-g} @var{port}] [@option{-B} @var{offset}] [@option{-R} @var{size}] @var{program} [@var{arguments}...]
->  @end example
->  
->  @table @option
-> @@ -2897,7 +2897,7 @@ qemu-sparc64 /bin/ls
->  @subsection Command line options
->  
->  @example
-> -usage: qemu-sparc64 [-h] [-d] [-L path] [-s size] [-bsd type] program [arguments...]
-> +@command{qemu-sparc64} [@option{-h]} [@option{-d]} [@option{-L} @var{path}] [@option{-s} @var{size}] [@option{-bsd} @var{type}] @var{program} [@var{arguments}...]
->  @end example
->  
->  @table @option
-> diff --git a/qemu-ga.texi b/qemu-ga.texi
-> index 536a9b5..0e53bf6 100644
-> --- a/qemu-ga.texi
-> +++ b/qemu-ga.texi
-> @@ -1,6 +1,6 @@
->  @example
->  @c man begin SYNOPSIS
-> -usage: qemu-ga [OPTIONS]
-> +@command{qemu-ga} [@var{OPTIONS}]
->  @c man end
->  @end example
->  
-> diff --git a/qemu-img.texi b/qemu-img.texi
-> index 55c6be3..7163a10 100644
-> --- a/qemu-img.texi
-> +++ b/qemu-img.texi
-> @@ -1,6 +1,6 @@
->  @example
->  @c man begin SYNOPSIS
-> -usage: qemu-img command [command options]
-> +@command{qemu-img} @var{command} [@var{command} @var{options}]
->  @c man end
->  @end example
->  
-> 
+>  trace-events |   64 +++++++++++++++++++++++++++++---------------------=
+--------
+>  1 file changed, 32 insertions(+), 32 deletions(-)
+>=20
 
-Queued, thanks.
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Paolo
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--AxjxqSfGSDKwBx6QrmUxdAhww0U55L518
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJWmStpAAoJEKeha0olJ0NqmHEH/1svnJF61SlDhnUztUU0La86
+/XHy9SZb3Yp8fcJmW4Y8INsVme/pOee1bJDXbiNWb0U8IGRsVuMp94/UAaUFGi2R
+bZPO2QWLg03b8dMYvFKmTjAJlAyKEQ+O1CS3WNcQrkbIeT+895pQnnzT9i4IHxoo
+x7FKK+wNDVJc2iuLrKKrkJZg2zaC9JjLIZJx4drp3IPUTvTI8DNcN0a+u/W+OdEK
+AnPURe77w2JCa785sghecqDL2jLP8PW8DxTODknNGu3uOHrFpvQXi++VjSE1isWY
+RQ111SZzt6kfCjhmhT6730S4n6zxGG2ZGuMjXJ5e+J4aG4Exrw2pjN4rxTpVQD0=
+=CTal
+-----END PGP SIGNATURE-----
+
+--AxjxqSfGSDKwBx6QrmUxdAhww0U55L518--
 
