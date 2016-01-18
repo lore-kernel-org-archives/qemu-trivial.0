@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aKDqU-0007ab-Iv
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jan 2016 18:31:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36675)
+	id 1aL1Aw-0006oV-G4
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Jan 2016 23:12:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1aKDqS-0007YG-GV
-	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 18:31:53 -0500
+	(envelope-from <raghavanil4m@gmail.com>) id 1aKzU5-0005Rl-NG
+	for qemu-trivial@nongnu.org; Sun, 17 Jan 2016 21:23:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1aKDqR-0002Vi-Gj
-	for qemu-trivial@nongnu.org; Fri, 15 Jan 2016 18:31:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59160)
+	(envelope-from <raghavanil4m@gmail.com>) id 1aKzU4-0005cz-VQ
+	for qemu-trivial@nongnu.org; Sun, 17 Jan 2016 21:23:57 -0500
+Received: from mail-lf0-x22c.google.com ([2a00:1450:4010:c07::22c]:33664)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1aKDqM-0002VP-R9; Fri, 15 Jan 2016 18:31:46 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 7D13C8E221;
-	Fri, 15 Jan 2016 23:31:46 +0000 (UTC)
-Received: from [10.3.113.164] (ovpn-113-164.phx2.redhat.com [10.3.113.164])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0FNVj0Z029983; Fri, 15 Jan 2016 18:31:46 -0500
-To: Christophe Fergeau <cfergeau@redhat.com>, qemu-devel@nongnu.org
-References: <1452605979-744-1-git-send-email-cfergeau@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <56998161.7080207@redhat.com>
-Date: Fri, 15 Jan 2016 16:31:45 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	(envelope-from <raghavanil4m@gmail.com>)
+	id 1aKzU2-0005ad-VJ; Sun, 17 Jan 2016 21:23:55 -0500
+Received: by mail-lf0-x22c.google.com with SMTP id m198so163657087lfm.0;
+	Sun, 17 Jan 2016 18:23:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:date:message-id:subject:from:to:cc:content-type;
+	bh=ZTJ56HmoYvT0LKghDyDJ9YXj5T1A/nK7ylxyePWuJfw=;
+	b=BRpgnVq2Sypklyr9jHLzqmodfCvNnyj1mWjdYFGi2MDJKBXLlQhG/Vo3J3j9n6mmqc
+	26YL4HRAKpekv6sFAXDQBhM6Gx3rKPHPGBLdF9ZQFlPXZ2ZhxLimJKX88GjSKWEzYd/0
+	GLe+KQ8HAnSzIvMAPNMcEqcztZ4afDaCpqDqSExKVmlj+ojSO3K2hj7Gh8dhNQvRC/U1
+	/GvaEirH/ngYF7D15tkTi/Off4RldhJ52ShhAZeoN2axKqN4aLwayOCXbiHhI/a0ta0k
+	maVrhvWrR/j9gq1R/yqbB04QMXAvScU3ErdF3s4qWU30EU4B7ihFMn2BC7GMJbzJGXbn
+	aDeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:date:message-id:subject:from:to:cc
+	:content-type;
+	bh=ZTJ56HmoYvT0LKghDyDJ9YXj5T1A/nK7ylxyePWuJfw=;
+	b=g93EJd7+YDaWexj4e7z/JJ8gTFDdRLxOVDsidWYQnEiHFY5lIOheIw5R3Qy3tLiswE
+	GecWaLEmqt2NkaHii/NamR58Hj0WZl/A1lZKLy1+OhPmhepLXQf3Msbq5KJrqH7VTeOC
+	7isWQ7tsK3KuZuV0C9pgn+MjtHZr6+Nv1XRvGzzpAVlmvkOu8jPZouLHntPkz+VQ5O72
+	WVCc6ViRMXSlQOpuEVhtqnGXLr3B0rTindS3ey5zGJFoYhmGnwJXNKlHlZBuQ01gXf0K
+	3xBJbAFRCqlT1zd0fL9AfoeysUtHqhk3n5urzQy0x/CALB7P0DJKqasOj/QqJRjbEqMG
+	abEg==
+X-Gm-Message-State: ALoCoQmA39brQGRJAYBmvFMQN5/dmnMJq1iB1bg8bUBntK22INP5aJLbtfg4CX9roLox7bfvq0piIDAGTT6j+wpvxbjXtJme0Q==
 MIME-Version: 1.0
-In-Reply-To: <1452605979-744-1-git-send-email-cfergeau@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="StmbkIbe8J19DrWLaOID2Wi297C5cXTaa"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] man: virtfs-proxy-helper:
- Fix 'capbilities' typo
+X-Received: by 10.25.152.199 with SMTP id a190mr7960731lfe.133.1453083833898; 
+	Sun, 17 Jan 2016 18:23:53 -0800 (PST)
+Received: by 10.112.78.4 with HTTP; Sun, 17 Jan 2016 18:23:53 -0800 (PST)
+Date: Sun, 17 Jan 2016 18:23:53 -0800
+Message-ID: <CAKWsRc2MyUByd3tjyZMx_q_3+Oy=D5kUtw7MLU6HP7h9xVAy6A@mail.gmail.com>
+From: Raghavan Santhanam <raghavanil4m@gmail.com>
+To: qemu-stable@nongnu.org, qemu-trivial@nongnu.org, qemu-discuss@nongnu.org
+Content-Type: multipart/alternative; boundary=001a11403466bfa11d0529927133
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::22c
+X-Mailman-Approved-At: Sun, 17 Jan 2016 23:12:17 -0500
+Cc: Raghavan Santhanam <raghavanil4m@gmail.com>
+Subject: [Qemu-trivial] Regarding Intel IGD passthru support for QEMU/KVM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,60 +60,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jan 2016 23:31:53 -0000
+X-List-Received-Date: Mon, 18 Jan 2016 02:23:58 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---StmbkIbe8J19DrWLaOID2Wi297C5cXTaa
-Content-Type: text/plain; charset=utf-8
+--001a11403466bfa11d0529927133
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+Based on the Intel IGD passthru support that has been added to Qemu/Xen
+code base,
+is there any way to use/reuse the same logic currently to have a successful
+passthru of an Intel
+IGD with Qemu/KVM on a Linux host(Ubuntu x86_64) or will that require some
+more
+work in addition to what Xen code based already has for the IGD passthru?
+
+Best,
+Raghavan
+
+--001a11403466bfa11d0529927133
+Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On 01/12/2016 06:39 AM, Christophe Fergeau wrote:
-> Signed-off-by: Christophe Fergeau <cfergeau@redhat.com>
-> ---
->  fsdev/virtfs-proxy-helper.texi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/fsdev/virtfs-proxy-helper.texi b/fsdev/virtfs-proxy-helper=
-=2Etexi
-> index e60e3b9..1b905a0 100644
-> --- a/fsdev/virtfs-proxy-helper.texi
-> +++ b/fsdev/virtfs-proxy-helper.texi
-> @@ -29,7 +29,7 @@ driver sends filesystem request to proxy helper and r=
-eceives the
->  response from it.
-> =20
->  Proxy helper is designed so that it can drop the root privilege with
-> -retaining capbilities needed for doing filesystem operations only.
-> +retaining capabilities needed for doing filesystem operations only.
+<div dir=3D"ltr"><span style=3D"font-size:12.8px">Hi,</span><div style=3D"f=
+ont-size:12.8px"><br></div><div style=3D"font-size:12.8px">Based on the Int=
+el IGD passthru support that has been added to Qemu/Xen code base,</div><di=
+v style=3D"font-size:12.8px">is there any way to use/reuse the same logic c=
+urrently to have a successful passthru of an Intel</div><div style=3D"font-=
+size:12.8px">IGD with Qemu/KVM on a Linux host(Ubuntu x86_64) or will that =
+require some more</div><div style=3D"font-size:12.8px">work in addition to =
+what Xen code based already has for the IGD passthru?</div><div style=3D"fo=
+nt-size:12.8px"><br></div><div style=3D"font-size:12.8px">Best,</div><div s=
+tyle=3D"font-size:12.8px">Raghavan</div><div style=3D"font-size:12.8px"><br=
+></div></div>
 
-Still reads awkwardly; better might be:
-
-The proxy helper is designed so that it can drop root privileges except
-for the capabilities needed for doing filesystem operations.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---StmbkIbe8J19DrWLaOID2Wi297C5cXTaa
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWmYFhAAoJEKeha0olJ0NqYgwH/0CFu7JPRtvYP4udC8LS+PAi
-IoyZETCOSDAw/CgU0pioGNDReFAGpb4SmXJpfqIM7L8PL+gBhWNIFqLb8prggD/E
-VeQS3sWWRtz8VOJYmS9C21AtsLpMfpzrNBb5Hkj7xl+IgUvp0AyykRm0b2MvwY7M
-bTxTdfFVpxPpOYYL1cusAW8vs9o3LQLaKy9QKi3D5X624csuJtuAr4YDtNA4Mxam
-wVS9QSP8488AawzYiVMi8Ae1rq3/N/jyrOwH/ewGb28Fo1VMmq5u38qz2a16QT+L
-TiYfY0PsSp9VTv+ylp2/GZfqG+ErMTvZn1hdM7Eq1QqegRFc0thVM6pYOHg3Kyo=
-=HgnJ
------END PGP SIGNATURE-----
-
---StmbkIbe8J19DrWLaOID2Wi297C5cXTaa--
+--001a11403466bfa11d0529927133--
 
