@@ -1,38 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aL6TE-0004qB-1G
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2016 04:51:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50998)
+	id 1aL9X0-000656-76
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2016 08:07:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cfergeau@redhat.com>) id 1aL6TB-0004m4-Rl
-	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 04:51:30 -0500
+	(envelope-from <armbru@redhat.com>) id 1aL9Wx-000621-Bt
+	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 08:07:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cfergeau@redhat.com>) id 1aL6TB-0003L9-0l
-	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 04:51:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55490)
+	(envelope-from <armbru@redhat.com>) id 1aL9Ww-0003qS-Kw
+	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 08:07:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44419)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cfergeau@redhat.com>)
-	id 1aL6T9-0003KP-3y; Mon, 18 Jan 2016 04:51:27 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id B0E64C0AA570;
-	Mon, 18 Jan 2016 09:51:26 +0000 (UTC)
-Received: from edamame.cdg.redhat.com ([10.41.1.102])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0I9pPjX017075
+	(envelope-from <armbru@redhat.com>)
+	id 1aL9Wr-0003nO-Jt; Mon, 18 Jan 2016 08:07:29 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 50A6CC001273;
+	Mon, 18 Jan 2016 13:07:29 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-72.phx2.redhat.com
+	[10.3.113.72])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0ID7ROG010921
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 18 Jan 2016 04:51:26 -0500
-Received: by edamame.cdg.redhat.com (Postfix, from userid 1000)
-	id ED1B9142BD0; Mon, 18 Jan 2016 10:51:24 +0100 (CET)
-From: Christophe Fergeau <cfergeau@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 18 Jan 2016 10:51:19 +0100
-Message-Id: <1453110679-23401-1-git-send-email-cfergeau@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	verify=NO); Mon, 18 Jan 2016 08:07:28 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 46F9A303F81B; Mon, 18 Jan 2016 14:07:27 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1450433172-1175-1-git-send-email-marcandre.lureau@redhat.com>
+	<56929A02.2080509@msgid.tls.msk.ru>
+Date: Mon, 18 Jan 2016 14:07:27 +0100
+In-Reply-To: <56929A02.2080509@msgid.tls.msk.ru> (Michael Tokarev's message of
+	"Sun, 10 Jan 2016 20:50:58 +0300")
+Message-ID: <87a8o3nii8.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH v2] man: virtfs-proxy-helper: Rework awkward
-	sentence
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -44,38 +52,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2016 09:51:30 -0000
+X-List-Received-Date: Mon, 18 Jan 2016 13:07:36 -0000
 
-There was a 'capbilities' typo in this man page. This commit
-reformulates the sentence the typo was in to make it easier to grasp.
-This is based on a suggestion from Eric Blake.
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-Signed-off-by: Christophe Fergeau <cfergeau@redhat.com>
----
-Changes since v1:
-- rather than just fixing the typo, reformulate the sentence it's in as
-  suggested by Eric.
+> 18.12.2015 13:06, marcandre.lureau@redhat.com wrote:
+>> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> This patch does not have a required Signed-off-By tag, sorry.
 
-
- fsdev/virtfs-proxy-helper.texi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/fsdev/virtfs-proxy-helper.texi b/fsdev/virtfs-proxy-helper.texi
-index e60e3b9..a2f4ecc 100644
---- a/fsdev/virtfs-proxy-helper.texi
-+++ b/fsdev/virtfs-proxy-helper.texi
-@@ -28,8 +28,8 @@ QEMU and proxy helper communicate using this socket. QEMU proxy fs
- driver sends filesystem request to proxy helper and receives the
- response from it.
- 
--Proxy helper is designed so that it can drop the root privilege with
--retaining capbilities needed for doing filesystem operations only.
-+The proxy helper is designed so that it can drop root privileges except
-+for the capabilities needed for doing filesystem operations.
- 
- @end table
- @c man end
--- 
-2.5.0
-
+Marc-Andr=C3=A9, please reply with your S-o-B to unblock this patch.
 
