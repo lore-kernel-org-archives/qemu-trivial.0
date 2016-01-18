@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aL9X0-000656-76
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2016 08:07:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45622)
+	id 1aLDkx-0005Rx-NY
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Jan 2016 12:38:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aL9Wx-000621-Bt
-	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 08:07:36 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aLDku-0005O1-RW
+	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 12:38:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aL9Ww-0003qS-Kw
-	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 08:07:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44419)
+	(envelope-from <mjt@tls.msk.ru>) id 1aLDku-0004cG-4r
+	for qemu-trivial@nongnu.org; Mon, 18 Jan 2016 12:38:16 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:55991)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aL9Wr-0003nO-Jt; Mon, 18 Jan 2016 08:07:29 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 50A6CC001273;
-	Mon, 18 Jan 2016 13:07:29 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-72.phx2.redhat.com
-	[10.3.113.72])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0ID7ROG010921
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 18 Jan 2016 08:07:28 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 46F9A303F81B; Mon, 18 Jan 2016 14:07:27 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1450433172-1175-1-git-send-email-marcandre.lureau@redhat.com>
-	<56929A02.2080509@msgid.tls.msk.ru>
-Date: Mon, 18 Jan 2016 14:07:27 +0100
-In-Reply-To: <56929A02.2080509@msgid.tls.msk.ru> (Michael Tokarev's message of
-	"Sun, 10 Jan 2016 20:50:58 +0300")
-Message-ID: <87a8o3nii8.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1aLDko-0004a7-2Y; Mon, 18 Jan 2016 12:38:10 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id E2F3340EF4;
+	Mon, 18 Jan 2016 20:37:59 +0300 (MSK)
+To: Greg Kurz <gkurz@linux.vnet.ibm.com>
+References: <20160111173036.24764.59878.stgit@bahia.huguette.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <569D22F6.5070104@msgid.tls.msk.ru>
+Date: Mon, 18 Jan 2016 20:37:58 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.5.0
 MIME-Version: 1.0
+In-Reply-To: <20160111173036.24764.59878.stgit@bahia.huguette.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: spelling
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] trace: drop trailing empty strings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,14 +43,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Jan 2016 13:07:36 -0000
+X-List-Received-Date: Mon, 18 Jan 2016 17:38:18 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+11.01.2016 20:30, Greg Kurz wrote:
 
-> 18.12.2015 13:06, marcandre.lureau@redhat.com wrote:
->> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> This patch does not have a required Signed-off-By tag, sorry.
+> -virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s gpa: %"PRIx64""
+> +virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s gpa: %"PRIx64
+...
 
-Marc-Andr=C3=A9, please reply with your S-o-B to unblock this patch.
+I'm not sure what's the value of this.  It's fine either way, no?
+Do we have a rule for trailing empty strings in coding style? :)
+
+Thanks,
+
+/mjt
+
 
