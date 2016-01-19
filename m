@@ -1,45 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aLQot-0007XV-13
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2016 02:35:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54507)
+	id 1aLV5c-0003ad-B5
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2016 07:08:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53478)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aLQor-0007Vg-QR
-	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 02:35:14 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aLV5X-0003Ts-BN
+	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 07:08:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aLQor-0002dz-1H
-	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 02:35:13 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38319)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aLV5S-00087v-Pa
+	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 07:08:43 -0500
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:35837)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aLQom-0002XW-3r; Tue, 19 Jan 2016 02:35:08 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0824C8D3B5;
-	Tue, 19 Jan 2016 07:35:07 +0000 (UTC)
-Received: from blackfin.pond.sub.org ([10.3.113.2])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0J7Z46f001658
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 19 Jan 2016 02:35:06 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 2F7E9303F81B; Tue, 19 Jan 2016 08:35:04 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Greg Kurz <gkurz@linux.vnet.ibm.com>
-References: <20160111173036.24764.59878.stgit@bahia.huguette.org>
-Date: Tue, 19 Jan 2016 08:35:04 +0100
-In-Reply-To: <20160111173036.24764.59878.stgit@bahia.huguette.org> (Greg
-	Kurz's message of "Mon, 11 Jan 2016 18:30:36 +0100")
-Message-ID: <87fuxudntj.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace: drop trailing empty
-	strings
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1aLV5O-00086x-GH; Tue, 19 Jan 2016 07:08:34 -0500
+Received: by mail-wm0-x22a.google.com with SMTP id r129so87361624wmr.0;
+	Tue, 19 Jan 2016 04:08:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=x1rOyX03UmW/fn7rsDT5utUK7p5RSWpIraa9lc/AxyQ=;
+	b=kzmpNL1e37BT3IvXCPVaD8LfYmOtQ5s0E72WnAnMbgzPLu5zcbmFbm4SPCwvgQPVYG
+	dceUjZj3QETkjbrpkHGA5oTgEKyfY4VZPXuw2jpDEOdiVWE4yHJqLZrqSm1DTfhj33+F
+	eOIpDmU0sXT7EHrefCxUBfY5OdlT9osHhfm/QnN/8A5NJNPpZ1GdiNipcBIdCUT1iYbn
+	2zj5m58V2sKEu4JCJx/f621lQ0Jq1wcM1zMD3SA1LCx241HKkkPHJbfOP/aqdD1knHer
+	zRQdvUGn6GY/afVVLKlNkB+4GNCVi/bp86yjG3PZUORgaOERNRJWqgxpC4Qc7VeyJSB5
+	0JEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+	bh=x1rOyX03UmW/fn7rsDT5utUK7p5RSWpIraa9lc/AxyQ=;
+	b=HyAF+Y7/S3SkQZb4TFg288yeEMs8l8k3/OiNoDVUi8BiFzG1j9eLETzoKcBOvYWVW1
+	cA01MAE1v0tuNRPr8bQPqmeqGdL9s2HGrD4LKnaSrv3CXl/t/S2uvoRQ4VaFpH2V7CiA
+	eqjvfITJb9zw0V4zimfGXxbOkdoGJ2f+UBQ4+wp5B3jxcu7PODAY0OMeP3o6Cp9mnOYF
+	lhFi0eA1rPl8M0WydOhanLpkLIPKeMc+oOWSYHnVB/9hQBVD7FC+VlUwWict55D4DnT8
+	wjbndIBOaQgH5k0yeRn9EBAunnIgldaqBUqdx8TJ1Qj5iRtz8IfVmNznhND+yOruWQKX
+	uAuA==
+X-Gm-Message-State: ALoCoQlaQTucFg4le05YR1egNJSJBs9FfwW/uypRyygZpP1IGs6ApNtbrBWqnFPCNeGoE/SPkxzz1OQeD2dtCkTdypb72k+/cA==
+X-Received: by 10.194.110.106 with SMTP id hz10mr29717623wjb.135.1453205313818;
+	Tue, 19 Jan 2016 04:08:33 -0800 (PST)
+Received: from donizetti.lan (94-39-182-117.adsl-ull.clienti.tiscali.it.
+	[94.39.182.117]) by smtp.gmail.com with ESMTPSA id
+	d2sm28257282wjy.16.2016.01.19.04.08.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 19 Jan 2016 04:08:33 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 19 Jan 2016 13:08:28 +0100
+Message-Id: <1453205308-20476-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.5.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22a
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] cpu: cpu_save/cpu_load is no more
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,13 +62,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Jan 2016 07:35:14 -0000
+X-List-Received-Date: Tue, 19 Jan 2016 12:08:46 -0000
 
-Greg Kurz <gkurz@linux.vnet.ibm.com> writes:
+Everything has been converted to vmstate.
 
-> Also fix a typo in the virtio_balloon_handle_output() trace while here.
->
-> Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ exec.c                | 6 ------
+ include/qemu-common.h | 6 ------
+ 2 files changed, 12 deletions(-)
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/exec.c b/exec.c
+index 0d8ca3f..35705a1 100644
+--- a/exec.c
++++ b/exec.c
+@@ -628,12 +628,6 @@ void cpu_exec_init(CPUState *cpu, Error **errp)
+     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+         vmstate_register(NULL, cpu_index, &vmstate_cpu_common, cpu);
+     }
+-#if defined(CPU_SAVE_VERSION) && !defined(CONFIG_USER_ONLY)
+-    register_savevm(NULL, "cpu", cpu_index, CPU_SAVE_VERSION,
+-                    cpu_save, cpu_load, cpu->env_ptr);
+-    assert(cc->vmsd == NULL);
+-    assert(qdev_get_vmsd(DEVICE(cpu)) == NULL);
+-#endif
+     if (cc->vmsd != NULL) {
+         vmstate_register(NULL, cpu_index, cc->vmsd, cpu);
+     }
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 22b010c..f557be7 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -330,12 +330,6 @@ bool tcg_enabled(void);
+ 
+ void cpu_exec_init_all(void);
+ 
+-/* CPU save/load.  */
+-#ifdef CPU_SAVE_VERSION
+-void cpu_save(QEMUFile *f, void *opaque);
+-int cpu_load(QEMUFile *f, void *opaque, int version_id);
+-#endif
+-
+ /* Unblock cpu */
+ void qemu_cpu_kick_self(void);
+ 
+-- 
+2.5.0
+
 
