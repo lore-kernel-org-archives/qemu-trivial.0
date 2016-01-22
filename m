@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aLV5c-0003ad-B5
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Jan 2016 07:08:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53478)
+	id 1aMZtV-0001Ih-LH
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jan 2016 06:28:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1aLV5X-0003Ts-BN
-	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 07:08:46 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aMZtU-0001FP-08
+	for qemu-trivial@nongnu.org; Fri, 22 Jan 2016 06:28:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1aLV5S-00087v-Pa
-	for qemu-trivial@nongnu.org; Tue, 19 Jan 2016 07:08:43 -0500
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:35837)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aMZtT-0005kt-43
+	for qemu-trivial@nongnu.org; Fri, 22 Jan 2016 06:28:43 -0500
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:38836)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1aLV5O-00086x-GH; Tue, 19 Jan 2016 07:08:34 -0500
-Received: by mail-wm0-x22a.google.com with SMTP id r129so87361624wmr.0;
-	Tue, 19 Jan 2016 04:08:34 -0800 (PST)
+	id 1aMZtO-0005ji-PE; Fri, 22 Jan 2016 06:28:38 -0500
+Received: by mail-wm0-x22c.google.com with SMTP id b14so127247844wmb.1;
+	Fri, 22 Jan 2016 03:28:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=sender:from:to:cc:subject:date:message-id;
-	bh=x1rOyX03UmW/fn7rsDT5utUK7p5RSWpIraa9lc/AxyQ=;
-	b=kzmpNL1e37BT3IvXCPVaD8LfYmOtQ5s0E72WnAnMbgzPLu5zcbmFbm4SPCwvgQPVYG
-	dceUjZj3QETkjbrpkHGA5oTgEKyfY4VZPXuw2jpDEOdiVWE4yHJqLZrqSm1DTfhj33+F
-	eOIpDmU0sXT7EHrefCxUBfY5OdlT9osHhfm/QnN/8A5NJNPpZ1GdiNipcBIdCUT1iYbn
-	2zj5m58V2sKEu4JCJx/f621lQ0Jq1wcM1zMD3SA1LCx241HKkkPHJbfOP/aqdD1knHer
-	zRQdvUGn6GY/afVVLKlNkB+4GNCVi/bp86yjG3PZUORgaOERNRJWqgxpC4Qc7VeyJSB5
-	0JEA==
+	bh=ghjk/l9H/Buum5rRjOKnp6yVzYdWGd3pRTqiTNQ7LYU=;
+	b=AmO3+kCcjU4VqDjSN3aKSoUWiXTmUoVKDOmA5NS3xeKDGZAWl7rCBhABrw5E/WDpgl
+	cmWPu2OhGHUrg4yGUCj+FTOwVjzgOTIt9wdIYZql5eA70MCUpK0mcMFqzj1NFqQSzshy
+	jXyca4UHx6XOuxMIcbVX62Fz/orkN7DOPVzky3NGhPTR/i0yNsluyl29wz99a+TflGQ4
+	wB5tou1A9ouHw5OtnuH8H5cXqbqLCqZgy+/YFsJfskqg35qviU5EvQDmx/p/cfCQddle
+	UQ4MhBEWsWmD4OuaLiftfh8nt0XjYuvH1zOAkWcHR5OO3Peo+5MjS616Cy8ndVd8G7hZ
+	mlEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=x1rOyX03UmW/fn7rsDT5utUK7p5RSWpIraa9lc/AxyQ=;
-	b=HyAF+Y7/S3SkQZb4TFg288yeEMs8l8k3/OiNoDVUi8BiFzG1j9eLETzoKcBOvYWVW1
-	cA01MAE1v0tuNRPr8bQPqmeqGdL9s2HGrD4LKnaSrv3CXl/t/S2uvoRQ4VaFpH2V7CiA
-	eqjvfITJb9zw0V4zimfGXxbOkdoGJ2f+UBQ4+wp5B3jxcu7PODAY0OMeP3o6Cp9mnOYF
-	lhFi0eA1rPl8M0WydOhanLpkLIPKeMc+oOWSYHnVB/9hQBVD7FC+VlUwWict55D4DnT8
-	wjbndIBOaQgH5k0yeRn9EBAunnIgldaqBUqdx8TJ1Qj5iRtz8IfVmNznhND+yOruWQKX
-	uAuA==
-X-Gm-Message-State: ALoCoQlaQTucFg4le05YR1egNJSJBs9FfwW/uypRyygZpP1IGs6ApNtbrBWqnFPCNeGoE/SPkxzz1OQeD2dtCkTdypb72k+/cA==
-X-Received: by 10.194.110.106 with SMTP id hz10mr29717623wjb.135.1453205313818;
-	Tue, 19 Jan 2016 04:08:33 -0800 (PST)
-Received: from donizetti.lan (94-39-182-117.adsl-ull.clienti.tiscali.it.
-	[94.39.182.117]) by smtp.gmail.com with ESMTPSA id
-	d2sm28257282wjy.16.2016.01.19.04.08.32
+	bh=ghjk/l9H/Buum5rRjOKnp6yVzYdWGd3pRTqiTNQ7LYU=;
+	b=IU/hvCVOnCHrfMkd9w84T+6ewcKoJE22NzK2+dOtUBeiJUZJVtTv1sh96voA8q9sH0
+	kGtYc5iI7rqOL4KkyzMhyj+Fq7SVarEjlBAl4xPNKEQO5eU+DcxW57SXfJRQTLVKaRe7
+	4FycVVSuvEs33f6aJgWTSQr//7z1ZRgyMPWufFEa0m2j2RFpjNdTlzVehcEWXbTg0mp4
+	rRp0dXq2Afuknjhuyi2IcDWMChp6c/kioVIXVN597tOAjlqP9txNAHM87wj3x/UeT7PA
+	Q1fhNJfXos+2mlx+qRiNUv2Frae3u0xYuosBmSrBnTTcL/fSQR1TV+mkRPmY27NJESa+
+	XIlA==
+X-Gm-Message-State: AG10YOSuO1FNB/3spilJnU5DAVoKy5f16xSmPSIoFFWES7iUuHjJ0vLwEGHfGb+nx4RF1w==
+X-Received: by 10.28.158.194 with SMTP id h185mr3175397wme.48.1453462118121;
+	Fri, 22 Jan 2016 03:28:38 -0800 (PST)
+Received: from donizetti.lan (94-39-152-208.adsl-ull.clienti.tiscali.it.
+	[94.39.152.208])
+	by smtp.gmail.com with ESMTPSA id x10sm5544363wjx.8.2016.01.22.03.28.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Jan 2016 04:08:33 -0800 (PST)
+	Fri, 22 Jan 2016 03:28:37 -0800 (PST)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 19 Jan 2016 13:08:28 +0100
-Message-Id: <1453205308-20476-1-git-send-email-pbonzini@redhat.com>
+Date: Fri, 22 Jan 2016 12:28:33 +0100
+Message-Id: <1453462113-27119-1-git-send-email-pbonzini@redhat.com>
 X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
+X-Received-From: 2a00:1450:400c:c09::22c
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] [PATCH] cpu: cpu_save/cpu_load is no more
+Subject: [Qemu-trivial] [PATCH] qemu-sockets: simplify error handling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,50 +62,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Jan 2016 12:08:46 -0000
+X-List-Received-Date: Fri, 22 Jan 2016 11:28:45 -0000
 
-Everything has been converted to vmstate.
+Just go always through the err label.  (Noticed because Coverity
+complains that peer is always non-NULL in the error cleanup code,
+but removing the "if" is arguably more prone to introducing the
+opposite bug in the future).
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- exec.c                | 6 ------
- include/qemu-common.h | 6 ------
- 2 files changed, 12 deletions(-)
+ util/qemu-sockets.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index 0d8ca3f..35705a1 100644
---- a/exec.c
-+++ b/exec.c
-@@ -628,12 +628,6 @@ void cpu_exec_init(CPUState *cpu, Error **errp)
-     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
-         vmstate_register(NULL, cpu_index, &vmstate_cpu_common, cpu);
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index f455a17..a9fed00 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -464,7 +464,7 @@ static int inet_dgram_saddr(InetSocketAddress *sraddr,
+ 
+     if (err) {
+         error_propagate(errp, err);
+-        return -1;
++        goto err;
      }
--#if defined(CPU_SAVE_VERSION) && !defined(CONFIG_USER_ONLY)
--    register_savevm(NULL, "cpu", cpu_index, CPU_SAVE_VERSION,
--                    cpu_save, cpu_load, cpu->env_ptr);
--    assert(cc->vmsd == NULL);
--    assert(qdev_get_vmsd(DEVICE(cpu)) == NULL);
--#endif
-     if (cc->vmsd != NULL) {
-         vmstate_register(NULL, cpu_index, cc->vmsd, cpu);
+ 
+     addr = sraddr->host;
+@@ -474,13 +474,13 @@ static int inet_dgram_saddr(InetSocketAddress *sraddr,
      }
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index 22b010c..f557be7 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -330,12 +330,6 @@ bool tcg_enabled(void);
+     if (port == NULL || strlen(port) == 0) {
+         error_setg(errp, "remote port not specified");
+-        return -1;
++        goto err;
+     }
  
- void cpu_exec_init_all(void);
+     if (0 != (rc = getaddrinfo(addr, port, &ai, &peer))) {
+         error_setg(errp, "address resolution failed for %s:%s: %s", addr, port,
+                    gai_strerror(rc));
+-	return -1;
++	goto err;
+     }
  
--/* CPU save/load.  */
--#ifdef CPU_SAVE_VERSION
--void cpu_save(QEMUFile *f, void *opaque);
--int cpu_load(QEMUFile *f, void *opaque, int version_id);
--#endif
--
- /* Unblock cpu */
- void qemu_cpu_kick_self(void);
- 
+     /* lookup local addr */
 -- 
 2.5.0
 
