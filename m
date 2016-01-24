@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aMg3r-0000of-NL
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jan 2016 13:03:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52837)
+	id 1aNba1-0002r5-N8
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jan 2016 02:28:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38961)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aMg3p-0000oR-7d
-	for qemu-trivial@nongnu.org; Fri, 22 Jan 2016 13:03:50 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aNLNJ-0006ZP-UE
+	for qemu-trivial@nongnu.org; Sun, 24 Jan 2016 09:10:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aMg3o-0005gY-8O
-	for qemu-trivial@nongnu.org; Fri, 22 Jan 2016 13:03:49 -0500
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:34738)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aNLNG-0002zI-NM
+	for qemu-trivial@nongnu.org; Sun, 24 Jan 2016 09:10:41 -0500
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:33648)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aMg3n-0005gU-RA
-	for qemu-trivial@nongnu.org; Fri, 22 Jan 2016 13:03:48 -0500
-Received: by mail-vk0-x229.google.com with SMTP id e185so45330294vkb.1
-	for <qemu-trivial@nongnu.org>; Fri, 22 Jan 2016 10:03:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=MJT/F5/YM9t6//zGCp81rDqIA3wW2wMdCNwpO6nk3bQ=;
-	b=X1XV0mL6VbyFQPiV/GY3Uwb7Kh9nR8yhH5A+CLBNGCwNOR5gD9UP9R8Ni5ER8WkcG7
-	3Oj0RfQRsyHhbtBkGJ9TVodK4b+jtrwDs5KDzqLTb9mDD8sCnpY4IfJk6u28xa12DR/0
-	RqgwbQlvvEId3Al1j1Okn9hhjkiIptRHdLTgc=
+	(envelope-from <richard.weiyang@gmail.com>) id 1aNLNG-0002zC-FL
+	for qemu-trivial@nongnu.org; Sun, 24 Jan 2016 09:10:38 -0500
+Received: by mail-pa0-x241.google.com with SMTP id pv5so5405398pac.0
+	for <qemu-trivial@nongnu.org>; Sun, 24 Jan 2016 06:10:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=WLI8sCGEGhKgA4Ylr/w4mVlPqFVjomSDaCR8efDZWuQ=;
+	b=VR0bhzrJBfm52MyWNo48UVTqN+QudLGvNI+/hSHivCl6lRkwSNWyhMDIUEBjlxN/wM
+	edUvNEwcRdELo6eV3LCjGQl26XC3NGxdnIty5vywdZ/2zYF1laC3PeZO7U6a6rcUAwkz
+	H3gIO9HL4DlizCxvtvmRdB+LOfgh5Le4A8QlZNR1cpW898hDPpA7zAPMoco57butTq91
+	NbE5f6XC+BnbReOZ03NAQg7IhdH3u5ZHwqpNu/Uy9juzKMPxnfmNkD8bSNz/v22rrngN
+	ip4eb+LuwWQ1qYOA7vU8GV1P4CE06MloeTCA+Hwcgo4Bh2SUrRCa8FwA4IBgvXA++VPR
+	GsZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=MJT/F5/YM9t6//zGCp81rDqIA3wW2wMdCNwpO6nk3bQ=;
-	b=bgSDnCtW4AAB9P/vwlFgQqoIKux/K3GZnrFrFtOx3GiB9BV8uRNtu2sUBPCdNPHNJ1
-	pCAzS3y6dRdJ5RJ8Y47FIFyrD8c8piPWBKbEFMA3IYOgXDm76sRCr9ppPFvDTQz6n/KZ
-	9cGrkWnIcwNiA0cr5tBSLHgmIlChn2slf7vTIYnQX5qAGD3kgqTWwpjBlf7EeM64ywJb
-	cCafKHQZAoCVj+vMC4LGthRCoGRUiGHqOfuG+Gj2VNACqtxeL9JB9cv+VZljGQgdkSDv
-	2/TeQqj/zCM8cj+/NMDa0zVfIq2kQypM3UPEJMNQuDHkTlZ+sICSxFDBEdyQOEm67cRY
-	qDag==
-X-Gm-Message-State: AG10YORWLsffvBj49FOcLeQgKWVyg9g+xO/lz+CHgga/L3rV2+bSaOe5dJ84fSqYbcXVQsiSVNjhA/0LQIGYM1WC
-X-Received: by 10.31.180.145 with SMTP id d139mr2490047vkf.83.1453485827113;
-	Fri, 22 Jan 2016 10:03:47 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 22 Jan 2016 10:03:27 -0800 (PST)
-In-Reply-To: <1453484125-4064-1-git-send-email-berrange@redhat.com>
-References: <1453484125-4064-1-git-send-email-berrange@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Jan 2016 18:03:27 +0000
-Message-ID: <CAFEAcA-VPR+WbdM_R3-t-NQo7DkSpr6k-XiBknfDviy1Qmc2Gg@mail.gmail.com>
-To: "Daniel P. Berrange" <berrange@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=WLI8sCGEGhKgA4Ylr/w4mVlPqFVjomSDaCR8efDZWuQ=;
+	b=Wq+PGFwB5/b3k0dje1MHx78JaTnNqlxdqkJ50bm/m0JjxSmyusi8y+bdue+OPOefW5
+	qXDr1gcxCA5KXyc6ASkUAMm+tlCmIUZa2+jFKdd/YhC77cydg3uN0MSNyYDwsVnfbOjn
+	OpaI+N7HfKpVdw4VSTSHhoe8wUHeNMHhVE/Ma63FCZFKmKmReH3PgRjU0x4GHmiTp7LW
+	GEpAO3C5j4iXoeDDhsZAYrFKOow+uyLWlaMGfFaU8wV7EyWcq2ze7xN5Xcmjjt19GJzi
+	/cU/Ej1uHQQhOxjSvM4fIlPT2sGoSStXl5nDPZFMZj7i7AwrEm+vBnWjzDpJtbbTYB51
+	Nz1A==
+X-Gm-Message-State: AG10YOTgiVFRPdVi867iU1nqjVIer0K3OSgoeubekGx4hPAK+//gkM+ufDG8hJLpxycryw==
+X-Received: by 10.66.182.202 with SMTP id eg10mr18943540pac.50.1453644637168; 
+	Sun, 24 Jan 2016 06:10:37 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	fi16sm22125909pac.12.2016.01.24.06.10.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 24 Jan 2016 06:10:35 -0800 (PST)
+From: Wei Yang <richard.weiyang@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Sun, 24 Jan 2016 14:09:57 +0000
+Message-Id: <1453644598-11250-1-git-send-email-richard.weiyang@gmail.com>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Sean Bruno <sbruno@freebsd.org>
-Subject: Re: [Qemu-trivial] [PATCH] char: fix parameter name / type in BSD
-	codepath
+X-Received-From: 2607:f8b0:400e:c03::241
+X-Mailman-Approved-At: Mon, 25 Jan 2016 02:28:52 -0500
+Cc: amit.shah@redhat.com, Wei Yang <richard.weiyang@gmail.com>,
+	quintela@redhat.com
+Subject: [Qemu-trivial] [PATCH 1/2] rdma: remove check on time_spent when
+	calculating mbs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,45 +63,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jan 2016 18:03:50 -0000
+X-List-Received-Date: Sun, 24 Jan 2016 14:10:42 -0000
 
-You typoed the qemu-devel address...
+Within the if statement, time_spent is assured to be non-zero.
 
-thanks
--- PMM
+This patch just removes the check on time_spent when calculating mbs.
 
-On 22 January 2016 at 17:35, Daniel P. Berrange <berrange@redhat.com> wrote:
-> The BSD impl of qemu_chr_open_pp_fd had mis-declared
-> its parameter type as ChardevBackend instead of
-> ChardevCommon. It had also mistakenly used the variable
-> name 'common' instead of 'backend'.
->
-> Tested-by: Sean Bruno <sbruno@freebsd.org>
-> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
-> ---
->  qemu-char.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/qemu-char.c b/qemu-char.c
-> index e133f4f..aa2e660 100644
-> --- a/qemu-char.c
-> +++ b/qemu-char.c
-> @@ -1835,12 +1835,12 @@ static int pp_ioctl(CharDriverState *chr, int cmd, void *arg)
->  }
->
->  static CharDriverState *qemu_chr_open_pp_fd(int fd,
-> -                                            ChardevBackend *backend,
-> +                                            ChardevCommon *backend,
->                                              Error **errp)
->  {
->      CharDriverState *chr;
->
-> -    chr = qemu_chr_alloc(common, errp);
-> +    chr = qemu_chr_alloc(backend, errp);
->      if (!chr) {
->          return NULL;
->      }
-> --
-> 2.5.0
->
+Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+---
+ migration/migration.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/migration/migration.c b/migration/migration.c
+index c842499..40b87f2 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1677,8 +1677,8 @@ static void *migration_thread(void *opaque)
+             double bandwidth = (double)transferred_bytes / time_spent;
+             max_size = bandwidth * migrate_max_downtime() / 1000000;
+ 
+-            s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
+-                    ((double) time_spent / 1000.0)) / 1000.0 / 1000.0 : -1;
++            s->mbps = (((double) transferred_bytes * 8.0) /
++                    ((double) time_spent / 1000.0)) / 1000.0 / 1000.0;
+ 
+             trace_migrate_transferred(transferred_bytes, time_spent,
+                                       bandwidth, max_size);
+-- 
+2.5.0
+
 
