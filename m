@@ -1,66 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aOnUG-00046L-V3
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jan 2016 09:23:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56504)
+	id 1aOrDG-0003yU-Mf
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jan 2016 13:22:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34473)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aOnUE-00040d-AB
-	for qemu-trivial@nongnu.org; Thu, 28 Jan 2016 09:23:51 -0500
+	(envelope-from <wei@redhat.com>) id 1aOrDA-0003q6-Uq
+	for qemu-trivial@nongnu.org; Thu, 28 Jan 2016 13:22:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aOnUA-00010d-6v
-	for qemu-trivial@nongnu.org; Thu, 28 Jan 2016 09:23:50 -0500
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:35433)
+	(envelope-from <wei@redhat.com>) id 1aOrDA-00065A-2j
+	for qemu-trivial@nongnu.org; Thu, 28 Jan 2016 13:22:28 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39631)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aOnUA-00010L-12
-	for qemu-trivial@nongnu.org; Thu, 28 Jan 2016 09:23:46 -0500
-Received: by mail-wm0-x232.google.com with SMTP id r129so27083733wmr.0
-	for <qemu-trivial@nongnu.org>; Thu, 28 Jan 2016 06:23:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-type:content-transfer-encoding;
-	bh=TKTyFtctTwNAF3y6/UG/6THM1DGSuld++5e/nNVgzcU=;
-	b=ZPX8WpOtTDTvULRZw7akrn+aStfsy7eno83KUVLYH7XlD12hetQsp5FSaLRsycD6lH
-	7qFVrhmMewlQPzOyvjq299ZjPsIsm+xWGjuRAhXIybVkVTZdKcF659jjCGElaWlVOxyN
-	KYx5dZ51ht0jbCeU0PKzQ91bYN4V8ErZXsD10=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-type:content-transfer-encoding;
-	bh=TKTyFtctTwNAF3y6/UG/6THM1DGSuld++5e/nNVgzcU=;
-	b=Q/9CsNnFJzoLpIVYZ2uH6Q0nss7k/E4kVbRcpMOp9SY8ckGY0y1X++Y7rrVlnmjGMJ
-	c7+0qMBarM0+c9tgvc5WoWtHoy8J9qxC8ZqYrYHue/PfomsXIGoB9y47a+MUS0P5fz2R
-	8jKKUIum4ysKeNCmfuwEpO1UZfC2QhAL8wmpuZb+keWsyak8qi/4MVLzsDWYbAhGVB1s
-	3d6mSp2Gbgz0s02VU4hQ2o+s/WjqpvGN57m4xY6XdkrEP59SVrXbyUVYYRmg6CXPDBAb
-	emvHmAxwlg3sUcguJ9ATfhYjzaqNK982Q9JQTq40cUSHiHkqdeZFLkYmzjiP/pakd0HO
-	lezA==
-X-Gm-Message-State: AG10YOS9YJ5pg6gfTttcZGmblxRY49EcIY9dkbYhq0vysHeO/vqIyyumVAlNPtoKyc9s0v/L
-X-Received: by 10.194.95.136 with SMTP id dk8mr3658269wjb.96.1453991025431;
-	Thu, 28 Jan 2016 06:23:45 -0800 (PST)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	x189sm3316279wmg.1.2016.01.28.06.23.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Jan 2016 06:23:41 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id E9C763E07D6;
-	Thu, 28 Jan 2016 14:23:39 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+	(envelope-from <wei@redhat.com>)
+	id 1aOrD4-00061f-RH; Thu, 28 Jan 2016 13:22:22 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id CF1877AEBB;
+	Thu, 28 Jan 2016 18:22:21 +0000 (UTC)
+Received: from apm-mustang-ev3-33.khw.lab.eng.bos.redhat.com
+	(apm-mustang-ev3-33.khw.lab.eng.bos.redhat.com [10.16.184.127])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0SIMK0H021690; Thu, 28 Jan 2016 13:22:21 -0500
+From: Wei Huang <wei@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 28 Jan 2016 14:23:29 +0000
-Message-Id: <1453991009-32736-4-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.7.0
-In-Reply-To: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
-References: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::232
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, stefanha@redhat.com,
-	pbonzini@redhat.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	david@gibson.dropbear.id.au
-Subject: [Qemu-trivial] [PATCH v3 3/3] .travis.yml: enable each of the
-	co-routine backends
+Date: Thu, 28 Jan 2016 13:22:20 -0500
+Message-Id: <1454005340-15682-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, shannon.zhao@linaro.org,
+	zhaoshenglong@huawei.com
+Subject: [Qemu-trivial] [PATCH 1/1] arm: virt: change GPIO trigger interrupt
+	to pulse
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,48 +42,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jan 2016 14:23:51 -0000
+X-List-Received-Date: Thu, 28 Jan 2016 18:22:33 -0000
 
-We disable "make check" for the gthread backend as it is broken.
+When QEMU is hook'ed up with libvirt/virsh, the first ACPI reboot
+request will succeed; but the following shutdown/reboot requests
+fail to trigger VMs to react. Notice that in mach-virt machine
+model GPIO is defined as edge-triggered and active-high in ACPI.
+This patch changes the behavior of powerdown notifier from PULLUP
+to PULSE. It solves the problem described above (i.e. reboot
+continues to work).
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Wei Huang <wei@redhat.com>
 ---
- .travis.yml | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.travis.yml b/.travis.yml
-index 16be23f..021eec7 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -94,6 +94,10 @@ matrix:
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-sparse"
-       compiler: gcc
-+    # Modules
-+    - env: TARGETS=i386-softmmu,x86_64-softmmu
-+           EXTRA_CONFIG="--enable-modules"
-+      compiler: gcc
-     # All the trace backends (apart from dtrace)
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
-            EXTRA_CONFIG="--enable-trace-backends=stderr"
-@@ -111,6 +115,15 @@ matrix:
-            EXTRA_CONFIG="--enable-trace-backends=ust"
-            TEST_CMD=""
-       compiler: gcc
-+    # All the co-routine backends (apart from windows)
-+    # We currently disable "make check"
-     - env: TARGETS=i386-softmmu,x86_64-softmmu
--           EXTRA_CONFIG="--enable-modules"
-+           EXTRA_CONFIG="--with-coroutine=gthread"
-+           TEST_CMD=""
-+      compiler: gcc
-+    - env: TARGETS=i386-softmmu,x86_64-softmmu
-+           EXTRA_CONFIG="--with-coroutine=ucontext"
-+      compiler: gcc
-+    - env: TARGETS=i386-softmmu,x86_64-softmmu
-+           EXTRA_CONFIG="--with-coroutine=sigaltstack"
-       compiler: gcc
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 05f9087..b5468a9 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -546,7 +546,7 @@ static DeviceState *pl061_dev;
+ static void virt_powerdown_req(Notifier *n, void *opaque)
+ {
+     /* use gpio Pin 3 for power button event */
+-    qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
++    qemu_irq_pulse(qdev_get_gpio_in(pl061_dev, 3));
+ }
+ 
+ static Notifier virt_system_powerdown_notifier = {
 -- 
-2.7.0
+1.8.3.1
 
 
