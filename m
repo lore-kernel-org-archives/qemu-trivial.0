@@ -1,44 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPANp-0007B8-7M
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2016 09:50:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60508)
+	id 1aPAOG-0007l7-GC
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jan 2016 09:51:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aPANl-00075H-VS
-	for qemu-trivial@nongnu.org; Fri, 29 Jan 2016 09:50:43 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aPAOE-0007hy-4e
+	for qemu-trivial@nongnu.org; Fri, 29 Jan 2016 09:51:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aPANk-0000nt-TF
-	for qemu-trivial@nongnu.org; Fri, 29 Jan 2016 09:50:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36269)
+	(envelope-from <peter.maydell@linaro.org>) id 1aPAOD-00018A-14
+	for qemu-trivial@nongnu.org; Fri, 29 Jan 2016 09:51:10 -0500
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33504)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aPANg-0000io-GL; Fri, 29 Jan 2016 09:50:36 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 03636C0B66CB;
-	Fri, 29 Jan 2016 14:50:36 +0000 (UTC)
-Received: from [10.10.49.93] (vpn-49-93.rdu2.redhat.com [10.10.49.93])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0TEoYOa000696
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 29 Jan 2016 09:50:35 -0500
-To: Shannon Zhao <shannon.zhao@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aPAOC-000184-Tq
+	for qemu-trivial@nongnu.org; Fri, 29 Jan 2016 09:51:08 -0500
+Received: by mail-vk0-x22d.google.com with SMTP id e64so43335574vkg.0
+	for <qemu-trivial@nongnu.org>; Fri, 29 Jan 2016 06:51:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=Pb1iD1kn9J4ICgCM7kvtgcoG3D08RnfDncLqr+OjBPc=;
+	b=QAgOkh0nKZgU2fYH7US0zrm6Oo+nVnqdBHA9XCzYDsDnvm16zEeO9oiYS6GoeR8NHu
+	e51jX6hBPCKGK2YGhp6KBEWFC7i/DMazfAU0yXMyddR1P3r4bzVr2O/u0CQ9+W/f6DqZ
+	Gb+F9cafLB8A0QqdKGlr868W9fD8DPKSk+4ws=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=Pb1iD1kn9J4ICgCM7kvtgcoG3D08RnfDncLqr+OjBPc=;
+	b=OBN8QciIk/b7cOnId9/KHlNbAeM8fB4WFggnZpS8GJExmYqJo6V2fMFhLJfgBrBDPs
+	bCNqgrwr20a0J1bnP46hVQ1TV0h6LeHSVswe0rN9+QXGJb0R00ppkB03MOjAmxuvlP+Y
+	E/QiNeku4eZOfzav87zZDU5N4cEzgDXAtFnHDXKi2wqRigxZJjcWDGuOScpa/qCHAwpa
+	r1Lj0PSOVUPt8nucmMwCYNZBewfGMeutTT9+oqGVkodQ5a7VmYUhaO9pwxkuJaMTvO9T
+	mbFALZlnl+/zEIg6rjBGC0xiWNCkox3et1IJrLsUhJI6PU2svVeXRk4aRKdbRX00jvIA
+	lRhA==
+X-Gm-Message-State: AG10YOQaPsDcuuHBI+m28matPsl0C7U2TCJSUtumz+ij7a3pHTknvSKQmX8IwnD3Plfi5fm63uQON0VrcXJ4Bap+
+X-Received: by 10.31.141.2 with SMTP id p2mr6217438vkd.37.1454079068460; Fri,
+	29 Jan 2016 06:51:08 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Fri, 29 Jan 2016 06:50:49 -0800 (PST)
+In-Reply-To: <56AB7B48.9020007@linaro.org>
 References: <1454005340-15682-1-git-send-email-wei@redhat.com>
 	<CAM2+HU4Z39LoKjXqMRDQYbozQAi2-tqdo=d8TLrvVrJ6v6HHyQ@mail.gmail.com>
 	<56AB78A6.7070505@redhat.com> <56AB7B48.9020007@linaro.org>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56AB7C3A.2080806@redhat.com>
-Date: Fri, 29 Jan 2016 08:50:34 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <56AB7B48.9020007@linaro.org>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 29 Jan 2016 14:50:49 +0000
+Message-ID: <CAFEAcA9MYCFf-GCTnzHWUkaf6=_QCh=dsceaSg+4j8m3qgucpw@mail.gmail.com>
+To: Shannon Zhao <shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22d
+Cc: Wei Huang <wei@redhat.com>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"zhaoshenglong@huawei.com" <zhaoshenglong@huawei.com>
 Subject: Re: [Qemu-trivial] [PATCH 1/1] arm: virt: change GPIO trigger
@@ -54,84 +65,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jan 2016 14:50:43 -0000
+X-List-Received-Date: Fri, 29 Jan 2016 14:51:11 -0000
 
-
-
-On 01/29/2016 08:46 AM, Shannon Zhao wrote:
->=20
->=20
+On 29 January 2016 at 14:46, Shannon Zhao <shannon.zhao@linaro.org> wrote:
 > On 2016/1/29 22:35, Wei Huang wrote:
->>
->>
 >> On 01/29/2016 04:10 AM, Shannon Zhao wrote:
->>> Hi=EF=BC=8C
->>>
->>> This makes ACPI work well but makes DT not work. The reason is
->>> systemd or
->>> acpid open /dev/input/event0 failed. So the interrupt could be
->>> injected and
->>> could see under /proc/interrupts but guest doesn't have any action. I=
-'ll
+>>> This makes ACPI work well but makes DT not work. The reason is systemd or
+>>> acpid open /dev/input/event0 failed. So the interrupt could be injected
+>>> and
+>>> could see under /proc/interrupts but guest doesn't have any action. I'll
 >>> investigate why it opens failed later.
 >>
->> That is interesting. Could you try it with the following? This reverse=
-s
+>>
+>> That is interesting. Could you try it with the following? This reverses
 >> the order to down-up and worked on ACPI case.
 >>
 > Yeah, that's very weird.
->=20
+>
 >> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0);
 >> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
 >>
 > I'll try this tomorrow. But even if this works, it's still weird.
 
-To reproduce this case, do the following steps using current upstream
-qemu: create vm =3D> reboot vm (succeed) =3D> reboot or shutdown vm (fail=
-).
-Apparently the last interrupt wasn't received correctly.
+I wonder if we should be asserting the GPIO pin in the powerdown-request
+hook and then deasserting it on system reset somewhere...
 
--Wei
-
-
->=20
->> Thanks,
->> -Wei
->>
->>>
->>> 2016=E5=B9=B41=E6=9C=8829=E6=97=A5=E6=98=9F=E6=9C=9F=E4=BA=94=EF=BC=8C=
-Wei Huang <wei@redhat.com> =E5=86=99=E9=81=93=EF=BC=9A
->>>
->>>> When QEMU is hook'ed up with libvirt/virsh, the first ACPI reboot
->>>> request will succeed; but the following shutdown/reboot requests
->>>> fail to trigger VMs to react. Notice that in mach-virt machine
->>>> model GPIO is defined as edge-triggered and active-high in ACPI.
->>>> This patch changes the behavior of powerdown notifier from PULLUP
->>>> to PULSE. It solves the problem described above (i.e. reboot
->>>> continues to work).
->>>>
->>>> Signed-off-by: Wei Huang <wei@redhat.com <javascript:;>>
->>>> ---
->>>>   hw/arm/virt.c | 2 +-
->>>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>>> index 05f9087..b5468a9 100644
->>>> --- a/hw/arm/virt.c
->>>> +++ b/hw/arm/virt.c
->>>> @@ -546,7 +546,7 @@ static DeviceState *pl061_dev;
->>>>   static void virt_powerdown_req(Notifier *n, void *opaque)
->>>>   {
->>>>       /* use gpio Pin 3 for power button event */
->>>> -    qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
->>>> +    qemu_irq_pulse(qdev_get_gpio_in(pl061_dev, 3));
->>>>   }
->>>>
->>>>   static Notifier virt_system_powerdown_notifier =3D {
->>>> --=20
->>>> 1.8.3.1
->>>>
->>>>
->>>
->=20
+thanks
+-- PMM
 
