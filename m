@@ -1,51 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPQkV-0001Q7-Ru
-	for mharc-qemu-trivial@gnu.org; Sat, 30 Jan 2016 03:19:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57872)
+	id 1aPRtV-0000Fm-BP
+	for mharc-qemu-trivial@gnu.org; Sat, 30 Jan 2016 04:32:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aPQkT-0001NN-Cy
-	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 03:19:14 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aPRtT-0000F3-2G
+	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:32:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aPQkS-0007sT-Ep
-	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 03:19:13 -0500
-Received: from szxga02-in.huawei.com ([119.145.14.65]:24857)
+	(envelope-from <mjt@tls.msk.ru>) id 1aPRtP-0007sE-2b
+	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:32:35 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54761)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1aPQkM-0007nC-OL; Sat, 30 Jan 2016 03:19:07 -0500
-Received: from 172.24.1.48 (EHLO szxeml425-hub.china.huawei.com)
-	([172.24.1.48])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DAR76989; Sat, 30 Jan 2016 16:18:55 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.235.1;
-	Sat, 30 Jan 2016 16:18:52 +0800
-Message-ID: <56AC71D8.1090509@huawei.com>
-Date: Sat, 30 Jan 2016 16:18:32 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <mjt@tls.msk.ru>) id 1aPRtO-0007qR-R7
+	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:32:31 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id A69D041CA2;
+	Sat, 30 Jan 2016 12:32:13 +0300 (MSK)
+To: James Nutaro <nutaro@gmail.com>, qemu-trivial@nongnu.org
+References: <CANVkX9HFRVH1n4WpHbZ23EGH6UFtrTCrh2r_CDHMPNtmU3w5_A@mail.gmail.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <56AC831D.2080809@msgid.tls.msk.ru>
+Date: Sat, 30 Jan 2016 12:32:13 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.5.0
 MIME-Version: 1.0
-To: Wei Huang <wei@redhat.com>, Shannon Zhao <shannon.zhao@linaro.org>
-References: <1454005340-15682-1-git-send-email-wei@redhat.com>
-	<CAM2+HU4Z39LoKjXqMRDQYbozQAi2-tqdo=d8TLrvVrJ6v6HHyQ@mail.gmail.com>
-	<56AB78A6.7070505@redhat.com>
-In-Reply-To: <56AB78A6.7070505@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.56AC71F0.0007, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 4e483b9f970a0138d4cf102654284a6d
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] arm: virt: change GPIO trigger
-	interrupt to pulse
+In-Reply-To: <CANVkX9HFRVH1n4WpHbZ23EGH6UFtrTCrh2r_CDHMPNtmU3w5_A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] Added code for synchronzing the internal
+ simulation clock with an external simulation clock
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,70 +43,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Jan 2016 08:19:14 -0000
+X-List-Received-Date: Sat, 30 Jan 2016 09:32:36 -0000
 
-
-
-On 2016/1/29 22:35, Wei Huang wrote:
+13.01.2016 18:35, James Nutaro wrote:
 > 
-> On 01/29/2016 04:10 AM, Shannon Zhao wrote:
->> > Hi，
->> > 
->> > This makes ACPI work well but makes DT not work. The reason is systemd or
->> > acpid open /dev/input/event0 failed.
-To correct, systemd or acpid open /dev/input/event0 successfully but it
-waits for events and when we input "system_powerdown", it doesn't get
-the event.
-
-> So the interrupt could be injected and
->> > could see under /proc/interrupts but guest doesn't have any action. I'll
->> > investigate why it opens failed later.
-> That is interesting. Could you try it with the following? This reverses
-> the order to down-up and worked on ACPI case.
+> This patch adds an interface via UNIX shared memory for pacing the execution of QEMU to match an external simulation clock. The aim is to allow QEMU to be used as a module inside of a larger simulation system.
 > 
-> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0);
-> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
-If we don't input "system_powerdown" during guest booting(before device
-driver load), current QEMU with above codes could work for DT. But if we
-input "system_powerdown" during guest booting, guest has no action when
-we input "system_powerdown" again after guest booting completely.
-I add dc->reset for pl061 but get the same result.
+> The body of the patch is below.
+> 
+[...]
+> ---
+>  Makefile.target          |   2 +-
+>  cpus.c                   |   9 ++++-
+>  include/qemu/thread.h    |   8 ++++
+>  qqq.c                    | 101 +++++++++++++++++++++++++++++++++++++++++++++++
+>  qqq.h                    |  67 +++++++++++++++++++++++++++++++
+>  util/qemu-thread-posix.c |  14 +++++++
+>  vl.c                     |   5 +++
+>  7 files changed, 204 insertions(+), 2 deletions(-)
+>  create mode 100644 qqq.c
+>  create mode 100644 qqq.h
 
-Below is the output of acpid:
+Now I wonder what it has to do with -trivial and why it hasn't
+been sent to -devel.  It's a new subsystem, so to say... :)
 
-./acpid -l -n -d
-input layer /dev/input/event0 (gpio-keys) opened successfully, fd 4
-inotify fd: 5
-inotify wd: 1
-RTNETLINK1 answers: No such file or directory
-acpid: error talking to the kernel via netlink
-netlink opened successfully
-acpid: starting up with netlink and the input layer
-parsing conf file /etc/acpi/events/powerbtn
-acpid: 1 rule loaded
-acpid: waiting for events: event logging is on
-
-It will stuck here even if we input "system_powerdown".
-
-Below is the right output when we input "system_powerdown".
-
-./acpid -l -n -d
-input layer /dev/input/event0 (gpio-keys) opened successfully, fd 4
-inotify fd: 5
-inotify wd: 1
-RTNETLINK1 answers: No such file or directory
-acpid: error talking to the kernel via netlink
-netlink opened successfully
-acpid: starting up with netlink and the input layer
-parsing conf file /etc/acpi/events/powerbtn
-acpid: 1 rule loaded
-acpid: waiting for events: event logging is on
-acpid: received input layer event "button/power PBTN 00000080 00000000"
-acpid: rule from /etc/acpi/events/powerbtn matched
-acpid: executing action "/etc/acpi/powerbtn.sh"
+Please post it to qemu-devel mailinglist at least.
 
 Thanks,
--- 
-Shannon
 
+/mjt
 
