@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPS7W-0007DN-Oq
-	for mharc-qemu-trivial@gnu.org; Sat, 30 Jan 2016 04:47:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41934)
+	id 1aPS9H-0008Rl-7y
+	for mharc-qemu-trivial@gnu.org; Sat, 30 Jan 2016 04:48:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42212)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aPS7U-00079m-Dk
-	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:47:05 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aPS9E-0008Ml-Kt
+	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:48:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aPS7T-0003W5-IQ
-	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:47:04 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:48931)
+	(envelope-from <mjt@tls.msk.ru>) id 1aPS9D-0003x0-TI
+	for qemu-trivial@nongnu.org; Sat, 30 Jan 2016 04:48:52 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56650)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1aPS7P-0003Vp-89; Sat, 30 Jan 2016 04:46:59 -0500
+	id 1aPS99-0003wL-Pn; Sat, 30 Jan 2016 04:48:47 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id A7F5F41CA2;
-	Sat, 30 Jan 2016 12:46:58 +0300 (MSK)
-To: Wei Yang <richard.weiyang@gmail.com>, qemu-trivial@nongnu.org
-References: <1453644598-11250-1-git-send-email-richard.weiyang@gmail.com>
-	<1453644598-11250-2-git-send-email-richard.weiyang@gmail.com>
+	by isrv.corpit.ru (Postfix) with ESMTP id 3CBAE41CA2;
+	Sat, 30 Jan 2016 12:48:47 +0300 (MSK)
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org
+References: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
 Organization: Telecom Service, JSC
-Message-ID: <56AC8692.3010403@msgid.tls.msk.ru>
-Date: Sat, 30 Jan 2016 12:46:58 +0300
+Message-ID: <56AC86FF.2050806@msgid.tls.msk.ru>
+Date: Sat, 30 Jan 2016 12:48:47 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Icedove/38.5.0
 MIME-Version: 1.0
-In-Reply-To: <1453644598-11250-2-git-send-email-richard.weiyang@gmail.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: amit.shah@redhat.com, qemu-devel <qemu-devel@nongnu.org>,
-	quintela@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH 2/2] qmp-spec: fix index in doc
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, david@gibson.dropbear.id.au,
+	stefanha@redhat.com, pbonzini@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Travis updates
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,38 +45,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 30 Jan 2016 09:47:05 -0000
+X-List-Received-Date: Sat, 30 Jan 2016 09:48:53 -0000
 
-24.01.2016 17:09, Wei Yang wrote:
-> The index is duplicated. Just change it.
+28.01.2016 17:23, Alex Benn=C3=A9e wrote:
+> Hi,
+>=20
+> The first patch has been reviewed and signed off. Long term I think
+> it is worth applying but it look like the performance increase it
+> negligible compared to the old style VM builds at the moment. I
+> suspect this may be because the new infrastructure is under more load
+> as more projects have migrated.
 
-It is indeed, with previous being 2.5 as well
-and the next being 3. Applying to -trivial.
+I'm applying all this to -trivial, but without trying to understand
+what it is all about, as I don't know travis.
 
-Please the next time send to qemu-devel@ and Cc to -trivial.
-
-Thanks!
+Thanks,
 
 /mjt
-
-> Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
-> ---
->  docs/qmp-spec.txt | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/qmp-spec.txt b/docs/qmp-spec.txt
-> index 4fb10a5..8e4bc3d 100644
-> --- a/docs/qmp-spec.txt
-> +++ b/docs/qmp-spec.txt
-> @@ -180,7 +180,7 @@ Some events are rate-limited to at most one per second.  If additional
->  dropped, and the last one is delayed.  "Similar" normally means same
->  event type.  See qmp-events.txt for details.
->  
-> -2.5 QGA Synchronization
-> +2.6 QGA Synchronization
->  -----------------------
->  
->  When using QGA, an additional synchronization feature is built into
-> 
-
 
