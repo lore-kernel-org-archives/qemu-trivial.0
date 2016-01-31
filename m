@@ -1,66 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPnbm-00042b-MO
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 03:43:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57931)
+	id 1aPpDf-0006FP-Ef
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 05:26:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44549)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aPnbk-000424-Jl
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:43:45 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1aPpDc-0006BZ-J9
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 05:26:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aPnbh-0003DO-Db
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:43:44 -0500
-Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:36198)
+	(envelope-from <dgibson@ozlabs.org>) id 1aPpDb-00073c-BQ
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 05:26:56 -0500
+Received: from ozlabs.org ([103.22.144.67]:54651)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aPnbh-0003Cq-7h
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:43:41 -0500
-Received: by mail-wm0-x236.google.com with SMTP id p63so31250193wmp.1
-	for <qemu-trivial@nongnu.org>; Sun, 31 Jan 2016 00:43:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-type:content-transfer-encoding;
-	bh=bIRLwkhS7JSqA0Hv74K/40WKU3mu5YL3quSFAIKITe0=;
-	b=elFrMusHvbNBnZ5mxtadU5VlRiIYaULgW2F7si/G+c5byjm4PXQTg4pbwQF5OwfMue
-	5DqiyR/AkwD6sDpg3dpSOiy+opIKJ6eDmlSvlJLhWd89hz3JEFIpwb8AxRsd2gSm/Ah1
-	K6Ya8C9rWL+BhuuNhBQGKinlmZc9cLgTBK+MY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=bIRLwkhS7JSqA0Hv74K/40WKU3mu5YL3quSFAIKITe0=;
-	b=hHo2NZITzJO83br3HLYuA/JZIG7g773M/90KSJMbP3CxJpYZoVMXVqSoH+z4XLvFcc
-	scHjaJvaI7BPRrI8NELFZrnsgcxJ5h0ltYiiBe/5VZyKUSK/CIhY7RULshHtMvFvuq8o
-	tsxzQ4ILtmY/N9zZI/7/jy/DVnMij/sNAb90xg/zoJpJPux26+D0Wz0q56rUnoHovoxa
-	B1Q1asjM6JHy9tk7v2lzh1RzK4ioyNPYf0s466a36aE1qXj8w9viwOqrfunwBhkqKu6S
-	yuTY/5kZZFlyoMl9tqeA9gjg7weO1AvFJxaJizgbjt6ErNA8jWhQBL/l1oK4QwYA+0Xx
-	0FHQ==
-X-Gm-Message-State: AG10YOSARxA7lR56lY+PpGrStrGt3nlUl5UtXzHVINFf2tVN3vMQyfooBJ0N3MpuRMq4H9Yf
-X-Received: by 10.28.179.84 with SMTP id c81mr5998648wmf.30.1454229820170;
-	Sun, 31 Jan 2016 00:43:40 -0800 (PST)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	u69sm5873931wmu.20.2016.01.31.00.43.38
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 31 Jan 2016 00:43:38 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 060063E013A;
-	Sun, 31 Jan 2016 08:43:38 +0000 (GMT)
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1aPpDW-0006yH-Kx; Sun, 31 Jan 2016 05:26:50 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 6F49F140BDE; Sun, 31 Jan 2016 21:26:46 +1100 (AEDT)
+Date: Sun, 31 Jan 2016 21:27:44 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Message-ID: <20160131102744.GV23043@voom.redhat.com>
 References: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
-	<56AC86FF.2050806@msgid.tls.msk.ru>
-User-agent: mu4e 0.9.17; emacs 25.0.50.9
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
-In-reply-to: <56AC86FF.2050806@msgid.tls.msk.ru>
-Date: Sun, 31 Jan 2016 08:43:37 +0000
-Message-ID: <877fiqyw92.fsf@linaro.org>
+	<1453991009-32736-3-git-send-email-alex.bennee@linaro.org>
+	<20160130123502.GQ23043@voom.redhat.com>
+	<878u36ywiq.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="1AtvaQRkIQxkm1Oe"
+Content-Disposition: inline
+In-Reply-To: <878u36ywiq.fsf@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::236
-Cc: kwolf@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	stefanha@redhat.com, pbonzini@redhat.com, david@gibson.dropbear.id.au
-Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Travis updates
+X-Received-From: 103.22.144.67
+Cc: kwolf@redhat.com, pbonzini@redhat.com, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, stefanha@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v3 2/3] .travis.yml: run make check for
+	all matrix targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,36 +45,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Jan 2016 08:43:45 -0000
+X-List-Received-Date: Sun, 31 Jan 2016 10:26:58 -0000
 
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+--1AtvaQRkIQxkm1Oe
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> 28.01.2016 17:23, Alex Bennée wrote:
->> Hi,
->>
->> The first patch has been reviewed and signed off. Long term I think
->> it is worth applying but it look like the performance increase it
->> negligible compared to the old style VM builds at the moment. I
->> suspect this may be because the new infrastructure is under more load
->> as more projects have migrated.
->
-> I'm applying all this to -trivial, but without trying to understand
-> what it is all about, as I don't know travis.
+On Sun, Jan 31, 2016 at 08:37:49AM +0000, Alex Benn=E9e wrote:
+>=20
+> David Gibson <david@gibson.dropbear.id.au> writes:
+>=20
+> > On Thu, Jan 28, 2016 at 02:23:28PM +0000, Alex Benn=E9e wrote:
+> >> We only ran make check once before it used to be an unreliable target.
+> >> It was only a stop gap measure and we should be able to revert it now.
+> >> This also stops us needing a large all-MMU build.
+> >>
+> >> We disable "make check" for a couple of the extra config targets which
+> >> are currently broken.
+> >>
+> >> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
+> >
+> > So, in general I like the idea of running make check more widely.
+> >
+> > However.. I was wondering - what's the rationale for having separate
+> > matrix builds for each target (or small group) rather than just doing
+> > one build with all the targets?
+>=20
+> Each individual part of the matrix can be run in parallel with the
+> others so it makes sense to keep the build component small (as each
+> softmmu target rebuilds a significant chunk of the build).
 
-Maybe we should hold off for now until the later ones have been reviewed
-(David has some comments on 2/3). I guess it was really a question of if
-trivial is the right tree for these patches to go upstream.
+It does rebuild a significant chunk, but there's a significant chunk
+that isn't rebuilt as well.  When I tried this I found a recombined
+build marginally decreases the elapsed time and significantly (maybe
+30-40%) reduced the total time.  Given the load the travis system is
+under, it seems to me that we should try to keep our total demand on
+its resources down when it doens't significantly lower our coverage.
 
-Maybe what's really needed is a build and test automation tree (and
-associated maintainer)? Peter any comments?
+> Having said that there is a fair amount of repetition as we are
+> repeating all the generic qtests each time just so we can run the extra
+> ${TARGET}-qtest binaries.
 
->
-> Thanks,
->
-> /mjt
+That too.
 
+> Travis does has an option for using ccache so it might be worth
+> experimenting with that to see if things are improved.
 
---
-Alex Bennée
+That does sound like something worth looking at.
+
+One thing that does annoy me about travis is that it will do a full
+rebuild if you have two branches on exactly the same commit, or if you
+revert a branch to an earlier commit which was built previously.
+
+> > I can't see any obvious benefit to splitting the build that way, but
+> > it does increase the total build time significantly - and will do so
+> > rather more so with make check added.
+>=20
+> Elapsed and total are the ones to look at:
+>=20
+> https://travis-ci.org/stsquad/qemu/builds/105401126
+>=20
+> vs
+>=20
+> https://travis-ci.org/qemu/qemu/builds/105711606
+>=20
+> However it looks like Travis are having scaling growing pains because
+> there "old style" VM approach is running a lot faster than it used
+> to.
+
+Not terribly surprising TBH.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--1AtvaQRkIQxkm1Oe
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWreGgAAoJEGw4ysog2bOSwoAQAJSkd/wwSAUd1JXTdXlmhiWt
+3SkUxopU0Dj3q/2qjdVnh3Z2fl9DscBULbTy408VKFp6Cd7vtUH5ZXFuBUfXwbRf
+AuqTRAphlnVVao6tYqmvnIKZB8PVDXS6EqV4h4Y7ybUrDOD+t6imGbwRgPAK63dm
+C37hibUgbAGLujeV5WM9Hw1byt46xfqbaFPTZuXx3QqEOOUs9DGK2vzmLPbhVDOb
+2waBEiAx2I+12lMiv890Tr/+u/Ss4hlZ7WmMvg6VVjZfnAgstIlgfT+2qsedMBuu
+kW25gdbMeU5i2rWAfhhyyTXu2APhLmvHTiTiIl4MT4SpSlIWY1BwaAC+agfFjGBq
+ahavWN/FupqOd+6qtEv2Ja5fFt6LkCiVNP1rs/r+uLPLpJY2Zi8qkoXNmyqft6Gm
+5Z1X3lwW3ONsr90pTnsCXzoZHbNjJwbGrrC6/Aw8ZVBqvSJIhDVQz5WYxupXxwxf
+Syq8yLAv+Wf93uhq0Q0FtIwYLMKkBv4ac88RaaubMhRfYVpcJxSLmYvcGSd3NHcv
+7xCVLyeshyDH1Sa4b8uA+1nH9F7xpw49tp67krBVn4Erijbcba6E0PuKoD/jnMZn
+4c6w1xWgQ/1v0PEt+DbO0muS1889YGm2bM36dKyMzeTgCzwE1ymCrfvmpNlSUXXP
+ZZ7K9DB35pNSej141OBN
+=mNKf
+-----END PGP SIGNATURE-----
+
+--1AtvaQRkIQxkm1Oe--
 
