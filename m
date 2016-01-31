@@ -1,33 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPl1E-00070P-2v
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 00:57:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33860)
+	id 1aPnWB-0002N5-Io
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 03:37:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1aPl1B-0006wg-9E
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 00:57:50 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1aPnW8-0002JX-Ex
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:37:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1aPl1A-0003rK-0s
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 00:57:49 -0500
-Received: from ozlabs.org ([103.22.144.67]:36663)
+	(envelope-from <alex.bennee@linaro.org>) id 1aPnW5-00022M-7i
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:37:56 -0500
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:34642)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1aPl19-0003r5-N2
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 00:57:47 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id C891C140BDE; Sun, 31 Jan 2016 16:57:41 +1100 (AEDT)
-Date: Sat, 30 Jan 2016 23:35:02 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Message-ID: <20160130123502.GQ23043@voom.redhat.com>
+	(envelope-from <alex.bennee@linaro.org>) id 1aPnW4-000229-Ry
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 03:37:53 -0500
+Received: by mail-wm0-x235.google.com with SMTP id 128so32400782wmz.1
+	for <qemu-trivial@nongnu.org>; Sun, 31 Jan 2016 00:37:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-type:content-transfer-encoding;
+	bh=D31Z3kRYTqiJMuU93/iitpfL8LOomfOPI+JPfQnK8bQ=;
+	b=epTxwuK1Dk++pvXbel+Bvfi2vzK+BRJgRxpFkDHKtZgT75xboqoZUtGFQMlfwP2llA
+	jHshfBv03JWWZG60Le9X8DN3hfSYg/NgPHDxL8wFziUAA90BX1NGIOPX2CVqZndJ47Gi
+	4YfhrH0ISmSWU0keNYPrnUOOd+SIeqDqcLYMU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-type
+	:content-transfer-encoding;
+	bh=D31Z3kRYTqiJMuU93/iitpfL8LOomfOPI+JPfQnK8bQ=;
+	b=hP8G2SiMRBvdchzUfsmTjOuKoG9LqiFLLKeCiuJaXFuf6fLbrICwiWhrrW79ydUNzR
+	Dfulx+Ihpx/qd37Yy/UcAO39UQ2fqawhELQUENKxh1oFdd+2ZJfypFMfqqiOf9XiNt2+
+	wW211A48isFvYAjwlplOSYt7YPV3O+bEzUqElLECfv7PRy8/n9yeMBpzGob/1ncVXpcP
+	lf5SMt9QohT/rx8rTDu21c0TR5ZK2T8GcBvBTtCJKxirSNwTtcXzXJBv3fr6x06CgPnV
+	7nvzWzMg+iCa8t/XCim8QYZdjrWSAYSX+JMIKMgD0fVhZJja7ZHdFmS6x8qoMXZ43tnQ
+	W+qw==
+X-Gm-Message-State: AG10YORY+Hs3dt3ZzqYXgKAV27BT2XtyegtAyYZ2KXfVjBuR1Yqt9wJ1SMZ8cpY3Pkns8WYf
+X-Received: by 10.28.45.73 with SMTP id t70mr5419445wmt.31.1454229470951;
+	Sun, 31 Jan 2016 00:37:50 -0800 (PST)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	u191sm5868101wmd.4.2016.01.31.00.37.49
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 31 Jan 2016 00:37:49 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 65D5D3E013A;
+	Sun, 31 Jan 2016 08:37:49 +0000 (GMT)
 References: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
 	<1453991009-32736-3-git-send-email-alex.bennee@linaro.org>
+	<20160130123502.GQ23043@voom.redhat.com>
+User-agent: mu4e 0.9.17; emacs 25.0.50.9
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: David Gibson <david@gibson.dropbear.id.au>
+In-reply-to: <20160130123502.GQ23043@voom.redhat.com>
+Date: Sun, 31 Jan 2016 08:37:49 +0000
+Message-ID: <878u36ywiq.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="aNvCJ41Feu8IgPyB"
-Content-Disposition: inline
-In-Reply-To: <1453991009-32736-3-git-send-email-alex.bennee@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
+X-Received-From: 2a00:1450:400c:c09::235
 Cc: kwolf@redhat.com, pbonzini@redhat.com, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org, stefanha@redhat.com
 Subject: Re: [Qemu-trivial] [PATCH v3 2/3] .travis.yml: run make check for
@@ -43,121 +73,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Jan 2016 05:57:50 -0000
+X-List-Received-Date: Sun, 31 Jan 2016 08:37:58 -0000
 
 
---aNvCJ41Feu8IgPyB
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+David Gibson <david@gibson.dropbear.id.au> writes:
 
-On Thu, Jan 28, 2016 at 02:23:28PM +0000, Alex Benn=E9e wrote:
-> We only ran make check once before it used to be an unreliable target.
-> It was only a stop gap measure and we should be able to revert it now.
-> This also stops us needing a large all-MMU build.
->=20
-> We disable "make check" for a couple of the extra config targets which
-> are currently broken.
->=20
-> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
+> On Thu, Jan 28, 2016 at 02:23:28PM +0000, Alex Bennée wrote:
+>> We only ran make check once before it used to be an unreliable target.
+>> It was only a stop gap measure and we should be able to revert it now.
+>> This also stops us needing a large all-MMU build.
+>>
+>> We disable "make check" for a couple of the extra config targets which
+>> are currently broken.
+>>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>
+> So, in general I like the idea of running make check more widely.
+>
+> However.. I was wondering - what's the rationale for having separate
+> matrix builds for each target (or small group) rather than just doing
+> one build with all the targets?
 
-So, in general I like the idea of running make check more widely.
+Each individual part of the matrix can be run in parallel with the
+others so it makes sense to keep the build component small (as each
+softmmu target rebuilds a significant chunk of the build).
 
-However.. I was wondering - what's the rationale for having separate
-matrix builds for each target (or small group) rather than just doing
-one build with all the targets?
+Having said that there is a fair amount of repetition as we are
+repeating all the generic qtests each time just so we can run the extra
+${TARGET}-qtest binaries.
 
-I can't see any obvious benefit to splitting the build that way, but
-it does increase the total build time significantly - and will do so
-rather more so with make check added.
+Travis does has an option for using ccache so it might be worth
+experimenting with that to see if things are improved.
 
-> ---
->  .travis.yml | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
->=20
-> diff --git a/.travis.yml b/.travis.yml
-> index 4a0c23a..16be23f 100644
-> --- a/.travis.yml
-> +++ b/.travis.yml
-> @@ -40,7 +40,7 @@ notifications:
->      on_failure: always
->  env:
->    global:
-> -    - TEST_CMD=3D""
-> +    - TEST_CMD=3D"make check"
->      - EXTRA_CONFIG=3D""
->    matrix:
->      # Group major targets together with their linux-user counterparts
-> @@ -73,17 +73,14 @@ script:
->  matrix:
->    # We manually include a number of additional build for non-standard bi=
-ts
->    include:
-> -    # Make check target (we only do this once)
-> -    - env:
-> -        - TARGETS=3Dalpha-softmmu,arm-softmmu,aarch64-softmmu,cris-softm=
-mu,i386-softmmu,x86_64-softmmu,m68k-softmmu,microblaze-softmmu,microblazeel=
--softmmu,mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu,or32-s=
-oftmmu,ppc-softmmu,ppc64-softmmu,ppcemb-softmmu,s390x-softmmu,sh4-softmmu,s=
-h4eb-softmmu,sparc-softmmu,sparc64-softmmu,unicore32-softmmu,lm32-softmmu,m=
-oxie-softmmu,tricore-softmmu,xtensa-softmmu,xtensaeb-softmmu
-> -          TEST_CMD=3D"make check"
-> -      compiler: gcc
->      # Debug related options
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
->             EXTRA_CONFIG=3D"--enable-debug"
->        compiler: gcc
-> +    # We currently disable "make check"
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
->             EXTRA_CONFIG=3D"--enable-debug --enable-tcg-interpreter"
-> +           TEST_CMD=3D""
->        compiler: gcc
->      # Disable a few of the optional features
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
-> @@ -104,11 +101,15 @@ matrix:
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
->             EXTRA_CONFIG=3D"--enable-trace-backends=3Dsimple"
->        compiler: gcc
-> +    # We currently disable "make check"
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
->             EXTRA_CONFIG=3D"--enable-trace-backends=3Dftrace"
-> +           TEST_CMD=3D""
->        compiler: gcc
-> +    # We currently disable "make check"
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
-> -          EXTRA_CONFIG=3D"--enable-trace-backends=3Dust"
-> +           EXTRA_CONFIG=3D"--enable-trace-backends=3Dust"
-> +           TEST_CMD=3D""
->        compiler: gcc
->      - env: TARGETS=3Di386-softmmu,x86_64-softmmu
->             EXTRA_CONFIG=3D"--enable-modules"
+> I can't see any obvious benefit to splitting the build that way, but
+> it does increase the total build time significantly - and will do so
+> rather more so with make check added.
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Elapsed and total are the ones to look at:
 
---aNvCJ41Feu8IgPyB
-Content-Type: application/pgp-signature; name="signature.asc"
+https://travis-ci.org/stsquad/qemu/builds/105401126
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
+vs
 
-iQIcBAEBAgAGBQJWrK32AAoJEGw4ysog2bOST4cP/R40pMHbg34PaI8Yfiwu2L6Z
-D/or20KJqq+PSc7Up/SUfljE20v3JZNjVSvjADCaiq3Ap23Y84ufx7nnq6rH4yev
-yW8DEa1dDCB0Xph/CqevRvrAHvk3JLW/fjr75MCF2ks6Zxgfco5xxDibCKAQ1Uj1
-yV0YSGqTq+sKH/yAIhg9YRjLnlKXZUO/vofZ2mIDmAV7ZR6XSraBm3T8tu+ANxG/
-0JjcVNQUDb79Q+ziHux+3C76nk94HoMYXuP6sm+IKC8pZGR603XPbG//YsMvur1a
-P+IYZ8ifMfFxqxT13bMnzUWYtZe7E48FhYrdBLlTNIUCTSqC6zMZJCYOj4mRNEQK
-UBsF8kDAz1tDY/R3EMFDiYABXBdRXiE9ILzDWCXdN+xvH1PomEb/6FlIZ5RfVF7r
-8UFRe5n7Ul/RAspllGSe1FhcgHki0oGIysuw1whCtnY5wHqycsxZNc451akGHndG
-NCzJ/aiyYgFDZSVgk8Ct5LJKumLfsBFX5A3fKUThfFrmfVvd2UCsqHYARCJxLGCj
-3ly65j+4HqlfhPC629UYGlXn19wsWAOlIzCuab5TBuxXCf0E/IjJfOOEW6T5xQrk
-mqeanNuZQ8L7dakAVCvelWw3MEMtci4eI8DK+fkcmB19uli4REg/XWVIF/OcMMWE
-LNqutTI38pxrxk6gC1Wg
-=f+vR
------END PGP SIGNATURE-----
+https://travis-ci.org/qemu/qemu/builds/105711606
 
---aNvCJ41Feu8IgPyB--
+However it looks like Travis are having scaling growing pains because
+there "old style" VM approach is running a lot faster than it used to.
+
+>
+>> ---
+>>  .travis.yml | 15 ++++++++-------
+>>  1 file changed, 8 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/.travis.yml b/.travis.yml
+>> index 4a0c23a..16be23f 100644
+>> --- a/.travis.yml
+>> +++ b/.travis.yml
+>> @@ -40,7 +40,7 @@ notifications:
+>>      on_failure: always
+>>  env:
+>>    global:
+>> -    - TEST_CMD=""
+>> +    - TEST_CMD="make check"
+>>      - EXTRA_CONFIG=""
+>>    matrix:
+>>      # Group major targets together with their linux-user counterparts
+>> @@ -73,17 +73,14 @@ script:
+>>  matrix:
+>>    # We manually include a number of additional build for non-standard bits
+>>    include:
+>> -    # Make check target (we only do this once)
+>> -    - env:
+>> -        - TARGETS=alpha-softmmu,arm-softmmu,aarch64-softmmu,cris-softmmu,i386-softmmu,x86_64-softmmu,m68k-softmmu,microblaze-softmmu,microblazeel-softmmu,mips-softmmu,mips64-softmmu,mips64el-softmmu,mipsel-softmmu,or32-softmmu,ppc-softmmu,ppc64-softmmu,ppcemb-softmmu,s390x-softmmu,sh4-softmmu,sh4eb-softmmu,sparc-softmmu,sparc64-softmmu,unicore32-softmmu,lm32-softmmu,moxie-softmmu,tricore-softmmu,xtensa-softmmu,xtensaeb-softmmu
+>> -          TEST_CMD="make check"
+>> -      compiler: gcc
+>>      # Debug related options
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>>             EXTRA_CONFIG="--enable-debug"
+>>        compiler: gcc
+>> +    # We currently disable "make check"
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>>             EXTRA_CONFIG="--enable-debug --enable-tcg-interpreter"
+>> +           TEST_CMD=""
+>>        compiler: gcc
+>>      # Disable a few of the optional features
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>> @@ -104,11 +101,15 @@ matrix:
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>>             EXTRA_CONFIG="--enable-trace-backends=simple"
+>>        compiler: gcc
+>> +    # We currently disable "make check"
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>>             EXTRA_CONFIG="--enable-trace-backends=ftrace"
+>> +           TEST_CMD=""
+>>        compiler: gcc
+>> +    # We currently disable "make check"
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>> -          EXTRA_CONFIG="--enable-trace-backends=ust"
+>> +           EXTRA_CONFIG="--enable-trace-backends=ust"
+>> +           TEST_CMD=""
+>>        compiler: gcc
+>>      - env: TARGETS=i386-softmmu,x86_64-softmmu
+>>             EXTRA_CONFIG="--enable-modules"
+
+
+--
+Alex Bennée
 
