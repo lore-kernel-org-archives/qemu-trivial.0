@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aPqlJ-0007J0-Kd
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 07:05:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33923)
+	id 1aPs0N-00088i-Bt
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Jan 2016 08:25:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aPqlG-0007IO-V3
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 07:05:47 -0500
+	(envelope-from <sitsofe@yahoo.com>) id 1aPs0K-00084H-0A
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 08:25:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aPqlG-0002z3-7X
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 07:05:46 -0500
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:35198)
+	(envelope-from <sitsofe@yahoo.com>) id 1aPs0G-0002z3-St
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 08:25:23 -0500
+Received: from nm3-vm8.bullet.mail.gq1.yahoo.com ([98.136.218.151]:56217)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aPqlG-0002yk-3N
-	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 07:05:46 -0500
-Received: by mail-vk0-x230.google.com with SMTP id e6so63321442vkh.2
-	for <qemu-trivial@nongnu.org>; Sun, 31 Jan 2016 04:05:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type:content-transfer-encoding;
-	bh=eP9lja9g4QbHG50cL1w0EPIrDYWWX54WA+YLG0Dnslo=;
-	b=RBVdPvJ14+yxZxjooNB9/FpX+ti9j18Vwr8VquqZHxXyM20/VxQEFZrWzd4c2sbhD9
-	7arThbpFC0gtxoVTrELeLB0a9DtYW5QItDlvjGAjV+u7CL9fFmXDFtnnOcJhjHJOKrB8
-	DuHV2mHJaFXdfO0FmuNgLqvBEHshuYWTESDCU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type:content-transfer-encoding;
-	bh=eP9lja9g4QbHG50cL1w0EPIrDYWWX54WA+YLG0Dnslo=;
-	b=AeWdO6jd5sxXPJjOKNOxjowBo91Rc84zJ85QpNSBO062oiq30E3Y+D4PS27HWQG0jv
-	PPYOmtSXC4sC1ImDXG8wBM3x5FrsIo9MfkbTE+oOxiUQQqgVMlOzKGxQz54G7cnzv5Hk
-	SFuXMoZt8Y9r127WLcH6jxFkIJn4/jsGCILxu5u2gF9OFAFqLQ2AobOf6bgVjxHPqB++
-	oUorWxTS59S0XhO27L8YRLzCB3JI4iawbcxusY8u2bQxN/pxmEoAbByx6t7Y4JG4dnVW
-	vQuZjGk5EbD5wBNg/pm5eoT5FRqbU+G2xnWvFh44B/2GyU5NxRp1fpBD0AapOh653XBa
-	Q3cw==
-X-Gm-Message-State: AG10YOQ4/Tr6h7CPGoyzDy+X7SWY5L0xLnzKlWHURFHY+5pLCkhrimd2VFieuC0tc7UfaJmL76WvER11YhOOuYZP
-X-Received: by 10.31.52.147 with SMTP id b141mr12464192vka.82.1454241944466;
-	Sun, 31 Jan 2016 04:05:44 -0800 (PST)
+	(envelope-from <sitsofe@yahoo.com>) id 1aPs0G-0002yp-LJ
+	for qemu-trivial@nongnu.org; Sun, 31 Jan 2016 08:25:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+	t=1454246719; bh=1aZe6GynDvdml6l9xGfugYp2yXbU/4n7+ZtHGC+tFpU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From:Subject;
+	b=XlFhrkLqXQA/+SmC/o+4woS8duWDpAC8Jr0vk1B8AvppFj+Ln3kU2mj+6K+ToV5DpNgoowpQe1ZWmH1pOXof3NCPP+QJg7kaa0oxMZ+B332RlbOvWywNrOl6zttLZpIISSjCzVqnQG0efgserPjGU9RfbTsk9yfMSjy4Qr6TocU7rWc2J2Jo9ulmSFtFnf68jmSFDI+GmS+pBWyFL6VXkqquFkshJtcvIIFRuSpb+clMhBFMc++9yA64rXcJsvYE1UIjjnhcfXMubM9v7UlotSyl0asMl6cAw8Egd1h56PJL0oPwYDGoF1/wbCKTLMPP9BOgqw7MXJkIE6iBtpq79Q==
+Received: from [216.39.60.183] by nm3.bullet.mail.gq1.yahoo.com with NNFMP;
+	31 Jan 2016 13:25:19 -0000
+Received: from [208.71.42.190] by tm19.bullet.mail.gq1.yahoo.com with NNFMP;
+	31 Jan 2016 13:25:19 -0000
+Received: from [127.0.0.1] by smtp201.mail.gq1.yahoo.com with NNFMP;
+	31 Jan 2016 13:25:19 -0000
+X-Yahoo-Newman-Id: 33458.34146.bm@smtp201.mail.gq1.yahoo.com
+X-Yahoo-Newman-Property: ymail-3
+X-YMail-OSG: XExWRtYVM1mGSLvkj0DEnUpdiTOYaQeSj8mE66VndxwSXnN
+	6Rpn14MxG7NnVhlbPviF6kMeMLvXwel47cjRPgscz2jM0UufWSHVqbv0eHWQ
+	2JHqOk90R3xQb6CuvABGK4n2.9IK3.V4FJih0ZfG91.bp4jPJv9iOTxoPO2v
+	JsRAMWtYZKTFgI1wnzfc05hHQzX7PLRDQSft6nNM7ScU8ulE.5fJaCdAIkFU
+	s_e0lSnQaj1GgOfELRo9Vn1d2mx_knJf2Xj05b9Zst0f82ahI4WDIYO3zuk5
+	f3RKSHO9I9PSfSXNJYobrrPSwBZhfpDQfTMINRAdcUAQZmTDHHjtxwA8CZXh
+	zdqlvP.aU4Nc2WuZeFXfVFnW6ii2BMIGc8mFPO1cCP43g1qlUr7BxowAhjna
+	tCOaj7UsvZ41ZiPn5J5COkbvd.gfrqVgxmepxhE_4o7LooaUdM60esMe9JDi
+	lnw8yoYEcPREJhAlyham.B27GOCRQLStQH1T5BJtu.0hRivcOdGwncXbmZOB
+	CM9LwTfQoLDZ7iuT1OMRZTC6QTxVq8cZbUexZsSu8uA--
+X-Yahoo-SMTP: mEA9emqswBDufi8V3X8MBXZonFM-
+Date: Sun, 31 Jan 2016 13:25:09 +0000
+From: Sitsofe Wheeler <sitsofe@yahoo.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20160131132459.GA26489@sucs.org>
+References: <1451979212-25479-1-git-send-email-sitsofe@yahoo.com>
+	<568E5D29.4000805@redhat.com>
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Sun, 31 Jan 2016 04:05:24 -0800 (PST)
-In-Reply-To: <877fiqyw92.fsf@linaro.org>
-References: <1453991009-32736-1-git-send-email-alex.bennee@linaro.org>
-	<56AC86FF.2050806@msgid.tls.msk.ru> <877fiqyw92.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 31 Jan 2016 12:05:24 +0000
-Message-ID: <CAFEAcA8T0YDsyN9k_LfHzFyd-8UPj61uL8DbJGvvUnmyQ7Mfww@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Cc: Kevin Wolf <kwolf@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Travis updates
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <568E5D29.4000805@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 98.136.218.151
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH v2 0/3] qemu-nbd.texi formatting,
+ grammar and completeness fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,15 +63,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Jan 2016 12:05:47 -0000
+X-List-Received-Date: Sun, 31 Jan 2016 13:25:25 -0000
 
-On 31 January 2016 at 08:43, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> Maybe what's really needed is a build and test automation tree (and
-> associated maintainer)? Peter any comments?
+Hi,
 
-If you want to be the submaintainer for that, be my guest :-)
+On Thu, Jan 07, 2016 at 01:42:17PM +0100, Paolo Bonzini wrote:
+> 
+> On 05/01/2016 08:33, Sitsofe Wheeler wrote:
+> > Bring the qemu-nbd man page up to date with options and fix some styling and
+> > grammar issues along the way.
+> > 
+> > Changes from v1:
+> > - Add disconnect usage to synopsis.
+> > - Add styling to synopsis usage.
+> > - Fix up the grammar in the description.
+> > - Move filename variable description out of the option table.
+> > - Add a description of the NBD dev variable.
+> > - Add reference to qemu man page to see also section.
+> > - Fix sentence capitalisation in options section.
+> > 
+> > Sitsofe Wheeler (3):
+> >   qemu-nbd: Fix unintended texi verbatim formatting
+> >   qemu-nbd: Minor texi updates
+> >   qemu-nbd: Fix texi sentence capitalisation
+> > 
+> >  qemu-nbd.texi | 80 +++++++++++++++++++++++++++++++++--------------------------
+> >  1 file changed, 45 insertions(+), 35 deletions(-)
+> > 
+> 
+> Thanks, queued.  Will send a pull request some time next week.
 
-thanks
--- PMM
+Just checking - did this one get lost? Nothing's popped up in the QEMU
+git repos yet...
+
+-- 
+Sitsofe | http://sucs.org/~sits/
 
