@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQDyB-0003UQ-DD
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2016 07:52:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37706)
+	id 1aQE0V-0003gq-0h
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2016 07:55:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aQDy9-0003Sm-I3
-	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 07:52:38 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aQE0T-0003gY-FG
+	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 07:55:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aQDy6-0005bv-8h
-	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 07:52:37 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:36745)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aQE0Q-0006Fr-5s
+	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 07:55:01 -0500
+Received: from mail-pa0-x244.google.com ([2607:f8b0:400e:c03::244]:34102)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <richard.weiyang@gmail.com>)
-	id 1aQDy6-0005bg-1n; Mon, 01 Feb 2016 07:52:34 -0500
-Received: by mail-pf0-x244.google.com with SMTP id n128so7503483pfn.3;
-	Mon, 01 Feb 2016 04:52:32 -0800 (PST)
+	id 1aQE0P-0006Fl-VE; Mon, 01 Feb 2016 07:54:58 -0500
+Received: by mail-pa0-x244.google.com with SMTP id yy13so7183363pab.1;
+	Mon, 01 Feb 2016 04:54:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=S+AyZ0bAi304mc5VZCnGq7REC7xG1u9rMfS5iiQ4ETc=;
-	b=yq5CoTJTS0ib6Qq4jdALaO15q5HqqIbI2rwfn32Rq2Ayap+ZiGM/EI9wLcxM4SQkfJ
-	teh8Y5JlgHtEJ49zQghFyG2IXwb1kIHakOVFqLX0ozOXIaw8+p+xXHkUhMAAzooHPTpD
-	M/8bhkHIsNp++qP9fKf4NnoGNWopbhcSGYJOCz8lwXeyVaCpEaW+6K9i2cNiMVczZiir
-	gmD2jcTbpqlhKV3FLlDf1U+fNfnDCvmCkhevg9aaAUJRx+46zmkZ/qqGroineFF1zXfk
-	pDoYUWeFCebjzHHuT2HiA6pn1beZCZTNso7ecXLyR5iFZaxPfDQRtp8w9SAM4279wKF2
-	TWWA==
+	bh=lzNo7qbwYqh2pXz1K4f9IjodhTYMdvbogAL5rdaTWSA=;
+	b=NLOT2uxerZl3FAsx+1+lBiWvWcJ0SCwDo446aMbXd2/aaTDwyT0yHHuIE1I1ryKXI/
+	Tk8wXnDip1/SimxImchNYyOxotz6tECX3AL2TvFnPZU/Oig7LMb9i6SbfXU+mCf/1pPG
+	QH6eQmTWrL5UkSsB1jrQd+kKtG/A46WuIZHgz1ffApNBjzYXJQuBrgrwrq+fF7jzik5K
+	HsLDif+rP6slwBn0frpP4wTNmVRoRVZBHeLv/3uRpT0CDqnbgDLhAUkoTrppBtuCEvMg
+	uUcGyvi08ihGHZNgR6K8Ej/ReMR5SzdJbbn7X+QEHjbDJ5wuutjOclXDe57lFMwZoyFs
+	HF4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
 	:references:mime-version:content-type:content-disposition
 	:in-reply-to:user-agent;
-	bh=S+AyZ0bAi304mc5VZCnGq7REC7xG1u9rMfS5iiQ4ETc=;
-	b=Tqeog0HkSSSlv9fx92c2XG8mkZpdUeuNRjn25sz3epEZVT3x2rLvZb9fVRWvhnT8QT
-	O4OU/s/307lHrhhV1zrEWhtCx+m/gQXEFUmhOjNyvXuTM/fGT/kMKyDdno1SQQrPqw4i
-	LlO3XDlIFHgHX2+AAxfmXBYrUMeOlZNpw/zZVvsp+PZ0D5Vv5jDFjr8PtNsr7rHuwQkq
-	3N6+qPy/f6PwZtyJ7D7q0imDgkY6Hm8DQuG66IP+JCtUwbr561YnVzi5hnbfjp4AZ7Jl
-	FtvfQFBj1cWozc7H9JFJsujsZ3xwB9GCsHQ8Zb+p7M1nsduNd14I+O83fH6v8fCz3+GI
-	JIjQ==
-X-Gm-Message-State: AG10YOQmOgbg4tBuZHvcdYAh7JhXf6Y00yDgAvZMChVROFVsGor5h7rKNSt1AHAxInehgQ==
-X-Received: by 10.98.67.67 with SMTP id q64mr38055732pfa.133.1454331151773;
-	Mon, 01 Feb 2016 04:52:31 -0800 (PST)
+	bh=lzNo7qbwYqh2pXz1K4f9IjodhTYMdvbogAL5rdaTWSA=;
+	b=UwIT9Gt888Ngr+fzPbAC/k9pn8aXZuKCVFRE1IqTPTMnAd5rn1uc9AYJ1VNhFD0YUN
+	qtA3K7YUnnJn4P0q7U46tMH3Ab5fwzURMnLD/ex3RAkiau4SraVdSh4exrfV+0hvmo+g
+	wgKhWTfSIiL33g3Y+fnd6/mZLlvE9UtKqoIra5aVJg/aDPKjq/iWGeo6WG0LM9p3LiK+
+	Weyppo8008tzJ+yiyBkEIV8mDnVv+GNfj26K4M/VOjSV/xwFm6juC5PIUtfUfLOJKpuD
+	cKktFhOxOrLQ0XdUy4T5vUqXMYvKPHu+0Xll7aW/DJm/f2UzxBBi2xacz+FKYKmF4x4y
+	pGsg==
+X-Gm-Message-State: AG10YOR8PEdz/VP1ApJM7Q6RGSEtVibUQqm9YMiDvfAko6nTHgg4sE21OwDp7VWRaFYpgA==
+X-Received: by 10.66.120.200 with SMTP id le8mr38272159pab.61.1454331297073;
+	Mon, 01 Feb 2016 04:54:57 -0800 (PST)
 Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
-	q136sm43127350pfq.66.2016.02.01.04.52.29
+	fl9sm41266855pab.30.2016.02.01.04.54.55
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 01 Feb 2016 04:52:30 -0800 (PST)
-Date: Mon, 1 Feb 2016 12:52:28 +0000
+	Mon, 01 Feb 2016 04:54:55 -0800 (PST)
+Date: Mon, 1 Feb 2016 12:54:53 +0000
 From: Wei Yang <richard.weiyang@gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20160201125228.GA18246@vultr.guest>
+Message-ID: <20160201125453.GB18246@vultr.guest>
 References: <1453644598-11250-1-git-send-email-richard.weiyang@gmail.com>
-	<1453644598-11250-2-git-send-email-richard.weiyang@gmail.com>
-	<56AC8692.3010403@msgid.tls.msk.ru>
+	<56AC8637.20304@msgid.tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <56AC8692.3010403@msgid.tls.msk.ru>
+In-Reply-To: <56AC8637.20304@msgid.tls.msk.ru>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::244
+X-Received-From: 2607:f8b0:400e:c03::244
 Cc: qemu-trivial@nongnu.org, amit.shah@redhat.com, quintela@redhat.com,
 	qemu-devel <qemu-devel@nongnu.org>, Wei Yang <richard.weiyang@gmail.com>
-Subject: Re: [Qemu-trivial] [PATCH 2/2] qmp-spec: fix index in doc
+Subject: Re: [Qemu-trivial] [PATCH 1/2] rdma: remove check on time_spent
+	when calculating mbs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,19 +72,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2016 12:52:38 -0000
+X-List-Received-Date: Mon, 01 Feb 2016 12:55:02 -0000
 
-On Sat, Jan 30, 2016 at 12:46:58PM +0300, Michael Tokarev wrote:
+On Sat, Jan 30, 2016 at 12:45:27PM +0300, Michael Tokarev wrote:
 >24.01.2016 17:09, Wei Yang wrote:
->> The index is duplicated. Just change it.
+>> Within the if statement, time_spent is assured to be non-zero.
+>> 
+>> This patch just removes the check on time_spent when calculating mbs.
 >
->It is indeed, with previous being 2.5 as well
->and the next being 3. Applying to -trivial.
+>The if statement is this one:
 >
->Please the next time send to qemu-devel@ and Cc to -trivial.
+>        if (current_time >= initial_time + BUFFER_DELAY) {
+>
+>Note that we use time_spent as a divisor to calculate
+>bandwidth too.
+>
+>This is indeed a trivial patch, I'm applying it to -trivial,
+>but please the next time post it to qemu-devel (the main
+>mailinglist), and Cc qemu-trivial if it is trivial.
 >
 
-Thanks, got the correct procedure.
+To Amit and Michael,
+
+Yep, thanks. I thought these two are too trivial to post to qemu-devel :)
+
+Will do this next time.
 
 >Thanks!
 >
@@ -92,22 +104,24 @@ Thanks, got the correct procedure.
 >
 >> Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
 >> ---
->>  docs/qmp-spec.txt | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>  migration/migration.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
 >> 
->> diff --git a/docs/qmp-spec.txt b/docs/qmp-spec.txt
->> index 4fb10a5..8e4bc3d 100644
->> --- a/docs/qmp-spec.txt
->> +++ b/docs/qmp-spec.txt
->> @@ -180,7 +180,7 @@ Some events are rate-limited to at most one per second.  If additional
->>  dropped, and the last one is delayed.  "Similar" normally means same
->>  event type.  See qmp-events.txt for details.
+>> diff --git a/migration/migration.c b/migration/migration.c
+>> index c842499..40b87f2 100644
+>> --- a/migration/migration.c
+>> +++ b/migration/migration.c
+>> @@ -1677,8 +1677,8 @@ static void *migration_thread(void *opaque)
+>>              double bandwidth = (double)transferred_bytes / time_spent;
+>>              max_size = bandwidth * migrate_max_downtime() / 1000000;
 >>  
->> -2.5 QGA Synchronization
->> +2.6 QGA Synchronization
->>  -----------------------
+>> -            s->mbps = time_spent ? (((double) transferred_bytes * 8.0) /
+>> -                    ((double) time_spent / 1000.0)) / 1000.0 / 1000.0 : -1;
+>> +            s->mbps = (((double) transferred_bytes * 8.0) /
+>> +                    ((double) time_spent / 1000.0)) / 1000.0 / 1000.0;
 >>  
->>  When using QGA, an additional synchronization feature is built into
+>>              trace_migrate_transferred(transferred_bytes, time_spent,
+>>                                        bandwidth, max_size);
 >> 
 
 -- 
