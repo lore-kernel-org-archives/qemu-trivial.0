@@ -1,43 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQ9MY-00021l-9d
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2016 02:57:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47295)
+	id 1aQBYL-0004bc-Vr
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Feb 2016 05:17:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQ9MW-0001yU-Fp
-	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 02:57:29 -0500
+	(envelope-from <imammedo@redhat.com>) id 1aQBYJ-0004Zt-0U
+	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 05:17:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQ9MV-00050D-Ig
-	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 02:57:28 -0500
-Received: from [59.151.112.132] (port=39219 helo=heian.cn.fujitsu.com)
+	(envelope-from <imammedo@redhat.com>) id 1aQBYI-0000ue-6s
+	for qemu-trivial@nongnu.org; Mon, 01 Feb 2016 05:17:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56318)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aQ9MQ-0004wc-P8; Mon, 01 Feb 2016 02:57:23 -0500
-X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="3186913"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 01 Feb 2016 15:57:22 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 52F86406CF58;
-	Mon,  1 Feb 2016 15:56:35 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Mon, 1 Feb 2016 15:57:20 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 1 Feb 2016 15:57:35 +0800
-Message-ID: <1454313455-19660-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <imammedo@redhat.com>)
+	id 1aQBYC-0000ty-A1; Mon, 01 Feb 2016 05:17:40 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id DC30419CBED;
+	Mon,  1 Feb 2016 10:17:39 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u11AHbaG002857; Mon, 1 Feb 2016 05:17:38 -0500
+Date: Mon, 1 Feb 2016 11:17:36 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wei Huang <wei@redhat.com>
+Message-ID: <20160201111736.155e82fa@nial.brq.redhat.com>
+In-Reply-To: <56AB818B.1060500@redhat.com>
+References: <1454005340-15682-1-git-send-email-wei@redhat.com>
+	<CAM2+HU4Z39LoKjXqMRDQYbozQAi2-tqdo=d8TLrvVrJ6v6HHyQ@mail.gmail.com>
+	<56AB78A6.7070505@redhat.com> <56AB7B48.9020007@linaro.org>
+	<CAFEAcA9MYCFf-GCTnzHWUkaf6=_QCh=dsceaSg+4j8m3qgucpw@mail.gmail.com>
+	<56AB818B.1060500@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 52F86406CF58.A9151
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Subject: [Qemu-trivial] [PATCH v2] ES1370: QOMify
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"zhaoshenglong@huawei.com" <zhaoshenglong@huawei.com>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] arm: virt: change GPIO
+ trigger interrupt to pulse
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -49,60 +53,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Feb 2016 07:57:29 -0000
+X-List-Received-Date: Mon, 01 Feb 2016 10:17:48 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
-v1 missed "pci_create_simple" modification.
+On Fri, 29 Jan 2016 09:13:15 -0600
+Wei Huang <wei@redhat.com> wrote:
 
- hw/audio/es1370.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+> On 01/29/2016 08:50 AM, Peter Maydell wrote:
+> > On 29 January 2016 at 14:46, Shannon Zhao <shannon.zhao@linaro.org> wrote:  
+> >> On 2016/1/29 22:35, Wei Huang wrote:  
+> >>> On 01/29/2016 04:10 AM, Shannon Zhao wrote:  
+> >>>> This makes ACPI work well but makes DT not work. The reason is systemd or
+> >>>> acpid open /dev/input/event0 failed. So the interrupt could be injected
+> >>>> and
+> >>>> could see under /proc/interrupts but guest doesn't have any action. I'll
+> >>>> investigate why it opens failed later.  
+> >>>
+> >>>
+> >>> That is interesting. Could you try it with the following? This reverses
+> >>> the order to down-up and worked on ACPI case.
+> >>>  
+> >> Yeah, that's very weird.
+> >>  
+> >>> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0);
+> >>> qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
+> >>>  
+> >> I'll try this tomorrow. But even if this works, it's still weird.  
+> > 
+> > I wonder if we should be asserting the GPIO pin in the powerdown-request
+> > hook and then deasserting it on system reset somewhere...  
+> 
+> This is another possibility. We can try to reset the pl061 state by
+> hooking up with dc->reset and see what happens.
+I think that's what we do on x86.
 
-diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-index 592578b..f26fea3 100644
---- a/hw/audio/es1370.c
-+++ b/hw/audio/es1370.c
-@@ -288,6 +288,10 @@ struct chan_bits {
-                        uint32_t *old_freq, uint32_t *new_freq);
- };
- 
-+#define TYPE_ES1370 "ES1370"
-+#define ES1370(obj) \
-+    OBJECT_CHECK(ES1370State, (obj), TYPE_ES1370)
-+
- static void es1370_dac1_calc_freq (ES1370State *s, uint32_t ctl,
-                                    uint32_t *old_freq, uint32_t *new_freq);
- static void es1370_dac2_and_adc_calc_freq (ES1370State *s, uint32_t ctl,
-@@ -1013,7 +1017,7 @@ static void es1370_on_reset (void *opaque)
- 
- static void es1370_realize(PCIDevice *dev, Error **errp)
- {
--    ES1370State *s = DO_UPCAST (ES1370State, dev, dev);
-+    ES1370State *s = ES1370(dev);
-     uint8_t *c = s->dev.config;
- 
-     c[PCI_STATUS + 1] = PCI_STATUS_DEVSEL_SLOW >> 8;
-@@ -1038,7 +1042,7 @@ static void es1370_realize(PCIDevice *dev, Error **errp)
- 
- static int es1370_init (PCIBus *bus)
- {
--    pci_create_simple (bus, -1, "ES1370");
-+    pci_create_simple (bus, -1, TYPE_ES1370);
-     return 0;
- }
- 
-@@ -1059,7 +1063,7 @@ static void es1370_class_init (ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo es1370_info = {
--    .name          = "ES1370",
-+    .name          = TYPE_ES1370,
-     .parent        = TYPE_PCI_DEVICE,
-     .instance_size = sizeof (ES1370State),
-     .class_init    = es1370_class_init,
--- 
-2.1.0
-
-
+> 
+> > 
+> > thanks
+> > -- PMM
+> >   
+> 
 
 
