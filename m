@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQWpD-0004w8-FN
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2016 04:00:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59759)
+	id 1aQch8-0007BN-2Y
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2016 10:16:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQWpA-0004qA-DD
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 04:00:37 -0500
+	(envelope-from <wei@redhat.com>) id 1aQch4-00075k-Pn
+	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 10:16:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQWp9-0006RJ-Al
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 04:00:36 -0500
-Received: from [59.151.112.132] (port=61652 helo=heian.cn.fujitsu.com)
+	(envelope-from <wei@redhat.com>) id 1aQch1-0001rd-Vx
+	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 10:16:38 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54204)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aQWp3-0006Pa-JA; Tue, 02 Feb 2016 04:00:29 -0500
-X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="3228635"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 02 Feb 2016 17:00:26 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id A9E404042EDB;
-	Tue,  2 Feb 2016 16:59:35 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Tue, 2 Feb 2016 17:00:24 +0800
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-References: <1454309636-18263-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<1454309636-18263-2-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<56B0658A.20605@msgid.tls.msk.ru> <56B0680C.8050200@cn.fujitsu.com>
-	<56B0693E.5070302@msgid.tls.msk.ru>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <56B0703B.5050907@cn.fujitsu.com>
-Date: Tue, 2 Feb 2016 17:00:43 +0800
+	(envelope-from <wei@redhat.com>)
+	id 1aQcgs-0001oz-7k; Tue, 02 Feb 2016 10:16:26 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id AD9008E919;
+	Tue,  2 Feb 2016 15:16:25 +0000 (UTC)
+Received: from [10.10.57.52] (vpn-57-52.rdu2.redhat.com [10.10.57.52])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u12FGMeW019727
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 2 Feb 2016 10:16:23 -0500
+To: Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>
+References: <1454347206-23717-1-git-send-email-wei@redhat.com>
+	<1454347206-23717-2-git-send-email-wei@redhat.com>
+	<CAFEAcA9XZHowe_JtGFcqEJpnZiqXwT+36bBPPKXWSgc1aVGtHg@mail.gmail.com>
+	<56B054A8.6020602@msgid.tls.msk.ru>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <56B0C845.9080602@redhat.com>
+Date: Tue, 2 Feb 2016 09:16:21 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	Thunderbird/38.5.0
 MIME-Version: 1.0
-In-Reply-To: <56B0693E.5070302@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
+In-Reply-To: <56B054A8.6020602@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: A9E404042EDB.A7C13
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial <qemu-trivial@nongnu.org>, kraxel@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH 1/2] Emulated CCID card: QOMify
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: Re: [Qemu-trivial] [PATCH 2/2] ARM: PL061: Misc cleaning fields for
+ PL061 device state
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,52 +55,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2016 09:00:37 -0000
+X-List-Received-Date: Tue, 02 Feb 2016 15:16:39 -0000
 
 
 
-On 02/02/2016 04:30 PM, Michael Tokarev wrote:
-> 02.02.2016 11:25, Cao jin wrote:
->> On 02/02/2016 04:15 PM, Michael Tokarev wrote:
->>> Why did you move the type definition from .c to .h file?
->>> It is only referenced in .c, no?
+On 02/02/2016 01:03 AM, Michael Tokarev wrote:
+> 01.02.2016 21:01, Peter Maydell wrote:
+>> On 1 February 2016 at 17:20, Wei Huang <wei@redhat.com> wrote:
+>>> This patch removes float_high field of PL061State, which doesn't seem
+>>> to be used anywhere.
 > []
->> Yes, that type definition is referred only in .c for now, but we are not sure about it in the future, for better flexibility, I think put it into .h is better. http://wiki.qemu.org/QOMConventions also says:
+>>> @@ -88,7 +87,6 @@ static const VMStateDescription vmstate_pl061 = {
+>>>          VMSTATE_UINT32(slr, PL061State),
+>>>          VMSTATE_UINT32(den, PL061State),
+>>>          VMSTATE_UINT32(cr, PL061State),
+>>> -        VMSTATE_UINT32(float_high, PL061State),
+>>>          VMSTATE_UINT32_V(amsel, PL061State, 2),
+>>>          VMSTATE_END_OF_LIST()
 >>
->> DO use TYPE_FOO constants, defined in a header if used in other parts of code
->
-> The last words in this sentense makes sense, I think:
-> "if used in other parts of the code".
->
-> So I read it as 2-part suggestion:
->
-> 1) use TYPE_foo constants instead of "literals", and
-> 2) define them in a header file if used elsewhere too.
->
-> The "future flexibility" is, in my opinion, questionable.
-> If we'll use them in the future, we can always move the
-> #define to the header file.  For now, there's no need
-> to clutter the heade more, but there's a good reason
-> to use the #define in the "home" .c file where this
-> device is implemented, in all places where the device
-> name is referenced.
->
-> At least that's how I read this (somewhat ambiguous)
-> suggestion in the wiki.
->
+>> This would be a migration compatibility break, so at a minimum
+>> you need to bump the vmstate struct versions.
+> 
+> Is it worth the effort to remove this field if it causes
+> compatibility break?  Maybe keep it around, it doesn't hurt?
+
+It doesn't hurt. So either way is fine. I just happened to find it while
+reviewing the code.
+
+> At the very least, we may rename it to "unused_float_high",
+> or something, to indicate it is a known-unused?
+
+I don't think renaming solves any problem. Either we keep this variable
+as it is or remove it.
+
+> 
 > Thanks,
->
+> 
 > /mjt
->
-
-leave it where it was is also fine by me, it is not late to move it to 
-header file when it is certainly to be used in other parts. I will 
-update it:)
-
--- 
-Yours Sincerely,
-
-Cao jin
-
-
+> 
 
