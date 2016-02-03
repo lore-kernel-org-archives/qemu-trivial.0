@@ -1,49 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQch8-0007BN-2Y
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2016 10:16:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39431)
+	id 1aQnIy-0001cj-Kf
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2016 21:36:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50385)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aQch4-00075k-Pn
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 10:16:39 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQnIw-0001Ym-Ea
+	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 21:36:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aQch1-0001rd-Vx
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 10:16:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54204)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQnIv-00049x-II
+	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 21:36:26 -0500
+Received: from [59.151.112.132] (port=16963 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aQcgs-0001oz-7k; Tue, 02 Feb 2016 10:16:26 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id AD9008E919;
-	Tue,  2 Feb 2016 15:16:25 +0000 (UTC)
-Received: from [10.10.57.52] (vpn-57-52.rdu2.redhat.com [10.10.57.52])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u12FGMeW019727
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 2 Feb 2016 10:16:23 -0500
-To: Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>
-References: <1454347206-23717-1-git-send-email-wei@redhat.com>
-	<1454347206-23717-2-git-send-email-wei@redhat.com>
-	<CAFEAcA9XZHowe_JtGFcqEJpnZiqXwT+36bBPPKXWSgc1aVGtHg@mail.gmail.com>
-	<56B054A8.6020602@msgid.tls.msk.ru>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56B0C845.9080602@redhat.com>
-Date: Tue, 2 Feb 2016 09:16:21 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aQnIr-00047e-Jx; Tue, 02 Feb 2016 21:36:21 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="3256823"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 03 Feb 2016 10:36:18 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id 06143418AD4D;
+	Wed,  3 Feb 2016 10:35:27 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Wed, 3 Feb 2016 10:36:17 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 3 Feb 2016 10:36:35 +0800
+Message-ID: <1454466995-14906-3-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
+In-Reply-To: <1454466995-14906-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+References: <1454466995-14906-1-git-send-email-caoj.fnst@cn.fujitsu.com>
 MIME-Version: 1.0
-In-Reply-To: <56B054A8.6020602@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Subject: Re: [Qemu-trivial] [PATCH 2/2] ARM: PL061: Misc cleaning fields for
- PL061 device state
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 06143418AD4D.AA9FB
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: [Qemu-trivial] [PATCH v2 2/2] Passthru CCID card: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,42 +51,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Feb 2016 15:16:39 -0000
+X-List-Received-Date: Wed, 03 Feb 2016 02:36:27 -0000
+
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ hw/usb/ccid-card-passthru.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index 9f49c05..858e78e 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -38,8 +38,6 @@ static const uint8_t DEFAULT_ATR[] = {
+  0x13, 0x08
+ };
+ 
+-
+-#define PASSTHRU_DEV_NAME "ccid-card-passthru"
+ #define VSCARD_IN_SIZE 65536
+ 
+ /* maximum size of ATR - from 7816-3 */
+@@ -58,6 +56,10 @@ struct PassthruState {
+     uint8_t  debug;
+ };
+ 
++#define TYPE_CCID_PASSTHRU "ccid-card-passthru"
++#define PASSTHRU_CCID_CARD(obj) \
++    OBJECT_CHECK(PassthruState, (obj), TYPE_CCID_PASSTHRU)
++
+ /*
+  * VSCard protocol over chardev
+  * This code should not depend on the card type.
+@@ -316,7 +318,7 @@ static void ccid_card_vscard_event(void *opaque, int event)
+ static void passthru_apdu_from_guest(
+     CCIDCardState *base, const uint8_t *apdu, uint32_t len)
+ {
+-    PassthruState *card = DO_UPCAST(PassthruState, base, base);
++    PassthruState *card = PASSTHRU_CCID_CARD(base);
+ 
+     if (!card->cs) {
+         printf("ccid-passthru: no chardev, discarding apdu length %d\n", len);
+@@ -327,7 +329,7 @@ static void passthru_apdu_from_guest(
+ 
+ static const uint8_t *passthru_get_atr(CCIDCardState *base, uint32_t *len)
+ {
+-    PassthruState *card = DO_UPCAST(PassthruState, base, base);
++    PassthruState *card = PASSTHRU_CCID_CARD(base);
+ 
+     *len = card->atr_length;
+     return card->atr;
+@@ -335,7 +337,7 @@ static const uint8_t *passthru_get_atr(CCIDCardState *base, uint32_t *len)
+ 
+ static int passthru_initfn(CCIDCardState *base)
+ {
+-    PassthruState *card = DO_UPCAST(PassthruState, base, base);
++    PassthruState *card = PASSTHRU_CCID_CARD(base);
+ 
+     card->vscard_in_pos = 0;
+     card->vscard_in_hdr = 0;
+@@ -399,7 +401,7 @@ static void passthru_class_initfn(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo passthru_card_info = {
+-    .name          = PASSTHRU_DEV_NAME,
++    .name          = TYPE_CCID_PASSTHRU,
+     .parent        = TYPE_CCID_CARD,
+     .instance_size = sizeof(PassthruState),
+     .class_init    = passthru_class_initfn,
+-- 
+2.1.0
 
 
 
-On 02/02/2016 01:03 AM, Michael Tokarev wrote:
-> 01.02.2016 21:01, Peter Maydell wrote:
->> On 1 February 2016 at 17:20, Wei Huang <wei@redhat.com> wrote:
->>> This patch removes float_high field of PL061State, which doesn't seem
->>> to be used anywhere.
-> []
->>> @@ -88,7 +87,6 @@ static const VMStateDescription vmstate_pl061 = {
->>>          VMSTATE_UINT32(slr, PL061State),
->>>          VMSTATE_UINT32(den, PL061State),
->>>          VMSTATE_UINT32(cr, PL061State),
->>> -        VMSTATE_UINT32(float_high, PL061State),
->>>          VMSTATE_UINT32_V(amsel, PL061State, 2),
->>>          VMSTATE_END_OF_LIST()
->>
->> This would be a migration compatibility break, so at a minimum
->> you need to bump the vmstate struct versions.
-> 
-> Is it worth the effort to remove this field if it causes
-> compatibility break?  Maybe keep it around, it doesn't hurt?
-
-It doesn't hurt. So either way is fine. I just happened to find it while
-reviewing the code.
-
-> At the very least, we may rename it to "unused_float_high",
-> or something, to indicate it is a known-unused?
-
-I don't think renaming solves any problem. Either we keep this variable
-as it is or remove it.
-
-> 
-> Thanks,
-> 
-> /mjt
-> 
 
