@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQv29-0007nq-7i
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2016 05:51:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56993)
+	id 1aQw8e-00070j-RG
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2016 07:02:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQv26-0007jt-A2
-	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 05:51:35 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQw8T-0006hZ-N0
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:02:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQv25-0003X2-FV
-	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 05:51:34 -0500
-Received: from [59.151.112.132] (port=2340 helo=heian.cn.fujitsu.com)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQw8O-0004QY-VB
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:02:13 -0500
+Received: from [59.151.112.132] (port=3701 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aQv21-0003WJ-1L; Wed, 03 Feb 2016 05:51:29 -0500
+	id 1aQw8J-0004Pn-J1; Wed, 03 Feb 2016 07:02:03 -0500
 X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="3276658"
+   d="scan'208";a="3278681"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 03 Feb 2016 18:51:24 +0800
+	by heian.cn.fujitsu.com with ESMTP; 03 Feb 2016 20:02:01 +0800
 Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 337BB4219162;
-	Wed,  3 Feb 2016 18:50:29 +0800 (CST)
+	by cn.fujitsu.com (Postfix) with ESMTP id 173A34219161;
+	Wed,  3 Feb 2016 20:01:08 +0800 (CST)
 Received: from [10.167.226.69] (10.167.226.69) by
 	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Wed, 3 Feb 2016 18:51:21 +0800
+	Server (TLS) id 14.3.181.6; Wed, 3 Feb 2016 20:02:00 +0800
 To: Markus Armbruster <armbru@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 References: <1454469583-15753-1-git-send-email-caoj.fnst@cn.fujitsu.com>
 	<56B1A88C.6020604@msgid.tls.msk.ru>
 	<87k2mmxhk9.fsf@blackfin.pond.sub.org>
 From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <56B1DBC0.8090903@cn.fujitsu.com>
-Date: Wed, 3 Feb 2016 18:51:44 +0800
+Message-ID: <56B1EC4F.8040109@cn.fujitsu.com>
+Date: Wed, 3 Feb 2016 20:02:23 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.1.0
 MIME-Version: 1.0
@@ -36,7 +36,7 @@ In-Reply-To: <87k2mmxhk9.fsf@blackfin.pond.sub.org>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 337BB4219162.A6204
+X-yoursite-MailScanner-ID: 173A34219161.A897E
 X-yoursite-MailScanner: Found to be clean
 X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
@@ -57,7 +57,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Feb 2016 10:51:35 -0000
+X-List-Received-Date: Wed, 03 Feb 2016 12:02:23 -0000
 
 
 
@@ -91,14 +91,14 @@ On 02/03/2016 05:35 PM, Markus Armbruster wrote:
 >
 > ?
 >
+>
 
-If I understand it right, hotplug_handler is a link property of 
-BusState, see qbus_initfn(). Tt actually points to a device, see 
-qbus_set_hotplug_handler(), and the actually hotplug handler is reside 
-in this device, see how qdev_get_hotplug_handler() is used.
+And sometimes a hotplug handler could be a bus, see 
+qbus_set_bus_hotplug_handler(). on both case(device & bus), the actual 
+hotplug handler called at last is a TYPE_HOTPLUG_HANDLER which reside in 
+that device/bus, so I guess, the @hotplug_handler maybe fine:)
 
-So, base on the talking above, the original comment could be understood 
-by me:)
+anyway, these terms could easily confuse newbies
 
 -- 
 Yours Sincerely,
