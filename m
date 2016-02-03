@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQnyi-0005il-VL
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Feb 2016 22:19:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59914)
+	id 1aQrbD-0006qx-4I
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2016 02:11:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50846)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQnyg-0005hE-QO
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 22:19:35 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aQrb5-0006kG-Ch
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 02:11:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQnyg-0004nF-0A
-	for qemu-trivial@nongnu.org; Tue, 02 Feb 2016 22:19:34 -0500
-Received: from [59.151.112.132] (port=34070 helo=heian.cn.fujitsu.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1aQrb4-0001dd-ME
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 02:11:27 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:45950)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aQnyb-0004mS-Fr; Tue, 02 Feb 2016 22:19:29 -0500
-X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="3258635"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 03 Feb 2016 11:19:27 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 3F530418AD4D;
-	Wed,  3 Feb 2016 11:18:32 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Wed, 3 Feb 2016 11:19:23 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-Date: Wed, 3 Feb 2016 11:19:43 +0800
-Message-ID: <1454469583-15753-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1aQrau-0001a1-Q9; Wed, 03 Feb 2016 02:11:16 -0500
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3D8C4403BC;
+	Wed,  3 Feb 2016 10:11:05 +0300 (MSK)
+To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+References: <1454466995-14906-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <56B1A808.5080508@msgid.tls.msk.ru>
+Date: Wed, 3 Feb 2016 10:11:04 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 3F530418AD4D.AA23F
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, mst@redhat.com
-Subject: [Qemu-trivial] [PATCH] Fix inconsistency between comment and
-	variable name
+In-Reply-To: <1454466995-14906-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH v2 0/2] CCID QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,29 +43,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Feb 2016 03:19:35 -0000
+X-List-Received-Date: Wed, 03 Feb 2016 07:11:32 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- include/hw/qdev-core.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied both to -trivial, thank you!
 
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index abcdee8..42fa5db 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -221,7 +221,7 @@ typedef struct BusChild {
- 
- /**
-  * BusState:
-- * @hotplug_device: link to a hotplug device associated with bus.
-+ * @hotplug_handler: link to a hotplug device associated with bus.
-  */
- struct BusState {
-     Object obj;
--- 
-2.1.0
-
-
-
+/mjt
 
