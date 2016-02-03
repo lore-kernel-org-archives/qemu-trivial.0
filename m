@@ -1,51 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aQw8e-00070j-RG
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2016 07:02:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50952)
+	id 1aQwqJ-0006Iq-08
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Feb 2016 07:47:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34973)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQw8T-0006hZ-N0
-	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:02:23 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aQwq9-00066a-SE
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:47:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aQw8O-0004QY-VB
-	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:02:13 -0500
-Received: from [59.151.112.132] (port=3701 helo=heian.cn.fujitsu.com)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aQwq8-0006M4-Jj
+	for qemu-trivial@nongnu.org; Wed, 03 Feb 2016 07:47:21 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:25857)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1aQw8J-0004Pn-J1; Wed, 03 Feb 2016 07:02:03 -0500
-X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
-   d="scan'208";a="3278681"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 03 Feb 2016 20:02:01 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 173A34219161;
-	Wed,  3 Feb 2016 20:01:08 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Wed, 3 Feb 2016 20:02:00 +0800
-To: Markus Armbruster <armbru@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1454469583-15753-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<56B1A88C.6020604@msgid.tls.msk.ru>
-	<87k2mmxhk9.fsf@blackfin.pond.sub.org>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <56B1EC4F.8040109@cn.fujitsu.com>
-Date: Wed, 3 Feb 2016 20:02:23 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1aQwq3-0006H8-08; Wed, 03 Feb 2016 07:47:15 -0500
+Received: from 172.24.1.50 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.1.50])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DAV83241; Wed, 03 Feb 2016 20:46:49 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.235.1; Wed, 3 Feb 2016
+	20:46:37 +0800
+Message-ID: <56B1F6AC.1070902@huawei.com>
+Date: Wed, 3 Feb 2016 20:46:36 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-In-Reply-To: <87k2mmxhk9.fsf@blackfin.pond.sub.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 173A34219161.A897E
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, imammedo@redhat.com, qemu-devel@nongnu.org,
-	mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix inconsistency between
- comment and variable name
+To: Wei Huang <wei@redhat.com>, <qemu-devel@nongnu.org>
+References: <1454359775-25959-1-git-send-email-wei@redhat.com>
+In-Reply-To: <1454359775-25959-1-git-send-email-wei@redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020204.56B1F6BB.00E8, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: d55ffef02e2b294055ba3e7f851eff49
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, shannon.zhao@linaro.org,
+	imammedo@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH V2 1/2] ARM: PL061: Clear PL061 device
+	state after reset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,53 +54,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Feb 2016 12:02:23 -0000
+X-List-Received-Date: Wed, 03 Feb 2016 12:47:27 -0000
 
+Hi Wei,
 
+This still has a problem as I said before.
 
-On 02/03/2016 05:35 PM, Markus Armbruster wrote:
-> Michael Tokarev <mjt@tls.msk.ru> writes:
->
->> 03.02.2016 06:19, Cao jin wrote:
->>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->>> ---
->>>   include/hw/qdev-core.h | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
->>> index abcdee8..42fa5db 100644
->>> --- a/include/hw/qdev-core.h
->>> +++ b/include/hw/qdev-core.h
->>> @@ -221,7 +221,7 @@ typedef struct BusChild {
->>>
->>>   /**
->>>    * BusState:
->>> - * @hotplug_device: link to a hotplug device associated with bus.
->>> + * @hotplug_handler: link to a hotplug device associated with bus.
->>
->> Hmm.  Now while the field name in comment and in the structure
->> do match, the comment is still wrong, since it is a linke to
->> a handler, not a device… :)
->
-> Do you mean to suggest the line should be changed to
->
->   * @hotplug_device: link to a hotplug handler associated with bus.
->
-> ?
->
->
+If we execute "virsh reboot xxx" during VM booting(i.e. before the PL061
+driver loaded), then after VM booting, the VM will not have any reaction
+to the "virsh reboot xxx".
 
-And sometimes a hotplug handler could be a bus, see 
-qbus_set_bus_hotplug_handler(). on both case(device & bus), the actual 
-hotplug handler called at last is a TYPE_HOTPLUG_HANDLER which reside in 
-that device/bus, so I guess, the @hotplug_handler maybe fine:)
-
-anyway, these terms could easily confuse newbies
+On 2016/2/2 4:49, Wei Huang wrote:
+> Current QEMU doesn't clear PL061 state after reset. This causes a
+> weird issue with guest reboot via GPIO. Here is the device state
+> description with two reboot requests:
+> 
+>   (PL061State fields)           data   old_in_data   istate
+> VM boot                         0      0             0
+> After 1st ACPI reboot request   8      8             8
+> After VM PL061 driver ACK       8      8             0
+> After VM reboot                 8      8             0
+> ------------------------------------------------------------
+> 2nd ACPI reboot request         8
+> 
+> In the second reboot request above, because old_in_data field is 8,
+> QEMU decides that there is a pending edge IRQ already (see
+> pl061_update()) in input; so it doesn't raise up IRQ again. As a result
+> the second reboot request is lost. The correct way is to clear PL061
+> device state after reset.
+> 
+> NOTE: The reset state is found from the following documentation:
+>  - PL061 Technical Reference Manual
+>  - Stellaris LM3S8962 Microcontroller Data Sheet
+>  - Stellaris LM3S5P31 Microcontroller Data Sheet
+> 
+> Signed-off-by: Wei Huang <wei@redhat.com>
+> ---
+>  hw/gpio/pl061.c | 32 ++++++++++++++++++++++++++++++--
+>  1 file changed, 30 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
+> index e5a696e..342a70d 100644
+> --- a/hw/gpio/pl061.c
+> +++ b/hw/gpio/pl061.c
+> @@ -284,8 +284,35 @@ static void pl061_write(void *opaque, hwaddr offset,
+>  
+>  static void pl061_reset(PL061State *s)
+>  {
+> -  s->locked = 1;
+> -  s->cr = 0xff;
+> +    /* reset values from PL061 TRM, Stellaris LM3S5P31 & LM3S8962 Data Sheet */
+> +    s->data = 0;
+> +    s->old_out_data = 0;
+> +    s->old_in_data = 0;
+> +    s->dir = 0;
+> +    s->isense = 0;
+> +    s->ibe = 0;
+> +    s->iev = 0;
+> +    s->im = 0;
+> +    s->istate = 0;
+> +    s->afsel = 0;
+> +    s->dr2r = 0xff;
+> +    s->dr4r = 0;
+> +    s->dr8r = 0;
+> +    s->odr = 0;
+> +    s->pur = 0;
+> +    s->pdr = 0;
+> +    s->slr = 0;
+> +    s->den = 0;
+> +    s->locked = 1;
+> +    s->cr = 0xff;
+> +    s->amsel = 0;
+> +}
+> +
+> +static void pl061_state_reset(DeviceState *dev)
+> +{
+> +    PL061State *s = PL061(dev);
+> +
+> +    pl061_reset(s);
+>  }
+>  
+>  static void pl061_set_irq(void * opaque, int irq, int level)
+> @@ -343,6 +370,7 @@ static void pl061_class_init(ObjectClass *klass, void *data)
+>  
+>      k->init = pl061_initfn;
+>      dc->vmsd = &vmstate_pl061;
+> +    dc->reset = &pl061_state_reset;
+>  }
+>  
+>  static const TypeInfo pl061_info = {
+> 
 
 -- 
-Yours Sincerely,
-
-Cao jin
-
+Shannon
 
 
