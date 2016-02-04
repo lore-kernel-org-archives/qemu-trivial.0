@@ -1,44 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aRMLZ-0004PN-T4
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 11:01:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56619)
+	id 1aRSjp-0000V2-H6
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 17:50:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aRMLU-0004Ey-7O
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 11:01:27 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aRSjo-0000Te-32
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 17:50:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aRMLQ-0000lz-3R
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 11:01:24 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44124)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aRSjk-0001UP-My
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 17:50:56 -0500
+Received: from mail-pa0-x234.google.com ([2607:f8b0:400e:c03::234]:35160)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1aRMLI-0000ke-IZ; Thu, 04 Feb 2016 11:01:12 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 2713C35417C;
-	Thu,  4 Feb 2016 16:01:12 +0000 (UTC)
-Received: from [10.34.129.233] (dhcp129-233.brq.redhat.com [10.34.129.233])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u14G182q020606
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 4 Feb 2016 11:01:10 -0500
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <1454583838-22272-1-git-send-email-pbonzini@redhat.com>
-	<20160204152749.GE2427@work-vm>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56B375C3.9070406@redhat.com>
-Date: Thu, 4 Feb 2016 17:01:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <20160204152749.GE2427@work-vm>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration: move
-	page_cache.c to migration/
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1aRSjk-0001UJ-FV; Thu, 04 Feb 2016 17:50:52 -0500
+Received: by mail-pa0-x234.google.com with SMTP id ho8so22767087pac.2;
+	Thu, 04 Feb 2016 14:50:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=Rh8HrFcbCoLGRAZwdRs22RgvoLUN4xlaPKgked2+8qs=;
+	b=o3roZYzhHVx91R3897v3zDBZV7ioiSSge7xeslN9rV+1HPlhqm5hmH3et/abmPtlKu
+	hqpUebNpiSFouk7rVtmhp6bds6rB/1Rz3IUscbDE6JOBd7blSdaGhhXGS1JijMtvO7xR
+	RlIN66VmTPLLbrw8bUjrFEDQyKKCFZtf58+a/yMqYkZJ+ThXBdeN40uR9dqUQXPhBBbu
+	bJg14DnmPawfVKqbqwDpIvKcxu7OnI5O2KwIP17ComfbMK4xgVXK1fAGBk5zTNYXalh1
+	ZcVBHE+OVt++KO7EDDNS5A79kOJAIKeuhbQ8mM0uoTz1Kj+UcatNHBnZflX7KIxfYBoM
+	ZwyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Rh8HrFcbCoLGRAZwdRs22RgvoLUN4xlaPKgked2+8qs=;
+	b=M9WqAi0BU23c4P722jgJ/mMBu2V9Nu6hsRA+wMtItF0nZ1jLnj30oQVUe6R1UC1x0P
+	2apxzHHBjcuMYEyjDw+lR3ddv9uR/TXXu1WglB458XAuJudIDYmzkHnz2v7KosrHuJoe
+	frLhyik3EkpQWBto9Io5gpNsgLxlkQ/okFuJvL4QNARKFNN6bHpKjZcGGbfvc4rg9h1H
+	3UqUgBcwy9ioZPyBjIhu0QejWQZm3C44aCQxgGebERFnsCfp7Jah1e05E9mTEk497/g0
+	N/+qFNkXn08LbAjKDM1AXrg64uib7ANqS0glLHs7LydSTYs7EGUMt5CGljyv8w9AWd/1
+	jXyw==
+X-Gm-Message-State: AG10YOTXEnyq3AjsFwC+21z+AIhvdMyh6NztGva7a0kLkAzZuRW17cWtkSUCIN/hKGV7KQ==
+X-Received: by 10.67.14.168 with SMTP id fh8mr14979504pad.11.1454626251203;
+	Thu, 04 Feb 2016 14:50:51 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	p9sm19550565pfa.11.2016.02.04.14.50.49
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 04 Feb 2016 14:50:50 -0800 (PST)
+From: Wei Yang <richard.weiyang@gmail.com>
+To: quintela@redhat.com,
+	amit.shah@redhat.com
+Date: Thu,  4 Feb 2016 22:50:30 +0000
+Message-Id: <1454626230-16334-1-git-send-email-richard.weiyang@gmail.com>
+X-Mailer: git-send-email 2.5.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c03::234
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>
+Subject: [Qemu-trivial] [PATCH] migration: reorder code to make it symmetric
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,17 +62,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2016 16:01:28 -0000
+X-List-Received-Date: Thu, 04 Feb 2016 22:50:56 -0000
 
+In qemu_savevm_state_complete_precopy(), it iterates on each device to add
+a json object and transfer related status to destination, while the order
+of the last two steps could be refined.
 
+Current order:
 
-On 04/02/2016 16:27, Dr. David Alan Gilbert wrote:
-> tests/test-xbzrle$(EXESUF): tests/test-xbzrle.o migration/xbzrle.o page_cache.o $(test-util-obj-y)
-> 
-> I'm OK with moving this, although I didn't when I moved everything
-> else because there's nothing stopping anyone using it outside of migration.
+    json_start_object()
+    	save_section_header()
+    	vmstate_save()
+    json_end_object()
+    	save_section_footer()
 
-Oops...
+After the change:
 
-Paolo
+    json_start_object()
+    	save_section_header()
+    	vmstate_save()
+    	save_section_footer()
+    json_end_object()
+
+This patch reorder the code to to make it symmetric. No functional change.
+
+Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+---
+ migration/savevm.c |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/migration/savevm.c b/migration/savevm.c
+index b9caf59..42bfab4 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -1088,12 +1088,11 @@ void qemu_savevm_state_complete_precopy(QEMUFile *f, bool iterable_only)
+         json_prop_int(vmdesc, "instance_id", se->instance_id);
+ 
+         save_section_header(f, se, QEMU_VM_SECTION_FULL);
+-
+         vmstate_save(f, se, vmdesc);
+-
+-        json_end_object(vmdesc);
+         trace_savevm_section_end(se->idstr, se->section_id, 0);
+         save_section_footer(f, se);
++
++        json_end_object(vmdesc);
+     }
+ 
+     if (!in_postcopy) {
+-- 
+1.7.9.5
+
 
