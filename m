@@ -1,70 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aRGzS-0006wX-3G
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 05:18:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59252)
+	id 1aRHhv-0007nS-25
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 06:04:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40600)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzP-0006qS-99
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:16 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1aRHht-0007ku-8L
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 06:04:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzL-0006aY-MR
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:15 -0500
-Received: from e06smtp13.uk.ibm.com ([195.75.94.109]:44116)
+	(envelope-from <pbonzini@redhat.com>) id 1aRHhp-0007fL-HE
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 06:04:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44670)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzL-0006Zv-D3
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:11 -0500
-Received: from localhost
-	by e06smtp13.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
-	Thu, 4 Feb 2016 10:18:09 -0000
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp13.uk.ibm.com (192.168.101.143) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 4 Feb 2016 10:18:07 -0000
-X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
-X-IBM-MailFrom: gkurz@linux.vnet.ibm.com
-X-IBM-RcptTo: qemu-devel@nongnu.org; qemu-stable@nongnu.org;
-	qemu-trivial@nongnu.org
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
-	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 68B2217D8059; 
-	Thu,  4 Feb 2016 10:18:19 +0000 (GMT)
-Received: from d06av10.portsmouth.uk.ibm.com (d06av10.portsmouth.uk.ibm.com
-	[9.149.37.251])
-	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u14AI79F60424256; Thu, 4 Feb 2016 10:18:07 GMT
-Received: from d06av10.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av10.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u149I8L2017164; Thu, 4 Feb 2016 02:18:08 -0700
-Received: from smtp.lab.toulouse-stg.fr.ibm.com
-	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
-	by d06av10.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u149I8wm017153; Thu, 4 Feb 2016 02:18:08 -0700
-Received: from bahia.huguette.org (sig-9-83-78-101.evts.uk.ibm.com
-	[9.83.78.101])
-	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id C95A2220465;
-	Thu,  4 Feb 2016 11:18:05 +0100 (CET)
-Date: Thu, 4 Feb 2016 11:18:03 +0100
-From: Greg Kurz <gkurz@linux.vnet.ibm.com>
-To: Amit Shah <amit.shah@redhat.com>
-Message-ID: <20160204111803.0ee3ebb0@bahia.huguette.org>
-In-Reply-To: <20160204100011.GC20527@grmbl.mre>
-References: <20160204092007.31588.66396.stgit@bahia.huguette.org>
-	<20160204100011.GC20527@grmbl.mre>
-Organization: IBM
-X-Mailer: Claws Mail 3.13.1 (GTK+ 2.24.29; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16020410-0013-0000-0000-000008838BFC
+	(envelope-from <pbonzini@redhat.com>)
+	id 1aRHhg-0007dw-Ni; Thu, 04 Feb 2016 06:04:00 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4D58E92A49;
+	Thu,  4 Feb 2016 11:04:00 +0000 (UTC)
+Received: from donizetti.brq.redhat.com (dhcp129-233.brq.redhat.com
+	[10.34.129.233])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u14B3wwI017417; Thu, 4 Feb 2016 06:03:59 -0500
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  4 Feb 2016 12:03:58 +0100
+Message-Id: <1454583838-22272-1-git-send-email-pbonzini@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.109
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
-	Juan Quintela <quintela@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH] migration: fix bad string passed to
-	error_report()
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: [Qemu-trivial] [PATCH] migration: move page_cache.c to migration/
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -76,40 +40,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2016 10:18:16 -0000
+X-List-Received-Date: Thu, 04 Feb 2016 11:04:14 -0000
 
-On Thu, 4 Feb 2016 15:30:11 +0530
-Amit Shah <amit.shah@redhat.com> wrote:
+page_cache.c is part of the XBZRLE implementation, move it to the right
+directory.
 
-> On (Thu) 04 Feb 2016 [10:20:07], Greg Kurz wrote:
-> > state->name does not contain a terminating '\0' and you may get:
-> >=20
-> > Machine type received is 'pseries-2.3y=EF=BF=BD?' and local is 'pseries=
--2.4'
-> > load of migration failed: Invalid argument
-> >=20
-> > Let's add a precision modifier to fix this.
-> >=20
-> > Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com> =20
->=20
-> Reviewed-by: Amit Shah <amit.shah@redhat.com>
->=20
-> 		Amit
->=20
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ Makefile.objs                          | 1 -
+ migration/Makefile.objs                | 2 +-
+ page_cache.c => migration/page_cache.c | 0
+ 3 files changed, 1 insertion(+), 2 deletions(-)
+ rename page_cache.c => migration/page_cache.c (100%)
 
-I forgot to mention that this patch fixes:
-
-61964c23e5ddd5a33f15699e45ce126f879e3e33 "migration: Add configuration sect=
-ion"
-
-Cc'ing stable since this is a 2.4.0 commit and it may *theorically* lead to
-a crash (even if that is very unlikely to occur).
-
-Also Cc'ing trivial.
-
-Thanks !
-
---
-Greg
+diff --git a/Makefile.objs b/Makefile.objs
+index 06b95c7..f950b0f 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -51,7 +51,6 @@ common-obj-$(CONFIG_LINUX) += fsdev/
+ 
+ common-obj-y += migration/
+ common-obj-y += qemu-char.o #aio.o
+-common-obj-y += page_cache.o
+ common-obj-y += qjson.o
+ 
+ common-obj-$(CONFIG_SPICE) += spice-qemu-char.o
+diff --git a/migration/Makefile.objs b/migration/Makefile.objs
+index 0cac6d7..e5778de 100644
+--- a/migration/Makefile.objs
++++ b/migration/Makefile.objs
+@@ -1,7 +1,7 @@
+ common-obj-y += migration.o tcp.o
+ common-obj-y += vmstate.o
+ common-obj-y += qemu-file.o qemu-file-buf.o qemu-file-unix.o qemu-file-stdio.o
+-common-obj-y += xbzrle.o postcopy-ram.o
++common-obj-y += xbzrle.o page_cache.o postcopy-ram.o
+ 
+ common-obj-$(CONFIG_RDMA) += rdma.o
+ common-obj-$(CONFIG_POSIX) += exec.o unix.o fd.o
+diff --git a/page_cache.c b/migration/page_cache.c
+similarity index 100%
+rename from page_cache.c
+rename to migration/page_cache.c
+-- 
+2.5.0
 
 
