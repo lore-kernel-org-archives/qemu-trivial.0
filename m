@@ -1,56 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aRSjp-0000V2-H6
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 17:50:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56869)
+	id 1aRWta-0006y6-67
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 22:17:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aRSjo-0000Te-32
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 17:50:56 -0500
+	(envelope-from <daniel.serpell@gmail.com>) id 1aRPCL-0001YE-Ff
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 14:04:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aRSjk-0001UP-My
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 17:50:56 -0500
-Received: from mail-pa0-x234.google.com ([2607:f8b0:400e:c03::234]:35160)
+	(envelope-from <daniel.serpell@gmail.com>) id 1aRPCH-0005gl-JW
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 14:04:09 -0500
+Received: from mail-qg0-x22c.google.com ([2607:f8b0:400d:c04::22c]:33973)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>)
-	id 1aRSjk-0001UJ-FV; Thu, 04 Feb 2016 17:50:52 -0500
-Received: by mail-pa0-x234.google.com with SMTP id ho8so22767087pac.2;
-	Thu, 04 Feb 2016 14:50:51 -0800 (PST)
+	(envelope-from <daniel.serpell@gmail.com>)
+	id 1aRPCD-0005g2-A5; Thu, 04 Feb 2016 14:04:01 -0500
+Received: by mail-qg0-x22c.google.com with SMTP id u30so49729612qge.1;
+	Thu, 04 Feb 2016 11:04:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=Rh8HrFcbCoLGRAZwdRs22RgvoLUN4xlaPKgked2+8qs=;
-	b=o3roZYzhHVx91R3897v3zDBZV7ioiSSge7xeslN9rV+1HPlhqm5hmH3et/abmPtlKu
-	hqpUebNpiSFouk7rVtmhp6bds6rB/1Rz3IUscbDE6JOBd7blSdaGhhXGS1JijMtvO7xR
-	RlIN66VmTPLLbrw8bUjrFEDQyKKCFZtf58+a/yMqYkZJ+ThXBdeN40uR9dqUQXPhBBbu
-	bJg14DnmPawfVKqbqwDpIvKcxu7OnI5O2KwIP17ComfbMK4xgVXK1fAGBk5zTNYXalh1
-	ZcVBHE+OVt++KO7EDDNS5A79kOJAIKeuhbQ8mM0uoTz1Kj+UcatNHBnZflX7KIxfYBoM
-	ZwyQ==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=1PvTU9HwvajqWM05WevGdlLG9j4sXx1iyBPLBx+L92g=;
+	b=jiREB2nLpuSAPFz5fJVQDhGtFOSxnONgvA1SusJuOoM3/MsyqHoBHSMrk4WllS17t+
+	PhFOdniyGT4d+cgS3tKUt4ccJ5owUbwaj7QihQwfL/kvYFV/V7ZeGXN8jigGxvzT6jnT
+	1+tTGjYvkx6GS3HkHWuI/xGCevgCNRB08z7Nj1N6zeHIUbsM+jSKLQeuOuwnSxOwDIQ5
+	0KjJYVfc4sZd8tua0EfNYTwSlQiyLeFiPDHy4FT+tF9JX5zo9N6LqC8IjnrvrLiCtJJ1
+	S8rw2+XOzU7ltTcT3k/hDIsn2irWCqBJLXdqSc2N+McTLzYFHlzGIwgTs13cHG0Y0uIW
+	TUow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Rh8HrFcbCoLGRAZwdRs22RgvoLUN4xlaPKgked2+8qs=;
-	b=M9WqAi0BU23c4P722jgJ/mMBu2V9Nu6hsRA+wMtItF0nZ1jLnj30oQVUe6R1UC1x0P
-	2apxzHHBjcuMYEyjDw+lR3ddv9uR/TXXu1WglB458XAuJudIDYmzkHnz2v7KosrHuJoe
-	frLhyik3EkpQWBto9Io5gpNsgLxlkQ/okFuJvL4QNARKFNN6bHpKjZcGGbfvc4rg9h1H
-	3UqUgBcwy9ioZPyBjIhu0QejWQZm3C44aCQxgGebERFnsCfp7Jah1e05E9mTEk497/g0
-	N/+qFNkXn08LbAjKDM1AXrg64uib7ANqS0glLHs7LydSTYs7EGUMt5CGljyv8w9AWd/1
-	jXyw==
-X-Gm-Message-State: AG10YOTXEnyq3AjsFwC+21z+AIhvdMyh6NztGva7a0kLkAzZuRW17cWtkSUCIN/hKGV7KQ==
-X-Received: by 10.67.14.168 with SMTP id fh8mr14979504pad.11.1454626251203;
-	Thu, 04 Feb 2016 14:50:51 -0800 (PST)
-Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
-	p9sm19550565pfa.11.2016.02.04.14.50.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 04 Feb 2016 14:50:50 -0800 (PST)
-From: Wei Yang <richard.weiyang@gmail.com>
-To: quintela@redhat.com,
-	amit.shah@redhat.com
-Date: Thu,  4 Feb 2016 22:50:30 +0000
-Message-Id: <1454626230-16334-1-git-send-email-richard.weiyang@gmail.com>
-X-Mailer: git-send-email 2.5.0
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=1PvTU9HwvajqWM05WevGdlLG9j4sXx1iyBPLBx+L92g=;
+	b=NL1PWDxMwnMdQVwAz/fJ/zVroy8uXOO8V8IRzQh0dhTJAzkQISlsUtUvN0uT/f1tQa
+	EqvemLrKHiz6ZXX8t/aYZ5IK5TPaWMW8xMKivuln9Dv4XypdHxz+W20gvpsFnb737WEY
+	g+tyqOHeTxdIYngJZxITEcLXYOktCJheqCos+MrzoRZ+RJ15l2bDXYbuYVGL9VaHP3/M
+	fh8AAdxL2P00xjYaPRIDbZMcByFiPQz/ERvDzL4rUsYJRagCxj8mqotZDftuI+zVw1pM
+	HspXj5Emxw/0Lg4WlRdprNKmgs3qXCaShuEuE3flC3B/CRhhqoVv+feo+OF3coiAh4+2
+	aigw==
+X-Gm-Message-State: AG10YOSAM99AiVS6uaD90vmq5Unch0naIz072FojzY7oDgQ5Rak5TlV1ELWppp1pSm+lEA==
+X-Received: by 10.140.138.71 with SMTP id 68mr12117656qhk.8.1454612640821;
+	Thu, 04 Feb 2016 11:04:00 -0800 (PST)
+Received: from pcdaniel.aplik (pc-203-22-241-201.cm.vtr.net. [201.241.22.203])
+	by smtp.gmail.com with ESMTPSA id
+	x76sm5821827qhb.19.2016.02.04.11.03.58
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Thu, 04 Feb 2016 11:04:00 -0800 (PST)
+Received: by pcdaniel.aplik (sSMTP sendmail emulation);
+	Thu, 04 Feb 2016 16:04:30 -0300
+From: Daniel Serpell <daniel.serpell@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu,  4 Feb 2016 16:03:40 -0300
+Message-Id: <1454612620-7819-2-git-send-email-daniel.serpell@gmail.com>
+X-Mailer: git-send-email 2.7.0
+In-Reply-To: <1454612620-7819-1-git-send-email-daniel.serpell@gmail.com>
+References: <1454612620-7819-1-git-send-email-daniel.serpell@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::234
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Wei Yang <richard.weiyang@gmail.com>
-Subject: [Qemu-trivial] [PATCH] migration: reorder code to make it symmetric
+X-Received-From: 2607:f8b0:400d:c04::22c
+X-Mailman-Approved-At: Thu, 04 Feb 2016 22:17:16 -0500
+Cc: qemu-trivial@nongnu.org, Daniel Serpell <daniel.serpell@gmail.com>
+Subject: [Qemu-trivial] [PATCH] Adds keycode 86 to the hid_usage_keys
+	translation table.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,55 +68,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2016 22:50:56 -0000
+X-List-Received-Date: Thu, 04 Feb 2016 19:04:10 -0000
 
-In qemu_savevm_state_complete_precopy(), it iterates on each device to add
-a json object and transfer related status to destination, while the order
-of the last two steps could be refined.
+This key is present in international keyboards, between left shift and
+the 'Z' key, ant is described in the HID usage tables as "Keyboard
+Non-US \ and |": http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
 
-Current order:
+This patch fixes the usb-kbd devices.
 
-    json_start_object()
-    	save_section_header()
-    	vmstate_save()
-    json_end_object()
-    	save_section_footer()
-
-After the change:
-
-    json_start_object()
-    	save_section_header()
-    	vmstate_save()
-    	save_section_footer()
-    json_end_object()
-
-This patch reorder the code to to make it symmetric. No functional change.
-
-Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+Signed-off-by: Daniel Serpell <daniel.serpell@gmail.com>
 ---
- migration/savevm.c |    5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/input/hid.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index b9caf59..42bfab4 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -1088,12 +1088,11 @@ void qemu_savevm_state_complete_precopy(QEMUFile *f, bool iterable_only)
-         json_prop_int(vmdesc, "instance_id", se->instance_id);
- 
-         save_section_header(f, se, QEMU_VM_SECTION_FULL);
--
-         vmstate_save(f, se, vmdesc);
--
--        json_end_object(vmdesc);
-         trace_savevm_section_end(se->idstr, se->section_id, 0);
-         save_section_footer(f, se);
-+
-+        json_end_object(vmdesc);
-     }
- 
-     if (!in_postcopy) {
+diff --git a/hw/input/hid.c b/hw/input/hid.c
+index a11e2bc..b41efbb 100644
+--- a/hw/input/hid.c
++++ b/hw/input/hid.c
+@@ -45,7 +45,7 @@ static const uint8_t hid_usage_keys[0x100] = {
+     0xe2, 0x2c, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e,
+     0x3f, 0x40, 0x41, 0x42, 0x43, 0x53, 0x47, 0x5f,
+     0x60, 0x61, 0x56, 0x5c, 0x5d, 0x5e, 0x57, 0x59,
+-    0x5a, 0x5b, 0x62, 0x63, 0x00, 0x00, 0x00, 0x44,
++    0x5a, 0x5b, 0x62, 0x63, 0x00, 0x00, 0x64, 0x44,
+     0x45, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e,
+     0xe8, 0xe9, 0x71, 0x72, 0x73, 0x00, 0x00, 0x00,
+     0x00, 0x00, 0x00, 0x85, 0x00, 0x00, 0x00, 0x00,
 -- 
-1.7.9.5
+2.7.0
 
 
