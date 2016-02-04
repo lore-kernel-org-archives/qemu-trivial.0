@@ -1,70 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aRDx8-000144-7u
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 02:03:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35405)
+	id 1aRGzS-0006wX-3G
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 05:18:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59252)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aRDx6-00011h-0M
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 02:03:40 -0500
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzP-0006qS-99
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aRDx3-0001kK-RD
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 02:03:39 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:37127)
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzL-0006aY-MR
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:15 -0500
+Received: from e06smtp13.uk.ibm.com ([195.75.94.109]:44116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1aRDx2-0001jV-IS
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 02:03:37 -0500
-Received: by mail-wm0-x230.google.com with SMTP id l66so103039595wml.0
-	for <qemu-trivial@nongnu.org>; Wed, 03 Feb 2016 23:03:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-type:content-transfer-encoding;
-	bh=TBodLK014AY+m9x+D/LIiXgnTU99s2nUgIluC7CQDdU=;
-	b=Y1S8q8vRJ6D9visYsF5jaD886BRO/psJkSHydq4u9uXo4gs3Q1uUWP/sRohb4i/bIo
-	kanofU3Kh+H7GHEJQPKK5EAEB7C4GHWQ2u3qjyXN+bpB62wvTRPAAcxcMjDy4Xlw481R
-	75CAad5qFJLKTbYpMC0tAe/pvVgykiWqoxOlk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-type
-	:content-transfer-encoding;
-	bh=TBodLK014AY+m9x+D/LIiXgnTU99s2nUgIluC7CQDdU=;
-	b=AQbXzU8FNP0oL6m2JCFwip9H2whn6UyYcwWlkpKnIKYPARIhAFPxQoSrmcIsRUuHwT
-	d9lmaNjqQhW9tNHODowlGimhqKVQBt5DRPhxRYzE2YOHpF3CAw9H44aOBflj5y7w72um
-	1IwfvNmKczekWstveWhuzLKZUp3mRm948C+u0We85SKYoLLSXaOEnKXbVX7RiimgUdn8
-	lt6X/LwvUFuRNDbAOYdWJE53bfSpPHHK0PwtcNEl9d9QUcko2kG+dodyNztbN5O5O6lV
-	yxEd4NOqkSjZoD4iUSApE91RSXGemCKsZol2QhCv9GfUkU1/X6CixoNoujSMiSRGl2q6
-	9gOQ==
-X-Gm-Message-State: AG10YOQRmB156K5UmL5L8/4Xmfyi//NgeZMq2Dak0U+gcZd3CNUPpGbo7j3g9m/FUh9IReSS
-X-Received: by 10.28.180.193 with SMTP id d184mr27342045wmf.64.1454569415741; 
-	Wed, 03 Feb 2016 23:03:35 -0800 (PST)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	k130sm11303612wmg.6.2016.02.03.23.03.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 03 Feb 2016 23:03:34 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id C095E3E01B2;
-	Thu,  4 Feb 2016 07:03:33 +0000 (GMT)
-References: <1438593291-27109-1-git-send-email-alex.bennee@linaro.org>
-	<1438593291-27109-12-git-send-email-alex.bennee@linaro.org>
-	<20150804123331.GB8960@aurel32.net> <87y4b1oc96.fsf@linaro.org>
-	<CAFEAcA-+gzYE3ys6ybmYP0-0j6gd9RgE6amm4=dkjwgZ6rhj1A@mail.gmail.com>
-User-agent: mu4e 0.9.17; emacs 25.0.90.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-In-reply-to: <CAFEAcA-+gzYE3ys6ybmYP0-0j6gd9RgE6amm4=dkjwgZ6rhj1A@mail.gmail.com>
-Date: Thu, 04 Feb 2016 07:03:33 +0000
-Message-ID: <87wpqlneii.fsf@linaro.org>
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1aRGzL-0006Zv-D3
+	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 05:18:11 -0500
+Received: from localhost
+	by e06smtp13.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
+	Thu, 4 Feb 2016 10:18:09 -0000
+Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
+	by e06smtp13.uk.ibm.com (192.168.101.143) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 4 Feb 2016 10:18:07 -0000
+X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
+X-IBM-MailFrom: gkurz@linux.vnet.ibm.com
+X-IBM-RcptTo: qemu-devel@nongnu.org; qemu-stable@nongnu.org;
+	qemu-trivial@nongnu.org
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 68B2217D8059; 
+	Thu,  4 Feb 2016 10:18:19 +0000 (GMT)
+Received: from d06av10.portsmouth.uk.ibm.com (d06av10.portsmouth.uk.ibm.com
+	[9.149.37.251])
+	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u14AI79F60424256; Thu, 4 Feb 2016 10:18:07 GMT
+Received: from d06av10.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av10.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u149I8L2017164; Thu, 4 Feb 2016 02:18:08 -0700
+Received: from smtp.lab.toulouse-stg.fr.ibm.com
+	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
+	by d06av10.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u149I8wm017153; Thu, 4 Feb 2016 02:18:08 -0700
+Received: from bahia.huguette.org (sig-9-83-78-101.evts.uk.ibm.com
+	[9.83.78.101])
+	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id C95A2220465;
+	Thu,  4 Feb 2016 11:18:05 +0100 (CET)
+Date: Thu, 4 Feb 2016 11:18:03 +0100
+From: Greg Kurz <gkurz@linux.vnet.ibm.com>
+To: Amit Shah <amit.shah@redhat.com>
+Message-ID: <20160204111803.0ee3ebb0@bahia.huguette.org>
+In-Reply-To: <20160204100011.GC20527@grmbl.mre>
+References: <20160204092007.31588.66396.stgit@bahia.huguette.org>
+	<20160204100011.GC20527@grmbl.mre>
+Organization: IBM
+X-Mailer: Claws Mail 3.13.1 (GTK+ 2.24.29; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::230
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 11/11] cputlb: modernise
-	the debug support
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16020410-0013-0000-0000-000008838BFC
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.109
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+	Juan Quintela <quintela@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] migration: fix bad string passed to
+	error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -76,37 +76,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2016 07:03:40 -0000
+X-List-Received-Date: Thu, 04 Feb 2016 10:18:16 -0000
 
+On Thu, 4 Feb 2016 15:30:11 +0530
+Amit Shah <amit.shah@redhat.com> wrote:
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+> On (Thu) 04 Feb 2016 [10:20:07], Greg Kurz wrote:
+> > state->name does not contain a terminating '\0' and you may get:
+> >=20
+> > Machine type received is 'pseries-2.3y=EF=BF=BD?' and local is 'pseries=
+-2.4'
+> > load of migration failed: Invalid argument
+> >=20
+> > Let's add a precision modifier to fix this.
+> >=20
+> > Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com> =20
+>=20
+> Reviewed-by: Amit Shah <amit.shah@redhat.com>
+>=20
+> 		Amit
+>=20
 
-> On 3 February 2016 at 18:54, Alex Bennée <alex.bennee@linaro.org> wrote:
->> It preserves the old behaviour (and the general behaviour of DEBUG_FOO
->> going to stderr). However I'm happy to make it default to using the log
->> output.
->>
->> It does raise the question of if we should just enable the debugging by
->> default?
->
-> Not without thinking carefully about it. This is programmer
-> debug code for figuring out what's happening in a performance
-> sensitive bit of code. "Just print to stderr" is the classic
-> way to do this, and I don't think we should just convert that
-> into userfacing trace.
+I forgot to mention that this patch fixes:
 
-Shall I just go back to the original fprintf output then? I made the
-output optional a few review comments back.
+61964c23e5ddd5a33f15699e45ce126f879e3e33 "migration: Add configuration sect=
+ion"
 
->
-> There may be useful user facing trace we can do of TLB
-> operations but I wouldn't assume that our current debug
-> printfs are it.
->
-> thanks
-> -- PMM
+Cc'ing stable since this is a 2.4.0 commit and it may *theorically* lead to
+a crash (even if that is very unlikely to occur).
 
+Also Cc'ing trivial.
+
+Thanks !
 
 --
-Alex Bennée
+Greg
+
 
