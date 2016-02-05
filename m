@@ -1,58 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aRWta-0006zE-NB
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Feb 2016 22:17:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55243)
+	id 1aRcV1-0000Gc-KZ
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Feb 2016 04:16:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53668)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <daniel.serpell@gmail.com>) id 1aRPBw-0001VN-H1
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 14:03:45 -0500
+	(envelope-from <kraxel@redhat.com>) id 1aRcUv-00009V-Fd
+	for qemu-trivial@nongnu.org; Fri, 05 Feb 2016 04:16:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <daniel.serpell@gmail.com>) id 1aRPBv-0005cG-Pc
-	for qemu-trivial@nongnu.org; Thu, 04 Feb 2016 14:03:44 -0500
-Received: from mail-qk0-x229.google.com ([2607:f8b0:400d:c09::229]:33784)
+	(envelope-from <kraxel@redhat.com>) id 1aRcUu-0005os-Gt
+	for qemu-trivial@nongnu.org; Fri, 05 Feb 2016 04:16:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33439)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <daniel.serpell@gmail.com>)
-	id 1aRPBr-0005bK-KV; Thu, 04 Feb 2016 14:03:39 -0500
-Received: by mail-qk0-x229.google.com with SMTP id s5so25074021qkd.0;
-	Thu, 04 Feb 2016 11:03:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=ef3lCMDjgii85b9NYM/+nwnCjIlOcJy8RZ6xVtTm+1A=;
-	b=A2TXSL2/3XHmtnKwhJiW2G9g7m/vKRuY1hVv1GBxAHXjEnXgsRRDlx97y7aHGxcbdS
-	xVOImdaouv8joWbvzAfMsrwrFTbc1jDsTK/1j9AXhb6tVYoWkTlAvYyYlxtme33QVKvo
-	/gl+YYwMvig7PLocJ3BzVX9YvBKax4Qtd5XAnvOE8GX9XkXXq1eZ8ZglAGhHRBRMYvYC
-	VMSUg5FiaFAzaCxaxhnDPlu7xCrR8YXR6oHOoQ5iYVGJAviMhloBSG1RdrHtC3ncQqH9
-	MUvkXq0JJhghRnGngqLuXofRTIjac6PLBYpDc2yFs76Oh4bOZvd18I+B05vNU//KQMEr
-	8lkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=ef3lCMDjgii85b9NYM/+nwnCjIlOcJy8RZ6xVtTm+1A=;
-	b=N+Dmn44ZVUE7WGuOnFIGE/mal7ZhcIHEevkkfCUypAMxNt5bSLiVzzvPDDcmoq4JlL
-	Amrd9gazr1t+gBDXNcun0gYp6m962KrfeczDRcYO4kOo9tnbNEtCAN7oPFCFAsayCgfv
-	z+cxv1yT5/s2/gsWeaaoLRdrrUuAuxNRFFBtege4yBGBUyDofFrJDdOQ0P6d6sFQe7iU
-	S8H9CW8hqsmjUyG0ydM7FuhWK10WCOP5NXXr+Q4iAyRZeRE0pwOsQYAh2KEWhMoSYJ88
-	g/vO4caK1uFTLJz9DQHPLoeZqtACUlddh3jGLUqkIl7AvS8LTyLpnSeKHh2XK+hdKBBY
-	s+Ng==
-X-Gm-Message-State: AG10YOTxaiKLmCH12XJKF4uhnYH1YWM93xiSZCVcItasSkj4IBz1RaEeMSwZSnGZhyOJVw==
-X-Received: by 10.55.78.207 with SMTP id c198mr11084832qkb.34.1454612619035;
-	Thu, 04 Feb 2016 11:03:39 -0800 (PST)
-Received: from pcdaniel.aplik (pc-203-22-241-201.cm.vtr.net. [201.241.22.203])
-	by smtp.gmail.com with ESMTPSA id
-	d64sm5849038qgd.9.2016.02.04.11.03.36
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Thu, 04 Feb 2016 11:03:38 -0800 (PST)
-Received: by pcdaniel.aplik (sSMTP sendmail emulation);
-	Thu, 04 Feb 2016 16:04:07 -0300
-From: Daniel Serpell <daniel.serpell@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu,  4 Feb 2016 16:03:39 -0300
-Message-Id: <1454612620-7819-1-git-send-email-daniel.serpell@gmail.com>
-X-Mailer: git-send-email 2.7.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::229
-X-Mailman-Approved-At: Thu, 04 Feb 2016 22:17:16 -0500
-Cc: qemu-trivial@nongnu.org, Daniel Serpell <daniel.serpell@gmail.com>
-Subject: [Qemu-trivial] [PATCH] Fixes missing key in usb keyboard emulation
+	(envelope-from <kraxel@redhat.com>)
+	id 1aRcUp-0005oP-VJ; Fri, 05 Feb 2016 04:16:08 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id CDC76C076618;
+	Fri,  5 Feb 2016 09:16:06 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-38.ams2.redhat.com
+	[10.36.116.38])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u159G5Tv016194; Fri, 5 Feb 2016 04:16:06 -0500
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id E745A81C87; Fri,  5 Feb 2016 10:16:04 +0100 (CET)
+Message-ID: <1454663764.5539.17.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Daniel Serpell <daniel.serpell@gmail.com>
+Date: Fri, 05 Feb 2016 10:16:04 +0100
+In-Reply-To: <1454612620-7819-2-git-send-email-daniel.serpell@gmail.com>
+References: <1454612620-7819-1-git-send-email-daniel.serpell@gmail.com>
+	<1454612620-7819-2-git-send-email-daniel.serpell@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Adds keycode 86 to the
+ hid_usage_keys translation table.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,21 +49,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Feb 2016 19:03:45 -0000
+X-List-Received-Date: Fri, 05 Feb 2016 09:16:17 -0000
 
-Hi,
+On Do, 2016-02-04 at 16:03 -0300, Daniel Serpell wrote:
+> This key is present in international keyboards, between left shift and
+> the 'Z' key, ant is described in the HID usage tables as "Keyboard
+> Non-US \ and |": http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
+>=20
+> This patch fixes the usb-kbd devices.
+>=20
+> Signed-off-by: Daniel Serpell <daniel.serpell@gmail.com>
 
-This one-liner patch adds a translation entry for the key that is between
-left shift and 'Z' on international keyboards, enabling its use in the
-usb keyboard device emulation.
-
-Daniel Serpell (1):
-  Adds keycode 86 to the hid_usage_keys translation table.
-
- hw/input/hid.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
--- 
-2.7.0
-
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 
