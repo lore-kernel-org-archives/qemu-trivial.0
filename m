@@ -1,49 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aSnuE-0005rm-Nq
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2016 10:39:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46871)
+	id 1aStkj-0000fp-4S
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Feb 2016 16:53:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aSnuC-0005pN-Mi
-	for qemu-trivial@nongnu.org; Mon, 08 Feb 2016 10:39:13 -0500
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1aStkg-0000cy-6a
+	for qemu-trivial@nongnu.org; Mon, 08 Feb 2016 16:53:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aSnuB-00013c-Lh
-	for qemu-trivial@nongnu.org; Mon, 08 Feb 2016 10:39:12 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57389)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1aStkd-0000cP-15
+	for qemu-trivial@nongnu.org; Mon, 08 Feb 2016 16:53:46 -0500
+Received: from s16892447.onlinehome-server.info ([82.165.15.123]:51114)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aSnu6-0000xl-CM; Mon, 08 Feb 2016 10:39:06 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 018F014CAB1;
-	Mon,  8 Feb 2016 15:39:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-40.ams2.redhat.com
-	[10.36.116.40])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u18Fd4Ox024187
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 8 Feb 2016 10:39:05 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E813D303F81B; Mon,  8 Feb 2016 16:39:03 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <20160111173036.24764.59878.stgit@bahia.huguette.org>
-	<569D22F6.5070104@msgid.tls.msk.ru>
-	<20160118192843.55ef9d93@bahia.huguette.org>
-	<20160208151147.GC31586@stefanha-x1.localdomain>
-Date: Mon, 08 Feb 2016 16:39:03 +0100
-In-Reply-To: <20160208151147.GC31586@stefanha-x1.localdomain> (Stefan
-	Hajnoczi's message of "Mon, 8 Feb 2016 15:11:47 +0000")
-Message-ID: <87d1s7w6so.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1aStkc-0000cK-Pz; Mon, 08 Feb 2016 16:53:42 -0500
+Received: from host86-137-255-7.range86-137.btcentralplus.com ([86.137.255.7]
+	helo=[192.168.1.65]) by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1aStka-000173-4i; Mon, 08 Feb 2016 21:53:41 +0000
+To: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org
+References: <1454939707-10869-1-git-send-email-berrange@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <56B90E5D.3010105@ilande.co.uk>
+Date: Mon, 8 Feb 2016 21:53:33 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.5.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+In-Reply-To: <1454939707-10869-1-git-send-email-berrange@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.137.255.7
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, Greg Kurz <gkurz@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace: drop trailing empty
-	strings
+X-Received-From: 82.165.15.123
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] char: fix repeated
+ registration of tcp chardev I/O handlers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,43 +48,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Feb 2016 15:39:13 -0000
+X-List-Received-Date: Mon, 08 Feb 2016 21:53:47 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+On 08/02/16 13:55, Daniel P. Berrange wrote:
 
-> On Mon, Jan 18, 2016 at 07:28:43PM +0100, Greg Kurz wrote:
->> On Mon, 18 Jan 2016 20:37:58 +0300
->> Michael Tokarev <mjt@tls.msk.ru> wrote:
->> 
->> > 11.01.2016 20:30, Greg Kurz wrote:
->> > 
->> > > -virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s gpa: %"PRIx64""
->> > > +virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s gpa: %"PRIx64  
->> > ...
->> > 
->> > I'm not sure what's the value of this.  It's fine either way, no?
->> 
->> The only value is to drop unneeded stuff... and maybe some consistency
->> with the traces that don't have these trailing empty strings.
->> 
->> > Do we have a rule for trailing empty strings in coding style? :)
->> > 
->> 
->> Nor we have against parenthesitis, which brings a lot more unneeded
->> characters into the code :P
->
-> Regarding the history of the quoting limitation, see commit
-> cf85cf8e972f3ad79f203be4edb7968d6e052293 ("trace: Format strings must
-> begin/end with double quotes").  It was a limitation of the old
-> tracetool.sh script.
->
-> The modern tracetool.py script handles format strings fine when they do
-> not end with double-quotes.
+> In previous commit:
+> 
+>   commit f2001a7e0555b66d6db25a3ff1801540814045bb
+>   Author: Daniel P. Berrange <berrange@redhat.com>
+>   Date:   Tue Jan 19 11:14:30 2016 +0000
+> 
+>     char: don't assume telnet initialization will not block
+> 
+> The code which writes the telnet initialization sequence moved
+> to an event loop callback. If the TCP chardev is opened as a
+> server in blocking mode (ie -serial telnet:0.0.0.0:3000,server,wait)
+> this results in a state where the TCP chardev is connected, but not
+> yet ready to send/recv data when virtual hardware is created.
+> 
+> When the virtual hardware initialization registers its chardev
+> callbacks, it triggers tcp_chr_update_read_handler, which will
+> add I/O watches to the connection.
+> 
+> When the telnet initialization finally runs, it will then call
+> tcp_chr_connect to finish the connection setup. This will in
+> turn add I/O watches to the connection too.
+> 
+> There are now two sets of I/O watches registered on the same
+> connection. This ultimately causes data loss on the connection,
+> for example, when typing into the telnet console only every
+> second byte is echoed back to the client.
+> 
+> The same flaw can affect channels running with TLS encryption
+> too, since they also have delayed connection setup completion.
+> 
+> The fix is to update tcp_chr_update_read_handler so that it
+> avoids registering watches if the connection is not fully
+> setup yet.
+> 
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> ---
+>  qemu-char.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/qemu-char.c b/qemu-char.c
+> index 927c47e..9060f8a 100644
+> --- a/qemu-char.c
+> +++ b/qemu-char.c
+> @@ -2856,6 +2856,10 @@ static void tcp_chr_update_read_handler(CharDriverState *chr)
+>  {
+>      TCPCharDriver *s = chr->opaque;
+>  
+> +    if (!s->connected) {
+> +        return;
+> +    }
+> +
+>      remove_fd_in_watch(chr);
+>      if (s->ioc) {
+>          chr->fd_in_tag = io_add_watch_poll(s->ioc,
+> 
 
-Suggest to work that into the commit message.
+Hi Daniel,
 
-> Thanks, applied to my tracing tree:
-> https://github.com/stefanha/qemu/commits/tracing
->
-> Stefan
+Yes I can confirm that this patch fixes the issue for me - thanks a lot
+for debugging!
+
+
+ATB,
+
+Mark.
+
 
