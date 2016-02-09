@@ -1,56 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTA0L-0006cn-Lk
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2016 10:15:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49120)
+	id 1aTAlI-0000g0-JC
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2016 11:03:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <raghavanil4m@gmail.com>) id 1aTA0J-0006cH-FY
-	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 10:15:00 -0500
+	(envelope-from <sw@weilnetz.de>) id 1aTAlC-0000XY-7R
+	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 11:03:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <raghavanil4m@gmail.com>) id 1aTA0I-0002Je-8u
-	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 10:14:59 -0500
-Received: from mail-lf0-x233.google.com ([2a00:1450:4010:c07::233]:34792)
+	(envelope-from <sw@weilnetz.de>) id 1aTAl8-0002wM-1h
+	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 11:03:26 -0500
+Received: from mail.weilnetz.de ([37.221.199.173]:39702)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <raghavanil4m@gmail.com>)
-	id 1aTA0F-0002Hw-DM; Tue, 09 Feb 2016 10:14:55 -0500
-Received: by mail-lf0-x233.google.com with SMTP id j78so117376440lfb.1;
-	Tue, 09 Feb 2016 07:14:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=LEB2kAVZvNCO2WZY2WwjvjAJgeJ8w6Y5fhI1AuoQMII=;
-	b=mb1f9tYIiH6DzlzKAZdRuBvIophHXM7a7rd68Utg1FfZPES4C6qzRiAh194vfb8dor
-	4X2aM6BTyZm1JfQyxWj1DTdGpaWvjCpUVEkBnJ+egU+0Bt28hxUuo/Dtz4Q84Qz2z0g+
-	KddsHXvVtvTx+nfCpfdRgmB5CQgQnn5vZ9rZLm+DKewEvszq+/UeOVJ6HnqPaluIBzHE
-	Pc/munrb7qlq03uPqM2ecBzlxRUD6LoZbCt8UFNIQNaSym9w8fw1aBK0W9rFN9N1Exm+
-	zVKfjKR9JAjtQq1RwZMMaYGk8l0t6sxeDiKqrQQEuMM0ZL1QB1ouqp+lM8k9DEQez/it
-	B4iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=LEB2kAVZvNCO2WZY2WwjvjAJgeJ8w6Y5fhI1AuoQMII=;
-	b=bfJy182xXTh9BOufVyRBp5bJ0iH8Hl/CflaVmRikr3OD86Hpg24qiWYlfGp/wscenX
-	yIVUWAlpw2Hdfn/k/jhIAdstibR6LTBol0d15iEBbx1Q3/JtCaG09FQIG8da5nQJa5cq
-	fb0NAyngYNPLbX/FR6ivROKqGKMu3iM705qio8DNkfkI1LBz6N62u1519cvzj+q56FHt
-	Yp1RXnw5eWMrifmB5+Y0NSaMKOWxMMA0I2l68tTdwMzxY8mf44H65lhDYdfvXyPCCx02
-	ZOC4yoSh0iZlEDsBDj4LYrbxNubsTbbIEqMmVKnLINXplbnTruDONXnD3oNHFHkB9GXh
-	9Qsw==
-X-Gm-Message-State: AG10YOSDK0GcXQpnqqHVTuweT2CmlX+D3cZNmsqGf52SM+zLUcRrc3fPgV3sYWU+9sVkizdQfYTqPldWmrVXNg==
+	(envelope-from <sw@weilnetz.de>) id 1aTAl7-0002wG-Rz
+	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 11:03:21 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id A39F5118188E;
+	Tue,  9 Feb 2016 17:03:19 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id nhuY4A4Hx5Gj; Tue,  9 Feb 2016 17:03:10 +0100 (CET)
+Received: from edv32.bib.uni-mannheim.de (p54AC96CC.dip0.t-ipconnect.de
+	[84.172.150.204])
+	by mail.weilnetz.de (Postfix) with ESMTPSA id ED85211822A4;
+	Tue,  9 Feb 2016 17:03:09 +0100 (CET)
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <1455027417-32278-1-git-send-email-pbonzini@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+X-Enigmail-Draft-Status: N1110
+Message-ID: <56BA0DBD.3060206@weilnetz.de>
+Date: Tue, 9 Feb 2016 17:03:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.5.0
 MIME-Version: 1.0
-X-Received: by 10.25.210.196 with SMTP id j187mr7618558lfg.75.1455030894520;
-	Tue, 09 Feb 2016 07:14:54 -0800 (PST)
-Received: by 10.112.78.4 with HTTP; Tue, 9 Feb 2016 07:14:54 -0800 (PST)
-In-Reply-To: <CAKWsRc2MyUByd3tjyZMx_q_3+Oy=D5kUtw7MLU6HP7h9xVAy6A@mail.gmail.com>
-References: <CAKWsRc2MyUByd3tjyZMx_q_3+Oy=D5kUtw7MLU6HP7h9xVAy6A@mail.gmail.com>
-Date: Tue, 9 Feb 2016 07:14:54 -0800
-Message-ID: <CAKWsRc2NX_Pz5_P6kEhU26=JWK4UemBuGUO7suHvMiuJph48KQ@mail.gmail.com>
-From: Raghavan Santhanam <raghavanil4m@gmail.com>
-To: qemu-stable@nongnu.org, qemu-trivial@nongnu.org, qemu-discuss@nongnu.org
-Content-Type: multipart/alternative; boundary=001a114128b29af2b7052b57c7e3
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::233
-Cc: Raghavan Santhanam <raghavanil4m@gmail.com>
-Subject: Re: [Qemu-trivial] Regarding Intel IGD passthru support for QEMU/KVM
+In-Reply-To: <1455027417-32278-1-git-send-email-pbonzini@redhat.com>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] w32: include winsock2.h
+	before windows.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,100 +52,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Feb 2016 15:15:00 -0000
+X-List-Received-Date: Tue, 09 Feb 2016 16:03:30 -0000
 
---001a114128b29af2b7052b57c7e3
-Content-Type: text/plain; charset=UTF-8
-
-Hi All,
-
-I am glad to share my successful Intel IGD passthru with QEMU/KVM, here as
-well
-in addition to my previous report on qemu-devel mailing list so that
-interested ones
-can have a look at my demos.
-
-Here are some of the popular platforms running smoothly with my successful
-Intel IGD passthru + QEMU/KVM setup on Ubuntu 14.04 LTS 64-bit host running
-on my
-Lenovo touchscreen-enabled laptop.
-
-*First success :* Android-x86 5.1 Lollipop -
-https://www.youtube.com/watch?v=PBN1DmarJ7k
-*Second success :* Windows 10 LTSB 64-bit -
-https://www.youtube.com/watch?v=WmKzRGT2cjI
-*Third success :* Ubuntu 15.10 64-bit -
-https://www.youtube.com/watch?v=1_VXTDgqnHg
-
-And I take this opportunity to appreicate the years of work on QEMU + KVM +
-XEN. Good work, developers!
-
-Best,
-Raghavan
-
-
-
-
-
-
-
-
-On Sun, Jan 17, 2016 at 6:23 PM, Raghavan Santhanam <raghavanil4m@gmail.com>
-wrote:
-
-> Hi,
+Am 09.02.2016 um 15:16 schrieb Paolo Bonzini:
+> Recent Fedora complains while compiling ui/sdl.c:
 >
-> Based on the Intel IGD passthru support that has been added to Qemu/Xen
-> code base,
-> is there any way to use/reuse the same logic currently to have a
-> successful passthru of an Intel
-> IGD with Qemu/KVM on a Linux host(Ubuntu x86_64) or will that require some
-> more
-> work in addition to what Xen code based already has for the IGD passthru?
+>     /usr/x86_64-w64-mingw32/sys-root/mingw/include/winsock2.h:15:2: warning: #warning Please include winsock2.h before windows.h [-Wcpp]
 >
-> Best,
-> Raghavan
+> And with this patch we dutifully obey.
 >
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  include/sysemu/os-win32.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
+> diff --git a/include/sysemu/os-win32.h b/include/sysemu/os-win32.h
+> index 400e098..fbed346 100644
+> --- a/include/sysemu/os-win32.h
+> +++ b/include/sysemu/os-win32.h
+> @@ -26,8 +26,8 @@
+>  #ifndef QEMU_OS_WIN32_H
+>  #define QEMU_OS_WIN32_H
+>  
+> -#include <windows.h>
+>  #include <winsock2.h>
+> +#include <windows.h>
+>  
+>  /* Workaround for older versions of MinGW. */
+>  #ifndef ECONNREFUSED
 
---001a114128b29af2b7052b57c7e3
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
-<div dir=3D"ltr">Hi All,<div><br></div><div>I am glad to share my successfu=
-l Intel IGD passthru with QEMU/KVM, here as well</div><div>in addition to m=
-y previous report on qemu-devel mailing list so that interested ones</div><=
-div>can have a look at my demos.</div><div><br></div><div>Here are some of =
-the popular platforms running smoothly with my successful</div><div>Intel I=
-GD passthru + QEMU/KVM setup on Ubuntu 14.04 LTS 64-bit host running on my<=
-/div><div>Lenovo touchscreen-enabled laptop.</div><div><br></div><div><b>Fi=
-rst success :</b> Android-x86 5.1 Lollipop -=C2=A0<a href=3D"https://www.yo=
-utube.com/watch?v=3DPBN1DmarJ7k">https://www.youtube.com/watch?v=3DPBN1Dmar=
-J7k</a></div><div><b>Second success :</b> Windows 10 LTSB 64-bit -=C2=A0<a =
-href=3D"https://www.youtube.com/watch?v=3DWmKzRGT2cjI">https://www.youtube.=
-com/watch?v=3DWmKzRGT2cjI</a></div><div><b>Third success :</b> Ubuntu 15.10=
- 64-bit -=C2=A0<a href=3D"https://www.youtube.com/watch?v=3D1_VXTDgqnHg">ht=
-tps://www.youtube.com/watch?v=3D1_VXTDgqnHg</a></div><div><br></div><div>An=
-d I take this opportunity to appreicate the years of work on QEMU + KVM + X=
-EN. Good work, developers!</div><div><br></div><div>Best,</div><div>Raghava=
-n</div><div><br></div><div><br></div><div><br></div><div><br></div><div><br=
-></div><div><br></div><div><br></div></div><div class=3D"gmail_extra"><br><=
-div class=3D"gmail_quote">On Sun, Jan 17, 2016 at 6:23 PM, Raghavan Santhan=
-am <span dir=3D"ltr">&lt;<a href=3D"mailto:raghavanil4m@gmail.com" target=
-=3D"_blank">raghavanil4m@gmail.com</a>&gt;</span> wrote:<br><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
-dding-left:1ex"><div dir=3D"ltr"><span style=3D"font-size:12.8px">Hi,</span=
-><div style=3D"font-size:12.8px"><br></div><div style=3D"font-size:12.8px">=
-Based on the Intel IGD passthru support that has been added to Qemu/Xen cod=
-e base,</div><div style=3D"font-size:12.8px">is there any way to use/reuse =
-the same logic currently to have a successful passthru of an Intel</div><di=
-v style=3D"font-size:12.8px">IGD with Qemu/KVM on a Linux host(Ubuntu x86_6=
-4) or will that require some more</div><div style=3D"font-size:12.8px">work=
- in addition to what Xen code based already has for the IGD passthru?</div>=
-<div style=3D"font-size:12.8px"><br></div><div style=3D"font-size:12.8px">B=
-est,</div><div style=3D"font-size:12.8px">Raghavan</div><div style=3D"font-=
-size:12.8px"><br></div></div>
-</blockquote></div><br></div>
+Without that patch, windows.h will include winsock.h
+(which conflicts with winsock2.h) when compiling sdl.c.
 
---001a114128b29af2b7052b57c7e3--
+Normally we define WIN32_LEAN_AND_MEAN, and
+windows.h won't include winsock.h.
+
+include/ui/sdl2.h and ui/sdl.c undefine that macro,
+so the order of the include files is important.
+
+Without testing this, I think that Paolo's patch is needed
+since commit e16f4c8770b73f530dad842a31298963b6c7e41d.
+
 
