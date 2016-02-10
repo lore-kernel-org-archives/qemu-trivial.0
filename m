@@ -1,49 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTHGW-0004Fa-Oo
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Feb 2016 18:00:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44045)
+	id 1aTSc3-0002GH-JX
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 06:07:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aTHGT-00049V-EF
-	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 18:00:10 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aTSbw-00026U-Ri
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:07:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aTHGS-0007vQ-5V
-	for qemu-trivial@nongnu.org; Tue, 09 Feb 2016 18:00:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44635)
+	(envelope-from <mjt@tls.msk.ru>) id 1aTSbv-00042J-8n
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:07:04 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:43868)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aTHGL-0007ll-5q; Tue, 09 Feb 2016 18:00:01 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 4F8BC155DE;
-	Tue,  9 Feb 2016 22:59:59 +0000 (UTC)
-Received: from [10.10.51.89] (unused [10.10.51.89] (may be forged))
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u19MxvtD031449
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 9 Feb 2016 17:59:57 -0500
-To: Shannon Zhao <zhaoshenglong@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1454005340-15682-1-git-send-email-wei@redhat.com>
-	<56B1A90E.3000506@msgid.tls.msk.ru>
-	<CAFEAcA9RzHTZhZemvSGZ_Qpji+bu0=13wQJ0ThMbYhYdJ99w1A@mail.gmail.com>
-	<56B22469.7040308@redhat.com> <56B2AD13.6030504@huawei.com>
-	<56B2EB3E.2000908@redhat.com> <56B2F4E3.6010807@huawei.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56BA6F6C.5000301@redhat.com>
-Date: Tue, 9 Feb 2016 16:59:56 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <56B2F4E3.6010807@huawei.com>
-Content-Type: multipart/mixed; boundary="------------030508020707040403010805"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] arm: virt: change GPIO trigger
-	interrupt to pulse
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1aTSbm-0003xf-TH; Wed, 10 Feb 2016 06:06:55 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3478441096;
+	Wed, 10 Feb 2016 14:06:43 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 726D4AE8;
+	Wed, 10 Feb 2016 14:06:42 +0300 (MSK)
+Received: (nullmailer pid 14467 invoked by uid 1000);
+	Wed, 10 Feb 2016 11:06:42 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Date: Wed, 10 Feb 2016 14:06:37 +0300
+Message-Id: <1455102397-14425-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Cc: qemu-trivial@nongnu.org, Pierre Morel <pmorel@linux.vnet.ibm.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-trivial] [PATCH] s390x: remove s390-zipl.rom
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,156 +41,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Feb 2016 23:00:10 -0000
+X-List-Received-Date: Wed, 10 Feb 2016 11:07:09 -0000
 
-This is a multi-part message in MIME format.
---------------030508020707040403010805
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+This is an s390 boot rom which was used in s390-virtio machine.
+but since commit 3538fb6f89dd9bb2e7e59de2bfad52a45321c744
+"s390x: remove s390-virtio machine", this file isn't used.
+The only place it is referenced in the code is an unused
+which I'm modifying too, to refer to s390-ccw.rom instead.
 
+Cc: Pierre Morel <pmorel@linux.vnet.ibm.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ Makefile               |   1 -
+ hw/s390x/ipl.c         |   2 +-
+ hw/s390x/s390-virtio.c |   1 -
+ pc-bios/README         |   4 ----
+ pc-bios/s390-zipl.rom  | Bin 3304 -> 0 bytes
+ 5 files changed, 1 insertion(+), 7 deletions(-)
+ delete mode 100644 pc-bios/s390-zipl.rom
 
-On 02/04/2016 12:51 AM, Shannon Zhao wrote:
-> 
-> 
-> On 2016/2/4 14:10, Wei Huang wrote:
->>
->> On 02/03/2016 07:44 PM, Shannon Zhao wrote:
+diff --git a/Makefile b/Makefile
+index 30b1b2d..f9fae3a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -400,7 +400,6 @@ efi-pcnet.rom efi-rtl8139.rom efi-virtio.rom \
+ qemu-icon.bmp qemu_logo_no_text.svg \
+ bamboo.dtb petalogix-s3adsp1800.dtb petalogix-ml605.dtb \
+ multiboot.bin linuxboot.bin kvmvapic.bin \
+-s390-zipl.rom \
+ s390-ccw.img \
+ spapr-rtas.bin slof.bin \
+ palcode-clipper \
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 6992add..4e6a0ac 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -106,7 +106,7 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+             /* Adjust ELF start address to final location */
+             ipl->bios_start_addr += fwbase;
+         } else {
+-            /* Try to load non-ELF file (e.g. s390-zipl.rom) */
++            /* Try to load non-ELF file (e.g. s390-ccw.rom) */
+             bios_size = load_image_targphys(bios_filename, ZIPL_IMAGE_START,
+                                             4096);
+             ipl->bios_start_addr = ZIPL_IMAGE_START;
+diff --git a/hw/s390x/s390-virtio.c b/hw/s390x/s390-virtio.c
+index 9efb9c6..c320878 100644
+--- a/hw/s390x/s390-virtio.c
++++ b/hw/s390x/s390-virtio.c
+@@ -54,7 +54,6 @@
+ #endif
+ 
+ #define MAX_BLK_DEVS                    10
+-#define ZIPL_FILENAME                   "s390-zipl.rom"
+ #define S390_MACHINE                    "s390-virtio"
+ #define TYPE_S390_MACHINE               MACHINE_TYPE_NAME(S390_MACHINE)
+ 
+diff --git a/pc-bios/README b/pc-bios/README
+index d260c1b..9f65ffa 100644
+--- a/pc-bios/README
++++ b/pc-bios/README
+@@ -35,10 +35,6 @@
+ 	10ec:8139 -> pxe-rtl8139.rom
+ 	1af4:1000 -> pxe-virtio.rom
+ 
+-- The S390 zipl loader is an addition to the official IBM s390-tools
+-  package. That fork is maintained in its own git repository at:
+-  git://repo.or.cz/s390-tools.git
+-
+ - The sources for the Alpha palcode image is available from:
+   git://github.com/rth7680/qemu-palcode.git
+ 
+diff --git a/pc-bios/s390-zipl.rom b/pc-bios/s390-zipl.rom
+deleted file mode 100644
+index 3115128efe465a024b2deb780573358ae1b829a4..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
 
-<snip>
+literal 3304
+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
 
->> I reversed the order of edge pulling. The state is 1 according to printk
->> inside gpio_keys driver. However the reboot still failed with two
->> reboots (1 very early, 1 later).
->>
-> Because to make the input work, it should call input_event twice I think.
-> 
-> input_event(input, type, button->code, 1) means the button pressed
-> input_event(input, type, button->code, 0) means the button released
-> 
-> But We only see guest entering gpio_keys_gpio_report_event once.
-> 
-> My original purpose is like below:
-> 
-> call qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1) to make guest
-> execute input_event(input, type, button->code, 1)
-> call qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0) to make guest
-> execute input_event(input, type, button->code, 0).
-> 
-> But even though it calls qemu_set_irq twice, it only calls pl061_update
-> once in qemu.
+-- 
+2.1.4
 
-Hi Shannon,
-
-Assuming that we are talking about the special case you found (i.e. send
-reboot very early and then send another one after guest VM fully
-booted). Dug into the code further, here are my findings:
-
-=== Why ACPI case failed? ===
-QEMU pl061.c checks the current request against the new request (see
-s->old_in_data ^ s->data in pl061.c file). If no change, nothing will
-happen.
-
-So two consecutive reboots will cause the following state change;
-apparently the second request won't trigger VM reboot because
-pl01_update() decides _not_ to inject IRQ into guest VM.
-
-  (PL061State fields)           data   old_in_data   istate
-VM boot                         0      0             0
-1st ACPI reboot request         8      0             0
-After VM PL061 driver ACK       8      8             0
-2nd ACPI reboot request         8     no-change, no IRQ <==
-
-To solve this problem, we have to invert PL061State->data at least once
-to trigger IRQ inside VM. Two solutions:
-
-S1: "Pulse"
-static void virt_powerdown_req(Notifier *n, void *opaque)
-{
-    qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0);
-    qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
-}
-
-S2: "Invert"
-static int old_gpio_level = 0;
-static void virt_powerdown_req(Notifier *n, void *opaque)
-{
-    /* use gpio Pin 3 for power button event */
-    qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), !old_gpio_level);
-    old_gpio_level = !old_gpio_level;
-}
-
-Both S1 and S2 works for ACPI. But S1 has problem with DT, which is
-explained below.
-
-=== Why DT fails with S1 ===
-DT approach requires both PL061 and gpio-keys to work together. Looking
-into guest kernel gpio-keys/input code, you will find that it only
-reacts to both LEVEL-HI and input changes. Here is the code snip from
-drivers/input/input.c file:
-
-    /* auto-repeat bypasses state updates */
-    if (value == 2) {
-            disposition = INPUT_PASS_TO_HANDLERS;
-            break;
-    }
-
-    if (!!test_bit(code, dev->key) != !!value) {
-            __change_bit(code, dev->key);
-            disposition = INPUT_PASS_TO_HANDLERS;
-    }
-
-Unless we adds gpio-keys DT property to "autorepeat", the
-"!!test_bit(code, dev->key) != !!value" is always FALSE with S1. Thus
-systemd won't receive any input event; and no power-switch will be
-triggered.
-
-In comparison S2 will work because value is changed very time.
-
-=== Summary ===
-1. Cleaning PL061 state is required. That means "[PATCH V2 1/2] ARM:
-PL061: Clear PL061 device state after reset" is necessary.
-2. S2 is better. To support S2, we needs to change GPIO IRQ polarity to
-AML_ACTIVE_BOTH in ACPI description.
-
-I attach a small patch in this email. It should work for your DT case.
-Please test it and let me know your comments.
-
-Thanks,
--Wei
-
-
-> 
-
---------------030508020707040403010805
-Content-Type: text/plain; charset=UTF-8;
- name="gpio-fix.txt"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment;
- filename="gpio-fix.txt"
-
-ZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYyBiL2h3L2FybS92aXJ0LWFj
-cGktYnVpbGQuYwppbmRleCA3YjEyNGY2Li43YjFkYzVlIDEwMDY0NAotLS0gYS9ody9hcm0v
-dmlydC1hY3BpLWJ1aWxkLmMKKysrIGIvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5jCkBAIC0z
-MjYsNyArMzI2LDcgQEAgc3RhdGljIHZvaWQgYWNwaV9kc2R0X2FkZF9ncGlvKEFtbCAqc2Nv
-cGUsIGNvbnN0IE1lbU1hcEVudHJ5ICpncGlvX21lbW1hcCwKICAgICBBbWwgKmFlaSA9IGFt
-bF9yZXNvdXJjZV90ZW1wbGF0ZSgpOwogICAgIC8qIFBpbiAzIGZvciBwb3dlciBidXR0b24g
-Ki8KICAgICBjb25zdCB1aW50MzJfdCBwaW5fbGlzdFsxXSA9IHszfTsKLSAgICBhbWxfYXBw
-ZW5kKGFlaSwgYW1sX2dwaW9faW50KEFNTF9DT05TVU1FUiwgQU1MX0VER0UsIEFNTF9BQ1RJ
-VkVfSElHSCwKKyAgICBhbWxfYXBwZW5kKGFlaSwgYW1sX2dwaW9faW50KEFNTF9DT05TVU1F
-UiwgQU1MX0VER0UsIDMsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBTUxf
-RVhDTFVTSVZFLCBBTUxfUFVMTF9VUCwgMCwgcGluX2xpc3QsIDEsCiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAiR1BPMCIsIE5VTEwsIDApKTsKICAgICBhbWxfYXBwZW5k
-KGRldiwgYW1sX25hbWVfZGVjbCgiX0FFSSIsIGFlaSkpOwpkaWZmIC0tZ2l0IGEvaHcvYXJt
-L3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMKaW5kZXggNTY5NWU3Mi4uZWQwMmE2YyAxMDA2NDQK
-LS0tIGEvaHcvYXJtL3ZpcnQuYworKysgYi9ody9hcm0vdmlydC5jCkBAIC01NDcsMTAgKzU0
-NywxMiBAQCBzdGF0aWMgdm9pZCBjcmVhdGVfcnRjKGNvbnN0IFZpcnRCb2FyZEluZm8gKnZi
-aSwgcWVtdV9pcnEgKnBpYykKIH0KIAogc3RhdGljIERldmljZVN0YXRlICpwbDA2MV9kZXY7
-CitzdGF0aWMgaW50IG9sZF9ncGlvX2xldmVsID0gMDsKIHN0YXRpYyB2b2lkIHZpcnRfcG93
-ZXJkb3duX3JlcShOb3RpZmllciAqbiwgdm9pZCAqb3BhcXVlKQogewogICAgIC8qIHVzZSBn
-cGlvIFBpbiAzIGZvciBwb3dlciBidXR0b24gZXZlbnQgKi8KLSAgICBxZW11X3NldF9pcnEo
-cWRldl9nZXRfZ3Bpb19pbihwbDA2MV9kZXYsIDMpLCAxKTsKKyAgICBxZW11X3NldF9pcnEo
-cWRldl9nZXRfZ3Bpb19pbihwbDA2MV9kZXYsIDMpLCAhb2xkX2dwaW9fbGV2ZWwpOworICAg
-IG9sZF9ncGlvX2xldmVsID0gIW9sZF9ncGlvX2xldmVsOwogfQogCiBzdGF0aWMgTm90aWZp
-ZXIgdmlydF9zeXN0ZW1fcG93ZXJkb3duX25vdGlmaWVyID0gewo=
---------------030508020707040403010805--
 
