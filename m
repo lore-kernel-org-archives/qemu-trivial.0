@@ -1,44 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTVQA-0004Vx-Vc
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 09:07:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58425)
+	id 1aTVWQ-000875-11
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 09:13:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60086)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cov@codeaurora.org>) id 1aTVQ4-0004Nq-9z
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:07:05 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1aTVWN-00084p-PL
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:13:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cov@codeaurora.org>) id 1aTVPw-0001Bz-DG
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:07:00 -0500
-Received: from smtp.codeaurora.org ([198.145.29.96]:33883)
+	(envelope-from <pbonzini@redhat.com>) id 1aTVWM-0002mB-Rq
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:13:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49002)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cov@codeaurora.org>)
-	id 1aTVPq-0001BK-6c; Wed, 10 Feb 2016 09:06:46 -0500
-Received: from smtp.codeaurora.org (localhost [127.0.0.1])
-	by smtp.codeaurora.org (Postfix) with ESMTP id 7DE0D60246;
-	Wed, 10 Feb 2016 14:06:45 +0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 4F2E260351; Wed, 10 Feb 2016 14:06:45 +0000 (UTC)
-Received: from keeshans.qualcomm.com (global_nat1_iad_fw.qualcomm.com
-	[129.46.232.65])
-	(using TLSv1.1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: cov@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 087A760246;
-	Wed, 10 Feb 2016 14:06:40 +0000 (UTC)
-From: Christopher Covington <cov@codeaurora.org>
-To: 
-Date: Wed, 10 Feb 2016 09:06:32 -0500
-Message-Id: <1455113192-27139-1-git-send-email-cov@codeaurora.org>
-X-Mailer: git-send-email 1.8.1.1
-X-Virus-Scanned: ClamAV using ClamSMTP
+	(envelope-from <pbonzini@redhat.com>)
+	id 1aTVWI-0002lL-Fn; Wed, 10 Feb 2016 09:13:26 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 25E80804FD;
+	Wed, 10 Feb 2016 14:13:26 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u1AEDLHW001807
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 10 Feb 2016 09:13:23 -0500
+To: Christopher Covington <cov@codeaurora.org>
+References: <1455113192-27139-1-git-send-email-cov@codeaurora.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56BB4581.5010508@redhat.com>
+Date: Wed, 10 Feb 2016 15:13:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.0
+MIME-Version: 1.0
+In-Reply-To: <1455113192-27139-1-git-send-email-cov@codeaurora.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 198.145.29.96
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Aaron Lindsay <alindsay@codeaurora.org>, qemu-trivial@nongnu.org,
+X-Received-From: 209.132.183.28
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	Christopher Covington <cov@codeaurora.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] Rename cpu_get_icount_{locked,biased}
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] Rename cpu_get_icount_{locked,biased}
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,58 +52,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Feb 2016 14:07:06 -0000
+X-List-Received-Date: Wed, 10 Feb 2016 14:13:32 -0000
 
-The function does not provide locking but rather adds a bias value.
 
-Signed-off-by: Christopher Covington <cov@codeaurora.org>
----
- cpus.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index 898426c..50403c4 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -164,7 +164,7 @@ int64_t cpu_get_icount_raw(void)
- }
- 
- /* Return the virtual CPU time, based on the instruction counter.  */
--static int64_t cpu_get_icount_locked(void)
-+static int64_t cpu_get_icount_biased(void)
- {
-     int64_t icount = cpu_get_icount_raw();
-     return timers_state.qemu_icount_bias + cpu_icount_to_ns(icount);
-@@ -177,7 +177,7 @@ int64_t cpu_get_icount(void)
- 
-     do {
-         start = seqlock_read_begin(&timers_state.vm_clock_seqlock);
--        icount = cpu_get_icount_locked();
-+        icount = cpu_get_icount_biased();
-     } while (seqlock_read_retry(&timers_state.vm_clock_seqlock, start));
- 
-     return icount;
-@@ -293,7 +293,7 @@ static void icount_adjust(void)
- 
-     seqlock_write_lock(&timers_state.vm_clock_seqlock);
-     cur_time = cpu_get_clock_locked();
--    cur_icount = cpu_get_icount_locked();
-+    cur_icount = cpu_get_icount_biased();
- 
-     delta = cur_icount - cur_time;
-     /* FIXME: This is a very crude algorithm, somewhat prone to oscillation.  */
-@@ -356,7 +356,7 @@ static void icount_warp_rt(void)
-              * In adaptive mode, do not let QEMU_CLOCK_VIRTUAL run too
-              * far ahead of real time.
-              */
--            int64_t cur_icount = cpu_get_icount_locked();
-+            int64_t cur_icount = cpu_get_icount_biased();
-             int64_t delta = clock - cur_icount;
-             warp_delta = MIN(warp_delta, delta);
-         }
--- 
-Qualcomm Innovation Center, Inc.
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+On 10/02/2016 15:06, Christopher Covington wrote:
+> The function does not provide locking but rather adds a bias value.
 
+"Locked" means that you need to take a look outside its call; see how
+cpu_get_icount() uses it.
+
+Basically the idea is that a "_locked" in the name warns you to pay
+attention. :)
+
+Paolo
+
+> Signed-off-by: Christopher Covington <cov@codeaurora.org>
+> ---
+>  cpus.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/cpus.c b/cpus.c
+> index 898426c..50403c4 100644
+> --- a/cpus.c
+> +++ b/cpus.c
+> @@ -164,7 +164,7 @@ int64_t cpu_get_icount_raw(void)
+>  }
+>  
+>  /* Return the virtual CPU time, based on the instruction counter.  */
+> -static int64_t cpu_get_icount_locked(void)
+> +static int64_t cpu_get_icount_biased(void)
+>  {
+>      int64_t icount = cpu_get_icount_raw();
+>      return timers_state.qemu_icount_bias + cpu_icount_to_ns(icount);
+> @@ -177,7 +177,7 @@ int64_t cpu_get_icount(void)
+>  
+>      do {
+>          start = seqlock_read_begin(&timers_state.vm_clock_seqlock);
+> -        icount = cpu_get_icount_locked();
+> +        icount = cpu_get_icount_biased();
+>      } while (seqlock_read_retry(&timers_state.vm_clock_seqlock, start));
+>  
+>      return icount;
+> @@ -293,7 +293,7 @@ static void icount_adjust(void)
+>  
+>      seqlock_write_lock(&timers_state.vm_clock_seqlock);
+>      cur_time = cpu_get_clock_locked();
+> -    cur_icount = cpu_get_icount_locked();
+> +    cur_icount = cpu_get_icount_biased();
+>  
+>      delta = cur_icount - cur_time;
+>      /* FIXME: This is a very crude algorithm, somewhat prone to oscillation.  */
+> @@ -356,7 +356,7 @@ static void icount_warp_rt(void)
+>               * In adaptive mode, do not let QEMU_CLOCK_VIRTUAL run too
+>               * far ahead of real time.
+>               */
+> -            int64_t cur_icount = cpu_get_icount_locked();
+> +            int64_t cur_icount = cpu_get_icount_biased();
+>              int64_t delta = clock - cur_icount;
+>              warp_delta = MIN(warp_delta, delta);
+>          }
+> 
 
