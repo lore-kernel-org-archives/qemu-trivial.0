@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTSc3-0002GH-JX
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 06:07:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59172)
+	id 1aTSek-0006w4-Qb
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 06:09:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59969)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTSbw-00026U-Ri
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:07:08 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aTSei-0006t9-4o
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:09:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTSbv-00042J-8n
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:07:04 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:43868)
+	(envelope-from <mjt@tls.msk.ru>) id 1aTSeg-0004k9-Pu
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 06:09:56 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:46493)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1aTSbm-0003xf-TH; Wed, 10 Feb 2016 06:06:55 -0500
+	id 1aTSea-0004hx-Vx; Wed, 10 Feb 2016 06:09:49 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3478441096;
-	Wed, 10 Feb 2016 14:06:43 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 1ABB1410B1;
+	Wed, 10 Feb 2016 14:09:49 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 726D4AE8;
-	Wed, 10 Feb 2016 14:06:42 +0300 (MSK)
-Received: (nullmailer pid 14467 invoked by uid 1000);
-	Wed, 10 Feb 2016 11:06:42 -0000
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5A3F7AE8;
+	Wed, 10 Feb 2016 14:09:48 +0300 (MSK)
+Received: (nullmailer pid 14563 invoked by uid 1000);
+	Wed, 10 Feb 2016 11:09:48 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Wed, 10 Feb 2016 14:06:37 +0300
-Message-Id: <1455102397-14425-1-git-send-email-mjt@msgid.tls.msk.ru>
+Date: Wed, 10 Feb 2016 14:09:46 +0300
+Message-Id: <1455102586-14523-1-git-send-email-mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
 Cc: qemu-trivial@nongnu.org, Pierre Morel <pmorel@linux.vnet.ibm.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-trivial] [PATCH] s390x: remove s390-zipl.rom
+Subject: [Qemu-trivial] [PATCH v2] s390x: remove s390-zipl.rom
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,16 +41,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Feb 2016 11:07:09 -0000
+X-List-Received-Date: Wed, 10 Feb 2016 11:09:57 -0000
 
 This is an s390 boot rom which was used in s390-virtio machine.
 but since commit 3538fb6f89dd9bb2e7e59de2bfad52a45321c744
 "s390x: remove s390-virtio machine", this file isn't used.
 The only place it is referenced in the code is an unused
+define ZIPL_FIRMWARE.  There's also comment in hw/s390/ipl.c
 which I'm modifying too, to refer to s390-ccw.rom instead.
 
 Cc: Pierre Morel <pmorel@linux.vnet.ibm.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+--
+v2: fix commit comment, restoring line which
+    has been eaten by git.
 ---
  Makefile               |   1 -
  hw/s390x/ipl.c         |   2 +-
