@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTk7z-0006UB-QF
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Feb 2016 00:49:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42731)
+	id 1aTk9f-0007OV-Eb
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Feb 2016 00:51:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTk7v-0006J2-2I
-	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 00:49:18 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aTk9e-0007Mm-As
+	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 00:51:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTk7o-0007ns-JM
-	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 00:49:09 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:32853)
+	(envelope-from <mjt@tls.msk.ru>) id 1aTk9d-0008EN-MB
+	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 00:51:02 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:41177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1aTk7k-0007mR-Bl; Thu, 11 Feb 2016 00:49:04 -0500
+	id 1aTk9Z-0008As-IJ; Thu, 11 Feb 2016 00:50:57 -0500
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1D726412DC;
-	Thu, 11 Feb 2016 08:49:00 +0300 (MSK)
-To: Daniel Serpell <daniel.serpell@gmail.com>, qemu-devel@nongnu.org
-References: <1454612620-7819-1-git-send-email-daniel.serpell@gmail.com>
-	<1454612620-7819-2-git-send-email-daniel.serpell@gmail.com>
+	by isrv.corpit.ru (Postfix) with ESMTP id 0EBE9412DC;
+	Thu, 11 Feb 2016 08:50:57 +0300 (MSK)
+To: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org
+References: <1454939707-10869-1-git-send-email-berrange@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
 Organization: Telecom Service, JSC
-Message-ID: <56BC20CB.90100@msgid.tls.msk.ru>
-Date: Thu, 11 Feb 2016 08:48:59 +0300
+Message-ID: <56BC2140.5040004@msgid.tls.msk.ru>
+Date: Thu, 11 Feb 2016 08:50:56 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Icedove/38.5.0
 MIME-Version: 1.0
-In-Reply-To: <1454612620-7819-2-git-send-email-daniel.serpell@gmail.com>
+In-Reply-To: <1454939707-10869-1-git-send-email-berrange@redhat.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Adds keycode 86 to the hid_usage_keys
-	translation table.
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [Qemu-trivial] [PATCH] char: fix repeated registration of tcp
+ chardev I/O handlers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,14 +45,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Feb 2016 05:49:18 -0000
-
-04.02.2016 22:03, Daniel Serpell wrote:
-> This key is present in international keyboards, between left shift and
-> the 'Z' key, ant is described in the HID usage tables as "Keyboard
-> Non-US \ and |": http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
-> 
-> This patch fixes the usb-kbd devices.
+X-List-Received-Date: Thu, 11 Feb 2016 05:51:03 -0000
 
 Applied to -trivial, thanks!
 
