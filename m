@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTVWQ-000875-11
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 09:13:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60086)
+	id 1aTfX8-0000zo-Pk
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 19:54:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aTVWN-00084p-PL
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:13:32 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aTfX5-0000zD-Sc
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:54:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aTVWM-0002mB-Rq
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 09:13:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49002)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aTfX0-0006jd-ST
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:54:55 -0500
+Received: from mail-pa0-x232.google.com ([2607:f8b0:400e:c03::232]:34173)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1aTVWI-0002lL-Fn; Wed, 10 Feb 2016 09:13:26 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 25E80804FD;
-	Wed, 10 Feb 2016 14:13:26 +0000 (UTC)
-Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1AEDLHW001807
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 10 Feb 2016 09:13:23 -0500
-To: Christopher Covington <cov@codeaurora.org>
-References: <1455113192-27139-1-git-send-email-cov@codeaurora.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56BB4581.5010508@redhat.com>
-Date: Wed, 10 Feb 2016 15:13:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <1455113192-27139-1-git-send-email-cov@codeaurora.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Aaron Lindsay <alindsay@codeaurora.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] Rename cpu_get_icount_{locked,biased}
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1aTfX0-0006jU-L9; Wed, 10 Feb 2016 19:54:50 -0500
+Received: by mail-pa0-x232.google.com with SMTP id dk10so7078422pac.1;
+	Wed, 10 Feb 2016 16:54:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=qvkVfjIOeP8npcj6ypoQ5XEV9ccWVP6u95DK+7SUIms=;
+	b=UY5TCcBZI1rftDtu9Io++zc5P4gL+peK+hoWECfS6w7WywkJ5YwNl0bOof7oIbjZxi
+	MFSs9e8cfJUV7/TzMhAgyxkXvwGNoInYqyoxmORbpmtrYR43WE3inH7j6luDO99R9bvC
+	liW4QmeaT5w/ay0AfZoA2ddEw3lS8eG7G/rImHuw76q+BWj7MpC5fHBFRiV705NYzY53
+	JKisNqqjzPi/MoQ+VxWs8/hscx2pjW9Mk/ommhVpFwnB9BAazex2n1oACDDyIGtlPdYI
+	57wmUVQO1t+eh3kJhDAyYLSACazeceaI0vPv91GuKW+3CZ4I2jk+uEDJPp8ynHPi0WNt
+	zqVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=qvkVfjIOeP8npcj6ypoQ5XEV9ccWVP6u95DK+7SUIms=;
+	b=EkHIM/IqWBe06JrfRomf/3HlX1S0IhDleQXpeP7ivTmy9ZN9qYWHDWqjwZ2gi030vF
+	Wb+Elrt0a+RshUUR+faeq++Iv7APSkSX/ohzDgktGOdIVclTcvNN3GmaWzaxPM9gAc/m
+	t1cc8MkIOVTEQ/4pce8d6rYFJJKEXti5xw7Yi++6fgBy5Ozhal6NsRm0heiv8APh7HEz
+	iWouaRyKXfNvlU7PLYAXLExuUGVmCEzyT2i1DLD6iD3R70/ur+zhJEWLWaPcI9EuoV9q
+	M6BSNhXquMtHYZo4IuDL2n+WQSJpaGL1aqbPlm4f9lQJAlYeke62FEtdKWrNuQvFFP4d
+	10Kw==
+X-Gm-Message-State: AG10YOR8YB9puj2LTAKT4TaxMqn5LdciLfmRVTC9uLO+LsoWOicZFs0buqBqbdp5GdReKQ==
+X-Received: by 10.67.1.129 with SMTP id bg1mr16212868pad.63.1455152088352;
+	Wed, 10 Feb 2016 16:54:48 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	mk3sm7797463pab.20.2016.02.10.16.54.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 10 Feb 2016 16:54:47 -0800 (PST)
+From: Wei Yang <richard.weiyang@gmail.com>
+To: alex.williamson@redhat.com
+Date: Thu, 11 Feb 2016 00:54:27 +0000
+Message-Id: <1455152067-19900-1-git-send-email-richard.weiyang@gmail.com>
+X-Mailer: git-send-email 2.5.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c03::232
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>
+Subject: [Qemu-trivial] [PATCH] vfio/pci: replace 1 with PCI_CAP_LIST_NEXT
+	to make code self-explain
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -52,65 +62,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Feb 2016 14:13:32 -0000
+X-List-Received-Date: Thu, 11 Feb 2016 00:54:56 -0000
 
+Use the macro PCI_CAP_LIST_NEXT instead of 1, so that the code would be
+more self-explain.
 
+This patch makes this change and also fixs one typo in comment.
 
-On 10/02/2016 15:06, Christopher Covington wrote:
-> The function does not provide locking but rather adds a bias value.
+Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+---
+ hw/vfio/pci.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-"Locked" means that you need to take a look outside its call; see how
-cpu_get_icount() uses it.
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 1fb868c..17d1462 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -1472,7 +1472,7 @@ static uint8_t vfio_std_cap_max_size(PCIDevice *pdev, uint8_t pos)
+     uint8_t tmp, next = 0xff;
+ 
+     for (tmp = pdev->config[PCI_CAPABILITY_LIST]; tmp;
+-         tmp = pdev->config[tmp + 1]) {
++         tmp = pdev->config[tmp + PCI_CAP_LIST_NEXT]) {
+         if (tmp > pos && tmp < next) {
+             next = tmp;
+         }
+@@ -1661,7 +1661,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
+     int ret;
+ 
+     cap_id = pdev->config[pos];
+-    next = pdev->config[pos + 1];
++    next = pdev->config[pos + PCI_CAP_LIST_NEXT];
+ 
+     /*
+      * If it becomes important to configure capabilities to their actual
+@@ -1675,7 +1675,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
+      * pci_add_capability always inserts the new capability at the head
+      * of the chain.  Therefore to end up with a chain that matches the
+      * physical device, we insert from the end by making this recursive.
+-     * This is also why we pre-caclulate size above as cached config space
++     * This is also why we pre-calculate size above as cached config space
+      * will be changed as we unwind the stack.
+      */
+     if (next) {
+@@ -1691,7 +1691,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
+     }
+ 
+     /* Use emulated next pointer to allow dropping caps */
+-    pci_set_byte(vdev->emulated_config_bits + pos + 1, 0xff);
++    pci_set_byte(vdev->emulated_config_bits + pos + PCI_CAP_LIST_NEXT, 0xff);
+ 
+     switch (cap_id) {
+     case PCI_CAP_ID_MSI:
+-- 
+2.5.0
 
-Basically the idea is that a "_locked" in the name warns you to pay
-attention. :)
-
-Paolo
-
-> Signed-off-by: Christopher Covington <cov@codeaurora.org>
-> ---
->  cpus.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/cpus.c b/cpus.c
-> index 898426c..50403c4 100644
-> --- a/cpus.c
-> +++ b/cpus.c
-> @@ -164,7 +164,7 @@ int64_t cpu_get_icount_raw(void)
->  }
->  
->  /* Return the virtual CPU time, based on the instruction counter.  */
-> -static int64_t cpu_get_icount_locked(void)
-> +static int64_t cpu_get_icount_biased(void)
->  {
->      int64_t icount = cpu_get_icount_raw();
->      return timers_state.qemu_icount_bias + cpu_icount_to_ns(icount);
-> @@ -177,7 +177,7 @@ int64_t cpu_get_icount(void)
->  
->      do {
->          start = seqlock_read_begin(&timers_state.vm_clock_seqlock);
-> -        icount = cpu_get_icount_locked();
-> +        icount = cpu_get_icount_biased();
->      } while (seqlock_read_retry(&timers_state.vm_clock_seqlock, start));
->  
->      return icount;
-> @@ -293,7 +293,7 @@ static void icount_adjust(void)
->  
->      seqlock_write_lock(&timers_state.vm_clock_seqlock);
->      cur_time = cpu_get_clock_locked();
-> -    cur_icount = cpu_get_icount_locked();
-> +    cur_icount = cpu_get_icount_biased();
->  
->      delta = cur_icount - cur_time;
->      /* FIXME: This is a very crude algorithm, somewhat prone to oscillation.  */
-> @@ -356,7 +356,7 @@ static void icount_warp_rt(void)
->               * In adaptive mode, do not let QEMU_CLOCK_VIRTUAL run too
->               * far ahead of real time.
->               */
-> -            int64_t cur_icount = cpu_get_icount_locked();
-> +            int64_t cur_icount = cpu_get_icount_biased();
->              int64_t delta = clock - cur_icount;
->              warp_delta = MIN(warp_delta, delta);
->          }
-> 
 
