@@ -1,37 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTqDb-0001CE-9K
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Feb 2016 07:19:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58161)
+	id 1aTqDc-0001EX-Cu
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Feb 2016 07:19:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58202)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTqDX-00012u-0R
-	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 07:19:29 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1aTqDa-0001Aw-FU
+	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 07:19:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1aTqDR-0006FK-Op
-	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 07:19:22 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:45303)
+	(envelope-from <mjt@tls.msk.ru>) id 1aTqDZ-0006GK-Hh
+	for qemu-trivial@nongnu.org; Thu, 11 Feb 2016 07:19:30 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:46559)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1aTqDN-0006CG-Ag; Thu, 11 Feb 2016 07:19:17 -0500
+	id 1aTqDN-0006CE-AW; Thu, 11 Feb 2016 07:19:17 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E9AC041456;
+	by isrv.corpit.ru (Postfix) with ESMTP id 398B641451;
 	Thu, 11 Feb 2016 15:19:05 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 0F524A8A;
-	Thu, 11 Feb 2016 15:19:05 +0300 (MSK)
-Received: (nullmailer pid 11193 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5BDDCA8A;
+	Thu, 11 Feb 2016 15:19:04 +0300 (MSK)
+Received: (nullmailer pid 11170 invoked by uid 1000);
 	Thu, 11 Feb 2016 12:19:04 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Date: Thu, 11 Feb 2016 15:19:00 +0300
-Message-Id: <059db2041954766d2f9fd83f51a732a372076937.1455192968.git.mjt@msgid.tls.msk.ru>
+Date: Thu, 11 Feb 2016 15:18:49 +0300
+Message-Id: <cover.1455192968.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1455192968.git.mjt@msgid.tls.msk.ru>
-References: <cover.1455192968.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, Cao jin <caoj.fnst@cn.fujitsu.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [Qemu-trivial] [PULL 11/14] Passthru CCID card: QOMify
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [Qemu-trivial] [PULL 00/14] Trivial patches for 2016-02-11
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -43,77 +40,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Feb 2016 12:19:29 -0000
+X-List-Received-Date: Thu, 11 Feb 2016 12:19:31 -0000
 
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Here's yet another trivial-patches pull request.  There aren't many
+patches in there this time, even if the previous pull request was
+quite some time ago.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/usb/ccid-card-passthru.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+Speaking of the pull requests.  Maybe it is better to use the
+same tag all the time, instead of separate tags for every pull?
 
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index 2e4d95f..c0e90e5 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -39,8 +39,6 @@ static const uint8_t DEFAULT_ATR[] = {
-  0x13, 0x08
- };
- 
--
--#define PASSTHRU_DEV_NAME "ccid-card-passthru"
- #define VSCARD_IN_SIZE 65536
- 
- /* maximum size of ATR - from 7816-3 */
-@@ -59,6 +57,10 @@ struct PassthruState {
-     uint8_t  debug;
- };
- 
-+#define TYPE_CCID_PASSTHRU "ccid-card-passthru"
-+#define PASSTHRU_CCID_CARD(obj) \
-+    OBJECT_CHECK(PassthruState, (obj), TYPE_CCID_PASSTHRU)
-+
- /*
-  * VSCard protocol over chardev
-  * This code should not depend on the card type.
-@@ -317,7 +319,7 @@ static void ccid_card_vscard_event(void *opaque, int event)
- static void passthru_apdu_from_guest(
-     CCIDCardState *base, const uint8_t *apdu, uint32_t len)
- {
--    PassthruState *card = DO_UPCAST(PassthruState, base, base);
-+    PassthruState *card = PASSTHRU_CCID_CARD(base);
- 
-     if (!card->cs) {
-         printf("ccid-passthru: no chardev, discarding apdu length %d\n", len);
-@@ -328,7 +330,7 @@ static void passthru_apdu_from_guest(
- 
- static const uint8_t *passthru_get_atr(CCIDCardState *base, uint32_t *len)
- {
--    PassthruState *card = DO_UPCAST(PassthruState, base, base);
-+    PassthruState *card = PASSTHRU_CCID_CARD(base);
- 
-     *len = card->atr_length;
-     return card->atr;
-@@ -336,7 +338,7 @@ static const uint8_t *passthru_get_atr(CCIDCardState *base, uint32_t *len)
- 
- static int passthru_initfn(CCIDCardState *base)
- {
--    PassthruState *card = DO_UPCAST(PassthruState, base, base);
-+    PassthruState *card = PASSTHRU_CCID_CARD(base);
- 
-     card->vscard_in_pos = 0;
-     card->vscard_in_hdr = 0;
-@@ -400,7 +402,7 @@ static void passthru_class_initfn(ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo passthru_card_info = {
--    .name          = PASSTHRU_DEV_NAME,
-+    .name          = TYPE_CCID_PASSTHRU,
-     .parent        = TYPE_CCID_CARD,
-     .instance_size = sizeof(PassthruState),
-     .class_init    = passthru_class_initfn,
--- 
-2.1.4
+Thanks,
 
+/mjt
+
+The following changes since commit 88c73d16ad1b6c22a2ab082064d0d521f756296a:
+
+  memory: fix usage of find_next_bit and find_next_zero_bit (2016-02-10 22:38:24 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2016-02-11
+
+for you to fetch changes up to 1834ed3afc578b8dbf39838cfdf27d457771a334:
+
+  w32: include winsock2.h before windows.h (2016-02-11 15:15:47 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2016-02-11
+
+----------------------------------------------------------------
+Alistair Francis (1):
+      qom: Correct object_property_get_int() description
+
+Cao jin (3):
+      ES1370: QOMify
+      Emulated CCID card: QOMify
+      Passthru CCID card: QOMify
+
+Christophe Fergeau (1):
+      man: virtfs-proxy-helper: Rework awkward sentence
+
+Daniel P. Berrange (1):
+      char: fix parameter name / type in BSD codepath
+
+Daniel Serpell (1):
+      Adds keycode 86 to the hid_usage_keys translation table.
+
+Michael Tokarev (2):
+      remove libtool support
+      s390x: remove s390-zipl.rom
+
+Paolo Bonzini (3):
+      cpu: cpu_save/cpu_load is no more
+      qemu-sockets: simplify error handling
+      w32: include winsock2.h before windows.h
+
+Wei Yang (2):
+      rdma: remove check on time_spent when calculating mbs
+      qmp-spec: fix index in doc
+
+ Makefile                       |   1 -
+ configure                      |  86 +----------------------------------------
+ docs/qmp-spec.txt              |   2 +-
+ exec.c                         |   6 ---
+ fsdev/virtfs-proxy-helper.texi |   4 +-
+ hw/audio/es1370.c              |  10 +++--
+ hw/input/hid.c                 |   2 +-
+ hw/s390x/ipl.c                 |   2 +-
+ hw/s390x/s390-virtio.c         |   1 -
+ hw/usb/ccid-card-emulated.c    |  23 ++++++-----
+ hw/usb/ccid-card-passthru.c    |  14 ++++---
+ include/qemu-common.h          |   6 ---
+ include/qom/object.h           |   2 +-
+ include/sysemu/os-win32.h      |   2 +-
+ migration/migration.c          |   4 +-
+ pc-bios/README                 |   4 --
+ pc-bios/s390-zipl.rom          | Bin 3304 -> 0 bytes
+ qemu-char.c                    |   4 +-
+ qemu-doc.texi                  |   1 -
+ rules.mak                      |  18 ---------
+ util/qemu-sockets.c            |   6 +--
+ 21 files changed, 44 insertions(+), 154 deletions(-)
+ delete mode 100644 pc-bios/s390-zipl.rom
 
