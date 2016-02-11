@@ -1,59 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aTfX8-0000zo-Pk
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 19:54:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39469)
+	id 1aTfYw-0002kn-ON
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Feb 2016 19:56:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aTfX5-0000zD-Sc
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:54:56 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aTfYu-0002kf-VZ
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:56:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aTfX0-0006jd-ST
-	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:54:55 -0500
-Received: from mail-pa0-x232.google.com ([2607:f8b0:400e:c03::232]:34173)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aTfYq-0007P8-04
+	for qemu-trivial@nongnu.org; Wed, 10 Feb 2016 19:56:48 -0500
+Received: from mail-pf0-x22f.google.com ([2607:f8b0:400e:c00::22f]:34487)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <richard.weiyang@gmail.com>)
-	id 1aTfX0-0006jU-L9; Wed, 10 Feb 2016 19:54:50 -0500
-Received: by mail-pa0-x232.google.com with SMTP id dk10so7078422pac.1;
-	Wed, 10 Feb 2016 16:54:49 -0800 (PST)
+	id 1aTfYp-0007Oy-PB; Wed, 10 Feb 2016 19:56:43 -0500
+Received: by mail-pf0-x22f.google.com with SMTP id x65so20628909pfb.1;
+	Wed, 10 Feb 2016 16:56:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=qvkVfjIOeP8npcj6ypoQ5XEV9ccWVP6u95DK+7SUIms=;
-	b=UY5TCcBZI1rftDtu9Io++zc5P4gL+peK+hoWECfS6w7WywkJ5YwNl0bOof7oIbjZxi
-	MFSs9e8cfJUV7/TzMhAgyxkXvwGNoInYqyoxmORbpmtrYR43WE3inH7j6luDO99R9bvC
-	liW4QmeaT5w/ay0AfZoA2ddEw3lS8eG7G/rImHuw76q+BWj7MpC5fHBFRiV705NYzY53
-	JKisNqqjzPi/MoQ+VxWs8/hscx2pjW9Mk/ommhVpFwnB9BAazex2n1oACDDyIGtlPdYI
-	57wmUVQO1t+eh3kJhDAyYLSACazeceaI0vPv91GuKW+3CZ4I2jk+uEDJPp8ynHPi0WNt
-	zqVA==
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=Aiv2zqvNqQPW9lCy9uB22vmlm/rRf1u0y6aNPwAszA8=;
+	b=md58xrJylovhUPG1vtrlhM3YovZs6Q/r+TUDKipUD4JKpFj7YT78IP4zwzHWptxVWl
+	+hD1obiBSqhih2hrfkND7lMZxuegNy/0Y6tmUQxnFClRRUoApnmUPqiTkqCjpHAeHGWS
+	KKbHi5N6bK1YCTVZFmwhFx0vS0r1bYkQS1zFaQVaq3r6eEMPVHP3UqXrUO2fuQgYAqKZ
+	dcGeFBzoYp4ptgOKQWyaBoYmUjuLh9IF8fbUpeROY10P2AVT4VQnQPkNhk9eWqfBAJG1
+	NbQ0e4vZDJyDHqhWly6sp/5A3FMCR2cnOMARcNF0ibuEpkz/YiuO8a+MCdMfFfHP1euV
+	ypcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=qvkVfjIOeP8npcj6ypoQ5XEV9ccWVP6u95DK+7SUIms=;
-	b=EkHIM/IqWBe06JrfRomf/3HlX1S0IhDleQXpeP7ivTmy9ZN9qYWHDWqjwZ2gi030vF
-	Wb+Elrt0a+RshUUR+faeq++Iv7APSkSX/ohzDgktGOdIVclTcvNN3GmaWzaxPM9gAc/m
-	t1cc8MkIOVTEQ/4pce8d6rYFJJKEXti5xw7Yi++6fgBy5Ozhal6NsRm0heiv8APh7HEz
-	iWouaRyKXfNvlU7PLYAXLExuUGVmCEzyT2i1DLD6iD3R70/ur+zhJEWLWaPcI9EuoV9q
-	M6BSNhXquMtHYZo4IuDL2n+WQSJpaGL1aqbPlm4f9lQJAlYeke62FEtdKWrNuQvFFP4d
-	10Kw==
-X-Gm-Message-State: AG10YOR8YB9puj2LTAKT4TaxMqn5LdciLfmRVTC9uLO+LsoWOicZFs0buqBqbdp5GdReKQ==
-X-Received: by 10.67.1.129 with SMTP id bg1mr16212868pad.63.1455152088352;
-	Wed, 10 Feb 2016 16:54:48 -0800 (PST)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-type:content-disposition
+	:in-reply-to:user-agent;
+	bh=Aiv2zqvNqQPW9lCy9uB22vmlm/rRf1u0y6aNPwAszA8=;
+	b=MpQU9xTCnfqyr1ATLrN7pIhk203kBHcGJWSjTZGT58IAnl+ZsOpXLQvAwjvOHl7GyI
+	/09eNjdEscTLqH1+tgCJQ8QPZLVTML4oB27qhHgVoRLmmFzkxuT/4WHS/437WxNFiglH
+	prr4a8KUXI2gvl27oHbARqhXhAWQDJeyfTYjrXN/88SymRD7R+ypS1/VqCDcmnRIEQgE
+	Z47s699OKNXZ8+LzQO+4EBXQmUUqf3e/tvCJNPWSZAg+bPYfsz3n0pRYUY9j6c3K9e8i
+	TNI+0BCCNJ6cxL5Pwu1tnwG41Yo0KS/U2jFqT1XBTlcPtzRwCKHHO7lvQAk8uWqEYgHG
+	MEzQ==
+X-Gm-Message-State: AG10YORZY2zMpKeMt2ovAxfxx8uefDH0u3d3QsoXJT1z7pmMtkhvE+NiaXmRbzp8HbwXCg==
+X-Received: by 10.98.2.216 with SMTP id 207mr62749385pfc.3.1455152203034;
+	Wed, 10 Feb 2016 16:56:43 -0800 (PST)
 Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
-	mk3sm7797463pab.20.2016.02.10.16.54.47
+	sm8sm7763645pac.43.2016.02.10.16.56.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 10 Feb 2016 16:54:47 -0800 (PST)
+	Wed, 10 Feb 2016 16:56:42 -0800 (PST)
+Date: Thu, 11 Feb 2016 00:56:40 +0000
 From: Wei Yang <richard.weiyang@gmail.com>
-To: alex.williamson@redhat.com
-Date: Thu, 11 Feb 2016 00:54:27 +0000
-Message-Id: <1455152067-19900-1-git-send-email-richard.weiyang@gmail.com>
-X-Mailer: git-send-email 2.5.0
+To: Wei Yang <richard.weiyang@gmail.com>
+Message-ID: <20160211005640.GA19879@vultr.guest>
+References: <1454626230-16334-1-git-send-email-richard.weiyang@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1454626230-16334-1-git-send-email-richard.weiyang@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::232
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Wei Yang <richard.weiyang@gmail.com>
-Subject: [Qemu-trivial] [PATCH] vfio/pci: replace 1 with PCI_CAP_LIST_NEXT
-	to make code self-explain
+X-Received-From: 2607:f8b0:400e:c00::22f
+Cc: amit.shah@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	quintela@redhat.com
+Subject: Re: [Qemu-trivial] [PATCH] migration: reorder code to make it
+	symmetric
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -62,59 +71,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Feb 2016 00:54:56 -0000
+X-List-Received-Date: Thu, 11 Feb 2016 00:56:50 -0000
 
-Use the macro PCI_CAP_LIST_NEXT instead of 1, so that the code would be
-more self-explain.
+Hello everyone,
 
-This patch makes this change and also fixs one typo in comment.
+Is this one correct?
 
-Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
----
- hw/vfio/pci.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+On Thu, Feb 04, 2016 at 10:50:30PM +0000, Wei Yang wrote:
+>In qemu_savevm_state_complete_precopy(), it iterates on each device to add
+>a json object and transfer related status to destination, while the order
+>of the last two steps could be refined.
+>
+>Current order:
+>
+>    json_start_object()
+>    	save_section_header()
+>    	vmstate_save()
+>    json_end_object()
+>    	save_section_footer()
+>
+>After the change:
+>
+>    json_start_object()
+>    	save_section_header()
+>    	vmstate_save()
+>    	save_section_footer()
+>    json_end_object()
+>
+>This patch reorder the code to to make it symmetric. No functional change.
+>
+>Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+>---
+> migration/savevm.c |    5 ++---
+> 1 file changed, 2 insertions(+), 3 deletions(-)
+>
+>diff --git a/migration/savevm.c b/migration/savevm.c
+>index b9caf59..42bfab4 100644
+>--- a/migration/savevm.c
+>+++ b/migration/savevm.c
+>@@ -1088,12 +1088,11 @@ void qemu_savevm_state_complete_precopy(QEMUFile *f, bool iterable_only)
+>         json_prop_int(vmdesc, "instance_id", se->instance_id);
+> 
+>         save_section_header(f, se, QEMU_VM_SECTION_FULL);
+>-
+>         vmstate_save(f, se, vmdesc);
+>-
+>-        json_end_object(vmdesc);
+>         trace_savevm_section_end(se->idstr, se->section_id, 0);
+>         save_section_footer(f, se);
+>+
+>+        json_end_object(vmdesc);
+>     }
+> 
+>     if (!in_postcopy) {
+>-- 
+>1.7.9.5
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 1fb868c..17d1462 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -1472,7 +1472,7 @@ static uint8_t vfio_std_cap_max_size(PCIDevice *pdev, uint8_t pos)
-     uint8_t tmp, next = 0xff;
- 
-     for (tmp = pdev->config[PCI_CAPABILITY_LIST]; tmp;
--         tmp = pdev->config[tmp + 1]) {
-+         tmp = pdev->config[tmp + PCI_CAP_LIST_NEXT]) {
-         if (tmp > pos && tmp < next) {
-             next = tmp;
-         }
-@@ -1661,7 +1661,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
-     int ret;
- 
-     cap_id = pdev->config[pos];
--    next = pdev->config[pos + 1];
-+    next = pdev->config[pos + PCI_CAP_LIST_NEXT];
- 
-     /*
-      * If it becomes important to configure capabilities to their actual
-@@ -1675,7 +1675,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
-      * pci_add_capability always inserts the new capability at the head
-      * of the chain.  Therefore to end up with a chain that matches the
-      * physical device, we insert from the end by making this recursive.
--     * This is also why we pre-caclulate size above as cached config space
-+     * This is also why we pre-calculate size above as cached config space
-      * will be changed as we unwind the stack.
-      */
-     if (next) {
-@@ -1691,7 +1691,7 @@ static int vfio_add_std_cap(VFIOPCIDevice *vdev, uint8_t pos)
-     }
- 
-     /* Use emulated next pointer to allow dropping caps */
--    pci_set_byte(vdev->emulated_config_bits + pos + 1, 0xff);
-+    pci_set_byte(vdev->emulated_config_bits + pos + PCI_CAP_LIST_NEXT, 0xff);
- 
-     switch (cap_id) {
-     case PCI_CAP_ID_MSI:
 -- 
-2.5.0
-
+Wei Yang
+Help you, Help me
 
