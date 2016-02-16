@@ -1,39 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aViTx-0008LW-Vz
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Feb 2016 11:28:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40418)
+	id 1aViYH-0007SU-Pi
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Feb 2016 11:32:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1aViTr-00087o-2G
-	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 11:28:07 -0500
+	(envelope-from <lersek@redhat.com>) id 1aViYE-0007Nv-U5
+	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 11:32:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1aViTl-0005KD-Bh
-	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 11:28:02 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42445)
+	(envelope-from <lersek@redhat.com>) id 1aViYD-0006dj-U4
+	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 11:32:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53698)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1aViTf-0005JA-FL; Tue, 16 Feb 2016 11:27:51 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 0F86814AAA;
-	Tue, 16 Feb 2016 16:27:51 +0000 (UTC)
-Received: from [10.3.113.167] (ovpn-113-167.phx2.redhat.com [10.3.113.167])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1GGRoMs014669; Tue, 16 Feb 2016 11:27:50 -0500
+	(envelope-from <lersek@redhat.com>)
+	id 1aViY6-0006cq-RF; Tue, 16 Feb 2016 11:32:27 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 788B75A43;
+	Tue, 16 Feb 2016 16:32:26 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-108.phx2.redhat.com
+	[10.3.113.108])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u1GGWOqu026890; Tue, 16 Feb 2016 11:32:25 -0500
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1455638581-5912-1-git-send-email-peter.maydell@linaro.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <56C34E06.6050904@redhat.com>
-Date: Tue, 16 Feb 2016 09:27:50 -0700
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <56C34F18.7090006@redhat.com>
+Date: Tue, 16 Feb 2016 17:32:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	Thunderbird/38.5.1
 MIME-Version: 1.0
 In-Reply-To: <1455638581-5912-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="nvLPEFLTCrcmLHiliP9PeIeoADPNJRDwX"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -51,60 +49,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Feb 2016 16:28:08 -0000
+X-List-Received-Date: Tue, 16 Feb 2016 16:32:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---nvLPEFLTCrcmLHiliP9PeIeoADPNJRDwX
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 02/16/2016 09:03 AM, Peter Maydell wrote:
-> The current documentation of chardev mux=3Don is rather brief and opaqu=
-e;
+On 02/16/16 17:03, Peter Maydell wrote:
+> The current documentation of chardev mux=on is rather brief and opaque;
 > expand it to hopefully be a bit more helpful.
->=20
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> There was some discussion on #qemu yesterday evening about multiplexing=
-,
+> There was some discussion on #qemu yesterday evening about multiplexing,
 > and "make the docs a bit less confusing" was one suggestion...
 > ---
 >  qemu-options.hx | 20 +++++++++++++++++++-
 >  1 file changed, 19 insertions(+), 1 deletion(-)
->=20
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 2f0465e..6b46dd4 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -2162,8 +2162,26 @@ All devices must have an id, which can be any string up to 127 characters long.
+>  It is used to uniquely identify this device in other command line directives.
+>  
+>  A character device may be used in multiplexing mode by multiple front-ends.
+> +Specify @option{mux=on} to enable this mode.
+> +A multiplexer is a "1:N" device, and here the "1" end is your specified chardev
+> +backend, and the "N" end is the various parts of QEMU that can talk to a chardev.
+> +If you create a chardev with @option{id=myid} and @option{mux=on}, QEMU will
+> +create a multiplexer with your specified ID, and you can then configure multiple
+> +front ends to use that chardev ID for their input/output. Up to four different
+> +front ends can be connected to a single multiplexed chardev. (Without
+> +multiplexing enabled, a chardev can only be used by a single front end.)
+> +For instance you could use this to allow a single stdio chardev to be used by
+> +two serial ports and the QEMU monitor.
+> +
+>  The key sequence of @key{Control-a} and @key{c} will rotate the input focus
+> -between attached front-ends. Specify @option{mux=on} to enable this mode.
+> +of a multiplexed character device between attached front-ends.
+> +
+> +You can have more than one multiplexer in a system configuration; for instance
+> +you could have a TCP port multiplexed between UART 0 and UART 1, and stdio
+> +multiplexed between the QEMU monitor and a parallel port.
+> +
+> +There is currently no support for multiplexing in the other direction
+> +(where a single QEMU front end takes input and output from multiple chardevs).
+>  
+>  Every backend supports the @option{logfile} option, which supplies the path
+>  to a file to record all data transmitted via the backend. The @option{logappend}
+> 
 
-Looks like a strict improvement, so:
-Reviewed-by: Eric Blake <eblake@redhat.com>
+I'm a big fan of muxing the stdio backend between the (human) monitor
+and the guest's serial console:
 
-That said, how does one enter a literal <ctrl-a> to the front end,
-instead of getting it interpreted by the mux backend as a signal of
-whether to rotate to the next front end?  Is <ctrl-a> an escaping
-character, such that sending it twice results in a single instance being
-sent to the current guest front end hooked up to the mux?
+  -chardev stdio,signal=off,mux=on,id=char0 \
+  -mon chardev=char0,mode=readline,default \
+  -serial chardev:char0 \
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+I think if you could mention the following in the above, that would be
+even more helpful:
+- how to enter a real Control-A character (relevant when typing at the
+  guest's shell prompt, over serial)
+- not strictly related, but a warning about using this in "screen"
+  (I use "screen" all the time to capture serial IO) -- Control-A is
+  also piggy-backed by "screen"
+- how the initially active frontend gets selected
+- the fact that frontends use different syntaxes to refer to the
+  backend. You have two examples in the text being added ("for
+  instance, ..."), so I think it would be really helpful to provide
+  actual command line options for those.
 
+Just my two cents. The patch looks great.
 
---nvLPEFLTCrcmLHiliP9PeIeoADPNJRDwX
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJWw04GAAoJEKeha0olJ0NqrHIIAIlfaI01NsEOpT2Ke92ri8dK
-Lmx4adbXTgDwQjQ/U9VTIQYm3JGiCh6cnYXLy/JlXM+wdEQmUEZvaUd5abkjogDG
-uN2NS8k2O2dJJMq6DcY15oAQKfWATcK3zqx7gykNOu2d6aVris2WDuLv4xYZqn8M
-ZaTzm7IRG0RILkTw0cTLgmMNDnylde4EKCFv0P9XohlYLfjrfU1KiM8nB9tO8WLl
-wpW1QQOckER0Lg4Im+jcyle5sgCP+4sUqNV9KzH0ZCmKT2VrrYVN2xVv1ICKixSE
-HHB1Ddsn9qOjtB/5u6gnHsgAxOlcoO3cm/B0xJ3hm/T9caZtt2RFYAUacQW1y+Q=
-=XJvj
------END PGP SIGNATURE-----
-
---nvLPEFLTCrcmLHiliP9PeIeoADPNJRDwX--
+Thanks
+Laszlo
 
