@@ -1,45 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aVbNW-000703-JQ
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Feb 2016 03:53:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33116)
+	id 1aVcEL-0001E1-Qa
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Feb 2016 04:47:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1aVbNV-0006xW-5p
-	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 03:53:01 -0500
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1aVcEI-0001CT-K4
+	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 04:47:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1aVbNU-0007DG-B1
-	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 03:53:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33121)
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1aVcEE-0004bo-Kq
+	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 04:47:34 -0500
+Received: from e06smtp10.uk.ibm.com ([195.75.94.106]:37177)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1aVbNO-0007Au-Do; Tue, 16 Feb 2016 03:52:54 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id CB53080508;
-	Tue, 16 Feb 2016 08:52:53 +0000 (UTC)
-Received: from [10.36.5.104] (vpn1-5-104.ams2.redhat.com [10.36.5.104])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1G8qlwn021648
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 16 Feb 2016 03:52:50 -0500
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <1455604235-3313-1-git-send-email-mjt@msgid.tls.msk.ru>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <56C2E35F.1030103@redhat.com>
-Date: Tue, 16 Feb 2016 09:52:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1aVcEE-0004bb-A0
+	for qemu-trivial@nongnu.org; Tue, 16 Feb 2016 04:47:30 -0500
+Received: from localhost
+	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <cornelia.huck@de.ibm.com>;
+	Tue, 16 Feb 2016 09:47:28 -0000
+Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
+	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 16 Feb 2016 09:47:26 -0000
+X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
+X-IBM-MailFrom: cornelia.huck@de.ibm.com
+X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 0DE3617D8042; 
+	Tue, 16 Feb 2016 09:47:44 +0000 (GMT)
+Received: from d06av04.portsmouth.uk.ibm.com (d06av04.portsmouth.uk.ibm.com
+	[9.149.37.216])
+	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u1G9lQL66226394; Tue, 16 Feb 2016 09:47:26 GMT
+Received: from d06av04.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u1G9lPwG012474; Tue, 16 Feb 2016 02:47:25 -0700
+Received: from gondolin (dyn-9-152-224-197.boeblingen.de.ibm.com
+	[9.152.224.197])
+	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u1G9lPqq012455; Tue, 16 Feb 2016 02:47:25 -0700
+Date: Tue, 16 Feb 2016 10:47:23 +0100
+From: Cornelia Huck <cornelia.huck@de.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20160216104723.5b728fc8.cornelia.huck@de.ibm.com>
 In-Reply-To: <1455604235-3313-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
+References: <1455604235-3313-1-git-send-email-mjt@msgid.tls.msk.ru>
+Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
+	Aufsichtsrats: Martina Koederitz
+	=?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
+	Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
+	Registergericht: Amtsgericht Stuttgart, HRB 243294
+X-Mailer: Claws Mail 3.8.0 (GTK+ 2.24.10; i686-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16021609-0041-0000-0000-00000749D79A
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cornelia.huck@de.ibm.com>,
-	Pierre Morel <pmorel@linux.vnet.ibm.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] s390: remove misleading comment
+X-Received-From: 195.75.94.106
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] s390: remove misleading
+	comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,9 +74,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Feb 2016 08:53:02 -0000
+X-List-Received-Date: Tue, 16 Feb 2016 09:47:35 -0000
 
-On 16.02.2016 07:30, Michael Tokarev wrote:
+On Tue, 16 Feb 2016 09:30:35 +0300
+Michael Tokarev <mjt@tls.msk.ru> wrote:
+
 > The comment talks about a non-ELF object while the
 > example gives ELF object.
 > 
@@ -75,8 +100,7 @@ On 16.02.2016 07:30, Michael Tokarev wrote:
 >              bios_size = load_image_targphys(bios_filename, ZIPL_IMAGE_START,
 >                                              4096);
 >              ipl->bios_start_addr = ZIPL_IMAGE_START;
-> 
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Cornelia Huck <cornelia.huck@de.ibm.com>
 
 
