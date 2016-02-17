@@ -1,42 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aW5zf-0005d9-9Y
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Feb 2016 12:34:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43136)
+	id 1aW6I7-0006bS-NE
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Feb 2016 12:53:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aW5zd-0005aN-C2
-	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 12:34:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aW6I5-0006a7-HB
+	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 12:53:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aW5zX-0007Sd-JA
-	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 12:34:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42537)
+	(envelope-from <peter.maydell@linaro.org>) id 1aW6I4-0003AT-Mu
+	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 12:53:29 -0500
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:33920)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aW5zO-0007R6-5s; Wed, 17 Feb 2016 12:34:10 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8CE41C00071A;
-	Wed, 17 Feb 2016 17:34:09 +0000 (UTC)
-Received: from [10.10.52.181] (unused [10.10.52.181] (may be forged))
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1HHY59i005599
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 17 Feb 2016 12:34:07 -0500
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aW6I4-0003AA-Ij
+	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 12:53:28 -0500
+Received: by mail-vk0-x230.google.com with SMTP id e185so21561328vkb.1
+	for <qemu-trivial@nongnu.org>; Wed, 17 Feb 2016 09:53:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=llIrLtjNvZS5E1B2kU7cUYylqW36ywV+TLzVMZWseSQ=;
+	b=jv2LkqBDHhK1DnW5YroeS/qzf1ulNr4RlZWRwSCAA7Rd3DTSYWfO8g6hUWrbsjxcFw
+	98qAi1cM5ImYewHOyowq+fvdxMzr7lv8dvuGzBZN/HQHkXgkOZLMmubhchv2BtCaohJW
+	g+AG1uBd530XfQt5MmTQCBIfMeB+rG+slZy8Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=llIrLtjNvZS5E1B2kU7cUYylqW36ywV+TLzVMZWseSQ=;
+	b=BUtUK0tYxjobXMiGLK1JH46tAUumaQEGcAs8q2otySSVy8AvjobP+YpcgmCxUlCzQ+
+	02Jm06S3GNmuGtUNljXfhaJyga0O7MBm1rlssofifWqxf3fgj6t1E3OcABXx9bDrkbzH
+	2d1ZrULm+znDDLRYUuqQYcyaqjM04nlXOGs5gjgxO0bH7tiGgIR2jfClkPro5nIS+tDT
+	lW0HeYA4V9Pyl8T26OHsui5/yQuHByGlI+CYwTdHhBNDKsYEif1Ngpz0bR0Y4tg41V3E
+	Zhu7CtYrDV42KulLUKjISa5dtn2Xq54DNRYHiEWTX9kdlEmufX+cl5C7S5KHkn2czBdu
+	0XaQ==
+X-Gm-Message-State: AG10YOQTQJ/VHF0+8dAth1KjTxyK341KDV9eoKrjKrr3GKZMaTG9Bp9GmxnecjBhgpSIBQFTt0UX+mL1hAd5YNlw
+X-Received: by 10.31.180.85 with SMTP id d82mr2083609vkf.83.1455731606966;
+	Wed, 17 Feb 2016 09:53:26 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Wed, 17 Feb 2016 09:53:07 -0800 (PST)
+In-Reply-To: <56C4AF0D.9070803@redhat.com>
 References: <1454359775-25959-1-git-send-email-wei@redhat.com>
 	<CAFEAcA8czS_7Wxw1_s_khTL8eFNKcXixRrEYuEb4==_cYbdHbg@mail.gmail.com>
 	<CAFEAcA8oUBe+mZ+2Lq0RO2eq_-H+atamp=gBCnxS2OWdkyza0w@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56C4AF0D.9070803@redhat.com>
-Date: Wed, 17 Feb 2016 11:34:05 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8oUBe+mZ+2Lq0RO2eq_-H+atamp=gBCnxS2OWdkyza0w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	<56C4AF0D.9070803@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 17 Feb 2016 17:53:07 +0000
+Message-ID: <CAFEAcA-0+HLS4vgG3DqgUqsBNEt=J3M9Fy89uOtTQAtbt5noCQ@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::230
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
@@ -54,68 +66,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Feb 2016 17:34:26 -0000
+X-List-Received-Date: Wed, 17 Feb 2016 17:53:30 -0000
 
+On 17 February 2016 at 17:34, Wei Huang <wei@redhat.com> wrote:
+> On 02/16/2016 08:39 AM, Peter Maydell wrote:
+>> Side note: half our "PL061" behaviour is actually specific
+>> to the TI variant in the Luminary, and for our plain old PL061
+>> we ought to restrict access to the registers that are Stellaris
+>> only. But that's a different bug and not a very major one.
+>
+> Thanks for your suggestion. I was trying to fix it. The plan was to add
+> a new field rsvd_addr in "struct PL061State". Then in pl061_read() and
+> pl061_write(), we can check offset against [rsvd_addr, 0xfcc] (ignored
+> if inside).
+>
+> While I was working on it, I realized that this is a benign issue. It is
+> true that PL061 device can access Luminary registers in the reserved
+> memory area. However QEMU doesn't use these Luminary registers anywhere
+> else other than pl061_read() and pl061_write(). It basically passes the
+> read/write requests through. I don't see a malicious driver can damage
+> device state. Thoughts?
 
+It's not a "malicious guest can do bad things" bug, it's a "modelled
+hardware doesn't behave like the real thing" bug. A non-Luminary PL061
+should act like the hardware, which means that the registers that don't
+exist should be RAZ/WI (and should log guest-errors if the guest tries
+to access them), the same way we do in the "default" case of the
+case statements for other reserved registers.
 
-On 02/16/2016 08:39 AM, Peter Maydell wrote:
-> On 16 February 2016 at 14:35, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 1 February 2016 at 20:49, Wei Huang <wei@redhat.com> wrote:
->>> Current QEMU doesn't clear PL061 state after reset. This causes a
->>> weird issue with guest reboot via GPIO. Here is the device state
->>> description with two reboot requests:
-> 
->>
->> These reset values are all OK...
->>
->>> +
->>> +static void pl061_state_reset(DeviceState *dev)
->>> +{
->>> +    PL061State *s = PL061(dev);
->>> +
->>> +    pl061_reset(s);
->>>  }
->>
->> ...but you don't need to have this wrapper function.
->> You can just do the reset in a function called pl061_reset()
->> with the function signature we need for dc->reset.
->> The only place that currently calls the existing pl061_reset()
->> is the device's init function, and you can delete that call
->> because the Device framework automatically calls the dc->reset
->> function after device initialization.
-> 
-> I know this patch doesn't (by itself) fix the issues with guest
-> reboot, but I think it is worth having anyway because not resetting
-> the PL061 state is a genuine bug. Can you do a v3 and resend, please?
-> 
-> PS: please could you include a cover letter email next time round,
-> since this is a multi patch series?
-
-Done, please review.
-
-> 
-> Side note: half our "PL061" behaviour is actually specific
-> to the TI variant in the Luminary, and for our plain old PL061
-> we ought to restrict access to the registers that are Stellaris
-> only. But that's a different bug and not a very major one.
-
-Thanks for your suggestion. I was trying to fix it. The plan was to add
-a new field rsvd_addr in "struct PL061State". Then in pl061_read() and
-pl061_write(), we can check offset against [rsvd_addr, 0xfcc] (ignored
-if inside).
-
-While I was working on it, I realized that this is a benign issue. It is
-true that PL061 device can access Luminary registers in the reserved
-memory area. However QEMU doesn't use these Luminary registers anywhere
-else other than pl061_read() and pl061_write(). It basically passes the
-read/write requests through. I don't see a malicious driver can damage
-device state. Thoughts?
-
-Thanks,
--Wei
-
-> 
-> thanks
-> -- PMM
-> 
+thanks
+-- PMM
 
