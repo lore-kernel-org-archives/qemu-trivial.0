@@ -1,62 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aW7i0-0000wy-Bi
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Feb 2016 14:24:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42578)
+	id 1aWJnI-00034j-4J
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Feb 2016 03:18:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54968)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aW7hx-0000uB-Cj
-	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 14:24:18 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aWJnF-000315-0K
+	for qemu-trivial@nongnu.org; Thu, 18 Feb 2016 03:18:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aW7hw-0007cr-E8
-	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 14:24:17 -0500
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:32935)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aWJnE-00025R-5J
+	for qemu-trivial@nongnu.org; Thu, 18 Feb 2016 03:18:32 -0500
+Received: from [59.151.112.132] (port=46740 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aW7hw-0007cX-99
-	for qemu-trivial@nongnu.org; Wed, 17 Feb 2016 14:24:16 -0500
-Received: by mail-vk0-x22a.google.com with SMTP id k196so24211941vka.0
-	for <qemu-trivial@nongnu.org>; Wed, 17 Feb 2016 11:24:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=4iU4QWc9M7Ds7oUBSP5qv4+WJ7QKLtsNBjTAMTcfnzI=;
-	b=aDJW4BCEU68mq6fWj70SmKDulcH5oA9VJ9EQ50KPOkld4Xq+u/Y7JR4e9Hjs6BtPYn
-	Tpq6L8yMfKTtfdRhGE4xDOq0iGBLxyceJ0EVfFypgBIlCFBGnHVHP4mMCpZJEyByY8q2
-	OClJpkmdj6zKEGQO5iBVQWIYYOR70Qbs8Se9I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=4iU4QWc9M7Ds7oUBSP5qv4+WJ7QKLtsNBjTAMTcfnzI=;
-	b=I0BRSnl9VdheWyhertc8uyuH27mUrT5GlNOX4u0msEyLdAODsb08hTTtrYr+vNYIgp
-	zX4c3P0lGKete/Ja36GVHpSGWOrfUxW6now450YfQmBSDkmdlxgcKlrAlV9sEWL+ID26
-	gkv8WOqxqy3zG7HFu/xmwfpbploP7/Mwx2nNcnrJQQJhv+C711Dyk3Sd3auSU3zffkwI
-	OscNlFrPezafcdNGOB1nlciE+t2S7OnBAblJrBBxTVhVfQ1NQlPrcjabijiTjqN45YOj
-	bEk86xrHcYZ//FBjI95m+TUR/VvgB7nxTgA1CuZQuMMTxAWIPyOvbUapTBTBnW52FokE
-	Nqxw==
-X-Gm-Message-State: AG10YOQuy3y6HZWXw26x/+jBNy8xgcqAqqsnq2PscwJiFxtQkzvh9IXmB18m6cQfUyqFM6dUgasHdx6od2xFQJqC
-X-Received: by 10.31.1.6 with SMTP id 6mr2419459vkb.139.1455737054723; Wed, 17
-	Feb 2016 11:24:14 -0800 (PST)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aWJn7-00024m-RD; Thu, 18 Feb 2016 03:18:26 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="3671026"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 18 Feb 2016 16:18:22 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id E4C6942AC844;
+	Thu, 18 Feb 2016 16:16:41 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Thu, 18 Feb 2016 16:18:20 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 18 Feb 2016 16:18:56 +0800
+Message-ID: <1455783536-27909-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Wed, 17 Feb 2016 11:23:55 -0800 (PST)
-In-Reply-To: <56C4C55F.2050006@redhat.com>
-References: <1454359775-25959-1-git-send-email-wei@redhat.com>
-	<CAFEAcA8czS_7Wxw1_s_khTL8eFNKcXixRrEYuEb4==_cYbdHbg@mail.gmail.com>
-	<CAFEAcA8oUBe+mZ+2Lq0RO2eq_-H+atamp=gBCnxS2OWdkyza0w@mail.gmail.com>
-	<56C4AF0D.9070803@redhat.com>
-	<CAFEAcA-0+HLS4vgG3DqgUqsBNEt=J3M9Fy89uOtTQAtbt5noCQ@mail.gmail.com>
-	<56C4C55F.2050006@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 17 Feb 2016 19:23:55 +0000
-Message-ID: <CAFEAcA9LuN6--czsaU72VCqacgbvd2DM1Ka9A-c5k_a0FozbhQ@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH V2 1/2] ARM: PL061: Clear PL061 device
-	state after reset
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: E4C6942AC844.A8C2C
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: qemu-trivial@nongnu.org, imammedo@redhat.com
+Subject: [Qemu-trivial] [PATCH] remove comment for nonexistent structure
+	member
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -68,45 +50,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Feb 2016 19:24:18 -0000
+X-List-Received-Date: Thu, 18 Feb 2016 08:18:33 -0000
 
-On 17 February 2016 at 19:09, Wei Huang <wei@redhat.com> wrote:
->
->
-> On 02/17/2016 11:53 AM, Peter Maydell wrote:
->> On 17 February 2016 at 17:34, Wei Huang <wei@redhat.com> wrote:
->>> On 02/16/2016 08:39 AM, Peter Maydell wrote:
->>>> Side note: half our "PL061" behaviour is actually specific
->>>> to the TI variant in the Luminary, and for our plain old PL061
->>>> we ought to restrict access to the registers that are Stellaris
->>>> only. But that's a different bug and not a very major one.
->>>
->>> Thanks for your suggestion. I was trying to fix it. The plan was to add
->>> a new field rsvd_addr in "struct PL061State". Then in pl061_read() and
->>> pl061_write(), we can check offset against [rsvd_addr, 0xfcc] (ignored
->>> if inside).
->>>
->>> While I was working on it, I realized that this is a benign issue. It is
->>> true that PL061 device can access Luminary registers in the reserved
->>> memory area. However QEMU doesn't use these Luminary registers anywhere
->>> else other than pl061_read() and pl061_write(). It basically passes the
->>> read/write requests through. I don't see a malicious driver can damage
->>> device state. Thoughts?
->>
->> It's not a "malicious guest can do bad things" bug, it's a "modelled
->> hardware doesn't behave like the real thing" bug. A non-Luminary PL061
->> should act like the hardware, which means that the registers that don't
->> exist should be RAZ/WI (and should log guest-errors if the guest tries
->> to access them), the same way we do in the "default" case of the
->> case statements for other reserved registers.
->
-> How about the attached patch? I can write a new patch based on it, or
-> you prefer stashing it on top of V3 I just submitted?
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ include/sysemu/hostmem.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-Looks OK, but you don't need to check for address being <= 0xfcc
-because either we've already handled the ID registers (read)
-or we were going to be reserved anyway (write).
+diff --git a/include/sysemu/hostmem.h b/include/sysemu/hostmem.h
+index 1ce4394..82cc6c5 100644
+--- a/include/sysemu/hostmem.h
++++ b/include/sysemu/hostmem.h
+@@ -45,7 +45,6 @@ struct HostMemoryBackendClass {
+  *
+  * @parent: opaque parent object container
+  * @size: amount of memory backend provides
+- * @id: unique identification string in memdev namespace
+  * @mr: MemoryRegion representing host memory belonging to backend
+  */
+ struct HostMemoryBackend {
+-- 
+2.1.0
 
-thanks
--- PMM
+
+
 
