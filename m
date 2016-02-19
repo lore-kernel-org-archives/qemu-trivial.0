@@ -1,44 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aWYyo-0000H8-Ly
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Feb 2016 19:31:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48435)
+	id 1aWmpM-0008L1-C4
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2016 10:18:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1aWYyk-000066-OC
-	for qemu-trivial@nongnu.org; Thu, 18 Feb 2016 19:31:27 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpF-0008C2-31
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:18:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1aWYyj-0005UJ-K8
-	for qemu-trivial@nongnu.org; Thu, 18 Feb 2016 19:31:26 -0500
-Received: from ozlabs.org ([103.22.144.67]:42831)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpE-0004na-Aw
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:18:33 -0500
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:35173)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1aWYyb-0005Pb-I0; Thu, 18 Feb 2016 19:31:17 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 6922614030F; Fri, 19 Feb 2016 11:31:13 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1455841873;
-	bh=Uj7dya8/R+uCg0DnQV8Nv70nQYr7LNoipZHAoKf6GRI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=N+4+s/LGzuKdSOt2CGNF4BSi7avynmTRu9JM4nW0sV1LxdjoEURIbC3tgi+tR8WAP
-	0L77Izz92MWC3i1bOvDND2/dB/2qprl6D337cH7WTQIjE1QVRQOQDDt4nGCG6nOzMs
-	AjsmBrOVg8UtsN9/tuAFUp1Vv8+id69sN0VC0eqo=
-Date: Fri, 19 Feb 2016 11:15:29 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20160219001529.GP15224@voom.fritz.box>
-References: <20160218144045.7349.67293.stgit@bahia.huguette.org>
-	<87povuawo2.fsf@blackfin.pond.sub.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="6iXXu7NwgEt9u5a7"
-Content-Disposition: inline
-In-Reply-To: <87povuawo2.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1aWmp8-0004ki-2w; Fri, 19 Feb 2016 10:18:26 -0500
+Received: by mail-pa0-x241.google.com with SMTP id fl4so3543524pad.2;
+	Fri, 19 Feb 2016 07:18:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=e5L8Q8RqB03HvC5s/YKHlcnQck+h2HgU+eJmtmiieB0=;
+	b=nwHMoU1fBpl7raWVR6tM7xsFgheTVCdGEIkCyz0yqZ/pmPRgsc3yuajapxsbDa9oLA
+	ybb4x8aWu0ShzaVUD5TmAbO+1spt0j/rUExoo6jStOIN5+8++U33Tg6FyZ5kSYQmWmBm
+	yh1ZycKCghL6yUagGewKdhyYDmqAq+8oUtdVACT1D589s2M1/EfGj0SXsFBdewXKv5Xt
+	q6uyPIQrTgaJpBRMeRP/6xlWG4+vjJWVjWLKi86AaouwN2tjEnMWYUQ4SHDsUy0YmSvd
+	PFIdgRMmdRd60mfJ6b34dNCpMVn/K1MrItIPTeCkdFRBhlOvbB0AJVdUzjeWzqwwNm+S
+	C31A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=e5L8Q8RqB03HvC5s/YKHlcnQck+h2HgU+eJmtmiieB0=;
+	b=f6aQAOL87PP7KdcsDCVakmaqU28iumS1ABOACi+EAWEkhrJoB8GlRspoWsrYq2qQ4H
+	Wbs8TfPsaDQ3SYOf4I5nFUBTaYYH+2sMY06K0E6NOD+yF6wFgigzaHjtDxt6xHTh0YZs
+	l8q8IFc7peYBvdpbE7t6Va2G0Cj0yq6c2g9s88IDf/MGvN7aVKORbFggolF2x8oOdHyY
+	2xZqXr982kLm4OtwINGBbqu1IkN0gj3hGDwF4SkHw8m8jbQFGzQnMpspuOWB8sJ9s45A
+	tG38fBSVN1rFtnOecfNJgdidDGQrM2BMzroQw1D+cEPv94yhnGW8X93QpRtZAOeomMmK
+	Q3ZQ==
+X-Gm-Message-State: AG10YOToBiKGgEY+UO0qZPw9+WPqu8zxx3NYzZE6YlA0vZaFlvm74Aq0KN/eN46i6XWtuw==
+X-Received: by 10.67.6.10 with SMTP id cq10mr18874831pad.120.1455895104541;
+	Fri, 19 Feb 2016 07:18:24 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	y15sm18596269pfi.16.2016.02.19.07.18.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 19 Feb 2016 07:18:24 -0800 (PST)
+From: Wei Yang <richard.weiyang@gmail.com>
+To: 
+Date: Fri, 19 Feb 2016 15:18:09 +0000
+Message-Id: <1455895091-7589-1-git-send-email-richard.weiyang@gmail.com>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	Greg Kurz <gkurz@linux.vnet.ibm.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] spapr: initialize local
-	Error pointer
+X-Received-From: 2607:f8b0:400e:c03::241
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>
+Subject: [Qemu-trivial] [PATCH 0/2] use PCI_MSIX_FLAGS on retrieving the
+	MSIX entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,77 +62,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Feb 2016 00:31:28 -0000
+X-List-Received-Date: Fri, 19 Feb 2016 15:18:39 -0000
 
+These two patches replace the PCI_CAP_FLAGS with PCI_MSIX_FLAGS on retrieving
+the MSIX entries. The change is the same, while I put them in two patches for
+different author to review.
 
---6iXXu7NwgEt9u5a7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Wei Yang (2):
+  vfio/pci: use PCI_MSIX_FLAGS on retrieving the MSIX entries
+  s390x/pci: use PCI_MSIX_FLAGS on retrieving the MSIX entries
 
-On Thu, Feb 18, 2016 at 04:02:53PM +0100, Markus Armbruster wrote:
-> Greg Kurz <gkurz@linux.vnet.ibm.com> writes:
->=20
-> > This fixes a crash in the target QEMU during migration.
-> >
-> > Fixes: c5f54f3e31bf693f70a98d4d73ea5dbe05689857
->=20
-> Suggest to word that as "Broken in commit c5f54f3."
->=20
-> > Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
-> > ---
-> >  hw/ppc/spapr.c |    2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > index e214a34257b3..c119f5582429 100644
-> > --- a/hw/ppc/spapr.c
-> > +++ b/hw/ppc/spapr.c
-> > @@ -1528,7 +1528,7 @@ static int htab_load(QEMUFile *f, void *opaque, i=
-nt version_id)
-> >      section_hdr =3D qemu_get_be32(f);
-> > =20
-> >      if (section_hdr) {
-> > -        Error *local_err;
-> > +        Error *local_err =3D NULL;
-> > =20
-> >          /* First section gives the htab size */
-> >          spapr_reallocate_hpt(spapr, section_hdr, &local_err);
->=20
-> Easy mistake to make (I've made it myself).  I wish I had the time to
-> figure out how to make Coccinelle catch it.
->=20
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+ hw/s390x/s390-pci-bus.c |    2 +-
+ hw/vfio/pci.c           |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Applied to ppc-for-2.6 with Markus's suggested rewording.  Thanks.
+-- 
+1.7.9.5
 
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---6iXXu7NwgEt9u5a7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWxl6hAAoJEGw4ysog2bOSzTIQAOX2Lo4SFFgptCoC1B9hYgK1
-dfBoyBqsFV/9npZ6kedcCT7I3pif2F4AkAI0Bd+pV4XWiofudtLNSo1+M1bv3sPq
-bjJk/TUfpOmrn6+7wrJ0yfAPJxQXn+90AWvGzpWEPgEWwr8qEE+SI8OMLTIs6293
-mlIOrzSTw2zv5RI/uzpvhb+k3nrhi/agJNl2Fg+r71gL28mLj/xKymEZzE9iol8e
-YGZRYTU6K4pkhJAw2Ham8kWgmsRprTT563xQEcAkO1spLDUkUFuLgAQ9/vfs+Id+
-d/Wm2jdMQZLbmYuX2nzHQ3FcJ+oF1sAZ3F15+viGR/BJO/nrCWIVmzZoL5huu0XE
-fp7W3/SH3MBii0/Wd/KsLpX9yAS151v6eOWs8nEmpGf5WCSYp+x5SrM/G8+/Vr9S
-b4pwesuFIN9gVysTjDEPMjWyf6aXSX6R6jBqjZwF4w5HdlPFnPUWITwC64ON7a7X
-171Z1QQZq+rRaE8lyjwCbJ/sYMO5evUy4ZmZJ3azNN8YYIwJYmT1HajMTPzLiKUJ
-Zl2aPuEWEk6VrOTApJwzBTxkoAkWyxQYV7pnRd/0w9xfqLtCFUPD9zqsPX5nourh
-yBR03Quhe45BpJFcrIUmolgf8ftUn5p1H00JzVZR+fY3LelSZaHkEHmIizmawuFb
-czs5HgepSA6KhK1mygUq
-=42CD
------END PGP SIGNATURE-----
-
---6iXXu7NwgEt9u5a7--
 
