@@ -1,47 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aWsH1-0003Q6-9f
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2016 16:07:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60357)
+	id 1aWucs-0002Yc-DM
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2016 18:38:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58380)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aWsGz-0003Kh-8X
-	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 16:07:34 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWucp-0002YB-Tg
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 18:38:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aWsGv-0005r0-VG
-	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 16:07:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48435)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWucm-0007Ua-Je
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 18:38:15 -0500
+Received: from mail-pa0-x242.google.com ([2607:f8b0:400e:c03::242]:34513)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aWsGl-0005nD-1Y; Fri, 19 Feb 2016 16:07:19 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id AAE33C158459;
-	Fri, 19 Feb 2016 21:07:18 +0000 (UTC)
-Received: from [10.10.54.114] (vpn-54-114.rdu2.redhat.com [10.10.54.114])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1JL7H3u020630
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 19 Feb 2016 16:07:18 -0500
-To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
-References: <1455905587-4347-1-git-send-email-wei@redhat.com>
-	<56C781AE.5050004@redhat.com> <56C78227.4030207@redhat.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56C78405.4040307@redhat.com>
-Date: Fri, 19 Feb 2016 15:07:17 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1aWucm-0007U2-Bn; Fri, 19 Feb 2016 18:38:12 -0500
+Received: by mail-pa0-x242.google.com with SMTP id yy13so4009590pab.1;
+	Fri, 19 Feb 2016 15:38:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=oN7w6modYRGxX4ve9zeFiCV3bsfzDfknbpA9NDWU+1A=;
+	b=yflXeRTPKX92UJ5Po7ngzNxMZlCYUOOZ8qeL5W+hYzOEbXDBkQXbzvUhg/cID8QOUc
+	hpQQc+ZJMpSV84mUdpJ7M5M5F70uHXjgRTOcDqp4FaYNnaVrUVAKsiWIJbumPVA0iTWO
+	EicipoPymvBR76n/JwgcRl46gxvrIv2b3a+6q3E2njp8HlhfO9Bp6DVC1S7xoVzK27hx
+	bSbZEeli0eewSQYycgAi/k821gKUZjbwANwcIxFjC5enK6uDy4C+oVNVqWvMuWkqTT9x
+	SQVwkfw+i08LRHQ+lVWL+vVJ8VbFk0WcnKYr2ZER73kaNBYmDjBYFGBPdhu3UJSYDno9
+	FISQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-type:content-disposition
+	:in-reply-to:user-agent;
+	bh=oN7w6modYRGxX4ve9zeFiCV3bsfzDfknbpA9NDWU+1A=;
+	b=fAeAXd8wu8ztW9TRdgsobgLQwOuwVN6MhwI2HgnDI9y8P9QipL2TqaBBqEcwTbKdC6
+	RFyJ87M4f0ojTphCN+iasPYymvixdoCOwXTRCHNZh7FDlLd26KxEEVcG4Ems3khRtWzL
+	krvo355+gT4h5+7VlqVUkYUFrBRdKK+5EaztYHnOvsea/PucDUxicfpWotL+geiNgCEr
+	ikPo7A9/tRIhkzcizOJxMrHTCsH2LVoQgF1MIPKDAtmTCV5d3v9c4V7Vk9W1fL1aB6NX
+	Y2TYN/LY4+hxdoxKfxkz3bL1Y2Fjl2/XIBrmjqix1jugLEIyjxWS9GWyFWmXfSRsEn9U
+	wzkA==
+X-Gm-Message-State: AG10YORz9elkuQmPVjx1pqaeNWmI9pqWrfgG6SJG019J5DncmzaF65elzumUZFc6MbX7UQ==
+X-Received: by 10.66.118.7 with SMTP id ki7mr21898547pab.153.1455925091496;
+	Fri, 19 Feb 2016 15:38:11 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	i23sm20101035pfj.68.2016.02.19.15.38.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 19 Feb 2016 15:38:10 -0800 (PST)
+Date: Fri, 19 Feb 2016 23:38:08 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Message-ID: <20160219233808.GA8336@vultr.guest>
+References: <1455895091-7589-1-git-send-email-richard.weiyang@gmail.com>
+	<1455895091-7589-2-git-send-email-richard.weiyang@gmail.com>
+	<20160219094532.47e2f131@t450s.home>
 MIME-Version: 1.0
-In-Reply-To: <56C78227.4030207@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] virtio-rng: fix
- condition checking on period_ms
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160219094532.47e2f131@t450s.home>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c03::242
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] vfio/pci: use
+ PCI_MSIX_FLAGS on retrieving the MSIX entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
@@ -50,66 +73,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Feb 2016 21:07:34 -0000
+X-List-Received-Date: Fri, 19 Feb 2016 23:38:16 -0000
 
+On Fri, Feb 19, 2016 at 09:45:32AM -0700, Alex Williamson wrote:
+>On Fri, 19 Feb 2016 15:18:10 +0000
+>Wei Yang <richard.weiyang@gmail.com> wrote:
+>
+>> Even PCI_CAP_FLAGS has the same value as PCI_MSIX_FLAGS, the later one is
+>> the more proper on retrieving MSIX entries.
+>> 
+>> This patch uses PCI_MSIX_FLAGS to retrieve the MSIX entries.
+>> 
+>> Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+>> ---
+>>  hw/vfio/pci.c |    2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>> 
+>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>> index e66c47f..321423b 100644
+>> --- a/hw/vfio/pci.c
+>> +++ b/hw/vfio/pci.c
+>> @@ -1210,7 +1210,7 @@ static int vfio_msix_early_setup(VFIOPCIDevice *vdev)
+>>      }
+>>  
+>>      if (pread(fd, &ctrl, sizeof(ctrl),
+>> -              vdev->config_offset + pos + PCI_CAP_FLAGS) != sizeof(ctrl)) {
+>> +              vdev->config_offset + pos + PCI_MSIX_FLAGS) != sizeof(ctrl)) {
+>>          return -errno;
+>>      }
+>>  
+>
+>This is certainly trivial, I'll grab it for the respin of yesterday's
+>pull request.  Thanks,
 
+Thanks Alex, have a nice weekend :-)
 
-On 02/19/2016 02:59 PM, Laszlo Ersek wrote:
-> On 02/19/16 21:57, Laszlo Ersek wrote:
->> On 02/19/16 19:13, Wei Huang wrote:
->>> The condition checking on vrng->conf.period_ms appears to be wrong,
->>> conflicting with the error comment following it.
->>>
->>> Signed-off-by: Wei Huang <wei@redhat.com>
->>> ---
->>>  hw/virtio/virtio-rng.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/virtio/virtio-rng.c b/hw/virtio/virtio-rng.c
->>> index 473c044..a06427c 100644
->>> --- a/hw/virtio/virtio-rng.c
->>> +++ b/hw/virtio/virtio-rng.c
->>> @@ -149,7 +149,7 @@ static void virtio_rng_device_realize(DeviceState *dev, Error **errp)
->>>      VirtIORNG *vrng = VIRTIO_RNG(dev);
->>>      Error *local_err = NULL;
->>>  
->>> -    if (!vrng->conf.period_ms > 0) {
->>> +    if (!(vrng->conf.period_ms > 0)) {
->>>          error_setg(errp, "'period' parameter expects a positive integer");
->>>          return;
->>>      }
->>>
->>
->> The current condition is absolutely weird, but I think it happens to
->> work correctly:
->>
->> Period_ms has type uint32_t. If it is positive, then !period_ms is zero.
->> 0>0 is false, hence the error message is not printed.
->>
->> If period_ms is zero, then !period_ms is 1. 1>0 is true, hence the error
->> message is printed.
->>
->> I would rewrite the check as
->>
->>     if (vrng->conf.period_ms == 0) {
->>         error_setg(...)
-> 
-> ... actually, what the heck are you looking at? :) This has been fixed
-> up in:
-> 
+>
+>Alex
 
-Oops. It looks like I was looking at an older HEAD. :-( Please ignore
-it. Sorry for the noise and thanks for pointing it out.
-
--Wei
-
-> commit a3a292c420d2fec3c07a7ca56fbb064cd57a298a
-> Author: Amit Shah <amit.shah@redhat.com>
-> Date:   Thu Dec 11 13:17:42 2014 +0530
-> 
->     virtio-rng: fix check for period_ms validity
-> 
-> Thanks
-> Laszlo
-> 
+-- 
+Wei Yang
+Help you, Help me
 
