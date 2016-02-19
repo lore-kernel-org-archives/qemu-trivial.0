@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aWmpa-0000Hd-RU
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2016 10:18:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56746)
+	id 1aWmpl-0000b6-1R
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Feb 2016 10:19:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpX-0000CF-W5
-	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:18:52 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpe-0000OP-Qx
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:19:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpX-0004u0-6u
-	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:18:51 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:33071)
+	(envelope-from <richard.weiyang@gmail.com>) id 1aWmpa-0004vL-Ma
+	for qemu-trivial@nongnu.org; Fri, 19 Feb 2016 10:18:58 -0500
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:36756)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <richard.weiyang@gmail.com>)
-	id 1aWmpQ-0004qK-T7; Fri, 19 Feb 2016 10:18:45 -0500
-Received: by mail-pf0-x241.google.com with SMTP id c10so3703602pfc.0;
-	Fri, 19 Feb 2016 07:18:44 -0800 (PST)
+	id 1aWmpY-0004ue-KU; Fri, 19 Feb 2016 10:18:52 -0500
+Received: by mail-pa0-x241.google.com with SMTP id a7so962511pax.3;
+	Fri, 19 Feb 2016 07:18:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=P4y4HZngNqKkXp4zL/hFYI5tApbLwjKObiDZvKNIdFw=;
-	b=j3nY7mqtlknPoEtqTzOuNn5//a0J1PKsr6Juw5PGTn0j4gf5aaO3UcR6lO6RMh88jt
-	nHzlSfj2qBbKvUMue5n9exKBinZrn4u1l3gw0o4w1IZXqLet94SWyKZl8ti/ito7FuoZ
-	UHsLiCz42RYhY4xA+rj6HtNFNTkdWS++Fgg3bh5nIvsCn9UFeW0ChsYW/rZ67VPAMmz0
-	bdtg2wTYKGfws8cEWDej28xJr5uX1n7gOpnBz6dFqbOYxV0n2IWqSZy7yUJKuCwgEUWX
-	gz4zvrWx6sPhf8WR+aBjHUQwCLHtF7x2DqGCdfqxcwWQFYxKlQ5dK0QcLCT/jZpMyrwD
-	hN6Q==
+	bh=nzNxRU5+J3GdZrnbb5Lze4dSY1gEN+rXLZB4uqFz0vs=;
+	b=k2ADTdbDc1I/K9GPRpzZ3mpyO6xrOQIFsZJQT3WznA4nCmiu+WFqJYM39mAPb8hy0T
+	mdEbftIFHuGX+Huk56VUHopDeV0UFTGa1Rr671K4WpJVzralgSfyaOvVW653vFwvlT2+
+	SL9QPmTZIRUzp/ck+tQ4T55dTvmB1sGKLIe+gmYMI3DR8tGXuAVR2uIb6U1kQC7cnW+2
+	jUH+rFu8GqXOR2xczI5TaO8rbYl/x1dWkcQjJY9CV4ymjMC1qmd7D0jeg364dDl0J9Qe
+	6j/JkL3+5lrcnLC72PPbd4ZNBueHNwMwqcr6MTBBT+LdCcIY/sQU2rnzzcM/tIypakKs
+	1PMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=P4y4HZngNqKkXp4zL/hFYI5tApbLwjKObiDZvKNIdFw=;
-	b=kpXAkHQXAB4XnDAUFibxzScNhmND7CxpI6Gp4hq9tpRyu5XYqUAWPeEdKgA5wmOFPE
-	FgBHdXfTLeish02J3tgJLEbCEiXJ6w+J7fyhXA8/i7sPnSqa7jogYbmvOmli6iX9gQ9i
-	mCbIB+2jTLzQpIOvkxq76nma/DsBqqvW6PqqOTU7BNo/XV69S/KUxX2jkZD5qbo+yf4P
-	tYmI4G3PAmgs/iOceJ76a8XQI79er/0BtQUQIlOUEtmJ41jLAuI/L24LjJ8yQ7g0EuIo
-	stADmWhqwayX0TYXwAQaOG9Mvhf6gPHKageb9BysgnShXU5CYXXB/4fuD9UCohI/hCTL
-	XoPg==
-X-Gm-Message-State: AG10YOQYRqC+t2QvEjOoD69WL5KzBR34CGRmxtr7120RQlSFF4rOqyrS61UkBZavWOjBBw==
-X-Received: by 10.98.72.24 with SMTP id v24mr18549341pfa.15.1455895123928;
-	Fri, 19 Feb 2016 07:18:43 -0800 (PST)
+	bh=nzNxRU5+J3GdZrnbb5Lze4dSY1gEN+rXLZB4uqFz0vs=;
+	b=mv7QsT48xnOjuetciuvrOP6Ldwb6mzRq1Kp+9IZAUIi2f8x+knLLSNa96NKST754gy
+	CYkRvFkvA+0cobswgclX5gcKJu/J5bEi1BCSPiyhOkrEllAVUPZqWeHoIYbqXVdHWcYj
+	kiQwWq4FAODzmHw57Kof64qKYbNcYwWQB2gx7GHSV5HLAygNhWvkTsxSeA7xP8BLsAjI
+	loCGy9r7hgRTip0j+o00biFDHnuRhXRNGe6Div5nhPnJ+IwYSyjn2j9/Q+YcinEN56+B
+	VyvBRVDyc34bKXwGwrJYYkiW1mphHau5jlHtCn7Bpcuh6jQSfi2nir3pZF4WmKD16KOh
+	l8fg==
+X-Gm-Message-State: AG10YOQxeLMP0Iw0/8fULmdxzDEhhluf/1gX1Q1Aqaa+ywh6BODjQSbrV+XovPOvUn64Vw==
+X-Received: by 10.66.100.196 with SMTP id fa4mr18806783pab.37.1455895131894;
+	Fri, 19 Feb 2016 07:18:51 -0800 (PST)
 Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
-	e20sm18609186pfd.4.2016.02.19.07.18.43
+	u5sm18608268pfi.15.2016.02.19.07.18.51
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 19 Feb 2016 07:18:43 -0800 (PST)
+	Fri, 19 Feb 2016 07:18:51 -0800 (PST)
 From: Wei Yang <richard.weiyang@gmail.com>
 To: 
-Date: Fri, 19 Feb 2016 15:18:10 +0000
-Message-Id: <1455895091-7589-2-git-send-email-richard.weiyang@gmail.com>
+Date: Fri, 19 Feb 2016 15:18:11 +0000
+Message-Id: <1455895091-7589-3-git-send-email-richard.weiyang@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1455895091-7589-1-git-send-email-richard.weiyang@gmail.com>
 References: <1455895091-7589-1-git-send-email-richard.weiyang@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+X-Received-From: 2607:f8b0:400e:c03::241
+Cc: qemu-trivial@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>,
+	qemu-devel@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
 	Wei Yang <richard.weiyang@gmail.com>
-Subject: [Qemu-trivial] [PATCH 1/2] vfio/pci: use PCI_MSIX_FLAGS on
+Subject: [Qemu-trivial] [PATCH 2/2] s390x/pci: use PCI_MSIX_FLAGS on
 	retrieving the MSIX entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -65,7 +66,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Feb 2016 15:18:53 -0000
+X-List-Received-Date: Fri, 19 Feb 2016 15:19:04 -0000
 
 Even PCI_CAP_FLAGS has the same value as PCI_MSIX_FLAGS, the later one is
 the more proper on retrieving MSIX entries.
@@ -73,23 +74,25 @@ the more proper on retrieving MSIX entries.
 This patch uses PCI_MSIX_FLAGS to retrieve the MSIX entries.
 
 Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+CC: Cornelia Huck <cornelia.huck@de.ibm.com>
+CC: Christian Borntraeger <borntraeger@de.ibm.com>
 ---
- hw/vfio/pci.c |    2 +-
+ hw/s390x/s390-pci-bus.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index e66c47f..321423b 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -1210,7 +1210,7 @@ static int vfio_msix_early_setup(VFIOPCIDevice *vdev)
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 132588b..9d40039 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -523,7 +523,7 @@ static int s390_pcihost_setup_msix(S390PCIBusDevice *pbdev)
+         return 0;
      }
  
-     if (pread(fd, &ctrl, sizeof(ctrl),
--              vdev->config_offset + pos + PCI_CAP_FLAGS) != sizeof(ctrl)) {
-+              vdev->config_offset + pos + PCI_MSIX_FLAGS) != sizeof(ctrl)) {
-         return -errno;
-     }
- 
+-    ctrl = pci_host_config_read_common(pbdev->pdev, pos + PCI_CAP_FLAGS,
++    ctrl = pci_host_config_read_common(pbdev->pdev, pos + PCI_MSIX_FLAGS,
+              pci_config_size(pbdev->pdev), sizeof(ctrl));
+     table = pci_host_config_read_common(pbdev->pdev, pos + PCI_MSIX_TABLE,
+              pci_config_size(pbdev->pdev), sizeof(table));
 -- 
 1.7.9.5
 
