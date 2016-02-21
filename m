@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aX5At-0006GI-IZ
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Feb 2016 05:54:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41774)
+	id 1aXVeA-0005YN-UD
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Feb 2016 10:10:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aX5Ap-00069d-TD
-	for qemu-trivial@nongnu.org; Sat, 20 Feb 2016 05:54:05 -0500
+	(envelope-from <raghavanil4m@gmail.com>) id 1aXVe8-0005TB-IL
+	for qemu-trivial@nongnu.org; Sun, 21 Feb 2016 10:10:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aX5Ao-0006nX-Kl
-	for qemu-trivial@nongnu.org; Sat, 20 Feb 2016 05:54:03 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:58516)
+	(envelope-from <raghavanil4m@gmail.com>) id 1aXVe7-0006vS-0r
+	for qemu-trivial@nongnu.org; Sun, 21 Feb 2016 10:10:04 -0500
+Received: from mail-lb0-x230.google.com ([2a00:1450:4010:c04::230]:34464)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1aX5Ai-0006hU-Ld; Sat, 20 Feb 2016 05:53:58 -0500
-Received: from 172.24.1.50 (EHLO SZXEML424-HUB.china.huawei.com)
-	([172.24.1.50])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BWJ97616; Sat, 20 Feb 2016 18:53:42 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by SZXEML424-HUB.china.huawei.com
-	(10.82.67.153) with Microsoft SMTP Server id 14.3.235.1;
-	Sat, 20 Feb 2016 18:53:39 +0800
-Message-ID: <56C845B1.3080000@huawei.com>
-Date: Sat, 20 Feb 2016 18:53:37 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <raghavanil4m@gmail.com>)
+	id 1aXVe3-0006ub-A7; Sun, 21 Feb 2016 10:09:59 -0500
+Received: by mail-lb0-x230.google.com with SMTP id of3so69862326lbc.1;
+	Sun, 21 Feb 2016 07:09:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=c24PWk6UzxjQjNn4FTl3qsOXXyHSmj+T3JLBI++EtCU=;
+	b=dhN02K9Bbz7PsHLQte5lcopGG6OaDS24S3Eg65AUBfKT/B1xvMKRy7CcGzh8tIhMgN
+	6h3ZhJqhZJ69hHGPB+qm5JQEM65jv2LLrMcvoId/Zee4GltN+Bt8VHFsRbrVcB4wckYl
+	44eMe9M3FU2KE91yeKR+iyQTyNmKvoYcaA3D/qT2y3sVLIeSWr3e39mcM7vuCKWEq5sq
+	hHF/LMn9oJ56uoNIVhf6bmmViwxwPG+iz758/vKRD+RyzbHn/k+xlgo2vw/CC+w6NjDX
+	VfGE1e2HB/yKbUukh89yiY9AcGuB1/AbesLC7HiYxfiw2UwF/KXasipNle+mdKU8x9Dk
+	AtQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=c24PWk6UzxjQjNn4FTl3qsOXXyHSmj+T3JLBI++EtCU=;
+	b=AT2mm+eeDaqHas9J6oApKalMfu/XpzzoUwcGtE6PFaORyFqZUunyyCbMI7mSy88IP6
+	qufAu7t7bCAZwzM563LlsbWQWKCKruHzY4StDPc7wwd3rNLUD6/CvWZNWsSS3wJa7dIp
+	InLvQMpVgYGAFliYdFL9UWp8OVfZZppkfBvqO2edATh3p2mZEDHf0/mf9c9/eOF/RV65
+	3JkFsqxA6aZzeaoN13EqMi0m90h0OQnYeQGzLFviNZjuhgMfsX5GtGRiifafvuzFx8eM
+	lLwiIFs2ZeYJNjkDjyCMGxBLpkKF/j7bqZ6JsW17hPREv1UVCJuRQX29Bp7tJ+Zl4cWA
+	rymQ==
+X-Gm-Message-State: AG10YOTZCZGSg7VTe32fVhxac+NwYV8rvgON4rUFX6dsKjE6X/hQjUdqvcadPzT/R992UurAzraxJlr7x9iIjw==
 MIME-Version: 1.0
-To: Wei Huang <wei@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Michael Tokarev <mjt@tls.msk.ru>
-References: <1454005340-15682-1-git-send-email-wei@redhat.com>
-	<56B1A90E.3000506@msgid.tls.msk.ru>
-	<CAFEAcA9RzHTZhZemvSGZ_Qpji+bu0=13wQJ0ThMbYhYdJ99w1A@mail.gmail.com>
-	<56B22469.7040308@redhat.com> <56B2AD13.6030504@huawei.com>
-	<56B2EB3E.2000908@redhat.com> <56B2F4E3.6010807@huawei.com>
-	<56BA6F6C.5000301@redhat.com>
-In-Reply-To: <56BA6F6C.5000301@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.56C845B7.0004, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 1dca19d7b01ec0f7a7cdcf85fba910c4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Subject: Re: [Qemu-trivial] [PATCH 1/1] arm: virt: change GPIO trigger
-	interrupt to pulse
+X-Received: by 10.112.126.72 with SMTP id mw8mr8730508lbb.14.1456067398107;
+	Sun, 21 Feb 2016 07:09:58 -0800 (PST)
+Received: by 10.112.78.4 with HTTP; Sun, 21 Feb 2016 07:09:58 -0800 (PST)
+In-Reply-To: <CAKWsRc2NX_Pz5_P6kEhU26=JWK4UemBuGUO7suHvMiuJph48KQ@mail.gmail.com>
+References: <CAKWsRc2MyUByd3tjyZMx_q_3+Oy=D5kUtw7MLU6HP7h9xVAy6A@mail.gmail.com>
+	<CAKWsRc2NX_Pz5_P6kEhU26=JWK4UemBuGUO7suHvMiuJph48KQ@mail.gmail.com>
+Date: Sun, 21 Feb 2016 07:09:58 -0800
+Message-ID: <CAKWsRc1-oyuVZZnK2XPsC+c4OB=aWj=VtqSAgwjKT6zs9SxzPQ@mail.gmail.com>
+From: Raghavan Santhanam <raghavanil4m@gmail.com>
+To: qemu-stable@nongnu.org, qemu-trivial@nongnu.org, qemu-discuss@nongnu.org
+Content-Type: multipart/alternative; boundary=001a11c37656088b2a052c491c8a
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::230
+Cc: Raghavan Santhanam <raghavanil4m@gmail.com>
+Subject: Re: [Qemu-trivial] Regarding Intel IGD passthru support for QEMU/KVM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,144 +63,224 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Feb 2016 10:54:05 -0000
+X-List-Received-Date: Sun, 21 Feb 2016 15:10:06 -0000
 
-Hi Wei,
+--001a11c37656088b2a052c491c8a
+Content-Type: text/plain; charset=UTF-8
 
-On 2016/2/10 6:59, Wei Huang wrote:
-> 
-> On 02/04/2016 12:51 AM, Shannon Zhao wrote:
+Hi All,
+
+Here is my most recent successful and more complete Android Sensor
+Emulation(Intel-IGD-passsthru ~ QEMU/KVM) update by me.
+
+Watch it in action : www dot youtube dot com/watch?v=vdcOS247F-4
+
+**== Android Sensor Emulation, fully UNLEASHED! ==**
+
+ - Fueled by GoogleNexus5
+ - Powered by Intel IGD
+ - Run on QEMU/KVM
+
+**== Android Sensor Emulation, fully UNLEASHED!! ==**
+
+ - Turn your Android Smartphone into a JOYSTICK!
+
+
+
+ - Play. Every. Single. Motion-sensor game. On. Any. Sensor-less Android
+   device.
+ - Run. Every. Single. sensor-based application. On. Any. Sensor-less
+   Android device.
+
+
+
+ - Let your games and other applications be "unique selves". No need to
+   alter your "favorite" game or "useful" other sensor-based application
+   to make use of my Android Sensor Emulation support.
+
+**== DETAILS ==**
+
+My current work as shown by this demo emulates the below 27 sensors(all the
+sensors of Google Nexus 5). Watch the video for more and precise details.
+
+---------------------------------------------------------------------------------------------------------
+1. Accelerometer
+2. Light
+3. Proximity
+4. Magnetometer
+5. Gyroscope
+6. Gravity
+7. Linear Acceleration
+8. Orientation
+9. Rotation Vector
+
+---------------------------------------------------------------------------------------------------------
+10. Game Rotation Vector
+11. Barometer
+12. Step Detector
+13. Step Counter
+14. Significant Motion Detector
+15. Tilt Detector
+16. Absolute Motion Detector(AMD)
+17. Relative Motion Detector(RMD)
+18. Basic Gestures
+
+---------------------------------------------------------------------------------------------------------
+19. Tap Detector
+20. Facing Detector
+21. (QTI) Tilt Detector
+22. Pedometer
+23. Pedestrian Activity Monitor
+24. Geomagnetic Rotation Vector
+25. (InvenSense) Game Rotation Vector
+26. Magnetometer (Uncalibrated)
+27. Gyroscope (Uncalibrated)
+
+---------------------------------------------------------------------------------------------------------
+
+Cheers,
+Raghavan
+
+On Tue, Feb 9, 2016 at 7:14 AM, Raghavan Santhanam <raghavanil4m@gmail.com>
+wrote:
+
+> Hi All,
+>
+> I am glad to share my successful Intel IGD passthru with QEMU/KVM, here as
+> well
+> in addition to my previous report on qemu-devel mailing list so that
+> interested ones
+> can have a look at my demos.
+>
+> Here are some of the popular platforms running smoothly with my successful
+> Intel IGD passthru + QEMU/KVM setup on Ubuntu 14.04 LTS 64-bit host
+> running on my
+> Lenovo touchscreen-enabled laptop.
+>
+> *First success :* Android-x86 5.1 Lollipop -
+> https://www.youtube.com/watch?v=PBN1DmarJ7k
+> *Second success :* Windows 10 LTSB 64-bit -
+> https://www.youtube.com/watch?v=WmKzRGT2cjI
+> *Third success :* Ubuntu 15.10 64-bit -
+> https://www.youtube.com/watch?v=1_VXTDgqnHg
+>
+> And I take this opportunity to appreicate the years of work on QEMU + KVM
+> + XEN. Good work, developers!
+>
+> Best,
+> Raghavan
+>
+>
+>
+>
+>
+>
+>
+>
+> On Sun, Jan 17, 2016 at 6:23 PM, Raghavan Santhanam <
+> raghavanil4m@gmail.com> wrote:
+>
+>> Hi,
+>>
+>> Based on the Intel IGD passthru support that has been added to Qemu/Xen
+>> code base,
+>> is there any way to use/reuse the same logic currently to have a
+>> successful passthru of an Intel
+>> IGD with Qemu/KVM on a Linux host(Ubuntu x86_64) or will that require
+>> some more
+>> work in addition to what Xen code based already has for the IGD passthru?
+>>
+>> Best,
+>> Raghavan
 >>
 >>
->> On 2016/2/4 14:10, Wei Huang wrote:
->>>
->>> On 02/03/2016 07:44 PM, Shannon Zhao wrote:
-> 
-> <snip>
-> 
->>> I reversed the order of edge pulling. The state is 1 according to printk
->>> inside gpio_keys driver. However the reboot still failed with two
->>> reboots (1 very early, 1 later).
->>>
->> Because to make the input work, it should call input_event twice I think.
->>
->> input_event(input, type, button->code, 1) means the button pressed
->> input_event(input, type, button->code, 0) means the button released
->>
->> But We only see guest entering gpio_keys_gpio_report_event once.
->>
->> My original purpose is like below:
->>
->> call qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1) to make guest
->> execute input_event(input, type, button->code, 1)
->> call qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0) to make guest
->> execute input_event(input, type, button->code, 0).
->>
->> But even though it calls qemu_set_irq twice, it only calls pl061_update
->> once in qemu.
-> 
-> Hi Shannon,
-> 
-> Assuming that we are talking about the special case you found (i.e. send
-> reboot very early and then send another one after guest VM fully
-> booted). Dug into the code further, here are my findings:
-> 
-> === Why ACPI case failed? ===
-> QEMU pl061.c checks the current request against the new request (see
-> s->old_in_data ^ s->data in pl061.c file). If no change, nothing will
-> happen.
-> 
-> So two consecutive reboots will cause the following state change;
-> apparently the second request won't trigger VM reboot because
-> pl01_update() decides _not_ to inject IRQ into guest VM.
-> 
->   (PL061State fields)           data   old_in_data   istate
-> VM boot                         0      0             0
-> 1st ACPI reboot request         8      0             0
-> After VM PL061 driver ACK       8      8             0
-> 2nd ACPI reboot request         8     no-change, no IRQ <==
-> 
-> To solve this problem, we have to invert PL061State->data at least once
-> to trigger IRQ inside VM. Two solutions:
-> 
-> S1: "Pulse"
-> static void virt_powerdown_req(Notifier *n, void *opaque)
-> {
->     qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 0);
->     qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), 1);
-> }
-> 
-> S2: "Invert"
-> static int old_gpio_level = 0;
-> static void virt_powerdown_req(Notifier *n, void *opaque)
-> {
->     /* use gpio Pin 3 for power button event */
->     qemu_set_irq(qdev_get_gpio_in(pl061_dev, 3), !old_gpio_level);
->     old_gpio_level = !old_gpio_level;
-> }
-> 
-The S2 still doesn't work. After sending the early first reboot, whne
-guest boots well, it doesn't react to the second reboot while it reacts
-to the third one.
+>
 
-> Both S1 and S2 works for ACPI. But S1 has problem with DT, which is
-> explained below.
-> 
-> === Why DT fails with S1 ===
-> DT approach requires both PL061 and gpio-keys to work together. Looking
-> into guest kernel gpio-keys/input code, you will find that it only
-> reacts to both LEVEL-HI and input changes. Here is the code snip from
-> drivers/input/input.c file:
-> 
->     /* auto-repeat bypasses state updates */
->     if (value == 2) {
->             disposition = INPUT_PASS_TO_HANDLERS;
->             break;
->     }
-> 
->     if (!!test_bit(code, dev->key) != !!value) {
->             __change_bit(code, dev->key);
->             disposition = INPUT_PASS_TO_HANDLERS;
->     }
-> 
-> Unless we adds gpio-keys DT property to "autorepeat", the
-> "!!test_bit(code, dev->key) != !!value" is always FALSE with S1. Thus
-> systemd won't receive any input event; and no power-switch will be
-> triggered.
-> 
-> In comparison S2 will work because value is changed very time.
-> 
-> === Summary ===
-> 1. Cleaning PL061 state is required. That means "[PATCH V2 1/2] ARM:
-> PL061: Clear PL061 device state after reset" is necessary.
-> 2. S2 is better. To support S2, we needs to change GPIO IRQ polarity to
-> AML_ACTIVE_BOTH in ACPI description.
-> 
-Thanks. But we don't have the AML_ACTIVE_BOTH since there is only one
-bit for "Interrupt Polarity" in ACPI table.
-See ACPI SPEC 6.0 "Table 6-216 Extended Interrupt Descriptor Definition"
-Bit [2] Interrupt Polarity, _LL
-0 Active-High: This interrupt is sampled when the signal is high,
-or true.
-1 Active-Low: This interrupt is sampled when the signal is low, or
-false.
+--001a11c37656088b2a052c491c8a
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -326,7 +326,7 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
->      Aml *aei = aml_resource_template();
->      /* Pin 3 for power button */
->      const uint32_t pin_list[1] = {3};
-> -    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
-> +    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, 3,
-What's the meaning of 3 here?
+<div dir=3D"ltr"><div>Hi All,</div><div><br></div><div>Here is my most rece=
+nt successful and more complete Android Sensor Emulation(Intel-IGD-passsthr=
+u ~ QEMU/KVM) update by me.</div><div><br></div><div>Watch it in action : w=
+ww dot youtube dot com/watch?v=3DvdcOS247F-4</div><div><br></div><div>**=3D=
+=3D Android Sensor Emulation, fully UNLEASHED! =3D=3D**</div><div><br></div=
+><div>=C2=A0- Fueled by GoogleNexus5</div><div>=C2=A0- Powered by Intel IGD=
+</div><div>=C2=A0- Run on QEMU/KVM</div><div><br></div><div>**=3D=3D Androi=
+d Sensor Emulation, fully UNLEASHED!! =3D=3D**</div><div><br></div><div>=C2=
+=A0- Turn your Android Smartphone into a JOYSTICK!</div><div><br></div><div=
+>=C2=A0</div><div><br></div><div>=C2=A0- Play. Every. Single. Motion-sensor=
+ game. On. Any. Sensor-less Android</div><div>=C2=A0 =C2=A0device.</div><di=
+v>=C2=A0- Run. Every. Single. sensor-based application. On. Any. Sensor-les=
+s</div><div>=C2=A0 =C2=A0Android device.</div><div><br></div><div>=C2=A0</d=
+iv><div><br></div><div>=C2=A0- Let your games and other applications be &qu=
+ot;unique selves&quot;. No need to</div><div>=C2=A0 =C2=A0alter your &quot;=
+favorite&quot; game or &quot;useful&quot; other sensor-based application</d=
+iv><div>=C2=A0 =C2=A0to make use of my Android Sensor Emulation support.</d=
+iv><div><br></div><div>**=3D=3D DETAILS =3D=3D**</div><div><br></div><div>M=
+y current work as shown by this demo emulates the below 27 sensors(all the =
+sensors of Google Nexus 5). Watch the video for more and precise details.</=
+div><div><br></div><div>---------------------------------------------------=
+------------------------------------------------------</div><div>1. Acceler=
+ometer</div><div>2. Light</div><div>3. Proximity</div><div>4. Magnetometer<=
+/div><div>5. Gyroscope</div><div>6. Gravity</div><div>7. Linear Acceleratio=
+n</div><div>8. Orientation</div><div>9. Rotation Vector</div><div><br></div=
+><div>---------------------------------------------------------------------=
+------------------------------------</div><div>10. Game Rotation Vector</di=
+v><div>11. Barometer</div><div>12. Step Detector</div><div>13. Step Counter=
+</div><div>14. Significant Motion Detector</div><div>15. Tilt Detector</div=
+><div>16. Absolute Motion Detector(AMD)</div><div>17. Relative Motion Detec=
+tor(RMD)</div><div>18. Basic Gestures</div><div><br></div><div>------------=
+---------------------------------------------------------------------------=
+------------------</div><div>19. Tap Detector</div><div>20. Facing Detector=
+</div><div>21. (QTI) Tilt Detector</div><div>22. Pedometer</div><div>23. Pe=
+destrian Activity Monitor</div><div>24. Geomagnetic Rotation Vector</div><d=
+iv>25. (InvenSense) Game Rotation Vector</div><div>26. Magnetometer (Uncali=
+brated)</div><div>27. Gyroscope (Uncalibrated)</div><div><br></div><div>---=
+---------------------------------------------------------------------------=
+---------------------------</div><div><br></div><div>Cheers,</div><div>Ragh=
+avan</div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Tue,=
+ Feb 9, 2016 at 7:14 AM, Raghavan Santhanam <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:raghavanil4m@gmail.com" target=3D"_blank">raghavanil4m@gmail.com=
+</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(204,204,204)=
+;border-left-style:solid;padding-left:1ex"><div dir=3D"ltr">Hi All,<div><br=
+></div><div>I am glad to share my successful Intel IGD passthru with QEMU/K=
+VM, here as well</div><div>in addition to my previous report on qemu-devel =
+mailing list so that interested ones</div><div>can have a look at my demos.=
+</div><div><br></div><div>Here are some of the popular platforms running sm=
+oothly with my successful</div><div>Intel IGD passthru + QEMU/KVM setup on =
+Ubuntu 14.04 LTS 64-bit host running on my</div><div>Lenovo touchscreen-ena=
+bled laptop.</div><div><br></div><div><b>First success :</b> Android-x86 5.=
+1 Lollipop -=C2=A0<a href=3D"https://www.youtube.com/watch?v=3DPBN1DmarJ7k"=
+ target=3D"_blank">https://www.youtube.com/watch?v=3DPBN1DmarJ7k</a></div><=
+div><b>Second success :</b> Windows 10 LTSB 64-bit -=C2=A0<a href=3D"https:=
+//www.youtube.com/watch?v=3DWmKzRGT2cjI" target=3D"_blank">https://www.yout=
+ube.com/watch?v=3DWmKzRGT2cjI</a></div><div><b>Third success :</b> Ubuntu 1=
+5.10 64-bit -=C2=A0<a href=3D"https://www.youtube.com/watch?v=3D1_VXTDgqnHg=
+" target=3D"_blank">https://www.youtube.com/watch?v=3D1_VXTDgqnHg</a></div>=
+<div><br></div><div>And I take this opportunity to appreicate the years of =
+work on QEMU + KVM + XEN. Good work, developers!</div><div><br></div><div>B=
+est,</div><div>Raghavan</div><div><br></div><div><br></div><div><br></div><=
+div><br></div><div><br></div><div><br></div><div><br></div></div><div class=
+=3D""><div class=3D"h5"><div class=3D"gmail_extra"><br><div class=3D"gmail_=
+quote">On Sun, Jan 17, 2016 at 6:23 PM, Raghavan Santhanam <span dir=3D"ltr=
+">&lt;<a href=3D"mailto:raghavanil4m@gmail.com" target=3D"_blank">raghavani=
+l4m@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb=
+(204,204,204);border-left-style:solid;padding-left:1ex"><div dir=3D"ltr"><s=
+pan style=3D"font-size:12.8px">Hi,</span><div style=3D"font-size:12.8px"><b=
+r></div><div style=3D"font-size:12.8px">Based on the Intel IGD passthru sup=
+port that has been added to Qemu/Xen code base,</div><div style=3D"font-siz=
+e:12.8px">is there any way to use/reuse the same logic currently to have a =
+successful passthru of an Intel</div><div style=3D"font-size:12.8px">IGD wi=
+th Qemu/KVM on a Linux host(Ubuntu x86_64) or will that require some more</=
+div><div style=3D"font-size:12.8px">work in addition to what Xen code based=
+ already has for the IGD passthru?</div><div style=3D"font-size:12.8px"><br=
+></div><div style=3D"font-size:12.8px">Best,</div><div style=3D"font-size:1=
+2.8px">Raghavan</div><div style=3D"font-size:12.8px"><br></div></div>
+</blockquote></div><br></div>
+</div></div></blockquote></div><br></div></div>
 
->                                   AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
->                                   "GPO0", NULL, 0));
->      aml_append(dev, aml_name_decl("_AEI", aei));
-
-Thanks,
--- 
-Shannon
-
+--001a11c37656088b2a052c491c8a--
 
