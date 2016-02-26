@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aZGBm-0006ly-J4
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Feb 2016 06:04:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57230)
+	id 1aZGJf-0000H7-9c
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Feb 2016 06:12:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aZGBk-0006iN-3p
-	for qemu-trivial@nongnu.org; Fri, 26 Feb 2016 06:04:01 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aZGJc-0000CR-Et
+	for qemu-trivial@nongnu.org; Fri, 26 Feb 2016 06:12:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aZGBe-00069f-14
-	for qemu-trivial@nongnu.org; Fri, 26 Feb 2016 06:04:00 -0500
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33228)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aZGJb-0000m5-Ce
+	for qemu-trivial@nongnu.org; Fri, 26 Feb 2016 06:12:08 -0500
+Received: from [59.151.112.132] (port=46306 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aZGBd-00069R-Dq
-	for qemu-trivial@nongnu.org; Fri, 26 Feb 2016 06:03:53 -0500
-Received: by mail-vk0-x22d.google.com with SMTP id k196so74617967vka.0
-	for <qemu-trivial@nongnu.org>; Fri, 26 Feb 2016 03:03:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OPqSPAHjl76TkstR3zrG7u2bVLMGlQ4PWuMpLG7g9I0=;
-	b=fHmSodG0yQtORsYVvO82QPXfPeFNcs0JMw5xArht4pb7+iUqrI2AdNlnNQ66rlVJIK
-	Z5eVUl+ecWcSPNnuPe/QTvwKRtGHvR6V/G2JSibbZQ9q1x8fp1cUxPAqwoS1VAPggsIf
-	fKa4V9mm9d4PkZAnpKT0z17dkZ37+kpWcRFU0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OPqSPAHjl76TkstR3zrG7u2bVLMGlQ4PWuMpLG7g9I0=;
-	b=GJoedIiVGndcPWRJsTKRhTjtRTaDSjPyXNPnH92HqvLr7vzpN93vCUCVoyPBfwX5H2
-	zrBNjkKx1dZdvDknkayoWPJ0lC73YCoJKcqWVRZaKRd+6TjGxHFCY6xx1dSMxtJDDJRf
-	5AlqE9m13ub9q5ilHHEC7YKS9ROkK0keiFFcypoWLX9D03J1KJKdRO7g/b0jZK4jLPQ+
-	NDIu8TFYnwjGn5VuZnE+IDShCzVljmhg5mHqEM3NSV7UhQfwBDAKfjNhhzjGP1+ur5Ds
-	DQmCLl18nsne0QcLQ9EqSzle/GNw9U9l6b/g1OaQnE7hd87gC65JvPzmo/d+/DmDGRHQ
-	0rNg==
-X-Gm-Message-State: AD7BkJIt9SUIuW3livj1vJWu9+ndcL3aCJ48i/SvDuIB9/loejc2FrvArLdffsSFDguaYDPPLxYZ6XpPnHGGGagq
-X-Received: by 10.31.107.194 with SMTP id k63mr504036vki.27.1456484632903;
-	Fri, 26 Feb 2016 03:03:52 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Fri, 26 Feb 2016 03:03:33 -0800 (PST)
-In-Reply-To: <1456484343-7445-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aZGJW-0000jc-7t; Fri, 26 Feb 2016 06:12:03 -0500
+X-IronPort-AV: E=Sophos;i="5.20,346,1444665600"; 
+   d="scan'208";a="3959015"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 26 Feb 2016 19:11:58 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id B114F42AC87B;
+	Fri, 26 Feb 2016 19:11:56 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Fri, 26 Feb 2016 19:11:56 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1456484343-7445-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Feb 2016 11:03:33 +0000
-Message-ID: <CAFEAcA8+ekWvpkch2-YrOVdyVOjtH2t3R851WEj4k49DGCd-2Q@mail.gmail.com>
-To: Cao jin <caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
+	<CAFEAcA8+ekWvpkch2-YrOVdyVOjtH2t3R851WEj4k49DGCd-2Q@mail.gmail.com>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <56D0333A.2000605@cn.fujitsu.com>
+Date: Fri, 26 Feb 2016 19:12:58 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8+ekWvpkch2-YrOVdyVOjtH2t3R851WEj4k49DGCd-2Q@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: B114F42AC87B.A7D26
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] doc/memory.txt: fix typo
@@ -59,90 +55,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Feb 2016 11:04:01 -0000
-
-On 26 February 2016 at 10:59, Cao jin <caoj.fnst@cn.fujitsu.com> wrote:
-> and also modify its description, make the text parallel to the existing
-> .impl.unaligned doc.
-
-For commit messages I think they are nicer to read if they
-follow the format of:
-
-area or file: summary of changes
-
-Longer paragraph which describes the changes in more detail.
+X-List-Received-Date: Fri, 26 Feb 2016 11:12:09 -0000
 
 
-Your commit message has a single sentence which starts in
-the summary line and then runs on into the body part of the
-commit message, rather than having the body part be readable
-on its own.
 
-> bonus: slightly modified the diagram, make it prettier.
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> ---
->  docs/memory.txt | 19 ++++++++++---------
->  1 file changed, 10 insertions(+), 9 deletions(-)
+On 02/26/2016 07:03 PM, Peter Maydell wrote:
+> On 26 February 2016 at 10:59, Cao jin <caoj.fnst@cn.fujitsu.com> wrote:
+
+>>
+>> diff --git a/docs/memory.txt b/docs/memory.txt
+>> index 8745f76..8aee3d6 100644
+>> --- a/docs/memory.txt
+>> +++ b/docs/memory.txt
+>> @@ -186,15 +186,15 @@ of its own subregions: D of size 0x1000 at offset 0 and E of size 0x1000 at
+>>   offset 0x2000. As a diagram:
+>>
+>>           0      1000   2000   3000   4000   5000   6000   7000    8000
+>> -        |------|------|------|------|------|------|------|-------|
+>> +        |------|------|------|------|------|------|------|------|
+>>     A:    [                                                       ]
+>> -  C:    [CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC]
+>> -  B:                  [                          ]
+>> -  D:                  [DDDDD]
+>> -  E:                                [EEEEE]
+>> +  C:    [CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC]
+>> +  B:                  [                           ]
+>> +  D:                  [DDDDDD]
+>> +  E:                                [EEEEEE]
+>>
+>>   The regions that will be seen within this address range then are:
+>> -        [CCCCCCCCCCCC][DDDDD][CCCCC][EEEEE][CCCCC]
+>> +        [CCCCCCCCCCCCC[DDDDDD]CCCCCC[EEEEEE]CCCCCC]
+>>
+>>   Since B has higher priority than C, its subregions appear in the flat map
+>>   even where they overlap with C. In ranges where B has not mapped anything
+>> @@ -203,7 +203,7 @@ C's region appears.
+>>   If B had provided its own MMIO operations (ie it was not a pure container)
+>>   then these would be used for any addresses in its range not handled by
+>>   D or E, and the result would be:
+>> -        [CCCCCCCCCCCC][DDDDD][BBBBB][EEEEE][BBBBB]
+>> +        [CCCCCCCCCCCCC[DDDDDD]BBBBBB[EEEEEE]BBBBBB]
+>>
+>>   Priority values are local to a container, because the priorities of two
+>>   regions are only compared when they are both children of the same container.
 >
-> diff --git a/docs/memory.txt b/docs/memory.txt
-> index 8745f76..8aee3d6 100644
-> --- a/docs/memory.txt
-> +++ b/docs/memory.txt
-> @@ -186,15 +186,15 @@ of its own subregions: D of size 0x1000 at offset 0 and E of size 0x1000 at
->  offset 0x2000. As a diagram:
+> Why is this patch touching all these ascii art diagrams? If you want
+> to change them, that's a different patch, but I don't see any need to.
+> In fact you seem to have lost some of the [] from your version, so your
+> change doesn't look like an improvement to me.
 >
->          0      1000   2000   3000   4000   5000   6000   7000    8000
-> -        |------|------|------|------|------|------|------|-------|
-> +        |------|------|------|------|------|------|------|------|
->    A:    [                                                       ]
-> -  C:    [CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC]
-> -  B:                  [                          ]
-> -  D:                  [DDDDD]
-> -  E:                                [EEEEE]
-> +  C:    [CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC]
-> +  B:                  [                           ]
-> +  D:                  [DDDDDD]
-> +  E:                                [EEEEEE]
+
+well, the diagram seem not aligned so well, so I did the modification.
+
 >
->  The regions that will be seen within this address range then are:
-> -        [CCCCCCCCCCCC][DDDDD][CCCCC][EEEEE][CCCCC]
-> +        [CCCCCCCCCCCCC[DDDDDD]CCCCCC[EEEEEE]CCCCCC]
+> thanks
+> -- PMM
 >
->  Since B has higher priority than C, its subregions appear in the flat map
->  even where they overlap with C. In ranges where B has not mapped anything
-> @@ -203,7 +203,7 @@ C's region appears.
->  If B had provided its own MMIO operations (ie it was not a pure container)
->  then these would be used for any addresses in its range not handled by
->  D or E, and the result would be:
-> -        [CCCCCCCCCCCC][DDDDD][BBBBB][EEEEE][BBBBB]
-> +        [CCCCCCCCCCCCC[DDDDDD]BBBBBB[EEEEEE]BBBBBB]
 >
->  Priority values are local to a container, because the priorities of two
->  regions are only compared when they are both children of the same container.
+> .
+>
 
-Why is this patch touching all these ascii art diagrams? If you want
-to change them, that's a different patch, but I don't see any need to.
-In fact you seem to have lost some of the [] from your version, so your
-change doesn't look like an improvement to me.
+-- 
+Yours Sincerely,
 
-> @@ -297,8 +297,9 @@ various constraints can be supplied to control how these callbacks are called:
->   - .valid.min_access_size, .valid.max_access_size define the access sizes
->     (in bytes) which the device accepts; accesses outside this range will
->     have device and bus specific behaviour (ignored, or machine check)
-> - - .valid.aligned specifies that the device only accepts naturally aligned
-> -   accesses.  Unaligned accesses invoke device and bus specific behaviour.
-> + - .valid.unaligned specifies that the *device being modelled* supports
-> +   unaligned accesses; If false, unaligned accesses will invoke the appropriate
-> +   bus or CPU specific behaviour.
+Cao jin
 
-Should be lower case 'I' after the semicolon.
 
->   - .impl.min_access_size, .impl.max_access_size define the access sizes
->     (in bytes) supported by the *implementation*; other access sizes will be
->     emulated using the ones available.  For example a 4-byte write will be
-> --
-> 2.1.0
-
-thanks
--- PMM
 
