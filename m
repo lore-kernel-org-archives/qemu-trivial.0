@@ -1,45 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1abPpr-000681-6J
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2016 04:46:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48182)
+	id 1abRGV-0002cI-FP
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2016 06:17:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40195)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1abPpo-00062s-BV
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 04:46:17 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1abRGT-0002aS-Og
+	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 06:17:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>) id 1abPpn-0006MM-K4
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 04:46:16 -0500
-Received: from szxga01-in.huawei.com ([58.251.152.64]:13947)
+	(envelope-from <pbonzini@redhat.com>) id 1abRGS-0005Yf-R0
+	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 06:17:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58297)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arei.gonglei@huawei.com>)
-	id 1abPpg-0006Em-Fo; Thu, 03 Mar 2016 04:46:09 -0500
-Received: from 172.24.1.48 (EHLO szxeml426-hub.china.huawei.com)
-	([172.24.1.48])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DFU06310; Thu, 03 Mar 2016 17:44:54 +0800 (CST)
-Received: from localhost (10.177.18.62) by szxeml426-hub.china.huawei.com
-	(10.82.67.181) with Microsoft SMTP Server id 14.3.235.1; Thu, 3 Mar 2016
-	17:43:53 +0800
-From: Gonglei <arei.gonglei@huawei.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 3 Mar 2016 17:43:38 +0800
-Message-ID: <1456998223-12356-2-git-send-email-arei.gonglei@huawei.com>
-X-Mailer: git-send-email 2.6.3.windows.1
-In-Reply-To: <1456998223-12356-1-git-send-email-arei.gonglei@huawei.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1abRGM-0005Xf-QL; Thu, 03 Mar 2016 06:17:46 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5A389C00B8F6;
+	Thu,  3 Mar 2016 11:17:46 +0000 (UTC)
+Received: from [10.36.112.61] (ovpn-112-61.ams2.redhat.com [10.36.112.61])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u23BHhbo025185
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 3 Mar 2016 06:17:45 -0500
+To: Gonglei <arei.gonglei@huawei.com>, qemu-devel@nongnu.org
 References: <1456998223-12356-1-git-send-email-arei.gonglei@huawei.com>
+	<1456998223-12356-3-git-send-email-arei.gonglei@huawei.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56D81D57.4040605@redhat.com>
+Date: Thu, 3 Mar 2016 12:17:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.18.62]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.56D807D6.0169, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 15fca7963ce1defc081cf523ebc16a49
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
-	Gonglei <arei.gonglei@huawei.com>
-Subject: [Qemu-trivial] [PATCH 1/6] egl-helpers: fix possible resource leak
+In-Reply-To: <1456998223-12356-3-git-send-email-arei.gonglei@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH 2/6] sheepdog: fix possible resouce leak
+ and out-of-bounds access
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,43 +50,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Mar 2016 09:46:17 -0000
-
-CID 1352419, using g_strdup_printf instead of asprintf.
-
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
----
- ui/egl-helpers.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
-
-diff --git a/ui/egl-helpers.c b/ui/egl-helpers.c
-index 54be44c..2da1930 100644
---- a/ui/egl-helpers.c
-+++ b/ui/egl-helpers.c
-@@ -50,18 +50,15 @@ int qemu_egl_rendernode_open(void)
-             continue;
-         }
- 
--        r = asprintf(&p, "/dev/dri/%s", e->d_name);
--        if (r < 0) {
--            return -1;
--        }
-+        p = g_strdup_printf("/dev/dri/%s", e->d_name);
- 
-         r = open(p, O_RDWR | O_CLOEXEC | O_NOCTTY | O_NONBLOCK);
-         if (r < 0) {
--            free(p);
-+            g_free(p);
-             continue;
-         }
-         fd = r;
--        free(p);
-+        g_free(p);
-         break;
-     }
- 
--- 
-1.8.5.2
+X-List-Received-Date: Thu, 03 Mar 2016 11:17:54 -0000
 
 
+
+On 03/03/2016 10:43, Gonglei wrote:
+> CID 1352418 (#1 of 1): Out-of-bounds access (INCOMPATIBLE_CAST)
+> incompatible_cast: Pointer &snap_id points to an object whose effective
+> type is unsigned int (32 bits, unsigned) but is dereferenced as a wider
+> unsigned long (64 bits, unsigned). This may lead to memory corruption.
+> 
+> We also need to free local_err when ret is not equals to 0.
+> 
+> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> ---
+>  block/sheepdog.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/block/sheepdog.c b/block/sheepdog.c
+> index 8739acc..3d81bba 100644
+> --- a/block/sheepdog.c
+> +++ b/block/sheepdog.c
+> @@ -2543,7 +2543,7 @@ static int sd_snapshot_delete(BlockDriverState *bs,
+>                                const char *name,
+>                                Error **errp)
+>  {
+> -    uint32_t snap_id = 0;
+> +    unsigned long snap_id = 0;
+>      char snap_tag[SD_MAX_VDI_TAG_LEN];
+>      Error *local_err = NULL;
+>      int fd, ret;
+> @@ -2565,20 +2565,23 @@ static int sd_snapshot_delete(BlockDriverState *bs,
+>      memset(buf, 0, sizeof(buf));
+>      memset(snap_tag, 0, sizeof(snap_tag));
+>      pstrcpy(buf, SD_MAX_VDI_LEN, s->name);
+> -    if (qemu_strtoul(snapshot_id, NULL, 10, (unsigned long *)&snap_id)) {
+> +    if (qemu_strtoul(snapshot_id, NULL, 10, &snap_id)) {
+>          return -1;
+>      }
+>  
+>      if (snap_id) {
+> +        assert(snap_id <= UINT_MAX);
+> +
+>          hdr.snapid = snap_id;
+>      } else {
+>          pstrcpy(snap_tag, sizeof(snap_tag), snapshot_id);
+>          pstrcpy(buf + SD_MAX_VDI_LEN, SD_MAX_VDI_TAG_LEN, snap_tag);
+>      }
+>  
+> -    ret = find_vdi_name(s, s->name, snap_id, snap_tag, &vid, true,
+> +    ret = find_vdi_name(s, s->name, hdr.snapid, snap_tag, &vid, true,
+>                          &local_err);
+>      if (ret) {
+> +        error_report_err(local_err);
+>          return ret;
+>      }
+>  
+> 
+
+A patch for this has been posted yesterday by Jeff Cody.
+
+Paolo
 
