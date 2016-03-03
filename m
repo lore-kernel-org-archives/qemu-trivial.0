@@ -1,47 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1abS7Z-0002hf-AV
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2016 07:12:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32989)
+	id 1abS9n-0003rJ-0C
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2016 07:15:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1abS7R-0002XY-FW
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 07:12:42 -0500
+	(envelope-from <arei.gonglei@huawei.com>) id 1abS9l-0003qy-7V
+	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 07:15:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1abS7Q-0006Ln-O9
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 07:12:37 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53147)
+	(envelope-from <arei.gonglei@huawei.com>) id 1abS9i-0006rC-21
+	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 07:15:01 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:48188)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1abS7M-0006J8-He; Thu, 03 Mar 2016 07:12:32 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E00780518;
-	Thu,  3 Mar 2016 12:12:32 +0000 (UTC)
-Received: from [10.36.112.61] (ovpn-112-61.ams2.redhat.com [10.36.112.61])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u23CCSNJ024867
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 3 Mar 2016 07:12:30 -0500
-To: "Gonglei (Arei)" <arei.gonglei@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1abS9h-0006r1-BI; Thu, 03 Mar 2016 07:14:57 -0500
+Received: from 172.24.1.47 (EHLO SZXEMA414-HUB.china.huawei.com)
+	([172.24.1.47])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DFV11066; Thu, 03 Mar 2016 20:14:41 +0800 (CST)
+Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.26]) by
+	SZXEMA414-HUB.china.huawei.com ([10.82.72.73]) with mapi id
+	14.03.0235.001; Thu, 3 Mar 2016 20:05:14 +0800
+From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [PATCH 6/6] smbus: fix memory leak
+Thread-Index: AQHRdTE4BlJp17qJ1EunE9xgvN0JOJ9HDIAAgACSuhA=
+Date: Thu, 3 Mar 2016 12:05:13 +0000
+Message-ID: <33183CC9F5247A488A2544077AF19020B02EC3C3@SZXEMA503-MBS.china.huawei.com>
 References: <1456998223-12356-1-git-send-email-arei.gonglei@huawei.com>
-	<1456998223-12356-3-git-send-email-arei.gonglei@huawei.com>
-	<56D81D57.4040605@redhat.com>
-	<33183CC9F5247A488A2544077AF19020B02EC39F@SZXEMA503-MBS.china.huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56D82A2C.6000607@redhat.com>
-Date: Thu, 3 Mar 2016 13:12:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	<1456998223-12356-7-git-send-email-arei.gonglei@huawei.com>
+	<56D81DAA.3040201@redhat.com>
+In-Reply-To: <56D81DAA.3040201@redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.177.18.62]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <33183CC9F5247A488A2544077AF19020B02EC39F@SZXEMA503-MBS.china.huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020203.56D82AB3.00A7, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=169.254.6.26,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 94557e0d87c026a1ad55cdef083fea3c
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH 2/6] sheepdog: fix possible resouce leak
- and out-of-bounds access
+Subject: Re: [Qemu-trivial] [PATCH 6/6] smbus: fix memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,36 +59,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Mar 2016 12:12:42 -0000
+X-List-Received-Date: Thu, 03 Mar 2016 12:15:02 -0000
+
+> Subject: Re: [PATCH 6/6] smbus: fix memory leak
+>=20
+>=20
+>=20
+> On 03/03/2016 10:43, Gonglei wrote:
+> > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> > ---
+> >  hw/i2c/smbus_eeprom.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/hw/i2c/smbus_eeprom.c b/hw/i2c/smbus_eeprom.c
+> > index 5b7bd89..83c6b27 100644
+> > --- a/hw/i2c/smbus_eeprom.c
+> > +++ b/hw/i2c/smbus_eeprom.c
+> > @@ -156,4 +156,6 @@ void smbus_eeprom_init(I2CBus *smbus, int
+> nb_eeprom,
+> >          qdev_prop_set_ptr(eeprom, "data", eeprom_buf + (i * 256));
+> >          qdev_init_nofail(eeprom);
+> >      }
+> > +
+> > +    g_free(eeprom_buf);
+> >  }
+> >
+>=20
+> This is wrong, eeprom_buf is passed to the device through qdev_prop_set_p=
+tr.
+>=20
+Oops, right, NACK. Thanks!
 
 
-
-On 03/03/2016 13:00, Gonglei (Arei) wrote:
->>> > >
->>> > > -    ret = find_vdi_name(s, s->name, snap_id, snap_tag, &vid, true,
->>> > > +    ret = find_vdi_name(s, s->name, hdr.snapid, snap_tag, &vid, true,
->>> > >                          &local_err);
->>> > >      if (ret) {
->>> > > +        error_report_err(local_err);
->>> > >          return ret;
->>> > >      }
->>> > >
->>> > >
->> > 
->> > A patch for this has been posted yesterday by Jeff Cody.
->> > 
-> OK, I found it. And Max's comments is right, Jef can use hdr.snapid instead of snap_tag
-> to invoke find_vdi_name().
-> 
-> But, except that fix, My patch also fixed a memory leak, did you see that?
-
-No, I didn't notice -- it's not clear that error_report_err also frees
-the error.
-
-> Do I need post an separate patch to fix memory leak?
-
-Yes, but the right fix in my opinion is to pass errp to find_vdi_name
-instead.
-
-Paolo
+Regards,
+-Gonglei
 
