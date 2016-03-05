@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1abUeF-0006aE-Fy
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Mar 2016 09:54:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44378)
+	id 1acCYQ-0001Zo-9j
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Mar 2016 08:47:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abUeC-0006Wu-QG
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 09:54:37 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1acCYO-0001Zf-1h
+	for qemu-trivial@nongnu.org; Sat, 05 Mar 2016 08:47:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abUeC-0006r0-3q
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 09:54:36 -0500
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:34801)
+	(envelope-from <richard.weiyang@gmail.com>) id 1acCYK-0004OK-R0
+	for qemu-trivial@nongnu.org; Sat, 05 Mar 2016 08:47:31 -0500
+Received: from mail-pf0-x22f.google.com ([2607:f8b0:400e:c00::22f]:34490)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abUeB-0006qj-Kg
-	for qemu-trivial@nongnu.org; Thu, 03 Mar 2016 09:54:36 -0500
-Received: by mail-vk0-x236.google.com with SMTP id e185so23709620vkb.1
-	for <qemu-trivial@nongnu.org>; Thu, 03 Mar 2016 06:54:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=StTOi8lJEXKuo7t3AzhVRAr2GOdwPBbbVCthA4ryKas=;
-	b=CJx5TY8x878WBgZT+XqQBzbA0cZx6Rwjfy4/uNOokhvxBJlyc3k1DRWVJ5rWmsLS32
-	6XCFyBB8bPKfo4wMpSvu2Iwo0oZfiJLca77W3BpbNCbCzxVfHQbvONkq8gqkMgaxGDOE
-	7eWsxO2ZvxsurdAx2ylelezOwjR6Si6Y7cads=
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1acCYK-0004O8-JT; Sat, 05 Mar 2016 08:47:28 -0500
+Received: by mail-pf0-x22f.google.com with SMTP id 129so7970720pfw.1;
+	Sat, 05 Mar 2016 05:47:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=zmzmzEQJ4Fg3g4Zs21NS/bKDW03Bx2Z7XtbP5S8mwoo=;
+	b=kD0Ct1SLTuIGaKTuuY/SEUZ1sSHWG7zOlMO7qs1GemYjqpravQIlEb7TzEGsJzjFkI
+	9/jNlQxCVAh9DND42Mshi7CtSsURbAKprOrE07JtDN7vT0fzccfVSkbdH+AgUlJeVWMM
+	LeG2AzFLb53cUZWOUs8s92eglonN7Wmk136mbvCBVEXYc2q1zLCocGEKsVVxClBXCEHA
+	LeethFtP94PMcXTZIfH1hvnmaeaKsSHUWm5f4BUswdO3fIUnn9hUSqPdVrkmjDddRcDM
+	GSj3yflnSs3niGPCNWu0buooUl3c4OTSW9OMQlAStmh6g9YOWQZvHug4wZrRAge2Klu8
+	d6wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=StTOi8lJEXKuo7t3AzhVRAr2GOdwPBbbVCthA4ryKas=;
-	b=nA0NBzUKKKFOyVS5MHuosQKOstg7+4/3wP6IimfHFk+zI2v7c4ayQoPuvhToU1nCb3
-	q1iNZ8hhWQkwPQMkQFKVLI1rhcjXJm52PpaUEj5p4x8bBWexlQjoWZNalx7qJrRAyMZ6
-	FUkK/y4KB0fD7RLOFvDk7SIEU6b9OkG9tSH8f0gzY4tZwlwal8qGdDCjuq7ojXSj3J7M
-	8TOU+djSzNnWFtoGKOmcu2ibuEifl6rBALm8cttb1s4ceX+T05M9GoWkF83VErWfq5ZY
-	VVvA98Dxl4OWDm7+hrfB85MFLYuDd8l3/A/OSOl4XxORoLYpy5jvvjjpllUZLzQv2Bfk
-	rVRw==
-X-Gm-Message-State: AD7BkJKi9LbAYL9QFRYpdrB7slhrA7aHbIkkbh0+gU72X4bTYPB8CbNYGu4bXpeVx7Hz4LXRGIIXRFgyaAsQqFAK
-X-Received: by 10.31.107.194 with SMTP id k63mr1926678vki.27.1457016874962;
-	Thu, 03 Mar 2016 06:54:34 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 3 Mar 2016 06:54:15 -0800 (PST)
-In-Reply-To: <56D84E0E.5000801@redhat.com>
-References: <1456392739-30336-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<CAFEAcA944NgbOvv3mYH2xvEup2V-UevPXPfew=Y2N7sYkvvxpQ@mail.gmail.com>
-	<56CF020A.8030704@cn.fujitsu.com>
-	<CAFEAcA9=u6FiqNTw25x3k5uLKZ9QnDqsho2BdfqZ-ybjfRa_fA@mail.gmail.com>
-	<56D84E0E.5000801@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Mar 2016 14:54:15 +0000
-Message-ID: <CAFEAcA9B7XF75n3PAtwVdygBe6sUoD4g96URRiXPgk94N5AHQw@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=zmzmzEQJ4Fg3g4Zs21NS/bKDW03Bx2Z7XtbP5S8mwoo=;
+	b=h3uvHI5RMG5x/oHq7Rx+h49Sj+u01BenO9DYtVQeg3YuSPhfcl9JeC1p4Zfo2z3/9Q
+	mwhQRI0XkvakXLUDYAaUxRpRxPrFiuKjMDUaDwTGY3Fi36NPJuBU370kR2u/mq6T6nX8
+	GF/3ca3/SKbinDEHmfl1jOP5hXOkcLuaRRDfGeaqYo5Du5gCT8ldlTVdcDsO4Gr276y+
+	dpUnp1muKBTqa8gnGVhIVpnkUcOmyTKxvBgjp1Csh0BODToMF7TC2UI+9Pn4dv4SRLcc
+	mKr1mAHeDCTv27O3yzz5iLVyJlyg2ADxqwCy8+GuAL654CnExnywxSeIAhDXkFbYSd5h
+	nuZw==
+X-Gm-Message-State: AD7BkJKBYB64MeYo9YiKJiBu05sA/OetnrmJIie6ZM+GTM1893AHOtEOI+klSIf68DI5+A==
+X-Received: by 10.98.93.211 with SMTP id n80mr20334217pfj.61.1457185647401;
+	Sat, 05 Mar 2016 05:47:27 -0800 (PST)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	ud10sm12689319pab.27.2016.03.05.05.47.26
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 05 Mar 2016 05:47:26 -0800 (PST)
+From: Wei Yang <richard.weiyang@gmail.com>
+To: corentincj@iksaif.net
+Date: Sat,  5 Mar 2016 13:47:08 +0000
+Message-Id: <1457185628-23304-1-git-send-email-richard.weiyang@gmail.com>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Cao jin <caoj.fnst@cn.fujitsu.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] doc/memory.txt: fix typo
+X-Received-From: 2607:f8b0:400e:c00::22f
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>
+Subject: [Qemu-trivial] [PATCH] bitmap: refine and move
+	BITMAP_{FIRST/LAST}_WORD_MASK
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -63,24 +62,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Mar 2016 14:54:37 -0000
+X-List-Received-Date: Sat, 05 Mar 2016 13:47:33 -0000
 
-On 3 March 2016 at 14:45, Paolo Bonzini <pbonzini@redhat.com> wrote:
->
->
-> On 25/02/2016 15:24, Peter Maydell wrote:
->> Probably what happened
->> was that when the API was being designed it started off with an
->> 'unaligned' field, and then later the field name and semantics
->> were changed but the docs weren't updated to match. My point was
->> that just changing the name without looking at the behaviour we're
->> actually implementing isn't correct.
->
-> Peter, are you okay with adding your S-o-b and authorship to
-> this patch?
+According to linux kernel commit <89c1e79eb30> ("linux/bitmap.h: improve
+BITMAP_{LAST,FIRST}_WORD_MASK"), these two macro could be improved.
 
-Yes.
+This patch takes this change and also move them all in header file.
 
-thanks
--- PMM
+Signed-off-by: Wei Yang <richard.weiyang@gmail.com>
+---
+ include/qemu/bitmap.h | 7 ++-----
+ util/bitmap.c         | 2 --
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/include/qemu/bitmap.h b/include/qemu/bitmap.h
+index 0e33fa5..864982d 100644
+--- a/include/qemu/bitmap.h
++++ b/include/qemu/bitmap.h
+@@ -58,11 +58,8 @@
+  * find_next_bit(addr, nbits, bit)	Position next set bit in *addr >= bit
+  */
+ 
+-#define BITMAP_LAST_WORD_MASK(nbits)                                    \
+-    (                                                                   \
+-        ((nbits) % BITS_PER_LONG) ?                                     \
+-        (1UL<<((nbits) % BITS_PER_LONG))-1 : ~0UL                       \
+-        )
++#define BITMAP_FIRST_WORD_MASK(start) (~0UL << ((start) & (BITS_PER_LONG - 1)))
++#define BITMAP_LAST_WORD_MASK(nbits) (~0UL >> (-(nbits) & (BITS_PER_LONG - 1)))
+ 
+ #define DECLARE_BITMAP(name,bits)                  \
+         unsigned long name[BITS_TO_LONGS(bits)]
+diff --git a/util/bitmap.c b/util/bitmap.c
+index 40aadfb..43ed011 100644
+--- a/util/bitmap.c
++++ b/util/bitmap.c
+@@ -157,8 +157,6 @@ int slow_bitmap_andnot(unsigned long *dst, const unsigned long *bitmap1,
+     return result != 0;
+ }
+ 
+-#define BITMAP_FIRST_WORD_MASK(start) (~0UL << ((start) % BITS_PER_LONG))
+-
+ void bitmap_set(unsigned long *map, long start, long nr)
+ {
+     unsigned long *p = map + BIT_WORD(start);
+-- 
+2.5.0
+
 
