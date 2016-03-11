@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1adcjC-0008NV-Hu
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Mar 2016 06:56:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56240)
+	id 1aePLI-0006R7-M2
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Mar 2016 10:51:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39011)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1adcj7-0008EH-5v
-	for qemu-trivial@nongnu.org; Wed, 09 Mar 2016 06:56:32 -0500
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1aePLD-0006P1-FV
+	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:51:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1adcj6-0003Xw-F8
-	for qemu-trivial@nongnu.org; Wed, 09 Mar 2016 06:56:29 -0500
-Received: from smtp3.mundo-r.com ([212.51.32.191]:17529 helo=smtp4.mundo-r.com)
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1aePLA-0006IS-7e
+	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:51:03 -0500
+Received: from mail.uni-paderborn.de ([131.234.142.9]:54965)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1adcj1-0003Ne-5f; Wed, 09 Mar 2016 06:56:23 -0500
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: A2DHCQBwDuBW/5tjdVtcGQEBAQEPAQEBAYMLgT+mZQEBAQEBAQaRTIITAQ2BaYYPAoFMOBQBAQEBAQEBZCdBAQEDAQwBg24BAQQ6PxALGAklDwEsGxmIKAEBvzsBAQEBAQEEAQEBARyFUIUKhQaDbgWXN49AARWNGIV9iGEeAQFCg2U7LoEmhihEgUEBAQE
-X-IPAS-Result: A2DHCQBwDuBW/5tjdVtcGQEBAQEPAQEBAYMLgT+mZQEBAQEBAQaRTIITAQ2BaYYPAoFMOBQBAQEBAQEBZCdBAQEDAQwBg24BAQQ6PxALGAklDwEsGxmIKAEBvzsBAQEBAQEEAQEBARyFUIUKhQaDbgWXN49AARWNGIV9iGEeAQFCg2U7LoEmhihEgUEBAQE
-X-IronPort-AV: E=Sophos;i="5.24,311,1454972400"; d="scan'208";a="97508117"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 09 Mar 2016 12:55:46 +0100
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.0:RSA_AES_256_CBC_SHA1:32) (Exim)
-	id 1adciP-0003N2-Bc; Wed, 09 Mar 2016 12:55:45 +0100
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1adbFq-0003cx-Tj; Wed, 09 Mar 2016 11:22:10 +0100
-From: Alberto Garcia <berto@igalia.com>
-To: qemu-devel@nongnu.org
-In-Reply-To: <1456217065-5465-1-git-send-email-berto@igalia.com>
-References: <1456217065-5465-1-git-send-email-berto@igalia.com>
-User-Agent: Notmuch/0.13.2 (http://notmuchmail.org) Emacs/23.2.1
-	(i486-pc-linux-gnu)
-Date: Wed, 09 Mar 2016 11:22:10 +0100
-Message-ID: <w518u1sc5nx.fsf@maestria.local.igalia.com>
+	(envelope-from <kbastian@mail.uni-paderborn.de>)
+	id 1aePL9-0006II-S4; Fri, 11 Mar 2016 10:51:00 -0500
+To: Siddharth Gupta <siddharthgupta04@gmail.com>, qemu-devel@nongnu.org
+References: <CALwKnOgaM2AKdHX+tJ8vh17rh3Hdd4uqdVBCZ=su-Asi=0eL_A@mail.gmail.com>
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Message-ID: <56E2E95F.1080901@mail.uni-paderborn.de>
+Date: Fri, 11 Mar 2016 16:50:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+In-Reply-To: <CALwKnOgaM2AKdHX+tJ8vh17rh3Hdd4uqdVBCZ=su-Asi=0eL_A@mail.gmail.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.2.1.2493963, Antispam-Engine: 2.7.2.2107409,
+	Antispam-Data: 2016.3.11.154217
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 212.51.32.191
+X-Received-From: 131.234.142.9
 Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] ipack: Update e-mail address
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] BitsSizedTasks-LargeFrames
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,14 +43,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Mar 2016 11:56:33 -0000
+X-List-Received-Date: Fri, 11 Mar 2016 15:51:07 -0000
 
-On Tue 23 Feb 2016 09:44:25 AM CET, Alberto Garcia <berto@igalia.com> wrote:
-> I'm not really using the old one anymore.
->
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
+Hi Siddharth,
 
-Ping...
+thanks for the patch. Can you resend it inlined into the e-mail instead
+of an attachment? I usually use git send-email for that.
+My workflow (once you have configured git send-email) would be:
 
-Berto
+- git format-patch -1
+- git send-email --to="qemu-devel@nongnu.org"
+--cc="qemu-trivial@nongnu.org" *.patch
+
+Also there is a page on the wiki on how to submit a patch [1]. If you
+want to avoid a lot of re-sending you might want to look into it :).
+
+Cheers,
+Bastian
+
+[1] http://wiki.qemu.org/Contribute/SubmitAPatch
+
+
+
 
