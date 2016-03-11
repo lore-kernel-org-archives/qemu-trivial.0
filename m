@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aeUwB-0001gt-PJ
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Mar 2016 16:49:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56938)
+	id 1aeUwC-0001hF-1C
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Mar 2016 16:49:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <siddharthgupta04@gmail.com>) id 1aeOvo-0003Wo-26
-	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:24:49 -0500
+	(envelope-from <siddharthgupta04@gmail.com>) id 1aeP7m-0000gJ-UC
+	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:37:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <siddharthgupta04@gmail.com>) id 1aeOvm-0005H6-LJ
-	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:24:47 -0500
-Received: from mail-yw0-x233.google.com ([2607:f8b0:4002:c05::233]:36446)
+	(envelope-from <siddharthgupta04@gmail.com>) id 1aeP7l-0001y2-A7
+	for qemu-trivial@nongnu.org; Fri, 11 Mar 2016 10:37:10 -0500
+Received: from mail-yk0-x233.google.com ([2607:f8b0:4002:c07::233]:33721)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <siddharthgupta04@gmail.com>)
-	id 1aeOvm-0005H1-Dg; Fri, 11 Mar 2016 10:24:46 -0500
-Received: by mail-yw0-x233.google.com with SMTP id g3so96377176ywa.3;
-	Fri, 11 Mar 2016 07:24:46 -0800 (PST)
+	id 1aeP7k-0001x2-TN; Fri, 11 Mar 2016 10:37:09 -0500
+Received: by mail-yk0-x233.google.com with SMTP id z7so50395326yka.0;
+	Fri, 11 Mar 2016 07:37:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:date:message-id:subject:from:to:cc;
-	bh=J4sAgCrjXkJc67Ri0TZyJDoI7hhyCwzxST5UdZtbJAU=;
-	b=wkFV3bvI3ev7SuhNG5JDDiUsW4jOSxIuQBqSn74ARWtlhr85lLGnpRfijc6SJOCYhg
-	jI6fEUMS2Z0i2a9XNjEFFfIo2uWWP8md7+6buvxK9q7mfkWkhOpsMGztqveLqWGQBlKD
-	6bwiS7YQQFrwsm6Lc7+p7AYOCQOOngRvuznjsAWykgAgz461Eux0b5eg14sYlovCZZCc
-	nHcIG8q14/GA09Jij7GkLw/RZxZyOK6wFmz/tbGAmQHkTqSv1Butmr13DHLIeb7fQsJD
-	cIMeQ+WwLCPJw4/dSLiQJxa40qO42+9X57Qd3DUqXtHOnwnj5Spt8vXcWsW6xw2h64b6
-	A+gQ==
+	bh=760qgs8nvOelDpzeVydCumbA6RvDCfkh64r9O1mWJsw=;
+	b=B+yURC+63YgaWN48jet7WYQGvdKy/aUghvxOmPV1x4aGoR74CulamBncr7nWkqMg9r
+	iZkZSHXjdj0vE4CBF4rT4CxQMX7SlYHZvaQ1uZtUfyLh4ISKHaSVCcFSgjvDnjfCnZm1
+	ZOl2sQ9MNH6JuhwGOxQTNGOLscdEP49RBiERh2oc3aHn+2whdGSPvesdfggblWDDmmp3
+	yvtpYnbBKLlcbEOUeh7p8iGjrTMLkm/ASRz/FHjt36dxwl1G3WXfUvy8TEFSOVFZgFRj
+	hUcXHbO9aLCt7QWpoRlBNMvlPNzF0pxZOPcx+xIrPOHKxLCl7VG3eO3PGOiYnlmtrVNj
+	rwzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:date:message-id:subject:from:to:cc;
-	bh=J4sAgCrjXkJc67Ri0TZyJDoI7hhyCwzxST5UdZtbJAU=;
-	b=H4sUwqmUrmiND3fZZSIUw/Hfq7TXQOOqqUkaHplpv2yvptGUbPjYOVhbKIy8doYKrQ
-	6j1RasBKO/qDehW4xEtMD1Er2qA1mQB+RouL+TLfbLwOIq35WWihzEJIIM9Q+SJhJ2Wj
-	hZ0twYJ5l9ZRfe8NQQA8wEaUBTabkURvk7YiQMTYUJKIBNdw1khdEvRPMCosUOV05jN3
-	brMb7yCcyE02ovbRL9aXtNOOuFZcOnHLLQ3iDak3CO2p6wIZiNTnkJpiUYTaB555+YzT
-	1dNFYVaHqGjp/ApNoDYBBdybD5U0x4W58Aw9AgiVocuRsoOPKxTqziRhyGp6a2dAetJf
-	BN3A==
-X-Gm-Message-State: AD7BkJL1aMOrJa7AveEa5ZJ8apT0p2N28DuCX5/A2SLrj3D2QfnlvZsih0FS7kF1nx0bg3ZQ5Z48Wkvlh7zKsQ==
+	bh=760qgs8nvOelDpzeVydCumbA6RvDCfkh64r9O1mWJsw=;
+	b=GLjd7QcaegM09rFoCUKwPlMIaJaYxbl+snoSWzw4Lv+XRnqaw9jbP3BpXfhXqRJafo
+	w6oTwxuTlMfVsaYee44qRAyxu9d9/IClXyLuW8MSgChIaybj4volo1zMrhDwkkelBIEL
+	miJNPZZkS6ZX2W/hzeH/CVxTywo5dAyTOrMvxK0Uzw9rfLa9M7b7D9HMYFEBhTqjTJiD
+	YklLukIlf3CUW+v794Yhx3vVZsdFoU0bdIyDZdhvE2EvWeezAFth9dLsBDlqhtlMYCI5
+	Wy3452Pz20t2kaqgieLR5uxCEwGq+SarXr+rvPMdXIob7VqM5wYpYu/qBgtFfeinIDYq
+	DzMA==
+X-Gm-Message-State: AD7BkJJQfPDrPnXoVfuj+2vxTRP1oX0ih7+CuKzbj4p4XZoSch212WjOIL5qHaMCa6uIxiI+nFyxqHlzUwI8fA==
 MIME-Version: 1.0
-X-Received: by 10.13.255.4 with SMTP id p4mr5307284ywf.54.1457709885975; Fri,
-	11 Mar 2016 07:24:45 -0800 (PST)
-Received: by 10.37.210.201 with HTTP; Fri, 11 Mar 2016 07:24:45 -0800 (PST)
-Date: Fri, 11 Mar 2016 20:54:45 +0530
-Message-ID: <CALwKnOiWKiXMVwvvZj9pFdJnJ6Q5Z_Ar=Q7rEEp6AC6_vKs3Ww@mail.gmail.com>
+X-Received: by 10.37.1.138 with SMTP id 132mr5603353ybb.70.1457710628232; Fri,
+	11 Mar 2016 07:37:08 -0800 (PST)
+Received: by 10.37.210.201 with HTTP; Fri, 11 Mar 2016 07:37:08 -0800 (PST)
+Date: Fri, 11 Mar 2016 21:07:08 +0530
+Message-ID: <CALwKnOj-P+iO-mUXscc=sPCq8du_Z3r+yj3wXZj1z_4pOtyynA@mail.gmail.com>
 From: Siddharth Gupta <siddharthgupta04@gmail.com>
 To: qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary=94eb2c0874e6f07404052dc787ee
+Content-Type: multipart/alternative; boundary=001a113cecfc2e68eb052dc7b47d
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::233
+X-Received-From: 2607:f8b0:4002:c07::233
 X-Mailman-Approved-At: Fri, 11 Mar 2016 16:49:34 -0500
 Cc: qemu-trivial@nongnu.org
-Subject: [Qemu-trivial] BiteSizedPatch-LargeFrames
+Subject: [Qemu-trivial] [Qemu-devel][Patch] BiteSizedTasks LargeFrames
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -59,9 +59,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Mar 2016 15:24:49 -0000
+X-List-Received-Date: Fri, 11 Mar 2016 15:37:13 -0000
 
---94eb2c0874e6f07404052dc787ee
+--001a113cecfc2e68eb052dc7b47d
 Content-Type: text/plain; charset=UTF-8
 
 From 032be62f56a207833ae12cc9474e3e8be5ed8eb4 Mon Sep 17 00:00:00 2001
@@ -180,7 +180,7 @@ const uint8_t *buf, size_t
 
 Signed-off-by: Siddharth Gupta <siddharthgupta04@gmail.com>
 
---94eb2c0874e6f07404052dc787ee
+--001a113cecfc2e68eb052dc7b47d
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: base64
 
@@ -265,5 +265,5 @@ ZHJfc2cpOzxicj7CoMKgwqDCoCByZXR1cm4gc2l6ZTs8YnI+wqB9PGJyPsKgPGJyPi0tIDxicj4y
 LjUuMDxicj48YnI+U2lnbmVkLW9mZi1ieTogU2lkZGhhcnRoIEd1cHRhICZsdDs8YSBocmVmPSJt
 YWlsdG86c2lkZGhhcnRoZ3VwdGEwNEBnbWFpbC5jb20iPnNpZGRoYXJ0aGd1cHRhMDRAZ21haWwu
 Y29tPC9hPiZndDs8L2Rpdj4NCg==
---94eb2c0874e6f07404052dc787ee--
+--001a113cecfc2e68eb052dc7b47d--
 
