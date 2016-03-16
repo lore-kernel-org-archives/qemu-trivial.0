@@ -1,39 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ag9vH-00053L-A6
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Mar 2016 07:47:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60563)
+	id 1agA0d-0004Dv-G5
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Mar 2016 07:53:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ag9vB-0004vt-Ot
-	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 07:47:29 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1agA0b-0004BE-Hy
+	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 07:53:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ag9v5-0006b4-RT
-	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 07:47:25 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37139)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1agA0a-0008N3-RX
+	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 07:53:01 -0400
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:34024)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ag9v0-0006Zd-Vs; Wed, 16 Mar 2016 07:47:15 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id BDEEA40EBF;
-	Wed, 16 Mar 2016 14:47:13 +0300 (MSK)
-To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1458121240-2490-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
-Organization: Telecom Service, JSC
-Message-ID: <56E947C0.8050109@msgid.tls.msk.ru>
-Date: Wed, 16 Mar 2016 14:47:12 +0300
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1agA0V-0008MJ-Q8; Wed, 16 Mar 2016 07:52:55 -0400
+Received: by mail-wm0-x229.google.com with SMTP id p65so186146418wmp.1;
+	Wed, 16 Mar 2016 04:52:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=1i6uxk/GUsDxwWnuapkUmjE6yzt6JT20K2KJFKTD2CM=;
+	b=V0GxJv5zWAE0vvHSlhJ9teYRVC1jekN3ekjq3H6WvAiDc13HIE10EntxlcFHls48K0
+	dmkgUcyIXa5b3aPbiumjRWBTXYVKdM6wLplA4BlW4mQ5IiqittgVx6WTk1NlpF3vZ7uS
+	C22yOEu4bVnuWin9N0I7zJfqiCUA+kp/t1UT9LSq+32/3/wCfWlAKSZxg9DyqSgi2Nfv
+	nsp0axixYCB69MUvAyQPAvZm3MfHwYN6oxrHeLDQ0E+YBq648l1d8IaV0IstD2hvfClL
+	/HSOqMPEShC0CUzOVJgA4AdODZhAMA8ZHr9uOySICwDvjE3Ik63WGzDR4iNFgPl+a4hh
+	of3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=1i6uxk/GUsDxwWnuapkUmjE6yzt6JT20K2KJFKTD2CM=;
+	b=FSGYwavYMqd7yuR0K9SKKHeEwg4h6ZXh92zYaW7SDSc8enEvs+lGIv201fixmZPwLK
+	mY5tEICGIt8xJd2trDSuinyU0h0AHkQ6aHojVJKw2C6oDXbOyxHdVtQ+n4ltN3gGQzNI
+	mG07jWPSuKkG/6vWrOulpm1lWWUQ+q0bIFoxVwxfqkAbN+yjbD7cHQRj4Ye+gnKYO1tU
+	QEon19F1S/dtAj+vll/tARw/CyOXyrUzFYQaLQXSqMF5mwxiiIxbf06ViEv7OeZ42pVR
+	q/ZNDrN3nkduK6lonjvBgNvZ3Iz3UpMjK4sP6jwmN6Yws2NaFJYpI/mhku3BWPNvRtNz
+	wILw==
+X-Gm-Message-State: AD7BkJKuaB3FwyNdhFbgMq/LDphokzymafnBlpKqGiZ22JWQJIZ+zavzsRWWQ5RNZMOokA==
+X-Received: by 10.194.200.194 with SMTP id ju2mr3266058wjc.63.1458129174770;
+	Wed, 16 Mar 2016 04:52:54 -0700 (PDT)
+Received: from [192.168.10.165] (94-39-161-17.adsl-ull.clienti.tiscali.it.
+	[94.39.161.17]) by smtp.googlemail.com with ESMTPSA id
+	c71sm3176239wmd.4.2016.03.16.04.52.53
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 16 Mar 2016 04:52:53 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Wei Yang <richard.weiyang@gmail.com>,
+	alex.williamson@redhat.com
+References: <1455152067-19900-1-git-send-email-richard.weiyang@gmail.com>
+	<56E9433C.1040503@msgid.tls.msk.ru>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56E94914.1040803@redhat.com>
+Date: Wed, 16 Mar 2016 12:52:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.6.0
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <1458121240-2490-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+In-Reply-To: <56E9433C.1040503@msgid.tls.msk.ru>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, aliguori@us.ibm.com,
-	ehabkost@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] vl: fix comment about when parsing cpu
-	definitions
+X-Received-From: 2a00:1450:400c:c09::229
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-trivial] [PATCH] vfio/pci: replace 1 with
+ PCI_CAP_LIST_NEXT to make code self-explain
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -45,14 +73,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Mar 2016 11:47:30 -0000
+X-List-Received-Date: Wed, 16 Mar 2016 11:53:02 -0000
 
-16.03.2016 12:40, Wei Jiangang wrote:
-> machine->init() was replaced with machine_class->init().
 
-Applied to -trivial, adding the commit id where this happened.
 
-Thanks,
+On 16/03/2016 12:27, Michael Tokarev wrote:
+>> >      for (tmp = pdev->config[PCI_CAPABILITY_LIST]; tmp;
+>> > -         tmp = pdev->config[tmp + 1]) {
+>> > +         tmp = pdev->config[tmp + PCI_CAP_LIST_NEXT]) {
+>> > -    next = pdev->config[pos + 1];
+>> > +    next = pdev->config[pos + PCI_CAP_LIST_NEXT];
+> Hmm. I'm not sure the new version is better, to me "+1" reads
+> easier than the new symbolic constant variant.
+> 
+> If it were something like pdev->config[PCI_CAP_LIST_NEXT], that'd be
+> nice, but not "pos + PCI_CAP_LIST_NEXT".
+> 
+> But again, I'm not pci config space expert and don't understand
+> the basics :)
 
-/mjt
+Each capability is a node of a linked list, and the position of the next
+capability is at offset 1 inside the capability (here it is at offset 1
+from the tmp or pos base).  I think the patch is an improvement.
+
+Paolo
 
