@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aflu7-0008FU-TA
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Mar 2016 06:08:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53946)
+	id 1ag7xM-0005D6-HL
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Mar 2016 05:41:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1aflu4-00088a-Vr
-	for qemu-trivial@nongnu.org; Tue, 15 Mar 2016 06:08:41 -0400
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1ag7xG-00051o-Pu
+	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 05:41:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1aflu4-000620-2f
-	for qemu-trivial@nongnu.org; Tue, 15 Mar 2016 06:08:40 -0400
-Received: from [59.151.112.132] (port=36751 helo=heian.cn.fujitsu.com)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1ag7xF-0003h0-Ul
+	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 05:41:26 -0400
+Received: from [59.151.112.132] (port=13749 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <weijg.fnst@cn.fujitsu.com>)
-	id 1afltz-0005q9-Fw; Tue, 15 Mar 2016 06:08:35 -0400
+	id 1ag7x9-0003dr-Fv; Wed, 16 Mar 2016 05:41:19 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="4591536"
+   d="scan'208";a="4636606"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 15 Mar 2016 18:08:27 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 3B2F942B55F0;
-	Tue, 15 Mar 2016 18:08:27 +0800 (CST)
+	by heian.cn.fujitsu.com with ESMTP; 16 Mar 2016 17:41:17 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id C3D7442C80FF;
+	Wed, 16 Mar 2016 17:41:16 +0800 (CST)
 Received: from localhost.localdomain (10.167.226.50) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.181.6; Tue, 15 Mar 2016 18:13:06 +0800
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.181.6; Wed, 16 Mar 2016 17:41:16 +0800
 From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
 To: <qemu-devel@nongnu.org>
-Date: Tue, 15 Mar 2016 18:07:43 +0800
-Message-ID: <1458036463-20180-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Date: Wed, 16 Mar 2016 17:40:40 +0800
+Message-ID: <1458121240-2490-1-git-send-email-weijg.fnst@cn.fujitsu.com>
 X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.167.226.50]
-X-yoursite-MailScanner-ID: 3B2F942B55F0.ADBBD
+X-yoursite-MailScanner-ID: C3D7442C80FF.A02E5
 X-yoursite-MailScanner: Found to be clean
 X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-Subject: [Qemu-trivial] [Qemu-devel][PATCH] accel: make
-	configure_accelerator return void
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, aliguori@us.ibm.com,
+	Wei Jiangang <weijg.fnst@cn.fujitsu.com>, ehabkost@redhat.com
+Subject: [Qemu-trivial] [Qemu-devel][PATCH] vl: fix comment about when
+	parsing cpu definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -51,37 +51,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Mar 2016 10:08:42 -0000
+X-List-Received-Date: Wed, 16 Mar 2016 09:41:31 -0000
 
-Return the negated value of accel_initialised is meaningless,
-and the caller vl doesn't check it.
+machine->init() was replaced with machine_class->init().
 
 Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
 ---
- accel.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ vl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel.c b/accel.c
-index 0510b90..403eb5e 100644
---- a/accel.c
-+++ b/accel.c
-@@ -77,7 +77,7 @@ static int accel_init_machine(AccelClass *acc, MachineState *ms)
-     return ret;
- }
- 
--int configure_accelerator(MachineState *ms)
-+void configure_accelerator(MachineState *ms)
- {
-     const char *p;
-     char buf[10];
-@@ -128,8 +128,6 @@ int configure_accelerator(MachineState *ms)
-     if (init_failed) {
-         fprintf(stderr, "Back to %s accelerator.\n", acc->name);
-     }
--
--    return !accel_initialised;
- }
- 
+diff --git a/vl.c b/vl.c
+index 7a28982..3c403d1 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4079,7 +4079,7 @@ int main(int argc, char **argv, char **envp)
+     /* Init CPU def lists, based on config
+      * - Must be called after all the qemu_read_config_file() calls
+      * - Must be called before list_cpus()
+-     * - Must be called before machine->init()
++     * - Must be called before machine_class->init()
+      */
+     cpudef_init();
  
 -- 
 1.9.3
