@@ -1,56 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1agQsu-0003Pp-Vd
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Mar 2016 01:54:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50237)
+	id 1agZMZ-0003jA-Gj
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Mar 2016 10:57:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1agIBB-00071X-DK
-	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 16:36:30 -0400
+	(envelope-from <imammedo@redhat.com>) id 1agZMT-0003Y7-79
+	for qemu-trivial@nongnu.org; Thu, 17 Mar 2016 10:57:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1agIB6-0005qD-S5
-	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 16:36:29 -0400
-Received: from e17.ny.us.ibm.com ([129.33.205.207]:42857)
+	(envelope-from <imammedo@redhat.com>) id 1agZMN-0006rk-ND
+	for qemu-trivial@nongnu.org; Thu, 17 Mar 2016 10:57:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47731)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1agIB6-0005px-Oc
-	for qemu-trivial@nongnu.org; Wed, 16 Mar 2016 16:36:24 -0400
-Received: from localhost
-	by e17.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@us.ibm.com>;
-	Wed, 16 Mar 2016 16:36:22 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e17.ny.us.ibm.com (146.89.104.204) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 16 Mar 2016 16:36:19 -0400
-X-IBM-Helo: d01dlp03.pok.ibm.com
-X-IBM-MailFrom: stefanb@us.ibm.com
-X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
-Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
-	[9.57.198.26])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id 76B03C90042;
-	Wed, 16 Mar 2016 16:36:15 -0400 (EDT)
-Received: from d01av02.pok.ibm.com (d01av02.pok.ibm.com [9.56.224.216])
-	by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	u2GKaJJm13303962; Wed, 16 Mar 2016 20:36:19 GMT
-Received: from d01av02.pok.ibm.com (localhost [127.0.0.1])
-	by d01av02.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	u2GKaIP4001165; Wed, 16 Mar 2016 16:36:18 -0400
-Received: from sbct-3.watson.ibm.com (sbct-3.watson.ibm.com [9.2.141.158])
-	by d01av02.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	u2GKaI9m001132; Wed, 16 Mar 2016 16:36:18 -0400
-From: Stefan Berger <stefanb@us.ibm.com>
-To: qemu-trivial@nongnu.org
-Date: Wed, 16 Mar 2016 16:36:16 -0400
-Message-Id: <1458160576-1076-1-git-send-email-stefanb@us.ibm.com>
-X-Mailer: git-send-email 2.4.3
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16031620-0041-0000-0000-0000039C56B0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 129.33.205.207
-X-Mailman-Approved-At: Thu, 17 Mar 2016 01:54:11 -0400
-Cc: Stefan Berger <stefanb@us.ibm.com>, qemu-devel@nongnu.org,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH] tpm: Fix write to file descriptor function
+	(envelope-from <imammedo@redhat.com>)
+	id 1agZMH-0006qi-Lz; Thu, 17 Mar 2016 10:57:05 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id E98D864394;
+	Thu, 17 Mar 2016 14:57:04 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2HEv3bF026273; Thu, 17 Mar 2016 10:57:04 -0400
+Date: Thu, 17 Mar 2016 15:57:02 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20160317155702.5f186eda@nial.brq.redhat.com>
+In-Reply-To: <1458157417-15856-1-git-send-email-sw@weilnetz.de>
+References: <1458157417-15856-1-git-send-email-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 17 Mar 2016 14:57:04 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [PATCH] acpi: Add missing GCC_FMT_ATTR
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,30 +49,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Mar 2016 20:36:30 -0000
+X-List-Received-Date: Thu, 17 Mar 2016 14:57:22 -0000
 
-Fix a bug introduced in 46f296c while moving send_all to the
-tpm_passthrough code.
+On Wed, 16 Mar 2016 20:43:37 +0100
+Stefan Weil <sw@weilnetz.de> wrote:
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
----
- hw/tpm/tpm_passthrough.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This fixes a compiler warning when compiling with -Wextra.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index e98efb7..e88c0d2 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -86,7 +86,7 @@ static int tpm_passthrough_unix_write(int fd, const uint8_t *buf, uint32_t len)
-     int ret, remain;
- 
-     remain = len;
--    while (len > 0) {
-+    while (remain > 0) {
-         ret = write(fd, buf, remain);
-         if (ret < 0) {
-             if (errno != EINTR && errno != EAGAIN) {
--- 
-2.4.3
+> ---
+>  include/hw/acpi/aml-build.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 66f48ec..2c994b3 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -369,6 +369,7 @@ build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets,
+>             const char *oem_id, const char *oem_table_id);
+>  
+>  int
+> -build_append_named_dword(GArray *array, const char *name_format, ...);
+> +build_append_named_dword(GArray *array, const char *name_format, ...)
+> +GCC_FMT_ATTR(2, 3);
+>  
+>  #endif
 
 
