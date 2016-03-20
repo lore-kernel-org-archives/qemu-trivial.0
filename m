@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ahS0p-0000mH-Ns
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Mar 2016 21:18:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41476)
+	id 1ahSdy-0002Gf-09
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Mar 2016 21:59:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1ahS0n-0000ld-7L
-	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:18:33 -0400
+	(envelope-from <jano.vesely@gmail.com>) id 1ahSdw-0002GZ-6b
+	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:59:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1ahS0j-0003aD-7e
-	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:18:33 -0400
-Received: from mail-qg0-x233.google.com ([2607:f8b0:400d:c04::233]:33793)
+	(envelope-from <jano.vesely@gmail.com>) id 1ahSdt-0003rl-1I
+	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:59:00 -0400
+Received: from mail-qk0-x22f.google.com ([2607:f8b0:400d:c09::22f]:34437)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1ahS0j-0003a8-3M
-	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:18:29 -0400
-Received: by mail-qg0-x233.google.com with SMTP id w104so130451317qge.1
-	for <qemu-trivial@nongnu.org>; Sat, 19 Mar 2016 18:18:28 -0700 (PDT)
+	(envelope-from <jano.vesely@gmail.com>) id 1ahSds-0003rh-T5
+	for qemu-trivial@nongnu.org; Sat, 19 Mar 2016 21:58:56 -0400
+Received: by mail-qk0-x22f.google.com with SMTP id p130so10629357qke.1
+	for <qemu-trivial@nongnu.org>; Sat, 19 Mar 2016 18:58:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:subject:date:message-id;
-	bh=QE82Z+hwKt8MnlcC1Z0Os2XzODqOkj0iddw2I6TVpZ0=;
-	b=BIbNXXTGXBi2gn5Ft2Q6dJqHnKrSJScKHbfZR4uay9aMRng32U86mIdeS5VTeYiENe
-	PRnegX6rL0UfO4L1KfVvHeJ+nZdqxwnyppktm10eNm6skECzhfDlqIluW8ixysTPlbt6
-	v6XyvWzP3QKmrCyeZbb/jLwH+qleuTed45CLTaKtDENGwpuTrWbv4+coWf7SeprKuHDp
-	XWaDmj+Wbzcjj1ccJiFQH7wICPPdXxLbXphBxp9kcGSlqjLUhqWb3QmvjFOm0Vw18x6f
-	8HRXsd36uIqkNZTUipUv3+w0qqAUC/Rd61G0fHJ6NSbokBaVKblD6KwmqMTkbl37DjOA
-	i4tg==
+	bh=3zXl0t5xdoppDc/ANb3ld8l4I8/JMEWNJ8Es0mH4Qtg=;
+	b=yZ9x76ngaI1Vrg5TAP62YGHTQwfyGRxife4/9nwrUFZSfy6kj0ufqV2jV7EyqQ5bNr
+	LLVp7LbTIo+BTYzozXrG/S7DyYUuc9HcbttvsslCnzRmoP3a9Vhk0n0QCD+KN09W+7SF
+	QnodC3vklCbBWPfmNvB1QR2n+lH+vwccr5leQgMZ3+NrYjwJKKCF0yiD1ObpvLeClo6d
+	VBmr5aNgmJCcnfE5DavnzXX3lCeAbEA+Mhm+csO8gKJYpQ/UJQJuskQGUE+n4vldX3JO
+	YS+6gj+VOdvFJifLMZpM9EOuCyajXgq69GmhSbFHTBPJPgjNE6Si549luncp17YKWDCJ
+	EaMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:subject:date:message-id;
-	bh=QE82Z+hwKt8MnlcC1Z0Os2XzODqOkj0iddw2I6TVpZ0=;
-	b=aITgFwZLOzqT48S8KfFmfOCf1wAUAp79bBgJIj0gyOBZpwyYOWzxGaFHttWDKSMO9l
-	flNPHCotcI+djW+I0Exo/nb8lIa0rREMC9a3PPtYW6z8K3xu7aUuPawWmJK94gwAfhmA
-	0gh2fPDLrGBUXkqDfdUZVrtjQiId8CbtU5EqzObv+1q6YS256NwYcAKiLErvplyvj+kO
-	1cfUJj7FRHkZ2/nuwkNktpDiEqYpDYGBkI7AFnudCOLDvGFSelbU+xoCGvAmwcTHL1CQ
-	YhQccKDgpU3SW8YjWIW+xSjJrubiaH4k/+o524I3gHYrdbgRc5G40DH35yMRGIzYDsXo
-	Hnmg==
-X-Gm-Message-State: AD7BkJKveGVUomoVfZwyMUvFzbunWGAx/aMfUq8r++fCMjwtBXHom1vwiTAmlZunUp/Q9Q==
-X-Received: by 10.140.224.18 with SMTP id u18mr34235544qhb.10.1458436708197;
-	Sat, 19 Mar 2016 18:18:28 -0700 (PDT)
+	bh=3zXl0t5xdoppDc/ANb3ld8l4I8/JMEWNJ8Es0mH4Qtg=;
+	b=SoutsbHXHp9nYbsunXiKohCTWIAX+DTN8sOtdGSNxudGnjqB3f797nTKvKsbPKoL7C
+	Bcsl7i1g3YVOC+vE4i7OCguaaTwPq7EhE9tviWqCmc8u5UcFbEVO0BTBVwBVZVeflSzL
+	waNmUUAmK/DqnmsnWEC0yxcyROsPzCKMzJT/I39miLF+ypofXUKIDfjDPO0i86alV/pq
+	VakuejXMJwD0zRMmkXEgyyK9wAFDEO4rzrYSjvkgSnrdQWCCiLBIatbGQwwkfzAoZoXR
+	kmYvNBnT0y4Y1knfHtoucDjioSvUIWcgg3jXfz4+6/p+LLvCEbNWnXJTOLeUB/ZfHNS0
+	NUAA==
+X-Gm-Message-State: AD7BkJKW99teT5SWcpQgTCH0iMab/g+qjY4VTxQsPRewGSMldSNaaw7TuOH0gr8qrQuvsQ==
+X-Received: by 10.55.78.207 with SMTP id c198mr31705291qkb.34.1458439136426;
+	Sat, 19 Mar 2016 18:58:56 -0700 (PDT)
 Received: from ulmo.home (ool-4a58cb9c.dyn.optonline.net. [74.88.203.156])
 	by smtp.gmail.com with ESMTPSA id
-	f76sm9242714qhe.14.2016.03.19.18.18.27 for <qemu-trivial@nongnu.org>
+	c190sm9334823qkb.27.2016.03.19.18.58.55 for <qemu-trivial@nongnu.org>
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 19 Mar 2016 18:18:27 -0700 (PDT)
+	Sat, 19 Mar 2016 18:58:55 -0700 (PDT)
 From: Jan Vesely <jano.vesely@gmail.com>
 To: qemu-trivial@nongnu.org
-Date: Sat, 19 Mar 2016 21:18:26 -0400
-Message-Id: <1458436706-20743-1-git-send-email-jano.vesely@gmail.com>
+Date: Sat, 19 Mar 2016 21:58:54 -0400
+Message-Id: <1458439134-28726-1-git-send-email-jano.vesely@gmail.com>
 X-Mailer: git-send-email 2.7.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c04::233
-Subject: [Qemu-trivial] [PATCH] configure: Check if struct fsxattr is
-	available from linux header
+X-Received-From: 2607:f8b0:400d:c09::22f
+Subject: [Qemu-trivial] [PATCH] po/Makefile: call rm -f directly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,53 +60,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 20 Mar 2016 01:18:34 -0000
+X-List-Received-Date: Sun, 20 Mar 2016 01:59:01 -0000
 
-Fixes build with new linux headers.
+Default variables are undefined in rules.mak and this is what the rest
+of the build system uses.
+Fixes make clean in ./po/
 
 Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
 ---
-linux-headers-4.5 and xfsprogs-3.2.4 in my case
+ po/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- configure | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-diff --git a/configure b/configure
-index b88d0db..bb64d6c 100755
---- a/configure
-+++ b/configure
-@@ -4474,6 +4474,21 @@ if test "$fortify_source" != "no"; then
-   fi
- fi
+diff --git a/po/Makefile b/po/Makefile
+index b271f79..7bab09d 100644
+--- a/po/Makefile
++++ b/po/Makefile
+@@ -32,7 +32,7 @@ update: $(SRCS)
+ build: $(OBJS)
  
-+########################################
-+# check if struct fsxattr is available
-+
-+have_fsxattr=no
-+cat > $TMPC << EOF
-+#include <linux/fs.h>
-+struct fsxattr foo;
-+int main(void) {
-+  return 0;
-+}
-+EOF
-+if compile_prog "" "" ; then
-+    have_fsxattr=yes
-+fi
-+
- ##########################################
- # End of CC checks
- # After here, no more $cc or $ld runs
-@@ -5137,6 +5152,9 @@ fi
- if test "$have_ifaddrs_h" = "yes" ; then
-     echo "HAVE_IFADDRS_H=y" >> $config_host_mak
- fi
-+if test "$have_fsxattr" = "yes" ; then
-+    echo "HAVE_FSXATTR=y" >> $config_host_mak
-+fi
- if test "$vte" = "yes" ; then
-   echo "CONFIG_VTE=y" >> $config_host_mak
-   echo "VTE_CFLAGS=$vte_cflags" >> $config_host_mak
+ clean:
+-	$(RM) $(OBJS)
++	rm -f $(OBJS)
+ 
+ install: $(OBJS)
+ 	for obj in $(OBJS); do \
 -- 
 2.7.3
 
