@@ -1,64 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ai0Dw-0006M4-3P
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Mar 2016 09:50:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32858)
+	id 1ai4SS-00017d-TB
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Mar 2016 14:21:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ai0Dt-0006JX-R8
-	for qemu-trivial@nongnu.org; Mon, 21 Mar 2016 09:50:22 -0400
+	(envelope-from <sw@weilnetz.de>) id 1ai4SQ-00013p-B1
+	for qemu-trivial@nongnu.org; Mon, 21 Mar 2016 14:21:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1ai0Ds-0003lQ-RG
-	for qemu-trivial@nongnu.org; Mon, 21 Mar 2016 09:50:21 -0400
-Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:35013)
+	(envelope-from <sw@weilnetz.de>) id 1ai4SL-0007oW-KL
+	for qemu-trivial@nongnu.org; Mon, 21 Mar 2016 14:21:38 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:38553)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1ai0Do-0003kv-CA; Mon, 21 Mar 2016 09:50:16 -0400
-Received: by mail-wm0-x22d.google.com with SMTP id l68so110945641wml.0;
-	Mon, 21 Mar 2016 06:50:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=H9/VyeUHE4zO3yiX/MjuFCUO+QaaWJf2Iw6DEWceUts=;
-	b=CzlAw/2YN+BZzsGb9b8hWqO8BxLkJNW5O1wU2PwtgKFRaS/FayvIzPbULoKslvm9E0
-	HP4LZdmUx6kn/IsgY+nY7HidgMKkJ8vmAUAmP43zcHYxhkmmPCyh3Z7jNaiEkKcVXyhk
-	BuFLrVBYshTzGxn3ndX5Tlb45XG2anHmAtGLqscMXiRX2m1i2Sjga/I5pjyk9AGfrCgI
-	yy9uxmZ1p2EnXUlDC3Jp8F5RkxryAOp85wDEFGWR4BQ+aDDDWoPB0jZxFwe0iqYiR/Uy
-	tq0iaE04qeNfbv4Fupm/nIXntI85pU2XYXyTQAYTIc8RIl0R5CR1du/Vvh74kdIvhRsE
-	hm6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=H9/VyeUHE4zO3yiX/MjuFCUO+QaaWJf2Iw6DEWceUts=;
-	b=GVfmSbH6Wd+R2B6apIgUE0FcWoZwoyAvsaWejnj+TtYzn5e/t0XPHU+N0FDYD5KkBc
-	ei+IesKvIWNCzqhmR7lfSBKmHHfnL/PF30dGQ6H7R2r0cR9UzATc0EXabT9v6d30lypy
-	MdmycsgG7rPVQ5gMM4yElhyErzCDXzeHyBKESx3O36nixhj6BhtKIkM9OLU43vbtm72w
-	IIY0JOUh6qB1IaqjfeQvbvAyQiqT2/GyvEGCBh0wgNoqn9AaVyVKsR6hh4G1TChFwf4M
-	TSiWsGEMofa8zPK11e2p1RB0qCaTDZ71A1Xd8V+jDXa4Vod6hfF8vghDYZkg8S6Wi16x
-	rfyQ==
-X-Gm-Message-State: AD7BkJI4ZAVsWK/COS3ZhDOHjO8w633jamsFgvRYMcieIUNzT6SFmtHZT9GBZCtvP3m2VA==
-X-Received: by 10.194.60.100 with SMTP id g4mr30285139wjr.30.1458568215274;
-	Mon, 21 Mar 2016 06:50:15 -0700 (PDT)
-Received: from localhost (host109-156-68-66.range109-156.btcentralplus.com.
-	[109.156.68.66]) by smtp.gmail.com with ESMTPSA id
-	p125sm12533775wmd.16.2016.03.21.06.50.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 21 Mar 2016 06:50:14 -0700 (PDT)
-Date: Mon, 21 Mar 2016 13:50:13 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Richard W.M. Jones" <rjones@redhat.com>
-Message-ID: <20160321135013.GA26812@stefanha-x1.localdomain>
-References: <1458507614-32470-1-git-send-email-rjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="J2SCkAp4GZ/dPZZf"
-Content-Disposition: inline
-In-Reply-To: <1458507614-32470-1-git-send-email-rjones@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+	(envelope-from <sw@weilnetz.de>) id 1ai4SL-0007oQ-AM
+	for qemu-trivial@nongnu.org; Mon, 21 Mar 2016 14:21:33 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 2290117F57D; Mon, 21 Mar 2016 19:21:28 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Mon, 21 Mar 2016 19:21:26 +0100
+Message-Id: <1458584486-21405-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22d
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Update documentation
- for stderr (now log) tracing backend.
+X-Received-From: 37.221.198.45
+Cc: Janosch Frank <frankja@linux.vnet.ibm.com>, Fam Zheng <famz@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] Fix typo in variable name (found and fixed
+	by codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,43 +37,180 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Mar 2016 13:50:23 -0000
+X-List-Received-Date: Mon, 21 Mar 2016 18:21:39 -0000
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ scripts/dump-guest-memory.py | 64 ++++++++++++++++++++++----------------------
+ 1 file changed, 32 insertions(+), 32 deletions(-)
 
---J2SCkAp4GZ/dPZZf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
+index c0a2e99..eb24f78 100644
+--- a/scripts/dump-guest-memory.py
++++ b/scripts/dump-guest-memory.py
+@@ -53,44 +53,44 @@ class ELF(object):
+         self.notes = []
+         self.segments = []
+         self.notes_size = 0
+-        self.endianess = None
++        self.endianness = None
+         self.elfclass = ELFCLASS64
+ 
+         if arch == 'aarch64-le':
+-            self.endianess = ELFDATA2LSB
++            self.endianness = ELFDATA2LSB
+             self.elfclass = ELFCLASS64
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_AARCH
+ 
+         elif arch == 'aarch64-be':
+-            self.endianess = ELFDATA2MSB
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.endianness = ELFDATA2MSB
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_AARCH
+ 
+         elif arch == 'X86_64':
+-            self.endianess = ELFDATA2LSB
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.endianness = ELFDATA2LSB
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_X86_64
+ 
+         elif arch == '386':
+-            self.endianess = ELFDATA2LSB
++            self.endianness = ELFDATA2LSB
+             self.elfclass = ELFCLASS32
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_386
+ 
+         elif arch == 's390':
+-            self.endianess = ELFDATA2MSB
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.endianness = ELFDATA2MSB
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_S390
+ 
+         elif arch == 'ppc64-le':
+-            self.endianess = ELFDATA2LSB
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.endianness = ELFDATA2LSB
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_PPC64
+ 
+         elif arch == 'ppc64-be':
+-            self.endianess = ELFDATA2MSB
+-            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
++            self.endianness = ELFDATA2MSB
++            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
+             self.ehdr.e_machine = EM_PPC64
+ 
+         else:
+@@ -104,7 +104,7 @@ class ELF(object):
+     def add_note(self, n_name, n_desc, n_type):
+         """Adds a note to the ELF."""
+ 
+-        note = get_arch_note(self.endianess, len(n_name), len(n_desc))
++        note = get_arch_note(self.endianness, len(n_name), len(n_desc))
+         note.n_namesz = len(n_name) + 1
+         note.n_descsz = len(n_desc)
+         note.n_name = n_name.encode()
+@@ -123,7 +123,7 @@ class ELF(object):
+     def add_segment(self, p_type, p_paddr, p_size):
+         """Adds a segment to the elf."""
+ 
+-        phdr = get_arch_phdr(self.endianess, self.elfclass)
++        phdr = get_arch_phdr(self.endianness, self.elfclass)
+         phdr.p_type = p_type
+         phdr.p_paddr = p_paddr
+         phdr.p_filesz = p_size
+@@ -155,10 +155,10 @@ class ELF(object):
+             elf_file.write(note)
+ 
+ 
+-def get_arch_note(endianess, len_name, len_desc):
+-    """Returns a Note class with the specified endianess."""
++def get_arch_note(endianness, len_name, len_desc):
++    """Returns a Note class with the specified endianness."""
+ 
+-    if endianess == ELFDATA2LSB:
++    if endianness == ELFDATA2LSB:
+         superclass = ctypes.LittleEndianStructure
+     else:
+         superclass = ctypes.BigEndianStructure
+@@ -190,20 +190,20 @@ class Ident(ctypes.Structure):
+                 ('ei_abiversion', ctypes.c_ubyte),
+                 ('ei_pad', ctypes.c_ubyte * 7)]
+ 
+-    def __init__(self, endianess, elfclass):
++    def __init__(self, endianness, elfclass):
+         self.ei_mag0 = 0x7F
+         self.ei_mag1 = ord('E')
+         self.ei_mag2 = ord('L')
+         self.ei_mag3 = ord('F')
+         self.ei_class = elfclass
+-        self.ei_data = endianess
++        self.ei_data = endianness
+         self.ei_version = EV_CURRENT
+ 
+ 
+-def get_arch_ehdr(endianess, elfclass):
+-    """Returns a EHDR64 class with the specified endianess."""
++def get_arch_ehdr(endianness, elfclass):
++    """Returns a EHDR64 class with the specified endianness."""
+ 
+-    if endianess == ELFDATA2LSB:
++    if endianness == ELFDATA2LSB:
+         superclass = ctypes.LittleEndianStructure
+     else:
+         superclass = ctypes.BigEndianStructure
+@@ -228,12 +228,12 @@ def get_arch_ehdr(endianess, elfclass):
+ 
+         def __init__(self):
+             super(superclass, self).__init__()
+-            self.e_ident = Ident(endianess, elfclass)
++            self.e_ident = Ident(endianness, elfclass)
+             self.e_type = ET_CORE
+             self.e_version = EV_CURRENT
+             self.e_ehsize = ctypes.sizeof(self)
+             self.e_phoff = ctypes.sizeof(self)
+-            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianess, elfclass))
++            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianness, elfclass))
+             self.e_phnum = 0
+ 
+ 
+@@ -257,12 +257,12 @@ def get_arch_ehdr(endianess, elfclass):
+ 
+         def __init__(self):
+             super(superclass, self).__init__()
+-            self.e_ident = Ident(endianess, elfclass)
++            self.e_ident = Ident(endianness, elfclass)
+             self.e_type = ET_CORE
+             self.e_version = EV_CURRENT
+             self.e_ehsize = ctypes.sizeof(self)
+             self.e_phoff = ctypes.sizeof(self)
+-            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianess, elfclass))
++            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianness, elfclass))
+             self.e_phnum = 0
+ 
+     # End get_arch_ehdr
+@@ -272,10 +272,10 @@ def get_arch_ehdr(endianess, elfclass):
+         return EHDR32()
+ 
+ 
+-def get_arch_phdr(endianess, elfclass):
+-    """Returns a 32 or 64 bit PHDR class with the specified endianess."""
++def get_arch_phdr(endianness, elfclass):
++    """Returns a 32 or 64 bit PHDR class with the specified endianness."""
+ 
+-    if endianess == ELFDATA2LSB:
++    if endianness == ELFDATA2LSB:
+         superclass = ctypes.LittleEndianStructure
+     else:
+         superclass = ctypes.BigEndianStructure
+-- 
+2.7.0
 
-On Sun, Mar 20, 2016 at 09:00:14PM +0000, Richard W.M. Jones wrote:
-> This fixes commit ed7f5f1d8db06fc31352a5ef4f54985e630c575a.
->=20
-> Signed-off-by: Richard W.M. Jones.
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  docs/tracing.txt | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Thanks, applied to my tracing tree:
-https://github.com/stefanha/qemu/commits/tracing
-
-Stefan
-
---J2SCkAp4GZ/dPZZf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJW7/wVAAoJEJykq7OBq3PIHCUH/iL21iN5qnxIx2y10R49X/G2
-k7seZe+zquUrmO1wgyNImUV65HmYoKj6TxNp/1Wyg3HyWZA4t7ChZo55je6fXs+f
-bJsuWtLqHS41IoFx0NUPtDOriIpJOmo6SDGusLssRZC5ID6a6vyiF/NFpqEeCECc
-93kL+QBwQe6pKazvqcdbB2yiNfMBriKkA818xBz/zImw2ZnFn3SBsWwMwvBrZthH
-QP+I6ywpgZjac7b6Fo4cX9CAmHhWONpOJmnu+Zc0hFkRZuftNu78aJxLAtErBuV0
-auaR623DU3LAdQo/WizP1hvl7QzZJRQF36NbiGPATQ5icz+PsxuRV4FiTg0NkMs=
-=TLsj
------END PGP SIGNATURE-----
-
---J2SCkAp4GZ/dPZZf--
 
