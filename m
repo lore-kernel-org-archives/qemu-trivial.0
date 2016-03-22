@@ -1,41 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aiLGm-0000Rb-Bb
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 08:18:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51783)
+	id 1aiNkR-0006QK-9b
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 10:57:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44694)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1aiLGi-0000MD-Hd
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 08:18:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1aiNkP-0006QA-7m
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 10:57:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1aiLGh-0005lW-7w
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 08:18:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56268)
+	(envelope-from <peter.maydell@linaro.org>) id 1aiNkK-0001hB-8T
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 10:57:29 -0400
+Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:36829)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1aiLGc-0005kL-AC; Tue, 22 Mar 2016 08:18:34 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id BB92C804EF;
-	Tue, 22 Mar 2016 12:18:32 +0000 (UTC)
-Received: from localhost (dhcp-14-151.nay.redhat.com [10.66.14.151])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2MCIJRm012920; Tue, 22 Mar 2016 08:18:21 -0400
-Date: Tue, 22 Mar 2016 20:17:57 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20160322121757.GA9749@ad.usersys.redhat.com>
-References: <1458584486-21405-1-git-send-email-sw@weilnetz.de>
+	(envelope-from <peter.maydell@linaro.org>) id 1aiNkK-0001h5-1u
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 10:57:24 -0400
+Received: by mail-vk0-x22a.google.com with SMTP id z68so22638372vkg.3
+	for <qemu-trivial@nongnu.org>; Tue, 22 Mar 2016 07:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Xh7TYDJWOCp7gBU5vKwb8v6+X2yPkUq3WMKNEmzBrYQ=;
+	b=TivVvMBWqhyIwrMF5BVrq4wSY/0tXCpGncLZdyVgTUUdhm/L7TFf2alH6AQbzQd52i
+	Hytcxpw6SDKgSVqUfxaMUSYEiVhct/FleVEPP9YeVjU8N1joK65ySiI9pv9WjDV+/48Y
+	XB2yE8XYB8S0Eq759Bn69oZj8wjyn0wcBlKVg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Xh7TYDJWOCp7gBU5vKwb8v6+X2yPkUq3WMKNEmzBrYQ=;
+	b=UuAPNQMmIpLXo1Q9QM/J4twMuPdiUeDhrwdnWb+cT+9mU4D/ijGNsWAXWJwRRCm8Qz
+	JmMNAuRqtJZ4AyRTCUFBEQzD6pL71BLAVgz9XHcEIJVB8K41Op7qSx2oLZMMsoYC1KR4
+	hxFCRfv5X3QwkHDq7wuNpcU2r+RkDWxIcgr5kiSdMddKewRbjky16AyFCvSUnEhi2Rsm
+	dq4+wGYGatpYTQWlOBZq5nfRsKPE4Z2rEUH1eGJKT4HPCYCAirn1bIRJiverCciXQ4F0
+	gyF4o7hCOMCeaEpe3qbH8mRzZfxqwgnnqwoei7cT5UYPdVSxC9VJ8sZX93nru7o+ubsz
+	zasg==
+X-Gm-Message-State: AD7BkJLS41EMXLcq3xoPqYHfryhGhCKEbIqi128anXL3gi2MgLo2/NHB+QGvxUn32ewfULdxbF6l/daUbObFEmFg
+X-Received: by 10.159.36.72 with SMTP id 66mr4397193uaq.125.1458658643468;
+	Tue, 22 Mar 2016 07:57:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1458584486-21405-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, Janosch Frank <frankja@linux.vnet.ibm.com>,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] Fix typo in variable name (found and
-	fixed by codespell)
+Received: by 10.31.216.1 with HTTP; Tue, 22 Mar 2016 07:57:04 -0700 (PDT)
+In-Reply-To: <1458657219-12156-1-git-send-email-haris.phnx@gmail.com>
+References: <1458657219-12156-1-git-send-email-haris.phnx@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Mar 2016 14:57:04 +0000
+Message-ID: <CAFEAcA8BVq6uy2-1vyvx0HRV8dapOcUjHsCB_wqB4ecj0XmgrA@mail.gmail.com>
+To: Md Haris Iqbal <haris.phnx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22a
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Changed malloc() to
+ g_malloc() at places where return value was not being checked
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,187 +60,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2016 12:18:41 -0000
+X-List-Received-Date: Tue, 22 Mar 2016 14:57:30 -0000
 
-On Mon, 03/21 19:21, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 22 March 2016 at 14:33, Md Haris Iqbal <haris.phnx@gmail.com> wrote:
+> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
+
+Hi. I'm afraid you can't just change malloc() calls to
+g_malloc() without also changing the corresponding free()
+calls to g_free().
+
+Also, at least the thunk.c code has had patches and
+discussion on-list regarding its malloc() calls. It's
+often worth searching the mailing list to check you won't
+be repeating work that somebody else is already doing.
+
 > ---
->  scripts/dump-guest-memory.py | 64 ++++++++++++++++++++++----------------------
->  1 file changed, 32 insertions(+), 32 deletions(-)
-> 
-> diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
-> index c0a2e99..eb24f78 100644
-> --- a/scripts/dump-guest-memory.py
-> +++ b/scripts/dump-guest-memory.py
-> @@ -53,44 +53,44 @@ class ELF(object):
->          self.notes = []
->          self.segments = []
->          self.notes_size = 0
-> -        self.endianess = None
-> +        self.endianness = None
->          self.elfclass = ELFCLASS64
->  
->          if arch == 'aarch64-le':
-> -            self.endianess = ELFDATA2LSB
-> +            self.endianness = ELFDATA2LSB
->              self.elfclass = ELFCLASS64
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_AARCH
->  
->          elif arch == 'aarch64-be':
-> -            self.endianess = ELFDATA2MSB
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.endianness = ELFDATA2MSB
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_AARCH
->  
->          elif arch == 'X86_64':
-> -            self.endianess = ELFDATA2LSB
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.endianness = ELFDATA2LSB
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_X86_64
->  
->          elif arch == '386':
-> -            self.endianess = ELFDATA2LSB
-> +            self.endianness = ELFDATA2LSB
->              self.elfclass = ELFCLASS32
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_386
->  
->          elif arch == 's390':
-> -            self.endianess = ELFDATA2MSB
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.endianness = ELFDATA2MSB
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_S390
->  
->          elif arch == 'ppc64-le':
-> -            self.endianess = ELFDATA2LSB
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.endianness = ELFDATA2LSB
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_PPC64
->  
->          elif arch == 'ppc64-be':
-> -            self.endianess = ELFDATA2MSB
-> -            self.ehdr = get_arch_ehdr(self.endianess, self.elfclass)
-> +            self.endianness = ELFDATA2MSB
-> +            self.ehdr = get_arch_ehdr(self.endianness, self.elfclass)
->              self.ehdr.e_machine = EM_PPC64
->  
->          else:
-> @@ -104,7 +104,7 @@ class ELF(object):
->      def add_note(self, n_name, n_desc, n_type):
->          """Adds a note to the ELF."""
->  
-> -        note = get_arch_note(self.endianess, len(n_name), len(n_desc))
-> +        note = get_arch_note(self.endianness, len(n_name), len(n_desc))
->          note.n_namesz = len(n_name) + 1
->          note.n_descsz = len(n_desc)
->          note.n_name = n_name.encode()
-> @@ -123,7 +123,7 @@ class ELF(object):
->      def add_segment(self, p_type, p_paddr, p_size):
->          """Adds a segment to the elf."""
->  
-> -        phdr = get_arch_phdr(self.endianess, self.elfclass)
-> +        phdr = get_arch_phdr(self.endianness, self.elfclass)
->          phdr.p_type = p_type
->          phdr.p_paddr = p_paddr
->          phdr.p_filesz = p_size
-> @@ -155,10 +155,10 @@ class ELF(object):
->              elf_file.write(note)
->  
->  
-> -def get_arch_note(endianess, len_name, len_desc):
-> -    """Returns a Note class with the specified endianess."""
-> +def get_arch_note(endianness, len_name, len_desc):
-> +    """Returns a Note class with the specified endianness."""
->  
-> -    if endianess == ELFDATA2LSB:
-> +    if endianness == ELFDATA2LSB:
->          superclass = ctypes.LittleEndianStructure
->      else:
->          superclass = ctypes.BigEndianStructure
-> @@ -190,20 +190,20 @@ class Ident(ctypes.Structure):
->                  ('ei_abiversion', ctypes.c_ubyte),
->                  ('ei_pad', ctypes.c_ubyte * 7)]
->  
-> -    def __init__(self, endianess, elfclass):
-> +    def __init__(self, endianness, elfclass):
->          self.ei_mag0 = 0x7F
->          self.ei_mag1 = ord('E')
->          self.ei_mag2 = ord('L')
->          self.ei_mag3 = ord('F')
->          self.ei_class = elfclass
-> -        self.ei_data = endianess
-> +        self.ei_data = endianness
->          self.ei_version = EV_CURRENT
->  
->  
-> -def get_arch_ehdr(endianess, elfclass):
-> -    """Returns a EHDR64 class with the specified endianess."""
-> +def get_arch_ehdr(endianness, elfclass):
-> +    """Returns a EHDR64 class with the specified endianness."""
->  
-> -    if endianess == ELFDATA2LSB:
-> +    if endianness == ELFDATA2LSB:
->          superclass = ctypes.LittleEndianStructure
->      else:
->          superclass = ctypes.BigEndianStructure
-> @@ -228,12 +228,12 @@ def get_arch_ehdr(endianess, elfclass):
->  
->          def __init__(self):
->              super(superclass, self).__init__()
-> -            self.e_ident = Ident(endianess, elfclass)
-> +            self.e_ident = Ident(endianness, elfclass)
->              self.e_type = ET_CORE
->              self.e_version = EV_CURRENT
->              self.e_ehsize = ctypes.sizeof(self)
->              self.e_phoff = ctypes.sizeof(self)
-> -            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianess, elfclass))
-> +            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianness, elfclass))
->              self.e_phnum = 0
->  
->  
-> @@ -257,12 +257,12 @@ def get_arch_ehdr(endianess, elfclass):
->  
->          def __init__(self):
->              super(superclass, self).__init__()
-> -            self.e_ident = Ident(endianess, elfclass)
-> +            self.e_ident = Ident(endianness, elfclass)
->              self.e_type = ET_CORE
->              self.e_version = EV_CURRENT
->              self.e_ehsize = ctypes.sizeof(self)
->              self.e_phoff = ctypes.sizeof(self)
-> -            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianess, elfclass))
-> +            self.e_phentsize = ctypes.sizeof(get_arch_phdr(endianness, elfclass))
->              self.e_phnum = 0
->  
->      # End get_arch_ehdr
-> @@ -272,10 +272,10 @@ def get_arch_ehdr(endianess, elfclass):
->          return EHDR32()
->  
->  
-> -def get_arch_phdr(endianess, elfclass):
-> -    """Returns a 32 or 64 bit PHDR class with the specified endianess."""
-> +def get_arch_phdr(endianness, elfclass):
-> +    """Returns a 32 or 64 bit PHDR class with the specified endianness."""
->  
-> -    if endianess == ELFDATA2LSB:
-> +    if endianness == ELFDATA2LSB:
->          superclass = ctypes.LittleEndianStructure
->      else:
->          superclass = ctypes.BigEndianStructure
-> -- 
-> 2.7.0
-> 
+>  bsd-user/elfload.c | 2 +-
+>  bsd-user/qemu.h    | 2 +-
+>  linux-user/qemu.h  | 2 +-
+>  thunk.c            | 2 +-
+>  ui/shader.c        | 2 +-
+>  5 files changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+> index 0a6092b..40bd1f2 100644
+> --- a/bsd-user/elfload.c
+> +++ b/bsd-user/elfload.c
+> @@ -1064,7 +1064,7 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>
+>   found:
+>      /* Now know where the strtab and symtab are.  Snarf them. */
+> -    s = malloc(sizeof(*s));
+> +    s = g_malloc(sizeof(*s));
+>      syms = malloc(symtab.sh_size);
+>      if (!syms) {
+>          free(s);
 
-Reviewed-by: Fam Zheng <famz@redhat.com>
+It's very odd to have only part of this data structure be
+malloc and part g_malloc. We should convert all of it
+or none of it.
 
-(FWIW, there is one more "endianess" in doc/specs/rocker.txt :)
+> diff --git a/ui/shader.c b/ui/shader.c
+> index 9264009..43c6f64 100644
+> --- a/ui/shader.c
+> +++ b/ui/shader.c
+> @@ -83,7 +83,7 @@ GLuint qemu_gl_create_compile_shader(GLenum type, const GLchar *src)
+>      glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+>      if (!status) {
+>          glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+> -        errmsg = malloc(length);
+> +        errmsg = g_malloc(length);
+>          glGetShaderInfoLog(shader, length, &length, errmsg);
+>          fprintf(stderr, "%s: compile %s error\n%s\n", __func__,
+>                  (type == GL_VERTEX_SHADER) ? "vertex" : "fragment",
 
-Fam
+Changes to the ui/shader.c code should be in a different
+patch, since they're not related to the linux-user or
+bsd-user code. (Splitting out bsd-user changes would
+also be a good idea.) The idea here is that different
+areas of the code have different maintainers, and so
+review is by different people (and a problem in one part
+of a patch doesn't then hold up an unrelated good change
+in a different part).
+
+thanks
+-- PMM
 
