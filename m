@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aiOPV-00012L-04
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 11:39:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55991)
+	id 1aiOif-0000VT-TH
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 11:59:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aiOPN-0000p9-RC
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:39:54 -0400
+	(envelope-from <haris.phnx@gmail.com>) id 1aiNNr-0005z5-7S
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 10:34:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aiOPM-0005AL-Re
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:39:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41046)
+	(envelope-from <haris.phnx@gmail.com>) id 1aiNNl-0003BX-HP
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 10:34:11 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:33744)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aiOPC-00058V-Vj; Tue, 22 Mar 2016 11:39:39 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B055C03BD4F;
-	Tue, 22 Mar 2016 15:39:38 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-41.ams2.redhat.com
-	[10.36.116.41])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2MFdaNf018797
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 22 Mar 2016 11:39:38 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6AB3F303F90D; Tue, 22 Mar 2016 16:39:36 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Xu <peterx@redhat.com>
-References: <1458614246-28528-1-git-send-email-peterx@redhat.com>
-Date: Tue, 22 Mar 2016 16:39:36 +0100
-In-Reply-To: <1458614246-28528-1-git-send-email-peterx@redhat.com> (Peter Xu's
-	message of "Tue, 22 Mar 2016 10:37:26 +0800")
-Message-ID: <87vb4eo72f.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: kwolf@redhat.com, pbonzini@redhat.com,
-	qemu-trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
-	Luiz Capitulino <lcapitulino@redhat.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qdict: fix unbounded
-	stack warning for qdict_array_entries
+	(envelope-from <haris.phnx@gmail.com>)
+	id 1aiNNh-0003Ao-BY; Tue, 22 Mar 2016 10:34:01 -0400
+Received: by mail-pf0-x242.google.com with SMTP id x3so36525271pfb.0;
+	Tue, 22 Mar 2016 07:34:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=vj1H7AGUeVBxO5gwaaPPFK8+mTdpWoWzbiAe7B+IM9o=;
+	b=Ypf/EiZvQ8cH/VoDKDcSB5boLLPmElbaR/K15JW1wweKyLJOAoYBeXdaI79Zxb+G3Q
+	cOoYAv5NkrywtBj1F6pzx9mVKpCxwTmPTkaOr7UPVI1U6CkGdvtZZr81VKxii0DDqJhI
+	RvoiACsWRcWydYxSRpHJDflGSH5Zc7lMmyEb4HeHEjJ+5cCv6OjUzr63UHgD6P22Tv68
+	+XCJ/bACS2U05/M9FC6vVocU500GTFTbqPmaX5G5T/t3yUfB+cXbwG0qI4L+pLQmvn3o
+	/UZGMJ+hATG46QrbAkGjGY63a+THukTFwkWZHabMIqb+IndHUnmuCv5dlVWl01q3ls2l
+	DkXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=vj1H7AGUeVBxO5gwaaPPFK8+mTdpWoWzbiAe7B+IM9o=;
+	b=aAQrPTA+pSu/98M5cSeT7ea7WrSZ1hSuNlx7KOIFjW9iCvw3I+idPiIZgG6TUZe2jO
+	RkF4zeAuSlcqgVdsO9qVpMDbuVNRbX2KgSGWmGjGALgFfCzQIsNp1gYNqEyMfK0ueVg7
+	aBR/sQDdzItaOndKGjE8pHhpnd1nnxBvEUC4aDVSsWvBNj2GPPJnJBXfYzANws5zafUo
+	ZafApVHMU6YDgGj+b6TFptn14q/l36I8OSQkBJW+0KkqtwQ4E/l4zeJx1D6Hqxozs+cH
+	G85J5pJui7Y1Pp9roCvgKlanjiHx0c/Q2XPhpIWLxP03sGHAq9u1C4rQhZ33eWo9gNA+
+	5oKw==
+X-Gm-Message-State: AD7BkJK+9Nz3QbKLmZ0Sm17jOFLbHlOKnB36OGx9G6qPQFfUgDB/eiSkNeeIi0egUSJFtA==
+X-Received: by 10.98.89.129 with SMTP id k1mr54759146pfj.66.1458657240219;
+	Tue, 22 Mar 2016 07:34:00 -0700 (PDT)
+Received: from student-HP-COMPAQ-ELITE-8200-MT-PC.nitk.ac.in ([14.139.155.210])
+	by smtp.googlemail.com with ESMTPSA id
+	fk9sm48960658pad.9.2016.03.22.07.33.58
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 22 Mar 2016 07:33:59 -0700 (PDT)
+From: Md Haris Iqbal <haris.phnx@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 22 Mar 2016 20:03:39 +0530
+Message-Id: <1458657219-12156-1-git-send-email-haris.phnx@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c00::242
+X-Mailman-Approved-At: Tue, 22 Mar 2016 11:59:44 -0400
+Cc: qemu-trivial@nongnu.org, Md Haris Iqbal <haris.phnx@gmail.com>
+Subject: [Qemu-trivial] [PATCH] Changed malloc() to g_malloc() at places
+	where return value was not being checked
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,20 +63,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2016 15:39:55 -0000
+X-List-Received-Date: Tue, 22 Mar 2016 14:34:15 -0000
 
-Peter Xu <peterx@redhat.com> writes:
+Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
+---
+ bsd-user/elfload.c | 2 +-
+ bsd-user/qemu.h    | 2 +-
+ linux-user/qemu.h  | 2 +-
+ thunk.c            | 2 +-
+ ui/shader.c        | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-> Here we use one g_strdup_printf() to replace the two stack allocated
-> array, considering it's more convenient, safe, and as long as it's
-> called rarely only when quorum device opens. This will remove the
-> unbound stack warning when compiling with "-Wstack-usage=1000000".
->
-> Reviewed-by:   Eric Blake <eblake@redhat.com>
-> Signed-off-by: Peter Xu <peterx@redhat.com>
+diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+index 0a6092b..40bd1f2 100644
+--- a/bsd-user/elfload.c
++++ b/bsd-user/elfload.c
+@@ -1064,7 +1064,7 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+ 
+  found:
+     /* Now know where the strtab and symtab are.  Snarf them. */
+-    s = malloc(sizeof(*s));
++    s = g_malloc(sizeof(*s));
+     syms = malloc(symtab.sh_size);
+     if (!syms) {
+         free(s);
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index 03b502a..ada4360 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -357,7 +357,7 @@ static inline void *lock_user(int type, abi_ulong guest_addr, long len, int copy
+ #ifdef DEBUG_REMAP
+     {
+         void *addr;
+-        addr = malloc(len);
++        addr = g_malloc(len);
+         if (copy)
+             memcpy(addr, g2h(guest_addr), len);
+         else
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 26b0ba2..615b9b9 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -381,7 +381,7 @@ static inline void *lock_user(int type, abi_ulong guest_addr, long len, int copy
+ #ifdef DEBUG_REMAP
+     {
+         void *addr;
+-        addr = malloc(len);
++        addr = g_malloc(len);
+         if (copy)
+             memcpy(addr, g2h(guest_addr), len);
+         else
+diff --git a/thunk.c b/thunk.c
+index f057d86..bddabae 100644
+--- a/thunk.c
++++ b/thunk.c
+@@ -88,7 +88,7 @@ void thunk_register_struct(int id, const char *name, const argtype *types)
+     for(i = 0;i < 2; i++) {
+         offset = 0;
+         max_align = 1;
+-        se->field_offsets[i] = malloc(nb_fields * sizeof(int));
++        se->field_offsets[i] = g_malloc(nb_fields * sizeof(int));
+         type_ptr = se->field_types;
+         for(j = 0;j < nb_fields; j++) {
+             size = thunk_type_size(type_ptr, i);
+diff --git a/ui/shader.c b/ui/shader.c
+index 9264009..43c6f64 100644
+--- a/ui/shader.c
++++ b/ui/shader.c
+@@ -83,7 +83,7 @@ GLuint qemu_gl_create_compile_shader(GLenum type, const GLchar *src)
+     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+     if (!status) {
+         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+-        errmsg = malloc(length);
++        errmsg = g_malloc(length);
+         glGetShaderInfoLog(shader, length, &length, errmsg);
+         fprintf(stderr, "%s: compile %s error\n%s\n", __func__,
+                 (type == GL_VERTEX_SHADER) ? "vertex" : "fragment",
+-- 
+1.9.1
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
-I lack the time to take this through my tree before my Easter vacation.
-Nominating for qemu-trivial, assuming Luiz doesn't mind.
 
