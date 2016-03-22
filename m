@@ -1,58 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aiOig-0000Vx-2j
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 11:59:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59245)
+	id 1aiOoS-0005VU-QQ
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 12:05:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34751)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aiOcB-0006YX-Um
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:53:04 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aiOoN-0005SA-7n
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 12:05:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aiOcB-0000Uy-25
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:53:03 -0400
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:35356)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aiOoJ-0004Pi-U7
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 12:05:39 -0400
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:33402)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>)
-	id 1aiOcA-0000Un-NN; Tue, 22 Mar 2016 11:53:02 -0400
-Received: by mail-vk0-x233.google.com with SMTP id e6so259899793vkh.2;
-	Tue, 22 Mar 2016 08:53:02 -0700 (PDT)
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1aiOo9-0004Nz-DQ; Tue, 22 Mar 2016 12:05:25 -0400
+Received: by mail-wm0-x229.google.com with SMTP id l68so199295629wml.0;
+	Tue, 22 Mar 2016 09:05:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=fEhyGcCE4msNB3Xmy7A1W0OhDBs/2iLiOSNNR7ga2iE=;
-	b=N2Gt3RPB5svJvhBspIZyhcYEP1EJrQM5BqfaCTfUgrSgYp7KCk9B5Yf8Qv4QxV2cJq
-	mNlP7Ik01WJuyyY8HH0OHu+3+tLfWFh5oUiUgpDE94+rJakLm/b9lAIIXR87VqvSClSO
-	wSkmoYgR5Tof9Rg8LFG9V+EN4i3jCcn/N7aEEXo+DAyRxIexDb/Zv9PSEWZudOVgRcA0
-	XtTxoQ2eYJGyqyD7T/uY7kGIAPdRE89lRma195sODTkrOHn25e8Yl6FeNxMdo0mxfPQB
-	Ytry4Dqr5kIZ4rXWwqseZkJMYQkIQ8yfLTunQazBFfWPHL8/yb/Zdo0EVAGW/inXc09M
-	Su+w==
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=Goe2/4Xo5RfQS5ua83bYBTQ4Ll1d3GhDceI+SnyJd4M=;
+	b=KgQztyrdk69lWRFIlBCyPSpnApKOq16aZlGp0mHUck2XQ6EXizQ0yG9e3iXZooYqFV
+	V6fmsIHmO5h61V+vTfjOzvNWpI4r2dnkPdZ0bwxUb/83PYwj7OP5K3Xmdx9M/Oc7mN1G
+	Va7H01NUDDynqCXsEMUPZQ06SpiDyVuuEFt82YaF82yEfECH4sZGyKbz+OLjZ+6iFetX
+	3nht0Ea1XIMtlMinYhZw/f61wZgp7HjREGkPaRR5L+L2ZRw7/jgClw8VgiMPXAJDw3s0
+	8a9l60zM3VIpIBxmLoqyPp66uKrBkOhv1ZjAIzjeZUk7EE9LGdTARu+FOHfjUvQF9tJ4
+	bcbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=fEhyGcCE4msNB3Xmy7A1W0OhDBs/2iLiOSNNR7ga2iE=;
-	b=UCaZNtX/Fbg3zqXZlgx7p36AAiepuB/rFGu5gTbYAdNAN7ZGDjn/rMwZnVN76P0IXf
-	/5PKqFzIwsyPt7wSnNBAETCNMwa9LoPnFcmAgo1+KyzC/FjiBVL5hz+UfJ3b9uqT0tUr
-	odUWTn7Dt/WfiX58UbQAU1HDyyd/ivksQed6cfJrvnBnIzzdCMB5PHe0uv0poeHpx8I7
-	5oTnEqa2wv5DuGxEptuTfUqa0pXONLmZ0Wp3ijxUxytuyCnxSz0Nb20zVOtB84pfhVS5
-	AIw16dQ94iK+G8G8/XJ856fjP4middDTulQXe00fSQVB6lnQbelzrb2mldUxeb+FYsyH
-	7X4g==
-X-Gm-Message-State: AD7BkJI4uR87QGVw1KqTsBladj3AH6zei+PE2kGHbfLPzhgotqYLyWyKUiQk5ZWp1IonhgbMthEGMsJOyD50Zw==
-X-Received: by 10.31.13.140 with SMTP id 134mr7293951vkn.142.1458661982223;
-	Tue, 22 Mar 2016 08:53:02 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.15.9 with HTTP; Tue, 22 Mar 2016 08:52:42 -0700 (PDT)
-In-Reply-To: <877fgumtlk.fsf@blackfin.pond.sub.org>
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=Goe2/4Xo5RfQS5ua83bYBTQ4Ll1d3GhDceI+SnyJd4M=;
+	b=eiNlejPyRskQ6kRzEgd7K2aBx3pECWycZtAQWcha6nFAMNtKuONPlaT1f+wXBE152R
+	aphzdzp74cCyIubIJ+mzWEQvMgiqmiZiRcIROoMd+Hr2mGcPkjrDT0vTulscWPypCr/D
+	0qincmis+P8mWW96F6/335GBx02S6gKQr9HI1LdOi74PA7rlYPQtj+Ci4b2ufnvxuOgz
+	F/bqYb1Vs4UofflawhcPvTr9jwFlkvetCDzQwTn95y0Eq1c3OUvly4cINCXcT8saBubz
+	tUW820fzw3P4RW1bw9fq18WlKOXEwffUU8aluDe7reLroVfVEipDp1qURJ/AoJqvlu0E
+	jbhw==
+X-Gm-Message-State: AD7BkJKcBho7rrw0+Ji0i2XC13S1lEt2LkuYPueDOOZ1W6E6riTL8zrj69lra6vY/jyuVw==
+X-Received: by 10.28.45.132 with SMTP id t126mr19895963wmt.86.1458662724557;
+	Tue, 22 Mar 2016 09:05:24 -0700 (PDT)
+Received: from [192.168.10.165] (94-39-161-17.adsl-ull.clienti.tiscali.it.
+	[94.39.161.17]) by smtp.googlemail.com with ESMTPSA id
+	s66sm18144516wmb.6.2016.03.22.09.05.23
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 22 Mar 2016 09:05:23 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: haris iqbal <haris.phnx@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <1458657219-12156-1-git-send-email-haris.phnx@gmail.com>
-	<877fgumtlk.fsf@blackfin.pond.sub.org>
-From: haris iqbal <haris.phnx@gmail.com>
-Date: Tue, 22 Mar 2016 21:22:42 +0530
-Message-ID: <CAE_WKMyY-BAAFj3B_kfwCRtsiksMp__VZdw0iznic8-ibYuGwA@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	<CAFEAcA8BVq6uy2-1vyvx0HRV8dapOcUjHsCB_wqB4ecj0XmgrA@mail.gmail.com>
+	<CAE_WKMwwyURfHKBh35YYWbHBLLekGMaaamOGZAtv_v2r=cJ-8A@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56F16D42.1030108@redhat.com>
+Date: Tue, 22 Mar 2016 17:05:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAE_WKMwwyURfHKBh35YYWbHBLLekGMaaamOGZAtv_v2r=cJ-8A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-X-Mailman-Approved-At: Tue, 22 Mar 2016 11:59:44 -0400
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Changed malloc() to
- g_malloc() at places where return value was not being checked
+X-Received-From: 2a00:1450:400c:c09::229
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-trivial] [PATCH] Changed malloc() to g_malloc() at places
+ where return value was not being checked
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,51 +75,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2016 15:53:05 -0000
+X-List-Received-Date: Tue, 22 Mar 2016 16:05:43 -0000
 
-On Tue, Mar 22, 2016 at 8:45 PM, Markus Armbruster <armbru@redhat.com> wrote:
-> Md Haris Iqbal <haris.phnx@gmail.com> writes:
->
->> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
->> ---
->>  bsd-user/elfload.c | 2 +-
->>  bsd-user/qemu.h    | 2 +-
->>  linux-user/qemu.h  | 2 +-
->>  thunk.c            | 2 +-
->>  ui/shader.c        | 2 +-
->>  5 files changed, 5 insertions(+), 5 deletions(-)
+
+
+On 22/03/2016 16:52, haris iqbal wrote:
+> On Tue, Mar 22, 2016 at 8:27 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 22 March 2016 at 14:33, Md Haris Iqbal <haris.phnx@gmail.com> wrote:
+>>> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
 >>
->> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->> index 0a6092b..40bd1f2 100644
->> --- a/bsd-user/elfload.c
->> +++ b/bsd-user/elfload.c
->> @@ -1064,7 +1064,7 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>> Hi. I'm afraid you can't just change malloc() calls to
+>> g_malloc() without also changing the corresponding free()
+>> calls to g_free().
+> 
+> Ok, I will do that.
+> 
 >>
->>   found:
->>      /* Now know where the strtab and symtab are.  Snarf them. */
->> -    s = malloc(sizeof(*s));
->> +    s = g_malloc(sizeof(*s));
->>      syms = malloc(symtab.sh_size);
->>      if (!syms) {
->>          free(s);
->
-> You need to track down where s is freed and change from free() to
-> g_free() there.  One such spot is visible in context.  Same for the
-> rest of the patch.
+>> Also, at least the thunk.c code has had patches and
+>> discussion on-list regarding its malloc() calls. It's
+>> often worth searching the mailing list to check you won't
+>> be repeating work that somebody else is already doing.
+>>
+>>> ---
+>>>  bsd-user/elfload.c | 2 +-
+>>>  bsd-user/qemu.h    | 2 +-
+>>>  linux-user/qemu.h  | 2 +-
+>>>  thunk.c            | 2 +-
+>>>  ui/shader.c        | 2 +-
+>>>  5 files changed, 5 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+>>> index 0a6092b..40bd1f2 100644
+>>> --- a/bsd-user/elfload.c
+>>> +++ b/bsd-user/elfload.c
+>>> @@ -1064,7 +1064,7 @@ static void load_symbols(struct elfhdr *hdr, int fd)
+>>>
+>>>   found:
+>>>      /* Now know where the strtab and symtab are.  Snarf them. */
+>>> -    s = malloc(sizeof(*s));
+>>> +    s = g_malloc(sizeof(*s));
+>>>      syms = malloc(symtab.sh_size);
+>>>      if (!syms) {
+>>>          free(s);
+> 
+> I did that because the other one has a return value check. Which (as
+> discussed with Paolo Bonzini) should be done in a seperate patch.
 
-On it. Thanks.
+In this case you can convert syms to g_try_malloc.
 
->
-> [...]
+Paolo
 
-
-
--- 
-
-With regards,
-
-Md Haris Iqbal,
-Placement Coordinator, MTech IT
-NITK Surathkal,
-Contact: +91 8861996962
+>>
+>> It's very odd to have only part of this data structure be
+>> malloc and part g_malloc. We should convert all of it
+>> or none of it.
+>>
+>>> diff --git a/ui/shader.c b/ui/shader.c
+>>> index 9264009..43c6f64 100644
+>>> --- a/ui/shader.c
+>>> +++ b/ui/shader.c
+>>> @@ -83,7 +83,7 @@ GLuint qemu_gl_create_compile_shader(GLenum type, const GLchar *src)
+>>>      glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+>>>      if (!status) {
+>>>          glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+>>> -        errmsg = malloc(length);
+>>> +        errmsg = g_malloc(length);
+>>>          glGetShaderInfoLog(shader, length, &length, errmsg);
+>>>          fprintf(stderr, "%s: compile %s error\n%s\n", __func__,
+>>>                  (type == GL_VERTEX_SHADER) ? "vertex" : "fragment",
+>>
+>> Changes to the ui/shader.c code should be in a different
+>> patch, since they're not related to the linux-user or
+>> bsd-user code. (Splitting out bsd-user changes would
+>> also be a good idea.) The idea here is that different
+>> areas of the code have different maintainers, and so
+>> review is by different people (and a problem in one part
+>> of a patch doesn't then hold up an unrelated good change
+>> in a different part).
+> 
+> Ya, sure. I will split up the patches for different files and send
+> them. I can cc the seperate maintainer also then.
+> 
+>>
+>> thanks
+>> -- PMM
+> 
+> 
+> 
 
