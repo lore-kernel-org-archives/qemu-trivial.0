@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aiOif-0000Vi-W1
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 11:59:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59184)
+	id 1aiOig-0000Vx-2j
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Mar 2016 11:59:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aiObv-0006JC-6b
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:52:48 -0400
+	(envelope-from <haris.phnx@gmail.com>) id 1aiOcB-0006YX-Um
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:53:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aiObp-0000Q3-CR
-	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:52:47 -0400
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:32916)
+	(envelope-from <haris.phnx@gmail.com>) id 1aiOcB-0000Uy-25
+	for qemu-trivial@nongnu.org; Tue, 22 Mar 2016 11:53:03 -0400
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:35356)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <haris.phnx@gmail.com>)
-	id 1aiObp-0000Pv-6l; Tue, 22 Mar 2016 11:52:41 -0400
-Received: by mail-vk0-x22a.google.com with SMTP id k1so260115109vkb.0;
-	Tue, 22 Mar 2016 08:52:41 -0700 (PDT)
+	id 1aiOcA-0000Un-NN; Tue, 22 Mar 2016 11:53:02 -0400
+Received: by mail-vk0-x233.google.com with SMTP id e6so259899793vkh.2;
+	Tue, 22 Mar 2016 08:53:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1QNFVSZhemWnrhMRNH2BX85H0Ux7jAoz5LQwDfCWaqs=;
-	b=o7D6uz/RrzP1soXgJYzqTHAeK/3Np6Ig0/NsOVnFS8l/dwZSqImxm6bCFrro6sH7E2
-	c/3TWvAfQGjWB9XbYDwZyy/1pCV5KH/N5xoSmFRNDWorwMGnTkuBtA+OIgIq6+3juD7t
-	lsykv1CzBWubeUpeZEBzq6+EJxaGAJh1u1VqMRLbbRn4xaDTqIuioMEvnumSHfE5yGKs
-	x6LmLF2qiF22eC3WjfKRkNDRE00UKD4cpEihpBqYNmuCYgHV6LIylGt+O1gnjAOo9MUC
-	CSAFqBKLVXK3aKIkGKqL1jg7k4nV8XEg7dA8wDai1u25U6ZrBC3OAwXLrKbHnRe5xP1H
-	akZg==
+	:cc; bh=fEhyGcCE4msNB3Xmy7A1W0OhDBs/2iLiOSNNR7ga2iE=;
+	b=N2Gt3RPB5svJvhBspIZyhcYEP1EJrQM5BqfaCTfUgrSgYp7KCk9B5Yf8Qv4QxV2cJq
+	mNlP7Ik01WJuyyY8HH0OHu+3+tLfWFh5oUiUgpDE94+rJakLm/b9lAIIXR87VqvSClSO
+	wSkmoYgR5Tof9Rg8LFG9V+EN4i3jCcn/N7aEEXo+DAyRxIexDb/Zv9PSEWZudOVgRcA0
+	XtTxoQ2eYJGyqyD7T/uY7kGIAPdRE89lRma195sODTkrOHn25e8Yl6FeNxMdo0mxfPQB
+	Ytry4Dqr5kIZ4rXWwqseZkJMYQkIQ8yfLTunQazBFfWPHL8/yb/Zdo0EVAGW/inXc09M
+	Su+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=1QNFVSZhemWnrhMRNH2BX85H0Ux7jAoz5LQwDfCWaqs=;
-	b=CvbFEApyqWpGJuNeyPKe4rHjlnVFTMVzCY5BxwPKAadVSK+diZzuy+a6X/m2GpnusV
-	ZE+z36rC5204X0ohbl7dSBgliQG/JJBG4USbGhfqZfJwYbiKnyRMF1a6bZzhNxxbsjPv
-	OOuEiWPZvkfu8nKe8mpqHnw5we9wlrXq+Zrws4kxOg+69u+Wk6GAiBOmck8XPcLACTqf
-	f5c0n3IpoXyjpOkT7BRTvzhrqjg8HHrZLLwLosOSjysEatADvmBfBSOfCxrYqk2XaRQv
-	Fc61WbzaKA68GaQ3m8Y8rOGIbfSGtm1JNaETMzVnbeWxJDvElaTZ3Cu7Hgk89+I9yV88
-	XQ9w==
-X-Gm-Message-State: AD7BkJIpbWcru1hPOTJZx6D/XkkM0xm4SLS/tmRGJtaDPVYxUmJFJiorXuZdjkvxvTWpeWMtL9BwGdfjR3wr1w==
-X-Received: by 10.176.2.55 with SMTP id 52mr4589662uas.30.1458661960676; Tue,
-	22 Mar 2016 08:52:40 -0700 (PDT)
+	bh=fEhyGcCE4msNB3Xmy7A1W0OhDBs/2iLiOSNNR7ga2iE=;
+	b=UCaZNtX/Fbg3zqXZlgx7p36AAiepuB/rFGu5gTbYAdNAN7ZGDjn/rMwZnVN76P0IXf
+	/5PKqFzIwsyPt7wSnNBAETCNMwa9LoPnFcmAgo1+KyzC/FjiBVL5hz+UfJ3b9uqT0tUr
+	odUWTn7Dt/WfiX58UbQAU1HDyyd/ivksQed6cfJrvnBnIzzdCMB5PHe0uv0poeHpx8I7
+	5oTnEqa2wv5DuGxEptuTfUqa0pXONLmZ0Wp3ijxUxytuyCnxSz0Nb20zVOtB84pfhVS5
+	AIw16dQ94iK+G8G8/XJ856fjP4middDTulQXe00fSQVB6lnQbelzrb2mldUxeb+FYsyH
+	7X4g==
+X-Gm-Message-State: AD7BkJI4uR87QGVw1KqTsBladj3AH6zei+PE2kGHbfLPzhgotqYLyWyKUiQk5ZWp1IonhgbMthEGMsJOyD50Zw==
+X-Received: by 10.31.13.140 with SMTP id 134mr7293951vkn.142.1458661982223;
+	Tue, 22 Mar 2016 08:53:02 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.15.9 with HTTP; Tue, 22 Mar 2016 08:52:21 -0700 (PDT)
-In-Reply-To: <CAFEAcA8BVq6uy2-1vyvx0HRV8dapOcUjHsCB_wqB4ecj0XmgrA@mail.gmail.com>
+Received: by 10.31.15.9 with HTTP; Tue, 22 Mar 2016 08:52:42 -0700 (PDT)
+In-Reply-To: <877fgumtlk.fsf@blackfin.pond.sub.org>
 References: <1458657219-12156-1-git-send-email-haris.phnx@gmail.com>
-	<CAFEAcA8BVq6uy2-1vyvx0HRV8dapOcUjHsCB_wqB4ecj0XmgrA@mail.gmail.com>
+	<877fgumtlk.fsf@blackfin.pond.sub.org>
 From: haris iqbal <haris.phnx@gmail.com>
-Date: Tue, 22 Mar 2016 21:22:21 +0530
-Message-ID: <CAE_WKMwwyURfHKBh35YYWbHBLLekGMaaamOGZAtv_v2r=cJ-8A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Mar 2016 21:22:42 +0530
+Message-ID: <CAE_WKMyY-BAAFj3B_kfwCRtsiksMp__VZdw0iznic8-ibYuGwA@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
+X-Received-From: 2607:f8b0:400c:c05::233
 X-Mailman-Approved-At: Tue, 22 Mar 2016 11:59:44 -0400
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Changed malloc() to
  g_malloc() at places where return value was not being checked
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,24 +64,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Mar 2016 15:52:48 -0000
+X-List-Received-Date: Tue, 22 Mar 2016 15:53:05 -0000
 
-On Tue, Mar 22, 2016 at 8:27 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 22 March 2016 at 14:33, Md Haris Iqbal <haris.phnx@gmail.com> wrote:
+On Tue, Mar 22, 2016 at 8:45 PM, Markus Armbruster <armbru@redhat.com> wrote:
+> Md Haris Iqbal <haris.phnx@gmail.com> writes:
+>
 >> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
->
-> Hi. I'm afraid you can't just change malloc() calls to
-> g_malloc() without also changing the corresponding free()
-> calls to g_free().
-
-Ok, I will do that.
-
->
-> Also, at least the thunk.c code has had patches and
-> discussion on-list regarding its malloc() calls. It's
-> often worth searching the mailing list to check you won't
-> be repeating work that somebody else is already doing.
->
 >> ---
 >>  bsd-user/elfload.c | 2 +-
 >>  bsd-user/qemu.h    | 2 +-
@@ -104,44 +91,15 @@ Ok, I will do that.
 >>      syms = malloc(symtab.sh_size);
 >>      if (!syms) {
 >>          free(s);
-
-I did that because the other one has a return value check. Which (as
-discussed with Paolo Bonzini) should be done in a seperate patch.
-
 >
-> It's very odd to have only part of this data structure be
-> malloc and part g_malloc. We should convert all of it
-> or none of it.
->
->> diff --git a/ui/shader.c b/ui/shader.c
->> index 9264009..43c6f64 100644
->> --- a/ui/shader.c
->> +++ b/ui/shader.c
->> @@ -83,7 +83,7 @@ GLuint qemu_gl_create_compile_shader(GLenum type, const GLchar *src)
->>      glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
->>      if (!status) {
->>          glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
->> -        errmsg = malloc(length);
->> +        errmsg = g_malloc(length);
->>          glGetShaderInfoLog(shader, length, &length, errmsg);
->>          fprintf(stderr, "%s: compile %s error\n%s\n", __func__,
->>                  (type == GL_VERTEX_SHADER) ? "vertex" : "fragment",
->
-> Changes to the ui/shader.c code should be in a different
-> patch, since they're not related to the linux-user or
-> bsd-user code. (Splitting out bsd-user changes would
-> also be a good idea.) The idea here is that different
-> areas of the code have different maintainers, and so
-> review is by different people (and a problem in one part
-> of a patch doesn't then hold up an unrelated good change
-> in a different part).
+> You need to track down where s is freed and change from free() to
+> g_free() there.  One such spot is visible in context.  Same for the
+> rest of the patch.
 
-Ya, sure. I will split up the patches for different files and send
-them. I can cc the seperate maintainer also then.
+On it. Thanks.
 
 >
-> thanks
-> -- PMM
+> [...]
 
 
 
