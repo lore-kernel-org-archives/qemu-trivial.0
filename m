@@ -1,56 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aina4-0005MC-8X
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2016 14:32:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33300)
+	id 1aiptw-0000qK-TS
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Mar 2016 17:01:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55083)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aina2-0005I7-3Y
-	for qemu-trivial@nongnu.org; Wed, 23 Mar 2016 14:32:30 -0400
+	(envelope-from <eblake@redhat.com>) id 1aipto-0000hj-Vm
+	for qemu-trivial@nongnu.org; Wed, 23 Mar 2016 17:01:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1aina1-00075E-AU
-	for qemu-trivial@nongnu.org; Wed, 23 Mar 2016 14:32:30 -0400
-Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:34764)
+	(envelope-from <eblake@redhat.com>) id 1aipto-0004Jh-51
+	for qemu-trivial@nongnu.org; Wed, 23 Mar 2016 17:01:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33712)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>)
-	id 1ainZx-00074g-31; Wed, 23 Mar 2016 14:32:25 -0400
-Received: by mail-pf0-x242.google.com with SMTP id n5so4836225pfn.1;
-	Wed, 23 Mar 2016 11:32:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=Y73iUPM0oWRZcetmB64+vVotLD4dkjDQbuNBa8JYFqU=;
-	b=BA6iw7PJGBKr7bpKfFGOKWiWr8+LYfnEgCH0czjJ12+xlGoUtKO3ONNOYM3Di0D9RM
-	tJTHHGeKpk5B1Fkc3TUZr3/EMCNcpNaVGsTHes5+eO/H610rUZafg66nBzm6iXY1TmrC
-	LNvnTc44UAIeeGbueTPMzK672SBifgIsbQvck1FhqGVV+5Ss87/LECX141iStxK8InZ1
-	sAiwjkEegFNnPp/cf+BK/EVWxeJiJHHqDq5dhw4BJf5D4h/I9GRTIMHuS29EKJsNxBhY
-	U8v0B5aNJa2y8bDtTbZB/mTJo9uS1eEK1KCeuKlNsxI+XVyclW3LxPo3yMIFHSigo7Ai
-	H90A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Y73iUPM0oWRZcetmB64+vVotLD4dkjDQbuNBa8JYFqU=;
-	b=U07ztP8HAjjXqedolRBl2saG0zr3kCmPeal2EaOV5rU6bCgOXN4FQDJlinwd1hVASq
-	Cb03nJtFUFBAT6R45PyFhwkhhrJ5/OfzxL0tD8dmV5vbMMt5HyRPOdpa+SCxQlwcorIZ
-	6PZCaD1B8ApvZvIFyX/P4FIC8W1IQC8NYJY8/tu9LJ+MiG5CtOEVaOGDrMq4v/QxpIjw
-	k6An4nBiSCUuVXcd5+rdTSXrOL2omi31CJ+HftwsV4K6ATa6lAawDyFOFFFHbkN5loEA
-	18zY5Zx44oxwG9o4mQoUBGTPIl+2YiZQ/eTStC2+q3ogIY2c0voyMxZnjnQfvLMmdiJt
-	fTpQ==
-X-Gm-Message-State: AD7BkJIbXfaE2D2BPAN1XezXpiBOfDKXV59E+zF9YkB/UgW75w72CT/NdB0CFPhORebX/A==
-X-Received: by 10.98.72.218 with SMTP id q87mr6344037pfi.117.1458757943936;
-	Wed, 23 Mar 2016 11:32:23 -0700 (PDT)
-Received: from student-HP-COMPAQ-ELITE-8200-MT-PC.nitk.ac.in ([218.248.46.110])
-	by smtp.googlemail.com with ESMTPSA id
-	w27sm5758957pfa.67.2016.03.23.11.32.22
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 23 Mar 2016 11:32:23 -0700 (PDT)
-From: Md Haris Iqbal <haris.phnx@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 24 Mar 2016 00:02:03 +0530
-Message-Id: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::242
-Cc: qemu-trivial@nongnu.org, Md Haris Iqbal <haris.phnx@gmail.com>
-Subject: [Qemu-trivial] [Qemu-Devel] [PATCH] Changed malloc to g_malloc,
-	free to g_free in linux-user/qemu.h
+	(envelope-from <eblake@redhat.com>)
+	id 1aiptj-0004JN-W6; Wed, 23 Mar 2016 17:01:00 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 72144804EC;
+	Wed, 23 Mar 2016 21:00:59 +0000 (UTC)
+Received: from [10.3.113.112] (ovpn-113-112.phx2.redhat.com [10.3.113.112])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2NL0uah001123; Wed, 23 Mar 2016 17:00:57 -0400
+To: Stefan Weil <sw@weilnetz.de>, Peter Maydell <peter.maydell@linaro.org>
+References: <1458745197-17973-1-git-send-email-sw@weilnetz.de>
+	<CAFEAcA_d14UThiOF4sh7T1VK54Zi3wOmBfKwQxUgEPOagT3RdA@mail.gmail.com>
+	<56F2CEB9.4010009@weilnetz.de>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <56F30408.4050907@redhat.com>
+Date: Wed, 23 Mar 2016 15:00:56 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
+MIME-Version: 1.0
+In-Reply-To: <56F2CEB9.4010009@weilnetz.de>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="TcBeOWaO8lRWv5D9FaROmTdHAl9Ltr3rq"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix some typos found by
+	codespell
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,36 +54,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Mar 2016 18:32:30 -0000
+X-List-Received-Date: Wed, 23 Mar 2016 21:01:10 -0000
 
-Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
----
- linux-user/qemu.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--TcBeOWaO8lRWv5D9FaROmTdHAl9Ltr3rq
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 26b0ba2..3c3fd15 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -381,7 +381,7 @@ static inline void *lock_user(int type, abi_ulong guest_addr, long len, int copy
- #ifdef DEBUG_REMAP
-     {
-         void *addr;
--        addr = malloc(len);
-+        addr = g_malloc(len);
-         if (copy)
-             memcpy(addr, g2h(guest_addr), len);
-         else
-@@ -407,7 +407,7 @@ static inline void unlock_user(void *host_ptr, abi_ulong guest_addr,
-         return;
-     if (len > 0)
-         memcpy(g2h(guest_addr), host_ptr, len);
--    free(host_ptr);
-+    g_free(host_ptr);
- #endif
- }
- 
--- 
-1.9.1
+On 03/23/2016 11:13 AM, Stefan Weil wrote:
+> I'm no longer sure which spelling is correct. :-)
+>=20
+>>From https://www.fsf.org/about/history.html:
+>     1985 Richard Stallman creates the Free Sofware Foundation
 
+I got a good chuckle out of that; then sent off a bug report to the
+webmaster.  That page is now fixed :)
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--TcBeOWaO8lRWv5D9FaROmTdHAl9Ltr3rq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJW8wQIAAoJEKeha0olJ0NqeDYH/R1v0JSpQvhXxAHy4icimwWU
+wPZd9Zl05mz+4pbZ9Of8ViGWHGQNoICLqjIiKlW4ZO9A423Tshau0nMMNPfRRIIU
+K7H6ykCSuNYjsBxzKnjCz8EFz8lFpRGlNWFZzzWszu7533jQ3WEktWDSedbl4M2h
+8QhDhz/VesD4y8u5afrs24ourDHoHelKNbS/kjk+bmjbkR3PsDnh6OfPpI9wMwSZ
+f8CMED2kmLyoQ7I+gySp7D92ebmIArIq7+t/R4dwaz+xSEIb/sfsonzNs2IgMvGb
+++zlsosC/lSG3rWaC8bAgLPaz2OJ6T4u2DpvVYBgQYUG7VDLFujlpL2WNVkRDzQ=
+=t3Eq
+-----END PGP SIGNATURE-----
+
+--TcBeOWaO8lRWv5D9FaROmTdHAl9Ltr3rq--
 
