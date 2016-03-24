@@ -1,52 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aj656-00059o-Kz
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Mar 2016 10:17:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47443)
+	id 1aj8I4-0000eO-30
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Mar 2016 12:39:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1aj653-000562-KQ
-	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 10:17:46 -0400
+	(envelope-from <sw@weilnetz.de>) id 1aj8I1-0000av-8e
+	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 12:39:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1aj652-0003XF-TB
-	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 10:17:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50441)
+	(envelope-from <sw@weilnetz.de>) id 1aj8I0-0001Tw-GN
+	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 12:39:17 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:41576)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1aj64v-0003VF-JU; Thu, 24 Mar 2016 10:17:37 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id BF90B7F0A7;
-	Thu, 24 Mar 2016 14:17:35 +0000 (UTC)
-Received: from localhost (ovpn-112-44.ams2.redhat.com [10.36.112.44])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2OEHXQm018078; Thu, 24 Mar 2016 10:17:34 -0400
-Date: Thu, 24 Mar 2016 14:17:32 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20160324141732.GA30892@stefanha-x1.localdomain>
-References: <1458745197-17973-1-git-send-email-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="+HP7ph2BbKc20aGI"
-Content-Disposition: inline
-In-Reply-To: <1458745197-17973-1-git-send-email-sw@weilnetz.de>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Daniel P. Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Jan Kiszka <jan.kiszka@siemens.com>, Juan Quintela <quintela@redhat.com>,
-	QEMU Developer <qemu-devel@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Dmitry Fleytman <dmitry@daynix.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Leon Alrae <leon.alrae@imgtec.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-trivial] [PATCH] Fix some typos found by codespell
+	(envelope-from <sw@weilnetz.de>)
+	id 1aj8Hy-0001SB-EG; Thu, 24 Mar 2016 12:39:14 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id EE7B217F69A; Thu, 24 Mar 2016 17:39:09 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Thu, 24 Mar 2016 17:39:08 +0100
+Message-Id: <1458837548-10413-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a03:4000:2:362::1
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-trivial] [PATCH] pxa2xx: Fix warnings from cgcc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,32 +36,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Mar 2016 14:17:46 -0000
+X-List-Received-Date: Thu, 24 Mar 2016 16:39:18 -0000
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
---+HP7ph2BbKc20aGI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This patch is rather old, but it still can be applied.
+It avoids duplicate definitions for some array indices
+(which are allowed by gcc, but cgcc complains).
 
-On Wed, Mar 23, 2016 at 03:59:57PM +0100, Stefan Weil wrote:
->  trace/simple.c                          |  4 ++--
+ hw/arm/pxa2xx_pic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
+index 8a39b1c..a8a68e8 100644
+--- a/hw/arm/pxa2xx_pic.c
++++ b/hw/arm/pxa2xx_pic.c
+@@ -204,7 +204,6 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
+ 
+ /* Interrupt Controller Coprocessor Space Register Mapping */
+ static const int pxa2xx_cp_reg_map[0x10] = {
+-    [0x0 ... 0xf] = -1,
+     [0x0] = ICIP,
+     [0x1] = ICMR,
+     [0x2] = ICLR,
+@@ -216,6 +215,7 @@ static const int pxa2xx_cp_reg_map[0x10] = {
+     [0x8] = ICLR2,
+     [0x9] = ICFP2,
+     [0xa] = ICPR2,
++    [0xb ... 0xf] = -1,
+ };
+ 
+ static uint64_t pxa2xx_pic_cp_read(CPUARMState *env, const ARMCPRegInfo *ri)
+-- 
+2.1.4
 
---+HP7ph2BbKc20aGI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJW8/b8AAoJEJykq7OBq3PIV7wIAKIDeIffhN2vZzLLFXza+Iui
-ZVrerPIIMPEvU4NCxhCNRcwY69ODGnG3N974qoka1nrKQQBUVfpgJLpgWTeSTFN+
-0fL2tDeGy6rUwVNkFJob/HQginuNHCQkbs/6dOxrRK4HVchiuSYdSdK53Ra775Pq
-3crX8mqj/u9hXSHQpHYWuJGBAz9uHGCn7+OamjEEIJTHkUWrhdj1qjQTHwc+xAhS
-W7CVcjH6DL/pJLYuCS1DV/kYNubm9/NVVnN8PZFiDfTLLCqGWkRytWKF2pQvvqbP
-AalsBxHtNCDOA2ZGDDEBHlGyb4aJCIjPm+anmH1V8HFZzHsfk5KkSGRZukpLYps=
-=egX+
------END PGP SIGNATURE-----
-
---+HP7ph2BbKc20aGI--
 
