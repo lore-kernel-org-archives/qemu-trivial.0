@@ -1,41 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aj4uk-0000yZ-Vb
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Mar 2016 09:03:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56840)
+	id 1aj656-00059o-Kz
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Mar 2016 10:17:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1aj4ue-0000k7-3K
-	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 09:03:01 -0400
+	(envelope-from <stefanha@redhat.com>) id 1aj653-000562-KQ
+	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 10:17:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>) id 1aj4uZ-0001BO-4z
-	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 09:02:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36123)
+	(envelope-from <stefanha@redhat.com>) id 1aj652-0003XF-TB
+	for qemu-trivial@nongnu.org; Thu, 24 Mar 2016 10:17:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50441)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lcapitulino@redhat.com>)
-	id 1aj4uN-000175-FN; Thu, 24 Mar 2016 09:02:39 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 108A18AE73;
-	Thu, 24 Mar 2016 13:02:39 +0000 (UTC)
-Received: from localhost (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2OD2aUJ024173; Thu, 24 Mar 2016 09:02:37 -0400
-Date: Thu, 24 Mar 2016 09:02:35 -0400
-From: Luiz Capitulino <lcapitulino@redhat.com>
+	(envelope-from <stefanha@redhat.com>)
+	id 1aj64v-0003VF-JU; Thu, 24 Mar 2016 10:17:37 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id BF90B7F0A7;
+	Thu, 24 Mar 2016 14:17:35 +0000 (UTC)
+Received: from localhost (ovpn-112-44.ams2.redhat.com [10.36.112.44])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2OEHXQm018078; Thu, 24 Mar 2016 10:17:34 -0400
+Date: Thu, 24 Mar 2016 14:17:32 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Stefan Weil <sw@weilnetz.de>
-Message-ID: <20160324090235.7d19c5dd@redhat.com>
-In-Reply-To: <1458743900-14742-1-git-send-email-sw@weilnetz.de>
-References: <1458743900-14742-1-git-send-email-sw@weilnetz.de>
-Organization: Red Hat
+Message-ID: <20160324141732.GA30892@stefanha-x1.localdomain>
+References: <1458745197-17973-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="+HP7ph2BbKc20aGI"
+Content-Disposition: inline
+In-Reply-To: <1458745197-17973-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	zhang.zhanghailiang@huawei.com
-Subject: Re: [Qemu-trivial] [PATCH] trace-events: Fix typos (found by
-	codespell)
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Jan Kiszka <jan.kiszka@siemens.com>, Juan Quintela <quintela@redhat.com>,
+	QEMU Developer <qemu-devel@nongnu.org>, Amit Shah <amit.shah@redhat.com>,
+	Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Dmitry Fleytman <dmitry@daynix.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Leon Alrae <leon.alrae@imgtec.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-trivial] [PATCH] Fix some typos found by codespell
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -47,32 +58,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Mar 2016 13:03:02 -0000
+X-List-Received-Date: Thu, 24 Mar 2016 14:17:46 -0000
 
-On Wed, 23 Mar 2016 15:38:20 +0100
-Stefan Weil <sw@weilnetz.de> wrote:
 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  trace-events | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/trace-events b/trace-events
-> index d494de1..996a77f 100644
-> --- a/trace-events
-> +++ b/trace-events
-> @@ -144,8 +144,8 @@ cpu_out(unsigned int addr, char size, unsigned int val) "addr %#x(%c) value %u"
->  # Since requests are raised via monitor, not many tracepoints are needed.
->  balloon_event(void *opaque, unsigned long addr) "opaque %p addr %lu"
->  virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s gpa: %"PRIx64
-> -virtio_balloon_get_config(uint32_t num_pages, uint32_t acutal) "num_pages: %d acutal: %d"
-> -virtio_balloon_set_config(uint32_t acutal, uint32_t oldacutal) "acutal: %d oldacutal: %d"
-> +virtio_balloon_get_config(uint32_t num_pages, uint32_t actual) "num_pages: %d actual: %d"
-> +virtio_balloon_set_config(uint32_t actual, uint32_t oldactual) "actual: %d oldactual: %d"
->  virtio_balloon_to_target(uint64_t target, uint32_t num_pages) "balloon target: %"PRIx64" num_pages: %d"
->  
->  # hw/intc/apic_common.c
+--+HP7ph2BbKc20aGI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
+On Wed, Mar 23, 2016 at 03:59:57PM +0100, Stefan Weil wrote:
+>  trace/simple.c                          |  4 ++--
 
+Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--+HP7ph2BbKc20aGI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJW8/b8AAoJEJykq7OBq3PIV7wIAKIDeIffhN2vZzLLFXza+Iui
+ZVrerPIIMPEvU4NCxhCNRcwY69ODGnG3N974qoka1nrKQQBUVfpgJLpgWTeSTFN+
+0fL2tDeGy6rUwVNkFJob/HQginuNHCQkbs/6dOxrRK4HVchiuSYdSdK53Ra775Pq
+3crX8mqj/u9hXSHQpHYWuJGBAz9uHGCn7+OamjEEIJTHkUWrhdj1qjQTHwc+xAhS
+W7CVcjH6DL/pJLYuCS1DV/kYNubm9/NVVnN8PZFiDfTLLCqGWkRytWKF2pQvvqbP
+AalsBxHtNCDOA2ZGDDEBHlGyb4aJCIjPm+anmH1V8HFZzHsfk5KkSGRZukpLYps=
+=egX+
+-----END PGP SIGNATURE-----
+
+--+HP7ph2BbKc20aGI--
 
