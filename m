@@ -1,49 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ajKro-0002Ge-4v
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Mar 2016 02:05:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47713)
+	id 1akRfX-00046Y-Bq
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Mar 2016 03:32:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ajKrl-0002C8-M1
-	for qemu-trivial@nongnu.org; Fri, 25 Mar 2016 02:05:02 -0400
+	(envelope-from <marcel@redhat.com>) id 1akRfU-00043m-Ve
+	for qemu-trivial@nongnu.org; Mon, 28 Mar 2016 03:32:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1ajKrk-0002LI-Si
-	for qemu-trivial@nongnu.org; Fri, 25 Mar 2016 02:05:01 -0400
-Received: from [59.151.112.132] (port=46918 helo=heian.cn.fujitsu.com)
+	(envelope-from <marcel@redhat.com>) id 1akRfU-0005JO-73
+	for qemu-trivial@nongnu.org; Mon, 28 Mar 2016 03:32:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51974)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1ajKrg-0002KW-A3; Fri, 25 Mar 2016 02:04:56 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="4957081"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 25 Mar 2016 14:04:42 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 13C4C408D264;
-	Fri, 25 Mar 2016 14:04:36 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Fri, 25 Mar 2016 14:04:35 +0800
-To: Paolo Bonzini <pbonzini@redhat.com>, <qemu-devel@nongnu.org>
-References: <1458814461-5387-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<56F3CEBE.7060002@redhat.com>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <56F4D578.5040108@cn.fujitsu.com>
-Date: Fri, 25 Mar 2016 14:06:48 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <56F3CEBE.7060002@redhat.com>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 13C4C408D264.ACA5F
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, eblake@redhat.com,
-	armbru@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] qdev property: cleanup
+	(envelope-from <marcel@redhat.com>)
+	id 1akRfP-0005J4-9R; Mon, 28 Mar 2016 03:32:51 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 24A7AC049E17;
+	Mon, 28 Mar 2016 07:32:50 +0000 (UTC)
+Received: from work.redhat.com (vpn-201-44.tlv.redhat.com [10.35.201.44])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2S7Wk55032234; Mon, 28 Mar 2016 03:32:47 -0400
+From: Marcel Apfelbaum <marcel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 28 Mar 2016 10:32:45 +0300
+Message-Id: <1459150365-26233-1-git-send-email-marcel@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: marcel@redhat.com, qemu-trivial@nongnu.org, mst@redhat.com
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH] pci: fix identation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,30 +39,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Mar 2016 06:05:02 -0000
+X-List-Received-Date: Mon, 28 Mar 2016 07:32:57 -0000
 
+Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
+---
+ hw/pci/pci.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-
-On 03/24/2016 07:25 PM, Paolo Bonzini wrote:
->
->
->> A question about legacy property: I don`t see legacy property is really
->> used in the code, so, why still add legacy property to object?
->
-> It's used here:
->
-> static void qdev_print_props(Monitor *mon, DeviceState *dev, Property *props,
->                               int indent)
-
-Thanks Paolo, I saw here, and then I thought the property is added and 
-just be printed out, seems for no real benefit("really used"). Now I 
-think I see where I was wrong. Thanks.
-
-BTW, is this patch right?
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index a1d41aa..da8b0b6 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -165,15 +165,15 @@ static inline int pci_irq_state(PCIDevice *d, int irq_num)
+ {
+     assert(irq_num >= 0);
+ 
+-	return (d->irq_state >> irq_num) & 0x1;
++    return (d->irq_state >> irq_num) & 0x1;
+ }
+ 
+ static inline void pci_set_irq_state(PCIDevice *d, int irq_num, int level)
+ {
+     assert(irq_num >= 0);
+ 
+-	d->irq_state &= ~(0x1 << irq_num);
+-	d->irq_state |= level << irq_num;
++    d->irq_state &= ~(0x1 << irq_num);
++    d->irq_state |= level << irq_num;
+ }
+ 
+ static void pci_change_irq_level(PCIDevice *pci_dev, int irq_num, int change)
 -- 
-Yours Sincerely,
-
-Cao jin
-
+2.4.3
 
 
