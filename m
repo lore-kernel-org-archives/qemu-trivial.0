@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1alcKq-0004We-Ly
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 09:08:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57882)
+	id 1aldb8-0003Rs-Nd
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 10:29:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1alcKo-0004TK-6p
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 09:08:26 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1aldb1-0003IO-K6
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 10:29:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1alcKj-0007mF-7U
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 09:08:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49074)
+	(envelope-from <pbonzini@redhat.com>) id 1aldaw-0008AV-Ll
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 10:29:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60483)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>)
-	id 1alcKe-0007kh-G3; Thu, 31 Mar 2016 09:08:16 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 3DB6B46202;
-	Thu, 31 Mar 2016 13:08:16 +0000 (UTC)
-Received: from t530wlan.home.berrange.com.com (vpn1-5-208.ams2.redhat.com
-	[10.36.5.208])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2VD8Ehh019739; Thu, 31 Mar 2016 09:08:15 -0400
-From: "Daniel P. Berrange" <berrange@redhat.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1aldal-00088V-Pl; Thu, 31 Mar 2016 10:28:59 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33A9CAED3B;
+	Thu, 31 Mar 2016 14:28:59 +0000 (UTC)
+Received: from donizetti.redhat.com (ovpn-112-23.ams2.redhat.com
+	[10.36.112.23])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2VESuhU000465; Thu, 31 Mar 2016 10:28:57 -0400
+From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 31 Mar 2016 14:08:10 +0100
-Message-Id: <1459429690-6144-1-git-send-email-berrange@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Date: Thu, 31 Mar 2016 16:28:56 +0200
+Message-Id: <1459434536-28145-1-git-send-email-pbonzini@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
-Subject: [Qemu-trivial] [PATCH v1] net: fix missing include of qapi/error.h
-	in netmap.c
+Cc: qemu-trivial@nongnu.org, jasowang@redhat.com
+Subject: [Qemu-trivial] [PATCH] net: fix OptsVisitor memory leak
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -41,33 +42,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2016 13:08:27 -0000
+X-List-Received-Date: Thu, 31 Mar 2016 14:29:20 -0000
 
-The netmap.c file fails to build on FreeBSD with
-
-net/netmap.c:95:9: warning: implicit declaration of function 'error_setg_errno' is invalid in C99 [-Wimplicit-function-declaration]
-     error_setg_errno(errp, errno, "Failed to nm_open() %s",
-     ^
-net/netmap.c:432:9: warning: implicit declaration of function 'error_propagate' is invalid in C99 [-Wimplicit-function-declaration]
-     error_propagate(errp, err);
-     ^
-
-Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- net/netmap.c | 1 +
+ net/net.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/net/netmap.c b/net/netmap.c
-index d9c21b2..6cc0db5 100644
---- a/net/netmap.c
-+++ b/net/netmap.c
-@@ -36,6 +36,7 @@
- #include "clients.h"
- #include "sysemu/sysemu.h"
- #include "qemu/error-report.h"
-+#include "qapi/error.h"
- #include "qemu/iov.h"
- #include "qemu/cutils.h"
+diff --git a/net/net.c b/net/net.c
+index 594c3b8..3847a13 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1100,6 +1100,7 @@ int net_client_init(QemuOpts *opts, int is_netdev, Error **errp)
+     }
+ 
+     error_propagate(errp, err);
++    opts_visitor_cleanup(ov);
+     return ret;
+ }
  
 -- 
 2.5.5
