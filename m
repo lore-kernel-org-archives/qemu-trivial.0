@@ -1,44 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1alb57-0007uz-8z
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 07:48:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38915)
+	id 1alcKq-0004We-Ly
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 09:08:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1alb53-0007qb-Ss
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 07:48:06 -0400
+	(envelope-from <berrange@redhat.com>) id 1alcKo-0004TK-6p
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 09:08:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1alb52-0002SH-QN
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 07:48:05 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:43080 helo=smtp4.mundo-r.com)
+	(envelope-from <berrange@redhat.com>) id 1alcKj-0007mF-7U
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 09:08:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1alb4x-0002Mk-68; Thu, 31 Mar 2016 07:47:59 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: A2AWAgCVDf1W/5tjdVtdGgEBAYMXgVCnCwUBgREBkGOCDwENgXCGDQKBPDgUAQEBAQEBAWUnhEIBAQRnEhALGAklDwEsGxmIKwHCBwEBAQEBBQEBAQEchVaFDoQDgQeFCgWXco9ujSeGGIh9HgEBQoNpOjCIbQEBAQ
-X-IPAS-Result: A2AWAgCVDf1W/5tjdVtdGgEBAYMXgVCnCwUBgREBkGOCDwENgXCGDQKBPDgUAQEBAQEBAWUnhEIBAQRnEhALGAklDwEsGxmIKwHCBwEBAQEBBQEBAQEchVaFDoQDgQeFCgWXco9ujSeGGIh9HgEBQoNpOjCIbQEBAQ
-X-IronPort-AV: E=Sophos;i="5.24,422,1454972400"; d="scan'208";a="123866529"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 31 Mar 2016 13:47:56 +0200
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
-	id 1alb4u-0007cA-Ld; Thu, 31 Mar 2016 13:47:56 +0200
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1alb4u-0005mC-J5; Thu, 31 Mar 2016 13:47:56 +0200
-From: Alberto Garcia <berto@igalia.com>
+	(envelope-from <berrange@redhat.com>)
+	id 1alcKe-0007kh-G3; Thu, 31 Mar 2016 09:08:16 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3DB6B46202;
+	Thu, 31 Mar 2016 13:08:16 +0000 (UTC)
+Received: from t530wlan.home.berrange.com.com (vpn1-5-208.ams2.redhat.com
+	[10.36.5.208])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2VD8Ehh019739; Thu, 31 Mar 2016 09:08:15 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-In-Reply-To: <1456217065-5465-1-git-send-email-berto@igalia.com>
-References: <1456217065-5465-1-git-send-email-berto@igalia.com>
-User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
-	(i586-pc-linux-gnu)
-Date: Thu, 31 Mar 2016 13:47:56 +0200
-Message-ID: <w51h9fmq36b.fsf@maestria.local.igalia.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [PATCH] ipack: Update e-mail address
+Date: Thu, 31 Mar 2016 14:08:10 +0100
+Message-Id: <1459429690-6144-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Subject: [Qemu-trivial] [PATCH v1] net: fix missing include of qapi/error.h
+	in netmap.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -50,73 +41,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Mar 2016 11:48:07 -0000
+X-List-Received-Date: Thu, 31 Mar 2016 13:08:27 -0000
 
-ping 2 ...
+The netmap.c file fails to build on FreeBSD with
 
-On Tue 23 Feb 2016 09:44:25 AM CET, Alberto Garcia wrote:
-> I'm not really using the old one anymore.
->
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
-> ---
->  hw/char/ipoctal232.c     | 2 +-
->  hw/ipack/ipack.c         | 2 +-
->  hw/ipack/tpci200.c       | 2 +-
->  include/hw/ipack/ipack.h | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/char/ipoctal232.c b/hw/char/ipoctal232.c
-> index bc0ae49..9ead32a 100644
-> --- a/hw/char/ipoctal232.c
-> +++ b/hw/char/ipoctal232.c
-> @@ -2,7 +2,7 @@
->   * QEMU GE IP-Octal 232 IndustryPack emulation
->   *
->   * Copyright (C) 2012 Igalia, S.L.
-> - * Author: Alberto Garcia <agarcia@igalia.com>
-> + * Author: Alberto Garcia <berto@igalia.com>
->   *
->   * This code is licensed under the GNU GPL v2 or (at your option) any
->   * later version.
-> diff --git a/hw/ipack/ipack.c b/hw/ipack/ipack.c
-> index 7c5c30d..4967351 100644
-> --- a/hw/ipack/ipack.c
-> +++ b/hw/ipack/ipack.c
-> @@ -2,7 +2,7 @@
->   * QEMU IndustryPack emulation
->   *
->   * Copyright (C) 2012 Igalia, S.L.
-> - * Author: Alberto Garcia <agarcia@igalia.com>
-> + * Author: Alberto Garcia <berto@igalia.com>
->   *
->   * This code is licensed under the GNU GPL v2 or (at your option) any
->   * later version.
-> diff --git a/hw/ipack/tpci200.c b/hw/ipack/tpci200.c
-> index fdda6f4..4dfa6b3 100644
-> --- a/hw/ipack/tpci200.c
-> +++ b/hw/ipack/tpci200.c
-> @@ -2,7 +2,7 @@
->   * QEMU TEWS TPCI200 IndustryPack carrier emulation
->   *
->   * Copyright (C) 2012 Igalia, S.L.
-> - * Author: Alberto Garcia <agarcia@igalia.com>
-> + * Author: Alberto Garcia <berto@igalia.com>
->   *
->   * This code is licensed under the GNU GPL v2 or (at your option) any
->   * later version.
-> diff --git a/include/hw/ipack/ipack.h b/include/hw/ipack/ipack.h
-> index e95ffe8..e33e032 100644
-> --- a/include/hw/ipack/ipack.h
-> +++ b/include/hw/ipack/ipack.h
-> @@ -2,7 +2,7 @@
->   * QEMU IndustryPack emulation
->   *
->   * Copyright (C) 2012 Igalia, S.L.
-> - * Author: Alberto Garcia <agarcia@igalia.com>
-> + * Author: Alberto Garcia <berto@igalia.com>
->   *
->   * This code is licensed under the GNU GPL v2 or (at your option) any
->   * later version.
-> -- 
-> 2.7.0
+net/netmap.c:95:9: warning: implicit declaration of function 'error_setg_errno' is invalid in C99 [-Wimplicit-function-declaration]
+     error_setg_errno(errp, errno, "Failed to nm_open() %s",
+     ^
+net/netmap.c:432:9: warning: implicit declaration of function 'error_propagate' is invalid in C99 [-Wimplicit-function-declaration]
+     error_propagate(errp, err);
+     ^
+
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ net/netmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/net/netmap.c b/net/netmap.c
+index d9c21b2..6cc0db5 100644
+--- a/net/netmap.c
++++ b/net/netmap.c
+@@ -36,6 +36,7 @@
+ #include "clients.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
++#include "qapi/error.h"
+ #include "qemu/iov.h"
+ #include "qemu/cutils.h"
+ 
+-- 
+2.5.5
+
 
