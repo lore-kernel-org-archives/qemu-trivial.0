@@ -1,60 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1alIzU-0004tH-Aj
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Mar 2016 12:29:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59244)
+	id 1alZ2a-0007IU-Ip
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 05:37:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1alIzO-0004qo-Fo
-	for qemu-trivial@nongnu.org; Wed, 30 Mar 2016 12:29:06 -0400
+	(envelope-from <stefanha@gmail.com>) id 1alZ2T-00078a-Qd
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 05:37:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>) id 1alIzN-00008d-N6
-	for qemu-trivial@nongnu.org; Wed, 30 Mar 2016 12:29:02 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:33253)
+	(envelope-from <stefanha@gmail.com>) id 1alZ2S-0000fP-Sn
+	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 05:37:17 -0400
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:35282)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <haris.phnx@gmail.com>)
-	id 1alIzN-00008M-IK; Wed, 30 Mar 2016 12:29:01 -0400
-Received: by mail-vk0-x243.google.com with SMTP id a62so7523216vkh.0;
-	Wed, 30 Mar 2016 09:29:01 -0700 (PDT)
+	(envelope-from <stefanha@gmail.com>)
+	id 1alZ2O-0000en-En; Thu, 31 Mar 2016 05:37:12 -0400
+Received: by mail-wm0-x22b.google.com with SMTP id 191so119456890wmq.0;
+	Thu, 31 Mar 2016 02:37:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=HCIqypHUloH6RfULV766ybcfFIsAgtHX4+SKrcsuiMc=;
-	b=IQnago+22zHCoyUPqJzjL31zlRE6WErigphPC8umg4shVvf/39tW4Hgcm9PEpRxvTh
-	XAAsPzUwMf7S6kaVbO8q686YgDQA5XtGplet8HwiRgKorEANatYPwS/G9kK+VU4SoQ9i
-	Gf/NVkTv9xH3Zbo7lF9i/rllBb8IaibcCqvQh1mPkiPiMU+sqX/Lla1/zBeCd4V3mynF
-	UjQ3t838stlEZplGCdUZDswmabneEZLSYftAA4uDvwQXGpdFSvotyyxftrOVpT25n8e2
-	qZFoXURRUez8yPTMqBtoSqui1htRVgrERMgnnE21kwP32jW14VcqrP71muQD7g9CqIIO
-	RESw==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=geL+6pHzJnP0lMYPy2TZUt82+RpN/ZYehI9a7BzgVTM=;
+	b=H5g4bS3ThC97STAOxwd/zwajzUS/4VZrtN3TMZcgrM82FkN/5PSuJuwzvRi8/kCog8
+	kDM64U1TFcIu1rj4i2rwtbUbT1Vb3K9POWiwPFhtBaBpkN5gi75jHao3QPAEyp0J1Vz4
+	G6jtlM8WhwydCyDFbHMmfi2CoPSfk04EatM8JTe7zc/yYwV1ctxNJ3F6yISjGUMlnwlk
+	cVvmsn/stj9Dv30pUdbWi4+TBoP1LZxMvMz2vLt4fmjGW3PSvmian5qLMm8I8r0vkXsx
+	mJyHt+AOcSz14O/pXHqrRR/70D+KPwl9LSP7jhTp958A3gk1lxBClfKQGNUu2Hr7zUEo
+	jrLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=HCIqypHUloH6RfULV766ybcfFIsAgtHX4+SKrcsuiMc=;
-	b=VBYLXgqb25kAL1dOvZdMfWNthJD+682tEwr3CIWNp6fANkXbyxb20i4bPDGPyssz26
-	Xlv5202wth2zcGuqFRjFNU5qTtcwmKKUGfhLLfrq/q6EBtX6AKSqE6yf+4ruG8ZyF+sG
-	WhhoQbgRHbgln0rE2wxMG7tA/B0spqfoX+AJZvmNI8LVae4bN6s04YHIwmoO5LevgeWQ
-	1hs8nuLC5Olho/ZBg6vO6UbsvYqsO5xoF/C8hGG7QP4DmMn7zeBqOk7tWQEq7LQHnRlz
-	QwvLlxTt2H6K+1kEELgVkKZfGm/2dqmrgmcwdXVaS9BP4oqXjzzd8E9WyhoC3bHqQO0s
-	BZVA==
-X-Gm-Message-State: AD7BkJK8PfzHMQxzICZI5JTHuZfrYdkd2m/rXt+YKGButRioK4gP+mgXmdprNNLXaWlVa25yskkQ1hSjsqNmKg==
-X-Received: by 10.176.2.86 with SMTP id 80mr5720956uas.35.1459355340875; Wed,
-	30 Mar 2016 09:29:00 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=geL+6pHzJnP0lMYPy2TZUt82+RpN/ZYehI9a7BzgVTM=;
+	b=TOVWS4ttRSc/gp+QxUPEXHDD4JEuXRhUwX7kM9Tk2IwbNkasvPCqrX89MAt5BEraJK
+	Y4o4jiGPBFEwmfXOxCHe5N6udr0N2MvNh0YFTiozBrFl6+6Njj+EMu8Zr8fPeUx0VD0T
+	Ua3O7633qqjyaSgejQs20JGo2vzGHEALepWyLyaPDtC1ysft0Jp5Eizlpml47g3cRkYI
+	eNiDaUFHOZMlignYik1GHE81BDPWfN9G092pHacQmWC71BZ1Kngwh7G3RdJAD5z1He/N
+	ixFWkIbVGmHkNDkTmo94m+WUv4XtW82QW9uvyys7P5gIVsvbzKuWMbzUs9Hp8Bhs/tTZ
+	moQQ==
+X-Gm-Message-State: AD7BkJKr/Q3HvIkDhUvnFAjd8KleK3B5ISQFPT/mw6osGuxdmtZ1CtsvoUjp8n7z9HCNCg==
+X-Received: by 10.28.12.80 with SMTP id 77mr15056799wmm.19.1459417031755;
+	Thu, 31 Mar 2016 02:37:11 -0700 (PDT)
+Received: from localhost (host109-156-68-66.range109-156.btcentralplus.com.
+	[109.156.68.66]) by smtp.gmail.com with ESMTPSA id
+	w131sm8584013wmd.17.2016.03.31.02.37.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 31 Mar 2016 02:37:11 -0700 (PDT)
+Date: Thu, 31 Mar 2016 10:37:10 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Message-ID: <20160331093710.GJ32185@stefanha-x1.localdomain>
+References: <1458743900-14742-1-git-send-email-sw@weilnetz.de>
 MIME-Version: 1.0
-Received: by 10.31.15.9 with HTTP; Wed, 30 Mar 2016 09:28:41 -0700 (PDT)
-In-Reply-To: <20160330140955.GA2557@stefanha-x1.localdomain>
-References: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
-	<20160330140955.GA2557@stefanha-x1.localdomain>
-From: haris iqbal <haris.phnx@gmail.com>
-Date: Wed, 30 Mar 2016 21:58:41 +0530
-Message-ID: <CAE_WKMz4K1hSqwrLzgAPP2BMjokY_E6-R61R2RyRS06Pteb80w@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="fU0UwhtRbpo05rnG"
+Content-Disposition: inline
+In-Reply-To: <1458743900-14742-1-git-send-email-sw@weilnetz.de>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::243
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-Devel] [PATCH] Changed malloc
- to g_malloc, free to g_free in linux-user/qemu.h
+X-Received-From: 2a00:1450:400c:c09::22b
+Cc: qemu-trivial@nongnu.org, Luiz Capitulino <lcapitulino@redhat.com>,
+	qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace-events: Fix typos
+	(found by codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,53 +71,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Mar 2016 16:29:06 -0000
-
-On Wed, Mar 30, 2016 at 7:39 PM, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Thu, Mar 24, 2016 at 12:02:03AM +0530, Md Haris Iqbal wrote:
->> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
->> ---
->>  linux-user/qemu.h | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
->> index 26b0ba2..3c3fd15 100644
->> --- a/linux-user/qemu.h
->> +++ b/linux-user/qemu.h
->> @@ -381,7 +381,7 @@ static inline void *lock_user(int type, abi_ulong guest_addr, long len, int copy
->>  #ifdef DEBUG_REMAP
->>      {
->>          void *addr;
->> -        addr = malloc(len);
->> +        addr = g_malloc(len);
->>          if (copy)
->>              memcpy(addr, g2h(guest_addr), len);
->>          else
->> @@ -407,7 +407,7 @@ static inline void unlock_user(void *host_ptr, abi_ulong guest_addr,
->>          return;
->>      if (len > 0)
->>          memcpy(g2h(guest_addr), host_ptr, len);
->> -    free(host_ptr);
->> +    g_free(host_ptr);
->>  #endif
->>  }
->
-> If I understand correctly either lock_user() or lock_user_string() may
-> be followed by unlock_user().  If you change unlock_user() to g_free()
-> then you also need to change lock_user_string() to g_malloc() to avoid a
-> malloc()/g_free() mismatch.
-
-lock_user_string() does not use malloc itself, but calls lock_user()
-from itself.
+X-List-Received-Date: Thu, 31 Mar 2016 09:37:23 -0000
 
 
+--fU0UwhtRbpo05rnG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
--- 
+On Wed, Mar 23, 2016 at 03:38:20PM +0100, Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  trace-events | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-With regards,
+Thanks, applied to my tracing tree:
+https://github.com/stefanha/qemu/commits/tracing
 
-Md Haris Iqbal,
-Placement Coordinator, MTech IT
-NITK Surathkal,
-Contact: +91 8861996962
+Stefan
+
+--fU0UwhtRbpo05rnG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJW/O/GAAoJEJykq7OBq3PIEwcH/38r/GIha2FzvkN7czcXEF1X
+iv2Q5AaG+SAvu39AOXs+TbJLsDXqbIULU0NfmHwYvSlt1UGebeepjmnvAo5f6JDC
+AWSjacsntU7ikO4PnCyrOUWiW8MMePx6/85LuJoCFwfJjmPZjGMaR+xelM8FqFZQ
+hesjQ4gcpDMHNDB9iLzTp9zjYaBRZmsI83A/SIrvi2Bg92dOc5AHHI3wn0zWaQ+b
+7IigoZBLnzM4azlqqwQPSUecB7y19b+1Do8E0+oOQ1RXTy+qYju3o38fkG2t4Zuf
+3lnqudR+KHuAAu0svECD4nuLwZtc4C3tZYAWdi2BMyRsIh6i6Uzp12f3DHQU2hg=
+=0Gvx
+-----END PGP SIGNATURE-----
+
+--fU0UwhtRbpo05rnG--
 
