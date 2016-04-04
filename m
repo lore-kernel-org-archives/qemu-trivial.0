@@ -1,54 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1an6tv-0002tH-7r
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 11:58:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37731)
+	id 1an8e2-0005om-U2
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 13:50:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46067)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an6ts-0002pl-Rx
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 11:58:49 -0400
+	(envelope-from <sw@weilnetz.de>) id 1an8e0-0005je-01
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:50:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an6to-0008AC-FP
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 11:58:48 -0400
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:36111)
+	(envelope-from <sw@weilnetz.de>) id 1an8dy-00047B-NR
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:50:31 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:60547)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an6tn-00089h-8r
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 11:58:44 -0400
-Received: by mail-vk0-x233.google.com with SMTP id c4so60175353vkb.3
-	for <qemu-trivial@nongnu.org>; Mon, 04 Apr 2016 08:58:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IJVawAnYxW+wveNVtp8TDGV8YWsxT1b7RzI4kGJ1ZEg=;
-	b=RY5Ku/hT97MDr5dx+tylugITrOTdlkNZGnaYgHDZvzePbCZNeL2A+p6hbdWkpc+bC9
-	+0qfj1Dm+5InTAa5IyTWOCBEav2ZLlBd4FHxzBoFavJ2Qe+wB7bX/7lNkZJ0I0CGwZnV
-	99HhSpxArvIYsPLBWgSQwh5zOL3Zczaeh9V/4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=IJVawAnYxW+wveNVtp8TDGV8YWsxT1b7RzI4kGJ1ZEg=;
-	b=UWJLGtW+iJYhJYCdglR32kAaGcbUlm/QZ0XOuc0YmtdG6/AIVJrFhVlubQQzMwnL5j
-	7XkuRu6LyFeX8CBvJNvyvmHJslguwbztVhmXQ8bRDkv8NxTJEZyUylRhksmHjOuMk/ry
-	WZJsWcsLEp//WkkJOSOw2RbBI3ZYEWAwp56UXH/5eLpTfBliHfa7NZVIyitfD06x3l+V
-	wWT43FtMls4zGdIlnunzjlXysYINHgsygkLMPksW3KB0ZYTYDQhgfIRe7Fi6hBOLxXsD
-	Kop/eEirblHU0Of3UjoUM6wnNbraZaz3OJuKOXG+wICujMu5HLz27oj9as0Hu0g6ZGFN
-	jJUw==
-X-Gm-Message-State: AD7BkJKcFvgufE3cBdu3kRfi4of1m0uqbqRr2T3vfvmEcpy2iszYaPkEVuOlPd6O2xGJR4S6XwoJ71V6JB9betMz
-X-Received: by 10.31.7.138 with SMTP id 132mr7003068vkh.92.1459785522425; Mon,
-	04 Apr 2016 08:58:42 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 4 Apr 2016 08:58:23 -0700 (PDT)
-In-Reply-To: <1459781903-64465-1-git-send-email-emaste@freebsd.org>
-References: <1459781903-64465-1-git-send-email-emaste@freebsd.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Apr 2016 16:58:23 +0100
-Message-ID: <CAFEAcA-JKW_DKJhG-XF2sYszKtKog5-r_5ZCWvDEGeYt0tK2Zg@mail.gmail.com>
-To: Ed Maste <emaste@freebsd.org>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <sw@weilnetz.de>)
+	id 1an8dv-00045E-O4; Mon, 04 Apr 2016 13:50:28 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 99C5D17F53F; Mon,  4 Apr 2016 19:50:24 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Mon,  4 Apr 2016 19:50:09 +0200
+Message-Id: <1459792209-25270-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bsd-user: add necessary
-	includes to fix warnings
+X-Received-From: 2a03:4000:2:362::1
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+	Sergey Fedorov <serge.fdrv@gmail.com>
+Subject: [Qemu-trivial] [PATCH] tci: Fix build regression
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,15 +36,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Apr 2016 15:58:49 -0000
+X-List-Received-Date: Mon, 04 Apr 2016 17:50:33 -0000
 
-On 4 April 2016 at 15:58, Ed Maste <emaste@freebsd.org> wrote:
-> Signed-off-by: Ed Maste <emaste@freebsd.org>
-> ---
->  bsd-user/syscall.c | 2 ++
->  1 file changed, 2 insertions(+)
+Commit d38ea87ac54af64ef611de434d07c12dc0399216 cleaned the include
+statements which resulted in a wrong order of assert.h and the definition
+of NDEBUG in tci.c. Normally NDEBUG modifies the definition of the assert
+macro, but here this definition comes too late which results in a failing
+build.
 
-Applied to master, thanks.
+To fix this, a new macro tci_assert which depends on CONFIG_DEBUG_TCG
+is introduced. Only builds with CONFIG_DEBUG_TCG will use assertions.
+Even in this case, it is still possible to disable assertions by
+defining NDEBUG via compiler settings.
 
--- PMM
+Reported-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tci.c | 41 ++++++++++++++++++++++-------------------
+ 1 file changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/tci.c b/tci.c
+index 7cbb39e..f4a04c2 100644
+--- a/tci.c
++++ b/tci.c
+@@ -1,7 +1,7 @@
+ /*
+  * Tiny Code Interpreter for QEMU
+  *
+- * Copyright (c) 2009, 2011 Stefan Weil
++ * Copyright (c) 2009, 2011, 2016 Stefan Weil
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -19,9 +19,12 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-/* Defining NDEBUG disables assertions (which makes the code faster). */
+-#if !defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
+-# define NDEBUG
++/* Enable TCI assertions only when debugging TCG (and without NDEBUG defined).
++ * Without assertions, the interpreter runs much faster. */
++#if defined(CONFIG_DEBUG_TCG)
++# define tci_assert(cond) assert(cond)
++#else
++# define tci_assert(cond) (void)0
+ #endif
+ 
+ #include "qemu-common.h"
+@@ -56,7 +59,7 @@ static tcg_target_ulong tci_reg[TCG_TARGET_NB_REGS];
+ 
+ static tcg_target_ulong tci_read_reg(TCGReg index)
+ {
+-    assert(index < ARRAY_SIZE(tci_reg));
++    tci_assert(index < ARRAY_SIZE(tci_reg));
+     return tci_reg[index];
+ }
+ 
+@@ -105,9 +108,9 @@ static uint64_t tci_read_reg64(TCGReg index)
+ 
+ static void tci_write_reg(TCGReg index, tcg_target_ulong value)
+ {
+-    assert(index < ARRAY_SIZE(tci_reg));
+-    assert(index != TCG_AREG0);
+-    assert(index != TCG_REG_CALL_STACK);
++    tci_assert(index < ARRAY_SIZE(tci_reg));
++    tci_assert(index != TCG_AREG0);
++    tci_assert(index != TCG_REG_CALL_STACK);
+     tci_reg[index] = value;
+ }
+ 
+@@ -325,7 +328,7 @@ static uint64_t tci_read_ri64(uint8_t **tb_ptr)
+ static tcg_target_ulong tci_read_label(uint8_t **tb_ptr)
+ {
+     tcg_target_ulong label = tci_read_i(tb_ptr);
+-    assert(label != 0);
++    tci_assert(label != 0);
+     return label;
+ }
+ 
+@@ -468,11 +471,11 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+ 
+     tci_reg[TCG_AREG0] = (tcg_target_ulong)env;
+     tci_reg[TCG_REG_CALL_STACK] = sp_value;
+-    assert(tb_ptr);
++    tci_assert(tb_ptr);
+ 
+     for (;;) {
+         TCGOpcode opc = tb_ptr[0];
+-#if !defined(NDEBUG)
++#if defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
+         uint8_t op_size = tb_ptr[1];
+         uint8_t *old_code_ptr = tb_ptr;
+ #endif
+@@ -525,7 +528,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             break;
+         case INDEX_op_br:
+             label = tci_read_label(&tb_ptr);
+-            assert(tb_ptr == old_code_ptr + op_size);
++            tci_assert(tb_ptr == old_code_ptr + op_size);
+             tb_ptr = (uint8_t *)label;
+             continue;
+         case INDEX_op_setcond_i32:
+@@ -600,7 +603,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             t0 = tci_read_r32(&tb_ptr);
+             t1 = tci_read_r(&tb_ptr);
+             t2 = tci_read_s32(&tb_ptr);
+-            assert(t1 != sp_value || (int32_t)t2 < 0);
++            tci_assert(t1 != sp_value || (int32_t)t2 < 0);
+             *(uint32_t *)(t1 + t2) = t0;
+             break;
+ 
+@@ -725,7 +728,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             condition = *tb_ptr++;
+             label = tci_read_label(&tb_ptr);
+             if (tci_compare32(t0, t1, condition)) {
+-                assert(tb_ptr == old_code_ptr + op_size);
++                tci_assert(tb_ptr == old_code_ptr + op_size);
+                 tb_ptr = (uint8_t *)label;
+                 continue;
+             }
+@@ -751,7 +754,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             condition = *tb_ptr++;
+             label = tci_read_label(&tb_ptr);
+             if (tci_compare64(tmp64, v64, condition)) {
+-                assert(tb_ptr == old_code_ptr + op_size);
++                tci_assert(tb_ptr == old_code_ptr + op_size);
+                 tb_ptr = (uint8_t *)label;
+                 continue;
+             }
+@@ -885,7 +888,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             t0 = tci_read_r64(&tb_ptr);
+             t1 = tci_read_r(&tb_ptr);
+             t2 = tci_read_s32(&tb_ptr);
+-            assert(t1 != sp_value || (int32_t)t2 < 0);
++            tci_assert(t1 != sp_value || (int32_t)t2 < 0);
+             *(uint64_t *)(t1 + t2) = t0;
+             break;
+ 
+@@ -992,7 +995,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             condition = *tb_ptr++;
+             label = tci_read_label(&tb_ptr);
+             if (tci_compare64(t0, t1, condition)) {
+-                assert(tb_ptr == old_code_ptr + op_size);
++                tci_assert(tb_ptr == old_code_ptr + op_size);
+                 tb_ptr = (uint8_t *)label;
+                 continue;
+             }
+@@ -1087,7 +1090,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             break;
+         case INDEX_op_goto_tb:
+             t0 = tci_read_i32(&tb_ptr);
+-            assert(tb_ptr == old_code_ptr + op_size);
++            tci_assert(tb_ptr == old_code_ptr + op_size);
+             tb_ptr += (int32_t)t0;
+             continue;
+         case INDEX_op_qemu_ld_i32:
+@@ -1234,7 +1237,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+             TODO();
+             break;
+         }
+-        assert(tb_ptr == old_code_ptr + op_size);
++        tci_assert(tb_ptr == old_code_ptr + op_size);
+     }
+ exit:
+     return next_tb;
+-- 
+2.1.4
+
 
