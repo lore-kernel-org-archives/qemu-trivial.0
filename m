@@ -1,47 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aloNv-0004AT-3n
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Mar 2016 22:00:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47802)
+	id 1an37l-0007LT-Ve
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 07:56:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1aloNt-000486-AD
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 22:00:26 -0400
+	(envelope-from <sw@weilnetz.de>) id 1an37j-0007IG-Oq
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 07:56:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1aloNs-0005Bk-A2
-	for qemu-trivial@nongnu.org; Thu, 31 Mar 2016 22:00:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54810)
+	(envelope-from <sw@weilnetz.de>) id 1an37i-00029m-OJ
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 07:56:51 -0400
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:35268)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>)
-	id 1aloNn-0005Al-RC; Thu, 31 Mar 2016 22:00:19 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 640A9C0C114F;
-	Fri,  1 Apr 2016 02:00:19 +0000 (UTC)
-Received: from [10.72.7.199] (vpn1-7-199.pek2.redhat.com [10.72.7.199])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u3120FF9002867
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 31 Mar 2016 22:00:17 -0400
-To: Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-References: <1459434536-28145-1-git-send-email-pbonzini@redhat.com>
-	<56FD4ECD.9040703@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <56FDD62F.7080702@redhat.com>
-Date: Fri, 1 Apr 2016 10:00:15 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	(envelope-from <sw@weilnetz.de>)
+	id 1an37e-00024r-ET; Mon, 04 Apr 2016 07:56:46 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 87D14103E28;
+	Mon,  4 Apr 2016 13:56:44 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at uni-mannheim.de
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+	by localhost (smtp.mail.uni-mannheim.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id 0wMJFMgQ7lAh; Mon,  4 Apr 2016 13:56:44 +0200 (CEST)
+Received: from [134.155.36.179] (unknown [134.155.36.179])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id 6CA0F103033;
+	Mon,  4 Apr 2016 13:56:44 +0200 (CEST)
+To: Sergey Fedorov <sergey.fedorov@linaro.org>, qemu-devel@nongnu.org
+References: <1459767918-796-1-git-send-email-sergey.fedorov@linaro.org>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <5702567E.6060701@weilnetz.de>
+Date: Mon, 4 Apr 2016 13:56:46 +0200
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	Thunderbird/38.7.0
 MIME-Version: 1.0
-In-Reply-To: <56FD4ECD.9040703@redhat.com>
+In-Reply-To: <1459767918-796-1-git-send-email-sergey.fedorov@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: fix OptsVisitor memory
-	leak
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 134.155.96.80
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Sergey Fedorov <serge.fdrv@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] tci: Fix build with no '-DNDEBUG'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,37 +51,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Apr 2016 02:00:26 -0000
+X-List-Received-Date: Mon, 04 Apr 2016 11:56:52 -0000
 
-
-
-On 04/01/2016 12:22 AM, Eric Blake wrote:
-> On 03/31/2016 08:28 AM, Paolo Bonzini wrote:
->> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> May want to add: regression introduced in commit 96a1616.
+Am 04.04.2016 um 13:05 schrieb Sergey Fedorov:
+> From: Sergey Fedorov <serge.fdrv@gmail.com>
 >
->> ---
->>  net/net.c | 1 +
->>  1 file changed, 1 insertion(+)
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-
-Applied to -net.
-
-Thanks
-
+> assert() always evaluates its argument so there's no need to #ifdef the
+> definitions which is only used for assert(). Actually, doing so
+> generates a compilation warning which is treated as an error in QEMU
+> build by default. Let compiler sort out and eliminate unnecessary
+> local variables.
 >
->> diff --git a/net/net.c b/net/net.c
->> index 594c3b8..3847a13 100644
->> --- a/net/net.c
->> +++ b/net/net.c
->> @@ -1100,6 +1100,7 @@ int net_client_init(QemuOpts *opts, int is_netdev, Error **errp)
->>      }
->>  
->>      error_propagate(errp, err);
->> +    opts_visitor_cleanup(ov);
->>      return ret;
->>  }
->>  
->>
+> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+> Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
+> ---
+>  tci.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/tci.c b/tci.c
+> index 7cbb39ed4b6a..d709e008f3f9 100644
+> --- a/tci.c
+> +++ b/tci.c
+> @@ -472,10 +472,8 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
+>  
+>      for (;;) {
+>          TCGOpcode opc = tb_ptr[0];
+> -#if !defined(NDEBUG)
+>          uint8_t op_size = tb_ptr[1];
+>          uint8_t *old_code_ptr = tb_ptr;
+> -#endif
+>          tcg_target_ulong t0;
+>          tcg_target_ulong t1;
+>          tcg_target_ulong t2;
 
+
+This patch should not be applied.
+
+From the Linux man page for assert: "the macro assert() generates no code".
+
+Which variant of the assert macro evaluates its argument even when NDEBUG
+is defined? On which system with which configuration did you see the
+problem?
+
+There is indeed a regression in the current code. Commit
+d38ea87ac54af64ef611de434d07c12dc0399216 added an include statement
+which includes assert.h before NDEBUG is defined. This is wrong and
+needs a fix. Could you please try tci.c starting like this?
+
+/* Defining NDEBUG disables assertions (which makes the code faster). */
+#if !defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
+# define NDEBUG
+#endif
+
+#include "qemu/osdep.h"
+
+Thanks,
+Stefan
 
