@@ -1,30 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1an8e2-0005om-U2
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 13:50:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46067)
+	id 1an8hV-0007Uc-3G
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 13:54:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46799)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1an8e0-0005je-01
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:50:33 -0400
+	(envelope-from <sw@weilnetz.de>) id 1an8hS-0007RF-Ov
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:54:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1an8dy-00047B-NR
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:50:31 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:60547)
+	(envelope-from <sw@weilnetz.de>) id 1an8hO-0004xw-G8
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 13:54:06 -0400
+Received: from mail.weilnetz.de ([37.221.199.173]:40288)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <sw@weilnetz.de>)
-	id 1an8dv-00045E-O4; Mon, 04 Apr 2016 13:50:28 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 99C5D17F53F; Mon,  4 Apr 2016 19:50:24 +0200 (CEST)
+	id 1an8hK-0004xg-6s; Mon, 04 Apr 2016 13:53:58 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 3B9ED11810A5;
+	Mon,  4 Apr 2016 19:53:57 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id h1bLYJtsGLaH; Mon,  4 Apr 2016 19:53:55 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (p54AC9770.dip0.t-ipconnect.de
+	[84.172.151.112])
+	by mail.weilnetz.de (Postfix) with ESMTPSA id 02C2B1181097;
+	Mon,  4 Apr 2016 19:53:54 +0200 (CEST)
+To: Sergey Fedorov <serge.fdrv@gmail.com>,
+	Sergey Fedorov <sergey.fedorov@linaro.org>, qemu-devel@nongnu.org
+References: <1459767918-796-1-git-send-email-sergey.fedorov@linaro.org>
+	<5702567E.6060701@weilnetz.de> <57026A7E.1000506@gmail.com>
 From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Developer <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Date: Mon,  4 Apr 2016 19:50:09 +0200
-Message-Id: <1459792209-25270-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a03:4000:2:362::1
-Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
-	Sergey Fedorov <serge.fdrv@gmail.com>
-Subject: [Qemu-trivial] [PATCH] tci: Fix build regression
+Message-ID: <5702AA32.507@weilnetz.de>
+Date: Mon, 4 Apr 2016 19:53:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.7.0
+MIME-Version: 1.0
+In-Reply-To: <57026A7E.1000506@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-trivial] [PATCH] tci: Fix build with no '-DNDEBUG'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -36,172 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Apr 2016 17:50:33 -0000
+X-List-Received-Date: Mon, 04 Apr 2016 17:54:07 -0000
 
-Commit d38ea87ac54af64ef611de434d07c12dc0399216 cleaned the include
-statements which resulted in a wrong order of assert.h and the definition
-of NDEBUG in tci.c. Normally NDEBUG modifies the definition of the assert
-macro, but here this definition comes too late which results in a failing
-build.
+Am 04.04.2016 um 15:22 schrieb Sergey Fedorov:
+> On 04/04/16 14:56, Stefan Weil wrote:
+[...]
+>> There is indeed a regression in the current code. Commit
+>> d38ea87ac54af64ef611de434d07c12dc0399216 added an include statement
+>> which includes assert.h before NDEBUG is defined. This is wrong and
+>> needs a fix. Could you please try tci.c starting like this?
+>>
+>> /* Defining NDEBUG disables assertions (which makes the code faster). */
+>> #if !defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
+>> # define NDEBUG
+>> #endif
+>>
+>> #include "qemu/osdep.h"
+>>
+> 
+> Doing so really helps. So what are the plans of how to fix the problem?
+> 
+> Thanks,
+> Sergey
 
-To fix this, a new macro tci_assert which depends on CONFIG_DEBUG_TCG
-is introduced. Only builds with CONFIG_DEBUG_TCG will use assertions.
-Even in this case, it is still possible to disable assertions by
-defining NDEBUG via compiler settings.
 
-Reported-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tci.c | 41 ++++++++++++++++++++++-------------------
- 1 file changed, 22 insertions(+), 19 deletions(-)
+The correct fix needs a little bit more code because my first try (see
+above) did not get the definition of macro CONFIG_DEBUG_TCG.
 
-diff --git a/tci.c b/tci.c
-index 7cbb39e..f4a04c2 100644
---- a/tci.c
-+++ b/tci.c
-@@ -1,7 +1,7 @@
- /*
-  * Tiny Code Interpreter for QEMU
-  *
-- * Copyright (c) 2009, 2011 Stefan Weil
-+ * Copyright (c) 2009, 2011, 2016 Stefan Weil
-  *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-@@ -19,9 +19,12 @@
- 
- #include "qemu/osdep.h"
- 
--/* Defining NDEBUG disables assertions (which makes the code faster). */
--#if !defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
--# define NDEBUG
-+/* Enable TCI assertions only when debugging TCG (and without NDEBUG defined).
-+ * Without assertions, the interpreter runs much faster. */
-+#if defined(CONFIG_DEBUG_TCG)
-+# define tci_assert(cond) assert(cond)
-+#else
-+# define tci_assert(cond) (void)0
- #endif
- 
- #include "qemu-common.h"
-@@ -56,7 +59,7 @@ static tcg_target_ulong tci_reg[TCG_TARGET_NB_REGS];
- 
- static tcg_target_ulong tci_read_reg(TCGReg index)
- {
--    assert(index < ARRAY_SIZE(tci_reg));
-+    tci_assert(index < ARRAY_SIZE(tci_reg));
-     return tci_reg[index];
- }
- 
-@@ -105,9 +108,9 @@ static uint64_t tci_read_reg64(TCGReg index)
- 
- static void tci_write_reg(TCGReg index, tcg_target_ulong value)
- {
--    assert(index < ARRAY_SIZE(tci_reg));
--    assert(index != TCG_AREG0);
--    assert(index != TCG_REG_CALL_STACK);
-+    tci_assert(index < ARRAY_SIZE(tci_reg));
-+    tci_assert(index != TCG_AREG0);
-+    tci_assert(index != TCG_REG_CALL_STACK);
-     tci_reg[index] = value;
- }
- 
-@@ -325,7 +328,7 @@ static uint64_t tci_read_ri64(uint8_t **tb_ptr)
- static tcg_target_ulong tci_read_label(uint8_t **tb_ptr)
- {
-     tcg_target_ulong label = tci_read_i(tb_ptr);
--    assert(label != 0);
-+    tci_assert(label != 0);
-     return label;
- }
- 
-@@ -468,11 +471,11 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
- 
-     tci_reg[TCG_AREG0] = (tcg_target_ulong)env;
-     tci_reg[TCG_REG_CALL_STACK] = sp_value;
--    assert(tb_ptr);
-+    tci_assert(tb_ptr);
- 
-     for (;;) {
-         TCGOpcode opc = tb_ptr[0];
--#if !defined(NDEBUG)
-+#if defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
-         uint8_t op_size = tb_ptr[1];
-         uint8_t *old_code_ptr = tb_ptr;
- #endif
-@@ -525,7 +528,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             break;
-         case INDEX_op_br:
-             label = tci_read_label(&tb_ptr);
--            assert(tb_ptr == old_code_ptr + op_size);
-+            tci_assert(tb_ptr == old_code_ptr + op_size);
-             tb_ptr = (uint8_t *)label;
-             continue;
-         case INDEX_op_setcond_i32:
-@@ -600,7 +603,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             t0 = tci_read_r32(&tb_ptr);
-             t1 = tci_read_r(&tb_ptr);
-             t2 = tci_read_s32(&tb_ptr);
--            assert(t1 != sp_value || (int32_t)t2 < 0);
-+            tci_assert(t1 != sp_value || (int32_t)t2 < 0);
-             *(uint32_t *)(t1 + t2) = t0;
-             break;
- 
-@@ -725,7 +728,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             condition = *tb_ptr++;
-             label = tci_read_label(&tb_ptr);
-             if (tci_compare32(t0, t1, condition)) {
--                assert(tb_ptr == old_code_ptr + op_size);
-+                tci_assert(tb_ptr == old_code_ptr + op_size);
-                 tb_ptr = (uint8_t *)label;
-                 continue;
-             }
-@@ -751,7 +754,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             condition = *tb_ptr++;
-             label = tci_read_label(&tb_ptr);
-             if (tci_compare64(tmp64, v64, condition)) {
--                assert(tb_ptr == old_code_ptr + op_size);
-+                tci_assert(tb_ptr == old_code_ptr + op_size);
-                 tb_ptr = (uint8_t *)label;
-                 continue;
-             }
-@@ -885,7 +888,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             t0 = tci_read_r64(&tb_ptr);
-             t1 = tci_read_r(&tb_ptr);
-             t2 = tci_read_s32(&tb_ptr);
--            assert(t1 != sp_value || (int32_t)t2 < 0);
-+            tci_assert(t1 != sp_value || (int32_t)t2 < 0);
-             *(uint64_t *)(t1 + t2) = t0;
-             break;
- 
-@@ -992,7 +995,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             condition = *tb_ptr++;
-             label = tci_read_label(&tb_ptr);
-             if (tci_compare64(t0, t1, condition)) {
--                assert(tb_ptr == old_code_ptr + op_size);
-+                tci_assert(tb_ptr == old_code_ptr + op_size);
-                 tb_ptr = (uint8_t *)label;
-                 continue;
-             }
-@@ -1087,7 +1090,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             break;
-         case INDEX_op_goto_tb:
-             t0 = tci_read_i32(&tb_ptr);
--            assert(tb_ptr == old_code_ptr + op_size);
-+            tci_assert(tb_ptr == old_code_ptr + op_size);
-             tb_ptr += (int32_t)t0;
-             continue;
-         case INDEX_op_qemu_ld_i32:
-@@ -1234,7 +1237,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             TODO();
-             break;
-         }
--        assert(tb_ptr == old_code_ptr + op_size);
-+        tci_assert(tb_ptr == old_code_ptr + op_size);
-     }
- exit:
-     return next_tb;
--- 
-2.1.4
+My patch was now sent to the list.
+
+Regards,
+Stefan
 
 
