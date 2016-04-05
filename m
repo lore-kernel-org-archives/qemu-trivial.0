@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1anBez-0004Wf-Rd
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 17:03:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41619)
+	id 1anFNp-0001aM-Pd
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Apr 2016 21:02:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1anBex-0004W4-HU
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 17:03:44 -0400
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1anFNn-0001YW-L2
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 21:02:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1anBew-0002KH-ET
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 17:03:43 -0400
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:36591)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1anFNm-0003S5-Ky
+	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 21:02:15 -0400
+Received: from [59.151.112.132] (port=17179 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1anBew-0002KB-A8
-	for qemu-trivial@nongnu.org; Mon, 04 Apr 2016 17:03:42 -0400
-Received: by mail-vk0-x236.google.com with SMTP id c4so71424596vkb.3
-	for <qemu-trivial@nongnu.org>; Mon, 04 Apr 2016 14:03:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=eHAZ02sqhyOsAlNTCKFS6oC0GNnk4+7wMA1Sjy9X7Kg=;
-	b=Aid0j+qHr0va1rP9PiDzBSqC+Cl/idx2H0m9nvz6EkIw5XO4W+SDKra8pj0XWGLSOE
-	oRW/bubaDNDcOaOuAnCQoAtS2IoU19finmDNqMF9rTiGkz8coeTfevznMmPisD7DNvJV
-	WimweTDnDJcmOZYlovg9CuV+tVpa991Fa+SRI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=eHAZ02sqhyOsAlNTCKFS6oC0GNnk4+7wMA1Sjy9X7Kg=;
-	b=blw9F2bUUWl4K3ptCp0jeErLgElrSNwk+qgID7vRIaPgpcYJg0SHjjaasxIpg4YIcf
-	EPKMujzI+11HENI/5Im3YBsvwyyoxSR+rP4Ztzsvn4Gkdwts9Uy8prynNZ2dVH4vDYUh
-	vEN+TnJ9QfqpQWHVM40S5DDIbiATth9SFy5QWLIgmo9iuNF/P2uXIz6sG2rnbQMAz7QB
-	v5IidmYbDrIOY+3oGnrFs04rDtB6gYp8vam7SEL3ko5UBaLY44vX+HrCI3Dskp2ycmKm
-	rkBTldQZQMmkjirZTDekj65/zHNIkACWIHcMAuE+gHCm6Iu2EXR4shDaZ2ijrlov4zLR
-	vKsw==
-X-Gm-Message-State: AD7BkJI6KPbC1VhlwK/iwjo2yX5QpElL9VLuKaRimJok1OW0yfdBzXSBdW531KmfQ1CH4Xej0iPObfQMyFwh+nBU
-X-Received: by 10.159.35.109 with SMTP id 100mr6103590uae.119.1459803821645;
-	Mon, 04 Apr 2016 14:03:41 -0700 (PDT)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>)
+	id 1anFNh-0003C6-3U; Mon, 04 Apr 2016 21:02:09 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="5257973"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 05 Apr 2016 09:01:43 +0800
+Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
+	by cn.fujitsu.com (Postfix) with ESMTP id 49FC642B55EC;
+	Tue,  5 Apr 2016 09:01:42 +0800 (CST)
+Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
+	G08CNEXCHPEKD02.g08.fujitsu.local ([10.167.33.83]) with mapi id
+	14.03.0279.002; Tue, 5 Apr 2016 09:01:42 +0800
+From: "Wei, Jiangang" <weijg.fnst@cn.fujitsu.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel][PATCH] docs: fix typo in memory.txt
+Thread-Index: AQHRhB/FjBLuf48GPEiHtuvzRzK3NZ96HvKA
+Date: Tue, 5 Apr 2016 01:01:41 +0000
+Message-ID: <1459818075.10782.1.camel@localhost>
+References: <1458639954-9980-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+In-Reply-To: <1458639954-9980-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.167.226.50]
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <A10A9DAC29E23B4ABCADF92948D2F81B@fujitsu.local>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 4 Apr 2016 14:03:22 -0700 (PDT)
-In-Reply-To: <5702D146.6020404@weilnetz.de>
-References: <1459792209-25270-1-git-send-email-sw@weilnetz.de>
-	<5702AD10.8040807@gmail.com> <5702D146.6020404@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Apr 2016 22:03:22 +0100
-Message-ID: <CAFEAcA9vQ+5WeSsCfc844Y3QG_MOdi_1hmLM-5i6UnyPX5rtoQ@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Sergey Fedorov <serge.fdrv@gmail.com>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-trivial] [PATCH] tci: Fix build regression
+X-yoursite-MailScanner-ID: 49FC642B55EC.A9477
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"mjt@tls.msk.ru" <mjt@tls.msk.ru>, "avi@redhat.com" <avi@redhat.com>
+Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] docs: fix typo in memory.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,32 +60,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Apr 2016 21:03:44 -0000
+X-List-Received-Date: Tue, 05 Apr 2016 01:02:16 -0000
 
-On 4 April 2016 at 21:40, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 04.04.2016 um 20:06 schrieb Sergey Fedorov:
->> On 04/04/16 20:50, Stefan Weil wrote:
->>> -/* Defining NDEBUG disables assertions (which makes the code faster). */
->>> -#if !defined(CONFIG_DEBUG_TCG) && !defined(NDEBUG)
->>> -# define NDEBUG
->>> +/* Enable TCI assertions only when debugging TCG (and without NDEBUG defined).
->>> + * Without assertions, the interpreter runs much faster. */
->>> +#if defined(CONFIG_DEBUG_TCG)
->>> +# define tci_assert(cond) assert(cond)
->>> +#else
->>> +# define tci_assert(cond) (void)0
->>
->> Maybe wrap the "(void)0" into parentheses?
-
-> Maybe. It's not needed for the current code.
-> Are there situations where parentheses for this would make a difference?
-
-Not sure, but the POSIX standard specifies brackets for its
-NDEBUG version of assert:
-http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/assert.h.html
-
-so it seems safest to follow suit.
-
-thanks
--- PMM
+cGluZy4uLg0KQW55IGZlZWRiYWNr77yfDQpPbiBUdWUsIDIwMTYtMDMtMjIg
+YXQgMTc6NDUgKzA4MDAsIFdlaSBKaWFuZ2FuZyB3cm90ZToNCj4gVGhlIHNj
+YWxlIGxpbmUgc2hvdWxkIGFsaWduIHdpdGggQSBsaW5lJ3MgZW5kLA0KPiBh
+bmQgY29ycmVjdCB0aGUgcmFuZ2Ugb2YgdmdhLXdpbmRvdyBleGFtcGxlIDB4
+YTAwMDAtMHhiZmZmZi4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFdlaSBKaWFu
+Z2FuZyA8d2VpamcuZm5zdEBjbi5mdWppdHN1LmNvbT4NCj4gLS0tDQo+ICBk
+b2NzL21lbW9yeS50eHQgfCA2ICsrKy0tLQ0KPiAgMSBmaWxlIGNoYW5nZWQs
+IDMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYg
+LS1naXQgYS9kb2NzL21lbW9yeS50eHQgYi9kb2NzL21lbW9yeS50eHQNCj4g
+aW5kZXggOTcxMzRlMS4uNWE3MTYzYyAxMDA2NDQNCj4gLS0tIGEvZG9jcy9t
+ZW1vcnkudHh0DQo+ICsrKyBiL2RvY3MvbWVtb3J5LnR4dA0KPiBAQCAtMTg1
+LDggKzE4NSw4IEBAIGFuIE1NSU8gcmVnaW9uIG1hcHBlZCBhdCAweDAsIHNp
+emUgMHg2MDAwLCBwcmlvcml0eSAxLiBCIGN1cnJlbnRseSBoYXMgdHdvDQo+
+ICBvZiBpdHMgb3duIHN1YnJlZ2lvbnM6IEQgb2Ygc2l6ZSAweDEwMDAgYXQg
+b2Zmc2V0IDAgYW5kIEUgb2Ygc2l6ZSAweDEwMDAgYXQNCj4gIG9mZnNldCAw
+eDIwMDAuIEFzIGEgZGlhZ3JhbToNCj4gIA0KPiAtICAgICAgICAwICAgICAg
+MTAwMCAgIDIwMDAgICAzMDAwICAgNDAwMCAgIDUwMDAgICA2MDAwICAgNzAw
+MCAgICA4MDAwDQo+IC0gICAgICAgIHwtLS0tLS18LS0tLS0tfC0tLS0tLXwt
+LS0tLS18LS0tLS0tfC0tLS0tLXwtLS0tLS18LS0tLS0tLXwNCj4gKyAgICAg
+ICAgMCAgICAgIDEwMDAgICAyMDAwICAgMzAwMCAgIDQwMDAgICA1MDAwICAg
+NjAwMCAgIDcwMDAgICA4MDAwDQo+ICsgICAgICAgIHwtLS0tLS18LS0tLS0t
+fC0tLS0tLXwtLS0tLS18LS0tLS0tfC0tLS0tLXwtLS0tLS18LS0tLS0tfA0K
+PiAgICBBOiAgICBbICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIF0NCj4gICAgQzogICAgW0NDQ0NDQ0ND
+Q0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NdDQo+ICAgIEI6ICAg
+ICAgICAgICAgICAgICAgWyAgICAgICAgICAgICAgICAgICAgICAgICAgXQ0K
+PiBAQCAtMjQ3LDcgKzI0Nyw3IEBAIHN5c3RlbV9tZW1vcnk6IGNvbnRhaW5l
+ckAwLTJeNDgtMQ0KPiAgIHwNCj4gICArLS0tLSBoaW1lbTogYWxpYXNAMHgx
+MDAwMDAwMDAtMHgxMWZmZmZmZmYgLS0tPiAjcmFtICgweGUwMDAwMDAwLTB4
+ZmZmZmZmZmYpDQo+ICAgfA0KPiAtICstLS0tIHZnYS13aW5kb3c6IGFsaWFz
+QDB4YTAwMDAtMHhiZmZmZmYgLS0tPiAjcGNpICgweGEwMDAwLTB4YmZmZmYp
+DQo+ICsgKy0tLS0gdmdhLXdpbmRvdzogYWxpYXNAMHhhMDAwMC0weGJmZmZm
+IC0tLT4gI3BjaSAoMHhhMDAwMC0weGJmZmZmKQ0KPiAgIHwgICAgICAocHJp
+byAxKQ0KPiAgIHwNCj4gICArLS0tLSBwY2ktaG9sZTogYWxpYXNAMHhlMDAw
+MDAwMC0weGZmZmZmZmZmIC0tLT4gI3BjaSAoMHhlMDAwMDAwMC0weGZmZmZm
+ZmZmKQ0KDQoKCg==
 
