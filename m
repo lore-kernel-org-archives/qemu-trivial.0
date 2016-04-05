@@ -1,49 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1anQti-0007Uf-B2
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 09:19:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37953)
+	id 1anQvu-0000ZO-Bh
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 09:22:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34163)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1anKYJ-0007KP-Vt
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 02:33:28 -0400
+	(envelope-from <haris.phnx@gmail.com>) id 1anQvo-0000Sd-Ra
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 09:22:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1anKYJ-0003uD-69
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 02:33:27 -0400
-Received: from [59.151.112.132] (port=61304 helo=heian.cn.fujitsu.com)
+	(envelope-from <haris.phnx@gmail.com>) id 1anQvj-0006VM-7r
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 09:22:08 -0400
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:35271)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1anKYE-0003jn-4f; Tue, 05 Apr 2016 02:33:22 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="5271458"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 05 Apr 2016 14:32:49 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id A6271408D261;
-	Tue,  5 Apr 2016 14:32:44 +0800 (CST)
-Received: from changlox.g08.fujitsu.local (10.167.225.55) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Tue, 5 Apr 2016 14:32:44 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-To: qemu devel <qemu-devel@nongnu.org>, qemu trivial
-	<qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Bennee
-	<alex.bennee@linaro.org>, Eric Blake <eblake@redhat.com>, Markus Armbruster
-	<armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Max Reitz
-	<mreitz@redhat.com>, John Snow <jsnow@redhat.com>
-Date: Tue, 5 Apr 2016 14:35:27 +0800
-Message-ID: <1459838127-32288-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: A6271408D261.AFD48
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Tue, 05 Apr 2016 09:19:56 -0400
-Cc: Changlong Xie <xiecl.fnst@cn.fujitsu.com>,
-	Wen Congyang <wency@cn.fujitsu.com>
-Subject: [Qemu-trivial] [PATCH] tests: ignore test-logging
+	(envelope-from <haris.phnx@gmail.com>)
+	id 1anQve-0006Ur-Mr; Tue, 05 Apr 2016 09:21:58 -0400
+Received: by mail-pa0-x241.google.com with SMTP id zy2so1287175pac.2;
+	Tue, 05 Apr 2016 06:21:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=xgJwUWV2kP/1F2gpk61Ezur4rDVecVGnnRoeHkYiVA8=;
+	b=UOqns6ym4EINUO0rwR1iqmQ6fxZaaf1w/HJQ7t6TiOhUp2XiVdy+wkrlzsZhMd4gkn
+	anK4jZe0PbMYdOL1+QnD0fwZmBlGAl0QbPW4M4nRK4llhQFXpY+8DXc7VYg0EUiFl14y
+	2wd5oKHjgxEqC/W1Hgi9382fCIG5wHCb6RoRKJD2zTt9R+ynxEKeHrDcNX8HitZGwiE5
+	oDazFUwU/EsRYHSulCq1n4z4O1xJK2dXAga71GyzBs4Q+gyIdHc7jzKMR2P8z18Qubj8
+	a7uuTrMDLCIGJvJn+rMbSvvQ4E0w3lQ4+6G1s2XwlxN3M9KJAWlEp6499A4ULPot+PE1
+	vpIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=xgJwUWV2kP/1F2gpk61Ezur4rDVecVGnnRoeHkYiVA8=;
+	b=fEt/qW8mWmSdESB7s0RGcAOM+xMScYlliQZSl4Y+Vwv5D5Hl4D+1NRtBdEGTL7PsHF
+	dIVZB17cSq+nYV6OFtGocp0M++FgX2DvOaXyjezH9mDpyCPgPT6MFPHqVGHTi9yNiyad
+	aU9grnh+nKho5nABS0pXrQqjTkx5UkbaiTAhnj6din8j8SbtHwYErwxsjEPH3x+lk6Xo
+	kxVYkLnQBmluirFOS3wA7//7bYocM7xIfMINUIfKcsFzThTx/hW9XRA6H4lL2Vtn5KbO
+	A+gke3ilfwouOEEu/cHVbeRdSiF0zC1CbEGsqPL3i0o1m5z5kVRb8VFTuxbGKUYQWNPv
+	IO2Q==
+X-Gm-Message-State: AD7BkJKYIAzsyORY/2mMDX/79GVu0/sOxQlU/kudZinhxGMavGkLVeiOQblDJPZ7IIgdNw==
+X-Received: by 10.66.141.103 with SMTP id rn7mr61657617pab.70.1459862517760;
+	Tue, 05 Apr 2016 06:21:57 -0700 (PDT)
+Received: from student-HP-COMPAQ-ELITE-8200-MT-PC.nitk.ac.in ([218.248.46.109])
+	by smtp.googlemail.com with ESMTPSA id
+	p26sm47026744pfi.84.2016.04.05.06.21.55
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 05 Apr 2016 06:21:57 -0700 (PDT)
+From: Md Haris Iqbal <haris.phnx@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  5 Apr 2016 18:51:39 +0530
+Message-Id: <1459862499-4768-1-git-send-email-haris.phnx@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c03::241
+Cc: qemu-trivial@nongnu.org, Md Haris Iqbal <haris.phnx@gmail.com>,
+	kraxel@redhat.com
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH v1] Changed malloc to g_malloc,
+	free to g_free in ui/shader.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,30 +63,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2016 06:33:28 -0000
+X-List-Received-Date: Tue, 05 Apr 2016 13:22:12 -0000
 
-Commit 3514552e added a new test, but did not mark it for
-exclusion in .gitignore.
-
-Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
 ---
- tests/.gitignore | 1 +
- 1 file changed, 1 insertion(+)
+ ui/shader.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/.gitignore b/tests/.gitignore
-index b7bf13e..898a35f 100644
---- a/tests/.gitignore
-+++ b/tests/.gitignore
-@@ -70,5 +70,6 @@ test-xbzrle
- test-netfilter
- test-filter-mirror
- test-filter-redirector
-+test-logging
- *-test
- qapi-schema/*.test.*
+diff --git a/ui/shader.c b/ui/shader.c
+index 9264009..1ffddbe 100644
+--- a/ui/shader.c
++++ b/ui/shader.c
+@@ -83,12 +83,12 @@ GLuint qemu_gl_create_compile_shader(GLenum type, const GLchar *src)
+     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+     if (!status) {
+         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+-        errmsg = malloc(length);
++        errmsg = g_malloc(length);
+         glGetShaderInfoLog(shader, length, &length, errmsg);
+         fprintf(stderr, "%s: compile %s error\n%s\n", __func__,
+                 (type == GL_VERTEX_SHADER) ? "vertex" : "fragment",
+                 errmsg);
+-        free(errmsg);
++        g_free(errmsg);
+         return 0;
+     }
+     return shader;
+@@ -108,10 +108,10 @@ GLuint qemu_gl_create_link_program(GLuint vert, GLuint frag)
+     glGetProgramiv(program, GL_LINK_STATUS, &status);
+     if (!status) {
+         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
+-        errmsg = malloc(length);
++        errmsg = g_malloc(length);
+         glGetProgramInfoLog(program, length, &length, errmsg);
+         fprintf(stderr, "%s: link program: %s\n", __func__, errmsg);
+-        free(errmsg);
++        g_free(errmsg);
+         return 0;
+     }
+     return program;
 -- 
-1.9.3
-
-
+1.9.1
 
 
