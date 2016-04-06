@@ -1,65 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1anZzN-0001aO-MK
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 19:02:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55116)
+	id 1anbEX-0007kU-Vz
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 20:22:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1anZzL-0001a5-GG
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 19:02:24 -0400
+	(envelope-from <stefanb@us.ibm.com>) id 1anbEV-0007iU-2R
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1anZzI-0008I6-BG
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 19:02:23 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:34373)
+	(envelope-from <stefanb@us.ibm.com>) id 1anbES-0003MD-Ry
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:07 -0400
+Received: from e35.co.us.ibm.com ([32.97.110.153]:34183)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1anZzI-0008I2-30; Tue, 05 Apr 2016 19:02:20 -0400
-Received: by mail-wm0-x242.google.com with SMTP id n3so8418790wmn.1;
-	Tue, 05 Apr 2016 16:02:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=yR0n1XBamEiZbaAdbDwWkK4TuVw8oHqjxAHBZ0K7uL8=;
-	b=gdgtB91oRP5pOvQzf2QAN5Nh9md91vygl+NWGujJghhz42HrPfJl7pMceePbX7/1Hl
-	xMX/6KtPs+boaqGWvoPe65CLM5ujx6BtnbMRh96sPNc69UZC1jyFleEjTFCg8JmFLWln
-	93aCauRw0GTIeKBv3Pj39wjHIbem+XQ46EUT9FM51e4WXAjSYb4wqAZBVNOYZmyMkxPM
-	mSZPfhxGF42YJf5h9Bb3iyvhJHHBlLO4zCdMxxLpF849+uurVs7gEPSgLP7ile3akH24
-	jdeLge2j/TSWJNdQraqWFxbAitygLTWbk8i3ujEZ5CA4eSYe0e2EQqZe/um4UyGaeToD
-	Kb7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=yR0n1XBamEiZbaAdbDwWkK4TuVw8oHqjxAHBZ0K7uL8=;
-	b=J8jQv3UBEClkZ5fFety/jgr8KhsbSz34I1nhOdYtknZI1H119JinUhw7yKifRl6ZX2
-	ZLJSWf+LBQLILAwfJxb/7tjoPicmwuCc9ktLerM4oYejvXDl+RIcg6qp159wAd/vN6LT
-	dLdOTTLx+J0porqIucfU+Ij8HXrnngfCOVHGG1iNMSChoQhfqxzmnY8driMSg9kQ2PWq
-	JVGpgPQSDOMqtuO4DHud4YEvCiaP8/z5ExUNUVcG7NdnCe0cRu7GCQEnLYk+kVQIK2gf
-	CSMMl/m2LhPtZ6ORU/HAFNBarqqNoSDQoN5UPHBFHH3R9z4UTI8q1kj+gVuvQJO6fkHE
-	9Zpw==
-X-Gm-Message-State: AD7BkJKAh3i9n6qHcudb2YLqpMYWTBC6TOQMWJMHm1VUuJI4RjNuPI7+On2pgYjK8FCCsQ==
-X-Received: by 10.28.158.78 with SMTP id h75mr18058213wme.53.1459897338695;
-	Tue, 05 Apr 2016 16:02:18 -0700 (PDT)
-Received: from [192.168.10.150] (94-39-141-76.adsl-ull.clienti.tiscali.it.
-	[94.39.141.76]) by smtp.googlemail.com with ESMTPSA id
-	j71sm491110wmj.21.2016.04.05.16.02.17
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 05 Apr 2016 16:02:17 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1458639954-9980-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <570443F6.5010603@redhat.com>
-Date: Wed, 6 Apr 2016 01:02:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
-MIME-Version: 1.0
-In-Reply-To: <1458639954-9980-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, mjt@tls.msk.ru,
-	avi@redhat.com
-Subject: Re: [Qemu-trivial] [PATCH] docs: fix typo in memory.txt
+	(envelope-from <stefanb@us.ibm.com>) id 1anbES-0003KN-G8
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:04 -0400
+Received: from localhost
+	by e35.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@us.ibm.com>;
+	Tue, 5 Apr 2016 18:22:01 -0600
+Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
+	by e35.co.us.ibm.com (192.168.1.135) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 5 Apr 2016 18:21:59 -0600
+X-IBM-Helo: d03dlp02.boulder.ibm.com
+X-IBM-MailFrom: stefanb@us.ibm.com
+X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
+Received: from b03cxnp08027.gho.boulder.ibm.com
+	(b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id BEFE53E40052;
+	Tue,  5 Apr 2016 18:21:58 -0600 (MDT)
+Received: from d03av02.boulder.ibm.com (d03av02.boulder.ibm.com [9.17.195.168])
+	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u360LwPs35127500; Tue, 5 Apr 2016 17:21:58 -0700
+Received: from d03av02.boulder.ibm.com (localhost [127.0.0.1])
+	by d03av02.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
+	id u360LwfZ024695; Tue, 5 Apr 2016 18:21:58 -0600
+Received: from sbct-3.watson.ibm.com (sbct-3.watson.ibm.com [9.2.141.158])
+	by d03av02.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	u360Lvdp024648; Tue, 5 Apr 2016 18:21:57 -0600
+From: Stefan Berger <stefanb@us.ibm.com>
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Date: Tue,  5 Apr 2016 20:21:50 -0400
+Message-Id: <1459902110-9856-1-git-send-email-stefanb@us.ibm.com>
+X-Mailer: git-send-email 2.5.5
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16040600-0013-0000-0000-000025041F8A
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 32.97.110.153
+Cc: Stefan Berger <stefanb@us.ibm.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>
+Subject: [Qemu-trivial] [PATCH v2] tpm: Fix write to file descriptor function
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,55 +61,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Apr 2016 23:02:24 -0000
+X-List-Received-Date: Wed, 06 Apr 2016 00:22:08 -0000
 
+Fix a bug introduced in commit 46f296c while moving send_all to the
+tpm_passthrough code. Fix the name of the variable used in the loop.
 
+Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+---
+ hw/tpm/tpm_passthrough.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 22/03/2016 10:45, Wei Jiangang wrote:
-> The scale line should align with A line's end,
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+index e98efb7..e88c0d2 100644
+--- a/hw/tpm/tpm_passthrough.c
++++ b/hw/tpm/tpm_passthrough.c
+@@ -86,7 +86,7 @@ static int tpm_passthrough_unix_write(int fd, const uint8_t *buf, uint32_t len)
+     int ret, remain;
+ 
+     remain = len;
+-    while (len > 0) {
++    while (remain > 0) {
+         ret = write(fd, buf, remain);
+         if (ret < 0) {
+             if (errno != EINTR && errno != EAGAIN) {
+-- 
+2.5.5
 
-No, A ends at 0x7fff so the line should end just before.  See what
-happens for B/C/D/E.
-
-However, the space between 7000 and 8000 is indede 7 characters instead
-of 6, so I will take your patch and also reduce the space between A's
-brackets.
-
-Thanks,
-
-Paolo
-
-> and correct the range of vga-window example 0xa0000-0xbffff.
-
-
-> Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-> ---
->  docs/memory.txt | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/docs/memory.txt b/docs/memory.txt
-> index 97134e1..5a7163c 100644
-> --- a/docs/memory.txt
-> +++ b/docs/memory.txt
-> @@ -185,8 +185,8 @@ an MMIO region mapped at 0x0, size 0x6000, priority 1. B currently has two
->  of its own subregions: D of size 0x1000 at offset 0 and E of size 0x1000 at
->  offset 0x2000. As a diagram:
->  
-> -        0      1000   2000   3000   4000   5000   6000   7000    8000
-> -        |------|------|------|------|------|------|------|-------|
-> +        0      1000   2000   3000   4000   5000   6000   7000   8000
-> +        |------|------|------|------|------|------|------|------|
->    A:    [                                                       ]
->    C:    [CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC]
->    B:                  [                          ]
-> @@ -247,7 +247,7 @@ system_memory: container@0-2^48-1
->   |
->   +---- himem: alias@0x100000000-0x11fffffff ---> #ram (0xe0000000-0xffffffff)
->   |
-> - +---- vga-window: alias@0xa0000-0xbfffff ---> #pci (0xa0000-0xbffff)
-> + +---- vga-window: alias@0xa0000-0xbffff ---> #pci (0xa0000-0xbffff)
->   |      (prio 1)
->   |
->   +---- pci-hole: alias@0xe0000000-0xffffffff ---> #pci (0xe0000000-0xffffffff)
-> 
 
