@@ -1,55 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1anbEX-0007kU-Vz
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 20:22:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42789)
+	id 1anbca-0000Oc-Pj
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Apr 2016 20:47:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55891)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1anbEV-0007iU-2R
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:08 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1anbcZ-0000M8-0V
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:46:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1anbES-0003MD-Ry
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:07 -0400
-Received: from e35.co.us.ibm.com ([32.97.110.153]:34183)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1anbcY-0000CE-5H
+	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:46:58 -0400
+Received: from [59.151.112.132] (port=44973 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@us.ibm.com>) id 1anbES-0003KN-G8
-	for qemu-trivial@nongnu.org; Tue, 05 Apr 2016 20:22:04 -0400
-Received: from localhost
-	by e35.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@us.ibm.com>;
-	Tue, 5 Apr 2016 18:22:01 -0600
-Received: from d03dlp02.boulder.ibm.com (9.17.202.178)
-	by e35.co.us.ibm.com (192.168.1.135) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 5 Apr 2016 18:21:59 -0600
-X-IBM-Helo: d03dlp02.boulder.ibm.com
-X-IBM-MailFrom: stefanb@us.ibm.com
-X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
-Received: from b03cxnp08027.gho.boulder.ibm.com
-	(b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
-	by d03dlp02.boulder.ibm.com (Postfix) with ESMTP id BEFE53E40052;
-	Tue,  5 Apr 2016 18:21:58 -0600 (MDT)
-Received: from d03av02.boulder.ibm.com (d03av02.boulder.ibm.com [9.17.195.168])
-	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u360LwPs35127500; Tue, 5 Apr 2016 17:21:58 -0700
-Received: from d03av02.boulder.ibm.com (localhost [127.0.0.1])
-	by d03av02.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP
-	id u360LwfZ024695; Tue, 5 Apr 2016 18:21:58 -0600
-Received: from sbct-3.watson.ibm.com (sbct-3.watson.ibm.com [9.2.141.158])
-	by d03av02.boulder.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	u360Lvdp024648; Tue, 5 Apr 2016 18:21:57 -0600
-From: Stefan Berger <stefanb@us.ibm.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Date: Tue,  5 Apr 2016 20:21:50 -0400
-Message-Id: <1459902110-9856-1-git-send-email-stefanb@us.ibm.com>
-X-Mailer: git-send-email 2.5.5
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16040600-0013-0000-0000-000025041F8A
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 32.97.110.153
-Cc: Stefan Berger <stefanb@us.ibm.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [Qemu-trivial] [PATCH v2] tpm: Fix write to file descriptor function
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
+	id 1anbcT-0008UZ-B6; Tue, 05 Apr 2016 20:46:53 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="5299902"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 06 Apr 2016 08:46:34 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 56E1B408D27E;
+	Wed,  6 Apr 2016 08:46:32 +0800 (CST)
+Received: from changlox.g08.fujitsu.local (10.167.225.55) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 6 Apr 2016 08:46:31 +0800
+From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+To: qemu devel <qemu-devel@nongnu.org>, qemu trivial
+	<qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Alex Bennee
+	<alex.bennee@linaro.org>, Eric Blake <eblake@redhat.com>, Markus Armbruster
+	<armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Max Reitz
+	<mreitz@redhat.com>, John Snow <jsnow@redhat.com>
+Date: Wed, 6 Apr 2016 08:49:16 +0800
+Message-ID: <1459903756-30672-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.167.225.55]
+X-yoursite-MailScanner-ID: 56E1B408D27E.A0B86
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Cc: Changlong Xie <xiecl.fnst@cn.fujitsu.com>,
+	Wen Congyang <wency@cn.fujitsu.com>
+Subject: [Qemu-trivial] [PATCH V2] tests: ignore test-logging
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,30 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Apr 2016 00:22:08 -0000
+X-List-Received-Date: Wed, 06 Apr 2016 00:46:59 -0000
 
-Fix a bug introduced in commit 46f296c while moving send_all to the
-tpm_passthrough code. Fix the name of the variable used in the loop.
+Commit 3514552e added a new test, but did not mark it for
+exclusion in .gitignore.
 
-Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- hw/tpm/tpm_passthrough.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/.gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index e98efb7..e88c0d2 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -86,7 +86,7 @@ static int tpm_passthrough_unix_write(int fd, const uint8_t *buf, uint32_t len)
-     int ret, remain;
- 
-     remain = len;
--    while (len > 0) {
-+    while (remain > 0) {
-         ret = write(fd, buf, remain);
-         if (ret < 0) {
-             if (errno != EINTR && errno != EAGAIN) {
+diff --git a/tests/.gitignore b/tests/.gitignore
+index 6479b79..a303aaa 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -39,6 +39,7 @@ test-io-channel-file.txt
+ test-io-channel-socket
+ test-io-channel-tls
+ test-io-task
++test-logging
+ test-mul64
+ test-opts-visitor
+ test-qapi-event.[ch]
 -- 
-2.5.5
+1.9.3
+
+
 
 
