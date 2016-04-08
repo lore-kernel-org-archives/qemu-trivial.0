@@ -1,137 +1,173 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1angzr-0007v7-Er
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Apr 2016 02:31:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40560)
+	id 1aoUQU-0002ry-FI
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Apr 2016 07:18:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52861)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1angzo-0007sY-Vo
-	for qemu-trivial@nongnu.org; Wed, 06 Apr 2016 02:31:21 -0400
+	(envelope-from <armbru@redhat.com>) id 1aoUQP-0002hp-43
+	for qemu-trivial@nongnu.org; Fri, 08 Apr 2016 07:18:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1angzk-000793-Tq
-	for qemu-trivial@nongnu.org; Wed, 06 Apr 2016 02:31:20 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:34193)
+	(envelope-from <armbru@redhat.com>) id 1aoUQN-0003a9-1f
+	for qemu-trivial@nongnu.org; Fri, 08 Apr 2016 07:18:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1angzk-00078x-N8; Wed, 06 Apr 2016 02:31:16 -0400
-Received: by mail-wm0-x244.google.com with SMTP id n3so10239798wmn.1;
-	Tue, 05 Apr 2016 23:31:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=XHgVTHdq5hqNgTKjNloUhp2yd/b/qzrV+c5ZnE7FqSI=;
-	b=RT2fS75qdJuqRmDx1basVEYdYs/QE4JpguZkiTmirHnFiURj5I6iHdmxB+kqMUOF/i
-	6EZOupxYmAslPyy6rEhsc8IrJjMD6J+g0WkadE/YpD7Zz/XJlViuBRoMvk5ov+9fo3pN
-	w5lfiPoj2XMzSp+4gOk5GZFOt2t8OU/zDqRiYR0md7rvupBO16C/2V0R3o9BDwuJtEti
-	PIIgQgY0zXrVtAsXsh1YSwEtvtpfBAHGe2LyrplQltS7yjMaLh5kYwgswOvAyGxNvog0
-	kpTYVRx0RsxrAfgw9TH0PKQTJqgqnUAdDC5+Kz3cfRxgRcouiEsH5MYGbfgH6YiWOFXN
-	vJYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=XHgVTHdq5hqNgTKjNloUhp2yd/b/qzrV+c5ZnE7FqSI=;
-	b=DUMiCbJVTdTLTsfKZp+WtaYZt4bkeeAbfJSdDfwy4lS37GNAxSgT96tBsMVjn4td19
-	7s6rLYoJrzXVpM7VE/kPiD6meQKnsZkvoClzAHiw7kV4uH2FXJKWHfDy+Va4bjHVM0yG
-	hCcH8wyMkhVia+/1qB/fIzsDyAljmEb5LFNhdXUFuS8Ybb/itosiK4/mYkTD5T+M7pfU
-	sqN1u+58H0+PttGuVLSdcNDzah/pOMqCs42i0R0VIaQpY12H5ZwfMZhWGq3X2uLaPFX1
-	FuMwmBEvMwi8mrCrBu2Iky8CQ86CqvMLNXhr0mVhckUI/nTF2H3rxnEM3EgMK+K63WzJ
-	Q9Hg==
-X-Gm-Message-State: AD7BkJKmwE488sJUPvj0/tfCj4he7jNQVgcUZV8pb/j0WChfLK7rbKwsZ1oo5++LqWWf9A==
-X-Received: by 10.28.211.1 with SMTP id k1mr22874513wmg.93.1459924276101;
-	Tue, 05 Apr 2016 23:31:16 -0700 (PDT)
-Received: from [192.168.10.150] (94-39-141-76.adsl-ull.clienti.tiscali.it.
-	[94.39.141.76]) by smtp.googlemail.com with ESMTPSA id
-	cf6sm1469186wjc.12.2016.04.05.23.31.14
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 05 Apr 2016 23:31:14 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: "Gonglei (Arei)" <arei.gonglei@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <1456998223-12356-1-git-send-email-arei.gonglei@huawei.com>
-	<33183CC9F5247A488A2544077AF19020B030F344@SZXEMA503-MBS.china.huawei.com>
-	<5704ACFB.40408@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5704AD2E.8050709@redhat.com>
-Date: Wed, 6 Apr 2016 08:31:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	(envelope-from <armbru@redhat.com>)
+	id 1aoUQF-0003Vn-05; Fri, 08 Apr 2016 07:17:55 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 566D06542C;
+	Fri,  8 Apr 2016 11:17:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
+	[10.36.116.35])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u38BHqpR030502
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 8 Apr 2016 07:17:53 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 9A76C11C6D99; Fri,  8 Apr 2016 13:17:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Cao jin <caoj.fnst@cn.fujitsu.com>
+Cc: <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	peter.maydell@linaro.org
+References: <1458814461-5387-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+Date: Fri, 08 Apr 2016 13:17:51 +0200
+In-Reply-To: <1458814461-5387-1-git-send-email-caoj.fnst@cn.fujitsu.com> (Cao
+	jin's message of "Thu, 24 Mar 2016 18:14:21 +0800")
+Message-ID: <87mvp4xsbk.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <5704ACFB.40408@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 08 Apr 2016 11:17:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [Qemu-trivial] [PATCH 0/6] fix some coverity complains
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qdev property: cleanup
 X-BeenThere: qemu-trivial@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-trivial.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-trivial>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-trivial/>
 List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Apr 2016 06:31:21 -0000
+X-List-Received-Date: Fri, 08 Apr 2016 11:18:09 -0000
 
+[Wasn't delivered correctly by eggs.gnu.org, resending]
 
+The subsystem tag should be just "qdev:".  Suggest "qdev: Clean up
+around properties".
 
-On 06/04/2016 08:30, Paolo Bonzini wrote:
-> 
-> 
-> On 06/04/2016 04:12, Gonglei (Arei) wrote:
->> Hi Paolo,
->>
->> Would you pls pick patch 1,3,4,5 to qemu-2.6 ? 
-> 
-> Gerd, can you pick up the three spice and egl-helpers patches?
+Cao jin <caoj.fnst@cn.fujitsu.com> writes:
 
-Hem, two. :)
+> include:
+> 1. remove unnecessary declaration of static function
+> 2. fix inconsistency between comment and function name, and typo OOM->QOM
+> 2. update comment of function
+>
+> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+> ---
+> A question about legacy property: I don`t see legacy property is really
+> used in the code, so, why still add legacy property to object?
+>
+> since it has no maintainer, so the cc list is by intuition...
+>
+>  hw/core/qdev.c               | 14 ++++++--------
+>  include/hw/qdev-properties.h |  4 ++--
+>  2 files changed, 8 insertions(+), 10 deletions(-)
+>
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index db41aa1..743b71b 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -58,9 +58,6 @@ const char *qdev_fw_name(DeviceState *dev)
+>      return object_get_typename(OBJECT(dev));
+>  }
+>  
+> -static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+> -                                     Error **errp);
+> -
+>  static void bus_remove_child(BusState *bus, DeviceState *child)
+>  {
+>      BusChild *kid;
+> @@ -908,12 +905,12 @@ static void qdev_get_legacy_property(Object *obj, Visitor *v,
+>  }
+>  
+>  /**
+> - * @qdev_add_legacy_property - adds a legacy property
+> + * @qdev_property_add_legacy - adds a legacy property
 
-Paolo
+Style#1:
 
-> I'll take care of the backends/ one.
-> 
-> Paolo
-> 
->> It seems the trivial-branch maintainer didn't notice them. :(
->>
->> Regards,
->> -Gonglei
->>
->>
->>> -----Original Message-----
->>> From: Gonglei (Arei)
->>> Sent: Thursday, March 03, 2016 5:44 PM
->>> To: qemu-devel@nongnu.org
->>> Cc: pbonzini@redhat.com; qemu-trivial@nongnu.org; Gonglei (Arei)
->>> Subject: [PATCH 0/6] fix some coverity complains
->>>
->>>
->>> Gonglei (6):
->>>   egl-helpers: fix possible resource leak
->>>   sheepdog: fix possible resouce leak and out-of-bounds access
->>>   spice: fix coverity complains
->>>   hostmem-file: fix memory leak
->>>   spapr: fix possible Negative array index read
->>>   smbus: fix memory leak
->>>
->>>  backends/hostmem-file.c | 5 ++++-
->>>  block/sheepdog.c        | 9 ++++++---
->>>  hw/i2c/smbus_eeprom.c   | 2 ++
->>>  hw/ppc/spapr.c          | 4 ++++
->>>  ui/egl-helpers.c        | 9 +++------
->>>  ui/spice-display.c      | 4 +---
->>>  6 files changed, 20 insertions(+), 13 deletions(-)
->>>
->>> --
->>> 1.8.5.2
->>>
->>
->>
->>
-> 
-> 
+    function_name - headline
+
+We generally use the imperative mood: "add a legacy property".
+
+>   *
+>   * Do not use this is new code!  Properties added through this interface will
+>   * be given names and types in the "legacy" namespace.
+>   *
+> - * Legacy properties are string versions of other OOM properties.  The format
+> + * Legacy properties are string versions of other QOM properties.  The format
+>   * of the string depends on the property type.
+>   */
+>  static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+> @@ -937,10 +934,11 @@ static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>  }
+>  
+>  /**
+> - * @qdev_property_add_static - add a @Property to a device.
+> + * @qdev_property_add_static
+> + * add a QOM property to @dev via its qdev Property @prop
+
+Style#2:
+
+    function_name
+    headline
+
+>   *
+> - * Static properties access data in a struct.  The actual type of the
+> - * property and the field depends on the property type.
+> + * Static properties access data in a struct. The actual type of ObjectProperty
+> + * and the struct field depends on the @qtype type.
+>   */
+
+Not sure this part is an improvement.  What's wrong with the current text?
+
+>  void qdev_property_add_static(DeviceState *dev, Property *prop,
+>                                Error **errp)
+> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+> index 0586cac..8c4481b 100644
+> --- a/include/hw/qdev-properties.h
+> +++ b/include/hw/qdev-properties.h
+> @@ -197,8 +197,8 @@ void error_set_from_qdev_prop_error(Error **errp, int ret, DeviceState *dev,
+>                                      Property *prop, const char *value);
+>  
+>  /**
+> - * @qdev_property_add_static - add a @Property to a device referencing a
+> - * field in a struct.
+> + * @qdev_property_add_static - add a ObjectProperty to @dev via its qdev
+> + * property @prop, referencing a field in the struct.
+>   */
+
+Style#3:
+
+    function_name - sentence spanning multiple
+    lines.
+
+Pick one style and stick to it.
+
+The rest of qdev-properties.h appears to use GTK-Doc style (which I
+personally dislike, but that doesn't matter here).  See
+https://developer.gnome.org/gtk-doc-manual/stable/documenting_symbols.html
+
+If both declaration and definition have a comment, as they do here, they
+should match exactly.
+
+>  void qdev_property_add_static(DeviceState *dev, Property *prop, Error **errp);
 
