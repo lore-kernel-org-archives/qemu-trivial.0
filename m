@@ -1,62 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aoxJl-0003p2-4v
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Apr 2016 14:09:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39922)
+	id 1apAkl-00024E-5F
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Apr 2016 04:29:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39700)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1aoxJi-0003k3-98
-	for qemu-trivial@nongnu.org; Sat, 09 Apr 2016 14:09:07 -0400
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1apAkf-0001sD-GX
+	for qemu-trivial@nongnu.org; Sun, 10 Apr 2016 04:29:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1aoxJf-0007GT-GU
-	for qemu-trivial@nongnu.org; Sat, 09 Apr 2016 14:09:06 -0400
-Received: from e19.ny.us.ibm.com ([129.33.205.209]:49194)
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1apAke-0002zk-QK
+	for qemu-trivial@nongnu.org; Sun, 10 Apr 2016 04:29:49 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:33783)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1aoxJf-0007GD-BT
-	for qemu-trivial@nongnu.org; Sat, 09 Apr 2016 14:09:03 -0400
-Received: from localhost
-	by e19.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Sat, 9 Apr 2016 14:09:01 -0400
-Received: from d01dlp02.pok.ibm.com (9.56.250.167)
-	by e19.ny.us.ibm.com (146.89.104.206) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Sat, 9 Apr 2016 14:08:59 -0400
-X-IBM-Helo: d01dlp02.pok.ibm.com
-X-IBM-MailFrom: stefanb@linux.vnet.ibm.com
-X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
-	[9.57.198.29])
-	by d01dlp02.pok.ibm.com (Postfix) with ESMTP id 9A0226E8040;
-	Sat,  9 Apr 2016 13:55:47 -0400 (EDT)
-Received: from d01av05.pok.ibm.com (d01av05.pok.ibm.com [9.56.224.195])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	u39I8wwo40239170; Sat, 9 Apr 2016 18:08:58 GMT
-Received: from d01av05.pok.ibm.com (localhost [127.0.0.1])
-	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	u39I35QN018904; Sat, 9 Apr 2016 14:03:05 -0400
-Received: from sbct-3.watson.ibm.com (sbct-3.watson.ibm.com [9.2.141.158])
-	by d01av05.pok.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	u39I35HR018898; Sat, 9 Apr 2016 14:03:05 -0400
-To: Stefan Berger <stefanb@us.ibm.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-References: <1459902110-9856-1-git-send-email-stefanb@us.ibm.com>
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Message-ID: <57094539.6020203@linux.vnet.ibm.com>
-Date: Sat, 9 Apr 2016 14:08:57 -0400
+	(envelope-from <marcel.apfelbaum@gmail.com>)
+	id 1apAke-0002za-KV; Sun, 10 Apr 2016 04:29:48 -0400
+Received: by mail-wm0-x242.google.com with SMTP id y144so14275644wmd.0;
+	Sun, 10 Apr 2016 01:29:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=reply-to:subject:references:to:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=mK4rsvixeZZvXlM4vNy3RQGbaIXo2mtC2DNRBAfwQEs=;
+	b=bAbEsA8ZmwzlxqFktkk27kJgwX0uoI1/5/LANtsNzC07AQ5Ie68BC1PHa6iyw+2kXd
+	suzdD7GVxIbXZeXNRAVU8cprEhfPh6lf89frpBe20g/LBTXWQRJswmuGw5OrXJQlXJOs
+	dGWIUpwaXwmBRpRK/lNtAsu9RNEPD0f59za9onE+caL+UNEDTdhYSwTTcaUMfb8wev/f
+	ttBY3Xe8w6PvY5yaNn8rVfmTTxb+CnhGYxhOsH1mUFKqW0bzsSIQBVj3XNxkdIdNbHLt
+	gdweOIU/941fFbCJzuZF4Imts5Uwg8yEQg496O1HOHoZ5vPMRM+1xZmCiFS8dMtXvn2S
+	AreA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:reply-to:subject:references:to:cc:from
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-transfer-encoding;
+	bh=mK4rsvixeZZvXlM4vNy3RQGbaIXo2mtC2DNRBAfwQEs=;
+	b=UfcRMPKSPbUKKSeP1f8pu/KGGt0dRwZsNwgIEsC3JP9CIgNPNLkqb20kid2yUzf+9a
+	f9CoNm2YM+6SaTmd8gzmPkOqcJJihlfuXuA5MJD1zr1y5oscevsvJj+vTWADoz4CgX+3
+	yghuBCpg9us6VYJjgytBZFQcMAchnwI6ZWXqrGQSBEebam/rfJYRHUerKVeEYNIQ72pS
+	DM1qaMp5SPC7oLe4VXWdagYWFcRaBBlpfjVh0KLgmIpt49lnLcrQSMyoxOG85FdiNQqq
+	e/JOKLY/938GO6ksjJoI4YyG7KQ6xde+gjyaLjodopsrW5netjMTfzki3HZssDuNwHcZ
+	kL6A==
+X-Gm-Message-State: AD7BkJJlUnsvXeEjuSqGcZlxX9jgVdWOHHNKqUxLUstxkvw4fONPIJWaDuNg7fdT6Z7qBg==
+X-Received: by 10.28.139.129 with SMTP id n123mr12122389wmd.13.1460276988028; 
+	Sun, 10 Apr 2016 01:29:48 -0700 (PDT)
+Received: from [192.168.1.32] ([149.88.139.84])
+	by smtp.googlemail.com with ESMTPSA id
+	t4sm11283547wmf.8.2016.04.10.01.29.44
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 10 Apr 2016 01:29:47 -0700 (PDT)
+Reply-To: marcel@redhat.com
+References: <1459150365-26233-1-git-send-email-marcel@redhat.com>
+To: Marcel Apfelbaum <marcel@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mst@redhat.com
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-ID: <570A0EF6.3010307@gmail.com>
+Date: Sun, 10 Apr 2016 11:29:42 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.1
+	Thunderbird/38.5.0
 MIME-Version: 1.0
-In-Reply-To: <1459902110-9856-1-git-send-email-stefanb@us.ibm.com>
+In-Reply-To: <1459150365-26233-1-git-send-email-marcel@redhat.com>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16040918-0057-0000-0000-000003FDE195
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 129.33.205.209
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tpm: Fix write to file
- descriptor function
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pci: fix identation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,31 +71,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Apr 2016 18:09:07 -0000
+X-List-Received-Date: Sun, 10 Apr 2016 08:29:52 -0000
 
-On 04/05/2016 08:21 PM, Stefan Berger wrote:
-> Fix a bug introduced in commit 46f296c while moving send_all to the
-> tpm_passthrough code. Fix the name of the variable used in the loop.
+On 03/28/2016 10:32 AM, Marcel Apfelbaum wrote:
+> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
 
-Would someone please pick up this fix?
+Ping.
 
-> Signed-off-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Thanks,
+Marcel
+
 > ---
->   hw/tpm/tpm_passthrough.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/pci/pci.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-> index e98efb7..e88c0d2 100644
-> --- a/hw/tpm/tpm_passthrough.c
-> +++ b/hw/tpm/tpm_passthrough.c
-> @@ -86,7 +86,7 @@ static int tpm_passthrough_unix_write(int fd, const uint8_t *buf, uint32_t len)
->       int ret, remain;
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index a1d41aa..da8b0b6 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -165,15 +165,15 @@ static inline int pci_irq_state(PCIDevice *d, int irq_num)
+>   {
+>       assert(irq_num >= 0);
 >
->       remain = len;
-> -    while (len > 0) {
-> +    while (remain > 0) {
->           ret = write(fd, buf, remain);
->           if (ret < 0) {
->               if (errno != EINTR && errno != EAGAIN) {
+> -	return (d->irq_state >> irq_num) & 0x1;
+> +    return (d->irq_state >> irq_num) & 0x1;
+>   }
+>
+>   static inline void pci_set_irq_state(PCIDevice *d, int irq_num, int level)
+>   {
+>       assert(irq_num >= 0);
+>
+> -	d->irq_state &= ~(0x1 << irq_num);
+> -	d->irq_state |= level << irq_num;
+> +    d->irq_state &= ~(0x1 << irq_num);
+> +    d->irq_state |= level << irq_num;
+>   }
+>
+>   static void pci_change_irq_level(PCIDevice *pci_dev, int irq_num, int change)
+>
 
 
