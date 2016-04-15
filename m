@@ -1,45 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aqYR4-00019t-3f
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Apr 2016 23:59:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51373)
+	id 1aqsik-00004z-0v
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Apr 2016 21:38:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38194)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1aqYR1-00014x-LV
-	for qemu-trivial@nongnu.org; Wed, 13 Apr 2016 23:59:16 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aqsih-0008RX-Jz
+	for qemu-trivial@nongnu.org; Thu, 14 Apr 2016 21:38:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1aqYR0-0001p4-ND
-	for qemu-trivial@nongnu.org; Wed, 13 Apr 2016 23:59:15 -0400
-Received: from [59.151.112.132] (port=27106 helo=heian.cn.fujitsu.com)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1aqsig-0008JR-Nh
+	for qemu-trivial@nongnu.org; Thu, 14 Apr 2016 21:38:51 -0400
+Received: from [59.151.112.132] (port=7364 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>)
-	id 1aqYQu-0001mU-Pa; Wed, 13 Apr 2016 23:59:09 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1aqsia-0008GS-CH; Thu, 14 Apr 2016 21:38:45 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="5584413"
+   d="scan'208";a="5619737"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 14 Apr 2016 11:59:05 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id EFF8F42B55E5;
-	Thu, 14 Apr 2016 11:59:03 +0800 (CST)
-Received: from localhost.localdomain (10.167.226.50) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Thu, 14 Apr 2016 11:59:03 +0800
-From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+	by heian.cn.fujitsu.com with ESMTP; 15 Apr 2016 09:38:33 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 8BEBE42B55E7;
+	Fri, 15 Apr 2016 09:38:30 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Fri, 15 Apr 2016 09:38:30 +0800
 To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, <peter.maydell@linaro.org>,
-	<xiecl.fnst@cn.fujitsu.com>, Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-Date: Thu, 14 Apr 2016 11:58:02 +0800
-Message-ID: <1460606282-4570-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
+References: <1459244924-9840-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<56FA5192.6060506@cn.fujitsu.com> <5708C7AB.9070309@cn.fujitsu.com>
+CC: qemu-trivial <qemu-trivial@nongnu.org>, <imammedo@redhat.com>,
+	<mjt@tls.msk.ru>, <mst@redhat.com>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <571046D2.3050003@cn.fujitsu.com>
+Date: Fri, 15 Apr 2016 09:41:38 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.50]
-X-yoursite-MailScanner-ID: EFF8F42B55E5.A04CB
+In-Reply-To: <5708C7AB.9070309@cn.fujitsu.com>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 8BEBE42B55E7.A8730
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [Qemu-devel][PATCH v2] accel: make
- configure_accelerator return void
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] smbios: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,54 +55,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Apr 2016 03:59:16 -0000
+X-List-Received-Date: Fri, 15 Apr 2016 01:38:52 -0000
 
-Return the negated value of accel_initialised is meaningless,
-and the caller vl doesn't check it.
+hi,
+    this is a typo patch, could I get confirmed?
+    For your quick reference: System Management BIOS (SMBIOS) Reference 
+Specification, version 3.0.0. chapter 5.2.1 & 5.2.2
 
-Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
----
- accel.c                | 4 +---
- include/sysemu/accel.h | 2 +-
- 2 files changed, 2 insertions(+), 4 deletions(-)
+On 04/09/2016 05:13 PM, Cao jin wrote:
+> ping?
+>
+> On 03/29/2016 05:57 PM, Cao jin wrote:
+>> sorry mjt, I intended to cc qemu-trivial, now I made it:)
+>>
+>> On 03/29/2016 05:48 PM, Cao jin wrote:
+>>> The spec says: "on paragraph (16-byte) boundaries"
+>>>
+>>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>>> ---
+>>>   include/hw/smbios/smbios.h | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/include/hw/smbios/smbios.h b/include/hw/smbios/smbios.h
+>>> index 76ccf70..ba36746 100644
+>>> --- a/include/hw/smbios/smbios.h
+>>> +++ b/include/hw/smbios/smbios.h
+>>> @@ -33,7 +33,7 @@ typedef enum SmbiosEntryPointType {
+>>>
+>>>   /* SMBIOS Entry Point
+>>>    * There are two types of entry points defined in the SMBIOS
+>>> specification
+>>> - * (see below). BIOS must place the entry point(s) at a 16-bit-aligned
+>>> + * (see below). BIOS must place the entry point(s) at a 16-byte-aligned
+>>>    * address between 0xf0000 and 0xfffff. Note that either entry point
+>>> type
+>>>    * can be used in a 64-bit target system, except that SMBIOS 2.1
+>>> entry point
+>>>    * only allows the SMBIOS struct table to reside below 4GB address
+>>> space.
+>>>
+>>
+>
 
-diff --git a/accel.c b/accel.c
-index 0510b90..403eb5e 100644
---- a/accel.c
-+++ b/accel.c
-@@ -77,7 +77,7 @@ static int accel_init_machine(AccelClass *acc, MachineState *ms)
-     return ret;
- }
- 
--int configure_accelerator(MachineState *ms)
-+void configure_accelerator(MachineState *ms)
- {
-     const char *p;
-     char buf[10];
-@@ -128,8 +128,6 @@ int configure_accelerator(MachineState *ms)
-     if (init_failed) {
-         fprintf(stderr, "Back to %s accelerator.\n", acc->name);
-     }
--
--    return !accel_initialised;
- }
- 
- 
-diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
-index 997720f..c230f1b 100644
---- a/include/sysemu/accel.h
-+++ b/include/sysemu/accel.h
-@@ -57,6 +57,6 @@ typedef struct AccelClass {
- 
- extern int tcg_tb_size;
- 
--int configure_accelerator(MachineState *ms);
-+void configure_accelerator(MachineState *ms);
- 
- #endif
 -- 
-1.9.3
+Yours Sincerely,
 
+Cao jin
 
 
 
