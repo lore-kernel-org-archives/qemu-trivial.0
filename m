@@ -1,52 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1arxTz-0001Jl-CY
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Apr 2016 20:56:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52775)
+	id 1auazV-0007Jw-SM
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Apr 2016 03:31:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1arxTw-0001Ek-UV
-	for qemu-trivial@nongnu.org; Sun, 17 Apr 2016 20:56:05 -0400
+	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1auXLe-0008Rv-4E
+	for qemu-trivial@nongnu.org; Sun, 24 Apr 2016 23:38:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1arxTw-000050-4E
-	for qemu-trivial@nongnu.org; Sun, 17 Apr 2016 20:56:04 -0400
-Received: from [59.151.112.132] (port=1819 helo=heian.cn.fujitsu.com)
+	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1auXLd-00053O-Ag
+	for qemu-trivial@nongnu.org; Sun, 24 Apr 2016 23:38:10 -0400
+Received: from [59.151.112.132] (port=30931 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1arxTq-0008Vy-6o; Sun, 17 Apr 2016 20:55:59 -0400
+	(envelope-from <zhoujie2011@cn.fujitsu.com>)
+	id 1auXLX-0004zJ-7Z; Sun, 24 Apr 2016 23:38:03 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="5679675"
+   d="scan'208";a="5910882"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 18 Apr 2016 08:55:50 +0800
+	by heian.cn.fujitsu.com with ESMTP; 25 Apr 2016 11:37:39 +0800
 Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 71C6142B55E5;
-	Mon, 18 Apr 2016 08:55:49 +0800 (CST)
-Received: from [10.167.225.55] (10.167.225.55) by
+	by cn.fujitsu.com (Postfix) with ESMTP id 48458408D263;
+	Mon, 25 Apr 2016 11:37:34 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.167.226.45) by
 	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.279.2; Mon, 18 Apr 2016 08:55:49 +0800
-Message-ID: <5714314C.8050304@cn.fujitsu.com>
-Date: Mon, 18 Apr 2016 08:58:52 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	Server (TLS) id 14.3.279.2; Mon, 25 Apr 2016 11:37:33 +0800
+From: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <david@gibson.dropbear.id.au>, <qemu-trivial@nongnu.org>, Zhou Jie
+	<zhoujie2011@cn.fujitsu.com>
+Date: Mon, 25 Apr 2016 11:36:06 -0400
+Message-ID: <1461598566-28454-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+X-Mailer: git-send-email 2.5.5
 MIME-Version: 1.0
-To: Max Reitz <mreitz@redhat.com>, qemu devel <qemu-devel@nongnu.org>, qemu
-	trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, Stefan
-	Hajnoczi <stefanha@redhat.com>
-CC: Wen Congyang <wency@cn.fujitsu.com>, Alberto Garcia <berto@igalia.com>
-References: <1460699173-31401-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-	<1460699173-31401-3-git-send-email-xiecl.fnst@cn.fujitsu.com>
-	<5712B87C.5070908@redhat.com>
-In-Reply-To: <5712B87C.5070908@redhat.com>
-Content-Type: text/plain; charset="iso-8859-15"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: 71C6142B55E5.A8913
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.45]
+X-yoursite-MailScanner-ID: 48458408D263.A4975
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: zhoujie2011@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [PATCH v1 2/2] block: remove redundant stats of
- block_acct_start()
+X-Mailman-Approved-At: Mon, 25 Apr 2016 03:31:31 -0400
+Subject: [Qemu-trivial] [PATCH] Added negative check for get_image_size()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,16 +51,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Apr 2016 00:56:05 -0000
+X-List-Received-Date: Mon, 25 Apr 2016 03:38:11 -0000
 
-On 04/17/2016 06:11 AM, Max Reitz wrote:
-> I'd like to say that my inertia is keeping me from applying this patch,
-> but I'd feel like a hypocrite for saying that, considering it would have
-> taken much less time than writing this response...
+This patch adds check for negative return value from get_image_size(),
+where it is missing. It avoids unnecessary two function calls.
 
-Pls feel free to ignore this patch, i just went through kevin's patch 
-"qemu-io: Support 'aio_write -z'", and found the first parameter of 
-block_acct_start() is never used ...
+Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+---
+ hw/ppc/spapr.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index feaab08..ccea633 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -1842,6 +1842,10 @@ static void ppc_spapr_init(MachineState *machine)
+         exit(1);
+     }
+     spapr->rtas_size = get_image_size(filename);
++    if (spapr->rtas_size < 0) {
++        error_report("Could not get size of LPAR rtas '%s'", filename);
++        exit(1);
++    }
+     spapr->rtas_blob = g_malloc(spapr->rtas_size);
+     if (load_image_size(filename, spapr->rtas_blob, spapr->rtas_size) < 0) {
+         error_report("Could not load LPAR rtas '%s'", filename);
+-- 
+2.5.5
+
 
 
 
