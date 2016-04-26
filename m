@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1av35R-0005jB-JR
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 09:31:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36657)
+	id 1av4Lx-0005vE-8d
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 10:52:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36852)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1aurm4-0002LT-2k
-	for qemu-trivial@nongnu.org; Mon, 25 Apr 2016 21:26:48 -0400
+	(envelope-from <eblake@redhat.com>) id 1av4Lu-0005pG-LF
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 10:52:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1aurm3-0003g8-Cn
-	for qemu-trivial@nongnu.org; Mon, 25 Apr 2016 21:26:48 -0400
-Received: from [59.151.112.132] (port=62161 helo=heian.cn.fujitsu.com)
+	(envelope-from <eblake@redhat.com>) id 1av4Lr-0004uO-FH
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 10:52:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48526)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>)
-	id 1aurly-0003cN-Qg; Mon, 25 Apr 2016 21:26:43 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="5948396"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 26 Apr 2016 09:26:33 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 07EE6408D262;
-	Tue, 26 Apr 2016 09:26:28 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.167.226.45) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Tue, 26 Apr 2016 09:26:27 +0800
-From: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <jasowang@redhat.com>, <qemu-trivial@nongnu.org>, Zhou Jie
-	<zhoujie2011@cn.fujitsu.com>
-Date: Tue, 26 Apr 2016 09:26:01 +0800
-Message-ID: <1461633961-31713-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-X-Mailer: git-send-email 2.5.5
+	(envelope-from <eblake@redhat.com>)
+	id 1av4Li-0004ry-7F; Tue, 26 Apr 2016 10:52:26 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B0DE719F3A9;
+	Tue, 26 Apr 2016 14:52:25 +0000 (UTC)
+Received: from [10.3.113.21] (ovpn-113-21.phx2.redhat.com [10.3.113.21])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3QEqOH5027803; Tue, 26 Apr 2016 10:52:25 -0400
+To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+References: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-block@nongnu.org,
+	mreitz@redhat.com
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <571F80A8.1040802@redhat.com>
+Date: Tue, 26 Apr 2016 08:52:24 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.45]
-X-yoursite-MailScanner-ID: 07EE6408D262.A6D2B
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: zhoujie2011@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Tue, 26 Apr 2016 09:31:31 -0400
-Subject: [Qemu-trivial] [PATCH] net/tap: Allocating Large sized arrays to
- heap
+In-Reply-To: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="X9Cl7UJTIdQeU6bPE0iXRfTsQHGj659IM"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] iotests: fix the
+ redirection order in 083
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,43 +53,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2016 01:26:49 -0000
+X-List-Received-Date: Tue, 26 Apr 2016 14:52:39 -0000
 
-net_init_tap has a huge stack usage of 8192 bytes approx.
-Moving large arrays to heap to reduce stack usage.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--X9Cl7UJTIdQeU6bPE0iXRfTsQHGj659IM
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
----
- net/tap.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+On 04/26/2016 04:13 AM, Wei Jiangang wrote:
+> It should redirect stdout to /dev/null first,
+> then redirect stderr to whatever stdout currently points at.
+>=20
+> Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+> ---
+>  tests/qemu-iotests/083 | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/net/tap.c b/net/tap.c
-index 740e8a2..49817c7 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -769,8 +769,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
-             return -1;
-         }
-     } else if (tap->has_fds) {
--        char *fds[MAX_TAP_QUEUES];
--        char *vhost_fds[MAX_TAP_QUEUES];
-+        char **fds = g_new(char *, MAX_TAP_QUEUES);
-+        char **vhost_fds = g_new(char *, MAX_TAP_QUEUES);
-         int nfds, nvhosts;
- 
-         if (tap->has_ifname || tap->has_script || tap->has_downscript ||
-@@ -818,6 +818,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
-                 return -1;
-             }
-         }
-+        g_free(fds);
-+        g_free(vhost_fds);
-     } else if (tap->has_helper) {
-         if (tap->has_ifname || tap->has_script || tap->has_downscript ||
-             tap->has_vnet_hdr || tap->has_queues || tap->has_vhostfds) {
--- 
-2.5.5
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--X9Cl7UJTIdQeU6bPE0iXRfTsQHGj659IM
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJXH4CoAAoJEKeha0olJ0NqqLUH/3bARiqcyD9KWyG/PpUaP0Ce
+Mnn5KCdtVgBWrmPG26Q8kFpAEAIiC6qxRkWoeQcpmdtKm6zfqZ1yhGzkqy6+EbsL
+soaYM7nhwevK6Uvsq21rRICCNpjvP2v5vxcLV2TC/5moW9xn1T3wfbhMekn82FVh
+FJDGeLAm7ODt47dlYLc9mqhzc8Bqr4KH65B0eE5cRLShUJQ+TcZallA4LsemxoTK
+e9Nhpcd9wL07YsYRbV0czmIbs3j+ZeCWtbzr79tfiTkWuoVj8rrdFO+j1dxE/Pcy
+vi8tCzGP6bMMTxsW4kPf5DJS7kkaUstc1M/2vY5K0v447I9pW/1jgmOVKjMMveA=
+=EyOg
+-----END PGP SIGNATURE-----
+
+--X9Cl7UJTIdQeU6bPE0iXRfTsQHGj659IM--
 
