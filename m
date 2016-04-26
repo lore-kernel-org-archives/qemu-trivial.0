@@ -1,63 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1auygU-0001GP-DA
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 04:49:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50588)
+	id 1auzzm-0008FC-Bz
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 06:13:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45228)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auygP-00017t-8g
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:49:29 -0400
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1auzzi-00089W-Ow
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 06:13:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auygM-00020a-1Y
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:49:25 -0400
-Received: from e06smtp05.uk.ibm.com ([195.75.94.101]:46661)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1auzzh-0007BL-PW
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 06:13:26 -0400
+Received: from [59.151.112.132] (port=31234 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auygL-00020Q-Nr
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:49:21 -0400
-Received: from localhost
-	by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
-	Tue, 26 Apr 2016 09:49:19 +0100
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 26 Apr 2016 09:49:17 +0100
-X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
-X-IBM-MailFrom: borntraeger@de.ibm.com
-X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
-	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id E432D17D8063; 
-	Tue, 26 Apr 2016 09:50:06 +0100 (BST)
-Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
-	[9.149.37.250])
-	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u3Q8nGt16095112; Tue, 26 Apr 2016 08:49:16 GMT
-Received: from d06av09.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u3Q8nGkr008175; Tue, 26 Apr 2016 02:49:16 -0600
-Received: from oc1450873852.ibm.com (dyn-9-152-224-38.boeblingen.de.ibm.com
-	[9.152.224.38])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u3Q8nF0j008153; Tue, 26 Apr 2016 02:49:16 -0600
-To: Zhou Jie <zhoujie2011@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1461657924-1933-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Message-ID: <571F2B8B.8030505@de.ibm.com>
-Date: Tue, 26 Apr 2016 10:49:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.0
+	(envelope-from <weijg.fnst@cn.fujitsu.com>)
+	id 1auzze-00079P-7v; Tue, 26 Apr 2016 06:13:22 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="5968301"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 26 Apr 2016 18:13:20 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id 01C834219163;
+	Tue, 26 Apr 2016 18:13:17 +0800 (CST)
+Received: from localhost.localdomain (10.167.226.50) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Tue, 26 Apr 2016 18:13:16 +0800
+From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <kwolf@redhat.com>, <mreitz@redhat.com>, <armbru@redhat.com>,
+	<qemu-trivial@nongnu.org>, <qemu-block@nongnu.org>, Wei Jiangang
+	<weijg.fnst@cn.fujitsu.com>
+Date: Tue, 26 Apr 2016 18:12:43 +0800
+Message-ID: <1461665563-14831-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
-In-Reply-To: <1461657924-1933-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16042608-0021-0000-0000-000019B141D2
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.101
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/virtio-net:
- Allocating Large sized arrays to heap
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.50]
+X-yoursite-MailScanner-ID: 01C834219163.ACF4E
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [Qemu-devel][PATCH] block: Fix typo in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,93 +51,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2016 08:49:29 -0000
+X-List-Received-Date: Tue, 26 Apr 2016 10:13:28 -0000
 
-On 04/26/2016 10:05 AM, Zhou Jie wrote:
-> virtio_net_flush_tx has a huge stack usage of 16392 bytes approx.
-> Moving large arrays to heap to reduce stack usage.
-> 
-> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-> ---
->  hw/net/virtio-net.c | 15 +++++++++++----
->  1 file changed, 11 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index 5798f87..cab7bbc 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -1213,6 +1213,7 @@ static int32_t virtio_net_flush_tx(VirtIONetQueue *q)
->      VirtIONet *n = q->n;
->      VirtIODevice *vdev = VIRTIO_DEVICE(n);
->      VirtQueueElement *elem;
-> +    struct iovec *sg = NULL, *sg2 = NULL;
->      int32_t num_packets = 0;
->      int queue_index = vq2q(virtio_get_queue_index(q->tx_vq));
->      if (!(vdev->status & VIRTIO_CONFIG_S_DRIVER_OK)) {
-> @@ -1224,10 +1225,12 @@ static int32_t virtio_net_flush_tx(VirtIONetQueue *q)
->          return num_packets;
->      }
-> 
-> +    sg = g_new(struct iovec, VIRTQUEUE_MAX_SIZE);
-> +    sg2 = g_new(struct iovec, VIRTQUEUE_MAX_SIZE + 1);
+s/imlement/implement/
+
+Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+---
+ blockdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/blockdev.c b/blockdev.c
+index f1f520a..f74eb43 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -73,7 +73,7 @@ static int if_max_devs[IF_COUNT] = {
+      * Do not change these numbers!  They govern how drive option
+      * index maps to unit and bus.  That mapping is ABI.
+      *
+-     * All controllers used to imlement if=T drives need to support
++     * All controllers used to implement if=T drives need to support
+      * if_max_devs[T] units, for any T with if_max_devs[T] != 0.
+      * Otherwise, some index values map to "impossible" bus, unit
+      * values.
+-- 
+1.9.3
 
 
-As I said in another mail, 16k is usually perfectly fine for a userspace
-stack and doing allocations in a hot path might actually hurt performance.
-
-Unless we have a real problem (e.g. very long call stack on a small thread 
-stack) I would prefer to not change this.
-Do you have seen a real problem due to this?
-
-
-
->      for (;;) {
->          ssize_t ret;
->          unsigned int out_num;
-> -        struct iovec sg[VIRTQUEUE_MAX_SIZE], sg2[VIRTQUEUE_MAX_SIZE + 1], *out_sg;
-> +        struct iovec *out_sg;
->          struct virtio_net_hdr_mrg_rxbuf mhdr;
-> 
->          elem = virtqueue_pop(q->tx_vq, sizeof(VirtQueueElement));
-> @@ -1252,7 +1255,7 @@ static int32_t virtio_net_flush_tx(VirtIONetQueue *q)
->                  virtio_net_hdr_swap(vdev, (void *) &mhdr);
->                  sg2[0].iov_base = &mhdr;
->                  sg2[0].iov_len = n->guest_hdr_len;
-> -                out_num = iov_copy(&sg2[1], ARRAY_SIZE(sg2) - 1,
-> +                out_num = iov_copy(&sg2[1], VIRTQUEUE_MAX_SIZE,
->                                     out_sg, out_num,
->                                     n->guest_hdr_len, -1);
->                  if (out_num == VIRTQUEUE_MAX_SIZE) {
-> @@ -1269,10 +1272,10 @@ static int32_t virtio_net_flush_tx(VirtIONetQueue *q)
->           */
->          assert(n->host_hdr_len <= n->guest_hdr_len);
->          if (n->host_hdr_len != n->guest_hdr_len) {
-> -            unsigned sg_num = iov_copy(sg, ARRAY_SIZE(sg),
-> +            unsigned sg_num = iov_copy(sg, VIRTQUEUE_MAX_SIZE,
->                                         out_sg, out_num,
->                                         0, n->host_hdr_len);
-> -            sg_num += iov_copy(sg + sg_num, ARRAY_SIZE(sg) - sg_num,
-> +            sg_num += iov_copy(sg + sg_num, VIRTQUEUE_MAX_SIZE - sg_num,
->                               out_sg, out_num,
->                               n->guest_hdr_len, -1);
->              out_num = sg_num;
-> @@ -1284,6 +1287,8 @@ static int32_t virtio_net_flush_tx(VirtIONetQueue *q)
->          if (ret == 0) {
->              virtio_queue_set_notification(q->tx_vq, 0);
->              q->async_tx.elem = elem;
-> +            g_free(sg);
-> +            g_free(sg2);
->              return -EBUSY;
->          }
-> 
-> @@ -1296,6 +1301,8 @@ drop:
->              break;
->          }
->      }
-> +    g_free(sg);
-> +    g_free(sg2);
->      return num_packets;
->  }
-> 
 
 
