@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1auxh3-0003dc-9g
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 03:46:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59852)
+	id 1auyXN-00056w-1v
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 04:40:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auxgw-0003Nw-Hx
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 03:45:59 -0400
+	(envelope-from <borntraeger@de.ibm.com>) id 1auyXK-00053e-Ip
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:40:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auxgs-0002XB-LC
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 03:45:54 -0400
-Received: from e06smtp11.uk.ibm.com ([195.75.94.107]:46667)
+	(envelope-from <borntraeger@de.ibm.com>) id 1auyXI-00086A-B4
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:40:02 -0400
+Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:36895)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1auxgs-0002Wk-Az
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 03:45:50 -0400
+	(envelope-from <borntraeger@de.ibm.com>) id 1auyXI-00085r-2w
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 04:40:00 -0400
 Received: from localhost
-	by e06smtp11.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
-	Tue, 26 Apr 2016 08:45:48 +0100
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp11.uk.ibm.com (192.168.101.141) with IBM ESMTP SMTP Gateway:
+	Tue, 26 Apr 2016 09:39:57 +0100
+Received: from d06dlp02.portsmouth.uk.ibm.com (9.149.20.14)
+	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 26 Apr 2016 08:45:44 +0100
-X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
+	Tue, 26 Apr 2016 09:39:53 +0100
+X-IBM-Helo: d06dlp02.portsmouth.uk.ibm.com
 X-IBM-MailFrom: borntraeger@de.ibm.com
 X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
 Received: from b06cxnps3074.portsmouth.uk.ibm.com
 	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id E468317D805A; 
-	Tue, 26 Apr 2016 08:46:33 +0100 (BST)
-Received: from d06av03.portsmouth.uk.ibm.com (d06av03.portsmouth.uk.ibm.com
-	[9.149.37.213])
+	by d06dlp02.portsmouth.uk.ibm.com (Postfix) with ESMTP id BDA662190067; 
+	Tue, 26 Apr 2016 09:39:29 +0100 (BST)
+Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
+	[9.149.37.249])
 	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u3Q7jhLG60882972; Tue, 26 Apr 2016 07:45:43 GMT
-Received: from d06av03.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av03.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u3Q7jgVf000858; Tue, 26 Apr 2016 01:45:43 -0600
+	ESMTP id u3Q8dqeg7864818; Tue, 26 Apr 2016 08:39:52 GMT
+Received: from d06av08.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u3Q8dqTr020464; Tue, 26 Apr 2016 02:39:52 -0600
 Received: from oc1450873852.ibm.com (dyn-9-152-224-38.boeblingen.de.ibm.com
 	[9.152.224.38])
-	by d06av03.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u3Q7jeUh000709; Tue, 26 Apr 2016 01:45:40 -0600
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u3Q8dpaf020442; Tue, 26 Apr 2016 02:39:51 -0600
 To: Zhou Jie <zhoujie2011@cn.fujitsu.com>, qemu-devel@nongnu.org
 References: <1461633961-31713-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+	<571F1CA4.70306@de.ibm.com> <571F262A.3020705@cn.fujitsu.com>
 Cc: qemu-trivial@nongnu.org, jasowang@redhat.com
 From: Christian Borntraeger <borntraeger@de.ibm.com>
-Message-ID: <571F1CA4.70306@de.ibm.com>
-Date: Tue, 26 Apr 2016 09:45:40 +0200
+Message-ID: <571F2957.8050805@de.ibm.com>
+Date: Tue, 26 Apr 2016 10:39:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.7.0
 MIME-Version: 1.0
-In-Reply-To: <1461633961-31713-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <571F262A.3020705@cn.fujitsu.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16042607-0041-0000-0000-0000167A2FDF
+x-cbid: 16042608-0017-0000-0000-0000170E3522
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.107
+X-Received-From: 195.75.94.110
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net/tap: Allocating Large
  sized arrays to heap
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,53 +70,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2016 07:46:00 -0000
+X-List-Received-Date: Tue, 26 Apr 2016 08:40:03 -0000
 
-On 04/26/2016 03:26 AM, Zhou Jie wrote:
-> net_init_tap has a huge stack usage of 8192 bytes approx.
-> Moving large arrays to heap to reduce stack usage.
+On 04/26/2016 10:26 AM, Zhou Jie wrote:
+> On 2016/4/26 15:45, Christian Borntraeger wrote:
+>> On 04/26/2016 03:26 AM, Zhou Jie wrote:
+>>> net_init_tap has a huge stack usage of 8192 bytes approx.
+>>> Moving large arrays to heap to reduce stack usage.
+>>
+>> I am wondering. Why is 8k a problem for a user space program?
+> For 64bit machine it will be 16k.
 
-I am wondering. Why is 8k a problem for a user space program? 
-
-Please note that malloc/new like allocations are much more expensive
-than stack allocation in terms of performance. This does not matter
-here, but in your other patch that deals with the xmit function, I would
-not be surprised if that actually harms performance.
-
-Christian
-
-
+Even that does not matter. The userspace stack is on most Linuxes 
+somewhere between 8MB and unlimited. Reducing stack usage makes 
+sense for the kernel as the kernel stack is limited to 8k or 16k.
+For userspace it does also make sense for things like thread stacks 
+or coroutines, where we have a much smaller stack (well, still 1MB 
+for coroutines as of today) and if we are not on a hot path.
+Regarding hot pathes: There is a reason why people use jemalloc or 
+tcmalloc. The allocators try to use per-thread arena, but still each
+allocation might cause significant cross cpu/thread traffic. And 
+having a allocator that scales well across many CPUs is not trivial.
 
 > 
-> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-> ---
->  net/tap.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>> Please note that malloc/new like allocations are much more expensive
+>> than stack allocation in terms of performance. This does not matter
+>> here, but in your other patch that deals with the xmit function, I would
+>> not be surprised if that actually harms performance.
+> OK. I will note it.
 > 
-> diff --git a/net/tap.c b/net/tap.c
-> index 740e8a2..49817c7 100644
-> --- a/net/tap.c
-> +++ b/net/tap.c
-> @@ -769,8 +769,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
->              return -1;
->          }
->      } else if (tap->has_fds) {
-> -        char *fds[MAX_TAP_QUEUES];
-> -        char *vhost_fds[MAX_TAP_QUEUES];
-> +        char **fds = g_new(char *, MAX_TAP_QUEUES);
-> +        char **vhost_fds = g_new(char *, MAX_TAP_QUEUES);
->          int nfds, nvhosts;
+> Sincerely,
+> Zhou Jie
 > 
->          if (tap->has_ifname || tap->has_script || tap->has_downscript ||
-> @@ -818,6 +818,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
->                  return -1;
->              }
->          }
-> +        g_free(fds);
-> +        g_free(vhost_fds);
->      } else if (tap->has_helper) {
->          if (tap->has_ifname || tap->has_script || tap->has_downscript ||
->              tap->has_vnet_hdr || tap->has_queues || tap->has_vhostfds) {
+>>
+>> Christian
+>>
+>>
+>>
+>>>
+>>> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+>>> ---
+>>>   net/tap.c | 6 ++++--
+>>>   1 file changed, 4 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/net/tap.c b/net/tap.c
+>>> index 740e8a2..49817c7 100644
+>>> --- a/net/tap.c
+>>> +++ b/net/tap.c
+>>> @@ -769,8 +769,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>>>               return -1;
+>>>           }
+>>>       } else if (tap->has_fds) {
+>>> -        char *fds[MAX_TAP_QUEUES];
+>>> -        char *vhost_fds[MAX_TAP_QUEUES];
+>>> +        char **fds = g_new(char *, MAX_TAP_QUEUES);
+>>> +        char **vhost_fds = g_new(char *, MAX_TAP_QUEUES);
+>>>           int nfds, nvhosts;
+>>>
+>>>           if (tap->has_ifname || tap->has_script || tap->has_downscript ||
+>>> @@ -818,6 +818,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>>>                   return -1;
+>>>               }
+>>>           }
+>>> +        g_free(fds);
+>>> +        g_free(vhost_fds);
+>>>       } else if (tap->has_helper) {
+>>>           if (tap->has_ifname || tap->has_script || tap->has_downscript ||
+>>>               tap->has_vnet_hdr || tap->has_queues || tap->has_vhostfds) {
+>>>
+>>
+>>
+>>
+>>
 > 
 
 
