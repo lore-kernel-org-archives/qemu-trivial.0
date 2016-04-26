@@ -1,55 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1auuMI-0003jc-5i
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 00:12:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41837)
+	id 1auxCU-0000xv-4R
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 03:14:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50495)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1auuMG-0003gn-11
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 00:12:20 -0400
+	(envelope-from <jasowang@redhat.com>) id 1auxCR-0000tb-LW
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 03:14:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1auuMF-0007EE-9I
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 00:12:19 -0400
-Received: from mail-ig0-x229.google.com ([2607:f8b0:4001:c05::229]:37561)
+	(envelope-from <jasowang@redhat.com>) id 1auxCQ-0004Fb-Ly
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 03:14:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59788)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>)
-	id 1auuMF-0007E7-3s; Tue, 26 Apr 2016 00:12:19 -0400
-Received: by mail-ig0-x229.google.com with SMTP id g8so5219864igr.0;
-	Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=jJAQzqImlazZoi/id8uYEWfA+53swOTP+jjPkOPUFMc=;
-	b=FMgfMR0WadKIFv6lGIGZFQihCIecf4oBGi1O2qF83eOxctcO7LUwU39i11y5Mgkbrr
-	3od0bk5JEADvJXRjUj1zP4IQtnUieyG892Jd1M37qVebwMxnqo0Gtc8PYfv02a5H7rev
-	Ww+E6GM1je8qa+VhkiQ59axhZDSJBbmZ7vPUogEq5W/cwX3a1mViJXRHO7Hn4oXm2EQ+
-	BIwE4I0q7j9E5sZjBNm5+jnPbA3Je+vfqxgYkP1oo0N4l/Vx2N+BjILrvMppqvTeLu3t
-	zYRor2AZJFSosNrUxi/+PO3VM3N5wjDrdRXWtdyKKv59CkxdQPrFyw4T+vwakqKJ2TT+
-	+hDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=jJAQzqImlazZoi/id8uYEWfA+53swOTP+jjPkOPUFMc=;
-	b=Pj5KbhrnwzzcQBhUZQTnM0PjaJpjvZkWwbszSuvmQCvLVjk+B0USD4nSx8fP3hPN+8
-	7Qlsg/2OqDhopj0GSyv0E8N/zMD5wwaCzhrbYtSKabDgDFJRxJuDDdwpIx3HC4KZ0c2I
-	+d2AzQnh0LrVL1whMIUSyKwn2JSXWTVnNHIBwQjw9THnUkQLePXh1kwmbIEcRgst+9hW
-	D14dckDkD2pdbbQvs9CgsOlksOrcYgru+WcmnJwcB77L3KSSd+/hBnzCiKc0HlYvN7QV
-	3nCp/LR+zQwm1a0ZrEMPn0qyujY8ubqx96r3Wz/jngxeRFR6QctcjHXmJrd1cvmaqvS5
-	1WtQ==
-X-Gm-Message-State: AOPr4FWMKnbOKmX0I/dxNBrxCufXGZnMy++isJ74akE0AvFTUwIG8E5jT4zRw+ucc9mS5yiIYyQ7WnuBZro9lQ==
+	(envelope-from <jasowang@redhat.com>)
+	id 1auxCL-0004F5-32; Tue, 26 Apr 2016 03:14:17 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2D4A23455AE;
+	Tue, 26 Apr 2016 07:14:16 +0000 (UTC)
+Received: from [10.72.5.164] (vpn1-5-164.pek2.redhat.com [10.72.5.164])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3Q7ECEM020225
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 26 Apr 2016 03:14:14 -0400
+To: Zhou Jie <zhoujie2011@cn.fujitsu.com>, qemu-devel@nongnu.org
+References: <1461633961-31713-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+Cc: qemu-trivial@nongnu.org
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <571F1544.2090109@redhat.com>
+Date: Tue, 26 Apr 2016 15:14:12 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-X-Received: by 10.50.186.163 with SMTP id fl3mr10224798igc.27.1461643938281;
-	Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
-Received: by 10.50.103.225 with HTTP; Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
-In-Reply-To: <1461641713-32720-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-References: <1461641713-32720-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-Date: Tue, 26 Apr 2016 07:12:18 +0300
-Message-ID: <CAMo8BfL=dAerS7LYPwFCf2xr+Zh4S5KUqFRFEPx-zm=N7GueaQ@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1461633961-31713-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::229
-Subject: Re: [Qemu-trivial] [PATCH] hw/net/opencores_eth: Allocating Large
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net/tap: Allocating Large
  sized arrays to heap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -62,21 +51,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2016 04:12:21 -0000
+X-List-Received-Date: Tue, 26 Apr 2016 07:14:24 -0000
 
-Hi Zhou,
 
-On Tue, Apr 26, 2016 at 6:35 AM, Zhou Jie <zhoujie2011@cn.fujitsu.com> wrote:
-> open_eth_start_xmit has a huge stack usage of 65536 bytes approx.
+
+On 04/26/2016 09:26 AM, Zhou Jie wrote:
+> net_init_tap has a huge stack usage of 8192 bytes approx.
 > Moving large arrays to heap to reduce stack usage.
+>
+> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+> ---
+>  net/tap.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/net/tap.c b/net/tap.c
+> index 740e8a2..49817c7 100644
+> --- a/net/tap.c
+> +++ b/net/tap.c
+> @@ -769,8 +769,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>              return -1;
+>          }
+>      } else if (tap->has_fds) {
+> -        char *fds[MAX_TAP_QUEUES];
+> -        char *vhost_fds[MAX_TAP_QUEUES];
+> +        char **fds = g_new(char *, MAX_TAP_QUEUES);
+> +        char **vhost_fds = g_new(char *, MAX_TAP_QUEUES);
+>          int nfds, nvhosts;
+>  
+>          if (tap->has_ifname || tap->has_script || tap->has_downscript ||
+> @@ -818,6 +818,8 @@ int net_init_tap(const NetClientOptions *opts, const char *name,
+>                  return -1;
+>              }
+>          }
+> +        g_free(fds);
+> +        g_free(vhost_fds);
+>      } else if (tap->has_helper) {
+>          if (tap->has_ifname || tap->has_script || tap->has_downscript ||
+>              tap->has_vnet_hdr || tap->has_queues || tap->has_vhostfds) {
 
-It's an exception, not the rule when full 65536 byte long buffer might be
-needed. Can we do a little better change and not allocate and free this
-buffer every time unconditionally, but instead make buf smaller (1536
-bytes, maximal frame length when HUGEN bit is not set in MODER)
-and only do allocation when that's not enough?
+Apply to net-next.
 
--- 
-Thanks.
--- Max
+Thanks
 
