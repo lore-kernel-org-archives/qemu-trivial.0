@@ -1,41 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ausLo-0003aU-Qv
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Apr 2016 22:03:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42741)
+	id 1auuMI-0003jc-5i
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 00:12:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41837)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ausLl-0003Sn-VC
-	for qemu-trivial@nongnu.org; Mon, 25 Apr 2016 22:03:42 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1auuMG-0003gn-11
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 00:12:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ausLi-0003P3-PW
-	for qemu-trivial@nongnu.org; Mon, 25 Apr 2016 22:03:41 -0400
-Received: from ozlabs.org ([103.22.144.67]:44067)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1auuMF-0007EE-9I
+	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 00:12:19 -0400
+Received: from mail-ig0-x229.google.com ([2607:f8b0:4001:c05::229]:37561)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ausLi-0003Ol-F1
-	for qemu-trivial@nongnu.org; Mon, 25 Apr 2016 22:03:38 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3qv5wh2Bqsz9t6s; Tue, 26 Apr 2016 12:03:32 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1461636212;
-	bh=SDFvECckm+cgkebJE5eaC7BMLEKDLFb9yWzaCLqmnpk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XYS9eU+Qt4BkeI/JLXtZYBlIR+QW4mDdDZqlJcrJFR/FhfLQz9uuc4a4Y9kW0cVao
-	ZV2xcAg1+LggbMrGB1DIQx7d99nLKbGc5Ba0pzpEvmZ+A1a8sj4yCQ4BQ6NOBJa6bN
-	L6xj2hgCoqNPlIC2OxjXH8fbU8QakymrENEKU1HI=
-Date: Tue, 26 Apr 2016 12:02:30 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20160426020230.GH15176@voom.fritz.box>
-References: <1461598566-28454-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+	(envelope-from <jcmvbkbc@gmail.com>)
+	id 1auuMF-0007E7-3s; Tue, 26 Apr 2016 00:12:19 -0400
+Received: by mail-ig0-x229.google.com with SMTP id g8so5219864igr.0;
+	Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc; bh=jJAQzqImlazZoi/id8uYEWfA+53swOTP+jjPkOPUFMc=;
+	b=FMgfMR0WadKIFv6lGIGZFQihCIecf4oBGi1O2qF83eOxctcO7LUwU39i11y5Mgkbrr
+	3od0bk5JEADvJXRjUj1zP4IQtnUieyG892Jd1M37qVebwMxnqo0Gtc8PYfv02a5H7rev
+	Ww+E6GM1je8qa+VhkiQ59axhZDSJBbmZ7vPUogEq5W/cwX3a1mViJXRHO7Hn4oXm2EQ+
+	BIwE4I0q7j9E5sZjBNm5+jnPbA3Je+vfqxgYkP1oo0N4l/Vx2N+BjILrvMppqvTeLu3t
+	zYRor2AZJFSosNrUxi/+PO3VM3N5wjDrdRXWtdyKKv59CkxdQPrFyw4T+vwakqKJ2TT+
+	+hDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc;
+	bh=jJAQzqImlazZoi/id8uYEWfA+53swOTP+jjPkOPUFMc=;
+	b=Pj5KbhrnwzzcQBhUZQTnM0PjaJpjvZkWwbszSuvmQCvLVjk+B0USD4nSx8fP3hPN+8
+	7Qlsg/2OqDhopj0GSyv0E8N/zMD5wwaCzhrbYtSKabDgDFJRxJuDDdwpIx3HC4KZ0c2I
+	+d2AzQnh0LrVL1whMIUSyKwn2JSXWTVnNHIBwQjw9THnUkQLePXh1kwmbIEcRgst+9hW
+	D14dckDkD2pdbbQvs9CgsOlksOrcYgru+WcmnJwcB77L3KSSd+/hBnzCiKc0HlYvN7QV
+	3nCp/LR+zQwm1a0ZrEMPn0qyujY8ubqx96r3Wz/jngxeRFR6QctcjHXmJrd1cvmaqvS5
+	1WtQ==
+X-Gm-Message-State: AOPr4FWMKnbOKmX0I/dxNBrxCufXGZnMy++isJ74akE0AvFTUwIG8E5jT4zRw+ucc9mS5yiIYyQ7WnuBZro9lQ==
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="nFBW6CQlri5Qm8JQ"
-Content-Disposition: inline
-In-Reply-To: <1461598566-28454-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Received: by 10.50.186.163 with SMTP id fl3mr10224798igc.27.1461643938281;
+	Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
+Received: by 10.50.103.225 with HTTP; Mon, 25 Apr 2016 21:12:18 -0700 (PDT)
+In-Reply-To: <1461641713-32720-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+References: <1461641713-32720-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+Date: Tue, 26 Apr 2016 07:12:18 +0300
+Message-ID: <CAMo8BfL=dAerS7LYPwFCf2xr+Zh4S5KUqFRFEPx-zm=N7GueaQ@mail.gmail.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+To: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] Added negative check for get_image_size()
+X-Received-From: 2607:f8b0:4001:c05::229
+Subject: Re: [Qemu-trivial] [PATCH] hw/net/opencores_eth: Allocating Large
+ sized arrays to heap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,69 +62,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Apr 2016 02:03:43 -0000
+X-List-Received-Date: Tue, 26 Apr 2016 04:12:21 -0000
 
+Hi Zhou,
 
---nFBW6CQlri5Qm8JQ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Tue, Apr 26, 2016 at 6:35 AM, Zhou Jie <zhoujie2011@cn.fujitsu.com> wrote:
+> open_eth_start_xmit has a huge stack usage of 65536 bytes approx.
+> Moving large arrays to heap to reduce stack usage.
 
-On Mon, Apr 25, 2016 at 11:36:06AM -0400, Zhou Jie wrote:
-> This patch adds check for negative return value from get_image_size(),
-> where it is missing. It avoids unnecessary two function calls.
->=20
-> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+It's an exception, not the rule when full 65536 byte long buffer might be
+needed. Can we do a little better change and not allocate and free this
+buffer every time unconditionally, but instead make buf smaller (1536
+bytes, maximal frame length when HUGEN bit is not set in MODER)
+and only do allocation when that's not enough?
 
-Applied to ppc-for-2.7, thanks.
-
-> ---
->  hw/ppc/spapr.c | 4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index feaab08..ccea633 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -1842,6 +1842,10 @@ static void ppc_spapr_init(MachineState *machine)
->          exit(1);
->      }
->      spapr->rtas_size =3D get_image_size(filename);
-> +    if (spapr->rtas_size < 0) {
-> +        error_report("Could not get size of LPAR rtas '%s'", filename);
-> +        exit(1);
-> +    }
->      spapr->rtas_blob =3D g_malloc(spapr->rtas_size);
->      if (load_image_size(filename, spapr->rtas_blob, spapr->rtas_size) < =
-0) {
->          error_report("Could not load LPAR rtas '%s'", filename);
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---nFBW6CQlri5Qm8JQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJXHsw2AAoJEGw4ysog2bOS7xMP/jTnj1ApBTpEMAL4VSvuqTLM
-Fh6TLQm02PgxXmXVaL6PNc99uZ6xAbOApJV919zc73w8T6UlMY0XlXx8UF8TuIGs
-YR1l2xzBWjl/MqatME734//+yiCnns52KX+Qv5uQ8SY3Y3OxgwtSJmB9nWpWI//I
-HGI/6Posm2MzZb53l5HaVbOUMzb66c+x6Fk0QjCa9X1REhELe6REg4ng0c555BB6
-TNxJAjRzqS30qCibmyfy3YfSFQRV9qMlI/fbhgRAvb3xig7/GVshgOtQ0waq1H7O
-m6+5EPSkJ6jDDPq74Vy8VvnDCW/rjNPjUqp3NVuOdt8uLKd5d235PApcOUiIfzkr
-kndXcUY84wdR3IP8IYU1DOXhzpWavU34Ur7hK/CzQhw4aD1qxNGIPlzaKqo1clwu
-CyFkBLFUZqHTJZpx0zEcRliNGPmctAIVrP8DbH51QiFy6UYG5vWEhDIsuQ3WMTVg
-LQQyoLUDlXDxirufKNmOEXUzIOQ/j3/sn3gdcYlk/MdPHzymZ1CKis/TIwly2YJc
-K9pUbJOi4crAL3qSLIF8C0K27hlum0+D7SmL6FX+ehIX2vzRMA9gW5yCNFZ9d5w/
-4Ht5v/8PubmUgFmtvST2ZWzmeeo/T8tovZ6R84BFXgb2BEotdmSWNRpWslwejwQQ
-XU+6Rvg1thFZJUugVWoP
-=v+4P
------END PGP SIGNATURE-----
-
---nFBW6CQlri5Qm8JQ--
+-- 
+Thanks.
+-- Max
 
