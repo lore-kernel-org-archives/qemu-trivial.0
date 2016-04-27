@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1avDtW-0002P3-Bv
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Apr 2016 21:03:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55409)
+	id 1avNJ0-0002Qb-RR
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Apr 2016 07:06:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39225)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1avDtT-0002KC-KO
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 21:03:56 -0400
+	(envelope-from <mreitz@redhat.com>) id 1avNIt-0002C0-Bs
+	for qemu-trivial@nongnu.org; Wed, 27 Apr 2016 07:06:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>) id 1avDtS-000622-PV
-	for qemu-trivial@nongnu.org; Tue, 26 Apr 2016 21:03:55 -0400
-Received: from [59.151.112.132] (port=9463 helo=heian.cn.fujitsu.com)
+	(envelope-from <mreitz@redhat.com>) id 1avNIs-0005Jn-Aq
+	for qemu-trivial@nongnu.org; Wed, 27 Apr 2016 07:06:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45567)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhoujie2011@cn.fujitsu.com>)
-	id 1avDtN-000619-GC; Tue, 26 Apr 2016 21:03:50 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="5991129"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 27 Apr 2016 09:03:44 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 873EB42AC851;
-	Wed, 27 Apr 2016 09:03:42 +0800 (CST)
-Received: from [10.167.226.49] (10.167.226.49) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.279.2; Wed, 27 Apr 2016 09:03:42 +0800
-To: Max Filippov <jcmvbkbc@gmail.com>
-References: <1461641713-32720-1-git-send-email-zhoujie2011@cn.fujitsu.com>
-	<CAMo8BfL=dAerS7LYPwFCf2xr+Zh4S5KUqFRFEPx-zm=N7GueaQ@mail.gmail.com>
-CC: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-From: Zhou Jie <zhoujie2011@cn.fujitsu.com>
-Message-ID: <57200FE9.3080808@cn.fujitsu.com>
-Date: Wed, 27 Apr 2016 09:03:37 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	(envelope-from <mreitz@redhat.com>)
+	id 1avNIl-0005HU-5R; Wed, 27 Apr 2016 07:06:39 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 770264DAF8;
+	Wed, 27 Apr 2016 11:06:38 +0000 (UTC)
+Received: from [10.36.116.94] (ovpn-116-94.ams2.redhat.com [10.36.116.94])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3RB6Z1j005663
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 27 Apr 2016 07:06:37 -0400
+To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+References: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-block@nongnu.org
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <57209D3B.3040707@redhat.com>
+Date: Wed, 27 Apr 2016 13:06:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.7.2
 MIME-Version: 1.0
-In-Reply-To: <CAMo8BfL=dAerS7LYPwFCf2xr+Zh4S5KUqFRFEPx-zm=N7GueaQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-yoursite-MailScanner-ID: 873EB42AC851.AC9DA
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: zhoujie2011@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [PATCH] hw/net/opencores_eth: Allocating Large
- sized arrays to heap
+In-Reply-To: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="iKw6fHQMgv7ui2ldUeUKHUO3qxpcSha7o"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH] iotests: fix the redirection
+ order in 083
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,38 +52,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Apr 2016 01:03:56 -0000
+X-List-Received-Date: Wed, 27 Apr 2016 11:06:53 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--iKw6fHQMgv7ui2ldUeUKHUO3qxpcSha7o
+Content-Type: multipart/mixed; boundary="pqKpck5lOQe4DfuLCsKh1MBKWbJdSIPWq"
+From: Max Reitz <mreitz@redhat.com>
+To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <57209D3B.3040707@redhat.com>
+Subject: Re: [Qemu-devel][PATCH] iotests: fix the redirection order in 083
+References: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+In-Reply-To: <1461665601-14908-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+
+--pqKpck5lOQe4DfuLCsKh1MBKWbJdSIPWq
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: quoted-printable
+
+On 26.04.2016 12:13, Wei Jiangang wrote:
+> It should redirect stdout to /dev/null first,
+> then redirect stderr to whatever stdout currently points at.
+>=20
+> Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+> ---
+>  tests/qemu-iotests/083 | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Thanks, applied to my block-next tree:
+
+https://github.com/XanClic/qemu/commits/block-next
+
+Max
 
 
-On 2016/4/26 12:12, Max Filippov wrote:
-> Hi Zhou,
->
-> On Tue, Apr 26, 2016 at 6:35 AM, Zhou Jie <zhoujie2011@cn.fujitsu.com> wrote:
->> open_eth_start_xmit has a huge stack usage of 65536 bytes approx.
->> Moving large arrays to heap to reduce stack usage.
->
-> It's an exception, not the rule when full 65536 byte long buffer might be
-> needed. Can we do a little better change and not allocate and free this
-> buffer every time unconditionally, but instead make buf smaller (1536
-> bytes, maximal frame length when HUGEN bit is not set in MODER)
-> and only do allocation when that's not enough?
->
-Thank you for your suggestion.
-I will modify this patch.
+--pqKpck5lOQe4DfuLCsKh1MBKWbJdSIPWq--
 
-Sincerely,
-Zhou Jie
+--iKw6fHQMgv7ui2ldUeUKHUO3qxpcSha7o
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
--- 
-------------------------------------------------
-周潔
-Dept 1
-No. 6 Wenzhu Road,
-Nanjing, 210012, China
-TEL：+86+25-86630566-8557
-FUJITSU INTERNAL：7998-8557
-E-Mail：zhoujie2011@cn.fujitsu.com
-------------------------------------------------
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
+iQEcBAEBCAAGBQJXIJ07AAoJEDuxQgLoOKytZL4IAIzc15vjB8emXUNeNSdmem4W
+C0ICwI9XR7yL/kVLY84yImIy0iS1eXBbYWhiCzENSzPcTKOCqJ4+qnQl27dpifno
+RNsfpNFHCK1Bj5ElpiSMzmWhn4GU/NPAyuNkpMTMLJW6GPqxAqw6fnFeuW7RSmZa
+1By/okls8yqQ1UYq+0ltNoVTRSrWhhCqL/roJKIrjGzj362FMeEOcZK/dccu5Afw
+w7GK9EHuiFyMYTkH+RAxfjOy2jSTLq5SysWv5bO4geXJKWCISw+DhwRlp1rotDu+
+rYrKBmaAWULUqqF83rsvRbluYagCuSCyupZl37Ge2ALjJNbEO3T9P7WwN0Phgag=
+=O1yD
+-----END PGP SIGNATURE-----
 
+--iKw6fHQMgv7ui2ldUeUKHUO3qxpcSha7o--
 
