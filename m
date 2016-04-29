@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1awC1M-0008Pd-12
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Apr 2016 13:16:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47086)
+	id 1awC1u-0000y2-BL
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Apr 2016 13:16:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47224)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1awC1E-00089b-Dt
-	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 13:16:02 -0400
+	(envelope-from <jano.vesely@gmail.com>) id 1awC1l-0000cR-K1
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 13:16:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1awC13-0000LJ-K5
-	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 13:15:51 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35774)
+	(envelope-from <jano.vesely@gmail.com>) id 1awC1Z-0000T1-WB
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 13:16:24 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33314)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jano.vesely@gmail.com>)
-	id 1awC0k-00007T-06; Fri, 29 Apr 2016 13:15:27 -0400
-Received: by mail-qk0-x241.google.com with SMTP id b63so7766861qkg.2;
-	Fri, 29 Apr 2016 10:14:58 -0700 (PDT)
+	id 1awC1G-0000GT-2o; Fri, 29 Apr 2016 13:15:59 -0400
+Received: by mail-qk0-x241.google.com with SMTP id q184so8535193qkf.0;
+	Fri, 29 Apr 2016 10:15:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:subject:from:to:cc:date:in-reply-to:references
-	:mime-version; bh=+cUixCUjZ6LpLUp9FZ0kGxOoc5xsMAbp3ULJaXeXNZk=;
-	b=mMlED+NRfw2dYspoDoBU3Q7SaVz52u1/zZnzks9aFyrI7SsV/2kgX5Annh7v2Cae67
-	GaznjXhWObp+aFA4kRBtsEB4gp3ErsiGdIjaUIefJ0qQRbPVix/2ITE28pLXXKlq3ouf
-	bRHd2dembIXBWFSVFB0rejBm+pmeOoJv05rs1sWxnHQQpIYtVQT1TnnHEQgSkujmV7w6
-	sTNRZYWunWqAn56JBHFY9kSeL8Em6bsWWhfR4sYUzHsMG2KDCQt3VxENaNF7iOeJtWuP
-	IZ97X8GTO77i05kXr+HKD51JvP2EJe8xrPgTJPbw4oynuNdFHfHQqN6YKmDD8ys/Oyet
-	JMSQ==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=4LNGBwgBSAPJIui/rG+oibbUparMQKPv1pgCMU3myKI=;
+	b=kgjYWJhS0BkV3VyIEGkghaBbwf7ddgsE0JidcDXp0yGEYNXnjGCvbd+tL9tDxlEGz8
+	sdMLXLLiUm25yOoMNsqh3J6aYmv+cJvI01LXUJAa/JdLHtCnxkUwaWaQwrn4WBUqG3x8
+	ow452f4OuTISFr/2zUXnDVvkJcuyzbMv7c58LbstiQ/ulFFCv00UWADRpyE7q9FCqpxx
+	QI1qojPWQKXxr3Noga22ZmYZRBiZMCd8Oex7n/N22DUZBTq0RHwVeDdLNK83qfrPNZHT
+	ERUjsI1Z4JWURPpEpjFThhsEVc3TxQcBY3JJAF7DCRaE3IwZ+zB4BeAQFyt/R2uYHA8A
+	6UPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-	:references:mime-version;
-	bh=+cUixCUjZ6LpLUp9FZ0kGxOoc5xsMAbp3ULJaXeXNZk=;
-	b=VpnUTyF0F6agrRdXWNrccSt0kLvY0dpSAC9e3ux9Nt002gb4smQEai21AS6rQ/VKPV
-	ODEFHeOjorZ53chEmu3vEKb/udwWMe3z9S0WU1KzxjhuVK6iOFvOWo9OLDSh1D+sqxP+
-	eTjmYT0z3SylvGnsvNbyHDHV/7l71Xv2jIwZnBaRWJDjIWjvJBTGKqHvzzDGfrLr/7ku
-	EyYEqqtys3sOBjkWsKABN/hiF/jbvodn/cJnC287GFejDEqWHGmpJxrbwrqAZ0JXPm1I
-	Q31DeYNeTM22evOSY8kRMj6dB2+2SbeXLe0PuZYk+v/gdVcpj15q7sig8EejkJKHJ8vE
-	sjBQ==
-X-Gm-Message-State: AOPr4FUayhL2ufD1Ngd5E66qBaWJOgLRnM0IaEpnxwk7XEfThsZdpyJzfRrfy0DNJuf3pw==
-X-Received: by 10.55.26.31 with SMTP id a31mr20798920qka.23.1461950094487;
-	Fri, 29 Apr 2016 10:14:54 -0700 (PDT)
-Received: from [192.168.233.78] (lawn-gw.rutgers.edu. [128.6.168.245])
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=4LNGBwgBSAPJIui/rG+oibbUparMQKPv1pgCMU3myKI=;
+	b=JxtCC9CvvF0VYO7hbDkrc7WnrxSP/dMkNFFogrQ4k5UwrM2VroSe1XZr3nkC9napNa
+	4N17tAaHg4vaAJKltc+9t1u9J9yaXa2ZkkChVKDrQLCDkYFeBVf7GFeptagqkwXIUlv2
+	gLECYHpOtH1w8HKvERbm5ZTWdFfp7RWuNRfK+PzJdsPSwCDoSPqOPIN5vlLVMVBJh7Vz
+	7yr8rjqsR3Lpyu9WlBe7nmqnU+Ghg6OuBj2MWjbXWS3u8mh1Pn+0zz0lDOTTmPr28cHf
+	sIie4aiPNWJEmnHRploIPzH/F+vsmiY8GAk2aZ+kuXWnA8ZKMxBzRvpPbpM9JubI2c9x
+	dwPg==
+X-Gm-Message-State: AOPr4FXC5hp2Q8mXOe7BYd76LxtGb492l4ebtXL7unCYqZxJWKXap7OPXmh8FJDLNahnGw==
+X-Received: by 10.55.186.132 with SMTP id k126mr21003988qkf.176.1461950126659; 
+	Fri, 29 Apr 2016 10:15:26 -0700 (PDT)
+Received: from ulmo.rutgers.edu (lawn-gw.rutgers.edu. [128.6.168.245])
 	by smtp.gmail.com with ESMTPSA id
-	r18sm4708029qhb.35.2016.04.29.10.14.52
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 29 Apr 2016 10:14:53 -0700 (PDT)
-Message-ID: <1461950091.4285.2.camel@gmail.com>
+	y129sm4722661qka.33.2016.04.29.10.15.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 29 Apr 2016 10:15:25 -0700 (PDT)
 From: Jan Vesely <jano.vesely@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
-	<qemu-trivial@nongnu.org>, Markus Armbruster <armbru@redhat.com>
-Date: Fri, 29 Apr 2016 13:14:51 -0400
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>
+Date: Fri, 29 Apr 2016 13:15:23 -0400
+Message-Id: <1461950123-5498-1-git-send-email-jano.vesely@gmail.com>
+X-Mailer: git-send-email 2.7.4
 In-Reply-To: <CAFEAcA-gYp9TS=JrEGgnP8uwXGuhcUzq5+wgdTDhigTyDNND9w@mail.gmail.com>
-References: <1461935279-30418-1-git-send-email-jano.vesely@gmail.com>
-	<CAFEAcA-yNp8wGnyzMrTu=28g4vYPv-5F-PJ4aeHq8xSnxRZLkA@mail.gmail.com>
-	<5723680D.2050601@weilnetz.de>
-	<CAFEAcA9dHj60vTBm5TG0Ob072U64Vy8A0cGocPg7LNdO=aNqow@mail.gmail.com>
-	<9e437a9d-1725-5e2a-a43d-7952ccdf79ed@weilnetz.de>
-	<CAFEAcA-gYp9TS=JrEGgnP8uwXGuhcUzq5+wgdTDhigTyDNND9w@mail.gmail.com>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-+S2qoxkA572K8Fii/pMM"
-X-Mailer: Evolution 3.18.5.1 
-Mime-Version: 1.0
+References: <CAFEAcA-gYp9TS=JrEGgnP8uwXGuhcUzq5+wgdTDhigTyDNND9w@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [PATCH] configure: Check if struct fsxattr is
+Subject: [Qemu-trivial] [PATCH v2] configure: Check if struct fsxattr is
  available from linux header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -74,74 +70,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Apr 2016 17:16:02 -0000
+X-List-Received-Date: Fri, 29 Apr 2016 17:16:36 -0000
 
+Fixes build failure with --enable-xfsctl and
+new linux headers (>=4.5) and older xfsprogs(<4.5):
+In file included from /usr/include/xfs/xfs.h:38:0,
+                 from /var/tmp/portage/app-emulation/qemu-2.5.0-r1/work/qemu-2.5.0/block/raw-posix.c:97:
+/usr/include/xfs/xfs_fs.h:42:8: error: redefinition of ‘struct fsxattr’
+ struct fsxattr {
+        ^
+In file included from /var/tmp/portage/app-emulation/qemu-2.5.0-r1/work/qemu-2.5.0/block/raw-posix.c:60:0:
+/usr/include/linux/fs.h:155:8: note: originally defined here
+ struct fsxattr {
 
---=-+S2qoxkA572K8Fii/pMM
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+v2: Add explanatory comment
 
-On Fri, 2016-04-29 at 15:49 +0100, Peter Maydell wrote:
-> On 29 April 2016 at 15:31, Stefan Weil <sw@weilnetz.de> wrote:
-> >=20
-> > Is it a bug of the system headers? Or simply a design which
-> > requires users to be careful when including certain header files?
-> >=20
-> > Both /usr/include/xfs/xfs_fs.h and /usr/include/linux/fs.h define
-> > the same struct fsxattr, and both definitions are identical.
-> That sounds like a header bug to me...
->=20
-> http://oss.sgi.com/archives/xfs/2016-02/msg00324.html
->=20
-> suggests that (a) the xfsprogs folks are updating their
-> header to deal with what the kernel header is doing and that
-> (b) they think the distros ought to be updating both of them
-> in sync in some way...
+CC: qemu-trivial@nongnu.org
+CC: Markus Armbruster <armbru@redhat.com>
+CC: Peter Maydell <peter.maydell@linaro.org>
+CC: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+---
+ configure | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-yes, even more so that xfsprogs/xfslib will fail to compile using
-linux-headers-4.5 for the very same reason. However, it looks like
-distros are not keen on keeping them in sync.
-
-the patch is a workaround.
-
-Jan
-
->=20
-> >=20
-> > Of course a good comment would be helpful here, e. g.
-> >=20
-> > # Avoid redefinition of struct fsxattr in xfs/xfs_fs.h.
-> > # It is already defined in linux/fs.h.
-> Yes, this is really all I want: a note that some versions of
-> the kernel headers and the xfs headers clash, so we suppress
-> the xfs version if the kernel header is providing the struct.
->=20
-> thanks
-> -- PMM
-
---=-+S2qoxkA572K8Fii/pMM
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCgAGBQJXI5aLAAoJEOCQZixVs7KBTxUP/0I3T/APykbMVVmIDDKXnRG1
-J9UkB45EnsHsh98Vj5VjHJWyEEO+aajmRN+p0SaUcQAioUBFKdbEWhS2xstkTXY7
-/ENXw6q9K7sLSjHwJvW1Yb2HQbhfAGsqEDz3XhdvZ4u3BBy2WLmqifThGCCWcUAQ
-ycs8cseX8NQvn287uP7DDgZOZD9FVhCk8rbn+14ZEHzJKz1nQLcpuf1wN0Byph/Y
-WCBp5tVAqAMuV2kZOiZEgWPOmWxSu+W2fyQ5E31NII4ogKJ7zT7cinH7vgSU+bgh
-fWGcPOQPN/MFY54l/NUIu1T5bk3GsqSlgLFTw7e4NaQNj1UYGDgAOsKz/UP+WOAV
-h3TJHyaHGvIzUAkjK3m+wu0zfYMiBzdD6OQqKFIJRSJlOwTAudIMVPBdUuv6YNE0
-oA1HPutnCBR2OrgkaTD07z9Gysfr+lLERLmnXJMFS4HKKEmgrbWwiQjH2Zn2UPTa
-wOWA7JyyC+oYtIFS6E3wNju3OueUZkJkaXPGzmWfiiapQDhO2eiyvUeA1J2EyI/+
-9DTEUgv/uYXTfpMHy0F3pzGdJKco1Les7wDYhHFvgq3HQOzULFatdHX8WGsJxqnz
-ubibXpdA4STm4HSAPr/8hUgaakII7be/fVTrReZaOoqXkRNZQpCFkQE4G+hk+eVp
-Yj30IaygHqFBJS2JbsOC
-=gJeN
------END PGP SIGNATURE-----
-
---=-+S2qoxkA572K8Fii/pMM--
+diff --git a/configure b/configure
+index ab54f3c..2c3585c 100755
+--- a/configure
++++ b/configure
+@@ -4493,6 +4493,21 @@ if test "$fortify_source" != "no"; then
+   fi
+ fi
+ 
++########################################
++# check if struct fsxattr is available
++
++have_fsxattr=no
++cat > $TMPC << EOF
++#include <linux/fs.h>
++struct fsxattr foo;
++int main(void) {
++  return 0;
++}
++EOF
++if compile_prog "" "" ; then
++    have_fsxattr=yes
++fi
++
+ ##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+@@ -5160,6 +5175,12 @@ fi
+ if test "$have_ifaddrs_h" = "yes" ; then
+     echo "HAVE_IFADDRS_H=y" >> $config_host_mak
+ fi
++
++# xfs headers will try to redefine structs from linux headers
++# if this macro is not set
++if test "$have_fsxattr" = "yes" ; then
++    echo "HAVE_FSXATTR=y" >> $config_host_mak
++fi
+ if test "$vte" = "yes" ; then
+   echo "CONFIG_VTE=y" >> $config_host_mak
+   echo "VTE_CFLAGS=$vte_cflags" >> $config_host_mak
+-- 
+2.7.4
 
 
