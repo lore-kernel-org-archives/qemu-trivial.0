@@ -1,48 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1aw9TL-0006C1-7c
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Apr 2016 10:32:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33280)
+	id 1aw9lS-0008Jn-Bp
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Apr 2016 10:51:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1aw9TC-0005q5-4w
-	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 10:32:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1aw9lI-0007ua-4C
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 10:51:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1aw9T0-0004si-FV
-	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 10:32:32 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:54313)
+	(envelope-from <peter.maydell@linaro.org>) id 1aw9l6-00021L-6y
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 10:51:14 -0400
+Received: from mail-yw0-x235.google.com ([2607:f8b0:4002:c05::235]:34629)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1aw9Si-0004it-Cp; Fri, 29 Apr 2016 10:32:08 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id A1BD2102376;
-	Fri, 29 Apr 2016 16:31:54 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (smtp.mail.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id qkL0IpOhQ5gY; Fri, 29 Apr 2016 16:31:54 +0200 (CEST)
-Received: from [134.155.36.73] (edv13.bib.uni-mannheim.de [134.155.36.73])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id 83DFB1021AE;
-	Fri, 29 Apr 2016 16:31:54 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aw9l4-0001ww-W1
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 10:51:08 -0400
+Received: by mail-yw0-x235.google.com with SMTP id j74so169226171ywg.1
+	for <qemu-trivial@nongnu.org>; Fri, 29 Apr 2016 07:50:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=FH20Q4AoqRYFE8ZieKQu5ncGVDruMWEELJwbvr0B328=;
+	b=TYj9mkf0fVzz2buGBqbNGJDpGfvo58gPGufjeL0fP/Nb9gLdtYF+Nld5qD8Xbb2Kla
+	LPVFOsTvmvvJ7mUypaBtYYie0wAtbKupIBdO/Ridst8SovtuWovHCgwKi+eHvFpKzWJh
+	zpZM0g5iJBzrFoDb0aAF3K4fnvdvhCakAYhZY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=FH20Q4AoqRYFE8ZieKQu5ncGVDruMWEELJwbvr0B328=;
+	b=G+OLhx/Aknha1mGFKtsmpnDaE+Yn0DrvXEgP2sPGzq3tNszOdFKkIwEvZSpZRV7mTU
+	u45Pa9KZJ9mpC6SGfAXXpvbnHJEIkpa6OUhohkSSx1d/lKu0jGTOLh4GJyISOXNav8dp
+	OuE8rD1/CITukzbVgANJfFpV5fqlwkYK1nk4eFPjUbo404tA3eUkujbsw1E1PMkTerqI
+	zepUMlGspYcohtu/rufY7wghK/1nh5hyeAMUIWItjFAvigt8QwrP4+OXZpRIbEwv4qAb
+	3EClZVM4m0cVALNitI7FlUG3Lk7Bk1OadIJasR9WjtW4lwqm2hDT6ibGvvyzvHcFHU3w
+	9veQ==
+X-Gm-Message-State: AOPr4FVrnzGoZkjBKXjPX/wg/UxlPwCd2llp9/vGWuTmSRapXnxFArMYzueoQsNrtBnGenQXzfuJ0zWEr6fYsd9M
+X-Received: by 10.176.4.20 with SMTP id 20mr11824032uav.125.1461941444970;
+	Fri, 29 Apr 2016 07:50:44 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Fri, 29 Apr 2016 07:49:56 -0700 (PDT)
+In-Reply-To: <9e437a9d-1725-5e2a-a43d-7952ccdf79ed@weilnetz.de>
 References: <1461935279-30418-1-git-send-email-jano.vesely@gmail.com>
 	<CAFEAcA-yNp8wGnyzMrTu=28g4vYPv-5F-PJ4aeHq8xSnxRZLkA@mail.gmail.com>
 	<5723680D.2050601@weilnetz.de>
 	<CAFEAcA9dHj60vTBm5TG0Ob072U64Vy8A0cGocPg7LNdO=aNqow@mail.gmail.com>
-Cc: Jan Vesely <jano.vesely@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+	<9e437a9d-1725-5e2a-a43d-7952ccdf79ed@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 29 Apr 2016 15:49:56 +0100
+Message-ID: <CAFEAcA-gYp9TS=JrEGgnP8uwXGuhcUzq5+wgdTDhigTyDNND9w@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: Jan Vesely <jano.vesely@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <9e437a9d-1725-5e2a-a43d-7952ccdf79ed@weilnetz.de>
-Date: Fri, 29 Apr 2016 16:31:58 +0200
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9dHj60vTBm5TG0Ob072U64Vy8A0cGocPg7LNdO=aNqow@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 134.155.96.80
+X-Received-From: 2607:f8b0:4002:c05::235
 Subject: Re: [Qemu-trivial] [PATCH] configure: Check if struct fsxattr is
  available from linux header
 X-BeenThere: qemu-trivial@nongnu.org
@@ -56,43 +65,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Apr 2016 14:32:45 -0000
+X-List-Received-Date: Fri, 29 Apr 2016 14:51:28 -0000
 
-Am 29.04.2016 um 16:00 schrieb Peter Maydell:
-> On 29 April 2016 at 14:56, Stefan Weil <sw@weilnetz.de> wrote:
->> Am 29.04.2016 um 15:54 schrieb Peter Maydell:
->>
->>> This means we'll build with a HAVE_FSXATTR define set, but
->>> nothing in the tree tries to use that as far as I can tell:
->>> "git grep HAVE_FSXATTR" returns no matches. What am I missing?
->> It's used by the system headers:
->>
->> /usr/include/xfs/xfs_fs.h:#ifndef HAVE_FSXATTR
-> ...so this is a bug in the system headers that we're working
-> around? It would probably be useful to say so in a comment
-> in configure, otherwise it's liable to get ripped out in
-> future when somebody notices it's not used any more.
-> (For instance HAVE_IFADDRS_H isn't used and looks like dead
-> code in configure.)
+On 29 April 2016 at 15:31, Stefan Weil <sw@weilnetz.de> wrote:
+> Is it a bug of the system headers? Or simply a design which
+> requires users to be careful when including certain header files?
 >
-> thanks
-> -- PMM
+> Both /usr/include/xfs/xfs_fs.h and /usr/include/linux/fs.h define
+> the same struct fsxattr, and both definitions are identical.
 
-Is it a bug of the system headers? Or simply a design which
-requires users to be careful when including certain header files?
+That sounds like a header bug to me...
 
-Both /usr/include/xfs/xfs_fs.h and /usr/include/linux/fs.h define
-the same struct fsxattr, and both definitions are identical.
+http://oss.sgi.com/archives/xfs/2016-02/msg00324.html
 
-Updating to xfslib-dev 4.3.0 did not help for Debian. This means
-that even with a consistent installation of Debian Testing
-QEMU fails to build as soon as CONFIG_XFS is defined.
+suggests that (a) the xfsprogs folks are updating their
+header to deal with what the kernel header is doing and that
+(b) they think the distros ought to be updating both of them
+in sync in some way...
 
-Of course a good comment would be helpful here, e. g.
+> Of course a good comment would be helpful here, e. g.
+>
+> # Avoid redefinition of struct fsxattr in xfs/xfs_fs.h.
+> # It is already defined in linux/fs.h.
 
-# Avoid redefinition of struct fsxattr in xfs/xfs_fs.h.
-# It is already defined in linux/fs.h.
+Yes, this is really all I want: a note that some versions of
+the kernel headers and the xfs headers clash, so we suppress
+the xfs version if the kernel header is providing the struct.
 
-Stefan
-
+thanks
+-- PMM
 
