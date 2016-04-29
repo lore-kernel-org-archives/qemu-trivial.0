@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1avwhf-0003ER-6q
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Apr 2016 20:54:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60597)
+	id 1aw02r-0000vU-Pt
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Apr 2016 00:28:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39265)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1avwhc-000391-9G
-	for qemu-trivial@nongnu.org; Thu, 28 Apr 2016 20:54:41 -0400
+	(envelope-from <jano.vesely@gmail.com>) id 1aw02n-0000jl-EG
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 00:28:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jano.vesely@gmail.com>) id 1avwhZ-0002ly-44
-	for qemu-trivial@nongnu.org; Thu, 28 Apr 2016 20:54:40 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:36559)
+	(envelope-from <jano.vesely@gmail.com>) id 1aw02k-00020x-7V
+	for qemu-trivial@nongnu.org; Fri, 29 Apr 2016 00:28:45 -0400
+Received: from mail-qg0-x244.google.com ([2607:f8b0:400d:c04::244]:33619)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jano.vesely@gmail.com>)
-	id 1avwhY-0002lp-VW; Thu, 28 Apr 2016 20:54:37 -0400
-Received: by mail-qk0-x242.google.com with SMTP id l68so3517577qkf.3;
-	Thu, 28 Apr 2016 17:54:36 -0700 (PDT)
+	id 1aw02k-00020p-3m; Fri, 29 Apr 2016 00:28:42 -0400
+Received: by mail-qg0-x244.google.com with SMTP id 90so895896qgz.0;
+	Thu, 28 Apr 2016 21:28:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=message-id:subject:from:to:date:in-reply-to:references:mime-version; 
-	bh=SXmwNmGkahNgMbFWt2qinUwOtF73Tk/zOn1CVYa+9J0=;
-	b=PDDiw20AksIlsVjRpzV0QiKjrYZQLkYP7nqeOFRbWhZ59PBGnVU+Qsz43K7tSZ/1Gl
-	b5BmFEjhFSlNrv0FeRIHpod3yETmluVPKQND7qwmmD7TaQhMfzCcFC18iwVuh19Ih0cj
-	gRLYWu0aTLXrHPbJtS/VOTF1qbeZM8a48zPAgKPbqx248v/fasquDgRUEc2BLH5SbS5p
-	5Az0tZD6WP4Zev3dE1AYrK6zexCXkX9Goa1n/p69cex0aLk7WJznCDgqNEAF3R9IFO/W
-	elHF49PJPq8kUckHp7Vo81UTH8dVzkjfI9C769N/S3f8aecQJt/3UDW9yJTh7jqgOGa2
-	a0JQ==
+	bh=4RF8R9G0Q655MdO/JnVWfBfp3pVRkX0tDoyP0Gyanus=;
+	b=WsSfEHygj29yQ8AuM5bKXs6+QPxEhXyOpA4FklyKL726tJndSKWFdPm6uvwlWQglVp
+	NubxR4IEzsTu4f18OsMS2uHDMMKZra7doQu3i5FD+RqiuQ92klXsYwH3LK+Jfatfwx9r
+	ixfBuBo2o9k9E+nb0bQMg5O6jv1Ivbrp2x6/+kNZvyCWo/ZsrXLgKMM4n67d5nAj9H8r
+	wa3FIMU5Cofwoz3wMWeqymK5f4kie9xp76WGe36G69ObLrTbjIVs+CSWgia0R98rFAl9
+	O9Pg0jIuUMt9tE9SAoQOiyhzU/dWjP+7FBi/oCjmdaIXusfEIcKkAS31ZjmIDYAkpUrE
+	GIBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
 	:references:mime-version;
-	bh=SXmwNmGkahNgMbFWt2qinUwOtF73Tk/zOn1CVYa+9J0=;
-	b=hB4y+em5XRmUFOiVT23K9tSke1TeFFbmYa8qhmdVsik3FVNaT2624FcDs0f0YBYdAd
-	XdFViBu2KoIKhjyWOu7txmrZvLHA/iiM0/Fwy87dbKC+SYxztYqiwPS1/Y4Hut5Uvd/C
-	IUA6N35FRHQJUcbpgi2ORa85rrKIaVLebUPri8c8GEo/YryS8Wb0Wqzqwt2i1fN0fIHm
-	+IhjnlqsPFiXY05g6gOH5TX1I5cL0H9ZsndNjU5mlvKWCsCHtWl2A9OfEl6MDGwsJbJ5
-	vEN2yQVezcRC2UHrkl+E+0Ak3/nC6FSEO/gpc04TPj/qia4mbRVuzotg3cMlT8pxqJ9V
-	WoYQ==
-X-Gm-Message-State: AOPr4FXjwe+tNAGmvZF6/CfLABgdSHQVZFuQD1UJXDAGPmrvhAmaDbsBSzpUDPmsfIMadw==
-X-Received: by 10.55.18.12 with SMTP id c12mr17828653qkh.158.1461891276184;
-	Thu, 28 Apr 2016 17:54:36 -0700 (PDT)
+	bh=4RF8R9G0Q655MdO/JnVWfBfp3pVRkX0tDoyP0Gyanus=;
+	b=kuNWiipM6j8KEK01wiZXQ0P+Uhqn8aAeZqACJuwxmEOsWvbW8xjaZ6yoNK/iohEwB9
+	1M9qDp4HbY7sdXKtSOXabWXCVclO0FNNitXvZ5Cfw0J8tWgMAjKfz2y6+aTY02YYQveD
+	8PAPWZjY1UKsAUbj/2dGdJk7VAGuJZuCHOsfQMGsEYwLjKheizmok6cZtQ8oGDtD4Zyq
+	a0SVZRtwQY2ochgMRqnnpg1V4odhXbXVHT8yjsiD18vNqpW5lx47OqYcrOwRtAGe8nLs
+	4yN0f6xWKlXQRKPZ3Vch+z2zP2b80vMOjOMWZMRtDjTV0lP33h8PCTwx0fHfz4lrwkp8
+	RubA==
+X-Gm-Message-State: AOPr4FXup5z/jRbtUBK/aIEoMBzkvypxctK4ies1VuqObgrowNcNtnINezomOV3q74h/Nw==
+X-Received: by 10.141.46.71 with SMTP id x68mr18496881qhe.70.1461904121771;
+	Thu, 28 Apr 2016 21:28:41 -0700 (PDT)
 Received: from ulmo.home (ool-4a58cb9c.dyn.optonline.net. [74.88.203.156])
-	by smtp.gmail.com with ESMTPSA id d6sm3656283qkb.13.2016.04.28.17.54.34
+	by smtp.gmail.com with ESMTPSA id
+	z66sm3902543qhc.16.2016.04.28.21.28.40
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Apr 2016 17:54:35 -0700 (PDT)
-Message-ID: <1461891273.4403.1.camel@gmail.com>
+	Thu, 28 Apr 2016 21:28:40 -0700 (PDT)
+Message-ID: <1461904119.4403.13.camel@gmail.com>
 From: Jan Vesely <jano.vesely@gmail.com>
 To: qemu-trivial@nongnu.org, QEMU <qemu-devel@nongnu.org>
-Date: Thu, 28 Apr 2016 20:54:33 -0400
-In-Reply-To: <1460495386.7674.1.camel@gmail.com>
-References: <1458436706-20743-1-git-send-email-jano.vesely@gmail.com>
-	<1460495386.7674.1.camel@gmail.com>
+Date: Fri, 29 Apr 2016 00:28:39 -0400
+In-Reply-To: <1458439134-28726-1-git-send-email-jano.vesely@gmail.com>
+References: <1458439134-28726-1-git-send-email-jano.vesely@gmail.com>
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-H+4Qf6LAQ7bYL+b5feIr"
+	protocol="application/pgp-signature"; boundary="=-3BFLUAZjtx3YPhqL97EJ"
 X-Mailer: Evolution 3.18.5.1 
 Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-trivial] [PATCH] configure: Check if struct fsxattr is
- available from linux header
+X-Received-From: 2607:f8b0:400d:c04::244
+Subject: Re: [Qemu-trivial] [PATCH] po/Makefile: call rm -f directly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,73 +66,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Apr 2016 00:54:41 -0000
+X-List-Received-Date: Fri, 29 Apr 2016 04:28:46 -0000
 
 
---=-H+4Qf6LAQ7bYL+b5feIr
+--=-3BFLUAZjtx3YPhqL97EJ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, 2016-04-12 at 17:09 -0400, Jan Vesely wrote:
-> On Sat, 2016-03-19 at 21:18 -0400, Jan Vesely wrote:
-> >=20
-> > Fixes build with new linux headers.
-> >=20
-> > Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
-> > ---
-> > linux-headers-4.5 and xfsprogs-3.2.4 in my case
-> >=20
-> > =C2=A0configure | 18 ++++++++++++++++++
-> > =C2=A01 file changed, 18 insertions(+)
-> >=20
-> > diff --git a/configure b/configure
-> > index b88d0db..bb64d6c 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -4474,6 +4474,21 @@ if test "$fortify_source" !=3D "no"; then
-> > =C2=A0=C2=A0=C2=A0fi
-> > =C2=A0fi
-> > =C2=A0
-> > +########################################
-> > +# check if struct fsxattr is available
-> > +
-> > +have_fsxattr=3Dno
-> > +cat > $TMPC << EOF
-> > +#include <linux/fs.h>
-> > +struct fsxattr foo;
-> > +int main(void) {
-> > +=C2=A0=C2=A0return 0;
-> > +}
-> > +EOF
-> > +if compile_prog "" "" ; then
-> > +=C2=A0=C2=A0=C2=A0=C2=A0have_fsxattr=3Dyes
-> > +fi
-> > +
-> > =C2=A0##########################################
-> > =C2=A0# End of CC checks
-> > =C2=A0# After here, no more $cc or $ld runs
-> > @@ -5137,6 +5152,9 @@ fi
-> > =C2=A0if test "$have_ifaddrs_h" =3D "yes" ; then
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0echo "HAVE_IFADDRS_H=3Dy" >> $config_host=
-_mak
-> > =C2=A0fi
-> > +if test "$have_fsxattr" =3D "yes" ; then
-> > +=C2=A0=C2=A0=C2=A0=C2=A0echo "HAVE_FSXATTR=3Dy" >> $config_host_mak
-> > +fi
-> > =C2=A0if test "$vte" =3D "yes" ; then
-> > =C2=A0=C2=A0=C2=A0echo "CONFIG_VTE=3Dy" >> $config_host_mak
-> > =C2=A0=C2=A0=C2=A0echo "VTE_CFLAGS=3D$vte_cflags" >> $config_host_mak
-> gentle ping.
-> the docs say trivial patches are collected every week. yet the last
-> one
-> was in Feb.
+On Sat, 2016-03-19 at 21:58 -0400, Jan Vesely wrote:
+> Default variables are undefined in rules.mak and this is what the
+> rest
+> of the build system uses.
+> Fixes make clean in ./po/
 >=20
+> Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+> ---
+> =C2=A0po/Makefile | 2 +-
+> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/po/Makefile b/po/Makefile
+> index b271f79..7bab09d 100644
+> --- a/po/Makefile
+> +++ b/po/Makefile
+> @@ -32,7 +32,7 @@ update: $(SRCS)
+> =C2=A0build: $(OBJS)
+> =C2=A0
+> =C2=A0clean:
+> -	$(RM) $(OBJS)
+> +	rm -f $(OBJS)
+> =C2=A0
+> =C2=A0install: $(OBJS)
+> =C2=A0	for obj in $(OBJS); do \
 
-gentle ping v2. Is there a maintainer for configure? get_maintainer.pl
-was not helpful.
-
-Jan
---=-H+4Qf6LAQ7bYL+b5feIr
+gentle ping
+--=-3BFLUAZjtx3YPhqL97EJ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
@@ -141,21 +107,21 @@ Content-Transfer-Encoding: 7bit
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCgAGBQJXIrDJAAoJEOCQZixVs7KBnM4P/3S1pEPbrPfyTQBIdWTh8Iuw
-fzf1xLWfiT8leUmiZRFj2SUxlaODyr/bvAwk/2s5z4dTaGcr6eLRDo9gShjdEVEv
-hmdfaW6TU03KcZ0uInDNlSBhxd3aCbYj+5urS31wI7b2kpzulWU2O2nl3xiROs+F
-1GBdkzDLBlxF54LxIu7qDZX+vCYvYRHNnZ6PbEO0juYZNW9BjUa0iLLUpdoKIErA
-1KrOhS21DDJ87zI9lzugPTxlHAg4cnwpM2BNQFn12HDN6Ua3nZMmVxaSqGwyBrIn
-FBWBB3UDJgaqFl6uQqYfAQGP5oE+gFXOpk9ciJAMSstBKIoMCYdvQ5fq4mK9znVQ
-uYxdpntxGDGbRZ3cwLSsqTAeMK7zlk/qWgJTFtkBF9XhA0wFr0gSrwAVWdsTF+cf
-8OBI2iuaPveSXjiUmYbqw076r0HGtodXISeJLRyWaDgsfGOn3sb7FdTua4Te/byy
-lLOopactZDmg6S7GtTiHPJehLru4wnDrefYgMeLR3EJ+0P74q/fRVsXlaDdgAypK
-g06RQeIHAZwtyRWS8xhoC+VBZMOFu1vM5t5vYl51W22oW7yx8wo45xF+ZdTWbamX
-clngv9eUFulz0iCVfvQBLQee74hSZY3TanN59yLb/SllafQR7n11kNupP+PLzxQ6
-xXjEgcZAxHdHhp8ceMXf
-=j8wu
+iQIcBAABCgAGBQJXIuL3AAoJEOCQZixVs7KBN2IP/3+dwMAGGTb8TlM5Enanm1r7
+THoDnaBtE9jIz8t4bpRfFF9/6kbjuTvSGNMo4314UbLhKH1tJCx64L8GmtZ27f6S
+kQqxlHEC+Dxpno22YqLKAOzHa1rcIzohJ/kdPh+4DVCHo5Md6phNPCwsQ6B+r8YW
+vnaUKzxWDc/GHB8bEUM0PYtoHhoB2HMUr5nqzGZYZLu8XQFz85SEkRbL2VfjFbzF
+t7tyk8jD+RLhzLy5Kvzl19Da6tfnsmYtTY87a8lHAp23FBddqNcSpdwLBR0moVFQ
+eNc1e/CMAL8CfdYy9E76IVEDGzqIpDyikrxVI4lJrYO8gfErg2u+RA+Apmzh3wrc
+L+hTnju3X/IUomf83aPjgnjvg9aBu4ucmUdG5+pDkF/GQ8+cVc6blAkIBCXjiKAy
+7n+dhk3vSie0m6ALDBvycT5VIyMfBdl9n8Z+rgUBUjoFV5Ca3Ege16Upk+2zS21v
+Ywy3zuJ2rj3gqY4I6kc8mMV4kBAm5VuDiv/ngRzRNs0o+1sYLBOVNuoeAjieffNB
+V3XmXouDQWksILJEIocGEUIGCKE51GMWchjEn8JVHBxCI2MSwuQaiMehy0ReGC1D
+euACVj79xWEnNDAMH6/0Ui2R5QJKAUWza5pw/0t7iHnNRoleogUH2JAiI9Xh29ti
+t0eRNL+O1+DSAxZbwipb
+=WnXa
 -----END PGP SIGNATURE-----
 
---=-H+4Qf6LAQ7bYL+b5feIr--
+--=-3BFLUAZjtx3YPhqL97EJ--
 
 
