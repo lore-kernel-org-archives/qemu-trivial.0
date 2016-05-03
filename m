@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axb5H-0005NG-JE
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 10:13:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36057)
+	id 1axcAD-0006ic-Bi
+	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 11:23:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axb59-000596-Eo
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 10:13:54 -0400
+	(envelope-from <haris.phnx@gmail.com>) id 1axcA5-0006Tr-Ae
+	for qemu-trivial@nongnu.org; Tue, 03 May 2016 11:23:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axb4x-0002Tu-Ud
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 10:13:42 -0400
-Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:36322)
+	(envelope-from <haris.phnx@gmail.com>) id 1axc9t-0008Cx-AC
+	for qemu-trivial@nongnu.org; Tue, 03 May 2016 11:22:51 -0400
+Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:35956)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axb4w-0002M9-NQ
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 10:13:35 -0400
-Received: by mail-vk0-x22f.google.com with SMTP id c189so24708971vkb.3
-	for <qemu-trivial@nongnu.org>; Tue, 03 May 2016 07:13:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(envelope-from <haris.phnx@gmail.com>)
+	id 1axc9s-00083M-32; Tue, 03 May 2016 11:22:45 -0400
+Received: by mail-vk0-x243.google.com with SMTP id u23so2016846vkb.3;
+	Tue, 03 May 2016 08:22:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=BSWyHZJf0Si89QgdP/mr8lw/z9rQ3uPl2KldD1dKqYM=;
-	b=VvlnMbgPNLFk27TIfE552h11IbbnI23jsg0EgtS+7nrdX4qOSv3ijLG002AQrotmrr
-	ZZMZDaM/4ljd99RQmlHqUZ74SsJ/7XOUS8AEW8hpdctFU64aInoIC+rHS5XzPS12NOEe
-	VUcbKy0AO12lUiFdB6SMsVEzChWZ/vloYA0RY=
+	:cc; bh=Fq3qtr3anOVRpCJx7zAywARHlRsSws57KmsuzqHQN1s=;
+	b=LhE5sp2tSgS7XCbeBdmdBBfjaFuJftW+lE2LbzsS8v2LfAdhbq8ZeY5B8GKVLNidSq
+	jxu+wZMdEUDaT/HRXxgm+V2kQAlSRLyX0X7AfaXo+LffK9sPEdZ0IT54CwUGaG+bIzmW
+	7C+3LTXEbHomm/CwoLjKcDqIxXmLmBe6Dt3oncWuDzNw7RcD2akpgZguxneZ6qRO4dqN
+	jmTsVxmCFBgHpev7ZECW73tQmvvXuV6xbUYKZpngVmoNsLinGZq3JVvBC3ZPKUVPuHUE
+	oFZeUCPw4EKNq6cMriru5AfnCqGsNz3p6N6wcIFN0ZlG2fYVBZHOppnUFRsBys7x7G1h
+	PTFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=BSWyHZJf0Si89QgdP/mr8lw/z9rQ3uPl2KldD1dKqYM=;
-	b=bYlLKyoUTvgFw6WykrlbLIDxiIJejg4iTkcuCQerj9bJbQguCoQJDae/d4vfPRAIt9
-	DCYXcUZTLyukNOOrC1ywTPk8iLPsGZfdPucvlQBPFSXHR106581hYS7Y5cHxdHR6YnT3
-	aGYOukWsgI6QS8UoAq+I7Eax5sCAsM90pLk1ptLZrBwuPdxU39sAnXtDP4TjHeRifh08
-	sjsaOa447sdH6ZrgooAQ6r3P3Ov+DgxBM8CiSJ1PCicQOgezNqo0Fk7x7XxnOiOj7NWU
-	Oux45BU1R9qmf9kHVatLTqc8TSLT/eaMtnYcwosRDHPZ6B7pShIvDVeyyDGvHSVe87E2
-	S/tQ==
-X-Gm-Message-State: AOPr4FUa62Xp1X1BDoUBu0sw4reMFcCkDTWUmYKSs/uQR+KOqVU9AeIr25rOejIc1wIUTh+1yP6swD/Ho9DK9JGH
-X-Received: by 10.31.160.148 with SMTP id j142mr982775vke.83.1462284790998;
-	Tue, 03 May 2016 07:13:10 -0700 (PDT)
+	bh=Fq3qtr3anOVRpCJx7zAywARHlRsSws57KmsuzqHQN1s=;
+	b=R2LvfHPSLMsXOXM80r/LA8d/DwP+DswoAmqW+QkZXNm4dOBu0IAC+8xoRigy/Se+0s
+	rCBNbSJAqrbKnAeeX+u6stxQDNr6bhdsGE8rwpeFHYvqgPwOYXj3b4DXWJzty/SgCpCK
+	VSIGz1tZGFHL80PfjZq2qBMNOkJNbX48Q2cISMnVwAB7eZPFGJY2Z61+0GBQ+3IfYMJv
+	YCyT6EPCyoi2Qw/bYPSFXB7Da+rNKb9mJbKCl+q5B5AP04L/UCsnHDDKXICU7bej0qCW
+	H6GyZWodP3/BsbSM1vfvEcfDOHLGHPVVPqf4TW9cUDw3oidz3Y9VueRmmK7EOy5z9uKc
+	GagA==
+X-Gm-Message-State: AOPr4FVyNCRm1hw7JiM5bliP1+lIvtqbWQIZHoEDaO2/zZRFvnVw590sPZZlasNnU1oPzo01KCHjWE0A/a1HRA==
+X-Received: by 10.159.39.194 with SMTP id b60mr1308926uab.151.1462288932314;
+	Tue, 03 May 2016 08:22:12 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Tue, 3 May 2016 07:12:51 -0700 (PDT)
-In-Reply-To: <CAF4BF-T44ixRn6EVqLvPC7pktEcCO8qQDJJd1UgN8WX6T=Dwcw@mail.gmail.com>
-References: <1462237852-61856-1-git-send-email-chrisfriedt@gmail.com>
-	<0b165339-9dde-57f8-959d-22122390ca0b@twiddle.net>
-	<CAF4BF-T44ixRn6EVqLvPC7pktEcCO8qQDJJd1UgN8WX6T=Dwcw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 May 2016 15:12:51 +0100
-Message-ID: <CAFEAcA9=N-o9qobGs9GZCAjHbcPHR4j-FpZWFJmradUXreKFyw@mail.gmail.com>
-To: Christopher Friedt <chrisfriedt@gmail.com>
-Cc: Richard Henderson <rth@twiddle.net>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Fam Zheng <famz@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>
+Received: by 10.31.184.134 with HTTP; Tue, 3 May 2016 08:21:52 -0700 (PDT)
+In-Reply-To: <1462270357.31362.1.camel@redhat.com>
+References: <1459862499-4768-1-git-send-email-haris.phnx@gmail.com>
+	<CAE_WKMx3p0MFJWOamHFgrqiP2pxqmG2hou+pOaVOQq66pMUtAg@mail.gmail.com>
+	<1462270357.31362.1.camel@redhat.com>
+From: haris iqbal <haris.phnx@gmail.com>
+Date: Tue, 3 May 2016 20:51:52 +0530
+Message-ID: <CAE_WKMyAjkUQfN8eUnLJ3VAvrPVVO0F1JJetn5emomyp2PvumA@mail.gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22f
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2v2] [RESENT-INLINE] Use
- libtool instead of ar to create static libraries on Darwin.
+X-Received-From: 2607:f8b0:400c:c05::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] Changed malloc to
+ g_malloc, free to g_free in ui/shader.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,18 +65,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2016 14:13:54 -0000
+X-List-Received-Date: Tue, 03 May 2016 15:23:04 -0000
 
-On 3 May 2016 at 14:50, Christopher Friedt <chrisfriedt@gmail.com> wrote:
-> To be honest, if it weren't for the man page for libtool on Mac OS X
-> [1] dating all the way back to Snow Leopard saying that libtool is the
-> preferred tool on Mac for creating static archives, I'm left wondering
-> if this is just a massive oversight / bug in Apple's ld64.
+On Tue, May 3, 2016 at 3:42 PM, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> On Di, 2016-05-03 at 15:16 +0530, haris iqbal wrote:
+>> Just a reminder. waiting for a review for the previous patch.
+>
+> Patch is fine.  Just stalled b/c we are in code freeze, I expect trivial
+> queue will pick this up for the 2.7 devel cycle.
+>
+> cheers,
+>   Gerd
+>
 
-I think it's definitely a bug -- if "ar" and "ld" don't work
-together Apple should remove "ar", not just unhelpfully break it.
-We probably need to work around the bug anyway though.
+Thanks for the fast response. :)
 
-thanks
--- PMM
+
+-- 
+
+With regards,
+
+Md Haris Iqbal,
+Placement Coordinator, MTech IT
+NITK Surathkal,
+Contact: +91 8861996962<div id="DDB4FAA8-2DD7-40BB-A1B8-4E2AA1F9FDF2"><br />
+<table style="border-top: 1px solid #aaabb6;">
+	<tr>
+        <td style="width: 55px; padding-top: 13px;"><a
+href="https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail"
+target="_blank"><img
+src="https://ipmcdn.avast.com/images/2016/icons/icon-envelope-tick-round-orange-v1.png"
+/></a></td>
+		<td style="width: 470px; padding-top: 15px; color: #41424e;
+font-size: 13px; font-family: Arial, Helvetica, sans-serif;
+line-height: 18px;">Virus-free. <a
+href="https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail"
+target="_blank" style="color: #4453ea;">www.avast.com</a>
+		</td>
+	</tr>
+</table><a href="#DDB4FAA8-2DD7-40BB-A1B8-4E2AA1F9FDF2" width="1"
+height="1"></a></div>
 
