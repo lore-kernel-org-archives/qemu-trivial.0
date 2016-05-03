@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axP8l-0002vT-OV
-	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2016 21:28:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56413)
+	id 1axU5z-0004nH-O0
+	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 02:46:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51567)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axP8e-0002i7-8h
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:28:42 -0400
+	(envelope-from <chrisfriedt@gmail.com>) id 1axOj3-0004hj-7p
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:02:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axP8O-0005EP-TU
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:28:30 -0400
-Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:36339)
+	(envelope-from <chrisfriedt@gmail.com>) id 1axOir-0007s8-Ej
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:02:03 -0400
+Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:35028)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axP8N-0005Aa-Mt
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:28:20 -0400
-Received: by mail-vk0-x22f.google.com with SMTP id c189so6488733vkb.3
-	for <qemu-trivial@nongnu.org>; Mon, 02 May 2016 18:28:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=lPxfzfJT1zjTVJZ9wmpbAS0HIpjpSux8z0AKZSGd084=;
-	b=jH0V75dIPZS9EabtodVJzVSU/agJ5sNuw+uaDtl2h+4CCA5TZBvMmS67tHJYwJI/BX
-	RNDlCieM6PbOmOSdFoTkxsyFtRXmvQYhOSoG1lhEPePGdFeZK9i7+zVwZKLCTjPbYhzy
-	WEjqD18tHhn1YgHLpAc3BvyGo08k9avLTvJa8=
+	(envelope-from <chrisfriedt@gmail.com>)
+	id 1axOiY-0007kV-Bc; Mon, 02 May 2016 21:01:39 -0400
+Received: by mail-io0-x241.google.com with SMTP id u185so779669iod.2;
+	Mon, 02 May 2016 18:01:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=ZGbxuUYjJIQy9KcJS7M3BZSjjmdPz/WC1PzWWIJlULQ=;
+	b=ehXqIDpnxpgMnTeGNz+c3O4zX8OMhx009T/DXz1CTs3ve5bSUQo4eI+bdk7KzMrQRo
+	lwgJKrGH4BxR2VXMI7Aq+ZFeWOYCv+09EVeF4RVFGAMFY60AI82oY8MezXZoSWF/CN4f
+	rdHNHKZgQ89R1sOoJPXmDKruubRyArD3YcGB6vUqevIJYaIfEhTT2QDSQRgm6TmXDqTa
+	icIKatLDEJ+swowVh8ZIKviF7C2ycTgcaseIJXlOHmKnocjUNMdWFRqQfNr3urwGMco/
+	6LzJlcIc7sXZCkTmJyeg+dAL8UO8TEhQW1IPr1sNeRnROH99yJqH4m/JQJR5MV0cicxb
+	0iWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=lPxfzfJT1zjTVJZ9wmpbAS0HIpjpSux8z0AKZSGd084=;
-	b=gX+rS3/0qDIIg+BNb8WrJBLkvDGFZvzXHFG3I9jLXZOimmi/1x4qHS4uRMQT8zu7We
-	j+aOmEIkfdAgXnJQQ0/hb9ACCN2giBZsKlfYsiEREsVdbMGj4yscv+URt7zFldkrKRXq
-	RCdvCj81AC0VAvdjQgoQ8phoarYz6CYvfYYCyNWRVBet+S4uiU6TWuuDWmSe54eJRdI6
-	zmClZ/w8iRUrCgP69HdmUrER3JVWnV3AYyzzgsIJ2TZrfuBJXbNwEr7WZWbHRRHVV/zV
-	BHZEqPz4M5KVNqEL5lKTKFoT1yYOoRRE0rRivC7t2qpRf84zEWigz4xsAKJqkhxf5BX1
-	2cjg==
-X-Gm-Message-State: AOPr4FUXUINbiJ/gbq6DKW77PjQ/oP+MhnDBqTvYjn6K5/kGhgPrAipTAkEE62WIcu5qj+ptORWqbGAZW+fQMl5t
-X-Received: by 10.176.68.162 with SMTP id n31mr22215913uan.26.1462238877710;
-	Mon, 02 May 2016 18:27:57 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 2 May 2016 18:27:38 -0700 (PDT)
-In-Reply-To: <CAF4BF-RzconSOm++Ey79FO2wm2JSK=PYV5UNnnjZvEyOkf3tgA@mail.gmail.com>
-References: <1462236478-61645-1-git-send-email-chrisfriedt@gmail.com>
-	<1462236478-61645-3-git-send-email-chrisfriedt@gmail.com>
-	<CAFEAcA8TjtF=+DY=kDRvK205VGuVPmc3AumvF8QiS0rqX1RiGA@mail.gmail.com>
-	<CAF4BF-RUvQyy2RJ+=+9mBM-k81Hgixpu2_0r9X1o=fAiVi4f_w@mail.gmail.com>
-	<CAFEAcA_kViE8oaiPE9SNGSXBRo4vocKuZXQuruyRULrjy9id4A@mail.gmail.com>
-	<CAF4BF-RzconSOm++Ey79FO2wm2JSK=PYV5UNnnjZvEyOkf3tgA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 May 2016 02:27:38 +0100
-Message-ID: <CAFEAcA811Utp-C1SMA+TfXEJ7TPc8oL0hsVq0BjNo98DhX76Gg@mail.gmail.com>
-To: Christopher Friedt <chrisfriedt@gmail.com>
-Cc: Fam Zheng <famz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, G 3 <programmingkidx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=ZGbxuUYjJIQy9KcJS7M3BZSjjmdPz/WC1PzWWIJlULQ=;
+	b=RYEJaIALLDrqO4Qp71O/0THI+ps3dzJ7+fUW+nnPwQO03DOx2DI2A2ykjq0QpbrO0R
+	ACYG9sKi5/+k4ykVC+OugKzCajO5NdWFGkWXC8E0BjpxbTLu/L+U9sBjQ3RAOc/Ff+mU
+	SuJLelN7ras7lhYlEg9K5PnVxC4z3FQuR1aKffWham/TV0w+hpW+2ysKPqf7oLgYtGzj
+	R7xTGCImQ7C36UFZFBWqscH7jcSx0fYGtytlo71aWG7hV+zDoH5xVQHBCDNL9/0EMlRg
+	3bXjmhh6P9YE1O3xPlZLo4oFi80FHneJHWzJZqjZcu6QLKAFcIL+ZHMcVnBL6NHi/tL2
+	mvkw==
+X-Gm-Message-State: AOPr4FXa79/n9FaDW+ek5tKT74S0vaTPVsOyfcvLpAUseKT/EEXEXZAtpqK+VHdm6PVudg==
+X-Received: by 10.107.59.195 with SMTP id i186mr158593ioa.36.1462237266526;
+	Mon, 02 May 2016 18:01:06 -0700 (PDT)
+Received: from localhost.localdomain (76-10-180-162.dsl.teksavvy.com.
+	[76.10.180.162])
+	by smtp.gmail.com with ESMTPSA id i14sm803917iod.34.2016.05.02.18.01.05
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Mon, 02 May 2016 18:01:06 -0700 (PDT)
+From: Christopher Friedt <chrisfriedt@gmail.com>
+To: famz@redhat.com,
+	mst@redhat.com
+Cc: Christopher Friedt <chrisfriedt@gmail.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Mon,  2 May 2016 21:01:03 -0400
+Message-Id: <1462237265-61763-1-git-send-email-chrisfriedt@gmail.com>
+X-Mailer: git-send-email 2.6.4 (Apple Git-63)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22f
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Remove unnecessary
- CONFIG_EVENTFD preprocessor conditional to satisfy link
+X-Received-From: 2607:f8b0:4001:c06::241
+X-Mailman-Approved-At: Tue, 03 May 2016 02:46:09 -0400
+Subject: [Qemu-trivial] [PATCH 0/2][RESENT-INLINE] Resolve link errors on
+ Mac OS X
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,16 +65,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2016 01:28:42 -0000
+X-List-Received-Date: Tue, 03 May 2016 01:02:20 -0000
 
-On 3 May 2016 at 02:25, Christopher Friedt <chrisfriedt@gmail.com> wrote:
-> Ack - too late! I manually removed all of the *-softmmu/ directories
-> after doing a make clean, because they were still hanging around.
-> Rebuilding worked fine without PATCH 2/2.
+Hi list,
 
-Oh well. If blowing away the build dirs fixed it then it seems
-pretty likely that the makefile bug is what you were running into.
+I recently tried to build Qemu on Mac and ran into a couple of trivial issues
+that I've provided patches for. I suppose that normally people just use
+'brew install qemu', but there is really no reason that it can't be built from
+source, particularly for those modifying Qemu regularly.
 
-thanks
--- PMM
+In any case, the first change moves to using 'libtool -static' to create
+libraries on Mac OS X. If one attempts to use ar and ranlib, then the final
+link will fail with error messages resembling the following:
+
+  ld: warning: ignoring file libqemuutil.a, file was built for archive which
+  is not the architecture being linked (x86_64): libqemuutil.a
+  Undefined symbols for architecture x86_64:
+  ...
+
+Notice ld (Apple's ld64) presumes the static library is a relocatable with
+architecture 'archive' rather than x86_64, in this case.
+
+A similar fix is required for dtc - again quite trivial, but I can provide that if necessary.
+
+The second patch removes the preprocessor conditional around the function
+event_notifier_init_fd() in util/event_notifier-posix.c so that the link does
+not fail on systems where CONFIG_POSIX is defined but CONFIG_EVENTFD is not
+(such as under Mac OS X).
+
+There is more information in each of the commits that follows.
+
+Please feel free to comment.
+
+Cheers,
+
+C
+
+Christopher Friedt (2):
+  Use libtool instead of ar to create static libraries on Darwin.
+  Remove unnecessary CONFIG_EVENTFD preprocessor conditional to satisfy
+    link
+
+ rules.mak                   | 4 ++++
+ util/event_notifier-posix.c | 2 --
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+-- 
+2.6.4 (Apple Git-63)
+
 
