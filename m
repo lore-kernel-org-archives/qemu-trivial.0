@@ -1,49 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axUKE-0005LB-Qj
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 03:00:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45676)
+	id 1axUR7-0005Rx-Qg
+	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 03:08:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49087)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1axUK5-00054O-HN
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 03:00:52 -0400
+	(envelope-from <rth7680@gmail.com>) id 1axUR0-0005CN-A3
+	for qemu-trivial@nongnu.org; Tue, 03 May 2016 03:08:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1axUJt-000442-6k
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 03:00:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53205)
+	(envelope-from <rth7680@gmail.com>) id 1axUQo-0007fI-Rn
+	for qemu-trivial@nongnu.org; Tue, 03 May 2016 03:07:48 -0400
+Received: from mail-yw0-x243.google.com ([2607:f8b0:4002:c05::243]:33070)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1axUJa-0003cH-Fg; Tue, 03 May 2016 03:00:14 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 930A8C05E175;
-	Tue,  3 May 2016 06:59:57 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-46.ams2.redhat.com
-	[10.36.116.46])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u436xtli009056
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 3 May 2016 02:59:57 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 3C7C61132D8A; Tue,  3 May 2016 08:59:55 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Christopher Friedt <chrisfriedt@gmail.com>
-Cc: famz@redhat.com, mst@redhat.com, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1462237265-61763-1-git-send-email-chrisfriedt@gmail.com>
-	<1462237265-61763-3-git-send-email-chrisfriedt@gmail.com>
-Date: Tue, 03 May 2016 08:59:55 +0200
-In-Reply-To: <1462237265-61763-3-git-send-email-chrisfriedt@gmail.com>
-	(Christopher Friedt's message of "Mon, 2 May 2016 21:01:05 -0400")
-Message-ID: <87r3djbp90.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <rth7680@gmail.com>)
+	id 1axUQS-00074Y-US; Tue, 03 May 2016 03:07:22 -0400
+Received: by mail-yw0-x243.google.com with SMTP id y6so897254ywe.0;
+	Tue, 03 May 2016 00:06:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=vMFX7e5W+4LQKM4vYfDrP0wEVZSiVcFKmZkIZTXqKyw=;
+	b=JKaRhzlcoZa6y8YrFKTXYeu7+qHXeMTiSssWfHZwh7letnjQVhsKB1mpYj7X5K7Ys9
+	31n+X0L4b+fYXwQ58aysDcfuSJbFzDUbX6bfjMfqdSY2o1b3EagQObB954vlFNScRwhi
+	1QoyxM7xDfZjQIACwinBbPYsx0uV3UdVur3xf0PYJoFUuMKF3A3hLYSe5uyWiQVicIuX
+	kWGFzwU/Uf1JRgtxQvG2slDL01kseh5AcWxxRdE6rbRIAPCLAI1eb/foPjR+U0eeYqnA
+	88XLXW6mcazwY2Lql5p6XFfSTN3TCGdicOel2Za9GUoVbLBTotIUMDXaCtTE0meGHBwS
+	IDQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=vMFX7e5W+4LQKM4vYfDrP0wEVZSiVcFKmZkIZTXqKyw=;
+	b=Ln91t0jnbcNItTxjXJlPvD/lsfDJYJLlpWmTTmS8JqE6adL17k0CR5UN4uzkfbRkZw
+	08JuGh+j6XtpCjCpZMZnXt3cx3rYfjQuPEq6a5ouO4u7/CPCYULr+ljwiwA/9PPPeTKc
+	k//5UAqS7KNBKtENvxYE3H1DJI0pXXngIBNJd334+Yysr2qTT5DwB5xXJxVLmfbWcKKd
+	5RfdE1ejB5kl2l3uKrCcXWEk2V28TXDLGB7b1udo58k2DR9jKDxb+HgPlbSLURw2dgoq
+	O7FLCyA2L6lzEnA9hun1dFAtxtF9bgoVBk12v89cPimSP7d2spTMqiVtk4PURFYSpt4T
+	D9+g==
+X-Gm-Message-State: AOPr4FUuTWP/Vtm6Dey4B79AL3yIHTw4TkOVLCyt0YE2MUzKQlaCcSAdlNv44griqZAH3A==
+X-Received: by 10.129.158.87 with SMTP id v84mr351427ywg.282.1462259209466;
+	Tue, 03 May 2016 00:06:49 -0700 (PDT)
+Received: from bigtime.twiddle.net ([172.56.44.244])
+	by smtp.googlemail.com with ESMTPSA id
+	e6sm1126156ywd.23.2016.05.03.00.06.46
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 03 May 2016 00:06:48 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: Christopher Friedt <chrisfriedt@gmail.com>, famz@redhat.com, mst@redhat.com
+References: <1462237852-61856-1-git-send-email-chrisfriedt@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <0b165339-9dde-57f8-959d-22122390ca0b@twiddle.net>
+Date: Mon, 2 May 2016 21:06:43 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+In-Reply-To: <1462237852-61856-1-git-send-email-chrisfriedt@gmail.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] [RESENT-INLINE] Remove
- unnecessary CONFIG_EVENTFD preprocessor conditional to satisfy link
+X-Received-From: 2607:f8b0:4002:c05::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2v2] [RESENT-INLINE] Use
+ libtool instead of ar to create static libraries on Darwin.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,68 +71,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2016 07:00:53 -0000
+X-List-Received-Date: Tue, 03 May 2016 07:08:00 -0000
 
-Christopher Friedt <chrisfriedt@gmail.com> writes:
-
-> The file ivshmem.c unconditionally references event_notifier_init_fd() in util/event_notifier-posix.c, even if CONFIG_EVENTFD is not defined. On platforms where CONFIG_POSIX is defined, but CONFIG_EVENTFD is not defined, that results in an undefined symbol referenced from ivshmem.c and the link fails. That applies to Mac OS X, but possibly other BSD-based distros.
-
-ivshmem.c cannot work without CONFIG_EVENTFD, and therefore is not
-compiled without it.
-
-A link error for event_notifier_init_fd() from ivshmem.o indicates you
-got CONFIG_EVENTFD=y for make (since ivshmem.o gets linked), but
-!defined(CONFIG_EVENTFD) for C (or else event_notifier_init_fd() would
-exist).  Your build tree is messed up, or the makefiles are broken.  Try
-starting over with a fresh build tree.
-
-See also
-http://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01437.html
-
-> Note: there is nothing specific to eventfd inside and event_notifier_init() also fails unconditionally if CONFIG_EVENTFD is not defined.
-
-I'm afraid you're misreading the code.
-
-event_notifier_init() has a working fallback: if the host doesn't
-support eventfd (!defined(CONFIG_EVENTFD) or eventfd() fails with
-ENOSYS), then we emulate eventfd with a pair of pipes.  Possible only
-because pipes have special properties.
-
-To support the emulation, we have two file descriptors, @rfd for reading
-and @wfd for writing.  Design invariant: if they are the same file
-descriptor, it must be a proper eventfd, and if they are different, they
-must be a pair of pipes.  The only way to establish the invariant with
-event_notifier_init_fd() is passing it an eventfd, as the function's
-contract says.  Without CONFIG_EVENTFD, there is no way to use the
-function correctly, so defining it would be nothing but a trap.
-
-See also commit 330b583, which added the ifdef.
-
-> Signed-off-by: Christopher Friedt <chrisfriedt@gmail.com>
-> ---
->  util/event_notifier-posix.c | 2 --
->  1 file changed, 2 deletions(-)
+On 05/02/2016 03:10 PM, Christopher Friedt wrote:
+>  %.a:
+> +ifdef CONFIG_DARWIN
+> +	$(call quiet-command,rm -f $@ && libtool -static -o $@ $^,"  libtool    $(TARGET_DIR)$@")
+> +else
+>  	$(call quiet-command,rm -f $@ && $(AR) rcs $@ $^,"  AR    $(TARGET_DIR)$@")
+> +endif
 >
-> diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
-> index c1f0d79..c9bb34d 100644
-> --- a/util/event_notifier-posix.c
-> +++ b/util/event_notifier-posix.c
-> @@ -21,7 +21,6 @@
->  #include <sys/eventfd.h>
->  #endif
->  
-> -#ifdef CONFIG_EVENTFD
->  /*
->   * Initialize @e with existing file descriptor @fd.
->   * @fd must be a genuine eventfd object, emulation with pipe won't do.
-> @@ -31,7 +30,6 @@ void event_notifier_init_fd(EventNotifier *e, int fd)
->      e->rfd = fd;
->      e->wfd = fd;
->  }
-> -#endif
->  
->  int event_notifier_init(EventNotifier *e, int active)
->  {
 
-NAK
+Does it work to use libtool -static everywhere?
+
+
+r~
 
