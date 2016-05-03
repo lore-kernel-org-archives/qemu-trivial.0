@@ -1,56 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axOjZ-0005hX-ON
-	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2016 21:02:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51673)
+	id 1axOmM-0001T0-1T
+	for mharc-qemu-trivial@gnu.org; Mon, 02 May 2016 21:05:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axOjR-0005OE-Q3
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:02:39 -0400
+	(envelope-from <famz@redhat.com>) id 1axOmE-0001DG-89
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:05:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axOjC-0007wm-Ct
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:02:28 -0400
-Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:33879)
+	(envelope-from <famz@redhat.com>) id 1axOm2-0000IC-Fp
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:05:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59916)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axOjB-0007rx-6X
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:02:18 -0400
-Received: by mail-vk0-x22f.google.com with SMTP id m188so6098401vka.1
-	for <qemu-trivial@nongnu.org>; Mon, 02 May 2016 18:01:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bdfWVNbS/MXahpS+btjA8nCLzIw4kdWJ6gK75w8IMoc=;
-	b=IrtWTh/jhUOZHj5g1M9gAbk81y4sPLeM+eDss8Pmyxnp7VNscKK5yDEh5j++zxnhWR
-	nmHcIaq1cRigov10tjBuTFgcMmzwCU+kkzH9CIr5R+QhpmaSNFduzb5yJyWTU8HXkYHV
-	krlC10KxXzm29LqQHDBI4IzZFUTCm3jgtowfc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bdfWVNbS/MXahpS+btjA8nCLzIw4kdWJ6gK75w8IMoc=;
-	b=KnqCbqI5ouvZoDgF/gvGSGcR+pPT0lDSNSq9JaW0uA5n8u//mTsXA2V8WB/3FP3CEk
-	iFogvfnXgkFI5X5zz3u5dO4IpEs2tdLVQpRUGt3LqIpCVaPdV4Do6bS99ko17/8EcNr6
-	I4lbLQME0Z3L7bSsm0U5+SLK9afBXAZBCnHFAY3Otvfmj4NF8LUXfjZQDraMKb6NvYkV
-	Oa1LLwpoJLaH+pWP/1ojEaetODU6jqBh6reZwm7QLvDqMb1nzrJw+7NEbNR6bxqwApJk
-	l/IfLmzwKt/t/dM3fwBf7ytMH+JybzU4Ct3SWB/vhQwO/SKtHPchTDPb7cEkdK9jW7XP
-	x3Ow==
-X-Gm-Message-State: AOPr4FVSC15M3XInW/0+D3rB7scrwIfMRODRePaMIEJYWN8JRY3hqX8GQTDOVDxfAXptzBLBadz10iDhOf/S2SjJ
-X-Received: by 10.31.94.86 with SMTP id s83mr1260234vkb.92.1462237315209; Mon,
-	02 May 2016 18:01:55 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 2 May 2016 18:01:35 -0700 (PDT)
-In-Reply-To: <1462236478-61645-3-git-send-email-chrisfriedt@gmail.com>
+	(envelope-from <famz@redhat.com>)
+	id 1axOld-0008VE-3h; Mon, 02 May 2016 21:04:49 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 81DE037E81;
+	Tue,  3 May 2016 01:04:32 +0000 (UTC)
+Received: from localhost (dhcp-15-133.nay.redhat.com [10.66.15.133])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4314VLP031124; Mon, 2 May 2016 21:04:31 -0400
+Date: Tue, 3 May 2016 09:04:35 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Christopher Friedt <chrisfriedt@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: mst@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20160503010435.GT1421@ad.usersys.redhat.com>
 References: <1462236478-61645-1-git-send-email-chrisfriedt@gmail.com>
-	<1462236478-61645-3-git-send-email-chrisfriedt@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 May 2016 02:01:35 +0100
-Message-ID: <CAFEAcA8TjtF=+DY=kDRvK205VGuVPmc3AumvF8QiS0rqX1RiGA@mail.gmail.com>
-To: Christopher Friedt <chrisfriedt@gmail.com>
-Cc: Fam Zheng <famz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, G 3 <programmingkidx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	<1462236478-61645-2-git-send-email-chrisfriedt@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1462236478-61645-2-git-send-email-chrisfriedt@gmail.com>
+User-Agent: Mutt/1.6.0 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22f
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Remove unnecessary
- CONFIG_EVENTFD preprocessor conditional to satisfy link
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 1/2] Use libtool instead of ar to create
+ static libraries on Darwin.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,39 +50,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2016 01:02:40 -0000
+X-List-Received-Date: Tue, 03 May 2016 01:05:32 -0000
 
-[ccing somebody else who ran into this, since I've figured out why.]
+Cc'ing Peter Maydell, who must have better ideas than me on building on Mac.
 
-On 3 May 2016 at 01:47, Christopher Friedt <chrisfriedt@gmail.com> wrote:
-> The file ivshmem.c unconditionally references event_notifier_init_fd()
-> in util/event_notifier-posix.c, even if CONFIG_EVENTFD is not defined.
+On Mon, 05/02 20:47, Christopher Friedt wrote:
+> 
+> Currently, at least on Mac OS X 10.11.4 (El Capitan), Qemu fails to build for a few reasons.
+> 
+> One of those reasons is that Apple's ld (at least ld64) does not properly process archive files created with ar (even Apple's ar).
+> 
+> After some RTFM'ing, I came upon this tidbit, which is unfortunate. Luckily, autotools packages are not broken.
+> 
+> "Libtool with -static is intended to replace ar(5) and ranlib."
+> http://www.manpages.info/macosx/libtool.1.html
+> 
+> In any case, this change takes Apple's recommendations into account and allows Qemu to build on Mac OS X El Capitan.
+> 
+> Signed-off-by: Christopher Friedt <chrisfriedt@gmail.com>
+> ---
+>  rules.mak | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
 
-Yes, but ivshmem.c is only built if CONFIG_IVSHMEM, and
-CONFIG_IVSHMEM is set (in default-configs/pci.mak) to CONFIG_EVENTFD.
-So if CONFIG_EVENTFD is not defined then we should never build ivshmem.o.
+> diff --git a/rules.mak b/rules.mak
+> index d1ff311..44421af 100644
+> --- a/rules.mak
+> +++ b/rules.mak
+> @@ -105,7 +105,11 @@ modules:
+>  	$(call LINK,$(filter %.o %.a %.mo, $^))
+>  
+>  %.a:
+> +ifeq ($(shell uname),Darwin)
 
-The problem here is that you've run into a bug in QEMU's makefiles,
-where a change in an included .mak file in default-configs fails
-to cause the config-devices.mak file to be rebuilt. In commit
-330b583 we changed pci.mak so that CONFIG_IVSHMEM is set to
-CONFIG_EVENTFD rather than CONFIG_POSIX, so if your config-devices.mak
-predates that commit then it will have incorrectly not been recreated
-and so your build will still try to build ivshmem.c.
+I think you can use "ifdef CONFIG_DARWIN" here.
 
-You can check whether this is true by looking at
-(for instance) x86_64-softmmu/config-devices.mak in your build
-tree: if it has a line "CONFIG_IVSHMEM=$(CONFIG_POSIX)" in it
-then it's the out of date version.
+> +	$(call quiet-command,rm -f $@ && libtool -static -o $@ $^,"  libtool    $(TARGET_DIR)$@")
 
-You should be able to fix this by deleting */config-devices.mak
-from your build tree (or by blowing away the build tree entirely
-and recreating it.) Then try rebuilding -- ivshmem.c should not
-be compiled.
+Is libtool always available on Mac OS X? If not, we may need to add the
+detection to ./configure.
 
-We really must track down this dependency bug, it is very confusing
-when it bites people.
+Fam
 
-thanks
--- PMM
+> +else
+>  	$(call quiet-command,rm -f $@ && $(AR) rcs $@ $^,"  AR    $(TARGET_DIR)$@")
+> +endif
+>  
+>  quiet-command = $(if $(V),$1,$(if $(2),@echo $2 && $1, @$1))
+>  
+
 
