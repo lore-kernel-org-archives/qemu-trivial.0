@@ -1,63 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axU6G-0005Ix-4r
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 02:46:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56106)
+	id 1axU62-0004ps-5U
+	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 02:46:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chrisfriedt@gmail.com>) id 1axP6b-0000E4-C1
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:26:35 -0400
+	(envelope-from <chrisfriedt@gmail.com>) id 1axOWU-000670-9m
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 20:49:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chrisfriedt@gmail.com>) id 1axP6P-0004r7-Ni
-	for qemu-trivial@nongnu.org; Mon, 02 May 2016 21:26:23 -0400
-Received: from mail-ob0-x241.google.com ([2607:f8b0:4003:c01::241]:33075)
+	(envelope-from <chrisfriedt@gmail.com>) id 1axOWI-0005Ao-Mx
+	for qemu-trivial@nongnu.org; Mon, 02 May 2016 20:49:04 -0400
+Received: from mail-io0-x242.google.com ([2607:f8b0:4001:c06::242]:35444)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <chrisfriedt@gmail.com>)
-	id 1axP6O-0004m0-DC; Mon, 02 May 2016 21:26:17 -0400
-Received: by mail-ob0-x241.google.com with SMTP id nj8so166105obc.0;
-	Mon, 02 May 2016 18:25:48 -0700 (PDT)
+	id 1axOVw-0004xn-Lo; Mon, 02 May 2016 20:48:37 -0400
+Received: by mail-io0-x242.google.com with SMTP id u185so760645iod.2;
+	Mon, 02 May 2016 17:48:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=NPvMVudb/1TGLAw0n/iqf2LbUhMphmW1THAMI4CtW2k=;
-	b=RqXxdjr/V7e/Bt7N9+yd1BbgV82k/5T4sFWiSMQjJ8HXYKfdloZADqXmpu1n7SwBlN
-	4f+blnzodwEINftLDdKAB8FFgZ03CbIkD+OKDfRY9b2kMbodAFQXXtnlPTXjQ3FxDPEL
-	lKxDTUgZtrwUcA0aCcZUem7dLCNJV/gpBxSptBhpr+iRVAIXPyAlSnK3t/Db5MKi/YWU
-	iILGyJUAocYKOQbTXjvXDY3TnYvDPRRChi9A3+3cgDTLb8l9aiUR08Yqikri0FwXjC/H
-	+EFfVFiHovH8BL4KE6+djCCE9uQu8T0UVgxqHunbu2J03aOo36DFnIylFEEOpedAQ6yG
-	xOHw==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version; bh=RD7SE5WBjB8eD5BTCUIWA8YfnSTW1gZ/4EFplEB+2d8=;
+	b=cHkwD8fnRBxiDCi7hf3HikSBpMSRX4yjvqL0tbyr17FVccPkgTlqYeq6fYy4jL5o3W
+	6/lg/vDzd1jiUZRCNLtNdXQUR+bu/eG4lIlXYAu3pNr5GQdKaEgUD5rcpw4SA0g0uLPM
+	UOELhprr1j/l/OFp7TdYm9mr2IYLOVdm4+eHDULCG+iFziHoaBy5WMoKzhAFoEgZIWgy
+	rqw8XLhLkMKAUikL/i6vhrFIW2PCOSD9yoh8tb0OC4has6OlSVrJP0y2px4Cb+EHL+w/
+	nk8qAzA1vQ7DP9OUmLUxY8l/QbLwYshdfrcswjfuc8jN5vd7iTDbVxcgxz4n1VS7Es1D
+	Bjqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=NPvMVudb/1TGLAw0n/iqf2LbUhMphmW1THAMI4CtW2k=;
-	b=eiRVQ9uCn050k/SxpXtI+Afe7beI8N1q/oNjXyKWc7d5dcjtx1lhnPGF4ncksujTZL
-	HUUzu0vK86AdAV76pIGoiFnoqUsG/4Cp4kcAR9J+LSu/lxsWhG+LLDHMY4uuyLl1ATkF
-	QoY6vB5m52sykoqSyvN/7GOofn5p+pdjSRlI002lfFs0y/J0K0kNNSGWe8Vdnu7zSpDd
-	zu8Euw/TnLfDQswuKSDgOgicGykEw7Tkni/N62QRzdJDnbl4nwwNWFzX02N6WhlJnTOf
-	kA6LGjMeRBndUjKr6PWfhjP7DpV3pXnkh648IAoUKnEw7L7XQtMfBZpcxdHkGpgIPR19
-	lz5A==
-X-Gm-Message-State: AOPr4FU5fL1lLuFdS43PS1Gctpr538QfSPUMIvUX4/0DdUSarKroTiEtOOE/dgBPidEGM5Cv8UJWRs3AREL3WQ==
-X-Received: by 10.182.69.41 with SMTP id b9mr13941178obu.79.1462238745452;
-	Mon, 02 May 2016 18:25:45 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.157.4.120 with HTTP; Mon, 2 May 2016 18:25:26 -0700 (PDT)
-In-Reply-To: <CAFEAcA_kViE8oaiPE9SNGSXBRo4vocKuZXQuruyRULrjy9id4A@mail.gmail.com>
-References: <1462236478-61645-1-git-send-email-chrisfriedt@gmail.com>
-	<1462236478-61645-3-git-send-email-chrisfriedt@gmail.com>
-	<CAFEAcA8TjtF=+DY=kDRvK205VGuVPmc3AumvF8QiS0rqX1RiGA@mail.gmail.com>
-	<CAF4BF-RUvQyy2RJ+=+9mBM-k81Hgixpu2_0r9X1o=fAiVi4f_w@mail.gmail.com>
-	<CAFEAcA_kViE8oaiPE9SNGSXBRo4vocKuZXQuruyRULrjy9id4A@mail.gmail.com>
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version;
+	bh=RD7SE5WBjB8eD5BTCUIWA8YfnSTW1gZ/4EFplEB+2d8=;
+	b=DOE1O4EtGvDN+s18l81a9BsoeEWTGUmJfErWr0OSO+l8n3i9kSD1TGOth+q7Yc9z/S
+	Fh23ILFzXuUdY/5ILt7sgXZgleH2NPuTnM5kOJxU4iQ76yCVM88dT9n0jRoGpOq7iJmc
+	Nmu1wsofcDJuy6cWFa2KExDe0f+2C2cqTxtz5tzzOBOBdm7gwTkBwJrfdNcj4EvgVbrQ
+	PmbtpxlvRh+pM3AjKAddinlLUW1FrrimT5W4NO8dbGpl4mXrjesJj9jmINSafk3g7eEX
+	q7EZuH14f2LhhK4X7b2L/IaT2K9AtFlkX/FARhBCi5+3t0odz3ZNcUffLfxu9UJeZVov
+	6ZVQ==
+X-Gm-Message-State: AOPr4FX5Tre0MZdfJfwcdg16lxUi6Hh3Vdr6nG5uqZqWDFAYhA+DODSD+b07xeXulSzqUw==
+X-Received: by 10.107.182.138 with SMTP id g132mr60781iof.27.1462236485003;
+	Mon, 02 May 2016 17:48:05 -0700 (PDT)
+Received: from localhost.localdomain (76-10-180-162.dsl.teksavvy.com.
+	[76.10.180.162])
+	by smtp.gmail.com with ESMTPSA id u187sm815650iod.3.2016.05.02.17.48.04
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Mon, 02 May 2016 17:48:04 -0700 (PDT)
 From: Christopher Friedt <chrisfriedt@gmail.com>
-Date: Mon, 2 May 2016 21:25:26 -0400
-Message-ID: <CAF4BF-RzconSOm++Ey79FO2wm2JSK=PYV5UNnnjZvEyOkf3tgA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Fam Zheng <famz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, G 3 <programmingkidx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+To: famz@redhat.com,
+	mst@redhat.com
+Cc: Christopher Friedt <chrisfriedt@gmail.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Mon,  2 May 2016 20:47:58 -0400
+Message-Id: <1462236478-61645-3-git-send-email-chrisfriedt@gmail.com>
+X-Mailer: git-send-email 2.6.4 (Apple Git-63)
+In-Reply-To: <1462236478-61645-1-git-send-email-chrisfriedt@gmail.com>
+References: <1462236478-61645-1-git-send-email-chrisfriedt@gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="------------2.6.4 (Apple Git-63)"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c01::241
-X-Mailman-Approved-At: Tue, 03 May 2016 02:46:26 -0400
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] Remove unnecessary
- CONFIG_EVENTFD preprocessor conditional to satisfy link
+X-Received-From: 2607:f8b0:4001:c06::242
+X-Mailman-Approved-At: Tue, 03 May 2016 02:46:08 -0400
+Subject: [Qemu-trivial] [PATCH 2/2] Remove unnecessary CONFIG_EVENTFD
+ preprocessor conditional to satisfy link
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,33 +70,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 May 2016 01:26:35 -0000
+X-List-Received-Date: Tue, 03 May 2016 00:49:16 -0000
 
-On Mon, May 2, 2016 at 9:18 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 3 May 2016 at 02:14, Christopher Friedt <chrisfriedt@gmail.com> wrote:
->> On Mon, May 2, 2016 at 9:01 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> [ccing somebody else who ran into this, since I've figured out why.]
->>>
->>> On 3 May 2016 at 01:47, Christopher Friedt <chrisfriedt@gmail.com> wrote:
->>>> The file ivshmem.c unconditionally references event_notifier_init_fd()
->>>> in util/event_notifier-posix.c, even if CONFIG_EVENTFD is not defined.
->>>
->>> Yes, but ivshmem.c is only built if CONFIG_IVSHMEM, and
->>> CONFIG_IVSHMEM is set (in default-configs/pci.mak) to CONFIG_EVENTFD.
->>> So if CONFIG_EVENTFD is not defined then we should never build ivshmem.o.
->>>
->>> The problem here is that you've run into a bug in QEMU's makefiles,
->>
->> That would explain things.
+This is a multi-part message in MIME format.
+--------------2.6.4 (Apple Git-63)
+Content-Type: text/plain; charset=UTF-8; format=fixed
+Content-Transfer-Encoding: 8bit
 
 
+The file ivshmem.c unconditionally references event_notifier_init_fd() in util/event_notifier-posix.c, even if CONFIG_EVENTFD is not defined. On platforms where CONFIG_POSIX is defined, but CONFIG_EVENTFD is not defined, that results in an undefined symbol referenced from ivshmem.c and the link fails. That applies to Mac OS X, but possibly other BSD-based distros.
 
-> Hmm. (Is it set the same for every config-devices.mak for
-> every target you're trying to build?)
+Note: there is nothing specific to eventfd inside and event_notifier_init() also fails unconditionally if CONFIG_EVENTFD is not defined.
+Signed-off-by: Christopher Friedt <chrisfriedt@gmail.com>
+---
+ util/event_notifier-posix.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Ack - too late! I manually removed all of the *-softmmu/ directories
-after doing a make clean, because they were still hanging around.
-Rebuilding worked fine without PATCH 2/2.
 
-Thanks!
+--------------2.6.4 (Apple Git-63)
+Content-Type: text/x-patch; name="0002-Remove-unnecessary-CONFIG_EVENTFD-preprocessor-condi.patch"
+Content-Transfer-Encoding: 8bit
+Content-Disposition: inline; filename="0002-Remove-unnecessary-CONFIG_EVENTFD-preprocessor-condi.patch"
+
+diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
+index c1f0d79..c9bb34d 100644
+--- a/util/event_notifier-posix.c
++++ b/util/event_notifier-posix.c
+@@ -21,7 +21,6 @@
+ #include <sys/eventfd.h>
+ #endif
+ 
+-#ifdef CONFIG_EVENTFD
+ /*
+  * Initialize @e with existing file descriptor @fd.
+  * @fd must be a genuine eventfd object, emulation with pipe won't do.
+@@ -31,7 +30,6 @@ void event_notifier_init_fd(EventNotifier *e, int fd)
+     e->rfd = fd;
+     e->wfd = fd;
+ }
+-#endif
+ 
+ int event_notifier_init(EventNotifier *e, int active)
+ {
+
+--------------2.6.4 (Apple Git-63)--
+
+
 
