@@ -1,37 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axwUa-0002mG-U2
-	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2016 09:05:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37171)
+	id 1axye2-0005b6-D0
+	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2016 11:23:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47439)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1axwUS-0002Nh-Bq
-	for qemu-trivial@nongnu.org; Wed, 04 May 2016 09:05:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1axydu-0005Jk-3G
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 11:23:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1axwUG-0004al-SM
-	for qemu-trivial@nongnu.org; Wed, 04 May 2016 09:05:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35167)
+	(envelope-from <peter.maydell@linaro.org>) id 1axydi-0001D9-FJ
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 11:23:08 -0400
+Received: from mail-yw0-x22f.google.com ([2607:f8b0:4002:c05::22f]:34716)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>)
-	id 1axwTo-0004K4-TG; Wed, 04 May 2016 09:04:40 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 46381800A8;
-	Wed,  4 May 2016 13:04:24 +0000 (UTC)
-Received: from thinkpad.redhat.com (ovpn-112-28.ams2.redhat.com [10.36.112.28])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u44D4Fac002315; Wed, 4 May 2016 09:04:22 -0400
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Date: Wed,  4 May 2016 15:04:08 +0200
-Message-Id: <1462367048-20997-4-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1462367048-20997-1-git-send-email-lvivier@redhat.com>
-References: <1462367048-20997-1-git-send-email-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <peter.maydell@linaro.org>) id 1axydh-00013d-9i
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 11:23:02 -0400
+Received: by mail-yw0-x22f.google.com with SMTP id j74so86791128ywg.1
+	for <qemu-trivial@nongnu.org>; Wed, 04 May 2016 08:22:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=c4KJRV0onV0f4v6Z8CNDJyKofS9em1QGXWy9jjxeH3Y=;
+	b=a7y3lu2LYvjCTnZpxUz7Dw0S9+seUeUFd/ET2WYFojHPuOCVKeJCiZTVJIZ537aYQg
+	7bd8Ly5WAfj9XE5iw3hG+Ei+beCPaWdAFmeZr/aytFlAFsGhqctLY/KvRA9QKCh5BSwx
+	nHuVvKobnvenoS1Okha4E9CFef84I/mUz6A2g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=c4KJRV0onV0f4v6Z8CNDJyKofS9em1QGXWy9jjxeH3Y=;
+	b=ZpuuOG4zEOjZCMjbIDbs3fkEKkRSAn7UPLT7fKbXP6HoIbmZzWZ/STjjiV7UN305TZ
+	6kTuXmkwBeRedbkP8DOD9fDfs5It6P1VutwHBxgTgIh+2136b20XnUFgsxZUZC2LXryW
+	ZBWKiNNhGoqmPinVmqYot8K2werkKdmXjFFibABTXzgr6RI6dJ3BMB4b09NurDroZKZ5
+	5t7AlSUNO2aAOpIVVBrRia3vXpVVPMQrdji3HDCPzfCT2odMkAh8muwINJLknIOVN1HI
+	JfNtZE/mCzZ7RT0jmvS/YlXGGICP6/wRtx/53bIMdqQK8Z/LALDkkkZlPqrVrjExujKZ
+	JqQA==
+X-Gm-Message-State: AOPr4FUIlfLDjTXxm5omrUUev3Fh3SyBMvlSk3aIA3cvfs3gFVMXVMLksxDJXACocqY525Y/l1fZ0JYMQcHdbwy/
+X-Received: by 10.176.6.100 with SMTP id f91mr5698591uaf.38.1462375356077;
+	Wed, 04 May 2016 08:22:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 08:22:16 -0700 (PDT)
+In-Reply-To: <1461651308-894-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+References: <1461651308-894-1-git-send-email-zhoujie2011@cn.fujitsu.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 May 2016 16:22:16 +0100
+Message-ID: <CAFEAcA-__bqcWUhVw-qg2DPwwgGwBn-F6Fpu+vmY42o3YKfwiA@mail.gmail.com>
+To: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 3/3] remove useless muldiv64()
+X-Received-From: 2607:f8b0:4002:c05::22f
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/arm/nseries: Allocating
+ Large sized arrays to heap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,32 +60,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 May 2016 13:05:26 -0000
+X-List-Received-Date: Wed, 04 May 2016 15:23:20 -0000
 
-muldiv64(a, 1, b) is like "a / b".
+On 26 April 2016 at 07:15, Zhou Jie <zhoujie2011@cn.fujitsu.com> wrote:
+> n8x0_init has a huge stack usage of 65536 bytes approx.
+> Moving large arrays to heap to reduce stack usage.
+>
+> Signed-off-by: Zhou Jie <zhoujie2011@cn.fujitsu.com>
+> ---
+>  hw/arm/nseries.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+> index 5382505..c7068c0 100644
+> --- a/hw/arm/nseries.c
+> +++ b/hw/arm/nseries.c
+> @@ -1364,7 +1364,7 @@ static void n8x0_init(MachineState *machine,
+>
+>      if (option_rom[0].name &&
+>          (machine->boot_order[0] == 'n' || !machine->kernel_filename)) {
+> -        uint8_t nolo_tags[0x10000];
+> +        uint8_t *nolo_tags = g_new(uint8_t, 0x10000);
+>          /* No, wait, better start at the ROM.  */
+>          s->mpu->cpu->env.regs[15] = OMAP2_Q2_BASE + 0x400000;
+>
+> @@ -1383,6 +1383,7 @@ static void n8x0_init(MachineState *machine,
+>
+>          n800_setup_nolo_tags(nolo_tags);
+>          cpu_physical_memory_write(OMAP2_SRAM_BASE, nolo_tags, 0x10000);
+> +        g_free(nolo_tags);
+>      }
+>  }
 
-This patch is the result of coccinelle script
-scripts/coccinelle/remove_muldiv64.cocci.
+Thanks, applied to target-arm.next.
 
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- hw/usb/hcd-ohci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index e5b535f..2af6c16 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1474,7 +1474,7 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
-     if (tks >= usb_frame_time)
-         return (ohci->frt << 31);
- 
--    tks = muldiv64(tks, 1, usb_bit_time);
-+    tks = tks / usb_bit_time;
-     fr = (uint16_t)(ohci->fi - tks);
- 
-     return (ohci->frt << 31) | fr;
--- 
-2.5.5
-
+-- PMM
 
