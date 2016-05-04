@@ -1,59 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1axkMj-0001Ix-OP
-	for mharc-qemu-trivial@gnu.org; Tue, 03 May 2016 20:08:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43875)
+	id 1axsj9-0000J2-Nz
+	for mharc-qemu-trivial@gnu.org; Wed, 04 May 2016 05:04:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chrisfriedt@gmail.com>) id 1axkMc-000170-B2
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 20:08:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1axsj0-0008PT-KZ
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 05:04:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chrisfriedt@gmail.com>) id 1axkMQ-0005Ry-HY
-	for qemu-trivial@nongnu.org; Tue, 03 May 2016 20:08:20 -0400
-Received: from mail-oi0-x234.google.com ([2607:f8b0:4003:c06::234]:36745)
+	(envelope-from <peter.maydell@linaro.org>) id 1axsio-0004dc-Qv
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 05:04:01 -0400
+Received: from mail-yw0-x231.google.com ([2607:f8b0:4002:c05::231]:35658)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chrisfriedt@gmail.com>)
-	id 1axkMP-0005JS-9M; Tue, 03 May 2016 20:08:14 -0400
-Received: by mail-oi0-x234.google.com with SMTP id x201so46890101oif.3;
-	Tue, 03 May 2016 17:07:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=MKcM893cTZkLz86cquNORvaU6kpWa9j2qvC6DK6sMrc=;
-	b=ihdoF50EmYjdpXTtaUIQNO9/+RIn+gGo7CbFjbabBDoUuoYMf7tgcOeiRktbliXQeu
-	zNX23yKa0V3F+pTn9J3v+TrF+1GZdkkBzaDZKgbrdXfaOQatQpfzkmFnqjifASKMNOlh
-	wywj2w16Lgq0MleRW4Z1BG86pSvxrqzYXtzJf3agxuTLpW/ItGk2+dZd4kKdB5W3dE4e
-	/S2bH8odI/VUUvG0os199V2OcQ4N5MGOhU4/xgS6AVRQ4c89tRhWi1Hoztzen/+1i58k
-	OqnJiBbPOMjgB2J9SAskD0KJ0T007rarOgY2nMQ6tnH6GflksuZ1+9K0zpeUImSDxtsS
-	mXAw==
+	(envelope-from <peter.maydell@linaro.org>) id 1axsin-0004Wl-K6
+	for qemu-trivial@nongnu.org; Wed, 04 May 2016 05:03:54 -0400
+Received: by mail-yw0-x231.google.com with SMTP id g133so66492367ywb.2
+	for <qemu-trivial@nongnu.org>; Wed, 04 May 2016 02:03:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8x1+qTm4xvwjttccybAoLU9brM1x6s+m8J5OY7DkciU=;
+	b=aiwffNTCtcdStFj9z1vl/V79/IsTN9HyftktEJdP7gfPVr+GjZFKYbooHdOFQrZUv6
+	IIzOznerI1vwe0piQemEx/CtCJYExHVD0U2jfLb2jTvKTWhKRWPFt3cC8utndrZb0uCj
+	oXyV6v6aFRlyZRCJca9srFvF4Pnh2XGLxuIkk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=MKcM893cTZkLz86cquNORvaU6kpWa9j2qvC6DK6sMrc=;
-	b=StTPtQqJcRlF6namAC6v4/wM3uaHldowF5XFMgU8/pjp1pDSPpRooN7+GIq6mVuK0U
-	mD9KV1mrTfKu1t1jKTRpSu8GXHT8QpIKFl5IbHsnPoARYb91HihmB3/0IZ587KcBHYy5
-	wHxfbpiRA19hLJjakga3OPYAvX+5IV03zCxKF2Qo3VhYQLwwmgFovkf2KNoS7xrOWz8m
-	Zk7CoWdlbR1B0rWGPAE9Q4JiCo70IImC2BwqJ/vYeDAw0fwjzCMmkePiWPcXcTGyi5gj
-	waSAJldO5tTcdicz8pfbybWlXi6PVy5jWlwUnASuiRgGzLCZOFoWJiX0K2rWmq9/2e53
-	+faw==
-X-Gm-Message-State: AOPr4FU163AV0wFhRE3pttRiK+T2+BRzeNWfhjxhj434qcg7XcVjkKfjcVecn0jg0i5ZXP/LU8kM3JKqcnty0Q==
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8x1+qTm4xvwjttccybAoLU9brM1x6s+m8J5OY7DkciU=;
+	b=EnOv9YuBWWKDoR8M++vD4Nx7OwWFn8OLXFv+7+pmEFSqoHHC1XWYmgOOTBpV7fNJot
+	DVWrgqTUPyzjJM53w5VJ+6AsjRKPj43glxHRygbp2X7FaJ90cwKC3ZkZTHCwIWZx6f7J
+	N1F+mP76axIJ2kGTy6nLeS65XGU03B0Xk9akS02v++URXIKFk+jvpqlRIvXVWT1t2juJ
+	PR0ySVcf2Ko/QSLdrk55irWy0lwxAZyp9WiDY8lrIPOrmLKb1racspGK9yeIcm0dW6JC
+	Ytap6VRLEyqNpWtwUdNG9OdwUtAo9UjdvPowAk0LLhPCaeAAIT4NJ8CvYB7BjockIiWT
+	0x6Q==
+X-Gm-Message-State: AOPr4FV6ns+U1L8Oy8IysR01wx39klyPD8wI1M0IHhCtndGRm0hJnovvB15g5LnE8+IedJ6WFkcMIo7T9MMY1RHa
+X-Received: by 10.159.35.12 with SMTP id 12mr4106594uae.119.1462352611528;
+	Wed, 04 May 2016 02:03:31 -0700 (PDT)
 MIME-Version: 1.0
-X-Received: by 10.202.82.209 with SMTP id g200mr2781064oib.31.1462320461614;
-	Tue, 03 May 2016 17:07:41 -0700 (PDT)
-Received: by 10.157.4.120 with HTTP; Tue, 3 May 2016 17:07:40 -0700 (PDT)
-Received: by 10.157.4.120 with HTTP; Tue, 3 May 2016 17:07:40 -0700 (PDT)
-In-Reply-To: <CAF4BF-T44ixRn6EVqLvPC7pktEcCO8qQDJJd1UgN8WX6T=Dwcw@mail.gmail.com>
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 02:03:12 -0700 (PDT)
+In-Reply-To: <CAF4BF-Re+siJV4KTOvUwsDS3ckt_HfPpCQkB7rPPmJZ=OS8tSw@mail.gmail.com>
 References: <1462237852-61856-1-git-send-email-chrisfriedt@gmail.com>
 	<0b165339-9dde-57f8-959d-22122390ca0b@twiddle.net>
 	<CAF4BF-T44ixRn6EVqLvPC7pktEcCO8qQDJJd1UgN8WX6T=Dwcw@mail.gmail.com>
-Date: Tue, 3 May 2016 20:07:40 -0400
-Message-ID: <CAF4BF-Re+siJV4KTOvUwsDS3ckt_HfPpCQkB7rPPmJZ=OS8tSw@mail.gmail.com>
-From: Christopher Friedt <chrisfriedt@gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, famz@redhat.com, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary=001a113de920a9962c0531f90339
+	<CAF4BF-Re+siJV4KTOvUwsDS3ckt_HfPpCQkB7rPPmJZ=OS8tSw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 May 2016 10:03:12 +0100
+Message-ID: <CAFEAcA9ob9RZ55Hhh+DwAFt92V0oNL+57rDmFk6GGaPkxdAqtw@mail.gmail.com>
+To: Christopher Friedt <chrisfriedt@gmail.com>
+Cc: Richard Henderson <rth@twiddle.net>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Fam Zheng <famz@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::234
+X-Received-From: 2607:f8b0:4002:c05::231
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2v2] [RESENT-INLINE] Use
  libtool instead of ar to create static libraries on Darwin.
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,75 +64,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 May 2016 00:08:32 -0000
+X-List-Received-Date: Wed, 04 May 2016 09:04:13 -0000
 
---001a113de920a9962c0531f90339
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-On May 3, 2016 9:50 AM, "Christopher Friedt" <chrisfriedt@gmail.com> wrote:
+On 4 May 2016 at 01:07, Christopher Friedt <chrisfriedt@gmail.com> wrote:
 >
-> On Tue, May 3, 2016 at 3:06 AM, Richard Henderson <rth@twiddle.net> wrote=
-:
-> > On 05/02/2016 03:10 PM, Christopher Friedt wrote:
-> >>
-> >>  %.a:
-> >> +ifdef CONFIG_DARWIN
-> >> +       $(call quiet-command,rm -f $@ && libtool -static -o $@ $^,"
-> >> libtool    $(TARGET_DIR)$@")
-> >> +else
-> >>         $(call quiet-command,rm -f $@ && $(AR) rcs $@ $^,"  AR
-> >> $(TARGET_DIR)$@")
-> >> +endif
-> >>
-> >
-> > Does it work to use libtool -static everywhere?
+> On May 3, 2016 9:50 AM, "Christopher Friedt" <chrisfriedt@gmail.com> wrote:
+>>
+>> On Tue, May 3, 2016 at 3:06 AM, Richard Henderson <rth@twiddle.net> wrote:
+>> > On 05/02/2016 03:10 PM, Christopher Friedt wrote:
+>> >>
+>> >>  %.a:
+>> >> +ifdef CONFIG_DARWIN
+>> >> +       $(call quiet-command,rm -f $@ && libtool -static -o $@ $^,"
+>> >> libtool    $(TARGET_DIR)$@")
+>> >> +else
+>> >>         $(call quiet-command,rm -f $@ && $(AR) rcs $@ $^,"  AR
+>> >> $(TARGET_DIR)$@")
+>> >> +endif
+>> >>
+>> >
+>> > Does it work to use libtool -static everywhere?
+>
+> One possibility for future-proofing the link stage that applies to most
+> (all?) platforms that Qemu runs on would be to switch to libtool for all
+> arch's and just adjust the "libtool flags" as necessary.
+>
+> Would require checking for libtool.
 
-One possibility for future-proofing the link stage that applies to most
-(all?) platforms that Qemu runs on would be to switch to libtool for all
-arch's and just adjust the "libtool flags" as necessary.
+This is more complicated than we need. OSX "libtool" and GNU
+"libtool" are really completely different things. We don't
+(these days) do anything that we need GNU libtool for, so
+there's no need to depend on it or use it optionally -- we should
+just use "ar". If we need to special case the "program for creating
+static libraries" for OSX that's annoying but we can do that.
 
-Would require checking for libtool.
-
-Fallback to ar?
-
-=C2=A9
-
-Sent from my Android
-
---001a113de920a9962c0531f90339
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On May 3, 2016 9:50 AM, &quot;Christopher Friedt&quot; &lt;<a href=3D"mailt=
-o:chrisfriedt@gmail.com">chrisfriedt@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Tue, May 3, 2016 at 3:06 AM, Richard Henderson &lt;<a href=3D"mailt=
-o:rth@twiddle.net">rth@twiddle.net</a>&gt; wrote:<br>
-&gt; &gt; On 05/02/2016 03:10 PM, Christopher Friedt wrote:<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt;=C2=A0 %.a:<br>
-&gt; &gt;&gt; +ifdef CONFIG_DARWIN<br>
-&gt; &gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0$(call quiet-command,rm -f $@ &am=
-p;&amp; libtool -static -o $@ $^,&quot;<br>
-&gt; &gt;&gt; libtool=C2=A0 =C2=A0 $(TARGET_DIR)$@&quot;)<br>
-&gt; &gt;&gt; +else<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(call quiet-command,rm -f $=
-@ &amp;&amp; $(AR) rcs $@ $^,&quot;=C2=A0 AR<br>
-&gt; &gt;&gt; $(TARGET_DIR)$@&quot;)<br>
-&gt; &gt;&gt; +endif<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;<br>
-&gt; &gt; Does it work to use libtool -static everywhere?</p>
-<p dir=3D"ltr">One possibility for future-proofing the link stage that appl=
-ies to most (all?) platforms that Qemu runs on would be to switch to libtoo=
-l for all arch&#39;s and just adjust the &quot;libtool flags&quot; as neces=
-sary.</p>
-<p dir=3D"ltr">Would require checking for libtool.</p>
-<p dir=3D"ltr">Fallback to ar?</p>
-<p dir=3D"ltr">=C2=A9</p>
-<p dir=3D"ltr">Sent from my Android</p>
-
---001a113de920a9962c0531f90339--
+thanks
+-- PMM
 
