@@ -1,54 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ayM5J-00041X-Eb
-	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2016 12:25:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55496)
+	id 1ayN3V-0006y0-1c
+	for mharc-qemu-trivial@gnu.org; Thu, 05 May 2016 13:27:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayM5A-0003jR-3m
-	for qemu-trivial@nongnu.org; Thu, 05 May 2016 12:25:02 -0400
+	(envelope-from <stefanha@gmail.com>) id 1ayN3M-0006cy-3s
+	for qemu-trivial@nongnu.org; Thu, 05 May 2016 13:27:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayM4v-0001zR-7v
-	for qemu-trivial@nongnu.org; Thu, 05 May 2016 12:24:50 -0400
-Received: from mail-yw0-x231.google.com ([2607:f8b0:4002:c05::231]:33497)
+	(envelope-from <stefanha@gmail.com>) id 1ayN3A-0005tt-H7
+	for qemu-trivial@nongnu.org; Thu, 05 May 2016 13:27:02 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:36251)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayM4u-0001n7-1k
-	for qemu-trivial@nongnu.org; Thu, 05 May 2016 12:24:41 -0400
-Received: by mail-yw0-x231.google.com with SMTP id t10so145803835ywa.0
-	for <qemu-trivial@nongnu.org>; Thu, 05 May 2016 09:24:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8aHq7uUsTGowqxrXs1J5U5qxQTUQGMF4wWzTM6m/uig=;
-	b=K0qcK6f8ogfXpuBxY3/sr0KDIWuyKyoBAAwPO0yI4jkMi1i6GL1SKnyVrtB/v3zCQc
-	gzwo5n0uKa0xwN963Tf21ZNR+PkVTTgBYE0Yu3m/eggvPOxFUv7JU835UnmGLPp5ETZJ
-	sI8zbEK+3Miincic465WR1HMAeXMV4eAUhhks=
+	(envelope-from <stefanha@gmail.com>)
+	id 1ayN2r-0005c8-MO; Thu, 05 May 2016 13:26:38 -0400
+Received: by mail-wm0-x233.google.com with SMTP id n129so29081066wmn.1;
+	Thu, 05 May 2016 10:26:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=k8exVuyGjADqFM22HGzgi7XxXKs2B/9LJz8bwAEUHXc=;
+	b=BArnvVfJvc63hcSRN1KnNav0QiYA0b9Ab3icsxXh9kLhw4ZnmwAA89UuE7/CazTNxD
+	gPm/+tl8LLfEn+CyEvtMGRnruP2KO7e99kWhgkQyG9so9xpZ/71qrKaKwonIGnTWl4uq
+	iZsQXUmmSCNhfkkFELg2ZUjrRCXh5YLhoMd4uU6OqxxIdJ1a5PnyQ9Sd98eRHFaWRqqz
+	MMZL8smBz38NTDet6zup529PI1QuG+pw+uy+6DnFTCRas3KTtjzFgx7z/sKTAkJq5Ain
+	CYwjv+7qdIAouLw/pocdvLvpCluJC3n8b/mbSlzvJodS2QW+owln4stLdPdJcZfxy0Dh
+	qskw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8aHq7uUsTGowqxrXs1J5U5qxQTUQGMF4wWzTM6m/uig=;
-	b=fyUpQJ+j7brbDwj9qqDLpi6Gx7SdI1Wk3xaPH/mXVN0fKK1HIAWQDK3lrXit1cTX6b
-	eollPP2H8TMU9FknU93zEeOqVuX2s4iAFBcu86WobQw4GUG/za628Lpkqa8LS01zPslB
-	PXUkzjsibuWM8VJ1JpsBmh66LTQAluzdJrz8nPemqFhGtEtQT2GJ6SalVwX4mvv9yQWP
-	K6ewMZ648bpktZdqmQ3vLS6weGVVC32EANe8uzv0ma+prXSbHGxRW8yIo3BLBl9uvQa2
-	YmTdk/5sPjCcnrD7xDxkLRDWC+Mp7bqoZvfkVKbbuBbmKJM4A1/0NpltOS+D6J+3k7kq
-	DFTQ==
-X-Gm-Message-State: AOPr4FXwv5VKMAC531oVOdklN0g8Vk7loOR0kJUlk8JQBJgtAIf6mph7IEpAr57e+NgFifixJhzjrou45AEmDQVS
-X-Received: by 10.159.54.232 with SMTP id p95mr9621580uap.107.1462465458038;
-	Thu, 05 May 2016 09:24:18 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=k8exVuyGjADqFM22HGzgi7XxXKs2B/9LJz8bwAEUHXc=;
+	b=db0mL+PIEjrLZWXMCNdjV5k7sb4X17qQqtY6UBCkLQsR7B5ltyJqyYXOm1VsRwv9dq
+	yA0ug4m7GnsJWc/Ki5rIerRNIOctea0fUO1SdKSjMJ1qL43qh2dNxsjSKIZHfkqy2UUb
+	yaubmAuzzpZe5jYR2g5re0eQ/gfWCShcVfll2blDxU6VjASTlYSRc9iNCOcVWOYMEd+x
+	aNzYMB2jEZ/5NBfBMphOHKPfsJGSZJySeRmqB3fw/WodMZ+31taj7ZCOvv7TnlvwvYXH
+	01OCT6MbMNUIcE5vHHT2CzIEiilbgCaGug7OhOG0fLFxDwaEx2k5+tLq3ESM5+5SbaiD
+	1tIw==
+X-Gm-Message-State: AOPr4FVHpInRBunqEdZx5bAO3AeZPQm20j5iHUn6vNrtT0fU04yj7lBepa6lHykr7bapvw==
+X-Received: by 10.28.48.145 with SMTP id w139mr4421978wmw.51.1462469165178;
+	Thu, 05 May 2016 10:26:05 -0700 (PDT)
+Received: from localhost (host109-156-67-28.range109-156.btcentralplus.com.
+	[109.156.67.28]) by smtp.gmail.com with ESMTPSA id
+	s6sm10755493wjy.31.2016.05.05.10.26.03
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 May 2016 10:26:04 -0700 (PDT)
+Date: Thu, 5 May 2016 18:26:02 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Md Haris Iqbal <haris.phnx@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20160505172602.GB14181@stefanha-x1.localdomain>
+References: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Thu, 5 May 2016 09:23:58 -0700 (PDT)
-In-Reply-To: <1462316319-4308-1-git-send-email-peter@lekensteyn.nl>
-References: <1462316319-4308-1-git-send-email-peter@lekensteyn.nl>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 May 2016 17:23:58 +0100
-Message-ID: <CAFEAcA9Mr2h_xPZdd4a7wW-jUvT5bVXQKp5rsZWRa_ikLY9sWQ@mail.gmail.com>
-To: Peter Wu <peter@lekensteyn.nl>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="GID0FwUMdk1T2AWN"
+Content-Disposition: inline
+In-Reply-To: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
+User-Agent: Mutt/1.6.0 (2016-04-01)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::231
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gdbstub: avoid busy loop
- while waiting for gdb
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-Devel] [PATCH] Changed malloc
+ to g_malloc, free to g_free in linux-user/qemu.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,84 +70,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 May 2016 16:25:02 -0000
+X-List-Received-Date: Thu, 05 May 2016 17:27:14 -0000
 
-On 3 May 2016 at 23:58, Peter Wu <peter@lekensteyn.nl> wrote:
-> While waiting for a gdb response, or while sending an acknowledgement
-> there is not much to do, so just mark the socket as non-blocking to
-> avoid a busy loop while paused at gdb. This only affects the user-mode
-> emulation (qemu-arm -g 1234 ./a.out).
->
-> Note that this issue was reported before at
-> https://lists.nongnu.org/archive/html/qemu-devel/2013-02/msg02277.html.
->
-> While at it, close the gdb client fd on EOF or error while reading.
->
-> Signed-off-by: Peter Wu <peter@lekensteyn.nl>
+
+--GID0FwUMdk1T2AWN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Mar 24, 2016 at 12:02:03AM +0530, Md Haris Iqbal wrote:
+> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
 > ---
->  gdbstub.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
->
-> diff --git a/gdbstub.c b/gdbstub.c
-> index 0e431fd..b126bf5 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -332,7 +332,7 @@ static int get_char(GDBState *s)
->          if (ret < 0) {
->              if (errno == ECONNRESET)
->                  s->fd = -1;
-> -            if (errno != EINTR && errno != EAGAIN)
-> +            if (errno != EINTR)
->                  return -1;
->          } else if (ret == 0) {
->              close(s->fd);
-> @@ -393,7 +393,7 @@ static void put_buffer(GDBState *s, const uint8_t *buf, int len)
->      while (len > 0) {
->          ret = send(s->fd, buf, len, 0);
->          if (ret < 0) {
-> -            if (errno != EINTR && errno != EAGAIN)
-> +            if (errno != EINTR)
->                  return;
->          } else {
->              buf += ret;
-> @@ -1542,9 +1542,13 @@ gdb_handlesig(CPUState *cpu, int sig)
->              for (i = 0; i < n; i++) {
->                  gdb_read_byte(s, buf[i]);
->              }
-> -        } else if (n == 0 || errno != EAGAIN) {
-> +        } else {
->              /* XXX: Connection closed.  Should probably wait for another
->                 connection before continuing.  */
-> +            if (n == 0) {
-> +                close(s->fd);
-> +            }
-> +            s->fd = -1;
->              return sig;
->          }
->      }
-> @@ -1599,8 +1603,6 @@ static void gdb_accept(void)
->      gdb_has_xml = false;
->
->      gdbserver_state = s;
-> -
-> -    fcntl(fd, F_SETFL, O_NONBLOCK);
->  }
->
->  static int gdbserver_open(int port)
+>  linux-user/qemu.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-It does look like all the places we use s->fd:
- * are only for user-mode
- * are currently coded as "loop round until we get something",
-   so effectively blocking but doing it with a busy loop
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-I suspect the O_NONBLOCK here may be legacy from before the
-system-emulation gdbstub was reworked to use a chr backend
-(in system emulation there really are other things we need
-to attend to besides gdb stub packets, like the monitor).
+--GID0FwUMdk1T2AWN
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Other than the error in the commit message,
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
 
-thanks
--- PMM
+iQEcBAEBAgAGBQJXK4IqAAoJEJykq7OBq3PIlu0IAL84xq+LzstLL5Ib4brWGzjr
+SoMZ2f4CJVpjWR+Qg9Ma/bXRpnPYKh6Y9wgUfAgurTyR2rfyxtD4G1Nxkk0/lBMg
+4J1GMDSodhQ+vOglAuv8yugDZPk1+xcoGWYo2QXw6CFSDZBKafAQf7RIkIoHBAyD
+eEKq+jaWU3TVRnFRc/c4xTM/nkhvxOhmXnGbx1fm5jnSdZfvjCzRn9/EXSrLWlTs
+FGliosDa1VE3zumdZakAWb6QoOKC0hz7VhlPvTSVENcK23Ko54hI2V3Sh/ALC4tc
+aFGMAK950DF7AsXK6o7pcuv/vNWI7TevVBdh3FUdmimq1hYSHtGjbNUe7LT4LFc=
+=u1tj
+-----END PGP SIGNATURE-----
+
+--GID0FwUMdk1T2AWN--
 
