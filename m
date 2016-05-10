@@ -1,58 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1azmOo-0003ty-5p
-	for mharc-qemu-trivial@gnu.org; Mon, 09 May 2016 10:43:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44522)
+	id 1b00iV-0004lh-LI
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 02:00:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1azmOl-0003qU-V4
-	for qemu-trivial@nongnu.org; Mon, 09 May 2016 10:43:04 -0400
+	(envelope-from <arei.gonglei@huawei.com>) id 1b00iS-0004ZW-Eg
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 02:00:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1azmOj-0003XX-W9
-	for qemu-trivial@nongnu.org; Mon, 09 May 2016 10:43:02 -0400
-Received: from mail-ig0-x229.google.com ([2607:f8b0:4001:c05::229]:37454)
+	(envelope-from <arei.gonglei@huawei.com>) id 1b00iL-0002xt-BP
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 02:00:19 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:23579)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>)
-	id 1azmOj-0003XN-Pw; Mon, 09 May 2016 10:43:01 -0400
-Received: by mail-ig0-x229.google.com with SMTP id s8so93462152ign.0;
-	Mon, 09 May 2016 07:43:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=UTvvkzatogdU05G3Kaf6SoHO7BQMW1nBhmMlv/5VC1E=;
-	b=ZFkn+DIm3RNLiUzR1tJMw6cZOTHvTVKDUbPFnaMx1KuwgcviXuJw1bD4I0SSlYHlox
-	TfguEc6jk0Gy30Sv/9m2YCaP0/SgfpFunn5I0ISDekaWZ8Kjz4HZQHgQ78Bokf9/qqs/
-	5QWHWRBOQ8iAhh3kxTWJQ+zIHX5stJ7f6TTnMAOHl4TBVkv4Z0yKcUEN+uXb401U6XZI
-	ZpXmkGSTpnZOjCRnrJgaSuGnHJWhpXYeHWSMq1aMmGAUBLvTnoF36TcRBxDU7Qq30xeI
-	IWQuZbO0OsdaXt+IxPYE89GZ12rTeZb+odjgFNwQtD4hq5cQ17CZDYyS0sCgd3EEaJUg
-	2xlw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=UTvvkzatogdU05G3Kaf6SoHO7BQMW1nBhmMlv/5VC1E=;
-	b=Ff7CC4pZ8IkXK3z0gRNePhI5U8SSBVd1JTlMHwV/xhYQyO9fFPRSZVkMEoGM7sSrK8
-	VV03WAH11zxlNPHucprtBttK9QTka8D6ngL7pd5IkWqxu0PP4VkbvEZM+XSJzRFgAQqK
-	Wz+Nd9/WMxvdxris6jx52B8L0z8CqEr9oGeGah1MNLgk0VOsSFwTUwDCrBy9cXzoxeCZ
-	HsNB8ewitLCa1lzbGFlnK1czo5O9aBzN8aprOYSvpM8vDGpvx949IxSQ9gSJ3DPPhdmp
-	SOs+0yyfpMpKC0sZ9H/t3bEFRv0PNtyil4KWcNRO2paRXmMdevcSe8i9uAiWoRQeIgIC
-	h8AQ==
-X-Gm-Message-State: AOPr4FXVLxRYf6JJe4d1BJvdjc8qB3leSeoBWzOfy8fXai4vhnvLwh8l4WTDWD+ZD11ubcV7HJxxGAOdfBgm1Q==
+	(envelope-from <arei.gonglei@huawei.com>)
+	id 1b00iK-0002uU-0n; Tue, 10 May 2016 02:00:13 -0400
+Received: from 172.24.1.47 (EHLO SZXEMA417-HUB.china.huawei.com)
+	([172.24.1.47])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DKH72993; Tue, 10 May 2016 13:59:52 +0800 (CST)
+Received: from SZXEMA503-MBS.china.huawei.com ([169.254.6.166]) by
+	SZXEMA417-HUB.china.huawei.com ([10.82.72.34]) with mapi id
+	14.03.0235.001; Tue, 10 May 2016 13:59:47 +0800
+From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH 3/6] spice: fix coverity complains
+Thread-Index: AQHRdTE2gG4ORTjdWkyknfV7sRu49J9HDJoAgGsLHlA=
+Date: Tue, 10 May 2016 05:59:46 +0000
+Message-ID: <33183CC9F5247A488A2544077AF19020B032023A@SZXEMA503-MBS.china.huawei.com>
+References: <1456998223-12356-1-git-send-email-arei.gonglei@huawei.com>
+	<1456998223-12356-4-git-send-email-arei.gonglei@huawei.com>
+	<56D81DC0.5030302@redhat.com>
+In-Reply-To: <56D81DC0.5030302@redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.177.18.62]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Received: by 10.50.186.163 with SMTP id fl3mr11153837igc.27.1462804981025;
-	Mon, 09 May 2016 07:43:01 -0700 (PDT)
-Received: by 10.50.103.225 with HTTP; Mon, 9 May 2016 07:43:00 -0700 (PDT)
-In-Reply-To: <1462800299-12641-5-git-send-email-lvivier@redhat.com>
-References: <1462800299-12641-1-git-send-email-lvivier@redhat.com>
-	<1462800299-12641-5-git-send-email-lvivier@redhat.com>
-Date: Mon, 9 May 2016 17:43:00 +0300
-Message-ID: <CAMo8BfJ23utOufizvtbBvxoQ6Gnmtz=OtWxUTWEW1pa1Y1jCFw@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::229
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/5] replace muldiv64(a, b,
- c) by (uint64_t)a * b / c
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090204.573178DD.001C, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=169.254.6.166,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: e63a40bf414fd2b205e72415c37b2aa1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Subject: Re: [Qemu-trivial] [PATCH 3/6] spice: fix coverity complains
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,25 +59,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 May 2016 14:43:05 -0000
+X-List-Received-Date: Tue, 10 May 2016 06:00:21 -0000
 
-On Mon, May 9, 2016 at 4:24 PM, Laurent Vivier <lvivier@redhat.com> wrote:
-> When "a" and "b" are 32bit values, we don't have to cast
-> them to 128bit, 64bit is enough.
->
-> This patch is the result of coccinelle script
-> scripts/coccinelle/simplify_muldiv64.cocci
->
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  hw/audio/gus.c      | 2 +-
->  hw/xtensa/pic_cpu.c | 4 ++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
+Hi Gerd,
 
-For xtensa PIC:
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+Pls pick this one, thanks :)
 
--- 
-Thanks.
--- Max
+Regards,
+-Gonglei
+
+
+> -----Original Message-----
+> From: Paolo Bonzini [mailto:pbonzini@redhat.com]
+> Sent: Thursday, March 03, 2016 7:19 PM
+> To: Gonglei (Arei); qemu-devel@nongnu.org
+> Cc: qemu-trivial@nongnu.org
+> Subject: Re: [PATCH 3/6] spice: fix coverity complains
+>=20
+>=20
+>=20
+> On 03/03/2016 10:43, Gonglei wrote:
+> > Remove the unnecessary NULL check.
+> >
+> > Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+> > ---
+> >  ui/spice-display.c | 4 +---
+> >  1 file changed, 1 insertion(+), 3 deletions(-)
+> >
+> > diff --git a/ui/spice-display.c b/ui/spice-display.c
+> > index 242ab5f..1ffbec1 100644
+> > --- a/ui/spice-display.c
+> > +++ b/ui/spice-display.c
+> > @@ -769,9 +769,7 @@ static void
+> display_mouse_define(DisplayChangeListener *dcl,
+> >      SimpleSpiceDisplay *ssd =3D container_of(dcl, SimpleSpiceDisplay, =
+dcl);
+> >
+> >      qemu_mutex_lock(&ssd->lock);
+> > -    if (c) {
+> > -        cursor_get(c);
+> > -    }
+> > +    cursor_get(c);
+> >      cursor_put(ssd->cursor);
+> >      ssd->cursor =3D c;
+> >      ssd->hot_x =3D c->hot_x;
+> >
+>=20
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
