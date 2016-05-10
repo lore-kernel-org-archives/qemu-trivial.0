@@ -1,64 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b079x-0005OV-0Y
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 08:53:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57941)
+	id 1b08EK-0005He-P2
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 10:01:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46573)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b079t-0005GU-Dm
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 08:53:06 -0400
+	(envelope-from <eblake@redhat.com>) id 1b08ED-00053u-Ig
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 10:01:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b079n-0005mW-Np
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 08:53:04 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33005)
+	(envelope-from <eblake@redhat.com>) id 1b08EB-00054X-Oo
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 10:01:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59550)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1b079n-0005lG-E8; Tue, 10 May 2016 08:52:59 -0400
-Received: by mail-wm0-x244.google.com with SMTP id r12so2527875wme.0;
-	Tue, 10 May 2016 05:52:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=kN9mCEYLzagXcZV9yxkXmdKNWr/om7MCvgssfpXSGEI=;
-	b=aA75RhD72nJLbm9smWl/U2jhdipV++XO2bsV6nYlhIEhqvogBG7YWR+aANgNSEpAnZ
-	E436FGkU8o7g0mPmtaKi4OcGE2By3Q+f4tco4yqSSEz50tJpKXAS6d3H/JltCSeLmb6p
-	IQkWZEYKoncpTEbSyuN0aD9ToKpX9cmjwhlOoM03/cS9Gc1y1AteH7Syy/qBIjRcMwbe
-	ykoB/cSF+ycav+QxNZEakNYmBVGYEs0sgen5vymlSYIx2qv1de0Jxa/lEfCYuxY6XGLW
-	Na+b0XrM1eUisLW8k3GnGnVPMW3gRJflc+PW7gSw/e1cAXmVIQTsWtQIhtjnDj5iHFLX
-	9dAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=kN9mCEYLzagXcZV9yxkXmdKNWr/om7MCvgssfpXSGEI=;
-	b=Ep+C0NyJA4YMiczqBbJhr3cNGru4Glg7DSX0+H7HuxvfoE3sM1rIpijXIKP4yWhf89
-	IViNkTkzfYWyYFC+xiX4yjKXgOU0H/8SaPL58SSy8Ob2kAGYcIhMq48vA0vu2AwQfFFv
-	ac4zLqn9KUayLQW73uOQpZd2bLdFrR+cJx+Xrbv/q80lty98i2AjgV6CBXweU2imByHL
-	bq2RXuJVBn2nh1slxc4I2hhepKAR3pyHW+TNQKwZuBSzDkYrooeBVUo5N9nNlc0bmgPy
-	Y0rUAHkw62lhc7RVE9niUFeUaZaf3WFgRJ9TiAVmVFYSJJqZYDdo0tpK4SAYyvPqh9fT
-	MnNQ==
-X-Gm-Message-State: AOPr4FUXpuUEb7n8jp98m+LLYQLk0XSioJOEeGS4Rzm6XBmiHDVSKJkAy1DbBEl0mcpQ0g==
-X-Received: by 10.28.189.130 with SMTP id n124mr15284674wmf.76.1462884777500; 
-	Tue, 10 May 2016 05:52:57 -0700 (PDT)
-Received: from [192.168.10.150] (dynamic-adsl-78-12-252-58.clienti.tiscali.it.
-	[78.12.252.58]) by smtp.googlemail.com with ESMTPSA id
-	f11sm30279572wmf.22.2016.05.10.05.52.55
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 10 May 2016 05:52:56 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1460879154-13258-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-Cc: armbru@redhat.com, peter.maydell@linaro.org, qemu-trivial@nongnu.org
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5731D9A7.4030300@redhat.com>
-Date: Tue, 10 May 2016 14:52:55 +0200
+	(envelope-from <eblake@redhat.com>)
+	id 1b08De-0004vi-Q2; Tue, 10 May 2016 10:01:03 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A279D83F47;
+	Tue, 10 May 2016 14:01:01 +0000 (UTC)
+Received: from [10.3.113.79] (ovpn-113-79.phx2.redhat.com [10.3.113.79])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4AE10MN007977; Tue, 10 May 2016 10:01:00 -0400
+To: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-stable@nongnu.org,
+	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
+	qemu block <qemu-block@nongnu.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+X-Enigmail-Draft-Status: N1110
+Organization: Red Hat, Inc.
+Message-ID: <5731E99C.3000108@redhat.com>
+Date: Tue, 10 May 2016 08:01:00 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.1
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-In-Reply-To: <1460879154-13258-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="btlhFRkI2bGlL6boM8Fc9QXRj2n8Xm9MS"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 10 May 2016 14:01:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-trivial] [PATCH v2] qdev: Clean up around properties
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] nbd: fix trim/discard
+ commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,109 +60,154 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 12:53:07 -0000
+X-List-Received-Date: Tue, 10 May 2016 14:01:42 -0000
 
-Just comments, so
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--btlhFRkI2bGlL6boM8Fc9QXRj2n8Xm9MS
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Cc: qemu-trivial@nongnu.org
+[adding nbd-devel, qemu-block]
 
-On 17/04/2016 09:45, Cao jin wrote:
-> include:
-> 1. remove unnecessary declaration of static function
-> 2. fix inconsistency between comment and function name, and typo OOM->QOM
-> 2. update comments of functions, use uniform format(GTK-Doc style)
-> 
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+On 05/06/2016 02:45 AM, Quentin Casasnovas wrote:
+> When running fstrim on a filesystem mounted through qemu-nbd with
+> --discard=3Don, fstrim would fail with I/O errors:
+>=20
+>   $ fstrim /k/spl/ice/
+>   fstrim: /k/spl/ice/: FITRIM ioctl failed: Input/output error
+>=20
+> and qemu-nbd was spitting these:
+>=20
+>   nbd.c:nbd_co_receive_request():L1232: len (94621696) is larger than m=
+ax len (33554432)
+>=20
+
+>=20
+> The length of the request seems huge but this is really just the filesy=
+stem
+> telling the block device driver that "this length should be trimmed", a=
+nd,
+> unlike for a NBD_CMD_READ or NBD_CMD_WRITE, we'll not try to read/write=
+
+> that amount of data from/to the NBD socket.  It is thus safe to remove =
+the
+> length check for a NBD_CMD_TRIM.
+>=20
+> I've confirmed this with both the protocol documentation at:
+>=20
+>  https://github.com/yoe/nbd/blob/master/doc/proto.md
+
+Hmm. The current wording of the experimental block size additions does
+NOT allow the client to send a NBD_CMD_TRIM with a size larger than the
+maximum NBD_CMD_WRITE:
+https://github.com/yoe/nbd/blob/extension-info/doc/proto.md#block-size-co=
+nstraints
+
+Maybe we should revisit that in the spec, and/or advertise yet another
+block size (since the maximum size for a trim and/or write_zeroes
+request may indeed be different than the maximum size for a read/write).
+
+But since the kernel is the one sending the large length request, and
+since you are right that this is not a denial-of-service in the amount
+of data being sent in a single NBD message, I definitely agree that qemu
+would be wise as a quality-of-implementation to allow the larger size,
+for maximum interoperability, even if it exceeds advertised limits (that
+is, when no limits are advertised, we should handle everything possible
+if it is not so large as to be construed a denial-of-service, and
+NBD_CMD_TRIM is not large; and when limits ARE advertised, a client that
+violates limits is out of spec but we can still be liberal and respond
+successfully to such a client rather than having to outright reject it).
+ So I think this patch is headed in the right direction.
+
+>=20
+> and looking at the kernel side implementation of the nbd device
+> (drivers/block/nbd.c) where it only sends the request header with no da=
+ta
+> for a NBD_CMD_TRIM.
+>=20
+> With this fix in, I am now able to run fstrim on my qcow2 images and ke=
+ep
+> them small (or at least keep their size proportional to the amount of d=
+ata
+> present on them).
+>=20
+> Signed-off-by: Quentin Casasnovas <quentin.casasnovas@oracle.com>
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> CC: <qemu-devel@nongnu.org>
+> CC: <qemu-stable@nongnu.org>
+> CC: <qemu-trivial@nongnu.org>
+
+This is NOT trivial material and should not go in through that tree.
+However, I concur that it qualifies for a backport on a stable branch.
+
 > ---
-> changelog:
-> 1. Use uniform comment format. (Markus)
-> 2. Update function comments. (Markus & Paolo)
-> 
-> comments of qdev_add_legacy_property maybe need polishing, Maintainer who will
-> take this patch can touch that comment directly:)
-> 
->  hw/core/qdev.c               | 30 +++++++++++++++++++-----------
->  include/hw/qdev-properties.h | 10 ++++++++--
->  2 files changed, 27 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index db41aa1..204f77b 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -58,9 +58,6 @@ const char *qdev_fw_name(DeviceState *dev)
->      return object_get_typename(OBJECT(dev));
+>  nbd.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/nbd.c b/nbd.c
+> index b3d9654..e733669 100644
+> --- a/nbd.c
+> +++ b/nbd.c
+> @@ -1209,6 +1209,11 @@ static ssize_t nbd_co_send_reply(NBDRequest *req=
+, struct nbd_reply *reply,
+>      return rc;
 >  }
->  
-> -static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
-> -                                     Error **errp);
-> -
->  static void bus_remove_child(BusState *bus, DeviceState *child)
+> =20
+> +static bool nbd_should_check_request_size(const struct nbd_request *re=
+quest)
+> +{
+> +        return (request->type & NBD_CMD_MASK_COMMAND) !=3D NBD_CMD_TRI=
+M;
+> +}
+> +
+>  static ssize_t nbd_co_receive_request(NBDRequest *req, struct nbd_requ=
+est *request)
 >  {
->      BusChild *kid;
-> @@ -908,13 +905,20 @@ static void qdev_get_legacy_property(Object *obj, Visitor *v,
->  }
->  
->  /**
-> - * @qdev_add_legacy_property - adds a legacy property
-> + * qdev_property_add_legacy:
-> + * @dev: Device to add the property to.
-> + * @prop: The qdev property definition.
-> + * @errp: location to store error information.
-> + *
-> + * Add a legacy QOM property to @dev for qdev property @prop.
-> + * On error, store error in @errp.
->   *
-> - * Do not use this is new code!  Properties added through this interface will
-> - * be given names and types in the "legacy" namespace.
-> + * Legacy properties are string versions of QOM properties.  The format of
-> + * the string depends on the property type.  Legacy properties are only
-> + * needed for "info qtree".
->   *
-> - * Legacy properties are string versions of other OOM properties.  The format
-> - * of the string depends on the property type.
-> + * Do not use this is new code!  QOM Properties added through this interface
-> + * will be given names in the "legacy" namespace.
->   */
->  static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
->                                       Error **errp)
-> @@ -937,10 +941,14 @@ static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
->  }
->  
->  /**
-> - * @qdev_property_add_static - add a @Property to a device.
-> + * qdev_property_add_static:
-> + * @dev: Device to add the property to.
-> + * @prop: The qdev property definition.
-> + * @errp: location to store error information.
->   *
-> - * Static properties access data in a struct.  The actual type of the
-> - * property and the field depends on the property type.
-> + * Add a static QOM property to @dev for qdev property @prop.
-> + * On error, store error in @errp.  Static properties access data in a struct.
-> + * The type of the QOM property is derived from prop->info.
->   */
->  void qdev_property_add_static(DeviceState *dev, Property *prop,
->                                Error **errp)
-> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-> index 0586cac..034b75a 100644
-> --- a/include/hw/qdev-properties.h
-> +++ b/include/hw/qdev-properties.h
-> @@ -197,8 +197,14 @@ void error_set_from_qdev_prop_error(Error **errp, int ret, DeviceState *dev,
->                                      Property *prop, const char *value);
->  
->  /**
-> - * @qdev_property_add_static - add a @Property to a device referencing a
-> - * field in a struct.
-> + * qdev_property_add_static:
-> + * @dev: Device to add the property to.
-> + * @prop: The qdev property definition.
-> + * @errp: location to store error information.
-> + *
-> + * Add a static QOM property to @dev for qdev property @prop.
-> + * On error, store error in @errp.  Static properties access data in a struct.
-> + * The type of the QOM property is derived from prop->info.
->   */
->  void qdev_property_add_static(DeviceState *dev, Property *prop, Error **errp);
->  
-> 
+>      NBDClient *client =3D req->client;
+> @@ -1227,7 +1232,8 @@ static ssize_t nbd_co_receive_request(NBDRequest =
+*req, struct nbd_request *reque
+>          goto out;
+>      }
+> =20
+> -    if (request->len > NBD_MAX_BUFFER_SIZE) {
+> +    if (nbd_should_check_request_size(request) &&
+> +        request->len > NBD_MAX_BUFFER_SIZE) {
+
+I'd rather sort out the implications of this on the NBD protocol before
+taking anything into qemu.  We've got time on our hand, so let's use it
+to get this right.  (That, and I have several pending patches that
+conflict with this as part of adding WRITE_ZEROES and INFO_BLOCK_SIZE
+support, where it may be easier to resubmit this fix on top of my
+pending patches).
+
+>          LOG("len (%u) is larger than max len (%u)",
+>              request->len, NBD_MAX_BUFFER_SIZE);
+>          rc =3D -EINVAL;
+>=20
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--btlhFRkI2bGlL6boM8Fc9QXRj2n8Xm9MS
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJXMemcAAoJEKeha0olJ0NqZY8IAJnUlLRyIyUDg9GNvN8iiKGG
+oDJ6J7X5n2ofCYs75fon8blMcgavQ2fFy9R4cAY10u3BuTwaZ8Z5eSn45eT66xnn
+rbOLduQ1LX+VBZkt4dq83Flr9eeNFN8zWOSlm6r7RhYx9OEZuBdlbNHYhwLocWUT
+iz54IPlglgexgpghuZvJxuPcj7FqzJgDIZUBlTRaBpnz0cnxgcAWUdmcuJEDK9pP
+txns/ktXwx+3VYkPRfYQ31yENt8OL3TGlUZNEcYCSUuIcnc0hf3I5L7rAB4p3JtD
+VqAcK1GU/ooJ+5FRiTgVN5vT1C126oUmkdvK0DBtN2PRAm4vQn/fL7V0rHrwkbI=
+=T5jO
+-----END PGP SIGNATURE-----
+
+--btlhFRkI2bGlL6boM8Fc9QXRj2n8Xm9MS--
 
