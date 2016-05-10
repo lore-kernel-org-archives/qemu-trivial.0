@@ -1,52 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b09xU-0005Lk-NY
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 11:52:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52415)
+	id 1b0A72-0003Bn-K5
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 12:02:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58739)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09xR-0005F4-4d
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:52:26 -0400
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b0A70-00039o-AA
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 12:02:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09xN-0001yw-Jz
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:52:24 -0400
-Received: from mail.avalus.com ([89.16.176.221]:34258)
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b0A6x-0006UX-02
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 12:02:18 -0400
+Received: from userp1040.oracle.com ([156.151.31.81]:28036)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>)
-	id 1b09x3-0001lx-2j; Tue, 10 May 2016 11:52:01 -0400
-Received: by mail.avalus.com (Postfix) with ESMTPSA id DE81EC5607D;
-	Tue, 10 May 2016 16:51:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=alex.org.uk; s=mail;
-	t=1462895519; bh=No1pPxz3Xg/ffJ3jBOie/x/J4pd+deejgDNcET3/o3w=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To;
-	b=B/6VcbonOeN3AYaj5ZLz+ooSfxkAM8rf/wCYWHrOd9F5MnVWHp2qD55/EYLNJDXIO
-	IEvumReha8aOEjET6tNKIHYPtGUmfoYy91UYgJhQupiJutLVGbZCLAcn32HEhSYrmL
-	7Pj9mPPCPe0YKVUbIvuJ6uez+K2T7e5MfnXhAspI=
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: multipart/signed;
-	boundary="Apple-Mail=_1CB7686E-787F-42B2-AEFE-187AB8E62A10";
-	protocol="application/pgp-signature"; micalg=pgp-sha512
-X-Pgp-Agent: GPGMail 2.5.2
-From: Alex Bligh <alex@alex.org.uk>
-In-Reply-To: <5732025C.2050703@redhat.com>
-Date: Tue, 10 May 2016 16:52:49 +0100
-Cc: Alex Bligh <alex@alex.org.uk>,
-	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	(envelope-from <quentin.casasnovas@oracle.com>)
+	id 1b0A6w-0006UQ-IL; Tue, 10 May 2016 12:02:14 -0400
+Received: from userv0022.oracle.com (userv0022.oracle.com [156.151.31.74])
+	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with
+	ESMTP id u4AG1sqF013775
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 10 May 2016 16:01:54 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userv0022.oracle.com (8.14.4/8.13.8) with ESMTP id u4AG1sXV005904
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 10 May 2016 16:01:54 GMT
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id u4AG1rD9001893;
+	Tue, 10 May 2016 16:01:53 GMT
+Received: from localhost (/10.175.241.84)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 10 May 2016 09:01:52 -0700
+Date: Tue, 10 May 2016 18:04:38 +0200
+From: Quentin Casasnovas <quentin.casasnovas@oracle.com>
+To: Alex Bligh <alex@alex.org.uk>
+Cc: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	Eric Blake <eblake@redhat.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
 	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
 	qemu block <qemu-block@nongnu.org>
-Message-Id: <599EB6B1-C4EF-4050-86CA-75ACFB7B975D@alex.org.uk>
+Message-ID: <20160510160438.GD28315@chrystal.uk.oracle.com>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<5731E99C.3000108@redhat.com>
 	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
 	<5731FE53.6010602@redhat.com>
-	<C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
-	<5732025C.2050703@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-X-Mailer: Apple Mail (2.1878.6)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 89.16.176.221
+	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+	<20160510154545.GB28315@chrystal.uk.oracle.com>
+	<592DA6FD-75F8-4B7F-AA21-DEA8D591B723@alex.org.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <592DA6FD-75F8-4B7F-AA21-DEA8D591B723@alex.org.uk>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Source-IP: userv0022.oracle.com [156.151.31.74]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 156.151.31.81
 Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,64 +67,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 15:52:27 -0000
+X-List-Received-Date: Tue, 10 May 2016 16:02:19 -0000
 
+On Tue, May 10, 2016 at 04:49:57PM +0100, Alex Bligh wrote:
+> 
+> On 10 May 2016, at 16:45, Quentin Casasnovas <quentin.casasnovas@oracle.com> wrote:
+> 
+> > I'm by no mean an expert in this, but why would the kernel break up those
+> > TRIM commands?  After all, breaking things up makes sense when the length
+> > of the request is big, not that much when it only contains the request
+> > header, which is the case for TRIM commands.
+> 
+> 1. You are assuming that the only reason for limiting the size of operations is
+>    limiting the data transferred within one request. That is not necessarily
+>    the case. There are good reasons (if only orthogonality) to have limits
+>    in place even where no data is transferred.
+> 
+> 2. As and when the blocksize extension is implemented in the kernel (it isn't
+>    now), the protocol requires it.
+> 
+> 3. The maximum length of an NBD trim operation is 2^32. The maximum length
+>    of a trim operation is larger. Therefore the kernel needs to do at least
+>    some breaking up.
 
---Apple-Mail=_1CB7686E-787F-42B2-AEFE-187AB8E62A10
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain;
-	charset=us-ascii
+Alright, I assumed by 'length of an NBD request', the specification was
+talking about the length of.. well, the request as opposed to whatever is
+in the length field of the request header.
 
+Is there a use case where you'd want to split up a single big TRIM request
+in smaller ones (as in some hardware would not support it or something)?
+Even then, it looks like this splitting up would be hardware dependant and
+better implemented in block device drivers.
 
-On 10 May 2016, at 16:46, Eric Blake <eblake@redhat.com> wrote:
+I'm just finding odd that something that fits inside the length field can't
+be used.  I do agree with your point number 3, obviously if the lenght
+field type doesn't allow something bigger than a u32, then the kernel has
+to do some breaking up in that case.
 
-> Does anyone have an easy way to cause the kernel to request a trim
-> operation that large on a > 4G export?  I'm not familiar enough with
-> EXT4 operation to know what file system operations you can run to
-> ultimately indirectly create a file system trim operation that large.
-> But maybe there is something simpler - does the kernel let you use the
-> fallocate(2) syscall operation with FALLOC_FL_PUNCH_HOLE or
-> FALLOC_FL_ZERO_RANGE on an fd backed by an NBD device?
-
-Not tried it, but fallocate(1) with -p ?
-
-http://man7.org/linux/man-pages/man1/fallocate.1.html
-
-As it takes length and offset in TB, PB, EB, ZB and YB, it
-seems to be 64 bit aware :-)
-
---
-Alex Bligh
-
-
-
-
-
---Apple-Mail=_1CB7686E-787F-42B2-AEFE-187AB8E62A10
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
-	filename=signature.asc
-Content-Type: application/pgp-signature;
-	name=signature.asc
-Content-Description: Message signed with OpenPGP using GPGMail
-
------BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
-
-iQIcBAEBCgAGBQJXMgPSAAoJEBPm5K7i9iORrG4P/2U4N+JffU5IjHbK50zevLd4
-qNMs6iT1BdHNTQPqaXAT6pTE/F3LefuC+Ti4CcsO9DLHA7pDWSdhRszG8lrQ3jMH
-LtDICWvqa3r0hoWL3Ti7hHyhav2DA2MDeVQJvAc2aNDoriAQvQ86cwbSs8LAh5rU
-OqJ1+jEQOeiY028CbIaIyFKrxQT6yyY+4riANrBt9o0N8qSUTI1F7G8cbdEMGGyl
-jgKwBXIq/sFO6o7JxeK5yrvFnXoBuVz3mSm6n0TygVUZIb9lQeJSA3esJTH2BCDd
-8nlpFdXYH6PjRCtau0g7sEr/cLO5I+SxMrxGYE6dd/voeDRmMkNYajeJBn45gaH+
-lhFmFcObCXMCAXcQtA/pMJITIuKEMYc6wwUbBSWYRDe4B5GqL7k1Vnak202Kg5ot
-8SDPAfCT6IIjrBZ7gyO+wSBnkOgBKVKB1MXrjqUzX+3N3jubuFAKlcuo6G7X+2Be
-QiEwwUPBWSllR4mOYd3atICKUsY9PqHKEgEOU+6owfGHXaUS4yaoAbqyBOUyiRkk
-6ibHDBRmfIGfUio7F8I3h6lh0P7Jo0G50ipqzUMKOK6COEgvsWhNb95sxKmEiuho
-9qZNrCB/mD+yCVS7jOR2JGdVuxko/kvpM4DSFhYMYZU10DvVKIdxtR/7BoQQ6pXa
-EiGGGGe39OyBywQ7+6r1
-=F642
------END PGP SIGNATURE-----
-
---Apple-Mail=_1CB7686E-787F-42B2-AEFE-187AB8E62A10--
+Quentin
 
