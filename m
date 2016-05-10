@@ -1,47 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0EcW-0007np-41
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 16:51:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56604)
+	id 1b0Ger-00015P-Vk
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 19:01:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57655)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <belczyk@foxtrot.belo.io>) id 1b0D6J-0008IH-7a
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 15:13:48 -0400
+	(envelope-from <jrtc27@jrtc27.com>) id 1b0F1J-0001Nb-Gj
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 17:16:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <belczyk@foxtrot.belo.io>) id 1b0D6H-0006Bi-Rk
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 15:13:47 -0400
-Received: from foxtrot.belo.io ([62.121.136.4]:12787)
+	(envelope-from <jrtc27@jrtc27.com>) id 1b0F1F-0001TN-60
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 17:16:44 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:33843)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <belczyk@foxtrot.belo.io>)
-	id 1b0D62-00067V-SR; Tue, 10 May 2016 15:13:31 -0400
-Received: by foxtrot.belo.io (Postfix, from userid 31337)
-	id 6EE8813A53; Tue, 10 May 2016 21:13:24 +0200 (CEST)
-Date: Tue, 10 May 2016 21:13:24 +0200
-From: =?iso-8859-2?Q?Micha=B3?= Belczyk <belczyk@bsd.krakow.pl>
-To: Alex Bligh <alex@alex.org.uk>
-Cc: Eric Blake <eblake@redhat.com>,
-	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
-	qemu block <qemu-block@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
-	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20160510191324.GF94801@foxtrot.belo.io>
-References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
-	<5731E99C.3000108@redhat.com>
-	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
-	<5731FE53.6010602@redhat.com>
-	<C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
+	(envelope-from <jrtc27@jrtc27.com>) id 1b0F1E-0001TF-SH
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 17:16:41 -0400
+Received: by mail-wm0-x242.google.com with SMTP id n129so5327427wmn.1
+	for <qemu-trivial@nongnu.org>; Tue, 10 May 2016 14:16:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jrtc27.com; s=google;
+	h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+	:user-agent; bh=dJOimZeHyZvqBiD5rsE3tAR/UIHhDWuWnGdhU/E179U=;
+	b=oQskLcegWR10fo95BHiJGaxOs0eThmOaNuAJytWu9UFpNKix8k1J5A9ClayxYJtWSz
+	1kFA5ICC+PbWn7uGIQB0NhaHNt5O8513Uwxn3Qx+0mqmzV9YSzdWf9ZvQnMIq0rbcjK6
+	4yyfyi7ejDuBObyY/h3dd3+i+7Ao3+s0gnXak=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+	:content-disposition:user-agent;
+	bh=dJOimZeHyZvqBiD5rsE3tAR/UIHhDWuWnGdhU/E179U=;
+	b=QQmdo9WRAes5MMhvR/D69A0rg7ON01HlTh7yPM6lohMEn/uC8lUJUIPjp5xsd3ssr5
+	OedGTng5pMH5EspMUqLC4sybcQSFn7vtsVxrVPLg7/6GY4ZQCdStIk0jbDlFmd5jVWLw
+	xLM9hkFddZcaaoJlxf+dXLPlijjoP0QlfMlBV3bTiocqo/lUcZ7jQXGU3oz7x5bTkKUX
+	hmU6nm7x4sLkCSBpfDQnJTZfwuKyVY3UzRROI5bFHWlSQHrDeBkxl7h+E7HzIaMPiJdS
+	z8TauslF8Wsx1S0tHgnQEOUHhnl0pHhxwDsV7Kbm8iOvc70J3gnGPL7BzP+fStPuiQJy
+	jjjQ==
+X-Gm-Message-State: AOPr4FW5RccCfl6fAgtRkY47o7vDvDsPhH8SP5vLwtkHaB9o6S0WBK9dFzbx7euIMhhI7A==
+X-Received: by 10.194.76.137 with SMTP id k9mr41357651wjw.3.1462914998845;
+	Tue, 10 May 2016 14:16:38 -0700 (PDT)
+Received: from Jamess-MacBook.local (global-184-8.nat-1.net.cam.ac.uk.
+	[131.111.184.8])
+	by smtp.gmail.com with ESMTPSA id e8sm5013547wma.2.2016.05.10.14.16.37
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Tue, 10 May 2016 14:16:37 -0700 (PDT)
+Received: by Jamess-MacBook.local (Postfix, from userid 501)
+	id 585D0366CCD8; Tue, 10 May 2016 22:16:35 +0100 (BST)
+Date: Tue, 10 May 2016 22:16:35 +0100
+From: James Clarke <jrtc27@jrtc27.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, James Clarke <jrtc27@jrtc27.com>
+Message-ID: <20160510211635.GA48818@Jamess-MacBook.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-2; format=flowed
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
 User-Agent: Mutt/1.6.1 (2016-04-27)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
-X-Received-From: 62.121.136.4
-X-Mailman-Approved-At: Tue, 10 May 2016 16:51:04 -0400
-Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
- commands with a length bigger than NBD_MAX_BUFFER_SIZE
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::242
+X-Mailman-Approved-At: Tue, 10 May 2016 19:01:41 -0400
+Subject: [Qemu-trivial] [PATCH] Fix linking relocatable objects on Sparc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,66 +65,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 19:13:48 -0000
+X-List-Received-Date: Tue, 10 May 2016 21:16:47 -0000
 
-On Tue, May 10, 2016 at 04:41:27PM +0100, Alex Bligh wrote:
->
->On 10 May 2016, at 16:29, Eric Blake <eblake@redhat.com> wrote:
->
->> So the kernel is currently one of the clients that does NOT honor bloc=
-k
->> sizes, and as such, servers should be prepared for ANY size up to
->> UINT_MAX (other than DoS handling).
->
->Interesting followup question:
->
->If the kernel does not fragment TRIM requests at all (in the
->same way it fragments read and write requests), I suspect
->something bad may happen with TRIM requests over 2^31
->in size (particularly over 2^32 in size), as the length
->field in nbd only has 32 bits.
->
->Whether it supports block size constraints or not, it is
->going to need to do *some* breaking up of requests.
+On Sparc, gcc implicitly passes --relax to the linker, but -r is
+incompatible with this. Therefore, if --no-relax is supported, it should
+be passed to the linker.
 
-Doesn't the kernel break TRIM requests at max_discard_sectors?
+Signed-off-by: James Clarke <jrtc27@jrtc27.com>
+---
+ configure | 13 +++++++++++++
+ rules.mak |  2 +-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
-I remember testing the following change in the nbd kmod long time ago:
+diff --git a/configure b/configure
+index c37fc5f..c3583b2 100755
+--- a/configure
++++ b/configure
+@@ -4508,6 +4508,18 @@ if compile_prog "" "" ; then
+     have_fsxattr=yes
+ fi
+ 
++#################################################
++# Sparc implicitly links with --relax, which is
++# incompatible with -r. It does no harm to give
++# it on other platforms too.
++
++cat > $TMPC << EOF
++int foo(void) { return 0; }
++EOF
++if compile_prog "" "-nostdlib -Wl,-r -Wl,--no-relax"; then
++  LD_REL_FLAGS="-Wl,--no-relax"
++fi
++
+ ##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+@@ -5513,6 +5525,7 @@ else
+ fi
+ echo "LDFLAGS=$LDFLAGS" >> $config_host_mak
+ echo "LDFLAGS_NOPIE=$LDFLAGS_NOPIE" >> $config_host_mak
++echo "LD_REL_FLAGS=$LD_REL_FLAGS" >> $config_host_mak
+ echo "LIBS+=$LIBS" >> $config_host_mak
+ echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
+diff --git a/rules.mak b/rules.mak
+index d1ff311..fc2c961 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -93,7 +93,7 @@ module-common.o: CFLAGS += $(DSO_OBJ_CFLAGS)
+ 	$(if $(findstring /,$@),$(call quiet-command,cp $@ $(subst /,-,$@), "  CP    $(subst /,-,$@)"))
+ 
+ 
+-LD_REL := $(CC) -nostdlib -Wl,-r
++LD_REL := $(CC) -nostdlib -Wl,-r $(LD_REL_FLAGS)
+ 
+ %.mo:
+ 	$(call quiet-command,$(LD_REL) -o $@ $^,"  LD -r $(TARGET_DIR)$@")
+-- 
+2.8.2
 
-#if 0
-		disk->queue->limits.max_discard_sectors =3D UINT_MAX;
-#else
-		disk->queue->limits.max_discard_sectors =3D 65536;
-#endif
-
-The problem with large TRIM requests is exactly the same as with other=20
-(READ/WRITE) large requests -- they _may_ take loads of time and if the c=
-lient=20
-wants to support a fast switch over to another replica it must put some=20
-constraints on the timeout value... which may be very easily broken if yo=
-u=20
-allow things like a 1GB trim request on the server using DIO on the other=
- side=20
-(and say heavily fragmented sparse file over XFS, never mind).
-
-I don't think it's the problem of QEMU NBD server to fix that, the constr=
-aint=20
-on the server side is perfectly fine, the problem is to note that a chang=
-e on=20
-the client side is required to limit the maximum size of the TRIM request=
-s.
-The reason for the patch I pasted above was that at the time I looked int=
-o it=20
-there was no other way to change the TRIM request size via=20
-/sys/block/$dev/queue/max_discard_sectors, but maybe the more recent kern=
-els=20
-allow that?
-Not to mention that the NBD client option to set that at NBD queue setup =
-time=20
-would be nice...
-
-Just my 2p.
-
---=20
-Micha=B3 Belczyk Snr
 
