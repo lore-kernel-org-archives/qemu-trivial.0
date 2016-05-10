@@ -1,34 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b09mV-0001DY-0l
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 11:41:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47121)
+	id 1b09og-0003pM-OV
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 11:43:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48031)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09mQ-00015E-0X
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:41:06 -0400
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b09od-0003jD-VL
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:43:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09mN-0006XI-Im
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:41:00 -0400
-Received: from mail.avalus.com ([89.16.176.221]:37630)
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b09oZ-0007CH-KE
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:43:19 -0400
+Received: from aserp1040.oracle.com ([141.146.126.69]:32621)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>)
-	id 1b09m3-0006TB-6G; Tue, 10 May 2016 11:40:39 -0400
-Received: by mail.avalus.com (Postfix) with ESMTPSA id E760CC5608C;
-	Tue, 10 May 2016 16:40:36 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=alex.org.uk; s=mail;
-	t=1462894837; bh=dGFxiU8AZKmquOeLotchq0wcs3ap2SbnVb3iGP4FiSg=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To;
-	b=KGp29OBGLdZqqDf/ICcxlAmY76vXdD+aoPvmCz1tIa3a71qjUqBIBzkgSitI3gDYA
-	xFt3CmOqTKYIn13llf0zuFb4tZxIECudBe6Jn5RXD/2xhPVEdpTyIFUy4Mw9fghPTq
-	Fsd0BE7vZGKQ5kX4cCQ4CJwUJXl8+wJhHXCoOC5Y=
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: multipart/signed;
-	boundary="Apple-Mail=_6939E42B-CF2F-43D4-BB8E-BBFCB25C0295";
-	protocol="application/pgp-signature"; micalg=pgp-sha512
-X-Pgp-Agent: GPGMail 2.5.2
-From: Alex Bligh <alex@alex.org.uk>
-In-Reply-To: <5731FE53.6010602@redhat.com>
-Date: Tue, 10 May 2016 16:41:27 +0100
-Cc: Alex Bligh <alex@alex.org.uk>,
+	(envelope-from <quentin.casasnovas@oracle.com>)
+	id 1b09oZ-0007AW-9e; Tue, 10 May 2016 11:43:15 -0400
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with
+	ESMTP id u4AFh1Pn030930
+	(version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 10 May 2016 15:43:02 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userv0021.oracle.com (8.13.8/8.13.8) with ESMTP id u4AFh1Ps005763
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 10 May 2016 15:43:01 GMT
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id u4AFgxi0019996;
+	Tue, 10 May 2016 15:43:00 GMT
+Received: from localhost (/10.175.241.84)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 10 May 2016 08:42:59 -0700
+Date: Tue, 10 May 2016 17:45:45 +0200
+From: Quentin Casasnovas <quentin.casasnovas@oracle.com>
+To: Alex Bligh <alex@alex.org.uk>
+Cc: Eric Blake <eblake@redhat.com>,
 	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
@@ -36,15 +38,20 @@ Cc: Alex Bligh <alex@alex.org.uk>,
 	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
 	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
 	qemu block <qemu-block@nongnu.org>
-Message-Id: <C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
+Message-ID: <20160510154545.GB28315@chrystal.uk.oracle.com>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<5731E99C.3000108@redhat.com>
 	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
 	<5731FE53.6010602@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-X-Mailer: Apple Mail (2.1878.6)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 89.16.176.221
+	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Source-IP: userv0021.oracle.com [156.151.31.71]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 141.146.126.69
 Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
@@ -58,64 +65,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 15:41:06 -0000
+X-List-Received-Date: Tue, 10 May 2016 15:43:21 -0000
 
+On Tue, May 10, 2016 at 04:38:29PM +0100, Alex Bligh wrote:
+> Eric,
+> 
+> On 10 May 2016, at 16:29, Eric Blake <eblake@redhat.com> wrote:
+> >>> Maybe we should revisit that in the spec, and/or advertise yet another
+> >>> block size (since the maximum size for a trim and/or write_zeroes
+> >>> request may indeed be different than the maximum size for a read/write).
+> >> 
+> >> I think it's up to the server to either handle large requests, or
+> >> for the client to break these up.
+> > 
+> > But the question at hand here is whether we should permit servers to
+> > advertise multiple maximum block sizes (one for read/write, another one
+> > for trim/write_zero, or even two [at least qemu tracks a separate
+> > maximum trim vs. write_zero sizing in its generic block layer]), or
+> > merely stick with the current wording that requires clients that honor
+> > maximum block size to obey the same maximum for ALL commands, regardless
+> > of amount of data sent over the wire.
+> 
+> In my view, we should not change this. Block sizes maxima are not there
+> to support DoS prevention (that's a separate phrase). They are there
+> to impose maximum block sizes. Adding a different maximum block size
+> for different commands is way too overengineered. There are after
+> all reasons (especially without structured replies) why you'd want
+> different maximum block sizes for writes and reads. If clients support
+> block sizes, they will necessarily have to have the infrastructure
+> to break requests up.
+> 
+> IE maximum block size should continue to mean maximum block size.
+> 
+> >> 
+> >> The core problem here is that the kernel (and, ahem, most servers) are
+> >> ignorant of the block size extension, and need to guess how to break
+> >> things up. In my view the client (kernel in this case) should
+> >> be breaking the trim requests up into whatever size it uses as the
+> >> maximum size write requests. But then it would have to know about block
+> >> sizes which are in (another) experimental extension.
+> > 
+> > Correct - no one has yet patched the kernel to honor block sizes
+> > advertised through what is currently an experimental extension.
+> 
+> Unsurprising at it's still experimental, and only settled down a couple
+> of weeks ago :-)
+> 
+> >  (We
+> > have ioctl(NBD_SET_BLKSIZE) which can be argued to set the kernel's
+> > minimum block size,
+> 
+> Technically that is 'out of band transmission of block size
+> constraints' :-)
+> 
+> > but I haven't audited whether the kernel actually
+> > guarantees that all client requests are sent aligned to the value passed
+> > that way - but we have nothing to set the maximum size,
+> 
+> indeed
+> 
+> > and are at the
+> > mercy of however the kernel currently decides to split large requests).
+> 
+> I am surprised TRIM doesn't get broken up the same way READ and WRITE
+> do.
+>
 
---Apple-Mail=_6939E42B-CF2F-43D4-BB8E-BBFCB25C0295
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain;
-	charset=us-ascii
+I'm by no mean an expert in this, but why would the kernel break up those
+TRIM commands?  After all, breaking things up makes sense when the length
+of the request is big, not that much when it only contains the request
+header, which is the case for TRIM commands.
 
+What am I missing?
 
-On 10 May 2016, at 16:29, Eric Blake <eblake@redhat.com> wrote:
-
-> So the kernel is currently one of the clients that does NOT honor block
-> sizes, and as such, servers should be prepared for ANY size up to
-> UINT_MAX (other than DoS handling).
-
-Interesting followup question:
-
-If the kernel does not fragment TRIM requests at all (in the
-same way it fragments read and write requests), I suspect
-something bad may happen with TRIM requests over 2^31
-in size (particularly over 2^32 in size), as the length
-field in nbd only has 32 bits.
-
-Whether it supports block size constraints or not, it is
-going to need to do *some* breaking up of requests.
-
---
-Alex Bligh
-
-
-
-
-
---Apple-Mail=_6939E42B-CF2F-43D4-BB8E-BBFCB25C0295
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
-	filename=signature.asc
-Content-Type: application/pgp-signature;
-	name=signature.asc
-Content-Description: Message signed with OpenPGP using GPGMail
-
------BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
-
-iQIcBAEBCgAGBQJXMgEnAAoJEBPm5K7i9iORrawP/RluNRjUl7+vPyvA3CMzW8ZY
-2BexQcliKuIG05N6Em/Ost3+Q6WxyOUvRQcHRGLzpdRNXN2d21Dig1p6XPt0b+dE
-MVPXecwGJjHeHLHjJR+UygVJHweoLYhC1wOuK9p4hGAMxph4GUHAMPiOEYNONcuE
-4VypByPAJTIPGoPKLmRkxwfAp2sYuI66TLMmiPcswznlczwEUygGJz9fKFks+FOn
-8ho3ZTF738YKlsKi7hOdOeKbolS764En19VjaD2/NIixPjurSYFC9StZenKWvaTe
-fcJi+lIs65auRggKyBuK18zcGYcTpeBpKOrB6udEI0cH30WtfhkBZMc1yK+8CLoo
-yC7Fjk8e1DUAuP5fDbTilsFCbCeZF0JLPJ6exTSJGbbPd0dj72JhMyhJNlHTXOQH
-VaFi5WODuhlAxwey5khM2Ir3TNinJ0FS+K0tbugzzt1AAxdew6hAuPE8sJ5WJUiC
-Pwb0+UWii45HYBfvOLOtHlD9CtOAEdokUX9PmJG0q+4TsuxdB/n4QZOic1ZFUTnn
-jfX7QfMH6dNo7FgBftXToZfAOSTcbREcELnJT6NqP4fTJD/QkmfiLikesvuaDUj+
-K2fHeDLZHBqlJPWMlHUyRc8L89Xj3PhP8Qq6wK1rabiqvmAUZguuXoORZ7XFIA5p
-oM8sIa70mZWMbr5SpMjZ
-=qKt1
------END PGP SIGNATURE-----
-
---Apple-Mail=_6939E42B-CF2F-43D4-BB8E-BBFCB25C0295--
+Quentin
 
