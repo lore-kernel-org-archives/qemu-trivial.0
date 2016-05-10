@@ -1,51 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b09ug-00076v-DL
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 11:49:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50685)
+	id 1b09up-0007T0-LW
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 11:49:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50797)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09uc-0006tq-0k
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:49:31 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1b09um-0007LZ-Tl
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:49:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b09uZ-0000iy-Je
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:49:28 -0400
-Received: from mail.avalus.com ([89.16.176.221]:47373)
+	(envelope-from <pm215@archaic.org.uk>) id 1b09ui-0000mK-Bm
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:49:39 -0400
+Received: from orth.archaic.org.uk ([81.2.115.148]:49122)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>)
-	id 1b09uH-0000c1-71; Tue, 10 May 2016 11:49:09 -0400
-Received: by mail.avalus.com (Postfix) with ESMTPSA id 25D79C5608C;
-	Tue, 10 May 2016 16:49:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=alex.org.uk; s=mail;
-	t=1462895346; bh=msZNoOFTXNp2XmuJW8dVE8MpiN2hd6lQA0vL+R/unaw=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To;
-	b=qFD898fxWYm+kD6Mx2h0dsArFEfbRZH9LLU3/aP6m18gXH9AKw671HPHQr9Nv+O26
-	ItbR0nME4zxfwPLBG2wop2YCNTAKoPEmG/6kqzQn+gnm7//A8gLvjVHvMNSbtNwf2V
-	IudfOiLICpeqzPlSigZaTtCK3XC4I8PmtKCjXbUM=
-Content-Type: text/plain; charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-From: Alex Bligh <alex@alex.org.uk>
-In-Reply-To: <20160510154545.GB28315@chrystal.uk.oracle.com>
-Date: Tue, 10 May 2016 16:49:57 +0100
-Cc: Alex Bligh <alex@alex.org.uk>, Eric Blake <eblake@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
-	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
-	qemu block <qemu-block@nongnu.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <592DA6FD-75F8-4B7F-AA21-DEA8D591B723@alex.org.uk>
-References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
-	<5731E99C.3000108@redhat.com>
-	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
-	<5731FE53.6010602@redhat.com>
-	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
-	<20160510154545.GB28315@chrystal.uk.oracle.com>
-To: Quentin Casasnovas <quentin.casasnovas@oracle.com>
-X-Mailer: Apple Mail (2.1878.6)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 89.16.176.221
-Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
- commands with a length bigger than NBD_MAX_BUFFER_SIZE
+	(envelope-from <pm215@archaic.org.uk>) id 1b09uh-0000lV-TN
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 11:49:36 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1b09uc-00038C-HV; Tue, 10 May 2016 16:49:30 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: patches@linaro.org
+Date: Tue, 10 May 2016 16:49:29 +0100
+Message-Id: <1462895369-1508-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 81.2.115.148
+Subject: [Qemu-trivial] [PATCH] qemu-options.hx: Specify the units for
+ -machine kvm_shadow_mem
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,41 +37,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 15:49:31 -0000
+X-List-Received-Date: Tue, 10 May 2016 15:49:42 -0000
 
+The -machine kvm_shadow_mem option takes a size in bytes; say
+so explicitly in its documentation.
 
-On 10 May 2016, at 16:45, Quentin Casasnovas =
-<quentin.casasnovas@oracle.com> wrote:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reported-by: Tobi (github.com/tobimensch)
+---
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> I'm by no mean an expert in this, but why would the kernel break up =
-those
-> TRIM commands?  After all, breaking things up makes sense when the =
-length
-> of the request is big, not that much when it only contains the request
-> header, which is the case for TRIM commands.
-
-1. You are assuming that the only reason for limiting the size of =
-operations is
-   limiting the data transferred within one request. That is not =
-necessarily
-   the case. There are good reasons (if only orthogonality) to have =
-limits
-   in place even where no data is transferred.
-
-2. As and when the blocksize extension is implemented in the kernel (it =
-isn't
-   now), the protocol requires it.
-
-3. The maximum length of an NBD trim operation is 2^32. The maximum =
-length
-   of a trim operation is larger. Therefore the kernel needs to do at =
-least
-   some breaking up.
-
---=20
-Alex Bligh
-
-
-
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 6106520..0b86d9f 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -35,7 +35,7 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
+     "                kernel_irqchip=on|off controls accelerated irqchip support\n"
+     "                kernel_irqchip=on|off|split controls accelerated irqchip support (default=off)\n"
+     "                vmport=on|off|auto controls emulation of vmport (default: auto)\n"
+-    "                kvm_shadow_mem=size of KVM shadow MMU\n"
++    "                kvm_shadow_mem=size of KVM shadow MMU in bytes\n"
+     "                dump-guest-core=on|off include guest memory in a core dump (default=on)\n"
+     "                mem-merge=on|off controls memory merge support (default: on)\n"
+     "                iommu=on|off controls emulated Intel IOMMU (VT-d) support (default=off)\n"
+-- 
+1.9.1
 
 
