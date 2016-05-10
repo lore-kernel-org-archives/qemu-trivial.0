@@ -1,72 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0BtO-0001qF-CG
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 13:56:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32983)
+	id 1b0EDe-0007br-Ka
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 16:25:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b0BtK-0001ip-5E
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 13:56:20 -0400
+	(envelope-from <eblake@redhat.com>) id 1b0EDT-0007HD-Uk
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 16:25:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b0BtI-0002US-VF
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 13:56:17 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33042)
+	(envelope-from <eblake@redhat.com>) id 1b0EDR-0006UP-CO
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 16:25:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34113)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1b0Bt2-0002RY-1T; Tue, 10 May 2016 13:56:09 -0400
-Received: by mail-wm0-x244.google.com with SMTP id r12so4022663wme.0;
-	Tue, 10 May 2016 10:55:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TBpQW2d0uT+6tGxo70exXhHYiEUVqpSnCjKS3wD1SCU=;
-	b=alR65iKtSljkeuOPFy5Q57UylBOXa8dqVVS1CxHwCEtWvKyTQDXw4MTYtoid8TUa1G
-	om34g4TblMpW5lrdcJNapctJsbGbIVaa9ZKGgmnAWWjmu4HR+3m1Axe16grSAvwmKPSI
-	2CBlyGPea8RljizuLyvtBBck8vkNjCseV8rrLdKnFP58tnxOJH8Rovh+Yck1hJWqCBRp
-	LRI4MoqprL+G6YKX5IfPB8Vbf1K/ooRuqI0BwHFSfTiGwMhs/0+7Oj9LrEHl7aQfciZO
-	PhX7UdDVGF5VLt8e/1dzH5FQ3gH8fbDZh/7WNT9sQss1HJshYXzswxPxdzsB9bwdAeO+
-	Q3qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TBpQW2d0uT+6tGxo70exXhHYiEUVqpSnCjKS3wD1SCU=;
-	b=K/uSJMu1mJZ2kxBfXnsPvq50Rf6ZdKj6OzPh5ipEZqS/o5pnTDsBqoOTYZ7ZWl9I60
-	XPmEXIg+MIVo1Y0oZBthNLPGCDIakZLIk9I5/S0nRsRTst5f8jB0TR2ZbFeIs38/JJWT
-	h+AY2WaCK+rXWzE41SHXA6H6ZvUpRX0T+nscyA5Dy/j5UisrAdZZ7Xxml+2YZwWUpQ0v
-	yLInKwNWRndaw8JS/61zKgonTyc6hi8KeH6prQojVf0TzWw0VjSiC2j+9aQv5VF8e3zs
-	y1NDfRA3UaLmjc4zFgV/S7Jb8WeaJUKPSDiKbVsg6i9sPabANd4MSEjxG7JV+VZ5PEUd
-	pORg==
-X-Gm-Message-State: AOPr4FWReUA2NF9GfMa+W3cIKkD/cWNa5vnO/cUZ4c3sqqTr2TB6gjXJ6/vbRh1LmKLeQg==
-X-Received: by 10.28.129.6 with SMTP id c6mr19197349wmd.75.1462902959182;
-	Tue, 10 May 2016 10:55:59 -0700 (PDT)
-Received: from [192.168.10.150] (dynamic-adsl-78-12-252-58.clienti.tiscali.it.
-	[78.12.252.58]) by smtp.googlemail.com with ESMTPSA id
-	i3sm3737070wjx.30.2016.05.10.10.55.56
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 10 May 2016 10:55:57 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Alex Bligh <alex@alex.org.uk>, Eric Blake <eblake@redhat.com>
+	(envelope-from <eblake@redhat.com>)
+	id 1b0EDC-0006MC-7p; Tue, 10 May 2016 16:24:58 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C1FF2C049D4F;
+	Tue, 10 May 2016 20:24:57 +0000 (UTC)
+Received: from [10.3.113.79] (ovpn-113-79.phx2.redhat.com [10.3.113.79])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4AKOueb021618; Tue, 10 May 2016 16:24:57 -0400
+To: Quentin Casasnovas <quentin.casasnovas@oracle.com>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<5731E99C.3000108@redhat.com>
 	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
 	<5731FE53.6010602@redhat.com>
-	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
-Cc: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	<C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
+	<5732025C.2050703@redhat.com>
+	<20160510155444.GC28315@chrystal.uk.oracle.com>
+	<20160510163309.GF28315@chrystal.uk.oracle.com>
+Cc: Alex Bligh <alex@alex.org.uk>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
 	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
 	qemu block <qemu-block@nongnu.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <573220AC.9010704@redhat.com>
-Date: Tue, 10 May 2016 19:55:56 +0200
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+X-Enigmail-Draft-Status: N1110
+Organization: Red Hat, Inc.
+Message-ID: <57324398.7060106@redhat.com>
+Date: Tue, 10 May 2016 14:24:56 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.1
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-In-Reply-To: <672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20160510163309.GF28315@chrystal.uk.oracle.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="DqXCdwiitsfD5TfG7O9Hlx9tLqXJMkWGC"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 10 May 2016 20:24:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
@@ -80,22 +69,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 17:56:21 -0000
+X-List-Received-Date: Tue, 10 May 2016 20:25:25 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--DqXCdwiitsfD5TfG7O9Hlx9tLqXJMkWGC
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 05/10/2016 10:33 AM, Quentin Casasnovas wrote:
+
+> Looks like there's an easier way:
+>=20
+>  $ qemu-img create -f qcow2 foo.qcow2 10G
+>  $ qemu-nbd --discard=3Don -c /dev/nbd0 foo.qcow2
+>  $ mkfs.ext4 /dev/nbd0
+>  mke2fs 1.42.13 (17-May-2015)
+>  Discarding device blocks: failed - Input/output error
+
+strace on mkfs.ext4 shows:
+=2E..
+open("/dev/nbd1", O_RDWR|O_EXCL)        =3D 3
+stat("/dev/nbd1", {st_mode=3DS_IFBLK|0660, st_rdev=3Dmakedev(43, 1), ...}=
+) =3D 0
+ioctl(3, BLKDISCARDZEROES, [0])         =3D 0
+ioctl(3, BLKROGET, [0])                 =3D 0
+uname({sysname=3D"Linux", nodename=3D"red", ...}) =3D 0
+ioctl(3, BLKDISCARD, [0, 1000000])      =3D 0
+write(1, "Discarding device blocks: ", 26) =3D 26
+write(1, "   4096/2621440", 15   4096/2621440)         =3D 15
+write(1, "\10\10\10\10\10\10\10\10\10\10\10\1) =3D 15
+ioctl(3, BLKDISCARD, [1000000, 80000000]) =3D -1 EIO (Input/output error)=
+
+write(1, "               ", 15               )         =3D 15
+write(1, "\10\10\10\10\10\10\10\10\10\10\10\1) =3D 15
+write(1, "failed - ", 9failed - )                =3D 9
+
+so it does indeed look like the smaller request [0, 0x1000000] succeeded
+while the larger [0x1000000, 0x80000000] failed with EIO.  But I
+instrumented my qemu-nbd server to output all of the incoming requests
+it was receiving from the kernel, and I never saw a mention of
+NBD_CMD_TRIM being received.  Maybe it's dependent on what version of
+the kernel and/or NBD kernel module you are running?
+
+I also tried fallocate(1) on /dev/nbd1, as in:
+ # strace fallocate -o 0 -l 64k -p /dev/nbd1
+but it looks like the kernel doesn't yet wire up fallocate(2) to forward
+to the appropriate device ioctls and/or NBD_CMD_TRIM, where strace says:
+
+open("/dev/nbd1", O_RDWR)               =3D 3
+fallocate(3, FALLOC_FL_KEEP_SIZE|FALLOC_FL_PUNCH_HOLE, 0, 65536) =3D -1
+ENODEV (No such device)
+
+The ENODEV is a rather unusual choice of error.
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
+--DqXCdwiitsfD5TfG7O9Hlx9tLqXJMkWGC
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-On 10/05/2016 17:38, Alex Bligh wrote:
-> > and are at the
-> > mercy of however the kernel currently decides to split large requests).
-> 
-> I am surprised TRIM doesn't get broken up the same way READ and WRITE
-> do.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-The payload of TRIM has constant size, so it makes sense to do that.
-The kernel then self-imposes a 2GB limit in blkdev_issue_discard.
+iQEcBAEBCAAGBQJXMkOYAAoJEKeha0olJ0Nq6dsH/1ric8uxsVjOCA+YvXFx1JMj
+MHDJ4Wxmft1sPVCBWd9TYft3duOB0CYvpLDD8mg4O4ki5Z+77pN1bki8S9zn221g
+OtjfAHTzmFU9zx0vrEmz9cq4sGuCGH5FX4ITrb3TIZ6r4d1R59KVmFZrRrbFdGTt
+12RUUmlG5pwO1UWtmLUeo9o3f4bPoKGzRkcyXeR1niDNf4NQhUAhAcr7cN9fC74n
+vGo0CQBkbVYKu5Tr7ArJ9zyXY/3QRQLSb9KQuduQ9AR2LJc+W70hFHxrUCzGSvz9
+FwbDNmJYmq/KvA4y/CNyvbbs8eMMwDsd2oAG3RFdBI3dpehDLgJ+GniOgICPRZc=
+=+cax
+-----END PGP SIGNATURE-----
 
-On the other hand, READ and WRITE of size n can possibly require O(n)
-memory.
-
-Paolo
+--DqXCdwiitsfD5TfG7O9Hlx9tLqXJMkWGC--
 
