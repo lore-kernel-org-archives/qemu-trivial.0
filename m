@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0EMY-0003V3-Uo
-	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 16:34:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48481)
+	id 1b0EcW-0007np-41
+	for mharc-qemu-trivial@gnu.org; Tue, 10 May 2016 16:51:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1b0EMU-0003NF-FE
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 16:34:35 -0400
+	(envelope-from <belczyk@foxtrot.belo.io>) id 1b0D6J-0008IH-7a
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 15:13:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1b0EMR-0000Uf-4Q
-	for qemu-trivial@nongnu.org; Tue, 10 May 2016 16:34:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43381)
+	(envelope-from <belczyk@foxtrot.belo.io>) id 1b0D6H-0006Bi-Rk
+	for qemu-trivial@nongnu.org; Tue, 10 May 2016 15:13:47 -0400
+Received: from foxtrot.belo.io ([62.121.136.4]:12787)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1b0EMH-0000TG-8T; Tue, 10 May 2016 16:34:21 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B245F62667;
-	Tue, 10 May 2016 20:34:19 +0000 (UTC)
-Received: from [10.3.113.79] (ovpn-113-79.phx2.redhat.com [10.3.113.79])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4AKYJHo019012; Tue, 10 May 2016 16:34:19 -0400
-To: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
-	qemu-devel <qemu-devel@nongnu.org>
+	(envelope-from <belczyk@foxtrot.belo.io>)
+	id 1b0D62-00067V-SR; Tue, 10 May 2016 15:13:31 -0400
+Received: by foxtrot.belo.io (Postfix, from userid 31337)
+	id 6EE8813A53; Tue, 10 May 2016 21:13:24 +0200 (CEST)
+Date: Tue, 10 May 2016 21:13:24 +0200
+From: =?iso-8859-2?Q?Micha=B3?= Belczyk <belczyk@bsd.krakow.pl>
+To: Alex Bligh <alex@alex.org.uk>
+Cc: Eric Blake <eblake@redhat.com>,
+	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
+	qemu block <qemu-block@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20160510191324.GF94801@foxtrot.belo.io>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-stable@nongnu.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <573245CA.1030104@redhat.com>
-Date: Tue, 10 May 2016 14:34:18 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	<5731E99C.3000108@redhat.com>
+	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
+	<5731FE53.6010602@redhat.com>
+	<C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
 MIME-Version: 1.0
-In-Reply-To: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="FTNDvrTBBrjM5jcj1mOsOSLhnkTx9MuKK"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 10 May 2016 20:34:19 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] nbd: fix trim/discard
+Content-Type: text/plain; charset=iso-8859-2; format=flowed
+Content-Disposition: inline
+In-Reply-To: <C84A91D0-D90A-4B7B-B72D-A33E1C189354@alex.org.uk>
+User-Agent: Mutt/1.6.1 (2016-04-27)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x
+X-Received-From: 62.121.136.4
+X-Mailman-Approved-At: Tue, 10 May 2016 16:51:04 -0400
+Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -57,108 +53,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 May 2016 20:34:36 -0000
+X-List-Received-Date: Tue, 10 May 2016 19:13:48 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---FTNDvrTBBrjM5jcj1mOsOSLhnkTx9MuKK
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On Tue, May 10, 2016 at 04:41:27PM +0100, Alex Bligh wrote:
+>
+>On 10 May 2016, at 16:29, Eric Blake <eblake@redhat.com> wrote:
+>
+>> So the kernel is currently one of the clients that does NOT honor bloc=
+k
+>> sizes, and as such, servers should be prepared for ANY size up to
+>> UINT_MAX (other than DoS handling).
+>
+>Interesting followup question:
+>
+>If the kernel does not fragment TRIM requests at all (in the
+>same way it fragments read and write requests), I suspect
+>something bad may happen with TRIM requests over 2^31
+>in size (particularly over 2^32 in size), as the length
+>field in nbd only has 32 bits.
+>
+>Whether it supports block size constraints or not, it is
+>going to need to do *some* breaking up of requests.
 
-On 05/06/2016 02:45 AM, Quentin Casasnovas wrote:
-> When running fstrim on a filesystem mounted through qemu-nbd with
-> --discard=3Don, fstrim would fail with I/O errors:
->=20
->   $ fstrim /k/spl/ice/
->   fstrim: /k/spl/ice/: FITRIM ioctl failed: Input/output error
->=20
-> and qemu-nbd was spitting these:
->=20
->   nbd.c:nbd_co_receive_request():L1232: len (94621696) is larger than m=
-ax len (33554432)
+Doesn't the kernel break TRIM requests at max_discard_sectors?
 
-Your patch duplicates what is already present in qemu:
+I remember testing the following change in the nbd kmod long time ago:
 
-commit eb38c3b67018ff8069e4f674a28661931a8a3e4f
-Author: Paolo Bonzini <pbonzini@redhat.com>
-Date:   Thu Jan 7 14:32:42 2016 +0100
+#if 0
+		disk->queue->limits.max_discard_sectors =3D UINT_MAX;
+#else
+		disk->queue->limits.max_discard_sectors =3D 65536;
+#endif
 
-    nbd-server: do not check request length except for reads and writes
+The problem with large TRIM requests is exactly the same as with other=20
+(READ/WRITE) large requests -- they _may_ take loads of time and if the c=
+lient=20
+wants to support a fast switch over to another replica it must put some=20
+constraints on the timeout value... which may be very easily broken if yo=
+u=20
+allow things like a 1GB trim request on the server using DIO on the other=
+ side=20
+(and say heavily fragmented sparse file over XFS, never mind).
 
-    Only reads and writes need to allocate memory correspondent to the
-    request length.  Other requests can be sent to the storage without
-    allocating any memory, and thus any request length is acceptable.
+I don't think it's the problem of QEMU NBD server to fix that, the constr=
+aint=20
+on the server side is perfectly fine, the problem is to note that a chang=
+e on=20
+the client side is required to limit the maximum size of the TRIM request=
+s.
+The reason for the patch I pasted above was that at the time I looked int=
+o it=20
+there was no other way to change the TRIM request size via=20
+/sys/block/$dev/queue/max_discard_sectors, but maybe the more recent kern=
+els=20
+allow that?
+Not to mention that the NBD client option to set that at NBD queue setup =
+time=20
+would be nice...
 
-    Reported-by: Sitsofe Wheeler <sitsofe@yahoo.com>
-    Cc: qemu-block@nongnu.org
-    Reviewed-by: Max Reitz <mreitz@redhat.com>
-    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-
-For the purposes of qemu-stable, it's better to backport the existing
-patch than to write a new version of it.
-
-It also helps to state what version of qemu you were testing, as it is
-obviously not the (soon-to-be-released) version 2.6 which already has
-the fix.
-
->  nbd.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->=20
-> diff --git a/nbd.c b/nbd.c
-> index b3d9654..e733669 100644
-> --- a/nbd.c
-> +++ b/nbd.c
-> @@ -1209,6 +1209,11 @@ static ssize_t nbd_co_send_reply(NBDRequest *req=
-, struct nbd_reply *reply,
->      return rc;
->  }
-> =20
-> +static bool nbd_should_check_request_size(const struct nbd_request *re=
-quest)
-> +{
-> +        return (request->type & NBD_CMD_MASK_COMMAND) !=3D NBD_CMD_TRI=
-M;
-> +}
-> +
->  static ssize_t nbd_co_receive_request(NBDRequest *req, struct nbd_requ=
-est *request)
->  {
->      NBDClient *client =3D req->client;
-> @@ -1227,7 +1232,8 @@ static ssize_t nbd_co_receive_request(NBDRequest =
-*req, struct nbd_request *reque
->          goto out;
->      }
-> =20
-> -    if (request->len > NBD_MAX_BUFFER_SIZE) {
-> +    if (nbd_should_check_request_size(request) &&
-> +        request->len > NBD_MAX_BUFFER_SIZE) {
->          LOG("len (%u) is larger than max len (%u)",
->              request->len, NBD_MAX_BUFFER_SIZE);
->          rc =3D -EINVAL;
->=20
+Just my 2p.
 
 --=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---FTNDvrTBBrjM5jcj1mOsOSLhnkTx9MuKK
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXMkXKAAoJEKeha0olJ0NqhS4H/jwuYjfF8JMxnJFYOmpuERHD
-avCMWK+hn4Bbd/Bb0+umlwo4pb6VrlXsnxGXzRbHohfLMHkpOutNF5B/eI2Unwbm
-poryGXieaGc3aUAA0LHHM86oE5scMfgO2uUb6gxzJcTiawhQISIDE9AI5L9dfbJt
-YOi3EX5CYla7GMXiapt9dNQUzhGEzu9NbCBTeNMKiuQmddkYe2vjEiNnPqwp0J4m
-LIHaRjX5XjTNzwHdNkfFKxllnyliaxt+w6duQ/dNCrl++hoFgWw2LM8sDXGpkyA1
-ELUNQUKKwCFu+tH6Wk3XtFXrbY1Q9IXMuBA+agyBkWV2uteJpieUadtCy3K9obQ=
-=oq6P
------END PGP SIGNATURE-----
-
---FTNDvrTBBrjM5jcj1mOsOSLhnkTx9MuKK--
+Micha=B3 Belczyk Snr
 
