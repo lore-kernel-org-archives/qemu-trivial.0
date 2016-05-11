@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0mpS-00060E-I7
-	for mharc-qemu-trivial@gnu.org; Thu, 12 May 2016 05:22:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35064)
+	id 1b0mpT-000612-03
+	for mharc-qemu-trivial@gnu.org; Thu, 12 May 2016 05:22:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34318)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wouter@grep.be>) id 1b0bR7-0006YT-0H
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 17:12:54 -0400
+	(envelope-from <wouter@grep.be>) id 1b0bOz-0003ZO-6x
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 17:10:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wouter@grep.be>) id 1b0bR4-0006SL-Qp
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 17:12:51 -0400
-Received: from barbershop.grep.be ([89.106.240.122]:53883)
+	(envelope-from <wouter@grep.be>) id 1b0bOx-0005rr-JD
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 17:10:41 -0400
+Received: from barbershop.grep.be ([89.106.240.122]:50719)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <wouter@grep.be>)
-	id 1b0bQx-0006RT-Ct; Wed, 11 May 2016 17:12:43 -0400
+	id 1b0bOp-0005qI-P8; Wed, 11 May 2016 17:10:31 -0400
 Received: from d54c66c97.access.telenet.be ([84.198.108.151] helo=gangtai)
 	by barbershop.grep.be with esmtpsa
 	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84_2)
 	(envelope-from <wouter@grep.be>)
-	id 1b0bQt-0004Ld-1V; Wed, 11 May 2016 23:12:39 +0200
+	id 1b0bOk-0004Kc-Dz; Wed, 11 May 2016 23:10:26 +0200
 Received: from wouter by gangtai with local (Exim 4.87)
 	(envelope-from <wouter@grep.be>)
-	id 1b0bQn-0002Ne-KN; Wed, 11 May 2016 23:12:33 +0200
-Date: Wed, 11 May 2016 23:12:33 +0200
+	id 1b0bOe-0002JV-UO; Wed, 11 May 2016 23:10:20 +0200
+Date: Wed, 11 May 2016 23:10:20 +0200
 From: Wouter Verhelst <w@uter.be>
-To: Alex Bligh <alex@alex.org.uk>
-Cc: Eric Blake <eblake@redhat.com>,
+To: Eric Blake <eblake@redhat.com>
+Cc: Alex Bligh <alex@alex.org.uk>,
 	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
 	qemu block <qemu-block@nongnu.org>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20160511211233.GD5054@grep.be>
+Message-ID: <20160511211020.GC5054@grep.be>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<5731E99C.3000108@redhat.com>
 	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
 	<5731FE53.6010602@redhat.com>
-	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+In-Reply-To: <5731FE53.6010602@redhat.com>
 X-Speed: Gates' Law: Every 18 months, the speed of software halves.
 Organization: none
 User-Agent: Mutt/1.6.0 (2016-04-01)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 89.106.240.122
-X-Mailman-Approved-At: Thu, 12 May 2016 05:22:45 -0400
+X-Mailman-Approved-At: Thu, 12 May 2016 05:22:44 -0400
 Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,18 +59,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2016 21:12:54 -0000
+X-List-Received-Date: Wed, 11 May 2016 21:10:43 -0000
 
-On Tue, May 10, 2016 at 04:38:29PM +0100, Alex Bligh wrote:
-> On 10 May 2016, at 16:29, Eric Blake <eblake@redhat.com> wrote:
-> > So the kernel is currently one of the clients that does NOT honor block
-> > sizes, and as such, servers should be prepared for ANY size up to
-> > UINT_MAX (other than DoS handling).
+On Tue, May 10, 2016 at 09:29:23AM -0600, Eric Blake wrote:
+> On 05/10/2016 09:08 AM, Alex Bligh wrote:
+> > Eric,
+> > 
+> >> Hmm. The current wording of the experimental block size additions does
+> >> NOT allow the client to send a NBD_CMD_TRIM with a size larger than the
+> >> maximum NBD_CMD_WRITE:
+> >> https://github.com/yoe/nbd/blob/extension-info/doc/proto.md#block-size-constraints
+> > 
+> > Correct
+> > 
+> >> Maybe we should revisit that in the spec, and/or advertise yet another
+> >> block size (since the maximum size for a trim and/or write_zeroes
+> >> request may indeed be different than the maximum size for a read/write).
+> > 
+> > I think it's up to the server to either handle large requests, or
+> > for the client to break these up.
 > 
-> Or not to permit a connection.
+> But the question at hand here is whether we should permit servers to
+> advertise multiple maximum block sizes (one for read/write, another one
+> for trim/write_zero, or even two [at least qemu tracks a separate
+> maximum trim vs. write_zero sizing in its generic block layer]), or
+> merely stick with the current wording that requires clients that honor
+> maximum block size to obey the same maximum for ALL commands, regardless
+> of amount of data sent over the wire.
+> 
+> > 
+> > The core problem here is that the kernel (and, ahem, most servers) are
+> > ignorant of the block size extension, and need to guess how to break
+> > things up. In my view the client (kernel in this case) should
+> > be breaking the trim requests up into whatever size it uses as the
+> > maximum size write requests. But then it would have to know about block
+> > sizes which are in (another) experimental extension.
+> 
+> Correct - no one has yet patched the kernel to honor block sizes
+> advertised through what is currently an experimental extension.  (We
+> have ioctl(NBD_SET_BLKSIZE) which can be argued to set the kernel's
+> minimum block size, but I haven't audited whether the kernel actually
+> guarantees that all client requests are sent aligned to the value passed
+> that way - but we have nothing to set the maximum size, and are at the
+> mercy of however the kernel currently decides to split large requests).
 
-Right -- and this is why I was recommending against making this a MUST in the
-first place.
+I don't actually think it does that at all, tbh. There is an
+"integrityhuge" test in the reference server test suite which performs a
+number of large requests (up to 50M), and which was created by a script
+that just does direct read requests to /dev/nbdX.
+
+It just so happens that most upper layers (filesystems etc) don't make
+requests larger than about 32MiB, but that's not related.
+
+> So the kernel is currently one of the clients that does NOT honor block
+> sizes, and as such, servers should be prepared for ANY size up to
+> UINT_MAX (other than DoS handling).  My question above only applies to
+> clients that use the experimental block size extensions.
+
+Right.
 
 [...]
 
