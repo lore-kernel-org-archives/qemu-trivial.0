@@ -1,41 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0VdW-0005rx-4f
-	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 11:01:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52856)
+	id 1b0VlA-0003Ta-Mq
+	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 11:09:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57052)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b0VdP-0005cT-HV
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:01:15 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1b0Vl7-0003Nh-If
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:09:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>) id 1b0VdM-00006S-QX
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:01:11 -0400
-Received: from mail.avalus.com ([89.16.176.221]:57617)
+	(envelope-from <pbonzini@redhat.com>) id 1b0Vl3-00051X-D2
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:09:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex@alex.org.uk>)
-	id 1b0Vd4-0008Iw-Lu; Wed, 11 May 2016 11:00:50 -0400
-Received: by mail.avalus.com (Postfix) with ESMTPSA id 6E7EBC5607E;
-	Wed, 11 May 2016 15:55:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=alex.org.uk; s=mail;
-	t=1462978545; bh=AuRt1e8TfBvzI8y7XjEYFPZM10hhVevvqF8CdVj9HXk=;
-	h=Subject:From:In-Reply-To:Date:Cc:References:To;
-	b=sQ/tPPzlNSaPkwMZIRwEm6GoDLvpFxTxhv4zc1K7CJ0EDw4B2kE4N+jvxlJUqkIYg
-	tNyDwsXMFRmXmlxgNoJEjDGbFsD80ing0SgRls/NVg4Vwgj6TcZVCmMqYGO+8y0ole
-	hyT4h3nFyTQhjariH7PiTpbgnpZ+3vNNRX5cxE3g=
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: multipart/signed;
-	boundary="Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB";
-	protocol="application/pgp-signature"; micalg=pgp-sha512
-X-Pgp-Agent: GPGMail 2.5.2
-From: Alex Bligh <alex@alex.org.uk>
-In-Reply-To: <57333CEB.7050705@redhat.com>
-Date: Wed, 11 May 2016 15:55:40 +0100
-Cc: Alex Bligh <alex@alex.org.uk>, Paolo Bonzini <pbonzini@redhat.com>,
-	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
-	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
-	qemu block <qemu-block@nongnu.org>
-Message-Id: <E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1b0Vkg-0004lx-2V; Wed, 11 May 2016 11:08:42 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7339381114;
+	Wed, 11 May 2016 15:08:41 +0000 (UTC)
+Received: from [10.36.112.83] (ovpn-112-83.ams2.redhat.com [10.36.112.83])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4BF8a3O025327
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 11 May 2016 11:08:38 -0400
+To: Alex Bligh <alex@alex.org.uk>, Eric Blake <eblake@redhat.com>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<5731E99C.3000108@redhat.com>
 	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
@@ -46,10 +34,29 @@ References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
 	<20160510160438.GD28315@chrystal.uk.oracle.com>
 	<8F0007CD-40E2-43C1-8196-B4BE401B8EF4@alex.org.uk>
 	<5732FD8C.1080106@redhat.com> <57333CEB.7050705@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-X-Mailer: Apple Mail (2.1878.6)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 89.16.176.221
+	<E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
+Cc: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
+	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+	qemu block <qemu-block@nongnu.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <57334AF0.1020501@redhat.com>
+Date: Wed, 11 May 2016 17:08:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.7.1
+MIME-Version: 1.0
+In-Reply-To: <E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="dwRDvh8eG1W9riKfLSbOenwdx8x8o7K2t"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 11 May 2016 15:08:41 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,63 +70,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2016 15:01:16 -0000
+X-List-Received-Date: Wed, 11 May 2016 15:09:11 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--dwRDvh8eG1W9riKfLSbOenwdx8x8o7K2t
+Content-Type: multipart/mixed; boundary="IlMAfjpadfvtaS5xlMdTu4K26Msnk0vpu"
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: Alex Bligh <alex@alex.org.uk>, Eric Blake <eblake@redhat.com>
+Cc: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ qemu block <qemu-block@nongnu.org>
+Message-ID: <57334AF0.1020501@redhat.com>
+Subject: Re: [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard commands with a
+ length bigger than NBD_MAX_BUFFER_SIZE
+References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
+ <5731E99C.3000108@redhat.com>
+ <3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
+ <5731FE53.6010602@redhat.com>
+ <672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+ <20160510154545.GB28315@chrystal.uk.oracle.com>
+ <592DA6FD-75F8-4B7F-AA21-DEA8D591B723@alex.org.uk>
+ <20160510160438.GD28315@chrystal.uk.oracle.com>
+ <8F0007CD-40E2-43C1-8196-B4BE401B8EF4@alex.org.uk>
+ <5732FD8C.1080106@redhat.com> <57333CEB.7050705@redhat.com>
+ <E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
+In-Reply-To: <E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
+
+--IlMAfjpadfvtaS5xlMdTu4K26Msnk0vpu
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
 
 
---Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain;
-	charset=us-ascii
+
+On 11/05/2016 16:55, Alex Bligh wrote:
+>> > Then I think I will propose a doc patch to the extension-info branch=
+
+>> > that adds new INFO items for NBD_INFO_TRIM_SIZE and
+>> > NBD_INFO_WRITE_ZERO_SIZE (if requested by client and replied by serv=
+er,
+>> > then this can be larger than the normal maximum size in
+>> > NBD_INFO_BLOCK_SIZE; if either side doesn't request the info, then
+>> > assume any maximum in NBD_INFO_BLOCK_SIZE applies, otherwise UINT32_=
+MAX;
+>> > and the two infos are separate items because NBD_FLAG_SEND_TRIM and
+>> > NBD_FLAG_SEND_WRITE_ZEROES are orthogonally optional).
+> mmmm ...
+>=20
+> at this rate you'd be better with a list of command / maximum size
+> tuples!
+
+Not sure if serious or not, but anyway I think enumerating the items
+individually should be enough.  It's not like commands grow on trees. :)
+
+Paolo
 
 
-On 11 May 2016, at 15:08, Eric Blake <eblake@redhat.com> wrote:
+--IlMAfjpadfvtaS5xlMdTu4K26Msnk0vpu--
 
-> Then I think I will propose a doc patch to the extension-info branch
-> that adds new INFO items for NBD_INFO_TRIM_SIZE and
-> NBD_INFO_WRITE_ZERO_SIZE (if requested by client and replied by server,
-> then this can be larger than the normal maximum size in
-> NBD_INFO_BLOCK_SIZE; if either side doesn't request the info, then
-> assume any maximum in NBD_INFO_BLOCK_SIZE applies, otherwise UINT32_MAX;
-> and the two infos are separate items because NBD_FLAG_SEND_TRIM and
-> NBD_FLAG_SEND_WRITE_ZEROES are orthogonally optional).
-
-mmmm ...
-
-at this rate you'd be better with a list of command / maximum size
-tuples!
-
---
-Alex Bligh
-
-
-
-
-
---Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
-	filename=signature.asc
-Content-Type: application/pgp-signature;
-	name=signature.asc
-Content-Description: Message signed with OpenPGP using GPGMail
+--dwRDvh8eG1W9riKfLSbOenwdx8x8o7K2t
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Comment: GPGTools - https://gpgtools.org
+Version: GnuPG v2
 
-iQIcBAEBCgAGBQJXM0ftAAoJEBPm5K7i9iORT3EP/AnI7AURAdW4SBTBSsbWN06B
-puRkokK+dkqGK3xYFwuWt76DSorIjGrsKkt4MNHrRAjGwMjx8IQ9isG+NEOSte3E
-gqcvD8igjHhvFcN91cRYLxmBOJ57lyowqMb4u1sHZAhxGerk/Iz1lixU2yu3qWqR
-5tw6rljwNjM5aR8R2J9lt2GI1nQ9zauSjAegLteeM0IKddgrjwRPARjPjNrcl/1I
-a9KR21J2F9RfyuoNS8HFyOzDWp/jWtxJs2sesACnpdXN4mE+V2fA4FoeHXH/Q6QQ
-FbuzZ0YuRCekEK4mhwbWRMKAY3Dad8iPkYtDZtsqVd3vr+99aGRnAVQQ7fZ4jZkK
-mvHFp17I3wLMw7Mb0ypPR8TsiIi+J3QqJ5W99JiTMUJxCdOgYxvO/EdQ1bmBCM5M
-Jdb8fp4a1R1mBLcBOhZzOlmZHQekxU3nrhuVe6QfI8gXpUHh6g6VR0U8BlUgn4d9
-ZkcatNNo1Zn/jVzvoL2KWCvc8ZkLgJZ9daK8cCgwh58PgOQxUMYGTx0ZM1K7f83T
-1+PW8kBppIbbgbjcCKs4F9ToZ+45l7XzJcy9ODfGJ5/3jKphbdSF5wwEE+2wSMGf
-grIJuBD1OTDzpPU4U8nHOMHDObEKU3hEd6nc1JYF0YltfI9AfQnIAGTP8EqAi8zR
-cN4zDJJocRw3qzzrarNZ
-=INfi
+iQEcBAEBCAAGBQJXM0rwAAoJEL/70l94x66DdvIH/0CnQHo9azF9q2ejGNMjU4YT
+WSdBIWzC/8fspQVNNCe0k5NrbdCDQrsiC+AGXJDCnF9UEL6+BfCEu+qO27MBZEHn
+WJJj35zULHw187/DE2xPqOHDhDcwIML0wRtj2BQ4K6LWIOr0Y6gtEDl9rcbdRVH8
+AoELGZpxP7te+AFYvxqP2JQ9OKRI+HWrxK79o9VrtXdK0ulqyxAxcCInilI4yc8g
+UwDa8r7vT9Q7Q7TutdbeSdtzlPyJ9gQasMq21ui5wFcYZIKehLweU7QZAF8ZrELG
+zdPnNZ8ujA1S5Ve0ZY6EWmLMVHVio5eILhFXplpgGdeCscPuvG4PvBxEzqMqiP0=
+=7kIK
 -----END PGP SIGNATURE-----
 
---Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB--
+--dwRDvh8eG1W9riKfLSbOenwdx8x8o7K2t--
 
