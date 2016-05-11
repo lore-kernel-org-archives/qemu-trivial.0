@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0PNs-0001Zu-FX
-	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 04:20:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44603)
+	id 1b0PYT-0005Mq-Gc
+	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 04:31:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b0PNo-0001T7-Sg
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:20:42 -0400
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b0PYQ-0005JV-OA
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:31:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b0PNm-0004KO-6B
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:20:39 -0400
-Received: from [59.151.112.132] (port=2263 helo=heian.cn.fujitsu.com)
+	(envelope-from <quentin.casasnovas@oracle.com>) id 1b0PYL-0006ge-KP
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:31:37 -0400
+Received: from aserp1040.oracle.com ([141.146.126.69]:38609)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1b0PNd-00047i-P7; Wed, 11 May 2016 04:20:32 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="6434513"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 11 May 2016 16:20:00 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id D5AE242B66F8;
-	Wed, 11 May 2016 16:19:58 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 11 May 2016 16:19:58 +0800
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-References: <1460879154-13258-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<5731D9A7.4030300@redhat.com>
-CC: Paolo Bonzini <pbonzini@redhat.com>, <armbru@redhat.com>,
-	<peter.maydell@linaro.org>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <5732EC2B.8030005@cn.fujitsu.com>
-Date: Wed, 11 May 2016 16:24:11 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <quentin.casasnovas@oracle.com>)
+	id 1b0PYL-0006gE-BI; Wed, 11 May 2016 04:31:33 -0400
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by aserp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with
+	ESMTP id u4B8VTAD014954
+	(version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 11 May 2016 08:31:30 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userv0021.oracle.com (8.13.8/8.13.8) with ESMTP id u4B8VSHG007752
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Wed, 11 May 2016 08:31:29 GMT
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+	by aserv0121.oracle.com (8.13.8/8.13.8) with ESMTP id u4B8VRnb008041;
+	Wed, 11 May 2016 08:31:28 GMT
+Received: from localhost (/10.175.178.9)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 11 May 2016 01:31:27 -0700
+Date: Wed, 11 May 2016 10:34:12 +0200
+From: Quentin Casasnovas <quentin.casasnovas@oracle.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	qemu-devel <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-stable@nongnu.org
+Message-ID: <20160511083412.GG28315@chrystal.uk.oracle.com>
+References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
+	<573245CA.1030104@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <5731D9A7.4030300@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: D5AE242B66F8.AC749
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [PATCH v2] qdev: Clean up around properties
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <573245CA.1030104@redhat.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Source-IP: userv0021.oracle.com [156.151.31.71]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 141.146.126.69
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] nbd: fix trim/discard
+ commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,125 +58,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2016 08:20:42 -0000
+X-List-Received-Date: Wed, 11 May 2016 08:31:40 -0000
 
-For mjt`s information: it has been
+On Tue, May 10, 2016 at 02:34:18PM -0600, Eric Blake wrote:
+> On 05/06/2016 02:45 AM, Quentin Casasnovas wrote:
+> > When running fstrim on a filesystem mounted through qemu-nbd with
+> > --discard=on, fstrim would fail with I/O errors:
+> > 
+> >   $ fstrim /k/spl/ice/
+> >   fstrim: /k/spl/ice/: FITRIM ioctl failed: Input/output error
+> > 
+> > and qemu-nbd was spitting these:
+> > 
+> >   nbd.c:nbd_co_receive_request():L1232: len (94621696) is larger than max len (33554432)
+> 
+> Your patch duplicates what is already present in qemu:
+> 
+> commit eb38c3b67018ff8069e4f674a28661931a8a3e4f
+> Author: Paolo Bonzini <pbonzini@redhat.com>
+> Date:   Thu Jan 7 14:32:42 2016 +0100
+> 
+>     nbd-server: do not check request length except for reads and writes
+> 
+>     Only reads and writes need to allocate memory correspondent to the
+>     request length.  Other requests can be sent to the storage without
+>     allocating any memory, and thus any request length is acceptable.
+> 
+>     Reported-by: Sitsofe Wheeler <sitsofe@yahoo.com>
+>     Cc: qemu-block@nongnu.org
+>     Reviewed-by: Max Reitz <mreitz@redhat.com>
+>     Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> 
+> For the purposes of qemu-stable, it's better to backport the existing
+> patch than to write a new version of it.
+> 
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Ha sorry I missed this! I wouldn't have tried to debug/fix myself otherwise :)
 
-On 05/10/2016 08:52 PM, Paolo Bonzini wrote:
-> Just comments, so
->
-> Cc: qemu-trivial@nongnu.org
->
-> On 17/04/2016 09:45, Cao jin wrote:
->> include:
->> 1. remove unnecessary declaration of static function
->> 2. fix inconsistency between comment and function name, and typo OOM->QOM
->> 2. update comments of functions, use uniform format(GTK-Doc style)
->>
->> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->> ---
->> changelog:
->> 1. Use uniform comment format. (Markus)
->> 2. Update function comments. (Markus & Paolo)
->>
->> comments of qdev_add_legacy_property maybe need polishing, Maintainer who will
->> take this patch can touch that comment directly:)
->>
->>   hw/core/qdev.c               | 30 +++++++++++++++++++-----------
->>   include/hw/qdev-properties.h | 10 ++++++++--
->>   2 files changed, 27 insertions(+), 13 deletions(-)
->>
->> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
->> index db41aa1..204f77b 100644
->> --- a/hw/core/qdev.c
->> +++ b/hw/core/qdev.c
->> @@ -58,9 +58,6 @@ const char *qdev_fw_name(DeviceState *dev)
->>       return object_get_typename(OBJECT(dev));
->>   }
->>
->> -static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
->> -                                     Error **errp);
->> -
->>   static void bus_remove_child(BusState *bus, DeviceState *child)
->>   {
->>       BusChild *kid;
->> @@ -908,13 +905,20 @@ static void qdev_get_legacy_property(Object *obj, Visitor *v,
->>   }
->>
->>   /**
->> - * @qdev_add_legacy_property - adds a legacy property
->> + * qdev_property_add_legacy:
->> + * @dev: Device to add the property to.
->> + * @prop: The qdev property definition.
->> + * @errp: location to store error information.
->> + *
->> + * Add a legacy QOM property to @dev for qdev property @prop.
->> + * On error, store error in @errp.
->>    *
->> - * Do not use this is new code!  Properties added through this interface will
->> - * be given names and types in the "legacy" namespace.
->> + * Legacy properties are string versions of QOM properties.  The format of
->> + * the string depends on the property type.  Legacy properties are only
->> + * needed for "info qtree".
->>    *
->> - * Legacy properties are string versions of other OOM properties.  The format
->> - * of the string depends on the property type.
->> + * Do not use this is new code!  QOM Properties added through this interface
->> + * will be given names in the "legacy" namespace.
->>    */
->>   static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
->>                                        Error **errp)
->> @@ -937,10 +941,14 @@ static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
->>   }
->>
->>   /**
->> - * @qdev_property_add_static - add a @Property to a device.
->> + * qdev_property_add_static:
->> + * @dev: Device to add the property to.
->> + * @prop: The qdev property definition.
->> + * @errp: location to store error information.
->>    *
->> - * Static properties access data in a struct.  The actual type of the
->> - * property and the field depends on the property type.
->> + * Add a static QOM property to @dev for qdev property @prop.
->> + * On error, store error in @errp.  Static properties access data in a struct.
->> + * The type of the QOM property is derived from prop->info.
->>    */
->>   void qdev_property_add_static(DeviceState *dev, Property *prop,
->>                                 Error **errp)
->> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
->> index 0586cac..034b75a 100644
->> --- a/include/hw/qdev-properties.h
->> +++ b/include/hw/qdev-properties.h
->> @@ -197,8 +197,14 @@ void error_set_from_qdev_prop_error(Error **errp, int ret, DeviceState *dev,
->>                                       Property *prop, const char *value);
->>
->>   /**
->> - * @qdev_property_add_static - add a @Property to a device referencing a
->> - * field in a struct.
->> + * qdev_property_add_static:
->> + * @dev: Device to add the property to.
->> + * @prop: The qdev property definition.
->> + * @errp: location to store error information.
->> + *
->> + * Add a static QOM property to @dev for qdev property @prop.
->> + * On error, store error in @errp.  Static properties access data in a struct.
->> + * The type of the QOM property is derived from prop->info.
->>    */
->>   void qdev_property_add_static(DeviceState *dev, Property *prop, Error **errp);
->>
->>
->
->
-> .
+> It also helps to state what version of qemu you were testing, as it is
+> obviously not the (soon-to-be-released) version 2.6 which already has
+> the fix.
 >
 
--- 
-Yours Sincerely,
+I was using qemu-2.5.0-rc3 on Gentoo but this was also verified on some
+Debian systems which appears to be on 1.1.2+dfsg-6a+deb7u12 and on Ubuntu
+Xenial 2.0.0+dfsg-2ubuntu1.22.
 
-Cao jin
+I wrote the patch on top of https://github.com/bonzini/qemu.git:master
+(a7e00e2) which didn't contain the fix last Friday.
 
+Anyway, cool if the fix is going into mainline :)
 
+Quentin
 
