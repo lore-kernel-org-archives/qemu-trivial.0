@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0Oep-00082W-L3
-	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 03:34:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58633)
+	id 1b0PNs-0001Zu-FX
+	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 04:20:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44603)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1b0Oem-0007wZ-Pt
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 03:34:09 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b0PNo-0001T7-Sg
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:20:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1b0Oel-0000Q9-9R
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 03:34:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35957)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b0PNm-0004KO-6B
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 04:20:39 -0400
+Received: from [59.151.112.132] (port=2263 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1b0Oeg-0000Og-IV; Wed, 11 May 2016 03:34:02 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2077863164;
-	Wed, 11 May 2016 07:34:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-51.ams2.redhat.com
-	[10.36.116.51])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4B7Xx4I031573
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 11 May 2016 03:34:00 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id C0B721132D8A; Wed, 11 May 2016 09:33:58 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org
-References: <1462895369-1508-1-git-send-email-peter.maydell@linaro.org>
-Date: Wed, 11 May 2016 09:33:58 +0200
-In-Reply-To: <1462895369-1508-1-git-send-email-peter.maydell@linaro.org>
-	(Peter Maydell's message of "Tue, 10 May 2016 16:49:29 +0100")
-Message-ID: <8737ppjbfd.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1b0PNd-00047i-P7; Wed, 11 May 2016 04:20:32 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="6434513"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 11 May 2016 16:20:00 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id D5AE242B66F8;
+	Wed, 11 May 2016 16:19:58 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 11 May 2016 16:19:58 +0800
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+References: <1460879154-13258-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<5731D9A7.4030300@redhat.com>
+CC: Paolo Bonzini <pbonzini@redhat.com>, <armbru@redhat.com>,
+	<peter.maydell@linaro.org>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <5732EC2B.8030005@cn.fujitsu.com>
+Date: Wed, 11 May 2016 16:24:11 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 11 May 2016 07:34:01 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options.hx: Specify
- the units for -machine kvm_shadow_mem
+In-Reply-To: <5731D9A7.4030300@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: D5AE242B66F8.AC749
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [PATCH v2] qdev: Clean up around properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,37 +55,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2016 07:34:10 -0000
+X-List-Received-Date: Wed, 11 May 2016 08:20:42 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+For mjt`s information: it has been
 
-> The -machine kvm_shadow_mem option takes a size in bytes; say
-> so explicitly in its documentation.
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+On 05/10/2016 08:52 PM, Paolo Bonzini wrote:
+> Just comments, so
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reported-by: Tobi (github.com/tobimensch)
-> ---
->  qemu-options.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Cc: qemu-trivial@nongnu.org
 >
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 6106520..0b86d9f 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -35,7 +35,7 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
->      "                kernel_irqchip=on|off controls accelerated irqchip support\n"
->      "                kernel_irqchip=on|off|split controls accelerated irqchip support (default=off)\n"
->      "                vmport=on|off|auto controls emulation of vmport (default: auto)\n"
-> -    "                kvm_shadow_mem=size of KVM shadow MMU\n"
-> +    "                kvm_shadow_mem=size of KVM shadow MMU in bytes\n"
->      "                dump-guest-core=on|off include guest memory in a core dump (default=on)\n"
->      "                mem-merge=on|off controls memory merge support (default: on)\n"
->      "                iommu=on|off controls emulated Intel IOMMU (VT-d) support (default=off)\n"
+> On 17/04/2016 09:45, Cao jin wrote:
+>> include:
+>> 1. remove unnecessary declaration of static function
+>> 2. fix inconsistency between comment and function name, and typo OOM->QOM
+>> 2. update comments of functions, use uniform format(GTK-Doc style)
+>>
+>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>> ---
+>> changelog:
+>> 1. Use uniform comment format. (Markus)
+>> 2. Update function comments. (Markus & Paolo)
+>>
+>> comments of qdev_add_legacy_property maybe need polishing, Maintainer who will
+>> take this patch can touch that comment directly:)
+>>
+>>   hw/core/qdev.c               | 30 +++++++++++++++++++-----------
+>>   include/hw/qdev-properties.h | 10 ++++++++--
+>>   2 files changed, 27 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>> index db41aa1..204f77b 100644
+>> --- a/hw/core/qdev.c
+>> +++ b/hw/core/qdev.c
+>> @@ -58,9 +58,6 @@ const char *qdev_fw_name(DeviceState *dev)
+>>       return object_get_typename(OBJECT(dev));
+>>   }
+>>
+>> -static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>> -                                     Error **errp);
+>> -
+>>   static void bus_remove_child(BusState *bus, DeviceState *child)
+>>   {
+>>       BusChild *kid;
+>> @@ -908,13 +905,20 @@ static void qdev_get_legacy_property(Object *obj, Visitor *v,
+>>   }
+>>
+>>   /**
+>> - * @qdev_add_legacy_property - adds a legacy property
+>> + * qdev_property_add_legacy:
+>> + * @dev: Device to add the property to.
+>> + * @prop: The qdev property definition.
+>> + * @errp: location to store error information.
+>> + *
+>> + * Add a legacy QOM property to @dev for qdev property @prop.
+>> + * On error, store error in @errp.
+>>    *
+>> - * Do not use this is new code!  Properties added through this interface will
+>> - * be given names and types in the "legacy" namespace.
+>> + * Legacy properties are string versions of QOM properties.  The format of
+>> + * the string depends on the property type.  Legacy properties are only
+>> + * needed for "info qtree".
+>>    *
+>> - * Legacy properties are string versions of other OOM properties.  The format
+>> - * of the string depends on the property type.
+>> + * Do not use this is new code!  QOM Properties added through this interface
+>> + * will be given names in the "legacy" namespace.
+>>    */
+>>   static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>>                                        Error **errp)
+>> @@ -937,10 +941,14 @@ static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>>   }
+>>
+>>   /**
+>> - * @qdev_property_add_static - add a @Property to a device.
+>> + * qdev_property_add_static:
+>> + * @dev: Device to add the property to.
+>> + * @prop: The qdev property definition.
+>> + * @errp: location to store error information.
+>>    *
+>> - * Static properties access data in a struct.  The actual type of the
+>> - * property and the field depends on the property type.
+>> + * Add a static QOM property to @dev for qdev property @prop.
+>> + * On error, store error in @errp.  Static properties access data in a struct.
+>> + * The type of the QOM property is derived from prop->info.
+>>    */
+>>   void qdev_property_add_static(DeviceState *dev, Property *prop,
+>>                                 Error **errp)
+>> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+>> index 0586cac..034b75a 100644
+>> --- a/include/hw/qdev-properties.h
+>> +++ b/include/hw/qdev-properties.h
+>> @@ -197,8 +197,14 @@ void error_set_from_qdev_prop_error(Error **errp, int ret, DeviceState *dev,
+>>                                       Property *prop, const char *value);
+>>
+>>   /**
+>> - * @qdev_property_add_static - add a @Property to a device referencing a
+>> - * field in a struct.
+>> + * qdev_property_add_static:
+>> + * @dev: Device to add the property to.
+>> + * @prop: The qdev property definition.
+>> + * @errp: location to store error information.
+>> + *
+>> + * Add a static QOM property to @dev for qdev property @prop.
+>> + * On error, store error in @errp.  Static properties access data in a struct.
+>> + * The type of the QOM property is derived from prop->info.
+>>    */
+>>   void qdev_property_add_static(DeviceState *dev, Property *prop, Error **errp);
+>>
+>>
+>
+>
+> .
+>
 
-Won't hurt, but makes me wonder: we have several size-valued option
-parameters where we don't bother to clarify the unit in the description.
-Sometimes the param=value string gives a hint, e.g. sndbuf=nbytes.
+-- 
+Yours Sincerely,
 
-Things would be less confusing if the suffixless unit of a size was the
-same everywhere, but we've screwed that up pretty comprehensively.
+Cao jin
+
+
 
