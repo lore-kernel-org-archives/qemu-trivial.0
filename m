@@ -1,51 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b0UsG-0005YE-Ro
-	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 10:12:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38604)
+	id 1b0VdW-0005rx-4f
+	for mharc-qemu-trivial@gnu.org; Wed, 11 May 2016 11:01:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52856)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1b0Us9-0005KC-D4
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 10:12:27 -0400
+	(envelope-from <alex@alex.org.uk>) id 1b0VdP-0005cT-HV
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:01:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1b0Us4-0003R4-6N
-	for qemu-trivial@nongnu.org; Wed, 11 May 2016 10:12:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41055)
+	(envelope-from <alex@alex.org.uk>) id 1b0VdM-00006S-QX
+	for qemu-trivial@nongnu.org; Wed, 11 May 2016 11:01:11 -0400
+Received: from mail.avalus.com ([89.16.176.221]:57617)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1b0Urn-0003Nx-6h; Wed, 11 May 2016 10:11:59 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A543A627E5;
-	Wed, 11 May 2016 14:11:58 +0000 (UTC)
-Received: from [10.3.113.79] (ovpn-113-79.phx2.redhat.com [10.3.113.79])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4BEBw93028968; Wed, 11 May 2016 10:11:58 -0400
-To: Quentin Casasnovas <quentin.casasnovas@oracle.com>
+	(envelope-from <alex@alex.org.uk>)
+	id 1b0Vd4-0008Iw-Lu; Wed, 11 May 2016 11:00:50 -0400
+Received: by mail.avalus.com (Postfix) with ESMTPSA id 6E7EBC5607E;
+	Wed, 11 May 2016 15:55:43 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=alex.org.uk; s=mail;
+	t=1462978545; bh=AuRt1e8TfBvzI8y7XjEYFPZM10hhVevvqF8CdVj9HXk=;
+	h=Subject:From:In-Reply-To:Date:Cc:References:To;
+	b=sQ/tPPzlNSaPkwMZIRwEm6GoDLvpFxTxhv4zc1K7CJ0EDw4B2kE4N+jvxlJUqkIYg
+	tNyDwsXMFRmXmlxgNoJEjDGbFsD80ing0SgRls/NVg4Vwgj6TcZVCmMqYGO+8y0ole
+	hyT4h3nFyTQhjariH7PiTpbgnpZ+3vNNRX5cxE3g=
+Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
+Content-Type: multipart/signed;
+	boundary="Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB";
+	protocol="application/pgp-signature"; micalg=pgp-sha512
+X-Pgp-Agent: GPGMail 2.5.2
+From: Alex Bligh <alex@alex.org.uk>
+In-Reply-To: <57333CEB.7050705@redhat.com>
+Date: Wed, 11 May 2016 15:55:40 +0100
+Cc: Alex Bligh <alex@alex.org.uk>, Paolo Bonzini <pbonzini@redhat.com>,
+	Quentin Casasnovas <quentin.casasnovas@oracle.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"nbd-general@lists.sourceforge.net" <nbd-general@lists.sourceforge.net>,
+	"qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+	qemu block <qemu-block@nongnu.org>
+Message-Id: <E93C6545-4622-4E30-BE81-7B6E9B6DE219@alex.org.uk>
 References: <1462524302-15558-1-git-send-email-quentin.casasnovas@oracle.com>
-	<573245CA.1030104@redhat.com>
-	<20160511083412.GG28315@chrystal.uk.oracle.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org, qemu-stable@nongnu.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <57333DAD.8040309@redhat.com>
-Date: Wed, 11 May 2016 08:11:57 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <20160511083412.GG28315@chrystal.uk.oracle.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="EEqLRvwFVbo0lt0DBeKEojpndQ7IS5vAg"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 11 May 2016 14:11:58 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] nbd: fix trim/discard
+	<5731E99C.3000108@redhat.com>
+	<3271D86E-D54C-44FC-9FD6-2E2C51F5FB6D@alex.org.uk>
+	<5731FE53.6010602@redhat.com>
+	<672ED845-88C6-4C96-B2DC-F4BCBD85F788@alex.org.uk>
+	<20160510154545.GB28315@chrystal.uk.oracle.com>
+	<592DA6FD-75F8-4B7F-AA21-DEA8D591B723@alex.org.uk>
+	<20160510160438.GD28315@chrystal.uk.oracle.com>
+	<8F0007CD-40E2-43C1-8196-B4BE401B8EF4@alex.org.uk>
+	<5732FD8C.1080106@redhat.com> <57333CEB.7050705@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+X-Mailer: Apple Mail (2.1878.6)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 89.16.176.221
+Subject: Re: [Qemu-trivial] [Nbd] [Qemu-devel] [PATCH] nbd: fix trim/discard
  commands with a length bigger than NBD_MAX_BUFFER_SIZE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -58,75 +63,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 May 2016 14:12:27 -0000
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---EEqLRvwFVbo0lt0DBeKEojpndQ7IS5vAg
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 05/11/2016 02:34 AM, Quentin Casasnovas wrote:
->> Your patch duplicates what is already present in qemu:
->>
->> commit eb38c3b67018ff8069e4f674a28661931a8a3e4f
-
-> Ha sorry I missed this! I wouldn't have tried to debug/fix myself other=
-wise :)
-
-It's okay - you at least sparked a good conversation of what the NBD
-protocol itself needs to think about in relation to these issues.
-
->=20
->> It also helps to state what version of qemu you were testing, as it is=
-
->> obviously not the (soon-to-be-released) version 2.6 which already has
->> the fix.
->>
->=20
-> I was using qemu-2.5.0-rc3 on Gentoo but this was also verified on some=
-
-> Debian systems which appears to be on 1.1.2+dfsg-6a+deb7u12 and on Ubun=
-tu
-> Xenial 2.0.0+dfsg-2ubuntu1.22.
->=20
-> I wrote the patch on top of https://github.com/bonzini/qemu.git:master
-> (a7e00e2) which didn't contain the fix last Friday.
-
-The master branch in Paolo's tree doesn't always actively track upstream
-(mainly when he is about to post a pull request that needs to be
-rebased).  Best is to base patches against true upstream:
-git://git.qemu-project.org/qemu.git
-
->=20
-> Anyway, cool if the fix is going into mainline :)
-
-Already in there for the 2.6 release candidates (and final 2.6 should be
-later today).  And this thread argues that the stable 2.5.x branch
-should indeed backport the identified patch.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+X-List-Received-Date: Wed, 11 May 2016 15:01:16 -0000
 
 
---EEqLRvwFVbo0lt0DBeKEojpndQ7IS5vAg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+--Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii
+
+
+On 11 May 2016, at 15:08, Eric Blake <eblake@redhat.com> wrote:
+
+> Then I think I will propose a doc patch to the extension-info branch
+> that adds new INFO items for NBD_INFO_TRIM_SIZE and
+> NBD_INFO_WRITE_ZERO_SIZE (if requested by client and replied by server,
+> then this can be larger than the normal maximum size in
+> NBD_INFO_BLOCK_SIZE; if either side doesn't request the info, then
+> assume any maximum in NBD_INFO_BLOCK_SIZE applies, otherwise UINT32_MAX;
+> and the two infos are separate items because NBD_FLAG_SEND_TRIM and
+> NBD_FLAG_SEND_WRITE_ZEROES are orthogonally optional).
+
+mmmm ...
+
+at this rate you'd be better with a list of command / maximum size
+tuples!
+
+--
+Alex Bligh
+
+
+
+
+
+--Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename=signature.asc
+Content-Type: application/pgp-signature;
+	name=signature.asc
+Content-Description: Message signed with OpenPGP using GPGMail
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Comment: GPGTools - https://gpgtools.org
 
-iQEcBAEBCAAGBQJXMz2tAAoJEKeha0olJ0NqqoMH/RNhKif8w+OrLldVyCDODqTU
-FfJBef0GfCbUhqTpAo0LvOLczyDKY0whow3NA04vT42qaU7v3QJNfeMXOv7i4V7t
-0hF6rGFdwFQCEFg/tR946ZqcxWxi3wqahS2kF70gtZ2d19AOTcd4FtNG+1fBTjy3
-eSF6g2iFtZbPShlfPvoSOvYgXIOGrTf5ONOGZ5gVn1APjlsd1jR7rztC51yir3Sk
-9uTBIT+tKw/KZsNuHFIk3zNNVnUzEXobcfFZPUA+m6q0o/cT5/YBTpt/obp8sVI2
-13tZt1BPrsqZKEsbAOWG0Csw4+YeCd7O2r1oTwL+4M5T9C1koLRE0/bp+K/g5PA=
-=QjN+
+iQIcBAEBCgAGBQJXM0ftAAoJEBPm5K7i9iORT3EP/AnI7AURAdW4SBTBSsbWN06B
+puRkokK+dkqGK3xYFwuWt76DSorIjGrsKkt4MNHrRAjGwMjx8IQ9isG+NEOSte3E
+gqcvD8igjHhvFcN91cRYLxmBOJ57lyowqMb4u1sHZAhxGerk/Iz1lixU2yu3qWqR
+5tw6rljwNjM5aR8R2J9lt2GI1nQ9zauSjAegLteeM0IKddgrjwRPARjPjNrcl/1I
+a9KR21J2F9RfyuoNS8HFyOzDWp/jWtxJs2sesACnpdXN4mE+V2fA4FoeHXH/Q6QQ
+FbuzZ0YuRCekEK4mhwbWRMKAY3Dad8iPkYtDZtsqVd3vr+99aGRnAVQQ7fZ4jZkK
+mvHFp17I3wLMw7Mb0ypPR8TsiIi+J3QqJ5W99JiTMUJxCdOgYxvO/EdQ1bmBCM5M
+Jdb8fp4a1R1mBLcBOhZzOlmZHQekxU3nrhuVe6QfI8gXpUHh6g6VR0U8BlUgn4d9
+ZkcatNNo1Zn/jVzvoL2KWCvc8ZkLgJZ9daK8cCgwh58PgOQxUMYGTx0ZM1K7f83T
+1+PW8kBppIbbgbjcCKs4F9ToZ+45l7XzJcy9ODfGJ5/3jKphbdSF5wwEE+2wSMGf
+grIJuBD1OTDzpPU4U8nHOMHDObEKU3hEd6nc1JYF0YltfI9AfQnIAGTP8EqAi8zR
+cN4zDJJocRw3qzzrarNZ
+=INfi
 -----END PGP SIGNATURE-----
 
---EEqLRvwFVbo0lt0DBeKEojpndQ7IS5vAg--
+--Apple-Mail=_CB35E750-93D0-4C86-8134-673F226F0BAB--
 
