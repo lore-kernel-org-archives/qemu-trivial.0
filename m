@@ -1,29 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b2If6-0001vk-0H
-	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2016 09:34:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59691)
+	id 1b2PjJ-0002F8-5i
+	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2016 17:07:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49110)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1b2If2-0001nl-2C
-	for qemu-trivial@nongnu.org; Mon, 16 May 2016 09:34:17 -0400
+	(envelope-from <Talha_Imran@mentor.com>) id 1b2PjG-00029i-6E
+	for qemu-trivial@nongnu.org; Mon, 16 May 2016 17:07:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1b2Iex-0006MB-ND
-	for qemu-trivial@nongnu.org; Mon, 16 May 2016 09:34:14 -0400
-Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:52891)
+	(envelope-from <Talha_Imran@mentor.com>) id 1b2PjE-0001je-GS
+	for qemu-trivial@nongnu.org; Mon, 16 May 2016 17:07:06 -0400
+Received: from relay1.mentorg.com ([192.94.38.131]:37278)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1b2IeS-00068c-4N; Mon, 16 May 2016 09:33:40 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 4B8C917F522; Mon, 16 May 2016 15:23:34 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Developer <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Mon, 16 May 2016 15:23:33 +0200
-Message-Id: <1463405013-7062-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a03:4000:2:362::1
-Subject: [Qemu-trivial] [PATCH] scripts: Use $(..) instead of deprecated `..`
+	(envelope-from <Talha_Imran@mentor.com>)
+	id 1b2Pj2-0001gi-5z; Mon, 16 May 2016 17:06:52 -0400
+Received: from nat-ies.mentorg.com ([192.94.31.2]
+	helo=SVR-IES-FEM-04.mgc.mentorg.com)
+	by relay1.mentorg.com with esmtp 
+	id 1b2Pio-0002rI-O4 from Talha_Imran@mentor.com ;
+	Mon, 16 May 2016 14:06:39 -0700
+Received: from EU-MBX-02.mgc.mentorg.com ([169.254.3.121]) by
+	SVR-IES-FEM-04.mgc.mentorg.com ([137.202.0.110]) with mapi id
+	14.03.0224.002; Mon, 16 May 2016 22:06:37 +0100
+From: "Imran, Talha" <Talha_Imran@mentor.com>
+To: "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+Thread-Index: AQHRqr9BoGiDdbboj0abVCg4qfVMbJ+2Q4r1gADO1wCABQUwMA==
+Date: Mon, 16 May 2016 21:06:37 +0000
+Message-ID: <3052678E9DA67D4CB879A6625EE42075274B5D82@EU-MBX-02.mgc.mentorg.com>
+References: <3052678E9DA67D4CB879A6625EE42075274B5092@EU-MBX-02.mgc.mentorg.com>,
+	<3052678E9DA67D4CB879A6625EE42075274B5912@EU-MBX-02.mgc.mentorg.com>,
+	<3052678E9DA67D4CB879A6625EE42075274B5A3C@EU-MBX-02.mgc.mentorg.com>
+In-Reply-To: <3052678E9DA67D4CB879A6625EE42075274B5A3C@EU-MBX-02.mgc.mentorg.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [137.202.0.68]
+Content-Type: multipart/mixed;
+	boundary="_004_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_"
+MIME-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+	[fuzzy]
+X-Received-From: 192.94.38.131
+Subject: Re: [Qemu-trivial] [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -35,141 +55,318 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 May 2016 13:34:17 -0000
+X-List-Received-Date: Mon, 16 May 2016 21:07:07 -0000
 
-This fixes these warnings from shellcheck:
+--_004_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_
+Content-Type: multipart/alternative;
+	boundary="_000_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_"
 
-    ^-- SC2006: Use $(..) instead of deprecated `..`
+--_000_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Update also a comment using the same pattern.
+Adding some more basis to the patch:
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- scripts/clean-includes          | 2 +-
- scripts/create_config           | 6 +++---
- scripts/feature_to_c.sh         | 6 +++---
- scripts/make_device_config.sh   | 4 ++--
- scripts/qemu-binfmt-conf.sh     | 2 +-
- scripts/update-linux-headers.sh | 2 +-
- 6 files changed, 11 insertions(+), 11 deletions(-)
+I received some documentation from Freescale support relating to this:
+Signal Processing Engine (SPE) Programming Environments Manual: http://cach=
+e.nxp.com/files/32bit/doc/ref_manual/SPEPEM.pdf.
+Relevant info is on page #113.
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index 72b47f1..adffedd 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -39,7 +39,7 @@
- # However some caution is required regarding files that might be part
- # of the guest agent or standalone tests.
- 
--# for i in `git ls-tree --name-only HEAD`  ; do test -f $i && \
-+# for i in $(git ls-tree --name-only HEAD) ; do test -f $i && \
- #   grep -E '^# *include' $i | head -1 | grep 'osdep.h' ; test $? != 0 && \
- #   echo $i ; done
- 
-diff --git a/scripts/create_config b/scripts/create_config
-index 9cb176f..5dd53c5 100755
---- a/scripts/create_config
-+++ b/scripts/create_config
-@@ -16,7 +16,7 @@ case $line in
-  qemu_*dir=*) # qemu-specific directory configuration
-     name=${line%=*}
-     value=${line#*=}
--    define_name=`echo $name | LC_ALL=C tr '[a-z]' '[A-Z]'`
-+    define_name=$(echo $name | LC_ALL=C tr '[a-z]' '[A-Z]')
-     eval "define_value=\"$value\""
-     echo "#define CONFIG_$define_name \"$define_value\""
-     # save for the next definitions
-@@ -72,7 +72,7 @@ case $line in
-     ;;
-  ARCH=*) # configuration
-     arch=${line#*=}
--    arch_name=`echo $arch | LC_ALL=C tr '[a-z]' '[A-Z]'`
-+    arch_name=$(echo $arch | LC_ALL=C tr '[a-z]' '[A-Z]')
-     echo "#define HOST_$arch_name 1"
-     ;;
-  HOST_USB=*)
-@@ -92,7 +92,7 @@ case $line in
-     ;;
-  TARGET_BASE_ARCH=*) # configuration
-     target_base_arch=${line#*=}
--    base_arch_name=`echo $target_base_arch | LC_ALL=C tr '[a-z]' '[A-Z]'`
-+    base_arch_name=$(echo $target_base_arch | LC_ALL=C tr '[a-z]' '[A-Z]')
-     echo "#define TARGET_$base_arch_name 1"
-     ;;
-  TARGET_XML_FILES=*)
-diff --git a/scripts/feature_to_c.sh b/scripts/feature_to_c.sh
-index fb1f336..cdfdd4b 100644
---- a/scripts/feature_to_c.sh
-+++ b/scripts/feature_to_c.sh
-@@ -33,7 +33,7 @@ if test -e "$output"; then
- fi
- 
- for input; do
--  arrayname=xml_feature_`echo $input | sed 's,.*/,,; s/[-.]/_/g'`
-+  arrayname=xml_feature_$(echo $input | sed 's,.*/,,; s/[-.]/_/g')
- 
-   ${AWK:-awk} 'BEGIN { n = 0
-       printf "#include \"qemu/osdep.h\"\n"
-@@ -69,8 +69,8 @@ echo >> $output
- echo "const char *const xml_builtin[][2] = {" >> $output
- 
- for input; do
--  basename=`echo $input | sed 's,.*/,,'`
--  arrayname=xml_feature_`echo $input | sed 's,.*/,,; s/[-.]/_/g'`
-+  basename=$(echo $input | sed 's,.*/,,')
-+  arrayname=xml_feature_$(echo $input | sed 's,.*/,,; s/[-.]/_/g')
-   echo "  { \"$basename\", $arrayname }," >> $output
- done
- 
-diff --git a/scripts/make_device_config.sh b/scripts/make_device_config.sh
-index c1afb3f..354af31 100644
---- a/scripts/make_device_config.sh
-+++ b/scripts/make_device_config.sh
-@@ -7,7 +7,7 @@
- src=$1
- dep=$2
- target=$3
--src_dir=`dirname $src`
-+src_dir=$(dirname $src)
- all_includes=
- 
- process_includes () {
-@@ -20,7 +20,7 @@ process_includes () {
- 
- f=$src
- while [ -n "$f" ] ; do
--  f=`cat $f | tr -d '\r' | awk '/^include / {printf "'$src_dir'/%s ", $2}'`
-+  f=$(cat $f | tr -d '\r' | awk '/^include / {printf "'$src_dir'/%s ", $2}')
-   [ $? = 0 ] || exit 1
-   all_includes="$all_includes $f"
- done
-diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
-index 289b1a3..f5bba70 100644
---- a/scripts/qemu-binfmt-conf.sh
-+++ b/scripts/qemu-binfmt-conf.sh
-@@ -10,7 +10,7 @@ if [ ! -f /proc/sys/fs/binfmt_misc/register ]; then
- fi
- 
- # probe cpu type
--cpu=`uname -m`
-+cpu=$(uname -m)
- case "$cpu" in
-   i386|i486|i586|i686|i86pc|BePC|x86_64)
-     cpu="i386"
-diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
-index f7d62d9..08c4c4a 100755
---- a/scripts/update-linux-headers.sh
-+++ b/scripts/update-linux-headers.sh
-@@ -10,7 +10,7 @@
- # This work is licensed under the terms of the GNU GPL version 2.
- # See the COPYING file in the top-level directory.
- 
--tmpdir=`mktemp -d`
-+tmpdir=$(mktemp -d)
- linux="$1"
- output="$2"
- 
--- 
-2.1.4
+According to the documentation, the value is CR (4 bits wide) is set as fol=
+lows:
+crD =3D undefined || cl || undefined || undefine
 
+That is, if the condition is true, the crD[2] bit will be set to 1, else ze=
+ro. The value for rest of the three bits is undefined.
+Taking this information into account, we can set crD[1] bit as well, withou=
+t violating architecture specification.
+
+The existing logic in QEMU which interprets the value of CR (which is set b=
+y a number of different instructions) for branching decisions works well wi=
+th all other instructions. This existing logic is also used for emulation o=
+f other CPUs which do not support efscmp* instructions.
+
+Hence, I believe setting CR =3D 6 instead of CR =3D 4 is the most straightf=
+orward solution.
+
+Comments and suggestions are welcome.
+
+________________________________
+From: Imran, Talha
+Sent: Friday, May 13, 2016 9:26 PM
+To: qemu-trivial@nongnu.org
+Subject: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+
+re-post with attachment.
+
+________________________________
+From: Imran, Talha
+Sent: Friday, May 13, 2016 9:04 AM
+To: qemu-trivial@nongnu.org
+Subject: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+
+ping
+
+________________________________
+From: Imran, Talha
+Sent: Tuesday, May 10, 2016 6:24 PM
+To: qemu-ppc@nongnu.org; qemu-devel@nongnu.org
+Subject: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+
+Hi Everyone,
+
+Please find attached a patch which fixes handling in QEMU PPC e500v1 for ef=
+scmp*
+instructions. This was the cause of over 400 FAILs for this CPU while runni=
+ng
+GCC testsuite, which have been fixed.
+
+Value for Condition Registers (CR) being set in QEMU was different from
+the value observed on hardware.
+
+I have not managed to find a documentation describing the behaviour of
+e500 cores for these instructions. However, the behaviour on
+MPC8548-CDS target was observed by dumping registers to stdout, while
+running executables from uboot.
+
+These instructions are used by GCC only when compiling for te500v1 multilib=
+; hence no
+effect on other PPC CPUs (603, 7400 etc.)
+
+A comparison of GCC v5.2.0 testsuite results summary (number of FAILs) is a=
+s follows:
+
+CPU =3D te500v1
+without patch: 699
+with patch: 193
+
+CPU =3D e500v2
+without patch: 225
+with patch: 225
+
+Is this OK to commit? Comments and suggestions are welcome.
+
+Thanks,
+Talha Imran
+
+--_000_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html dir=3D"ltr">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style id=3D"owaParaStyle" type=3D"text/css">=0A=
+<!--=0A=
+p=0A=
+	{margin-top:0;=0A=
+	margin-bottom:0}=0A=
+p=0A=
+	{margin-top:0;=0A=
+	margin-bottom:0}=0A=
+-->=0A=
+</style><style type=3D"text/css">=0A=
+<!--=0A=
+-->=0A=
+</style><style type=3D"text/css"></style>
+</head>
+<body fpstyle=3D"1" ocsi=3D"0">
+<div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
+10pt;">
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);">Addin=
+g some more basis to the patch:</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><br>
+</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);">I rec=
+eived some documentation from Freescale support relating to this:&nbsp;</di=
+v>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"text-align: center; font-family: arial, sans-serif; font-size: sm=
+all;">Signal Processing Engine (SPE) Programming Environments Manual:&nbsp;=
+</span><span style=3D"text-align: center; font-family: arial, sans-serif; f=
+ont-size: small;"><a href=3D"http://cache.nxp.com/files/32bit/doc/ref_manua=
+l/SPEPEM.pdf" target=3D"_blank">http://cache.nxp.com/files/32bit/doc/ref_ma=
+nual/SPEPEM.pdf</a></span><span style=3D"font-size: 10pt;">.&nbsp;</span></=
+div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 10pt;">Relevant info is on page #113.</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><br>
+</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);">Accor=
+ding to the documentation, the value is CR (4 bits wide) is set as follows:=
+</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><i>cr=
+D =3D undefined || cl || undefined || undefine</i></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><br>
+</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);">That =
+is, if the condition is true, the crD[2] bit will be set to 1, else zero. T=
+he value for rest of the three bits is undefined.&nbsp;</div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 10pt;">Taking this information into account, we can se=
+t&nbsp;</span><span style=3D"font-size: 13.3333px;">crD[1] bit as well, wit=
+hout violating&nbsp;architecture&nbsp;specification.</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 13.3333px;"><br>
+</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 13.3333px;">The existing logic in QEMU which interpret=
+s the value of CR (which is set by a number of different instructions) for =
+branching decisions works well with
+ all other instructions. This existing logic is also used for emulation of =
+other CPUs which do not support efscmp* instructions.</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 13.3333px;"><br>
+</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 13.3333px;">Hence, I believe setting CR =3D 6 instead =
+of CR =3D 4 is the most straightforward solution.</span></div>
+<div style=3D"font-size: 10pt; background-color: rgb(255, 255, 255);"><span=
+ style=3D"font-size: 13.3333px;"><br>
+</span></div>
+<div style=3D"background-color: rgb(255, 255, 255);"><span style=3D"font-si=
+ze: 13.3333px;">Comments and suggestions are welcome.</span></div>
+<div style=3D"background-color: rgb(255, 255, 255);"><span style=3D"font-si=
+ze: 13.3333px;"><br>
+</span></div>
+<div style=3D"font-family: Times New Roman; color: #000000; font-size: 16px=
+">
+<hr tabindex=3D"-1">
+<div id=3D"divRpF196563" style=3D"direction: ltr;"><font face=3D"Tahoma" si=
+ze=3D"2" color=3D"#000000"><b>From:</b> Imran, Talha<br>
+<b>Sent:</b> Friday, May 13, 2016 9:26 PM<br>
+<b>To:</b> qemu-trivial@nongnu.org<br>
+<b>Subject:</b> [PATCH] Fix QEMU PPC e500v1 efscmp* instructions<br>
+</font><br>
+</div>
+<div></div>
+<div>
+<div style=3D"direction:ltr; font-family:Tahoma; color:#000000; font-size:1=
+0pt">re-post with attachment.&nbsp;
+<div><br>
+</div>
+<div>
+<div>
+<div style=3D"font-family:Times New Roman; color:#000000; font-size:16px">
+<hr tabindex=3D"-1">
+<div id=3D"divRpF195720" style=3D"direction:ltr"><font face=3D"Tahoma" size=
+=3D"2" color=3D"#000000"><b>From:</b> Imran, Talha<br>
+<b>Sent:</b> Friday, May 13, 2016 9:04 AM<br>
+<b>To:</b> qemu-trivial@nongnu.org<br>
+<b>Subject:</b> [PATCH] Fix QEMU PPC e500v1 efscmp* instructions<br>
+</font><br>
+</div>
+<div></div>
+<div>
+<div style=3D"direction:ltr; font-family:Tahoma; color:#000000; font-size:1=
+0pt">ping<br>
+<br>
+<div style=3D"font-family:Times New Roman; color:#000000; font-size:16px">
+<hr tabindex=3D"-1">
+<div id=3D"divRpF65373" style=3D"direction:ltr"><font face=3D"Tahoma" color=
+=3D"#000000" size=3D"2"><b>From:</b> Imran, Talha<br>
+<b>Sent:</b> Tuesday, May 10, 2016 6:24 PM<br>
+<b>To:</b> qemu-ppc@nongnu.org; qemu-devel@nongnu.org<br>
+<b>Subject:</b> [PATCH] Fix QEMU PPC e500v1 efscmp* instructions<br>
+</font><br>
+</div>
+<div></div>
+<div>
+<div style=3D"direction:ltr; font-family:Tahoma; color:#000000; font-size:1=
+0pt">Hi Everyone,
+<br>
+<br>
+Please find attached a patch which fixes handling in QEMU PPC e500v1 for ef=
+scmp* <br>
+instructions. This was the cause of over 400 FAILs for this CPU while runni=
+ng <br>
+GCC testsuite, which have been fixed.<br>
+<br>
+Value for Condition Registers (CR) being set in QEMU was different from <br=
+>
+the value observed on hardware. <br>
+<br>
+I have not managed to find a documentation describing the behaviour of <br>
+e500 cores for these instructions. However, the behaviour on <br>
+MPC8548-CDS target was observed by dumping registers to stdout, while<br>
+running executables from uboot. <br>
+<br>
+These instructions are used by GCC only when compiling for te500v1 multilib=
+; hence no<br>
+effect on other PPC CPUs (603, 7400 etc.)<br>
+<br>
+A comparison of GCC v5.2.0 testsuite results summary (number of FAILs) is a=
+s follows:<br>
+<br>
+<b>CPU =3D te500v1</b><br>
+without patch: 699<br>
+with patch: 193<br>
+<br>
+<b><b>CPU =3D </b>e500v2</b><br>
+without patch: 225<br>
+with patch: 225<br>
+<br>
+Is this OK to commit? Comments and suggestions are welcome.<br>
+<br>
+Thanks, <br>
+Talha Imran<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+--_000_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_--
+
+--_004_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_
+Content-Type: application/octet-stream; name="ppc-efscmpgt.patch"
+Content-Description: ppc-efscmpgt.patch
+Content-Disposition: attachment; filename="ppc-efscmpgt.patch"; size=1713;
+	creation-date="Mon, 16 May 2016 21:05:46 GMT";
+	modification-date="Mon, 16 May 2016 21:05:46 GMT"
+Content-Transfer-Encoding: base64
+
+ZGlmZiAtLWdpdCBhL3RhcmdldC1wcGMvZnB1X2hlbHBlci5jIGIvdGFyZ2V0LXBwYy9mcHVfaGVs
+cGVyLmMKaW5kZXggYjY3ZWJjYS4uNzUyYzU1MiAxMDA2NDQKLS0tIGEvdGFyZ2V0LXBwYy9mcHVf
+aGVscGVyLmMKKysrIGIvdGFyZ2V0LXBwYy9mcHVfaGVscGVyLmMKQEAgLTE0MDAsNyArMTQwMCw3
+IEBAIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzY21wbHQoQ1BVUFBDU3RhdGUgKmVudiwgdWlu
+dDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCiAKICAgICB1MS5sID0gb3AxOwogICAgIHUyLmwgPSBv
+cDI7Ci0gICAgcmV0dXJuIGZsb2F0MzJfbHQodTEuZiwgdTIuZiwgJmVudi0+dmVjX3N0YXR1cykg
+PyA0IDogMDsKKyAgICByZXR1cm4gZmxvYXQzMl9sdCh1MS5mLCB1Mi5mLCAmZW52LT52ZWNfc3Rh
+dHVzKSA/IDYgOiAwOwogfQogCiBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGVmc2NtcGd0KENQVVBQ
+Q1N0YXRlICplbnYsIHVpbnQzMl90IG9wMSwgdWludDMyX3Qgb3AyKQpAQCAtMTQwOSw3ICsxNDA5
+LDcgQEAgc3RhdGljIGlubGluZSB1aW50MzJfdCBlZnNjbXBndChDUFVQUENTdGF0ZSAqZW52LCB1
+aW50MzJfdCBvcDEsIHVpbnQzMl90IG9wMikKIAogICAgIHUxLmwgPSBvcDE7CiAgICAgdTIubCA9
+IG9wMjsKLSAgICByZXR1cm4gZmxvYXQzMl9sZSh1MS5mLCB1Mi5mLCAmZW52LT52ZWNfc3RhdHVz
+KSA/IDAgOiA0OworICAgIHJldHVybiBmbG9hdDMyX2xlKHUxLmYsIHUyLmYsICZlbnYtPnZlY19z
+dGF0dXMpID8gMCA6IDY7CiB9CiAKIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzY21wZXEoQ1BV
+UFBDU3RhdGUgKmVudiwgdWludDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCkBAIC0xNDE4LDcgKzE0
+MTgsNyBAQCBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGVmc2NtcGVxKENQVVBQQ1N0YXRlICplbnYs
+IHVpbnQzMl90IG9wMSwgdWludDMyX3Qgb3AyKQogCiAgICAgdTEubCA9IG9wMTsKICAgICB1Mi5s
+ID0gb3AyOwotICAgIHJldHVybiBmbG9hdDMyX2VxKHUxLmYsIHUyLmYsICZlbnYtPnZlY19zdGF0
+dXMpID8gNCA6IDA7CisgICAgcmV0dXJuIGZsb2F0MzJfZXEodTEuZiwgdTIuZiwgJmVudi0+dmVj
+X3N0YXR1cykgPyA2IDogMDsKIH0KIAogc3RhdGljIGlubGluZSB1aW50MzJfdCBlZnN0c3RsdChD
+UFVQUENTdGF0ZSAqZW52LCB1aW50MzJfdCBvcDEsIHVpbnQzMl90IG9wMikKQEAgLTE0NDIsNyAr
+MTQ0Miw3IEBAIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzdHN0ZXEoQ1BVUFBDU3RhdGUgKmVu
+diwgdWludDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCiAjZGVmaW5lIEhFTFBFUl9TSU5HTEVfU1BF
+X0NNUChuYW1lKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCiAgICAgdWlu
+dDMyX3QgaGVscGVyX2UjI25hbWUoQ1BVUFBDU3RhdGUgKmVudiwgdWludDMyX3Qgb3AxLCB1aW50
+MzJfdCBvcDIpIFwKICAgICB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKLSAgICAgICAgcmV0dXJuIGUjI25hbWUoZW52
+LCBvcDEsIG9wMikgPDwgMjsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAg
+cmV0dXJuIGUjI25hbWUoZW52LCBvcDEsIG9wMik7ICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBcCiAgICAgfQogLyogZWZzdHN0bHQgKi8KIEhFTFBFUl9TSU5HTEVfU1BFX0NNUChmc3RzdGx0
+KTsK
+
+--_004_3052678E9DA67D4CB879A6625EE42075274B5D82EUMBX02mgcmento_--
 
