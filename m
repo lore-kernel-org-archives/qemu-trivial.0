@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b1Fvc-00019D-05
-	for mharc-qemu-trivial@gnu.org; Fri, 13 May 2016 12:27:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60373)
+	id 1b2Gzv-0003xl-1W
+	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2016 07:47:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38294)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>) id 1b1FvX-000143-PZ
-	for qemu-trivial@nongnu.org; Fri, 13 May 2016 12:27:01 -0400
+	(envelope-from <sw@weilnetz.de>) id 1b2Gzs-0003v9-EX
+	for qemu-trivial@nongnu.org; Mon, 16 May 2016 07:47:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>) id 1b1FvS-0004S8-FC
-	for qemu-trivial@nongnu.org; Fri, 13 May 2016 12:26:59 -0400
-Received: from relay1.mentorg.com ([192.94.38.131]:41254)
+	(envelope-from <sw@weilnetz.de>) id 1b2Gzp-0001kc-5u
+	for qemu-trivial@nongnu.org; Mon, 16 May 2016 07:47:40 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=47496 helo=mail.weilnetz.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>) id 1b1FvS-0004Rp-1G
-	for qemu-trivial@nongnu.org; Fri, 13 May 2016 12:26:54 -0400
-Received: from nat-ies.mentorg.com ([192.94.31.2]
-	helo=SVR-IES-FEM-03.mgc.mentorg.com)
-	by relay1.mentorg.com with esmtp 
-	id 1b1FvN-0005lb-Jm from Talha_Imran@mentor.com 
-	for qemu-trivial@nongnu.org; Fri, 13 May 2016 09:26:50 -0700
-Received: from EU-MBX-02.mgc.mentorg.com ([169.254.3.121]) by
-	SVR-IES-FEM-03.mgc.mentorg.com ([137.202.0.108]) with mapi id
-	14.03.0224.002; Fri, 13 May 2016 17:26:47 +0100
-From: "Imran, Talha" <Talha_Imran@mentor.com>
-To: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Thread-Topic: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
-Thread-Index: AQHRqr9BoGiDdbboj0abVCg4qfVMbJ+2Q4r1gADO1wA=
-Date: Fri, 13 May 2016 16:26:47 +0000
-Message-ID: <3052678E9DA67D4CB879A6625EE42075274B5A3C@EU-MBX-02.mgc.mentorg.com>
-References: <3052678E9DA67D4CB879A6625EE42075274B5092@EU-MBX-02.mgc.mentorg.com>,
-	<3052678E9DA67D4CB879A6625EE42075274B5912@EU-MBX-02.mgc.mentorg.com>
-In-Reply-To: <3052678E9DA67D4CB879A6625EE42075274B5912@EU-MBX-02.mgc.mentorg.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-originating-ip: [137.202.0.69]
-Content-Type: multipart/mixed;
-	boundary="_004_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_"
+	(envelope-from <sw@weilnetz.de>) id 1b2Gzo-0001kV-W3
+	for qemu-trivial@nongnu.org; Mon, 16 May 2016 07:47:37 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 8483311810AB;
+	Mon, 16 May 2016 13:27:09 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id psb8XXo-lXnH; Mon, 16 May 2016 13:27:07 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (p54AC8FB1.dip0.t-ipconnect.de
+	[84.172.143.177])
+	by mail.weilnetz.de (Postfix) with ESMTPSA id 7751F11810A9;
+	Mon, 16 May 2016 13:27:07 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1461879221-13338-1-git-send-email-sw@weilnetz.de>
+	<CAFEAcA_AGhFyNdXZkMzs2P4XzgEgPGyHhjr+vp78DBD3NnJaZA@mail.gmail.com>
+Cc: QEMU Developer <qemu-devel@nongnu.org>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-stable@nongnu.org
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <5739AE8A.9080604@weilnetz.de>
+Date: Mon, 16 May 2016 13:27:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.7.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
-	[fuzzy]
-X-Received-From: 192.94.38.131
-Subject: [Qemu-trivial] [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+In-Reply-To: <CAFEAcA_AGhFyNdXZkMzs2P4XzgEgPGyHhjr+vp78DBD3NnJaZA@mail.gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="wXQ1naixMinVEkJ19TWofpEeAv7EWXT3p"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Subject: Re: [Qemu-trivial] [PATCH for 2.6] configure: Allow builds
+ -Weverything
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,211 +55,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 May 2016 16:27:01 -0000
+X-List-Received-Date: Mon, 16 May 2016 11:47:41 -0000
 
---_004_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_
-Content-Type: multipart/alternative;
-	boundary="_000_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_"
-
---_000_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_
-Content-Type: text/plain; charset="iso-8859-1"
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--wXQ1naixMinVEkJ19TWofpEeAv7EWXT3p
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-re-post with attachment.
+Am 29.04.2016 um 10:51 schrieb Peter Maydell:
+> On 28 April 2016 at 22:33, Stefan Weil <sw@weilnetz.de> wrote:
+>> The clang compiler supports a useful compiler option -Weverything.
+>>
+>> As this option triggers warnings in glib header files, too, testing
+>> glib with -Werror will always fail. A size mismatch is also detected
+>> without -Werror, so simply remove it.
+>>
+>> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>> ---
+>>
+>> With this patch, it is possible to build QEMU using this configuration=
+:
+>>
+>> ./configure' --cc=3Dclang-3.7 --cxx=3Dclang++-3.7 --extra-cflags=3D"-W=
+everything -DHAVE_FSXATTR" --disable-werror
+>>
+>> (HAVE_FSXATTR avoids a fatal build error because of structure redefini=
+tion)
+>=20
+> No objection to the patch, but not for 2.6 at this stage I think.
+>=20
+> (Does the configure patch re fsxattr that got a ping today
+> avoid your need to define HAVE_FSXATTR by hand?)
+>=20
+> thanks
+> -- PMM
+>=20
 
-________________________________
-From: Imran, Talha
-Sent: Friday, May 13, 2016 9:04 AM
-To: qemu-trivial@nongnu.org
-Subject: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
+I think this patch which was too late for 2.6.0 is a candidate for
+qemu-trivial, maybe also for qemu-stable. CC both mailing lists.
 
-ping
+Stefan
 
-________________________________
-From: Imran, Talha
-Sent: Tuesday, May 10, 2016 6:24 PM
-To: qemu-ppc@nongnu.org; qemu-devel@nongnu.org
-Subject: [PATCH] Fix QEMU PPC e500v1 efscmp* instructions
 
-Hi Everyone,
+--wXQ1naixMinVEkJ19TWofpEeAv7EWXT3p
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-Please find attached a patch which fixes handling in QEMU PPC e500v1 for ef=
-scmp*
-instructions. This was the cause of over 400 FAILs for this CPU while runni=
-ng
-GCC testsuite, which have been fixed.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-Value for Condition Registers (CR) being set in QEMU was different from
-the value observed on hardware.
+iQIcBAEBCAAGBQJXOa6KAAoJEOCMIdVndFCt+pMP/2iist5hoOP2K8A8gQRhD7mV
+i3ZjevJ6VqgXjfioTFoLtzcX/d6dTWJB4i2J+Y+FioGlZTQBZrabFD/XQvjvIWZ8
+FaAvMpQGHiP35D2TlyowyqTf5ewIhUiMGFTzV6fYJ0s68C3p2bSB0kLQgWKmiChr
+fB/0f5SfF1tecWm5X32oLomqHPnscVlb5/qe9lGwud9amhw0uKADFBh3WDMsjEZq
+4aQYnttitIsQHJk1St1EVdmPDYr10p1xZ4XHhUEVc1JV5TVyVOfXyuei32fVFTGj
+AjYbkrKI1tX836eDolVuVlDxMQsi5HyTpLeT33aHvyEJMEgZNOztMwYP1/uDDKAB
+VDQBo2T2r3TC3yoDvVFNqNCGT/KEC6eEUpdyzP3z3z7pwMgx6N5isiqdgftQgCQ9
+9Uz/vdcIavco0H4LWxsexNlN9TPOecl0julNfInE0JQSOItroAvKbrMm/vKPUpdz
+4Rzos8BxKNXbvio+DTl3TIZqbY9737WGcdkUmlFL2PvgTiO9HSCxThdV/ChgjfsQ
+bnPTUZ8pOKC2JelK8vjlhWLvCc446OdKGOFg79Bg5uxve0N3H+g0cOHrUvpKZEJE
+W9fwP8cFcQHay0Hv31ecS23CtYSssHFcY2GbKaToIWk2GgcbmhPleDAkr3DSXElB
+QLPGkTr6sfgqp6qDkjBa
+=t3r5
+-----END PGP SIGNATURE-----
 
-I have not managed to find a documentation describing the behaviour of
-e500 cores for these instructions. However, the behaviour on
-MPC8548-CDS target was observed by dumping registers to stdout, while
-running executables from uboot.
-
-These instructions are used by GCC only when compiling for te500v1 multilib=
-; hence no
-effect on other PPC CPUs (603, 7400 etc.)
-
-A comparison of GCC v5.2.0 testsuite results summary (number of FAILs) is a=
-s follows:
-
-CPU =3D te500v1
-without patch: 699
-with patch: 193
-
-CPU =3D e500v2
-without patch: 225
-with patch: 225
-
-Is this OK to commit? Comments and suggestions are welcome.
-
-Thanks,
-Talha Imran
-
---_000_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html dir=3D"ltr">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style id=3D"owaParaStyle" type=3D"text/css">=0A=
-<!--=0A=
-p=0A=
-	{margin-top:0;=0A=
-	margin-bottom:0}=0A=
-p=0A=
-	{margin-top:0;=0A=
-	margin-bottom:0}=0A=
--->=0A=
-</style><style type=3D"text/css"></style>
-</head>
-<body fpstyle=3D"1" ocsi=3D"0">
-<div style=3D"direction: ltr;font-family: Tahoma;color: #000000;font-size: =
-10pt;">re-post with attachment.&nbsp;
-<div><br>
-</div>
-<div>
-<div>
-<div style=3D"font-family: Times New Roman; color: #000000; font-size: 16px=
-">
-<hr tabindex=3D"-1">
-<div id=3D"divRpF195720" style=3D"direction: ltr;"><font face=3D"Tahoma" si=
-ze=3D"2" color=3D"#000000"><b>From:</b> Imran, Talha<br>
-<b>Sent:</b> Friday, May 13, 2016 9:04 AM<br>
-<b>To:</b> qemu-trivial@nongnu.org<br>
-<b>Subject:</b> [PATCH] Fix QEMU PPC e500v1 efscmp* instructions<br>
-</font><br>
-</div>
-<div></div>
-<div>
-<div style=3D"direction:ltr; font-family:Tahoma; color:#000000; font-size:1=
-0pt">ping<br>
-<br>
-<div style=3D"font-family:Times New Roman; color:#000000; font-size:16px">
-<hr tabindex=3D"-1">
-<div id=3D"divRpF65373" style=3D"direction:ltr"><font face=3D"Tahoma" color=
-=3D"#000000" size=3D"2"><b>From:</b> Imran, Talha<br>
-<b>Sent:</b> Tuesday, May 10, 2016 6:24 PM<br>
-<b>To:</b> qemu-ppc@nongnu.org; qemu-devel@nongnu.org<br>
-<b>Subject:</b> [PATCH] Fix QEMU PPC e500v1 efscmp* instructions<br>
-</font><br>
-</div>
-<div></div>
-<div>
-<div style=3D"direction:ltr; font-family:Tahoma; color:#000000; font-size:1=
-0pt">Hi Everyone,
-<br>
-<br>
-Please find attached a patch which fixes handling in QEMU PPC e500v1 for ef=
-scmp* <br>
-instructions. This was the cause of over 400 FAILs for this CPU while runni=
-ng <br>
-GCC testsuite, which have been fixed.<br>
-<br>
-Value for Condition Registers (CR) being set in QEMU was different from <br=
->
-the value observed on hardware. <br>
-<br>
-I have not managed to find a documentation describing the behaviour of <br>
-e500 cores for these instructions. However, the behaviour on <br>
-MPC8548-CDS target was observed by dumping registers to stdout, while<br>
-running executables from uboot. <br>
-<br>
-These instructions are used by GCC only when compiling for te500v1 multilib=
-; hence no<br>
-effect on other PPC CPUs (603, 7400 etc.)<br>
-<br>
-A comparison of GCC v5.2.0 testsuite results summary (number of FAILs) is a=
-s follows:<br>
-<br>
-<b>CPU =3D te500v1</b><br>
-without patch: 699<br>
-with patch: 193<br>
-<br>
-<b><b>CPU =3D </b>e500v2</b><br>
-without patch: 225<br>
-with patch: 225<br>
-<br>
-Is this OK to commit? Comments and suggestions are welcome.<br>
-<br>
-Thanks, <br>
-Talha Imran<br>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
-</html>
-
---_000_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_--
-
---_004_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_
-Content-Type: application/octet-stream; name="ppc-efscmpgt.patch"
-Content-Description: ppc-efscmpgt.patch
-Content-Disposition: attachment; filename="ppc-efscmpgt.patch"; size=1713;
-	creation-date="Fri, 13 May 2016 16:26:14 GMT";
-	modification-date="Fri, 13 May 2016 16:26:14 GMT"
-Content-Transfer-Encoding: base64
-
-ZGlmZiAtLWdpdCBhL3RhcmdldC1wcGMvZnB1X2hlbHBlci5jIGIvdGFyZ2V0LXBwYy9mcHVfaGVs
-cGVyLmMKaW5kZXggYjY3ZWJjYS4uNzUyYzU1MiAxMDA2NDQKLS0tIGEvdGFyZ2V0LXBwYy9mcHVf
-aGVscGVyLmMKKysrIGIvdGFyZ2V0LXBwYy9mcHVfaGVscGVyLmMKQEAgLTE0MDAsNyArMTQwMCw3
-IEBAIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzY21wbHQoQ1BVUFBDU3RhdGUgKmVudiwgdWlu
-dDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCiAKICAgICB1MS5sID0gb3AxOwogICAgIHUyLmwgPSBv
-cDI7Ci0gICAgcmV0dXJuIGZsb2F0MzJfbHQodTEuZiwgdTIuZiwgJmVudi0+dmVjX3N0YXR1cykg
-PyA0IDogMDsKKyAgICByZXR1cm4gZmxvYXQzMl9sdCh1MS5mLCB1Mi5mLCAmZW52LT52ZWNfc3Rh
-dHVzKSA/IDYgOiAwOwogfQogCiBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGVmc2NtcGd0KENQVVBQ
-Q1N0YXRlICplbnYsIHVpbnQzMl90IG9wMSwgdWludDMyX3Qgb3AyKQpAQCAtMTQwOSw3ICsxNDA5
-LDcgQEAgc3RhdGljIGlubGluZSB1aW50MzJfdCBlZnNjbXBndChDUFVQUENTdGF0ZSAqZW52LCB1
-aW50MzJfdCBvcDEsIHVpbnQzMl90IG9wMikKIAogICAgIHUxLmwgPSBvcDE7CiAgICAgdTIubCA9
-IG9wMjsKLSAgICByZXR1cm4gZmxvYXQzMl9sZSh1MS5mLCB1Mi5mLCAmZW52LT52ZWNfc3RhdHVz
-KSA/IDAgOiA0OworICAgIHJldHVybiBmbG9hdDMyX2xlKHUxLmYsIHUyLmYsICZlbnYtPnZlY19z
-dGF0dXMpID8gMCA6IDY7CiB9CiAKIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzY21wZXEoQ1BV
-UFBDU3RhdGUgKmVudiwgdWludDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCkBAIC0xNDE4LDcgKzE0
-MTgsNyBAQCBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGVmc2NtcGVxKENQVVBQQ1N0YXRlICplbnYs
-IHVpbnQzMl90IG9wMSwgdWludDMyX3Qgb3AyKQogCiAgICAgdTEubCA9IG9wMTsKICAgICB1Mi5s
-ID0gb3AyOwotICAgIHJldHVybiBmbG9hdDMyX2VxKHUxLmYsIHUyLmYsICZlbnYtPnZlY19zdGF0
-dXMpID8gNCA6IDA7CisgICAgcmV0dXJuIGZsb2F0MzJfZXEodTEuZiwgdTIuZiwgJmVudi0+dmVj
-X3N0YXR1cykgPyA2IDogMDsKIH0KIAogc3RhdGljIGlubGluZSB1aW50MzJfdCBlZnN0c3RsdChD
-UFVQUENTdGF0ZSAqZW52LCB1aW50MzJfdCBvcDEsIHVpbnQzMl90IG9wMikKQEAgLTE0NDIsNyAr
-MTQ0Miw3IEBAIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZWZzdHN0ZXEoQ1BVUFBDU3RhdGUgKmVu
-diwgdWludDMyX3Qgb3AxLCB1aW50MzJfdCBvcDIpCiAjZGVmaW5lIEhFTFBFUl9TSU5HTEVfU1BF
-X0NNUChuYW1lKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCiAgICAgdWlu
-dDMyX3QgaGVscGVyX2UjI25hbWUoQ1BVUFBDU3RhdGUgKmVudiwgdWludDMyX3Qgb3AxLCB1aW50
-MzJfdCBvcDIpIFwKICAgICB7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKLSAgICAgICAgcmV0dXJuIGUjI25hbWUoZW52
-LCBvcDEsIG9wMikgPDwgMjsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAg
-cmV0dXJuIGUjI25hbWUoZW52LCBvcDEsIG9wMik7ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBcCiAgICAgfQogLyogZWZzdHN0bHQgKi8KIEhFTFBFUl9TSU5HTEVfU1BFX0NNUChmc3RzdGx0
-KTsK
-
---_004_3052678E9DA67D4CB879A6625EE42075274B5A3CEUMBX02mgcmento_--
+--wXQ1naixMinVEkJ19TWofpEeAv7EWXT3p--
 
