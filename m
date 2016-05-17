@@ -1,43 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b2TxI-00041R-Oy
-	for mharc-qemu-trivial@gnu.org; Mon, 16 May 2016 21:37:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47723)
+	id 1b2dA7-00072S-A6
+	for mharc-qemu-trivial@gnu.org; Tue, 17 May 2016 07:27:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2TxF-0003nR-T6
-	for qemu-trivial@nongnu.org; Mon, 16 May 2016 21:37:50 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1b2dA5-0006zT-Bp
+	for qemu-trivial@nongnu.org; Tue, 17 May 2016 07:27:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2TxD-00050g-PN
-	for qemu-trivial@nongnu.org; Mon, 16 May 2016 21:37:48 -0400
-Received: from [59.151.112.132] (port=9389 helo=heian.cn.fujitsu.com)
+	(envelope-from <pm215@archaic.org.uk>) id 1b2dA0-0006vD-Eb
+	for qemu-trivial@nongnu.org; Tue, 17 May 2016 07:27:41 -0400
+Received: from orth.archaic.org.uk ([81.2.115.148]:49362)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1b2Tx8-0004x6-5S; Mon, 16 May 2016 21:37:42 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="6609136"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 17 May 2016 09:37:26 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id A3797489F962;
-	Tue, 17 May 2016 09:37:23 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Tue, 17 May 2016 09:37:23 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <mst@redhat.com>, <qemu-trivial@nongnu.org>, <marcel@redhat.com>
-Date: Tue, 17 May 2016 09:41:18 +0800
-Message-ID: <1463449278-16060-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: A3797489F962.A9E53
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] ICH9: fix typo
+	(envelope-from <pm215@archaic.org.uk>) id 1b2dA0-0006sr-8B
+	for qemu-trivial@nongnu.org; Tue, 17 May 2016 07:27:36 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1b2d9w-0007Rx-8s; Tue, 17 May 2016 12:27:32 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-trivial@nongnu.org
+Date: Tue, 17 May 2016 12:27:31 +0100
+Message-Id: <1463484451-22979-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 81.2.115.148
+Subject: [Qemu-trivial] [PATCH] Remove config-devices.mak on 'make clean'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,57 +36,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 May 2016 01:37:51 -0000
+X-List-Received-Date: Tue, 17 May 2016 11:27:42 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Our dependency mechanism works like this:
+ * on first build there is neither a .o nor a .d
+ * we create the .d as a side effect of creating the .o
+ * for rebuilds we know when we need to update the .o,
+   which also updates the .d
+
+This system requires that you're never in a situation where there is
+a .o file but no .d (because then we will never realise we need to
+build the .d, and we will not have the dependency information about
+when to rebuild the .o).
+
+This is working fine for our object files, but we also try to use it
+for $TARGET/config-devices.mak (where the dependency file is
+in $TARGET-config-devices.mak.d). Unfortunately "make clean" doesn't
+remove config-devices.mak, which means that it puts us in the
+forbidden situation of "object file exists but not its .d file".
+This in turn means that we will fail to notice when we need to rebuild:
+  mkdir build/depbug
+  (cd build/depbug && '../../configure')
+  make -C build/depbug -j8
+  make -C build/depbug clean
+  echo "CONFIG_CANARY = y" >> default-configs/arm-softmmu.mak
+  make -C build/depbug
+  grep CANARY build/depbug/aarch64-softmmu/config-devices.mak
+
+The CANARY token should show up in config-devices.mak but does not.
+
+Fix this bug by making "make clean" delete the config-devices.mak files.
+config-all-devices.mak doesn't have the same problem since it has
+no .d file, but delete it too, since it is created by "make" and
+logically should be removed by "make clean".
+
+(Note that it is important not to remove config-devices.mak until
+after we have recursively run 'make clean' in the subdirectories.)
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-it is 4th attempt to send this patch...
-because of it wasn't delivered correctly by eggs.gnu.org
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
 
- hw/isa/lpc_ich9.c      | 4 ++--
- include/hw/i386/ich9.h | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index 99cd3ba..fafe367 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -96,8 +96,8 @@ static void ich9_cc_update(ICH9LPCState *lpc)
+diff --git a/Makefile b/Makefile
+index 1d076a9..a5d7e62 100644
+--- a/Makefile
++++ b/Makefile
+@@ -356,6 +356,7 @@ clean:
+ 	if test -d $$d; then $(MAKE) -C $$d $@ || exit 1; fi; \
+ 	rm -f $$d/qemu-options.def; \
+         done
++	rm -f $(SUBDIR_DEVICES_MAK) config-all-devices.mak
  
-     /*
-      * D30: DMI2PCI bridge
--     * It is arbitrarily decided how INTx lines of PCI devicesbehind the bridge
--     * are connected to pirq lines. Our choice is PIRQ[E-H].
-+     * It is arbitrarily decided how INTx lines of PCI devices behind
-+     * the bridge are connected to pirq lines. Our choice is PIRQ[E-H].
-      * INT[A-D] are connected to PIRQ[E-H]
-      */
-     for (pci_intx = 0; pci_intx < PCI_NUM_PINS; pci_intx++) {
-diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index d04dcdc..88233c3 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/i386/ich9.h
-@@ -35,7 +35,7 @@ typedef struct ICH9LPCState {
+ VERSION ?= $(shell cat VERSION)
  
-     /* (pci device, intx) -> pirq
-      * In real chipset case, the unused slots are never used
--     * as ICH9 supports only D25-D32 irq routing.
-+     * as ICH9 supports only D25-D31 irq routing.
-      * On the other hand in qemu case, any slot/function can be populated
-      * via command line option.
-      * So fallback interrupt routing for any devices in any slots is necessary.
-@@ -181,7 +181,7 @@ Object *ich9_lpc_find(void);
- #define ICH9_SATA1_DEV                          31
- #define ICH9_SATA1_FUNC                         2
- 
--/* D30:F1 power management I/O registers
-+/* D31:F0 power management I/O registers
-    offset from the address ICH9_LPC_PMBASE */
- 
- /* ICH9 LPC PM I/O registers are 128 ports and 128-aligned */
 -- 
-2.1.0
-
-
+1.9.1
 
 
