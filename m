@@ -1,36 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30Wf-0000p6-66
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:24:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34023)
+	id 1b30Wl-0000vB-EX
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:24:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34052)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Wc-0000kn-6G
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b30We-0000ob-Uo
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Wa-0005iA-D0
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:29 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58130)
+	(envelope-from <mjt@tls.msk.ru>) id 1b30Wd-0005iu-Rx
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:33503)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30WT-0005gg-4F; Wed, 18 May 2016 08:24:21 -0400
+	id 1b30WT-0005gf-4Q; Wed, 18 May 2016 08:24:21 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2CA93417A3;
+	by isrv.corpit.ru (Postfix) with ESMTP id 3E09E417A7;
 	Wed, 18 May 2016 15:24:17 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 613CBADF;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 1D340ADD;
 	Wed, 18 May 2016 15:06:11 +0300 (MSK)
-Received: (nullmailer pid 12382 invoked by uid 1000);
+Received: (nullmailer pid 12398 invoked by uid 1000);
 	Wed, 18 May 2016 12:06:09 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Wed, 18 May 2016 15:05:56 +0300
-Message-Id: <f35c1f66adb4c472830329a2fb23e0a8fd8ca5f4.1463573089.git.mjt@msgid.tls.msk.ru>
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Wed, 18 May 2016 15:06:04 +0300
+Message-Id: <3f3b5388d400a4e26718328809e6546b21fb4588.1463573089.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
 References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 01/13] s390: remove misleading comment
+Subject: [Qemu-trivial] [PULL 09/13] configure: Use uniform description for
+ devel packages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -42,29 +44,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:24:31 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:24:37 -0000
 
-The comment talks about a non-ELF object while the
-example gives ELF object.
+From: Stefan Weil <sw@weilnetz.de>
 
+As all other devel packages are written in the form "name devel",
+use this form for libcap devel and libattr devel, too.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/s390x/ipl.c | 2 +-
+ configure | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-index 5786b5e..e6bf7cf 100644
---- a/hw/s390x/ipl.c
-+++ b/hw/s390x/ipl.c
-@@ -129,7 +129,7 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
-             /* Adjust ELF start address to final location */
-             ipl->bios_start_addr += fwbase;
-         } else {
--            /* Try to load non-ELF file (e.g. s390-ccw.img) */
-+            /* Try to load non-ELF file */
-             bios_size = load_image_targphys(bios_filename, ZIPL_IMAGE_START,
-                                             4096);
-             ipl->bios_start_addr = ZIPL_IMAGE_START;
+diff --git a/configure b/configure
+index bbf9005..293639c 100755
+--- a/configure
++++ b/configure
+@@ -4611,7 +4611,7 @@ if test "$softmmu" = yes ; then
+       tools="$tools fsdev/virtfs-proxy-helper\$(EXESUF)"
+     else
+       if test "$virtfs" = yes; then
+-        error_exit "VirtFS is supported only on Linux and requires libcap-devel and libattr-devel"
++        error_exit "VirtFS is supported only on Linux and requires libcap devel and libattr devel"
+       fi
+       virtfs=no
+     fi
 -- 
 2.1.4
 
