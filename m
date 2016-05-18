@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30Mw-0000Fc-BW
+	id 1b30Mw-0000G1-Hv
 	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:14:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58414)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Mq-00009N-Rj
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:28 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b30Mr-0000A7-Fh
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Mp-00031t-SB
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:49470)
+	(envelope-from <mjt@tls.msk.ru>) id 1b30Mq-000320-Bk
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55145)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30Mk-00030Q-93; Wed, 18 May 2016 08:14:18 -0400
+	id 1b30Mk-00030S-I3; Wed, 18 May 2016 08:14:18 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 02ED3417A0;
+	by isrv.corpit.ru (Postfix) with ESMTP id 3B422417A3;
 	Wed, 18 May 2016 15:14:17 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id AC5D7AE2;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 39F4DADE;
 	Wed, 18 May 2016 15:06:11 +0300 (MSK)
-Received: (nullmailer pid 12392 invoked by uid 1000);
+Received: (nullmailer pid 12400 invoked by uid 1000);
 	Wed, 18 May 2016 12:06:09 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 18 May 2016 15:06:01 +0300
-Message-Id: <de4905f4bc645ad2991b9b535e8902f81abaf8c7.1463573089.git.mjt@msgid.tls.msk.ru>
+Date: Wed, 18 May 2016 15:06:05 +0300
+Message-Id: <bdc3f61dec2f9c227235bb5f677a0272e1184c82.1463573089.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
 References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 06/13] qdict: fix unbounded stack warning for
- qdict_array_entries
+Subject: [Qemu-trivial] [PULL 10/13] accel: make configure_accelerator
+ return void
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,51 +46,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 18 May 2016 12:14:29 -0000
 
-From: Peter Xu <peterx@redhat.com>
+From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
 
-Here we use one g_strdup_printf() to replace the two stack allocated
-array, considering it's more convenient, safe, and as long as it's
-called rarely only when quorum device opens. This will remove the
-unbound stack warning when compiling with "-Wstack-usage=1000000".
+Return the negated value of accel_initialised is meaningless,
+and the caller vl doesn't check it.
 
-Reviewed-by:   Eric Blake <eblake@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qobject/qdict.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ accel.c                | 4 +---
+ include/sysemu/accel.h | 2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/qobject/qdict.c b/qobject/qdict.c
-index a128536..60f158c 100644
---- a/qobject/qdict.c
-+++ b/qobject/qdict.c
-@@ -705,19 +705,16 @@ int qdict_array_entries(QDict *src, const char *subqdict)
-     for (i = 0; i < INT_MAX; i++) {
-         QObject *subqobj;
-         int subqdict_entries;
--        size_t slen = 32 + subqdict_len;
--        char indexstr[slen], prefix[slen];
--        size_t snprintf_ret;
-+        char *prefix = g_strdup_printf("%s%u.", subqdict, i);
+diff --git a/accel.c b/accel.c
+index 0510b90..403eb5e 100644
+--- a/accel.c
++++ b/accel.c
+@@ -77,7 +77,7 @@ static int accel_init_machine(AccelClass *acc, MachineState *ms)
+     return ret;
+ }
  
--        snprintf_ret = snprintf(indexstr, slen, "%s%u", subqdict, i);
--        assert(snprintf_ret < slen);
-+        subqdict_entries = qdict_count_prefixed_entries(src, prefix);
+-int configure_accelerator(MachineState *ms)
++void configure_accelerator(MachineState *ms)
+ {
+     const char *p;
+     char buf[10];
+@@ -128,8 +128,6 @@ int configure_accelerator(MachineState *ms)
+     if (init_failed) {
+         fprintf(stderr, "Back to %s accelerator.\n", acc->name);
+     }
+-
+-    return !accel_initialised;
+ }
  
--        subqobj = qdict_get(src, indexstr);
-+        /* Remove ending "." */
-+        prefix[strlen(prefix) - 1] = 0;
-+        subqobj = qdict_get(src, prefix);
  
--        snprintf_ret = snprintf(prefix, slen, "%s%u.", subqdict, i);
--        assert(snprintf_ret < slen);
-+        g_free(prefix);
+diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
+index a74b2fa..15944c1 100644
+--- a/include/sysemu/accel.h
++++ b/include/sysemu/accel.h
+@@ -56,6 +56,6 @@ typedef struct AccelClass {
  
--        subqdict_entries = qdict_count_prefixed_entries(src, prefix);
-         if (subqdict_entries < 0) {
-             return subqdict_entries;
-         }
+ extern int tcg_tb_size;
+ 
+-int configure_accelerator(MachineState *ms);
++void configure_accelerator(MachineState *ms);
+ 
+ #endif
 -- 
 2.1.4
 
