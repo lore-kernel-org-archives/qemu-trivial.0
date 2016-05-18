@@ -1,40 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30FR-0003r1-0s
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:06:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56386)
+	id 1b30Jm-0006Nt-1m
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:11:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57447)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30FL-0003nD-K8
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:06:42 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b30Jg-0006KY-JZ
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:11:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30FI-0000xr-8t
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:06:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48221)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b30Je-0001uR-7G
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:11:07 -0400
+Received: from [59.151.112.132] (port=30396 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30F5-0000v1-Ce; Wed, 18 May 2016 08:06:23 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0A7D7417A1;
-	Wed, 18 May 2016 15:06:11 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 19FD9ADC;
-	Wed, 18 May 2016 15:06:10 +0300 (MSK)
-Received: (nullmailer pid 12408 invoked by uid 1000);
-	Wed, 18 May 2016 12:06:09 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 18 May 2016 15:06:08 +0300
-Message-Id: <cb8d4c8f54b8271f642f02382eec29d468bb1c77.1463573089.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
-References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1b30JW-0001so-6c; Wed, 18 May 2016 08:10:59 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="6668034"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 18 May 2016 20:10:52 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id CD7EF418A725;
+	Wed, 18 May 2016 20:10:50 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 18 May 2016 20:10:50 +0800
+References: <1460879154-13258-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<5731D9A7.4030300@redhat.com> <5732EC2B.8030005@cn.fujitsu.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, <armbru@redhat.com>, <peter.maydell@linaro.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <573C5CDE.40305@cn.fujitsu.com>
+Date: Wed, 18 May 2016 20:15:26 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 13/13] Fix some typos found by codespell
+In-Reply-To: <5732EC2B.8030005@cn.fujitsu.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: CD7EF418A725.A897E
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qdev: Clean up around
+ properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,676 +56,144 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:06:42 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:11:13 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+Hi Michael,
+     I guess you missed this one:)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- audio/mixeng.c                          |  2 +-
- audio/ossaudio.c                        |  2 +-
- contrib/ivshmem-server/ivshmem-server.h |  2 +-
- docs/specs/rocker.txt                   |  2 +-
- docs/throttle.txt                       |  2 +-
- hw/i2c/imx_i2c.c                        |  2 +-
- hw/net/vmxnet3.c                        |  4 ++--
- hw/pci/msi.c                            |  2 +-
- hw/pci/pci_bridge.c                     |  2 +-
- hw/scsi/spapr_vscsi.c                   |  2 +-
- hw/scsi/vmw_pvscsi.c                    |  2 +-
- hw/timer/a9gtimer.c                     |  2 +-
- hw/timer/aspeed_timer.c                 |  4 ++--
- include/crypto/random.h                 |  2 +-
- include/hw/xen/xen_common.h             |  2 +-
- include/io/task.h                       |  2 +-
- include/qemu/osdep.h                    |  2 +-
- kvm-all.c                               |  2 +-
- migration/migration.c                   |  2 +-
- migration/ram.c                         |  2 +-
- nbd/client.c                            |  2 +-
- qga/channel-win32.c                     |  2 +-
- qga/commands.c                          |  4 ++--
- scripts/checkpatch.pl                   |  2 +-
- slirp/socket.c                          |  2 +-
- target-cris/translate.c                 |  4 ++--
- target-cris/translate_v10.c             |  2 +-
- target-i386/cpu.c                       |  2 +-
- target-i386/cpu.h                       |  2 +-
- target-mips/op_helper.c                 |  2 +-
- target-tricore/translate.c              |  2 +-
- tcg/README                              |  2 +-
- tests/tcg/cris/check_addo.c             | 14 +++++++-------
- trace/simple.c                          |  4 ++--
- ui/cocoa.m                              |  2 +-
- util/timed-average.c                    |  4 ++--
- 36 files changed, 48 insertions(+), 48 deletions(-)
+On 05/11/2016 04:24 PM, Cao jin wrote:
+> For mjt`s information: it has been
+>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+> On 05/10/2016 08:52 PM, Paolo Bonzini wrote:
+>> Just comments, so
+>>
+>> Cc: qemu-trivial@nongnu.org
+>>
+>> On 17/04/2016 09:45, Cao jin wrote:
+>>> include:
+>>> 1. remove unnecessary declaration of static function
+>>> 2. fix inconsistency between comment and function name, and typo
+>>> OOM->QOM
+>>> 2. update comments of functions, use uniform format(GTK-Doc style)
+>>>
+>>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>>> ---
+>>> changelog:
+>>> 1. Use uniform comment format. (Markus)
+>>> 2. Update function comments. (Markus & Paolo)
+>>>
+>>> comments of qdev_add_legacy_property maybe need polishing, Maintainer
+>>> who will
+>>> take this patch can touch that comment directly:)
+>>>
+>>>   hw/core/qdev.c               | 30 +++++++++++++++++++-----------
+>>>   include/hw/qdev-properties.h | 10 ++++++++--
+>>>   2 files changed, 27 insertions(+), 13 deletions(-)
+>>>
+>>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>>> index db41aa1..204f77b 100644
+>>> --- a/hw/core/qdev.c
+>>> +++ b/hw/core/qdev.c
+>>> @@ -58,9 +58,6 @@ const char *qdev_fw_name(DeviceState *dev)
+>>>       return object_get_typename(OBJECT(dev));
+>>>   }
+>>>
+>>> -static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>>> -                                     Error **errp);
+>>> -
+>>>   static void bus_remove_child(BusState *bus, DeviceState *child)
+>>>   {
+>>>       BusChild *kid;
+>>> @@ -908,13 +905,20 @@ static void qdev_get_legacy_property(Object
+>>> *obj, Visitor *v,
+>>>   }
+>>>
+>>>   /**
+>>> - * @qdev_add_legacy_property - adds a legacy property
+>>> + * qdev_property_add_legacy:
+>>> + * @dev: Device to add the property to.
+>>> + * @prop: The qdev property definition.
+>>> + * @errp: location to store error information.
+>>> + *
+>>> + * Add a legacy QOM property to @dev for qdev property @prop.
+>>> + * On error, store error in @errp.
+>>>    *
+>>> - * Do not use this is new code!  Properties added through this
+>>> interface will
+>>> - * be given names and types in the "legacy" namespace.
+>>> + * Legacy properties are string versions of QOM properties.  The
+>>> format of
+>>> + * the string depends on the property type.  Legacy properties are only
+>>> + * needed for "info qtree".
+>>>    *
+>>> - * Legacy properties are string versions of other OOM properties.
+>>> The format
+>>> - * of the string depends on the property type.
+>>> + * Do not use this is new code!  QOM Properties added through this
+>>> interface
+>>> + * will be given names in the "legacy" namespace.
+>>>    */
+>>>   static void qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>>>                                        Error **errp)
+>>> @@ -937,10 +941,14 @@ static void
+>>> qdev_property_add_legacy(DeviceState *dev, Property *prop,
+>>>   }
+>>>
+>>>   /**
+>>> - * @qdev_property_add_static - add a @Property to a device.
+>>> + * qdev_property_add_static:
+>>> + * @dev: Device to add the property to.
+>>> + * @prop: The qdev property definition.
+>>> + * @errp: location to store error information.
+>>>    *
+>>> - * Static properties access data in a struct.  The actual type of the
+>>> - * property and the field depends on the property type.
+>>> + * Add a static QOM property to @dev for qdev property @prop.
+>>> + * On error, store error in @errp.  Static properties access data in
+>>> a struct.
+>>> + * The type of the QOM property is derived from prop->info.
+>>>    */
+>>>   void qdev_property_add_static(DeviceState *dev, Property *prop,
+>>>                                 Error **errp)
+>>> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+>>> index 0586cac..034b75a 100644
+>>> --- a/include/hw/qdev-properties.h
+>>> +++ b/include/hw/qdev-properties.h
+>>> @@ -197,8 +197,14 @@ void error_set_from_qdev_prop_error(Error
+>>> **errp, int ret, DeviceState *dev,
+>>>                                       Property *prop, const char
+>>> *value);
+>>>
+>>>   /**
+>>> - * @qdev_property_add_static - add a @Property to a device
+>>> referencing a
+>>> - * field in a struct.
+>>> + * qdev_property_add_static:
+>>> + * @dev: Device to add the property to.
+>>> + * @prop: The qdev property definition.
+>>> + * @errp: location to store error information.
+>>> + *
+>>> + * Add a static QOM property to @dev for qdev property @prop.
+>>> + * On error, store error in @errp.  Static properties access data in
+>>> a struct.
+>>> + * The type of the QOM property is derived from prop->info.
+>>>    */
+>>>   void qdev_property_add_static(DeviceState *dev, Property *prop,
+>>> Error **errp);
+>>>
+>>>
+>>
+>>
+>> .
+>>
+>
 
-diff --git a/audio/mixeng.c b/audio/mixeng.c
-index 981b97a..61ef869 100644
---- a/audio/mixeng.c
-+++ b/audio/mixeng.c
-@@ -270,7 +270,7 @@ f_sample *mixeng_clip[2][2][2][3] =3D {
-  * August 21, 1998
-  * Copyright 1998 Fabrice Bellard.
-  *
-- * [Rewrote completly the code of Lance Norskog And Sundry
-+ * [Rewrote completely the code of Lance Norskog And Sundry
-  * Contributors with a more efficient algorithm.]
-  *
-  * This source code is freely redistributable and may be used for
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 349e9dd..a0d9cda 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -898,7 +898,7 @@ static struct audio_option oss_options[] =3D {
-         .name  =3D "EXCLUSIVE",
-         .tag   =3D AUD_OPT_BOOL,
-         .valp  =3D &glob_conf.exclusive,
--        .descr =3D "Open device in exclusive mode (vmix wont work)"
-+        .descr =3D "Open device in exclusive mode (vmix won't work)"
-     },
- #ifdef USE_DSP_POLICY
-     {
-diff --git a/contrib/ivshmem-server/ivshmem-server.h b/contrib/ivshmem-se=
-rver/ivshmem-server.h
-index 3851639..d37ca85 100644
---- a/contrib/ivshmem-server/ivshmem-server.h
-+++ b/contrib/ivshmem-server/ivshmem-server.h
-@@ -15,7 +15,7 @@
-  * unix socket. For each client, the server will create some eventfd
-  * (see EVENTFD(2)), one per vector. These fd are transmitted to all
-  * clients using the SCM_RIGHTS cmsg message. Therefore, each client is
-- * able to send a notification to another client without beeing
-+ * able to send a notification to another client without being
-  * "profixied" by the server.
-  *
-  * We use this mechanism to send interruptions between guests.
-diff --git a/docs/specs/rocker.txt b/docs/specs/rocker.txt
-index d2a8262..1857b31 100644
---- a/docs/specs/rocker.txt
-+++ b/docs/specs/rocker.txt
-@@ -303,7 +303,7 @@ Endianness
- ----------
-=20
- Device registers are hard-coded to little-endian (LE).  The driver shoul=
-d
--convert to/from host endianess to LE for device register accesses.
-+convert to/from host endianness to LE for device register accesses.
-=20
- Descriptors are LE.  Descriptor buffer TLVs will have LE type and length
- fields, but the value field can either be LE or network-byte-order, depe=
-nding
-diff --git a/docs/throttle.txt b/docs/throttle.txt
-index 28204e4..06ed9b3 100644
---- a/docs/throttle.txt
-+++ b/docs/throttle.txt
-@@ -10,7 +10,7 @@ Introduction
- ------------
- QEMU includes a throttling module that can be used to set limits to
- I/O operations. The code itself is generic and independent of the I/O
--units, but it is currenly used to limit the number of bytes per second
-+units, but it is currently used to limit the number of bytes per second
- and operations per second (IOPS) when performing disk I/O.
-=20
- This document explains how to use the throttling code in QEMU, and how
-diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
-index a01e43e..e19d4fa 100644
---- a/hw/i2c/imx_i2c.c
-+++ b/hw/i2c/imx_i2c.c
-@@ -247,7 +247,7 @@ static void imx_i2c_write(void *opaque, hwaddr offset=
-,
-             if (s->address =3D=3D ADDR_RESET) {
-                 if (i2c_start_transfer(s->bus, extract32(s->i2dr_write, =
-1, 7),
-                                        extract32(s->i2dr_write, 0, 1))) =
-{
--                    /* if non zero is returned, the adress is not valid =
-*/
-+                    /* if non zero is returned, the address is not valid=
- */
-                     s->i2sr |=3D I2SR_RXAK;
-                 } else {
-                     s->address =3D s->i2dr_write;
-diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-index 093a71e..20f26b7 100644
---- a/hw/net/vmxnet3.c
-+++ b/hw/net/vmxnet3.c
-@@ -37,7 +37,7 @@
- #define VMXNET3_MSIX_BAR_SIZE 0x2000
- #define MIN_BUF_SIZE 60
-=20
--/* Compatability flags for migration */
-+/* Compatibility flags for migration */
- #define VMXNET3_COMPAT_FLAG_OLD_MSI_OFFSETS_BIT 0
- #define VMXNET3_COMPAT_FLAG_OLD_MSI_OFFSETS \
-     (1 << VMXNET3_COMPAT_FLAG_OLD_MSI_OFFSETS_BIT)
-@@ -341,7 +341,7 @@ typedef struct {
-         uint32_t mcast_list_len;
-         uint32_t mcast_list_buff_size; /* needed for live migration. */
-=20
--        /* Compatability flags for migration */
-+        /* Compatibility flags for migration */
-         uint32_t compat_flags;
- } VMXNET3State;
-=20
-diff --git a/hw/pci/msi.c b/hw/pci/msi.c
-index e0e64c2..a87ef4d 100644
---- a/hw/pci/msi.c
-+++ b/hw/pci/msi.c
-@@ -40,7 +40,7 @@
-  *
-  * Setting this flag to false will remove MSI/MSI-X capability from all =
-devices.
-  *
-- * It is preferrable for controllers to set this to true (non-broken) ev=
-en if
-+ * It is preferable for controllers to set this to true (non-broken) eve=
-n if
-  * they do not actually support MSI/MSI-X: guests normally probe the con=
-troller
-  * type and do not attempt to enable MSI/MSI-X with interrupt controller=
-s not
-  * supporting such, so removing the capability is not required, and
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index 3cf30bd..5118ef4 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -116,7 +116,7 @@ pcibus_t pci_bridge_get_base(const PCIDevice *bridge,=
- uint8_t type)
-     return base;
- }
-=20
--/* accessor funciton to get bridge filtering limit */
-+/* accessor function to get bridge filtering limit */
- pcibus_t pci_bridge_get_limit(const PCIDevice *bridge, uint8_t type)
- {
-     pcibus_t limit;
-diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
-index b00edf7..8fbd50f 100644
---- a/hw/scsi/spapr_vscsi.c
-+++ b/hw/scsi/spapr_vscsi.c
-@@ -698,7 +698,7 @@ static void vscsi_inquiry_no_target(VSCSIState *s, vs=
-csi_req *req)
-     uint8_t resp_data[36];
-     int rc, len, alen;
-=20
--    /* We dont do EVPD. Also check that page_code is 0 */
-+    /* We don't do EVPD. Also check that page_code is 0 */
-     if ((cdb[1] & 0x01) || cdb[2] !=3D 0) {
-         /* Send INVALID FIELD IN CDB */
-         vscsi_makeup_sense(s, req, ILLEGAL_REQUEST, 0x24, 0);
-diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
-index e690b4e..f67b5bf 100644
---- a/hw/scsi/vmw_pvscsi.c
-+++ b/hw/scsi/vmw_pvscsi.c
-@@ -63,7 +63,7 @@ typedef struct PVSCSIClass {
- #define PVSCSI_DEVICE_GET_CLASS(obj) \
-     OBJECT_GET_CLASS(PVSCSIClass, (obj), TYPE_PVSCSI)
-=20
--/* Compatability flags for migration */
-+/* Compatibility flags for migration */
- #define PVSCSI_COMPAT_OLD_PCI_CONFIGURATION_BIT 0
- #define PVSCSI_COMPAT_OLD_PCI_CONFIGURATION \
-     (1 << PVSCSI_COMPAT_OLD_PCI_CONFIGURATION_BIT)
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index afe577c..772f85f 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -184,7 +184,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr=
-, uint64_t value,
-     case R_COUNTER_LO:
-         /*
-          * Keep it simple - ARM docco explicitly says to disable timer b=
-efore
--         * modding it, so dont bother trying to do all the difficult on =
-the fly
-+         * modding it, so don't bother trying to do all the difficult on=
- the fly
-          * timer modifications - (if they even work in real hardware??).
-          */
-         if (s->control & R_CONTROL_TIMER_ENABLE) {
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 51e8303..ebec359 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -187,7 +187,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlSta=
-te *s, int timer, int reg,
- }
-=20
- /* Control register operations are broken out into helpers that can be
-- * explictly called on aspeed_timer_reset(), but also from
-+ * explicitly called on aspeed_timer_reset(), but also from
-  * aspeed_timer_ctrl_op().
-  */
-=20
-@@ -380,7 +380,7 @@ static void aspeed_timer_reset(DeviceState *dev)
-=20
-     for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
-         AspeedTimer *t =3D &s->timers[i];
--        /* Explictly call helpers to avoid any conditional behaviour thr=
-ough
-+        /* Explicitly call helpers to avoid any conditional behaviour th=
-rough
-          * aspeed_timer_set_ctrl().
-          */
-         aspeed_timer_ctrl_enable(t, false);
-diff --git a/include/crypto/random.h b/include/crypto/random.h
-index b3021c4..f9308f4 100644
---- a/include/crypto/random.h
-+++ b/include/crypto/random.h
-@@ -34,7 +34,7 @@
-  * Fill @buf with @buflen bytes of cryptographically strong
-  * random data
-  *
-- * Returns 0 on sucess, -1 on error
-+ * Returns 0 on success, -1 on error
-  */
- int qcrypto_random_bytes(uint8_t *buf,
-                          size_t buflen,
-diff --git a/include/hw/xen/xen_common.h b/include/hw/xen/xen_common.h
-index bd65e67..7b52e8f 100644
---- a/include/hw/xen/xen_common.h
-+++ b/include/hw/xen/xen_common.h
-@@ -26,7 +26,7 @@
-  * We don't support Xen prior to 4.2.0.
-  */
-=20
--/* Xen 4.2 thru 4.6 */
-+/* Xen 4.2 through 4.6 */
- #if CONFIG_XEN_CTRL_INTERFACE_VERSION < 471
-=20
- typedef xc_interface xenforeignmemory_handle;
-diff --git a/include/io/task.h b/include/io/task.h
-index 2e69d8a..a993212 100644
---- a/include/io/task.h
-+++ b/include/io/task.h
-@@ -219,7 +219,7 @@ void qio_task_run_in_thread(QIOTask *task,
-  * qio_task_complete:
-  * @task: the task struct
-  *
-- * Mark the operation as succesfully completed
-+ * Mark the operation as successfully completed
-  * and free the memory for @task.
-  */
- void qio_task_complete(QIOTask *task);
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 1e3221c..2e930a9 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -313,7 +313,7 @@ static inline void qemu_timersub(const struct timeval=
- *val1,
- void qemu_set_cloexec(int fd);
-=20
- /* QEMU "hardware version" setting. Used to replace code that exposed
-- * QEMU_VERSION to guests in the past and need to keep compatibilty.
-+ * QEMU_VERSION to guests in the past and need to keep compatibility.
-  * Do not use qemu_hw_version() in new code.
-  */
- void qemu_set_hw_version(const char *);
-diff --git a/kvm-all.c b/kvm-all.c
-index e7b66df..f9ae8f9 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -413,7 +413,7 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryLi=
-stener *kml,
-          * userspace memory corruption (which is not detectable by valgr=
-ind
-          * too, in most cases).
-          * So for now, let's align to 64 instead of HOST_LONG_BITS here,=
- in
--         * a hope that sizeof(long) wont become >8 any time soon.
-+         * a hope that sizeof(long) won't become >8 any time soon.
-          */
-         size =3D ALIGN(((mem->memory_size) >> TARGET_PAGE_BITS),
-                      /*HOST_LONG_BITS*/ 64) / 8;
-diff --git a/migration/migration.c b/migration/migration.c
-index 991313a..c08d9a6 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -278,7 +278,7 @@ static void deferred_incoming_migration(Error **errp)
- void migrate_send_rp_req_pages(MigrationIncomingState *mis, const char *=
-rbname,
-                                ram_addr_t start, size_t len)
- {
--    uint8_t bufc[12 + 1 + 255]; /* start (8), len (4), rbname upto 256 *=
-/
-+    uint8_t bufc[12 + 1 + 255]; /* start (8), len (4), rbname up to 256 =
-*/
-     size_t msglen =3D 12; /* start + len */
-=20
-     *(uint64_t *)bufc =3D cpu_to_be64((uint64_t)start);
-diff --git a/migration/ram.c b/migration/ram.c
-index 3f05738..88fbffc 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1272,7 +1272,7 @@ static int ram_save_target_page(MigrationState *ms,=
- QEMUFile *f,
- }
-=20
- /**
-- * ram_save_host_page: Starting at *offset send pages upto the end
-+ * ram_save_host_page: Starting at *offset send pages up to the end
-  *                     of the current host page.  It's valid for the ini=
-tial
-  *                     offset to point into the middle of a host page
-  *                     in which case the remainder of the hostpage is se=
-nt.
-diff --git a/nbd/client.c b/nbd/client.c
-index 48f2a21..31b88f3 100644
---- a/nbd/client.c
-+++ b/nbd/client.c
-@@ -373,7 +373,7 @@ static QIOChannel *nbd_receive_starttls(QIOChannel *i=
-oc,
-     }
-     length =3D be32_to_cpu(length);
-     if (length !=3D 0) {
--        error_setg(errp, "Start TLS reponse was not zero %x",
-+        error_setg(errp, "Start TLS response was not zero %x",
-                    length);
-         return NULL;
-     }
-diff --git a/qga/channel-win32.c b/qga/channel-win32.c
-index bb59661..68168d1 100644
---- a/qga/channel-win32.c
-+++ b/qga/channel-win32.c
-@@ -77,7 +77,7 @@ static gboolean ga_channel_prepare(GSource *source, gin=
-t *timeout_ms)
-     }
-=20
- out:
--    /* dont block forever, iterate the main loop every once and a while =
-*/
-+    /* don't block forever, iterate the main loop every once in a while =
-*/
-     *timeout_ms =3D 500;
-     /* if there's data in the read buffer, or another event is pending,
-      * skip polling and issue user cb.
-diff --git a/qga/commands.c b/qga/commands.c
-index b653a46..3144464 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -182,8 +182,8 @@ GuestExecStatus *qmp_guest_exec_status(int64_t pid, E=
-rror **err)
-          */
- #ifdef G_OS_WIN32
-         /* Additionally WIN32 does not provide any additional informatio=
-n
--         * on whetherthe child exited or terminated via signal.
--         * We use this simple range check to distingish application exit=
- code
-+         * on whether the child exited or terminated via signal.
-+         * We use this simple range check to distinguish application exi=
-t code
-          * (usually value less then 256) and unhandled exception code wi=
-th
-          * ntstatus (always value greater then 0xC0000005). */
-         if ((uint32_t)gei->status < 0xC0000000U) {
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index c9554ba..c939a32 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -363,7 +363,7 @@ sub sanitise_line {
- 	for ($off =3D 1; $off < length($line); $off++) {
- 		$c =3D substr($line, $off, 1);
-=20
--		# Comments we are wacking completly including the begin
-+		# Comments we are wacking completely including the begin
- 		# and end, all to $;.
- 		if ($sanitise_quote eq '' && substr($line, $off, 2) eq '/*') {
- 			$sanitise_quote =3D '*/';
-diff --git a/slirp/socket.c b/slirp/socket.c
-index a10eff1..b336586 100644
---- a/slirp/socket.c
-+++ b/slirp/socket.c
-@@ -206,7 +206,7 @@ soread(struct socket *so)
- 	 * We don't test for <=3D 0 this time, because there legitimately
- 	 * might not be any more data (since the socket is non-blocking),
- 	 * a close will be detected on next iteration.
--	 * A return of -1 wont (shouldn't) happen, since it didn't happen above
-+	 * A return of -1 won't (shouldn't) happen, since it didn't happen abov=
-e
- 	 */
- 	if (n =3D=3D 2 && nn =3D=3D iov[0].iov_len) {
-             int ret;
-diff --git a/target-cris/translate.c b/target-cris/translate.c
-index f28b199..420051e 100644
---- a/target-cris/translate.c
-+++ b/target-cris/translate.c
-@@ -3057,7 +3057,7 @@ static unsigned int crisv32_decoder(CPUCRISState *e=
-nv, DisasContext *dc)
-  *
-  * When the software returns from an exception, the branch will re-execu=
-te.
-  * On QEMU care needs to be taken when a branch+delayslot sequence is br=
-oken
-- * and the branch and delayslot dont share pages.
-+ * and the branch and delayslot don't share pages.
-  *
-  * The TB contaning the branch insn will set up env->btarget and evaluat=
-e=20
-  * env->btaken. When the translation loop exits we will note that the br=
-anch=20
-@@ -3246,7 +3246,7 @@ void gen_intermediate_code(CPUCRISState *env, struc=
-t TranslationBlock *tb)
-         }
-=20
-         /* If we are rexecuting a branch due to exceptions on
--           delay slots dont break.  */
-+           delay slots don't break.  */
-         if (!(tb->pc & 1) && cs->singlestep_enabled) {
-             break;
-         }
-diff --git a/target-cris/translate_v10.c b/target-cris/translate_v10.c
-index 7607ead..06ba1ef 100644
---- a/target-cris/translate_v10.c
-+++ b/target-cris/translate_v10.c
-@@ -130,7 +130,7 @@ static void cris_set_prefix(DisasContext *dc)
-     dc->tb_flags |=3D PFIX_FLAG;
-     tcg_gen_ori_tl(cpu_PR[PR_CCS], cpu_PR[PR_CCS], PFIX_FLAG);
-=20
--    /* prefix insns dont clear the x flag.  */
-+    /* prefix insns don't clear the x flag.  */
-     dc->clear_x =3D 0;
-     cris_lock_irq(dc);
- }
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index d0b5b69..da5d081 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -2523,7 +2523,7 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index=
-, uint32_t count,
-=20
-         /* The Linux kernel checks for the CMPLegacy bit and
-          * discards multiple thread information if it is set.
--         * So dont set it here for Intel to make Linux guests happy.
-+         * So don't set it here for Intel to make Linux guests happy.
-          */
-         if (cs->nr_cores * cs->nr_threads > 1) {
-             if (env->cpuid_vendor1 !=3D CPUID_VENDOR_INTEL_1 ||
-diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-index 444fda9..0e11324 100644
---- a/target-i386/cpu.h
-+++ b/target-i386/cpu.h
-@@ -1366,7 +1366,7 @@ void cpu_report_tpr_access(CPUX86State *env, TPRAcc=
-ess access);
-  * If value is NULL, no default will be set and the original
-  * value from the CPU model table will be kept.
-  *
-- * It is valid to call this funciton only for properties that
-+ * It is valid to call this function only for properties that
-  * are already present in the kvm_default_props table.
-  */
- void x86_cpu_change_kvm_default(const char *prop, const char *value);
-diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-index 4417e6b..ba847ab 100644
---- a/target-mips/op_helper.c
-+++ b/target-mips/op_helper.c
-@@ -581,7 +581,7 @@ static bool mips_vp_is_wfi(MIPSCPU *c)
-=20
- static inline void mips_vpe_wake(MIPSCPU *c)
- {
--    /* Dont set ->halted =3D 0 directly, let it be done via cpu_has_work
-+    /* Don't set ->halted =3D 0 directly, let it be done via cpu_has_wor=
-k
-        because there might be other conditions that state that c should
-        be sleeping.  */
-     cpu_interrupt(CPU(c), CPU_INTERRUPT_WAKE);
-diff --git a/target-tricore/translate.c b/target-tricore/translate.c
-index 0237e7b..2d17aeb 100644
---- a/target-tricore/translate.c
-+++ b/target-tricore/translate.c
-@@ -2858,7 +2858,7 @@ static void gen_shaci(TCGv ret, TCGv r1, int32_t sh=
-ift_count)
-     } else if (shift_count =3D=3D -32) {
-         /* set PSW.C */
-         tcg_gen_mov_tl(cpu_PSW_C, r1);
--        /* fill ret completly with sign bit */
-+        /* fill ret completely with sign bit */
-         tcg_gen_sari_tl(ret, r1, 31);
-         /* clear PSW.V */
-         tcg_gen_movi_tl(cpu_PSW_V, 0);
-diff --git a/tcg/README b/tcg/README
-index f4a8ac1..ce8beba 100644
---- a/tcg/README
-+++ b/tcg/README
-@@ -473,7 +473,7 @@ On a 32 bit target, all 64 bit operations are convert=
-ed to 32 bits. A
- few specific operations must be implemented to allow it (see add2_i32,
- sub2_i32, brcond2_i32).
-=20
--On a 64 bit target, the values are transfered between 32 and 64-bit
-+On a 64 bit target, the values are transferred between 32 and 64-bit
- registers using the following ops:
- - trunc_shr_i64_i32
- - ext_i32_i64
-diff --git a/tests/tcg/cris/check_addo.c b/tests/tcg/cris/check_addo.c
-index 3d8e789..4235e5f 100644
---- a/tests/tcg/cris/check_addo.c
-+++ b/tests/tcg/cris/check_addo.c
-@@ -51,7 +51,7 @@ int main(void)
- 	t =3D (unsigned char *)x;
- 	t -=3D 32768;
- 	p =3D (unsigned char *) &y.v1;
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_pi_d(p, t);
-@@ -62,7 +62,7 @@ int main(void)
-=20
-=20
- 	t +=3D 32770;
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_pi_w(p, t);
-@@ -71,7 +71,7 @@ int main(void)
- 	if (*r !=3D 0x4455aa77)
- 		err();
-=20
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_d(p, r);
-@@ -81,7 +81,7 @@ int main(void)
- 	if (*r !=3D 0xee19ccff)
- 		err();
-=20
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_pi_b(p, t);
-@@ -90,7 +90,7 @@ int main(void)
- 	if (*(uint16_t*)r !=3D 0xff22)
- 		err();
-=20
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_b(p, r);
-@@ -100,7 +100,7 @@ int main(void)
- 	if (*r !=3D 0x4455aa77)
- 		err();
-=20
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_w(p, r);
-@@ -110,7 +110,7 @@ int main(void)
- 	if (*r !=3D 0xff224455)
- 		err();
-=20
--	mb(); /* dont reorder anything beyond here.  */
-+	mb(); /* don't reorder anything beyond here.  */
- 	cris_tst_cc_init();
- 	asm volatile ("setf\tzvnc\n");
- 	cris_addo_pi_d(p, t);
-diff --git a/trace/simple.c b/trace/simple.c
-index 3fdcc82..2f09daf 100644
---- a/trace/simple.c
-+++ b/trace/simple.c
-@@ -108,7 +108,7 @@ static bool get_trace_record(unsigned int idx, TraceR=
-ecord **recordptr)
-     smp_rmb(); /* read memory barrier before accessing record */
-     /* read the record header to know record length */
-     read_from_buffer(idx, &record, sizeof(TraceRecord));
--    *recordptr =3D malloc(record.length); /* dont use g_malloc, can dead=
-lock when traced */
-+    *recordptr =3D malloc(record.length); /* don't use g_malloc, can dea=
-dlock when traced */
-     /* make a copy of record to avoid being overwritten */
-     read_from_buffer(idx, *recordptr, record.length);
-     smp_rmb(); /* memory barrier before clearing valid flag */
-@@ -180,7 +180,7 @@ static gpointer writeout_thread(gpointer opaque)
-         while (get_trace_record(idx, &recordptr)) {
-             unused =3D fwrite(recordptr, recordptr->length, 1, trace_fp)=
-;
-             writeout_idx +=3D recordptr->length;
--            free(recordptr); /* dont use g_free, can deadlock when trace=
-d */
-+            free(recordptr); /* don't use g_free, can deadlock when trac=
-ed */
-             idx =3D writeout_idx % TRACE_BUF_LEN;
-         }
-=20
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index 60a7c07..36c6bf0 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -1394,7 +1394,7 @@ static void addRemovableDevicesMenuItems(void)
-     [menuItem setEnabled: NO];
-     [menu addItem: menuItem];
-=20
--    /* Loop thru all the block devices in the emulator */
-+    /* Loop through all the block devices in the emulator */
-     while (currentDevice) {
-         deviceName =3D [[NSString stringWithFormat: @"%s", currentDevice=
-->value->device] retain];
-=20
-diff --git a/util/timed-average.c b/util/timed-average.c
-index 2eef9cb..2b49d53 100644
---- a/util/timed-average.c
-+++ b/util/timed-average.c
-@@ -8,9 +8,9 @@
-  *   Beno=C3=AEt Canet <benoit.canet@nodalink.com>
-  *   Alberto Garcia <berto@igalia.com>
-  *
-- * This program is free sofware: you can redistribute it and/or modify
-+ * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-- * the Free Sofware Foundation, either version 2 of the License, or
-+ * the Free Software Foundation, either version 2 of the License, or
-  * (at your option) version 3 or any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
---=20
-2.1.4
+-- 
+Yours Sincerely,
+
+Cao jin
+
 
 
