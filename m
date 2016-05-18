@@ -1,51 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30VP-000867-Vs
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:23:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33698)
+	id 1b30Wf-0000p6-66
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:24:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b30VN-000846-O3
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:23:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b30Wc-0000kn-6G
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b30VM-0005JU-Js
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:23:13 -0400
-Received: from [59.151.112.132] (port=43431 helo=heian.cn.fujitsu.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1b30Wa-0005iA-D0
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:29 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58130)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1b30VE-0005E2-Jd; Wed, 18 May 2016 08:23:04 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="6668418"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 18 May 2016 20:23:02 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 1BCFB418A723;
-	Wed, 18 May 2016 20:22:57 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 18 May 2016 20:22:56 +0800
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial
-	<qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1458888577-12477-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<56F5041C.2060307@redhat.com> <5733DEDF.90606@cn.fujitsu.com>
-	<573BC79F.4070602@cn.fujitsu.com> <573C5D39.10404@cn.fujitsu.com>
-	<8c278e28-6afe-b02e-5a92-2c05ddf2f532@redhat.com>
-CC: <mst@redhat.com>, <qemu-devel@nongnu.org>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <573C5FB4.7050608@cn.fujitsu.com>
-Date: Wed, 18 May 2016 20:27:32 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <8c278e28-6afe-b02e-5a92-2c05ddf2f532@redhat.com>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 1BCFB418A723.A9743
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [PATCH] pci_register_bar: cleanup
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1b30WT-0005gg-4F; Wed, 18 May 2016 08:24:21 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2CA93417A3;
+	Wed, 18 May 2016 15:24:17 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 613CBADF;
+	Wed, 18 May 2016 15:06:11 +0300 (MSK)
+Received: (nullmailer pid 12382 invoked by uid 1000);
+	Wed, 18 May 2016 12:06:09 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Wed, 18 May 2016 15:05:56 +0300
+Message-Id: <f35c1f66adb4c472830329a2fb23e0a8fd8ca5f4.1463573089.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 01/13] s390: remove misleading comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,85 +42,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:23:14 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:24:31 -0000
 
-Ok, I see. Thanks Paolo
+The comment talks about a non-ELF object while the
+example gives ELF object.
 
-Cao.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/s390x/ipl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 05/18/2016 08:17 PM, Paolo Bonzini wrote:
-> On 18/05/2016 14:16, Cao jin wrote:
->> I guess maybe this one is more suitable for trivial.
->
-> No, it's not trivial.  I guess it missed soft freeze.  Michael Tsirkin
-> will pick it up.
->
-> Thanks,
->
-> Paolo
->
->>>>>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
->>>>>> index e67664d..f0f41dc 100644
->>>>>> --- a/hw/pci/pci.c
->>>>>> +++ b/hw/pci/pci.c
->>>>>> @@ -974,7 +974,7 @@ void pci_register_bar(PCIDevice *pci_dev, int region_num,
->>>>>>                          uint8_t type, MemoryRegion *memory)
->>>>>>    {
->>>>>>        PCIIORegion *r;
->>>>>> -    uint32_t addr;
->>>>>> +    uint32_t addr; /* offset in pci config space */
->>>>>>        uint64_t wmask;
->>>>>>        pcibus_t size = memory_region_size(memory);
->>>>>>
->>>>>> @@ -990,15 +990,20 @@ void pci_register_bar(PCIDevice *pci_dev, int
->>>>>> region_num,
->>>>>>        r->addr = PCI_BAR_UNMAPPED;
->>>>>>        r->size = size;
->>>>>>        r->type = type;
->>>>>> -    r->memory = NULL;
->>>>>> +    r->memory = memory;
->>>>>> +    r->address_space = type & PCI_BASE_ADDRESS_SPACE_IO
->>>>>> +                        ? pci_dev->bus->address_space_io
->>>>>> +                        : pci_dev->bus->address_space_mem;
->>>>>>
->>>>>>        wmask = ~(size - 1);
->>>>>> -    addr = pci_bar(pci_dev, region_num);
->>>>>>        if (region_num == PCI_ROM_SLOT) {
->>>>>>            /* ROM enable bit is writable */
->>>>>>            wmask |= PCI_ROM_ADDRESS_ENABLE;
->>>>>>        }
->>>>>> +
->>>>>> +    addr = pci_bar(pci_dev, region_num);
->>>>>>        pci_set_long(pci_dev->config + addr, type);
->>>>>> +
->>>>>>        if (!(r->type & PCI_BASE_ADDRESS_SPACE_IO) &&
->>>>>>            r->type & PCI_BASE_ADDRESS_MEM_TYPE_64) {
->>>>>>            pci_set_quad(pci_dev->wmask + addr, wmask);
->>>>>> @@ -1007,11 +1012,6 @@ void pci_register_bar(PCIDevice *pci_dev, int
->>>>>> region_num,
->>>>>>            pci_set_long(pci_dev->wmask + addr, wmask & 0xffffffff);
->>>>>>            pci_set_long(pci_dev->cmask + addr, 0xffffffff);
->>>>>>        }
->>>>>> -    pci_dev->io_regions[region_num].memory = memory;
->>>>>> -    pci_dev->io_regions[region_num].address_space
->>>>>> -        = type & PCI_BASE_ADDRESS_SPACE_IO
->>>>>> -        ? pci_dev->bus->address_space_io
->>>>>> -        : pci_dev->bus->address_space_mem;
->>>>>>    }
->>>>>>
->>>>>>    static void pci_update_vga(PCIDevice *pci_dev)
->>>>>>
->>>>>
->>>>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
->
->
-> .
->
-
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 5786b5e..e6bf7cf 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -129,7 +129,7 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+             /* Adjust ELF start address to final location */
+             ipl->bios_start_addr += fwbase;
+         } else {
+-            /* Try to load non-ELF file (e.g. s390-ccw.img) */
++            /* Try to load non-ELF file */
+             bios_size = load_image_targphys(bios_filename, ZIPL_IMAGE_START,
+                                             4096);
+             ipl->bios_start_addr = ZIPL_IMAGE_START;
 -- 
-Yours Sincerely,
-
-Cao jin
-
+2.1.4
 
 
