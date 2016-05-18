@@ -1,37 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30Wr-00011e-L4
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:24:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34072)
+	id 1b30eJ-0007hR-NT
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:32:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36131)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Wm-0000ul-1z
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:44 -0400
+	(envelope-from <mst@redhat.com>) id 1b30eB-0007aO-J4
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:32:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Wg-0005jX-OM
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:24:38 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45348)
+	(envelope-from <mst@redhat.com>) id 1b30e4-0007wq-SR
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:32:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57711)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30WT-0005gh-4T; Wed, 18 May 2016 08:24:21 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2F103417A6;
-	Wed, 18 May 2016 15:24:17 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id CEDF2ADA;
-	Wed, 18 May 2016 15:06:10 +0300 (MSK)
-Received: (nullmailer pid 12394 invoked by uid 1000);
-	Wed, 18 May 2016 12:06:09 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Wei Jiangang <weijg.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 18 May 2016 15:06:02 +0300
-Message-Id: <d43eda3d19152372d265a93ca2cf69aa86a9d4ae.1463573089.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
-References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <mst@redhat.com>)
+	id 1b30du-0007uj-8K; Wed, 18 May 2016 08:32:02 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 985C663305;
+	Wed, 18 May 2016 12:32:01 +0000 (UTC)
+Received: from redhat.com (vpn1-7-233.ams2.redhat.com [10.36.7.233])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u4ICVxFD029070; Wed, 18 May 2016 08:31:59 -0400
+Date: Wed, 18 May 2016 15:31:58 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial <qemu-trivial@nongnu.org>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Message-ID: <20160518153131-mutt-send-email-mst@redhat.com>
+References: <1458888577-12477-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<56F5041C.2060307@redhat.com> <5733DEDF.90606@cn.fujitsu.com>
+	<573BC79F.4070602@cn.fujitsu.com> <573C5D39.10404@cn.fujitsu.com>
+	<8c278e28-6afe-b02e-5a92-2c05ddf2f532@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8c278e28-6afe-b02e-5a92-2c05ddf2f532@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 18 May 2016 12:32:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 07/13] util: fix comment typos
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] pci_register_bar: cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,54 +53,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:24:44 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:32:25 -0000
 
-From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+On Wed, May 18, 2016 at 02:17:20PM +0200, Paolo Bonzini wrote:
+> On 18/05/2016 14:16, Cao jin wrote:
+> > I guess maybe this one is more suitable for trivial.
+> 
+> No, it's not trivial.  I guess it missed soft freeze.  Michael Tsirkin
+> will pick it up.
+> 
+> Thanks,
+> 
+> Paolo
 
-Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- util/buffer.c       | 4 ++--
- util/qemu-sockets.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Yes - please repost whatever was posted before freeze.
+I'll review and pick this one up.
+Thanks!
 
-diff --git a/util/buffer.c b/util/buffer.c
-index a6118bf..33e94d1 100644
---- a/util/buffer.c
-+++ b/util/buffer.c
-@@ -25,7 +25,7 @@
- #define BUFFER_MIN_INIT_SIZE     4096
- #define BUFFER_MIN_SHRINK_SIZE  65536
- 
--/* define the factor alpha for the expentional smoothing
-+/* define the factor alpha for the exponential smoothing
-  * that is used in the average size calculation. a shift
-  * of 7 results in an alpha of 1/2^7. */
- #define BUFFER_AVG_SIZE_SHIFT       7
-@@ -45,7 +45,7 @@ static void buffer_adj_size(Buffer *buffer, size_t len)
-                         old, buffer->capacity);
- 
-     /* make it even harder for the buffer to shrink, reset average size
--     * to currenty capacity if it is larger than the average. */
-+     * to current capacity if it is larger than the average. */
-     buffer->avg_size = MAX(buffer->avg_size,
-                            buffer->capacity << BUFFER_AVG_SIZE_SHIFT);
- }
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 2a2c524..0d6cd1f 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -93,7 +93,7 @@ NetworkAddressFamily inet_netfamily(int family)
-  *   t     f       PF_INET
-  *   t     t       PF_INET6
-  *
-- * NB, this matrix is only about getting the neccessary results
-+ * NB, this matrix is only about getting the necessary results
-  * from getaddrinfo(). Some of the cases require further work
-  * after reading results from getaddrinfo in order to fully
-  * apply the logic the end user wants. eg with the last case
--- 
-2.1.4
-
+> >>>>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> >>>>> index e67664d..f0f41dc 100644
+> >>>>> --- a/hw/pci/pci.c
+> >>>>> +++ b/hw/pci/pci.c
+> >>>>> @@ -974,7 +974,7 @@ void pci_register_bar(PCIDevice *pci_dev, int region_num,
+> >>>>>                         uint8_t type, MemoryRegion *memory)
+> >>>>>   {
+> >>>>>       PCIIORegion *r;
+> >>>>> -    uint32_t addr;
+> >>>>> +    uint32_t addr; /* offset in pci config space */
+> >>>>>       uint64_t wmask;
+> >>>>>       pcibus_t size = memory_region_size(memory);
+> >>>>>
+> >>>>> @@ -990,15 +990,20 @@ void pci_register_bar(PCIDevice *pci_dev, int
+> >>>>> region_num,
+> >>>>>       r->addr = PCI_BAR_UNMAPPED;
+> >>>>>       r->size = size;
+> >>>>>       r->type = type;
+> >>>>> -    r->memory = NULL;
+> >>>>> +    r->memory = memory;
+> >>>>> +    r->address_space = type & PCI_BASE_ADDRESS_SPACE_IO
+> >>>>> +                        ? pci_dev->bus->address_space_io
+> >>>>> +                        : pci_dev->bus->address_space_mem;
+> >>>>>
+> >>>>>       wmask = ~(size - 1);
+> >>>>> -    addr = pci_bar(pci_dev, region_num);
+> >>>>>       if (region_num == PCI_ROM_SLOT) {
+> >>>>>           /* ROM enable bit is writable */
+> >>>>>           wmask |= PCI_ROM_ADDRESS_ENABLE;
+> >>>>>       }
+> >>>>> +
+> >>>>> +    addr = pci_bar(pci_dev, region_num);
+> >>>>>       pci_set_long(pci_dev->config + addr, type);
+> >>>>> +
+> >>>>>       if (!(r->type & PCI_BASE_ADDRESS_SPACE_IO) &&
+> >>>>>           r->type & PCI_BASE_ADDRESS_MEM_TYPE_64) {
+> >>>>>           pci_set_quad(pci_dev->wmask + addr, wmask);
+> >>>>> @@ -1007,11 +1012,6 @@ void pci_register_bar(PCIDevice *pci_dev, int
+> >>>>> region_num,
+> >>>>>           pci_set_long(pci_dev->wmask + addr, wmask & 0xffffffff);
+> >>>>>           pci_set_long(pci_dev->cmask + addr, 0xffffffff);
+> >>>>>       }
+> >>>>> -    pci_dev->io_regions[region_num].memory = memory;
+> >>>>> -    pci_dev->io_regions[region_num].address_space
+> >>>>> -        = type & PCI_BASE_ADDRESS_SPACE_IO
+> >>>>> -        ? pci_dev->bus->address_space_io
+> >>>>> -        : pci_dev->bus->address_space_mem;
+> >>>>>   }
+> >>>>>
+> >>>>>   static void pci_update_vga(PCIDevice *pci_dev)
+> >>>>>
+> >>>>
+> >>>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
