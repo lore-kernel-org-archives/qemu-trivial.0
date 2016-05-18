@@ -1,57 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b2xm2-0008Am-0J
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 05:28:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54563)
+	id 1b2z8W-0000jt-As
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 06:55:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b2xlz-00088v-Em
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 05:28:12 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2z8T-0000iF-QA
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 06:55:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1b2xlw-0007pI-6M
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 05:28:11 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33650)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2z8S-0001HQ-Sp
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 06:55:29 -0400
+Received: from [59.151.112.132] (port=9311 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1b2xlm-0007lR-C8; Wed, 18 May 2016 05:27:58 -0400
-Received: by mail-wm0-x241.google.com with SMTP id r12so11243882wme.0;
-	Wed, 18 May 2016 02:27:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=fGHxlqx5pxmBL83Z5SxFYsCI8asIisFPhWpT8nqvzSo=;
-	b=FCgUPQxvlJPtCljWZ5uze3a5iciR7g6hyhmlX7s0ZESzN16HGli9Vh8YXrB5ae4T4+
-	Z4eWr1oM05jaxHPU4ZP8uT/EodTlCmh/y2JUUhO3cCSjZ7O6JEPlpqrgXE+R/eLChHWK
-	3wIYlUel6PoS6TJsMuQcoNWkvy7myTmy9uipyOZDbyrE4kqggYHButf8S0y76Li72U8O
-	0DRi5blQAe5UxkV3s8smwssSlTDhz4pb1re4bHlYBBHV9Kd/GDNtPV5QUOBGQoCfj4Jn
-	6wbudPyPPApUbd7UEJI0BrrfjLgYA2rDWPd7ZT6BvvR94i0qZhyzcoNHIn0bPYLxV7Kd
-	Qghg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=fGHxlqx5pxmBL83Z5SxFYsCI8asIisFPhWpT8nqvzSo=;
-	b=V7H3BNkulC+2d262mV2+gtJmbvUKKsNbjVVOzo6oThz0zLv+T8bRToEwQHSvqs70GF
-	yKAb6hZe4RCjAL8XilHwXFpOvXMsN3i6aFsxpl4KFsWeR0wK6cW9GnPqsEh3q/6jmEZ2
-	iZ2jyfjtUq/c1Gyj9OOZCOse8VQstu6Rp9sZ0fO7VVslMItnttexOlqgwvTC58mQB3D0
-	7lEWed5QTR5lypJ2Ia8DhtvLsw5SsH3qggaOjLb0XpuGhHHLPq3OUwzGAX/+j4quaYW1
-	un7SVZN67mz0wcQrDwMskQ916S/k79m832ZcEx83STGzCBtxXqvrgxEPaIvuDyn91tdW
-	hq8w==
-X-Gm-Message-State: AOPr4FUaekbQ8qZ9MaWV1qvrU2b/bhgf7S2N8+cE0S5XJBZWpnAE9yMIHmEo+Lpys8zK0A==
-X-Received: by 10.194.96.10 with SMTP id do10mr5980918wjb.132.1463563677652;
-	Wed, 18 May 2016 02:27:57 -0700 (PDT)
-Received: from donizetti.lan (dynamic-adsl-78-12-252-58.clienti.tiscali.it.
-	[78.12.252.58])
-	by smtp.gmail.com with ESMTPSA id i4sm7599455wjj.49.2016.05.18.02.27.56
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 18 May 2016 02:27:56 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	armbru@redhat.com
-Date: Wed, 18 May 2016 11:27:53 +0200
-Message-Id: <1463563673-671-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.5.5
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: [Qemu-trivial] [PATCH] coccinelle: add g_assert_cmp* to macro file
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1b2z8M-0001E0-Sp; Wed, 18 May 2016 06:55:23 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="6666503"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 18 May 2016 18:55:10 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 5B5D6489F961;
+	Wed, 18 May 2016 18:55:06 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 18 May 2016 18:55:05 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, <kraxel@redhat.com>, <mst@redhat.com>,
+	<cminyard@mvista.com>
+Date: Wed, 18 May 2016 18:59:36 +0800
+Message-ID: <1463569176-32122-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 5B5D6489F961.AA8D3
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [PATCH] fw_cfg: follow CODING_STYLE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,30 +50,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 09:28:12 -0000
+X-List-Received-Date: Wed, 18 May 2016 10:55:30 -0000
 
-This helps applying semantic patches to unit tests.
+Replace tab with 4 spaces; brace the indented statement.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
 ---
- scripts/cocci-macro-file.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/nvram/fw_cfg.c | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/scripts/cocci-macro-file.h b/scripts/cocci-macro-file.h
-index eceb4be..9f2e72e 100644
---- a/scripts/cocci-macro-file.h
-+++ b/scripts/cocci-macro-file.h
-@@ -117,3 +117,9 @@ struct {                                                                \
-         type *tqe_next;       /* next element */                        \
-         type **tqe_prev;      /* address of previous next element */    \
- }
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 999f480..826181a 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -728,15 +728,20 @@ static int get_fw_cfg_order(FWCfgState *s, const char *name)
+ {
+     int i;
+ 
+-    if (s->fw_cfg_order_override > 0)
+-	return s->fw_cfg_order_override;
++    if (s->fw_cfg_order_override > 0) {
++        return s->fw_cfg_order_override;
++    }
+ 
+     for (i = 0; i < ARRAY_SIZE(fw_cfg_order); i++) {
+-	if (fw_cfg_order[i].name == NULL)
+-	    continue;
+-	if (strcmp(name, fw_cfg_order[i].name) == 0)
+-	    return fw_cfg_order[i].order;
++        if (fw_cfg_order[i].name == NULL) {
++            continue;
++        }
 +
-+/* From glib */
-+#define g_assert_cmpint(a, op, b)   g_assert(a op b)
-+#define g_assert_cmpuint(a, op, b)   g_assert(a op b)
-+#define g_assert_cmphex(a, op, b)   g_assert(a op b)
-+#define g_assert_cmpstr(a, op, b)   g_assert(strcmp(a, b) op 0)
++        if (strcmp(name, fw_cfg_order[i].name) == 0) {
++            return fw_cfg_order[i].order;
++        }
+     }
++
+     /* Stick unknown stuff at the end. */
+     error_report("warning: Unknown firmware file in legacy mode: %s\n", name);
+     return FW_CFG_ORDER_OVERRIDE_LAST;
 -- 
-2.5.5
+2.1.0
+
+
 
 
