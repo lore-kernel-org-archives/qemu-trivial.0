@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b2z8W-0000jt-As
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 06:55:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42384)
+	id 1b30FC-0003hC-1C
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:06:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2z8T-0000iF-QA
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 06:55:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b30F9-0003gr-Op
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:06:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1b2z8S-0001HQ-Sp
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 06:55:29 -0400
-Received: from [59.151.112.132] (port=9311 helo=heian.cn.fujitsu.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1b30F5-0000w5-Cr
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:06:27 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39843)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1b2z8M-0001E0-Sp; Wed, 18 May 2016 06:55:23 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="6666503"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 18 May 2016 18:55:10 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 5B5D6489F961;
-	Wed, 18 May 2016 18:55:06 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 18 May 2016 18:55:05 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, <kraxel@redhat.com>, <mst@redhat.com>,
-	<cminyard@mvista.com>
-Date: Wed, 18 May 2016 18:59:36 +0800
-Message-ID: <1463569176-32122-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 5B5D6489F961.AA8D3
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] fw_cfg: follow CODING_STYLE
+	(envelope-from <mjt@tls.msk.ru>) id 1b30F5-0000vX-4r
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:06:23 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9042B417A4;
+	Wed, 18 May 2016 15:06:11 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A7EA4ADC;
+	Wed, 18 May 2016 15:06:10 +0300 (MSK)
+Received: (nullmailer pid 12402 invoked by uid 1000);
+	Wed, 18 May 2016 12:06:09 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Wed, 18 May 2016 15:06:06 +0300
+Message-Id: <cc2324d03dbd098b80cfc482d9d29114db57d975.1463573089.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 11/13] smbios: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,49 +43,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 10:55:30 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:06:28 -0000
 
-Replace tab with 4 spaces; brace the indented statement.
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+
+The spec says: "on paragraph (16-byte) boundaries"
 
 Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/nvram/fw_cfg.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
+ include/hw/smbios/smbios.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 999f480..826181a 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -728,15 +728,20 @@ static int get_fw_cfg_order(FWCfgState *s, const char *name)
- {
-     int i;
+diff --git a/include/hw/smbios/smbios.h b/include/hw/smbios/smbios.h
+index 76ccf70..ba36746 100644
+--- a/include/hw/smbios/smbios.h
++++ b/include/hw/smbios/smbios.h
+@@ -33,7 +33,7 @@ typedef enum SmbiosEntryPointType {
  
--    if (s->fw_cfg_order_override > 0)
--	return s->fw_cfg_order_override;
-+    if (s->fw_cfg_order_override > 0) {
-+        return s->fw_cfg_order_override;
-+    }
- 
-     for (i = 0; i < ARRAY_SIZE(fw_cfg_order); i++) {
--	if (fw_cfg_order[i].name == NULL)
--	    continue;
--	if (strcmp(name, fw_cfg_order[i].name) == 0)
--	    return fw_cfg_order[i].order;
-+        if (fw_cfg_order[i].name == NULL) {
-+            continue;
-+        }
-+
-+        if (strcmp(name, fw_cfg_order[i].name) == 0) {
-+            return fw_cfg_order[i].order;
-+        }
-     }
-+
-     /* Stick unknown stuff at the end. */
-     error_report("warning: Unknown firmware file in legacy mode: %s\n", name);
-     return FW_CFG_ORDER_OVERRIDE_LAST;
+ /* SMBIOS Entry Point
+  * There are two types of entry points defined in the SMBIOS specification
+- * (see below). BIOS must place the entry point(s) at a 16-bit-aligned
++ * (see below). BIOS must place the entry point(s) at a 16-byte-aligned
+  * address between 0xf0000 and 0xfffff. Note that either entry point type
+  * can be used in a 64-bit target system, except that SMBIOS 2.1 entry point
+  * only allows the SMBIOS struct table to reside below 4GB address space.
 -- 
-2.1.0
-
-
+2.1.4
 
 
