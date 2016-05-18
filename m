@@ -1,37 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30N1-0000LD-2h
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:14:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58457)
+	id 1b30Q5-0003K3-T5
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:17:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30My-0000HX-QP
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:33 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1b30Q0-0003DT-2V
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:17:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30Mt-00032d-Gt
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:14:31 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48103)
+	(envelope-from <pbonzini@redhat.com>) id 1b30Py-0004BG-Ur
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:17:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57823)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30Mk-00030U-In; Wed, 18 May 2016 08:14:18 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 64078417A5;
-	Wed, 18 May 2016 15:14:17 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 7FFF4AE0;
-	Wed, 18 May 2016 15:06:11 +0300 (MSK)
-Received: (nullmailer pid 12386 invoked by uid 1000);
-	Wed, 18 May 2016 12:06:09 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+	(envelope-from <pbonzini@redhat.com>)
+	id 1b30Pq-00044y-9o; Wed, 18 May 2016 08:17:30 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BE0BAC05B1CE;
+	Wed, 18 May 2016 12:17:29 +0000 (UTC)
+Received: from [10.36.112.39] (ovpn-112-39.ams2.redhat.com [10.36.112.39])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4ICHMcG012493
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 18 May 2016 08:17:25 -0400
+To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial <qemu-trivial@nongnu.org>,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 18 May 2016 15:05:58 +0300
-Message-Id: <ed2f3bc1fad37297468234add82f464b59b16830.1463573089.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
-References: <cover.1463573089.git.mjt@msgid.tls.msk.ru>
+References: <1458888577-12477-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<56F5041C.2060307@redhat.com> <5733DEDF.90606@cn.fujitsu.com>
+	<573BC79F.4070602@cn.fujitsu.com> <573C5D39.10404@cn.fujitsu.com>
+Cc: mst@redhat.com, qemu-devel@nongnu.org
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <8c278e28-6afe-b02e-5a92-2c05ddf2f532@redhat.com>
+Date: Wed, 18 May 2016 14:17:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
+MIME-Version: 1.0
+In-Reply-To: <573C5D39.10404@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 18 May 2016 12:17:29 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 03/13] loader: fix potential memory leak
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] pci_register_bar: cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,38 +56,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:14:33 -0000
+X-List-Received-Date: Wed, 18 May 2016 12:17:44 -0000
 
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
+On 18/05/2016 14:16, Cao jin wrote:
+> I guess maybe this one is more suitable for trivial.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/core/loader.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+No, it's not trivial.  I guess it missed soft freeze.  Michael Tsirkin
+will pick it up.
 
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index c049957..53e0e41 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -914,10 +914,16 @@ int rom_add_file(const char *file, const char *fw_dir,
- err:
-     if (fd != -1)
-         close(fd);
-+
-     g_free(rom->data);
-     g_free(rom->path);
-     g_free(rom->name);
-+    if (fw_dir) {
-+        g_free(rom->fw_dir);
-+        g_free(rom->fw_file);
-+    }
-     g_free(rom);
-+
-     return -1;
- }
- 
--- 
-2.1.4
+Thanks,
 
+Paolo
+
+>>>>> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+>>>>> index e67664d..f0f41dc 100644
+>>>>> --- a/hw/pci/pci.c
+>>>>> +++ b/hw/pci/pci.c
+>>>>> @@ -974,7 +974,7 @@ void pci_register_bar(PCIDevice *pci_dev, int region_num,
+>>>>>                         uint8_t type, MemoryRegion *memory)
+>>>>>   {
+>>>>>       PCIIORegion *r;
+>>>>> -    uint32_t addr;
+>>>>> +    uint32_t addr; /* offset in pci config space */
+>>>>>       uint64_t wmask;
+>>>>>       pcibus_t size = memory_region_size(memory);
+>>>>>
+>>>>> @@ -990,15 +990,20 @@ void pci_register_bar(PCIDevice *pci_dev, int
+>>>>> region_num,
+>>>>>       r->addr = PCI_BAR_UNMAPPED;
+>>>>>       r->size = size;
+>>>>>       r->type = type;
+>>>>> -    r->memory = NULL;
+>>>>> +    r->memory = memory;
+>>>>> +    r->address_space = type & PCI_BASE_ADDRESS_SPACE_IO
+>>>>> +                        ? pci_dev->bus->address_space_io
+>>>>> +                        : pci_dev->bus->address_space_mem;
+>>>>>
+>>>>>       wmask = ~(size - 1);
+>>>>> -    addr = pci_bar(pci_dev, region_num);
+>>>>>       if (region_num == PCI_ROM_SLOT) {
+>>>>>           /* ROM enable bit is writable */
+>>>>>           wmask |= PCI_ROM_ADDRESS_ENABLE;
+>>>>>       }
+>>>>> +
+>>>>> +    addr = pci_bar(pci_dev, region_num);
+>>>>>       pci_set_long(pci_dev->config + addr, type);
+>>>>> +
+>>>>>       if (!(r->type & PCI_BASE_ADDRESS_SPACE_IO) &&
+>>>>>           r->type & PCI_BASE_ADDRESS_MEM_TYPE_64) {
+>>>>>           pci_set_quad(pci_dev->wmask + addr, wmask);
+>>>>> @@ -1007,11 +1012,6 @@ void pci_register_bar(PCIDevice *pci_dev, int
+>>>>> region_num,
+>>>>>           pci_set_long(pci_dev->wmask + addr, wmask & 0xffffffff);
+>>>>>           pci_set_long(pci_dev->cmask + addr, 0xffffffff);
+>>>>>       }
+>>>>> -    pci_dev->io_regions[region_num].memory = memory;
+>>>>> -    pci_dev->io_regions[region_num].address_space
+>>>>> -        = type & PCI_BASE_ADDRESS_SPACE_IO
+>>>>> -        ? pci_dev->bus->address_space_io
+>>>>> -        : pci_dev->bus->address_space_mem;
+>>>>>   }
+>>>>>
+>>>>>   static void pci_update_vga(PCIDevice *pci_dev)
+>>>>>
+>>>>
+>>>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
