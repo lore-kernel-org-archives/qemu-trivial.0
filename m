@@ -1,34 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b30tz-0007pf-DT
-	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 08:48:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40335)
+	id 1b31Aa-000538-MQ
+	for mharc-qemu-trivial@gnu.org; Wed, 18 May 2016 09:05:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30tu-0007mD-33
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:48:38 -0400
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1b31AY-000531-U0
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 09:05:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b30ts-000453-2t
-	for qemu-trivial@nongnu.org; Wed, 18 May 2016 08:48:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38120)
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1b31AT-0000CO-Sf
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 09:05:46 -0400
+Received: from e06smtp07.uk.ibm.com ([195.75.94.103]:37419)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1b30tn-0003xd-GF; Wed, 18 May 2016 08:48:27 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 99F7241788;
-	Wed, 18 May 2016 15:48:22 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id B4074ADA;
-	Wed, 18 May 2016 15:48:21 +0300 (MSK)
-Received: (nullmailer pid 21048 invoked by uid 1000);
-	Wed, 18 May 2016 12:48:21 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 18 May 2016 15:48:20 +0300
-Message-Id: <1463575700-21007-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PATCH trivial] docs: "specify" spell fix
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1b31AT-0000Bs-Go
+	for qemu-trivial@nongnu.org; Wed, 18 May 2016 09:05:41 -0400
+Received: from localhost
+	by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <cornelia.huck@de.ibm.com>;
+	Wed, 18 May 2016 14:05:39 +0100
+Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
+	by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 18 May 2016 14:05:36 +0100
+X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
+X-IBM-MailFrom: cornelia.huck@de.ibm.com
+X-IBM-RcptTo: qemu-devel@nongnu.org;qemu-trivial@nongnu.org
+Received: from b06cxnps4075.portsmouth.uk.ibm.com
+	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
+	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 0577E17D807A; 
+	Wed, 18 May 2016 14:06:36 +0100 (BST)
+Received: from d06av04.portsmouth.uk.ibm.com (d06av04.portsmouth.uk.ibm.com
+	[9.149.37.216])
+	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u4ID5Z9b7537030; Wed, 18 May 2016 13:05:35 GMT
+Received: from d06av04.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u4ID5YiQ005887; Wed, 18 May 2016 07:05:34 -0600
+Received: from gondolin (dyn-9-152-224-125.boeblingen.de.ibm.com
+	[9.152.224.125])
+	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u4ID5VLR005597; Wed, 18 May 2016 07:05:31 -0600
+Date: Wed, 18 May 2016 15:05:30 +0200
+From: Cornelia Huck <cornelia.huck@de.ibm.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20160518150530.13cd9fa8.cornelia.huck@de.ibm.com>
+In-Reply-To: <1463575397-20438-1-git-send-email-mjt@msgid.tls.msk.ru>
+References: <1463575397-20438-1-git-send-email-mjt@msgid.tls.msk.ru>
+Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
+	Aufsichtsrats: Martina Koederitz
+	=?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
+	Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
+	Registergericht: Amtsgericht Stuttgart, HRB 243294
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16051813-0029-0000-0000-00001EAF07A1
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.103
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH trivial] s390x/virtio-ccw:
+ fix spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,50 +74,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 May 2016 12:48:38 -0000
+X-List-Received-Date: Wed, 18 May 2016 13:05:47 -0000
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- docs/qapi-code-gen.txt | 2 +-
- qemu-options.hx        | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+On Wed, 18 May 2016 15:43:17 +0300
+Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-diff --git a/docs/qapi-code-gen.txt b/docs/qapi-code-gen.txt
-index d7d6987..eff2075 100644
---- a/docs/qapi-code-gen.txt
-+++ b/docs/qapi-code-gen.txt
-@@ -322,7 +322,7 @@ enum.  The value for each branch can be of any type.
- 
- A flat union definition avoids nesting on the wire, and specifies a
- set of common members that occur in all variants of the union.  The
--'base' key must specifiy either a type name (the type must be a
-+'base' key must specify either a type name (the type must be a
- struct, not a union), or a dictionary representing an anonymous type.
- All branches of the union must be complex types, and the top-level
- members of the union dictionary on the wire will be combination of
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 6106520..068f8cd 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -569,7 +569,7 @@ These options have the same definition as they have in @option{-hdachs}.
- @var{discard} is one of "ignore" (or "off") or "unmap" (or "on") and controls whether @dfn{discard} (also known as @dfn{trim} or @dfn{unmap}) requests are ignored or passed to the filesystem.  Some machine types may not support discard requests.
- @item format=@var{format}
- Specify which disk @var{format} will be used rather than detecting
--the format.  Can be used to specifiy format=raw to avoid interpreting
-+the format.  Can be used to specify format=raw to avoid interpreting
- an untrusted format header.
- @item serial=@var{serial}
- This option specifies the serial number to assign to the device.
-@@ -894,7 +894,7 @@ mouse. Also overrides the PS/2 mouse emulation when activated.
- 
- @item disk:[format=@var{format}]:@var{file}
- Mass storage device based on file. The optional @var{format} argument
--will be used rather than detecting the format. Can be used to specifiy
-+will be used rather than detecting the format. Can be used to specify
- @code{format=raw} to avoid interpreting an untrusted format header.
- 
- @item host:@var{bus}.@var{addr}
--- 
-2.1.4
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  hw/s390x/virtio-ccw.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+> index d51642d..5e77b27 100644
+> --- a/hw/s390x/virtio-ccw.c
+> +++ b/hw/s390x/virtio-ccw.c
+> @@ -1475,7 +1475,7 @@ static void virtio_ccw_device_plugged(DeviceState *d, Error **errp)
+>      int n = virtio_get_num_queues(vdev);
+> 
+>      if (virtio_get_num_queues(vdev) > VIRTIO_CCW_QUEUE_MAX) {
+> -        error_setg(errp, "The nubmer of virtqueues %d "
+> +        error_setg(errp, "The number of virtqueues %d "
+>                     "exceeds ccw limit %d", n,
+>                     VIRTIO_CCW_QUEUE_MAX);
+>          return;
+
+Acked-by: Cornelia Huck <cornelia.huck@de.ibm.com>
 
 
