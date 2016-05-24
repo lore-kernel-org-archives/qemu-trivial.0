@@ -1,41 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b5B0F-0008RQ-1N
-	for mharc-qemu-trivial@gnu.org; Tue, 24 May 2016 08:00:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49927)
+	id 1b5CNu-0008W1-Mv
+	for mharc-qemu-trivial@gnu.org; Tue, 24 May 2016 09:28:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42250)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1b5B0C-0008Ob-7v
-	for qemu-trivial@nongnu.org; Tue, 24 May 2016 08:00:01 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1b5CNs-0008TO-4X
+	for qemu-trivial@nongnu.org; Tue, 24 May 2016 09:28:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1b5B0B-0005LC-7S
-	for qemu-trivial@nongnu.org; Tue, 24 May 2016 08:00:00 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:57057 helo=smtp4.mundo-r.com)
+	(envelope-from <pbonzini@redhat.com>) id 1b5CNl-0000fE-Hy
+	for qemu-trivial@nongnu.org; Tue, 24 May 2016 09:28:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59537)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1b5B06-00054w-Gj; Tue, 24 May 2016 07:59:54 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: A2ALAgBkQURX/5tjdVtcgzeBU6VBCwUBgQ+RDoIPAQ2BdhKFf4E1OBQBAQEBAQEBZSeFQoEdNIgzAcRghV+KH4RyHAWIBJAzjiACgWeHWCOFNgKPTB4BAUKBNgGCODoyiVEBAQE
-X-IPAS-Result: A2ALAgBkQURX/5tjdVtcgzeBU6VBCwUBgQ+RDoIPAQ2BdhKFf4E1OBQBAQEBAQEBZSeFQoEdNIgzAcRghV+KH4RyHAWIBJAzjiACgWeHWCOFNgKPTB4BAUKBNgGCODoyiVEBAQE
-X-IronPort-AV: E=Sophos;i="5.26,359,1459807200"; d="scan'208";a="10831458"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 24 May 2016 13:59:16 +0200
-Received: from [192.168.13.244] (helo=perseus.local)
-	by fanzine.igalia.com with esmtpsa 
-	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
-	id 1b5AzU-0000Wt-AE; Tue, 24 May 2016 13:59:16 +0200
-Received: from berto by perseus.local with local (Exim 4.87)
-	(envelope-from <berto@igalia.com>)
-	id 1b5AzU-0002sz-5Q; Tue, 24 May 2016 14:59:16 +0300
-From: Alberto Garcia <berto@igalia.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Alberto Garcia <berto@igalia.com>
-Date: Tue, 24 May 2016 13:59:13 +0200
-Message-Id: <1464091153-11057-1-git-send-email-berto@igalia.com>
-X-Mailer: git-send-email 2.8.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Subject: [Qemu-trivial] [PATCH] docs: Fix a couple of typos in throttle.txt
+	(envelope-from <pbonzini@redhat.com>)
+	id 1b5CNc-0000cZ-7o; Tue, 24 May 2016 09:28:16 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33274821C7;
+	Tue, 24 May 2016 13:28:15 +0000 (UTC)
+Received: from [10.36.112.32] (ovpn-112-32.ams2.redhat.com [10.36.112.32])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4ODS7gr031391
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 24 May 2016 09:28:11 -0400
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <1464091747-61337-1-git-send-email-imammedo@redhat.com>
+Cc: ehabkost@redhat.com, marcel@redhat.com, mst@redhat.com, rth@twiddle.net,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <3c3dbb8c-022e-dd69-2f4d-9db84fbcf71c@redhat.com>
+Date: Tue, 24 May 2016 15:28:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
+MIME-Version: 1.0
+In-Reply-To: <1464091747-61337-1-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 24 May 2016 13:28:15 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] pc: cleanup unused struct PcRomPciInfo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,36 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 May 2016 12:00:01 -0000
+X-List-Received-Date: Tue, 24 May 2016 13:28:33 -0000
 
-Signed-off-by: Alberto Garcia <berto@igalia.com>
----
- docs/throttle.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Adding qemu-trivial.
 
-diff --git a/docs/throttle.txt b/docs/throttle.txt
-index 06ed9b3..b4431f6 100644
---- a/docs/throttle.txt
-+++ b/docs/throttle.txt
-@@ -39,7 +39,7 @@ the parameters for both cases:
- | throttling.bps-write  | bps_wr                |
- |-----------------------+-----------------------|
- 
--It is possible to set limits for both IOPS and bps and the same time,
-+It is possible to set limits for both IOPS and bps at the same time,
- and for each case we can decide whether to have separate read and
- write limits or not, but note that if iops-total is set then neither
- iops-read nor iops-write can be set. The same applies to bps-total and
-@@ -235,7 +235,7 @@ consider the following values:
-   - Water leaks from the bucket at a rate of 100 IOPS.
-   - Water can be added to the bucket at a rate of 2000 IOPS.
-   - The size of the bucket is 2000 x 60 = 120000
--  - If 'iops-total-max-length' is unset then the bucket size is 100.
-+  - If 'iops-total-max' is unset then the bucket size is 100.
- 
- The bucket is initially empty, therefore water can be added until it's
- full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
--- 
-2.8.1
+Paolo
 
+
+On 24/05/2016 14:09, Igor Mammedov wrote:
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/i386/pc.c | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 1fd83f4..c48322b 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1159,14 +1159,6 @@ void pc_cpus_init(PCMachineState *pcms)
+>      smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
+>  }
+>  
+> -/* pci-info ROM file. Little endian format */
+> -typedef struct PcRomPciInfo {
+> -    uint64_t w32_min;
+> -    uint64_t w32_max;
+> -    uint64_t w64_min;
+> -    uint64_t w64_max;
+> -} PcRomPciInfo;
+> -
+>  static
+>  void pc_machine_done(Notifier *notifier, void *data)
+>  {
+> 
 
