@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b3NFj-0007NA-QF
-	for mharc-qemu-trivial@gnu.org; Thu, 19 May 2016 08:40:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56268)
+	id 1b5B0F-0008RQ-1N
+	for mharc-qemu-trivial@gnu.org; Tue, 24 May 2016 08:00:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49927)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1b3NFc-0007H1-OQ
-	for qemu-trivial@nongnu.org; Thu, 19 May 2016 08:40:34 -0400
+	(envelope-from <berto@igalia.com>) id 1b5B0C-0008Ob-7v
+	for qemu-trivial@nongnu.org; Tue, 24 May 2016 08:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1b3NFa-0008GU-SO
-	for qemu-trivial@nongnu.org; Thu, 19 May 2016 08:40:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37164)
+	(envelope-from <berto@igalia.com>) id 1b5B0B-0005LC-7S
+	for qemu-trivial@nongnu.org; Tue, 24 May 2016 08:00:00 -0400
+Received: from smtp3.mundo-r.com ([212.51.32.191]:57057 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1b3NFU-0008Fe-He; Thu, 19 May 2016 08:40:20 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0791D6F670;
-	Thu, 19 May 2016 12:40:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4JCeIis016188
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 19 May 2016 08:40:19 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id AECDF11386CA; Thu, 19 May 2016 14:40:17 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Corey Minyard <cminyard@mvista.com>
-Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, kraxel@redhat.com, mst@redhat.com
-References: <1463569176-32122-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<573C7DFF.1090504@mvista.com>
-Date: Thu, 19 May 2016 14:40:17 +0200
-In-Reply-To: <573C7DFF.1090504@mvista.com> (Corey Minyard's message of "Wed,
-	18 May 2016 09:36:47 -0500")
-Message-ID: <87wpmqi5la.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 19 May 2016 12:40:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fw_cfg: follow CODING_STYLE
+	(envelope-from <berto@igalia.com>)
+	id 1b5B06-00054w-Gj; Tue, 24 May 2016 07:59:54 -0400
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: A2ALAgBkQURX/5tjdVtcgzeBU6VBCwUBgQ+RDoIPAQ2BdhKFf4E1OBQBAQEBAQEBZSeFQoEdNIgzAcRghV+KH4RyHAWIBJAzjiACgWeHWCOFNgKPTB4BAUKBNgGCODoyiVEBAQE
+X-IPAS-Result: A2ALAgBkQURX/5tjdVtcgzeBU6VBCwUBgQ+RDoIPAQ2BdhKFf4E1OBQBAQEBAQEBZSeFQoEdNIgzAcRghV+KH4RyHAWIBJAzjiACgWeHWCOFNgKPTB4BAUKBNgGCODoyiVEBAQE
+X-IronPort-AV: E=Sophos;i="5.26,359,1459807200"; d="scan'208";a="10831458"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 24 May 2016 13:59:16 +0200
+Received: from [192.168.13.244] (helo=perseus.local)
+	by fanzine.igalia.com with esmtpsa 
+	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1b5AzU-0000Wt-AE; Tue, 24 May 2016 13:59:16 +0200
+Received: from berto by perseus.local with local (Exim 4.87)
+	(envelope-from <berto@igalia.com>)
+	id 1b5AzU-0002sz-5Q; Tue, 24 May 2016 14:59:16 +0300
+From: Alberto Garcia <berto@igalia.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Alberto Garcia <berto@igalia.com>
+Date: Tue, 24 May 2016 13:59:13 +0200
+Message-Id: <1464091153-11057-1-git-send-email-berto@igalia.com>
+X-Mailer: git-send-email 2.8.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.191
+Subject: [Qemu-trivial] [PATCH] docs: Fix a couple of typos in throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,16 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 May 2016 12:40:34 -0000
+X-List-Received-Date: Tue, 24 May 2016 12:00:01 -0000
 
-Corey Minyard <cminyard@mvista.com> writes:
+Signed-off-by: Alberto Garcia <berto@igalia.com>
+---
+ docs/throttle.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> On 05/18/2016 05:59 AM, Cao jin wrote:
->> Replace tab with 4 spaces; brace the indented statement.
->
-> Thanks, I think I have my editor set up to avoid the tab/space issue from
-> now on.  I'm going to have to handle kernel/qemu switching in my brain
-> for the brace issue.
+diff --git a/docs/throttle.txt b/docs/throttle.txt
+index 06ed9b3..b4431f6 100644
+--- a/docs/throttle.txt
++++ b/docs/throttle.txt
+@@ -39,7 +39,7 @@ the parameters for both cases:
+ | throttling.bps-write  | bps_wr                |
+ |-----------------------+-----------------------|
+ 
+-It is possible to set limits for both IOPS and bps and the same time,
++It is possible to set limits for both IOPS and bps at the same time,
+ and for each case we can decide whether to have separate read and
+ write limits or not, but note that if iops-total is set then neither
+ iops-read nor iops-write can be set. The same applies to bps-total and
+@@ -235,7 +235,7 @@ consider the following values:
+   - Water leaks from the bucket at a rate of 100 IOPS.
+   - Water can be added to the bucket at a rate of 2000 IOPS.
+   - The size of the bucket is 2000 x 60 = 120000
+-  - If 'iops-total-max-length' is unset then the bucket size is 100.
++  - If 'iops-total-max' is unset then the bucket size is 100.
+ 
+ The bucket is initially empty, therefore water can be added until it's
+ full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
+-- 
+2.8.1
 
-You can outsource some of it to scripts/checkpatch.pl :)
 
