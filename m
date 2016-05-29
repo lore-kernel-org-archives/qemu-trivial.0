@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b6CRF-0003Nz-14
-	for mharc-qemu-trivial@gnu.org; Fri, 27 May 2016 03:44:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48221)
+	id 1b6uSV-0003cz-Po
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2016 02:44:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>) id 1b6CRD-0003Kb-5h
-	for qemu-trivial@nongnu.org; Fri, 27 May 2016 03:44:08 -0400
+	(envelope-from <sw@weilnetz.de>) id 1b6uSU-0003bg-1c
+	for qemu-trivial@nongnu.org; Sun, 29 May 2016 02:44:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>) id 1b6CR8-0002vN-Vi
-	for qemu-trivial@nongnu.org; Fri, 27 May 2016 03:44:06 -0400
-Received: from relay1.mentorg.com ([192.94.38.131]:48640)
+	(envelope-from <sw@weilnetz.de>) id 1b6uSS-00051v-6O
+	for qemu-trivial@nongnu.org; Sun, 29 May 2016 02:44:21 -0400
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=41534 helo=mail.weilnetz.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Talha_Imran@mentor.com>)
-	id 1b6CR8-0002rR-PZ; Fri, 27 May 2016 03:44:02 -0400
-Received: from nat-ies.mentorg.com ([192.94.31.2]
-	helo=SVR-IES-FEM-04.mgc.mentorg.com)
-	by relay1.mentorg.com with esmtp 
-	id 1b6CQu-0003kN-Rj from Talha_Imran@mentor.com ;
-	Fri, 27 May 2016 00:43:49 -0700
-Received: from EU-MBX-02.mgc.mentorg.com ([169.254.3.75]) by
-	SVR-IES-FEM-04.mgc.mentorg.com ([137.202.0.110]) with mapi id
-	14.03.0224.002; Fri, 27 May 2016 08:43:47 +0100
-From: "Imran, Talha" <Talha_Imran@mentor.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-CC: "agraf@suse.de" <agraf@suse.de>, "qemu-trivial@nongnu.org"
-	<qemu-trivial@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-ppc] [PATCH] target-ppc/fpu_helper: Fix efscmp*
-	instructions handling
-Thread-Index: AQHRscef+z7Sxn9EH0yrhnham0zp9Z/L/EQAgAB2qwE=
-Date: Fri, 27 May 2016 07:43:46 +0000
-Message-ID: <3052678E9DA67D4CB879A6625EE420753DD7A3D1@EU-MBX-02.mgc.mentorg.com>
-References: <1463659895-16281-1-git-send-email-talha_imran@mentor.com>,
-	<20160527013714.GP17226@voom.fritz.box>
-In-Reply-To: <20160527013714.GP17226@voom.fritz.box>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [137.202.0.69]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <sw@weilnetz.de>)
+	id 1b6uSL-00051Z-10; Sun, 29 May 2016 02:44:13 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 8FB0711810A6;
+	Sun, 29 May 2016 08:44:11 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id lHrRN_fbkMiV; Sun, 29 May 2016 08:44:09 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (p54AC8F14.dip0.t-ipconnect.de
+	[84.172.143.20])
+	by mail.weilnetz.de (Postfix) with ESMTPSA id 71F4511810A5;
+	Sun, 29 May 2016 08:44:09 +0200 (CEST)
+To: Sameeh Jubran <sameeh@daynix.com>, qemu-devel@nongnu.org,
+	Jason Wang <jasowang@redhat.com>
+References: <1464503845-29545-1-git-send-email-sameeh@daynix.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Yan Vugenfirer <yan@daynix.com>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <574A8FB2.6080602@weilnetz.de>
+Date: Sun, 29 May 2016 08:44:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.8.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
-	[fuzzy]
-X-Received-From: 192.94.38.131
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] target-ppc/fpu_helper: Fix
- efscmp* instructions handling
+In-Reply-To: <1464503845-29545-1-git-send-email-sameeh@daynix.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="g1U6fumqo64pSOtJfcTohTSCuI9Vqcd7Q"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] e1000: Removing unnecessary
+ if statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,48 +53,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 May 2016 07:44:08 -0000
+X-List-Received-Date: Sun, 29 May 2016 06:44:23 -0000
 
-=0A=
-On 05/27/2016 06:37 AM, David Gibson wrote:=0A=
-> On Thu, May 19, 2016 at 05:11:35PM +0500, Talha Imran wrote:=0A=
->> With specification at hand from the reference manual from Freescale=0A=
->> http://cache.nxp.com/files/32bit/doc/ref_manual/SPEPEM.pdf , I have foun=
-d a fix=0A=
->> to efscmp* instructions handling in QEMU.=0A=
->>=0A=
-...=0A=
->> Signed-off-by: Talha Imran <talha_imran@mentor.com>=0A=
->=0A=
-> Does this patch supersede the earlier patch you posted for efcmp=0A=
-> instructions on e500v1?  Or is it in addition to that patch?=0A=
->=0A=
-[talha]: Yes, it supersedes the earlier patches. This is a better solution.=
-=0A=
-=0A=
->> ---=0A=
->>  target-ppc/fpu_helper.c | 2 +-=0A=
->>  1 file changed, 1 insertion(+), 1 deletion(-)=0A=
->>=0A=
->> diff --git a/target-ppc/fpu_helper.c b/target-ppc/fpu_helper.c=0A=
->> index b67ebca..6fd56a8 100644=0A=
->> --- a/target-ppc/fpu_helper.c=0A=
->> +++ b/target-ppc/fpu_helper.c=0A=
->> @@ -1442,7 +1442,7 @@ static inline uint32_t efststeq(CPUPPCState *env, =
-uint32_t op1, uint32_t op2)=0A=
->>  #define HELPER_SINGLE_SPE_CMP(name)                                    =
- \=0A=
->>      uint32_t helper_e##name(CPUPPCState *env, uint32_t op1, uint32_t op=
-2) \=0A=
->>      {                                                                  =
- \=0A=
->> -        return e##name(env, op1, op2) << 2;                            =
- \=0A=
->> +        return e##name(env, op1, op2);                                 =
- \=0A=
->>      }=0A=
->>  /* efststlt */=0A=
->>  HELPER_SINGLE_SPE_CMP(fststlt);=0A=
->=0A=
-=0A=
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--g1U6fumqo64pSOtJfcTohTSCuI9Vqcd7Q
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: quoted-printable
+
+Am 29.05.2016 um 08:37 schrieb Sameeh Jubran:
+> Since mit_delay can never be 0 this if statement is
+> superfluous.
+>
+> Signed-off-by: Sameeh Jubran <sameeh@daynix.com>
+> ---
+>  hw/net/e1000.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+> index 8e79b55..eb903a9 100644
+> --- a/hw/net/e1000.c
+> +++ b/hw/net/e1000.c
+> @@ -365,11 +365,9 @@ set_interrupt_cause(E1000State *s, int index, uint=
+32_t val)
+>               */
+>              mit_delay =3D (mit_delay < 500) ? 500 : mit_delay;
+> =20
+> -            if (mit_delay) {
+> -                s->mit_timer_on =3D 1;
+> -                timer_mod(s->mit_timer, qemu_clock_get_ns(QEMU_CLOCK_V=
+IRTUAL) +
+> -                          mit_delay * 256);
+> -            }
+> +            s->mit_timer_on =3D 1;
+> +            timer_mod(s->mit_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTU=
+AL) +
+> +                      mit_delay * 256);
+>              s->mit_ide =3D 0;
+>          }
+>      }
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+CC'ing qemu-trivial
+
+
+
+--g1U6fumqo64pSOtJfcTohTSCuI9Vqcd7Q
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJXSo+5AAoJEOCMIdVndFCtupYP/jL1SN6pFMAedXQjLGakeBQL
+EStKAXlWZwr5/jan9NNzRB65xmtPM0TL6c2qUBoKo/fyC9wAqckjCs9EWHrwAVAr
+jnaISv093pI4V27Hpi72WthmzYZUFToPs4pPTl+ASujVU8xU37cUl054M8pRqPPc
+XqB8rOq2SZhA6Vbz43yuCdBVlxkpnslec2eJM+4++QUtQEJP/zyKkC9s5YMIxdi6
+G1U30RspFrU54cjZZiO6zO96f5B/O8mqU/opxZbrZs/TQWHYiZocy3SCBj0awauU
+c5PATXlc2rBOVzf96NRHRvCPP4aaVaILg8QBTLS17eZRrpgSaK6puVquNjnuNcut
+TEJlzjVZJvoDIFNfxYRLPYb8FRdvJQxXQezWnwY4S9SLkMqzBCEXutbuUfNfwIqI
+6OZJamQKNpHMWhK3npZdO6NlxVqIbpAA8KWXS0F0x5lhMK0lcmv3tA05Nr2mTBnn
+zp7E+3pXN/0XP6WNLt1wM0BKte+gdwW4i/CQvwhR6EZzoFuxyW8yQbfUrJ73lHIV
+8kovZa6Nw2/4EMBXGMQP/Vozq25/59EXKC7CMgiXxhC2TvyDRlGSz/kAtEI6zPDI
+NlMdwmBRmCgIZyl9klqIXYLE1nJIXVBXmttqdlOMX8d2VBb3KJgWeM9M/vlNpZlU
+OlRdV/OKyFpwldmna5Xn
+=batF
+-----END PGP SIGNATURE-----
+
+--g1U6fumqo64pSOtJfcTohTSCuI9Vqcd7Q--
 
