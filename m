@@ -1,37 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b6wPJ-0008Rl-KK
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2016 04:49:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49388)
+	id 1b7EBS-0005CO-CR
+	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2016 23:48:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33689)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b6wPH-0008QL-5K
-	for qemu-trivial@nongnu.org; Sun, 29 May 2016 04:49:12 -0400
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b7EBP-0005AF-W9
+	for qemu-trivial@nongnu.org; Sun, 29 May 2016 23:48:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b6wPG-0008SA-99
-	for qemu-trivial@nongnu.org; Sun, 29 May 2016 04:49:11 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39329)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b7EBO-0003Jh-2k
+	for qemu-trivial@nongnu.org; Sun, 29 May 2016 23:48:02 -0400
+Received: from [59.151.112.132] (port=30782 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1b6wP8-0008QT-Ua; Sun, 29 May 2016 04:49:03 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id CF1B842C37;
-	Sun, 29 May 2016 11:48:58 +0300 (MSK)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1464103479-26913-1-git-send-email-peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org, patches@linaro.org
-From: Michael Tokarev <mjt@tls.msk.ru>
-Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
-Organization: Telecom Service, JSC
-Message-ID: <574AACFA.8080200@msgid.tls.msk.ru>
-Date: Sun, 29 May 2016 11:48:58 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.8.0
+	(envelope-from <weijg.fnst@cn.fujitsu.com>)
+	id 1b7EBJ-00039H-2U; Sun, 29 May 2016 23:47:57 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="7086075"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 11:47:34 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id 54D82489F997;
+	Mon, 30 May 2016 11:47:31 +0800 (CST)
+Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
+	G08CNEXCHPEKD01.g08.fujitsu.local ([10.167.33.80]) with mapi id
+	14.03.0279.002; Mon, 30 May 2016 11:47:31 +0800
+From: "Wei, Jiangang" <weijg.fnst@cn.fujitsu.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"liang.z.li@intel.com" <liang.z.li@intel.com>
+Thread-Topic: [Qemu-devel][PATCH] docs/multi-thread-compression: Fix wrong
+	command string
+Thread-Index: AQHRtNfNFaABcPSRFE+JEgn1BgbIOp/QW+uA
+Date: Mon, 30 May 2016 03:47:30 +0000
+Message-ID: <1464579993.2577.26.camel@localhost>
+References: <1463996637-6952-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+In-Reply-To: <1463996637-6952-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.167.226.50]
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <DECD103F9F1B8344BF64A6FA67DFF698@fujitsu.local>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <1464103479-26913-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH 0/4] Remove unnecessary glib.h includes
+X-yoursite-MailScanner-ID: 54D82489F997.A6CE4
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH]
+ docs/multi-thread-compression: Fix wrong command string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,28 +61,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 May 2016 08:49:12 -0000
+X-List-Received-Date: Mon, 30 May 2016 03:48:05 -0000
 
-24.05.2016 18:24, Peter Maydell wrote:
-> This patchset removes '#include <glib.h>' lines, because the
-> header is already included via osdep.h.
-> 
-> Patch 1 adds the check to clean-includes, and patches 2-4
-> apply it (the breakup into 'tests', 'qga' and 'everything else'
-> is semi-arbitrary and just to keep patch sizes down.)
-> 
-> thanks
-> -- PMM
-> 
-> 
-> Peter Maydell (4):
->   clean-includes: Add glib.h to list of unneeded includes
->   tests: Remove unnecessary glib.h includes
->   qga: Remove unnecessary glib.h includes
->   all: Remove unnecessary glib.h includes
-
-
-Applied series to -trivial, thanks!
-
-/mjt
+QWRkIHFlbXUtdHJpdmlhbCA8cWVtdS10cml2aWFsQG5vbmdudS5vcmc+DQoN
+ClJldmlld2VkLWJ5OiBFcmljIEJsYWtlIDxlYmxha2VAcmVkaGF0LmNvbT4N
+ClJldmlld2VkLWJ5OiBMaWFuZyBMaSA8bGlhbmcuei5saUBpbnRlbC5jb20+
+DQoNClRoYW5rcywNCndlaQ0KDQpPbiBNb24sIDIwMTYtMDUtMjMgYXQgMTc6
+NDMgKzA4MDAsIFdlaSBKaWFuZ2FuZyB3cm90ZToNCj4gcy9pbmZvX21pZ3Jh
+dGVfY2FwYWJpbGl0aWVzL2luZm8gbWlncmF0ZV9jYXBhYmlsaXRpZXMNCj4g
+DQo+IFNpZ25lZC1vZmYtYnk6IFdlaSBKaWFuZ2FuZyA8d2VpamcuZm5zdEBj
+bi5mdWppdHN1LmNvbT4NCj4gLS0tDQo+ICBkb2NzL211bHRpLXRocmVhZC1j
+b21wcmVzc2lvbi50eHQgfCAyICstDQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
+bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4gDQo+IGRpZmYgLS1naXQg
+YS9kb2NzL211bHRpLXRocmVhZC1jb21wcmVzc2lvbi50eHQgYi9kb2NzL211
+bHRpLXRocmVhZC1jb21wcmVzc2lvbi50eHQNCj4gaW5kZXggM2Q0NzdjMy4u
+ZDBjYWFmNyAxMDA2NDQNCj4gLS0tIGEvZG9jcy9tdWx0aS10aHJlYWQtY29t
+cHJlc3Npb24udHh0DQo+ICsrKyBiL2RvY3MvbXVsdGktdGhyZWFkLWNvbXBy
+ZXNzaW9uLnR4dA0KPiBAQCAtMTEwLDcgKzExMCw3IEBAIFVzYWdlDQo+ICA9
+PT09PQ0KPiAgMS4gVmVyaWZ5IGJvdGggdGhlIHNvdXJjZSBhbmQgZGVzdGlu
+YXRpb24gUUVNVSBhcmUgYWJsZQ0KPiAgdG8gc3VwcG9ydCB0aGUgbXVsdGlw
+bGUgdGhyZWFkIGNvbXByZXNzaW9uIG1pZ3JhdGlvbjoNCj4gLSAgICB7cWVt
+dX0gaW5mb19taWdyYXRlX2NhcGFiaWxpdGllcw0KPiArICAgIHtxZW11fSBp
+bmZvIG1pZ3JhdGVfY2FwYWJpbGl0aWVzDQo+ICAgICAge3FlbXV9IC4uLiBj
+b21wcmVzczogb2ZmIC4uLg0KPiAgDQo+ICAyLiBBY3RpdmF0ZSBjb21wcmVz
+c2lvbiBvbiB0aGUgc291cmNlOg0KDQoKCg==
 
