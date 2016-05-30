@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b7EBS-0005CO-CR
-	for mharc-qemu-trivial@gnu.org; Sun, 29 May 2016 23:48:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33689)
+	id 1b7GxW-0000p5-DM
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2016 02:45:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b7EBP-0005AF-W9
-	for qemu-trivial@nongnu.org; Sun, 29 May 2016 23:48:05 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7GxR-0000j8-Ba
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 02:45:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b7EBO-0003Jh-2k
-	for qemu-trivial@nongnu.org; Sun, 29 May 2016 23:48:02 -0400
-Received: from [59.151.112.132] (port=30782 helo=heian.cn.fujitsu.com)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7GxL-0005WA-0T
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 02:45:43 -0400
+Received: from [59.151.112.132] (port=8150 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>)
-	id 1b7EBJ-00039H-2U; Sun, 29 May 2016 23:47:57 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
+	id 1b7GxF-0005U8-O4; Mon, 30 May 2016 02:45:38 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="7086075"
+   d="scan'208";a="7092538"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 11:47:34 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 54D82489F997;
-	Mon, 30 May 2016 11:47:31 +0800 (CST)
-Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
-	G08CNEXCHPEKD01.g08.fujitsu.local ([10.167.33.80]) with mapi id
-	14.03.0279.002; Mon, 30 May 2016 11:47:31 +0800
-From: "Wei, Jiangang" <weijg.fnst@cn.fujitsu.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"liang.z.li@intel.com" <liang.z.li@intel.com>
-Thread-Topic: [Qemu-devel][PATCH] docs/multi-thread-compression: Fix wrong
-	command string
-Thread-Index: AQHRtNfNFaABcPSRFE+JEgn1BgbIOp/QW+uA
-Date: Mon, 30 May 2016 03:47:30 +0000
-Message-ID: <1464579993.2577.26.camel@localhost>
-References: <1463996637-6952-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-In-Reply-To: <1463996637-6952-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.167.226.50]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <DECD103F9F1B8344BF64A6FA67DFF698@fujitsu.local>
-Content-Transfer-Encoding: base64
+	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 14:45:20 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id D148D498F58C;
+	Mon, 30 May 2016 14:45:15 +0800 (CST)
+Received: from [10.167.225.55] (10.167.225.55) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server id 14.3.279.2; Mon, 30 May 2016 14:45:15 +0800
+Message-ID: <574BE26E.9020106@cn.fujitsu.com>
+Date: Mon, 30 May 2016 14:49:18 +0800
+From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
 MIME-Version: 1.0
-X-yoursite-MailScanner-ID: 54D82489F997.A6CE4
+To: Eric Blake <eblake@redhat.com>, Alberto Garcia <berto@igalia.com>,
+	<qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>
+References: <1464091153-11057-1-git-send-email-berto@igalia.com>
+	<5744DFA3.1070806@redhat.com>
+In-Reply-To: <5744DFA3.1070806@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.225.55]
+X-yoursite-MailScanner-ID: D148D498F58C.AB0F5
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [Qemu-devel][PATCH]
- docs/multi-thread-compression: Fix wrong command string
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix a couple of typos
+ in throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,28 +56,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2016 03:48:05 -0000
+X-List-Received-Date: Mon, 30 May 2016 06:45:52 -0000
 
-QWRkIHFlbXUtdHJpdmlhbCA8cWVtdS10cml2aWFsQG5vbmdudS5vcmc+DQoN
-ClJldmlld2VkLWJ5OiBFcmljIEJsYWtlIDxlYmxha2VAcmVkaGF0LmNvbT4N
-ClJldmlld2VkLWJ5OiBMaWFuZyBMaSA8bGlhbmcuei5saUBpbnRlbC5jb20+
-DQoNClRoYW5rcywNCndlaQ0KDQpPbiBNb24sIDIwMTYtMDUtMjMgYXQgMTc6
-NDMgKzA4MDAsIFdlaSBKaWFuZ2FuZyB3cm90ZToNCj4gcy9pbmZvX21pZ3Jh
-dGVfY2FwYWJpbGl0aWVzL2luZm8gbWlncmF0ZV9jYXBhYmlsaXRpZXMNCj4g
-DQo+IFNpZ25lZC1vZmYtYnk6IFdlaSBKaWFuZ2FuZyA8d2VpamcuZm5zdEBj
-bi5mdWppdHN1LmNvbT4NCj4gLS0tDQo+ICBkb2NzL211bHRpLXRocmVhZC1j
-b21wcmVzc2lvbi50eHQgfCAyICstDQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4gDQo+IGRpZmYgLS1naXQg
-YS9kb2NzL211bHRpLXRocmVhZC1jb21wcmVzc2lvbi50eHQgYi9kb2NzL211
-bHRpLXRocmVhZC1jb21wcmVzc2lvbi50eHQNCj4gaW5kZXggM2Q0NzdjMy4u
-ZDBjYWFmNyAxMDA2NDQNCj4gLS0tIGEvZG9jcy9tdWx0aS10aHJlYWQtY29t
-cHJlc3Npb24udHh0DQo+ICsrKyBiL2RvY3MvbXVsdGktdGhyZWFkLWNvbXBy
-ZXNzaW9uLnR4dA0KPiBAQCAtMTEwLDcgKzExMCw3IEBAIFVzYWdlDQo+ICA9
-PT09PQ0KPiAgMS4gVmVyaWZ5IGJvdGggdGhlIHNvdXJjZSBhbmQgZGVzdGlu
-YXRpb24gUUVNVSBhcmUgYWJsZQ0KPiAgdG8gc3VwcG9ydCB0aGUgbXVsdGlw
-bGUgdGhyZWFkIGNvbXByZXNzaW9uIG1pZ3JhdGlvbjoNCj4gLSAgICB7cWVt
-dX0gaW5mb19taWdyYXRlX2NhcGFiaWxpdGllcw0KPiArICAgIHtxZW11fSBp
-bmZvIG1pZ3JhdGVfY2FwYWJpbGl0aWVzDQo+ICAgICAge3FlbXV9IC4uLiBj
-b21wcmVzczogb2ZmIC4uLg0KPiAgDQo+ICAyLiBBY3RpdmF0ZSBjb21wcmVz
-c2lvbiBvbiB0aGUgc291cmNlOg0KDQoKCg==
+On 05/25/2016 07:11 AM, Eric Blake wrote:
+> On 05/24/2016 05:59 AM, Alberto Garcia wrote:
+>> Signed-off-by: Alberto Garcia <berto@igalia.com>
+>> ---
+>>   docs/throttle.txt | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+>
+>>
+>> diff --git a/docs/throttle.txt b/docs/throttle.txt
+>> index 06ed9b3..b4431f6 100644
+>> --- a/docs/throttle.txt
+>> +++ b/docs/throttle.txt
+>> @@ -39,7 +39,7 @@ the parameters for both cases:
+>>   | throttling.bps-write  | bps_wr                |
+>>   |-----------------------+-----------------------|
+>>
+>> -It is possible to set limits for both IOPS and bps and the same time,
+>> +It is possible to set limits for both IOPS and bps at the same time,
+>>   and for each case we can decide whether to have separate read and
+>>   write limits or not, but note that if iops-total is set then neither
+>>   iops-read nor iops-write can be set. The same applies to bps-total and
+>> @@ -235,7 +235,7 @@ consider the following values:
+>>     - Water leaks from the bucket at a rate of 100 IOPS.
+>>     - Water can be added to the bucket at a rate of 2000 IOPS.
+>>     - The size of the bucket is 2000 x 60 = 120000
+>> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
+>> +  - If 'iops-total-max' is unset then the bucket size is 100.
+
+Sorry to brother, why the bucket size is 100 rather than 100 x 60?
+
+Thanks
+	-Xie
+>>
+>>   The bucket is initially empty, therefore water can be added until it's
+>>   full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
+>>
+>
+
+
 
