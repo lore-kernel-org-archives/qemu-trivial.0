@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b7GxW-0000p5-DM
-	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2016 02:45:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42257)
+	id 1b7JR9-0002M3-0W
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2016 05:24:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7GxR-0000j8-Ba
-	for qemu-trivial@nongnu.org; Mon, 30 May 2016 02:45:52 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7JR6-0002Gw-Kz
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 05:24:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7GxL-0005WA-0T
-	for qemu-trivial@nongnu.org; Mon, 30 May 2016 02:45:43 -0400
-Received: from [59.151.112.132] (port=8150 helo=heian.cn.fujitsu.com)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7JR4-00015O-M3
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 05:24:35 -0400
+Received: from [59.151.112.132] (port=38458 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1b7GxF-0005U8-O4; Mon, 30 May 2016 02:45:38 -0400
+	id 1b7JQx-00011Y-Vu; Mon, 30 May 2016 05:24:29 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="7092538"
+   d="scan'208";a="7099570"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 14:45:20 +0800
+	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 17:24:15 +0800
 Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id D148D498F58C;
-	Mon, 30 May 2016 14:45:15 +0800 (CST)
-Received: from [10.167.225.55] (10.167.225.55) by
+	by cn.fujitsu.com (Postfix) with ESMTP id DE7DE489F99F;
+	Mon, 30 May 2016 17:24:08 +0800 (CST)
+Received: from changlox.g08.fujitsu.local (10.167.225.55) by
 	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.279.2; Mon, 30 May 2016 14:45:15 +0800
-Message-ID: <574BE26E.9020106@cn.fujitsu.com>
-Date: Mon, 30 May 2016 14:49:18 +0800
+	Server (TLS) id 14.3.279.2; Mon, 30 May 2016 17:24:08 +0800
 From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+To: qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>
+CC: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+Date: Mon, 30 May 2016 17:28:11 +0800
+Message-ID: <1464600491-23340-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
-To: Eric Blake <eblake@redhat.com>, Alberto Garcia <berto@igalia.com>,
-	<qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>
-References: <1464091153-11057-1-git-send-email-berto@igalia.com>
-	<5744DFA3.1070806@redhat.com>
-In-Reply-To: <5744DFA3.1070806@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: D148D498F58C.AB0F5
+X-yoursite-MailScanner-ID: DE7DE489F99F.A1E2B
 X-yoursite-MailScanner: Found to be clean
 X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix a couple of typos
- in throttle.txt
+Subject: [Qemu-trivial] [PATCH] iostatus: fix comments for
+ block_job_iostatus_reset
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,47 +52,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2016 06:45:52 -0000
+X-List-Received-Date: Mon, 30 May 2016 09:24:37 -0000
 
-On 05/25/2016 07:11 AM, Eric Blake wrote:
-> On 05/24/2016 05:59 AM, Alberto Garcia wrote:
->> Signed-off-by: Alberto Garcia <berto@igalia.com>
->> ---
->>   docs/throttle.txt | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->
-> Reviewed-by: Eric Blake <eblake@redhat.com>
->
->>
->> diff --git a/docs/throttle.txt b/docs/throttle.txt
->> index 06ed9b3..b4431f6 100644
->> --- a/docs/throttle.txt
->> +++ b/docs/throttle.txt
->> @@ -39,7 +39,7 @@ the parameters for both cases:
->>   | throttling.bps-write  | bps_wr                |
->>   |-----------------------+-----------------------|
->>
->> -It is possible to set limits for both IOPS and bps and the same time,
->> +It is possible to set limits for both IOPS and bps at the same time,
->>   and for each case we can decide whether to have separate read and
->>   write limits or not, but note that if iops-total is set then neither
->>   iops-read nor iops-write can be set. The same applies to bps-total and
->> @@ -235,7 +235,7 @@ consider the following values:
->>     - Water leaks from the bucket at a rate of 100 IOPS.
->>     - Water can be added to the bucket at a rate of 2000 IOPS.
->>     - The size of the bucket is 2000 x 60 = 120000
->> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
->> +  - If 'iops-total-max' is unset then the bucket size is 100.
+Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+---
+ include/block/blockjob.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Sorry to brother, why the bucket size is 100 rather than 100 x 60?
+diff --git a/include/block/blockjob.h b/include/block/blockjob.h
+index 86d2807..00ac418 100644
+--- a/include/block/blockjob.h
++++ b/include/block/blockjob.h
+@@ -397,7 +397,7 @@ int block_job_complete_sync(BlockJob *job, Error **errp);
+  * @job: The job whose I/O status should be reset.
+  *
+  * Reset I/O status on @job and on BlockDriverState objects it uses,
+- * other than job->bs.
++ * other than job->blk.
+  */
+ void block_job_iostatus_reset(BlockJob *job);
+ 
+-- 
+1.9.3
 
-Thanks
-	-Xie
->>
->>   The bucket is initially empty, therefore water can be added until it's
->>   full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
->>
->
 
 
 
