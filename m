@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b7JR9-0002M3-0W
-	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2016 05:24:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46947)
+	id 1b7K0G-0003g5-De
+	for mharc-qemu-trivial@gnu.org; Mon, 30 May 2016 06:00:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7JR6-0002Gw-Kz
-	for qemu-trivial@nongnu.org; Mon, 30 May 2016 05:24:37 -0400
+	(envelope-from <berto@igalia.com>) id 1b7K0D-0003eK-Oh
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 06:00:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1b7JR4-00015O-M3
-	for qemu-trivial@nongnu.org; Mon, 30 May 2016 05:24:35 -0400
-Received: from [59.151.112.132] (port=38458 helo=heian.cn.fujitsu.com)
+	(envelope-from <berto@igalia.com>) id 1b7K0B-0007fc-Tk
+	for qemu-trivial@nongnu.org; Mon, 30 May 2016 06:00:52 -0400
+Received: from smtp3.mundo-r.com ([212.51.32.191]:16054 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1b7JQx-00011Y-Vu; Mon, 30 May 2016 05:24:29 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="7099570"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 30 May 2016 17:24:15 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id DE7DE489F99F;
-	Mon, 30 May 2016 17:24:08 +0800 (CST)
-Received: from changlox.g08.fujitsu.local (10.167.225.55) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Mon, 30 May 2016 17:24:08 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-To: qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>
-CC: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-Date: Mon, 30 May 2016 17:28:11 +0800
-Message-ID: <1464600491-23340-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
+	(envelope-from <berto@igalia.com>)
+	id 1b7K06-0007WH-Hc; Mon, 30 May 2016 06:00:46 -0400
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: A2AdAgA+DkxX/5tjdVtdGQEBAQEBgx6OeJgnAQUBBAGBD5EOgg8BDYF5hhECgSs4FAEBAQEBAQFlJ4RGAQEEeRALGAklDwEsGwYBiEUBux4BAQEBAQEEAQEBAQEihV+FFYoGHAEEmDedPI9MHgEBQoNvOolvAQEB
+X-IPAS-Result: A2AdAgA+DkxX/5tjdVtdGQEBAQEBgx6OeJgnAQUBBAGBD5EOgg8BDYF5hhECgSs4FAEBAQEBAQFlJ4RGAQEEeRALGAklDwEsGwYBiEUBux4BAQEBAQEEAQEBAQEihV+FFYoGHAEEmDedPI9MHgEBQoNvOolvAQEB
+X-IronPort-AV: E=Sophos;i="5.26,389,1459807200"; d="scan'208";a="131469745"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 30 May 2016 12:00:06 +0200
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+	by fanzine.igalia.com with esmtps 
+	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1b7JzS-00019C-LK; Mon, 30 May 2016 12:00:06 +0200
+Received: from berto by mail.igalia.com with local (Exim)
+	id 1b7JzS-0007iX-IY; Mon, 30 May 2016 12:00:06 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: Changlong Xie <xiecl.fnst@cn.fujitsu.com>, Eric Blake <eblake@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <574BE26E.9020106@cn.fujitsu.com>
+References: <1464091153-11057-1-git-send-email-berto@igalia.com>
+	<5744DFA3.1070806@redhat.com> <574BE26E.9020106@cn.fujitsu.com>
+User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
+	(i586-pc-linux-gnu)
+Date: Mon, 30 May 2016 12:00:06 +0200
+Message-ID: <w51k2ib50ih.fsf@maestria.local.igalia.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: DE7DE489F99F.A1E2B
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] iostatus: fix comments for
- block_job_iostatus_reset
+X-Received-From: 212.51.32.191
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix a couple of typos
+ in throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,29 +53,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 May 2016 09:24:37 -0000
+X-List-Received-Date: Mon, 30 May 2016 10:00:54 -0000
 
-Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
----
- include/block/blockjob.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon 30 May 2016 08:49:18 AM CEST, Changlong Xie wrote:
+>>>     - Water leaks from the bucket at a rate of 100 IOPS.
+>>>     - Water can be added to the bucket at a rate of 2000 IOPS.
+>>>     - The size of the bucket is 2000 x 60 = 120000
+>>> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
+>>> +  - If 'iops-total-max' is unset then the bucket size is 100.
+>
+> Sorry to brother, why the bucket size is 100 rather than 100 x 60?
 
-diff --git a/include/block/blockjob.h b/include/block/blockjob.h
-index 86d2807..00ac418 100644
---- a/include/block/blockjob.h
-+++ b/include/block/blockjob.h
-@@ -397,7 +397,7 @@ int block_job_complete_sync(BlockJob *job, Error **errp);
-  * @job: The job whose I/O status should be reset.
-  *
-  * Reset I/O status on @job and on BlockDriverState objects it uses,
-- * other than job->bs.
-+ * other than job->blk.
-  */
- void block_job_iostatus_reset(BlockJob *job);
- 
--- 
-1.9.3
+Oh, that's because 'iops-total-max-length' can only be set if
+'iops-total-max' is set as well. It's explained earlier in the document,
+maybe I should make it clear there as well.
 
+Michael, shall I send a new patch on top of my previous one or can the
+previous one be replaced?
 
-
+Berto
 
