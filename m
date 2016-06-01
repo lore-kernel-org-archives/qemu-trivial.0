@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b80VE-0002Uz-Tz
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Jun 2016 03:23:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43627)
+	id 1b8169-0002tK-BX
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jun 2016 04:01:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33086)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1b80V9-0002Qj-S7
-	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 03:23:43 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b8162-0002r2-EA
+	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 04:01:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1b80V8-0001z4-Sa
-	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 03:23:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37706)
+	(envelope-from <mjt@tls.msk.ru>) id 1b815w-0002xP-Gd
+	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 04:01:46 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:44480)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1b80V1-0001vk-29; Wed, 01 Jun 2016 03:23:31 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E2758C04B307;
-	Wed,  1 Jun 2016 07:23:29 +0000 (UTC)
-Received: from localhost (dhcp-15-133.nay.redhat.com [10.66.15.133])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u517NS7Q006093; Wed, 1 Jun 2016 03:23:28 -0400
-Date: Wed, 1 Jun 2016 15:23:26 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kwolf@redhat.com,
-	qemu-block@nongnu.org, mreitz@redhat.com
-Message-ID: <20160601072326.GF8639@ad.usersys.redhat.com>
-References: <1464764901-8773-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1b815o-0002sm-1e; Wed, 01 Jun 2016 04:01:32 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id 10F95402BF;
+	Wed,  1 Jun 2016 11:01:20 +0300 (MSK)
+To: Alberto Garcia <berto@igalia.com>,
+	Changlong Xie <xiecl.fnst@cn.fujitsu.com>, Eric Blake <eblake@redhat.com>, 
+	qemu-devel@nongnu.org
+References: <1464091153-11057-1-git-send-email-berto@igalia.com>
+	<5744DFA3.1070806@redhat.com> <574BE26E.9020106@cn.fujitsu.com>
+	<w51k2ib50ih.fsf@maestria.local.igalia.com>
+Cc: qemu-trivial@nongnu.org
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <574E964F.90000@msgid.tls.msk.ru>
+Date: Wed, 1 Jun 2016 11:01:19 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1464764901-8773-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 01 Jun 2016 07:23:30 +0000 (UTC)
+In-Reply-To: <w51k2ib50ih.fsf@maestria.local.igalia.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/raw-posix: Fix
- error_report of mounting message
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] docs: Fix a couple of typos in
+ throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,36 +48,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 Jun 2016 07:23:43 -0000
+X-List-Received-Date: Wed, 01 Jun 2016 08:01:52 -0000
 
-On Wed, 06/01 15:08, Wei Jiangang wrote:
-> Use a single error_printf to replace triple error_report.
+30.05.2016 13:00, Alberto Garcia wrote:
+> On Mon 30 May 2016 08:49:18 AM CEST, Changlong Xie wrote:
+>>>>     - Water leaks from the bucket at a rate of 100 IOPS.
+>>>>     - Water can be added to the bucket at a rate of 2000 IOPS.
+>>>>     - The size of the bucket is 2000 x 60 = 120000
+>>>> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
+>>>> +  - If 'iops-total-max' is unset then the bucket size is 100.
+>>
+>> Sorry to brother, why the bucket size is 100 rather than 100 x 60?
 > 
-> Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
-> ---
->  block/raw-posix.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+> Oh, that's because 'iops-total-max-length' can only be set if
+> 'iops-total-max' is set as well. It's explained earlier in the document,
+> maybe I should make it clear there as well.
 > 
-> diff --git a/block/raw-posix.c b/block/raw-posix.c
-> index a4f5a1b..141b01a 100644
-> --- a/block/raw-posix.c
-> +++ b/block/raw-posix.c
-> @@ -2061,11 +2061,11 @@ static bool setup_cdrom(char *bsd_path, Error **errp)
->  /* Prints directions on mounting and unmounting a device */
->  static void print_unmounting_directions(const char *file_name)
->  {
-> -    error_report("If device %s is mounted on the desktop, unmount"
-> -                 " it first before using it in QEMU", file_name);
-> -    error_report("Command to unmount device: diskutil unmountDisk %s",
-> -                 file_name);
-> -    error_report("Command to mount device: diskutil mountDisk %s", file_name);
-> +    error_printf("If device %s is mounted on the desktop, unmount"
-> +        " it first before using it in QEMU\n"
-> +        "Command to unmount device: diskutil unmountDisk %s\n"
-> +        "Command to mount device: diskutil mountDisk %s\n",
-> +        file_name, file_name, file_name);
+> Michael, shall I send a new patch on top of my previous one or can the
+> previous one be replaced?
 
-I'd say it's less readable with a worse alignment to the parameters.
+I fixed it in the original commit, thanks!
 
-Fam
+/mjt
 
