@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b7sS5-0001GZ-It
-	for mharc-qemu-trivial@gnu.org; Tue, 31 May 2016 18:47:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53044)
+	id 1b80IP-0005c1-63
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jun 2016 03:10:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1b7sS3-0001Dy-L1
-	for qemu-trivial@nongnu.org; Tue, 31 May 2016 18:47:56 -0400
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b80IM-0005Y8-Ho
+	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 03:10:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1b7sS1-00006S-NW
-	for qemu-trivial@nongnu.org; Tue, 31 May 2016 18:47:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43743)
+	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1b80IH-0006Kg-Eq
+	for qemu-trivial@nongnu.org; Wed, 01 Jun 2016 03:10:25 -0400
+Received: from [59.151.112.132] (port=37255 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>)
-	id 1b7sRv-00005I-7b; Tue, 31 May 2016 18:47:47 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9A06081105;
-	Tue, 31 May 2016 22:47:46 +0000 (UTC)
-Received: from localhost (ovpn-112-38.ams2.redhat.com [10.36.112.38])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4VMli7d031971; Tue, 31 May 2016 18:47:45 -0400
-Date: Tue, 31 May 2016 15:47:42 -0700
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-Cc: qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
-	Fam Zheng <famz@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>
-Message-ID: <20160531224742.GH24392@stefanha-x1.localdomain>
-References: <1464600491-23340-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+	(envelope-from <weijg.fnst@cn.fujitsu.com>)
+	id 1b80I6-0006AH-Uf; Wed, 01 Jun 2016 03:10:11 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="7194174"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 01 Jun 2016 15:09:58 +0800
+Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
+	by cn.fujitsu.com (Postfix) with ESMTP id 6C0BE41C0B83;
+	Wed,  1 Jun 2016 15:09:52 +0800 (CST)
+Received: from localhost.localdomain (10.167.226.50) by
+	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 1 Jun 2016 15:09:52 +0800
+From: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-block@nongnu.org>, <qemu-trivial@nongnu.org>, <kwolf@redhat.com>,
+	<mreitz@redhat.com>, Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+Date: Wed, 1 Jun 2016 15:08:21 +0800
+Message-ID: <1464764901-8773-1-git-send-email-weijg.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="4C6bbPZ6c/S1npyF"
-Content-Disposition: inline
-In-Reply-To: <1464600491-23340-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 31 May 2016 22:47:46 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] iostatus: fix comments for
- block_job_iostatus_reset
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.50]
+X-yoursite-MailScanner-ID: 6C0BE41C0B83.AF473
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [Qemu-devel][PATCH] block/raw-posix: Fix
+ error_report of mounting message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,38 +51,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 May 2016 22:47:56 -0000
+X-List-Received-Date: Wed, 01 Jun 2016 07:10:28 -0000
+
+Use a single error_printf to replace triple error_report.
+
+Signed-off-by: Wei Jiangang <weijg.fnst@cn.fujitsu.com>
+---
+ block/raw-posix.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/block/raw-posix.c b/block/raw-posix.c
+index a4f5a1b..141b01a 100644
+--- a/block/raw-posix.c
++++ b/block/raw-posix.c
+@@ -2061,11 +2061,11 @@ static bool setup_cdrom(char *bsd_path, Error **errp)
+ /* Prints directions on mounting and unmounting a device */
+ static void print_unmounting_directions(const char *file_name)
+ {
+-    error_report("If device %s is mounted on the desktop, unmount"
+-                 " it first before using it in QEMU", file_name);
+-    error_report("Command to unmount device: diskutil unmountDisk %s",
+-                 file_name);
+-    error_report("Command to mount device: diskutil mountDisk %s", file_name);
++    error_printf("If device %s is mounted on the desktop, unmount"
++        " it first before using it in QEMU\n"
++        "Command to unmount device: diskutil unmountDisk %s\n"
++        "Command to mount device: diskutil mountDisk %s\n",
++        file_name, file_name, file_name);
+ }
+ 
+ #endif /* defined(__APPLE__) && defined(__MACH__) */
+-- 
+1.9.3
 
 
---4C6bbPZ6c/S1npyF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Mon, May 30, 2016 at 05:28:11PM +0800, Changlong Xie wrote:
-> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-> ---
->  include/block/blockjob.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
-
-Stefan
-
---4C6bbPZ6c/S1npyF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJXThSOAAoJEJykq7OBq3PIJ4IH/0EbqMSybI+YzPxdOdjwE2pO
-R4zW8s3bdL2L0olnhNRZDAP7a874/si50DYi1TTEH2zr2KxyXCsBauL5+GZOrIbY
-nO9/MfcWzbryWaZsCxJq2n7vOhG4OqBOgEe8SHrhiDgrLcNsRMNmFH6bczm5Jc7R
-2vMKDL8WuY1wayzvG43OGTu+TZSrbJzaFyOwGMds955nt4Tp0Cub1aen4CGC86dG
-7w7nh/g8QWwTsqqor8pxgoT9QTNNR5ZUaS6VLw707GxI/v7jk69vjjrChyJ/N954
-kNN+ikHsDC03bH3CCSDvoG7HNeEOl8xitCQuz/ZEBdJrg0bOCfc7k6SJliZ3rZs=
-=c8cm
------END PGP SIGNATURE-----
-
---4C6bbPZ6c/S1npyF--
 
