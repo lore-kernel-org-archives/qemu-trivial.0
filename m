@@ -1,31 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b8VCZ-0005rW-Ue
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jun 2016 12:10:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52675)
+	id 1b8teo-0001Pj-Rs
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jun 2016 14:17:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b8VCX-0005ob-7Q
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2016 12:10:30 -0400
+	(envelope-from <jsnow@redhat.com>) id 1b8tej-0001NG-Ir
+	for qemu-trivial@nongnu.org; Fri, 03 Jun 2016 14:17:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b8VCV-0008J3-Td
-	for qemu-trivial@nongnu.org; Thu, 02 Jun 2016 12:10:29 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57479)
+	(envelope-from <jsnow@redhat.com>) id 1b8tee-0002TP-Tk
+	for qemu-trivial@nongnu.org; Fri, 03 Jun 2016 14:17:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45968)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1b8VCS-0008Hn-1m; Thu, 02 Jun 2016 12:10:24 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1b8VCP-0008Kj-GA; Thu, 02 Jun 2016 17:10:21 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Date: Thu,  2 Jun 2016 17:10:20 +0100
-Message-Id: <1464883820-10907-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.9.1
+	(envelope-from <jsnow@redhat.com>)
+	id 1b8teZ-0002Sx-8Q; Fri, 03 Jun 2016 14:17:03 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A5BC0AED34;
+	Fri,  3 Jun 2016 18:17:01 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-171.bos.redhat.com
+	[10.18.17.171])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u53IH0Tl027828; Fri, 3 Jun 2016 14:17:01 -0400
+To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1464712565-14857-1-git-send-email-lvivier@redhat.com>
+	<1464712565-14857-17-git-send-email-lvivier@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <0fc04ab4-7f1a-28fc-42b0-2aa90dd6cd09@redhat.com>
+Date: Fri, 3 Jun 2016 14:17:00 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
+MIME-Version: 1.0
+In-Reply-To: <1464712565-14857-17-git-send-email-lvivier@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 03 Jun 2016 18:17:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-trivial] [PATCH] thunk: Rename args and fields in host-target
- bitmask conversion code
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 16/16] hbitmap: Use
+ DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -37,109 +55,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jun 2016 16:10:30 -0000
+X-List-Received-Date: Fri, 03 Jun 2016 18:17:18 -0000
 
-The target_to_host_bitmask() and host_to_target_bitmask() functions
-and the associated struct bitmask_transtbl are completely generic,
-but for historical reasons the target related fields and parameters
-are named 'x86' and the host related fields are named 'alpha'.
-Rename them to 'target' and 'host'.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This probably has a minor textual-conflict dependency on the
-other patch I sent earlier.
 
- include/exec/user/thunk.h | 12 ++++++------
- thunk.c                   | 30 +++++++++++++++---------------
- 2 files changed, 21 insertions(+), 21 deletions(-)
+On 05/31/2016 12:36 PM, Laurent Vivier wrote:
+> Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
+> 
+> This patch is the result of coccinelle script
+> scripts/coccinelle/round.cocci
+> 
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  tests/test-hbitmap.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/test-hbitmap.c b/tests/test-hbitmap.c
+> index abe1427..097fe8e 100644
+> --- a/tests/test-hbitmap.c
+> +++ b/tests/test-hbitmap.c
+> @@ -80,7 +80,7 @@ static void hbitmap_test_init(TestHBitmapData *data,
+>      size_t n;
+>      data->hb = hbitmap_alloc(size, granularity);
+>  
+> -    n = (size + BITS_PER_LONG - 1) / BITS_PER_LONG;
+> +    n = DIV_ROUND_UP(size, BITS_PER_LONG);
+>      if (n == 0) {
+>          n = 1;
+>      }
+> @@ -94,7 +94,7 @@ static void hbitmap_test_init(TestHBitmapData *data,
+>  
+>  static inline size_t hbitmap_test_array_size(size_t bits)
+>  {
+> -    size_t n = (bits + BITS_PER_LONG - 1) / BITS_PER_LONG;
+> +    size_t n = DIV_ROUND_UP(bits, BITS_PER_LONG);
+>      return n ? n : 1;
+>  }
+>  
+> @@ -186,7 +186,7 @@ static void hbitmap_test_reset_all(TestHBitmapData *data)
+>  
+>      hbitmap_reset_all(data->hb);
+>  
+> -    n = (data->size + BITS_PER_LONG - 1) / BITS_PER_LONG;
+> +    n = DIV_ROUND_UP(data->size, BITS_PER_LONG);
+>      if (n == 0) {
+>          n = 1;
+>      }
+> 
 
-diff --git a/include/exec/user/thunk.h b/include/exec/user/thunk.h
-index 57eb358..f19ef4b 100644
---- a/include/exec/user/thunk.h
-+++ b/include/exec/user/thunk.h
-@@ -60,10 +60,10 @@ typedef struct {
- 
- /* Translation table for bitmasks... */
- typedef struct bitmask_transtbl {
--	unsigned int	x86_mask;
--	unsigned int	x86_bits;
--	unsigned int	alpha_mask;
--	unsigned int	alpha_bits;
-+    unsigned int target_mask;
-+    unsigned int target_bits;
-+    unsigned int host_mask;
-+    unsigned int host_bits;
- } bitmask_transtbl;
- 
- void thunk_register_struct(int id, const char *name, const argtype *types);
-@@ -177,9 +177,9 @@ static inline int thunk_type_align(const argtype *type_ptr, int is_host)
-     }
- }
- 
--unsigned int target_to_host_bitmask(unsigned int x86_mask,
-+unsigned int target_to_host_bitmask(unsigned int target_mask,
-                                     const bitmask_transtbl * trans_tbl);
--unsigned int host_to_target_bitmask(unsigned int alpha_mask,
-+unsigned int host_to_target_bitmask(unsigned int host_mask,
-                                     const bitmask_transtbl * trans_tbl);
- 
- void thunk_init(unsigned int max_structs);
-diff --git a/thunk.c b/thunk.c
-index 8aee299..2dac366 100644
---- a/thunk.c
-+++ b/thunk.c
-@@ -273,34 +273,34 @@ const argtype *thunk_convert(void *dst, const void *src,
- /* from em86 */
- 
- /* Utility function: Table-driven functions to translate bitmasks
-- * between X86 and Alpha formats...
-+ * between host and target formats
-  */
--unsigned int target_to_host_bitmask(unsigned int x86_mask,
-+unsigned int target_to_host_bitmask(unsigned int target_mask,
-                                     const bitmask_transtbl * trans_tbl)
- {
-     const bitmask_transtbl *btp;
--    unsigned int	alpha_mask = 0;
-+    unsigned int host_mask = 0;
- 
--    for(btp = trans_tbl; btp->x86_mask && btp->alpha_mask; btp++) {
--	if((x86_mask & btp->x86_mask) == btp->x86_bits) {
--	    alpha_mask |= btp->alpha_bits;
--	}
-+    for (btp = trans_tbl; btp->target_mask && btp->host_mask; btp++) {
-+        if ((target_mask & btp->target_mask) == btp->target_bits) {
-+            host_mask |= btp->host_bits;
-+        }
-     }
--    return(alpha_mask);
-+    return host_mask;
- }
- 
--unsigned int host_to_target_bitmask(unsigned int alpha_mask,
-+unsigned int host_to_target_bitmask(unsigned int host_mask,
-                                     const bitmask_transtbl * trans_tbl)
- {
-     const bitmask_transtbl *btp;
--    unsigned int	x86_mask = 0;
-+    unsigned int target_mask = 0;
- 
--    for(btp = trans_tbl; btp->x86_mask && btp->alpha_mask; btp++) {
--	if((alpha_mask & btp->alpha_mask) == btp->alpha_bits) {
--	    x86_mask |= btp->x86_bits;
--	}
-+    for (btp = trans_tbl; btp->target_mask && btp->host_mask; btp++) {
-+        if ((host_mask & btp->host_mask) == btp->host_bits) {
-+            target_mask |= btp->target_bits;
-+        }
-     }
--    return(x86_mask);
-+    return target_mask;
- }
- 
- int thunk_type_size_array(const argtype *type_ptr, int is_host)
--- 
-1.9.1
-
+Reviewed-by: John Snow <jsnow@redhat.com>
 
