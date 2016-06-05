@@ -1,49 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b8teo-0001Pj-Rs
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Jun 2016 14:17:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57954)
+	id 1b9S3c-0005ZG-MM
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:01:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1b8tej-0001NG-Ir
-	for qemu-trivial@nongnu.org; Fri, 03 Jun 2016 14:17:18 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9S3a-0005YA-Oi
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:01:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1b8tee-0002TP-Tk
-	for qemu-trivial@nongnu.org; Fri, 03 Jun 2016 14:17:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45968)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9S3Z-0002O6-RJ
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:01:10 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54621)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1b8teZ-0002Sx-8Q; Fri, 03 Jun 2016 14:17:03 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A5BC0AED34;
-	Fri,  3 Jun 2016 18:17:01 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-171.bos.redhat.com
-	[10.18.17.171])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u53IH0Tl027828; Fri, 3 Jun 2016 14:17:01 -0400
-To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1464712565-14857-1-git-send-email-lvivier@redhat.com>
-	<1464712565-14857-17-git-send-email-lvivier@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <0fc04ab4-7f1a-28fc-42b0-2aa90dd6cd09@redhat.com>
-Date: Fri, 3 Jun 2016 14:17:00 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.0
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1b9S3U-0002MS-Dg; Sun, 05 Jun 2016 03:01:04 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id DF4F6408D7;
+	Sun,  5 Jun 2016 10:00:50 +0300 (MSK)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1464876355-21050-1-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <5753CE22.2080706@msgid.tls.msk.ru>
+Date: Sun, 5 Jun 2016 10:00:50 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.8.0
 MIME-Version: 1.0
-In-Reply-To: <1464712565-14857-17-git-send-email-lvivier@redhat.com>
+In-Reply-To: <1464876355-21050-1-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 03 Jun 2016 18:17:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 16/16] hbitmap: Use
- DIV_ROUND_UP
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] qemu-common.h: Drop WORDS_ALIGNED define
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,54 +44,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Jun 2016 18:17:18 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 07:01:11 -0000
 
+02.06.2016 17:05, Peter Maydell wrote:
+> The WORDS_ALIGNED #define is not used anywhere, and hasn't been since
+> 2013 when commit 612d590ebc6cef rewrote the various ld<type>_<endian>_p
+> functions to not use it. Remove the #define and the comment describing it.
+> Also remove the line in the comment about TARGET_WORDS_ALIGNED, since
+> it has never actually existed.
 
+Applied to -trivial, thanks!
 
-On 05/31/2016 12:36 PM, Laurent Vivier wrote:
-> Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
-> 
-> This patch is the result of coccinelle script
-> scripts/coccinelle/round.cocci
-> 
-> CC: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  tests/test-hbitmap.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/tests/test-hbitmap.c b/tests/test-hbitmap.c
-> index abe1427..097fe8e 100644
-> --- a/tests/test-hbitmap.c
-> +++ b/tests/test-hbitmap.c
-> @@ -80,7 +80,7 @@ static void hbitmap_test_init(TestHBitmapData *data,
->      size_t n;
->      data->hb = hbitmap_alloc(size, granularity);
->  
-> -    n = (size + BITS_PER_LONG - 1) / BITS_PER_LONG;
-> +    n = DIV_ROUND_UP(size, BITS_PER_LONG);
->      if (n == 0) {
->          n = 1;
->      }
-> @@ -94,7 +94,7 @@ static void hbitmap_test_init(TestHBitmapData *data,
->  
->  static inline size_t hbitmap_test_array_size(size_t bits)
->  {
-> -    size_t n = (bits + BITS_PER_LONG - 1) / BITS_PER_LONG;
-> +    size_t n = DIV_ROUND_UP(bits, BITS_PER_LONG);
->      return n ? n : 1;
->  }
->  
-> @@ -186,7 +186,7 @@ static void hbitmap_test_reset_all(TestHBitmapData *data)
->  
->      hbitmap_reset_all(data->hb);
->  
-> -    n = (data->size + BITS_PER_LONG - 1) / BITS_PER_LONG;
-> +    n = DIV_ROUND_UP(data->size, BITS_PER_LONG);
->      if (n == 0) {
->          n = 1;
->      }
-> 
-
-Reviewed-by: John Snow <jsnow@redhat.com>
+/mjt
 
