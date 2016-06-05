@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9T0K-0001tu-94
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 04:01:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33512)
+	id 1b9T0L-0001ux-3H
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 04:01:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9T0H-0001qr-Pt
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:50 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9T0I-0001rg-K0
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9T0C-00084g-T1
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:49 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36614)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9T0C-00084b-Rw
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:50 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55819)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9T06-00082P-Kp; Sun, 05 Jun 2016 04:01:38 -0400
+	id 1b9T02-00081c-JU; Sun, 05 Jun 2016 04:01:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 78FCB40916;
+	by isrv.corpit.ru (Postfix) with ESMTP id 4ED0040912;
 	Sun,  5 Jun 2016 11:01:26 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id B55C5B0B;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 56212B02;
 	Sun,  5 Jun 2016 10:43:38 +0300 (MSK)
-Received: (nullmailer pid 1176 invoked by uid 1000);
+Received: (nullmailer pid 1192 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	"Daniel P. Berrange" <berrange@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:43:19 +0300
-Message-Id: <da39ede7a38ad2a3e482a2f92b708d5a22284f10.1465112552.git.mjt@msgid.tls.msk.ru>
+	Cornelia Huck <cornelia.huck@de.ibm.com>, Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:43:27 +0300
+Message-Id: <ac8eb9b954f267b8d9145cb8833a2f0b346f5913.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 42/52] crypto: Use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PULL 50/52] pc-bios/s390-ccw: Use DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,7 +43,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 08:01:50 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 08:01:51 -0000
 
 From: Laurent Vivier <lvivier@redhat.com>
 
@@ -53,38 +52,26 @@ Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
 This patch is the result of coccinelle script
 scripts/coccinelle/round.cocci
 
-CC: Daniel P. Berrange <berrange@redhat.com>
+CC: Cornelia Huck <cornelia.huck@de.ibm.com>
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- crypto/block-luks.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ pc-bios/s390-ccw/bootmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/crypto/block-luks.c b/crypto/block-luks.c
-index 17c4300..63649f1 100644
---- a/crypto/block-luks.c
-+++ b/crypto/block-luks.c
-@@ -1081,8 +1081,7 @@ qcrypto_block_luks_create(QCryptoBlock *block,
-         luks->header.key_slots[i].key_offset =
-             (QCRYPTO_BLOCK_LUKS_KEY_SLOT_OFFSET /
-              QCRYPTO_BLOCK_LUKS_SECTOR_SIZE) +
--            (ROUND_UP(((splitkeylen + (QCRYPTO_BLOCK_LUKS_SECTOR_SIZE - 1)) /
--                       QCRYPTO_BLOCK_LUKS_SECTOR_SIZE),
-+            (ROUND_UP(DIV_ROUND_UP(splitkeylen, QCRYPTO_BLOCK_LUKS_SECTOR_SIZE),
-                       (QCRYPTO_BLOCK_LUKS_KEY_SLOT_OFFSET /
-                        QCRYPTO_BLOCK_LUKS_SECTOR_SIZE)) * i);
-     }
-@@ -1182,8 +1181,7 @@ qcrypto_block_luks_create(QCryptoBlock *block,
-     luks->header.payload_offset =
-         (QCRYPTO_BLOCK_LUKS_KEY_SLOT_OFFSET /
-          QCRYPTO_BLOCK_LUKS_SECTOR_SIZE) +
--        (ROUND_UP(((splitkeylen + (QCRYPTO_BLOCK_LUKS_SECTOR_SIZE - 1)) /
--                   QCRYPTO_BLOCK_LUKS_SECTOR_SIZE),
-+        (ROUND_UP(DIV_ROUND_UP(splitkeylen, QCRYPTO_BLOCK_LUKS_SECTOR_SIZE),
-                   (QCRYPTO_BLOCK_LUKS_KEY_SLOT_OFFSET /
-                    QCRYPTO_BLOCK_LUKS_SECTOR_SIZE)) *
-          QCRYPTO_BLOCK_LUKS_NUM_KEY_SLOTS);
+diff --git a/pc-bios/s390-ccw/bootmap.c b/pc-bios/s390-ccw/bootmap.c
+index 611102e..ecdc52d 100644
+--- a/pc-bios/s390-ccw/bootmap.c
++++ b/pc-bios/s390-ccw/bootmap.c
+@@ -599,7 +599,7 @@ static void load_iso_bc_entry(IsoBcSection *load)
+ 
+     if (real_size) {
+         /* Round up blocks to load */
+-        blks_to_load = (real_size + ISO_SECTOR_SIZE - 1) / ISO_SECTOR_SIZE;
++        blks_to_load = DIV_ROUND_UP(real_size, ISO_SECTOR_SIZE);
+         sclp_print("ISO boot image size verified\n");
+     } else {
+         sclp_print("ISO boot image size could not be verified\n");
 -- 
 2.1.4
 
