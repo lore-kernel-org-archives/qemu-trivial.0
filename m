@@ -1,36 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9XDb-0007QV-Gl
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 08:31:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44322)
+	id 1b9XDc-0007RZ-D8
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 08:31:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44319)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9XDV-0007Ko-TP
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 08:31:50 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9XDW-0007KI-9r
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 08:31:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9XDR-000208-TG
+	(envelope-from <mjt@tls.msk.ru>) id 1b9XDU-00020e-F5
 	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 08:31:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57768)
+Received: from isrv.corpit.ru ([86.62.121.231]:59798)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9XDJ-0001wc-VX; Sun, 05 Jun 2016 08:31:34 -0400
+	id 1b9XDJ-0001wa-VA; Sun, 05 Jun 2016 08:31:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A5DDC40927;
+	by isrv.corpit.ru (Postfix) with ESMTP id CC1714092A;
 	Sun,  5 Jun 2016 15:31:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 25836AEB;
-	Sun,  5 Jun 2016 10:43:35 +0300 (MSK)
-Received: (nullmailer pid 1091 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 8CD0FB04;
+	Sun,  5 Jun 2016 10:43:38 +0300 (MSK)
+Received: (nullmailer pid 1145 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Sun,  5 Jun 2016 10:42:38 +0300
-Message-Id: <28410d342f21f27d349de1c5a19e44369209e34f.1465112552.git.mjt@msgid.tls.msk.ru>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:43:04 +0300
+Message-Id: <6053989dab7f82a889f908b250931a32b879c71f.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 01/52] s390x/virtio-ccw: fix spelling
+Subject: [Qemu-trivial] [PULL 27/52] pc: cleanup unused struct PcRomPciInfo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -42,28 +43,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 12:31:50 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 12:31:51 -0000
 
+From: Igor Mammedov <imammedo@redhat.com>
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
-Acked-by: Cornelia Huck <cornelia.huck@de.ibm.com>
 ---
- hw/s390x/virtio-ccw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i386/pc.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
-index a1c1ed9..2b68e5e 100644
---- a/hw/s390x/virtio-ccw.c
-+++ b/hw/s390x/virtio-ccw.c
-@@ -1476,7 +1476,7 @@ static void virtio_ccw_device_plugged(DeviceState *d, Error **errp)
-     int n = virtio_get_num_queues(vdev);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index e29ccc8..b0a4bec 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1149,14 +1149,6 @@ void pc_cpus_init(PCMachineState *pcms)
+     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
+ }
  
-     if (virtio_get_num_queues(vdev) > VIRTIO_CCW_QUEUE_MAX) {
--        error_setg(errp, "The nubmer of virtqueues %d "
-+        error_setg(errp, "The number of virtqueues %d "
-                    "exceeds ccw limit %d", n,
-                    VIRTIO_CCW_QUEUE_MAX);
-         return;
+-/* pci-info ROM file. Little endian format */
+-typedef struct PcRomPciInfo {
+-    uint64_t w32_min;
+-    uint64_t w32_max;
+-    uint64_t w64_min;
+-    uint64_t w64_max;
+-} PcRomPciInfo;
+-
+ static
+ void pc_machine_done(Notifier *notifier, void *data)
+ {
 -- 
 2.1.4
 
