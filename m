@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9SHa-0003Ds-OY
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:15:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53513)
+	id 1b9SHk-0003Jb-1A
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:15:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9SHY-0003BE-3n
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:15:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9SHh-0003Gr-Ak
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:15:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9SHW-0005qo-4t
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:15:35 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47178)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9SHf-0005vW-AX
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:15:44 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36449)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9SHO-0005jV-Jt; Sun, 05 Jun 2016 03:15:26 -0400
+	id 1b9SHY-0005r7-0x; Sun, 05 Jun 2016 03:15:36 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 113F2408D7;
-	Sun,  5 Jun 2016 10:15:08 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 74A38408D7;
+	Sun,  5 Jun 2016 10:15:34 +0300 (MSK)
 To: Fabien Siron <fabien.siron@epita.fr>, qemu-trivial@nongnu.org
 References: <1464790984-8123-1-git-send-email-fabien.siron@epita.fr>
-Cc: qemu-devel <qemu-devel@nongnu.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, Fabien Siron <fabien.siron@epita.fr>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
 Organization: Telecom Service, JSC
-Message-ID: <5753D17B.5070800@msgid.tls.msk.ru>
-Date: Sun, 5 Jun 2016 10:15:07 +0300
+Message-ID: <5753D196.1040307@msgid.tls.msk.ru>
+Date: Sun, 5 Jun 2016 10:15:34 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Icedove/38.8.0
 MIME-Version: 1.0
@@ -43,7 +43,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 07:15:37 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 07:15:46 -0000
 
 Please direct all patches to qemu-devel@ too, don't use ONLY
 qemu-trivial.  Thanks.
