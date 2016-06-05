@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9Sip-00031G-Ra
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:43:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58964)
+	id 1b9Sit-00033Q-Cl
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:43:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9Sin-0002yq-5a
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:43:46 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9Sim-0004QI-90
+	(envelope-from <mjt@tls.msk.ru>) id 1b9Sim-0002yf-T6
 	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:43:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58425)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9Sil-0004Q5-Un
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:43:44 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40236)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9Sig-0004OP-8O; Sun, 05 Jun 2016 03:43:38 -0400
+	id 1b9Sig-0004OR-8G; Sun, 05 Jun 2016 03:43:38 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2E0B740911;
-	Sun,  5 Jun 2016 10:43:33 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id A18E0ADC;
+	by isrv.corpit.ru (Postfix) with ESMTP id C14054090F;
 	Sun,  5 Jun 2016 10:43:32 +0300 (MSK)
-Received: (nullmailer pid 1109 invoked by uid 1000);
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 4874DAD6;
+	Sun,  5 Jun 2016 10:43:32 +0300 (MSK)
+Received: (nullmailer pid 1101 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:42:47 +0300
-Message-Id: <28ac318783b583d7f0f8a773002e941089ecc806.1465112552.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:42:43 +0300
+Message-Id: <288bd72ef6caff7154430ce4de9094481eabf14c.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 10/52] The only 64bit parameter of muldiv64()
- is the first one.
+Subject: [Qemu-trivial] [PULL 06/52] target-moxie: Remove unused struct
+ elements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,53 +44,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 07:43:46 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 07:43:45 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-muldiv64() is "uint64_t muldiv64(uint64_t a, uint32_t b, uint32_t c)"
-
-Some time it is used as muldiv64(uint32_t a, uint64_t b, uint32_t c)"
-
-This patch is the result of coccinelle script
-scripts/coccinelle/swap_muldiv64.cocci to reorder arguments.
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/timer/omap_gptimer.c | 4 ++--
- hw/usb/hcd-ohci.c       | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ target-moxie/mmu.h | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/hw/timer/omap_gptimer.c b/hw/timer/omap_gptimer.c
-index 3a43863..5e3e8a6 100644
---- a/hw/timer/omap_gptimer.c
-+++ b/hw/timer/omap_gptimer.c
-@@ -133,8 +133,8 @@ static inline void omap_gp_timer_update(struct omap_gp_timer_s *timer)
-         timer_mod(timer->timer, timer->time + expires);
+diff --git a/target-moxie/mmu.h b/target-moxie/mmu.h
+index abc7929..284a44d 100644
+--- a/target-moxie/mmu.h
++++ b/target-moxie/mmu.h
+@@ -6,11 +6,6 @@
+ typedef struct {
+     uint32_t phy;
+     uint32_t pfn;
+-    unsigned g:1;
+-    unsigned v:1;
+-    unsigned k:1;
+-    unsigned w:1;
+-    unsigned e:1;
+     int cause_op;
+ } MoxieMMUResult;
  
-         if (timer->ce && timer->match_val >= timer->val) {
--            matches = muldiv64(timer->match_val - timer->val,
--                            timer->ticks_per_sec, timer->rate);
-+            matches = muldiv64(timer->ticks_per_sec,
-+                               timer->match_val - timer->val, timer->rate);
-             timer_mod(timer->match, timer->time + matches);
-         } else
-             timer_del(timer->match);
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 16d9ff7..25cc53f 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1474,7 +1474,7 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
-     if (tks >= usb_frame_time)
-         return (ohci->frt << 31);
- 
--    tks = muldiv64(1, tks, usb_bit_time);
-+    tks = muldiv64(tks, 1, usb_bit_time);
-     fr = (uint16_t)(ohci->fi - tks);
- 
-     return (ohci->frt << 31) | fr;
 -- 
 2.1.4
 
