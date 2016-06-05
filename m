@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9TwI-0004BN-Te
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 05:01:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41139)
+	id 1b9TwK-0004Fc-2y
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 05:01:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41144)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9TwE-00045x-7Q
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 05:01:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9TwE-00046H-Lu
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 05:01:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9TwC-0004o0-9x
+	(envelope-from <mjt@tls.msk.ru>) id 1b9TwC-0004oI-Mu
 	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 05:01:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38097)
+Received: from isrv.corpit.ru ([86.62.121.231]:37383)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9Tw8-0004mE-T3; Sun, 05 Jun 2016 05:01:37 -0400
+	id 1b9Tw5-0004lD-P4; Sun, 05 Jun 2016 05:01:33 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id F329E40917;
+	by isrv.corpit.ru (Postfix) with ESMTP id D3B1F408D7;
 	Sun,  5 Jun 2016 12:01:26 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 97097ADF;
-	Sun,  5 Jun 2016 10:43:33 +0300 (MSK)
-Received: (nullmailer pid 1113 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 09155AFF;
+	Sun,  5 Jun 2016 10:43:38 +0300 (MSK)
+Received: (nullmailer pid 1132 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:42:49 +0300
-Message-Id: <bd01b6b58a46a7a0b57c85a5527ec6c4f7bb6b2c.1465112552.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:42:58 +0300
+Message-Id: <e4f336615bbb8ee90ad2b9ed1efa739b8d5c3927.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 12/52] replace muldiv64(a, b,
- c) by (uint64_t)a * b / c
+Subject: [Qemu-trivial] [PULL 21/52] fw_cfg: follow CODING_STYLE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,53 +43,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 09:01:45 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 09:01:46 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
 
-When "a" and "b" are 32bit values, we don't have to cast
-them to 128bit, 64bit is enough.
+Replace tab with 4 spaces; brace the indented statement.
 
-This patch is the result of coccinelle script
-scripts/coccinelle/simplify_muldiv64.cocci
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-For xtensa PIC:
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/audio/gus.c      | 2 +-
- hw/xtensa/pic_cpu.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ hw/nvram/fw_cfg.c | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index 9dd6947..6c02646 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -144,7 +144,7 @@ static void GUS_callback (void *opaque, int free)
-     s->left = samples;
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index cdbdfb5..74a0079 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -729,15 +729,20 @@ static int get_fw_cfg_order(FWCfgState *s, const char *name)
+ {
+     int i;
  
-  reset:
--    gus_irqgen (&s->emu, muldiv64 (net, 1000000, s->freq));
-+    gus_irqgen (&s->emu, (uint64_t)net * 1000000 / s->freq);
- }
+-    if (s->fw_cfg_order_override > 0)
+-	return s->fw_cfg_order_override;
++    if (s->fw_cfg_order_override > 0) {
++        return s->fw_cfg_order_override;
++    }
  
- int GUS_irqrequest (GUSEmuState *emu, int hwirq, int n)
-diff --git a/hw/xtensa/pic_cpu.c b/hw/xtensa/pic_cpu.c
-index ccf65fd..2bed64f 100644
---- a/hw/xtensa/pic_cpu.c
-+++ b/hw/xtensa/pic_cpu.c
-@@ -122,8 +122,8 @@ void xtensa_rearm_ccompare_timer(CPUXtensaState *env)
+     for (i = 0; i < ARRAY_SIZE(fw_cfg_order); i++) {
+-	if (fw_cfg_order[i].name == NULL)
+-	    continue;
+-	if (strcmp(name, fw_cfg_order[i].name) == 0)
+-	    return fw_cfg_order[i].order;
++        if (fw_cfg_order[i].name == NULL) {
++            continue;
++        }
++
++        if (strcmp(name, fw_cfg_order[i].name) == 0) {
++            return fw_cfg_order[i].order;
++        }
      }
-     env->wake_ccount = wake_ccount;
-     timer_mod(env->ccompare_timer, env->halt_clock +
--            muldiv64(wake_ccount - env->sregs[CCOUNT],
--                1000000, env->config->clock_freq_khz));
-+            (uint64_t)(wake_ccount - env->sregs[CCOUNT]) *
-+            1000000 / env->config->clock_freq_khz);
- }
- 
- static void xtensa_ccompare_cb(void *opaque)
++
+     /* Stick unknown stuff at the end. */
+     error_report("warning: Unknown firmware file in legacy mode: %s\n", name);
+     return FW_CFG_ORDER_OVERRIDE_LAST;
 -- 
 2.1.4
 
