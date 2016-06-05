@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9TJZ-0003ng-No
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 04:21:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36353)
+	id 1b9TJa-0003o9-31
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 04:21:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9TJU-0003i6-8b
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:21:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9TJU-0003i9-BA
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:21:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9TJS-0004XO-Aj
+	(envelope-from <mjt@tls.msk.ru>) id 1b9TJS-0004XH-24
 	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:21:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40314)
+Received: from isrv.corpit.ru ([86.62.121.231]:58624)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9TJK-0004Vj-0a; Sun, 05 Jun 2016 04:21:30 -0400
+	id 1b9TJO-0004WW-1E; Sun, 05 Jun 2016 04:21:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 00E9040914;
+	by isrv.corpit.ru (Postfix) with ESMTP id 0F86940916;
 	Sun,  5 Jun 2016 11:21:26 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 3FBB1B42;
-	Sun,  5 Jun 2016 10:43:41 +0300 (MSK)
-Received: (nullmailer pid 1178 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 39143B36;
+	Sun,  5 Jun 2016 10:43:40 +0300 (MSK)
+Received: (nullmailer pid 1151 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:43:20 +0300
-Message-Id: <6abb9bb67653f32a93be5f9d408e3d35bfedaeb3.1465112552.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:43:07 +0300
+Message-Id: <b317072fad75f45a5e1dae8cd804e853991f17c6.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 43/52] xen: Use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PULL 30/52] qga: Remove unnecessary glib.h includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,50 +45,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 05 Jun 2016 08:21:45 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
+Remove glib.h includes, as it is provided by osdep.h.
 
-This patch is the result of coccinelle script
-scripts/coccinelle/round.cocci
+This commit was created with scripts/clean-includes.
 
-CC: Stefano Stabellini <sstabellini@kernel.org>
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Tested-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/display/xenfb.c | 4 ++--
- xen-hvm.c          | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ qga/channel-posix.c             | 1 -
+ qga/channel-win32.c             | 1 -
+ qga/channel.h                   | 1 -
+ qga/commands-posix.c            | 1 -
+ qga/commands-win32.c            | 1 -
+ qga/commands.c                  | 1 -
+ qga/guest-agent-command-state.c | 1 -
+ qga/main.c                      | 1 -
+ qga/service-win32.c             | 1 -
+ 9 files changed, 9 deletions(-)
 
-diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index 9866dfd..570b097 100644
---- a/hw/display/xenfb.c
-+++ b/hw/display/xenfb.c
-@@ -472,9 +472,9 @@ static int xenfb_map_fb(struct XenFB *xenfb)
-         xenfb->pixels = NULL;
-     }
+diff --git a/qga/channel-posix.c b/qga/channel-posix.c
+index 63458c6..bb65d8b 100644
+--- a/qga/channel-posix.c
++++ b/qga/channel-posix.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <termios.h>
+ #include "qapi/error.h"
+ #include "qemu/sockets.h"
+diff --git a/qga/channel-win32.c b/qga/channel-win32.c
+index 68168d1..21f9dee 100644
+--- a/qga/channel-win32.c
++++ b/qga/channel-win32.c
+@@ -1,5 +1,4 @@
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <windows.h>
+ #include <io.h>
+ #include "qga/guest-agent-core.h"
+diff --git a/qga/channel.h b/qga/channel.h
+index 3704ea9..ae8cf0f 100644
+--- a/qga/channel.h
++++ b/qga/channel.h
+@@ -12,7 +12,6 @@
+ #ifndef QGA_CHANNEL_H
+ #define QGA_CHANNEL_H
  
--    xenfb->fbpages = (xenfb->fb_len + (XC_PAGE_SIZE - 1)) / XC_PAGE_SIZE;
-+    xenfb->fbpages = DIV_ROUND_UP(xenfb->fb_len, XC_PAGE_SIZE);
-     n_fbdirs = xenfb->fbpages * mode / 8;
--    n_fbdirs = (n_fbdirs + (XC_PAGE_SIZE - 1)) / XC_PAGE_SIZE;
-+    n_fbdirs = DIV_ROUND_UP(n_fbdirs, XC_PAGE_SIZE);
+-#include <glib.h>
  
-     pgmfns = g_malloc0(sizeof(xen_pfn_t) * n_fbdirs);
-     fbmfns = g_malloc0(sizeof(xen_pfn_t) * xenfb->fbpages);
-diff --git a/xen-hvm.c b/xen-hvm.c
-index 01ee25d..a0da8d7 100644
---- a/xen-hvm.c
-+++ b/xen-hvm.c
-@@ -567,7 +567,7 @@ static void xen_sync_dirty_bitmap(XenIOState *state,
- {
-     hwaddr npages = size >> TARGET_PAGE_BITS;
-     const int width = sizeof(unsigned long) * 8;
--    unsigned long bitmap[(npages + width - 1) / width];
-+    unsigned long bitmap[DIV_ROUND_UP(npages, width)];
-     int rc, i, j;
-     const XenPhysmap *physmap = NULL;
+ typedef struct GAChannel GAChannel;
+ 
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index f0057f5..eaef7be 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -12,7 +12,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <sys/ioctl.h>
+ #include <sys/wait.h>
+ #include <dirent.h>
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index d76327f..c1a8588 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -12,7 +12,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <wtypes.h>
+ #include <powrprof.h>
+ #include <winsock2.h>
+diff --git a/qga/commands.c b/qga/commands.c
+index 3144464..50fd26a 100644
+--- a/qga/commands.c
++++ b/qga/commands.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include "qga/guest-agent-core.h"
+ #include "qga-qmp-commands.h"
+ #include "qapi/qmp/qerror.h"
+diff --git a/qga/guest-agent-command-state.c b/qga/guest-agent-command-state.c
+index 20b9b22..4de229c 100644
+--- a/qga/guest-agent-command-state.c
++++ b/qga/guest-agent-command-state.c
+@@ -10,7 +10,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include "qga/guest-agent-core.h"
+ 
+ struct GACommandState {
+diff --git a/qga/main.c b/qga/main.c
+index c5527821..4c3b2c7 100644
+--- a/qga/main.c
++++ b/qga/main.c
+@@ -11,7 +11,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <getopt.h>
+ #include <glib/gstdio.h>
+ #ifndef _WIN32
+diff --git a/qga/service-win32.c b/qga/service-win32.c
+index 7243758..fd434e3 100644
+--- a/qga/service-win32.c
++++ b/qga/service-win32.c
+@@ -11,7 +11,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include <windows.h>
+ #include "qga/service-win32.h"
  
 -- 
 2.1.4
