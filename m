@@ -1,38 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9SIR-0003iR-7c
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:16:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53626)
+	id 1b9Sio-00030R-MO
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:43:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58960)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9SIP-0003hM-3w
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:16:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9Sin-0002ym-1P
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:43:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9SIN-00061s-5V
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:16:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42765)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9Sim-0004QB-5A
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:43:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60346)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9SIF-00060x-S4; Sun, 05 Jun 2016 03:16:20 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4E206408D7;
-	Sun,  5 Jun 2016 10:16:16 +0300 (MSK)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1464712565-14857-1-git-send-email-lvivier@redhat.com>
+	id 1b9Sij-0004Os-Sn; Sun, 05 Jun 2016 03:43:42 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 758DD40913;
+	Sun,  5 Jun 2016 10:43:33 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id DCFD6AD6;
+	Sun,  5 Jun 2016 10:43:32 +0300 (MSK)
+Received: (nullmailer pid 1111 invoked by uid 1000);
+	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
-Organization: Telecom Service, JSC
-Message-ID: <5753D1BF.3000905@msgid.tls.msk.ru>
-Date: Sun, 5 Jun 2016 10:16:15 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.8.0
-MIME-Version: 1.0
-In-Reply-To: <1464712565-14857-1-git-send-email-lvivier@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:42:48 +0300
+Message-Id: <640789e419ebc8b9850c16804d76f0351bc198be.1465112552.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
+References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH 00/16] use macro DIV_ROUND_UP instead of
- (((n) + (d) - 1) /(d))
+Subject: [Qemu-trivial] [PULL 11/52] remove useless muldiv64()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,31 +43,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 07:16:30 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 07:43:46 -0000
 
-31.05.2016 19:35, Laurent Vivier wrote:
-> This patch series is the result of coccinelle
-> script scripts/coccinelle/round.coccii, added by the first patch.
-> 
-> Laurent Vivier (16):
->   coccinelle: use macro DIV_ROUND_UP instead of (((n) + (d) - 1) /(d))
->   parallels: Use DIV_ROUND_UP
->   qcow/qcow2: Use DIV_ROUND_UP
->   qed: Use DIV_ROUND_UP
->   block: Use DIV_ROUND_UP
->   crypto: Use DIV_ROUND_UP
->   xen: Use DIV_ROUND_UP
->   audio: Use DIV_ROUND_UP
->   SPICE: Use DIV_ROUND_UP
->   rocker: Use DIV_ROUND_UP
->   usb: Use DIV_ROUND_UP
->   slirp: Use DIV_ROUND_UP
->   linux-user: Use DIV_ROUND_UP
->   pc-bios/s390-ccw: Use DIV_ROUND_UP
->   qemu-timer: Use DIV_ROUND_UP
->   hbitmap: Use DIV_ROUND_UP
+From: Laurent Vivier <lvivier@redhat.com>
 
-Applied all to -trivial, thank you!
+muldiv64(a, 1, b) is like "a / b".
 
-/mjt
+This patch is the result of coccinelle script
+scripts/coccinelle/remove_muldiv64.cocci.
+
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/usb/hcd-ohci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 25cc53f..fa57038 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -1474,7 +1474,7 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
+     if (tks >= usb_frame_time)
+         return (ohci->frt << 31);
+ 
+-    tks = muldiv64(tks, 1, usb_bit_time);
++    tks = tks / usb_bit_time;
+     fr = (uint16_t)(ohci->fi - tks);
+ 
+     return (ohci->frt << 31) | fr;
+-- 
+2.1.4
+
 
