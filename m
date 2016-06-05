@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9V2H-0007oY-Go
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 06:12:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49820)
+	id 1b9W7k-0001Sx-Ld
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 07:21:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35234)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9V2B-0007j3-Vk
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 06:11:59 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9W7i-0001P7-GZ
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 07:21:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9V26-0003Il-V2
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 06:11:54 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55513)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9W7h-0003lX-JL
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 07:21:42 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36367)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9V1n-0003Df-Ob; Sun, 05 Jun 2016 06:11:31 -0400
+	id 1b9W7e-0003kV-VX; Sun, 05 Jun 2016 07:21:39 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 27FA6408D7;
-	Sun,  5 Jun 2016 13:11:28 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id BF19C40923;
+	Sun,  5 Jun 2016 14:21:29 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 9C223AFC;
-	Sun,  5 Jun 2016 10:43:37 +0300 (MSK)
-Received: (nullmailer pid 1190 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 2594FB00;
+	Sun,  5 Jun 2016 10:43:38 +0300 (MSK)
+Received: (nullmailer pid 1147 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:43:26 +0300
-Message-Id: <7841668a37c7193704c620e29ad7586ce3de95e6.1465112552.git.mjt@msgid.tls.msk.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:43:05 +0300
+Message-Id: <8a9b270bfda0beb0489257ca2bd8d8977f64e411.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 49/52] linux-user: Use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PULL 28/52] clean-includes: Add glib.h to list of
+ unneeded includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,44 +44,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 10:12:00 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 11:21:43 -0000
 
-From: Laurent Vivier <lvivier@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
+osdep.h pulls in glib.h via glib-compat.h, so add it to the list of
+includes that we remove. (This then means we must avoid running
+clean-includes on glib-compat.h or it will delete the glib.h include.)
 
-This patch is the result of coccinelle script
-scripts/coccinelle/round.cocci
-
-CC: Riku Voipio <riku.voipio@iki.fi>
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Tested-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/syscall.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/clean-includes | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index df70255..96ec801 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -829,7 +829,7 @@ static inline abi_long copy_from_user_fdset(fd_set *fds,
-     int i, nw, j, k;
-     abi_ulong b, *target_fds;
- 
--    nw = (n + TARGET_ABI_BITS - 1) / TARGET_ABI_BITS;
-+    nw = DIV_ROUND_UP(n, TARGET_ABI_BITS);
-     if (!(target_fds = lock_user(VERIFY_READ,
-                                  target_fds_addr,
-                                  sizeof(abi_ulong) * nw,
-@@ -876,7 +876,7 @@ static inline abi_long copy_to_user_fdset(abi_ulong target_fds_addr,
-     abi_long v;
-     abi_ulong *target_fds;
- 
--    nw = (n + TARGET_ABI_BITS - 1) / TARGET_ABI_BITS;
-+    nw = DIV_ROUND_UP(n, TARGET_ABI_BITS);
-     if (!(target_fds = lock_user(VERIFY_WRITE,
-                                  target_fds_addr,
-                                  sizeof(abi_ulong) * nw,
+diff --git a/scripts/clean-includes b/scripts/clean-includes
+index adffedd..37b73b5 100755
+--- a/scripts/clean-includes
++++ b/scripts/clean-includes
+@@ -104,6 +104,7 @@ for f in "$@"; do
+       ;;
+     *include/qemu/osdep.h | \
+     *include/qemu/compiler.h | \
++    *include/glib-compat.h | \
+     *include/standard-headers/ )
+       # Removing include lines from osdep.h itself would be counterproductive.
+       echo "SKIPPING $f (special case header)"
+@@ -143,7 +144,7 @@ for f in "$@"; do
+            <setjmp.h> <stdarg.h> <stddef.h> <stdbool.h> <stdint.h> <sys/types.h>
+            <stdlib.h> <stdio.h> <string.h> <strings.h> <inttypes.h>
+            <limits.h> <unistd.h> <time.h> <ctype.h> <errno.h> <fcntl.h>
+-           <sys/stat.h> <sys/time.h> <assert.h> <signal.h>
++           <sys/stat.h> <sys/time.h> <assert.h> <signal.h> <glib.h>
+            "sysemu/os-posix.h, sysemu/os-win32.h "glib-compat.h"
+            "qemu/typedefs.h"
+             ))' "$f"
 -- 
 2.1.4
 
