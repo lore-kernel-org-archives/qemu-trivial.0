@@ -1,37 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9Sqh-0001WE-4l
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 03:51:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60318)
+	id 1b9T0I-0001rk-J3
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Jun 2016 04:01:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9Sqb-0001Qr-VG
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:51:53 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1b9T0F-0001oy-WE
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1b9Sqa-0005ad-4s
-	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 03:51:48 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:39306)
+	(envelope-from <mjt@tls.msk.ru>) id 1b9T0C-00084k-Sa
+	for qemu-trivial@nongnu.org; Sun, 05 Jun 2016 04:01:48 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34073)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1b9SqJ-0005Wt-JG; Sun, 05 Jun 2016 03:51:31 -0400
+	id 1b9T02-00081f-Je; Sun, 05 Jun 2016 04:01:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 544C340910;
-	Sun,  5 Jun 2016 10:51:26 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 5E56340914;
+	Sun,  5 Jun 2016 11:01:26 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id D2556AE1;
-	Sun,  5 Jun 2016 10:43:33 +0300 (MSK)
-Received: (nullmailer pid 1103 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A06FFB32;
+	Sun,  5 Jun 2016 10:43:39 +0300 (MSK)
+Received: (nullmailer pid 1138 invoked by uid 1000);
 	Sun, 05 Jun 2016 07:43:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Jan Vesely <jano.vesely@gmail.com>, qemu-trivial@nongnu.org,
+Cc: Alberto Garcia <berto@igalia.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  5 Jun 2016 10:42:44 +0300
-Message-Id: <3ba1e5ae7d9a531c70b0ddd70d8e2a7394bdf84a.1465112552.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  5 Jun 2016 10:43:01 +0300
+Message-Id: <ce94e108e049ac2b51ef197fa15b1dcf6600c9ca.1465112552.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 07/52] po/Makefile: call rm -f directly
+Subject: [Qemu-trivial] [PULL 24/52] docs: Fix a couple of typos in
+ throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,33 +44,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Jun 2016 07:51:53 -0000
+X-List-Received-Date: Sun, 05 Jun 2016 08:01:49 -0000
 
-From: Jan Vesely <jano.vesely@gmail.com>
+From: Alberto Garcia <berto@igalia.com>
 
-Default variables are undefined in rules.mak and this is what the rest
-of the build system uses.
-Fixes make clean in ./po/
-
-Signed-off-by: Jan Vesely <jano.vesely@gmail.com>
+Signed-off-by: Alberto Garcia <berto@igalia.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- po/Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/throttle.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/po/Makefile b/po/Makefile
-index b271f79..7bab09d 100644
---- a/po/Makefile
-+++ b/po/Makefile
-@@ -32,7 +32,7 @@ update: $(SRCS)
- build: $(OBJS)
+diff --git a/docs/throttle.txt b/docs/throttle.txt
+index 06ed9b3..26d4d51 100644
+--- a/docs/throttle.txt
++++ b/docs/throttle.txt
+@@ -39,7 +39,7 @@ the parameters for both cases:
+ | throttling.bps-write  | bps_wr                |
+ |-----------------------+-----------------------|
  
- clean:
--	$(RM) $(OBJS)
-+	rm -f $(OBJS)
+-It is possible to set limits for both IOPS and bps and the same time,
++It is possible to set limits for both IOPS and bps at the same time,
+ and for each case we can decide whether to have separate read and
+ write limits or not, but note that if iops-total is set then neither
+ iops-read nor iops-write can be set. The same applies to bps-total and
+@@ -235,7 +235,7 @@ consider the following values:
+   - Water leaks from the bucket at a rate of 100 IOPS.
+   - Water can be added to the bucket at a rate of 2000 IOPS.
+   - The size of the bucket is 2000 x 60 = 120000
+-  - If 'iops-total-max-length' is unset then the bucket size is 100.
++  - If 'iops-total-max' is unset then the bucket size is 100 x 60.
  
- install: $(OBJS)
- 	for obj in $(OBJS); do \
+ The bucket is initially empty, therefore water can be added until it's
+ full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
 -- 
 2.1.4
 
