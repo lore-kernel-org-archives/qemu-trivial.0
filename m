@@ -1,54 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1b9qeh-0004ZC-JG
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jun 2016 05:17:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36297)
+	id 1b9sJH-0003Em-NA
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jun 2016 07:03:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9qef-0004Wk-Gi
-	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 05:17:06 -0400
+	(envelope-from <jrtc27@jrtc27.com>) id 1b9sJD-0003Bt-Uq
+	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 07:03:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9qeY-0001SO-Jz
-	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 05:17:04 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:33731)
+	(envelope-from <jrtc27@jrtc27.com>) id 1b9sJ5-0006jD-4h
+	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 07:03:02 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:35634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9qeY-0001S1-Fh
-	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 05:16:58 -0400
-Received: by mail-vk0-x230.google.com with SMTP id d64so67405300vkb.0
-	for <qemu-trivial@nongnu.org>; Mon, 06 Jun 2016 02:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dNy8UH9Mif2VRR1YKdTVRvedfE3mDo2sqNpan3lU01E=;
-	b=IqciNsfUWiXkTJ0ZOi9MIPA6u55a/xAs6bF4tY++Lx1+hO9fBGYSlHaKEjEs38SMJR
-	DY7uEoofX3uBP39VKh43jsj80aUUfIg2Z6FaryxSk8EqEqeYi2EyX/+uVESzFO+N50xG
-	QU8Gort70b3+/Ru6CWSO8cjVLbuvRw9dDfnRM=
+	(envelope-from <jrtc27@jrtc27.com>) id 1b9sJ3-0006iq-QV
+	for qemu-trivial@nongnu.org; Mon, 06 Jun 2016 07:02:55 -0400
+Received: by mail-wm0-x244.google.com with SMTP id k184so9123562wme.2
+	for <qemu-trivial@nongnu.org>; Mon, 06 Jun 2016 04:02:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jrtc27.com; s=google;
+	h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+	:user-agent; bh=A2LcBt18c8RBaB+yl7JPYw9O4IQX72L6Vkdu8Bd0B2s=;
+	b=YnQ7oF3VDTNakAls7mnXs7MyXTXqMvSfP+LAjKg7qEw7kUfy0tWSiT/SSwiQf4V0pr
+	bzzUwIuAT3t1LRVX14oifJdxZh9zlk5L7bmOmU4YNG8O7zg8vsZsLuEnZD+T8CYiALkp
+	lTWNz4C62ZWa2thg+Wwbsl9Vp6TToc76W3kWQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=dNy8UH9Mif2VRR1YKdTVRvedfE3mDo2sqNpan3lU01E=;
-	b=d+iwq6s2DOuJlMlRT4Tr/hvKAFR1TgoFbjy8iUR7hXo6ciPC+yQ/QHQza4Bzoey1aq
-	HEz7D/DtPG0wh3oX8Sc/gy/PAPOAVEc6d2jumDJvqU4UGaXL5zr113zCcdAJRsewwbkf
-	AT0x5AGPk+spl8hGxsRPibehh8ObwdnVpD1Muw7NwWyBJpDyn2v6efNslrmSywIvqqC7
-	5ccfC4EUEpZjNkgLNrxrzz52aY9BsY5n7aoImKadLFqSlIMv2D/esLqJOX1MUV5yP0Vp
-	zMV6+Q4OF4MxDSH0dgL7VG8jeivbnWJsrvjQk4Cd0IgBa/hHLrHns8YyeRMDD/OBoK9Y
-	iWCg==
-X-Gm-Message-State: ALyK8tKC+Ztx/0oOjLKSakTKvlsEguX4FCEjC7sNAhFKvpkkLXQpZLsyyAsLi+I7/QbEJXPaxXcfgdydLVdTsMQb
-X-Received: by 10.31.81.199 with SMTP id f190mr6139076vkb.139.1465204616918;
-	Mon, 06 Jun 2016 02:16:56 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+	:content-disposition:user-agent;
+	bh=A2LcBt18c8RBaB+yl7JPYw9O4IQX72L6Vkdu8Bd0B2s=;
+	b=ekqJxCkQfDdCJyLEbuzuPLyoJPid/s+UIkrsW9od1EFQxj/WtTD8EWs9sccK92z24U
+	3Mb8J886C9R8R4ZxxUbAmCErFOEuvGRHlstgynGksYm4DKXVYW4sqRkW1fT4+PgCOEVI
+	MbHMoAsD4aoDdj6GhpEbTk5t3ziF40YDUqHeKtgA5XEimaNRQaIVQb4alQX/ZcQPUPg+
+	V/jsQ8kQTe2YhuEl5purdjrCdWgqJ9oZSYBhMSsFywiW3ztJ2ou5Un7PaRnghVju9l1p
+	iCvDxNckE26di7mdWb1acNIYwOzgBXtvxg9mbcWFLca1tWPLE6rl5vJWZSg8azIRJdyC
+	0jBg==
+X-Gm-Message-State: ALyK8tIKy3GL93vy88AcOL1YIqZNMiLX69JylWNpA4LwCe5UVhWLrFzVGQLQGdKmwJwl9g==
+X-Received: by 10.194.139.104 with SMTP id qx8mr14588830wjb.14.1465210971950; 
+	Mon, 06 Jun 2016 04:02:51 -0700 (PDT)
+Received: from Jamess-MacBook.local (global-184-8.nat-1.net.cam.ac.uk.
+	[131.111.184.8]) by smtp.gmail.com with ESMTPSA id
+	kq9sm19670427wjc.26.2016.06.06.04.02.50
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Mon, 06 Jun 2016 04:02:51 -0700 (PDT)
+Received: by Jamess-MacBook.local (Postfix, from userid 501)
+	id 5716639080A2; Mon,  6 Jun 2016 12:02:50 +0100 (BST)
+Date: Mon, 6 Jun 2016 12:02:50 +0100
+From: James Clarke <jrtc27@jrtc27.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <20160606110250.GA43977@Jamess-MacBook.local>
 MIME-Version: 1.0
-Received: by 10.31.67.65 with HTTP; Mon, 6 Jun 2016 02:16:37 -0700 (PDT)
-In-Reply-To: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
-References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jun 2016 10:16:37 +0100
-Message-ID: <CAFEAcA8kPTVPjVYHyismDb4vvZVBmK8kGdCEVrvoVontSW91+A@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, James Clarke <jrtc27@jrtc27.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/52] Trivial patches for
- 2016-06-05
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: [Qemu-trivial] [PATCH v2] Fix linking relocatable objects on Sparc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,76 +65,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jun 2016 09:17:06 -0000
+X-List-Received-Date: Mon, 06 Jun 2016 11:03:07 -0000
 
-On 5 June 2016 at 08:42, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> This is a big pile of patches collected in -trivial queue
-> for quite a while.  I was busy with other stuff in recent
-> months, now am trying to catch up.  This is the result,
-> with everything all over.  Please consider pulling.
->
-> /mjt
->
-> The following changes since commit 6b3532b20b787cbd697a68b383232f5c3b39bd1e:
->
->   Merge remote-tracking branch 'remotes/kraxel/tags/pull-ui-20160603-1' into staging (2016-06-03 12:03:36 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2016-06-05
->
-> for you to fetch changes up to 275757ac23428a641983200805bedee8f7b96793:
->
->   hbitmap: Use DIV_ROUND_UP (2016-06-05 10:10:48 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2016-06-05
->
-> ----------------------------------------------------------------
+On Sparc, gcc implicitly passes --relax to the linker, but -r is
+incompatible with this. Therefore, if --no-relax is supported, it should
+be passed to the linker.
 
-Hi. I'm afraid this fails to configure on at least some platforms:
+Signed-off-by: James Clarke <jrtc27@jrtc27.com>
+---
+Hi Peter,
+Sorry about that, I wasn't building in a git repository, so werror was
+set to no (I was unaware of the configure script doing so). I have now
+tested it with werror enabled, and it works (and could reproduce the
+error with the previous version).
 
-  GEN   qemu-options.def
+I reworked the test slightly to mirror what the Makefile rules actually
+do, as trying to combine the compilation and ld -r steps doesn't work
+when CLFAGS contains -pie, which was leading to x86_64 believing that
+--no-relax was not a valid option.
 
-ERROR: configure test passed without -Werror but failed with -Werror.
-       This is probably a bug in the configure script. The failing command
-       will be at the bottom of config.log.
-       You can run configure with --disable-werror to bypass this check.
+Regards,
+James
 
-Tail end of config.log is:
+ configure | 23 ++++++++++++++++++++++-
+ rules.mak |  2 +-
+ 2 files changed, 23 insertions(+), 2 deletions(-)
 
-cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
--Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings
--Wmissing-prototypes -fno-strict-aliasing -fno-common -Wendif-labels
--Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security
--Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration
--Wold-style-definition -Wtype-limits -fstack-protector-all
--I/usr/include/p11-kit-1 -I/usr/include/libpng12
--I/usr/include/libusb-1.0 -o config-temp/qemu-conf.exe
-config-temp/qemu-conf.c -g -nostdlib -Wl,-r -Wl,--no-relax
-config-temp/qemu-conf.c:1:5: warning: no previous prototype for 'foo'
-[-Wmissing-prototypes]
- int foo(void) { return 0; }
-     ^
-cc -Werror -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
--Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings
--Wmissing-prototypes -fno-strict-aliasing -fno-common -Wendif-labels
--Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security
--Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration
--Wold-style-definition -Wtype-limits -fstack-protector-all
--I/usr/include/p11-kit-1 -I/usr/include/libpng12
--I/usr/include/libusb-1.0 -o config-temp/qemu-conf.exe
-config-temp/qemu-conf.c -g -nostdlib -Wl,-r -Wl,--no-relax
-config-temp/qemu-conf.c:1:5: error: no previous prototype for 'foo'
-[-Werror=missing-prototypes]
- int foo(void) { return 0; }
-     ^
+diff --git a/configure b/configure
+index b5aab72..4ce7061 100755
+--- a/configure
++++ b/configure
+@@ -31,6 +31,7 @@ TMPCXX="${TMPDIR1}/${TMPB}.cxx"
+ TMPL="${TMPDIR1}/${TMPB}.lo"
+ TMPA="${TMPDIR1}/lib${TMPB}.la"
+ TMPE="${TMPDIR1}/${TMPB}.exe"
++TMPMO="${TMPDIR1}/${TMPB}.mo"
+ 
+ rm -f config.log
+ 
+@@ -4526,6 +4527,25 @@ if compile_prog "" "" ; then
+     have_fsxattr=yes
+ fi
+ 
++#################################################
++# Sparc implicitly links with --relax, which is
++# incompatible with -r, so --no-relax should be
++# given. It does no harm to give it on other
++# platforms too.
++
++# Note: the prototype is needed since QEMU_CFLAGS
++#       contains -Wmissing-prototypes
++cat > $TMPC << EOF
++extern int foo(void);
++int foo(void) { return 0; }
++EOF
++if ! compile_object ""; then
++  error_exit "Failed to compile object file for LD_REL_FLAGS test"
++fi
++if do_cc -nostdlib -Wl,-r -Wl,--no-relax -o $TMPMO $TMPO; then
++  LD_REL_FLAGS="-Wl,--no-relax"
++fi
++
+ ##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+@@ -4948,7 +4968,7 @@ if test "$mingw32" = "yes" ; then
+     echo "CONFIG_QGA_NTDDDISK=y" >> $config_host_mak
+   fi
+   if test "$guest_agent_msi" = "yes"; then
+-    echo "QEMU_GA_MSI_ENABLED=yes" >> $config_host_mak  
++    echo "QEMU_GA_MSI_ENABLED=yes" >> $config_host_mak
+     echo "QEMU_GA_MSI_MINGW_DLL_PATH=${QEMU_GA_MSI_MINGW_DLL_PATH}" >> $config_host_mak
+     echo "QEMU_GA_MSI_WITH_VSS=${QEMU_GA_MSI_WITH_VSS}" >> $config_host_mak
+     echo "QEMU_GA_MSI_ARCH=${QEMU_GA_MSI_ARCH}" >> $config_host_mak
+@@ -5529,6 +5549,7 @@ else
+ fi
+ echo "LDFLAGS=$LDFLAGS" >> $config_host_mak
+ echo "LDFLAGS_NOPIE=$LDFLAGS_NOPIE" >> $config_host_mak
++echo "LD_REL_FLAGS=$LD_REL_FLAGS" >> $config_host_mak
+ echo "LIBS+=$LIBS" >> $config_host_mak
+ echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
+diff --git a/rules.mak b/rules.mak
+index 4a8f464..dca5718 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -95,7 +95,7 @@ module-common.o: CFLAGS += $(DSO_OBJ_CFLAGS)
+ 	$(if $(findstring /,$@),$(call quiet-command,cp $@ $(subst /,-,$@), "  CP    $(subst /,-,$@)"))
+ 
+ 
+-LD_REL := $(CC) -nostdlib -Wl,-r
++LD_REL := $(CC) -nostdlib -Wl,-r $(LD_REL_FLAGS)
+ 
+ %.mo:
+ 	$(call quiet-command,$(LD_REL) -o $@ $^,"  LD -r $(TARGET_DIR)$@")
+-- 
+2.8.3
 
-I think the problem commit is 'Fix linking relocatable objects on Sparc',
-which adds a configure test that attempts to build an executable using
-something that's not a valid C program (it has no 'main' function, for
-instance, though that's not why the error here.)
-
-thanks
--- PMM
 
