@@ -1,39 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAIbh-0000Xj-34
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 11:07:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36637)
+	id 1bAIqb-00059i-UQ
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 11:23:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40665)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAIbe-0000V0-7A
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:07:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bAIqW-00052L-HP
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAIbZ-0002G2-0S
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:07:48 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37215)
+	(envelope-from <mjt@tls.msk.ru>) id 1bAIqU-0005nx-Ei
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:11 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:51905)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bAIbP-0002CQ-FQ; Tue, 07 Jun 2016 11:07:35 -0400
-Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id 96B8840C27;
-	Tue,  7 Jun 2016 18:07:32 +0300 (MSK)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
-	<ac8eb9b954f267b8d9145cb8833a2f0b346f5913.1465112552.git.mjt@msgid.tls.msk.ru>
-	<92ecec92-44d4-f192-ea66-9425383782eb@redhat.com>
-Cc: qemu-trivial@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>
+	id 1bAIqO-0005mr-IH; Tue, 07 Jun 2016 11:23:04 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 8CB2F40C46;
+	Tue,  7 Jun 2016 18:23:01 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5EF22ADB;
+	Tue,  7 Jun 2016 18:23:00 +0300 (MSK)
+Received: (nullmailer pid 29055 invoked by uid 1000);
+	Tue, 07 Jun 2016 15:23:00 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
-Organization: Telecom Service, JSC
-Message-ID: <5756E333.2020809@msgid.tls.msk.ru>
-Date: Tue, 7 Jun 2016 18:07:31 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.8.0
-MIME-Version: 1.0
-In-Reply-To: <92ecec92-44d4-f192-ea66-9425383782eb@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Cc: James Clarke <jrtc27@jrtc27.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue,  7 Jun 2016 18:22:56 +0300
+Message-Id: <6969ec6cfd1293efd16bf9c7c7063b44bc6880ce.1465312856.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
+References: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PULL 50/52] pc-bios/s390-ccw: Use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PULL 14/51] Fix linking relocatable objects on Sparc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,51 +43,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jun 2016 15:07:51 -0000
+X-List-Received-Date: Tue, 07 Jun 2016 15:23:17 -0000
 
-06.06.2016 16:17, Laurent Vivier wrote:
-> On 05/06/2016 09:43, Michael Tokarev wrote:
->> From: Laurent Vivier <lvivier@redhat.com>
->>
->> Replace (((n) + (d) - 1) /(d)) by DIV_ROUND_UP(n,d).
->>
->> This patch is the result of coccinelle script
->> scripts/coccinelle/round.cocci
->>
->> CC: Cornelia Huck <cornelia.huck@de.ibm.com>
->> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>  pc-bios/s390-ccw/bootmap.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/pc-bios/s390-ccw/bootmap.c b/pc-bios/s390-ccw/bootmap.c
->> index 611102e..ecdc52d 100644
->> --- a/pc-bios/s390-ccw/bootmap.c
->> +++ b/pc-bios/s390-ccw/bootmap.c
->> @@ -599,7 +599,7 @@ static void load_iso_bc_entry(IsoBcSection *load)
->>  
->>      if (real_size) {
->>          /* Round up blocks to load */
->> -        blks_to_load = (real_size + ISO_SECTOR_SIZE - 1) / ISO_SECTOR_SIZE;
->> +        blks_to_load = DIV_ROUND_UP(real_size, ISO_SECTOR_SIZE);
->>          sclp_print("ISO boot image size verified\n");
->>      } else {
->>          sclp_print("ISO boot image size could not be verified\n");
->>
-> 
-> I think this one must be dropped from the pull request as s390-ccw files
-> have no access to the definition of DIV_ROUND_UP.
+From: James Clarke <jrtc27@jrtc27.com>
 
-Dropped it now, thank you!
+On Sparc, gcc implicitly passes --relax to the linker, but -r is
+incompatible with this. Therefore, if --no-relax is supported, it should
+be passed to the linker.
 
-/mjt
+Signed-off-by: James Clarke <jrtc27@jrtc27.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ configure | 21 +++++++++++++++++++++
+ rules.mak |  2 +-
+ 2 files changed, 22 insertions(+), 1 deletion(-)
 
-> I missed that because it is not built by default and can only be built
-> on a s390 system (or with some tricks with a cross-compiler).
-> 
-> Thanks,
-> Laurent
-> 
+diff --git a/configure b/configure
+index 6d01d96..3ad0b63 100755
+--- a/configure
++++ b/configure
+@@ -31,6 +31,7 @@ TMPCXX="${TMPDIR1}/${TMPB}.cxx"
+ TMPL="${TMPDIR1}/${TMPB}.lo"
+ TMPA="${TMPDIR1}/lib${TMPB}.la"
+ TMPE="${TMPDIR1}/${TMPB}.exe"
++TMPMO="${TMPDIR1}/${TMPB}.mo"
+ 
+ rm -f config.log
+ 
+@@ -4526,6 +4527,25 @@ if compile_prog "" "" ; then
+     have_fsxattr=yes
+ fi
+ 
++#################################################
++# Sparc implicitly links with --relax, which is
++# incompatible with -r, so --no-relax should be
++# given. It does no harm to give it on other
++# platforms too.
++
++# Note: the prototype is needed since QEMU_CFLAGS
++#       contains -Wmissing-prototypes
++cat > $TMPC << EOF
++extern int foo(void);
++int foo(void) { return 0; }
++EOF
++if ! compile_object ""; then
++  error_exit "Failed to compile object file for LD_REL_FLAGS test"
++fi
++if do_cc -nostdlib -Wl,-r -Wl,--no-relax -o $TMPMO $TMPO; then
++  LD_REL_FLAGS="-Wl,--no-relax"
++fi
++
+ ##########################################
+ # End of CC checks
+ # After here, no more $cc or $ld runs
+@@ -5529,6 +5549,7 @@ else
+ fi
+ echo "LDFLAGS=$LDFLAGS" >> $config_host_mak
+ echo "LDFLAGS_NOPIE=$LDFLAGS_NOPIE" >> $config_host_mak
++echo "LD_REL_FLAGS=$LD_REL_FLAGS" >> $config_host_mak
+ echo "LIBS+=$LIBS" >> $config_host_mak
+ echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
+diff --git a/rules.mak b/rules.mak
+index 4a8f464..dca5718 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -95,7 +95,7 @@ module-common.o: CFLAGS += $(DSO_OBJ_CFLAGS)
+ 	$(if $(findstring /,$@),$(call quiet-command,cp $@ $(subst /,-,$@), "  CP    $(subst /,-,$@)"))
+ 
+ 
+-LD_REL := $(CC) -nostdlib -Wl,-r
++LD_REL := $(CC) -nostdlib -Wl,-r $(LD_REL_FLAGS)
+ 
+ %.mo:
+ 	$(call quiet-command,$(LD_REL) -o $@ $^,"  LD -r $(TARGET_DIR)$@")
+-- 
+2.1.4
 
 
