@@ -1,37 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAIqb-00059i-UQ
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 11:23:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40665)
+	id 1bAIqf-0005EG-ID
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 11:23:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40721)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAIqW-00052L-HP
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:16 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bAIqb-00059S-NJ
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAIqU-0005nx-Ei
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:11 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51905)
+	(envelope-from <mjt@tls.msk.ru>) id 1bAIqY-0005pJ-9f
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 11:23:17 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:34832)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bAIqO-0005mr-IH; Tue, 07 Jun 2016 11:23:04 -0400
+	id 1bAIqO-0005ms-Ic; Tue, 07 Jun 2016 11:23:04 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8CB2F40C46;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7431240C27;
 	Tue,  7 Jun 2016 18:23:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 5EF22ADB;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 4472EADA;
 	Tue,  7 Jun 2016 18:23:00 +0300 (MSK)
-Received: (nullmailer pid 29055 invoked by uid 1000);
+Received: (nullmailer pid 29052 invoked by uid 1000);
 	Tue, 07 Jun 2016 15:23:00 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: James Clarke <jrtc27@jrtc27.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue,  7 Jun 2016 18:22:56 +0300
-Message-Id: <6969ec6cfd1293efd16bf9c7c7063b44bc6880ce.1465312856.git.mjt@msgid.tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Tue,  7 Jun 2016 18:22:55 +0300
+Message-Id: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
-References: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 14/51] Fix linking relocatable objects on Sparc
+Subject: [Qemu-trivial] [PULL 00/51] Trivial patches for 2016-06-07
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,81 +40,335 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jun 2016 15:23:17 -0000
+X-List-Received-Date: Tue, 07 Jun 2016 15:23:19 -0000
 
-From: James Clarke <jrtc27@jrtc27.com>
+This is another attempt to push trivial queue, previous was on 2016-06-05.
+This is the same set, except that I dropped patch "pc-bios/s390-ccw: Use DIV_ROUND_UP",
+and updated "Fix linking relocatable objects on Sparc" as per previous comments.
 
-On Sparc, gcc implicitly passes --relax to the linker, but -r is
-incompatible with this. Therefore, if --no-relax is supported, it should
-be passed to the linker.
+I'm not resending everything, only the new sparc patch.
 
-Signed-off-by: James Clarke <jrtc27@jrtc27.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure | 21 +++++++++++++++++++++
- rules.mak |  2 +-
- 2 files changed, 22 insertions(+), 1 deletion(-)
+Thanks,
 
-diff --git a/configure b/configure
-index 6d01d96..3ad0b63 100755
---- a/configure
-+++ b/configure
-@@ -31,6 +31,7 @@ TMPCXX="${TMPDIR1}/${TMPB}.cxx"
- TMPL="${TMPDIR1}/${TMPB}.lo"
- TMPA="${TMPDIR1}/lib${TMPB}.la"
- TMPE="${TMPDIR1}/${TMPB}.exe"
-+TMPMO="${TMPDIR1}/${TMPB}.mo"
- 
- rm -f config.log
- 
-@@ -4526,6 +4527,25 @@ if compile_prog "" "" ; then
-     have_fsxattr=yes
- fi
- 
-+#################################################
-+# Sparc implicitly links with --relax, which is
-+# incompatible with -r, so --no-relax should be
-+# given. It does no harm to give it on other
-+# platforms too.
-+
-+# Note: the prototype is needed since QEMU_CFLAGS
-+#       contains -Wmissing-prototypes
-+cat > $TMPC << EOF
-+extern int foo(void);
-+int foo(void) { return 0; }
-+EOF
-+if ! compile_object ""; then
-+  error_exit "Failed to compile object file for LD_REL_FLAGS test"
-+fi
-+if do_cc -nostdlib -Wl,-r -Wl,--no-relax -o $TMPMO $TMPO; then
-+  LD_REL_FLAGS="-Wl,--no-relax"
-+fi
-+
- ##########################################
- # End of CC checks
- # After here, no more $cc or $ld runs
-@@ -5529,6 +5549,7 @@ else
- fi
- echo "LDFLAGS=$LDFLAGS" >> $config_host_mak
- echo "LDFLAGS_NOPIE=$LDFLAGS_NOPIE" >> $config_host_mak
-+echo "LD_REL_FLAGS=$LD_REL_FLAGS" >> $config_host_mak
- echo "LIBS+=$LIBS" >> $config_host_mak
- echo "LIBS_TOOLS+=$libs_tools" >> $config_host_mak
- echo "EXESUF=$EXESUF" >> $config_host_mak
-diff --git a/rules.mak b/rules.mak
-index 4a8f464..dca5718 100644
---- a/rules.mak
-+++ b/rules.mak
-@@ -95,7 +95,7 @@ module-common.o: CFLAGS += $(DSO_OBJ_CFLAGS)
- 	$(if $(findstring /,$@),$(call quiet-command,cp $@ $(subst /,-,$@), "  CP    $(subst /,-,$@)"))
- 
- 
--LD_REL := $(CC) -nostdlib -Wl,-r
-+LD_REL := $(CC) -nostdlib -Wl,-r $(LD_REL_FLAGS)
- 
- %.mo:
- 	$(call quiet-command,$(LD_REL) -o $@ $^,"  LD -r $(TARGET_DIR)$@")
--- 
-2.1.4
+/mjt
 
+The following changes since commit 79cecb3520606c55f427752c0a7a4add8afe2413:
+
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2016-06-07 15:30:25 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2016-06-07
+
+for you to fetch changes up to 30f549c2f30de65c7cbb30614b838d5478d6221b:
+
+  hbitmap: Use DIV_ROUND_UP (2016-06-07 18:19:25 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2016-06-07
+
+----------------------------------------------------------------
+Alberto Garcia (1):
+      docs: Fix a couple of typos in throttle.txt
+
+Cao jin (3):
+      ICH9: fix typo
+      qdev: Clean up around properties
+      fw_cfg: follow CODING_STYLE
+
+Eric Blake (2):
+      monitor: Typo fix
+      host-utils: Prefer 'false' for bool type
+
+Igor Mammedov (1):
+      pc: cleanup unused struct PcRomPciInfo
+
+James Clarke (1):
+      Fix linking relocatable objects on Sparc
+
+Jan Vesely (1):
+      po/Makefile: call rm -f directly
+
+Laurent Vivier (20):
+      scripts: add muldiv64() checking coccinelle scripts
+      The only 64bit parameter of muldiv64() is the first one.
+      remove useless muldiv64()
+      replace muldiv64(a, b, c) by (uint64_t)a * b / c
+      ppc: Remove a potential overflow in muldiv64()
+      coccinelle: use macro DIV_ROUND_UP instead of (((n) + (d) - 1) /(d))
+      parallels: Use DIV_ROUND_UP
+      qcow/qcow2: Use DIV_ROUND_UP
+      qed: Use DIV_ROUND_UP
+      block: Use DIV_ROUND_UP
+      crypto: Use DIV_ROUND_UP
+      xen: Use DIV_ROUND_UP
+      audio: Use DIV_ROUND_UP
+      SPICE: Use DIV_ROUND_UP
+      rocker: Use DIV_ROUND_UP
+      usb: Use DIV_ROUND_UP
+      slirp: Use DIV_ROUND_UP
+      linux-user: Use DIV_ROUND_UP
+      qemu-timer: Use DIV_ROUND_UP
+      hbitmap: Use DIV_ROUND_UP
+
+Michael Tokarev (5):
+      s390x/virtio-ccw: fix spelling
+      hw/ipmi: fix spelling
+      docs: "specify" spell fix
+      qga: spelling fix
+      fsdev: spelling fix
+
+Peter Maydell (10):
+      qemu-options.hx: Specify the units for -machine kvm_shadow_mem
+      replay: Clean up includes
+      hw: Clean up includes
+      clean-includes: Add glib.h to list of unneeded includes
+      tests: Remove unnecessary glib.h includes
+      qga: Remove unnecessary glib.h includes
+      all: Remove unnecessary glib.h includes
+      qemu-common.h: Drop WORDS_ALIGNED define
+      thunk: Drop unused NO_THUNK_TYPE_SIZE guards
+      thunk: Rename args and fields in host-target bitmask conversion code
+
+Peter Wu (1):
+      gdbstub: set listen backlog to 1
+
+Sameeh Jubran (1):
+      e1000: Removing unnecessary if statement
+
+Stefan Weil (3):
+      target-moxie: Remove unused struct elements
+      configure: Use $(..) instead of deprecated `..`
+      scripts: Use $(..) instead of deprecated `..`
+
+Steven Luo (1):
+      Fix configure test for PBKDF2 in nettle
+
+Wei Jiangang (1):
+      docs/multi-thread-compression: Fix wrong command string
+
+ block/dmg.c                                |   1 -
+ block/parallels.c                          |   2 +-
+ block/qcow.c                               |   4 +-
+ block/qcow2-cluster.c                      |   4 +-
+ block/qcow2-refcount.c                     |   6 +-
+ block/qed-check.c                          |   3 +-
+ block/qed.c                                |   3 +-
+ block/vhdx.c                               |   1 -
+ block/vmdk.c                               |   1 -
+ block/vvfat.c                              |   3 +-
+ configure                                  | 196 ++++++++++++++++-------------
+ crypto/block-luks.c                        |   6 +-
+ docs/multi-thread-compression.txt          |   2 +-
+ docs/qapi-code-gen.txt                     |   2 +-
+ docs/throttle.txt                          |   4 +-
+ fsdev/9p-iov-marshal.c                     |   1 -
+ fsdev/9p-marshal.c                         |   1 -
+ fsdev/virtfs-proxy-helper.texi             |   2 +-
+ gdbstub.c                                  |   2 +-
+ hw/9pfs/9p.h                               |   1 -
+ hw/audio/gus.c                             |   2 +-
+ hw/audio/pcspk.c                           |   2 +-
+ hw/block/tc58128.c                         |   2 +-
+ hw/core/qdev.c                             |  30 +++--
+ hw/display/xenfb.c                         |   4 +-
+ hw/i386/acpi-build.c                       |   1 -
+ hw/i386/pc.c                               |   8 --
+ hw/i386/pc_piix.c                          |   1 -
+ hw/intc/aspeed_vic.c                       |   1 -
+ hw/ipmi/ipmi_bmc_extern.c                  |   2 +-
+ hw/isa/lpc_ich9.c                          |   4 +-
+ hw/net/e1000.c                             |   8 +-
+ hw/net/rocker/rocker_of_dpa.c              |   5 +-
+ hw/nvram/fw_cfg.c                          |  17 ++-
+ hw/ppc/ppc.c                               |   2 +-
+ hw/s390x/virtio-ccw.c                      |   2 +-
+ hw/timer/mc146818rtc.c                     |   1 -
+ hw/timer/omap_gptimer.c                    |   4 +-
+ hw/usb/hcd-ohci.c                          |   2 +-
+ hw/usb/redirect.c                          |   6 +-
+ hw/xtensa/pic_cpu.c                        |   4 +-
+ include/exec/cpu-all.h                     |   5 -
+ include/exec/hwaddr.h                      |   1 -
+ include/exec/user/thunk.h                  |  15 +--
+ include/hw/acpi/aml-build.h                |   1 -
+ include/hw/acpi/bios-linker-loader.h       |   1 -
+ include/hw/i386/ich9.h                     |   4 +-
+ include/hw/qdev-properties.h               |  10 +-
+ include/qemu-common.h                      |   4 -
+ include/qemu/bitmap.h                      |   1 -
+ include/qemu/fifo32.h                      |   1 -
+ include/qemu/host-utils.h                  |   2 +-
+ include/qemu/rcu.h                         |   1 -
+ include/qom/object.h                       |   1 -
+ include/sysemu/tpm_backend_int.h           |   1 -
+ linux-user/syscall.c                       |   4 +-
+ memory_mapping.c                           |   1 -
+ migration/postcopy-ram.c                   |   1 -
+ monitor.c                                  |   2 +-
+ page_cache.c                               |   1 -
+ po/Makefile                                |   2 +-
+ qapi/qmp-registry.c                        |   1 -
+ qemu-bridge-helper.c                       |   1 -
+ qemu-options.hx                            |   6 +-
+ qemu-timer.c                               |   2 +-
+ qga/channel-posix.c                        |   1 -
+ qga/channel-win32.c                        |   1 -
+ qga/channel.h                              |   1 -
+ qga/commands-posix.c                       |  13 +-
+ qga/commands-win32.c                       |   1 -
+ qga/commands.c                             |   1 -
+ qga/guest-agent-command-state.c            |   1 -
+ qga/main.c                                 |   1 -
+ qga/service-win32.c                        |   1 -
+ replay/replay-char.c                       |   4 -
+ rules.mak                                  |   2 +-
+ scripts/clean-includes                     |   5 +-
+ scripts/coccinelle/overflow_muldiv64.cocci |  16 +++
+ scripts/coccinelle/remove_muldiv64.cocci   |   6 +
+ scripts/coccinelle/round.cocci             |  19 +++
+ scripts/coccinelle/simplify_muldiv64.cocci |  11 ++
+ scripts/coccinelle/swap_muldiv64.cocci     |  13 ++
+ scripts/create_config                      |   6 +-
+ scripts/feature_to_c.sh                    |   6 +-
+ scripts/make_device_config.sh              |   4 +-
+ scripts/qemu-binfmt-conf.sh                |   2 +-
+ scripts/update-linux-headers.sh            |   2 +-
+ slirp/dnssearch.c                          |   5 +-
+ slirp/slirp.h                              |   1 -
+ target-moxie/mmu.h                         |   5 -
+ tests/ac97-test.c                          |   1 -
+ tests/ahci-test.c                          |   1 -
+ tests/bios-tables-test.c                   |   1 -
+ tests/boot-order-test.c                    |   1 -
+ tests/check-qdict.c                        |   1 -
+ tests/check-qfloat.c                       |   1 -
+ tests/check-qint.c                         |   1 -
+ tests/check-qjson.c                        |   1 -
+ tests/check-qlist.c                        |   1 -
+ tests/check-qnull.c                        |   1 -
+ tests/check-qom-interface.c                |   1 -
+ tests/check-qom-proplist.c                 |   1 -
+ tests/check-qstring.c                      |   1 -
+ tests/device-introspect-test.c             |   1 -
+ tests/display-vga-test.c                   |   1 -
+ tests/drive_del-test.c                     |   1 -
+ tests/ds1338-test.c                        |   2 -
+ tests/e1000-test.c                         |   1 -
+ tests/eepro100-test.c                      |   1 -
+ tests/endianness-test.c                    |   1 -
+ tests/es1370-test.c                        |   1 -
+ tests/fdc-test.c                           |   1 -
+ tests/fw_cfg-test.c                        |   1 -
+ tests/hd-geo-test.c                        |   1 -
+ tests/i440fx-test.c                        |   1 -
+ tests/i82801b11-test.c                     |   1 -
+ tests/ide-test.c                           |   1 -
+ tests/intel-hda-test.c                     |   1 -
+ tests/ioh3420-test.c                       |   1 -
+ tests/ipmi-bt-test.c                       |   1 -
+ tests/ipmi-kcs-test.c                      |   1 -
+ tests/ipoctal232-test.c                    |   1 -
+ tests/ivshmem-test.c                       |   1 -
+ tests/libqos/ahci.c                        |   1 -
+ tests/libqos/fw_cfg.c                      |   1 -
+ tests/libqos/i2c-imx.c                     |   1 -
+ tests/libqos/i2c-omap.c                    |   1 -
+ tests/libqos/libqos.c                      |   1 -
+ tests/libqos/malloc-generic.c              |   1 -
+ tests/libqos/malloc-pc.c                   |   1 -
+ tests/libqos/malloc.c                      |   1 -
+ tests/libqos/pci-pc.c                      |   1 -
+ tests/libqos/pci.c                         |   1 -
+ tests/libqos/usb.c                         |   1 -
+ tests/libqos/virtio-mmio.c                 |   1 -
+ tests/libqos/virtio-pci.c                  |   1 -
+ tests/libqos/virtio.c                      |   1 -
+ tests/libqtest.c                           |   1 -
+ tests/m48t59-test.c                        |   1 -
+ tests/ne2000-test.c                        |   1 -
+ tests/nvme-test.c                          |   1 -
+ tests/pc-cpu-test.c                        |   1 -
+ tests/pcnet-test.c                         |   1 -
+ tests/pvpanic-test.c                       |   1 -
+ tests/pxe-test.c                           |   1 -
+ tests/q35-test.c                           |   1 -
+ tests/qom-test.c                           |   1 -
+ tests/rcutorture.c                         |   1 -
+ tests/rtc-test.c                           |   1 -
+ tests/rtl8139-test.c                       |   1 -
+ tests/spapr-phb-test.c                     |   1 -
+ tests/tco-test.c                           |   1 -
+ tests/test-aio.c                           |   1 -
+ tests/test-base64.c                        |   1 -
+ tests/test-bitops.c                        |   1 -
+ tests/test-blockjob-txn.c                  |   1 -
+ tests/test-coroutine.c                     |   1 -
+ tests/test-crypto-cipher.c                 |   1 -
+ tests/test-crypto-hash.c                   |   1 -
+ tests/test-crypto-secret.c                 |   1 -
+ tests/test-cutils.c                        |   1 -
+ tests/test-filter-mirror.c                 |   1 -
+ tests/test-filter-redirector.c             |   1 -
+ tests/test-hbitmap.c                       |   7 +-
+ tests/test-int128.c                        |   1 -
+ tests/test-io-task.c                       |   1 -
+ tests/test-iov.c                           |   1 -
+ tests/test-logging.c                       |   1 -
+ tests/test-mul64.c                         |   1 -
+ tests/test-netfilter.c                     |   1 -
+ tests/test-opts-visitor.c                  |   1 -
+ tests/test-qdev-global-props.c             |   1 -
+ tests/test-qemu-opts.c                     |   1 -
+ tests/test-qga.c                           |   1 -
+ tests/test-qmp-commands.c                  |   1 -
+ tests/test-qmp-event.c                     |   1 -
+ tests/test-qmp-input-strict.c              |   1 -
+ tests/test-qmp-input-visitor.c             |   1 -
+ tests/test-qmp-output-visitor.c            |   1 -
+ tests/test-rcu-list.c                      |   1 -
+ tests/test-rfifolock.c                     |   1 -
+ tests/test-string-input-visitor.c          |   1 -
+ tests/test-string-output-visitor.c         |   1 -
+ tests/test-thread-pool.c                   |   1 -
+ tests/test-throttle.c                      |   1 -
+ tests/test-timed-average.c                 |   1 -
+ tests/test-visitor-serialization.c         |   1 -
+ tests/test-vmstate.c                       |   1 -
+ tests/test-write-threshold.c               |   1 -
+ tests/test-x86-cpuid.c                     |   1 -
+ tests/tmp105-test.c                        |   1 -
+ tests/tpci200-test.c                       |   1 -
+ tests/usb-hcd-ehci-test.c                  |   1 -
+ tests/usb-hcd-ohci-test.c                  |   1 -
+ tests/usb-hcd-uhci-test.c                  |   1 -
+ tests/usb-hcd-xhci-test.c                  |   1 -
+ tests/vhost-user-test.c                    |   1 -
+ tests/virtio-9p-test.c                     |   1 -
+ tests/virtio-balloon-test.c                |   1 -
+ tests/virtio-blk-test.c                    |   1 -
+ tests/virtio-console-test.c                |   1 -
+ tests/virtio-net-test.c                    |   1 -
+ tests/virtio-rng-test.c                    |   1 -
+ tests/virtio-scsi-test.c                   |   1 -
+ tests/virtio-serial-test.c                 |   1 -
+ tests/vmxnet3-test.c                       |   1 -
+ tests/wdt_ib700-test.c                     |   1 -
+ thunk.c                                    |  32 +++--
+ ui/sdl_zoom.c                              |   1 -
+ ui/spice-display.c                         |   2 +-
+ ui/vnc-palette.c                           |   1 -
+ util/coroutine-gthread.c                   |   1 -
+ util/hbitmap.c                             |   1 -
+ util/memfd.c                               |   1 -
+ util/oslib-win32.c                         |   1 -
+ util/uri.c                                 |   1 -
+ vl.c                                       |   1 -
+ xen-hvm.c                                  |   2 +-
+ 218 files changed, 312 insertions(+), 406 deletions(-)
+ create mode 100644 scripts/coccinelle/overflow_muldiv64.cocci
+ create mode 100644 scripts/coccinelle/remove_muldiv64.cocci
+ create mode 100644 scripts/coccinelle/round.cocci
+ create mode 100644 scripts/coccinelle/simplify_muldiv64.cocci
+ create mode 100644 scripts/coccinelle/swap_muldiv64.cocci
 
