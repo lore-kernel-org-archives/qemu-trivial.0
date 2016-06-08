@@ -1,59 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAdjf-0005zU-Pd
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 09:41:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40209)
+	id 1bAdmw-0000g1-H0
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 09:44:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bAdjd-0005xT-Jp
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 09:41:30 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bAdmt-0000dT-MP
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 09:44:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bAdjZ-0000Ft-Ld
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 09:41:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34751)
+	(envelope-from <peter.maydell@linaro.org>) id 1bAdmh-00019H-CJ
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 09:44:51 -0400
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:35900)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bAdjO-0000Dr-W6; Wed, 08 Jun 2016 09:41:15 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4114485367;
-	Wed,  8 Jun 2016 13:41:14 +0000 (UTC)
-Received: from [10.3.116.88] (ovpn-116-88.phx2.redhat.com [10.3.116.88])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u58DfC7m005640; Wed, 8 Jun 2016 09:41:13 -0400
-To: Changlong Xie <xiecl.fnst@cn.fujitsu.com>,
-	qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Jeff Cody <jcody@redhat.com>
-References: <1465348292-26750-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-	<1465348292-26750-8-git-send-email-xiecl.fnst@cn.fujitsu.com>
-Cc: qemu block <qemu-block@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Dong Eddie <eddie.dong@intel.com>, Jiang Yunhong <yunhong.jiang@intel.com>,
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Gonglei <arei.gonglei@huawei.com>, Wen Congyang <wency@cn.fujitsu.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <57582070.6020508@redhat.com>
-Date: Wed, 8 Jun 2016 07:41:04 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1bAdmh-000195-7T
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 09:44:39 -0400
+Received: by mail-vk0-x236.google.com with SMTP id g67so11503451vkb.3
+	for <qemu-trivial@nongnu.org>; Wed, 08 Jun 2016 06:44:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=aRAu1PVzd1TMc0CTpOGRCgA+KGVkwESYjNbr4b37CD0=;
+	b=E12dVy55Ayol2KjZSw1/CTaLReW3aiTqfBrtUMk/IUVJhRAqahE9n5/X4uKU2g+RKD
+	ZM0AFBdkjqla7z7K9fB7haWW2IT0PIVlHi+agdDzvCQ5G8J4X7Q+RDRQFBiARtMr7Pqv
+	BIy9A7sIhtouYXDxIHRfILtRB4rDxt5zAQgkw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=aRAu1PVzd1TMc0CTpOGRCgA+KGVkwESYjNbr4b37CD0=;
+	b=UIVfMWy/gCohFY0w0jjqVk3VLZNyC7KpWNOfewjau1hMn3Yp04IM+OdRz+Um7CyCVP
+	OL0fiXMwyCcOLkSN+OGYlv8vGBhGMVtIM7GR2p6n98mkb9a0LJ1ZWz8YEHwyZ/Syru+F
+	SXnS8tbivS+jEtoIAVhjP2QxzzEL/FwYnj5EYlQ33oPkIEZ8r8urVRqhFhZ3LkM23XlD
+	B/jeXqSt3hy3uIeeKS/E6Po7eBgsq4CDlS95ld/7p3oFxiNZbptGDS03TT5447zz3qYm
+	53u749BM0Fa2N2PZRl/GLQhYdCvktRyxqOkv/TMUVRGbWJvPk6plvk+XjGFIy+GRFD1m
+	R1hA==
+X-Gm-Message-State: ALyK8tLcl1oJSie4p/1B6B+KQmkea0V5bByVW+OHMSgT1oxRriDZaOOc4i7Mh2UePRGsIPhkutu1yFEfuGbghwsT
+X-Received: by 10.31.142.202 with SMTP id q193mr2419571vkd.37.1465393478606;
+	Wed, 08 Jun 2016 06:44:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1465348292-26750-8-git-send-email-xiecl.fnst@cn.fujitsu.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="WjGjGBM1XX0vnlP0kJa1kJOV1TRtxemPb"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 08 Jun 2016 13:41:14 +0000 (UTC)
+Received: by 10.31.97.68 with HTTP; Wed, 8 Jun 2016 06:44:19 -0700 (PDT)
+In-Reply-To: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
+References: <cover.1465312856.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 8 Jun 2016 14:44:19 +0100
+Message-ID: <CAFEAcA9Ouv_YgNiUomTzEgwR=3xTu3E0KG5VkZ87bjk=k6KR0Q@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v20 07/10] Introduce new APIs to do
- replication operation
+X-Received-From: 2607:f8b0:400c:c05::236
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/51] Trivial patches for
+ 2016-06-07
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,132 +60,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 13:41:31 -0000
+X-List-Received-Date: Wed, 08 Jun 2016 13:44:52 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---WjGjGBM1XX0vnlP0kJa1kJOV1TRtxemPb
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On 7 June 2016 at 16:22, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is another attempt to push trivial queue, previous was on 2016-06-05.
+> This is the same set, except that I dropped patch "pc-bios/s390-ccw: Use DIV_ROUND_UP",
+> and updated "Fix linking relocatable objects on Sparc" as per previous comments.
+>
+> I'm not resending everything, only the new sparc patch.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 79cecb3520606c55f427752c0a7a4add8afe2413:
+>
+>   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2016-06-07 15:30:25 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2016-06-07
+>
+> for you to fetch changes up to 30f549c2f30de65c7cbb30614b838d5478d6221b:
+>
+>   hbitmap: Use DIV_ROUND_UP (2016-06-07 18:19:25 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2016-06-07
+>
+> ----------------------------------------------------------------
 
-On 06/07/2016 07:11 PM, Changlong Xie wrote:
-> Signed-off-by: Wen Congyang <wency@cn.fujitsu.com>
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+Applied, thanks.
 
-No mention of the API names in the commit message?  Grepping 'git log'
-is easier if there is something useful to grep for.
-
-> ---
->  Makefile.objs        |   1 +
->  qapi/block-core.json |  13 ++++
->  replication.c        | 105 ++++++++++++++++++++++++++++++
->  replication.h        | 176 +++++++++++++++++++++++++++++++++++++++++++=
-++++++++
->  4 files changed, 295 insertions(+)
->  create mode 100644 replication.c
->  create mode 100644 replication.h
->=20
-
-> +++ b/qapi/block-core.json
-> @@ -2032,6 +2032,19 @@
->              '*read-pattern': 'QuorumReadPattern' } }
-> =20
->  ##
-> +# @ReplicationMode
-> +#
-> +# An enumeration of replication modes.
-> +#
-> +# @primary: Primary mode, the vm's state will be sent to secondary QEM=
-U.
-> +#
-> +# @secondary: Secondary mode, receive the vm's state from primary QEMU=
-=2E
-> +#
-> +# Since: 2.7
-> +##
-> +{ 'enum' : 'ReplicationMode', 'data' : [ 'primary', 'secondary' ] }
-> +
-
-This part is fine, from an interface point of view. However, I have not
-closely reviewed the rest of the patch or series.  That said, here's
-some quick things that caught my eye.
-
-
-> +++ b/replication.c
-> @@ -0,0 +1,105 @@
-> +/*
-> + * Replication filter
-> + *
-> + * Copyright (c) 2016 HUAWEI TECHNOLOGIES CO., LTD.
-> + * Copyright (c) 2016 Intel Corporation
-> + * Copyright (c) 2016 FUJITSU LIMITED
-> + *
-> + * Author:
-> + *   Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "replication.h"
-
-All new .c files must include "qemu/osdep.h" first.
-
-
-> +++ b/replication.h
-> @@ -0,0 +1,176 @@
-> +/*
-> + * Replication filter
-> + *
-> + * Copyright (c) 2016 HUAWEI TECHNOLOGIES CO., LTD.
-> + * Copyright (c) 2016 Intel Corporation
-> + * Copyright (c) 2016 FUJITSU LIMITED
-> + *
-> + * Author:
-> + *   Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef REPLICATION_H
-> +#define REPLICATION_H
-> +
-> +#include "qemu/osdep.h"
-
-And .h files must NOT include osdep.h.
-
-> +#include "qapi/error.h"
-
-Do you really need the full error.h, or is typedefs.h enough to get the
-forward declaration of Error?
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---WjGjGBM1XX0vnlP0kJa1kJOV1TRtxemPb
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXWCBwAAoJEKeha0olJ0Nq9d8H+QECmZOaaMIsra5lQkvcHDpl
-YusAac884RJeRe+htg777z9+s05x+uHwekuIS1bukRCnN4pEG4dmL+MdZjsujywa
-lG8NHHdc51SN573+8MO6TRO0TppKTVot4fjo3vREUwSRkVK5yiqW+S3y7t5Jk2hJ
-UBc9nLvae3fPU1vbdI8nkjgDETVLkoKHuU6u6MxZrTsZTNzQXcbcp6TPrq1183d5
-Udgf/BTpUOrUtQ1uGvt60nHCMq6zTwOdUA8Ib6ZXeKv2tJPdx9DJBaqD69dUCV6L
-McEEKVuxT/1kDGShTtuLS/FO5cyaUDaO8lkOp4fKFNsAqjoheslplrA4+Sh6sUQ=
-=L4g0
------END PGP SIGNATURE-----
-
---WjGjGBM1XX0vnlP0kJa1kJOV1TRtxemPb--
+-- PMM
 
