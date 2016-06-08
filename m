@@ -1,34 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAa5S-00069l-6H
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 05:47:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37322)
+	id 1bAae0-0001hv-7L
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 06:23:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46598)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAa5O-00065Y-FV
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 05:47:44 -0400
+	(envelope-from <berto@igalia.com>) id 1bAadx-0001dv-NK
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:23:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bAa5M-0000TA-Og
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 05:47:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56250)
+	(envelope-from <berto@igalia.com>) id 1bAadv-0001Bo-Ir
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:23:24 -0400
+Received: from smtp3.mundo-r.com ([212.51.32.191]:13165 helo=smtp4.mundo-r.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1bAa5F-0000PO-UR; Wed, 08 Jun 2016 05:47:34 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7CF5D40CC9;
-	Wed,  8 Jun 2016 12:47:30 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id DBB41AF4;
-	Wed,  8 Jun 2016 12:47:29 +0300 (MSK)
-Received: (nullmailer pid 6403 invoked by uid 1000);
-	Wed, 08 Jun 2016 09:47:29 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Wed,  8 Jun 2016 12:47:29 +0300
-Message-Id: <cover.1465379116.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 00/50] Trivial patches for 2016-06-08
+	(envelope-from <berto@igalia.com>)
+	id 1bAadp-00018Z-8J; Wed, 08 Jun 2016 06:23:18 -0400
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: A2BQCwBn8VdX/5tjdVtdGgEBAQGDIFaOJ5kVAQQBgQ8BkSWCD4F5JIU1OgKBOjgUAQEBAQEBAWUnhEYBAQR5EAsOCgklDwEsGwYBiEUBCbx3AQEBAQEBAQMBAQEBAQEcBYVfhRWJfhwFmE+GA5dCj2EeNoNwOjeKCgEBAQ
+X-IPAS-Result: A2BQCwBn8VdX/5tjdVtdGgEBAQGDIFaOJ5kVAQQBgQ8BkSWCD4F5JIU1OgKBOjgUAQEBAQEBAWUnhEYBAQR5EAsOCgklDwEsGwYBiEUBCbx3AQEBAQEBAQMBAQEBAQEcBYVfhRWJfhwFmE+GA5dCj2EeNoNwOjeKCgEBAQ
+X-IronPort-AV: E=Sophos;i="5.26,438,1459807200"; d="scan'208";a="135188030"
+Received: from fanzine.igalia.com ([91.117.99.155])
+	by smtp4.mundo-r.com with ESMTP; 08 Jun 2016 12:23:07 +0200
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+	by fanzine.igalia.com with esmtps 
+	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
+	id 1bAadf-0000H3-M1; Wed, 08 Jun 2016 12:23:07 +0200
+Received: from berto by mail.igalia.com with local (Exim)
+	id 1bAadf-0003FE-JP; Wed, 08 Jun 2016 12:23:07 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+In-Reply-To: <5757E903.7020308@msgid.tls.msk.ru>
+References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
+	<ce94e108e049ac2b51ef197fa15b1dcf6600c9ca.1465112552.git.mjt@msgid.tls.msk.ru>
+	<w51eg8812e1.fsf@maestria.local.igalia.com>
+	<5757E903.7020308@msgid.tls.msk.ru>
+User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
+	(i586-pc-linux-gnu)
+Date: Wed, 08 Jun 2016 12:23:07 +0200
+Message-ID: <w51bn3c0yk4.fsf@maestria.local.igalia.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 212.51.32.191
+Subject: Re: [Qemu-trivial] [PULL 24/52] docs: Fix a couple of typos in
+ throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,334 +54,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 09:47:44 -0000
+X-List-Received-Date: Wed, 08 Jun 2016 10:23:27 -0000
 
-Here's yet another attempt to process -trivial queue.
-3rd is the best, it looks like :)
+On Wed 08 Jun 2016 11:44:35 AM CEST, Michael Tokarev wrote:
+> 08.06.2016 12:00, Alberto Garcia wrote:
+>> On Sun 05 Jun 2016 09:43:01 AM CEST, Michael Tokarev wrote:
+>> 
+>>>    - Water leaks from the bucket at a rate of 100 IOPS.
+>>>    - Water can be added to the bucket at a rate of 2000 IOPS.
+>>>    - The size of the bucket is 2000 x 60 = 120000
+>>> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
+>>> +  - If 'iops-total-max' is unset then the bucket size is 100 x 60.
+>> 
+>> Sorry, I should have noticed this here in the pull request, but this is
+>> wrong.
+>
+> This has been discussed before, and it looks like the original version
+> which I applied was actually right... :)
+>
+> I can just drop this patch from the pull request, since it hasn't
+> been applied yet.  Esp. since the subject line is now wrong too :)
 
-I dropped one more patch from the series, per request
-from author, "docs: Fix a couple of typos in throttle.txt".
+It's been applied already:
 
-Not resending anything this time, as the queue is just one
-patch shorter now.
+https://github.com/qemu/qemu/commit/0bab0ebb17759c926bd48fd396bd8cbb2c8e4a3e
 
-Thanks, and sorry for the noize.
+I'll send a follow-up patch.
 
-/mjt
-
-The following changes since commit 79cecb3520606c55f427752c0a7a4add8afe2413:
-
-  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2016-06-07 15:30:25 +0100)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/pull-trivial-patches-2016-06-08
-
-for you to fetch changes up to a2997a1307da24d2e77b656e1a1984d10a39dcdc:
-
-  hbitmap: Use DIV_ROUND_UP (2016-06-08 12:45:07 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2016-06-08
-
-----------------------------------------------------------------
-Cao jin (3):
-      ICH9: fix typo
-      qdev: Clean up around properties
-      fw_cfg: follow CODING_STYLE
-
-Eric Blake (2):
-      monitor: Typo fix
-      host-utils: Prefer 'false' for bool type
-
-Igor Mammedov (1):
-      pc: cleanup unused struct PcRomPciInfo
-
-James Clarke (1):
-      Fix linking relocatable objects on Sparc
-
-Jan Vesely (1):
-      po/Makefile: call rm -f directly
-
-Laurent Vivier (20):
-      scripts: add muldiv64() checking coccinelle scripts
-      The only 64bit parameter of muldiv64() is the first one.
-      remove useless muldiv64()
-      replace muldiv64(a, b, c) by (uint64_t)a * b / c
-      ppc: Remove a potential overflow in muldiv64()
-      coccinelle: use macro DIV_ROUND_UP instead of (((n) + (d) - 1) /(d))
-      parallels: Use DIV_ROUND_UP
-      qcow/qcow2: Use DIV_ROUND_UP
-      qed: Use DIV_ROUND_UP
-      block: Use DIV_ROUND_UP
-      crypto: Use DIV_ROUND_UP
-      xen: Use DIV_ROUND_UP
-      audio: Use DIV_ROUND_UP
-      SPICE: Use DIV_ROUND_UP
-      rocker: Use DIV_ROUND_UP
-      usb: Use DIV_ROUND_UP
-      slirp: Use DIV_ROUND_UP
-      linux-user: Use DIV_ROUND_UP
-      qemu-timer: Use DIV_ROUND_UP
-      hbitmap: Use DIV_ROUND_UP
-
-Michael Tokarev (5):
-      s390x/virtio-ccw: fix spelling
-      hw/ipmi: fix spelling
-      docs: "specify" spell fix
-      qga: spelling fix
-      fsdev: spelling fix
-
-Peter Maydell (10):
-      qemu-options.hx: Specify the units for -machine kvm_shadow_mem
-      replay: Clean up includes
-      hw: Clean up includes
-      clean-includes: Add glib.h to list of unneeded includes
-      tests: Remove unnecessary glib.h includes
-      qga: Remove unnecessary glib.h includes
-      all: Remove unnecessary glib.h includes
-      qemu-common.h: Drop WORDS_ALIGNED define
-      thunk: Drop unused NO_THUNK_TYPE_SIZE guards
-      thunk: Rename args and fields in host-target bitmask conversion code
-
-Peter Wu (1):
-      gdbstub: set listen backlog to 1
-
-Sameeh Jubran (1):
-      e1000: Removing unnecessary if statement
-
-Stefan Weil (3):
-      target-moxie: Remove unused struct elements
-      configure: Use $(..) instead of deprecated `..`
-      scripts: Use $(..) instead of deprecated `..`
-
-Steven Luo (1):
-      Fix configure test for PBKDF2 in nettle
-
-Wei Jiangang (1):
-      docs/multi-thread-compression: Fix wrong command string
-
- block/dmg.c                                |   1 -
- block/parallels.c                          |   2 +-
- block/qcow.c                               |   4 +-
- block/qcow2-cluster.c                      |   4 +-
- block/qcow2-refcount.c                     |   6 +-
- block/qed-check.c                          |   3 +-
- block/qed.c                                |   3 +-
- block/vhdx.c                               |   1 -
- block/vmdk.c                               |   1 -
- block/vvfat.c                              |   3 +-
- configure                                  | 196 ++++++++++++++++-------------
- crypto/block-luks.c                        |   6 +-
- docs/multi-thread-compression.txt          |   2 +-
- docs/qapi-code-gen.txt                     |   2 +-
- fsdev/9p-iov-marshal.c                     |   1 -
- fsdev/9p-marshal.c                         |   1 -
- fsdev/virtfs-proxy-helper.texi             |   2 +-
- gdbstub.c                                  |   2 +-
- hw/9pfs/9p.h                               |   1 -
- hw/audio/gus.c                             |   2 +-
- hw/audio/pcspk.c                           |   2 +-
- hw/block/tc58128.c                         |   2 +-
- hw/core/qdev.c                             |  30 +++--
- hw/display/xenfb.c                         |   4 +-
- hw/i386/acpi-build.c                       |   1 -
- hw/i386/pc.c                               |   8 --
- hw/i386/pc_piix.c                          |   1 -
- hw/intc/aspeed_vic.c                       |   1 -
- hw/ipmi/ipmi_bmc_extern.c                  |   2 +-
- hw/isa/lpc_ich9.c                          |   4 +-
- hw/net/e1000.c                             |   8 +-
- hw/net/rocker/rocker_of_dpa.c              |   5 +-
- hw/nvram/fw_cfg.c                          |  17 ++-
- hw/ppc/ppc.c                               |   2 +-
- hw/s390x/virtio-ccw.c                      |   2 +-
- hw/timer/mc146818rtc.c                     |   1 -
- hw/timer/omap_gptimer.c                    |   4 +-
- hw/usb/hcd-ohci.c                          |   2 +-
- hw/usb/redirect.c                          |   6 +-
- hw/xtensa/pic_cpu.c                        |   4 +-
- include/exec/cpu-all.h                     |   5 -
- include/exec/hwaddr.h                      |   1 -
- include/exec/user/thunk.h                  |  15 +--
- include/hw/acpi/aml-build.h                |   1 -
- include/hw/acpi/bios-linker-loader.h       |   1 -
- include/hw/i386/ich9.h                     |   4 +-
- include/hw/qdev-properties.h               |  10 +-
- include/qemu-common.h                      |   4 -
- include/qemu/bitmap.h                      |   1 -
- include/qemu/fifo32.h                      |   1 -
- include/qemu/host-utils.h                  |   2 +-
- include/qemu/rcu.h                         |   1 -
- include/qom/object.h                       |   1 -
- include/sysemu/tpm_backend_int.h           |   1 -
- linux-user/syscall.c                       |   4 +-
- memory_mapping.c                           |   1 -
- migration/postcopy-ram.c                   |   1 -
- monitor.c                                  |   2 +-
- page_cache.c                               |   1 -
- po/Makefile                                |   2 +-
- qapi/qmp-registry.c                        |   1 -
- qemu-bridge-helper.c                       |   1 -
- qemu-options.hx                            |   6 +-
- qemu-timer.c                               |   2 +-
- qga/channel-posix.c                        |   1 -
- qga/channel-win32.c                        |   1 -
- qga/channel.h                              |   1 -
- qga/commands-posix.c                       |  13 +-
- qga/commands-win32.c                       |   1 -
- qga/commands.c                             |   1 -
- qga/guest-agent-command-state.c            |   1 -
- qga/main.c                                 |   1 -
- qga/service-win32.c                        |   1 -
- replay/replay-char.c                       |   4 -
- rules.mak                                  |   2 +-
- scripts/clean-includes                     |   5 +-
- scripts/coccinelle/overflow_muldiv64.cocci |  16 +++
- scripts/coccinelle/remove_muldiv64.cocci   |   6 +
- scripts/coccinelle/round.cocci             |  19 +++
- scripts/coccinelle/simplify_muldiv64.cocci |  11 ++
- scripts/coccinelle/swap_muldiv64.cocci     |  13 ++
- scripts/create_config                      |   6 +-
- scripts/feature_to_c.sh                    |   6 +-
- scripts/make_device_config.sh              |   4 +-
- scripts/qemu-binfmt-conf.sh                |   2 +-
- scripts/update-linux-headers.sh            |   2 +-
- slirp/dnssearch.c                          |   5 +-
- slirp/slirp.h                              |   1 -
- target-moxie/mmu.h                         |   5 -
- tests/ac97-test.c                          |   1 -
- tests/ahci-test.c                          |   1 -
- tests/bios-tables-test.c                   |   1 -
- tests/boot-order-test.c                    |   1 -
- tests/check-qdict.c                        |   1 -
- tests/check-qfloat.c                       |   1 -
- tests/check-qint.c                         |   1 -
- tests/check-qjson.c                        |   1 -
- tests/check-qlist.c                        |   1 -
- tests/check-qnull.c                        |   1 -
- tests/check-qom-interface.c                |   1 -
- tests/check-qom-proplist.c                 |   1 -
- tests/check-qstring.c                      |   1 -
- tests/device-introspect-test.c             |   1 -
- tests/display-vga-test.c                   |   1 -
- tests/drive_del-test.c                     |   1 -
- tests/ds1338-test.c                        |   2 -
- tests/e1000-test.c                         |   1 -
- tests/eepro100-test.c                      |   1 -
- tests/endianness-test.c                    |   1 -
- tests/es1370-test.c                        |   1 -
- tests/fdc-test.c                           |   1 -
- tests/fw_cfg-test.c                        |   1 -
- tests/hd-geo-test.c                        |   1 -
- tests/i440fx-test.c                        |   1 -
- tests/i82801b11-test.c                     |   1 -
- tests/ide-test.c                           |   1 -
- tests/intel-hda-test.c                     |   1 -
- tests/ioh3420-test.c                       |   1 -
- tests/ipmi-bt-test.c                       |   1 -
- tests/ipmi-kcs-test.c                      |   1 -
- tests/ipoctal232-test.c                    |   1 -
- tests/ivshmem-test.c                       |   1 -
- tests/libqos/ahci.c                        |   1 -
- tests/libqos/fw_cfg.c                      |   1 -
- tests/libqos/i2c-imx.c                     |   1 -
- tests/libqos/i2c-omap.c                    |   1 -
- tests/libqos/libqos.c                      |   1 -
- tests/libqos/malloc-generic.c              |   1 -
- tests/libqos/malloc-pc.c                   |   1 -
- tests/libqos/malloc.c                      |   1 -
- tests/libqos/pci-pc.c                      |   1 -
- tests/libqos/pci.c                         |   1 -
- tests/libqos/usb.c                         |   1 -
- tests/libqos/virtio-mmio.c                 |   1 -
- tests/libqos/virtio-pci.c                  |   1 -
- tests/libqos/virtio.c                      |   1 -
- tests/libqtest.c                           |   1 -
- tests/m48t59-test.c                        |   1 -
- tests/ne2000-test.c                        |   1 -
- tests/nvme-test.c                          |   1 -
- tests/pc-cpu-test.c                        |   1 -
- tests/pcnet-test.c                         |   1 -
- tests/pvpanic-test.c                       |   1 -
- tests/pxe-test.c                           |   1 -
- tests/q35-test.c                           |   1 -
- tests/qom-test.c                           |   1 -
- tests/rcutorture.c                         |   1 -
- tests/rtc-test.c                           |   1 -
- tests/rtl8139-test.c                       |   1 -
- tests/spapr-phb-test.c                     |   1 -
- tests/tco-test.c                           |   1 -
- tests/test-aio.c                           |   1 -
- tests/test-base64.c                        |   1 -
- tests/test-bitops.c                        |   1 -
- tests/test-blockjob-txn.c                  |   1 -
- tests/test-coroutine.c                     |   1 -
- tests/test-crypto-cipher.c                 |   1 -
- tests/test-crypto-hash.c                   |   1 -
- tests/test-crypto-secret.c                 |   1 -
- tests/test-cutils.c                        |   1 -
- tests/test-filter-mirror.c                 |   1 -
- tests/test-filter-redirector.c             |   1 -
- tests/test-hbitmap.c                       |   7 +-
- tests/test-int128.c                        |   1 -
- tests/test-io-task.c                       |   1 -
- tests/test-iov.c                           |   1 -
- tests/test-logging.c                       |   1 -
- tests/test-mul64.c                         |   1 -
- tests/test-netfilter.c                     |   1 -
- tests/test-opts-visitor.c                  |   1 -
- tests/test-qdev-global-props.c             |   1 -
- tests/test-qemu-opts.c                     |   1 -
- tests/test-qga.c                           |   1 -
- tests/test-qmp-commands.c                  |   1 -
- tests/test-qmp-event.c                     |   1 -
- tests/test-qmp-input-strict.c              |   1 -
- tests/test-qmp-input-visitor.c             |   1 -
- tests/test-qmp-output-visitor.c            |   1 -
- tests/test-rcu-list.c                      |   1 -
- tests/test-rfifolock.c                     |   1 -
- tests/test-string-input-visitor.c          |   1 -
- tests/test-string-output-visitor.c         |   1 -
- tests/test-thread-pool.c                   |   1 -
- tests/test-throttle.c                      |   1 -
- tests/test-timed-average.c                 |   1 -
- tests/test-visitor-serialization.c         |   1 -
- tests/test-vmstate.c                       |   1 -
- tests/test-write-threshold.c               |   1 -
- tests/test-x86-cpuid.c                     |   1 -
- tests/tmp105-test.c                        |   1 -
- tests/tpci200-test.c                       |   1 -
- tests/usb-hcd-ehci-test.c                  |   1 -
- tests/usb-hcd-ohci-test.c                  |   1 -
- tests/usb-hcd-uhci-test.c                  |   1 -
- tests/usb-hcd-xhci-test.c                  |   1 -
- tests/vhost-user-test.c                    |   1 -
- tests/virtio-9p-test.c                     |   1 -
- tests/virtio-balloon-test.c                |   1 -
- tests/virtio-blk-test.c                    |   1 -
- tests/virtio-console-test.c                |   1 -
- tests/virtio-net-test.c                    |   1 -
- tests/virtio-rng-test.c                    |   1 -
- tests/virtio-scsi-test.c                   |   1 -
- tests/virtio-serial-test.c                 |   1 -
- tests/vmxnet3-test.c                       |   1 -
- tests/wdt_ib700-test.c                     |   1 -
- thunk.c                                    |  32 +++--
- ui/sdl_zoom.c                              |   1 -
- ui/spice-display.c                         |   2 +-
- ui/vnc-palette.c                           |   1 -
- util/coroutine-gthread.c                   |   1 -
- util/hbitmap.c                             |   1 -
- util/memfd.c                               |   1 -
- util/oslib-win32.c                         |   1 -
- util/uri.c                                 |   1 -
- vl.c                                       |   1 -
- xen-hvm.c                                  |   2 +-
- 217 files changed, 310 insertions(+), 404 deletions(-)
- create mode 100644 scripts/coccinelle/overflow_muldiv64.cocci
- create mode 100644 scripts/coccinelle/remove_muldiv64.cocci
- create mode 100644 scripts/coccinelle/round.cocci
- create mode 100644 scripts/coccinelle/simplify_muldiv64.cocci
- create mode 100644 scripts/coccinelle/swap_muldiv64.cocci
+Berto
 
