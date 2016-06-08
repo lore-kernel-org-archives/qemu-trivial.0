@@ -1,42 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAb8p-0001Wn-KS
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 06:55:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54072)
+	id 1bAbAk-0002i3-Re
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 06:57:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54455)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1bAb8n-0001VA-DX
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:55:18 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bAbAi-0002h2-N3
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:57:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1bAb8l-00011s-JI
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:55:16 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:49740 helo=smtp4.mundo-r.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1bAbAh-0001HO-TH
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:57:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39870)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1bAb8f-0000wo-6A; Wed, 08 Jun 2016 06:55:09 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: A2CHAwAO+VdX/5tjdVtdKgGDE4FTpj8FAYEPAZElgg+BeRKGAYE9OBQBAQEBAQEBZSeFRU9ONIgzAb09hV+JJXyEchwFjlmJdo4mAolChVkCj2EeNoE2AQuCL2uIS4FEAQEB
-X-IPAS-Result: A2CHAwAO+VdX/5tjdVtdKgGDE4FTpj8FAYEPAZElgg+BeRKGAYE9OBQBAQEBAQEBZSeFRU9ONIgzAb09hV+JJXyEchwFjlmJdo4mAolChVkCj2EeNoE2AQuCL2uIS4FEAQEB
-X-IronPort-AV: E=Sophos;i="5.26,438,1459807200"; d="scan'208";a="70751388"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 08 Jun 2016 12:55:06 +0200
-Received: from [194.100.51.2] (helo=perseus.local)
-	by fanzine.igalia.com with esmtpsa 
-	(Cipher TLS1.0:RSA_AES_256_CBC_SHA1:32) (Exim)
-	id 1bAb8b-0000dL-S4; Wed, 08 Jun 2016 12:55:06 +0200
-Received: from berto by perseus.local with local (Exim 4.87)
-	(envelope-from <berto@igalia.com>)
-	id 1bAb8M-0001pt-2S; Wed, 08 Jun 2016 13:54:50 +0300
-From: Alberto Garcia <berto@igalia.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Alberto Garcia <berto@igalia.com>
-Date: Wed,  8 Jun 2016 13:54:48 +0300
-Message-Id: <1465383288-7021-1-git-send-email-berto@igalia.com>
-X-Mailer: git-send-email 2.8.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Subject: [Qemu-trivial] [PATCH] docs: Fix description of the leaky bucket
- algorithm in throttle.txt
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bAbAc-0001Gb-KS; Wed, 08 Jun 2016 06:57:10 -0400
+Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by isrv.corpit.ru (Postfix) with ESMTP id E46ED40CC9;
+	Wed,  8 Jun 2016 13:57:06 +0300 (MSK)
+To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
+References: <1465383288-7021-1-git-send-email-berto@igalia.com>
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
+Organization: Telecom Service, JSC
+Message-ID: <5757FA02.7010005@msgid.tls.msk.ru>
+Date: Wed, 8 Jun 2016 13:57:06 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.8.0
+MIME-Version: 1.0
+In-Reply-To: <1465383288-7021-1-git-send-email-berto@igalia.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] docs: Fix description of the leaky
+ bucket algorithm in throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,37 +44,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 10:55:18 -0000
+X-List-Received-Date: Wed, 08 Jun 2016 10:57:17 -0000
 
-Commit 0bab0ebb17759c926bd48fd396bd8cbb2c8e4a3e was supposed to fix
-a mistake in the description of the leaky bucket algorithm, but the
-version that finally landed after the review process was incorrect.
+08.06.2016 13:54, Alberto Garcia wrote:
+> Commit 0bab0ebb17759c926bd48fd396bd8cbb2c8e4a3e was supposed to fix
+> a mistake in the description of the leaky bucket algorithm, but the
+> version that finally landed after the review process was incorrect.
+> 
+> This patch solves that problem and hopefully clarifies the description
+> a bit better.
 
-This patch solves that problem and hopefully clarifies the description
-a bit better.
+Applied to -trivial queue, thank you!
 
-Signed-off-by: Alberto Garcia <berto@igalia.com>
----
- docs/throttle.txt | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/docs/throttle.txt b/docs/throttle.txt
-index 26d4d51..cd4e109 100644
---- a/docs/throttle.txt
-+++ b/docs/throttle.txt
-@@ -235,7 +235,10 @@ consider the following values:
-   - Water leaks from the bucket at a rate of 100 IOPS.
-   - Water can be added to the bucket at a rate of 2000 IOPS.
-   - The size of the bucket is 2000 x 60 = 120000
--  - If 'iops-total-max' is unset then the bucket size is 100 x 60.
-+  - If 'iops-total-max-length' is unset then it defaults to 1 and the
-+    size of the bucket is 2000.
-+  - If 'iops-total-max' is unset then 'iops-total-max-length' must be
-+    unset as well. In this case the bucket size is 100.
- 
- The bucket is initially empty, therefore water can be added until it's
- full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
--- 
-2.8.1
-
+/mjt
 
