@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bARyK-0001Bx-Kk
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 21:07:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39563)
+	id 1bARyM-0001Do-5X
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jun 2016 21:07:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bARyF-00017k-61
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 21:07:51 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bARyE-00016W-4b
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 21:07:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bARyD-0007Sr-7P
-	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 21:07:47 -0400
-Received: from [59.151.112.132] (port=21216 helo=heian.cn.fujitsu.com)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bARyC-0007Rm-Ii
+	for qemu-trivial@nongnu.org; Tue, 07 Jun 2016 21:07:46 -0400
+Received: from [59.151.112.132] (port=52506 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1bARxz-0007Jd-Fk; Tue, 07 Jun 2016 21:07:33 -0400
+	id 1bARxv-0007IT-Bi; Tue, 07 Jun 2016 21:07:29 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="7473511"
+   d="scan'208";a="7473504"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 08 Jun 2016 09:07:26 +0800
+	by heian.cn.fujitsu.com with ESMTP; 08 Jun 2016 09:07:20 +0800
 Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 28C0541C0B99;
-	Wed,  8 Jun 2016 09:07:23 +0800 (CST)
+	by cn.fujitsu.com (Postfix) with ESMTP id 4075B41C0B99;
+	Wed,  8 Jun 2016 09:07:17 +0800 (CST)
 Received: from changlox.g08.fujitsu.local (10.167.225.55) by
 	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 8 Jun 2016 09:07:22 +0800
+	Server (TLS) id 14.3.279.2; Wed, 8 Jun 2016 09:07:16 +0800
 From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
 To: qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
 	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
@@ -34,22 +34,20 @@ CC: qemu block <qemu-block@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	<yunhong.jiang@intel.com>, zhanghailiang <zhang.zhanghailiang@huawei.com>, 
 	Gonglei <arei.gonglei@huawei.com>, Wen Congyang <wency@cn.fujitsu.com>, 
 	Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-Date: Wed, 8 Jun 2016 09:11:27 +0800
-Message-ID: <1465348292-26750-6-git-send-email-xiecl.fnst@cn.fujitsu.com>
+Date: Wed, 8 Jun 2016 09:11:22 +0800
+Message-ID: <1465348292-26750-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
 X-Mailer: git-send-email 1.9.3
-In-Reply-To: <1465348292-26750-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-References: <1465348292-26750-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: 28C0541C0B99.A14E8
+X-yoursite-MailScanner-ID: 4075B41C0B99.AFBB2
 X-yoursite-MailScanner: Found to be clean
 X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH v20 05/10] docs: block replication's
- description
+Subject: [Qemu-trivial] [PATCH v20 00/10] Block replication for continuous
+ checkpoints
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,264 +59,171 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 01:07:51 -0000
+X-List-Received-Date: Wed, 08 Jun 2016 01:07:50 -0000
 
-From: Wen Congyang <wency@cn.fujitsu.com>
+Block replication is a very important feature which is used for
+continuous checkpoints(for example: COLO).
 
-Signed-off-by: Wen Congyang <wency@cn.fujitsu.com>
-Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-Signed-off-by: Gonglei <arei.gonglei@huawei.com>
-Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
----
- docs/block-replication.txt | 239 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 239 insertions(+)
+You can get the detailed information about block replication from here:
+http://wiki.qemu.org/Features/BlockReplication
+
+Usage:
+Please refer to docs/block-replication.txt
+
+You can get the patch here:
+https://github.com/Pating/qemu/tree/changlox/block-replication-v20
+
+You can get the patch with framework here:
+https://github.com/Pating/qemu/tree/changlox/colo_framework_v19
+
+TODO:
+1. Continuous block replication. It will be started after basic functions
+   are accepted.
+
+Changs Log:
+V20:
+1. Rebase to the lastest code
+2. Address comments from stefan
+p8: 
+1. error_setg() with an error message when check_top_bs() fails. 
+2. remove bdrv_ref(s->hidden_disk->bs) since commit 5c438bc6
+3. use bloc_job_cancel_sync() before active commit
+p9: 
+1. fix uninitialized 'pattern_buf'
+2. introduce mkstemp(3) to fix unique filenames
+3. use qemu_vfree() for qemu_blockalign() memory
+4. add missing replication_start_all()
+5. remove useless pattern for io_write()
+V19:
+1. Rebase to v2.6.0
+2. Address comments from stefan
+p3: a new patch that export interfaces for extra serialization
+p8: 
+1. call replication_stop() before freeing s->top_id
+2. check top_bs
+3. reopen file readonly in error return paths
+4. enable extra serialization between read and COW
+p9: try to hanlde SIGABRT
+V18:
+p6: add local_err in all replication callbacks to prevent "errp == NULL"
+p7: add missing qemu_iovec_destroy(xxx)
+V17:
+1. Rebase to the lastest codes 
+p2: refactor backup_do_checkpoint addressed comments from Jeff Cody
+p4: fix bugs in "drive_add buddy xxx" hmp commands
+p6: add "since: 2.7"
+p7: fix bug in replication_close(), add missing "qapi/error.h", add test-replication 
+p8: add "since: 2.7"
+V16:
+1. Rebase to the newest codes
+2. Address comments from Stefan & hailiang
+p3: we don't need this patch now
+p4: add "top-id" parameters for secondary
+p6: fix NULL pointer in replication callbacks, remove unnecessary typedefs, 
+add doc comments that explain the semantics of Replication
+p7: Refactor AioContext for thread-safe, remove unnecessary get_top_bs()
+*Note*: I'm working on replication testcase now, will send out in V17
+V15:
+1. Rebase to the newest codes
+2. Fix typos and coding style addresed Eric's comments
+3. Address Stefan's comments
+   1) Make backup_do_checkpoint public, drop the changes on BlockJobDriver
+   2) Update the message and description for [PATCH 4/9]
+   3) Make replication_(start/stop/do_checkpoint)_all as global interfaces
+   4) Introduce AioContext lock to protect start/stop/do_checkpoint callbacks
+   5) Use BdrvChild instead of holding on to BlockDriverState * pointers
+4. Clear BDRV_O_INACTIVE for hidden disk's open_flags since commit 09e0c771  
+5. Introduce replication_get_error_all to check replication status
+6. Remove useless discard interface
+V14:
+1. Implement auto complete active commit
+2. Implement active commit block job for replication.c
+3. Address the comments from Stefan, add replication-specific API and data
+   structure, also remove old block layer APIs
+V13:
+1. Rebase to the newest codes
+2. Remove redundant marcos and semicolon in replication.c 
+3. Fix typos in block-replication.txt
+V12:
+1. Rebase to the newest codes
+2. Use backing reference to replcace 'allow-write-backing-file'
+V11:
+1. Reopen the backing file when starting blcok replication if it is not
+   opened in R/W mode
+2. Unblock BLOCK_OP_TYPE_BACKUP_SOURCE and BLOCK_OP_TYPE_BACKUP_TARGET
+   when opening backing file
+3. Block the top BDS so there is only one block job for the top BDS and
+   its backing chain.
+V10:
+1. Use blockdev-remove-medium and blockdev-insert-medium to replace backing
+   reference.
+2. Address the comments from Eric Blake
+V9:
+1. Update the error messages
+2. Rebase to the newest qemu
+3. Split child add/delete support. These patches are sent in another patchset.
+V8:
+1. Address Alberto Garcia's comments
+V7:
+1. Implement adding/removing quorum child. Remove the option non-connect.
+2. Simplify the backing refrence option according to Stefan Hajnoczi's suggestion
+V6:
+1. Rebase to the newest qemu.
+V5:
+1. Address the comments from Gong Lei
+2. Speed the failover up. The secondary vm can take over very quickly even
+   if there are too many I/O requests.
+V4:
+1. Introduce a new driver replication to avoid touch nbd and qcow2.
+V3:
+1: use error_setg() instead of error_set()
+2. Add a new block job API
+3. Active disk, hidden disk and nbd target uses the same AioContext
+4. Add a testcase to test new hbitmap API
+V2:
+1. Redesign the secondary qemu(use image-fleecing)
+2. Use Error objects to return error message
+3. Address the comments from Max Reitz and Eric Blake
+
+Changlong Xie (3):
+  Backup: export interfaces for extra serialization
+  Introduce new APIs to do replication operation
+  tests: add unit test case for replication
+
+Wen Congyang (7):
+  unblock backup operations in backing file
+  Backup: clear all bitmap when doing block checkpoint
+  Link backup into block core
+  docs: block replication's description
+  auto complete active commit
+  Implement new driver for block replication
+  support replication driver in blockdev-add
+
+ Makefile.objs                |   1 +
+ block.c                      |  17 ++
+ block/Makefile.objs          |   3 +-
+ block/backup.c               |  59 +++-
+ block/mirror.c               |  13 +-
+ block/replication.c          | 657 +++++++++++++++++++++++++++++++++++++++++++
+ blockdev.c                   |   2 +-
+ docs/block-replication.txt   | 239 ++++++++++++++++
+ include/block/block_backup.h |  17 ++
+ include/block/block_int.h    |   3 +-
+ qapi/block-core.json         |  33 ++-
+ qemu-img.c                   |   2 +-
+ replication.c                | 105 +++++++
+ replication.h                | 176 ++++++++++++
+ tests/.gitignore             |   1 +
+ tests/Makefile               |   4 +
+ tests/test-replication.c     | 555 ++++++++++++++++++++++++++++++++++++
+ 17 files changed, 1870 insertions(+), 17 deletions(-)
+ create mode 100644 block/replication.c
  create mode 100644 docs/block-replication.txt
+ create mode 100644 include/block/block_backup.h
+ create mode 100644 replication.c
+ create mode 100644 replication.h
+ create mode 100644 tests/test-replication.c
 
-diff --git a/docs/block-replication.txt b/docs/block-replication.txt
-new file mode 100644
-index 0000000..c5fc18b
---- /dev/null
-+++ b/docs/block-replication.txt
-@@ -0,0 +1,239 @@
-+Block replication
-+----------------------------------------
-+Copyright Fujitsu, Corp. 2016
-+Copyright (c) 2016 Intel Corporation
-+Copyright (c) 2016 HUAWEI TECHNOLOGIES CO., LTD.
-+
-+This work is licensed under the terms of the GNU GPL, version 2 or later.
-+See the COPYING file in the top-level directory.
-+
-+Block replication is used for continuous checkpoints. It is designed
-+for COLO (COarse-grain LOck-stepping) where the Secondary VM is running.
-+It can also be applied for FT/HA (Fault-tolerance/High Assurance) scenario,
-+where the Secondary VM is not running.
-+
-+This document gives an overview of block replication's design.
-+
-+== Background ==
-+High availability solutions such as micro checkpoint and COLO will do
-+consecutive checkpoints. The VM state of the Primary and Secondary VM is
-+identical right after a VM checkpoint, but becomes different as the VM
-+executes till the next checkpoint. To support disk contents checkpoint,
-+the modified disk contents in the Secondary VM must be buffered, and are
-+only dropped at next checkpoint time. To reduce the network transportation
-+effort during a vmstate checkpoint, the disk modification operations of
-+the Primary disk are asynchronously forwarded to the Secondary node.
-+
-+== Workflow ==
-+The following is the image of block replication workflow:
-+
-+        +----------------------+            +------------------------+
-+        |Primary Write Requests|            |Secondary Write Requests|
-+        +----------------------+            +------------------------+
-+                  |                                       |
-+                  |                                      (4)
-+                  |                                       V
-+                  |                              /-------------\
-+                  |      Copy and Forward        |             |
-+                  |---------(1)----------+       | Disk Buffer |
-+                  |                      |       |             |
-+                  |                     (3)      \-------------/
-+                  |                 speculative      ^
-+                  |                write through    (2)
-+                  |                      |           |
-+                  V                      V           |
-+           +--------------+           +----------------+
-+           | Primary Disk |           | Secondary Disk |
-+           +--------------+           +----------------+
-+
-+    1) Primary write requests will be copied and forwarded to Secondary
-+       QEMU.
-+    2) Before Primary write requests are written to Secondary disk, the
-+       original sector content will be read from Secondary disk and
-+       buffered in the Disk buffer, but it will not overwrite the existing
-+       sector content (it could be from either "Secondary Write Requests" or
-+       previous COW of "Primary Write Requests") in the Disk buffer.
-+    3) Primary write requests will be written to Secondary disk.
-+    4) Secondary write requests will be buffered in the Disk buffer and it
-+       will overwrite the existing sector content in the buffer.
-+
-+== Architecture ==
-+We are going to implement block replication from many basic
-+blocks that are already in QEMU.
-+
-+         virtio-blk       ||
-+             ^            ||                            .----------
-+             |            ||                            | Secondary
-+        1 Quorum          ||                            '----------
-+         /      \         ||
-+        /        \        ||
-+   Primary    2 filter
-+     disk         ^                                                             virtio-blk
-+                  |                                                                  ^
-+                3 NBD  ------->  3 NBD                                               |
-+                client    ||     server                                          2 filter
-+                          ||        ^                                                ^
-+--------.                 ||        |                                                |
-+Primary |                 ||  Secondary disk <--------- hidden-disk 5 <--------- active-disk 4
-+--------'                 ||        |          backing        ^       backing
-+                          ||        |                         |
-+                          ||        |                         |
-+                          ||        '-------------------------'
-+                          ||           drive-backup sync=none 6
-+
-+1) The disk on the primary is represented by a block device with two
-+children, providing replication between a primary disk and the host that
-+runs the secondary VM. The read pattern (fifo) for quorum can be extended
-+to make the primary always read from the local disk instead of going through
-+NBD.
-+
-+2) The new block filter (the name is replication) will control the block
-+replication.
-+
-+3) The secondary disk receives writes from the primary VM through QEMU's
-+embedded NBD server (speculative write-through).
-+
-+4) The disk on the secondary is represented by a custom block device
-+(called active-disk). It should start as an empty disk, and the format
-+should support bdrv_make_empty() and backing file.
-+
-+5) The hidden-disk is created automatically. It buffers the original content
-+that is modified by the primary VM. It should also start as an empty disk,
-+and the driver supports bdrv_make_empty() and backing file.
-+
-+6) The drive-backup job (sync=none) is run to allow hidden-disk to buffer
-+any state that would otherwise be lost by the speculative write-through
-+of the NBD server into the secondary disk. So before block replication,
-+the primary disk and secondary disk should contain the same data.
-+
-+== Failure Handling ==
-+There are 7 internal errors when block replication is running:
-+1. I/O error on primary disk
-+2. Forwarding primary write requests failed
-+3. Backup failed
-+4. I/O error on secondary disk
-+5. I/O error on active disk
-+6. Making active disk or hidden disk empty failed
-+7. Doing failover failed
-+In case 1 and 5, we just report the error to the disk layer. In case 2, 3,
-+4 and 6, we just report block replication's error to FT/HA manager (which
-+decides when to do a new checkpoint, when to do failover).
-+In case 7, if active commit failed, we use replication failover failed state
-+in Secondary's write operation (what decides which target to write).
-+
-+== New block driver interface ==
-+We add three block driver interfaces to control block replication:
-+a. replication_start_all()
-+   Start block replication, called in migration/checkpoint thread.
-+   We must call block_replication_start_all() in secondary QEMU before
-+   calling block_replication_start_all() in primary QEMU. The caller
-+   must hold the I/O mutex lock if it is in migration/checkpoint
-+   thread.
-+b. replication_do_checkpoint_all()
-+   This interface is called after all VM state is transferred to
-+   Secondary QEMU. The Disk buffer will be dropped in this interface.
-+   The caller must hold the I/O mutex lock if it is in migration/checkpoint
-+   thread.
-+c. replication_get_error_all()
-+   This interface is called to check if error happened in replication.
-+   The caller must hold the I/O mutex lock if it is in migration/checkpoint
-+   thread.
-+d. replication_stop_all()
-+   It is called on failover. We will flush the Disk buffer into
-+   Secondary Disk and stop block replication. The vm should be stopped
-+   before calling it if you use this API to shutdown the guest, or other
-+   things except failover. The caller must hold the I/O mutex lock if it is
-+   in migration/checkpoint thread.
-+
-+== Usage ==
-+Primary:
-+  -drive if=xxx,driver=quorum,read-pattern=fifo,id=colo1,vote-threshold=1,\
-+         children.0.file.filename=1.raw,\
-+         children.0.driver=raw
-+
-+  Run qmp command in primary qemu:
-+    { 'execute': 'human-monitor-command',
-+      'arguments': {
-+          'command-line': 'drive_add -n buddy driver=replication,mode=primary,file.driver=nbd,file.host=xxxx,file.port=xxxx,file.export=colo1,node-name=nbd_client1'
-+      }
-+    }
-+    { 'execute': 'x-blockdev-change',
-+      'arguments': {
-+          'parent': 'colo1',
-+          'node': 'nbd_client1'
-+      }
-+    }
-+  Note:
-+  1. There should be only one NBD Client for each primary disk.
-+  2. host is the secondary physical machine's hostname or IP
-+  3. Each disk must have its own export name.
-+  4. It is all a single argument to -drive and you should ignore the
-+     leading whitespace.
-+  5. The qmp command line must be run after running qmp command line in
-+     secondary qemu.
-+  6. After failover we need remove children.1 (replication driver).
-+
-+Secondary:
-+  -drive if=none,driver=raw,file.filename=1.raw,id=colo1 \
-+  -drive if=xxx,id=topxxx,driver=replication,mode=secondary,top-id=topxxx\
-+         file.file.filename=active_disk.qcow2,\
-+         file.driver=qcow2,\
-+         file.backing.file.filename=hidden_disk.qcow2,\
-+         file.backing.driver=qcow2,\
-+         file.backing.backing=colo1
-+
-+  Then run qmp command in secondary qemu:
-+    { 'execute': 'nbd-server-start',
-+      'arguments': {
-+          'addr': {
-+              'type': 'inet',
-+              'data': {
-+                  'host': 'xxx',
-+                  'port': 'xxx'
-+              }
-+          }
-+      }
-+    }
-+    { 'execute': 'nbd-server-add',
-+      'arguments': {
-+          'device': 'colo1',
-+          'writable': true
-+      }
-+    }
-+
-+  Note:
-+  1. The export name in secondary QEMU command line is the secondary
-+     disk's id.
-+  2. The export name for the same disk must be the same
-+  3. The qmp command nbd-server-start and nbd-server-add must be run
-+     before running the qmp command migrate on primary QEMU
-+  4. Active disk, hidden disk and nbd target's length should be the
-+     same.
-+  5. It is better to put active disk and hidden disk in ramdisk.
-+  6. It is all a single argument to -drive, and you should ignore
-+     the leading whitespace.
-+
-+After Failover:
-+Primary:
-+  The secondary host is down, so we should run the following qmp command
-+  to remove the nbd child from the quorum:
-+  { 'execute': 'x-blockdev-change',
-+    'arguments': {
-+        'parent': 'colo1',
-+        'child': 'children.1'
-+    }
-+  }
-+  { 'execute': 'human-monitor-command',
-+    'arguments': {
-+        'command-line': 'drive_del xxxx'
-+    }
-+  }
-+  Note: there is no qmp command to remove the blockdev now
-+
-+Secondary:
-+  The primary host is down, so we should do the following thing:
-+  { 'execute': 'nbd-server-stop' }
-+
-+TODO:
-+1. Continuous block replication
-+2. Shared disk
 -- 
 1.9.3
 
