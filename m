@@ -1,48 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAae0-0001hv-7L
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 06:23:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46598)
+	id 1bAaxA-0004cq-03
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 06:43:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51626)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1bAadx-0001dv-NK
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:23:26 -0400
+	(envelope-from <berrange@redhat.com>) id 1bAax7-0004ak-AR
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:43:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1bAadv-0001Bo-Ir
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:23:24 -0400
-Received: from smtp3.mundo-r.com ([212.51.32.191]:13165 helo=smtp4.mundo-r.com)
+	(envelope-from <berrange@redhat.com>) id 1bAax6-0006cw-G7
+	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 06:43:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26592)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1bAadp-00018Z-8J; Wed, 08 Jun 2016 06:23:18 -0400
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: A2BQCwBn8VdX/5tjdVtdGgEBAQGDIFaOJ5kVAQQBgQ8BkSWCD4F5JIU1OgKBOjgUAQEBAQEBAWUnhEYBAQR5EAsOCgklDwEsGwYBiEUBCbx3AQEBAQEBAQMBAQEBAQEcBYVfhRWJfhwFmE+GA5dCj2EeNoNwOjeKCgEBAQ
-X-IPAS-Result: A2BQCwBn8VdX/5tjdVtdGgEBAQGDIFaOJ5kVAQQBgQ8BkSWCD4F5JIU1OgKBOjgUAQEBAQEBAWUnhEYBAQR5EAsOCgklDwEsGwYBiEUBCbx3AQEBAQEBAQMBAQEBAQEcBYVfhRWJfhwFmE+GA5dCj2EeNoNwOjeKCgEBAQ
-X-IronPort-AV: E=Sophos;i="5.26,438,1459807200"; d="scan'208";a="135188030"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 08 Jun 2016 12:23:07 +0200
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim)
-	id 1bAadf-0000H3-M1; Wed, 08 Jun 2016 12:23:07 +0200
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1bAadf-0003FE-JP; Wed, 08 Jun 2016 12:23:07 +0200
-From: Alberto Garcia <berto@igalia.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-In-Reply-To: <5757E903.7020308@msgid.tls.msk.ru>
-References: <cover.1465112552.git.mjt@msgid.tls.msk.ru>
-	<ce94e108e049ac2b51ef197fa15b1dcf6600c9ca.1465112552.git.mjt@msgid.tls.msk.ru>
-	<w51eg8812e1.fsf@maestria.local.igalia.com>
-	<5757E903.7020308@msgid.tls.msk.ru>
-User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
-	(i586-pc-linux-gnu)
-Date: Wed, 08 Jun 2016 12:23:07 +0200
-Message-ID: <w51bn3c0yk4.fsf@maestria.local.igalia.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Subject: Re: [Qemu-trivial] [PULL 24/52] docs: Fix a couple of typos in
- throttle.txt
+	(envelope-from <berrange@redhat.com>)
+	id 1bAawx-0006VZ-4u; Wed, 08 Jun 2016 06:43:03 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B3A3063E18;
+	Wed,  8 Jun 2016 10:43:02 +0000 (UTC)
+Received: from t530wlan.home.berrange.com.com (vpn1-6-33.ams2.redhat.com
+	[10.36.6.33])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u58Ah0s2031643; Wed, 8 Jun 2016 06:43:01 -0400
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	"Daniel P. Berrange" <berrange@redhat.com>
+Date: Wed,  8 Jun 2016 11:42:56 +0100
+Message-Id: <1465382576-25552-1-git-send-email-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 08 Jun 2016 10:43:02 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] ui: fix regression in printing VNC host/port
+ on startup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,32 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 10:23:27 -0000
+X-List-Received-Date: Wed, 08 Jun 2016 10:43:14 -0000
 
-On Wed 08 Jun 2016 11:44:35 AM CEST, Michael Tokarev wrote:
-> 08.06.2016 12:00, Alberto Garcia wrote:
->> On Sun 05 Jun 2016 09:43:01 AM CEST, Michael Tokarev wrote:
->> 
->>>    - Water leaks from the bucket at a rate of 100 IOPS.
->>>    - Water can be added to the bucket at a rate of 2000 IOPS.
->>>    - The size of the bucket is 2000 x 60 = 120000
->>> -  - If 'iops-total-max-length' is unset then the bucket size is 100.
->>> +  - If 'iops-total-max' is unset then the bucket size is 100 x 60.
->> 
->> Sorry, I should have noticed this here in the pull request, but this is
->> wrong.
->
-> This has been discussed before, and it looks like the original version
-> which I applied was actually right... :)
->
-> I can just drop this patch from the pull request, since it hasn't
-> been applied yet.  Esp. since the subject line is now wrong too :)
+If VNC is chosen as the compile time default display backend,
+QEMU will print the host/port it listens on at startup.
+Previously this would look like
 
-It's been applied already:
+  VNC server running on '::1:5900'
 
-https://github.com/qemu/qemu/commit/0bab0ebb17759c926bd48fd396bd8cbb2c8e4a3e
+but in 04d2529da27db512dcbd5e99d0e26d333f16efcc the ':' was
+accidentally replaced with a ';'. This the ':' back.
 
-I'll send a follow-up patch.
+Reported-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+---
+ ui/vnc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Berto
+diff --git a/ui/vnc.c b/ui/vnc.c
+index c862fdc..75ae2a7 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -3225,7 +3225,7 @@ char *vnc_display_local_addr(const char *id)
+         qapi_free_SocketAddress(addr);
+         return NULL;
+     }
+-    ret = g_strdup_printf("%s;%s", addr->u.inet.data->host,
++    ret = g_strdup_printf("%s:%s", addr->u.inet.data->host,
+                           addr->u.inet.data->port);
+     qapi_free_SocketAddress(addr);
+ 
+-- 
+2.5.5
+
 
