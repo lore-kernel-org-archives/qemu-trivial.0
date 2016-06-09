@@ -1,46 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bAk5F-0001Vx-2H
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jun 2016 16:28:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37839)
+	id 1bB4EQ-0000Yp-Dl
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jun 2016 13:59:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bAk5C-0001SG-Qo
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 16:28:11 -0400
+	(envelope-from <sergey.fedorov@linaro.org>) id 1bB4EJ-0000ST-JP
+	for qemu-trivial@nongnu.org; Thu, 09 Jun 2016 13:59:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bAk57-0004bc-RB
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 16:28:09 -0400
-Received: from resqmta-po-11v.sys.comcast.net ([96.114.154.170]:41324
-	helo=resqmta-ch2-11v.sys.comcast.net)
+	(envelope-from <sergey.fedorov@linaro.org>) id 1bB4ED-0004kF-7M
+	for qemu-trivial@nongnu.org; Thu, 09 Jun 2016 13:58:54 -0400
+Received: from mail-lf0-x22f.google.com ([2a00:1450:4010:c07::22f]:34795)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bAk57-0004bI-Ld
-	for qemu-trivial@nongnu.org; Wed, 08 Jun 2016 16:28:05 -0400
-Received: from resomta-po-11v.sys.comcast.net ([96.114.154.235])
-	by resqmta-po-11v.sys.comcast.net with SMTP
-	id Ak2ebU3CamNqqAk49bpu5b; Wed, 08 Jun 2016 20:27:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=comcast.net;
-	s=q20140121; t=1465417625;
-	bh=OHFENRpdRp7jl8wULxs41FFn3rqcS1U4HjlzS1fK0BE=;
-	h=Received:Received:From:To:Subject:Date:Message-Id;
-	b=DHVcHb0X59orlfQ/NwyadS0L6dPK0vqRVlnM0NckAERj9S1eDQiE6vycOSFvB+ziV
-	WmFBAhrPkfac0zkvPAhFTz5cSQkLGZKna3qkSlBG3pQl6hfdWVsChNz6tVOOJiG+ka
-	a9G9K95csCJU4sj7ECKjZSoKnQuP3RGTzyD5NwQWU21hofLU0KOCoApHSR/5xclE+O
-	vR6lGJ1dnOthOPK8eTzvnsswweJKOytx1P3FUHxqEhm0F/I+vP+2Vdt0vO4VBhedkW
-	0yaPvq8aOWbFn7XNkJMzXmY4NtN25C7c42sU5clFotFNtI/l8HGwy+xCArqnCRYZYk
-	lgB1skTA8nrpw==
-Received: from red.redhat.com ([24.10.254.122])
-	by resomta-po-11v.sys.comcast.net with comcast
-	id 4LT11t00G2fD5rL01LT4t5; Wed, 08 Jun 2016 20:27:05 +0000
-From: Eric Blake <eblake@redhat.com>
+	(envelope-from <sergey.fedorov@linaro.org>) id 1bB4ED-0004js-0b
+	for qemu-trivial@nongnu.org; Thu, 09 Jun 2016 13:58:49 -0400
+Received: by mail-lf0-x22f.google.com with SMTP id j7so7618911lfg.1
+	for <qemu-trivial@nongnu.org>; Thu, 09 Jun 2016 10:58:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=4t1+1p1e2Nd6Kv0Lx3BVXTeiEaUyMXXmE2jbWYwKYCE=;
+	b=fPwB30nPgGZXrNvYpPlVKF3v5Cl4TMcUq9ajtELZDTDS1R30uRXEW6PGwNoovfREW+
+	xkgUHXFytXuHm7AwoCcHyxrmd1aXiT8J/hmSFvU9oGofuCUWHKN1iTwZAebqSODg7G0i
+	lTmO0Bpw1a2gMglCyW/AmLZoN1L6q8qt2P18s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=4t1+1p1e2Nd6Kv0Lx3BVXTeiEaUyMXXmE2jbWYwKYCE=;
+	b=WFxJN3U7t1OJ7cA169YhuFTIcVNjHG/svCHgabpfqXTawtMqEGtgWG/UOx8NhcQn7t
+	EJqwAD/F+FlSIQREdUHqVvbzG/98xOk84F0cx611DlX4Rkds+8S01uwOqhxYMa+lJ9Eo
+	W/5Bc7mSH2hj43aIfbtvcfb0M+nm14nDdq5gHA9DrtURDH7q9JTJfk50f4mN7oNAp5gh
+	qWnykKVGGsnc7vl/pP5k5IkIA4J3nwxV/bwFrEnYSN0QAHxwlFfwmxlzuS9dYavlU4nI
+	YkO7612k1r3YbwYmaswknRHv5uSxAm0GL3Cu2YLQ/G2OctIWitIZOWG/x/6BTIQszzxj
+	WMwA==
+X-Gm-Message-State: ALyK8tJ2EaB5RlXZg3eLltbpxTvpK1FDTiw+WBEa0zOiux7kQOgy+Axw7cjXQ742UeDHb8bZ
+X-Received: by 10.25.161.83 with SMTP id k80mr1104329lfe.60.1465495126637;
+	Thu, 09 Jun 2016 10:58:46 -0700 (PDT)
+Received: from localhost.localdomain ([195.91.132.170])
+	by smtp.gmail.com with ESMTPSA id
+	g101sm810574lji.26.2016.06.09.10.58.45
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 09 Jun 2016 10:58:45 -0700 (PDT)
+From: Sergey Fedorov <sergey.fedorov@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com,
-	famz@redhat.com,
-	qemu-trivial@nongnu.org
-Date: Wed,  8 Jun 2016 14:26:59 -0600
-Message-Id: <1465417619-31639-1-git-send-email-eblake@redhat.com>
-X-Mailer: git-send-email 2.5.5
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 96.114.154.170
-Subject: [Qemu-trivial] [PATCH] maint: Ignore generated version file
+Cc: qemu-trivial@nongnu.org, patches@linaro.org,
+	Sergey Fedorov <serge.fdrv@gmail.com>,
+	Sergey Fedorov <sergey.fedorov@linaro.org>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Thu,  9 Jun 2016 20:58:35 +0300
+Message-Id: <1465495115-24665-1-git-send-email-sergey.fedorov@linaro.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::22f
+Subject: [Qemu-trivial] [PATCH] Makefile: Fix tag file generation targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,31 +65,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jun 2016 20:28:11 -0000
+X-List-Received-Date: Thu, 09 Jun 2016 17:59:01 -0000
 
-Commit 67a1de0d created a generated version file, and, in some
-circumstances, also a temporary file.  Make sure 'git add .'
-won't check them into the repository.
+From: Sergey Fedorov <serge.fdrv@gmail.com>
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
+"ctags" produces a file named "tags", not "ctags". It doesn't look
+reasonable to use phony target name as a file name to remove. Just use
+exact file names to remove in "ctags" and "TAGS" target receipts.
+
+Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
 ---
- .gitignore | 2 ++
- 1 file changed, 2 insertions(+)
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/.gitignore b/.gitignore
-index 38ee1c5..7a4ee01 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -52,6 +52,8 @@
- /qemu-bridge-helper
- /qemu-monitor.texi
- /qemu-monitor-info.texi
-+/qemu-version.h
-+/qemu-version.h.tmp
- /qmp-commands.txt
- /vscclient
- /fsdev/virtfs-proxy-helper
+diff --git a/Makefile b/Makefile
+index b8563db68677..61bf1bf9e2bb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -478,12 +478,12 @@ test speed: all
+ 
+ .PHONY: ctags
+ ctags:
+-	rm -f $@
++	rm -f tags
+ 	find "$(SRC_PATH)" -name '*.[hc]' -exec ctags --append {} +
+ 
+ .PHONY: TAGS
+ TAGS:
+-	rm -f $@
++	rm -f TAGS
+ 	find "$(SRC_PATH)" -name '*.[hc]' -exec etags --append {} +
+ 
+ cscope:
 -- 
-2.5.5
+1.9.1
 
 
