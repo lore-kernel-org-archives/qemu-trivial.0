@@ -1,50 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bBpj2-0005r2-1P
-	for mharc-qemu-trivial@gnu.org; Sat, 11 Jun 2016 16:41:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59198)
+	id 1bCLmm-0002H6-1a
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jun 2016 02:55:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40197)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bBpiz-0005pe-AL
-	for qemu-trivial@nongnu.org; Sat, 11 Jun 2016 16:41:46 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1bCLmk-0002FD-3g
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 02:55:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bBpiy-0005TT-8Q
-	for qemu-trivial@nongnu.org; Sat, 11 Jun 2016 16:41:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52360)
+	(envelope-from <aurelien@aurel32.net>) id 1bCLmi-0000rI-5V
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 02:55:45 -0400
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:39875)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bBpit-0005Si-Mj; Sat, 11 Jun 2016 16:41:39 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DCA4885A00;
-	Sat, 11 Jun 2016 20:41:38 +0000 (UTC)
-Received: from [10.3.116.47] (ovpn-116-47.phx2.redhat.com [10.3.116.47])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5BKfJpL001132; Sat, 11 Jun 2016 16:41:21 -0400
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
+	(envelope-from <aurelien@aurel32.net>)
+	id 1bCLme-0000qR-KS; Mon, 13 Jun 2016 02:55:40 -0400
+Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
+	by hall.aurel32.net with esmtpsa
+	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.84_2)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1bCLmV-0004yo-W0; Mon, 13 Jun 2016 08:55:32 +0200
+Received: from aurel32 by ohm.aurel32.net with local (Exim 4.87)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1bCLmN-0003Tj-Cd; Mon, 13 Jun 2016 08:55:23 +0200
+Date: Mon, 13 Jun 2016 08:55:22 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org
+Message-ID: <20160613065522.GA7847@aurel32.net>
 References: <1465575021-3774-1-git-send-email-peter.maydell@linaro.org>
-Cc: Aurelien Jarno <aurelien@aurel32.net>, patches@linaro.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <575C7765.6050806@redhat.com>
-Date: Sat, 11 Jun 2016 14:41:09 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <1465575021-3774-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="gVIGV6GpvhXiqdgGGvjAGd5smCmHcSWT0"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Sat, 11 Jun 2016 20:41:39 +0000 (UTC)
+User-Agent: Mutt/1.6.0 (2016-04-01)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/sh4/sh_pci.c: Use
- ldl_le_p() and stl_le_p()
+X-Received-From: 2001:bc8:30d7:100::1
+Subject: Re: [Qemu-trivial] [PATCH] hw/sh4/sh_pci.c: Use ldl_le_p() and
+ stl_le_p()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,49 +46,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Jun 2016 20:41:46 -0000
+X-List-Received-Date: Mon, 13 Jun 2016 06:55:47 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---gVIGV6GpvhXiqdgGGvjAGd5smCmHcSWT0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 06/10/2016 10:10 AM, Peter Maydell wrote:
+On 2016-06-10 17:10, Peter Maydell wrote:
 > Use ldl_le_p() and stl_le_p() instead of le32_to_cpup() and
 > cpu_to_le32w(); the former handle misaligned addresses and don't
 > need casts, and the latter are deprecated.
->=20
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
 >  hw/sh4/sh_pci.c | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
+> 
+> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+> index e820a32..1747628 100644
+> --- a/hw/sh4/sh_pci.c
+> +++ b/hw/sh4/sh_pci.c
+> @@ -55,7 +55,7 @@ static void sh_pci_reg_write (void *p, hwaddr addr, uint64_t val,
+>  
+>      switch(addr) {
+>      case 0 ... 0xfc:
+> -        cpu_to_le32w((uint32_t*)(pcic->dev->config + addr), val);
+> +        stl_le_p(pcic->dev->config + addr, val);
+>          break;
+>      case 0x1c0:
+>          pcic->par = val;
+> @@ -85,7 +85,7 @@ static uint64_t sh_pci_reg_read (void *p, hwaddr addr,
+>  
+>      switch(addr) {
+>      case 0 ... 0xfc:
+> -        return le32_to_cpup((uint32_t*)(pcic->dev->config + addr));
+> +        return ldl_le_p(pcic->dev->config + addr);
+>      case 0x1c0:
+>          return pcic->par;
+>      case 0x1c4:
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Thanks for the patch. I confirm it builds and works fine.
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Acked-by: Aurelien Jarno <aurelien@aurel32.net>
 
-
---gVIGV6GpvhXiqdgGGvjAGd5smCmHcSWT0
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXXHdlAAoJEKeha0olJ0Nq/OYH/2yDKZzzd1YcfcQgn2PezXKl
-wnv2DJ4Q/O3RoQbloPtm+aHwy5khSzc5tjmM7f2s5YsJwJ3Omx5K7Iw5wJ9wr8l2
-4M2Tbe5fpxOqYTvZXndTI72m+HVwuh1c6jfKAsn1UFMghCAHiwwbXi4ovfsdrS5i
-6Ab9cSMKCml7q45jd5wqyN16KXrY2uhAfbfPlPhmBY459UUba7LJz6BQcoTbdjMu
-WIkihlDCeRLtz3rctxRRQkyqxWTzsLsVqoxiLnwtXSEYclpwYNX9Dw8xyJjBDKYS
-hnYmATNu3g9vQCVLU5a7frp7JV1OzHb52T2GQYKDXXSTzAhoKfM7FuFx+QLJoTc=
-=+7wZ
------END PGP SIGNATURE-----
-
---gVIGV6GpvhXiqdgGGvjAGd5smCmHcSWT0--
+-- 
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
