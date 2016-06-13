@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bCLmm-0002H6-1a
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jun 2016 02:55:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40197)
+	id 1bCMx9-00010Y-Sh
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jun 2016 04:10:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1bCLmk-0002FD-3g
-	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 02:55:47 -0400
+	(envelope-from <thuth@redhat.com>) id 1bCMx6-0000yK-4s
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 04:10:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1bCLmi-0000rI-5V
-	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 02:55:45 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:39875)
+	(envelope-from <thuth@redhat.com>) id 1bCMx1-0007xf-Px
+	for qemu-trivial@nongnu.org; Mon, 13 Jun 2016 04:10:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51939)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1bCLme-0000qR-KS; Mon, 13 Jun 2016 02:55:40 -0400
-Received: from ohm.aurel32.net ([2001:bc8:30d7:111::1000])
-	by hall.aurel32.net with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.84_2)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1bCLmV-0004yo-W0; Mon, 13 Jun 2016 08:55:32 +0200
-Received: from aurel32 by ohm.aurel32.net with local (Exim 4.87)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1bCLmN-0003Tj-Cd; Mon, 13 Jun 2016 08:55:23 +0200
-Date: Mon, 13 Jun 2016 08:55:22 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org
-Message-ID: <20160613065522.GA7847@aurel32.net>
-References: <1465575021-3774-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1465575021-3774-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.6.0 (2016-04-01)
+	(envelope-from <thuth@redhat.com>)
+	id 1bCMwv-0007w7-Ug; Mon, 13 Jun 2016 04:10:22 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7177E85540;
+	Mon, 13 Jun 2016 08:10:21 +0000 (UTC)
+Received: from thh440s.fritz.box (vpn1-6-135.ams2.redhat.com [10.36.6.135])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5D8AI8t027786; Mon, 13 Jun 2016 04:10:20 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+Date: Mon, 13 Jun 2016 10:10:18 +0200
+Message-Id: <1465805418-15906-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 13 Jun 2016 08:10:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:bc8:30d7:100::1
-Subject: Re: [Qemu-trivial] [PATCH] hw/sh4/sh_pci.c: Use ldl_le_p() and
- stl_le_p()
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] scsi-disk: Use (unsigned long) typecasts
+ when using "%lu" format string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,46 +45,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jun 2016 06:55:47 -0000
+X-List-Received-Date: Mon, 13 Jun 2016 08:10:35 -0000
 
-On 2016-06-10 17:10, Peter Maydell wrote:
-> Use ldl_le_p() and stl_le_p() instead of le32_to_cpup() and
-> cpu_to_le32w(); the former handle misaligned addresses and don't
-> need casts, and the latter are deprecated.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/sh4/sh_pci.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
-> index e820a32..1747628 100644
-> --- a/hw/sh4/sh_pci.c
-> +++ b/hw/sh4/sh_pci.c
-> @@ -55,7 +55,7 @@ static void sh_pci_reg_write (void *p, hwaddr addr, uint64_t val,
->  
->      switch(addr) {
->      case 0 ... 0xfc:
-> -        cpu_to_le32w((uint32_t*)(pcic->dev->config + addr), val);
-> +        stl_le_p(pcic->dev->config + addr, val);
->          break;
->      case 0x1c0:
->          pcic->par = val;
-> @@ -85,7 +85,7 @@ static uint64_t sh_pci_reg_read (void *p, hwaddr addr,
->  
->      switch(addr) {
->      case 0 ... 0xfc:
-> -        return le32_to_cpup((uint32_t*)(pcic->dev->config + addr));
-> +        return ldl_le_p(pcic->dev->config + addr);
->      case 0x1c0:
->          return pcic->par;
->      case 0x1c4:
+Some source code analyzers like cppcheck spill out a warning if
+the sign of the argument does not match the format string.
 
-Thanks for the patch. I confirm it builds and works fine.
+Ticket: https://bugs.launchpad.net/qemu/+bug/1589564
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/scsi/scsi-disk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Acked-by: Aurelien Jarno <aurelien@aurel32.net>
-
+diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+index 1881969..36f8a85 100644
+--- a/hw/scsi/scsi-disk.c
++++ b/hw/scsi/scsi-disk.c
+@@ -2060,13 +2060,13 @@ static int32_t scsi_disk_emulate_command(SCSIRequest *req, uint8_t *buf)
+         }
+         break;
+     case MODE_SELECT:
+-        DPRINTF("Mode Select(6) (len %lu)\n", (long)r->req.cmd.xfer);
++        DPRINTF("Mode Select(6) (len %lu)\n", (unsigned long)r->req.cmd.xfer);
+         break;
+     case MODE_SELECT_10:
+-        DPRINTF("Mode Select(10) (len %lu)\n", (long)r->req.cmd.xfer);
++        DPRINTF("Mode Select(10) (len %lu)\n", (unsigned long)r->req.cmd.xfer);
+         break;
+     case UNMAP:
+-        DPRINTF("Unmap (len %lu)\n", (long)r->req.cmd.xfer);
++        DPRINTF("Unmap (len %lu)\n", (unsigned long)r->req.cmd.xfer);
+         break;
+     case VERIFY_10:
+     case VERIFY_12:
+@@ -2080,7 +2080,7 @@ static int32_t scsi_disk_emulate_command(SCSIRequest *req, uint8_t *buf)
+     case WRITE_SAME_16:
+         DPRINTF("WRITE SAME %d (len %lu)\n",
+                 req->cmd.buf[0] == WRITE_SAME_10 ? 10 : 16,
+-                (long)r->req.cmd.xfer);
++                (unsigned long)r->req.cmd.xfer);
+         break;
+     default:
+         DPRINTF("Unknown SCSI command (%2.2x=%s)\n", buf[0],
 -- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+1.8.3.1
+
 
