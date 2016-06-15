@@ -1,55 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bCwRi-0006PQ-P9
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jun 2016 18:04:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38475)
+	id 1bDDT3-0005PB-9X
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Jun 2016 12:15:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bCwRh-0006OA-98
-	for qemu-trivial@nongnu.org; Tue, 14 Jun 2016 18:04:30 -0400
+	(envelope-from <lvivier@redhat.com>) id 1bDDT0-0005N4-F0
+	for qemu-trivial@nongnu.org; Wed, 15 Jun 2016 12:14:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bCwRe-0006HA-2V
-	for qemu-trivial@nongnu.org; Tue, 14 Jun 2016 18:04:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52336)
+	(envelope-from <lvivier@redhat.com>) id 1bDDSy-0003h4-Kl
+	for qemu-trivial@nongnu.org; Wed, 15 Jun 2016 12:14:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55032)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bCwRV-0006Bs-1J; Tue, 14 Jun 2016 18:04:17 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(envelope-from <lvivier@redhat.com>)
+	id 1bDDSt-0003eN-6p; Wed, 15 Jun 2016 12:14:51 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 96FABC05B1DE;
-	Tue, 14 Jun 2016 22:04:16 +0000 (UTC)
-Received: from [10.3.116.106] (ovpn-116-106.phx2.redhat.com [10.3.116.106])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5EM4Ft9010440; Tue, 14 Jun 2016 18:04:15 -0400
-To: Max Reitz <mreitz@redhat.com>, qemu-block@nongnu.org
-References: <1459967330-4573-1-git-send-email-mreitz@redhat.com>
-	<1459967330-4573-3-git-send-email-mreitz@redhat.com>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Luiz Capitulino <lcapitulino@redhat.com>,
-	qemu-trivial <qemu-trivial@nongnu.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <57607F5F.8090908@redhat.com>
-Date: Tue, 14 Jun 2016 16:04:15 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <1459967330-4573-3-git-send-email-mreitz@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="reD56Rbb5VrSpKRKlQ668iea6t20Xg06r"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+	by mx1.redhat.com (Postfix) with ESMTPS id 343BAC0467EE;
+	Wed, 15 Jun 2016 16:14:50 +0000 (UTC)
+Received: from thinkpad.redhat.com (ovpn-112-40.ams2.redhat.com [10.36.112.40])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5FGElUn011275; Wed, 15 Jun 2016 12:14:48 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>
+Date: Wed, 15 Jun 2016 18:14:30 +0200
+Message-Id: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 14 Jun 2016 22:04:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 15 Jun 2016 16:14:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v3 02/14] block/nbd: Drop trailing "." in
- error messages
+Subject: [Qemu-trivial] [PATCH 0/7] Remove useless casts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,48 +44,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jun 2016 22:04:30 -0000
+X-List-Received-Date: Wed, 15 Jun 2016 16:14:59 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---reD56Rbb5VrSpKRKlQ668iea6t20Xg06r
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+This series is the result of the following coccinelle script:
 
-On 04/06/2016 12:28 PM, Max Reitz wrote:
-> Signed-off-by: Max Reitz <mreitz@redhat.com>
-> ---
->  block/nbd.c                   | 4 ++--
->  tests/qemu-iotests/051.out    | 4 ++--
->  tests/qemu-iotests/051.pc.out | 4 ++--
->  3 files changed, 6 insertions(+), 6 deletions(-)
+    @@
+    type T;
+    T v;
+    @@
+    -       (T *)&v
+    +       &v
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+This script removes the cast of a variable when the variable
+is already of the casting type.
 
-Could go in via qemu-trivial, if desired.
+The script is added in scripts/coccinelle by the first patch.
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Laurent Vivier (7):
+  coccinelle: add a script to remove useless casts
+  linux-user,s390x: remove useless cast
+  s390x: remove useless cast
+  tricore: remove useless cast
+  fw_cfg: remove useless casts
+  crypto: remove useless casts
+  sheepdog: remove useless casts
 
+ block/sheepdog.c                  | 4 ++--
+ crypto/cipher-builtin.c           | 4 ++--
+ hw/nvram/fw_cfg.c                 | 4 ++--
+ hw/s390x/sclp.c                   | 2 +-
+ hw/tricore/tricore_testboard.c    | 2 +-
+ linux-user/signal.c               | 2 +-
+ scripts/coccinelle/typecast.cocci | 7 +++++++
+ 7 files changed, 16 insertions(+), 9 deletions(-)
+ create mode 100644 scripts/coccinelle/typecast.cocci
 
---reD56Rbb5VrSpKRKlQ668iea6t20Xg06r
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+-- 
+2.5.5
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXYH9fAAoJEKeha0olJ0NqpjEIAKS651MjIphd4+S4Iy8lxZr8
-6/oy9v6TSf+Y7nHmBAaE0h64Ki8TESk7U/5xgqhjUviwK/miaJEVCGHThc4Zu2vS
-DQbROXhmBeSDJ85ZBr2xxQF+JykGWgMAdIg6VDOd6M5hpzaf7OyShxsfhBgJkIKu
-5Dw59xTwbQjVmoX+OZ0+5B/zyn7BAPZaBnsZUJQPGqRjq6W4ev3RgnzBGoz6PZ6g
-UQrN2h4rEH1IMa407v83ihoQAHwpve8Zy4AtOlqj3rOsBWQvkdgHFLq7KQic0xkK
-mW6BR+kcO3peROrcL6S6vSP7alWnGp9GgFbD4kytJTeR3paSGVcCUNM+/rN5n3E=
-=pVxJ
------END PGP SIGNATURE-----
-
---reD56Rbb5VrSpKRKlQ668iea6t20Xg06r--
 
