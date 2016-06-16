@@ -1,40 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bDWMI-0001ge-6l
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Jun 2016 08:25:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48619)
+	id 1bDZrw-0004M5-5t
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Jun 2016 12:10:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bDWMG-0001ev-4H
-	for qemu-trivial@nongnu.org; Thu, 16 Jun 2016 08:25:16 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bDZrt-0004F3-Rr
+	for qemu-trivial@nongnu.org; Thu, 16 Jun 2016 12:10:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bDWME-0000in-5r
-	for qemu-trivial@nongnu.org; Thu, 16 Jun 2016 08:25:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50772)
+	(envelope-from <pm215@archaic.org.uk>) id 1bDZrr-0007q0-Kx
+	for qemu-trivial@nongnu.org; Thu, 16 Jun 2016 12:10:08 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57824)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bDWM7-0000h8-W7; Thu, 16 Jun 2016 08:25:08 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4ECBEC057FAD;
-	Thu, 16 Jun 2016 12:25:07 +0000 (UTC)
-Received: from donizetti.redhat.com (ovpn-112-58.ams2.redhat.com
-	[10.36.112.58])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5GCP5G7031608; Thu, 16 Jun 2016 08:25:05 -0400
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bDZrn-0007kX-SQ; Thu, 16 Jun 2016 12:10:04 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bDZrn-0007WD-94; Thu, 16 Jun 2016 17:10:03 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, stefanb@us.ibm.com
-Date: Thu, 16 Jun 2016 14:25:04 +0200
-Message-Id: <1466079904-28902-1-git-send-email-pbonzini@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 16 Jun 2016 12:25:07 +0000 (UTC)
+Cc: patches@linaro.org,
+	qemu-trivial@nongnu.org
+Date: Thu, 16 Jun 2016 17:10:02 +0100
+Message-Id: <1466093402-18143-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] vl: remove unnecessary duplicate call to
- tpm_cleanup
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-trivial] [PATCH] hw/bt: Don't use cpu_to_*w() and *_to_cpup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,33 +36,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Jun 2016 12:25:17 -0000
+X-List-Received-Date: Thu, 16 Jun 2016 16:10:11 -0000
 
-tpm_cleanup is called from main() and also registered with atexit from
-tpm_init.  The function only visits the tpm_backends linked list, and the
-atexit registration happens right after tpm_init fills in the list from
--tpmdev options.  Therefore, the direct call is unnecessary.  Remove it.
+Don't use cpu_to_*w() and *_to_cpup() to do byte-swapped loads
+and stores; instead use ld*_p() and st*_p() which correctly handle
+misaligned accesses.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Bring the HNDL() macro into line with how we deal with
+PARAMHANDLE(), by using cpu_to_le16() rather than an ifdef
+HOST_WORDS_BIGENDIAN.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- vl.c | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/bt/hci.c   | 10 +++-------
+ hw/bt/l2cap.c | 12 ++++++------
+ 2 files changed, 9 insertions(+), 13 deletions(-)
 
-diff --git a/vl.c b/vl.c
-index a7cb3b3..e05ded4 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4631,9 +4631,6 @@ int main(int argc, char **argv, char **envp)
-     bdrv_close_all();
-     pause_all_vcpus();
-     res_free();
--#ifdef CONFIG_TPM
--    tpm_cleanup();
+diff --git a/hw/bt/hci.c b/hw/bt/hci.c
+index 7d52205..351123f 100644
+--- a/hw/bt/hci.c
++++ b/hw/bt/hci.c
+@@ -426,11 +426,7 @@ static void bt_submit_raw_acl(struct bt_piconet_s *net, int length, uint8_t *dat
+  * be continuously allocated.  We do it though, to preserve similar
+  * behaviour between hosts.  Some things, like the BD_ADDR cannot be
+  * preserved though (for example if a real hci is used).  */
+-#ifdef HOST_WORDS_BIGENDIAN
+-# define HNDL(raw)	bswap16(raw)
+-#else
+-# define HNDL(raw)	(raw)
 -#endif
++#define HNDL(raw) cpu_to_le16(raw)
  
-     return 0;
- }
+ static const uint8_t bt_event_reserved_mask[8] = {
+     0xff, 0x9f, 0xfb, 0xff, 0x07, 0x18, 0x00, 0x00,
+@@ -1504,8 +1500,8 @@ static void bt_submit_hci(struct HCIInfo *info,
+         return;
+ 
+ #define PARAM(cmd, param)	(((cmd##_cp *) data)->param)
+-#define PARAM16(cmd, param)	le16_to_cpup(&PARAM(cmd, param))
+-#define PARAMHANDLE(cmd)	HNDL(PARAM(cmd, handle))
++#define PARAM16(cmd, param) lduw_le_p(&PARAM(cmd, param))
++#define PARAMHANDLE(cmd) PARAM16(cmd, handle)
+ #define LENGTH_CHECK(cmd)	if (length < sizeof(cmd##_cp)) goto short_hci
+     /* Note: the supported commands bitmask in bt_hci_read_local_commands_rp
+      * needs to be updated every time a command is implemented here!  */
+diff --git a/hw/bt/l2cap.c b/hw/bt/l2cap.c
+index dfc95ed..e342045 100644
+--- a/hw/bt/l2cap.c
++++ b/hw/bt/l2cap.c
+@@ -526,9 +526,9 @@ static int l2cap_channel_config(struct l2cap_instance_s *l2cap,
+             }
+ 
+             /* MTU */
+-            val = le16_to_cpup((void *) opt->val);
++            val = lduw_le_p(opt->val);
+             if (val < ch->min_mtu) {
+-                cpu_to_le16w((void *) opt->val, ch->min_mtu);
++                stw_le_p(opt->val, ch->min_mtu);
+                 result = L2CAP_CONF_UNACCEPT;
+                 break;
+             }
+@@ -543,7 +543,7 @@ static int l2cap_channel_config(struct l2cap_instance_s *l2cap,
+             }
+ 
+             /* Flush Timeout */
+-            val = le16_to_cpup((void *) opt->val);
++            val = lduw_le_p(opt->val);
+             if (val < 0x0001) {
+                 opt->val[0] = 0xff;
+                 opt->val[1] = 0xff;
+@@ -987,7 +987,7 @@ static void l2cap_bframe_in(struct l2cap_chan_s *ch, uint16_t cid,
+ static void l2cap_iframe_in(struct l2cap_chan_s *ch, uint16_t cid,
+                 const l2cap_hdr *hdr, int len)
+ {
+-    uint16_t fcs = le16_to_cpup((void *) (hdr->data + len - 2));
++    uint16_t fcs = lduw_le_p(hdr->data + len - 2);
+ 
+     if (len < 4)
+         goto len_error;
+@@ -1002,7 +1002,7 @@ static void l2cap_iframe_in(struct l2cap_chan_s *ch, uint16_t cid,
+             /* TODO: Signal an error? */
+             return;
+         }
+-        l2cap_sframe_in(ch, le16_to_cpup((void *) hdr->data));
++        l2cap_sframe_in(ch, lduw_le_p(hdr->data));
+         return;
+     }
+ 
+@@ -1022,7 +1022,7 @@ static void l2cap_iframe_in(struct l2cap_chan_s *ch, uint16_t cid,
+         if (len - 6 > ch->mps)
+             goto len_error;
+ 
+-        ch->len_total = le16_to_cpup((void *) (hdr->data + 2));
++        ch->len_total = lduw_le_p(hdr->data + 2);
+         if (len >= 6 + ch->len_total)
+             goto seg_error;
+ 
 -- 
-2.5.5
+1.9.1
 
 
