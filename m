@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bF2OP-0000j9-VW
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jun 2016 12:49:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39299)
+	id 1bF2wJ-0004qd-J2
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jun 2016 13:24:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bF2OJ-0000eW-NI
-	for qemu-trivial@nongnu.org; Mon, 20 Jun 2016 12:49:44 -0400
+	(envelope-from <laurent@vivier.eu>) id 1bF2wG-0004je-Tr
+	for qemu-trivial@nongnu.org; Mon, 20 Jun 2016 13:24:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bF2OH-0000ZX-CN
-	for qemu-trivial@nongnu.org; Mon, 20 Jun 2016 12:49:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36190)
+	(envelope-from <laurent@vivier.eu>) id 1bF2wE-0008OM-O6
+	for qemu-trivial@nongnu.org; Mon, 20 Jun 2016 13:24:43 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:49287)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bF2O7-0000Vq-TX; Mon, 20 Jun 2016 12:49:28 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 36C81B5379;
-	Mon, 20 Jun 2016 16:49:27 +0000 (UTC)
-Received: from [10.3.116.124] (ovpn-116-124.phx2.redhat.com [10.3.116.124])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5KGnQKT028683; Mon, 20 Jun 2016 12:49:26 -0400
-To: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>
+	(envelope-from <laurent@vivier.eu>)
+	id 1bF2w9-0008MN-3N; Mon, 20 Jun 2016 13:24:37 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue104) with ESMTPSA (Nemesis) id 0Lgoo2-1blbkE1M9u-00oFLR;
+	Mon, 20 Jun 2016 19:24:24 +0200
+To: Eric Blake <eblake@redhat.com>, Riku Voipio <riku.voipio@iki.fi>
 References: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
+	<57681E96.507@redhat.com>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <57681E96.507@redhat.com>
-Date: Mon, 20 Jun 2016 10:49:26 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <41c66aa8-69c1-3d73-4ef4-957eb0326cc1@vivier.eu>
+Date: Mon, 20 Jun 2016 19:24:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.0
 MIME-Version: 1.0
-In-Reply-To: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
+In-Reply-To: <57681E96.507@redhat.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="7STTTlaK9f44ceLCGvDwdq7fIBd8Src42"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 20 Jun 2016 16:49:27 +0000 (UTC)
+	boundary="npuj9Wja99Pue1644VjJQnDMHMMsMDfpl"
+X-Provags-ID: V03:K0:Btet/F6OLHqQ7/5g/gUcOTsuOrBn5kEtFTcI251t2weqf7ez4BR
+	oPuvnu3XiBAiIC0hz+uIJpAlDYfCtif03GbQmiFlugp8VfsCMQ0cPAbtNBE6cs572l5vzJv
+	gxCt7rsULT2Fmo24h4F5i9gaWx9iE1sScxVo2/2bxJxZ5Rog/Cq3XZMXdh4+UEk3mu89oss
+	GyKgcc+dD+YAth5nsIL6g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:UISxt9xKGNA=:XCG7c//KxbdXR9AGhunqU9
+	cDKLoPS510mSTGG+2XsypyB1yctPZzU0vc+OvdjOYuN7r0zcNI4BphpoV/KGoq9oP4McOv140
+	nmiMrh9nlOFYktsiQDDFeAfqeyC4kQSKYCXdyssRm/2WNPF2VXXGL1mgSW1aKtjIm/ipoiQ6p
+	zYWfuBVfdJlDFcjxAQaW2Y4dhnTW3VmvNOgnYPTXAjHwgLTIw2wFku9b7S2WDzfe4oUNaXol3
+	CR51Ww1xtGVuOM0T279dGKpoyoIC448ZltveGignu9u/buQWo5VTmicynl0A/Tm29kNYJsYFq
+	JAHKml1j9zGB8jVFB5eW1SEsH8eF/zkjcslT7aKf5g7govdO/5tICgVFzwFUK4UeE5om0CAZ0
+	SHha0Pp4ZIXNNWk/1bECEx61XZ7Nt1oUJpPBudJDNZo3IGkzCvIIboekOFeczZQ0GLmOzd3Kq
+	lSUUefrYDcipDpU1VzWlH8aWF2BnFehT2ufQzTibHVJhKAL5FJXdwJ+Z/oPadFPW854IH0VJ2
+	Liv5Hh9LW1eqQikL3wfus+4xFCHcbFsthIjyXxqKG3Hrgjior881bji+PsGr3t0u7QkVcDSr0
+	0G4Ij1O9saOC/eDyxfkivE124IrBFtWRXuPLZl4IrU3/VPb1mgYyO1UhQKI7g16gL4hRe6aR3
+	lnMnDCwFdwPLvhBbx+vRWhCM4vwC5QRyLgIAqC9j1346wumda++EumummvYgPS0dyyEE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 212.227.17.24
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user,
  trivial: display "0x%x" instead of "0x%d"
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,84 +59,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jun 2016 16:49:44 -0000
+X-List-Received-Date: Mon, 20 Jun 2016 17:24:46 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---7STTTlaK9f44ceLCGvDwdq7fIBd8Src42
-Content-Type: multipart/mixed; boundary="dhdAgu5wJtSTOWD5PmHDEkvont57EJPx9"
-From: Eric Blake <eblake@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>
+--npuj9Wja99Pue1644VjJQnDMHMMsMDfpl
+Content-Type: multipart/mixed; boundary="cjoQRBFmXS7T4ibsTFJWLkToslGG0g48E"
+From: Laurent Vivier <laurent@vivier.eu>
+To: Eric Blake <eblake@redhat.com>, Riku Voipio <riku.voipio@iki.fi>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <57681E96.507@redhat.com>
+Message-ID: <41c66aa8-69c1-3d73-4ef4-957eb0326cc1@vivier.eu>
 Subject: Re: [Qemu-devel] [PATCH] linux-user, trivial: display "0x%x" instead
  of "0x%d"
 References: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
-In-Reply-To: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
+ <57681E96.507@redhat.com>
+In-Reply-To: <57681E96.507@redhat.com>
 
---dhdAgu5wJtSTOWD5PmHDEkvont57EJPx9
+--cjoQRBFmXS7T4ibsTFJWLkToslGG0g48E
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On 06/20/2016 03:51 AM, Laurent Vivier wrote:
-> Display an exception number, generally defined as an hexadecimal
-> number (for instance, EXCP_HLT is 0x10001).
+
+
+Le 20/06/2016 =C3=A0 18:49, Eric Blake a =C3=A9crit :
+> On 06/20/2016 03:51 AM, Laurent Vivier wrote:
+>> Display an exception number, generally defined as an hexadecimal
+>> number (for instance, EXCP_HLT is 0x10001).
+>>
+>> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+>> ---
+>> Resent to fix qemu-trivial email address.
+>>
+>>  linux-user/main.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
 >=20
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-> ---
-> Resent to fix qemu-trivial email address.
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 >=20
->  linux-user/main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Can you also fix the occurrence of 0x%d in trace-events, for
+> mhp_pc_dimm_assigned_slot()? (Or whatever file it lands in after the
+> trace-events split pull request)
+
+Yes, after the after split pull request.
+
+Thanks,
+Laurent
 >=20
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
-Can you also fix the occurrence of 0x%d in trace-events, for
-mhp_pc_dimm_assigned_slot()? (Or whatever file it lands in after the
-trace-events split pull request)
-
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index b9a4e0e..c79f5cb 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -2036,7 +2036,7 @@ void cpu_loop(CPUPPCState *env)
->              /* just indicate that signals should be handled asap */
->              break;
->          default:
-> -            cpu_abort(cs, "Unknown exception 0x%d. Aborting\n", trapnr=
-);
-> +            cpu_abort(cs, "Unknown exception 0x%x. Aborting\n", trapnr=
-);
->              break;
->          }
->          process_pending_signals(env);
+>> diff --git a/linux-user/main.c b/linux-user/main.c
+>> index b9a4e0e..c79f5cb 100644
+>> --- a/linux-user/main.c
+>> +++ b/linux-user/main.c
+>> @@ -2036,7 +2036,7 @@ void cpu_loop(CPUPPCState *env)
+>>              /* just indicate that signals should be handled asap */
+>>              break;
+>>          default:
+>> -            cpu_abort(cs, "Unknown exception 0x%d. Aborting\n", trapn=
+r);
+>> +            cpu_abort(cs, "Unknown exception 0x%x. Aborting\n", trapn=
+r);
+>>              break;
+>>          }
+>>          process_pending_signals(env);
+>>
 >=20
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
 
+--cjoQRBFmXS7T4ibsTFJWLkToslGG0g48E--
 
---dhdAgu5wJtSTOWD5PmHDEkvont57EJPx9--
-
---7STTTlaK9f44ceLCGvDwdq7fIBd8Src42
+--npuj9Wja99Pue1644VjJQnDMHMMsMDfpl
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJXaB6WAAoJEKeha0olJ0Nqp20H/idEuQYqpERs2oefuzAGC+pk
-1yvA/8lhmSlfujyrePJb9MojpTPiJq48FftnogQcvhffsEgBhD9yi0pMQkBOMWLR
-k1aAJ5OTdRRA/MBy8GemjsQOTZSI90WYRRdOhX7DpkYcKLzJ2nef00h00Drg0bAZ
-Hqm1B2udVeVbHY5BuHy1y43a9VEvyCFAVDcGLV3ZKiZnQ9tqXKv8qzOQSSZ4q2xG
-znPeQBzT9U4JfMKLGC8kY8RiKWRydjHNKWfosHge8M7mb/ziVdhEZjgBrEhQ9K16
-L3t3+L61+DzmPwDK0/0LPI1I2hQQXK7wlqlT8t2Pj2GHBii9udA4Fj1tDsjPG8U=
-=f64V
+iQIcBAEBCAAGBQJXaCbFAAoJEPMMOL0/L748j/IQAJCxQbX8KBcwDGIMYkV6BHUL
+Sm57MwEf00yf2UqFdFBBdlO1UK4E7Ak80qGVHG0AGnqX/BcsCXrB95RjiQvpOlTU
+8ncIULo8FjWyU2FLfoDl3of7DFfGtbeyjQfBaxYcmBI7i4np0actYCM+HIgHJOWg
+iYIxqEBDSVuvNkS/Yy4wEyE/T2JXPnPlJzrJ3mXrHy0K0kCCUnGNHj+OIKu5r6x4
+QlQ9P2kN5kcMr6recHyZKB22HBow8PdwHi88FJGZN/0GI0jQ2CBvlb/Z+n7VTKXx
+b1jrJzvBWWlwPlol68qh73ry09qAbnWBCZZkVMY7bFGiz/NQpaViM150IK3i0jPW
+OrcDJXP9/9SOQg6TaVaaxV6bbWxVYZIGjCSiJuX5xcrTsCZIxVpHhgJ8xecck8Mt
+la7oR5VP7XVFA5eHDm4xIjI/+QQFR5l/dPzOykgpCh6gMamGua4OIbBC2hA2cptv
+O4PzerR2XiObebnag6w4OwEh6d1xWhMot68yUQ+5YX7E5wJdRQiymLkCS2tA22nl
+NeTREnV8gb9x5l/GCMw1Zr3vnyNC/8Gqd531+AJgF45GKeeO1ylBJwD0FzIL8lc6
+uzDmqnxtpLASo/csiYSWUSAtX3cW374nJYsLLbPMOm3/clZ8xBtZoYr9YtXlUVfs
+040ntg+LJxvZBkSbqsEK
+=/yup
 -----END PGP SIGNATURE-----
 
---7STTTlaK9f44ceLCGvDwdq7fIBd8Src42--
+--npuj9Wja99Pue1644VjJQnDMHMMsMDfpl--
 
