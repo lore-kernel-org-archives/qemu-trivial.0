@@ -1,50 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bGUn4-0006Bt-5E
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jun 2016 13:21:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54122)
+	id 1bH9dD-00060j-Gh
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Jun 2016 08:57:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59933)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bGUn2-0006At-4N
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2016 13:21:13 -0400
+	(envelope-from <ashopov@ashmac.lan>) id 1bH7n2-0006uS-5k
+	for qemu-trivial@nongnu.org; Sun, 26 Jun 2016 06:59:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bGUn1-0004ll-0C
-	for qemu-trivial@nongnu.org; Fri, 24 Jun 2016 13:21:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52135)
+	(envelope-from <ashopov@ashmac.lan>) id 1bH7my-0008BK-Ek
+	for qemu-trivial@nongnu.org; Sun, 26 Jun 2016 06:59:48 -0400
+Received: from [87.227.212.252] (port=55111 helo=ashmac.lan)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bGUmu-0004kp-Fq; Fri, 24 Jun 2016 13:21:04 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AA50A8553D;
-	Fri, 24 Jun 2016 17:21:02 +0000 (UTC)
-Received: from [10.3.116.83] (ovpn-116-83.phx2.redhat.com [10.3.116.83])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5OHL14P016277; Fri, 24 Jun 2016 13:21:02 -0400
-To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
-	<1466007277-17525-2-git-send-email-lvivier@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <576D6BFD.3060402@redhat.com>
-Date: Fri, 24 Jun 2016 11:21:01 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <ashopov@ashmac.lan>)
+	id 1bH7mo-00085e-Kk; Sun, 26 Jun 2016 06:59:34 -0400
+Received: by ashmac.lan (Postfix, from userid 501)
+	id 21537B875F1; Sun, 26 Jun 2016 11:23:38 +0300 (EEST)
+From: Alexander Shopov <ash@kambanaria.org>
+To: qemu-devel@nongnu.org, peter.maydell@linaro.org, sw@weilnetz.de,
+	pbonzini@redhat.com, mjt@tls.msk.ru, ash@kambanaria.org,
+	al_shopov@yahoo.com, jano.vesely@gmail.com, cornelia.huck@de.ibm.com,
+	mst@redhat.com
+Cc: qemu-trivial@nongnu.org
+Date: Sun, 26 Jun 2016 11:23:31 +0300
+Message-Id: <20160626082331.39187-2-ash@kambanaria.org>
+X-Mailer: git-send-email 2.9.0
+In-Reply-To: <20160626082331.39187-1-ash@kambanaria.org>
+References: <20160626082331.39187-1-ash@kambanaria.org>
 MIME-Version: 1.0
-In-Reply-To: <1466007277-17525-2-git-send-email-lvivier@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="MqlAlq4NxRWpdowPNpVudhu0A1w0L0lvL"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 24 Jun 2016 17:21:02 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/7] coccinelle: add a
- script to remove useless casts
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Mac OS X  [generic]
+X-Received-From: 87.227.212.252
+X-Mailman-Approved-At: Sun, 26 Jun 2016 08:57:46 -0400
+Subject: [Qemu-trivial] [PATCH L10N v3 1/1] Added Bulgarian translation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,85 +43,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jun 2016 17:21:13 -0000
+X-List-Received-Date: Sun, 26 Jun 2016 10:59:54 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---MqlAlq4NxRWpdowPNpVudhu0A1w0L0lvL
-Content-Type: multipart/mixed; boundary="CQ7uWAmKU3dC6nO79BT3mKPe7p4NCv8Sk"
-From: Eric Blake <eblake@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Message-ID: <576D6BFD.3060402@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/7] coccinelle: add a script to remove
- useless casts
-References: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
- <1466007277-17525-2-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1466007277-17525-2-git-send-email-lvivier@redhat.com>
+Signed-off-by: Alexander Shopov <ash@kambanaria.org>
+---
+ po/bg.po | 90 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+++++++
+ 1 file changed, 90 insertions(+)
+ create mode 100644 po/bg.po
 
---CQ7uWAmKU3dC6nO79BT3mKPe7p4NCv8Sk
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 06/15/2016 10:14 AM, Laurent Vivier wrote:
-> Script from LKML.
-
-Link to a particular message?
-
->=20
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  scripts/coccinelle/typecast.cocci | 7 +++++++
->  1 file changed, 7 insertions(+)
->  create mode 100644 scripts/coccinelle/typecast.cocci
->=20
-> diff --git a/scripts/coccinelle/typecast.cocci b/scripts/coccinelle/typ=
-ecast.cocci
-> new file mode 100644
-> index 0000000..be2183e
-> --- /dev/null
-> +++ b/scripts/coccinelle/typecast.cocci
-> @@ -0,0 +1,7 @@
-> +// Remove useless casts
-> +@@
-> +type T;
-> +T v;
-> +@@
-> +-	(T *)&v
-> ++	&v
-
-Since we're using C for the most part, do we also want to remove useless
-casts in and out of void*?
-
-But even if we do that, it could be separate.  This patch looks good on
-its own:
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
+diff --git a/po/bg.po b/po/bg.po
+new file mode 100644
+index 0000000..5047861
+--- /dev/null
++++ b/po/bg.po
+@@ -0,0 +1,90 @@
++# Bulgarian translation of qemu po-file.
++# Copyright (C) 2016 Alexander Shopov <ash@kambanaria.org>
++# This file is distributed under the same license as the qemu package.
++# Alexander Shopov <ash@kambanaria.org>, 2016.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: QEMU 2.6.50\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2016-06-26 10:16+0300\n"
++"PO-Revision-Date: 2016-06-09 15:54+0300\n"
++"Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
++"Language-Team: Bulgarian <dict@ludost.net>\n"
++"Language: bg\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=3DUTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=3D2; plural=3D(n !=3D 1);\n"
++
++#: ui/gtk.c:274
++msgid " - Press Ctrl+Alt+G to release grab"
++msgstr " =E2=80=94 =D0=BD=D0=B0=D1=82=D0=B8=D1=81=D0=BD=D0=B5=D1=82=D0=B5=
+ Ctrl+Alt+G, =D0=B7=D0=B0 =D0=B4=D0=B0 =D0=BE=D1=81=D0=B2=D0=BE=D0=B1=D0=BE=
+=D0=B4=D0=B8=D1=82=D0=B5 =D1=84=D0=BE=D0=BA=D1=83=D1=81=D0=B0"
++
++#: ui/gtk.c:278
++msgid " [Paused]"
++msgstr " [=D0=BF=D0=B0=D1=83=D0=B7=D0=B0]"
++
++#: ui/gtk.c:1906
++msgid "_Pause"
++msgstr "_=D0=9F=D0=B0=D1=83=D0=B7=D0=B0"
++
++#: ui/gtk.c:1912
++msgid "_Reset"
++msgstr "_=D0=A0=D0=B5=D1=81=D1=82=D0=B0=D1=80=D1=82=D0=B8=D1=80=D0=B0=D0=
+=BD=D0=B5"
++
++#: ui/gtk.c:1915
++msgid "Power _Down"
++msgstr "_=D0=98=D0=B7=D0=BA=D0=BB=D1=8E=D1=87=D0=B2=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:1921
++msgid "_Quit"
++msgstr "_=D0=A1=D0=BF=D0=B8=D1=80=D0=B0=D0=BD=D0=B5 =D0=BD=D0=B0 =D0=BF=D1=
+=80=D0=BE=D0=B3=D1=80=D0=B0=D0=BC=D0=B0=D1=82=D0=B0"
++
++#: ui/gtk.c:2013
++msgid "_Fullscreen"
++msgstr "=D0=9D=D0=B0 _=D1=86=D1=8F=D0=BB =D0=B5=D0=BA=D1=80=D0=B0=D0=BD"
++
++#: ui/gtk.c:2016
++msgid "_Copy"
++msgstr "_=D0=9A=D0=BE=D0=BF=D0=B8=D1=80=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:2032
++msgid "Zoom _In"
++msgstr "_=D0=A3=D0=B2=D0=B5=D0=BB=D0=B8=D1=87=D0=B0=D0=B2=D0=B0=D0=BD=D0=
+=B5"
++
++#: ui/gtk.c:2039
++msgid "Zoom _Out"
++msgstr "_=D0=9D=D0=B0=D0=BC=D0=B0=D0=BB=D1=8F=D0=B2=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:2046
++msgid "Best _Fit"
++msgstr "=D0=9F=D0=BE_=D0=BC=D0=B5=D1=81=D1=82=D0=B2=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:2053
++msgid "Zoom To _Fit"
++msgstr "=D0=9D=D0=B0=D0=BF=D0=B0=D1=81_=D0=B2=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:2059
++msgid "Grab On _Hover"
++msgstr "=D0=9F=D1=80=D0=B8=D1=85=D0=B2=D0=B0=D1=89=D0=B0=D0=BD=D0=B5 =D0=
+=BF=D1=80=D0=B8 =D0=BF=D0=BE=D1=81=D0=BE_=D1=87=D0=B2=D0=B0=D0=BD=D0=B5"
++
++#: ui/gtk.c:2062
++msgid "_Grab Input"
++msgstr "=D0=9F=D1=80=D0=B8=D1=85=D0=B2=D0=B0=D1=89=D0=B0=D0=BD=D0=B5 =D0=
+=BD=D0=B0 _=D1=84=D0=BE=D0=BA=D1=83=D1=81=D0=B0"
++
++#: ui/gtk.c:2091
++msgid "Show _Tabs"
++msgstr "=D0=9F=D0=BE=D0=B4=D0=BF=D1=80=D0=BE_=D0=B7=D0=BE=D1=80=D1=86=D0=
+=B8"
++
++#: ui/gtk.c:2094
++msgid "Detach Tab"
++msgstr "=D0=9A=D1=8A=D0=BC =D1=81=D0=B0=D0=BC=D0=BE=D1=81=D1=82=D0=BE=D1=
+=8F=D1=82=D0=B5=D0=BB=D0=B5=D0=BD =D0=BF=D0=BE=D0=B4=D0=BF=D1=80=D0=BE=D0=
+=B7=D0=BE=D1=80=D0=B5=D1=86"
++
++#: ui/gtk.c:2106
++msgid "_Machine"
++msgstr "_=D0=9C=D0=B0=D1=88=D0=B8=D0=BD=D0=B0"
++
++#: ui/gtk.c:2111
++msgid "_View"
++msgstr "_=D0=98=D0=B7=D0=B3=D0=BB=D0=B5=D0=B4"
 --=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+2.9.0
 
-
---CQ7uWAmKU3dC6nO79BT3mKPe7p4NCv8Sk--
-
---MqlAlq4NxRWpdowPNpVudhu0A1w0L0lvL
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXbWv9AAoJEKeha0olJ0Nq7JkH/RNSFMi60iHop5z/8dzm0xC3
-a2Kvlv+w5ZVra04bShhSOjYiPUCXdo3bPOHQrJSQlhBe62n69fMM7BlCmbA7DbB0
-bS3cEl/mX1m0VFeHlpBUI0cMIMuWzoihaBLGHtiGAICGptpmUd612StJVPy4XPAW
-cMCzvN+CaoE/xjoE4qgiyHUzyA74Dyl5DBn3h/uLO12dyOichU61mkukkmzNuRZF
-I6E/A12KtOCBZ4hhAEGDP9TqSwvEMUxqHurqWbWQhb7fBDnu0NXndELfnSEbpGsb
-soLYvMULOXexZUIJWhBaKnR4ItHFPV7NatPJuv+/BsV2SFYX94Y7hTo/s8USVFI=
-=xsiW
------END PGP SIGNATURE-----
-
---MqlAlq4NxRWpdowPNpVudhu0A1w0L0lvL--
 
