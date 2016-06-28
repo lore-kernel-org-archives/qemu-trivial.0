@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bHcXO-0001F9-N5
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jun 2016 15:49:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43861)
+	id 1bHtUx-0001UL-Io
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jun 2016 09:56:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1bHcXL-0001Bl-NK
-	for qemu-trivial@nongnu.org; Mon, 27 Jun 2016 15:49:40 -0400
+	(envelope-from <tgolembi@redhat.com>) id 1bHqP0-0008Rb-P2
+	for qemu-trivial@nongnu.org; Tue, 28 Jun 2016 06:38:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1bHcXJ-0003Da-Pu
-	for qemu-trivial@nongnu.org; Mon, 27 Jun 2016 15:49:38 -0400
-Received: from hera.aquilenet.fr ([141.255.128.1]:58052)
+	(envelope-from <tgolembi@redhat.com>) id 1bHqOy-0000Gr-PQ
+	for qemu-trivial@nongnu.org; Tue, 28 Jun 2016 06:37:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52031)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1bHcXE-0003CO-3U; Mon, 27 Jun 2016 15:49:32 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id 440787D3F;
-	Mon, 27 Jun 2016 21:49:25 +0200 (CEST)
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xVIu9d0okigl; Mon, 27 Jun 2016 21:49:25 +0200 (CEST)
-Received: from var.youpi.perso.aquilenet.fr (unknown
-	[IPv6:2a01:cb19:1af:4600:3602:86ff:fe2c:6a19])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 0A4BD47C;
-	Mon, 27 Jun 2016 21:49:25 +0200 (CEST)
-Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.87)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1bHcXA-0004vk-2m; Mon, 27 Jun 2016 21:49:28 +0200
-Date: Mon, 27 Jun 2016 21:49:28 +0200
-From: Samuel Thibault <samuel.thibault@gnu.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
-	qemu-trivial@nongnu.org
-Message-ID: <20160627194928.GI3403@var.home>
-References: <1467024096-17942-1-git-send-email-thuth@redhat.com>
+	(envelope-from <tgolembi@redhat.com>)
+	id 1bHqOm-0000Bv-P0; Tue, 28 Jun 2016 06:37:44 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 772E9C05B1EF;
+	Tue, 28 Jun 2016 10:37:43 +0000 (UTC)
+Received: from fiorina (dhcp131-20.brq.redhat.com [10.34.131.20])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5SAbfHd004917
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 28 Jun 2016 06:37:42 -0400
+Date: Tue, 28 Jun 2016 12:37:34 +0200
+From: =?UTF-8?B?VG9tw6HFoSBHb2xlbWJpb3Zza8O9?= <tgolembi@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20160628123734.500a3114@fiorina>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1467024096-17942-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.5.21+34 (58baf7c9f32f) (2010-12-30)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 28 Jun 2016 10:37:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 141.255.128.1
-Subject: Re: [Qemu-trivial] [PATCH] slirp: Remove superfluous memset() calls
- from the TFTP code
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Tue, 28 Jun 2016 09:56:18 -0400
+Subject: [Qemu-trivial] [PATCH] curl: Operate on zero-length file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,62 +51,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jun 2016 19:49:40 -0000
+X-List-Received-Date: Tue, 28 Jun 2016 10:38:02 -0000
 
-Thomas Huth, on Mon 27 Jun 2016 12:41:36 +0200, wrote:
-> Commit fad7fb9ccd8013ea03  ("Add IPv6 support to the TFTP code")
-> refactored some common code for preparing the mbuf into a new
-> function called tftp_prep_mbuf_data(). One part of this common
-> code is to do a "memset(m->m_data, 0, m->m_size);" for the related
-> buffer first. However, at two spots, the memset() was not removed
-> from the calling function, so it currently done twice in these code
-> paths. Thus let's delete these superfluous memsets in the calling
-> functions now.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+This is an attempt to fix small bug 1596870.
 
-Thanks!
+When creating new disk backed by remote file accessed via HTTPS and the
+backing file has zero length, qemu-img terminates with uniformative
+error message:
 
-Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+    qemu-img: disk.qcow2: CURL: Error opening file:
 
-> ---
->  slirp/tftp.c | 4 ----
->  1 file changed, 4 deletions(-)
-> 
-> diff --git a/slirp/tftp.c b/slirp/tftp.c
-> index 12b5ff6..3673402 100644
-> --- a/slirp/tftp.c
-> +++ b/slirp/tftp.c
-> @@ -208,8 +208,6 @@ static void tftp_send_error(struct tftp_session *spt,
->      goto out;
->    }
->  
-> -  memset(m->m_data, 0, m->m_size);
-> -
->    tp = tftp_prep_mbuf_data(spt, m);
->  
->    tp->tp_op = htons(TFTP_ERROR);
-> @@ -237,8 +235,6 @@ static void tftp_send_next_block(struct tftp_session *spt,
->      return;
->    }
->  
-> -  memset(m->m_data, 0, m->m_size);
-> -
->    tp = tftp_prep_mbuf_data(spt, m);
->  
->    tp->tp_op = htons(TFTP_DATA);
-> -- 
-> 1.8.3.1
-> 
+While it may not make much sense to operate on empty file, other block
+backends (e.g. raw backend for regular files) seem to allow it. This
+patch fixes it for the curl backend.
 
--- 
-Samuel
-<macavity> bash: ls: Computer bought the farm
-<macavity> THAT frightens ppl! :P
-<macavity> id rather see: "bash: ls: Initialization of googol(AWAX)
-        disengaged in HYPER32/64 mode due to faulty page request at
-        AX:12A34F84B"
-<macavity> at least that would give me the feeling that the
-        *programmers* knows what is going on :P
-(lovely Hurd...)
+Signed-off-by: Tom=C3=A1=C5=A1 Golembiovsk=C3=BD <tgolembi@redhat.com>
+---
+ block/curl.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/block/curl.c b/block/curl.c
+index da9f5e8..ee6c5ea 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -675,11 +675,17 @@ static int curl_open(BlockDriverState *bs, QDict *opt=
+ions, int flags,
+     curl_easy_setopt(state->curl, CURLOPT_HEADERDATA, s);
+     if (curl_easy_perform(state->curl))
+         goto out;
+-    curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &d);
+-    if (d)
+-        s->len =3D (size_t)d;
+-    else if(!s->len)
++    if (curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &=
+d)) {
+         goto out;
++    }
++    if (d < 0) {
++        pstrcpy(state->errmsg, CURL_ERROR_SIZE,
++                "Received invalid file length.");
++        goto out;
++    }
++
++    s->len =3D (size_t)d;
++
+     if ((!strncasecmp(s->url, "http://", strlen("http://"))
+         || !strncasecmp(s->url, "https://", strlen("https://")))
+         && !s->accept_range) {
+--=20
+2.9.0
+
 
