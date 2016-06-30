@@ -1,77 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bIhGH-0003zj-LP
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jun 2016 15:04:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53517)
+	id 1bIhla-00011D-1t
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jun 2016 15:36:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59899)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bIhGF-0003xH-DF
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 15:04:28 -0400
+	(envelope-from <jsnow@redhat.com>) id 1bIhlX-0000zA-3f
+	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 15:36:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bIhGB-0008Ti-6y
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 15:04:26 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:16803)
+	(envelope-from <jsnow@redhat.com>) id 1bIhlW-0007KR-3o
+	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 15:36:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58987)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bIhGA-0008TZ-Tn
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 15:04:23 -0400
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
-	u5UJ3bEt080427
-	for <qemu-trivial@nongnu.org>; Thu, 30 Jun 2016 15:04:22 -0400
-Received: from e37.co.us.ibm.com (e37.co.us.ibm.com [32.97.110.158])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 23v09r39ga-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 30 Jun 2016 15:04:22 -0400
-Received: from localhost
-	by e37.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Thu, 30 Jun 2016 13:04:21 -0600
-Received: from d03dlp01.boulder.ibm.com (9.17.202.177)
-	by e37.co.us.ibm.com (192.168.1.137) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 30 Jun 2016 13:04:18 -0600
-X-IBM-Helo: d03dlp01.boulder.ibm.com
-X-IBM-MailFrom: mdroth@linux.vnet.ibm.com
-Received: from b03cxnp08026.gho.boulder.ibm.com
-	(b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
-	by d03dlp01.boulder.ibm.com (Postfix) with ESMTP id 5FFB21FF005A;
-	Thu, 30 Jun 2016 13:04:01 -0600 (MDT)
-Received: from b03ledav002.gho.boulder.ibm.com
-	(b03ledav002.gho.boulder.ibm.com [9.17.130.233])
-	by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u5UJ4Hr441615424; Thu, 30 Jun 2016 12:04:17 -0700
-Received: from b03ledav002.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id AF437136040;
-	Thu, 30 Jun 2016 13:04:17 -0600 (MDT)
-Received: from localhost (unknown [9.53.92.253])
-	by b03ledav002.gho.boulder.ibm.com (Postfix) with ESMTP id 99741136043; 
-	Thu, 30 Jun 2016 13:04:17 -0600 (MDT)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <1465572354-3083-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <1465572354-3083-1-git-send-email-thuth@redhat.com>
-User-Agent: alot/0.3.6
-Date: Thu, 30 Jun 2016 14:04:15 -0500
-X-TM-AS-GCONF: 00
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16063019-0024-0000-0000-00001403631E
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16063019-0025-0000-0000-0000424C3C6C
-Message-Id: <20160630190415.6192.5429@loki>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-06-30_08:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
-	definitions=main-1606300179
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: Re: [Qemu-trivial] [PATCH] configure: Rename CONFIG_QGA_NTDDDISK
- into CONFIG_QGA_NTDDSCSI
+	(envelope-from <jsnow@redhat.com>)
+	id 1bIhlQ-0007Jt-Ku; Thu, 30 Jun 2016 15:36:40 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 018E8C049D67;
+	Thu, 30 Jun 2016 19:36:39 +0000 (UTC)
+Received: from scv.usersys.redhat.com (unused [10.10.51.239] (may be forged))
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u5UJab3p029549; Thu, 30 Jun 2016 15:36:38 -0400
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
+	peter.maydell@linaro.org, John Snow <jsnow@redhat.com>
+Date: Thu, 30 Jun 2016 15:36:36 -0400
+Message-Id: <1467315396-3628-1-git-send-email-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 30 Jun 2016 19:36:39 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] Remove left shifts of negative signed
+ integers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,45 +46,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jun 2016 19:04:28 -0000
+X-List-Received-Date: Thu, 30 Jun 2016 19:36:48 -0000
 
-Quoting Thomas Huth (2016-06-10 10:25:54)
-> There is no CONFIG_QGA_NTDDDISK define used anywhere in the QEMU
-> sources. Looking at the changelog and qga/commands-win32.c, it
-> seems like this should be called CONFIG_QGA_NTDDSCSI instead.
-> =
+Another exercise in placating Clang's increasingly strict -Werror mode.
+Technically, this is undefined behavior. In practice, -N<<M is the same
+as -(N<<M).
 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ hw/audio/fmopl.c      | 2 +-
+ target-i386/monitor.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Thanks, applied to qga tree:
-  https://github.com/mdroth/qemu/commits/qga
-
-Although this did indeed uncover a bug in guest-get-fsinfo.
-Should have a fix soon, but will want that in place before
-I send a pull.
-
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
-
-> diff --git a/configure b/configure
-> index 8c2f90b..55019d6 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4965,7 +4965,7 @@ if test "$mingw32" =3D "yes" ; then
->      echo "WIN_SDK=3D\"$win_sdk\"" >> $config_host_mak
->    fi
->    if test "$guest_agent_ntddscsi" =3D "yes" ; then
-> -    echo "CONFIG_QGA_NTDDDISK=3Dy" >> $config_host_mak
-> +    echo "CONFIG_QGA_NTDDSCSI=3Dy" >> $config_host_mak
->    fi
->    if test "$guest_agent_msi" =3D "yes"; then
->      echo "QEMU_GA_MSI_ENABLED=3Dyes" >> $config_host_mak  =
-
-> -- =
-
-> 1.8.3.1
->=20
+diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+index 731110f..de9338b 100644
+--- a/hw/audio/fmopl.c
++++ b/hw/audio/fmopl.c
+@@ -69,7 +69,7 @@ static int opl_dbg_maxchip,opl_dbg_chip;
+ /* final output shift , limit minimum and maximum */
+ #define OPL_OUTSB   (TL_BITS+3-16)		/* OPL output final shift 16bit */
+ #define OPL_MAXOUT (0x7fff<<OPL_OUTSB)
+-#define OPL_MINOUT (-0x8000<<OPL_OUTSB)
++#define OPL_MINOUT (-(0x8000<<OPL_OUTSB))
+ 
+ /* -------------------- quality selection --------------------- */
+ 
+diff --git a/target-i386/monitor.c b/target-i386/monitor.c
+index fccfe40..94e9871 100644
+--- a/target-i386/monitor.c
++++ b/target-i386/monitor.c
+@@ -36,7 +36,7 @@ static void print_pte(Monitor *mon, hwaddr addr,
+ {
+ #ifdef TARGET_X86_64
+     if (addr & (1ULL << 47)) {
+-        addr |= -1LL << 48;
++        addr |= -(1LL << 48);
+     }
+ #endif
+     monitor_printf(mon, TARGET_FMT_plx ": " TARGET_FMT_plx
+-- 
+2.5.5
 
 
