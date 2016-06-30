@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bIiSB-0004Kp-Ah
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jun 2016 16:20:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38776)
+	id 1bIie5-0004iR-5u
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jun 2016 16:33:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42190)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1bIiS9-0004Ar-0U
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:20:50 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1bIie2-0004i5-4f
+	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:33:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1bIiS6-0008Cx-Pt
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:20:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46676)
+	(envelope-from <pbonzini@redhat.com>) id 1bIidx-0002xN-VT
+	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:33:05 -0400
+Received: from mx3-phx2.redhat.com ([209.132.183.24]:34894)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1bIiS0-0008Bs-Ti; Thu, 30 Jun 2016 16:20:41 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8D8C83710E1;
-	Thu, 30 Jun 2016 20:20:40 +0000 (UTC)
-Received: from scv.usersys.redhat.com (unused [10.10.51.239] (may be forged))
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u5UKKdup023534; Thu, 30 Jun 2016 16:20:39 -0400
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <1467315396-3628-1-git-send-email-jsnow@redhat.com>
-	<209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1bIidx-0002wU-MF; Thu, 30 Jun 2016 16:33:01 -0400
+Received: from zmail13.collab.prod.int.phx2.redhat.com
+	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
+	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id u5UKWxvg023251;
+	Thu, 30 Jun 2016 16:32:59 -0400
+Date: Thu, 30 Jun 2016 16:32:59 -0400 (EDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kraxel@redhat.com,
 	peter maydell <peter.maydell@linaro.org>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <5b24e821-7b08-257b-0b3e-0e3336ee644c@redhat.com>
-Date: Thu, 30 Jun 2016 16:20:39 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+Message-ID: <1978695732.3315031.1467318779611.JavaMail.zimbra@redhat.com>
+In-Reply-To: <5b24e821-7b08-257b-0b3e-0e3336ee644c@redhat.com>
+References: <1467315396-3628-1-git-send-email-jsnow@redhat.com>
+	<209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
+	<5b24e821-7b08-257b-0b3e-0e3336ee644c@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 30 Jun 2016 20:20:40 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Originating-IP: [10.4.164.1, 10.5.101.130]
+X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF47 (Linux)/8.0.6_GA_5922)
+Thread-Topic: Remove left shifts of negative signed integers
+Thread-Index: WVcA3GEWsK6m9bN8hAnGTS8uNgXimQ==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 209.132.183.24
 Subject: Re: [Qemu-trivial] [PATCH] Remove left shifts of negative signed
  integers
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,43 +48,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jun 2016 20:20:50 -0000
+X-List-Received-Date: Thu, 30 Jun 2016 20:33:07 -0000
 
 
+> > GCC correctly puts this warning under -Wextra, and promises not to ever
+> > make use of this facet of undefined behavior.  The only correct patch
+> > is the one that disables the warning for clang, and possibly adds
+> > -fwrapv.  In GCC, -fwrapv correctly silences ubsan's left-shift
+> > and signed-overflow warnings.  In Clang, this is reported at
+> > https://llvm.org/bugs/show_bug.cgi?id=25552.  It's a heavy hammer
+> > but it's the safest options as compiler evolve.
+> 
+> Where /exactly/ do you propose we canonicalize the clang invocation you
+> would like to support?
 
-On 06/30/2016 04:15 PM, Paolo Bonzini wrote:
-> 
-> 
-> ----- Original Message -----
->> From: "John Snow" <jsnow@redhat.com>
->> To: qemu-devel@nongnu.org
->> Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com, "peter maydell" <peter.maydell@linaro.org>,
->> "John Snow" <jsnow@redhat.com>
->> Sent: Thursday, June 30, 2016 9:36:36 PM
->> Subject: [PATCH] Remove left shifts of negative signed integers
->>
->> Another exercise in placating Clang's increasingly strict -Werror mode.
->> Technically, this is undefined behavior. In practice, -N<<M is the same
->> as -(N<<M).
->>
->> Signed-off-by: John Snow <jsnow@redhat.com>
-> 
-> There's been discussions on this in the past; sorry but this is a
-> super-duper NACK.
-> 
-> GCC correctly puts this warning under -Wextra, and promises not to ever
-> make use of this facet of undefined behavior.  The only correct patch
-> is the one that disables the warning for clang, and possibly adds
-> -fwrapv.  In GCC, -fwrapv correctly silences ubsan's left-shift
-> and signed-overflow warnings.  In Clang, this is reported at
-> https://llvm.org/bugs/show_bug.cgi?id=25552.  It's a heavy hammer
-> but it's the safest options as compiler evolve.
-> 
-> Paolo
-> 
+In configure where we look for other warning flags.  Add -fwrapv and
+-Wno-shift-negative-value so that they're enabled if the compilers
+supports them.
 
-Where /exactly/ do you propose we canonicalize the clang invocation you
-would like to support?
-
---js
+Paolo
 
