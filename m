@@ -1,42 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bIie5-0004iR-5u
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jun 2016 16:33:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42190)
+	id 1bIySM-0001Cr-6n
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Jul 2016 09:26:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bIie2-0004i5-4f
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:33:07 -0400
+	(envelope-from <awirth@akamai.com>) id 1bIx6s-0000ml-9S
+	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 07:59:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bIidx-0002xN-VT
-	for qemu-trivial@nongnu.org; Thu, 30 Jun 2016 16:33:05 -0400
-Received: from mx3-phx2.redhat.com ([209.132.183.24]:34894)
+	(envelope-from <awirth@akamai.com>) id 1bIx6r-0003Fz-D3
+	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 07:59:50 -0400
+Received: from prod-mail-xrelay08.akamai.com ([96.6.114.112]:16402)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bIidx-0002wU-MF; Thu, 30 Jun 2016 16:33:01 -0400
-Received: from zmail13.collab.prod.int.phx2.redhat.com
-	(zmail13.collab.prod.int.phx2.redhat.com [10.5.83.15])
-	by mx3-phx2.redhat.com (8.13.8/8.13.8) with ESMTP id u5UKWxvg023251;
-	Thu, 30 Jun 2016 16:32:59 -0400
-Date: Thu, 30 Jun 2016 16:32:59 -0400 (EDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kraxel@redhat.com,
-	peter maydell <peter.maydell@linaro.org>
-Message-ID: <1978695732.3315031.1467318779611.JavaMail.zimbra@redhat.com>
-In-Reply-To: <5b24e821-7b08-257b-0b3e-0e3336ee644c@redhat.com>
-References: <1467315396-3628-1-git-send-email-jsnow@redhat.com>
-	<209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
-	<5b24e821-7b08-257b-0b3e-0e3336ee644c@redhat.com>
+	(envelope-from <awirth@akamai.com>)
+	id 1bIx6l-0003Ax-JI; Fri, 01 Jul 2016 07:59:43 -0400
+Received: from prod-mail-xrelay08.akamai.com (localhost.localdomain
+	[127.0.0.1]) by postfix.imss70 (Postfix) with ESMTP id 21234200047;
+	Fri,  1 Jul 2016 11:59:40 +0000 (GMT)
+Received: from prod-mail-relay08.akamai.com (prod-mail-relay08.akamai.com
+	[172.27.22.71])
+	by prod-mail-xrelay08.akamai.com (Postfix) with ESMTP id 0AF9F200010;
+	Fri,  1 Jul 2016 11:59:40 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com; s=a1;
+	t=1467374380; bh=DOJu5MLy034CUEvJW6waAnLXtL0bRectuCkIOBl+cVQ=;
+	l=1138; h=From:To:CC:Date:From;
+	b=BSiQ2Foz+YobeYoQCj6fPWiN/Dgr2ETqvbkrp60zJaEFEU/Nkn8ZcyrRWvVZTp94B
+	Ucv7VpjrF4rE9tOhbGYfnYpAaK42pzgw6Pag2TIol7ptuzf8qSVlvxDKGCqAj6IDJO
+	683VKzKSpl0bM4rfJ0YScah/cn5A+IsfBjsRT8lY=
+Received: from email.msg.corp.akamai.com (ustx2ex-cas5.msg.corp.akamai.com
+	[172.27.25.34])
+	by prod-mail-relay08.akamai.com (Postfix) with ESMTP id 080F698082;
+	Fri,  1 Jul 2016 11:59:40 +0000 (GMT)
+Received: from USTX2EX-DAG1MB3.msg.corp.akamai.com (172.27.27.103) by
+	ustx2ex-dag1mb1.msg.corp.akamai.com (172.27.27.101) with Microsoft SMTP
+	Server (TLS) id 15.0.1130.7; Fri, 1 Jul 2016 06:59:39 -0500
+Received: from USTX2EX-DAG1MB3.msg.corp.akamai.com ([172.27.27.103]) by
+	ustx2ex-dag1mb3.msg.corp.akamai.com ([172.27.27.103]) with mapi id
+	15.00.1130.005; Fri, 1 Jul 2016 06:59:39 -0500
+From: "Wirth, Allan" <awirth@akamai.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Riku Voipio
+	<riku.voipio@iki.fi>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH] linux-user: fix signal() syscall on x86_64
+Thread-Index: AQHR05ALwApKz4zPX0yzVa9Bvxt/LQ==
+Date: Fri, 1 Jul 2016 11:59:39 +0000
+Message-ID: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [172.19.40.129]
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <D2EB803AF684F04AA2EF0506C3543F99@akamai.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.4.164.1, 10.5.101.130]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF47 (Linux)/8.0.6_GA_5922)
-Thread-Topic: Remove left shifts of negative signed integers
-Thread-Index: WVcA3GEWsK6m9bN8hAnGTS8uNgXimQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 209.132.183.24
-Subject: Re: [Qemu-trivial] [PATCH] Remove left shifts of negative signed
- integers
+X-Received-From: 96.6.114.112
+X-Mailman-Approved-At: Fri, 01 Jul 2016 09:26:05 -0400
+Subject: [Qemu-trivial] [PATCH] linux-user: fix signal() syscall on x86_64
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,23 +69,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jun 2016 20:33:07 -0000
+X-List-Received-Date: Fri, 01 Jul 2016 11:59:51 -0000
 
-
-> > GCC correctly puts this warning under -Wextra, and promises not to ever
-> > make use of this facet of undefined behavior.  The only correct patch
-> > is the one that disables the warning for clang, and possibly adds
-> > -fwrapv.  In GCC, -fwrapv correctly silences ubsan's left-shift
-> > and signed-overflow warnings.  In Clang, this is reported at
-> > https://llvm.org/bugs/show_bug.cgi?id=25552.  It's a heavy hammer
-> > but it's the safest options as compiler evolve.
-> 
-> Where /exactly/ do you propose we canonicalize the clang invocation you
-> would like to support?
-
-In configure where we look for other warning flags.  Add -fwrapv and
--Wno-shift-negative-value so that they're enabled if the compilers
-supports them.
-
-Paolo
+TGludXggb24gWDg2XzY0IGRvZXMgbm90IHVzZSBzZWxfYXJnX3N0cnVjdCBmb3Igc2VsZWN0KCks
+IHRoZSBhcmdzIGFyZQ0KcGFzc2VkIGRpcmVjdGx5LiBUaGlzIHBhdGNoIHN3aXRjaGVzIGEgZGVm
+aW5lIHNvIFg4Nl82NCB1c2VzIHRoZSBjb3JyZWN0DQpjYWxsaW5nIGNvbnZlbnRpb24uDQoNClNp
+Z25lZC1vZmYtYnk6IEFsbGFuIFdpcnRoIDxhd2lydGhAYWthbWFpLmNvbT4NCi0tLQ0KIGxpbnV4
+LXVzZXIvc3lzY2FsbC5jIHwgMiArLQ0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwg
+MSBkZWxldGlvbigtKQ0KDQpkaWZmIC0tZ2l0IGEvbGludXgtdXNlci9zeXNjYWxsLmMgYi9saW51
+eC11c2VyL3N5c2NhbGwuYw0KaW5kZXggOGJmNjIwNS4uMjA5YjJhNyAxMDA2NDQNCi0tLSBhL2xp
+bnV4LXVzZXIvc3lzY2FsbC5jDQorKysgYi9saW51eC11c2VyL3N5c2NhbGwuYw0KQEAgLTgwMDIs
+NyArODAwMiw3IEBAIGFiaV9sb25nIGRvX3N5c2NhbGwodm9pZCAqY3B1X2VudiwgaW50IG51bSwg
+YWJpX2xvbmcgYXJnMSwNCiAgICAgICAgIGJyZWFrOw0KICNpZiBkZWZpbmVkKFRBUkdFVF9OUl9z
+ZWxlY3QpDQogICAgIGNhc2UgVEFSR0VUX05SX3NlbGVjdDoNCi0jaWYgZGVmaW5lZChUQVJHRVRf
+UzM5MFgpIHx8IGRlZmluZWQoVEFSR0VUX0FMUEhBKQ0KKyNpZiBkZWZpbmVkKFRBUkdFVF9TMzkw
+WCkgfHwgZGVmaW5lZChUQVJHRVRfQUxQSEEpIHx8IGRlZmluZWQoVEFSR0VUX1g4Nl82NCkNCiAg
+ICAgICAgIHJldCA9IGRvX3NlbGVjdChhcmcxLCBhcmcyLCBhcmczLCBhcmc0LCBhcmc1KTsNCiAj
+ZWxzZQ0KICAgICAgICAgew0KLS0gDQoxLjkuMQ0KDQo=
 
