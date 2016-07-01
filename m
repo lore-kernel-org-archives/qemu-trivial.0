@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bJ0xh-0006ew-4y
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Jul 2016 12:06:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40596)
+	id 1bJ0zO-0000PM-7X
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Jul 2016 12:08:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40965)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0xe-0006bD-IC
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:06:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zL-0000Lz-Gu
+	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0xc-0000DE-Gj
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:06:33 -0400
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:34778)
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zJ-0000Sd-M6
+	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:18 -0400
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:35631)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0xb-0000D5-Vp
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:06:32 -0400
-Received: by mail-vk0-x232.google.com with SMTP id c2so159060823vkg.1
-	for <qemu-trivial@nongnu.org>; Fri, 01 Jul 2016 09:06:31 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zJ-0000SO-HV
+	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:17 -0400
+Received: by mail-vk0-x22e.google.com with SMTP id u68so116398859vkf.2
+	for <qemu-trivial@nongnu.org>; Fri, 01 Jul 2016 09:08:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=CvRg1NVjwh93AW1tX2XOM2/QCWQG5apINANBmugzAeU=;
-	b=YCLMVbAcCj21QEttVQIRSZS8WkVkCWkq5XkrFSaXq8onTLusbfL++LtDVVK0VZSFBo
-	6rAkYDfEHrMCurUb5AKYHqLyevBkLYFRxvDqK3EWyd1ebAPAONjetNUc6wEcCfFTyZeh
-	6WOjk3Zb2rmzQUIeTGj6ZfiRbFmJWnqJVfo8s=
+	:cc; bh=A+ysyCrT9jzeaMVz7yC9LuB2nJccB5qQTLwvp3xiTqg=;
+	b=J7CfNJSghJWK/jc+FWBeExIDdoc/XouC8yvKbXqfLn3K4X99vHWz3GDrIjFjwtIOg1
+	NCTNXlIM/IY+v8l5UXaI39gTGXW85lfrMMnuYbYTN8v1vkCOHUaVAamv/IdlWquD4exK
+	1ULKF+w9z2oKeMdgoGdNq+cJu4Za47LR060aY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=CvRg1NVjwh93AW1tX2XOM2/QCWQG5apINANBmugzAeU=;
-	b=UkoNaUXDeT2fdEeiW/IPE2V7wmzLa+g7pcdHlP7nI2Q3in8dM7cSOyl0/fU2osDxVm
-	EyS4exPybKdtUJtettDl/YTGVRp/lkRZwepaA2yZA8qM6kIp/0AkiffhHJDm4B43iX7t
-	/VpxhRfDJifVOwX4PtPdBq7x1oNdqjlBHpkste7bQtB6e6977w3NDrgFw/oCr7l4eEHq
-	tAwK8MYA1Se/KX0eD5iik2Jvdheke6/hM5N5pAZvOU6L8JTZjkNTRNBlEvBvQRUHEuaN
-	TFSU6Xj+YZPTWeBiMbnaay/rnpnpSDcpTBrhzuv8vvlLYiVJiJJBm2pde6iJZagun3uE
-	6kow==
-X-Gm-Message-State: ALyK8tLoglp34oq9QPkGQNnCdkvxYe4HOulIR2fVRLRefLshQq/B0x8aoRizrI5shSIiOBqrEpfQXQoGLYcGJukp
-X-Received: by 10.31.188.80 with SMTP id m77mr9561124vkf.30.1467389191536;
-	Fri, 01 Jul 2016 09:06:31 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=A+ysyCrT9jzeaMVz7yC9LuB2nJccB5qQTLwvp3xiTqg=;
+	b=DMi09pYlYN9XidXhwl3pRWDAiWnKnhJ+z1Sducmtnpn7GJWigBFz/zf3B20C2YkIi4
+	Xf0dO2xLM2BxM5k/8Prfp/hB/UkOuEjxqUehTYtbx22ObXuYBm7eHAH2fON/Al2emA/w
+	5LItsKtOeelocAJgol6+NQZkBkHibSlEG/gkC50JO55dQGCgFOjgWI4JI3Lxtz1JDzBh
+	2F9xP8st+SWZeQrstuI1UU03O1xHiXiUAuz2ifzVyxDlgdhx5VuUX/LcCmV+mV0b6pZ1
+	14XgrRGmBA9DjDSu3ZCLt/G9zKl2+jnSpPddSwrkge0n7mHAQqNvDkddY/23Z8vmBrSi
+	smCA==
+X-Gm-Message-State: ALyK8tLVrPPDhLHnPhH97zbPQIX5yFRXeTZu19Y6O+oFqs5pgt0aYM9fcpb2OqCaLhB5R6BQnMgfE/ca8a+Z2ShG
+X-Received: by 10.31.21.143 with SMTP id 137mr9603896vkv.108.1467389297149;
+	Fri, 01 Jul 2016 09:08:17 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 09:06:12 -0700 (PDT)
-In-Reply-To: <6E700AE9-9FC8-4B5A-9065-1772A858EAAA@akamai.com>
-References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
-	<CAFEAcA9VxFBB7BYBWY1gtHeScPkPehoh6SMVY-68UGz6RSFS=g@mail.gmail.com>
-	<6E700AE9-9FC8-4B5A-9065-1772A858EAAA@akamai.com>
+Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 09:07:57 -0700 (PDT)
+In-Reply-To: <20160626082331.39187-1-ash@kambanaria.org>
+References: <20160626082331.39187-1-ash@kambanaria.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Jul 2016 17:06:12 +0100
-Message-ID: <CAFEAcA_vGgujpvUF2Mj+mzDXia5T24iaMSAjV5eYx5U0CaYezQ@mail.gmail.com>
-To: "Wirth, Allan" <awirth@akamai.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Riku Voipio <riku.voipio@iki.fi>, 
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Date: Fri, 1 Jul 2016 17:07:57 +0100
+Message-ID: <CAFEAcA9E=HgAcYTGyeRWJy4DfnZZNVn7fyjP5w-q_Y4eZwi=ew@mail.gmail.com>
+To: Alexander Shopov <ash@kambanaria.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Stefan Weil <sw@weilnetz.de>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	al_shopov@yahoo.com, 
+	=?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>, 
+	Cornelia Huck <cornelia.huck@de.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::232
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix signal()
- syscall on x86_64
+X-Received-From: 2607:f8b0:400c:c05::22e
+Subject: Re: [Qemu-trivial] [PATCH L10N v3 0/1] Added Bulgarian translation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,31 +64,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Jul 2016 16:06:35 -0000
+X-List-Received-Date: Fri, 01 Jul 2016 16:08:20 -0000
 
-On 1 July 2016 at 16:34, Wirth, Allan <awirth@akamai.com> wrote:
-> Thanks for the feedback. I didn=E2=80=99t find that patch before when I s=
-earched, so
-> apologies for the duplicate submission.
->
-> The proposed fix certainly does seem cleaner and more general. Does it
-> imply though that this patch is incorrect? It fixes the emulation bug
-> in my use case, and AFAICT does not introduce new emulation bugs.
+On 26 June 2016 at 09:23, Alexander Shopov <ash@kambanaria.org> wrote:
+> Hello,
+> I am sending Bulgarian transation of qemu gtk interface for the 3rd time.
+> Bulgarian is a South Slavic language spoken in Bulgaria - SE Europe. It is
+> written in Cyrillic alphabet.
+> I am Alexander Shopov - coordinator of the Bulgarian GNOME translation
+> project.
+> I am cc-ing to trivial patches as from dev point this is trivial.
+> Sending also to trivial reviewers, committers to po/ dir, some
+> active committers as this is the third sending and I have received neither
+> any comments nor has it been merged. Probably these just get overlooked in
+> the grand stream of other patches.
 
-Well, it depends what you mean by "incorrect". It's pretty common
-in dealing with a large and old code base to find good opportunities
-for small refactorings when you investigate a bug. If we allow bugs
-to be fixed with the smallest and most expedient change, then
-problems gradually pile up and the codebase becomes unmaintainable.
-So we often ask patch submitters to do a bit of cleanup in the
-process of fixing their bug.
+Applied, thanks. Sorry your earlier submissions got lost...
 
-In this case, fixing the bug in the way that I suggest will
-fix it for all architectures, not just x86-64, improve the
-code by deleting an #ifdef, and remove a trap that will otherwise
-be waiting for the next new architecture that has support
-contributed to it.
-
-thanks
 -- PMM
 
