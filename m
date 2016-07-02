@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bJ0zO-0000PM-7X
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Jul 2016 12:08:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40965)
+	id 1bJGAw-0000jG-45
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Jul 2016 04:21:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52592)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zL-0000Lz-Gu
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:20 -0400
+	(envelope-from <laurent@vivier.eu>) id 1bJGAt-0000TO-S8
+	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 04:21:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zJ-0000Sd-M6
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:18 -0400
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:35631)
+	(envelope-from <laurent@vivier.eu>) id 1bJGAr-0003gc-Os
+	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 04:21:14 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:64972)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0zJ-0000SO-HV
-	for qemu-trivial@nongnu.org; Fri, 01 Jul 2016 12:08:17 -0400
-Received: by mail-vk0-x22e.google.com with SMTP id u68so116398859vkf.2
-	for <qemu-trivial@nongnu.org>; Fri, 01 Jul 2016 09:08:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=A+ysyCrT9jzeaMVz7yC9LuB2nJccB5qQTLwvp3xiTqg=;
-	b=J7CfNJSghJWK/jc+FWBeExIDdoc/XouC8yvKbXqfLn3K4X99vHWz3GDrIjFjwtIOg1
-	NCTNXlIM/IY+v8l5UXaI39gTGXW85lfrMMnuYbYTN8v1vkCOHUaVAamv/IdlWquD4exK
-	1ULKF+w9z2oKeMdgoGdNq+cJu4Za47LR060aY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=A+ysyCrT9jzeaMVz7yC9LuB2nJccB5qQTLwvp3xiTqg=;
-	b=DMi09pYlYN9XidXhwl3pRWDAiWnKnhJ+z1Sducmtnpn7GJWigBFz/zf3B20C2YkIi4
-	Xf0dO2xLM2BxM5k/8Prfp/hB/UkOuEjxqUehTYtbx22ObXuYBm7eHAH2fON/Al2emA/w
-	5LItsKtOeelocAJgol6+NQZkBkHibSlEG/gkC50JO55dQGCgFOjgWI4JI3Lxtz1JDzBh
-	2F9xP8st+SWZeQrstuI1UU03O1xHiXiUAuz2ifzVyxDlgdhx5VuUX/LcCmV+mV0b6pZ1
-	14XgrRGmBA9DjDSu3ZCLt/G9zKl2+jnSpPddSwrkge0n7mHAQqNvDkddY/23Z8vmBrSi
-	smCA==
-X-Gm-Message-State: ALyK8tLVrPPDhLHnPhH97zbPQIX5yFRXeTZu19Y6O+oFqs5pgt0aYM9fcpb2OqCaLhB5R6BQnMgfE/ca8a+Z2ShG
-X-Received: by 10.31.21.143 with SMTP id 137mr9603896vkv.108.1467389297149;
-	Fri, 01 Jul 2016 09:08:17 -0700 (PDT)
+	(envelope-from <laurent@vivier.eu>)
+	id 1bJGAm-0003di-Uy; Sat, 02 Jul 2016 04:21:09 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue002) with ESMTPSA (Nemesis) id 0Ls3eJ-1bSMj03d9z-013sYL;
+	Sat, 02 Jul 2016 10:20:50 +0200
+To: Peter Maydell <peter.maydell@linaro.org>, "Wirth, Allan"
+	<awirth@akamai.com>
+References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
+	<CAFEAcA9VxFBB7BYBWY1gtHeScPkPehoh6SMVY-68UGz6RSFS=g@mail.gmail.com>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Timothy Pearson <tpearson@raptorengineering.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <164e58f5-7dcc-bc9f-286f-98b5de56c1cb@vivier.eu>
+Date: Sat, 2 Jul 2016 10:20:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 09:07:57 -0700 (PDT)
-In-Reply-To: <20160626082331.39187-1-ash@kambanaria.org>
-References: <20160626082331.39187-1-ash@kambanaria.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Jul 2016 17:07:57 +0100
-Message-ID: <CAFEAcA9E=HgAcYTGyeRWJy4DfnZZNVn7fyjP5w-q_Y4eZwi=ew@mail.gmail.com>
-To: Alexander Shopov <ash@kambanaria.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Stefan Weil <sw@weilnetz.de>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	al_shopov@yahoo.com, 
-	=?UTF-8?B?SsOhbiBWZXNlbMO9?= <jano.vesely@gmail.com>, 
-	Cornelia Huck <cornelia.huck@de.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA9VxFBB7BYBWY1gtHeScPkPehoh6SMVY-68UGz6RSFS=g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:2Du7QGfKpzfyZTPEt5UB5K2lBWfLZxbQ4V7UElxg4dr6vQ19Qu9
+	BtyzbUaH/6287oF+NsZGcqhowQeTrKLPsAf48Wzv6+0Fy8MYikxtSZLtK+TDx5D4IG1apKs
+	uio3mVPmyVF7T4G2NdiWVCKGnBMBujR69i3zI9EXR2XrZbxCQqHXGyfljCbF/TQAnGC7nyS
+	Cle/e1OJvIEWhcJIdk3Xg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:74/fkn5nQ0k=:weE4A5OHaZoMJ0u1M72kI3
+	r4Yr2UJDDibK5S77mkfgePAIDWUqYhzVkM4/Ao1yJOFVDHnvqOBVi2W4yLnKm7F2Te0Fc50Nd
+	nY7o5Xl35kxcTiEa4qnv4vJ464h9zoEHUugfKHoz1SKNmeGcDaUzVRLA0wy6rYL8vothXe1SS
+	wj8maXwSsZL+WCYHje8GSqqQWvNVMpdsjeB3Xo5DDf0bw0SNQrSNrgvAppEsKl0RWyBLZ7KAd
+	frit4ogf6Eh7PJENKMisisdGKyyx0T8vpHN/184Yzgdu1bxpzmve5HlQ34qYoH7nyp1P2VMxA
+	y6BqKBCnIcMEIUA4q7HQP9zPVg/JooNeeMrKnqCkF6yEQSUV1nLj2WU5Ws3+vjD44Rde7bYdZ
+	ALpiXCqnwDkkwwgIJp4cRp89+XMMlPVDrZIxn9/O/dJF1QdVnyZ0yUla18Nqq2RPugrVF+2/I
+	LLqRdPIhVtrGE7vb7ngKDipCjIx+uqJ53F5fWrQRj7tuVtAFrzomFqQmhskkjvfDlqRrpYMHf
+	rIaNFo/w72hGqbeJCU9DAVO3zxFEleXJlf1kqnz6Z9rRQTkU3amRG+9Ax1iZwY/eZiklGtfy4
+	0UOKD8Onyt9fJPFBYrgIG13T0W4fIUNV8JcCYLWi/+ydZ2ymsiYBhSuSqAJZfdYPB66CpUD99
+	F6XaWV6DuFJEk3p8zel0Nd6sPqjRdXhJPVSqIaNzUhcEqa4QQazqMMihQyfwo8fCxZJ0EMOA/
+	UwmkjUssABYWWZYI
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Subject: Re: [Qemu-trivial] [PATCH L10N v3 0/1] Added Bulgarian translation
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix signal()
+ syscall on x86_64
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,22 +63,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Jul 2016 16:08:20 -0000
+X-List-Received-Date: Sat, 02 Jul 2016 08:21:17 -0000
 
-On 26 June 2016 at 09:23, Alexander Shopov <ash@kambanaria.org> wrote:
-> Hello,
-> I am sending Bulgarian transation of qemu gtk interface for the 3rd time.
-> Bulgarian is a South Slavic language spoken in Bulgaria - SE Europe. It is
-> written in Cyrillic alphabet.
-> I am Alexander Shopov - coordinator of the Bulgarian GNOME translation
-> project.
-> I am cc-ing to trivial patches as from dev point this is trivial.
-> Sending also to trivial reviewers, committers to po/ dir, some
-> active committers as this is the third sending and I have received neither
-> any comments nor has it been merged. Probably these just get overlooked in
-> the grand stream of other patches.
 
-Applied, thanks. Sorry your earlier submissions got lost...
 
--- PMM
+Le 01/07/2016 à 15:35, Peter Maydell a écrit :
+> On 1 July 2016 at 12:59, Wirth, Allan <awirth@akamai.com> wrote:
+>> Linux on X86_64 does not use sel_arg_struct for select(), the args are
+>> passed directly. This patch switches a define so X86_64 uses the correct
+>> calling convention.
+>>
+>> Signed-off-by: Allan Wirth <awirth@akamai.com>
+>> ---
+>>  linux-user/syscall.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+>> index 8bf6205..209b2a7 100644
+>> --- a/linux-user/syscall.c
+>> +++ b/linux-user/syscall.c
+>> @@ -8002,7 +8002,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+>>          break;
+>>  #if defined(TARGET_NR_select)
+>>      case TARGET_NR_select:
+>> -#if defined(TARGET_S390X) || defined(TARGET_ALPHA)
+>> +#if defined(TARGET_S390X) || defined(TARGET_ALPHA) || defined(TARGET_X86_64)
+>>          ret = do_select(arg1, arg2, arg3, arg4, arg5);
+>>  #else
+>>          {
+> 
+> There is a cleaner approach which we should use to fix this:
+> see my comments in reply to this recent patch trying to do
+> a similar thing:
+> https://patchwork.kernel.org/patch/9185927/
+
+syscall_nr.h are copies of unistd.h from kernel, so kernel uses also
+__NR_select and __NR__newselect.
+
+I think the fix can be as simple as:
+
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8372,7 +8372,7 @@ abi_long do_syscall(void *cpu_env, int num,
+abi_long arg1,
+         break;
+ #if defined(TARGET_NR_select)
+     case TARGET_NR_select:
+-#if defined(TARGET_S390X) || defined(TARGET_ALPHA)
++#if !defined(TARGET_NR__new_select)
+         ret = do_select(arg1, arg2, arg3, arg4, arg5);
+ #else
+         {
+
+Laurent
 
