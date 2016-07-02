@@ -1,43 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bJSLo-0002yQ-Tk
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Jul 2016 17:21:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49271)
+	id 1bJST7-0006cL-9q
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Jul 2016 17:28:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50321)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJSLm-0002u5-DD
-	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 17:21:19 -0400
+	(envelope-from <laurent@vivier.eu>) id 1bJST2-0006Sp-9k
+	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 17:28:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJSLk-0006QL-F9
-	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 17:21:17 -0400
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:35060)
+	(envelope-from <laurent@vivier.eu>) id 1bJSSz-0007Xf-Nr
+	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 17:28:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:53058)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJSLj-0006Q7-VP
-	for qemu-trivial@nongnu.org; Sat, 02 Jul 2016 17:21:16 -0400
-Received: by mail-vk0-x22e.google.com with SMTP id i63so22715695vkb.2
-	for <qemu-trivial@nongnu.org>; Sat, 02 Jul 2016 14:21:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=gvH1RCoAqNxKQbvS2rgR0SahU+edeR2KEqUNrqwIqbk=;
-	b=CkKNj5giAskiR/d8URFxVvgRJYTKvD9FHyWRlVEi/VjJ1t7O6KpR3NgldofTJiarsJ
-	1jcJ/bunIXGZ7qcWmrUw3xBIMO5v/8i1DaW8kpow708hZbSKDqguuUdeYWe6ds88KfwX
-	be+Y9zCvZfUYAz3Kz1HgVzGisp8AP4x2jw8zo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=gvH1RCoAqNxKQbvS2rgR0SahU+edeR2KEqUNrqwIqbk=;
-	b=BX6B9Ep29E0z+DqCe5xAmrzrRp97s3N3pfvWYn3/n8zifFnT5kenMSTaFoHBwMMS+6
-	uYvWFn78VOaeFlJhUrvg6KJvKXjMnWH3HwEalsy9gDyYcWBfEhYMisI5o0d13sEzQRTw
-	/3MFZbBeNX3yeZl97qiRtiIuUeBZ6hO4ZaOvFzrrJnnKUqoOBWy+jygAl853uWQRCCTL
-	Y7LAO11oiAQ+Ky9N16PWBuxmOnaIe6aMsLJodRUOwxP30Z3zF/H48vJFe0iA34k+bL4x
-	/kM0bS/xWWoLqiMQ05xx/c/KBdsRHB9DaJDcXX5JJGyelOx+nB4ddGhvj559pTHoJXsw
-	KFfw==
-X-Gm-Message-State: ALyK8tIuck3kXgRVcHgwJEWQUJBfuBeaXz4zQZuFNFKO8YsoJTttLPZhcTZM99lG6Fcq5ydfGB4oshP8OogzM4JV
-X-Received: by 10.159.40.67 with SMTP id c61mr938923uac.82.1467494473805; Sat,
-	02 Jul 2016 14:21:13 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Sat, 2 Jul 2016 14:20:54 -0700 (PDT)
-In-Reply-To: <caf50e5d-791a-4ed2-0af1-54f96df35ae8@vivier.eu>
+	(envelope-from <laurent@vivier.eu>)
+	id 1bJSSt-0007SP-61; Sat, 02 Jul 2016 17:28:39 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue004) with ESMTPSA (Nemesis) id 0LkUgR-1brQZJ0W8R-00cTXw;
+	Sat, 02 Jul 2016 23:28:22 +0200
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
 	<CAFEAcA9VxFBB7BYBWY1gtHeScPkPehoh6SMVY-68UGz6RSFS=g@mail.gmail.com>
 	<164e58f5-7dcc-bc9f-286f-98b5de56c1cb@vivier.eu>
@@ -45,19 +23,39 @@ References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
 	<cc5798cf-4e88-f1e7-f3ca-45482e0822bb@vivier.eu>
 	<CAFEAcA976boeHjzyHMr_83cq+uezzBq=SCWePW-9780UAp=kHA@mail.gmail.com>
 	<caf50e5d-791a-4ed2-0af1-54f96df35ae8@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 2 Jul 2016 22:20:54 +0100
-Message-ID: <CAFEAcA_YBZGQmerK69pw_C=wX=CVKuPYUdD9EE7aRoH85CVXYw@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
+	<CAFEAcA_YBZGQmerK69pw_C=wX=CVKuPYUdD9EE7aRoH85CVXYw@mail.gmail.com>
 Cc: "Wirth, Allan" <awirth@akamai.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Timothy Pearson <tpearson@raptorengineering.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <1ce00ab3-4c2f-aebc-a25b-339ae6e77d6f@vivier.eu>
+Date: Sat, 2 Jul 2016 23:28:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_YBZGQmerK69pw_C=wX=CVKuPYUdD9EE7aRoH85CVXYw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:T7EPSYPu/HOHUHfqm7MM1CBGIq+8HELguWlyT8hwhA6++5T6ZSL
+	OnM3tWcpimcICXE9HSSU+K2Glpd0Ynr4bGKokpXB5Sq8iVhLru4/kyZ1NkDDPu5CE2k0/np
+	KEP+wpBd06RIljX+ivXBUxFUHiP+abIvkFPvyAhEqC4k1yFawGtferyxublQfOnioVViVrO
+	xM3G7N+83erWRcVTvjI7Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Cgsh2sNcCsw=:mdPpMvhnu3lYiuazh51ucL
+	pBX4V+qILQOteEev/bKunwmYA8If7HxCf8a20gwpKEDbFk9VmMOZCPu4zpQTYm9TIZ0Yvu/LQ
+	vcGzKvh0NX+fzPRrcLuiD+TSxkgH78+sJ3VT1jWO5mvduRJmZLLpENW+3qAv7pyNgaDGRF2DG
+	hUeCwe5KbqkNQ5Qhiu5BLF+KLz0hnuHb2Q0y/xW4uXu4GL0YBBbecHrstZAprDfMs+R1fGo0z
+	mDhZ+VpBC00MQSN4M1uGqD8qJWp6WgiG/jUyWrzJZ84C3XI8NeF8Zwq1X829JE3jXJAW4Pxdq
+	hWaV0Tv79rROhfWYTAnxJ+4RD701tQjBLcjKmz5I8pYtsajlGP1zyVHXm4N7FkxYEwl1OS583
+	sVBufCvvYnzWV11otpsA5TF+wns+pNSDyQESPGuDFzp1Ohstt0AnzJ70d8JvrVTBKHJw7EZwx
+	XadEVGQlMcMiKNFXlDowIltkCHJA3nWECXwMqSuKaEvPjb9EXpBQ8Jc84ej+4N9vGFhhLE34M
+	aZdOZpcxXZkOhrxIdRk5UERR9rMpWzCHuKMeJ1auDRYLo3ds/E8MPNpcWDG6rmtA63gZWBFEM
+	mE3GhFcpNluBOdPY42SD0FAKCBONBKsvlY4LIfG+Kvhnw/aJMqMg3/OlpEUnWA0GFKlgvvb44
+	h/uqCJNiOEBVgmxmPbkGcB7y2hUPxb9H0/of4i0itLerxKgFARSmCfzxVaFrLbB9Z/qnLdiva
+	33i2zhSWWV8Trw5N
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
+X-Received-From: 212.227.126.131
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix signal()
  syscall on x86_64
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,45 +69,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Jul 2016 21:21:19 -0000
+X-List-Received-Date: Sat, 02 Jul 2016 21:28:51 -0000
 
-On 2 July 2016 at 22:17, Laurent Vivier <laurent@vivier.eu> wrote:
-> Le 02/07/2016 =C3=A0 22:12, Peter Maydell a =C3=A9crit :
->> (1) Define neither NR_select nor NR__newselect
->>  (and use pselect6 syscall for select):
->>  aarch64, openrisc, tilegx, unicore32, presumably any future arch
->
-> They use:
->
-> kernel/sys.c:
->
-> #undef __SYSCALL
-> #define __SYSCALL(nr, call) [nr] =3D (call),
->
-> void *sys_call_table[__NR_syscalls] =3D {
-> #include <asm/unistd.h>
-> };
->
-> It's not very clear, but I think they use NR_select with sys_select:
->
-> include/uapi/asm-generic/unistd.h
->
-> #define __ARCH_WANT_SYS_SELECT
-> __SYSCALL(__NR_select, sys_select)
 
-This is inside an #ifdef __ARCH_WANT_SYSCALL_DEPRECATED.
-Only arch/score defines that; most architectures using
-the asm-generic syscall numbers don't want these
-obsolete syscalls to exist.
 
->> For openrisc, sh and tilegx we incorrectly define
->> a TARGET_NR_select which the kernel doesn't, so
->> we should delete that from our headers.
->
-> I think they really exist (from asm-generic/unistd.h)
+Le 02/07/2016 à 23:20, Peter Maydell a écrit :
+> On 2 July 2016 at 22:17, Laurent Vivier <laurent@vivier.eu> wrote:
+>> Le 02/07/2016 à 22:12, Peter Maydell a écrit :
+>>> (1) Define neither NR_select nor NR__newselect
+>>>  (and use pselect6 syscall for select):
+>>>  aarch64, openrisc, tilegx, unicore32, presumably any future arch
+>>
+>> They use:
+>>
+>> kernel/sys.c:
+>>
+>> #undef __SYSCALL
+>> #define __SYSCALL(nr, call) [nr] = (call),
+>>
+>> void *sys_call_table[__NR_syscalls] = {
+>> #include <asm/unistd.h>
+>> };
+>>
+>> It's not very clear, but I think they use NR_select with sys_select:
+>>
+>> include/uapi/asm-generic/unistd.h
+>>
+>> #define __ARCH_WANT_SYS_SELECT
+>> __SYSCALL(__NR_select, sys_select)
+> 
+> This is inside an #ifdef __ARCH_WANT_SYSCALL_DEPRECATED.
+> Only arch/score defines that; most architectures using
+> the asm-generic syscall numbers don't want these
+> obsolete syscalls to exist.
 
-See above.
+I've missed that... so you're right on everything.
 
-thanks
--- PMM
+Thanks,
+Laurent
 
