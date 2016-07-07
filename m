@@ -1,22 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bLEgJ-00028E-KN
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jul 2016 15:09:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38290)
+	id 1bLEjm-00063X-5j
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jul 2016 15:13:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bLEgF-00025V-RU
-	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 15:09:51 -0400
+	(envelope-from <awirth@akamai.com>) id 1bLEji-00060d-O3
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 15:13:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bLEgD-0001DU-6d
-	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 15:09:46 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:51890)
+	(envelope-from <awirth@akamai.com>) id 1bLEjg-0001xm-8q
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 15:13:21 -0400
+Received: from prod-mail-xrelay05.akamai.com ([23.79.238.179]:50577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1bLEg5-0001C1-PY; Thu, 07 Jul 2016 15:09:38 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104) with ESMTPSA (Nemesis) id 0M6ETS-1bVcsW11WU-00yAu8;
-	Thu, 07 Jul 2016 21:09:18 +0200
-To: "Wirth, Allan" <awirth@akamai.com>, Riku Voipio <riku.voipio@iki.fi>,
+	(envelope-from <awirth@akamai.com>)
+	id 1bLEja-0001u8-AJ; Thu, 07 Jul 2016 15:13:14 -0400
+Received: from prod-mail-xrelay05.akamai.com (localhost.localdomain
+	[127.0.0.1]) by postfix.imss70 (Postfix) with ESMTP id 3FFE8423A43;
+	Thu,  7 Jul 2016 19:13:10 +0000 (GMT)
+Received: from prod-mail-relay10.akamai.com (prod-mail-relay10.akamai.com
+	[172.27.118.251])
+	by prod-mail-xrelay05.akamai.com (Postfix) with ESMTP id 27ECE423745;
+	Thu,  7 Jul 2016 19:13:10 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com; s=a1;
+	t=1467918790; bh=LbEg/tnL/dtcALTmp7uNXoSqDBlTwpnXrNh4LES+S6w=;
+	l=8068; h=From:To:CC:Date:References:In-Reply-To:From;
+	b=MjemyT4nAIT4rMgKvHWXp9QwgpxYB6Xuo5KNnimBiqu9xvP0jiQKQEXuobgj3Z+Cy
+	1edKjWEek3Lg/VVSNIV7bdGiQ7521nnSUG9W/T98ixbrtYFjzEOLOTmIbk82dhON3z
+	jclLKArR50S2NsTCM+xfyu4OrTx78PUNZowJYEc8=
+Received: from email.msg.corp.akamai.com (ustx2ex-cas3.msg.corp.akamai.com
+	[172.27.25.32])
+	by prod-mail-relay10.akamai.com (Postfix) with ESMTP id 03D961FCB8;
+	Thu,  7 Jul 2016 19:13:10 +0000 (GMT)
+Received: from USTX2EX-DAG1MB3.msg.corp.akamai.com (172.27.27.103) by
+	ustx2ex-dag1mb2.msg.corp.akamai.com (172.27.27.102) with Microsoft SMTP
+	Server (TLS) id 15.0.1130.7; Thu, 7 Jul 2016 14:13:09 -0500
+Received: from USTX2EX-DAG1MB3.msg.corp.akamai.com ([172.27.27.103]) by
+	ustx2ex-dag1mb3.msg.corp.akamai.com ([172.27.27.103]) with mapi id
+	15.00.1130.005; Thu, 7 Jul 2016 14:13:09 -0500
+From: "Wirth, Allan" <awirth@akamai.com>
+To: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>,
 	Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Timothy Pearson
+	<tpearson@raptorengineering.com>
+Thread-Topic: [Qemu-devel] [PATCH] linux-user: fix signal() syscall on x86_64
+Thread-Index: AQHR05ALwApKz4zPX0yzVa9Bvxt/LaAD56uAgAE6SgCAABqkgIAAcV0AgAA6wYCAB8ShAIAAA6qA//+9SQCAAESAAP//vgkA
+Date: Thu, 7 Jul 2016 19:13:09 +0000
+Message-ID: <3D883151-810E-462C-9F2F-2F6C2C7A2037@akamai.com>
 References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
 	<CAFEAcA9VxFBB7BYBWY1gtHeScPkPehoh6SMVY-68UGz6RSFS=g@mail.gmail.com>
 	<164e58f5-7dcc-bc9f-286f-98b5de56c1cb@vivier.eu>
@@ -26,36 +54,21 @@ References: <92770843-66C8-471B-BA9C-DA46E92817B9@akamai.com>
 	<20160707184944.GA30964@beaming.home>
 	<a5c0b701-1e1a-198e-359e-f78cf2d97065@vivier.eu>
 	<9DF3E0FA-AEF0-479C-891A-B1280DF2808F@akamai.com>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Timothy Pearson <tpearson@raptorengineering.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <3605d35f-bb1a-e1b8-86ca-13e72992011e@vivier.eu>
-Date: Thu, 7 Jul 2016 21:09:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	<3605d35f-bb1a-e1b8-86ca-13e72992011e@vivier.eu>
+In-Reply-To: <3605d35f-bb1a-e1b8-86ca-13e72992011e@vivier.eu>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [172.19.37.68]
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <9FE7E1416FD1D44E85B62FFAAB1365FF@akamai.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <9DF3E0FA-AEF0-479C-891A-B1280DF2808F@akamai.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:/AslCTybiAV8XyFW9Fjy43bB2w2QkwSjzwERqDXdsEoQguwGU1F
-	fUAKKZP9J0R6yHHvXunTAVPgSwiLkyW1yJx7DYSRibtQZ2TmW1sDqwFvWQ53LzNcfG8cGlL
-	dSta25oTr2PMf1HyeRrnAiiZU4YFW7QdK6NDUZRgjHBtaOA3zABUozqliZhHLFKt0QkppOO
-	/hU7lkhWLNUAVAJHJZETw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Oran+64dNRk=:2kqu+0LwMvur5WXI9CjYbg
-	j/EeLjub6gkcwSw/5ZmS3lALQBYReBW2nXzigP7siNS7n+vPp6oja8w42zN9IZ2kI40tJMXX9
-	IuhFirBvtxWRd63dbg9u5unC8U6A7t3JwDEKxNMfxhkYajZ/900B+1R0Cu0eVcOKo+esOhrn7
-	cMsOaJGfBDSyM2cSZaQ+zfcItSlJ7WnkMoD8GefuSfloHhC3cZj32vF9ZA7cq7JCYWGRcAFLe
-	Xk0LOyL43qLtd2b0zbeniJr+zRK2r1pOJr0JCkPQWEFZ0NcKryGRMH9jE52J15dfLfDphsNNT
-	9KoFWegmJr0IVewxrU368sMhuM3Ckn4LS2mfeHc+z7oJOAaDdAjs6eRxrAzx1h9EvjvbKlIPw
-	xxaLWCIf7d/iRQhuvvWrBv+yvRFqGEeCTE/38mCEjGwsQ/cgPga9qYKtC+ZWDhTD4Ig3XdT66
-	4aiqxgMAPvLIk1FYco8x6NV5UlCx7iG0Smpv0EiGYVaD105SDRaks3gG/qk3l8eZMSyGL11HP
-	x6ZTJhp5HZOqkj8ltpPT7NBPs9s4MFTZN5XWGCNNGiKpD30JCmXR62lOXYKFCsR9hyEwCV9WG
-	Q6RpYLp24rUcE1A4Z3TMJO1IWAUWqj369fOAcLy/tg3xa0MfiW9/+SaWw3Wo39O3d9jZcC02m
-	yJMk52hjzoZC/9lIvqbdjSjVVjNyraui+iRES4ssM5eAdupGY5LoJqoQcEpi+rnl/+MQisD30
-	gutKXR8QEYJHtDsj
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 23.79.238.179
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix signal()
  syscall on x86_64
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,143 +82,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jul 2016 19:09:51 -0000
+X-List-Received-Date: Thu, 07 Jul 2016 19:13:24 -0000
 
-
-
-Le 07/07/2016 à 21:04, Wirth, Allan a écrit :
-> 
-> 
-> On 7/7/16, 3:02 PM, "Laurent Vivier" <laurent@vivier.eu> wrote:
-> 
->>
->>
->> Le 07/07/2016 à 20:49, Riku Voipio a écrit :
->>> On Sat, Jul 02, 2016 at 09:12:09PM +0100, Peter Maydell wrote:
->>>> On 2 July 2016 at 17:41, Laurent Vivier <laurent@vivier.eu> wrote:
->>>>> Sadly, this can't work:
->>>>>
->>>>> sparc/sparc64/cris use sys_select for NR_select AND NR_newselect.
->>>>
->>>>> Not sure all is correct, but it's what I've found:
->>>>>
->>>>>             | __NR_select    | __NR__newselect
->>>>> ------------+----------------+-----------------+
->>>>> arm         | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> aarch64     | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> alpha       | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> cris        | sys_select     | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> m68k        | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> microblaze  | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> mips        | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> mips64      | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> openrisc    | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> ppc         | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> s390x       | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> sh4         | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> sparc       | sys_select     | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> sparc64     | sys_select     | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>> tilegx      | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> unicore32   | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> x86_64      | sys_select     |        -        |
->>>>> ------------+----------------+-----------------+
->>>>> i386        | sys_old_select | sys_select      |
->>>>> ------------+----------------+-----------------+
->>>>
->>>> Hmm. Looking at current Linux git master, I get
->>>> slightly different results. The only architectures which
->>>> define __ARCH_WANT_SYS_OLD_SELECT are:
->>>>  arm, m68k, mn10300, x86
->>>> and no others use sys_old_select.
->>>>
->>>> So I think we have the following behaviours:
->>>>
->>>> (1) Define neither NR_select nor NR__newselect
->>>>  (and use pselect6 syscall for select):
->>>>  aarch64, openrisc, tilegx, unicore32, presumably any future arch
->>>>
->>>> (2) only define NR__newselect, it is new select:
->>>>  mips, mips64, sh, s390
->>>>
->>>> (3) Only define NR_select, want that to be new select:
->>>>  alpha, x86_64, s390x
->>>>
->>>> (4) NR__newselect is new select, NR_select is old_select:
->>>>  i386, m68k, arm if kernel is not CONFIG_AEABI
->>>>
->>>> (5) NR__newselect is new select, NR_select is defined but
->>>>  if called returns ENOSYS:
->>>>  microblaze, arm if CONFIG_AEABI, ppc64
->>>>
->>>> (6) NR__newselect is new select, NR_select is a bonkers custom
->>>>  thing that tries to autodetect the calling convention:
->>>> http://lxr.free-electrons.com/source/arch/powerpc/kernel/syscalls.c#L86
->>>>  ppc32 (but only native 32-bit; 32-bit compat support
->>>>  on a ppc64 kernel is category 5, so I vote for ignoring
->>>>  this weirdness and calling ppc category 5)
->>>>
->>>> (7) NR_select and NR__newselect are different numbers
->>>>  but both are new select:
->>>>  cris, sparc, sparc64
->>>>
->>>> which is a pretty confusing mess, but I think it equates to:
->>>> (0) if defined, NR__newselect is always new select
->>>> (1) if NR_select is defined, the choices are:
->>>>  (a) NR_select is old_select:
->>>>    i386, m68k, arm
->>>>  (b) NR_select is defined but should ENOSYS:
->>>>    microblaze, ppc
->>>>  (c) NR_select defined and is new select:
->>>>    everything else (alpha, x86-64, s390x, cris, sparc, sparc64)
->>>>
->>>> and I think we should handle that by having the code in syscall.c
->>>> be something like:
->>>>
->>>> #ifdef TARGET_NR_select
->>>>     case TARGET_NR_select:
->>>> #if defined(TARGET_WANT_NI_OLD_SELECT)
->>>>         /* some architectures used to have old_select here
->>>>          * but now ENOSYS it.
->>>>          */
->>>>         ret = -TARGET_ENOSYS;
->>>>         break;
->>>> #elif defined(TARGET_WANT_OLD_SYS_SELECT)
->>>>         /* code for old select here; maybe factored out to
->>>>          * its own function: ret = do_old_select() ?
->>>>          */
->>>> #else
->>>>         /* select is new style select */
->>>>         ret = do_select(...);
->>>> #endif
->>>> #endif
->>>
->>> I agree, this seems to be the best way to fix select properly.
->>
->> Ok, if no one is already working on that, I'm going to send a patch
->> according to Peter's comments.
->>
->> Laurent
-> 
-> I was hoping to, but I do not think that I will get around to it anytime soon.
-
-If I provide a patch, could you test it for your test case?
-
-Thanks,
-Laurent
+DQoNCk9uIDcvNy8xNiwgMzowOSBQTSwgIkxhdXJlbnQgVml2aWVyIiA8bGF1cmVudEB2aXZpZXIu
+ZXU+IHdyb3RlOg0KDQo+DQo+DQo+TGUgMDcvMDcvMjAxNiDDoCAyMTowNCwgV2lydGgsIEFsbGFu
+IGEgw6ljcml0IDoNCj4+IA0KPj4gDQo+PiBPbiA3LzcvMTYsIDM6MDIgUE0sICJMYXVyZW50IFZp
+dmllciIgPGxhdXJlbnRAdml2aWVyLmV1PiB3cm90ZToNCj4+IA0KPj4+DQo+Pj4NCj4+PiBMZSAw
+Ny8wNy8yMDE2IMOgIDIwOjQ5LCBSaWt1IFZvaXBpbyBhIMOpY3JpdCA6DQo+Pj4+IE9uIFNhdCwg
+SnVsIDAyLCAyMDE2IGF0IDA5OjEyOjA5UE0gKzAxMDAsIFBldGVyIE1heWRlbGwgd3JvdGU6DQo+
+Pj4+PiBPbiAyIEp1bHkgMjAxNiBhdCAxNzo0MSwgTGF1cmVudCBWaXZpZXIgPGxhdXJlbnRAdml2
+aWVyLmV1PiB3cm90ZToNCj4+Pj4+PiBTYWRseSwgdGhpcyBjYW4ndCB3b3JrOg0KPj4+Pj4+DQo+
+Pj4+Pj4gc3BhcmMvc3BhcmM2NC9jcmlzIHVzZSBzeXNfc2VsZWN0IGZvciBOUl9zZWxlY3QgQU5E
+IE5SX25ld3NlbGVjdC4NCj4+Pj4+DQo+Pj4+Pj4gTm90IHN1cmUgYWxsIGlzIGNvcnJlY3QsIGJ1
+dCBpdCdzIHdoYXQgSSd2ZSBmb3VuZDoNCj4+Pj4+Pg0KPj4+Pj4+ICAgICAgICAgICAgIHwgX19O
+Ul9zZWxlY3QgICAgfCBfX05SX19uZXdzZWxlY3QNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBhcm0gICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBhYXJjaDY0ICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBhbHBoYSAgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBjcmlzICAgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBtNjhrICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBtaWNyb2JsYXplICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBtaXBzICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBtaXBzNjQgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBvcGVucmlzYyAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBwcGMgICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBzMzkweCAgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBzaDQgICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBzcGFyYyAgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBzcGFyYzY0ICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiB0aWxlZ3ggICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiB1bmljb3JlMzIgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiB4ODZfNjQgICAgICB8IHN5c19z
+ZWxlY3QgICAgIHwgICAgICAgIC0gICAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+PiBpMzg2ICAgICAgICB8IHN5c19v
+bGRfc2VsZWN0IHwgc3lzX3NlbGVjdCAgICAgIHwNCj4+Pj4+PiAtLS0tLS0tLS0tLS0rLS0tLS0t
+LS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLSsNCj4+Pj4+DQo+Pj4+PiBIbW0uIExvb2tpbmcg
+YXQgY3VycmVudCBMaW51eCBnaXQgbWFzdGVyLCBJIGdldA0KPj4+Pj4gc2xpZ2h0bHkgZGlmZmVy
+ZW50IHJlc3VsdHMuIFRoZSBvbmx5IGFyY2hpdGVjdHVyZXMgd2hpY2gNCj4+Pj4+IGRlZmluZSBf
+X0FSQ0hfV0FOVF9TWVNfT0xEX1NFTEVDVCBhcmU6DQo+Pj4+PiAgYXJtLCBtNjhrLCBtbjEwMzAw
+LCB4ODYNCj4+Pj4+IGFuZCBubyBvdGhlcnMgdXNlIHN5c19vbGRfc2VsZWN0Lg0KPj4+Pj4NCj4+
+Pj4+IFNvIEkgdGhpbmsgd2UgaGF2ZSB0aGUgZm9sbG93aW5nIGJlaGF2aW91cnM6DQo+Pj4+Pg0K
+Pj4+Pj4gKDEpIERlZmluZSBuZWl0aGVyIE5SX3NlbGVjdCBub3IgTlJfX25ld3NlbGVjdA0KPj4+
+Pj4gIChhbmQgdXNlIHBzZWxlY3Q2IHN5c2NhbGwgZm9yIHNlbGVjdCk6DQo+Pj4+PiAgYWFyY2g2
+NCwgb3BlbnJpc2MsIHRpbGVneCwgdW5pY29yZTMyLCBwcmVzdW1hYmx5IGFueSBmdXR1cmUgYXJj
+aA0KPj4+Pj4NCj4+Pj4+ICgyKSBvbmx5IGRlZmluZSBOUl9fbmV3c2VsZWN0LCBpdCBpcyBuZXcg
+c2VsZWN0Og0KPj4+Pj4gIG1pcHMsIG1pcHM2NCwgc2gsIHMzOTANCj4+Pj4+DQo+Pj4+PiAoMykg
+T25seSBkZWZpbmUgTlJfc2VsZWN0LCB3YW50IHRoYXQgdG8gYmUgbmV3IHNlbGVjdDoNCj4+Pj4+
+ICBhbHBoYSwgeDg2XzY0LCBzMzkweA0KPj4+Pj4NCj4+Pj4+ICg0KSBOUl9fbmV3c2VsZWN0IGlz
+IG5ldyBzZWxlY3QsIE5SX3NlbGVjdCBpcyBvbGRfc2VsZWN0Og0KPj4+Pj4gIGkzODYsIG02OGss
+IGFybSBpZiBrZXJuZWwgaXMgbm90IENPTkZJR19BRUFCSQ0KPj4+Pj4NCj4+Pj4+ICg1KSBOUl9f
+bmV3c2VsZWN0IGlzIG5ldyBzZWxlY3QsIE5SX3NlbGVjdCBpcyBkZWZpbmVkIGJ1dA0KPj4+Pj4g
+IGlmIGNhbGxlZCByZXR1cm5zIEVOT1NZUzoNCj4+Pj4+ICBtaWNyb2JsYXplLCBhcm0gaWYgQ09O
+RklHX0FFQUJJLCBwcGM2NA0KPj4+Pj4NCj4+Pj4+ICg2KSBOUl9fbmV3c2VsZWN0IGlzIG5ldyBz
+ZWxlY3QsIE5SX3NlbGVjdCBpcyBhIGJvbmtlcnMgY3VzdG9tDQo+Pj4+PiAgdGhpbmcgdGhhdCB0
+cmllcyB0byBhdXRvZGV0ZWN0IHRoZSBjYWxsaW5nIGNvbnZlbnRpb246DQo+Pj4+PiBodHRwOi8v
+bHhyLmZyZWUtZWxlY3Ryb25zLmNvbS9zb3VyY2UvYXJjaC9wb3dlcnBjL2tlcm5lbC9zeXNjYWxs
+cy5jI0w4Ng0KPj4+Pj4gIHBwYzMyIChidXQgb25seSBuYXRpdmUgMzItYml0OyAzMi1iaXQgY29t
+cGF0IHN1cHBvcnQNCj4+Pj4+ICBvbiBhIHBwYzY0IGtlcm5lbCBpcyBjYXRlZ29yeSA1LCBzbyBJ
+IHZvdGUgZm9yIGlnbm9yaW5nDQo+Pj4+PiAgdGhpcyB3ZWlyZG5lc3MgYW5kIGNhbGxpbmcgcHBj
+IGNhdGVnb3J5IDUpDQo+Pj4+Pg0KPj4+Pj4gKDcpIE5SX3NlbGVjdCBhbmQgTlJfX25ld3NlbGVj
+dCBhcmUgZGlmZmVyZW50IG51bWJlcnMNCj4+Pj4+ICBidXQgYm90aCBhcmUgbmV3IHNlbGVjdDoN
+Cj4+Pj4+ICBjcmlzLCBzcGFyYywgc3BhcmM2NA0KPj4+Pj4NCj4+Pj4+IHdoaWNoIGlzIGEgcHJl
+dHR5IGNvbmZ1c2luZyBtZXNzLCBidXQgSSB0aGluayBpdCBlcXVhdGVzIHRvOg0KPj4+Pj4gKDAp
+IGlmIGRlZmluZWQsIE5SX19uZXdzZWxlY3QgaXMgYWx3YXlzIG5ldyBzZWxlY3QNCj4+Pj4+ICgx
+KSBpZiBOUl9zZWxlY3QgaXMgZGVmaW5lZCwgdGhlIGNob2ljZXMgYXJlOg0KPj4+Pj4gIChhKSBO
+Ul9zZWxlY3QgaXMgb2xkX3NlbGVjdDoNCj4+Pj4+ICAgIGkzODYsIG02OGssIGFybQ0KPj4+Pj4g
+IChiKSBOUl9zZWxlY3QgaXMgZGVmaW5lZCBidXQgc2hvdWxkIEVOT1NZUzoNCj4+Pj4+ICAgIG1p
+Y3JvYmxhemUsIHBwYw0KPj4+Pj4gIChjKSBOUl9zZWxlY3QgZGVmaW5lZCBhbmQgaXMgbmV3IHNl
+bGVjdDoNCj4+Pj4+ICAgIGV2ZXJ5dGhpbmcgZWxzZSAoYWxwaGEsIHg4Ni02NCwgczM5MHgsIGNy
+aXMsIHNwYXJjLCBzcGFyYzY0KQ0KPj4+Pj4NCj4+Pj4+IGFuZCBJIHRoaW5rIHdlIHNob3VsZCBo
+YW5kbGUgdGhhdCBieSBoYXZpbmcgdGhlIGNvZGUgaW4gc3lzY2FsbC5jDQo+Pj4+PiBiZSBzb21l
+dGhpbmcgbGlrZToNCj4+Pj4+DQo+Pj4+PiAjaWZkZWYgVEFSR0VUX05SX3NlbGVjdA0KPj4+Pj4g
+ICAgIGNhc2UgVEFSR0VUX05SX3NlbGVjdDoNCj4+Pj4+ICNpZiBkZWZpbmVkKFRBUkdFVF9XQU5U
+X05JX09MRF9TRUxFQ1QpDQo+Pj4+PiAgICAgICAgIC8qIHNvbWUgYXJjaGl0ZWN0dXJlcyB1c2Vk
+IHRvIGhhdmUgb2xkX3NlbGVjdCBoZXJlDQo+Pj4+PiAgICAgICAgICAqIGJ1dCBub3cgRU5PU1lT
+IGl0Lg0KPj4+Pj4gICAgICAgICAgKi8NCj4+Pj4+ICAgICAgICAgcmV0ID0gLVRBUkdFVF9FTk9T
+WVM7DQo+Pj4+PiAgICAgICAgIGJyZWFrOw0KPj4+Pj4gI2VsaWYgZGVmaW5lZChUQVJHRVRfV0FO
+VF9PTERfU1lTX1NFTEVDVCkNCj4+Pj4+ICAgICAgICAgLyogY29kZSBmb3Igb2xkIHNlbGVjdCBo
+ZXJlOyBtYXliZSBmYWN0b3JlZCBvdXQgdG8NCj4+Pj4+ICAgICAgICAgICogaXRzIG93biBmdW5j
+dGlvbjogcmV0ID0gZG9fb2xkX3NlbGVjdCgpID8NCj4+Pj4+ICAgICAgICAgICovDQo+Pj4+PiAj
+ZWxzZQ0KPj4+Pj4gICAgICAgICAvKiBzZWxlY3QgaXMgbmV3IHN0eWxlIHNlbGVjdCAqLw0KPj4+
+Pj4gICAgICAgICByZXQgPSBkb19zZWxlY3QoLi4uKTsNCj4+Pj4+ICNlbmRpZg0KPj4+Pj4gI2Vu
+ZGlmDQo+Pj4+DQo+Pj4+IEkgYWdyZWUsIHRoaXMgc2VlbXMgdG8gYmUgdGhlIGJlc3Qgd2F5IHRv
+IGZpeCBzZWxlY3QgcHJvcGVybHkuDQo+Pj4NCj4+PiBPaywgaWYgbm8gb25lIGlzIGFscmVhZHkg
+d29ya2luZyBvbiB0aGF0LCBJJ20gZ29pbmcgdG8gc2VuZCBhIHBhdGNoDQo+Pj4gYWNjb3JkaW5n
+IHRvIFBldGVyJ3MgY29tbWVudHMuDQo+Pj4NCj4+PiBMYXVyZW50DQo+PiANCj4+IEkgd2FzIGhv
+cGluZyB0bywgYnV0IEkgZG8gbm90IHRoaW5rIHRoYXQgSSB3aWxsIGdldCBhcm91bmQgdG8gaXQg
+YW55dGltZSBzb29uLg0KPg0KPklmIEkgcHJvdmlkZSBhIHBhdGNoLCBjb3VsZCB5b3UgdGVzdCBp
+dCBmb3IgeW91ciB0ZXN0IGNhc2U/DQo+DQo+VGhhbmtzLA0KPkxhdXJlbnQNCg0KRGVmaW5pdGVs
+eSBJIHdvdWxkIGJlIGhhcHB5IHRvLiBJIHdvdWxkIGJlIHZlcnkgZ3JhdGVmdWwgaWYgeW91IGRp
+ZC4NCg0KVGhhbmtzLA0KQWxsYW4NCg0K
 
