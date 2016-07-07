@@ -1,48 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bKjRC-0003Kg-Qt
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jul 2016 05:48:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59082)
+	id 1bL6FU-0006Aj-W4
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jul 2016 06:09:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45852)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bKjR9-00032x-PA
-	for qemu-trivial@nongnu.org; Wed, 06 Jul 2016 05:48:08 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bL6FS-00069H-K5
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 06:09:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bKjR8-0007Tx-1w
-	for qemu-trivial@nongnu.org; Wed, 06 Jul 2016 05:48:06 -0400
-Received: from [59.151.112.132] (port=34910 helo=heian.cn.fujitsu.com)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bL6FR-0004P1-IW
+	for qemu-trivial@nongnu.org; Thu, 07 Jul 2016 06:09:34 -0400
+Received: from [59.151.112.132] (port=32064 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1bKjR2-0007ON-CZ; Wed, 06 Jul 2016 05:48:00 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1bL6FK-0004Mq-WE; Thu, 07 Jul 2016 06:09:27 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="8418817"
+   d="scan'208";a="8481878"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 06 Jul 2016 15:39:18 +0800
+	by heian.cn.fujitsu.com with ESMTP; 07 Jul 2016 18:09:19 +0800
 Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 2E006418A72E;
-	Wed,  6 Jul 2016 15:39:13 +0800 (CST)
-Received: from [10.167.225.55] (10.167.225.55) by
+	by cn.fujitsu.com (Postfix) with ESMTP id A82B541C0BBF;
+	Thu,  7 Jul 2016 18:09:16 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
 	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server id 14.3.279.2; Wed, 6 Jul 2016 15:39:12 +0800
-Message-ID: <577CB6CD.5060102@cn.fujitsu.com>
-Date: Wed, 6 Jul 2016 15:44:13 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Thunderbird/31.7.0
+	Server (TLS) id 14.3.279.2; Thu, 7 Jul 2016 18:09:16 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>
+Date: Thu, 7 Jul 2016 18:15:58 +0800
+Message-ID: <1467886558-4110-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-To: =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
-CC: qemu trival <qemu-trivial@nongnu.org>, qemu devel <qemu-devel@nongnu.org>
-References: <1465889269-7226-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-	<577C9CA0.8050505@cn.fujitsu.com> <577CB17F.1070708@suse.de>
-In-Reply-To: <577CB17F.1070708@suse.de>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: 2E006418A72E.A6B1F
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: A82B541C0BBF.ACCE3
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [PATCH] qom/object: fix comment typo
+Subject: [Qemu-trivial] [PATCH] timer.h: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,59 +49,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jul 2016 09:48:08 -0000
+X-List-Received-Date: Thu, 07 Jul 2016 10:09:35 -0000
 
-On 07/06/2016 03:21 PM, Andreas Färber wrote:
-> Am 06.07.2016 um 07:52 schrieb Changlong Xie:
->> Would any maintainer pick this one?
->
-> Please in the future use just "qom:" in the subject. How to find out?
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ include/qemu/timer.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Ok
+diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+index 309f3d0..41e8325 100644
+--- a/include/qemu/timer.h
++++ b/include/qemu/timer.h
+@@ -179,7 +179,7 @@ int64_t qemu_clock_deadline_ns_all(QEMUClockType type);
+  * qemu_clock_get_main_loop_timerlist:
+  * @type: the clock type
+  *
+- * Return the default timer list assocatiated with a clock.
++ * Return the default timer list associated with a clock.
+  *
+  * Returns: the default timer list
+  */
+@@ -509,7 +509,7 @@ static inline void timer_init_ms(QEMUTimer *ts, QEMUClockType type,
+  * @cb: the callback to be called when the timer expires
+  * @opaque: the opaque pointer to be passed to the callback
+  *
+- * Creeate a new timer and associate it with @timer_list.
++ * Create a new timer and associate it with @timer_list.
+  * The memory is allocated by the function.
+  *
+  * This is not the preferred interface unless you know you
+@@ -534,7 +534,7 @@ static inline QEMUTimer *timer_new_tl(QEMUTimerList *timer_list,
+  * @cb: the callback to be called when the timer expires
+  * @opaque: the opaque pointer to be passed to the callback
+  *
+- * Creeate a new timer and associate it with the default
++ * Create a new timer and associate it with the default
+  * timer list for the clock type @type.
+  *
+  * Returns: a pointer to the timer
+-- 
+2.1.0
 
-> git log --oneline -- include/qom/object.h
-
-Useful git command, i'll add it to my bash aliases
-
->
-> Also please mention the typo in the commit message. Fixing.
->
-
-Yep
-
-Thanks
-	-Xie
-
-> Thanks,
-> Andreas
->
->>
->> On 06/14/2016 03:27 PM, Changlong Xie wrote:
->>> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
->>> ---
->>>    include/qom/object.h | 2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/include/qom/object.h b/include/qom/object.h
->>> index 99de539..925c279 100644
->>> --- a/include/qom/object.h
->>> +++ b/include/qom/object.h
->>> @@ -901,7 +901,7 @@ GSList *object_class_get_list(const char
->>> *implements_type,
->>>    void object_ref(Object *obj);
->>>
->>>    /**
->>> - * qdef_unref:
->>> + * object_unref:
->>>     * @obj: the object
->>>     *
->>>     * Decrease the reference count of a object.  A object cannot be
->>> freed as long
->>>
->>
->>
->
->
 
 
 
