@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bLSyE-00086Z-Ug
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Jul 2016 06:25:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59347)
+	id 1bLTnk-00006p-86
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Jul 2016 07:18:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39020)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bLSyC-00083z-MG
-	for qemu-trivial@nongnu.org; Fri, 08 Jul 2016 06:25:17 -0400
+	(envelope-from <tgolembi@redhat.com>) id 1bLTng-000053-Eb
+	for qemu-trivial@nongnu.org; Fri, 08 Jul 2016 07:18:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bLSyA-0004Qe-M2
-	for qemu-trivial@nongnu.org; Fri, 08 Jul 2016 06:25:15 -0400
-Received: from [59.151.112.132] (port=13491 helo=heian.cn.fujitsu.com)
+	(envelope-from <tgolembi@redhat.com>) id 1bLTnf-0005il-C8
+	for qemu-trivial@nongnu.org; Fri, 08 Jul 2016 07:18:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44087)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1bLSy1-0004Fn-NC; Fri, 08 Jul 2016 06:25:09 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="8522348"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 08 Jul 2016 18:24:57 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id B35E341C0BBF;
-	Fri,  8 Jul 2016 18:24:52 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Fri, 8 Jul 2016 18:24:52 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <bonzini@redhat.com>, <crosthwaite.peter@gmail.com>, <rth@twiddle.net>,
-	<qemu-trivial@nongnu.org>
-Date: Fri, 8 Jul 2016 18:31:37 +0800
-Message-ID: <1467973897-13734-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <tgolembi@redhat.com>)
+	id 1bLTnW-0005ep-RU; Fri, 08 Jul 2016 07:18:18 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F14D8C04B306;
+	Fri,  8 Jul 2016 11:18:17 +0000 (UTC)
+Received: from fiorina (dhcp131-20.brq.redhat.com [10.34.131.20])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u68BIGNk022218
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 8 Jul 2016 07:18:17 -0400
+Date: Fri, 8 Jul 2016 13:18:09 +0200
+From: =?UTF-8?B?VG9tw6HFoSBHb2xlbWJpb3Zza8O9?= <tgolembi@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <20160708131809.07a8e7dc@fiorina>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: B35E341C0BBF.AE3F5
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] timer/cpus: fix some typos and update some
- comments
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 08 Jul 2016 11:18:18 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] curl: Operate on zero-length file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,61 +49,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Jul 2016 10:25:18 -0000
+X-List-Received-Date: Fri, 08 Jul 2016 11:18:31 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Another attempt to fix the bug 1596870.
+
+When creating new disk backed by remote file accessed via HTTPS and the
+backing file has zero length, qemu-img terminates with uniformative
+error message:
+
+    qemu-img: disk.qcow2: CURL: Error opening file:
+
+While it may not make much sense to operate on empty file, other block
+backends (e.g. raw backend for regular files) seem to allow it. This
+patch fixes it for the curl backend and improves the reported error.
+
+Signed-off-by: Tom=C3=A1=C5=A1 Golembiovsk=C3=BD <tgolembi@redhat.com>
 ---
- cpus.c               | 6 +++---
- include/qemu/timer.h | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ block/curl.c | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index 84c3520..d4afd93 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -229,7 +229,7 @@ static int64_t cpu_get_clock_locked(void)
-     return ticks;
- }
- 
--/* return the host CPU monotonic timer and handle stop/restart */
-+/* return the host CPU monotonic time */
- int64_t cpu_get_clock(void)
- {
-     int64_t ti;
-@@ -244,7 +244,7 @@ int64_t cpu_get_clock(void)
- }
- 
- /* enable cpu_get_ticks()
-- * Caller must hold BQL which server as mutex for vm_clock_seqlock.
-+ * Caller must hold BQL which serve as mutex for vm_clock_seqlock.
-  */
- void cpu_enable_ticks(void)
- {
-@@ -260,7 +260,7 @@ void cpu_enable_ticks(void)
- 
- /* disable cpu_get_ticks() : the clock is stopped. You must not call
-  * cpu_get_ticks() after that.
-- * Caller must hold BQL which server as mutex for vm_clock_seqlock.
-+ * Caller must hold BQL which serve as mutex for vm_clock_seqlock.
-  */
- void cpu_disable_ticks(void)
- {
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index 7fea97f..930b5d3 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -802,7 +802,7 @@ static inline int64_t get_max_clock_jump(void)
-  * Low level clock functions
-  */
- 
--/* real time host monotonic timer */
-+/* get host real time in nanosecond */
- static inline int64_t get_clock_realtime(void)
- {
-     struct timeval tv;
--- 
-2.1.0
+diff --git a/block/curl.c b/block/curl.c
+index da9f5e8..a8cdb44 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -675,11 +675,28 @@ static int curl_open(BlockDriverState *bs, QDict *opt=
+ions, int flags,
+     curl_easy_setopt(state->curl, CURLOPT_HEADERDATA, s);
+     if (curl_easy_perform(state->curl))
+         goto out;
+-    curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &d);
+-    if (d)
+-        s->len =3D (size_t)d;
+-    else if(!s->len)
++    if (curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &=
+d)) {
+         goto out;
++    }
++    /* Prior CURL 7.19.4 return value of 0 could mean that the file size i=
+s not
++     * know or the size is zero. From 7.19.4 CURL returns -1 if size is not
++     * known and zero if it is realy zero-length file. */
++#if LIBCURL_VERSION_NUM >=3D 0x071304
++    if (d < 0) {
++        pstrcpy(state->errmsg, CURL_ERROR_SIZE,
++                "Server didn't report file size.");
++        goto out;
++    }
++#else
++    if (d <=3D 0) {
++        pstrcpy(state->errmsg, CURL_ERROR_SIZE,
++                "Unknown file size or zero-length file.");
++        goto out;
++    }
++#endif
++
++    s->len =3D (size_t)d;
++
+     if ((!strncasecmp(s->url, "http://", strlen("http://"))
+         || !strncasecmp(s->url, "https://", strlen("https://")))
+         && !s->accept_range) {
+--=20
+2.9.0
 
 
-
+--=20
+Tom=C3=A1=C5=A1 Golembiovsk=C3=BD <tgolembi@redhat.com>
 
