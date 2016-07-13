@@ -1,57 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bNENu-0000Bv-Kv
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jul 2016 03:15:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34421)
+	id 1bNG1a-0001EQ-H9
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jul 2016 05:00:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55062)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1bNENs-0000A7-JA
-	for qemu-trivial@nongnu.org; Wed, 13 Jul 2016 03:15:05 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bNG1V-00011X-Te
+	for qemu-trivial@nongnu.org; Wed, 13 Jul 2016 05:00:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>) id 1bNENr-0007vU-9M
-	for qemu-trivial@nongnu.org; Wed, 13 Jul 2016 03:15:04 -0400
-Received: from [59.151.112.132] (port=33557 helo=heian.cn.fujitsu.com)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bNG1V-00023Y-1Z
+	for qemu-trivial@nongnu.org; Wed, 13 Jul 2016 05:00:05 -0400
+Received: from [59.151.112.132] (port=64854 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <weijg.fnst@cn.fujitsu.com>)
-	id 1bNENk-0007jI-9L; Wed, 13 Jul 2016 03:14:58 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1bNG1P-000212-Oj; Wed, 13 Jul 2016 05:00:00 -0400
 X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="8658276"
+   d="scan'208";a="8663192"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 13 Jul 2016 15:14:05 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 5567241C0BB6;
-	Wed, 13 Jul 2016 15:14:05 +0800 (CST)
-Received: from G08CNEXMBPEKD03.g08.fujitsu.local ([10.167.33.86]) by
-	G08CNEXCHPEKD01.g08.fujitsu.local ([10.167.33.80]) with mapi id
-	14.03.0279.002; Wed, 13 Jul 2016 15:14:03 +0800
-From: "Wei, Jiangang" <weijg.fnst@cn.fujitsu.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "marcel@redhat.com" <marcel@redhat.com>, "armbru@redhat.com"
-	<armbru@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH 0/2] convert device initialization functions
-Thread-Index: AQHR1/Bj5Rma1wSnYky8UpxAzfL8JaAVdZmA
-Date: Wed, 13 Jul 2016 07:14:01 +0000
-Message-ID: <1468393897.2020.7.camel@localhost>
-References: <1463480327-3198-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-	<1467257658.2514.14.camel@localhost>
-	<1467855432.2119.58.camel@localhost>
-In-Reply-To: <1467855432.2119.58.camel@localhost>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.167.226.50]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <1C85F0D5C3946C42A011C72BA05AC1B0@fujitsu.local>
-Content-Transfer-Encoding: base64
+	by heian.cn.fujitsu.com with ESMTP; 13 Jul 2016 16:59:44 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 0AE9241C0B8A;
+	Wed, 13 Jul 2016 16:59:45 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 13 Jul 2016 16:59:43 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 13 Jul 2016 17:06:36 +0800
+Message-ID: <1468400796-30474-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-X-yoursite-MailScanner-ID: 5567241C0BB6.A661B
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 0AE9241C0B8A.AA188
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: weijg.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] convert device
- initialization functions
+Subject: [Qemu-trivial] [PATCH] qemu-timer: remove unnecessary code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,32 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jul 2016 07:15:05 -0000
+X-List-Received-Date: Wed, 13 Jul 2016 09:00:10 -0000
 
-Y2MgcWVtdS10cml2aWFsDQoNClRoZSBmb2xsb3dpbmcgcGF0Y2hlcyBoYWQg
-YmVlbiByZXZpZXdlZCBvbmUgbW9udGggYWdvLCANCkJ1dCBzbyBmYXIsIEl0
-IGhhdmVuJ3QgYmVlbiBtZXJnZWQuDQpNYXkgSSB0cm91YmxlIGFueSBtYWlu
-dGFpbmVyIGdpdmUgbWUgc29tZSBmZWVkYmFjaz8NCg0KaHcvcGNpLWJyaWRn
-ZTogQ29udmVydCBweGIgaW5pdGlhbGl6YXRpb24gZnVuY3Rpb25zIHRvIEVy
-cm9yDQphcGI6IGNvbnZlcnQgaW5pdCB0byByZWFsaXplDQoNClRoYW5rcywN
-CndlaQ0KT24gVGh1LCAyMDE2LTA3LTA3IGF0IDAxOjM5ICswMDAwLCBXZWks
-IEppYW5nYW5nIHdyb3RlOg0KPiBQaW5nIGFnYWluIC4uLg0KPiBNYXkgSSBh
-c2sgZm9yIHNvbWUgYXR0ZW50aW9uIGZvciB0aGVzZSB0d28gcGF0Y2hlc++8
-nw0KPiANCj4gVGhhbmtzDQo+IHdlaQ0KPiBPbiBUaHUsIDIwMTYtMDYtMzAg
-YXQgMDM6MzYgKzAwMDAsIFdlaSwgSmlhbmdhbmcgd3JvdGU6DQo+ID4gUGlu
-Zw0KPiA+IFRoZXNlIHR3byBwYXRjaGVzIHNlZW0gdG8gYmUgZm9yZ290dGVu
-IC4uLg0KPiA+IA0KPiA+IE9uIFR1ZSwgMjAxNi0wNS0xNyBhdCAxODoxOCAr
-MDgwMCwgV2VpIEppYW5nYW5nIHdyb3RlOg0KPiA+ID4gVGhlIGZpcnN0IGhh
-ZCBiZWVuIHJldmlld2VkLg0KPiA+ID4gVGhlIHNlY29uZCBoYWQgYmVlbiBw
-b3N0ZWQgbGFzdCBtb250aCwgYnV0IG5vIGZlZWRiYWNrLg0KPiA+ID4gVGhl
-eSdyZSBzaW1pbGFyLCBzbyByZXNlbmQgdGhlbSB0b2dldGhlci4NCj4gPiA+
-IA0KPiA+ID4gV2VpIEppYW5nYW5nICgyKToNCj4gPiA+ICAgaHcvcGNpLWJy
-aWRnZTogQ29udmVydCBweGIgaW5pdGlhbGl6YXRpb24gZnVuY3Rpb25zIHRv
-IEVycm9yDQo+ID4gPiAgIGFwYjogY29udmVydCBpbml0IHRvIHJlYWxpemUN
-Cj4gPiA+IA0KPiA+ID4gIGh3L3BjaS1icmlkZ2UvcGNpX2V4cGFuZGVyX2Jy
-aWRnZS5jIHwgNTIgKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0t
-LS0tLQ0KPiA+ID4gIGh3L3BjaS1ob3N0L2FwYi5jICAgICAgICAgICAgICAg
-ICAgIHwgIDUgKystLQ0KPiA+ID4gIDIgZmlsZXMgY2hhbmdlZCwgMjcgaW5z
-ZXJ0aW9ucygrKSwgMzAgZGVsZXRpb25zKC0pDQo+ID4gPiANCj4gPiANCj4g
-PiANCj4gPiANCj4gDQo+IA0KPiANCg0KCgo=
+When passed argument 'ns' is 0, macro DIV_ROUND_UP will return 0 also.
+
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ qemu-timer.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/qemu-timer.c b/qemu-timer.c
+index eb22e92..cfe0893 100644
+--- a/qemu-timer.c
++++ b/qemu-timer.c
+@@ -285,12 +285,8 @@ int qemu_timeout_ns_to_ms(int64_t ns)
+         return -1;
+     }
+ 
+-    if (!ns) {
+-        return 0;
+-    }
+-
+     /* Always round up, because it's better to wait too long than to wait too
+-     * little and effectively busy-wait
++     * short and effectively busy-wait
+      */
+     ms = DIV_ROUND_UP(ns, SCALE_MS);
+ 
+-- 
+2.1.0
+
+
+
 
