@@ -1,65 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bO0aH-00016G-Pn
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jul 2016 06:43:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45218)
+	id 1bO0oe-0001hJ-AR
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jul 2016 06:57:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47555)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bO0aF-00011K-LB
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:43:04 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bO0oc-0001fN-7O
+	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:57:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bO0aD-0000iG-Ns
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:43:02 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35872)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bO0oY-0004EZ-4O
+	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:57:53 -0400
+Received: from [59.151.112.132] (port=15177 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1bO0a7-0000hJ-D7; Fri, 15 Jul 2016 06:42:55 -0400
-Received: by mail-wm0-x242.google.com with SMTP id x83so1735432wma.3;
-	Fri, 15 Jul 2016 03:42:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=bjCePy08ZBWSmRgdu7UIE/UyTLl9Fkiup06zx418oPw=;
-	b=GYzq6iVpNUKhX/Ap6QC9aBeBW7IEtqdZ5evJw39QDOvjsFSa2Fr/S+2UcyUb+VGV5k
-	SIHHVcAz5ghEgRtr2PQWRWiZ8gFf6oLCu8uPEIsd2gfjOkGJh3tHHmZ121KRXp2Aw72Y
-	W3q0suSyssGkOvLWShHv4ifZreK5+MhxAPzqgm7n1vYz3vN1o0BWqcRY5u14S3M/vnpb
-	vPAHl16j57e7HIEDN5q6Yh29ESiAinUCcmeIyOz8b+spivK104VC1SqMko5Mkux2MaP+
-	A/tehYH1h+TH0A529gVR4KHdTIfy+rLSaDX8B5ehSb78mW0T/oxwWY57QbcH4BkuQJJO
-	t+Tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=bjCePy08ZBWSmRgdu7UIE/UyTLl9Fkiup06zx418oPw=;
-	b=BgIyat7qh7jn+ENpivpwAO/k91cmKGKjTaNSx3u1+1nCGu5yVdKwL3CEBxHzDiG6tT
-	yk8S3uFOs42bWeyqZf4YahMW13t77ypp1IKuIt8jbCVgrl8fAZwpK/kHtfNG9R8FzdYO
-	NUhJVDHuLXOnXTDy83pb0A6s8L2f8SjzPQkWPqZhS/Q+Og93pMw+gIHUAAMuQRlFo478
-	GgbnB1EvQywOj1f5499XxCza06ZJfiIhtwlgzrvXwhfPDhsK6QRimW+XnKsHj8sRClHK
-	KXFuyXYbIznueO1aVJTBrVrOxciflZ5CwrmW0AdxLGKqXPdbVU7SZzxm8F9sZ/oVmwzs
-	6e0A==
-X-Gm-Message-State: ALyK8tJJTlihG87bPGszE6Je8PFpUqPm2ced5tRBcwmczlWEEZNxru1+uokez7VOzvmpIQ==
-X-Received: by 10.28.142.144 with SMTP id q138mr22977929wmd.30.1468579374695; 
-	Fri, 15 Jul 2016 03:42:54 -0700 (PDT)
-Received: from localhost (host109-156-64-22.range109-156.btcentralplus.com.
-	[109.156.64.22])
-	by smtp.gmail.com with ESMTPSA id s3sm86817wjx.11.2016.07.15.03.42.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 15 Jul 2016 03:42:54 -0700 (PDT)
-Date: Fri, 15 Jul 2016 11:42:52 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Cao jin <caoj.fnst@cn.fujitsu.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, famz@redhat.com,
-	qemu-block@nongnu.org, stefanha@redhat.com
-Message-ID: <20160715104252.GF25692@stefanha-x1.localdomain>
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1bO0oL-0004D7-Da; Fri, 15 Jul 2016 06:57:38 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="8751972"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 15 Jul 2016 18:57:19 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 0FCA6498F58D;
+	Fri, 15 Jul 2016 18:57:18 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Fri, 15 Jul 2016 18:57:16 +0800
+To: Stefan Hajnoczi <stefanha@gmail.com>
 References: <1468501843-14927-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<57879CFA.9040700@redhat.com> <57884102.3050905@cn.fujitsu.com>
+	<20160715104009.GE25692@stefanha-x1.localdomain>
+CC: Eric Blake <eblake@redhat.com>, <qemu-devel@nongnu.org>,
+	<qemu-trivial@nongnu.org>, <famz@redhat.com>, <stefanha@redhat.com>,
+	<qemu-block@nongnu.org>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <5788C334.7070008@cn.fujitsu.com>
+Date: Fri, 15 Jul 2016 19:04:20 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="juZjCTNxrMaZdGZC"
-Content-Disposition: inline
-In-Reply-To: <1468501843-14927-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] aio_ctx_check: follow
- CODING_STYLE
+In-Reply-To: <20160715104009.GE25692@stefanha-x1.localdomain>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 0FCA6498F58D.AE485
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-block] [Qemu-devel] [PATCH] aio_ctx_check:
+ follow CODING_STYLE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,41 +58,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jul 2016 10:43:04 -0000
+X-List-Received-Date: Fri, 15 Jul 2016 10:57:55 -0000
 
 
---juZjCTNxrMaZdGZC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jul 14, 2016 at 09:10:43PM +0800, Cao jin wrote:
-> replace tab with spaces
->=20
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> ---
->  async.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 07/15/2016 06:40 PM, Stefan Hajnoczi wrote:
+> On Fri, Jul 15, 2016 at 09:48:50AM +0800, Cao jin wrote:
+>> On 07/14/2016 10:08 PM, Eric Blake wrote:
+>>> On 07/14/2016 07:10 AM, Cao jin wrote:
+>>>> replace tab with spaces
+>>>>
+>>>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>>>> ---
+>>>>    async.c | 2 +-
+>>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> Whitespace-only changes are best done as part of a series that is
+>>> already touching nearby code for other reasons (depending on the size of
+>>> the whitespace changes and on the rest of your patch, it may be okay to
+>>> squash the whitespace change in place, or better to split into separate
+>>> patches to make review of both patches easier).  Otherwise, it just
+>>> makes 'git blame' output dirtier.
+>>
+>> I see.
+>> Since async.c & aio-posix.c are belong to the same maintaiers, so, Fam &
+>> Stefan, is it ok to squash this into that "remove useless parameter" patch?
+>> If not, we can just forget this one.
+>
+> The "remove useless parameter" patch doesn't touch the function you are
+> modifying here.  Please don't squash the patches.
+>
+> Since you have already posted this patch I will merge it.  In the future
+> please don't submit whitespace changes, tiny coding style cleanups, etc
+> in by themselves.
+>
+> Thanks for all your contributions.  I do not want to discourage you but
+> my view is that code changes should only be made if they fix a bug,
+> improve performance measurably, add a feature, or significantly improve
+> the code.
+>
+> Every patch has a cost in terms of code review, merging/testing, backporting,
+> bisecting, documentation, etc.  We could discuss each of these in detail
+> but basically a code change creates work or takes time from one or more
+> people in these areas.
+>
+> In a perfect world with unlimited resources all patches would be equally
+> welcome.  Due to limited resources it's best to submit the types of
+> patches I mentioned above where the cost/benefit ratio is favorable.
+>
+> Thanks,
+> Stefan
+>
 
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
+Thanks Stefan, and sorry for the inconvenience brought to you. I thought 
+this kind of tiny things would be very simple for maintainers, now I 
+understand
+-- 
+Yours Sincerely,
 
-Stefan
+Cao jin
 
---juZjCTNxrMaZdGZC
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJXiL4sAAoJEJykq7OBq3PIlCsH/iF6TeSVTl/bjcCrBcGFSh5D
-JDdnhD6xUzV+T5jJtjw29eITeUaK7gwp7G8OyXx9gTVt3zJU8aYh7nWSaSwGVPdm
-SEP608n0RXlOyljwSW6sTxmHjEiALwpmWazKMsmVF5FtXRg+ei61jP7kJ5LkfMwR
-7covO3H84PuUq/LTaS7HZzim/h6pJyqSjcBV9V+TO5zFjYzDx4LHNsCfkI6Bgrrg
-6HP5HFwwCykVtzEUGUOYO9dIr+PNxqe9BmCLuWS/Urs2HlzQnbO9NQTmSKwj/RM2
-4Y2OxZuOHa+qZ+deOf2WEoNfpYT8jhTz62orgvx+xVMxRFANwRRuAp5GNL47Zec=
-=TMZv
------END PGP SIGNATURE-----
-
---juZjCTNxrMaZdGZC--
 
