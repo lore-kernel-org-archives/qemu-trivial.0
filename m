@@ -1,52 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bO0oe-0001hJ-AR
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jul 2016 06:57:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47555)
+	id 1bO53d-0003DO-IB
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jul 2016 11:29:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bO0oc-0001fN-7O
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:57:55 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1bO53b-0003Ac-03
+	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 11:29:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bO0oY-0004EZ-4O
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 06:57:53 -0400
-Received: from [59.151.112.132] (port=15177 helo=heian.cn.fujitsu.com)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1bO53Z-0005j8-RE
+	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 11:29:38 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33383)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1bO0oL-0004D7-Da; Fri, 15 Jul 2016 06:57:38 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="8751972"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 15 Jul 2016 18:57:19 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 0FCA6498F58D;
-	Fri, 15 Jul 2016 18:57:18 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Fri, 15 Jul 2016 18:57:16 +0800
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <1468501843-14927-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<57879CFA.9040700@redhat.com> <57884102.3050905@cn.fujitsu.com>
-	<20160715104009.GE25692@stefanha-x1.localdomain>
-CC: Eric Blake <eblake@redhat.com>, <qemu-devel@nongnu.org>,
-	<qemu-trivial@nongnu.org>, <famz@redhat.com>, <stefanha@redhat.com>,
-	<qemu-block@nongnu.org>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <5788C334.7070008@cn.fujitsu.com>
-Date: Fri, 15 Jul 2016 19:04:20 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <20160715104009.GE25692@stefanha-x1.localdomain>
-Content-Type: text/plain; charset="windows-1252"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 0FCA6498F58D.AE485
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [Qemu-block] [Qemu-devel] [PATCH] aio_ctx_check:
- follow CODING_STYLE
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1bO53U-0005fh-FZ; Fri, 15 Jul 2016 11:29:32 -0400
+Received: by mail-wm0-x241.google.com with SMTP id o80so2618777wme.0;
+	Fri, 15 Jul 2016 08:29:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=8miTXhrmdsUQHTNQjYwQuqeQziYvcUvXokW9S/QlBG0=;
+	b=KBuidwoaivU3TYlHhunEOEBC9duY2OBezeZdWZVv0b+2rFCmVLT1eFvQ5Ac8wblfK3
+	QFsP0k8zf+S1CP6pzGtpdMHCkioizslTO+l+7lowGe5mRyFeuN8ewMwAMYPyE/CuRYMP
+	lDWxeQoDv2bIx/qOPOp4WIcwz2cImvmsf0OqPDSpl9jo/52lZqaraZgJfwoYrGMWVP2N
+	DGn7KpKtdgmS7JVLH6MpLoVDG2pSoo55gwvmFASlRLa3IbdlpKkLdFeBJ1WA/SPOE1TI
+	1sXMoBq0hxuR6PuZDYBRGPnHJ7QUNVeB/JoG+CKObt6gci3T3xDF4nCi//wr/nbAJCtd
+	R94w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+	bh=8miTXhrmdsUQHTNQjYwQuqeQziYvcUvXokW9S/QlBG0=;
+	b=aLwiggLg8QNmqyX81iGLZSNOR4OrqxluloroOsggs4Q6u369LeCO3YsMG0K/q4oDhF
+	UeaRgRCxnjBg+03Xw7/VI8gqHRyWRQvg0qQPjAl5cOg87Np5glV4onKHYzl6vmWYnok0
+	3hd8n2c5jC1lVjQlEdE0Ewll5qT1qqqjjWYN5AhrUnD64IVh9H7EW6Deq1DWOxD91v6g
+	oCVW/4RSPyLpMnr1qIXUw8aYkq7UFUKM852XY59uLY9Y4iTmgFQNAheZOlg4ZjmHlCZB
+	vRhNwW+d/X7B1QCZR6OXsTTnJ9x0F90cts/xZrXEbXJM8YP50UK6BG5NtxOGyOy9Ysd2
+	uSBA==
+X-Gm-Message-State: ALyK8tI224d1Br7jpO7A+S+/2uDG0PhoHeJbPrM6J2gMsxk5vBZYz3qwTmA+3hsmNBbwzg==
+X-Received: by 10.194.169.234 with SMTP id ah10mr1341552wjc.58.1468596571574; 
+	Fri, 15 Jul 2016 08:29:31 -0700 (PDT)
+Received: from donizetti.localdomain
+	(host253-183-static.123-81-b.business.telecomitalia.it.
+	[81.123.183.253])
+	by smtp.gmail.com with ESMTPSA id g67sm6512482wme.5.2016.07.15.08.29.29
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 15 Jul 2016 08:29:30 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 15 Jul 2016 17:29:22 +0200
+Message-Id: <1468596562-28609-1-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: [Qemu-trivial] [PATCH] target-m68k: fix get_mac_extf helper
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,65 +63,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jul 2016 10:57:55 -0000
+X-List-Received-Date: Fri, 15 Jul 2016 15:29:40 -0000
 
+val is assigned twice; the second one should be combined with "|".
+Reported by Coverity.
 
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ target-m68k/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 07/15/2016 06:40 PM, Stefan Hajnoczi wrote:
-> On Fri, Jul 15, 2016 at 09:48:50AM +0800, Cao jin wrote:
->> On 07/14/2016 10:08 PM, Eric Blake wrote:
->>> On 07/14/2016 07:10 AM, Cao jin wrote:
->>>> replace tab with spaces
->>>>
->>>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
->>>> ---
->>>>    async.c | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> Whitespace-only changes are best done as part of a series that is
->>> already touching nearby code for other reasons (depending on the size of
->>> the whitespace changes and on the rest of your patch, it may be okay to
->>> squash the whitespace change in place, or better to split into separate
->>> patches to make review of both patches easier).  Otherwise, it just
->>> makes 'git blame' output dirtier.
->>
->> I see.
->> Since async.c & aio-posix.c are belong to the same maintaiers, so, Fam &
->> Stefan, is it ok to squash this into that "remove useless parameter" patch?
->> If not, we can just forget this one.
->
-> The "remove useless parameter" patch doesn't touch the function you are
-> modifying here.  Please don't squash the patches.
->
-> Since you have already posted this patch I will merge it.  In the future
-> please don't submit whitespace changes, tiny coding style cleanups, etc
-> in by themselves.
->
-> Thanks for all your contributions.  I do not want to discourage you but
-> my view is that code changes should only be made if they fix a bug,
-> improve performance measurably, add a feature, or significantly improve
-> the code.
->
-> Every patch has a cost in terms of code review, merging/testing, backporting,
-> bisecting, documentation, etc.  We could discuss each of these in detail
-> but basically a code change creates work or takes time from one or more
-> people in these areas.
->
-> In a perfect world with unlimited resources all patches would be equally
-> welcome.  Due to limited resources it's best to submit the types of
-> patches I mentioned above where the cost/benefit ratio is favorable.
->
-> Thanks,
-> Stefan
->
-
-Thanks Stefan, and sorry for the inconvenience brought to you. I thought 
-this kind of tiny things would be very simple for maintainers, now I 
-understand
+diff --git a/target-m68k/helper.c b/target-m68k/helper.c
+index f52d0e3..89bbe6d 100644
+--- a/target-m68k/helper.c
++++ b/target-m68k/helper.c
+@@ -812,7 +812,7 @@ uint32_t HELPER(get_mac_extf)(CPUM68KState *env, uint32_t acc)
+ {
+     uint32_t val;
+     val = env->macc[acc] & 0x00ff;
+-    val = (env->macc[acc] >> 32) & 0xff00;
++    val |= (env->macc[acc] >> 32) & 0xff00;
+     val |= (env->macc[acc + 1] << 16) & 0x00ff0000;
+     val |= (env->macc[acc + 1] >> 16) & 0xff000000;
+     return val;
 -- 
-Yours Sincerely,
-
-Cao jin
-
+2.7.4
 
 
