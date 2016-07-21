@@ -1,57 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bO53d-0003DO-IB
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jul 2016 11:29:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37405)
+	id 1bQ9xH-0008HZ-DM
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2016 05:07:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45896)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bO53b-0003Ac-03
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 11:29:39 -0400
+	(envelope-from <stefanha@redhat.com>) id 1bQ9xC-0008Cn-C8
+	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 05:07:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bO53Z-0005j8-RE
-	for qemu-trivial@nongnu.org; Fri, 15 Jul 2016 11:29:38 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33383)
+	(envelope-from <stefanha@redhat.com>) id 1bQ9x8-00013x-Tx
+	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 05:07:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55826)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1bO53U-0005fh-FZ; Fri, 15 Jul 2016 11:29:32 -0400
-Received: by mail-wm0-x241.google.com with SMTP id o80so2618777wme.0;
-	Fri, 15 Jul 2016 08:29:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=8miTXhrmdsUQHTNQjYwQuqeQziYvcUvXokW9S/QlBG0=;
-	b=KBuidwoaivU3TYlHhunEOEBC9duY2OBezeZdWZVv0b+2rFCmVLT1eFvQ5Ac8wblfK3
-	QFsP0k8zf+S1CP6pzGtpdMHCkioizslTO+l+7lowGe5mRyFeuN8ewMwAMYPyE/CuRYMP
-	lDWxeQoDv2bIx/qOPOp4WIcwz2cImvmsf0OqPDSpl9jo/52lZqaraZgJfwoYrGMWVP2N
-	DGn7KpKtdgmS7JVLH6MpLoVDG2pSoo55gwvmFASlRLa3IbdlpKkLdFeBJ1WA/SPOE1TI
-	1sXMoBq0hxuR6PuZDYBRGPnHJ7QUNVeB/JoG+CKObt6gci3T3xDF4nCi//wr/nbAJCtd
-	R94w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=8miTXhrmdsUQHTNQjYwQuqeQziYvcUvXokW9S/QlBG0=;
-	b=aLwiggLg8QNmqyX81iGLZSNOR4OrqxluloroOsggs4Q6u369LeCO3YsMG0K/q4oDhF
-	UeaRgRCxnjBg+03Xw7/VI8gqHRyWRQvg0qQPjAl5cOg87Np5glV4onKHYzl6vmWYnok0
-	3hd8n2c5jC1lVjQlEdE0Ewll5qT1qqqjjWYN5AhrUnD64IVh9H7EW6Deq1DWOxD91v6g
-	oCVW/4RSPyLpMnr1qIXUw8aYkq7UFUKM852XY59uLY9Y4iTmgFQNAheZOlg4ZjmHlCZB
-	vRhNwW+d/X7B1QCZR6OXsTTnJ9x0F90cts/xZrXEbXJM8YP50UK6BG5NtxOGyOy9Ysd2
-	uSBA==
-X-Gm-Message-State: ALyK8tI224d1Br7jpO7A+S+/2uDG0PhoHeJbPrM6J2gMsxk5vBZYz3qwTmA+3hsmNBbwzg==
-X-Received: by 10.194.169.234 with SMTP id ah10mr1341552wjc.58.1468596571574; 
-	Fri, 15 Jul 2016 08:29:31 -0700 (PDT)
-Received: from donizetti.localdomain
-	(host253-183-static.123-81-b.business.telecomitalia.it.
-	[81.123.183.253])
-	by smtp.gmail.com with ESMTPSA id g67sm6512482wme.5.2016.07.15.08.29.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 15 Jul 2016 08:29:30 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Fri, 15 Jul 2016 17:29:22 +0200
-Message-Id: <1468596562-28609-1-git-send-email-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <stefanha@redhat.com>)
+	id 1bQ9wz-0000zI-Nw; Thu, 21 Jul 2016 05:07:25 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 413823E2A1;
+	Thu, 21 Jul 2016 09:07:25 +0000 (UTC)
+Received: from localhost (ovpn-112-65.ams2.redhat.com [10.36.112.65])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6L97NEB002263; Thu, 21 Jul 2016 05:07:24 -0400
+Date: Thu, 21 Jul 2016 10:07:21 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Reda Sallahi <fullmanet@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Fam Zheng <famz@redhat.com>, qemu-trivial@nongnu.org
+Message-ID: <20160721090721.GA27488@stefanha-x1.localdomain>
+References: <20160721084153.16103-1-fullmanet@gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="/04w6evG8XlLl3ft"
+Content-Disposition: inline
+In-Reply-To: <20160721084153.16103-1-fullmanet@gmail.com>
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 21 Jul 2016 09:07:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: [Qemu-trivial] [PATCH] target-m68k: fix get_mac_extf helper
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] qemu-img: fix error messages emitted by
+ img_open()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,30 +54,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jul 2016 15:29:40 -0000
+X-List-Received-Date: Thu, 21 Jul 2016 09:07:41 -0000
 
-val is assigned twice; the second one should be combined with "|".
-Reported by Coverity.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- target-m68k/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--/04w6evG8XlLl3ft
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target-m68k/helper.c b/target-m68k/helper.c
-index f52d0e3..89bbe6d 100644
---- a/target-m68k/helper.c
-+++ b/target-m68k/helper.c
-@@ -812,7 +812,7 @@ uint32_t HELPER(get_mac_extf)(CPUM68KState *env, uint32_t acc)
- {
-     uint32_t val;
-     val = env->macc[acc] & 0x00ff;
--    val = (env->macc[acc] >> 32) & 0xff00;
-+    val |= (env->macc[acc] >> 32) & 0xff00;
-     val |= (env->macc[acc + 1] << 16) & 0x00ff0000;
-     val |= (env->macc[acc + 1] >> 16) & 0xff000000;
-     return val;
--- 
-2.7.4
+On Thu, Jul 21, 2016 at 10:41:53AM +0200, Reda Sallahi wrote:
+> img_open_file() and img_open_opts() were printing error messages with a
+> duplicate part because of a wrong use of error_reportf_err() (e.g.
+> qemu-img: Could not open 'foo': Could not open 'foo': No such file or dir=
+ectory)
+>=20
+> This change uses error_report_err() instead to eliminate the duplicate pa=
+rt.
+>=20
+> Signed-off-by: Reda Sallahi <fullmanet@gmail.com>
+> ---
+>  qemu-img.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/qemu-img.c b/qemu-img.c
+> index 2e40e1f..dc6652d 100644
+> --- a/qemu-img.c
+> +++ b/qemu-img.c
+> @@ -268,7 +268,7 @@ static BlockBackend *img_open_opts(const char *optstr,
+>      options =3D qemu_opts_to_qdict(opts, NULL);
+>      blk =3D blk_new_open(NULL, NULL, options, flags, &local_err);
+>      if (!blk) {
+> -        error_reportf_err(local_err, "Could not open '%s': ", optstr);
+> +        error_report_err(local_err);
+>          return NULL;
+>      }
+>      blk_set_enable_write_cache(blk, !writethrough);
+> @@ -295,7 +295,7 @@ static BlockBackend *img_open_file(const char *filena=
+me,
+> =20
+>      blk =3D blk_new_open(filename, NULL, options, flags, &local_err);
+>      if (!blk) {
+> -        error_reportf_err(local_err, "Could not open '%s': ", filename);
+> +        error_report(local_err);
+>          return NULL;
+>      }
+>      blk_set_enable_write_cache(blk, !writethrough);
 
+The duplication happens in the "Could not open 'foo'" case, but other
+error cases do not include the filename in the error message.
+
+We would lose information in those error cases since the filename is no
+longer included by qemu-img.c in the error message.
+
+I'm not aware of a clean way to distinguish Error objects.  Maybe
+someone else can suggest one.  Otherwise it may be best to leave the
+code as it is.
+
+Stefan
+
+--/04w6evG8XlLl3ft
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJXkJDJAAoJEJykq7OBq3PIk2oH/1AHdz4WC7aJ0bEo3dQytyS+
+uD1UrCcNlP/Hg+tShU1A4ok95BDITB2VIDmGwdbDZaAb1p+rdv2YgnziXPklutvk
+CF6trFsMw9hj/mmshBOPaOHuX23GvPf9i4QMd1CutYGZ5gXVKjXECQVxxuJ4twU4
+y+5r+zJaAuj2Ic1s3PZPb1tkq/uFbis962PcB7SLyIGfFpT3koV7vGa/ae2ukVvN
+AFa3DAEYac3+eLw10F65wb0Uwkk+KZCRBdyW+e8TgLjw8GR/uBJZ2jshZAUCK2jV
+jyBqj/OxGIwmEBrwqc4Y5kva0ykYHmLM1vZ0m8XkircSd3Pz9RGBYuGr5rruv5g=
+=ATvb
+-----END PGP SIGNATURE-----
+
+--/04w6evG8XlLl3ft--
 
