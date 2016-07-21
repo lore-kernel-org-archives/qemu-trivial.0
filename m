@@ -1,60 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bQEB1-0007yY-SW
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2016 09:38:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40364)
+	id 1bQNFp-0008GL-Ho
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2016 19:19:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fullmanet@gmail.com>) id 1bQ9ZC-00034O-LC
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 04:42:54 -0400
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFn-0008Fa-2B
+	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <fullmanet@gmail.com>) id 1bQ9ZB-00045i-Of
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 04:42:50 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33352)
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFj-0007Ua-0x
+	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:42 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:64043
+	helo=mx0a-001b2d01.pphosted.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fullmanet@gmail.com>)
-	id 1bQ9Yx-000440-VQ; Thu, 21 Jul 2016 04:42:36 -0400
-Received: by mail-wm0-x243.google.com with SMTP id o80so1735219wme.0;
-	Thu, 21 Jul 2016 01:42:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=vDI4MUTU0Js4+UYmI+0Wxej6HX7KskjG5WfuF5U73go=;
-	b=g0Y+NNx74HXl+e9Z2AddT+prhGJr32h/Dxsgi8zIv6yq5jMDAWc05gkPm69lSRP6Lo
-	1m4nVW3bxp/kgIyD3pmuLjVbY38u9ltkeorXxlTVgNUCHISKrfjcjMqYm5MNiuh3GQw1
-	27I5Qdkiuolyfp2CQAci4y7/NqQHJwst38heEBdIXQovtpZWl5IbgwqM4PWgQGHy9iTi
-	uGVyp/rif5NtZ8q/Xe33RAtLKXsRFslMHZKvpQ2ohqQGzCF1hZqN+B14n3hy+6M2qolw
-	cNnvQgAzb0XVxQ1gT6R4OElZIdErr4hp35F3NKRTykpgP/GILwDe9rSFviitTlFMwNno
-	TbSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=vDI4MUTU0Js4+UYmI+0Wxej6HX7KskjG5WfuF5U73go=;
-	b=kTwsV+WqhjxQhI9LDAXJpYTpFmF++JegYKBkBduDBbEzHX3VKcQQtPFher799unEe2
-	hOfFp690pkX3twS+45Ra0/4mjUIFNpU75q0hdsQ4wLMoJPYmL3Woj0dz2Y2vGleCzA1z
-	A/ItkhVftAKqG4HpzW3uhBNXgsAjNgNzlqPvIUxIV/8Ni06X1ow2RWjrsOXB6Uxhj5HM
-	UhVfE8sPpmFtiviaI3+jJ3ihi0T0e3KmSXzYVvH5TYGSiOonJuvQ0uYM8bEHsT3bwHvD
-	+aOYnu27JN93qsTvgi6mLyRHajnQ87kYtHAQ9hV7sf6D1lla48lLiWS1/3jqOnHN3jEH
-	2/3w==
-X-Gm-Message-State: ALyK8tINJIYEj6FFMGtBTo6oOC7uEW8pLnIJEUcD5s6rbHAhGrYC6OJ6yK4osfhDgLLxOw==
-X-Received: by 10.28.144.5 with SMTP id s5mr15397393wmd.39.1469090555227;
-	Thu, 21 Jul 2016 01:42:35 -0700 (PDT)
-Received: from localhost.localdomain (ram94-2-82-66-69-246.fbx.proxad.net.
-	[82.66.69.246])
-	by smtp.gmail.com with ESMTPSA id e7sm5262999wjg.17.2016.07.21.01.42.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 21 Jul 2016 01:42:34 -0700 (PDT)
-From: Reda Sallahi <fullmanet@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
-	Reda Sallahi <fullmanet@gmail.com>
-Date: Thu, 21 Jul 2016 10:41:53 +0200
-Message-Id: <20160721084153.16103-1-fullmanet@gmail.com>
-X-Mailer: git-send-email 2.9.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-X-Mailman-Approved-At: Thu, 21 Jul 2016 09:38:10 -0400
-Subject: [Qemu-trivial] [PATCH] qemu-img: fix error messages emitted by
- img_open()
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFi-0007UH-SQ
+	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:38 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
+	u6LNJ9iI063102
+	for <qemu-trivial@nongnu.org>; Thu, 21 Jul 2016 19:19:36 -0400
+Received: from e19.ny.us.ibm.com (e19.ny.us.ibm.com [129.33.205.209])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 24b7nbgfv4-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 21 Jul 2016 19:19:36 -0400
+Received: from localhost
+	by e19.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
+	Thu, 21 Jul 2016 19:19:35 -0400
+Received: from d01dlp03.pok.ibm.com (9.56.250.168)
+	by e19.ny.us.ibm.com (146.89.104.206) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 21 Jul 2016 19:19:33 -0400
+X-IBM-Helo: d01dlp03.pok.ibm.com
+X-IBM-MailFrom: mdroth@linux.vnet.ibm.com
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
+	[9.57.198.29])
+	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id D9179C90041;
+	Thu, 21 Jul 2016 19:19:22 -0400 (EDT)
+Received: from b01ledav03.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
+	[9.57.199.108])
+	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	u6LNJaH511076052; Thu, 21 Jul 2016 23:19:36 GMT
+Received: from b01ledav03.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0902DB2052;
+	Thu, 21 Jul 2016 19:19:33 -0400 (EDT)
+Received: from localhost (unknown [9.53.92.253])
+	by b01ledav03.gho.pok.ibm.com (Postfix) with ESMTP id E222CB2046;
+	Thu, 21 Jul 2016 19:19:32 -0400 (EDT)
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+In-Reply-To: <20160630190415.6192.5429@loki>
+Cc: qemu-trivial@nongnu.org
+References: <1465572354-3083-1-git-send-email-thuth@redhat.com>
+	<20160630190415.6192.5429@loki>
+User-Agent: alot/0.3.6
+Date: Thu, 21 Jul 2016 18:19:28 -0500
+X-TM-AS-GCONF: 00
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16072123-0056-0000-0000-000000D9A1BA
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16072123-0057-0000-0000-000004F3C473
+Message-Id: <20160721231928.496.84486@loki>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-07-21_11:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
+	definitions=main-1607210252
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-trivial] [PATCH] configure: Rename CONFIG_QGA_NTDDDISK
+ into CONFIG_QGA_NTDDSCSI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,42 +85,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jul 2016 08:42:54 -0000
+X-List-Received-Date: Thu, 21 Jul 2016 23:19:44 -0000
 
-img_open_file() and img_open_opts() were printing error messages with a
-duplicate part because of a wrong use of error_reportf_err() (e.g.
-qemu-img: Could not open 'foo': Could not open 'foo': No such file or directory)
+Quoting Michael Roth (2016-06-30 14:04:15)
+> Quoting Thomas Huth (2016-06-10 10:25:54)
+> > There is no CONFIG_QGA_NTDDDISK define used anywhere in the QEMU
+> > sources. Looking at the changelog and qga/commands-win32.c, it
+> > seems like this should be called CONFIG_QGA_NTDDSCSI instead.
+> > =
 
-This change uses error_report_err() instead to eliminate the duplicate part.
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> =
 
-Signed-off-by: Reda Sallahi <fullmanet@gmail.com>
----
- qemu-img.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> Thanks, applied to qga tree:
+>   https://github.com/mdroth/qemu/commits/qga
+> =
 
-diff --git a/qemu-img.c b/qemu-img.c
-index 2e40e1f..dc6652d 100644
---- a/qemu-img.c
-+++ b/qemu-img.c
-@@ -268,7 +268,7 @@ static BlockBackend *img_open_opts(const char *optstr,
-     options = qemu_opts_to_qdict(opts, NULL);
-     blk = blk_new_open(NULL, NULL, options, flags, &local_err);
-     if (!blk) {
--        error_reportf_err(local_err, "Could not open '%s': ", optstr);
-+        error_report_err(local_err);
-         return NULL;
-     }
-     blk_set_enable_write_cache(blk, !writethrough);
-@@ -295,7 +295,7 @@ static BlockBackend *img_open_file(const char *filename,
- 
-     blk = blk_new_open(filename, NULL, options, flags, &local_err);
-     if (!blk) {
--        error_reportf_err(local_err, "Could not open '%s': ", filename);
-+        error_report(local_err);
-         return NULL;
-     }
-     blk_set_enable_write_cache(blk, !writethrough);
--- 
-2.9.0
+> Although this did indeed uncover a bug in guest-get-fsinfo.
+> Should have a fix soon, but will want that in place before
+> I send a pull.
+
+So, that fix turned into a fairly heavy rework of how we map
+PCI devices to filesystems in the current w32 implementation
+of guest-get-fsinfo and I still don't quite have it working.
+It probably won't make 2.7 at this point.
+
+Unfortunately, as things stand, enabling the disk info
+support on w32 via your patch causes the entire command to
+fail, which would be a regression from the current support
+level.
+
+So for now I think the most expedient thing to do would be
+to hold off on this patch till 2.8, at which point we can
+apply it along with the disk info fixes I'm working on.
+
+> =
+
+> > ---
+> >  configure | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > =
+
+> > diff --git a/configure b/configure
+> > index 8c2f90b..55019d6 100755
+> > --- a/configure
+> > +++ b/configure
+> > @@ -4965,7 +4965,7 @@ if test "$mingw32" =3D "yes" ; then
+> >      echo "WIN_SDK=3D\"$win_sdk\"" >> $config_host_mak
+> >    fi
+> >    if test "$guest_agent_ntddscsi" =3D "yes" ; then
+> > -    echo "CONFIG_QGA_NTDDDISK=3Dy" >> $config_host_mak
+> > +    echo "CONFIG_QGA_NTDDSCSI=3Dy" >> $config_host_mak
+> >    fi
+> >    if test "$guest_agent_msi" =3D "yes"; then
+> >      echo "QEMU_GA_MSI_ENABLED=3Dyes" >> $config_host_mak  =
+
+> > -- =
+
+> > 1.8.3.1
+> > =
+
+> =
+
+>=20
 
 
