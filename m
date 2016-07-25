@@ -1,79 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bQNFp-0008GL-Ho
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jul 2016 19:19:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57918)
+	id 1bRWn0-0003Ey-HR
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Jul 2016 23:42:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFn-0008Fa-2B
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:44 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bRWmx-0003CP-R3
+	for qemu-trivial@nongnu.org; Sun, 24 Jul 2016 23:42:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFj-0007Ua-0x
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:42 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:64043
-	helo=mx0a-001b2d01.pphosted.com)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bRWmv-0007y0-Uv
+	for qemu-trivial@nongnu.org; Sun, 24 Jul 2016 23:42:42 -0400
+Received: from [59.151.112.132] (port=14112 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1bQNFi-0007UH-SQ
-	for qemu-trivial@nongnu.org; Thu, 21 Jul 2016 19:19:38 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
-	u6LNJ9iI063102
-	for <qemu-trivial@nongnu.org>; Thu, 21 Jul 2016 19:19:36 -0400
-Received: from e19.ny.us.ibm.com (e19.ny.us.ibm.com [129.33.205.209])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 24b7nbgfv4-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 21 Jul 2016 19:19:36 -0400
-Received: from localhost
-	by e19.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Thu, 21 Jul 2016 19:19:35 -0400
-Received: from d01dlp03.pok.ibm.com (9.56.250.168)
-	by e19.ny.us.ibm.com (146.89.104.206) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 21 Jul 2016 19:19:33 -0400
-X-IBM-Helo: d01dlp03.pok.ibm.com
-X-IBM-MailFrom: mdroth@linux.vnet.ibm.com
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
-	[9.57.198.29])
-	by d01dlp03.pok.ibm.com (Postfix) with ESMTP id D9179C90041;
-	Thu, 21 Jul 2016 19:19:22 -0400 (EDT)
-Received: from b01ledav03.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
-	[9.57.199.108])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	u6LNJaH511076052; Thu, 21 Jul 2016 23:19:36 GMT
-Received: from b01ledav03.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0902DB2052;
-	Thu, 21 Jul 2016 19:19:33 -0400 (EDT)
-Received: from localhost (unknown [9.53.92.253])
-	by b01ledav03.gho.pok.ibm.com (Postfix) with ESMTP id E222CB2046;
-	Thu, 21 Jul 2016 19:19:32 -0400 (EDT)
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
+	id 1bRWmo-0007vB-Mb; Sun, 24 Jul 2016 23:42:36 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="9032221"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 25 Jul 2016 11:42:33 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 75CBE4295F9A;
+	Mon, 25 Jul 2016 11:42:30 +0800 (CST)
+Received: from changlox.g08.fujitsu.local (10.167.225.55) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Mon, 25 Jul 2016 11:42:33 +0800
+From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+To: Jason Wang <jasowang@redhat.com>, Dmitry Fleytman <dmitry@daynix.com>,
+	qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
+Date: Mon, 25 Jul 2016 11:48:00 +0800
+Message-ID: <1469418480-18574-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <20160630190415.6192.5429@loki>
-Cc: qemu-trivial@nongnu.org
-References: <1465572354-3083-1-git-send-email-thuth@redhat.com>
-	<20160630190415.6192.5429@loki>
-User-Agent: alot/0.3.6
-Date: Thu, 21 Jul 2016 18:19:28 -0500
-X-TM-AS-GCONF: 00
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16072123-0056-0000-0000-000000D9A1BA
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16072123-0057-0000-0000-000004F3C473
-Message-Id: <20160721231928.496.84486@loki>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-07-21_11:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
-	definitions=main-1607210252
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-trivial] [PATCH] configure: Rename CONFIG_QGA_NTDDDISK
- into CONFIG_QGA_NTDDSCSI
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.167.225.55]
+X-yoursite-MailScanner-ID: 75CBE4295F9A.AA13B
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [PATCH] hw/net/e1000: Fix compiler warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,68 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jul 2016 23:19:44 -0000
+X-List-Received-Date: Mon, 25 Jul 2016 03:42:44 -0000
 
-Quoting Michael Roth (2016-06-30 14:04:15)
-> Quoting Thomas Huth (2016-06-10 10:25:54)
-> > There is no CONFIG_QGA_NTDDDISK define used anywhere in the QEMU
-> > sources. Looking at the changelog and qga/commands-win32.c, it
-> > seems like this should be called CONFIG_QGA_NTDDSCSI instead.
-> > =
+slave:~/.xie/qemu-colo # gcc --version
+gcc (SUSE Linux) 4.3.4 [gcc-4_3-branch revision 152973]
 
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> =
+slave:~/.xie/qemu-colo # make -j8
+CC    hw/net/e1000e_core.o
+hw/net/e1000e_core.c:56: warning: ‘e1000e_set_interrupt_cause’ declared inline after being called
+hw/net/e1000e_core.c:56: warning: previous declaration of ‘e1000e_set_interrupt_cause’ was here
+LINK  x86_64-softmmu/qemu-system-x86_64
 
-> Thanks, applied to qga tree:
->   https://github.com/mdroth/qemu/commits/qga
-> =
+Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+---
+ hw/net/e1000e_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Although this did indeed uncover a bug in guest-get-fsinfo.
-> Should have a fix soon, but will want that in place before
-> I send a pull.
+diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
+index badb1fe..e0bd31c 100644
+--- a/hw/net/e1000e_core.c
++++ b/hw/net/e1000e_core.c
+@@ -52,7 +52,7 @@
+                                      second according to spec 10.2.4.2 */
+ #define E1000E_MAX_TX_FRAGS (64)
+ 
+-static void
++static inline void
+ e1000e_set_interrupt_cause(E1000ECore *core, uint32_t val);
+ 
+ static inline void
+-- 
+1.9.3
 
-So, that fix turned into a fairly heavy rework of how we map
-PCI devices to filesystems in the current w32 implementation
-of guest-get-fsinfo and I still don't quite have it working.
-It probably won't make 2.7 at this point.
 
-Unfortunately, as things stand, enabling the disk info
-support on w32 via your patch causes the entire command to
-fail, which would be a regression from the current support
-level.
-
-So for now I think the most expedient thing to do would be
-to hold off on this patch till 2.8, at which point we can
-apply it along with the disk info fixes I'm working on.
-
-> =
-
-> > ---
-> >  configure | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > =
-
-> > diff --git a/configure b/configure
-> > index 8c2f90b..55019d6 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -4965,7 +4965,7 @@ if test "$mingw32" =3D "yes" ; then
-> >      echo "WIN_SDK=3D\"$win_sdk\"" >> $config_host_mak
-> >    fi
-> >    if test "$guest_agent_ntddscsi" =3D "yes" ; then
-> > -    echo "CONFIG_QGA_NTDDDISK=3Dy" >> $config_host_mak
-> > +    echo "CONFIG_QGA_NTDDSCSI=3Dy" >> $config_host_mak
-> >    fi
-> >    if test "$guest_agent_msi" =3D "yes"; then
-> >      echo "QEMU_GA_MSI_ENABLED=3Dyes" >> $config_host_mak  =
-
-> > -- =
-
-> > 1.8.3.1
-> > =
-
-> =
-
->=20
 
 
