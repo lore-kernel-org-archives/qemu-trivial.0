@@ -1,44 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bRYf0-0002gB-Sj
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2016 01:42:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60896)
+	id 1bRiHg-0002jy-6y
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jul 2016 11:59:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42616)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bRYey-0002e9-4i
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2016 01:42:37 -0400
+	(envelope-from <armbru@redhat.com>) id 1bRiHe-0002i6-3U
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2016 11:59:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bRYew-0003Mj-7P
-	for qemu-trivial@nongnu.org; Mon, 25 Jul 2016 01:42:35 -0400
-Received: from [59.151.112.132] (port=15536 helo=heian.cn.fujitsu.com)
+	(envelope-from <armbru@redhat.com>) id 1bRiHa-0005xX-VI
+	for qemu-trivial@nongnu.org; Mon, 25 Jul 2016 11:59:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53527)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1bRYep-0003ME-MN; Mon, 25 Jul 2016 01:42:28 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="9039733"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 25 Jul 2016 13:42:21 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 77F0642984C0;
-	Mon, 25 Jul 2016 13:42:17 +0800 (CST)
-Received: from changlox.g08.fujitsu.local (10.167.225.55) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Mon, 25 Jul 2016 13:42:20 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-To: Jason Wang <jasowang@redhat.com>, Dmitry Fleytman <dmitry@daynix.com>,
-	qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Date: Mon, 25 Jul 2016 13:47:47 +0800
-Message-ID: <1469425667-20703-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
+	(envelope-from <armbru@redhat.com>)
+	id 1bRiHR-0005uk-Tw; Mon, 25 Jul 2016 11:58:58 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 183E76438B;
+	Mon, 25 Jul 2016 15:58:57 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-47.ams2.redhat.com
+	[10.36.116.47])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6PFwtHf013724
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 25 Jul 2016 11:58:56 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id F1F6711AD2BD; Mon, 25 Jul 2016 17:58:54 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Reda Sallahi <fullmanet@gmail.com>, Kevin Wolf <kwolf@redhat.com>,
+	Fam Zheng <famz@redhat.com>, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Max Reitz <mreitz@redhat.com>
+References: <20160721084153.16103-1-fullmanet@gmail.com>
+	<20160721090721.GA27488@stefanha-x1.localdomain>
+Date: Mon, 25 Jul 2016 17:58:54 +0200
+In-Reply-To: <20160721090721.GA27488@stefanha-x1.localdomain> (Stefan
+	Hajnoczi's message of "Thu, 21 Jul 2016 10:07:21 +0100")
+Message-ID: <87twfdg14x.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: 77F0642984C0.A89BB
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH v2] hw/net/e1000e: Fix compiler warning
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 25 Jul 2016 15:58:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: fix error
+ messages emitted by img_open()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,39 +60,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jul 2016 05:42:37 -0000
+X-List-Received-Date: Mon, 25 Jul 2016 15:59:11 -0000
 
-slave:~/.xie/qemu-colo # gcc --version
-gcc (SUSE Linux) 4.3.4 [gcc-4_3-branch revision 152973]
+Stefan Hajnoczi <stefanha@redhat.com> writes:
 
-slave:~/.xie/qemu-colo # make -j8
-CC    hw/net/e1000e_core.o
-hw/net/e1000e_core.c:56: warning: ‘e1000e_set_interrupt_cause’ declared inline after being called
-hw/net/e1000e_core.c:56: warning: previous declaration of ‘e1000e_set_interrupt_cause’ was here
-LINK  x86_64-softmmu/qemu-system-x86_64
+> On Thu, Jul 21, 2016 at 10:41:53AM +0200, Reda Sallahi wrote:
+>> img_open_file() and img_open_opts() were printing error messages with a
+>> duplicate part because of a wrong use of error_reportf_err() (e.g.
+>> qemu-img: Could not open 'foo': Could not open 'foo': No such file or directory)
+>> 
+>> This change uses error_report_err() instead to eliminate the duplicate part.
+>> 
+>> Signed-off-by: Reda Sallahi <fullmanet@gmail.com>
+>> ---
+>>  qemu-img.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>> 
+>> diff --git a/qemu-img.c b/qemu-img.c
+>> index 2e40e1f..dc6652d 100644
+>> --- a/qemu-img.c
+>> +++ b/qemu-img.c
+>> @@ -268,7 +268,7 @@ static BlockBackend *img_open_opts(const char *optstr,
+>>      options = qemu_opts_to_qdict(opts, NULL);
+>>      blk = blk_new_open(NULL, NULL, options, flags, &local_err);
+>>      if (!blk) {
+>> -        error_reportf_err(local_err, "Could not open '%s': ", optstr);
+>> +        error_report_err(local_err);
+>>          return NULL;
+>>      }
+>>      blk_set_enable_write_cache(blk, !writethrough);
+>> @@ -295,7 +295,7 @@ static BlockBackend *img_open_file(const char *filename,
+>>  
+>>      blk = blk_new_open(filename, NULL, options, flags, &local_err);
+>>      if (!blk) {
+>> -        error_reportf_err(local_err, "Could not open '%s': ", filename);
+>> +        error_report(local_err);
+>>          return NULL;
+>>      }
+>>      blk_set_enable_write_cache(blk, !writethrough);
+>
+> The duplication happens in the "Could not open 'foo'" case, but other
+> error cases do not include the filename in the error message.
+>
+> We would lose information in those error cases since the filename is no
+> longer included by qemu-img.c in the error message.
 
-Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
-Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
----
- hw/net/e1000e_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Could you give an example of such an information loss?
 
-diff --git a/hw/net/e1000e_core.c b/hw/net/e1000e_core.c
-index badb1fe..e0bd31c 100644
---- a/hw/net/e1000e_core.c
-+++ b/hw/net/e1000e_core.c
-@@ -52,7 +52,7 @@
-                                      second according to spec 10.2.4.2 */
- #define E1000E_MAX_TX_FRAGS (64)
- 
--static void
-+static inline void
- e1000e_set_interrupt_cause(E1000ECore *core, uint32_t val);
- 
- static inline void
--- 
-1.9.3
+> I'm not aware of a clean way to distinguish Error objects.  Maybe
+> someone else can suggest one.  Otherwise it may be best to leave the
+> code as it is.
 
+If you need to distinguish different kinds of errors to conditionally
+rewrite the error message so it makes actual sense, chances are the
+error messages that need the rewriting should be improved instead.
 
+A more legitimate case is when a caller needs to handle different errors
+differently.  Doesn't occur all that often.
 
+There are two techniques for callers to distinguish different kinds of
+Errors:
+
+* ErrorClass, use error_get_class() to retrieve it.  This is actually a
+  remnant of the failed "rich" error object idea.  Almost always
+  ERROR_CLASS_GENERIC_ERROR, so this is unlikely to help.
+
+* Error code separate from the Error object, e.g. the function returns
+  -errno in addition to an Error object.
 
