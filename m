@@ -1,38 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bS1ZF-0007JN-Ko
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Jul 2016 08:34:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35259)
+	id 1bS1Zv-0007xF-HH
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Jul 2016 08:35:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35393)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bS1ZB-0007Fk-Pk
-	for qemu-trivial@nongnu.org; Tue, 26 Jul 2016 08:34:35 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bS1Zq-0007sB-BA
+	for qemu-trivial@nongnu.org; Tue, 26 Jul 2016 08:35:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bS1Z6-0006nK-T8
-	for qemu-trivial@nongnu.org; Tue, 26 Jul 2016 08:34:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54835)
+	(envelope-from <mjt@tls.msk.ru>) id 1bS1Zj-00073g-Sq
+	for qemu-trivial@nongnu.org; Tue, 26 Jul 2016 08:35:13 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:42424)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bS1Yy-0006iM-TP; Tue, 26 Jul 2016 08:34:21 -0400
+	id 1bS1Zd-0006yO-Mt; Tue, 26 Jul 2016 08:35:01 -0400
 Received: from [192.168.88.2] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by isrv.corpit.ru (Postfix) with ESMTP id AE601426C9;
-	Tue, 26 Jul 2016 15:34:17 +0300 (MSK)
-To: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>
-References: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	by isrv.corpit.ru (Postfix) with ESMTP id 81962426C9;
+	Tue, 26 Jul 2016 15:35:00 +0300 (MSK)
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+References: <1466609642-17709-1-git-send-email-lvivier@redhat.com>
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com,
+	Eduardo Habkost <ehabkost@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Openpgp: id=6EE195D1886E8FFB810D4324457CE0A0804465C5
 Organization: Telecom Service, JSC
-Message-ID: <f6ea2646-d8ea-c0bd-60bc-fd6884abaf50@msgid.tls.msk.ru>
-Date: Tue, 26 Jul 2016 15:34:16 +0300
+Message-ID: <e7caf90b-6d63-22fe-a166-2eae1c6e16e2@msgid.tls.msk.ru>
+Date: Tue, 26 Jul 2016 15:34:59 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.1.0
 MIME-Version: 1.0
-In-Reply-To: <1466416292-9615-1-git-send-email-laurent@vivier.eu>
+In-Reply-To: <1466609642-17709-1-git-send-email-lvivier@redhat.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] linux-user,
- trivial: display "0x%x" instead of "0x%d"
+Subject: Re: [Qemu-trivial] [PATCH] trace-event: display "%d" instead of
+ "0x%d"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,14 +45,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jul 2016 12:34:35 -0000
+X-List-Received-Date: Tue, 26 Jul 2016 12:35:18 -0000
 
-20.06.2016 12:51, Laurent Vivier wrote:
-> Display an exception number, generally defined as an hexadecimal
-> number (for instance, EXCP_HLT is 0x10001).
+22.06.2016 18:34, Laurent Vivier wrote:
+> Display the slot number of mhp_pc_dimm_assigned_slot()
+> using "%d" without the "0x".
 
 Applied to -trivial, thanks!
 
 /mjt
-
 
