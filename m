@@ -1,72 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bSiOP-0007py-Vy
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2016 06:18:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33172)
+	id 1bSim2-0007Op-Bp
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Jul 2016 06:42:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1bSiON-0007mU-QM
-	for qemu-trivial@nongnu.org; Thu, 28 Jul 2016 06:18:16 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bSim0-0007NZ-DM
+	for qemu-trivial@nongnu.org; Thu, 28 Jul 2016 06:42:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1bSiOH-0001zW-TN
-	for qemu-trivial@nongnu.org; Thu, 28 Jul 2016 06:18:14 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33388)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bSilz-0007nb-Ic
+	for qemu-trivial@nongnu.org; Thu, 28 Jul 2016 06:42:40 -0400
+Received: from [59.151.112.132] (port=48928 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>)
-	id 1bSiOH-0001zG-Mx; Thu, 28 Jul 2016 06:18:09 -0400
-Received: by mail-wm0-x243.google.com with SMTP id o80so10413110wme.0;
-	Thu, 28 Jul 2016 03:18:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=reply-to:subject:references:to:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=8EgBceuJ5KAN8NUJ+LnVKXFXLZTpEfFEEK8LA6+/2bI=;
-	b=IFt7Tze1ExHlAQNzfDFhhWCNtBPRiY+z5jeei667HE77bGjXKZASn6soeHqybVSQae
-	4XLemQGQ90oi7RoYbUyEDo/NzpgkCoc/96TjCWsLgzWQAn+r46HIL9sIQ3N3mwlVoT1U
-	QpYFAZDoBZLlmGAPzo1X9S904IPK79nIV3kcbT5mfh9iDTj0jsvEaa71vxejg6+uIFwP
-	19pkDyXFK0//+jA4YSyX8kciODVT7ZjJJu+g275lfR77Lvq/AbT8MR0MuEac4zlubDhm
-	IKMDpomhnEBahvzgceZ0j3SQDyA3nCD+RZ1gmBn8wlBDdSWUQyjUSTks/ikBmyxid/IQ
-	hhng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:reply-to:subject:references:to:cc:from
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-transfer-encoding;
-	bh=8EgBceuJ5KAN8NUJ+LnVKXFXLZTpEfFEEK8LA6+/2bI=;
-	b=TyHLkPvg0uPxlC0c8VsGL0DjC5wlyEoADFjq3Hmu9cFuCDeFHEkUKMX9FGB8dN6/nJ
-	rQ/RGVR/eCwV80EPRYtSJZN830OhyA4QnqF47vDmSQHfaBtpszu37PV9Y3iGDa7/cOaR
-	7hJYbbtqhEjSv3RdapbeagHt+u7c9h721d4JxtVBxUaRxoT/lwV6XG+u5kcZZQfIEPt2
-	pvfRrDPR9v0mqLARVIE4XWdTUDlwGHJjkdHxlrCKzr/6HWwvJ+DPblFk3EYmbSy7flwh
-	q/tlp/+i0X0fTIwsVECnUmSitLVZvKMLVoSXIuNl3DN8NGRX655GxD8aENJPePiqZLOx
-	nVcQ==
-X-Gm-Message-State: ALyK8tIXhF1BYeM3+FDFrBmVD30YpVnvI5M4AJociAc55VvP4fCidm2nFowkC1HbbJwbtw==
-X-Received: by 10.28.61.215 with SMTP id k206mr58994492wma.80.1469701088787;
-	Thu, 28 Jul 2016 03:18:08 -0700 (PDT)
-Received: from [192.168.1.115] ([46.120.6.143])
-	by smtp.googlemail.com with ESMTPSA id
-	n2sm10811468wjd.1.2016.07.28.03.18.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Jul 2016 03:18:07 -0700 (PDT)
-Reply-To: marcel@redhat.com
-References: <1463480327-3198-1-git-send-email-weijg.fnst@cn.fujitsu.com>
-	<1467257658.2514.14.camel@localhost>
-	<1467855432.2119.58.camel@localhost>
-	<1468393897.2020.7.camel@localhost>
-To: "Wei, Jiangang" <weijg.fnst@cn.fujitsu.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "marcel@redhat.com" <marcel@redhat.com>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>, "mst@redhat.com" <mst@redhat.com>
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-ID: <3d54773c-6567-e801-08d3-5091ce97be0b@gmail.com>
-Date: Thu, 28 Jul 2016 13:18:05 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1bSilt-0007le-BI; Thu, 28 Jul 2016 06:42:33 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="9252656"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 28 Jul 2016 18:42:30 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id DA2A742B5488;
+	Thu, 28 Jul 2016 18:42:30 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Thu, 28 Jul 2016 18:42:30 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, "Daniel P. Berrange" <berrange@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Date: Thu, 28 Jul 2016 18:50:04 +0800
+Message-ID: <1469703004-14800-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-In-Reply-To: <1468393897.2020.7.camel@localhost>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] convert device
- initialization functions
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: DA2A742B5488.AB5F8
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [PATCH] util/qemu-sockets: revert Yoda Conditions to
+ normal
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,63 +51,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jul 2016 10:18:16 -0000
+X-List-Received-Date: Thu, 28 Jul 2016 10:42:41 -0000
 
-On 07/13/2016 10:14 AM, Wei, Jiangang wrote:
-> cc qemu-trivial
->
-> The following patches had been reviewed one month ago,
-> But so far, It haven't been merged.
-> May I trouble any maintainer give me some feedback?
->
-> hw/pci-bridge: Convert pxb initialization functions to Error
-> apb: convert init to realize
->
-> Thanks,
-> wei
-> On Thu, 2016-07-07 at 01:39 +0000, Wei, Jiangang wrote:
->> Ping again ...
->> May I ask for some attention for these two patches？
->>
+Follow CODING_STYLE
 
-Hi Wei,
+Cc: Daniel P. Berrange <berrange@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 
-We are very sorry we didn't take your patches yet, we are now in hard freeze,
-I am not sure we can have them for 2.7 .
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+---
+ util/qemu-sockets.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-We are going to make sure they get in for 2.8, no further action is requested
-from your side.
+Daniel P. Berrange make me realized there is Yoda Conditions in this file,
+this file is mixed with both style, since I just touched this file, so,
+reverting it is handy to me.
 
-Thanks,
-Marcel
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 5e08723..a07acc5 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -386,7 +386,7 @@ static int inet_dgram_saddr(InetSocketAddress *sraddr,
+         goto err;
+     }
+ 
+-    if (0 != (rc = getaddrinfo(addr, port, &ai, &peer))) {
++    if ((rc = getaddrinfo(addr, port, &ai, &peer)) != 0) {
+         error_setg(errp, "address resolution failed for %s:%s: %s", addr, port,
+                    gai_strerror(rc));
+         goto err;
+@@ -412,7 +412,7 @@ static int inet_dgram_saddr(InetSocketAddress *sraddr,
+         port = "0";
+     }
+ 
+-    if (0 != (rc = getaddrinfo(addr, port, &ai, &local))) {
++    if ((rc = getaddrinfo(addr, port, &ai, &local)) != 0) {
+         error_setg(errp, "address resolution failed for %s:%s: %s", addr, port,
+                    gai_strerror(rc));
+         goto err;
+@@ -472,20 +472,20 @@ InetSocketAddress *inet_parse(const char *str, Error **errp)
+     if (str[0] == ':') {
+         /* no host given */
+         host[0] = '\0';
+-        if (1 != sscanf(str, ":%32[^,]%n", port, &pos)) {
++        if (sscanf(str, ":%32[^,]%n", port, &pos) != 1) {
+             error_setg(errp, "error parsing port in address '%s'", str);
+             goto fail;
+         }
+     } else if (str[0] == '[') {
+         /* IPv6 addr */
+-        if (2 != sscanf(str, "[%64[^]]]:%32[^,]%n", host, port, &pos)) {
++        if (sscanf(str, "[%64[^]]]:%32[^,]%n", host, port, &pos) != 2) {
+             error_setg(errp, "error parsing IPv6 address '%s'", str);
+             goto fail;
+         }
+         addr->ipv6 = addr->has_ipv6 = true;
+     } else {
+         /* hostname or IPv4 addr */
+-        if (2 != sscanf(str, "%64[^:]:%32[^,]%n", host, port, &pos)) {
++        if (sscanf(str, "%64[^:]:%32[^,]%n", host, port, &pos) != 2) {
+             error_setg(errp, "error parsing address '%s'", str);
+             goto fail;
+         }
+-- 
+2.1.0
 
->> Thanks
->> wei
->> On Thu, 2016-06-30 at 03:36 +0000, Wei, Jiangang wrote:
->>> Ping
->>> These two patches seem to be forgotten ...
->>>
->>> On Tue, 2016-05-17 at 18:18 +0800, Wei Jiangang wrote:
->>>> The first had been reviewed.
->>>> The second had been posted last month, but no feedback.
->>>> They're similar, so resend them together.
->>>>
->>>> Wei Jiangang (2):
->>>>   hw/pci-bridge: Convert pxb initialization functions to Error
->>>>   apb: convert init to realize
->>>>
->>>>  hw/pci-bridge/pci_expander_bridge.c | 52 ++++++++++++++++++-------------------
->>>>  hw/pci-host/apb.c                   |  5 ++--
->>>>  2 files changed, 27 insertions(+), 30 deletions(-)
->>>>
->>>
->>>
->>>
->>
->>
->>
->
->
->
+
 
 
