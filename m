@@ -1,43 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bT1pD-0000Ni-3S
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2016 03:03:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43523)
+	id 1bT3y1-00035C-C9
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2016 05:20:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41980)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bT1pA-0000MN-VY
-	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 03:03:13 -0400
+	(envelope-from <berrange@redhat.com>) id 1bT3xz-00033k-0p
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 05:20:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bT1pA-00062C-6g
-	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 03:03:12 -0400
-Received: from [59.151.112.132] (port=36080 helo=heian.cn.fujitsu.com)
+	(envelope-from <berrange@redhat.com>) id 1bT3xx-0005eS-Sl
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 05:20:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43424)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1bT1p4-00060m-4R; Fri, 29 Jul 2016 03:03:06 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
-   d="scan'208";a="9293823"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 29 Jul 2016 15:02:55 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id C2FAE42B548B;
-	Fri, 29 Jul 2016 15:02:54 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Fri, 29 Jul 2016 15:02:54 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <quintela@redhat.com>, <amit.shah@redhat.com>, <qemu-trivial@nongnu.org>
-Date: Fri, 29 Jul 2016 15:10:31 +0800
-Message-ID: <1469776231-23820-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <berrange@redhat.com>)
+	id 1bT3xs-0005cj-5K; Fri, 29 Jul 2016 05:20:20 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5BF9019CF86;
+	Fri, 29 Jul 2016 09:20:19 +0000 (UTC)
+Received: from redhat.com ([10.42.17.224])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6T9KGH5023512
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 29 Jul 2016 05:20:18 -0400
+Date: Fri, 29 Jul 2016 10:20:15 +0100
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: Cao jin <caoj.fnst@cn.fujitsu.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Eric Blake <eblake@redhat.com>
+Message-ID: <20160729092015.GE4485@redhat.com>
+Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
+References: <1469758546-21040-1-git-send-email-caoj.fnst@cn.fujitsu.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: C2FAE42B548B.AE542
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] migration/ram: fix typo
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <1469758546-21040-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 29 Jul 2016 09:20:19 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2] util/qemu-sockets: revert Yoda
+ Conditions to normal
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,31 +56,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jul 2016 07:03:14 -0000
+X-List-Received-Date: Fri, 29 Jul 2016 09:20:28 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- migration/ram.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, Jul 29, 2016 at 10:15:46AM +0800, Cao jin wrote:
+> Follow CODING_STYLE
+> 
+> Cc: Daniel P. Berrange <berrange@redhat.com>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+> ---
+>  util/qemu-sockets.c | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
+> 
+> v2 changelog:
+> 1. fix to Eric's comments.
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 815bc0e..a3d70c4 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -375,8 +375,8 @@ void migrate_compress_threads_create(void)
-     qemu_cond_init(&comp_done_cond);
-     qemu_mutex_init(&comp_done_lock);
-     for (i = 0; i < thread_count; i++) {
--        /* com_param[i].file is just used as a dummy buffer to save data, set
--         * it's ops to empty.
-+        /* comp_param[i].file is just used as a dummy buffer to save data,
-+         * set its ops to empty.
-          */
-         comp_param[i].file = qemu_fopen_ops(NULL, &empty_ops);
-         comp_param[i].done = true;
+Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+
+
+Regards,
+Daniel
 -- 
-2.1.0
-
-
-
+|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
+|: http://libvirt.org              -o-             http://virt-manager.org :|
+|: http://autobuild.org       -o-         http://search.cpan.org/~danberr/ :|
+|: http://entangle-photo.org       -o-       http://live.gnome.org/gtk-vnc :|
 
