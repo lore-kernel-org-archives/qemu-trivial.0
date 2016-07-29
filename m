@@ -1,31 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bT1ls-0006FT-6T
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2016 02:59:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42593)
+	id 1bT1pD-0000Ni-3S
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jul 2016 03:03:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1bT1lq-0006D3-Al
-	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 02:59:47 -0400
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bT1pA-0000MN-VY
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 03:03:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1bT1lo-0005Kv-Fy
-	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 02:59:45 -0400
-Received: from qemu.weilnetz.de ([37.221.198.45]:35370)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bT1pA-00062C-6g
+	for qemu-trivial@nongnu.org; Fri, 29 Jul 2016 03:03:12 -0400
+Received: from [59.151.112.132] (port=36080 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>)
-	id 1bT1lh-0005IN-Aq; Fri, 29 Jul 2016 02:59:37 -0400
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id CCCC117F787; Fri, 29 Jul 2016 08:59:34 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Developer <qemu-devel@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Fri, 29 Jul 2016 08:59:29 +0200
-Message-Id: <1469775569-7869-1-git-send-email-sw@weilnetz.de>
-X-Mailer: git-send-email 2.1.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 37.221.198.45
-Subject: [Qemu-trivial] [PATCH for-2.7] wxx: Fix compiler warning for
- host-libusb.c
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1bT1p4-00060m-4R; Fri, 29 Jul 2016 03:03:06 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="9293823"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 29 Jul 2016 15:02:55 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id C2FAE42B548B;
+	Fri, 29 Jul 2016 15:02:54 +0800 (CST)
+Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Fri, 29 Jul 2016 15:02:54 +0800
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+To: <qemu-devel@nongnu.org>
+CC: <quintela@redhat.com>, <amit.shah@redhat.com>, <qemu-trivial@nongnu.org>
+Date: Fri, 29 Jul 2016 15:10:31 +0800
+Message-ID: <1469776231-23820-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.1.0
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: C2FAE42B548B.AE542
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [PATCH] migration/ram: fix typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -37,37 +49,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Jul 2016 06:59:47 -0000
+X-List-Received-Date: Fri, 29 Jul 2016 07:03:14 -0000
 
-The local variable i is unsed for Windows.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
 ---
- hw/usb/host-libusb.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ migration/ram.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
-index c632fd8..e94672c 100644
---- a/hw/usb/host-libusb.c
-+++ b/hw/usb/host-libusb.c
-@@ -235,7 +235,7 @@ static int usb_host_init(void)
- #ifndef CONFIG_WIN32
-     const struct libusb_pollfd **poll;
- #endif
--    int i, rc;
-+    int rc;
- 
-     if (ctx) {
-         return 0;
-@@ -253,6 +253,7 @@ static int usb_host_init(void)
-                                 ctx);
-     poll = libusb_get_pollfds(ctx);
-     if (poll) {
-+        int i;
-         for (i = 0; poll[i] != NULL; i++) {
-             usb_host_add_fd(poll[i]->fd, poll[i]->events, ctx);
-         }
+diff --git a/migration/ram.c b/migration/ram.c
+index 815bc0e..a3d70c4 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -375,8 +375,8 @@ void migrate_compress_threads_create(void)
+     qemu_cond_init(&comp_done_cond);
+     qemu_mutex_init(&comp_done_lock);
+     for (i = 0; i < thread_count; i++) {
+-        /* com_param[i].file is just used as a dummy buffer to save data, set
+-         * it's ops to empty.
++        /* comp_param[i].file is just used as a dummy buffer to save data,
++         * set its ops to empty.
+          */
+         comp_param[i].file = qemu_fopen_ops(NULL, &empty_ops);
+         comp_param[i].done = true;
 -- 
-2.1.4
+2.1.0
+
+
 
 
