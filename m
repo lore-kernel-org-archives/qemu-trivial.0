@@ -1,38 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bU5PS-00041s-DT
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2016 01:05:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52637)
+	id 1bU97O-0005fP-Gq
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2016 05:02:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34640)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bU5PQ-0003zI-1I
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 01:05:00 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1bU97M-0005bp-AG
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 05:02:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bU5PO-0006GV-7E
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 01:04:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37050)
+	(envelope-from <pbonzini@redhat.com>) id 1bU97K-0008IS-8G
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 05:02:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53270)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1bU5PI-0006Fv-NJ; Mon, 01 Aug 2016 01:04:52 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(envelope-from <pbonzini@redhat.com>)
+	id 1bU97F-0008H9-AG; Mon, 01 Aug 2016 05:02:29 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E02FFC0885C6;
-	Mon,  1 Aug 2016 05:04:50 +0000 (UTC)
-Received: from lemon.nay.redhat.com (dhcp-15-153.nay.redhat.com [10.66.15.153])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7154nOH001007; Mon, 1 Aug 2016 01:04:50 -0400
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Mon,  1 Aug 2016 13:04:48 +0800
-Message-Id: <1470027888-24381-1-git-send-email-famz@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	by mx1.redhat.com (Postfix) with ESMTPS id 9D2ED85376;
+	Mon,  1 Aug 2016 09:02:28 +0000 (UTC)
+Received: from [10.36.112.46] (ovpn-112-46.ams2.redhat.com [10.36.112.46])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7192PXb014593
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 1 Aug 2016 05:02:26 -0400
+To: Colin Lord <clord@redhat.com>, qemu-devel@nongnu.org
+References: <1469636506-1768-1-git-send-email-clord@redhat.com>
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, peter.maydell@linaro.org
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <318fbc9d-333d-f756-7c13-8bf552d70c92@redhat.com>
+Date: Mon, 1 Aug 2016 11:02:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
+MIME-Version: 1.0
+In-Reply-To: <1469636506-1768-1-git-send-email-clord@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 01 Aug 2016 05:04:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 01 Aug 2016 09:02:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] curl: Cast fd to int for DPRINTF
+Subject: Re: [Qemu-trivial] [PATCH] help: Update help to reflect that GTK is
+ the default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,39 +54,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Aug 2016 05:05:01 -0000
+X-List-Received-Date: Mon, 01 Aug 2016 09:02:37 -0000
 
-Currently "make docker-test-mingw@fedora" has a warning like:
 
-    /tmp/qemu-test/src/block/curl.c: In function 'curl_sock_cb':
-    /tmp/qemu-test/src/block/curl.c:172:6: warning: format '%d' expects
-    argument of type 'int', but argument 4 has type 'curl_socket_t {aka long
-    long unsigned int}'
-         DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, fd);
-          ^
-    cc1: all warnings being treated as errors
 
-Cast to int to suppress it.
+On 27/07/2016 18:21, Colin Lord wrote:
+> Updates the messages displayed in the help option to reflect that GTK is
+> the default display, not SDL.
+> ---
+>  qemu-options.hx | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 8e0d9a5..5bec1d3 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -967,7 +967,7 @@ DEF("nographic", 0, QEMU_OPTION_nographic,
+>  STEXI
+>  @item -nographic
+>  @findex -nographic
+> -Normally, QEMU uses SDL to display the VGA output. With this option,
+> +Normally, QEMU uses GTK to display the VGA output. With this option,
 
-Signed-off-by: Fam Zheng <famz@redhat.com>
----
- block/curl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+IIRC SDL is the default if GTK is not enabled.  So perhaps "uses GTK or
+SDL"?
 
-diff --git a/block/curl.c b/block/curl.c
-index da9f5e8..426fb4d 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -169,7 +169,7 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
-     state->sock_fd = fd;
-     s = state->s;
- 
--    DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, fd);
-+    DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, (int)fd);
-     switch (action) {
-         case CURL_POLL_IN:
-             aio_set_fd_handler(s->aio_context, fd, false,
--- 
-2.7.4
+Since you are at it, replace "the VGA output" with "output (such as
+graphics, console, and the QEMU monitor)"
 
+>  you can totally disable graphical output so that QEMU is a simple
+>  command line application. The emulated serial port is redirected on
+>  the console and muxed with the monitor (unless redirected elsewhere
+> @@ -977,12 +977,12 @@ the console and monitor.
+>  ETEXI
+>  
+>  DEF("curses", 0, QEMU_OPTION_curses,
+> -    "-curses         use a curses/ncurses interface instead of SDL\n",
+> +    "-curses         use a curses/ncurses interface instead of GTK\n",
+
+Remove "instead of GTK" altogether?
+
+>      QEMU_ARCH_ALL)
+>  STEXI
+>  @item -curses
+>  @findex -curses
+> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+
+Same as above ("GTK or SDL").
+
+>  QEMU can display the VGA output when in text mode using a
+>  curses/ncurses interface.  Nothing is displayed in graphical mode.
+>  ETEXI
+> @@ -1034,6 +1034,14 @@ STEXI
+>  Enable SDL.
+>  ETEXI
+>  
+> +DEF("gtk", 0, QEMU_OPTION_gtk,
+> +    "-gtk            enable GTK (default)\n", QEMU_ARCH_ALL)
+> +STEXI
+> +@item -gtk
+> +@findex -gtk
+> +Enable GTK.
+> +ETEXI
+
+We try to avoid adding new "-foo" options.  All of them invariably end
+up requiring some sort of suboption, which is why we have "-display" now.
+
+>  DEF("spice", HAS_ARG, QEMU_OPTION_spice,
+>      "-spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]\n"
+>      "       [,x509-key-file=<file>][,x509-key-password=<file>]\n"
+> @@ -1228,7 +1236,7 @@ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
+>  STEXI
+>  @item -vnc @var{display}[,@var{option}[,@var{option}[,...]]]
+>  @findex -vnc
+> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+
+Same as above ("GTK or SDL").
+
+Thanks,
+
+Paolo
+
+>  you can have QEMU listen on VNC display @var{display} and redirect the VGA
+>  display over the VNC session.  It is very useful to enable the usb
+>  tablet device when using this option (option @option{-usbdevice
+> 
 
