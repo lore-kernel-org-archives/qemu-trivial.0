@@ -1,65 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bUBeQ-0006qK-ED
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2016 07:44:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43708)
+	id 1bUEsG-0000Es-I7
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Aug 2016 11:11:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40254)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bUBeO-0006nT-5x
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 07:44:53 -0400
+	(envelope-from <armbru@redhat.com>) id 1bUEsE-0000CM-BD
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 11:11:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bUBeI-000616-8y
-	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 07:44:50 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:36140)
+	(envelope-from <armbru@redhat.com>) id 1bUEsC-00047J-98
+	for qemu-trivial@nongnu.org; Mon, 01 Aug 2016 11:11:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52716)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1bUBeI-00060y-2n; Mon, 01 Aug 2016 07:44:46 -0400
-Received: by mail-wm0-x241.google.com with SMTP id x83so25759991wma.3;
-	Mon, 01 Aug 2016 04:44:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=hJfZbWdas15ylZ47/PN6rnyO5LYQaFxBBaQmFSgsxU8=;
-	b=fnU4lQX9S71SiyO65t5aOklp9/sXw27EGKMFpIw+CPjYnzPJSqRNmjbXjjdIRAHGEF
-	dbiskgvhbXhvfrYEOfDkPjKqYAzNIRhHzD2K/HEZotiQ/pWnPpoumw2HbH6whepvt0QO
-	JnyZ+L+gSHRpykcnCZczG+ykY3fl74EfViSrtqmO1IWMwZnMNjC+lRn9U9QYdEaNuvYK
-	2sBlcLVT9PEwLCCRqVzVBgBM08I3Yg9Lmz6xj4IhdVAlxDqJ8rxxSUIyBEYDi+UHGeri
-	RNsXXS5unPfjMw3PTdiGX8ZJ42yc8atq17uf9bqle+QrSkyqAt65GestbPcW5FFq4Upr
-	ntnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=hJfZbWdas15ylZ47/PN6rnyO5LYQaFxBBaQmFSgsxU8=;
-	b=Iozl6U3knY9+DVhxXyvC9uIgcyNilfl9hrOPq5f+oWSw9x4S7532BvzV7nyQodqVOm
-	WOl2sijzaaZ4SYW+wjpAbS40looOykoeWMNEZ3T5WDLymhEVKHS0TsCA8QN/O+hQbtQR
-	GorjyMKEdrYBor+ixssNAwO8x2TA96KqELC05XOzKh9q4h2wJry1bFIjtR4/pmoT8DsD
-	RWNsThEzk1rLdCCmI+Zjz6i98LxHC2FcWzTQLoxo6j1Mf81eF+jFNie10QOroDDBuqxX
-	eDZhalhTdXAMSLfJ3JX2DUbgDku9vNgzwhDYAgUVQZ44auuiGaR67DEcRwhCGYmpioy8
-	qB5Q==
-X-Gm-Message-State: AEkoouu6wgoFfVCdJ2yUJ2JJB5E3F8UsWz+J96ojcvRQOEEdRem8MycfcHwSWqUm25sJoQ==
-X-Received: by 10.194.97.73 with SMTP id dy9mr51059762wjb.132.1470051885240;
-	Mon, 01 Aug 2016 04:44:45 -0700 (PDT)
-Received: from [10.201.49.221] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
-	by smtp.googlemail.com with ESMTPSA id
-	e10sm30184331wjc.21.2016.08.01.04.44.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 01 Aug 2016 04:44:44 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <1469790338-28990-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <45e4afbd-e09a-c711-c4f3-5fe597234ea9@redhat.com>
-Date: Mon, 1 Aug 2016 13:44:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	(envelope-from <armbru@redhat.com>)
+	id 1bUEs7-000466-9r; Mon, 01 Aug 2016 11:11:15 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DEEC020279;
+	Mon,  1 Aug 2016 15:11:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-31.ams2.redhat.com
+	[10.36.116.31])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u71FBC4G021787
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 1 Aug 2016 11:11:14 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 104B111386A2; Mon,  1 Aug 2016 17:11:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Colin Lord <clord@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, peter.maydell@linaro.org
+References: <1469636506-1768-1-git-send-email-clord@redhat.com>
+	<318fbc9d-333d-f756-7c13-8bf552d70c92@redhat.com>
+Date: Mon, 01 Aug 2016 17:11:12 +0200
+In-Reply-To: <318fbc9d-333d-f756-7c13-8bf552d70c92@redhat.com> (Paolo
+	Bonzini's message of "Mon, 1 Aug 2016 11:02:24 +0200")
+Message-ID: <877fc05xtb.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <1469790338-28990-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 01 Aug 2016 15:11:14 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [PATCH 0/3] trivial changes of timer & cpus
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] help: Update help to
+ reflect that GTK is the default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,27 +58,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Aug 2016 11:44:53 -0000
+X-List-Received-Date: Mon, 01 Aug 2016 15:11:23 -0000
 
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
+> On 27/07/2016 18:21, Colin Lord wrote:
+>> Updates the messages displayed in the help option to reflect that GTK is
+>> the default display, not SDL.
+>> ---
+>>  qemu-options.hx | 16 ++++++++++++----
+>>  1 file changed, 12 insertions(+), 4 deletions(-)
+>> 
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 8e0d9a5..5bec1d3 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -967,7 +967,7 @@ DEF("nographic", 0, QEMU_OPTION_nographic,
+>>  STEXI
+>>  @item -nographic
+>>  @findex -nographic
+>> -Normally, QEMU uses SDL to display the VGA output. With this option,
+>> +Normally, QEMU uses GTK to display the VGA output. With this option,
+>
+> IIRC SDL is the default if GTK is not enabled.  So perhaps "uses GTK or
+> SDL"?
+>
+> Since you are at it, replace "the VGA output" with "output (such as
+> graphics, console, and the QEMU monitor)"
+>
+>>  you can totally disable graphical output so that QEMU is a simple
+>>  command line application. The emulated serial port is redirected on
+>>  the console and muxed with the monitor (unless redirected elsewhere
+>> @@ -977,12 +977,12 @@ the console and monitor.
+>>  ETEXI
+>>  
+>>  DEF("curses", 0, QEMU_OPTION_curses,
+>> -    "-curses         use a curses/ncurses interface instead of SDL\n",
+>> +    "-curses         use a curses/ncurses interface instead of GTK\n",
+>
+> Remove "instead of GTK" altogether?
+>
+>>      QEMU_ARCH_ALL)
+>>  STEXI
+>>  @item -curses
+>>  @findex -curses
+>> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+>> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+>
+> Same as above ("GTK or SDL").
+>
+>>  QEMU can display the VGA output when in text mode using a
+>>  curses/ncurses interface.  Nothing is displayed in graphical mode.
+>>  ETEXI
+>> @@ -1034,6 +1034,14 @@ STEXI
+>>  Enable SDL.
+>>  ETEXI
+>>  
+>> +DEF("gtk", 0, QEMU_OPTION_gtk,
+>> +    "-gtk            enable GTK (default)\n", QEMU_ARCH_ALL)
+>> +STEXI
+>> +@item -gtk
+>> +@findex -gtk
+>> +Enable GTK.
+>> +ETEXI
+>
+> We try to avoid adding new "-foo" options.  All of them invariably end
+> up requiring some sort of suboption, which is why we have "-display" now.
+>
+>>  DEF("spice", HAS_ARG, QEMU_OPTION_spice,
+>>      "-spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]\n"
+>>      "       [,x509-key-file=<file>][,x509-key-password=<file>]\n"
+>> @@ -1228,7 +1236,7 @@ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
+>>  STEXI
+>>  @item -vnc @var{display}[,@var{option}[,@var{option}[,...]]]
+>>  @findex -vnc
+>> -Normally, QEMU uses SDL to display the VGA output.  With this option,
+>> +Normally, QEMU uses GTK to display the VGA output.  With this option,
+>
+> Same as above ("GTK or SDL").
+>
+> Thanks,
+>
+> Paolo
+>
+>>  you can have QEMU listen on VNC display @var{display} and redirect the VGA
+>>  display over the VNC session.  It is very useful to enable the usb
+>>  tablet device when using this option (option @option{-usbdevice
 
-On 29/07/2016 13:05, Cao jin wrote:
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc  Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> Cc: Richard Henderson <rth@twiddle.net>
-> 
-> Cao jin (3):
->   timer: update comments
->   cpus: rename local variable to meaningful one
->   cpus: update comments
-> 
->  cpus.c               | 13 +++++++------
->  include/qemu/timer.h | 19 ++++++-------------
->  2 files changed, 13 insertions(+), 19 deletions(-)
-> 
+Please have a look at 
 
-Thanks, these can go in 2.8.
-
-Paolo
+From: Robert Ho <robert.hu@intel.com>
+Subject: [PATCH v2 1/1] Reorganize help output of '-display' option
+Date: Tue, 26 Jul 2016 18:17:11 +0800
+Message-Id: <1469528231-26206-1-git-send-email-robert.hu@intel.com>
 
