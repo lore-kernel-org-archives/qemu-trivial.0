@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bUaAP-0000BO-QL
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2016 09:55:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60224)
+	id 1bUaAQ-0000Bg-1D
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2016 09:55:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chaojianhu@hotmail.com>) id 1bUYuP-0008Oi-AF
-	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 08:34:58 -0400
+	(envelope-from <chaojianhu@hotmail.com>) id 1bUYbv-0007AF-Nz
+	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 08:15:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chaojianhu@hotmail.com>) id 1bUYuN-0007oa-Dj
-	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 08:34:56 -0400
-Received: from blu004-omc2s14.hotmail.com ([65.55.111.89]:56905)
+	(envelope-from <chaojianhu@hotmail.com>) id 1bUYbt-0004Zz-OB
+	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 08:15:50 -0400
+Received: from blu004-omc2s9.hotmail.com ([65.55.111.84]:61654)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <chaojianhu@hotmail.com>)
-	id 1bUYuG-0007mX-6r; Tue, 02 Aug 2016 08:34:48 -0400
-Received: from BLU436-SMTP122 ([65.55.111.73]) by BLU004-OMC2S14.hotmail.com
+	id 1bUYbo-0004ZE-2H; Tue, 02 Aug 2016 08:15:44 -0400
+Received: from BLU436-SMTP183 ([65.55.111.71]) by BLU004-OMC2S9.hotmail.com
 	over TLS secured channel with Microsoft SMTPSVC(7.5.7601.23008);
-	Tue, 2 Aug 2016 05:14:47 -0700
-X-TMN: [D/s2UJFW6TliDxIW8rbd6abRfh038qqTK5VRpHd43Uw=]
+	Tue, 2 Aug 2016 05:15:43 -0700
+X-TMN: [IMCzJr3rfGE7zpPhg6F2/wn6Qo5FM4R1MwSKNXMdUDI=]
 X-Originating-Email: [chaojianhu@hotmail.com]
-Message-ID: <BLU436-SMTP1226619716498B6602A02A9DB050@phx.gbl>
+Message-ID: <BLU436-SMTP18383289290DAB1921B097CDB050@phx.gbl>
 From: chaojianhu <chaojianhu@hotmail.com>
 To: qemu-devel@nongnu.org
-CC: qemu-trivial@nongnu.org,
+CC: qemu-trivial@nongnu.org, kwolf@redhat.com, stefanha@redhat.com,
 	chaojianhu <chaojianhu@hotmail.com>
-Date: Tue, 2 Aug 2016 20:14:32 +0800
+Date: Tue, 2 Aug 2016 20:15:30 +0800
 X-Mailer: git-send-email 1.9.1
-X-OriginalArrivalTime: 02 Aug 2016 12:14:46.0764 (UTC)
-	FILETIME=[75A912C0:01D1ECB7]
+X-OriginalArrivalTime: 02 Aug 2016 12:15:43.0014 (UTC)
+	FILETIME=[97302460:01D1ECB7]
 MIME-Version: 1.0
 Content-Type: text/plain
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 65.55.111.89
+X-Received-From: 65.55.111.84
 X-Mailman-Approved-At: Tue, 02 Aug 2016 09:55:31 -0400
 Subject: [Qemu-trivial] [PATCH] hw/ide: fix a writing to null pointer
  exception
@@ -44,7 +44,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Aug 2016 12:34:58 -0000
+X-List-Received-Date: Tue, 02 Aug 2016 12:15:52 -0000
 
 From: chaojianhu <chaojianhu@hotmail.com>
 Date: Tue, 2 Aug 2016 17:39:16 +0800
