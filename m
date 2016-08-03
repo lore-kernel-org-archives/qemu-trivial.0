@@ -1,56 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bUaXT-0000fQ-W0
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Aug 2016 10:19:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39304)
+	id 1bUrmO-0007Vj-Vb
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Aug 2016 04:43:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bUaXQ-0000cG-Hc
-	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 10:19:21 -0400
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bUrmL-0007PK-19
+	for qemu-trivial@nongnu.org; Wed, 03 Aug 2016 04:43:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bUaXO-0000On-Ex
-	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 10:19:19 -0400
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:34891)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1bUrmJ-0002DH-5W
+	for qemu-trivial@nongnu.org; Wed, 03 Aug 2016 04:43:52 -0400
+Received: from [59.151.112.132] (port=27974 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bUaXN-0000OP-Hk
-	for qemu-trivial@nongnu.org; Tue, 02 Aug 2016 10:19:18 -0400
-Received: by mail-vk0-x22a.google.com with SMTP id w127so123673018vkh.2
-	for <qemu-trivial@nongnu.org>; Tue, 02 Aug 2016 07:19:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=9B8caFecW79mX+AyTjyrgtT6IWgG3GmIu5xzaHB/sYY=;
-	b=gPV4DJV4xqZis/aaaJRGro70vqKQo1sm3fbhUj8HK/pzwQKtCfiBReGkOXivOQdTdA
-	gZS622yo11G9NU4SYVpPPiQ+b3VTlR+EySqM/4kf2GbFvyLICYMFQfhvn1mRx86J5612
-	MU4+nw5yfpwIhdcD0oLPXlp3ON5sTK2ja8ot0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=9B8caFecW79mX+AyTjyrgtT6IWgG3GmIu5xzaHB/sYY=;
-	b=lKB2DF5d+sTb2HTAK1RcyuwyqgEk+o7Ra7+m+wWT8stPKRaHZigiijFMYM3LqHZkki
-	JcgsEfONh3BbeFwFoDIKK/G5f6DuN45JtFTvraJdGZ5ieqZjbCC6oR9TnIIpVjGdPh96
-	jzujis+PD3FFuqyeb0NYtu0Ixm5EgMQU7JVV1a/zSOWzveea25m9RTKV2MZjrT5BJxmi
-	nX17P5c4uKe7N5JRQoUG+0n0DOIDnPwsDwlDgmBSNQ5DYY+W9F8GaVfnblCrw4j/3vRa
-	qQ6hfpX5XwqqTIvsi+XZyQZ4LnSuB2a6U/CcChkUtbkoXoFdKBm+cKKXT1ykPQ63So/k
-	9FFg==
-X-Gm-Message-State: AEkoouuBVb4qxBbN+3DBltleRhPzhhVta/IDimX3eG+Wgz5N+cyiYw2N2Ptb+GwlI7jJkQcSo/nnxOzssZ4hwhn4
-X-Received: by 10.31.228.133 with SMTP id b127mr29650055vkh.90.1470147557086; 
-	Tue, 02 Aug 2016 07:19:17 -0700 (PDT)
+	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
+	id 1bUrmC-0002A4-E2; Wed, 03 Aug 2016 04:43:44 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; 
+   d="scan'208";a="9481007"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 03 Aug 2016 16:43:28 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 080EA42CA540;
+	Wed,  3 Aug 2016 16:43:25 +0800 (CST)
+Received: from changlox.g08.fujitsu.local (10.167.225.55) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Wed, 3 Aug 2016 16:43:24 +0800
+From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+To: qemu devel <qemu-devel@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, 
+	qemu trival <qemu-trivial@nongnu.org>
+Date: Wed, 3 Aug 2016 16:49:07 +0800
+Message-ID: <1470214147-32560-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 1.9.3
 MIME-Version: 1.0
-Received: by 10.31.150.200 with HTTP; Tue, 2 Aug 2016 07:18:56 -0700 (PDT)
-In-Reply-To: <C74630D0D1907C4A87964109A262FDDE51EC2406@EXMBX-TJ019.tencent.com>
-References: <C74630D0D1907C4A87964109A262FDDE51EC2406@EXMBX-TJ019.tencent.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Aug 2016 15:18:56 +0100
-Message-ID: <CAFEAcA8g3R4gPzm8QDf-E9Zm0V4K3Opnc44cCiqLviP7iATt0w@mail.gmail.com>
-To: =?UTF-8?B?Zmlrc2h1KOW/veacneS/rSk=?= <fikshu@tencent.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, kwolf <kwolf@redhat.com>, 
-	qemu-trivial <qemu-trivial@nongnu.org>, stefanha <stefanha@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/ide: fix a writing to
- null pointer exception
+Content-Type: text/plain
+X-Originating-IP: [10.167.225.55]
+X-yoursite-MailScanner-ID: 080EA42CA540.ACC13
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: [Qemu-trivial] [PATCH] virtio-blk: rename virtio_device_info to
+ virtio_blk_info
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,32 +50,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Aug 2016 14:19:21 -0000
+X-List-Received-Date: Wed, 03 Aug 2016 08:43:56 -0000
 
-On 2 August 2016 at 11:22, fikshu(=E5=BF=BD=E6=9C=9D=E4=BF=AD) <fikshu@tenc=
-ent.com> wrote:
-> From b5e5c01b025e83500ca46628add7f63f42f9b2ab Mon Sep 17 00:00:00 2001
-> From: fikshu <fikshu@tencent.com>
-> Date: Tue, 2 Aug 2016 17:39:16 +0800
-> Subject: [PATCH] hw/ide: fix a writing to null pointer exception
->
-> In qemu less than v2.1.3, ide_flush_cache calls ide_flush_cb with s->bs =
-=3D=3D NULL,
-> and ide_flush_cb calls bdrv_acct_done without check s->bs neither. Finall=
-y,
-> bdrv_acct_done writing s->bs directly!
->
-> Reported-by: fikshu <fikshu@tencent.com>
+The old one is confusing with @virtio_device_info in virtio.c,
+so make it more appropriate.
 
-Thanks for this patch. However, this bug has already been fixed
-in commit f7f3ff1da0c in 2014, which made it into the 2.2
-QEMU release in December 2014. We don't support releases
-that old upstream. So if you're still running 2.1 then
-(a) I strongly urge you to upgrade
-(b) if this QEMU is from a Linux distro vendor and they're
-still supporting it, then you should talk to them about
-backporting commit f7f3ff1da0c
+Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+---
+ hw/block/virtio-blk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+index 475a822..a3a9e63 100644
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -987,7 +987,7 @@ static void virtio_blk_class_init(ObjectClass *klass, void *data)
+     vdc->load = virtio_blk_load_device;
+ }
+ 
+-static const TypeInfo virtio_device_info = {
++static const TypeInfo virtio_blk_info = {
+     .name = TYPE_VIRTIO_BLK,
+     .parent = TYPE_VIRTIO_DEVICE,
+     .instance_size = sizeof(VirtIOBlock),
+@@ -997,7 +997,7 @@ static const TypeInfo virtio_device_info = {
+ 
+ static void virtio_register_types(void)
+ {
+-    type_register_static(&virtio_device_info);
++    type_register_static(&virtio_blk_info);
+ }
+ 
+ type_init(virtio_register_types)
+-- 
+1.9.3
+
+
+
 
