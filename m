@@ -1,41 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bVjSx-0004pz-0N
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Aug 2016 14:03:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35299)
+	id 1bWBi8-0001Yg-MX
+	for mharc-qemu-trivial@gnu.org; Sat, 06 Aug 2016 20:13:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35635)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clord@redhat.com>) id 1bVjSv-0004li-21
-	for qemu-trivial@nongnu.org; Fri, 05 Aug 2016 14:03:26 -0400
+	(envelope-from <cota@braap.org>) id 1bWBi6-0001YC-12
+	for qemu-trivial@nongnu.org; Sat, 06 Aug 2016 20:12:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clord@redhat.com>) id 1bVjSt-0000a4-W8
-	for qemu-trivial@nongnu.org; Fri, 05 Aug 2016 14:03:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48790)
+	(envelope-from <cota@braap.org>) id 1bWBi2-0005xg-Nj
+	for qemu-trivial@nongnu.org; Sat, 06 Aug 2016 20:12:57 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:56567)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clord@redhat.com>)
-	id 1bVjSp-0000Zh-7T; Fri, 05 Aug 2016 14:03:19 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 277F3285A7;
-	Fri,  5 Aug 2016 18:03:18 +0000 (UTC)
-Received: from dhcp-17-138.bos.redhat.com (dhcp-17-209.bos.redhat.com
-	[10.18.17.209])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u75I3Hua028850; Fri, 5 Aug 2016 14:03:17 -0400
-From: Colin Lord <clord@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, eblake@redhat.com,
-	peter.maydell@linaro.org, Colin Lord <clord@redhat.com>
-Date: Fri,  5 Aug 2016 14:03:15 -0400
-Message-Id: <1470420195-32551-1-git-send-email-clord@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 05 Aug 2016 18:03:18 +0000 (UTC)
+	(envelope-from <cota@braap.org>) id 1bWBi0-0005vv-9h
+	for qemu-trivial@nongnu.org; Sat, 06 Aug 2016 20:12:54 -0400
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailout.nyi.internal (Postfix) with ESMTP id 441722026B
+	for <qemu-trivial@nongnu.org>; Sat,  6 Aug 2016 20:12:37 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute1.internal (MEProxy); Sat, 06 Aug 2016 20:12:37 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=date
+	:from:message-id:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=
+	WLUoFojKIQnOIi3u2tRGUKgxYcY=; b=s5eXilbG+8GL8boHei/b7kxpK1Wtpl9f
+	l5xTVzInMYD5XQVk88+s59Zyjfth4QomBLtJlgeubljBdCGFXc4awEYIuMIy6gXQ
+	PPikyZJ3GCPd/oZ7HV6yKUcZbuJZQgH4n7eWbx9UsbzoEwVTJjXXuQJfg4td6Y0h
+	PjAZLspPHMo=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=date:from:message-id:subject:to
+	:x-sasl-enc:x-sasl-enc; s=smtpout; bh=WLUoFojKIQnOIi3u2tRGUKgxYc
+	Y=; b=haE17QFgLFz3FcaK0+dyNFoQvAkMrFf1paFdOaQjpNjnndgIF6tho/PPlm
+	35AZwDiOXRjGjq5Y/ismYVFMhZsv/fLuffQVHVYKJUZ7Y9SrWr5OyN7oNidr/tZb
+	pF4PQFJv0mi8pW4BfVDAuxRvbIlntKyIPHTtYOzoxT8tshG1w=
+X-Sasl-enc: STg/qDQVkqgBxPI+EtJqhOEKRPZ8NDvgzRGqsXRIsxek 1470528756
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id E7ED8CCDCB
+	for <qemu-trivial@nongnu.org>; Sat,  6 Aug 2016 20:12:36 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: qemu-trivial@nongnu.org
+Date: Sat,  6 Aug 2016 20:12:36 -0400
+Message-Id: <1470528756-12764-1-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2] help: Update help to reflect that GTK is
- the default
+X-Received-From: 66.111.4.26
+Subject: [Qemu-trivial] [PATCH] qht: trivial: s/sucess/success/ in
+ documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,81 +53,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Aug 2016 18:03:26 -0000
+X-List-Received-Date: Sun, 07 Aug 2016 00:12:59 -0000
 
-Updates the help messages to reflect that GTK is the default display (if
-enabled), not SDL.
-
-Signed-off-by: Colin Lord <clord@redhat.com>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- v2: Update to try to implement Paolo's suggested wordings. It looks to
- me like the subsections get wrapped at 72 lines, which mean there was a
- bit of a ripple effect and the changes look bigger than they are.
- qemu-options.hx | 36 +++++++++++++++++++-----------------
- 1 file changed, 19 insertions(+), 17 deletions(-)
+ include/qemu/qht.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index a71aaf8..657d083 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -982,13 +982,14 @@ DEF("nographic", 0, QEMU_OPTION_nographic,
- STEXI
- @item -nographic
- @findex -nographic
--Normally, QEMU uses SDL to display the VGA output. With this option,
--you can totally disable graphical output so that QEMU is a simple
--command line application. The emulated serial port is redirected on
--the console and muxed with the monitor (unless redirected elsewhere
--explicitly). Therefore, you can still use QEMU to debug a Linux kernel
--with a serial console.  Use @key{C-a h} for help on switching between
--the console and monitor.
-+Normally, QEMU uses GTK or SDL to display the output (such as graphics,
-+console, and the QEMU monitor). With this option, you can totally
-+disable graphical output so that QEMU is a simple command line
-+application. The emulated serial port is redirected on the console and
-+muxed with the monitor (unless redirected elsewhere explicitly).
-+Therefore, you can still use QEMU to debug a Linux kernel with a serial
-+console. Use @key{C-a h} for help on switching between the console and
-+monitor.
- ETEXI
- 
- DEF("curses", 0, QEMU_OPTION_curses,
-@@ -997,9 +998,10 @@ DEF("curses", 0, QEMU_OPTION_curses,
- STEXI
- @item -curses
- @findex -curses
--Normally, QEMU uses SDL to display the VGA output.  With this option,
--QEMU can display the VGA output when in text mode using a
--curses/ncurses interface.  Nothing is displayed in graphical mode.
-+Normally, QEMU uses GTK or SDL to display the output (such as graphics,
-+console, and the QEMU monitor). With this option, QEMU can display the
-+VGA output when in text mode using a curses/ncurses interface. Nothing
-+is displayed in graphical mode.
- ETEXI
- 
- DEF("no-frame", 0, QEMU_OPTION_no_frame,
-@@ -1243,13 +1245,13 @@ DEF("vnc", HAS_ARG, QEMU_OPTION_vnc ,
- STEXI
- @item -vnc @var{display}[,@var{option}[,@var{option}[,...]]]
- @findex -vnc
--Normally, QEMU uses SDL to display the VGA output.  With this option,
--you can have QEMU listen on VNC display @var{display} and redirect the VGA
--display over the VNC session.  It is very useful to enable the usb
--tablet device when using this option (option @option{-usbdevice
--tablet}). When using the VNC display, you must use the @option{-k}
--parameter to set the keyboard layout if you are not using en-us. Valid
--syntax for the @var{display} is
-+Normally, QEMU uses GTK or SDL to display the output (such as graphics,
-+console, and the QEMU monitor). With this option, you can have QEMU
-+listen on VNC display @var{display} and redirect the VGA display over
-+the VNC session. It is very useful to enable the usb tablet device when
-+using this option (option @option{-usbdevice tablet}). When using the
-+VNC display, you must use the @option{-k} parameter to set the keyboard
-+layout if you are not using en-us. Valid syntax for the @var{display} is
- 
- @table @option
- 
+diff --git a/include/qemu/qht.h b/include/qemu/qht.h
+index 70bfc68..98045f1 100644
+--- a/include/qemu/qht.h
++++ b/include/qemu/qht.h
+@@ -69,7 +69,7 @@ void qht_destroy(struct qht *ht);
+  * Attempting to insert a NULL @p is a bug.
+  * Inserting the same pointer @p with different @hash values is a bug.
+  *
+- * Returns true on sucess.
++ * Returns true on success.
+  * Returns false if the @p-@hash pair already exists in the hash table.
+  */
+ bool qht_insert(struct qht *ht, void *p, uint32_t hash);
 -- 
-2.5.5
+2.5.0
 
 
