@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bX1RU-0004lU-HA
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2016 03:27:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47061)
+	id 1bX7AX-00042D-Lv
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2016 09:34:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1bX1RP-0004gl-EK
-	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 03:27:15 -0400
+	(envelope-from <no-reply@patchew.org>) id 1bWwqg-0004sC-Nz
+	for qemu-trivial@nongnu.org; Mon, 08 Aug 2016 22:32:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1bX1RJ-0002Jb-PC
-	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 03:27:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43982)
+	(envelope-from <no-reply@patchew.org>) id 1bWwqc-0008Uy-Hl
+	for qemu-trivial@nongnu.org; Mon, 08 Aug 2016 22:32:57 -0400
+Resent-Date: Mon, 08 Aug 2016 22:32:57 -0400
+Resent-Message-Id: <E1bWwqc-0008Uy-Hl@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:24799)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>)
-	id 1bX1RC-0002D6-Jw; Tue, 09 Aug 2016 03:26:58 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0530C811A2;
-	Tue,  9 Aug 2016 07:26:57 +0000 (UTC)
-Received: from [10.72.4.112] (vpn1-4-112.pek2.redhat.com [10.72.4.112])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u797Qq7I011816
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 9 Aug 2016 03:26:54 -0400
-To: chaojianhu <chaojianhu@hotmail.com>, qemu-devel@nongnu.org
-References: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
-Cc: qemu-trivial@nongnu.org, edgar.iglesias@gmail.com,
-	alistair.francis@xilinx.com, qemu-arm@nongnu.org
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <a00d4a5d-02f4-51a5-cad4-ec6018a30f96@redhat.com>
-Date: Tue, 9 Aug 2016 15:26:52 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
+	(envelope-from <no-reply@patchew.org>)
+	id 1bWwqc-0008Ui-8j; Mon, 08 Aug 2016 22:32:54 -0400
+Received: from ex-std-node742.prod.rhcloud.com
+	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
+	mx.zohomail.com with SMTPS id 1470709964988301.1563694505578;
+	Mon, 8 Aug 2016 19:32:44 -0700 (PDT)
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <BLU437-SMTP43591ADA801E900D4BCE81DB1C0@phx.gbl>
 MIME-Version: 1.0
-In-Reply-To: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 09 Aug 2016 07:26:57 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/net: Fix a heap overflow in
- xlnx.xps-ethernetlite
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: chaojianhu@hotmail.com
+Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	jasowang@redhat.com, alistair.francis@xilinx.com,
+	qemu-arm@nongnu.org, edgar.iglesias@gmail.com, chaojianhu@hotmail.com
+Date: Mon, 8 Aug 2016 19:32:44 -0700 (PDT)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+Message-ID: <E1bWwqc-0008Ui-8j@eggs.gnu.org>
+X-Received-From: 74.201.84.163
+X-Mailman-Approved-At: Tue, 09 Aug 2016 09:34:08 -0400
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net: Fix a heap overflow
+ in xlnx.xps-ethernetlite
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,41 +47,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Aug 2016 07:27:15 -0000
+X-List-Received-Date: Tue, 09 Aug 2016 02:32:59 -0000
 
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogQkxV
+NDM3LVNNVFA0MzU5MUFEQTgwMUU5MDBENEJDRTgxREIxQzBAcGh4LmdibApUeXBlOiBzZXJpZXMK
+U3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSF0gaHcvbmV0OiBGaXggYSBoZWFwIG92ZXJmbG93
+IGluIHhsbngueHBzLWV0aGVybmV0bGl0ZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9i
+aW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4g
+fCB3YyAtbCkKZmFpbGVkPTAKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVy
+c2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFU
+Q0ggJG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgog
+ICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNo
+LnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAg
+ZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQg
+PT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3
+aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZjI5ZWRmMCBody9uZXQ6IEZpeCBhIGhlYXAg
+b3ZlcmZsb3cgaW4geGxueC54cHMtZXRoZXJuZXRsaXRlCgo9PT0gT1VUUFVUIEJFR0lOID09PQpD
+aGVja2luZyBQQVRDSCAxLzE6IGh3L25ldDogRml4IGEgaGVhcCBvdmVyZmxvdyBpbiB4bG54Lnhw
+cy1ldGhlcm5ldGxpdGUuLi4KRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmVmb3JlIHRoYXQgY2xv
+c2UgcGFyZW50aGVzaXMgJyknCiMyNjogRklMRTogaHcvbmV0L3hpbGlueF9ldGhsaXRlLmM6MjAw
+OgorICAgIGlmIChzaXplID4gKFJfTUFYIC0gUl9SWF9CVUYwIC0gcnhiYXNlKSAqIDQgKSB7CgpF
+UlJPUjogTWlzc2luZyBTaWduZWQtb2ZmLWJ5OiBsaW5lKHMpCgp0b3RhbDogMiBlcnJvcnMsIDAg
+d2FybmluZ3MsIDEwIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1z
+LCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRp
+dmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlO
+VEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNv
+ZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
+cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1k
+ZXZlbEBmcmVlbGlzdHMub3Jn
 
-
-On 2016=E5=B9=B408=E6=9C=8809=E6=97=A5 11:52, chaojianhu wrote:
-> The .receive callback of xlnx.xps-ethernetlite doesn't check the length
-> of data before calling memcpy. As a result, the NetClientState object i=
-n
-> heap will be overflowed. All versions of qemu with xlnx.xps-ethernetlit=
-e
-> will be affected.
->
-> Reported-by: chaojianhu <chaojianhu@hotmail.com>
-> Signed-off-by: chaojianhu <chaojianhu@hotmail.com>
->
-> ---
->   hw/net/xilinx_ethlite.c | 4 ++++
->   1 file changed, 4 insertions(+)
->
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index 54db2b8..35de353 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -197,6 +197,10 @@ static ssize_t eth_rx(NetClientState *nc, const ui=
-nt8_t *buf, size_t size)
->       }
->  =20
->       D(qemu_log("%s %zd rxbase=3D%x\n", __func__, size, rxbase));
-> +    if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
-> +        D(qemu_log("ethlite packet is too big, size=3D%x\n", size));
-> +        return -1;
-> +    }
->       memcpy(&s->regs[rxbase + R_RX_BUF0], buf, size);
->  =20
->       s->regs[rxbase + R_RX_CTRL0] |=3D CTRL_S;
-
-Applied, thanks.
 
