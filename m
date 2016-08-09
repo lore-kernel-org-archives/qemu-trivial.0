@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bX7AX-00042D-Lv
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2016 09:34:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54725)
+	id 1bXFLK-0001RK-2Z
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2016 18:17:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55432)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bWwqg-0004sC-Nz
-	for qemu-trivial@nongnu.org; Mon, 08 Aug 2016 22:32:59 -0400
+	(envelope-from <opensource.dxs@aliyun.com>) id 1bX89d-0004AU-Nv
+	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 10:37:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bWwqc-0008Uy-Hl
-	for qemu-trivial@nongnu.org; Mon, 08 Aug 2016 22:32:57 -0400
-Resent-Date: Mon, 08 Aug 2016 22:32:57 -0400
-Resent-Message-Id: <E1bWwqc-0008Uy-Hl@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:24799)
+	(envelope-from <opensource.dxs@aliyun.com>) id 1bX89a-0007Bw-Hb
+	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 10:37:17 -0400
+Received: from smtpcm9-312.freemail.mail.aliyun.com ([110.75.46.12]:41676)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>)
-	id 1bWwqc-0008Ui-8j; Mon, 08 Aug 2016 22:32:54 -0400
-Received: from ex-std-node742.prod.rhcloud.com
-	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
-	mx.zohomail.com with SMTPS id 1470709964988301.1563694505578;
-	Mon, 8 Aug 2016 19:32:44 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <BLU437-SMTP43591ADA801E900D4BCE81DB1C0@phx.gbl>
+	(envelope-from <opensource.dxs@aliyun.com>) id 1bX89Z-0007A8-Ud
+	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 10:37:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aliyun.com; s=s1024;
+	t=1470753429;
+	h=From:To:Subject:Date:Message-Id:MIME-Version:Content-Type; 
+	bh=EyeDD8kYfAI+8pF40+L54Zqb8LOh3BCGwlrGIwEYPEQ=;
+	b=mcYJYjdwv+lW9Ws5ndzs+sWyIigFEL/uWnCxie3dm3eGvYkVym0UxuFCqkPLwq3NbnzkKrEgLg5prZ8uRz4biDY9iCBpZm836QzlPd9yWsaiWD5LHp44NhDBqw4V2yqkPgatSXmQr2QcmZYv+e/Xu/klOGxNYExLHafatsswBs8=
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.1535394|-1; FP=0|0|0|0|0|-1|-1|-1;
+	HT=36d007040; MF=opensource.dxs@aliyun.com; NM=1; PH=DS; RN=6;
+	RT=6; SR=0; TI=SMTPD_----DqJCreF_1470753426; 
+Received: from localhost.localdomain(mailfrom:opensource.dxs@aliyun.com
+	ip:27.38.41.38) by smtp.aliyun-inc.com(127.0.0.1);
+	Tue, 09 Aug 2016 22:37:07 +0800
+From: =?UTF-8?q?Stefano=20Dong=20=28=E8=91=A3=E5=85=B4=E6=B0=B4=29?=
+	<opensource.dxs@aliyun.com>
+To: marcandre.lureau@gmail.com, armbru@redhat.com, pbonzini@redhat.com,
+	mst@redhat.com
+Cc: qemu-trivial@nongnu.org,
+	opensource.dxs@aliyun.com
+Date: Wed, 10 Aug 2016 06:37:02 +0800
+Message-Id: <1470782222-4316-1-git-send-email-opensource.dxs@aliyun.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: chaojianhu@hotmail.com
-Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	jasowang@redhat.com, alistair.francis@xilinx.com,
-	qemu-arm@nongnu.org, edgar.iglesias@gmail.com, chaojianhu@hotmail.com
-Date: Mon, 8 Aug 2016 19:32:44 -0700 (PDT)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-Message-ID: <E1bWwqc-0008Ui-8j@eggs.gnu.org>
-X-Received-From: 74.201.84.163
-X-Mailman-Approved-At: Tue, 09 Aug 2016 09:34:08 -0400
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net: Fix a heap overflow
- in xlnx.xps-ethernetlite
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 110.75.46.12
+X-Mailman-Approved-At: Tue, 09 Aug 2016 18:17:48 -0400
+Subject: [Qemu-trivial]  [PATCH] ivshmem: Delete duplicate debug message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,34 +50,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Aug 2016 02:32:59 -0000
+X-List-Received-Date: Tue, 09 Aug 2016 14:37:18 -0000
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogQkxV
-NDM3LVNNVFA0MzU5MUFEQTgwMUU5MDBENEJDRTgxREIxQzBAcGh4LmdibApUeXBlOiBzZXJpZXMK
-U3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSF0gaHcvbmV0OiBGaXggYSBoZWFwIG92ZXJmbG93
-IGluIHhsbngueHBzLWV0aGVybmV0bGl0ZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9i
-aW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4g
-fCB3YyAtbCkKZmFpbGVkPTAKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVy
-c2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFU
-Q0ggJG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgog
-ICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNo
-LnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAg
-ZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQg
-PT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3
-aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZjI5ZWRmMCBody9uZXQ6IEZpeCBhIGhlYXAg
-b3ZlcmZsb3cgaW4geGxueC54cHMtZXRoZXJuZXRsaXRlCgo9PT0gT1VUUFVUIEJFR0lOID09PQpD
-aGVja2luZyBQQVRDSCAxLzE6IGh3L25ldDogRml4IGEgaGVhcCBvdmVyZmxvdyBpbiB4bG54Lnhw
-cy1ldGhlcm5ldGxpdGUuLi4KRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmVmb3JlIHRoYXQgY2xv
-c2UgcGFyZW50aGVzaXMgJyknCiMyNjogRklMRTogaHcvbmV0L3hpbGlueF9ldGhsaXRlLmM6MjAw
-OgorICAgIGlmIChzaXplID4gKFJfTUFYIC0gUl9SWF9CVUYwIC0gcnhiYXNlKSAqIDQgKSB7CgpF
-UlJPUjogTWlzc2luZyBTaWduZWQtb2ZmLWJ5OiBsaW5lKHMpCgp0b3RhbDogMiBlcnJvcnMsIDAg
-d2FybmluZ3MsIDEwIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1z
-LCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRp
-dmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlO
-VEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNv
-ZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
-cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1k
-ZXZlbEBmcmVlbGlzdHMub3Jn
+Duplicated in commit ca0b756.  Delete it.
+
+Signed-off-by: Stefano Dong (董兴水) <opensource.dxs@aliyun.com>
+---
+ hw/misc/ivshmem.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 40a2ebc..f803dfd 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -628,7 +628,6 @@ static void ivshmem_read(void *opaque, const uint8_t *buf, int size)
+     s->msg_buffered_bytes = 0;
+ 
+     fd = qemu_chr_fe_get_msgfd(s->server_chr);
+-    IVSHMEM_DPRINTF("posn is %" PRId64 ", fd is %d\n", msg, fd);
+ 
+     process_msg(s, msg, fd, &err);
+     if (err) {
+-- 
+2.7.4
 
 
