@@ -1,45 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bXJZu-00044o-DJ
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Aug 2016 22:49:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59652)
+	id 1bXkIk-00028L-AP
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Aug 2016 03:21:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52925)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bXJZs-0003wD-4l
-	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 22:49:09 -0400
+	(envelope-from <thuth@redhat.com>) id 1bXkIi-000273-AJ
+	for qemu-trivial@nongnu.org; Thu, 11 Aug 2016 03:21:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bXJZq-0004Ed-12
-	for qemu-trivial@nongnu.org; Tue, 09 Aug 2016 22:49:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40038)
+	(envelope-from <thuth@redhat.com>) id 1bXkIh-00063b-7G
+	for qemu-trivial@nongnu.org; Thu, 11 Aug 2016 03:21:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46486)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1bXJZi-0004A5-EK; Tue, 09 Aug 2016 22:48:58 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(envelope-from <thuth@redhat.com>)
+	id 1bXkIb-00062m-3S; Thu, 11 Aug 2016 03:21:05 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33D62635F;
-	Wed, 10 Aug 2016 02:48:57 +0000 (UTC)
-Received: from localhost (dhcp-15-47.nay.redhat.com [10.66.15.47])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7A2mtra005047; Tue, 9 Aug 2016 22:48:56 -0400
-Date: Wed, 10 Aug 2016 10:41:55 +0800
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
+	by mx1.redhat.com (Postfix) with ESMTPS id 46F7A3DEF0;
+	Thu, 11 Aug 2016 07:21:03 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-22.ams2.redhat.com [10.36.116.22])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u7B7L1DF019006; Thu, 11 Aug 2016 03:21:01 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Message-ID: <20160810024155.GI11351@al.usersys.redhat.com>
-References: <1470027888-24381-1-git-send-email-famz@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1470027888-24381-1-git-send-email-famz@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+Date: Thu, 11 Aug 2016 09:21:00 +0200
+Message-Id: <1470900060-25821-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 10 Aug 2016 02:48:57 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 11 Aug 2016 07:21:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] curl: Cast fd to int for
- DPRINTF
+Subject: [Qemu-trivial] [PATCH] ui/console: Fix non-working backspace key in
+ monitor of gtk UI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,49 +45,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Aug 2016 02:49:09 -0000
+X-List-Received-Date: Thu, 11 Aug 2016 07:21:13 -0000
 
-On Mon, 08/01 13:04, Fam Zheng wrote:
-> Currently "make docker-test-mingw@fedora" has a warning like:
-> 
->     /tmp/qemu-test/src/block/curl.c: In function 'curl_sock_cb':
->     /tmp/qemu-test/src/block/curl.c:172:6: warning: format '%d' expects
->     argument of type 'int', but argument 4 has type 'curl_socket_t {aka long
->     long unsigned int}'
->          DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, fd);
->           ^
->     cc1: all warnings being treated as errors
-> 
-> Cast to int to suppress it.
-> 
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  block/curl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/block/curl.c b/block/curl.c
-> index da9f5e8..426fb4d 100644
-> --- a/block/curl.c
-> +++ b/block/curl.c
-> @@ -169,7 +169,7 @@ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
->      state->sock_fd = fd;
->      s = state->s;
->  
-> -    DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, fd);
-> +    DPRINTF("CURL (AIO): Sock action %d on fd %d\n", action, (int)fd);
->      switch (action) {
->          case CURL_POLL_IN:
->              aio_set_fd_handler(s->aio_context, fd, false,
-> -- 
-> 2.7.4
-> 
-> 
+In the QEMU monitor pane of the gtk user interface, the backspace
+key is not working at all. This happens because of a missing mapping
+of the key in the qcode_to_keysym[] table. Thus let's add an entry
+there to get the backspace key working again.
 
-Since this is blocking the mingw testing on patchew, I'm taking this in my
-tree. Applied to my docker branch:
+Buglink: https://bugs.launchpad.net/qemu/+bug/1611979
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ ui/console.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-https://github.com/famz/qemu/tree/docker
+diff --git a/ui/console.c b/ui/console.c
+index c24bfe4..3940762 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -1142,6 +1142,7 @@ static const int qcode_to_keysym[Q_KEY_CODE__MAX] = {
+     [Q_KEY_CODE_PGUP]   = QEMU_KEY_PAGEUP,
+     [Q_KEY_CODE_PGDN]   = QEMU_KEY_PAGEDOWN,
+     [Q_KEY_CODE_DELETE] = QEMU_KEY_DELETE,
++    [Q_KEY_CODE_BACKSPACE] = QEMU_KEY_BACKSPACE,
+ };
+ 
+ bool kbd_put_qcode_console(QemuConsole *s, int qcode)
+-- 
+1.8.3.1
 
-Thanks,
-Fam
 
