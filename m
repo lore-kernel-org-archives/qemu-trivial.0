@@ -1,53 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bZCHx-0002b1-EH
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Aug 2016 03:26:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41888)
+	id 1bZDCn-00052e-7H
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Aug 2016 04:25:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bZCHu-0002Ys-Sf
-	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 03:26:23 -0400
+	(envelope-from <thuth@redhat.com>) id 1bZDCk-0004yM-2f
+	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 04:25:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bZCHs-0003An-Vg
-	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 03:26:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48806)
+	(envelope-from <thuth@redhat.com>) id 1bZDCh-0003i9-TB
+	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 04:25:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57048)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1bZCHn-00039y-MD; Mon, 15 Aug 2016 03:26:15 -0400
+	(envelope-from <thuth@redhat.com>)
+	id 1bZDCc-0003hf-4I; Mon, 15 Aug 2016 04:24:58 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B9952C057FAD;
-	Mon, 15 Aug 2016 07:26:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7F7QCJq027466
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 15 Aug 2016 03:26:14 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 60DEB11386A2; Mon, 15 Aug 2016 09:26:12 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Colin Lord <clord@redhat.com>, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org, qemu-devel@nongnu.org
-References: <1470420195-32551-1-git-send-email-clord@redhat.com>
-	<87zioniw9x.fsf@dusky.pond.sub.org>
-	<04b7f702-5ac1-fcc2-7968-5bcb8767b2d2@redhat.com>
-Date: Mon, 15 Aug 2016 09:26:12 +0200
-In-Reply-To: <04b7f702-5ac1-fcc2-7968-5bcb8767b2d2@redhat.com> (Paolo
-	Bonzini's message of "Fri, 12 Aug 2016 10:42:16 +0200")
-Message-ID: <87r39qijcb.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C0DB8553C;
+	Mon, 15 Aug 2016 08:24:57 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-38.ams2.redhat.com [10.36.116.38])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u7F8Ot1d027648; Mon, 15 Aug 2016 04:24:55 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, samuel.thibault@ens-lyon.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, brad@comstyle.com
+Date: Mon, 15 Aug 2016 10:24:54 +0200
+Message-Id: <1471249494-17392-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 15 Aug 2016 07:26:14 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 15 Aug 2016 08:24:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] help: Update help to
- reflect that GTK is the default
+Subject: [Qemu-trivial] [PATCH for-2.7] slirp: Rename "struct arphdr" to
+ "struct slirp_arphdr"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,20 +45,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Aug 2016 07:26:23 -0000
+X-List-Received-Date: Mon, 15 Aug 2016 08:25:07 -0000
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+struct arphdr is already used by the system headers on OpenBSD
+and thus QEMU does not compile here anymore. Fix it by renaming
+our struct to slirp_arphdr instead.
 
-> On 08/08/2016 08:56, Markus Armbruster wrote:
->> Aside: -nographic is hard to understand because it does too many things.
->
-> -nographic is "just" -serial mon:stdio -machine graphics=false -display
-> none. :)
+Reported-by: Brad Smith
+Buglink: https://bugs.launchpad.net/qemu/+bug/1613133
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ slirp/slirp.c | 10 +++++-----
+ slirp/slirp.h |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-Assuming default_parallel is off, default_monitor is on, and either
-default_serial or default_virtcon or default_sclp is on: I think so (but
-I could be wrong).
+diff --git a/slirp/slirp.c b/slirp/slirp.c
+index 47a1652..d67eda1 100644
+--- a/slirp/slirp.c
++++ b/slirp/slirp.c
+@@ -773,10 +773,10 @@ void slirp_pollfds_poll(GArray *pollfds, int select_error)
+ 
+ static void arp_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
+ {
+-    struct arphdr *ah = (struct arphdr *)(pkt + ETH_HLEN);
+-    uint8_t arp_reply[max(ETH_HLEN + sizeof(struct arphdr), 64)];
++    struct slirp_arphdr *ah = (struct slirp_arphdr *)(pkt + ETH_HLEN);
++    uint8_t arp_reply[max(ETH_HLEN + sizeof(struct slirp_arphdr), 64)];
+     struct ethhdr *reh = (struct ethhdr *)arp_reply;
+-    struct arphdr *rah = (struct arphdr *)(arp_reply + ETH_HLEN);
++    struct slirp_arphdr *rah = (struct slirp_arphdr *)(arp_reply + ETH_HLEN);
+     int ar_op;
+     struct ex_list *ex_ptr;
+ 
+@@ -890,9 +890,9 @@ static int if_encap4(Slirp *slirp, struct mbuf *ifm, struct ethhdr *eh,
+         return 1;
+     }
+     if (!arp_table_search(slirp, iph->ip_dst.s_addr, ethaddr)) {
+-        uint8_t arp_req[ETH_HLEN + sizeof(struct arphdr)];
++        uint8_t arp_req[ETH_HLEN + sizeof(struct slirp_arphdr)];
+         struct ethhdr *reh = (struct ethhdr *)arp_req;
+-        struct arphdr *rah = (struct arphdr *)(arp_req + ETH_HLEN);
++        struct slirp_arphdr *rah = (struct slirp_arphdr *)(arp_req + ETH_HLEN);
+ 
+         if (!ifm->resolution_requested) {
+             /* If the client addr is not known, send an ARP request */
+diff --git a/slirp/slirp.h b/slirp/slirp.h
+index 624a850..a1f3139 100644
+--- a/slirp/slirp.h
++++ b/slirp/slirp.h
+@@ -105,7 +105,7 @@ struct ethhdr {
+     unsigned short h_proto;            /* packet type ID field */
+ };
+ 
+-struct arphdr {
++struct slirp_arphdr {
+     unsigned short ar_hrd;      /* format of hardware address */
+     unsigned short ar_pro;      /* format of protocol address */
+     unsigned char  ar_hln;      /* length of hardware address */
+@@ -124,7 +124,7 @@ struct arphdr {
+ #define ARP_TABLE_SIZE 16
+ 
+ typedef struct ArpTable {
+-    struct arphdr table[ARP_TABLE_SIZE];
++    struct slirp_arphdr table[ARP_TABLE_SIZE];
+     int next_victim;
+ } ArpTable;
+ 
+-- 
+1.8.3.1
 
-Depending on what it actually does, it can also conflict with
--daemonize.
 
