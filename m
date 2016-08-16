@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bZbwr-000587-Vi
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2016 06:50:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48918)
+	id 1bZcwf-0003g5-Hm
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2016 07:54:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33186)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZbwp-00056W-4b
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:20 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bZcwd-0003eI-B3
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 07:54:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZbwo-0004oV-57
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:19 -0400
-Received: from mail-ua0-x231.google.com ([2607:f8b0:400c:c08::231]:35975)
+	(envelope-from <peter.maydell@linaro.org>) id 1bZcwY-0000e2-Ep
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 07:54:10 -0400
+Received: from mail-ua0-x236.google.com ([2607:f8b0:400c:c08::236]:33515)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZbwn-0004o5-4Z
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:18 -0400
-Received: by mail-ua0-x231.google.com with SMTP id 97so114844036uav.3
-	for <qemu-trivial@nongnu.org>; Tue, 16 Aug 2016 03:50:16 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bZcwX-0000dk-Ne
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 07:54:06 -0400
+Received: by mail-ua0-x236.google.com with SMTP id 74so117242680uau.0
+	for <qemu-trivial@nongnu.org>; Tue, 16 Aug 2016 04:54:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=w3u0U3rYAioSbHm6vklfqZdUoF9w5fF5qJF7M6VpWVI=;
-	b=JBmSbGjXUR2n42GMWJJqbSwtIU6+yWxyGp2P61mQyRzTjr8cx7vvG9QG/K/UBaC+Sv
-	YJkmO80fFo3n/OO2ZF2EZ1KjSJKzpvMrPKBR6GKynWXvZSCnip70MSXEU5g2Zh9Lu9hO
-	dk2g7iAl+nVzkTGe4v0JCiAKpKrYZ9/r6n9mE=
+	:cc; bh=UWSaiW0E0NMTyqEeNCmG64BvlPBIWg4kNToKpaa3+n8=;
+	b=TE26HFyl2binMeQsjnNyS3WCqy8/bcRffI6cPbyzvskp43Jn1wkI7v1K5UNCv0+axt
+	5N/MiKMYV9LBipQPdeH330cGvENmZ76O3+Vdurm8bSWKWDo0zTHehWUlJUIoXFPofWyV
+	4NjAFEM81boG/YInSUbI7Tuj67sTKlxNAYm4c=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=w3u0U3rYAioSbHm6vklfqZdUoF9w5fF5qJF7M6VpWVI=;
-	b=JpyqMXu7aQIq6joVQaWxT7IZxd8dRVbJrG89R2NNHGDRaFmmwY48+phvkt7yXdC26B
-	O0idOvG3jUEo+aCFpd4M11+76PvtNVI1PJzex+ZM5pDsovtuSXvPOF4cH9UIol910IST
-	Z5aLgtt/ro4PvogBdInay0qEyURABq4Qa/LLNaNnKtis7KCXuLrh1XFx+X+CKihuIwNq
-	V4qjKgtc8yCJ/whLDbjXX2lbJNR/Z/v3WEQy57A2XJTT1JPKG5U7nPDZRhGaFgej3KxX
-	19hsosDZj/b+rPpJp23s2JgwIujDGqZ4pPuvViLvmplJ4DwdJqBMhdX4xiBa1SzOpu7z
-	FUow==
-X-Gm-Message-State: AEkoousD38ESGAaqa9VIZTriIPMa9Hl1+Q+vOX8BsTw9jVcla+ozVGooZzb8Y9EZHE5bRF/qkYggmLoo12En8mDY
-X-Received: by 10.159.35.47 with SMTP id 44mr4168686uae.38.1471344616494; Tue,
-	16 Aug 2016 03:50:16 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=UWSaiW0E0NMTyqEeNCmG64BvlPBIWg4kNToKpaa3+n8=;
+	b=DUSdrkT/U7ie2Ja4PnSZjQNz42V8wXUaUbv9btkENWaZPmTqb7Aac4sLLzLfMhngw5
+	cIRc3sZYszgNk6sGUpdqntDytcjuQbgOFS2b2j1bbKZeF+FA+JAeHulMdLAxTRaNn1Xs
+	wqOGQqXtE/NS5+LVAxi0lXaD+zAjsxdVAxG0PLmdKdRCIzXHvUpOMV2MT71ne42lJBfF
+	E9onjwULJqjatx64BbVgyy6iSOUBKxBw2s5mFYO5oX+ZoM9lm5WDmej4t6vQ/cHO7srZ
+	8anmxcgDsf/WuBarSh7RxhXQs3H2fyG2OdTs3wwNHZVuInnwHQjQwOFzuNE1TQMfHH8f
+	ve8A==
+X-Gm-Message-State: AEkoouuFBN3BGzxoUlxhbsgmKwr8O8VS7IgLY/QeKzwJSAnTLm4mG+ZzpGFxJR4l29p3ysWYaGsEkD6Nfx2FBX79
+X-Received: by 10.31.15.67 with SMTP id 64mr17072929vkp.37.1471348445220; Tue,
+	16 Aug 2016 04:54:05 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.9.149 with HTTP; Tue, 16 Aug 2016 03:49:55 -0700 (PDT)
-In-Reply-To: <1470648700-3474-1-git-send-email-berrange@redhat.com>
-References: <1470648700-3474-1-git-send-email-berrange@redhat.com>
+Received: by 10.31.9.149 with HTTP; Tue, 16 Aug 2016 04:53:44 -0700 (PDT)
+In-Reply-To: <f5853dbe-2c39-6c0a-5168-e5309325f1d9@comstyle.com>
+References: <1471249494-17392-1-git-send-email-thuth@redhat.com>
+	<f5853dbe-2c39-6c0a-5168-e5309325f1d9@comstyle.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Aug 2016 11:49:55 +0100
-Message-ID: <CAFEAcA-tp0G2V1-ugCOKP+J3XPE70_y-5KAWuMwWYKG+UGO_jQ@mail.gmail.com>
-To: "Daniel P. Berrange" <berrange@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+Date: Tue, 16 Aug 2016 12:53:44 +0100
+Message-ID: <CAFEAcA8GoYSsjHz95Z=kjdWo8w-08QJFA6eS6OKyLLedw652JA@mail.gmail.com>
+To: Brad Smith <brad@comstyle.com>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+	Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::231
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.7] virtio-gpu: fix
- missing log.h include file
+X-Received-From: 2607:f8b0:400c:c08::236
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.7] slirp: Rename
+ "struct arphdr" to "struct slirp_arphdr"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,47 +63,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Aug 2016 10:50:20 -0000
+X-List-Received-Date: Tue, 16 Aug 2016 11:54:12 -0000
 
-On 8 August 2016 at 10:31, Daniel P. Berrange <berrange@redhat.com> wrote:
-> The virtio-gpu.h file defines a macro VIRTIO_GPU_FILL_CMD
-> which includes a call to qemu_log_mask, but does not
-> include qemu/log.h. In a default configure, it is lucky
-> and gets qemu/log.h indirectly due to the 'log' trace
-> backend being enabled. If that trace backend is disabled
-> though, eg
+On 16 August 2016 at 05:03, Brad Smith <brad@comstyle.com> wrote:
+> On 08/15/16 04:24, Thomas Huth wrote:
+>>
+>> struct arphdr is already used by the system headers on OpenBSD
+>> and thus QEMU does not compile here anymore. Fix it by renaming
+>> our struct to slirp_arphdr instead.
+>>
+>> Reported-by: Brad Smith
+>> Buglink: https://bugs.launchpad.net/qemu/+bug/1613133
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >
->  ./configure --enable-trace-backends=3Dnop
 >
-> Then the build will fail:
->
-> In file included from /home/berrange/src/virt/qemu/hw/display/virtio-gpu-=
-3d.c:19:0:
-> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c: In function =E2=
-=80=98virgl_cmd_create_resource_2d=E2=80=99:
-> /home/berrange/src/virt/qemu/include/hw/virtio/virtio-gpu.h:138:13: error=
-: implicit declaration of function =E2=80=98qemu_log_mask=E2=80=99 [-Werror=
-=3Dimplicit-function-declaration]
->              qemu_log_mask(LOG_GUEST_ERROR,                              =
-\
->              ^
-> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c:34:5: note: in ex=
-pansion of macro =E2=80=98VIRTIO_GPU_FILL_CMD=E2=80=99
->      VIRTIO_GPU_FILL_CMD(c2d);
->      ^~~~~~~~~~~~~~~~~~~
-> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c:34:5: error: nest=
-ed extern declaration of =E2=80=98qemu_log_mask=E2=80=99 [-Werror=3Dnested-=
-externs]
-> In file included from /home/berrange/src/virt/qemu/hw/display/virtio-gpu-=
-3d.c:19:0:
-> /home/berrange/src/virt/qemu/include/hw/virtio/virtio-gpu.h:138:27: error=
-: =E2=80=98LOG_GUEST_ERROR=E2=80=99 undeclared (first use in this function)
->              qemu_log_mask(LOG_GUEST_ERROR,                              =
-\
->
-> [snip many more errors]
->
-> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> Thanks, this does fix the build.
 
 Applied, thanks.
 
