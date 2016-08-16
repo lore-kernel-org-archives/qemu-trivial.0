@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bZev9-00085T-Ol
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2016 10:00:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35223)
+	id 1bZf4M-0007Ib-7V
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2016 10:10:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZev7-000841-EE
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 10:00:46 -0400
+	(envelope-from <brad@comstyle.com>) id 1bZVas-0004jZ-0e
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 00:03:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZev6-0008Uu-6M
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 10:00:45 -0400
-Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:36378)
+	(envelope-from <brad@comstyle.com>) id 1bZVal-0007WH-SA
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 00:03:12 -0400
+Received: from speedy.comstyle.com ([206.51.28.2]:1139 helo=mail.comstyle.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bZev5-0008UQ-Vv
-	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 10:00:44 -0400
-Received: by mail-ua0-x234.google.com with SMTP id 97so122656938uav.3
-	for <qemu-trivial@nongnu.org>; Tue, 16 Aug 2016 07:00:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bZYtgkzvPwUEDv52QzzDiMQf1kVmXXBwonV5cdESmqA=;
-	b=LrgcSFK6MdPSSd/tptsSLVWm4GhHYF80iFAo8Jn6+E4xDGeT96kOY66VT8FK+0vmlz
-	Sn53XJVnkfNWrwdO/CTmDbLVj5sQk6gkeBzT3W/l8cawYx7jcbrMhGb4djLfoBfM8Mo4
-	LQxaoJ+rCnWi6/2z6WKrgg40Mitm0zhtKlI18=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bZYtgkzvPwUEDv52QzzDiMQf1kVmXXBwonV5cdESmqA=;
-	b=jaIIVf3iEvXAtZYFdz3waMl51/+8kQ/7hZvS691T9YULZvSrzX/wx9cpMEXGLNc47S
-	G3KEvoOO6gbXaKr4rF7QsFhJbnDItR5uL/EeAGNhlqL/68T2ite5Lqqd9sqQ5CIwIpyT
-	FAdUCix2SfWZTT1nN1blYXZ/eGIKsc+DiHJqmRTUQRnQpViJ2HlL0Qoj2F45Ixo3We8N
-	jZZg/hbKiKCfqrg6fjDLF02k0Z2Wlw/3kovy3S2299ACmwVmUlUps5hWBlynjIpruWxH
-	CSJf1CZhXDerkisPGbEErywXfS57ujNAefroeWOnxiDpZBWPK5qqXqCOtjB0jy9sxcz4
-	TYhA==
-X-Gm-Message-State: AEkoouvNGv9cBjqKVExcLiZwaynDMxE2TevrunEOzr9xh5rmVw47o+WhcOjKsDAI80DlMvFN6FPaF9UI1gd5A3xL
-X-Received: by 10.159.35.47 with SMTP id 44mr4566798uae.38.1471356043344; Tue,
-	16 Aug 2016 07:00:43 -0700 (PDT)
+	(envelope-from <brad@comstyle.com>) id 1bZVal-0007WC-LY
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 00:03:07 -0400
+Received: from mail.comstyle.com (localhost [127.0.0.1])
+	by mail.comstyle.com (Postfix) with ESMTP id E79BC9882E;
+	Tue, 16 Aug 2016 00:03:07 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=comstyle.com; h=subject:to
+	:references:cc:from:message-id:date:mime-version:in-reply-to
+	:content-type:content-transfer-encoding; s=selector1; bh=ve3cSeV
+	1EK7HcAMcAUdQwx48b7A=; b=cvda2ioGiqsHGp/izlnKnpgRdAzWuX13Ge5zbzn
+	/gnRij8G4Jg7lxAvAHTuCpBfr92/tC2pDZDo+0FNDABWiTOJYoyZIEgFMUdU/LAS
+	3cA99nk6j0BmZq4VminAKXwXVeNXNI1B331WfOStE8Id2aLp5694DOvyDnt6JyhE
+	Em2w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=comstyle.com; h=subject:to
+	:references:cc:from:message-id:date:mime-version:in-reply-to
+	:content-type:content-transfer-encoding; q=dns; s=selector1; b=o
+	hp3tBCggYuxXEhBwJluukGyd+Sa0CjZDLvuqfjiKi+bsx2oQYt7kvN3G0vDDkZNe
+	Ln07lLrMVhVzrsJtS4dJwnehKXDf7N3cWWpvUzRv+EQ81oGrFt7+DR1SDp+hkvDz
+	6foy/AIqyiuWgSiTKel/YFd1fn+HTMQjGNIRIDv8R0=
+Received: from humpty.home.comstyle.com
+	(CPE80ee73768e89-CMbc4dfbc8cbe0.cpe.net.cable.rogers.com
+	[99.234.55.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested) (Authenticated sender: brad)
+	by mail.comstyle.com (Postfix) with ESMTPSA id B7DC19882D;
+	Tue, 16 Aug 2016 00:03:07 -0400 (EDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	samuel.thibault@ens-lyon.org
+References: <1471249494-17392-1-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+From: Brad Smith <brad@comstyle.com>
+Message-ID: <f5853dbe-2c39-6c0a-5168-e5309325f1d9@comstyle.com>
+Date: Tue, 16 Aug 2016 00:03:05 -0400
+User-Agent: Mozilla/5.0 (X11; OpenBSD amd64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
 MIME-Version: 1.0
-Received: by 10.31.9.149 with HTTP; Tue, 16 Aug 2016 07:00:22 -0700 (PDT)
-In-Reply-To: <209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
-References: <1467315396-3628-1-git-send-email-jsnow@redhat.com>
-	<209727639.3312728.1467317746061.JavaMail.zimbra@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Aug 2016 15:00:22 +0100
-Message-ID: <CAFEAcA_Tg6L-2GpB8+Z9N2mCapq3gDciXQ4g-sz+_09oeXObwA@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::234
-Subject: Re: [Qemu-trivial] [PATCH] Remove left shifts of negative signed
- integers
+In-Reply-To: <1471249494-17392-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: OpenBSD 4.x-5.x
+X-Received-From: 206.51.28.2
+X-Mailman-Approved-At: Tue, 16 Aug 2016 10:10:16 -0400
+Subject: Re: [Qemu-trivial] [PATCH for-2.7] slirp: Rename "struct arphdr" to
+ "struct slirp_arphdr"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,26 +64,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Aug 2016 14:00:46 -0000
+X-List-Received-Date: Tue, 16 Aug 2016 04:03:15 -0000
 
-On 30 June 2016 at 21:15, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> GCC correctly puts this warning under -Wextra, and promises not to ever
-> make use of this facet of undefined behavior.  The only correct patch
-> is the one that disables the warning for clang, and possibly adds
-> -fwrapv.  In GCC, -fwrapv correctly silences ubsan's left-shift
-> and signed-overflow warnings.  In Clang, this is reported at
-> https://llvm.org/bugs/show_bug.cgi?id=25552.  It's a heavy hammer
-> but it's the safest options as compiler evolve.
+On 08/15/16 04:24, Thomas Huth wrote:
+> struct arphdr is already used by the system headers on OpenBSD
+> and thus QEMU does not compile here anymore. Fix it by renaming
+> our struct to slirp_arphdr instead.
+>
+> Reported-by: Brad Smith
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1613133
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-James Molloy kindly wrote a patch for clang which fixes PR25552
-(so -fwrapv silences the compiler warning and the sanitizer
-warning), and that has now been committed to clang. So I'm now
-happy that both clang and gcc agree that -fwrapv is the way to
-give you a well-defined C dialect with the shift semantics we
-want. Post-2.7 we should add -fwrapv to our compiler flags
-(we'll want to keep -Wno-shift-negative-value for the benefit
-of clang versions without the 25552 bugfix).
+Thanks, this does fix the build.
 
-thanks
--- PMM
+> ---
+>  slirp/slirp.c | 10 +++++-----
+>  slirp/slirp.h |  4 ++--
+>  2 files changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/slirp/slirp.c b/slirp/slirp.c
+> index 47a1652..d67eda1 100644
+> --- a/slirp/slirp.c
+> +++ b/slirp/slirp.c
+> @@ -773,10 +773,10 @@ void slirp_pollfds_poll(GArray *pollfds, int select_error)
+>
+>  static void arp_input(Slirp *slirp, const uint8_t *pkt, int pkt_len)
+>  {
+> -    struct arphdr *ah = (struct arphdr *)(pkt + ETH_HLEN);
+> -    uint8_t arp_reply[max(ETH_HLEN + sizeof(struct arphdr), 64)];
+> +    struct slirp_arphdr *ah = (struct slirp_arphdr *)(pkt + ETH_HLEN);
+> +    uint8_t arp_reply[max(ETH_HLEN + sizeof(struct slirp_arphdr), 64)];
+>      struct ethhdr *reh = (struct ethhdr *)arp_reply;
+> -    struct arphdr *rah = (struct arphdr *)(arp_reply + ETH_HLEN);
+> +    struct slirp_arphdr *rah = (struct slirp_arphdr *)(arp_reply + ETH_HLEN);
+>      int ar_op;
+>      struct ex_list *ex_ptr;
+>
+> @@ -890,9 +890,9 @@ static int if_encap4(Slirp *slirp, struct mbuf *ifm, struct ethhdr *eh,
+>          return 1;
+>      }
+>      if (!arp_table_search(slirp, iph->ip_dst.s_addr, ethaddr)) {
+> -        uint8_t arp_req[ETH_HLEN + sizeof(struct arphdr)];
+> +        uint8_t arp_req[ETH_HLEN + sizeof(struct slirp_arphdr)];
+>          struct ethhdr *reh = (struct ethhdr *)arp_req;
+> -        struct arphdr *rah = (struct arphdr *)(arp_req + ETH_HLEN);
+> +        struct slirp_arphdr *rah = (struct slirp_arphdr *)(arp_req + ETH_HLEN);
+>
+>          if (!ifm->resolution_requested) {
+>              /* If the client addr is not known, send an ARP request */
+> diff --git a/slirp/slirp.h b/slirp/slirp.h
+> index 624a850..a1f3139 100644
+> --- a/slirp/slirp.h
+> +++ b/slirp/slirp.h
+> @@ -105,7 +105,7 @@ struct ethhdr {
+>      unsigned short h_proto;            /* packet type ID field */
+>  };
+>
+> -struct arphdr {
+> +struct slirp_arphdr {
+>      unsigned short ar_hrd;      /* format of hardware address */
+>      unsigned short ar_pro;      /* format of protocol address */
+>      unsigned char  ar_hln;      /* length of hardware address */
+> @@ -124,7 +124,7 @@ struct arphdr {
+>  #define ARP_TABLE_SIZE 16
+>
+>  typedef struct ArpTable {
+> -    struct arphdr table[ARP_TABLE_SIZE];
+> +    struct slirp_arphdr table[ARP_TABLE_SIZE];
+>      int next_victim;
+>  } ArpTable;
+>
+>
+
 
