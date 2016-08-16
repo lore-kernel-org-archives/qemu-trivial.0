@@ -1,50 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bZJ28-0006Aa-22
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Aug 2016 10:38:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38186)
+	id 1bZbwr-000587-Vi
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Aug 2016 06:50:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bZJ25-00068D-OE
-	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 10:38:30 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bZbwp-00056W-4b
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bZJ24-0002x9-0V
-	for qemu-trivial@nongnu.org; Mon, 15 Aug 2016 10:38:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36422)
+	(envelope-from <peter.maydell@linaro.org>) id 1bZbwo-0004oV-57
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:19 -0400
+Received: from mail-ua0-x231.google.com ([2607:f8b0:400c:c08::231]:35975)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1bZJ1y-0002wU-NN; Mon, 15 Aug 2016 10:38:22 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 00A0546264;
-	Mon, 15 Aug 2016 14:38:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7FEcKAx003550
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 15 Aug 2016 10:38:21 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id C2D3511386A2; Mon, 15 Aug 2016 16:38:19 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Colin Lord <cdlord2@illinois.edu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com
-References: <1471030248-21637-1-git-send-email-cdlord2@illinois.edu>
-Date: Mon, 15 Aug 2016 16:38:19 +0200
-In-Reply-To: <1471030248-21637-1-git-send-email-cdlord2@illinois.edu> (Colin
-	Lord's message of "Fri, 12 Aug 2016 15:30:48 -0400")
-Message-ID: <871t1qf678.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1bZbwn-0004o5-4Z
+	for qemu-trivial@nongnu.org; Tue, 16 Aug 2016 06:50:18 -0400
+Received: by mail-ua0-x231.google.com with SMTP id 97so114844036uav.3
+	for <qemu-trivial@nongnu.org>; Tue, 16 Aug 2016 03:50:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=w3u0U3rYAioSbHm6vklfqZdUoF9w5fF5qJF7M6VpWVI=;
+	b=JBmSbGjXUR2n42GMWJJqbSwtIU6+yWxyGp2P61mQyRzTjr8cx7vvG9QG/K/UBaC+Sv
+	YJkmO80fFo3n/OO2ZF2EZ1KjSJKzpvMrPKBR6GKynWXvZSCnip70MSXEU5g2Zh9Lu9hO
+	dk2g7iAl+nVzkTGe4v0JCiAKpKrYZ9/r6n9mE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=w3u0U3rYAioSbHm6vklfqZdUoF9w5fF5qJF7M6VpWVI=;
+	b=JpyqMXu7aQIq6joVQaWxT7IZxd8dRVbJrG89R2NNHGDRaFmmwY48+phvkt7yXdC26B
+	O0idOvG3jUEo+aCFpd4M11+76PvtNVI1PJzex+ZM5pDsovtuSXvPOF4cH9UIol910IST
+	Z5aLgtt/ro4PvogBdInay0qEyURABq4Qa/LLNaNnKtis7KCXuLrh1XFx+X+CKihuIwNq
+	V4qjKgtc8yCJ/whLDbjXX2lbJNR/Z/v3WEQy57A2XJTT1JPKG5U7nPDZRhGaFgej3KxX
+	19hsosDZj/b+rPpJp23s2JgwIujDGqZ4pPuvViLvmplJ4DwdJqBMhdX4xiBa1SzOpu7z
+	FUow==
+X-Gm-Message-State: AEkoousD38ESGAaqa9VIZTriIPMa9Hl1+Q+vOX8BsTw9jVcla+ozVGooZzb8Y9EZHE5bRF/qkYggmLoo12En8mDY
+X-Received: by 10.159.35.47 with SMTP id 44mr4168686uae.38.1471344616494; Tue,
+	16 Aug 2016 03:50:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 15 Aug 2016 14:38:22 +0000 (UTC)
+Received: by 10.31.9.149 with HTTP; Tue, 16 Aug 2016 03:49:55 -0700 (PDT)
+In-Reply-To: <1470648700-3474-1-git-send-email-berrange@redhat.com>
+References: <1470648700-3474-1-git-send-email-berrange@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Aug 2016 11:49:55 +0100
+Message-ID: <CAFEAcA-tp0G2V1-ugCOKP+J3XPE70_y-5KAWuMwWYKG+UGO_jQ@mail.gmail.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] help: Update help to
- remove misleading display information
+X-Received-From: 2607:f8b0:400c:c08::231
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.7] virtio-gpu: fix
+ missing log.h include file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,14 +63,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Aug 2016 14:38:30 -0000
+X-List-Received-Date: Tue, 16 Aug 2016 10:50:20 -0000
 
-Colin Lord <cdlord2@illinois.edu> writes:
-
-> Updates the help messages to remove misleading information about SDL
-> being the normal display used.
+On 8 August 2016 at 10:31, Daniel P. Berrange <berrange@redhat.com> wrote:
+> The virtio-gpu.h file defines a macro VIRTIO_GPU_FILL_CMD
+> which includes a call to qemu_log_mask, but does not
+> include qemu/log.h. In a default configure, it is lucky
+> and gets qemu/log.h indirectly due to the 'log' trace
+> backend being enabled. If that trace backend is disabled
+> though, eg
 >
-> Signed-off-by: Colin Lord <cdlord2@illinois.edu>
+>  ./configure --enable-trace-backends=3Dnop
+>
+> Then the build will fail:
+>
+> In file included from /home/berrange/src/virt/qemu/hw/display/virtio-gpu-=
+3d.c:19:0:
+> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c: In function =E2=
+=80=98virgl_cmd_create_resource_2d=E2=80=99:
+> /home/berrange/src/virt/qemu/include/hw/virtio/virtio-gpu.h:138:13: error=
+: implicit declaration of function =E2=80=98qemu_log_mask=E2=80=99 [-Werror=
+=3Dimplicit-function-declaration]
+>              qemu_log_mask(LOG_GUEST_ERROR,                              =
+\
+>              ^
+> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c:34:5: note: in ex=
+pansion of macro =E2=80=98VIRTIO_GPU_FILL_CMD=E2=80=99
+>      VIRTIO_GPU_FILL_CMD(c2d);
+>      ^~~~~~~~~~~~~~~~~~~
+> /home/berrange/src/virt/qemu/hw/display/virtio-gpu-3d.c:34:5: error: nest=
+ed extern declaration of =E2=80=98qemu_log_mask=E2=80=99 [-Werror=3Dnested-=
+externs]
+> In file included from /home/berrange/src/virt/qemu/hw/display/virtio-gpu-=
+3d.c:19:0:
+> /home/berrange/src/virt/qemu/include/hw/virtio/virtio-gpu.h:138:27: error=
+: =E2=80=98LOG_GUEST_ERROR=E2=80=99 undeclared (first use in this function)
+>              qemu_log_mask(LOG_GUEST_ERROR,                              =
+\
+>
+> [snip many more errors]
+>
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Applied, thanks.
+
+-- PMM
 
