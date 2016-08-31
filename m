@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bbryP-0005TV-Rk
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Aug 2016 12:21:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45702)
+	id 1bf7ry-0004fI-I3
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Aug 2016 11:56:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bbryN-0005RW-PV
-	for qemu-trivial@nongnu.org; Mon, 22 Aug 2016 12:21:16 -0400
+	(envelope-from <fullmanet@gmail.com>) id 1bf7rv-0004dj-FG
+	for qemu-trivial@nongnu.org; Wed, 31 Aug 2016 11:56:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bbryM-0003gY-Ik
-	for qemu-trivial@nongnu.org; Mon, 22 Aug 2016 12:21:15 -0400
-Received: from mail-ua0-x22c.google.com ([2607:f8b0:400c:c08::22c]:35407)
+	(envelope-from <fullmanet@gmail.com>) id 1bf7ru-0002Xo-Gk
+	for qemu-trivial@nongnu.org; Wed, 31 Aug 2016 11:56:03 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:35522)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bbryM-0003gS-EU
-	for qemu-trivial@nongnu.org; Mon, 22 Aug 2016 12:21:14 -0400
-Received: by mail-ua0-x22c.google.com with SMTP id n59so197801480uan.2
-	for <qemu-trivial@nongnu.org>; Mon, 22 Aug 2016 09:21:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=iLCTzl5LP3dgptZEtY9yeP6SV3X0FGiQTIqOTCZ2dCo=;
-	b=eDxDfOmDnKSiTaIK24gqk9GR3s0fFbRy1OfGc9blCu6/aFZNU2BeM55JVYRVdtit/w
-	+qiRQetDvhKrkCvkFktZxspJQh9cbs3zQeqmKRZaiE02WSXbFlzo2FM65rwBkTp1CWJc
-	olAxU2yZ9SCu6tyr8gsY7Lk1zmYPHREOY2XRE=
+	(envelope-from <fullmanet@gmail.com>)
+	id 1bf7rp-0002WO-NQ; Wed, 31 Aug 2016 11:55:57 -0400
+Received: by mail-wm0-x244.google.com with SMTP id i5so8239644wmg.2;
+	Wed, 31 Aug 2016 08:55:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=06Ieo9zK0gxOHgtvLB+lFsArkbBZmk++VOTLfis79T0=;
+	b=qroHup1d6nKH5/Z9ECgG7i01jiAZF3531PQEe0gVUGS1Tf1Bi2YsNPnjC3oKzXFJOR
+	pehPQWpl0ZKP2Befjd/fVq5sJNzH/07JOFO/lZAko9mDK0AqULI8kdRf2lC+kSS9z9mi
+	zwCrJdpTYPvZNobYc1ucQPogymCAR59xr3nh9yBw81jHuzQdHVPbmC30R7u7vPf/bOgZ
+	zzlthuTe9BMMXsI+5iCeOExUPEX++RWqMLeDBzXhdlioGapETJUAcmyKGk/GihUh+JpR
+	xOb1UJ8PU+gt4XDmuwT7CRWsTRPcwq1BQABsu9DMekAa2LYRpnQu1btChGTUp7Hj9FK7
+	/QZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=iLCTzl5LP3dgptZEtY9yeP6SV3X0FGiQTIqOTCZ2dCo=;
-	b=Uh2wlVxlFaOmfmtah74E+ny8OqWL6B5RWuLdyJ24iux7BBkbbOsjRVWSXco23D86D6
-	PwDaWqxImdi9AEBTrLgYGR/iGt2xbKcm5TKeWJzQiPHBCTreQ+/sN5/9frpGvLttR48a
-	E+a5P804C9TeZjPWL681VRkmP7e1H9dJJjmeAqGeIJzgZxrbCIuDMDFyMB9D+Eysn84o
-	dHB+8VSQTdrieit2em9hcChpMTtDo3FHwsKHRgYJH01XPpgt2+3aUQJA4lSX/GIGksRW
-	3m0BZ7oYCXQvZcMxXsOBQppZSdjvA8hl8eITlqhSm+0bqRHvcEJ/zjMytrd+hPsevKII
-	u3PQ==
-X-Gm-Message-State: AEkoouslyAKGruT4lyU0m8ggJrkYzrB6IZ8oY7be7p0r+PO56KHOOxSInTl0N4ypu9Vl3XRh5Yr0bt/DQDENqFYA
-X-Received: by 10.31.92.86 with SMTP id q83mr11426449vkb.92.1471882874091;
-	Mon, 22 Aug 2016 09:21:14 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.9.149 with HTTP; Mon, 22 Aug 2016 09:20:53 -0700 (PDT)
-In-Reply-To: <1471877833-52343-1-git-send-email-emaste@freebsd.org>
-References: <1471877833-52343-1-git-send-email-emaste@freebsd.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Aug 2016 17:20:53 +0100
-Message-ID: <CAFEAcA_eQsoDqgU=6ABXYouof_J3hpQea6tb8=GyJ9MW7DdLZg@mail.gmail.com>
-To: Ed Maste <emaste@freebsd.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=06Ieo9zK0gxOHgtvLB+lFsArkbBZmk++VOTLfis79T0=;
+	b=b2xWULMpITPMS96FBJGR3tndNwa8ralDtn9uZwCvnk+Cze3cUPF5uGQDU1Tw28NVOd
+	graLSZPWCvSegvHmARIkwbIP2lMjN7lQUdbBfEW0lQnCkAB+jkEV2/Q8sKoDJFqrQHNt
+	94UkRy9DlneuU/vEoSD2uWHRjYbMgkyzzW4CdcwsIku3hEk7NA7Bi6MyvvBQs7burEXv
+	wvegT2c8IGu4HQ3yFnacjhM0G9Smy8pndiYO02xdAytnJlK3Sv4/dmosLzdBG8Yz7rbA
+	BLMTBFi+6xZ+2sTqzSuuwQKIecZi6P78JwYl+6j2Ui3OTbL+z6IVrbJ8i465Og9EA9tw
+	qStg==
+X-Gm-Message-State: AE9vXwNBV4WK+Zf+VS3jaHBD1nd84kewrhH2swc93a0rwAzyO5XdZUvzhQXjOo9jaxFIQg==
+X-Received: by 10.194.187.134 with SMTP id fs6mr9681915wjc.3.1472658955598;
+	Wed, 31 Aug 2016 08:55:55 -0700 (PDT)
+Received: from cinque_stelle.sm14.sm.cri.epita.net ([163.5.208.108])
+	by smtp.gmail.com with ESMTPSA id i8sm9607292wmg.21.2016.08.31.08.55.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 31 Aug 2016 08:55:54 -0700 (PDT)
+From: Reda Sallahi <fullmanet@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Reda Sallahi <fullmanet@gmail.com>
+Date: Wed, 31 Aug 2016 17:54:49 +0200
+Message-Id: <20160831155449.5154-1-fullmanet@gmail.com>
+X-Mailer: git-send-email 2.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22c
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix bsd-user build after
- d915b7bb
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: [Qemu-trivial] [PATCH] sh4: fix broken link to documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,30 +61,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Aug 2016 16:21:16 -0000
+X-List-Received-Date: Wed, 31 Aug 2016 15:56:04 -0000
 
-On 22 August 2016 at 15:57, Ed Maste <emaste@freebsd.org> wrote:
-> Must include "qemu-version.h" for the QEMU_PKGVERSION definition.
->
-> Signed-off-by: Ed Maste <emaste@freebsd.org>
-> ---
->  bsd-user/main.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/bsd-user/main.c b/bsd-user/main.c
-> index b4a0a00..0fb08e4 100644
-> --- a/bsd-user/main.c
-> +++ b/bsd-user/main.c
-> @@ -17,6 +17,7 @@
->   *  along with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu-version.h"
->  #include <machine/trap.h>
->
->  #include "qapi/error.h"
+The page that was previously linked in the source code and the README file is
+no longer available so it now returns a 404 error message.
 
-Awkward that this missed rc4 by an hour or two :-(
+This puts a previous snapshot from archive.org instead.
 
--- PMM
+Signed-off-by: Reda Sallahi <fullmanet@gmail.com>
+---
+ hw/sh4/shix.c         | 2 +-
+ target-sh4/README.sh4 | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/sh4/shix.c b/hw/sh4/shix.c
+index ccc9e75..2ac79fc 100644
+--- a/hw/sh4/shix.c
++++ b/hw/sh4/shix.c
+@@ -23,7 +23,7 @@
+  */
+ /*
+    Shix 2.0 board by Alexis Polti, described at
+-   http://perso.enst.fr/~polti/realisations/shix20/
++   web.archive.org/web/20070917001736/perso.enst.fr/~polti/realisations/shix20
+ 
+    More information in target-sh4/README.sh4
+ */
+diff --git a/target-sh4/README.sh4 b/target-sh4/README.sh4
+index e578830..ece0464 100644
+--- a/target-sh4/README.sh4
++++ b/target-sh4/README.sh4
+@@ -25,7 +25,7 @@ Goals
+ 
+ The primary model being worked on is the soft MMU target to be able to
+ emulate the Shix 2.0 board by Alexis Polti, described at
+-http://perso.enst.fr/~polti/realisations/shix20/
++https://web.archive.org/web/20070917001736/http://perso.enst.fr/~polti/realisations/shix20/
+ 
+ Ultimately, qemu will be coupled with a system C or a verilog
+ simulator to simulate the whole board functionalities.
+-- 
+2.9.3
+
 
