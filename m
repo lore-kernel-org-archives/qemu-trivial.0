@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1biT9i-0001TA-M9
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2016 17:16:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35664)
+	id 1biTAo-0002GT-C5
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Sep 2016 17:17:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1biT9g-0001RS-Ib
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2016 17:16:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1biTAl-0002D1-Kn
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2016 17:17:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1biT9f-0006KV-Kh
-	for qemu-trivial@nongnu.org; Fri, 09 Sep 2016 17:16:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33524)
+	(envelope-from <thuth@redhat.com>) id 1biTAj-0006fg-Ji
+	for qemu-trivial@nongnu.org; Fri, 09 Sep 2016 17:17:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55800)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <thuth@redhat.com>)
-	id 1biT9a-0006IL-Bg; Fri, 09 Sep 2016 17:16:06 -0400
+	id 1biTAf-0006dr-4p; Fri, 09 Sep 2016 17:17:13 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7DF45DCA27;
-	Fri,  9 Sep 2016 21:16:05 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8DE7D85545;
+	Fri,  9 Sep 2016 21:17:12 +0000 (UTC)
 Received: from thh440s.redhat.com (ovpn-116-63.ams2.redhat.com [10.36.116.63])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u89LG3vq032102; Fri, 9 Sep 2016 17:16:04 -0400
+	ESMTP id u89LHAt0000419; Fri, 9 Sep 2016 17:17:11 -0400
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Guan Xuetao <gxt@mprc.pku.edu.cn>
-Date: Fri,  9 Sep 2016 23:16:03 +0200
-Message-Id: <1473455763-27332-1-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Date: Fri,  9 Sep 2016 23:17:09 +0200
+Message-Id: <1473455829-27400-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 09 Sep 2016 21:16:06 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 09 Sep 2016 21:17:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/unicore32/ to
- UniCore32 section
+Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/tricore/ to
+ TriCore section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,10 +46,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Sep 2016 21:16:13 -0000
+X-List-Received-Date: Fri, 09 Sep 2016 21:17:20 -0000
 
 get_maintainer.pl now properly recognizes that the file in
-include/hw/unicore32/ belongs to UniCore32.
+include/hw/tricore/ belongs to TriCore.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
@@ -56,17 +57,17 @@ Signed-off-by: Thomas Huth <thuth@redhat.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 9d17cb3..7196dba 100644
+index 7196dba..dad82e7 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -204,6 +204,7 @@ M: Guan Xuetao <gxt@mprc.pku.edu.cn>
+@@ -228,6 +228,7 @@ M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
  S: Maintained
- F: target-unicore32/
- F: hw/unicore32/
-+F: include/hw/unicore32/
+ F: target-tricore/
+ F: hw/tricore/
++F: include/hw/tricore/
  
- X86
- M: Paolo Bonzini <pbonzini@redhat.com>
+ Guest CPU Cores (KVM):
+ ----------------------
 -- 
 1.8.3.1
 
