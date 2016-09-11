@@ -1,38 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bihl1-0002BL-T4
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Sep 2016 08:51:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43527)
+	id 1bj4zE-00049c-42
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Sep 2016 09:39:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1bihkz-0002B9-FZ
-	for qemu-trivial@nongnu.org; Sat, 10 Sep 2016 08:51:42 -0400
+	(envelope-from <gxt@mprc.pku.edu.cn>) id 1bj4Gz-0005yi-Jw
+	for qemu-trivial@nongnu.org; Sun, 11 Sep 2016 08:54:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1bihkt-0000pI-5Z
-	for qemu-trivial@nongnu.org; Sat, 10 Sep 2016 08:51:41 -0400
-Received: from mail.uni-paderborn.de ([131.234.142.9]:52834)
+	(envelope-from <gxt@mprc.pku.edu.cn>) id 1bj4Gw-0002Q8-Gg
+	for qemu-trivial@nongnu.org; Sun, 11 Sep 2016 08:54:13 -0400
+Received: from mprc.pku.edu.cn ([162.105.203.9]:48834)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kbastian@mail.uni-paderborn.de>)
-	id 1bihks-0000oS-Ud; Sat, 10 Sep 2016 08:51:35 -0400
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1473455829-27400-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Message-ID: <d01d595a-01a9-b584-72b5-95d9ef47980e@mail.uni-paderborn.de>
-Date: Sat, 10 Sep 2016 14:51:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	(envelope-from <gxt@mprc.pku.edu.cn>)
+	id 1bj4Gv-0002Or-K9; Sun, 11 Sep 2016 08:54:10 -0400
+Received: from mprc.pku.edu.cn (localhost [127.0.0.1] (may be forged))
+	by mprc.pku.edu.cn (8.13.8/8.13.8) with ESMTP id u8BCqvHV001756;
+	Sun, 11 Sep 2016 20:52:57 +0800
+Received: (from apache@localhost)
+	by mprc.pku.edu.cn (8.13.8/8.13.8/Submit) id u8BCqups001755;
+	Sun, 11 Sep 2016 20:52:56 +0800
+X-Authentication-Warning: mprc.pku.edu.cn: apache set sender to
+	gxt@mprc.pku.edu.cn using -f
+Received: from 117.114.135.40 (SquirrelMail authenticated user guanxuetao)
+	by mprc.pku.edu.cn with HTTP; Sun, 11 Sep 2016 20:52:56 +0800 (CST)
+Message-ID: <61416.117.114.135.40.1473598376.squirrel@mprc.pku.edu.cn>
+In-Reply-To: <1473455763-27332-1-git-send-email-thuth@redhat.com>
+References: <1473455763-27332-1-git-send-email-thuth@redhat.com>
+Date: Sun, 11 Sep 2016 20:52:56 +0800 (CST)
+From: "Xuetao Guan" <gxt@mprc.pku.edu.cn>
+To: "Thomas Huth" <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	"Guan Xuetao" <gxt@mprc.pku.edu.cn>
+Reply-To: gxt@mprc.pku.edu.cn
+User-Agent: SquirrelMail/1.4.8-4.0.1.el5
 MIME-Version: 1.0
-In-Reply-To: <1473455829-27400-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-IMT-Spam-Score: 0.0 ()
-X-PMX-Version: 6.3.0.2556906, Antispam-Engine: 2.7.2.2107409,
-	Antispam-Data: 2016.9.10.124517
-X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 131.234.142.9
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Add
- include/hw/tricore/ to TriCore section
+Content-Type: text/plain;charset=gb2312
+Content-Transfer-Encoding: 8bit
+X-Priority: 3 (Normal)
+Importance: Normal
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 162.105.203.9
+X-Mailman-Approved-At: Sun, 11 Sep 2016 09:39:55 -0400
+Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/unicore32/
+ to UniCore32 section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,36 +53,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Sep 2016 12:51:42 -0000
+X-List-Received-Date: Sun, 11 Sep 2016 12:54:14 -0000
 
-On 09/09/2016 11:17 PM, Thomas Huth wrote:
 > get_maintainer.pl now properly recognizes that the file in
-> include/hw/tricore/ belongs to TriCore.
-> 
+> include/hw/unicore32/ belongs to UniCore32.
+>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Looks ok to me.
+Acked-by: Guan Xuetao <gxt@mprc.pku.edu.cn>
+
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
-> 
+>
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7196dba..dad82e7 100644
+> index 9d17cb3..7196dba 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -228,6 +228,7 @@ M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+> @@ -204,6 +204,7 @@ M: Guan Xuetao <gxt@mprc.pku.edu.cn>
 >  S: Maintained
->  F: target-tricore/
->  F: hw/tricore/
-> +F: include/hw/tricore/
->  
->  Guest CPU Cores (KVM):
->  ----------------------
-> 
+>  F: target-unicore32/
+>  F: hw/unicore32/
+> +F: include/hw/unicore32/
+>
+>  X86
+>  M: Paolo Bonzini <pbonzini@redhat.com>
+> --
+> 1.8.3.1
+>
 
-Woops :). I'm fine with this change. I guess this goes through trivial
-tree?
-
-Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-
-Cheer,
-    Bastian
 
