@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bjqFf-0000dO-JA
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2016 12:08:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40059)
+	id 1bjqFg-0000ek-W9
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2016 12:08:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40060)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bjqFa-0000XK-B8
+	(envelope-from <mjt@tls.msk.ru>) id 1bjqFa-0000XL-C1
 	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:08:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bjqFW-0004Oj-8c
+	(envelope-from <mjt@tls.msk.ru>) id 1bjqFW-0004Oy-GC
 	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:07:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:44162)
+Received: from isrv.corpit.ru ([86.62.121.231]:53571)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bjqFM-0003z9-PQ; Tue, 13 Sep 2016 12:07:44 -0400
+	id 1bjqFN-0003zr-DW; Tue, 13 Sep 2016 12:07:45 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6098A416DD;
-	Tue, 13 Sep 2016 19:07:41 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 7F915416D8;
+	Tue, 13 Sep 2016 19:07:40 +0300 (MSK)
 Received: from gandalf (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id D2E41AFF;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 50968AFB;
 	Tue, 13 Sep 2016 19:07:39 +0300 (MSK)
-Received: (nullmailer pid 31890 invoked by uid 1000);
+Received: (nullmailer pid 31885 invoked by uid 1000);
 	Tue, 13 Sep 2016 16:07:39 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Tue, 13 Sep 2016 19:04:42 +0300
-Message-Id: <0aadb5a15f00c9170ca81915987d7d3a5858e815.1473782118.git.mjt@msgid.tls.msk.ru>
+Cc: Alberto Garcia <berto@igalia.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue, 13 Sep 2016 19:04:40 +0300
+Message-Id: <37e3645ad3974db6008c212edf68c7f9da1bedc7.1473782118.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1473782118.git.mjt@tls.msk.ru>
 References: <cover.1473782118.git.mjt@tls.msk.ru>
@@ -32,7 +33,8 @@ In-Reply-To: <cover.1473782118.git.mjt@tls.msk.ru>
 References: <cover.1473782118.git.mjt@tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 03/16] hw/dma/omap: spelling fix: endianness
+Subject: [Qemu-trivial] [PULL 01/16] docs: Fix description of the leaky
+ bucket algorithm in throttle.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,24 +48,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 13 Sep 2016 16:08:02 -0000
 
+From: Alberto Garcia <berto@igalia.com>
+
+Commit 0bab0ebb17759c926bd48fd396bd8cbb2c8e4a3e was supposed to fix
+a mistake in the description of the leaky bucket algorithm, but the
+version that finally landed after the review process was incorrect.
+
+This patch solves that problem and hopefully clarifies the description
+a bit better.
+
+Signed-off-by: Alberto Garcia <berto@igalia.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/dma/omap_dma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/throttle.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index 700cd6b..f6f86f9 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -1975,7 +1975,7 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->endian[1] =(value >> 19) & 1;
-         ch->endian_lock[1] =(value >> 18) & 1;
-         if (ch->endian[0] != ch->endian[1])
--            fprintf(stderr, "%s: DMA endiannes conversion enable attempt\n",
-+            fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
-                             __FUNCTION__);
-         ch->write_mode = (value >> 16) & 3;
-         ch->burst[1] = (value & 0xc000) >> 14;
+diff --git a/docs/throttle.txt b/docs/throttle.txt
+index 26d4d51..cd4e109 100644
+--- a/docs/throttle.txt
++++ b/docs/throttle.txt
+@@ -235,7 +235,10 @@ consider the following values:
+   - Water leaks from the bucket at a rate of 100 IOPS.
+   - Water can be added to the bucket at a rate of 2000 IOPS.
+   - The size of the bucket is 2000 x 60 = 120000
+-  - If 'iops-total-max' is unset then the bucket size is 100 x 60.
++  - If 'iops-total-max-length' is unset then it defaults to 1 and the
++    size of the bucket is 2000.
++  - If 'iops-total-max' is unset then 'iops-total-max-length' must be
++    unset as well. In this case the bucket size is 100.
+ 
+ The bucket is initially empty, therefore water can be added until it's
+ full at a rate of 2000 IOPS (the burst rate). Once the bucket is full
 -- 
 2.1.4
 
