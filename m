@@ -1,47 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bj4zE-00049c-42
-	for mharc-qemu-trivial@gnu.org; Sun, 11 Sep 2016 09:39:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47673)
+	id 1bjnk2-0007i4-T3
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2016 09:27:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54010)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>) id 1bj4Gz-0005yi-Jw
-	for qemu-trivial@nongnu.org; Sun, 11 Sep 2016 08:54:14 -0400
+	(envelope-from <thuth@redhat.com>) id 1bjnjw-0007cL-PA
+	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 09:27:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>) id 1bj4Gw-0002Q8-Gg
-	for qemu-trivial@nongnu.org; Sun, 11 Sep 2016 08:54:13 -0400
-Received: from mprc.pku.edu.cn ([162.105.203.9]:48834)
+	(envelope-from <thuth@redhat.com>) id 1bjnjq-0001rG-A9
+	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 09:27:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>)
-	id 1bj4Gv-0002Or-K9; Sun, 11 Sep 2016 08:54:10 -0400
-Received: from mprc.pku.edu.cn (localhost [127.0.0.1] (may be forged))
-	by mprc.pku.edu.cn (8.13.8/8.13.8) with ESMTP id u8BCqvHV001756;
-	Sun, 11 Sep 2016 20:52:57 +0800
-Received: (from apache@localhost)
-	by mprc.pku.edu.cn (8.13.8/8.13.8/Submit) id u8BCqups001755;
-	Sun, 11 Sep 2016 20:52:56 +0800
-X-Authentication-Warning: mprc.pku.edu.cn: apache set sender to
-	gxt@mprc.pku.edu.cn using -f
-Received: from 117.114.135.40 (SquirrelMail authenticated user guanxuetao)
-	by mprc.pku.edu.cn with HTTP; Sun, 11 Sep 2016 20:52:56 +0800 (CST)
-Message-ID: <61416.117.114.135.40.1473598376.squirrel@mprc.pku.edu.cn>
-In-Reply-To: <1473455763-27332-1-git-send-email-thuth@redhat.com>
-References: <1473455763-27332-1-git-send-email-thuth@redhat.com>
-Date: Sun, 11 Sep 2016 20:52:56 +0800 (CST)
-From: "Xuetao Guan" <gxt@mprc.pku.edu.cn>
-To: "Thomas Huth" <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	"Guan Xuetao" <gxt@mprc.pku.edu.cn>
-Reply-To: gxt@mprc.pku.edu.cn
-User-Agent: SquirrelMail/1.4.8-4.0.1.el5
+	(envelope-from <thuth@redhat.com>)
+	id 1bjnjf-0001jh-IN; Tue, 13 Sep 2016 09:26:51 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1B27DC01BC88;
+	Tue, 13 Sep 2016 13:26:51 +0000 (UTC)
+Received: from [10.36.116.35] (ovpn-116-35.ams2.redhat.com [10.36.116.35])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8DDQmTY015015
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 13 Sep 2016 09:26:50 -0400
+To: Gerd Hoffmann <kraxel@redhat.com>
+References: <1470900060-25821-1-git-send-email-thuth@redhat.com>
+	<1471001434.22974.30.camel@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <65417ad4-e8ae-ac2e-09d2-d010373757cb@redhat.com>
+Date: Tue, 13 Sep 2016 15:26:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Content-Type: text/plain;charset=gb2312
-Content-Transfer-Encoding: 8bit
-X-Priority: 3 (Normal)
-Importance: Normal
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 162.105.203.9
-X-Mailman-Approved-At: Sun, 11 Sep 2016 09:39:55 -0400
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/unicore32/
- to UniCore32 section
+In-Reply-To: <1471001434.22974.30.camel@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 13 Sep 2016 13:26:51 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ui/console: Fix non-working
+ backspace key in monitor of gtk UI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,34 +55,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 11 Sep 2016 12:54:14 -0000
+X-List-Received-Date: Tue, 13 Sep 2016 13:27:13 -0000
 
-> get_maintainer.pl now properly recognizes that the file in
-> include/hw/unicore32/ belongs to UniCore32.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 12.08.2016 13:30, Gerd Hoffmann wrote:
+> On Do, 2016-08-11 at 09:21 +0200, Thomas Huth wrote:
+>> +    [Q_KEY_CODE_BACKSPACE] = QEMU_KEY_BACKSPACE,
+> 
+> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 
-Looks ok to me.
-Acked-by: Guan Xuetao <gxt@mprc.pku.edu.cn>
+Gerd,
 
-> ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 9d17cb3..7196dba 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -204,6 +204,7 @@ M: Guan Xuetao <gxt@mprc.pku.edu.cn>
->  S: Maintained
->  F: target-unicore32/
->  F: hw/unicore32/
-> +F: include/hw/unicore32/
->
->  X86
->  M: Paolo Bonzini <pbonzini@redhat.com>
-> --
-> 1.8.3.1
->
+thanks for your R-b! Could you take this through your ui tree? Or should
+it rather go through -trivial instead?
+
+ Thanks,
+  Thomas
 
 
