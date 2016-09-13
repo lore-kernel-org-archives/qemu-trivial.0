@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bjqVm-0006cY-EK
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2016 12:24:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44986)
+	id 1bjqVo-0006f5-Vw
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Sep 2016 12:24:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bjqVk-0006YQ-4c
-	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:24:41 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bjqVj-0006YH-VP
+	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:24:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bjqVi-0001m2-5t
-	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:24:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60327)
+	(envelope-from <mjt@tls.msk.ru>) id 1bjqVi-0001lS-0T
+	for qemu-trivial@nongnu.org; Tue, 13 Sep 2016 12:24:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56272)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bjqVa-0001QF-Ny; Tue, 13 Sep 2016 12:24:30 -0400
+	id 1bjqVa-0001QI-Ob; Tue, 13 Sep 2016 12:24:30 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3F58B416E6;
+	by isrv.corpit.ru (Postfix) with ESMTP id 2CB8E416E4;
 	Tue, 13 Sep 2016 19:24:27 +0300 (MSK)
 Received: from gandalf (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 1B93EAFF;
-	Tue, 13 Sep 2016 19:07:41 +0300 (MSK)
-Received: (nullmailer pid 31914 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id EEE8DB0A;
+	Tue, 13 Sep 2016 19:07:40 +0300 (MSK)
+Received: (nullmailer pid 31894 invoked by uid 1000);
 	Tue, 13 Sep 2016 16:07:39 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 13 Sep 2016 19:04:54 +0300
-Message-Id: <5ce747cfac697f61668ab4fa4a71c1dba15cc272.1473782118.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 13 Sep 2016 19:04:44 +0300
+Message-Id: <bc82585a8fd5d38e7c2402999a7ccc9a97d762c9.1473782118.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1473782118.git.mjt@tls.msk.ru>
 References: <cover.1473782118.git.mjt@tls.msk.ru>
@@ -33,7 +33,8 @@ In-Reply-To: <cover.1473782118.git.mjt@tls.msk.ru>
 References: <cover.1473782118.git.mjt@tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 15/16] target-m68k: fix get_mac_extf helper
+Subject: [Qemu-trivial] [PULL 05/16] vl: remove unnecessary duplicate call
+ to tpm_cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,28 +50,31 @@ X-List-Received-Date: Tue, 13 Sep 2016 16:24:41 -0000
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-val is assigned twice; the second one should be combined with "|".
-Reported by Coverity.
+tpm_cleanup is called from main() and also registered with atexit from
+tpm_init.  The function only visits the tpm_backends linked list, and the
+atexit registration happens right after tpm_init fills in the list from
+-tpmdev options.  Therefore, the direct call is unnecessary.  Remove it.
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target-m68k/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ vl.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/target-m68k/helper.c b/target-m68k/helper.c
-index f52d0e3..89bbe6d 100644
---- a/target-m68k/helper.c
-+++ b/target-m68k/helper.c
-@@ -812,7 +812,7 @@ uint32_t HELPER(get_mac_extf)(CPUM68KState *env, uint32_t acc)
- {
-     uint32_t val;
-     val = env->macc[acc] & 0x00ff;
--    val = (env->macc[acc] >> 32) & 0xff00;
-+    val |= (env->macc[acc] >> 32) & 0xff00;
-     val |= (env->macc[acc + 1] << 16) & 0x00ff0000;
-     val |= (env->macc[acc + 1] >> 16) & 0xff000000;
-     return val;
+diff --git a/vl.c b/vl.c
+index ee557a1..82cf85b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4620,9 +4620,6 @@ int main(int argc, char **argv, char **envp)
+     bdrv_close_all();
+     pause_all_vcpus();
+     res_free();
+-#ifdef CONFIG_TPM
+-    tpm_cleanup();
+-#endif
+ 
+     /* vhost-user must be cleaned up before chardevs.  */
+     net_cleanup();
 -- 
 2.1.4
 
