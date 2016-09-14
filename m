@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk2uw-0000wS-J8
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 01:39:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58489)
+	id 1bk2w8-00021V-9f
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 01:40:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58647)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk2uu-0000u2-P2
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk2w6-0001zD-2P
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:40:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk2uq-0004qN-Jl
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:27 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52657)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk2w5-0005AN-9z
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:40:42 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46791)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk2uo-0004pG-LK; Wed, 14 Sep 2016 01:39:22 -0400
+	id 1bk2w0-00058Y-Ku; Wed, 14 Sep 2016 01:40:36 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id D815341803;
-	Wed, 14 Sep 2016 08:39:19 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id D6D8041803;
+	Wed, 14 Sep 2016 08:40:32 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 9E9CCAAB;
-	Wed, 14 Sep 2016 08:39:19 +0300 (MSK)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1473455901-27465-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 8F6D9AAB;
+	Wed, 14 Sep 2016 08:40:32 +0300 (MSK)
+To: Reda Sallahi <fullmanet@gmail.com>, qemu-devel@nongnu.org
+References: <20160831163104.6268-1-fullmanet@gmail.com>
+Cc: qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <09eb151e-7072-664f-186f-57c97995f180@msgid.tls.msk.ru>
-Date: Wed, 14 Sep 2016 08:39:19 +0300
+Message-ID: <6dfcb62f-40ec-d386-7559-8085527103e4@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 08:40:32 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <1473455901-27465-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20160831163104.6268-1-fullmanet@gmail.com>
 Content-Type: text/plain; charset=windows-1251; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/sh4/ to SH4
- section
+Subject: Re: [Qemu-trivial] [PATCH v2] sh4: fix broken link to documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,7 +44,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 05:39:29 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 05:40:43 -0000
 
 Applied to -trivial, thanks!
 
