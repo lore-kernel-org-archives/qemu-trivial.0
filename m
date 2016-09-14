@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk45Z-000330-RJ
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 02:54:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42409)
+	id 1bk47G-0003zx-5A
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 02:56:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42840)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bk45X-000318-Dr
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 02:54:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk47E-0003z1-KQ
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 02:56:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1bk45T-0001om-Tl
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 02:54:28 -0400
-Received: from [59.151.112.132] (port=57119 helo=heian.cn.fujitsu.com)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk47D-0002NF-UG
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 02:56:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40162)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1bk45P-0001l0-92; Wed, 14 Sep 2016 02:54:23 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="10967132"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 14 Sep 2016 14:54:08 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 2CE6B4623461;
-	Wed, 14 Sep 2016 14:54:05 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 14 Sep 2016 14:54:04 +0800
-To: Michael Tokarev <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bk479-0002Ks-Jv; Wed, 14 Sep 2016 02:56:11 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id E975A417FF;
+	Wed, 14 Sep 2016 09:56:06 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 811F9AAB;
+	Wed, 14 Sep 2016 09:56:06 +0300 (MSK)
+To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
 References: <1469790338-28990-1-git-send-email-caoj.fnst@cn.fujitsu.com>
 	<3ce74c99-1a3e-b29d-79bb-22d7125af51e@msgid.tls.msk.ru>
-CC: <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Richard
-	Henderson <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <57D8F429.3080901@cn.fujitsu.com>
-Date: Wed, 14 Sep 2016 14:54:33 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	<57D8F429.3080901@cn.fujitsu.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <dbb6f7e8-9984-419f-fd1a-46e4d164cd23@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 09:56:06 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <3ce74c99-1a3e-b29d-79bb-22d7125af51e@msgid.tls.msk.ru>
-Content-Type: text/plain; charset="windows-1251"; format=flowed
+In-Reply-To: <57D8F429.3080901@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1251; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 2CE6B4623461.A75BF
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
 Subject: Re: [Qemu-trivial] [PATCH 0/3] trivial changes of timer & cpus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -54,44 +48,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 06:54:32 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 06:56:17 -0000
 
-Hi Michael,
-
-I saw Paolo already queued these 3 into his branch and sent the pull 
-request.
-
-Cao jin
-
-On 09/14/2016 02:47 PM, Michael Tokarev wrote:
-> 29.07.2016 14:05, Cao jin wrote:
->> Cc: Paolo Bonzini <pbonzini@redhat.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc  Peter Crosthwaite <crosthwaite.peter@gmail.com>
->> Cc: Richard Henderson <rth@twiddle.net>
->>
->> Cao jin (3):
->>   timer: update comments
->>   cpus: rename local variable to meaningful one
->>   cpus: update comments
->>
->>  cpus.c               | 13 +++++++------
->>  include/qemu/timer.h | 19 ++++++-------------
->>  2 files changed, 13 insertions(+), 19 deletions(-)
+14.09.2016 09:54, Cao jin wrote:
+> Hi Michael,
 >
-> Applied all 3 to -trivial, thanks!
->
-> /mjt
->
->
->
->
->
+> I saw Paolo already queued these 3 into his branch and sent the pull
+> request.
 
--- 
-Yours Sincerely,
+That's okay, git figure it out.
 
-Cao jin
+Thank you for notifying me.
 
-
+/mjt
 
