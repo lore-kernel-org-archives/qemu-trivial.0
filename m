@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk2uW-0000ZX-JR
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 01:39:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58267)
+	id 1bk2ud-0000fk-Nx
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 01:39:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk2uT-0000Wv-42
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:01 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk2uc-0000eL-Fy
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk2uS-0004cE-B9
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:01 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50992)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk2ub-0004ig-O0
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 01:39:10 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38970)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk2uM-0004WQ-B4; Wed, 14 Sep 2016 01:38:54 -0400
+	id 1bk2uW-0004cU-DT; Wed, 14 Sep 2016 01:39:04 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E3838417FF;
-	Wed, 14 Sep 2016 08:38:51 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 9A96A417FF;
+	Wed, 14 Sep 2016 08:39:00 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id A55ADAAB;
-	Wed, 14 Sep 2016 08:38:51 +0300 (MSK)
-To: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 5A3C7AAB;
+	Wed, 14 Sep 2016 08:39:00 +0300 (MSK)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>
-References: <1473111075-25311-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <1473106301-23102-1-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <08e8a71d-336e-c5b9-9182-a33468cf1ea0@msgid.tls.msk.ru>
-Date: Wed, 14 Sep 2016 08:38:51 +0300
+Message-ID: <ca887492-4363-b46d-b08e-8410b5ced4ed@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 08:39:00 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <1473111075-25311-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1473106301-23102-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=windows-1251; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add some header files to
- the PC chipset section
+Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Fix wildcard for scsi
+ headers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,7 +46,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 05:39:02 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 05:39:11 -0000
 
 Applied to -trivial, thanks!
 
