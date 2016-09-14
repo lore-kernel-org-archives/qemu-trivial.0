@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk4T1-0002wh-4W
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:18:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46298)
+	id 1bk4W8-0004bt-Mp
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:22:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47718)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4Sz-0002vt-A9
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:18:46 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4W6-0004a0-V7
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:21:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4Sy-0008A2-GA
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:18:45 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46991)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4W4-00017E-Tq
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:21:57 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53139)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk4St-00087g-RQ; Wed, 14 Sep 2016 03:18:40 -0400
+	id 1bk4Vz-00011x-BD; Wed, 14 Sep 2016 03:21:51 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 0CE0F417FF;
-	Wed, 14 Sep 2016 10:18:36 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 8C994417FF;
+	Wed, 14 Sep 2016 10:21:47 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 8DA8CAAB;
-	Wed, 14 Sep 2016 10:18:35 +0300 (MSK)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 1952BAAB;
+	Wed, 14 Sep 2016 10:21:47 +0300 (MSK)
+To: Eduardo Habkost <ehabkost@redhat.com>,
+	"Daniel P. Berrange" <berrange@redhat.com>
+References: <1465919097-21453-1-git-send-email-berrange@redhat.com>
+	<20160614160023.GQ18662@thinpad.lan.raisama.net>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <aa9df512-bd17-0462-04d2-dd520f817acc@msgid.tls.msk.ru>
-Date: Wed, 14 Sep 2016 10:18:35 +0300
+Message-ID: <ef56aa6d-ee2b-37f8-016f-910f8c586b6f@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 10:21:47 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
-Content-Type: text/plain; charset=windows-1251; format=flowed
+In-Reply-To: <20160614160023.GQ18662@thinpad.lan.raisama.net>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH 0/7] Remove useless casts
+Subject: Re: [Qemu-trivial] [PATCH] win32: don't run subprocess tests on
+ Mingw32 platform
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,43 +47,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 07:18:46 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 07:22:00 -0000
 
-15.06.2016 19:14, Laurent Vivier wrote:
-> This series is the result of the following coccinelle script:
+14.06.2016 19:00, Eduardo Habkost wrote:
+> On Tue, Jun 14, 2016 at 04:44:57PM +0100, Daniel P. Berrange wrote:
+>> The g_test_trap_subprocess() method does not work on the
+>> Mingw32 platform, causing the test-qdev-global-props
+>> test case to abort
+>>
+>> (test-logging.exe:230): GLib-ERROR **: g_test_trap_subprocess()
+>> failed: Failed to execute helper program (No such file or directory)
+>>
+>> This failure was introduced a while ago in
+>>
+>>   commit 2177801a4899bf29108b3d471417a5b4d701ec29
+>>   Author: Eduardo Habkost <ehabkost@redhat.com>
+>>   Date:   Fri Aug 8 16:03:27 2014 -0300
+>>
+>>     test-qdev-global-props: Run tests on subprocess
+>>
+>> Modify the configure time check to avoid enabling this feature
+>> on Mingw, rather than trying to rewrite the test to avoid this
+>> feature.
+>>
+> [...]
+>> -if test "$glib_subprocess" = "yes" ; then
+>> +if test "$glib_subprocess" = "yes" && test "$mingw32" != "yes" ; then
+>>    echo "CONFIG_HAS_GLIB_SUBPROCESS_TESTS=y" >> $config_host_mak
+>>  fi
 >
->     @@
->     type T;
->     T v;
->     @@
->     -       (T *)&v
->     +       &v
+> I would do the following instead, just in case we have extra code
+> looking at $glib_subprocess one day.
 >
-> This script removes the cast of a variable when the variable
-> is already of the casting type.
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+> diff --git a/configure b/configure
+> index 8c2f90b..642a80b 100755
+> --- a/configure
+> +++ b/configure
+> @@ -2996,7 +2996,7 @@ fi
 >
-> The script is added in scripts/coccinelle by the first patch.
->
-> Laurent Vivier (7):
->   coccinelle: add a script to remove useless casts
->   linux-user,s390x: remove useless cast
->   s390x: remove useless cast
->   tricore: remove useless cast
->   fw_cfg: remove useless casts
->   crypto: remove useless casts
->   sheepdog: remove useless casts
->
->  block/sheepdog.c                  | 4 ++--
->  crypto/cipher-builtin.c           | 4 ++--
->  hw/nvram/fw_cfg.c                 | 4 ++--
->  hw/s390x/sclp.c                   | 2 +-
->  hw/tricore/tricore_testboard.c    | 2 +-
->  linux-user/signal.c               | 2 +-
->  scripts/coccinelle/typecast.cocci | 7 +++++++
->  7 files changed, 16 insertions(+), 9 deletions(-)
->  create mode 100644 scripts/coccinelle/typecast.cocci
+>  # g_test_trap_subprocess added in 2.38. Used by some tests.
+>  glib_subprocess=yes
+> -if ! $pkg_config --atleast-version=2.38 glib-2.0; then
+> +if test "$mingw32" = "yes" || ! $pkg_config --atleast-version=2.38 glib-2.0; then
+>      glib_subprocess=no
+>  fi
 
-Applied all 7 to -trivial, thank you!
+Applied this last version to -trivial, thanks!
 
 /mjt
 
