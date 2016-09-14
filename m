@@ -1,33 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk5LC-0000wF-8P
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 04:14:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36464)
+	id 1bk5LD-0000xY-Bs
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 04:14:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk5L9-0000ry-AY
+	(envelope-from <mjt@tls.msk.ru>) id 1bk5L9-0000rw-9I
 	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 04:14:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk5L8-0000zI-8K
+	(envelope-from <mjt@tls.msk.ru>) id 1bk5L8-0000zB-5D
 	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 04:14:43 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:59296)
+Received: from isrv.corpit.ru ([86.62.121.231]:49059)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk5L1-0000vo-Gi; Wed, 14 Sep 2016 04:14:35 -0400
+	id 1bk5L1-0000vl-Ge; Wed, 14 Sep 2016 04:14:35 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 03D5F41849;
-	Wed, 14 Sep 2016 11:14:32 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id E2D4741847;
+	Wed, 14 Sep 2016 11:14:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 9273EB17;
-	Wed, 14 Sep 2016 10:59:00 +0300 (MSK)
-Received: (nullmailer pid 17366 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 70445AFF;
+	Wed, 14 Sep 2016 10:58:59 +0300 (MSK)
+Received: (nullmailer pid 17317 invoked by uid 1000);
 	Wed, 14 Sep 2016 07:58:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 14 Sep 2016 10:58:53 +0300
-Message-Id: <f3f1ef84774aef77d344b196dea2a09b244b87a1.1473839869.git.mjt@msgid.tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Wed, 14 Sep 2016 10:58:29 +0300
+Message-Id: <49635003ac0563974da76736c66f28bd29d3dedd.1473839869.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 References: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
@@ -35,7 +33,8 @@ In-Reply-To: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 References: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 27/27] mptsas: change .realize function name
+Subject: [Qemu-trivial] [PULL 03/27] ui/console: Fix non-working backspace
+ key in monitor of gtk UI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,45 +48,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 14 Sep 2016 08:14:44 -0000
 
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
+From: Thomas Huth <thuth@redhat.com>
 
-All the other devices` .realize function name are xxx_realize, except this one.
+In the QEMU monitor pane of the gtk user interface, the backspace
+key is not working at all. This happens because of a missing mapping
+of the key in the qcode_to_keysym[] table. Thus let's add an entry
+there to get the backspace key working again.
 
-cc: Michael S. Tsirkin <mst@redhat.com>
-cc: Marcel Apfelbaum <marcel@redhat.com>
-cc: Paolo Bonzini <pbonzini@redhat.com>
-cc: Markus Armbruster <armbru@redhat.com>
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Buglink: https://bugs.launchpad.net/qemu/+bug/1611979
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/scsi/mptsas.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ ui/console.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
-index 0e0a22f..8a3dee1 100644
---- a/hw/scsi/mptsas.c
-+++ b/hw/scsi/mptsas.c
-@@ -1269,7 +1269,7 @@ static const struct SCSIBusInfo mptsas_scsi_info = {
-     .load_request = mptsas_load_request,
+diff --git a/ui/console.c b/ui/console.c
+index c24bfe4..3940762 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -1142,6 +1142,7 @@ static const int qcode_to_keysym[Q_KEY_CODE__MAX] = {
+     [Q_KEY_CODE_PGUP]   = QEMU_KEY_PAGEUP,
+     [Q_KEY_CODE_PGDN]   = QEMU_KEY_PAGEDOWN,
+     [Q_KEY_CODE_DELETE] = QEMU_KEY_DELETE,
++    [Q_KEY_CODE_BACKSPACE] = QEMU_KEY_BACKSPACE,
  };
  
--static void mptsas_scsi_init(PCIDevice *dev, Error **errp)
-+static void mptsas_scsi_realize(PCIDevice *dev, Error **errp)
- {
-     DeviceState *d = DEVICE(dev);
-     MPTSASState *s = MPT_SAS(dev);
-@@ -1426,7 +1426,7 @@ static void mptsas1068_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     PCIDeviceClass *pc = PCI_DEVICE_CLASS(oc);
- 
--    pc->realize = mptsas_scsi_init;
-+    pc->realize = mptsas_scsi_realize;
-     pc->exit = mptsas_scsi_uninit;
-     pc->romfile = 0;
-     pc->vendor_id = PCI_VENDOR_ID_LSI_LOGIC;
+ bool kbd_put_qcode_console(QemuConsole *s, int qcode)
 -- 
 2.1.4
 
