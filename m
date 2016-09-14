@@ -1,38 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk4Nv-0008PB-4E
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:13:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45651)
+	id 1bk4T1-0002wh-4W
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:18:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4Np-0008Jb-Cs
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:13:30 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4Sz-0002vt-A9
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:18:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4Nn-0007HS-9l
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:13:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52963)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4Sy-0008A2-GA
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:18:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46991)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk4Nd-0007Dk-Ij; Wed, 14 Sep 2016 03:13:13 -0400
+	id 1bk4St-00087g-RQ; Wed, 14 Sep 2016 03:18:40 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C80BE417FF;
-	Wed, 14 Sep 2016 10:13:11 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 0CE0F417FF;
+	Wed, 14 Sep 2016 10:18:36 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 5CAE9AAB;
-	Wed, 14 Sep 2016 10:13:11 +0300 (MSK)
-To: =?UTF-8?B?VG9tw6HFoSBHb2xlbWJpb3Zza8O9?= <tgolembi@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
-References: <20160708131809.07a8e7dc@fiorina>
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 8DA8CAAB;
+	Wed, 14 Sep 2016 10:18:35 +0300 (MSK)
+To: Laurent Vivier <lvivier@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <96ed9f00-3edc-1c5d-abdb-c7e6619da244@msgid.tls.msk.ru>
-Date: Wed, 14 Sep 2016 10:13:11 +0300
+Message-ID: <aa9df512-bd17-0462-04d2-dd520f817acc@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 10:18:35 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <20160708131809.07a8e7dc@fiorina>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1466007277-17525-1-git-send-email-lvivier@redhat.com>
+Content-Type: text/plain; charset=windows-1251; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH v2] curl: Operate on zero-length file
+Subject: Re: [Qemu-trivial] [PATCH 0/7] Remove useless casts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,74 +44,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 07:13:30 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 07:18:46 -0000
 
-08.07.2016 14:18, Tom=C3=A1=C5=A1 Golembiovsk=C3=BD wrote:
-> Another attempt to fix the bug 1596870.
+15.06.2016 19:14, Laurent Vivier wrote:
+> This series is the result of the following coccinelle script:
 >
-> When creating new disk backed by remote file accessed via HTTPS and the
-> backing file has zero length, qemu-img terminates with uniformative
-> error message:
+>     @@
+>     type T;
+>     T v;
+>     @@
+>     -       (T *)&v
+>     +       &v
 >
->     qemu-img: disk.qcow2: CURL: Error opening file:
+> This script removes the cast of a variable when the variable
+> is already of the casting type.
 >
-> While it may not make much sense to operate on empty file, other block
-> backends (e.g. raw backend for regular files) seem to allow it. This
-> patch fixes it for the curl backend and improves the reported error.
+> The script is added in scripts/coccinelle by the first patch.
 >
-> Signed-off-by: Tom=C3=A1=C5=A1 Golembiovsk=C3=BD <tgolembi@redhat.com>
-> ---
->  block/curl.c | 25 +++++++++++++++++++++----
->  1 file changed, 21 insertions(+), 4 deletions(-)
+> Laurent Vivier (7):
+>   coccinelle: add a script to remove useless casts
+>   linux-user,s390x: remove useless cast
+>   s390x: remove useless cast
+>   tricore: remove useless cast
+>   fw_cfg: remove useless casts
+>   crypto: remove useless casts
+>   sheepdog: remove useless casts
 >
-> diff --git a/block/curl.c b/block/curl.c
-> index da9f5e8..a8cdb44 100644
-> --- a/block/curl.c
-> +++ b/block/curl.c
-> @@ -675,11 +675,28 @@ static int curl_open(BlockDriverState *bs, QDict =
-*options, int flags,
->      curl_easy_setopt(state->curl, CURLOPT_HEADERDATA, s);
->      if (curl_easy_perform(state->curl))
->          goto out;
-> -    curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &=
-d);
-> -    if (d)
-> -        s->len =3D (size_t)d;
-> -    else if(!s->len)
-> +    if (curl_easy_getinfo(state->curl, CURLINFO_CONTENT_LENGTH_DOWNLOA=
-D, &d)) {
->          goto out;
-> +    }
-> +    /* Prior CURL 7.19.4 return value of 0 could mean that the file si=
-ze is not
-> +     * know or the size is zero. From 7.19.4 CURL returns -1 if size i=
-s not
-> +     * known and zero if it is realy zero-length file. */
-> +#if LIBCURL_VERSION_NUM >=3D 0x071304
-> +    if (d < 0) {
-> +        pstrcpy(state->errmsg, CURL_ERROR_SIZE,
-> +                "Server didn't report file size.");
-> +        goto out;
-> +    }
-> +#else
-> +    if (d <=3D 0) {
-> +        pstrcpy(state->errmsg, CURL_ERROR_SIZE,
-> +                "Unknown file size or zero-length file.");
-> +        goto out;
-> +    }
-> +#endif
+>  block/sheepdog.c                  | 4 ++--
+>  crypto/cipher-builtin.c           | 4 ++--
+>  hw/nvram/fw_cfg.c                 | 4 ++--
+>  hw/s390x/sclp.c                   | 2 +-
+>  hw/tricore/tricore_testboard.c    | 2 +-
+>  linux-user/signal.c               | 2 +-
+>  scripts/coccinelle/typecast.cocci | 7 +++++++
+>  7 files changed, 16 insertions(+), 9 deletions(-)
+>  create mode 100644 scripts/coccinelle/typecast.cocci
 
-This is somewhat ugly ifdeffery, but ohwell..
-
-> +    s->len =3D (size_t)d;
-> +
->      if ((!strncasecmp(s->url, "http://", strlen("http://"))
->          || !strncasecmp(s->url, "https://", strlen("https://")))
->          && !s->accept_range) {
->
-
-
-Applied to -trivial, thank you!
+Applied all 7 to -trivial, thank you!
 
 /mjt
+
 
