@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk4W8-0004bt-Mp
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:22:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47718)
+	id 1bk4ZJ-0006d2-3y
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:25:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48461)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4W6-0004a0-V7
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:21:59 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4ZF-0006Zw-2f
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:25:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk4W4-00017E-Tq
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:21:57 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53139)
+	(envelope-from <mjt@tls.msk.ru>) id 1bk4ZE-00027u-71
+	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:25:12 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:38798)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk4Vz-00011x-BD; Wed, 14 Sep 2016 03:21:51 -0400
+	id 1bk4Z6-00020Z-1G; Wed, 14 Sep 2016 03:25:04 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8C994417FF;
-	Wed, 14 Sep 2016 10:21:47 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 46CDB417FF;
+	Wed, 14 Sep 2016 10:25:00 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 1952BAAB;
-	Wed, 14 Sep 2016 10:21:47 +0300 (MSK)
-To: Eduardo Habkost <ehabkost@redhat.com>,
-	"Daniel P. Berrange" <berrange@redhat.com>
-References: <1465919097-21453-1-git-send-email-berrange@redhat.com>
-	<20160614160023.GQ18662@thinpad.lan.raisama.net>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id CA89DAAB;
+	Wed, 14 Sep 2016 10:24:59 +0300 (MSK)
+To: Md Haris Iqbal <haris.phnx@gmail.com>, qemu-devel@nongnu.org
+References: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
+Cc: qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <ef56aa6d-ee2b-37f8-016f-910f8c586b6f@msgid.tls.msk.ru>
-Date: Wed, 14 Sep 2016 10:21:47 +0300
+Message-ID: <0fb2f682-0307-46ea-521a-43e19e150aa4@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 10:24:59 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <20160614160023.GQ18662@thinpad.lan.raisama.net>
-Content-Type: text/plain; charset=windows-1252; format=flowed
+In-Reply-To: <1458757923-11362-1-git-send-email-haris.phnx@gmail.com>
+Content-Type: text/plain; charset=windows-1251; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] win32: don't run subprocess tests on
- Mingw32 platform
+Subject: Re: [Qemu-trivial] [PATCH] Changed malloc to g_malloc,
+ free to g_free in linux-user/qemu.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,54 +45,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 07:22:00 -0000
+X-List-Received-Date: Wed, 14 Sep 2016 07:25:16 -0000
 
-14.06.2016 19:00, Eduardo Habkost wrote:
-> On Tue, Jun 14, 2016 at 04:44:57PM +0100, Daniel P. Berrange wrote:
->> The g_test_trap_subprocess() method does not work on the
->> Mingw32 platform, causing the test-qdev-global-props
->> test case to abort
->>
->> (test-logging.exe:230): GLib-ERROR **: g_test_trap_subprocess()
->> failed: Failed to execute helper program (No such file or directory)
->>
->> This failure was introduced a while ago in
->>
->>   commit 2177801a4899bf29108b3d471417a5b4d701ec29
->>   Author: Eduardo Habkost <ehabkost@redhat.com>
->>   Date:   Fri Aug 8 16:03:27 2014 -0300
->>
->>     test-qdev-global-props: Run tests on subprocess
->>
->> Modify the configure time check to avoid enabling this feature
->> on Mingw, rather than trying to rewrite the test to avoid this
->> feature.
->>
-> [...]
->> -if test "$glib_subprocess" = "yes" ; then
->> +if test "$glib_subprocess" = "yes" && test "$mingw32" != "yes" ; then
->>    echo "CONFIG_HAS_GLIB_SUBPROCESS_TESTS=y" >> $config_host_mak
->>  fi
->
-> I would do the following instead, just in case we have extra code
-> looking at $glib_subprocess one day.
->
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+23.03.2016 21:32, Md Haris Iqbal wrote:
+> Signed-off-by: Md Haris Iqbal <haris.phnx@gmail.com>
 > ---
-> diff --git a/configure b/configure
-> index 8c2f90b..642a80b 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2996,7 +2996,7 @@ fi
+>  linux-user/qemu.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
->  # g_test_trap_subprocess added in 2.38. Used by some tests.
->  glib_subprocess=yes
-> -if ! $pkg_config --atleast-version=2.38 glib-2.0; then
-> +if test "$mingw32" = "yes" || ! $pkg_config --atleast-version=2.38 glib-2.0; then
->      glib_subprocess=no
->  fi
+> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+> index 26b0ba2..3c3fd15 100644
+> --- a/linux-user/qemu.h
+> +++ b/linux-user/qemu.h
+> @@ -381,7 +381,7 @@ static inline void *lock_user(int type, abi_ulong guest_addr, long len, int copy
+>  #ifdef DEBUG_REMAP
+>      {
+>          void *addr;
+> -        addr = malloc(len);
+> +        addr = g_malloc(len);
+>          if (copy)
+>              memcpy(addr, g2h(guest_addr), len);
+>          else
+> @@ -407,7 +407,7 @@ static inline void unlock_user(void *host_ptr, abi_ulong guest_addr,
+>          return;
+>      if (len > 0)
+>          memcpy(g2h(guest_addr), host_ptr, len);
+> -    free(host_ptr);
+> +    g_free(host_ptr);
+>  #endif
+>  }
 
-Applied this last version to -trivial, thanks!
+This is a very old patch, somehow missed by me at that time.
+Applied to -trivial now, thank you!
 
 /mjt
 
