@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk567-0005tk-HQ
+	id 1bk567-0005u8-Lv
 	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 03:59:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32872)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk564-0005oF-88
+	(envelope-from <mjt@tls.msk.ru>) id 1bk564-0005oL-C6
 	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:59:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bk562-0004bZ-IT
+	(envelope-from <mjt@tls.msk.ru>) id 1bk562-0004bj-Jm
 	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 03:59:07 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:54862)
+Received: from isrv.corpit.ru ([86.62.121.231]:38931)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bk55y-0004WS-2t; Wed, 14 Sep 2016 03:59:02 -0400
+	id 1bk55y-0004WV-74; Wed, 14 Sep 2016 03:59:02 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3713541844;
+	by isrv.corpit.ru (Postfix) with ESMTP id 82E7C41846;
 	Wed, 14 Sep 2016 10:58:58 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id A9161AEA;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id E227BAF1;
 	Wed, 14 Sep 2016 10:58:57 +0300 (MSK)
-Received: (nullmailer pid 17315 invoked by uid 1000);
+Received: (nullmailer pid 17329 invoked by uid 1000);
 	Wed, 14 Sep 2016 07:58:57 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 14 Sep 2016 10:58:28 +0300
-Message-Id: <eebc2a4901ef0551d500169eb18b914a5a602efe.1473839869.git.mjt@msgid.tls.msk.ru>
+Date: Wed, 14 Sep 2016 10:58:35 +0300
+Message-Id: <220fb2842fea23e8c6d62f9243689c648bb62e5c.1473839869.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 References: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
@@ -33,7 +33,8 @@ In-Reply-To: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 References: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 02/27] tcg: Remove duplicate header includes
+Subject: [Qemu-trivial] [PULL 09/27] MAINTAINERS: Add some header files to
+ the PC chipset section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,28 +50,30 @@ X-List-Received-Date: Wed, 14 Sep 2016 07:59:09 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-host-utils.h and timer.h are included twice in tcg.c.
-One time should be enough.
+These header files obviously belong to the PC chipset (since
+their names match the other .c files in this section).
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tcg/tcg.c | 2 --
- 1 file changed, 2 deletions(-)
+ MAINTAINERS | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 42417bd..c450c62 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -40,8 +40,6 @@
- #define NO_CPU_IO_DEFS
- #include "cpu.h"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 13dae75..2dcb58b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -719,6 +719,10 @@ F: hw/misc/pc-testdev.c
+ F: hw/timer/hpet*
+ F: hw/timer/i8254*
+ F: hw/timer/mc146818rtc*
++F: include/hw/i2c/pm_smbus.h
++F: include/hw/timer/hpet.h
++F: include/hw/timer/i8254*
++F: include/hw/timer/mc146818rtc*
  
--#include "qemu/host-utils.h"
--#include "qemu/timer.h"
- #include "exec/cpu-common.h"
- #include "exec/exec-all.h"
- 
+ Machine core
+ M: Eduardo Habkost <ehabkost@redhat.com>
 -- 
 2.1.4
 
