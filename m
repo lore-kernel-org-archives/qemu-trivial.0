@@ -1,39 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bk7lX-0007ww-Nc
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Sep 2016 06:50:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44059)
+	id 1bkWBJ-0000JH-2b
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Sep 2016 08:54:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51337)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bk7lU-0007tm-Jd
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 06:50:06 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bkWBG-0000Fc-A6
+	for qemu-trivial@nongnu.org; Thu, 15 Sep 2016 08:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bk7lQ-00020s-Cb
-	for qemu-trivial@nongnu.org; Wed, 14 Sep 2016 06:50:03 -0400
-Resent-Date: Wed, 14 Sep 2016 06:50:03 -0400
-Resent-Message-Id: <E1bk7lQ-00020s-Cb@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21420)
+	(envelope-from <mjt@tls.msk.ru>) id 1bkWBE-0004ui-85
+	for qemu-trivial@nongnu.org; Thu, 15 Sep 2016 08:54:17 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43837)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>)
-	id 1bk7lQ-00020g-3a; Wed, 14 Sep 2016 06:50:00 -0400
-Received: from ex-std-node742.prod.rhcloud.com
-	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
-	mx.zohomail.com with SMTPS id 1473850187699774.660392984265;
-	Wed, 14 Sep 2016 03:49:47 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <20160914104941.19908.55154@ex-std-node742.prod.rhcloud.com>
-In-Reply-To: <cover.1473839869.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bkWB8-0004fm-1V; Thu, 15 Sep 2016 08:54:10 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9CBAE41A88;
+	Thu, 15 Sep 2016 15:53:59 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id ACFD5A7D;
+	Thu, 15 Sep 2016 15:53:58 +0300 (MSK)
+Received: (nullmailer pid 25595 invoked by uid 1000);
+	Thu, 15 Sep 2016 12:53:58 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Thu, 15 Sep 2016 15:53:51 +0300
+Message-Id: <cover.1473943262.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: mjt@tls.msk.ru
-Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru
-Date: Wed, 14 Sep 2016 03:49:47 -0700 (PDT)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 74.201.84.163
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/27] Trivial patches for
- 2016-09-14
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 00/21] Trivial patches for 2016-09-15
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,96 +43,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Sep 2016 10:50:06 -0000
+X-List-Received-Date: Thu, 15 Sep 2016 12:54:19 -0000
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IGNvdmVyLjE0NzM4Mzk4NjkuZ2l0Lm1qdEBtc2dpZC50bHMubXNrLnJ1ClN1Ympl
-Y3Q6IFtRZW11LWRldmVsXSBbUFVMTCAwMC8yN10gVHJpdmlhbCBwYXRjaGVzIGZvciAyMDE2LTA5
-LTE0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0x
-CnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBV
-c2VmdWwgZ2l0IG9wdGlvbnMKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
-aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAt
-LWZvcm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAg
-ZWNobyAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1m
-b3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4v
-c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0x
-CiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09
-PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVm
-N2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKM2I1ZjY1ZiBt
-cHRzYXM6IGNoYW5nZSAucmVhbGl6ZSBmdW5jdGlvbiBuYW1lCjlmYzRhNWUgbGludXgtdXNlci9x
-ZW11Lmg6IGNoYW5nZSBtYWxsb2MgdG8gZ19tYWxsb2MsIGZyZWUgdG8gZ19mcmVlCmY1NzIxYTUg
-d2luMzI6IGRvbid0IHJ1biBzdWJwcm9jZXNzIHRlc3RzIG9uIE1pbmd3MzIgcGxhdGZvcm0KY2Yw
-ZjBmMSBzaGVlcGRvZzogcmVtb3ZlIHVzZWxlc3MgY2FzdHMKZGYxMjU0YiBmd19jZmc6IHJlbW92
-ZSB1c2VsZXNzIGNhc3RzCjA3NmE0ZDUgdHJpY29yZTogcmVtb3ZlIHVzZWxlc3MgY2FzdApjM2Rj
-NGUzIHMzOTB4OiByZW1vdmUgdXNlbGVzcyBjYXN0CjZmNGVjYmUgbGludXgtdXNlcixzMzkweDog
-cmVtb3ZlIHVzZWxlc3MgY2FzdAozYzQ5YmE4IGNvY2NpbmVsbGU6IGFkZCBhIHNjcmlwdCB0byBy
-ZW1vdmUgdXNlbGVzcyBjYXN0cwo3ZGY1M2MwIGN1cmw6IE9wZXJhdGUgb24gemVyby1sZW5ndGgg
-ZmlsZQpiNTVkNWVhIFJlbW92ZSB1bnVzZWQgZnVuY3Rpb24gZGVjbGFyYXRpb25zCmE0Y2E1MzUg
-Y3B1czogdXBkYXRlIGNvbW1lbnRzCmQzNThjMGIgY3B1czogcmVuYW1lIGxvY2FsIHZhcmlhYmxl
-IHRvIG1lYW5pbmdmdWwgb25lCjRjMWE3OWIgdGltZXI6IHVwZGF0ZSBjb21tZW50cwpmOWQzYzM2
-IGl2c2htZW06IERlbGV0ZSBkdXBsaWNhdGUgZGVidWcgbWVzc2FnZQo1ZTllNGM1IGhlbHA6IFVw
-ZGF0ZSBoZWxwIHRvIHJlbW92ZSBtaXNsZWFkaW5nIGRpc3BsYXkgaW5mb3JtYXRpb24KNWFmNTg0
-NSBzaDQ6IGZpeCBicm9rZW4gbGluayB0byBkb2N1bWVudGF0aW9uCjEyOWJmOGMgTUFJTlRBSU5F
-UlM6IEZpeCB1cCBGOiBlbnRyeSBiaXQgcm90CjE2YTQ5YjQgTUFJTlRBSU5FUlM6IEFkZCBzb21l
-IGhlYWRlciBmaWxlcyB0byB0aGUgUEMgY2hpcHNldCBzZWN0aW9uCmNiNDhjMjUgTUFJTlRBSU5F
-UlM6IEZpeCB3aWxkY2FyZCBmb3Igc2NzaSBoZWFkZXJzCjJjZjZlOWYgTUFJTlRBSU5FUlM6IEFk
-ZCBpbmNsdWRlL3N5c2VtdS9jcHVzLmgKNTA0MWU0ZiBNQUlOVEFJTkVSUzogQWRkIGluY2x1ZGUv
-aHcvc2g0LyB0byBTSDQgc2VjdGlvbgo4OGY5NzcwIE1BSU5UQUlORVJTOiBBZGQgaW5jbHVkZS9o
-dy90cmljb3JlLyB0byBUcmlDb3JlIHNlY3Rpb24KMGI5M2MxMyBNQUlOVEFJTkVSUzogQWRkIGlu
-Y2x1ZGUvaHcvdW5pY29yZTMyLyB0byBVbmlDb3JlMzIgc2VjdGlvbgpjNTU5OGUzIHVpL2NvbnNv
-bGU6IEZpeCBub24td29ya2luZyBiYWNrc3BhY2Uga2V5IGluIG1vbml0b3Igb2YgZ3RrIFVJCjFh
-Y2UyNjIgdGNnOiBSZW1vdmUgZHVwbGljYXRlIGhlYWRlciBpbmNsdWRlcwpmMzNiZDkzIFJlbW92
-ZSByZW1haW5kZXJzIG9mIEhQUEEgYmFja2VuZAoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tp
-bmcgUEFUQ0ggMS8yNzogUmVtb3ZlIHJlbWFpbmRlcnMgb2YgSFBQQSBiYWNrZW5kLi4uCkNoZWNr
-aW5nIFBBVENIIDIvMjc6IHRjZzogUmVtb3ZlIGR1cGxpY2F0ZSBoZWFkZXIgaW5jbHVkZXMuLi4K
-Q2hlY2tpbmcgUEFUQ0ggMy8yNzogdWkvY29uc29sZTogRml4IG5vbi13b3JraW5nIGJhY2tzcGFj
-ZSBrZXkgaW4gbW9uaXRvciBvZiBndGsgVUkuLi4KQ2hlY2tpbmcgUEFUQ0ggNC8yNzogTUFJTlRB
-SU5FUlM6IEFkZCBpbmNsdWRlL2h3L3VuaWNvcmUzMi8gdG8gVW5pQ29yZTMyIHNlY3Rpb24uLi4K
-Q2hlY2tpbmcgUEFUQ0ggNS8yNzogTUFJTlRBSU5FUlM6IEFkZCBpbmNsdWRlL2h3L3RyaWNvcmUv
-IHRvIFRyaUNvcmUgc2VjdGlvbi4uLgpDaGVja2luZyBQQVRDSCA2LzI3OiBNQUlOVEFJTkVSUzog
-QWRkIGluY2x1ZGUvaHcvc2g0LyB0byBTSDQgc2VjdGlvbi4uLgpDaGVja2luZyBQQVRDSCA3LzI3
-OiBNQUlOVEFJTkVSUzogQWRkIGluY2x1ZGUvc3lzZW11L2NwdXMuaC4uLgpDaGVja2luZyBQQVRD
-SCA4LzI3OiBNQUlOVEFJTkVSUzogRml4IHdpbGRjYXJkIGZvciBzY3NpIGhlYWRlcnMuLi4KQ2hl
-Y2tpbmcgUEFUQ0ggOS8yNzogTUFJTlRBSU5FUlM6IEFkZCBzb21lIGhlYWRlciBmaWxlcyB0byB0
-aGUgUEMgY2hpcHNldCBzZWN0aW9uLi4uCkNoZWNraW5nIFBBVENIIDEwLzI3OiBNQUlOVEFJTkVS
-UzogRml4IHVwIEY6IGVudHJ5IGJpdCByb3QuLi4KQ2hlY2tpbmcgUEFUQ0ggMTEvMjc6IHNoNDog
-Zml4IGJyb2tlbiBsaW5rIHRvIGRvY3VtZW50YXRpb24uLi4KV0FSTklORzogbGluZSBvdmVyIDgw
-IGNoYXJhY3RlcnMKIzI1OiBGSUxFOiBody9zaDQvc2hpeC5jOjI2OgorICAgaHR0cHM6Ly93ZWIu
-YXJjaGl2ZS5vcmcvd2ViLzIwMDcwOTE3MDAxNzM2L3BlcnNvLmVuc3QuZnIvfnBvbHRpL3JlYWxp
-c2F0aW9ucy9zaGl4MjAKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTYgbGluZXMgY2hl
-Y2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBh
-bnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhl
-IG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRD
-SCAxMi8yNzogaGVscDogVXBkYXRlIGhlbHAgdG8gcmVtb3ZlIG1pc2xlYWRpbmcgZGlzcGxheSBp
-bmZvcm1hdGlvbi4uLgpDaGVja2luZyBQQVRDSCAxMy8yNzogaXZzaG1lbTogRGVsZXRlIGR1cGxp
-Y2F0ZSBkZWJ1ZyBtZXNzYWdlLi4uCkNoZWNraW5nIFBBVENIIDE0LzI3OiB0aW1lcjogdXBkYXRl
-IGNvbW1lbnRzLi4uCkNoZWNraW5nIFBBVENIIDE1LzI3OiBjcHVzOiByZW5hbWUgbG9jYWwgdmFy
-aWFibGUgdG8gbWVhbmluZ2Z1bCBvbmUuLi4KQ2hlY2tpbmcgUEFUQ0ggMTYvMjc6IGNwdXM6IHVw
-ZGF0ZSBjb21tZW50cy4uLgpDaGVja2luZyBQQVRDSCAxNy8yNzogUmVtb3ZlIHVudXNlZCBmdW5j
-dGlvbiBkZWNsYXJhdGlvbnMuLi4KQ2hlY2tpbmcgUEFUQ0ggMTgvMjc6IGN1cmw6IE9wZXJhdGUg
-b24gemVyby1sZW5ndGggZmlsZS4uLgpDaGVja2luZyBQQVRDSCAxOS8yNzogY29jY2luZWxsZTog
-YWRkIGEgc2NyaXB0IHRvIHJlbW92ZSB1c2VsZXNzIGNhc3RzLi4uCkNoZWNraW5nIFBBVENIIDIw
-LzI3OiBsaW51eC11c2VyLHMzOTB4OiByZW1vdmUgdXNlbGVzcyBjYXN0Li4uCkNoZWNraW5nIFBB
-VENIIDIxLzI3OiBzMzkweDogcmVtb3ZlIHVzZWxlc3MgY2FzdC4uLgpDaGVja2luZyBQQVRDSCAy
-Mi8yNzogdHJpY29yZTogcmVtb3ZlIHVzZWxlc3MgY2FzdC4uLgpDaGVja2luZyBQQVRDSCAyMy8y
-NzogZndfY2ZnOiByZW1vdmUgdXNlbGVzcyBjYXN0cy4uLgpFUlJPUjogY29uc2lkZXIgdXNpbmcg
-cWVtdV9zdHJ0b2wgaW4gcHJlZmVyZW5jZSB0byBzdHJ0b2wKIzI0OiBGSUxFOiBody9udnJhbS9m
-d19jZmcuYzoxODM6CisgICAgICAgICAgICBib290X3NwbGFzaF90aW1lID0gc3RydG9sKHAsICZw
-LCAxMCk7CgpFUlJPUjogY29uc2lkZXIgdXNpbmcgcWVtdV9zdHJ0b2wgaW4gcHJlZmVyZW5jZSB0
-byBzdHJ0b2wKIzMzOiBGSUxFOiBody9udnJhbS9md19jZmcuYzoyNDM6CisgICAgICAgICAgICBy
-ZWJvb3RfdGltZW91dCA9IHN0cnRvbChwLCAmcCwgMTApOwoKdG90YWw6IDIgZXJyb3JzLCAwIHdh
-cm5pbmdzLCAxNiBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywg
-cGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZl
-cyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRB
-SU5FUlMuCgpDaGVja2luZyBQQVRDSCAyNC8yNzogc2hlZXBkb2c6IHJlbW92ZSB1c2VsZXNzIGNh
-c3RzLi4uCkNoZWNraW5nIFBBVENIIDI1LzI3OiB3aW4zMjogZG9uJ3QgcnVuIHN1YnByb2Nlc3Mg
-dGVzdHMgb24gTWluZ3czMiBwbGF0Zm9ybS4uLgpDaGVja2luZyBQQVRDSCAyNi8yNzogbGludXgt
-dXNlci9xZW11Lmg6IGNoYW5nZSBtYWxsb2MgdG8gZ19tYWxsb2MsIGZyZWUgdG8gZ19mcmVlLi4u
-CkNoZWNraW5nIFBBVENIIDI3LzI3OiBtcHRzYXM6IGNoYW5nZSAucmVhbGl6ZSBmdW5jdGlvbiBu
-YW1lLi4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6
-IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDov
-L3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZl
-bEBmcmVlbGlzdHMub3Jn
+This is a respin from the yesterday's pull request,
+now with only 21 patch out of 27.  Other 6 patches
+has already been applied to master from other trees
+(what a waste of time :) ).
 
+Resending only the cover letter, not whole series.
+
+Thanks!
+
+/mjt
+
+The following changes since commit 9e8204b1de9c4d09c0ec8f1c004a2e11346eb1=
+16:
+
+  ui/cocoa.m: Make a better about dialog (2016-09-15 11:36:39 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+
+for you to fetch changes up to afe4c95331cea4c78cab3240594055a72aa5c30c:
+
+  mptsas: change .realize function name (2016-09-15 15:32:22 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2016-09-15
+
+----------------------------------------------------------------
+Cao jin (1):
+      mptsas: change .realize function name
+
+Eduardo Habkost (1):
+      win32: don't run subprocess tests on Mingw32 platform
+
+Ladi Prosek (1):
+      Remove unused function declarations
+
+Laurent Vivier (6):
+      coccinelle: add a script to remove useless casts
+      linux-user,s390x: remove useless cast
+      s390x: remove useless cast
+      tricore: remove useless cast
+      fw_cfg: remove useless casts
+      sheepdog: remove useless casts
+
+Markus Armbruster (1):
+      MAINTAINERS: Fix up F: entry bit rot
+
+Md Haris Iqbal (1):
+      linux-user/qemu.h: change malloc to g_malloc, free to g_free
+
+Reda Sallahi (1):
+      sh4: fix broken link to documentation
+
+Stefano Dong (=E8=91=A3=E5=85=B4=E6=B0=B4) (1):
+      ivshmem: Delete duplicate debug message
+
+Thomas Huth (7):
+      Remove remainders of HPPA backend
+      tcg: Remove duplicate header includes
+      ui/console: Fix non-working backspace key in monitor of gtk UI
+      MAINTAINERS: Add include/hw/unicore32/ to UniCore32 section
+      MAINTAINERS: Add include/hw/tricore/ to TriCore section
+      MAINTAINERS: Add include/hw/sh4/ to SH4 section
+      MAINTAINERS: Add include/sysemu/cpus.h
+
+Tom=C3=A1=C5=A1 Golembiovsk=C3=BD (1):
+      curl: Operate on zero-length file
+
+ MAINTAINERS                       |   20 +-
+ block/curl.c                      |   25 +-
+ block/qcow2.h                     |    1 -
+ block/sheepdog.c                  |    4 +-
+ configure                         |    7 +-
+ disas.c                           |    2 -
+ disas/Makefile.objs               |    1 -
+ disas/hppa.c                      | 2832 -------------------------------=
+------
+ disas/sh4.c                       |    6 -
+ hw/misc/ivshmem.c                 |    1 -
+ hw/nvram/fw_cfg.c                 |    4 +-
+ hw/ppc/ppc405.h                   |    6 -
+ hw/s390x/sclp.c                   |    2 +-
+ hw/s390x/virtio-ccw.h             |    1 -
+ hw/scsi/mptsas.c                  |    4 +-
+ hw/sh4/shix.c                     |    2 +-
+ hw/tricore/tricore_testboard.c    |    2 +-
+ include/block/block.h             |    6 -
+ include/block/block_int.h         |    9 -
+ include/hw/arm/pxa.h              |    1 -
+ include/hw/bt.h                   |    2 -
+ include/hw/i386/pc.h              |    2 -
+ include/hw/pci-host/spapr.h       |    2 -
+ include/hw/pci/pci_bridge.h       |    1 -
+ include/hw/pci/pcie_port.h        |    1 -
+ include/hw/ppc/ppc4xx.h           |    6 -
+ include/hw/ppc/spapr.h            |    3 -
+ include/hw/ppc/spapr_vio.h        |    4 -
+ include/hw/scsi/scsi.h            |    1 -
+ include/hw/virtio/virtio-bus.h    |    3 -
+ include/migration/migration.h     |    2 -
+ include/net/net.h                 |    2 -
+ include/qemu/bitmap.h             |    4 -
+ include/qemu/uri.h                |    2 -
+ include/sysemu/kvm.h              |    2 -
+ include/ui/console.h              |    2 -
+ include/ui/input.h                |    2 -
+ include/ui/spice-display.h        |    2 -
+ linux-user/qemu.h                 |    4 +-
+ linux-user/signal.c               |    2 +-
+ linux-user/syscall_defs.h         |    4 +-
+ qemu-tech.texi                    |    3 +-
+ scripts/coccinelle/typecast.cocci |    7 +
+ target-alpha/cpu.h                |    1 -
+ target-m68k/cpu.h                 |    1 -
+ target-ppc/cpu.h                  |    2 -
+ target-ppc/mmu-hash64.h           |    1 -
+ target-s390x/cpu.h                |    2 -
+ target-sh4/README.sh4             |    2 +-
+ tcg/tcg.c                         |    2 -
+ tcg/tcg.h                         |    2 -
+ tcg/tci/README                    |    2 +-
+ ui/console.c                      |    1 +
+ 53 files changed, 54 insertions(+), 2961 deletions(-)
+ delete mode 100644 disas/hppa.c
+ create mode 100644 scripts/coccinelle/typecast.cocci
 
