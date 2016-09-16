@@ -1,37 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bkubP-0000Aq-Ig
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 10:58:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59369)
+	id 1bkv2t-0000ww-V1
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 11:27:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55365)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bkubJ-00006m-SN
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:54 -0400
+	(envelope-from <berrange@redhat.com>) id 1bkv2q-0000ty-OT
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 11:27:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bkubA-0000xE-Nz
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:49 -0400
-Resent-Date: Fri, 16 Sep 2016 10:58:49 -0400
-Resent-Message-Id: <E1bkubA-0000xE-Nz@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21390)
+	(envelope-from <berrange@redhat.com>) id 1bkv2o-0000zq-Nx
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 11:27:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53920)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bkubA-0000wO-Ek
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:40 -0400
-Received: from ex-std-node742.prod.rhcloud.com
-	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
-	mx.zohomail.com with SMTPS id 147403687109155.28755757407805;
-	Fri, 16 Sep 2016 07:41:11 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <20160916144105.19907.17105@ex-std-node742.prod.rhcloud.com>
-In-Reply-To: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
+	(envelope-from <berrange@redhat.com>)
+	id 1bkv2j-0000v2-UE; Fri, 16 Sep 2016 11:27:10 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6195C1BE2A9;
+	Fri, 16 Sep 2016 15:27:08 +0000 (UTC)
+Received: from redhat.com (vpn1-4-24.ams2.redhat.com [10.36.4.24])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8GFR5Pp016629
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 16 Sep 2016 11:27:07 -0400
+Date: Fri, 16 Sep 2016 16:27:05 +0100
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20160916152704.GD9654@redhat.com>
+Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
+References: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: lvivier@redhat.com
-Cc: famz@redhat.com, qemu-trivial@nongnu.org, lvivier@redhat.com,
-	qemu-devel@nongnu.org
-Date: Fri, 16 Sep 2016 07:41:11 -0700 (PDT)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 74.201.84.163
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 16 Sep 2016 15:27:08 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/26] trivial: use
  exit(EXIT_SUCCESS) and exit(EXIT_FAILURE)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -45,103 +54,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Sep 2016 14:58:54 -0000
+X-List-Received-Date: Fri, 16 Sep 2016 15:27:17 -0000
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDE0NzQwMzQxNzctMTc2NjMtMS1naXQtc2VuZC1lbWFpbC1sdml2aWVyQHJlZGhh
-dC5jb20KU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCAwMC8yNl0gdHJpdmlhbDogdXNlIGV4
-aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0xCnRvdGFsPSQoZ2l0IGxvZyAtLW9u
-ZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBVc2VmdWwgZ2l0IG9wdGlvbnMKZ2l0
-IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
-Zi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2Ug
-JEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0gg
-JG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAg
-aWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
-IC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkK
-ICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09
-CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20g
-aHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAg
-ICAgIHBhdGNoZXcvMTQ3NDAzNDE3Ny0xNzY2My0xLWdpdC1zZW5kLWVtYWlsLWx2aXZpZXJAcmVk
-aGF0LmNvbSAtPiBwYXRjaGV3LzE0NzQwMzQxNzctMTc2NjMtMS1naXQtc2VuZC1lbWFpbC1sdml2
-aWVyQHJlZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwozMjM1ODEwIG5l
-dDogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjEzNWZkNzUg
-aHc6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQplN2I2MjI0
-IGVycm9yLCB0cmFjZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxV
-UkUpCmMxMzdhYzIgY29yZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
-SUxVUkUpCjA3Mjg4YzEgYmxvY2tkZXY6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQo
-RVhJVF9GQUlMVVJFKQo3YjYyOGQxIG1pc2MgbWFjaGluZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNT
-KSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjZjNDk2N2MgY29tbW9uOiB1c2UgZXhpdChFWElUX1NV
-Q0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKN2I4ZWY2ZiBhbHBoYTogdXNlIGV4aXQoRVhJ
-VF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjg0YzcwZjMgcG9zaXg6IHVzZSBleGl0
-KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQpjNTUwYWJhIHRjZzogdXNlIGV4
-aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCmQyYjg4NDggczM5MDogdXNl
-IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCmY5ODYyOGMgbWlwczog
-dXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjIxMjg0OTkgeDg2
-OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKZmYwNTRmZCBz
-aDQ6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQo4NjVkZjc1
-IHNwYXJjOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKYzQ0
-MzU0NiBwY2ksIHZpcnRpbzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
-SUxVUkUpCjYyNGE4MzkgbTY4azogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElU
-X0ZBSUxVUkUpCmQ4ZTYyZTAgcWVtdS11c2VyOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBl
-eGl0KEVYSVRfRkFJTFVSRSkKYTk1Yzk4NiByZXBsYXk6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykg
-YW5kIGV4aXQoRVhJVF9GQUlMVVJFKQpiYzJmYTdkIHRlc3RzOiB1c2UgZXhpdChFWElUX1NVQ0NF
-U1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKOGFkNWI2NiBncmFwaGljczogdXNlIGV4aXQoRVhJ
-VF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjA4NmQ1NTcgcHBjOiB1c2UgZXhpdChF
-WElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKZjQ1NmU1ZiBibG9jazogdXNlIGV4
-aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjJiYzcwMGMgY3JpczogdXNl
-IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjVjYWNmYjYgYXJtOiB1
-c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKNTY2NzU1YyBjb2Nj
-aW5lbGxlOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKCj09
-PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMjY6IGNvY2NpbmVsbGU6IHVzZSBl
-eGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRD
-SCAyLzI2OiBhcm06IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJF
-KS4uLgpDaGVja2luZyBQQVRDSCAzLzI2OiBjcmlzOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFu
-ZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1
-c2UgdGFicwojNjQ6IEZJTEU6IHRlc3RzL3RjZy9jcmlzL2NoZWNrX2dsaWJjX2tlcm5lbHZlcnNp
-b24uYzoxMTU6CiteSWV4aXQoRVhJVF9TVUNDRVNTKTskCgpFUlJPUjogY29kZSBpbmRlbnQgc2hv
-dWxkIG5ldmVyIHVzZSB0YWJzCiM4NjogRklMRTogdGVzdHMvdGNnL2NyaXMvY2hlY2tfbHouYzo0
-ODoKK15JZXhpdChFWElUX1NVQ0NFU1MpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
-ZXIgdXNlIHRhYnMKIzIzMzogRklMRTogdGVzdHMvdGNnL2NyaXMvc3lzLmM6MTU6CiteSWV4aXQo
-RVhJVF9TVUNDRVNTKTskCgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3MsIDEzMyBsaW5lcyBj
-aGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
-IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
-aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQ
-QVRDSCA0LzI2OiBibG9jazogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
-SUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDUvMjY6IHBwYzogdXNlIGV4aXQoRVhJVF9TVUNDRVNT
-KSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDYvMjY6IGdyYXBoaWNz
-OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tp
-bmcgUEFUQ0ggNy8yNjogdGVzdHM6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJ
-VF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCA4LzI2OiByZXBsYXk6IHVzZSBleGl0KEVYSVRf
-U1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCA5LzI2OiBx
-ZW11LXVzZXI6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4u
-LgpDaGVja2luZyBQQVRDSCAxMC8yNjogbTY4azogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQg
-ZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDExLzI2OiBwY2ksIHZpcnRpbzog
-dXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5n
-IFBBVENIIDEyLzI2OiBzcGFyYzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElU
-X0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDEzLzI2OiBzaDQ6IHVzZSBleGl0KEVYSVRfU1VD
-Q0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxNC8yNjogeDg2
-OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tp
-bmcgUEFUQ0ggMTUvMjY6IG1pcHM6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJ
-VF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxNi8yNjogczM5MDogdXNlIGV4aXQoRVhJVF9T
-VUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDE3LzI2OiB0
-Y2c6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVj
-a2luZyBQQVRDSCAxOC8yNjogcG9zaXg6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQo
-RVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxOS8yNjogYWxwaGE6IHVzZSBleGl0KEVY
-SVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAyMC8y
-NjogY29tbW9uOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSku
-Li4KQ2hlY2tpbmcgUEFUQ0ggMjEvMjY6IG1pc2MgbWFjaGluZTogdXNlIGV4aXQoRVhJVF9TVUND
-RVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDIyLzI2OiBibG9j
-a2RldjogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNo
-ZWNraW5nIFBBVENIIDIzLzI2OiBjb3JlOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0
-KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tpbmcgUEFUQ0ggMjQvMjY6IGVycm9yLCB0cmFjZTogdXNl
-IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBB
-VENIIDI1LzI2OiBodzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxV
-UkUpLi4uCkNoZWNraW5nIFBBVENIIDI2LzI2OiBuZXQ6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykg
-YW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFu
-ZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
-IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRi
-YWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+On Fri, Sep 16, 2016 at 03:55:51PM +0200, Laurent Vivier wrote:
+> This series is the result of coccinelle patch
+> scripts/coccinelle/exit.cocci
+> provided by the first patch of the series.
+> 
+> It replaces exit(0) by exit(EXIT_SUCCESS)
+> and exit(1) by exit(EXIT_FAILURE).
 
+Some places use '_exit' and should have had the same
+change applied AFAICT.
+
+> All other exit() are not modified as we don't want
+> to change the behavior.
+
+IMHO, modifying the other exit() calls is precisely
+what would make this series useful.
+
+eg there's a bunch of places which arbitrarily use
+'-1' instead of '1' as the value for no good reason.
+
+Consolidating the inconsistent use of -1 and 1 would
+have functional benefit.
+
+Regards,
+Daniel
+-- 
+|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
+|: http://libvirt.org              -o-             http://virt-manager.org :|
+|: http://autobuild.org       -o-         http://search.cpan.org/~danberr/ :|
+|: http://entangle-photo.org       -o-       http://live.gnome.org/gtk-vnc :|
 
