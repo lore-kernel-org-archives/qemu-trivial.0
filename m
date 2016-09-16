@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bkten-0004Rp-Ms
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 09:58:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59275)
+	id 1bkteo-0004TJ-Ut
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 09:58:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bktek-0004Oy-Vt
+	(envelope-from <lvivier@redhat.com>) id 1bktek-0004Oz-WB
 	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bktei-00083c-Lc
+	(envelope-from <lvivier@redhat.com>) id 1bktei-00083h-Ku
 	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56606)
+Received: from mx1.redhat.com ([209.132.183.28]:62013)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lvivier@redhat.com>)
-	id 1bkteY-00076i-1A; Fri, 16 Sep 2016 09:58:06 -0400
+	id 1bktea-00079l-Mf; Fri, 16 Sep 2016 09:58:08 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 35F5E18DF5D;
-	Fri, 16 Sep 2016 13:56:55 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1BD1F80501;
+	Fri, 16 Sep 2016 13:57:03 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-112-33.ams2.redhat.com [10.36.112.33])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8GDuHkJ024127; Fri, 16 Sep 2016 09:56:53 -0400
+	id u8GDuHkN024127; Fri, 16 Sep 2016 09:57:01 -0400
 From: Laurent Vivier <lvivier@redhat.com>
 To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Date: Fri, 16 Sep 2016 15:56:08 +0200
-Message-Id: <1474034177-17663-18-git-send-email-lvivier@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>
+Date: Fri, 16 Sep 2016 15:56:12 +0200
+Message-Id: <1474034177-17663-22-git-send-email-lvivier@redhat.com>
 In-Reply-To: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
 References: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 16 Sep 2016 13:56:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 16 Sep 2016 13:57:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 17/26] tcg: use exit(EXIT_SUCCESS) and
- exit(EXIT_FAILURE)
+Subject: [Qemu-trivial] [PATCH 21/26] misc machine: use exit(EXIT_SUCCESS)
+ and exit(EXIT_FAILURE)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,143 +53,174 @@ This patch is the result of coccinelle script
 scripts/coccinelle/exit.cocci
 
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-CC: Richard Henderson <rth@twiddle.net>
 ---
- cpus.c          | 16 ++++++++--------
- cputlb.c        |  2 +-
- exec.c          |  2 +-
- tcg/tcg.c       |  2 +-
- translate-all.c |  2 +-
- 5 files changed, 12 insertions(+), 12 deletions(-)
+ hw/cris/axis_dev88.c           | 2 +-
+ hw/lm32/lm32_boards.c          | 8 ++++----
+ hw/lm32/milkymist.c            | 6 +++---
+ hw/openrisc/openrisc_sim.c     | 4 ++--
+ hw/tricore/tricore_testboard.c | 4 ++--
+ hw/unicore32/puv3.c            | 6 +++---
+ 6 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index e39ccb7..16898d3 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -159,7 +159,7 @@ int64_t cpu_get_icount_raw(void)
-     if (cpu) {
-         if (!cpu->can_do_io) {
-             fprintf(stderr, "Bad icount read\n");
--            exit(1);
-+            exit(EXIT_FAILURE);
-         }
-         icount -= (cpu->icount_decr.u16.low + cpu->icount_extra);
-     }
-@@ -829,7 +829,7 @@ static void qemu_kvm_eat_signals(CPUState *cpu)
-         r = sigtimedwait(&waitset, &siginfo, &ts);
-         if (r == -1 && !(errno == EAGAIN || errno == EINTR)) {
-             perror("sigtimedwait");
--            exit(1);
-+            exit(EXIT_FAILURE);
-         }
- 
-         switch (r) {
-@@ -845,7 +845,7 @@ static void qemu_kvm_eat_signals(CPUState *cpu)
-         r = sigpending(&chkset);
-         if (r == -1) {
-             perror("sigpending");
--            exit(1);
-+            exit(EXIT_FAILURE);
-         }
-     } while (sigismember(&chkset, SIG_IPI) || sigismember(&chkset, SIGBUS));
- }
-@@ -882,7 +882,7 @@ static void qemu_kvm_init_cpu_signals(CPUState *cpu)
-     r = kvm_set_signal_mask(cpu, &set);
-     if (r) {
-         fprintf(stderr, "kvm_set_signal_mask: %s\n", strerror(-r));
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index 60df887..fb022dd 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -351,7 +351,7 @@ void axisdev88_init(MachineState *machine)
+         cris_load_image(cpu, &li);
+     } else if (!qtest_enabled()) {
+         fprintf(stderr, "Kernel image must be specified\n");
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
  }
  
-@@ -1070,7 +1070,7 @@ static void *qemu_kvm_cpu_thread_fn(void *arg)
-     r = kvm_init_vcpu(cpu);
-     if (r < 0) {
-         fprintf(stderr, "kvm_init_vcpu failed: %s\n", strerror(-r));
+diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
+index 8f0c307..7e4ccc3 100644
+--- a/hw/lm32/lm32_boards.c
++++ b/hw/lm32/lm32_boards.c
+@@ -107,7 +107,7 @@ static void lm32_evr_init(MachineState *machine)
+     cpu = cpu_lm32_init(cpu_model);
+     if (cpu == NULL) {
+         fprintf(stderr, "qemu: unable to find CPU '%s'\n", cpu_model);
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
  
-     qemu_kvm_init_cpu_signals(cpu);
-@@ -1100,7 +1100,7 @@ static void *qemu_dummy_cpu_thread_fn(void *arg)
- {
- #ifdef _WIN32
-     fprintf(stderr, "qtest is not supported under Windows\n");
--    exit(1);
-+    exit(EXIT_FAILURE);
- #else
-     CPUState *cpu = arg;
-     sigset_t waitset;
-@@ -1130,7 +1130,7 @@ static void *qemu_dummy_cpu_thread_fn(void *arg)
-         } while (r == -1 && (errno == EAGAIN || errno == EINTR));
-         if (r == -1) {
-             perror("sigwait");
--            exit(1);
-+            exit(EXIT_FAILURE);
-         }
-         qemu_mutex_lock_iothread();
-         current_cpu = cpu;
-@@ -1213,7 +1213,7 @@ static void qemu_cpu_kick_thread(CPUState *cpu)
-     err = pthread_kill(cpu->thread->thread, SIG_IPI);
-     if (err) {
-         fprintf(stderr, "qemu:%s: %s", __func__, strerror(err));
--        exit(1);
-+        exit(EXIT_FAILURE);
-     }
- #else /* _WIN32 */
-     abort();
-diff --git a/cputlb.c b/cputlb.c
-index d068ee5..39cc513 100644
---- a/cputlb.c
-+++ b/cputlb.c
-@@ -491,7 +491,7 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env1, target_ulong addr)
-             cc->do_unassigned_access(cpu, addr, false, true, 0, 4);
-         } else {
-             report_bad_exec(cpu, addr);
+     env = &cpu->env;
+@@ -158,7 +158,7 @@ static void lm32_evr_init(MachineState *machine)
+         if (kernel_size < 0) {
+             fprintf(stderr, "qemu: could not load kernel '%s'\n",
+                     kernel_filename);
 -            exit(1);
 +            exit(EXIT_FAILURE);
          }
      }
-     p = (void *)((uintptr_t)addr + env1->tlb_table[mmu_idx][page_index].addend);
-diff --git a/exec.c b/exec.c
-index c81d5ab..f62a54c 100644
---- a/exec.c
-+++ b/exec.c
-@@ -1801,7 +1801,7 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
-                     fprintf(stderr, "Could not remap addr: "
-                             RAM_ADDR_FMT "@" RAM_ADDR_FMT "\n",
-                             length, addr);
--                    exit(1);
-+                    exit(EXIT_FAILURE);
-                 }
-                 memory_try_enable_merging(vaddr, length);
-                 qemu_ram_setup_dump(vaddr, length);
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index c450c62..0094fa5 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1269,7 +1269,7 @@ void tcg_add_target_add_op_defs(const TCGTargetOpDef *tdefs)
-                         if (target_parse_constraint(&def->args_ct[i], &ct_str) < 0) {
-                             fprintf(stderr, "Invalid constraint '%s' for arg %d of operation '%s'\n",
-                                     ct_str, i, def->name);
--                            exit(1);
-+                            exit(EXIT_FAILURE);
-                         }
-                     }
-                 }
-diff --git a/translate-all.c b/translate-all.c
-index b6663dc..5f1be0f 100644
---- a/translate-all.c
-+++ b/translate-all.c
-@@ -720,7 +720,7 @@ static inline void code_gen_alloc(size_t tb_size)
-     tcg_ctx.code_gen_buffer = alloc_code_gen_buffer();
-     if (tcg_ctx.code_gen_buffer == NULL) {
-         fprintf(stderr, "Could not allocate dynamic translator buffer\n");
+ 
+@@ -208,7 +208,7 @@ static void lm32_uclinux_init(MachineState *machine)
+     cpu = cpu_lm32_init(cpu_model);
+     if (cpu == NULL) {
+         fprintf(stderr, "qemu: unable to find CPU '%s'\n", cpu_model);
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
  
-     /* Estimate a good size for the number of TBs we can support.  We
+     env = &cpu->env;
+@@ -260,7 +260,7 @@ static void lm32_uclinux_init(MachineState *machine)
+         if (kernel_size < 0) {
+             fprintf(stderr, "qemu: could not load kernel '%s'\n",
+                     kernel_filename);
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+     }
+ 
+diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
+index 5cae0f1..de1147e 100644
+--- a/hw/lm32/milkymist.c
++++ b/hw/lm32/milkymist.c
+@@ -114,7 +114,7 @@ milkymist_init(MachineState *machine)
+     cpu = cpu_lm32_init(cpu_model);
+     if (cpu == NULL) {
+         fprintf(stderr, "qemu: unable to find CPU '%s'\n", cpu_model);
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+ 
+     env = &cpu->env;
+@@ -155,7 +155,7 @@ milkymist_init(MachineState *machine)
+     if (!kernel_filename && !dinfo && !bios_filename && !qtest_enabled()) {
+         fprintf(stderr, "qemu: could not load Milkymist One bios '%s'\n",
+                 bios_name);
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+     g_free(bios_filename);
+ 
+@@ -194,7 +194,7 @@ milkymist_init(MachineState *machine)
+         if (kernel_size < 0) {
+             fprintf(stderr, "qemu: could not load kernel '%s'\n",
+                     kernel_filename);
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+     }
+ 
+diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
+index 6d06d5b..48764b6 100644
+--- a/hw/openrisc/openrisc_sim.c
++++ b/hw/openrisc/openrisc_sim.c
+@@ -89,7 +89,7 @@ static void cpu_openrisc_load_kernel(ram_addr_t ram_size,
+         if (kernel_size < 0) {
+             fprintf(stderr, "QEMU: couldn't load the kernel '%s'\n",
+                     kernel_filename);
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+         cpu->env.pc = entry;
+     }
+@@ -112,7 +112,7 @@ static void openrisc_sim_init(MachineState *machine)
+         cpu = cpu_openrisc_init(cpu_model);
+         if (cpu == NULL) {
+             fprintf(stderr, "Unable to find CPU definition!\n");
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+         qemu_register_reset(main_cpu_reset, cpu);
+         main_cpu_reset(cpu);
+diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboard.c
+index 19dd587..ccc0703 100644
+--- a/hw/tricore/tricore_testboard.c
++++ b/hw/tricore/tricore_testboard.c
+@@ -52,7 +52,7 @@ static void tricore_load_kernel(CPUTriCoreState *env)
+     if (kernel_size <= 0) {
+         error_report("qemu: no kernel file '%s'",
+                 tricoretb_binfo.kernel_filename);
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+     env->PC = entry;
+ 
+@@ -77,7 +77,7 @@ static void tricore_testboard_init(MachineState *machine, int board_id)
+     cpu = cpu_tricore_init(machine->cpu_model);
+     if (!cpu) {
+         error_report("Unable to find CPU definition");
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+     env = &cpu->env;
+     memory_region_init_ram(ext_cram, NULL, "powerlink_ext_c.ram", 2*1024*1024,
+diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
+index 31cd171..f9c65be 100644
+--- a/hw/unicore32/puv3.c
++++ b/hw/unicore32/puv3.c
+@@ -101,7 +101,7 @@ static void puv3_load_kernel(const char *kernel_filename)
+             KERNEL_MAX_SIZE);
+     if (size < 0) {
+         error_report("Load kernel error: '%s'", kernel_filename);
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+ 
+     /* cheat curses that we have a graphic console, only under ocd console */
+@@ -119,7 +119,7 @@ static void puv3_init(MachineState *machine)
+ 
+     if (initrd_filename) {
+         error_report("Please use kernel built-in initramdisk");
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+ 
+     if (!cpu_model) {
+@@ -129,7 +129,7 @@ static void puv3_init(MachineState *machine)
+     cpu = uc32_cpu_init(cpu_model);
+     if (!cpu) {
+         error_report("Unable to find CPU definition");
+-        exit(1);
++        exit(EXIT_FAILURE);
+     }
+     env = &cpu->env;
+ 
 -- 
 2.5.5
 
