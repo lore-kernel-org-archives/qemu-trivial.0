@@ -1,52 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bkuQr-0002Lv-8f
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 10:48:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55401)
+	id 1bkubP-0000Aq-Ig
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 10:58:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bkuQp-0002IF-5X
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:48:00 -0400
+	(envelope-from <no-reply@patchew.org>) id 1bkubJ-00006m-SN
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bkuQo-0001uv-A2
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:47:59 -0400
-Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:36760)
+	(envelope-from <no-reply@patchew.org>) id 1bkubA-0000xE-Nz
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:49 -0400
+Resent-Date: Fri, 16 Sep 2016 10:58:49 -0400
+Resent-Message-Id: <E1bkubA-0000xE-Nz@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21390)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bkuQo-0001uk-5Z
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:47:58 -0400
-Received: by mail-vk0-x22b.google.com with SMTP id m62so30607755vkd.3
-	for <qemu-trivial@nongnu.org>; Fri, 16 Sep 2016 07:47:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1iwo3UAQb3YrmC1BAISaHYysL2dDGSbExMtKxP9r8hU=;
-	b=GUEqmPas8C5wKbNo5SHcLM17FzWCwiv7JyqCUsnzFNs+AL6zQPj2fiDmI+/sG4dHU0
-	Lwews0Za79gTZXkKyE/kdD9FV/4PyllUPqkXTjFNvUAS8W9wAnB8GoQgynizYEz9xw66
-	LDf9bc5nYHGoivbW8zECuehXaeNLcP6lL3R2M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1iwo3UAQb3YrmC1BAISaHYysL2dDGSbExMtKxP9r8hU=;
-	b=df6FXmhv2Iw5vLO97M8YErSi3N9Amqf7S1ZTfXl/9BiwAmZD+yPcPHFCrXkeKWh41p
-	azsFd4ifU68XLu//xfw8g5yrdY+70Fxp7Q6w83xfub/VZRl9nH8HJ0OcFbulteXe9P2v
-	XMzS0KqZ6X9ylcAb3FInYQ71Q1n+ozaPmyPSZX74GSSgvLWq8R9DD+m9gFrmAYBs/euY
-	dNfyMyN088gf7RN2vf0fAzX9WnX2kFm+Oixht7EHDCLSHcZfpsusCfAoAFUSvELg2BCp
-	KBYI6Ia2djjEJAPUWUkI41DpA778yUJLXk6qf51XXIWwcfbSGomJZjmnbyz2257jryfT
-	uAtg==
-X-Gm-Message-State: AE9vXwM/NHJZQAXfpmpzwImDCRRGwA/N91bS/qQB3diLeorq1O/vE96mp+0YallpSntIjIaJl0W0/fJebqkOxBG8
-X-Received: by 10.31.221.66 with SMTP id u63mr3804130vkg.173.1474037277507;
-	Fri, 16 Sep 2016 07:47:57 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.9.131 with HTTP; Fri, 16 Sep 2016 07:47:37 -0700 (PDT)
+	(envelope-from <no-reply@patchew.org>) id 1bkubA-0000wO-Ek
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 10:58:40 -0400
+Received: from ex-std-node742.prod.rhcloud.com
+	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
+	mx.zohomail.com with SMTPS id 147403687109155.28755757407805;
+	Fri, 16 Sep 2016 07:41:11 -0700 (PDT)
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <20160916144105.19907.17105@ex-std-node742.prod.rhcloud.com>
 In-Reply-To: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
-References: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Sep 2016 15:47:37 +0100
-Message-ID: <CAFEAcA9kTe0geCwguRbRSn8ozhnfarz4eTd5+Ra5kTZeR-fJkA@mail.gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22b
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: lvivier@redhat.com
+Cc: famz@redhat.com, qemu-trivial@nongnu.org, lvivier@redhat.com,
+	qemu-devel@nongnu.org
+Date: Fri, 16 Sep 2016 07:41:11 -0700 (PDT)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 74.201.84.163
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/26] trivial: use
  exit(EXIT_SUCCESS) and exit(EXIT_FAILURE)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,27 +45,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Sep 2016 14:48:00 -0000
+X-List-Received-Date: Fri, 16 Sep 2016 14:58:54 -0000
 
-On 16 September 2016 at 14:55, Laurent Vivier <lvivier@redhat.com> wrote:
-> This series is the result of coccinelle patch
-> scripts/coccinelle/exit.cocci
-> provided by the first patch of the series.
->
-> It replaces exit(0) by exit(EXIT_SUCCESS)
-> and exit(1) by exit(EXIT_FAILURE).
->
-> All other exit() are not modified as we don't want
-> to change the behavior.
->
-> In some cases, I've added manually a line break to comply
-> with the maximum line length.
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDE0NzQwMzQxNzctMTc2NjMtMS1naXQtc2VuZC1lbWFpbC1sdml2aWVyQHJlZGhh
+dC5jb20KU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCAwMC8yNl0gdHJpdmlhbDogdXNlIGV4
+aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCgo9PT0gVEVTVCBTQ1JJUFQg
+QkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0xCnRvdGFsPSQoZ2l0IGxvZyAtLW9u
+ZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBVc2VmdWwgZ2l0IG9wdGlvbnMKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2Ug
+JEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0gg
+JG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAg
+aWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
+IC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkK
+ICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09
+CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20g
+aHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAg
+ICAgIHBhdGNoZXcvMTQ3NDAzNDE3Ny0xNzY2My0xLWdpdC1zZW5kLWVtYWlsLWx2aXZpZXJAcmVk
+aGF0LmNvbSAtPiBwYXRjaGV3LzE0NzQwMzQxNzctMTc2NjMtMS1naXQtc2VuZC1lbWFpbC1sdml2
+aWVyQHJlZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwozMjM1ODEwIG5l
+dDogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjEzNWZkNzUg
+aHc6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQplN2I2MjI0
+IGVycm9yLCB0cmFjZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxV
+UkUpCmMxMzdhYzIgY29yZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
+SUxVUkUpCjA3Mjg4YzEgYmxvY2tkZXY6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQo
+RVhJVF9GQUlMVVJFKQo3YjYyOGQxIG1pc2MgbWFjaGluZTogdXNlIGV4aXQoRVhJVF9TVUNDRVNT
+KSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjZjNDk2N2MgY29tbW9uOiB1c2UgZXhpdChFWElUX1NV
+Q0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKN2I4ZWY2ZiBhbHBoYTogdXNlIGV4aXQoRVhJ
+VF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjg0YzcwZjMgcG9zaXg6IHVzZSBleGl0
+KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQpjNTUwYWJhIHRjZzogdXNlIGV4
+aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCmQyYjg4NDggczM5MDogdXNl
+IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCmY5ODYyOGMgbWlwczog
+dXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjIxMjg0OTkgeDg2
+OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKZmYwNTRmZCBz
+aDQ6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKQo4NjVkZjc1
+IHNwYXJjOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKYzQ0
+MzU0NiBwY2ksIHZpcnRpbzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
+SUxVUkUpCjYyNGE4MzkgbTY4azogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElU
+X0ZBSUxVUkUpCmQ4ZTYyZTAgcWVtdS11c2VyOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBl
+eGl0KEVYSVRfRkFJTFVSRSkKYTk1Yzk4NiByZXBsYXk6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykg
+YW5kIGV4aXQoRVhJVF9GQUlMVVJFKQpiYzJmYTdkIHRlc3RzOiB1c2UgZXhpdChFWElUX1NVQ0NF
+U1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKOGFkNWI2NiBncmFwaGljczogdXNlIGV4aXQoRVhJ
+VF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjA4NmQ1NTcgcHBjOiB1c2UgZXhpdChF
+WElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKZjQ1NmU1ZiBibG9jazogdXNlIGV4
+aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjJiYzcwMGMgY3JpczogdXNl
+IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpCjVjYWNmYjYgYXJtOiB1
+c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKNTY2NzU1YyBjb2Nj
+aW5lbGxlOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkKCj09
+PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMjY6IGNvY2NpbmVsbGU6IHVzZSBl
+eGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRD
+SCAyLzI2OiBhcm06IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJF
+KS4uLgpDaGVja2luZyBQQVRDSCAzLzI2OiBjcmlzOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFu
+ZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1
+c2UgdGFicwojNjQ6IEZJTEU6IHRlc3RzL3RjZy9jcmlzL2NoZWNrX2dsaWJjX2tlcm5lbHZlcnNp
+b24uYzoxMTU6CiteSWV4aXQoRVhJVF9TVUNDRVNTKTskCgpFUlJPUjogY29kZSBpbmRlbnQgc2hv
+dWxkIG5ldmVyIHVzZSB0YWJzCiM4NjogRklMRTogdGVzdHMvdGNnL2NyaXMvY2hlY2tfbHouYzo0
+ODoKK15JZXhpdChFWElUX1NVQ0NFU1MpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
+ZXIgdXNlIHRhYnMKIzIzMzogRklMRTogdGVzdHMvdGNnL2NyaXMvc3lzLmM6MTU6CiteSWV4aXQo
+RVhJVF9TVUNDRVNTKTskCgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3MsIDEzMyBsaW5lcyBj
+aGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
+IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
+aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQ
+QVRDSCA0LzI2OiBibG9jazogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZB
+SUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDUvMjY6IHBwYzogdXNlIGV4aXQoRVhJVF9TVUNDRVNT
+KSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDYvMjY6IGdyYXBoaWNz
+OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tp
+bmcgUEFUQ0ggNy8yNjogdGVzdHM6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJ
+VF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCA4LzI2OiByZXBsYXk6IHVzZSBleGl0KEVYSVRf
+U1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCA5LzI2OiBx
+ZW11LXVzZXI6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4u
+LgpDaGVja2luZyBQQVRDSCAxMC8yNjogbTY4azogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQg
+ZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDExLzI2OiBwY2ksIHZpcnRpbzog
+dXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5n
+IFBBVENIIDEyLzI2OiBzcGFyYzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElU
+X0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDEzLzI2OiBzaDQ6IHVzZSBleGl0KEVYSVRfU1VD
+Q0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxNC8yNjogeDg2
+OiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tp
+bmcgUEFUQ0ggMTUvMjY6IG1pcHM6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJ
+VF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxNi8yNjogczM5MDogdXNlIGV4aXQoRVhJVF9T
+VUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDE3LzI2OiB0
+Y2c6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVj
+a2luZyBQQVRDSCAxOC8yNjogcG9zaXg6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykgYW5kIGV4aXQo
+RVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAxOS8yNjogYWxwaGE6IHVzZSBleGl0KEVY
+SVRfU1VDQ0VTUykgYW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgpDaGVja2luZyBQQVRDSCAyMC8y
+NjogY29tbW9uOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0KEVYSVRfRkFJTFVSRSku
+Li4KQ2hlY2tpbmcgUEFUQ0ggMjEvMjY6IG1pc2MgbWFjaGluZTogdXNlIGV4aXQoRVhJVF9TVUND
+RVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBBVENIIDIyLzI2OiBibG9j
+a2RldjogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNo
+ZWNraW5nIFBBVENIIDIzLzI2OiBjb3JlOiB1c2UgZXhpdChFWElUX1NVQ0NFU1MpIGFuZCBleGl0
+KEVYSVRfRkFJTFVSRSkuLi4KQ2hlY2tpbmcgUEFUQ0ggMjQvMjY6IGVycm9yLCB0cmFjZTogdXNl
+IGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxVUkUpLi4uCkNoZWNraW5nIFBB
+VENIIDI1LzI2OiBodzogdXNlIGV4aXQoRVhJVF9TVUNDRVNTKSBhbmQgZXhpdChFWElUX0ZBSUxV
+UkUpLi4uCkNoZWNraW5nIFBBVENIIDI2LzI2OiBuZXQ6IHVzZSBleGl0KEVYSVRfU1VDQ0VTUykg
+YW5kIGV4aXQoRVhJVF9GQUlMVVJFKS4uLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFu
+ZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
+IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRi
+YWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 
->  182 files changed, 734 insertions(+), 715 deletions(-)
-
-You don't say why this is a useful change to make, and it's an
-awful lot of churn for a stylistic issue...
-
-thanks
--- PMM
 
