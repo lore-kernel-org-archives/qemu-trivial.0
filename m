@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bkteo-0004S9-0y
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 09:58:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59160)
+	id 1bkten-0004Rp-Ms
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Sep 2016 09:58:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bkted-0004Hv-E8
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:16 -0400
+	(envelope-from <lvivier@redhat.com>) id 1bktek-0004Oy-Vt
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bkteX-0007tq-OP
-	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56442)
+	(envelope-from <lvivier@redhat.com>) id 1bktei-00083c-Lc
+	for qemu-trivial@nongnu.org; Fri, 16 Sep 2016 09:58:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56606)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lvivier@redhat.com>)
-	id 1bkteN-0007L0-Dx; Fri, 16 Sep 2016 09:57:55 -0400
+	id 1bkteY-00076i-1A; Fri, 16 Sep 2016 09:58:06 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7629C30C7D5;
-	Fri, 16 Sep 2016 13:56:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 35F5E18DF5D;
+	Fri, 16 Sep 2016 13:56:55 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-112-33.ams2.redhat.com [10.36.112.33])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8GDuHkB024127; Fri, 16 Sep 2016 09:56:36 -0400
+	id u8GDuHkJ024127; Fri, 16 Sep 2016 09:56:53 -0400
 From: Laurent Vivier <lvivier@redhat.com>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>
-Date: Fri, 16 Sep 2016 15:56:00 +0200
-Message-Id: <1474034177-17663-10-git-send-email-lvivier@redhat.com>
+	Richard Henderson <rth@twiddle.net>
+Date: Fri, 16 Sep 2016 15:56:08 +0200
+Message-Id: <1474034177-17663-18-git-send-email-lvivier@redhat.com>
 In-Reply-To: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
 References: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.29]);
-	Fri, 16 Sep 2016 13:56:38 +0000 (UTC)
+	Fri, 16 Sep 2016 13:56:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 09/26] qemu-user: use exit(EXIT_SUCCESS) and
+Subject: [Qemu-trivial] [PATCH 17/26] tcg: use exit(EXIT_SUCCESS) and
  exit(EXIT_FAILURE)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -48,148 +48,149 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Sep 2016 13:58:16 -0000
+X-List-Received-Date: Fri, 16 Sep 2016 13:58:20 -0000
 
 This patch is the result of coccinelle script
 scripts/coccinelle/exit.cocci
 
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-CC: Riku Voipio <riku.voipio@iki.fi>
+CC: Richard Henderson <rth@twiddle.net>
 ---
- bsd-user/main.c      | 20 ++++++++++----------
- linux-user/main.c    |  4 ++--
- linux-user/syscall.c |  2 +-
- 3 files changed, 13 insertions(+), 13 deletions(-)
+ cpus.c          | 16 ++++++++--------
+ cputlb.c        |  2 +-
+ exec.c          |  2 +-
+ tcg/tcg.c       |  2 +-
+ translate-all.c |  2 +-
+ 5 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 0fb08e4..e47e4d7 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -658,7 +658,7 @@ void cpu_loop(CPUSPARCState *env)
- #endif
-             printf ("Unhandled trap: 0x%x\n", trapnr);
-             cpu_dump_state(cs, stderr, fprintf, 0);
--            exit (1);
-+            exit(EXIT_FAILURE);
-         }
-         process_pending_signals (env);
-     }
-@@ -708,7 +708,7 @@ static void usage(void)
-            TARGET_NAME,
-            interp_prefix,
-            x86_stack_size);
--    exit(1);
-+    exit(EXIT_FAILURE);
- }
- 
- THREAD CPUState *thread_cpu;
-@@ -752,7 +752,7 @@ int main(int argc, char **argv)
- 
-     if ((envlist = envlist_create()) == NULL) {
-         (void) fprintf(stderr, "Unable to allocate envlist\n");
--        exit(1);
-+        exit(EXIT_FAILURE);
-     }
- 
-     /* add current environment into the list */
-@@ -793,7 +793,7 @@ int main(int argc, char **argv)
-             envlist_free(envlist);
-             if ((envlist = envlist_create()) == NULL) {
-                 (void) fprintf(stderr, "Unable to allocate envlist\n");
--                exit(1);
-+                exit(EXIT_FAILURE);
-             }
-         } else if (!strcmp(r, "U")) {
-             r = argv[optind++];
-@@ -815,7 +815,7 @@ int main(int argc, char **argv)
-             if (qemu_host_page_size == 0 ||
-                 (qemu_host_page_size & (qemu_host_page_size - 1)) != 0) {
-                 fprintf(stderr, "page size must be a power of two\n");
--                exit(1);
-+                exit(EXIT_FAILURE);
-             }
-         } else if (!strcmp(r, "g")) {
-             gdbstub_port = atoi(argv[optind++]);
-@@ -828,7 +828,7 @@ int main(int argc, char **argv)
- #if defined(cpu_list)
-                     cpu_list(stdout, &fprintf);
- #endif
--                exit(1);
-+                exit(EXIT_FAILURE);
-             }
-         } else if (!strcmp(r, "B")) {
-            guest_base = strtol(argv[optind++], NULL, 0);
-@@ -867,7 +867,7 @@ int main(int argc, char **argv)
-         mask = qemu_str_to_log_mask(log_mask);
-         if (!mask) {
-             qemu_print_log_usage(stdout);
+diff --git a/cpus.c b/cpus.c
+index e39ccb7..16898d3 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -159,7 +159,7 @@ int64_t cpu_get_icount_raw(void)
+     if (cpu) {
+         if (!cpu->can_do_io) {
+             fprintf(stderr, "Bad icount read\n");
 -            exit(1);
 +            exit(EXIT_FAILURE);
          }
-         qemu_set_log(mask);
+         icount -= (cpu->icount_decr.u16.low + cpu->icount_extra);
      }
-@@ -878,7 +878,7 @@ int main(int argc, char **argv)
-     filename = argv[optind];
+@@ -829,7 +829,7 @@ static void qemu_kvm_eat_signals(CPUState *cpu)
+         r = sigtimedwait(&waitset, &siginfo, &ts);
+         if (r == -1 && !(errno == EAGAIN || errno == EINTR)) {
+             perror("sigtimedwait");
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
  
-     if (!trace_init_backends()) {
+         switch (r) {
+@@ -845,7 +845,7 @@ static void qemu_kvm_eat_signals(CPUState *cpu)
+         r = sigpending(&chkset);
+         if (r == -1) {
+             perror("sigpending");
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+     } while (sigismember(&chkset, SIG_IPI) || sigismember(&chkset, SIGBUS));
+ }
+@@ -882,7 +882,7 @@ static void qemu_kvm_init_cpu_signals(CPUState *cpu)
+     r = kvm_set_signal_mask(cpu, &set);
+     if (r) {
+         fprintf(stderr, "kvm_set_signal_mask: %s\n", strerror(-r));
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
-     trace_init_file(trace_file);
+ }
  
-@@ -914,7 +914,7 @@ int main(int argc, char **argv)
-     cpu = cpu_init(cpu_model);
-     if (!cpu) {
-         fprintf(stderr, "Unable to find CPU definition\n");
+@@ -1070,7 +1070,7 @@ static void *qemu_kvm_cpu_thread_fn(void *arg)
+     r = kvm_init_vcpu(cpu);
+     if (r < 0) {
+         fprintf(stderr, "kvm_init_vcpu failed: %s\n", strerror(-r));
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
-     env = cpu->env_ptr;
- #if defined(TARGET_SPARC) || defined(TARGET_PPC)
-@@ -1010,7 +1010,7 @@ int main(int argc, char **argv)
-     /* enable 64 bit mode if possible */
-     if (!(env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM)) {
-         fprintf(stderr, "The selected x86 CPU does not support 64 bit mode\n");
+ 
+     qemu_kvm_init_cpu_signals(cpu);
+@@ -1100,7 +1100,7 @@ static void *qemu_dummy_cpu_thread_fn(void *arg)
+ {
+ #ifdef _WIN32
+     fprintf(stderr, "qtest is not supported under Windows\n");
+-    exit(1);
++    exit(EXIT_FAILURE);
+ #else
+     CPUState *cpu = arg;
+     sigset_t waitset;
+@@ -1130,7 +1130,7 @@ static void *qemu_dummy_cpu_thread_fn(void *arg)
+         } while (r == -1 && (errno == EAGAIN || errno == EINTR));
+         if (r == -1) {
+             perror("sigwait");
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+         qemu_mutex_lock_iothread();
+         current_cpu = cpu;
+@@ -1213,7 +1213,7 @@ static void qemu_cpu_kick_thread(CPUState *cpu)
+     err = pthread_kill(cpu->thread->thread, SIG_IPI);
+     if (err) {
+         fprintf(stderr, "qemu:%s: %s", __func__, strerror(err));
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
-     env->cr[4] |= CR4_PAE_MASK;
-     env->efer |= MSR_EFER_LMA | MSR_EFER_LME;
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 3ad70f8..0ab5360 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -4243,7 +4243,7 @@ int main(int argc, char **argv, char **envp)
-     optind = parse_args(argc, argv);
- 
-     if (!trace_init_backends()) {
+ #else /* _WIN32 */
+     abort();
+diff --git a/cputlb.c b/cputlb.c
+index d068ee5..39cc513 100644
+--- a/cputlb.c
++++ b/cputlb.c
+@@ -491,7 +491,7 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env1, target_ulong addr)
+             cc->do_unassigned_access(cpu, addr, false, true, 0, 4);
+         } else {
+             report_bad_exec(cpu, addr);
+-            exit(1);
++            exit(EXIT_FAILURE);
+         }
+     }
+     p = (void *)((uintptr_t)addr + env1->tlb_table[mmu_idx][page_index].addend);
+diff --git a/exec.c b/exec.c
+index c81d5ab..f62a54c 100644
+--- a/exec.c
++++ b/exec.c
+@@ -1801,7 +1801,7 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
+                     fprintf(stderr, "Could not remap addr: "
+                             RAM_ADDR_FMT "@" RAM_ADDR_FMT "\n",
+                             length, addr);
+-                    exit(1);
++                    exit(EXIT_FAILURE);
+                 }
+                 memory_try_enable_merging(vaddr, length);
+                 qemu_ram_setup_dump(vaddr, length);
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index c450c62..0094fa5 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -1269,7 +1269,7 @@ void tcg_add_target_add_op_defs(const TCGTargetOpDef *tdefs)
+                         if (target_parse_constraint(&def->args_ct[i], &ct_str) < 0) {
+                             fprintf(stderr, "Invalid constraint '%s' for arg %d of operation '%s'\n",
+                                     ct_str, i, def->name);
+-                            exit(1);
++                            exit(EXIT_FAILURE);
+                         }
+                     }
+                 }
+diff --git a/translate-all.c b/translate-all.c
+index b6663dc..5f1be0f 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -720,7 +720,7 @@ static inline void code_gen_alloc(size_t tb_size)
+     tcg_ctx.code_gen_buffer = alloc_code_gen_buffer();
+     if (tcg_ctx.code_gen_buffer == NULL) {
+         fprintf(stderr, "Could not allocate dynamic translator buffer\n");
 -        exit(1);
 +        exit(EXIT_FAILURE);
      }
-     trace_init_file(trace_file);
  
-@@ -4700,7 +4700,7 @@ int main(int argc, char **argv, char **envp)
-             if ((env->active_fpu.fcr31_rw_bitmask &
-                   (1 << FCR31_NAN2008)) == 0) {
-                 fprintf(stderr, "ELF binary's NaN mode not supported by CPU\n");
--                exit(1);
-+                exit(EXIT_FAILURE);
-             }
-             if ((info->elf_flags & EF_MIPS_NAN2008) != 0) {
-                 env->active_fpu.fcr31 |= (1 << FCR31_NAN2008);
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index ca06943..da1f581 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -6513,7 +6513,7 @@ void syscall_init(void)
-             if (arg_type[0] != TYPE_PTR) {
-                 fprintf(stderr, "cannot patch size for ioctl 0x%x\n",
-                         ie->target_cmd);
--                exit(1);
-+                exit(EXIT_FAILURE);
-             }
-             arg_type++;
-             size = thunk_type_size(arg_type, 0);
+     /* Estimate a good size for the number of TBs we can support.  We
 -- 
 2.5.5
 
