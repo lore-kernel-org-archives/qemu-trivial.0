@@ -1,40 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bmn5l-0004Da-BH
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2016 15:22:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50558)
+	id 1bmri8-0007L2-Ic
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2016 20:17:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <voipio@kos.to>) id 1bmn5i-0004AG-Po
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 15:22:00 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bmri6-0007I7-Na
+	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 20:17:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <voipio@kos.to>) id 1bmn5g-0007I2-D0
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 15:21:57 -0400
-Received: from jessie.kos.to ([212.47.231.226]:43954 helo=pilvi.kos.to)
+	(envelope-from <dgibson@ozlabs.org>) id 1bmri4-0002ik-I2
+	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 20:17:53 -0400
+Received: from ozlabs.org ([103.22.144.67]:59299)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <voipio@kos.to>)
-	id 1bmn5Z-0007F1-Dp; Wed, 21 Sep 2016 15:21:49 -0400
-Received: from kos.to (jessie.kos.to [212.47.231.226])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by pilvi.kos.to (Postfix) with ESMTPSA id 344E92C0021;
-	Wed, 21 Sep 2016 19:21:41 +0000 (UTC)
-Received: (nullmailer pid 25473 invoked by uid 1000);
-	Wed, 21 Sep 2016 19:21:40 -0000
-Date: Wed, 21 Sep 2016 19:21:40 +0000
-From: Riku Voipio <riku.voipio@iki.fi>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <20160921192140.GF24113@kos.to>
-References: <1474034177-17663-1-git-send-email-lvivier@redhat.com>
-	<1474034177-17663-10-git-send-email-lvivier@redhat.com>
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1bmrhv-0002cV-31; Wed, 21 Sep 2016 20:17:43 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3sfcWn6PH2z9sf6; Thu, 22 Sep 2016 10:17:41 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1474503461;
+	bh=h3yxqHDu+5eBHbSroTcfqBcqTotbFSlZf4+NC9+1NGw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=c06vfqBfKNdC/eNTWiDJMpMUYG0Wr9P3wZYxibVw7VlWvJ+060qQLeufVH+tRbQQu
+	NBxzh29/HfQfEgFdHaCaqNoxZpvlKhN1R2RQDy6ZQiqbgCnzq/EZIRXODaDLYz11DA
+	0XPy63OgJfuijUiyCMAP2wzRE04OYC6lqXIMsZEo=
+Date: Thu, 22 Sep 2016 10:17:12 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
+	lcapitulino@redhat.com, armbru@redhat.com, imammedo@redhat.com,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Message-ID: <20160922001712.GL1809@umbus.fritz.box>
+References: <1474435766-9727-1-git-send-email-david@gibson.dropbear.id.au>
+	<20160921121402.GI3233@thinpad.lan.raisama.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="S6vg04ofUPzW4qJg"
 Content-Disposition: inline
-In-Reply-To: <1474034177-17663-10-git-send-email-lvivier@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20160921121402.GI3233@thinpad.lan.raisama.net>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.47.231.226
-Subject: Re: [Qemu-trivial] [PATCH 09/26] qemu-user: use exit(EXIT_SUCCESS)
- and exit(EXIT_FAILURE)
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH] monitor: fix crash for platforms without
+ a CPU 0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,153 +51,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Sep 2016 19:22:00 -0000
+X-List-Received-Date: Thu, 22 Sep 2016 00:17:56 -0000
 
-On Fri, Sep 16, 2016 at 03:56:00PM +0200, Laurent Vivier wrote:
-> This patch is the result of coccinelle script
-> scripts/coccinelle/exit.cocci
-> 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> CC: Riku Voipio <riku.voipio@iki.fi>
 
-Acked-by: Riku Voipio <riku.voipio@iki.fi>
+--S6vg04ofUPzW4qJg
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> ---
->  bsd-user/main.c      | 20 ++++++++++----------
->  linux-user/main.c    |  4 ++--
->  linux-user/syscall.c |  2 +-
->  3 files changed, 13 insertions(+), 13 deletions(-)
-> 
-> diff --git a/bsd-user/main.c b/bsd-user/main.c
-> index 0fb08e4..e47e4d7 100644
-> --- a/bsd-user/main.c
-> +++ b/bsd-user/main.c
-> @@ -658,7 +658,7 @@ void cpu_loop(CPUSPARCState *env)
->  #endif
->              printf ("Unhandled trap: 0x%x\n", trapnr);
->              cpu_dump_state(cs, stderr, fprintf, 0);
-> -            exit (1);
-> +            exit(EXIT_FAILURE);
->          }
->          process_pending_signals (env);
->      }
-> @@ -708,7 +708,7 @@ static void usage(void)
->             TARGET_NAME,
->             interp_prefix,
->             x86_stack_size);
-> -    exit(1);
-> +    exit(EXIT_FAILURE);
->  }
->  
->  THREAD CPUState *thread_cpu;
-> @@ -752,7 +752,7 @@ int main(int argc, char **argv)
->  
->      if ((envlist = envlist_create()) == NULL) {
->          (void) fprintf(stderr, "Unable to allocate envlist\n");
-> -        exit(1);
-> +        exit(EXIT_FAILURE);
->      }
->  
->      /* add current environment into the list */
-> @@ -793,7 +793,7 @@ int main(int argc, char **argv)
->              envlist_free(envlist);
->              if ((envlist = envlist_create()) == NULL) {
->                  (void) fprintf(stderr, "Unable to allocate envlist\n");
-> -                exit(1);
-> +                exit(EXIT_FAILURE);
->              }
->          } else if (!strcmp(r, "U")) {
->              r = argv[optind++];
-> @@ -815,7 +815,7 @@ int main(int argc, char **argv)
->              if (qemu_host_page_size == 0 ||
->                  (qemu_host_page_size & (qemu_host_page_size - 1)) != 0) {
->                  fprintf(stderr, "page size must be a power of two\n");
-> -                exit(1);
-> +                exit(EXIT_FAILURE);
->              }
->          } else if (!strcmp(r, "g")) {
->              gdbstub_port = atoi(argv[optind++]);
-> @@ -828,7 +828,7 @@ int main(int argc, char **argv)
->  #if defined(cpu_list)
->                      cpu_list(stdout, &fprintf);
->  #endif
-> -                exit(1);
-> +                exit(EXIT_FAILURE);
->              }
->          } else if (!strcmp(r, "B")) {
->             guest_base = strtol(argv[optind++], NULL, 0);
-> @@ -867,7 +867,7 @@ int main(int argc, char **argv)
->          mask = qemu_str_to_log_mask(log_mask);
->          if (!mask) {
->              qemu_print_log_usage(stdout);
-> -            exit(1);
-> +            exit(EXIT_FAILURE);
->          }
->          qemu_set_log(mask);
->      }
-> @@ -878,7 +878,7 @@ int main(int argc, char **argv)
->      filename = argv[optind];
->  
->      if (!trace_init_backends()) {
-> -        exit(1);
-> +        exit(EXIT_FAILURE);
->      }
->      trace_init_file(trace_file);
->  
-> @@ -914,7 +914,7 @@ int main(int argc, char **argv)
->      cpu = cpu_init(cpu_model);
->      if (!cpu) {
->          fprintf(stderr, "Unable to find CPU definition\n");
-> -        exit(1);
-> +        exit(EXIT_FAILURE);
->      }
->      env = cpu->env_ptr;
->  #if defined(TARGET_SPARC) || defined(TARGET_PPC)
-> @@ -1010,7 +1010,7 @@ int main(int argc, char **argv)
->      /* enable 64 bit mode if possible */
->      if (!(env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM)) {
->          fprintf(stderr, "The selected x86 CPU does not support 64 bit mode\n");
-> -        exit(1);
-> +        exit(EXIT_FAILURE);
->      }
->      env->cr[4] |= CR4_PAE_MASK;
->      env->efer |= MSR_EFER_LMA | MSR_EFER_LME;
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 3ad70f8..0ab5360 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -4243,7 +4243,7 @@ int main(int argc, char **argv, char **envp)
->      optind = parse_args(argc, argv);
->  
->      if (!trace_init_backends()) {
-> -        exit(1);
-> +        exit(EXIT_FAILURE);
->      }
->      trace_init_file(trace_file);
->  
-> @@ -4700,7 +4700,7 @@ int main(int argc, char **argv, char **envp)
->              if ((env->active_fpu.fcr31_rw_bitmask &
->                    (1 << FCR31_NAN2008)) == 0) {
->                  fprintf(stderr, "ELF binary's NaN mode not supported by CPU\n");
-> -                exit(1);
-> +                exit(EXIT_FAILURE);
->              }
->              if ((info->elf_flags & EF_MIPS_NAN2008) != 0) {
->                  env->active_fpu.fcr31 |= (1 << FCR31_NAN2008);
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index ca06943..da1f581 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -6513,7 +6513,7 @@ void syscall_init(void)
->              if (arg_type[0] != TYPE_PTR) {
->                  fprintf(stderr, "cannot patch size for ioctl 0x%x\n",
->                          ie->target_cmd);
-> -                exit(1);
-> +                exit(EXIT_FAILURE);
->              }
->              arg_type++;
->              size = thunk_type_size(arg_type, 0);
-> -- 
-> 2.5.5
-> 
+On Wed, Sep 21, 2016 at 09:14:02AM -0300, Eduardo Habkost wrote:
+> On Wed, Sep 21, 2016 at 03:29:26PM +1000, David Gibson wrote:
+> > Now that we allow CPU hot unplug on a few platforms, we can end up in a
+> > situation where we don't have a CPU with index 0.  Or at least we could,
+> > if we didn't have code to explicitly prohibit unplug of CPU 0.
+> >=20
+> > Longer term we want to allow CPU 0 unplug, this patch is an early step =
+in
+> > allowing this, by removing an assumption in the monitor code that CPU 0
+> > always exists.
+> >=20
+> > Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
+> > [dwg: Rewrote commit message to better explain background]
+> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> > ---
+> >  monitor.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > Anyone want to volunteer to take this through their tree?  If not, I
+> > can take it through my ppc tree.
+> >=20
+> > diff --git a/monitor.c b/monitor.c
+> > index 8bb8bbf..83c4edf 100644
+> > --- a/monitor.c
+> > +++ b/monitor.c
+> > @@ -1025,7 +1025,7 @@ int monitor_set_cpu(int cpu_index)
+> >  CPUState *mon_get_cpu(void)
+> >  {
+> >      if (!cur_mon->mon_cpu) {
+> > -        monitor_set_cpu(0);
+> > +        monitor_set_cpu(first_cpu->cpu_index);
+>=20
+> So, we are replacing the "CPU 0 always exists" assumption with a
+> "first_cpu is always non-NULL" assumption.
+
+Well, we're replacing "CPU 0 is always present" assumption with "At
+least one CPU is always present", which is a strictly weaker
+constraint.
+
+> But considering that the first_cpu assumption already exists
+> elsewhere and those cases can be found easily using grep, I think
+> this is OK. So:
+>=20
+> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+>=20
+> BTW, it is also possible to crash QEMU by unplugging the current
+> monitor CPU;
+
+Ah... good point.
+
+>   (qemu) device_add qemu64-x86_64-cpu,socket-id=3D2,core-id=3D0,thread-id=
+=3D0,id=3Dmycpu
+>   (qemu) cpu 2
+>   (qemu) device_del mycpu
+>   (qemu) info registers
+>   qemu:qemu_cpu_kick_thread: No such process
+>   $=20
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--S6vg04ofUPzW4qJg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJX4yMIAAoJEGw4ysog2bOSDRgQAOBi5CBCZ7+qvjzA1Dcn8Itw
+tt+jMiFZkCRSXC6s4ydXtO2yhkCyJ99XeOooysAXjDElTjTo+zjGh58sDRQKExCO
+sEcuVVRtPTxMdZDm2iP0YDht8Cy4axJLGcsqez33rk1A1WmO83krZcoNQA96hmii
+egO384ZT9aMtm2CPxJ0ll5hCmwspuAb9N9RlDrHEJfJUUBcveyj25y79PZPxSgMt
+7QkqRqMoq9h6yGVZR7QnAkTR/woRFaKa+XE5tQg/QxcunOnzhmfcftAYyhA+MXB+
+zdNX6aEOua4Y6RFVRxGVpwTurFTTeK3Z+FG7aTU4MUUnYWpv3VimOGh/MMgOBRao
+wTAHPlM9xLurDAdQRQDKVnHCPhKMRh9O8+3mpOVlqraYynSoiMska2vejVKK3hIf
+B5PvvMgLG9lx0+3B0vuEyQDz4KJexu76k+F0KOBfMeA73jM7EOZDH6wkU37q9Auw
+MuENKMo4c0X5o9DNDcN1h9TNKe9yIisobjLaI6syz/3jeJBDA3oVFaYwjD2NEFS7
+/EYSf2cOrQewKfgPuvSPwKQyi88KBjYtTAmMjSvSVgqS7mZwhRBxGoANrF4GFIOA
+Gd4QGrRMu2RaAgOdMqLObhZXEqX8z/6kL6R+lEJ4thOfsmuLFqkSX6DIWpd8ugeI
+/oGyv03HByJFVe+zKNHd
+=6qhj
+-----END PGP SIGNATURE-----
+
+--S6vg04ofUPzW4qJg--
 
