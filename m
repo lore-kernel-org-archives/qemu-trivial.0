@@ -1,45 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bmrif-0007mY-Og
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Sep 2016 20:18:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42974)
+	id 1bmvSj-0005mk-IV
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Sep 2016 00:18:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bmria-0007gl-VP
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 20:18:29 -0400
+	(envelope-from <dave@natulte.net>) id 1bmvCk-0007WP-Ko
+	for qemu-trivial@nongnu.org; Thu, 22 Sep 2016 00:01:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bmriY-0002u2-KV
-	for qemu-trivial@nongnu.org; Wed, 21 Sep 2016 20:18:23 -0400
-Received: from ozlabs.org ([103.22.144.67]:52839)
+	(envelope-from <dave@natulte.net>) id 1bmvCh-0005jQ-Hc
+	for qemu-trivial@nongnu.org; Thu, 22 Sep 2016 00:01:46 -0400
+Received: from mail-pf0-f172.google.com ([209.85.192.172]:33354)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1bmriP-0002r0-5p; Wed, 21 Sep 2016 20:18:13 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3sfcWn6t6Vz9sD6; Thu, 22 Sep 2016 10:17:41 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1474503461;
-	bh=f55YFZ3Hm+TKuXaN9XpjzezKIzUQgfGkRJoxWIsxw4Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XC4uhFRY3nCObEwwEA8PKOrgfCY/Atprgn9vms/u0jAQVe400E5kxw6AuVXmPXdq9
-	GeqlEDu0jcsCaHk3KdiO5z3n3dhe2iyjbEC3YP4j3k3TacWGB7Mu2aGarjpZfKNzVZ
-	jSxJOSLGSeaM7/j5V2XqON5J+xFYseNlJZC8VEC0=
-Date: Thu, 22 Sep 2016 10:17:36 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Luiz Capitulino <lcapitulino@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	ehabkost@redhat.com, armbru@redhat.com, imammedo@redhat.com,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Message-ID: <20160922001736.GM1809@umbus.fritz.box>
-References: <1474435766-9727-1-git-send-email-david@gibson.dropbear.id.au>
-	<20160921105049.55ede6b1@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BHMq0+oGliEfCAkH"
-Content-Disposition: inline
-In-Reply-To: <20160921105049.55ede6b1@redhat.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+	(envelope-from <dave@natulte.net>) id 1bmvCh-0005jF-Ay
+	for qemu-trivial@nongnu.org; Thu, 22 Sep 2016 00:01:43 -0400
+Received: by mail-pf0-f172.google.com with SMTP id 21so25990279pfy.0
+	for <qemu-trivial@nongnu.org>; Wed, 21 Sep 2016 21:01:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=natulte-net.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=ffEPBFnMfBE0/ak6eVwAReWqTHCFMnjatIdDjGbZisA=;
+	b=LcVlB574STGaC/unlA3g2OcVySKumxBjzwEKrBYSMBKpW1MTN5odqaJZ9bxkwMOV1N
+	3M96GuLH9Lcyka2Z4UYZRjhvy9dnQZC1Rg0HFQ2eg5bzdnze+LnmKbD9f2oUug75OHRC
+	v/FPy39okPW8WcA39FJXD6rKwMOjr9mmfXPGDPTd7zz7CLespMk42LhoEsIFwNjR6bKi
+	Z3mQ4rZxPq36nyRRZ1OdWRhDRZWem6DS5XVsAVzcow4fkVkbjGvRrQjT7zvD/9OMh6jm
+	/Nqz3dkyA7lFNvpBwHIqsuFcfckjxBUd2ro/wSkClXPctqlKJ9x7ZDtfOuig4cFKHZ74
+	COMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=ffEPBFnMfBE0/ak6eVwAReWqTHCFMnjatIdDjGbZisA=;
+	b=caEx6lBqWG2J827v1QfUvcqTFFJzArK7J16vlBAtC76x3gqa/v1Cu/3sVX8lOeqGh7
+	EIK8Nmvdzyudy68twz7ow8HxRf8vJD2utacjgJPHLhLKpCjL4e7hSIspGSwCAMGEbjCY
+	m/n7/NA5xQ/PboqZrZfqc18+ba/k33CWywVWcx3UNGki6OqQQBTLm0Z+yIhlmFks2ghO
+	am3wgG73bWSh8yvK+JUUfbowp+jEZY8B/2ot0cNqhCMvMpdM79ryyU1E1m+KSh7OCe+7
+	4SC1iwPOjHyOscq2+SUcxNgRdsOthPLoDcYHfpAsP67+G8QHpYMPOAzJBzAOXc+4VbVf
+	PRkQ==
+X-Gm-Message-State: AE9vXwNG11Rni1KkOdvyXVNe4Hbg/dKgQ/2LtDNn4eUDlYpgnNdpEymUBwJDax89sSCp9A==
+X-Received: by 10.98.91.197 with SMTP id p188mr72197597pfb.101.1474516842259; 
+	Wed, 21 Sep 2016 21:00:42 -0700 (PDT)
+Received: from vega.home.universe.tf ([2001:470:49c4::95e6])
+	by smtp.gmail.com with ESMTPSA id 3sm49700790pai.48.2016.09.21.21.00.40
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 21 Sep 2016 21:00:40 -0700 (PDT)
+From: David Anderson <dave@natulte.net>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	David Anderson <dave@natulte.net>
+Date: Wed, 21 Sep 2016 21:00:19 -0700
+Message-Id: <20160922040019.19165-1-dave@natulte.net>
+X-Mailer: git-send-email 2.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] monitor: fix crash for platforms without
- a CPU 0
+	[fuzzy]
+X-Received-From: 209.85.192.172
+X-Mailman-Approved-At: Thu, 22 Sep 2016 00:18:15 -0400
+Subject: [Qemu-trivial] [PATCH] qapi: make the json schema files more
+ regular.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,86 +65,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Sep 2016 00:18:29 -0000
+X-List-Received-Date: Thu, 22 Sep 2016 04:01:47 -0000
 
+This makes it easier to parse the schema file for tool generation:
+each paragraph is either a non-docstring comment, or a docstring
+immediately followed by a Python dict describing an API item.
 
---BHMq0+oGliEfCAkH
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: David Anderson <dave@natulte.net>
+---
+ qapi-schema.json     | 3 +--
+ qapi/block-core.json | 5 -----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
 
-On Wed, Sep 21, 2016 at 10:50:49AM -0400, Luiz Capitulino wrote:
-> On Wed, 21 Sep 2016 15:29:26 +1000
-> David Gibson <david@gibson.dropbear.id.au> wrote:
->=20
-> > Now that we allow CPU hot unplug on a few platforms, we can end up in a
-> > situation where we don't have a CPU with index 0.  Or at least we could,
-> > if we didn't have code to explicitly prohibit unplug of CPU 0.
-> >=20
-> > Longer term we want to allow CPU 0 unplug, this patch is an early step =
-in
-> > allowing this, by removing an assumption in the monitor code that CPU 0
-> > always exists.
-> >=20
-> > Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
-> > [dwg: Rewrote commit message to better explain background]
-> > Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
-> > ---
-> >  monitor.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > Anyone want to volunteer to take this through their tree?  If not, I
-> > can take it through my ppc tree.
->=20
-> Please do.
+diff --git a/qapi-schema.json b/qapi-schema.json
+index e507061..edd803f 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -752,6 +752,7 @@
+             'cpu-throttle-increment': 'int',
+             'tls-creds': 'str',
+             'tls-hostname': 'str'} }
++
+ ##
+ # @query-migrate-parameters
+ #
+@@ -4115,7 +4116,6 @@
+ #
+ # Since 1.6
+ ##
+-
+ { 'struct': 'RxFilterInfo',
+   'data': {
+     'name':               'str',
+@@ -4335,7 +4335,6 @@
+ #
+ # Since: 2.1
+ ##
+-
+ { 'struct': 'Memdev',
+   'data': {
+     'size':       'size',
+diff --git a/qapi/block-core.json b/qapi/block-core.json
+index 24223fd..e12fbd3 100644
+--- a/qapi/block-core.json
++++ b/qapi/block-core.json
+@@ -25,7 +25,6 @@
+ # Since: 1.3
+ #
+ ##
+-
+ { 'struct': 'SnapshotInfo',
+   'data': { 'id': 'str', 'name': 'str', 'vm-state-size': 'int',
+             'date-sec': 'int', 'date-nsec': 'int',
+@@ -81,7 +80,6 @@
+ #
+ # Since: 1.7
+ ##
+-
+ { 'union': 'ImageInfoSpecific',
+   'data': {
+       'qcow2': 'ImageInfoSpecificQCow2',
+@@ -129,7 +127,6 @@
+ # Since: 1.3
+ #
+ ##
+-
+ { 'struct': 'ImageInfo',
+   'data': {'filename': 'str', 'format': 'str', '*dirty-flag': 'bool',
+            '*actual-size': 'int', 'virtual-size': 'int',
+@@ -181,7 +178,6 @@
+ # Since: 1.4
+ #
+ ##
+-
+ { 'struct': 'ImageCheck',
+   'data': {'filename': 'str', 'format': 'str', 'check-errors': 'int',
+            '*image-end-offset': 'int', '*corruptions': 'int', '*leaks': 'int',
+@@ -518,7 +514,6 @@
+ #
+ # Since: 2.5
+ ##
+-
+ { 'struct': 'BlockDeviceTimedStats',
+   'data': { 'interval_length': 'int', 'min_rd_latency_ns': 'int',
+             'max_rd_latency_ns': 'int', 'avg_rd_latency_ns': 'int',
+-- 
+2.9.3
 
-Ok, merged to ppc-for-2.8.
-
->=20
-> Reviewed-by: Luiz Capitulino <lcapitulino@redhat.com>
->=20
-> >=20
-> > diff --git a/monitor.c b/monitor.c
-> > index 8bb8bbf..83c4edf 100644
-> > --- a/monitor.c
-> > +++ b/monitor.c
-> > @@ -1025,7 +1025,7 @@ int monitor_set_cpu(int cpu_index)
-> >  CPUState *mon_get_cpu(void)
-> >  {
-> >      if (!cur_mon->mon_cpu) {
-> > -        monitor_set_cpu(0);
-> > +        monitor_set_cpu(first_cpu->cpu_index);
-> >      }
-> >      cpu_synchronize_state(cur_mon->mon_cpu);
-> >      return cur_mon->mon_cpu;
->=20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---BHMq0+oGliEfCAkH
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJX4yMgAAoJEGw4ysog2bOSdh0QAMg6ilXmbcWg2qgNQ/uYF+BX
-eNSESozILhx8g+NK7nUgCxriuetc35qWxDEoq/16M5Yi28sIrUonnX6zWFHNVE0E
-jHE9T+lsZ4yAAR5C4bi7iq27LlYiPqV3/Kiqy2oF9Ui+J23GLMZ/FCuLWhLnfNkj
-9+jOlnjtVHaVEptS1iQU+GT0fJkUiBgMziSpunJXDlfRdC0XWpAQS5KeNUvxOO4t
-DtKa96piwDBeJ0yQUspwPCch1NvaKKrWz+gbj+T2rf3Nhff9agypEp3v+olq4MpX
-dTIAUpk/zWoMMw5XcvL1jrpXA7LZ9RDy7dIkREql2MDMHNzznMP6aFgYaIQ4Rgg8
-lbCg3+zZ55R+WC7SvWJdjqTkByVeWeapibE3GRX+r7yNDIgudpYZ9tVNhldkcSed
-Wf/jUmtRAtA/lVzZ1bKw3xVIUjQKO3Fw2/NI+IMjUqEI7XCwhz32//2xbhIiDSyh
-0B1Pl1jWMcdFEAPzFtC13tY4d4TZpCAtctKvgIsoATjq+EpGufm3pDxVSr3f0ofu
-xt4w79ZDflq6r+/ncSSfiEPXtf3q2Q/b8mBMVBb+kYjrls0mG3GUlM7I9Z7Yvr6W
-Ubm13ahTvwodc4bgt0lvQKZAob/ihex11CAxSY9YUHh6u+jl5fS9VVoL3udFYiPB
-EVeCkYtnBxxO2wEpRhbH
-=GJ9V
------END PGP SIGNATURE-----
-
---BHMq0+oGliEfCAkH--
 
