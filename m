@@ -1,39 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bnT4W-0003dS-O2
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2016 12:11:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57921)
+	id 1bnTZ1-0005ig-8w
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2016 12:43:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41120)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1bnT4T-0003Zr-MP
-	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 12:11:30 -0400
+	(envelope-from <jsnow@redhat.com>) id 1bnTYz-0005fO-1d
+	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 12:43:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1bnT4S-0001Z5-Ml
-	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 12:11:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46704)
+	(envelope-from <jsnow@redhat.com>) id 1bnTYx-0003yY-4r
+	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 12:42:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36468)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1bnT4N-0001Ti-LB; Fri, 23 Sep 2016 12:11:23 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(envelope-from <jsnow@redhat.com>)
+	id 1bnTYp-0003wA-UE; Fri, 23 Sep 2016 12:42:52 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 31C76A757D;
-	Fri, 23 Sep 2016 16:11:23 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-56.ams2.redhat.com [10.36.116.56])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u8NGBLOT027550; Fri, 23 Sep 2016 12:11:22 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: Michael S Tsirkin <mst@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Fri, 23 Sep 2016 18:11:21 +0200
-Message-Id: <1474647081-30554-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B41D600D;
+	Fri, 23 Sep 2016 16:42:50 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-171.bos.redhat.com
+	[10.18.17.171])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8NGgnm1013451; Fri, 23 Sep 2016 12:42:49 -0400
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <1474646996-30421-1-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
+From: John Snow <jsnow@redhat.com>
+Message-ID: <8d0e6f92-a114-2f08-c789-25265e6abea9@redhat.com>
+Date: Fri, 23 Sep 2016 12:42:49 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
+MIME-Version: 1.0
+In-Reply-To: <1474646996-30421-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 23 Sep 2016 16:11:23 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 23 Sep 2016 16:42:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add some more files to the
- virtio section
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Add some more
+ headers to the IDE section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,30 +53,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Sep 2016 16:11:30 -0000
+X-List-Received-Date: Fri, 23 Sep 2016 16:43:02 -0000
 
-Makefile.objs and trace-events in hw/virtio/ were not covered
-by MAINTAINERS yet.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index acf6d6c..6902885 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -928,6 +928,8 @@ virtio
- M: Michael S. Tsirkin <mst@redhat.com>
- S: Supported
- F: hw/*/virtio*
-+F: hw/virtio/Makefile.objs
-+F: hw/virtio/trace-events
- F: net/vhost-user.c
- F: include/hw/virtio/
- F: tests/virtio-balloon-test.c
--- 
-1.8.3.1
+On 09/23/2016 12:09 PM, Thomas Huth wrote:
+> The folder include/hw/ide/ belongs to the IDE section.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d8a0cfc..acf6d6c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -791,6 +791,7 @@ M: John Snow <jsnow@redhat.com>
+>  L: qemu-block@nongnu.org
+>  S: Supported
+>  F: include/hw/ide.h
+> +F: include/hw/ide/
+>  F: hw/ide/
+>  F: hw/block/block.c
+>  F: hw/block/cdrom.c
+>
 
+Ah, yeah. These got missed when they were moved over. Thanks.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
 
