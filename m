@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bnPhQ-0002YN-Tc
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2016 08:35:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52460)
+	id 1bnQNz-0003HL-76
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Sep 2016 09:19:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1bnPhM-0002Um-RY
-	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 08:35:28 -0400
+	(envelope-from <thuth@redhat.com>) id 1bnQNt-0003Ah-Ka
+	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 09:19:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1bnPhK-0008Sl-U1
-	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 08:35:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52640)
+	(envelope-from <thuth@redhat.com>) id 1bnQNr-0000ht-Ow
+	for qemu-trivial@nongnu.org; Fri, 23 Sep 2016 09:19:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48962)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>)
-	id 1bnPhD-0008PY-Ae; Fri, 23 Sep 2016 08:35:15 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(envelope-from <thuth@redhat.com>)
+	id 1bnQNm-0000gV-30; Fri, 23 Sep 2016 09:19:14 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A2C5B1CCC40;
-	Fri, 23 Sep 2016 12:35:14 +0000 (UTC)
-Received: from localhost (ovpn-116-40.phx2.redhat.com [10.3.116.40])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8NCZCL7011375; Fri, 23 Sep 2016 08:35:13 -0400
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 23 Sep 2016 16:35:08 +0400
-Message-Id: <20160923123508.27000-1-marcandre.lureau@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B53EC00BB38;
+	Fri, 23 Sep 2016 13:19:13 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-56.ams2.redhat.com [10.36.116.56])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u8NDJBeE005849; Fri, 23 Sep 2016 09:19:11 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 23 Sep 2016 15:19:10 +0200
+Message-Id: <1474636750-7177-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 23 Sep 2016 12:35:14 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 23 Sep 2016 13:19:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] build-sys: fix find-in-path
+Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add include/hw/audio/ to audio
+ section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,32 +45,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Sep 2016 12:35:28 -0000
+X-List-Received-Date: Fri, 23 Sep 2016 13:19:25 -0000
 
-Fix spelling, the GNU make text functions is not called "find-string"
-but "findstring".
+audio.h and pcspk.h are recognized as maintained files now.
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- rules.mak | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/rules.mak b/rules.mak
-index 5c82c19..f721988 100644
---- a/rules.mak
-+++ b/rules.mak
-@@ -132,7 +132,7 @@ endef
- # Looks in the PATH if the argument contains no slash, else only conside=
-rs one
- # specific directory.  Returns an # empty string if the program doesn't =
-exist
- # there.
--find-in-path =3D $(if $(find-string /, $1), \
-+find-in-path =3D $(if $(findstring /, $1), \
-         $(wildcard $1), \
-         $(wildcard $(patsubst %, %/$1, $(subst :, ,$(PATH)))))
-=20
---=20
-2.10.0
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9fcb901..f49ee36 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1032,6 +1032,7 @@ M: Gerd Hoffmann <kraxel@redhat.com>
+ S: Maintained
+ F: audio/
+ F: hw/audio/
++F: include/hw/audio/
+ F: tests/ac97-test.c
+ F: tests/es1370-test.c
+ F: tests/intel-hda-test.c
+-- 
+1.8.3.1
 
 
