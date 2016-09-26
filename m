@@ -1,68 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1boQ5D-0003uf-T7
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Sep 2016 03:12:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58188)
+	id 1boRBL-0007Tq-Bt
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Sep 2016 04:22:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1boQ5B-0003qi-Lb
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 03:12:10 -0400
+	(envelope-from <kwolf@redhat.com>) id 1boRBF-0007Nl-GV
+	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 04:22:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1boQ55-0000rE-MX
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 03:12:07 -0400
-Received: from mail-wm0-f68.google.com ([74.125.82.68]:33396)
+	(envelope-from <kwolf@redhat.com>) id 1boRBD-000222-GI
+	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 04:22:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55204)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1boQ55-0000qc-FQ; Mon, 26 Sep 2016 03:12:03 -0400
-Received: by mail-wm0-f68.google.com with SMTP id w84so12577533wmg.0;
-	Mon, 26 Sep 2016 00:12:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=4/E9v0BfeyXn+rctA2r18CKfPzGYqqnkcNjV2N3YgL4=;
-	b=Z67dEwenegGLUDc5cZAK/CgFwFyJqxn7yu/CkKl5vI18FskZCUDyvh2EKjIY5zvUNd
-	kA3EgZ+l8cT/SKFvER4lfd3L2CTLucslCNYfwjDNEL6ZUsjI3yt9DJzE+Bgse8wM9Nkb
-	W3cLTEsyCh/E6Ens9KlXWGGKeyOeA4qJIvCoe97w1eZ4g3LJoxD0xaEJHYS9JKmXPbFm
-	MAnqv7sycvhUDM7rfF/xiC7i2VrVA6zVOuQhHeW1qV1nnDHBXTKpaw4htoovmZwFMF1/
-	akyxtFBto3NiGZb0GVVqFQ/hhf7mSmDR0KC81/qP0j3vrlkIqc34WhUvZ+qnV7hQ74v5
-	titQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=4/E9v0BfeyXn+rctA2r18CKfPzGYqqnkcNjV2N3YgL4=;
-	b=SZilysTTwtBpOqaLzQWgX0Naiesg9A15GfzNfPmPh0oqr4ACoEuuICGsxVH23cHeD8
-	lqNmrFs/Tr/cVU+tNxX2gKM3Hquv9M9vO8+kM3bHnbY0F4Zmaz67oXSelxvQGtx/rePl
-	DytVExuH6hHTkhOVA/X2h2zkSNU81Pdcgqrnqj0JN9ecnrUKCbW4QIznUQVF9d5ealvO
-	FYfeYqWhejn4SPIt4hijyiBpP/tUiHG+khrxcP55ScWvLa41d7LFLS6v+voF1briw4XB
-	Y98/HkvYzl6j0KYHk6ayJvW1Hn7OLcwN959+v3oTup7aGksuMsoH2Zxa1z47B/EtaWC9
-	l4fQ==
-X-Gm-Message-State: AA6/9RnxqhDjh5VZ7AKqfbQqEzljUn66wCFwpuIQYdY4YmV8cgrVX8JsYignnamEvWmBcw==
-X-Received: by 10.194.242.36 with SMTP id wn4mr7661439wjc.85.1474873862794;
-	Mon, 26 Sep 2016 00:11:02 -0700 (PDT)
-Received: from [192.168.10.165] (94-39-176-182.adsl-ull.clienti.tiscali.it.
-	[94.39.176.182]) by smtp.googlemail.com with ESMTPSA id
-	u185sm9551527wmu.20.2016.09.26.00.11.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 26 Sep 2016 00:11:02 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20160925205748.6280-1-marcandre.lureau@redhat.com>
-	<20160925205748.6280-2-marcandre.lureau@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <978346da-fdbe-945c-5cfc-1cc7cd9c6d8e@redhat.com>
-Date: Mon, 26 Sep 2016 09:11:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	(envelope-from <kwolf@redhat.com>)
+	id 1boRB4-0001x7-5R; Mon, 26 Sep 2016 04:22:18 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B051C7F76D;
+	Mon, 26 Sep 2016 08:22:16 +0000 (UTC)
+Received: from noname.str.redhat.com (dhcp-192-197.str.redhat.com
+	[10.33.192.197])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u8Q8MFU2021368; Mon, 26 Sep 2016 04:22:15 -0400
+Date: Mon, 26 Sep 2016 10:22:14 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <20160926082214.GA6093@noname.str.redhat.com>
+References: <1474646996-30421-1-git-send-email-thuth@redhat.com>
+	<8d0e6f92-a114-2f08-c789-25265e6abea9@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20160925205748.6280-2-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8d0e6f92-a114-2f08-c789-25265e6abea9@redhat.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Mon, 26 Sep 2016 08:22:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.68
-Subject: Re: [Qemu-trivial] [PATCH 2/2] build-sys: put glib_cflags in
- QEMU_CFLAGS
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-block] [Qemu-devel] [PATCH] MAINTAINERS:
+ Add some more headers to the IDE section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,35 +54,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Sep 2016 07:12:10 -0000
+X-List-Received-Date: Mon, 26 Sep 2016 08:22:34 -0000
 
-
-
-On 25/09/2016 22:57, Marc-André Lureau wrote:
-> This way, overriding CFLAGS on make command line keeps glib-cflags
-> and doesn't break the build.
+Am 23.09.2016 um 18:42 hat John Snow geschrieben:
+> On 09/23/2016 12:09 PM, Thomas Huth wrote:
+> >The folder include/hw/ide/ belongs to the IDE section.
+> >
+> >Signed-off-by: Thomas Huth <thuth@redhat.com>
+> >---
+> > MAINTAINERS | 1 +
+> > 1 file changed, 1 insertion(+)
+> >
+> >diff --git a/MAINTAINERS b/MAINTAINERS
+> >index d8a0cfc..acf6d6c 100644
+> >--- a/MAINTAINERS
+> >+++ b/MAINTAINERS
+> >@@ -791,6 +791,7 @@ M: John Snow <jsnow@redhat.com>
+> > L: qemu-block@nongnu.org
+> > S: Supported
+> > F: include/hw/ide.h
+> >+F: include/hw/ide/
+> > F: hw/ide/
+> > F: hw/block/block.c
+> > F: hw/block/cdrom.c
+> >
 > 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Ah, yeah. These got missed when they were moved over. Thanks.
 > 
-> diff --git a/configure b/configure
-> index c831600..5412d4f 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2933,7 +2933,7 @@ for i in $glib_modules; do
->      if $pkg_config --atleast-version=$glib_req_ver $i; then
->          glib_cflags=$($pkg_config --cflags $i)
->          glib_libs=$($pkg_config --libs $i)
-> -        CFLAGS="$glib_cflags $CFLAGS"
-> +        QEMU_CFLAGS="$glib_cflags $QEMU_CFLAGS"
->          LIBS="$glib_libs $LIBS"
->          libs_qga="$glib_libs $libs_qga"
->      else
-> 
+> Reviewed-by: John Snow <jsnow@redhat.com>
 
-Queued both, thanks.
+Who is supposed to merge this if you only give an R-b?
 
-Paolo
+And didn't we want to move the internal header files back to hw/ instead
+of the global include directory?
+
+Kevin
 
