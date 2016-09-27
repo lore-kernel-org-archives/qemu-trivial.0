@@ -1,50 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bob8Y-00045l-RD
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Sep 2016 15:00:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41126)
+	id 1botCD-0008Mr-Rc
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Sep 2016 10:17:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1bob8V-000436-Iy
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 15:00:20 -0400
+	(envelope-from <armbru@redhat.com>) id 1botC8-0008HO-1o
+	for qemu-trivial@nongnu.org; Tue, 27 Sep 2016 10:17:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1bob8T-0004e9-JG
-	for qemu-trivial@nongnu.org; Mon, 26 Sep 2016 15:00:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39204)
+	(envelope-from <armbru@redhat.com>) id 1botC6-00005f-UA
+	for qemu-trivial@nongnu.org; Tue, 27 Sep 2016 10:17:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35712)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1bob8K-0004Vr-Vp; Mon, 26 Sep 2016 15:00:09 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(envelope-from <armbru@redhat.com>)
+	id 1botC0-0008Su-MW; Tue, 27 Sep 2016 10:17:08 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E1205C05A28E;
-	Mon, 26 Sep 2016 19:00:07 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-171.bos.redhat.com
-	[10.18.17.171])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8QJ06DO008366; Mon, 26 Sep 2016 15:00:07 -0400
-To: Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>
-References: <1474646996-30421-1-git-send-email-thuth@redhat.com>
-	<8d0e6f92-a114-2f08-c789-25265e6abea9@redhat.com>
-	<20160926082214.GA6093@noname.str.redhat.com>
-	<2e3398cc-def0-8ed6-e558-cdb58aec91eb@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
-From: John Snow <jsnow@redhat.com>
-Message-ID: <a1f8e9f4-f48d-bf20-805b-0421bf3b6107@redhat.com>
-Date: Mon, 26 Sep 2016 15:00:06 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 19F3F6267F;
+	Tue, 27 Sep 2016 14:17:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-56.ams2.redhat.com
+	[10.36.116.56])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8REH5hH000927
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 27 Sep 2016 10:17:06 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DB97C1132B64; Tue, 27 Sep 2016 16:17:04 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20160923123508.27000-1-marcandre.lureau@redhat.com>
+Date: Tue, 27 Sep 2016 16:17:04 +0200
+In-Reply-To: <20160923123508.27000-1-marcandre.lureau@redhat.com>
+	(=?utf-8?Q?=22Marc-Andr=C3=A9?=
+	Lureau"'s message of "Fri, 23 Sep 2016 16:35:08 +0400")
+Message-ID: <87wphxh1gf.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <2e3398cc-def0-8ed6-e558-cdb58aec91eb@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 26 Sep 2016 19:00:08 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 27 Sep 2016 14:17:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-block] [PATCH] MAINTAINERS:
- Add some more headers to the IDE section
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build-sys: fix find-in-path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,52 +57,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Sep 2016 19:00:20 -0000
+X-List-Received-Date: Tue, 27 Sep 2016 14:17:21 -0000
 
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
 
-
-On 09/26/2016 05:39 AM, Thomas Huth wrote:
-> On 26.09.2016 10:22, Kevin Wolf wrote:
->> Am 23.09.2016 um 18:42 hat John Snow geschrieben:
->>> On 09/23/2016 12:09 PM, Thomas Huth wrote:
->>>> The folder include/hw/ide/ belongs to the IDE section.
->>>>
->>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>> ---
->>>> MAINTAINERS | 1 +
->>>> 1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index d8a0cfc..acf6d6c 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -791,6 +791,7 @@ M: John Snow <jsnow@redhat.com>
->>>> L: qemu-block@nongnu.org
->>>> S: Supported
->>>> F: include/hw/ide.h
->>>> +F: include/hw/ide/
->>>> F: hw/ide/
->>>> F: hw/block/block.c
->>>> F: hw/block/cdrom.c
->>>>
->>>
->>> Ah, yeah. These got missed when they were moved over. Thanks.
->>>
->>> Reviewed-by: John Snow <jsnow@redhat.com>
->>
->> Who is supposed to merge this if you only give an R-b?
+> Fix spelling, the GNU make text functions is not called "find-string"
+> but "findstring".
 >
-> I've CC:ed this patch to qemu-trivial, so I hope it will get picked up
-> there if John does not want to apply this directly.
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  rules.mak | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
->  Thomas
->
->
+> diff --git a/rules.mak b/rules.mak
+> index 5c82c19..f721988 100644
+> --- a/rules.mak
+> +++ b/rules.mak
+> @@ -132,7 +132,7 @@ endef
+>  # Looks in the PATH if the argument contains no slash, else only conside=
+rs one
+>  # specific directory.  Returns an # empty string if the program doesn't =
+exist
+>  # there.
+> -find-in-path =3D $(if $(find-string /, $1), \
+> +find-in-path =3D $(if $(findstring /, $1), \
+>          $(wildcard $1), \
+>          $(wildcard $(patsubst %, %/$1, $(subst :, ,$(PATH)))))
 
-Thanks, applied to my IDE tree:
-
-https://github.com/jnsnow/qemu/commits/ide
-https://github.com/jnsnow/qemu.git
-
---js
+Impact?
 
