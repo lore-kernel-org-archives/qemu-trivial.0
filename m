@@ -1,45 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpKWt-00061S-5g
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Sep 2016 15:28:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44175)
+	id 1bpOkp-0000FZ-6V
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Sep 2016 19:59:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1bpKWq-0005yq-At
-	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 15:28:29 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bpOkl-0000E1-R0
+	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 19:59:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1bpKWm-0004Wp-4d
-	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 15:28:27 -0400
-Received: from mail.weilnetz.de ([37.221.199.173]:48137)
+	(envelope-from <dgibson@ozlabs.org>) id 1bpOki-0006Ya-0e
+	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 19:59:07 -0400
+Received: from ozlabs.org ([103.22.144.67]:48833)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1bpKWl-0004Wf-V3
-	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 15:28:24 -0400
-Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by mail.weilnetz.de (Postfix) with ESMTP id EEDCC11810AF;
-	Wed, 28 Sep 2016 21:28:21 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at weilnetz.de
-Received: from mail.weilnetz.de ([127.0.0.1])
-	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
-	(amavisd-new, port 10024)
-	with ESMTP id Ctt_mJiHfilB; Wed, 28 Sep 2016 21:28:20 +0200 (CEST)
-Received: from edv32.bib.uni-mannheim.de (p54AC80C7.dip0.t-ipconnect.de
-	[84.172.128.199])
-	by mail.weilnetz.de (Postfix) with ESMTPSA id C317D11810A5;
-	Wed, 28 Sep 2016 21:28:19 +0200 (CEST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1474986431-2701-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <01cb50c8-bc3b-b248-2ac9-5045d3898346@weilnetz.de>
-Date: Wed, 28 Sep 2016 21:28:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.2.0
-MIME-Version: 1.0
-In-Reply-To: <1474986431-2701-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 37.221.199.173
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add some more pattern to
- recognize all win32 related files
+	(envelope-from <dgibson@ozlabs.org>) id 1bpOkh-0006YR-Lr
+	for qemu-trivial@nongnu.org; Wed, 28 Sep 2016 19:59:03 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3skvmt6zXzz9s8x; Thu, 29 Sep 2016 09:58:54 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1475107134;
+	bh=mZc0P1nZFnoKdxww12w9e07gFJmk/oPI5HknYbyfEIY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EbKKJiptc+/QfvMNI53LKObDmqc6yjKDwf959Q64gVUjkYKSoCoUGpSP1cln7hltR
+	T0csOhPURXs/papw6gdHhCcnUxATRqRRFZIswM7POWzcyvuS4fYNZTxCLIFWcIqUph
+	05z3qDGdJyHKLOCTYp+pcYuXylzg5mQe/tpwHskc=
+From: David Gibson <david@gibson.dropbear.id.au>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>
+Date: Thu, 29 Sep 2016 09:58:48 +1000
+Message-Id: <1475107128-5101-1-git-send-email-david@gibson.dropbear.id.au>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 103.22.144.67
+Subject: [Qemu-trivial] [PATCH] Update .gitignore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,42 +42,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Sep 2016 19:28:29 -0000
+X-List-Received-Date: Wed, 28 Sep 2016 23:59:08 -0000
 
-Am 27.09.2016 um 16:27 schrieb Thomas Huth:
-> The get_maintainer.pl script currently thinks that the win32
-> related files in the util and include folders are currently
-> unmaintained. Thus let's add some additional wildcards to
-> match these files.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 6902885..a5dec30 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -324,6 +324,8 @@ L: qemu-devel@nongnu.org
->  M: Stefan Weil <sw@weilnetz.de>
->  S: Maintained
->  F: *win32*
-> +F: */*win32*
-> +F: include/*/*win32*
->  F: qemu.nsi
->
->  ARM Machines
->
+This adds one generated header, and a couple of testcase binaries to the
+.gitignore files, which haven't yet been included.
 
-Thank you, Thomas, for this patch. I suggest a small modification 
-because there is already a maintainer for qga/ (Michael Roth) and I 
-cannot contribute much to the QEMU guest agent. Therefore I'd prefer 
-excluding that directory. That requires replacing */*win32* by an 
-explicit list of directories.
+Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+---
+ .gitignore       | 1 +
+ tests/.gitignore | 2 ++
+ 2 files changed, 3 insertions(+)
 
-Otherwise fine for me.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+diff --git a/.gitignore b/.gitignore
+index c91d018..1babcc2 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -20,6 +20,7 @@
+ /trace/generated-ust.c
+ /ui/shader/texture-blit-frag.h
+ /ui/shader/texture-blit-vert.h
++module_block.h
+ *-timestamp
+ /*-softmmu
+ /*-darwin-user
+diff --git a/tests/.gitignore b/tests/.gitignore
+index 0f0c79b..9f3d2ee 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -12,7 +12,9 @@ rcutorture
+ test-aio
+ test-base64
+ test-bitops
++test-blockjob
+ test-blockjob-txn
++test-bufferiszero
+ test-clone-visitor
+ test-coroutine
+ test-crypto-afsplit
+-- 
+2.7.4
 
 
