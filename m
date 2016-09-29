@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpWJ6-0006u3-51
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 04:03:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48591)
+	id 1bpWXk-00020k-HR
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 04:18:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bpWJ3-0006su-TN
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 04:03:03 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1bpWXh-0001yf-Qe
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 04:18:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bpWIz-0006cY-OT
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 04:03:01 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:56255)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1bpWXg-0002nT-Oj
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 04:18:09 -0400
+Received: from mail-lf0-x231.google.com ([2a00:1450:4010:c07::231]:34707)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1bpWIz-0006cK-Ex; Thu, 29 Sep 2016 04:02:57 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue103) with ESMTPSA (Nemesis) id 0Mhf9f-1bd5rS1z9v-00Mtbr;
-	Thu, 29 Sep 2016 10:02:53 +0200
-To: Thomas Huth <huth@tuxfamily.org>, Greg Ungerer <gerg@uclinux.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1475021199-28674-1-git-send-email-gerg@uclinux.org>
-	<d5a78365-a0a9-d208-442b-32c4f35c5daf@vivier.eu>
-	<d1ddd6de-5b17-cad0-f6a1-79ca89896949@tuxfamily.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <93cfc1cc-ca16-ffe8-2192-ee1d4ccf5045@vivier.eu>
-Date: Thu, 29 Sep 2016 10:02:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	(envelope-from <marcandre.lureau@gmail.com>)
+	id 1bpWXg-0002mp-Gx; Thu, 29 Sep 2016 04:18:08 -0400
+Received: by mail-lf0-x231.google.com with SMTP id y6so72786047lff.1;
+	Thu, 29 Sep 2016 01:18:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=nrMcGItPrqt25urknx/O2DeYkrvo3I9Kl5acOzQwt8k=;
+	b=dwr8DqVG9NE+XjY6hZcwqCWy10vKEACJZos+aF2NtlDkNuwJUlD5e22bp11MaD6FPl
+	l+LUVZIRWwOuvKxoLyWEH44wbnvimQA40q8mCWg7969FcbT0fXSu/VorccndsxbfldGl
+	trQDpcELvSLQL9kuGRtAXQZfUt0j10ncnjq4ZOr4dzMyiG/De7jlr5GdPk54yhFWu30+
+	fFb9D3UnEJ7cXtapZLrr4rQwP61IEEA4eBcVaDqv/zbDcdFaiw5jo1J4CHbf5fJTMnwX
+	6N0t7uPaS9Yw7+HQW4aGODBCylJCOYceAlMsCX0ReCJgwZ9KiQ7he6KPTuX4D7b/N895
+	pYbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=nrMcGItPrqt25urknx/O2DeYkrvo3I9Kl5acOzQwt8k=;
+	b=AxOeZvDlFPR4ZjN16HL1kCrA+EayR1ryokGZRq/W3cmLWRLvujzVRLdydvlmkorkl8
+	qYV5O14DbL3S4cX8w9JmqxF696b3hWZqa087p4fgwtQEU1KQSlQTs/9YcWePp+v8nlno
+	31htyTuU6WnDPBHgwKBCJS4IZO/lZFIHeyV/6fW9y3+Mkc9qWo2wmA053uA+hS5D7jPM
+	XSpxz+Z0XedZnmxDEduT6Kj4bFrTAJWqW9ufosCd8iDuY0pLmrjQGXdc/g/Q4yoDSWJY
+	oqSquaLH08bYW4haZiYBRbck17dj9kElhtLPMFfSjxVoWwrLhP2Zz8xEdQilxtmVhnrZ
+	DAJA==
+X-Gm-Message-State: AA6/9Rm/Jy4D9zDys+WtxeukrWBZocXxSJKgGdueGBAxMzGYGU9m2tzuMeQrUam9dcyb/H7wkuGqjSCVAAVEKg==
+X-Received: by 10.46.5.2 with SMTP id 2mr79961ljf.73.1475137087178; Thu, 29
+	Sep 2016 01:18:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d1ddd6de-5b17-cad0-f6a1-79ca89896949@tuxfamily.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:jNOE2lEi+8KwyeSA9lLnKmmX/FGRuphmBiZ4PIS+4Y4Gzu7mNpJ
-	Bz+aSOxhmHxl8bqN3FULKsdUr73sXMqIzS21++qXuij74IsXJqiHPt9XSu2qH+0SpIgKy0p
-	Q4fZr9plfhX7OyNtVQtAnxVqaMkbM/9aNjwP8KHblnqcB7sIiJLFNtIBqyZbAFof0geTkTx
-	YHQ3JjHy+2b9vJwAaJpcQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:EsPmKDfJoEY=:53711emEDonAgXYRxEaG83
-	aqjjv7yTdsb1Gp4SM1+lvmlndkVqyab30MBmLDt+hxSD8YZ5tC+GdgryuyZ8jKeIW0SWGzh2f
-	jurQT0c/XBpljUGNN33f/NJzEFstKG3Cq2nnnWoZD6iZUK1qQNHlveZnHmDfijpAQ182bSkjZ
-	XLiPFnCnZfWIhnlqnRLwfkiYUI4LNK+fMKHbYzWngUZXmjbtmVjdM+qAzf2sUeNR/cpihbEFk
-	Gdp3QjZ4oD08MRyk54g+mcxG8vbf8viVhTeY7mq5+LVVWCrvNV6OmHEpH5/VL9KAauKmV/XHQ
-	mCsI/2fitRAjqGW1PVfN2N+XJ5VUCNBcAZNioN4XuH1+UX9wubHMSKYGrmfl9mS8JQLSAyRID
-	3dPR+1lygbE65Xg18g4DeuNRNT/+tmHmn6uVbArR0DH8rb3vr6Saids1TSryevQGYegzy8uIn
-	SASpNdv4owgkyBSXo9Uk5IiijdpJopCog30EH/IQivoyVc38u0vqMYT0XxsD/zQfCBoBRsvn6
-	yPZO9+pRNet3hqAxGR8F+yhA76K09VK22coPylGAs5Rc+OTl/YgdcFp7Hs2fjz1NUhhPywjqy
-	kZFYemiUjkVsmqyV2nCrhAq0GM87sJmRBEi+3PmxdmpIgkDyVEU5xFrQGBvoDHm4W6ep/WHpI
-	57sZqO0HvWo5n9UZvM32Inw90qf4aIQW8MHC1HNPAjF3/m+HEib+CvqQCLgGdz9tKbDM6ikFr
-	t0y5jdC1+aefmEZz
+References: <1475107128-5101-1-git-send-email-david@gibson.dropbear.id.au>
+In-Reply-To: <1475107128-5101-1-git-send-email-david@gibson.dropbear.id.au>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 29 Sep 2016 08:17:56 +0000
+Message-ID: <CAJ+F1CK7X2KH+JMK6EnegzJQJc+wxFs2BFi6JbT4-J7Wk9DeNw@mail.gmail.com>
+To: David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary=001a114a72c0138ca0053da11eda
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCHv2] m68k: change default
- system clock for m5208evb
+X-Received-From: 2a00:1450:4010:c07::231
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Update .gitignore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,41 +60,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 08:03:03 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 08:18:11 -0000
 
+--001a114a72c0138ca0053da11eda
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
+On Thu, Sep 29, 2016 at 3:59 AM David Gibson <david@gibson.dropbear.id.au>
+wrote:
 
-Le 29/09/2016 à 09:56, Thomas Huth a écrit :
-> On 29.09.2016 09:50, Laurent Vivier wrote:
->>
->>
->> Le 28/09/2016 à 02:06, Greg Ungerer a écrit :
->>> The shipping default setting for the Freescale M5208EVB board is to run
->>> the CPU at 166.67MHz. The current qemu emulation code for this board is
->>> defaulting to 66MHz. This results in time appearing to run way to slowly.
->>> So a "sleep 5" in a standard ColdFire Linux build takes almost 15
->>> seconds in real time to actually complete.
->>>
->>> Change the hard coded default to match the default hardware setting.
->>>
->>> Signed-off-by: Greg Ungerer <gerg@uclinux.org>
->>
->> This solution is as good as another, so:
->>
->> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> 
-> Fine for me, too, so:
-> 
-> Reviewed-by: Thomas Huth <huth@tuxfamily.org>
-> 
-> By the way, we still do not have a m68k maintainer yet ... Laurent,
-> maybe you could finally send a pull request for that patch here:
-> https://lists.gnu.org/archive/html/qemu-devel/2016-05/msg00805.html ?
+> This adds one generated header, and a couple of testcase binaries to the
+> .gitignore files, which haven't yet been included.
+>
+> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
+> ---
+>
 
-Well, this patch was waiting I resend my 680x0 support series, and I
-didn't have the time to rework it until now... but if you want to merge
-it as is, don't hesitate.
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-Thanks,
-Laurent
+ .gitignore       | 1 +
+>  tests/.gitignore | 2 ++
+>  2 files changed, 3 insertions(+)
+>
+> diff --git a/.gitignore b/.gitignore
+> index c91d018..1babcc2 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -20,6 +20,7 @@
+>  /trace/generated-ust.c
+>  /ui/shader/texture-blit-frag.h
+>  /ui/shader/texture-blit-vert.h
+> +module_block.h
+>  *-timestamp
+>  /*-softmmu
+>  /*-darwin-user
+> diff --git a/tests/.gitignore b/tests/.gitignore
+> index 0f0c79b..9f3d2ee 100644
+> --- a/tests/.gitignore
+> +++ b/tests/.gitignore
+> @@ -12,7 +12,9 @@ rcutorture
+>  test-aio
+>  test-base64
+>  test-bitops
+> +test-blockjob
+>  test-blockjob-txn
+> +test-bufferiszero
+>  test-clone-visitor
+>  test-coroutine
+>  test-crypto-afsplit
+> --
+> 2.7.4
+>
+>
+> --
+Marc-Andr=C3=A9 Lureau
+
+--001a114a72c0138ca0053da11eda
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Thu=
+, Sep 29, 2016 at 3:59 AM David Gibson &lt;<a href=3D"mailto:david@gibson.d=
+ropbear.id.au">david@gibson.dropbear.id.au</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc s=
+olid;padding-left:1ex">This adds one generated header, and a couple of test=
+case binaries to the<br>
+.gitignore files, which haven&#39;t yet been included.<br>
+<br>
+Signed-off-by: David Gibson &lt;<a href=3D"mailto:david@gibson.dropbear.id.=
+au" target=3D"_blank">david@gibson.dropbear.id.au</a>&gt;<br>
+---<br></blockquote><div><br>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a hre=
+f=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>&gt=
+;<br><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
+;border-left:1px #ccc solid;padding-left:1ex">
+=C2=A0.gitignore=C2=A0 =C2=A0 =C2=A0 =C2=A0| 1 +<br>
+=C2=A0tests/.gitignore | 2 ++<br>
+=C2=A02 files changed, 3 insertions(+)<br>
+<br>
+diff --git a/.gitignore b/.gitignore<br>
+index c91d018..1babcc2 100644<br>
+--- a/.gitignore<br>
++++ b/.gitignore<br>
+@@ -20,6 +20,7 @@<br>
+=C2=A0/trace/generated-ust.c<br>
+=C2=A0/ui/shader/texture-blit-frag.h<br>
+=C2=A0/ui/shader/texture-blit-vert.h<br>
++module_block.h<br>
+=C2=A0*-timestamp<br>
+=C2=A0/*-softmmu<br>
+=C2=A0/*-darwin-user<br>
+diff --git a/tests/.gitignore b/tests/.gitignore<br>
+index 0f0c79b..9f3d2ee 100644<br>
+--- a/tests/.gitignore<br>
++++ b/tests/.gitignore<br>
+@@ -12,7 +12,9 @@ rcutorture<br>
+=C2=A0test-aio<br>
+=C2=A0test-base64<br>
+=C2=A0test-bitops<br>
++test-blockjob<br>
+=C2=A0test-blockjob-txn<br>
++test-bufferiszero<br>
+=C2=A0test-clone-visitor<br>
+=C2=A0test-coroutine<br>
+=C2=A0test-crypto-afsplit<br>
+--<br>
+2.7.4<br>
+<br>
+<br>
+</blockquote></div></div><div dir=3D"ltr">-- <br></div><div data-smartmail=
+=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div></div=
+>
+
+--001a114a72c0138ca0053da11eda--
 
