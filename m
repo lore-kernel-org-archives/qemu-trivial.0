@@ -1,49 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpW1j-0001ab-8j
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 03:45:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44804)
+	id 1bpWDE-00022Z-Gq
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 03:57:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47368)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1bpW1g-0001XY-Dc
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 03:45:05 -0400
+	(envelope-from <th.huth@gmail.com>) id 1bpWDC-0001zz-1W
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 03:56:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1bpW1e-0000jO-ER
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 03:45:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51235)
+	(envelope-from <th.huth@gmail.com>) id 1bpWD6-0003ct-TH
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 03:56:57 -0400
+Received: from mail-wm0-f65.google.com ([74.125.82.65]:34648)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1bpW1Z-0000hr-EY; Thu, 29 Sep 2016 03:44:57 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E326E7CDE2;
-	Thu, 29 Sep 2016 07:44:56 +0000 (UTC)
-Received: from [10.36.116.32] (ovpn-116-32.ams2.redhat.com [10.36.116.32])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8T7isLi028726
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 29 Sep 2016 03:44:56 -0400
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org
-References: <1474986431-2701-1-git-send-email-thuth@redhat.com>
-	<01cb50c8-bc3b-b248-2ac9-5045d3898346@weilnetz.de>
-Cc: qemu-trivial@nongnu.org
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <7bbd6dc7-0bf0-041b-be44-2d1af750bd81@redhat.com>
-Date: Thu, 29 Sep 2016 09:44:54 +0200
+	(envelope-from <th.huth@gmail.com>)
+	id 1bpWD6-0003bv-NO; Thu, 29 Sep 2016 03:56:52 -0400
+Received: by mail-wm0-f65.google.com with SMTP id w72so760162wmf.1;
+	Thu, 29 Sep 2016 00:56:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=NdIYCKvZPdlUiTt2VT3nOF5RiPXUgTOoInSe5GVqc9o=;
+	b=beRBgq5H6Q7obQIHxsTczA7XS9AqjqDuRtPXV6Lr0gkFT1mldSIZGiXtUkA/fFt30k
+	+tZcKJW2bjLiNRfxLVFShlOBzj0n/xOPXJXk/knU38zOpWnZIIp5adX+RNvWlhGrKOAc
+	9reUBB3MZbBtgeuujuJmA5fJUgK3BHaTCqqzM/O3zMKiQhgVp1V4rt0W4KICeKtAKadx
+	88LlbkL90Oi4MyNEFwKj293nix9QwSTSBMghDSyCUUx+DZNGkvfNcwig78bnPgdn0KUC
+	IEXbLEGA1QpW/qt/9UFDoezKd89elbUhOv7vJiZhD2IplByVxM2BWGAKu7GIhGScq27V
+	HS9A==
+X-Gm-Message-State: AA6/9RlMaAscN7Xs9YfAOH8J9Jx+Tj9V2MtPl7Hg21Gclh7ycYUKz/hL1ZbrWmuCrPlB9Q==
+X-Received: by 10.28.22.138 with SMTP id 132mr11216169wmw.7.1475135811637;
+	Thu, 29 Sep 2016 00:56:51 -0700 (PDT)
+Received: from [192.168.178.23] (p57AEE4F3.dip0.t-ipconnect.de.
+	[87.174.228.243]) by smtp.gmail.com with ESMTPSA id
+	au10sm12507710wjc.12.2016.09.29.00.56.49
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 29 Sep 2016 00:56:50 -0700 (PDT)
+To: Laurent Vivier <laurent@vivier.eu>, Greg Ungerer <gerg@uclinux.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <1475021199-28674-1-git-send-email-gerg@uclinux.org>
+	<d5a78365-a0a9-d208-442b-32c4f35c5daf@vivier.eu>
+From: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <d1ddd6de-5b17-cad0-f6a1-79ca89896949@tuxfamily.org>
+Date: Thu, 29 Sep 2016 09:56:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.3.0
 MIME-Version: 1.0
-In-Reply-To: <01cb50c8-bc3b-b248-2ac9-5045d3898346@weilnetz.de>
+In-Reply-To: <d5a78365-a0a9-d208-442b-32c4f35c5daf@vivier.eu>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 29 Sep 2016 07:44:56 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add some more pattern to
- recognize all win32 related files
+	[fuzzy]
+X-Received-From: 74.125.82.65
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCHv2] m68k: change default
+ system clock for m5208evb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,43 +63,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 07:45:05 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 07:56:59 -0000
 
-On 28.09.2016 21:28, Stefan Weil wrote:
-> Am 27.09.2016 um 16:27 schrieb Thomas Huth:
->> The get_maintainer.pl script currently thinks that the win32
->> related files in the util and include folders are currently
->> unmaintained. Thus let's add some additional wildcards to
->> match these files.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  MAINTAINERS | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 6902885..a5dec30 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -324,6 +324,8 @@ L: qemu-devel@nongnu.org
->>  M: Stefan Weil <sw@weilnetz.de>
->>  S: Maintained
->>  F: *win32*
->> +F: */*win32*
->> +F: include/*/*win32*
->>  F: qemu.nsi
->>
->>  ARM Machines
+On 29.09.2016 09:50, Laurent Vivier wrote:
 > 
-> Thank you, Thomas, for this patch. I suggest a small modification
-> because there is already a maintainer for qga/ (Michael Roth) and I
-> cannot contribute much to the QEMU guest agent. Therefore I'd prefer
-> excluding that directory. That requires replacing */*win32* by an
-> explicit list of directories.
+> 
+> Le 28/09/2016 à 02:06, Greg Ungerer a écrit :
+>> The shipping default setting for the Freescale M5208EVB board is to run
+>> the CPU at 166.67MHz. The current qemu emulation code for this board is
+>> defaulting to 66MHz. This results in time appearing to run way to slowly.
+>> So a "sleep 5" in a standard ColdFire Linux build takes almost 15
+>> seconds in real time to actually complete.
+>>
+>> Change the hard coded default to match the default hardware setting.
+>>
+>> Signed-off-by: Greg Ungerer <gerg@uclinux.org>
+> 
+> This solution is as good as another, so:
+> 
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-Sure. There is even a nicer way to exclude certain files: Adding a line
-starting with "X:". I just sent a v2 of this patch with that line included.
+Fine for me, too, so:
+
+Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+
+By the way, we still do not have a m68k maintainer yet ... Laurent,
+maybe you could finally send a pull request for that patch here:
+https://lists.gnu.org/archive/html/qemu-devel/2016-05/msg00805.html ?
+
+Meanwhile, Peter, could you please take this patch here from Greg
+directly? Or should it go via qemu-trivial instead?
 
  Thomas
+
+
+>> ---
+>>  hw/m68k/mcf5208.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> v2: more accurately set frequency (166666666 instead of 166000000)
+>>
+>> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+>> index 9240ebf..3438314 100644
+>> --- a/hw/m68k/mcf5208.c
+>> +++ b/hw/m68k/mcf5208.c
+>> @@ -21,7 +21,7 @@
+>>  #include "elf.h"
+>>  #include "exec/address-spaces.h"
+>>  
+>> -#define SYS_FREQ 66000000
+>> +#define SYS_FREQ 166666666
+>>  
+>>  #define PCSR_EN         0x0001
+>>  #define PCSR_RLD        0x0002
+>>
+> 
 
 
