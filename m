@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpdgV-0001yN-HA
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 11:55:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51682)
+	id 1bpdi5-0003or-PK
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 11:57:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52048)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bpdgT-0001wO-GP
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 11:55:42 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bpdi3-0003mr-O6
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 11:57:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bpdgS-00044F-SF
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 11:55:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56968)
+	(envelope-from <mjt@tls.msk.ru>) id 1bpdi3-0004cu-1z
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 11:57:19 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40102)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bpdgN-00040t-PS; Thu, 29 Sep 2016 11:55:35 -0400
+	id 1bpdhy-0004Zb-PZ; Thu, 29 Sep 2016 11:57:14 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id AD93B4325E;
-	Thu, 29 Sep 2016 18:55:32 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 7B7EE4325E;
+	Thu, 29 Sep 2016 18:57:11 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 86EFDB0F;
-	Thu, 29 Sep 2016 18:55:31 +0300 (MSK)
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20160928123720.21171-1-marcandre.lureau@redhat.com>
-Cc: qemu-trivial@nongnu.org, mst@redhat.com
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 59343B0F;
+	Thu, 29 Sep 2016 18:57:10 +0300 (MSK)
+To: Greg Ungerer <gerg@uclinux.org>, qemu-devel@nongnu.org
+References: <1475021199-28674-1-git-send-email-gerg@uclinux.org>
+Cc: qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <8eeabedd-f989-26aa-230f-ccd6c53dee2a@msgid.tls.msk.ru>
-Date: Thu, 29 Sep 2016 18:55:31 +0300
+Message-ID: <14b7c354-8002-8243-91ce-5c1b1e370bdd@msgid.tls.msk.ru>
+Date: Thu, 29 Sep 2016 18:57:10 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <20160928123720.21171-1-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1475021199-28674-1-git-send-email-gerg@uclinux.org>
+Content-Type: text/plain; charset=windows-1251; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] exec: remove unused compacted argument
+Subject: Re: [Qemu-trivial] [PATCHv2] m68k: change default system clock for
+ m5208evb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,17 +45,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 15:55:42 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 15:57:20 -0000
 
-28.09.2016 15:37, Marc-Andr=C3=A9 Lureau wrote:
-> Since commit b35ba30f8f when it was introduced, phys_page_compact()
-> takes an unused compacted argument.
->
-> ubsan complains about it when launching qemu-x86_64 without arguments:
-> qemu/exec.c:310:5: runtime error: variable length array bound evaluates=
- to non-positive value 0
-
-Applied to -trivial, thanks!
+Applied to -trivial, thank you!
 
 /mjt
 
