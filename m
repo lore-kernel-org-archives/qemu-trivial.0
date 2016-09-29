@@ -1,56 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpjbi-0002CQ-3A
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 18:15:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50335)
+	id 1bpk7D-0002yX-9l
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 18:47:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bpjbg-0002Ao-Ip
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 18:15:09 -0400
+	(envelope-from <richard.weiyang@gmail.com>) id 1bpk7B-0002vD-Fc
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 18:47:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bpjbe-0001Yl-LO
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 18:15:07 -0400
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33215)
+	(envelope-from <richard.weiyang@gmail.com>) id 1bpk77-0000Y1-BW
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 18:47:40 -0400
+Received: from mail-pa0-x243.google.com ([2607:f8b0:400e:c03::243]:36541)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bpjbe-0001YC-A0
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 18:15:06 -0400
-Received: by mail-vk0-x22d.google.com with SMTP id z126so88291379vkd.0
-	for <qemu-trivial@nongnu.org>; Thu, 29 Sep 2016 15:15:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=FCs8LV+f7ky9/Mvli3c9EbzWQCyY7J8rWFQBizuwTEY=;
-	b=GjmFG795+8I+6nTA09Hvo1ag9E6hCKnaJMCNVL/oY3ROp5MOcR/6DPHKFg2VbS4b0W
-	hrM6Pd4uv1Zu0vawBqoT6/w3Yjeuxqs3rWnxP5qZx8wxQxXk9NgapMx5Kz/K/xcwziG4
-	zHEnrrWrYyDex4fgvmLi6bofUma1CSYRhMCTY=
+	(envelope-from <richard.weiyang@gmail.com>)
+	id 1bpk77-0000Xp-2c; Thu, 29 Sep 2016 18:47:37 -0400
+Received: by mail-pa0-x243.google.com with SMTP id cd13so2116331pac.3;
+	Thu, 29 Sep 2016 15:47:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=xladNDpF3MWwy2NYFc11Yncnq3TNhKEcs7/4g8prG9Y=;
+	b=iEVO6oXHY+AWZ+IjkSZCmlF94kZN6XVzhR6MX8PYn2Yl582uIlRiNgtNQmAOGVqG9H
+	IxGhEww9TD0LUmQRny7mupEB03+WTnNmuSehOrV2CXmjoM9lewU4PYnOFPXtf6p5EfZ/
+	7vyIh+wsThNqwuE9uJhbn4di2fSX1GtozaefTbY4MCDwLr4ifZnLL+LuxFn3CtgKtj0F
+	AokaDqBREu8kvH+0wUodynFhsQa7ZCi8RAKeqhZIJ5l9e7+kVtmNbDZmcsdb8cdoTDH1
+	zemdcUgL77IzaHymFGKKsmUs/V/B3YPFNcmNCc1SS97jE/P5Cm2jso6qCcN5jrIyonGK
+	7Ouw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=FCs8LV+f7ky9/Mvli3c9EbzWQCyY7J8rWFQBizuwTEY=;
-	b=VwfcRnNid0O+jfBfto/3H6/D2OgVrzMu1cG8aXTIWxBQ4yCC4qPplFVqAJzCdwv8ti
-	tTlowYj3qqLSMFT2C4kH9KChQ93S0dmPazcV5E8SmWXEiyF0eFBmQMj6jGp6iZ6RyeX7
-	/M3ntQVR1s0n+aUz977fJ+OSyCQ25rPuxIGh1rCCjFAS29/qpZO09HoEK5WIrBkrdmD2
-	kta9kIZYcMzDlK8H5ddSz9zeRxwxwirRGqHsrJP3oufC3fN3U5koVJK9TRYQlZIs4R2E
-	4tAaCJPp8D9e72t7uY0qdve663ucwFLtPQF18ISH89hb3qtG8jkaxImujslTw7yMEPF/
-	oeow==
-X-Gm-Message-State: AA6/9RnQpcP4Eb491VEk+O1yoB36CZy9CpTGo2PNz3OZGW57SmSDDeXuNlFDhlkAC5mno2itPGbH6jMys/SMOIFL
-X-Received: by 10.31.0.67 with SMTP id 64mr3186933vka.173.1475187305810; Thu,
-	29 Sep 2016 15:15:05 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=xladNDpF3MWwy2NYFc11Yncnq3TNhKEcs7/4g8prG9Y=;
+	b=iThiOazowQIOujYUbapbfHam5mYiohm+Xa17mgb6C5hiaESQJxxMI3PyTgClUiOyeJ
+	qUkL3VsLw6jLw9JyVrUMB1cL18aAAhTpD8S50yWYsj71FtP2eX0zKpPesCRWOay/NGMC
+	akqiu8N188jPJlrjfMutT0zqONw5C2tZuAaxVwQhYL8lRJ8hbC5FjbHde695APikh4EK
+	5OiW1f+zLPIEYV2y25PjjY+Y2sMR7tYlFf3cVoBbb0Dmcq8AuFbvY1ZrHu4/ZbzXAvZ8
+	Vlh+tJfqhQRyL68E56Ex1qNHCHyr9mKFIICkDkWkcc5twL1ZW1hk3XVoqE+W40QSyspr
+	q7Lw==
+X-Gm-Message-State: AA6/9RnLSCEahprkzqA+v9IHniyIvBZpySgGm0UJbt+xbt7g+4TWcuHYdQZtwwYK6MI4LA==
+X-Received: by 10.66.127.7 with SMTP id nc7mr6470025pab.107.1475189255547;
+	Thu, 29 Sep 2016 15:47:35 -0700 (PDT)
+Received: from localhost ([45.32.44.20]) by smtp.gmail.com with ESMTPSA id
+	e1sm22689331pap.11.2016.09.29.15.47.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 29 Sep 2016 15:47:35 -0700 (PDT)
+Date: Thu, 29 Sep 2016 22:47:33 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Wei Yang <richard.weiyang@gmail.com>, corentincj@iksaif.net,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20160929224733.GA25897@vultr.guest>
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+References: <1457185628-23304-1-git-send-email-richard.weiyang@gmail.com>
+	<e0efac7a-8b69-2ae7-efea-b2bdf6676459@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Received: by 10.31.16.98 with HTTP; Thu, 29 Sep 2016 15:14:45 -0700 (PDT)
-In-Reply-To: <20160929204647.23526-1-j.neuschaefer@gmx.net>
-References: <20160929204647.23526-1-j.neuschaefer@gmx.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Sep 2016 15:14:45 -0700
-Message-ID: <CAFEAcA8z+inpOA25CEF3YRVzS7ShGveoPYJUem8bGB7zAmyttQ@mail.gmail.com>
-To: =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e0efac7a-8b69-2ae7-efea-b2bdf6676459@msgid.tls.msk.ru>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Fix a typo
- ("Many a flamewar")
+X-Received-From: 2607:f8b0:400e:c03::243
+Subject: Re: [Qemu-trivial] [PATCH] bitmap: refine and move
+ BITMAP_{FIRST/LAST}_WORD_MASK
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,31 +71,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 22:15:09 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 22:47:42 -0000
 
-On 29 September 2016 at 13:46, Jonathan Neusch=C3=A4fer
-<j.neuschaefer@gmx.net> wrote:
-> Signed-off-by: Jonathan Neusch=C3=A4fer <j.neuschaefer@gmx.net>
-> ---
->  CODING_STYLE | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Thu, Sep 29, 2016 at 07:11:39PM +0300, Michael Tokarev wrote:
+>05.03.2016 16:47, Wei Yang wrote:
+>>According to linux kernel commit <89c1e79eb30> ("linux/bitmap.h: improve
+>>BITMAP_{LAST,FIRST}_WORD_MASK"), these two macro could be improved.
+>>
+>>This patch takes this change and also move them all in header file.
 >
-> diff --git a/CODING_STYLE b/CODING_STYLE
-> index e7fde15..a03a994 100644
-> --- a/CODING_STYLE
-> +++ b/CODING_STYLE
-> @@ -9,7 +9,7 @@ patches before submitting.
->  Of course, the most important aspect in any coding style is whitespace.
->  Crusty old coders who have trouble spotting the glasses on their noses
->  can tell the difference between a tab and eight spaces from a distance
-> -of approximately fifteen parsecs.  Many a flamewar have been fought and
-> +of approximately fifteen parsecs.  Many flamewars have been fought and
->  lost on this issue.
+>Applied to -trivial, thank you!
+>
 
-Should be "Many a flamewar has been fought and lost".
-(This is slightly poetic phrasing but it has a nice ring to it;
-the complement does have to be singular, not plural, though.)
+Thanks :-) Have a good day~
 
-thanks
--- PMM
+>/mjt
+
+-- 
+Wei Yang
+Help you, Help me
 
