@@ -1,39 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpdwG-0008KR-FJ
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 12:12:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54879)
+	id 1bpeHS-0002kX-6A
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Sep 2016 12:33:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59437)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bpdwE-0008Id-Im
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 12:11:59 -0400
+	(envelope-from <thuth@redhat.com>) id 1bpeHQ-0002im-7S
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 12:33:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bpdwA-00016m-Av
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 12:11:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40806)
+	(envelope-from <thuth@redhat.com>) id 1bpeHP-0006x5-Cm
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 12:33:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56516)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1bpdvz-00012T-IC; Thu, 29 Sep 2016 12:11:43 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 652AC4325E;
-	Thu, 29 Sep 2016 19:11:40 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 3981CB0F;
-	Thu, 29 Sep 2016 19:11:39 +0300 (MSK)
-To: Wei Yang <richard.weiyang@gmail.com>, corentincj@iksaif.net
-References: <1457185628-23304-1-git-send-email-richard.weiyang@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <e0efac7a-8b69-2ae7-efea-b2bdf6676459@msgid.tls.msk.ru>
-Date: Thu, 29 Sep 2016 19:11:39 +0300
+	(envelope-from <thuth@redhat.com>)
+	id 1bpeHH-0006tE-0z; Thu, 29 Sep 2016 12:33:43 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8175831B31E;
+	Thu, 29 Sep 2016 16:33:42 +0000 (UTC)
+Received: from [10.36.116.32] (ovpn-116-32.ams2.redhat.com [10.36.116.32])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8TGXdY5018272
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 29 Sep 2016 12:33:41 -0400
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1474633117-5227-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA9Ng0dikY=bwebUVz0AJTtm7GCYkcigXRhD9rMhXzZabw@mail.gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <f19f2e51-7ff9-f9dd-8632-0b7a42ada8dd@redhat.com>
+Date: Thu, 29 Sep 2016 18:33:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.2.0
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-In-Reply-To: <1457185628-23304-1-git-send-email-richard.weiyang@gmail.com>
-Content-Type: text/plain; charset=windows-1251; format=flowed
+In-Reply-To: <CAFEAcA9Ng0dikY=bwebUVz0AJTtm7GCYkcigXRhD9rMhXzZabw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 29 Sep 2016 16:33:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] bitmap: refine and move
- BITMAP_{FIRST/LAST}_WORD_MASK
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add some ARM related files
+ to the corresponding sections
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,15 +56,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 16:11:59 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 16:33:53 -0000
 
-05.03.2016 16:47, Wei Yang wrote:
-> According to linux kernel commit <89c1e79eb30> ("linux/bitmap.h: improve
-> BITMAP_{LAST,FIRST}_WORD_MASK"), these two macro could be improved.
->
-> This patch takes this change and also move them all in header file.
+On 29.09.2016 18:08, Peter Maydell wrote:
+> On 23 September 2016 at 05:18, Thomas Huth <thuth@redhat.com> wrote:
+>> The file hw/misc/arm_integrator_debug.c seems to belong to Integrator
+>> CP, and hw/cpu/realview_mpcore.c and hw/misc/arm_sysctl.c seem to
+>> belong to Real View.
+> 
+> arm_sysctl is also used in the Versatile PB and Vexpress boards;
+> it's not specific to realview.
 
-Applied to -trivial, thank you!
+Oh, indeed, ... but how should this file then best be represented in
+MAINTAINERS? Adding multiple entries for one file is kind of ugly, too,
+isn't it?
 
-/mjt
+ Thomas
+
 
