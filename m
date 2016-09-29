@@ -1,51 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpsTP-0004Jg-68
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 03:43:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35639)
+	id 1bpsTQ-0004Km-B7
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 03:43:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bpiEo-0000Kc-L8
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 16:47:27 -0400
+	(envelope-from <j.neuschaefer@gmx.net>) id 1bpkuo-0005ny-1I
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 19:38:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bpiEm-0004qy-OB
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 16:47:25 -0400
-Received: from mout.gmx.net ([212.227.17.21]:64726)
+	(envelope-from <j.neuschaefer@gmx.net>) id 1bpkui-0006mx-VV
+	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 19:38:56 -0400
+Received: from mout.gmx.net ([212.227.17.21]:64816)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <j.neuschaefer@gmx.net>)
-	id 1bpiEh-0004ou-7e; Thu, 29 Sep 2016 16:47:19 -0400
-Received: from localhost.localdomain ([88.153.7.52]) by mail.gmx.com
-	(mrgmx101) with ESMTPSA (Nemesis) id 0MMGWH-1bqVRo2wof-0083JO;
-	Thu, 29 Sep 2016 22:47:17 +0200
-From: =?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-Date: Thu, 29 Sep 2016 22:46:47 +0200
-Message-Id: <20160929204647.23526-1-j.neuschaefer@gmx.net>
-X-Mailer: git-send-email 2.9.3
+	id 1bpkui-0006mC-Kl; Thu, 29 Sep 2016 19:38:52 -0400
+Received: from latitude ([88.153.7.52]) by mail.gmx.com (mrgmx101) with
+	ESMTPSA (Nemesis) id 0LzGV3-1auCUb3xfl-014ReN; Fri, 30 Sep 2016 01:38:49
+	+0200
+Date: Fri, 30 Sep 2016 01:38:47 +0200
+From: Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <20160929233847.n5xe7gmdb5ys5ujv@latitude>
+References: <20160929204647.23526-1-j.neuschaefer@gmx.net>
+	<CAFEAcA8z+inpOA25CEF3YRVzS7ShGveoPYJUem8bGB7zAmyttQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:zkak9P7+K7X+PgDe7toIjFWMne1n/9ZgDB097DhachDcZJ8iojf
-	0jLj7d1ALraDwGluZjHzHAxlPyhb6C73twxkRpnGTnq/3+DpfE16wiRsEDI/YYk/iYYCSqe
-	QDdXayd4NQpOYLi7y3BHx282ck7imB2VXfRjrVv8M+f9rwmhm74oouj2/p7Tr5lTG8C6Ahy
-	KMfqcb4Zxa7026qi85u3w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:sX9OCppzumc=:vodqXG43R9ovVvcn8ks4PO
-	7jyx0gWIP7eMgBXBHRMC0tgZtblp+HiR4/CUkXr8PXHDwTr86GuDfV1KRuvz+Hrik8cG2uZw4
-	I/enkY2EkErINK5UXQ/DYfI4iwda8LoC3J1X47UQAcmcb8rpVo4e2Av+Cfd2ak2yuuU6H1a5o
-	RaJfiYHqaQ+OYGizVRkXAXeOPfhWzWr1JR/ZhdMupL0J6Y1ZJ46z3R5JYHvqFg65bwP1DNOCS
-	q2G/QyeaoMywzTNMiMeFOZSX54R+296KSIl7FQPQjI/SOUxBEO/FHCt4oHCOBemInR8iAhVJA
-	yHT/aoCz1RwINQHZx1GZV9yjef3Oe0HCkAeqJ/EqfGk5V+K9ixzSyfMRPjm5ydHZslyW7uUD3
-	tlFDEgeTO6916MI+w1EKixaWtNnggQuKHvpN0x97AZz2l/ACLKqAghCJMhpvbgc0EqywggR6Z
-	hEmIzftzUlMIbc5ALv0vLD+t0qCIFonjtXjleDkpUUElx7RcdMbQl3A7T/i8BSRUyXaFDiTIu
-	byO0nJHo1xg00j+3EaO1cCWMCN99bSGZjkBNq/o0wmsm59fPX1gy8fj3YZOqVQ0llSVrDFlqw
-	PeOQH5rBcm1SOlmIfHSJroXP5hhWgxDwiHwGaChxExb7rxWWC2UnDO7qA4ypEuX2RaF35fc15
-	esNLlgg/Vugh06GF4pL5AkxdlFtEdXYBnk4tTBcDRAh24LXkKM6HTiq0Ri6zy+vje3emK5st2
-	cC1xm3T2AouvomYBJ0DPsaAhQasrZmQC3LPxCWqluEIxs27ztFE/RG6HcWjlTPIivb/TblbQb
-	6XP4v6B
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ogqr6ms3mfsrt374"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8z+inpOA25CEF3YRVzS7ShGveoPYJUem8bGB7zAmyttQ@mail.gmail.com>
+User-Agent: NeoMutt/20160910 (1.7.0)
+X-Provags-ID: V03:K0:gdZqP8oSgp24oWpCg+T+ZCr60u6uR/wTIx12MdkVQAt7bma2t8g
+	2dIuwyfkJ/WgGAl7yHpOHFemaMnh2K7DBeo79giiyveLNs9E01ew0ok5LH1TqRBcgMxier6
+	zgbWRJA5b2p3KT+WcktkkUPUUD1ctu0X1gzEtwgOm+WBqXcChhDwPAgh66vRrP0SIoO2ZQg
+	hitZOGzqV/nBsXFg+IJpg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:smEmTHwe4mk=:L8DgMw8GPdTgChzhgttUkT
+	m4WzJ2vcZNXnvg1W17+wpHymiyzLxNojlMaoJtxCg1GEHabbg4V+nREScJlpUu74RUGV7dVy0
+	WANZKem4zpebGXQdPVR1HCJhyLBlxWQHs1h9feHP+OWj8csgj6salvKW6gTtV+EzUqpOse/SJ
+	rYik8gqoJFptwvS7zjRXOcYBfqeE3ZfTrt8e72NCHLI4LTN4KUzXXU9VUwwSVjyudOvD6RErm
+	El9vy/u9VZb71uq/JqB0MiDXVRkgC6pozDEuU9cTjmsRdtS+k39G/rqiDvdyunBLGMGU0hch3
+	z9Wj8bF3ozdAuDubmg5DifQRP1GcHkKUiKrmnN60x4B4HpE8dajDGsw8ejiNXxF1gBtKHoGaF
+	ZhwC30DlTXEOZkKYxh2Z0EuFP1yXwB2Z/BFoA5EvhFph5DrbnaA6mHNr+qow0wizHw6bNTNpc
+	BsEtQt1zz29x7GLg2DFaIQLjXbpYkGSoEV1f/uNT914iUefuY31FRyJS2Th5ZW1xsoz5hLyMe
+	x7lafBMQXZnotRW5IFkcomy20GbOmpU7v9Tg3O204Exkdz7FZcZ97MDyI+26yQkrCtIMsoGFp
+	/6JWsEJPdUa7Q3GaZx2uXnOS+AComY9c7y4SuPtLPI98lhp9mUx8hUsMoptn3w2+HksZYsUSK
+	3uhT7za9O49dDiXxMLy6WkLVVmfwuTrKvhJjRRoOKP0fMhj5fJrH6EKAMJt7hwYmAvgTQdZvt
+	g7E1bKbaa8zxErAyp4fNk3jGeWkJm+e4jLD6jtyMyto6474hX6/2p9jQjcQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.21
 X-Mailman-Approved-At: Fri, 30 Sep 2016 03:43:10 -0400
-Subject: [Qemu-trivial] [PATCH] CODING_STYLE: Fix a typo ("Many a flamewar")
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Fix a typo
+ ("Many a flamewar")
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,27 +62,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Sep 2016 20:47:27 -0000
+X-List-Received-Date: Thu, 29 Sep 2016 23:38:59 -0000
 
-Signed-off-by: Jonathan Neuschäfer <j.neuschaefer@gmx.net>
----
- CODING_STYLE | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/CODING_STYLE b/CODING_STYLE
-index e7fde15..a03a994 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -9,7 +9,7 @@ patches before submitting.
- Of course, the most important aspect in any coding style is whitespace.
- Crusty old coders who have trouble spotting the glasses on their noses
- can tell the difference between a tab and eight spaces from a distance
--of approximately fifteen parsecs.  Many a flamewar have been fought and
-+of approximately fifteen parsecs.  Many flamewars have been fought and
- lost on this issue.
- 
- QEMU indents are four spaces.  Tabs are never used, except in Makefiles
--- 
-2.9.3
+--ogqr6ms3mfsrt374
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Thu, Sep 29, 2016 at 03:14:45PM -0700, Peter Maydell wrote:
+> On 29 September 2016 at 13:46, Jonathan Neusch=C3=A4fer
+> <j.neuschaefer@gmx.net> wrote:
+> > Signed-off-by: Jonathan Neusch=C3=A4fer <j.neuschaefer@gmx.net>
+> > ---
+> >  CODING_STYLE | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/CODING_STYLE b/CODING_STYLE
+> > index e7fde15..a03a994 100644
+> > --- a/CODING_STYLE
+> > +++ b/CODING_STYLE
+> > @@ -9,7 +9,7 @@ patches before submitting.
+> >  Of course, the most important aspect in any coding style is whitespace.
+> >  Crusty old coders who have trouble spotting the glasses on their noses
+> >  can tell the difference between a tab and eight spaces from a distance
+> > -of approximately fifteen parsecs.  Many a flamewar have been fought and
+> > +of approximately fifteen parsecs.  Many flamewars have been fought and
+> >  lost on this issue.
+>=20
+> Should be "Many a flamewar has been fought and lost".
+> (This is slightly poetic phrasing but it has a nice ring to it;
+> the complement does have to be singular, not plural, though.)
+
+Thanks for pointing that out; I didn't know the phrase. I'll update my
+patch.
+
+
+Jonathan Neusch=C3=A4fer
+
+--ogqr6ms3mfsrt374
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJX7aXyAAoJEAgwRJqO81/bKggP/2IkFtP67PPqmSuTUe2fT/t2
+0S8HGwowqOgpIyePoV9nkEBez0Ko0SdFPlN3vztEpHwTJi59sYH6QnQbyhWpunrB
+f2xjkDmkvY3jp6Upm+Xrm/ZsoPAvv4woTHAIKID8Tkc1nasc1gIEc1fNpYAZAMm9
+IYSE83dzUnQELe+KZLKpMpwGkiZTWQuLa6rUQy5++e4f4PCb73NyOqPz6BVxEggJ
+lgloMsStOSmW3w2iVV0mC0aa9cFnZ/c7ouevok4EGFG9QPR/Z021Eg8pUiZ8W12h
+qcAlqXDSbnAbS2Sl6m/ovqZ21wc8Zq4/C+DViSxxxCvoXxWUDFC1SDr8PRzY0lX+
+R0eOt/YEX9HRJTHSxVWfN9eCkbOLWAbap6jg5wHRk0Dx+gtdyXh4QfNii2IRxu1t
+Nh9VVjA6nVuQ0pXTO9AHO1a/bV0QG+/8FuuZLD9YyNaBht9/E6QaR0C3soHi9JVk
+zWGAg0GqFLtMcjXw9rduVdc5vgEL/tLvlsoLmKXcdV/xFnBS2d/wbNst2MWm4s4e
+Z2zsstbmSPlCzNqUeaWmQYZtXDVQb9ZUEJa9yCHllZMBolMPj+gWOVW3H/T7slix
+zPkpZ8Z3mIwpX+BlVB0PcGJ4fP7kpLRcrj5z6RW2qOWaLt5OioN74kDKAal1tUh0
+NuvENedR0c3gYenBAhAr
+=o0IK
+-----END PGP SIGNATURE-----
+
+--ogqr6ms3mfsrt374--
 
