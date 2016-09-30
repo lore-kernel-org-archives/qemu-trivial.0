@@ -1,49 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bq2pC-0000i1-SE
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 14:46:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42303)
+	id 1bqH2v-0003RU-AG
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Oct 2016 05:57:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53181)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bq2p8-0000eE-Or
-	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 14:46:21 -0400
+	(envelope-from <felix.janda@posteo.de>) id 1bq7Rd-0006kS-5A
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 19:42:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bq2p6-00010a-Mh
-	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 14:46:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40692)
+	(envelope-from <felix.janda@posteo.de>) id 1bq7RY-00019U-EG
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 19:42:20 -0400
+Received: from mout02.posteo.de ([185.67.36.66]:57842)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1bq2oy-0000w2-3m; Fri, 30 Sep 2016 14:46:08 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7A6BC1E59;
-	Fri, 30 Sep 2016 18:46:07 +0000 (UTC)
-Received: from [10.3.116.116] (ovpn-116-116.phx2.redhat.com [10.3.116.116])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8UIk6Y3028858; Fri, 30 Sep 2016 14:46:06 -0400
-To: Akanksha Srivastava <akanksha.dlf@gmail.com>, qemu-devel@nongnu.org
-References: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <9d317b1b-9020-be71-e852-06e2d5021724@redhat.com>
-Date: Fri, 30 Sep 2016 13:46:06 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	(envelope-from <felix.janda@posteo.de>) id 1bq7RY-00017i-89
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 19:42:16 -0400
+Received: from submission (posteo.de [89.146.220.130]) 
+	by mout02.posteo.de (Postfix) with ESMTPS id 867F620A0B
+	for <qemu-trivial@nongnu.org>; Sat,  1 Oct 2016 01:42:14 +0200 (CEST)
+Received: from customer (localhost [127.0.0.1])
+	by submission (posteo.de) with ESMTPSA id 3sm7Jj5K0KzyZZ;
+	Sat,  1 Oct 2016 01:42:13 +0200 (CEST)
+Date: Fri, 30 Sep 2016 19:40:21 -0400
+From: Felix Janda <felix.janda@posteo.de>
+To: qemu-devel@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-trivial@nongnu.org
+Message-ID: <20160930234021.GC5887@nyan>
 MIME-Version: 1.0
-In-Reply-To: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="Njp7iAC1NUovKuclMDjfCVnKIEA0oGcXf"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 30 Sep 2016 18:46:07 +0000 (UTC)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: Change *_exitfn return
- type from void to int
+X-Received-From: 185.67.36.66
+X-Mailman-Approved-At: Sat, 01 Oct 2016 05:57:27 -0400
+Subject: [Qemu-trivial] [PATCH] linux-user: include <poll.h> instead of
+ <sys/poll.h>
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,106 +43,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Sep 2016 18:46:21 -0000
+X-List-Received-Date: Fri, 30 Sep 2016 23:42:22 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Njp7iAC1NUovKuclMDjfCVnKIEA0oGcXf
-Content-Type: multipart/mixed; boundary="7ashC9XP3vHdNednUUEiahfQvQAvHXhNo";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Akanksha Srivastava <akanksha.dlf@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-Message-ID: <9d317b1b-9020-be71-e852-06e2d5021724@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] usb: Change *_exitfn return type from void
- to int
-References: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
-In-Reply-To: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
+This removes the last usage of <sys/poll.h> in the code base.
 
---7ashC9XP3vHdNednUUEiahfQvQAvHXhNo
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Felix Janda <felix.janda@posteo.de>
+---
+ linux-user/syscall.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 09/30/2016 12:51 PM, Akanksha Srivastava wrote:
-> The *_exitfn functions cannot fail and should not be
-> returning int.
-> Suggested as a Bite-sized task
-> Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
-> ---
->  hw/usb/ccid-card-emulated.c | 4 ++--
->  hw/usb/ccid-card-passthru.c | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-> index 3213f9f..abb2773 100644
-> --- a/hw/usb/ccid-card-emulated.c
-> +++ b/hw/usb/ccid-card-emulated.c
-> @@ -547,7 +547,7 @@ static int emulated_initfn(CCIDCardState *base)
->      return 0;
->  }
-> =20
-> -static int emulated_exitfn(CCIDCardState *base)
-> +static void emulated_exitfn(CCIDCardState *base)
->  {
->      EmulatedState *card =3D EMULATED_CCID_CARD(base);
->      VEvent *vevent =3D vevent_new(VEVENT_LAST, NULL, NULL);
-> @@ -564,7 +564,7 @@ static int emulated_exitfn(CCIDCardState *base)
->      qemu_mutex_destroy(&card->handle_apdu_mutex);
->      qemu_mutex_destroy(&card->vreader_mutex);
->      qemu_mutex_destroy(&card->event_list_mutex);
-> -    return 0;
-> +    return;
->  }
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 3d1f694..4bfb671 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -42,7 +42,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <sys/uio.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <sys/times.h>
+ #include <sys/shm.h>
+ #include <sys/sem.h>
+-- 
+2.7.3
 
-Ending a function that returns void with 'return' is redundant; just
-drop the return statement altogether if it is the last thing that can be
-reached.
-
-> =20
->  static Property emulated_card_properties[] =3D {
-> diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-> index 2eacea7..2bd9cb2 100644
-> --- a/hw/usb/ccid-card-passthru.c
-> +++ b/hw/usb/ccid-card-passthru.c
-> @@ -364,9 +364,9 @@ static int passthru_initfn(CCIDCardState *base)
->      return 0;
->  }
-> =20
-> -static int passthru_exitfn(CCIDCardState *base)
-> +static void passthru_exitfn(CCIDCardState *base)
->  {
-> -    return 0;
-> +    return;
->  }
-
-And again.  Since the callback does nothing, do you even need it to
-exist, or can you do further cleanups that allow the callback to be
-optional if it would otherwise be a no-op?
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---7ashC9XP3vHdNednUUEiahfQvQAvHXhNo--
-
---Njp7iAC1NUovKuclMDjfCVnKIEA0oGcXf
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJX7rLuAAoJEKeha0olJ0NqNwIH/RoCDwO9AwmWjWd5bDjwn9kb
-gNsUf/AhLfiCJUQhzzTqex2WTkpnjZLgrxwh0j/Lao/LAqWhGZLL8BPpU64aHkR7
-xS4AvjgThAKs4e8LPihloaA9mOxuv/+DtZ+0sRIjDMfL+2TxfyEZHJXPXETjXSc2
-++7xTzguRUgIoKzpUHy3UlBpG7USDJeRUqH6Bxjo72cDaLvlgH+46ohfOVecIeoT
-UBiDOeJnIZHc7IhTCDZRkMrU6u5dlgOjt5qaBgXJcURCdre9Ijn+YzgzngteKgj1
-3NbhhezQJj7QdGlcb9lhownX4tcYMwKdRJ+lsFMP5hSMgX6FTrSFEB7hQjS3E+Y=
-=jfx/
------END PGP SIGNATURE-----
-
---Njp7iAC1NUovKuclMDjfCVnKIEA0oGcXf--
 
