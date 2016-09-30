@@ -1,52 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bq2Ck-0008Mz-Lf
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 14:06:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35416)
+	id 1bq2XO-00004y-8N
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 14:27:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32802)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bq2Ci-0008Mf-Ul
-	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 14:06:37 -0400
+	(envelope-from <akanksha.dlf@gmail.com>) id 1bq1yq-00030O-JZ
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 13:52:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bq2Ce-0006ss-PG
-	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 14:06:36 -0400
-Received: from mout.gmx.net ([212.227.15.19]:62172)
+	(envelope-from <akanksha.dlf@gmail.com>) id 1bq1yp-0006kw-4k
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 13:52:16 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:35158)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>)
-	id 1bq2Ce-0006sA-Fe; Fri, 30 Sep 2016 14:06:32 -0400
-Received: from latitude ([88.153.7.52]) by mail.gmx.com (mrgmx002) with
-	ESMTPSA (Nemesis) id 0MFMIO-1bkWQ93IOq-00ELeq; Fri, 30 Sep 2016 20:06:25
-	+0200
-Date: Fri, 30 Sep 2016 20:06:24 +0200
-From: Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-To: Akanksha Srivastava <akanksha.dlf@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kraxel@redhat.com
-Message-ID: <20160930180624.fpmybtpkldpeehiu@latitude>
-References: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nva7qj46au5qh3qu"
-Content-Disposition: inline
-In-Reply-To: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
-User-Agent: NeoMutt/20160910 (1.7.0)
-X-Provags-ID: V03:K0:DdMLPoBfaB5+GOl63BcOqq0L4tgutYmeP2CwrOX2uNFj848mnoc
-	BuOEqHz4YLAirkSoFtyPbLjq0zSPFrkEDu2+D0QV8V2O4WJuMHdruuuYLX9OPDt6b1d4XKB
-	BxQhGqOLkTUF8wv8DIkGWVfI8/pVzihJKzEZh75nI/KsCPkZiC2fPUWeAYIU/M79ix2ZQ+/
-	ulJI2zj+GspAh5LLVgWvg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:jgWDLL6P7yg=:tU1o9C+KkWkag0v2XJowMY
-	ZJWHEjMb2qJ/INGxSGh2dFPlH6J8p7E9A4HuxvJ5fruE5beZJRR4fPo2ibfunrTpv3MTa7N65
-	IhgAbQSJZ6ytYNuI9s0vEskFZQCjDhFNbkOQW5Ilh3sykhj4lOulG584oEJUCfcOJ9RTwKffy
-	Ayt90fE9/amb+cHjHozvQeBNlDXVwrXGWtgA9DmKmD1o4fWPXXKyPVqw6hKqQskfosPCXdtTt
-	nw1m3TZoC4t4kVqlEYaDQZ+p1DIxg8nQYzDmB67/PFXQGIwbladOVZ0wSz252vVW0bygVMOBu
-	MvLzxmb+M/t26BZaWfSkbzb0tNqvDlUWn6ceTYUnnbAHncNvsJWeXtXi5MvEGGUlXMQe59sTe
-	xLZ7oV6qRdp3dtii573RB9uXrRRlqyMBHx9GCU1DNKm3tiBPc1pXTShrRKHKHIY5uq+Id5dKo
-	oNeL3+K6TKD5K1CiCRjyDFtKb/3uZUWUWtTj7a/HKWgzfZHeKY08VOiZJvyz6rXrwgUWr1Zqb
-	B+leQha7zui0qxfHwNtOHE/o03OQHMNKsskoOXt6BHlLfIPf0t91qwjbaUJyFiXv+a+pedZDS
-	kC9NpVh8cWxAQkIWOBeRp0kS5BmMeQe3hArzEnBGSjpGecTUaLOuObxBx3Gkkm4QClIlzUejT
-	ztiKmqNPIcxNfc77LuSNAlDtpwIj3LqdpBUdFoFpr0m0ejARc9fKngP8w78Ct6n+rG9wJaaAi
-	+V5f3AYKEqXOjyD51nXPEVbOrihxH9D0K1rUbh/nYgimdDBXXEbe72eyQkc=
+	(envelope-from <akanksha.dlf@gmail.com>)
+	id 1bq1yh-0006ci-Os; Fri, 30 Sep 2016 13:52:07 -0400
+Received: by mail-pf0-x242.google.com with SMTP id 6so5262346pfl.2;
+	Fri, 30 Sep 2016 10:52:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=Csm7ntZShCRMwvc6kCQglrl8eUi5LkiF/aEg87so0JM=;
+	b=fLn/7W4VA3hCLWuNA6s+zmDbcOJlFUkmesK2FHkpLT2vQxXObsjpdHFGngHI5CvLj1
+	4OxUZqpZ0dMWguQMgWQHLZhWd8bxmghhEUEG90rDtZ9tdNKKry3Et8/vy2wLF8EIWf0N
+	X5j4jTLLXE32CjJytmCfjWfDRiYqJozihQ0zJzJ2whtN3nx3HJEI3wvd98EM6R2vW77z
+	Ilmo73vsfFvlREEMYYDeWyxwK9QtGeiXSPcfr7vW7GLdw18Xx0TOiSgCdRUXWm+PxQr5
+	YTqoUYI5DY2XURM41xR4YBOLzJy6nj4gA3gP7pZsWGS+RYYxOet6ywAwRw9LJrjmjLXr
+	p6Xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Csm7ntZShCRMwvc6kCQglrl8eUi5LkiF/aEg87so0JM=;
+	b=PlhwuDbft7u89xSgbUoetGnoIx7APl29kutcbLlFbitdBWikWJ2k5BqFbcbgRkFLzI
+	34XsrSymFgiFz3W5fH+PCXtxZhmrPsxU5vvZCNMZBSItFore9y5XCq+WRm0aOLGlBkTh
+	liOlkBD1EWNFcweWu+MlUSMQPYjtyi2Cw8uoMPdssKMGr0wXLgyiRqbsK+CzuHFr688O
+	dKQG/SiPv4jeMJQmWw1KW1SLf4XdLwr/VpS3GWh5EQVXos+p48Nc6kQuXOyP62yCMmcY
+	FhxnYafwjL9h9x/p3zcUCBSDsef+OTgdsc609DFZ4qPTZ3lNAPVAXaQIBQt0dRNwQT5j
+	5e/g==
+X-Gm-Message-State: AA6/9RmN163+kdY3ihVe3kl/eeZVULvHZ3F93Z06sOm4+xT4wlaOEin8PLEBJHhOuO9lBg==
+X-Received: by 10.98.34.221 with SMTP id p90mr13952995pfj.18.1475257926702;
+	Fri, 30 Sep 2016 10:52:06 -0700 (PDT)
+Received: from akanksha.iiit.ac.in ([14.139.82.6])
+	by smtp.gmail.com with ESMTPSA id
+	x66sm29397870pfb.86.2016.09.30.10.52.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 30 Sep 2016 10:52:06 -0700 (PDT)
+From: Akanksha Srivastava <akanksha.dlf@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com,
+	Akanksha Srivastava <akanksha.dlf@gmail.com>
+Date: Fri, 30 Sep 2016 23:21:35 +0530
+Message-Id: <1475257895-10762-1-git-send-email-akanksha.dlf@gmail.com>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.15.19
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: Change *_exitfn return
- type from void to int
+X-Received-From: 2607:f8b0:400e:c00::242
+X-Mailman-Approved-At: Fri, 30 Sep 2016 14:27:57 -0400
+Subject: [Qemu-trivial] [PATCH] usb: Change *_exitfn return type from void
+ to int
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,64 +64,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Sep 2016 18:06:38 -0000
+X-List-Received-Date: Fri, 30 Sep 2016 17:52:17 -0000
 
+The *_exitfn functions cannot fail and should not be
+returning int.
+Suggested as a Bite-sized task
+Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
+---
+ hw/usb/ccid-card-emulated.c | 4 ++--
+ hw/usb/ccid-card-passthru.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
---nva7qj46au5qh3qu
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 3213f9f..abb2773 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -547,7 +547,7 @@ static int emulated_initfn(CCIDCardState *base)
+     return 0;
+ }
+ 
+-static int emulated_exitfn(CCIDCardState *base)
++static void emulated_exitfn(CCIDCardState *base)
+ {
+     EmulatedState *card = EMULATED_CCID_CARD(base);
+     VEvent *vevent = vevent_new(VEVENT_LAST, NULL, NULL);
+@@ -564,7 +564,7 @@ static int emulated_exitfn(CCIDCardState *base)
+     qemu_mutex_destroy(&card->handle_apdu_mutex);
+     qemu_mutex_destroy(&card->vreader_mutex);
+     qemu_mutex_destroy(&card->event_list_mutex);
+-    return 0;
++    return;
+ }
+ 
+ static Property emulated_card_properties[] = {
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index 2eacea7..2bd9cb2 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -364,9 +364,9 @@ static int passthru_initfn(CCIDCardState *base)
+     return 0;
+ }
+ 
+-static int passthru_exitfn(CCIDCardState *base)
++static void passthru_exitfn(CCIDCardState *base)
+ {
+-    return 0;
++    return;
+ }
+ 
+ static VMStateDescription passthru_vmstate = {
+-- 
+1.9.1
 
-On Fri, Sep 30, 2016 at 11:21:35PM +0530, Akanksha Srivastava wrote:
-> Subject: [Qemu-devel] [PATCH] usb: Change *_exitfn return type from void =
-to int
-
-This should read "from int to void", I guess.
-
-> The *_exitfn functions cannot fail and should not be
-> returning int.
-> Suggested as a Bite-sized task
-> Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
-> ---
->  hw/usb/ccid-card-emulated.c | 4 ++--
->  hw/usb/ccid-card-passthru.c | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
-[...]
-> -static int passthru_exitfn(CCIDCardState *base)
-> +static void passthru_exitfn(CCIDCardState *base)
->  {
-> -    return 0;
-> +    return;
->  }
-
-Have you compile-tested this change? I think you'll have to adjust the
-definition of exitfn in CCIDCardClass, and ccid_card_exitfn (in
-hw/usb/dev-smartcard-reader.c) as well.
-
-
-Regards,
-Jonathan Neusch=C3=A4fer
-
---nva7qj46au5qh3qu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJX7qmYAAoJEAgwRJqO81/blMoQAMd2y3XQ992vlnrnkgfjXbkD
-4IkfSfCMrokwp5P5CtzIX6hrhHiGXIhanNsRC8MKxiHYFikXOvBKWofdOj4pxIz3
-VltVuWMH+K1p4kHx2H62yuqmyw6UvmezNJBm/W/z/lS57qX00WSE5TAKLhDSgy5c
-MaX5rzQ0Ng0RlAKeBdBGBkcJG8CbEjsMqcnbTV33u2Fz/F1BErDmIlrSmH+PI7kC
-ULEXs+97yXLfx/Cyj+i+V1+3yRZk9L5vXRpzqzXGf+rauzcGQvMRKPeMSx/yPx/L
-DAfJlgRck5VTMVmy9M2xeDXoLxix4erFA7aCTmpqM+VjlG4D+u6uBtTGwftMn/M6
-Yfj5CmZPCV66s/s3IWZsDu4I4ivh63VHFxdJDuNUL1NnSR56GYsAg9N2isOhYcse
-yGUIBCUpyJu0xOet3H7ZeyrOzeJAgA40udfnR++Eyb5AVE/+T0RF7IP2OQPqs16y
-8hEakY0u5kOnFYG4MpeUrZqJwZK8O1C3s2n8GDu9cj+zZdzJyX91zj+mDgGce4JT
-yRGuDJpuoSPUnb4sG77YgUcNM4JEihCKkPToCGQ2Fui+Ob5jjcFiI+5WF4tmqULa
-+THMGXTIfVOQnzrW9aZsKVVb8DzZySoJZ35tQatmMJisihoqlTMFUB8rWNFW4l4g
-iBqLhKV5+iBwniQEzpJN
-=J8/h
------END PGP SIGNATURE-----
-
---nva7qj46au5qh3qu--
 
