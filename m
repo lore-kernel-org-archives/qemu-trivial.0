@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bpsTS-0004MQ-Af
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 03:43:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38897)
+	id 1bpuAv-0005f6-OE
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Sep 2016 05:32:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38016)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bplKF-0001v8-NW
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 20:05:16 -0400
+	(envelope-from <th.huth@gmail.com>) id 1bpuAt-0005eh-4l
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 05:32:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>) id 1bplKA-00071U-J7
-	for qemu-trivial@nongnu.org; Thu, 29 Sep 2016 20:05:15 -0400
-Received: from mout.gmx.net ([212.227.17.21]:52064)
+	(envelope-from <th.huth@gmail.com>) id 1bpuAo-0000ii-6X
+	for qemu-trivial@nongnu.org; Fri, 30 Sep 2016 05:32:11 -0400
+Received: from mail-wm0-f66.google.com ([74.125.82.66]:34581)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <j.neuschaefer@gmx.net>)
-	id 1bplKA-00070h-6z; Thu, 29 Sep 2016 20:05:10 -0400
-Received: from localhost.localdomain ([88.153.7.52]) by mail.gmx.com
-	(mrgmx102) with ESMTPSA (Nemesis) id 0MIPhr-1bmjBl2Whr-0049vF;
-	Fri, 30 Sep 2016 02:05:07 +0200
-From: =?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>
-Date: Fri, 30 Sep 2016 02:04:28 +0200
-Message-Id: <20160930000428.22382-1-j.neuschaefer@gmx.net>
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20160929233847.n5xe7gmdb5ys5ujv@latitude>
-References: <20160929233847.n5xe7gmdb5ys5ujv@latitude>
+	(envelope-from <th.huth@gmail.com>)
+	id 1bpuAo-0000iJ-14; Fri, 30 Sep 2016 05:32:06 -0400
+Received: by mail-wm0-f66.google.com with SMTP id p197so1085521wmg.1;
+	Fri, 30 Sep 2016 02:32:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+	:mime-version:content-transfer-encoding;
+	bh=K9DwDA3SVWR03F7KCVcOI3s1RbwwZBpUWj/mGhthRtw=;
+	b=BqS26XfzyE5JSWLtVnWXQcMBzj97QY+ibbKy0dti0IcMqW+lJCOqUjM6P8ueygpFm0
+	PXorJSs2HKEhkyZCaLyN0Ici+15LFO+85hHpbsCWeBedMuu7p9KLnQnHQssyS1qgxM6Z
+	BD0PyFfN/ZqIWaW5hzFIhgcTMUGPt13xfS+RxW6zogsPlXEqcHnkA5SKSsFXuRIlq+P1
+	i/3N6yLt6J48t8swnUh9FQigDtvtpALmcK/bD9fv0bGlluASIeuCxDrZ8RiwV6Q7GLx8
+	EE/qHeCqYc+NPAVaMFiCbWyvm8yXnUCuBPIFjIB8tHqmT4A4jTZXnoi9R4xwY9gTt9FB
+	iiFQ==
+X-Gm-Message-State: AA6/9RlHBi/aoU9uT4QX/uIjwkODZnbIMGg6xTBuxKGOD2603yhy5AxVuZPaBNk5vCIy2w==
+X-Received: by 10.194.122.137 with SMTP id ls9mr5842742wjb.29.1475227924028;
+	Fri, 30 Sep 2016 02:32:04 -0700 (PDT)
+Received: from [192.168.178.23] (p57AEE603.dip0.t-ipconnect.de. [87.174.230.3])
+	by smtp.gmail.com with ESMTPSA id
+	c5sm18545296wjw.29.2016.09.30.02.32.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 30 Sep 2016 02:32:03 -0700 (PDT)
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	Magnus Damm <magnus.damm@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+From: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <0e742879-8036-7c18-dfa3-4c8a8174f96a@tuxfamily.org>
+Date: Fri, 30 Sep 2016 11:32:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:2tWbQPBDDHwTWgq+0mcNyN3OGW2bWEsabClttYdbO+7yN4GQG6K
-	4opWPJfIIaPZrV7Ies+qHAhfcYh17r/Hb+haqfvZrwPesrWXsOJK9FtSzll9W9iBpcvCVAv
-	1iHscRlyA08B6UgckXd/0ZD1ZL08O+j4eTUD8RAH5rqpKd3PdCQSffRs0gAgFQMXl1EaNCl
-	HLAiSf/7Qatm3fdXJtqsg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:lIsZ8QfnuC0=:1hdeZLFcSUbrM7uR9QwTTm
-	iNE/z/iUW1kqwWi3jGHc6wtK8j+kQs39nNUe6BfVESQfYbMArOT29HcX/Fk9PVRBuqYKTvN2R
-	CkrCqljqQsh4XaYf09hhLdATEha7pyRelmWVlZGipfS9kSE4mlGN/W5+wSfMValrIJrqlW/Y3
-	EeYzYk8lWi632x1byfPEjC++pQVo5lwY8xkr15HB1pxrxEGaLEcl5ritClTGwbAT58+zZYmi4
-	kR/LXy5Zn/STM6snexMms4oBQHNlCdesHptGF8mxcArNG1U7BcWUVWVA4oEoTiXrMb6rlYGXq
-	cfw9hjsIVR1Pc08WNmxj6hAuJV/SN3G1lbXnF75C6TgoPgCKTGr71iN3Ry5pJyRl7L44zLxBP
-	FqbSO4xwEude/rsSo9CbeZ/m4KQ3AeH6YbU8B7yblGlut5MTWiEuQ7TeDr8lN12NiisUqdV/U
-	wNOjRhB+HJLgZs62Fp4PEKjqRD4SE5ucXy6xQIki7EtXQwCHdfc91ZAbWRIL2E85dh1eWxCwR
-	2X63rJF4nffUSsYOoqAQyDNO/Hkfq+O5fvawnsKggSZAGMqoKxxtR47jlFB0b/9+sALyzmU3w
-	f5uAGw5irGGLpNsKZ7ekbIvZlpIQHCEr8Fz0ifjLJ0sk3mX45Gf3Mi3wNKMOn5ALz8kxy474X
-	+2QCHmGD5F+BOsrbJzOCvDBRjrD9skj28+AU4svUPp3Vw8vG5XyUr5NoTRxYXAMSkJ76UX8sO
-	sMrbY7jCshQD0shVbsIpegIfP8iGcz4S7mfVxX7FTJisl4p/8kl2lWWzS2DDUPPHHtIjSXrHr
-	uvxHWoW
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.21
-X-Mailman-Approved-At: Fri, 30 Sep 2016 03:43:13 -0400
-Subject: [Qemu-trivial] [PATCH v2] CODING_STYLE: Fix a typo ("have" vs.
- "has")
+	[fuzzy]
+X-Received-From: 74.125.82.66
+Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Some updates related to the SH4
+ machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,32 +60,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Sep 2016 00:05:16 -0000
+X-List-Received-Date: Fri, 30 Sep 2016 09:32:12 -0000
 
-Signed-off-by: Jonathan Neuschäfer <j.neuschaefer@gmx.net>
+hw/intc/sh_intc.c and hw/timer/sh_timer.c seem to belong to
+the R2D machine, as far as I can see.
+And concerning the Shix machine, it does not make much sense
+to have a "M:" entry here and the "S:" set to "Orphan". So
+I'd like to suggest to use "Odd Fixes" here instead.
 
+Signed-off-by: Thomas Huth <huth@tuxfamily.org>
 ---
-v2:
-- Preserve the poetic sound of "Many a flamewar", which Peter Maydell
-  pointed out.
----
- CODING_STYLE | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/CODING_STYLE b/CODING_STYLE
-index e7fde15..f53180b 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -9,7 +9,7 @@ patches before submitting.
- Of course, the most important aspect in any coding style is whitespace.
- Crusty old coders who have trouble spotting the glasses on their noses
- can tell the difference between a tab and eight spaces from a distance
--of approximately fifteen parsecs.  Many a flamewar have been fought and
-+of approximately fifteen parsecs.  Many a flamewar has been fought and
- lost on this issue.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b821b28..e732f5f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -667,10 +667,12 @@ R2D
+ M: Magnus Damm <magnus.damm@gmail.com>
+ S: Maintained
+ F: hw/sh4/r2d.c
++F: hw/intc/sh_intc.c
++F: hw/timer/sh_timer.c
  
- QEMU indents are four spaces.  Tabs are never used, except in Makefiles
+ Shix
+ M: Magnus Damm <magnus.damm@gmail.com>
+-S: Orphan
++S: Odd Fixes
+ F: hw/sh4/shix.c
+ 
+ SPARC Machines
 -- 
-2.9.3
+1.8.3.1
 
 
