@@ -1,39 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bsnke-0006fO-5i
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 05:17:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46462)
+	id 1bsnkf-0006gU-Ah
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 05:17:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46494)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bsnkb-0006av-Lq
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:17:02 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bsnkc-0006cM-Tx
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:17:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bsnkZ-0000of-Az
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:17:00 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:42668)
+	(envelope-from <mjt@tls.msk.ru>) id 1bsnka-0000qC-SW
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:17:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53900)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bsnkU-0000hZ-Jz; Sat, 08 Oct 2016 05:16:54 -0400
+	id 1bsnkY-0000lZ-LI; Sat, 08 Oct 2016 05:16:58 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id F17CC40ED7;
-	Sat,  8 Oct 2016 12:16:48 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 1A85940EDA;
+	Sat,  8 Oct 2016 12:16:49 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 083E0B33;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 9397DB3A;
 	Sat,  8 Oct 2016 11:58:16 +0300 (MSK)
-Received: (nullmailer pid 19225 invoked by uid 1000);
-	Sat, 08 Oct 2016 08:58:13 -0000
+Received: (nullmailer pid 19262 invoked by uid 1000);
+	Sat, 08 Oct 2016 08:58:14 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat,  8 Oct 2016 11:57:48 +0300
-Message-Id: <a1c2bbc87b227dbf8e00b9684544eff9c861fcf7.1475917008.git.mjt@msgid.tls.msk.ru>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Sat,  8 Oct 2016 11:58:06 +0300
+Message-Id: <88071589e8c6665c40c39bdefc59ad615693b325.1475917008.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 02/26] bt-hci-csr: drop unused argument
+Subject: [Qemu-trivial] [PULL 20/26] build-sys: fix find-in-path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,59 +48,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Oct 2016 09:17:02 -0000
+X-List-Received-Date: Sat, 08 Oct 2016 09:17:04 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Fix spelling, the GNU make text functions is not called "find-string"
+but "findstring".
+
+Broken in commit 2b2e59e.  Fairly harmless: its only use is in
+tests/tcg/Makefile, where the bug can cause the I386_TESTS not to
+run when they should.
+
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/arm/nseries.c | 3 +--
- hw/bt/hci-csr.c  | 2 +-
- include/hw/bt.h  | 2 +-
- 3 files changed, 3 insertions(+), 4 deletions(-)
+ rules.mak | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index fea911e..c86cf80 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -786,8 +786,7 @@ static void n8x0_cbus_setup(struct n800_s *s)
- 
- static void n8x0_uart_setup(struct n800_s *s)
- {
--    CharDriverState *radio = uart_hci_init(
--                    qdev_get_gpio_in(s->mpu->gpio, N8X0_BT_HOST_WKUP_GPIO));
-+    CharDriverState *radio = uart_hci_init();
- 
-     qdev_connect_gpio_out(s->mpu->gpio, N8X0_BT_RESET_GPIO,
-                     csrhci_pins_get(radio)[csrhci_pin_reset]);
-diff --git a/hw/bt/hci-csr.c b/hw/bt/hci-csr.c
-index d688372..b77c036 100644
---- a/hw/bt/hci-csr.c
-+++ b/hw/bt/hci-csr.c
-@@ -458,7 +458,7 @@ qemu_irq *csrhci_pins_get(CharDriverState *chr)
-     return s->pins;
- }
- 
--CharDriverState *uart_hci_init(qemu_irq wakeup)
-+CharDriverState *uart_hci_init(void)
- {
-     struct csrhci_s *s = (struct csrhci_s *)
-             g_malloc0(sizeof(struct csrhci_s));
-diff --git a/include/hw/bt.h b/include/hw/bt.h
-index 963f330..2fa22bd 100644
---- a/include/hw/bt.h
-+++ b/include/hw/bt.h
-@@ -128,7 +128,7 @@ enum {
-     __csrhci_pins,
- };
- qemu_irq *csrhci_pins_get(CharDriverState *chr);
--CharDriverState *uart_hci_init(qemu_irq wakeup);
-+CharDriverState *uart_hci_init(void);
- 
- /* bt-l2cap.c */
- struct bt_l2cap_device_s;
--- 
+diff --git a/rules.mak b/rules.mak
+index 3fdb261..0333ae3 100644
+--- a/rules.mak
++++ b/rules.mak
+@@ -138,7 +138,7 @@ endef
+ # Looks in the PATH if the argument contains no slash, else only conside=
+rs one
+ # specific directory.  Returns an # empty string if the program doesn't =
+exist
+ # there.
+-find-in-path =3D $(if $(find-string /, $1), \
++find-in-path =3D $(if $(findstring /, $1), \
+         $(wildcard $1), \
+         $(wildcard $(patsubst %, %/$1, $(subst :, ,$(PATH)))))
+=20
+--=20
 2.1.4
 
 
