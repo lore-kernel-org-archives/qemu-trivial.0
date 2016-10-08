@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bsnSp-0002YU-Fz
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 04:58:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43016)
+	id 1bsnau-0008EI-Uy
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 05:07:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44231)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bsnSj-0002Qj-Qg
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 04:58:37 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bsnas-0008Ab-Ei
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:06:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1bsnSh-0007t0-TQ
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 04:58:32 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57724)
+	(envelope-from <mjt@tls.msk.ru>) id 1bsnaq-000427-Fw
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 05:06:57 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:33946)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1bsnSd-0007mE-Vq; Sat, 08 Oct 2016 04:58:28 -0400
+	id 1bsnak-0003tj-SC; Sat, 08 Oct 2016 05:06:51 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3E0ED40ED7;
-	Sat,  8 Oct 2016 11:58:15 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 1D28240ED5;
+	Sat,  8 Oct 2016 12:06:49 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 87022B2F;
-	Sat,  8 Oct 2016 11:58:14 +0300 (MSK)
-Received: (nullmailer pid 19255 invoked by uid 1000);
-	Sat, 08 Oct 2016 08:58:14 -0000
+	by tsrv.tls.msk.ru (Postfix) with SMTP id D3970B31;
+	Sat,  8 Oct 2016 11:58:15 +0300 (MSK)
+Received: (nullmailer pid 19243 invoked by uid 1000);
+	Sat, 08 Oct 2016 08:58:13 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Li Qiang <liqiang6-s@360.cn>, qemu-trivial@nongnu.org,
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat,  8 Oct 2016 11:58:03 +0300
-Message-Id: <b16c129daf0fed91febbb88de23dae8271c8898a.1475917008.git.mjt@msgid.tls.msk.ru>
+Date: Sat,  8 Oct 2016 11:57:57 +0300
+Message-Id: <03972660f74aee433274ec8ab5018a83bf6af67e.1475917008.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
@@ -33,8 +33,8 @@ In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 17/26] usb: ehci: fix memory leak in
- ehci_process_itd
+Subject: [Qemu-trivial] [PULL 11/26] MAINTAINERS: Add some more pattern to
+ recognize all win32 related files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,34 +46,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Oct 2016 08:58:37 -0000
+X-List-Received-Date: Sat, 08 Oct 2016 09:06:59 -0000
 
-From: Li Qiang <liqiang6-s@360.cn>
+From: Thomas Huth <thuth@redhat.com>
 
-While processing isochronous transfer descriptors(iTD), if the page
-select(PG) field value is out of bands it will return. In this
-situation the ehci's sg list is not freed thus leading to a memory
-leak issue. This patch avoid this.
+The get_maintainer.pl script currently thinks that the win32
+related files in the util and include folders are currently
+unmaintained. Thus let's add some additional wildcards to
+match these files.
 
-Signed-off-by: Li Qiang <liqiang6-s@360.cn>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/hcd-ehci.c | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index b093db7..f4ece9a 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1426,6 +1426,7 @@ static int ehci_process_itd(EHCIState *ehci,
-             if (off + len > 4096) {
-                 /* transfer crosses page border */
-                 if (pg == 6) {
-+                    qemu_sglist_destroy(&ehci->isgl);
-                     return -1;  /* avoid page pg + 1 */
-                 }
-                 ptr2 = (itd->bufptr[pg + 1] & ITD_BUFPTR_MASK);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4b17a05..f0ab48f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -322,6 +322,9 @@ L: qemu-devel@nongnu.org
+ M: Stefan Weil <sw@weilnetz.de>
+ S: Maintained
+ F: *win32*
++F: */*win32*
++F: include/*/*win32*
++X: qga/*win32*
+ F: qemu.nsi
+ 
+ ARM Machines
 -- 
 2.1.4
 
