@@ -1,46 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bsoRN-00014J-Ij
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 06:01:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54389)
+	id 1bsogg-0003b9-Pp
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 06:17:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bsoRK-00014A-48
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 06:01:11 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bsogd-0003Yq-Uh
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 06:17:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1bsoRF-0008P6-Uf
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 06:01:09 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:50105)
+	(envelope-from <mjt@tls.msk.ru>) id 1bsogd-0000Eu-3T
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 06:16:59 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58783)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1bsoRF-0008OU-KY; Sat, 08 Oct 2016 06:01:05 -0400
-Received: from Quad.localdomain ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104) with ESMTPSA (Nemesis) id 0M0iAY-1b1GmH3ZHy-00umvv;
-	Sat, 08 Oct 2016 12:00:56 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>
-Date: Sat,  8 Oct 2016 12:00:07 +0200
-Message-Id: <1475920807-13485-1-git-send-email-laurent@vivier.eu>
-X-Mailer: git-send-email 2.7.4
-X-Provags-ID: V03:K0:AHBczmO0HCZr/w6rhBDz32uAAjEUiSuILicxIPaxiIHTZ7HecX+
-	AUYrJC5YXrEOJd4T515rMdvNd6CC7XSjRl/nq8L+ZszO3LPwl19a2DhSV5BJ/g5n95qdXI6
-	BwhVvuBzMn4w1SANQRYalHva6OnQNBagSfNlBdxYTmlUcrIfy0NHjoVoFdAH3fs3B1WAHKj
-	/NefYjlX8pmdVDzu6XV3g==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:y1Oa1dU1foc=:TZZoqQR8je0671viIZzD/U
-	mqQDJlX47uFiymAJfJXXzDfzDJCcWnZFMYnqdabGNDdVLfXzJTMsG84kf0r/7wd5mXtI+aKQw
-	knK30dFJvSjizXsv1NGsDB1gRGBaWav9VHAkIk3oSNER8ax2qYJT/PVdEe2N6zyqnYRlLDZ1/
-	3IsUDxinMZ09pk/NN7gxCQeWdB9slZAuXv+M2sveDPbipQkMkGK5C3XNqtfPsY7wLmZDxguCe
-	8TTYCkg7YFOhavQAwu2lJm9NzGf+8knvGUSl60s1xXimgv/7HrssNcupHud1chgltnHy58i8d
-	eLOfbieA4FfK7Lo5b3hr4m59TDpVb2wgUXkab/b7FNRoV3BBTF47BWkvJOpMwhpiitqpruK83
-	vNEZsD51XClP6fL8mxpysHfLfvabkLETn+iiOxVHKFFOf8KSlP2ix4AFyUlhUdHRQgClZ5+Kq
-	GAsxriyDMNSYTAutBeAV7I8QwlLtxlV3+xXiPLtDK/zjNNWb9F2Oyj2DPCLi3auo4c/MLBP/0
-	0VD4p1UzMenYWLanqidnnt3EU6Q4ZaQu1kJrSplsd3H/BZ1xyWstBSknDdufDZj9WDxAFvCEp
-	NSOirtTbTcXPN1zyX0iLGDpZtxucAFXZxH5q6pRIJQIwFqXNaMOB7xqvyk56PQeplsYoo0Xc3
-	gJKSRwd6xFznqpqxvp09U1iL8JHr2lgJWHEWbg8TRjMKwKdzmcll6ojzxrCsgh3Df7jM=
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bsogY-00008v-Jt; Sat, 08 Oct 2016 06:16:54 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2392940EB7;
+	Sat,  8 Oct 2016 13:16:50 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 113B4B42;
+	Sat,  8 Oct 2016 11:58:17 +0300 (MSK)
+Received: (nullmailer pid 19270 invoked by uid 1000);
+	Sat, 08 Oct 2016 08:58:14 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Felix Janda <felix.janda@posteo.de>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sat,  8 Oct 2016 11:58:10 +0300
+Message-Id: <0839f11cda08039d15b3e7621390de3e512b24e7.1475917008.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
+References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
+References: <cover.1475917008.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PATCH v2] MAINTAINERS: qemu-trivial information
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 24/26] linux-user: include <poll.h> instead of
+ <sys/poll.h>
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,49 +46,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Oct 2016 10:01:11 -0000
+X-List-Received-Date: Sat, 08 Oct 2016 10:17:01 -0000
 
-Information about "qemu-trivial" ML can be found in the wiki:
+From: Felix Janda <felix.janda@posteo.de>
 
-    http://wiki.qemu.org/Contribute/TrivialPatches
+This removes the last usage of <sys/poll.h> in the code base.
 
-But the first place where a developer looks is the file MAINTAINERS.
-
-This also allows the get_maintainer.pl script to display
-the qemu-trivial ML address when the mail subject contains "trivial".
-
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Felix Janda <felix.janda@posteo.de>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
-v2:
-- move to the top
-- add my name to help Michael to manage trivial-patches
+ linux-user/syscall.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- MAINTAINERS | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9bca506..18e38e8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -63,6 +63,17 @@ W: http://wiki.qemu.org/SecurityProcess
- M: Michael S. Tsirkin <mst@redhat.com>
- L: secalert@redhat.com
- 
-+Trivial patches
-+---------------
-+Trivial patches
-+M: Michael Tokarev <mjt@tls.msk.ru>
-+M: Laurent Vivier <laurent@vivier.eu>
-+S: Maintained
-+L: qemu-trivial@nongnu.org
-+K: ^Subject:.*(?i)trivial
-+T: git git://git.corpit.ru/qemu.git trivial-patches
-+T: git git://github.com/vivier/qemu.git trivial-patches
-+
- Guest CPU cores (TCG):
- ----------------------
- Overall
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 0815f30..52012d4 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -42,7 +42,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <sys/uio.h>
+-#include <sys/poll.h>
++#include <poll.h>
+ #include <sys/times.h>
+ #include <sys/shm.h>
+ #include <sys/sem.h>
 -- 
-2.7.4
+2.1.4
 
 
