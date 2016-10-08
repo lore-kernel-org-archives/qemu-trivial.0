@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bsWUk-0003Cz-Om
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Oct 2016 10:51:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57067)
+	id 1bsmkn-0004d5-Rd
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Oct 2016 04:13:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35299)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bsWUi-00038v-8H
-	for qemu-trivial@nongnu.org; Fri, 07 Oct 2016 10:51:29 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bsmkl-0004bD-MC
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 04:13:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bsWUg-0007wE-4d
-	for qemu-trivial@nongnu.org; Fri, 07 Oct 2016 10:51:27 -0400
-Received: from mail-ua0-x233.google.com ([2607:f8b0:400c:c08::233]:34035)
+	(envelope-from <mjt@tls.msk.ru>) id 1bsmkj-0008GD-Uh
+	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 04:13:06 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54699)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bsWUf-0007vh-UY
-	for qemu-trivial@nongnu.org; Fri, 07 Oct 2016 10:51:26 -0400
-Received: by mail-ua0-x233.google.com with SMTP id p25so46874290uaa.1
-	for <qemu-trivial@nongnu.org>; Fri, 07 Oct 2016 07:51:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=c9ojlfF8gBJbD20jq7E8GoyDyTjMjhyxQPeWxVGpwjY=;
-	b=XY2oYv4dVdaIzFsT0m/xjjPCQeQ/3fANFms31vl0sGTJo9if9SeQrOmIvsnRYaDYvm
-	87NfPWjOeB45kmvZjEPgVEl25EM1PRV1kzNGA3ksA24wC8wcZSu/N3oyBjGbzI0eJnau
-	689iz/Avts1mYFE94vKNYN8mLxE7d9oxSiVV8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=c9ojlfF8gBJbD20jq7E8GoyDyTjMjhyxQPeWxVGpwjY=;
-	b=bE+Jw/olqIcQVvzw8vFyx50Buxf3FKwpajPR4GrCxqFREmPN0T1nAzgA9CSPopXE61
-	//+g+wFINPj+AV7IEu53A868cfUQ2HkKhFA2Y1nwqI1zbZjgIaxiVB/4adxv4O1tJ8J3
-	AYpLCyDxOsHWchdiA5K6/ShSB0b16KMuCnWJoO/hAwftcyt25H1VOA5s781eQzNJ62Az
-	nDDghOtnQevPmuRcRfcLdHpJQXi5zalx++r/I2TEc0OEDcxHRbTc8qcSOAj8J2S0FFG0
-	PfHsqH+MNO86OIChJKM+GobSbdA1mzeS6XscaC/arttXfPTYIW1xuhpYoOHCrb/d7aTP
-	pPNA==
-X-Gm-Message-State: AA6/9RkYnbXdJ3DILFe2CzAIZnwchvYTWQUa6BRUhulkU0/MxOyCoXegSgyBfwH0hwtNsqkxNeiyaZ2xuD/9XD6T
-X-Received: by 10.159.55.169 with SMTP id q38mr5943037uaq.131.1475851885281;
-	Fri, 07 Oct 2016 07:51:25 -0700 (PDT)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bsmkf-000833-Ja; Sat, 08 Oct 2016 04:13:01 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 2F01A40EB7;
+	Sat,  8 Oct 2016 11:12:48 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 9636CB26;
+	Sat,  8 Oct 2016 11:12:47 +0300 (MSK)
+To: =?UTF-8?Q?Jonathan_Neusch=c3=a4fer?= <j.neuschaefer@gmx.net>,
+	qemu-devel@nongnu.org
+References: <20160929233847.n5xe7gmdb5ys5ujv@latitude>
+	<20160930000428.22382-1-j.neuschaefer@gmx.net>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <5af7a2c9-ca1a-4051-0cdd-c19238594455@msgid.tls.msk.ru>
+Date: Sat, 8 Oct 2016 11:12:47 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.3.0
 MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Fri, 7 Oct 2016 07:51:04 -0700 (PDT)
-In-Reply-To: <1475611369-74971-1-git-send-email-emaste@freebsd.org>
-References: <1475611369-74971-1-git-send-email-emaste@freebsd.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Oct 2016 15:51:04 +0100
-Message-ID: <CAFEAcA_o6buZ8gq8f1Akqa_V0ugOe0-_=YVhCuFXSobCf3534w@mail.gmail.com>
-To: Ed Maste <emaste@freebsd.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20160930000428.22382-1-j.neuschaefer@gmx.net>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::233
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bsd-user: fix FreeBSD build
- after d148d90e
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH v2] CODING_STYLE: Fix a typo ("have" vs.
+ "has")
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,16 +47,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Oct 2016 14:51:29 -0000
+X-List-Received-Date: Sat, 08 Oct 2016 08:13:08 -0000
 
-On 4 October 2016 at 21:02, Ed Maste <emaste@freebsd.org> wrote:
-> Signed-off-by: Ed Maste <emaste@freebsd.org>
-> ---
->  bsd-user/main.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
+Applied to -trivial, thanks!
 
-Applied, thanks.
-
--- PMM
+/mjt
 
