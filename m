@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1btBIv-0003xz-7D
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Oct 2016 06:26:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58371)
+	id 1btMrf-0002fQ-0l
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Oct 2016 18:46:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35993)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>) id 1bt2FO-0004zE-TO
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 20:45:48 -0400
+	(envelope-from <dave@natulte.net>) id 1btMrc-0002Gm-MA
+	for qemu-trivial@nongnu.org; Sun, 09 Oct 2016 18:46:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>) id 1bt2FN-0007M6-Py
-	for qemu-trivial@nongnu.org; Sat, 08 Oct 2016 20:45:46 -0400
-Received: from mail-pa0-x243.google.com ([2607:f8b0:400e:c03::243]:34002)
+	(envelope-from <dave@natulte.net>) id 1btMkl-0002sv-EV
+	for qemu-trivial@nongnu.org; Sun, 09 Oct 2016 18:39:32 -0400
+Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:33445)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>)
-	id 1bt2FI-0007Kb-8d; Sat, 08 Oct 2016 20:45:40 -0400
-Received: by mail-pa0-x243.google.com with SMTP id r9so4686447paz.1;
-	Sat, 08 Oct 2016 17:45:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=bvFpROJ6UKH2tEs0KvqsOaL28xkNEh9JM2dn6RHfuLE=;
-	b=OaQv59u9e556cw0viYmrMAu0+MlbHcn3FCNcfQPNZdq0LggCjSMBw+O2rxfvheFhXm
-	WDvsQvuylVCzosR+sFoiu7hsi0NH43QvvOaqOw4igDPZAoviTkAEhcULBeqYA7sldjXO
-	8RyGx9IptUUqMcaUDPDOtTzE8C+t58ii5DfnnAue3cNNbqQJc9e8TedkAc6wWXsgG3tb
-	BZ36RoLTCHWeUGb6WD2x6pUpUmRTcpn/pwXvB8bqbSSYfldp3BkpV2Xkea26iVQOqVND
-	9A/I0eTMXCFoSwaexxVleUyWWc/4JzKFE+DXMtJvAmathdcdRigcHNBq6kZDn5+/SeQd
-	GL1Q==
+	(envelope-from <dave@natulte.net>) id 1btMkl-0002sh-Ap
+	for qemu-trivial@nongnu.org; Sun, 09 Oct 2016 18:39:31 -0400
+Received: by mail-ua0-x234.google.com with SMTP id p102so77449231uap.0
+	for <qemu-trivial@nongnu.org>; Sun, 09 Oct 2016 15:39:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=natulte-net.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qYEWFM/4kmE7TRHvGmAwNLgzgtwZaAJsTphoDV1qyNM=;
+	b=ycnSFhKmtr+QBSvcBY/nf0EqJYN7qAVFAwokhBCB5pUKQBV1Lwsh2uH82QIXEVcj1N
+	UXODw7hXDWqjonMTKolaaRJGhc7fVLr/ht2btNb8ubW1fMGvHl8ipbyVL62PP6LIarGI
+	s8nCRE4B4KQqPXJHeUPrEPs9Tlgpa9c3RihQIdALMALMwHSx/VbW3E3Gnd6izwdxXz+u
+	eyFjmkWMlFnmzTLRl/Iwfcgkeq67H8bgNnx4nVax6RsMXrh5mjd+n43PjXj+m/4oWB90
+	E/PetqJO4/Ef5stZ7cxS8k8petPCtbIy5FceDAdiTuxJrM05eg/SD0f0/7EElVj8IO8Q
+	st7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=bvFpROJ6UKH2tEs0KvqsOaL28xkNEh9JM2dn6RHfuLE=;
-	b=YVcDl5JU6EzYfukohCvX1Lr3Dw5sRXFri8X4NJ60onlYJy1CRCW9vMQaXavTnH4Pos
-	MHz3X8WTfYdZ6CNBGDe61gjoUOLk9Du8+3NGUjZIyT9XZ8TnEjf8k1aWoFOWEil51TvC
-	awytd2YyYnrBvrIHkgn6tUD574VRHSNlY1Gt28Hm8u6ZjODOrpztqhkrljhUzheS/DxU
-	cJXnO/dBm/XQXybgen0UoVu+0dYH3//AXx8AHLn8SKFPkdoksW8yhYBao4kWQgziGkrU
-	QaIelfCI/gSOzZdBIx4QHBNcWu1dG4pwV0niy2kgSo0imX2I+ZY0pEbX3+a9cp3y9Cj1
-	WS3Q==
-X-Gm-Message-State: AA6/9RmX9OX/7ckR/HHYSpCvmGxUyLrFAEbXQt8UbJPRQ3B8y7fQ1+WTlgaGDpHyrCOPqw==
-X-Received: by 10.66.100.225 with SMTP id fb1mr43087379pab.4.1475973938096;
-	Sat, 08 Oct 2016 17:45:38 -0700 (PDT)
-Received: from akanksha.localdomain ([122.177.65.205])
-	by smtp.gmail.com with ESMTPSA id
-	g63sm23838912pfk.58.2016.10.08.17.45.35
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 08 Oct 2016 17:45:37 -0700 (PDT)
-From: Akanksha Srivastava <akanksha.dlf@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com,
-	Akanksha Srivastava <akanksha.dlf@gmail.com>
-Date: Sun,  9 Oct 2016 06:08:39 +0530
-Message-Id: <1475973519-9591-1-git-send-email-akanksha.dlf@gmail.com>
-X-Mailer: git-send-email 1.9.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qYEWFM/4kmE7TRHvGmAwNLgzgtwZaAJsTphoDV1qyNM=;
+	b=WVwi9ZPoO54nLqf1/3twKAO02DEjQBC9I1c1mas7LAmOaDp0aM63nF4DesU9M+gjOV
+	7xlpUYBVeeEmTDs4vF6wfH5DxIkU0aXgvskI9AXn5KxyBrsMv7I/nUETzNDifCJ6nG3g
+	o37dUx73ekvqvXX32vzxdIybhz86+y6q6D05fhCFZQbKtHBOWKMReZbT5fsC4ULXDzyl
+	9rc8lDkAbwoqM66l/OkjirMimtW2L3cWVvVVKhxV+JUtWcc+/5AUNqSe3qBwKpeL8uze
+	b1yhv1sXx6jZPn4VvJ2CUagOWWhDglTeJsW8Som9c7LieWIzbY47rFXopnyPka2BM0Vd
+	pWGw==
+X-Gm-Message-State: AA6/9Rmh0X0IGn2abZoqXVbdJNeZcrskp/APqVHUH5FF4CL1XD6Du7jLw1aU7TL0sU961EZUm9IyDSE/s4rqKA==
+X-Received: by 10.176.80.131 with SMTP id c3mr20300828uaa.44.1476052770187;
+	Sun, 09 Oct 2016 15:39:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.176.64.6 with HTTP; Sun, 9 Oct 2016 15:39:09 -0700 (PDT)
+In-Reply-To: <24687c78-d7cb-07f4-ac6e-bf717ed03fb8@msgid.tls.msk.ru>
+References: <20160922040019.19165-1-dave@natulte.net>
+	<24687c78-d7cb-07f4-ac6e-bf717ed03fb8@msgid.tls.msk.ru>
+From: David Anderson <dave@natulte.net>
+Date: Sun, 9 Oct 2016 15:39:09 -0700
+Message-ID: <CAMx+r7U04TqNS2nwh+t8k4ugMxoZi5JGC+K_TMqibEKaLL-5ug@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary=94eb2c191ed2098131053e7651b3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::243
-X-Mailman-Approved-At: Sun, 09 Oct 2016 06:25:59 -0400
-Subject: [Qemu-trivial] [PATCH v2] usb: Change *_exitfn return type from int
- to void
+X-Received-From: 2607:f8b0:400c:c08::234
+Subject: Re: [Qemu-trivial] [PATCH] qapi: make the json schema files more
+ regular.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,122 +64,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Oct 2016 00:45:48 -0000
+X-List-Received-Date: Sun, 09 Oct 2016 22:46:38 -0000
 
-The *_exitfn functions cannot fail and should not be
-returning int.
-This also removes the passthru_exitfn since this callback
-does nothing as of now.
-This was suggested as a Bite-sized task for code cleanup.
-Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
----
- hw/usb/ccid-card-emulated.c   |  3 +--
- hw/usb/ccid-card-passthru.c   |  7 +------
- hw/usb/ccid.h                 |  2 +-
- hw/usb/dev-smartcard-reader.c | 11 +++++------
- 4 files changed, 8 insertions(+), 15 deletions(-)
+--94eb2c191ed2098131053e7651b3
+Content-Type: text/plain; charset=UTF-8
 
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index 3213f9f..eceb5f3 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -547,7 +547,7 @@ static int emulated_initfn(CCIDCardState *base)
-     return 0;
- }
- 
--static int emulated_exitfn(CCIDCardState *base)
-+static void emulated_exitfn(CCIDCardState *base)
- {
-     EmulatedState *card = EMULATED_CCID_CARD(base);
-     VEvent *vevent = vevent_new(VEVENT_LAST, NULL, NULL);
-@@ -564,7 +564,6 @@ static int emulated_exitfn(CCIDCardState *base)
-     qemu_mutex_destroy(&card->handle_apdu_mutex);
-     qemu_mutex_destroy(&card->vreader_mutex);
-     qemu_mutex_destroy(&card->event_list_mutex);
--    return 0;
- }
- 
- static Property emulated_card_properties[] = {
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index 2eacea7..9d64773 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -364,11 +364,6 @@ static int passthru_initfn(CCIDCardState *base)
-     return 0;
- }
- 
--static int passthru_exitfn(CCIDCardState *base)
--{
--    return 0;
--}
--
- static VMStateDescription passthru_vmstate = {
-     .name = "ccid-card-passthru",
-     .version_id = 1,
-@@ -395,7 +390,7 @@ static void passthru_class_initfn(ObjectClass *klass, void *data)
-     CCIDCardClass *cc = CCID_CARD_CLASS(klass);
- 
-     cc->initfn = passthru_initfn;
--    cc->exitfn = passthru_exitfn;
-+    cc->exitfn = NULL;
-     cc->get_atr = passthru_get_atr;
-     cc->apdu_from_guest = passthru_apdu_from_guest;
-     set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-diff --git a/hw/usb/ccid.h b/hw/usb/ccid.h
-index 9334da8..1f07011 100644
---- a/hw/usb/ccid.h
-+++ b/hw/usb/ccid.h
-@@ -33,7 +33,7 @@ typedef struct CCIDCardClass {
-     void (*apdu_from_guest)(CCIDCardState *card,
-                             const uint8_t *apdu,
-                             uint32_t len);
--    int (*exitfn)(CCIDCardState *card);
-+    void (*exitfn)(CCIDCardState *card);
-     int (*initfn)(CCIDCardState *card);
- } CCIDCardClass;
- 
-diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
-index af4b851..e1940ad 100644
---- a/hw/usb/dev-smartcard-reader.c
-+++ b/hw/usb/dev-smartcard-reader.c
-@@ -508,14 +508,14 @@ static void ccid_card_apdu_from_guest(CCIDCardState *card,
-     }
- }
- 
--static int ccid_card_exitfn(CCIDCardState *card)
-+static void ccid_card_exitfn(CCIDCardState *card)
- {
-     CCIDCardClass *cc = CCID_CARD_GET_CLASS(card);
- 
-     if (cc->exitfn) {
--        return cc->exitfn(card);
-+        cc->exitfn(card);
-     }
--    return 0;    
- }
- 
- static int ccid_card_initfn(CCIDCardState *card)
-@@ -1279,7 +1279,6 @@ void ccid_card_card_inserted(CCIDCardState *card)
- 
- static int ccid_card_exit(DeviceState *qdev)
- {
--    int ret = 0;
-     CCIDCardState *card = CCID_CARD(qdev);
-     USBDevice *dev = USB_DEVICE(qdev->parent_bus->parent);
-     USBCCIDState *s = USB_CCID_DEV(dev);
-@@ -1287,9 +1286,9 @@ static int ccid_card_exit(DeviceState *qdev)
-     if (ccid_card_inserted(s)) {
-         ccid_card_card_removed(card);
-     }
--    ret = ccid_card_exitfn(card);
-+    ccid_card_exitfn(card);
-     s->card = NULL;
--    return ret;
-+    return 0;
- }
- 
- static int ccid_card_init(DeviceState *qdev)
--- 
-1.9.1
+This patch doesn't seem to be in the main repo yet. Any idea when it might
+land?
 
+- Dave
+
+On Thu, Sep 29, 2016 at 8:52 AM, Michael Tokarev <mjt@tls.msk.ru> wrote:
+
+> 22.09.2016 07:00, David Anderson wrote:
+>
+>> This makes it easier to parse the schema file for tool generation:
+>> each paragraph is either a non-docstring comment, or a docstring
+>> immediately followed by a Python dict describing an API item.
+>>
+>
+> Applied to -trivial, thanks!
+>
+> /mjt
+>
+
+--94eb2c191ed2098131053e7651b3
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">This patch doesn&#39;t seem to be in the main repo yet. An=
+y idea when it might land?<div><br></div><div>- Dave</div></div><div class=
+=3D"gmail_extra"><br><div class=3D"gmail_quote">On Thu, Sep 29, 2016 at 8:5=
+2 AM, Michael Tokarev <span dir=3D"ltr">&lt;<a href=3D"mailto:mjt@tls.msk.r=
+u" target=3D"_blank">mjt@tls.msk.ru</a>&gt;</span> wrote:<br><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;p=
+adding-left:1ex"><span class=3D""><a href=3D"tel:22.09.2016%2007" value=3D"=
++12209201607" target=3D"_blank">22.09.2016 07</a>:00, David Anderson wrote:=
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+This makes it easier to parse the schema file for tool generation:<br>
+each paragraph is either a non-docstring comment, or a docstring<br>
+immediately followed by a Python dict describing an API item.<br>
+</blockquote>
+<br></span>
+Applied to -trivial, thanks!<br>
+<br>
+/mjt<br>
+</blockquote></div><br></div>
+
+--94eb2c191ed2098131053e7651b3--
 
