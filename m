@@ -1,42 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1btpVJ-0006I3-GB
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 01:21:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59097)
+	id 1btwin-0003Me-L7
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 09:03:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1btpVH-0006GV-2H
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 01:21:28 -0400
+	(envelope-from <laurent@vivier.eu>) id 1btwGp-0007dn-4Q
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 08:35:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>) id 1btpVF-0001Gg-RU
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 01:21:26 -0400
-Received: from [59.151.112.132] (port=46104 helo=heian.cn.fujitsu.com)
+	(envelope-from <laurent@vivier.eu>) id 1btwGj-0000md-Ui
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 08:34:58 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:55865)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xiecl.fnst@cn.fujitsu.com>)
-	id 1btpV9-00018u-SV; Tue, 11 Oct 2016 01:21:20 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="11813343"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 11 Oct 2016 13:21:03 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 685F6466F735;
-	Tue, 11 Oct 2016 13:21:00 +0800 (CST)
-Received: from changlox.g08.fujitsu.local (10.167.225.55) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Tue, 11 Oct 2016 13:20:58 +0800
-From: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
-To: Jason Wang <jasowang@redhat.com>, qemu devel <qemu-devel@nongnu.org>, qemu
-	trival <qemu-trivial@nongnu.org>
-Date: Tue, 11 Oct 2016 13:28:32 +0800
-Message-ID: <1476163712-7965-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 1.9.3
+	(envelope-from <laurent@vivier.eu>)
+	id 1btwGj-0000lg-Kd; Tue, 11 Oct 2016 08:34:53 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue104) with ESMTPSA (Nemesis) id 0MJCxO-1bsHZk28b4-002pbP;
+	Tue, 11 Oct 2016 14:34:46 +0200
+To: Michael Tokarev <mjt@tls.msk.ru>
+References: <1475920807-13485-1-git-send-email-laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <4a3336f4-b385-8c72-435f-ebd325e2807a@vivier.eu>
+Date: Tue, 11 Oct 2016 14:34:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.225.55]
-X-yoursite-MailScanner-ID: 685F6466F735.ADDF8
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: xiecl.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] filter-dump: add missing "["
+In-Reply-To: <1475920807-13485-1-git-send-email-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:gebHrhicdnbUqja9XgKpD2K9asU4uSh9tdaiwFgf/4hK4lvI/mB
+	L2arXqzoxL9bhjevmX6sYz1NzEVkEBoNJReHPYqDNdYdbsBm3EupJikGI1pTUbr85X07q2B
+	xxvMPhawsywEqav+G4mGrcB/gW/+7oIciK+Eb5JUI6qlCMXQdkdlGuwE0Wh2nmzyNDUP7QY
+	CYO7rOrBXg3yXun+PVESw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:C+THuRqUFsE=:c4GvfBUdZAZOvp8NBzfLXU
+	k707pPFS9GM2jWJZa1wJA1Z6i2KqoffflaVwJUCnALkbgLPb4wR4nNP3E9CdN+lucr6PaLTVO
+	cZSvztyVB2W2FHeIN+pz6jIp2Iak/IVvV2uwNiG2/18dH0fBds1VW0umoyhsFmuv/NElpTZOz
+	QGP4NhX0bT0waju+qDc7U6Sfqf3TJ3cYgnb9Gc/MxOic4aY+9HP4LYco+ZTjRSb9zgeVESsaC
+	eofU+LhBxK1MmEkSP7Ojnlzm4zUCuoY9Gf+E6mqNSUeMo3MhHBOdPz/IykT+wfZEUiJYVhQ4D
+	9SsFP7zTuBPxzPXeKdAcKNYbyjh/756CyLo2+GswipIITzkWgPSmfyD7XFo8duyDk4CvTax97
+	FugQGGhqRUK+KXAsmH1QXVnGz6EX82VjRlQZiHseeU9t67BuMPcc3NyZYY2OjYpFtjwNLizTG
+	zJNeo1YkkX6D8zp2KNGx4yTtK27sR/imc2/61SQ2ro+zkjPZ3l1laIK3b2PkwSPFQBa8Jhacg
+	keXtykBUEsIJCNa12rpggn15ElpveT+kkbGdFjXopf2pxlSenmEWJ7KCCWhmuG7z+qMAkirkm
+	HYrM1IbKgsnMAwDPgPIsbEfAlF3PiaVQWUi4IAwX+dhrA7GdzsGEX6bphiDX44OqoJeVAyKTH
+	s6vF0mL58Ywh0+rIqdZxDVVAk/bQnyhC8l3J8RazjIovxaq52OXsmg0Tc1ZFekC7Uq/w4e6nD
+	q65fTZFL43EMyQrT
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.10
+X-Mailman-Approved-At: Tue, 11 Oct 2016 09:03:52 -0400
+Subject: Re: [Qemu-trivial] [PATCH v2] MAINTAINERS: qemu-trivial information
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,29 +59,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Oct 2016 05:21:28 -0000
-
-Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
----
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index b1fbdb0..c209b53 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3902,7 +3902,7 @@ colo secondary:
- -object filter-redirector,id=f2,netdev=hn0,queue=rx,outdev=red1
- -object filter-rewriter,id=rew0,netdev=hn0,queue=all
- 
--@item -object filter-dump,id=@var{id},netdev=@var{dev},file=@var{filename}][,maxlen=@var{len}]
-+@item -object filter-dump,id=@var{id},netdev=@var{dev}[,file=@var{filename}][,maxlen=@var{len}]
- 
- Dump the network traffic on netdev @var{dev} to the file specified by
- @var{filename}. At most @var{len} bytes (64k by default) per packet are stored.
--- 
-1.9.3
+X-List-Received-Date: Tue, 11 Oct 2016 12:35:00 -0000
 
 
 
+Le 08/10/2016 à 12:00, Laurent Vivier a écrit :
+> Information about "qemu-trivial" ML can be found in the wiki:
+> 
+>     http://wiki.qemu.org/Contribute/TrivialPatches
+> 
+> But the first place where a developer looks is the file MAINTAINERS.
+> 
+> This also allows the get_maintainer.pl script to display
+> the qemu-trivial ML address when the mail subject contains "trivial".
+> 
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+> v2:
+> - move to the top
+> - add my name to help Michael to manage trivial-patches
+> 
+>  MAINTAINERS | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 9bca506..18e38e8 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -63,6 +63,17 @@ W: http://wiki.qemu.org/SecurityProcess
+>  M: Michael S. Tsirkin <mst@redhat.com>
+>  L: secalert@redhat.com
+>  
+> +Trivial patches
+> +---------------
+> +Trivial patches
+> +M: Michael Tokarev <mjt@tls.msk.ru>
+> +M: Laurent Vivier <laurent@vivier.eu>
+> +S: Maintained
+> +L: qemu-trivial@nongnu.org
+> +K: ^Subject:.*(?i)trivial
+> +T: git git://git.corpit.ru/qemu.git trivial-patches
+> +T: git git://github.com/vivier/qemu.git trivial-patches
+> +
+>  Guest CPU cores (TCG):
+>  ----------------------
+>  Overall
+> 
+
+Michael, could you acknowledge (or not)?
+
+Thanks,
+Laurent
 
