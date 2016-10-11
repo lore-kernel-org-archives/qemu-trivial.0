@@ -1,53 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1btwin-0003Me-L7
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 09:03:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52613)
+	id 1btxAP-0006xg-7W
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 09:32:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38297)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1btwGp-0007dn-4Q
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 08:35:00 -0400
+	(envelope-from <thuth@redhat.com>) id 1btxAM-0006vj-Bk
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 09:32:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1btwGj-0000md-Ui
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 08:34:58 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:55865)
+	(envelope-from <thuth@redhat.com>) id 1btxAG-0006mV-Jp
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 09:32:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36306)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>)
-	id 1btwGj-0000lg-Kd; Tue, 11 Oct 2016 08:34:53 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104) with ESMTPSA (Nemesis) id 0MJCxO-1bsHZk28b4-002pbP;
-	Tue, 11 Oct 2016 14:34:46 +0200
-To: Michael Tokarev <mjt@tls.msk.ru>
-References: <1475920807-13485-1-git-send-email-laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <4a3336f4-b385-8c72-435f-ebd325e2807a@vivier.eu>
-Date: Tue, 11 Oct 2016 14:34:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
-MIME-Version: 1.0
-In-Reply-To: <1475920807-13485-1-git-send-email-laurent@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:gebHrhicdnbUqja9XgKpD2K9asU4uSh9tdaiwFgf/4hK4lvI/mB
-	L2arXqzoxL9bhjevmX6sYz1NzEVkEBoNJReHPYqDNdYdbsBm3EupJikGI1pTUbr85X07q2B
-	xxvMPhawsywEqav+G4mGrcB/gW/+7oIciK+Eb5JUI6qlCMXQdkdlGuwE0Wh2nmzyNDUP7QY
-	CYO7rOrBXg3yXun+PVESw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:C+THuRqUFsE=:c4GvfBUdZAZOvp8NBzfLXU
-	k707pPFS9GM2jWJZa1wJA1Z6i2KqoffflaVwJUCnALkbgLPb4wR4nNP3E9CdN+lucr6PaLTVO
-	cZSvztyVB2W2FHeIN+pz6jIp2Iak/IVvV2uwNiG2/18dH0fBds1VW0umoyhsFmuv/NElpTZOz
-	QGP4NhX0bT0waju+qDc7U6Sfqf3TJ3cYgnb9Gc/MxOic4aY+9HP4LYco+ZTjRSb9zgeVESsaC
-	eofU+LhBxK1MmEkSP7Ojnlzm4zUCuoY9Gf+E6mqNSUeMo3MhHBOdPz/IykT+wfZEUiJYVhQ4D
-	9SsFP7zTuBPxzPXeKdAcKNYbyjh/756CyLo2+GswipIITzkWgPSmfyD7XFo8duyDk4CvTax97
-	FugQGGhqRUK+KXAsmH1QXVnGz6EX82VjRlQZiHseeU9t67BuMPcc3NyZYY2OjYpFtjwNLizTG
-	zJNeo1YkkX6D8zp2KNGx4yTtK27sR/imc2/61SQ2ro+zkjPZ3l1laIK3b2PkwSPFQBa8Jhacg
-	keXtykBUEsIJCNa12rpggn15ElpveT+kkbGdFjXopf2pxlSenmEWJ7KCCWhmuG7z+qMAkirkm
-	HYrM1IbKgsnMAwDPgPIsbEfAlF3PiaVQWUi4IAwX+dhrA7GdzsGEX6bphiDX44OqoJeVAyKTH
-	s6vF0mL58Ywh0+rIqdZxDVVAk/bQnyhC8l3J8RazjIovxaq52OXsmg0Tc1ZFekC7Uq/w4e6nD
-	q65fTZFL43EMyQrT
+	(envelope-from <thuth@redhat.com>)
+	id 1btxA5-0006fu-4k; Tue, 11 Oct 2016 09:32:05 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6E288C04B319;
+	Tue, 11 Oct 2016 13:32:04 +0000 (UTC)
+Received: from thh440s.str.redhat.com. (dhcp-192-218.str.redhat.com
+	[10.33.192.218])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9BDW2gL030037; Tue, 11 Oct 2016 09:32:03 -0400
+From: Thomas Huth <thuth@redhat.com>
+To: Sascha Silbe <x-qemu@se-silbe.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Tsirkin <mst@redhat.com>, qemu-ppc@nongnu.org,
+	Victor Kaplansky <victork@redhat.com>
+Date: Tue, 11 Oct 2016 15:32:02 +0200
+Message-Id: <1476192722-22871-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 11 Oct 2016 13:32:04 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-X-Mailman-Approved-At: Tue, 11 Oct 2016 09:03:52 -0400
-Subject: Re: [Qemu-trivial] [PATCH v2] MAINTAINERS: qemu-trivial information
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] tests/boot-sector: Use mkstemp() to create a
+ unique file name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,55 +48,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Oct 2016 12:35:00 -0000
+X-List-Received-Date: Tue, 11 Oct 2016 13:32:23 -0000
 
+The pxe-test is run for three different targets now (x86_64, i386
+and ppc64), and the bios-tables-test is run for two targets (x86_64
+and i386). But each of the tests is using an invariant name for the
+disk image with the boot sector code - so if the tests are running
+in parallel, there is a race condition that they destroy the disk
+image of a parallel test program. Let's use mkstemp() to create
+unique temporary files here instead.
 
+Reported-by: Sascha Silbe <x-qemu@se-silbe.de>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/bios-tables-test.c | 2 +-
+ tests/boot-sector.c      | 9 +++++++--
+ tests/boot-sector.h      | 4 ++--
+ tests/pxe-test.c         | 2 +-
+ 4 files changed, 11 insertions(+), 6 deletions(-)
 
-Le 08/10/2016 à 12:00, Laurent Vivier a écrit :
-> Information about "qemu-trivial" ML can be found in the wiki:
-> 
->     http://wiki.qemu.org/Contribute/TrivialPatches
-> 
-> But the first place where a developer looks is the file MAINTAINERS.
-> 
-> This also allows the get_maintainer.pl script to display
-> the qemu-trivial ML address when the mail subject contains "trivial".
-> 
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-> ---
-> v2:
-> - move to the top
-> - add my name to help Michael to manage trivial-patches
-> 
->  MAINTAINERS | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 9bca506..18e38e8 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -63,6 +63,17 @@ W: http://wiki.qemu.org/SecurityProcess
->  M: Michael S. Tsirkin <mst@redhat.com>
->  L: secalert@redhat.com
->  
-> +Trivial patches
-> +---------------
-> +Trivial patches
-> +M: Michael Tokarev <mjt@tls.msk.ru>
-> +M: Laurent Vivier <laurent@vivier.eu>
-> +S: Maintained
-> +L: qemu-trivial@nongnu.org
-> +K: ^Subject:.*(?i)trivial
-> +T: git git://git.corpit.ru/qemu.git trivial-patches
-> +T: git git://github.com/vivier/qemu.git trivial-patches
-> +
->  Guest CPU cores (TCG):
->  ----------------------
->  Overall
-> 
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index 6ea2b6d..812f830 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -112,7 +112,7 @@ typedef struct {
+     g_assert_cmpstr(ACPI_ASSERT_CMP_str, ==, expected); \
+ } while (0)
+ 
+-static const char *disk = "tests/acpi-test-disk.raw";
++static char disk[] = "tests/acpi-test-disk-XXXXXX";
+ static const char *data_dir = "tests/acpi-test-data";
+ #ifdef CONFIG_IASL
+ static const char *iasl = stringify(CONFIG_IASL);
+diff --git a/tests/boot-sector.c b/tests/boot-sector.c
+index e3193c0..e75572f 100644
+--- a/tests/boot-sector.c
++++ b/tests/boot-sector.c
+@@ -69,10 +69,15 @@ static uint8_t boot_sector[0x7e000] = {
+ };
+ 
+ /* Create boot disk file.  */
+-int boot_sector_init(const char *fname)
++int boot_sector_init(char *fname)
+ {
+-    FILE *f = fopen(fname, "w");
++    FILE *f = NULL;
++    int fd;
+ 
++    fd = mkstemp(fname);
++    if (fd != -1) {
++        f = fdopen(fd, "w");
++    }
+     if (!f) {
+         fprintf(stderr, "Couldn't open \"%s\": %s", fname, strerror(errno));
+         return 1;
+diff --git a/tests/boot-sector.h b/tests/boot-sector.h
+index f64b477..35d61c7 100644
+--- a/tests/boot-sector.h
++++ b/tests/boot-sector.h
+@@ -14,8 +14,8 @@
+ #ifndef TEST_BOOT_SECTOR_H
+ #define TEST_BOOT_SECTOR_H
+ 
+-/* Create boot disk file.  */
+-int boot_sector_init(const char *fname);
++/* Create boot disk file. fname must be a suitable string for mkstemp() */
++int boot_sector_init(char *fname);
+ 
+ /* Loop until signature in memory is OK.  */
+ void boot_sector_test(void);
+diff --git a/tests/pxe-test.c b/tests/pxe-test.c
+index 5d3ddbe..34282d3 100644
+--- a/tests/pxe-test.c
++++ b/tests/pxe-test.c
+@@ -19,7 +19,7 @@
+ 
+ #define NETNAME "net0"
+ 
+-static const char *disk = "tests/pxe-test-disk.raw";
++static char disk[] = "tests/pxe-test-disk-XXXXXX";
+ 
+ static void test_pxe_one(const char *params, bool ipv6)
+ {
+-- 
+1.8.3.1
 
-Michael, could you acknowledge (or not)?
-
-Thanks,
-Laurent
 
