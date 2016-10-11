@@ -1,46 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bty1y-0008TH-6k
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 10:27:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51007)
+	id 1btyoW-0004iy-Mf
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Oct 2016 11:17:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bty1w-0008Qc-4o
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 10:27:45 -0400
+	(envelope-from <groug@kaod.org>) id 1btxWh-0000Fl-11
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 09:55:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bty1u-0008Gv-Fz
-	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 10:27:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42290)
+	(envelope-from <groug@kaod.org>) id 1btxWb-0002Qf-2B
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 09:55:26 -0400
+Received: from 7.mo6.mail-out.ovh.net ([46.105.59.196]:54188)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1bty1m-0008Bs-6N; Tue, 11 Oct 2016 10:27:34 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A8FCA8B978;
-	Tue, 11 Oct 2016 14:27:33 +0000 (UTC)
-Received: from localhost (vpn1-7-157.pek2.redhat.com [10.72.7.157])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9BERWRH024290; Tue, 11 Oct 2016 10:27:32 -0400
-Date: Tue, 11 Oct 2016 22:27:31 +0800
-From: Fam Zheng <famz@redhat.com>
+	(envelope-from <groug@kaod.org>) id 1btxWa-0002PZ-S7
+	for qemu-trivial@nongnu.org; Tue, 11 Oct 2016 09:55:20 -0400
+Received: from player756.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 22A014166F
+	for <qemu-trivial@nongnu.org>; Tue, 11 Oct 2016 15:55:18 +0200 (CEST)
+Received: from bahia (deibp9eh1--blueice1n3.emea.ibm.com [195.212.29.165])
+	(Authenticated sender: groug@kaod.org)
+	by player756.ha.ovh.net (Postfix) with ESMTPSA id BD62F420096;
+	Tue, 11 Oct 2016 15:55:10 +0200 (CEST)
+Date: Tue, 11 Oct 2016 15:55:09 +0200
+From: Greg Kurz <groug@kaod.org>
 To: Thomas Huth <thuth@redhat.com>
 Cc: Sascha Silbe <x-qemu@se-silbe.de>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Victor Kaplansky <victork@redhat.com>, qemu-ppc@nongnu.org,
-	Michael Tsirkin <mst@redhat.com>
-Message-ID: <20161011142731.GJ5814@lemon>
-References: <1476192722-22871-1-git-send-email-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Victor
+	Kaplansky <victork@redhat.com>, qemu-ppc@nongnu.org, Michael Tsirkin
+	<mst@redhat.com>
+Message-ID: <20161011155509.5c422632@bahia>
 In-Reply-To: <1476192722-22871-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 11 Oct 2016 14:27:33 +0000 (UTC)
+References: <1476192722-22871-1-git-send-email-thuth@redhat.com>
+X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 17241468224490936626
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelvddrfeelgdejtdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 46.105.59.196
+X-Mailman-Approved-At: Tue, 11 Oct 2016 11:17:55 -0400
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/boot-sector: Use
  mkstemp() to create a unique file name
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,9 +53,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Oct 2016 14:27:45 -0000
+X-List-Received-Date: Tue, 11 Oct 2016 13:55:28 -0000
 
-On Tue, 10/11 15:32, Thomas Huth wrote:
+On Tue, 11 Oct 2016 15:32:02 +0200
+Thomas Huth <thuth@redhat.com> wrote:
+
 > The pxe-test is run for three different targets now (x86_64, i386
 > and ppc64), and the bios-tables-test is run for two targets (x86_64
 > and i386). But each of the tests is using an invariant name for the
@@ -67,12 +68,6 @@ On Tue, 10/11 15:32, Thomas Huth wrote:
 > 
 > Reported-by: Sascha Silbe <x-qemu@se-silbe.de>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Nice, this does help fix the failure that patchew hits with "make
-docker-test-clang@ubuntu J=8".
-
-Tested-by: Fam Zheng <famz@redhat.com>
-
 > ---
 >  tests/bios-tables-test.c | 2 +-
 >  tests/boot-sector.c      | 9 +++++++--
@@ -112,6 +107,16 @@ Tested-by: Fam Zheng <famz@redhat.com>
 > +    if (fd != -1) {
 > +        f = fdopen(fd, "w");
 > +    }
+
+Unless we really want to control how the temporary file is named (maybe for
+debugging purpose?), I have the impression that using tmpfile(3) would result
+in a simpler patch.
+
+Cheers.
+
+--
+Greg
+
 >      if (!f) {
 >          fprintf(stderr, "Couldn't open \"%s\": %s", fname, strerror(errno));
 >          return 1;
@@ -143,8 +148,5 @@ Tested-by: Fam Zheng <famz@redhat.com>
 >  
 >  static void test_pxe_one(const char *params, bool ipv6)
 >  {
-> -- 
-> 1.8.3.1
-> 
-> 
+
 
