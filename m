@@ -1,40 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1buLXa-0003bE-14
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 11:33:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55299)
+	id 1buM7l-0004cz-Rt
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 12:11:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37689)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1buLXX-0003Z6-CK
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 11:33:56 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1buM7j-0004bU-Ta
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1buLXV-00089W-9D
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 11:33:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43822)
+	(envelope-from <peter.maydell@linaro.org>) id 1buM7f-0004yq-T5
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:19 -0400
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35346)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1buLXP-000870-Q9; Wed, 12 Oct 2016 11:33:47 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 110EA4E02D;
-	Wed, 12 Oct 2016 15:33:47 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-104.ams2.redhat.com
-	[10.36.116.104])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9CFXjVq023522; Wed, 12 Oct 2016 11:33:45 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Date: Wed, 12 Oct 2016 17:33:44 +0200
-Message-Id: <1476286424-9744-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 12 Oct 2016 15:33:47 +0000 (UTC)
+	(envelope-from <peter.maydell@linaro.org>) id 1buM7f-0004ye-G3
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:15 -0400
+Received: by mail-vk0-x235.google.com with SMTP id 192so49766812vkl.2
+	for <qemu-trivial@nongnu.org>; Wed, 12 Oct 2016 09:11:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=TpAerp+yOYqWRQTAdCApHTmezR9mzxrUCCGn4wR/5GM=;
+	b=awJE75ZRxBUvY5uJUxNNUpYBQQgrqsQRpyPDKCIhQTCD1O0DPcmk8JYZJyuaDjdRPL
+	DoB/uox5ITmNrjWVZBA5+2eg2WeETAeEcQ1LWib6P64BGz01lv9gzqxWk3IL3J7/Wrc2
+	MY1sltz0hJ0HF52F2sfHAsVGHfCr8sM/D7uq4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=TpAerp+yOYqWRQTAdCApHTmezR9mzxrUCCGn4wR/5GM=;
+	b=bfojPKCAdYxgqNNUypK2qLrDU09v7KPfG2w7FgtDqZfmRgmAoNx0CKLysTY8H4q/MN
+	ZTGv38eezIgz7QvZ4fxjEGxQCGAUJ+7SlmjBszgfoIPMvDKfYvhBpFVuwloSn25LNGwi
+	LcWTLDU0LTMr/TzMGgW1uPgTOnqx/sEwb1TsTNScKnUjGAXMYZCDV/oTe+F/JBhDsvdc
+	md7Sxs1r5C+UyS8ZpmXZVRQXfES2RX4Hz1BMDYuFu0K/dvIJaThjqZ4UHPTjTRTW+U7M
+	cLrpeToiidfDe/+/enYd4mT3/0SvB87xY/Cgctz6gvMD3F7zFVAcfk//HNS6H0Y4BU5+
+	C8kA==
+X-Gm-Message-State: AA6/9RmlESAohLiTEsv2hGR+qyn262Li3cqnJkM9pbDfNgQ9su2n4wVpZ2HsnDI8EumY79edEkFpO1ETQHdny5Vf
+X-Received: by 10.31.210.130 with SMTP id j124mr1109039vkg.17.1476288675081;
+	Wed, 12 Oct 2016 09:11:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.195.70 with HTTP; Wed, 12 Oct 2016 09:10:54 -0700 (PDT)
+In-Reply-To: <1476286424-9744-1-git-send-email-thuth@redhat.com>
+References: <1476286424-9744-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 12 Oct 2016 17:10:54 +0100
+Message-ID: <CAFEAcA9c0hRHNr-fvqUWhpqRLKLAfOzwf8By5Q7v-0twTcQ_Tg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Stefan Berger <stefanb@linux.vnet.ibm.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] hw/tpm/tpm_passthrough: Simplify
- if-statements a little bit
+X-Received-From: 2607:f8b0:400c:c05::235
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/tpm/tpm_passthrough:
+ Simplify if-statements a little bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,41 +61,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Oct 2016 15:33:56 -0000
+X-List-Received-Date: Wed, 12 Oct 2016 16:11:21 -0000
 
-The condition  '!A || (A && B)' is equivalent to '!A || B'
+On 12 October 2016 at 16:33, Thomas Huth <thuth@redhat.com> wrote:
+> The condition  '!A || (A && B)' is equivalent to '!A || B'
+>
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/tpm/tpm_passthrough.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index e88c0d2..9234eb3 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -165,8 +165,7 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
- 
-     ret = tpm_passthrough_unix_write(tpm_pt->tpm_fd, in, in_len);
-     if (ret != in_len) {
--        if (!tpm_pt->tpm_op_canceled ||
--            (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
-+        if (!tpm_pt->tpm_op_canceled || errno != ECANCELED) {
-             error_report("tpm_passthrough: error while transmitting data "
-                          "to TPM: %s (%i)",
-                          strerror(errno), errno);
-@@ -178,8 +177,7 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
- 
-     ret = tpm_passthrough_unix_read(tpm_pt->tpm_fd, out, out_len);
-     if (ret < 0) {
--        if (!tpm_pt->tpm_op_canceled ||
--            (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
-+        if (!tpm_pt->tpm_op_canceled || errno != ECANCELED) {
-             error_report("tpm_passthrough: error while reading data from "
-                          "TPM: %s (%i)",
-                          strerror(errno), errno);
--- 
-1.8.3.1
-
+thanks
+-- PMM
 
