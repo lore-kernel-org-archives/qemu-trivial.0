@@ -1,55 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1buM7l-0004cz-Rt
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 12:11:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37689)
+	id 1buMK2-000271-G1
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 12:24:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41394)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buM7j-0004bU-Ta
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:20 -0400
+	(envelope-from <michael@walle.cc>) id 1buMJz-00024u-Sx
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:24:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buM7f-0004yq-T5
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:19 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35346)
+	(envelope-from <michael@walle.cc>) id 1buMJx-0000Wy-UG
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:23:58 -0400
+Received: from ssl.serverraum.org ([213.133.101.245]:52122)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buM7f-0004ye-G3
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:11:15 -0400
-Received: by mail-vk0-x235.google.com with SMTP id 192so49766812vkl.2
-	for <qemu-trivial@nongnu.org>; Wed, 12 Oct 2016 09:11:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TpAerp+yOYqWRQTAdCApHTmezR9mzxrUCCGn4wR/5GM=;
-	b=awJE75ZRxBUvY5uJUxNNUpYBQQgrqsQRpyPDKCIhQTCD1O0DPcmk8JYZJyuaDjdRPL
-	DoB/uox5ITmNrjWVZBA5+2eg2WeETAeEcQ1LWib6P64BGz01lv9gzqxWk3IL3J7/Wrc2
-	MY1sltz0hJ0HF52F2sfHAsVGHfCr8sM/D7uq4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=TpAerp+yOYqWRQTAdCApHTmezR9mzxrUCCGn4wR/5GM=;
-	b=bfojPKCAdYxgqNNUypK2qLrDU09v7KPfG2w7FgtDqZfmRgmAoNx0CKLysTY8H4q/MN
-	ZTGv38eezIgz7QvZ4fxjEGxQCGAUJ+7SlmjBszgfoIPMvDKfYvhBpFVuwloSn25LNGwi
-	LcWTLDU0LTMr/TzMGgW1uPgTOnqx/sEwb1TsTNScKnUjGAXMYZCDV/oTe+F/JBhDsvdc
-	md7Sxs1r5C+UyS8ZpmXZVRQXfES2RX4Hz1BMDYuFu0K/dvIJaThjqZ4UHPTjTRTW+U7M
-	cLrpeToiidfDe/+/enYd4mT3/0SvB87xY/Cgctz6gvMD3F7zFVAcfk//HNS6H0Y4BU5+
-	C8kA==
-X-Gm-Message-State: AA6/9RmlESAohLiTEsv2hGR+qyn262Li3cqnJkM9pbDfNgQ9su2n4wVpZ2HsnDI8EumY79edEkFpO1ETQHdny5Vf
-X-Received: by 10.31.210.130 with SMTP id j124mr1109039vkg.17.1476288675081;
-	Wed, 12 Oct 2016 09:11:15 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Wed, 12 Oct 2016 09:10:54 -0700 (PDT)
-In-Reply-To: <1476286424-9744-1-git-send-email-thuth@redhat.com>
-References: <1476286424-9744-1-git-send-email-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Oct 2016 17:10:54 +0100
-Message-ID: <CAFEAcA9c0hRHNr-fvqUWhpqRLKLAfOzwf8By5Q7v-0twTcQ_Tg@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <michael@walle.cc>)
+	id 1buMJs-0000Tq-7q; Wed, 12 Oct 2016 12:23:52 -0400
+Received: from mwalle01.kse.adk.loc (unknown [194.25.174.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 01F4122265;
+	Wed, 12 Oct 2016 18:23:45 +0200 (CEST)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1476289426;
+	bh=9FwRVrMn1qTtUOUGGCLRpqrxVxfGYumOOl7Tt95jC84=;
+	h=From:To:Cc:Subject:Date:From;
+	b=UB0L10G72lpegirmFr4Jz3956PE6vNgcIQZew/rOBe7pSiekIh8JgdfkgvnNulBn5
+	j6zJHCG8jFS7XZQv+JDe+Wvhj0dkFb8i9+jA6H5VjsjdkOkRK+5cy7onD/n9d6KxeA
+	EBf9CNIOyv6GmlUdYb3+H1oLspcyq+81wlZAMrPU=
+From: Michael Walle <michael@walle.cc>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <huth@tuxfamily.org>,
+	Michael Walle <michael@walle.cc>
+Date: Wed, 12 Oct 2016 18:23:16 +0200
+Message-Id: <1476289396-10780-1-git-send-email-michael@walle.cc>
+X-Mailer: git-send-email 2.1.4
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/tpm/tpm_passthrough:
- Simplify if-statements a little bit
+X-Received-From: 213.133.101.245
+Subject: [Qemu-trivial] [PATCH] target-lm32: fix style issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,16 +48,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Oct 2016 16:11:21 -0000
+X-List-Received-Date: Wed, 12 Oct 2016 16:24:01 -0000
 
-On 12 October 2016 at 16:33, Thomas Huth <thuth@redhat.com> wrote:
-> The condition  '!A || (A && B)' is equivalent to '!A || B'
->
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Both branches of the ternary operator have the same expressions. Drop the
+operator.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This fixes: https://bugs.launchpad.net/qemu/+bug/1414293
 
-thanks
--- PMM
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ target-lm32/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index 2d8caeb..534c17c 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -343,7 +343,7 @@ static void dec_calli(DisasContext *dc)
+ static inline void gen_compare(DisasContext *dc, int cond)
+ {
+     int rX = (dc->format == OP_FMT_RR) ? dc->r2 : dc->r1;
+-    int rY = (dc->format == OP_FMT_RR) ? dc->r0 : dc->r0;
++    int rY = dc->r0;
+     int rZ = (dc->format == OP_FMT_RR) ? dc->r1 : -1;
+     int i;
+ 
+-- 
+2.1.4
+
 
