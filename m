@@ -1,53 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1buO8O-0002ht-3E
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 14:20:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43487)
+	id 1buS7g-0002dO-Lb
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 18:35:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buO8J-0002e7-SP
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 14:20:04 -0400
+	(envelope-from <michael@walle.cc>) id 1buS7e-0002cF-7r
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 18:35:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buO8H-0005uR-Pe
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 14:20:02 -0400
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:33141)
+	(envelope-from <michael@walle.cc>) id 1buS7b-0002at-IM
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 18:35:36 -0400
+Received: from ssl.serverraum.org ([213.133.101.245]:48155)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buO8H-0005tw-Cy
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 14:20:01 -0400
-Received: by mail-vk0-x236.google.com with SMTP id 83so30194368vkd.0
-	for <qemu-trivial@nongnu.org>; Wed, 12 Oct 2016 11:20:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=eT837URWTXForYqZe6KZtv5xVyV8p3PTYY8jdzEIfa8=;
-	b=A5F1NthfsVntIqzMrVwkM20Re5czqCFdZKr6aDWTxtVrRnG7QjQncEJNfKkGg6Ecuq
-	c7NXiitBzTf0Iwt0oDQBJV0EUoVP/6YcSjoCDEzIsEXNn5axR8LFn+c9H449iDoQ8B8G
-	gGEZoRNCf6NjjNNDDHONbiu0kwxK5PhOec/3E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=eT837URWTXForYqZe6KZtv5xVyV8p3PTYY8jdzEIfa8=;
-	b=Itoiyl5JFBCS+uT9RV6vfR2fi49u5ZC/TlNh9dh3MRaITuAWOlm/CCkhl6L/86pnkh
-	LNbqJkO3eqzc0tmb3/zvnytT6FIbYTRHEfIwGJ6dkE04sHDasgSk0VIDS+FzwUOruhY1
-	lpma1Ar1MxYjbURB0ToORhn3z3gQUNe1UeE7H9ietW3FuOvggl8t6gIhq5efmyxvR79E
-	AKUKoJ7gBHpWso7z08ViUwV5Kjx+RoXuBfYkM1lSJTKyuyt8uKjETJCmSfw6f9QGtddb
-	Yhe3GkB0tL2kOQk1wjkVbuS4VR4cTlEWOazEQtgCzZS9Cr6gS3DRIaNR5OLVSIblgk6d
-	JXmQ==
-X-Gm-Message-State: AA6/9RmN18vnZuSr0VkOfM6L3mHQz41yn07Md0GzVLFnqTcI9+C4UBU7KvWR7TS4V4JIElb95NnOnZYcfuTIW7ZD
-X-Received: by 10.31.165.74 with SMTP id o71mr1533182vke.95.1476296400900;
-	Wed, 12 Oct 2016 11:20:00 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Wed, 12 Oct 2016 11:19:40 -0700 (PDT)
-In-Reply-To: <1476292505-19542-1-git-send-email-michael@walle.cc>
-References: <1476292505-19542-1-git-send-email-michael@walle.cc>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Oct 2016 19:19:40 +0100
-Message-ID: <CAFEAcA9SE4iCY521YpRZN=o+8JiJTEOY3MyffweHWpzrbrHJSw@mail.gmail.com>
-To: Michael Walle <michael@walle.cc>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <michael@walle.cc>) id 1buS7b-0002ah-C2
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 18:35:35 -0400
+Received: from apollo.fritz.box (ip5f585ef2.dynamic.kabel-deutschland.de
+	[95.88.94.242])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 9E22A22279;
+	Thu, 13 Oct 2016 00:35:32 +0200 (CEST)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1476311732;
+	bh=0AHXUpy6NX0Znum98+Q9VxGMAMuem+HHQz1N6UzeTos=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=uAl7L/wwQYIx7OAH/EXCZ3fmB9MzzofjZR14kW6VXiiZIwXEwP6DzdNd1G5cT5c3S
+	c5wVB4Cuekmwev5dJ2kvugOu4+ImZqOMphVre0qNaS7vnC2rVxFlArPJc5IvkQ6ORq
+	rP4S10lDhaAX0RWA/QPBJSQxFg4Nyu+VoQ1PTXdg=
+From: Michael Walle <michael@walle.cc>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Walle <michael@walle.cc>
+Date: Thu, 13 Oct 2016 00:35:06 +0200
+Message-Id: <1476311708-14792-2-git-send-email-michael@walle.cc>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1476311708-14792-1-git-send-email-michael@walle.cc>
+References: <1476311708-14792-1-git-send-email-michael@walle.cc>
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Subject: Re: [Qemu-trivial] [PATCH] target-lm32: fix LOG_DIS operand order
+X-Received-From: 213.133.101.245
+Subject: [Qemu-trivial] [PATCH 2/4] target-lm32: disable asm logging via
+ LOG_DIS()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,22 +52,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Oct 2016 18:20:04 -0000
+X-List-Received-Date: Wed, 12 Oct 2016 22:35:39 -0000
 
-On 12 October 2016 at 18:15, Michael Walle <michael@walle.cc> wrote:
-> The order of most opcodes with immediates was wrong (according to the
-> reference manual) in the (debug) logging. Additionally, one operand for the
-> andhi instruction was completly wrong. Fix these.
->
-> Signed-off-by: Michael Walle <michael@walle.cc>
+The lm32 target already has a disassembler which logs the assembly
+instructions with "-d in_asm". Therefore, turn of the LOG_DIS() macro to
+prevent logging the assembly instructions twice. Also turn the macro in a
+one which is always compiled to catch any errors while the macro is turned
+off.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ target-lm32/translate.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-PS: the wcsr disassembly also looks to be wrong:
-    LOG_DIS("wcsr r%d, %d\n", dc->r1, dc->csr);
-where the manual says this is "wcsr csr, rX"
-(separate bug though really).
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index fa8416a..792637f 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -33,12 +33,14 @@
+ #include "exec/log.h"
+ 
+ 
+-#define DISAS_LM32 1
+-#if DISAS_LM32
+-#  define LOG_DIS(...) qemu_log_mask(CPU_LOG_TB_IN_ASM, ## __VA_ARGS__)
+-#else
+-#  define LOG_DIS(...) do { } while (0)
+-#endif
++#define DISAS_LM32 0
++
++#define LOG_DIS(...) \
++    do { \
++        if (DISAS_LM32) { \
++            qemu_log_mask(CPU_LOG_TB_IN_ASM, ## __VA_ARGS__); \
++        } \
++    } while (0)
+ 
+ #define EXTRACT_FIELD(src, start, end) \
+             (((src) >> start) & ((1 << (end - start + 1)) - 1))
+-- 
+2.1.4
 
-thanks
--- PMM
 
