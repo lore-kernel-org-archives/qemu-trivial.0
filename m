@@ -1,52 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1buMVq-0006eV-Tb
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 12:36:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44205)
+	id 1buMbm-0001Bq-RJ
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Oct 2016 12:42:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45690)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buMVo-0006cc-G2
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:36:13 -0400
+	(envelope-from <michael@walle.cc>) id 1buMbk-00019K-9K
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:42:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buMVn-0003gN-GP
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:36:12 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35351)
+	(envelope-from <michael@walle.cc>) id 1buMbj-000692-Dx
+	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:42:20 -0400
+Received: from ssl.serverraum.org ([213.133.101.245]:48359)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1buMVn-0003fs-4g
-	for qemu-trivial@nongnu.org; Wed, 12 Oct 2016 12:36:11 -0400
-Received: by mail-vk0-x235.google.com with SMTP id 192so50479236vkl.2
-	for <qemu-trivial@nongnu.org>; Wed, 12 Oct 2016 09:36:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=d26DWh7iOIjnFeQOBUI60BWoE9PfLsLcfulksuVkyis=;
-	b=bzDUd7u8lIy8hgBQF96y7ZUSI7S/vL5MFAORSHGsVfb2/ItFGWL5d0QMb6Ah1iJsaS
-	SVvZgg8rwHX/iH5gBr9SI4A/v/VvLG39hXb89bSY4wG9VPZ9MmK3HOlw9IpQK7RlnGJy
-	an4VAB2h3sM0XNtWExnZ2yg2idy3Df9mKytpI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=d26DWh7iOIjnFeQOBUI60BWoE9PfLsLcfulksuVkyis=;
-	b=LAKUhK3gnOF1rxY4Esu0BVWueySmoLo5ykdiqMTVFZrHEU6GuPcG6R1Qs58Mjh3BgZ
-	Mkw2LLSrZsL0nWme97Laxejy21CsSMdZPnu8uxBKd+1/13Uo87lwVDakownQE7Ln1YYc
-	lar+oLmD7LAKratLWUTtBW5w3WY9mCru3EYTnW2iGv1qNYXqHbPmwPuG5+9QU5w0itgb
-	4521gyXU7FfdLl/Fmv1n5uSJbsxUWSq1D3paI8lvAWns2zhHK/PoyCU5s5vI6cdTFgY6
-	yd1y5m7Yx7cEJwAxFgzF//Mgc/UWMs19zFmhlTsBMj1CPbekxtc5c8AOL4pTVoGRKsd5
-	P7og==
-X-Gm-Message-State: AA6/9RnUQqQDR37jmhOr71wV4yBHvrLbW93QvjpuGyb3Gmit1XavFLL+2+FZ2srnz9wA06tPfoR9lR0aGvpkhSFm
-X-Received: by 10.31.206.198 with SMTP id e189mr985794vkg.51.1476290170630;
-	Wed, 12 Oct 2016 09:36:10 -0700 (PDT)
+	(envelope-from <michael@walle.cc>)
+	id 1buMbc-00064m-9z; Wed, 12 Oct 2016 12:42:12 -0400
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+	(using TLSv1 with cipher DHE-RSA-CAMELLIA256-SHA (256/256 bits))
+	(No client certificate requested)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id C074422265;
+	Wed, 12 Oct 2016 18:42:09 +0200 (CEST)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1476290529;
+	bh=FIwL2krfgiaVa02VkTtwgl00mSB8DsZCbt3GnSxZWqQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=noTeg6bZKjP50c0W/J7+i4a9Nh09X6Ct6vcuLHdfqiag5G5PmsR2b2UJpe3xRc90q
+	ECwkMoNYqJIJx3L0aT9ZYo6Z8s6Kpzsp0S1Qssb/HSgJb5bMPQTYnP1Ho9s2ZlrSz2
+	qdcmuKF+0zJsl1YXmpRhdznVqJtMkZ1RO8dwbIuk=
 MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Wed, 12 Oct 2016 09:35:50 -0700 (PDT)
-In-Reply-To: <1476289396-10780-1-git-send-email-michael@walle.cc>
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Wed, 12 Oct 2016 18:42:09 +0200
+From: Michael Walle <michael@walle.cc>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+	<qemu-trivial@nongnu.org>, Thomas Huth <huth@tuxfamily.org>
+In-Reply-To: <CAFEAcA_Ofp-OPk0WBr6jyZoGW+==yzU+MT3TMjyavVV1UceSDA@mail.gmail.com>
 References: <1476289396-10780-1-git-send-email-michael@walle.cc>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Oct 2016 17:35:50 +0100
-Message-ID: <CAFEAcA_Ofp-OPk0WBr6jyZoGW+==yzU+MT3TMjyavVV1UceSDA@mail.gmail.com>
-To: Michael Walle <michael@walle.cc>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <huth@tuxfamily.org>
-Content-Type: text/plain; charset=UTF-8
+	<CAFEAcA_Ofp-OPk0WBr6jyZoGW+==yzU+MT3TMjyavVV1UceSDA@mail.gmail.com>
+Message-ID: <c4eb04a6bf726106a69eb58eee39933e@walle.cc>
+X-Sender: michael@walle.cc
+User-Agent: Roundcube Webmail/1.1.5
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
+X-Received-From: 213.133.101.245
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-lm32: fix style issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -59,47 +56,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Oct 2016 16:36:13 -0000
+X-List-Received-Date: Wed, 12 Oct 2016 16:42:21 -0000
 
-On 12 October 2016 at 17:23, Michael Walle <michael@walle.cc> wrote:
-> Both branches of the ternary operator have the same expressions. Drop the
-> operator.
->
-> This fixes: https://bugs.launchpad.net/qemu/+bug/1414293
->
-> Signed-off-by: Michael Walle <michael@walle.cc>
-> ---
->  target-lm32/translate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target-lm32/translate.c b/target-lm32/translate.c
-> index 2d8caeb..534c17c 100644
-> --- a/target-lm32/translate.c
-> +++ b/target-lm32/translate.c
-> @@ -343,7 +343,7 @@ static void dec_calli(DisasContext *dc)
->  static inline void gen_compare(DisasContext *dc, int cond)
->  {
->      int rX = (dc->format == OP_FMT_RR) ? dc->r2 : dc->r1;
-> -    int rY = (dc->format == OP_FMT_RR) ? dc->r0 : dc->r0;
-> +    int rY = dc->r0;
->      int rZ = (dc->format == OP_FMT_RR) ? dc->r1 : -1;
->      int i;
+Am 2016-10-12 18:35, schrieb Peter Maydell:
+> but I noticed while doing the review that our LOG_DIS
+> is wrong for the compare-immediates:
+> 
+>         LOG_DIS("cmpei r%d, r%d, %d\n", dc->r0, dc->r1,
+>                 sign_extend(dc->imm16, 16));
+> 
+> but the processor reference manual says cmpei's mnemonic
+> should have dc->r1 first and dc->r0 second.
+> 
+> (Similarly for the logging for the other immediate compares.)
 
-This checks against the processor reference manual, so:
+Argh, you're eyes are too good ;) I'll have a look.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-but I noticed while doing the review that our LOG_DIS
-is wrong for the compare-immediates:
-
-        LOG_DIS("cmpei r%d, r%d, %d\n", dc->r0, dc->r1,
-                sign_extend(dc->imm16, 16));
-
-but the processor reference manual says cmpei's mnemonic
-should have dc->r1 first and dc->r0 second.
-
-(Similarly for the logging for the other immediate compares.)
-
-thanks
--- PMM
+-michael
 
