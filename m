@@ -1,55 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bukrp-0003hO-BA
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 14:36:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49612)
+	id 1bumVv-0007m3-RE
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 16:22:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43284)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bukrm-0003er-Sf
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:36:31 -0400
+	(envelope-from <akanksha.dlf@gmail.com>) id 1bumVt-0007jR-3n
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 16:22:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bukrk-0006PI-Ul
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:36:29 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35133)
+	(envelope-from <akanksha.dlf@gmail.com>) id 1bumVr-0006Wd-KP
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 16:22:01 -0400
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:36459)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bukrk-0006Oe-An
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:36:28 -0400
-Received: by mail-vk0-x235.google.com with SMTP id q126so35950806vkd.2
-	for <qemu-trivial@nongnu.org>; Thu, 13 Oct 2016 11:36:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Uh4QYz+J7vLW9Af5sa7GD/1T8u5WdhaKZ6bgtiub92I=;
-	b=f9QlzmBRILdXpwnR6bbtONp1zAb3uXAf8sbAhr5Oi3SOp2hWk7idnfWfa19uLaWaUG
-	HvhQp4ZhnAc80OC4GOVWTXxPsfUw4OdqWH7OEGDT6MWoQGy99x5QE5zLtVI7bYeZvdyw
-	+EIlpGceTdFJGAXEMobhzggsmTrdGzTVj3uWQ=
+	(envelope-from <akanksha.dlf@gmail.com>)
+	id 1bumVk-0006UB-0v; Thu, 13 Oct 2016 16:21:52 -0400
+Received: by mail-pa0-x241.google.com with SMTP id os4so1118092pac.3;
+	Thu, 13 Oct 2016 13:21:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=T7pIJo4yfFL0M0vwzMSJEibHwAWkIYNILwTo1j7hsmc=;
+	b=AL4l7N0x1CVKVgEBISp32pk+os6b/9l1xuQAXjcXkCBQXg64q6Bgunf1VXzUtjoZoV
+	/VDlLsywmKpgjGDn+xuO+kbuYzsx8pOEpetDOeK7azqNz62lBwifZkmCZ08+sg/NoNDX
+	S8//wL8xlcg7pi3bqOYPeOf1cuNtYP4E8fCWXsPQ/6WQs8IYPpcg4/ikfTGuVnsDKpez
+	v8hul/kpDgyrih39HZPHftRaE1zrMtKRrptAfYn/lxlzWUrTzihCMogSd90CHbuuJ/Ba
+	KfnXh7FZjKvDQx7XcLYTX+jL9tyFVUPSEicQg4ztT39R8l/0A9QhjiffG411SjNcNgYu
+	f7LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Uh4QYz+J7vLW9Af5sa7GD/1T8u5WdhaKZ6bgtiub92I=;
-	b=A+oRzVAHpasoKIoT4L20Ov+BakRjckBRFHQ9C6QBScRLqK6zh8j8J0usVYbCUzAO0u
-	UtbHo78PGabEDwoBTZDk7AJkBlfadprMuDdIvI4lyr0S+t7FRCxgmy7q4fEW9Z2kwYsa
-	cDgwZRSR/b7/rqMiReulRKdY0clFoRD2BIoAzIolpc8KiA+VRCvvePQXPVzm5sssKGVB
-	AL92Dxb20pFqsm9s5EwCJ0WPaL1U9QHDrvZUldgDVzuVWwbQ3Q2g+Uj9A07pHydk78Bo
-	rFAiWM8QBVVgEBL6d4Ugax+rx0MDFj6rB66ynMyNzYSQ27rKh7kBPjuvfXwfkDb9D1rt
-	Kc7A==
-X-Gm-Message-State: AA6/9RkD+0hav5y/p/187nRXDt9b6Z+fvo3mUtzvU0/l/Tmc22vq0uKRI3D6OpJa4D4TpXw3PC12PCZKJAxhyl0y
-X-Received: by 10.31.206.198 with SMTP id e189mr4878365vkg.51.1476383787684;
-	Thu, 13 Oct 2016 11:36:27 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Thu, 13 Oct 2016 11:36:07 -0700 (PDT)
-In-Reply-To: <1476383370-30650-1-git-send-email-sw@weilnetz.de>
-References: <1476383370-30650-1-git-send-email-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Oct 2016 19:36:07 +0100
-Message-ID: <CAFEAcA8QADee1et4jSGP26i8atRy2KG29wMab_nieisNvCicEQ@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developer <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=T7pIJo4yfFL0M0vwzMSJEibHwAWkIYNILwTo1j7hsmc=;
+	b=R+UKsYfdIcBhDZDTZdXUt5W0GoK+hgFwAEQgs3/nHp3NTWR4rrc5NqJq+FAgG82Qlh
+	3tATENuajvlgJwFFJk98pk0fxvTqZVhPNqSu5rgdyjCVo2FRpPGbvZTvyMIhA2bBhhod
+	MEVoWCyUkDnh77kYX67kiNGgRh908WcAN3Pg5OpW2oMqWweYvgVo2CoN0eAIVC59uxke
+	4M4+ucyRPCyfP68LCXyXolLb8kuYZcKUGiVxnedWd4Rte9fWFyIhkt9B4PTzb4pzViyi
+	lTODfRLyDGUD3D/BlOMDMuMMTHA8Hq/XSkmpSRkdr18DS7G0MueTxKQxSjgb1edxIxXa
+	EsmA==
+X-Gm-Message-State: AA6/9RnRdPerCxEFukerWe+6UyrocD5rxYbyWykeWx9N0ky8XQYEiqv8M5dqtQqxxlugUA==
+X-Received: by 10.66.27.230 with SMTP id w6mr10503949pag.199.1476390111059;
+	Thu, 13 Oct 2016 13:21:51 -0700 (PDT)
+Received: from akanksha.iiit.ac.in ([14.139.82.6])
+	by smtp.gmail.com with ESMTPSA id
+	bx5sm21716514pad.6.2016.10.13.13.21.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 13 Oct 2016 13:21:50 -0700 (PDT)
+From: Akanksha Srivastava <akanksha.dlf@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com,
+	Akanksha Srivastava <akanksha.dlf@gmail.com>
+Date: Fri, 14 Oct 2016 01:51:31 +0530
+Message-Id: <1476390091-6741-1-git-send-email-akanksha.dlf@gmail.com>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix build for less common
- build directories names
+X-Received-From: 2607:f8b0:400e:c03::241
+Subject: [Qemu-trivial] [PATCH v3] usb: Change *_exitfn return type from int
+ to void
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,24 +63,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2016 18:36:32 -0000
+X-List-Received-Date: Thu, 13 Oct 2016 20:22:02 -0000
 
-On 13 October 2016 at 19:29, Stefan Weil <sw@weilnetz.de> wrote:
-> scripts/tracetool generates a C preprocessor macro from the name of the
-> build directory. Any characters which are possible in a directory name
-> but not allowed in a macro name must be substituted, otherwise builds
-> will fail.
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->
-> I had problems with a build directory of the form "host,variant".
-> Is this fix needed for stable, too?
+The *_exitfn functions cannot fail and should not be
+returning int.
+This also removes the passthru_exitfn since this callback
+does nothing as of now.
+This was suggested as a Bite-sized task for code cleanup.
+Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
+---
+ hw/usb/ccid-card-emulated.c   |  3 +--
+ hw/usb/ccid-card-passthru.c   |  6 ------
+ hw/usb/ccid.h                 |  2 +-
+ hw/usb/dev-smartcard-reader.c | 11 +++++------
+ 4 files changed, 7 insertions(+), 15 deletions(-)
 
-Why does it need to care about the build directory name at all?
-Ideally builds should be entirely deterministically reproducible
-whatever the path to the source or build directory names is...
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 3213f9f..eceb5f3 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -547,7 +547,7 @@ static int emulated_initfn(CCIDCardState *base)
+     return 0;
+ }
 
-thanks
--- PMM
+-static int emulated_exitfn(CCIDCardState *base)
++static void emulated_exitfn(CCIDCardState *base)
+ {
+     EmulatedState *card = EMULATED_CCID_CARD(base);
+     VEvent *vevent = vevent_new(VEVENT_LAST, NULL, NULL);
+@@ -564,7 +564,6 @@ static int emulated_exitfn(CCIDCardState *base)
+     qemu_mutex_destroy(&card->handle_apdu_mutex);
+     qemu_mutex_destroy(&card->vreader_mutex);
+     qemu_mutex_destroy(&card->event_list_mutex);
+-    return 0;
+ }
+
+ static Property emulated_card_properties[] = {
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index 2eacea7..7209f73 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -364,11 +364,6 @@ static int passthru_initfn(CCIDCardState *base)
+     return 0;
+ }
+
+-static int passthru_exitfn(CCIDCardState *base)
+-{
+-    return 0;
+-}
+-
+ static VMStateDescription passthru_vmstate = {
+     .name = "ccid-card-passthru",
+     .version_id = 1,
+@@ -395,7 +390,6 @@ static void passthru_class_initfn(ObjectClass *klass, void *data)
+     CCIDCardClass *cc = CCID_CARD_CLASS(klass);
+
+     cc->initfn = passthru_initfn;
+-    cc->exitfn = passthru_exitfn;
+     cc->get_atr = passthru_get_atr;
+     cc->apdu_from_guest = passthru_apdu_from_guest;
+     set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+diff --git a/hw/usb/ccid.h b/hw/usb/ccid.h
+index 9334da8..1f07011 100644
+--- a/hw/usb/ccid.h
++++ b/hw/usb/ccid.h
+@@ -33,7 +33,7 @@ typedef struct CCIDCardClass {
+     void (*apdu_from_guest)(CCIDCardState *card,
+                             const uint8_t *apdu,
+                             uint32_t len);
+-    int (*exitfn)(CCIDCardState *card);
++    void (*exitfn)(CCIDCardState *card);
+     int (*initfn)(CCIDCardState *card);
+ } CCIDCardClass;
+
+diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+index af4b851..e1940ad 100644
+--- a/hw/usb/dev-smartcard-reader.c
++++ b/hw/usb/dev-smartcard-reader.c
+@@ -508,14 +508,14 @@ static void ccid_card_apdu_from_guest(CCIDCardState *card,
+     }
+ }
+
+-static int ccid_card_exitfn(CCIDCardState *card)
++static void ccid_card_exitfn(CCIDCardState *card)
+ {
+     CCIDCardClass *cc = CCID_CARD_GET_CLASS(card);
+
+     if (cc->exitfn) {
+-        return cc->exitfn(card);
++        cc->exitfn(card);
+     }
+-    return 0;
++
+ }
+
+ static int ccid_card_initfn(CCIDCardState *card)
+@@ -1279,7 +1279,6 @@ void ccid_card_card_inserted(CCIDCardState *card)
+
+ static int ccid_card_exit(DeviceState *qdev)
+ {
+-    int ret = 0;
+     CCIDCardState *card = CCID_CARD(qdev);
+     USBDevice *dev = USB_DEVICE(qdev->parent_bus->parent);
+     USBCCIDState *s = USB_CCID_DEV(dev);
+@@ -1287,9 +1286,9 @@ static int ccid_card_exit(DeviceState *qdev)
+     if (ccid_card_inserted(s)) {
+         ccid_card_card_removed(card);
+     }
+-    ret = ccid_card_exitfn(card);
++    ccid_card_exitfn(card);
+     s->card = NULL;
+-    return ret;
++    return 0;
+ }
+
+ static int ccid_card_init(DeviceState *qdev)
+--
+1.9.1
+
 
