@@ -1,54 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1budOx-00073L-4G
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 06:38:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55590)
+	id 1buhsu-0004n5-H0
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 11:25:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1budOu-000712-Ac
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 06:38:13 -0400
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1buaA1-0003Z6-0x
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 03:10:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1budOt-0006BB-6q
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 06:38:12 -0400
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:36807)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1bua9w-0001lH-JS
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 03:10:36 -0400
+Received: from [59.151.112.132] (port=27563 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1budOt-0006At-30
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 06:38:11 -0400
-Received: by mail-vk0-x22d.google.com with SMTP id 2so72624661vkb.3
-	for <qemu-trivial@nongnu.org>; Thu, 13 Oct 2016 03:38:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=gxXS3tME37DWEJuNnZHrv+L+nooWK80oR2a8uNFUfHE=;
-	b=SoleSRbbysTYajvNcYcS/1Mdv1TluG3w33n426hKsvm9zU84PShlVGVFOIhhMP7LrD
-	FL34VoqmqgGk7vNVzgg5dTY5AVV29YPY7c3mEuC/Cr4aCK6qaBVlxGjvfJkBFho+Rr5c
-	4Lrba+BnihH+pgSF8RsAF6jQVaw/z4VRq8ryM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=gxXS3tME37DWEJuNnZHrv+L+nooWK80oR2a8uNFUfHE=;
-	b=HJEwAr19fms4orcTmri+J17in8MLSFwmJoM2lGRlccXHeKflPJg7/kVdR69Hggi7vR
-	tOgHmB7W4fDrHJ86OB9C/kUCCiv8pRwz8X9KsjiSs/TQladlSYXvfrxbfRNcQ3RJd2i+
-	VDFRk/ilxzI2D8z3IVHWxAj5/qL44wgnmGRJau7yRfqVuhGYsAb+I04HGOieacfnJRL7
-	qIHW92dFPv82gJg9q9m6GRg6BR5GS0UFvU6+mrl12uWJsKcbLbitt96iniaGxnNENYMK
-	C6zH/WXMUCElX6HsPLYTih5XD6oXotNyTWgkvho1ynxyEgxFGnXGQGTSePJhZvHXjJP6
-	H5wA==
-X-Gm-Message-State: AA6/9Rm8bmDTKy1101LcsU0zA5L/ZneqjBjXspxeyDogDX6ZVjeRcwmZwtrykxL3z1RlQ4RaHAaCIYfTXWZAJBak
-X-Received: by 10.31.210.130 with SMTP id j124mr4160121vkg.17.1476355090654;
-	Thu, 13 Oct 2016 03:38:10 -0700 (PDT)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
+	id 1bua9q-0001dO-FL; Thu, 13 Oct 2016 03:10:26 -0400
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="11896629"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 13 Oct 2016 15:10:14 +0800
+Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
+	by cn.fujitsu.com (Postfix) with ESMTP id 4C564466FE08;
+	Thu, 13 Oct 2016 15:10:11 +0800 (CST)
+Received: from [10.167.226.56] (10.167.226.56) by
+	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.279.2; Thu, 13 Oct 2016 15:10:11 +0800
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>
+References: <1476341848-1940-1-git-send-email-zhang.zhanghailiang@huawei.com>
+CC: <jasowang@redhat.com>, <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <19db71b8-5437-9588-42a3-46202071f8e3@cn.fujitsu.com>
+Date: Thu, 13 Oct 2016 15:11:03 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Thu, 13 Oct 2016 03:37:50 -0700 (PDT)
-In-Reply-To: <1476311708-14792-4-git-send-email-michael@walle.cc>
-References: <1476311708-14792-1-git-send-email-michael@walle.cc>
-	<1476311708-14792-4-git-send-email-michael@walle.cc>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Oct 2016 11:37:50 +0100
-Message-ID: <CAFEAcA8S6uRQ-B6nNq5jv32FuNN9=M7B5VyXfui6+OV9KAT0Nw@mail.gmail.com>
-To: Michael Walle <michael@walle.cc>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Subject: Re: [Qemu-trivial] [PATCH 4/4] target-lm32: rewrite gen_compare()
+In-Reply-To: <1476341848-1940-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.167.226.56]
+X-yoursite-MailScanner-ID: 4C564466FE08.A7550
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+X-Mailman-Approved-At: Thu, 13 Oct 2016 11:25:27 -0400
+Subject: Re: [Qemu-trivial] [PATCH] colo-compare: remove unused struct
+ CompareChardevProps and 'props' variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,46 +54,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2016 10:38:13 -0000
+X-List-Received-Date: Thu, 13 Oct 2016 07:10:40 -0000
 
-On 12 October 2016 at 23:35, Michael Walle <michael@walle.cc> wrote:
-> Drop the rX, rY and rZ stuff and use dc->r{0,1,2} directly. This should
-> also fix the false positive in coverity CID 1005720.
+
+
+On 10/13/2016 02:57 PM, zhanghailiang wrote:
+> After commit 0a73336d, 'props' variable in find_and_check_chardev()
+> is unused. Remove it, togther with struct CompareChardevProps.
 >
-> Signed-off-by: Michael Walle <michael@walle.cc>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+
+Reviewed-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+
+Thanks
+Zhang Chen
+
 > ---
->  target-lm32/translate.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+>   net/colo-compare.c | 8 --------
+>   1 file changed, 8 deletions(-)
 >
-> diff --git a/target-lm32/translate.c b/target-lm32/translate.c
-> index 792637f..842af63 100644
-> --- a/target-lm32/translate.c
-> +++ b/target-lm32/translate.c
-> @@ -344,9 +344,6 @@ static void dec_calli(DisasContext *dc)
->
->  static inline void gen_compare(DisasContext *dc, int cond)
->  {
-> -    int rX = (dc->format == OP_FMT_RR) ? dc->r2 : dc->r1;
-> -    int rY = dc->r0;
-> -    int rZ = (dc->format == OP_FMT_RR) ? dc->r1 : -1;
->      int i;
->
->      if (dc->format == OP_FMT_RI) {
-> @@ -360,9 +357,9 @@ static inline void gen_compare(DisasContext *dc, int cond)
->              break;
->          }
->
-> -        tcg_gen_setcondi_tl(cond, cpu_R[rX], cpu_R[rY], i);
-> +        tcg_gen_setcondi_tl(cond, cpu_R[dc->r1], cpu_R[dc->r0], i);
->      } else {
-> -        tcg_gen_setcond_tl(cond, cpu_R[rX], cpu_R[rY], cpu_R[rZ]);
-> +        tcg_gen_setcond_tl(cond, cpu_R[dc->r2], cpu_R[dc->r0], cpu_R[dc->r1]);
->      }
->  }
->
+> diff --git a/net/colo-compare.c b/net/colo-compare.c
+> index 47703c5..4be6fc3 100644
+> --- a/net/colo-compare.c
+> +++ b/net/colo-compare.c
+> @@ -92,10 +92,6 @@ typedef struct CompareClass {
+>       ObjectClass parent_class;
+>   } CompareClass;
+>   
+> -typedef struct CompareChardevProps {
+> -    bool is_socket;
+> -} CompareChardevProps;
+> -
+>   enum {
+>       PRIMARY_IN = 0,
+>       SECONDARY_IN,
+> @@ -573,8 +569,6 @@ static int find_and_check_chardev(CharDriverState **chr,
+>                                     char *chr_name,
+>                                     Error **errp)
+>   {
+> -    CompareChardevProps props;
+> -
+>       *chr = qemu_chr_find(chr_name);
+>       if (*chr == NULL) {
+>           error_setg(errp, "Device '%s' not found",
+> @@ -582,8 +576,6 @@ static int find_and_check_chardev(CharDriverState **chr,
+>           return 1;
+>       }
+>   
+> -    memset(&props, 0, sizeof(props));
+> -
+>       if (!qemu_chr_has_feature(*chr, QEMU_CHAR_FEATURE_RECONNECTABLE)) {
+>           error_setg(errp, "chardev \"%s\" is not reconnectable",
+>                      chr_name);
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+-- 
+Thanks
+zhangchen
 
-thanks
--- PMM
+
+
 
