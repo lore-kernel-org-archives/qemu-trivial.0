@@ -1,48 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1buhsu-0004n5-H0
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 11:25:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32909)
+	id 1buklB-0008Uj-S3
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 14:29:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46120)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1buaA1-0003Z6-0x
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 03:10:40 -0400
+	(envelope-from <sw@weilnetz.de>) id 1bukl9-0008Sw-84
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:29:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1bua9w-0001lH-JS
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 03:10:36 -0400
-Received: from [59.151.112.132] (port=27563 helo=heian.cn.fujitsu.com)
+	(envelope-from <sw@weilnetz.de>) id 1bukl5-0001HZ-Ea
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:29:38 -0400
+Received: from qemu.weilnetz.de ([37.221.198.45]:58667)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
-	id 1bua9q-0001dO-FL; Thu, 13 Oct 2016 03:10:26 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="11896629"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 13 Oct 2016 15:10:14 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
-	by cn.fujitsu.com (Postfix) with ESMTP id 4C564466FE08;
-	Thu, 13 Oct 2016 15:10:11 +0800 (CST)
-Received: from [10.167.226.56] (10.167.226.56) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Thu, 13 Oct 2016 15:10:11 +0800
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>
-References: <1476341848-1940-1-git-send-email-zhang.zhanghailiang@huawei.com>
-CC: <jasowang@redhat.com>, <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
-From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-Message-ID: <19db71b8-5437-9588-42a3-46202071f8e3@cn.fujitsu.com>
-Date: Thu, 13 Oct 2016 15:11:03 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
-MIME-Version: 1.0
-In-Reply-To: <1476341848-1940-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.56]
-X-yoursite-MailScanner-ID: 4C564466FE08.A7550
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Thu, 13 Oct 2016 11:25:27 -0400
-Subject: Re: [Qemu-trivial] [PATCH] colo-compare: remove unused struct
- CompareChardevProps and 'props' variable
+	(envelope-from <sw@weilnetz.de>) id 1bukl5-0001HA-8Y
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 14:29:35 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 5A93717F6F2; Thu, 13 Oct 2016 20:29:31 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Date: Thu, 13 Oct 2016 20:29:30 +0200
+Message-Id: <1476383370-30650-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 37.221.198.45
+Subject: [Qemu-trivial] [PATCH] Fix build for less common build directories
+ names
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,63 +36,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2016 07:10:40 -0000
+X-List-Received-Date: Thu, 13 Oct 2016 18:29:40 -0000
 
+scripts/tracetool generates a C preprocessor macro from the name of the
+build directory. Any characters which are possible in a directory name
+but not allowed in a macro name must be substituted, otherwise builds
+will fail.
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-On 10/13/2016 02:57 PM, zhanghailiang wrote:
-> After commit 0a73336d, 'props' variable in find_and_check_chardev()
-> is unused. Remove it, togther with struct CompareChardevProps.
->
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+I had problems with a build directory of the form "host,variant".
+Is this fix needed for stable, too?
 
-Reviewed-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Regards
+Stefan W.
 
-Thanks
-Zhang Chen
+ scripts/tracetool.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->   net/colo-compare.c | 8 --------
->   1 file changed, 8 deletions(-)
->
-> diff --git a/net/colo-compare.c b/net/colo-compare.c
-> index 47703c5..4be6fc3 100644
-> --- a/net/colo-compare.c
-> +++ b/net/colo-compare.c
-> @@ -92,10 +92,6 @@ typedef struct CompareClass {
->       ObjectClass parent_class;
->   } CompareClass;
->   
-> -typedef struct CompareChardevProps {
-> -    bool is_socket;
-> -} CompareChardevProps;
-> -
->   enum {
->       PRIMARY_IN = 0,
->       SECONDARY_IN,
-> @@ -573,8 +569,6 @@ static int find_and_check_chardev(CharDriverState **chr,
->                                     char *chr_name,
->                                     Error **errp)
->   {
-> -    CompareChardevProps props;
-> -
->       *chr = qemu_chr_find(chr_name);
->       if (*chr == NULL) {
->           error_setg(errp, "Device '%s' not found",
-> @@ -582,8 +576,6 @@ static int find_and_check_chardev(CharDriverState **chr,
->           return 1;
->       }
->   
-> -    memset(&props, 0, sizeof(props));
-> -
->       if (!qemu_chr_has_feature(*chr, QEMU_CHAR_FEATURE_RECONNECTABLE)) {
->           error_setg(errp, "chardev \"%s\" is not reconnectable",
->                      chr_name);
-
+diff --git a/scripts/tracetool.py b/scripts/tracetool.py
+index 629b259..fe9c9e9 100755
+--- a/scripts/tracetool.py
++++ b/scripts/tracetool.py
+@@ -70,7 +70,7 @@ def make_group_name(filename):
+ 
+     if dirname == "":
+         return "common"
+-    return re.sub(r"/|-", "_", dirname)
++    return re.sub(r"[^A-Za-z0-9]", "_", dirname)
+ 
+ def main(args):
+     global _SCRIPT
 -- 
-Thanks
-zhangchen
-
-
+2.1.4
 
 
