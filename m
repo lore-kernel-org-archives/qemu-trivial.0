@@ -1,57 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bumVv-0007m3-RE
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 16:22:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43284)
+	id 1busab-0002L8-Kd
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 22:51:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58025)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>) id 1bumVt-0007jR-3n
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 16:22:02 -0400
+	(envelope-from <famz@redhat.com>) id 1busaZ-0002Iu-Ku
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 22:51:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>) id 1bumVr-0006Wd-KP
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 16:22:01 -0400
-Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:36459)
+	(envelope-from <famz@redhat.com>) id 1busaX-000837-NB
+	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 22:51:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58670)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <akanksha.dlf@gmail.com>)
-	id 1bumVk-0006UB-0v; Thu, 13 Oct 2016 16:21:52 -0400
-Received: by mail-pa0-x241.google.com with SMTP id os4so1118092pac.3;
-	Thu, 13 Oct 2016 13:21:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=T7pIJo4yfFL0M0vwzMSJEibHwAWkIYNILwTo1j7hsmc=;
-	b=AL4l7N0x1CVKVgEBISp32pk+os6b/9l1xuQAXjcXkCBQXg64q6Bgunf1VXzUtjoZoV
-	/VDlLsywmKpgjGDn+xuO+kbuYzsx8pOEpetDOeK7azqNz62lBwifZkmCZ08+sg/NoNDX
-	S8//wL8xlcg7pi3bqOYPeOf1cuNtYP4E8fCWXsPQ/6WQs8IYPpcg4/ikfTGuVnsDKpez
-	v8hul/kpDgyrih39HZPHftRaE1zrMtKRrptAfYn/lxlzWUrTzihCMogSd90CHbuuJ/Ba
-	KfnXh7FZjKvDQx7XcLYTX+jL9tyFVUPSEicQg4ztT39R8l/0A9QhjiffG411SjNcNgYu
-	f7LA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=T7pIJo4yfFL0M0vwzMSJEibHwAWkIYNILwTo1j7hsmc=;
-	b=R+UKsYfdIcBhDZDTZdXUt5W0GoK+hgFwAEQgs3/nHp3NTWR4rrc5NqJq+FAgG82Qlh
-	3tATENuajvlgJwFFJk98pk0fxvTqZVhPNqSu5rgdyjCVo2FRpPGbvZTvyMIhA2bBhhod
-	MEVoWCyUkDnh77kYX67kiNGgRh908WcAN3Pg5OpW2oMqWweYvgVo2CoN0eAIVC59uxke
-	4M4+ucyRPCyfP68LCXyXolLb8kuYZcKUGiVxnedWd4Rte9fWFyIhkt9B4PTzb4pzViyi
-	lTODfRLyDGUD3D/BlOMDMuMMTHA8Hq/XSkmpSRkdr18DS7G0MueTxKQxSjgb1edxIxXa
-	EsmA==
-X-Gm-Message-State: AA6/9RnRdPerCxEFukerWe+6UyrocD5rxYbyWykeWx9N0ky8XQYEiqv8M5dqtQqxxlugUA==
-X-Received: by 10.66.27.230 with SMTP id w6mr10503949pag.199.1476390111059;
-	Thu, 13 Oct 2016 13:21:51 -0700 (PDT)
-Received: from akanksha.iiit.ac.in ([14.139.82.6])
-	by smtp.gmail.com with ESMTPSA id
-	bx5sm21716514pad.6.2016.10.13.13.21.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 13 Oct 2016 13:21:50 -0700 (PDT)
-From: Akanksha Srivastava <akanksha.dlf@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com,
-	Akanksha Srivastava <akanksha.dlf@gmail.com>
-Date: Fri, 14 Oct 2016 01:51:31 +0530
-Message-Id: <1476390091-6741-1-git-send-email-akanksha.dlf@gmail.com>
-X-Mailer: git-send-email 1.9.1
+	(envelope-from <famz@redhat.com>)
+	id 1busaP-000818-ID; Thu, 13 Oct 2016 22:51:05 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 00DDA4E33E;
+	Fri, 14 Oct 2016 02:51:03 +0000 (UTC)
+Received: from localhost (vpn1-7-155.pek2.redhat.com [10.72.7.155])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9E2oxBG020489; Thu, 13 Oct 2016 22:51:00 -0400
+Date: Fri, 14 Oct 2016 10:50:58 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Victor Kaplansky <victork@redhat.com>,
+	Michael Tsirkin <mst@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, Sascha Silbe <x-qemu@se-silbe.de>,
+	David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20161014025058.GA14830@lemon>
+References: <1476199177-32411-1-git-send-email-thuth@redhat.com>
+	<1476199177-32411-3-git-send-email-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1476199177-32411-3-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 14 Oct 2016 02:51:04 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::241
-Subject: [Qemu-trivial] [PATCH v3] usb: Change *_exitfn return type from int
- to void
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] tests/boot-sector: Use
+ mkstemp() to create a unique file name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,122 +56,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Oct 2016 20:22:02 -0000
+X-List-Received-Date: Fri, 14 Oct 2016 02:51:16 -0000
 
-The *_exitfn functions cannot fail and should not be
-returning int.
-This also removes the passthru_exitfn since this callback
-does nothing as of now.
-This was suggested as a Bite-sized task for code cleanup.
-Signed-off-by: Akanksha Srivastava <akanksha.dlf@gmail.com>
----
- hw/usb/ccid-card-emulated.c   |  3 +--
- hw/usb/ccid-card-passthru.c   |  6 ------
- hw/usb/ccid.h                 |  2 +-
- hw/usb/dev-smartcard-reader.c | 11 +++++------
- 4 files changed, 7 insertions(+), 15 deletions(-)
+On Tue, 10/11 17:19, Thomas Huth wrote:
+> The pxe-test is run for three different targets now (x86_64, i386
+> and ppc64), and the bios-tables-test is run for two targets (x86_64
+> and i386). But each of the tests is using an invariant name for the
+> disk image with the boot sector code - so if the tests are running in
+> parallel, there is a race condition that they destroy the disk image
+> of a parallel test program. Let's use mkstemp() to create unique
+> temporary files here instead - and since mkstemp() is returning an
+> integer file descriptor instead of a FILE pointer, we also switch
+> the fwrite() and fclose() to write() and close() instead.
+> 
+> Reported-by: Sascha Silbe <x-qemu@se-silbe.de>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index 3213f9f..eceb5f3 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -547,7 +547,7 @@ static int emulated_initfn(CCIDCardState *base)
-     return 0;
- }
-
--static int emulated_exitfn(CCIDCardState *base)
-+static void emulated_exitfn(CCIDCardState *base)
- {
-     EmulatedState *card = EMULATED_CCID_CARD(base);
-     VEvent *vevent = vevent_new(VEVENT_LAST, NULL, NULL);
-@@ -564,7 +564,6 @@ static int emulated_exitfn(CCIDCardState *base)
-     qemu_mutex_destroy(&card->handle_apdu_mutex);
-     qemu_mutex_destroy(&card->vreader_mutex);
-     qemu_mutex_destroy(&card->event_list_mutex);
--    return 0;
- }
-
- static Property emulated_card_properties[] = {
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index 2eacea7..7209f73 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -364,11 +364,6 @@ static int passthru_initfn(CCIDCardState *base)
-     return 0;
- }
-
--static int passthru_exitfn(CCIDCardState *base)
--{
--    return 0;
--}
--
- static VMStateDescription passthru_vmstate = {
-     .name = "ccid-card-passthru",
-     .version_id = 1,
-@@ -395,7 +390,6 @@ static void passthru_class_initfn(ObjectClass *klass, void *data)
-     CCIDCardClass *cc = CCID_CARD_CLASS(klass);
-
-     cc->initfn = passthru_initfn;
--    cc->exitfn = passthru_exitfn;
-     cc->get_atr = passthru_get_atr;
-     cc->apdu_from_guest = passthru_apdu_from_guest;
-     set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-diff --git a/hw/usb/ccid.h b/hw/usb/ccid.h
-index 9334da8..1f07011 100644
---- a/hw/usb/ccid.h
-+++ b/hw/usb/ccid.h
-@@ -33,7 +33,7 @@ typedef struct CCIDCardClass {
-     void (*apdu_from_guest)(CCIDCardState *card,
-                             const uint8_t *apdu,
-                             uint32_t len);
--    int (*exitfn)(CCIDCardState *card);
-+    void (*exitfn)(CCIDCardState *card);
-     int (*initfn)(CCIDCardState *card);
- } CCIDCardClass;
-
-diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
-index af4b851..e1940ad 100644
---- a/hw/usb/dev-smartcard-reader.c
-+++ b/hw/usb/dev-smartcard-reader.c
-@@ -508,14 +508,14 @@ static void ccid_card_apdu_from_guest(CCIDCardState *card,
-     }
- }
-
--static int ccid_card_exitfn(CCIDCardState *card)
-+static void ccid_card_exitfn(CCIDCardState *card)
- {
-     CCIDCardClass *cc = CCID_CARD_GET_CLASS(card);
-
-     if (cc->exitfn) {
--        return cc->exitfn(card);
-+        cc->exitfn(card);
-     }
--    return 0;
-+
- }
-
- static int ccid_card_initfn(CCIDCardState *card)
-@@ -1279,7 +1279,6 @@ void ccid_card_card_inserted(CCIDCardState *card)
-
- static int ccid_card_exit(DeviceState *qdev)
- {
--    int ret = 0;
-     CCIDCardState *card = CCID_CARD(qdev);
-     USBDevice *dev = USB_DEVICE(qdev->parent_bus->parent);
-     USBCCIDState *s = USB_CCID_DEV(dev);
-@@ -1287,9 +1286,9 @@ static int ccid_card_exit(DeviceState *qdev)
-     if (ccid_card_inserted(s)) {
-         ccid_card_card_removed(card);
-     }
--    ret = ccid_card_exitfn(card);
-+    ccid_card_exitfn(card);
-     s->card = NULL;
--    return ret;
-+    return 0;
- }
-
- static int ccid_card_init(DeviceState *qdev)
---
-1.9.1
-
+Tested-by: Fam Zheng <famz@redhat.com>
 
