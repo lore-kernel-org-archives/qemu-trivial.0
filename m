@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bv4uK-00007j-Qv
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2016 12:00:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33094)
+	id 1bv5dv-00050f-NU
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2016 12:47:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43899)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bv4uI-00005q-Ov
-	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:00:27 -0400
+	(envelope-from <stefanha@gmail.com>) id 1bv5ds-0004yJ-Ui
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:47:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bv4uI-0000hd-0B
-	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:00:26 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33805)
+	(envelope-from <stefanha@gmail.com>) id 1bv5dr-0008GK-R3
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:47:32 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:35886)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefanha@gmail.com>)
-	id 1bv4u6-0000cc-EF; Fri, 14 Oct 2016 12:00:14 -0400
-Received: by mail-wm0-x243.google.com with SMTP id z189so403603wmb.1;
-	Fri, 14 Oct 2016 09:00:14 -0700 (PDT)
+	id 1bv5dl-0008Dr-Kc; Fri, 14 Oct 2016 12:47:25 -0400
+Received: by mail-wm0-x243.google.com with SMTP id 79so560151wmy.3;
+	Fri, 14 Oct 2016 09:47:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=B2odsCCPn+NxhD8thmiTyO8LuFige2UckOi7obB8tUw=;
-	b=PvzsT1vFFoVz50O/s3yc5JwrqjBRUVCc9v3zmKbvhWL33gK6zJR9pwehzRDkD4EeI5
-	CkvGegV3GDh/g+XK3Nlq9l2JtgKsUMW76zuAGwP3HTNVL7UCd6PncfpVSV6rD3NmBuZ+
-	0tjSXdbk15vSLH1ItUtR1TFgzPkZ1PGzsC5rCksPv6ekFzBagLJNEpiz7d1Svx234gts
-	Qa59IQX9NVUD+dndC6RUkQ0A3yUS/ILlSYwFO5p5MHMyhSwSd+HwbIFQ0r3rwU6mJIdM
-	kM6ZoHJnnr3POCcmYBouIHNsdXrfbsFiRK2+1tpOZt0I6JHNu6M+0n3hA/gHpF5wUSM3
-	uNUQ==
+	bh=FSA+YXhiIIcBSPcK/Pq/tlCTo7tBYMy+XsOFWjKfPZI=;
+	b=hheYSYAu0VxcDGIeGWy3QiwaFD3C+p0dTyvGSwoaiLIld8Oj/Q31Uje91+D0wPUzTX
+	jRAXCGtXT8XIMJCkXoKN/1OEoh5uBpNXZ3ijHO8e3ezrGRN2CJQ0WKTmDjAOMmvZBgIb
+	DTZPYbH60Mhb4d4nDppDSr4BFQk0V5derK5U3OFPUd1VaIyp/CHM6c+dBrBDg3DII5os
+	p0NBbO8wiWRgx+/OEggAjj3eeQLzJiuHgZjiDzf083qMHyJLAvHK93EOMeoJpAXL+9bW
+	WAakUJXif1iXOzc5DHQ1raiWTM3xRO1n+lWzQMf9ctD9zjdmuPVs2EYN+KNNtnU/gBvp
+	PImw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=B2odsCCPn+NxhD8thmiTyO8LuFige2UckOi7obB8tUw=;
-	b=ffcFlX/oirP+rm13/vnaTsp3Z81HUTDuTrde5aHwPW565ocrmJheU56NVOs4zKZYg3
-	4bYtyD0zwZMYj0L0olXEFMrvFI3AUO8lUtP6btJ+CyVYffHRj5pjY25Cv3WnycPX0ZbR
-	T/pdgxYuEaK7ZNNmKHKJO/WgO7oFW7vLkJQUR5FHRprJwzY016Vuvbc1JXsdWlqkhNJd
-	73Vbv38tdxAqf6Eu9R8wVzrfzQ0KrvGjGoY4lfM6FbgOzC+jkYMeHI/NpfhpyeFlBZcu
-	B/1H+JDU+dfEBYavfE/gqZ6xhWaUEm3ORugX5bDon6GJjo2tSF2KRzMNJfvN6bXhMMWk
-	1vNQ==
-X-Gm-Message-State: AA6/9RkGWLeCU2CeTWYAgKfeijooKA0aypPnkCrZHPKXW42i8nQijvb1LDfvC0k6sX4F2Q==
-X-Received: by 10.28.149.9 with SMTP id x9mr2219511wmd.121.1476460813638;
-	Fri, 14 Oct 2016 09:00:13 -0700 (PDT)
+	bh=FSA+YXhiIIcBSPcK/Pq/tlCTo7tBYMy+XsOFWjKfPZI=;
+	b=K3hS+Z1Y/5Uf0E6BvL4GVefumyRRdktySHkVWYSo+W6Anb205hQgik7SZ2je3HsaeV
+	KVi/TQT46z5zstrHoOMKk3zcDSgn3bU1vF8dju0B6BfbjrIhzGmiFhzvScYStLDWINk1
+	pYnBUNf9U84n5WYvwxAfMNK8p3KOLMZkQ/UxKgkB2rV7tVUOXS2icclBFQ6D5DfbJgKi
+	NihdQKABy8F98ykVJASksg9aVsbnrV/Vix+49l+NplWw5vsurhUfb0+x5lEcngMI36aQ
+	WoVgaHCH6dr/rpgm/y2W6J4E4Dk8RIm9/dmNdcd+q0/5wg0oJNDruUwmRl7hMG4l8CO1
+	hbzg==
+X-Gm-Message-State: AA6/9RnPM+FoaeIEEE6il2XsqBn1uz6Zp4YYDEglAoCLg2+EbizN2dhx7PVTZxPBG46z4w==
+X-Received: by 10.194.95.105 with SMTP id dj9mr2797253wjb.20.1476463644867;
+	Fri, 14 Oct 2016 09:47:24 -0700 (PDT)
 Received: from localhost (host109-156-67-175.range109-156.btcentralplus.com.
 	[109.156.67.175])
-	by smtp.gmail.com with ESMTPSA id f2sm32646101wjr.2.2016.10.14.09.00.12
+	by smtp.gmail.com with ESMTPSA id r204sm663992wma.1.2016.10.14.09.47.22
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 14 Oct 2016 09:00:12 -0700 (PDT)
-Date: Fri, 14 Oct 2016 17:00:11 +0100
+	Fri, 14 Oct 2016 09:47:23 -0700 (PDT)
+Date: Fri, 14 Oct 2016 17:47:22 +0100
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20161014160011.GJ3482@stefanha-x1.localdomain>
-References: <20161011152012.3228-1-marcandre.lureau@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Keith Busch <keith.busch@intel.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <20161014164722.GM3482@stefanha-x1.localdomain>
+References: <1476285520-1985-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="kr14OxHsRwZHHqxS"
+	protocol="application/pgp-signature"; boundary="vTfKKTivj/mQoluA"
 Content-Disposition: inline
-In-Reply-To: <20161011152012.3228-1-marcandre.lureau@redhat.com>
+In-Reply-To: <1476285520-1985-1-git-send-email-thuth@redhat.com>
 User-Agent: Mutt/1.7.0 (2016-08-17)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] char.h: misc doc fix
+Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] hw/block/nvme: Simplify
+ if-statements a little bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,35 +71,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Oct 2016 16:00:27 -0000
+X-List-Received-Date: Fri, 14 Oct 2016 16:47:34 -0000
 
 
---kr14OxHsRwZHHqxS
-Content-Type: text/plain; charset=iso-8859-1
+--vTfKKTivj/mQoluA
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Oct 11, 2016 at 07:20:12PM +0400, Marc-Andr=E9 Lureau wrote:
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+On Wed, Oct 12, 2016 at 05:18:40PM +0200, Thomas Huth wrote:
+> The condition  '!A || (A && B)' is equivalent to '!A || B'.
+>=20
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/sysemu/char.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/block/nvme.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---kr14OxHsRwZHHqxS
+--vTfKKTivj/mQoluA
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBAgAGBQJYAQELAAoJEJykq7OBq3PIgvsIAJmPXsWPN25IpTWbjRObVlX3
-OGNJDmTZJAc4CD3n3P8Mv1xTc2gzDZqDXJWOjVlg1sXSIlyHpaFpJCDpKfvKWT2k
-oZ1KfUmWz+i4uVSHpFVJ1wHXEuqo4KRgJbkBu52m0u3c9ur3xceyhBo2Y4iE10PT
-VbHOSJmmZB3vrl1XaxV+A2s+rg/kQUf+Co3bfxl5pjJDyen4pSS85pXl4Wybf2Kz
-1Kuz6kA7+a7+3jofW5ALHzG0HmmkV7Uua4Pk8pd7TjOsSSREu+CgHgQwduEsOWNw
-RDj+uCI3HFqQU7XP1mTlCXl6B5p6NxmS10GiCBoYwVTfj8WqqCsb00PTEgTXuow=
-=0Ooj
+iQEcBAEBAgAGBQJYAQwaAAoJEJykq7OBq3PI6xUH/0gtPWUnyZDABsYPZkNFWZqO
+uF3z2WlQ1M7XxcsfsAsuMzg9cscdMeeB2VxjKpEeZ06IO/kGedxs3ZzZQk8OPr7I
+T1dfmJmzzcI/PWy98LL16gXsxZ+tuhg1XcY0CF1m4VMD/fJQ3Tlmwnx0l0UXpiBZ
+BpgnB+jPI9oxDvnAqlk4XLmpoTs7dEo7Wu3EC/LeT333tqu/096ds4qZbL/wTT59
+MIG5vdm43Lm9wl48o19sZahjDi/wpuNs3QyvcNrKRf4IH6flDQINjL1TD7Y8AuMb
+QbTWmVKNPUbbZksJ0O7ahVG31tDX2mpIQIr0M5ifTZjlibX8LXzEyYkSgVCbcCI=
+=xiYa
 -----END PGP SIGNATURE-----
 
---kr14OxHsRwZHHqxS--
+--vTfKKTivj/mQoluA--
 
