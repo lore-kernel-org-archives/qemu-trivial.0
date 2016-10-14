@@ -1,50 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1busab-0002L8-Kd
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Oct 2016 22:51:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58025)
+	id 1buzA5-0007VQ-Sh
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2016 05:52:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59533)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1busaZ-0002Iu-Ku
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 22:51:16 -0400
+	(envelope-from <michael@walle.cc>) id 1buzA3-0007UZ-WD
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 05:52:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1busaX-000837-NB
-	for qemu-trivial@nongnu.org; Thu, 13 Oct 2016 22:51:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58670)
+	(envelope-from <michael@walle.cc>) id 1buzA3-0005sA-4k
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 05:52:19 -0400
+Received: from ssl.serverraum.org ([2a01:4f8:130:84d6::1:2]:47347)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1busaP-000818-ID; Thu, 13 Oct 2016 22:51:05 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(envelope-from <michael@walle.cc>)
+	id 1buz9v-0005ol-K9; Fri, 14 Oct 2016 05:52:11 -0400
+Received: from mwalle01.kse.adk.loc (unknown [194.25.174.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 00DDA4E33E;
-	Fri, 14 Oct 2016 02:51:03 +0000 (UTC)
-Received: from localhost (vpn1-7-155.pek2.redhat.com [10.72.7.155])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9E2oxBG020489; Thu, 13 Oct 2016 22:51:00 -0400
-Date: Fri, 14 Oct 2016 10:50:58 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Victor Kaplansky <victork@redhat.com>,
-	Michael Tsirkin <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-ppc@nongnu.org, Sascha Silbe <x-qemu@se-silbe.de>,
-	David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20161014025058.GA14830@lemon>
-References: <1476199177-32411-1-git-send-email-thuth@redhat.com>
-	<1476199177-32411-3-git-send-email-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1476199177-32411-3-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 14 Oct 2016 02:51:04 +0000 (UTC)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id D4C082226C;
+	Fri, 14 Oct 2016 11:52:04 +0200 (CEST)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1476438725;
+	bh=Oqd9BzCJJqln+PV2AheoBgPJLy624Jyo6EwTlYFEJVU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ucq0/JKr7PBCv6bf++P/o0upvIkZeHMLPDikLaKycpsWk7VofIj0L/vBZPkX40nQ1
+	eRYjWAULzBU5CDRyrWphU19QafkDSKuuZSHJTHj12TNYPM3U4wcKB2yE0bsYIvBeBw
+	qEuH6Ok/En+/OA1A/ElyiAgtblbpcvizTrIn2PTA=
+From: Michael Walle <michael@walle.cc>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Walle <michael@walle.cc>
+Date: Fri, 14 Oct 2016 11:51:50 +0200
+Message-Id: <1476438710-9226-1-git-send-email-michael@walle.cc>
+X-Mailer: git-send-email 2.1.4
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] tests/boot-sector: Use
- mkstemp() to create a unique file name
+X-Received-From: 2a01:4f8:130:84d6::1:2
+Subject: [Qemu-trivial] [PATCH] milkymist-pfpu: fix potential integer
+ overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,21 +49,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Oct 2016 02:51:16 -0000
+X-List-Received-Date: Fri, 14 Oct 2016 09:52:21 -0000
 
-On Tue, 10/11 17:19, Thomas Huth wrote:
-> The pxe-test is run for three different targets now (x86_64, i386
-> and ppc64), and the bios-tables-test is run for two targets (x86_64
-> and i386). But each of the tests is using an invariant name for the
-> disk image with the boot sector code - so if the tests are running in
-> parallel, there is a race condition that they destroy the disk image
-> of a parallel test program. Let's use mkstemp() to create unique
-> temporary files here instead - and since mkstemp() is returning an
-> integer file descriptor instead of a FILE pointer, we also switch
-> the fwrite() and fclose() to write() and close() instead.
-> 
-> Reported-by: Sascha Silbe <x-qemu@se-silbe.de>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Since the lm32 is a 32 bit architecture, just return a 32 bit value which
+is then converted to a 64 bit value.
 
-Tested-by: Fam Zheng <famz@redhat.com>
+Spotted by coverity, CID 1005506.
+
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+ hw/misc/milkymist-pfpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/milkymist-pfpu.c b/hw/misc/milkymist-pfpu.c
+index 1da21a6..3ca2589 100644
+--- a/hw/misc/milkymist-pfpu.c
++++ b/hw/misc/milkymist-pfpu.c
+@@ -137,7 +137,7 @@ struct MilkymistPFPUState {
+ };
+ typedef struct MilkymistPFPUState MilkymistPFPUState;
+ 
+-static inline hwaddr
++static inline uint32_t
+ get_dma_address(uint32_t base, uint32_t x, uint32_t y)
+ {
+     return base + 8 * (128 * y + x);
+-- 
+2.1.4
+
 
