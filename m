@@ -1,65 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bv5dv-00050f-NU
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2016 12:47:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43899)
+	id 1bv8jT-0002tz-F7
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Oct 2016 16:05:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34144)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bv5ds-0004yJ-Ui
-	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:47:33 -0400
+	(envelope-from <sw@weilnetz.de>) id 1bv8jR-0002t5-37
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 16:05:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1bv5dr-0008GK-R3
-	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 12:47:32 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:35886)
+	(envelope-from <sw@weilnetz.de>) id 1bv8jN-0005Dn-3g
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 16:05:27 -0400
+Received: from mail.weilnetz.de ([37.221.199.173]:35549)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1bv5dl-0008Dr-Kc; Fri, 14 Oct 2016 12:47:25 -0400
-Received: by mail-wm0-x243.google.com with SMTP id 79so560151wmy.3;
-	Fri, 14 Oct 2016 09:47:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=FSA+YXhiIIcBSPcK/Pq/tlCTo7tBYMy+XsOFWjKfPZI=;
-	b=hheYSYAu0VxcDGIeGWy3QiwaFD3C+p0dTyvGSwoaiLIld8Oj/Q31Uje91+D0wPUzTX
-	jRAXCGtXT8XIMJCkXoKN/1OEoh5uBpNXZ3ijHO8e3ezrGRN2CJQ0WKTmDjAOMmvZBgIb
-	DTZPYbH60Mhb4d4nDppDSr4BFQk0V5derK5U3OFPUd1VaIyp/CHM6c+dBrBDg3DII5os
-	p0NBbO8wiWRgx+/OEggAjj3eeQLzJiuHgZjiDzf083qMHyJLAvHK93EOMeoJpAXL+9bW
-	WAakUJXif1iXOzc5DHQ1raiWTM3xRO1n+lWzQMf9ctD9zjdmuPVs2EYN+KNNtnU/gBvp
-	PImw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=FSA+YXhiIIcBSPcK/Pq/tlCTo7tBYMy+XsOFWjKfPZI=;
-	b=K3hS+Z1Y/5Uf0E6BvL4GVefumyRRdktySHkVWYSo+W6Anb205hQgik7SZ2je3HsaeV
-	KVi/TQT46z5zstrHoOMKk3zcDSgn3bU1vF8dju0B6BfbjrIhzGmiFhzvScYStLDWINk1
-	pYnBUNf9U84n5WYvwxAfMNK8p3KOLMZkQ/UxKgkB2rV7tVUOXS2icclBFQ6D5DfbJgKi
-	NihdQKABy8F98ykVJASksg9aVsbnrV/Vix+49l+NplWw5vsurhUfb0+x5lEcngMI36aQ
-	WoVgaHCH6dr/rpgm/y2W6J4E4Dk8RIm9/dmNdcd+q0/5wg0oJNDruUwmRl7hMG4l8CO1
-	hbzg==
-X-Gm-Message-State: AA6/9RnPM+FoaeIEEE6il2XsqBn1uz6Zp4YYDEglAoCLg2+EbizN2dhx7PVTZxPBG46z4w==
-X-Received: by 10.194.95.105 with SMTP id dj9mr2797253wjb.20.1476463644867;
-	Fri, 14 Oct 2016 09:47:24 -0700 (PDT)
-Received: from localhost (host109-156-67-175.range109-156.btcentralplus.com.
-	[109.156.67.175])
-	by smtp.gmail.com with ESMTPSA id r204sm663992wma.1.2016.10.14.09.47.22
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 14 Oct 2016 09:47:23 -0700 (PDT)
-Date: Fri, 14 Oct 2016 17:47:22 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Keith Busch <keith.busch@intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, qemu-block@nongnu.org
-Message-ID: <20161014164722.GM3482@stefanha-x1.localdomain>
-References: <1476285520-1985-1-git-send-email-thuth@redhat.com>
+	(envelope-from <sw@weilnetz.de>) id 1bv8jM-0005Dd-U4
+	for qemu-trivial@nongnu.org; Fri, 14 Oct 2016 16:05:25 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 7820F11810AD;
+	Fri, 14 Oct 2016 22:05:22 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id ag6Ftv4QU78u; Fri, 14 Oct 2016 22:05:20 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (p54AC82F2.dip0.t-ipconnect.de
+	[84.172.130.242])
+	by mail.weilnetz.de (Postfix) with ESMTPSA id 417AD11810A5;
+	Fri, 14 Oct 2016 22:05:20 +0200 (CEST)
+To: Stefan Hajnoczi <stefanha@redhat.com>
+References: <1476383370-30650-1-git-send-email-sw@weilnetz.de>
+	<20161014100113.GB20003@stefanha-x1.localdomain>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developer <qemu-devel@nongnu.org>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <570e8f3c-fc3d-b38e-cb50-eecef66a55a5@weilnetz.de>
+Date: Fri, 14 Oct 2016 22:05:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="vTfKKTivj/mQoluA"
-Content-Disposition: inline
-In-Reply-To: <1476285520-1985-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] hw/block/nvme: Simplify
- if-statements a little bit
+In-Reply-To: <20161014100113.GB20003@stefanha-x1.localdomain>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix build for less common
+ build directories names
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,38 +53,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Oct 2016 16:47:34 -0000
+X-List-Received-Date: Fri, 14 Oct 2016 20:05:30 -0000
 
+On 10/14/16 12:01, Stefan Hajnoczi wrote:
+> dirname should only contain QEMU source tree subdirectory paths (e.g.
+> hw/net).  How did you get a comma in there?
+>
+> I tried an out-of-tree build in a directory called 'a,b' but it doesn't
+> trigger the issue.
+>
+> I'd like to understand how to reproduce the problem in case I missed
+> something.
+>
+> Stefan
 
---vTfKKTivj/mQoluA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I can reproduce it like this from the QEMU base directory:
 
-On Wed, Oct 12, 2016 at 05:18:40PM +0200, Thomas Huth wrote:
-> The condition  '!A || (A && B)' is equivalent to '!A || B'.
->=20
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/block/nvme.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+$ mkdir a,b
+$ cd a,b
+$ ../configure
+[...]
+$ make
+[...]
+make: *** [trace/generated-tracers.o] Error 1
+$ head trace/generated-tracers.h
+/* This file is autogenerated by tracetool, do not edit. */
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+#ifndef TRACE_A,B_GENERATED_TRACERS_H
+#define TRACE_A,B_GENERATED_TRACERS_H
 
---vTfKKTivj/mQoluA
-Content-Type: application/pgp-signature; name="signature.asc"
+Stefan
 
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYAQwaAAoJEJykq7OBq3PI6xUH/0gtPWUnyZDABsYPZkNFWZqO
-uF3z2WlQ1M7XxcsfsAsuMzg9cscdMeeB2VxjKpEeZ06IO/kGedxs3ZzZQk8OPr7I
-T1dfmJmzzcI/PWy98LL16gXsxZ+tuhg1XcY0CF1m4VMD/fJQ3Tlmwnx0l0UXpiBZ
-BpgnB+jPI9oxDvnAqlk4XLmpoTs7dEo7Wu3EC/LeT333tqu/096ds4qZbL/wTT59
-MIG5vdm43Lm9wl48o19sZahjDi/wpuNs3QyvcNrKRf4IH6flDQINjL1TD7Y8AuMb
-QbTWmVKNPUbbZksJ0O7ahVG31tDX2mpIQIr0M5ifTZjlibX8LXzEyYkSgVCbcCI=
-=xiYa
------END PGP SIGNATURE-----
-
---vTfKKTivj/mQoluA--
 
