@@ -1,49 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bvlcM-0003xF-Oy
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Oct 2016 09:36:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52459)
+	id 1bvmG7-0002dC-FN
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Oct 2016 10:17:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1bvlcH-0003uG-Qh
-	for qemu-trivial@nongnu.org; Sun, 16 Oct 2016 09:36:45 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1bvmG5-0002bm-7I
+	for qemu-trivial@nongnu.org; Sun, 16 Oct 2016 10:17:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1bvlcH-0006es-1d
-	for qemu-trivial@nongnu.org; Sun, 16 Oct 2016 09:36:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54548)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1bvlcB-0006cu-Pf; Sun, 16 Oct 2016 09:36:35 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D2FD781247;
-	Sun, 16 Oct 2016 13:36:34 +0000 (UTC)
-Received: from localhost (ovpn-112-17.ams2.redhat.com [10.36.112.17])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9GDaWCA024982; Sun, 16 Oct 2016 09:36:34 -0400
-Date: Sun, 16 Oct 2016 14:36:31 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Message-ID: <20161016133631.GB13844@stefanha-x1.localdomain>
-References: <1476383370-30650-1-git-send-email-sw@weilnetz.de>
-	<20161014100113.GB20003@stefanha-x1.localdomain>
-	<570e8f3c-fc3d-b38e-cb50-eecef66a55a5@weilnetz.de>
+	(envelope-from <mjt@tls.msk.ru>) id 1bvmG4-0002VP-Jw
+	for qemu-trivial@nongnu.org; Sun, 16 Oct 2016 10:17:49 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:37986)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1bvmG0-0002U4-BH; Sun, 16 Oct 2016 10:17:44 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 1035741E1A;
+	Sun, 16 Oct 2016 17:17:34 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 036B7B2A;
+	Sun, 16 Oct 2016 17:17:33 +0300 (MSK)
+To: Akanksha Srivastava <akanksha.dlf@gmail.com>, qemu-devel@nongnu.org
+References: <1476390091-6741-1-git-send-email-akanksha.dlf@gmail.com>
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <ca88e7e1-cf4d-c06d-180e-c6cea3155346@msgid.tls.msk.ru>
+Date: Sun, 16 Oct 2016 17:17:32 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="IiVenqGWf+H9Y6IX"
-Content-Disposition: inline
-In-Reply-To: <570e8f3c-fc3d-b38e-cb50-eecef66a55a5@weilnetz.de>
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Sun, 16 Oct 2016 13:36:35 +0000 (UTC)
+In-Reply-To: <1476390091-6741-1-git-send-email-akanksha.dlf@gmail.com>
+Content-Type: text/plain; charset=windows-1251
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix build for less common
- build directories names
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH v3] usb: Change *_exitfn return type from
+ int to void
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,60 +45,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Oct 2016 13:36:45 -0000
+X-List-Received-Date: Sun, 16 Oct 2016 14:17:50 -0000
 
+13.10.2016 23:21, Akanksha Srivastava wrote:
+> The *_exitfn functions cannot fail and should not be
+> returning int.
+...
 
---IiVenqGWf+H9Y6IX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to -trivial, thank you!
 
-On Fri, Oct 14, 2016 at 10:05:18PM +0200, Stefan Weil wrote:
-> On 10/14/16 12:01, Stefan Hajnoczi wrote:
-> > dirname should only contain QEMU source tree subdirectory paths (e.g.
-> > hw/net).  How did you get a comma in there?
-> >=20
-> > I tried an out-of-tree build in a directory called 'a,b' but it doesn't
-> > trigger the issue.
-> >=20
-> > I'd like to understand how to reproduce the problem in case I missed
-> > something.
-> >=20
-> > Stefan
->=20
-> I can reproduce it like this from the QEMU base directory:
->=20
-> $ mkdir a,b
-> $ cd a,b
-> $ ../configure
-> [...]
-> $ make
-> [...]
-> make: *** [trace/generated-tracers.o] Error 1
-> $ head trace/generated-tracers.h
-> /* This file is autogenerated by tracetool, do not edit. */
->=20
-> #ifndef TRACE_A,B_GENERATED_TRACERS_H
-> #define TRACE_A,B_GENERATED_TRACERS_H
-
-Interesting!  I missed it because my a,b directory was not inside the
-source directory.
-
-Stefan
-
---IiVenqGWf+H9Y6IX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYA4JfAAoJEJykq7OBq3PIpyQH/36h8yGiqaWnqOsmMyvlR/Ml
-PqexDJa2Bq2ZB34dk+5ezDeJbeJ49N519uihk7YsG0nkWWFeoopzY8upWKM0ifiL
-IV2Ei0zk8XrsOiQgAr5Zjw9A5HvqOkJ4hLesQmFUBRWu9H9YV064UdqIzQVNM/Mr
-2dHE6V0sPrAHlyVBducK//3KJjDNmagYpBMCvxW0h/ii7Oktkgy88VzDXserwp/1
-bVEXhaTWGM+o4fKcUegbE9p9SRLsbJI07TRZZAC/hY5RNjPpjLxb3Ag+64Zob4BE
-ILviaDV55ddxO1YlDHCH4CuJqv6d3eHHwRmsrF9P2CnIzBkqgcbD9DThVSiOjew=
-=HHKV
------END PGP SIGNATURE-----
-
---IiVenqGWf+H9Y6IX--
+/mjt
 
