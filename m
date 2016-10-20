@@ -1,84 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bxDMf-0008E2-V0
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 09:26:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57657)
+	id 1bxDiR-0001w8-F6
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 09:49:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34307)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cornelia.huck@de.ibm.com>) id 1bxDMY-0007yh-O8
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:26:32 -0400
+	(envelope-from <eblake@redhat.com>) id 1bxDiO-0001tw-Us
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:49:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cornelia.huck@de.ibm.com>) id 1bxDMU-00064a-Mv
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:26:26 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:53661)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cornelia.huck@de.ibm.com>)
-	id 1bxDMU-00064J-D1
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:26:22 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	u9KDOZJF146431
-	for <qemu-trivial@nongnu.org>; Thu, 20 Oct 2016 09:26:21 -0400
-Received: from e06smtp12.uk.ibm.com (e06smtp12.uk.ibm.com [195.75.94.108])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 266u9pkat7-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 20 Oct 2016 09:26:21 -0400
-Received: from localhost
-	by e06smtp12.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <cornelia.huck@de.ibm.com>;
-	Thu, 20 Oct 2016 14:26:19 +0100
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp12.uk.ibm.com (192.168.101.142) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 20 Oct 2016 14:26:16 +0100
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
-	(d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 0839517D805A; 
-	Thu, 20 Oct 2016 14:28:28 +0100 (BST)
-Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
-	[9.149.37.250])
-	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u9KDQFLJ62587034; Thu, 20 Oct 2016 13:26:15 GMT
-Received: from d06av09.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u9KDQFIh022257; Thu, 20 Oct 2016 07:26:15 -0600
-Received: from gondolin (dyn-9-152-224-124.boeblingen.de.ibm.com
-	[9.152.224.124])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u9KDQFqJ022238; Thu, 20 Oct 2016 07:26:15 -0600
-Date: Thu, 20 Oct 2016 15:26:12 +0200
-From: Cornelia Huck <cornelia.huck@de.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Richard Henderson
-	<rth@twiddle.net>, Alexander Graf <agraf@suse.de>, Christian Borntraeger
-	<borntraeger@de.ibm.com>
-In-Reply-To: <1476968226-15918-1-git-send-email-peter.maydell@linaro.org>
-References: <1476968226-15918-1-git-send-email-peter.maydell@linaro.org>
-Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
-	Aufsichtsrats: Martina Koederitz
-	=?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
-	Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
-	Registergericht: Amtsgericht Stuttgart, HRB 243294
-X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
+	(envelope-from <eblake@redhat.com>) id 1bxDiN-0005P9-VJ
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:49:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35120)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1bxDiJ-0005NZ-DV; Thu, 20 Oct 2016 09:48:55 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9E77CA0B5F;
+	Thu, 20 Oct 2016 13:48:54 +0000 (UTC)
+Received: from [10.3.116.151] (ovpn-116-151.phx2.redhat.com [10.3.116.151])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9KDmrtb021231; Thu, 20 Oct 2016 09:48:53 -0400
+To: Anand J <anand.indukala@gmail.com>, qemu-devel@nongnu.org
+References: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <e7cdd33b-15bd-e07d-760d-848fd73bb94e@redhat.com>
+Date: Thu, 20 Oct 2016 08:48:53 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16102013-0008-0000-0000-000002E34537
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16102013-0009-0000-0000-00001A6931DB
-Message-Id: <20161020152612.7f7dadf6.cornelia.huck@de.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-10-20_07:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
-	definitions=main-1610200240
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: Re: [Qemu-trivial] [PATCH] s390: avoid always-true comparison in
- s390_pci_generate_fid()
+In-Reply-To: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="jTEH83tImJRlERaQnf5eEsn49DwqtXuoU"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 20 Oct 2016 13:48:54 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] script/clean-includes:
+ added duplicate #include check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,26 +55,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Oct 2016 13:26:32 -0000
+X-List-Received-Date: Thu, 20 Oct 2016 13:49:02 -0000
 
-On Thu, 20 Oct 2016 13:57:06 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--jTEH83tImJRlERaQnf5eEsn49DwqtXuoU
+Content-Type: multipart/mixed; boundary="x9mu4rRBW9Fut7CMtsPxqT7iJ92NQTaqL";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Anand J <anand.indukala@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com
+Message-ID: <e7cdd33b-15bd-e07d-760d-848fd73bb94e@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 1/2] script/clean-includes: added duplicate
+ #include check
+References: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
+In-Reply-To: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
 
-> Coverity points out that the comparison "fid <= ZPCI_MAX_FID"
-> in s390_pci_generate_fid() is always true (because fid
-> is 32 bits and ZPCI_MAX_FID is 0xffffffff). This isn't a
-> bug because the real loop termination condition is
-> expressed later via an "if (...) break;" inside the loop,
-> but it is a bit odd. Rephrase the loop to avoid the
-> unnecessary duplicate-but-never-true conditional.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+--x9mu4rRBW9Fut7CMtsPxqT7iJ92NQTaqL
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+[meta-comment]
+
+On 10/20/2016 04:52 AM, Anand J wrote:
+> Added script to check duplicate #include entries. This check will scan
+> and print the files in which duplicate #include entries are present.
+
+This appears to be a v2 patch.  But it is missing a 0/2 cover letter,
+and mention of v2 in the subject line.  'git format-patch --cover-letter
+-v2' will do what you want (as well as git send-email, which understands
+all options accepted by format-patch); it's also possible to automate
+git to send a cover letter any time you send more than one patch by
+using 'git config format.coverLetter auto'.
+
+More patch submission tips at http://wiki.qemu.org/Contribute/SubmitAPatc=
+h
+
+>=20
+> Script might output false positive entries as well. Such entries should=
+
+> not be removed. So if it finds any duplicate entries script will
+> terminate with an exit status 1. Then each and every file should be
+> checked manually and corrected if necessary.
+>=20
+> In order to enable the check use --check-duphead option with
+> script/clean-includes.
+>=20
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Anand J <anand.indukala@gmail.com>
 > ---
->  hw/s390x/s390-pci-bus.c | 10 ++--------
->  1 file changed, 2 insertions(+), 8 deletions(-)
+>  scripts/clean-includes | 50 +++++++++++++++++++++++++++++++++++++-----=
+--------
+>  1 file changed, 37 insertions(+), 13 deletions(-)
+>=20
 
-Acked-by: Cornelia Huck <cornelia.huck@de.ibm.com>
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-I assume this will go via the trivial tree?
 
+--x9mu4rRBW9Fut7CMtsPxqT7iJ92NQTaqL--
+
+--jTEH83tImJRlERaQnf5eEsn49DwqtXuoU
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJYCMtFAAoJEKeha0olJ0NqK8MH/2xqaClqb9/zr78o2LS8zqvk
++uqj7yPsGtN/ufm6rY7s+RCE3DhKdSn1Eyqt/INzD6ulnAuYCNXBYlRtOEYKnRlx
+PaH4ateDPKMgXIr1noJoGlBy/mzUypXs9P1G+Y8X8mZhHWuuNjev+8AFfi2yNuY/
+31kzP45HcsyChdF3iwaMglJbKDBMtHN3kIG4t8iIRlFSp++jYT6B0UiJTb2wwSvi
+cu2GHzgh9RFdmDdTAxdAkGwEVcVILPpPqWoukyldFp+drX5J3tqvGCCKgpb1rzsb
+u1BIrrRssN9vWbEKWkQ2Vn8AwWmR/UsFI2KJ3JMJFrcglemuR6xcQFJG6duWEw0=
+=lSUU
+-----END PGP SIGNATURE-----
+
+--jTEH83tImJRlERaQnf5eEsn49DwqtXuoU--
 
