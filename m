@@ -1,49 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bxDr6-0002Gx-5L
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 09:58:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36091)
+	id 1bxFZz-0003Uq-A1
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 11:48:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41063)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bxDr4-0002Es-8J
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:57:59 -0400
+	(envelope-from <anand.indukala@gmail.com>) id 1bxFZx-0003SU-0J
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 11:48:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1bxDr3-00006g-Cb
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 09:57:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36724)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1bxDqy-0008Vy-Pf; Thu, 20 Oct 2016 09:57:52 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EABA5745C1;
-	Thu, 20 Oct 2016 13:57:51 +0000 (UTC)
-Received: from [10.3.116.151] (ovpn-116-151.phx2.redhat.com [10.3.116.151])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9KDvp4b030610; Thu, 20 Oct 2016 09:57:51 -0400
-To: Anand J <anand.indukala@gmail.com>, qemu-devel@nongnu.org
-References: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <a315edac-70ee-6aba-f65d-adc5a521d48b@redhat.com>
-Date: Thu, 20 Oct 2016 08:57:50 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="0sHh7VR10DnJ8Ivhd2mPtTd2nihpi5eGN"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 20 Oct 2016 13:57:51 +0000 (UTC)
+	(envelope-from <anand.indukala@gmail.com>) id 1bxFZw-0005Id-8x
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 11:48:25 -0400
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:35215)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <anand.indukala@gmail.com>)
+	id 1bxFZq-0005GG-00; Thu, 20 Oct 2016 11:48:18 -0400
+Received: by mail-pf0-x241.google.com with SMTP id s8so5922728pfj.2;
+	Thu, 20 Oct 2016 08:48:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=aYCT3zr3g3QUM+sMUUVmYAY0p2Gd/S/4Wb7WoA0EYqU=;
+	b=xZfhHtYZumacVlFnXx+PsvirSbY+TNcdFeTvqdVHeUv1OkG9HTuwqviuSO++aLHAhp
+	VfhAqFKsWk/MYCoVyZ8Ab1Kk2myP7qL4WaGsyznhzQ45Y1gYTC/O8OK2mIOTjsldIH6I
+	+OMjm3ueDWf4zTlV51uTUX/4VO3tlLpUifa+7z4Vb3/0Xce5/uYJUUBW2F4k5T5TH+Ug
+	yRLhHnydypCge7zOXDO+j3WrvFh4xbbPKIJJicj2j+90uwzguiaPGwInAbpBm/9n6vQY
+	Z+pLcn/Qk9NGK8Ju0mWWKdQzw95rC+TI3PZpErkcTE5XOPy1PP9W4O/L9EidiBO5wtIG
+	wDPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=aYCT3zr3g3QUM+sMUUVmYAY0p2Gd/S/4Wb7WoA0EYqU=;
+	b=aiqsJSDqePy+SQ8nMQoh0OReWRJ1MTyQwKQfjRrplWmRT5YLggiguVESUo4eRlVEwZ
+	pxGCfVFwKzw6rrvsFvtPS1mYE3l/hVj+MG3EkRhbQw9AxRXcOCAdt/JnayZLCW7XM+SI
+	e8tB/VMn7t5pmafXMHGEX313Dzb8hJNfhT6/zvBXDEkSRvLWYMidKgBdldYeF06f1y3r
+	eo/jq07LQE0NGU6OoFikO/AZdI7n0jhbJrl/01THo5F1OwHrwcAc5D+9NKMkgdr98CcR
+	yNip2w7bqEoBd/YHrUaJgjUpEUfYbAKRnOuxANdsA5jGuvHgxxYiUEROSsG/oyNFIPnB
+	Igrw==
+X-Gm-Message-State: AA6/9Rn5QR7PBoJfikc7XFCJC9KZOIe3STU8vOTc6Y0GpboF/jEfm7KYok15eagXj0IgIw==
+X-Received: by 10.98.204.67 with SMTP id a64mr2448888pfg.120.1476978495607;
+	Thu, 20 Oct 2016 08:48:15 -0700 (PDT)
+Received: from anand.j ([117.209.148.213])
+	by smtp.googlemail.com with ESMTPSA id
+	188sm58670462pfd.9.2016.10.20.08.48.11
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 20 Oct 2016 08:48:14 -0700 (PDT)
+From: Anand J <anand.indukala@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	thuth@redhat.com,
+	eblake@redhat.com
+Date: Thu, 20 Oct 2016 21:18:00 +0530
+Message-Id: <1476978482-13108-1-git-send-email-anand.indukala@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] script/clean-includes:
- added duplicate #include check
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH v3 0/2] Script changes to find
+ duplicate #include entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,125 +64,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Oct 2016 13:57:59 -0000
+X-List-Received-Date: Thu, 20 Oct 2016 15:48:26 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---0sHh7VR10DnJ8Ivhd2mPtTd2nihpi5eGN
-Content-Type: multipart/mixed; boundary="jcTvdVRX04141l6Fco8t2E5KbwABtgJCJ";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Anand J <anand.indukala@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com
-Message-ID: <a315edac-70ee-6aba-f65d-adc5a521d48b@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/2] script/clean-includes: added duplicate
- #include check
-References: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
-In-Reply-To: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
+There were some files in the code base with multiple inclusion of the same header files.
+Following changes are made to mitigate this issue.
 
---jcTvdVRX04141l6Fco8t2E5KbwABtgJCJ
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+ 1) --check-dup-head option is added to the scripts/clean-includes to search files and
+    find out such entries. This will help to catch redundant #includes in the future.
+ 2) Removed most of the duplicate entries currently present in the code base using the 
+    script.
 
-On 10/20/2016 04:52 AM, Anand J wrote:
-> Added script to check duplicate #include entries. This check will scan
-> and print the files in which duplicate #include entries are present.
+Anand J (2):
+  scripts/clean-includes: added duplicate #include check
+  clean-up: removed duplicate #includes
 
-Subject line typo: s,script/,scripts/,
+ accel.c                             |  1 -
+ cputlb.c                            |  1 -
+ gdbstub.c                           |  1 -
+ hw/i386/acpi-build.c                |  1 -
+ hw/microblaze/boot.c                |  1 -
+ hw/mips/mips_malta.c                |  1 -
+ hw/nvram/fw_cfg.c                   |  1 -
+ hw/pci-bridge/pci_expander_bridge.c |  1 -
+ hw/ppc/ppc405_boards.c              |  1 -
+ hw/ppc/spapr.c                      |  1 -
+ hw/timer/grlib_gptimer.c            |  1 -
+ hw/tpm/tpm_tis.c                    |  1 -
+ hw/unicore32/puv3.c                 |  1 -
+ hw/usb/dev-mtp.c                    |  1 -
+ include/hw/i386/pc.h                |  1 -
+ monitor.c                           |  2 --
+ qemu-io-cmds.c                      |  1 -
+ qmp.c                               |  1 -
+ scripts/clean-includes              | 54 ++++++++++++++++++++++++++++---------
+ target-i386/machine.c               |  3 ---
+ target-mips/machine.c               |  1 -
+ target-ppc/machine.c                |  1 -
+ target-ppc/mem_helper.c             |  1 -
+ target-sparc/machine.c              |  3 ---
+ target-xtensa/translate.c           |  1 -
+ tests/crypto-tls-x509-helpers.h     |  3 ---
+ tests/vhost-user-test.c             |  2 --
+ util/oslib-posix.c                  |  1 -
+ vl.c                                |  1 -
+ 29 files changed, 41 insertions(+), 49 deletions(-)
 
->=20
-> Script might output false positive entries as well. Such entries should=
+-- 
+2.7.4
 
-> not be removed. So if it finds any duplicate entries script will
-> terminate with an exit status 1. Then each and every file should be
-> checked manually and corrected if necessary.
->=20
-> In order to enable the check use --check-duphead option with
-> script/clean-includes.
-
-Bike-shedding, but if you are going to put a dash between words, put it
-between ALL words, as in --check-dup-head.  Or spell it out:
---check-duplicate-headers.  If that feels to long, and you want to
-abbreviate, then abbreviate further, as in --duphead.
-
->=20
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Anand J <anand.indukala@gmail.com>
-> ---
-
->  #
-> +# If --check-duphead option is used, then check for duplicate
-> +# header files will be enabled.
-
-Grammar; I suggest:
-
-If --check-duphead is specified, additionally check for duplicate header
-includes.
-
-> +while true
-> +do
-> +    case $1 in
-> +    "--git")
-> +         if [ $# -eq 1 ]; then
-> +             echo "--git option requires an argument"
-> +             exit 1
-> +         fi
-> +         GITSUBJ=3D"$2"
-> +         GIT=3Dyes
-> +         shift
-> +         shift
-> +         ;;
-> +    "--check-duphead")
-> +        DUPHEAD=3Dyes
-> +        shift
-> +        ;;
-> +    *)
-
-Your option-parsing loop is missing a special case for --; for
-consistency with POSIX recommendations, you should have:
-
---)
-  shift
-  break
-  ;;
-*)
-
-as a way to end option parsing early (and force the next argument to be
-treated as a filename, even if it starts with -).
-
-> =20
-> +if [ "$DUPHEAD" =3D "yes" ]; then
-> +    grep "^#include" $@ | sort | uniq -c | awk '{if ($1 > 1) print $0}=
-'
-
-Missing quotes around $@.
-
-Looking forward to v3.
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---jcTvdVRX04141l6Fco8t2E5KbwABtgJCJ--
-
---0sHh7VR10DnJ8Ivhd2mPtTd2nihpi5eGN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJYCM1eAAoJEKeha0olJ0Nq30EH/1EBkRQbQoU6RemZYyeVBA9t
-kJBcG3ZSPRUip9+mh4oTZDSclEYuyEORU9/MxS9jpAcSaX8lKrgYXYu9KlkUwgwE
-nW7qPz1/ULaDD1yJfsxwN4PdJrr9HCg/aE0zmQlxYIyuAASdEfkN+Cpa7Q+5U81O
-7UQtabL3iBErs91YMdi5q0L4WoFz+oGPNnG+E5qyNh8vzsYF63JfBzz41wmhtMiU
-ay4a3VvuN10T9+P0zJHlrLdOjNC3RDh8k8IkSDKxr3LvSdptbggeKCl7rORQ5KVt
-/OjS73XnhEG5QlRjWfW8CJzfYyIShjOFQTsbo/5ESwbBRL5r7Wk0IFw45NFflhE=
-=JY6g
------END PGP SIGNATURE-----
-
---0sHh7VR10DnJ8Ivhd2mPtTd2nihpi5eGN--
 
