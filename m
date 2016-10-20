@@ -1,48 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bwsso-0004YY-0n
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Oct 2016 11:34:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34984)
+	id 1bxA1f-0006cA-IG
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 05:52:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bwpgc-0002yd-5I
-	for qemu-trivial@nongnu.org; Wed, 19 Oct 2016 08:09:35 -0400
+	(envelope-from <anand.indukala@gmail.com>) id 1bxA1d-0006ap-05
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 05:52:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bwpgb-0005v0-8b
-	for qemu-trivial@nongnu.org; Wed, 19 Oct 2016 08:09:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42832)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1bwpgW-0005pa-5v; Wed, 19 Oct 2016 08:09:28 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D7BF97DCFD;
-	Wed, 19 Oct 2016 12:09:25 +0000 (UTC)
-Received: from [10.36.112.25] (ovpn-112-25.ams2.redhat.com [10.36.112.25])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9JC9MFj026387; Wed, 19 Oct 2016 08:09:23 -0400
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-References: <1476739794-19536-1-git-send-email-eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org, dave@natulte.net,
-	Markus Armbruster <armbru@redhat.com>, quintela@redhat.com
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <530e792a-9217-ab1b-defb-5fcc7f906b93@redhat.com>
-Date: Wed, 19 Oct 2016 14:09:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
-MIME-Version: 1.0
-In-Reply-To: <1476739794-19536-1-git-send-email-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 19 Oct 2016 12:09:26 +0000 (UTC)
+	(envelope-from <anand.indukala@gmail.com>) id 1bxA1c-00027d-1h
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 05:52:37 -0400
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:34493)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <anand.indukala@gmail.com>)
+	id 1bxA1X-00025k-I6; Thu, 20 Oct 2016 05:52:31 -0400
+Received: by mail-pf0-x241.google.com with SMTP id 128so5132933pfz.1;
+	Thu, 20 Oct 2016 02:52:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=9489FRSvjveLNqQWfME3m3vYpEq8bJveHi10qpSfdrU=;
+	b=pNB4rzkYCSlrQJy3opxoE02/4Y4HIRPe4MCnv8KhhNHrz3SY1F7KrpUPB59LKDK386
+	lW2Pu4Zt+lGEgcMjw2o6SmgVheZbXGbaMl/GkGN3FjEbzJ3H0dOe76U00ZKFGxivk17r
+	wspMqFeIQ20hk4xtBPX12+hpkcKHtGXAsEOrAlH2iMFRtJiOqK+Ogxffh7W5Lw1ke7bY
+	SRR8ztZkaYlWQigY4K/Y6opuIhS9mZ8M/ZNDBMP7gkHMSHUXgFa5NRrEdiRmbeOnaiWh
+	H3RuwVYtHLnVv/oJogap6tKU8iX5AuYGQ0OmBaGmumU4uo4YNGAzHCgRJUMv8qQNpWNL
+	auPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=9489FRSvjveLNqQWfME3m3vYpEq8bJveHi10qpSfdrU=;
+	b=kCfkQ2w3nO/uNuIBtItGFW1/l9TXSxxbzWXy+/xWpiDi6NOXVeqdvwmPx9dSKQtkMS
+	tFQ/1TgpxMLITTPm0roQCQo4Y79nOmVPpzQ9ujafWZ947VjrJAh0APsbN7Slx/ovt17e
+	+sZKIGbrPm9+EPjrbOgq96Z5na2sz1ibc9u2dLQGDYP6mP/PeEBQj9nfGV5zukiVVE3f
+	ZXn6juxdUv4+puiUsNVA57LZw+GCaKQApp5tRhrYFKAQIxCnVqW6t8FB9z3qqA4yspST
+	uaFUEonMQj+ofvEAlbw4aOpjitQejsmc/VF9A2pWvwjMtJ3lVZJax7Ffvh0z4GCMxh/V
+	+j8g==
+X-Gm-Message-State: AA6/9Rknq9IIhZ007mtzLHT94/JwXHVGFI8hdcSrbdGpnuuRLSiJXnCGPIpiqzGtIzBo4Q==
+X-Received: by 10.98.90.130 with SMTP id o124mr19776724pfb.53.1476957150083;
+	Thu, 20 Oct 2016 02:52:30 -0700 (PDT)
+Received: from anand.j ([117.209.162.59])
+	by smtp.googlemail.com with ESMTPSA id
+	g67sm27721482pfd.82.2016.10.20.02.52.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 20 Oct 2016 02:52:29 -0700 (PDT)
+From: Anand J <anand.indukala@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	thuth@redhat.com
+Date: Thu, 20 Oct 2016 15:22:12 +0530
+Message-Id: <1476957133-24382-1-git-send-email-anand.indukala@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Wed, 19 Oct 2016 11:34:19 -0400
-Subject: Re: [Qemu-trivial] [PATCH] trivial: Restore blank line in
- qapi-schema
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] script/clean-includes:
+ added duplicate #include check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,33 +63,114 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Oct 2016 12:09:35 -0000
+X-List-Received-Date: Thu, 20 Oct 2016 09:52:38 -0000
 
+Added script to check duplicate #include entries. This check will scan
+and print the files in which duplicate #include entries are present.
 
+Script might output false positive entries as well. Such entries should
+not be removed. So if it finds any duplicate entries script will
+terminate with an exit status 1. Then each and every file should be
+checked manually and corrected if necessary.
 
-On 17/10/2016 23:29, Eric Blake wrote:
-> Commit de63ab6 accidentally undid part of commit a43edcf,
-> because the two patches were written in parallel, and the
-> blank line was not noticed as a casualty of merge conflicts.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->  qapi-schema.json | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index ded1179..6da520c 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -737,6 +737,7 @@
->              '*tls-hostname': 'str',
->              '*max-bandwidth': 'int',
->              '*downtime-limit': 'int'} }
-> +
->  ##
->  # @query-migrate-parameters
->  #
-> 
+In order to enable the check use --check-duphead option with
+script/clean-includes.
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Anand J <anand.indukala@gmail.com>
+---
+ scripts/clean-includes | 50 +++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 37 insertions(+), 13 deletions(-)
+
+diff --git a/scripts/clean-includes b/scripts/clean-includes
+index 4412a55..76dd0e4 100755
+--- a/scripts/clean-includes
++++ b/scripts/clean-includes
+@@ -14,15 +14,18 @@
+ # the top-level directory.
+ 
+ # Usage:
+-#   clean-includes [--git subjectprefix] file ...
++#   clean-includes [--git subjectprefix] [--check-duphead] file ...
+ # or
+-#   clean-includes [--git subjectprefix] --all
++#   clean-includes [--git subjectprefix] [--check-duphead] --all
+ #
+ # If the --git subjectprefix option is given, then after making
+ # the changes to the files this script will create a git commit
+ # with the subject line "subjectprefix: Clean up includes"
+ # and a boilerplate commit message.
+ #
++# If --check-duphead option is used, then check for duplicate
++# header files will be enabled.
++#
+ # Using --all will cause clean-includes to run on the whole source
+ # tree (excluding certain directories which are known not to need
+ # handling).
+@@ -45,23 +48,36 @@
+ 
+ 
+ GIT=no
++DUPHEAD=no
+ 
+ # Extended regular expression defining files to ignore when using --all
+ XDIRREGEX='^(tests/tcg|tests/multiboot|pc-bios|disas/libvixl)'
+ 
+-if [ $# -ne 0 ] && [ "$1" = "--git" ]; then
+-    if [ $# -eq 1 ]; then
+-        echo "--git option requires an argument"
+-        exit 1
+-    fi
+-    GITSUBJ="$2"
+-    GIT=yes
+-    shift
+-    shift
+-fi
++while true
++do
++    case $1 in
++    "--git")
++         if [ $# -eq 1 ]; then
++             echo "--git option requires an argument"
++             exit 1
++         fi
++         GITSUBJ="$2"
++         GIT=yes
++         shift
++         shift
++         ;;
++    "--check-duphead")
++        DUPHEAD=yes
++        shift
++        ;;
++    *)
++        break
++        ;;
++   esac
++done
+ 
+ if [ $# -eq 0 ]; then
+-    echo "Usage: clean-includes [--git subjectprefix] [--all | foo.c ...]"
++    echo "Usage: clean-includes [--git subjectprefix] [--check-duphead] [--all | foo.c ...]"
+     echo "(modifies the files in place)"
+     exit 1
+ fi
+@@ -154,6 +170,14 @@ for f in "$@"; do
+ 
+ done
+ 
++if [ "$DUPHEAD" = "yes" ]; then
++    grep "^#include" $@ | sort | uniq -c | awk '{if ($1 > 1) print $0}'
++    if [ $? -eq 0 ]; then
++        echo "Found duplicate header file includes. Please check the above files manually."
++        exit 1
++    fi
++fi
++
+ if [ "$GIT" = "yes" ]; then
+     git add -- "$@"
+     git commit --signoff -F - <<EOF
+-- 
+2.7.4
+
 
