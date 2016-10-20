@@ -1,58 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bxFZz-0003Uq-A1
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 11:48:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41063)
+	id 1bxFa0-0003Vq-Ah
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Oct 2016 11:48:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41065)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <anand.indukala@gmail.com>) id 1bxFZx-0003SU-0J
-	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 11:48:25 -0400
+	(envelope-from <anand.indukala@gmail.com>) id 1bxFZx-0003Sz-Bp
+	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 11:48:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <anand.indukala@gmail.com>) id 1bxFZw-0005Id-8x
+	(envelope-from <anand.indukala@gmail.com>) id 1bxFZw-0005Ii-Di
 	for qemu-trivial@nongnu.org; Thu, 20 Oct 2016 11:48:25 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:35215)
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:35860)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <anand.indukala@gmail.com>)
-	id 1bxFZq-0005GG-00; Thu, 20 Oct 2016 11:48:18 -0400
-Received: by mail-pf0-x241.google.com with SMTP id s8so5922728pfj.2;
-	Thu, 20 Oct 2016 08:48:17 -0700 (PDT)
+	id 1bxFZt-0005Hi-Of; Thu, 20 Oct 2016 11:48:21 -0400
+Received: by mail-pf0-x242.google.com with SMTP id r16so5917324pfg.3;
+	Thu, 20 Oct 2016 08:48:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=aYCT3zr3g3QUM+sMUUVmYAY0p2Gd/S/4Wb7WoA0EYqU=;
-	b=xZfhHtYZumacVlFnXx+PsvirSbY+TNcdFeTvqdVHeUv1OkG9HTuwqviuSO++aLHAhp
-	VfhAqFKsWk/MYCoVyZ8Ab1Kk2myP7qL4WaGsyznhzQ45Y1gYTC/O8OK2mIOTjsldIH6I
-	+OMjm3ueDWf4zTlV51uTUX/4VO3tlLpUifa+7z4Vb3/0Xce5/uYJUUBW2F4k5T5TH+Ug
-	yRLhHnydypCge7zOXDO+j3WrvFh4xbbPKIJJicj2j+90uwzguiaPGwInAbpBm/9n6vQY
-	Z+pLcn/Qk9NGK8Ju0mWWKdQzw95rC+TI3PZpErkcTE5XOPy1PP9W4O/L9EidiBO5wtIG
-	wDPA==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=EgdDsRyr9dMnqG5UeySaEWbc+NHjCMmyLc4WsJIT2Hk=;
+	b=w5kiU/sYQ3+m7ALGFZE5PKejhosRWsJ2cbs+Gxa9vC1p1LhrtN2KdhTk8KyfcDRroY
+	2I3N0ITdEnOK2pcUgj/f4xDIEZFLpOA2se5na5ZkDHl2Fj8yX9rp2OdpO46NH9dt2C2C
+	892nvQQFjdTHRumP+oZFtkvDjZd4xF94bO1kN2AH1vODsZwU8MkZkz5TMLDh0OFPcrPg
+	0x+IdJwRgZFO6CKzo3Ql9J5jGuo+kxlclpbC5MPUAOaEuBA+RY8CMS+Awj+tMiwrZ2Vt
+	rtoGaeUux8Wk0wOaMOlKa5ByV35on0DDdNpwG6T+IcuF2Duy4X/NdrYYLlxrhWoOGcqL
+	kj7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=aYCT3zr3g3QUM+sMUUVmYAY0p2Gd/S/4Wb7WoA0EYqU=;
-	b=aiqsJSDqePy+SQ8nMQoh0OReWRJ1MTyQwKQfjRrplWmRT5YLggiguVESUo4eRlVEwZ
-	pxGCfVFwKzw6rrvsFvtPS1mYE3l/hVj+MG3EkRhbQw9AxRXcOCAdt/JnayZLCW7XM+SI
-	e8tB/VMn7t5pmafXMHGEX313Dzb8hJNfhT6/zvBXDEkSRvLWYMidKgBdldYeF06f1y3r
-	eo/jq07LQE0NGU6OoFikO/AZdI7n0jhbJrl/01THo5F1OwHrwcAc5D+9NKMkgdr98CcR
-	yNip2w7bqEoBd/YHrUaJgjUpEUfYbAKRnOuxANdsA5jGuvHgxxYiUEROSsG/oyNFIPnB
-	Igrw==
-X-Gm-Message-State: AA6/9Rn5QR7PBoJfikc7XFCJC9KZOIe3STU8vOTc6Y0GpboF/jEfm7KYok15eagXj0IgIw==
-X-Received: by 10.98.204.67 with SMTP id a64mr2448888pfg.120.1476978495607;
-	Thu, 20 Oct 2016 08:48:15 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=EgdDsRyr9dMnqG5UeySaEWbc+NHjCMmyLc4WsJIT2Hk=;
+	b=NSSuBwVHtqJ5sW8PiQ+jRwXEQjjoxFg6Hzx+nMQ1aE5jDgJULZpNkcznW2/RqJ3CdI
+	N6DNvOwdC04TbjNM0D/FdRUjswBzJkrXgHrsR5tL3Ao6f7nZlCsV6U/lkZialHYxhZYL
+	xC7d/Mgz6+LwCoJ2ABa5CbxQV2zVdoGs06I/oL7QntBcJyk6CTPmVZboRHZ2hCCXRHps
+	j8yk1eICKaNSIMPfdxLo8xkTu25HSRDAnvx1uPsGpNM3KynOfvQHS4kQILXnOMUtxY1L
+	ALNSFRzJiuIi4mR5xNYD1UKLNpCBNOHD9JwedZg0QNJ0VAgbaFlxjny26r9L9aot6qDI
+	gUnw==
+X-Gm-Message-State: AA6/9Rn3NOVI0dF2wTHwJppyfOKmWzvJWKLJgVa2Ia9iB/9JVeRDQw7t7/sLe7poy3M2Og==
+X-Received: by 10.98.101.71 with SMTP id z68mr2355110pfb.13.1476978500121;
+	Thu, 20 Oct 2016 08:48:20 -0700 (PDT)
 Received: from anand.j ([117.209.148.213])
 	by smtp.googlemail.com with ESMTPSA id
-	188sm58670462pfd.9.2016.10.20.08.48.11
+	188sm58670462pfd.9.2016.10.20.08.48.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 20 Oct 2016 08:48:14 -0700 (PDT)
+	Thu, 20 Oct 2016 08:48:19 -0700 (PDT)
 From: Anand J <anand.indukala@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	thuth@redhat.com,
 	eblake@redhat.com
-Date: Thu, 20 Oct 2016 21:18:00 +0530
-Message-Id: <1476978482-13108-1-git-send-email-anand.indukala@gmail.com>
+Date: Thu, 20 Oct 2016 21:18:01 +0530
+Message-Id: <1476978482-13108-2-git-send-email-anand.indukala@gmail.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1476978482-13108-1-git-send-email-anand.indukala@gmail.com>
+References: <1476978482-13108-1-git-send-email-anand.indukala@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH v3 0/2] Script changes to find
- duplicate #include entries
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/2] scripts/clean-includes:
+ added duplicate #include check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,49 +69,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 20 Oct 2016 15:48:26 -0000
 
-There were some files in the code base with multiple inclusion of the same header files.
-Following changes are made to mitigate this issue.
+Added script to check duplicate #include entries. This check will scan
+and print the files in which duplicate #include entries are present.
 
- 1) --check-dup-head option is added to the scripts/clean-includes to search files and
-    find out such entries. This will help to catch redundant #includes in the future.
- 2) Removed most of the duplicate entries currently present in the code base using the 
-    script.
+Script might output false positive entries as well. Such entries should
+not be removed. So if it finds any duplicate entries script will
+terminate with an exit status 1. Then each and every file should be
+checked manually and corrected if necessary.
 
-Anand J (2):
-  scripts/clean-includes: added duplicate #include check
-  clean-up: removed duplicate #includes
+In order to enable the check use --check-dup-head option with
+scripts/clean-includes.
 
- accel.c                             |  1 -
- cputlb.c                            |  1 -
- gdbstub.c                           |  1 -
- hw/i386/acpi-build.c                |  1 -
- hw/microblaze/boot.c                |  1 -
- hw/mips/mips_malta.c                |  1 -
- hw/nvram/fw_cfg.c                   |  1 -
- hw/pci-bridge/pci_expander_bridge.c |  1 -
- hw/ppc/ppc405_boards.c              |  1 -
- hw/ppc/spapr.c                      |  1 -
- hw/timer/grlib_gptimer.c            |  1 -
- hw/tpm/tpm_tis.c                    |  1 -
- hw/unicore32/puv3.c                 |  1 -
- hw/usb/dev-mtp.c                    |  1 -
- include/hw/i386/pc.h                |  1 -
- monitor.c                           |  2 --
- qemu-io-cmds.c                      |  1 -
- qmp.c                               |  1 -
- scripts/clean-includes              | 54 ++++++++++++++++++++++++++++---------
- target-i386/machine.c               |  3 ---
- target-mips/machine.c               |  1 -
- target-ppc/machine.c                |  1 -
- target-ppc/mem_helper.c             |  1 -
- target-sparc/machine.c              |  3 ---
- target-xtensa/translate.c           |  1 -
- tests/crypto-tls-x509-helpers.h     |  3 ---
- tests/vhost-user-test.c             |  2 --
- util/oslib-posix.c                  |  1 -
- vl.c                                |  1 -
- 29 files changed, 41 insertions(+), 49 deletions(-)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Anand J <anand.indukala@gmail.com>
+---
+ scripts/clean-includes | 54 ++++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 41 insertions(+), 13 deletions(-)
 
+diff --git a/scripts/clean-includes b/scripts/clean-includes
+index 4412a55..a0d5c18 100755
+--- a/scripts/clean-includes
++++ b/scripts/clean-includes
+@@ -14,15 +14,18 @@
+ # the top-level directory.
+ 
+ # Usage:
+-#   clean-includes [--git subjectprefix] file ...
++#   clean-includes [--git subjectprefix] [--check-dup-head] file ...
+ # or
+-#   clean-includes [--git subjectprefix] --all
++#   clean-includes [--git subjectprefix] [--check-dup-head] --all
+ #
+ # If the --git subjectprefix option is given, then after making
+ # the changes to the files this script will create a git commit
+ # with the subject line "subjectprefix: Clean up includes"
+ # and a boilerplate commit message.
+ #
++# If --check-dup-head is specified, additionally check for duplicate
++# header includes.
++#
+ # Using --all will cause clean-includes to run on the whole source
+ # tree (excluding certain directories which are known not to need
+ # handling).
+@@ -45,23 +48,40 @@
+ 
+ 
+ GIT=no
++DUPHEAD=no
+ 
+ # Extended regular expression defining files to ignore when using --all
+ XDIRREGEX='^(tests/tcg|tests/multiboot|pc-bios|disas/libvixl)'
+ 
+-if [ $# -ne 0 ] && [ "$1" = "--git" ]; then
+-    if [ $# -eq 1 ]; then
+-        echo "--git option requires an argument"
+-        exit 1
+-    fi
+-    GITSUBJ="$2"
+-    GIT=yes
+-    shift
+-    shift
+-fi
++while true
++do
++    case $1 in
++    "--git")
++         if [ $# -eq 1 ]; then
++             echo "--git option requires an argument"
++             exit 1
++         fi
++         GITSUBJ="$2"
++         GIT=yes
++         shift
++         shift
++         ;;
++    "--check-dup-head")
++        DUPHEAD=yes
++        shift
++        ;;
++    "--")
++        shift
++        break
++        ;;
++    *)
++        break
++        ;;
++   esac
++done
+ 
+ if [ $# -eq 0 ]; then
+-    echo "Usage: clean-includes [--git subjectprefix] [--all | foo.c ...]"
++    echo "Usage: clean-includes [--git subjectprefix] [--check-dup-head] [--all | foo.c ...]"
+     echo "(modifies the files in place)"
+     exit 1
+ fi
+@@ -154,6 +174,14 @@ for f in "$@"; do
+ 
+ done
+ 
++if [ "$DUPHEAD" = "yes" ]; then
++    grep "^#include" "$@" | sort | uniq -c | awk '{if ($1 > 1) print $0}'
++    if [ $? -eq 0 ]; then
++        echo "Found duplicate header file includes. Please check the above files manually."
++        exit 1
++    fi
++fi
++
+ if [ "$GIT" = "yes" ]; then
+     git add -- "$@"
+     git commit --signoff -F - <<EOF
 -- 
 2.7.4
 
