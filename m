@@ -1,32 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bxdpM-0004et-76
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Oct 2016 13:41:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55182)
+	id 1bxeIu-0006NA-6J
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Oct 2016 14:12:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34664)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bxdpJ-0004cq-CD
-	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 13:41:54 -0400
+	(envelope-from <armbru@redhat.com>) id 1bxeIs-0006MH-Po
+	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 14:12:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bxdpI-0001Kl-PI
-	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 13:41:53 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47395)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1bxdpG-0001HS-7Z; Fri, 21 Oct 2016 13:41:50 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1bxdpC-0007ZD-H1; Fri, 21 Oct 2016 18:41:46 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org, Juan Quintela <quintela@redhat.com>,
-	Amit Shah <amit.shah@redhat.com>
-Date: Fri, 21 Oct 2016 18:41:45 +0100
-Message-Id: <1477071705-30634-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <armbru@redhat.com>) id 1bxeIs-0005XX-1J
+	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 14:12:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44094)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1bxeIn-0005Wc-QF; Fri, 21 Oct 2016 14:12:21 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BF956C04B926;
+	Fri, 21 Oct 2016 18:12:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-73.ams2.redhat.com
+	[10.36.116.73])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9LICIsc015614
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 21 Oct 2016 14:12:20 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 789CA1138645; Fri, 21 Oct 2016 20:12:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, dave@natulte.net,
+	quintela@redhat.com
+References: <1476739794-19536-1-git-send-email-eblake@redhat.com>
+Date: Fri, 21 Oct 2016 20:12:18 +0200
+In-Reply-To: <1476739794-19536-1-git-send-email-eblake@redhat.com> (Eric
+	Blake's message of "Mon, 17 Oct 2016 16:29:54 -0500")
+Message-ID: <87insleflp.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 21 Oct 2016 18:12:20 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-trivial] [PATCH] migration: Remove unneeded NULL check from
- migrate_fd_error()
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trivial: Restore blank line
+ in qapi-schema
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -38,38 +57,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Oct 2016 17:41:54 -0000
+X-List-Received-Date: Fri, 21 Oct 2016 18:12:27 -0000
 
-All the callers of migrate_fd_error() pass a non-NULL
-error parameter, and if any did pass NULL then we would
-segfault in error_copy(), so remove the unnecessary
-NULL check earlier in the function.
-(Spotted by Coverity.)
+Eric Blake <eblake@redhat.com> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This seems better than making migrate_fd_error() allow
-a NULL pointer, which doesn't seem like a useful thing.
-I'm guessing a bit though, because there's no doc comment
-for this function in the header file...
----
- migration/migration.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Commit de63ab6 accidentally undid part of commit a43edcf,
+> because the two patches were written in parallel, and the
+> blank line was not noticed as a casualty of merge conflicts.
+>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 4d417b7..d216b93 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -922,7 +922,7 @@ static void migrate_fd_cleanup(void *opaque)
- 
- void migrate_fd_error(MigrationState *s, const Error *error)
- {
--    trace_migrate_fd_error(error ? error_get_pretty(error) : "");
-+    trace_migrate_fd_error(error_get_pretty(error));
-     assert(s->to_dst_file == NULL);
-     migrate_set_state(&s->state, MIGRATION_STATUS_SETUP,
-                       MIGRATION_STATUS_FAILED);
--- 
-2.7.4
-
+Applied to qapi-next, thanks!
 
