@@ -1,51 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1bxeIu-0006NA-6J
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Oct 2016 14:12:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34664)
+	id 1by476-0004mS-2U
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Oct 2016 17:46:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bxeIs-0006MH-Po
-	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 14:12:27 -0400
+	(envelope-from <rth7680@gmail.com>) id 1by473-0004l9-EW
+	for qemu-trivial@nongnu.org; Sat, 22 Oct 2016 17:45:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1bxeIs-0005XX-1J
-	for qemu-trivial@nongnu.org; Fri, 21 Oct 2016 14:12:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44094)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1bxeIn-0005Wc-QF; Fri, 21 Oct 2016 14:12:21 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BF956C04B926;
-	Fri, 21 Oct 2016 18:12:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-73.ams2.redhat.com
-	[10.36.116.73])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9LICIsc015614
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 21 Oct 2016 14:12:20 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 789CA1138645; Fri, 21 Oct 2016 20:12:18 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, dave@natulte.net,
-	quintela@redhat.com
-References: <1476739794-19536-1-git-send-email-eblake@redhat.com>
-Date: Fri, 21 Oct 2016 20:12:18 +0200
-In-Reply-To: <1476739794-19536-1-git-send-email-eblake@redhat.com> (Eric
-	Blake's message of "Mon, 17 Oct 2016 16:29:54 -0500")
-Message-ID: <87insleflp.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	(envelope-from <rth7680@gmail.com>) id 1by472-0004Ea-OQ
+	for qemu-trivial@nongnu.org; Sat, 22 Oct 2016 17:45:57 -0400
+Received: from mail-pf0-x236.google.com ([2607:f8b0:400e:c00::236]:34318)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1by472-0004ET-Hg; Sat, 22 Oct 2016 17:45:56 -0400
+Received: by mail-pf0-x236.google.com with SMTP id r16so76102294pfg.1;
+	Sat, 22 Oct 2016 14:45:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=BKpSz1NsaYYg+c+7FFG29tpF+nRqYPYntCXnoNDqCf0=;
+	b=LyDQy/HxKNl40yKPP9o9OSY5gmp7T+Pqa1fVVhhFIiTfgDzNUaiHy1cTOk7owP5tGB
+	VHOIgL9ATx9Vr2X43V1KjWgTneVETiX+S6twIDTkYZ3W46xXSxThATqJzmmBjZzNGZGa
+	QjoGK2SrDUqlfqSfuOFEVUFueRvgyYFWx2J1U/oideTZZd5e/bhFUsJ3noxssKeatqcz
+	RDks0Ro1U2nItmvACTcoIehGK8UjoX25BeyO921+OEsF/b9tVPZRgrsRl0mdnvI0kiYj
+	UkUTOE9cY5ylo50fmqlHNMBJ21r+ITuxPxkOra4urkiXNfqeCwvbXGYwN+Dr/c/IQwhi
+	qTvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=BKpSz1NsaYYg+c+7FFG29tpF+nRqYPYntCXnoNDqCf0=;
+	b=MqS0+54W3RyzZhPmMJDwGt+PlBWoRbvhPycPyYXHqzZxPTCnzlagdccl6DgOSVU5HP
+	/9G/qCQqGcitHvhr8qe+EM7p69Y1CXOfcxAZVBdR5ZG+FBwoql+MzIC8m58w+wjtrJ4K
+	GrdzXa1p8oO5PsYkRBOR7LwWExloh2Me8xn4tWw0hA6LfLAPXwVZAxijbsE/IPDLwsEk
+	aUeimPTxykKO6k5KO08hzl99IfBr25MEsR5D7OAO44iuKtRxjokITtJoUIPKxTOqBjna
+	QLfGKJxgg0ch4R2uZru+G/iPeQ2Yc8IiUNEKlDUbiEDMAjGIF2Oc7a4wI1OjJAezk6/Z
+	wlAQ==
+X-Gm-Message-State: ABUngvfYUaYXWvgrZ1SVEBXL404dNrGEZSwIVfprfeizjDNQ4wfgQVJwP82Qen1xTAUa6Q==
+X-Received: by 10.99.116.24 with SMTP id p24mr11856723pgc.167.1477172755253;
+	Sat, 22 Oct 2016 14:45:55 -0700 (PDT)
+Received: from bigtime.twiddle.net (174-24-157-40.tukw.qwest.net.
+	[174.24.157.40]) by smtp.googlemail.com with ESMTPSA id
+	x1sm14376818pay.41.2016.10.22.14.45.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 22 Oct 2016 14:45:54 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1477067922-26202-1-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <b9c76a1f-dc8a-3abd-58a5-46f1ff5af562@twiddle.net>
+Date: Sat, 22 Oct 2016 14:45:52 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 21 Oct 2016 18:12:20 +0000 (UTC)
+In-Reply-To: <1477067922-26202-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trivial: Restore blank line
- in qapi-schema
+X-Received-From: 2607:f8b0:400e:c00::236
+Subject: Re: [Qemu-trivial] [PATCH] tcg/tcg.h: Improve documentation of
+ TCGv_i32 etc types
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,15 +72,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Oct 2016 18:12:27 -0000
+X-List-Received-Date: Sat, 22 Oct 2016 21:45:58 -0000
 
-Eric Blake <eblake@redhat.com> writes:
-
-> Commit de63ab6 accidentally undid part of commit a43edcf,
-> because the two patches were written in parallel, and the
-> blank line was not noticed as a casualty of merge conflicts.
+On 10/21/2016 09:38 AM, Peter Maydell wrote:
+> The typedefs we use for the TCGv_i32, TCGv_i64 and TCGv_ptr
+> types are somewhat confusing, because we define them as
+> pointers to structs, but the structs themselves are never
+> defined. Explain in the comments a bit more clearly why
+> this is OK and what is going on under the hood.
 >
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This confused at least two people who cared enough to post to
+> qemu-devel about it, so it seems worth rewriting and expanding
+> the comment in an attempt to avoid having to explain it on the
+> mailing list for a third time :-)
 
-Applied to qapi-next, thanks!
+Applied, thanks.
+
+
+r~
 
