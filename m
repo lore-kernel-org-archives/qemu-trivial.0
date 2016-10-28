@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c08w7-0004PW-Ux
+	id 1c08w8-0004Q0-BR
 	for mharc-qemu-trivial@gnu.org; Fri, 28 Oct 2016 11:19:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56719)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1c08w3-0004LM-I4
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2016 11:19:12 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1c08vz-0004HB-O2
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2016 11:19:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1c08vz-0004fP-K5
-	for qemu-trivial@nongnu.org; Fri, 28 Oct 2016 11:19:11 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:49191)
+	(envelope-from <mjt@tls.msk.ru>) id 1c08vz-0004eX-2V
+	for qemu-trivial@nongnu.org; Fri, 28 Oct 2016 11:19:07 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57795)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1c08vs-0004XV-RE; Fri, 28 Oct 2016 11:19:00 -0400
+	id 1c08vr-0004Tx-Jr; Fri, 28 Oct 2016 11:18:59 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 02EBC43731;
-	Fri, 28 Oct 2016 18:18:58 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id A57884372F;
+	Fri, 28 Oct 2016 18:18:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id C82A7B4A;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 82161B3E;
 	Fri, 28 Oct 2016 18:18:56 +0300 (MSK)
-Received: (nullmailer pid 6048 invoked by uid 1000);
+Received: (nullmailer pid 6054 invoked by uid 1000);
 	Fri, 28 Oct 2016 15:18:56 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Michael Walle <michael@walle.cc>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Fri, 28 Oct 2016 18:18:33 +0300
-Message-Id: <5f333d79a4337b390fa4103e270d2bdaf243aad6.1477667878.git.mjt@msgid.tls.msk.ru>
+Date: Fri, 28 Oct 2016 18:18:36 +0300
+Message-Id: <49285e11d8ce90d2fd76d8bf16b330731e220495.1477667878.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1477667878.git.mjt@msgid.tls.msk.ru>
 References: <cover.1477667878.git.mjt@msgid.tls.msk.ru>
@@ -33,8 +33,8 @@ In-Reply-To: <cover.1477667878.git.mjt@msgid.tls.msk.ru>
 References: <cover.1477667878.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 02/23] hw/tpm/tpm_passthrough: Simplify
- if-statements a little bit
+Subject: [Qemu-trivial] [PULL 05/23] target-lm32: swap operand of wcsr in
+ LOG_DIS()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,44 +46,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Oct 2016 15:19:12 -0000
+X-List-Received-Date: Fri, 28 Oct 2016 15:19:13 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Michael Walle <michael@walle.cc>
 
-The condition  '!A || (A && B)' is equivalent to '!A || B'
+Be consistent with the reference manual.
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1464611
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Michael Walle <michael@walle.cc>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/tpm/tpm_passthrough.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ target-lm32/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index e88c0d2..9234eb3 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -165,8 +165,7 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index dc64cc6..fa8416a 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -865,7 +865,7 @@ static void dec_wcsr(DisasContext *dc)
+ {
+     int no;
  
-     ret = tpm_passthrough_unix_write(tpm_pt->tpm_fd, in, in_len);
-     if (ret != in_len) {
--        if (!tpm_pt->tpm_op_canceled ||
--            (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
-+        if (!tpm_pt->tpm_op_canceled || errno != ECANCELED) {
-             error_report("tpm_passthrough: error while transmitting data "
-                          "to TPM: %s (%i)",
-                          strerror(errno), errno);
-@@ -178,8 +177,7 @@ static int tpm_passthrough_unix_tx_bufs(TPMPassthruState *tpm_pt,
+-    LOG_DIS("wcsr r%d, %d\n", dc->r1, dc->csr);
++    LOG_DIS("wcsr %d, r%d\n", dc->csr, dc->r1);
  
-     ret = tpm_passthrough_unix_read(tpm_pt->tpm_fd, out, out_len);
-     if (ret < 0) {
--        if (!tpm_pt->tpm_op_canceled ||
--            (tpm_pt->tpm_op_canceled && errno != ECANCELED)) {
-+        if (!tpm_pt->tpm_op_canceled || errno != ECANCELED) {
-             error_report("tpm_passthrough: error while reading data from "
-                          "TPM: %s (%i)",
-                          strerror(errno), errno);
+     switch (dc->csr) {
+     case CSR_IE:
 -- 
 2.1.4
 
