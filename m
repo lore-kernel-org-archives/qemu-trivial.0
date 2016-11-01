@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1a1w-00022B-Ah
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2016 10:27:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55734)
+	id 1c1a34-0002eS-IA
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2016 10:28:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56090)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1c1a1t-000203-Pm
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 10:27:10 -0400
+	(envelope-from <eblake@redhat.com>) id 1c1a31-0002d2-Vb
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 10:28:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1c1a1s-0001ED-Rh
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 10:27:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56288)
+	(envelope-from <eblake@redhat.com>) id 1c1a2y-0001XH-RR
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 10:28:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60196)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1c1a1o-0001CM-AE; Tue, 01 Nov 2016 10:27:04 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>) id 1c1a2y-0001Wm-J9
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 10:28:16 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2651E3B716;
-	Tue,  1 Nov 2016 14:27:03 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D68A18553F;
+	Tue,  1 Nov 2016 14:28:15 +0000 (UTC)
 Received: from [10.3.116.16] (ovpn-116-16.phx2.redhat.com [10.3.116.16])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uA1ER2cw011328; Tue, 1 Nov 2016 10:27:02 -0400
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, quintela@redhat.com,
-	amit.shah@redhat.com
-References: <1477979405-16264-1-git-send-email-zhang.zhanghailiang@huawei.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, dgilbert@redhat.com
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uA1ESFj2022417; Tue, 1 Nov 2016 10:28:15 -0400
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+References: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Cc: armbru@redhat.com, qemu-trivial@nongnu.org
 From: Eric Blake <eblake@redhat.com>
 Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
 Organization: Red Hat, Inc.
-Message-ID: <142defcb-88bd-727f-70e4-0c8ace3f2e76@redhat.com>
-Date: Tue, 1 Nov 2016 09:27:01 -0500
+Message-ID: <29570f3d-1a97-8b5a-7b0d-628c61004cc0@redhat.com>
+Date: Tue, 1 Nov 2016 09:28:14 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <1477979405-16264-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="JBpcODsgDtXecjSba0NhbvieTfvGg0cor"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	boundary="Awcpk96UXenGf7gMXmLteXTSXOdATegC0"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Tue, 01 Nov 2016 14:27:03 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 01 Nov 2016 14:28:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration: fix missing
- assignment for has_x_checkpoint_delay
+Subject: Re: [Qemu-trivial] [PATCH] qapi-schema: clarify 'colo' state for
+ MigrationStatus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,62 +55,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Nov 2016 14:27:10 -0000
+X-List-Received-Date: Tue, 01 Nov 2016 14:28:21 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---JBpcODsgDtXecjSba0NhbvieTfvGg0cor
-Content-Type: multipart/mixed; boundary="dpXgt4OQcChaO0XJqF3qqSvu1iaxjaUp6";
+--Awcpk96UXenGf7gMXmLteXTSXOdATegC0
+Content-Type: multipart/mixed; boundary="X5vndcjlVhmI5FqVUc8NxoNUrp3TA312K";
  protected-headers="v1"
 From: Eric Blake <eblake@redhat.com>
-To: zhanghailiang <zhang.zhanghailiang@huawei.com>, quintela@redhat.com,
- amit.shah@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, dgilbert@redhat.com
-Message-ID: <142defcb-88bd-727f-70e4-0c8ace3f2e76@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] migration: fix missing assignment for
- has_x_checkpoint_delay
-References: <1477979405-16264-1-git-send-email-zhang.zhanghailiang@huawei.com>
-In-Reply-To: <1477979405-16264-1-git-send-email-zhang.zhanghailiang@huawei.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Cc: armbru@redhat.com, qemu-trivial@nongnu.org
+Message-ID: <29570f3d-1a97-8b5a-7b0d-628c61004cc0@redhat.com>
+Subject: Re: [PATCH] qapi-schema: clarify 'colo' state for MigrationStatus
+References: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
 
---dpXgt4OQcChaO0XJqF3qqSvu1iaxjaUp6
+--X5vndcjlVhmI5FqVUc8NxoNUrp3TA312K
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On 11/01/2016 12:50 AM, zhanghailiang wrote:
-> We forgot to assign true to params->has_x_checkpoint_delay parameter
-> in qmp_query_migrate_parameters.
+On 11/01/2016 12:51 AM, zhanghailiang wrote:
+> VM can not get into colo state unless users enable 'x-colo'
+> capability for migration, Here it is necessary to clarify
+> this.
 >=20
-> Without this, qmp command 'query-migrate-parameters' doesn't show the
-> default value for x-checkpoint-delay option.
-> It doesn't influence output of hmp command 'info migrate_parameters'.
-
-Well, only because the current code doesn't forcefully assign missing
-optional parameters to any other value.  But HMP was relying on
-unspecified behavior, that could have broken with any other qapi change.
-
-I might word the commit message:
-
-This also fixes the fact that HMP was relying on unspecified behavior by
-reading x_checkpoint_delay without checking has_x_checkpoint_delay.
-
-Up to the maintainer, though, since the patch itself is fine.
-
->=20
+> Suggested-by: Eric Blake <eblake@redhat.com>
 > Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 > ---
->  hmp.c                 | 1 +
->  migration/migration.c | 1 +
->  2 files changed, 2 insertions(+)
+>  qapi-schema.json | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/qapi-schema.json b/qapi-schema.json
+> index 8a7b527..d580169 100644
+> --- a/qapi-schema.json
+> +++ b/qapi-schema.json
+> @@ -462,7 +462,8 @@
+>  #
+>  # @failed: some error occurred during migration process.
+>  #
+> -# @colo: VM is in the process of fault tolerance. (since 2.8)
+> +# @colo: VM is in the process of fault tolerance, VM can not get into =
+this
+> +#        state unless colo capability is enabled for migration. (since=
+ 2.8)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+This hunk is for MigrationStatus; can you also add similar wording for
+the documentation of RunState?  Looking forward to v2.
 
 --=20
 Eric Blake   eblake redhat com    +1-919-301-3266
 Libvirt virtualization library http://libvirt.org
 
 
---dpXgt4OQcChaO0XJqF3qqSvu1iaxjaUp6--
+--X5vndcjlVhmI5FqVUc8NxoNUrp3TA312K--
 
---JBpcODsgDtXecjSba0NhbvieTfvGg0cor
+--Awcpk96UXenGf7gMXmLteXTSXOdATegC0
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -121,14 +118,14 @@ Version: GnuPG v2
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJYGKY1AAoJEKeha0olJ0NqxWEIAK2Z1i9oIMeucsYhvsrxd5Au
-fMI353l+SlfHT0GPY3KIz3jm//vjoRCW72J18+hg68Py10nMyOUL6+jjpyR5Ns+S
-4canx+xYfRANlWEvZ/k/z+WQ9BdNHFwqi7Xvos2HJvleF97RiIqImmgLtsL2PuPm
-HGHA97OGHlYtqM7l6j/soq+Cl3p61tlLeAG4rAAk3RGtrwX2KmP2IsrA5oX8PiK2
-YLIuDmUDxiwK3+GAc/hty3kLlFIIbRTHo9copsAVLCOLdFJPErE+h2NxqthSj47B
-06ry0Q+JMBhLuqvitFaSPRBPrJ87XE2GbLCy7NVjMiRAPKTEvYGM1P7gWlrzLpw=
-=gh0f
+iQEcBAEBCAAGBQJYGKZ+AAoJEKeha0olJ0Nq1ooH/3uSasM5EMDLKZGbRYfzV03W
+Sszcqi5Hzqs7JKo27u2ElTKksOENzm3RYGmD2Fp64n+4mCMzcegYZHFKz4trAN/r
+zsdDRrCwH+VSrnEkC0YexkAQlYimrgf5hwiHXc45ZzqAO+8SCFgcMYEkzIKM42F8
+RFuQVHcGmyPr4YiPIyjjltUw7Z7mrGI7dsAbrEDhsx8X8gmbk2agRWQg2pKz56VF
+rkMRZL4LQBKRCjUj+JbMuRi8ixkjBEUUqzQATVV3HvzD6qes/G7qOr1v2hoCO6is
+zXDpAslaLDszShqxGiQugaXYOfCMb7H8VQ2JBxHGQKXr5CbPr8XVa0AwMr7ALNA=
+=iMnY
 -----END PGP SIGNATURE-----
 
---JBpcODsgDtXecjSba0NhbvieTfvGg0cor--
+--Awcpk96UXenGf7gMXmLteXTSXOdATegC0--
 
