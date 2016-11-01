@@ -1,55 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1b6g-0004sh-Ll
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2016 11:36:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49441)
+	id 1c1cT5-00048C-JV
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2016 13:03:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1c1b6e-0004pu-4a
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 11:36:08 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1c1cSz-00042Q-7E
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 13:03:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1c1b6d-00079L-Fo
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 11:36:08 -0400
-Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:35436)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1c1b6d-000794-At
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 11:36:07 -0400
-Received: by mail-ua0-x230.google.com with SMTP id 12so131542261uas.2
-	for <qemu-trivial@nongnu.org>; Tue, 01 Nov 2016 08:36:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=HeBANxvocHjOvUvfhkDSP0pKFuhhVTjOys4+u/MJ9Qk=;
-	b=EYJIiSKomC1lsWX6LBazlAuyEjTfYdoumSfOJohozkBevanVlRzZAfTKiJWJwnRBQT
-	KM753lt0hKMlI50qjQ9jeyV+JESRTB40vr2Ne1tuOhsKGrvm21vJEbEKxn6pYFrFmBhq
-	VhiSTEmwqO44rBt2TNXhu6LeC8ixrhHsxLTuE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=HeBANxvocHjOvUvfhkDSP0pKFuhhVTjOys4+u/MJ9Qk=;
-	b=jLU/2fjXXNwTx7TfFDtZ5zqO9LJZHzlDREpmIzwBG50BNfSV7FU3DZdXA8OPNbd95F
-	x9XSWNqTPx2Am0Qbsp3sLv6gU50HSnSJBDwtUZ/2x3AYXtW/GblNjHF2u/jLDtRwHvvb
-	v6ya+UE4mg+KFvm2/Av517/YlQ5SavSUxRfIBCnoNMw8+TY7NgKdWys13a7Y7kV//ADS
-	mf03TB2TyrIHTYjJtt6YPubEZKPlAj4azjsH4BoxfVbwaxKC8D8MdjU9V9XAbjYRm2Ps
-	pYyMH7wrXK6NOOnLz0H5jhEvBLBrzmc6xstjM8wXvL2fDl3CpEKDRzmL4EPQXOP12xs9
-	4j4g==
-X-Gm-Message-State: ABUngvet0/YgblIl0DyazfLrM7xofPrVs/9TStVx+RLT2xngzzB/NUP+WQicgD/ezA0+qfO9fhCyZo2hqxZV6xB+
-X-Received: by 10.176.3.137 with SMTP id 9mr18312082uau.120.1478014566718;
-	Tue, 01 Nov 2016 08:36:06 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Tue, 1 Nov 2016 08:35:46 -0700 (PDT)
-In-Reply-To: <20161101152819.18906-1-sw@weilnetz.de>
-References: <20161101152819.18906-1-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Nov 2016 15:35:46 +0000
-Message-ID: <CAFEAcA_Z+_ZertzpPY1cW5VHfQ6p30-QWNPCiH10+Qq+pAxLQA@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developer <qemu-devel@nongnu.org>, Pavel Fedin <p.fedin@samsung.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::230
-Subject: Re: [Qemu-trivial] [PATCH] hw/intc/arm_gicv3_its: Fix typo in
- member names of GICv3ITSState
+	(envelope-from <stefan@weilnetz.de>) id 1c1cSv-0000dU-HD
+	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 13:03:17 -0400
+Received: from mail.weilnetz.de ([37.221.199.173]:46555)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1c1cSo-0000bo-L8; Tue, 01 Nov 2016 13:03:06 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id C45F211810AA;
+	Tue,  1 Nov 2016 18:03:05 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id BcE7q6cFuGB3; Tue,  1 Nov 2016 18:03:03 +0100 (CET)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+	by mail.weilnetz.de (Postfix) with ESMTP id 9BEDC11810A3;
+	Tue,  1 Nov 2016 18:03:03 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 864324669AE; Tue,  1 Nov 2016 18:03:03 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>
+Date: Tue,  1 Nov 2016 18:03:02 +0100
+Message-Id: <20161101170302.23737-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.10.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Subject: [Qemu-trivial] [PATCH] hw/block/m25p80: Fix typo in local macro name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,18 +46,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Nov 2016 15:36:09 -0000
+X-List-Received-Date: Tue, 01 Nov 2016 17:03:22 -0000
 
-On 1 November 2016 at 15:28, Stefan Weil <sw@weilnetz.de> wrote:
-> translater -> translator (found by codespell)
->
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/block/m25p80.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-This is intentional: the name of the hardware register
-in question is GITS_TRANSLATER, the ITS Translation Register.
-The R stands for 'register', as is usual for ARM hardware
-register names.
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index d29ff4c..09ea51f 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -121,7 +121,7 @@ typedef struct FlashPartInfo {
+ #define CFG_DUMMY_CLK_LEN 4
+ #define NVCFG_DUMMY_CLK_POS 12
+ #define VCFG_DUMMY_CLK_POS 4
+-#define EVCFG_OUT_DRIVER_STRENGHT_DEF 7
++#define EVCFG_OUT_DRIVER_STRENGTH_DEF 7
+ #define EVCFG_VPP_ACCELERATOR (1 << 3)
+ #define EVCFG_RESET_HOLD_ENABLED (1 << 4)
+ #define NVCFG_DUAL_IO_MASK (1 << 2)
+@@ -700,7 +700,7 @@ static void reset_memory(Flash *s)
+                             );
+ 
+         s->enh_volatile_cfg = 0;
+-        s->enh_volatile_cfg |= EVCFG_OUT_DRIVER_STRENGHT_DEF;
++        s->enh_volatile_cfg |= EVCFG_OUT_DRIVER_STRENGTH_DEF;
+         s->enh_volatile_cfg |= EVCFG_VPP_ACCELERATOR;
+         s->enh_volatile_cfg |= EVCFG_RESET_HOLD_ENABLED;
+         if (s->nonvolatile_cfg & NVCFG_DUAL_IO_MASK) {
+-- 
+2.10.1
 
-thanks
--- PMM
 
