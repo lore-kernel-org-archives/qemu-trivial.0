@@ -1,52 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1rGv-0007BV-HG
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 04:51:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36773)
+	id 1c1rKa-0000zd-R6
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 04:55:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38235)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1c1rGs-0007A6-7S
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:51:47 -0400
+	(envelope-from <thuth@redhat.com>) id 1c1rKY-0000yD-UX
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:55:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1c1rGo-0000gY-Bv
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:51:46 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:52938)
+	(envelope-from <thuth@redhat.com>) id 1c1rKY-0002Pf-8K
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:55:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52494)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1c1rGo-0000g9-2I; Wed, 02 Nov 2016 04:51:42 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue101) with ESMTPSA (Nemesis) id 0MDxdP-1c5Pdu1nAN-00HRgs;
-	Wed, 02 Nov 2016 09:51:37 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1478076128-11661-1-git-send-email-thuth@redhat.com>
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1c1rKP-0002LZ-LS; Wed, 02 Nov 2016 04:55:25 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C56A072086;
+	Wed,  2 Nov 2016 08:55:24 +0000 (UTC)
+Received: from [10.36.116.29] (ovpn-116-29.ams2.redhat.com [10.36.116.29])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uA28tM9P018667
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 2 Nov 2016 04:55:23 -0400
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <1478075872-11344-1-git-send-email-thuth@redhat.com>
+	<be720fa3-ffa2-05a8-2c66-60edcf142a7a@redhat.com>
 Cc: qemu-trivial@nongnu.org
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <55723a41-3829-f461-7915-951b96ebaa1c@vivier.eu>
-Date: Wed, 2 Nov 2016 09:51:35 +0100
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <ce522f3f-4ee0-f1de-652c-114dcd9a3049@redhat.com>
+Date: Wed, 2 Nov 2016 09:55:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <1478076128-11661-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <be720fa3-ffa2-05a8-2c66-60edcf142a7a@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:IpxpsRs2XzxCGApyH++fHqknbsKvFnD99Ta8FAHpVdnqIM9R8In
-	jcozv/8YSwRChK/P1k4+39SbT4W33KHLF5KnHAF6yi9VzmsYL1OkrtFYNE4wXyTElrfjp7o
-	38j/RlP4k+TDT+H7HZ83Vdnj7Dp3vhrtMeN9zJwnk1BuwZlofGeT/aooTdlz7qafxZSKOWb
-	Zsg6lExITJPviMDmn6Eng==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:cY4MNyUUTtk=:v7uYSWLrxREEishDxISmg7
-	v7PaIQWIky84Lr/hBwwIc+j3da/oafKCUfneFB9HLHF3CLhCObb6R2+9F5D+y99LiRYc10uXL
-	I52s2V3HMU8xA+UBxbRTQICs3Nd1mr1nxRbsA5L9Lx1LRzH4cLj04rGlENiCNrLWuUmMKlxZK
-	36bM3PjTGJtGU6HQMZcX7XdE5mJkyez1PFRmhWmkxRoPbSyIvAfgOSg+Z5HGmXsEO34XsW1tz
-	TvAtvnme8z7fG0GFkExcpycNXQO/a8qIxokXpyiCympEFjbIzM5DpuUxjXind0NYJz6ETNWop
-	RI0512f6ZPI7/TlgNjS/5cUPb1E+28GijQpMoXxATMjDYxkcrJvi7hUJWUtpCcJzrnOeVmEj/
-	HW2Yoy2WQ1gsiWXcUSiWEABdll5QlYm+dK+i+iSzfoMWj91s0u7LIDboaZvU/RVR/q/fi2OqM
-	wKw7GT3G+6ZmdMpSoL8/dPuY7Io/oV5l/Bhjt61FRr+BsoRios6ErAeNtOE6exIFC689vARZw
-	ERYo8S4WRuvhZTURDJhMMeG777Ded3Lq92tvK1rhTVA2T211hkA7WpXjtJQY6Z0lDRddJGoVp
-	WHzD+yAMM9/35662Oo4SFmJExhdA6yyA7i+OeDo7r0PeOdD6ZBT21UAySNhOhX94ph+Dds71q
-	EniAd8ptH96Q+S1e2RoSmg4tKGf8G/JBZeJhBAy1+H1wEXJAlVokLHMfBlWgmmwRMoHQ83tvZ
-	6P0IkHaCzwvFzscc
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 02 Nov 2016 08:55:24 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH] m68k: Add include/hw/m68k/ and
- disas/m68k.c to the MAINTAINERS file
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] sparc: Add slavio_misc.c and eccmemctl.c
+ to the MAINTAINERS file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,41 +56,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2016 08:51:47 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 08:55:35 -0000
 
-
-
-Le 02/11/2016 à 09:42, Thomas Huth a écrit :
-> The include/hw/m68k/ folder and disas/m68k.c obviously belong to
-> the m68k section in the MAINTAINERS file.
+On 02.11.2016 09:50, Paolo Bonzini wrote:
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 79484ed..5d45160 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -149,6 +149,8 @@ M: Laurent Vivier <laurent@vivier.eu>
->  S: Maintained
->  F: target-m68k/
->  F: hw/m68k/
-> +F: include/hw/m68k/
-
-Under this directory, we have only mcf.h, which is used by M68K
-machines, not by TCG, so I think this include should be added to the
-"M68K Machines" section. "hw/m68k" should also be moved to the machines
-section too (hw/m68K/*.c in the machines section are overridden by this
-entry).
-
-> +F: disas/m68k.c
->  
->  MicroBlaze
->  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> On 02/11/2016 09:37, Thomas Huth wrote:
+>> Both files seem to belong to the Sun4m machine.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  MAINTAINERS | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index b0712a8..79484ed 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -710,6 +710,8 @@ S: Maintained
+>>  F: hw/sparc/sun4m.c
+>>  F: hw/dma/sparc32_dma.c
+>>  F: hw/dma/sun4m_iommu.c
+>> +F: hw/misc/eccmemctl.c
+>> +F: hw/misc/slavio_misc.c
+>>  F: include/hw/sparc/sparc32_dma.h
+>>  F: include/hw/sparc/sun4m.h
+>>  F: pc-bios/openbios-sparc32
+>>
 > 
+> Thomas,
+> 
+> I think you should send a pull request for your MAINTAINERS changes.
 
-Thanks,
-Laurent
+OK, I guess I could do that ... but since I sometimes also do mistakes
+in classifying the files, I think I should at least wait a couple of
+days to get an ACK from the corresponding subsystem maintainers...
+
+ Thomas
+
 
