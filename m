@@ -1,38 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1r7j-0003h7-UT
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 04:42:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33873)
+	id 1c1rFP-0006FG-I9
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 04:50:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1c1r7i-0003ff-3X
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:42:18 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c1rFM-0006Dv-OT
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:50:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1c1r7h-0005Yd-Ev
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:42:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33886)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1c1r7c-0005WV-02; Wed, 02 Nov 2016 04:42:12 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 26E1C81236;
-	Wed,  2 Nov 2016 08:42:11 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-29.ams2.redhat.com [10.36.116.29])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id uA28g97s016381; Wed, 2 Nov 2016 04:42:09 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c1rFI-00005l-TE
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 04:50:12 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35929)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1c1rFI-00004v-MQ; Wed, 02 Nov 2016 04:50:08 -0400
+Received: by mail-wm0-x242.google.com with SMTP id c17so1827099wmc.3;
+	Wed, 02 Nov 2016 01:50:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=xpGUDniD8Ev8OIlcIF4i85R2e8YVz6c2u9Ts4mUCsPs=;
+	b=IJ7Iddt+m6YHbPNCzmLjK0edGwdZUqAZzhd/nn70sadbx9IP9PAoVojfCd8P4v8STl
+	DJVK3htivHhCHH0fnPvkfPG7hwtmNxIFzdVn/UlMNFRh+Cs3GKj/f0hPXMQHB+kfQiku
+	DhLmqTe1Zn/mgv7s0tevvM6IhkOI+h7J7siwMvOCfExQ/l7SSfdTrqCxqyuL92lGmr58
+	hjpQu7dT//lmnFm536/iCxuBjsGFKWHiUcKeFn4+9jRaA3wE/W8jKxKHllSPT4PWo4M8
+	oPFaEl8RFCNUyhM3I0qYjGvw3xwYkKruhsThAuP6fQI8G9tT3UFH22W91D1NgBmASag2
+	KVMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=xpGUDniD8Ev8OIlcIF4i85R2e8YVz6c2u9Ts4mUCsPs=;
+	b=C92x1922jj3UCGGCXBs0CchHFs7PpYXIBZo1WIshzdBZPn7jK/uIjW/Rvlja3feu6B
+	X3k/L4uTTXaX8HyvUXN2cnp6C7R9furb/9gAFPsDL+CF2EfxzFODQnLyL6cSvW+3TKNJ
+	07D1NRKSZb79JJNz6dgBfX2ShFAkiK7/HrlUcxmCSpmxP43XUFOnCSNJgFJ00zqT5x+G
+	0QwXaVea/hkdLagF1bU17esoMhRagEIhs2WlfJJGQtA3sZ+9+aEr5QsSFiXOIz/Mu7td
+	szGG7OMDfJNBT5PWbusIaBj6zbDu3DyxPpHAFRbt6m2eh7afJg+sZjV6PumELPfWgFIi
+	2eCA==
+X-Gm-Message-State: ABUngvdZRTw0+8H+3DCqdcHS+JlY974ZK3FCFVN3Y1ns0SJzK3IAfK/WmmCc9UEe5EWsvQ==
+X-Received: by 10.194.240.201 with SMTP id wc9mr2306814wjc.67.1478076607531;
+	Wed, 02 Nov 2016 01:50:07 -0700 (PDT)
+Received: from [192.168.10.150] (dynamic-adsl-78-12-246-178.clienti.tiscali.it.
+	[78.12.246.178]) by smtp.googlemail.com with ESMTPSA id
+	m194sm1883115wmg.11.2016.11.02.01.50.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 02 Nov 2016 01:50:06 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <1478075872-11344-1-git-send-email-thuth@redhat.com>
 Cc: qemu-trivial@nongnu.org
-Date: Wed,  2 Nov 2016 09:42:08 +0100
-Message-Id: <1478076128-11661-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 02 Nov 2016 08:42:11 +0000 (UTC)
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <be720fa3-ffa2-05a8-2c66-60edcf142a7a@redhat.com>
+Date: Wed, 2 Nov 2016 09:50:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1478075872-11344-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] m68k: Add include/hw/m68k/ and disas/m68k.c
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: Re: [Qemu-trivial] [PATCH] sparc: Add slavio_misc.c and eccmemctl.c
  to the MAINTAINERS file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -45,30 +72,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2016 08:42:18 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 08:50:13 -0000
 
-The include/hw/m68k/ folder and disas/m68k.c obviously belong to
-the m68k section in the MAINTAINERS file.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 79484ed..5d45160 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -149,6 +149,8 @@ M: Laurent Vivier <laurent@vivier.eu>
- S: Maintained
- F: target-m68k/
- F: hw/m68k/
-+F: include/hw/m68k/
-+F: disas/m68k.c
- 
- MicroBlaze
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
--- 
-1.8.3.1
+On 02/11/2016 09:37, Thomas Huth wrote:
+> Both files seem to belong to the Sun4m machine.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b0712a8..79484ed 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -710,6 +710,8 @@ S: Maintained
+>  F: hw/sparc/sun4m.c
+>  F: hw/dma/sparc32_dma.c
+>  F: hw/dma/sun4m_iommu.c
+> +F: hw/misc/eccmemctl.c
+> +F: hw/misc/slavio_misc.c
+>  F: include/hw/sparc/sparc32_dma.h
+>  F: include/hw/sparc/sun4m.h
+>  F: pc-bios/openbios-sparc32
+> 
 
+Thomas,
+
+I think you should send a pull request for your MAINTAINERS changes.
+Thanks for taking care of it!
+
+Paolo
 
