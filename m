@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1voQ-0004CY-J3
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 09:42:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42023)
+	id 1c1w9m-000453-Jz
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 10:04:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1c1voN-00049f-UK
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 09:42:40 -0400
+	(envelope-from <eblake@redhat.com>) id 1c1w9h-00041a-AB
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:04:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1c1voN-0003qa-5m
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 09:42:39 -0400
-Received: from [59.151.112.132] (port=43030 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1c1voG-0003iX-Mt; Wed, 02 Nov 2016 09:42:33 -0400
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="12601528"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 02 Nov 2016 21:42:23 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id AB1D243972CB;
-	Wed,  2 Nov 2016 21:42:22 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Wed, 2 Nov 2016 21:42:22 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <thuth@redhat.com>, <peter.maydell@linaro.org>, <eblake@redhat.com>,
-	<armbru@redhat.com>, <mst@redhat.com>
-Date: Wed, 2 Nov 2016 21:44:46 +0800
-Message-ID: <1478094287-15009-2-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
-In-Reply-To: <1478094287-15009-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-References: <1478094287-15009-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	(envelope-from <eblake@redhat.com>) id 1c1w9g-00037n-DG
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:04:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51870)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1c1w9b-00032w-2T; Wed, 02 Nov 2016 10:04:35 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 361B0338842;
+	Wed,  2 Nov 2016 14:04:34 +0000 (UTC)
+Received: from [10.3.116.16] (ovpn-116-16.phx2.redhat.com [10.3.116.16])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uA2E4XTs008317; Wed, 2 Nov 2016 10:04:33 -0400
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, armbru@redhat.com
+References: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <f1f826e3-49b6-1755-24fe-ea96d8d484b1@redhat.com>
+Date: Wed, 2 Nov 2016 09:04:33 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: AB1D243972CB.AC0B0
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH v4 1/2] util/mmap-alloc: check parameter
- before using
+In-Reply-To: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="msRtsrI4ib3SPmvr234mnWKBetQiwASqO"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 02 Nov 2016 14:04:34 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2] qapi-schema: clarify 'colo' state for
+ MigrationStatus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,50 +55,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2016 13:42:41 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 14:04:45 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- util/mmap-alloc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--msRtsrI4ib3SPmvr234mnWKBetQiwASqO
+Content-Type: multipart/mixed; boundary="PG7A3gJkXXid04GBriivTWrh4JFVDAu5V";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>, armbru@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <f1f826e3-49b6-1755-24fe-ea96d8d484b1@redhat.com>
+Subject: Re: [PATCH v2] qapi-schema: clarify 'colo' state for MigrationStatus
+References: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
+In-Reply-To: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
 
-diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
-index 5a85aa3..d713a72 100644
---- a/util/mmap-alloc.c
-+++ b/util/mmap-alloc.c
-@@ -12,6 +12,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/mmap-alloc.h"
-+#include "qemu/host-utils.h"
- 
- #define HUGETLBFS_MAGIC       0x958458f6
- 
-@@ -61,18 +62,18 @@ void *qemu_ram_mmap(int fd, size_t size, size_t align, bool shared)
- #else
-     void *ptr = mmap(0, total, PROT_NONE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
- #endif
--    size_t offset = QEMU_ALIGN_UP((uintptr_t)ptr, align) - (uintptr_t)ptr;
-+    size_t offset;
-     void *ptr1;
- 
-     if (ptr == MAP_FAILED) {
-         return MAP_FAILED;
-     }
- 
--    /* Make sure align is a power of 2 */
--    assert(!(align & (align - 1)));
-+    assert(is_power_of_2(align));
-     /* Always align to host page size */
-     assert(align >= getpagesize());
- 
-+    offset = QEMU_ALIGN_UP((uintptr_t)ptr, align) - (uintptr_t)ptr;
-     ptr1 = mmap(ptr + offset, size, PROT_READ | PROT_WRITE,
-                 MAP_FIXED |
-                 (fd == -1 ? MAP_ANONYMOUS : 0) |
--- 
-2.1.0
+--PG7A3gJkXXid04GBriivTWrh4JFVDAu5V
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 11/02/2016 02:44 AM, zhanghailiang wrote:
+> VM can not get into colo state unless users enable 'x-colo'
+> capability for migration, Here it is necessary to clarify
+> this.
+>=20
+> Suggested-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+> ---
+> v2:
+> - Clarify colo state for RunState too as Eric suggested.
+> ---
+>  qapi-schema.json | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
 
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
+
+--PG7A3gJkXXid04GBriivTWrh4JFVDAu5V--
+
+--msRtsrI4ib3SPmvr234mnWKBetQiwASqO
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJYGfJxAAoJEKeha0olJ0NqtbMH/0dalMyhB9hBQiLl1EoLazc/
+VND4Hnvnq3ql0ST56aPugI/m5awVVF1KMEFxrHdv4/uFkjltC3SKsxNLl0dPFDbH
+WsCDLWVELwMf/evWZSXFlDWq/UxSytqyVsZVzif8+zGoY65a11oj1HfWgWBpsFKl
+Nkpinwtri3bbaU2q7MpRpQoWSbEeudlyQQb649gYrnBxbMSjMgouofVgQRbk3Vm2
+B8xHl1tvAe617A9q/AKWom7KlcyyZFOtmnTchtxhOmlAVDSjgRRCC4+Iwblhq+FA
+Hy7dQ2EwAaP8crPqc8wBPTNFxbANEp7nPIz+dkHsOJNzbFn3N14qksZTZfUwQ3g=
+=2vai
+-----END PGP SIGNATURE-----
+
+--msRtsrI4ib3SPmvr234mnWKBetQiwASqO--
 
