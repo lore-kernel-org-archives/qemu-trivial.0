@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1lLs-0001WT-Vj
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Nov 2016 22:32:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53215)
+	id 1c1pp3-00009c-1a
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 03:18:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1c1bCv-0000te-8I
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 11:42:38 -0400
+	(envelope-from <armbru@redhat.com>) id 1c1pp0-000091-5H
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 03:18:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1c1bCu-0000s8-DX
-	for qemu-trivial@nongnu.org; Tue, 01 Nov 2016 11:42:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43082)
+	(envelope-from <armbru@redhat.com>) id 1c1pov-0005cN-82
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 03:18:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40528)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1c1bCi-0000os-IF; Tue, 01 Nov 2016 11:42:24 -0400
+	(Exim 4.71) (envelope-from <armbru@redhat.com>) id 1c1pov-0005cB-2j
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 03:18:49 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D21DE81129;
-	Tue,  1 Nov 2016 15:42:22 +0000 (UTC)
-Received: from localhost.localdomain (vpn1-5-44.ams2.redhat.com [10.36.5.44])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id uA1FgKWS028288
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 1 Nov 2016 11:42:21 -0400
-To: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>
-References: <20161101152819.18906-1-sw@weilnetz.de>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Pavel Fedin <p.fedin@samsung.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <84814d67-535b-eb8a-9545-eb515aba8930@redhat.com>
-Date: Tue, 1 Nov 2016 16:42:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	by mx1.redhat.com (Postfix) with ESMTPS id D1748485;
+	Wed,  2 Nov 2016 07:18:46 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-24.ams2.redhat.com
+	[10.36.116.24])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uA27IiIV016169
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 2 Nov 2016 03:18:46 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5E5EA11386CE; Wed,  2 Nov 2016 08:18:44 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Cc: <eblake@redhat.com>, <qemu-trivial@nongnu.org>
+References: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
+Date: Wed, 02 Nov 2016 08:18:44 +0100
+In-Reply-To: <1477979511-15460-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	(zhanghailiang's message of "Tue, 1 Nov 2016 13:51:51 +0800")
+Message-ID: <87oa1ytkmj.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20161101152819.18906-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 01 Nov 2016 15:42:23 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 02 Nov 2016 07:18:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Tue, 01 Nov 2016 22:32:32 -0400
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/intc/arm_gicv3_its: Fix
- typo in member names of GICv3ITSState
+Subject: Re: [Qemu-trivial] [PATCH] qapi-schema: clarify 'colo' state for
+ MigrationStatus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,68 +56,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Nov 2016 15:42:38 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 07:18:55 -0000
 
-Hi Stefan,
-
-On 01/11/2016 16:28, Stefan Weil wrote:
-> translater -> translator (found by codespell)
-
-Actually GITS_TRANSLATER is the terminology used for this register in
-the ARM GIC architecture specification (IHI0069B).
-
-Thanks
-
-Eric
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  hw/intc/arm_gicv3_its_kvm.c            | 10 +++++-----
->  include/hw/intc/arm_gicv3_its_common.h |  4 ++--
->  2 files changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-> index fc246e0..c3e074d 100644
-> --- a/hw/intc/arm_gicv3_its_kvm.c
-> +++ b/hw/intc/arm_gicv3_its_kvm.c
-> @@ -33,18 +33,18 @@ static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
->  {
->      struct kvm_msi msi;
->  
-> -    if (unlikely(!s->translater_gpa_known)) {
-> +    if (unlikely(!s->translator_gpa_known)) {
->          MemoryRegion *mr = &s->iomem_its_translation;
->          MemoryRegionSection mrs;
->  
->          mrs = memory_region_find(mr, 0, 1);
->          memory_region_unref(mrs.mr);
-> -        s->gits_translater_gpa = mrs.offset_within_address_space + 0x40;
-> -        s->translater_gpa_known = true;
-> +        s->gits_translator_gpa = mrs.offset_within_address_space + 0x40;
-> +        s->translator_gpa_known = true;
->      }
->  
-> -    msi.address_lo = extract64(s->gits_translater_gpa, 0, 32);
-> -    msi.address_hi = extract64(s->gits_translater_gpa, 32, 32);
-> +    msi.address_lo = extract64(s->gits_translator_gpa, 0, 32);
-> +    msi.address_hi = extract64(s->gits_translator_gpa, 32, 32);
->      msi.data = le32_to_cpu(value);
->      msi.flags = KVM_MSI_VALID_DEVID;
->      msi.devid = devid;
-> diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
-> index 1ba1894..00aa04d 100644
-> --- a/include/hw/intc/arm_gicv3_its_common.h
-> +++ b/include/hw/intc/arm_gicv3_its_common.h
-> @@ -38,8 +38,8 @@ struct GICv3ITSState {
->      GICv3State *gicv3;
->  
->      int dev_fd; /* kvm device fd if backed by kvm vgic support */
-> -    uint64_t gits_translater_gpa;
-> -    bool translater_gpa_known;
-> +    uint64_t gits_translator_gpa;
-> +    bool translator_gpa_known;
->  
->      /* Registers */
->      uint32_t ctlr;
-> 
+You forgot to copy qemu@nongnu.org.  Please resend.
 
