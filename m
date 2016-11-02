@@ -1,35 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c1wNo-0001F2-B4
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 10:19:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50068)
+	id 1c1wPY-0002Vh-Dj
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 10:21:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1c1wNg-00019h-9m
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:19:14 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1c1wPT-0002S5-TV
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:21:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1c1wNf-0007xW-GG
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:19:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40757)
+	(envelope-from <mjt@tls.msk.ru>) id 1c1wPP-0000SB-Tv
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 10:20:59 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:43623)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1c1wNb-0007rv-4U; Wed, 02 Nov 2016 10:19:03 -0400
+	id 1c1wPG-0000MB-Ui; Wed, 02 Nov 2016 10:20:47 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C4D9A4036B;
-	Wed,  2 Nov 2016 17:18:54 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id BFD94B2C;
-	Wed,  2 Nov 2016 17:18:53 +0300 (MSK)
-Received: (nullmailer pid 18122 invoked by uid 1000);
-	Wed, 02 Nov 2016 14:18:53 -0000
+	by isrv.corpit.ru (Postfix) with ESMTP id 9DEF94036B;
+	Wed,  2 Nov 2016 17:20:44 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 8A927B2C;
+	Wed,  2 Nov 2016 17:20:43 +0300 (MSK)
+To: Markus Armbruster <armbru@redhat.com>
+References: <1477728462-16774-1-git-send-email-mjt@msgid.tls.msk.ru>
+	<87ziliqkzi.fsf@dusky.pond.sub.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed,  2 Nov 2016 17:18:50 +0300
-Message-Id: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+Message-ID: <0cbc1332-3b6f-5168-1563-2acf0b5ba7ec@msgid.tls.msk.ru>
+Date: Wed, 2 Nov 2016 17:20:43 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <87ziliqkzi.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=windows-1251
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PATCH v2] vl.c: move pidfile creation up the line
+Subject: Re: [Qemu-trivial] [PATCH] vl.c: move pidfile creation up
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,56 +45,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2016 14:19:14 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 14:21:03 -0000
 
-With current code, pid file is open after various
-sockets, chardevs, fsdevs and the like.  This causes
-interesting effects, for example when monitor is a
-unix-socket, and another qemu instance is already
-running, new qemu first "damages" the socket and
-next complain that it can't acquire the pid file and
-exits, making running qemu unreachable.
+02.11.2016 12:39, Markus Armbruster wrote:
+> Michael Tokarev <mjt@tls.msk.ru> writes:
+> 
+>> With current code, pid file is open after various
+>> sockets, chardevs, fsdevs and the like.  This causes
+>> interesting effects, for example when monitor is a
+>> unix-socket, and another qemu instance is already
+>> running, new qemu first "damages" the socket and
+>> next complain that it can't acquire the pid file and
+>> exits, making running qemu unreachable.
+..
+> ... is this early enough?  For instance, we clobber the log file another
+> 200 lines further up.
 
-Move pid file creation earlier, right after the call
-to os_daemonize(), where we know our process id (pid).
+Yeah, you're right.  There's also some tracing initing in
+there and other potentially interesting stuff.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- vl.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+I moved the pid file creation right after the os_daemonize()
+call.  Before this point we don't even know our pid.
 
-v2: move the pid file creation even earlier, as per
-comment by Markus Armbruster
+> A "don't clobber anything externally visible before this spot" comment
+> could be useful.
 
-diff --git a/vl.c b/vl.c
-index 368510f..ce7e998 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4058,6 +4058,11 @@ int main(int argc, char **argv, char **envp)
- 
-     os_daemonize();
- 
-+    if (pid_file && qemu_create_pidfile(pid_file) != 0) {
-+        error_report("could not acquire pid file: %s", strerror(errno));
-+        exit(1);
-+    }
-+
-     if (qemu_init_main_loop(&main_loop_err)) {
-         error_report_err(main_loop_err);
-         exit(1);
-@@ -4335,11 +4340,6 @@ int main(int argc, char **argv, char **envp)
-     }
- #endif
- 
--    if (pid_file && qemu_create_pidfile(pid_file) != 0) {
--        error_report("could not acquire pid file: %s", strerror(errno));
--        exit(1);
--    }
--
-     if (qemu_opts_foreach(qemu_find_opts("device"),
-                           device_help_func, NULL, NULL)) {
-         exit(0);
--- 
-2.1.4
+Hopefully this is "early enough" to not need this comment :)
 
+Thanks,
+
+/mjt
 
