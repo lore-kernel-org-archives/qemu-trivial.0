@@ -1,51 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c22Xv-0000qd-Ee
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 16:54:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33481)
+	id 1c24Tp-0002NJ-2N
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Nov 2016 18:58:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1c22Xt-0000pE-3A
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 16:54:05 -0400
+	(envelope-from <olaf@aepfle.de>) id 1c20RZ-0005ji-6t
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 14:39:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sstabellini@kernel.org>) id 1c22Xs-0005qb-A4
-	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 16:54:05 -0400
-Received: from mail.kernel.org ([198.145.29.136]:35690)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sstabellini@kernel.org>)
-	id 1c22Xn-0005pd-1x; Wed, 02 Nov 2016 16:53:59 -0400
-Received: from mail.kernel.org (localhost [127.0.0.1])
-	by mail.kernel.org (Postfix) with ESMTP id 2A191203F1;
-	Wed,  2 Nov 2016 20:53:56 +0000 (UTC)
-Received: from [10.1.10.56] (96-82-76-110-static.hfc.comcastbusiness.net
-	[96.82.76.110])
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id C60E0203C0;
-	Wed,  2 Nov 2016 20:53:54 +0000 (UTC)
-Date: Wed, 2 Nov 2016 13:53:53 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@sstabellini-ThinkPad-X260
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: Stefano Stabellini <sstabellini@kernel.org>, 
-	Thomas Huth <thuth@redhat.com>, Olaf Hering <olaf@aepfle.de>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, xuquan8@huawei.com, 
-	"xen-devel@lists.xensource.com Devel" <xen-devel@lists.xensource.com>, 
-	Anthony Perard <anthony.perard@citrix.com>, 
-	Emil Condrea <emilcondrea@gmail.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>
-In-Reply-To: <CAFEAcA_u2+eeLFK-tzs8H+6MPms37q20Fqx=qrMwvgwAoMWvuQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.10.1611021352500.19454@sstabellini-ThinkPad-X260>
+	(envelope-from <olaf@aepfle.de>) id 1c20RY-0001fe-Ep
+	for qemu-trivial@nongnu.org; Wed, 02 Nov 2016 14:39:25 -0400
+Received: from mo6-p00-ob.smtp.rzone.de ([2a01:238:20a:202:5300::8]:23099)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <olaf@aepfle.de>)
+	id 1c20RV-0001ed-RN; Wed, 02 Nov 2016 14:39:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1478111959; l=721;
+	s=domk; d=aepfle.de;
+	h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Subject:Cc:To:From:Date;
+	bh=mdsuuGC4506PylHCIoLfaYi4EbEIZrNIJN4TMki49w4=;
+	b=videbPex0zVnYkZAlwzzJkxbNtBkUk7fNFNy6RtEYpfKiqe2vSAHEJLLBzMpWZnHAdH
+	3w7HrhwWppZbptazXnW3HYV6vwC/ObVRPqaX4ekKmAsaB4DIR8+oRdEnphB7lOKNLwV0/
+	fG8keirnYwRPgpGvFR047ZWJjiGLH+Yufsc=
+X-RZG-AUTH: :P2EQZWCpfu+qG7CngxMFH1J+zrwiavkK6tmQaLfsxs2aAREi5Yt4MyS7h5A0q7VYPDcyk4OcYTviIL4IPGT+AR7E/VI=
+X-RZG-CLASS-ID: mo00
+Received: from probook ([2001:a62:1272:16ff:30fa:77d2:2a61:5f7f])
+	by smtp.strato.de (RZmta 39.7 AUTH) with ESMTPSA id 40b7b7sA2Id9OT9
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1
+	with 521 ECDH bits, eq. 15360 bits RSA))
+	(Client did not present a certificate);
+	Wed, 2 Nov 2016 19:39:09 +0100 (CET)
+Received: by probook (Postfix, from userid 1000)
+	id 5276450B76; Wed,  2 Nov 2016 19:39:08 +0100 (CET)
+Date: Wed, 2 Nov 2016 19:39:08 +0100
+From: Olaf Hering <olaf@aepfle.de>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>, qemu-trivial@nongnu.org,
+	xen-devel@lists.xensource.com, xuquan8@huawei.com, emilcondrea@gmail.com
+Message-ID: <20161102183907.GA16901@aepfle.de>
 References: <1478081958-5803-1-git-send-email-thuth@redhat.com>
-	<alpine.DEB.2.10.1611021022470.19454@sstabellini-ThinkPad-X260>
-	<CAFEAcA_u2+eeLFK-tzs8H+6MPms37q20Fqx=qrMwvgwAoMWvuQ@mail.gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-X-Virus-Scanned: ClamAV using ClamSMTP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 198.145.29.136
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/xen/xen_pvdev: Include
- qemu/log.h for qemu_log_vprintf()
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="KsGdsel6WgEHnImy"
+Content-Disposition: inline
+In-Reply-To: <1478081958-5803-1-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.6.2 (6759)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 2a01:238:20a:202:5300::8
+X-Mailman-Approved-At: Wed, 02 Nov 2016 18:57:59 -0400
+Subject: Re: [Qemu-trivial] [PATCH] hw/xen/xen_pvdev: Include qemu/log.h for
+ qemu_log_vprintf()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,39 +60,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Nov 2016 20:54:06 -0000
+X-List-Received-Date: Wed, 02 Nov 2016 18:39:26 -0000
 
-On Wed, 2 Nov 2016, Peter Maydell wrote:
-> On 2 November 2016 at 17:34, Stefano Stabellini <sstabellini@kernel.org> wrote:
-> > On Wed, 2 Nov 2016, Thomas Huth wrote:
-> >> Olaf Hering reported a build failure due to an undefined reference
-> >> to 'qemu_log_vprintf'. Explicitely including qemu/log.h seems to
-> >> fix the issue.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >
-> > The fix makes sense:
-> >
-> > Acked-by: Stefano Stabellini <sstabellini@kernel.org>
-> >
-> > However I was unable to reproduce the build failure, so I would like a
-> > confirmation from Olaf that the fix is working.
-> 
-> If you configure with the (default) simple trace
-> backend then trace.h will pull in qemu/log.h
-> (and in this case trace.h comes in via xen_common.h).
-> But if you're using a different backend then it won't
-> bring in that header, and you'll get the build failure.
-> 
-> This is a fairly common "breaks but only with
-> some trace backends" compile failure, but I'm
-> not sure how best to try to make it more robust
-> (or at least into a 'fails-everywhere' bug).
 
-Personally what I can do is adding
+--KsGdsel6WgEHnImy
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-  --enable-trace-backends=syslog
+On Wed, Nov 02, Thomas Huth wrote:
 
-to my test scripts. That is enough to repro the issue. Thanks for the
-explanation.
+> Olaf Hering reported a build failure due to an undefined reference
+> to 'qemu_log_vprintf'. Explicitely including qemu/log.h seems to
+> fix the issue.
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Tested-by: Olaf Hering <olaf@aepfle.de>
+
+
+Olaf
+
+--KsGdsel6WgEHnImy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iEYEARECAAYFAlgaMsUACgkQXUKg+qaYNn6rFQCgnRgd/oloh/8C35DmuMtdYAgL
+/cwAoIFEFoN+FE00nVz3fxiHZJK1iie3
+=pUik
+-----END PGP SIGNATURE-----
+
+--KsGdsel6WgEHnImy--
 
