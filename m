@@ -1,50 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c2CZD-0000gC-U1
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2016 03:36:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34243)
+	id 1c2Dap-000643-6B
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2016 04:41:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1c2CZB-0000em-LE
-	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 03:36:06 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c2Dam-00063s-H7
+	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 04:41:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1c2CZA-0000Kv-Rk
-	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 03:36:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36520)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1c2CZ3-0000I3-Gb; Thu, 03 Nov 2016 03:35:57 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 019D77F76D;
-	Thu,  3 Nov 2016 07:35:56 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
-	[10.36.116.30])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uA37ZsQf006851
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 3 Nov 2016 03:35:55 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id BB18611386CE; Thu,  3 Nov 2016 08:35:53 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c2Dai-000097-Jp
+	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 04:41:48 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:32882)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1c2Dai-00008t-D3; Thu, 03 Nov 2016 04:41:44 -0400
+Received: by mail-wm0-x241.google.com with SMTP id u144so6809132wmu.0;
+	Thu, 03 Nov 2016 01:41:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=eOZXsa/pvi2Zaf4/MFqQ+SFK9ojZ4UMhNzM0IXXsBrY=;
+	b=CAxpPD51ohVAha7srT4Atfo6FNFApZc9ma0kjdFqASscyf8uSOXq3w+coK7u/e8Sfh
+	VtkjHKxKKhJlLE9hoRGnZn2eMSdNds+MlTH0wpiyO6czEASWPFolaSo2z57lMphi+Roh
+	DoMEuB/LaGY4YfLXSpEDPH8YPOAtSg5sG1z+LwXrH+iPc0M159A+QfTTrPVIvkFhcQ2U
+	QFI/PngAdE5j9urArkpVlEjPMLMtWi/hxOrhGk9nn8atg8tuVp0sdk2NxnuB5IRPduak
+	8AlmFgAEOwpmUF4dSvvQhlqI4Dn+THlSz47bRglGytyrqxOgSRncXO9RrLi6so2ihKf4
+	pTcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=eOZXsa/pvi2Zaf4/MFqQ+SFK9ojZ4UMhNzM0IXXsBrY=;
+	b=jydfKunZLMm+sKfaWSqTmbsVKuqFZPVVMCP35+pGPbDIR1kp5XaxLMJkU4f7+gAqak
+	FtCR8zyi5amxUVKVQnJWTkKWEox1dKgSPpc9uXWojxyVtb0wloFaypRhbqBqdVLCg/+q
+	2Lrue2+p+yqJ8pnkOYr6DLWniVRpLULQLxPyShKMdi9tVhVh0aao2V75kns3Yj8cLOH+
+	a5hHvhXM+grXL2k0hKaeCJiM7EbVg2+20inC4ZhhHrQZr3ldRidU6Rmxl/VI8yMWME6b
+	r19t2MQs4TlbQyy1QOr5CL+wt6cv4MFS+VgtD8QrGitucBZmkrI82JjpYh1gMAtAA4F3
+	sX/A==
+X-Gm-Message-State: ABUngvc/LQN2US4H7M8s2Q/1GuFfNqjsqmliF1DYE1muWaVeOP0E/Dw3NvjhnKyF7DmqDw==
+X-Received: by 10.194.76.166 with SMTP id l6mr6337599wjw.85.1478162503049;
+	Thu, 03 Nov 2016 01:41:43 -0700 (PDT)
+Received: from [192.168.10.165] (dynamic-adsl-78-12-246-178.clienti.tiscali.it.
+	[78.12.246.178]) by smtp.googlemail.com with ESMTPSA id
+	jx8sm7231159wjc.2.2016.11.03.01.41.41
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 03 Nov 2016 01:41:42 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 References: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru>
-Date: Thu, 03 Nov 2016 08:35:53 +0100
-In-Reply-To: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru> (Michael
-	Tokarev's message of "Wed, 2 Nov 2016 17:18:50 +0300")
-Message-ID: <8737j9582u.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <3253b017-b854-a7ad-af1d-6a7f12e17f18@redhat.com>
+Date: Thu, 3 Nov 2016 09:41:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 03 Nov 2016 07:35:56 +0000 (UTC)
+In-Reply-To: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: move pidfile
- creation up the line
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-trivial] [PATCH v2] vl.c: move pidfile creation up the
+ line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,10 +71,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2016 07:36:06 -0000
+X-List-Received-Date: Thu, 03 Nov 2016 08:41:49 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
 
+
+On 02/11/2016 15:18, Michael Tokarev wrote:
 > With current code, pid file is open after various
 > sockets, chardevs, fsdevs and the like.  This causes
 > interesting effects, for example when monitor is a
@@ -67,18 +83,18 @@ Michael Tokarev <mjt@tls.msk.ru> writes:
 > running, new qemu first "damages" the socket and
 > next complain that it can't acquire the pid file and
 > exits, making running qemu unreachable.
->
+> 
 > Move pid file creation earlier, right after the call
 > to os_daemonize(), where we know our process id (pid).
->
+> 
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
 >  vl.c | 10 +++++-----
 >  1 file changed, 5 insertions(+), 5 deletions(-)
->
+> 
 > v2: move the pid file creation even earlier, as per
 > comment by Markus Armbruster
->
+> 
 > diff --git a/vl.c b/vl.c
 > index 368510f..ce7e998 100644
 > --- a/vl.c
@@ -107,15 +123,9 @@ Michael Tokarev <mjt@tls.msk.ru> writes:
 >      if (qemu_opts_foreach(qemu_find_opts("device"),
 >                            device_help_func, NULL, NULL)) {
 >          exit(0);
+> 
 
-Right after os_daemonize() is as early as possible.  There might be
-stuff happening before os_daemonize() that shouldn't, but I'm not
-demanding you search for it to get this patch in.
+Queued, thanks.
 
-The wider problem: we spread around parsing, checking and acting upon
-command line options pretty carelessly, even though checking after
-daemonize and acting before it is problematic.
-
-Regardless,
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Paolo
 
