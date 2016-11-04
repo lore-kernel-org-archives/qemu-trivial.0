@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c2Dap-000643-6B
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Nov 2016 04:41:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47944)
+	id 1c2eRj-0002bo-0h
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Nov 2016 09:22:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1c2Dam-00063s-H7
-	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 04:41:49 -0400
+	(envelope-from <stefanha@gmail.com>) id 1c2eRg-0002Zo-MQ
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2016 09:22:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1c2Dai-000097-Jp
-	for qemu-trivial@nongnu.org; Thu, 03 Nov 2016 04:41:48 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:32882)
+	(envelope-from <stefanha@gmail.com>) id 1c2eRf-0004RW-Si
+	for qemu-trivial@nongnu.org; Fri, 04 Nov 2016 09:22:12 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:35919)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1c2Dai-00008t-D3; Thu, 03 Nov 2016 04:41:44 -0400
-Received: by mail-wm0-x241.google.com with SMTP id u144so6809132wmu.0;
-	Thu, 03 Nov 2016 01:41:44 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1c2eRZ-0004IA-77; Fri, 04 Nov 2016 09:22:05 -0400
+Received: by mail-wm0-x244.google.com with SMTP id c17so3892685wmc.3;
+	Fri, 04 Nov 2016 06:22:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=eOZXsa/pvi2Zaf4/MFqQ+SFK9ojZ4UMhNzM0IXXsBrY=;
-	b=CAxpPD51ohVAha7srT4Atfo6FNFApZc9ma0kjdFqASscyf8uSOXq3w+coK7u/e8Sfh
-	VtkjHKxKKhJlLE9hoRGnZn2eMSdNds+MlTH0wpiyO6czEASWPFolaSo2z57lMphi+Roh
-	DoMEuB/LaGY4YfLXSpEDPH8YPOAtSg5sG1z+LwXrH+iPc0M159A+QfTTrPVIvkFhcQ2U
-	QFI/PngAdE5j9urArkpVlEjPMLMtWi/hxOrhGk9nn8atg8tuVp0sdk2NxnuB5IRPduak
-	8AlmFgAEOwpmUF4dSvvQhlqI4Dn+THlSz47bRglGytyrqxOgSRncXO9RrLi6so2ihKf4
-	pTcA==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=xO7rgxcIexGXIqRwXVsXtp+i21gSm6uAUDJn9KdV6jw=;
+	b=CrRwp3QXp/jWhiOuLdj5aE70ezyHqz52tSiiOUAqsE64rRXo80wE6fQMedbZ7YBDnc
+	CAkkbNsMeYdJRDyx3QVGcMJDx0u72cTmnWOXYO9HLtorFv5ebP2RJuQxCMhtqyE/KuMO
+	fG7V/IBChS2IPD2MtKSJ2J5B45k8nKg10no/F9AiyZErPs48m9bm0fEQfKId/Xqlw2X+
+	58SLKQhBBG8Er0qABvACoSRZaZC7pM8tkmiEqW49qwvvRzCjdmKI7ZrJmlgCA63ZqBKP
+	HJze1mAcyDoE9jTVg9z32Kc04chLn7Avmkb7P2ttx20zywzBb9FVJ0peG1IR+ebMBuTV
+	/ndQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=eOZXsa/pvi2Zaf4/MFqQ+SFK9ojZ4UMhNzM0IXXsBrY=;
-	b=jydfKunZLMm+sKfaWSqTmbsVKuqFZPVVMCP35+pGPbDIR1kp5XaxLMJkU4f7+gAqak
-	FtCR8zyi5amxUVKVQnJWTkKWEox1dKgSPpc9uXWojxyVtb0wloFaypRhbqBqdVLCg/+q
-	2Lrue2+p+yqJ8pnkOYr6DLWniVRpLULQLxPyShKMdi9tVhVh0aao2V75kns3Yj8cLOH+
-	a5hHvhXM+grXL2k0hKaeCJiM7EbVg2+20inC4ZhhHrQZr3ldRidU6Rmxl/VI8yMWME6b
-	r19t2MQs4TlbQyy1QOr5CL+wt6cv4MFS+VgtD8QrGitucBZmkrI82JjpYh1gMAtAA4F3
-	sX/A==
-X-Gm-Message-State: ABUngvc/LQN2US4H7M8s2Q/1GuFfNqjsqmliF1DYE1muWaVeOP0E/Dw3NvjhnKyF7DmqDw==
-X-Received: by 10.194.76.166 with SMTP id l6mr6337599wjw.85.1478162503049;
-	Thu, 03 Nov 2016 01:41:43 -0700 (PDT)
-Received: from [192.168.10.165] (dynamic-adsl-78-12-246-178.clienti.tiscali.it.
-	[78.12.246.178]) by smtp.googlemail.com with ESMTPSA id
-	jx8sm7231159wjc.2.2016.11.03.01.41.41
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=xO7rgxcIexGXIqRwXVsXtp+i21gSm6uAUDJn9KdV6jw=;
+	b=Idr/zllPiFAaReXqertNh+ibc3OxKdudouM9mvSoeeduB0GFGdki27i8oTNEmDij8l
+	yynf0k6oOt0c707XAFXEMNxgBtYNzORE9eLaL44VcIwCoapw6HYtFwD/w78bZcAh5OJO
+	3FM2ErYEpyMemi9eJuC+b80bmjgQsb6645kA9NW/W5YsVhSj3JktKtcwOay7JApZ1X46
+	mPJ/PHwZRioogVftCBKFK6e1ediz9h0F3fHsBnuYr9h2NMw4zSiSI5KiNcVe8kbLIHr9
+	l6Gsa3l14c/F4kAKKZ6c96XtYVQBeTqg9Yyd3SnNyXWR+T+6FFUbTKw4Jpe0dyWZ5S0w
+	krdQ==
+X-Gm-Message-State: ABUngvf2du4fd1ICXSz0ABRLq+J6BkMhb+8KwseXAzFvm40tDeGWYRvyCguxsP8n6kRxog==
+X-Received: by 10.28.168.137 with SMTP id r131mr3590563wme.16.1478265276151;
+	Fri, 04 Nov 2016 06:14:36 -0700 (PDT)
+Received: from localhost (host86-163-92-203.range86-163.btcentralplus.com.
+	[86.163.92.203]) by smtp.gmail.com with ESMTPSA id
+	125sm4545762wmh.14.2016.11.04.06.14.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Nov 2016 01:41:42 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3253b017-b854-a7ad-af1d-6a7f12e17f18@redhat.com>
-Date: Thu, 3 Nov 2016 09:41:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	Fri, 04 Nov 2016 06:14:35 -0700 (PDT)
+Date: Fri, 4 Nov 2016 13:14:34 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org
+Message-ID: <20161104131434.GB7120@stefanha-x1.localdomain>
+References: <1477933290-32248-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1478096330-18081-1-git-send-email-mjt@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="rS8CxjVDS/+yyDmU"
+Content-Disposition: inline
+In-Reply-To: <1477933290-32248-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [PATCH v2] vl.c: move pidfile creation up the
- line
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] README: Add linux to macOS
+ build info
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,61 +70,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Nov 2016 08:41:49 -0000
+X-List-Received-Date: Fri, 04 Nov 2016 13:22:13 -0000
 
 
+--rS8CxjVDS/+yyDmU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 02/11/2016 15:18, Michael Tokarev wrote:
-> With current code, pid file is open after various
-> sockets, chardevs, fsdevs and the like.  This causes
-> interesting effects, for example when monitor is a
-> unix-socket, and another qemu instance is already
-> running, new qemu first "damages" the socket and
-> next complain that it can't acquire the pid file and
-> exits, making running qemu unreachable.
-> 
-> Move pid file creation earlier, right after the call
-> to os_daemonize(), where we know our process id (pid).
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+On Mon, Oct 31, 2016 at 05:01:30PM +0000, Peter Maydell wrote:
+> The README lists the URLs for the wiki pages describing
+> how to build on Linux and Windows; add the equivalent
+> link for building on macOS.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  vl.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> v2: move the pid file creation even earlier, as per
-> comment by Markus Armbruster
-> 
-> diff --git a/vl.c b/vl.c
-> index 368510f..ce7e998 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4058,6 +4058,11 @@ int main(int argc, char **argv, char **envp)
->  
->      os_daemonize();
->  
-> +    if (pid_file && qemu_create_pidfile(pid_file) != 0) {
-> +        error_report("could not acquire pid file: %s", strerror(errno));
-> +        exit(1);
-> +    }
-> +
->      if (qemu_init_main_loop(&main_loop_err)) {
->          error_report_err(main_loop_err);
->          exit(1);
-> @@ -4335,11 +4340,6 @@ int main(int argc, char **argv, char **envp)
->      }
->  #endif
->  
-> -    if (pid_file && qemu_create_pidfile(pid_file) != 0) {
-> -        error_report("could not acquire pid file: %s", strerror(errno));
-> -        exit(1);
-> -    }
-> -
->      if (qemu_opts_foreach(qemu_find_opts("device"),
->                            device_help_func, NULL, NULL)) {
->          exit(0);
-> 
+>  README | 1 +
+>  1 file changed, 1 insertion(+)
 
-Queued, thanks.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Paolo
+--rS8CxjVDS/+yyDmU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJYHIm6AAoJEJykq7OBq3PI0BAIAKnaYs6Kd3OSHrLD7Di1UoqK
+vCNdZ9Du6ozK5bhKWoiPXh/22k3STP7L2I92G3OdnUpdXp7ppbkFY2npgZiXlqvP
+5lx3AsZ5eYmuiBIqWzMYE9/X+djFKSBYMMCgZgO9emiRKBJ+VUG2NIzp+ENovlxt
+RYmyXIzy/h38jbL4frwMR7eZd0cwf2y49IY0oGITj68MiyeYPdncsqtHn93hPR+I
+zwFGFDo7gPU5s9x4u9gjt4kk3qD0rhYvqvGkcL9Z9nCFGy/Z4tP+/bmvAe5ScxUk
+myWlAsg5OdXnp+ZQNMgbfXUHKd2asRuHOSQZDGiVrbgGZSePPmV0ME4uiC1hgUI=
+=W1vn
+-----END PGP SIGNATURE-----
+
+--rS8CxjVDS/+yyDmU--
 
