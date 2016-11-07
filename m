@@ -1,49 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c3mcR-0002rU-Kg
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2016 11:17:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53119)
+	id 1c3p6b-0005tp-Hw
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Nov 2016 13:57:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43759)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1c3mcP-0002pe-27
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2016 11:17:57 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1c3p6Y-0005p8-Ke
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2016 13:57:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1c3mcO-0001sR-4d
-	for qemu-trivial@nongnu.org; Mon, 07 Nov 2016 11:17:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35204)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1c3mcH-0001or-2y; Mon, 07 Nov 2016 11:17:49 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AB5C74DAF7;
-	Mon,  7 Nov 2016 16:17:46 +0000 (UTC)
-Received: from [10.3.116.189] (ovpn-116-189.phx2.redhat.com [10.3.116.189])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uA7GHj29025787; Mon, 7 Nov 2016 11:17:46 -0500
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	Changlong Xie <xiecl.fnst@cn.fujitsu.com>, qemu devel
-	<qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
+	(envelope-from <marcandre.lureau@gmail.com>) id 1c3p6X-0006SF-Kt
+	for qemu-trivial@nongnu.org; Mon, 07 Nov 2016 13:57:14 -0500
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:35553)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1c3p6R-0006QR-5p; Mon, 07 Nov 2016 13:57:07 -0500
+Received: by mail-lf0-x242.google.com with SMTP id p100so9623476lfg.2;
+	Mon, 07 Nov 2016 10:57:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to; 
+	bh=I2l3Axn+8slszS80Y0OtSO80nZEhV7FlbjlNBz9tqqk=;
+	b=wsKWVEH9MneE7+K91qNG+MVn+EO3uZcOV0lDYyFlQtvuTsbYTu3niOMr8hI4oITgE/
+	ams6K2wnahpNuO+kEfQn0l3mzyqFHJaOVRR/KqVOjyXrYMEyZ88SMZPkwg/PoNx3gSYL
+	Cl4mqklbOIUQijpVH2IgssD5iM0DRa2/eex35BFSUoj0kcrAY71HvtqSd6370s8o1bsC
+	bUd/6tJsrveQOAYwCop6SXMnHXx8Godes7vcNRGfX4OqCLo9eX+Nlj0deH3Ln/Ybe5da
+	4jLA80qcPttfmvY5BjUouNiA50pZMdfRDBWp1MqRcG30EKJfQsxWgKCCt6yXOXJAxGR1
+	WioA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to;
+	bh=I2l3Axn+8slszS80Y0OtSO80nZEhV7FlbjlNBz9tqqk=;
+	b=EDoLMaJvDjg27OJh8q5coR8E1fv5lHZS/GmDnOEjZfbM0dbUhiyH/vI72ISmyKkO29
+	MHlIi4qmg3xcfpWRhoNupiwhS4OaU1SK1utF3XAdx9wAJqFQ6GrIhcFMy9GOa5z5Y5Ym
+	0ft/ubuXwI18NBamUiZr6+ttn6Lgq/OWRVcZdMnRfuD7IFYEZrMFLpEKwwfPQs9m7ZiK
+	LQpMXfvrBhQaAe6fxgobpIyLlZBldg7VBsk5XnLRvnq8ZbGX86PjGC4cfaMAWf6+ileT
+	uwc/Trtm5R3+zJ0SgxROE6IsO5BGe/nh62kUUcMA5vWDUj32CfRbqo+sEJ/AQXay97o5
+	Cd4g==
+X-Gm-Message-State: ABUngvdhp9hYAm3KxvTASkZT54WVPdlTlQKxhIYCErQ8kurQjIFMTXmTzNSyQU36xJFgpdfKo2hG8tKe40WynQ==
+X-Received: by 10.25.28.77 with SMTP id c74mr364448lfc.107.1478545025429; Mon,
+	07 Nov 2016 10:57:05 -0800 (PST)
+MIME-Version: 1.0
 References: <1478494765-13233-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
 	<CAJ+F1CJxcgTOroM3Oy=bSLP0PrxS=uBBD3k8iZnvZ2riJsqRJg@mail.gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <b701e086-c769-8055-1943-0a2b3e0bbf31@redhat.com>
-Date: Mon, 7 Nov 2016 10:17:45 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CJxcgTOroM3Oy=bSLP0PrxS=uBBD3k8iZnvZ2riJsqRJg@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="RhqroT4rgOu3nPi7CQqTGlREF5eR7wH5v"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 07 Nov 2016 16:17:46 +0000 (UTC)
+	<b701e086-c769-8055-1943-0a2b3e0bbf31@redhat.com>
+In-Reply-To: <b701e086-c769-8055-1943-0a2b3e0bbf31@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Mon, 07 Nov 2016 18:56:54 +0000
+Message-ID: <CAJ+F1CKVd2VMYDKg4EfCro+QYyGQmD6Gezq3R58_qnQMqtA1wQ@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>, Changlong Xie <xiecl.fnst@cn.fujitsu.com>, 
+	qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary=001a11401c9a067c890540ba9755
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 2a00:1450:4010:c07::242
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/.gitignore: Ignore
  test-char
 X-BeenThere: qemu-trivial@nongnu.org
@@ -57,67 +63,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Nov 2016 16:17:58 -0000
+X-List-Received-Date: Mon, 07 Nov 2016 18:57:16 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---RhqroT4rgOu3nPi7CQqTGlREF5eR7wH5v
-Content-Type: multipart/mixed; boundary="dFRK8iSminlC5F9FGoX2tBuScclVvpCFG";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- Changlong Xie <xiecl.fnst@cn.fujitsu.com>, qemu devel
- <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Message-ID: <b701e086-c769-8055-1943-0a2b3e0bbf31@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] tests/.gitignore: Ignore test-char
-References: <1478494765-13233-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
- <CAJ+F1CJxcgTOroM3Oy=bSLP0PrxS=uBBD3k8iZnvZ2riJsqRJg@mail.gmail.com>
-In-Reply-To: <CAJ+F1CJxcgTOroM3Oy=bSLP0PrxS=uBBD3k8iZnvZ2riJsqRJg@mail.gmail.com>
-
---dFRK8iSminlC5F9FGoX2tBuScclVvpCFG
-Content-Type: text/plain; charset=utf-8
+--001a11401c9a067c890540ba9755
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On 11/07/2016 05:01 AM, Marc-Andr=C3=A9 Lureau wrote:
-> On Mon, Nov 7, 2016 at 8:52 AM Changlong Xie <xiecl.fnst@cn.fujitsu.com=
+On Mon, Nov 7, 2016 at 8:17 PM Eric Blake <eblake@redhat.com> wrote:
+
+> On 11/07/2016 05:01 AM, Marc-Andr=C3=A9 Lureau wrote:
+> > On Mon, Nov 7, 2016 at 8:52 AM Changlong Xie <xiecl.fnst@cn.fujitsu.com=
 >
-> wrote:
->=20
->> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
->>
->=20
-> Introduced in commit  ea3af47d7
->=20
-> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-Marc-Andr=C3=A9, do you still want to pursue your patch that auto-generat=
+> > wrote:
+> >
+> >> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+> >>
+> >
+> > Introduced in commit  ea3af47d7
+> >
+> > Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> Marc-Andr=C3=A9, do you still want to pursue your patch that auto-generat=
 ed
-tests/.gitignore, so we don't have to keep doing these cleanups?
+> tests/.gitignore, so we don't have to keep doing these cleanups?
+>
+>
+I am sporadically working on it (and a version for the whole qemu tree). I
+was waiting for some feedback from Paolo. Anyway, I think this is best left
+for after 2.8.
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+--
+> Eric Blake   eblake redhat com    +1-919-301-3266 <+1%20919-301-3266>
+> Libvirt virtualization library http://libvirt.org
+>
+> --
+Marc-Andr=C3=A9 Lureau
 
+--001a11401c9a067c890540ba9755
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
---dFRK8iSminlC5F9FGoX2tBuScclVvpCFG--
+<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Mon=
+, Nov 7, 2016 at 8:17 PM Eric Blake &lt;<a href=3D"mailto:eblake@redhat.com=
+">eblake@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
+On 11/07/2016 05:01 AM, Marc-Andr=C3=A9 Lureau wrote:<br class=3D"gmail_msg=
+">
+&gt; On Mon, Nov 7, 2016 at 8:52 AM Changlong Xie &lt;<a href=3D"mailto:xie=
+cl.fnst@cn.fujitsu.com" class=3D"gmail_msg" target=3D"_blank">xiecl.fnst@cn=
+.fujitsu.com</a>&gt;<br class=3D"gmail_msg">
+&gt; wrote:<br class=3D"gmail_msg">
+&gt;<br class=3D"gmail_msg">
+&gt;&gt; Signed-off-by: Changlong Xie &lt;<a href=3D"mailto:xiecl.fnst@cn.f=
+ujitsu.com" class=3D"gmail_msg" target=3D"_blank">xiecl.fnst@cn.fujitsu.com=
+</a>&gt;<br class=3D"gmail_msg">
+&gt;&gt;<br class=3D"gmail_msg">
+&gt;<br class=3D"gmail_msg">
+&gt; Introduced in commit=C2=A0 ea3af47d7<br class=3D"gmail_msg">
+&gt;<br class=3D"gmail_msg">
+&gt; Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lu=
+reau@redhat.com" class=3D"gmail_msg" target=3D"_blank">marcandre.lureau@red=
+hat.com</a>&gt;<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+Marc-Andr=C3=A9, do you still want to pursue your patch that auto-generated=
+<br class=3D"gmail_msg">
+tests/.gitignore, so we don&#39;t have to keep doing these cleanups?<br cla=
+ss=3D"gmail_msg">
+<br class=3D"gmail_msg"></blockquote><div><br></div><div>I am sporadically =
+working on it (and a version for the whole qemu tree). I was waiting for so=
+me feedback from Paolo. Anyway, I think this is best left for after 2.8.<br=
+><br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
+der-left:1px #ccc solid;padding-left:1ex">
+--<br class=3D"gmail_msg">
+Eric Blake=C2=A0 =C2=A0eblake redhat com=C2=A0 =C2=A0 <a href=3D"tel:+1%209=
+19-301-3266" value=3D"+19193013266" class=3D"gmail_msg" target=3D"_blank">+=
+1-919-301-3266</a><br class=3D"gmail_msg">
+Libvirt virtualization library <a href=3D"http://libvirt.org" rel=3D"norefe=
+rrer" class=3D"gmail_msg" target=3D"_blank">http://libvirt.org</a><br class=
+=3D"gmail_msg">
+<br class=3D"gmail_msg">
+</blockquote></div></div><div dir=3D"ltr">-- <br></div><div data-smartmail=
+=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div></div=
+>
 
---RhqroT4rgOu3nPi7CQqTGlREF5eR7wH5v
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJYIKkpAAoJEKeha0olJ0NqElsIAIdghOjGuJUfbldFQbUSKJsR
-7Lgy/pSfIv+1c0eVrRgMODeSYChtEBNpK4qufQR+tf0pL4i3CDgLggxyLhFydYcv
-ikdMgv/F6D1AQsgnmuXVzsUU72OuWrp2y7KL/xRnws0+GaBNWxIfasIHpiRBYjTC
-ca01x/lAOxRuI2GtD348/dZULnmhiGm2ICXaS1x5/ZXGjgzfjYSVqMm4ypJ7ycm7
-1fdDWjFhTJi/z1ho/FmHw6Sjcj9QuPYee2zgBdn/ujH2I6fyuiIr+PQnlWU1x0WC
-MmLeYCUpkc2vHhFDHy/9+w5qOLEKSKFb9FPh8P8DOn4ZBPV90KmWDM85H0XeCfM=
-=//Fu
------END PGP SIGNATURE-----
-
---RhqroT4rgOu3nPi7CQqTGlREF5eR7wH5v--
+--001a11401c9a067c890540ba9755--
 
