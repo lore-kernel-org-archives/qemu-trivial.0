@@ -1,42 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c524Z-0002xm-EX
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Nov 2016 22:00:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43127)
+	id 1c679G-0004ei-Oa
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Nov 2016 21:37:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44449)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1c524X-0002uF-7M
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2016 22:00:10 -0500
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1c679E-0004d7-Ui
+	for qemu-trivial@nongnu.org; Sun, 13 Nov 2016 21:37:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1c524W-0001sZ-HV
-	for qemu-trivial@nongnu.org; Thu, 10 Nov 2016 22:00:09 -0500
-Received: from [59.151.112.132] (port=35116 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1c524U-0001oR-Ft; Thu, 10 Nov 2016 22:00:06 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="12875391"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 11 Nov 2016 11:00:04 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 2C67543972C6;
-	Fri, 11 Nov 2016 11:00:03 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.279.2; Fri, 11 Nov 2016 11:00:02 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <mst@redhat.com>, <arcel@redhat.com>
-Date: Fri, 11 Nov 2016 11:02:48 +0800
-Message-ID: <1478833368-25917-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	(envelope-from <zhang.zhanghailiang@huawei.com>) id 1c679E-0002t1-8g
+	for qemu-trivial@nongnu.org; Sun, 13 Nov 2016 21:37:28 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:35518)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <zhang.zhanghailiang@huawei.com>)
+	id 1c6797-0002qj-Tg; Sun, 13 Nov 2016 21:37:22 -0500
+Received: from 172.24.1.60 (EHLO szxeml430-hub.china.huawei.com)
+	([172.24.1.60])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id CLH25962; Mon, 14 Nov 2016 10:36:54 +0800 (CST)
+Received: from [127.0.0.1] (10.177.24.212) by szxeml430-hub.china.huawei.com
+	(10.82.67.185) with Microsoft SMTP Server id 14.3.235.1;
+	Mon, 14 Nov 2016 10:36:47 +0800
+To: Eric Blake <eblake@redhat.com>, <armbru@redhat.com>
+References: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
+	<f1f826e3-49b6-1755-24fe-ea96d8d484b1@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+From: Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+Message-ID: <5829233D.8080709@huawei.com>
+Date: Mon, 14 Nov 2016 10:36:45 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 2C67543972C6.A7CAE
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH 2/2] pcie: fix typo in comments
+In-Reply-To: <f1f826e3-49b6-1755-24fe-ea96d8d484b1@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.24.212]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Subject: Re: [Qemu-trivial] [PATCH v2] qapi-schema: clarify 'colo' state for
+ MigrationStatus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,29 +49,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Nov 2016 03:00:10 -0000
+X-List-Received-Date: Mon, 14 Nov 2016 02:37:29 -0000
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- hw/pci/pcie.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ping ?
 
-diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-index 99cfb45..39b10b8 100644
---- a/hw/pci/pcie.c
-+++ b/hw/pci/pcie.c
-@@ -656,7 +656,7 @@ static void pcie_ext_cap_set_next(PCIDevice *dev, uint16_t pos, uint16_t next)
- }
- 
- /*
-- * caller must supply valid (offset, size) * such that the range shouldn't
-+ * Caller must supply valid (offset, size) such that the range wouldn't
-  * overlap with other capability or other registers.
-  * This function doesn't check it.
-  */
--- 
-2.1.0
+Anyone pick this up?
 
-
+On 2016/11/2 22:04, Eric Blake wrote:
+> On 11/02/2016 02:44 AM, zhanghailiang wrote:
+>> VM can not get into colo state unless users enable 'x-colo'
+>> capability for migration, Here it is necessary to clarify
+>> this.
+>>
+>> Suggested-by: Eric Blake <eblake@redhat.com>
+>> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+>> ---
+>> v2:
+>> - Clarify colo state for RunState too as Eric suggested.
+>> ---
+>>   qapi-schema.json | 8 +++++---
+>>   1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+>
+>
 
 
