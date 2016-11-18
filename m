@@ -1,72 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c7Jbu-0006j3-CE
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Nov 2016 05:08:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57283)
+	id 1c7XbI-00064O-Hx
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Nov 2016 20:04:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1c7Jbr-0006hk-QG
-	for qemu-trivial@nongnu.org; Thu, 17 Nov 2016 05:08:00 -0500
+	(envelope-from <anand.indukala@gmail.com>) id 1c7XbF-00062t-UO
+	for qemu-trivial@nongnu.org; Thu, 17 Nov 2016 20:04:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1c7Jbn-0002b2-Rj
-	for qemu-trivial@nongnu.org; Thu, 17 Nov 2016 05:07:59 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33427)
+	(envelope-from <anand.indukala@gmail.com>) id 1c7XbF-0002cO-3W
+	for qemu-trivial@nongnu.org; Thu, 17 Nov 2016 20:04:17 -0500
+Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:36564)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1c7Jbc-0002Qc-Cr; Thu, 17 Nov 2016 05:07:44 -0500
-Received: by mail-wm0-x243.google.com with SMTP id u144so19595856wmu.0;
-	Thu, 17 Nov 2016 02:07:44 -0800 (PST)
+	(Exim 4.71) (envelope-from <anand.indukala@gmail.com>)
+	id 1c7XbA-0002Rz-FL; Thu, 17 Nov 2016 20:04:12 -0500
+Received: by mail-pg0-x242.google.com with SMTP id x23so18942755pgx.3;
+	Thu, 17 Nov 2016 17:04:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=GmJ8O5XHzGotGys37YAyxyHchAiykOvhbS+okCZ5evs=;
-	b=0kZXlu8sRTHCRd4/o/Pzn7NVTfTXZaz+dztXztyxZPR1d9FTRPsl4aF6Kke/Rfsmr0
-	ArnIneQ3S1eqLf0tIVT5069xHrgxTtCqDVgKRXqmn55Z29CXU0tGUfnFWLmBLISqmGlk
-	juAAy5V23Ob3vXjcYwfaHEW1iPHDDTI3+EweQvNIrAaJ4pNVJ96w5Ee5KLAsBhgMQeyH
-	dO/PysuWdnfgBX8eY5zXimkxHzs9cmcUnwmJ5zwB/0mFN1vhgmnYUzMM9dXskDiFj2et
-	Gv/41Vo1+xZnq+DopIz1q4TFkd1vIyvdDz+C3otv3a/vtIQNe11HuQhd+UzbXrFJSblx
-	T3tw==
+	h=from:to:cc:subject:date:message-id;
+	bh=jNJ1a7bayqp30C2XwCfnj8thv8I8AyS37FX5TYPHEEc=;
+	b=hDHsXB5PB9iV3URkn5MR02lhTmT2Im4uie0NudK/eVcqv7Mh47hG/c2ISZ7nr2RDQ0
+	Ko7r1w7NyJiRhwjKOS3RR9v/uDxnoLmLgdPRMrnKPQkFT7jk4V71PUawP1KSsCDPWzZN
+	RQxN5qz9bLWhisfa9npbyx7YOpcWDwmclvJ6EtLglLEhR5/FWs4gvHfa5rrgwPnBU20Z
+	LJRC3eR37jOm6wYCdk303bN9fB7MMGlrvv25lbSSF+t9VtAklZO+D4EenQ3rLQJDTC65
+	5Y1zknkrX5QXy+FlvYCsubae+ZQsT6jaIb1IV166wr2xaJCCLceIe4q+5Q9F8B3aSqR7
+	VWaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=GmJ8O5XHzGotGys37YAyxyHchAiykOvhbS+okCZ5evs=;
-	b=fBH0+HpTePr7hXy39xI95Ozn8+fWCyEzhYzOkckMYCCgcGPjZLJYlFHGjh/4ExEVAu
-	KhowYa9PkDwai8t5xQSegolusQ50JU6iELFax035FIdd/9hRhuzksu9yscZKV8Q8D8MP
-	4+OFc1WMuiZIlchzDXsGavT1hVc4iNiK9LWksvg/FbEaSlJjBW6F3Hl5FZflpX0vLDfB
-	ax6/1MdEpVJqtmKjMp8kjlgOH5z/WAMXFr2RbZLcbN/msnXTrZH4qGvhOQDpKjQVp8Ik
-	Tgb7Je3C45mNLKlxa5xMYZ58kv/hANX8kfPcDbaZOQosshQD7y+iQ6Vj0riw8W1w+cXU
-	pUtg==
-X-Gm-Message-State: AKaTC00W4eQ0050yxy1gjxvhSuUacn9YJU0sqf5LEWEqVlnjC2megHvnVT+nhwYx/buKRw==
-X-Received: by 10.194.37.6 with SMTP id u6mr1725929wjj.20.1479377263282;
-	Thu, 17 Nov 2016 02:07:43 -0800 (PST)
-Received: from localhost (host86-163-92-203.range86-163.btcentralplus.com.
-	[86.163.92.203]) by smtp.gmail.com with ESMTPSA id
-	t82sm2873092wmd.17.2016.11.17.02.07.42
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=jNJ1a7bayqp30C2XwCfnj8thv8I8AyS37FX5TYPHEEc=;
+	b=iIe2ibqlOmK4lOrXJiWP642m58pBdZf8lc+dr/jfVobC79u4HW0Lt8+02y79rPuCLc
+	dm+BdCffSMu6LdXreBwMaGJ9mcAs3zPzddmyJeOeW4ph+6m3SI9dhraEyR+H5ab9SKy6
+	tAYMovgrwQ/RyFT9mdMWep3sVIaxrcfWFXXlGyA7a0CNp9nMjNt+8tf2bAGhRa7k76Is
+	LUcgg9LY2rYAQ5n8PxIW8XaAxuhZ6cwIox48uHrzmjprQ/vauo4c0Lqr80JixjyNgfDO
+	S5Lg8flDormAy30HyCL4FL2Tt+yRmbr3rFknxWF2zde9sifguT7TO1R4BFWYqRfoPUvd
+	HyNg==
+X-Gm-Message-State: ABUngvfT0Y69DLp56iDDGYLcC2q5sTXwDy9xma9IM2pDmrbB9zx+5EaRMdkTMtA/SewosA==
+X-Received: by 10.99.104.68 with SMTP id d65mr13014787pgc.52.1479431049965;
+	Thu, 17 Nov 2016 17:04:09 -0800 (PST)
+Received: from anand.j ([117.249.174.47])
+	by smtp.googlemail.com with ESMTPSA id
+	k67sm11207762pfk.69.2016.11.17.17.04.04
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 17 Nov 2016 02:07:42 -0800 (PST)
-Date: Thu, 17 Nov 2016 10:07:41 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Hailiang Zhang <zhang.zhanghailiang@huawei.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, armbru@redhat.com, dgilbert@redhat.com,
-	Amit Shah <amit.shah@redhat.com>, Eric Blake <eblake@redhat.com>
-Message-ID: <20161117100741.GB24138@stefanha-x1.localdomain>
-References: <1478072652-9884-1-git-send-email-zhang.zhanghailiang@huawei.com>
-	<f1f826e3-49b6-1755-24fe-ea96d8d484b1@redhat.com>
-	<5829233D.8080709@huawei.com>
-	<20161114135451.GB26198@stefanha-x1.localdomain>
-	<0ea043b8-532f-04a6-c4f8-b5a9ce6c16ef@vivier.eu>
-	<582D576B.7000804@huawei.com>
-	<000ec561-21b1-46b8-3951-6de680fda41b@vivier.eu>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="lEGEL1/lMxI0MVQ2"
-Content-Disposition: inline
-In-Reply-To: <000ec561-21b1-46b8-3951-6de680fda41b@vivier.eu>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+	Thu, 17 Nov 2016 17:04:09 -0800 (PST)
+From: Anand J <anand.indukala@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 18 Nov 2016 06:33:32 +0530
+Message-Id: <1479431012-19914-1-git-send-email-anand.indukala@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] qapi-schema: clarify
- 'colo' state for MigrationStatus
+X-Received-From: 2607:f8b0:400e:c05::242
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH] ppc: add appropriate warning
+ message for qemu_find_file() NULL return
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,57 +62,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Nov 2016 10:08:00 -0000
+X-List-Received-Date: Fri, 18 Nov 2016 01:04:18 -0000
 
+Add check for qemu_find_file() NULL return and throw a warning message
+can provide better visibility to the upcoming error message if any.
 
---lEGEL1/lMxI0MVQ2
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Anand J <anand.indukala@gmail.com>
+---
+ hw/ppc/e500.c         | 3 +++
+ hw/ppc/mac_newworld.c | 3 +++
+ hw/ppc/mac_oldworld.c | 3 +++
+ hw/ppc/pnv.c          | 3 +++
+ 4 files changed, 12 insertions(+)
 
-On Thu, Nov 17, 2016 at 08:52:12AM +0100, Laurent Vivier wrote:
-> Le 17/11/2016 =E0 08:08, Hailiang Zhang a =E9crit :
-> > Hi Laurent,
-> >=20
-> > On 2016/11/15 16:44, Laurent Vivier wrote:
-> >> Le 14/11/2016 =E0 14:54, Stefan Hajnoczi a =E9crit :
-> >>> On Mon, Nov 14, 2016 at 10:36:45AM +0800, Hailiang Zhang wrote:
-> >>>> ping ?
-> >>>>
-> >>>> Anyone pick this up?
-> >>>
-> >>> The original patch that added these lines went through Amit Shah and
-> >>> David Gilbert.  I have CCed them.
-> >>
-> >> If it is needed, I can also send a pull request through my
-> >> trivial-patches branch.
-> >>
-> >=20
-> > I think this patch can go through your trivial branch if Amit or Dave
-> > didn't pick it up.
->=20
-> Stefan,
->=20
-> can I send a pull request for this while we are in hard freeze phase or
-> should we wait the end of the release?
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index cf8b122..1fec0f4 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -1014,6 +1014,9 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+         }
+     }
+     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
++    if (!filename) {
++        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
++    }
+ 
+     bios_size = load_elf(filename, NULL, NULL, &bios_entry, &loadaddr, NULL,
+                          1, PPC_ELF_MACHINE, 0, 0);
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 7d25106..da54436 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -217,6 +217,9 @@ static void ppc_core99_init(MachineState *machine)
+     if (bios_name == NULL)
+         bios_name = PROM_FILENAME;
+     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
++    if (!filename) {
++        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
++    }
+     memory_region_set_readonly(bios, true);
+     memory_region_add_subregion(get_system_memory(), PROM_ADDR, bios);
+ 
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 4479487..b9bca61 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -145,6 +145,9 @@ static void ppc_heathrow_init(MachineState *machine)
+     if (bios_name == NULL)
+         bios_name = PROM_FILENAME;
+     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
++    if (!filename) {
++        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
++    }
+     memory_region_set_readonly(bios, true);
+     memory_region_add_subregion(sysmem, PROM_ADDR, bios);
+ 
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 9df7b25..282a0d0 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -378,6 +378,9 @@ static void ppc_powernv_init(MachineState *machine)
+     }
+ 
+     fw_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
++    if (!fw_filename) {
++        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
++    }
+ 
+     fw_size = load_image_targphys(fw_filename, FW_LOAD_ADDR, FW_MAX_SIZE);
+     if (fw_size < 0) {
+-- 
+2.7.4
 
-Yes, it's a fix for incomplete documentation.
-
-Stefan
-
---lEGEL1/lMxI0MVQ2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYLYFtAAoJEJykq7OBq3PIVwIH/0DDt4eEtDaqCbpWOZtQH/o7
-amgMLBhTzqpyRLlAP0QVxxMrQnzW2b8f61Wu+ejBH2NyJO3eMMXlW49o4xSZ03Xw
-zP4922EGuv0icFz03iOTL1JRGpNQluazhyZLD8A4/LSBby7hMzEu8rtHFLw+IPan
-NVpnTM1UC5EXTBbVV+61HDDqjMRvUQxCdeJJCfSBgUAu1PKnnfqI6L/IF8E6CDUo
-/sVLvlDJRr53sMbU0C9x7O7cwQFMlqBLoSNI7pRivKlKQ1f5QpFcLuNqIHQQc2HQ
-IYJHjdoU7Rcl9aAXicRespmD6kJQOSNkxWxpRN+xKuZENhabLbwusimdl2cRcF0=
-=5RxX
------END PGP SIGNATURE-----
-
---lEGEL1/lMxI0MVQ2--
 
