@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c7ewR-0007rH-9d
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Nov 2016 03:54:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51393)
+	id 1c8AlY-0003Rb-Tu
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Nov 2016 13:53:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1c7ewL-0007mT-Oc
-	for qemu-trivial@nongnu.org; Fri, 18 Nov 2016 03:54:36 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1c8AlX-0003Qn-4E
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 13:53:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1c7ewK-0003HM-Qu
-	for qemu-trivial@nongnu.org; Fri, 18 Nov 2016 03:54:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35050)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1c7ewC-00039C-Hn; Fri, 18 Nov 2016 03:54:24 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 496FF6333C;
-	Fri, 18 Nov 2016 08:54:23 +0000 (UTC)
-Received: from [10.36.112.21] (ovpn-112-21.ams2.redhat.com [10.36.112.21])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uAI8sL3G017457; Fri, 18 Nov 2016 03:54:21 -0500
-To: Anand J <anand.indukala@gmail.com>, qemu-devel@nongnu.org
-References: <1479431012-19914-1-git-send-email-anand.indukala@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <82c4c500-8914-f2d5-eb57-6a77235ba144@redhat.com>
-Date: Fri, 18 Nov 2016 09:54:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <1479431012-19914-1-git-send-email-anand.indukala@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 18 Nov 2016 08:54:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ppc: add appropriate
- warning message for qemu_find_file() NULL return
+	(envelope-from <stefan@weilnetz.de>) id 1c8AlW-0003QA-CI
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 13:53:31 -0500
+Received: from mail.weilnetz.de ([37.221.199.173]:56683)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1c8AlR-0003PY-UN; Sat, 19 Nov 2016 13:53:26 -0500
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 43F9311810A9;
+	Sat, 19 Nov 2016 19:53:23 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id fr2mDX6Rn8g7; Sat, 19 Nov 2016 19:53:21 +0100 (CET)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+	by mail.weilnetz.de (Postfix) with ESMTP id 04E1511810A8;
+	Sat, 19 Nov 2016 19:53:20 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id A2DA34677CA; Sat, 19 Nov 2016 19:53:20 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>
+Date: Sat, 19 Nov 2016 19:53:18 +0100
+Message-Id: <20161119185318.10564-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.10.2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 37.221.199.173
+Subject: [Qemu-trivial] [PATCH for-2.8] curses: Fix compiler warnings
+ (Mingw-w64 redefinition of macro KEY_EVENT)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,91 +47,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Nov 2016 08:54:37 -0000
+X-List-Received-Date: Sat, 19 Nov 2016 18:53:32 -0000
 
+For builds with Mingw-w64 as it is included in Cygwin, there are two
+header files which define KEY_EVENT with different values.
 
+This results in lots of compiler warnings like this one:
 
-On 18/11/2016 02:03, Anand J wrote:
-> Add check for qemu_find_file() NULL return and throw a warning message
-> can provide better visibility to the upcoming error message if any.
+  CC      vl.o
+In file included from /qemu/include/ui/console.h:340:0,
+                 from /qemu/vl.c:76:
+/usr/i686-w64-mingw32/sys-root/mingw/include/curses.h:1522:0: warning: "KEY_EVENT" redefined
+ #define KEY_EVENT 0633  /* We were interrupted by an event */
 
-You should cc: email address given by ./scripts/get_maintainer.pl
+In file included from /usr/share/mingw-w64/include/windows.h:74:0,
+                 from /usr/share/mingw-w64/include/winsock2.h:23,
+                 from /qemu/include/sysemu/os-win32.h:29,
+                 from /qemu/include/qemu/osdep.h:100,
+                 from /qemu/vl.c:24:
+/usr/share/mingw-w64/include/wincon.h:101:0: note: this is the location of the previous definition
+ #define KEY_EVENT 0x1
 
-> Signed-off-by: Anand J <anand.indukala@gmail.com>
-> ---
->  hw/ppc/e500.c         | 3 +++
->  hw/ppc/mac_newworld.c | 3 +++
->  hw/ppc/mac_oldworld.c | 3 +++
->  hw/ppc/pnv.c          | 3 +++
->  4 files changed, 12 insertions(+)
-> 
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index cf8b122..1fec0f4 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -1014,6 +1014,9 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
->          }
->      }
->      filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +    if (!filename) {
-> +        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
-> +    }
->  
->      bios_size = load_elf(filename, NULL, NULL, &bios_entry, &loadaddr, NULL,
->                           1, PPC_ELF_MACHINE, 0, 0);
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index 7d25106..da54436 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -217,6 +217,9 @@ static void ppc_core99_init(MachineState *machine)
->      if (bios_name == NULL)
->          bios_name = PROM_FILENAME;
->      filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +    if (!filename) {
-> +        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
-> +    }
+QEMU only uses the KEY_EVENT macro from wincon.h.
+Therefore we can undefine the macro coming from curses.h.
 
-The upcoming error message also displays bios_name.
+The explicit include statement for curses.h in ui/curses.c is not needed
+and was removed.
 
->      memory_region_set_readonly(bios, true);
->      memory_region_add_subregion(get_system_memory(), PROM_ADDR, bios);
->  
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index 4479487..b9bca61 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -145,6 +145,9 @@ static void ppc_heathrow_init(MachineState *machine)
->      if (bios_name == NULL)
->          bios_name = PROM_FILENAME;
->      filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +    if (!filename) {
-> +        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
-> +    }
+Those two modifications fix the redefinition warnings.
 
-The upcoming error message also displays bios_name.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ include/ui/console.h | 3 +++
+ ui/curses.c          | 1 -
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
->      memory_region_set_readonly(bios, true);
->      memory_region_add_subregion(sysmem, PROM_ADDR, bios);
->  
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index 9df7b25..282a0d0 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -378,6 +378,9 @@ static void ppc_powernv_init(MachineState *machine)
->      }
->  
->      fw_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +    if (!fw_filename) {
-> +        fprintf(stderr, "WARNING: failed to find %s\n", bios_name);
-> +    }
+diff --git a/include/ui/console.h b/include/ui/console.h
+index e2589e2..e5ae506 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -337,7 +337,10 @@ static inline pixman_format_code_t surface_format(DisplaySurface *s)
+ }
+ 
+ #ifdef CONFIG_CURSES
++/* KEY_EVENT is defined in wincon.h and in curses.h. Avoid redefinition. */
++#undef KEY_EVENT
+ #include <curses.h>
++#undef KEY_EVENT
+ typedef chtype console_ch_t;
+ extern chtype vga_to_curses[];
+ #else
+diff --git a/ui/curses.c b/ui/curses.c
+index 2e132a7..03cefdf 100644
+--- a/ui/curses.c
++++ b/ui/curses.c
+@@ -22,7 +22,6 @@
+  * THE SOFTWARE.
+  */
+ #include "qemu/osdep.h"
+-#include <curses.h>
+ 
+ #ifndef _WIN32
+ #include <sys/ioctl.h>
+-- 
+2.10.2
 
->      fw_size = load_image_targphys(fw_filename, FW_LOAD_ADDR, FW_MAX_SIZE);
->      if (fw_size < 0) {
-> 
-
-I think you should exit() as for fw_size < 0, as it will display then a
-NULL string, or replace fw_filename by bios_name in the following message.
-
-Thanks,
-Laurent
 
