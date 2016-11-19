@@ -1,41 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c8BDP-0000py-Co
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Nov 2016 14:22:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47636)
+	id 1c8BEJ-0001J4-9l
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Nov 2016 14:23:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1c8BDN-0000os-9C
-	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:22:18 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1c8BEG-0001HB-Ar
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:23:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1c8BDM-0004QS-7Q
-	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:22:17 -0500
-Received: from mail.weilnetz.de ([37.221.199.173]:56976)
+	(envelope-from <stefan@weilnetz.de>) id 1c8BEF-0004Vj-Iw
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:23:12 -0500
+Received: from [2a03:4000:1::4e2f:c7ac:d] (port=51553 helo=mail.weilnetz.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1c8BDH-0004Pf-Nu; Sat, 19 Nov 2016 14:22:11 -0500
+	id 1c8BEB-0004V3-8Q; Sat, 19 Nov 2016 14:23:07 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by mail.weilnetz.de (Postfix) with ESMTP id 9E55911810A9;
-	Sat, 19 Nov 2016 20:22:10 +0100 (CET)
+	by mail.weilnetz.de (Postfix) with ESMTP id 8BDCE11810A9;
+	Sat, 19 Nov 2016 20:23:06 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from mail.weilnetz.de ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id 2i3u9YlCAzoj; Sat, 19 Nov 2016 20:22:08 +0100 (CET)
+	with ESMTP id bIhJ3DX9WGir; Sat, 19 Nov 2016 20:23:04 +0100 (CET)
 Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by mail.weilnetz.de (Postfix) with ESMTP id 62BA811810A8;
-	Sat, 19 Nov 2016 20:22:08 +0100 (CET)
+	by mail.weilnetz.de (Postfix) with ESMTP id 7887011810A8;
+	Sat, 19 Nov 2016 20:23:04 +0100 (CET)
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 33D334677CA; Sat, 19 Nov 2016 20:22:08 +0100 (CET)
+	id 7319C4677CA; Sat, 19 Nov 2016 20:23:04 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: QEMU Developer <qemu-devel@nongnu.org>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Sat, 19 Nov 2016 20:22:07 +0100
-Message-Id: <20161119192207.18717-1-sw@weilnetz.de>
+	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
+	qemu-ppc@nongnu.org, Stefan Weil <sw@weilnetz.de>
+Date: Sat, 19 Nov 2016 20:23:03 +0100
+Message-Id: <20161119192303.18784-1-sw@weilnetz.de>
 X-Mailer: git-send-email 2.10.2
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 37.221.199.173
-Subject: [Qemu-trivial] [PATCH for-2.8] Fix documentation and some comments
- (article, grammar)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a03:4000:1::4e2f:c7ac:d
+Subject: [Qemu-trivial] [PATCH for-2.8] disas/ppc: Fix indefinite articles
+ in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,77 +48,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Nov 2016 19:22:18 -0000
+X-List-Received-Date: Sat, 19 Nov 2016 19:23:13 -0000
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- arch_init.c     | 2 +-
- qemu-doc.texi   | 2 +-
- qemu-options.hx | 2 +-
- util/uri.c      | 4 ++--
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ disas/ppc.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch_init.c b/arch_init.c
-index 5cc58b2..b35deb8 100644
---- a/arch_init.c
-+++ b/arch_init.c
-@@ -86,7 +86,7 @@ const uint32_t arch_type = QEMU_ARCH;
+diff --git a/disas/ppc.c b/disas/ppc.c
+index bd05623..9b5a0e7 100644
+--- a/disas/ppc.c
++++ b/disas/ppc.c
+@@ -1653,11 +1653,11 @@ extract_tbr (unsigned long insn,
+ #define BBOYBI_MASK (BBOYCB_MASK | BI_MASK)
+ #define BBOATBI_MASK (BBOAT2CB_MASK | BI_MASK)
  
- static struct defconfig_file {
-     const char *filename;
--    /* Indicates it is an user config file (disabled by -no-user-config) */
-+    /* Indicates it is a user config file (disabled by -no-user-config) */
-     bool userconfig;
- } default_config_files[] = {
-     { CONFIG_QEMU_CONFDIR "/qemu.conf",                   true },
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 023c140..691acf9 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -1037,7 +1037,7 @@ qemu-system-i386 -iscsi initiator-name=iqn.qemu.test:my-initiator \
- @node disk_images_gluster
- @subsection GlusterFS disk images
+-/* An Context form instruction.  */
++/* A Context form instruction.  */
+ #define CTX(op, xop)   (OP (op) | (((unsigned long)(xop)) & 0x7))
+ #define CTX_MASK CTX(0x3f, 0x7)
  
--GlusterFS is an user space distributed file system.
-+GlusterFS is a user space distributed file system.
+-/* An User Context form instruction.  */
++/* A User Context form instruction.  */
+ #define UCTX(op, xop)  (OP (op) | (((unsigned long)(xop)) & 0x1f))
+ #define UCTX_MASK UCTX(0x3f, 0x1f)
  
- You can boot from the GlusterFS disk image with the command:
- @example
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 4a5b29f..3bad94e 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2589,7 +2589,7 @@ qemu-system-i386 --drive file=sheepdog://192.0.2.1:30000/MyVirtualMachine
- See also @url{http://http://www.osrg.net/sheepdog/}.
+@@ -1710,19 +1710,19 @@ extract_tbr (unsigned long insn,
+ #define SC(op, sa, lk) (OP (op) | ((((unsigned long)(sa)) & 1) << 1) | ((lk) & 1))
+ #define SC_MASK (OP_MASK | (((unsigned long)0x3ff) << 16) | (((unsigned long)1) << 1) | 1)
  
- @item GlusterFS
--GlusterFS is an user space distributed file system.
-+GlusterFS is a user space distributed file system.
- QEMU supports the use of GlusterFS volumes for hosting VM disk images using
- TCP, Unix Domain Sockets and RDMA transport protocols.
+-/* An VX form instruction.  */
++/* A VX form instruction.  */
+ #define VX(op, xop) (OP (op) | (((unsigned long)(xop)) & 0x7ff))
  
-diff --git a/util/uri.c b/util/uri.c
-index 70a9cbc..21b1828 100644
---- a/util/uri.c
-+++ b/util/uri.c
-@@ -342,7 +342,7 @@ rfc3986_parse_port(URI *uri, const char **str)
-  * @uri:  pointer to an URI structure
-  * @str:  the string to analyze
-  *
-- * Parse an user informations part and fills in the appropriate fields
-+ * Parse a user information part and fill in the appropriate fields
-  * of the @uri structure
-  *
-  * userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
-@@ -508,7 +508,7 @@ rfc3986_parse_authority(URI *uri, const char **str)
+ /* The mask for an VX form instruction.  */
+ #define VX_MASK	VX(0x3f, 0x7ff)
  
-     cur = *str;
-     /*
--     * try to parse an userinfo and check for the trailing @
-+     * try to parse a userinfo and check for the trailing @
-      */
-     ret = rfc3986_parse_user_info(uri, &cur);
-     if ((ret != 0) || (*cur != '@'))
+-/* An VA form instruction.  */
++/* A VA form instruction.  */
+ #define VXA(op, xop) (OP (op) | (((unsigned long)(xop)) & 0x03f))
+ 
+-/* The mask for an VA form instruction.  */
++/* The mask for a VA form instruction.  */
+ #define VXA_MASK VXA(0x3f, 0x3f)
+ 
+-/* An VXR form instruction.  */
++/* A VXR form instruction.  */
+ #define VXR(op, xop, rc) (OP (op) | (((rc) & 1) << 10) | (((unsigned long)(xop)) & 0x3ff))
+ 
+ /* The mask for a VXR form instruction.  */
 -- 
 2.10.2
 
