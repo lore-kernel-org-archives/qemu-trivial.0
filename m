@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1c8BKc-000515-2u
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Nov 2016 14:29:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48946)
+	id 1c8Bbj-0000dt-K7
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Nov 2016 14:47:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52951)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1c8BKY-0004yl-UE
-	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:29:44 -0500
+	(envelope-from <stefan@weilnetz.de>) id 1c8Bbh-0000ca-FD
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:47:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1c8BKX-0006qx-Af
-	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:29:42 -0500
-Received: from mail.weilnetz.de ([37.221.199.173]:57058)
+	(envelope-from <stefan@weilnetz.de>) id 1c8Bbg-0004Kv-CC
+	for qemu-trivial@nongnu.org; Sat, 19 Nov 2016 14:47:25 -0500
+Received: from mail.weilnetz.de ([37.221.199.173]:57269)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1c8BKR-0006k5-O4; Sat, 19 Nov 2016 14:29:35 -0500
+	id 1c8Bbb-0004Jb-MQ; Sat, 19 Nov 2016 14:47:19 -0500
 Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
-	by mail.weilnetz.de (Postfix) with ESMTP id 927E111822A7;
-	Sat, 19 Nov 2016 20:29:34 +0100 (CET)
+	by mail.weilnetz.de (Postfix) with ESMTP id 8CCC311810A9;
+	Sat, 19 Nov 2016 20:47:18 +0100 (CET)
 X-Virus-Scanned: Debian amavisd-new at weilnetz.de
 Received: from mail.weilnetz.de ([127.0.0.1])
 	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
 	(amavisd-new, port 10024)
-	with ESMTP id cGGTqc1y3BPb; Sat, 19 Nov 2016 20:29:32 +0100 (CET)
+	with ESMTP id pWfe7VIsxrmN; Sat, 19 Nov 2016 20:47:16 +0100 (CET)
 Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by mail.weilnetz.de (Postfix) with ESMTP id B6BA111810A8;
-	Sat, 19 Nov 2016 20:29:31 +0100 (CET)
+	by mail.weilnetz.de (Postfix) with ESMTP id 1DB5F11810A8;
+	Sat, 19 Nov 2016 20:47:16 +0100 (CET)
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 720574677CA; Sat, 19 Nov 2016 20:29:31 +0100 (CET)
+	id 00E7A4677CA; Sat, 19 Nov 2016 20:47:15 +0100 (CET)
 From: Stefan Weil <sw@weilnetz.de>
 To: QEMU Developer <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>,
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
 	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Sat, 19 Nov 2016 20:29:26 +0100
-Message-Id: <20161119192926.19632-1-sw@weilnetz.de>
+	"Daniel P . Berrange" <berrange@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Date: Sat, 19 Nov 2016 20:47:15 +0100
+Message-Id: <20161119194715.19841-1-sw@weilnetz.de>
 X-Mailer: git-send-email 2.10.2
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 37.221.199.173
-Subject: [Qemu-trivial] [PATCH for-2.8] hw: Fix typos found by codespell
+Subject: [Qemu-trivial] [PATCH for-2.8] include: Fix typos found by codespell
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,218 +48,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Nov 2016 19:29:44 -0000
+X-List-Received-Date: Sat, 19 Nov 2016 19:47:26 -0000
+
+Add also a missing parenthesis in a comment.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/block/m25p80.c         | 4 ++--
- hw/core/generic-loader.c  | 4 ++--
- hw/core/qdev-properties.c | 2 +-
- hw/display/xlnx_dp.c      | 4 ++--
- hw/i386/pc.c              | 2 +-
- hw/net/cadence_gem.c      | 2 +-
- hw/net/spapr_llan.c       | 4 ++--
- hw/ppc/spapr_drc.c        | 2 +-
- hw/s390x/s390-pci-bus.h   | 4 ++--
- hw/usb/dev-mtp.c          | 2 +-
- hw/vfio/pci-quirks.c      | 2 +-
- hw/virtio/virtio-crypto.c | 2 +-
- 12 files changed, 17 insertions(+), 17 deletions(-)
+ include/hw/dma/xlnx_dpdma.h    | 3 ++-
+ include/hw/pci-host/q35.h      | 2 +-
+ include/hw/register.h          | 2 +-
+ include/io/task.h              | 2 +-
+ include/qapi/dealloc-visitor.h | 2 +-
+ include/qemu/qht.h             | 2 +-
+ include/qemu/xattr.h           | 2 +-
+ 7 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index d29ff4c..09ea51f 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -121,7 +121,7 @@ typedef struct FlashPartInfo {
- #define CFG_DUMMY_CLK_LEN 4
- #define NVCFG_DUMMY_CLK_POS 12
- #define VCFG_DUMMY_CLK_POS 4
--#define EVCFG_OUT_DRIVER_STRENGHT_DEF 7
-+#define EVCFG_OUT_DRIVER_STRENGTH_DEF 7
- #define EVCFG_VPP_ACCELERATOR (1 << 3)
- #define EVCFG_RESET_HOLD_ENABLED (1 << 4)
- #define NVCFG_DUAL_IO_MASK (1 << 2)
-@@ -700,7 +700,7 @@ static void reset_memory(Flash *s)
-                             );
+diff --git a/include/hw/dma/xlnx_dpdma.h b/include/hw/dma/xlnx_dpdma.h
+index 664df28..7a304a5 100644
+--- a/include/hw/dma/xlnx_dpdma.h
++++ b/include/hw/dma/xlnx_dpdma.h
+@@ -53,7 +53,8 @@ typedef struct XlnxDPDMAState XlnxDPDMAState;
+  *                             data to the buffer specified by
+  *                             dpdma_set_host_data_location().
+  *
+- * Returns The number of bytes transfered by the DPDMA or 0 if an error occured.
++ * Returns The number of bytes transferred by the DPDMA
++ *         or 0 if an error occurred.
+  *
+  * @s The DPDMA state.
+  * @channel The channel to start.
+diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+index 94486fd..53b6760 100644
+--- a/include/hw/pci-host/q35.h
++++ b/include/hw/pci-host/q35.h
+@@ -180,7 +180,7 @@ typedef struct Q35PCIHost {
+ uint64_t mch_mcfg_base(void);
  
-         s->enh_volatile_cfg = 0;
--        s->enh_volatile_cfg |= EVCFG_OUT_DRIVER_STRENGHT_DEF;
-+        s->enh_volatile_cfg |= EVCFG_OUT_DRIVER_STRENGTH_DEF;
-         s->enh_volatile_cfg |= EVCFG_VPP_ACCELERATOR;
-         s->enh_volatile_cfg |= EVCFG_RESET_HOLD_ENABLED;
-         if (s->nonvolatile_cfg & NVCFG_DUAL_IO_MASK) {
-diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
-index 79ab6df..8716cc3 100644
---- a/hw/core/generic-loader.c
-+++ b/hw/core/generic-loader.c
-@@ -27,7 +27,7 @@
-  * this it needs a backend to manage the datas, the same as other
-  * memory-related devices. In this case as the backend is so trivial we
-  * have merged it with the frontend instead of creating and maintaining a
-- * seperate backend.
-+ * separate backend.
+ /*
+- * Arbitary but unique BNF number for IOAPIC device.
++ * Arbitrary but unique BNF number for IOAPIC device.
+  *
+  * TODO: make sure there would have no conflict with real PCI bus
+  */
+diff --git a/include/hw/register.h b/include/hw/register.h
+index 8c12233..5b6dc32 100644
+--- a/include/hw/register.h
++++ b/include/hw/register.h
+@@ -92,7 +92,7 @@ struct RegisterInfo {
+  * This structure is used to group all of the individual registers which are
+  * modeled using the RegisterInfo structure.
+  *
+- * @r is an aray containing of all the relevent RegisterInfo structures.
++ * @r is an array containing of all the relevant RegisterInfo structures.
+  *
+  * @num_elements is the number of elements in the array r
+  *
+diff --git a/include/io/task.h b/include/io/task.h
+index 42028cb..6810842 100644
+--- a/include/io/task.h
++++ b/include/io/task.h
+@@ -231,7 +231,7 @@ void qio_task_complete(QIOTask *task);
+  *
+  * Mark the operation as failed, with @err providing
+  * details about the failure. The @err may be freed
+- * afer the function returns, as the notification
++ * after the function returns, as the notification
+  * callback is invoked synchronously. The @task will
+  * be freed when this call completes.
+  */
+diff --git a/include/qapi/dealloc-visitor.h b/include/qapi/dealloc-visitor.h
+index b3e5c85..c36715f 100644
+--- a/include/qapi/dealloc-visitor.h
++++ b/include/qapi/dealloc-visitor.h
+@@ -19,7 +19,7 @@
+ typedef struct QapiDeallocVisitor QapiDeallocVisitor;
+ 
+ /*
+- * The dealloc visitor is primarly used only by generated
++ * The dealloc visitor is primarily used only by generated
+  * qapi_free_FOO() functions, and is the only visitor designed to work
+  * correctly in the face of a partially-constructed QAPI tree.
+  */
+diff --git a/include/qemu/qht.h b/include/qemu/qht.h
+index 311139b..56c2c77 100644
+--- a/include/qemu/qht.h
++++ b/include/qemu/qht.h
+@@ -72,7 +72,7 @@ void qht_destroy(struct qht *ht);
+  * In case of successful operation, smp_wmb() is implied before the pointer is
+  * inserted into the hash table.
+  *
+- * Returns true on sucess.
++ * Returns true on success.
+  * Returns false if the @p-@hash pair already exists in the hash table.
+  */
+ bool qht_insert(struct qht *ht, void *p, uint32_t hash);
+diff --git a/include/qemu/xattr.h b/include/qemu/xattr.h
+index 83cf98c..a83fe8e 100644
+--- a/include/qemu/xattr.h
++++ b/include/qemu/xattr.h
+@@ -14,7 +14,7 @@
+ #define QEMU_XATTR_H
+ 
+ /*
+- * Modern distributions (e.g. Fedora 15, have no libattr.so, place attr.h
++ * Modern distributions (e.g. Fedora 15), have no libattr.so, place attr.h
+  * in /usr/include/sys, and don't have ENOATTR.
   */
  
- #include "qemu/osdep.h"
-@@ -79,7 +79,7 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
-                        "loading memory values");
-             return;
-         } else if (!s->data_len) {
--            /* We cant' check for !data here as a value of 0 is still valid. */
-+            /* We can't check for !data here as a value of 0 is still valid. */
-             error_setg(errp, "Both data and data-len must be specified");
-             return;
-         } else if (s->data_len > 8) {
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 2a82768..6ab4265 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -711,7 +711,7 @@ static void get_pci_host_devaddr(Object *obj, Visitor *v, const char *name,
- 
-     /*
-      * Catch "invalid" device reference from vfio-pci and allow the
--     * default buffer representing the non-existant device to be used.
-+     * default buffer representing the non-existent device to be used.
-      */
-     if (~addr->domain || ~addr->bus || ~addr->slot || ~addr->function) {
-         rc = snprintf(buffer, sizeof(buffer), "%04x:%02x:%02x.%0d",
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index f43eb09..f7b7b80 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -555,7 +555,7 @@ static void xlnx_dp_recreate_surface(XlnxDPState *s)
-     if ((width != 0) && (height != 0)) {
-         /*
-          * As dpy_gfx_replace_surface calls qemu_free_displaysurface on the
--         * surface we need to be carefull and don't free the surface associated
-+         * surface we need to be careful and don't free the surface associated
-          * to the console or double free will happen.
-          */
-         if (s->bout_plane.surface != current_console_surface) {
-@@ -1160,7 +1160,7 @@ static void xlnx_dp_update_display(void *opaque)
-      */
-     if (!xlnx_dpdma_start_operation(s->dpdma, 3, false)) {
-         /*
--         * An error occured don't do anything with the data..
-+         * An error occurred don't do anything with the data..
-          * Trigger an underflow interrupt.
-          */
-         s->core_registers[DP_INT_STATUS] |= (1 << 21);
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index a9b1950..0c3ee99 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1785,7 +1785,7 @@ static int pc_apic_cmp(const void *a, const void *b)
- 
- /* returns pointer to CPUArchId descriptor that matches CPU's apic_id
-  * in pcms->possible_cpus->cpus, if pcms->possible_cpus->cpus has no
-- * entry correponding to CPU's apic_id returns NULL.
-+ * entry corresponding to CPU's apic_id returns NULL.
-  */
- static CPUArchId *pc_find_cpu_slot(PCMachineState *pcms, CPUState *cpu,
-                                    int *idx)
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 7915732..e99d454 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -896,7 +896,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
- 
-     DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
- 
--    /* Find which queue we are targetting */
-+    /* Find which queue we are targeting */
-     q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
- 
-     while (bytes_to_copy) {
-diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
-index 01ecb02..058908d 100644
---- a/hw/net/spapr_llan.c
-+++ b/hw/net/spapr_llan.c
-@@ -105,7 +105,7 @@ typedef struct VIOsPAPRVLANDevice {
-     uint32_t add_buf_ptr, use_buf_ptr, rx_bufs;
-     hwaddr rxq_ptr;
-     QEMUTimer *rxp_timer;
--    uint32_t compat_flags;             /* Compatability flags for migration */
-+    uint32_t compat_flags;             /* Compatibility flags for migration */
-     RxBufPool *rx_pool[RX_MAX_POOLS];  /* Receive buffer descriptor pools */
- } VIOsPAPRVLANDevice;
- 
-@@ -559,7 +559,7 @@ static target_long spapr_vlan_add_rxbuf_to_pool(VIOsPAPRVLANDevice *dev,
-     if (pool < 0) {
-         /*
-          * No matching pool found? Try to use a new one. If the guest used all
--         * pools before, but changed the size of one pool inbetween, we might
-+         * pools before, but changed the size of one pool in the meantime, we might
-          * need to recycle that pool here (if it's empty already). Thus scan
-          * all buffer pools now, starting with the last (likely empty) one.
-          */
-diff --git a/hw/ppc/spapr_drc.c b/hw/ppc/spapr_drc.c
-index a0c44ee..2de6377 100644
---- a/hw/ppc/spapr_drc.c
-+++ b/hw/ppc/spapr_drc.c
-@@ -59,7 +59,7 @@ static uint32_t set_isolation_state(sPAPRDRConnector *drc,
-     trace_spapr_drc_set_isolation_state(get_index(drc), state);
- 
-     if (state == SPAPR_DR_ISOLATION_STATE_UNISOLATED) {
--        /* cannot unisolate a non-existant resource, and, or resources
-+        /* cannot unisolate a non-existent resource, and, or resources
-          * which are in an 'UNUSABLE' allocation state. (PAPR 2.7, 13.5.3.5)
-          */
-         if (!drc->dev ||
-diff --git a/hw/s390x/s390-pci-bus.h b/hw/s390x/s390-pci-bus.h
-index 7f27013..ad0511d 100644
---- a/hw/s390x/s390-pci-bus.h
-+++ b/hw/s390x/s390-pci-bus.h
-@@ -180,8 +180,8 @@ enum ZpciIoatDtype {
-  *          may enter an error state
-  * blocked: ignore all DMA and interrupts; transition back to enabled or from
-  *          error state via mpcifc
-- * error: an error occured; transition back to enabled via mpcifc
-- * permanent error: an unrecoverable error occured; transition to standby via
-+ * error: an error occurred; transition back to enabled via mpcifc
-+ * permanent error: an unrecoverable error occurred; transition to standby via
-  *                  sclp deconfigure
-  */
- typedef enum {
-diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index 9cb0f50..809dcf5 100644
---- a/hw/usb/dev-mtp.c
-+++ b/hw/usb/dev-mtp.c
-@@ -1093,7 +1093,7 @@ static MTPData *usb_mtp_get_object_prop_value(MTPState *s, MTPControl *c,
-         }
-         break;
-     case PROP_PERSISTENT_UNIQUE_OBJECT_IDENTIFIER:
--        /* Should be persistant between sessions,
-+        /* Should be persistent between sessions,
-          * but using our objedt ID is "good enough"
-          * for now */
-         usb_mtp_add_u64(d, 0x0000000000000000);
-diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
-index 811eecd..6c771f7 100644
---- a/hw/vfio/pci-quirks.c
-+++ b/hw/vfio/pci-quirks.c
-@@ -1171,7 +1171,7 @@ static int vfio_pci_igd_host_init(VFIOPCIDevice *vdev,
-  * IGD LPC/ISA bridge support code.  The vBIOS needs this, but we can't write
-  * arbitrary values into just any bridge, so we must create our own.  We try
-  * to handle if the user has created it for us, which they might want to do
-- * to enable multifuction so we don't occupy the whole PCI slot.
-+ * to enable multifunction so we don't occupy the whole PCI slot.
-  */
- static void vfio_pci_igd_lpc_bridge_realize(PCIDevice *pdev, Error **errp)
- {
-diff --git a/hw/virtio/virtio-crypto.c b/hw/virtio/virtio-crypto.c
-index 3293843..11ba6e3 100644
---- a/hw/virtio/virtio-crypto.c
-+++ b/hw/virtio/virtio-crypto.c
-@@ -766,7 +766,7 @@ static void virtio_crypto_device_realize(DeviceState *dev, Error **errp)
-     vcrypto->max_queues = MAX(vcrypto->cryptodev->conf.peers.queues, 1);
-     if (vcrypto->max_queues + 1 > VIRTIO_QUEUE_MAX) {
-         error_setg(errp, "Invalid number of queues (= %" PRIu32 "), "
--                   "must be a postive integer less than %d.",
-+                   "must be a positive integer less than %d.",
-                    vcrypto->max_queues, VIRTIO_QUEUE_MAX);
-         return;
-     }
 -- 
 2.10.2
 
