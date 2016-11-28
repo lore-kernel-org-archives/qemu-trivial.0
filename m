@@ -1,51 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cBOoD-0003Go-A5
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2016 11:29:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45566)
+	id 1cBRLB-0003Nw-7E
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Nov 2016 14:11:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <francis.deslauriers@efficios.com>)
-	id 1cBOEg-0000uT-Ay
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2016 10:52:55 -0500
+	(envelope-from <bunk@stusta.de>) id 1cBRL8-0003LU-Bb
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2016 14:11:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <francis.deslauriers@efficios.com>)
-	id 1cBOEf-0008Ai-Lj
-	for qemu-trivial@nongnu.org; Mon, 28 Nov 2016 10:52:54 -0500
-Received: from mail.efficios.com ([167.114.142.141]:41758)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <francis.deslauriers@efficios.com>)
-	id 1cBOEb-000851-2K; Mon, 28 Nov 2016 10:52:49 -0500
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.efficios.com (Postfix) with ESMTP id B779A34022A;
-	Mon, 28 Nov 2016 15:54:05 +0000 (UTC)
-Received: from mail.efficios.com ([127.0.0.1])
-	by localhost (evm-mail-1.efficios.com [127.0.0.1]) (amavisd-new,
-	port 10032)
-	with ESMTP id OLD0mpLuZlJa; Mon, 28 Nov 2016 15:54:05 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.efficios.com (Postfix) with ESMTP id 3198C340227;
-	Mon, 28 Nov 2016 15:54:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at efficios.com
-Received: from mail.efficios.com ([127.0.0.1])
-	by localhost (evm-mail-1.efficios.com [127.0.0.1]) (amavisd-new,
-	port 10026)
-	with ESMTP id 99PZgvDE5C1A; Mon, 28 Nov 2016 15:54:05 +0000 (UTC)
-Received: from raton.internal.efficios.com
-	(cable-192.222.218.157.electronicbox.net [192.222.218.157])
-	by mail.efficios.com (Postfix) with ESMTPSA id 11A98340222;
-	Mon, 28 Nov 2016 15:54:05 +0000 (UTC)
-From: Francis Deslauriers <francis.deslauriers@efficios.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Francis Deslauriers <francis.deslauriers@efficios.com>
-Date: Mon, 28 Nov 2016 10:52:17 -0500
-Message-Id: <1480348337-24271-1-git-send-email-francis.deslauriers@efficios.com>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <bunk@stusta.de>) id 1cBRL7-0002eY-MZ
+	for qemu-trivial@nongnu.org; Mon, 28 Nov 2016 14:11:46 -0500
+Received: from welho-filter2.welho.com ([83.102.41.24]:47076)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <bunk@stusta.de>)
+	id 1cBRL2-0002LM-Ac; Mon, 28 Nov 2016 14:11:40 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by welho-filter2.welho.com (Postfix) with ESMTP id 0249D13D1C;
+	Mon, 28 Nov 2016 21:11:09 +0200 (EET)
+X-Virus-Scanned: Debian amavisd-new at pp.htv.fi
+Received: from welho-smtp2.welho.com ([IPv6:::ffff:83.102.41.85])
+	by localhost (welho-filter2.welho.com [::ffff:83.102.41.24])
+	(amavisd-new, port 10024)
+	with ESMTP id p2s-J5kue_Tp; Mon, 28 Nov 2016 21:11:08 +0200 (EET)
+Received: from bunk.spdns.de (82-181-244-249.bb.dnainternet.fi
+	[82.181.244.249])
+	by welho-smtp2.welho.com (Postfix) with ESMTP id 722A621C;
+	Mon, 28 Nov 2016 21:11:08 +0200 (EET)
+Date: Mon, 28 Nov 2016 21:11:05 +0200
+From: Adrian Bunk <bunk@stusta.de>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20161128191105.wnkxrbs6pxm3usxm@bunk.spdns.de>
+References: <20161127162817.15144-1-bunk@stusta.de>
+	<a6630537-d71e-1b1a-4388-c91ba8cacbb7@redhat.com>
+	<20161128152404.sywmey4pdcv7btup@bunk.spdns.de>
+	<36ee35dd-49ea-f2e3-fa1e-600483b9d4e7@redhat.com>
+	<460f994a-fe47-1d1e-0d26-1220d8a05256@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <460f994a-fe47-1d1e-0d26-1220d8a05256@redhat.com>
+User-Agent: NeoMutt/ (1.7.0)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 167.114.142.141
-X-Mailman-Approved-At: Mon, 28 Nov 2016 11:29:35 -0500
-Subject: [Qemu-trivial] [PATCH] configure: fix LTTng UST tracing backend
- detection
+X-Received-From: 83.102.41.24
+Subject: Re: [Qemu-trivial] [PATCH] rules.mak: Use -r instead of -Wl,
+ -r to fix building when PIE is default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,38 +55,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Nov 2016 15:52:55 -0000
+X-List-Received-Date: Mon, 28 Nov 2016 19:11:47 -0000
 
-The detection program needs to be linked with -ldl to build succesfully
-with recent versions of LTTng-UST.
+On Mon, Nov 28, 2016 at 04:42:54PM +0100, Paolo Bonzini wrote:
+> 
+> Aha, I looked at GCC source code and this is incorrect: "Use -r instead
+> of -Wl,-r to avoid gcc passing -r to the linker when PIE is enabled".
+> When GCC sees -r (as opposed to -Wl,-r) it does not pass -pie to the linker.
 
-We also need to add -ldl to the libs required to build the LTTng-UST
-backend (lttng_ust_libs).
+That's what I get for writing things I did not double-check myself...
 
-Signed-off-by: Francis Deslauriers <francis.deslauriers@efficios.com>
----
- configure | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+You are correct here (with the implication that my patch does change
+behaviour even less).
 
-diff --git a/configure b/configure
-index 5e66828..89df5c4 100755
---- a/configure
-+++ b/configure
-@@ -4305,11 +4305,11 @@ if have_backend "ust"; then
- #include <lttng/tracepoint.h>
- int main(void) { return 0; }
- EOF
--  if compile_prog "" "" ; then
-+  if compile_prog "" "-Wl,--no-as-needed -ldl" ; then
-     if $pkg_config lttng-ust --exists; then
-       lttng_ust_libs=$($pkg_config --libs lttng-ust)
-     else
--      lttng_ust_libs="-llttng-ust"
-+      lttng_ust_libs="-llttng-ust -ldl"
-     fi
-     if $pkg_config liburcu-bp --exists; then
-       urcu_bp_libs=$($pkg_config --libs liburcu-bp)
+> Paolo
+
+cu
+Adrian
+
 -- 
-2.7.4
+
+       "Is there not promise of rain?" Ling Tan asked suddenly out
+        of the darkness. There had been need of rain for many days.
+       "Only a promise," Lao Er said.
+                                       Pearl S. Buck - Dragon Seed
 
 
