@@ -1,49 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cD7Nh-0004qk-VL
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Dec 2016 05:17:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46057)
+	id 1cEM0G-0001Dx-Vq
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Dec 2016 15:06:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cD7Nc-0004mO-2w
-	for qemu-trivial@nongnu.org; Sat, 03 Dec 2016 05:17:20 -0500
+	(envelope-from <stefanha@gmail.com>) id 1cEM0F-0001CJ-1M
+	for qemu-trivial@nongnu.org; Tue, 06 Dec 2016 15:06:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cD7NZ-0005Q8-FD
-	for qemu-trivial@nongnu.org; Sat, 03 Dec 2016 05:17:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35546)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cD7NU-0005Kh-DN; Sat, 03 Dec 2016 05:17:08 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 22FC18E24B;
-	Sat,  3 Dec 2016 10:17:07 +0000 (UTC)
-Received: from [10.36.116.25] (ovpn-116-25.ams2.redhat.com [10.36.116.25])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uB3AH39K006656
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Sat, 3 Dec 2016 05:17:05 -0500
-To: Yongbok Kim <yongbok.kim@imgtec.com>, qemu-devel@nongnu.org
-References: <1480524257-28225-1-git-send-email-yongbok.kim@imgtec.com>
-Cc: proljc@gmail.com, aurelien@aurel32.net, qemu-trivial@nongnu.org
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <e874bc96-b1a4-9620-a9c7-b6e82847c475@redhat.com>
-Date: Sat, 3 Dec 2016 11:17:02 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <stefanha@gmail.com>) id 1cEM0D-000645-SR
+	for qemu-trivial@nongnu.org; Tue, 06 Dec 2016 15:06:14 -0500
+Received: from mail-wj0-f195.google.com ([209.85.210.195]:35182)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1cEM09-00062S-9F; Tue, 06 Dec 2016 15:06:09 -0500
+Received: by mail-wj0-f195.google.com with SMTP id he10so31699560wjc.2;
+	Tue, 06 Dec 2016 12:06:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=LVHp+MPBCwsPMZfYPRcCeLCgXozfCRrRs+UnNjq/LPQ=;
+	b=ujSGU3KiK0H+vKY7Xox7YSS5TenOxx1NdUzGxzhSFmW1+0fzY7f1lcAlnjqABg+/M2
+	s8iro7SkM0SlDynBLoYMK4YQT3GelFjk9f7DdXXAXkYnbz4NbcjQwWoPrdE4/GD4bIq5
+	tFgcnEcbJCK1tLpGGWD6MmJTnh/40/fqfnKVTSPr5JYf0LkBW3VFDBZtIZuaWa10jPoh
+	SlDkBb2nxap+O82K2qAWPj3gSbrvBj0QvzkunAKgpUxOfq3ZAIzv7hKa5+RvjNropy0P
+	kYKsxhb07t+S2JxSaXWBqNb5uwFiNRY4kwCc/MWjtxY/V0qTUNLlitW0SonhpLgt81Us
+	8RDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=LVHp+MPBCwsPMZfYPRcCeLCgXozfCRrRs+UnNjq/LPQ=;
+	b=GlOl4XEMHjuRL9r5KwFqUzAr3d8gNxRWf1KFz1801N0tOEuOXKiPk8Y0BjLe9W7aMg
+	vqGHNVywQgbcFkAuYrdFHf0TalfRwalPvwMrM+ctLTG2Fc0MnaMWzW/kUrgGnJwRaSvM
+	DgB1XvK8ayZDqUFYyXp6ZSmGfS29bnv/VsrKalvEDkJHKU1y2BBxroYumoRAauNpqjQC
+	KPhiPoDGS+wWTO2N6V3M6XlpiPFY2rDjhDo68dJuGkOrOo21JgctVRFiShgA4cd6y0K2
+	puacn/uKqvUmtZQclJRUF93URJ60DLTzWlqpoQpkcDZ/nNiry92O+Cten6nGRzbg33bY
+	lcvQ==
+X-Gm-Message-State: AKaTC02DdPchRQ2MTznMtFoi6m4btj2QEBN8QmrlZVN/1uSPiNJJkD61lLWYNtbKo/CPrA==
+X-Received: by 10.194.171.66 with SMTP id as2mr67033676wjc.77.1481054708165;
+	Tue, 06 Dec 2016 12:05:08 -0800 (PST)
+Received: from localhost (host86-185-39-193.range86-185.btcentralplus.com.
+	[86.185.39.193])
+	by smtp.gmail.com with ESMTPSA id l67sm5721679wmf.0.2016.12.06.12.05.06
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 06 Dec 2016 12:05:07 -0800 (PST)
+Date: Tue, 6 Dec 2016 20:05:05 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
+Cc: qemu devel <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20161206200505.GA2521@stefanha-x1.localdomain>
+References: <1478494765-13233-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
 MIME-Version: 1.0
-In-Reply-To: <1480524257-28225-1-git-send-email-yongbok.kim@imgtec.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Sat, 03 Dec 2016 10:17:07 +0000 (UTC)
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="wRRV7LY7NUeQGEoC"
+Content-Disposition: inline
+In-Reply-To: <1478494765-13233-1-git-send-email-xiecl.fnst@cn.fujitsu.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target-mips: fix bad shifts
- in {dextp|dextpdp}
+X-Received-From: 209.85.210.195
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/.gitignore: Ignore
+ test-char
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,45 +72,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Dec 2016 10:17:20 -0000
+X-List-Received-Date: Tue, 06 Dec 2016 20:06:16 -0000
 
-On 30.11.2016 17:44, Yongbok Kim wrote:
-> Fixed issues in the MIPSDSP64 instructions dextp and dextpdp.
-> Shifting can go out of 32 bit range.
-> 
-> https://bugs.launchpad.net/qemu/+bug/1631625
-> 
-> Reported-by: Thomas Huth <thuth@redhat.com>
-> Reported-by: Jia Liu <proljc@gmail.com>
-> Signed-off-by: Yongbok Kim <yongbok.kim@imgtec.com>
+
+--wRRV7LY7NUeQGEoC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Nov 07, 2016 at 12:59:25PM +0800, Changlong Xie wrote:
+> Signed-off-by: Changlong Xie <xiecl.fnst@cn.fujitsu.com>
 > ---
->  target-mips/dsp_helper.c |    4 ++--
->  1 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target-mips/dsp_helper.c b/target-mips/dsp_helper.c
-> index df7d220..dc70793 100644
-> --- a/target-mips/dsp_helper.c
-> +++ b/target-mips/dsp_helper.c
-> @@ -3477,7 +3477,7 @@ target_ulong helper_dextp(target_ulong ac, target_ulong size, CPUMIPSState *env)
->  
->      if (sub >= -1) {
->          temp = (tempB << (64 - len)) | (tempA >> len);
-> -        temp = temp & ((0x01 << (size + 1)) - 1);
-> +        temp = temp & ((1ULL << (size + 1)) - 1);
->          set_DSPControl_efi(0, env);
->      } else {
->          set_DSPControl_efi(1, env);
-> @@ -3506,7 +3506,7 @@ target_ulong helper_dextpdp(target_ulong ac, target_ulong size,
->  
->      if (sub >= -1) {
->          temp = (tempB << (64 - len)) | (tempA >> len);
-> -        temp = temp & ((0x01 << (size + 1)) - 1);
-> +        temp = temp & ((1ULL << (size + 1)) - 1);
->          set_DSPControl_pos(sub, env);
->          set_DSPControl_efi(0, env);
->      } else {
-> 
+>  tests/.gitignore | 1 +
+>  1 file changed, 1 insertion(+)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Thanks, applied to my staging tree:
+https://github.com/stefanha/qemu/commits/staging
 
+Stefan
+
+--wRRV7LY7NUeQGEoC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJYRxnxAAoJEJykq7OBq3PIyBEH/R+gpqH0jDddj9K+LdnlQCkD
+9HZF/L3shwF7YvaBQidDai7Qa8Z/XEyK9rMGVz0aBfqjgsoOLRRcP/A7ZhxCSqEC
+NlFM801xQb5+q3TuXomIbNbhj+/z4OsXOGy8dZgSfSWzEQgP39/brrjYDYA2bueD
+7bOAofABdTc+Sf81ho+LLtNmtJdVkRG01+ZlJDDRYipujEmcpzPzn68rtoBD9jMO
+8jPbhKXGKXFnmmnPU4fOwgaiRjzNyIbKFhgNzzqBBKEeo3iO4eSSgwpNrO+FPa0G
+V5X4FtYe37Nv4iAJfvUIPctY5FIotzKCKvBaJZiVEqIuo9AwRNcHK2bsXNQ4I4A=
+=Xkrw
+-----END PGP SIGNATURE-----
+
+--wRRV7LY7NUeQGEoC--
 
