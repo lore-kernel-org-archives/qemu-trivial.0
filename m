@@ -1,73 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cEcKf-00078d-Ab
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2016 08:32:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42814)
+	id 1cEeXb-0008Dk-OD
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2016 10:53:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45945)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cEcKc-00076r-Ki
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 08:32:23 -0500
+	(envelope-from <eblake@redhat.com>) id 1cEeXZ-0008Bo-70
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 10:53:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cEcKY-0004WB-OY
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 08:32:22 -0500
-Received: from mail-wj0-f195.google.com ([209.85.210.195]:35924)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cEcKT-0004RN-NF; Wed, 07 Dec 2016 08:32:13 -0500
-Received: by mail-wj0-f195.google.com with SMTP id j10so22518600wjb.3;
-	Wed, 07 Dec 2016 05:31:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=DVA66IjzIOT2TihklG3tEKznfgEYi3OD3xWM5Bx5xvc=;
-	b=LVkV8AIkh5yQGPGTkoB2U3wJfCV6mrMWQLCFLX5TPG2B2Oi/Gd2/+P7GQIpnIJZvX3
-	B8ebxodI9JZg8uLypReydlFn2J5W4pfwkyroVo2YAkBBJcEY1eJ/xBq6s/rfWeHALvFM
-	Veeq2K44WRU4vCIFYpYUzmUfgLWuM7oCPte8Ba/olWo8wLfa1XFYHHC2udHRgD37Vn4x
-	tm6cgDI5d/t7fhhHvPMc2D1X1U+QrVgzTptSUJxxqIT5Km65Qhj4kAV3+4Pm30c5zh0K
-	3OJmis698LlmpDuI1zWGMCHZp/lMAawN4Q5OhzxPfzlQp7vJ/uiSOpSh//ZB+mKG/Bgd
-	zEZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=DVA66IjzIOT2TihklG3tEKznfgEYi3OD3xWM5Bx5xvc=;
-	b=TlfXCUE67hkazE7ZCahFtCl9bUeV8XflaLZ9dJDNshIKsIkpsDg0nozn5oSse20L7I
-	2T/08hXWkRS19WolNRPoTU8zK7g0vVBeyCMjK4IKf4apykR67z3rvkJBOm3Ru/oRlRr+
-	zv8QaOfRa9LfEWE0YReO5E9Qy6eDXROdGEqo+kKiT0TmOiT+/k1kVU6d7AhEchTw+Mi+
-	8H0LVcQ4CaEhnAhNFKPXfVzZMPR1KBvuXlfSzvm3Q5Zth1e272SvUzbkFkLMy8j6GOC4
-	lfBsTZIaVvIC/bhItsdKtakgRpZr09xOo7G/e0IwRR6dfg23TzzJ3eW+gGebarSEcEPe
-	iuvg==
-X-Gm-Message-State: AKaTC01ELOE+w/jEJKs//kAZykQxEVFWn17sObc+nTRcpIaf6EkyQLo7Uu2DhpN/xY8yIw==
-X-Received: by 10.194.94.166 with SMTP id dd6mr67135125wjb.88.1481117451372;
-	Wed, 07 Dec 2016 05:30:51 -0800 (PST)
-Received: from localhost (host86-185-39-193.range86-185.btcentralplus.com.
-	[86.185.39.193]) by smtp.gmail.com with ESMTPSA id
-	j1sm31441859wjm.26.2016.12.07.05.30.50
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 07 Dec 2016 05:30:50 -0800 (PST)
-Date: Wed, 7 Dec 2016 13:30:49 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>,
-	Laurent Vivier <lvivier@redhat.com>, Eric Blake <eblake@redhat.com>,
-	qemu devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>, Stefan Weil <sw@weilnetz.de>
-Message-ID: <20161207133049.GA32099@stefanha-x1.localdomain>
-References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
-	<a1593129-ddb9-8e74-5865-b1e8400c991d@redhat.com>
-	<8b90a1da-a129-f2cb-4545-355348387925@cn.fujitsu.com>
-	<063dfa33-2015-e566-c623-d59578c20fcd@redhat.com>
-	<13aed710-c5d1-b1de-5922-52e3e53029f9@cn.fujitsu.com>
-	<956d6c43-0904-e094-1adb-bb7c584967d0@vivier.eu>
+	(envelope-from <eblake@redhat.com>) id 1cEeXY-0003GG-F2
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 10:53:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38004)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cEeXQ-0003DI-Hr; Wed, 07 Dec 2016 10:53:44 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C2BC624C4;
+	Wed,  7 Dec 2016 15:53:43 +0000 (UTC)
+Received: from [10.10.66.44] ([10.10.66.44])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uB7FrgFC022770; Wed, 7 Dec 2016 10:53:42 -0500
+To: Frediano Ziglio <fziglio@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20161207123959.4565-1-fziglio@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial <qemu-trivial@nongnu.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <61c44ab2-01c7-4187-7a5a-6c498f70e31c@redhat.com>
+Date: Wed, 7 Dec 2016 09:53:40 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="nFreZHaLTZJo0R7j"
-Content-Disposition: inline
-In-Reply-To: <956d6c43-0904-e094-1adb-bb7c584967d0@vivier.eu>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20161207123959.4565-1-fziglio@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="3slJwEJIqtUMOs0Q4Rw7nqaxnmANIkICu"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 07 Dec 2016 15:53:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.210.195
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.8] docs: Fix
- description of the sentence
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] usb: Fix typo in
+ documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,62 +56,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Dec 2016 13:32:23 -0000
+X-List-Received-Date: Wed, 07 Dec 2016 15:53:54 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--3slJwEJIqtUMOs0Q4Rw7nqaxnmANIkICu
+Content-Type: multipart/mixed; boundary="8rN6lOVMCNd3iR3qg61A5Cg0ajCkWspK3";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Frediano Ziglio <fziglio@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial <qemu-trivial@nongnu.org>
+Message-ID: <61c44ab2-01c7-4187-7a5a-6c498f70e31c@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] usb: Fix typo in documentation
+References: <20161207123959.4565-1-fziglio@redhat.com>
+In-Reply-To: <20161207123959.4565-1-fziglio@redhat.com>
 
---nFreZHaLTZJo0R7j
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--8rN6lOVMCNd3iR3qg61A5Cg0ajCkWspK3
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Dec 07, 2016 at 10:01:49AM +0100, Laurent Vivier wrote:
-> Le 07/12/2016 =E0 09:58, Zhang Chen a =E9crit :
-> >=20
-> >=20
-> > On 12/02/2016 03:57 PM, Laurent Vivier wrote:
-> >>
-> >> On 02/12/2016 03:59, Zhang Chen wrote:
-> >>>
-> >>> On 12/01/2016 10:57 PM, Eric Blake wrote:
-> >>>> On 12/01/2016 12:55 AM, Zhang Chen wrote:
-> >>>>> Say it in another way to make it easier to understand.
-> >>>>>
-> >>>>> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-> >>>>> Signed-off-by: Eric Blake <eblake@redhat.com>
-> >>>> I guess that's because I suggested the replacement text to use, even
-> >>>> though I didn't write the patch.
-> >>> Yes, In that case, should I change the signed-off-by to acked-by or
-> >>> remove it?
-> >> You can use "Suggested-by:"
-> >>
-> >> https://www.kernel.org/doc/Documentation/SubmittingPatches
-> >>
-> >> Laurent
-> >>
-> >=20
-> > Should I fix it? or can you pick up this directly for 2.8?
+On 12/07/2016 06:39 AM, Frediano Ziglio wrote:
+> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+
+Mentioning 'simliar' in the commit message would make it easier to pick
+out which word is being changed, when not using a colored-by-word diff.
+
+This patch can also go through qemu-trivial (cc'd).
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+> ---
+>  docs/usb-storage.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> I don't think it is needed.
-> Perhaps Stefan H can take it directly in his staging tree?
+> diff --git a/docs/usb-storage.txt b/docs/usb-storage.txt
+> index fbc1f2e..551af6f 100644
+> --- a/docs/usb-storage.txt
+> +++ b/docs/usb-storage.txt
+> @@ -34,7 +34,7 @@ with tree logical units:
+>  Number three emulates the classic bulk-only transport protocol too.
+>  It's called "usb-bot".  It shares most code with "usb-storage", and
+>  the guest will not be able to see the difference.  The qemu command
+> -line interface is simliar to usb-uas though, i.e. no automatic scsi
+> +line interface is similar to usb-uas though, i.e. no automatic scsi
+>  disk creation.  It also features support for up to 16 LUNs.  The LUN
+>  numbers must be continuous, i.e. for three devices you must use 0+1+2.=
 
-Too late for that now.  This should be merged through Jason Wang (net
-maintainer) like any other colo-proxy patch.
+>  The 0+1+5 numbering from the "usb-uas" example isn't going to work
+>=20
 
-Stefan
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
---nFreZHaLTZJo0R7j
+
+--8rN6lOVMCNd3iR3qg61A5Cg0ajCkWspK3--
+
+--3slJwEJIqtUMOs0Q4Rw7nqaxnmANIkICu
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBAgAGBQJYSA8JAAoJEJykq7OBq3PIy5sH/3wXENzI0kcJ0ZiUZeNVtMB3
-IExdr5PLpiW1sygrAoUVrYKBPaDHm6iP6WQuMZUCBB3dP+A5PYHpi6+ZMuoHkKbU
-D8+vaEXi2OV3pvpgVXHq5n0TCQkkm2oUb/O1AmabB2QadvfdPUM5sMj+71VUXsie
-6vWoy8m/gwayMlNhtjY1e3RGowe8PsMrZrjJ1eaGotkdJdpnp0CcEPi1WrUR7lXk
-6sKru9BAzP3zAI9nXl4kDsNMdS9UF1ZtouY6ZLoSWAmpmguai3a2ECUaZPwStZYw
-VIduslTg0r0maSytYuMzGeWmaQzfdoN3ATAJW/pzYLuSSSx1SR2kLdDJ7Zl88gc=
-=Q5qe
+iQEcBAEBCAAGBQJYSDCEAAoJEKeha0olJ0NqTyYH/ilgBCPnyyW2gFDna3cC+Qg7
+sm0SmDVD3VxpQKU//yj0yiACSG9S4B3xEXwSNbOFry5WCBHKvwjjRErO1aw8lNKk
+WlslPstfqos/ka8Gv3O49euGgZs4Ak26Wi6cdwzIwZLPdBbLg9Q5357HPIKeZWrh
+PhPvaVrKA2fQP+3e9EBBXlM/TcaC0LDtOzJegD04Gv1LxtQN7Llt7p8x29ali5EY
+gEjaXz5ZbgkzCfMBs68hgEMAHp8DDbgrAFcgr9UtUav2gjJvp+fmRa1jGfNZgJpX
+w/U2dd4rJggXBC9Jz7VAAH+muomYUSA7T0m1U90z34qJQ260/yytWmVKBYtcdhA=
+=dys6
 -----END PGP SIGNATURE-----
 
---nFreZHaLTZJo0R7j--
+--3slJwEJIqtUMOs0Q4Rw7nqaxnmANIkICu--
 
