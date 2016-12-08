@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cEkBU-0006WA-LG
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2016 16:55:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52017)
+	id 1cEnbT-0004Sl-Ji
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Dec 2016 20:34:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39691)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.gacek@gmail.com>) id 1cEjXr-000515-Mn
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 16:14:32 -0500
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cEnbQ-0004RR-3D
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 20:34:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.gacek@gmail.com>) id 1cEjXq-00059o-Ru
-	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 16:14:31 -0500
-Received: from mail-wm0-f65.google.com ([74.125.82.65]:36526)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.gacek@gmail.com>)
-	id 1cEjXl-00052k-PT; Wed, 07 Dec 2016 16:14:25 -0500
-Received: by mail-wm0-f65.google.com with SMTP id m203so30378882wma.3;
-	Wed, 07 Dec 2016 13:14:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=483TAA4zPLa0qMvCW5kqgy7nh8VaQNJNzUPFIZekY38=;
-	b=FWEBptjV55QDNCRsGpY5/yfvSaE2Rw++13/Kd7m+XLbvefbknR9fMSdADlRH5Gpqa4
-	N9BmP6vGVdBt2K5x4LphV02qqxLawXMqYpzHPsK8D0S2Dge47V9XwfW3jiT6QUnbmeUX
-	k5A2/HDZIrHjZbm9f79J6ZnJTO23vlUpn0/vBC0M1zCT0mUZ9gFd15h4Xjp1HoA4Dt5c
-	uwByRc39w3zN9sswm77NUSaeAQ6PGXMQaJ/j/SR0L4X88XhvBnGO3ZSHTluzeQMvzBJT
-	Rh94NeGkpCi7U5KprHY+5CuQ5HWmtDda448UgGtByqBhOrZXZGypkR+kJL+X8pxkQTtz
-	rAWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=483TAA4zPLa0qMvCW5kqgy7nh8VaQNJNzUPFIZekY38=;
-	b=eE3dbgQagHLa2qaeQrnP/dFtCDqARsktqeMV2CvgPzWQeYUDi6oMtUSDE+CDOnwUra
-	OMk5ssdu6xS8XOyQtC8w2BXEYnQKLakJWubecm1O8YkYex/sdFxo7vtEgozv81KWGGF0
-	GVOPriGPvIv8ekhWL1Wn8H5T4cPd/bmdfx1fREZ4Tyv8R2jON+081WB0GOtklm/OnF7o
-	FsLHCygJ445VNWFqrs2B/P8pA8pLEzx8k2P7NBAPhX2gdkQ4pYyWkK/ODPd2rIqFBSw2
-	Jn1tX4meyXsrR9VGcUTOW6Jg7CmfgZAuRtShV4AiYSDJ5VyrPTZBPxpw9pjA66pY0NuL
-	K4Sg==
-X-Gm-Message-State: AKaTC02LoPADvoOdig5xP7KJKKX4EMqRUfnGLhxOwxZm4tljksEkfmrOlSuQTcCbujbxFZSRXJ6oaqGRGjy86w==
-X-Received: by 10.46.77.17 with SMTP id a17mr31829359ljb.34.1481145183036;
-	Wed, 07 Dec 2016 13:13:03 -0800 (PST)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cEnbE-0004Hm-10
+	for qemu-trivial@nongnu.org; Wed, 07 Dec 2016 20:34:28 -0500
+Received: from [59.151.112.132] (port=12317 helo=heian.cn.fujitsu.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
+	id 1cEnaH-0003Ul-Bv; Wed, 07 Dec 2016 20:33:17 -0500
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="13708547"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 08 Dec 2016 09:33:09 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id B76B346704A5;
+	Thu,  8 Dec 2016 09:33:06 +0800 (CST)
+Received: from [10.167.226.56] (10.167.226.56) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.319.2; Thu, 8 Dec 2016 09:33:11 +0800
+To: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>
+References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
+	<a1593129-ddb9-8e74-5865-b1e8400c991d@redhat.com>
+	<8b90a1da-a129-f2cb-4545-355348387925@cn.fujitsu.com>
+	<063dfa33-2015-e566-c623-d59578c20fcd@redhat.com>
+	<13aed710-c5d1-b1de-5922-52e3e53029f9@cn.fujitsu.com>
+	<956d6c43-0904-e094-1adb-bb7c584967d0@vivier.eu>
+	<20161207133049.GA32099@stefanha-x1.localdomain>
+CC: Laurent Vivier <lvivier@redhat.com>, Eric Blake <eblake@redhat.com>, qemu
+	devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>
+From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <fc30a10e-10d5-6b53-d098-f00780cdbe16@cn.fujitsu.com>
+Date: Thu, 8 Dec 2016 09:32:56 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.114.173.102 with HTTP; Wed, 7 Dec 2016 13:12:42 -0800 (PST)
-From: Andrew Gacek <andrew.gacek@gmail.com>
-Date: Wed, 7 Dec 2016 15:12:42 -0600
-Message-ID: <CAHgzvFi2wjPtJzU9hXzdaZsbYr085VCbjfsiUeVc5XnUR8arHw@mail.gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.65
-X-Mailman-Approved-At: Wed, 07 Dec 2016 16:55:27 -0500
-Subject: [Qemu-trivial] [PATCH] cadence_uart: Check if receiver timeout
- counter is disabled
+In-Reply-To: <20161207133049.GA32099@stefanha-x1.localdomain>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.167.226.56]
+X-yoursite-MailScanner-ID: B76B346704A5.AA7C3
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.9] docs: Fix
+ description of the sentence
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,33 +61,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Dec 2016 21:14:32 -0000
+X-List-Received-Date: Thu, 08 Dec 2016 01:34:29 -0000
 
-When register Rcvr_timeout_reg0 (R_RTOR in cadence_uart.c) is set to
-0, the receiver timeout counter should be disabled. See page 1801 of
-"Zynq-7000 AP SoC Technical Reference Manual". This commit adds a
-such a check before setting the receive timeout interrupt.
 
-Signed-off-by: Andrew Gacek <andrew.gacek@gmail.com>
----
- hw/char/cadence_uart.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index 0215d65..54194b1 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -138,7 +138,9 @@ static void fifo_trigger_update(void *opaque)
- {
-     CadenceUARTState *s = opaque;
+On 12/07/2016 09:30 PM, Stefan Hajnoczi wrote:
+> On Wed, Dec 07, 2016 at 10:01:49AM +0100, Laurent Vivier wrote:
+>> Le 07/12/2016 à 09:58, Zhang Chen a écrit :
+>>>
+>>> On 12/02/2016 03:57 PM, Laurent Vivier wrote:
+>>>> On 02/12/2016 03:59, Zhang Chen wrote:
+>>>>> On 12/01/2016 10:57 PM, Eric Blake wrote:
+>>>>>> On 12/01/2016 12:55 AM, Zhang Chen wrote:
+>>>>>>> Say it in another way to make it easier to understand.
+>>>>>>>
+>>>>>>> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+>>>>>>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>>>>>> I guess that's because I suggested the replacement text to use, even
+>>>>>> though I didn't write the patch.
+>>>>> Yes, In that case, should I change the signed-off-by to acked-by or
+>>>>> remove it?
+>>>> You can use "Suggested-by:"
+>>>>
+>>>> https://www.kernel.org/doc/Documentation/SubmittingPatches
+>>>>
+>>>> Laurent
+>>>>
+>>> Should I fix it? or can you pick up this directly for 2.8?
+>> I don't think it is needed.
+>> Perhaps Stefan H can take it directly in his staging tree?
+> Too late for that now.  This should be merged through Jason Wang (net
+> maintainer) like any other colo-proxy patch.
+>
 
--    s->r[R_CISR] |= UART_INTR_TIMEOUT;
-+    if (s->r[R_RTOR]) {
-+        s->r[R_CISR] |= UART_INTR_TIMEOUT;
-+    }
+OK~ I change the subject to "for-2.9" and cc Jason.
 
-     uart_update_status(s);
- }
+Thanks
+Zhang Chen
+
+
 -- 
-2.7.4
+Thanks
+zhangchen
+
+
+
 
