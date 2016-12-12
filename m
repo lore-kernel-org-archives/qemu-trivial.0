@@ -1,62 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cEwqo-0005xN-1g
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Dec 2016 06:26:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51371)
+	id 1cGUvO-0001gV-FC
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Dec 2016 13:02:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43148)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.gacek@gmail.com>) id 1cEwqk-0005uX-1z
-	for qemu-trivial@nongnu.org; Thu, 08 Dec 2016 06:26:55 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cGUSa-00047D-Mu
+	for qemu-trivial@nongnu.org; Mon, 12 Dec 2016 12:32:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.gacek@gmail.com>) id 1cEwqj-0001lL-08
-	for qemu-trivial@nongnu.org; Thu, 08 Dec 2016 06:26:54 -0500
-Received: from mail-qk0-f195.google.com ([209.85.220.195]:36357)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.gacek@gmail.com>)
-	id 1cEwqd-0001jT-FU; Thu, 08 Dec 2016 06:26:47 -0500
-Received: by mail-qk0-f195.google.com with SMTP id h201so52397657qke.3;
-	Thu, 08 Dec 2016 03:26:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=RJxyR8pEfQKfoGdn7yH2a3aXjkb88P3NcqbkhCOWd/k=;
-	b=MH8lyZo9+ruhsprSvyHQKwQamFyVi2lont2NdqVJgIOmYL4bfQP4AzMfNhlHu2ma/S
-	lp5ZoOd1VgGdFCPndCImi50ElCRQvMANPqOORUub7OuKg9zGAhfcMtCDTtXdBTnqB57p
-	Z4Lrj3wayVsk+0hK8x9yG20rvKXs/dfAaVTXBJ5itufZcVJazLeKp+CdoRCRVqGpEfuw
-	4BqgNokxE0Pm281+kCk0vRdzpmrAQjouqbW/6RGCFf9YxcKBeFys4jTM+Lo7jEQEtm4k
-	oGFJLNeHUHTG7P8jocF6L/cWOw5ujRokIoVKQKhA/frItGKKjE+avwtk8Dl7s64Xscgi
-	9dTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=RJxyR8pEfQKfoGdn7yH2a3aXjkb88P3NcqbkhCOWd/k=;
-	b=JNCHeaPteYlA+yBL89uwghcccoLmOCUpsvr0fiqisBVcSV58xSG2YJsiOedR1aYz9p
-	fwA2fq3HBu0WSzHwxtvY60FPpLyzZ1AvmBKmDs+vS7bY4qhv3mS69+g/TlRX8B+UyMki
-	Kc/dE8U31DXYJ5eW/yZ1XOIrrKl46hILJHFf90Vt5V6VI0lIbwrTK5e1zhezcs5WA6Vb
-	rydCxAsQDV8rlfs0kQ7/wXEDHGgkIFgeIOI3fOpl4VANcGfcVlYbBRs5WhI4XLQJLUfd
-	0QQqiqf7gU1JzLe+YTqcruQ/Qg2nUR6lHvaS8tsWWN5fzZqV4OMJsxmweeWWXmr2mvb/
-	UZkw==
-X-Gm-Message-State: AKaTC01Fah9MimPuTIkZ4txpe950QGQWydAwd2aHxTTWhso2pBZYLQkUo8f4BG15c77/EDg5aQUGPFN7jEPlIw==
-X-Received: by 10.46.69.137 with SMTP id s131mr33174028lja.26.1481196346607;
-	Thu, 08 Dec 2016 03:25:46 -0800 (PST)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cGUSZ-0000x2-UH
+	for qemu-trivial@nongnu.org; Mon, 12 Dec 2016 12:32:20 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45084)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1cGUSY-0000v8-4P; Mon, 12 Dec 2016 12:32:18 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 53A6E19CF46;
+	Mon, 12 Dec 2016 17:32:17 +0000 (UTC)
+Received: from localhost (ovpn-116-27.ams2.redhat.com [10.36.116.27])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBCHWFpO030073; Mon, 12 Dec 2016 12:32:16 -0500
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Mon, 12 Dec 2016 20:31:50 +0300
+Message-Id: <20161212173151.18092-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20161212173151.18092-1-marcandre.lureau@redhat.com>
+References: <20161212173151.18092-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Received: by 10.114.173.102 with HTTP; Thu, 8 Dec 2016 03:25:26 -0800 (PST)
-In-Reply-To: <CAHgzvFjyvHOSYdGyi8_ug+tO1rE_0TZXVQwc9g=NnZJxQ2Dtdg@mail.gmail.com>
-References: <CAHgzvFi2wjPtJzU9hXzdaZsbYr085VCbjfsiUeVc5XnUR8arHw@mail.gmail.com>
-	<293c3354-b11b-a31f-39dc-b7264ad0bb24@redhat.com>
-	<20161208104252.GH9606@toto>
-	<CAHgzvFjyvHOSYdGyi8_ug+tO1rE_0TZXVQwc9g=NnZJxQ2Dtdg@mail.gmail.com>
-From: Andrew Gacek <andrew.gacek@gmail.com>
-Date: Thu, 8 Dec 2016 05:25:26 -0600
-Message-ID: <CAHgzvFi2ft+Oqo7MvmJQWa_Wv5AYKxZveaLi2FZ3OiY8BZrA=Q@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, 
-	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 12 Dec 2016 17:32:17 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.220.195
-Subject: Re: [Qemu-trivial] [PATCH] cadence_uart: Check if receiver timeout
- counter is disabled
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 2/3] object.h: improve OBJECT/OBJECT_CLASS doc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,99 +51,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Dec 2016 11:26:55 -0000
+X-List-Received-Date: Mon, 12 Dec 2016 17:32:21 -0000
 
-Laurent, thanks for CC'ing Xilinx Zynq maintainers. I read that part
-of the submission guidelines, then completely forgot to do it.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ include/qom/object.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Edgar, thanks for the comments. I wasn't sure if I needed to call that
-function or not. Also, one other discrepancy with the technical
-reference manual is that writing to R_RTOR should mask off all but the
-lower 8 bits. I'm not sure how important that actually is (since the
-timer isn't really implemented in qemu), but I thought I'd mention it.
-For my use case, the current patch fixes the issue we were having.
+diff --git a/include/qom/object.h b/include/qom/object.h
+index c5e6fc1f5d..c5456db05d 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -467,7 +467,7 @@ struct TypeInfo
+  * OBJECT:
+  * @obj: A derivative of #Object
+  *
+- * Converts an object to a #Object.  Since all objects are #Objects,
++ * Converts an object to a #Object.  Since all objects are #Object,
+  * this function will always succeed.
+  */
+ #define OBJECT(obj) \
+@@ -477,8 +477,8 @@ struct TypeInfo
+  * OBJECT_CLASS:
+  * @class: A derivative of #ObjectClass.
+  *
+- * Converts a class to an #ObjectClass.  Since all objects are #Objects,
+- * this function will always succeed.
++ * Converts a class to an #ObjectClass.  Since all classes are
++ * #ObjectClass, this function will always succeed.
+  */
+ #define OBJECT_CLASS(class) \
+     ((ObjectClass *)(class))
+--=20
+2.11.0
 
--Andrew
-
-On Thu, Dec 8, 2016 at 5:21 AM, Andrew Gacek <andrew.gacek@gmail.com> wrote:
-> When register Rcvr_timeout_reg0 (R_RTOR in cadence_uart.c) is set to
-> 0, the receiver timeout counter should be disabled. See page 1801 of
-> "Zynq-7000 AP SoC Technical Reference Manual". This commit adds a
-> such a check before setting the receive timeout interrupt.
->
-> Signed-off-by: Andrew Gacek <andrew.gacek@gmail.com>
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  hw/char/cadence_uart.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-> index 0215d65..378630d 100644
-> --- a/hw/char/cadence_uart.c
-> +++ b/hw/char/cadence_uart.c
-> @@ -138,9 +138,11 @@ static void fifo_trigger_update(void *opaque)
->  {
->      CadenceUARTState *s = opaque;
->
-> -    s->r[R_CISR] |= UART_INTR_TIMEOUT;
-> +    if (s->r[R_RTOR]) {
-> +        s->r[R_CISR] |= UART_INTR_TIMEOUT;
->
-> -    uart_update_status(s);
-> +        uart_update_status(s);
-> +    }
->  }
->
->  static void uart_rx_reset(CadenceUARTState *s)
-> --
-> 2.7.4
->
-> On Thu, Dec 8, 2016 at 4:42 AM, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
->> On Thu, Dec 08, 2016 at 08:50:40AM +0100, Laurent Vivier wrote:
->>> I CC: Xilinx Zynq Maintainers.
->>>
->>> Laurent
->>
->> Thanks
->>
->>>
->>> On 07/12/2016 22:12, Andrew Gacek wrote:
->>> > When register Rcvr_timeout_reg0 (R_RTOR in cadence_uart.c) is set to
->>> > 0, the receiver timeout counter should be disabled. See page 1801 of
->>> > "Zynq-7000 AP SoC Technical Reference Manual". This commit adds a
->>> > such a check before setting the receive timeout interrupt.
->>
->> We could also try to disable the timer when rtor is zero but I think
->> that exposes a bunch of corner cases that would complicate the model a bit.
->> So IMO, this patch is good.
->>
->>
->>> > Signed-off-by: Andrew Gacek <andrew.gacek@gmail.com>
->>> > ---
->>> >  hw/char/cadence_uart.c | 4 +++-
->>> >  1 file changed, 3 insertions(+), 1 deletion(-)
->>> >
->>> > diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
->>> > index 0215d65..54194b1 100644
->>> > --- a/hw/char/cadence_uart.c
->>> > +++ b/hw/char/cadence_uart.c
->>> > @@ -138,7 +138,9 @@ static void fifo_trigger_update(void *opaque)
->>> >  {
->>> >      CadenceUARTState *s = opaque;
->>> >
->>> > -    s->r[R_CISR] |= UART_INTR_TIMEOUT;
->>> > +    if (s->r[R_RTOR]) {
->>> > +        s->r[R_CISR] |= UART_INTR_TIMEOUT;
->>> > +    }
->>> >
->>> >      uart_update_status(s);
->>
->> Since you are not modifying the IRQ state when the timeout is disabled, you can avoid calling uart_update_status too (because it will only end up recomputing the same state).
->>
->> With that fix:
->> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->>
->> Best regards,
->> Edgar
 
