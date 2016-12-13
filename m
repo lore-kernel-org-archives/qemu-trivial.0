@@ -1,64 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cGjn4-0008JP-KE
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Dec 2016 04:54:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46456)
+	id 1cGmFi-0002ui-K2
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Dec 2016 07:32:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cGjn1-0008Ho-TM
-	for qemu-trivial@nongnu.org; Tue, 13 Dec 2016 04:54:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmFd-0002rF-0w
+	for qemu-trivial@nongnu.org; Tue, 13 Dec 2016 07:32:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cGjn1-0006eo-46
-	for qemu-trivial@nongnu.org; Tue, 13 Dec 2016 04:54:27 -0500
-Received: from mail-wj0-f195.google.com ([209.85.210.195]:36731)
+	(envelope-from <peter.maydell@linaro.org>) id 1cGmFZ-0004Lv-Rl
+	for qemu-trivial@nongnu.org; Tue, 13 Dec 2016 07:32:09 -0500
+Received: from mail-vk0-f45.google.com ([209.85.213.45]:36052)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cGjmw-0006Zp-Kf; Tue, 13 Dec 2016 04:54:22 -0500
-Received: by mail-wj0-f195.google.com with SMTP id j10so15539184wjb.3;
-	Tue, 13 Dec 2016 01:54:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=Kns/un20cURlq+0bSkHIKlyLnK0eXXsmFqxIYOYQFiY=;
-	b=yUehiAGVZXKMaxNLqnHJGXAch5cHEwTrlIOGHwUmCaxvh4bLgj7kcfq36FZKc8a3Vh
-	ttVf6otrtk/q0vABCvz5T7AKy9d/TFgTEw8OSEqMnUs7kfrkyIPGll3CmzQ+3jT3YlIr
-	6CQkzwcWEd9dROG9svQ8H3Q8InnWmISbQB2du4f7kTClWmdO+Qum2WqpmS6Zvyz0Fm/c
-	uRRdkRBrjYkw9JYuMhPiAsOjr03j8PycbFrhjRSNGQDkH5r15SNB8A3bewH2hL5MIILL
-	YgJqfUdveh7+d8qDjESpcTGzX/Fj81IjxV7/gDgEX7xvR0fba+Z7u290rHMZbANKM4zs
-	oyMg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cGmFZ-0004LV-Na
+	for qemu-trivial@nongnu.org; Tue, 13 Dec 2016 07:32:05 -0500
+Received: by mail-vk0-f45.google.com with SMTP id p9so58677184vkd.3
+	for <qemu-trivial@nongnu.org>; Tue, 13 Dec 2016 04:32:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:from:date:message-id:subject:to:cc;
+	bh=BJJWs4nZmmrhRsmPgTvtLVpJocMMiCWo7txeX2J6dcU=;
+	b=EwhwHtw+HoDwg5w0FG/XIyQMwo0TkKi7IZnf+oHf7jxotvq4jkfsO99CcYZjXjOtZp
+	ZrGoYWAQpyLOKotx5+h2I9tqtTtuiLu+t3bd05gqswiW4bMC9xwIW/e5G5jIIySl7gK+
+	OGhVU97wElL65iB+QwZ6aZxR+2GvBIE7PDSYs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=Kns/un20cURlq+0bSkHIKlyLnK0eXXsmFqxIYOYQFiY=;
-	b=PRBNEgce0PGOcfGu7bqcbM2DRehKTXYojw2IkyQwOF3e12YtsbLw7zVnFO+3O3MV2e
-	ir8IVnpSBdDPBWA9vubsPNFwjs3GTpPUAXkMEO0HuSPEE1XTD7DAqAfVXoDB5Lz9OJjt
-	Wc+6+9I5ZHnck/rY/1kcRoNQyK/bq1r/dOTIIVtIf3MQpL1iqX2JyTPmQlkbDnzMv1aH
-	1ah6ye0Qt7+TgfIvkjLSdN+dwWAvcRIEcgZLkUfJ7X4GZHq/8+cwdEuKfLCV9UBHio5D
-	bdmuSuQgNgEzaC07ibSkiTLFc0KSjyCekVqUxwy74roPb/dzDJI62PZYWwQ656Cex2eV
-	6IJw==
-X-Gm-Message-State: AKaTC01jGmR4CgBesYvPe93rAQKY2qUz6XYjnc7JjkUnjYWajEQYB5Zoe99lEPi2SSvIwA==
-X-Received: by 10.194.44.41 with SMTP id b9mr100000507wjm.56.1481622801425;
-	Tue, 13 Dec 2016 01:53:21 -0800 (PST)
-Received: from localhost (host86-185-39-193.range86-185.btcentralplus.com.
-	[86.185.39.193]) by smtp.gmail.com with ESMTPSA id
-	g184sm1739185wme.23.2016.12.13.01.53.20
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 13 Dec 2016 01:53:20 -0800 (PST)
-Date: Tue, 13 Dec 2016 09:53:19 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20161213095319.GB3103@stefanha-x1.localdomain>
-References: <20161212221759.28949-1-marcandre.lureau@redhat.com>
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+	bh=BJJWs4nZmmrhRsmPgTvtLVpJocMMiCWo7txeX2J6dcU=;
+	b=Mu5ufZ5Sc2fHRgwXvKsaCaqpEZOZb61vpzPO4BcxuRVspR7KghBHFEZlWwh5XXM1bO
+	c1vGXrC8vhtJmVjjnbR8yFnOf6j6/owwUB/W1XWeGeguNUjiERpQ2hZZvuks/kJUu7Ec
+	NvFL9C7V52ThT4XXP100z7HKuCt1aOu8r8P1e25/0d+d+PbI17rLiZFtqKGrEUkIy+pP
+	QPL3YPQEbceAEr8JMN9JCRwGV0gakRRpqeRn+AoeRDpz3o0SU1ToX84JQvFRTVucUdBr
+	EkbhQSsf8IaMaJ9UyVjt0HT0nqATsFmztwbtCLeAbyrumsmDjEGlkglrdPFReTGX/Nes
+	Vxeg==
+X-Gm-Message-State: AKaTC02QCjnL3OB6kJdoSwGRAYXKWtKbw+ijbIP2bTnjYSDo/5JvbI9g3MimUVhkRIZr+mTb0ixIUFAm0RFU2SSE
+X-Received: by 10.176.83.12 with SMTP id x12mr80425558uax.131.1481632264933;
+	Tue, 13 Dec 2016 04:31:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Yylu36WmvOXNoKYn"
-Content-Disposition: inline
-In-Reply-To: <20161212221759.28949-1-marcandre.lureau@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Received: by 10.31.176.14 with HTTP; Tue, 13 Dec 2016 04:30:44 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Dec 2016 12:30:44 +0000
+Message-ID: <CAFEAcA_D9wx=EZWE_ypAFPkQcYBhM+7NJaOt7rg=ed-0fExo8w@mail.gmail.com>
+To: Andrew Gacek <andrew.gacek@gmail.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.210.195
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trace-events: spelling fix
+X-Received-From: 209.85.213.45
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cadence_uart: Check if
+ receiver timeout counter is disabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,38 +62,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Dec 2016 09:54:28 -0000
+X-List-Received-Date: Tue, 13 Dec 2016 12:32:13 -0000
 
-
---Yylu36WmvOXNoKYn
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Dec 13, 2016 at 01:17:59AM +0300, Marc-Andr=E9 Lureau wrote:
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+On 8 December 2016 at 11:21, Andrew Gacek <andrew.gacek@gmail.com> wrote:
+> When register Rcvr_timeout_reg0 (R_RTOR in cadence_uart.c) is set to
+> 0, the receiver timeout counter should be disabled. See page 1801 of
+> "Zynq-7000 AP SoC Technical Reference Manual". This commit adds a
+> such a check before setting the receive timeout interrupt.
+>
+> Signed-off-by: Andrew Gacek <andrew.gacek@gmail.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
->  trace-events | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/char/cadence_uart.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 
-Thanks, applied to my tracing tree:
-https://github.com/stefanha/qemu/commits/tracing
+Thanks; I've applied this to the target-arm.next queue for 2.9.
 
-Stefan
+For future patches, if you send a revised version of a patch it's
+best to send it as a standalone new thread (with a subject that
+says "[PATCH v2]"), not as a reply to the thread that started with
+the original patch. Otherwise our automated scripts and tooling
+for handling patch emails tend not to notice it.
 
---Yylu36WmvOXNoKYn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYT8UPAAoJEJykq7OBq3PIR34IAMXavOv6NQn8rJDl38J89GNy
-PHqzm4gZlWhwFbAAGbSrlBv9GZ8ig+gNLkCBK3GHU1zxzDdXqkcaG1i/yWGFSpIY
-n0Q/gRWptHK/mK1UTAYipvKhfqogVA3ZYZymE87p2MutP31KfEUcHvKcFrO7i5zt
-+V1vQqWRvDAiJxrwHZulVb7G2kPte+4xWbbIPp5kbBwX0bAu9iU4zDEdPxhpMZRE
-OhPmDw1uam2mF9dC4vr75u+B6DrfTPsGsCsyuubLL508Pw6/J0SlaCxbzguUGRyt
-tp0mWZv0hvKD8g0AlVOY8oQ7HNWO+rFXFdiiiyHovKyOmZO7cDDXYu9YhYin4S4=
-=RM2u
------END PGP SIGNATURE-----
-
---Yylu36WmvOXNoKYn--
+thanks
+-- PMM
 
