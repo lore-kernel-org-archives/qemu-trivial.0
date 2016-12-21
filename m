@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cJaQP-0005Q8-8T
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2016 01:30:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49350)
+	id 1cJeKe-0007IO-3N
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2016 05:41:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cJaQN-0005OX-Pl
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 01:30:52 -0500
+	(envelope-from <marcel@redhat.com>) id 1cJeKc-0007HX-Hr
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 05:41:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cJaQM-0006bf-UL
-	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 01:30:51 -0500
-Received: from [59.151.112.132] (port=53982 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1cJaQH-0006YW-8E; Wed, 21 Dec 2016 01:30:45 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14127416"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 21 Dec 2016 14:30:42 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
-	by cn.fujitsu.com (Postfix) with ESMTP id 87D78467049D;
-	Wed, 21 Dec 2016 14:30:41 +0800 (CST)
-Received: from [10.167.226.69] (10.167.226.69) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.319.2; Wed, 21 Dec 2016 14:30:41 +0800
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-References: <1478094287-15009-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-	<1478094287-15009-2-git-send-email-caoj.fnst@cn.fujitsu.com>
-CC: <peter.maydell@linaro.org>, <thuth@redhat.com>, <armbru@redhat.com>,
-	<mst@redhat.com>
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-Message-ID: <585A22A7.6000203@cn.fujitsu.com>
-Date: Wed, 21 Dec 2016 14:35:19 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <marcel@redhat.com>) id 1cJeKb-0003UD-T4
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 05:41:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38442)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcel@redhat.com>)
+	id 1cJeKW-0003Qz-75; Wed, 21 Dec 2016 05:41:04 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 152F243A5D;
+	Wed, 21 Dec 2016 10:41:02 +0000 (UTC)
+Received: from [10.35.203.98] (vpn-203-98.tlv.redhat.com [10.35.203.98])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uBLAex6K018093; Wed, 21 Dec 2016 05:41:00 -0500
+To: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1478833368-25917-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+	<585A2156.6000700@cn.fujitsu.com>
+Cc: mst@redhat.com
+From: Marcel Apfelbaum <marcel@redhat.com>
+Message-ID: <de55d157-d5a3-e6a9-e079-b89cea3ed754@redhat.com>
+Date: Wed, 21 Dec 2016 12:40:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-In-Reply-To: <1478094287-15009-2-git-send-email-caoj.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset="windows-1252"
+In-Reply-To: <585A2156.6000700@cn.fujitsu.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 87D78467049D.A62B9
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 1/2] util/mmap-alloc:
- check parameter before using
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 21 Dec 2016 10:41:02 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] pcie: fix typo in
+ comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,55 +55,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Dec 2016 06:30:52 -0000
+X-List-Received-Date: Wed, 21 Dec 2016 10:41:11 -0000
 
-ping
+On 12/21/2016 08:29 AM, Cao jin wrote:
+> ping
+>
 
-On 11/02/2016 09:44 PM, Cao jin wrote:
-> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
-> ---
->  util/mmap-alloc.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/util/mmap-alloc.c b/util/mmap-alloc.c
-> index 5a85aa3..d713a72 100644
-> --- a/util/mmap-alloc.c
-> +++ b/util/mmap-alloc.c
-> @@ -12,6 +12,7 @@
->  
->  #include "qemu/osdep.h"
->  #include "qemu/mmap-alloc.h"
-> +#include "qemu/host-utils.h"
->  
->  #define HUGETLBFS_MAGIC       0x958458f6
->  
-> @@ -61,18 +62,18 @@ void *qemu_ram_mmap(int fd, size_t size, size_t align, bool shared)
->  #else
->      void *ptr = mmap(0, total, PROT_NONE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
->  #endif
-> -    size_t offset = QEMU_ALIGN_UP((uintptr_t)ptr, align) - (uintptr_t)ptr;
-> +    size_t offset;
->      void *ptr1;
->  
->      if (ptr == MAP_FAILED) {
->          return MAP_FAILED;
->      }
->  
-> -    /* Make sure align is a power of 2 */
-> -    assert(!(align & (align - 1)));
-> +    assert(is_power_of_2(align));
->      /* Always align to host page size */
->      assert(align >= getpagesize());
->  
-> +    offset = QEMU_ALIGN_UP((uintptr_t)ptr, align) - (uintptr_t)ptr;
->      ptr1 = mmap(ptr + offset, size, PROT_READ | PROT_WRITE,
->                  MAP_FIXED |
->                  (fd == -1 ? MAP_ANONYMOUS : 0) |
-> 
+No need for an r-b for this patch ,Michael or the qemu-trivial maintainer will take that.
 
--- 
-Sincerely,
-Cao jin
+Thanks,
+Marce;
 
+> On 11/11/2016 11:02 AM, Cao jin wrote:
+>> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+>> ---
+>>  hw/pci/pcie.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+>> index 99cfb45..39b10b8 100644
+>> --- a/hw/pci/pcie.c
+>> +++ b/hw/pci/pcie.c
+>> @@ -656,7 +656,7 @@ static void pcie_ext_cap_set_next(PCIDevice *dev, uint16_t pos, uint16_t next)
+>>  }
+>>
+>>  /*
+>> - * caller must supply valid (offset, size) * such that the range shouldn't
+>> + * Caller must supply valid (offset, size) such that the range wouldn't
+>>   * overlap with other capability or other registers.
+>>   * This function doesn't check it.
+>>   */
+>>
+>
 
 
