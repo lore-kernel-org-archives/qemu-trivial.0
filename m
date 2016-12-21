@@ -1,52 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cJLSr-0005gZ-PN
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Dec 2016 09:32:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40282)
+	id 1cJaKW-0001hr-8I
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Dec 2016 01:24:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1cJLSp-0005gS-BE
-	for qemu-trivial@nongnu.org; Tue, 20 Dec 2016 09:32:24 -0500
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cJaKT-0001em-Uc
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 01:24:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1cJLSk-0004IR-Bt
-	for qemu-trivial@nongnu.org; Tue, 20 Dec 2016 09:32:23 -0500
-Received: from mail-wm0-f68.google.com ([74.125.82.68]:36373)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1cJLSk-0004Hp-5F; Tue, 20 Dec 2016 09:32:18 -0500
-Received: by mail-wm0-f68.google.com with SMTP id m203so24631650wma.3;
-	Tue, 20 Dec 2016 06:32:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
-	:mime-version:content-transfer-encoding;
-	bh=Gqu8MUvyKujOwvwaB1rST5xjSwfYFwgud5Z32sgO2k4=;
-	b=tPxew5Rxfa3tPfRi/YtNmVFx7RHrrxa8hEJ5w4epgTaYj54Zpuu5GxNbSFq2Us+3IM
-	0pVZGAt8Nb6nS3FkOCjy+LDML4aW/RSey1nBHA1aSr0UAbJV+fwMWX4DLmB9xfK/Z3gR
-	w33J13KcHwIvk8qbvxQVLm0atCPugiLnwOWd9oiozinK/S1FazD93atNOyv+ZtXqtYZz
-	l5PJmU4nEwPfmPGPcU0APoUw66AwdxbKY5zL6GcRvds3eBXa1XtMFOn7CCu7VvMA9j6i
-	PzSJj4DHhi0Wje04Gp3fUZBmeWZKD3cD4QbhMg0OUt/ZqmbJSTOUge5PJ0UIf36XdCsY
-	HgCA==
-X-Gm-Message-State: AIkVDXJAapZjvdBie2w5ABS3zBZkCwyuYJeftbk5JKSFNYKlrfaqSw3UaCimtVXXbVaPKw==
-X-Received: by 10.28.11.208 with SMTP id 199mr166515wml.97.1482244335307;
-	Tue, 20 Dec 2016 06:32:15 -0800 (PST)
-Received: from [192.168.178.23] (p57AED625.dip0.t-ipconnect.de.
-	[87.174.214.37]) by smtp.gmail.com with ESMTPSA id
-	k11sm22326450wmb.18.2016.12.20.06.32.13
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 20 Dec 2016 06:32:14 -0800 (PST)
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>
-From: Thomas Huth <huth@tuxfamily.org>
-Message-ID: <b0619e40-daca-9b28-2c78-1e2709d9f0ad@tuxfamily.org>
-Date: Tue, 20 Dec 2016 15:32:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cJaKS-00047z-Vm
+	for qemu-trivial@nongnu.org; Wed, 21 Dec 2016 01:24:45 -0500
+Received: from [59.151.112.132] (port=18886 helo=heian.cn.fujitsu.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <caoj.fnst@cn.fujitsu.com>)
+	id 1cJaKN-00045p-R8; Wed, 21 Dec 2016 01:24:40 -0500
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14127127"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 21 Dec 2016 14:24:37 +0800
+Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
+	by cn.fujitsu.com (Postfix) with ESMTP id 7C4A0477B1CE;
+	Wed, 21 Dec 2016 14:24:37 +0800 (CST)
+Received: from [10.167.226.69] (10.167.226.69) by
+	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.319.2; Wed, 21 Dec 2016 14:24:37 +0800
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+References: <1478833296-25853-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+CC: <alex.williamson@redhat.com>
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
+Message-ID: <585A213C.4090706@cn.fujitsu.com>
+Date: Wed, 21 Dec 2016 14:29:16 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1478833296-25853-1-git-send-email-caoj.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.68
-Subject: [Qemu-trivial] m68k: Remove dummy machine
+X-Originating-IP: [10.167.226.69]
+X-yoursite-MailScanner-ID: 7C4A0477B1CE.A68B1
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] vfio: remove a
+ duplicated word in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,135 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Dec 2016 14:32:24 -0000
+X-List-Received-Date: Wed, 21 Dec 2016 06:24:47 -0000
 
-You can get an empty machine with "-M none" nowadays, so the
-m68k dummy board (introduced in 2007) seems to be pretty
-redundant since the "none" machine has been added in 2012.
+ping
 
-Signed-off-by: Thomas Huth <huth@tuxfamily.org>
----
- MAINTAINERS           |  4 ---
- hw/m68k/Makefile.objs |  2 --
- hw/m68k/dummy_m68k.c  | 84 ---------------------------------------------------
- 3 files changed, 90 deletions(-)
- delete mode 100644 hw/m68k/dummy_m68k.c
+On 11/11/2016 11:01 AM, Cao jin wrote:
+> Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+> ---
+>  hw/vfio/pci.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 31aaecb..c94987c 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -1881,8 +1881,8 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>       * 0 is reserved for this since absence of capabilities is indicated by
+>       * 0 for the ID, version, AND next pointer.  However, pcie_add_capability()
+>       * uses ID 0 as reserved for list management and will incorrectly match and
+> -     * assert if we attempt to pre-load the head of the chain with with this
+> -     * ID.  Use ID 0xFFFF temporarily since it is also seems to be reserved in
+> +     * assert if we attempt to pre-load the head of the chain with this ID.
+> +     * Use ID 0xFFFF temporarily since it is also seems to be reserved in
+>       * part for identifying absence of capabilities in a root complex register
+>       * block.  If the ID still exists after adding capabilities, switch back to
+>       * zero.  We'll mark this entire first dword as emulated for this purpose.
+> 
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4a60579..88ee8cd 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -552,10 +552,6 @@ S: Orphan
- F: hw/m68k/an5206.c
- F: hw/m68k/mcf5206.c
- 
--dummy_m68k
--S: Orphan
--F: hw/m68k/dummy_m68k.c
--
- mcf5208
- S: Orphan
- F: hw/m68k/mcf5208.c
-diff --git a/hw/m68k/Makefile.objs b/hw/m68k/Makefile.objs
-index c4352e7..d1f089c 100644
---- a/hw/m68k/Makefile.objs
-+++ b/hw/m68k/Makefile.objs
-@@ -1,4 +1,2 @@
- obj-y += an5206.o mcf5208.o
--obj-y += dummy_m68k.o
--
- obj-y += mcf5206.o mcf_intc.o
-diff --git a/hw/m68k/dummy_m68k.c b/hw/m68k/dummy_m68k.c
-deleted file mode 100644
-index 0b11d20..0000000
---- a/hw/m68k/dummy_m68k.c
-+++ /dev/null
-@@ -1,84 +0,0 @@
--/*
-- * Dummy board with just RAM and CPU for use as an ISS.
-- *
-- * Copyright (c) 2007 CodeSourcery.
-- *
-- * This code is licensed under the GPL
-- */
--
--#include "qemu/osdep.h"
--#include "qemu-common.h"
--#include "cpu.h"
--#include "hw/hw.h"
--#include "hw/boards.h"
--#include "hw/loader.h"
--#include "elf.h"
--#include "exec/address-spaces.h"
--
--#define KERNEL_LOAD_ADDR 0x10000
--
--/* Board init.  */
--
--static void dummy_m68k_init(MachineState *machine)
--{
--    ram_addr_t ram_size = machine->ram_size;
--    const char *cpu_model = machine->cpu_model;
--    const char *kernel_filename = machine->kernel_filename;
--    M68kCPU *cpu;
--    CPUM68KState *env;
--    MemoryRegion *address_space_mem =  get_system_memory();
--    MemoryRegion *ram = g_new(MemoryRegion, 1);
--    int kernel_size;
--    uint64_t elf_entry;
--    hwaddr entry;
--
--    if (!cpu_model)
--        cpu_model = "cfv4e";
--    cpu = cpu_m68k_init(cpu_model);
--    if (!cpu) {
--        fprintf(stderr, "Unable to find m68k CPU definition\n");
--        exit(1);
--    }
--    env = &cpu->env;
--
--    /* Initialize CPU registers.  */
--    env->vbr = 0;
--
--    /* RAM at address zero */
--    memory_region_allocate_system_memory(ram, NULL, "dummy_m68k.ram",
--                                         ram_size);
--    memory_region_add_subregion(address_space_mem, 0, ram);
--
--    /* Load kernel.  */
--    if (kernel_filename) {
--        kernel_size = load_elf(kernel_filename, NULL, NULL, &elf_entry,
--                               NULL, NULL, 1, EM_68K, 0, 0);
--        entry = elf_entry;
--        if (kernel_size < 0) {
--            kernel_size = load_uimage(kernel_filename, &entry, NULL, NULL,
--                                      NULL, NULL);
--        }
--        if (kernel_size < 0) {
--            kernel_size = load_image_targphys(kernel_filename,
--                                              KERNEL_LOAD_ADDR,
--                                              ram_size - KERNEL_LOAD_ADDR);
--            entry = KERNEL_LOAD_ADDR;
--        }
--        if (kernel_size < 0) {
--            fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                    kernel_filename);
--            exit(1);
--        }
--    } else {
--        entry = 0;
--    }
--    env->pc = entry;
--}
--
--static void dummy_m68k_machine_init(MachineClass *mc)
--{
--    mc->desc = "Dummy board";
--    mc->init = dummy_m68k_init;
--}
--
--DEFINE_MACHINE("dummy", dummy_m68k_machine_init)
 -- 
-1.8.3.1
+Sincerely,
+Cao jin
+
 
 
