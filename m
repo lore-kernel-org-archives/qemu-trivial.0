@@ -1,42 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cKFL8-0002gN-QC
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Dec 2016 21:12:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44221)
+	id 1cLPfY-00035j-PS
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Dec 2016 02:26:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56424)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cKFL6-0002ew-1g
-	for qemu-trivial@nongnu.org; Thu, 22 Dec 2016 21:12:08 -0500
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cLPfU-00034y-Tk
+	for qemu-trivial@nongnu.org; Mon, 26 Dec 2016 02:26:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>) id 1cKFL5-0002hL-68
-	for qemu-trivial@nongnu.org; Thu, 22 Dec 2016 21:12:07 -0500
-Received: from [59.151.112.132] (port=43152 helo=heian.cn.fujitsu.com)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cLPfU-0004bb-0i
+	for qemu-trivial@nongnu.org; Mon, 26 Dec 2016 02:26:00 -0500
+Received: from [59.151.112.132] (port=41806 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caoj.fnst@cn.fujitsu.com>)
-	id 1cKFL0-0002Yl-K4; Thu, 22 Dec 2016 21:12:02 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14197996"
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
+	id 1cLPfO-0004aC-Nv; Mon, 26 Dec 2016 02:25:55 -0500
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14263389"
 Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 23 Dec 2016 10:11:50 +0800
-Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
-	by cn.fujitsu.com (Postfix) with ESMTP id 3D7DF477B1E9;
-	Fri, 23 Dec 2016 10:11:51 +0800 (CST)
-Received: from G08FNSTD140223.g08.fujitsu.local (10.167.226.69) by
-	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.319.2; Fri, 23 Dec 2016 10:11:51 +0800
-From: Cao jin <caoj.fnst@cn.fujitsu.com>
-To: <qemu-devel@nongnu.org>
-CC: <mst@redhat.com>, <marcel@redhat.com>, <qemu-trivial@nongnu.org>
-Date: Fri, 23 Dec 2016 10:16:30 +0800
-Message-ID: <1482459390-14386-1-git-send-email-caoj.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.1.0
+	by heian.cn.fujitsu.com with ESMTP; 26 Dec 2016 15:25:38 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 450C94818575;
+	Mon, 26 Dec 2016 15:25:37 +0800 (CST)
+Received: from [10.167.226.56] (10.167.226.56) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.319.2; Mon, 26 Dec 2016 15:25:40 +0800
+To: Jason Wang <jasowang@redhat.com>
+References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
+	<a1593129-ddb9-8e74-5865-b1e8400c991d@redhat.com>
+	<8b90a1da-a129-f2cb-4545-355348387925@cn.fujitsu.com>
+	<063dfa33-2015-e566-c623-d59578c20fcd@redhat.com>
+	<13aed710-c5d1-b1de-5922-52e3e53029f9@cn.fujitsu.com>
+	<956d6c43-0904-e094-1adb-bb7c584967d0@vivier.eu>
+	<20161207133049.GA32099@stefanha-x1.localdomain>
+	<fc30a10e-10d5-6b53-d098-f00780cdbe16@cn.fujitsu.com>
+CC: Stefan Hajnoczi <stefanha@gmail.com>, Laurent Vivier <laurent@vivier.eu>, 
+	Laurent Vivier <lvivier@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>, qemu devel <qemu-devel@nongnu.org>
+From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <5dd2f20f-07dd-5120-13bf-ea5700880ecf@cn.fujitsu.com>
+Date: Mon, 26 Dec 2016 15:26:12 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.167.226.69]
-X-yoursite-MailScanner-ID: 3D7DF477B1E9.AB18E
+In-Reply-To: <fc30a10e-10d5-6b53-d098-f00780cdbe16@cn.fujitsu.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.167.226.56]
+X-yoursite-MailScanner-ID: 450C94818575.A7F14
 X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: caoj.fnst@cn.fujitsu.com
+X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] pcie: remove duplicate assertion
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.9] docs: Fix
+ description of the sentence
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,29 +62,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Dec 2016 02:12:08 -0000
+X-List-Received-Date: Mon, 26 Dec 2016 07:26:03 -0000
 
-"size >= 8" connote "size > 0"
+Hi~~ Jason.
 
-Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
----
- hw/pci/pcie.c | 1 -
- 1 file changed, 1 deletion(-)
+Can you pick up this patch?
 
-diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-index 39b10b852d91..f864c5cd5458 100644
---- a/hw/pci/pcie.c
-+++ b/hw/pci/pcie.c
-@@ -668,7 +668,6 @@ void pcie_add_capability(PCIDevice *dev,
-     uint16_t next;
- 
-     assert(offset >= PCI_CONFIG_SPACE_SIZE);
--    assert(offset < offset + size);
-     assert(offset + size <= PCIE_CONFIG_SPACE_SIZE);
-     assert(size >= 8);
-     assert(pci_is_express(dev));
+Thanks
+
+Zhang Chen
+
+
+On 12/08/2016 09:32 AM, Zhang Chen wrote:
+>
+>
+> On 12/07/2016 09:30 PM, Stefan Hajnoczi wrote:
+>> On Wed, Dec 07, 2016 at 10:01:49AM +0100, Laurent Vivier wrote:
+>>> Le 07/12/2016 à 09:58, Zhang Chen a écrit :
+>>>>
+>>>> On 12/02/2016 03:57 PM, Laurent Vivier wrote:
+>>>>> On 02/12/2016 03:59, Zhang Chen wrote:
+>>>>>> On 12/01/2016 10:57 PM, Eric Blake wrote:
+>>>>>>> On 12/01/2016 12:55 AM, Zhang Chen wrote:
+>>>>>>>> Say it in another way to make it easier to understand.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+>>>>>>>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>>>>>>> I guess that's because I suggested the replacement text to use, 
+>>>>>>> even
+>>>>>>> though I didn't write the patch.
+>>>>>> Yes, In that case, should I change the signed-off-by to acked-by or
+>>>>>> remove it?
+>>>>> You can use "Suggested-by:"
+>>>>>
+>>>>> https://www.kernel.org/doc/Documentation/SubmittingPatches
+>>>>>
+>>>>> Laurent
+>>>>>
+>>>> Should I fix it? or can you pick up this directly for 2.8?
+>>> I don't think it is needed.
+>>> Perhaps Stefan H can take it directly in his staging tree?
+>> Too late for that now.  This should be merged through Jason Wang (net
+>> maintainer) like any other colo-proxy patch.
+>>
+>
+> OK~ I change the subject to "for-2.9" and cc Jason.
+>
+> Thanks
+> Zhang Chen
+>
+>
+
 -- 
-2.1.0
+Thanks
+Zhang Chen
 
 
 
