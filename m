@@ -1,55 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cLsGx-0005Lq-2M
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Dec 2016 08:58:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49368)
+	id 1cMDGG-0003fv-0I
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2016 07:23:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1cLsGt-0005Js-WC
-	for qemu-trivial@nongnu.org; Tue, 27 Dec 2016 08:58:33 -0500
+	(envelope-from <vilanova@ac.upc.edu>) id 1cMDG9-0003aK-Fd
+	for qemu-trivial@nongnu.org; Wed, 28 Dec 2016 07:23:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1cLsGs-0002S0-Pr
-	for qemu-trivial@nongnu.org; Tue, 27 Dec 2016 08:58:32 -0500
-Received: from mail-wj0-f195.google.com ([209.85.210.195]:34462)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1cLsGm-0002Q4-WF; Tue, 27 Dec 2016 08:58:25 -0500
-Received: by mail-wj0-f195.google.com with SMTP id qs7so13899032wjc.1;
-	Tue, 27 Dec 2016 05:58:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=ZLKIvjfdgKv63BC6oVsKviwSoLf0P1WKPk+oVIOKftU=;
-	b=VeNXIYn7jHDvrN2V4TTnc3aLFLAfflJIDrAh0pBcSfd2udeuJOPMoiyT9t8W8irpZn
-	Ps8/hysKorIBU+wvgT/NdtN2NP8vhQkxMsqyrBxZAMKkztvuh/r9wMxNjbhrA1sso5UF
-	0mHg3brxlEbl4QXKKQ7Tl5fLMRooTjvOkH2OST3XzDm8Ae23hTr+VZp15MHh2+jfwVX2
-	zFPAVqNu+FNCwNZ6+iGS0XgidJngP4ljU1DJ1x/owwF6r+VKaZSWWcCaRW6zJ0NzHKR6
-	seZGKRJcGDflts0v75e6qymIx1sP2WeljAKb1QCck4QthfXBS65SXgbZmnyVHnVMye7W
-	1VcA==
-X-Gm-Message-State: AIkVDXKGbcDkdog3RUtOv8zb1zZLwdlXvnYTpE0zXU6mVH0DJf7PHE0htMDmNL4CR/RRjQ==
-X-Received: by 10.194.141.98 with SMTP id rn2mr28767568wjb.1.1482847102122;
-	Tue, 27 Dec 2016 05:58:22 -0800 (PST)
-Received: from thl530 (p54829F33.dip0.t-ipconnect.de. [84.130.159.51])
-	by smtp.gmail.com with ESMTPSA id
-	jd9sm43792796wjb.9.2016.12.27.05.58.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 27 Dec 2016 05:58:21 -0800 (PST)
-Date: Tue, 27 Dec 2016 14:58:05 +0100
-From: Thomas Huth <huth@tuxfamily.org>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
-	<qemu-trivial@nongnu.org>
-Message-ID: <20161227145805.5a19af6b@thl530>
-In-Reply-To: <80f9cbae-8548-4d5e-2543-1d95020eddb1@vivier.eu>
-References: <b0619e40-daca-9b28-2c78-1e2709d9f0ad@tuxfamily.org>
-	<80f9cbae-8548-4d5e-2543-1d95020eddb1@vivier.eu>
-X-Mailer: Claws Mail 3.14.0 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	(envelope-from <vilanova@ac.upc.edu>) id 1cMDG8-00029B-I4
+	for qemu-trivial@nongnu.org; Wed, 28 Dec 2016 07:23:09 -0500
+Received: from roura.ac.upc.edu ([147.83.33.10]:48978 helo=roura.ac.upc.es)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1cMDG8-000296-61; Wed, 28 Dec 2016 07:23:08 -0500
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id uBSCN7Tq006014;
+	Wed, 28 Dec 2016 13:23:07 +0100
+Received: from localhost (unknown [84.88.51.85])
+	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 53BA1AA;
+	Wed, 28 Dec 2016 13:23:07 +0100 (CET)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: Eric Blake <eblake@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-trivial@nongnu.org (open list:Trivial patches)
+Date: Wed, 28 Dec 2016 13:23:07 +0100
+Message-Id: <148292778707.380.16754332646128307704.stgit@fimbulvetr.bsc.es>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <148292774946.380.3638349228328753405.stgit@fimbulvetr.bsc.es>
+References: <148292774946.380.3638349228328753405.stgit@fimbulvetr.bsc.es>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.210.195
-Subject: Re: [Qemu-trivial] [Qemu-devel] m68k: Remove dummy machine
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	uBSCN7Tq006014
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
+X-Received-From: 147.83.33.10
+Subject: [Qemu-trivial] [PATCH v4 7/7] trace: [trivial] Statically enable
+ all guest events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,154 +50,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Dec 2016 13:58:33 -0000
+X-List-Received-Date: Wed, 28 Dec 2016 12:23:14 -0000
 
-Am Tue, 27 Dec 2016 12:52:30 +0100
-schrieb Laurent Vivier <laurent@vivier.eu>:
+The optimizations of this series makes it feasible to have them
+available on all builds.
 
-> Le 20/12/2016 =C3=A0 15:32, Thomas Huth a =C3=A9crit :
-> > You can get an empty machine with "-M none" nowadays, so the
-> > m68k dummy board (introduced in 2007) seems to be pretty
-> > redundant since the "none" machine has been added in 2012.
-> >=20
-> > Signed-off-by: Thomas Huth <huth@tuxfamily.org>
-> > ---
-> >  MAINTAINERS           |  4 ---
-> >  hw/m68k/Makefile.objs |  2 --
-> >  hw/m68k/dummy_m68k.c  | 84
-> > --------------------------------------------------- 3 files
-> > changed, 90 deletions(-) delete mode 100644 hw/m68k/dummy_m68k.c
-> >=20
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 4a60579..88ee8cd 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -552,10 +552,6 @@ S: Orphan
-> >  F: hw/m68k/an5206.c
-> >  F: hw/m68k/mcf5206.c
-> > =20
-> > -dummy_m68k
-> > -S: Orphan
-> > -F: hw/m68k/dummy_m68k.c
-> > -
-> >  mcf5208
-> >  S: Orphan
-> >  F: hw/m68k/mcf5208.c
-> > diff --git a/hw/m68k/Makefile.objs b/hw/m68k/Makefile.objs
-> > index c4352e7..d1f089c 100644
-> > --- a/hw/m68k/Makefile.objs
-> > +++ b/hw/m68k/Makefile.objs
-> > @@ -1,4 +1,2 @@
-> >  obj-y +=3D an5206.o mcf5208.o
-> > -obj-y +=3D dummy_m68k.o
-> > -
-> >  obj-y +=3D mcf5206.o mcf_intc.o
-> > diff --git a/hw/m68k/dummy_m68k.c b/hw/m68k/dummy_m68k.c
-> > deleted file mode 100644
-> > index 0b11d20..0000000
-> > --- a/hw/m68k/dummy_m68k.c
-> > +++ /dev/null
-> > @@ -1,84 +0,0 @@
-> > -/*
-> > - * Dummy board with just RAM and CPU for use as an ISS.
-> > - *
-> > - * Copyright (c) 2007 CodeSourcery.
-> > - *
-> > - * This code is licensed under the GPL
-> > - */
-> > -
-> > -#include "qemu/osdep.h"
-> > -#include "qemu-common.h"
-> > -#include "cpu.h"
-> > -#include "hw/hw.h"
-> > -#include "hw/boards.h"
-> > -#include "hw/loader.h"
-> > -#include "elf.h"
-> > -#include "exec/address-spaces.h"
-> > -
-> > -#define KERNEL_LOAD_ADDR 0x10000
-> > -
-> > -/* Board init.  */
-> > -
-> > -static void dummy_m68k_init(MachineState *machine)
-> > -{
-> > -    ram_addr_t ram_size =3D machine->ram_size;
-> > -    const char *cpu_model =3D machine->cpu_model;
-> > -    const char *kernel_filename =3D machine->kernel_filename;
-> > -    M68kCPU *cpu;
-> > -    CPUM68KState *env;
-> > -    MemoryRegion *address_space_mem =3D  get_system_memory();
-> > -    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
-> > -    int kernel_size;
-> > -    uint64_t elf_entry;
-> > -    hwaddr entry;
-> > -
-> > -    if (!cpu_model)
-> > -        cpu_model =3D "cfv4e";
-> > -    cpu =3D cpu_m68k_init(cpu_model);
-> > -    if (!cpu) {
-> > -        fprintf(stderr, "Unable to find m68k CPU definition\n");
-> > -        exit(1);
-> > -    }
-> > -    env =3D &cpu->env;
-> > -
-> > -    /* Initialize CPU registers.  */
-> > -    env->vbr =3D 0;
-> > -
-> > -    /* RAM at address zero */
-> > -    memory_region_allocate_system_memory(ram, NULL,
-> > "dummy_m68k.ram",
-> > -                                         ram_size);
-> > -    memory_region_add_subregion(address_space_mem, 0, ram);
-> > -
-> > -    /* Load kernel.  */
-> > -    if (kernel_filename) {
-> > -        kernel_size =3D load_elf(kernel_filename, NULL, NULL,
-> > &elf_entry,
-> > -                               NULL, NULL, 1, EM_68K, 0, 0);
-> > -        entry =3D elf_entry;
-> > -        if (kernel_size < 0) {
-> > -            kernel_size =3D load_uimage(kernel_filename, &entry,
-> > NULL, NULL,
-> > -                                      NULL, NULL);
-> > -        }
-> > -        if (kernel_size < 0) {
-> > -            kernel_size =3D load_image_targphys(kernel_filename,
-> > -                                              KERNEL_LOAD_ADDR,
-> > -                                              ram_size -
-> > KERNEL_LOAD_ADDR);
-> > -            entry =3D KERNEL_LOAD_ADDR;
-> > -        }
-> > -        if (kernel_size < 0) {
-> > -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
-> > -                    kernel_filename);
-> > -            exit(1);
-> > -        }
-> > -    } else {
-> > -        entry =3D 0;
-> > -    }
-> > -    env->pc =3D entry;
-> > -}
-> > -
-> > -static void dummy_m68k_machine_init(MachineClass *mc)
-> > -{
-> > -    mc->desc =3D "Dummy board";
-> > -    mc->init =3D dummy_m68k_init;
-> > -}
-> > -
-> > -DEFINE_MACHINE("dummy", dummy_m68k_machine_init)
-> >=20
->=20
-> I'm not sure the "none" machine can replace the "dummy" machine as the
-> "dummy" machine can load a kernel whereas it seems the "none" one
-> can't.
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+---
+ trace-events |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Oh, that's true ... I did not notice it 'cause there was no error
-message when I tried to start the "none" machine with "-kernel". But
-looking at the code in hw/core/null-machine.c, it really seems that
-there is nothing in here :-( So never mind, please forget about this
-patch. (but now I wonder whether the "none" machine could be improved to
-provide the features of the "dummy" machine, too?)
+diff --git a/trace-events b/trace-events
+index f74e1d3d22..0a0f4d9cd6 100644
+--- a/trace-events
++++ b/trace-events
+@@ -159,7 +159,7 @@ vcpu guest_cpu_reset(void)
+ #
+ # Mode: user, softmmu
+ # Targets: TCG(all)
+-disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d",=
+ "vaddr=3D0x%016"PRIx64" info=3D%d"
++vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d", "vaddr=3D=
+0x%016"PRIx64" info=3D%d"
+=20
+ # @num: System call number.
+ # @arg*: System call argument value.
+@@ -168,7 +168,7 @@ disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t=
+ info) "info=3D%d", "vaddr=3D0x
+ #
+ # Mode: user
+ # Targets: TCG(all)
+-disable vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t ar=
+g2, uint64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t =
+arg7, uint64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0=
+x%016"PRIx64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"P=
+RIx64" arg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
++vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t arg2, uint=
+64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t arg7, ui=
+nt64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0x%016"PR=
+Ix64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"PRIx64" a=
+rg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
+=20
+ # @num: System call number.
+ # @ret: System call result value.
+@@ -177,4 +177,4 @@ disable vcpu guest_user_syscall(uint64_t num, uint64_=
+t arg1, uint64_t arg2, uint
+ #
+ # Mode: user
+ # Targets: TCG(all)
+-disable vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0=
+x%016"PRIx64" ret=3D0x%016"PRIx64
++vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0x%016"PR=
+Ix64" ret=3D0x%016"PRIx64
 
- Thomas
 
