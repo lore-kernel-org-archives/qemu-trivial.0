@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cMJAR-0004wX-MZ
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Dec 2016 13:41:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43841)
+	id 1cMaqQ-0000QE-CI
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Dec 2016 08:34:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cMJAP-0004uH-5W
-	for qemu-trivial@nongnu.org; Wed, 28 Dec 2016 13:41:38 -0500
+	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRu-0008FB-Dd
+	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cMJAL-0001Mt-W5
-	for qemu-trivial@nongnu.org; Wed, 28 Dec 2016 13:41:37 -0500
-Received: from roura.ac.upc.edu ([147.83.33.10]:48451 helo=roura.ac.upc.es)
+	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRr-0002gD-ET
+	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:42 -0500
+Received: from [59.151.112.132] (port=3862 helo=heian.cn.fujitsu.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1cMJAL-0001Mb-Fw; Wed, 28 Dec 2016 13:41:33 -0500
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id uBSIfWNU014075;
-	Wed, 28 Dec 2016 19:41:32 +0100
-Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 53451726;
-	Wed, 28 Dec 2016 19:41:32 +0100 (CET)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org (open list:Trivial patches)
-Date: Wed, 28 Dec 2016 19:41:32 +0100
-Message-Id: <148295049207.19871.7803795601750850862.stgit@fimbulvetr.bsc.es>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <148295045448.19871.9819696634619157347.stgit@fimbulvetr.bsc.es>
-References: <148295045448.19871.9819696634619157347.stgit@fimbulvetr.bsc.es>
-User-Agent: StGit/0.17.1-dirty
+	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRq-0002g2-V2
+	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:39 -0500
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14352788"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 29 Dec 2016 19:00:37 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 7ED57477AE64;
+	Thu, 29 Dec 2016 19:00:37 +0800 (CST)
+Received: from localhost (10.167.226.75) by G08CNEXCHPEKD03.g08.fujitsu.local
+	(10.167.33.89) with Microsoft SMTP Server id 14.3.319.2;
+	Thu, 29 Dec 2016 19:00:36 +0800
+From: Chao Fan <fanc.fnst@cn.fujitsu.com>
+To: <qemu-trivial@nongnu.org>, <pbonzini@redhat.com>
+CC: <caoj.fnst@cn.fujitsu.com>, <douly.fnst@cn.fujitsu.com>, Chao Fan
+	<fanc.fnst@cn.fujitsu.com>
+Date: Thu, 29 Dec 2016 19:00:26 +0800
+Message-ID: <20161229110026.14816-1-fanc.fnst@cn.fujitsu.com>
+X-Mailer: git-send-email 2.9.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	uBSIfWNU014075
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
-X-Received-From: 147.83.33.10
-Subject: [Qemu-trivial] [PATCH v6 7/7] trace: [trivial] Statically enable
- all guest events
+Content-Type: text/plain
+X-yoursite-MailScanner-ID: 7ED57477AE64.AB2DC
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: fanc.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+X-Mailman-Approved-At: Thu, 29 Dec 2016 08:34:09 -0500
+Subject: [Qemu-trivial] [PATCH] bitmap: a typo of the example in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,57 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Dec 2016 18:41:38 -0000
+X-List-Received-Date: Thu, 29 Dec 2016 11:00:43 -0000
 
-The optimizations of this series makes it feasible to have them
-available on all builds.
+*   DirtyMemoryBlocks *blocks =
+*       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
 
-Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+blocks is a pointer, so here should be "->" instead of "."
+
+Signed-off-by: Chao Fan <fanc.fnst@cn.fujitsu.com>
 ---
- trace-events |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/exec/ram_addr.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/trace-events b/trace-events
-index f74e1d3d22..0a0f4d9cd6 100644
---- a/trace-events
-+++ b/trace-events
-@@ -159,7 +159,7 @@ vcpu guest_cpu_reset(void)
- #
- # Mode: user, softmmu
- # Targets: TCG(all)
--disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d",=
- "vaddr=3D0x%016"PRIx64" info=3D%d"
-+vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d", "vaddr=3D=
-0x%016"PRIx64" info=3D%d"
-=20
- # @num: System call number.
- # @arg*: System call argument value.
-@@ -168,7 +168,7 @@ disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t=
- info) "info=3D%d", "vaddr=3D0x
- #
- # Mode: user
- # Targets: TCG(all)
--disable vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t ar=
-g2, uint64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t =
-arg7, uint64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0=
-x%016"PRIx64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"P=
-RIx64" arg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
-+vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t arg2, uint=
-64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t arg7, ui=
-nt64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0x%016"PR=
-Ix64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"PRIx64" a=
-rg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
-=20
- # @num: System call number.
- # @ret: System call result value.
-@@ -177,4 +177,4 @@ disable vcpu guest_user_syscall(uint64_t num, uint64_=
-t arg1, uint64_t arg2, uint
- #
- # Mode: user
- # Targets: TCG(all)
--disable vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0=
-x%016"PRIx64" ret=3D0x%016"PRIx64
-+vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0x%016"PR=
-Ix64" ret=3D0x%016"PRIx64
+diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+index 54d7108..a60a693 100644
+--- a/include/exec/ram_addr.h
++++ b/include/exec/ram_addr.h
+@@ -59,7 +59,7 @@ static inline void *ramblock_ptr(RAMBlock *block, ram_addr_t offset)
+  *       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
+  *
+  *   ram_addr_t idx = (addr >> TARGET_PAGE_BITS) / DIRTY_MEMORY_BLOCK_SIZE;
+- *   unsigned long *block = blocks.blocks[idx];
++ *   unsigned long *block = blocks->blocks[idx];
+  *   ...access block bitmap...
+  *
+  *   rcu_read_unlock();
+-- 
+2.9.3
+
+
 
 
