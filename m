@@ -1,43 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cMaqQ-0000QE-CI
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Dec 2016 08:34:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58286)
+	id 1cNKkg-0004cn-FW
+	for mharc-qemu-trivial@gnu.org; Sat, 31 Dec 2016 09:35:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52262)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRu-0008FB-Dd
-	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:43 -0500
+	(envelope-from <hpoussin@reactos.org>) id 1cNKke-0004c0-GI
+	for qemu-trivial@nongnu.org; Sat, 31 Dec 2016 09:35:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRr-0002gD-ET
-	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:42 -0500
-Received: from [59.151.112.132] (port=3862 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <fanc.fnst@cn.fujitsu.com>) id 1cMYRq-0002g2-V2
-	for qemu-trivial@nongnu.org; Thu, 29 Dec 2016 06:00:39 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14352788"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 29 Dec 2016 19:00:37 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 7ED57477AE64;
-	Thu, 29 Dec 2016 19:00:37 +0800 (CST)
-Received: from localhost (10.167.226.75) by G08CNEXCHPEKD03.g08.fujitsu.local
-	(10.167.33.89) with Microsoft SMTP Server id 14.3.319.2;
-	Thu, 29 Dec 2016 19:00:36 +0800
-From: Chao Fan <fanc.fnst@cn.fujitsu.com>
-To: <qemu-trivial@nongnu.org>, <pbonzini@redhat.com>
-CC: <caoj.fnst@cn.fujitsu.com>, <douly.fnst@cn.fujitsu.com>, Chao Fan
-	<fanc.fnst@cn.fujitsu.com>
-Date: Thu, 29 Dec 2016 19:00:26 +0800
-Message-ID: <20161229110026.14816-1-fanc.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.9.3
+	(envelope-from <hpoussin@reactos.org>) id 1cNKkd-0003Ow-LQ
+	for qemu-trivial@nongnu.org; Sat, 31 Dec 2016 09:35:16 -0500
+Received: from smtp5-g21.free.fr ([212.27.42.5]:3115)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <hpoussin@reactos.org>)
+	id 1cNKkX-0003Da-9K; Sat, 31 Dec 2016 09:35:09 -0500
+Received: from localhost.localdomain (unknown [78.230.185.200])
+	by smtp5-g21.free.fr (Postfix) with ESMTP id DF8995FFD0;
+	Sat, 31 Dec 2016 15:35:03 +0100 (CET)
+From: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Date: Sat, 31 Dec 2016 15:34:16 +0100
+Message-Id: <1483194856-14079-1-git-send-email-hpoussin@reactos.org>
+X-Mailer: git-send-email 2.1.4
 MIME-Version: 1.0
-Content-Type: text/plain
-X-yoursite-MailScanner-ID: 7ED57477AE64.AB2DC
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: fanc.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-X-Mailman-Approved-At: Thu, 29 Dec 2016 08:34:09 -0500
-Subject: [Qemu-trivial] [PATCH] bitmap: a typo of the example in comment
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+	[fuzzy]
+X-Received-From: 212.27.42.5
+Subject: [Qemu-trivial] [PATCH] vl: disable default cdrom when using
+ explicitely scsi-hd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,34 +43,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Dec 2016 11:00:43 -0000
+X-List-Received-Date: Sat, 31 Dec 2016 14:35:17 -0000
 
-*   DirtyMemoryBlocks *blocks =
-*       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
+'ide-hd', 'ide-cd' and 'scsi-cd' devices already disable default cdrom.
+Make it the same for 'scsi-hd'.
 
-blocks is a pointer, so here should be "->" instead of "."
+That way, we can add/replace the device on lun=3D2 without using -nodefau=
+lts.
 
-Signed-off-by: Chao Fan <fanc.fnst@cn.fujitsu.com>
+Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
 ---
- include/exec/ram_addr.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ vl.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-index 54d7108..a60a693 100644
---- a/include/exec/ram_addr.h
-+++ b/include/exec/ram_addr.h
-@@ -59,7 +59,7 @@ static inline void *ramblock_ptr(RAMBlock *block, ram_addr_t offset)
-  *       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
-  *
-  *   ram_addr_t idx = (addr >> TARGET_PAGE_BITS) / DIRTY_MEMORY_BLOCK_SIZE;
-- *   unsigned long *block = blocks.blocks[idx];
-+ *   unsigned long *block = blocks->blocks[idx];
-  *   ...access block bitmap...
-  *
-  *   rcu_read_unlock();
--- 
-2.9.3
-
-
+diff --git a/vl.c b/vl.c
+index d77dd86..da97fe2 100644
+--- a/vl.c
++++ b/vl.c
+@@ -223,6 +223,7 @@ static struct {
+     { .driver =3D "ide-hd",               .flag =3D &default_cdrom     }=
+,
+     { .driver =3D "ide-drive",            .flag =3D &default_cdrom     }=
+,
+     { .driver =3D "scsi-cd",              .flag =3D &default_cdrom     }=
+,
++    { .driver =3D "scsi-hd",              .flag =3D &default_cdrom     }=
+,
+     { .driver =3D "virtio-serial-pci",    .flag =3D &default_virtcon   }=
+,
+     { .driver =3D "virtio-serial",        .flag =3D &default_virtcon   }=
+,
+     { .driver =3D "VGA",                  .flag =3D &default_vga       }=
+,
+--=20
+2.1.4
 
 
