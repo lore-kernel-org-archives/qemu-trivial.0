@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cO0GE-00050X-6u
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Jan 2017 05:54:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50191)
+	id 1cOUCj-0006zf-8d
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Jan 2017 13:53:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54520)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cO0GB-0004yl-Ie
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2017 05:54:36 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1cOUCg-0006xo-Sj
+	for qemu-trivial@nongnu.org; Tue, 03 Jan 2017 13:52:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cO0GA-0006aK-9b
-	for qemu-trivial@nongnu.org; Mon, 02 Jan 2017 05:54:35 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:60514)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1cO0G4-0006Yc-9z; Mon, 02 Jan 2017 05:54:28 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue102 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0Lgpny-1ctRag0weU-00oDZq; Mon, 02 Jan 2017 11:54:24 +0100
-To: Thomas Huth <huth@tuxfamily.org>
-References: <b0619e40-daca-9b28-2c78-1e2709d9f0ad@tuxfamily.org>
-	<80f9cbae-8548-4d5e-2543-1d95020eddb1@vivier.eu>
-	<20161227145805.5a19af6b@thl530>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <2a409041-eac6-07bd-00ed-0d3e74733045@vivier.eu>
-Date: Mon, 2 Jan 2017 11:54:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(envelope-from <marcandre.lureau@gmail.com>) id 1cOUCf-0007JO-Ro
+	for qemu-trivial@nongnu.org; Tue, 03 Jan 2017 13:52:58 -0500
+Received: from mail-yw0-x244.google.com ([2607:f8b0:4002:c05::244]:33293)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1cOUCc-0007IG-Um; Tue, 03 Jan 2017 13:52:55 -0500
+Received: by mail-yw0-x244.google.com with SMTP id s68so39352197ywg.0;
+	Tue, 03 Jan 2017 10:52:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=cs2iqZmz7d/rUEMIskYnHzHFwIHUyuNUo1WQCWa44IM=;
+	b=Hw+q//Pwii6lQabzR+okqKWcwmm24EhffPtz/nyW8JyrL1EioZXYoidUFGanitX9Rs
+	ryBisCXdxs22nW+gWnW7sgzyqzomns3drB7IMBLIz0iXU6zoWPmClm8qm9rpEvSA8EWM
+	oogUHvTJTXGXDJpTMrr+qsVOEGhiwxOr5RgnH79duZHC3MP8pVdKO5N6dKrC2mDACAXo
+	Y2T/SMEPWoZZu/zqbYyhqn0dEZ5uV63c+9w6YEBM7iCMgAiZ2gryAxvfnkgOYk940NUN
+	gaJ3NkWrbYDXDmJj96vwWIwR/YyADtU+lz5qpDSUDBy8XWTzuCpT5YFmwCzFudD8zR48
+	Zz+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=cs2iqZmz7d/rUEMIskYnHzHFwIHUyuNUo1WQCWa44IM=;
+	b=tFCNVZxihT9b+IWs8t2+HZupyUWjwVsd69DIeFo54Hn3CLiIDt4E9s2HXKaTXiXNFb
+	qol/JF8UBUBSUlzx7Y85bKfeHDbI4D2V/aL+LgyiuCZ42umLwky99TxHkPNPkaSh1g7a
+	dpPNEtYmlINPO4XcsYGF6DroAnpA/WhU85it89o5mMzdtgh1ajE/6Xx3vDWVcv+48YRT
+	Tbrc5BVuZY9n2PFpiMnlPiN2Qk7OyyjN4WzxFpAy4Is67wZyWNxIDiuJhQiG7YZvkZqv
+	Fy7P/V4tdcJcjcxZdl4AbPD/D3eB5CXwn80JH47MT2v346O0JpGVcTxe/UxT1PGdkb+i
+	w79w==
+X-Gm-Message-State: AIkVDXIIJnLnQN64RcJZ3rUUSNgduHlM54GIV3SDMIcbjOTBiDvOSCzDbTaWMbqlcqZGIP0nrW9DA3pFO8YUTg==
+X-Received: by 10.13.195.67 with SMTP id f64mr58121753ywd.249.1483469572666;
+	Tue, 03 Jan 2017 10:52:52 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20161227145805.5a19af6b@thl530>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:ojGktx6hxvgbQ+yGETY3vVEChFAkT7ELXJGpkqX3n+SztVMq3Fi
-	tvF+zxNlwKgxh0+HpgN4DoqDb2w/D54ENlxw5cQGBQUPlEhu5/vNyFP2s9RpggxRvn/QRSg
-	lOwf4v+Nft8vHDBz0JX/UFko8186edoswXq7uc/CMFxiezruDZ4cjL8irKxrHTn4p6Ln5Yg
-	KUxrciag2UPShDKBWtfxg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:tMvJGmWNQog=:rFO9/IOM79wsqk8HktV50M
-	idxiFi6v28M3kh8w5MHMLgw0bY82gYTplITgGtBDQXN4rTJhlXYnHusAlUECx0LlNW8+ADjTd
-	AUntpnlstKAtF/2vKSJ4NZwkc5rDZa74rpQMMgbBC+h7RcIU6V4AzZ5M7/wpicG2Gz8O4N+Hx
-	eA4Xt+qULZZDoWavJg7Vxlw8SkGlnrALZvRr5JZmJuOPkgfYvXHd5cPbQg7t78HfvZfdK5Jic
-	LPmIxBHiSFZZtoboY4EFCRk96jxKJiRFliJKEzo6FkzZwKob/X9Nm5tLpiCzI2PQ2TkZuOejm
-	jIFcZhZhz3uYKmmXCcinkQqqcjKu488zVWOuWRuazE2+XlIX1CETUXRn6/HRFcFIpX3QmIX9+
-	c6KzRqVTKwpaRVpFexDgZQPeprbhhBLQ3k5FThQKDdNbsFaLZEJTrkzi3Oz9SQkVBei1U8ig2
-	59B02jmqFJb4gWtrwM8hhPNNCo8dYFQWl1oJcNj4eIqPwTGydgyZCG761yYyx6tLeFYpWtoeQ
-	LMMbZ+L/Tp9d1fmBf3sA/fYUUrPkRwCpofBRdtJKnBrPOekY6+HlroGVwfA2PmNK6acFVVmqS
-	4NWSaVIkYw2xyDzOwkuIHVowSFsCimW+nHw9AcodscO4gW5KSf9ZYWNtlsCK/eQCqLn/6Z/Xa
-	Cdj4ned0sbyqXdQnHn2aSdgHjZj53RU3afbqW2fdJIVyFTCUyHu+RgB+ufBSpiUQB/dXm0L7P
-	vpNoDa9QXL8/Y6aK
+References: <1465919097-21453-1-git-send-email-berrange@redhat.com>
+In-Reply-To: <1465919097-21453-1-git-send-email-berrange@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 03 Jan 2017 18:52:42 +0000
+Message-ID: <CAJ+F1CJjQHo9EBQj2D5XUV8N9v_7PGDng7nyLJFM1fww3WpxqA@mail.gmail.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: multipart/alternative; boundary=001a114d6500e9fca90545352cef
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-trivial] [Qemu-devel] m68k: Remove dummy machine
+X-Received-From: 2607:f8b0:4002:c05::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] win32: don't run subprocess
+ tests on Mingw32 platform
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,159 +61,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Jan 2017 10:54:37 -0000
+X-List-Received-Date: Tue, 03 Jan 2017 18:53:00 -0000
 
-Le 27/12/2016 à 14:58, Thomas Huth a écrit :
-> Am Tue, 27 Dec 2016 12:52:30 +0100
-> schrieb Laurent Vivier <laurent@vivier.eu>:
-> 
->> Le 20/12/2016 à 15:32, Thomas Huth a écrit :
->>> You can get an empty machine with "-M none" nowadays, so the
->>> m68k dummy board (introduced in 2007) seems to be pretty
->>> redundant since the "none" machine has been added in 2012.
->>>
->>> Signed-off-by: Thomas Huth <huth@tuxfamily.org>
->>> ---
->>>  MAINTAINERS           |  4 ---
->>>  hw/m68k/Makefile.objs |  2 --
->>>  hw/m68k/dummy_m68k.c  | 84
->>> --------------------------------------------------- 3 files
->>> changed, 90 deletions(-) delete mode 100644 hw/m68k/dummy_m68k.c
->>>
->>> diff --git a/MAINTAINERS b/MAINTAINERS
->>> index 4a60579..88ee8cd 100644
->>> --- a/MAINTAINERS
->>> +++ b/MAINTAINERS
->>> @@ -552,10 +552,6 @@ S: Orphan
->>>  F: hw/m68k/an5206.c
->>>  F: hw/m68k/mcf5206.c
->>>  
->>> -dummy_m68k
->>> -S: Orphan
->>> -F: hw/m68k/dummy_m68k.c
->>> -
->>>  mcf5208
->>>  S: Orphan
->>>  F: hw/m68k/mcf5208.c
->>> diff --git a/hw/m68k/Makefile.objs b/hw/m68k/Makefile.objs
->>> index c4352e7..d1f089c 100644
->>> --- a/hw/m68k/Makefile.objs
->>> +++ b/hw/m68k/Makefile.objs
->>> @@ -1,4 +1,2 @@
->>>  obj-y += an5206.o mcf5208.o
->>> -obj-y += dummy_m68k.o
->>> -
->>>  obj-y += mcf5206.o mcf_intc.o
->>> diff --git a/hw/m68k/dummy_m68k.c b/hw/m68k/dummy_m68k.c
->>> deleted file mode 100644
->>> index 0b11d20..0000000
->>> --- a/hw/m68k/dummy_m68k.c
->>> +++ /dev/null
->>> @@ -1,84 +0,0 @@
->>> -/*
->>> - * Dummy board with just RAM and CPU for use as an ISS.
->>> - *
->>> - * Copyright (c) 2007 CodeSourcery.
->>> - *
->>> - * This code is licensed under the GPL
->>> - */
->>> -
->>> -#include "qemu/osdep.h"
->>> -#include "qemu-common.h"
->>> -#include "cpu.h"
->>> -#include "hw/hw.h"
->>> -#include "hw/boards.h"
->>> -#include "hw/loader.h"
->>> -#include "elf.h"
->>> -#include "exec/address-spaces.h"
->>> -
->>> -#define KERNEL_LOAD_ADDR 0x10000
->>> -
->>> -/* Board init.  */
->>> -
->>> -static void dummy_m68k_init(MachineState *machine)
->>> -{
->>> -    ram_addr_t ram_size = machine->ram_size;
->>> -    const char *cpu_model = machine->cpu_model;
->>> -    const char *kernel_filename = machine->kernel_filename;
->>> -    M68kCPU *cpu;
->>> -    CPUM68KState *env;
->>> -    MemoryRegion *address_space_mem =  get_system_memory();
->>> -    MemoryRegion *ram = g_new(MemoryRegion, 1);
->>> -    int kernel_size;
->>> -    uint64_t elf_entry;
->>> -    hwaddr entry;
->>> -
->>> -    if (!cpu_model)
->>> -        cpu_model = "cfv4e";
->>> -    cpu = cpu_m68k_init(cpu_model);
->>> -    if (!cpu) {
->>> -        fprintf(stderr, "Unable to find m68k CPU definition\n");
->>> -        exit(1);
->>> -    }
->>> -    env = &cpu->env;
->>> -
->>> -    /* Initialize CPU registers.  */
->>> -    env->vbr = 0;
->>> -
->>> -    /* RAM at address zero */
->>> -    memory_region_allocate_system_memory(ram, NULL,
->>> "dummy_m68k.ram",
->>> -                                         ram_size);
->>> -    memory_region_add_subregion(address_space_mem, 0, ram);
->>> -
->>> -    /* Load kernel.  */
->>> -    if (kernel_filename) {
->>> -        kernel_size = load_elf(kernel_filename, NULL, NULL,
->>> &elf_entry,
->>> -                               NULL, NULL, 1, EM_68K, 0, 0);
->>> -        entry = elf_entry;
->>> -        if (kernel_size < 0) {
->>> -            kernel_size = load_uimage(kernel_filename, &entry,
->>> NULL, NULL,
->>> -                                      NULL, NULL);
->>> -        }
->>> -        if (kernel_size < 0) {
->>> -            kernel_size = load_image_targphys(kernel_filename,
->>> -                                              KERNEL_LOAD_ADDR,
->>> -                                              ram_size -
->>> KERNEL_LOAD_ADDR);
->>> -            entry = KERNEL_LOAD_ADDR;
->>> -        }
->>> -        if (kernel_size < 0) {
->>> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
->>> -                    kernel_filename);
->>> -            exit(1);
->>> -        }
->>> -    } else {
->>> -        entry = 0;
->>> -    }
->>> -    env->pc = entry;
->>> -}
->>> -
->>> -static void dummy_m68k_machine_init(MachineClass *mc)
->>> -{
->>> -    mc->desc = "Dummy board";
->>> -    mc->init = dummy_m68k_init;
->>> -}
->>> -
->>> -DEFINE_MACHINE("dummy", dummy_m68k_machine_init)
->>>
->>
->> I'm not sure the "none" machine can replace the "dummy" machine as the
->> "dummy" machine can load a kernel whereas it seems the "none" one
->> can't.
-> 
-> Oh, that's true ... I did not notice it 'cause there was no error
-> message when I tried to start the "none" machine with "-kernel". But
-> looking at the code in hw/core/null-machine.c, it really seems that
-> there is nothing in here :-( So never mind, please forget about this
-> patch. (but now I wonder whether the "none" machine could be improved to
-> provide the features of the "dummy" machine, too?)
+--001a114d6500e9fca90545352cef
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-The "none" machine is defined to be be filled with QMP commands, perhaps
-the generic-loader object can replace the "-kernel" parameters?
+Hi
 
-Laurent
+On Tue, Jun 14, 2016 at 6:34 PM Daniel P. Berrange <berrange@redhat.com>
+wrote:
 
+> The g_test_trap_subprocess() method does not work on the
+> Mingw32 platform, causing the test-qdev-global-props
+> test case to abort
+>
+> (test-logging.exe:230): GLib-ERROR **: g_test_trap_subprocess()
+> failed: Failed to execute helper program (No such file or directory)
+>
+> This failure was introduced a while ago in
+>
+>   commit 2177801a4899bf29108b3d471417a5b4d701ec29
+>   Author: Eduardo Habkost <ehabkost@redhat.com>
+>   Date:   Fri Aug 8 16:03:27 2014 -0300
+>
+>     test-qdev-global-props: Run tests on subprocess
+>
+> Modify the configure time check to avoid enabling this feature
+> on Mingw, rather than trying to rewrite the test to avoid this
+> feature.
+>
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index 8c2f90b..aa291e8 100755
+> --- a/configure
+> +++ b/configure
+> @@ -5167,7 +5167,7 @@ if test "$bluez" =3D "yes" ; then
+>    echo "CONFIG_BLUEZ=3Dy" >> $config_host_mak
+>    echo "BLUEZ_CFLAGS=3D$bluez_cflags" >> $config_host_mak
+>  fi
+> -if test "$glib_subprocess" =3D "yes" ; then
+> +if test "$glib_subprocess" =3D "yes" && test "$mingw32" !=3D "yes" ; the=
+n
+>    echo "CONFIG_HAS_GLIB_SUBPROCESS_TESTS=3Dy" >> $config_host_mak
+>  fi
+>
+
+Isn't it only because you are missing gspawn-win*-helper.exe?
+
+This seems to be a glib installation issue to me. I can run the
+subprocesses tests fine on win32 and wine. I suggest to revert commit
+7ad9339e372fcd12d584684d7f52ac259604a4f4, I can send a patch if you agree.
+
+
+
+ echo "GLIB_CFLAGS=3D$glib_cflags" >> $config_host_mak
+> --
+> 2.5.5
+>
+>
+> --
+Marc-Andr=C3=A9 Lureau
+
+--001a114d6500e9fca90545352cef
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi<br><div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+>On Tue, Jun 14, 2016 at 6:34 PM Daniel P. Berrange &lt;<a href=3D"mailto:b=
+errange@redhat.com">berrange@redhat.com</a>&gt; wrote:<br></div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc soli=
+d;padding-left:1ex">The g_test_trap_subprocess() method does not work on th=
+e<br class=3D"gmail_msg">
+Mingw32 platform, causing the test-qdev-global-props<br class=3D"gmail_msg"=
+>
+test case to abort<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+(test-logging.exe:230): GLib-ERROR **: g_test_trap_subprocess()<br class=3D=
+"gmail_msg">
+failed: Failed to execute helper program (No such file or directory)<br cla=
+ss=3D"gmail_msg">
+<br class=3D"gmail_msg">
+This failure was introduced a while ago in<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+=C2=A0 commit 2177801a4899bf29108b3d471417a5b4d701ec29<br class=3D"gmail_ms=
+g">
+=C2=A0 Author: Eduardo Habkost &lt;<a href=3D"mailto:ehabkost@redhat.com" c=
+lass=3D"gmail_msg" target=3D"_blank">ehabkost@redhat.com</a>&gt;<br class=
+=3D"gmail_msg">
+=C2=A0 Date:=C2=A0 =C2=A0Fri Aug 8 16:03:27 2014 -0300<br class=3D"gmail_ms=
+g">
+<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 test-qdev-global-props: Run tests on subprocess<br class=3D"g=
+mail_msg">
+<br class=3D"gmail_msg">
+Modify the configure time check to avoid enabling this feature<br class=3D"=
+gmail_msg">
+on Mingw, rather than trying to rewrite the test to avoid this<br class=3D"=
+gmail_msg">
+feature.<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+Signed-off-by: Daniel P. Berrange &lt;<a href=3D"mailto:berrange@redhat.com=
+" class=3D"gmail_msg" target=3D"_blank">berrange@redhat.com</a>&gt;<br clas=
+s=3D"gmail_msg">
+---<br class=3D"gmail_msg">
+=C2=A0configure | 2 +-<br class=3D"gmail_msg">
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+diff --git a/configure b/configure<br class=3D"gmail_msg">
+index 8c2f90b..aa291e8 100755<br class=3D"gmail_msg">
+--- a/configure<br class=3D"gmail_msg">
++++ b/configure<br class=3D"gmail_msg">
+@@ -5167,7 +5167,7 @@ if test &quot;$bluez&quot; =3D &quot;yes&quot; ; then=
+<br class=3D"gmail_msg">
+=C2=A0 =C2=A0echo &quot;CONFIG_BLUEZ=3Dy&quot; &gt;&gt; $config_host_mak<br=
+ class=3D"gmail_msg">
+=C2=A0 =C2=A0echo &quot;BLUEZ_CFLAGS=3D$bluez_cflags&quot; &gt;&gt; $config=
+_host_mak<br class=3D"gmail_msg">
+=C2=A0fi<br class=3D"gmail_msg">
+-if test &quot;$glib_subprocess&quot; =3D &quot;yes&quot; ; then<br class=
+=3D"gmail_msg">
++if test &quot;$glib_subprocess&quot; =3D &quot;yes&quot; &amp;&amp; test &=
+quot;$mingw32&quot; !=3D &quot;yes&quot; ; then<br class=3D"gmail_msg">
+=C2=A0 =C2=A0echo &quot;CONFIG_HAS_GLIB_SUBPROCESS_TESTS=3Dy&quot; &gt;&gt;=
+ $config_host_mak<br class=3D"gmail_msg">
+=C2=A0fi<br class=3D"gmail_msg"></blockquote><div><br></div><div>Isn&#39;t =
+it only because you are missing gspawn-win*-helper.exe? <br><br>This seems =
+to be a glib installation issue to me. I can run the subprocesses tests fin=
+e on win32 and wine. I suggest to revert commit 7ad9339e372fcd12d584684d7f5=
+2ac259604a4f4, I can send a patch if you agree.<br><br><br><br> </div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #cc=
+c solid;padding-left:1ex">
+=C2=A0echo &quot;GLIB_CFLAGS=3D$glib_cflags&quot; &gt;&gt; $config_host_mak=
+<br class=3D"gmail_msg">
+--<br class=3D"gmail_msg">
+2.5.5<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+</blockquote></div></div></div><div dir=3D"ltr">-- <br></div><div data-smar=
+tmail=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div>=
+</div>
+
+--001a114d6500e9fca90545352cef--
 
