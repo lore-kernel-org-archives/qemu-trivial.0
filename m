@@ -1,56 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cOn8B-0005YU-PN
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jan 2017 10:05:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47439)
+	id 1cOokS-0004eR-IT
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Jan 2017 11:49:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cOn89-0005XB-16
-	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 10:05:33 -0500
+	(envelope-from <eblake@redhat.com>) id 1cOokQ-0004cr-GF
+	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 11:49:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cOn88-0001kd-AR
-	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 10:05:33 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:33923)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1cOn84-0001cV-2a; Wed, 04 Jan 2017 10:05:28 -0500
-Received: by mail-wm0-x243.google.com with SMTP id c85so53645795wmi.1;
-	Wed, 04 Jan 2017 07:05:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=1HAUjyAnYj40C7YyTqBbnV0VC+jFXhOTqhiDkxjyJB4=;
-	b=AG2CBUjyUQ0XfdY8rxjbfB+BpVUgML+QHYpZHfu80MxEbiOH4nBW+vgOwopr8tddAj
-	7tIhr1WlN8qFVnKHTetQS9moR8Uf8TQgMF9Xq82pQggHwD/zAzeoNRSaSUrH2ck1VeyI
-	rshqm1jf/9qTES4mvFCazh6Km3dmSFgtwOVjN5+W5oeWr3Mg56XcMf0IpHNxcC3vpYIN
-	bzSlo5kpcPokyecGOR5T1Bm1eRWTD+b7e+T5yrxni9xT+CE0uyrbH178lfBt87mfcFk/
-	vqpy92L7XB2WVoEbpPh15vRrCAz5vB1punuhVlzoOwllCW9FRwrVYqpz7FXrs4cOU6Cd
-	KDhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=1HAUjyAnYj40C7YyTqBbnV0VC+jFXhOTqhiDkxjyJB4=;
-	b=UCSKYMed1poWesepb83Ia89R+Dr4lt3EaY9M+giKdHkss9WhdapLwJ2czelyCr+E6n
-	Ue2kU9XbhJdqTPlPvdVXdnMOthLCGLzKeAgnNUOu9D24xGTN9PD1om06It3LHufeBXQc
-	niSWgCPyHaWlGwd9x+p16h1QmQXAFGdK0PH+UitcHZjHpjEb6RX5DtnqeNY0hNi3eqzR
-	I24UBMMjks0MFRSR3FJC1N9JUopix50qihaJ4g0oFo43ArUttotu6WorSMnc+Hr7Qh9J
-	nOOEb6AVnhcAIS7O/UYxER6NA1hsWg1S2eZuKcKyIVfF1U/XurqCpRCvSFBnCy92dnF8
-	S81g==
-X-Gm-Message-State: AIkVDXLInJdZUX05Ygi5L8/z3tS09sZAIqtdjCUBG7NkT26NNASTCnlaRCE/6Vew9xsiag==
-X-Received: by 10.28.28.19 with SMTP id c19mr54494021wmc.28.1483542326627;
-	Wed, 04 Jan 2017 07:05:26 -0800 (PST)
-Received: from donizetti.lan (94-39-158-71.adsl-ull.clienti.tiscali.it.
-	[94.39.158.71]) by smtp.gmail.com with ESMTPSA id
-	204sm95380445wmj.7.2017.01.04.07.05.25
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 04 Jan 2017 07:05:25 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
+	(envelope-from <eblake@redhat.com>) id 1cOokP-0003C3-LT
+	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 11:49:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54296)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cOokJ-0003AJ-2s; Wed, 04 Jan 2017 11:49:03 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3B59B3D95E;
+	Wed,  4 Jan 2017 16:49:03 +0000 (UTC)
+Received: from [10.10.117.58] (ovpn-117-58.rdu2.redhat.com [10.10.117.58])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v04Gn2Vm003769; Wed, 4 Jan 2017 11:49:02 -0500
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <20170104145624.2849-1-pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org
-Date: Wed,  4 Jan 2017 16:05:25 +0100
-Message-Id: <20170104150525.4246-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.9.3
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <37786c56-11a5-3fa8-9eea-ecc61ffda5d0@redhat.com>
+Date: Wed, 4 Jan 2017 10:49:00 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
+MIME-Version: 1.0
+In-Reply-To: <20170104145624.2849-1-pbonzini@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="vOBrfASNDvVBRDe94lPplg7xAQa7UFWiL"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 04 Jan 2017 16:49:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: [Qemu-trivial] [PATCH] pci-assign: avoid pointless stat
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: remove dead check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,49 +55,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jan 2017 15:05:33 -0000
+X-List-Received-Date: Wed, 04 Jan 2017 16:49:11 -0000
 
-Just check the errno value after fopen and follow it with fstat.
-This shuts up Coverity's complaint about TOC/TOU violation.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--vOBrfASNDvVBRDe94lPplg7xAQa7UFWiL
+Content-Type: multipart/mixed; boundary="tAF1c9KEXNS8t5bx69Gol5LLIr8Liiium";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <37786c56-11a5-3fa8-9eea-ecc61ffda5d0@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] qemu-img: remove dead check
+References: <20170104145624.2849-1-pbonzini@redhat.com>
+In-Reply-To: <20170104145624.2849-1-pbonzini@redhat.com>
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- hw/i386/pci-assign-load-rom.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+--tAF1c9KEXNS8t5bx69Gol5LLIr8Liiium
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/i386/pci-assign-load-rom.c b/hw/i386/pci-assign-load-rom.c
-index 0d8e4b2..fd59076 100644
---- a/hw/i386/pci-assign-load-rom.c
-+++ b/hw/i386/pci-assign-load-rom.c
-@@ -39,19 +39,19 @@ void *pci_assign_dev_load_option_rom(PCIDevice *dev, struct Object *owner,
-              "/sys/bus/pci/devices/%04x:%02x:%02x.%01x/rom",
-              domain, bus, slot, function);
- 
--    if (stat(rom_file, &st)) {
--        if (errno != ENOENT) {
--            error_report("pci-assign: Invalid ROM.");
--        }
--        return NULL;
--    }
--
-     /* Write "1" to the ROM file to enable it */
-     fp = fopen(rom_file, "r+");
-     if (fp == NULL) {
--        error_report("pci-assign: Cannot open %s: %s", rom_file, strerror(errno));
-+        if (errno != ENOENT) {
-+            error_report("pci-assign: Cannot open %s: %s", rom_file, strerror(errno));
-+        }
-         return NULL;
-     }
-+    if (fstat(fileno(fp), &st) == -1) {
-+        error_report("pci-assign: Cannot stat %s: %s", rom_file, strerror(errno));
-+        goto close_rom;
-+    }
-+
-     val = 1;
-     if (fwrite(&val, 1, 1, fp) != 1) {
-         goto close_rom;
--- 
-2.9.3
+On 01/04/2017 08:56 AM, Paolo Bonzini wrote:
+> options must be non-NULL here, because it has been checked before.
+> Reported by Coverity.
+>=20
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>  qemu-img.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
 
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+(not shown in the diff, but several lines earlier, is:
+
+    if (!options) {
+        error_exit("Must specify options (-o)");
+    }
+)
+
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--tAF1c9KEXNS8t5bx69Gol5LLIr8Liiium--
+
+--vOBrfASNDvVBRDe94lPplg7xAQa7UFWiL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJYbSd8AAoJEKeha0olJ0NqaoMH/A27Tpkm7oBb/SnJQ/1BYzZy
+GBOTaV6kWPVkA/fWsbge+Uxcx9/88r9tVfzkFGvXvbeoyIi4VA+uKvsZ9vxLZEM/
+ri7AhZOXkbHm3QaiGPszF47lD7rnmc4WXZvMHjRVreI2tXDJN+DHwL1RybdjHMvh
+JNyjWfuzZeCJktYiAPQA51Y3Bnleu4+5K5xLoBasYLo4lMaBKuaKUqXvuVQrfkyv
+7d2nPfTGbq90YSdockhOml05ilWOvMnh+fIA6oaiZSEkVYd3li6cSSj9AAZ84M7P
+yReTBrC6c8M8ToRVv6RhLlhhToWboMyfjh+ALVeN/iy3iHNZawo1odiGz5XFxYA=
+=1mH+
+-----END PGP SIGNATURE-----
+
+--vOBrfASNDvVBRDe94lPplg7xAQa7UFWiL--
 
