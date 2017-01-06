@@ -1,34 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cPYa3-0002RA-6h
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jan 2017 12:45:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44431)
+	id 1cPaBc-0005NR-NH
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jan 2017 14:28:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39786)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cPYa0-0002Or-JF
-	for qemu-trivial@nongnu.org; Fri, 06 Jan 2017 12:45:29 -0500
+	(envelope-from <michael@walle.cc>) id 1cPaBa-0005MM-JI
+	for qemu-trivial@nongnu.org; Fri, 06 Jan 2017 14:28:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cPYZx-0002lS-D8
-	for qemu-trivial@nongnu.org; Fri, 06 Jan 2017 12:45:28 -0500
-Received: from orth.archaic.org.uk ([81.2.115.148]:33960)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cPYZx-0002kz-6U
-	for qemu-trivial@nongnu.org; Fri, 06 Jan 2017 12:45:25 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cPYZn-0006pB-OX; Fri, 06 Jan 2017 17:45:15 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
+	(envelope-from <michael@walle.cc>) id 1cPaBZ-0006tz-OX
+	for qemu-trivial@nongnu.org; Fri, 06 Jan 2017 14:28:22 -0500
+Received: from ssl.serverraum.org ([213.133.101.245]:35079)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <michael@walle.cc>)
+	id 1cPaBV-0006rv-4v; Fri, 06 Jan 2017 14:28:17 -0500
+Received: from [IPv6:2001:4dd0:ff00:93d9:1c87:2279:ff13:7] (unknown
+	[IPv6:2001:4dd0:ff00:93d9:1c87:2279:ff13:7])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 7586A2225D;
+	Fri,  6 Jan 2017 20:28:11 +0100 (CET)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1483730891;
+	bh=6pgtis96ZxEjpClhJQ0Q1oyMuiWq2sREKWxtwscDBlg=;
+	h=Date:In-Reply-To:References:Subject:To:CC:From:From;
+	b=bVI51966aGUhAQCNA51lKAfuRgd5Q97AsOgEA1WlEfst0ScpsUbu8S1O4ofnCJJho
+	J3cyAqw7rt/iQaVumFgZGB3A8vEv7PHxTmz0SB9KGlMrllFmrf0WVjgbgOvxztmXHX
+	knQhoqqwXhZOcgtQYS5tasypZ9693VQPcWOgaoIg=
+Date: Fri, 06 Jan 2017 20:28:09 +0100
+User-Agent: K-9 Mail for Android
+In-Reply-To: <1483724714-5469-1-git-send-email-peter.maydell@linaro.org>
+References: <1483724714-5469-1-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Cc: patches@linaro.org,
-	Michael Walle <michael@walle.cc>
-Date: Fri,  6 Jan 2017 17:45:14 +0000
-Message-Id: <1483724714-5469-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+CC: patches@linaro.org
+From: Michael Walle <michael@walle.cc>
+Message-ID: <DE593C1D-BF88-4ABD-99F5-176D9090538A@walle.cc>
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 81.2.115.148
-Subject: [Qemu-trivial] [PATCH] lm32: milkymist-tmu2: fix another integer
- overflow
+X-Received-From: 213.133.101.245
+Subject: Re: [Qemu-trivial] [PATCH] lm32: milkymist-tmu2: fix another
+ integer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,34 +57,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jan 2017 17:45:29 -0000
+X-List-Received-Date: Fri, 06 Jan 2017 19:28:23 -0000
 
-Don't truncate the multiplication and do a 64 bit one instead
-because the result is stored in a 64 bit variable.
+Am 6=2E Januar 2017 18:45:14 MEZ schrieb Peter Maydell <peter=2Emaydell@lin=
+aro=2Eorg>:
+>Don't truncate the multiplication and do a 64 bit one instead
+>because the result is stored in a 64 bit variable=2E
+>
+>This fixes a similar coverity warning to commit 237a8650d640,
+>in a similar way, and is the other half of the fix for
+>coverity CID 1167561=2E
+>
+>Signed-off-by: Peter Maydell <peter=2Emaydell@linaro=2Eorg>
 
-This fixes a similar coverity warning to commit 237a8650d640,
-in a similar way, and is the other half of the fix for
-coverity CID 1167561.
+Acked-by: Michael Walle <michael@walle=2Ecc>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/milkymist-tmu2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
-index 5c666f9..920374b 100644
---- a/hw/display/milkymist-tmu2.c
-+++ b/hw/display/milkymist-tmu2.c
-@@ -257,7 +257,7 @@ static void tmu2_start(MilkymistTMU2State *s)
-     glColor4f(m, m, m, (float)(s->regs[R_ALPHA] + 1) / 64.0f);
- 
-     /* Read the QEMU dest. framebuffer into the OpenGL framebuffer */
--    fb_len = 2 * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
-+    fb_len = 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
-     fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 0);
-     if (fb == NULL) {
-         glDeleteTextures(1, &texture);
--- 
-2.7.4
+>---
+> hw/display/milkymist-tmu2=2Ec | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+>diff --git a/hw/display/milkymist-tmu2=2Ec b/hw/display/milkymist-tmu2=2E=
+c
+>index 5c666f9=2E=2E920374b 100644
+>--- a/hw/display/milkymist-tmu2=2Ec
+>+++ b/hw/display/milkymist-tmu2=2Ec
+>@@ -257,7 +257,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+>     glColor4f(m, m, m, (float)(s->regs[R_ALPHA] + 1) / 64=2E0f);
+>=20
+>     /* Read the QEMU dest=2E framebuffer into the OpenGL framebuffer */
+>-    fb_len =3D 2 * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+>+    fb_len =3D 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+>     fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 0);
+>     if (fb =3D=3D NULL) {
+>         glDeleteTextures(1, &texture);
 
 
