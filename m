@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cOppY-0007l0-Uv
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Jan 2017 12:58:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39111)
+	id 1cPLId-00039X-6T
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Jan 2017 22:34:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1cOppW-0007fh-8i
-	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 12:58:31 -0500
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cPLIa-00036n-Ca
+	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:34:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1cOppV-0001Nb-BU
-	for qemu-trivial@nongnu.org; Wed, 04 Jan 2017 12:58:30 -0500
-Received: from mail-yw0-x241.google.com ([2607:f8b0:4002:c05::241]:33594)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1cOppT-0001Lk-39; Wed, 04 Jan 2017 12:58:27 -0500
-Received: by mail-yw0-x241.google.com with SMTP id s68so42433391ywg.0;
-	Wed, 04 Jan 2017 09:58:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=tTHI1lia36Q6HcXVXvuh653FE/sxgxAoCg+jsZbQOwA=;
-	b=iRH9yRbLc/A4YMa6u6ckWRbCvs2e+pKZ+e97AS8OZRKeF9BTvMhdprS2l7N2D/wXwP
-	o7oAOOLSvOtpei44DITTaNK1YHCA5/ME2NmkcyFj0HPTl+K4xGaz59ksz2sgzfGOpxOa
-	t2uaxMx90RMa7wVko+4fqbo+FsPflK0oaz3K15NYjykX0a+OlO6eCUf4gC63VW+Xd9z2
-	ksehfpTD3Qce7AGcgqxJhU6/t9RoZVvg2rRFmmF9r4fKzVuqVJ8yI3YCt4qopPMdl+3W
-	ISALhxzZuDVwuhcsYikWfWO0fcD2lo3zOP5sPBXG+CzQ1t2nvNi94UYjuZR9IiwlI1LX
-	boeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=tTHI1lia36Q6HcXVXvuh653FE/sxgxAoCg+jsZbQOwA=;
-	b=SCHRzxV8gahQ0iCv21JxMNehZFjfsUTS8dXmL/aCJgmpHGpAKFOBNdq7R4Hbsby7sN
-	vxKj2fmu3wlihcQMePTTYT4xsnjUNPAHLI8qlM7S+ZLvil4UobGr0AkcjFTKSHKBWuuD
-	2salHA5TgKuZ1M8ffRjVkqhEM9gJCyokYhI6fkcu3c7HCs6UC0BGGTlUA6EHPunjSGXs
-	mN3cKxCaDqNIGbqeKbRbGPUJPHszzu4vQzw7PYZhRZfwXyqBlfDIHrGGgdqIwqdxwMFq
-	UgeEMMLo3RiDWvzaDxN4n4HJiCQqrtRAO2y6ZJSPHENFEZie4k2w6/5MN9vvEpcNQ0AE
-	xNow==
-X-Gm-Message-State: AIkVDXKkzD35XBH2ltBcnbnduFZGX58V3wMyQ9cxGaGRnQFiMBfAxYb669ApDuy0DhEnOZO3L/ADuJy/teT3eg==
-X-Received: by 10.129.92.198 with SMTP id q189mr64582929ywb.95.1483552706221; 
-	Wed, 04 Jan 2017 09:58:26 -0800 (PST)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cPLIZ-0007gg-Jx
+	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:34:36 -0500
+Received: from [59.151.112.132] (port=24691 helo=heian.cn.fujitsu.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
+	id 1cPLIT-0007Wx-So; Thu, 05 Jan 2017 22:34:30 -0500
+X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14524492"
+Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 06 Jan 2017 11:34:16 +0800
+Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
+	by cn.fujitsu.com (Postfix) with ESMTP id 6285B4818569;
+	Fri,  6 Jan 2017 11:34:13 +0800 (CST)
+Received: from [10.167.226.56] (10.167.226.56) by
+	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.319.2; Fri, 6 Jan 2017 11:34:13 +0800
+To: Jason Wang <jasowang@redhat.com>
+References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
+	<a1593129-ddb9-8e74-5865-b1e8400c991d@redhat.com>
+	<8b90a1da-a129-f2cb-4545-355348387925@cn.fujitsu.com>
+	<063dfa33-2015-e566-c623-d59578c20fcd@redhat.com>
+	<13aed710-c5d1-b1de-5922-52e3e53029f9@cn.fujitsu.com>
+	<956d6c43-0904-e094-1adb-bb7c584967d0@vivier.eu>
+	<20161207133049.GA32099@stefanha-x1.localdomain>
+	<fc30a10e-10d5-6b53-d098-f00780cdbe16@cn.fujitsu.com>
+	<5dd2f20f-07dd-5120-13bf-ea5700880ecf@cn.fujitsu.com>
+CC: Laurent Vivier <lvivier@redhat.com>, QEMU Trivial
+	<qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@gmail.com>, qemu devel
+	<qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, Stefan Weil
+	<sw@weilnetz.de>
+From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <2c9fbac0-0169-b7fb-ce0b-ce3408834531@cn.fujitsu.com>
+Date: Fri, 6 Jan 2017 11:33:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
 MIME-Version: 1.0
-References: <20170104145210.31608-1-pbonzini@redhat.com>
-In-Reply-To: <20170104145210.31608-1-pbonzini@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Wed, 04 Jan 2017 17:58:15 +0000
-Message-ID: <CAJ+F1C+CUdR6tAC09iw4xGZY1xM_TB8x8MAS9bPyJd6YBwKmPw@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary=001a114ca04c0f6ae8054548889b
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga: fix erroneous argument
- to strerror
+In-Reply-To: <5dd2f20f-07dd-5120-13bf-ea5700880ecf@cn.fujitsu.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.167.226.56]
+X-yoursite-MailScanner-ID: 6285B4818569.A7E1F
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 59.151.112.132
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.9] docs: Fix
+ description of the sentence
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,104 +64,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Jan 2017 17:58:31 -0000
+X-List-Received-Date: Fri, 06 Jan 2017 03:34:37 -0000
 
---001a114ca04c0f6ae8054548889b
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Ping....
 
-On Wed, Jan 4, 2017 at 3:54 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 
-> process_command returns a negative value in case of error.  Make this
-> clear in the "if" statement and fix the strerror argument to flip it
-> to positive.
+On 12/26/2016 03:26 PM, Zhang Chen wrote:
+> Hi~~ Jason.
 >
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Can you pick up this patch?
 >
-
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
----
->  qga/main.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Thanks
 >
-> diff --git a/qga/main.c b/qga/main.c
-> index 6caf215..538e4ee 100644
-> --- a/qga/main.c
-> +++ b/qga/main.c
-> @@ -558,8 +558,8 @@ static void process_command(GAState *s, QDict *req)
->      rsp =3D qmp_dispatch(QOBJECT(req));
->      if (rsp) {
->          ret =3D send_response(s, rsp);
-> -        if (ret) {
-> -            g_warning("error sending response: %s", strerror(ret));
-> +        if (ret < 0) {
-> +            g_warning("error sending response: %s", strerror(-ret));
->          }
->          qobject_decref(rsp);
->      }
-> --
-> 2.9.3
+> Zhang Chen
 >
 >
-> --
-Marc-Andr=C3=A9 Lureau
-
---001a114ca04c0f6ae8054548889b
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Wed=
-, Jan 4, 2017 at 3:54 PM Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redha=
-t.com">pbonzini@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-lef=
-t:1ex">process_command returns a negative value in case of error.=C2=A0 Mak=
-e this<br class=3D"gmail_msg">
-clear in the &quot;if&quot; statement and fix the strerror argument to flip=
- it<br class=3D"gmail_msg">
-to positive.<br class=3D"gmail_msg">
-<br class=3D"gmail_msg">
-Signed-off-by: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" cla=
-ss=3D"gmail_msg" target=3D"_blank">pbonzini@redhat.com</a>&gt;<br class=3D"=
-gmail_msg"></blockquote><br><br>Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a =
-href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</a>=
-&gt;<br><br><br> <blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex">
----<br class=3D"gmail_msg">
-=C2=A0qga/main.c | 4 ++--<br class=3D"gmail_msg">
-=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br class=3D"gmail_msg=
-">
-<br class=3D"gmail_msg">
-diff --git a/qga/main.c b/qga/main.c<br class=3D"gmail_msg">
-index 6caf215..538e4ee 100644<br class=3D"gmail_msg">
---- a/qga/main.c<br class=3D"gmail_msg">
-+++ b/qga/main.c<br class=3D"gmail_msg">
-@@ -558,8 +558,8 @@ static void process_command(GAState *s, QDict *req)<br =
-class=3D"gmail_msg">
-=C2=A0 =C2=A0 =C2=A0rsp =3D qmp_dispatch(QOBJECT(req));<br class=3D"gmail_m=
-sg">
-=C2=A0 =C2=A0 =C2=A0if (rsp) {<br class=3D"gmail_msg">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ret =3D send_response(s, rsp);<br class=
-=3D"gmail_msg">
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret) {<br class=3D"gmail_msg">
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 g_warning(&quot;error sending re=
-sponse: %s&quot;, strerror(ret));<br class=3D"gmail_msg">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ret &lt; 0) {<br class=3D"gmail_msg">
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 g_warning(&quot;error sending re=
-sponse: %s&quot;, strerror(-ret));<br class=3D"gmail_msg">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br class=3D"gmail_msg">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qobject_decref(rsp);<br class=3D"gmail_ms=
-g">
-=C2=A0 =C2=A0 =C2=A0}<br class=3D"gmail_msg">
---<br class=3D"gmail_msg">
-2.9.3<br class=3D"gmail_msg">
-<br class=3D"gmail_msg">
-<br class=3D"gmail_msg">
-</blockquote></div></div><div dir=3D"ltr">-- <br></div><div data-smartmail=
-=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div></div=
+> On 12/08/2016 09:32 AM, Zhang Chen wrote:
+>>
+>>
+>> On 12/07/2016 09:30 PM, Stefan Hajnoczi wrote:
+>>> On Wed, Dec 07, 2016 at 10:01:49AM +0100, Laurent Vivier wrote:
+>>>> Le 07/12/2016 à 09:58, Zhang Chen a écrit :
+>>>>>
+>>>>> On 12/02/2016 03:57 PM, Laurent Vivier wrote:
+>>>>>> On 02/12/2016 03:59, Zhang Chen wrote:
+>>>>>>> On 12/01/2016 10:57 PM, Eric Blake wrote:
+>>>>>>>> On 12/01/2016 12:55 AM, Zhang Chen wrote:
+>>>>>>>>> Say it in another way to make it easier to understand.
+>>>>>>>>>
+>>>>>>>>> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+>>>>>>>>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>>>>>>>> I guess that's because I suggested the replacement text to use, 
+>>>>>>>> even
+>>>>>>>> though I didn't write the patch.
+>>>>>>> Yes, In that case, should I change the signed-off-by to acked-by or
+>>>>>>> remove it?
+>>>>>> You can use "Suggested-by:"
+>>>>>>
+>>>>>> https://www.kernel.org/doc/Documentation/SubmittingPatches
+>>>>>>
+>>>>>> Laurent
+>>>>>>
+>>>>> Should I fix it? or can you pick up this directly for 2.8?
+>>>> I don't think it is needed.
+>>>> Perhaps Stefan H can take it directly in his staging tree?
+>>> Too late for that now.  This should be merged through Jason Wang (net
+>>> maintainer) like any other colo-proxy patch.
+>>>
+>>
+>> OK~ I change the subject to "for-2.9" and cc Jason.
+>>
+>> Thanks
+>> Zhang Chen
+>>
+>>
 >
 
---001a114ca04c0f6ae8054548889b--
+-- 
+Thanks
+Zhang Chen
+
+
+
 
