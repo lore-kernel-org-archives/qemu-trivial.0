@@ -1,27 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cPLId-00039X-6T
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Jan 2017 22:34:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53737)
+	id 1cPLVP-0002KS-Lt
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Jan 2017 22:47:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55135)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cPLIa-00036n-Ca
-	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:34:37 -0500
+	(envelope-from <jasowang@redhat.com>) id 1cPLVM-0002HU-39
+	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:47:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cPLIZ-0007gg-Jx
-	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:34:36 -0500
-Received: from [59.151.112.132] (port=24691 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
-	id 1cPLIT-0007Wx-So; Thu, 05 Jan 2017 22:34:30 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="14524492"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 06 Jan 2017 11:34:16 +0800
-Received: from G08CNEXCHPEKD03.g08.fujitsu.local (unknown [10.167.33.85])
-	by cn.fujitsu.com (Postfix) with ESMTP id 6285B4818569;
-	Fri,  6 Jan 2017 11:34:13 +0800 (CST)
-Received: from [10.167.226.56] (10.167.226.56) by
-	G08CNEXCHPEKD03.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.319.2; Fri, 6 Jan 2017 11:34:13 +0800
-To: Jason Wang <jasowang@redhat.com>
+	(envelope-from <jasowang@redhat.com>) id 1cPLVL-0004N2-Ds
+	for qemu-trivial@nongnu.org; Thu, 05 Jan 2017 22:47:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40616)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
+	id 1cPLVH-0004KQ-1e; Thu, 05 Jan 2017 22:47:43 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04DD664098;
+	Fri,  6 Jan 2017 03:47:42 +0000 (UTC)
+Received: from [10.72.5.59] (vpn1-5-59.pek2.redhat.com [10.72.5.59])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v063lYvZ003238
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 5 Jan 2017 22:47:37 -0500
+To: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
 References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
 	<a1593129-ddb9-8e74-5865-b1e8400c991d@redhat.com>
 	<8b90a1da-a129-f2cb-4545-355348387925@cn.fujitsu.com>
@@ -31,26 +33,28 @@ References: <1480575357-25056-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
 	<20161207133049.GA32099@stefanha-x1.localdomain>
 	<fc30a10e-10d5-6b53-d098-f00780cdbe16@cn.fujitsu.com>
 	<5dd2f20f-07dd-5120-13bf-ea5700880ecf@cn.fujitsu.com>
-CC: Laurent Vivier <lvivier@redhat.com>, QEMU Trivial
-	<qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@gmail.com>, qemu devel
-	<qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, Stefan Weil
-	<sw@weilnetz.de>
-From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-Message-ID: <2c9fbac0-0169-b7fb-ce0b-ce3408834531@cn.fujitsu.com>
-Date: Fri, 6 Jan 2017 11:33:41 +0800
+	<2c9fbac0-0169-b7fb-ce0b-ce3408834531@cn.fujitsu.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Hajnoczi
+	<stefanha@gmail.com>,
+	qemu devel <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, 
+	Stefan Weil <sw@weilnetz.de>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <0b08c3a0-f519-c308-6fe7-99ba152611f2@redhat.com>
+Date: Fri, 6 Jan 2017 11:47:35 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <5dd2f20f-07dd-5120-13bf-ea5700880ecf@cn.fujitsu.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.167.226.56]
-X-yoursite-MailScanner-ID: 6285B4818569.A7E1F
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
+In-Reply-To: <2c9fbac0-0169-b7fb-ce0b-ce3408834531@cn.fujitsu.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 06 Jan 2017 03:47:42 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.9] docs: Fix
  description of the sentence
 X-BeenThere: qemu-trivial@nongnu.org
@@ -64,66 +68,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jan 2017 03:34:37 -0000
-
-Ping....
-
-
-On 12/26/2016 03:26 PM, Zhang Chen wrote:
-> Hi~~ Jason.
->
-> Can you pick up this patch?
->
-> Thanks
->
-> Zhang Chen
->
->
-> On 12/08/2016 09:32 AM, Zhang Chen wrote:
->>
->>
->> On 12/07/2016 09:30 PM, Stefan Hajnoczi wrote:
->>> On Wed, Dec 07, 2016 at 10:01:49AM +0100, Laurent Vivier wrote:
->>>> Le 07/12/2016 à 09:58, Zhang Chen a écrit :
->>>>>
->>>>> On 12/02/2016 03:57 PM, Laurent Vivier wrote:
->>>>>> On 02/12/2016 03:59, Zhang Chen wrote:
->>>>>>> On 12/01/2016 10:57 PM, Eric Blake wrote:
->>>>>>>> On 12/01/2016 12:55 AM, Zhang Chen wrote:
->>>>>>>>> Say it in another way to make it easier to understand.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
->>>>>>>>> Signed-off-by: Eric Blake <eblake@redhat.com>
->>>>>>>> I guess that's because I suggested the replacement text to use, 
->>>>>>>> even
->>>>>>>> though I didn't write the patch.
->>>>>>> Yes, In that case, should I change the signed-off-by to acked-by or
->>>>>>> remove it?
->>>>>> You can use "Suggested-by:"
->>>>>>
->>>>>> https://www.kernel.org/doc/Documentation/SubmittingPatches
->>>>>>
->>>>>> Laurent
->>>>>>
->>>>> Should I fix it? or can you pick up this directly for 2.8?
->>>> I don't think it is needed.
->>>> Perhaps Stefan H can take it directly in his staging tree?
->>> Too late for that now.  This should be merged through Jason Wang (net
->>> maintainer) like any other colo-proxy patch.
->>>
->>
->> OK~ I change the subject to "for-2.9" and cc Jason.
->>
->> Thanks
->> Zhang Chen
->>
->>
->
-
--- 
-Thanks
-Zhang Chen
+X-List-Received-Date: Fri, 06 Jan 2017 03:47:50 -0000
 
 
 
+On 2017=E5=B9=B401=E6=9C=8806=E6=97=A5 11:33, Zhang Chen wrote:
+> Ping....
+
+Applied to -net. Thanks
 
