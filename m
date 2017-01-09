@@ -1,68 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cQaJ6-0001i1-IA
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Jan 2017 08:48:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34374)
+	id 1cQbWy-0003rf-Rt
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Jan 2017 10:06:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46649)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cQaJ3-0001fW-Pj
-	for qemu-trivial@nongnu.org; Mon, 09 Jan 2017 08:48:15 -0500
+	(envelope-from <secfire@ardsec.com>) id 1cQb2l-0002Yx-70
+	for qemu-trivial@nongnu.org; Mon, 09 Jan 2017 09:35:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cQaJ2-0004FH-Lf
-	for qemu-trivial@nongnu.org; Mon, 09 Jan 2017 08:48:13 -0500
-Received: from mail-wj0-x244.google.com ([2a00:1450:400c:c01::244]:33604)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1cQaIw-0004Dv-4j; Mon, 09 Jan 2017 08:48:06 -0500
-Received: by mail-wj0-x244.google.com with SMTP id kp2so84668586wjc.0;
-	Mon, 09 Jan 2017 05:48:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=mVpo2pB4JxFhmhdp7JnjnagsyOD1j96bDRxu2WruUGA=;
-	b=biyJ/CCl8Gonngl2thYMOuPRsAZAR5tnSWVqevb8tu5Qj7A4wtfF6dZb2bDoN90cld
-	LdIIDlOGVKfXa9zOo2J+kLMpCWa9SyvrPoSffz3B6EIN+Et0kYZ8J47XcRWGYgRPf+1A
-	haeyH6xDiPx6cgieZYQK7Bna59a2FyB6HAAIxh60oM3WleYkG0h+iTutsQgk6o9Qn3/7
-	MTgJJOLIASO5qSw3jFaLlSi5lJekvmxHZaZbakuveur17n3FQrFLuaFX1OLq3NOlS227
-	Ew60ZdT0l+e8L9NniRuC6FZIMF7Vk7VI/hq7DMkKhXIbylwwdA0zcxBjH17gx2IBEypx
-	CfUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=mVpo2pB4JxFhmhdp7JnjnagsyOD1j96bDRxu2WruUGA=;
-	b=RkNBm2Z1oGu6NBnjHpUuXVjgI/Vn9Ora5gao87rQFxVE02WhYpB4Xmk6Bobh0elZnq
-	iAVChhb9ZBIZGn+6uUPCpw8xLD+5J2SalNFpqvKlsl2pQGlaRBYAL8Hf3/auK5/mY9BY
-	C5QeN/gAKStZETFtqxXZJEVtbC0ir8fCe9jJL0zbXUtRuZ/P4UW5bbT8S7sxv8ST9NOF
-	heYkA/p+y37HEeRNAdrJWXNxR8WYluiDUi9nWSdhT+sxrEMJz1OL/7YjrUn62bzVcbXW
-	018sHa7QcpK362xgxNhlVaJLwUyX17w/DKITXbvkbqt1HDayzXJoJ6mLdTOzquI2PqUv
-	sgYA==
-X-Gm-Message-State: AIkVDXJPKdBDRlgjBLcUlfV0MW0sDyyb6GY6AWA8pHi3CYmM9tkd3VpolBO3PlwyexYu2A==
-X-Received: by 10.194.122.202 with SMTP id lu10mr14705951wjb.2.1483969684718; 
-	Mon, 09 Jan 2017 05:48:04 -0800 (PST)
-Received: from [192.168.10.165] (94-39-158-71.adsl-ull.clienti.tiscali.it.
-	[94.39.158.71]) by smtp.googlemail.com with ESMTPSA id
-	b15sm19016587wma.5.2017.01.09.05.48.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 09 Jan 2017 05:48:04 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-References: <1483194856-14079-1-git-send-email-hpoussin@reactos.org>
-	<8737gsl7o7.fsf@dusky.pond.sub.org>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <4b140d8b-0745-6d7f-101f-25c3ca5f28c2@redhat.com>
-Date: Mon, 9 Jan 2017 14:48:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(envelope-from <secfire@ardsec.com>) id 1cQb2h-0003Ue-AJ
+	for qemu-trivial@nongnu.org; Mon, 09 Jan 2017 09:35:27 -0500
+Received: from m97107.mail.qiye.163.com ([220.181.97.107]:8811)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <secfire@ardsec.com>) id 1cQb2g-0003UD-Jp
+	for qemu-trivial@nongnu.org; Mon, 09 Jan 2017 09:35:23 -0500
+Received: from secfire$ardsec.com ( [36.110.90.162] ) by ajax-webmail-wmsvr4
+	(Coremail) ; Mon, 9 Jan 2017 22:04:45 +0800 (CST)
+X-Originating-IP: [36.110.90.162]
+Date: Mon, 9 Jan 2017 22:04:45 +0800 (CST)
+From: =?UTF-8?B?6KKB5Lyf5Y2O?= <secfire@ardsec.com>
+To: qemu-trivial@nongnu.org
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version SP_ntes V3.5 build
+	20150911(74783.7961) Copyright (c) 2002-2017 www.mailtech.cn
+	163-hosting
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_314544_1945953699.1483970685486"
 MIME-Version: 1.0
-In-Reply-To: <8737gsl7o7.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c01::244
-Subject: Re: [Qemu-trivial] [PATCH] vl: disable default cdrom when using
- explicitely scsi-hd
+Message-ID: <329ed960.2088.159838baa2e.Coremail.secfire@ardsec.com>
+X-CM-TRANSID: a+CowAA3PSV9mHNYtj0OAA--.1429W
+X-CM-SenderInfo: xvhfwxluh6t2pgvhuhhfrp/1tbiVg1amVf4ncrw5AADs3
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 220.181.97.107
+X-Mailman-Approved-At: Mon, 09 Jan 2017 10:06:40 -0500
+Subject: [Qemu-trivial] MSR lock bit set with intel-vt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,50 +44,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Jan 2017 13:48:15 -0000
+X-List-Received-Date: Mon, 09 Jan 2017 14:35:28 -0000
 
+------=_Part_314544_1945953699.1483970685486
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
 
+SGksYWxsOgogaSBhbSB1c2UgcWVtdSArIGt2bSBoeXBlcnZpc29yIHBsYXRmb3JtLCBidXQgaSBj
+YW4gbm90IHNldHRpbmcgdG8gb3BlbiBiaW9zIGludGVsLXZ0IGluIHZtJ3MgYmlvcyBvcHRpb25z
+LCB3aXRoIHRoZSBkb2N1bWVudCwgd2UgY2FuIGNvbmZpZ3VyZSAiZXRjL21zcl9mZWF0dXJlX2Nv
+bnRyb2wiIGZvciBuZXcgTVNSLCBidXQgd2UgZG9lcyBub3Qga25vd24gaG93IHRvIGNvbmZpZ3Vy
+ZSB0aGUgZmlsZSBhbmQgdGhlIGFic29sdXRlIHBhdGggb2YgImV0Yy9tc3JfZmVhdHVyZV9jb250
+cm9sIiwgaSBuZWVkIHlvdXIgaGVscC4gYmVzdCB3aXNoZXMgZm9yIHlvdSE=
+------=_Part_314544_1945953699.1483970685486
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
 
-On 09/01/2017 13:49, Markus Armbruster wrote:
-> Hervé Poussineau <hpoussin@reactos.org> writes:
-> 
->> 'ide-hd', 'ide-cd' and 'scsi-cd' devices already disable default cdrom.
->> Make it the same for 'scsi-hd'.
->>
->> That way, we can add/replace the device on lun=2 without using -nodefaults.
-> 
-> Yes, but it might upset existing usage that relies on the default
-> CD-ROM.  In my opinion, making your needs explicit is better than
-> relying on defaults, but that doesn't mean we can change the defaults
-> unthinkingly.  Definitely not qemu-trivial.
-> 
-> Opinions on the change?
+PGRpdj5IaSxhbGw6PC9kaXY+PGRpdj4mbmJzcDtpIGFtIHVzZSBxZW11ICsga3ZtIGh5cGVydmlz
+b3IgcGxhdGZvcm0sIGJ1dCBpIGNhbiBub3Qgc2V0dGluZyB0byBvcGVuIGJpb3MgaW50ZWwtdnQg
+aW4gdm0ncyBiaW9zIG9wdGlvbnMsIHdpdGggdGhlIGRvY3VtZW50LCB3ZSBjYW4gY29uZmlndXJl
+ICJldGMvbXNyX2ZlYXR1cmVfY29udHJvbCIgZm9yIG5ldyBNU1IsIGJ1dCB3ZSBkb2VzIG5vdCBr
+bm93biBob3cgdG8gY29uZmlndXJlIHRoZSBmaWxlIGFuZCB0aGUgYWJzb2x1dGUgcGF0aCBvZiAi
+ZXRjL21zcl9mZWF0dXJlX2NvbnRyb2wiLCBpIG5lZWQgeW91ciBoZWxwLiBiZXN0IHdpc2hlcyBm
+b3IgeW91ITwvZGl2Pg==
+------=_Part_314544_1945953699.1483970685486--
 
-The original rationale for the change was "ide-hd has to suppress the
-default CD-ROM, or else you can't put one on secondary master without
--nodefaults" but the same applies for scsi-hd vs. lun=1.
-
-So I'm not sure, but I lean towards accepting the patch.
-
-Paolo
-
->> Signed-off-by: Hervé Poussineau <hpoussin@reactos.org>
->> ---
->>  vl.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/vl.c b/vl.c
->> index d77dd86..da97fe2 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -223,6 +223,7 @@ static struct {
->>      { .driver = "ide-hd",               .flag = &default_cdrom     },
->>      { .driver = "ide-drive",            .flag = &default_cdrom     },
->>      { .driver = "scsi-cd",              .flag = &default_cdrom     },
->> +    { .driver = "scsi-hd",              .flag = &default_cdrom     },
->>      { .driver = "virtio-serial-pci",    .flag = &default_virtcon   },
->>      { .driver = "virtio-serial",        .flag = &default_virtcon   },
->>      { .driver = "VGA",                  .flag = &default_vga       },
-> 
-> 
 
