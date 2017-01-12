@@ -1,40 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cReey-0007T3-4b
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 07:39:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48063)
+	id 1cRhSF-00057F-7G
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 10:38:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cReer-0007Ot-Vq
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:39:15 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cRhS8-000544-WE
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 10:38:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cReen-0002s9-7k
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:39:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42112)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cReec-0002pV-VO; Thu, 12 Jan 2017 07:38:55 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DF7CE63642;
-	Thu, 12 Jan 2017 12:38:54 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-62.ams2.redhat.com [10.36.116.62])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id v0CCcr04029029; Thu, 12 Jan 2017 07:38:53 -0500
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Date: Thu, 12 Jan 2017 13:38:52 +0100
-Message-Id: <1484224732-1345-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 12 Jan 2017 12:38:54 +0000 (UTC)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cRhS4-0001QY-2Q
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 10:38:13 -0500
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:35444)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1cRhS3-0001Q6-QI; Thu, 12 Jan 2017 10:38:07 -0500
+Received: by mail-wm0-x244.google.com with SMTP id l2so4543181wml.2;
+	Thu, 12 Jan 2017 07:38:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=GCCKhWQwrlg2zNRUG745DNe4ZZsgmS9d8V9i+iI9kzY=;
+	b=a43l0gUeQpgNCybCXbWHDj2abrFz2I77pnoDp5J/IWWt85Lz7TJFUpVI1fMpgYAXbr
+	PlaIhRDbGLKNdaiEK6IOBtr3wlvyN0EvJNH6SwOMAPpLNbxHsjpHJEr1gsMUTgHxezXc
+	TOQDk4Rqh/H6y6hg/O4oXerv0oUtuzz4f50AOYcjp86a4WSgoKUq0pHykmf1heMzI6aa
+	lhJWv2IEVN+zIh95Fq7s5nKd4MMxEPuMVszYY7QjRjPiBaEQnjnHInuqVM0mZNULw3EB
+	cO3lz76fyuMIKF6H9JvaTj+PzCbntfRlC233ljHVh+Y8eNeXI0k9eMHuUUYDPm8FDZ9k
+	95xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=GCCKhWQwrlg2zNRUG745DNe4ZZsgmS9d8V9i+iI9kzY=;
+	b=MfJyaPLxd3MWQO5P2eDF+lXeSHiYGKqUxJ3aooFc5Yqn77hHivUqdBxXeUZF9quH3M
+	2wDiRg55tR4hojFyZn7/9/JSQwCzrgBqdcL6dwcC/DW/phVNwddbTjhrqcnOhQJPFmuu
+	AVlEsZBl+YBUM4IutZwnXZ4kfw4HeghyfQw0/GCkh8MKyVymTPaT9Nv1sN2ZxwfreqL1
+	LnU2xbxmyRHkh31X7uMyNOx68TAlvdjyQoaX7M87k1GjUD2gMTtaDoM0dDUDoWLt3VgL
+	fXBqWWt4DcGQdFlI8uSH8EuSE/LIo3RBl3bGjZ1+YtlQxGpvdCh8uSmxXICBXPtEBpO2
+	riSg==
+X-Gm-Message-State: AIkVDXJLZoBXFo1ftdn5fgHzwGTkNdfEzlFP+UP+XiGooO0voXVAaCYJf3F4CUVdFZMv8A==
+X-Received: by 10.28.144.135 with SMTP id s129mr8301162wmd.18.1484235486272;
+	Thu, 12 Jan 2017 07:38:06 -0800 (PST)
+Received: from [192.168.10.165] (94-39-158-71.adsl-ull.clienti.tiscali.it.
+	[94.39.158.71]) by smtp.googlemail.com with ESMTPSA id
+	d29sm3736483wmi.19.2017.01.12.07.38.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 12 Jan 2017 07:38:05 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+References: <20161212173151.18092-1-marcandre.lureau@redhat.com>
+	<20161212173151.18092-3-marcandre.lureau@redhat.com>
+	<1f3b7ccb-19fd-c3df-0a67-fc554c55e05a@msgid.tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <c67425f0-5bc0-f07c-6936-522fcef3b445@redhat.com>
+Date: Thu, 12 Jan 2017 16:38:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
+MIME-Version: 1.0
+In-Reply-To: <1f3b7ccb-19fd-c3df-0a67-fc554c55e05a@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v3] monitor: Fix crashes when using HMP
- commands without CPU
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-trivial] [PATCH 3/3] object: make some funcs static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,139 +74,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 12:39:15 -0000
+X-List-Received-Date: Thu, 12 Jan 2017 15:38:18 -0000
 
-When running certain HMP commands ("info registers", "info cpustats",
-"nmi", "memsave" or dumping virtual memory) with the "none" machine,
-QEMU crashes with a segmentation fault. This happens because the "none"
-machine does not have any CPUs by default, but these HMP commands did
-not check for a valid CPU pointer yet. Add such checks now, so we get
-an error message about the missing CPU instead.
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v3:
- - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
- v2:
- - Added more checks to cover "nmi" and "memsave", too
 
- hmp.c     |  8 +++++++-
- monitor.c | 37 +++++++++++++++++++++++++++++++------
- 2 files changed, 38 insertions(+), 7 deletions(-)
+On 12/01/2017 11:48, Michael Tokarev wrote:
+> 12.12.2016 20:31, Marc-André Lureau wrote:
+>> There is no need to have those functions as public API.
+> 
+> Were "some" being object_initialize_with_type() and
+> object_new_with_type().
+> 
+> I'm applying this to -trivial, and Cc'ing Andreas, maybe
+> he will say more.
 
-diff --git a/hmp.c b/hmp.c
-index b869617..b1c503a 100644
---- a/hmp.c
-+++ b/hmp.c
-@@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
-     const char *filename = qdict_get_str(qdict, "filename");
-     uint64_t addr = qdict_get_int(qdict, "val");
-     Error *err = NULL;
-+    int cpu_index = monitor_get_cpu_index();
- 
--    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
-+    if (cpu_index < 0) {
-+        monitor_printf(mon, "No CPU available\n");
-+        return;
-+    }
-+
-+    qmp_memsave(addr, size, filename, true, cpu_index, &err);
-     hmp_handle_error(mon, &err);
- }
- 
-diff --git a/monitor.c b/monitor.c
-index 0841d43..17121ff 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
- CPUState *mon_get_cpu(void)
- {
-     if (!cur_mon->mon_cpu) {
-+        if (!first_cpu) {
-+            return NULL;
-+        }
-         monitor_set_cpu(first_cpu->cpu_index);
-     }
-     cpu_synchronize_state(cur_mon->mon_cpu);
-@@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
- 
- CPUArchState *mon_get_cpu_env(void)
- {
--    return mon_get_cpu()->env_ptr;
-+    CPUState *cs = mon_get_cpu();
-+
-+    return cs ? cs->env_ptr : NULL;
- }
- 
- int monitor_get_cpu_index(void)
- {
--    return mon_get_cpu()->cpu_index;
-+    CPUState *cs = mon_get_cpu();
-+
-+    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
- }
- 
- static void hmp_info_registers(Monitor *mon, const QDict *qdict)
- {
--    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
-+    CPUState *cs = mon_get_cpu();
-+
-+    if (!cs) {
-+        monitor_printf(mon, "No CPU available\n");
-+        return;
-+    }
-+    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
- }
- 
- static void hmp_info_jit(Monitor *mon, const QDict *qdict)
-@@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const QDict *qdict)
- 
- static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
- {
--    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
-+    CPUState *cs = mon_get_cpu();
-+
-+    if (!cs) {
-+        monitor_printf(mon, "No CPU available\n");
-+        return;
-+    }
-+    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
- }
- 
- static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
-@@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
-     int l, line_size, i, max_digits, len;
-     uint8_t buf[16];
-     uint64_t v;
-+    CPUState *cs = mon_get_cpu();
-+
-+    if (!cs && (format == 'i' || !is_physical)) {
-+        monitor_printf(mon, "Can not dump without CPU\n");
-+        return;
-+    }
- 
-     if (format == 'i') {
-         int flags = 0;
-@@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
-         flags = msr_le << 16;
-         flags |= env->bfd_mach;
- #endif
--        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flags);
-+        monitor_disas(mon, cs, addr, count, is_physical, flags);
-         return;
-     }
- 
-@@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
-         if (is_physical) {
-             cpu_physical_memory_read(addr, buf, l);
-         } else {
--            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
-+            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
-                 monitor_printf(mon, " Cannot access memory\n");
-                 break;
-             }
--- 
-1.8.3.1
+The idea here was to allow caching the type and speed up things.  But I
+guess that QOM objects are very heavyweight, and thus we won't have for
+example SCSIRequest as a QOM object.
 
+Paolo
+
+> Thanks,
+> 
+>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>> ---
+>>  qom/object.c         |  4 ++--
+>>  include/qom/object.h | 24 ------------------------
+>>  2 files changed, 2 insertions(+), 26 deletions(-)
+>>
+>> diff --git a/qom/object.c b/qom/object.c
+>> index 7a05e35ed9..eb3d0f64e4 100644
+>> --- a/qom/object.c
+>> +++ b/qom/object.c
+>> @@ -351,7 +351,7 @@ static void object_post_init_with_type(Object *obj, TypeImpl *ti)
+>>      }
+>>  }
+>>  
+>> -void object_initialize_with_type(void *data, size_t size, TypeImpl *type)
+>> +static void object_initialize_with_type(void *data, size_t size, TypeImpl *type)
+>>  {
+>>      Object *obj = data;
+>>  
+>> @@ -467,7 +467,7 @@ static void object_finalize(void *data)
+>>      }
+>>  }
+>>  
+>> -Object *object_new_with_type(Type type)
+>> +static Object *object_new_with_type(Type type)
+>>  {
+>>      Object *obj;
+>>  
+>> diff --git a/include/qom/object.h b/include/qom/object.h
+>> index c5456db05d..e9791a210e 100644
+>> --- a/include/qom/object.h
+>> +++ b/include/qom/object.h
+>> @@ -586,18 +586,6 @@ struct InterfaceClass
+>>   */
+>>  Object *object_new(const char *typename);
+>>  
+>> -/**
+>> - * object_new_with_type:
+>> - * @type: The type of the object to instantiate.
+>> - *
+>> - * This function will initialize a new object using heap allocated memory.
+>> - * The returned object has a reference count of 1, and will be freed when
+>> - * the last reference is dropped.
+>> - *
+>> - * Returns: The newly allocated and instantiated object.
+>> - */
+>> -Object *object_new_with_type(Type type);
+>> -
+>>  /**
+>>   * object_new_with_props:
+>>   * @typename:  The name of the type of the object to instantiate.
+>> @@ -726,18 +714,6 @@ int object_set_propv(Object *obj,
+>>                       Error **errp,
+>>                       va_list vargs);
+>>  
+>> -/**
+>> - * object_initialize_with_type:
+>> - * @data: A pointer to the memory to be used for the object.
+>> - * @size: The maximum size available at @data for the object.
+>> - * @type: The type of the object to instantiate.
+>> - *
+>> - * This function will initialize an object.  The memory for the object should
+>> - * have already been allocated.  The returned object has a reference count of 1,
+>> - * and will be finalized when the last reference is dropped.
+>> - */
+>> -void object_initialize_with_type(void *data, size_t size, Type type);
+>> -
+>>  /**
+>>   * object_initialize:
+>>   * @obj: A pointer to the memory to be used for the object.
+>>
+> 
+> 
+> 
 
