@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cRcyy-0005Mn-1Z
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 05:51:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49932)
+	id 1cRd0o-0007jW-JV
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 05:53:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRcyv-0005Jp-10
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:51:46 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cRd0i-0007fL-4J
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:53:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRcys-0001sV-0a
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:51:45 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:47755)
+	(envelope-from <mjt@tls.msk.ru>) id 1cRd0f-0002hc-Ft
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:53:36 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:41819)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRcyr-0001sN-OU
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:51:41 -0500
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1cRd0Z-0002cO-9n; Thu, 12 Jan 2017 05:53:27 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9A43240A29;
-	Thu, 12 Jan 2017 13:51:41 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 2246940A29;
+	Thu, 12 Jan 2017 13:53:27 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id D33F354C;
-	Thu, 12 Jan 2017 13:51:40 +0300 (MSK)
-To: Chao Fan <fanc.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
-	pbonzini@redhat.com
-References: <20161229110026.14816-1-fanc.fnst@cn.fujitsu.com>
-Cc: douly.fnst@cn.fujitsu.com, caoj.fnst@cn.fujitsu.com
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 6185554C;
+	Thu, 12 Jan 2017 13:53:26 +0300 (MSK)
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <20170104145624.2849-1-pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <b677f9c0-aac8-e4c7-c983-821032c6a5b8@msgid.tls.msk.ru>
-Date: Thu, 12 Jan 2017 13:51:40 +0300
+Message-ID: <2ddc7888-3a12-68e3-dcce-df05a16e12a3@msgid.tls.msk.ru>
+Date: Thu, 12 Jan 2017 13:53:26 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <20161229110026.14816-1-fanc.fnst@cn.fujitsu.com>
+In-Reply-To: <20170104145624.2849-1-pbonzini@redhat.com>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] bitmap: a typo of the example in comment
+Subject: Re: [Qemu-trivial] [PATCH] qemu-img: remove dead check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,15 +45,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 10:51:46 -0000
+X-List-Received-Date: Thu, 12 Jan 2017 10:53:42 -0000
 
-29.12.2016 14:00, Chao Fan wrote:
-> *   DirtyMemoryBlocks *blocks =
-> *       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
-> 
-> blocks is a pointer, so here should be "->" instead of "."
+04.01.2017 17:56, Paolo Bonzini wrote:
+> options must be non-NULL here, because it has been checked before.
+> Reported by Coverity.
 
-Applied to -trivial, thank you!
+Applied to -trivial, thanks!
 
 /mjt
 
