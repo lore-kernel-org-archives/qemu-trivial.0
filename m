@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cRcu5-0000hV-Jw
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 05:46:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48737)
+	id 1cRcvx-0003HX-0Y
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 05:48:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRctz-0000cp-7g
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:46:43 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cRcvu-0003Fu-Qo
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:48:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRcty-0007cj-FJ
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:46:39 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:55620)
+	(envelope-from <mjt@tls.msk.ru>) id 1cRcvt-000054-5D
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 05:48:38 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:44978)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cRctr-0007Zw-T5; Thu, 12 Jan 2017 05:46:32 -0500
+	id 1cRcvm-0008TP-9u; Thu, 12 Jan 2017 05:48:30 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B71C640A0E;
-	Thu, 12 Jan 2017 13:46:31 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id BAD4B40A0E;
+	Thu, 12 Jan 2017 13:48:29 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 01D8D54C;
-	Thu, 12 Jan 2017 13:46:31 +0300 (MSK)
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id EB73954C;
+	Thu, 12 Jan 2017 13:48:28 +0300 (MSK)
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20161212173151.18092-1-marcandre.lureau@redhat.com>
-	<20161212173151.18092-2-marcandre.lureau@redhat.com>
-Cc: qemu-trivial@nongnu.org
+	<20161212173151.18092-3-marcandre.lureau@redhat.com>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <cd10cc95-39dc-d960-ac06-f7c9f0946df3@msgid.tls.msk.ru>
-Date: Thu, 12 Jan 2017 13:46:30 +0300
+Message-ID: <1f3b7ccb-19fd-c3df-0a67-fc554c55e05a@msgid.tls.msk.ru>
+Date: Thu, 12 Jan 2017 13:48:28 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <20161212173151.18092-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20161212173151.18092-3-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH 2/3] object.h: improve
- OBJECT/OBJECT_CLASS doc
+Subject: Re: [Qemu-trivial] [PATCH 3/3] object: make some funcs static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,32 +47,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 10:46:44 -0000
+X-List-Received-Date: Thu, 12 Jan 2017 10:48:40 -0000
 
 12.12.2016 20:31, Marc-Andr=C3=A9 Lureau wrote:
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  include/qom/object.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->=20
-> diff --git a/include/qom/object.h b/include/qom/object.h
-> index c5e6fc1f5d..c5456db05d 100644
-> --- a/include/qom/object.h
-> +++ b/include/qom/object.h
-> @@ -467,7 +467,7 @@ struct TypeInfo
->   * OBJECT:
->   * @obj: A derivative of #Object
->   *
-> - * Converts an object to a #Object.  Since all objects are #Objects,
-> + * Converts an object to a #Object.  Since all objects are #Object,
->   * this function will always succeed.
+> There is no need to have those functions as public API.
 
-I'm not sure this is a good change. Yes the type name is "Object"
-(singular), but we refer to multiple objectS (plural), so... :)
-If we had some coloring, we'd wrote it like, eg, #<b>Object</b>s,
-with "s" being outside of the type name.
+Were "some" being object_initialize_with_type() and
+object_new_with_type().
+
+I'm applying this to -trivial, and Cc'ing Andreas, maybe
+he will say more.
 
 Thanks,
 
-/mjt
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  qom/object.c         |  4 ++--
+>  include/qom/object.h | 24 ------------------------
+>  2 files changed, 2 insertions(+), 26 deletions(-)
+>=20
+> diff --git a/qom/object.c b/qom/object.c
+> index 7a05e35ed9..eb3d0f64e4 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -351,7 +351,7 @@ static void object_post_init_with_type(Object *obj,=
+ TypeImpl *ti)
+>      }
+>  }
+> =20
+> -void object_initialize_with_type(void *data, size_t size, TypeImpl *ty=
+pe)
+> +static void object_initialize_with_type(void *data, size_t size, TypeI=
+mpl *type)
+>  {
+>      Object *obj =3D data;
+> =20
+> @@ -467,7 +467,7 @@ static void object_finalize(void *data)
+>      }
+>  }
+> =20
+> -Object *object_new_with_type(Type type)
+> +static Object *object_new_with_type(Type type)
+>  {
+>      Object *obj;
+> =20
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index c5456db05d..e9791a210e 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -586,18 +586,6 @@ struct InterfaceClass
+>   */
+>  Object *object_new(const char *typename);
+> =20
+> -/**
+> - * object_new_with_type:
+> - * @type: The type of the object to instantiate.
+> - *
+> - * This function will initialize a new object using heap allocated mem=
+ory.
+> - * The returned object has a reference count of 1, and will be freed w=
+hen
+> - * the last reference is dropped.
+> - *
+> - * Returns: The newly allocated and instantiated object.
+> - */
+> -Object *object_new_with_type(Type type);
+> -
+>  /**
+>   * object_new_with_props:
+>   * @typename:  The name of the type of the object to instantiate.
+> @@ -726,18 +714,6 @@ int object_set_propv(Object *obj,
+>                       Error **errp,
+>                       va_list vargs);
+> =20
+> -/**
+> - * object_initialize_with_type:
+> - * @data: A pointer to the memory to be used for the object.
+> - * @size: The maximum size available at @data for the object.
+> - * @type: The type of the object to instantiate.
+> - *
+> - * This function will initialize an object.  The memory for the object=
+ should
+> - * have already been allocated.  The returned object has a reference c=
+ount of 1,
+> - * and will be finalized when the last reference is dropped.
+> - */
+> -void object_initialize_with_type(void *data, size_t size, Type type);
+> -
+>  /**
+>   * object_initialize:
+>   * @obj: A pointer to the memory to be used for the object.
+>=20
+
 
