@@ -1,51 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cReUm-0002Xc-Qa
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 07:28:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44967)
+	id 1cReey-0007T3-4b
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 07:39:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48063)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cReUh-0002Sx-0s
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:28:43 -0500
+	(envelope-from <thuth@redhat.com>) id 1cReer-0007Ot-Vq
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:39:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cReUc-0006i8-0w
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:28:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41202)
+	(envelope-from <thuth@redhat.com>) id 1cReen-0002s9-7k
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 07:39:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42112)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cReUT-0006bk-8y; Thu, 12 Jan 2017 07:28:25 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1cReec-0002pV-VO; Thu, 12 Jan 2017 07:38:55 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 338D137E64;
-	Thu, 12 Jan 2017 12:28:25 +0000 (UTC)
-Received: from [10.36.116.62] (ovpn-116-62.ams2.redhat.com [10.36.116.62])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0CCSM9a014526
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 12 Jan 2017 07:28:23 -0500
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <1484216631-30723-1-git-send-email-thuth@redhat.com>
-	<20170112121933.GB2513@work-vm>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Daniel P Berrange <berrange@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id DF7CE63642;
+	Thu, 12 Jan 2017 12:38:54 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-62.ams2.redhat.com [10.36.116.62])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v0CCcr04029029; Thu, 12 Jan 2017 07:38:53 -0500
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <a395cf35-a893-4237-e69c-676b9dfda70c@redhat.com>
-Date: Thu, 12 Jan 2017 13:28:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
-MIME-Version: 1.0
-In-Reply-To: <20170112121933.GB2513@work-vm>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Date: Thu, 12 Jan 2017 13:38:52 +0100
+Message-Id: <1484224732-1345-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 12 Jan 2017 12:28:25 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 12 Jan 2017 12:38:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2] monitor: Fix crashes when using HMP
+Subject: [Qemu-trivial] [PATCH v3] monitor: Fix crashes when using HMP
  commands without CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -58,99 +46,139 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 12:28:43 -0000
+X-List-Received-Date: Thu, 12 Jan 2017 12:39:15 -0000
 
-On 12.01.2017 13:19, Dr. David Alan Gilbert wrote:
-> * Thomas Huth (thuth@redhat.com) wrote:
->> When running certain HMP commands ("info registers", "info cpustats",
->> "nmi", "memsave" or dumping virtual memory) with the "none" machine,
->> QEMU crashes with a segmentation fault. This happens because the "none"
->> machine does not have any CPUs by default, but these HMP commands did
->> not check for a valid CPU pointer yet. Add such checks now, so we get
->> an error message about the missing CPU instead.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  v2:
->>  - Added more checks to cover "nmi" and "memsave", too
->>
->>  hmp.c     |  8 +++++++-
->>  monitor.c | 37 +++++++++++++++++++++++++++++++------
->>  2 files changed, 38 insertions(+), 7 deletions(-)
->>
->> diff --git a/hmp.c b/hmp.c
->> index b869617..b1c503a 100644
->> --- a/hmp.c
->> +++ b/hmp.c
->> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
->>      const char *filename = qdict_get_str(qdict, "filename");
->>      uint64_t addr = qdict_get_int(qdict, "val");
->>      Error *err = NULL;
->> +    int cpu_index = monitor_get_cpu_index();
->>  
->> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
->> +    if (cpu_index < 0) {
->> +        monitor_printf(mon, "No CPU available\n");
->> +        return;
->> +    }
-> 
-> OK, that includes UNASSIGNED_CPU_INDEX.
-> 
->> +
->> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
->>      hmp_handle_error(mon, &err);
->>  }
->>  
->> diff --git a/monitor.c b/monitor.c
->> index 0841d43..74843eb 100644
->> --- a/monitor.c
->> +++ b/monitor.c
->> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
->>  CPUState *mon_get_cpu(void)
->>  {
->>      if (!cur_mon->mon_cpu) {
->> +        if (!first_cpu) {
->> +            return NULL;
->> +        }
->>          monitor_set_cpu(first_cpu->cpu_index);
->>      }
->>      cpu_synchronize_state(cur_mon->mon_cpu);
->> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
->>  
->>  CPUArchState *mon_get_cpu_env(void)
->>  {
->> -    return mon_get_cpu()->env_ptr;
->> +    CPUState *cs = mon_get_cpu();
->> +
->> +    return cs ? cs->env_ptr : NULL;
->>  }
->>  
->>  int monitor_get_cpu_index(void)
->>  {
->> -    return mon_get_cpu()->cpu_index;
->> +    CPUState *cs = mon_get_cpu();
->> +
->> +    return cs ? cs->cpu_index : -1;
->>  }
-> 
-> OK, do you think that should use UNASSIGNED_CPU_INDEX
-> explicitly rather than -1 ?
+When running certain HMP commands ("info registers", "info cpustats",
+"nmi", "memsave" or dumping virtual memory) with the "none" machine,
+QEMU crashes with a segmentation fault. This happens because the "none"
+machine does not have any CPUs by default, but these HMP commands did
+not check for a valid CPU pointer yet. Add such checks now, so we get
+an error message about the missing CPU instead.
 
-I wasn't aware of the fact that we've even got a macro for this ... I'll
-send a v3 with that change.
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v3:
+ - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
+ v2:
+ - Added more checks to cover "nmi" and "memsave", too
 
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+ hmp.c     |  8 +++++++-
+ monitor.c | 37 +++++++++++++++++++++++++++++++------
+ 2 files changed, 38 insertions(+), 7 deletions(-)
 
-Thanks for the review!
-
-> I'm sure we'll find loads more similar cases where -M none breaks stuff.
-
-I've added two more cases (migration and gdbstub) to the "Potentially
-easy bugs" section on http://qemu-project.org/BiteSizedTasks now. I
-think these are simple and easy tasks to get started with QEMU hacking...
-
- Thomas
-
-
+diff --git a/hmp.c b/hmp.c
+index b869617..b1c503a 100644
+--- a/hmp.c
++++ b/hmp.c
+@@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
+     const char *filename = qdict_get_str(qdict, "filename");
+     uint64_t addr = qdict_get_int(qdict, "val");
+     Error *err = NULL;
++    int cpu_index = monitor_get_cpu_index();
+ 
+-    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
++    if (cpu_index < 0) {
++        monitor_printf(mon, "No CPU available\n");
++        return;
++    }
++
++    qmp_memsave(addr, size, filename, true, cpu_index, &err);
+     hmp_handle_error(mon, &err);
+ }
+ 
+diff --git a/monitor.c b/monitor.c
+index 0841d43..17121ff 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
+ CPUState *mon_get_cpu(void)
+ {
+     if (!cur_mon->mon_cpu) {
++        if (!first_cpu) {
++            return NULL;
++        }
+         monitor_set_cpu(first_cpu->cpu_index);
+     }
+     cpu_synchronize_state(cur_mon->mon_cpu);
+@@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
+ 
+ CPUArchState *mon_get_cpu_env(void)
+ {
+-    return mon_get_cpu()->env_ptr;
++    CPUState *cs = mon_get_cpu();
++
++    return cs ? cs->env_ptr : NULL;
+ }
+ 
+ int monitor_get_cpu_index(void)
+ {
+-    return mon_get_cpu()->cpu_index;
++    CPUState *cs = mon_get_cpu();
++
++    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
+ }
+ 
+ static void hmp_info_registers(Monitor *mon, const QDict *qdict)
+ {
+-    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
++    CPUState *cs = mon_get_cpu();
++
++    if (!cs) {
++        monitor_printf(mon, "No CPU available\n");
++        return;
++    }
++    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
+ }
+ 
+ static void hmp_info_jit(Monitor *mon, const QDict *qdict)
+@@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const QDict *qdict)
+ 
+ static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
+ {
+-    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
++    CPUState *cs = mon_get_cpu();
++
++    if (!cs) {
++        monitor_printf(mon, "No CPU available\n");
++        return;
++    }
++    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
+ }
+ 
+ static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
+@@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+     int l, line_size, i, max_digits, len;
+     uint8_t buf[16];
+     uint64_t v;
++    CPUState *cs = mon_get_cpu();
++
++    if (!cs && (format == 'i' || !is_physical)) {
++        monitor_printf(mon, "Can not dump without CPU\n");
++        return;
++    }
+ 
+     if (format == 'i') {
+         int flags = 0;
+@@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+         flags = msr_le << 16;
+         flags |= env->bfd_mach;
+ #endif
+-        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flags);
++        monitor_disas(mon, cs, addr, count, is_physical, flags);
+         return;
+     }
+ 
+@@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+         if (is_physical) {
+             cpu_physical_memory_read(addr, buf, l);
+         } else {
+-            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
++            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
+                 monitor_printf(mon, " Cannot access memory\n");
+                 break;
+             }
+-- 
+1.8.3.1
 
 
