@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cRdTu-0008Sa-68
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 06:23:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56349)
+	id 1cRda7-0003dy-Ig
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 06:30:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58404)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRdTq-0008Qc-Kj
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 06:23:44 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cRdZz-0003Ta-PJ
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 06:30:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cRdTo-0005M8-V1
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 06:23:42 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:40486)
+	(envelope-from <mjt@tls.msk.ru>) id 1cRdZy-0000Bp-85
+	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 06:30:03 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:55570)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cRdTi-0005J9-2J; Thu, 12 Jan 2017 06:23:34 -0500
+	id 1cRdZs-00008R-L2; Thu, 12 Jan 2017 06:29:56 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1D6F140A39;
-	Thu, 12 Jan 2017 14:23:34 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id BA8D840A33;
+	Thu, 12 Jan 2017 14:29:55 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 48C74560;
-	Thu, 12 Jan 2017 14:23:33 +0300 (MSK)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1483980309-30821-1-git-send-email-peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, patches@linaro.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id E302F560;
+	Thu, 12 Jan 2017 14:29:54 +0300 (MSK)
+To: Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org
+References: <20161215110459.27985-1-ncopa@alpinelinux.org>
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <5f112063-7143-48be-461d-7ecd069fa103@msgid.tls.msk.ru>
-Date: Thu, 12 Jan 2017 14:23:33 +0300
+Message-ID: <ef305d55-5579-661b-e895-f91bd800dc55@msgid.tls.msk.ru>
+Date: Thu, 12 Jan 2017 14:29:54 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Icedove/45.5.1
 MIME-Version: 1.0
-In-Reply-To: <1483980309-30821-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <20161215110459.27985-1-ncopa@alpinelinux.org>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] hw/display/framebuffer.c: Avoid overflow
- for framebuffers > 4GB
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: fix build with musl on
+ aarch64
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,15 +46,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 11:23:44 -0000
+X-List-Received-Date: Thu, 12 Jan 2017 11:30:10 -0000
 
-09.01.2017 19:45, Peter Maydell wrote:
-> Coverity points out that calculating src_len by multiplying
-> src_width by rows could overflow. This can only happen in
-> the implausible case of a framebuffer larger than 4GB, but
-> we may as well fix it, placating Coverity. (CID1005515)
+15.12.2016 14:04, Natanael Copa wrote:
+> Use the standard uint64_t instead of internal __u64.
+> 
+> This fixes compiler error with musl libc on aarch64:
+> .../qemu-2.7.0/linux-user/host/aarch64/hostdep.h:28:5:
+> error: unknown type name '__u64'
+>      __u64 *pcreg = &uc->uc_mcontext.pc;
+>      ^~~~~
+> 
+> Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
+> ---
+>  linux-user/host/aarch64/hostdep.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/linux-user/host/aarch64/hostdep.h b/linux-user/host/aarch64/hostdep.h
+> index 64f75cef49..6fd6e36b2a 100644
+> --- a/linux-user/host/aarch64/hostdep.h
+> +++ b/linux-user/host/aarch64/hostdep.h
+> @@ -25,7 +25,7 @@ extern char safe_syscall_end[];
+>  static inline void rewind_if_in_safe_syscall(void *puc)
+>  {
+>      struct ucontext *uc = puc;
+> -    __u64 *pcreg = &uc->uc_mcontext.pc;
+> +    uint64_t *pcreg = &uc->uc_mcontext.pc;
 
-Applied to -trivial, thanks!
+Is this type available in all places where this header is
+being included (apparently these are linux-user/qemu.h and
+linux-user/safe-syscall.S, with the latter not being
+interesting. But in linux-user/qemu.h, this is the first
+file which is included..
+
+Why do we have a mix of __u64 and uint64_t ? :)
+
+Hmm.
 
 /mjt
+
+>      if (*pcreg > (uintptr_t)safe_syscall_start
+>          && *pcreg < (uintptr_t)safe_syscall_end) {
+> 
+
 
