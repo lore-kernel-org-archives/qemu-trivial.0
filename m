@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cSINH-0001r3-VX
+	id 1cSINI-0001rQ-7u
 	for mharc-qemu-trivial@gnu.org; Sat, 14 Jan 2017 02:03:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35373)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34173)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1cS9to-00036q-Ed
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:00:42 -0500
+	(envelope-from <shorne@gmail.com>) id 1cS9r2-0000e8-Ay
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 16:57:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1cS9tn-0005Hu-Eb
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:00:40 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:33788)
+	(envelope-from <shorne@gmail.com>) id 1cS9qy-0004MR-CJ
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 16:57:48 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:36764)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shorne@gmail.com>)
-	id 1cS9th-0005H1-Nt; Fri, 13 Jan 2017 17:00:33 -0500
-Received: by mail-pf0-x244.google.com with SMTP id 127so9929932pfg.0;
-	Fri, 13 Jan 2017 14:00:33 -0800 (PST)
+	(Exim 4.71) (envelope-from <shorne@gmail.com>) id 1cS9qy-0004Kd-6X
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 16:57:44 -0500
+Received: by mail-pf0-x244.google.com with SMTP id b22so9905881pfd.3
+	for <qemu-trivial@nongnu.org>; Fri, 13 Jan 2017 13:57:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id;
 	bh=5QQ9kphs1sJGQ9/hVBW7cBXU275aqNskdhbtXgg8vgo=;
-	b=VZjTE08XoLIVOMhaSd5BZVPFtqE9QLx5MPB3CnxsZ3Bie2kwlAlptkFwqXo7mQWjlm
-	mElEW8BDm1u3RWSbqfOdt+Rk3nMfqTu6RkGrepwAeX/GxlhY5H5Az0h0aUreMdvvTF3w
-	rH+RBYt60XeCcciDLFUcZrB9uWz4+NoQG7gqaSqVc9JhfS5655oY/TGDAd8tvbCeuhCJ
-	f6jLnk3mhuBZcDniMax1t05KEqOKJg1EVWuYGzxQ6I/Aba9rWcMA9MOoyeOyvgeYaC9z
-	YdwRq6KdedE9E0PKycL+bwr4G+hIZ1QT6Qs/qAnhENN4Ybn9AmBzmAc2J6T+XIuwkkDT
-	38cA==
+	b=FnPSFAuQcAKY7QtFMH6Hynar3ydj9ql9UdstWInAUH/KIvzJPC6fCpcW2S5esJAh3+
+	6y1e7FAma6r0juXTKa+7DOm62MCsfvogsaCQgGGDl42OHeQkhUBOlBDTnuxkqQshIZZG
+	Ru8Ar+/4vDbv0H397zAwGpBIzoJe5GoDiduvC+tD4Ba/JuBv34mgW1Mm0AKZMmxwJ0cB
+	Jo6J7jNnSNd8y2aXhF57Sh0JiAoafI6O+w4OXF9v3sUopJUTrjsYfcGFrMJhS4FQXEV7
+	fBWiI8+W6XgzhX0LacZlyERMfRxTEnjCI4kr8hZhIZ1e5BYURlaGx2pE4B+jCmn4fjH1
+	V6rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id;
 	bh=5QQ9kphs1sJGQ9/hVBW7cBXU275aqNskdhbtXgg8vgo=;
-	b=ba0TsCVGckHD78yAivopJ8v4sFAHWDevnV40XythGAsBDqqKf4fmaphQm/a81U1YS2
-	F7EMxjwe/VnfZY6D8bOwi9lnrVb0wqYuFNo6Vmx6SMeGFV+0Fh6Y0GaftwIpJD2CjT8B
-	ZyI2DGH1VNMNLEHrItx8OBe7dLGS54ptnwc14Ps9oV55zJwxsBIKAtxyE2sPzCLaQuqm
-	rg8ZgEz65BbeUorrgxIiI8Gc4g/qKCc2owGdPwjZAw3PRU7pjPAXsbDEm6QQO/TtCtir
-	EX39X/HbP9HrdMrVMJ3ZHDGrGWTcSOFeEJSaSf/s5leKbZITdTVSvY5e0PLMEh0gKrWu
-	hszA==
-X-Gm-Message-State: AIkVDXIUqZUUvUY6zd5G+MB+pDKZ0spn2Dk59UFvDV4toLsMwTpbhak0/5T8ejMgIw1jUQ==
-X-Received: by 10.84.195.1 with SMTP id i1mr32656408pld.84.1484344832834;
-	Fri, 13 Jan 2017 14:00:32 -0800 (PST)
+	b=nnsz7WCH52uM4t6RP0knPF0FEVOicHp7pymdqgfPm7LBIxIZXu5OeLlGfEUwMf1pPY
+	l9mzgNFEFNwiHd+p4Nskxrst3kK9rGmjW3zIhwCSWuiwSuedkxBfBhQrormeoHl/wnxh
+	brHdzsDTmEGpOREAJCuaMwXFSUUSfvJ/V4JERcnLycaqWlN6LGa6jTXHCDkprGN/Hx5R
+	7ts1PPGLXY+nebP5x1ruENVomy69iJr82r3BvmYrjAwtrxP+neoqcdHNH35arO2GLFpa
+	9j1vkI/iCF2pC+NsPihcHZbGS5vBVwLhSo165fz1VY4+raKugAHqJhrdVaOOE/jVJkJV
+	PN8g==
+X-Gm-Message-State: AIkVDXKzgR+1CZD+Wl6q3v+AYTyB3L2n7/bZyHQVyXrt8YGuT+c9FBVmpTQ0xqN7+p4cnQ==
+X-Received: by 10.98.63.210 with SMTP id z79mr25249410pfj.134.1484344662714;
+	Fri, 13 Jan 2017 13:57:42 -0800 (PST)
 Received: from localhost (z192.220-213-15.ppp.wakwak.ne.jp. [220.213.15.192])
 	by smtp.gmail.com with ESMTPSA id
-	c71sm31570485pga.22.2017.01.13.14.00.31
+	y6sm31578960pge.16.2017.01.13.13.57.41
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 13 Jan 2017 14:00:32 -0800 (PST)
+	Fri, 13 Jan 2017 13:57:42 -0800 (PST)
 From: Stafford Horne <shorne@gmail.com>
 To: Jia Liu <proljc@gmail.com>,
-	qemu-devel@nongnu.org
+	qemu-devel@nongnu.or
 Cc: Stafford Horne <shorne@gmail.com>, qemu-trivial@nongnu.org,
 	openrisc@lists.librecores.org
-Date: Sat, 14 Jan 2017 07:00:28 +0900
-Message-Id: <20170113220028.29687-1-shorne@gmail.com>
+Date: Sat, 14 Jan 2017 06:57:20 +0900
+Message-Id: <20170113215720.29598-1-shorne@gmail.com>
 X-Mailer: git-send-email 2.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400e:c00::244
-X-Mailman-Approved-At: Sat, 14 Jan 2017 02:03:39 -0500
+X-Mailman-Approved-At: Sat, 14 Jan 2017 02:03:38 -0500
 Subject: [Qemu-trivial] [PATCH] target-openrisc: Fix exception handling
  status registers
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,7 +65,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2017 22:00:42 -0000
+X-List-Received-Date: Fri, 13 Jan 2017 21:57:49 -0000
 
 I am working on testing instruction emulation patches for the linux
 kernel. During testing I found these 2 issues:
