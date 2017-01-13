@@ -1,56 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cS1F2-0002pZ-MJ
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 07:46:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34160)
+	id 1cS8mO-0007ap-Ij
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 15:48:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cS1Ez-0002n6-7i
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 07:45:58 -0500
+	(envelope-from <vilanova@ac.upc.edu>) id 1cS8mL-0007YZ-Qk
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 15:48:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cS1Ex-000126-Uh
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 07:45:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55436)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cS1Es-00010q-Pv; Fri, 13 Jan 2017 07:45:50 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9D3036A6D3;
-	Fri, 13 Jan 2017 12:45:50 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-38.ams2.redhat.com
-	[10.36.116.38])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0DCjmTp022840
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 13 Jan 2017 07:45:49 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 57B7F11386A2; Fri, 13 Jan 2017 13:45:47 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-References: <1484309555-1935-1-git-send-email-thuth@redhat.com>
-Date: Fri, 13 Jan 2017 13:45:47 +0100
-In-Reply-To: <1484309555-1935-1-git-send-email-thuth@redhat.com> (Thomas
-	Huth's message of "Fri, 13 Jan 2017 13:12:35 +0100")
-Message-ID: <87k29zruv8.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+	(envelope-from <vilanova@ac.upc.edu>) id 1cS8mI-00067w-MU
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 15:48:53 -0500
+Received: from roura.ac.upc.es ([147.83.33.10]:49722)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1cS8mI-00067U-9i; Fri, 13 Jan 2017 15:48:50 -0500
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v0DKmnm9027531;
+	Fri, 13 Jan 2017 21:48:49 +0100
+Received: from localhost (72.red-2-138-226.dynamicip.rima-tde.net
+	[2.138.226.72]) by gw-3.ac.upc.es (Postfix) with ESMTPSA id 91FEB3D2;
+	Fri, 13 Jan 2017 21:48:48 +0100 (CET)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>, Eric Blake <eblake@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-trivial@nongnu.org (open list:Trivial patches)
+Date: Fri, 13 Jan 2017 21:48:47 +0100
+Message-Id: <148434052777.31446.5910194368985949994.stgit@frigg.lan>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <148434048970.31446.17153056211582691244.stgit@frigg.lan>
+References: <148434048970.31446.17153056211582691244.stgit@frigg.lan>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 13 Jan 2017 12:45:50 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] monitor: Fix crashes
- when using HMP commands without CPU
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	v0DKmnm9027531
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
+X-Received-From: 147.83.33.10
+Subject: [Qemu-trivial] [PATCH v7 6/7] trace: [tcg,
+ trivial] Re-align generated code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,289 +51,196 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2017 12:45:59 -0000
+X-List-Received-Date: Fri, 13 Jan 2017 20:48:55 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+Last patch removed a nesting level in generated code. Re-align all code
+generated by backends to be 4-column aligned.
 
-> When running certain HMP commands ("info registers", "info cpustats",
-> "info tlb", "nmi", "memsave" or dumping virtual memory) with the "none"
-> machine, QEMU crashes with a segmentation fault. This happens because the
-> "none" machine does not have any CPUs by default, but these HMP commands
-> did not check for a valid CPU pointer yet. Add such checks now, so we get
-> an error message about the missing CPU instead.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v4:
->  - Added some more target-specifc checks (for "info tlb" for example)
->  v3:
->  - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
->  v2:
->  - Added more checks to cover "nmi" and "memsave", too
->
->  hmp.c                   |  8 +++++++-
->  monitor.c               | 42 ++++++++++++++++++++++++++++++++++--------
->  target/i386/monitor.c   | 16 +++++++++++++++-
->  target/ppc/monitor.c    |  4 ++++
->  target/sh4/monitor.c    |  5 +++++
->  target/sparc/monitor.c  |  4 ++++
->  target/xtensa/monitor.c |  4 ++++
->  7 files changed, 73 insertions(+), 10 deletions(-)
->
-> diff --git a/hmp.c b/hmp.c
-> index b869617..b1c503a 100644
-> --- a/hmp.c
-> +++ b/hmp.c
-> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
->      const char *filename = qdict_get_str(qdict, "filename");
->      uint64_t addr = qdict_get_int(qdict, "val");
->      Error *err = NULL;
-> +    int cpu_index = monitor_get_cpu_index();
->  
-> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
-> +    if (cpu_index < 0) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
-> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
->      hmp_handle_error(mon, &err);
->  }
->  
-> diff --git a/monitor.c b/monitor.c
-> index 0841d43..bf488e9 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
->  CPUState *mon_get_cpu(void)
->  {
->      if (!cur_mon->mon_cpu) {
-> +        if (!first_cpu) {
-> +            return NULL;
-> +        }
->          monitor_set_cpu(first_cpu->cpu_index);
->      }
->      cpu_synchronize_state(cur_mon->mon_cpu);
-> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
->  
->  CPUArchState *mon_get_cpu_env(void)
->  {
-> -    return mon_get_cpu()->env_ptr;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    return cs ? cs->env_ptr : NULL;
->  }
->  
->  int monitor_get_cpu_index(void)
->  {
-> -    return mon_get_cpu()->cpu_index;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
->  }
->  
->  static void hmp_info_registers(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
->  }
->  
->  static void hmp_info_jit(Monitor *mon, const QDict *qdict)
-> @@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const QDict *qdict)
->  
->  static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
->  }
->  
->  static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
-> @@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->      int l, line_size, i, max_digits, len;
->      uint8_t buf[16];
->      uint64_t v;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs && (format == 'i' || !is_physical)) {
-> +        monitor_printf(mon, "Can not dump without CPU\n");
-> +        return;
-> +    }
->  
->      if (format == 'i') {
->          int flags = 0;
-> @@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->          flags = msr_le << 16;
->          flags |= env->bfd_mach;
->  #endif
-> -        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flags);
-> +        monitor_disas(mon, cs, addr, count, is_physical, flags);
->          return;
->      }
->  
-> @@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->          if (is_physical) {
->              cpu_physical_memory_read(addr, buf, l);
->          } else {
-> -            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
-> +            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
->                  monitor_printf(mon, " Cannot access memory\n");
->                  break;
->              }
-> @@ -2186,11 +2211,12 @@ expr_error(Monitor *mon, const char *fmt, ...)
->  static int get_monitor_def(target_long *pval, const char *name)
->  {
->      const MonitorDef *md = target_monitor_defs();
-> +    CPUState *cs = mon_get_cpu();
->      void *ptr;
->      uint64_t tmp = 0;
->      int ret;
->  
-> -    if (md == NULL) {
-> +    if (cs == NULL || md == NULL) {
->          return -1;
->      }
->  
-> @@ -2217,7 +2243,7 @@ static int get_monitor_def(target_long *pval, const char *name)
->          }
->      }
->  
-> -    ret = target_get_monitor_def(mon_get_cpu(), name, &tmp);
-> +    ret = target_get_monitor_def(cs, name, &tmp);
->      if (!ret) {
->          *pval = (target_long) tmp;
->      }
-> diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-> index 468aa07..77ead60 100644
-> --- a/target/i386/monitor.c
-> +++ b/target/i386/monitor.c
-> @@ -210,6 +210,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
->  
->      env = mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->  
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
-> @@ -529,6 +533,10 @@ void hmp_info_mem(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
->  
->      env = mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->  
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+---
+ scripts/tracetool/backend/dtrace.py |    4 ++--
+ scripts/tracetool/backend/ftrace.py |   20 ++++++++++----------
+ scripts/tracetool/backend/log.py    |   19 ++++++++++---------
+ scripts/tracetool/backend/simple.py |    4 ++--
+ scripts/tracetool/backend/syslog.py |    6 +++---
+ scripts/tracetool/backend/ust.py    |    4 ++--
+ 6 files changed, 29 insertions(+), 28 deletions(-)
 
-This one
+diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/back=
+end/dtrace.py
+index 79505c6b1a..c29ffb4fa0 100644
+--- a/scripts/tracetool/backend/dtrace.py
++++ b/scripts/tracetool/backend/dtrace.py
+@@ -6,7 +6,7 @@ DTrace/SystemTAP backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -41,6 +41,6 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        QEMU_%(uppername)s(%(argnames)s);',
++    out('    QEMU_%(uppername)s(%(argnames)s);',
+         uppername=3Devent.name.upper(),
+         argnames=3D", ".join(event.args.names()))
+diff --git a/scripts/tracetool/backend/ftrace.py b/scripts/tracetool/back=
+end/ftrace.py
+index db9fe7ad57..dd0eda4441 100644
+--- a/scripts/tracetool/backend/ftrace.py
++++ b/scripts/tracetool/backend/ftrace.py
+@@ -29,17 +29,17 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        {',
+-        '            char ftrace_buf[MAX_TRACE_STRLEN];',
+-        '            int unused __attribute__ ((unused));',
+-        '            int trlen;',
+-        '            if (trace_event_get_state(%(event_id)s)) {',
+-        '                trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN=
+,',
+-        '                                 "%(name)s " %(fmt)s "\\n" %(ar=
+gnames)s);',
+-        '                trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
+-        '                unused =3D write(trace_marker_fd, ftrace_buf, t=
+rlen);',
+-        '            }',
++    out('    {',
++        '        char ftrace_buf[MAX_TRACE_STRLEN];',
++        '        int unused __attribute__ ((unused));',
++        '        int trlen;',
++        '        if (trace_event_get_state(%(event_id)s)) {',
++        '            trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN,',
++        '                             "%(name)s " %(fmt)s "\\n" %(argnam=
+es)s);',
++        '            trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
++        '            unused =3D write(trace_marker_fd, ftrace_buf, trlen=
+);',
+         '        }',
++        '    }',
+         name=3Devent.name,
+         args=3Devent.args,
+         event_id=3D"TRACE_" + event.name.upper(),
+diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend=
+/log.py
+index 4f4a4d38b1..54f0a69886 100644
+--- a/scripts/tracetool/backend/log.py
++++ b/scripts/tracetool/backend/log.py
+@@ -6,7 +6,7 @@ Stderr built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -35,14 +35,15 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            struct timeval _now;',
+-        '            gettimeofday(&_now, NULL);',
+-        '            qemu_log_mask(LOG_TRACE, "%%d@%%zd.%%06zd:%(name)s =
+" %(fmt)s "\\n",',
+-        '                          getpid(),',
+-        '                          (size_t)_now.tv_sec, (size_t)_now.tv_=
+usec',
+-        '                          %(argnames)s);',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        struct timeval _now;',
++        '        gettimeofday(&_now, NULL);',
++        '        qemu_log_mask(LOG_TRACE,',
++        '                      "%%d@%%zd.%%06zd:%(name)s " %(fmt)s "\\n"=
+,',
++        '                      getpid(),',
++        '                      (size_t)_now.tv_sec, (size_t)_now.tv_usec=
+',
++        '                      %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/back=
+end/simple.py
+index 85f61028e2..9554673cb9 100644
+--- a/scripts/tracetool/backend/simple.py
++++ b/scripts/tracetool/backend/simple.py
+@@ -6,7 +6,7 @@ Simple built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2014, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -37,7 +37,7 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        _simple_%(api)s(%(args)s);',
++    out('    _simple_%(api)s(%(args)s);',
+         api=3Devent.api(),
+         args=3D", ".join(event.args.names()))
+=20
+diff --git a/scripts/tracetool/backend/syslog.py b/scripts/tracetool/back=
+end/syslog.py
+index b8ff2790c4..1ce627f0fc 100644
+--- a/scripts/tracetool/backend/syslog.py
++++ b/scripts/tracetool/backend/syslog.py
+@@ -35,9 +35,9 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);=
+',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend=
+/ust.py
+index 4594db6128..5498950b83 100644
+--- a/scripts/tracetool/backend/ust.py
++++ b/scripts/tracetool/backend/ust.py
+@@ -6,7 +6,7 @@ LTTng User Space Tracing backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -30,6 +30,6 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        tracepoint(qemu, %(name)s%(tp_args)s);',
++    out('    tracepoint(qemu, %(name)s%(tp_args)s);',
+         name=3Devent.name,
+         tp_args=3Dargnames)
 
-   static target_long monitor_get_pc(const struct MonitorDef *md, int val)
-   {
-       CPUArchState *env = mon_get_cpu_env();
-       return env->eip + env->segs[R_CS].base;
-   }
-
-doesn't need a check because it's called only from get_monitor_def(),
-and that one checks mon_get_cpu() first.
-
-> @@ -624,7 +632,13 @@ const MonitorDef *target_monitor_defs(void)
->  
->  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
->  {
-> -    x86_cpu_dump_local_apic_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf,
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    x86_cpu_dump_local_apic_state(cs, (FILE *)mon, monitor_fprintf,
->                                    CPU_DUMP_FPU);
->  }
->  
-> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
-> index c2d0806..b8f30e9 100644
-> --- a/target/ppc/monitor.c
-> +++ b/target/ppc/monitor.c
-
-Same argument for monitor_get_ccr(), monitor_get_decr(),
-monitor_get_tbu(), monitor_get_tbl().
-
-> @@ -62,6 +62,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
->  
-> diff --git a/target/sh4/monitor.c b/target/sh4/monitor.c
-> index 426e5d4..4c7f36c 100644
-> --- a/target/sh4/monitor.c
-> +++ b/target/sh4/monitor.c
-> @@ -44,6 +44,11 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env = mon_get_cpu_env();
->      int i;
->  
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
->      monitor_printf (mon, "ITLB:\n");
->      for (i = 0 ; i < ITLB_SIZE ; i++)
->          print_tlb (mon, i, &env->itlb[i]);
-> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
-> index 7cc1b0f..f3ca524 100644
-> --- a/target/sparc/monitor.c
-> +++ b/target/sparc/monitor.c
-> @@ -32,6 +32,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
->  
-
-Same argument for monitor_get_psr(), monitor_get_reg().
-
-> diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
-> index f3fa4cd..2ee2b5b 100644
-> --- a/target/xtensa/monitor.c
-> +++ b/target/xtensa/monitor.c
-> @@ -31,5 +31,9 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
