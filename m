@@ -1,45 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cS8mW-0007fR-Uw
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 15:49:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50731)
+	id 1cSINH-0001r3-VX
+	for mharc-qemu-trivial@gnu.org; Sat, 14 Jan 2017 02:03:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35373)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cS8mR-0007cl-2r
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 15:49:02 -0500
+	(envelope-from <shorne@gmail.com>) id 1cS9to-00036q-Ed
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:00:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cS8mO-0006Cg-I7
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 15:48:59 -0500
-Received: from roura.ac.upc.es ([147.83.33.10]:49728)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1cS8mO-0006CB-4C; Fri, 13 Jan 2017 15:48:56 -0500
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v0DKmthA027537;
-	Fri, 13 Jan 2017 21:48:55 +0100
-Received: from localhost (72.red-2-138-226.dynamicip.rima-tde.net
-	[2.138.226.72]) by gw-3.ac.upc.es (Postfix) with ESMTPSA id F05323D2;
-	Fri, 13 Jan 2017 21:48:54 +0100 (CET)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <rth@twiddle.net>, Eric Blake <eblake@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org (open list:Trivial patches)
-Date: Fri, 13 Jan 2017 21:48:54 +0100
-Message-Id: <148434053405.31446.8629297059353435386.stgit@frigg.lan>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <148434048970.31446.17153056211582691244.stgit@frigg.lan>
-References: <148434048970.31446.17153056211582691244.stgit@frigg.lan>
-User-Agent: StGit/0.17.1-dirty
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	v0DKmthA027537
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
-X-Received-From: 147.83.33.10
-Subject: [Qemu-trivial] [PATCH v7 7/7] trace: [trivial] Statically enable
- all guest events
+	(envelope-from <shorne@gmail.com>) id 1cS9tn-0005Hu-Eb
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:00:40 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:33788)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <shorne@gmail.com>)
+	id 1cS9th-0005H1-Nt; Fri, 13 Jan 2017 17:00:33 -0500
+Received: by mail-pf0-x244.google.com with SMTP id 127so9929932pfg.0;
+	Fri, 13 Jan 2017 14:00:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=5QQ9kphs1sJGQ9/hVBW7cBXU275aqNskdhbtXgg8vgo=;
+	b=VZjTE08XoLIVOMhaSd5BZVPFtqE9QLx5MPB3CnxsZ3Bie2kwlAlptkFwqXo7mQWjlm
+	mElEW8BDm1u3RWSbqfOdt+Rk3nMfqTu6RkGrepwAeX/GxlhY5H5Az0h0aUreMdvvTF3w
+	rH+RBYt60XeCcciDLFUcZrB9uWz4+NoQG7gqaSqVc9JhfS5655oY/TGDAd8tvbCeuhCJ
+	f6jLnk3mhuBZcDniMax1t05KEqOKJg1EVWuYGzxQ6I/Aba9rWcMA9MOoyeOyvgeYaC9z
+	YdwRq6KdedE9E0PKycL+bwr4G+hIZ1QT6Qs/qAnhENN4Ybn9AmBzmAc2J6T+XIuwkkDT
+	38cA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=5QQ9kphs1sJGQ9/hVBW7cBXU275aqNskdhbtXgg8vgo=;
+	b=ba0TsCVGckHD78yAivopJ8v4sFAHWDevnV40XythGAsBDqqKf4fmaphQm/a81U1YS2
+	F7EMxjwe/VnfZY6D8bOwi9lnrVb0wqYuFNo6Vmx6SMeGFV+0Fh6Y0GaftwIpJD2CjT8B
+	ZyI2DGH1VNMNLEHrItx8OBe7dLGS54ptnwc14Ps9oV55zJwxsBIKAtxyE2sPzCLaQuqm
+	rg8ZgEz65BbeUorrgxIiI8Gc4g/qKCc2owGdPwjZAw3PRU7pjPAXsbDEm6QQO/TtCtir
+	EX39X/HbP9HrdMrVMJ3ZHDGrGWTcSOFeEJSaSf/s5leKbZITdTVSvY5e0PLMEh0gKrWu
+	hszA==
+X-Gm-Message-State: AIkVDXIUqZUUvUY6zd5G+MB+pDKZ0spn2Dk59UFvDV4toLsMwTpbhak0/5T8ejMgIw1jUQ==
+X-Received: by 10.84.195.1 with SMTP id i1mr32656408pld.84.1484344832834;
+	Fri, 13 Jan 2017 14:00:32 -0800 (PST)
+Received: from localhost (z192.220-213-15.ppp.wakwak.ne.jp. [220.213.15.192])
+	by smtp.gmail.com with ESMTPSA id
+	c71sm31570485pga.22.2017.01.13.14.00.31
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 13 Jan 2017 14:00:32 -0800 (PST)
+From: Stafford Horne <shorne@gmail.com>
+To: Jia Liu <proljc@gmail.com>,
+	qemu-devel@nongnu.org
+Cc: Stafford Horne <shorne@gmail.com>, qemu-trivial@nongnu.org,
+	openrisc@lists.librecores.org
+Date: Sat, 14 Jan 2017 07:00:28 +0900
+Message-Id: <20170113220028.29687-1-shorne@gmail.com>
+X-Mailer: git-send-email 2.9.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c00::244
+X-Mailman-Approved-At: Sat, 14 Jan 2017 02:03:39 -0500
+Subject: [Qemu-trivial] [PATCH] target-openrisc: Fix exception handling
+ status registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,57 +65,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2017 20:49:02 -0000
+X-List-Received-Date: Fri, 13 Jan 2017 22:00:42 -0000
 
-The optimizations of this series makes it feasible to have them
-available on all builds.
+I am working on testing instruction emulation patches for the linux
+kernel. During testing I found these 2 issues:
 
-Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+ - sets DSX (delay slot exception) but never clears it
+ - EEAR for illegal insns should point to the bad exception (as per
+   openrisc spec) but its not
+
+This patch fixes these two issues by clearing the DSX flag when not in a
+delay slot and by setting EEAR to exception PC when handling illegal
+instruction exceptions.
+
+After this patch the openrisc kernel with latest patches boots great on
+qemu and instruction emulation works.
+
+Cc: qemu-trivial@nongnu.org
+Cc: openrisc@lists.librecores.org
+Signed-off-by: Stafford Horne <shorne@gmail.com>
 ---
- trace-events |    6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/openrisc/interrupt.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/trace-events b/trace-events
-index f74e1d3d22..0a0f4d9cd6 100644
---- a/trace-events
-+++ b/trace-events
-@@ -159,7 +159,7 @@ vcpu guest_cpu_reset(void)
- #
- # Mode: user, softmmu
- # Targets: TCG(all)
--disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d",=
- "vaddr=3D0x%016"PRIx64" info=3D%d"
-+vcpu tcg guest_mem_before(TCGv vaddr, uint8_t info) "info=3D%d", "vaddr=3D=
-0x%016"PRIx64" info=3D%d"
-=20
- # @num: System call number.
- # @arg*: System call argument value.
-@@ -168,7 +168,7 @@ disable vcpu tcg guest_mem_before(TCGv vaddr, uint8_t=
- info) "info=3D%d", "vaddr=3D0x
- #
- # Mode: user
- # Targets: TCG(all)
--disable vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t ar=
-g2, uint64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t =
-arg7, uint64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0=
-x%016"PRIx64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"P=
-RIx64" arg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
-+vcpu guest_user_syscall(uint64_t num, uint64_t arg1, uint64_t arg2, uint=
-64_t arg3, uint64_t arg4, uint64_t arg5, uint64_t arg6, uint64_t arg7, ui=
-nt64_t arg8) "num=3D0x%016"PRIx64" arg1=3D0x%016"PRIx64" arg2=3D0x%016"PR=
-Ix64" arg3=3D0x%016"PRIx64" arg4=3D0x%016"PRIx64" arg5=3D0x%016"PRIx64" a=
-rg6=3D0x%016"PRIx64" arg7=3D0x%016"PRIx64" arg8=3D0x%016"PRIx64
-=20
- # @num: System call number.
- # @ret: System call result value.
-@@ -177,4 +177,4 @@ disable vcpu guest_user_syscall(uint64_t num, uint64_=
-t arg1, uint64_t arg2, uint
- #
- # Mode: user
- # Targets: TCG(all)
--disable vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0=
-x%016"PRIx64" ret=3D0x%016"PRIx64
-+vcpu guest_user_syscall_ret(uint64_t num, uint64_t ret) "num=3D0x%016"PR=
-Ix64" ret=3D0x%016"PRIx64
+diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
+index 5fe3f11..e1b0142 100644
+--- a/target/openrisc/interrupt.c
++++ b/target/openrisc/interrupt.c
+@@ -38,10 +38,17 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
+         env->flags &= ~D_FLAG;
+         env->sr |= SR_DSX;
+         env->epcr -= 4;
++    } else {
++        env->sr &= ~SR_DSX;
+     }
+     if (cs->exception_index == EXCP_SYSCALL) {
+         env->epcr += 4;
+     }
++    /* When we have an illegal instruction the error effective address
++       shall be set to the illegal instruction address.  */
++    if (cs->exception_index == EXCP_ILLEGAL) {
++        env->eear = env->pc;
++    }
+ 
+     /* For machine-state changed between user-mode and supervisor mode,
+        we need flush TLB when we enter&exit EXCP.  */
+-- 
+2.9.3
 
 
