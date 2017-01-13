@@ -1,48 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cRkOj-0005aI-EU
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jan 2017 13:46:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53521)
+	id 1cRwm2-0004Rq-7S
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 02:59:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39002)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cRkOi-0005Vs-41
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 13:46:52 -0500
+	(envelope-from <armbru@redhat.com>) id 1cRwlz-0004P9-Lr
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 02:59:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1cRkOf-0003q3-0Q
-	for qemu-trivial@nongnu.org; Thu, 12 Jan 2017 13:46:52 -0500
-Received: from roura.ac.upc.es ([147.83.33.10]:48140)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1cRkOe-0003p0-IE; Thu, 12 Jan 2017 13:46:48 -0500
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v0CIkkm8023760;
-	Thu, 12 Jan 2017 19:46:46 +0100
-Received: from localhost (72.red-2-138-226.dynamicip.rima-tde.net
-	[2.138.226.72]) by gw-3.ac.upc.es (Postfix) with ESMTPSA id 98CC87CD;
-	Thu, 12 Jan 2017 19:46:45 +0100 (CET)
-From: =?utf-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org,
-	"open list\:Trivial patches" <qemu-trivial@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Laurent Vivier <laurent@vivier.eu>
-References: <148295045448.19871.9819696634619157347.stgit@fimbulvetr.bsc.es>
-	<148295048671.19871.7373437689417502580.stgit@fimbulvetr.bsc.es>
-	<79013fd5-adad-3296-620d-aa740e53ac6c@msgid.tls.msk.ru>
-Mail-Followup-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	"open list\:Trivial patches" <qemu-trivial@nongnu.org>, Eduardo Habkost
-	<ehabkost@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, Laurent
-	Vivier <laurent@vivier.eu>
-Date: Thu, 12 Jan 2017 19:46:44 +0100
-In-Reply-To: <79013fd5-adad-3296-620d-aa740e53ac6c@msgid.tls.msk.ru> (Michael
-	Tokarev's message of "Thu, 12 Jan 2017 14:19:18 +0300")
-Message-ID: <8760lkxgiz.fsf@ac.upc.edu>
+	(envelope-from <armbru@redhat.com>) id 1cRwly-0001ub-BB
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 02:59:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57488)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1cRwlt-0001q1-ED; Fri, 13 Jan 2017 02:59:37 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7CDB14E04C;
+	Fri, 13 Jan 2017 07:59:37 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-38.ams2.redhat.com
+	[10.36.116.38])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0D7xZoB015554
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 13 Jan 2017 02:59:36 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5739A11386A2; Fri, 13 Jan 2017 08:59:34 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <1484224732-1345-1-git-send-email-thuth@redhat.com>
+	<877f609rkd.fsf@dusky.pond.sub.org>
+	<03307c8a-b802-861a-fa8c-0af78df41c8a@redhat.com>
+Date: Fri, 13 Jan 2017 08:59:34 +0100
+In-Reply-To: <03307c8a-b802-861a-fa8c-0af78df41c8a@redhat.com> (Thomas Huth's
+	message of "Thu, 12 Jan 2017 18:34:45 +0100")
+Message-ID: <87k29z4cgp.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
-X-Received-From: 147.83.33.10
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 6/7] trace: [tcg,
- trivial] Re-align generated code
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 13 Jan 2017 07:59:37 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] monitor: Fix crashes
+ when using HMP commands without CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,26 +60,170 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jan 2017 18:46:53 -0000
+X-List-Received-Date: Fri, 13 Jan 2017 07:59:45 -0000
 
-Michael Tokarev writes:
+Thomas Huth <thuth@redhat.com> writes:
 
-> 28.12.2016 21:41, Llu=C3=ADs Vilanova wrote:
->> Last patch removed a nesting level in generated code. Re-align all code
->> generated by backends to be 4-column aligned.
+> On 12.01.2017 17:22, Markus Armbruster wrote:
+>> Thomas Huth <thuth@redhat.com> writes:
+>> 
+>>> When running certain HMP commands ("info registers", "info cpustats",
+>>> "nmi", "memsave" or dumping virtual memory) with the "none" machine,
+>>> QEMU crashes with a segmentation fault. This happens because the "none"
+>>> machine does not have any CPUs by default, but these HMP commands did
+>>> not check for a valid CPU pointer yet. Add such checks now, so we get
+>>> an error message about the missing CPU instead.
+>>>
+>>> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  v3:
+>>>  - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
+>>>  v2:
+>>>  - Added more checks to cover "nmi" and "memsave", too
+>>>
+>>>  hmp.c     |  8 +++++++-
+>>>  monitor.c | 37 +++++++++++++++++++++++++++++++------
+>>>  2 files changed, 38 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/hmp.c b/hmp.c
+>>> index b869617..b1c503a 100644
+>>> --- a/hmp.c
+>>> +++ b/hmp.c
+>>> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
+>>>      const char *filename = qdict_get_str(qdict, "filename");
+>>>      uint64_t addr = qdict_get_int(qdict, "val");
+>>>      Error *err = NULL;
+>>> +    int cpu_index = monitor_get_cpu_index();
+>>>  
+>>> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
+>>> +    if (cpu_index < 0) {
+>>> +        monitor_printf(mon, "No CPU available\n");
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
+>>>      hmp_handle_error(mon, &err);
+>>>  }
+>>>  
+>>> diff --git a/monitor.c b/monitor.c
+>>> index 0841d43..17121ff 100644
+>>> --- a/monitor.c
+>>> +++ b/monitor.c
+>>> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
+>>>  CPUState *mon_get_cpu(void)
+>>>  {
+>>>      if (!cur_mon->mon_cpu) {
+>>> +        if (!first_cpu) {
+>>> +            return NULL;
+>>> +        }
+>>>          monitor_set_cpu(first_cpu->cpu_index);
+>>>      }
+>>>      cpu_synchronize_state(cur_mon->mon_cpu);
+>>> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
+>>>  
+>>>  CPUArchState *mon_get_cpu_env(void)
+>>>  {
+>>> -    return mon_get_cpu()->env_ptr;
+>>> +    CPUState *cs = mon_get_cpu();
+>>> +
+>>> +    return cs ? cs->env_ptr : NULL;
+>>>  }
+>>>  
+>>>  int monitor_get_cpu_index(void)
+>>>  {
+>>> -    return mon_get_cpu()->cpu_index;
+>>> +    CPUState *cs = mon_get_cpu();
+>>> +
+>>> +    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
+>>>  }
+>>>  
+>>>  static void hmp_info_registers(Monitor *mon, const QDict *qdict)
+>>>  {
+>>> -    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
+>>> +    CPUState *cs = mon_get_cpu();
+>>> +
+>>> +    if (!cs) {
+>>> +        monitor_printf(mon, "No CPU available\n");
+>>> +        return;
+>>> +    }
+>>> +    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
+>>>  }
+>>>  
+>>>  static void hmp_info_jit(Monitor *mon, const QDict *qdict)
+>>> @@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const QDict *qdict)
+>>>  
+>>>  static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
+>>>  {
+>>> -    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
+>>> +    CPUState *cs = mon_get_cpu();
+>>> +
+>>> +    if (!cs) {
+>>> +        monitor_printf(mon, "No CPU available\n");
+>>> +        return;
+>>> +    }
+>>> +    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
+>>>  }
+>>>  
+>>>  static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
+>>> @@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+>>>      int l, line_size, i, max_digits, len;
+>>>      uint8_t buf[16];
+>>>      uint64_t v;
+>>> +    CPUState *cs = mon_get_cpu();
+>>> +
+>>> +    if (!cs && (format == 'i' || !is_physical)) {
+>>> +        monitor_printf(mon, "Can not dump without CPU\n");
+>>> +        return;
+>>> +    }
+>> 
+>> This is basically "if (we're going to dereference cs)".  Not so nice, in
+>> particular since the dereferences are hidden inside mon_get_cpu_env()
+>> calls.  I guess it'll do.
+>> 
+>>>  
+>>>      if (format == 'i') {
+>>>          int flags = 0;
+>>> @@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+>>>          flags = msr_le << 16;
+>>>          flags |= env->bfd_mach;
+>>>  #endif
+>>> -        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flags);
+>>> +        monitor_disas(mon, cs, addr, count, is_physical, flags);
+>>>          return;
+>>>      }
+>>>  
+>>> @@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+>>>          if (is_physical) {
+>>>              cpu_physical_memory_read(addr, buf, l);
+>>>          } else {
+>>> -            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
+>>> +            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
+>>>                  monitor_printf(mon, " Cannot access memory\n");
+>>>                  break;
+>>>              }
+>> 
+>> What about get_monitor_def()?
+>> 
+>>     $ qemu-system-x86_64 --nodefaults -S -display none -M none -monitor stdio
+>>     QEMU 2.8.50 monitor - type 'help' for more information
+>>     (qemu) p $pc
+>>     Segmentation fault (core dumped)
+>
+> Oh, I saw that get_monitor_def() uses mon_get_cpu_env(), but I only
+> checked with qemu-system-m68k where "p $pc" simply prints "unknown
+> register" when you run it with the "none" machine ... that's why I
+> assumed that no fixes would be needed here.
+>
+>> Likewise, info tlb, info mem, ... 
+>
+> These seem to be target specific, too, so I think they could go into a
+> separate patch instead. If it's OK for you, I'd like to keep my current
+> patch as it is, and add these items to
+> http://qemu-project.org/BiteSizedTasks instead - since these are all
+> non-urgent problems that should be easy to fix for newcomers, too.
 
-> Llu=C3=ADs, I'm not applying these (6/7 and 7/7) to -trivial because
-> while they're trivial indeed, they aren't independent and should
-> be applied after all other patches in your series, or better,
-> together.
-
-Ok. I added the trivial tag to make it explicit, but didn't expect it to go=
- into
-the trivial branch. Should I drop the "trivial" tag in the future for cases=
- like
-this?
-
-
-Thanks,
-  Lluis
+I'm not into rejecting partial fixes to blackmail for more complete
+fixes.  But let's add a FIXME comment next to mon_get_cpu(), to record
+the issue in the source code, and not just the web site.
 
