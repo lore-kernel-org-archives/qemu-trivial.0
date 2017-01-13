@@ -1,50 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cRyU5-000080-QE
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 04:49:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58469)
+	id 1cS0BN-0007v3-Pp
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jan 2017 06:38:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cRyU0-0008Vg-5C
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 04:49:20 -0500
+	(envelope-from <thuth@redhat.com>) id 1cS0BL-0007p8-3K
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 06:38:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cRyTw-0004OR-7S
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 04:49:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55000)
+	(envelope-from <thuth@redhat.com>) id 1cS0BJ-0006sA-Ql
+	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 06:38:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44739)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cRyTn-0004Lo-Qe; Fri, 13 Jan 2017 04:49:04 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cS0BE-0006qo-Od; Fri, 13 Jan 2017 06:38:00 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E7B0248C;
-	Fri, 13 Jan 2017 09:49:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-38.ams2.redhat.com
-	[10.36.116.38])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0D9n2oG003800
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 13 Jan 2017 04:49:03 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A297F11386A2; Fri, 13 Jan 2017 10:49:00 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 02A7F3B716;
+	Fri, 13 Jan 2017 11:38:00 +0000 (UTC)
+Received: from [10.36.116.73] (ovpn-116-73.ams2.redhat.com [10.36.116.73])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0DBbu9k019808
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 13 Jan 2017 06:37:58 -0500
+To: Markus Armbruster <armbru@redhat.com>
 References: <1484224732-1345-1-git-send-email-thuth@redhat.com>
 	<877f609rkd.fsf@dusky.pond.sub.org>
 	<03307c8a-b802-861a-fa8c-0af78df41c8a@redhat.com>
 	<87k29z4cgp.fsf@dusky.pond.sub.org>
-Date: Fri, 13 Jan 2017 10:49:00 +0100
-In-Reply-To: <87k29z4cgp.fsf@dusky.pond.sub.org> (Markus Armbruster's message
-	of "Fri, 13 Jan 2017 08:59:34 +0100")
-Message-ID: <87inpjxpbn.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <13275c28-83f5-32ad-583c-311775c7d0c9@redhat.com>
+Date: Fri, 13 Jan 2017 12:37:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+In-Reply-To: <87k29z4cgp.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.30]);
-	Fri, 13 Jan 2017 09:49:03 +0000 (UTC)
+	Fri, 13 Jan 2017 11:38:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -61,15 +59,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2017 09:49:20 -0000
+X-List-Received-Date: Fri, 13 Jan 2017 11:38:08 -0000
 
-Markus Armbruster <armbru@redhat.com> writes:
-
+On 13.01.2017 08:59, Markus Armbruster wrote:
 > Thomas Huth <thuth@redhat.com> writes:
->
+> 
 >> On 12.01.2017 17:22, Markus Armbruster wrote:
 >>> Thomas Huth <thuth@redhat.com> writes:
->>> 
+>>>
 >>>> When running certain HMP commands ("info registers", "info cpustats",
 >>>> "nmi", "memsave" or dumping virtual memory) with the "none" machine,
 >>>> QEMU crashes with a segmentation fault. This happens because the "none"
@@ -179,11 +176,11 @@ Markus Armbruster <armbru@redhat.com> writes:
 >>>> +        monitor_printf(mon, "Can not dump without CPU\n");
 >>>> +        return;
 >>>> +    }
->>> 
+>>>
 >>> This is basically "if (we're going to dereference cs)".  Not so nice, in
 >>> particular since the dereferences are hidden inside mon_get_cpu_env()
 >>> calls.  I guess it'll do.
->>> 
+>>>
 >>>>  
 >>>>      if (format == 'i') {
 >>>>          int flags = 0;
@@ -205,9 +202,9 @@ Markus Armbruster <armbru@redhat.com> writes:
 >>>>                  monitor_printf(mon, " Cannot access memory\n");
 >>>>                  break;
 >>>>              }
->>> 
+>>>
 >>> What about get_monitor_def()?
->>> 
+>>>
 >>>     $ qemu-system-x86_64 --nodefaults -S -display none -M none -monitor stdio
 >>>     QEMU 2.8.50 monitor - type 'help' for more information
 >>>     (qemu) p $pc
@@ -225,11 +222,15 @@ Markus Armbruster <armbru@redhat.com> writes:
 >> patch as it is, and add these items to
 >> http://qemu-project.org/BiteSizedTasks instead - since these are all
 >> non-urgent problems that should be easy to fix for newcomers, too.
->
+> 
 > I'm not into rejecting partial fixes to blackmail for more complete
 > fixes.  But let's add a FIXME comment next to mon_get_cpu(), to record
 > the issue in the source code, and not just the web site.
 
-Forgot to say that preferably with a FIXME
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Hmm, I just changed my mind. Before I respin the patch with a FIXME
+comment + update the website, I think it's faster if I just add those
+missing checks directly. ... so I'll send a v4 with those checks added...
+
+ Thomas
+
 
