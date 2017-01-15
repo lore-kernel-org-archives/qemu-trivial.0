@@ -1,64 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cSINK-0001t3-4f
-	for mharc-qemu-trivial@gnu.org; Sat, 14 Jan 2017 02:03:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36150)
+	id 1cSuP0-0004si-1P
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Jan 2017 18:39:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1cS9w3-0004wI-CC
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:03:00 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1cSuOx-0004r5-9R
+	for qemu-trivial@nongnu.org; Sun, 15 Jan 2017 18:39:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shorne@gmail.com>) id 1cS9vz-0005jU-Ej
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:02:59 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:36552)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shorne@gmail.com>) id 1cS9vz-0005jQ-8B
-	for qemu-trivial@nongnu.org; Fri, 13 Jan 2017 17:02:55 -0500
-Received: by mail-pf0-x241.google.com with SMTP id b22so9921317pfd.3
-	for <qemu-trivial@nongnu.org>; Fri, 13 Jan 2017 14:02:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=atw1PLBdPWGFW7lU9iWr2mj5g4dM++vzbO6oP0qBdTE=;
-	b=hzF527hAq0cI6In14nVLeKjJgKS6yatt0ZnxCuTkzP29VYppC67kPm7D55c3n43hVV
-	8NfokvwX5jm71RpxSxwXz2U/r5oJH21CHt8zS5ZzLrigv99wzcA981BQ71EvRkYQJ8EM
-	wIV3XmMsMf66tCcJLl6QODDnnCIMiBJG/fmR0sYKxc3Kz74YMKqoXVyiKkNR4Sqpjk/7
-	vMmb5x6XJxOX32FaNT0B8im2+//1U7zdILEJy0ROpbATyBBcNfs463FkT/8zrW3wh+RV
-	DBSKMMf9l32L7oGRqdXpJugN5o1l1XfTVgthJKDjigwZXlt22yUMrWrRM8gm9HCOOx6Z
-	3EWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=atw1PLBdPWGFW7lU9iWr2mj5g4dM++vzbO6oP0qBdTE=;
-	b=bUC+KNYsUNNbmAnBYNEqRtvBn12xbLDO9VGnoLKkyDOng8+lcz/S+xkmN3Wx1eB+qN
-	gKnI+m/m+7hDZdQXrvCpG6337PBI/r3Bp4bVzJPOrXt1Qp7xQUx5R3klsLyJzf6BL6cf
-	GzRs/79tuHTmDBO4i0oqzYIxr8J1h7RfjB+yH+VOf4nbxLAYT6S/8vcq16P/zOxJtGnT
-	nx0WbTfuV6boIfTxXXllz2tFHBqa+d6rvnv5noxJTwlHtBrOvEVy/aPVNmsuKG91RQrV
-	jC9F7OZjgtmKrxXOJDcXKdtB6cjjtgwJj5Mpla3d+ndbI4J9GS1YwbyDL1XE+x79nhmV
-	bAXA==
-X-Gm-Message-State: AIkVDXLT/4p6+PPknvvgpJ0qhzcvhGOVXW6O9+wOs8EhMfqEYpO4Khi5O8AyXvZGb9MKcA==
-X-Received: by 10.84.225.133 with SMTP id u5mr32188046plj.76.1484344974174;
-	Fri, 13 Jan 2017 14:02:54 -0800 (PST)
-Received: from localhost (z192.220-213-15.ppp.wakwak.ne.jp. [220.213.15.192])
-	by smtp.gmail.com with ESMTPSA id
-	66sm31395471pfx.29.2017.01.13.14.02.53
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 13 Jan 2017 14:02:53 -0800 (PST)
-Date: Sat, 14 Jan 2017 07:02:52 +0900
-From: Stafford Horne <shorne@gmail.com>
-To: Jia Liu <proljc@gmail.com>
-Cc: qemu-trivial@nongnu.org, openrisc@lists.librecores.org
-Message-ID: <20170113220252.GE25986@lianli.shorne-pla.net>
-References: <20170113215720.29598-1-shorne@gmail.com>
+	(envelope-from <dgibson@ozlabs.org>) id 1cSuOv-00012v-Lt
+	for qemu-trivial@nongnu.org; Sun, 15 Jan 2017 18:39:55 -0500
+Received: from ozlabs.org ([103.22.144.67]:52641)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1cSuOp-0000uy-I2; Sun, 15 Jan 2017 18:39:48 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3v1tBL04mMz9t15; Mon, 16 Jan 2017 10:39:37 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1484523578;
+	bh=WvF2X/DHUBJuZ8cNuu4mpFIJPvcO1xNE/aMQtVqDfTw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bPusR0TnOhTV78wQfhIRkhMXn2/EOyAQ0gVoaBpHBWbAgElvwtmiB1T/R06RpEiBj
+	Hq1XSoX8YtXmcDxb4wrf66KZjNTcO1a2/XDewlB3SpO9Qeo0oqSoBHgmSstr7klr2k
+	hZbJMGvx/im1iDWEOkihsG0o5cM3TWGTgTSe1twE=
+Date: Sun, 15 Jan 2017 20:15:56 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
+Message-ID: <20170115091556.GA14297@umbus>
+References: <1484309555-1935-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0OAP2g/MAC+5xKAE"
 Content-Disposition: inline
-In-Reply-To: <20170113215720.29598-1-shorne@gmail.com>
+In-Reply-To: <1484309555-1935-1-git-send-email-thuth@redhat.com>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-X-Mailman-Approved-At: Sat, 14 Jan 2017 02:03:41 -0500
-Subject: Re: [Qemu-trivial] [PATCH] target-openrisc: Fix exception handling
- status registers
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH v4] monitor: Fix crashes when using HMP
+ commands without CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,62 +54,317 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jan 2017 22:03:00 -0000
+X-List-Received-Date: Sun, 15 Jan 2017 23:39:56 -0000
 
-Hello,
 
-Sorry for the duplicate. There was an issue with my copy to qemu-devel
-group.  Resent to everyone with proper cc to qemu-devel.
+--0OAP2g/MAC+5xKAE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Please ignore this one.
+On Fri, Jan 13, 2017 at 01:12:35PM +0100, Thomas Huth wrote:
+> When running certain HMP commands ("info registers", "info cpustats",
+> "info tlb", "nmi", "memsave" or dumping virtual memory) with the "none"
+> machine, QEMU crashes with a segmentation fault. This happens because the
+> "none" machine does not have any CPUs by default, but these HMP commands
+> did not check for a valid CPU pointer yet. Add such checks now, so we get
+> an error message about the missing CPU instead.
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
--Stafford
+ppc portion
 
-On Sat, Jan 14, 2017 at 06:57:20AM +0900, Stafford Horne wrote:
-> I am working on testing instruction emulation patches for the linux
-> kernel. During testing I found these 2 issues:
-> 
->  - sets DSX (delay slot exception) but never clears it
->  - EEAR for illegal insns should point to the bad exception (as per
->    openrisc spec) but its not
-> 
-> This patch fixes these two issues by clearing the DSX flag when not in a
-> delay slot and by setting EEAR to exception PC when handling illegal
-> instruction exceptions.
-> 
-> After this patch the openrisc kernel with latest patches boots great on
-> qemu and instruction emulation works.
-> 
-> Cc: qemu-trivial@nongnu.org
-> Cc: openrisc@lists.librecores.org
-> Signed-off-by: Stafford Horne <shorne@gmail.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  target/openrisc/interrupt.c | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
-> index 5fe3f11..e1b0142 100644
-> --- a/target/openrisc/interrupt.c
-> +++ b/target/openrisc/interrupt.c
-> @@ -38,10 +38,17 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
->          env->flags &= ~D_FLAG;
->          env->sr |= SR_DSX;
->          env->epcr -= 4;
-> +    } else {
-> +        env->sr &= ~SR_DSX;
->      }
->      if (cs->exception_index == EXCP_SYSCALL) {
->          env->epcr += 4;
->      }
-> +    /* When we have an illegal instruction the error effective address
-> +       shall be set to the illegal instruction address.  */
-> +    if (cs->exception_index == EXCP_ILLEGAL) {
-> +        env->eear = env->pc;
+>  v4:
+>  - Added some more target-specifc checks (for "info tlb" for example)
+>  v3:
+>  - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
+>  v2:
+>  - Added more checks to cover "nmi" and "memsave", too
+>=20
+>  hmp.c                   |  8 +++++++-
+>  monitor.c               | 42 ++++++++++++++++++++++++++++++++++--------
+>  target/i386/monitor.c   | 16 +++++++++++++++-
+>  target/ppc/monitor.c    |  4 ++++
+>  target/sh4/monitor.c    |  5 +++++
+>  target/sparc/monitor.c  |  4 ++++
+>  target/xtensa/monitor.c |  4 ++++
+>  7 files changed, 73 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/hmp.c b/hmp.c
+> index b869617..b1c503a 100644
+> --- a/hmp.c
+> +++ b/hmp.c
+> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
+>      const char *filename =3D qdict_get_str(qdict, "filename");
+>      uint64_t addr =3D qdict_get_int(qdict, "val");
+>      Error *err =3D NULL;
+> +    int cpu_index =3D monitor_get_cpu_index();
+> =20
+> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &er=
+r);
+> +    if (cpu_index < 0) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
 > +    }
->  
->      /* For machine-state changed between user-mode and supervisor mode,
->         we need flush TLB when we enter&exit EXCP.  */
-> -- 
-> 2.9.3
-> 
+> +
+> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
+>      hmp_handle_error(mon, &err);
+>  }
+> =20
+> diff --git a/monitor.c b/monitor.c
+> index 0841d43..bf488e9 100644
+> --- a/monitor.c
+> +++ b/monitor.c
+> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
+>  CPUState *mon_get_cpu(void)
+>  {
+>      if (!cur_mon->mon_cpu) {
+> +        if (!first_cpu) {
+> +            return NULL;
+> +        }
+>          monitor_set_cpu(first_cpu->cpu_index);
+>      }
+>      cpu_synchronize_state(cur_mon->mon_cpu);
+> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
+> =20
+>  CPUArchState *mon_get_cpu_env(void)
+>  {
+> -    return mon_get_cpu()->env_ptr;
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    return cs ? cs->env_ptr : NULL;
+>  }
+> =20
+>  int monitor_get_cpu_index(void)
+>  {
+> -    return mon_get_cpu()->cpu_index;
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
+>  }
+> =20
+>  static void hmp_info_registers(Monitor *mon, const QDict *qdict)
+>  {
+> -    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP=
+_FPU);
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    if (!cs) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> +    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
+>  }
+> =20
+>  static void hmp_info_jit(Monitor *mon, const QDict *qdict)
+> @@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const Q=
+Dict *qdict)
+> =20
+>  static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
+>  {
+> -    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    if (!cs) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> +    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
+>  }
+> =20
+>  static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
+> @@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, i=
+nt format, int wsize,
+>      int l, line_size, i, max_digits, len;
+>      uint8_t buf[16];
+>      uint64_t v;
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    if (!cs && (format =3D=3D 'i' || !is_physical)) {
+> +        monitor_printf(mon, "Can not dump without CPU\n");
+> +        return;
+> +    }
+> =20
+>      if (format =3D=3D 'i') {
+>          int flags =3D 0;
+> @@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, in=
+t format, int wsize,
+>          flags =3D msr_le << 16;
+>          flags |=3D env->bfd_mach;
+>  #endif
+> -        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flag=
+s);
+> +        monitor_disas(mon, cs, addr, count, is_physical, flags);
+>          return;
+>      }
+> =20
+> @@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, in=
+t format, int wsize,
+>          if (is_physical) {
+>              cpu_physical_memory_read(addr, buf, l);
+>          } else {
+> -            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0)=
+ {
+> +            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
+>                  monitor_printf(mon, " Cannot access memory\n");
+>                  break;
+>              }
+> @@ -2186,11 +2211,12 @@ expr_error(Monitor *mon, const char *fmt, ...)
+>  static int get_monitor_def(target_long *pval, const char *name)
+>  {
+>      const MonitorDef *md =3D target_monitor_defs();
+> +    CPUState *cs =3D mon_get_cpu();
+>      void *ptr;
+>      uint64_t tmp =3D 0;
+>      int ret;
+> =20
+> -    if (md =3D=3D NULL) {
+> +    if (cs =3D=3D NULL || md =3D=3D NULL) {
+>          return -1;
+>      }
+> =20
+> @@ -2217,7 +2243,7 @@ static int get_monitor_def(target_long *pval, const=
+ char *name)
+>          }
+>      }
+> =20
+> -    ret =3D target_get_monitor_def(mon_get_cpu(), name, &tmp);
+> +    ret =3D target_get_monitor_def(cs, name, &tmp);
+>      if (!ret) {
+>          *pval =3D (target_long) tmp;
+>      }
+> diff --git a/target/i386/monitor.c b/target/i386/monitor.c
+> index 468aa07..77ead60 100644
+> --- a/target/i386/monitor.c
+> +++ b/target/i386/monitor.c
+> @@ -210,6 +210,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+>      CPUArchState *env;
+> =20
+>      env =3D mon_get_cpu_env();
+> +    if (!env) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> =20
+>      if (!(env->cr[0] & CR0_PG_MASK)) {
+>          monitor_printf(mon, "PG disabled\n");
+> @@ -529,6 +533,10 @@ void hmp_info_mem(Monitor *mon, const QDict *qdict)
+>      CPUArchState *env;
+> =20
+>      env =3D mon_get_cpu_env();
+> +    if (!env) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> =20
+>      if (!(env->cr[0] & CR0_PG_MASK)) {
+>          monitor_printf(mon, "PG disabled\n");
+> @@ -624,7 +632,13 @@ const MonitorDef *target_monitor_defs(void)
+> =20
+>  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
+>  {
+> -    x86_cpu_dump_local_apic_state(mon_get_cpu(), (FILE *)mon, monitor_fp=
+rintf,
+> +    CPUState *cs =3D mon_get_cpu();
+> +
+> +    if (!cs) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> +    x86_cpu_dump_local_apic_state(cs, (FILE *)mon, monitor_fprintf,
+>                                    CPU_DUMP_FPU);
+>  }
+> =20
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index c2d0806..b8f30e9 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -62,6 +62,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+>  {
+>      CPUArchState *env1 =3D mon_get_cpu_env();
+> =20
+> +    if (!env1) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+>      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
+>  }
+> =20
+> diff --git a/target/sh4/monitor.c b/target/sh4/monitor.c
+> index 426e5d4..4c7f36c 100644
+> --- a/target/sh4/monitor.c
+> +++ b/target/sh4/monitor.c
+> @@ -44,6 +44,11 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+>      CPUArchState *env =3D mon_get_cpu_env();
+>      int i;
+> =20
+> +    if (!env) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+> +
+>      monitor_printf (mon, "ITLB:\n");
+>      for (i =3D 0 ; i < ITLB_SIZE ; i++)
+>          print_tlb (mon, i, &env->itlb[i]);
+> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
+> index 7cc1b0f..f3ca524 100644
+> --- a/target/sparc/monitor.c
+> +++ b/target/sparc/monitor.c
+> @@ -32,6 +32,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+>  {
+>      CPUArchState *env1 =3D mon_get_cpu_env();
+> =20
+> +    if (!env1) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+>      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
+>  }
+> =20
+> diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
+> index f3fa4cd..2ee2b5b 100644
+> --- a/target/xtensa/monitor.c
+> +++ b/target/xtensa/monitor.c
+> @@ -31,5 +31,9 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
+>  {
+>      CPUArchState *env1 =3D mon_get_cpu_env();
+> =20
+> +    if (!env1) {
+> +        monitor_printf(mon, "No CPU available\n");
+> +        return;
+> +    }
+>      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
+>  }
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--0OAP2g/MAC+5xKAE
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJYez3KAAoJEGw4ysog2bOS7fUP/iigNHCcNK+Crpal9hEvuest
+urD8L3xXAhUOmn7Odi8i8ReZvSmmeJDnNUmmTGxcd/tHGg9Si75u1CwEec2LktO5
+5CnErfVuA+9ZLmjtuD8p7ui4iMtoMQ/xzkGVyePmTyO5mpV5tgSipugSlppN5Nty
+CLOj4HOnyXgYz9eugxvFm85xcIIxO3lFJqnMuNUcLD8ZkTQv+cdxsWZi6aKCiv1S
+TdgUCvBqKcxtcd1fB4wm5eKarHWZrN0thRmbn8V98Ec7cEzMZc695w0/vQaqmZMH
+QSo75X7th8utmnVpyFKA9ST3EqhBSVr3ItdpYnm6w2X6qXNq2b8d/0QGtav6oMvJ
+hK561scZMySwSZToBuuK0+SUi7MdnLMirQ6PCq95BNoxyNQIqkseOHrobnqk6c6T
+YZy9CQn/0Bmpfji2kZcIKOAb9ybwGLFjtxOmqSLGOZGCbNhYKYhvrXaBtaZ4s4uj
+56KJc6wt0cNw0KZsWEW7ugiT9+iXin7rMcsck5l/LykfhcWzQU70mPgnrTKn9Rht
+Bcd3N1D58fz0gwH23mmIvTtfYp4yqnetD1STSZbmtL1GErR4f4T4qomLYIscchXE
+/owmt1rDnECPDB4x/Tn2ryfXe3NAbwN3g0M/89Cvcfb4FaFi0FLl/0nUhFTedZar
+qewFfjVJT+nb+7ojuuZH
+=QkvK
+-----END PGP SIGNATURE-----
+
+--0OAP2g/MAC+5xKAE--
 
