@@ -1,48 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cSuP0-0004si-1P
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Jan 2017 18:39:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52990)
+	id 1cT6NG-0002RQ-J8
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jan 2017 07:26:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53326)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1cSuOx-0004r5-9R
-	for qemu-trivial@nongnu.org; Sun, 15 Jan 2017 18:39:56 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cT6ND-0002Pz-Nf
+	for qemu-trivial@nongnu.org; Mon, 16 Jan 2017 07:26:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1cSuOv-00012v-Lt
-	for qemu-trivial@nongnu.org; Sun, 15 Jan 2017 18:39:55 -0500
-Received: from ozlabs.org ([103.22.144.67]:52641)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1cSuOp-0000uy-I2; Sun, 15 Jan 2017 18:39:48 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3v1tBL04mMz9t15; Mon, 16 Jan 2017 10:39:37 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1484523578;
-	bh=WvF2X/DHUBJuZ8cNuu4mpFIJPvcO1xNE/aMQtVqDfTw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bPusR0TnOhTV78wQfhIRkhMXn2/EOyAQ0gVoaBpHBWbAgElvwtmiB1T/R06RpEiBj
-	Hq1XSoX8YtXmcDxb4wrf66KZjNTcO1a2/XDewlB3SpO9Qeo0oqSoBHgmSstr7klr2k
-	hZbJMGvx/im1iDWEOkihsG0o5cM3TWGTgTSe1twE=
-Date: Sun, 15 Jan 2017 20:15:56 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Message-ID: <20170115091556.GA14297@umbus>
-References: <1484309555-1935-1-git-send-email-thuth@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cT6N8-0003sh-V5
+	for qemu-trivial@nongnu.org; Mon, 16 Jan 2017 07:26:55 -0500
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35160)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1cT6N8-0003s8-MR; Mon, 16 Jan 2017 07:26:50 -0500
+Received: by mail-lf0-x241.google.com with SMTP id v186so12408262lfa.2;
+	Mon, 16 Jan 2017 04:26:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=pmJM5IQEr+q3fkI6GoXuocnGqsbu4AHGtowkqyZt4m0=;
+	b=eprLEEcUrqF0Ce0nZlN6fQ4esnsA11L1gf7sIy2fik2kOi4ws216ddpZDOkQxhkhXn
+	JypsnEjGZAtbnIaFbFVzSXd006IB2gr9gEJinEIk43Qkp0f8+/AqdBB1ORLF6e00AYhC
+	biZ+ebTn7P6Sik82fGhgehAU67o+6c3cDY0ETyJh7K/uQyWB95VbTrc8Vvmod0nnvRYY
+	NlX+kYTDcRfyeEYkGT6Kj6d4fKUazb4TlHJTyBauniNeyzGuR3huBCcKc9R/rBmSTiqx
+	5YHp1XorIjHkiPHUSXoZrLw2CVvdpOYedF8lTB2X75NVfDruIwHM6X5BdOfAoa+0v1cK
+	LI+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=pmJM5IQEr+q3fkI6GoXuocnGqsbu4AHGtowkqyZt4m0=;
+	b=tQ/RcI0gSn3BI+TAmzZdXj6WfY1d7StFO48xVbiX7Yha+F5kLTRT99zAkiVBmewywj
+	Zc7c0TDgzLnnaj/CAlyymrd6uaB89oUkHOvZMyf50xeuOtToH0sDsa39L49SxgStC3g8
+	Df2kdGbI9GF+Qdvv7xzgYLnem56dLiXd8Pa0mLeivZfF6uwmyeFzJacruG81sIkbH/mq
+	UH+Rr/mMP+YBbTmk2ieV4Q5swvoLBoVSy6Aj96tBRz0145COjeN2xRNPp7L1Y9N9Dpfv
+	8EzvuLbJu1Bt7i5F/E831Pq/1a5rx2c7wJ4b6cOi6iekuwNvbOCambUqslBjSNWwl6K9
+	OI2w==
+X-Gm-Message-State: AIkVDXKymyRYqLixrePb+wvuzYbrIRLeGOHq+JYFqUdkIqfdXgc2C+4x9xQDFw78UH33UA==
+X-Received: by 10.25.158.147 with SMTP id h141mr4533363lfe.160.1484569609364; 
+	Mon, 16 Jan 2017 04:26:49 -0800 (PST)
+Received: from [192.168.10.165] (94-39-158-71.adsl-ull.clienti.tiscali.it.
+	[94.39.158.71]) by smtp.googlemail.com with ESMTPSA id
+	u12sm7132056lja.19.2017.01.16.04.26.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 16 Jan 2017 04:26:48 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Samuel Thibault <samuel.thibault@gnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Jason Wang <jasowang@redhat.com>
+References: <20170115203014.GA12068@var.home>
+Cc: qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <54d064db-076e-b3cc-f151-3c4e74163121@redhat.com>
+Date: Mon, 16 Jan 2017 13:26:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="0OAP2g/MAC+5xKAE"
-Content-Disposition: inline
-In-Reply-To: <1484309555-1935-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20170115203014.GA12068@var.home>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH v4] monitor: Fix crashes when using HMP
- commands without CPU
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-trivial] [PATCH] Drop duplicate display option
+ documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,317 +74,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Jan 2017 23:39:56 -0000
+X-List-Received-Date: Mon, 16 Jan 2017 12:26:57 -0000
 
+Cc: qemu-trivial@nongnu.org
 
---0OAP2g/MAC+5xKAE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Jan 13, 2017 at 01:12:35PM +0100, Thomas Huth wrote:
-> When running certain HMP commands ("info registers", "info cpustats",
-> "info tlb", "nmi", "memsave" or dumping virtual memory) with the "none"
-> machine, QEMU crashes with a segmentation fault. This happens because the
-> "none" machine does not have any CPUs by default, but these HMP commands
-> did not check for a valid CPU pointer yet. Add such checks now, so we get
-> an error message about the missing CPU instead.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-ppc portion
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  v4:
->  - Added some more target-specifc checks (for "info tlb" for example)
->  v3:
->  - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
->  v2:
->  - Added more checks to cover "nmi" and "memsave", too
->=20
->  hmp.c                   |  8 +++++++-
->  monitor.c               | 42 ++++++++++++++++++++++++++++++++++--------
->  target/i386/monitor.c   | 16 +++++++++++++++-
->  target/ppc/monitor.c    |  4 ++++
->  target/sh4/monitor.c    |  5 +++++
->  target/sparc/monitor.c  |  4 ++++
->  target/xtensa/monitor.c |  4 ++++
->  7 files changed, 73 insertions(+), 10 deletions(-)
->=20
-> diff --git a/hmp.c b/hmp.c
-> index b869617..b1c503a 100644
-> --- a/hmp.c
-> +++ b/hmp.c
-> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
->      const char *filename =3D qdict_get_str(qdict, "filename");
->      uint64_t addr =3D qdict_get_int(qdict, "val");
->      Error *err =3D NULL;
-> +    int cpu_index =3D monitor_get_cpu_index();
-> =20
-> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &er=
-r);
-> +    if (cpu_index < 0) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
-> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
->      hmp_handle_error(mon, &err);
->  }
-> =20
-> diff --git a/monitor.c b/monitor.c
-> index 0841d43..bf488e9 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
->  CPUState *mon_get_cpu(void)
->  {
->      if (!cur_mon->mon_cpu) {
-> +        if (!first_cpu) {
-> +            return NULL;
-> +        }
->          monitor_set_cpu(first_cpu->cpu_index);
->      }
->      cpu_synchronize_state(cur_mon->mon_cpu);
-> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
-> =20
->  CPUArchState *mon_get_cpu_env(void)
->  {
-> -    return mon_get_cpu()->env_ptr;
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    return cs ? cs->env_ptr : NULL;
->  }
-> =20
->  int monitor_get_cpu_index(void)
->  {
-> -    return mon_get_cpu()->cpu_index;
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
->  }
-> =20
->  static void hmp_info_registers(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP=
-_FPU);
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
->  }
-> =20
->  static void hmp_info_jit(Monitor *mon, const QDict *qdict)
-> @@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const Q=
-Dict *qdict)
-> =20
->  static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
->  }
-> =20
->  static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
-> @@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, i=
-nt format, int wsize,
->      int l, line_size, i, max_digits, len;
->      uint8_t buf[16];
->      uint64_t v;
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    if (!cs && (format =3D=3D 'i' || !is_physical)) {
-> +        monitor_printf(mon, "Can not dump without CPU\n");
-> +        return;
-> +    }
-> =20
->      if (format =3D=3D 'i') {
->          int flags =3D 0;
-> @@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, in=
-t format, int wsize,
->          flags =3D msr_le << 16;
->          flags |=3D env->bfd_mach;
->  #endif
-> -        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flag=
-s);
-> +        monitor_disas(mon, cs, addr, count, is_physical, flags);
->          return;
->      }
-> =20
-> @@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, in=
-t format, int wsize,
->          if (is_physical) {
->              cpu_physical_memory_read(addr, buf, l);
->          } else {
-> -            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0)=
- {
-> +            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
->                  monitor_printf(mon, " Cannot access memory\n");
->                  break;
->              }
-> @@ -2186,11 +2211,12 @@ expr_error(Monitor *mon, const char *fmt, ...)
->  static int get_monitor_def(target_long *pval, const char *name)
->  {
->      const MonitorDef *md =3D target_monitor_defs();
-> +    CPUState *cs =3D mon_get_cpu();
->      void *ptr;
->      uint64_t tmp =3D 0;
->      int ret;
-> =20
-> -    if (md =3D=3D NULL) {
-> +    if (cs =3D=3D NULL || md =3D=3D NULL) {
->          return -1;
->      }
-> =20
-> @@ -2217,7 +2243,7 @@ static int get_monitor_def(target_long *pval, const=
- char *name)
->          }
->      }
-> =20
-> -    ret =3D target_get_monitor_def(mon_get_cpu(), name, &tmp);
-> +    ret =3D target_get_monitor_def(cs, name, &tmp);
->      if (!ret) {
->          *pval =3D (target_long) tmp;
->      }
-> diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-> index 468aa07..77ead60 100644
-> --- a/target/i386/monitor.c
-> +++ b/target/i386/monitor.c
-> @@ -210,6 +210,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
-> =20
->      env =3D mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> =20
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
-> @@ -529,6 +533,10 @@ void hmp_info_mem(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
-> =20
->      env =3D mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> =20
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
-> @@ -624,7 +632,13 @@ const MonitorDef *target_monitor_defs(void)
-> =20
->  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
->  {
-> -    x86_cpu_dump_local_apic_state(mon_get_cpu(), (FILE *)mon, monitor_fp=
-rintf,
-> +    CPUState *cs =3D mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    x86_cpu_dump_local_apic_state(cs, (FILE *)mon, monitor_fprintf,
->                                    CPU_DUMP_FPU);
->  }
-> =20
-> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
-> index c2d0806..b8f30e9 100644
-> --- a/target/ppc/monitor.c
-> +++ b/target/ppc/monitor.c
-> @@ -62,6 +62,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 =3D mon_get_cpu_env();
-> =20
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
-> =20
-> diff --git a/target/sh4/monitor.c b/target/sh4/monitor.c
-> index 426e5d4..4c7f36c 100644
-> --- a/target/sh4/monitor.c
-> +++ b/target/sh4/monitor.c
-> @@ -44,6 +44,11 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env =3D mon_get_cpu_env();
->      int i;
-> =20
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
->      monitor_printf (mon, "ITLB:\n");
->      for (i =3D 0 ; i < ITLB_SIZE ; i++)
->          print_tlb (mon, i, &env->itlb[i]);
-> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
-> index 7cc1b0f..f3ca524 100644
-> --- a/target/sparc/monitor.c
-> +++ b/target/sparc/monitor.c
-> @@ -32,6 +32,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 =3D mon_get_cpu_env();
-> =20
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
-> =20
-> diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
-> index f3fa4cd..2ee2b5b 100644
-> --- a/target/xtensa/monitor.c
-> +++ b/target/xtensa/monitor.c
-> @@ -31,5 +31,9 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 =3D mon_get_cpu_env();
-> =20
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---0OAP2g/MAC+5xKAE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJYez3KAAoJEGw4ysog2bOS7fUP/iigNHCcNK+Crpal9hEvuest
-urD8L3xXAhUOmn7Odi8i8ReZvSmmeJDnNUmmTGxcd/tHGg9Si75u1CwEec2LktO5
-5CnErfVuA+9ZLmjtuD8p7ui4iMtoMQ/xzkGVyePmTyO5mpV5tgSipugSlppN5Nty
-CLOj4HOnyXgYz9eugxvFm85xcIIxO3lFJqnMuNUcLD8ZkTQv+cdxsWZi6aKCiv1S
-TdgUCvBqKcxtcd1fB4wm5eKarHWZrN0thRmbn8V98Ec7cEzMZc695w0/vQaqmZMH
-QSo75X7th8utmnVpyFKA9ST3EqhBSVr3ItdpYnm6w2X6qXNq2b8d/0QGtav6oMvJ
-hK561scZMySwSZToBuuK0+SUi7MdnLMirQ6PCq95BNoxyNQIqkseOHrobnqk6c6T
-YZy9CQn/0Bmpfji2kZcIKOAb9ybwGLFjtxOmqSLGOZGCbNhYKYhvrXaBtaZ4s4uj
-56KJc6wt0cNw0KZsWEW7ugiT9+iXin7rMcsck5l/LykfhcWzQU70mPgnrTKn9Rht
-Bcd3N1D58fz0gwH23mmIvTtfYp4yqnetD1STSZbmtL1GErR4f4T4qomLYIscchXE
-/owmt1rDnECPDB4x/Tn2ryfXe3NAbwN3g0M/89Cvcfb4FaFi0FLl/0nUhFTedZar
-qewFfjVJT+nb+7ojuuZH
-=QkvK
------END PGP SIGNATURE-----
-
---0OAP2g/MAC+5xKAE--
+On 15/01/2017 21:30, Samuel Thibault wrote:
+> The curses and none possibilities are already documented on a separate line,
+> so documenting it on the sdl line was both unneeded and confusing.
+> 
+> Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index c534a2f7f9..9c81d3752d 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -927,7 +927,7 @@ ETEXI
+>  
+>  DEF("display", HAS_ARG, QEMU_OPTION_display,
+>      "-display sdl[,frame=on|off][,alt_grab=on|off][,ctrl_grab=on|off]\n"
+> -    "            [,window_close=on|off][,gl=on|off]|curses|none|\n"
+> +    "            [,window_close=on|off][,gl=on|off]\n"
+>      "-display gtk[,grab_on_hover=on|off][,gl=on|off]|\n"
+>      "-display vnc=<display>[,<optargs>]\n"
+>      "-display curses\n"
+> 
+> 
 
