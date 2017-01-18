@@ -1,39 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cTeuD-0005o6-TO
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 20:19:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54857)
+	id 1cTf3V-0007aZ-UP
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 20:28:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cTeuB-0005mx-Ul
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:19:17 -0500
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTf3T-0007ZG-R0
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:28:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cTeu7-0003R6-Be
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:19:15 -0500
-Resent-Date: Tue, 17 Jan 2017 20:19:15 -0500
-Resent-Message-Id: <E1cTeu7-0003R6-Be@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21319)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cTeu7-0003QC-3U; Tue, 17 Jan 2017 20:19:11 -0500
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1484702341917182.56367654329574;
-	Tue, 17 Jan 2017 17:19:01 -0800 (PST)
-In-Reply-To: <1484702052-7900-1-git-send-email-skiver.cloud.yzy@gmail.com>
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <148470234043.214.7219322137444222645@790289a7ca88>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: skiver.cloud.yzy@gmail.com
-Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	skiver.cloud.yzy@gmail.com, pbonzini@redhat.com,
-	thuth@redhat.com, yzylivezh@hotmail.com, aliguori@us.ibm.com
-Date: Tue, 17 Jan 2017 17:19:01 -0800 (PST)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.201.84.163
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] gdbstub.c: fix GDB
- connection segfault caused by empty machines
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTf3S-0008OQ-UF
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:28:51 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:32873)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
+	id 1cTf3N-0008Kq-Lw; Tue, 17 Jan 2017 20:28:45 -0500
+Received: by mail-pf0-x241.google.com with SMTP id e4so6950527pfg.0;
+	Tue, 17 Jan 2017 17:28:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=YMlKY8pmASgTyxvIRP8no7TBUHXD69rjQQljuv5SCw0=;
+	b=GH4kFtLe+33yhjqyUNU//oBGhaf7uY8dZZkpmsY/4ttacYLodstHbAeQkHMMcXgNNc
+	7zjv+DY9wjq6DXGfMCFPBw0dBNXqnZ2XJd4xPLow4oUVMH1kwbG743pvhvQukapIRS9a
+	5R8xdX/Gl4ZBByPLWyZYPu+wjLo0EPeWKVmEf5eKjffDiV8AxZzYjdIFpRqcI0/87ZxM
+	/713gKljQuJ+LJKL2sCnlS5FfktRIcThnD4TDSQHEuzbteHI6jzKje0j90YgwcH55YLu
+	NyEOHgRZAaMRy3KG5GmCr0dp9BVldHG+yPAgIuV2WJDxkTPfZgfyNsGATOpbiT6mKYIZ
+	zVdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=YMlKY8pmASgTyxvIRP8no7TBUHXD69rjQQljuv5SCw0=;
+	b=BNQVrIK/iiv05us/osP+J09qxFMU5bpBqXvXOe5sDz6NJWudqmPzSUMqIsASyG6Rh5
+	DtVt8CbwD7wX47SnsM2+yOREDGtQtjTVELVl+TTs2UOjCBS5Ym6XDkJpnx7BBXinivXd
+	+oJpX+UPn2MjdK/sAcSNbOs4uqtwfvGVfbS7/BlxQw4ZVfS8eR/6Y2ChaeJR0CRHKLi9
+	X39yaULQvmeF8RujsVyDOU2YdzxB33JOeF/AHPZ3x9C9AIqeE2EwekwGlid36cC5QRj2
+	Dd6E5kyE6GnggA1NQkjFmBar4e7wBWtKY/cFeqara4ee3TAN5NfkQiO4o3WUNA0eP1+h
+	uivg==
+X-Gm-Message-State: AIkVDXIaEh5JEy7xm2Ru3Nc3wf++Z4eZmpqrIzyp8ukP0wRBE80n4oRLLpv/NmSU0CxQvA==
+X-Received: by 10.84.208.102 with SMTP id f35mr1012600plh.137.1484702924724;
+	Tue, 17 Jan 2017 17:28:44 -0800 (PST)
+Received: from yzy-ge62-2qd.DHCP (v133-130-103-189.a02c.g.tyo1.static.cnode.io.
+	[133.130.103.189]) by smtp.gmail.com with ESMTPSA id
+	a68sm58894047pgc.31.2017.01.17.17.28.40
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 17 Jan 2017 17:28:44 -0800 (PST)
+From: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, Ziyue Yang <yzylivezh@hotmail.com>,
+	Ziyue Yang <skiver.cloud.yzy@gmail.com>
+Date: Wed, 18 Jan 2017 09:28:05 +0800
+Message-Id: <1484702885-11437-1-git-send-email-skiver.cloud.yzy@gmail.com>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: [Qemu-trivial] [PATCH v3] gdbstub.c: fix GDB connection segfault
+ caused by empty machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,49 +65,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2017 01:19:17 -0000
+X-List-Received-Date: Wed, 18 Jan 2017 01:28:53 -0000
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMTQ4
-NDcwMjA1Mi03OTAwLTEtZ2l0LXNlbmQtZW1haWwtc2tpdmVyLmNsb3VkLnl6eUBnbWFpbC5jb20K
-VHlwZTogc2VyaWVzClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggdjJdIGdkYnN0dWIuYzog
-Zml4IEdEQiBjb25uZWN0aW9uIHNlZ2ZhdWx0IGNhdXNlZCBieSBlbXB0eSBtYWNoaW5lcwoKPT09
-IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0k
-KGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCiMgVXNlZnVsIGdp
-dCBvcHRpb25zCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZp
-ZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9
-JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNo
-ZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4u
-IgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3Bh
-dGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwog
-ICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBF
-TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
-CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFn
-XSAgICAgICAgIHBhdGNoZXcvMTQ4NDcwMjA1Mi03OTAwLTEtZ2l0LXNlbmQtZW1haWwtc2tpdmVy
-LmNsb3VkLnl6eUBnbWFpbC5jb20gLT4gcGF0Y2hldy8xNDg0NzAyMDUyLTc5MDAtMS1naXQtc2Vu
-ZC1lbWFpbC1za2l2ZXIuY2xvdWQueXp5QGdtYWlsLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFu
-Y2ggJ3Rlc3QnCjRkYWVlMTYgZ2Ric3R1Yi5jOiBmaXggR0RCIGNvbm5lY3Rpb24gc2VnZmF1bHQg
-Y2F1c2VkIGJ5IGVtcHR5IG1hY2hpbmVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVja2luZyBQ
-QVRDSCAxLzE6IGdkYnN0dWIuYzogZml4IEdEQiBjb25uZWN0aW9uIHNlZ2ZhdWx0IGNhdXNlZCBi
-eSBlbXB0eSBtYWNoaW5lcy4uLgpFUlJPUjogRXJyb3IgbWVzc2FnZXMgc2hvdWxkIG5vdCBjb250
-YWluIG5ld2xpbmVzCiM0ODogRklMRTogZ2Ric3R1Yi5jOjY0MDoKKyAgICAgICAgICAgIGVycm9y
-X3JlcG9ydCgiRXJyb3I6IEJhZCBnZGIgcmVnaXN0ZXIgbnVtYmVyaW5nIGZvciAnJXMnXG4iCgpF
-UlJPUjogRXJyb3IgbWVzc2FnZXMgc2hvdWxkIG5vdCBjb250YWluIG5ld2xpbmVzCiM0OTogRklM
-RTogZ2Ric3R1Yi5jOjY0MToKKyAgICAgICAgICAgICAgICAgICAgICAgICAiRXhwZWN0ZWQgJWQg
-Z290ICVkXG4iLCB4bWwsIGdfcG9zLCBzLT5iYXNlX3JlZyk7CgpFUlJPUjogRXJyb3IgbWVzc2Fn
-ZXMgc2hvdWxkIG5vdCBjb250YWluIG5ld2xpbmVzCiM1ODogRklMRTogZ2Ric3R1Yi5jOjg5MzoK
-KyAgICAgICAgZXJyb3JfcmVwb3J0KCJcblFFTVU6IFRlcm1pbmF0ZWQgdmlhIEdEQnN0dWJcbiIp
-OwoKRVJST1I6IEVycm9yIG1lc3NhZ2VzIHNob3VsZCBub3QgY29udGFpbiBuZXdsaW5lcwojNjg6
-IEZJTEU6IGdkYnN0dWIuYzoxMzYxOgorICAgICAgICAgICAgICAgIGVycm9yX3JlcG9ydCgiZ2Ri
-c3R1YjogQmFkIHN5c2NhbGwgZm9ybWF0IHN0cmluZyAnJXMnXG4iLAoKRVJST1I6IEVycm9yIG1l
-c3NhZ2VzIHNob3VsZCBub3QgY29udGFpbiBuZXdsaW5lcwojNzk6IEZJTEU6IGdkYnN0dWIuYzox
-NzM3OgorICAgICAgICAgICAgICAgICAgICAgIm1hY2hpbmUgd2l0aG91dCBhbnkgQ1BVLlxuIik7
-Cgp0b3RhbDogNSBlcnJvcnMsIDAgd2FybmluZ3MsIDQ3IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0
-Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBj
-b21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRp
-Y2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
-ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
+From: Ziyue Yang <yzylivezh@hotmail.com>
+
+This patch is to fix the segmentation fault caused by attaching
+GDB to a QEMU instance initialized with "-M none" option.
+
+The bug can be reproduced by
+
+> ./qemu-system-x86_64 -M none -nographic -S -s
+
+and attach a GDB to it by
+
+> gdb -ex 'target remote :1234
+
+The segmentation fault was originally caused by trying to read
+the information about CPU when communicating with GDB. However,
+it's impossible for any control flow to exist on an empty machine,
+nor can CPU's be hot plugged to an empty machine later by QOM
+commands. So I think simply disabling GDB connections on empty
+machines makes sense.
+
+Also some updates from fprintf(stderr, ...) to error_report.
+
+Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+---
+ gdbstub.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index de62d26..fe1d0f8 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
+ #include "qemu/cutils.h"
+ #include "cpu.h"
+ #ifdef CONFIG_USER_ONLY
+@@ -636,8 +637,8 @@ void gdb_register_coprocessor(CPUState *cpu,
+     *p = s;
+     if (g_pos) {
+         if (g_pos != s->base_reg) {
+-            fprintf(stderr, "Error: Bad gdb register numbering for '%s'\n"
+-                    "Expected %d got %d\n", xml, g_pos, s->base_reg);
++            error_report("Error: Bad gdb register numbering for '%s', "
++                         "Expected %d got %d", xml, g_pos, s->base_reg);
+         } else {
+             cpu->gdb_num_g_regs = cpu->gdb_num_regs;
+         }
+@@ -889,7 +890,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+         }
+     case 'k':
+         /* Kill the target */
+-        fprintf(stderr, "\nQEMU: Terminated via GDBstub\n");
++        error_report("QEMU: Terminated via GDBstub");
+         exit(0);
+     case 'D':
+         /* Detach packet */
+@@ -1357,8 +1358,8 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+                 break;
+             default:
+             bad_format:
+-                fprintf(stderr, "gdbstub: Bad syscall format string '%s'\n",
+-                        fmt - 1);
++                error_report("gdbstub: Bad syscall format string '%s'",
++                             fmt - 1);
+                 break;
+             }
+         } else {
+@@ -1731,6 +1732,12 @@ int gdbserver_start(const char *device)
+     CharDriverState *mon_chr;
+     ChardevCommon common = { 0 };
+
++    if (!first_cpu) {
++        error_report("gdbstub: meaningless to attach gdb to a "
++                     "machine without any CPU.");
++        return -1;
++    }
++
+     if (!device)
+         return -1;
+     if (strcmp(device, "none") != 0) {
+--
+2.7.4
 
 
