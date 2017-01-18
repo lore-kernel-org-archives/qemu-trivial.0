@@ -1,59 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cTgs9-0006e5-5v
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 22:25:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46337)
+	id 1cTjOx-000606-NC
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Jan 2017 01:07:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgs7-0006cY-EK
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:25:16 -0500
+	(envelope-from <thuth@redhat.com>) id 1cTjOv-0005yu-Nm
+	for qemu-trivial@nongnu.org; Wed, 18 Jan 2017 01:07:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgs6-0000a1-Lo
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:25:15 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34166)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
-	id 1cTgs4-0000Xv-VK; Tue, 17 Jan 2017 22:25:13 -0500
-Received: by mail-qk0-x241.google.com with SMTP id e1so120673qkh.1;
-	Tue, 17 Jan 2017 19:25:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ZRE4ojHQC+x8UUumBDMNrqjS8Vb/1jigBub1ALvOWgU=;
-	b=ECnIu705ioKNGj2VvlTpaYL+nz7GeJbyYkX35hDg6LaV40wMaFCHzvsiMRvP0xvoYe
-	9cYLhlSNcmn5D1xUyWEgyDut3Vuty6Agvnj2EDEUDVNAhg5KZ6UG0HnICwdLaLXHes2b
-	i5h1UkePSdtOl1pSdVUcL9UgEBcKxBhDpIYtjezN6dnPVlFZsX1FA63YrjqodjiNDi/Z
-	w7CE3iL92E61LpN7yjN/pPUtbgE47mHuqQJVWP7UDQIijpY5+r/Shry6w1LAfU19r8BR
-	dxzrp5KtMVTyv5Bx7nucbr3YQ4C+QaiUJjnIh/M92sSRfGkj6+UyZhue9W1cvl+Z/GME
-	im6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ZRE4ojHQC+x8UUumBDMNrqjS8Vb/1jigBub1ALvOWgU=;
-	b=WY+y/RSnlP1/ZQHBmfFFfvQ1uNYkWyQAPQFt1w7SK+gKOx2hHyexGV5RDYFL/t9voR
-	wE0Um4ZTO1GMoHx1X49jJFum1n7H249aHF5fcxUQ/m4mJl09sfNI9D2+lWaHPoHfm1Vo
-	190ZMD4KQWUXZAudt8HIx6v5p3VLg7mItCPkaG7BfelIho71+zuwCAclQ8qGar/G5LzL
-	ahvjgcC+K9OkkbgvgNhS/8yiOsPumUPrEdANKe3IeQMl1NuOc0XMaz6PRer0P3FGytiV
-	hLqRjaSzVbe0flxYPnFGfUc1Qx7Uq/GPirBjfoJBBr6zvx3emA6an/7dYv4mxmoi3Kxs
-	GskA==
-X-Gm-Message-State: AIkVDXJlH3+RWDfln6qChRGyAQoIovwUqB9aV1vQ3nVPeNsKeY/Rp4zOylQUzwv9aDQb4VlbjH25eu2wXoELiQ==
-X-Received: by 10.55.209.69 with SMTP id s66mr938289qki.94.1484709912490; Tue,
-	17 Jan 2017 19:25:12 -0800 (PST)
+	(envelope-from <thuth@redhat.com>) id 1cTjOu-0002Np-Rc
+	for qemu-trivial@nongnu.org; Wed, 18 Jan 2017 01:07:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34332)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cTjOq-0002MX-Dr; Wed, 18 Jan 2017 01:07:12 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 635088E251;
+	Wed, 18 Jan 2017 06:07:12 +0000 (UTC)
+Received: from [10.36.116.60] (ovpn-116-60.ams2.redhat.com [10.36.116.60])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0I679Fl018302
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 18 Jan 2017 01:07:10 -0500
+To: Ziyue Yang <skiver.cloud.yzy@gmail.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1484709699-3455-1-git-send-email-skiver.cloud.yzy@gmail.com>
+Cc: Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Ziyue Yang <yzylivezh@hotmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <66ed2121-c207-d2f4-2e05-b6474bfa6a49@redhat.com>
+Date: Wed, 18 Jan 2017 07:07:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
 MIME-Version: 1.0
-Received: by 10.140.82.231 with HTTP; Tue, 17 Jan 2017 19:25:12 -0800 (PST)
-In-Reply-To: <20170118021529.GC31883@lemon.Home>
-References: <1484702885-11437-1-git-send-email-skiver.cloud.yzy@gmail.com>
-	<20170118021529.GC31883@lemon.Home>
-From: Yang Ziyue <skiver.cloud.yzy@gmail.com>
-Date: Wed, 18 Jan 2017 11:25:12 +0800
-Message-ID: <CAHkcwacfme4xZhzt0_YHi9wCvp3jZ31Kz+J2sLP3L5D-HBHO4g@mail.gmail.com>
-To: Fam Zheng <famz@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Ziyue Yang <yzylivezh@hotmail.com>, Anthony Liguori <aliguori@us.ibm.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1484709699-3455-1-git-send-email-skiver.cloud.yzy@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 18 Jan 2017 06:07:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] gdbstub.c: fix GDB
- connection segfault caused by empty machines
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v4 1/2] gdbstub.c: fix GDB connection
+ segfault caused by empty machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,20 +57,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2017 03:25:16 -0000
+X-List-Received-Date: Wed, 18 Jan 2017 06:07:18 -0000
 
-Hi Fam,
+On 18.01.2017 04:21, Ziyue Yang wrote:
+> From: Ziyue Yang <yzylivezh@hotmail.com>
+> 
+> This patch is to fix the segmentation fault caused by attaching
+> GDB to a QEMU instance initialized with "-M none" option.
+> 
+> The bug can be reproduced by
+> 
+>> ./qemu-system-x86_64 -M none -nographic -S -s
+> 
+> and attach a GDB to it by
+> 
+>> gdb -ex 'target remote :1234
+> 
+> The segmentation fault was originally caused by trying to read
+> the information about CPU when communicating with GDB. However,
+> it's impossible for any control flow to exist on an empty machine,
+> nor can CPU's be hot plugged to an empty machine later by QOM
+> commands. So I think simply disabling GDB connections on empty
+> machines makes sense.
+> 
+> Also some updates from fprintf(stderr, ...) to error_report.
 
-I've split the patch into 2 smaller ones and submitted them tagged with "v4".
-Thanks!
+Seems like that last sentence is a left-over from your other patch and
+should be removed from this patch description here.
 
-Ziyue Yang
+> Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+> ---
+>  gdbstub.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index de62d26..426d55e 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -18,6 +18,7 @@
+>   */
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+> +#include "qemu/error-report.h"
+>  #include "qemu/cutils.h"
+>  #include "cpu.h"
+>  #ifdef CONFIG_USER_ONLY
+> @@ -1731,6 +1732,12 @@ int gdbserver_start(const char *device)
+>      CharDriverState *mon_chr;
+>      ChardevCommon common = { 0 };
+> 
+> +    if (!first_cpu) {
+> +        error_report("gdbstub: meaningless to attach gdb to a "
+> +                     "machine without any CPU.");
+> +        return -1;
+> +    }
+> +
+>      if (!device)
+>          return -1;
+>      if (strcmp(device, "none") != 0) {
+> --
+> 2.7.4
+> 
 
-2017-01-18 10:15 GMT+08:00 Fam Zheng <famz@redhat.com>:
-> On Wed, 01/18 09:28, Ziyue Yang wrote:
->> Also some updates from fprintf(stderr, ...) to error_report.
->
-> Looks like they belong to a separate patch.
->
-> Fam
+With the "fprintf" sentence removed:
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
