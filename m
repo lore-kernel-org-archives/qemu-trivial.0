@@ -1,51 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cTXXO-0002m0-Hv
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 12:27:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38193)
+	id 1cTeqZ-0003tB-5J
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 20:15:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53408)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cTXXN-0002la-3A
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 12:27:13 -0500
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTeqX-0003rz-9Y
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:15:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cTXXM-000464-9r
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 12:27:13 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50132)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cTXXH-000453-QJ; Tue, 17 Jan 2017 12:27:07 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B13AE15567;
-	Tue, 17 Jan 2017 17:27:07 +0000 (UTC)
-Received: from [10.36.116.99] (ovpn-116-99.ams2.redhat.com [10.36.116.99])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0HHR48R025255
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 17 Jan 2017 12:27:05 -0500
-To: Ziyue Yang <skiver.cloud.yzy@gmail.com>, qemu-devel@nongnu.org,
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTeqW-0001ni-Aj
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 20:15:29 -0500
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:33047)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
+	id 1cTeqP-0001kb-OA; Tue, 17 Jan 2017 20:15:21 -0500
+Received: by mail-pg0-x243.google.com with SMTP id 194so9281626pgd.0;
+	Tue, 17 Jan 2017 17:15:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=L1CSX4XOmywbv54uAAixvvhihH6Wi4dlnrVfx1KHoOY=;
+	b=IlOUuhRR6C5TlIIRKAIQu6FHuK77oamSpzA+WWO4VujrOem8dRk0G7PxUVeOlz1O6s
+	x7Cq4r2ztaXawdRfp9Ei1ebaosMGkevOokkmFJPhFXt2+v/fjXSGv+gJ+zzAWHAEHPgu
+	+ADk69RaBINqYa0WBMufD+su5x8XllIj1/s+zjbVhqktQkMSf3v6/XCILI9pPapc6Vn2
+	DkbDDt6SyLS/Es3ZbwJoAz9uiXl/cJikgEpl0qQMntFlC4f/Npj2BCyoB41dr4GSrAAn
+	bTXGvndJXmjFsABqPyBam7+UTwg3Z07M3wX/IaIss+rMAnZh6L/JdjWcOFzyGOl5nzYE
+	aCrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=L1CSX4XOmywbv54uAAixvvhihH6Wi4dlnrVfx1KHoOY=;
+	b=r01R6h9uJQk6U1GvstO8iaVPwWYgQ0L5QKXhm9MI7rrDy2UF9kSrkyJsLdveJZ5I0T
+	Xr2VY+pON3TtV0j6+9PuukfKB/B3QdqK8fMwcSSkKQauhruSV1SPmEIVPrHhkXfAVMO/
+	vjPC8zNLkWjlaiA7NtuyyicIVMiA/MKl8+09rzmtPaK99HZasfJcjwBzy4qvZgBeImbr
+	BuTWw1m1cMTrfYFOVP1ytHWKrueDqg/X4f32qRSVKOjCUxDRSeVvl+UfAXJQphKCZ0LL
+	fg8Zp0KblPW6Le1jTixEfZ8ca4q9Gt08CqODmypK0gYNa1/30hWtIR2BCX6YIPLAcyk5
+	kI7g==
+X-Gm-Message-State: AIkVDXJsyHBnU5kYBm+TfY5ExyLWMBTufcEEv1QZsAWB5aEpKRdPESpuN9xZl02vDxnWjw==
+X-Received: by 10.98.133.202 with SMTP id m71mr753528pfk.102.1484702120694;
+	Tue, 17 Jan 2017 17:15:20 -0800 (PST)
+Received: from yzy-ge62-2qd.DHCP (v133-130-103-189.a02c.g.tyo1.static.cnode.io.
+	[133.130.103.189]) by smtp.gmail.com with ESMTPSA id
+	18sm58905134pgf.28.2017.01.17.17.15.16
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 17 Jan 2017 17:15:20 -0800 (PST)
+From: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-References: <1484666391-15089-1-git-send-email-skiver.cloud.yzy@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	Ziyue Yang <yzylivezh@hotmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c1e01bb3-6dd1-dfe1-1659-8b7b9b683d63@redhat.com>
-Date: Tue, 17 Jan 2017 18:27:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
-MIME-Version: 1.0
-In-Reply-To: <1484666391-15089-1-git-send-email-skiver.cloud.yzy@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 17 Jan 2017 17:27:07 +0000 (UTC)
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Liguori <aliguori@us.ibm.com>, Ziyue Yang <yzylivezh@hotmail.com>,
+	Ziyue Yang <skiver.cloud.yzy@gmail.com>
+Date: Wed, 18 Jan 2017 09:14:12 +0800
+Message-Id: <1484702052-7900-1-git-send-email-skiver.cloud.yzy@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gdbstub.c: fix GDB
- connection segfault caused by empty machines
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: [Qemu-trivial] [PATCH v2] gdbstub.c: fix GDB connection segfault
+ caused by empty machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,53 +65,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jan 2017 17:27:14 -0000
+X-List-Received-Date: Wed, 18 Jan 2017 01:15:30 -0000
 
-On 17.01.2017 16:19, Ziyue Yang wrote:
-> From: Ziyue Yang <yzylivezh@hotmail.com>
-> 
-> This patch is to fix the segmentation fault caused by attaching
-> GDB to a QEMU instance initialized with "-M none" option.
-> 
-> The bug can be reproduced by
-> 
->> ./qemu-system-x86_64 -M none -nographic -S -s
-> 
-> and attach a GDB to it by
-> 
->> gdb -ex 'target remote :1234
-> 
-> The segmentation fault was originally caused by trying to read
-> the information about CPU when communicating with GDB. However,
-> it's impossible for any control flow to exist on an empty machine,
-> nor can CPU's be hot plugged to an empty machine later by QOM
-> commands. So I think simply disabling GDB connections on empty
-> machines makes sense.
+From: Ziyue Yang <yzylivezh@hotmail.com>
 
-Yes, this sounds like a proper and easy fix for the problem.
+This patch is to fix the segmentation fault caused by attaching
+GDB to a QEMU instance initialized with "-M none" option.
 
-> Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
-> ---
->  gdbstub.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/gdbstub.c b/gdbstub.c
-> index de62d26..413e817 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -1731,6 +1731,12 @@ int gdbserver_start(const char *device)
->      CharDriverState *mon_chr;
->      ChardevCommon common = { 0 };
->  
-> +    if (!first_cpu) {
-> +        fprintf(stderr, "gdbstub: meaningless to attach gdb to a "
-> +                "machine without any CPU.\n");
-> +        return -1;
-> +    }
+The bug can be reproduced by
 
-Could you maybe rather use error_report() instead of fprintf()? I think
-that's the preferred way to print out an error in QEMU nowadays.
+> ./qemu-system-x86_64 -M none -nographic -S -s
 
- Thomas
+and attach a GDB to it by
+
+> gdb -ex 'target remote :1234
+
+The segmentation fault was originally caused by trying to read
+the information about CPU when communicating with GDB. However,
+it's impossible for any control flow to exist on an empty machine,
+nor can CPU's be hot plugged to an empty machine later by QOM
+commands. So I think simply disabling GDB connections on empty
+machines makes sense.
+
+Also some updates from fprintf(stderr, ...) to error_report.
+
+Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+---
+ gdbstub.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index de62d26..3a22ce3 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
+ #include "qemu/cutils.h"
+ #include "cpu.h"
+ #ifdef CONFIG_USER_ONLY
+@@ -636,8 +637,8 @@ void gdb_register_coprocessor(CPUState *cpu,
+     *p = s;
+     if (g_pos) {
+         if (g_pos != s->base_reg) {
+-            fprintf(stderr, "Error: Bad gdb register numbering for '%s'\n"
+-                    "Expected %d got %d\n", xml, g_pos, s->base_reg);
++            error_report("Error: Bad gdb register numbering for '%s'\n"
++                         "Expected %d got %d\n", xml, g_pos, s->base_reg);
+         } else {
+             cpu->gdb_num_g_regs = cpu->gdb_num_regs;
+         }
+@@ -889,7 +890,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+         }
+     case 'k':
+         /* Kill the target */
+-        fprintf(stderr, "\nQEMU: Terminated via GDBstub\n");
++        error_report("\nQEMU: Terminated via GDBstub\n");
+         exit(0);
+     case 'D':
+         /* Detach packet */
+@@ -1357,8 +1358,8 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
+                 break;
+             default:
+             bad_format:
+-                fprintf(stderr, "gdbstub: Bad syscall format string '%s'\n",
+-                        fmt - 1);
++                error_report("gdbstub: Bad syscall format string '%s'\n",
++                             fmt - 1);
+                 break;
+             }
+         } else {
+@@ -1731,6 +1732,12 @@ int gdbserver_start(const char *device)
+     CharDriverState *mon_chr;
+     ChardevCommon common = { 0 };
+
++    if (!first_cpu) {
++        error_report("gdbstub: meaningless to attach gdb to a "
++                     "machine without any CPU.\n");
++        return -1;
++    }
++
+     if (!device)
+         return -1;
+     if (strcmp(device, "none") != 0) {
+--
+2.7.4
 
 
