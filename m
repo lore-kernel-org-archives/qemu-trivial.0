@@ -1,48 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cTfmu-0008MM-1M
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 21:15:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48452)
+	id 1cTgp9-0004e5-PU
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 22:22:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44993)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1cTfmq-0008JH-OT
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 21:15:46 -0500
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgp6-0004ch-DS
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:22:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1cTfmp-0005Ur-Ty
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 21:15:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52402)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1cTfmk-0005TF-EY; Tue, 17 Jan 2017 21:15:38 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 994C48F039;
-	Wed, 18 Jan 2017 02:15:38 +0000 (UTC)
-Received: from localhost (ovpn-8-17.pek2.redhat.com [10.72.8.17])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0I2FYHO017035; Tue, 17 Jan 2017 21:15:37 -0500
-Date: Wed, 18 Jan 2017 10:15:29 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Ziyue Yang <skiver.cloud.yzy@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Ziyue Yang <yzylivezh@hotmail.com>, Anthony Liguori <aliguori@us.ibm.com>
-Message-ID: <20170118021529.GC31883@lemon.Home>
-References: <1484702885-11437-1-git-send-email-skiver.cloud.yzy@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1484702885-11437-1-git-send-email-skiver.cloud.yzy@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 18 Jan 2017 02:15:38 +0000 (UTC)
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgp5-0006ML-Jl
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:22:08 -0500
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:35609)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
+	id 1cTgp1-0006Ii-Bh; Tue, 17 Jan 2017 22:22:03 -0500
+Received: by mail-pg0-x244.google.com with SMTP id 204so104793pge.2;
+	Tue, 17 Jan 2017 19:22:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=6os/60FhazItljLD20Jbz2fOHDLz55FEgC9WDKgunNc=;
+	b=Q92FVf2HVEw624rqygm5C+FFzzAFtIm6sH4G2EL+0Crv+ZdfpZ1f7m+DUSZNsEZU8f
+	16GMnSjVT3lM0J9yHy0mqX7aTWgIr0ncM0f7VM/FOoeejLNrWjVsqwASO3Bb2tXu0cJ3
+	RK3zPaU5SrdE2PYzwxyReBaIg5iQ4LWvX8JUuYAXKmnmn2iXhjRnuoWlxN3fpC+HvREs
+	dWOVAmN1TXyK6a7InCrcze9j7OYWZgRvFts6P47g15Xl7BlVKwJW0P3hwzAB/qbX49dq
+	dYPIaydJtdivQJhAvjWpDaCLw61d6vCWtPR5vGSo+XJGt9esJ2YQAMneADKGk9wi9uuC
+	9CpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=6os/60FhazItljLD20Jbz2fOHDLz55FEgC9WDKgunNc=;
+	b=nrOUXOAriVXCquD//QQuKcNFEPEROQuk9FNYQT7S4LlMr0qeaR/t7bFWqOl6CSZBR9
+	BE4LU9NYxS7aZWzI39NBDu5kTJOo9Ppjcz+bRj6dSf9qbcBLMY+UJReKVc+XE9gNa5v7
+	OhKxUN1bOzdFGUozhJzSbmc1TZ0BTk3JbvzMQgnZQl1OGZ2rsyL1MKNDls7F9WnS0hoi
+	kQeEB68xyeaOqevjS1BezYuQ2KeweVRM9LDmepP99gDXIBpT6Bq1yjtda8UOZ6En8qG3
+	og3PKFfWSlek0FhBTNykye/EKAjjizpnM6hcDVaYQ7t37O2tmPlxxkf/qVFUGL21Tk3A
+	dxqQ==
+X-Gm-Message-State: AIkVDXJB1/oqP5UfOl91ypXKdniNquka7RWjqEB3BB7kRWj4MLKo7BRJIYLXz8KV1p8Dmw==
+X-Received: by 10.99.149.66 with SMTP id t2mr1354619pgn.156.1484709722470;
+	Tue, 17 Jan 2017 19:22:02 -0800 (PST)
+Received: from yzy-ge62-2qd.pku.edu.cn
+	(v133-130-103-189.a02c.g.tyo1.static.cnode.io. [133.130.103.189])
+	by smtp.gmail.com with ESMTPSA id
+	h17sm58894792pfh.62.2017.01.17.19.21.58
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 17 Jan 2017 19:22:01 -0800 (PST)
+From: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Fam Zheng <famz@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
+	Ziyue Yang <yzylivezh@hotmail.com>, Ziyue Yang <skiver.cloud.yzy@gmail.com>
+Date: Wed, 18 Jan 2017 11:21:39 +0800
+Message-Id: <1484709699-3455-1-git-send-email-skiver.cloud.yzy@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] gdbstub.c: fix GDB
- connection segfault caused by empty machines
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: [Qemu-trivial] [PATCH v4 1/2] gdbstub.c: fix GDB connection
+ segfault caused by empty machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,12 +66,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2017 02:15:46 -0000
+X-List-Received-Date: Wed, 18 Jan 2017 03:22:09 -0000
 
-On Wed, 01/18 09:28, Ziyue Yang wrote:
-> Also some updates from fprintf(stderr, ...) to error_report.
+From: Ziyue Yang <yzylivezh@hotmail.com>
 
-Looks like they belong to a separate patch.
+This patch is to fix the segmentation fault caused by attaching
+GDB to a QEMU instance initialized with "-M none" option.
 
-Fam
+The bug can be reproduced by
+
+> ./qemu-system-x86_64 -M none -nographic -S -s
+
+and attach a GDB to it by
+
+> gdb -ex 'target remote :1234
+
+The segmentation fault was originally caused by trying to read
+the information about CPU when communicating with GDB. However,
+it's impossible for any control flow to exist on an empty machine,
+nor can CPU's be hot plugged to an empty machine later by QOM
+commands. So I think simply disabling GDB connections on empty
+machines makes sense.
+
+Also some updates from fprintf(stderr, ...) to error_report.
+
+Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+---
+ gdbstub.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index de62d26..426d55e 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
+ #include "qemu/cutils.h"
+ #include "cpu.h"
+ #ifdef CONFIG_USER_ONLY
+@@ -1731,6 +1732,12 @@ int gdbserver_start(const char *device)
+     CharDriverState *mon_chr;
+     ChardevCommon common = { 0 };
+
++    if (!first_cpu) {
++        error_report("gdbstub: meaningless to attach gdb to a "
++                     "machine without any CPU.");
++        return -1;
++    }
++
+     if (!device)
+         return -1;
+     if (strcmp(device, "none") != 0) {
+--
+2.7.4
+
 
