@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cTgpN-0004li-Pq
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 22:22:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45099)
+	id 1cTgs9-0006e5-5v
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jan 2017 22:25:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46337)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgpL-0004jl-5T
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:22:24 -0500
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgs7-0006cY-EK
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:25:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgpK-0006Yq-9W
-	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:22:23 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:36477)
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cTgs6-0000a1-Lo
+	for qemu-trivial@nongnu.org; Tue, 17 Jan 2017 22:25:15 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34166)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
-	id 1cTgpG-0006V6-1g; Tue, 17 Jan 2017 22:22:18 -0500
-Received: by mail-pf0-x241.google.com with SMTP id 19so78256pfo.3;
-	Tue, 17 Jan 2017 19:22:17 -0800 (PST)
+	id 1cTgs4-0000Xv-VK; Tue, 17 Jan 2017 22:25:13 -0500
+Received: by mail-qk0-x241.google.com with SMTP id e1so120673qkh.1;
+	Tue, 17 Jan 2017 19:25:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=Mmw4fM7PXzN9aWc33A3BlRF4Vt102IoZlaw0L/kaFMU=;
-	b=DWnHXTUaD48NqyOxMkrlwY721MJDno0dlWD57V+X4GZCdAptSMM/fCbhrvmS1JTa3y
-	apn5UGzFOUDeiMtNTW4KunVKFzFcGvnomCMEkYyC1fcdevf+r5LKZhZlCMXPnuURcdAL
-	ztDsdTVcVRwaNNqEKkj0/1eG5UdUy8oKv+1v+6WVmcojangcFcbEuN+clvpodxLJHtWO
-	TDL7p6RN5/aZI+jQpZs/453J9v81dfcIgWUg4/MJ9OUUeaHYuxxlbQMm6aX1qBRkgfLM
-	3vX6esd9wpW/o+/aG+v7ZOyEr6h6Pz9THvP+zN7mFrnEoauOK7AP8Mii8m2FkC9HT4It
-	lbeA==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ZRE4ojHQC+x8UUumBDMNrqjS8Vb/1jigBub1ALvOWgU=;
+	b=ECnIu705ioKNGj2VvlTpaYL+nz7GeJbyYkX35hDg6LaV40wMaFCHzvsiMRvP0xvoYe
+	9cYLhlSNcmn5D1xUyWEgyDut3Vuty6Agvnj2EDEUDVNAhg5KZ6UG0HnICwdLaLXHes2b
+	i5h1UkePSdtOl1pSdVUcL9UgEBcKxBhDpIYtjezN6dnPVlFZsX1FA63YrjqodjiNDi/Z
+	w7CE3iL92E61LpN7yjN/pPUtbgE47mHuqQJVWP7UDQIijpY5+r/Shry6w1LAfU19r8BR
+	dxzrp5KtMVTyv5Bx7nucbr3YQ4C+QaiUJjnIh/M92sSRfGkj6+UyZhue9W1cvl+Z/GME
+	im6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Mmw4fM7PXzN9aWc33A3BlRF4Vt102IoZlaw0L/kaFMU=;
-	b=Pkm8n3BSqBzD7NyqrO8VDN6cP8rCFqvpIf/D13/vdB5Y4O3S5JXxCXOwHW1c94ylDL
-	m7ekrhDcWS07+llw3FoZSP+sLe+Ul9a656keNgpTBuASfjpsbpRUNlEUD1xPz6Ia2K1u
-	SM9Cjt1Ij2N3479JoRNtGnhw5Kav0I4H4pUKGwNsLL/on8EuXWO2Usm7nF1Us3ndSZXb
-	YHO+TdokR852IU0z0QTiW1/6adQ7oEqlrym5HOR7OIoIBWjfyQNGqHjjkNmnd5x8y2hm
-	3vLGkb0OSibxEx/Fm+E6vdgHYv0Qje2i81GEHGp2+F5h+4McSFX5ljzcy6jz2ItuhKVi
-	uuJg==
-X-Gm-Message-State: AIkVDXIpGPii1QtIzDxUa3plsf+KrvZ4m6TBpBEgvzhoQ3t2+nW87wXgQYUIuoT8SCr6gw==
-X-Received: by 10.98.73.74 with SMTP id w71mr1288769pfa.52.1484709737112;
-	Tue, 17 Jan 2017 19:22:17 -0800 (PST)
-Received: from yzy-ge62-2qd.pku.edu.cn
-	(v133-130-103-189.a02c.g.tyo1.static.cnode.io. [133.130.103.189])
-	by smtp.gmail.com with ESMTPSA id
-	n84sm58900507pfk.25.2017.01.17.19.22.13
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 17 Jan 2017 19:22:16 -0800 (PST)
-From: Ziyue Yang <skiver.cloud.yzy@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Fam Zheng <famz@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Anthony Liguori <aliguori@us.ibm.com>,
-	Ziyue Yang <yzylivezh@hotmail.com>, Ziyue Yang <skiver.cloud.yzy@gmail.com>
-Date: Wed, 18 Jan 2017 11:22:02 +0800
-Message-Id: <1484709722-3546-1-git-send-email-skiver.cloud.yzy@gmail.com>
-X-Mailer: git-send-email 2.7.4
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ZRE4ojHQC+x8UUumBDMNrqjS8Vb/1jigBub1ALvOWgU=;
+	b=WY+y/RSnlP1/ZQHBmfFFfvQ1uNYkWyQAPQFt1w7SK+gKOx2hHyexGV5RDYFL/t9voR
+	wE0Um4ZTO1GMoHx1X49jJFum1n7H249aHF5fcxUQ/m4mJl09sfNI9D2+lWaHPoHfm1Vo
+	190ZMD4KQWUXZAudt8HIx6v5p3VLg7mItCPkaG7BfelIho71+zuwCAclQ8qGar/G5LzL
+	ahvjgcC+K9OkkbgvgNhS/8yiOsPumUPrEdANKe3IeQMl1NuOc0XMaz6PRer0P3FGytiV
+	hLqRjaSzVbe0flxYPnFGfUc1Qx7Uq/GPirBjfoJBBr6zvx3emA6an/7dYv4mxmoi3Kxs
+	GskA==
+X-Gm-Message-State: AIkVDXJlH3+RWDfln6qChRGyAQoIovwUqB9aV1vQ3nVPeNsKeY/Rp4zOylQUzwv9aDQb4VlbjH25eu2wXoELiQ==
+X-Received: by 10.55.209.69 with SMTP id s66mr938289qki.94.1484709912490; Tue,
+	17 Jan 2017 19:25:12 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.82.231 with HTTP; Tue, 17 Jan 2017 19:25:12 -0800 (PST)
+In-Reply-To: <20170118021529.GC31883@lemon.Home>
+References: <1484702885-11437-1-git-send-email-skiver.cloud.yzy@gmail.com>
+	<20170118021529.GC31883@lemon.Home>
+From: Yang Ziyue <skiver.cloud.yzy@gmail.com>
+Date: Wed, 18 Jan 2017 11:25:12 +0800
+Message-ID: <CAHkcwacfme4xZhzt0_YHi9wCvp3jZ31Kz+J2sLP3L5D-HBHO4g@mail.gmail.com>
+To: Fam Zheng <famz@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Ziyue Yang <yzylivezh@hotmail.com>, Anthony Liguori <aliguori@us.ibm.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-trivial] [PATCH v4 2/2] gdbstub.c: update old error report
- statements
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] gdbstub.c: fix GDB
+ connection segfault caused by empty machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,53 +65,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jan 2017 03:22:24 -0000
+X-List-Received-Date: Wed, 18 Jan 2017 03:25:16 -0000
 
-From: Ziyue Yang <yzylivezh@hotmail.com>
+Hi Fam,
 
-Some updates from fprintf(stderr, ...) to error_report.
+I've split the patch into 2 smaller ones and submitted them tagged with "v4".
+Thanks!
 
-Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
----
- gdbstub.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+Ziyue Yang
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 426d55e..fe1d0f8 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -637,8 +637,8 @@ void gdb_register_coprocessor(CPUState *cpu,
-     *p = s;
-     if (g_pos) {
-         if (g_pos != s->base_reg) {
--            fprintf(stderr, "Error: Bad gdb register numbering for '%s'\n"
--                    "Expected %d got %d\n", xml, g_pos, s->base_reg);
-+            error_report("Error: Bad gdb register numbering for '%s', "
-+                         "Expected %d got %d", xml, g_pos, s->base_reg);
-         } else {
-             cpu->gdb_num_g_regs = cpu->gdb_num_regs;
-         }
-@@ -890,7 +890,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
-         }
-     case 'k':
-         /* Kill the target */
--        fprintf(stderr, "\nQEMU: Terminated via GDBstub\n");
-+        error_report("QEMU: Terminated via GDBstub");
-         exit(0);
-     case 'D':
-         /* Detach packet */
-@@ -1358,8 +1358,8 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-                 break;
-             default:
-             bad_format:
--                fprintf(stderr, "gdbstub: Bad syscall format string '%s'\n",
--                        fmt - 1);
-+                error_report("gdbstub: Bad syscall format string '%s'",
-+                             fmt - 1);
-                 break;
-             }
-         } else {
---
-2.7.4
-
+2017-01-18 10:15 GMT+08:00 Fam Zheng <famz@redhat.com>:
+> On Wed, 01/18 09:28, Ziyue Yang wrote:
+>> Also some updates from fprintf(stderr, ...) to error_report.
+>
+> Looks like they belong to a separate patch.
+>
+> Fam
 
