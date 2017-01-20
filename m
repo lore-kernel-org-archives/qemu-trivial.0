@@ -1,53 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cUZxe-0006JT-RH
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2017 09:14:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35171)
+	id 1cUbVx-0003ZQ-A7
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jan 2017 10:54:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cUZxc-0006H2-5z
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2017 09:14:37 -0500
+	(envelope-from <thuth@redhat.com>) id 1cUbVv-0003XF-3p
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2017 10:54:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1cUZxX-0004XE-8J
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2017 09:14:36 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:62311)
+	(envelope-from <thuth@redhat.com>) id 1cUbVu-0007xy-C7
+	for qemu-trivial@nongnu.org; Fri, 20 Jan 2017 10:54:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47570)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1cUZxW-0004V6-TP
-	for qemu-trivial@nongnu.org; Fri, 20 Jan 2017 09:14:31 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue101 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0Luu5B-1cMIJp0m0X-0104sO for <qemu-trivial@nongnu.org>; Fri, 20 Jan 2017
-	15:14:28 +0100
-To: qemu-trivial@nongnu.org
-References: <1484917864-7928-1-git-send-email-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <9bc84522-eaef-98d4-a04a-ed7dad9cd127@vivier.eu>
-Date: Fri, 20 Jan 2017 15:14:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
-MIME-Version: 1.0
-In-Reply-To: <1484917864-7928-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:R/rxvFeSa7S5Kavbe/tdQwi4k1+hdHaaES3ZTEqxq7y4XZW5vGa
-	THDLm6LTv742X0cUGRXctUF6XkXqUNxEqXpK8zibKpiZuB41m5kM3GnKetVZTye5GtGN8og
-	fwlLaR+qB14RdgL6OJ+spXR8arPEFLLJoRKgn6xoLoQe456eKRRegKUeuZyxJa8oFWsVGfH
-	9B3bqP3IbYHGTCYiaTNRA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:gku8RIBTrBk=:RRAgPL138Cqt6E3hK2j46A
-	0ORPZBOI92x1iCAAiUUqH+KHpwuceO7BDrccif4s3oUNdWU+US8UR/YlrR/ztmlStDSaghmTg
-	e53tEUCFvc0VPAF3AzsVACTuUlMQSJxNfRcJT5adnR8YtCedldlbeaHYOY+g6jj+QXASBNEWJ
-	4ewNg7jp/6H6wZ9HDtgfEAW8yQerMo55kUwKRR3ogTFEvWQaYcpRzcpPe9sXZLwDjrvzCtmor
-	zrU0aec4U8xI4+d+QerKHhYXMwNmRvY0V2HE0jVjhb6bUBz3XabAdvHznMgDCH6TFCWFuIxcq
-	H6vAHLOhaneyp+sicfXNwqbV9kSyjMTW3pzbXkYYGaRLveJ2DWDVoFR/L6K5sa3YJMZX0wZZm
-	tj3YE44RD+QGhts+oze0C4L2x4pgYdAPzzkiU4LyA2+VyIQhOSDSysasC0UkdusXhcFEhSgSL
-	JCtJNHCM+4A13Z2tTEoQHumewyme0y1JpG9b9L/yVKt5tZHLTkuU2Ciwgz2LyhUJWKVRVY/QF
-	YLvp/camGlFP1B5thl0mg4Kpiu+XckiVfzfYZTBqX9PRS+EXAp22XdQjtJ5eKlQ1MC7RNtx38
-	ue4/OAer+Te88YyyrGp0NOHcsWz1E9uYrRaMvWh77CiSPfpwDYoglVX9NuOOMDD6yk4k9GEQL
-	XuWeiGNnV1goJnwocasQ+NioLjkB860FSWRdw+JqcdY1bm8lnYuiEjGb+ZCxhDpw/h6VZMcvJ
-	P0mczIDWhGOSshHA
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cUbVp-0007u3-VD; Fri, 20 Jan 2017 10:54:02 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0351C7FE8C;
+	Fri, 20 Jan 2017 15:54:02 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-51.ams2.redhat.com [10.36.116.51])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v0KFrxfm024640; Fri, 20 Jan 2017 10:54:00 -0500
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Date: Fri, 20 Jan 2017 16:53:59 +0100
+Message-Id: <1484927639-3841-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 20 Jan 2017 15:54:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH] usb: Set category and description of the
- MTP device
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/isa/isa-bus: Set category of the
+ "isabus-bridge" device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,33 +47,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Jan 2017 14:14:37 -0000
+X-List-Received-Date: Fri, 20 Jan 2017 15:54:07 -0000
 
-Le 20/01/2017 à 14:11, Thomas Huth a écrit :
-> It's a storage device, so let's classify it accordingly. And
-> while we're at it, also add a short description for people who
-> do not know what MTP means.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/usb/dev-mtp.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-> index 9cb0f50..bb73809 100644
-> --- a/hw/usb/dev-mtp.c
-> +++ b/hw/usb/dev-mtp.c
-> @@ -1580,6 +1580,8 @@ static void usb_mtp_class_initfn(ObjectClass *klass, void *data)
->      uc->handle_reset   = usb_mtp_handle_reset;
->      uc->handle_control = usb_mtp_handle_control;
->      uc->handle_data    = usb_mtp_handle_data;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-> +    dc->desc = "USB Media Transfer Protocol device";
->      dc->fw_name = "mtp";
->      dc->vmsd = &vmstate_usb_mtp;
->      dc->props = mtp_properties;
-> 
+It has "bridge" in its name, so it should be in the category
+DEVICE_CATEGORY_BRIDGE.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/isa/isa-bus.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+index 9d07b11..0ffbc8d 100644
+--- a/hw/isa/isa-bus.c
++++ b/hw/isa/isa-bus.c
+@@ -219,6 +219,7 @@ static void isabus_bridge_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "isa";
+ }
+ 
+-- 
+1.8.3.1
 
 
