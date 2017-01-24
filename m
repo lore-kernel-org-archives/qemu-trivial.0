@@ -1,55 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVxOF-0004Pt-Nm
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:27:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37407)
+	id 1cVxa9-000647-7p
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:40:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cVxOC-0004MK-TO
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:27:45 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxa6-00061b-Eo
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:40:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cVxOC-0005cC-0L
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:27:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41428)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cVxO6-0005bd-JC; Tue, 24 Jan 2017 04:27:38 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AD0F1804F1;
-	Tue, 24 Jan 2017 09:27:38 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-93.ams2.redhat.com
-	[10.36.117.93])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0O9Rbp7023682
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 24 Jan 2017 04:27:38 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CE1A61138645; Tue, 24 Jan 2017 10:27:35 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-References: <1484927639-3841-1-git-send-email-thuth@redhat.com>
-	<0c562336-31a8-5347-1123-810543563fd5@msgid.tls.msk.ru>
-	<15b9c04d-23e3-2166-c2e0-7b5a963350c1@redhat.com>
-Date: Tue, 24 Jan 2017 10:27:35 +0100
-In-Reply-To: <15b9c04d-23e3-2166-c2e0-7b5a963350c1@redhat.com> (Thomas Huth's
-	message of "Tue, 24 Jan 2017 08:48:37 +0100")
-Message-ID: <87r33su7so.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 24 Jan 2017 09:27:38 +0000 (UTC)
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxZz-0000rm-0Y
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:40:02 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:60905)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1cVxZm-0000hL-Vg; Tue, 24 Jan 2017 04:39:43 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 9759642105;
+	Tue, 24 Jan 2017 12:39:42 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id EB01955F;
+	Tue, 24 Jan 2017 12:39:41 +0300 (MSK)
+Received: (nullmailer pid 12630 invoked by uid 1000);
+	Tue, 24 Jan 2017 09:39:41 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Cao jin <caoj.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue, 24 Jan 2017 12:39:15 +0300
+Message-Id: <03801df249b5d2a187a32dcbde8e6159c58d47c3.1485250702.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/isa/isa-bus: Set
- category of the "isabus-bridge" device
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 11/31] pcie: fix typo in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,42 +46,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 09:27:45 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 09:40:03 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+From: Cao jin <caoj.fnst@cn.fujitsu.com>
 
-> On 24.01.2017 08:42, Michael Tokarev wrote:
->> 20.01.2017 18:53, Thomas Huth wrote:
->>> It has "bridge" in its name, so it should be in the category
->>> DEVICE_CATEGORY_BRIDGE.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  hw/isa/isa-bus.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
->>> index 9d07b11..0ffbc8d 100644
->>> --- a/hw/isa/isa-bus.c
->>> +++ b/hw/isa/isa-bus.c
->>> @@ -219,6 +219,7 @@ static void isabus_bridge_class_init(ObjectClass *klass, void *data)
->>>  {
->>>      DeviceClass *dc = DEVICE_CLASS(klass);
->>>  
->>> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
->>>      dc->fw_name = "isa";
->>>  }
->> 
->> Does it have any effect on the guest?
->> ISA is an old thing...
->
-> No, as far as I know, this is just used in qdev_print_devinfos() to
-> print out the devices in nice categories when you start QEMU with
-> "-device ?". Devices that do not have a category bit set show up in the
-> "Uncategorized" section - which tends to get overcrowded if the devices
-> are not sorted into proper categories.
+Signed-off-by: Cao jin <caoj.fnst@cn.fujitsu.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/pci/pcie.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-It's definitely the only effect of dc->categories.
+diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+index adeda04..cbd4bb4 100644
+--- a/hw/pci/pcie.c
++++ b/hw/pci/pcie.c
+@@ -656,7 +656,7 @@ static void pcie_ext_cap_set_next(PCIDevice *dev, uint16_t pos, uint16_t next)
+ }
+ 
+ /*
+- * caller must supply valid (offset, size) * such that the range shouldn't
++ * Caller must supply valid (offset, size) such that the range wouldn't
+  * overlap with other capability or other registers.
+  * This function doesn't check it.
+  */
+-- 
+2.1.4
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
