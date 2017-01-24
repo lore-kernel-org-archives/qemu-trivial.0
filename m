@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVxoZ-0001kf-8n
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:54:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45352)
+	id 1cVxoa-0001mI-Gm
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:55:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45345)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVxoW-0001i0-Jd
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxoW-0001ho-Ao
 	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:54:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVxoV-0005kg-NJ
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxoV-0005ka-Kx
 	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:54:56 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:37948)
+Received: from isrv.corpit.ru ([86.62.121.231]:53181)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cVxoQ-0005iV-8G; Tue, 24 Jan 2017 04:54:50 -0500
+	id 1cVxoQ-0005iU-84; Tue, 24 Jan 2017 04:54:50 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 20E5E42108;
-	Tue, 24 Jan 2017 12:54:48 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 0028F42105;
+	Tue, 24 Jan 2017 12:54:47 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 334B5589;
-	Tue, 24 Jan 2017 12:39:44 +0300 (MSK)
-Received: (nullmailer pid 12647 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A7AAD570;
+	Tue, 24 Jan 2017 12:39:43 +0300 (MSK)
+Received: (nullmailer pid 12659 invoked by uid 1000);
 	Tue, 24 Jan 2017 09:39:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 24 Jan 2017 12:39:23 +0300
-Message-Id: <95d294e069dcfcde3ddeb0a965c8258f98f7dbe6.1485250702.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 24 Jan 2017 12:39:29 +0300
+Message-Id: <05a23aeae1dc56b7f26c1a348fd6d31790f6baa6.1485250702.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
@@ -34,8 +34,8 @@ References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 19/31] disas/cris.c: Fix Coverity warning
- about unchecked NULL
+Subject: [Qemu-trivial] [PULL 25/31] hw/display/framebuffer.c: Avoid
+ overflow for framebuffers > 4GB
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,32 +51,30 @@ X-List-Received-Date: Tue, 24 Jan 2017 09:54:57 -0000
 
 From: Peter Maydell <peter.maydell@linaro.org>
 
-Coverity (CID 1005689) warns that we don't check that
-spec_reg_info() returned non-NULL before dereferencing.
-Add the check, though as the comment notes this is
-a can't-really-happen case because the earlier constraint
-matching should have ruled out the "unknown reg" case.
+Coverity points out that calculating src_len by multiplying
+src_width by rows could overflow. This can only happen in
+the implausible case of a framebuffer larger than 4GB, but
+we may as well fix it, placating Coverity. (CID1005515)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- disas/cris.c | 2 +-
+ hw/display/framebuffer.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/disas/cris.c b/disas/cris.c
-index 08161d1..8a1daf9 100644
---- a/disas/cris.c
-+++ b/disas/cris.c
-@@ -2490,7 +2490,7 @@ print_with_operands (const struct cris_opcode *opcodep,
- 	const struct cris_spec_reg *sregp
- 	  = spec_reg_info ((insn >> 12) & 15, disdata->distype);
+diff --git a/hw/display/framebuffer.c b/hw/display/framebuffer.c
+index df51358..25aa46c 100644
+--- a/hw/display/framebuffer.c
++++ b/hw/display/framebuffer.c
+@@ -78,7 +78,7 @@ void framebuffer_update_display(
  
--	if (sregp->name == NULL)
-+	if (sregp == NULL || sregp->name == NULL)
- 	  /* Should have been caught as a non-match earlier.  */
- 	  *tp++ = '?';
- 	else
+     i = *first_row;
+     *first_row = -1;
+-    src_len = src_width * rows;
++    src_len = (hwaddr)src_width * rows;
+ 
+     mem = mem_section->mr;
+     if (!mem) {
 -- 
 2.1.4
 
