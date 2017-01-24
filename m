@@ -1,43 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVzqN-0000mX-Ir
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 07:04:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47352)
+	id 1cW11w-0001Do-8n
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 08:21:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42961)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVzqI-0000hI-J6
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 07:04:58 -0500
+	(envelope-from <no-reply@patchew.org>) id 1cW11q-00019X-Og
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 08:20:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVzqH-00009a-Ml
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 07:04:54 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:53915)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1cVzqC-00005Q-B1; Tue, 24 Jan 2017 07:04:48 -0500
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id CB0D34212B;
-	Tue, 24 Jan 2017 15:04:47 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 23318569;
-	Tue, 24 Jan 2017 12:39:43 +0300 (MSK)
-Received: (nullmailer pid 12628 invoked by uid 1000);
-	Tue, 24 Jan 2017 09:39:41 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 24 Jan 2017 12:39:14 +0300
-Message-Id: <35109e5b912c2c6658e9f6873da9c9f193a7083e.1485250702.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <no-reply@patchew.org>) id 1cW11l-0006gx-NR
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 08:20:54 -0500
+Resent-Date: Tue, 24 Jan 2017 08:20:54 -0500
+Resent-Message-Id: <E1cW11l-0006gx-NR@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21329)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cW11l-0006gb-EF; Tue, 24 Jan 2017 08:20:49 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1485264037116750.8535871357127;
+	Tue, 24 Jan 2017 05:20:37 -0800 (PST)
+Reply-To: <qemu-devel@nongnu.org>
 In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+Message-ID: <148526403593.27.6370518566042568620@eba24e3a0d7f>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 10/31] object: make some funcs static
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: mjt@tls.msk.ru
+Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru
+Date: Tue, 24 Jan 2017 05:20:37 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/31] Trivial patches for
+ 2017-01-24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,91 +44,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 12:04:58 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 13:20:59 -0000
 
-From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-There is no need to have those functions as public API.
-
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- include/qom/object.h | 24 ------------------------
- qom/object.c         |  4 ++--
- 2 files changed, 2 insertions(+), 26 deletions(-)
-
-diff --git a/include/qom/object.h b/include/qom/object.h
-index c5e6fc1..cd0f412 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -587,18 +587,6 @@ struct InterfaceClass
- Object *object_new(const char *typename);
-=20
- /**
-- * object_new_with_type:
-- * @type: The type of the object to instantiate.
-- *
-- * This function will initialize a new object using heap allocated memor=
-y.
-- * The returned object has a reference count of 1, and will be freed whe=
-n
-- * the last reference is dropped.
-- *
-- * Returns: The newly allocated and instantiated object.
-- */
--Object *object_new_with_type(Type type);
--
--/**
-  * object_new_with_props:
-  * @typename:  The name of the type of the object to instantiate.
-  * @parent: the parent object
-@@ -727,18 +715,6 @@ int object_set_propv(Object *obj,
-                      va_list vargs);
-=20
- /**
-- * object_initialize_with_type:
-- * @data: A pointer to the memory to be used for the object.
-- * @size: The maximum size available at @data for the object.
-- * @type: The type of the object to instantiate.
-- *
-- * This function will initialize an object.  The memory for the object s=
-hould
-- * have already been allocated.  The returned object has a reference cou=
-nt of 1,
-- * and will be finalized when the last reference is dropped.
-- */
--void object_initialize_with_type(void *data, size_t size, Type type);
--
--/**
-  * object_initialize:
-  * @obj: A pointer to the memory to be used for the object.
-  * @size: The maximum size available at @obj for the object.
-diff --git a/qom/object.c b/qom/object.c
-index 760fafb..eb4bc92 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -357,7 +357,7 @@ static void object_post_init_with_type(Object *obj, T=
-ypeImpl *ti)
-     }
- }
-=20
--void object_initialize_with_type(void *data, size_t size, TypeImpl *type=
-)
-+static void object_initialize_with_type(void *data, size_t size, TypeImp=
-l *type)
- {
-     Object *obj =3D data;
-=20
-@@ -473,7 +473,7 @@ static void object_finalize(void *data)
-     }
- }
-=20
--Object *object_new_with_type(Type type)
-+static Object *object_new_with_type(Type type)
- {
-     Object *obj;
-=20
---=20
-2.1.4
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzClN1
+YmplY3Q6IFtRZW11LWRldmVsXSBbUFVMTCAwMC8zMV0gVHJpdmlhbCBwYXRjaGVzIGZvciAyMDE3
+LTAxLTI0Ck1lc3NhZ2UtaWQ6IGNvdmVyLjE0ODUyNTA3MDIuZ2l0Lm1qdEBtc2dpZC50bHMubXNr
+LnJ1Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0x
+CnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBV
+c2VmdWwgZ2l0IG9wdGlvbnMKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAt
+LWZvcm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAg
+ZWNobyAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0l
+cyAkYykuLi4iCiAgICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRz
+L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAg
+ICBlY2hvCiAgICBmaQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1Qg
+U0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4
+ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKIC0g
+W3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDE3MDEyMDE3MDc1Ny4zMDMwOC0xLXBib256aW5p
+QHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE3MDEyMDE3MDc1Ny4zMDMwOC0xLXBib256aW5pQHJl
+ZGhhdC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy9jb3Zlci4xNDg1MjUwNzAyLmdp
+dC5tanRAbXNnaWQudGxzLm1zay5ydSAtPiBwYXRjaGV3L2NvdmVyLjE0ODUyNTA3MDIuZ2l0Lm1q
+dEBtc2dpZC50bHMubXNrLnJ1ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKOTRiYjQ3
+NiBody9pc2EvaXNhLWJ1czogU2V0IGNhdGVnb3J5IG9mIHRoZSAiaXNhYnVzLWJyaWRnZSIgZGV2
+aWNlCmU3ZDBlNDEgdXNiOiBTZXQgY2F0ZWdvcnkgYW5kIGRlc2NyaXB0aW9uIG9mIHRoZSBNVFAg
+ZGV2aWNlCjRjNDY1ZWUgZ2Ric3R1Yi5jOiB1cGRhdGUgb2xkIGVycm9yIHJlcG9ydCBzdGF0ZW1l
+bnRzCmM3OTM0YzAgZ2Ric3R1Yi5jOiBmaXggR0RCIGNvbm5lY3Rpb24gc2VnZmF1bHQgY2F1c2Vk
+IGJ5IGVtcHR5IG1hY2hpbmVzCjU5NzMyNjUgc2NzaS1kaXNrOiBhZGQgJ2ZhbGwgdGhyb3VnaCcg
+Y29tbWVudCB0byBzd2l0Y2ggVkVSSUZZIGNhc2VzCjJmN2I3M2YgRHJvcCBkdXBsaWNhdGUgZGlz
+cGxheSBvcHRpb24gZG9jdW1lbnRhdGlvbgowY2U1NzRhIGh3L2Rpc3BsYXkvZnJhbWVidWZmZXIu
+YzogQXZvaWQgb3ZlcmZsb3cgZm9yIGZyYW1lYnVmZmVycyA+IDRHQgo4ZWU4NjI3IHdpbjMyOiB1
+c2UgZ2xpYiBncG9sbCBpZiBnbGliID49IDIuNTAKNjA4NDQ5MSB1dGlsL21tYXAtYWxsb2M6IHJl
+ZmFjdG9yIGEgbGl0dGxlIGJpdCBmb3IgcmVhZGFiaWxpdHkKNGFiOTEzMCB1dGlsL21tYXAtYWxs
+b2M6IGNoZWNrIHBhcmFtZXRlciBiZWZvcmUgdXNpbmcKN2JiN2Y2NSB2ZmlvOiByZW1vdmUgYSBk
+dXBsaWNhdGVkIHdvcmQgaW4gY29tbWVudHMKODE0MmZhOSBkb2NzOiBzeW5jIHBjaS1pZHMudHh0
+CjJmODFlODQgZGlzYXMvY3Jpcy5jOiBGaXggQ292ZXJpdHkgd2FybmluZyBhYm91dCB1bmNoZWNr
+ZWQgTlVMTAphY2JhM2I2IGxtMzI6IG1pbGt5bWlzdC10bXUyOiBmaXggYW5vdGhlciBpbnRlZ2Vy
+IG92ZXJmbG93CjhiNTY4OTkgaHcvaTM4Ni9rdm12YXBpYzogUmVtb3ZlIGRlYWQgY29kZSBpbiBw
+YXRjaF9oeXBlcmNhbGxzKCkKYWMzZGYxMCBkb2MvdXNiMjogZml4IHR5cG8KNzc5ZDY0NSBxZ2E6
+IGZpeCBlcnJvbmVvdXMgYXJndW1lbnQgdG8gc3RyZXJyb3IKZTlkNmY4MCBibG9jazogcmVtb3Zl
+IGRlYWQgY2hlY2sKOTcyOTliMiBwY2ktYXNzaWduOiBhdm9pZCBwb2ludGxlc3Mgc3RhdApjODA5
+MDNjIHFlbXUtaW1nOiByZW1vdmUgZGVhZCBjaGVjawo2Nzc1Y2I5IHBjaWU6IGZpeCB0eXBvIGlu
+IGNvbW1lbnRzCjM4MTk5Yzkgb2JqZWN0OiBtYWtlIHNvbWUgZnVuY3Mgc3RhdGljCjBiYmY4NDMg
+b2JqZWN0Lmg6IHNwZWxsaW5nIGZpeAo5ZDY5MTllIHVzYjogRml4IHR5cG8gaW4gZG9jdW1lbnRh
+dGlvbgpiOWM4YTU2IHFlbXUtb3B0aW9uczogY2xlYW51cCBkdXBsaWNhdGVkIGhlbHAgbWVzc2Fn
+ZSBmb3Iga2VybmVsX2lycWNoaXAKY2VhNjViMCBodzogRml4IHR5cG9zIGZvdW5kIGJ5IGNvZGVz
+cGVsbAo5MmI5YTIwIGluY2x1ZGU6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwKMjRiYTZh
+YSBGaXggZG9jdW1lbnRhdGlvbiBhbmQgc29tZSBjb21tZW50cyAoYXJ0aWNsZSwgZ3JhbW1hcikK
+Y2RhYjE0OCBSRUFETUU6IEFkZCBsaW51eCB0byBtYWNPUyBidWlsZCBpbmZvCmY4ZGVhOGIgaHcv
+YmxvY2svbTI1cDgwOiBGaXggdHlwbyBpbiBsb2NhbCBtYWNybyBuYW1lCjNmY2QxMDIgZG9jOiBk
+b24ndCBtZW50aW9uIC1tZW1vcnksIGl0IGlzIC1tCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVj
+a2luZyBQQVRDSCAxLzMxOiBkb2M6IGRvbid0IG1lbnRpb24gLW1lbW9yeSwgaXQgaXMgLW0uLi4K
+Q2hlY2tpbmcgUEFUQ0ggMi8zMTogaHcvYmxvY2svbTI1cDgwOiBGaXggdHlwbyBpbiBsb2NhbCBt
+YWNybyBuYW1lLi4uCkNoZWNraW5nIFBBVENIIDMvMzE6IFJFQURNRTogQWRkIGxpbnV4IHRvIG1h
+Y09TIGJ1aWxkIGluZm8uLi4KQ2hlY2tpbmcgUEFUQ0ggNC8zMTogRml4IGRvY3VtZW50YXRpb24g
+YW5kIHNvbWUgY29tbWVudHMgKGFydGljbGUsIGdyYW1tYXIpLi4uCkNoZWNraW5nIFBBVENIIDUv
+MzE6IGluY2x1ZGU6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwuLi4KQ2hlY2tpbmcgUEFU
+Q0ggNi8zMTogaHc6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwuLi4KV0FSTklORzogbGlu
+ZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzExMjogRklMRTogaHcvbmV0L3NwYXByX2xsYW4uYzo1NjI6
+CisgICAgICAgICAqIHBvb2xzIGJlZm9yZSwgYnV0IGNoYW5nZWQgdGhlIHNpemUgb2Ygb25lIHBv
+b2wgaW4gdGhlIG1lYW50aW1lLCB3ZSBtaWdodAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdz
+LCAxMTQgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFz
+ZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVw
+b3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJT
+LgpDaGVja2luZyBQQVRDSCA3LzMxOiBxZW11LW9wdGlvbnM6IGNsZWFudXAgZHVwbGljYXRlZCBo
+ZWxwIG1lc3NhZ2UgZm9yIGtlcm5lbF9pcnFjaGlwLi4uCkNoZWNraW5nIFBBVENIIDgvMzE6IHVz
+YjogRml4IHR5cG8gaW4gZG9jdW1lbnRhdGlvbi4uLgpDaGVja2luZyBQQVRDSCA5LzMxOiBvYmpl
+Y3QuaDogc3BlbGxpbmcgZml4Li4uCkNoZWNraW5nIFBBVENIIDEwLzMxOiBvYmplY3Q6IG1ha2Ug
+c29tZSBmdW5jcyBzdGF0aWMuLi4KQ2hlY2tpbmcgUEFUQ0ggMTEvMzE6IHBjaWU6IGZpeCB0eXBv
+IGluIGNvbW1lbnRzLi4uCkNoZWNraW5nIFBBVENIIDEyLzMxOiBxZW11LWltZzogcmVtb3ZlIGRl
+YWQgY2hlY2suLi4KQ2hlY2tpbmcgUEFUQ0ggMTMvMzE6IHBjaS1hc3NpZ246IGF2b2lkIHBvaW50
+bGVzcyBzdGF0Li4uCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMzNDogRklMRTog
+aHcvaTM4Ni9wY2ktYXNzaWduLWxvYWQtcm9tLmM6NDY6CisgICAgICAgICAgICBlcnJvcl9yZXBv
+cnQoInBjaS1hc3NpZ246IENhbm5vdCBvcGVuICVzOiAlcyIsIHJvbV9maWxlLCBzdHJlcnJvcihl
+cnJubykpOwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzM5OiBGSUxFOiBody9p
+Mzg2L3BjaS1hc3NpZ24tbG9hZC1yb20uYzo1MToKKyAgICAgICAgZXJyb3JfcmVwb3J0KCJwY2kt
+YXNzaWduOiBDYW5ub3Qgc3RhdCAlczogJXMiLCByb21fZmlsZSwgc3RyZXJyb3IoZXJybm8pKTsK
+CnRvdGFsOiAwIGVycm9ycywgMiB3YXJuaW5ncywgMjcgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRj
+aCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJy
+b3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNl
+ZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRDSCAxNC8zMTogYmxvY2s6
+IHJlbW92ZSBkZWFkIGNoZWNrLi4uCkNoZWNraW5nIFBBVENIIDE1LzMxOiBxZ2E6IGZpeCBlcnJv
+bmVvdXMgYXJndW1lbnQgdG8gc3RyZXJyb3IuLi4KQ2hlY2tpbmcgUEFUQ0ggMTYvMzE6IGRvYy91
+c2IyOiBmaXggdHlwby4uLgpDaGVja2luZyBQQVRDSCAxNy8zMTogaHcvaTM4Ni9rdm12YXBpYzog
+UmVtb3ZlIGRlYWQgY29kZSBpbiBwYXRjaF9oeXBlcmNhbGxzKCkuLi4KQ2hlY2tpbmcgUEFUQ0gg
+MTgvMzE6IGxtMzI6IG1pbGt5bWlzdC10bXUyOiBmaXggYW5vdGhlciBpbnRlZ2VyIG92ZXJmbG93
+Li4uCkNoZWNraW5nIFBBVENIIDE5LzMxOiBkaXNhcy9jcmlzLmM6IEZpeCBDb3Zlcml0eSB3YXJu
+aW5nIGFib3V0IHVuY2hlY2tlZCBOVUxMLi4uCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
+ZXIgdXNlIHRhYnMKIzI2OiBGSUxFOiBkaXNhcy9jcmlzLmM6MjQ5MzoKK15JaWYgKHNyZWdwID09
+IE5VTEwgfHwgc3JlZ3AtPm5hbWUgPT0gTlVMTCkkCgpFUlJPUjogc3VzcGVjdCBjb2RlIGluZGVu
+dCBmb3IgY29uZGl0aW9uYWwgc3RhdGVtZW50cyAoOCwgMTApCiMyNjogRklMRTogZGlzYXMvY3Jp
+cy5jOjI0OTM6CisJaWYgKHNyZWdwID09IE5VTEwgfHwgc3JlZ3AtPm5hbWUgPT0gTlVMTCkKIAkg
+IC8qIFNob3VsZCBoYXZlIGJlZW4gY2F1Z2h0IGFzIGEgbm9uLW1hdGNoIGVhcmxpZXIuICAqLwoK
+RVJST1I6IGJyYWNlcyB7fSBhcmUgbmVjZXNzYXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRl
+bWVudAojMjY6IEZJTEU6IGRpc2FzL2NyaXMuYzoyNDkzOgorCWlmIChzcmVncCA9PSBOVUxMIHx8
+IHNyZWdwLT5uYW1lID09IE5VTEwpClsuLi5dCgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3Ms
+IDggbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSBy
+ZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0
+IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoK
+Q2hlY2tpbmcgUEFUQ0ggMjAvMzE6IGRvY3M6IHN5bmMgcGNpLWlkcy50eHQuLi4KQ2hlY2tpbmcg
+UEFUQ0ggMjEvMzE6IHZmaW86IHJlbW92ZSBhIGR1cGxpY2F0ZWQgd29yZCBpbiBjb21tZW50cy4u
+LgpDaGVja2luZyBQQVRDSCAyMi8zMTogdXRpbC9tbWFwLWFsbG9jOiBjaGVjayBwYXJhbWV0ZXIg
+YmVmb3JlIHVzaW5nLi4uCkNoZWNraW5nIFBBVENIIDIzLzMxOiB1dGlsL21tYXAtYWxsb2M6IHJl
+ZmFjdG9yIGEgbGl0dGxlIGJpdCBmb3IgcmVhZGFiaWxpdHkuLi4KQ2hlY2tpbmcgUEFUQ0ggMjQv
+MzE6IHdpbjMyOiB1c2UgZ2xpYiBncG9sbCBpZiBnbGliID49IDIuNTAuLi4KQ2hlY2tpbmcgUEFU
+Q0ggMjUvMzE6IGh3L2Rpc3BsYXkvZnJhbWVidWZmZXIuYzogQXZvaWQgb3ZlcmZsb3cgZm9yIGZy
+YW1lYnVmZmVycyA+IDRHQi4uLgpDaGVja2luZyBQQVRDSCAyNi8zMTogRHJvcCBkdXBsaWNhdGUg
+ZGlzcGxheSBvcHRpb24gZG9jdW1lbnRhdGlvbi4uLgpDaGVja2luZyBQQVRDSCAyNy8zMTogc2Nz
+aS1kaXNrOiBhZGQgJ2ZhbGwgdGhyb3VnaCcgY29tbWVudCB0byBzd2l0Y2ggVkVSSUZZIGNhc2Vz
+Li4uCkNoZWNraW5nIFBBVENIIDI4LzMxOiBnZGJzdHViLmM6IGZpeCBHREIgY29ubmVjdGlvbiBz
+ZWdmYXVsdCBjYXVzZWQgYnkgZW1wdHkgbWFjaGluZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggMjkvMzE6
+IGdkYnN0dWIuYzogdXBkYXRlIG9sZCBlcnJvciByZXBvcnQgc3RhdGVtZW50cy4uLgpDaGVja2lu
+ZyBQQVRDSCAzMC8zMTogdXNiOiBTZXQgY2F0ZWdvcnkgYW5kIGRlc2NyaXB0aW9uIG9mIHRoZSBN
+VFAgZGV2aWNlLi4uCkNoZWNraW5nIFBBVENIIDMxLzMxOiBody9pc2EvaXNhLWJ1czogU2V0IGNh
+dGVnb3J5IG9mIHRoZSAiaXNhYnVzLWJyaWRnZSIgZGV2aWNlLi4uCj09PSBPVVRQVVQgRU5EID09
+PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVk
+IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBz
+ZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
 
 
