@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cW4P7-00063F-SK
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 11:57:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32953)
+	id 1cW4rY-0003La-35
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 12:26:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42753)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cW4P5-00061L-A7
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:57:08 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cW4rW-0003K5-5N
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 12:26:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cW4P4-0007zn-H1
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:57:07 -0500
-Received: from mail-ua0-x235.google.com ([2607:f8b0:400c:c08::235]:36257)
+	(envelope-from <peter.maydell@linaro.org>) id 1cW4rV-0001Qa-CG
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 12:26:30 -0500
+Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:35078)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cW4P4-0007zR-Cn
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:57:06 -0500
-Received: by mail-ua0-x235.google.com with SMTP id 96so138374219uaq.3
-	for <qemu-trivial@nongnu.org>; Tue, 24 Jan 2017 08:57:06 -0800 (PST)
+	id 1cW4rV-0001QL-8D
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 12:26:29 -0500
+Received: by mail-ua0-x230.google.com with SMTP id y9so139734587uae.2
+	for <qemu-trivial@nongnu.org>; Tue, 24 Jan 2017 09:26:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=y09sZZg8u0TP7uGGrk7cmgUBmV/mIdOBSDSBl//aYUs=;
-	b=QcMTy74mKX9bUD/9/gZIkFNI5sBFeDix5cMqnNFluZbcuN0FP1CxoNVP8V0vuGmpYv
-	Lb5CLCgSHDBKXXAIt5iX4LXrFVW66C1hp/g2PntvgD1lRdUsO86wv1qKKKQYQkhoyF7H
-	gCbQfoFe03Mk3KGQbjAkP/cDpq/HtzQah+8kg=
+	:cc:content-transfer-encoding;
+	bh=u2xnOEwZEAjySZ80+7bmE3NHvE8mIpFzs2QX1yaahiQ=;
+	b=gsxjJm2yfpXDJFiFuBYCSUWVcIvqCEbIC7hnftmWkMMeQG8GqcM67VOH6BlpMpw9Dg
+	iiWv+BDbaZ5PcPD6iwCpmLenjRFaG1LHDYR0LTpvz+ft2VLMlfI0G2hMFE7sj0II57k4
+	TUWOrTgWtoh6fQPCR7TXzy7WlAEG0zKCM9Dho=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=y09sZZg8u0TP7uGGrk7cmgUBmV/mIdOBSDSBl//aYUs=;
-	b=jwt3tmbVP/cvpfIMxX+h0SdthrNi28/StyvG6HnFRnXMXefO+40IHWZaKWGQRbNq16
-	0dE1z9IKsRBv9NmHF4l27dFYrSlsuXRHxEMG57Fpv4kHBg6eswV8SU0Lfd/mViFP+Br/
-	OJN6DcYuHeWJhe3RrGL6xeOhclxx6mb1jBqfhwFDy8684zU+0WkY+fhaH3YM3gLRRimT
-	WbqJUJSIeVIthWJROWKyrvA1BzNaEOkIqz9GaNJPdKDkzY6EYoL8Pie/2lbgjuoxea+Z
-	XFibb6OnLMbc9WGElVCSsv+zWXITOVJ4OCFqNPEyeah99E1kV/Vsx0CCsJg5MSTMJQ6J
-	dvTA==
-X-Gm-Message-State: AIkVDXIW4I2+z/otgNubS9BBBATQVH9s7jNp6/QH4yNe0epQDFjylzmNgFsKcGTVKtGHe40MrXLqS5QDe02uwp83
-X-Received: by 10.159.37.1 with SMTP id 1mr18622310uaz.2.1485277025738; Tue,
-	24 Jan 2017 08:57:05 -0800 (PST)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=u2xnOEwZEAjySZ80+7bmE3NHvE8mIpFzs2QX1yaahiQ=;
+	b=gOZIM1VTjrmozZkG6zXVfaafYV+2kscsd99/nljNQM78AoqDeBqNvOXDmMhCAsXkLa
+	9dzwuKIDnPZoRNG8z+3w81XsQ4uECJOKY2jDeK6vnKkQZSUZApyNCss+FS3BMqZfaByY
+	BdmEXuvtUFTIHOZ4USQsLUbTnB6IhE97o2MsbFHoLcF14/uEhSHizfwzHwPULPLUM6Lv
+	IArOHhcXf+4xAFsGdG2B8HssM/mFOKWUkj+DRzl5gTVqD0vtGGq8ZFRI5WJTtMK8we+B
+	Sz2E5jn9NCZLPZ+elCstNbIILGDyPEfNo87bf7ZBWu4/07zMvP0fhv/99o3MZYHITW77
+	a4Ug==
+X-Gm-Message-State: AIkVDXIoA0K1Ox6dJLAPf2n23ZfHp6uFMuLtQWGFwomeBA4iB1lztO09L2GnsK0TftIjl2T0/olmbN3k7fm9RCRr
+X-Received: by 10.159.39.233 with SMTP id b96mr19107589uab.86.1485278788656;
+	Tue, 24 Jan 2017 09:26:28 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Tue, 24 Jan 2017 08:56:45 -0800 (PST)
-In-Reply-To: <CAFEAcA8EYZy4C3mmOfZUGUBENvdWOsADMCyG3fyoYAdMa-qBxQ@mail.gmail.com>
+Received: by 10.31.176.14 with HTTP; Tue, 24 Jan 2017 09:26:08 -0800 (PST)
+In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA8EYZy4C3mmOfZUGUBENvdWOsADMCyG3fyoYAdMa-qBxQ@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Jan 2017 16:56:45 +0000
-Message-ID: <CAFEAcA-=4h61JXkovzXsVMW9z47FiWKQmcuuH73h-Tcbe1_srw@mail.gmail.com>
+Date: Tue, 24 Jan 2017 17:26:08 +0000
+Message-ID: <CAFEAcA-eXHbKc081aVe5MxXpTTvdYE++TU61iYLboSAtFYTknQ@mail.gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::235
+X-Received-From: 2607:f8b0:400c:c08::230
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/31] Trivial patches for
  2017-01-24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,40 +63,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 16:57:08 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 17:26:31 -0000
 
-On 24 January 2017 at 16:55, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 24 January 2017 at 09:39, Michael Tokarev <mjt@tls.msk.ru> wrote:
->> Hi!
->> This is a next trivial-patches pull request after a long while.
->> We had a new release (2.8), new year holidays and other stuff.
->> So here we go now with whatever has been collected so far.
->>
->> Please consider applying.
->>
->> Thanks,
->>
->> /mjt
->>
->> The following changes since commit 3879284d6517dc22529395bdb259f4183b589127:
->>
->>   Merge remote-tracking branch 'remotes/berrange/tags/pull-qio-2017-01-23-2' into staging (2017-01-23 15:59:09 +0000)
->>
->> are available in the git repository at:
->>
->>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
->>
->> for you to fetch changes up to bed534dd4032446750ad3e7a806c24d81bc5851b:
->>
->>   hw/isa/isa-bus: Set category of the "isabus-bridge" device (2017-01-24 12:38:03 +0300)
->>
->> ----------------------------------------------------------------
->> trivial patches for 2017-01-24
->>
+On 24 January 2017 at 09:39, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Hi!
+> This is a next trivial-patches pull request after a long while.
+> We had a new release (2.8), new year holidays and other stuff.
+> So here we go now with whatever has been collected so far.
 >
-> Applied, thanks.
+> Please consider applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 3879284d6517dc22529395bdb259f4183b5891=
+27:
+>
+>   Merge remote-tracking branch 'remotes/berrange/tags/pull-qio-2017-01-23=
+-2' into staging (2017-01-23 15:59:09 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to bed534dd4032446750ad3e7a806c24d81bc5851b:
+>
+>   hw/isa/isa-bus: Set category of the "isabus-bridge" device (2017-01-24 =
+12:38:03 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-01-24
+>
+> ----------------------------------------------------------------
 
-whoops, replied to wrong mail. This one's still processing.
+This failed to build, all targets:
+
+/home/petmay01/linaro/qemu-for-merges/arch_init.c:95:5: error: no
+previous prototype for =E2=80=98qemu_read_default_config_files=E2=80=99
+[-Werror=3Dmissing-prototypes]
+
+I suspect this may be the result of merge conflicts getting
+wrongly resolved -- can you rebase and resend, please?
 
 thanks
 -- PMM
