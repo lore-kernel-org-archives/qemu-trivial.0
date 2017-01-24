@@ -1,35 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cW7Qo-0005PP-GV
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 15:11:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36784)
+	id 1cW7iU-0003Ws-Dw
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 15:29:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39088)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <caliborn@SDF.ORG>) id 1cW6f6-0005Ff-0I
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 14:21:51 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cW7iS-0003VP-9s
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 15:29:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <caliborn@SDF.ORG>) id 1cW6f3-0002EL-SU
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 14:21:47 -0500
-Received: from mx.sdf.org ([205.166.94.20]:59470)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <caliborn@SDF.ORG>)
-	id 1cW6ev-00028g-IV; Tue, 24 Jan 2017 14:21:37 -0500
-Received: from sdf.lonestar.org (IDENT:caliborn@sdf.lonestar.org
-	[205.166.94.15])
-	by mx.sdf.org (8.15.2/8.14.5) with ESMTPS id v0OIuWOs010631
-	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256 bits) verified NO);
-	Tue, 24 Jan 2017 18:56:33 GMT
-Date: Tue, 24 Jan 2017 18:56:32 +0000 (UTC)
-From: Valentin Plotkin <caliborn@SDF.ORG>
-X-X-Sender: caliborn@sdf.lonestar.org
-To: qemu-trivial@nongnu.org
-cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org
-Message-ID: <Pine.NEB.4.64.1701241855380.2138@sdf.lonestar.org>
+	(envelope-from <mjt@tls.msk.ru>) id 1cW7iQ-00036G-KW
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 15:29:20 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:58715)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1cW7iL-00032E-1Y; Tue, 24 Jan 2017 15:29:13 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 5835E4217B;
+	Tue, 24 Jan 2017 23:29:13 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 8987F52F;
+	Tue, 24 Jan 2017 23:29:11 +0300 (MSK)
+Received: (nullmailer pid 30530 invoked by uid 1000);
+	Tue, 24 Jan 2017 20:29:11 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Tue, 24 Jan 2017 23:29:08 +0300
+Message-Id: <cover.1485289633.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 MIME-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 205.166.94.20
-X-Mailman-Approved-At: Tue, 24 Jan 2017 15:11:05 -0500
-Subject: [Qemu-trivial] [PATCH] PPC: MMU compatibility check.
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 00/31] Trivial patches for 2017-01-24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,87 +44,134 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 19:21:51 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 20:29:21 -0000
 
+Rebased, yes it was a trivial merge conflict (a trivial patch
+changed comment in a removed section of a file). The same as
+before, with the merge conflict fixed and an r-b added.
 
+Not resending other stuff, just the cover letter.
 
-Hi everyone,
+Thanks,
 
-I looked at the "qemu-system-ppc -nographic -cpu G2leGP3 -M ppce500" on 
-the BiteSizedTasks page. The segfault was caused by machine initialization 
-code which expected a certain MMU model, checked, so unused SPR were read, 
-returning zeros. bamboo and virtex machines are affected as well, but it 
-doesn't always cause segfault, usually running into unmapped memory and 
-failing somewhat more nicely.
+/mjt
 
-I added the checks. It would be possible to add support for other MMU 
-models, but I'm not sure if there is any point (would any guest OS support 
-mutually exclusive CPU and machine)?
+The following changes since commit a9e404600a9bd1e6a26431fc89e5069092e67f=
+14:
 
----
-  hw/ppc/e500.c          | 5 +++++
-  hw/ppc/ppc440_bamboo.c | 5 +++++
-  hw/ppc/virtex_ml507.c  | 5 +++++
-  3 files changed, 15 insertions(+)
+  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20170124' into =
+staging (2017-01-24 17:26:26 +0000)
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index cf8b122..cd352f6 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -631,6 +631,11 @@ static uint64_t mmubooke_initial_mapsize(CPUPPCState 
-*env)
+are available in the git repository at:
 
-  static void mmubooke_create_initial_mapping(CPUPPCState *env)
-  {
-+    if(env->mmu_model!=POWERPC_MMU_BOOKE206){
-+        fprintf(stderr,"MMU model %i not supported by this machine.\n", 
-env->mmu_model);
-+        exit(-1);
-+    }
-+
-      ppcmas_tlb_t *tlb = booke206_get_tlbm(env, 1, 0, 0);
-      hwaddr size;
-      int ps;
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index 5c535b1..61e7028 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -124,6 +124,11 @@ static void 
-mmubooke_create_initial_mapping(CPUPPCState *env,
-                                       target_ulong va,
-                                       hwaddr pa)
-  {
-+    if(env->mmu_model!=POWERPC_MMU_BOOKE){
-+        fprintf(stderr,"MMU model %i not supported by this machine.\n", 
-env->mmu_model);
-+        exit(-1);
-+    }
-+
-      ppcemb_tlb_t *tlb = &env->tlb.tlbe[0];
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
 
-      tlb->attr = 0;
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index b97d966..4041ff3 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -69,6 +69,11 @@ static void mmubooke_create_initial_mapping(CPUPPCState 
-*env,
-                                       target_ulong va,
-                                       hwaddr pa)
-  {
-+    if(env->mmu_model!=POWERPC_MMU_BOOKE){
-+        fprintf(stderr,"MMU model %i not supported by this machine.\n", 
-env->mmu_model);
-+        exit(-1);
-+    }
-+
-      ppcemb_tlb_t *tlb = &env->tlb.tlbe[0];
+for you to fetch changes up to 5658ffa39aae034458231bc4abfee57637b88c6e:
 
-      tlb->attr = 0;
--- 
-2.5.5
+  hw/isa/isa-bus: Set category of the "isabus-bridge" device (2017-01-24 =
+23:26:54 +0300)
 
-Valentin Plotkin
-caliborn@sdf.org
-SDF Public Access UNIX System - http://sdf.org
+----------------------------------------------------------------
+trivial patches for 2017-01-24
+
+----------------------------------------------------------------
+Cao jin (5):
+      pcie: fix typo in comments
+      doc/usb2: fix typo
+      vfio: remove a duplicated word in comments
+      util/mmap-alloc: check parameter before using
+      util/mmap-alloc: refactor a little bit for readability
+
+Frediano Ziglio (1):
+      usb: Fix typo in documentation
+
+Gerd Hoffmann (1):
+      docs: sync pci-ids.txt
+
+Marc-Andr=C3=A9 Lureau (3):
+      object.h: spelling fix
+      object: make some funcs static
+      win32: use glib gpoll if glib >=3D 2.50
+
+Michael Tokarev (1):
+      doc: don't mention -memory, it is -m
+
+Paolo Bonzini (4):
+      qemu-img: remove dead check
+      pci-assign: avoid pointless stat
+      block: remove dead check
+      qga: fix erroneous argument to strerror
+
+Peter Maydell (6):
+      README: Add linux to macOS build info
+      hw/i386/kvmvapic: Remove dead code in patch_hypercalls()
+      lm32: milkymist-tmu2: fix another integer overflow
+      disas/cris.c: Fix Coverity warning about unchecked NULL
+      hw/display/framebuffer.c: Avoid overflow for framebuffers > 4GB
+      scsi-disk: add 'fall through' comment to switch VERIFY cases
+
+Po-Hsu Lin (1):
+      qemu-options: cleanup duplicated help message for kernel_irqchip
+
+Samuel Thibault (1):
+      Drop duplicate display option documentation
+
+Stefan Weil (4):
+      hw/block/m25p80: Fix typo in local macro name
+      Fix documentation and some comments (article, grammar)
+      include: Fix typos found by codespell
+      hw: Fix typos found by codespell
+
+Thomas Huth (2):
+      usb: Set category and description of the MTP device
+      hw/isa/isa-bus: Set category of the "isabus-bridge" device
+
+Ziyue Yang (2):
+      gdbstub.c: fix GDB connection segfault caused by empty machines
+      gdbstub.c: update old error report statements
+
+ README                         |  1 +
+ block.c                        |  2 +-
+ disas/cris.c                   |  2 +-
+ docs/specs/pci-ids.txt         |  3 +++
+ docs/usb-storage.txt           |  2 +-
+ docs/usb2.txt                  |  2 +-
+ gdbstub.c                      | 17 ++++++++++++-----
+ hw/block/m25p80.c              |  4 ++--
+ hw/core/generic-loader.c       |  4 ++--
+ hw/core/qdev-properties.c      |  2 +-
+ hw/display/framebuffer.c       |  2 +-
+ hw/display/milkymist-tmu2.c    |  2 +-
+ hw/display/xlnx_dp.c           |  4 ++--
+ hw/i386/kvmvapic.c             |  6 ------
+ hw/i386/pc.c                   |  2 +-
+ hw/i386/pci-assign-load-rom.c  | 16 ++++++++--------
+ hw/isa/isa-bus.c               |  1 +
+ hw/net/cadence_gem.c           |  2 +-
+ hw/net/spapr_llan.c            |  4 ++--
+ hw/pci/pcie.c                  |  2 +-
+ hw/ppc/spapr_drc.c             |  2 +-
+ hw/s390x/s390-pci-bus.h        |  4 ++--
+ hw/scsi/scsi-disk.c            |  1 +
+ hw/usb/dev-mtp.c               |  4 +++-
+ hw/vfio/pci-quirks.c           |  2 +-
+ hw/vfio/pci.c                  |  4 ++--
+ hw/virtio/virtio-crypto.c      |  2 +-
+ include/glib-compat.h          |  2 +-
+ include/hw/dma/xlnx_dpdma.h    |  3 ++-
+ include/hw/pci-host/q35.h      |  2 +-
+ include/hw/register.h          |  2 +-
+ include/qapi/dealloc-visitor.h |  2 +-
+ include/qemu/qht.h             |  2 +-
+ include/qemu/xattr.h           |  2 +-
+ include/qom/object.h           | 26 +-------------------------
+ qemu-doc.texi                  |  2 +-
+ qemu-img.c                     | 12 +++++-------
+ qemu-options.hx                |  7 +++----
+ qga/main.c                     |  4 ++--
+ qom/object.c                   |  4 ++--
+ util/mmap-alloc.c              | 17 ++++++++---------
+ util/oslib-win32.c             |  2 ++
+ util/uri.c                     |  4 ++--
+ 43 files changed, 88 insertions(+), 104 deletions(-)
 
