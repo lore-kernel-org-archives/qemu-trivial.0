@@ -1,47 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cW7m6-0005qX-SY
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 15:33:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39943)
+	id 1cW8r7-000242-FK
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 16:42:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cW7ly-0005l0-0z
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 15:33:02 -0500
+	(envelope-from <caliborn@SDF.ORG>) id 1cW8r3-00020t-Bg
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 16:42:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cW7lx-0004XL-9u
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 15:32:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37692)
+	(envelope-from <caliborn@SDF.ORG>) id 1cW8r1-0007W5-66
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 16:42:17 -0500
+Received: from ol.sdf.org ([205.166.94.20]:64720 helo=mx.sdf.org)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cW7ln-0004Up-Ji; Tue, 24 Jan 2017 15:32:47 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 979CDC04BD2F;
-	Tue, 24 Jan 2017 20:32:47 +0000 (UTC)
-Received: from [10.36.116.24] (ovpn-116-24.ams2.redhat.com [10.36.116.24])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0OKWjQu021224
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 24 Jan 2017 15:32:46 -0500
-To: Valentin Plotkin <caliborn@SDF.ORG>, qemu-trivial@nongnu.org
+	(Exim 4.71) (envelope-from <caliborn@SDF.ORG>) id 1cW8r0-0007Ql-Ro
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 16:42:15 -0500
+Received: from sdf.lonestar.org (IDENT:caliborn@sdf.lonestar.org
+	[205.166.94.15])
+	by mx.sdf.org (8.15.2/8.14.5) with ESMTPS id v0OLfY8U009734
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256 bits) verified NO);
+	Tue, 24 Jan 2017 21:41:35 GMT
+Date: Tue, 24 Jan 2017 21:41:34 +0000 (UTC)
+From: Valentin Plotkin <caliborn@SDF.ORG>
+X-X-Sender: caliborn@sdf.lonestar.org
+To: Thomas Huth <thuth@redhat.com>
+cc: Alexander Graf <agraf@suse.de>, David Gibson <david@gibson.dropbear.id.au>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+In-Reply-To: <4b93a2b8-097e-a502-875e-21ea394c617a@redhat.com>
+Message-ID: <Pine.NEB.4.64.1701242127070.28647@sdf.lonestar.org>
 References: <Pine.NEB.4.64.1701241855380.2138@sdf.lonestar.org>
-Cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <4b93a2b8-097e-a502-875e-21ea394c617a@redhat.com>
-Date: Tue, 24 Jan 2017 21:32:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
+	<4b93a2b8-097e-a502-875e-21ea394c617a@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <Pine.NEB.4.64.1701241855380.2138@sdf.lonestar.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 24 Jan 2017 20:32:47 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 205.166.94.20
 Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] PPC: MMU compatibility check.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -54,35 +45,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 20:33:03 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 21:42:19 -0000
 
-On 24.01.2017 19:56, Valentin Plotkin wrote:
+On Tue, 24 Jan 2017, Thomas Huth wrote:
+
+> Date: Tue, 24 Jan 2017 21:32:44 +0100
+> From: Thomas Huth <thuth@redhat.com>
+> To: Valentin Plotkin <caliborn@SDF.ORG>, qemu-trivial@nongnu.org
+> Cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+> Subject: Re: [Qemu-ppc] [PATCH] PPC: MMU compatibility check.
 > 
-> Hi everyone,
-> 
-> I looked at the "qemu-system-ppc -nographic -cpu G2leGP3 -M ppce500" on
-> the BiteSizedTasks page. The segfault was caused by machine
-> initialization code which expected a certain MMU model, checked, so
-> unused SPR were read, returning zeros. bamboo and virtex machines are
-> affected as well, but it doesn't always cause segfault, usually running
-> into unmapped memory and failing somewhat more nicely.
-> 
-> I added the checks. It would be possible to add support for other MMU
-> models, but I'm not sure if there is any point (would any guest OS
-> support mutually exclusive CPU and machine)?
+> On 24.01.2017 19:56, Valentin Plotkin wrote:
+>>
+>> Hi everyone,
+>>
+>> I looked at the "qemu-system-ppc -nographic -cpu G2leGP3 -M ppce500" on
+>> the BiteSizedTasks page. The segfault was caused by machine
+>> initialization code which expected a certain MMU model, checked, so
+>> unused SPR were read, returning zeros. bamboo and virtex machines are
+>> affected as well, but it doesn't always cause segfault, usually running
+>> into unmapped memory and failing somewhat more nicely.
+>>
+>> I added the checks. It would be possible to add support for other MMU
+>> models, but I'm not sure if there is any point (would any guest OS
+>> support mutually exclusive CPU and machine)?
+>
+> Hi,
+>
+> great to have a fix for this crash! I don't think it make much sense to
+> add support for other MMU models here, so the simple checks should be
+> good enough.
+> However, your new code obviously does not follow the QEMU coding style.
+> Could you please run your patch through scripts/checkpatch.pl and fix
+> all issues that it reports? And when you resubmit, please make sure to
+> copy the maintainers on CC: as well (scripts/get_maintainers.pl is your
+> friend here).
+>
+> Thanks,
+>  Thomas
+>
+>
 
- Hi,
+Here is fengshuised version (at least I hope so). Thanks for guiding me.
 
-great to have a fix for this crash! I don't think it make much sense to
-add support for other MMU models here, so the simple checks should be
-good enough.
-However, your new code obviously does not follow the QEMU coding style.
-Could you please run your patch through scripts/checkpatch.pl and fix
-all issues that it reports? And when you resubmit, please make sure to
-copy the maintainers on CC: as well (scripts/get_maintainers.pl is your
-friend here).
+Signed-off-by: Valentin Plotkin <caliborn@sdf.org>
+---
+  hw/ppc/e500.c          | 6 ++++++
+  hw/ppc/ppc440_bamboo.c | 6 ++++++
+  hw/ppc/virtex_ml507.c  | 6 ++++++
+  3 files changed, 18 insertions(+)
 
- Thanks,
-  Thomas
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index cf8b122..683d9a9 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -631,6 +631,12 @@ static uint64_t mmubooke_initial_mapsize(CPUPPCState 
+*env)
 
+  static void mmubooke_create_initial_mapping(CPUPPCState *env)
+  {
++    if (env->mmu_model != POWERPC_MMU_BOOKE206) {
++        fprintf(stderr, "MMU model %i not supported by this machine.\n",
++            env->mmu_model);
++        exit(-1);
++    }
++
+      ppcmas_tlb_t *tlb = booke206_get_tlbm(env, 1, 0, 0);
+      hwaddr size;
+      int ps;
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index 5c535b1..793b758 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -124,6 +124,12 @@ static void 
+mmubooke_create_initial_mapping(CPUPPCState *env,
+                                       target_ulong va,
+                                       hwaddr pa)
+  {
++    if (env->mmu_model != POWERPC_MMU_BOOKE) {
++        fprintf(stderr, "MMU model %i not supported by this machine.\n",
++            env->mmu_model);
++        exit(-1);
++    }
++
+      ppcemb_tlb_t *tlb = &env->tlb.tlbe[0];
+
+      tlb->attr = 0;
+diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+index b97d966..c01415c 100644
+--- a/hw/ppc/virtex_ml507.c
++++ b/hw/ppc/virtex_ml507.c
+@@ -69,6 +69,12 @@ static void mmubooke_create_initial_mapping(CPUPPCState 
+*env,
+                                       target_ulong va,
+                                       hwaddr pa)
+  {
++    if (env->mmu_model != POWERPC_MMU_BOOKE) {
++        fprintf(stderr, "MMU model %i not supported by this machine.\n",
++            env->mmu_model);
++        exit(-1);
++    }
++
+      ppcemb_tlb_t *tlb = &env->tlb.tlbe[0];
+
+      tlb->attr = 0;
+-- 
+2.5.5
+
+caliborn@sdf.org
+SDF Public Access UNIX System - http://sdf.org
 
