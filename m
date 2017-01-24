@@ -1,36 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cW11w-0001Do-8n
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 08:21:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42961)
+	id 1cW4OG-0005T3-I1
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 11:56:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60728)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cW11q-00019X-Og
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 08:20:59 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cW4OD-0005Qp-Vj
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:56:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1cW11l-0006gx-NR
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 08:20:54 -0500
-Resent-Date: Tue, 24 Jan 2017 08:20:54 -0500
-Resent-Message-Id: <E1cW11l-0006gx-NR@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:21329)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1cW11l-0006gb-EF; Tue, 24 Jan 2017 08:20:49 -0500
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1485264037116750.8535871357127;
-	Tue, 24 Jan 2017 05:20:37 -0800 (PST)
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-Message-ID: <148526403593.27.6370518566042568620@eba24e3a0d7f>
+	(envelope-from <peter.maydell@linaro.org>) id 1cW4OD-0007jy-55
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:56:14 -0500
+Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:33674)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cW4OD-0007jk-0z
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 11:56:13 -0500
+Received: by mail-ua0-x234.google.com with SMTP id i68so138252976uad.0
+	for <qemu-trivial@nongnu.org>; Tue, 24 Jan 2017 08:56:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=2tSabffdFhe32VWb8jrHKsbAcMakWhPsU0ykdc07J4s=;
+	b=E9sNMMaajmghsk6qi5RpI5tgzuPpXmALg7+ot5bxw+VWag89uvdL9mh5EG4gM13MCE
+	Ez6k84QdrzaQuQOdVSFSGb8lJgg/YQY2GV/mYIDVupGrnJkZCIIlrcuC13GMBEaq11mP
+	Fsg/1wuOD3EAd3U5fVQBnyURNndGpVESmSy+A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=2tSabffdFhe32VWb8jrHKsbAcMakWhPsU0ykdc07J4s=;
+	b=sOVpbMvOU/+TeZpalOouLbhoHO8MfajX7OYo/UIsgLfi5Rux5oBNpJ8A4g3AgJG+7h
+	Vme4o6eTbLTVIW8GJzB7r9UFyIgHsm44xZtUl94O2uHr6Jt5oMFR4+7eo/HjPveeybx+
+	3W53Uy5e7eEV7VYJNOPuRGBbTaiK0rTqPMMbVA8fYr1l7u5CAZX5lDXOfilRlJZR5HJH
+	+kbZl33pVZn9KqWKNnYAbnbCYCBk4b/q1Fo+7kQAztYSq4wI6/qz6Vhgu5NIeUNRYjmT
+	Q7ibo99RxpF2b3ci89crjXWfhqmynZJ39aiFsCVasmGmG5IjV6Go5Gr/VJptmyjV8wA7
+	fn8A==
+X-Gm-Message-State: AIkVDXJ5VwW+KFYLKbe459L3Nl9DgXGoJ4rYD6K3ht6Ri43s4mVN0+y6XgbIAKKkMbjIHmdwmPsoAj4XfBYY2UVK
+X-Received: by 10.176.71.87 with SMTP id i23mr18445623uac.144.1485276972274;
+	Tue, 24 Jan 2017 08:56:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: mjt@tls.msk.ru
-Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	mjt@tls.msk.ru
-Date: Tue, 24 Jan 2017 05:20:37 -0800 (PST)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 74.201.84.163
+Received: by 10.31.176.14 with HTTP; Tue, 24 Jan 2017 08:55:51 -0800 (PST)
+In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Jan 2017 16:55:51 +0000
+Message-ID: <CAFEAcA8EYZy4C3mmOfZUGUBENvdWOsADMCyG3fyoYAdMa-qBxQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c08::234
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/31] Trivial patches for
  2017-01-24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -44,122 +61,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 13:20:59 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 16:56:14 -0000
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzClN1
-YmplY3Q6IFtRZW11LWRldmVsXSBbUFVMTCAwMC8zMV0gVHJpdmlhbCBwYXRjaGVzIGZvciAyMDE3
-LTAxLTI0Ck1lc3NhZ2UtaWQ6IGNvdmVyLjE0ODUyNTA3MDIuZ2l0Lm1qdEBtc2dpZC50bHMubXNr
-LnJ1Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0x
-CnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBV
-c2VmdWwgZ2l0IG9wdGlvbnMKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
-aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAt
-LWZvcm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAg
-ZWNobyAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0l
-cyAkYykuLi4iCiAgICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRz
-L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAg
-ICBlY2hvCiAgICBmaQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1Qg
-U0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4
-ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKIC0g
-W3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDE3MDEyMDE3MDc1Ny4zMDMwOC0xLXBib256aW5p
-QHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE3MDEyMDE3MDc1Ny4zMDMwOC0xLXBib256aW5pQHJl
-ZGhhdC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy9jb3Zlci4xNDg1MjUwNzAyLmdp
-dC5tanRAbXNnaWQudGxzLm1zay5ydSAtPiBwYXRjaGV3L2NvdmVyLjE0ODUyNTA3MDIuZ2l0Lm1q
-dEBtc2dpZC50bHMubXNrLnJ1ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKOTRiYjQ3
-NiBody9pc2EvaXNhLWJ1czogU2V0IGNhdGVnb3J5IG9mIHRoZSAiaXNhYnVzLWJyaWRnZSIgZGV2
-aWNlCmU3ZDBlNDEgdXNiOiBTZXQgY2F0ZWdvcnkgYW5kIGRlc2NyaXB0aW9uIG9mIHRoZSBNVFAg
-ZGV2aWNlCjRjNDY1ZWUgZ2Ric3R1Yi5jOiB1cGRhdGUgb2xkIGVycm9yIHJlcG9ydCBzdGF0ZW1l
-bnRzCmM3OTM0YzAgZ2Ric3R1Yi5jOiBmaXggR0RCIGNvbm5lY3Rpb24gc2VnZmF1bHQgY2F1c2Vk
-IGJ5IGVtcHR5IG1hY2hpbmVzCjU5NzMyNjUgc2NzaS1kaXNrOiBhZGQgJ2ZhbGwgdGhyb3VnaCcg
-Y29tbWVudCB0byBzd2l0Y2ggVkVSSUZZIGNhc2VzCjJmN2I3M2YgRHJvcCBkdXBsaWNhdGUgZGlz
-cGxheSBvcHRpb24gZG9jdW1lbnRhdGlvbgowY2U1NzRhIGh3L2Rpc3BsYXkvZnJhbWVidWZmZXIu
-YzogQXZvaWQgb3ZlcmZsb3cgZm9yIGZyYW1lYnVmZmVycyA+IDRHQgo4ZWU4NjI3IHdpbjMyOiB1
-c2UgZ2xpYiBncG9sbCBpZiBnbGliID49IDIuNTAKNjA4NDQ5MSB1dGlsL21tYXAtYWxsb2M6IHJl
-ZmFjdG9yIGEgbGl0dGxlIGJpdCBmb3IgcmVhZGFiaWxpdHkKNGFiOTEzMCB1dGlsL21tYXAtYWxs
-b2M6IGNoZWNrIHBhcmFtZXRlciBiZWZvcmUgdXNpbmcKN2JiN2Y2NSB2ZmlvOiByZW1vdmUgYSBk
-dXBsaWNhdGVkIHdvcmQgaW4gY29tbWVudHMKODE0MmZhOSBkb2NzOiBzeW5jIHBjaS1pZHMudHh0
-CjJmODFlODQgZGlzYXMvY3Jpcy5jOiBGaXggQ292ZXJpdHkgd2FybmluZyBhYm91dCB1bmNoZWNr
-ZWQgTlVMTAphY2JhM2I2IGxtMzI6IG1pbGt5bWlzdC10bXUyOiBmaXggYW5vdGhlciBpbnRlZ2Vy
-IG92ZXJmbG93CjhiNTY4OTkgaHcvaTM4Ni9rdm12YXBpYzogUmVtb3ZlIGRlYWQgY29kZSBpbiBw
-YXRjaF9oeXBlcmNhbGxzKCkKYWMzZGYxMCBkb2MvdXNiMjogZml4IHR5cG8KNzc5ZDY0NSBxZ2E6
-IGZpeCBlcnJvbmVvdXMgYXJndW1lbnQgdG8gc3RyZXJyb3IKZTlkNmY4MCBibG9jazogcmVtb3Zl
-IGRlYWQgY2hlY2sKOTcyOTliMiBwY2ktYXNzaWduOiBhdm9pZCBwb2ludGxlc3Mgc3RhdApjODA5
-MDNjIHFlbXUtaW1nOiByZW1vdmUgZGVhZCBjaGVjawo2Nzc1Y2I5IHBjaWU6IGZpeCB0eXBvIGlu
-IGNvbW1lbnRzCjM4MTk5Yzkgb2JqZWN0OiBtYWtlIHNvbWUgZnVuY3Mgc3RhdGljCjBiYmY4NDMg
-b2JqZWN0Lmg6IHNwZWxsaW5nIGZpeAo5ZDY5MTllIHVzYjogRml4IHR5cG8gaW4gZG9jdW1lbnRh
-dGlvbgpiOWM4YTU2IHFlbXUtb3B0aW9uczogY2xlYW51cCBkdXBsaWNhdGVkIGhlbHAgbWVzc2Fn
-ZSBmb3Iga2VybmVsX2lycWNoaXAKY2VhNjViMCBodzogRml4IHR5cG9zIGZvdW5kIGJ5IGNvZGVz
-cGVsbAo5MmI5YTIwIGluY2x1ZGU6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwKMjRiYTZh
-YSBGaXggZG9jdW1lbnRhdGlvbiBhbmQgc29tZSBjb21tZW50cyAoYXJ0aWNsZSwgZ3JhbW1hcikK
-Y2RhYjE0OCBSRUFETUU6IEFkZCBsaW51eCB0byBtYWNPUyBidWlsZCBpbmZvCmY4ZGVhOGIgaHcv
-YmxvY2svbTI1cDgwOiBGaXggdHlwbyBpbiBsb2NhbCBtYWNybyBuYW1lCjNmY2QxMDIgZG9jOiBk
-b24ndCBtZW50aW9uIC1tZW1vcnksIGl0IGlzIC1tCgo9PT0gT1VUUFVUIEJFR0lOID09PQpDaGVj
-a2luZyBQQVRDSCAxLzMxOiBkb2M6IGRvbid0IG1lbnRpb24gLW1lbW9yeSwgaXQgaXMgLW0uLi4K
-Q2hlY2tpbmcgUEFUQ0ggMi8zMTogaHcvYmxvY2svbTI1cDgwOiBGaXggdHlwbyBpbiBsb2NhbCBt
-YWNybyBuYW1lLi4uCkNoZWNraW5nIFBBVENIIDMvMzE6IFJFQURNRTogQWRkIGxpbnV4IHRvIG1h
-Y09TIGJ1aWxkIGluZm8uLi4KQ2hlY2tpbmcgUEFUQ0ggNC8zMTogRml4IGRvY3VtZW50YXRpb24g
-YW5kIHNvbWUgY29tbWVudHMgKGFydGljbGUsIGdyYW1tYXIpLi4uCkNoZWNraW5nIFBBVENIIDUv
-MzE6IGluY2x1ZGU6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwuLi4KQ2hlY2tpbmcgUEFU
-Q0ggNi8zMTogaHc6IEZpeCB0eXBvcyBmb3VuZCBieSBjb2Rlc3BlbGwuLi4KV0FSTklORzogbGlu
-ZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzExMjogRklMRTogaHcvbmV0L3NwYXByX2xsYW4uYzo1NjI6
-CisgICAgICAgICAqIHBvb2xzIGJlZm9yZSwgYnV0IGNoYW5nZWQgdGhlIHNpemUgb2Ygb25lIHBv
-b2wgaW4gdGhlIG1lYW50aW1lLCB3ZSBtaWdodAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdz
-LCAxMTQgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFz
-ZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVw
-b3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJT
-LgpDaGVja2luZyBQQVRDSCA3LzMxOiBxZW11LW9wdGlvbnM6IGNsZWFudXAgZHVwbGljYXRlZCBo
-ZWxwIG1lc3NhZ2UgZm9yIGtlcm5lbF9pcnFjaGlwLi4uCkNoZWNraW5nIFBBVENIIDgvMzE6IHVz
-YjogRml4IHR5cG8gaW4gZG9jdW1lbnRhdGlvbi4uLgpDaGVja2luZyBQQVRDSCA5LzMxOiBvYmpl
-Y3QuaDogc3BlbGxpbmcgZml4Li4uCkNoZWNraW5nIFBBVENIIDEwLzMxOiBvYmplY3Q6IG1ha2Ug
-c29tZSBmdW5jcyBzdGF0aWMuLi4KQ2hlY2tpbmcgUEFUQ0ggMTEvMzE6IHBjaWU6IGZpeCB0eXBv
-IGluIGNvbW1lbnRzLi4uCkNoZWNraW5nIFBBVENIIDEyLzMxOiBxZW11LWltZzogcmVtb3ZlIGRl
-YWQgY2hlY2suLi4KQ2hlY2tpbmcgUEFUQ0ggMTMvMzE6IHBjaS1hc3NpZ246IGF2b2lkIHBvaW50
-bGVzcyBzdGF0Li4uCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMzNDogRklMRTog
-aHcvaTM4Ni9wY2ktYXNzaWduLWxvYWQtcm9tLmM6NDY6CisgICAgICAgICAgICBlcnJvcl9yZXBv
-cnQoInBjaS1hc3NpZ246IENhbm5vdCBvcGVuICVzOiAlcyIsIHJvbV9maWxlLCBzdHJlcnJvcihl
-cnJubykpOwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzM5OiBGSUxFOiBody9p
-Mzg2L3BjaS1hc3NpZ24tbG9hZC1yb20uYzo1MToKKyAgICAgICAgZXJyb3JfcmVwb3J0KCJwY2kt
-YXNzaWduOiBDYW5ub3Qgc3RhdCAlczogJXMiLCByb21fZmlsZSwgc3RyZXJyb3IoZXJybm8pKTsK
-CnRvdGFsOiAwIGVycm9ycywgMiB3YXJuaW5ncywgMjcgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRj
-aCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJy
-b3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNl
-ZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgpDaGVja2luZyBQQVRDSCAxNC8zMTogYmxvY2s6
-IHJlbW92ZSBkZWFkIGNoZWNrLi4uCkNoZWNraW5nIFBBVENIIDE1LzMxOiBxZ2E6IGZpeCBlcnJv
-bmVvdXMgYXJndW1lbnQgdG8gc3RyZXJyb3IuLi4KQ2hlY2tpbmcgUEFUQ0ggMTYvMzE6IGRvYy91
-c2IyOiBmaXggdHlwby4uLgpDaGVja2luZyBQQVRDSCAxNy8zMTogaHcvaTM4Ni9rdm12YXBpYzog
-UmVtb3ZlIGRlYWQgY29kZSBpbiBwYXRjaF9oeXBlcmNhbGxzKCkuLi4KQ2hlY2tpbmcgUEFUQ0gg
-MTgvMzE6IGxtMzI6IG1pbGt5bWlzdC10bXUyOiBmaXggYW5vdGhlciBpbnRlZ2VyIG92ZXJmbG93
-Li4uCkNoZWNraW5nIFBBVENIIDE5LzMxOiBkaXNhcy9jcmlzLmM6IEZpeCBDb3Zlcml0eSB3YXJu
-aW5nIGFib3V0IHVuY2hlY2tlZCBOVUxMLi4uCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
-ZXIgdXNlIHRhYnMKIzI2OiBGSUxFOiBkaXNhcy9jcmlzLmM6MjQ5MzoKK15JaWYgKHNyZWdwID09
-IE5VTEwgfHwgc3JlZ3AtPm5hbWUgPT0gTlVMTCkkCgpFUlJPUjogc3VzcGVjdCBjb2RlIGluZGVu
-dCBmb3IgY29uZGl0aW9uYWwgc3RhdGVtZW50cyAoOCwgMTApCiMyNjogRklMRTogZGlzYXMvY3Jp
-cy5jOjI0OTM6CisJaWYgKHNyZWdwID09IE5VTEwgfHwgc3JlZ3AtPm5hbWUgPT0gTlVMTCkKIAkg
-IC8qIFNob3VsZCBoYXZlIGJlZW4gY2F1Z2h0IGFzIGEgbm9uLW1hdGNoIGVhcmxpZXIuICAqLwoK
-RVJST1I6IGJyYWNlcyB7fSBhcmUgbmVjZXNzYXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRl
-bWVudAojMjY6IEZJTEU6IGRpc2FzL2NyaXMuYzoyNDkzOgorCWlmIChzcmVncCA9PSBOVUxMIHx8
-IHNyZWdwLT5uYW1lID09IE5VTEwpClsuLi5dCgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3Ms
-IDggbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSBy
-ZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0
-IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoK
-Q2hlY2tpbmcgUEFUQ0ggMjAvMzE6IGRvY3M6IHN5bmMgcGNpLWlkcy50eHQuLi4KQ2hlY2tpbmcg
-UEFUQ0ggMjEvMzE6IHZmaW86IHJlbW92ZSBhIGR1cGxpY2F0ZWQgd29yZCBpbiBjb21tZW50cy4u
-LgpDaGVja2luZyBQQVRDSCAyMi8zMTogdXRpbC9tbWFwLWFsbG9jOiBjaGVjayBwYXJhbWV0ZXIg
-YmVmb3JlIHVzaW5nLi4uCkNoZWNraW5nIFBBVENIIDIzLzMxOiB1dGlsL21tYXAtYWxsb2M6IHJl
-ZmFjdG9yIGEgbGl0dGxlIGJpdCBmb3IgcmVhZGFiaWxpdHkuLi4KQ2hlY2tpbmcgUEFUQ0ggMjQv
-MzE6IHdpbjMyOiB1c2UgZ2xpYiBncG9sbCBpZiBnbGliID49IDIuNTAuLi4KQ2hlY2tpbmcgUEFU
-Q0ggMjUvMzE6IGh3L2Rpc3BsYXkvZnJhbWVidWZmZXIuYzogQXZvaWQgb3ZlcmZsb3cgZm9yIGZy
-YW1lYnVmZmVycyA+IDRHQi4uLgpDaGVja2luZyBQQVRDSCAyNi8zMTogRHJvcCBkdXBsaWNhdGUg
-ZGlzcGxheSBvcHRpb24gZG9jdW1lbnRhdGlvbi4uLgpDaGVja2luZyBQQVRDSCAyNy8zMTogc2Nz
-aS1kaXNrOiBhZGQgJ2ZhbGwgdGhyb3VnaCcgY29tbWVudCB0byBzd2l0Y2ggVkVSSUZZIGNhc2Vz
-Li4uCkNoZWNraW5nIFBBVENIIDI4LzMxOiBnZGJzdHViLmM6IGZpeCBHREIgY29ubmVjdGlvbiBz
-ZWdmYXVsdCBjYXVzZWQgYnkgZW1wdHkgbWFjaGluZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggMjkvMzE6
-IGdkYnN0dWIuYzogdXBkYXRlIG9sZCBlcnJvciByZXBvcnQgc3RhdGVtZW50cy4uLgpDaGVja2lu
-ZyBQQVRDSCAzMC8zMTogdXNiOiBTZXQgY2F0ZWdvcnkgYW5kIGRlc2NyaXB0aW9uIG9mIHRoZSBN
-VFAgZGV2aWNlLi4uCkNoZWNraW5nIFBBVENIIDMxLzMxOiBody9pc2EvaXNhLWJ1czogU2V0IGNh
-dGVnb3J5IG9mIHRoZSAiaXNhYnVzLWJyaWRnZSIgZGV2aWNlLi4uCj09PSBPVVRQVVQgRU5EID09
-PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVk
-IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBz
-ZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
+On 24 January 2017 at 09:39, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Hi!
+> This is a next trivial-patches pull request after a long while.
+> We had a new release (2.8), new year holidays and other stuff.
+> So here we go now with whatever has been collected so far.
+>
+> Please consider applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 3879284d6517dc22529395bdb259f4183b589127:
+>
+>   Merge remote-tracking branch 'remotes/berrange/tags/pull-qio-2017-01-23-2' into staging (2017-01-23 15:59:09 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to bed534dd4032446750ad3e7a806c24d81bc5851b:
+>
+>   hw/isa/isa-bus: Set category of the "isabus-bridge" device (2017-01-24 12:38:03 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-01-24
+>
 
+Applied, thanks.
+
+-- PMM
 
