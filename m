@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVy7u-0002pc-RU
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 05:14:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50765)
+	id 1cVykc-0004to-6G
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 05:54:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVy7q-0002ki-Bq
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 05:14:55 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cVyka-0004rW-Az
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 05:54:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVy7p-0002cL-IA
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 05:14:54 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:58699)
+	(envelope-from <mjt@tls.msk.ru>) id 1cVykZ-0006UZ-Kp
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 05:54:56 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:36527)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cVy7l-0002Zp-Aq; Tue, 24 Jan 2017 05:14:49 -0500
+	id 1cVykU-0006SR-72; Tue, 24 Jan 2017 05:54:50 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 878A54210B;
-	Tue, 24 Jan 2017 13:14:48 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 9D0AF4211B;
+	Tue, 24 Jan 2017 13:54:48 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 7B4DC58D;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 45AC658A;
 	Tue, 24 Jan 2017 12:39:44 +0300 (MSK)
-Received: (nullmailer pid 12663 invoked by uid 1000);
+Received: (nullmailer pid 12645 invoked by uid 1000);
 	Tue, 24 Jan 2017 09:39:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 24 Jan 2017 12:39:31 +0300
-Message-Id: <a8802cd1d30fd153eac8f3a3ff9fdabf1cb069a5.1485250702.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 24 Jan 2017 12:39:22 +0300
+Message-Id: <d4628acb08ae6852c23605736d61649df6ef20d2.1485250702.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
@@ -34,8 +34,8 @@ References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 27/31] scsi-disk: add 'fall through' comment
- to switch VERIFY cases
+Subject: [Qemu-trivial] [PULL 18/31] lm32: milkymist-tmu2: fix another
+ integer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,36 +47,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 10:14:55 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 10:54:57 -0000
 
 From: Peter Maydell <peter.maydell@linaro.org>
 
-Commit 166dbda7e131 added some extra cases to a switch() such
-that the existing code is intended to fall through the new
-case statements. It's clear from the commit that this is
-intentional, but less clear to subsequent readers of the
-code, and not clear at all to static analysis tools like
-Coverity. Add a /* fall through */ comment to indicate the
-intent. (Fixes CID 1368287.)
+Don't truncate the multiplication and do a 64 bit one instead
+because the result is stored in a 64 bit variable.
+
+This fixes a similar coverity warning to commit 237a8650d640,
+in a similar way, and is the other half of the fix for
+coverity CID 1167561.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Acked-by: Michael Walle <michael@walle.cc>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/scsi/scsi-disk.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/display/milkymist-tmu2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index c080888..cc06fe5 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -2157,6 +2157,7 @@ static int32_t scsi_disk_dma_command(SCSIRequest *req, uint8_t *buf)
-         DPRINTF("Write %s(sector %" PRId64 ", count %u)\n",
-                 (command & 0xe) == 0xe ? "And Verify " : "",
-                 r->req.cmd.lba, len);
-+        /* fall through */
-     case VERIFY_10:
-     case VERIFY_12:
-     case VERIFY_16:
+diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
+index 5c666f9..920374b 100644
+--- a/hw/display/milkymist-tmu2.c
++++ b/hw/display/milkymist-tmu2.c
+@@ -257,7 +257,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+     glColor4f(m, m, m, (float)(s->regs[R_ALPHA] + 1) / 64.0f);
+ 
+     /* Read the QEMU dest. framebuffer into the OpenGL framebuffer */
+-    fb_len = 2 * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
++    fb_len = 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+     fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 0);
+     if (fb == NULL) {
+         glDeleteTextures(1, &texture);
 -- 
 2.1.4
 
