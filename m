@@ -1,51 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVvqV-0004ux-KG
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 02:48:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42334)
+	id 1cVvtn-0007Pa-Bx
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 02:52:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cVvqS-0004t9-CU
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 02:48:50 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cVvtl-0007ON-K1
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 02:52:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1cVvqR-0007Ir-B5
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 02:48:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55414)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1cVvqL-0007Ei-8E; Tue, 24 Jan 2017 02:48:41 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A74C94E05F;
-	Tue, 24 Jan 2017 07:48:40 +0000 (UTC)
-Received: from [10.36.116.35] (ovpn-116-35.ams2.redhat.com [10.36.116.35])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v0O7mbut003440
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 24 Jan 2017 02:48:39 -0500
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <1484927639-3841-1-git-send-email-thuth@redhat.com>
-	<0c562336-31a8-5347-1123-810543563fd5@msgid.tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <15b9c04d-23e3-2166-c2e0-7b5a963350c1@redhat.com>
-Date: Tue, 24 Jan 2017 08:48:37 +0100
+	(envelope-from <mjt@tls.msk.ru>) id 1cVvtg-00007I-On
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 02:52:13 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:45840)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1cVvtg-00006m-Hl
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 02:52:08 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 93F1B420AB;
+	Tue, 24 Jan 2017 10:52:07 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 1B78A548;
+	Tue, 24 Jan 2017 10:52:07 +0300 (MSK)
+To: Chao Fan <fanc.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
+References: <20161229110026.14816-1-fanc.fnst@cn.fujitsu.com>
+	<b677f9c0-aac8-e4c7-c983-821032c6a5b8@msgid.tls.msk.ru>
+Cc: douly.fnst@cn.fujitsu.com, caoj.fnst@cn.fujitsu.com
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <466c366f-2314-8007-e188-75fc285eb7b7@msgid.tls.msk.ru>
+Date: Tue, 24 Jan 2017 10:52:07 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.6.0
+	Icedove/45.6.0
 MIME-Version: 1.0
-In-Reply-To: <0c562336-31a8-5347-1123-810543563fd5@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <b677f9c0-aac8-e4c7-c983-821032c6a5b8@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 24 Jan 2017 07:48:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/isa/isa-bus: Set category of the
- "isabus-bridge" device
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] bitmap: a typo of the example in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,39 +47,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 07:48:50 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 07:52:14 -0000
 
-On 24.01.2017 08:42, Michael Tokarev wrote:
-> 20.01.2017 18:53, Thomas Huth wrote:
->> It has "bridge" in its name, so it should be in the category
->> DEVICE_CATEGORY_BRIDGE.
+12.01.2017 13:51, Michael Tokarev wrote:
+> 29.12.2016 14:00, Chao Fan wrote:
+>> *   DirtyMemoryBlocks *blocks =
+>> *       atomic_rcu_read(&ram_list.dirty_memory[DIRTY_MEMORY_MIGRATION]);
 >>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  hw/isa/isa-bus.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
->> index 9d07b11..0ffbc8d 100644
->> --- a/hw/isa/isa-bus.c
->> +++ b/hw/isa/isa-bus.c
->> @@ -219,6 +219,7 @@ static void isabus_bridge_class_init(ObjectClass *klass, void *data)
->>  {
->>      DeviceClass *dc = DEVICE_CLASS(klass);
->>  
->> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
->>      dc->fw_name = "isa";
->>  }
+>> blocks is a pointer, so here should be "->" instead of "."
 > 
-> Does it have any effect on the guest?
-> ISA is an old thing...
+> Applied to -trivial, thank you!
 
-No, as far as I know, this is just used in qdev_print_devinfos() to
-print out the devices in nice categories when you start QEMU with
-"-device ?". Devices that do not have a category bit set show up in the
-"Uncategorized" section - which tends to get overcrowded if the devices
-are not sorted into proper categories.
+After rework of this code by pbonzini it's not needed anymore.
 
- Thomas
+Thanks!
 
+/mjt
 
