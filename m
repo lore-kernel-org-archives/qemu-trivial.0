@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cVxaB-00067W-Sx
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:40:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40933)
+	id 1cVxaF-0006Cc-5u
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Jan 2017 04:40:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40935)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVxa7-00062B-4H
-	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:40:06 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxa7-00062H-7q
+	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:40:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cVxZz-0000ru-5g
+	(envelope-from <mjt@tls.msk.ru>) id 1cVxZz-0000sE-Tj
 	for qemu-trivial@nongnu.org; Tue, 24 Jan 2017 04:40:03 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:49139)
+Received: from isrv.corpit.ru ([86.62.121.231]:43921)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cVxZm-0000hC-Ve; Tue, 24 Jan 2017 04:39:43 -0500
+	id 1cVxZm-0000hB-Vc; Tue, 24 Jan 2017 04:39:43 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 78EB742104;
-	Tue, 24 Jan 2017 12:39:42 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id BE09F55C;
+	by isrv.corpit.ru (Postfix) with ESMTP id F11EF420AB;
 	Tue, 24 Jan 2017 12:39:41 +0300 (MSK)
-Received: (nullmailer pid 12610 invoked by uid 1000);
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 5274D55C;
+	Tue, 24 Jan 2017 12:39:41 +0300 (MSK)
+Received: (nullmailer pid 12607 invoked by uid 1000);
 	Tue, 24 Jan 2017 09:39:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Tue, 24 Jan 2017 12:39:05 +0300
-Message-Id: <b26a6a65fd0b46a18a9d23ef3867b5e9d3a5469c.1485250702.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 24 Jan 2017 12:39:04 +0300
+Message-Id: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
-References: <cover.1485250702.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 01/31] doc: don't mention -memory, it is -m
+Subject: [Qemu-trivial] [PULL 00/31] Trivial patches for 2017-01-24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,27 +44,136 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Jan 2017 09:40:07 -0000
+X-List-Received-Date: Tue, 24 Jan 2017 09:40:09 -0000
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi!
+This is a next trivial-patches pull request after a long while.
+We had a new release (2.8), new year holidays and other stuff.
+So here we go now with whatever has been collected so far.
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 80df526..232f737 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -250,7 +250,7 @@ use is discouraged as it may be removed from future versions.
- ETEXI
- 
- DEF("m", HAS_ARG, QEMU_OPTION_m,
--    "-m[emory] [size=]megs[,slots=n,maxmem=size]\n"
-+    "-m [size=]megs[,slots=n,maxmem=size]\n"
-     "                configure guest RAM\n"
-     "                size: initial amount of guest memory\n"
-     "                slots: number of hotplug slots (default: none)\n"
--- 
-2.1.4
+Please consider applying.
 
+Thanks,
+
+/mjt
+
+The following changes since commit 3879284d6517dc22529395bdb259f4183b5891=
+27:
+
+  Merge remote-tracking branch 'remotes/berrange/tags/pull-qio-2017-01-23=
+-2' into staging (2017-01-23 15:59:09 +0000)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+
+for you to fetch changes up to bed534dd4032446750ad3e7a806c24d81bc5851b:
+
+  hw/isa/isa-bus: Set category of the "isabus-bridge" device (2017-01-24 =
+12:38:03 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2017-01-24
+
+----------------------------------------------------------------
+Cao jin (5):
+      pcie: fix typo in comments
+      doc/usb2: fix typo
+      vfio: remove a duplicated word in comments
+      util/mmap-alloc: check parameter before using
+      util/mmap-alloc: refactor a little bit for readability
+
+Frediano Ziglio (1):
+      usb: Fix typo in documentation
+
+Gerd Hoffmann (1):
+      docs: sync pci-ids.txt
+
+Marc-Andr=C3=A9 Lureau (3):
+      object.h: spelling fix
+      object: make some funcs static
+      win32: use glib gpoll if glib >=3D 2.50
+
+Michael Tokarev (1):
+      doc: don't mention -memory, it is -m
+
+Paolo Bonzini (4):
+      qemu-img: remove dead check
+      pci-assign: avoid pointless stat
+      block: remove dead check
+      qga: fix erroneous argument to strerror
+
+Peter Maydell (6):
+      README: Add linux to macOS build info
+      hw/i386/kvmvapic: Remove dead code in patch_hypercalls()
+      lm32: milkymist-tmu2: fix another integer overflow
+      disas/cris.c: Fix Coverity warning about unchecked NULL
+      hw/display/framebuffer.c: Avoid overflow for framebuffers > 4GB
+      scsi-disk: add 'fall through' comment to switch VERIFY cases
+
+Po-Hsu Lin (1):
+      qemu-options: cleanup duplicated help message for kernel_irqchip
+
+Samuel Thibault (1):
+      Drop duplicate display option documentation
+
+Stefan Weil (4):
+      hw/block/m25p80: Fix typo in local macro name
+      Fix documentation and some comments (article, grammar)
+      include: Fix typos found by codespell
+      hw: Fix typos found by codespell
+
+Thomas Huth (2):
+      usb: Set category and description of the MTP device
+      hw/isa/isa-bus: Set category of the "isabus-bridge" device
+
+Ziyue Yang (2):
+      gdbstub.c: fix GDB connection segfault caused by empty machines
+      gdbstub.c: update old error report statements
+
+ README                         |  1 +
+ arch_init.c                    |  2 +-
+ block.c                        |  2 +-
+ disas/cris.c                   |  2 +-
+ docs/specs/pci-ids.txt         |  3 +++
+ docs/usb-storage.txt           |  2 +-
+ docs/usb2.txt                  |  2 +-
+ gdbstub.c                      | 17 ++++++++++++-----
+ hw/block/m25p80.c              |  4 ++--
+ hw/core/generic-loader.c       |  4 ++--
+ hw/core/qdev-properties.c      |  2 +-
+ hw/display/framebuffer.c       |  2 +-
+ hw/display/milkymist-tmu2.c    |  2 +-
+ hw/display/xlnx_dp.c           |  4 ++--
+ hw/i386/kvmvapic.c             |  6 ------
+ hw/i386/pc.c                   |  2 +-
+ hw/i386/pci-assign-load-rom.c  | 16 ++++++++--------
+ hw/isa/isa-bus.c               |  1 +
+ hw/net/cadence_gem.c           |  2 +-
+ hw/net/spapr_llan.c            |  4 ++--
+ hw/pci/pcie.c                  |  2 +-
+ hw/ppc/spapr_drc.c             |  2 +-
+ hw/s390x/s390-pci-bus.h        |  4 ++--
+ hw/scsi/scsi-disk.c            |  1 +
+ hw/usb/dev-mtp.c               |  4 +++-
+ hw/vfio/pci-quirks.c           |  2 +-
+ hw/vfio/pci.c                  |  4 ++--
+ hw/virtio/virtio-crypto.c      |  2 +-
+ include/glib-compat.h          |  2 +-
+ include/hw/dma/xlnx_dpdma.h    |  3 ++-
+ include/hw/pci-host/q35.h      |  2 +-
+ include/hw/register.h          |  2 +-
+ include/qapi/dealloc-visitor.h |  2 +-
+ include/qemu/qht.h             |  2 +-
+ include/qemu/xattr.h           |  2 +-
+ include/qom/object.h           | 26 +-------------------------
+ qemu-doc.texi                  |  2 +-
+ qemu-img.c                     | 12 +++++-------
+ qemu-options.hx                |  7 +++----
+ qga/main.c                     |  4 ++--
+ qom/object.c                   |  4 ++--
+ util/mmap-alloc.c              | 17 ++++++++---------
+ util/oslib-win32.c             |  2 ++
+ util/uri.c                     |  4 ++--
+ 44 files changed, 89 insertions(+), 105 deletions(-)
 
