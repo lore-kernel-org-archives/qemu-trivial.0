@@ -1,63 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cYCkk-0003pc-2a
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2017 09:16:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47171)
+	id 1cYNLS-0003Wq-Jl
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Jan 2017 20:34:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cYCkd-0003mX-ID
-	for qemu-trivial@nongnu.org; Mon, 30 Jan 2017 09:16:16 -0500
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cYNLQ-0003Vy-Mj
+	for qemu-trivial@nongnu.org; Mon, 30 Jan 2017 20:34:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cYCkZ-0000uK-V9
-	for qemu-trivial@nongnu.org; Mon, 30 Jan 2017 09:16:11 -0500
-Received: from mail-wj0-x242.google.com ([2a00:1450:400c:c01::242]:33026)
+	(envelope-from <skiver.cloud.yzy@gmail.com>) id 1cYNLP-0000Ap-Qs
+	for qemu-trivial@nongnu.org; Mon, 30 Jan 2017 20:34:52 -0500
+Received: from mail-it0-x243.google.com ([2607:f8b0:4001:c0b::243]:35201)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cYCkT-0000sz-9g; Mon, 30 Jan 2017 09:16:01 -0500
-Received: by mail-wj0-x242.google.com with SMTP id un2so7952895wjb.0;
-	Mon, 30 Jan 2017 06:16:01 -0800 (PST)
+	(Exim 4.71) (envelope-from <skiver.cloud.yzy@gmail.com>)
+	id 1cYNLJ-00007B-MH; Mon, 30 Jan 2017 20:34:45 -0500
+Received: by mail-it0-x243.google.com with SMTP id 203so17516042ith.2;
+	Mon, 30 Jan 2017 17:34:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=IIglJwkSnS5eirsT+NN4FMhEr6eQXmJh7/Ypib9dB7M=;
-	b=EB1NcYx+CZFZTF0yUrax+A5szRELn5Mv9o4AM/3GghCu1mPfRqhtElsyZPTyfu3JTx
-	c9lAATMBgllq6hD13MqCPg1UxPJvMaLuwIxPq6aZQVN7uF6B+bCGvFsONcMsh3RJvN0Z
-	Zq2JZ2PoZVLYsTY8s+I5V0aqZEnWS3cvcmxrY1jYuPqKn2+j6/3Qa8AdaNTnZQeM/tFq
-	LIYoifpSECKXLURFwZPgjEZVL6QCHTLE0XCJnw5jj2ATw/igetYV0Hd7UMmM26h8vMgv
-	WnZ7TdX8rzkvlSYxm6HLvKfxTM3uR+yZ0WfQBfrJgxpsRfm1Tz6p4pLstLsPz3hnuHiq
-	Ytuw==
+	h=from:to:cc:subject:date:message-id;
+	bh=/WoOAvoZpEB9DDqG3oVUz0AWWSAGQ28XlBekhxBcGAM=;
+	b=NApDDhWfQtdVbzw1lhA2N+PR+mV+HI9ZfWZtt0zgJNRl7g2dLwjE8bfvOz7Nm+5nrG
+	mPgP7D4j7cfdbjpoeI3ZHVbuV3kC9KhlV9R6UgilmQIbMfqsqSwcDPtOjFZkwXl3xjNV
+	KxmHzp4rbtO72/KMrnwEyrdUvjs5IrZ6q1nGV876UguiN78JXF0hs+3uw16vvswkzIeZ
+	xldDUBAXwtFz+Cobz3BF4qazVdUx7Zd2zGzgGAtMSEBeeNDuuEkatdD+DomR2EG9G2Oc
+	aLXWGAWNPYqIvl97Ox4MYHuCmSkTEkZxAfCGdLz314g6EmF6UQCWUlENOfocxgLkezZH
+	HFig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=IIglJwkSnS5eirsT+NN4FMhEr6eQXmJh7/Ypib9dB7M=;
-	b=kIvTFm0cGF13SlFtLJPv/zpk5PEjq/I0n8Y4WsB6bdta3a4iMs/J84ZJclcxuxpfu+
-	lbIkoYiXf+JOqT1K+s96i1Xq6+vJwXWEltKhq9fkdPu23m7XHToFO9kXV1JHP7mcui3G
-	85qiBNYosd1A2D4NpfcUW8qsR6B5M8AnixDm4egnYGqv/MAGFI9by57EWVoWNu5xQd/q
-	iHMv/QGUbl6lKEGeuW+3A9i1Pfv8YvDF2XumhIBQuR2KFoj3t/WMZYRYD6M894zcUjOg
-	I0ObTEIM+OKkzYfsGjqfwW6NxzF28BleKfC91bL3IVNvr8+i39puQiCX85SlH9YeTj1v
-	NtGQ==
-X-Gm-Message-State: AIkVDXIrQB4YhfjmMrrkLj68AJWUVbeKFvIafGUvKJJ5rw3bzTYsInJepOSexljl5ZBG+A==
-X-Received: by 10.223.166.181 with SMTP id t50mr18793701wrc.80.1485785760264; 
-	Mon, 30 Jan 2017 06:16:00 -0800 (PST)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	w99sm23107626wrb.5.2017.01.30.06.15.59
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 30 Jan 2017 06:15:59 -0800 (PST)
-Date: Mon, 30 Jan 2017 14:15:58 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org
-Message-ID: <20170130141558.GJ2118@stefanha-x1.localdomain>
-References: <20170126132827.7479-1-marcandre.lureau@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Ah9ph+G2cWRpKogL"
-Content-Disposition: inline
-In-Reply-To: <20170126132827.7479-1-marcandre.lureau@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=/WoOAvoZpEB9DDqG3oVUz0AWWSAGQ28XlBekhxBcGAM=;
+	b=mu/naOQiVAEdh5SHx/7ksbKqRfCUuTCHST2k+x6IMXSXNrgwlxt+4JfqFaYMDVBdG6
+	cIitv9nFEYuC7kFNNRerO9qvnP5iPgOZbg2myklh7utDVoQNGV+zdSweVEaBFcad2wSI
+	BsWzj26TplqqvaCD3vfQB8zEQlgv/azhh+04xPcrbUZqQkuHPiwZNHbRuLaWZLhol7Le
+	Z4E4p5QUPzVKnJaZHydKbiKP+Q2Qx4AGS0mygqti+ClFSZOb7g1sXLRzFWM57W7uTYSd
+	xvw00HozRfhZl0pFVEk1rHKGC4lbe4mLNUDSu3urfCrchOhTwpwVxZIBajjXPOARRL+d
+	ZPXQ==
+X-Gm-Message-State: AIkVDXLbWqZ3MmE2oyFLeiCrPfgZIn6/UWjX6hSys8RTnXdeTodV40YPyN1hoQnz3MnOmA==
+X-Received: by 10.84.216.89 with SMTP id f25mr35180261plj.6.1485826484634;
+	Mon, 30 Jan 2017 17:34:44 -0800 (PST)
+Received: from yzy-ge62-2qd.DHCP (v133-130-103-189.a02c.g.tyo1.static.cnode.io.
+	[133.130.103.189]) by smtp.gmail.com with ESMTPSA id
+	u75sm35855751pgc.31.2017.01.30.17.34.40
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 30 Jan 2017 17:34:44 -0800 (PST)
+From: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Anthony Liguori <aliguori@us.ibm.com>, Thomas Huth <thuth@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Ziyue Yang <yzylivezh@hotmail.com>,
+	Ziyue Yang <skiver.cloud.yzy@gmail.com>
+Date: Tue, 31 Jan 2017 09:32:15 +0800
+Message-Id: <1485826335-15686-1-git-send-email-skiver.cloud.yzy@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c01::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Update copyright year
+X-Received-From: 2607:f8b0:4001:c0b::243
+Subject: [Qemu-trivial] [PATCH] ui/gtk.c: add ctrl-alt-= support for zoom in
+ acceleration
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,39 +65,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Jan 2017 14:16:16 -0000
+X-List-Received-Date: Tue, 31 Jan 2017 01:34:53 -0000
 
+From: Ziyue Yang <yzylivezh@hotmail.com>
 
---Ah9ph+G2cWRpKogL
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Solving wishlist item at
+https://bugs.launchpad.net/qemu/+bug/1656710
+by accepting Ctrl-Alt-= as an additional zoom-in acceleration.
 
-On Thu, Jan 26, 2017 at 05:28:27PM +0400, Marc-Andr=E9 Lureau wrote:
-> It's still time to wish happy new year!
->=20
-> The Year of the Rooster will begin on January 28, 2017!
->=20
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  include/qemu-common.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Using gtk_accel_group_connect to support multiple accelerations
+triggering a single menu item since that gtk_accel_map_add_entry
+seems to support only one acceleration. A wrapper function
+gd_accel_zoom_in is added to support gtk_accel_group_connect's
+callback activities.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Ziyue Yang <skiver.cloud.yzy@gmail.com>
+---
+ ui/gtk.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
---Ah9ph+G2cWRpKogL
-Content-Type: application/pgp-signature; name="signature.asc"
+diff --git a/ui/gtk.c b/ui/gtk.c
+index bdd831c..3be9f33 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -105,6 +105,7 @@
+ #define GDK_KEY_g GDK_g
+ #define GDK_KEY_q GDK_q
+ #define GDK_KEY_plus GDK_plus
++#define GDK_KEY_equal GDK_equal
+ #define GDK_KEY_minus GDK_minus
+ #define GDK_KEY_Pause GDK_Pause
+ #define GDK_KEY_Delete GDK_Delete
+@@ -1325,6 +1326,12 @@ static void gd_menu_zoom_in(GtkMenuItem *item, void *opaque)
+     gd_update_windowsize(vc);
+ }
+ 
++static void gd_accel_zoom_in(void *opaque)
++{
++    GtkDisplayState *s = opaque;
++    gtk_menu_item_activate(GTK_MENU_ITEM(s->zoom_in_item));
++}
++
+ static void gd_menu_zoom_out(GtkMenuItem *item, void *opaque)
+ {
+     GtkDisplayState *s = opaque;
+@@ -2092,6 +2099,8 @@ static GtkWidget *gd_create_menu_view(GtkDisplayState *s)
+                                  "<QEMU>/View/Zoom In");
+     gtk_accel_map_add_entry("<QEMU>/View/Zoom In", GDK_KEY_plus,
+                             HOTKEY_MODIFIERS);
++    gtk_accel_group_connect(s->accel_group, GDK_KEY_equal, HOTKEY_MODIFIERS, 0,
++            g_cclosure_new_swap(G_CALLBACK(gd_accel_zoom_in), s, NULL));
+     gtk_menu_shell_append(GTK_MENU_SHELL(view_menu), s->zoom_in_item);
+ 
+     s->zoom_out_item = gtk_menu_item_new_with_mnemonic(_("Zoom _Out"));
+-- 
+2.7.4
 
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYj0qeAAoJEJykq7OBq3PIM8AH/3/+vq0VgjZLkMHiBZhXctHV
-LYEBC+DQbJJVns1zyGdSMFUAIPZbYO1GJkjOw9/CkeOSoyow40QwEQ8YkV4wzakL
-5eD/bcJBzQmzLOg8SnD9F+kEiSTG1bMA93mYR+3eEI523K/LjrvCMq7v73R8/M6n
-0dfiw0bwlMgKK4ElvD9VClauMJj1aqotvaU2Cx1L043bihlsnoObvrAFm//r5GB8
-jl+l5ur1w+qJ/1UGdZ8LBX3gxUoyXgEXN31AZZnrIdKT+Ux6uHZ2PfYUHxdQrm9Q
-xBBE76rqIFX4/dpBUcJ9A2Fpw63zjWZRruLm+v790tYIvET2TX2OMuDWjTiV/eo=
-=M9vr
------END PGP SIGNATURE-----
-
---Ah9ph+G2cWRpKogL--
 
