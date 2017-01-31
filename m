@@ -1,56 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cYblo-00024u-15
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2017 11:59:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54878)
+	id 1cYcPq-0007Sz-9J
+	for mharc-qemu-trivial@gnu.org; Tue, 31 Jan 2017 12:40:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cYbll-00022Z-Ia
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2017 11:59:02 -0500
+	(envelope-from <armbru@redhat.com>) id 1cYcPn-0007QZ-Gx
+	for qemu-trivial@nongnu.org; Tue, 31 Jan 2017 12:40:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cYblk-0005uP-RQ
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2017 11:59:01 -0500
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:33467)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cYblk-0005uI-MU
-	for qemu-trivial@nongnu.org; Tue, 31 Jan 2017 11:59:00 -0500
-Received: by mail-vk0-x230.google.com with SMTP id k127so240817781vke.0
-	for <qemu-trivial@nongnu.org>; Tue, 31 Jan 2017 08:59:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=NKNmeIMfIRcTOT6gfkKfHPxVek6fzWPB2A6Bj0kwqqo=;
-	b=cFXehd36fEGjLs1/9EAXbf+iU365rVGkd3tcNJKaS+DxAzGEV7WiN3JXfCBEZiALa7
-	3UIa5+LkPh6YG+az8MNDPG0q///L076M128BXec84j+131FXBENBKY36GoDxUTmlUFnM
-	yqxfRFwBUnUVlcBdx1GoaahzU8oT0zWx7W+84=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=NKNmeIMfIRcTOT6gfkKfHPxVek6fzWPB2A6Bj0kwqqo=;
-	b=RGRZFzCUpd0l2KRl7LJgLIItUvCwVavIuJb/Qzqd7VI81cRQ7/2wZXQ4i4oUvvZMXh
-	+EFsPpgP68mLDzzYJ+1drwqaphe3N5kDE+aAyO6OkWLdYaAP9AtgBOjwCMGRfP9g8yV3
-	emJ33DVj+JZQ5IWShU4uRPf4wIYF6g+y7jrXmnX3FZey73pSEcxUoOpeLhC253LNNEfq
-	paPpP0oZujFS/9XYNG77xjmlLeenrw2OtxzfDp0k+jN8WshqOLAUMW4AYSwR26OdC/c9
-	yyG5NTggz2xgRQhEow5NVfMbQYjpsrw91uHB2VXUwiwnz+vjGvzey9XeemplPeLyaddf
-	C2kA==
-X-Gm-Message-State: AIkVDXJK2GvgRk5MCPi+86dwkDuhXnv8xuPiNmhUIZmWaa/hMM5EWUS4o7LTikZGasR051KHIX1VYcJO6DwsBixG
-X-Received: by 10.31.102.134 with SMTP id a128mr13157415vkc.165.1485881939987; 
-	Tue, 31 Jan 2017 08:58:59 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.205.2 with HTTP; Tue, 31 Jan 2017 08:58:39 -0800 (PST)
-In-Reply-To: <20170131165557.GE20303@redhat.com>
+	(envelope-from <armbru@redhat.com>) id 1cYcPm-0001gR-Ka
+	for qemu-trivial@nongnu.org; Tue, 31 Jan 2017 12:40:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:28556)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1cYcPg-0001bJ-CW; Tue, 31 Jan 2017 12:40:16 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5EC0485545;
+	Tue, 31 Jan 2017 17:40:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
+	[10.36.116.50])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v0VHeEij023818
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 31 Jan 2017 12:40:16 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5C71F1138645; Tue, 31 Jan 2017 18:40:13 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, patches@linaro.org
 References: <1485879287-12548-1-git-send-email-peter.maydell@linaro.org>
-	<20170131165557.GE20303@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Jan 2017 16:58:39 +0000
-Message-ID: <CAFEAcA9Jbv398L=yjPmq7MfV+bpma4TiBX9LbBBHZ_qo5DvuGg@mail.gmail.com>
-To: "Daniel P. Berrange" <berrange@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Date: Tue, 31 Jan 2017 18:40:13 +0100
+In-Reply-To: <1485879287-12548-1-git-send-email-peter.maydell@linaro.org>
+	(Peter Maydell's message of "Tue, 31 Jan 2017 16:14:47 +0000")
+Message-ID: <87wpdbw2ki.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 31 Jan 2017 17:40:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Drop QEMU_GNUC_PREREQ()
  checks for gcc older than 4.1
 X-BeenThere: qemu-trivial@nongnu.org
@@ -64,30 +58,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Jan 2017 16:59:02 -0000
+X-List-Received-Date: Tue, 31 Jan 2017 17:40:24 -0000
 
-On 31 January 2017 at 16:55, Daniel P. Berrange <berrange@redhat.com> wrote:
-> On Tue, Jan 31, 2017 at 04:14:47PM +0000, Peter Maydell wrote:
->> We already require gcc 4.1 or newer (for the atomic
->> support), so the fallback codepaths for older gcc
->> versions than that are now dead code and we can
->> just delete them.
->
-> Do we have any explicit check alreadu for 4.1, or do we
-> just let the build fail on the atomic code ?
->
-> IOW, is there any use in having..
->
-> #if !QEMU_GNUC_PREREQ(4, 1)
-> # error "QEMU requires GCC >= 4.1 or CLang"
-> #endif
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-I guess we just barf in the atomics. An explicit check might
-not be a bad idea I guess, though it depends a bit on how
-many releases we've been implicitly requiring 4.1 for. I
-suppose it would act as documentation of our current
-minimum req.
+> We already require gcc 4.1 or newer (for the atomic
+> support), so the fallback codepaths for older gcc
+> versions than that are now dead code and we can
+> just delete them.
+>
+> NB: clang reports itself as gcc 4.2 (regardless of
+> clang version), so clang won't be using the fallbacks
+> either.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> For compatibility with clang we should probably try to avoid
+> using QEMU_GNUC_PREREQ() and instead have something in
+> compiler.h that abstracts away whether the test for "does
+> the compiler support feature foo" is via a GCC version
+> check or a clang __has_feature or whatever.
 
-thanks
--- PMM
+Yes, testing for feature is better than testing a version.
+
+This patch reduces use of QEMU_GNUC_PREREQ roughly by half.  Good.
+
+>
+>
+>  include/qemu/compiler.h   |   8 ---
+>  include/qemu/host-utils.h | 121 ----------------------------------------------
+>  tcg/arm/tcg-target.h      |   7 ---
+>  3 files changed, 136 deletions(-)
+>
+> diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+> index 157698b..fc12e49 100644
+> --- a/include/qemu/compiler.h
+> +++ b/include/qemu/compiler.h
+> @@ -24,17 +24,9 @@
+>  
+>  #define QEMU_NORETURN __attribute__ ((__noreturn__))
+>  
+> -#if QEMU_GNUC_PREREQ(3, 4)
+>  #define QEMU_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
+> -#else
+> -#define QEMU_WARN_UNUSED_RESULT
+> -#endif
+
+Should we inline this macro?
+
+>  
+> -#if QEMU_GNUC_PREREQ(4, 0)
+>  #define QEMU_SENTINEL __attribute__((sentinel))
+> -#else
+> -#define QEMU_SENTINEL
+> -#endif
+
+Likewise.
+
+>  
+>  #if QEMU_GNUC_PREREQ(4, 3)
+>  #define QEMU_ARTIFICIAL __attribute__((always_inline, artificial))
+[Nothing to say on the rest...]
+
+Regardless of my question:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
