@@ -1,56 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZEXE-0002Gy-UQ
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Feb 2017 05:22:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44268)
+	id 1cZIjZ-0003XM-06
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Feb 2017 09:51:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57050)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZEXC-0002F7-D3
-	for qemu-trivial@nongnu.org; Thu, 02 Feb 2017 05:22:35 -0500
+	(envelope-from <philipp.gesang@intra2net.com>) id 1cZFlI-0004CM-Tn
+	for qemu-trivial@nongnu.org; Thu, 02 Feb 2017 06:41:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZEX8-0004ox-2M
-	for qemu-trivial@nongnu.org; Thu, 02 Feb 2017 05:22:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51170)
+	(envelope-from <philipp.gesang@intra2net.com>) id 1cZFlI-0007vu-0q
+	for qemu-trivial@nongnu.org; Thu, 02 Feb 2017 06:41:12 -0500
+Received: from rp02.intra2net.com ([62.75.181.28]:55288)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cZESD-00036O-GE; Thu, 02 Feb 2017 05:17:25 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(Exim 4.71) (envelope-from <philipp.gesang@intra2net.com>)
+	id 1cZFlD-0007pT-H7; Thu, 02 Feb 2017 06:41:07 -0500
+Received: from intranator.m.i2n (unknown [172.17.128.1])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 42A3A7E9F2;
-	Thu,  2 Feb 2017 10:17:25 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v12AHNvI018648
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 2 Feb 2017 05:17:24 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6207D1138646; Thu,  2 Feb 2017 11:17:22 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, patches@linaro.org
-References: <1485879287-12548-1-git-send-email-peter.maydell@linaro.org>
-	<87wpdbw2ki.fsf@dusky.pond.sub.org>
-	<157b55c5-2927-5f4e-0c43-820abd75a6d2@redhat.com>
-	<874m0ejth1.fsf@dusky.pond.sub.org>
-	<6c841220-8219-69fc-413f-c6ad320fe2ed@redhat.com>
-Date: Thu, 02 Feb 2017 11:17:22 +0100
-In-Reply-To: <6c841220-8219-69fc-413f-c6ad320fe2ed@redhat.com> (Paolo
-	Bonzini's message of "Wed, 1 Feb 2017 17:09:00 -0800")
-Message-ID: <87vass7v7x.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+	by rp02.intra2net.com (Postfix) with ESMTPS id A2B6810014C;
+	Thu,  2 Feb 2017 12:41:04 +0100 (CET)
+Received: from localhost (intranator.m.i2n [127.0.0.1])
+	by localhost (Postfix) with ESMTP id 7B3B96E7;
+	Thu,  2 Feb 2017 12:41:04 +0100 (CET)
+X-Virus-Scanned: by Intra2net Mail Security (AVE=8.3.42.110,VDF=8.12.142.252)
+Received: from drift.m.i2n (drift.m.i2n [172.16.1.85])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: smtp-auth-user)
+	by intranator.m.i2n (Postfix) with ESMTPSA id CDF7E657;
+	Thu,  2 Feb 2017 12:41:02 +0100 (CET)
+From: Philipp Gesang <philipp.gesang@intra2net.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Philipp Gesang <philipp.gesang@intra2net.com>
+Date: Thu,  2 Feb 2017 12:41:01 +0100
+Message-Id: <20170202114101.2655-1-philipp.gesang@intra2net.com>
+X-Mailer: git-send-email 2.11.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 02 Feb 2017 10:17:25 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Drop QEMU_GNUC_PREREQ()
- checks for gcc older than 4.1
+X-Received-From: 62.75.181.28
+X-Mailman-Approved-At: Thu, 02 Feb 2017 09:51:35 -0500
+Subject: [Qemu-trivial] [PATCH] docs: update manpage for stderr->log rename
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,58 +53,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Feb 2017 10:22:35 -0000
+X-List-Received-Date: Thu, 02 Feb 2017 11:41:13 -0000
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+With commit ed7f5f1d8db06fc31352a5ef4f54985e630c575a the name of
+this backend changed from =E2=80=9Cstderr=E2=80=9D to =E2=80=9Clog=E2=80=9D=
+.
 
-> On 31/01/2017 22:49, Markus Armbruster wrote:
->> Paolo Bonzini <pbonzini@redhat.com> writes:
->> 
->>> On 31/01/2017 12:40, Markus Armbruster wrote:
->>>>>  
->>>>>  #define QEMU_NORETURN __attribute__ ((__noreturn__))
->>>>>  
->>>>> -#if QEMU_GNUC_PREREQ(3, 4)
->>>>>  #define QEMU_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
->>>>> -#else
->>>>> -#define QEMU_WARN_UNUSED_RESULT
->>>>> -#endif
->>>> Should we inline this macro?
->>>>
->>>>>  
->>>>> -#if QEMU_GNUC_PREREQ(4, 0)
->>>>>  #define QEMU_SENTINEL __attribute__((sentinel))
->>>>> -#else
->>>>> -#define QEMU_SENTINEL
->>>>> -#endif
->>>> Likewise.
->>>
->>> Why, since we don't do that for QEMU_NORETURN, QEMU_PACKED, etc.?
->> 
->> Because we do it for aligned, always_inline, constructor, format, mode,
->> noinline, and in places even noreturn and packed:
->> 
->>     $ git-grep __attribute__ | sed '/define/d;s/.*__attribute__ *((\([A-Za-z0-9_]*\).*/\1/' | sort -u
->> 
->
-> Uh oh. :)  You have to remove uses in firmware and in imported code
-> (which covers mode, format and noreturn), but there's certainly room for
-> some BiteSizedTasks.
->
-> For sure noinline should be wrapped by a macro so that you also include
-> noclone (usually you want to thwart some compiler optimization so both
-> are needed).
->
-> That leaves aligned, always_inline and constructor.  always_inline has
-> three users, constructors has many, aligned has many and there's
-> QEMU_ALIGNED too.  The smallest work would be to convert these three to
-> QEMU_* rather than convert QEMU_* to __attribute__.
+Signed-off-by: Philipp Gesang <philipp.gesang@intra2net.com>
+---
+ qemu-option-trace.texi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I prefer "direct" expression to hiding behind macros, unless there's a
-reason for macros.  A common reason is portability.  Occasionally
-abstraction, say when the direct expression doesn't really convey what
-you're trying to do, or it's is overly verbose.
+diff --git a/qemu-option-trace.texi b/qemu-option-trace.texi
+index 693ab5a3e1..4166d5cdc2 100644
+--- a/qemu-option-trace.texi
++++ b/qemu-option-trace.texi
+@@ -5,7 +5,7 @@ Specify tracing options.
+ Immediately enable events matching @var{pattern}.
+ The file must contain one event name (as listed in the @file{trace-event=
+s-all}
+ file) per line; globbing patterns are accepted too.  This option is only
+-available if QEMU has been compiled with the @var{simple}, @var{stderr}
++available if QEMU has been compiled with the @var{simple}, @var{log}
+ or @var{ftrace} tracing backend.  To specify multiple events or patterns=
+,
+ specify the @option{-trace} option multiple times.
+=20
+@@ -15,7 +15,7 @@ Use @code{-trace help} to print a list of names of trac=
+e points.
+ Immediately enable events listed in @var{file}.
+ The file must contain one event name (as listed in the @file{trace-event=
+s-all}
+ file) per line; globbing patterns are accepted too.  This option is only
+-available if QEMU has been compiled with the @var{simple}, @var{stderr} =
+or
++available if QEMU has been compiled with the @var{simple}, @var{log} or
+ @var{ftrace} tracing backend.
+=20
+ @item file=3D@var{file}
+--=20
+2.11.0
 
-Anyway, I'm not particular on how we use attributes.  Since you seem to
-have more specific ideas, could you file suitable BiteSizedTasks?
 
