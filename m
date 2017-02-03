@@ -1,49 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZamT-0002u8-9J
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 05:07:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51505)
+	id 1cZd2y-0002P3-K6
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 07:33:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1cZamN-0002pA-SS
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 05:07:47 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cZd2w-0002Mp-62
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 07:32:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1cZamM-0000Wa-KT
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 05:07:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42366)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1cZamE-0000Ox-DP; Fri, 03 Feb 2017 05:07:34 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 608075455D;
-	Fri,  3 Feb 2017 10:07:34 +0000 (UTC)
-Received: from redhat.com (ovpn-117-145.ams2.redhat.com [10.36.117.145])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v13A7TeH011734
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 3 Feb 2017 05:07:32 -0500
-Date: Fri, 3 Feb 2017 10:07:27 +0000
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, qemu-stable@nongnu.org
-Message-ID: <20170203100727.GD10350@redhat.com>
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
-References: <1486115549-9398-1-git-send-email-mjt@msgid.tls.msk.ru>
+	(envelope-from <peter.maydell@linaro.org>) id 1cZd2t-0001Gv-7V
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 07:32:58 -0500
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:38827)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cZd2t-0001G0-2T
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 07:32:55 -0500
+Received: by mail-wm0-x233.google.com with SMTP id r141so25507902wmg.1
+	for <qemu-trivial@nongnu.org>; Fri, 03 Feb 2017 04:32:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=NAr4bo+AuglbO0HLFa75MiHlx5AavVQACjYIIvs2FoE=;
+	b=MS2gnbInXXHkc/xZSpdhGHm6Z0jeY/3fiMuqivOrsoaCgmKQF9/AtkHHEVb9zupjOX
+	wGpn4X73/vLb4OKoq8JuztGFZiWaCmWjotcxty8ldqQhp1aZnKAJ/VwWIcTQKN6g8NWy
+	XlSIkMir6iUNPLmj69HCW59/bjzNwNEWrEsQM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=NAr4bo+AuglbO0HLFa75MiHlx5AavVQACjYIIvs2FoE=;
+	b=jUjq/bzaGqxEFw1YnVnMa9UeeFyl45wZnttEDVHdxbvtBttY0ZIxL1x3uZJVbVh7qY
+	K2NID91mn58zj/QicpXX+ommfe/kab4AIUnGgXDAD8pxNbYRI8s0pbCB73DPZx3yi5gs
+	cnEEWkmSjk8maGhPmQN2dNN2emJJxK3G1hTTXwM+RYJHh9GzEek5RunhQ3cp7dFNHOUC
+	jk4L4X2EDwogPzzNXN2wHcS0Rfrc9c1qgwp/dPjONPm7Tu+D56l+1ozgDHkxdEkGSGdS
+	qo380QViUzJ300Ml4bnHkDVrDvGM5xtd7dBafQKr+L7vLOF2Kkzp1r5CJdFfrGQDp92o
+	xW5g==
+X-Gm-Message-State: AMke39n6aeacFskqZQ28kMG1q3aAOrjYUBD7qG6U3V87sm/wOZHBASNkc0D25pnBum2rkcFUTjyeGAaSh92k/Q5B
+X-Received: by 10.28.4.10 with SMTP id 10mr1303087wme.142.1486125173532; Fri,
+	03 Feb 2017 04:32:53 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1486115549-9398-1-git-send-email-mjt@msgid.tls.msk.ru>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 03 Feb 2017 10:07:34 +0000 (UTC)
+Received: by 10.223.145.69 with HTTP; Fri, 3 Feb 2017 04:32:33 -0800 (PST)
+In-Reply-To: <20170202195601.11286-1-sw@weilnetz.de>
+References: <20170202195601.11286-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Feb 2017 12:32:33 +0000
+Message-ID: <CAFEAcA81egoo-mgkXxjFOWgP3=aJf=RuXHdApTn+Zt98aXkA4w@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: Richard Henderson <rth@twiddle.net>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2] vnc: do not disconnect on EAGAIN
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-trivial] [PATCH] tci: Remove invalid assertions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,91 +61,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Feb 2017 10:07:47 -0000
+X-List-Received-Date: Fri, 03 Feb 2017 12:32:59 -0000
 
-On Fri, Feb 03, 2017 at 12:52:29PM +0300, Michael Tokarev wrote:
-> When qemu vnc server is trying to send large update to clients,
-> there might be a situation when system responds with something
-> like EAGAIN, indicating that there's no system memory to send
-> that much data (depending on the network speed, client and server
-> and what is happening).  In this case, something like this happens
-> on qemu side (from strace):
-> 
-> sendmsg(16, {msg_name(0)=NULL,
->         msg_iov(1)=[{"\244\"..., 729186}],
->         msg_controllen=0, msg_flags=0}, 0) = 103950
-> sendmsg(16, {msg_name(0)=NULL,
->         msg_iov(1)=[{"lz\346"..., 1559618}],
->         msg_controllen=0, msg_flags=0}, 0) = -1 EAGAIN
-> sendmsg(-1, {msg_name(0)=NULL,
->         msg_iov(1)=[{"lz\346"..., 1559618}],
->         msg_controllen=0, msg_flags=0}, 0) = -1 EBADF
-> 
-> qemu closes the socket before the retry, and obviously it gets EBADF
-> when trying to send to -1.
-> 
-> This is because there WAS a special handling for EAGAIN, but now it doesn't
-> work anymore, after commit 04d2529da27db512dcbd5e99d0e26d333f16efcc, because
-> now in all error-like cases we initiate vnc disconnect.
-> 
-> This change were introduced in qemu 2.6, and caused numerous grief for many
-> people, resulting in their vnc clients reporting sporadic random disconnects
-> from vnc server.
-> 
-> Fix that by doing the disconnect only when necessary, i.e. omitting this
-> very case of EAGAIN.
-> 
-> Hopefully the existing condition (comparing with QIO_CHANNEL_ERR_BLOCK)
-> is sufficient, as the original code (before the above commit) were
-> checking for other errno values too.
-
-There's no need to check WSAEWOULDBLOCK anymore - our win32 portability
-code already remaps it to EAGAIN.
-
-Checking EINTR is not required because QIOChannelSocket already
-restarts the recvmsg/sendmsg when seeing EINTR
-
-> Apparently there's another (semi?)bug exist somewhere here, since the
-> code tries to write to fd# -1, it probably should check if the connection
-> is open before. But this isn't important.
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> Fixes: 04d2529da27db512dcbd5e99d0e26d333f16efcc
-> Cc: Daniel P. Berrange <berrange@redhat.com>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: qemu-stable@nongnu.org
+On 2 February 2017 at 19:56, Stefan Weil <sw@weilnetz.de> wrote:
+> tb_jmp_insn_offset and tb_jmp_reset_offset are pointers
+> and cannot be used with ARRAY_SIZE.
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 > ---
-> v2: previous patch was tab/space-damaged, fixing this now
-> 
->  ui/vnc.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index cdeb79c..f2701e5 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -1256,12 +1256,13 @@ ssize_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp)
->      if (ret <= 0) {
->          if (ret == 0) {
->              VNC_DEBUG("Closing down client sock: EOF\n");
-> +            vnc_disconnect_start(vs);
->          } else if (ret != QIO_CHANNEL_ERR_BLOCK) {
->              VNC_DEBUG("Closing down client sock: ret %zd (%s)\n",
->                        ret, errp ? error_get_pretty(*errp) : "Unknown");
-> +            vnc_disconnect_start(vs);
+>  tcg/tci/tcg-target.inc.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/tcg/tci/tcg-target.inc.c b/tcg/tci/tcg-target.inc.c
+> index 26ee9b1664..b6a15569f8 100644
+> --- a/tcg/tci/tcg-target.inc.c
+> +++ b/tcg/tci/tcg-target.inc.c
+> @@ -566,7 +566,6 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+>      case INDEX_op_goto_tb:
+>          if (s->tb_jmp_insn_offset) {
+>              /* Direct jump method. */
+> -            tcg_debug_assert(args[0] < ARRAY_SIZE(s->tb_jmp_insn_offset));
+>              /* Align for atomic patching and thread safety */
+>              s->code_ptr = QEMU_ALIGN_PTR_UP(s->code_ptr, 4);
+>              s->tb_jmp_insn_offset[args[0]] = tcg_current_code_size(s);
+> @@ -575,7 +574,6 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+>              /* Indirect jump method. */
+>              TODO();
 >          }
->  
-> -        vnc_disconnect_start(vs);
->          if (errp) {
->              error_free(*errp);
->              *errp = NULL;
+> -        tcg_debug_assert(args[0] < ARRAY_SIZE(s->tb_jmp_reset_offset));
+>          s->tb_jmp_reset_offset[args[0]] = tcg_current_code_size(s);
+>          break;
+>      case INDEX_op_br:
+> --
+> 2.11.0
 
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+Applied to master as a buildfix; thanks.
 
-Regards,
-Daniel
--- 
-|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
-|: http://libvirt.org              -o-             http://virt-manager.org :|
-|: http://entangle-photo.org       -o-    http://search.cpan.org/~danberr/ :|
+-- PMM
 
