@@ -1,53 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZZxo-0004Ua-V1
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 04:15:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42236)
+	id 1cZaVe-0004Gq-95
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 04:50:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZZxm-0004Sd-Pc
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 04:15:27 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cZaVc-0004FX-Eb
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 04:50:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZZxl-00032x-RX
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 04:15:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40604)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cZZxg-0002zi-Lg; Fri, 03 Feb 2017 04:15:20 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CD3F2C04BD33;
-	Fri,  3 Feb 2017 09:15:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v139FJAG006067
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 3 Feb 2017 04:15:20 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id F0D411138646; Fri,  3 Feb 2017 10:15:17 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <1485778972-20924-1-git-send-email-thuth@redhat.com>
-	<87lgtnd4k0.fsf@dusky.pond.sub.org>
-Date: Fri, 03 Feb 2017 10:15:17 +0100
-In-Reply-To: <87lgtnd4k0.fsf@dusky.pond.sub.org> (Markus Armbruster's message
-	of "Fri, 03 Feb 2017 10:09:03 +0100")
-Message-ID: <87efzfbpp6.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 03 Feb 2017 09:15:20 +0000 (UTC)
+	(envelope-from <mjt@tls.msk.ru>) id 1cZaVb-0002fF-GG
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 04:50:24 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:56786)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1cZaVS-0002OI-Vr; Fri, 03 Feb 2017 04:50:15 -0500
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id E3848406CC;
+	Fri,  3 Feb 2017 12:50:04 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 4701E23;
+	Fri,  3 Feb 2017 12:50:04 +0300 (MSK)
+Received: (nullmailer pid 9329 invoked by uid 1000);
+	Fri, 03 Feb 2017 09:50:04 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, qemu-stable@nongnu.org
+Date: Fri,  3 Feb 2017 12:50:02 +0300
+Message-Id: <1486115402-9288-1-git-send-email-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/core/or-irq: Mark the
- device with cannot_instantiate_with_device_add_yet
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PATCH] vnc: do not disconnect on EAGAIN
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,48 +43,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Feb 2017 09:15:27 -0000
+X-List-Received-Date: Fri, 03 Feb 2017 09:50:25 -0000
 
-Markus Armbruster <armbru@redhat.com> writes:
+When qemu vnc server is trying to send large update to clients,
+there might be a situation when system responds with something
+like EAGAIN, indicating that there's no system memory to send
+that much data (depending on the network speed, client and server
+and what is happening).  In this case, something like this happens
+on qemu side (from strace):
 
-> Thomas Huth <thuth@redhat.com> writes:
->
->> The "or-irq" device needs to be wired up in source code, there is no
->> way the user can add this device with the "-device" parameter or the
->> "device_add" monitor command yet.
+sendmsg(16, {msg_name(0)=NULL,
+        msg_iov(1)=[{"\244\"..., 729186}],
+        msg_controllen=0, msg_flags=0}, 0) = 103950
+sendmsg(16, {msg_name(0)=NULL,
+        msg_iov(1)=[{"lz\346"..., 1559618}],
+        msg_controllen=0, msg_flags=0}, 0) = -1 EAGAIN
+sendmsg(-1, {msg_name(0)=NULL,
+        msg_iov(1)=[{"lz\346"..., 1559618}],
+        msg_controllen=0, msg_flags=0}, 0) = -1 EBADF
 
-Well, the user can (I tried), but it won't do squat then.
+qemu closes the socket before the retry, and obviously it gets EBADF
+when trying to send to -1.
 
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  v2: Changed patch description and comment
->>
->>  hw/core/or-irq.c | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
->> index 1ac090d..808c8d1 100644
->> --- a/hw/core/or-irq.c
->> +++ b/hw/core/or-irq.c
->> @@ -89,6 +89,9 @@ static void or_irq_class_init(ObjectClass *klass, void *data)
->>      dc->props = or_irq_properties;
->>      dc->realize = or_irq_realize;
->>      dc->vmsd = &vmstate_or_irq;
->> +
->> +    /* Reason: Needs to be wired up in source code, e.g. see stm32f205_soc.c */
->
-> This line is a bit long, and it could be shortened easily: drop "in
-> source code", or replace it by "to work".  This is how similar comments
-> elsewhere are phrased.
->
->> +    dc->cannot_instantiate_with_device_add_yet = true;
->>  }
->>  
->>  static const TypeInfo or_irq_type_info = {
->
-> Preferably with the comment touched up:
+This is because there WAS a special handling for EAGAIN, but now it doesn't
+work anymore, after commit 04d2529da27db512dcbd5e99d0e26d333f16efcc, because
+now in all error-like cases we initiate vnc disconnect.
 
-Commit message, too.
+This change were introduced in qemu 2.6, and caused numerous grief for many
+people, resulting in their vnc clients reporting sporadic random disconnects
+from vnc server.
 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Fix that by doing the disconnect only when necessary, i.e. omitting this
+very case of EAGAIN.
+
+Hopefully the existing condition (comparing with QIO_CHANNEL_ERR_BLOCK)
+is sufficient, as the original code (before the above commit) were
+checking for other errno values too.
+
+Apparently there's another (semi?)bug exist somewhere here, since the
+code tries to write to fd# -1, it probably should check if the connection
+is open before. But this isn't important.
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Fixes: 04d2529da27db512dcbd5e99d0e26d333f16efcc
+Cc: Daniel P. Berrange <berrange@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-stable@nongnu.org
+---
+ ui/vnc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ui/vnc.c b/ui/vnc.c
+index cdeb79c..66fde39 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -1256,12 +1256,13 @@ ssize_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp)
+     if (ret <= 0) {
+         if (ret == 0) {
+             VNC_DEBUG("Closing down client sock: EOF\n");
++	    vnc_disconnect_start(vs);
+         } else if (ret != QIO_CHANNEL_ERR_BLOCK) {
+             VNC_DEBUG("Closing down client sock: ret %zd (%s)\n",
+                       ret, errp ? error_get_pretty(*errp) : "Unknown");
++	    vnc_disconnect_start(vs);
+         }
+ 
+-        vnc_disconnect_start(vs);
+         if (errp) {
+             error_free(*errp);
+             *errp = NULL;
+-- 
+2.1.4
+
 
