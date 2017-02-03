@@ -1,40 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZhKp-0004w8-Ib
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 12:07:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60886)
+	id 1cZi8K-0003E4-Ec
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 12:58:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44466)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1cZhKm-0004th-UF
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 12:07:41 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1cZi8I-0003CU-2D
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 12:58:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1cZhKm-0002nJ-0p
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 12:07:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34978)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1cZhKg-0002jq-O4; Fri, 03 Feb 2017 12:07:34 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DC654811AC;
-	Fri,  3 Feb 2017 17:07:34 +0000 (UTC)
-Received: from donizetti.redhat.com (ovpn-116-196.ams2.redhat.com
-	[10.36.116.196])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v13H7WEn001699; Fri, 3 Feb 2017 12:07:33 -0500
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Fri,  3 Feb 2017 09:07:29 -0800
-Message-Id: <20170203170729.12399-1-pbonzini@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 03 Feb 2017 17:07:34 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1cZi8H-00075w-Bw
+	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 12:58:50 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48391)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1cZi8F-00074o-IO; Fri, 03 Feb 2017 12:58:47 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1cZi8B-0002gr-7R; Fri, 03 Feb 2017 17:58:43 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: patches@linaro.org,
+	Thomas Huth <thuth@redhat.com>
+Date: Fri,  3 Feb 2017 17:58:42 +0000
+Message-Id: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] test-vmstate: remove yield_until_fd_readable
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-trivial] [PATCH] CODING_STYLE: Mention preferred comment form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,39 +37,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Feb 2017 17:07:42 -0000
+X-List-Received-Date: Fri, 03 Feb 2017 17:58:51 -0000
 
-The function is not needed anymore now that migration is built on
-top of QIOChannel.
+Our defacto coding style strongly prefers /* */ style comments
+over the single-line // style, and checkpatch enforces this,
+but we don't actually document this. Mention it in CODING_STYLE.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Suggested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/test-vmstate.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ CODING_STYLE | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/tests/test-vmstate.c b/tests/test-vmstate.c
-index 9d87faf..0c2af4d 100644
---- a/tests/test-vmstate.c
-+++ b/tests/test-vmstate.c
-@@ -33,17 +33,6 @@
- static char temp_file[] = "/tmp/vmst.test.XXXXXX";
- static int temp_fd;
- 
--/* Fake yield_until_fd_readable() implementation so we don't have to pull the
-- * coroutine code as dependency.
-- */
--void yield_until_fd_readable(int fd)
--{
--    fd_set fds;
--    FD_ZERO(&fds);
--    FD_SET(fd, &fds);
--    select(fd + 1, &fds, NULL, NULL, NULL);
--}
--
- 
- /* Duplicate temp_fd and seek to the beginning of the file */
- static QEMUFile *open_test_file(bool write)
+diff --git a/CODING_STYLE b/CODING_STYLE
+index f53180b..2fa0c0b 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -116,3 +116,10 @@ if (a == 1) {
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
+ even when the constant is on the right.
++
++7. Comment style
++
++We use traditional C-style /* */ comments and avoid // comments.
++
++Rationale: The // form is valid in C99, so this is purely a matter of
++consistency of style. The checkpatch script will warn you about this.
 -- 
-2.9.3
+2.7.4
 
 
