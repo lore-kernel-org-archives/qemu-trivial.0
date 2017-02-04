@@ -1,31 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZj5A-0006zi-IF
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Feb 2017 13:59:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56842)
+	id 1cZx8s-0000X4-5u
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2017 05:00:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cZj58-0006xT-0z
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 13:59:38 -0500
+	(envelope-from <armbru@redhat.com>) id 1cZx8p-0000Uu-C9
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 05:00:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1cZj57-0007TV-Er
-	for qemu-trivial@nongnu.org; Fri, 03 Feb 2017 13:59:38 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:48403)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1cZj55-0007Sg-61; Fri, 03 Feb 2017 13:59:35 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1cZj52-0002jc-6F; Fri, 03 Feb 2017 18:59:32 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Date: Fri,  3 Feb 2017 18:59:31 +0000
-Message-Id: <1486148371-11692-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <armbru@redhat.com>) id 1cZx8o-0002oS-HQ
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 05:00:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54396)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1cZx8i-0002n7-GZ; Sat, 04 Feb 2017 05:00:16 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 88D273B70C;
+	Sat,  4 Feb 2017 10:00:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
+	[10.36.116.50])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v14A0FAC023633
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Sat, 4 Feb 2017 05:00:16 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id AD0A41138646; Sat,  4 Feb 2017 11:00:13 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Thomas Huth <thuth@redhat.com>, patches@linaro.org
+References: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+Date: Sat, 04 Feb 2017 11:00:13 +0100
+In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+	(Peter Maydell's message of "Fri, 3 Feb 2017 17:58:42 +0000")
+Message-ID: <87efze6zte.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Sat, 04 Feb 2017 10:00:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-trivial] [PATCH] softfloat: Use correct type in
- float64_to_uint64_round_to_zero()
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Mention
+ preferred comment form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -37,35 +58,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Feb 2017 18:59:39 -0000
+X-List-Received-Date: Sat, 04 Feb 2017 10:00:24 -0000
 
-In float64_to_uint64_round_to_zero() a typo meant that we were
-taking the uint64_t return value from float64_to_uint64() and
-putting it into an int64_t variable before returning it as
-uint64_t again. Use uint64_t instead of pointlessly casting it
-back and forth to int64_t.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Spotted while reading the code...
+> Our defacto coding style strongly prefers /* */ style comments
+> over the single-line // style, and checkpatch enforces this,
+> but we don't actually document this. Mention it in CODING_STYLE.
+>
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  CODING_STYLE | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/CODING_STYLE b/CODING_STYLE
+> index f53180b..2fa0c0b 100644
+> --- a/CODING_STYLE
+> +++ b/CODING_STYLE
+> @@ -116,3 +116,10 @@ if (a == 1) {
+>  Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+>  Besides, good compilers already warn users when '==' is mis-typed as '=',
+>  even when the constant is on the right.
+> +
+> +7. Comment style
+> +
+> +We use traditional C-style /* */ comments and avoid // comments.
+> +
+> +Rationale: The // form is valid in C99, so this is purely a matter of
+> +consistency of style. The checkpatch script will warn you about this.
 
- fpu/softfloat.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index c295f31..218b375 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -7386,7 +7386,7 @@ uint64_t float64_to_uint64_round_to_zero(float64 a, float_status *status)
- {
-     signed char current_rounding_mode = status->float_rounding_mode;
-     set_float_rounding_mode(float_round_to_zero, status);
--    int64_t v = float64_to_uint64(a, status);
-+    uint64_t v = float64_to_uint64(a, status);
-     set_float_rounding_mode(current_rounding_mode, status);
-     return v;
- }
--- 
-2.7.4
-
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
