@@ -1,47 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cZx8s-0000X4-5u
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2017 05:00:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37091)
+	id 1ca1eD-0000XP-Cl
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2017 09:49:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47176)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZx8p-0000Uu-C9
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 05:00:24 -0500
+	(envelope-from <famz@redhat.com>) id 1ca1eB-0000WR-Kv
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 09:49:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cZx8o-0002oS-HQ
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 05:00:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54396)
+	(envelope-from <famz@redhat.com>) id 1ca1eA-0008IT-Uy
+	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 09:49:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34888)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cZx8i-0002n7-GZ; Sat, 04 Feb 2017 05:00:16 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1ca1e6-0008FJ-EX; Sat, 04 Feb 2017 09:48:58 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 88D273B70C;
-	Sat,  4 Feb 2017 10:00:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v14A0FAC023633
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Sat, 4 Feb 2017 05:00:16 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id AD0A41138646; Sat,  4 Feb 2017 11:00:13 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 5DF617F09D;
+	Sat,  4 Feb 2017 14:48:58 +0000 (UTC)
+Received: from localhost (ovpn-8-24.pek2.redhat.com [10.72.8.24])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v14EmunX029225; Sat, 4 Feb 2017 09:48:57 -0500
+Date: Sat, 4 Feb 2017 22:48:54 +0800
+From: Fam Zheng <famz@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	Thomas Huth <thuth@redhat.com>, patches@linaro.org
+Message-ID: <20170204144854.GC15362@lemon>
 References: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
-Date: Sat, 04 Feb 2017 11:00:13 +0100
-In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
-	(Peter Maydell's message of "Fri, 3 Feb 2017 17:58:42 +0000")
-Message-ID: <87efze6zte.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.7.1 (2016-10-04)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Sat, 04 Feb 2017 10:00:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Sat, 04 Feb 2017 14:48:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -58,20 +53,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2017 10:00:24 -0000
+X-List-Received-Date: Sat, 04 Feb 2017 14:49:04 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
+On Fri, 02/03 17:58, Peter Maydell wrote:
 > Our defacto coding style strongly prefers /* */ style comments
 > over the single-line // style, and checkpatch enforces this,
 > but we don't actually document this. Mention it in CODING_STYLE.
->
+> 
 > Suggested-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
 >  CODING_STYLE | 7 +++++++
 >  1 file changed, 7 insertions(+)
->
+> 
 > diff --git a/CODING_STYLE b/CODING_STYLE
 > index f53180b..2fa0c0b 100644
 > --- a/CODING_STYLE
@@ -88,5 +82,5 @@ Peter Maydell <peter.maydell@linaro.org> writes:
 > +Rationale: The // form is valid in C99, so this is purely a matter of
 > +consistency of style. The checkpatch script will warn you about this.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
