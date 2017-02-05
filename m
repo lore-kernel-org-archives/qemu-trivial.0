@@ -1,47 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ca1eD-0000XP-Cl
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Feb 2017 09:49:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47176)
+	id 1caR9I-0003ku-6T
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2017 13:02:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1ca1eB-0000WR-Kv
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 09:49:04 -0500
+	(envelope-from <laurent@vivier.eu>) id 1caR9G-0003k8-3J
+	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:02:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1ca1eA-0008IT-Uy
-	for qemu-trivial@nongnu.org; Sat, 04 Feb 2017 09:49:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34888)
+	(envelope-from <laurent@vivier.eu>) id 1caR9F-000142-Ei
+	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:02:50 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:52093)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1ca1e6-0008FJ-EX; Sat, 04 Feb 2017 09:48:58 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5DF617F09D;
-	Sat,  4 Feb 2017 14:48:58 +0000 (UTC)
-Received: from localhost (ovpn-8-24.pek2.redhat.com [10.72.8.24])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v14EmunX029225; Sat, 4 Feb 2017 09:48:57 -0500
-Date: Sat, 4 Feb 2017 22:48:54 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Thomas Huth <thuth@redhat.com>, patches@linaro.org
-Message-ID: <20170204144854.GC15362@lemon>
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1caR9A-00010u-Va; Sun, 05 Feb 2017 13:02:45 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0MgJKE-1clwPj3J8o-00Niv2; Sun, 05 Feb 2017 19:02:37 +0100
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
 References: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, patches@linaro.org
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <5f8d7bb8-613c-e2f2-75dc-964524e8653e@vivier.eu>
+Date: Sun, 5 Feb 2017 19:02:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Sat, 04 Feb 2017 14:48:58 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:c3JgsotstgB5S+lBxd754Qybdyxk5C4rL7fX1ihuV/njukNmFnf
+	hnYt/DKzvbJ+iPVfG9mH41BuTfAE02alq3FzDodJoqD6nGaZSpHQCP971lOXWBndGFOEule
+	SqSMOSzdes5yw5DBktsWFWG1WKL/0Z7iy+ZRE/5i5qOuDFm3y4QwIJa9XHpr7soxPMDnz2a
+	cJW1xlfnmABIDICaprN1w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:+Lssy3b8P6Y=:X1fbgc/c13Oe8+DzETVHch
+	Tnl8/23OrC8Y05+Fs4/fCwjKb9ArGVZWpd+CumuyDsBdCP+k6yLHKrXDGky5hVTBUUm9P8ed6
+	3HTa4ADltWK+pkL+Z7DHUlszYo90K3IWxJTVSDZuCs4sNSPA49Aax3i2ruaujlgB1AO2aj53W
+	rrdC4hHtKA4S/ZZ5vP3nqjGzFnCP1vMq+WLlcEx3BU6zdge1AaVH0Lg6IzZCujRP/Ir/JQ9dM
+	S8aPVtqvaaS4UO9gKsFvKfOT2BHFfcrYkBKNIRTqo87fvQJ4OvHaVkPnV5mq4mnv1T/Gm8iZ0
+	JqhXF9Aj+p+56yWwdSo692sy0KKEMPpWccm0R/AQgvU7jxFhhWNC+Uame4Gj4P41OT7kQ18b7
+	Gg7G/YSaDWhwWlqnTwipOWizEFtjVFqQuNeJRNeyPzabvRfR8bqWwd9SsYTc2+wgZMyW6FyYQ
+	EyxyEhtZET+mOOwHThmbV7IXBc80ZBYskWKyXM/0/Bbm7Ad8+NMu+CURNSOzvsMJUPpAq/cZU
+	jMXFq8Sz0jlOfm8QkXVxHAr0w/LmIebOQDPaBrtH4JH933mPxYMWXA7+rTG+E3xEvHhv7HyyD
+	IauJiMa+W+dmKViagkILa11ENPe2r3dHosnZ3idJxVsBuIx3HjaxniGtjBx8ZrSgCUo7g8+xB
+	sUD9Czp6tBoP89vigQIVkI4BpMAFZP/+wHm3gMY7R6f2G7Ake/fEphyqII6Y4bvdAr5AhwQNn
+	tsd4oAgPZOqKuJTG
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Mention
- preferred comment form
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH] CODING_STYLE: Mention preferred comment
+ form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,9 +60,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Feb 2017 14:49:04 -0000
+X-List-Received-Date: Sun, 05 Feb 2017 18:02:51 -0000
 
-On Fri, 02/03 17:58, Peter Maydell wrote:
+Le 03/02/2017 à 18:58, Peter Maydell a écrit :
 > Our defacto coding style strongly prefers /* */ style comments
 > over the single-line // style, and checkpatch enforces this,
 > but we don't actually document this. Mention it in CODING_STYLE.
@@ -81,6 +88,8 @@ On Fri, 02/03 17:58, Peter Maydell wrote:
 > +
 > +Rationale: The // form is valid in C99, so this is purely a matter of
 > +consistency of style. The checkpatch script will warn you about this.
+> 
 
-Reviewed-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
 
