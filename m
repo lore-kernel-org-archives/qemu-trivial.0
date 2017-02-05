@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1caR9I-0003ku-6T
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2017 13:02:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48545)
+	id 1caRAJ-0004Do-Ln
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Feb 2017 13:03:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1caR9G-0003k8-3J
-	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:02:51 -0500
+	(envelope-from <laurent@vivier.eu>) id 1caRAF-0004CS-NC
+	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:03:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1caR9F-000142-Ei
-	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:02:50 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:52093)
+	(envelope-from <laurent@vivier.eu>) id 1caRAE-0001XQ-VE
+	for qemu-trivial@nongnu.org; Sun, 05 Feb 2017 13:03:51 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:58289)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1caR9A-00010u-Va; Sun, 05 Feb 2017 13:02:45 -0500
+	id 1caRAA-0001Wo-HS; Sun, 05 Feb 2017 13:03:46 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MgJKE-1clwPj3J8o-00Niv2; Sun, 05 Feb 2017 19:02:37 +0100
+	(mreue002 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0MBvyp-1chHb50bhf-00Aqrb; Sun, 05 Feb 2017 19:03:44 +0100
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-References: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, patches@linaro.org
+References: <1486148371-11692-1-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <5f8d7bb8-613c-e2f2-75dc-964524e8653e@vivier.eu>
-Date: Sun, 5 Feb 2017 19:02:36 +0100
+Message-ID: <88a3c26a-31e3-9a7f-c676-3e279ab2cdc6@vivier.eu>
+Date: Sun, 5 Feb 2017 19:03:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.6.0
 MIME-Version: 1.0
-In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1486148371-11692-1-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:c3JgsotstgB5S+lBxd754Qybdyxk5C4rL7fX1ihuV/njukNmFnf
-	hnYt/DKzvbJ+iPVfG9mH41BuTfAE02alq3FzDodJoqD6nGaZSpHQCP971lOXWBndGFOEule
-	SqSMOSzdes5yw5DBktsWFWG1WKL/0Z7iy+ZRE/5i5qOuDFm3y4QwIJa9XHpr7soxPMDnz2a
-	cJW1xlfnmABIDICaprN1w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:+Lssy3b8P6Y=:X1fbgc/c13Oe8+DzETVHch
-	Tnl8/23OrC8Y05+Fs4/fCwjKb9ArGVZWpd+CumuyDsBdCP+k6yLHKrXDGky5hVTBUUm9P8ed6
-	3HTa4ADltWK+pkL+Z7DHUlszYo90K3IWxJTVSDZuCs4sNSPA49Aax3i2ruaujlgB1AO2aj53W
-	rrdC4hHtKA4S/ZZ5vP3nqjGzFnCP1vMq+WLlcEx3BU6zdge1AaVH0Lg6IzZCujRP/Ir/JQ9dM
-	S8aPVtqvaaS4UO9gKsFvKfOT2BHFfcrYkBKNIRTqo87fvQJ4OvHaVkPnV5mq4mnv1T/Gm8iZ0
-	JqhXF9Aj+p+56yWwdSo692sy0KKEMPpWccm0R/AQgvU7jxFhhWNC+Uame4Gj4P41OT7kQ18b7
-	Gg7G/YSaDWhwWlqnTwipOWizEFtjVFqQuNeJRNeyPzabvRfR8bqWwd9SsYTc2+wgZMyW6FyYQ
-	EyxyEhtZET+mOOwHThmbV7IXBc80ZBYskWKyXM/0/Bbm7Ad8+NMu+CURNSOzvsMJUPpAq/cZU
-	jMXFq8Sz0jlOfm8QkXVxHAr0w/LmIebOQDPaBrtH4JH933mPxYMWXA7+rTG+E3xEvHhv7HyyD
-	IauJiMa+W+dmKViagkILa11ENPe2r3dHosnZ3idJxVsBuIx3HjaxniGtjBx8ZrSgCUo7g8+xB
-	sUD9Czp6tBoP89vigQIVkI4BpMAFZP/+wHm3gMY7R6f2G7Ake/fEphyqII6Y4bvdAr5AhwQNn
-	tsd4oAgPZOqKuJTG
+X-Provags-ID: V03:K0:NSsys3t70f67e9AyF/5Ox/gHRaUoXcK0Ca9Tz5wGXTDka2OM2fs
+	7ipGDi8nJvv6jOU+iV/cRp5mwNpqQ6NTOlciX0qCtdKFiyMe61b2VHr0ZgS2eb9MActQne5
+	8kTN9xx07KEvKpRqa1MkuKv5wrHfNERgyTbBGxkwfQLG8xVyFewQnXR5cKUEfxnq6bMtu5a
+	N+dDHUMtduy5ZEEyE8dGw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:kMSVox3snok=:i54lLJ48KHPAFavmbJAqv8
+	sOqB2yG6YpWtgEt4z1wPDKShXzyYp161cdulgBOfutVUu0GKJcn/bXonj0O3pp381Cijm4ZT+
+	Wd3v2bwx1hVuHKjOsxcp6090in60iuC/yTyK9fVGjUau7LlNETFylUltr+Z8bF/87oBkRiISl
+	mg+5l1MX+yp5bKb20ZBUs+7212Q+CUT4G5ZMrBL5a3OchL3lJZOa424h1YCjgWTxZb5qg4pUq
+	WlvaMhW/hNeldKaMsq3Yhc4AzPdVJh9SPCz4jeODfgabyDY2AvVTsE+Fi19KDbe51moNUYptA
+	k7Y9m5rZBIZ//7WmTsoDOvBDF4rla7KUMe4aezo30sAg2PaDi8h7ju2YLhLQlCq48NGy9Cal/
+	XhfLHoSGxVrSgqlgz8gt5XPPOhpg6dxsp50jj5UZYzkSlFH+rVOLkkgX/7vT1XngzmsKey3aq
+	bVM+XH8IsPcIia4Yn2S5el4pC1OaHuHoLznilMQaWKJPCDB2DYw7ILSPUPq5AM660Kp54ugqT
+	MOWA3cLdbmz3CrL3AdY2KAdprjw82t0Z5Yq2OZxnB70Dy31Q2Aaxb2Cg2ckjHEcvVc0l4c1Jv
+	a2WjZ1e7xnvkRdr2fLw6zqnpdeuT6fI2eYubQEXUn+1PvjeEymhrqFWN2z1T1C0woAZOseCcL
+	WG7qcoASa0NI0ibeKxhFFVuh7JmAhN3RPuKXaUlCO+qTddSoWLWDvLLYObB6OeH9l4tvKRB6L
+	5B1H+DOAupnQulxv
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH] CODING_STYLE: Mention preferred comment
- form
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH] softfloat: Use correct type in
+ float64_to_uint64_round_to_zero()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,36 +60,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Feb 2017 18:02:51 -0000
+X-List-Received-Date: Sun, 05 Feb 2017 18:03:54 -0000
 
-Le 03/02/2017 à 18:58, Peter Maydell a écrit :
-> Our defacto coding style strongly prefers /* */ style comments
-> over the single-line // style, and checkpatch enforces this,
-> but we don't actually document this. Mention it in CODING_STYLE.
+Le 03/02/2017 à 19:59, Peter Maydell a écrit :
+> In float64_to_uint64_round_to_zero() a typo meant that we were
+> taking the uint64_t return value from float64_to_uint64() and
+> putting it into an int64_t variable before returning it as
+> uint64_t again. Use uint64_t instead of pointlessly casting it
+> back and forth to int64_t.
 > 
-> Suggested-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  CODING_STYLE | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/CODING_STYLE b/CODING_STYLE
-> index f53180b..2fa0c0b 100644
-> --- a/CODING_STYLE
-> +++ b/CODING_STYLE
-> @@ -116,3 +116,10 @@ if (a == 1) {
->  Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
->  Besides, good compilers already warn users when '==' is mis-typed as '=',
->  even when the constant is on the right.
-> +
-> +7. Comment style
-> +
-> +We use traditional C-style /* */ comments and avoid // comments.
-> +
-> +Rationale: The // form is valid in C99, so this is purely a matter of
-> +consistency of style. The checkpatch script will warn you about this.
-> 
 
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+> ---
+> Spotted while reading the code...
+> 
+>  fpu/softfloat.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+> index c295f31..218b375 100644
+> --- a/fpu/softfloat.c
+> +++ b/fpu/softfloat.c
+> @@ -7386,7 +7386,7 @@ uint64_t float64_to_uint64_round_to_zero(float64 a, float_status *status)
+>  {
+>      signed char current_rounding_mode = status->float_rounding_mode;
+>      set_float_rounding_mode(float_round_to_zero, status);
+> -    int64_t v = float64_to_uint64(a, status);
+> +    uint64_t v = float64_to_uint64(a, status);
+>      set_float_rounding_mode(current_rounding_mode, status);
+>      return v;
+>  }
+> 
 
 
