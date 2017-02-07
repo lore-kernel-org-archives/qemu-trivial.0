@@ -1,74 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cb7Vx-00022R-Sa
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2017 10:17:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33059)
+	id 1cb7hZ-0004Ek-NK
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2017 10:29:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1cb7Vt-0001y3-4w
-	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:17:05 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cb7hX-0004CY-Fr
+	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:29:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berto@igalia.com>) id 1cb7Vp-0007p9-1e
-	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:17:01 -0500
-Received: from smtp3.mundo-r.com ([212.51.32.191]:21495 helo=smtp4.mundo-r.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berto@igalia.com>)
-	id 1cb7Vk-0007Mx-2s; Tue, 07 Feb 2017 10:16:52 -0500
-IronPort-PHdr: =?us-ascii?q?9a23=3APctOXhc6qbH+7p5i5YDiiM79lGMj4u6mDksu8pMi?=
-	=?us-ascii?q?zoh2WeGdxcS9YR7h7PlgxGXEQZ/co6odzbGH7+awASddvd6oizMrSNR0TRgLiM?=
-	=?us-ascii?q?EbzUQLIfWuLgnFFsPsdDEwB89YVVVorDmROElRH9viNRWJ+iXhpTEdFQ/iOgVr?=
-	=?us-ascii?q?O+/7BpDdj9it1+C15pbffxhEiCCzbL52Ixi6twbcutUZjYZiJas61wfErGZPd+?=
-	=?us-ascii?q?lK321jOEidnwz75se+/Z5j9zpftvc8/MNeUqv0Yro1Q6VAADspL2466svrtQLe?=
-	=?us-ascii?q?TQSU/XsTTn8WkhtTDAfb6hzxQ4r8vTH7tup53ymaINH2QLUpUjms86tnVBnlgz?=
-	=?us-ascii?q?ocOjUn7G/YlNB/jKNDoBKguRN/xZLUYJqIP/Z6Z6/RYM8WSXZEUstXSidPAJ6z?=
-	=?us-ascii?q?b5EXAuQBI+hWsovyp1UAohWwBgejC//gxyRUhnPqx6A2z/gtHBva0AEmAtkAsG?=
-	=?us-ascii?q?7UrNLwNKoKTe21yLLHwivZb/NK3jf29YnGfQo7of6QXLJ/a9faxE40GAzblFWQ?=
-	=?us-ascii?q?tYvlMiiU1uQCqWeb6+tgWvi1h2E7rAFxpyGiy8ExgYfKnoIY0lTJ+ThjzIooON?=
-	=?us-ascii?q?G1SlR3bNqgHZdKqi2XN4t7T8U/SG9yoik60KcJuZujcSgPz5Qo2gDQZuScc4iN?=
-	=?us-ascii?q?/hLjTOGRISpkhH59eLKwmRKy8U+4x+3yTMa01ldLritDktbSrHwN1hPT5dKDSv?=
-	=?us-ascii?q?t85EitwyqA1wfW6u1cIEA0k7TUK4I5z7M0i5Yfq1nPEjL0lUnsiKKbcl8o9vWo?=
-	=?us-ascii?q?5unnernmo4WTN45wigHwKKQuncm/DPwjPQcQRWib5eO82abi/U32WrpKivw2nb?=
-	=?us-ascii?q?PDvJ/GIsQbo7a1AxVJ3YY79xa/EzCm3cwCknkdKVJKYwiHj5XyNlHUPv/3EPe/?=
-	=?us-ascii?q?jE6wkDtx2//GObjhCI3XLnffiLfhYap960lExQoq099f4o9UBqgcL/3tRE/+qt?=
-	=?us-ascii?q?jYAwQ/MwyzxebnB9N91p4EVWKIGK+ZP7vYsUWU6eI3P+mMeIgVtS7kK/c74v7u?=
-	=?us-ascii?q?kGY1mUMHfamow5sXaWq3HvB9LkWfZnrshNgBEWEXvgYkS+zqklKCAnZvYCOXVr?=
-	=?us-ascii?q?g/+ypzIZijB53eXZygmvTV1T2+FIdLTnpLBlCFDTHjcIDSCNkWbyfHC8trnyYY?=
-	=?us-ascii?q?UvCOQpUq1Bjm4AX30aZgBuvb8ykZvNTo090jtL6brg076TEhV5fV6GqKVWwh2z?=
-	=?us-ascii?q?pQHzI=3D?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2B8BAAR5JlY/5tjdVtdGgEBAQECAQEBA?=
-	=?us-ascii?q?QgBAQEBFQEBAQECAQEBAQgBAQEBgyaQPI9wAQEBAQEBAQWBIZMnhBuFEoEQAoJ?=
-	=?us-ascii?q?RQxQBAQEBAQEBAQEBAWEogjMbAYIaAQEBAQIBJ1IFCwsOCgklDwEsDQENBol5B?=
-	=?us-ascii?q?QwBsU06i1cBAQEBAQEEAQEBASSGCIUzhD6FXB8Fm2ujEZMPNiF+HxMIFRWGfz+?=
-	=?us-ascii?q?JKQEBAQ?=
-X-IPAS-Result: =?us-ascii?q?A2B8BAAR5JlY/5tjdVtdGgEBAQECAQEBAQgBAQEBFQEBAQE?=
-	=?us-ascii?q?CAQEBAQgBAQEBgyaQPI9wAQEBAQEBAQWBIZMnhBuFEoEQAoJRQxQBAQEBAQEBA?=
-	=?us-ascii?q?QEBAWEogjMbAYIaAQEBAQIBJ1IFCwsOCgklDwEsDQENBol5BQwBsU06i1cBAQE?=
-	=?us-ascii?q?BAQEEAQEBASSGCIUzhD6FXB8Fm2ujEZMPNiF+HxMIFRWGfz+JKQEBAQ?=
-X-IronPort-AV: E=Sophos;i="5.33,346,1477954800"; d="scan'208";a="108326270"
-Received: from fanzine.igalia.com ([91.117.99.155])
-	by smtp4.mundo-r.com with ESMTP; 07 Feb 2017 16:16:13 +0100
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine.igalia.com with esmtps 
-	(Cipher TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim)
-	id 1cb7V7-0004VY-GL; Tue, 07 Feb 2017 16:16:13 +0100
-Received: from berto by mail.igalia.com with local (Exim)
-	id 1cb7V7-0003Ua-Ds; Tue, 07 Feb 2017 16:16:13 +0100
-From: Alberto Garcia <berto@igalia.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-In-Reply-To: <87wpd211e0.fsf@dusky.pond.sub.org>
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cb7hR-0007vH-Tk
+	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:29:03 -0500
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:32919)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1cb7hR-0007uM-Nl; Tue, 07 Feb 2017 10:28:57 -0500
+Received: by mail-wm0-x242.google.com with SMTP id v77so28873541wmv.0;
+	Tue, 07 Feb 2017 07:28:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=F7/YAujaaNBabBd3+kitOlZvdPUN9oz34QKCfPlHCl8=;
+	b=iRhXoCveXUh4aOcqXPF6ibtl/UaMvM2Byp04+0qWJ7b/PrE26QcXwlSwj5tNF3XGrn
+	jwoEJOYWWRo9I8A0eOr0UxyK2I3/R36WpOGrVWwGeJZGjBtaEmgfCr5foloHjPd/idSa
+	TTDmjvOwWNAXO1srOAHdfHUFh6JeDoT88lixDJ4ouhtlZXInhmUQeC9ib7hIcTwEQ9AJ
+	By6ualQqfaavnic+zJ+7Z6QPRixdvURZhlK/fyT7Vb3wQZdIXTKHrA3ytD3jdyTxfe9V
+	/0LkqJuazMOCQtc8GcZfObVyhkrVeiCPW/fFfNaG+olYkCyM/Vva/qfL87rJpw00U4Dd
+	ZtiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=F7/YAujaaNBabBd3+kitOlZvdPUN9oz34QKCfPlHCl8=;
+	b=E1wrHiL4RHMYEyQUMDFGKB0e+UDM+v/25PV5+93xfbpZx5KbxywZfVfBs/EhXGDTAS
+	qxl/GOK/UOx0MdC9tJQdqtrtbrSCiJHlNHJLcGeBew03wY3qy8bRvqRZeSLL2nyt5O1J
+	wHjkWlgl2byLDYDUUBZwin6TYNe0vVFrIzEclDQN/FAYjuxeQwDlEovalJU/oTFdHgSY
+	bHrcsU3PT8CDQhHxmXV5NHoscMTY6z/6QEbDjkV1sdaqDWE1axeTCY0MLTh+FP/rNt7V
+	u1WzW00hPPfHNQGnCLY1ph1c9XFWQGLdPaD3YSJfZZfFgvK4H7TZfiXC5lM+wRwsHWmF
+	1NfA==
+X-Gm-Message-State: AMke39kBjxPnLHcnPZTvR/qO39nk/tss2AovQcauAOg8e4jvFBnwKmsDyV5fnYaAU+TJiQ==
+X-Received: by 10.28.15.2 with SMTP id 2mr14779736wmp.66.1486481336430;
+	Tue, 07 Feb 2017 07:28:56 -0800 (PST)
+Received: from [192.168.10.165] (94-39-187-56.adsl-ull.clienti.tiscali.it.
+	[94.39.187.56]) by smtp.googlemail.com with ESMTPSA id
+	w17sm7915846wra.28.2017.02.07.07.28.55
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 07 Feb 2017 07:28:55 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
 References: <20170127094154.19778-1-berto@igalia.com>
-	<87wpd211e0.fsf@dusky.pond.sub.org>
-User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
-	(i586-pc-linux-gnu)
-Date: Tue, 07 Feb 2017 16:16:13 +0100
-Message-ID: <w51zihyjaki.fsf@maestria.local.igalia.com>
+Cc: qemu-trivial@nongnu.org
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5370d078-6f29-3d56-635b-5871a6b95983@redhat.com>
+Date: Tue, 7 Feb 2017 16:28:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.5.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 212.51.32.191
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc: Clarify that -vga
- std is now the default
+In-Reply-To: <20170127094154.19778-1-berto@igalia.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: Re: [Qemu-trivial] [PATCH] qemu-doc: Clarify that -vga std is now
+ the default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,46 +71,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Feb 2017 15:17:05 -0000
+X-List-Received-Date: Tue, 07 Feb 2017 15:29:04 -0000
 
-On Tue 07 Feb 2017 04:11:51 PM CET, Markus Armbruster wrote:
->>  Cirrus Logic GD5446 Video card. All Windows versions starting from
->>  Windows 95 should recognize and use this graphic card. For optimal
->>  performances, use 16 bit color depth in the guest and the host OS.
->> -(This one is the default)
->> +(This card was the default before QEMU 2.2)
->>  @item std
->>  Standard VGA card with Bochs VBE extensions.  If your guest OS
->>  supports the VESA 2.0 VBE extensions (e.g. Windows XP) and if you want
->>  to use high resolution modes (>= 1280x1024x16) then you should use
->> -this option.
->> +this option. (This card is the default since QEMU 2.2)
->>  @item vmware
->>  VMWare SVGA-II compatible adapter. Use it if you have sufficiently
->>  recent XFree86/XOrg server or Windows guest with a driver for this
->
-> Do we want to cover history in the user manual?  Or should we simply
-> move the "(This one is the default)" phrase?
 
-> Hmm, the default seems to depend on the machine type:
->
->     if (default_vga) {
->         if (machine_class->default_display) {
->             vga_model = machine_class->default_display;
->         } else if (vga_interface_available(VGA_CIRRUS)) {
->             vga_model = "cirrus";
->         } else if (vga_interface_available(VGA_STD)) {
->             vga_model = "std";
->         }
->     }
->
-> The pc-*-2.2 and newer set ->default_display = "std".
 
-Right, if you set e.g. pc-i440fx-1.7 you'll get a cirrus card, that's
-why I thought it was worth mentioning that older versions had a
-different default.
+On 27/01/2017 10:41, Alberto Garcia wrote:
+> The QEMU manual page states that Cirrus Logic is the default video
+> card if the user doesn't specify any. However this is not true since
+> QEMU 2.2.
+> 
+> Signed-off-by: Alberto Garcia <berto@igalia.com>
+> ---
+>  qemu-options.hx | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 80df52651a..66ee562821 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1195,12 +1195,12 @@ Select type of VGA card to emulate. Valid values for @var{type} are
+>  Cirrus Logic GD5446 Video card. All Windows versions starting from
+>  Windows 95 should recognize and use this graphic card. For optimal
+>  performances, use 16 bit color depth in the guest and the host OS.
+> -(This one is the default)
+> +(This card was the default before QEMU 2.2)
+>  @item std
+>  Standard VGA card with Bochs VBE extensions.  If your guest OS
+>  supports the VESA 2.0 VBE extensions (e.g. Windows XP) and if you want
+>  to use high resolution modes (>= 1280x1024x16) then you should use
+> -this option.
+> +this option. (This card is the default since QEMU 2.2)
+>  @item vmware
+>  VMWare SVGA-II compatible adapter. Use it if you have sufficiently
+>  recent XFree86/XOrg server or Windows guest with a driver for this
+> 
 
-But I'm fine either way to be honest.
+Queued, thanks.
 
-Berto
+Paolo
 
