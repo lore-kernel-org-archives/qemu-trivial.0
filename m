@@ -1,40 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cbVgc-00037n-Sy
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 12:05:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38183)
+	id 1cbWVK-0001ws-Mw
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 12:58:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1cbVga-00035Q-Kx
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:05:41 -0500
+	(envelope-from <thuth@redhat.com>) id 1cbWVI-0001tW-S3
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:58:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1cbVgZ-0005xB-PJ
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:05:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47676)
+	(envelope-from <thuth@redhat.com>) id 1cbWVI-0004Cc-7y
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:58:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55874)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1cbVgV-0005uk-Uy; Wed, 08 Feb 2017 12:05:36 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cbWV5-000411-VT; Wed, 08 Feb 2017 12:57:59 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 37719C05AA59;
-	Wed,  8 Feb 2017 17:05:35 +0000 (UTC)
-Received: from scv.usersys.redhat.com (vpn-58-133.rdu2.redhat.com
-	[10.10.58.133])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v18H5Y4v026637; Wed, 8 Feb 2017 12:05:34 -0500
-From: John Snow <jsnow@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: kwolf@redhat.com, qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>
-Date: Wed,  8 Feb 2017 12:05:33 -0500
-Message-Id: <20170208170533.28822-1-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+	by mx1.redhat.com (Postfix) with ESMTPS id 096813A7683;
+	Wed,  8 Feb 2017 17:57:52 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v18HvoYX031375; Wed, 8 Feb 2017 12:57:50 -0500
+From: Thomas Huth <thuth@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Date: Wed,  8 Feb 2017 18:57:49 +0100
+Message-Id: <1486576669-29760-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 08 Feb 2017 17:05:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 08 Feb 2017 17:57:52 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] ide: remove undefined behavior in ide-test
+Subject: [Qemu-trivial] [PATCH v3] hw/core/or-irq: Mark the device with
+ cannot_instantiate_with_device_add_yet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,29 +46,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Feb 2017 17:05:41 -0000
+X-List-Received-Date: Wed, 08 Feb 2017 17:58:05 -0000
 
-trivial: initialize the dirty buffer with a random-ish byte.
-Stops valgrind from whining about uninitialized buffers.
+The "or-irq" device needs to be wired up in source code, there is no
+way the user can make any real use of this device with the "-device"
+parameter or the "device_add" monitor command yet.
 
-Signed-off-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/ide-test.c | 1 +
- 1 file changed, 1 insertion(+)
+ v3: Another update to the patch description and comment
 
-diff --git a/tests/ide-test.c b/tests/ide-test.c
-index 2fa97bc..139ebc0 100644
---- a/tests/ide-test.c
-+++ b/tests/ide-test.c
-@@ -550,6 +550,7 @@ static void make_dirty(uint8_t device)
+ hw/core/or-irq.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
+index 1ac090d..1485d5b 100644
+--- a/hw/core/or-irq.c
++++ b/hw/core/or-irq.c
+@@ -89,6 +89,9 @@ static void or_irq_class_init(ObjectClass *klass, void *data)
+     dc->props = or_irq_properties;
+     dc->realize = or_irq_realize;
+     dc->vmsd = &vmstate_or_irq;
++
++    /* Reason: Needs to be wired up to work, e.g. see stm32f205_soc.c */
++    dc->cannot_instantiate_with_device_add_yet = true;
+ }
  
-     guest_buf = guest_alloc(guest_malloc, len);
-     buf = g_malloc(len);
-+    memset(buf, rand() % 255 + 1, len);
-     g_assert(guest_buf);
-     g_assert(buf);
- 
+ static const TypeInfo or_irq_type_info = {
 -- 
-2.9.3
+1.8.3.1
 
 
