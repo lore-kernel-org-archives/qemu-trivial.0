@@ -1,65 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cb7hZ-0004Ek-NK
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Feb 2017 10:29:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36556)
+	id 1cbNJU-0005HT-VQ
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 03:09:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45348)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cb7hX-0004CY-Fr
-	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:29:04 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cbNJS-0005FV-7p
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 03:09:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1cb7hR-0007vH-Tk
-	for qemu-trivial@nongnu.org; Tue, 07 Feb 2017 10:29:03 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:32919)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1cb7hR-0007uM-Nl; Tue, 07 Feb 2017 10:28:57 -0500
-Received: by mail-wm0-x242.google.com with SMTP id v77so28873541wmv.0;
-	Tue, 07 Feb 2017 07:28:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=F7/YAujaaNBabBd3+kitOlZvdPUN9oz34QKCfPlHCl8=;
-	b=iRhXoCveXUh4aOcqXPF6ibtl/UaMvM2Byp04+0qWJ7b/PrE26QcXwlSwj5tNF3XGrn
-	jwoEJOYWWRo9I8A0eOr0UxyK2I3/R36WpOGrVWwGeJZGjBtaEmgfCr5foloHjPd/idSa
-	TTDmjvOwWNAXO1srOAHdfHUFh6JeDoT88lixDJ4ouhtlZXInhmUQeC9ib7hIcTwEQ9AJ
-	By6ualQqfaavnic+zJ+7Z6QPRixdvURZhlK/fyT7Vb3wQZdIXTKHrA3ytD3jdyTxfe9V
-	/0LkqJuazMOCQtc8GcZfObVyhkrVeiCPW/fFfNaG+olYkCyM/Vva/qfL87rJpw00U4Dd
-	ZtiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=F7/YAujaaNBabBd3+kitOlZvdPUN9oz34QKCfPlHCl8=;
-	b=E1wrHiL4RHMYEyQUMDFGKB0e+UDM+v/25PV5+93xfbpZx5KbxywZfVfBs/EhXGDTAS
-	qxl/GOK/UOx0MdC9tJQdqtrtbrSCiJHlNHJLcGeBew03wY3qy8bRvqRZeSLL2nyt5O1J
-	wHjkWlgl2byLDYDUUBZwin6TYNe0vVFrIzEclDQN/FAYjuxeQwDlEovalJU/oTFdHgSY
-	bHrcsU3PT8CDQhHxmXV5NHoscMTY6z/6QEbDjkV1sdaqDWE1axeTCY0MLTh+FP/rNt7V
-	u1WzW00hPPfHNQGnCLY1ph1c9XFWQGLdPaD3YSJfZZfFgvK4H7TZfiXC5lM+wRwsHWmF
-	1NfA==
-X-Gm-Message-State: AMke39kBjxPnLHcnPZTvR/qO39nk/tss2AovQcauAOg8e4jvFBnwKmsDyV5fnYaAU+TJiQ==
-X-Received: by 10.28.15.2 with SMTP id 2mr14779736wmp.66.1486481336430;
-	Tue, 07 Feb 2017 07:28:56 -0800 (PST)
-Received: from [192.168.10.165] (94-39-187-56.adsl-ull.clienti.tiscali.it.
-	[94.39.187.56]) by smtp.googlemail.com with ESMTPSA id
-	w17sm7915846wra.28.2017.02.07.07.28.55
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 07 Feb 2017 07:28:55 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
-References: <20170127094154.19778-1-berto@igalia.com>
-Cc: qemu-trivial@nongnu.org
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5370d078-6f29-3d56-635b-5871a6b95983@redhat.com>
-Date: Tue, 7 Feb 2017 16:28:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.5.1
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cbNJR-0004Bz-7p
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 03:09:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40406)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1cbNJK-00049J-UZ; Wed, 08 Feb 2017 03:09:07 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 26193C05AA5B;
+	Wed,  8 Feb 2017 08:09:07 +0000 (UTC)
+Received: from localhost (ovpn-116-15.phx2.redhat.com [10.3.116.15])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 185A09244E;
+	Wed,  8 Feb 2017 08:09:05 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Wed,  8 Feb 2017 12:09:00 +0400
+Message-Id: <20170208080900.4092-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20170127094154.19778-1-berto@igalia.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 08 Feb 2017 08:09:07 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-trivial] [PATCH] qemu-doc: Clarify that -vga std is now
- the default
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] qcow2: remove useless NULL check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,42 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Feb 2017 15:29:04 -0000
+X-List-Received-Date: Wed, 08 Feb 2017 08:09:15 -0000
 
+g_strdup() already handles the case where the argument is NULL.
 
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ block/qcow2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 27/01/2017 10:41, Alberto Garcia wrote:
-> The QEMU manual page states that Cirrus Logic is the default video
-> card if the user doesn't specify any. However this is not true since
-> QEMU 2.2.
-> 
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
-> ---
->  qemu-options.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 80df52651a..66ee562821 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -1195,12 +1195,12 @@ Select type of VGA card to emulate. Valid values for @var{type} are
->  Cirrus Logic GD5446 Video card. All Windows versions starting from
->  Windows 95 should recognize and use this graphic card. For optimal
->  performances, use 16 bit color depth in the guest and the host OS.
-> -(This one is the default)
-> +(This card was the default before QEMU 2.2)
->  @item std
->  Standard VGA card with Bochs VBE extensions.  If your guest OS
->  supports the VESA 2.0 VBE extensions (e.g. Windows XP) and if you want
->  to use high resolution modes (>= 1280x1024x16) then you should use
-> -this option.
-> +this option. (This card is the default since QEMU 2.2)
->  @item vmware
->  VMWare SVGA-II compatible adapter. Use it if you have sufficiently
->  recent XFree86/XOrg server or Windows guest with a driver for this
-> 
+diff --git a/block/qcow2.c b/block/qcow2.c
+index 96fb8a8f16..9114218030 100644
+--- a/block/qcow2.c
++++ b/block/qcow2.c
+@@ -2016,8 +2016,8 @@ static int qcow2_change_backing_file(BlockDriverSta=
+te *bs,
+     g_free(s->image_backing_file);
+     g_free(s->image_backing_format);
+=20
+-    s->image_backing_file =3D backing_file ? g_strdup(bs->backing_file) =
+: NULL;
+-    s->image_backing_format =3D backing_fmt ? g_strdup(bs->backing_forma=
+t) : NULL;
++    s->image_backing_file =3D g_strdup(bs->backing_file);
++    s->image_backing_format =3D g_strdup(bs->backing_format);
+=20
+     return qcow2_update_header(bs);
+ }
+--=20
+2.11.0.295.gd7dffce1c.dirty
 
-Queued, thanks.
-
-Paolo
 
