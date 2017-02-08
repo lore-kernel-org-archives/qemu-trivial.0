@@ -1,41 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cbSnd-00041n-MX
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 09:00:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42877)
+	id 1cbVgc-00037n-Sy
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 12:05:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1cbSna-00040E-KU
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 09:00:43 -0500
+	(envelope-from <jsnow@redhat.com>) id 1cbVga-00035Q-Kx
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:05:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1cbSnX-00057h-8n
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 09:00:42 -0500
-Received: from mx5-phx2.redhat.com ([209.132.183.37]:45702)
+	(envelope-from <jsnow@redhat.com>) id 1cbVgZ-0005xB-PJ
+	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 12:05:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47676)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mlureau@redhat.com>)
-	id 1cbSnW-00057V-SW; Wed, 08 Feb 2017 09:00:39 -0500
-Received: from zmail17.collab.prod.int.phx2.redhat.com
-	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by mx5-phx2.redhat.com (8.14.4/8.14.4) with ESMTP id v18E0cpx065159;
-	Wed, 8 Feb 2017 09:00:38 -0500
-Date: Wed, 8 Feb 2017 09:00:37 -0500 (EST)
-From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <mlureau@redhat.com>
-To: Max Reitz <mreitz@redhat.com>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org, kwolf@redhat.com, qemu-trivial@nongnu.org
-Message-ID: <1904417137.1617199.1486562437768.JavaMail.zimbra@redhat.com>
-In-Reply-To: <58a6feee-8828-d159-daf9-b460a6c0c7c4@redhat.com>
-References: <20170208080900.4092-1-marcandre.lureau@redhat.com>
-	<58a6feee-8828-d159-daf9-b460a6c0c7c4@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.3.116.15]
-X-Mailer: Zimbra 8.0.6_GA_5922 (ZimbraWebClient - FF51 (Linux)/8.0.6_GA_5922)
-Thread-Topic: qcow2: remove useless NULL check
-Thread-Index: O907WuZf4eJbK6VZgQ5VMVEZQccYrQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 209.132.183.37
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qcow2: remove useless NULL
- check
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1cbVgV-0005uk-Uy; Wed, 08 Feb 2017 12:05:36 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 37719C05AA59;
+	Wed,  8 Feb 2017 17:05:35 +0000 (UTC)
+Received: from scv.usersys.redhat.com (vpn-58-133.rdu2.redhat.com
+	[10.10.58.133])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v18H5Y4v026637; Wed, 8 Feb 2017 12:05:34 -0500
+From: John Snow <jsnow@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: kwolf@redhat.com, qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>
+Date: Wed,  8 Feb 2017 12:05:33 -0500
+Message-Id: <20170208170533.28822-1-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 08 Feb 2017 17:05:35 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] ide: remove undefined behavior in ide-test
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,55 +46,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Feb 2017 14:00:44 -0000
+X-List-Received-Date: Wed, 08 Feb 2017 17:05:41 -0000
 
-Hi
+trivial: initialize the dirty buffer with a random-ish byte.
+Stops valgrind from whining about uninitialized buffers.
 
------ Original Message -----
-> On 08.02.2017 09:09, Marc-Andr=C3=A9 Lureau wrote:
-> > g_strdup() already handles the case where the argument is NULL.
-> >=20
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > ---
-> >  block/qcow2.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/block/qcow2.c b/block/qcow2.c
-> > index 96fb8a8f16..9114218030 100644
-> > --- a/block/qcow2.c
-> > +++ b/block/qcow2.c
-> > @@ -2016,8 +2016,8 @@ static int qcow2_change_backing_file(BlockDriverS=
-tate
-> > *bs,
-> >      g_free(s->image_backing_file);
-> >      g_free(s->image_backing_format);
-> > =20
-> > -    s->image_backing_file =3D backing_file ? g_strdup(bs->backing_file=
-) :
-> > NULL;
-> > -    s->image_backing_format =3D backing_fmt ? g_strdup(bs->backing_for=
-mat) :
-> > NULL;
-> > +    s->image_backing_file =3D g_strdup(bs->backing_file);
-> > +    s->image_backing_format =3D g_strdup(bs->backing_format);
->=20
-> bs->backing_file and bs->backing_format are arrays. They will never be NU=
-LL.
->=20
-> The ternary operator tests backing_file and backing_fmt which instead
-> are pointers. So this is not an equivalent conversion.
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ tests/ide-test.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-oops my bad, ignore ;P a bit uncommon code though, could deserve a comment.
+diff --git a/tests/ide-test.c b/tests/ide-test.c
+index 2fa97bc..139ebc0 100644
+--- a/tests/ide-test.c
++++ b/tests/ide-test.c
+@@ -550,6 +550,7 @@ static void make_dirty(uint8_t device)
+ 
+     guest_buf = guest_alloc(guest_malloc, len);
+     buf = g_malloc(len);
++    memset(buf, rand() % 255 + 1, len);
+     g_assert(guest_buf);
+     g_assert(buf);
+ 
+-- 
+2.9.3
 
-
->=20
-> Max
->=20
-> > =20
-> >      return qcow2_update_header(bs);
-> >  }
-> >=20
->=20
->=20
->=20
 
