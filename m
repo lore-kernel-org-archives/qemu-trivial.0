@@ -1,49 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cbpkI-0002gD-31
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2017 09:30:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59969)
+	id 1cbzns-0004fP-DE
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2017 20:15:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1cbpkF-0002eb-OQ
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 09:30:48 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cbx04-0006ap-R8
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 17:15:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1cbpkF-0006dp-0u
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 09:30:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39788)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcody@redhat.com>)
-	id 1cbpk2-0006at-Gg; Thu, 09 Feb 2017 09:30:34 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0CD358050D;
-	Thu,  9 Feb 2017 14:30:34 +0000 (UTC)
-Received: from localhost (ovpn-116-19.phx2.redhat.com [10.3.116.19])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v19EUW2d025592
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 9 Feb 2017 09:30:33 -0500
-Date: Thu, 9 Feb 2017 09:30:31 -0500
-From: Jeff Cody <jcody@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
-	Liu Yuan <namei.unix@gmail.com>, qemu-devel@nongnu.org,
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cbx01-0000SM-8J
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 17:15:36 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33140)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1cbx01-0000SH-3w; Thu, 09 Feb 2017 17:15:33 -0500
+Received: by mail-qt0-x242.google.com with SMTP id n13so2414700qtc.0;
+	Thu, 09 Feb 2017 14:15:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=L7g9zyJNrMQTB9+UUU5Fe1lMEUzmIEkTR0PZ1lpWZxg=;
+	b=oXcNLCIiyVs5f150EWPBkCXCOslDgM9EWz9c2zmeBZa8Vol2ax/ndU6UEve+0wcvZQ
+	KFTi2UpuRU4BOPBtm0GgJ2Xn/l8XyR5VsLjBb0pTdmFjXbJDg0aymRDk6Ikbv7p+AIUW
+	4ybGLKcajQqE0bF6N+9jiRUiJ5uk4IYPb7AtHFhkDoRo7/NSKkXzLACeHjWhl1LLiJ05
+	pfu4vQLCpmj9I8il3xZHJ8cS7QBlXnqJnokVKM67yTLF+D+uj8mGSe6A33pAqzx9/ubU
+	vnGc8KFjVGw7H0A5wrMRKYTmhjmdUcvWJbx6mMJAubwcjZZJDqHmD1DqfB9xS4D2zVFo
+	sAfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=L7g9zyJNrMQTB9+UUU5Fe1lMEUzmIEkTR0PZ1lpWZxg=;
+	b=onKpMiax0eqXop68pHkQSWnRyNG3lbvyK0zWcx9KjyfvbHC2AoBuyMKe5qdeUGWrNg
+	x9h8MVR6GyODKtpKhD90wEQIHh+Q3W88m8pKoA20OtxiQGWGJJf1nQqE3J1bePUyKmnu
+	nMOIJPNQ/zenJt4maNLeAj7kppcfua6pSfs+pItBnha83VuRbo0ysWQdWGiG1JXQlzLQ
+	Ropi45fXr0tilYTfKxAHDSJ9SX28d3HpIa6Q1YF5W1zd6Yvf4wwHeMumgNHzDvcCWEMn
+	nO8LWe49EUBPFBtUN1iQoaESzye796EE5ESYWaRWt/tVCCpkrfz8rxl5DtXgdFLZjrbq
+	Vatw==
+X-Gm-Message-State: AMke39n/D6ML5EuRjtiMzNrugKDULPntOQKxG2TTFDP3z6S4S6blbk2QMOh5bVZF4Qaj9g==
+X-Received: by 10.200.44.83 with SMTP id e19mr4903676qta.260.1486678532616;
+	Thu, 09 Feb 2017 14:15:32 -0800 (PST)
+Received: from [192.168.1.10] ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id
+	x40sm10373038qtx.23.2017.02.09.14.15.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 09 Feb 2017 14:15:32 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Message-ID: <20170209143031.GK27752@localhost.localdomain>
-References: <1486642218-18520-1-git-send-email-thuth@redhat.com>
+References: <1486148371-11692-1-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <cb35aa71-69ca-71cc-c988-24174809ec51@amsat.org>
+Date: Thu, 9 Feb 2017 19:15:29 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1486642218-18520-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 09 Feb 2017 14:30:34 +0000 (UTC)
+In-Reply-To: <1486148371-11692-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] qemu-options: Fix broken sheepdog URL
+X-Received-From: 2607:f8b0:400d:c0d::242
+X-Mailman-Approved-At: Thu, 09 Feb 2017 20:15:10 -0500
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] softfloat: Use correct type
+ in float64_to_uint64_round_to_zero()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,40 +76,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2017 14:30:48 -0000
+X-List-Received-Date: Thu, 09 Feb 2017 22:15:38 -0000
 
-On Thu, Feb 09, 2017 at 01:10:18PM +0100, Thomas Huth wrote:
-> The sheepdog URL is broken twice: First it uses a duplicated
-> http:// prefix, second the website seems to have moved to
-> https://sheepdog.github.io/sheepdog/ instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 02/03/2017 03:59 PM, Peter Maydell wrote:
+> In float64_to_uint64_round_to_zero() a typo meant that we were
+> taking the uint64_t return value from float64_to_uint64() and
+> putting it into an int64_t variable before returning it as
+> uint64_t again. Use uint64_t instead of pointlessly casting it
+> back and forth to int64_t.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  qemu-options.hx | 2 +-
+> Spotted while reading the code...
+>
+>  fpu/softfloat.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index ad2f8fc..38113b9 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -2583,7 +2583,7 @@ Example
->  qemu-system-i386 --drive file=sheepdog://192.0.2.1:30000/MyVirtualMachine
->  @end example
->  
-> -See also @url{http://http://www.osrg.net/sheepdog/}.
-> +See also @url{https://sheepdog.github.io/sheepdog/}.
->  
->  @item GlusterFS
->  GlusterFS is a user space distributed file system.
-> -- 
-> 1.8.3.1
-> 
-
-Thanks,
-
-Applied to my block branch:
-
-git://github.com/codyprime/qemu-kvm-jtc.git block
-
--Jeff
+>
+> diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+> index c295f31..218b375 100644
+> --- a/fpu/softfloat.c
+> +++ b/fpu/softfloat.c
+> @@ -7386,7 +7386,7 @@ uint64_t float64_to_uint64_round_to_zero(float64 a, float_status *status)
+>  {
+>      signed char current_rounding_mode = status->float_rounding_mode;
+>      set_float_rounding_mode(float_round_to_zero, status);
+> -    int64_t v = float64_to_uint64(a, status);
+> +    uint64_t v = float64_to_uint64(a, status);
+>      set_float_rounding_mode(current_rounding_mode, status);
+>      return v;
+>  }
+>
 
