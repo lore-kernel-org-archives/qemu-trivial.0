@@ -1,52 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cbj8p-0002Qk-8A
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2017 02:27:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34306)
+	id 1cbnYY-00009g-3t
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2017 07:10:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cbj8n-0002Lf-2h
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 02:27:42 -0500
+	(envelope-from <thuth@redhat.com>) id 1cbnYT-000089-Jp
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 07:10:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cbj8m-0006t4-CK
-	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 02:27:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53702)
+	(envelope-from <thuth@redhat.com>) id 1cbnYS-0002nI-Pz
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 07:10:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49472)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cbj8i-0006sU-5N; Thu, 09 Feb 2017 02:27:36 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cbnYM-0002jn-8o; Thu, 09 Feb 2017 07:10:22 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 574B9C04B927;
-	Thu,  9 Feb 2017 07:27:36 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
-	[10.36.116.50])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v197RZBr032077
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 9 Feb 2017 02:27:36 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id BCBB41138646; Thu,  9 Feb 2017 08:27:33 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1486576669-29760-1-git-send-email-thuth@redhat.com>
-Date: Thu, 09 Feb 2017 08:27:33 +0100
-In-Reply-To: <1486576669-29760-1-git-send-email-thuth@redhat.com> (Thomas
-	Huth's message of "Wed, 8 Feb 2017 18:57:49 +0100")
-Message-ID: <87mvdvaknu.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+	by mx1.redhat.com (Postfix) with ESMTPS id 6B79D7304C;
+	Thu,  9 Feb 2017 12:10:21 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-117-163.ams2.redhat.com
+	[10.36.117.163])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v19CAIZv022519; Thu, 9 Feb 2017 07:10:19 -0500
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-block@nongnu.org, Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>,
+	Liu Yuan <namei.unix@gmail.com>, Jeff Cody <jcody@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Thu,  9 Feb 2017 13:10:18 +0100
+Message-Id: <1486642218-18520-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 09 Feb 2017 07:27:36 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 09 Feb 2017 12:10:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] hw/core/or-irq: Mark the
- device with cannot_instantiate_with_device_add_yet
+Subject: [Qemu-trivial] [PATCH] qemu-options: Fix broken sheepdog URL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,15 +47,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2017 07:27:42 -0000
+X-List-Received-Date: Thu, 09 Feb 2017 12:10:32 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+The sheepdog URL is broken twice: First it uses a duplicated
+http:// prefix, second the website seems to have moved to
+https://sheepdog.github.io/sheepdog/ instead.
 
-> The "or-irq" device needs to be wired up in source code, there is no
-> way the user can make any real use of this device with the "-device"
-> parameter or the "device_add" monitor command yet.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ad2f8fc..38113b9 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2583,7 +2583,7 @@ Example
+ qemu-system-i386 --drive file=sheepdog://192.0.2.1:30000/MyVirtualMachine
+ @end example
+ 
+-See also @url{http://http://www.osrg.net/sheepdog/}.
++See also @url{https://sheepdog.github.io/sheepdog/}.
+ 
+ @item GlusterFS
+ GlusterFS is a user space distributed file system.
+-- 
+1.8.3.1
+
 
