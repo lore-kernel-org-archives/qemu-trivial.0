@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cbgiX-00028p-23
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Feb 2017 23:52:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38007)
+	id 1cbj8g-0002FV-5q
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Feb 2017 02:27:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34264)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cbgiV-00026x-BC
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 23:52:24 -0500
+	(envelope-from <armbru@redhat.com>) id 1cbj8e-0002Dy-5k
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 02:27:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cbgiU-0007k1-LR
-	for qemu-trivial@nongnu.org; Wed, 08 Feb 2017 23:52:23 -0500
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:33234)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1cbgiP-0007jI-1C; Wed, 08 Feb 2017 23:52:17 -0500
-Received: by mail-pg0-x244.google.com with SMTP id 194so16792487pgd.0;
-	Wed, 08 Feb 2017 20:52:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=PS1yzg2qNpHqbKcSDEtwXDj1vGrkbgQT/QK32kQ9bxs=;
-	b=TNPCzXW9YRarpSIIJqx0T1Znl76aCOTEk6bdrFgGT6yI//BWQhG5fScwKaozMM7vTh
-	2I+2tys6EqJHY6GuqWrPsSOMo3EaAdJiJJshyW4NMWTWJiRNUQHmkFIxmMYeBaFONzNa
-	RGZz89G+gQOPH3kV5XGxHndOIa6bpx8yduZgSTMXLs13zl2ZWWPoKGkNdLFRbfheGCYE
-	IggmLTyJi8y5vdWphYIjKcrB5H10UpfzXs+M13PX7/YHgKtQsq/6nZXLNPexDecIesXO
-	v7x/yE9TCnCSNEx7KGghX0BRUQ3Nc67GLWZ+JssJp/a5Wa9EKtCNVp0xgnKDtRcCFSFA
-	B29g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=PS1yzg2qNpHqbKcSDEtwXDj1vGrkbgQT/QK32kQ9bxs=;
-	b=K74RCv2uLOqPwQwGvq660icEhvnFWH9cQaTkt5k/jTAzLvNmup04WxsWvNZtUwnq2F
-	AsCwD1b2YTRyMO6OHdGGbNXEJlzsTcsTBqKL5NirPR5ZL0Yuw/bmf03dYGUX09UIItbP
-	Ym5aDOUyZ9ji65T0ecvSiDYOpMnYHrH4zecptmuFXVLcukZQu1LjIP/l8FaDqY6fBJ1x
-	VQz+h+yAWEqJpINMzaYbbGj+6u/sDwR9+2ZCeaSTqenNl06zCkzok5D4nwAThJ8wB2PW
-	E7tUQYEfDG6RRCsuV9So5ycpmUs/6nlFZiVSbiq5TNsAknclP6UXkkreL5hnPzE/Z70G
-	wzNw==
-X-Gm-Message-State: AMke39mFq9sZJbnyNxnA/ecbmAq1H9KSdigU3EMZurFN7qvGODq/pQgxkHIAyuVMdaYDTw==
-X-Received: by 10.98.139.22 with SMTP id j22mr1461275pfe.115.1486615935879;
-	Wed, 08 Feb 2017 20:52:15 -0800 (PST)
-Received: from bigtime.home ([1.128.80.123]) by smtp.gmail.com with ESMTPSA id
-	b75sm24202832pfb.90.2017.02.08.20.52.12
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 Feb 2017 20:52:15 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-To: qemu-devel@nongnu.org
-Cc: shorne@gmail.com, qemu-trivial@nongnu.org, openrisc@lists.librecores.org
-Date: Wed,  8 Feb 2017 20:51:36 -0800
-Message-Id: <20170209045154.16868-5-rth@twiddle.net>
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20170209045154.16868-1-rth@twiddle.net>
-References: <20170209045154.16868-1-rth@twiddle.net>
+	(envelope-from <armbru@redhat.com>) id 1cbj8d-0006ru-EI
+	for qemu-trivial@nongnu.org; Thu, 09 Feb 2017 02:27:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40418)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1cbj8a-0006qj-CG; Thu, 09 Feb 2017 02:27:28 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7ECC77E9E5;
+	Thu,  9 Feb 2017 07:27:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-50.ams2.redhat.com
+	[10.36.116.50])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v197RRKi026479
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 9 Feb 2017 02:27:28 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DFCC11138646; Thu,  9 Feb 2017 08:27:25 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1486576658-29719-1-git-send-email-thuth@redhat.com>
+Date: Thu, 09 Feb 2017 08:27:25 +0100
+In-Reply-To: <1486576658-29719-1-git-send-email-thuth@redhat.com> (Thomas
+	Huth's message of "Wed, 8 Feb 2017 18:57:38 +0100")
+Message-ID: <87r337ako2.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 09 Feb 2017 07:27:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: [Qemu-trivial] [PATCH 04/22] target/openrisc: Fix exception
- handling status registers
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] hw/core/register: Mark
+ the device with cannot_instantiate_with_device_add_yet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,56 +58,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Feb 2017 04:52:24 -0000
+X-List-Received-Date: Thu, 09 Feb 2017 07:27:33 -0000
 
-From: Stafford Horne <shorne@gmail.com>
+Thomas Huth <thuth@redhat.com> writes:
 
-I am working on testing instruction emulation patches for the linux
-kernel. During testing I found these 2 issues:
+> The "qemu,register" device needs to be wired up in source code, there
+> is no way the user can make any real use of this device with the
+> "-device" parameter or the "device_add" monitor command yet.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
- - sets DSX (delay slot exception) but never clears it
- - EEAR for illegal insns should point to the bad exception (as per
-   openrisc spec) but its not
-
-This patch fixes these two issues by clearing the DSX flag when not in a
-delay slot and by setting EEAR to exception PC when handling illegal
-instruction exceptions.
-
-After this patch the openrisc kernel with latest patches boots great on
-qemu and instruction emulation works.
-
-Cc: qemu-trivial@nongnu.org
-Cc: openrisc@lists.librecores.org
-Signed-off-by: Stafford Horne <shorne@gmail.com>
-Message-Id: <20170113220028.29687-1-shorne@gmail.com>
-Signed-off-by: Richard Henderson <rth@twiddle.net>
----
- target/openrisc/interrupt.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
-index e43fc84..a243eb2 100644
---- a/target/openrisc/interrupt.c
-+++ b/target/openrisc/interrupt.c
-@@ -38,10 +38,17 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
-         env->flags &= ~D_FLAG;
-         env->sr |= SR_DSX;
-         env->epcr -= 4;
-+    } else {
-+        env->sr &= ~SR_DSX;
-     }
-     if (cs->exception_index == EXCP_SYSCALL) {
-         env->epcr += 4;
-     }
-+    /* When we have an illegal instruction the error effective address
-+       shall be set to the illegal instruction address.  */
-+    if (cs->exception_index == EXCP_ILLEGAL) {
-+        env->eear = env->pc;
-+    }
- 
-     /* For machine-state changed between user-mode and supervisor mode,
-        we need flush TLB when we enter&exit EXCP.  */
--- 
-2.9.3
-
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
