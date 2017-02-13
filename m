@@ -1,49 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cdIzH-0008LV-VI
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2017 10:56:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60175)
+	id 1cdO8X-0004jV-L9
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2017 16:26:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45224)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1cdIzG-0008KE-86
-	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 10:56:23 -0500
+	(envelope-from <rth7680@gmail.com>) id 1cdO8U-0004fZ-D0
+	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 16:26:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1cdIzF-0004LW-0J
-	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 10:56:22 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40838)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1cdIzA-0004KV-NC; Mon, 13 Feb 2017 10:56:16 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 02B3FA89D;
-	Mon, 13 Feb 2017 15:56:16 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-221.bos.redhat.com
-	[10.18.17.221])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1DFuFgW030377; Mon, 13 Feb 2017 10:56:15 -0500
-To: Stefan Hajnoczi <stefanha@gmail.com>
-References: <20170208170533.28822-1-jsnow@redhat.com>
-	<20170213150003.GO10361@stefanha-x1.localdomain>
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, qemu-devel@nongnu.org
-From: John Snow <jsnow@redhat.com>
-Message-ID: <ae6284d9-6776-6ae4-a041-06819d69d413@redhat.com>
-Date: Mon, 13 Feb 2017 10:56:15 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <20170213150003.GO10361@stefanha-x1.localdomain>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 13 Feb 2017 15:56:16 +0000 (UTC)
+	(envelope-from <rth7680@gmail.com>) id 1cdO8T-0001K2-AN
+	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 16:26:14 -0500
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36548)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1cdO8N-0001GO-9g; Mon, 13 Feb 2017 16:26:07 -0500
+Received: by mail-qk0-x241.google.com with SMTP id p22so8992314qka.3;
+	Mon, 13 Feb 2017 13:26:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=PS1yzg2qNpHqbKcSDEtwXDj1vGrkbgQT/QK32kQ9bxs=;
+	b=aiooAvjPVcvba/rBOUFL9s6N/hoGIZGz1gwx65ScHFNX5rcPYRyS7OEcmvy2tTCmXw
+	/4apqXtB2DK8jIkjXHRJAmUs8KTbce6PV/RcaftVWbTG4PodtyIMxkmM0wAhufqo6O5y
+	rVwWMxJ6vR9OM9Pbz0Qj3WdV0EfNvLQ32AcL3+U3FpW8zuXdtu5cc4x+stRMciTSkDzy
+	rCTQwtb/t0+4H7/mMF0fkzi6OPRPCo8yVfL+88j3kqWO3sOseS7c2JjvzmKVv3P0EPoS
+	bv9CWlnwT+oYSF9pIeRuoB5Rd7fgC1IEnzkw4HFp0A8TKpdGa90ABcRLwB64owo1FSOX
+	DeHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references;
+	bh=PS1yzg2qNpHqbKcSDEtwXDj1vGrkbgQT/QK32kQ9bxs=;
+	b=fN3kPsVgBPz5cdXdE84zo0Q6Cbh4or1+Lqiq9JIcWq+7awA0y5Xxrw4JHunmpShL4W
+	yytWYi12J1Rz0RYhETFFpc4XnUO0I6sAj9s7L8UcEeWngmnvLCvebGKNMMo+ZDhE7oju
+	Bhb1n1c7BF8HcaXI6dF3793A3oRDbgUyPIfidykX9BtzWvUJLdv9MvmE3oQLHJrKKTF+
+	GrTNrqpL9CEfBapZ3GJqmnMDqxfjHqK8Y7wCtzpEkDPd/WH87x3oJqZ+8CT0Vh9L8YeV
+	l7QOsSfcVj2cI6yL4xm8iN3nKxYY5jZQE9CZxS3d/ChpKURID1VfsyVEduUwKCB6Bf+r
+	sErA==
+X-Gm-Message-State: AMke39n+fQm6YdA5mfwyJETJVREHCfxbQumXztVP/5kjSF+etG+k9/jcHr1Dr8XAISnMwQ==
+X-Received: by 10.55.67.77 with SMTP id q74mr22935329qka.127.1487021166788;
+	Mon, 13 Feb 2017 13:26:06 -0800 (PST)
+Received: from bigtime.twiddle.net.com ([1.129.9.91])
+	by smtp.gmail.com with ESMTPSA id h40sm8311480qtb.6.2017.02.13.13.26.03
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 13 Feb 2017 13:26:06 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+From: Richard Henderson <rth@twiddle.net>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, Stafford Horne <shorne@gmail.com>,
+	qemu-trivial@nongnu.org, openrisc@lists.librecores.org
+Date: Tue, 14 Feb 2017 08:25:17 +1100
+Message-Id: <20170213212536.31871-6-rth@twiddle.net>
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20170213212536.31871-1-rth@twiddle.net>
+References: <20170213212536.31871-1-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ide: remove undefined
- behavior in ide-test
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-trivial] [PULL 05/24] target/openrisc: Fix exception handling
+ status registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,45 +66,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Feb 2017 15:56:23 -0000
+X-List-Received-Date: Mon, 13 Feb 2017 21:26:15 -0000
 
+From: Stafford Horne <shorne@gmail.com>
 
+I am working on testing instruction emulation patches for the linux
+kernel. During testing I found these 2 issues:
 
-On 02/13/2017 10:00 AM, Stefan Hajnoczi wrote:
-> On Wed, Feb 08, 2017 at 12:05:33PM -0500, John Snow wrote:
->> trivial: initialize the dirty buffer with a random-ish byte.
->> Stops valgrind from whining about uninitialized buffers.
->>
->> Signed-off-by: John Snow <jsnow@redhat.com>
->> ---
->>  tests/ide-test.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/tests/ide-test.c b/tests/ide-test.c
->> index 2fa97bc..139ebc0 100644
->> --- a/tests/ide-test.c
->> +++ b/tests/ide-test.c
->> @@ -550,6 +550,7 @@ static void make_dirty(uint8_t device)
->>  
->>      guest_buf = guest_alloc(guest_malloc, len);
->>      buf = g_malloc(len);
->> +    memset(buf, rand() % 255 + 1, len);
-> 
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> 
+ - sets DSX (delay slot exception) but never clears it
+ - EEAR for illegal insns should point to the bad exception (as per
+   openrisc spec) but its not
 
-Thanks.
+This patch fixes these two issues by clearing the DSX flag when not in a
+delay slot and by setting EEAR to exception PC when handling illegal
+instruction exceptions.
 
-This can go in through the next TRIVIAL pull, as my queue is otherwise
-empty right now.
+After this patch the openrisc kernel with latest patches boots great on
+qemu and instruction emulation works.
 
->>      g_assert(guest_buf);
->>      g_assert(buf);
-> 
-> Pre-existing issue:
-> g_assert(buf) is unnecessary since g_malloc() is guaranteed to return
-> non-NULL.
-> 
+Cc: qemu-trivial@nongnu.org
+Cc: openrisc@lists.librecores.org
+Signed-off-by: Stafford Horne <shorne@gmail.com>
+Message-Id: <20170113220028.29687-1-shorne@gmail.com>
+Signed-off-by: Richard Henderson <rth@twiddle.net>
+---
+ target/openrisc/interrupt.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Yeah, I did see that ...
+diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
+index e43fc84..a243eb2 100644
+--- a/target/openrisc/interrupt.c
++++ b/target/openrisc/interrupt.c
+@@ -38,10 +38,17 @@ void openrisc_cpu_do_interrupt(CPUState *cs)
+         env->flags &= ~D_FLAG;
+         env->sr |= SR_DSX;
+         env->epcr -= 4;
++    } else {
++        env->sr &= ~SR_DSX;
+     }
+     if (cs->exception_index == EXCP_SYSCALL) {
+         env->epcr += 4;
+     }
++    /* When we have an illegal instruction the error effective address
++       shall be set to the illegal instruction address.  */
++    if (cs->exception_index == EXCP_ILLEGAL) {
++        env->eear = env->pc;
++    }
+ 
+     /* For machine-state changed between user-mode and supervisor mode,
+        we need flush TLB when we enter&exit EXCP.  */
+-- 
+2.9.3
+
 
