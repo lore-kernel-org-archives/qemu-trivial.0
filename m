@@ -1,63 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cdHAv-0000Al-Hm
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2017 09:00:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50653)
+	id 1cdHBV-0000i2-Km
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Feb 2017 09:00:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50801)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cdHAt-00007P-7U
-	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 09:00:16 -0500
+	(envelope-from <stefanha@gmail.com>) id 1cdHBR-0000d9-H2
+	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 09:00:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cdHAs-0005Ta-BK
-	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 09:00:15 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:36029)
+	(envelope-from <stefanha@gmail.com>) id 1cdHBQ-0005Yu-Mb
+	for qemu-trivial@nongnu.org; Mon, 13 Feb 2017 09:00:49 -0500
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:33742)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cdHAm-0005Pk-R8; Mon, 13 Feb 2017 09:00:08 -0500
-Received: by mail-wm0-x244.google.com with SMTP id r18so19735940wmd.3;
-	Mon, 13 Feb 2017 06:00:08 -0800 (PST)
+	id 1cdHBJ-0005XT-VF; Mon, 13 Feb 2017 09:00:42 -0500
+Received: by mail-wr0-x244.google.com with SMTP id i10so24320547wrb.0;
+	Mon, 13 Feb 2017 06:00:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=QGTScuYUk4eAXS+7ixOlZlWcbhIfW2I97Mh0+eEQkdU=;
-	b=HH6U36J0ofCRisOrg6S5b1Dm5TLoxFEF6ebt21UV3sHQZ77OqWGMxXQKKMue+tMCLb
-	R6iI5gtBxQ/d2RWYftaGt5gPL318QV11rzOuNU1ozzWCk43o4rL3Ybl7flHSUvvmKZvh
-	Ufv6rW8rSP0B5T27XlqctXE78t3CfSlDG7HZazQokmv2Kb7I2ovJ2/yqQkyM/YX0AU7w
-	yrviuUKqIPuCogOsjfJqRkY1+o3aUDftvUPfMOUsbrKRy6kplzH2vzx+9BThdv+Fb5ro
-	1QlgWLbf8F+Wzoupx2p3e8q97UrhCUOpqcGsZitGeMQaI6NZ+o3NnNWTqTQGaBCjRnJW
-	HXww==
+	bh=u0RJZ/qgkAUTQIq6p1KZDnbWD7ZowgvMb0gKFB5cweE=;
+	b=KgaKA5/wbmxgGurZASPKAEVuHmD2ab0l4LTt2FK/nsdYdAs+tugF1YF3WaqmKvpje/
+	09RUG7W98+Ny8KK9zcKuQ30F3woLXw53tH+OeuPZmYRF7zfwzTTshIsJ2XmxQNPv1wPi
+	4jO3gaeVHZk5l/OvZtnIeSEPPCvSfpjyvU667xmAMHLn6YhzNzdX4UInibBEj2LsTRTS
+	hT5Vbl686XsmQT5V40byNMYS/c1cqHoJ8Y+8zTZXoAuFAtffJox7STGU7BoVJklgjp2J
+	3xU7lbSzEttoKyCk+g6lC+mSFm3vnd6/U0qJ2XbZQjpizMZ3zNGnCdQ74yzLzoEdzurH
+	Mu5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=QGTScuYUk4eAXS+7ixOlZlWcbhIfW2I97Mh0+eEQkdU=;
-	b=h1vfvLECSj78M97r7P7PYV+IOcMWZkbm+GoGj6fIwy+ZbWzReQBqSud9acRHzxIZw4
-	0Wr731Kxl789bRww8oZtmsSqJ+q7/upT29npn1PpBSasymACssQy4a6SEnZiz61HNGsi
-	3f1c/4m9w/bYYRJo5tIbr9my5y9jdjT8tH3pHgWcFL8Jzr1Bh4FS8o3XvcjP6zfaKIJP
-	Hx8WYZaKgdJ9oo4TCjbunHlhoM5Pt9pYsMPzZbDHayYGEVk0IQglARLahsFjqF7nyJnJ
-	pH2+O3yvgzaTg+SIVsg8iisNj0YuBXLSp3PXKJ6UpYMcF/sLoz+p1Sw0fvdx4PV+qNl1
-	X6Kw==
-X-Gm-Message-State: AMke39mWitw3mEgDXB0sPU9EBJWtcJLiWLdQJRWw43ALAl4dpJcr+P0oGua1OoGasn7+xw==
-X-Received: by 10.28.63.15 with SMTP id m15mr40981462wma.119.1486994407630;
-	Mon, 13 Feb 2017 06:00:07 -0800 (PST)
-Received: from localhost ([51.15.41.238])
-	by smtp.gmail.com with ESMTPSA id b87sm5517339wmi.0.2017.02.13.06.00.06
+	bh=u0RJZ/qgkAUTQIq6p1KZDnbWD7ZowgvMb0gKFB5cweE=;
+	b=rTut4BsZKoruGS/AJWi56zwe7qPelvEPUYs8wGRh90XIoqz4RBrIMyOyTUD6C7WAob
+	mku/ul1otd6R0lTlkvDAHLpzeJq229K4iLveGn1ZvD9pmoXQgQ6NnmtJJ370l620QSnm
+	WgvZyM4przvpQrBAoZwfMlW9OKmNUQOCNUwyU/fjzPmnrSWZBxOcgIrYk+M6rwGuSVPX
+	dIktDchfpqtK9Qzzpn2eBJbQn6DNlVTUUkFEh0ocv5KjNqDYXqKBZZAm35hsLn3V/qJ2
+	dEOd+anP98D0N6oHJoaPLbhnqKARtXkQzBwHZC1+oxQ50Va36he53Ht6/a8OpqAs6WoG
+	kDYw==
+X-Gm-Message-State: AMke39lqd/6idirFbF3uxcaNTrOx+2wcoc2AC/HwI0NNj0pM7uI9oO4lrCag5ReWuYVsUg==
+X-Received: by 10.223.139.90 with SMTP id v26mr18737959wra.143.1486994440812; 
+	Mon, 13 Feb 2017 06:00:40 -0800 (PST)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	o42sm14010427wrb.18.2017.02.13.06.00.39
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 13 Feb 2017 06:00:06 -0800 (PST)
-Date: Mon, 13 Feb 2017 14:00:05 +0000
+	Mon, 13 Feb 2017 06:00:39 -0800 (PST)
+Date: Mon, 13 Feb 2017 14:00:38 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170213140005.GD10361@stefanha-x1.localdomain>
-References: <20170203170729.12399-1-pbonzini@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Thomas Huth <thuth@redhat.com>, patches@linaro.org
+Message-ID: <20170213140038.GE10361@stefanha-x1.localdomain>
+References: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="BRE3mIcgqKzpedwo"
+	protocol="application/pgp-signature"; boundary="wchHw8dVAp53YPj8"
 Content-Disposition: inline
-In-Reply-To: <20170203170729.12399-1-pbonzini@redhat.com>
+In-Reply-To: <1486144722-6021-1-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] test-vmstate: remove
- yield_until_fd_readable
+X-Received-From: 2a00:1450:400c:c0c::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Mention
+ preferred comment form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,38 +70,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Feb 2017 14:00:16 -0000
+X-List-Received-Date: Mon, 13 Feb 2017 14:00:51 -0000
 
 
---BRE3mIcgqKzpedwo
+--wchHw8dVAp53YPj8
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Feb 03, 2017 at 09:07:29AM -0800, Paolo Bonzini wrote:
-> The function is not needed anymore now that migration is built on
-> top of QIOChannel.
+On Fri, Feb 03, 2017 at 05:58:42PM +0000, Peter Maydell wrote:
+> Our defacto coding style strongly prefers /* */ style comments
+> over the single-line // style, and checkpatch enforces this,
+> but we don't actually document this. Mention it in CODING_STYLE.
 >=20
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  tests/test-vmstate.c | 11 -----------
->  1 file changed, 11 deletions(-)
+>  CODING_STYLE | 7 +++++++
+>  1 file changed, 7 insertions(+)
 
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---BRE3mIcgqKzpedwo
+--wchHw8dVAp53YPj8
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBAgAGBQJYobvkAAoJEJykq7OBq3PI9i0H/iBkcR5s4f8p/82Y1Uk0Segg
-U62m4Z8stdohGEBSYbkbRxshGp74elESlEX4jZ0NX6+MIfHFrcyfmF2L1XzRtsDM
-GvOvQM1tis18bwGbbrYJzahyrVWvGKUIrDSvFl+VitkCCxgEIRMz40lODiKs+3iO
-knlKWpFjgHALYKt/R6dFcSUkWssVHcGWAMRaA1nW3a+8pILiWWyUkQ5eU+LcMIjQ
-BLJYFnQMBRIkGCn4OR8S0NYz/Li1K4e+shtjwFD3lqX8jlLF8x5lgS6rZxI+bkop
-4ibtOc9saErYHiOzgCe8JXaUySTGDOjHPjLFjhwxqqn8kWco7jMyXBlhloo5Xzk=
-=tu2Q
+iQEcBAEBAgAGBQJYobwGAAoJEJykq7OBq3PItDoH/3U2NhnSQv9ne1ot4r3p3V8M
+1L5nHpFK4fcl116pOXUXJbncaOYFxHpiFLgpaQBA1btBOI+gW9vUIh1tqbtn+Xak
+JiwPjn4rOMPH0ILDNXhOI9WjYWy6quANiZ+o8DcUamOTwcUziHroQJmZqOrXihZe
+8LcSh9EtUIOq/4WzYJLpwrvYG9rc3urRMJR68xpghXu3jEGNwlG7F9IhEzsXtf1/
+IO6FimI8i2/O/f7UGR+9ZDZ0uz2CHNZ5L24HSqPIaE3nfcUqgI5F1fAHzaU9zLsM
+2p1XxC1NDaF+0uGznp4z5hp+6VStKAYjcsqzXmoH7TlXM3e8zwEgE0WXnsFnpog=
+=/x9J
 -----END PGP SIGNATURE-----
 
---BRE3mIcgqKzpedwo--
+--wchHw8dVAp53YPj8--
 
