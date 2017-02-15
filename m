@@ -1,65 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cdm1E-0000Sd-PC
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Feb 2017 17:56:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38563)
+	id 1cdvwN-0005F0-VE
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2017 04:32:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47665)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cdm1B-0000RL-St
-	for qemu-trivial@nongnu.org; Tue, 14 Feb 2017 17:56:19 -0500
+	(envelope-from <famz@redhat.com>) id 1cdvwK-0005Bj-HE
+	for qemu-trivial@nongnu.org; Wed, 15 Feb 2017 04:31:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cdm18-00027L-SB
-	for qemu-trivial@nongnu.org; Tue, 14 Feb 2017 17:56:17 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33501)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cdm18-00027A-Nh; Tue, 14 Feb 2017 17:56:14 -0500
-Received: by mail-qk0-x242.google.com with SMTP id 11so21058168qkl.0;
-	Tue, 14 Feb 2017 14:56:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=SzYab0g/Gz+plr7lububySTaiRRc78KHjSkpDcv6TaU=;
-	b=HTDH7V/TBsjE0IgEgjrFh9A5UmSW728sVMDQ9RbNH59bzeHgkghamAoM4hTlfYkNR+
-	yOGAk7Mfd7oN532B2cxB6bpGVhfjBCQfu24jiWNOYOtfMDHA3Y/2BZJauN+37Qr6s0bg
-	Ct14UEIklPssXPVqYhZGgVxoNotyg9GJwC9x8FfDxluljRNr5BRkbIMhLhneKzJsIA/V
-	lZ761XMWcaQOMaHfYnf3EdxoJK3qIw2kRQYrPfInNYSS1rre/Z6FiOuga04qAf9zPWFM
-	xZRRVTpTZZt4AZIC8JGQFufubJJHJlBds4Ubq9B6MqYnNKb06BeiBF1RrdBzY2NUoJ/d
-	gHtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=SzYab0g/Gz+plr7lububySTaiRRc78KHjSkpDcv6TaU=;
-	b=mXYVPOmi/52ShqqZf7KtnJY5NUYUtmjyUtdToZOemrRBuSE0gAE36pSssyCrdIr0x8
-	vmndc6PtYQWUQTg/AR5jZYDn1lDaDfNWvPX6rdNE/3JtB6l0n4ZY1YFMQjIzr3V2rcBI
-	ceQ6M9J6ESBaSHgfOkr5Z5dGtVjN/Xp/IArEG0iJm5LBDBBgGBm3Di/qe/9HeC9jabRg
-	444LhkxvXo057WBLZx5IUaS9swP5jOhNX8LlxsFZ1GucLpea+v6lwwykw01DRU/yL0cv
-	sW+nfhS02TSBCE72yqueFeGQlLNIo5t8iK2LdRnFvp8u0imV9WYGQTmzFoCxJh0PtptL
-	gK9g==
-X-Gm-Message-State: AMke39nPoFAC9tJu0ueKfww6sdDKHJhcyFsn/UkFtSKqpNJnCYyEpUE+GU9Fxxnlo9aopA==
-X-Received: by 10.55.165.131 with SMTP id o125mr29451797qke.254.1487112972562; 
-	Tue, 14 Feb 2017 14:56:12 -0800 (PST)
-Received: from yoga.lan ([138.117.48.226]) by smtp.gmail.com with ESMTPSA id
-	x64sm1167965qke.60.2017.02.14.14.56.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 Feb 2017 14:56:12 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Alistair Francis <alistair.francis@xilinx.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-trivial@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Date: Tue, 14 Feb 2017 19:55:35 -0300
-Message-Id: <20170214225535.6880-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.11.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+	(envelope-from <famz@redhat.com>) id 1cdvwJ-0001kw-GN
+	for qemu-trivial@nongnu.org; Wed, 15 Feb 2017 04:31:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59478)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1cdvwF-0001ji-12; Wed, 15 Feb 2017 04:31:51 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EF60861D00;
+	Wed, 15 Feb 2017 09:31:50 +0000 (UTC)
+Received: from lemon.redhat.com (ovpn-8-23.pek2.redhat.com [10.72.8.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B9D4784CFB;
+	Wed, 15 Feb 2017 09:31:49 +0000 (UTC)
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Wed, 15 Feb 2017 17:31:47 +0800
+Message-Id: <20170215093147.29711-1-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 15 Feb 2017 09:31:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH v3] register: fix incorrect read mask
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] cadence_gem: Remove unused parameter debug
+ message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,76 +46,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Feb 2017 22:56:19 -0000
+X-List-Received-Date: Wed, 15 Feb 2017 09:31:58 -0000
 
-The register_read() and register_write() functions expect a bitmask argument.
-To avoid duplicated code, a new inlined function register_enabled_mask() is
-introduced.
+Reported by cppcheck.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Fam Zheng <famz@redhat.com>
 ---
+ hw/net/cadence_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- v3: clarify functions affected in the commit message.
- v2: squashed together both previous commits as suggested by Francis Alistair.
-
- hw/core/register.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/hw/core/register.c b/hw/core/register.c
-index 4bfbc508de..482e3f827a 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -59,6 +59,15 @@ static inline uint64_t register_read_val(RegisterInfo *reg)
-     return 0; /* unreachable */
- }
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index e99d454..d4de8ad 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -508,7 +508,7 @@ static void gem_update_int_status(CadenceGEMState *s)
  
-+static inline uint64_t register_enabled_mask(int data_size, unsigned size)
-+{
-+    if (data_size < size) {
-+        size = data_size;
-+    }
-+
-+    return MAKE_64BIT_MASK(0, size * 8);
-+}
-+
- void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
-                     const char *prefix, bool debug)
- {
-@@ -192,11 +201,7 @@ void register_write_memory(void *opaque, hwaddr addr,
+     if ((s->num_priority_queues == 1) && s->regs[GEM_ISR]) {
+         /* No priority queues, just trigger the interrupt */
+-        DB_PRINT("asserting int.\n", i);
++        DB_PRINT("asserting int.\n");
+         qemu_set_irq(s->irq[0], 1);
+         return;
      }
- 
-     /* Generate appropriate write enable mask */
--    if (reg->data_size < size) {
--        we = MAKE_64BIT_MASK(0, reg->data_size * 8);
--    } else {
--        we = MAKE_64BIT_MASK(0, size * 8);
--    }
-+    we = register_enabled_mask(reg->data_size, size);
- 
-     register_write(reg, value, we, reg_array->prefix,
-                    reg_array->debug);
-@@ -208,6 +213,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
-     RegisterInfoArray *reg_array = opaque;
-     RegisterInfo *reg = NULL;
-     uint64_t read_val;
-+    uint64_t re;
-     int i;
- 
-     for (i = 0; i < reg_array->num_elements; i++) {
-@@ -223,7 +229,10 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
-         return 0;
-     }
- 
--    read_val = register_read(reg, size * 8, reg_array->prefix,
-+    /* Generate appropriate read enable mask */
-+    re = register_enabled_mask(reg->data_size, size);
-+
-+    read_val = register_read(reg, re, reg_array->prefix,
-                              reg_array->debug);
- 
-     return extract64(read_val, 0, size * 8);
 -- 
-2.11.0
+2.9.3
 
 
