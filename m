@@ -1,56 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ce1ls-00053Z-Jj
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Feb 2017 10:45:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55927)
+	id 1ceNPM-0000Wg-LH
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2017 09:51:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ipavlikevich@gmail.com>) id 1ce1lq-00053T-MH
-	for qemu-trivial@nongnu.org; Wed, 15 Feb 2017 10:45:31 -0500
+	(envelope-from <franklinmathieu@gmail.com>) id 1ceHu9-0004SO-EA
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 03:59:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ipavlikevich@gmail.com>) id 1ce1lp-0006OJ-BV
-	for qemu-trivial@nongnu.org; Wed, 15 Feb 2017 10:45:30 -0500
-Received: from mail-it0-x242.google.com ([2607:f8b0:4001:c0b::242]:33133)
+	(envelope-from <franklinmathieu@gmail.com>) id 1ceHu8-0000Ez-LC
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 03:59:09 -0500
+Received: from mail-wm0-f66.google.com ([74.125.82.66]:36508)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ipavlikevich@gmail.com>)
-	id 1ce1lp-0006Ni-7Y; Wed, 15 Feb 2017 10:45:29 -0500
-Received: by mail-it0-x242.google.com with SMTP id e137so10157987itc.0;
-	Wed, 15 Feb 2017 07:45:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=EXpUpLC6uY1bebJKxycO0r5fTtNX8F8hKJNAkAcA2ro=;
-	b=APzeappdWsE1uVvS7sLJ+hsRmPOm1s0RVjv1F4APm/5CF8XuXmfnQjfMBdF+iGZfZM
-	KCzpw2hXWdOWJPyniP9sk7+EPnRX848ucsI8l87jOOBLIm9zhndub4FCvfGSlfof6mG+
-	TfR4Noqmo7fFz9jmboKVOvPYzjDnnoiLodDr7IG3rlOhv4J0KGgYdm8/OLeHmVVkeFmV
-	ADnLoWFH4AhJcDzQyycsvznGQGR/OiSsIaVTNaJDqTJnx3+fnJfZuFE2eQNzTq2gz96a
-	euXfczAi0bE3qLqwDo4gyc3ktLVCCuKc+sNkGtjq1cjrVEAgTaYICSXGTBzd6FuHgpEl
-	IbDg==
+	(Exim 4.71) (envelope-from <franklinmathieu@gmail.com>)
+	id 1ceHu3-00009o-8a; Thu, 16 Feb 2017 03:59:03 -0500
+Received: by mail-wm0-f66.google.com with SMTP id r18so2008152wmd.3;
+	Thu, 16 Feb 2017 00:59:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=EXpUpLC6uY1bebJKxycO0r5fTtNX8F8hKJNAkAcA2ro=;
-	b=Kci0lW/L2a9iuId53viN2I2jhaNBFlPim7amtpqXfWJgnLdEUslAVGL2TvE7dmifm8
-	XxpC4wh+f0WHRPg0x32vvN3BG1SxpEY2bKFSWZjD6bnVdJtoC1u3ne4OYwxxtPZuudU0
-	EYnprfv2ognq/rMIMCpcaU9fwSKkXJ5+05S72TBUIxbUfP39ftnbNjmayugeBDwt9qWz
-	1Jp2fRRQ4xPEcNTn5s5t3qIEhY5pD98vP6ByO/XgndKOzz8CtSMQkRMBEcbLie+M9eJu
-	6ZeltlOK6jUctHGyAfBeY9W/18wpex73IIrSaLoUPiGAhwbXof9Kc4s2uR4KIm+Hbhzi
-	y4hA==
-X-Gm-Message-State: AMke39kjw5lvf2HdppMZGf9JKfwBQZYyP87S6BauSLAQTQ9yoB9Som8z59zeGj6QSSuxBok2M9kJyLr8JKej2Q==
-X-Received: by 10.36.47.78 with SMTP id j75mr1004184itj.105.1487173527015;
-	Wed, 15 Feb 2017 07:45:27 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.107.128.198 with HTTP; Wed, 15 Feb 2017 07:45:26 -0800 (PST)
-In-Reply-To: <97012317-0db8-a272-1802-7a402ebe78a5@msgid.tls.msk.ru>
-References: <CA+O_+ExjKRNyfbXWzh7RRHgTjqTBC+WscYCiBGyjLK2XOvoPmQ@mail.gmail.com>
-	<97012317-0db8-a272-1802-7a402ebe78a5@msgid.tls.msk.ru>
-From: Igor Pavlikevich <ipavlikevich@gmail.com>
-Date: Wed, 15 Feb 2017 18:45:26 +0300
-Message-ID: <CA+O_+Ex6E291g0BKLWox+x8g16j2ij4KYJ9PwiwrH7Qx4J-Epw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=8ta5sMQG4miD+wemKLF51LQeHq7Z9+l5W4pccUuP20s=;
+	b=LQIJ4xetLYtHiJFFdf/f0lujfidFGyeu6A7LBkNk1G7h+SDlzRLhmIV9g2N1p6CCdl
+	g89s96rfT9zTGtxxQ8DuzvmxI5T9EPdL+vlbtNXeOtDwpxDI9bhJz9fUTV/1NPAhhYAZ
+	xRp5axsrKBUv5Yt6YTbQhU377h5KylfR+1DsdtTcMg+2oZS43slUX+0qJHPNM/wJil+5
+	S+AifFaXKOILmmiFTUwQNndrar1r9CzFTA/CYMT3b1yFOIe55KSgv7PEa5YjJWe+3588
+	uhTLpmrGTab2afvblGzUSPSuLvhAUbYhXDHTduChx31b9bCUJRwCbPyKW/5p58BE/2rj
+	nHbg==
+X-Gm-Message-State: AMke39lFdPZnG/PZyhwYzOFiFVpV4V9UW39ye+aCeQi1UZtHgaS89QNT2AMMZxTSZOzKuw==
+X-Received: by 10.28.86.214 with SMTP id k205mr1267522wmb.26.1487235540648;
+	Thu, 16 Feb 2017 00:59:00 -0800 (PST)
+Received: from localhost.localdomain ([193.120.165.186])
+	by smtp.gmail.com with ESMTPSA id
+	136sm2525427wms.32.2017.02.16.00.58.59
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 16 Feb 2017 00:59:00 -0800 (PST)
+From: Franklin Snaipe Mathieu <snaipe@diacritic.io>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, snaipe@arista.com,
+	"Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>,
+	Riku Voipio <riku.voipio@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>
+Date: Thu, 16 Feb 2017 08:58:57 +0000
+Message-Id: <20170216085857.23501-1-snaipe@diacritic.io>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c0b::242
-Subject: Re: [Qemu-trivial] [PATCH] hw/acpi/tco.c: fix tco timer stop
+	[fuzzy]
+X-Received-From: 74.125.82.66
+X-Mailman-Approved-At: Thu, 16 Feb 2017 09:51:43 -0500
+Subject: [Qemu-trivial] [PATCH] syscall: fixed mincore(2) not failing with
+ ENOMEM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,58 +57,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Feb 2017 15:45:32 -0000
+X-List-Received-Date: Thu, 16 Feb 2017 08:59:10 -0000
 
-On Wed, Feb 15, 2017 at 1:34 PM, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 06.02.2017 17:44, Igor Pavlikevich wrote:
->> TCO timer does not actually stop
->>
->> Signed-off-by: Igor Pavlikevich <ipavlikevich@gmail.com>
->> ---
->>  hw/acpi/tco.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/acpi/tco.c b/hw/acpi/tco.c
->> index 8ce7daf..b4adac8 100644
->> --- a/hw/acpi/tco.c
->> +++ b/hw/acpi/tco.c
->> @@ -49,6 +49,7 @@ static inline void tco_timer_reload(TCOIORegs *tr)
->>  static inline void tco_timer_stop(TCOIORegs *tr)
->>  {
->>      tr->expire_time = -1;
->> +    timer_del(tr->tco_timer);
->>  }
->>
->>  static void tco_timer_expired(void *opaque)
->>
->
-> I'm not sure this is really trivial change.
-> Can you elaborate a bit please?
+From: "Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>
 
-When linux guest goes to first reboot, it calls
-watchdog_open()->watchdog_start()->iTCO_wdt_start() and write 0 to
-TCO1_CNT.
-After that can_start_tco_timer() returns true, starts timer in
-tco_timer_reload() and guest kernel starts flooding
-[  590.392055] Uhhuh. NMI received for unknown reason 30 on CPU 0.
-[  590.392055] Do you have a strange power saving mode enabled?
-[  590.392055] Dazed and confused, but trying to continue
-[  620.392035] Uhhuh. NMI received for unknown reason 20 on CPU 0.
-[  620.392035] Do you have a strange power saving mode enabled?
-[  620.392035] Dazed and confused, but trying to continue
+The current implementation of the mincore(2) syscall sets errno to
+EFAULT when the region identified by the first two parameters is
+invalid.
 
-Timer keeps reloading after ich9_generate_nmi() so there is only one
-way to stop reloading by clearing ICH9_CC_GCS_NO_REBOOT and reset
-guest via  watchdog_perform_action(), becasue tco_timer_stop() does
-not actually modify tr->tco_timer.
+This goes against the man page specification, where mincore(2) should
+only fail with EFAULT when the third parameter is an invalid address;
+and fail with ENOMEM when the checked region does not point to mapped
+memory.
 
-Tested on Debian wheezy/jessie guests with default kernels and qemu
-2.5+ q35 machine.
+Signed-off-by: Franklin "Snaipe" Mathieu <snaipe@diacritic.io>
+Cc: Riku Voipio <riku.voipio@linaro.org>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+---
+ linux-user/syscall.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
->
-> And please Cc qemu-devel@ too (doing this now).
->
-> Thanks,
->
-> /mjt
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 9be8e9530e..af0dd40631 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -11061,11 +11061,16 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_mincore:
+         {
+             void *a;
++            ret = -TARGET_ENOMEM;
++            a = lock_user(VERIFY_READ, arg1, arg2, 0);
++            if (!a) {
++                goto fail;
++            }
+             ret = -TARGET_EFAULT;
+-            if (!(a = lock_user(VERIFY_READ, arg1,arg2, 0)))
+-                goto efault;
+-            if (!(p = lock_user_string(arg3)))
++            p = lock_user_string(arg3)
++            if (!p) {
+                 goto mincore_fail;
++            }
+             ret = get_errno(mincore(a, arg2, p));
+             unlock_user(p, arg3, ret);
+             mincore_fail:
+-- 
+2.11.0
+
 
