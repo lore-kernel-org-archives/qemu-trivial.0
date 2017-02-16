@@ -1,53 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cePE1-0004zW-L8
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2017 11:48:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54059)
+	id 1cePOc-000803-9D
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Feb 2017 11:59:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chadjoan@gmail.com>) id 1ceOx6-0002pc-SH
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 11:30:41 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cePOV-0007tb-8M
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 11:59:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chadjoan@gmail.com>) id 1ceOx5-0005dT-I7
-	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 11:30:40 -0500
-Received: from mail-qk0-x231.google.com ([2607:f8b0:400d:c09::231]:34614)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cePOQ-0000Eh-DU
+	for qemu-trivial@nongnu.org; Thu, 16 Feb 2017 11:58:59 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:36625)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <chadjoan@gmail.com>)
-	id 1ceOwz-0005bn-Jh; Thu, 16 Feb 2017 11:30:33 -0500
-Received: by mail-qk0-x231.google.com with SMTP id s186so20454059qkb.1;
-	Thu, 16 Feb 2017 08:30:32 -0800 (PST)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1cePOQ-0000Ea-6x; Thu, 16 Feb 2017 11:58:54 -0500
+Received: by mail-wm0-x241.google.com with SMTP id r18so4056270wmd.3;
+	Thu, 16 Feb 2017 08:58:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=k0ZYHb6qP+vqYFCFwBFMEb/TbTsa1uYCnfwmPeGBGTw=;
-	b=b3nUesGIoG3cVBIW9yZFznLDpaoqx7WaZPo+ytI8qTqsV5DWyzZapGd694yovzAltb
-	MoPTC49NhCpx9+6o0CweY4zDEBfAgymKYPo1kUptORsHHx0J0sbdd8WVID/voFWWEgbh
-	naxKIhIJo6g/0WzQbm7Im2BZjf3B09FHFRFrXOrOaURaHpfx7FnCRjrGxUCHhGjf0/SG
-	y+MihhbCc049esGQ+7V8Xnj6vIXN+FW8ehw9e8PiW0g7DQERbtpIT22mmNiFTN5Q3m+3
-	7r7La8W4wlbib0vtonDuwu4kcMmM2Dk9ZzmjCKcubqeiZLy2W4oheZbAQhE6nJQljVHH
-	HjIA==
+	h=sender:subject:to:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=sL9KOYKWXiUlrWxzL+K0pJsF0BBoUB6y7fZNP3U06EA=;
+	b=dvfHYFS0VEi9oJz77gR/Pg5AvVI/bikvXE6AbASqikguY05XWg+dllj8QRPEgemlAV
+	amfeCq6KeqCV0sI4wqwbuTkDh1yqYUkyCZzJEDzZhTx8azsi7HolYaZ7SThedFGJ+jL4
+	xyk4SoK9lCt9GYDD2pdATzAjsp7Pml2ELQb25rORX/F3F+RasiZrvwfix8E/QpDTB0IZ
+	Y1/pae3oxjyININ91sBOAMtKpOMQLjbwiE/hRyFVAbm9ZJ70jxq2q0SsHzoT88mXNGSN
+	oY/t8ouCaPeu0t99S+AB+UszbcdDo+ZtEGzbvK+VWkXb3VMb2BHNPCBTD9gP6Dte7O/u
+	QZ4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=k0ZYHb6qP+vqYFCFwBFMEb/TbTsa1uYCnfwmPeGBGTw=;
-	b=cfGMFBVeon56uzSbd0BFL1rEfsWOiXI5pEdeXNvTunj38psrYxeGdIbTlQdDsZjjMc
-	5XQVVM7hh36FXfCtvQpHA9ksg2lx6XHnFeP7cdnSmYBPSZfLhh2TBdUcH0S3QrJznwbW
-	urXH8UH44BMopPoPK/wypJUlAT6SYtSXgW9R8mLMjYxP2cOcHIDfGsGBT70JF6cZTAOv
-	Axw0Es0Xw3Yp5qenkdUzKZ7wtU9khc//LUULg3gPRvL+lk5JenfTl2EGEoAqxJMcZ7rJ
-	rGpjuKGmgeC5Nm6H23iU1HwFGR3bWeaFsxN7xGKfKHxJva5PQbI1XfKC+AC1Lubw/N/3
-	PXqA==
-X-Gm-Message-State: AMke39kPEuGTQp2tweuBhn+hRQC7LeF17Bp5I78zY0S7oTCLeq1NHFHEh225QIdVH5UcTfvt+/5DC9P41nQEHA==
-X-Received: by 10.55.121.194 with SMTP id u185mr2913615qkc.56.1487262632268;
-	Thu, 16 Feb 2017 08:30:32 -0800 (PST)
+	h=x-gm-message-state:sender:subject:to:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=sL9KOYKWXiUlrWxzL+K0pJsF0BBoUB6y7fZNP3U06EA=;
+	b=lLiggQtAYmsvYJfVpi9xXULBh8jzX/T/jSF2cErhFCkK2YtLmMcgno3jTL1C+LCGiD
+	6tOjUK5SJXOwr5/NOKucxY+daZer7PmRLn0QYYhZTXU8zHx8eXj89HXq9UjQRcRbgqjT
+	fxqFXs1w5lFgJXV+RLaKtH/QdSHqW58NU4yqUndAB1kwtgctN/04CqBAuOAuRtrJuvqx
+	PKfs3Q6etvGNApQfaSsQO0nyj59dTqS2nqyGiym/be6LrKc7bcnll4URzyk982PyfHGd
+	/LM528o9L8dGMfdmpgPCQPxeLPaG46L4QqGdyR3LR1ICsqB3CaJ7KzwUvlbOpsW1+WHt
+	hiVQ==
+X-Gm-Message-State: AMke39k8PNnsc1cGRY4gey+CSGN5/PGcp/PebXtVtMZAyt641r/mpNgIScy8avQ1RM09JA==
+X-Received: by 10.28.181.145 with SMTP id e139mr12608779wmf.127.1487264332997; 
+	Thu, 16 Feb 2017 08:58:52 -0800 (PST)
+Received: from [192.168.10.165] (94-39-187-56.adsl-ull.clienti.tiscali.it.
+	[94.39.187.56]) by smtp.googlemail.com with ESMTPSA id
+	39sm9655474wrv.55.2017.02.16.08.58.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 16 Feb 2017 08:58:51 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+To: Chad Joan <chadjoan@gmail.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <1933406e-2576-e687-3545-a72f3b999310@redhat.com>
+Date: Thu, 16 Feb 2017 17:58:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Received: by 10.12.148.225 with HTTP; Thu, 16 Feb 2017 08:30:10 -0800 (PST)
-From: Chad Joan <chadjoan@gmail.com>
-Date: Thu, 16 Feb 2017 11:30:10 -0500
-Message-ID: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: multipart/mixed; boundary=94eb2c05a196e29f560548a8509d
+In-Reply-To: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::231
-X-Mailman-Approved-At: Thu, 16 Feb 2017 11:48:08 -0500
-Subject: [Qemu-trivial] Fix build break during configuration on musl-libc
- based Linux systems.
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-trivial] Fix build break during configuration on
+ musl-libc based Linux systems.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,50 +71,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Feb 2017 16:30:42 -0000
+X-List-Received-Date: Thu, 16 Feb 2017 16:59:05 -0000
 
---94eb2c05a196e29f560548a8509d
-Content-Type: multipart/alternative; boundary=94eb2c05a196e29f510548a8509b
 
---94eb2c05a196e29f510548a8509b
-Content-Type: text/plain; charset=UTF-8
 
-Hello,
+On 16/02/2017 17:30, Chad Joan wrote:
+> Hello,
+> 
+> This is a one-line patch to the configure script that will allow QEMU to be
+> built on musl-libc based Linux systems.  This problem is only noticeable
+> when QEMU is built with --enable-curses.
+> 
+> Detailed reading material if you want to know where this came from:
+> https://bugs.gentoo.org/show_bug.cgi?id=609364
 
-This is a one-line patch to the configure script that will allow QEMU to be
-built on musl-libc based Linux systems.  This problem is only noticeable
-when QEMU is built with --enable-curses.
+Hi,
 
-Detailed reading material if you want to know where this came from:
-https://bugs.gentoo.org/show_bug.cgi?id=609364
+can you explain exactly which function is missing without
+-D_XOPEN_SOURCE=500?  If it is curses' wide-char functions, why does it
+fail with musl but not with glibc?  Is _XOPEN_SOURCE always defined by
+glibc if you have _D_GNU_SOURCE?
 
-Hope that helps!
-- Chad
-
---94eb2c05a196e29f510548a8509b
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><div><div><div>Hello,<br><br></div>This is a one-line=
- patch to the configure script that will allow QEMU to be built on musl-lib=
-c based Linux systems.=C2=A0 This problem is only noticeable when QEMU is b=
-uilt with --enable-curses.<br><br></div>Detailed reading material if you wa=
-nt to know where this came from: <a href=3D"https://bugs.gentoo.org/show_bu=
-g.cgi?id=3D609364">https://bugs.gentoo.org/show_bug.cgi?id=3D609364</a><br>=
-<br></div>Hope that helps!<br></div>- Chad<br></div>
-
---94eb2c05a196e29f510548a8509b--
---94eb2c05a196e29f560548a8509d
-Content-Type: application/octet-stream; name="qemu-2.8.0-musl-ncurses.patch"
-Content-Disposition: attachment; filename="qemu-2.8.0-musl-ncurses.patch"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_iz8lj9c50
-
-ZGlmZiAtLWdpdCBjb25maWd1cmUgY29uZmlndXJlCmluZGV4IDFjOTY1NWUuLjlmODMxNzYgMTAw
-NzU1Ci0tLSBjb25maWd1cmUKKysrIGNvbmZpZ3VyZQpAQCAtNjgyLDYgKzY4Miw3IEBAIEhhaWt1
-KQogICB2aG9zdF9uZXQ9InllcyIKICAgdmhvc3Rfc2NzaT0ieWVzIgogICB2aG9zdF92c29jaz0i
-eWVzIgorICBRRU1VX0NGTEFHUz0iLURfWE9QRU5fU09VUkNFPTUwMCAkUUVNVV9DRkxBR1MiCiAg
-IFFFTVVfSU5DTFVERVM9Ii1JXCQoU1JDX1BBVEgpL2xpbnV4LWhlYWRlcnMgLUkkKHB3ZCkvbGlu
-dXgtaGVhZGVycyAkUUVNVV9JTkNMVURFUyIKIDs7CiBlc2FjCg==
---94eb2c05a196e29f560548a8509d--
+Paolo
 
