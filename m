@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cecGZ-0000lW-QK
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 01:43:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48049)
+	id 1cedYH-0004xj-8q
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 03:06:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39703)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1cecGW-0000jJ-Pm
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 01:43:37 -0500
+	(envelope-from <snaipe@diacritic.io>) id 1cedYE-0004wc-G5
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:05:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1cecGV-0002tF-Uy
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 01:43:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45450)
+	(envelope-from <snaipe@diacritic.io>) id 1cedYD-0004Q0-Fk
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:05:58 -0500
+Received: from relay5-d.mail.gandi.net ([2001:4b98:c:538::197]:51328)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1cecGR-0002pE-Hu; Fri, 17 Feb 2017 01:43:31 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6822C4E4C7;
-	Fri, 17 Feb 2017 06:43:31 +0000 (UTC)
-Received: from localhost (ovpn-8-33.pek2.redhat.com [10.72.8.33])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1H6hTWE009661; Fri, 17 Feb 2017 01:43:30 -0500
-Date: Fri, 17 Feb 2017 14:43:27 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Chad Joan <chadjoan@gmail.com>
-Cc: Laszlo Ersek <lersek@redhat.com>, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Message-ID: <20170217064327.GB21716@lemon.lan>
-References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
-	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
-	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
-	<CABHMSTUsZy0u4b1b84YC5CgafKvD-Zms5dCQ=31+XnQphUQxLA@mail.gmail.com>
+	(Exim 4.71) (envelope-from <snaipe@diacritic.io>)
+	id 1cedY7-0004KV-U6; Fri, 17 Feb 2017 03:05:52 -0500
+Received: from mfilter38-d.gandi.net (mfilter38-d.gandi.net [217.70.178.169])
+	by relay5-d.mail.gandi.net (Postfix) with ESMTP id 614C541C099;
+	Fri, 17 Feb 2017 09:05:49 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at mfilter38-d.gandi.net
+Received: from relay5-d.mail.gandi.net ([IPv6:::ffff:217.70.183.197])
+	by mfilter38-d.gandi.net (mfilter38-d.gandi.net [::ffff:10.0.15.180])
+	(amavisd-new, port 10024)
+	with ESMTP id OyyCmlxET8dz; Fri, 17 Feb 2017 09:05:47 +0100 (CET)
+X-Originating-IP: 74.125.82.176
+Received: from mail-ot0-f176.google.com (mail-ot0-f176.google.com
+	[74.125.82.176]) (Authenticated sender: snaipe@diacritic.io)
+	by relay5-d.mail.gandi.net (Postfix) with ESMTPSA id 734EC41C095;
+	Fri, 17 Feb 2017 09:05:47 +0100 (CET)
+Received: by mail-ot0-f176.google.com with SMTP id t47so27129115ota.1;
+	Fri, 17 Feb 2017 00:05:47 -0800 (PST)
+X-Gm-Message-State: AMke39k3IbklSWq0wRAFqgR7B699LrAjnU07lUIBfCwqWPak7FYBvCswAG4GD/Ebucf5VduT0bUhxin1fIe8sg==
+X-Received: by 10.157.14.114 with SMTP id n47mr4034603otd.29.1487318745909;
+	Fri, 17 Feb 2017 00:05:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CABHMSTUsZy0u4b1b84YC5CgafKvD-Zms5dCQ=31+XnQphUQxLA@mail.gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 17 Feb 2017 06:43:31 +0000 (UTC)
+Received: by 10.202.57.194 with HTTP; Fri, 17 Feb 2017 00:05:05 -0800 (PST)
+In-Reply-To: <20170217005018.GA21716@lemon.lan>
+References: <20170216085857.23501-1-snaipe@diacritic.io>
+	<20170217005018.GA21716@lemon.lan>
+From: "Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>
+Date: Fri, 17 Feb 2017 08:05:05 +0000
+X-Gmail-Original-Message-ID: <CAK_MOSePd7740oW9X1M0U-ga3uOQZUm+P9v4sd95m+r0hBjQEw@mail.gmail.com>
+Message-ID: <CAK_MOSePd7740oW9X1M0U-ga3uOQZUm+P9v4sd95m+r0hBjQEw@mail.gmail.com>
+To: Fam Zheng <famz@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, snaipe@arista.com, 
+	Riku Voipio <riku.voipio@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] Fix build break during
- configuration on musl-libc based Linux systems.
+X-Received-From: 2001:4b98:c:538::197
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] syscall: fixed mincore(2)
+ not failing with ENOMEM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,26 +59,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 06:43:38 -0000
+X-List-Received-Date: Fri, 17 Feb 2017 08:05:59 -0000
 
-On Thu, 02/16 12:47, Chad Joan wrote:
-> I am glad others are chiming in and might provide better solutions.
-> 
-> Honestly, following the instructions at
-> http://wiki.qemu-project.org/Contribute/SubmitAPatch to-the-letter is quite
-> daunting to me, just to get one line of code changed.  It might help if
-> that page had some kind of dead-simple example for trivial patches;
-> something like:
-> $ cd <QEMU directory>
-> $ git format-patch blah blah blah
-> $ maybe-some-other-command
-> $ # Now copy the contents of file xyz.patch into your email client and send
-> to qemu-devel@nongnu.org and qemu-trivial@nongnu.org
+2017-02-17 0:50 GMT+00:00 Fam Zheng <famz@redhat.com>:
+> On Thu, 02/16 08:58, Franklin Snaipe Mathieu wrote:
+>> +            p =3D lock_user_string(arg3)
+>> +            if (!p) {
+>
+> Please compile test at least, even if it is a trivial patch.
+>
 
-Makes sense in general except for the sending part - email clients tend to
-damage the patch when you copy and paste by wrapping long lines or messing up
-other things. But your point is taken, we should make the first (or a one-shot)
-contribution as easy as possible.
+Whoops, sorry, I forgot to re-compile after fixing the checkpatch issues.
 
-Fam
+--=20
+Franklin "Snaipe" Mathieu
+=F0=9F=9D=B0 https://diacritic.io
 
