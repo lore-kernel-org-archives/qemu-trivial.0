@@ -1,51 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ceeg0-0006pn-Bv
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 04:18:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56536)
+	id 1ceelJ-0003we-0W
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 04:23:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ceefx-0006n0-2K
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 04:18:02 -0500
+	(envelope-from <lersek@redhat.com>) id 1ceelG-0003u6-2x
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 04:23:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1ceefv-0004Ne-UO
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 04:18:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59172)
+	(envelope-from <lersek@redhat.com>) id 1ceelE-0007KC-VQ
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 04:23:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44540)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1ceefp-0004LH-RB; Fri, 17 Feb 2017 04:17:54 -0500
+	id 1ceel9-0007Hx-HE; Fri, 17 Feb 2017 04:23:23 -0500
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CE0BF4E4C7;
-	Fri, 17 Feb 2017 09:17:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4090E80468;
+	Fri, 17 Feb 2017 09:23:23 +0000 (UTC)
 Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-41.phx2.redhat.com
 	[10.3.116.41])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1H9Hp0K031161; Fri, 17 Feb 2017 04:17:52 -0500
-To: Paolo Bonzini <pbonzini@redhat.com>, Chad Joan <chadjoan@gmail.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	id v1H9NLuI002099; Fri, 17 Feb 2017 04:23:21 -0500
+To: Fam Zheng <famz@redhat.com>, Chad Joan <chadjoan@gmail.com>
 References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
 	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
-	<e19aed34-77c2-f588-351d-2daa8a099ae9@redhat.com>
+	<CABHMSTUsZy0u4b1b84YC5CgafKvD-Zms5dCQ=31+XnQphUQxLA@mail.gmail.com>
+	<20170217064327.GB21716@lemon.lan>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
 From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <279d2ba8-dabc-0c50-ea7e-1cecccc22291@redhat.com>
-Date: Fri, 17 Feb 2017 10:17:50 +0100
+Message-ID: <2a2570bf-2e4b-e793-4362-0a679b182b1e@redhat.com>
+Date: Fri, 17 Feb 2017 10:23:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <e19aed34-77c2-f588-351d-2daa8a099ae9@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20170217064327.GB21716@lemon.lan>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 17 Feb 2017 09:17:53 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 17 Feb 2017 09:23:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] Fix build break during configuration on
- musl-libc based Linux systems.
+Subject: Re: [Qemu-trivial] [Qemu-devel] Fix build break during
+ configuration on musl-libc based Linux systems.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,110 +59,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 09:18:02 -0000
+X-List-Received-Date: Fri, 17 Feb 2017 09:23:31 -0000
 
-On 02/17/17 09:56, Paolo Bonzini wrote:
-> 
-> 
-> On 16/02/2017 18:23, Laszlo Ersek wrote:
->> On 02/16/17 17:58, Paolo Bonzini wrote:
->>>
->>>
->>> On 16/02/2017 17:30, Chad Joan wrote:
->>>> Hello,
->>>>
->>>> This is a one-line patch to the configure script that will allow QEMU to be
->>>> built on musl-libc based Linux systems.  This problem is only noticeable
->>>> when QEMU is built with --enable-curses.
->>>>
->>>> Detailed reading material if you want to know where this came from:
->>>> https://bugs.gentoo.org/show_bug.cgi?id=609364
->>>
->>> Hi,
->>>
->>> can you explain exactly which function is missing without
->>> -D_XOPEN_SOURCE=500?  If it is curses' wide-char functions, why does it
->>> fail with musl but not with glibc?  Is _XOPEN_SOURCE always defined by
->>> glibc if you have _D_GNU_SOURCE?
+On 02/17/17 07:43, Fam Zheng wrote:
+> On Thu, 02/16 12:47, Chad Joan wrote:
+>> I am glad others are chiming in and might provide better solutions.
 >>
->> It is not necessarily auto-defined, but the effect is "as if".
+>> Honestly, following the instructions at
+>> http://wiki.qemu-project.org/Contribute/SubmitAPatch to-the-letter is quite
+>> daunting to me, just to get one line of code changed.  It might help if
+>> that page had some kind of dead-simple example for trivial patches;
+>> something like:
+>> $ cd <QEMU directory>
+>> $ git format-patch blah blah blah
+>> $ maybe-some-other-command
+>> $ # Now copy the contents of file xyz.patch into your email client and send
+>> to qemu-devel@nongnu.org and qemu-trivial@nongnu.org
 > 
-> Ok, so the bug is that glibc _does_ auto-define _XOPEN_SOURCE:
-> 
-> #ifdef _GNU_SOURCE
-> # undef  _ISOC95_SOURCE
-> # define _ISOC95_SOURCE 1
-> # undef  _ISOC99_SOURCE
-> # define _ISOC99_SOURCE 1
-> # undef  _ISOC11_SOURCE
-> # define _ISOC11_SOURCE 1
-> # undef  _POSIX_SOURCE
-> # define _POSIX_SOURCE  1
-> # undef  _POSIX_C_SOURCE
-> # define _POSIX_C_SOURCE        200809L
-> # undef  _XOPEN_SOURCE
-> # define _XOPEN_SOURCE  700
-> # undef  _XOPEN_SOURCE_EXTENDED
-> # define _XOPEN_SOURCE_EXTENDED 1
-> # undef  _LARGEFILE64_SOURCE
-> # define _LARGEFILE64_SOURCE    1
-> # undef  _DEFAULT_SOURCE
-> # define _DEFAULT_SOURCE        1
-> # undef  _ATFILE_SOURCE
-> # define _ATFILE_SOURCE 1
-> #endif
-> 
-> and ncursesw looks for _XOPEN_SOURCE exclusively:
-> 
-> #ifndef NCURSES_WIDECHAR
-> #if defined(_XOPEN_SOURCE_EXTENDED) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0 >= 500))
-> #define NCURSES_WIDECHAR 1
-> #else
-> #define NCURSES_WIDECHAR 0
-> #endif
-> #endif /* NCURSES_WIDECHAR */
-> 
-> 
-> So I do think that if musl wants to support _GNU_SOURCE, it should also auto-define;
-> however it doesn't, see https://git.musl-libc.org/cgit/musl/tree/include/features.h.
-> 
-> Alternatively, ncurses should be patched to look at _GNU_SOURCE in addition to
-> _XOPEN_SOURCE and _XOPEN_SOURCE_EXTENDED.
-> 
-> In any case, it's not a QEMU bug.  Other packages likely are going to have the same
-> issue, and fixing all of them is the wrong course of action.
+> Makes sense in general except for the sending part - email clients tend to
+> damage the patch when you copy and paste by wrapping long lines or messing up
+> other things. But your point is taken, we should make the first (or a one-shot)
+> contribution as easy as possible.
 
-I'm somewhat unsure -- I think it's debatable whether other libc (or
-Curses) implementations should care about _GNU_SOURCE at all. After all,
-_GNU_SOURCE says "GNU" in the name.
+I disagree (from the sidelines, that is; I'm not a QEMU maintainer --
+I'm a co-maintainer elsewhere). The patch submission process exists for
+a reason, the goal is to maximize the throughput of long-term
+contributors and maintainers, because that's the best for the project's
+overall health and progress.
 
-However, defining _XOPEN_SOURCE as 500 is specified in an industry
-standard (SUSv2):
+It does not mean that one-off contributions are not welcome -- all
+contributions are welcome that follow the process (and beyond that,
+everyone is welcome to become a long-term contributor).
 
-http://pubs.opengroup.org/onlinepubs/7908799/xsh/compilation.html
+Just my two cents, of course; don't take this as an official standpoint
+or whatever. (And, I'm saying this after having manually fixed up
+garbled patches from one-off contributors.)
 
-and the same standard defines Curses too (and it describes the
-relationship of Curses interfaces with _XOPEN_SOURCE):
-
-http://pubs.opengroup.org/onlinepubs/7908799/xcurses/implement.html
-
-So I think if an application wants to support Curses *without*
-necessarily depending on glibc, then the application should explicitly
-define _XOPEN_SOURCE. If that other libc and that Curses implementation
-don't care about GNU, only SUSv2 (which is entirely in their right),
-then they'll look only for _XOPEN_SOURCE.
-
-And, if other packages have the same issue, then they all should be
-patched, for better standards conformance.
-
-Of course, *if* that other C library, and the Curses implementation,
-claim compatibility with glibc as far as _GNU_SOURCE goes, *then* I
-fully agree with you. (IOW, it depends on the condition that you
-formulated above, "if musl wants to support _GNU_SOURCE".)
-
-Same for ncurses -- do they aim at SUSv2 conformance, or do they intend
-to consider _GNU_SOURCE specifically?
-
-Thanks
 Laszlo
 
