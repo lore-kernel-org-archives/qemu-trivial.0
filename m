@@ -1,67 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ceeL9-00040G-9V
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 03:56:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50310)
+	id 1ceeN8-0006H8-Nt
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 03:58:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1ceeL6-0003y3-EB
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:56:29 -0500
+	(envelope-from <franklinmathieu@gmail.com>) id 1ceeN6-0006Ev-Ba
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:58:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1ceeL3-0000qh-9I
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:56:28 -0500
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:33780)
+	(envelope-from <franklinmathieu@gmail.com>) id 1ceeN5-0001TM-Ec
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 03:58:32 -0500
+Received: from mail-wm0-f65.google.com ([74.125.82.65]:36061)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1ceeL3-0000qb-3C; Fri, 17 Feb 2017 03:56:25 -0500
-Received: by mail-wr0-x241.google.com with SMTP id i10so4545976wrb.0;
-	Fri, 17 Feb 2017 00:56:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=hYWh7cU+40buX8UlzKykJ4thBLU878oNJ1MZWDT4tJE=;
-	b=mDRVfTbayia4p3DiCq5/2aUnjFlFwaKYpNCiwF/uRZO23QdeOkLraVIAolTOM+Ov60
-	h535tXSiSJku3/VehPPyjZkIuigmtj9HEHilXNGhEkLUoowjveN69GD+sA9x0Mra3bFo
-	Cx9CfWMQn9Sm26tAs5BwlV0L+E66KUQYIIeROLEGu0KuaS5iGB0tEyru2zQ2SSLkFIEi
-	LsV+AJ0hzztxDS18oVwfZCcTZciySOIw5S6NijvYlZpreQSkaTmB36boWrio4cyLaNNw
-	Nazr9MF4fIIlvL1LaYUBn4Ez261Y2JgekqBJ+npgUUt5BZHEUUS3qrCq38YzjUJ8HJ2B
-	F7Wg==
+	(Exim 4.71) (envelope-from <franklinmathieu@gmail.com>)
+	id 1ceeN0-0001Sp-My; Fri, 17 Feb 2017 03:58:26 -0500
+Received: by mail-wm0-f65.google.com with SMTP id r18so1369095wmd.3;
+	Fri, 17 Feb 2017 00:58:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=hYWh7cU+40buX8UlzKykJ4thBLU878oNJ1MZWDT4tJE=;
-	b=T/9cgbXERCgIOLhH3Sz94+PnqBVbYmGFmFwRLYzr2ZXt4TScwBpwdHBQemzfCBWPrA
-	VgDK99NcKdKwWEVjwDGMXGvztd/m5YJJSepALaBoqbUMIL2aX7WFysEzZx+zcTQ6JfkD
-	WBqfR4eDR/RxAErxa8hCQIBeOgPQfhceAxUqPU4jMuaZ4KOxkN5BNUfPZmRfIW1YaayA
-	bxFUm/ubw7+raUvJqMCnhYktS6AvF7Ypg5wXY4TQw7rzAuF4hSahlXSXptwABrh1eIfF
-	tg2kJ4Qmy7VEmXibuvojJkNLKQu/Y6qBYLatd+BUD30SIoUpKWliLV5no8OdzjjA98nV
-	WTJg==
-X-Gm-Message-State: AMke39nf37ftLnmS0u6+v65nZEpuZhkHz3g0zYopob7JJQE6w8I6fSeHOgLv1920QV2nfA==
-X-Received: by 10.223.173.171 with SMTP id w40mr4657352wrc.177.1487321783919; 
-	Fri, 17 Feb 2017 00:56:23 -0800 (PST)
-Received: from [192.168.10.165] (94-39-187-56.adsl-ull.clienti.tiscali.it.
-	[94.39.187.56]) by smtp.googlemail.com with ESMTPSA id
-	w127sm833671wmg.30.2017.02.17.00.56.22
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=E2VOJOSURVghvhgjYgW8cguq8gW+0fJLeryD4TKR3K0=;
+	b=LwZlRH9nD2hshe4SISY8L6hX8X0SNd07lInh9cf6uzA60hCaKwH+yh135pap+hu/zl
+	+aUCHGJrP6OcjTQM0ScQU4rZb4quI0oHVW2I4KpaMzWicX18nzu9BzwkKYtu5beWtjqE
+	rL6Jgy8zwZN5UyOyK+exVEhuez9i6DM3lR/mIduSIITLrwUF9rxypF2g93sqi8PvqVbD
+	FlT41CaMX3uLiNrGEG6zyZLyjoH+Iv7n3lLwGqXEc7u9whpL5QXSc7X8zb7dRVnO5rXt
+	Mgri6O0IXpKH4t+3hIkvYIAWYLWmBWQ3BRpdIGJU2J4GgtoUU4Z+Y3W7owjmjPk1x5Ju
+	8Rcg==
+X-Gm-Message-State: AMke39kPkcGFUb97Vy7WsfsPLeAoKEJzgqsOnkvCLWN1LyPz1IkW74Y/pTJ3kQlUGIT3Ig==
+X-Received: by 10.28.68.6 with SMTP id r6mr2046608wma.57.1487321905169;
+	Fri, 17 Feb 2017 00:58:25 -0800 (PST)
+Received: from localhost.localdomain ([193.120.165.186])
+	by smtp.gmail.com with ESMTPSA id e74sm882027wmd.2.2017.02.17.00.58.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 17 Feb 2017 00:56:23 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Laszlo Ersek <lersek@redhat.com>, Chad Joan <chadjoan@gmail.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
-	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
-	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <e19aed34-77c2-f588-351d-2daa8a099ae9@redhat.com>
-Date: Fri, 17 Feb 2017 09:56:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+	Fri, 17 Feb 2017 00:58:24 -0800 (PST)
+From: Franklin Snaipe Mathieu <snaipe@diacritic.io>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, snaipe@arista.com,
+	"Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>,
+	Riku Voipio <riku.voipio@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>
+Date: Fri, 17 Feb 2017 08:57:59 +0000
+Message-Id: <20170217085800.28873-1-snaipe@diacritic.io>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170216085857.23501-1-snaipe@diacritic.io>
+References: <20170216085857.23501-1-snaipe@diacritic.io>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-trivial] Fix build break during configuration on
- musl-libc based Linux systems.
+	[fuzzy]
+X-Received-From: 74.125.82.65
+Subject: [Qemu-trivial] [PATCH] syscall: fixed mincore(2) not failing with
+ ENOMEM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,77 +58,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 08:56:29 -0000
+X-List-Received-Date: Fri, 17 Feb 2017 08:58:33 -0000
 
+From: "Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>
 
+The current implementation of the mincore(2) syscall sets errno to
+EFAULT when the region identified by the first two parameters is
+invalid.
 
-On 16/02/2017 18:23, Laszlo Ersek wrote:
-> On 02/16/17 17:58, Paolo Bonzini wrote:
->>
->>
->> On 16/02/2017 17:30, Chad Joan wrote:
->>> Hello,
->>>
->>> This is a one-line patch to the configure script that will allow QEMU to be
->>> built on musl-libc based Linux systems.  This problem is only noticeable
->>> when QEMU is built with --enable-curses.
->>>
->>> Detailed reading material if you want to know where this came from:
->>> https://bugs.gentoo.org/show_bug.cgi?id=609364
->>
->> Hi,
->>
->> can you explain exactly which function is missing without
->> -D_XOPEN_SOURCE=500?  If it is curses' wide-char functions, why does it
->> fail with musl but not with glibc?  Is _XOPEN_SOURCE always defined by
->> glibc if you have _D_GNU_SOURCE?
-> 
-> It is not necessarily auto-defined, but the effect is "as if".
+This goes against the man page specification, where mincore(2) should
+only fail with EFAULT when the third parameter is an invalid address;
+and fail with ENOMEM when the checked region does not point to mapped
+memory.
 
-Ok, so the bug is that glibc _does_ auto-define _XOPEN_SOURCE:
+Signed-off-by: Franklin "Snaipe" Mathieu <snaipe@diacritic.io>
+Cc: Riku Voipio <riku.voipio@linaro.org>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+---
+ linux-user/syscall.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-#ifdef _GNU_SOURCE
-# undef  _ISOC95_SOURCE
-# define _ISOC95_SOURCE 1
-# undef  _ISOC99_SOURCE
-# define _ISOC99_SOURCE 1
-# undef  _ISOC11_SOURCE
-# define _ISOC11_SOURCE 1
-# undef  _POSIX_SOURCE
-# define _POSIX_SOURCE  1
-# undef  _POSIX_C_SOURCE
-# define _POSIX_C_SOURCE        200809L
-# undef  _XOPEN_SOURCE
-# define _XOPEN_SOURCE  700
-# undef  _XOPEN_SOURCE_EXTENDED
-# define _XOPEN_SOURCE_EXTENDED 1
-# undef  _LARGEFILE64_SOURCE
-# define _LARGEFILE64_SOURCE    1
-# undef  _DEFAULT_SOURCE
-# define _DEFAULT_SOURCE        1
-# undef  _ATFILE_SOURCE
-# define _ATFILE_SOURCE 1
-#endif
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 9be8e9530e..733e0009e1 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -11061,11 +11061,16 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_mincore:
+         {
+             void *a;
++            ret = -TARGET_ENOMEM;
++            a = lock_user(VERIFY_READ, arg1, arg2, 0);
++            if (!a) {
++                goto fail;
++            }
+             ret = -TARGET_EFAULT;
+-            if (!(a = lock_user(VERIFY_READ, arg1,arg2, 0)))
+-                goto efault;
+-            if (!(p = lock_user_string(arg3)))
++            p = lock_user_string(arg3);
++            if (!p) {
+                 goto mincore_fail;
++            }
+             ret = get_errno(mincore(a, arg2, p));
+             unlock_user(p, arg3, ret);
+             mincore_fail:
+-- 
+2.11.0
 
-and ncursesw looks for _XOPEN_SOURCE exclusively:
-
-#ifndef NCURSES_WIDECHAR
-#if defined(_XOPEN_SOURCE_EXTENDED) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0 >= 500))
-#define NCURSES_WIDECHAR 1
-#else
-#define NCURSES_WIDECHAR 0
-#endif
-#endif /* NCURSES_WIDECHAR */
-
-
-So I do think that if musl wants to support _GNU_SOURCE, it should also auto-define;
-however it doesn't, see https://git.musl-libc.org/cgit/musl/tree/include/features.h.
-
-Alternatively, ncurses should be patched to look at _GNU_SOURCE in addition to
-_XOPEN_SOURCE and _XOPEN_SOURCE_EXTENDED.
-
-In any case, it's not a QEMU bug.  Other packages likely are going to have the same
-issue, and fixing all of them is the wrong course of action.
-
-Paolo
 
