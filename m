@@ -1,27 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cemAL-0004IX-O7
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 12:17:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38909)
+	id 1cen28-0007HY-4v
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 13:13:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50099)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cemAI-0004FR-2P
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:17:52 -0500
+	(envelope-from <jsnow@redhat.com>) id 1cen20-0007F9-E8
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 13:13:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cemAG-0002DR-G8
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:17:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34892)
+	(envelope-from <jsnow@redhat.com>) id 1cen1u-0001cR-MD
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 13:13:20 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48008)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1cemAB-00025H-Hx; Fri, 17 Feb 2017 12:17:43 -0500
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1cen1q-0001Wt-8s; Fri, 17 Feb 2017 13:13:10 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B6FE3A768E;
-	Fri, 17 Feb 2017 17:17:43 +0000 (UTC)
-Received: from [10.10.123.249] (unknown [10.10.123.249])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8528EB95B9;
-	Fri, 17 Feb 2017 17:17:42 +0000 (UTC)
-To: Chad Joan <chadjoan@gmail.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 5CBA161B97;
+	Fri, 17 Feb 2017 18:13:10 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-221.bos.redhat.com
+	[10.18.17.221])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1HID9D5026171; Fri, 17 Feb 2017 13:13:09 -0500
+To: Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	Fam Zheng <famz@redhat.com>
 References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
 	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
@@ -29,27 +31,22 @@ References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<20170217064327.GB21716@lemon.lan>
 	<CAFEAcA8_f8SVX+rirAFBJ76ZiXaKUwh9uO0AeBFoR7G_q8pGDg@mail.gmail.com>
 	<6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
-	<CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <fc3b6729-6739-5daf-5e78-85fbd7d3260d@redhat.com>
-Date: Fri, 17 Feb 2017 11:17:40 -0600
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Chad Joan <chadjoan@gmail.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <bcbf9b48-1f40-25dd-3fdc-b7ed9821ee60@redhat.com>
+Date: Fri, 17 Feb 2017 13:13:09 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.7.0
 MIME-Version: 1.0
-In-Reply-To: <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA"
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+In-Reply-To: <6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 17 Feb 2017 17:17:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 17 Feb 2017 18:13:10 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -66,174 +63,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 17:17:52 -0000
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA
-Content-Type: multipart/mixed; boundary="PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Chad Joan <chadjoan@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
-Message-ID: <fc3b6729-6739-5daf-5e78-85fbd7d3260d@redhat.com>
-Subject: Re: [Qemu-devel] Fix build break during configuration on musl-libc
- based Linux systems.
-References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
- <1933406e-2576-e687-3545-a72f3b999310@redhat.com>
- <bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
- <CABHMSTUsZy0u4b1b84YC5CgafKvD-Zms5dCQ=31+XnQphUQxLA@mail.gmail.com>
- <20170217064327.GB21716@lemon.lan>
- <CAFEAcA8_f8SVX+rirAFBJ76ZiXaKUwh9uO0AeBFoR7G_q8pGDg@mail.gmail.com>
- <6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
- <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
-In-Reply-To: <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
-
---PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 02/17/2017 10:54 AM, Chad Joan wrote:
-> Wow, that is some quick turn-around.  Well done!
->=20
-> My thoughts:
->=20
->    - I find this summary info very helpful!  On behalf of the N people
->    trying to heal paper cuts: thank you!
->    - I still recommend an example snippet for shell/bash interaction th=
-at
->    demonstrates the workflow you expect from a first-time contributor. =
- It
->    should be populated with commonly used values (ex: mailing list
->    addresses).  I don't expect this to happen fast like the summary inf=
-o; I
->    suspect someone is going to have to pretend they are submitting a pa=
-tch,
->    write down what they do, and then think about how to present this.
-
-For a quickie patch, I make my edits, then 'git commit -a -s' and 'git
-send-email -1' - but that works because I've already set up git hooks to
-auto-cc the list, and I already debugged my 'get send-email' setup years
-ago.  So yeah, doing it from a completely virgin environment could
-benefit from a complete command line that reproduces what I take for
-granted in my normal environment.  And some email setups are a lot
-friendlier than others (I personally do not use gmail, but will readily
-admit that it is probably a lot easier to set up my work emails to use
-Red Hat's SMTP servers than it is for a gmail contributor to get their
-email setup working in a way that does not mangle patches).
-
->    - Regarding the signature: IIRC, setting up certificates on a machin=
-e
->    using gpg can be quite time consuming and learning-intensive if you'=
-ve
->    never needed to do it before.
-
-But nothing requires you to set up a certificate to submit a patch.  I'm
-not sure which piece of the documentation got you steered in that
-direction, but gpg signing of patches is only required of maintainers,
-not contributors (or maybe you're hinting at the extra effort required
-to set up gmail as a valid 'git send-email' target, to which I have no
-experience, but which starts to leave the realm of qemu-specific
-instructions into something where it would be better to link to a good
-git setup tutorial, if one exists).
-
->  Having that example will go a long way to
->    help with this.
-
-<snip lots of useful ideas for improvement>
-
->    - I should also mention that I found the rest of the document to be =
-very
->    well-written.  It's comprehensiveness became its weakness, but that'=
-s still
->    important long-term, hence why I think an alternative path with a sh=
-ort
->    example for trivial patches is plenty sufficient: from my perspectiv=
-e,
->    there's no need to change the rest of the text; it is already good :=
-).
-
-Thanks for that feedback.  It's often hard for a core contributor to
-remember what it was like to submit their first patch years ago, and
-having a fresh take on the matter from a new contributor is well worth
-the reminders.  It's also nice to hear this as a compliment, and not
-just a complaint.
-
->=20
-> Note that I'm bothering to stick around and provide feedback, despite o=
-ther
-> pressing life obligations.  Providing advice on submit-a-patch usabilit=
-y
-> for QEMU isn't on my schedule, but I don't have the heart to bail on th=
-is,
-> especially when you all are kindly listening, having high quality
-> discussion, and sincerely trying to improve things.  If you read betwee=
-n
-> the lines, you see the truth: I am a yak shaver!
-
-At the risk of pushing too hard, you could always turn your (good!)
-suggestions into concrete wording, or even request a wiki account to
-make the changes yourself. But even if that is beyond your planned level
-of involvement, I do hope that various readers will be able to act on
-the suggestions in this mail to improve things.
-
->=20
-> Oh man, when I hit a topic like "use git send-email", the hair started
-> flying: learning new git commands, two-factor auth on gmail, U2F keys,
-> governance for the no-mans-land of a server, and so on, a real yak-shav=
-ing
-> party.  After an hour or two, my safety triggered, and I thought, "man,=
- I
-> am spending way too much time perfecting this workflow that I might nev=
-er
-> do again" and I spent a few minutes writing a message in gmail.  I
-> certainly don't expect QEMU devs to fix garbled patches either: that al=
-so
-> seems like a huge waste of valuable time (and for talented and passiona=
-te
-> individuals, too).  There has to be a better way!  So I hope the whitel=
-ist
-> idea helps, or maybe it's enough to just call awareness to this potenti=
-al
-> improvement.
-
-Again, part of the problem may be that gmail is not really suited to the
-ideal patch flow, and so that's going to be a pain point for any such
-contributor.  Submitting patches as an attachment is harder than the
-inline version you get with 'git send-email', but it is one of those
-one-off manual fixups that a maintainer can overlook, as long as it
-really is a one-off thing and not a repeated pattern.  And yes, we
-should document that use of an attachment is the most likely to avoid
-mangling the patch if you don't have 'git send-email' working, even if
-it is harder for the maintainer to apply such a patch.
+X-List-Received-Date: Fri, 17 Feb 2017 18:13:26 -0000
 
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
 
+On 02/17/2017 10:34 AM, Eric Blake wrote:
+> On 02/17/2017 03:28 AM, Peter Maydell wrote:
+>> On 17 February 2017 at 06:43, Fam Zheng <famz@redhat.com> wrote:
+>>> But your point is taken, we should make the first (or a one-shot)
+>>> contribution as easy as possible.
+>>
+>> Yes; we could do with providing a "This page seems very long..."
+>> introduction section. The absolute bare minimum requirements
+>> for a submitter I think are:
+>>  * Provide a Signed-off-by: line (this is a hard requirement
+>>    because it's how you say "I'm legally OK to contribute this
+>>    and am happy for it to go into QEMU")
+>>  * send patch by email
+>>  * read replies and act on them if you want your patch to go in
+>>
+>> The larger your contribution is, the more important the other
+>> requirements detailed on the page are; but personally I'm
+>> happy to manually fix up patches from a first-time submitter,
+>> and I think most other maintainers are too.
+> 
+> I've updated the wiki to put in that nice bullet list, prior to the
+> table of contents.
+> 
 
---PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc--
+Is there a way we can make the quickstart exist in a pop-box?
 
---0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+Also, any way to wrap the text on the rest of the introductory article?
+If you fullscreen this on a widescreen monitor you have to chase the
+letters to the far corners of the earth.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Formatting the article more nicely might help its readability. It's also
+worth noting that just /reading the outline/ gives you enough advice,
+reading the details are actually not strictly necessary.
 
-iQEcBAEBCAAGBQJYpzA0AAoJEKeha0olJ0NqhDAH/RDSQejOVvc249OBXo74uckp
-ncmQsgqnicHNuwx+AVFWQy5oigDrQTQo7BLFuO/Upn+YfyK2oQvxS3DEW8mVZ+G3
-0lQebj/PbKHwi/NU+yq7aoeJlQINVwzzRJpLTX+AjSQyGyd1PRn7mTX4GlDGtMAo
-IgVgSQxrJqMLHJtcg4wnuE7IsbDG6vDa4RI15X7a+wywiSHS3IlRdVlCNsklSSwG
-gqiMe4ZlEt4RZzq9HmDixTyJ7SckgHInHLe2CEMWVssfNe8AKRpi6W+VJiANnAg6
-8FWaFut/uFnbn+hyX4V6t4QOLFU5LNZ/Y0QiNMTaANd2EU3WkSSlsBFzQb0+9Bc=
-=3myd
------END PGP SIGNATURE-----
-
---0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA--
+--js
 
