@@ -1,43 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cem8V-000343-Db
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 12:15:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38524)
+	id 1cemAL-0004IX-O7
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 12:17:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cem8T-00033o-Ot
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:15:58 -0500
+	(envelope-from <eblake@redhat.com>) id 1cemAI-0004FR-2P
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:17:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cem8S-0001Ai-PS
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:15:57 -0500
-Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:37075)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cem8S-0001A2-It
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:15:56 -0500
-Received: by mail-wm0-x22f.google.com with SMTP id v77so14915262wmv.0
-	for <qemu-trivial@nongnu.org>; Fri, 17 Feb 2017 09:15:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=FrTs7tv5bqEsSMw/h8KwVcv4WV1Cd6IFFdvqDJGypLM=;
-	b=dZx4AbCcEb5BtPyCDQGmtZtXQH6w4UoC5K56Kbj8SNX8QuML4v1yhlMzqUeIKfnpeC
-	exDDaAndA+R/c14CS+jISD+09gAvKbI8KOlpODUp8SqypsOfVod5GooToEJbvAy0CTq4
-	x6ycmsIui3F+Dy2PvcOjy9UVXKm01rmYkb3GA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=FrTs7tv5bqEsSMw/h8KwVcv4WV1Cd6IFFdvqDJGypLM=;
-	b=ICuHw2OToeus2/XUvcfTXBCh//+o6ekTIPVpHB0J2WrOPB7JoBGsQocM4E3pwKLSg4
-	eOGjRWrq23ZBKNOeL2AYDzRaS8oSWI/cET+xz2o/oYvIlzpwC16T/rUAyILogNYRx3v7
-	vVgj1Zo8HBNHAHMU/oGQZnOKSDwy0dvbZH/2wyicqN1MscogxRwN0lagnoVul4aYZ2WU
-	MQX9CLFDKaGijHx1YA1cKkrQCaChrx4dYnOVLv+XhP2QxvnWnw/p3NrPxvVj86LlQu1B
-	VhR+nt5CGxUYChnfht5nfa6e8f4e7Tm5saEwMMltXohYzPJOc7TpbmdSIlyZe+M3ZCbA
-	wfbw==
-X-Gm-Message-State: AMke39kb/X+WZh/J/cs6r3cz/2Xtr6g2n7DUyVZcubPrZopGcCp/CoTQ5IhpSzFFHLCi17RAF3t88dYbT0uX+9qr
-X-Received: by 10.28.55.199 with SMTP id e190mr4567431wma.92.1487351754998;
-	Fri, 17 Feb 2017 09:15:54 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 17 Feb 2017 09:15:34 -0800 (PST)
-In-Reply-To: <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
+	(envelope-from <eblake@redhat.com>) id 1cemAG-0002DR-G8
+	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 12:17:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34892)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cemAB-00025H-Hx; Fri, 17 Feb 2017 12:17:43 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9B6FE3A768E;
+	Fri, 17 Feb 2017 17:17:43 +0000 (UTC)
+Received: from [10.10.123.249] (unknown [10.10.123.249])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8528EB95B9;
+	Fri, 17 Feb 2017 17:17:42 +0000 (UTC)
+To: Chad Joan <chadjoan@gmail.com>
 References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
 	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
@@ -46,17 +30,29 @@ References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<CAFEAcA8_f8SVX+rirAFBJ76ZiXaKUwh9uO0AeBFoR7G_q8pGDg@mail.gmail.com>
 	<6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
 	<CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Feb 2017 17:15:34 +0000
-Message-ID: <CAFEAcA_N1j9tpxEBROG6D1per9vDMPZeuRyM93BRzNT5ZK3q0Q@mail.gmail.com>
-To: Chad Joan <chadjoan@gmail.com>
-Cc: Eric Blake <eblake@redhat.com>, Fam Zheng <famz@redhat.com>, 
+Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
 	QEMU Trivial <qemu-trivial@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <fc3b6729-6739-5daf-5e78-85fbd7d3260d@redhat.com>
+Date: Fri, 17 Feb 2017 11:17:40 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
+MIME-Version: 1.0
+In-Reply-To: <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA"
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 17 Feb 2017 17:17:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22f
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] Fix build break during
  configuration on musl-libc based Linux systems.
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,32 +66,174 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 17:15:58 -0000
+X-List-Received-Date: Fri, 17 Feb 2017 17:17:52 -0000
 
-On 17 February 2017 at 16:54, Chad Joan <chadjoan@gmail.com> wrote:
-> so if we can test and
-> approve even /some/ of the more popular mail clients (ex: gmail,
-> thunderbird, outlook, etc) for use, it would help newbies A LOT.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA
+Content-Type: multipart/mixed; boundary="PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Chad Joan <chadjoan@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <fc3b6729-6739-5daf-5e78-85fbd7d3260d@redhat.com>
+Subject: Re: [Qemu-devel] Fix build break during configuration on musl-libc
+ based Linux systems.
+References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
+ <1933406e-2576-e687-3545-a72f3b999310@redhat.com>
+ <bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
+ <CABHMSTUsZy0u4b1b84YC5CgafKvD-Zms5dCQ=31+XnQphUQxLA@mail.gmail.com>
+ <20170217064327.GB21716@lemon.lan>
+ <CAFEAcA8_f8SVX+rirAFBJ76ZiXaKUwh9uO0AeBFoR7G_q8pGDg@mail.gmail.com>
+ <6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
+ <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
+In-Reply-To: <CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
 
-Pretty sure we've seen mangled emails from all of those.
-The problem is that most email clients will automatically
-wrap long lines, which is fine for text but breaks an
-inline patch. Changing trailing whitespace in patches is
-also a common issue.
+--PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-The documentation in "git help format-patch" has a section
-"MUA-SPECIFIC HINTS" which says that gmail's web interface
-is definitely no good, and Thunderbird defaults to the wrong
-thing and requires a bunch of config changes which you'd then
-have to switch back to your preferences for normal mail when
-you're done sending patches. Outlook is so hopeless for
-patch mail it isn't even listed :-)
+On 02/17/2017 10:54 AM, Chad Joan wrote:
+> Wow, that is some quick turn-around.  Well done!
+>=20
+> My thoughts:
+>=20
+>    - I find this summary info very helpful!  On behalf of the N people
+>    trying to heal paper cuts: thank you!
+>    - I still recommend an example snippet for shell/bash interaction th=
+at
+>    demonstrates the workflow you expect from a first-time contributor. =
+ It
+>    should be populated with commonly used values (ex: mailing list
+>    addresses).  I don't expect this to happen fast like the summary inf=
+o; I
+>    suspect someone is going to have to pretend they are submitting a pa=
+tch,
+>    write down what they do, and then think about how to present this.
 
-The kernel docs have a longer list of mail clients with
-notes about suitability:
-https://kernel.org/doc/html/latest/process/email-clients.html
-but the set of "just works" clients is very small.
+For a quickie patch, I make my edits, then 'git commit -a -s' and 'git
+send-email -1' - but that works because I've already set up git hooks to
+auto-cc the list, and I already debugged my 'get send-email' setup years
+ago.  So yeah, doing it from a completely virgin environment could
+benefit from a complete command line that reproduces what I take for
+granted in my normal environment.  And some email setups are a lot
+friendlier than others (I personally do not use gmail, but will readily
+admit that it is probably a lot easier to set up my work emails to use
+Red Hat's SMTP servers than it is for a gmail contributor to get their
+email setup working in a way that does not mangle patches).
 
-thanks
--- PMM
+>    - Regarding the signature: IIRC, setting up certificates on a machin=
+e
+>    using gpg can be quite time consuming and learning-intensive if you'=
+ve
+>    never needed to do it before.
+
+But nothing requires you to set up a certificate to submit a patch.  I'm
+not sure which piece of the documentation got you steered in that
+direction, but gpg signing of patches is only required of maintainers,
+not contributors (or maybe you're hinting at the extra effort required
+to set up gmail as a valid 'git send-email' target, to which I have no
+experience, but which starts to leave the realm of qemu-specific
+instructions into something where it would be better to link to a good
+git setup tutorial, if one exists).
+
+>  Having that example will go a long way to
+>    help with this.
+
+<snip lots of useful ideas for improvement>
+
+>    - I should also mention that I found the rest of the document to be =
+very
+>    well-written.  It's comprehensiveness became its weakness, but that'=
+s still
+>    important long-term, hence why I think an alternative path with a sh=
+ort
+>    example for trivial patches is plenty sufficient: from my perspectiv=
+e,
+>    there's no need to change the rest of the text; it is already good :=
+).
+
+Thanks for that feedback.  It's often hard for a core contributor to
+remember what it was like to submit their first patch years ago, and
+having a fresh take on the matter from a new contributor is well worth
+the reminders.  It's also nice to hear this as a compliment, and not
+just a complaint.
+
+>=20
+> Note that I'm bothering to stick around and provide feedback, despite o=
+ther
+> pressing life obligations.  Providing advice on submit-a-patch usabilit=
+y
+> for QEMU isn't on my schedule, but I don't have the heart to bail on th=
+is,
+> especially when you all are kindly listening, having high quality
+> discussion, and sincerely trying to improve things.  If you read betwee=
+n
+> the lines, you see the truth: I am a yak shaver!
+
+At the risk of pushing too hard, you could always turn your (good!)
+suggestions into concrete wording, or even request a wiki account to
+make the changes yourself. But even if that is beyond your planned level
+of involvement, I do hope that various readers will be able to act on
+the suggestions in this mail to improve things.
+
+>=20
+> Oh man, when I hit a topic like "use git send-email", the hair started
+> flying: learning new git commands, two-factor auth on gmail, U2F keys,
+> governance for the no-mans-land of a server, and so on, a real yak-shav=
+ing
+> party.  After an hour or two, my safety triggered, and I thought, "man,=
+ I
+> am spending way too much time perfecting this workflow that I might nev=
+er
+> do again" and I spent a few minutes writing a message in gmail.  I
+> certainly don't expect QEMU devs to fix garbled patches either: that al=
+so
+> seems like a huge waste of valuable time (and for talented and passiona=
+te
+> individuals, too).  There has to be a better way!  So I hope the whitel=
+ist
+> idea helps, or maybe it's enough to just call awareness to this potenti=
+al
+> improvement.
+
+Again, part of the problem may be that gmail is not really suited to the
+ideal patch flow, and so that's going to be a pain point for any such
+contributor.  Submitting patches as an attachment is harder than the
+inline version you get with 'git send-email', but it is one of those
+one-off manual fixups that a maintainer can overlook, as long as it
+really is a one-off thing and not a repeated pattern.  And yes, we
+should document that use of an attachment is the most likely to avoid
+mangling the patch if you don't have 'git send-email' working, even if
+it is harder for the maintainer to apply such a patch.
+
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--PUogk6WQLoEul0NHAMTjpcENW7tXWSOLc--
+
+--0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJYpzA0AAoJEKeha0olJ0NqhDAH/RDSQejOVvc249OBXo74uckp
+ncmQsgqnicHNuwx+AVFWQy5oigDrQTQo7BLFuO/Upn+YfyK2oQvxS3DEW8mVZ+G3
+0lQebj/PbKHwi/NU+yq7aoeJlQINVwzzRJpLTX+AjSQyGyd1PRn7mTX4GlDGtMAo
+IgVgSQxrJqMLHJtcg4wnuE7IsbDG6vDa4RI15X7a+wywiSHS3IlRdVlCNsklSSwG
+gqiMe4ZlEt4RZzq9HmDixTyJ7SckgHInHLe2CEMWVssfNe8AKRpi6W+VJiANnAg6
+8FWaFut/uFnbn+hyX4V6t4QOLFU5LNZ/Y0QiNMTaANd2EU3WkSSlsBFzQb0+9Bc=
+=3myd
+-----END PGP SIGNATURE-----
+
+--0U4VR2gX3DMpBJB9xTH9xfkxNNquM32bA--
 
