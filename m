@@ -1,68 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cerVq-0002Ks-S1
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Feb 2017 18:00:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40067)
+	id 1cf9HH-00067c-Qz
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Feb 2017 12:58:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38594)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cerVn-0002Ir-K7
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 18:00:24 -0500
+	(envelope-from <hpoussin@reactos.org>) id 1cf9HG-00066k-5V
+	for qemu-trivial@nongnu.org; Sat, 18 Feb 2017 12:58:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cerVk-0006Tl-BM
-	for qemu-trivial@nongnu.org; Fri, 17 Feb 2017 18:00:23 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35527)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1cerVk-0006Tb-7W; Fri, 17 Feb 2017 18:00:20 -0500
-Received: by mail-qk0-x242.google.com with SMTP id u25so8531778qki.2;
-	Fri, 17 Feb 2017 15:00:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=afjJ3XbdSy7vNVsVnO3WZrTY7iopyOtOJvgyCs4oy28=;
-	b=feMDtmC2BqhVRPg600Gr0QWAGXHPiuBfJLE2spyiQj1mlqZBpt20R371gdBk9Zq42L
-	yB+43NOdVrucxFB+E0DLJKdgb/qYgiMn+fzHGL/nWR3JE1KWMCNGVTyBFb+/HLclnrtJ
-	aWXNmrJfBOUlN3i5oh5smEPZ2pal5y40hzltQ/u12eSMM+B4LiMPzkNQ3J0G/bQmSTJb
-	EHeyOh1BbED0K4jSZNI5Muetj4bcJ/zIu6Zh3yuuUZCQthHM9wWCFKft19Gjq65RQvWT
-	gQrRJBNmjasWRL3mI9MqgXAV8JiE516cLuJ4pXGLqxBbtdlP8Ik45yRi/6kKQgHuWo2Q
-	m2wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=afjJ3XbdSy7vNVsVnO3WZrTY7iopyOtOJvgyCs4oy28=;
-	b=WRvV0ru96QAQDrComg2VskIZz8wBh9jSJwDBJm/25U9rOqdb51xbm+OjBVFRRk/RCl
-	d3LMwstlHEiIPX1yPfr67yQCEoGxJupHMvfb7wUh0MNCPB2v6p0xlUraSxTDilHPk5d0
-	Na+OYhJ77gH+cST+i6MGSi3wFT4G1UfJU0EOjvzABxxhqXm+M/AEcwfxotDyNMVCesHs
-	LAlI0uxD97Gcd8EfOZIb42YwEizhMX05gWKeHEHwbf7GS60Ja+v2lP+JZRxmvF90nbln
-	GMoAzRCzkIVVx+hPN5IRltLvVM1IYwq/TAJ2JBXbSJezFXPp0NrK4vUDd/45dEIjbSxN
-	uYlQ==
-X-Gm-Message-State: AMke39nLNRd0nDqdrU5IXblEZWiLVDwZBkZRM66YBk3Mmcsrmjh+qfohOmk8+uDgnOLfJg==
-X-Received: by 10.55.158.79 with SMTP id h76mr3793150qke.15.1487372419672;
-	Fri, 17 Feb 2017 15:00:19 -0800 (PST)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id i21sm988502qke.12.2017.02.17.15.00.17
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 17 Feb 2017 15:00:19 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1487266008-13492-1-git-send-email-peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Walle <michael@walle.cc>, patches@linaro.org
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <920b1c87-c1d8-9f73-6dad-cd6debafadd3@amsat.org>
-Date: Fri, 17 Feb 2017 20:00:16 -0300
+	(envelope-from <hpoussin@reactos.org>) id 1cf9HF-0003Ja-6J
+	for qemu-trivial@nongnu.org; Sat, 18 Feb 2017 12:58:34 -0500
+Received: from smtp2-g21.free.fr ([212.27.42.2]:54678)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <hpoussin@reactos.org>)
+	id 1cf9HA-0003Ey-Q1; Sat, 18 Feb 2017 12:58:28 -0500
+Received: from [192.168.0.41] (unknown [82.227.227.196])
+	by smtp2-g21.free.fr (Postfix) with ESMTP id EB2BE2003A3;
+	Sat, 18 Feb 2017 18:58:10 +0100 (CET)
+To: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <1483194856-14079-1-git-send-email-hpoussin@reactos.org>
+	<8737gsl7o7.fsf@dusky.pond.sub.org>
+	<4b140d8b-0745-6d7f-101f-25c3ca5f28c2@redhat.com>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
+Message-ID: <fd8fb30f-4e54-e119-0287-2459fd6c85ca@reactos.org>
+Date: Sat, 18 Feb 2017 18:58:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.1
+	Icedove/45.6.0
 MIME-Version: 1.0
-In-Reply-To: <1487266008-13492-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-trivial] [PATCH] lm32: milkymist-tmu2: fix a third
- integer overflow
+In-Reply-To: <4b140d8b-0745-6d7f-101f-25c3ca5f28c2@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
+	[fuzzy]
+X-Received-From: 212.27.42.2
+Subject: Re: [Qemu-trivial] [PATCH] vl: disable default cdrom when using
+ explicitely scsi-hd
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,39 +46,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Feb 2017 23:00:24 -0000
+X-List-Received-Date: Sat, 18 Feb 2017 17:58:35 -0000
 
-On 02/16/2017 02:26 PM, Peter Maydell wrote:
-> Don't truncate the multiplication and do a 64 bit one instead
-> because the result is stored in a 64 bit variable.
->
-> This fixes a similar coverity warning to commits 237a8650d640 and
-> 4382fa655498, in a similar way, and is the final third of the fix for
-> coverity CID 1167561 (hopefully!).
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi,
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Le 09/01/2017 =C3=A0 14:48, Paolo Bonzini a =C3=A9crit :
+>
+>
+> On 09/01/2017 13:49, Markus Armbruster wrote:
+>> Herv=C3=A9 Poussineau <hpoussin@reactos.org> writes:
+>>
+>>> 'ide-hd', 'ide-cd' and 'scsi-cd' devices already disable default cdro=
+m.
+>>> Make it the same for 'scsi-hd'.
+>>>
+>>> That way, we can add/replace the device on lun=3D2 without using -nod=
+efaults.
+>>
+>> Yes, but it might upset existing usage that relies on the default
+>> CD-ROM.  In my opinion, making your needs explicit is better than
+>> relying on defaults, but that doesn't mean we can change the defaults
+>> unthinkingly.  Definitely not qemu-trivial.
+>>
+>> Opinions on the change?
+>
+> The original rationale for the change was "ide-hd has to suppress the
+> default CD-ROM, or else you can't put one on secondary master without
+> -nodefaults" but the same applies for scsi-hd vs. lun=3D1.
+>
+> So I'm not sure, but I lean towards accepting the patch.
+ >
+ > Paolo
 
-> ---
-> Third time lucky -- I checked and this is the last of these
-> multiply lines.
+Paolo, Markus, so what is the conclusion?
+Accepting the patch, or refusing it?
+
+Regards,
+
+Herv=C3=A9
+
 >
->  hw/display/milkymist-tmu2.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>>> Signed-off-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+>>> ---
+>>>  vl.c | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/vl.c b/vl.c
+>>> index d77dd86..da97fe2 100644
+>>> --- a/vl.c
+>>> +++ b/vl.c
+>>> @@ -223,6 +223,7 @@ static struct {
+>>>      { .driver =3D "ide-hd",               .flag =3D &default_cdrom  =
+   },
+>>>      { .driver =3D "ide-drive",            .flag =3D &default_cdrom  =
+   },
+>>>      { .driver =3D "scsi-cd",              .flag =3D &default_cdrom  =
+   },
+>>> +    { .driver =3D "scsi-hd",              .flag =3D &default_cdrom  =
+   },
+>>>      { .driver =3D "virtio-serial-pci",    .flag =3D &default_virtcon=
+   },
+>>>      { .driver =3D "virtio-serial",        .flag =3D &default_virtcon=
+   },
+>>>      { .driver =3D "VGA",                  .flag =3D &default_vga    =
+   },
+>>
+>>
 >
-> diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
-> index 7528665..59120dd 100644
-> --- a/hw/display/milkymist-tmu2.c
-> +++ b/hw/display/milkymist-tmu2.c
-> @@ -293,7 +293,7 @@ static void tmu2_start(MilkymistTMU2State *s)
->      cpu_physical_memory_unmap(mesh, mesh_len, 0, mesh_len);
->
->      /* Write back the OpenGL framebuffer to the QEMU framebuffer */
-> -    fb_len = 2 * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
-> +    fb_len = 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
->      fb = cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 1);
->      if (fb == NULL) {
->          glDeleteTextures(1, &texture);
->
+
 
