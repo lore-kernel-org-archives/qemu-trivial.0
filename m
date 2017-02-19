@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cfUu2-000099-ON
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Feb 2017 12:04:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34563)
+	id 1cfUu3-0000Au-Mh
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Feb 2017 12:04:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34567)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cfUtz-00005p-ON
-	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 12:04:01 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cfUtz-00005t-PV
+	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 12:04:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cfUtw-0002nM-Qa
+	(envelope-from <balaton@eik.bme.hu>) id 1cfUtw-0002mt-L3
 	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 12:03:59 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:65178)
+Received: from zero.eik.bme.hu ([152.66.115.2]:65181)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>) id 1cfUtw-0002ef-DW
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>) id 1cfUtw-0002el-DG
 	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 12:03:56 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 57BB0745968;
+	by localhost (Postfix) with SMTP id 6DEE2745955;
 	Sun, 19 Feb 2017 18:03:39 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 24C50745955; Sun, 19 Feb 2017 18:03:39 +0100 (CET)
-Message-Id: <4bed0ec61e74992657933af970366a9e2636589a.1487522123.git.balaton@eik.bme.hu>
+	id 2845E74595E; Sun, 19 Feb 2017 18:03:39 +0100 (CET)
+Message-Id: <f4e117af10b1a6c1e8f29a921b46bc6df1ca36c8.1487522123.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1487522123.git.balaton@eik.bme.hu>
 References: <cover.1487522123.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
@@ -27,8 +27,8 @@ To: qemu-devel@nongnu.org,
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
 X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH 04/10] sm501: Add emulation of chip connected
- via PCI
+Subject: [Qemu-trivial] [PATCH 05/10] sm501: Add missing arbitration control
+ register
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,151 +40,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Feb 2017 17:04:01 -0000
-
-Only the display controller part is created automatically on PCI
+X-List-Received-Date: Sun, 19 Feb 2017 17:04:00 -0000
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
- hw/display/sm501.c          | 58 +++++++++++++++++++++++++++++++++++++++++----
- hw/display/sm501_template.h |  8 +++----
- 2 files changed, 58 insertions(+), 8 deletions(-)
+ hw/display/sm501.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index b592022..e966896 100644
+index e966896..9091bb5 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -31,6 +31,7 @@
- #include "ui/console.h"
- #include "hw/devices.h"
- #include "hw/sysbus.h"
-+#include "hw/pci/pci.h"
- #include "qemu/range.h"
- #include "ui/pixel_ops.h"
- #include "exec/address-spaces.h"
-@@ -460,7 +461,6 @@ typedef struct SM501State {
-     QemuConsole *con;
- 
-     /* status & internal resources */
--    hwaddr base;
-     uint32_t local_mem_size_index;
-     uint8_t *local_mem;
-     MemoryRegion local_mem_region;
-@@ -1397,12 +1397,11 @@ static const GraphicHwOps sm501_ops = {
-     .gfx_update  = sm501_update_display,
- };
- 
--static void sm501_init(SM501State *s, DeviceState *dev, uint32_t base,
-+static void sm501_init(SM501State *s, DeviceState *dev,
-                        uint32_t local_mem_bytes)
- {
-     MemoryRegion *mr;
- 
--    s->base = base;
-     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
-     SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
-                   s->local_mem_size_index);
-@@ -1457,7 +1456,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     DeviceState *usb_dev;
- 
--    sm501_init(&s->state, dev, s->base, s->vram_size);
-+    sm501_init(&s->state, dev, s->vram_size);
-     sysbus_init_mmio(sbd, &s->state.local_mem_region);
-     sysbus_init_mmio(sbd, &s->state.mmio_region);
- 
-@@ -1505,9 +1504,60 @@ static const TypeInfo sm501_sysbus_info = {
-     .class_init    = sm501_sysbus_class_init,
- };
- 
-+#define TYPE_PCI_SM501 "sm501"
-+#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
-+
-+typedef struct {
-+    /*< private >*/
-+    PCIDevice parent_obj;
-+    /*< public >*/
-+    SM501State state;
-+    uint32_t vram_size;
-+} SM501PCIState;
-+
-+static void sm501_realize_pci(PCIDevice *dev, Error **errp)
-+{
-+    SM501PCIState *s = PCI_SM501(dev);
-+
-+    sm501_init(&s->state, DEVICE(dev), s->vram_size);
-+    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
-+                     &s->state.local_mem_region);
-+    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
-+                     &s->state.mmio_region);
-+}
-+
-+static Property sm501_pci_properties[] = {
-+    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size,
-+                       64 * 1024 * 1024),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void sm501_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-+
-+    k->realize = sm501_realize_pci;
-+    k->vendor_id = 0x126f;
-+    k->device_id = 0x0501;
-+    k->class_id = PCI_CLASS_DISPLAY_OTHER;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-+    dc->desc = "SM501 Display Controller";
-+    dc->props = sm501_pci_properties;
-+    dc->hotpluggable = false;
-+}
-+
-+static const TypeInfo sm501_pci_info = {
-+    .name          = TYPE_PCI_SM501,
-+    .parent        = TYPE_PCI_DEVICE,
-+    .instance_size = sizeof(SM501PCIState),
-+    .class_init    = sm501_pci_class_init,
-+};
-+
- static void sm501_register_types(void)
- {
-     type_register_static(&sm501_sysbus_info);
-+    type_register_static(&sm501_pci_info);
- }
- 
- type_init(sm501_register_types)
-diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
-index 16e500b..832ee61 100644
---- a/hw/display/sm501_template.h
-+++ b/hw/display/sm501_template.h
-@@ -103,13 +103,13 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
-                  uint8_t *palette, int c_y, uint8_t *d, int width)
- {
-     int x, i;
--    uint8_t bitset = 0;
-+    uint8_t *pixval, bitset = 0;
- 
-     /* get hardware cursor pattern */
-     uint32_t cursor_addr = get_hwc_address(s, crt);
-     assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
-     cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
--    cursor_addr += s->base;
-+    pixval = s->local_mem + cursor_addr;
- 
-     /* get cursor position */
-     x = get_hwc_x(s, crt);
-@@ -120,8 +120,8 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
- 
-         /* get pixel value */
-         if (i % 4 == 0) {
--            bitset = ldub_phys(&address_space_memory, cursor_addr);
--            cursor_addr++;
-+            bitset = ldub_p(pixval);
-+            pixval++;
-         }
-         v = bitset & 3;
-         bitset >>= 2;
+@@ -474,6 +474,7 @@ typedef struct SM501State {
+     uint32_t gpio_31_0_control;
+     uint32_t gpio_63_32_control;
+     uint32_t dram_control;
++    uint32_t arbitration_control;
+     uint32_t irq_mask;
+     uint32_t misc_timing;
+     uint32_t power_mode_control;
+@@ -757,6 +758,9 @@ static uint64_t sm501_system_config_read(void *opaque, hwaddr addr,
+     case SM501_DRAM_CONTROL:
+         ret = (s->dram_control & 0x07F107C0) | s->local_mem_size_index << 13;
+         break;
++    case SM501_ARBTRTN_CONTROL:
++        ret = s->arbitration_control;
++        break;
+     case SM501_IRQ_MASK:
+         ret = s->irq_mask;
+         break;
+@@ -809,6 +813,9 @@ static void sm501_system_config_write(void *opaque, hwaddr addr,
+         /* TODO : check validity of size change */
+         s->dram_control |=  value & 0x7FFFFFC3;
+         break;
++    case SM501_ARBTRTN_CONTROL:
++        s->arbitration_control =  value & 0x37777777;
++        break;
+     case SM501_IRQ_MASK:
+         s->irq_mask = value;
+         break;
 -- 
 2.7.4
 
