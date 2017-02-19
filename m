@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cfLpr-00021B-Q3
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Feb 2017 02:23:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44148)
+	id 1cfQMA-0003nf-DQ
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Feb 2017 07:12:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49173)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chadjoan@gmail.com>) id 1cfLpn-00020x-GA
-	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 02:23:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cfQM8-0003nU-N9
+	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 07:12:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chadjoan@gmail.com>) id 1cfLpm-0008SY-5B
-	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 02:23:03 -0500
-Received: from mail-qk0-x22a.google.com ([2607:f8b0:400d:c09::22a]:35715)
+	(envelope-from <peter.maydell@linaro.org>) id 1cfQM7-000853-Ot
+	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 07:12:44 -0500
+Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:33143)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <chadjoan@gmail.com>)
-	id 1cfLpl-0008SM-V3; Sun, 19 Feb 2017 02:23:02 -0500
-Received: by mail-qk0-x22a.google.com with SMTP id u25so74232259qki.2;
-	Sat, 18 Feb 2017 23:23:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cfQM7-00084e-JB
+	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 07:12:43 -0500
+Received: by mail-wr0-x22a.google.com with SMTP id 35so10365965wrw.0
+	for <qemu-trivial@nongnu.org>; Sun, 19 Feb 2017 04:12:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=9iFy50rY4V3pfv7sbZ64zI1NHYCGRPFqfjFmJdkhxn4=;
-	b=LpKyZ+xRKRvDGnEdZMhUTr0jgqn7u8keCMYCqWrZQ5q/iZPXselnIx/j+dKE2obNIq
-	RCfcC5A6dubiXOx7rcxP3TR8SW4OMRlOdYFjUWCSBH7u1YJkIWr4yqU++w75m3XT4nU2
-	bs92Gys5ZBknxgnXEI50BmNRNqk+CFS9cOdlYSM74vEKdM3PuhR6sctfb0YLanwt2vJM
-	+aaw4cC0RFQoGL6lnf+EHNsmyqyTgSnNPAlWts/08oRGeteqNFsnVDvBE+oiT9141Io5
-	0pGnpEMnoUewggenVu7QTv447rcs5Ifktjd+3bqwCr8e7f/Kzp0UqkbKTjscLyT4ew/s
-	BGlg==
+	:cc; bh=e0FAL9oIOW09NSlA+IHJOnu7dvESu9G19uqZTaACYB4=;
+	b=Rv6DbqVAuA7KshuTcUiOYSUEnw4WvZTJNufvSyazOGwf0MiamW4mTbNKv4RWdWbKuN
+	MMwOnvJSSG5nQb2B7q2KV+TaYsVqlMVyVd/1XxeQgnJjerYxT20f/ysOBtnbsX/VYFYu
+	uS5pBwCx59JT0IOnqxvxwPF40whez4oFVc5ck=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=9iFy50rY4V3pfv7sbZ64zI1NHYCGRPFqfjFmJdkhxn4=;
-	b=cWHzd++6pb+yOt6yNvqeXJkVe3OAaH3Tqg2BdZkF/pN7rOAhTQ0B4omR8I/lgFm1ZC
-	8twiRGFTGxFb9NL7MK/0j5b18tQTYxnIpFSvvlqIdzxgq3HQ1E4Yli4Ljruz8CZcUIEi
-	wri0a44M6X9slY5Xbb2h1lRjpeLc+9f4UeS+QT8fCkmzir37Xui1kymTjTWEQJ6HyWHe
-	rDT6a6r1fAgExrlzACjvR+4MRDZiEN9acuxUgZmPTrvbkSn3uCq8J52RZHdWkvAw2FOr
-	glRXSPbtM/lfJRU3GkcSlgcR1nMIIkklDijusoeNcakglQADH3sBgIxaOrJduG/I19WF
-	j8/Q==
-X-Gm-Message-State: AMke39knANXQOYcm0WVPgZnz86RBixlo5wjz26QY/WmGCLqa4xmAgJC/0xukRzKmXOqHY+/w8LxiCsixRbjjVg==
-X-Received: by 10.55.87.198 with SMTP id l189mr14450148qkb.106.1487488981450; 
-	Sat, 18 Feb 2017 23:23:01 -0800 (PST)
+	bh=e0FAL9oIOW09NSlA+IHJOnu7dvESu9G19uqZTaACYB4=;
+	b=p6H+WDQLV1iITj1KbwlBwXWgWM8ES3AKURFokiQupP8AgPmWMZkTtEHd07f3GMlL6X
+	PHTmON58o0auc1iOBaSP98QNh1KBYK4ehs6R975X6Vgc0ThA1qgiq4iw0rzIGMvSC4XQ
+	1i1I9hojJDc56VXad3qdsolBNl4mGxRDfvJQvSn+Nm7ACDCNH9vOx9eUgZMmSaWs7KU2
+	ZNtO7JI6c02k86IpZmmN/aa1RKKw+W+H7C4ul5J2Omjognj/OgdFQyLbyLs0ikSbmVfL
+	+QJpBaoyvtt+bW1jGf+uqEoyMqAK0ynaHI1HKLrhYPsT4HgAlIFQnszyrXw/5P0UV1rI
+	O3GA==
+X-Gm-Message-State: AMke39lSsesu8NCdmDgwAS3yRb+aYAlNATEUzfONJqjoks+bCv8Do45Ha9a//IxPceTxa3lzLN8zQBExZLKR2KBC
+X-Received: by 10.223.133.68 with SMTP id 62mr12450600wrh.195.1487506362524;
+	Sun, 19 Feb 2017 04:12:42 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.12.149.146 with HTTP; Sat, 18 Feb 2017 23:22:41 -0800 (PST)
-In-Reply-To: <CAFEAcA_N1j9tpxEBROG6D1per9vDMPZeuRyM93BRzNT5ZK3q0Q@mail.gmail.com>
+Received: by 10.223.145.69 with HTTP; Sun, 19 Feb 2017 04:12:21 -0800 (PST)
+In-Reply-To: <CABHMSTUJEEwbo76-4cqRq01Lpv76Y0KMdjAvgcgmuVARZGudEw@mail.gmail.com>
 References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<1933406e-2576-e687-3545-a72f3b999310@redhat.com>
 	<bf1410bc-bc6d-bb29-5591-55634f25d487@redhat.com>
@@ -49,17 +47,18 @@ References: <CABHMSTVDnAxAvpp81+z_2fkAFO7tazLJs3cFXpuDuuGQj-Ek-A@mail.gmail.com>
 	<6ab86cf8-4780-ca76-f648-ac0ce211e27b@redhat.com>
 	<CABHMSTWN2KdAXDjEEbyWio6rNM2FuDk_NUj40mFW0HdyZFu68g@mail.gmail.com>
 	<CAFEAcA_N1j9tpxEBROG6D1per9vDMPZeuRyM93BRzNT5ZK3q0Q@mail.gmail.com>
-From: Chad Joan <chadjoan@gmail.com>
-Date: Sun, 19 Feb 2017 02:22:41 -0500
-Message-ID: <CABHMSTUJEEwbo76-4cqRq01Lpv76Y0KMdjAvgcgmuVARZGudEw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+	<CABHMSTUJEEwbo76-4cqRq01Lpv76Y0KMdjAvgcgmuVARZGudEw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 19 Feb 2017 12:12:21 +0000
+Message-ID: <CAFEAcA_jQt1Xof9Pk6ANE4werM-uXi3wsp9XS2NW6Znr_J_56g@mail.gmail.com>
+To: Chad Joan <chadjoan@gmail.com>
 Cc: Eric Blake <eblake@redhat.com>, Fam Zheng <famz@redhat.com>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary=001a114dbb7858c7eb0548dd0421
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::22a
+X-Received-From: 2a00:1450:400c:c0c::22a
 Subject: Re: [Qemu-trivial] [Qemu-devel] Fix build break during
  configuration on musl-libc based Linux systems.
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,127 +72,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Feb 2017 07:23:06 -0000
+X-List-Received-Date: Sun, 19 Feb 2017 12:12:45 -0000
 
---001a114dbb7858c7eb0548dd0421
-Content-Type: text/plain; charset=UTF-8
+On 19 February 2017 at 07:22, Chad Joan <chadjoan@gmail.com> wrote:
+> I suspect I'm going to encounter this problem again as I try to make small
+> fixes for more projects, so it might be worth it for me to spend a small
+> amount of time at some point setting up a mail client that I can send git
+> patches with.  Or perhaps I can just move the patch(es) onto another machine
+> (ex: my personal laptop) and send it with 'git send-email' from there,
+> instead of needing to install a mail client that is outside of my normal
+> workflow.  I am not comfortable with putting smtp login information onto the
+> server that I am using for this work.
 
-This is kinda depressing to read :(
+Yes, I'd do that. If you do git format-patch on one machine you can
+then copy the patch files onto another where you do git send-email
+(my workflow actually involves something similar to this).
 
-But thanks for explaining.
+Or if the machine you're running on is a server with limited
+development facilities you might prefer to do development
+entirely on a different machine and then on the server
+just do a git fetch or git pull from the git tree on your
+development machine to build it. (I do this when I'm doing
+build tests, since there usually isn't a nice dev environment
+with my preferred editor and tools and so on on the test
+machine.) Then your patches are all on the dev machine to
+start with.
 
-I got a good laugh when it mentioned of Lotus Notes, "Run away from it."
-
-Would it be reasonable to stick a link to that article in the submit a
-patch document?  Something like, "If you can't use 'git send-email' for any
-reason, then please review [link]this article[/link] to understand which
-clients are capable of sending acceptable patches and how to configure
-them."
-
-I suspect I'm going to encounter this problem again as I try to make small
-fixes for more projects, so it might be worth it for me to spend a small
-amount of time at some point setting up a mail client that I can send git
-patches with.  Or perhaps I can just move the patch(es) onto another
-machine (ex: my personal laptop) and send it with 'git send-email' from
-there, instead of needing to install a mail client that is outside of my
-normal workflow.  I am not comfortable with putting smtp login information
-onto the server that I am using for this work.  If anyone has any advice on
-how to handle this situation, I'd appreciate it.  That kernel doc that
-Peter linked is already pretty helpful, at least.
-
-Thanks!
-
-On Fri, Feb 17, 2017 at 12:15 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 17 February 2017 at 16:54, Chad Joan <chadjoan@gmail.com> wrote:
-> > so if we can test and
-> > approve even /some/ of the more popular mail clients (ex: gmail,
-> > thunderbird, outlook, etc) for use, it would help newbies A LOT.
->
-> Pretty sure we've seen mangled emails from all of those.
-> The problem is that most email clients will automatically
-> wrap long lines, which is fine for text but breaks an
-> inline patch. Changing trailing whitespace in patches is
-> also a common issue.
->
-> The documentation in "git help format-patch" has a section
-> "MUA-SPECIFIC HINTS" which says that gmail's web interface
-> is definitely no good, and Thunderbird defaults to the wrong
-> thing and requires a bunch of config changes which you'd then
-> have to switch back to your preferences for normal mail when
-> you're done sending patches. Outlook is so hopeless for
-> patch mail it isn't even listed :-)
->
-> The kernel docs have a longer list of mail clients with
-> notes about suitability:
-> https://kernel.org/doc/html/latest/process/email-clients.html
-> but the set of "just works" clients is very small.
->
-> thanks
-> -- PMM
->
-
---001a114dbb7858c7eb0548dd0421
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>This is kinda depressing to read :(<br><br>But thanks=
- for explaining.<br><br></div><div>I got a good laugh when it mentioned of =
-Lotus Notes, &quot;Run away from it.&quot;<br><br></div><div>Would it be re=
-asonable to stick a link to that article in the submit a patch document?=C2=
-=A0 Something like, &quot;If you can&#39;t use &#39;git send-email&#39; for=
- any reason, then please review [link]this article[/link] to understand whi=
-ch clients are capable of sending acceptable patches and how to configure t=
-hem.&quot;<br><br></div><div>I suspect I&#39;m going to encounter this prob=
-lem again as I try to make small fixes for more projects, so it might be wo=
-rth it for me to spend a small amount of time at some point setting up a ma=
-il client that I can send git patches with.=C2=A0 Or perhaps I can just mov=
-e the patch(es) onto another machine=20
-(ex: my personal laptop) and send it with &#39;git send-email&#39; from the=
-re,=20
-instead of needing to install a mail client that is outside of my normal
- workflow.=C2=A0 I am not comfortable with putting smtp login information o=
-nto the server that I am using for this work.=C2=A0 If anyone has any advic=
-e on how to handle this situation, I&#39;d appreciate it.=C2=A0 That kernel=
- doc that Peter linked is already pretty helpful, at least.<br><br></div><d=
-iv>Thanks!<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quot=
-e">On Fri, Feb 17, 2017 at 12:15 PM, Peter Maydell <span dir=3D"ltr">&lt;<a=
- href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@l=
-inaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex"><span class=3D"gmail-">On 17 February 2017 at 16:54, Chad Joan &=
-lt;<a href=3D"mailto:chadjoan@gmail.com">chadjoan@gmail.com</a>&gt; wrote:<=
-br>
-</span><span class=3D"gmail-">&gt; so if we can test and<br>
-&gt; approve even /some/ of the more popular mail clients (ex: gmail,<br>
-&gt; thunderbird, outlook, etc) for use, it would help newbies A LOT.<br>
-<br>
-</span>Pretty sure we&#39;ve seen mangled emails from all of those.<br>
-The problem is that most email clients will automatically<br>
-wrap long lines, which is fine for text but breaks an<br>
-inline patch. Changing trailing whitespace in patches is<br>
-also a common issue.<br>
-<br>
-The documentation in &quot;git help format-patch&quot; has a section<br>
-&quot;MUA-SPECIFIC HINTS&quot; which says that gmail&#39;s web interface<br=
->
-is definitely no good, and Thunderbird defaults to the wrong<br>
-thing and requires a bunch of config changes which you&#39;d then<br>
-have to switch back to your preferences for normal mail when<br>
-you&#39;re done sending patches. Outlook is so hopeless for<br>
-patch mail it isn&#39;t even listed :-)<br>
-<br>
-The kernel docs have a longer list of mail clients with<br>
-notes about suitability:<br>
-<a href=3D"https://kernel.org/doc/html/latest/process/email-clients.html" r=
-el=3D"noreferrer" target=3D"_blank">https://kernel.org/doc/html/<wbr>latest=
-/process/email-clients.<wbr>html</a><br>
-but the set of &quot;just works&quot; clients is very small.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div></div>
-
---001a114dbb7858c7eb0548dd0421--
+thanks
+-- PMM
 
