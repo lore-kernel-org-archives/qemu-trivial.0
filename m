@@ -1,59 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cfcLe-00021c-6e
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Feb 2017 20:01:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45743)
+	id 1cfjXE-00066P-0m
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Feb 2017 03:41:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cfcLc-00020O-5f
-	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 20:01:01 -0500
+	(envelope-from <michael@walle.cc>) id 1cfjXB-00064y-9E
+	for qemu-trivial@nongnu.org; Mon, 20 Feb 2017 03:41:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cfcLb-00047I-Cu
-	for qemu-trivial@nongnu.org; Sun, 19 Feb 2017 20:01:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41820)
+	(envelope-from <michael@walle.cc>) id 1cfjXA-0008OK-Bu
+	for qemu-trivial@nongnu.org; Mon, 20 Feb 2017 03:41:25 -0500
+Received: from ssl.serverraum.org ([213.133.101.245]:46717)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cfcLU-00043W-7A; Sun, 19 Feb 2017 20:00:52 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Exim 4.71) (envelope-from <michael@walle.cc>)
+	id 1cfjX5-0008Kb-OM; Mon, 20 Feb 2017 03:41:20 -0500
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+	(using TLSv1 with cipher DHE-RSA-CAMELLIA256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 090C2C054C4B;
-	Mon, 20 Feb 2017 01:00:51 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
-	[10.36.116.55])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1K10lwc007534
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Sun, 19 Feb 2017 20:00:48 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 340401138647; Mon, 20 Feb 2017 02:00:46 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?Herv=C3=A9?= Poussineau <hpoussin@reactos.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>, John Snow <jsnow@redhat.com>,
-	qemu-block@nongnu.org
-References: <1483194856-14079-1-git-send-email-hpoussin@reactos.org>
-	<8737gsl7o7.fsf@dusky.pond.sub.org>
-	<4b140d8b-0745-6d7f-101f-25c3ca5f28c2@redhat.com>
-	<fd8fb30f-4e54-e119-0287-2459fd6c85ca@reactos.org>
-Date: Mon, 20 Feb 2017 02:00:46 +0100
-In-Reply-To: <fd8fb30f-4e54-e119-0287-2459fd6c85ca@reactos.org>
-	(=?utf-8?Q?=22Herv=C3=A9?=
-	Poussineau"'s message of "Sat, 18 Feb 2017 18:58:10 +0100")
-Message-ID: <87a89hvfpd.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 0454923F16;
+	Mon, 20 Feb 2017 09:41:07 +0100 (CET)
+Authentication-Results: ssl.serverraum.org; dmarc=none header.from=walle.cc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+	s=mail2016061301; t=1487580067;
+	bh=7faUVtjBZT3NZ8kv/ClSUbUtd9/vxQtkwbZq/5D8Bn8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=SCMXrsvNhkY8c90F3hs5p4/a/0hUT2zmuKVXDoDMxf6jJxpQspnmo2zkA8x0H4O/q
+	tvFAY1dMORvkQkOyrdUDr98rx5tX6Kr5/tdbWWdaz0dA9hoUM6bDmM92HSR5ZdaKCa
+	VeF83Q1RnlriU7kbaGDcCHQNPqzM1+PbVGBDWrSs=
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Date: Mon, 20 Feb 2017 09:41:06 +0100
+From: Michael Walle <michael@walle.cc>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, patches@linaro.org, =?UTF-8?Q?Philippe_Mathie?=
+	=?UTF-8?Q?u-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <920b1c87-c1d8-9f73-6dad-cd6debafadd3@amsat.org>
+References: <1487266008-13492-1-git-send-email-peter.maydell@linaro.org>
+	<920b1c87-c1d8-9f73-6dad-cd6debafadd3@amsat.org>
+Message-ID: <9f6cca837f4502e31ebb7d04e3394eaf@walle.cc>
+X-Sender: michael@walle.cc
+User-Agent: Roundcube Webmail/1.1.5
+X-Virus-Scanned: clamav-milter 0.99.2 at web
+X-Virus-Status: Clean
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 20 Feb 2017 01:00:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: disable default cdrom
- when using explicitely scsi-hd
+X-Received-From: 213.133.101.245
+Subject: Re: [Qemu-trivial] [PATCH] lm32: milkymist-tmu2: fix a third
+ integer overflow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,43 +59,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Feb 2017 01:01:01 -0000
+X-List-Received-Date: Mon, 20 Feb 2017 08:41:26 -0000
 
-Herv=C3=A9 Poussineau <hpoussin@reactos.org> writes:
+Am 2017-02-18 00:00, schrieb Philippe Mathieu-Daud=C3=A9:
+> On 02/16/2017 02:26 PM, Peter Maydell wrote:
+>> Don't truncate the multiplication and do a 64 bit one instead
+>> because the result is stored in a 64 bit variable.
+>>=20
+>> This fixes a similar coverity warning to commits 237a8650d640 and
+>> 4382fa655498, in a similar way, and is the final third of the fix for
+>> coverity CID 1167561 (hopefully!).
+>>=20
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-> Hi,
->
-> Le 09/01/2017 =C3=A0 14:48, Paolo Bonzini a =C3=A9crit :
->>
->>
->> On 09/01/2017 13:49, Markus Armbruster wrote:
->>> Herv=C3=A9 Poussineau <hpoussin@reactos.org> writes:
->>>
->>>> 'ide-hd', 'ide-cd' and 'scsi-cd' devices already disable default cdrom.
->>>> Make it the same for 'scsi-hd'.
->>>>
->>>> That way, we can add/replace the device on lun=3D2 without using -node=
-faults.
->>>
->>> Yes, but it might upset existing usage that relies on the default
->>> CD-ROM.  In my opinion, making your needs explicit is better than
->>> relying on defaults, but that doesn't mean we can change the defaults
->>> unthinkingly.  Definitely not qemu-trivial.
->>>
->>> Opinions on the change?
->>
->> The original rationale for the change was "ide-hd has to suppress the
->> default CD-ROM, or else you can't put one on secondary master without
->> -nodefaults" but the same applies for scsi-hd vs. lun=3D1.
->>
->> So I'm not sure, but I lean towards accepting the patch.
->>
->> Paolo
->
-> Paolo, Markus, so what is the conclusion?
-> Accepting the patch, or refusing it?
+Acked-by: Michael Walle <michael@walle.cc>
 
-Suggest to repost with the commit message updated to mention the
-backwards incompatibility, and why you think it's okay.
-cc: John Snow <jsnow@redhat.com>, cc: qemu-block@nongnu.org
+
+>=20
+>> ---
+>> Third time lucky -- I checked and this is the last of these
+>> multiply lines.
+>>=20
+>>  hw/display/milkymist-tmu2.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>=20
+>> diff --git a/hw/display/milkymist-tmu2.c b/hw/display/milkymist-tmu2.c
+>> index 7528665..59120dd 100644
+>> --- a/hw/display/milkymist-tmu2.c
+>> +++ b/hw/display/milkymist-tmu2.c
+>> @@ -293,7 +293,7 @@ static void tmu2_start(MilkymistTMU2State *s)
+>>      cpu_physical_memory_unmap(mesh, mesh_len, 0, mesh_len);
+>>=20
+>>      /* Write back the OpenGL framebuffer to the QEMU framebuffer */
+>> -    fb_len =3D 2 * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+>> +    fb_len =3D 2ULL * s->regs[R_DSTHRES] * s->regs[R_DSTVRES];
+>>      fb =3D cpu_physical_memory_map(s->regs[R_DSTFBUF], &fb_len, 1);
+>>      if (fb =3D=3D NULL) {
+>>          glDeleteTextures(1, &texture);
+>>=20
+
 
