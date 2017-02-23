@@ -1,53 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cgCTA-0000ME-Hs
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Feb 2017 10:35:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53794)
+	id 1cgxEi-0007Bd-MU
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Feb 2017 12:31:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1cgCT7-0000IF-Fh
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2017 10:35:11 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cgxEg-0007A8-E2
+	for qemu-trivial@nongnu.org; Thu, 23 Feb 2017 12:31:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1cgCT6-0002HJ-5z
-	for qemu-trivial@nongnu.org; Tue, 21 Feb 2017 10:35:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44690)
+	(envelope-from <balaton@eik.bme.hu>) id 1cgxEf-0005pE-Eh
+	for qemu-trivial@nongnu.org; Thu, 23 Feb 2017 12:31:22 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:17442)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1cgCSx-0002AU-NZ; Tue, 21 Feb 2017 10:34:59 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8EB8B6AAD5;
-	Tue, 21 Feb 2017 15:34:59 +0000 (UTC)
-Received: from work-vm (ovpn-117-60.ams2.redhat.com [10.36.117.60])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v1LFYsAB032273
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 21 Feb 2017 10:34:56 -0500
-Date: Tue, 21 Feb 2017 15:34:52 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Message-ID: <20170221153452.GC9376@work-vm>
-References: <1484309555-1935-1-git-send-email-thuth@redhat.com>
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1cgxEZ-0005mX-KL; Thu, 23 Feb 2017 12:31:15 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id 90B937456E4;
+	Thu, 23 Feb 2017 18:31:04 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 111407456BC; Thu, 23 Feb 2017 18:31:04 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 1073E7456AD;
+	Thu, 23 Feb 2017 18:31:04 +0100 (CET)
+Date: Thu, 23 Feb 2017 18:31:04 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+cc: Aurelien Jarno <aurelien@aurel32.net>, Magnus Damm <magnus.damm@gmail.com>
+In-Reply-To: <cover.1487522123.git.balaton@eik.bme.hu>
+Message-ID: <alpine.BSF.2.20.1702231822570.1863@zero.eik.bme.hu>
+References: <cover.1487522123.git.balaton@eik.bme.hu>
+User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1484309555-1935-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 21 Feb 2017 15:34:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4] monitor: Fix crashes
- when using HMP commands without CPU
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/10] Improvements for
+ sm501 display controller emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,277 +45,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Feb 2017 15:35:11 -0000
+X-List-Received-Date: Thu, 23 Feb 2017 17:31:23 -0000
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> When running certain HMP commands ("info registers", "info cpustats",
-> "info tlb", "nmi", "memsave" or dumping virtual memory) with the "none"
-> machine, QEMU crashes with a segmentation fault. This happens because the
-> "none" machine does not have any CPUs by default, but these HMP commands
-> did not check for a valid CPU pointer yet. Add such checks now, so we get
-> an error message about the missing CPU instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Sun, 19 Feb 2017, BALATON Zoltan wrote:
+> This series improves the sm501 display controller emulation fixing
+> endianness problems that caused mixed up colors in LE hosts, fix hardware
+> cursor and adding panel layer support and some missing registers. The
+> first few patches update the code style and QOMify the device before
+> changes are made to it in subsequent patches.
+>
+> Including qemu-trivial list as well, both because some of the patches
+> are trivial and also I'm not sure how actively maintained this part is
+> so that also may need attention from the trivial list to get this merged.
+>
+> The changes were tested with sh4 image at
+> https://people.debian.org/~aurel32/qemu/sh4/
+> which accepts video= kernel parameter to excercise different screen modes.
+>
+> BALATON Zoltan (10):
+>  sm501: Fixed code style and a few typos in comments
+>  sm501: Use defines instead of constants where available
+>  sm501: QOMify
+>  sm501: Add emulation of chip connected via PCI
+>  sm501: Add missing arbitration control register
+>  sm501: Fix device endianness
+>  sm501: Fix hardware cursor
+>  sm501: Add support for panel layer
+>  sm501: Add some more missing registers
+>  ppc: Add SM501 device in config for ppc and ppcemb targets
+>
+> default-configs/ppc-softmmu.mak    |    1 +
+> default-configs/ppcemb-softmmu.mak |    1 +
+> hw/display/sm501.c                 | 1546 ++++++++++++++++++++----------------
+> hw/display/sm501_template.h        |   92 +--
+> hw/sh4/r2d.c                       |   11 +-
+> include/hw/devices.h               |    5 -
+> 6 files changed, 920 insertions(+), 736 deletions(-)
 
-Queued for HMP.
+Ping? Is there anyone who could take a look and merge this? It could get 
+tested more during the freeze and could be reverted any time if found to 
+cause any problems but if it's not merged now it may get delayed for 
+months until the next opportunity.
+Patchwork links:
 
+http://patchwork.ozlabs.org/patch/729575/
+http://patchwork.ozlabs.org/patch/729570/
+http://patchwork.ozlabs.org/patch/729571/
+http://patchwork.ozlabs.org/patch/729574/
+http://patchwork.ozlabs.org/patch/729576/
+http://patchwork.ozlabs.org/patch/729577/
+http://patchwork.ozlabs.org/patch/729572/
+http://patchwork.ozlabs.org/patch/729573/
+http://patchwork.ozlabs.org/patch/729569/
+http://patchwork.ozlabs.org/patch/729568/
 
-> ---
->  v4:
->  - Added some more target-specifc checks (for "info tlb" for example)
->  v3:
->  - Use UNASSIGNED_CPU_INDEX instead of hard-coded -1
->  v2:
->  - Added more checks to cover "nmi" and "memsave", too
-> 
->  hmp.c                   |  8 +++++++-
->  monitor.c               | 42 ++++++++++++++++++++++++++++++++++--------
->  target/i386/monitor.c   | 16 +++++++++++++++-
->  target/ppc/monitor.c    |  4 ++++
->  target/sh4/monitor.c    |  5 +++++
->  target/sparc/monitor.c  |  4 ++++
->  target/xtensa/monitor.c |  4 ++++
->  7 files changed, 73 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hmp.c b/hmp.c
-> index b869617..b1c503a 100644
-> --- a/hmp.c
-> +++ b/hmp.c
-> @@ -1013,8 +1013,14 @@ void hmp_memsave(Monitor *mon, const QDict *qdict)
->      const char *filename = qdict_get_str(qdict, "filename");
->      uint64_t addr = qdict_get_int(qdict, "val");
->      Error *err = NULL;
-> +    int cpu_index = monitor_get_cpu_index();
->  
-> -    qmp_memsave(addr, size, filename, true, monitor_get_cpu_index(), &err);
-> +    if (cpu_index < 0) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
-> +    qmp_memsave(addr, size, filename, true, cpu_index, &err);
->      hmp_handle_error(mon, &err);
->  }
->  
-> diff --git a/monitor.c b/monitor.c
-> index 0841d43..bf488e9 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -1025,6 +1025,9 @@ int monitor_set_cpu(int cpu_index)
->  CPUState *mon_get_cpu(void)
->  {
->      if (!cur_mon->mon_cpu) {
-> +        if (!first_cpu) {
-> +            return NULL;
-> +        }
->          monitor_set_cpu(first_cpu->cpu_index);
->      }
->      cpu_synchronize_state(cur_mon->mon_cpu);
-> @@ -1033,17 +1036,27 @@ CPUState *mon_get_cpu(void)
->  
->  CPUArchState *mon_get_cpu_env(void)
->  {
-> -    return mon_get_cpu()->env_ptr;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    return cs ? cs->env_ptr : NULL;
->  }
->  
->  int monitor_get_cpu_index(void)
->  {
-> -    return mon_get_cpu()->cpu_index;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    return cs ? cs->cpu_index : UNASSIGNED_CPU_INDEX;
->  }
->  
->  static void hmp_info_registers(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_state(cs, (FILE *)mon, monitor_fprintf, CPU_DUMP_FPU);
->  }
->  
->  static void hmp_info_jit(Monitor *mon, const QDict *qdict)
-> @@ -1076,7 +1089,13 @@ static void hmp_info_history(Monitor *mon, const QDict *qdict)
->  
->  static void hmp_info_cpustats(Monitor *mon, const QDict *qdict)
->  {
-> -    cpu_dump_statistics(mon_get_cpu(), (FILE *)mon, &monitor_fprintf, 0);
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    cpu_dump_statistics(cs, (FILE *)mon, &monitor_fprintf, 0);
->  }
->  
->  static void hmp_info_trace_events(Monitor *mon, const QDict *qdict)
-> @@ -1235,6 +1254,12 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->      int l, line_size, i, max_digits, len;
->      uint8_t buf[16];
->      uint64_t v;
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs && (format == 'i' || !is_physical)) {
-> +        monitor_printf(mon, "Can not dump without CPU\n");
-> +        return;
-> +    }
->  
->      if (format == 'i') {
->          int flags = 0;
-> @@ -1264,7 +1289,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->          flags = msr_le << 16;
->          flags |= env->bfd_mach;
->  #endif
-> -        monitor_disas(mon, mon_get_cpu(), addr, count, is_physical, flags);
-> +        monitor_disas(mon, cs, addr, count, is_physical, flags);
->          return;
->      }
->  
-> @@ -1303,7 +1328,7 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
->          if (is_physical) {
->              cpu_physical_memory_read(addr, buf, l);
->          } else {
-> -            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
-> +            if (cpu_memory_rw_debug(cs, addr, buf, l, 0) < 0) {
->                  monitor_printf(mon, " Cannot access memory\n");
->                  break;
->              }
-> @@ -2186,11 +2211,12 @@ expr_error(Monitor *mon, const char *fmt, ...)
->  static int get_monitor_def(target_long *pval, const char *name)
->  {
->      const MonitorDef *md = target_monitor_defs();
-> +    CPUState *cs = mon_get_cpu();
->      void *ptr;
->      uint64_t tmp = 0;
->      int ret;
->  
-> -    if (md == NULL) {
-> +    if (cs == NULL || md == NULL) {
->          return -1;
->      }
->  
-> @@ -2217,7 +2243,7 @@ static int get_monitor_def(target_long *pval, const char *name)
->          }
->      }
->  
-> -    ret = target_get_monitor_def(mon_get_cpu(), name, &tmp);
-> +    ret = target_get_monitor_def(cs, name, &tmp);
->      if (!ret) {
->          *pval = (target_long) tmp;
->      }
-> diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-> index 468aa07..77ead60 100644
-> --- a/target/i386/monitor.c
-> +++ b/target/i386/monitor.c
-> @@ -210,6 +210,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
->  
->      env = mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->  
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
-> @@ -529,6 +533,10 @@ void hmp_info_mem(Monitor *mon, const QDict *qdict)
->      CPUArchState *env;
->  
->      env = mon_get_cpu_env();
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->  
->      if (!(env->cr[0] & CR0_PG_MASK)) {
->          monitor_printf(mon, "PG disabled\n");
-> @@ -624,7 +632,13 @@ const MonitorDef *target_monitor_defs(void)
->  
->  void hmp_info_local_apic(Monitor *mon, const QDict *qdict)
->  {
-> -    x86_cpu_dump_local_apic_state(mon_get_cpu(), (FILE *)mon, monitor_fprintf,
-> +    CPUState *cs = mon_get_cpu();
-> +
-> +    if (!cs) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +    x86_cpu_dump_local_apic_state(cs, (FILE *)mon, monitor_fprintf,
->                                    CPU_DUMP_FPU);
->  }
->  
-> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
-> index c2d0806..b8f30e9 100644
-> --- a/target/ppc/monitor.c
-> +++ b/target/ppc/monitor.c
-> @@ -62,6 +62,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
->  
-> diff --git a/target/sh4/monitor.c b/target/sh4/monitor.c
-> index 426e5d4..4c7f36c 100644
-> --- a/target/sh4/monitor.c
-> +++ b/target/sh4/monitor.c
-> @@ -44,6 +44,11 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->      CPUArchState *env = mon_get_cpu_env();
->      int i;
->  
-> +    if (!env) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
-> +
->      monitor_printf (mon, "ITLB:\n");
->      for (i = 0 ; i < ITLB_SIZE ; i++)
->          print_tlb (mon, i, &env->itlb[i]);
-> diff --git a/target/sparc/monitor.c b/target/sparc/monitor.c
-> index 7cc1b0f..f3ca524 100644
-> --- a/target/sparc/monitor.c
-> +++ b/target/sparc/monitor.c
-> @@ -32,6 +32,10 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
->  
-> diff --git a/target/xtensa/monitor.c b/target/xtensa/monitor.c
-> index f3fa4cd..2ee2b5b 100644
-> --- a/target/xtensa/monitor.c
-> +++ b/target/xtensa/monitor.c
-> @@ -31,5 +31,9 @@ void hmp_info_tlb(Monitor *mon, const QDict *qdict)
->  {
->      CPUArchState *env1 = mon_get_cpu_env();
->  
-> +    if (!env1) {
-> +        monitor_printf(mon, "No CPU available\n");
-> +        return;
-> +    }
->      dump_mmu((FILE*)mon, (fprintf_function)monitor_printf, env1);
->  }
-> -- 
-> 1.8.3.1
-> 
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
