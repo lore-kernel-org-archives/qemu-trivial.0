@@ -1,57 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chHHf-00049T-2D
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 09:55:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50210)
+	id 1chMKd-0004Ej-Sr
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 15:19:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chHHc-00047f-MW
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:55:45 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1chMKa-0004C7-ET
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:19:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chHHc-0001zL-2x
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:55:44 -0500
-Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:38907)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1chHHb-0001ye-SG
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:55:43 -0500
-Received: by mail-wm0-x231.google.com with SMTP id r141so16460107wmg.1
-	for <qemu-trivial@nongnu.org>; Fri, 24 Feb 2017 06:55:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=JJ9ZNXWK7gmLPkwxvozo0FDlVh1oadqkEVCm7VJjzAI=;
-	b=WSjF7RPCanFRSvKmInJXQL08iLWT9vxZtojiZxKiSC97HVxKpql68P7conJgzFEeVU
-	zIqicBY36cE7lmNs7LQw/Y9dJeZRCfAq1wbaOZrdVap1cyAqJhYFzcdjPO9/6d+1b89t
-	v/erfLSH5Z567Vh3XLTomdmrU+53Fl/0japPs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=JJ9ZNXWK7gmLPkwxvozo0FDlVh1oadqkEVCm7VJjzAI=;
-	b=hQkBH8DiGEueUWb8Hot5BoqsTA0cLjdC9nfwv4s0CILjGx7lR7gpbLmaE2V3CYjv8I
-	DSurjwij3Bact1PtUeI5wcbgquoyH4B0uMoTt8AJoX+P54B73B4rwu4QTvIWQZszFMXn
-	q7fM06H16IwkJuLD0XrvxH3o+l24yqjQmQxqD2Dit3UjjZNT6GhylX86eFGNbEXHkcsn
-	SpGC7rdTy7V0kj3hnTOZtExKoKycjuT8JOpHsYJPSqQo9Jt+iXS3b1dTEe9D1UQIxMt+
-	w8F65In6qadyX7ATjCdspzKOTK9TDPqR1Mri9oPmR7LeH8SkDYkf5nMEMPaJ7TtWoMg/
-	aWqg==
-X-Gm-Message-State: AMke39nzxi6z9fdkzPW/KL55XzrQnQH7tS+OT5eK1JklBzmNNpn+3Tdhb9Eldbbz32HFU19pgHhUL/J/N8sytf5i
-X-Received: by 10.28.157.67 with SMTP id g64mr2932257wme.111.1487948142668;
-	Fri, 24 Feb 2017 06:55:42 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 06:55:21 -0800 (PST)
-In-Reply-To: <5077e2a9732e1b9afcb0754e93624b787589ac61.1487522123.git.balaton@eik.bme.hu>
-References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<5077e2a9732e1b9afcb0754e93624b787589ac61.1487522123.git.balaton@eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Feb 2017 14:55:21 +0000
-Message-ID: <CAFEAcA8gde7GfWhyRLyOB5yL_5zrm4b7tj4pH=GTj=RwZO_4wg@mail.gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	(envelope-from <balaton@eik.bme.hu>) id 1chMKZ-0000tS-9w
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:19:08 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:45289)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1chMKT-0000kc-8c; Fri, 24 Feb 2017 15:19:01 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id EEB9374577A;
+	Fri, 24 Feb 2017 21:18:52 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 87EDB7456B0; Fri, 24 Feb 2017 21:18:52 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 7ED677456AD;
+	Fri, 24 Feb 2017 21:18:52 +0100 (CET)
+Date: Fri, 24 Feb 2017 21:18:52 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::231
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 10/10] ppc: Add SM501 device
- in config for ppc and ppcemb targets
+In-Reply-To: <CAFEAcA9oWpaG98KT+zSBE11-vzs-Cs6bgBT_VGQVvm4RVUO7pA@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1702242114480.76443@zero.eik.bme.hu>
+References: <cover.1487522123.git.balaton@eik.bme.hu>
+	<84d7cdceac575c23bd4ee4bdcb80a03966b96db8.1487522123.git.balaton@eik.bme.hu>
+	<CAFEAcA9oWpaG98KT+zSBE11-vzs-Cs6bgBT_VGQVvm4RVUO7pA@mail.gmail.com>
+User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:738:2001:2001::2001
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 02/10] sm501: Use defines
+ instead of constants where available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,19 +50,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2017 14:55:45 -0000
+X-List-Received-Date: Fri, 24 Feb 2017 20:19:09 -0000
 
-On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> This is not used by default on any emulated machine yet but it is
-> still useful to have it compiled so it can be added from the command
-> line for clients that can use it (e.g. MorphOS has no driver for any
-> other emulated video cards but can output via SM501)
+On Fri, 24 Feb 2017, Peter Maydell wrote:
+> On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>> ---
+>>  hw/display/sm501.c          | 8 ++++----
+>>  hw/display/sm501_template.h | 2 +-
+>>  2 files changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+>> index 4f40dee..4eb085c 100644
+>> --- a/hw/display/sm501.c
+>> +++ b/hw/display/sm501.c
+>> @@ -555,7 +555,7 @@ static uint32_t get_local_mem_size_index(uint32_t size)
+>>  static inline int is_hwc_enabled(SM501State *state, int crt)
+>>  {
+>>      uint32_t addr = crt ? state->dc_crt_hwc_addr : state->dc_panel_hwc_addr;
+>> -    return addr & 0x80000000;
+>> +    return addr & SM501_HWC_EN;
+>>  }
+>>
+>>  /**
+>> @@ -1411,9 +1411,9 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
+>>      s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
+>>      SM501_DPRINTF("local mem size=%x. index=%d\n", get_local_mem_size(s),
+>>                    s->local_mem_size_index);
+>> -    s->system_control = 0x00100000;
+>> -    s->misc_control = 0x00001000; /* assumes SH, active=low */
+>> -    s->dc_panel_control = 0x00010000;
+>> +    s->system_control = 0x00100000; /* 2D engine FIFO empty */
+>> +    s->misc_control = SM501_MISC_IRQ_INVERT; /* assumes SH, active=low */
+>> +    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
 >
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> s->misc_control was set to 0x1000, but is now set to
+> SM501_MISC_IRQ_INVERT, which is (1 << 16), which is not the
+> same value... 0x1000 would be SM501_MISC_DAC_POWER.
 
-If this is a generic PCI device then shouldn't it go into
-default-configs/pci.mak ?
+Thanks for reviewing these patches.
 
-thanks
--- PMM
+The comment suggests that the intended bit was the IRQ invert bit so the 
+constant used before may have been a bug. (In my understanding nothing 
+really uses this bit so I could set it either way you prefer but I think 
+this is the correct one.) What should I do?
+1. Leave it as it is
+2. Set it to the old constant contradicting the comment
+3. Make it a separate patch?
 
