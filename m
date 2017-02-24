@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chHFI-0002Ol-Dh
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 09:53:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48778)
+	id 1chHGv-0003Yd-PS
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 09:55:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49950)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chHFF-0002Mn-9k
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:53:18 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1chHGt-0003WV-8J
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:55:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chHFD-0008SY-Vv
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:53:17 -0500
-Received: from mail-wr0-x22c.google.com ([2a00:1450:400c:c0c::22c]:35454)
+	(envelope-from <peter.maydell@linaro.org>) id 1chHGs-00019w-K4
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:54:59 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:34857)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1chHFD-0008RL-NS
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:53:15 -0500
-Received: by mail-wr0-x22c.google.com with SMTP id g10so12839143wrg.2
-	for <qemu-trivial@nongnu.org>; Fri, 24 Feb 2017 06:53:15 -0800 (PST)
+	id 1chHGs-00019R-EC
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 09:54:58 -0500
+Received: by mail-wm0-x22d.google.com with SMTP id v186so16467548wmd.0
+	for <qemu-trivial@nongnu.org>; Fri, 24 Feb 2017 06:54:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=QUQ2+WL9iY4rT/tMztXy2ZIrQYZxscPCZggbH3aB+O0=;
-	b=LW3dHLVxE5yYrhXy44rCimYpc0/lP+yBjNPrRAoFKX4/6DPbB1sEoUF1KgyZZGfl1n
-	V5WzLGNYQGLBRQUluAfukzdYWiAXXBARQiBM4H9LpvEeh4Hvp+aOEucaCG2PRiawGW40
-	huWBn3P9rqCZCAHaq8lyuSARbmJAdiOegSfNE=
+	:cc; bh=HHnf8a0kdOWoUmPj6DxhZQ3upsQ78t45aXCbSngfgcY=;
+	b=bRR3JSfPX0FcB5Akaaidx0ybZyud1MpxFbzjz3GU7DxVmajqGY+4h5YGFqSjyxyzMg
+	yz+FgnEdgb/eQ6lIVIJZmYpu9Vr4FQT40Jd20309if1bpQxrW/xy07waXz7fsSuhdJ52
+	qFD/ZqNudXaYK9F6BWEk8uAeLFkdf+qKt+B7E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=QUQ2+WL9iY4rT/tMztXy2ZIrQYZxscPCZggbH3aB+O0=;
-	b=Pcz7WmxHFOirkLXF33YE5gSqN1tL7C6EqOqcRuppHpDHb+lim7Kd+ZNTQK7r2Qb8Id
-	jLb1TuAXDfW7Vsoie7ItbXknCoIqVHkqAt7lbv14RIeH87yKN4nmAcgxZpUjSw74HB0p
-	UvbfBKu0rOH75NhlhUN90b6D5X8NIMogHAOSBwGuygc+lehiSrjwJsbVndOBsn0np4i2
-	xqayeAD4bpxgY1Q7xOwUb121z715nHtjRHVcziN4xvNxKk06DjpK3v/RVwfpqGC/lng9
-	3P9M1ptjdUl3S/eAnKjY8klhtqDuQV2nc5ZABtk8WyvsGN3t1rb59NG/YXtiO75ir0oG
-	hFFQ==
-X-Gm-Message-State: AMke39mo+wQXRD3JimQ/V6FraYEuHCuZtxb5Bp4ewWA5l/TRleag4HEJRwRpie2evpmb8BXMKzhh6ScABZ4JsaLt
-X-Received: by 10.223.169.76 with SMTP id u70mr2845235wrc.187.1487947994467;
-	Fri, 24 Feb 2017 06:53:14 -0800 (PST)
+	bh=HHnf8a0kdOWoUmPj6DxhZQ3upsQ78t45aXCbSngfgcY=;
+	b=bGbtCEVl00jGrT55GYg3ENfUJLP4XP4/AK6Z9TPLtylAWvZtS9GmcxmxGjBU19s1e9
+	W7vFhADI8By69K4Mj/r3p5NN2Spsj/ClgdMXY7xL6ZqBX6pM024FwbIdM4e8zQv8SGdy
+	8hhKqh8VSZYnyz8KuV/6DIUgEe6vlo+4j6c723YDCIp2fZb0oC6FS97YWBUNwSO/NKeL
+	Rvc3vgMyozHjs4mgL4BcSGwvohyf4pN/8/I4QOuz6ztuBIgKgoRuc3dEvBTUXrHDZZh3
+	an+a22DePvrJYOzIENMAjDZknk/bir2/6ydn1+dOmp2U805LDu0vyxhGHNYVvj36ZRMD
+	ehaQ==
+X-Gm-Message-State: AMke39mLq+271KhmKOt5jdzBeCi0iF8ldzswNSOZo+Pt7iaywosqcoHvhJr5r3rjnP4GuO8KF1JEAtLWS+WUyyBr
+X-Received: by 10.28.4.10 with SMTP id 10mr3151573wme.142.1487948097285; Fri,
+	24 Feb 2017 06:54:57 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 06:52:53 -0800 (PST)
-In-Reply-To: <e87856482b30803a17c5af8124dad9454c0bed86.1487522123.git.balaton@eik.bme.hu>
+Received: by 10.223.145.69 with HTTP; Fri, 24 Feb 2017 06:54:36 -0800 (PST)
+In-Reply-To: <8936f97ffdf6fe9a71a300113019bfdba0ecef23.1487522123.git.balaton@eik.bme.hu>
 References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<e87856482b30803a17c5af8124dad9454c0bed86.1487522123.git.balaton@eik.bme.hu>
+	<8936f97ffdf6fe9a71a300113019bfdba0ecef23.1487522123.git.balaton@eik.bme.hu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Feb 2017 14:52:53 +0000
-Message-ID: <CAFEAcA8jd10oqz6R4RDC5pOrsXxOMft9q0sghBUqvVpduJ3K1Q@mail.gmail.com>
+Date: Fri, 24 Feb 2017 14:54:36 +0000
+Message-ID: <CAFEAcA9m8Yjwjn_B5aBZmWVwXXVj7-BQ1_d76ED4bg3cAWw=bw@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::22c
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/10] sm501: Add support
- for panel layer
+X-Received-From: 2a00:1450:400c:c09::22d
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 09/10] sm501: Add some more
+ missing registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,177 +63,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2017 14:53:18 -0000
+X-List-Received-Date: Fri, 24 Feb 2017 14:55:00 -0000
 
 On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> Write only to allow clients to initialise these without failing
+>
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->  hw/display/sm501.c | 73 +++++++++++++++++++++++++++---------------------------
->  1 file changed, 37 insertions(+), 36 deletions(-)
->
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 1bd0303..2e1c4b7 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -2,6 +2,7 @@
->   * QEMU SM501 Device
->   *
->   * Copyright (c) 2008 Shin-ichiro KAWASAKI
-> + * Copyright (c) 2016 BALATON Zoltan
->   *
->   * Permission is hereby granted, free of charge, to any person obtaining a copy
->   * of this software and associated documentation files (the "Software"), to deal
-> @@ -41,8 +42,11 @@
->   *   - Minimum implementation for Linux console : mmio regs and CRT layer.
->   *   - 2D graphics acceleration partially supported : only fill rectangle.
->   *
-> - * TODO:
-> + * Status: 2016/12/04
-> + *   - Misc fixes: endianness, hardware cursor
->   *   - Panel support
-> + *
-> + * TODO:
->   *   - Touch panel support
->   *   - USB support
->   *   - UART support
-> @@ -1297,53 +1301,62 @@ static inline int get_depth_index(DisplaySurface *surface)
->      }
->  }
->
-> -static void sm501_draw_crt(SM501State *s)
-> +static void sm501_update_display(void *opaque)
->  {
-> +    SM501State *s = (SM501State *)opaque;
->      DisplaySurface *surface = qemu_console_surface(s->con);
->      int y, c_x, c_y;
-> -    uint8_t *hwc_src, *src = s->local_mem;
-> -    int width = get_width(s, 1);
-> -    int height = get_height(s, 1);
-> -    int src_bpp = get_bpp(s, 1);
-> +    int crt = (s->dc_crt_control & SM501_DC_CRT_CONTROL_SEL) ? 1 : 0;
-> +    int width = get_width(s, crt);
-> +    int height = get_height(s, crt);
-> +    int src_bpp = get_bpp(s, crt);
->      int dst_bpp = surface_bytes_per_pixel(surface);
-> -    uint32_t *palette = (uint32_t *)&s->dc_palette[SM501_DC_CRT_PALETTE -
-> -                                                   SM501_DC_PANEL_PALETTE];
-> -    uint8_t hwc_palette[3 * 3];
-> -    int ds_depth_index = get_depth_index(surface);
-> +    int dst_depth_index = get_depth_index(surface);
 
-Please don't change variable names in the middle of a patch that's
-adding new functionality, it makes the patch harder to review.
+What's the point in write-only register values?
 
->      draw_line_func *draw_line = NULL;
->      draw_hwc_line_func *draw_hwc_line = NULL;
->      int full_update = 0;
->      int y_start = -1;
->      ram_addr_t page_min = ~0l;
->      ram_addr_t page_max = 0l;
-> -    ram_addr_t offset = 0;
-> +    ram_addr_t offset;
-> +    uint32_t *palette;
-> +    uint8_t hwc_palette[3 * 3];
-> +    uint8_t *hwc_src;
-> +
-> +    if (!((crt ? s->dc_crt_control : s->dc_panel_control)
-> +          & SM501_DC_CRT_CONTROL_ENABLE)) {
-> +        return;
-> +    }
-> +
-> +    palette = (uint32_t *)(crt ? &s->dc_palette[SM501_DC_CRT_PALETTE -
-> +                                                SM501_DC_PANEL_PALETTE]
-> +                               : &s->dc_palette[0]);
->
->      /* choose draw_line function */
->      switch (src_bpp) {
->      case 1:
-> -        draw_line = draw_line8_funcs[ds_depth_index];
-> +        draw_line = draw_line8_funcs[dst_depth_index];
->          break;
->      case 2:
-> -        draw_line = draw_line16_funcs[ds_depth_index];
-> +        draw_line = draw_line16_funcs[dst_depth_index];
->          break;
->      case 4:
-> -        draw_line = draw_line32_funcs[ds_depth_index];
-> +        draw_line = draw_line32_funcs[dst_depth_index];
->          break;
->      default:
-> -        printf("sm501 draw crt : invalid DC_CRT_CONTROL=%x.\n",
-> -               s->dc_crt_control);
-> +        printf("sm501 update display : invalid control register value.\n");
+What does the real hardware do here?
 
-This shouldn't be in the same patch as "add panel" either.
+If the registers are writes-ignored, there's no need to store
+the data written into the state struct; if the registers are
+reads-as-written then implement them that way.
 
->          abort();
->          break;
->      }
->
->      /* set up to draw hardware cursor */
-> -    if (is_hwc_enabled(s, 1)) {
-> +    if (is_hwc_enabled(s, crt)) {
->          /* choose cursor draw line function */
-> -        draw_hwc_line = draw_hwc_line_funcs[ds_depth_index];
-> -        hwc_src = get_hwc_address(s, 1);
-> -        c_x = get_hwc_x(s, 1);
-> -        c_y = get_hwc_y(s, 1);
-> -        get_hwc_palette(s, 1, hwc_palette);
-> +        draw_hwc_line = draw_hwc_line_funcs[dst_depth_index];
-> +        hwc_src = get_hwc_address(s, crt);
-> +        c_x = get_hwc_x(s, crt);
-> +        c_y = get_hwc_y(s, crt);
-> +        get_hwc_palette(s, crt, hwc_palette);
->      }
->
->      /* adjust console size */
-> @@ -1357,7 +1370,7 @@ static void sm501_draw_crt(SM501State *s)
->
->      /* draw each line according to conditions */
->      memory_region_sync_dirty_bitmap(&s->local_mem_region);
-> -    for (y = 0; y < height; y++) {
-> +    for (y = 0, offset = 0; y < height; y++, offset += width * src_bpp) {
->          int update, update_hwc;
->          ram_addr_t page0 = offset;
->          ram_addr_t page1 = offset + width * src_bpp - 1;
-> @@ -1375,7 +1388,7 @@ static void sm501_draw_crt(SM501State *s)
->              d +=  y * width * dst_bpp;
->
->              /* draw graphics layer */
-> -            draw_line(d, src, width, palette);
-> +            draw_line(d, s->local_mem + offset, width, palette);
->
->              /* draw hardware cursor */
->              if (update_hwc) {
-> @@ -1398,9 +1411,6 @@ static void sm501_draw_crt(SM501State *s)
->                  y_start = -1;
->              }
->          }
-> -
-> -        src += width * src_bpp;
-> -        offset += width * src_bpp;
->      }
->
->      /* complete flush to display */
-> @@ -1416,15 +1426,6 @@ static void sm501_draw_crt(SM501State *s)
->      }
->  }
->
-> -static void sm501_update_display(void *opaque)
-> -{
-> -    SM501State *s = (SM501State *)opaque;
-> -
-> -    if (s->dc_crt_control & SM501_DC_CRT_CONTROL_ENABLE) {
-> -        sm501_draw_crt(s);
-> -    }
-> -}
-> -
->  static const GraphicHwOps sm501_ops = {
->      .gfx_update  = sm501_update_display,
->  };
-> --
-> 2.7.4
->
+(If they get state struct fields the vmstate needs to be
+updated accordingly, as does reset.)
 
 thanks
 -- PMM
