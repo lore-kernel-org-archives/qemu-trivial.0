@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chMQZ-0001Uq-GV
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 15:25:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46914)
+	id 1chMaA-0000C1-43
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 15:35:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50840)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chMQX-0001St-LP
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:25:19 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1chMa6-000076-PS
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:35:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chMQW-0005EY-F8
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:25:17 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:53832)
+	(envelope-from <balaton@eik.bme.hu>) id 1chMa5-0003Sf-I7
+	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 15:35:10 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:48272)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1chMQQ-00055q-JG; Fri, 24 Feb 2017 15:25:10 -0500
+	id 1chMa0-0003LK-DK; Fri, 24 Feb 2017 15:35:04 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 2250A745793;
-	Fri, 24 Feb 2017 21:25:09 +0100 (CET)
+	by localhost (Postfix) with SMTP id D868C745959;
+	Fri, 24 Feb 2017 21:35:01 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id E96A874577A; Fri, 24 Feb 2017 21:25:08 +0100 (CET)
+	id ADB74745798; Fri, 24 Feb 2017 21:35:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id E8DA77456AD;
-	Fri, 24 Feb 2017 21:25:08 +0100 (CET)
-Date: Fri, 24 Feb 2017 21:25:08 +0100 (CET)
+	by zero.eik.bme.hu (Postfix) with ESMTP id AD2D9745793;
+	Fri, 24 Feb 2017 21:35:01 +0100 (CET)
+Date: Fri, 24 Feb 2017 21:35:01 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Peter Maydell <peter.maydell@linaro.org>
 cc: QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
-In-Reply-To: <CAFEAcA-KW64ar8dER9V7x87BzH0G_uQstqXFoA2kuf2j3Hc4WQ@mail.gmail.com>
-Message-ID: <alpine.BSF.2.20.1702242123280.76443@zero.eik.bme.hu>
+In-Reply-To: <CAFEAcA9uOtUmPisVgeTDCVR_tuXzB=nb7OYHiVty1iVnk8pXQQ@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1702242125210.76443@zero.eik.bme.hu>
 References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<4bed0ec61e74992657933af970366a9e2636589a.1487522123.git.balaton@eik.bme.hu>
-	<CAFEAcA-KW64ar8dER9V7x87BzH0G_uQstqXFoA2kuf2j3Hc4WQ@mail.gmail.com>
+	<9c4f503401fa3defa5dff8b938a0bee3aa8d89d5.1487522123.git.balaton@eik.bme.hu>
+	<CAFEAcA9uOtUmPisVgeTDCVR_tuXzB=nb7OYHiVty1iVnk8pXQQ@mail.gmail.com>
 User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 04/10] sm501: Add emulation
- of chip connected via PCI
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:738:2001:2001::2001
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/10] sm501: Fix device
+ endianness
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,163 +50,148 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2017 20:25:19 -0000
+X-List-Received-Date: Fri, 24 Feb 2017 20:35:12 -0000
 
 On Fri, 24 Feb 2017, Peter Maydell wrote:
 > On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->> Only the display controller part is created automatically on PCI
->>
 >> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 >> ---
->>  hw/display/sm501.c          | 58 +++++++++++++++++++++++++++++++++++++++++----
->>  hw/display/sm501_template.h |  8 +++----
->>  2 files changed, 58 insertions(+), 8 deletions(-)
+>>  hw/display/sm501.c          |  6 +++---
+>>  hw/display/sm501_template.h | 31 ++++++++++++++++++-------------
+>>  2 files changed, 21 insertions(+), 16 deletions(-)
 >>
 >> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->> index b592022..e966896 100644
+>> index 9091bb5..3d32a3c 100644
 >> --- a/hw/display/sm501.c
 >> +++ b/hw/display/sm501.c
->> @@ -31,6 +31,7 @@
->>  #include "ui/console.h"
->>  #include "hw/devices.h"
->>  #include "hw/sysbus.h"
->> +#include "hw/pci/pci.h"
->>  #include "qemu/range.h"
->>  #include "ui/pixel_ops.h"
->>  #include "exec/address-spaces.h"
->> @@ -460,7 +461,6 @@ typedef struct SM501State {
->>      QemuConsole *con;
->>
->>      /* status & internal resources */
->> -    hwaddr base;
->>      uint32_t local_mem_size_index;
->>      uint8_t *local_mem;
->>      MemoryRegion local_mem_region;
->> @@ -1397,12 +1397,11 @@ static const GraphicHwOps sm501_ops = {
->>      .gfx_update  = sm501_update_display,
+>> @@ -846,7 +846,7 @@ static const MemoryRegionOps sm501_system_config_ops = {
+>>          .min_access_size = 4,
+>>          .max_access_size = 4,
+>>      },
+>> -    .endianness = DEVICE_NATIVE_ENDIAN,
+>> +    .endianness = DEVICE_LITTLE_ENDIAN,
 >>  };
 >>
->> -static void sm501_init(SM501State *s, DeviceState *dev, uint32_t base,
->> +static void sm501_init(SM501State *s, DeviceState *dev,
->>                         uint32_t local_mem_bytes)
->>  {
->>      MemoryRegion *mr;
->>
->> -    s->base = base;
->>      s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
->>      SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
->>                    s->local_mem_size_index);
->> @@ -1457,7 +1456,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
->>      SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->>      DeviceState *usb_dev;
->>
->> -    sm501_init(&s->state, dev, s->base, s->vram_size);
->> +    sm501_init(&s->state, dev, s->vram_size);
->>      sysbus_init_mmio(sbd, &s->state.local_mem_region);
->>      sysbus_init_mmio(sbd, &s->state.mmio_region);
->>
->> @@ -1505,9 +1504,60 @@ static const TypeInfo sm501_sysbus_info = {
->>      .class_init    = sm501_sysbus_class_init,
+>>  static uint32_t sm501_palette_read(void *opaque, hwaddr addr)
+>> @@ -1082,7 +1082,7 @@ static const MemoryRegionOps sm501_disp_ctrl_ops = {
+>>          .min_access_size = 4,
+>>          .max_access_size = 4,
+>>      },
+>> -    .endianness = DEVICE_NATIVE_ENDIAN,
+>> +    .endianness = DEVICE_LITTLE_ENDIAN,
 >>  };
 >>
->> +#define TYPE_PCI_SM501 "sm501"
->> +#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
->> +
->> +typedef struct {
->> +    /*< private >*/
->> +    PCIDevice parent_obj;
->> +    /*< public >*/
->> +    SM501State state;
->> +    uint32_t vram_size;
->> +} SM501PCIState;
->> +
->> +static void sm501_realize_pci(PCIDevice *dev, Error **errp)
->> +{
->> +    SM501PCIState *s = PCI_SM501(dev);
->> +
->> +    sm501_init(&s->state, DEVICE(dev), s->vram_size);
->> +    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
->> +                     &s->state.local_mem_region);
->> +    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
->> +                     &s->state.mmio_region);
->> +}
->> +
->> +static Property sm501_pci_properties[] = {
->> +    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size,
->> +                       64 * 1024 * 1024),
->> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +static void sm501_pci_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
->> +
->> +    k->realize = sm501_realize_pci;
->> +    k->vendor_id = 0x126f;
->> +    k->device_id = 0x0501;
->> +    k->class_id = PCI_CLASS_DISPLAY_OTHER;
->> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
->> +    dc->desc = "SM501 Display Controller";
->> +    dc->props = sm501_pci_properties;
->> +    dc->hotpluggable = false;
+>>  static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
+>> @@ -1170,7 +1170,7 @@ static const MemoryRegionOps sm501_2d_engine_ops = {
+>>          .min_access_size = 4,
+>>          .max_access_size = 4,
+>>      },
+>> -    .endianness = DEVICE_NATIVE_ENDIAN,
+>> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>>  };
 >
-> This needs a reset function and a vmsd as well.
->
->> +}
->> +
->> +static const TypeInfo sm501_pci_info = {
->> +    .name          = TYPE_PCI_SM501,
->> +    .parent        = TYPE_PCI_DEVICE,
->> +    .instance_size = sizeof(SM501PCIState),
->> +    .class_init    = sm501_pci_class_init,
->> +};
->> +
->>  static void sm501_register_types(void)
->>  {
->>      type_register_static(&sm501_sysbus_info);
->> +    type_register_static(&sm501_pci_info);
->>  }
->>
->>  type_init(sm501_register_types)
+> Does this still all work for the sh4eb (big-endian) sysbus device case?
+
+Not sure. Is there some image somewhere I can test with?
+
+>>  /* draw line functions for all console modes */
 >> diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
->> index 16e500b..832ee61 100644
+>> index 832ee61..5b516d6 100644
 >> --- a/hw/display/sm501_template.h
 >> +++ b/hw/display/sm501_template.h
->> @@ -103,13 +103,13 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
+>> @@ -64,10 +64,16 @@ static void glue(draw_line16_, PIXEL_NAME)(
+>>      uint8_t r, g, b;
+>>
+>>      do {
+>> -        rgb565 = lduw_p(s);
+>> -        r = ((rgb565 >> 11) & 0x1f) << 3;
+>> -        g = ((rgb565 >>  5) & 0x3f) << 2;
+>> -        b = ((rgb565 >>  0) & 0x1f) << 3;
+>> +        rgb565 = lduw_le_p(s);
+>> +#if defined(TARGET_WORDS_BIGENDIAN)
+>> +        r = (rgb565 >> 8) & 0xf8;
+>> +        g = (rgb565 >> 3) & 0xfc;
+>> +        b = (rgb565 << 3) & 0xf8;
+>> +#else
+>> +        b = (rgb565 >> 8) & 0xf8;
+>> +        g = (rgb565 >> 3) & 0xfc;
+>> +        r = (rgb565 << 3) & 0xf8;
+>> +#endif
+>>          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
+>>          s += 2;
+>>          d += BPP;
+>> @@ -80,15 +86,14 @@ static void glue(draw_line32_, PIXEL_NAME)(
+>>      uint8_t r, g, b;
+>>
+>>      do {
+>> -        ldub_p(s);
+>>  #if defined(TARGET_WORDS_BIGENDIAN)
+>> +        r = s[0];
+>> +        g = s[1];
+>> +        b = s[2];
+>> +#else
+>>          r = s[1];
+>>          g = s[2];
+>>          b = s[3];
+>> -#else
+>> -        b = s[0];
+>> -        g = s[1];
+>> -        r = s[2];
+>>  #endif
+>
+> This looks really suspicious. Previously we had
+> TARGET_WORDS_BIGENDIAN -> bytes are XRGB
+> otherwise                 bytes are BGRX
+>
+> Now we have
+> TARGET_WORDS_BIGENDIAN -> bytes are RGBX
+> otherwise              -> bytes are XRGB
+>
+> That doesn't seem very plausible at all.
+
+I've tested it with sh4 and ppc guests running on x86_64 host and these 
+work now while previous code resulted in mixed up colors. Maybe the host 
+endianness could also be a factor and the previous code assumed big endian 
+host or the previous code was already broken and only worked with the 
+default 8 bit depth. I'm not completely sure I understand endian handling 
+in QEMU to know if this is correct besides on what I've tested but at 
+least little endian and big endian guests should work on little endian 
+hosts now with my patch. I can't test on big endian host.
+
+I've used this image: https://people.debian.org/~aurel32/qemu/sh4/
+with video=800x600-16 kernel parameter where changing -16 to different bit 
+depths reproduces the problem.
+
+>>          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
+>>          s += 4;
+>
+>
+>> @@ -103,7 +108,7 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
 >>                   uint8_t *palette, int c_y, uint8_t *d, int width)
 >>  {
 >>      int x, i;
->> -    uint8_t bitset = 0;
->> +    uint8_t *pixval, bitset = 0;
+>> -    uint8_t *pixval, bitset = 0;
+>> +    uint8_t *pixval, r, g, b, bitset = 0;
 >>
 >>      /* get hardware cursor pattern */
 >>      uint32_t cursor_addr = get_hwc_address(s, crt);
->>      assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
->>      cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
->> -    cursor_addr += s->base;
->> +    pixval = s->local_mem + cursor_addr;
->>
->>      /* get cursor position */
->>      x = get_hwc_x(s, crt);
->> @@ -120,8 +120,8 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
->>
->>          /* get pixel value */
->>          if (i % 4 == 0) {
->> -            bitset = ldub_phys(&address_space_memory, cursor_addr);
->> -            cursor_addr++;
->> +            bitset = ldub_p(pixval);
->> +            pixval++;
+>> @@ -129,9 +134,9 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
+>>          /* write pixel */
+>>          if (v) {
+>>              v--;
+>> -            uint8_t r = palette[v * 3 + 0];
+>> -            uint8_t g = palette[v * 3 + 1];
+>> -            uint8_t b = palette[v * 3 + 2];
+>> +            r = palette[v * 3 + 0];
+>> +            g = palette[v * 3 + 1];
+>> +            b = palette[v * 3 + 2];
+>>              *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
 >>          }
->>          v = bitset & 3;
->>          bitset >>= 2;
+>>          d += BPP;
 >
-> Dropping the requirement for a base addr is not really the same
-> change as adding the PCI device.
+> This doesn't seem to be related to the rest of this patch?
 
-This is needed for PCI device because the base is not accessible before 
-something maps the BARs of the device so I had to use something else that 
-is known. So this change is part of making it a PCI device but I could 
-make this a separate patch if you think that's better. Should I split it 
-off or can leave it here?
+Should I split it off? Making every simple change another patch may double 
+the size of the series but if that's preferred I can make this a separate 
+patch.
 
