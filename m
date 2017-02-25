@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chf6h-0004Jg-HD
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 11:22:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35724)
+	id 1chf8Q-0006e2-5a
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 11:23:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36837)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chf6e-0004HC-2i
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:22:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1chf8N-0006bo-Dw
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:23:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1chf6c-0004qk-Ma
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:22:00 -0500
-Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:36133)
+	(envelope-from <peter.maydell@linaro.org>) id 1chf8M-0005Jv-Mq
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:23:47 -0500
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:36662)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1chf6c-0004qQ-Cb
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:21:58 -0500
-Received: by mail-wr0-x230.google.com with SMTP id 89so29938396wrr.3
-	for <qemu-trivial@nongnu.org>; Sat, 25 Feb 2017 08:21:58 -0800 (PST)
+	id 1chf8M-0005Jf-HK
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 11:23:46 -0500
+Received: by mail-wm0-x22e.google.com with SMTP id v77so34196409wmv.1
+	for <qemu-trivial@nongnu.org>; Sat, 25 Feb 2017 08:23:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=33NbaplYzqBYad4bRakzPJoiGsACWeHdwIuKqnw9tXQ=;
-	b=TT50jqiFrJ8Meo2vBs8TFB20ncvvXBmyl8MtgbNlwrgFYClt2tFGD7FiAfmoxaMrBj
-	KSRQ1+s5iE8am6qIV5Zjl7nFH8d/RlqqyW05fgS/Lf+Mq53Q4AFdTu6n0/PNd2OoyTJE
-	rMtgOKla4ixdzL7aB8qUbMgEA383kdeN8zMz4=
+	:cc; bh=CEgc+V+7jtqcU6PpOcBfRuEu09McwYdvG+VMi+7Anis=;
+	b=AHMLDpLTqHlnLpq7RdeqAIFzILWNCs5L8JFqJFtz9zABUerwpPLl8ld4HCBzVP4sZA
+	FNqhj6jFD0Un0jml9ZvUCSrMyS3Px+EIwcPWq9nom97dO04Ne4AYSQvG66olgZz0uwTU
+	o2Bf5H5PlOqWcLoBgiZpR6iGCzBcfcqnrqbP0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=33NbaplYzqBYad4bRakzPJoiGsACWeHdwIuKqnw9tXQ=;
-	b=mDQv/7uVTb85wa/43/3dcCdVC8P4II7NZRCqcotXx6RaX0L+c7+5ut5g5z5VyRQeuS
-	qzGEW34MPG6DMWEwzYkyTjyYWvpQXhN09wLUXhz8lFw79NbUKY7pP5muw+FR04bFi6pk
-	TJT66VfM2XYa0qwtb8X/Tzy4rpxlfr11AyWPWDOWrjiWTmKHi9HqxK2+cfDzW1XtS8g+
-	Iiu3NGk8/wse21w3lU1v+vTvn/FyY164KcS4tWK6K2lQ2kzyM2xjFbyzz0XktLhewTGg
-	vgkbHvOuz+JyK/dGDYxiwWTpkf1oddh2lSYtqeEbYK776Kt8rTYgfSrcy3lGETOo2Sdk
-	3LpA==
-X-Gm-Message-State: AMke39mtGe8l+p+ujQw/mtUPjT6R1y3cQh7oDhdApjEdBnTfKJqtC1SZLGvWr9dnpYwuAD5/IJjgCiSyh+/5LHzk
-X-Received: by 10.223.169.76 with SMTP id u70mr7151647wrc.187.1488039717219;
-	Sat, 25 Feb 2017 08:21:57 -0800 (PST)
+	bh=CEgc+V+7jtqcU6PpOcBfRuEu09McwYdvG+VMi+7Anis=;
+	b=QA0B4Ifqfy8dl5sJjdQeSdZJihJMknNFrZoXDzJVo6CU2F2u+wwNdJGboK3Uhd71qn
+	0SEr6HK9k4RpkU4F99w0CxtoOAddFjaDOj3lufMUrTKFeliEALZqfNKUVSCs7bs3M0N1
+	Pvosx5BEKg5HiKCOZOOdT5QHiJ+dxoU30cLJhF7uW8vUrDpKTG6QS8AifGa1LfqPqpaF
+	Xk7IvCTIzm+yNCAC8T3ntv6W96TW6i28e3g8Ua6KCru3vR3uFHYXqdlLBVBKZLXA73ZJ
+	mqOD6b/S4JgtjowbaJa8ZK1n4YRWQytDlELa0B2Jn2+EWerSTGqyu3oIee1cZrgSd2VF
+	7Aag==
+X-Gm-Message-State: AMke39ldU97RlOdVbfTHcVzFwxQCKNzQZX+u5juQgfwTPDwRF8MF+3F/2ktV8QmQxlwtw6+gvODl5zEdFFiNurWK
+X-Received: by 10.28.189.135 with SMTP id n129mr6933192wmf.92.1488039825526;
+	Sat, 25 Feb 2017 08:23:45 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Sat, 25 Feb 2017 08:21:36 -0800 (PST)
-In-Reply-To: <alpine.BSF.2.20.1702242125210.76443@zero.eik.bme.hu>
+Received: by 10.223.145.69 with HTTP; Sat, 25 Feb 2017 08:23:25 -0800 (PST)
+In-Reply-To: <alpine.BSF.2.20.1702242135160.76443@zero.eik.bme.hu>
 References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<9c4f503401fa3defa5dff8b938a0bee3aa8d89d5.1487522123.git.balaton@eik.bme.hu>
-	<CAFEAcA9uOtUmPisVgeTDCVR_tuXzB=nb7OYHiVty1iVnk8pXQQ@mail.gmail.com>
-	<alpine.BSF.2.20.1702242125210.76443@zero.eik.bme.hu>
+	<e87856482b30803a17c5af8124dad9454c0bed86.1487522123.git.balaton@eik.bme.hu>
+	<CAFEAcA8jd10oqz6R4RDC5pOrsXxOMft9q0sghBUqvVpduJ3K1Q@mail.gmail.com>
+	<alpine.BSF.2.20.1702242135160.76443@zero.eik.bme.hu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 Feb 2017 16:21:36 +0000
-Message-ID: <CAFEAcA8JXbOheEjxG--WibsWgL-tEPyyn4djbWURxW5+kHDAbQ@mail.gmail.com>
+Date: Sat, 25 Feb 2017 16:23:25 +0000
+Message-ID: <CAFEAcA_AoCPUGxrC434x1EvOpPOogK7XERRZfPCcSspb9dW+Hw@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c0c::230
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/10] sm501: Fix device
- endianness
+X-Received-From: 2a00:1450:400c:c09::22e
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/10] sm501: Add support
+ for panel layer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,181 +65,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Feb 2017 16:22:01 -0000
+X-List-Received-Date: Sat, 25 Feb 2017 16:23:48 -0000
 
-On 24 February 2017 at 20:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+On 24 February 2017 at 20:38, BALATON Zoltan <balaton@eik.bme.hu> wrote:
 > On Fri, 24 Feb 2017, Peter Maydell wrote:
->>
->> On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>
->>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->>> ---
->>>  hw/display/sm501.c          |  6 +++---
->>>  hw/display/sm501_template.h | 31 ++++++++++++++++++-------------
->>>  2 files changed, 21 insertions(+), 16 deletions(-)
->>>
->>> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->>> index 9091bb5..3d32a3c 100644
->>> --- a/hw/display/sm501.c
->>> +++ b/hw/display/sm501.c
->>> @@ -846,7 +846,7 @@ static const MemoryRegionOps sm501_system_config_ops
->>> = {
->>>          .min_access_size = 4,
->>>          .max_access_size = 4,
->>>      },
->>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>  };
->>>
->>>  static uint32_t sm501_palette_read(void *opaque, hwaddr addr)
->>> @@ -1082,7 +1082,7 @@ static const MemoryRegionOps sm501_disp_ctrl_ops =
->>> {
->>>          .min_access_size = 4,
->>>          .max_access_size = 4,
->>>      },
->>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>  };
->>>
->>>  static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
->>> @@ -1170,7 +1170,7 @@ static const MemoryRegionOps sm501_2d_engine_ops =
->>> {
->>>          .min_access_size = 4,
->>>          .max_access_size = 4,
->>>      },
->>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>  };
->>
->>
->> Does this still all work for the sh4eb (big-endian) sysbus device case?
+>> Please don't change variable names in the middle of a patch that's
+>> adding new functionality, it makes the patch harder to review.
 >
 >
-> Not sure. Is there some image somewhere I can test with?
+> Where should I do it then? Again another patch?
 
-I don't know, I'm afraid; I don't know anything about sh4.
-I'm just going by looking at the code changes and flagging
-up things which are potentially problems.
-
->>>  /* draw line functions for all console modes */
->>> diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
->>> index 832ee61..5b516d6 100644
->>> --- a/hw/display/sm501_template.h
->>> +++ b/hw/display/sm501_template.h
->>> @@ -64,10 +64,16 @@ static void glue(draw_line16_, PIXEL_NAME)(
->>>      uint8_t r, g, b;
->>>
->>>      do {
->>> -        rgb565 = lduw_p(s);
->>> -        r = ((rgb565 >> 11) & 0x1f) << 3;
->>> -        g = ((rgb565 >>  5) & 0x3f) << 2;
->>> -        b = ((rgb565 >>  0) & 0x1f) << 3;
->>> +        rgb565 = lduw_le_p(s);
->>> +#if defined(TARGET_WORDS_BIGENDIAN)
->>> +        r = (rgb565 >> 8) & 0xf8;
->>> +        g = (rgb565 >> 3) & 0xfc;
->>> +        b = (rgb565 << 3) & 0xf8;
->>> +#else
->>> +        b = (rgb565 >> 8) & 0xf8;
->>> +        g = (rgb565 >> 3) & 0xfc;
->>> +        r = (rgb565 << 3) & 0xf8;
->>> +#endif
->>>          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
->>>          s += 2;
->>>          d += BPP;
->>> @@ -80,15 +86,14 @@ static void glue(draw_line32_, PIXEL_NAME)(
->>>      uint8_t r, g, b;
->>>
->>>      do {
->>> -        ldub_p(s);
->>>  #if defined(TARGET_WORDS_BIGENDIAN)
->>> +        r = s[0];
->>> +        g = s[1];
->>> +        b = s[2];
->>> +#else
->>>          r = s[1];
->>>          g = s[2];
->>>          b = s[3];
->>> -#else
->>> -        b = s[0];
->>> -        g = s[1];
->>> -        r = s[2];
->>>  #endif
->>
->>
->> This looks really suspicious. Previously we had
->> TARGET_WORDS_BIGENDIAN -> bytes are XRGB
->> otherwise                 bytes are BGRX
->>
->> Now we have
->> TARGET_WORDS_BIGENDIAN -> bytes are RGBX
->> otherwise              -> bytes are XRGB
->>
->> That doesn't seem very plausible at all.
->
->
-> I've tested it with sh4 and ppc guests running on x86_64 host and these work
-> now while previous code resulted in mixed up colors. Maybe the host
-> endianness could also be a factor and the previous code assumed big endian
-> host or the previous code was already broken and only worked with the
-> default 8 bit depth. I'm not completely sure I understand endian handling in
-> QEMU to know if this is correct besides on what I've tested but at least
-> little endian and big endian guests should work on little endian hosts now
-> with my patch. I can't test on big endian host.
->
-> I've used this image: https://people.debian.org/~aurel32/qemu/sh4/
-> with video=800x600-16 kernel parameter where changing -16 to different bit
-> depths reproduces the problem.
-
-Again, I don't know sh, and I don't know this particular device.
-I'm just pointing out that the code change here looks really
-implausible. Maybe the data sheet says that this is what the
-pixel format looks like; but it's very odd.
-
->>>          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
->>>          s += 4;
->>
->>
->>
->>> @@ -103,7 +108,7 @@ static void glue(draw_hwc_line_,
->>> PIXEL_NAME)(SM501State *s, int crt,
->>>                   uint8_t *palette, int c_y, uint8_t *d, int width)
->>>  {
->>>      int x, i;
->>> -    uint8_t *pixval, bitset = 0;
->>> +    uint8_t *pixval, r, g, b, bitset = 0;
->>>
->>>      /* get hardware cursor pattern */
->>>      uint32_t cursor_addr = get_hwc_address(s, crt);
->>> @@ -129,9 +134,9 @@ static void glue(draw_hwc_line_,
->>> PIXEL_NAME)(SM501State *s, int crt,
->>>          /* write pixel */
->>>          if (v) {
->>>              v--;
->>> -            uint8_t r = palette[v * 3 + 0];
->>> -            uint8_t g = palette[v * 3 + 1];
->>> -            uint8_t b = palette[v * 3 + 2];
->>> +            r = palette[v * 3 + 0];
->>> +            g = palette[v * 3 + 1];
->>> +            b = palette[v * 3 + 2];
->>>              *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
->>>          }
->>>          d += BPP;
->>
->>
->> This doesn't seem to be related to the rest of this patch?
->
->
-> Should I split it off? Making every simple change another patch may double
-> the size of the series but if that's preferred I can make this a separate
-> patch.
-
-The aim is to make it easier to review. Patches which are just
-simple cleanup of code are easy to review because it's
-possible to say "no change of behaviour". Patches which are
-making functional changes require more thought, and it gets
-worse if the same patch is also making no-change-of-behaviour
-code changes.
+Yes. Either make it its own patch, or drop the change altogether.
+Anything that makes the core "this is making a bug fix or
+adding new functionality" patch bigger by adding unnecessary
+code change to it makes that patch harder to review.
+(Conversely a patch that's just "change this variable name"
+is trivially easy to review.)
 
 thanks
 -- PMM
