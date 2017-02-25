@@ -1,44 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chNjm-0002J6-CG
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Feb 2017 16:49:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53867)
+	id 1chV8Y-0001BX-Im
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 00:43:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chNjj-0002I5-RA
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 16:49:12 -0500
+	(envelope-from <thuth@redhat.com>) id 1chV8W-0001AX-IU
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 00:43:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chNji-0008BE-W6
-	for qemu-trivial@nongnu.org; Fri, 24 Feb 2017 16:49:11 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:16351)
+	(envelope-from <thuth@redhat.com>) id 1chV8V-0000z7-Ud
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 00:43:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36554)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1chNje-00086u-DI; Fri, 24 Feb 2017 16:49:06 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id D0A11745797;
-	Fri, 24 Feb 2017 22:49:04 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id B541174577A; Fri, 24 Feb 2017 22:49:04 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id B4BE17456AD;
-	Fri, 24 Feb 2017 22:49:04 +0100 (CET)
-Date: Fri, 24 Feb 2017 22:49:04 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: QEMU Trivial <qemu-trivial@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>
-In-Reply-To: <alpine.BSF.2.20.1702242138290.76443@zero.eik.bme.hu>
-Message-ID: <alpine.BSF.2.20.1702242239330.76443@zero.eik.bme.hu>
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1chV8R-0000w0-NK; Sat, 25 Feb 2017 00:43:11 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9E5D585376;
+	Sat, 25 Feb 2017 05:43:11 +0000 (UTC)
+Received: from [10.36.116.16] (ovpn-116-16.ams2.redhat.com [10.36.116.16])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CC652DB70;
+	Sat, 25 Feb 2017 05:43:09 +0000 (UTC)
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<8936f97ffdf6fe9a71a300113019bfdba0ecef23.1487522123.git.balaton@eik.bme.hu>
-	<CAFEAcA9m8Yjwjn_B5aBZmWVwXXVj7-BQ1_d76ED4bg3cAWw=bw@mail.gmail.com>
-	<alpine.BSF.2.20.1702242138290.76443@zero.eik.bme.hu>
-User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+	<5077e2a9732e1b9afcb0754e93624b787589ac61.1487522123.git.balaton@eik.bme.hu>
+	<CAFEAcA8gde7GfWhyRLyOB5yL_5zrm4b7tj4pH=GTj=RwZO_4wg@mail.gmail.com>
+	<alpine.BSF.2.20.1702242148080.76443@zero.eik.bme.hu>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Aurelien Jarno <aurelien@aurel32.net>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <2a70e96a-3f61-473a-519a-af867a050fad@redhat.com>
+Date: Sat, 25 Feb 2017 06:43:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 09/10] sm501: Add some more
- missing registers
+In-Reply-To: <alpine.BSF.2.20.1702242148080.76443@zero.eik.bme.hu>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Sat, 25 Feb 2017 05:43:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 10/10] ppc: Add SM501 device
+ in config for ppc and ppcemb targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,38 +59,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Feb 2017 21:49:13 -0000
+X-List-Received-Date: Sat, 25 Feb 2017 05:43:17 -0000
 
-On Fri, 24 Feb 2017, BALATON Zoltan wrote:
+On 24.02.2017 21:51, BALATON Zoltan wrote:
 > On Fri, 24 Feb 2017, Peter Maydell wrote:
 >> On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>> Write only to allow clients to initialise these without failing
->>> 
+>>> This is not used by default on any emulated machine yet but it is
+>>> still useful to have it compiled so it can be added from the command
+>>> line for clients that can use it (e.g. MorphOS has no driver for any
+>>> other emulated video cards but can output via SM501)
+>>>
 >>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->> 
->> What's the point in write-only register values?
->
-> U-boot writes this register during setting up the device and without this it 
-> would abort QEMU.
->
->> What does the real hardware do here?
->
-> This register contains bits to set up FIFO parameters and memory priorities 
-> which we are not emulating so these can be ignored here but the hardware 
-> would change parameters according the value written.
+>>
+>> If this is a generic PCI device then shouldn't it go into
+>> default-configs/pci.mak ?
+> 
+> This is a multimedia chip usually found on sh4 systems and some ppc
+> boards that's why I've only added it to these but I can move it to
+> pci.mak if you think it's a better place for it.
 
-Sorry, this is for the arbitration_control register. The other registers 
-added in this patch are for the 2D engine which is only partially emulated 
-but writing the registers is OK as long as no operation using them is 
-called. (That case is handled in sm501_2d_operation.) We need to allow 
-writes as these are initialised during boot but not used afterwards. Later 
-when implementing more of the 2D engine we may use the written values.
+If it is not really usable for other boards, then I think it should also
+not go into pci.mak. No need to confuse the users of the other boards
+with unusable PCI cards here.
 
->> If the registers are writes-ignored, there's no need to store
->> the data written into the state struct; if the registers are
->> reads-as-written then implement them that way.
+ Thomas
 
-Still not sure what do you mean by read-as-written because I think that's 
-exactly what is done here, value stored and read back as is, except for 
-video_control where there are reserved bits that are always 0.
 
