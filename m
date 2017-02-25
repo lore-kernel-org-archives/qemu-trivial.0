@@ -1,34 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chmkn-00024l-PQ
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 19:31:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42677)
+	id 1chmko-00027n-Dy
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 19:31:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42615)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chmkc-0001Qm-2F
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:47 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chmka-0005zJ-KO
+	(envelope-from <balaton@eik.bme.hu>) id 1chmka-0001MT-U9
 	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:46 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:32652)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <balaton@eik.bme.hu>) id 1chmka-0005yh-1w
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:44 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:32649)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1chmkW-0005vJ-Bt; Sat, 25 Feb 2017 19:31:40 -0500
+	id 1chmkW-0005vI-C9; Sat, 25 Feb 2017 19:31:40 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id AD748745969;
-	Sun, 26 Feb 2017 01:31:36 +0100 (CET)
+	by localhost (Postfix) with SMTP id 404CC745966;
+	Sun, 26 Feb 2017 01:31:31 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 70AA8745961; Sun, 26 Feb 2017 01:31:29 +0100 (CET)
-Message-Id: <65f979bc1683c46f74ddb5e931810f4e2b8ea27c.1488068248.git.balaton@eik.bme.hu>
+	id 8E76C745969; Sun, 26 Feb 2017 01:31:29 +0100 (CET)
+Message-Id: <db1b69270ca4d2335e6fb2455ee56552373757fc.1488068248.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1488068248.git.balaton@eik.bme.hu>
 References: <cover.1488068248.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Sat, 25 Feb 2017 22:47:26 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v2 02/14] sm501: Use defines instead of
- constants where available
+Subject: [Qemu-trivial] [PATCH v2 12/14] sm501: Implement reading 2D engine
+ registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,60 +41,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Date: Sun, 26 Feb 2017 00:31:47 -0000
-X-Original-Date: Mon, 7 Nov 2016 10:03:27 +0100
-X-List-Received-Date: Sun, 26 Feb 2017 00:31:47 -0000
+X-List-Received-Date: Sun, 26 Feb 2017 00:31:46 -0000
 
-This also fixes the initial value of misc_control register to match the
-comment which is likely what was intended but the DAC_POWER bit was set
-instead. This value is unused so it does not really matter but is
-fixed here for consistency.
+Clients normally only write to these registers, nothing is known to
+ever read them but they are documented as read/write so allow clients
+to also read the values.
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
- hw/display/sm501.c          | 8 ++++----
- hw/display/sm501_template.h | 2 +-
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ hw/display/sm501.c | 57 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 4f40dee..4eb085c 100644
+index af5e4db..32223f6 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -555,7 +555,7 @@ static uint32_t get_local_mem_size_index(uint32_t size)
- static inline int is_hwc_enabled(SM501State *state, int crt)
- {
-     uint32_t addr = crt ? state->dc_crt_hwc_addr : state->dc_panel_hwc_addr;
--    return addr & 0x80000000;
-+    return addr & SM501_HWC_EN;
- }
+@@ -1149,9 +1149,66 @@ static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
+     SM501_DPRINTF("sm501 2d engine regs : read addr=%x\n", (int)addr);
  
- /**
-@@ -1411,9 +1411,9 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
-     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
-     SM501_DPRINTF("local mem size=%x. index=%d\n", get_local_mem_size(s),
-                   s->local_mem_size_index);
--    s->system_control = 0x00100000;
--    s->misc_control = 0x00001000; /* assumes SH, active=low */
--    s->dc_panel_control = 0x00010000;
-+    s->system_control = 0x00100000; /* 2D engine FIFO empty */
-+    s->misc_control = SM501_MISC_IRQ_INVERT; /* assumes SH, active=low */
-+    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
-     s->dc_crt_control = 0x00010000;
- 
-     /* allocate local memory */
-diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
-index aeeac5d..16e500b 100644
---- a/hw/display/sm501_template.h
-+++ b/hw/display/sm501_template.h
-@@ -108,7 +108,7 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
-     /* get hardware cursor pattern */
-     uint32_t cursor_addr = get_hwc_address(s, crt);
-     assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
--    cursor_addr += 64 * c_y / 4;  /* 4 pixels per byte */
-+    cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
-     cursor_addr += s->base;
- 
-     /* get cursor position */
+     switch (addr) {
++    case SM501_2D_SOURCE:
++        ret = s->twoD_source;
++        break;
++    case SM501_2D_DESTINATION:
++        ret = s->twoD_destination;
++        break;
++    case SM501_2D_DIMENSION:
++        ret = s->twoD_dimension;
++        break;
++    case SM501_2D_CONTROL:
++        ret = s->twoD_control;
++        break;
++    case SM501_2D_PITCH:
++        ret = s->twoD_pitch;
++        break;
++    case SM501_2D_FOREGROUND:
++        ret = s->twoD_foreground;
++        break;
++    case SM501_2D_BACKGROUND:
++        ret = s->twoD_background;
++        break;
++    case SM501_2D_STRETCH:
++        ret = s->twoD_stretch;
++        break;
++    case SM501_2D_COLOR_COMPARE:
++        ret = s->twoD_color_compare;
++        break;
++    case SM501_2D_COLOR_COMPARE_MASK:
++        ret = s->twoD_color_compare_mask;
++        break;
++    case SM501_2D_MASK:
++        ret = s->twoD_mask;
++        break;
++    case SM501_2D_CLIP_TL:
++        ret = s->twoD_clip_tl;
++        break;
++    case SM501_2D_CLIP_BR:
++        ret = s->twoD_clip_br;
++        break;
++    case SM501_2D_MONO_PATTERN_LOW:
++        ret = s->twoD_mono_pattern_low;
++        break;
++    case SM501_2D_MONO_PATTERN_HIGH:
++        ret = s->twoD_mono_pattern_high;
++        break;
++    case SM501_2D_WINDOW_WIDTH:
++        ret = s->twoD_window_width;
++        break;
+     case SM501_2D_SOURCE_BASE:
+         ret = s->twoD_source_base;
+         break;
++    case SM501_2D_DESTINATION_BASE:
++        ret = s->twoD_destination_base;
++        break;
++    case SM501_2D_ALPHA:
++        ret = s->twoD_alpha;
++        break;
++    case SM501_2D_WRAP:
++        ret = s->twoD_wrap;
++        break;
+     case SM501_2D_STATUS:
+         ret = 0; /* Should return interrupt status */
+         break;
 -- 
 2.7.4
 
