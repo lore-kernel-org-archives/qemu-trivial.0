@@ -1,36 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckIOA-0003N0-In
+	id 1ckIOA-0003NQ-Q9
 	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 17:42:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35494)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35562)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIO4-0003J5-Km
+	(envelope-from <balaton@eik.bme.hu>) id 1ckIO6-0003KG-8h
 	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIO3-0000xp-0g
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:52 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:26781)
+	(envelope-from <balaton@eik.bme.hu>) id 1ckIO4-0000zP-KZ
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:54 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:26787)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1ckINz-0000sn-04; Sat, 04 Mar 2017 17:42:47 -0500
+	id 1ckINz-0000uM-Pt; Sat, 04 Mar 2017 17:42:48 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 8A684745978;
-	Sat,  4 Mar 2017 23:42:38 +0100 (CET)
+	by localhost (Postfix) with SMTP id 0503974596C;
+	Sat,  4 Mar 2017 23:42:39 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id D5262745965; Sat,  4 Mar 2017 23:42:37 +0100 (CET)
-Message-Id: <66d6a121de9790f0c5d2f37b42cf73b34c714289.1488665935.git.balaton@eik.bme.hu>
+	id C2BA7745967; Sat,  4 Mar 2017 23:42:37 +0100 (CET)
+Message-Id: <fc706f4363e5ec921d313b318f4d9355c6168780.1488665935.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1488665935.git.balaton@eik.bme.hu>
 References: <cover.1488665935.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
-Date: Sat, 25 Feb 2017 20:25:11 +0100
+Date: Sat, 25 Feb 2017 19:23:50 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v4 10/13] sm501: Add support for panel layer
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: [Qemu-trivial] [PATCH v4 05/13] sm501: Get rid of base address in
+ draw_hwc_line
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,157 +44,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 04 Mar 2017 22:42:57 -0000
 
+Do not use the base address to access data in local memory. This is in
+preparation to allow chip connected via PCI where base address depends
+on where the BAR is mapped so it will be unknown.
+
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-
-v2: Split off renaming a variable to separate clean up patch
-
- hw/display/sm501.c | 63 +++++++++++++++++++++++++++---------------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
+ hw/display/sm501.c          | 6 ++----
+ hw/display/sm501_template.h | 8 ++++----
+ 2 files changed, 6 insertions(+), 8 deletions(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 2385f59..8abac8f 100644
+index 571a7e6..09c023d 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -2,6 +2,7 @@
-  * QEMU SM501 Device
-  *
-  * Copyright (c) 2008 Shin-ichiro KAWASAKI
-+ * Copyright (c) 2016 BALATON Zoltan
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-@@ -42,8 +43,11 @@
-  *   - Minimum implementation for Linux console : mmio regs and CRT layer.
-  *   - 2D graphics acceleration partially supported : only fill rectangle.
-  *
-- * TODO:
-+ * Status: 2016/12/04
-+ *   - Misc fixes: endianness, hardware cursor
-  *   - Panel support
-+ *
-+ * TODO:
-  *   - Touch panel support
-  *   - USB support
-  *   - UART support
-@@ -1301,18 +1305,16 @@ static inline int get_depth_index(DisplaySurface *surface)
-     }
+@@ -461,7 +461,6 @@ typedef struct SM501State {
+     QemuConsole *con;
+ 
+     /* status & internal resources */
+-    hwaddr base;
+     uint32_t local_mem_size_index;
+     uint8_t *local_mem;
+     MemoryRegion local_mem_region;
+@@ -1432,10 +1431,9 @@ static void sm501_reset(SM501State *s)
+     s->twoD_control = 0;
  }
  
--static void sm501_draw_crt(SM501State *s)
-+static void sm501_update_display(void *opaque)
+-static void sm501_init(SM501State *s, DeviceState *dev, uint32_t base,
++static void sm501_init(SM501State *s, DeviceState *dev,
+                        uint32_t local_mem_bytes)
  {
-+    SM501State *s = (SM501State *)opaque;
-     DisplaySurface *surface = qemu_console_surface(s->con);
-     int y, c_x, c_y;
--    uint8_t *hwc_src, *src = s->local_mem;
--    int width = get_width(s, 1);
--    int height = get_height(s, 1);
--    int src_bpp = get_bpp(s, 1);
-+    int crt = (s->dc_crt_control & SM501_DC_CRT_CONTROL_SEL) ? 1 : 0;
-+    int width = get_width(s, crt);
-+    int height = get_height(s, crt);
-+    int src_bpp = get_bpp(s, crt);
-     int dst_bpp = surface_bytes_per_pixel(surface);
--    uint32_t *palette = (uint32_t *)&s->dc_palette[SM501_DC_CRT_PALETTE -
--                                                   SM501_DC_PANEL_PALETTE];
--    uint8_t hwc_palette[3 * 3];
-     int dst_depth_index = get_depth_index(surface);
-     draw_line_func *draw_line = NULL;
-     draw_hwc_line_func *draw_hwc_line = NULL;
-@@ -1320,7 +1322,19 @@ static void sm501_draw_crt(SM501State *s)
-     int y_start = -1;
-     ram_addr_t page_min = ~0l;
-     ram_addr_t page_max = 0l;
--    ram_addr_t offset = 0;
-+    ram_addr_t offset;
-+    uint32_t *palette;
-+    uint8_t hwc_palette[3 * 3];
-+    uint8_t *hwc_src;
-+
-+    if (!((crt ? s->dc_crt_control : s->dc_panel_control)
-+          & SM501_DC_CRT_CONTROL_ENABLE)) {
-+        return;
-+    }
-+
-+    palette = (uint32_t *)(crt ? &s->dc_palette[SM501_DC_CRT_PALETTE -
-+                                                SM501_DC_PANEL_PALETTE]
-+                               : &s->dc_palette[0]);
+-    s->base = base;
+     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
+     SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
+                   s->local_mem_size_index);
+@@ -1489,7 +1487,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     DeviceState *usb_dev;
  
-     /* choose draw_line function */
-     switch (src_bpp) {
-@@ -1334,20 +1348,19 @@ static void sm501_draw_crt(SM501State *s)
-         draw_line = draw_line32_funcs[dst_depth_index];
-         break;
-     default:
--        printf("sm501 draw crt : invalid DC_CRT_CONTROL=%x.\n",
--               s->dc_crt_control);
-+        printf("sm501 update display : invalid control register value.\n");
-         abort();
-         break;
-     }
+-    sm501_init(&s->state, dev, s->base, s->vram_size);
++    sm501_init(&s->state, dev, s->vram_size);
+     if (get_local_mem_size(&s->state) != s->vram_size) {
+         error_setg(errp, "Invalid VRAM size, nearest valid size is %" PRIu32,
+                    get_local_mem_size(&s->state));
+diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
+index 16e500b..832ee61 100644
+--- a/hw/display/sm501_template.h
++++ b/hw/display/sm501_template.h
+@@ -103,13 +103,13 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
+                  uint8_t *palette, int c_y, uint8_t *d, int width)
+ {
+     int x, i;
+-    uint8_t bitset = 0;
++    uint8_t *pixval, bitset = 0;
  
-     /* set up to draw hardware cursor */
--    if (is_hwc_enabled(s, 1)) {
-+    if (is_hwc_enabled(s, crt)) {
-         /* choose cursor draw line function */
-         draw_hwc_line = draw_hwc_line_funcs[dst_depth_index];
--        hwc_src = get_hwc_address(s, 1);
--        c_x = get_hwc_x(s, 1);
--        c_y = get_hwc_y(s, 1);
--        get_hwc_palette(s, 1, hwc_palette);
-+        hwc_src = get_hwc_address(s, crt);
-+        c_x = get_hwc_x(s, crt);
-+        c_y = get_hwc_y(s, crt);
-+        get_hwc_palette(s, crt, hwc_palette);
-     }
+     /* get hardware cursor pattern */
+     uint32_t cursor_addr = get_hwc_address(s, crt);
+     assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
+     cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
+-    cursor_addr += s->base;
++    pixval = s->local_mem + cursor_addr;
  
-     /* adjust console size */
-@@ -1361,7 +1374,7 @@ static void sm501_draw_crt(SM501State *s)
+     /* get cursor position */
+     x = get_hwc_x(s, crt);
+@@ -120,8 +120,8 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
  
-     /* draw each line according to conditions */
-     memory_region_sync_dirty_bitmap(&s->local_mem_region);
--    for (y = 0; y < height; y++) {
-+    for (y = 0, offset = 0; y < height; y++, offset += width * src_bpp) {
-         int update, update_hwc;
-         ram_addr_t page0 = offset;
-         ram_addr_t page1 = offset + width * src_bpp - 1;
-@@ -1379,7 +1392,7 @@ static void sm501_draw_crt(SM501State *s)
-             d +=  y * width * dst_bpp;
- 
-             /* draw graphics layer */
--            draw_line(d, src, width, palette);
-+            draw_line(d, s->local_mem + offset, width, palette);
- 
-             /* draw hardware cursor */
-             if (update_hwc) {
-@@ -1402,9 +1415,6 @@ static void sm501_draw_crt(SM501State *s)
-                 y_start = -1;
-             }
+         /* get pixel value */
+         if (i % 4 == 0) {
+-            bitset = ldub_phys(&address_space_memory, cursor_addr);
+-            cursor_addr++;
++            bitset = ldub_p(pixval);
++            pixval++;
          }
--
--        src += width * src_bpp;
--        offset += width * src_bpp;
-     }
- 
-     /* complete flush to display */
-@@ -1420,15 +1430,6 @@ static void sm501_draw_crt(SM501State *s)
-     }
- }
- 
--static void sm501_update_display(void *opaque)
--{
--    SM501State *s = (SM501State *)opaque;
--
--    if (s->dc_crt_control & SM501_DC_CRT_CONTROL_ENABLE) {
--        sm501_draw_crt(s);
--    }
--}
--
- static const GraphicHwOps sm501_ops = {
-     .gfx_update  = sm501_update_display,
- };
+         v = bitset & 3;
+         bitset >>= 2;
 -- 
 2.7.4
 
