@@ -1,35 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chmkp-0002Ac-7D
+	id 1chmkp-0002Ba-DR
 	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 19:31:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42704)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chmkc-0001Rf-MN
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:47 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1chmkd-0001SL-AN
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chmka-0005z8-HF
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:46 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:32650)
+	(envelope-from <balaton@eik.bme.hu>) id 1chmkc-00060L-2y
+	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:31:47 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:32648)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1chmkW-0005vH-Bo; Sat, 25 Feb 2017 19:31:40 -0500
+	id 1chmkW-0005vE-Cu; Sat, 25 Feb 2017 19:31:40 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 71F15745967;
+	by localhost (Postfix) with SMTP id 25CDC745965;
 	Sun, 26 Feb 2017 01:31:31 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 9116974596A; Sun, 26 Feb 2017 01:31:29 +0100 (CET)
-Message-Id: <869a8c5b526be9eb1316c9e7c7442bdd1c88c4b2.1488068248.git.balaton@eik.bme.hu>
+	id 8BC9B745968; Sun, 26 Feb 2017 01:31:29 +0100 (CET)
+Message-Id: <379a9021607724194b457bf562df9900993788c0.1488068248.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1488068248.git.balaton@eik.bme.hu>
 References: <cover.1488068248.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
-Date: Sun, 26 Feb 2017 00:53:39 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v2 13/14] sm501: Add reset function and
- vmstate descriptor
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: [Qemu-trivial] [PATCH v2 11/14] sm501: Add some more missing
+ registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,175 +39,140 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Date: Sun, 26 Feb 2017 00:31:48 -0000
+X-Original-Date: Sat, 10 Dec 2016 03:05:24 +0100
 X-List-Received-Date: Sun, 26 Feb 2017 00:31:48 -0000
+
+Values are not used yet, only stored to allow clients to initialise
+these without failing as long as no 2D engine function is called that
+would use the written value.
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
- hw/display/sm501.c | 110 ++++++++++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 105 insertions(+), 5 deletions(-)
+
+v2: Fixed mask of video_control register for a read only bit
+    Changed IRQ status register to write ignored as IRQ is not implemented
+
+ hw/display/sm501.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 48 insertions(+), 1 deletion(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 32223f6..b682a95 100644
+index caa7e5c..af5e4db 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -65,6 +65,7 @@
+@@ -511,6 +511,8 @@ typedef struct SM501State {
+     uint32_t dc_panel_hwc_color_1_2;
+     uint32_t dc_panel_hwc_color_3;
  
- #define MMIO_BASE_OFFSET 0x3e00000
- #define MMIO_SIZE 0x200000
-+#define DC_PALETTE_ENTRIES (0x400 * 3)
- 
- /* SM501 register definitions taken from "linux/include/linux/sm501-regs.h" */
- 
-@@ -491,7 +492,7 @@ typedef struct SM501State {
-     uint32_t uart0_mcr;
-     uint32_t uart0_scr;
- 
--    uint8_t dc_palette[0x400 * 3];
-+    uint8_t dc_palette[DC_PALETTE_ENTRIES];
- 
-     uint32_t dc_panel_control;
-     uint32_t dc_panel_panning_control;
-@@ -1537,16 +1538,32 @@ static const GraphicHwOps sm501_ops = {
-     .gfx_update  = sm501_update_display,
- };
- 
-+static void sm501_reset(void *p)
-+{
-+    SM501State *s = p;
++    uint32_t dc_video_control;
 +
-+    s->system_control = 0x00100000; /* 2D engine FIFO empty */
-+    s->misc_control = SM501_MISC_IRQ_INVERT; /* assumes SH, active=low */
-+    s->gpio_31_0_control = 0;
-+    s->gpio_63_32_control = 0;
-+    s->dram_control = 0;
-+    s->arbitration_control = 0x05146732;
-+    s->irq_mask = 0;
-+    s->misc_timing = 0;
-+    s->power_mode_control = 0;
-+    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
-+    s->dc_video_control = 0;
-+    s->dc_crt_control = 0x00010000;
-+    s->twoD_control = 0;
-+}
+     uint32_t dc_crt_control;
+     uint32_t dc_crt_fb_addr;
+     uint32_t dc_crt_fb_offset;
+@@ -530,13 +532,20 @@ typedef struct SM501State {
+     uint32_t twoD_control;
+     uint32_t twoD_pitch;
+     uint32_t twoD_foreground;
++    uint32_t twoD_background;
+     uint32_t twoD_stretch;
++    uint32_t twoD_color_compare;
+     uint32_t twoD_color_compare_mask;
+     uint32_t twoD_mask;
++    uint32_t twoD_clip_tl;
++    uint32_t twoD_clip_br;
++    uint32_t twoD_mono_pattern_low;
++    uint32_t twoD_mono_pattern_high;
+     uint32_t twoD_window_width;
+     uint32_t twoD_source_base;
+     uint32_t twoD_destination_base;
+-
++    uint32_t twoD_alpha;
++    uint32_t twoD_wrap;
+ } SM501State;
+ 
+ static uint32_t get_local_mem_size_index(uint32_t size)
+@@ -945,6 +954,10 @@ static uint64_t sm501_disp_ctrl_read(void *opaque, hwaddr addr,
+         ret = s->dc_panel_v_sync;
+         break;
+ 
++    case SM501_DC_VIDEO_CONTROL:
++        ret = s->dc_video_control;
++        break;
 +
- static void sm501_init(SM501State *s, DeviceState *dev,
-                        uint32_t local_mem_bytes)
- {
-     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
-     SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
-                   s->local_mem_size_index);
--    s->system_control = 0x00100000; /* 2D engine FIFO empty */
--    s->misc_control = SM501_MISC_IRQ_INVERT; /* assumes SH, active=low */
--    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
--    s->dc_crt_control = 0x00010000;
-+    qemu_register_reset(sm501_reset, s);
+     case SM501_DC_CRT_CONTROL:
+         ret = s->dc_crt_control;
+         break;
+@@ -1060,6 +1073,10 @@ static void sm501_disp_ctrl_write(void *opaque, hwaddr addr,
+         s->dc_panel_hwc_color_3 = value & 0x0000FFFF;
+         break;
  
-     /* local memory */
-     memory_region_init_ram(&s->local_mem_region, OBJECT(dev), "sm501.local",
-@@ -1577,6 +1594,77 @@ static void sm501_init(SM501State *s, DeviceState *dev,
-     s->con = graphic_console_init(DEVICE(dev), 0, &sm501_ops, s);
- }
- 
-+static const VMStateDescription vmstate_sm501_regs = {
-+    .name = "sm501-regs",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(system_control, SM501State),
-+        VMSTATE_UINT32(misc_control, SM501State),
-+        VMSTATE_UINT32(gpio_31_0_control, SM501State),
-+        VMSTATE_UINT32(gpio_63_32_control, SM501State),
-+        VMSTATE_UINT32(dram_control, SM501State),
-+        VMSTATE_UINT32(arbitration_control, SM501State),
-+        VMSTATE_UINT32(irq_mask, SM501State),
-+        VMSTATE_UINT32(misc_timing, SM501State),
-+        VMSTATE_UINT32(power_mode_control, SM501State),
-+        VMSTATE_UINT32(uart0_ier, SM501State),
-+        VMSTATE_UINT32(uart0_lcr, SM501State),
-+        VMSTATE_UINT32(uart0_mcr, SM501State),
-+        VMSTATE_UINT32(uart0_scr, SM501State),
-+        VMSTATE_UINT8_ARRAY(dc_palette, SM501State, DC_PALETTE_ENTRIES),
-+        VMSTATE_UINT32(dc_panel_control, SM501State),
-+        VMSTATE_UINT32(dc_panel_panning_control, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_addr, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_offset, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_width, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_height, SM501State),
-+        VMSTATE_UINT32(dc_panel_tl_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_br_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_h_total, SM501State),
-+        VMSTATE_UINT32(dc_panel_h_sync, SM501State),
-+        VMSTATE_UINT32(dc_panel_v_total, SM501State),
-+        VMSTATE_UINT32(dc_panel_v_sync, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_addr, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_color_1_2, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_color_3, SM501State),
-+        VMSTATE_UINT32(dc_video_control, SM501State),
-+        VMSTATE_UINT32(dc_crt_control, SM501State),
-+        VMSTATE_UINT32(dc_crt_fb_addr, SM501State),
-+        VMSTATE_UINT32(dc_crt_fb_offset, SM501State),
-+        VMSTATE_UINT32(dc_crt_h_total, SM501State),
-+        VMSTATE_UINT32(dc_crt_h_sync, SM501State),
-+        VMSTATE_UINT32(dc_crt_v_total, SM501State),
-+        VMSTATE_UINT32(dc_crt_v_sync, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_addr, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_location, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_color_1_2, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_color_3, SM501State),
-+        VMSTATE_UINT32(twoD_source, SM501State),
-+        VMSTATE_UINT32(twoD_destination, SM501State),
-+        VMSTATE_UINT32(twoD_dimension, SM501State),
-+        VMSTATE_UINT32(twoD_control, SM501State),
-+        VMSTATE_UINT32(twoD_pitch, SM501State),
-+        VMSTATE_UINT32(twoD_foreground, SM501State),
-+        VMSTATE_UINT32(twoD_background, SM501State),
-+        VMSTATE_UINT32(twoD_stretch, SM501State),
-+        VMSTATE_UINT32(twoD_color_compare, SM501State),
-+        VMSTATE_UINT32(twoD_color_compare_mask, SM501State),
-+        VMSTATE_UINT32(twoD_mask, SM501State),
-+        VMSTATE_UINT32(twoD_clip_tl, SM501State),
-+        VMSTATE_UINT32(twoD_clip_br, SM501State),
-+        VMSTATE_UINT32(twoD_mono_pattern_low, SM501State),
-+        VMSTATE_UINT32(twoD_mono_pattern_high, SM501State),
-+        VMSTATE_UINT32(twoD_window_width, SM501State),
-+        VMSTATE_UINT32(twoD_source_base, SM501State),
-+        VMSTATE_UINT32(twoD_destination_base, SM501State),
-+        VMSTATE_UINT32(twoD_alpha, SM501State),
-+        VMSTATE_UINT32(twoD_wrap, SM501State),
-+        VMSTATE_END_OF_LIST()
-+     }
-+};
++    case SM501_DC_VIDEO_CONTROL:
++        s->dc_video_control = value & 0x00037FFF;
++        break;
 +
- #define TYPE_SYSBUS_SM501 "sysbus-sm501"
- #define SYSBUS_SM501(obj) \
-     OBJECT_CHECK(SM501SysBusState, (obj), TYPE_SYSBUS_SM501)
-@@ -1673,6 +1761,17 @@ static Property sm501_pci_properties[] = {
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-+static const VMStateDescription vmstate_sm501 = {
-+    .name = "sm501",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_PCI_DEVICE(parent_obj, SM501PCIState),
-+        VMSTATE_STRUCT(state, SM501PCIState, 1, vmstate_sm501_regs, SM501State),
-+        VMSTATE_END_OF_LIST()
-+     }
-+};
-+
- static void sm501_pci_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1686,6 +1785,7 @@ static void sm501_pci_class_init(ObjectClass *klass, void *data)
-     dc->desc = "SM501 Display Controller";
-     dc->props = sm501_pci_properties;
-     dc->hotpluggable = false;
-+    dc->vmsd = &vmstate_sm501;
- }
- 
- static const TypeInfo sm501_pci_info = {
+     case SM501_DC_CRT_CONTROL:
+         s->dc_crt_control = value & 0x0003FFFF;
+         break;
+@@ -1135,6 +1152,9 @@ static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
+     case SM501_2D_SOURCE_BASE:
+         ret = s->twoD_source_base;
+         break;
++    case SM501_2D_STATUS:
++        ret = 0; /* Should return interrupt status */
++        break;
+     default:
+         printf("sm501 disp ctrl : not implemented register read."
+                " addr=%x\n", (int)addr);
+@@ -1177,15 +1197,33 @@ static void sm501_2d_engine_write(void *opaque, hwaddr addr,
+     case SM501_2D_FOREGROUND:
+         s->twoD_foreground = value;
+         break;
++    case SM501_2D_BACKGROUND:
++        s->twoD_background = value;
++        break;
+     case SM501_2D_STRETCH:
+         s->twoD_stretch = value;
+         break;
++    case SM501_2D_COLOR_COMPARE:
++        s->twoD_color_compare = value;
++        break;
+     case SM501_2D_COLOR_COMPARE_MASK:
+         s->twoD_color_compare_mask = value;
+         break;
+     case SM501_2D_MASK:
+         s->twoD_mask = value;
+         break;
++    case SM501_2D_CLIP_TL:
++        s->twoD_clip_tl = value;
++        break;
++    case SM501_2D_CLIP_BR:
++        s->twoD_clip_br = value;
++        break;
++    case SM501_2D_MONO_PATTERN_LOW:
++        s->twoD_mono_pattern_low = value;
++        break;
++    case SM501_2D_MONO_PATTERN_HIGH:
++        s->twoD_mono_pattern_high = value;
++        break;
+     case SM501_2D_WINDOW_WIDTH:
+         s->twoD_window_width = value;
+         break;
+@@ -1195,6 +1233,15 @@ static void sm501_2d_engine_write(void *opaque, hwaddr addr,
+     case SM501_2D_DESTINATION_BASE:
+         s->twoD_destination_base = value;
+         break;
++    case SM501_2D_ALPHA:
++        s->twoD_alpha = value;
++        break;
++    case SM501_2D_WRAP:
++        s->twoD_wrap = value;
++        break;
++    case SM501_2D_STATUS:
++        /* ignored, writing 0 should clear interrupt status */
++        break;
+     default:
+         printf("sm501 2d engine : not implemented register write."
+                " addr=%x, val=%x\n", (int)addr, (unsigned)value);
 -- 
 2.7.4
 
