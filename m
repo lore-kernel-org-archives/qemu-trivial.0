@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1chn1i-0003vt-56
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Feb 2017 19:49:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45271)
+	id 1chydQ-0003bG-Hk
+	for mharc-qemu-trivial@gnu.org; Sun, 26 Feb 2017 08:13:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chn1e-0003t3-TZ
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:49:24 -0500
+	(envelope-from <laurent@vivier.eu>) id 1chydO-0003ZZ-Bt
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2017 08:13:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1chn1Z-000365-V7
-	for qemu-trivial@nongnu.org; Sat, 25 Feb 2017 19:49:22 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:16951)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1chn1W-00035j-U7; Sat, 25 Feb 2017 19:49:15 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id B7AA874577A;
-	Sun, 26 Feb 2017 01:49:13 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 8765E7456AE; Sun, 26 Feb 2017 01:49:13 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 86D577456AD;
-	Sun, 26 Feb 2017 01:49:13 +0100 (CET)
-Date: Sun, 26 Feb 2017 01:49:13 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>
-In-Reply-To: <CAFEAcA8JXbOheEjxG--WibsWgL-tEPyyn4djbWURxW5+kHDAbQ@mail.gmail.com>
-Message-ID: <alpine.BSF.2.20.1702260140080.45393@zero.eik.bme.hu>
-References: <cover.1487522123.git.balaton@eik.bme.hu>
-	<9c4f503401fa3defa5dff8b938a0bee3aa8d89d5.1487522123.git.balaton@eik.bme.hu>
-	<CAFEAcA9uOtUmPisVgeTDCVR_tuXzB=nb7OYHiVty1iVnk8pXQQ@mail.gmail.com>
-	<alpine.BSF.2.20.1702242125210.76443@zero.eik.bme.hu>
-	<CAFEAcA8JXbOheEjxG--WibsWgL-tEPyyn4djbWURxW5+kHDAbQ@mail.gmail.com>
-User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+	(envelope-from <laurent@vivier.eu>) id 1chydN-0006kx-B8
+	for qemu-trivial@nongnu.org; Sun, 26 Feb 2017 08:13:06 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:50973)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1chydH-0006i6-A8; Sun, 26 Feb 2017 08:12:59 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue002 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0LfsQF-1bxOgE0x3L-00pfhC; Sun, 26 Feb 2017 14:12:41 +0100
+To: Franklin Snaipe Mathieu <snaipe@diacritic.io>, qemu-devel@nongnu.org
+References: <20170216085857.23501-1-snaipe@diacritic.io>
+	<20170217085800.28873-1-snaipe@diacritic.io>
+	<20170217085800.28873-2-snaipe@diacritic.io>
+Cc: qemu-trivial@nongnu.org, snaipe@arista.com,
+	Riku Voipio <riku.voipio@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <00cd6802-c213-3212-5f29-ebef0a4dfa5e@vivier.eu>
+Date: Sun, 26 Feb 2017 14:12:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:738:2001:2001::2001
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/10] sm501: Fix device
- endianness
+In-Reply-To: <20170217085800.28873-2-snaipe@diacritic.io>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:ezg9TO+QgxwcB1ExapC9lbCWbL5vChJnh65N3XgNGOhlWEvNiXI
+	OoNO10zin+NrxcuNAiH6O9uusMsLhSu5JmBmafT+umAjwTpZHY5WYzt86T4LJesTmX2cvzm
+	BvJiy/rr272U2oETxrUm2SFaXLy1QxVIZGTIV2+a0/PPHskc5TksrGUp8Tbe7kZ4OhHauN6
+	zvYkfOMeBEHXuZ3Gd+2vQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:RquZaw7VEYY=:G9cFonzEG2Lo1ojU3ptuk0
+	flAXhgsfO1uLMxbCnTyaBsNZthYyOTS6OWi52MztEAa9ERJ6u87hm7JbyKDX9GDuRzcDnBKrR
+	8f9YHbB7v/xgeEkQ46hUsqPGmijoP95UVf9RdDqfWIjrXLZo0b9GQSrw5BQj3L9OImrUhSuTv
+	tAoRnu6AVKo4arWpVLs5JPounIet3OTzPZEJz8bBi3eo+q2J68I7ajZ4khHN2/y4piF8BWnzl
+	6jAdukd19Y64RarWbzp9y5ImEkZlpME+n27pA43P5IX2oOFEHiakODOpxTcoc8PTirmhr6zwH
+	A0zE2wgeirhDQslAconAKGqAyYlNDNjiAsOQpoOt+XnVhenOihGHIppLAaLscz+ShETFoMTaP
+	UEb7E1HKEBKXoxre1oO6QngUQ4A4TqYsl2MgBQjYsSo8OpLP/oWYq6zx2d+b24vH1xj66iE6z
+	D//9up/OhUhR8qcJQ9AuNgIR+4dF08mwtkhy5U/hnOdpY8BsNHedzuHNbDPbN4BdxNYqSuO9d
+	KJT3/M5u8rBsUmOFr0DHMCQkVgKc09YwpHIxq3RzGZvcpeq6Tp9gsz29wvjQNa1NeypxJ9a9W
+	vNDLyRRvlt1i8SEP8k72EZouGk5MBt6+IpVLVzgDdgCkAId896qqlx0uODFl764uslFN3+6OF
+	HK/88GuaAOYAWUgtInF4bazYvkZrE4OBh9jKp9uvmhQmp57OKA/g6L9JVcWqDRk5Tcr2a55jH
+	1tLPURKMnJq+Sm3b
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] syscall: fixed
+ mincore(2) not failing with ENOMEM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,146 +62,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 Feb 2017 00:49:24 -0000
+X-List-Received-Date: Sun, 26 Feb 2017 13:13:07 -0000
 
-On Sat, 25 Feb 2017, Peter Maydell wrote:
-> On 24 February 2017 at 20:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->> On Fri, 24 Feb 2017, Peter Maydell wrote:
->>> On 19 February 2017 at 16:35, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>>
->>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->>>> ---
->>>>  hw/display/sm501.c          |  6 +++---
->>>>  hw/display/sm501_template.h | 31 ++++++++++++++++++-------------
->>>>  2 files changed, 21 insertions(+), 16 deletions(-)
->>>>
->>>> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->>>> index 9091bb5..3d32a3c 100644
->>>> --- a/hw/display/sm501.c
->>>> +++ b/hw/display/sm501.c
->>>> @@ -846,7 +846,7 @@ static const MemoryRegionOps sm501_system_config_ops
->>>> = {
->>>>          .min_access_size = 4,
->>>>          .max_access_size = 4,
->>>>      },
->>>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>>  };
->>>>
->>>>  static uint32_t sm501_palette_read(void *opaque, hwaddr addr)
->>>> @@ -1082,7 +1082,7 @@ static const MemoryRegionOps sm501_disp_ctrl_ops =
->>>> {
->>>>          .min_access_size = 4,
->>>>          .max_access_size = 4,
->>>>      },
->>>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>>  };
->>>>
->>>>  static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
->>>> @@ -1170,7 +1170,7 @@ static const MemoryRegionOps sm501_2d_engine_ops =
->>>> {
->>>>          .min_access_size = 4,
->>>>          .max_access_size = 4,
->>>>      },
->>>> -    .endianness = DEVICE_NATIVE_ENDIAN,
->>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
->>>>  };
->>>
->>>
->>> Does this still all work for the sh4eb (big-endian) sysbus device case?
->>
->>
->> Not sure. Is there some image somewhere I can test with?
->
-> I don't know, I'm afraid; I don't know anything about sh4.
-> I'm just going by looking at the code changes and flagging
-> up things which are potentially problems.
->
->>>>  /* draw line functions for all console modes */
->>>> diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
->>>> index 832ee61..5b516d6 100644
->>>> --- a/hw/display/sm501_template.h
->>>> +++ b/hw/display/sm501_template.h
->>>> @@ -64,10 +64,16 @@ static void glue(draw_line16_, PIXEL_NAME)(
->>>>      uint8_t r, g, b;
->>>>
->>>>      do {
->>>> -        rgb565 = lduw_p(s);
->>>> -        r = ((rgb565 >> 11) & 0x1f) << 3;
->>>> -        g = ((rgb565 >>  5) & 0x3f) << 2;
->>>> -        b = ((rgb565 >>  0) & 0x1f) << 3;
->>>> +        rgb565 = lduw_le_p(s);
->>>> +#if defined(TARGET_WORDS_BIGENDIAN)
->>>> +        r = (rgb565 >> 8) & 0xf8;
->>>> +        g = (rgb565 >> 3) & 0xfc;
->>>> +        b = (rgb565 << 3) & 0xf8;
->>>> +#else
->>>> +        b = (rgb565 >> 8) & 0xf8;
->>>> +        g = (rgb565 >> 3) & 0xfc;
->>>> +        r = (rgb565 << 3) & 0xf8;
->>>> +#endif
->>>>          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
->>>>          s += 2;
->>>>          d += BPP;
->>>> @@ -80,15 +86,14 @@ static void glue(draw_line32_, PIXEL_NAME)(
->>>>      uint8_t r, g, b;
->>>>
->>>>      do {
->>>> -        ldub_p(s);
->>>>  #if defined(TARGET_WORDS_BIGENDIAN)
->>>> +        r = s[0];
->>>> +        g = s[1];
->>>> +        b = s[2];
->>>> +#else
->>>>          r = s[1];
->>>>          g = s[2];
->>>>          b = s[3];
->>>> -#else
->>>> -        b = s[0];
->>>> -        g = s[1];
->>>> -        r = s[2];
->>>>  #endif
->>>
->>>
->>> This looks really suspicious. Previously we had
->>> TARGET_WORDS_BIGENDIAN -> bytes are XRGB
->>> otherwise                 bytes are BGRX
->>>
->>> Now we have
->>> TARGET_WORDS_BIGENDIAN -> bytes are RGBX
->>> otherwise              -> bytes are XRGB
->>>
->>> That doesn't seem very plausible at all.
->>
->>
->> I've tested it with sh4 and ppc guests running on x86_64 host and these work
->> now while previous code resulted in mixed up colors. Maybe the host
->> endianness could also be a factor and the previous code assumed big endian
->> host or the previous code was already broken and only worked with the
->> default 8 bit depth. I'm not completely sure I understand endian handling in
->> QEMU to know if this is correct besides on what I've tested but at least
->> little endian and big endian guests should work on little endian hosts now
->> with my patch. I can't test on big endian host.
->>
->> I've used this image: https://people.debian.org/~aurel32/qemu/sh4/
->> with video=800x600-16 kernel parameter where changing -16 to different bit
->> depths reproduces the problem.
->
-> Again, I don't know sh, and I don't know this particular device.
-> I'm just pointing out that the code change here looks really
-> implausible. Maybe the data sheet says that this is what the
-> pixel format looks like; but it's very odd.
+Le 17/02/2017 à 09:58, Franklin Snaipe Mathieu a écrit :
+> From: "Franklin \"Snaipe\" Mathieu" <snaipe@diacritic.io>
+> 
+> The current implementation of the mincore(2) syscall sets errno to
+> EFAULT when the region identified by the first two parameters is
+> invalid.
+> 
+> This goes against the man page specification, where mincore(2) should
+> only fail with EFAULT when the third parameter is an invalid address;
+> and fail with ENOMEM when the checked region does not point to mapped
+> memory.
+> 
+> Signed-off-by: Franklin "Snaipe" Mathieu <snaipe@diacritic.io>
+> Cc: Riku Voipio <riku.voipio@linaro.org>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> ---
+>  linux-user/syscall.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 9be8e9530e..733e0009e1 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -11061,11 +11061,16 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+>      case TARGET_NR_mincore:
+>          {
+>              void *a;
+> +            ret = -TARGET_ENOMEM;
+> +            a = lock_user(VERIFY_READ, arg1, arg2, 0);
+> +            if (!a) {
+> +                goto fail;
+> +            }
+>              ret = -TARGET_EFAULT;
+> -            if (!(a = lock_user(VERIFY_READ, arg1,arg2, 0)))
+> -                goto efault;
+> -            if (!(p = lock_user_string(arg3)))
+> +            p = lock_user_string(arg3);
+> +            if (!p) {
+>                  goto mincore_fail;
+> +            }
+>              ret = get_errno(mincore(a, arg2, p));
+>              unlock_user(p, arg3, ret);
+>              mincore_fail:
+> 
 
-I don't know much about it either. I could not find docs about framebuffer 
-endianness of this device but all clients I've seen treat it as little 
-endian, both on little endian SH4 and big endian PPC. Maybe the previous 
-code was already broken, because on a black & white text console (like the 
-SH4 test image listed on qemu.org) the problem is not obvious, it still 
-looks like white text on black with mixed up color components. It can only 
-be seen when some graphics is displayed like the Tux logo on framebuffer 
-in the above Debian image. If it ever worked it could have been easily 
-broken by some qemu console changes. Or maybe it worked on big endian host 
-only but I could not verify that. All I can say it works for me now on LE 
-host with both LE and BE guests that I could test.
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+
 
