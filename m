@@ -1,58 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ciQag-0001MX-O0
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Feb 2017 14:04:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37939)
+	id 1ciR6a-0000Ix-Q3
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Feb 2017 14:37:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ciQae-0001Ke-OD
-	for qemu-trivial@nongnu.org; Mon, 27 Feb 2017 14:04:09 -0500
+	(envelope-from <thuth@redhat.com>) id 1ciR6Y-0000HJ-BD
+	for qemu-trivial@nongnu.org; Mon, 27 Feb 2017 14:37:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ciQad-0005mz-9v
-	for qemu-trivial@nongnu.org; Mon, 27 Feb 2017 14:04:08 -0500
-Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:34127)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ciQad-0005mr-3O
-	for qemu-trivial@nongnu.org; Mon, 27 Feb 2017 14:04:07 -0500
-Received: by mail-wr0-x22a.google.com with SMTP id l37so14787496wrc.1
-	for <qemu-trivial@nongnu.org>; Mon, 27 Feb 2017 11:04:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=HOhWqs/A48eaA6cjIjQIc1Kmuw/lqoqUEoS1CWc5HzM=;
-	b=KR3E5uIVYfhG2KvgskbWmgnHhKxphXj7gSy6uoUH0THpHnZbsxeZLgd4lF1OTOZAyp
-	JD6Lhr5LssSt5FMWmo52khbOW2+60IegBcUJiagPPB/vDvvMB/GYvQ2lvWn0AiBfozWz
-	bihDjcOJ6WBsFYO4jnS2HTh30Lu+iucrUYtjw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=HOhWqs/A48eaA6cjIjQIc1Kmuw/lqoqUEoS1CWc5HzM=;
-	b=N/QfPaxl4abBAeDkpGMFETd+tsURaJheQQDAfQB6cWrFAphGQDje/9uBp3AqOl3t9G
-	aUeMoqoRAQ0W7D3cdXigglCgQyIuKeNbi85utS6bKJEJexuh8YCFwdfgKMUfyQpJucSl
-	SeaY7hzw9XfHk7BdWUa++k04wV2D15R+iIzLAQ0Hgw2AodcpJxUDcMXPfVvvCIBztw9i
-	ECWN7696VaIEE8nIugLXjiPwXYrRnhBzkLf8Mh24HA571hDX50sF3DYq6aa/9g0MGI+4
-	8FXmat7HCeiBCRTJpkJpqCd2rWPS061slM95sqx1ZSrKx1IcIp2eOiFbGVpE7MNMCfVm
-	s+uw==
-X-Gm-Message-State: AMke39lw4/yItShEafiQoogh+FSu73Aa5S0fQ7JosgAfQvoUjj4rmHXlnPfP18mWfFKA2/4zlxucIG1n9XavesHT
-X-Received: by 10.223.150.205 with SMTP id u71mr14229481wrb.195.1488222245945; 
-	Mon, 27 Feb 2017 11:04:05 -0800 (PST)
+	(envelope-from <thuth@redhat.com>) id 1ciR6X-0001cq-F5
+	for qemu-trivial@nongnu.org; Mon, 27 Feb 2017 14:37:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48828)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1ciR6R-0001Zc-6g; Mon, 27 Feb 2017 14:36:59 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 54061C04B95E;
+	Mon, 27 Feb 2017 19:36:59 +0000 (UTC)
+Received: from [10.36.116.136] (ovpn-116-136.ams2.redhat.com [10.36.116.136])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4171072380;
+	Mon, 27 Feb 2017 19:36:58 +0000 (UTC)
+To: qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>
+References: <1485377117-18105-1-git-send-email-thuth@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <f524e29d-6e8c-19b0-e170-2a6876cbfe69@redhat.com>
+Date: Mon, 27 Feb 2017 20:36:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Mon, 27 Feb 2017 11:03:45 -0800 (PST)
-In-Reply-To: <7df56441-6efd-e178-a31d-e77d6d594319@msgid.tls.msk.ru>
-References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<7df56441-6efd-e178-a31d-e77d6d594319@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Feb 2017 19:03:45 +0000
-Message-ID: <CAFEAcA_yGs=TA6f6AbwbsjQRW0xH8m6URQuM_6vUg5B9WUGt-w@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 00/14] Improvements for
- SM501 display controller emulation
+In-Reply-To: <1485377117-18105-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 27 Feb 2017 19:36:59 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/core/generic-loader: Fix
+ crash when running without CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,30 +53,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Feb 2017 19:04:09 -0000
+X-List-Received-Date: Mon, 27 Feb 2017 19:37:07 -0000
 
-On 27 February 2017 at 18:11, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 26.02.2017 03:17, BALATON Zoltan wrote:
->> Second try, addressing review comments.
->
-> So.. I'm not sure what to do with this :)
->
-> I can apply it to -trivial, but this smells a bit unfair
-> on my side, while on the other hand, is there any more
-> appropriate tree?
+On 25.01.2017 21:45, Thomas Huth wrote:
+> When running QEMU with "-M none -device loader,file=kernel.elf", it
+> currently crashes with a segmentation fault, because the "none"-machine
+> does not have any CPU by default and the generic loader code tries
+> to dereference s->cpu. Fix it by adding an appropriate check for a
+> NULL pointer.
+> 
+> Reported-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/core/generic-loader.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+> index 58f1f02..4601267 100644
+> --- a/hw/core/generic-loader.c
+> +++ b/hw/core/generic-loader.c
+> @@ -137,20 +137,21 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
+>  #endif
+>  
+>      if (s->file) {
+> +        AddressSpace *as = s->cpu ? s->cpu->as :  NULL;
+> +
+>          if (!s->force_raw) {
+>              size = load_elf_as(s->file, NULL, NULL, &entry, NULL, NULL,
+> -                               big_endian, 0, 0, 0, s->cpu->as);
+> +                               big_endian, 0, 0, 0, as);
+>  
+>              if (size < 0) {
+>                  size = load_uimage_as(s->file, &entry, NULL, NULL, NULL, NULL,
+> -                                      s->cpu->as);
+> +                                      as);
+>              }
+>          }
+>  
+>          if (size < 0 || s->force_raw) {
+>              /* Default to the maximum size being the machine's ram size */
+> -            size = load_image_targphys_as(s->file, s->addr, ram_size,
+> -                                          s->cpu->as);
+> +            size = load_image_targphys_as(s->file, s->addr, ram_size, as);
+>          } else {
+>              s->addr = entry;
+>          }
 
-I think it's a bit of a stretch to argue that
-"1089 insertions(+), 741 deletions" is "trivial", but
-the difficulty is that sh4 isn't really very maintained.
-Since the purpose seems to be to improve ppc emulation
-somehow it could perhaps go via the ppc tree, but I dunno.
+Ping?
 
-I have said I'll try to review this (since I looked at
-v1), but I don't think I'm going to get to this before the
-softfreeze deadline, I'm afraid. If you want to go through
-and review it all feel free -- you probably have as much
-knowledge about sh4 and this device as I do :-)
+ Thomas
 
-thanks
--- PMM
 
