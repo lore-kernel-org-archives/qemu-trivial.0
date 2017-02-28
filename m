@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cildK-00071k-4Q
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 12:32:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47680)
+	id 1cilky-0004QB-IR
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 12:40:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cildI-0006zz-2G
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:16 -0500
+	(envelope-from <thuth@redhat.com>) id 1cilku-0004IQ-2a
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:40:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cildH-00035Z-2q
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:16 -0500
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:38331)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cildG-000353-TO
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:15 -0500
-Received: by mail-wm0-x22e.google.com with SMTP id u199so17657274wmd.1
-	for <qemu-trivial@nongnu.org>; Tue, 28 Feb 2017 09:32:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=YKTm18H4+rLAICYgGLblkS/6+nuASvKk5eQyZoysjMg=;
-	b=HkJiUQLR+CQ8hVIIpmc26I2zaD85nq3nN2rIsYKb2GRBS1mUdARDZTdVXJFFbL4SFA
-	JOmPiVOt+nBvPiRCfXQFldAkLzSUFaVeyUf367xxyNbmFSo6E6v9yHf08lHXEHjExY8a
-	l+GzXyYRHaIDls64H1KDzVoGeY5VLCXn9RxJk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=YKTm18H4+rLAICYgGLblkS/6+nuASvKk5eQyZoysjMg=;
-	b=MjpxQNbFjZ/jV+9vLGuft0r8S0RwbavSr3KzPBN+29sahKA1PVPKYjg7r7kyY2Pay0
-	FwX95qFAJ0WFqk64js04Szvate3t7gW+pUOppvcSw82+adKw3hzs6RQAj1mRINHUIvuB
-	ExhwB09dBV3z2fgAYOp4lm4LS5mWU4WJ1cg6n7x3IsJwgk1rGnj36/QsqX+dthm3Ap0/
-	8q2euSUi6d/RddkM2+wyEU+dskQCeK1vFDOOa6jKcpQkLYSLtfWa3VYpM9YibyQLrSXs
-	61yEXAsIv1HCmfYMiYTn24rHvGnIOmScv+HrARcE5G4ZHXK+TejaksxoH5wlzHpSfXAq
-	TmLQ==
-X-Gm-Message-State: AMke39nP5YsSOlplTIZFvkzsP83AVP5X4t2ZyQmWvb91wi3xLTktZUOM9uEcX1NilaMDz4aDn/JzFqu6xf33F2Zo
-X-Received: by 10.28.55.199 with SMTP id e190mr18303828wma.92.1488303133612;
-	Tue, 28 Feb 2017 09:32:13 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Tue, 28 Feb 2017 09:31:53 -0800 (PST)
-In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
-References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Feb 2017 17:31:53 +0000
-Message-ID: <CAFEAcA_THnAMM_ugGsOa0+iwMHp-01zvENMaqUxem9KPF36yVg@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <thuth@redhat.com>) id 1cilkt-0005cj-Ae
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:40:08 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50770)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1cilkr-0005b7-AP; Tue, 28 Feb 2017 12:40:05 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 70BD0369C3;
+	Tue, 28 Feb 2017 17:40:05 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-200.ams2.redhat.com
+	[10.36.116.200])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v1SHe1n4022735; Tue, 28 Feb 2017 12:40:02 -0500
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+	Alexey Kardashevskiy <aik@ozlabs.ru>, Laszlo Ersek <lersek@redhat.com>, 
+	Eric Blake <eblake@redhat.com>
+Date: Tue, 28 Feb 2017 18:40:01 +0100
+Message-Id: <1488303601-23741-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 28 Feb 2017 17:40:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/14] Trivial patches for
- 2017-02-28
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] docs: Add a note about mixing bootindex with
+ "-boot order"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,30 +49,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2017 17:32:17 -0000
+X-List-Received-Date: Tue, 28 Feb 2017 17:40:11 -0000
 
-On 28 February 2017 at 06:44, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> This is yet another trivial patches pull request.
-> Please consider applying/pulling.
->
-> The following changes since commit 8f2d7c341184a95d05476ea3c45dbae2b9ddbe51:
->
->   Merge remote-tracking branch 'remotes/berrange/tags/pull-qcrypto-2017-02-27-1' into staging (2017-02-27 15:33:21 +0000)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
->
-> for you to fetch changes up to f5507e0448bd34473af72509297617a783049024:
->
->   syscall: fixed mincore(2) not failing with ENOMEM (2017-02-28 09:03:39 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2017-02-28
->
-> ----------------------------------------------------------------
+Occasionally the users try to mix the bootindex properties with the
+"-boot order" parameter - and this likely does not give the expected
+results. So let's add a proper statement that these two concepts
+should not be used together.
 
-Applied, thanks.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/bootindex.txt | 9 +++++++++
+ qemu-options.hx    | 5 ++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
--- PMM
+diff --git a/docs/bootindex.txt b/docs/bootindex.txt
+index f84fac7..9e0ac07 100644
+--- a/docs/bootindex.txt
++++ b/docs/bootindex.txt
+@@ -41,3 +41,12 @@ has three bootable devices target1, target3, target5 connected to it,
+ the option ROM will have a boot method for each of them, but it is not
+ possible to map from boot method back to a specific target.  This is a
+ shortcoming of the PC BIOS boot specification.
++
++== Mixing bootindex and boot order parameters ==
++
++Note that it does not make sense to use the bootindex property together
++with the "-boot order=..." (or "-boot once=...") parameter. The guest
++firmware implementations normally either support the one or the other,
++but not both parameters at the same time. Mixing them will result in
++undefined behavior, and thus the guest firmware will likely not boot
++from the expected devices.
+diff --git a/qemu-options.hx b/qemu-options.hx
+index bf458f8..aa11420 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -234,7 +234,10 @@ drive letters depend on the target architecture. The x86 PC uses: a, b
+ (floppy 1 and 2), c (first hard disk), d (first CD-ROM), n-p (Etherboot
+ from network adapter 1-4), hard disk boot is the default. To apply a
+ particular boot order only on the first startup, specify it via
+-@option{once}.
++@option{once}. Note that the @option{order} or @option{once} parameter
++should not be used together with the @option{bootindex} property of
++devices, since the firmware implementations normally do not support both
++at the same time.
+ 
+ Interactive boot menus/prompts can be enabled via @option{menu=on} as far
+ as firmware/BIOS supports them. The default is non-interactive boot.
+-- 
+1.8.3.1
+
 
