@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cibph-0006NF-Rq
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 02:04:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47588)
+	id 1cic92-0003xN-1k
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 02:24:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibpe-0006Jt-6H
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:04:25 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1cic8z-0003uz-5X
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:24:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibpY-0000Pi-NX
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:04:22 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57044)
+	(envelope-from <mjt@tls.msk.ru>) id 1cic8y-0005KF-Bz
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:24:21 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:57885)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cibpU-0000Of-Lm; Tue, 28 Feb 2017 02:04:12 -0500
+	id 1cic8s-0005Hy-0T; Tue, 28 Feb 2017 02:24:14 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 473594358D;
-	Tue, 28 Feb 2017 10:04:12 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 853984338E;
+	Tue, 28 Feb 2017 10:24:10 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id EED2B3D0;
-	Tue, 28 Feb 2017 09:45:00 +0300 (MSK)
-Received: (nullmailer pid 19623 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 175E43E2;
+	Tue, 28 Feb 2017 09:45:02 +0300 (MSK)
+Received: (nullmailer pid 19621 invoked by uid 1000);
 	Tue, 28 Feb 2017 06:44:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 28 Feb 2017 09:44:47 +0300
-Message-Id: <a6e3707ece6b326e3fc5a086086a2ccac9710e67.1488264243.git.mjt@msgid.tls.msk.ru>
+Date: Tue, 28 Feb 2017 09:44:46 +0300
+Message-Id: <a70716eb2c766d80f605abd42115b923fedaa1f7.1488264243.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
@@ -34,7 +34,7 @@ References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 04/14] hw/core/register: Mark the device with
+Subject: [Qemu-trivial] [PULL 03/14] hw/core/or-irq: Mark the device with
  cannot_instantiate_with_device_add_yet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -47,45 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2017 07:04:25 -0000
+X-List-Received-Date: Tue, 28 Feb 2017 07:24:22 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-The "qemu,register" device needs to be wired up in source code, there
-is no way the user can make any real use of this device with the
-"-device" parameter or the "device_add" monitor command yet.
+The "or-irq" device needs to be wired up in source code, there is no
+way the user can make any real use of this device with the "-device"
+parameter or the "device_add" monitor command yet.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/core/register.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/core/or-irq.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/core/register.c b/hw/core/register.c
-index 4bfbc50..be170dc 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -274,9 +274,18 @@ void register_finalize_block(RegisterInfoArray *r_array)
-     g_free(r_array);
+diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
+index 1ac090d..1485d5b 100644
+--- a/hw/core/or-irq.c
++++ b/hw/core/or-irq.c
+@@ -89,6 +89,9 @@ static void or_irq_class_init(ObjectClass *klass, void *data)
+     dc->props = or_irq_properties;
+     dc->realize = or_irq_realize;
+     dc->vmsd = &vmstate_or_irq;
++
++    /* Reason: Needs to be wired up to work, e.g. see stm32f205_soc.c */
++    dc->cannot_instantiate_with_device_add_yet = true;
  }
  
-+static void register_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    /* Reason: needs to be wired up to work */
-+    dc->cannot_instantiate_with_device_add_yet = true;
-+}
-+
- static const TypeInfo register_info = {
-     .name  = TYPE_REGISTER,
-     .parent = TYPE_DEVICE,
-+    .class_init = register_class_init,
- };
- 
- static void register_register_types(void)
+ static const TypeInfo or_irq_type_info = {
 -- 
 2.1.4
 
