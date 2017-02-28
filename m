@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cibfw-0007Dg-0P
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 01:54:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45196)
+	id 1cibfx-0007FR-6x
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 01:54:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibft-0007A7-4C
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:18 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0005uY-CL
+	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0007A2-Tm
 	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:17 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:56570)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0005uC-0W
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:16 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:33108)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cibfo-0005t1-9s; Tue, 28 Feb 2017 01:54:12 -0500
+	id 1cibfn-0005sd-VU; Tue, 28 Feb 2017 01:54:12 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A2A714358B;
+	by isrv.corpit.ru (Postfix) with ESMTP id 9B3644358A;
 	Tue, 28 Feb 2017 09:54:10 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id CA3BD233;
-	Tue, 28 Feb 2017 09:45:00 +0300 (MSK)
-Received: (nullmailer pid 19637 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 64C403D4;
+	Tue, 28 Feb 2017 09:45:01 +0300 (MSK)
+Received: (nullmailer pid 19635 invoked by uid 1000);
 	Tue, 28 Feb 2017 06:44:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Vincenzo Maffione <v.maffione@gmail.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 28 Feb 2017 09:44:54 +0300
-Message-Id: <79cad2faace2175f2f21dc4f8f40c3b7722cf999.1488264243.git.mjt@msgid.tls.msk.ru>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue, 28 Feb 2017 09:44:53 +0300
+Message-Id: <d34d5b3bbd31f51dbeee011d4123d33d3b8b43a7.1488264243.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 11/14] qemu-options.hx: add missing id=chr0
- chardev argument in vhost-user example
+Subject: [Qemu-trivial] [PULL 10/14] Update copyright year
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,34 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2017 06:54:18 -0000
+X-List-Received-Date: Tue, 28 Feb 2017 06:54:17 -0000
 
-From: Vincenzo Maffione <v.maffione@gmail.com>
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-In the vhost-user example, a chardev with id chr0 is referenced by the
-vhost-user net backend, but the id is not specified in the chardev option.
+It's still time to wish happy new year!
 
-Signed-off-by: Vincenzo Maffione <v.maffione@gmail.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+The Year of the Rooster will begin on January 28, 2017!
+
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-options.hx | 2 +-
+ include/qemu-common.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index bf458f8..faf5cf8 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2146,7 +2146,7 @@ Example:
- @example
- qemu -m 512 -object memory-backend-file,id=mem,size=512M,mem-path=/hugetlbfs,share=on \
-      -numa node,memdev=mem \
--     -chardev socket,path=/path/to/socket \
-+     -chardev socket,id=chr0,path=/path/to/socket \
-      -netdev type=vhost-user,id=net0,chardev=chr0 \
-      -device virtio-net-pci,netdev=net0
- @end example
--- 
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 1430390..d218821 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -19,7 +19,7 @@
+ #include "qemu/option.h"
+=20
+ /* Copyright string for -version arguments, About dialogs, etc */
+-#define QEMU_COPYRIGHT "Copyright (c) 2003-2016 " \
++#define QEMU_COPYRIGHT "Copyright (c) 2003-2017 " \
+     "Fabrice Bellard and the QEMU Project developers"
+=20
+ /* main function, renamed */
+--=20
 2.1.4
 
 
