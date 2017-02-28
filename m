@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cibfx-0007FR-6x
+	id 1cibfx-0007Fe-EE
 	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 01:54:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45187)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45188)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0007A2-Tm
+	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0007A3-U1
 	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0005uC-0W
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:16 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:33108)
+	(envelope-from <mjt@tls.msk.ru>) id 1cibfs-0005uN-3G
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 01:54:17 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:37841)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cibfn-0005sd-VU; Tue, 28 Feb 2017 01:54:12 -0500
+	id 1cibfn-0005sV-IW; Tue, 28 Feb 2017 01:54:11 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9B3644358A;
+	by isrv.corpit.ru (Postfix) with ESMTP id 8219A43567;
 	Tue, 28 Feb 2017 09:54:10 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 64C403D4;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id D1D563DE;
 	Tue, 28 Feb 2017 09:45:01 +0300 (MSK)
-Received: (nullmailer pid 19635 invoked by uid 1000);
+Received: (nullmailer pid 19625 invoked by uid 1000);
 	Tue, 28 Feb 2017 06:44:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 28 Feb 2017 09:44:53 +0300
-Message-Id: <d34d5b3bbd31f51dbeee011d4123d33d3b8b43a7.1488264243.git.mjt@msgid.tls.msk.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue, 28 Feb 2017 09:44:48 +0300
+Message-Id: <25ac5bbec43973e9b97a454e55fd307ef9db1320.1488264243.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 10/14] Update copyright year
+Subject: [Qemu-trivial] [PULL 05/14] CODING_STYLE: Mention preferred comment
+ form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,35 +47,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2017 06:54:17 -0000
+X-List-Received-Date: Tue, 28 Feb 2017 06:54:18 -0000
 
-From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-It's still time to wish happy new year!
+Our defacto coding style strongly prefers /* */ style comments
+over the single-line // style, and checkpatch enforces this,
+but we don't actually document this. Mention it in CODING_STYLE.
 
-The Year of the Rooster will begin on January 28, 2017!
-
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Suggested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Fam Zheng <famz@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/qemu-common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ CODING_STYLE | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index 1430390..d218821 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -19,7 +19,7 @@
- #include "qemu/option.h"
-=20
- /* Copyright string for -version arguments, About dialogs, etc */
--#define QEMU_COPYRIGHT "Copyright (c) 2003-2016 " \
-+#define QEMU_COPYRIGHT "Copyright (c) 2003-2017 " \
-     "Fabrice Bellard and the QEMU Project developers"
-=20
- /* main function, renamed */
---=20
+diff --git a/CODING_STYLE b/CODING_STYLE
+index f53180b..2fa0c0b 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -116,3 +116,10 @@ if (a == 1) {
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
+ even when the constant is on the right.
++
++7. Comment style
++
++We use traditional C-style /* */ comments and avoid // comments.
++
++Rationale: The // form is valid in C99, so this is purely a matter of
++consistency of style. The checkpatch script will warn you about this.
+-- 
 2.1.4
 
 
