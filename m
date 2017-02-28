@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cibpc-0006IQ-Md
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 02:04:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47575)
+	id 1cibpe-0006K0-9v
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 02:04:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47571)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibpa-0006FP-3s
+	(envelope-from <mjt@tls.msk.ru>) id 1cibpZ-0006FD-Vz
 	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:04:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cibpZ-0000Pt-08
+	(envelope-from <mjt@tls.msk.ru>) id 1cibpZ-0000Py-4V
 	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:04:18 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:47006)
+Received: from isrv.corpit.ru ([86.62.121.231]:43761)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1cibpU-0000OZ-GW; Tue, 28 Feb 2017 02:04:12 -0500
+	id 1cibpU-0000Od-HA; Tue, 28 Feb 2017 02:04:12 -0500
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B09E54358A;
-	Tue, 28 Feb 2017 10:04:11 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 33B584358C;
+	Tue, 28 Feb 2017 10:04:12 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 894822C;
-	Tue, 28 Feb 2017 09:45:00 +0300 (MSK)
-Received: (nullmailer pid 19629 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 829653D5;
+	Tue, 28 Feb 2017 09:45:01 +0300 (MSK)
+Received: (nullmailer pid 19619 invoked by uid 1000);
 	Tue, 28 Feb 2017 06:44:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 28 Feb 2017 09:44:50 +0300
-Message-Id: <4729b3a41d11f053a6d03620ff12b266dd0ab330.1488264243.git.mjt@msgid.tls.msk.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue, 28 Feb 2017 09:44:45 +0300
+Message-Id: <d000b477f2693dbca97cd8ea751c2e0b71890662.1488264243.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
@@ -37,7 +37,8 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 07/14] register: fix incorrect read mask
+Subject: [Qemu-trivial] [PULL 02/14] softfloat: Use correct type in
+ float64_to_uint64_round_to_zero()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,79 +52,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 28 Feb 2017 07:04:19 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-The register_read() and register_write() functions expect a bitmask argum=
-ent.
-To avoid duplicated code, a new inlined function register_enabled_mask() =
-is
-introduced.
+In float64_to_uint64_round_to_zero() a typo meant that we were
+taking the uint64_t return value from float64_to_uint64() and
+putting it into an int64_t variable before returning it as
+uint64_t again. Use uint64_t instead of pointlessly casting it
+back and forth to int64_t.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/core/register.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ fpu/softfloat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/core/register.c b/hw/core/register.c
-index be170dc..dc335a7 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -59,6 +59,15 @@ static inline uint64_t register_read_val(RegisterInfo =
-*reg)
-     return 0; /* unreachable */
- }
-=20
-+static inline uint64_t register_enabled_mask(int data_size, unsigned siz=
-e)
-+{
-+    if (data_size < size) {
-+        size =3D data_size;
-+    }
-+
-+    return MAKE_64BIT_MASK(0, size * 8);
-+}
-+
- void register_write(RegisterInfo *reg, uint64_t val, uint64_t we,
-                     const char *prefix, bool debug)
+diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+index 485a006..7af14e2 100644
+--- a/fpu/softfloat.c
++++ b/fpu/softfloat.c
+@@ -7492,7 +7492,7 @@ uint64_t float64_to_uint64_round_to_zero(float64 a,=
+ float_status *status)
  {
-@@ -192,11 +201,7 @@ void register_write_memory(void *opaque, hwaddr addr=
-,
-     }
-=20
-     /* Generate appropriate write enable mask */
--    if (reg->data_size < size) {
--        we =3D MAKE_64BIT_MASK(0, reg->data_size * 8);
--    } else {
--        we =3D MAKE_64BIT_MASK(0, size * 8);
--    }
-+    we =3D register_enabled_mask(reg->data_size, size);
-=20
-     register_write(reg, value, we, reg_array->prefix,
-                    reg_array->debug);
-@@ -208,6 +213,7 @@ uint64_t register_read_memory(void *opaque, hwaddr ad=
-dr,
-     RegisterInfoArray *reg_array =3D opaque;
-     RegisterInfo *reg =3D NULL;
-     uint64_t read_val;
-+    uint64_t re;
-     int i;
-=20
-     for (i =3D 0; i < reg_array->num_elements; i++) {
-@@ -223,7 +229,10 @@ uint64_t register_read_memory(void *opaque, hwaddr a=
-ddr,
-         return 0;
-     }
-=20
--    read_val =3D register_read(reg, size * 8, reg_array->prefix,
-+    /* Generate appropriate read enable mask */
-+    re =3D register_enabled_mask(reg->data_size, size);
-+
-+    read_val =3D register_read(reg, re, reg_array->prefix,
-                              reg_array->debug);
-=20
-     return extract64(read_val, 0, size * 8);
+     signed char current_rounding_mode =3D status->float_rounding_mode;
+     set_float_rounding_mode(float_round_to_zero, status);
+-    int64_t v =3D float64_to_uint64(a, status);
++    uint64_t v =3D float64_to_uint64(a, status);
+     set_float_rounding_mode(current_rounding_mode, status);
+     return v;
+ }
 --=20
 2.1.4
 
