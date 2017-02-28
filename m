@@ -1,41 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cic92-0003xN-1k
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 02:24:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50898)
+	id 1cildK-00071k-4Q
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Feb 2017 12:32:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47680)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cic8z-0003uz-5X
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:24:22 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cildI-0006zz-2G
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1cic8y-0005KF-Bz
-	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 02:24:21 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57885)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1cic8s-0005Hy-0T; Tue, 28 Feb 2017 02:24:14 -0500
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 853984338E;
-	Tue, 28 Feb 2017 10:24:10 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 175E43E2;
-	Tue, 28 Feb 2017 09:45:02 +0300 (MSK)
-Received: (nullmailer pid 19621 invoked by uid 1000);
-	Tue, 28 Feb 2017 06:44:59 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 28 Feb 2017 09:44:46 +0300
-Message-Id: <a70716eb2c766d80f605abd42115b923fedaa1f7.1488264243.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.1.4
+	(envelope-from <peter.maydell@linaro.org>) id 1cildH-00035Z-2q
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:16 -0500
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:38331)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cildG-000353-TO
+	for qemu-trivial@nongnu.org; Tue, 28 Feb 2017 12:32:15 -0500
+Received: by mail-wm0-x22e.google.com with SMTP id u199so17657274wmd.1
+	for <qemu-trivial@nongnu.org>; Tue, 28 Feb 2017 09:32:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=YKTm18H4+rLAICYgGLblkS/6+nuASvKk5eQyZoysjMg=;
+	b=HkJiUQLR+CQ8hVIIpmc26I2zaD85nq3nN2rIsYKb2GRBS1mUdARDZTdVXJFFbL4SFA
+	JOmPiVOt+nBvPiRCfXQFldAkLzSUFaVeyUf367xxyNbmFSo6E6v9yHf08lHXEHjExY8a
+	l+GzXyYRHaIDls64H1KDzVoGeY5VLCXn9RxJk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=YKTm18H4+rLAICYgGLblkS/6+nuASvKk5eQyZoysjMg=;
+	b=MjpxQNbFjZ/jV+9vLGuft0r8S0RwbavSr3KzPBN+29sahKA1PVPKYjg7r7kyY2Pay0
+	FwX95qFAJ0WFqk64js04Szvate3t7gW+pUOppvcSw82+adKw3hzs6RQAj1mRINHUIvuB
+	ExhwB09dBV3z2fgAYOp4lm4LS5mWU4WJ1cg6n7x3IsJwgk1rGnj36/QsqX+dthm3Ap0/
+	8q2euSUi6d/RddkM2+wyEU+dskQCeK1vFDOOa6jKcpQkLYSLtfWa3VYpM9YibyQLrSXs
+	61yEXAsIv1HCmfYMiYTn24rHvGnIOmScv+HrARcE5G4ZHXK+TejaksxoH5wlzHpSfXAq
+	TmLQ==
+X-Gm-Message-State: AMke39nP5YsSOlplTIZFvkzsP83AVP5X4t2ZyQmWvb91wi3xLTktZUOM9uEcX1NilaMDz4aDn/JzFqu6xf33F2Zo
+X-Received: by 10.28.55.199 with SMTP id e190mr18303828wma.92.1488303133612;
+	Tue, 28 Feb 2017 09:32:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.145.69 with HTTP; Tue, 28 Feb 2017 09:31:53 -0800 (PST)
 In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
 References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
-References: <cover.1488264243.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Feb 2017 17:31:53 +0000
+Message-ID: <CAFEAcA_THnAMM_ugGsOa0+iwMHp-01zvENMaqUxem9KPF36yVg@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 03/14] hw/core/or-irq: Mark the device with
- cannot_instantiate_with_device_add_yet
+X-Received-From: 2a00:1450:400c:c09::22e
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/14] Trivial patches for
+ 2017-02-28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,37 +61,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Feb 2017 07:24:22 -0000
+X-List-Received-Date: Tue, 28 Feb 2017 17:32:17 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+On 28 February 2017 at 06:44, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is yet another trivial patches pull request.
+> Please consider applying/pulling.
+>
+> The following changes since commit 8f2d7c341184a95d05476ea3c45dbae2b9ddbe51:
+>
+>   Merge remote-tracking branch 'remotes/berrange/tags/pull-qcrypto-2017-02-27-1' into staging (2017-02-27 15:33:21 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to f5507e0448bd34473af72509297617a783049024:
+>
+>   syscall: fixed mincore(2) not failing with ENOMEM (2017-02-28 09:03:39 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-02-28
+>
+> ----------------------------------------------------------------
 
-The "or-irq" device needs to be wired up in source code, there is no
-way the user can make any real use of this device with the "-device"
-parameter or the "device_add" monitor command yet.
+Applied, thanks.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/core/or-irq.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
-index 1ac090d..1485d5b 100644
---- a/hw/core/or-irq.c
-+++ b/hw/core/or-irq.c
-@@ -89,6 +89,9 @@ static void or_irq_class_init(ObjectClass *klass, void *data)
-     dc->props = or_irq_properties;
-     dc->realize = or_irq_realize;
-     dc->vmsd = &vmstate_or_irq;
-+
-+    /* Reason: Needs to be wired up to work, e.g. see stm32f205_soc.c */
-+    dc->cannot_instantiate_with_device_add_yet = true;
- }
- 
- static const TypeInfo or_irq_type_info = {
--- 
-2.1.4
-
+-- PMM
 
