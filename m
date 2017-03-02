@@ -1,44 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjHvP-0001AI-Nw
-	for mharc-qemu-trivial@gnu.org; Wed, 01 Mar 2017 23:01:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51304)
+	id 1cjKcg-00075c-4V
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 01:53:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cjHvM-000182-Rb
-	for qemu-trivial@nongnu.org; Wed, 01 Mar 2017 23:01:05 -0500
+	(envelope-from <armbru@redhat.com>) id 1cjKcd-000743-IV
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 01:53:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1cjHvL-0003KM-R5
-	for qemu-trivial@nongnu.org; Wed, 01 Mar 2017 23:01:04 -0500
-Received: from [59.151.112.132] (port=63277 helo=heian.cn.fujitsu.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
-	id 1cjHvG-0003A9-VW; Wed, 01 Mar 2017 23:00:59 -0500
-X-IronPort-AV: E=Sophos;i="5.22,518,1449504000"; d="scan'208";a="16122010"
-Received: from unknown (HELO cn.fujitsu.com) ([10.167.33.5])
-	by heian.cn.fujitsu.com with ESMTP; 02 Mar 2017 12:00:45 +0800
-Received: from G08CNEXCHPEKD01.g08.fujitsu.local (unknown [10.167.33.80])
-	by cn.fujitsu.com (Postfix) with ESMTP id 1092947C4EB6;
-	Thu,  2 Mar 2017 12:00:46 +0800 (CST)
-Received: from localhost.localdomain (10.167.226.56) by
-	G08CNEXCHPEKD01.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
-	Server (TLS) id 14.3.319.2; Thu, 2 Mar 2017 12:00:46 +0800
-From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-To: qemu devel <qemu-devel@nongnu.org>, QEMU Trivial
-	<qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, Michael
-	Tokarev <mjt@tls.msk.ru>, Jason Wang <jasowang@redhat.com>
-CC: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-Date: Thu, 2 Mar 2017 11:59:30 +0800
-Message-ID: <1488427170-28050-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <armbru@redhat.com>) id 1cjKcc-0002mp-OH
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 01:53:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45310)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1cjKcY-0002lj-7L; Thu, 02 Mar 2017 01:53:50 -0500
+Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
+	[10.5.11.28])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 346294E4D9;
+	Thu,  2 Mar 2017 06:53:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
+	[10.36.116.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC90D15A80;
+	Thu,  2 Mar 2017 06:53:49 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 4AC4A1138647; Thu,  2 Mar 2017 07:53:47 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Suramya Shah <shah.suramya@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20170301142320.8328-1-shah.suramya@gmail.com>
+Date: Thu, 02 Mar 2017 07:53:47 +0100
+In-Reply-To: <20170301142320.8328-1-shah.suramya@gmail.com> (Suramya Shah's
+	message of "Wed, 1 Mar 2017 19:53:20 +0530")
+Message-ID: <87r32gp3t0.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Originating-IP: [10.167.226.56]
-X-yoursite-MailScanner-ID: 1092947C4EB6.AD2D0
-X-yoursite-MailScanner: Found to be clean
-X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 59.151.112.132
-Subject: [Qemu-trivial] [PATCH] net/filter-mirror: Follow CODING_STYLE
+X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 02 Mar 2017 06:53:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Removed header
+ qemu-common.h from path.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,41 +55,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 04:01:05 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 06:53:56 -0000
 
-Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
----
- net/filter-mirror.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Copying <qemu-trivial@nongnu.org>.
 
-diff --git a/net/filter-mirror.c b/net/filter-mirror.c
-index aa0aa98..72fa7c2 100644
---- a/net/filter-mirror.c
-+++ b/net/filter-mirror.c
-@@ -49,7 +49,7 @@ static int filter_mirror_send(CharBackend *chr_out,
- {
-     int ret = 0;
-     ssize_t size = 0;
--    uint32_t len =  0;
-+    uint32_t len = 0;
-     char *buf;
- 
-     size = iov_size(iov, iovcnt);
-@@ -77,8 +77,9 @@ err:
-     return ret < 0 ? ret : -EIO;
- }
- 
--static void
--redirector_to_filter(NetFilterState *nf, const uint8_t *buf, int len)
-+static void redirector_to_filter(NetFilterState *nf,
-+                                 const uint8_t *buf,
-+                                 int len)
- {
-     struct iovec iov = {
-         .iov_base = (void *)buf,
--- 
-2.7.4
+Suramya Shah <shah.suramya@gmail.com> writes:
 
+> Signed-off-by: Suramya Shah <shah.suramya@gmail.com>
+> ---
+>  util/path.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/util/path.c b/util/path.c
+> index 5479f76..46a6098 100644
+> --- a/util/path.c
+> +++ b/util/path.c
+> @@ -6,8 +6,7 @@
+>  #include "qemu/osdep.h"
+>  #include <sys/param.h>
+>  #include <dirent.h>
+> -#include "qemu-common.h"
+> -#include "qemu/cutils.h"
+> +:#include "qemu/cutils.h"
+>  #include "qemu/path.h"
+>  
+>  struct pathelem
 
-
+I doubt this will compile.  Perhaps the trivial maintainers are willing
+to repair it for you.
 
