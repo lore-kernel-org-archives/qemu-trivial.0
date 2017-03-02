@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjWBP-00041s-0z
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 14:14:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50166)
+	id 1cjWJ6-0005m2-AD
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 14:22:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52062)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjWBM-00040X-Kr
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:14:33 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjWJ3-0005l1-2Q
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:22:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjWBI-0001D7-L5
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:14:32 -0500
-Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:37911)
+	(envelope-from <peter.maydell@linaro.org>) id 1cjWJ2-0005Bj-2P
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:22:29 -0500
+Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:35446)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjWBI-0001Cu-Ds
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:14:28 -0500
-Received: by mail-wm0-x22b.google.com with SMTP id t193so20447979wmt.1
-	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 11:14:27 -0800 (PST)
+	id 1cjWJ1-0005BJ-Qu
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:22:28 -0500
+Received: by mail-wr0-x230.google.com with SMTP id g10so59672650wrg.2
+	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 11:22:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=+YvMGnGrn+EIxSdTRWIkGfN08ANMJtVHI1oQAy9lCp4=;
-	b=Gq6Eziz/psbsGpeFBuzWQD3ez/yT+YYxcCezuXtAbpgFzpggBFOEfMqeTk7V8MuZ/j
-	u8hVhFG4Oxp2nqrok3Fp00XmNqKibRKCrt1RRwqWpDcalPicxvtRmFUKoW0l2v8Mg+oH
-	C4vFAeOJdaOS5ScBWmkvby6Q77C3LaRjXaCn4=
+	:cc; bh=IzunOS+2QZfWUq6pUIh79mcRoz66fFAwV79lAkmp4aI=;
+	b=ad0ne5dKSqUbtDA4Ihm3M17yttyq4m9soIlSuDQy1mJ5tuCL5nIqJllZoKbOjWJ7YL
+	b4+soUL66rNwx2Kd3kwtOBZQVZliK20wurp/IcwS/U1AZM0+NtRBGJtw6o9UItjoYsB/
+	2kIF/FDwd9kCGteHgiZehG2xAweYKqfrTb+h8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=+YvMGnGrn+EIxSdTRWIkGfN08ANMJtVHI1oQAy9lCp4=;
-	b=hIj5n2zw80OPNXDutUXpGFjJt1Zej/3FWEDil18WdP7co+Xtplfp3vqSEuSbpjkoA6
-	EViwRifrMR8Gnuo1UzEWNeYPyANi7kBDP6CRg5meH2aIVaV5ZZj4OLq3cmwxOoUNvy0K
-	VUNYiO3peP5RMnVz+Ho7Y+RR6rRRI6PASIcsFqPcy4ERWKTnqlEQ/tIhb83D0IY7iVin
-	V57QiAoVa/mf5JdUT21KMJBOH1DMC9rPOdKiad2U3794U2582PfAgYAJi/B/zcLHGAXO
-	o0gUv9+YBWG1jvMwKUnxL6L9wNpp06jmhce/WpBkSrxRquHliYVnhadydGeVN8UNO1qu
-	eK3w==
-X-Gm-Message-State: AMke39lujeACw0Yj5CPc2QiPASqYE4jEXccBEQhYoVtf8ysVcpH3DJ8DYihJt+h4jbYOsTlKR/eFuOoolzIAfF+Y
-X-Received: by 10.28.157.67 with SMTP id g64mr9361277wme.111.1488482066772;
-	Thu, 02 Mar 2017 11:14:26 -0800 (PST)
+	bh=IzunOS+2QZfWUq6pUIh79mcRoz66fFAwV79lAkmp4aI=;
+	b=aapaleRaJnZZut/x3yvNR7diqrg4j5+CbugPle20C+tSGZryd1y7kcyYQ6HWigVrI0
+	HQiwiiuv7OXEN7uE8mLHkFxr1tCV9EtDQUleJKVFLaa3Pu9BdyhnF0FIp8CY5tXv4Uqt
+	eaiZ/STmbKIvxJjd9VQtOMXNhe0qKIVLz9OdAYm7cUhbIdtxiioMbKtLQXu7H2L6FSXR
+	b6fR6OK8wMbJHE0HvMGUwIIC3od3zlfhfTrg+/QifN6k0eUCDVRm65630Knu23sXnUwK
+	AgboCife54fIXPD1IyJXzcr7CBUXo6n/I1TDyCcsxD4MVhOOXsCXdg66T+QcE68wqAms
+	JUmg==
+X-Gm-Message-State: AMke39mSEP6fmxPMTHzne5jSyVoolUoYo+8H0kdU+0M6uSaW8XOHQcPxCtVBG51Uu4pbW5ILurl2qR3+IC6A4wqO
+X-Received: by 10.223.152.215 with SMTP id w81mr15140619wrb.151.1488482546561; 
+	Thu, 02 Mar 2017 11:22:26 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 11:14:06 -0800 (PST)
-In-Reply-To: <7c6e8c071cbd47d6d9065635e97dd88a7197b5be.1488068248.git.balaton@eik.bme.hu>
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 11:22:06 -0800 (PST)
+In-Reply-To: <c554a16417ef22dbc29919a2747801be5ed7fede.1488068248.git.balaton@eik.bme.hu>
 References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<7c6e8c071cbd47d6d9065635e97dd88a7197b5be.1488068248.git.balaton@eik.bme.hu>
+	<c554a16417ef22dbc29919a2747801be5ed7fede.1488068248.git.balaton@eik.bme.hu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Mar 2017 19:14:06 +0000
-Message-ID: <CAFEAcA-01wdWYs_F-Maxoq7Wa=Xo1J1iaheEQFUdVL1G4PDG7w@mail.gmail.com>
+Date: Thu, 2 Mar 2017 19:22:06 +0000
+Message-ID: <CAFEAcA-G8_yOjmHBb9S+ErCoxSAje4gr1S0Y=FQjwCsxK+GYGw@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22b
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 04/14] sm501: Get rid of
- base address in draw_hwc_line
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::230
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 05/14] sm501: Add
+ emulation of chip connected via PCI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,92 +64,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 19:14:33 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 19:22:30 -0000
 
-On 25 February 2017 at 18:23, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> Do not use the base address to access data in local memory. This is in
-> preparation to allow chip connected via PCI where base address depends
-> on where the BAR is mapped so it will be unknown.
+On 25 February 2017 at 18:31, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> Only the display controller part is created automatically on PCI
 >
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->  hw/display/sm501.c          | 6 ++----
->  hw/display/sm501_template.h | 8 ++++----
->  2 files changed, 6 insertions(+), 8 deletions(-)
+>
+> v2: Split off removing dependency on base address to separate patch
+>
+>  hw/display/sm501.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 52 insertions(+)
 >
 > diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 22cac97..1cda127 100644
+> index 1cda127..d9219bd 100644
 > --- a/hw/display/sm501.c
 > +++ b/hw/display/sm501.c
-> @@ -460,7 +460,6 @@ typedef struct SM501State {
->      QemuConsole *con;
->
->      /* status & internal resources */
-> -    hwaddr base;
->      uint32_t local_mem_size_index;
->      uint8_t *local_mem;
->      MemoryRegion local_mem_region;
-> @@ -1400,10 +1399,9 @@ static const GraphicHwOps sm501_ops = {
->      .gfx_update  = sm501_update_display,
+> @@ -31,6 +31,7 @@
+>  #include "ui/console.h"
+>  #include "hw/devices.h"
+>  #include "hw/sysbus.h"
+> +#include "hw/pci/pci.h"
+>  #include "qemu/range.h"
+>  #include "ui/pixel_ops.h"
+>  #include "exec/address-spaces.h"
+> @@ -1507,9 +1508,60 @@ static const TypeInfo sm501_sysbus_info = {
+>      .class_init    = sm501_sysbus_class_init,
 >  };
 >
-> -static void sm501_init(SM501State *s, DeviceState *dev, uint32_t base,
-> +static void sm501_init(SM501State *s, DeviceState *dev,
->                         uint32_t local_mem_bytes)
+> +#define TYPE_PCI_SM501 "sm501"
+> +#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
+> +
+> +typedef struct {
+> +    /*< private >*/
+> +    PCIDevice parent_obj;
+> +    /*< public >*/
+> +    SM501State state;
+> +    uint32_t vram_size;
+> +} SM501PCIState;
+> +
+> +static void sm501_realize_pci(PCIDevice *dev, Error **errp)
+> +{
+> +    SM501PCIState *s = PCI_SM501(dev);
+> +
+> +    sm501_init(&s->state, DEVICE(dev), s->vram_size);
+> +    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
+> +                     &s->state.local_mem_region);
+> +    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
+> +                     &s->state.mmio_region);
+> +}
+> +
+> +static Property sm501_pci_properties[] = {
+> +    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size,
+> +                       64 * 1024 * 1024),
+
+Something needs to sanity check this value, because it's
+user settable in the PCI device. (In the sysbus version you
+can only create it from board code, and we can assume board
+code doesn't pass us silly values.)
+
+Or you could just hardcode the PCI device to always be 64MB,
+I guess :-)
+
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void sm501_pci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+> +
+> +    k->realize = sm501_realize_pci;
+> +    k->vendor_id = 0x126f;
+> +    k->device_id = 0x0501;
+
+We could define some constants in include/hw/pci/pci_ids.h
+for these, I suppose.
+
+> +    k->class_id = PCI_CLASS_DISPLAY_OTHER;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+> +    dc->desc = "SM501 Display Controller";
+> +    dc->props = sm501_pci_properties;
+> +    dc->hotpluggable = false;
+
+This needs a reset and vmsd as well.
+
+> +}
+> +
+> +static const TypeInfo sm501_pci_info = {
+> +    .name          = TYPE_PCI_SM501,
+> +    .parent        = TYPE_PCI_DEVICE,
+> +    .instance_size = sizeof(SM501PCIState),
+> +    .class_init    = sm501_pci_class_init,
+> +};
+> +
+>  static void sm501_register_types(void)
 >  {
-> -    s->base = base;
->      s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
->      SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
->                    s->local_mem_size_index);
-> @@ -1461,7 +1459,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
->      SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->      DeviceState *usb_dev;
+>      type_register_static(&sm501_sysbus_info);
+> +    type_register_static(&sm501_pci_info);
+>  }
 >
-> -    sm501_init(&s->state, dev, s->base, s->vram_size);
-> +    sm501_init(&s->state, dev, s->vram_size);
->      sysbus_init_mmio(sbd, &s->state.local_mem_region);
->      sysbus_init_mmio(sbd, &s->state.mmio_region);
->
-> diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
-> index 16e500b..832ee61 100644
-> --- a/hw/display/sm501_template.h
-> +++ b/hw/display/sm501_template.h
-> @@ -103,13 +103,13 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
->                   uint8_t *palette, int c_y, uint8_t *d, int width)
->  {
->      int x, i;
-> -    uint8_t bitset = 0;
-> +    uint8_t *pixval, bitset = 0;
->
->      /* get hardware cursor pattern */
->      uint32_t cursor_addr = get_hwc_address(s, crt);
->      assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
->      cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
-> -    cursor_addr += s->base;
-> +    pixval = s->local_mem + cursor_addr;
->
->      /* get cursor position */
->      x = get_hwc_x(s, crt);
-> @@ -120,8 +120,8 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
->
->          /* get pixel value */
->          if (i % 4 == 0) {
-> -            bitset = ldub_phys(&address_space_memory, cursor_addr);
-> -            cursor_addr++;
-> +            bitset = ldub_p(pixval);
-> +            pixval++;
->          }
->          v = bitset & 3;
->          bitset >>= 2;
+>  type_init(sm501_register_types)
 > --
 > 2.7.4
-
-(The data sheet suggests that the hardware cursor can also be in
-"external memory", but it looks like we never supported that
-previously and I can't figure out how it is supposed to work either.
-So no problem with restricting it to be in the local video ram blob.)
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM
