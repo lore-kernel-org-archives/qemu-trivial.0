@@ -1,58 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjX2v-0004b0-B8
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 15:09:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36732)
+	id 1cjX6Q-000710-9A
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 15:13:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjX2s-0004Y1-3j
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 15:09:51 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cjX6O-0006zp-CX
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 15:13:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjX2r-0002CS-87
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 15:09:50 -0500
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:38271)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjX2r-0002B4-2D
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 15:09:49 -0500
-Received: by mail-wm0-x22a.google.com with SMTP id t193so403211wmt.1
-	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 12:09:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Pxh7MotX0eXL8YWymUnlUX3bRsqAgJp1b0eSUUNXjPg=;
-	b=KYVT1t/xPOZRJPfpDBItVbTmWf7AeneOaS+zJJZ9/+NcvZq+O4/G1gIYtang+ooF3T
-	o3kVolxyf38HUacApnaHOq8rqlBjAlkgV7jCfjGMQJ52Z9KwHe5MOotaSThH8e3TJ3jv
-	BB/QfBxxooBLFRqpd1t37PV1NE09SJqPqR2AU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Pxh7MotX0eXL8YWymUnlUX3bRsqAgJp1b0eSUUNXjPg=;
-	b=fl7APxrx7vOG5NdR4j5Do863ihis98x4dJgZGey1GR/8k8GxJgfNX+5+G1O6ln1jlX
-	J82/v1L8YrFZ3uiOKmjostwvsRaGXIzq4ILTH1KTmcPx3MGFEYGzQ5r+rwgktRMPNEpc
-	o4lI0PxnuVpRhLqx9M7bnCB7H3ZUG2gns+jPX2B1tiWxVw1QO2ACmyo2R/qb92cFuLRx
-	OjGdVZ5gwh43nIRIVjP12pcg9imdTsQRKttmVfD+n5AVQMPucVf1hATcWW30wol8BBYK
-	OQK0aVjaQaWMm8wQ+dzL0fqAhbf5dVKIAoLy7slCH69Hy/PsjyHdlJc9x39TrEUTzXB2
-	INQw==
-X-Gm-Message-State: AMke39m9+VpObsjJIYwKFEkRpoH0Qofeaj4YUeWT1YFWxttBg772xqRXEeYqCyPk7lCQ1DAlEmDEDka9SKZIZ5Zn
-X-Received: by 10.28.55.199 with SMTP id e190mr52182wma.92.1488485388082; Thu,
-	02 Mar 2017 12:09:48 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 12:09:27 -0800 (PST)
-In-Reply-To: <CAFEAcA8dP-Z_srttBZSOOONkXGSka-vXrDdVbPGR64Q+Ko=ooA@mail.gmail.com>
-References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<e160b509a76bcf00d1af4665e26c6870eb363cab.1488068248.git.balaton@eik.bme.hu>
-	<CAFEAcA8dP-Z_srttBZSOOONkXGSka-vXrDdVbPGR64Q+Ko=ooA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Mar 2017 20:09:27 +0000
-Message-ID: <CAFEAcA_UCiFXy-RyMdduiRhXg4f5m6M=AcR2Uvr_r7=f37zUeg@mail.gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	(envelope-from <balaton@eik.bme.hu>) id 1cjX6N-0003xm-97
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 15:13:28 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:55231)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1cjX6H-0003vi-DM; Thu, 02 Mar 2017 15:13:21 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id 05B4D745798;
+	Thu,  2 Mar 2017 21:13:20 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id C8F6B745796; Thu,  2 Mar 2017 21:13:19 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id C741474577A;
+	Thu,  2 Mar 2017 21:13:19 +0100 (CET)
+Date: Thu, 2 Mar 2017 21:13:19 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 06/14] sm501: Add missing
- arbitration control register
+In-Reply-To: <CAFEAcA-G8_yOjmHBb9S+ErCoxSAje4gr1S0Y=FQjwCsxK+GYGw@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1703022107450.83701@zero.eik.bme.hu>
+References: <cover.1488068248.git.balaton@eik.bme.hu>
+	<c554a16417ef22dbc29919a2747801be5ed7fede.1488068248.git.balaton@eik.bme.hu>
+	<CAFEAcA-G8_yOjmHBb9S+ErCoxSAje4gr1S0Y=FQjwCsxK+GYGw@mail.gmail.com>
+User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 05/14] sm501: Add
+ emulation of chip connected via PCI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,56 +49,129 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 20:09:51 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 20:13:29 -0000
 
-On 2 March 2017 at 20:08, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 3 December 2016 at 15:32, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+On Thu, 2 Mar 2017, Peter Maydell wrote:
+> On 25 February 2017 at 18:31, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>> Only the display controller part is created automatically on PCI
+>>
 >> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 >> ---
->>  hw/display/sm501.c | 7 +++++++
->>  1 file changed, 7 insertions(+)
+>>
+>> v2: Split off removing dependency on base address to separate patch
+>>
+>>  hw/display/sm501.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 52 insertions(+)
 >>
 >> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->> index d9219bd..b977094 100644
+>> index 1cda127..d9219bd 100644
 >> --- a/hw/display/sm501.c
 >> +++ b/hw/display/sm501.c
->> @@ -477,6 +477,7 @@ typedef struct SM501State {
->>      uint32_t gpio_31_0_control;
->>      uint32_t gpio_63_32_control;
->>      uint32_t dram_control;
->> +    uint32_t arbitration_control;
->>      uint32_t irq_mask;
->>      uint32_t misc_timing;
->>      uint32_t power_mode_control;
->> @@ -760,6 +761,9 @@ static uint64_t sm501_system_config_read(void *opaque, hwaddr addr,
->>      case SM501_DRAM_CONTROL:
->>          ret = (s->dram_control & 0x07F107C0) | s->local_mem_size_index << 13;
->>          break;
->> +    case SM501_ARBTRTN_CONTROL:
->> +        ret = s->arbitration_control;
->> +        break;
->>      case SM501_IRQ_MASK:
->>          ret = s->irq_mask;
->>          break;
->> @@ -812,6 +816,9 @@ static void sm501_system_config_write(void *opaque, hwaddr addr,
->>          /* TODO : check validity of size change */
->>          s->dram_control |=  value & 0x7FFFFFC3;
->>          break;
->> +    case SM501_ARBTRTN_CONTROL:
->> +        s->arbitration_control =  value & 0x37777777;
->> +        break;
->>      case SM501_IRQ_MASK:
->>          s->irq_mask = value;
->>          break;
+>> @@ -31,6 +31,7 @@
+>>  #include "ui/console.h"
+>>  #include "hw/devices.h"
+>>  #include "hw/sysbus.h"
+>> +#include "hw/pci/pci.h"
+>>  #include "qemu/range.h"
+>>  #include "ui/pixel_ops.h"
+>>  #include "exec/address-spaces.h"
+>> @@ -1507,9 +1508,60 @@ static const TypeInfo sm501_sysbus_info = {
+>>      .class_init    = sm501_sysbus_class_init,
+>>  };
+>>
+>> +#define TYPE_PCI_SM501 "sm501"
+>> +#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
+>> +
+>> +typedef struct {
+>> +    /*< private >*/
+>> +    PCIDevice parent_obj;
+>> +    /*< public >*/
+>> +    SM501State state;
+>> +    uint32_t vram_size;
+>> +} SM501PCIState;
+>> +
+>> +static void sm501_realize_pci(PCIDevice *dev, Error **errp)
+>> +{
+>> +    SM501PCIState *s = PCI_SM501(dev);
+>> +
+>> +    sm501_init(&s->state, DEVICE(dev), s->vram_size);
+>> +    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
+>> +                     &s->state.local_mem_region);
+>> +    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
+>> +                     &s->state.mmio_region);
+>> +}
+>> +
+>> +static Property sm501_pci_properties[] = {
+>> +    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size,
+>> +                       64 * 1024 * 1024),
+>
+> Something needs to sanity check this value, because it's
+> user settable in the PCI device. (In the sysbus version you
+> can only create it from board code, and we can assume board
+> code doesn't pass us silly values.)
+>
+> Or you could just hardcode the PCI device to always be 64MB,
+> I guess :-)
+
+Maybe a check could be added to get_local_mem_size_index(). What should it 
+do for invalid values?
+
+>> +    DEFINE_PROP_END_OF_LIST(),
+>> +};
+>> +
+>> +static void sm501_pci_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+>> +
+>> +    k->realize = sm501_realize_pci;
+>> +    k->vendor_id = 0x126f;
+>> +    k->device_id = 0x0501;
+>
+> We could define some constants in include/hw/pci/pci_ids.h
+> for these, I suppose.
+
+Should I add that as well? Should it be in this or separate patch?
+
+>> +    k->class_id = PCI_CLASS_DISPLAY_OTHER;
+>> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+>> +    dc->desc = "SM501 Display Controller";
+>> +    dc->props = sm501_pci_properties;
+>> +    dc->hotpluggable = false;
+>
+> This needs a reset and vmsd as well.
+
+Why? OK reset makes sense but if this is only used in sh and I think that 
+might have other devices that don't support migration then adding a vmsd 
+here only achieves that if we ever change anything in the state the vmsd 
+needs to be changed, compatibility ensured, etc. And that's for nothing if 
+the sh machine cannot be migrated anyway. There seems to be a lot of 
+boilerplate already, it may exceed the actual code at some point.
+
+But I can add vmstate for sysbus version if you think it's needed, I just 
+don't see the point.
+
+>> +}
+>> +
+>> +static const TypeInfo sm501_pci_info = {
+>> +    .name          = TYPE_PCI_SM501,
+>> +    .parent        = TYPE_PCI_DEVICE,
+>> +    .instance_size = sizeof(SM501PCIState),
+>> +    .class_init    = sm501_pci_class_init,
+>> +};
+>> +
+>>  static void sm501_register_types(void)
+>>  {
+>>      type_register_static(&sm501_sysbus_info);
+>> +    type_register_static(&sm501_pci_info);
+>>  }
+>>
+>>  type_init(sm501_register_types)
 >> --
 >> 2.7.4
 >
-> Applied, thanks.
-
-Doh, wrong canned-email-reply template! I meant
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+> thanks
+> -- PMM
+>
+>
 
