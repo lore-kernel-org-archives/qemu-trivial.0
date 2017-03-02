@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjVr0-0006sB-6E
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 13:53:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44010)
+	id 1cjW1B-0001n7-4G
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 14:04:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47680)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjVqx-0006rW-4V
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 13:53:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjW19-0001mq-Aw
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:04:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjVqw-0000Yf-3j
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 13:53:27 -0500
-Received: from mail-wr0-x22e.google.com ([2a00:1450:400c:c0c::22e]:34705)
+	(envelope-from <peter.maydell@linaro.org>) id 1cjW18-0006HU-Gf
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:03:59 -0500
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:37350)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjVqv-0000XX-Td
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 13:53:26 -0500
-Received: by mail-wr0-x22e.google.com with SMTP id l37so59221337wrc.1
-	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 10:53:25 -0800 (PST)
+	id 1cjW18-0006Gy-9N
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:03:58 -0500
+Received: by mail-wm0-x235.google.com with SMTP id n11so33579335wma.0
+	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 11:03:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=MKdKAmnncxHu2Asj80kkDvhTxHSgrSIuDz5x+RTKlo8=;
-	b=RfNYZraGVRVrBYOeUXmM42XdS5X1ENPN12Mc36zq9j3lWIWYBHAcOhv8DqFtb2m6L1
-	Vq68D3EvbU8AxOdMMftObe9U4mOXvlk7jWcU16o76fucCiDcavjp54D5QI7OmmJ2IJmS
-	nlIddUu9AKF1ez6hbsQ1RVBrf42a5xQ5B038M=
+	:cc; bh=u483a9cGrZC4ifAuvNS9Xx2yKbIoeZBUW24Qv0RUbhw=;
+	b=ifxG+/J1DAONyB+3p4ysuz21EGeCHKLkTqHZhrevhJrKe8dAEv3Bs+5nk5tTIARx4h
+	gbrxwdu+PPf+EG3rQ61n/Q0FZ3dQ8ysge7IfwUeSk49YEH0W4XgBhos5qKh3NRAH1P7j
+	FRNma1mExr7JrGG8w7m04LDV4BjUtneKZNuF8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=MKdKAmnncxHu2Asj80kkDvhTxHSgrSIuDz5x+RTKlo8=;
-	b=sFVw9Gs1hqAQYe7z4ftfq9y2xm1gaswwd/4hQjIHcSOImbn28Y/kjDRBu50OvSpLIx
-	YolSUYkYj2kZHvPO9HbvVURlrRBk5HSTeM8ycHjws5njqGetsmmgF5kTFr/5pxwykQPY
-	zOQYRmOwg/C/0IntMTffx5DslG7HEbM/YhKTR9j5qivaAUU9lJ1K8/sgKXM+z86pmg2h
-	rFjtaGDw9PYTkQHCps0/kXI2BYlYYpDy1Hu8Biu0cJgeZBwMQs9NqrVc4X/VU+oX4itw
-	G+KwOWEx0ToZ++Ztoxj/RHJf56itaZMI3ijPmS/SXrt7X6C0Mowwe2dqPFupf5deD09n
-	1m1Q==
-X-Gm-Message-State: AMke39kdqyN2SA/NNqnfD9ApgnARNGgZ4bHy+vSA3iccgVWo3i+EQkbCQINki+XOSsU6WK/Co1YEZctLkksq/j3B
-X-Received: by 10.223.150.205 with SMTP id u71mr13707004wrb.195.1488480804591; 
-	Thu, 02 Mar 2017 10:53:24 -0800 (PST)
+	bh=u483a9cGrZC4ifAuvNS9Xx2yKbIoeZBUW24Qv0RUbhw=;
+	b=Swdq0ipI0BEDhVw6rmrv4xgb92j+nK6CMFwIEw9LH83CCWYIA7YUBUxvDXSNygUOhD
+	rijCfqQDfSwnoQEHYwjB4pJcMcP0rNr92qeojHuoHwpkzcqsCNlXojQQXY7S62Qfazw0
+	Ik11S8r+/k9dAQVUoXCYBAipAjI6q1uAM7cHbCR7FIkRtPd1ulATES9xwKJs6wH5ai7X
+	TlAIiHcO7RWVdIDeCos22h1kBPBMelSlFK6Ytjf/L8OqeglDmrIXuwp/G2sRcfVgshV0
+	542auHHykj0YpKosHE5k2Udp1Oo7AE1eYELaJtZYkXEIt8rH8afGjvfbmvcZvaSs1/up
+	aPPQ==
+X-Gm-Message-State: AMke39litdL3u4glBIYH3JM5FiBFrXa7vUNU9jf3ff3G4YviO93xuvpqWZB5AYm/Al2o7eUfFmvFj0Jjbii0H/uE
+X-Received: by 10.28.55.199 with SMTP id e190mr9121048wma.92.1488481437070;
+	Thu, 02 Mar 2017 11:03:57 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 10:53:04 -0800 (PST)
-In-Reply-To: <65f979bc1683c46f74ddb5e931810f4e2b8ea27c.1488068248.git.balaton@eik.bme.hu>
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 11:03:36 -0800 (PST)
+In-Reply-To: <CAFEAcA8hgztzBZ=4EK7GR_1V4WnKL_hp-CopC1q5NwxeARkgSA@mail.gmail.com>
 References: <cover.1488068248.git.balaton@eik.bme.hu>
 	<65f979bc1683c46f74ddb5e931810f4e2b8ea27c.1488068248.git.balaton@eik.bme.hu>
+	<CAFEAcA8hgztzBZ=4EK7GR_1V4WnKL_hp-CopC1q5NwxeARkgSA@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Mar 2017 18:53:04 +0000
-Message-ID: <CAFEAcA8hgztzBZ=4EK7GR_1V4WnKL_hp-CopC1q5NwxeARkgSA@mail.gmail.com>
+Date: Thu, 2 Mar 2017 19:03:36 +0000
+Message-ID: <CAFEAcA_b_iOCBk0dXGNGLve0hM5sLx5qAzq5mvDN-5yARopkdg@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22e
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::235
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 02/14] sm501: Use defines
  instead of constants where available
 X-BeenThere: qemu-trivial@nongnu.org
@@ -64,55 +64,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 18:53:28 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 19:04:00 -0000
 
-On 7 November 2016 at 09:03, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> This also fixes the initial value of misc_control register to match the
-> comment which is likely what was intended but the DAC_POWER bit was set
-> instead. This value is unused so it does not really matter but is
-> fixed here for consistency.
+On 2 March 2017 at 18:53, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 7 November 2016 at 09:03, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> I just found a datasheet which says that the power-on-default
+> for the misc-control register is 0b0000.0000.0000.00x0.0001.0000.xxx0.0xxx
+> which means that the 0x1000 decimal value is correct and setting
+> the IRQ_INVERT bit is wrong.
 >
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->  hw/display/sm501.c          | 8 ++++----
->  hw/display/sm501_template.h | 2 +-
->  2 files changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 4f40dee..4eb085c 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -555,7 +555,7 @@ static uint32_t get_local_mem_size_index(uint32_t size)
->  static inline int is_hwc_enabled(SM501State *state, int crt)
->  {
->      uint32_t addr = crt ? state->dc_crt_hwc_addr : state->dc_panel_hwc_addr;
-> -    return addr & 0x80000000;
-> +    return addr & SM501_HWC_EN;
->  }
->
->  /**
-> @@ -1411,9 +1411,9 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
->      s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
->      SM501_DPRINTF("local mem size=%x. index=%d\n", get_local_mem_size(s),
->                    s->local_mem_size_index);
-> -    s->system_control = 0x00100000;
-> -    s->misc_control = 0x00001000; /* assumes SH, active=low */
-> -    s->dc_panel_control = 0x00010000;
-> +    s->system_control = 0x00100000; /* 2D engine FIFO empty */
-> +    s->misc_control = SM501_MISC_IRQ_INVERT; /* assumes SH, active=low */
-> +    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
->      s->dc_crt_control = 0x00010000;
+> I think the "active=low" bit is referencing the fact that the
+> DAC_POWER bit is 1 for "disable" and 0 for "enable".
 
-I just found a datasheet which says that the power-on-default
-for the misc-control register is 0b0000.0000.0000.00x0.0001.0000.xxx0.0xxx
-which means that the 0x1000 decimal value is correct and setting
-the IRQ_INVERT bit is wrong.
+Actually it's referring to bit 17 (which is an "X" in the reset value
+above), which is documented as being set by a GPIO pin on reset,
+and having different meanings for SH and SA1110. In this case we're
+saying 'reset bit 17 to 0, meaning "SH series CPU, Active Low"'.
 
-I think the "active=low" bit is referencing the fact that the
-DAC_POWER bit is 1 for "disable" and 0 for "enable".
+Note also that the low bits indicate the bus type which is 000 for
+SH and 001 for PCI, etc.
 
-It makes sense hardware-wise for the DAC to be powered off by default
-at reset as well I think.
+So a better comment here would be:
+    /* Bits 17 (SH), 7 (CDR), 6:5 (Test), 2:0 (Bus) are all supposed
+     * to be determined at reset by GPIO lines which set config bits.
+     * We hardwire them:
+     *  SH = 0 : Hitachi Ready Polarity == Active Low
+     *  CDR = 0 : do not reset clock divider
+     *  TEST = 0 : Normal mode (not testing the silicon)
+     *  BUS = 0 : Hitachi SH3/SH4
+     */
+    s->misc_control = SM501_MISC_DAC_POWER;
+
+...and you'll want to put something in to get the right Bus value
+for the PCI version.
 
 thanks
 -- PMM
