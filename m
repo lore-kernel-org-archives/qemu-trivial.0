@@ -1,45 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjXvH-0000P8-I2
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 16:06:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52063)
+	id 1cjXvz-0000yU-8E
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 16:06:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52334)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjXvF-0000Mp-0N
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 16:06:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjXvx-0000wE-O4
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 16:06:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjXvE-0006Oz-3s
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 16:06:00 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:61324)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1cjXv9-0006JY-LV; Thu, 02 Mar 2017 16:05:55 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 5332774577A;
-	Thu,  2 Mar 2017 22:05:53 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id A69B47456D4; Thu,  2 Mar 2017 22:05:52 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id A60C97456BC;
-	Thu,  2 Mar 2017 22:05:52 +0100 (CET)
-Date: Thu, 2 Mar 2017 22:05:52 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>
+	(envelope-from <peter.maydell@linaro.org>) id 1cjXvw-0006eP-St
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 16:06:45 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:35473)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cjXvw-0006e9-N2
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 16:06:44 -0500
+Received: by mail-wm0-x22d.google.com with SMTP id v186so1424031wmd.0
+	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 13:06:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=B5FxtIlbEj0e2KlaXUg+YDpQ+V/9i12Y0qeZImP777g=;
+	b=eq2b0IYWFJ8Errb9678pryi7hcuLDg+BTlmeYQtnUeOQZpjOxhdAsI+cRuQtdpTLUD
+	tEX+6QuDwBzgUx8mGVoxL4/UKMxEVnO3XcZ90HKVlMsBgEGEScV0eeBTvxDa4zM7WYsH
+	3saTL+mhVDJn4X4zdICUGUbT5NUoJsB4Ybi1c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=B5FxtIlbEj0e2KlaXUg+YDpQ+V/9i12Y0qeZImP777g=;
+	b=p6AoKIgpHdtdzFcrR6kwVwmLk4Xibn1j+GMoQpSn+W2pxUBIkmh+RNnoazX4Xv1HWJ
+	bZZouL67YEbxkJLSu8ePkAx85qIXHCYvHColk965DlmZBwk2pdYCKYsnWmulgge+t8lt
+	Gx6pnRmUsz4Y2EZs0J/+rpHBzsQ0w6IICbsiALaALeNtvz1hX51/w2A6VDBhRuSe+LD8
+	lRmfxLNNB3prEb0dFLWTHqq5ZzqLtrOGYUvi78vUX3ihqptHY0bVVMq20q4BS0kfSjiZ
+	QolHtUu6szj3WqcIVSpzIA4T1QtNUmOCa068FwK1/lv9qrSfwZAEKXpH62qRTffuJFoL
+	zsNg==
+X-Gm-Message-State: AMke39l7YhUeCfKn6/+IxCXC8WfsRAcFspK8XNTkVCMURQ0uGlFXEtZSF/4kbgv7UuPkCPokE0sb+wkYvFBcdqUZ
+X-Received: by 10.28.226.215 with SMTP id z206mr200858wmg.92.1488488803709;
+	Thu, 02 Mar 2017 13:06:43 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 13:06:23 -0800 (PST)
 In-Reply-To: <alpine.BSF.2.20.1703022152170.83701@zero.eik.bme.hu>
-Message-ID: <alpine.BSF.2.20.1703022203110.83701@zero.eik.bme.hu>
 References: <cover.1488068248.git.balaton@eik.bme.hu>
 	<869a8c5b526be9eb1316c9e7c7442bdd1c88c4b2.1488068248.git.balaton@eik.bme.hu>
 	<CAFEAcA9zswu1H-66avnAxWdq8QvCWpi1NTbcaGqDE=c=OOHcAw@mail.gmail.com>
 	<alpine.BSF.2.20.1703022115320.83701@zero.eik.bme.hu>
 	<CAFEAcA9PDjSN7pKVde9raHZH3ExWdSNWN82ST4AJLPahWNcKNQ@mail.gmail.com>
 	<alpine.BSF.2.20.1703022152170.83701@zero.eik.bme.hu>
-User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:738:2001:2001::2001
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Mar 2017 21:06:23 +0000
+Message-ID: <CAFEAcA_iwJe0ufotWZ=L4RYSJBpkDa_1Zt1D80zTAbLzQyYchQ@mail.gmail.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22d
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 13/14] sm501: Add reset
  function and vmstate descriptor
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,23 +67,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 21:06:02 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 21:06:46 -0000
 
-On Thu, 2 Mar 2017, BALATON Zoltan wrote:
+On 2 March 2017 at 20:55, BALATON Zoltan <balaton@eik.bme.hu> wrote:
 > On Thu, 2 Mar 2017, Peter Maydell wrote:
+>>
 >> On 2 March 2017 at 20:18, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>
 >>> On Thu, 2 Mar 2017, Peter Maydell wrote:
->>>> 
+>>>>
+>>>>
 >>>> Don't use qemu_register_reset(). Set the appropriate dc->reset
 >>>> function pointers instead.
->>> 
->>> 
+>>>
+>>>
+>>>
 >>> Any reason for that? This way I could save two more boilerplate functions
->>> because I could define reset function once, otherwise I'd need two 
+>>> because I could define reset function once, otherwise I'd need two
 >>> versions
 >>> taking sysbus and pci states just to extract the SM501State function and
 >>> call this function. Do you still think I should do that instead?
->> 
+>>
+>>
 >> qemu_register_reset is a pre-QOM method for doing reset;
 >> the standard QOM way of saying "my device has some reset
 >> behaviour" is to set its reset method pointer.
@@ -77,26 +96,20 @@ On Thu, 2 Mar 2017, BALATON Zoltan wrote:
 >> something kind of weird or (b) old device code that hasn't yet
 >> been converted to QOM.
 >
-> Hmm, does having a device with both sysbus and pci versions qualify as weird? 
-> Does adding a comment saying that this way we don't need two more reset 
-> functions just to call the registered one justifies using 
-> qemu_register_reset() or this function is deprecated and should not be used 
+>
+> Hmm, does having a device with both sysbus and pci versions qualify as
+> weird? Does adding a comment saying that this way we don't need two more
+> reset functions just to call the registered one justifies using
+> qemu_register_reset() or this function is deprecated and should not be used
 > and should go with the separate reset functions instead?
 
-On second thought I may go with the separate reset functions because then 
-I can also update the bus type in the misc_control (not that anything I 
-know depends on it but we can get it right).
+Just use the QOM reset method pointers. Every QOM device should have
+a reset method, and that should be how it gets
+reset. (PCI is special anyway, it needs to get reset when
+the guest does a PCI bus reset, and that results in your
+device's reset method getting called. Functions registered
+with qemu_register_reset() only get called for full system reset.)
 
->>> So should it be 4 patches: reset for pci, reset for sysbus, vmstate for 
->>> pci,
->>> vmstate for sysbus or 2 patches: reset for both, vmstate for both?
->> 
->> I think I'd go with 2 patches, since the two are going to
->> share the bulk of the implementation in each case.
->
-> OK, thanks for the explanation in previous reply as well, I'll do this then.
-
-So I may also add the reset function already in the QOMify and Add PCI 
-version patches then only one more patch is needed for the vmstate.
-
+thanks
+-- PMM
 
