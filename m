@@ -1,56 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjWpJ-0001PZ-84
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 14:55:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60513)
+	id 1cjWsB-00040U-NG
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 14:58:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33461)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjWpG-0001NR-Vh
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:55:47 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cjWs8-0003yK-Rs
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:58:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjWpG-0003Tq-7a
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:55:47 -0500
-Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:35538)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjWpG-0003T5-1I
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:55:46 -0500
-Received: by mail-wm0-x233.google.com with SMTP id v186so151663wmd.0
-	for <qemu-trivial@nongnu.org>; Thu, 02 Mar 2017 11:55:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=iQLcFTjcuceA6B2K3368oUu/8Pas+Ey1xsuzu8h9ZdM=;
-	b=FBEmrCGwCgaS8dnVQobVMlug/AFH1T01Wrryd7qYHbotXd6wfykqq5X9R2PWjuMcHh
-	ReqqSFy8gtDlee4a2YzEwrA5+5l7/O33dIrzeCTsLL/pxQ4uXDBJNe0KDZWh5fBAeVE8
-	q/6v/vdQ7VhMiNlbDwI3xRLJ44hREdDVWpRgY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=iQLcFTjcuceA6B2K3368oUu/8Pas+Ey1xsuzu8h9ZdM=;
-	b=WFSt2dqmbpY09FDd3pc9LQZhVt75LwWW3MGEEHAkSBAYm/ODn3GOq8X1UuAjQxT7sT
-	cWEsZa7BsVgXeVLbjF+wvuh7EoO9SS5S6jO9QB61SeaE/MABmcA0Ykva4xkUjfs/S2CC
-	Cho3CmSgdoiLkcO4fBulXPlCTedjxxUX6WkyMvL+YDkyNB5dYOfEYw+O7T48yb0/7QGh
-	d+NqdYgVqzVqdFxKK8DEeVnt9CT3gwJ7oTzxUVsJZ8Sc+jsZsi4d//Y5HHmpTr7rsxWe
-	dqV0HcJnhmFvoquPQylWU4akGYiUmjkOYd/9Hs39YxEAKf5xjWyah6rBJs9mUpROYr33
-	B2Bg==
-X-Gm-Message-State: AMke39n8P6lUE0GKs3YM/jxInYrsFMdfWyxNthEQVUuG8ABc2we8u1LD8wmBuq8IQ/vtP8XW0NbRvWZi7n98WP/a
-X-Received: by 10.28.226.215 with SMTP id z206mr19423wmg.92.1488484544973;
-	Thu, 02 Mar 2017 11:55:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.69 with HTTP; Thu, 2 Mar 2017 11:55:24 -0800 (PST)
-In-Reply-To: <6a3ecc27a153a5e79ba19542760c3037fe5c75f4.1488068248.git.balaton@eik.bme.hu>
-References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<6a3ecc27a153a5e79ba19542760c3037fe5c75f4.1488068248.git.balaton@eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Mar 2017 19:55:24 +0000
-Message-ID: <CAFEAcA_dY4UF8s8JtxGUtjJ_Mfvz5Gv3Mfypz45TAtnHuHQY7w@mail.gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	(envelope-from <balaton@eik.bme.hu>) id 1cjWs7-00050b-Q6
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 14:58:44 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:23988)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1cjWs3-0004we-MS; Thu, 02 Mar 2017 14:58:39 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id 244C1745796;
+	Thu,  2 Mar 2017 20:58:32 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 04D8E7456BC; Thu,  2 Mar 2017 20:58:32 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 040E17456D4;
+	Thu,  2 Mar 2017 20:58:32 +0100 (CET)
+Date: Thu, 2 Mar 2017 20:58:32 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::233
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 03/14] sm501: QOMify
+In-Reply-To: <CAFEAcA_b_iOCBk0dXGNGLve0hM5sLx5qAzq5mvDN-5yARopkdg@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1703022058020.83701@zero.eik.bme.hu>
+References: <cover.1488068248.git.balaton@eik.bme.hu>
+	<65f979bc1683c46f74ddb5e931810f4e2b8ea27c.1488068248.git.balaton@eik.bme.hu>
+	<CAFEAcA8hgztzBZ=4EK7GR_1V4WnKL_hp-CopC1q5NwxeARkgSA@mail.gmail.com>
+	<CAFEAcA_b_iOCBk0dXGNGLve0hM5sLx5qAzq5mvDN-5yARopkdg@mail.gmail.com>
+User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 02/14] sm501: Use defines
+ instead of constants where available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,37 +50,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Mar 2017 19:55:48 -0000
+X-List-Received-Date: Thu, 02 Mar 2017 19:58:46 -0000
 
-On 3 December 2016 at 02:05, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+On Thu, 2 Mar 2017, Peter Maydell wrote:
+> On 2 March 2017 at 18:53, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 7 November 2016 at 09:03, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>> I just found a datasheet which says that the power-on-default
+>> for the misc-control register is 0b0000.0000.0000.00x0.0001.0000.xxx0.0xxx
+>> which means that the 0x1000 decimal value is correct and setting
+>> the IRQ_INVERT bit is wrong.
+>>
+>> I think the "active=low" bit is referencing the fact that the
+>> DAC_POWER bit is 1 for "disable" and 0 for "enable".
+>
+> Actually it's referring to bit 17 (which is an "X" in the reset value
+> above), which is documented as being set by a GPIO pin on reset,
+> and having different meanings for SH and SA1110. In this case we're
+> saying 'reset bit 17 to 0, meaning "SH series CPU, Active Low"'.
+>
+> Note also that the low bits indicate the bus type which is 000 for
+> SH and 001 for PCI, etc.
+>
+> So a better comment here would be:
+>    /* Bits 17 (SH), 7 (CDR), 6:5 (Test), 2:0 (Bus) are all supposed
+>     * to be determined at reset by GPIO lines which set config bits.
+>     * We hardwire them:
+>     *  SH = 0 : Hitachi Ready Polarity == Active Low
+>     *  CDR = 0 : do not reset clock divider
+>     *  TEST = 0 : Normal mode (not testing the silicon)
+>     *  BUS = 0 : Hitachi SH3/SH4
+>     */
+>    s->misc_control = SM501_MISC_DAC_POWER;
+>
+> ...and you'll want to put something in to get the right Bus value
+> for the PCI version.
 
-It would be helpful to mention in the commit message that we don't
-yet implement reset or vmstate and that those are coming in a
-later commit.
+Thanks for investigating this, I'll update it in v3.
 
-(There is almost always something useful to say in a commit
-message body; subject-line-only commit messages should
-be the rare exception in my opinion.)
-
-> +
-> +static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = sm501_realize_sysbus;
-> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-> +    dc->desc = "SM501 Multimedia Companion";
-> +    dc->props = sm501_sysbus_properties;
-> +/* Note: pointer property "chr-state" may remain null, thus
-> + * no need for dc->cannot_instantiate_with_device_add_yet = true;
-> + */
-
-This comment should be indented.
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 
