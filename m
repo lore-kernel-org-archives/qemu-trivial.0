@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjcMX-0006WT-3k
+	id 1cjcMX-0006Wn-9p
 	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 20:50:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55814)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55919)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjcMN-0006KX-T3
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:21 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cjcMR-0006OK-1q
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjcMM-0001IH-8j
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:19 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:46596)
+	(envelope-from <balaton@eik.bme.hu>) id 1cjcMP-0001L8-Iz
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:23 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:46599)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1cjcMH-0001E7-HF; Thu, 02 Mar 2017 20:50:13 -0500
+	id 1cjcMI-0001Dw-4t; Thu, 02 Mar 2017 20:50:14 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 1191A74595A;
+	by localhost (Postfix) with SMTP id 16AD874595C;
 	Fri,  3 Mar 2017 02:50:11 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 5881574595F; Fri,  3 Mar 2017 02:50:10 +0100 (CET)
-Message-Id: <a13bb1390c140d5c7cdbf13bd22b2db2a0723e2a.1488504063.git.balaton@eik.bme.hu>
+	id 512D2745965; Fri,  3 Mar 2017 02:50:10 +0100 (CET)
+Message-Id: <2631f4fa83bdb4ea9da97cb807a8ff1756db1684.1488504063.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1488504063.git.balaton@eik.bme.hu>
 References: <cover.1488504063.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
-Date: Sat, 25 Feb 2017 20:25:11 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH v3 10/13] sm501: Add support for panel layer
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:738:2001:2001::2001
+Subject: [Qemu-trivial] [PATCH v3 08/13] sm501: Fix hardware cursor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,159 +40,337 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Mar 2017 01:50:21 -0000
+Date: Fri, 03 Mar 2017 01:50:26 -0000
+X-Original-Date: Sun, 4 Dec 2016 19:01:07 +0100
+X-List-Received-Date: Fri, 03 Mar 2017 01:50:26 -0000
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
 
-v2: Split off renaming a variable to separate clean up patch
+v3: simplify return expression in get_bpp
 
- hw/display/sm501.c | 63 +++++++++++++++++++++++++++---------------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
+ hw/display/sm501.c          | 169 +++++++++++++++++++++++++-------------------
+ hw/display/sm501_template.h |  25 +++----
+ 2 files changed, 107 insertions(+), 87 deletions(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 30b9135..607eddc 100644
+index 021b605..de9f3e7 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -2,6 +2,7 @@
-  * QEMU SM501 Device
-  *
-  * Copyright (c) 2008 Shin-ichiro KAWASAKI
-+ * Copyright (c) 2016 BALATON Zoltan
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-@@ -42,8 +43,11 @@
-  *   - Minimum implementation for Linux console : mmio regs and CRT layer.
-  *   - 2D graphics acceleration partially supported : only fill rectangle.
-  *
-- * TODO:
-+ * Status: 2016/12/04
-+ *   - Misc fixes: endianness, hardware cursor
-  *   - Panel support
-+ *
-+ * TODO:
-  *   - Touch panel support
-  *   - USB support
-  *   - UART support
-@@ -1301,18 +1305,16 @@ static inline int get_depth_index(DisplaySurface *surface)
-     }
+@@ -554,6 +554,24 @@ static uint32_t get_local_mem_size_index(uint32_t size)
+     return index;
  }
  
--static void sm501_draw_crt(SM501State *s)
-+static void sm501_update_display(void *opaque)
++static inline int get_width(SM501State *s, int crt)
++{
++    int width = crt ? s->dc_crt_h_total : s->dc_panel_h_total;
++    return (width & 0x00000FFF) + 1;
++}
++
++static inline int get_height(SM501State *s, int crt)
++{
++    int height = crt ? s->dc_crt_v_total : s->dc_panel_v_total;
++    return (height & 0x00000FFF) + 1;
++}
++
++static inline int get_bpp(SM501State *s, int crt)
++{
++    int bpp = crt ? s->dc_crt_control : s->dc_panel_control;
++    return 1 << (bpp & 3);
++}
++
+ /**
+  * Check the availability of hardware cursor.
+  * @param crt  0 for PANEL, 1 for CRT.
+@@ -568,10 +586,10 @@ static inline int is_hwc_enabled(SM501State *state, int crt)
+  * Get the address which holds cursor pattern data.
+  * @param crt  0 for PANEL, 1 for CRT.
+  */
+-static inline uint32_t get_hwc_address(SM501State *state, int crt)
++static inline uint8_t *get_hwc_address(SM501State *state, int crt)
  {
-+    SM501State *s = (SM501State *)opaque;
+     uint32_t addr = crt ? state->dc_crt_hwc_addr : state->dc_panel_hwc_addr;
+-    return (addr & 0x03FFFFF0)/* >> 4*/;
++    return state->local_mem + (addr & 0x03FFFFF0);
+ }
+ 
+ /**
+@@ -597,50 +615,48 @@ static inline uint32_t get_hwc_x(SM501State *state, int crt)
+ }
+ 
+ /**
+- * Get the cursor position in x coordinate.
++ * Get the hardware cursor palette.
+  * @param crt  0 for PANEL, 1 for CRT.
+- * @param index  0, 1, 2 or 3 which specifies color of corsor dot.
++ * @param palette  pointer to a [3 * 3] array to store color values in
+  */
+-static inline uint16_t get_hwc_color(SM501State *state, int crt, int index)
++static inline void get_hwc_palette(SM501State *state, int crt, uint8_t *palette)
+ {
+-    uint32_t color_reg = 0;
+-    uint16_t color_565 = 0;
+-
+-    if (index == 0) {
+-        return 0;
+-    }
+-
+-    switch (index) {
+-    case 1:
+-    case 2:
+-        color_reg = crt ? state->dc_crt_hwc_color_1_2
+-                        : state->dc_panel_hwc_color_1_2;
+-        break;
+-    case 3:
+-        color_reg = crt ? state->dc_crt_hwc_color_3
+-                        : state->dc_panel_hwc_color_3;
+-        break;
+-    default:
+-        printf("invalid hw cursor color.\n");
+-        abort();
+-    }
++    int i;
++    uint32_t color_reg;
++    uint16_t rgb565;
++
++    for (i = 0; i < 3; i++) {
++        if (i + 1 == 3) {
++            color_reg = crt ? state->dc_crt_hwc_color_3
++                            : state->dc_panel_hwc_color_3;
++        } else {
++            color_reg = crt ? state->dc_crt_hwc_color_1_2
++                            : state->dc_panel_hwc_color_1_2;
++        }
+ 
+-    switch (index) {
+-    case 1:
+-    case 3:
+-        color_565 = (uint16_t)(color_reg & 0xFFFF);
+-        break;
+-    case 2:
+-        color_565 = (uint16_t)((color_reg >> 16) & 0xFFFF);
+-        break;
++        if (i + 1 == 2) {
++            rgb565 = (color_reg >> 16) & 0xFFFF;
++        } else {
++            rgb565 = color_reg & 0xFFFF;
++        }
++        palette[i * 3 + 0] = (rgb565 << 3) & 0xf8; /* red */
++        palette[i * 3 + 1] = (rgb565 >> 3) & 0xfc; /* green */
++        palette[i * 3 + 2] = (rgb565 >> 8) & 0xf8; /* blue */
+     }
+-    return color_565;
+ }
+ 
+-static int within_hwc_y_range(SM501State *state, int y, int crt)
++static inline void hwc_invalidate(SM501State *s, int crt)
+ {
+-    int hwc_y = get_hwc_y(state, crt);
+-    return (hwc_y <= y && y < hwc_y + SM501_HWC_HEIGHT);
++    int w = get_width(s, crt);
++    int h = get_height(s, crt);
++    int bpp = get_bpp(s, crt);
++    int start = get_hwc_y(s, crt);
++    int end = MIN(h, start + SM501_HWC_HEIGHT) + 1;
++
++    start *= w * bpp;
++    end *= w * bpp;
++
++    memory_region_set_dirty(&s->local_mem_region, start, end - start);
+ }
+ 
+ static void sm501_2d_operation(SM501State *s)
+@@ -1021,10 +1037,18 @@ static void sm501_disp_ctrl_write(void *opaque, hwaddr addr,
+         break;
+ 
+     case SM501_DC_PANEL_HWC_ADDR:
+-        s->dc_panel_hwc_addr = value & 0x8FFFFFF0;
++        value &= 0x8FFFFFF0;
++        if (value != s->dc_panel_hwc_addr) {
++            hwc_invalidate(s, 0);
++            s->dc_panel_hwc_addr = value;
++        }
+         break;
+     case SM501_DC_PANEL_HWC_LOC:
+-        s->dc_panel_hwc_location = value & 0x0FFF0FFF;
++        value &= 0x0FFF0FFF;
++        if (value != s->dc_panel_hwc_location) {
++            hwc_invalidate(s, 0);
++            s->dc_panel_hwc_location = value;
++        }
+         break;
+     case SM501_DC_PANEL_HWC_COLOR_1_2:
+         s->dc_panel_hwc_color_1_2 = value;
+@@ -1056,10 +1080,18 @@ static void sm501_disp_ctrl_write(void *opaque, hwaddr addr,
+         break;
+ 
+     case SM501_DC_CRT_HWC_ADDR:
+-        s->dc_crt_hwc_addr = value & 0x8FFFFFF0;
++        value &= 0x8FFFFFF0;
++        if (value != s->dc_crt_hwc_addr) {
++            hwc_invalidate(s, 1);
++            s->dc_crt_hwc_addr = value;
++        }
+         break;
+     case SM501_DC_CRT_HWC_LOC:
+-        s->dc_crt_hwc_location = value & 0x0FFF0FFF;
++        value &= 0x0FFF0FFF;
++        if (value != s->dc_crt_hwc_location) {
++            hwc_invalidate(s, 1);
++            s->dc_crt_hwc_location = value;
++        }
+         break;
+     case SM501_DC_CRT_HWC_COLOR_1_2:
+         s->dc_crt_hwc_color_1_2 = value;
+@@ -1182,8 +1214,9 @@ static const MemoryRegionOps sm501_2d_engine_ops = {
+ typedef void draw_line_func(uint8_t *d, const uint8_t *s,
+                             int width, const uint32_t *pal);
+ 
+-typedef void draw_hwc_line_func(SM501State *s, int crt, uint8_t *palette,
+-                                int c_y, uint8_t *d, int width);
++typedef void draw_hwc_line_func(uint8_t *d, const uint8_t *s,
++                                int width, const uint8_t *palette,
++                                int c_x, int c_y);
+ 
+ #define DEPTH 8
+ #include "sm501_template.h"
+@@ -1271,12 +1304,11 @@ static inline int get_depth_index(DisplaySurface *surface)
+ static void sm501_draw_crt(SM501State *s)
+ {
      DisplaySurface *surface = qemu_console_surface(s->con);
-     int y, c_x, c_y;
--    uint8_t *hwc_src, *src = s->local_mem;
--    int width = get_width(s, 1);
--    int height = get_height(s, 1);
--    int src_bpp = get_bpp(s, 1);
-+    int crt = (s->dc_crt_control & SM501_DC_CRT_CONTROL_SEL) ? 1 : 0;
-+    int width = get_width(s, crt);
-+    int height = get_height(s, crt);
-+    int src_bpp = get_bpp(s, crt);
+-    int y;
+-    int width = (s->dc_crt_h_total & 0x00000FFF) + 1;
+-    int height = (s->dc_crt_v_total & 0x00000FFF) + 1;
+-
+-    uint8_t  *src = s->local_mem;
+-    int src_bpp = 0;
++    int y, c_x, c_y;
++    uint8_t *hwc_src, *src = s->local_mem;
++    int width = get_width(s, 1);
++    int height = get_height(s, 1);
++    int src_bpp = get_bpp(s, 1);
      int dst_bpp = surface_bytes_per_pixel(surface);
--    uint32_t *palette = (uint32_t *)&s->dc_palette[SM501_DC_CRT_PALETTE -
--                                                   SM501_DC_PANEL_PALETTE];
--    uint8_t hwc_palette[3 * 3];
-     int dst_depth_index = get_depth_index(surface);
-     draw_line_func *draw_line = NULL;
-     draw_hwc_line_func *draw_hwc_line = NULL;
-@@ -1320,7 +1322,19 @@ static void sm501_draw_crt(SM501State *s)
-     int y_start = -1;
-     ram_addr_t page_min = ~0l;
-     ram_addr_t page_max = 0l;
--    ram_addr_t offset = 0;
-+    ram_addr_t offset;
-+    uint32_t *palette;
-+    uint8_t hwc_palette[3 * 3];
-+    uint8_t *hwc_src;
-+
-+    if (!((crt ? s->dc_crt_control : s->dc_panel_control)
-+          & SM501_DC_CRT_CONTROL_ENABLE)) {
-+        return;
-+    }
-+
-+    palette = (uint32_t *)(crt ? &s->dc_palette[SM501_DC_CRT_PALETTE -
-+                                                SM501_DC_PANEL_PALETTE]
-+                               : &s->dc_palette[0]);
+     uint32_t *palette = (uint32_t *)&s->dc_palette[SM501_DC_CRT_PALETTE -
+                                                    SM501_DC_PANEL_PALETTE];
+@@ -1291,17 +1323,14 @@ static void sm501_draw_crt(SM501State *s)
+     ram_addr_t offset = 0;
  
      /* choose draw_line function */
-     switch (src_bpp) {
-@@ -1334,20 +1348,19 @@ static void sm501_draw_crt(SM501State *s)
-         draw_line = draw_line32_funcs[dst_depth_index];
+-    switch (s->dc_crt_control & 3) {
+-    case SM501_DC_CRT_CONTROL_8BPP:
+-        src_bpp = 1;
++    switch (src_bpp) {
++    case 1:
+         draw_line = draw_line8_funcs[ds_depth_index];
+         break;
+-    case SM501_DC_CRT_CONTROL_16BPP:
+-        src_bpp = 2;
++    case 2:
+         draw_line = draw_line16_funcs[ds_depth_index];
+         break;
+-    case SM501_DC_CRT_CONTROL_32BPP:
+-        src_bpp = 4;
++    case 4:
+         draw_line = draw_line32_funcs[ds_depth_index];
          break;
      default:
--        printf("sm501 draw crt : invalid DC_CRT_CONTROL=%x.\n",
--               s->dc_crt_control);
-+        printf("sm501 update display : invalid control register value.\n");
-         abort();
-         break;
-     }
+@@ -1313,18 +1342,12 @@ static void sm501_draw_crt(SM501State *s)
  
      /* set up to draw hardware cursor */
--    if (is_hwc_enabled(s, 1)) {
-+    if (is_hwc_enabled(s, crt)) {
+     if (is_hwc_enabled(s, 1)) {
+-        int i;
+-
+-        /* get cursor palette */
+-        for (i = 0; i < 3; i++) {
+-            uint16_t rgb565 = get_hwc_color(s, 1, i + 1);
+-            hwc_palette[i * 3 + 0] = (rgb565 & 0xf800) >> 8; /* red */
+-            hwc_palette[i * 3 + 1] = (rgb565 & 0x07e0) >> 3; /* green */
+-            hwc_palette[i * 3 + 2] = (rgb565 & 0x001f) << 3; /* blue */
+-        }
+-
          /* choose cursor draw line function */
-         draw_hwc_line = draw_hwc_line_funcs[dst_depth_index];
--        hwc_src = get_hwc_address(s, 1);
--        c_x = get_hwc_x(s, 1);
--        c_y = get_hwc_y(s, 1);
--        get_hwc_palette(s, 1, hwc_palette);
-+        hwc_src = get_hwc_address(s, crt);
-+        c_x = get_hwc_x(s, crt);
-+        c_y = get_hwc_y(s, crt);
-+        get_hwc_palette(s, crt, hwc_palette);
+         draw_hwc_line = draw_hwc_line_funcs[ds_depth_index];
++        hwc_src = get_hwc_address(s, 1);
++        c_x = get_hwc_x(s, 1);
++        c_y = get_hwc_y(s, 1);
++        get_hwc_palette(s, 1, hwc_palette);
      }
  
      /* adjust console size */
-@@ -1361,7 +1374,7 @@ static void sm501_draw_crt(SM501State *s)
- 
+@@ -1339,14 +1362,16 @@ static void sm501_draw_crt(SM501State *s)
      /* draw each line according to conditions */
      memory_region_sync_dirty_bitmap(&s->local_mem_region);
--    for (y = 0; y < height; y++) {
-+    for (y = 0, offset = 0; y < height; y++, offset += width * src_bpp) {
-         int update, update_hwc;
+     for (y = 0; y < height; y++) {
+-        int update_hwc = draw_hwc_line ? within_hwc_y_range(s, y, 1) : 0;
+-        int update = full_update || update_hwc;
++        int update, update_hwc;
          ram_addr_t page0 = offset;
          ram_addr_t page1 = offset + width * src_bpp - 1;
-@@ -1379,7 +1392,7 @@ static void sm501_draw_crt(SM501State *s)
-             d +=  y * width * dst_bpp;
  
-             /* draw graphics layer */
--            draw_line(d, src, width, palette);
-+            draw_line(d, s->local_mem + offset, width, palette);
++        /* check if hardware cursor is enabled and we're within its range */
++        update_hwc = draw_hwc_line && c_y <= y && y < c_y + SM501_HWC_HEIGHT;
++        update = full_update || update_hwc;
+         /* check dirty flags for each line */
+-        update = memory_region_get_dirty(&s->local_mem_region, page0,
+-                                         page1 - page0, DIRTY_MEMORY_VGA);
++        update |= memory_region_get_dirty(&s->local_mem_region, page0,
++                                          page1 - page0, DIRTY_MEMORY_VGA);
+ 
+         /* draw line and change status */
+         if (update) {
+@@ -1358,7 +1383,7 @@ static void sm501_draw_crt(SM501State *s)
  
              /* draw hardware cursor */
              if (update_hwc) {
-@@ -1402,9 +1415,6 @@ static void sm501_draw_crt(SM501State *s)
-                 y_start = -1;
+-                draw_hwc_line(s, 1, hwc_palette, y - get_hwc_y(s, 1), d, width);
++                draw_hwc_line(d, hwc_src, width, hwc_palette, c_x, y - c_y);
              }
+ 
+             if (y_start < 0) {
+diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
+index 6e56baf..39f2b67 100644
+--- a/hw/display/sm501_template.h
++++ b/hw/display/sm501_template.h
+@@ -104,29 +104,24 @@ static void glue(draw_line32_, PIXEL_NAME)(
+ /**
+  * Draw hardware cursor image on the given line.
+  */
+-static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
+-                 uint8_t *palette, int c_y, uint8_t *d, int width)
++static void glue(draw_hwc_line_, PIXEL_NAME)(uint8_t *d, const uint8_t *s,
++                 int width, const uint8_t *palette, int c_x, int c_y)
+ {
+-    int x, i;
+-    uint8_t *pixval, bitset = 0;
+-
+-    /* get hardware cursor pattern */
+-    uint32_t cursor_addr = get_hwc_address(s, crt);
+-    assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
+-    cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
+-    pixval = s->local_mem + cursor_addr;
++    int i;
++    uint8_t bitset = 0;
+ 
+     /* get cursor position */
+-    x = get_hwc_x(s, crt);
+-    d += x * BPP;
++    assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
++    s += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
++    d += c_x * BPP;
+ 
+-    for (i = 0; i < SM501_HWC_WIDTH && x + i < width; i++) {
++    for (i = 0; i < SM501_HWC_WIDTH && c_x + i < width; i++) {
+         uint8_t v;
+ 
+         /* get pixel value */
+         if (i % 4 == 0) {
+-            bitset = ldub_p(pixval);
+-            pixval++;
++            bitset = ldub_p(s);
++            s++;
          }
--
--        src += width * src_bpp;
--        offset += width * src_bpp;
-     }
- 
-     /* complete flush to display */
-@@ -1420,15 +1430,6 @@ static void sm501_draw_crt(SM501State *s)
-     }
- }
- 
--static void sm501_update_display(void *opaque)
--{
--    SM501State *s = (SM501State *)opaque;
--
--    if (s->dc_crt_control & SM501_DC_CRT_CONTROL_ENABLE) {
--        sm501_draw_crt(s);
--    }
--}
--
- static const GraphicHwOps sm501_ops = {
-     .gfx_update  = sm501_update_display,
- };
+         v = bitset & 3;
+         bitset >>= 2;
 -- 
 2.7.4
 
