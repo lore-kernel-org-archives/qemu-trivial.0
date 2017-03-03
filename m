@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjrtb-0002ej-Ln
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Mar 2017 13:25:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34358)
+	id 1cjrvb-0004Cp-T3
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Mar 2017 13:27:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35331)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjrtY-0002cX-Ro
-	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:25:37 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1cjrvZ-0004C7-PZ
+	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:27:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cjrtX-0004Gz-WF
-	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:25:36 -0500
-Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:36093)
+	(envelope-from <peter.maydell@linaro.org>) id 1cjrvY-00057E-Sl
+	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:27:41 -0500
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:37576)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cjrtX-0004GI-Q9
-	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:25:35 -0500
-Received: by mail-wm0-x22d.google.com with SMTP id n11so21745437wma.1
-	for <qemu-trivial@nongnu.org>; Fri, 03 Mar 2017 10:25:35 -0800 (PST)
+	id 1cjrvY-00056a-ND
+	for qemu-trivial@nongnu.org; Fri, 03 Mar 2017 13:27:40 -0500
+Received: by mail-wm0-x22f.google.com with SMTP id n11so21902978wma.0
+	for <qemu-trivial@nongnu.org>; Fri, 03 Mar 2017 10:27:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=j+UI49BgHqhvcA3wku2UnzZw1sMf7bZB3a+mc1dMWvA=;
-	b=KgSzC9yMhqHA/eLtRsig9OAiHLP6yYAYXnS9f8ZYzH/mq9I5TsKOdINL5nDoZQqmqm
-	CQbu7+dxhviRPBet2rmtmWb8kLGul1sEhEjePz4Hl/poY341CtH0Px6iv2CvZ5A2c8vR
-	yozzlQJ2g8WjnyYqRMz7wIFhfKGUYT9fWoXY0=
+	:cc; bh=I4AguaczXDiEZ2NYlDEvc9NZgbmk+YL/VriqRTHrqko=;
+	b=OxK4uKw5N2lY8dh0a0oese+g7S9ssYU4gdZXWT4EeoB4kCMaqSfoaA3+4X1/vCAzbx
+	57JBDv1FOaEoivu8umHcTWsTCfp8XaZ+ez5vfdHke914TjUY82s9Ze/vA/yUmW3LWH3v
+	/Y5ZjWgUHie/34LqclvJzuEq40m2/TN26+rNE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=j+UI49BgHqhvcA3wku2UnzZw1sMf7bZB3a+mc1dMWvA=;
-	b=N8v3D+I2/jrQxPCFXWREY0wi72N3C+h2BxvlltTeQNtCol8Axeg34M9Kc8Wuv9YOnn
-	aWZoZfb33NEEygS4agrAQhXwXHlCQdWMTVJHKJvNSfx2jv0PPlWlJpamApp604uRN8WB
-	LKFRCjLlJ8q6Jf6tMv/ag4gYF9OpsoCzLW5CkZgwV4XRgRP9I/KG6jAsduuFDv+h6pEv
-	OsD0eblSoZRdsCIm3AZN8KTX0Fv/jLNUpAlV3o48qJcIZuHKTdKNR1IBOlhUmDAe5iA6
-	W5ZJzbCKXOfq3QcA5sO4q/4GC3/sRQtp5DFNUvdpTs1OLFo1EXADmcBlsKpW1BIcZaED
-	M/ng==
-X-Gm-Message-State: AMke39mVatysYH56rjcTszoCOxvQDOSrlt3XHDwj4jGhiNshOFzvblJtG657+TcJVcFYck14Lwde/SdSntCVggVd
-X-Received: by 10.28.157.67 with SMTP id g64mr4142626wme.111.1488565534788;
-	Fri, 03 Mar 2017 10:25:34 -0800 (PST)
+	bh=I4AguaczXDiEZ2NYlDEvc9NZgbmk+YL/VriqRTHrqko=;
+	b=gDqdMU9xGe1FzvOT9ybA5h7BtH9JtIA4PnKfSlc+X73upjlnk5pv2itpq0YUjg5tE9
+	PJFGY7bTghBHM0e4sngnz2hb0a2dDpiIK7jc0Ltwp41JsZ5jusa/c0cEwI9BmkPfSrPr
+	CkByC8I7M5sRMykEnuQ/9VavDpPFd/WreY3IbPs3Ywp3vmyhaB8H6bMSlALR0PhOvEbb
+	wYolnHIgNsBxXvc6HBs5p4Cjf4KXA+SGoSt91wpnQ1zFeMXstPH5CqtL3DebjWtqbZbS
+	VHb5GIbsaH+pT2x6uQ2z+5pJjqeqaB5P73Cjas/hd3UbaKQQJS247w8jB09j8OlZKjLK
+	o8ZA==
+X-Gm-Message-State: AMke39ldzal3huidtHAuMvPfF8N+jlZhnmWwiVewD/9XWDIVvrM5dvBAwa/HSEhYa/dDbyHVzVbEkpY9uNVgq5XU
+X-Received: by 10.28.157.67 with SMTP id g64mr4150113wme.111.1488565659756;
+	Fri, 03 Mar 2017 10:27:39 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.33 with HTTP; Fri, 3 Mar 2017 10:25:14 -0800 (PST)
-In-Reply-To: <edad9d33db70b1408cb4d82e688d0a767aa0a960.1488504063.git.balaton@eik.bme.hu>
+Received: by 10.223.145.33 with HTTP; Fri, 3 Mar 2017 10:27:19 -0800 (PST)
+In-Reply-To: <2631f4fa83bdb4ea9da97cb807a8ff1756db1684.1488504063.git.balaton@eik.bme.hu>
 References: <cover.1488504063.git.balaton@eik.bme.hu>
-	<edad9d33db70b1408cb4d82e688d0a767aa0a960.1488504063.git.balaton@eik.bme.hu>
+	<2631f4fa83bdb4ea9da97cb807a8ff1756db1684.1488504063.git.balaton@eik.bme.hu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Mar 2017 18:25:14 +0000
-Message-ID: <CAFEAcA-vSeTQPyV8RbwGEkvN1n1giu3im9FDQb264EEimsSQmw@mail.gmail.com>
+Date: Fri, 3 Mar 2017 18:27:19 +0000
+Message-ID: <CAFEAcA-knxUep+x-svv+e6FaJ51r_6JwhBW20pR_PMF+2618OQ@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22d
-Subject: Re: [Qemu-trivial] [PATCH v3 06/13] sm501: Add emulation of chip
- connected via PCI
+X-Received-From: 2a00:1450:400c:c09::22f
+Subject: Re: [Qemu-trivial] [PATCH v3 08/13] sm501: Fix hardware cursor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,22 +62,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Mar 2017 18:25:37 -0000
+X-List-Received-Date: Fri, 03 Mar 2017 18:27:42 -0000
 
-On 25 February 2017 at 18:31, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> Only the display controller part is created automatically on PCI
->
+On 4 December 2016 at 18:01, BALATON Zoltan <balaton@eik.bme.hu> wrote:
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
 >
-> v2: Split off removing dependency on base address to separate patch
-> v3: Added reset function and PCI ID constant definitions in pci_ids.h
->
->  hw/display/sm501.c       | 58 ++++++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/pci/pci_ids.h |  3 +++
->  2 files changed, 61 insertions(+)
+> v3: simplify return expression in get_bpp
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+In my review on v2 I asked for the commit message to
+say clearly what the bugs being fixed here are. It's
+a lot easier to review a patch if I know what it's supposed
+to be doing rather than having to figure it out from scratch.
 
 thanks
 -- PMM
