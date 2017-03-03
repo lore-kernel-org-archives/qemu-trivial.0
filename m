@@ -1,35 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cjcMY-0006Yv-V0
+	id 1cjcMZ-0006ZG-8Q
 	for mharc-qemu-trivial@gnu.org; Thu, 02 Mar 2017 20:50:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55888)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjcMP-0006Me-I6
-	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:22 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1cjcMP-0006MW-FO
+	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1cjcMN-0001Jo-Og
+	(envelope-from <balaton@eik.bme.hu>) id 1cjcMN-0001JK-A9
 	for qemu-trivial@nongnu.org; Thu, 02 Mar 2017 20:50:21 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:46601)
+Received: from zero.eik.bme.hu ([152.66.115.2]:46561)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1cjcMI-0001EL-5N; Thu, 02 Mar 2017 20:50:14 -0500
+	id 1cjcMG-0001CR-1g; Thu, 02 Mar 2017 20:50:12 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 4119C745965;
-	Fri,  3 Mar 2017 02:50:11 +0100 (CET)
+	by localhost (Postfix) with SMTP id A605274596A;
+	Fri,  3 Mar 2017 02:50:10 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 5C3A0745968; Fri,  3 Mar 2017 02:50:10 +0100 (CET)
-Message-Id: <b819972a1e18972a95894c8ce91036200792062c.1488504063.git.balaton@eik.bme.hu>
+	id 44E21745798; Fri,  3 Mar 2017 02:50:10 +0100 (CET)
+Message-Id: <7e582e5ca2aaa7b8b6c1f8a040562b099767ff81.1488504063.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1488504063.git.balaton@eik.bme.hu>
 References: <cover.1488504063.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
-Date: Sun, 26 Feb 2017 00:53:39 +0100
+Date: Fri, 3 Mar 2017 02:03:05 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v3 12/13] sm501: Add vmstate descriptor
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: [Qemu-trivial] [PATCH v3 04/13] sm501: QOMify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,169 +40,278 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Mar 2017 01:50:22 -0000
+X-List-Received-Date: Fri, 03 Mar 2017 01:50:23 -0000
+
+Adding vmstate saving is not in this patch because the state structure
+will be changed in further patches, then another patch will add
+vmstate descriptor after those changes.
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
 
-v3: Added local_mem_size_index to vmstate, add vmstate for sysbus version too
+v2: Add memory regions to device state instead of allocating them
+v3: Added reset function and make sure to use adjusted mem size when
+    creating local mem region (also print a warning when mem size was
+    adjusted)
 
- hw/display/sm501.c | 100 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 99 insertions(+), 1 deletion(-)
+ hw/display/sm501.c   | 169 +++++++++++++++++++++++++++++++++++++--------------
+ hw/sh4/r2d.c         |  11 +++-
+ include/hw/devices.h |   5 --
+ 3 files changed, 132 insertions(+), 53 deletions(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 30e39be..419b0af 100644
+index 6e74200..cc717b9 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -66,6 +66,7 @@
+@@ -59,8 +59,8 @@
+ #define SM501_DPRINTF(fmt, ...) do {} while (0)
+ #endif
  
+-
  #define MMIO_BASE_OFFSET 0x3e00000
- #define MMIO_SIZE 0x200000
-+#define DC_PALETTE_ENTRIES (0x400 * 3)
++#define MMIO_SIZE 0x200000
  
  /* SM501 register definitions taken from "linux/include/linux/sm501-regs.h" */
  
-@@ -492,7 +493,7 @@ typedef struct SM501State {
-     uint32_t uart0_mcr;
-     uint32_t uart0_scr;
+@@ -465,6 +465,10 @@ typedef struct SM501State {
+     uint32_t local_mem_size_index;
+     uint8_t *local_mem;
+     MemoryRegion local_mem_region;
++    MemoryRegion mmio_region;
++    MemoryRegion system_config_region;
++    MemoryRegion disp_ctrl_region;
++    MemoryRegion twoD_engine_region;
+     uint32_t last_width;
+     uint32_t last_height;
  
--    uint8_t dc_palette[0x400 * 3];
-+    uint8_t dc_palette[DC_PALETTE_ENTRIES];
+@@ -1404,21 +1408,8 @@ static const GraphicHwOps sm501_ops = {
+     .gfx_update  = sm501_update_display,
+ };
  
-     uint32_t dc_panel_control;
-     uint32_t dc_panel_panning_control;
-@@ -1603,6 +1604,78 @@ static void sm501_init(SM501State *s, DeviceState *dev,
-     s->con = graphic_console_init(DEVICE(dev), 0, &sm501_ops, s);
- }
- 
-+static const VMStateDescription vmstate_sm501_state = {
-+    .name = "sm501-state",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(local_mem_size_index, SM501State),
-+        VMSTATE_UINT32(system_control, SM501State),
-+        VMSTATE_UINT32(misc_control, SM501State),
-+        VMSTATE_UINT32(gpio_31_0_control, SM501State),
-+        VMSTATE_UINT32(gpio_63_32_control, SM501State),
-+        VMSTATE_UINT32(dram_control, SM501State),
-+        VMSTATE_UINT32(arbitration_control, SM501State),
-+        VMSTATE_UINT32(irq_mask, SM501State),
-+        VMSTATE_UINT32(misc_timing, SM501State),
-+        VMSTATE_UINT32(power_mode_control, SM501State),
-+        VMSTATE_UINT32(uart0_ier, SM501State),
-+        VMSTATE_UINT32(uart0_lcr, SM501State),
-+        VMSTATE_UINT32(uart0_mcr, SM501State),
-+        VMSTATE_UINT32(uart0_scr, SM501State),
-+        VMSTATE_UINT8_ARRAY(dc_palette, SM501State, DC_PALETTE_ENTRIES),
-+        VMSTATE_UINT32(dc_panel_control, SM501State),
-+        VMSTATE_UINT32(dc_panel_panning_control, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_addr, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_offset, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_width, SM501State),
-+        VMSTATE_UINT32(dc_panel_fb_height, SM501State),
-+        VMSTATE_UINT32(dc_panel_tl_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_br_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_h_total, SM501State),
-+        VMSTATE_UINT32(dc_panel_h_sync, SM501State),
-+        VMSTATE_UINT32(dc_panel_v_total, SM501State),
-+        VMSTATE_UINT32(dc_panel_v_sync, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_addr, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_location, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_color_1_2, SM501State),
-+        VMSTATE_UINT32(dc_panel_hwc_color_3, SM501State),
-+        VMSTATE_UINT32(dc_video_control, SM501State),
-+        VMSTATE_UINT32(dc_crt_control, SM501State),
-+        VMSTATE_UINT32(dc_crt_fb_addr, SM501State),
-+        VMSTATE_UINT32(dc_crt_fb_offset, SM501State),
-+        VMSTATE_UINT32(dc_crt_h_total, SM501State),
-+        VMSTATE_UINT32(dc_crt_h_sync, SM501State),
-+        VMSTATE_UINT32(dc_crt_v_total, SM501State),
-+        VMSTATE_UINT32(dc_crt_v_sync, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_addr, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_location, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_color_1_2, SM501State),
-+        VMSTATE_UINT32(dc_crt_hwc_color_3, SM501State),
-+        VMSTATE_UINT32(twoD_source, SM501State),
-+        VMSTATE_UINT32(twoD_destination, SM501State),
-+        VMSTATE_UINT32(twoD_dimension, SM501State),
-+        VMSTATE_UINT32(twoD_control, SM501State),
-+        VMSTATE_UINT32(twoD_pitch, SM501State),
-+        VMSTATE_UINT32(twoD_foreground, SM501State),
-+        VMSTATE_UINT32(twoD_background, SM501State),
-+        VMSTATE_UINT32(twoD_stretch, SM501State),
-+        VMSTATE_UINT32(twoD_color_compare, SM501State),
-+        VMSTATE_UINT32(twoD_color_compare_mask, SM501State),
-+        VMSTATE_UINT32(twoD_mask, SM501State),
-+        VMSTATE_UINT32(twoD_clip_tl, SM501State),
-+        VMSTATE_UINT32(twoD_clip_br, SM501State),
-+        VMSTATE_UINT32(twoD_mono_pattern_low, SM501State),
-+        VMSTATE_UINT32(twoD_mono_pattern_high, SM501State),
-+        VMSTATE_UINT32(twoD_window_width, SM501State),
-+        VMSTATE_UINT32(twoD_source_base, SM501State),
-+        VMSTATE_UINT32(twoD_destination_base, SM501State),
-+        VMSTATE_UINT32(twoD_alpha, SM501State),
-+        VMSTATE_UINT32(twoD_wrap, SM501State),
-+        VMSTATE_END_OF_LIST()
-+     }
-+};
-+
- #define TYPE_SYSBUS_SM501 "sysbus-sm501"
- #define SYSBUS_SM501(obj) \
-     OBJECT_CHECK(SM501SysBusState, (obj), TYPE_SYSBUS_SM501)
-@@ -1657,6 +1730,17 @@ static void sm501_reset_sysbus(DeviceState *dev)
-     sm501_reset(&s->state);
- }
- 
-+static const VMStateDescription vmstate_sm501_sysbus = {
-+    .name = TYPE_SYSBUS_SM501,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_STRUCT(state, SM501SysBusState, 1,
-+                       vmstate_sm501_state, SM501State),
-+        VMSTATE_END_OF_LIST()
-+     }
-+};
-+
- static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
+-void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
+-                uint32_t local_mem_bytes, qemu_irq irq, Chardev *chr)
++static void sm501_reset(SM501State *s)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1666,6 +1750,7 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
-     dc->desc = "SM501 Multimedia Companion";
-     dc->props = sm501_sysbus_properties;
-     dc->reset = sm501_reset_sysbus;
-+    dc->vmsd = &vmstate_sm501_sysbus;
-     /* Note: pointer property "chr-state" may remain null, thus
-      * no need for dc->cannot_instantiate_with_device_add_yet = true;
+-    SM501State *s;
+-    DeviceState *dev;
+-    MemoryRegion *sm501_system_config = g_new(MemoryRegion, 1);
+-    MemoryRegion *sm501_disp_ctrl = g_new(MemoryRegion, 1);
+-    MemoryRegion *sm501_2d_engine = g_new(MemoryRegion, 1);
+-
+-    /* allocate management data region */
+-    s = g_new0(SM501State, 1);
+-    s->base = base;
+-    s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
+-    SM501_DPRINTF("local mem size=%x. index=%d\n", get_local_mem_size(s),
+-                  s->local_mem_size_index);
+     s->system_control = 0x00100000; /* 2D engine FIFO empty */
+     /* Bits 17 (SH), 7 (CDR), 6:5 (Test), 2:0 (Bus) are all supposed
+      * to be determined at reset by GPIO lines which set config bits.
+@@ -1429,51 +1420,137 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
+      *  BUS = 0 : Hitachi SH3/SH4
       */
-@@ -1711,6 +1796,18 @@ static void sm501_reset_pci(DeviceState *dev)
-     sm501_reset(&s->state);
- }
+     s->misc_control = SM501_MISC_DAC_POWER;
++    s->gpio_31_0_control = 0;
++    s->gpio_63_32_control = 0;
++    s->dram_control = 0;
+     s->arbitration_control = 0x05146732;
++    s->irq_mask = 0;
++    s->misc_timing = 0;
++    s->power_mode_control = 0;
+     s->dc_panel_control = 0x00010000; /* FIFO level 3 */
+     s->dc_crt_control = 0x00010000;
++    s->twoD_control = 0;
++}
++
++static void sm501_init(SM501State *s, DeviceState *dev, uint32_t base,
++                       uint32_t local_mem_bytes)
++{
++    s->base = base;
++    s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
++    SM501_DPRINTF("sm501 local mem size=%x. index=%d\n", get_local_mem_size(s),
++                  s->local_mem_size_index);
++    if (get_local_mem_size(s) != local_mem_bytes) {
++        error_report("Warning: sm501 VRAM size adjusted to %" PRIu32,
++                     get_local_mem_size(s));
++    }
  
-+static const VMStateDescription vmstate_sm501_pci = {
-+    .name = TYPE_PCI_SM501,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_PCI_DEVICE(parent_obj, SM501PCIState),
-+        VMSTATE_STRUCT(state, SM501PCIState, 1,
-+                       vmstate_sm501_state, SM501State),
-+        VMSTATE_END_OF_LIST()
-+     }
+-    /* allocate local memory */
+-    memory_region_init_ram(&s->local_mem_region, NULL, "sm501.local",
+-                           local_mem_bytes, &error_fatal);
++    /* local memory */
++    memory_region_init_ram(&s->local_mem_region, OBJECT(dev), "sm501.local",
++                           get_local_mem_size(s), &error_fatal);
+     vmstate_register_ram_global(&s->local_mem_region);
+     memory_region_set_log(&s->local_mem_region, true, DIRTY_MEMORY_VGA);
+     s->local_mem = memory_region_get_ram_ptr(&s->local_mem_region);
+-    memory_region_add_subregion(address_space_mem, base, &s->local_mem_region);
+-
+-    /* map mmio */
+-    memory_region_init_io(sm501_system_config, NULL, &sm501_system_config_ops,
+-                          s, "sm501-system-config", 0x6c);
+-    memory_region_add_subregion(address_space_mem, base + MMIO_BASE_OFFSET,
+-                                sm501_system_config);
+-    memory_region_init_io(sm501_disp_ctrl, NULL, &sm501_disp_ctrl_ops, s,
++
++    /* mmio */
++    memory_region_init(&s->mmio_region, OBJECT(dev), "sm501.mmio", MMIO_SIZE);
++    memory_region_init_io(&s->system_config_region, OBJECT(dev),
++                          &sm501_system_config_ops, s,
++                          "sm501-system-config", 0x6c);
++    memory_region_add_subregion(&s->mmio_region, SM501_SYS_CONFIG,
++                                &s->system_config_region);
++    memory_region_init_io(&s->disp_ctrl_region, OBJECT(dev),
++                          &sm501_disp_ctrl_ops, s,
+                           "sm501-disp-ctrl", 0x1000);
+-    memory_region_add_subregion(address_space_mem,
+-                                base + MMIO_BASE_OFFSET + SM501_DC,
+-                                sm501_disp_ctrl);
+-    memory_region_init_io(sm501_2d_engine, NULL, &sm501_2d_engine_ops, s,
++    memory_region_add_subregion(&s->mmio_region, SM501_DC,
++                                &s->disp_ctrl_region);
++    memory_region_init_io(&s->twoD_engine_region, OBJECT(dev),
++                          &sm501_2d_engine_ops, s,
+                           "sm501-2d-engine", 0x54);
+-    memory_region_add_subregion(address_space_mem,
+-                                base + MMIO_BASE_OFFSET + SM501_2D_ENGINE,
+-                                sm501_2d_engine);
++    memory_region_add_subregion(&s->mmio_region, SM501_2D_ENGINE,
++                                &s->twoD_engine_region);
++
++    /* create qemu graphic console */
++    s->con = graphic_console_init(DEVICE(dev), 0, &sm501_ops, s);
++}
++
++#define TYPE_SYSBUS_SM501 "sysbus-sm501"
++#define SYSBUS_SM501(obj) \
++    OBJECT_CHECK(SM501SysBusState, (obj), TYPE_SYSBUS_SM501)
++
++typedef struct {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++    SM501State state;
++    uint32_t vram_size;
++    uint32_t base;
++    void *chr_state;
++} SM501SysBusState;
++
++static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
++{
++    SM501SysBusState *s = SYSBUS_SM501(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    DeviceState *usb_dev;
++
++    sm501_init(&s->state, dev, s->base, s->vram_size);
++    sysbus_init_mmio(sbd, &s->state.local_mem_region);
++    sysbus_init_mmio(sbd, &s->state.mmio_region);
+ 
+     /* bridge to usb host emulation module */
+-    dev = qdev_create(NULL, "sysbus-ohci");
+-    qdev_prop_set_uint32(dev, "num-ports", 2);
+-    qdev_prop_set_uint64(dev, "dma-offset", base);
+-    qdev_init_nofail(dev);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
+-                    base + MMIO_BASE_OFFSET + SM501_USB_HOST);
+-    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq);
++    usb_dev = qdev_create(NULL, "sysbus-ohci");
++    qdev_prop_set_uint32(usb_dev, "num-ports", 2);
++    qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
++    qdev_init_nofail(usb_dev);
++    memory_region_add_subregion(&s->state.mmio_region, SM501_USB_HOST,
++                       sysbus_mmio_get_region(SYS_BUS_DEVICE(usb_dev), 0));
++    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(usb_dev));
+ 
+     /* bridge to serial emulation module */
+-    if (chr) {
+-        serial_mm_init(address_space_mem,
+-                       base + MMIO_BASE_OFFSET + SM501_UART0, 2,
++    if (s->chr_state) {
++        serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
+                        NULL, /* TODO : chain irq to IRL */
+-                       115200, chr, DEVICE_NATIVE_ENDIAN);
++                       115200, s->chr_state, DEVICE_NATIVE_ENDIAN);
+     }
++}
+ 
+-    /* create qemu graphic console */
+-    s->con = graphic_console_init(DEVICE(dev), 0, &sm501_ops, s);
++static Property sm501_sysbus_properties[] = {
++    DEFINE_PROP_UINT32("vram-size", SM501SysBusState, vram_size, 0),
++    DEFINE_PROP_UINT32("base", SM501SysBusState, base, 0),
++    DEFINE_PROP_PTR("chr-state", SM501SysBusState, chr_state),
++    DEFINE_PROP_END_OF_LIST(),
 +};
 +
- static void sm501_pci_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -1725,6 +1822,7 @@ static void sm501_pci_class_init(ObjectClass *klass, void *data)
-     dc->props = sm501_pci_properties;
-     dc->reset = sm501_reset_pci;
-     dc->hotpluggable = false;
-+    dc->vmsd = &vmstate_sm501_pci;
++static void sm501_reset_sysbus(DeviceState *dev)
++{
++    SM501SysBusState *s = SYSBUS_SM501(dev);
++    sm501_reset(&s->state);
  }
++
++static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = sm501_realize_sysbus;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
++    dc->desc = "SM501 Multimedia Companion";
++    dc->props = sm501_sysbus_properties;
++    dc->reset = sm501_reset_sysbus;
++    /* Note: pointer property "chr-state" may remain null, thus
++     * no need for dc->cannot_instantiate_with_device_add_yet = true;
++     */
++}
++
++static const TypeInfo sm501_sysbus_info = {
++    .name          = TYPE_SYSBUS_SM501,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(SM501SysBusState),
++    .class_init    = sm501_sysbus_class_init,
++};
++
++static void sm501_register_types(void)
++{
++    type_register_static(&sm501_sysbus_info);
++}
++
++type_init(sm501_register_types)
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 6d06968..8f520ce 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -277,8 +277,15 @@ static void r2d_init(MachineState *machine)
+     sysbus_connect_irq(busdev, 2, irq[PCI_INTC]);
+     sysbus_connect_irq(busdev, 3, irq[PCI_INTD]);
  
- static const TypeInfo sm501_pci_info = {
+-    sm501_init(address_space_mem, 0x10000000, SM501_VRAM_SIZE,
+-               irq[SM501], serial_hds[2]);
++    dev = qdev_create(NULL, "sysbus-sm501");
++    busdev = SYS_BUS_DEVICE(dev);
++    qdev_prop_set_uint32(dev, "vram-size", SM501_VRAM_SIZE);
++    qdev_prop_set_uint32(dev, "base", 0x10000000);
++    qdev_prop_set_ptr(dev, "chr-state", serial_hds[2]);
++    qdev_init_nofail(dev);
++    sysbus_mmio_map(busdev, 0, 0x10000000);
++    sysbus_mmio_map(busdev, 1, 0x13e00000);
++    sysbus_connect_irq(busdev, 0, irq[SM501]);
+ 
+     /* onboard CF (True IDE mode, Master only). */
+     dinfo = drive_get(IF_IDE, 0, 0);
+diff --git a/include/hw/devices.h b/include/hw/devices.h
+index 7475b71..861ddea 100644
+--- a/include/hw/devices.h
++++ b/include/hw/devices.h
+@@ -62,9 +62,4 @@ void tc6393xb_gpio_out_set(TC6393xbState *s, int line,
+ qemu_irq *tc6393xb_gpio_in_get(TC6393xbState *s);
+ qemu_irq tc6393xb_l3v_get(TC6393xbState *s);
+ 
+-/* sm501.c */
+-void sm501_init(struct MemoryRegion *address_space_mem, uint32_t base,
+-                uint32_t local_mem_bytes, qemu_irq irq,
+-                Chardev *chr);
+-
+ #endif
 -- 
 2.7.4
 
