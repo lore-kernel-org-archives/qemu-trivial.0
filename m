@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckAUS-0001QG-Ro
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 09:16:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37987)
+	id 1ckAUT-0001R8-JB
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 09:16:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sauravsachidanand@gmail.com>) id 1ck7KM-0000Xf-C0
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 05:54:19 -0500
+	(envelope-from <sauravsachidanand@gmail.com>) id 1ck5Vd-0004LK-SW
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 03:57:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sauravsachidanand@gmail.com>) id 1ck7KJ-0007u4-8u
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 05:54:18 -0500
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:35565)
+	(envelope-from <sauravsachidanand@gmail.com>) id 1ck5Va-0004ox-Qp
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 03:57:49 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:35136)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sauravsachidanand@gmail.com>)
-	id 1ck7KJ-0007tz-1B
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 05:54:15 -0500
-Received: by mail-pf0-x244.google.com with SMTP id 67so7961217pfg.2
-	for <qemu-trivial@nongnu.org>; Sat, 04 Mar 2017 02:54:14 -0800 (PST)
+	id 1ck5Va-0004oU-Ir
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 03:57:46 -0500
+Received: by mail-pf0-x244.google.com with SMTP id 67so7765366pfg.2
+	for <qemu-trivial@nongnu.org>; Sat, 04 Mar 2017 00:57:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id;
 	bh=8LO0r9Cb+A80BC59WLpiH0Kl0xTTncDntaTLTHgxHYk=;
-	b=gyRTnmmQqkdDi5xs4lzYfFfA815dpUBkSfrSmtsCNg/8k2/QEkt+0ZMAJZ+Ck/anZx
-	oXDz1KelMJi/IAd2FE6yY105fZNdfjx2wL+R8vwG5X13tAjJt52/pe0DSHCFT0RRvECO
-	DqL/LhIDqAd8UcnB8qaYfhVt/FcnDx9FQPKfFFsaW1qOqdPZQS8+648OHFvLuNJ0HJEP
-	6EZAHNQAACGSgQdbLWPo4QfUVSps+eeQnbt0D8KPDmjBne7YI9IZdoFFerKyuVaYTCGZ
-	NOxvYqwkz2VzhGNQw2Y4gWhqbYq/54J+pYNoVYgodmQ6f7o9BeFv4vK+oUW5eVvoiRuh
-	28wg==
+	b=Ncf5+WKy/cDBF+BiMjPp2iuofO73i69z/HZZp8GpGn12ooB8fZe88FWQ6EYWR7qOKb
+	m9D880W33zp+lgYCPo4cWtIU6nIC6WiX8Xui6+/ibaZW5h+FTNNAtI8wajwpKxvHT97z
+	X6FXX+sZFjsF7QZxWBn1/m2okSi5omptkqejTcRvNYBh7zxl4ZoebI5Hsp8ln+ZO7Y++
+	QoM3hRw5c3Y5PaE+qtSUL4tJ0ESz56lbv7hyvpY1YCt+FGAWUJAPZV8N5poyXynImCx8
+	gpxj0f9dr2Cjt7EB+NDS8dOVC1goTAKfqPUZqFPF87z8X4Y0Fkm8aSDb1Sj4k32LP9ut
+	AtmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id;
 	bh=8LO0r9Cb+A80BC59WLpiH0Kl0xTTncDntaTLTHgxHYk=;
-	b=FeJrlPupyAJk7TSZ2cZ4bACyOmejWRUCznzLqTXUaw1xxl+/ruCPdQHCPCUCDpT5WH
-	egYwgsyPN3OoWx9NCA3sb2vyLsk28RCOUjbLSsX5QAJ36F3/4+70t0QdTb6s70rVzqPU
-	5JrHP1DyE8d3gwJXM9zovD54gqF0gUeZdW135fE2/AOQhoQi4XhAhw2TEFm5Q0/kwhj4
-	ZZVxp0qmVlMTAjyrxlowNJPj9Ni0TUhKUf41sFi41ulcbmxH3g8/pDVUhy2lfgVg8RL7
-	5sEXjKfnodaCn1yp6U6y52pCYBcrTRjr8+iIXDdxiJRps4lqNYQDQVmZIZwNMiTPDFU/
-	fAjg==
-X-Gm-Message-State: AMke39kpLThD+/WWojjlRdESrFC8j7PYEgPklAnBa4aecCm1fnVvv8DcKoMotGcALwZnbw==
-X-Received: by 10.98.25.202 with SMTP id 193mr9172345pfz.134.1488624853883;
-	Sat, 04 Mar 2017 02:54:13 -0800 (PST)
+	b=LEk5Bu86v6ZWTMA9XdnLA6oDV040O1qY1PvfcPUb+PII2ohuAwePCp3Wyo/nuZdE1/
+	S/KEFm8KS0cDLl3ne6rHj5KfC9kVT/wJx2Bl6dW45D/nwVqFREBd91XEIez6fdvHYKo4
+	08zxBpKqFbwk1OXqfWmhkp9OYS+0XXOJzttsoeM/W5w0tqbuIxyrOIUt5Syf4vpp/PKz
+	+3hPuW46zCLhc77mWLkk4naQ9N3FuAyUsyJF9WY0Lozef3kzdWmpIdZHNOkkOe/U+tKw
+	b0CPcSZqKisrlWoU+oTSahYrgYkGbexDQ7Elj9ftUHyKRjbTa32Glt5VwOtzAmcB6mRB
+	AzZw==
+X-Gm-Message-State: AMke39mBd5/tHPyUFzNRBQ2zP5G1cJZ0TC3OrCeJE+jY9l9cHtO55bUDO6tP/G66N1S6yQ==
+X-Received: by 10.98.158.71 with SMTP id s68mr8680373pfd.159.1488617863732;
+	Sat, 04 Mar 2017 00:57:43 -0800 (PST)
 Received: from localhost.localdomain ([49.207.50.75])
 	by smtp.gmail.com with ESMTPSA id
-	23sm28549752pfw.94.2017.03.04.02.54.09
+	r17sm28027529pgg.19.2017.03.04.00.57.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 04 Mar 2017 02:54:12 -0800 (PST)
+	Sat, 04 Mar 2017 00:57:42 -0800 (PST)
 From: Saurav Sachidanand <sauravsachidanand@gmail.com>
 To: qemu-trivial@nongnu.org
-Cc: laurent@vivier.eu,
+Cc: mjt@tls.msk.r, laurent@vivier.eu,
 	Saurav Sachidanand <sauravsachidanand@gmail.com>
-Date: Sat,  4 Mar 2017 10:53:55 +0000
-Message-Id: <20170304105355.994-1-sauravsachidanand@gmail.com>
+Date: Sat,  4 Mar 2017 08:57:33 +0000
+Message-Id: <20170304085733.14325-1-sauravsachidanand@gmail.com>
 X-Mailer: git-send-email 2.12.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400e:c00::244
@@ -64,7 +64,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Mar 2017 10:54:19 -0000
+X-List-Received-Date: Sat, 04 Mar 2017 08:57:51 -0000
 
 Change malloc/free to g_malloc/g_free in util/envlist.c, except for
 entry->env_var which is allocated using strdup(3).
