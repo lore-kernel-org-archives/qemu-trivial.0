@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckIOK-0003Zb-FM
+	id 1ckIOK-0003Zz-Nc
 	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 17:43:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35581)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIO6-0003KJ-PR
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:57 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1ckIO4-0003In-Cv
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIO5-000110-Qa
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:54 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:26783)
+	(envelope-from <balaton@eik.bme.hu>) id 1ckIO3-0000y5-9O
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:42:52 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:26732)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1ckINz-0000tI-8S; Sat, 04 Mar 2017 17:42:47 -0500
+	id 1ckINx-0000pW-RG; Sat, 04 Mar 2017 17:42:45 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id AF49E745965;
-	Sat,  4 Mar 2017 23:42:38 +0100 (CET)
+	by localhost (Postfix) with SMTP id C5A5B745969;
+	Sat,  4 Mar 2017 23:42:37 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id DD6EF74596E; Sat,  4 Mar 2017 23:42:37 +0100 (CET)
-Message-Id: <39345b5220786bdb81930e281c6ebd0109c2c3ec.1488665935.git.balaton@eik.bme.hu>
-In-Reply-To: <cover.1488665935.git.balaton@eik.bme.hu>
-References: <cover.1488665935.git.balaton@eik.bme.hu>
+	id AE1F47456AE; Sat,  4 Mar 2017 23:42:37 +0100 (CET)
+Message-Id: <cover.1488665935.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Sat, 4 Mar 2017 23:18:55 +0100
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH v4 13/13] ppc: Add SM501 device in config for
- ppc and ppcemb targets
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:738:2001:2001::2001
+Subject: [Qemu-trivial] [PATCH v4 00/13] Improvements for SM501 display
+ controller emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,42 +41,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Date: Sat, 04 Mar 2017 22:42:58 -0000
-X-Original-Date: Tue, 13 Dec 2016 22:00:56 +0100
-X-List-Received-Date: Sat, 04 Mar 2017 22:42:58 -0000
+X-List-Received-Date: Sat, 04 Mar 2017 22:42:57 -0000
 
-This is not used by default on any emulated machine yet but it is
-still useful to have it compiled so it can be added from the command
-line for clients that can use it (e.g. MorphOS has no driver for any
-other emulated video cards but can output via SM501)
+Fourth and hopefully last version with more changes according to
+review comments. Also cc'ing David Gibson as PPC maintainer to check
+the last patch and in case it's decided to go via PPC tree at the end
+being too big for trivial and lack of maintenance for SH4.
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
----
- default-configs/ppc-softmmu.mak    | 1 +
- default-configs/ppcemb-softmmu.mak | 1 +
- 2 files changed, 2 insertions(+)
+BALATON Zoltan (13):
+  sm501: Fixed code style and a few typos in comments
+  sm501: Use defined constants instead of literal values where available
+  sm501: Add missing arbitration control register
+  sm501: QOMify
+  sm501: Get rid of base address in draw_hwc_line
+  sm501: Add emulation of chip connected via PCI
+  sm501: Fix device endianness
+  sm501: Fix hardware cursor
+  sm501: Misc clean ups
+  sm501: Add support for panel layer
+  sm501: Add some more missing registers
+  sm501: Add vmstate descriptor
+  ppc: Add SM501 device in config for ppc and ppcemb targets
 
-diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
-index 09c1d45..1f1cd85 100644
---- a/default-configs/ppc-softmmu.mak
-+++ b/default-configs/ppc-softmmu.mak
-@@ -45,6 +45,7 @@ CONFIG_OPENPIC_KVM=$(and $(CONFIG_E500),$(CONFIG_KVM))
- CONFIG_PLATFORM_BUS=y
- CONFIG_ETSEC=y
- CONFIG_LIBDECNUMBER=y
-+CONFIG_SM501=y
- # For PReP
- CONFIG_SERIAL_ISA=y
- CONFIG_MC146818RTC=y
-diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcemb-softmmu.mak
-index 7f56004..94340de 100644
---- a/default-configs/ppcemb-softmmu.mak
-+++ b/default-configs/ppcemb-softmmu.mak
-@@ -15,3 +15,4 @@ CONFIG_I8259=y
- CONFIG_XILINX=y
- CONFIG_XILINX_ETHLITE=y
- CONFIG_LIBDECNUMBER=y
-+CONFIG_SM501=y
+ default-configs/ppc-softmmu.mak    |    1 +
+ default-configs/ppcemb-softmmu.mak |    1 +
+ hw/display/sm501.c                 | 1784 ++++++++++++++++++++++--------------
+ hw/display/sm501_template.h        |   94 +-
+ hw/sh4/r2d.c                       |   11 +-
+ include/hw/devices.h               |    5 -
+ include/hw/pci/pci_ids.h           |    3 +
+ 7 files changed, 1157 insertions(+), 742 deletions(-)
+
 -- 
 2.7.4
 
