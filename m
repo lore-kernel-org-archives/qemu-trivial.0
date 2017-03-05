@@ -1,47 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckIda-0004Wc-Sr
-	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 17:58:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39820)
+	id 1ckMLZ-0003T6-0k
+	for mharc-qemu-trivial@gnu.org; Sat, 04 Mar 2017 21:56:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41255)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIdY-0004Uu-0E
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:58:53 -0500
+	(envelope-from <sauravsachidanand@gmail.com>) id 1ckMLW-0003RR-2n
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 21:56:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckIdW-00060i-Px
-	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 17:58:52 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:20835)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1ckIdR-0005zJ-O6; Sat, 04 Mar 2017 17:58:46 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id E49F87456AD;
-	Sat,  4 Mar 2017 23:58:43 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id B7B347456BC; Sat,  4 Mar 2017 23:58:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id B6F5C7456AF;
-	Sat,  4 Mar 2017 23:58:43 +0100 (CET)
-Date: Sat, 4 Mar 2017 23:58:43 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>
-In-Reply-To: <CAFEAcA_KxS6J3Mzrc+ijg0LGdxZsk_FDd9xAExGROgWYn-3qyQ@mail.gmail.com>
-Message-ID: <alpine.BSF.2.20.1703042344460.63482@zero.eik.bme.hu>
-References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<6b70a9dfe56c3a0dc8e874c45d70612aff7b8e3a.1488068248.git.balaton@eik.bme.hu>
-	<CAFEAcA9FL-sshVzKewf+rCs6-5_c2Y86Qy0b=3DMog4MrVOpwA@mail.gmail.com>
-	<alpine.BSF.2.20.1703030259350.33600@zero.eik.bme.hu>
-	<CAFEAcA-PUcPaOPOXXhab1N=YAHja0xCf5yaZYm5m0p1=j6A=WA@mail.gmail.com>
-	<alpine.BSF.2.20.1703032100430.14293@zero.eik.bme.hu>
-	<CAFEAcA_KxS6J3Mzrc+ijg0LGdxZsk_FDd9xAExGROgWYn-3qyQ@mail.gmail.com>
-User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 07/14] sm501: Fix device
- endianness
+	(envelope-from <sauravsachidanand@gmail.com>) id 1ckMLU-0005sX-PZ
+	for qemu-trivial@nongnu.org; Sat, 04 Mar 2017 21:56:30 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:36128)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sauravsachidanand@gmail.com>)
+	id 1ckMLQ-0005oO-3H; Sat, 04 Mar 2017 21:56:24 -0500
+Received: by mail-pf0-x244.google.com with SMTP id j5so13842790pfb.3;
+	Sat, 04 Mar 2017 18:56:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=CxMpuFTs0Qqi2CZTT1bOYFGTHiPzlcihnnjFsB1grcA=;
+	b=MlerptTPvdixSHqiWiaYey3R1syylmDjgR5OaKQMQT8fXz1C8valo+anOl+RuZx7Xh
+	e3h+Vav5OTr0vcnOwTqa9aignjkr/WKsdHAML74N2unixmfY8y2qkGU23Ta7FU5bG/K3
+	eag89sl41zhzrIUr/URSnOmd1UJLJLqUCechKxCOJNarfaDzruPR3Lm3+0fnXenoW1Q+
+	UxEqX5tCcMTqGdgmc7bV6WZAJZZjo4V1Dy5xbJJekCe9tHtl2lFM7h3Qg+RMlyy5GtBy
+	+SVlnaaAz1BfTh/QKVUvIsh+AkChGNZ1d/eXbuX3sSBSg+nMp1zopcztTKjaozcYfZUm
+	jygA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=CxMpuFTs0Qqi2CZTT1bOYFGTHiPzlcihnnjFsB1grcA=;
+	b=btEF4OTgblmlIK4Rd38+HcmMnPTz6AZ0rUmh4/3XkJUuIPWbPrlxJ/HXr7/s7MkNAm
+	7ChHXLNoH/5rXGAn1M7ZG/yCEo2lBOfy/8CrIcZJ/I9yxaHfFrs+Kfhzg18qLWpRbKDS
+	hBFOc9eYZQEtJmniMod72h6SU7WAjx14UEqFfuvSRcPQrJoWG/bDpP3lzx0erKazJikA
+	r/AXNyugjUhn5bUXWNb6wG61MKPIiR9SuS+U3Kjqf7Wol1MrfEPNO3qzOqU5sc/ELl+D
+	UsQexOxVloqxlh/M1ZWYcSIl1LYB8TksRCC0I2wS0lenuN2DATyvDu5N1RSGoJ5jqs42
+	fWtA==
+X-Gm-Message-State: AMke39k1Dv3PufGz23/4FOCPtydnfdl9z0iYbg52OoYaQJkFLNCWS4CjQndMdTg5QOUuZg==
+X-Received: by 10.99.188.10 with SMTP id q10mr12311779pge.106.1488682582784;
+	Sat, 04 Mar 2017 18:56:22 -0800 (PST)
+Received: from localhost.localdomain ([49.207.50.75])
+	by smtp.gmail.com with ESMTPSA id
+	i15sm31408487pfj.0.2017.03.04.18.56.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 04 Mar 2017 18:56:21 -0800 (PST)
+From: Saurav Sachidanand <sauravsachidanand@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, laurent@vivier.eu,
+	Saurav Sachidanand <sauravsachidanand@gmail.com>
+Date: Sun,  5 Mar 2017 02:56:05 +0000
+Message-Id: <20170305025605.3824-1-sauravsachidanand@gmail.com>
+X-Mailer: git-send-email 2.12.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: [Qemu-trivial]  [PATCH v2] util: Use g_malloc/g_free in envlist.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,72 +62,182 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 Mar 2017 22:58:53 -0000
+X-List-Received-Date: Sun, 05 Mar 2017 02:56:31 -0000
 
-On Sat, 4 Mar 2017, Peter Maydell wrote:
-> On 3 March 2017 at 20:11, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->> On Fri, 3 Mar 2017, Peter Maydell wrote:
->>> So what cases have you tested? The Linux kernel seems to support:
->>> * sh embedded device, little endian
->>> * PCI card, little endian host
->>> * PCI card, big endian host
->>> and there are also
->>> * 16 bit pixel format
->>> * 32 bit pixel format
->>>
->>> which makes 6 different combinations.
->>> (It's a shame there's no sh4 BE code to run on this.)
->>
->>
->> As mentioned before I've used this image to test SH:
->>
->> https://people.debian.org/~aurel32/qemu/sh4/
->>
->> with video=800x600-16 kernel parameter where changing -16 to different bit
->> depths (8, 32) reproduces the problem. On ppc I've tested with MorphOS which
->> uses 16 bpp, Linux and U-boot which I think uses 8 bit. These run on real
->> hardware so I think if they work the emulation should be OK.
->>
->> You've said before that PCI is likely always little endian and SH embedded
->> is LE too so unless something uses the device in BE mode (which we don't
->> emulate) setting it to little endian should be correct. For frame buffer
->> endianness I can only go with what I've seen clients doing and my patch does
->> what worked for the above on SH and PPC. I can't prove it's correct but
->> works for the systems I've targeted and also fixes the SH case which seemed
->> to be broken.
->
-> Right, but we should test the PCI-on-a-little-endian CPU
-> case, because right now your code has #ifdef TARGET_WORDS_BIGENDIAN
-> in it which means that the PCI device will behave differently
-> on big and little endian CPUs, and you have a case that you
-> haven't tested.
+Change malloc/free to g_malloc/g_free in util/envlist.c, except for
+entry->env_var which is allocated using strdup(3).
 
-I could not find an image to test this. I've tried removing the sysbus 
-version from SH and add a PCI one instead but then Linux did not seem to 
-find the card. I could not find any other OS images that would have this 
-combination that is also known to work on any real hardware so I think if 
-someone ever finds a problem with such combination then we can fix it when 
-having a test case, since I could not figure out theoretically what should 
-be the right way.
+Remove NULL checks for pointers returned from g_malloc as it exits
+in case of failure. Update calls to envlist_create to reflect this.
 
-> (At the moment with the set of cases you've tested the
-> sh embedded device ones will always be using the "not
-> TARGET_WORDS_BIGENDIAN" code and the PCI-on-PPC will
-> always use the "is TARGET_WORDS_BIGENDIAN" code. But
-> TARGET_WORDS_BIGENDIAN set/not set is orthogonal to
-> PCI-vs-embedded.)
+Free array returned by envlist_to_environ using g_free.
 
-Why do you think that framebuffer endianness is dependent on 
-PCI-vs-embedded as opposed to target endianness? The latter seems more 
-plausible to me. The TARGET_WORDS_BIGENDIAN was already there for 32 bit 
-case. My patch only adds it to the 16 bit too and fixing the bytes for 
-both (which seemed to be already wrong even on SH). So I think previously 
-it was broken, my patch fixes it to be better (or at most broken in a
-different way) so I don't think it's worse than before thus, an 
-improvement.
+Update comments to reflect change in semantics.
 
-> thanks
-> -- PMM
->
->
+Refactor nearby code to make scripts/checkpatch.pl happy.
+
+Signed-off-by: Saurav Sachidanand <sauravsachidanand@gmail.com>
+---
+ bsd-user/main.c   | 12 +++---------
+ linux-user/main.c |  7 ++-----
+ util/envlist.c    | 34 +++++++++++++++-------------------
+ 3 files changed, 20 insertions(+), 33 deletions(-)
+
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 714a692e6f..4d715840ff 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -744,10 +744,7 @@ int main(int argc, char **argv)
+     qemu_init_cpu_list();
+     module_call_init(MODULE_INIT_QOM);
+
+-    if ((envlist = envlist_create()) == NULL) {
+-        (void) fprintf(stderr, "Unable to allocate envlist\n");
+-        exit(1);
+-    }
++    envlist = envlist_create();
+
+     /* add current environment into the list */
+     for (wrk = environ; *wrk != NULL; wrk++) {
+@@ -785,10 +782,7 @@ int main(int argc, char **argv)
+                 usage();
+         } else if (!strcmp(r, "ignore-environment")) {
+             envlist_free(envlist);
+-            if ((envlist = envlist_create()) == NULL) {
+-                (void) fprintf(stderr, "Unable to allocate envlist\n");
+-                exit(1);
+-            }
++            envlist = envlist_create();
+         } else if (!strcmp(r, "U")) {
+             r = argv[optind++];
+             if (envlist_unsetenv(envlist, r) != 0)
+@@ -959,7 +953,7 @@ int main(int argc, char **argv)
+         free(*wrk);
+     }
+
+-    free(target_environ);
++    g_free(target_environ);
+
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+         qemu_log("guest_base  0x%lx\n", guest_base);
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 10a3bb3a12..3542c899f6 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -4229,10 +4229,7 @@ int main(int argc, char **argv, char **envp)
+     qemu_init_cpu_list();
+     module_call_init(MODULE_INIT_QOM);
+
+-    if ((envlist = envlist_create()) == NULL) {
+-        (void) fprintf(stderr, "Unable to allocate envlist\n");
+-        exit(EXIT_FAILURE);
+-    }
++    envlist = envlist_create();
+
+     /* add current environment into the list */
+     for (wrk = environ; *wrk != NULL; wrk++) {
+@@ -4432,7 +4429,7 @@ int main(int argc, char **argv, char **envp)
+         free(*wrk);
+     }
+
+-    free(target_environ);
++    g_free(target_environ);
+
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+         qemu_log("guest_base  0x%lx\n", guest_base);
+diff --git a/util/envlist.c b/util/envlist.c
+index e86857e70a..a42eefa5fe 100644
+--- a/util/envlist.c
++++ b/util/envlist.c
+@@ -17,16 +17,14 @@ static int envlist_parse(envlist_t *envlist,
+     const char *env, int (*)(envlist_t *, const char *));
+
+ /*
+- * Allocates new envlist and returns pointer to that or
+- * NULL in case of error.
++ * Allocates new envlist and returns pointer to it.
+  */
+ envlist_t *
+ envlist_create(void)
+ {
+ 	envlist_t *envlist;
+
+-	if ((envlist = malloc(sizeof (*envlist))) == NULL)
+-		return (NULL);
++  envlist = g_malloc(sizeof(*envlist));
+
+ 	QLIST_INIT(&envlist->el_entries);
+ 	envlist->el_count = 0;
+@@ -49,9 +47,9 @@ envlist_free(envlist_t *envlist)
+ 		QLIST_REMOVE(entry, ev_link);
+
+ 		free((char *)entry->ev_var);
+-		free(entry);
++    g_free(entry);
+ 	}
+-	free(envlist);
++  g_free(envlist);
+ }
+
+ /*
+@@ -156,15 +154,15 @@ envlist_setenv(envlist_t *envlist, const char *env)
+ 	if (entry != NULL) {
+ 		QLIST_REMOVE(entry, ev_link);
+ 		free((char *)entry->ev_var);
+-		free(entry);
++    g_free(entry);
+ 	} else {
+ 		envlist->el_count++;
+ 	}
+
+-	if ((entry = malloc(sizeof (*entry))) == NULL)
+-		return (errno);
+-	if ((entry->ev_var = strdup(env)) == NULL) {
+-		free(entry);
++  entry = g_malloc(sizeof(*entry));
++  entry->ev_var = strdup(env);
++  if (entry->ev_var == NULL) {
++    g_free(entry);
+ 		return (errno);
+ 	}
+ 	QLIST_INSERT_HEAD(&envlist->el_entries, entry, ev_link);
+@@ -202,7 +200,7 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
+ 	if (entry != NULL) {
+ 		QLIST_REMOVE(entry, ev_link);
+ 		free((char *)entry->ev_var);
+-		free(entry);
++    g_free(entry);
+
+ 		envlist->el_count--;
+ 	}
+@@ -212,12 +210,12 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
+ /*
+  * Returns given envlist as array of strings (in same form that
+  * global variable environ is).  Caller must free returned memory
+- * by calling free(3) for each element and for the array.  Returned
+- * array and given envlist are not related (no common references).
++ * by calling free(3) for each element, and g_free for the array.
++ * Returned array and given envlist are not related (no common
++ * references).
+  *
+  * If caller provides count pointer, number of items in array is
+- * stored there.  In case of error, NULL is returned and no memory
+- * is allocated.
++ * stored there.
+  */
+ char **
+ envlist_to_environ(const envlist_t *envlist, size_t *count)
+@@ -225,9 +223,7 @@ envlist_to_environ(const envlist_t *envlist, size_t *count)
+ 	struct envlist_entry *entry;
+ 	char **env, **penv;
+
+-	penv = env = malloc((envlist->el_count + 1) * sizeof (char *));
+-	if (env == NULL)
+-		return (NULL);
++  penv = env = g_malloc((envlist->el_count + 1) * sizeof(char *));
+
+ 	for (entry = envlist->el_entries.lh_first; entry != NULL;
+ 	    entry = entry->ev_link.le_next) {
+--
+2.12.0
 
