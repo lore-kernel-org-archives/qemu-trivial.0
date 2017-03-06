@@ -1,48 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckxTC-000738-KW
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 13:34:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36102)
+	id 1ckxeM-0001TD-RM
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 13:46:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckxTA-000718-17
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:34:53 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1ckxeJ-0001RT-O3
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:46:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ckxT9-0002QM-6C
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:34:52 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:29107)
+	(envelope-from <balaton@eik.bme.hu>) id 1ckxeI-0007xB-Qn
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:46:23 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:38585)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1ckxT1-0002OI-1c; Mon, 06 Mar 2017 13:34:43 -0500
+	id 1ckxeD-0007ts-8E; Mon, 06 Mar 2017 13:46:17 -0500
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 980847456C2;
-	Mon,  6 Mar 2017 19:34:40 +0100 (CET)
+	by localhost (Postfix) with SMTP id 9CCEE7456C2;
+	Mon,  6 Mar 2017 19:46:15 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 79E9B7456BC; Mon,  6 Mar 2017 19:34:40 +0100 (CET)
+	id 7982B7456AD; Mon,  6 Mar 2017 19:46:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id 794CC7456B0;
-	Mon,  6 Mar 2017 19:34:40 +0100 (CET)
-Date: Mon, 6 Mar 2017 19:34:40 +0100 (CET)
+	by zero.eik.bme.hu (Postfix) with ESMTP id 78DC07456BC;
+	Mon,  6 Mar 2017 19:46:15 +0100 (CET)
+Date: Mon, 6 Mar 2017 19:46:15 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Peter Maydell <peter.maydell@linaro.org>
-cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+cc: QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Magnus Damm <magnus.damm@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
-In-Reply-To: <CAFEAcA8oWmN8tE66XsviXnBxtP5w+WLijXxsGk+6RwRquRo9Gw@mail.gmail.com>
-Message-ID: <alpine.BSF.2.20.1703061913040.39075@zero.eik.bme.hu>
-References: <cover.1488504063.git.balaton@eik.bme.hu>
-	<cc6a20fc4a2748f24920c03ce64ae34af0f61799.1488504063.git.balaton@eik.bme.hu>
-	<d5475df8-290b-07d4-d177-979d78850615@redhat.com>
-	<CAFEAcA90FRxghG0ZdH7H9y2bDk2U9XO1TUJgx0MN+N=7LzO5pQ@mail.gmail.com>
-	<4a30ecb4-77d0-795f-bf61-378546a8b034@redhat.com>
-	<CAFEAcA8oWmN8tE66XsviXnBxtP5w+WLijXxsGk+6RwRquRo9Gw@mail.gmail.com>
+	Aurelien Jarno <aurelien@aurel32.net>
+In-Reply-To: <CAFEAcA9euFa=fypaZaO5prpNQ6mdCmaSZgu3dofVgh2bYcSSxA@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1703061935550.39075@zero.eik.bme.hu>
+References: <cover.1488068248.git.balaton@eik.bme.hu>
+	<6b70a9dfe56c3a0dc8e874c45d70612aff7b8e3a.1488068248.git.balaton@eik.bme.hu>
+	<CAFEAcA9FL-sshVzKewf+rCs6-5_c2Y86Qy0b=3DMog4MrVOpwA@mail.gmail.com>
+	<alpine.BSF.2.20.1703030259350.33600@zero.eik.bme.hu>
+	<CAFEAcA-PUcPaOPOXXhab1N=YAHja0xCf5yaZYm5m0p1=j6A=WA@mail.gmail.com>
+	<alpine.BSF.2.20.1703032100430.14293@zero.eik.bme.hu>
+	<CAFEAcA_KxS6J3Mzrc+ijg0LGdxZsk_FDd9xAExGROgWYn-3qyQ@mail.gmail.com>
+	<alpine.BSF.2.20.1703042344460.63482@zero.eik.bme.hu>
+	<CAFEAcA9euFa=fypaZaO5prpNQ6mdCmaSZgu3dofVgh2bYcSSxA@mail.gmail.com>
 User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
 X-Received-From: 152.66.115.2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 13/13] ppc: Add SM501
- device in config for ppc and ppcemb targets
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 07/14] sm501: Fix device
+ endianness
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,37 +55,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2017 18:34:53 -0000
+X-List-Received-Date: Mon, 06 Mar 2017 18:46:24 -0000
 
 On Mon, 6 Mar 2017, Peter Maydell wrote:
-> On 6 March 2017 at 09:52, Thomas Huth <thuth@redhat.com> wrote:
->> I guess we could do something like that on ppc, too (and ppc-softmmu.mak
->> should likely include ppcemb-softmmu.mak), but
->> that's something for QEMU 2.10 / 3.0 / whichever version will be next.
+> On 4 March 2017 at 22:58, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>> On Sat, 4 Mar 2017, Peter Maydell wrote:
+>>> Right, but we should test the PCI-on-a-little-endian CPU
+>>> case, because right now your code has #ifdef TARGET_WORDS_BIGENDIAN
+>>> in it which means that the PCI device will behave differently
+>>> on big and little endian CPUs, and you have a case that you
+>>> haven't tested.
+>>
+>>
+>> I could not find an image to test this. I've tried removing the sysbus
+>> version from SH and add a PCI one instead but then Linux did not seem to
+>> find the card.
 >
-> Yeah, definitely 2.10 material (so is this whole series, but
-> let's not tangle it up with an unrelated cleanup).
+> I was thinking about testing the PCI card on x86.
+>
+>> I could not find any other OS images that would have this
+>> combination that is also known to work on any real hardware so I think if
+>> someone ever finds a problem with such combination then we can fix it when
+>> having a test case, since I could not figure out theoretically what should
+>> be the right way.
+>>
+>>> (At the moment with the set of cases you've tested the
+>>> sh embedded device ones will always be using the "not
+>>> TARGET_WORDS_BIGENDIAN" code and the PCI-on-PPC will
+>>> always use the "is TARGET_WORDS_BIGENDIAN" code. But
+>>> TARGET_WORDS_BIGENDIAN set/not set is orthogonal to
+>>> PCI-vs-embedded.)
+>>
+>>
+>> Why do you think that framebuffer endianness is dependent on PCI-vs-embedded
+>> as opposed to target endianness? The latter seems more plausible to me.
+>
+> The PCI card should behave the same way whether you plug it
+> into a PPC system or an x86 system (since it's the same
+> hardware). So code in the handling of the PCI card that
+> looks at TARGET_WORDS_BIGENDIAN is suspicious.
 
-Thanks for all the comments investigations and reviews, which were really 
-helpful. I'll test your suggestions and send another version if found to 
-be needed but I don't have access to real hardware to test on, so I can't 
-confirm this other than using images that are known to work on real 
-hardware and I only have those for PPC. So I cannot test LE guest more 
-than using the Linux images available on the net but can't guarantee those 
-are not buggy. The current version (however unlikely) does work for both 
-the more or less known good PPC images and the SH images I could find so 
-this is the most likely correct combination given the test cases. I'm 
-fairly sure the big endian case is correct and the SH LE case works better 
-with the images available so unless there's another image that is known to 
-work on SH, this is the best I could do.
-
-If there is no chance to get this in for 2.9 (considering it changes a 
-relatively unmaintained and unused part, so the risk of breaking something 
-important is very low) then let's get back to this about a month from now 
-because no point to spend time on it if it just gets forgotten until the 
-next chance to get it merged. Unless you can take it during the freeze 
-I'll pick this up later when the window opens again. (By the way, the 
-planning link on the wiki still points to 2.8.)
+I've searched the web for this and read about possible cards having this 
+chip working under Linux on x86 (or not working as these were mostly bug 
+reports) but could not find an image that is known to be working with such 
+card. I've tried a few recent Linux live CDs (Ubuntu and Fedora) with 
+x86_64 and sm501 PCI emulation on QEMU but these did not seem to boot and 
+find the card, only with the default VGA. Probably a card would have some 
+BIOS and some VESA modes that the drivers would use so I'm not sure a PCI 
+card would really behave the same on PPC and x64 (other video cards 
+usually don't work between PC and PPC Macs because of the BIOS on them). 
+Also on PPC this chip is mostly found on embedded boards not on pluggable 
+cards.
 
 Regards,
 BALATON Zoltan
