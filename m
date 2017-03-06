@@ -1,63 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckpwV-00026k-Jv
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 05:32:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39487)
+	id 1ckpyI-0002hq-Dv
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 05:34:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40040)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ckpwT-00026G-Dz
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:32:38 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ckpyG-0002h6-Gz
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:34:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ckpwS-0008W9-ED
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:32:37 -0500
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:35989)
+	(envelope-from <peter.maydell@linaro.org>) id 1ckpyF-0000Ty-0S
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:34:28 -0500
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:34029)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ckpwS-0008Vu-9N
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:32:36 -0500
-Received: by mail-wm0-x22e.google.com with SMTP id n11so60022323wma.1
-	for <qemu-trivial@nongnu.org>; Mon, 06 Mar 2017 02:32:36 -0800 (PST)
+	id 1ckpyE-0000Tc-Rb
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 05:34:26 -0500
+Received: by mail-wm0-x229.google.com with SMTP id 196so17441226wmm.1
+	for <qemu-trivial@nongnu.org>; Mon, 06 Mar 2017 02:34:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6Be8il6GYglSEp7eqZsM3kdnoqZJmcEaNJZm7GAFu2E=;
-	b=AMMkiyLdz8zGgkRg7TiU+c/2bukcKpAlCNWZuP4Y/zyW657g3pRJzHwYfQsH4AUyCo
-	NuD36T2JPyJIJvgVce2yW1KQ1nIVNCam+dT0w3QFTA2XIJ6oxWW+eRengjqK9m1q++GQ
-	vdPw4wkUaelJHeZD/qRAxI2BUFCDmkgBZJ2ug=
+	:cc; bh=0UlSssOJWbZyoQnJ5IVwyOugNYBzaMRwyodXiDfixf8=;
+	b=JLjxW89/CQtjRnQpWywVnCef9wil4RongBD31Fry3nhy4KXwrxoi/FUgwSNRTFdJBy
+	I2TmpxWh1QwqRC2H4+8cHEGByxaoa8wjS8rMtundEVwnPk86gNsi9h/Xxlui/wTqZEMV
+	LyA/oNzWMI2lboBHRbM/wDjcaHofJ8kZmZhS8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=6Be8il6GYglSEp7eqZsM3kdnoqZJmcEaNJZm7GAFu2E=;
-	b=hM7071ojjo2y0PXz0lezOlQcE4hhYr72CQbr1jdzlgccXmYML8C0gwxgBDl1JO6B/R
-	63gfOwQ0Qfgksg8RsSy/BIjVGzPhlAm25yNOtCVhcowewq0kWUMZ/pqhkwftPh9G3i3R
-	ubR1WfYV1yJz2NjwbiK9hZ6ylYFQ/00sBpZBycQL6YuteUvBqJFofBsQPUXrCvFFShpn
-	x69/XGqGuidcj8OPBjyw9vpYEp1l7LM/V0xyimdcqyHpusS7bUzKPNq6OFiiHkasBGmh
-	aFCui0etcdTNcIJL6D5vOyWC67XuA0ySbvcXQJoN8LZuGulAgtfWswerbydj3rZVVq32
-	FF0A==
-X-Gm-Message-State: AMke39na9qMXDyuL79cSmWNBk3x1X+KBfvJQZCvoDo/C6E6I/Ec+Fo3kTA/5OPqt8iKMSPVEfEiA5c6vRCtkAgVe
-X-Received: by 10.28.16.70 with SMTP id 67mr13247536wmq.142.1488796355235;
-	Mon, 06 Mar 2017 02:32:35 -0800 (PST)
+	bh=0UlSssOJWbZyoQnJ5IVwyOugNYBzaMRwyodXiDfixf8=;
+	b=an4+gy4rI5dXELwTJl57QvKF//6ev5s87VjwhHuZhKhA6fV3b27zFigoU98+q4yVCa
+	traa5YhOXQQkDT0x09oxK65nXp410eD1B2d61/7DBUJ3AfSreE5c4O5GTeA/jNSQFR8f
+	YTpepQavfYUqaXrKu2wo/c8oiKTssLuxWM23vuZ02hZmnCjB78oRsJXMFUBNh2MLMjun
+	DRrkXkqsEEE1zbEX8aJnO7fFJ0YRA9/E0UDdPHSP3uwaiiQy/Gkyv2SuDGINvA+5s3+q
+	JUKyMKgjMzKNrUgYuoDywdCqt1rmqmiOgzc4jv8FmLQOYC1KEv+TKsUtoylyXiIp99M1
+	6uWA==
+X-Gm-Message-State: AMke39kOPgYv7WiKNNSMWTA5suWEBYBrTFomD9Ljhhwm1kKdk/CYS3Ja6gjSBgcfRU18f0ftPFhZIslJIyl4Hhrd
+X-Received: by 10.28.172.68 with SMTP id v65mr12416551wme.111.1488796465835;
+	Mon, 06 Mar 2017 02:34:25 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.223.145.33 with HTTP; Mon, 6 Mar 2017 02:32:14 -0800 (PST)
-In-Reply-To: <alpine.BSF.2.20.1703042344460.63482@zero.eik.bme.hu>
-References: <cover.1488068248.git.balaton@eik.bme.hu>
-	<6b70a9dfe56c3a0dc8e874c45d70612aff7b8e3a.1488068248.git.balaton@eik.bme.hu>
-	<CAFEAcA9FL-sshVzKewf+rCs6-5_c2Y86Qy0b=3DMog4MrVOpwA@mail.gmail.com>
-	<alpine.BSF.2.20.1703030259350.33600@zero.eik.bme.hu>
-	<CAFEAcA-PUcPaOPOXXhab1N=YAHja0xCf5yaZYm5m0p1=j6A=WA@mail.gmail.com>
-	<alpine.BSF.2.20.1703032100430.14293@zero.eik.bme.hu>
-	<CAFEAcA_KxS6J3Mzrc+ijg0LGdxZsk_FDd9xAExGROgWYn-3qyQ@mail.gmail.com>
-	<alpine.BSF.2.20.1703042344460.63482@zero.eik.bme.hu>
+Received: by 10.223.145.33 with HTTP; Mon, 6 Mar 2017 02:34:05 -0800 (PST)
+In-Reply-To: <4bd61f7ecdba6f205e30f0b712c65036951f1375.1488665935.git.balaton@eik.bme.hu>
+References: <cover.1488665935.git.balaton@eik.bme.hu>
+	<4bd61f7ecdba6f205e30f0b712c65036951f1375.1488665935.git.balaton@eik.bme.hu>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Mar 2017 10:32:14 +0000
-Message-ID: <CAFEAcA9euFa=fypaZaO5prpNQ6mdCmaSZgu3dofVgh2bYcSSxA@mail.gmail.com>
+Date: Mon, 6 Mar 2017 10:34:05 +0000
+Message-ID: <CAFEAcA_PY09pjLdQ4Kb2w-cywJUPRsLo5Wq9WPbVeR2-LHY+cw@mail.gmail.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>
+	Magnus Damm <magnus.damm@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, 
+	David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 07/14] sm501: Fix device
- endianness
+X-Received-From: 2a00:1450:400c:c09::229
+Subject: Re: [Qemu-trivial] [PATCH v4 06/13] sm501: Add emulation of chip
+ connected via PCI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,44 +65,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2017 10:32:38 -0000
+X-List-Received-Date: Mon, 06 Mar 2017 10:34:29 -0000
 
-On 4 March 2017 at 22:58, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> On Sat, 4 Mar 2017, Peter Maydell wrote:
->> Right, but we should test the PCI-on-a-little-endian CPU
->> case, because right now your code has #ifdef TARGET_WORDS_BIGENDIAN
->> in it which means that the PCI device will behave differently
->> on big and little endian CPUs, and you have a case that you
->> haven't tested.
+On 25 February 2017 at 18:31, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> Only the display controller part is created automatically on PCI
 >
->
-> I could not find an image to test this. I've tried removing the sysbus
-> version from SH and add a PCI one instead but then Linux did not seem to
-> find the card.
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 
-I was thinking about testing the PCI card on x86.
-
-> I could not find any other OS images that would have this
-> combination that is also known to work on any real hardware so I think if
-> someone ever finds a problem with such combination then we can fix it when
-> having a test case, since I could not figure out theoretically what should
-> be the right way.
->
->> (At the moment with the set of cases you've tested the
->> sh embedded device ones will always be using the "not
->> TARGET_WORDS_BIGENDIAN" code and the PCI-on-PPC will
->> always use the "is TARGET_WORDS_BIGENDIAN" code. But
->> TARGET_WORDS_BIGENDIAN set/not set is orthogonal to
->> PCI-vs-embedded.)
->
->
-> Why do you think that framebuffer endianness is dependent on PCI-vs-embedded
-> as opposed to target endianness? The latter seems more plausible to me.
-
-The PCI card should behave the same way whether you plug it
-into a PPC system or an x86 system (since it's the same
-hardware). So code in the handling of the PCI card that
-looks at TARGET_WORDS_BIGENDIAN is suspicious.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM
