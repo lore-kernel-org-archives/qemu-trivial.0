@@ -1,58 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckr6f-000717-AD
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 06:47:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59028)
+	id 1ckxTC-000738-KW
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 13:34:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ckr6c-00070s-Gv
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 06:47:12 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1ckxTA-000718-17
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:34:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ckr6b-0005ha-BQ
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 06:47:10 -0500
-Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:37803)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ckr6b-0005gl-28
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 06:47:09 -0500
-Received: by mail-wm0-x22c.google.com with SMTP id n11so62062774wma.0
-	for <qemu-trivial@nongnu.org>; Mon, 06 Mar 2017 03:47:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=FHgkaTPxkoiUtLcCsQPjO5ON8omWPV1+Z7wPHH1GjDo=;
-	b=NmRO3uTp/J6Un1PysmfSnqa6H0zduuJw9df9YEUfGocs29yfJXhPtD1sHpqv/ZNVN2
-	ak0Z+O5aKdeUlAgJhK+AysFyRLMCOYuwKL+34Zca18S/M3Gdin+3RFdhXZOYWd7Y958z
-	ydX+GUYaYQodF+Lyo/QxLmFvGGQi6Cw24N8tE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=FHgkaTPxkoiUtLcCsQPjO5ON8omWPV1+Z7wPHH1GjDo=;
-	b=QLBpdhPTsK0LA1jJvi92+lZDyy9mc/P3cz+92rsNpfacxmR3k23LGrT5g3n/d2iPSO
-	BoWdzHCyoN4y93Kofpdyprndqhdv2Q+DjnrS1qKXMeeI0MwqkyBRncwjWO/9UbXuNACx
-	555r30qxZIoLgKoyGJbNPwwYH7yopw9F1UZDGMbbJEZtaCEcj4G0jLqYMRFGIHQfoqrI
-	DYevMCIBlJQZ5aiHfl5KLV+Ut+CoHMNV0JQxfs71GUHKv0w0hin0FOrK3SvZX07PtWsY
-	6iEN0Z2LrNx6J+9gz470rGzHDhMU77CJEHjbII3KK2EpY+oDGlLs6I+9/rlFm1CJjU4S
-	WdNA==
-X-Gm-Message-State: AMke39mT6p++S1ZKevUkz2akQ8xQtCsKsIhL0yfjAa2SjbhyNll1ZwYeqrdjNYBM5fyJZa2Sv+RACCU/pdDjY1vN
-X-Received: by 10.28.172.68 with SMTP id v65mr12714427wme.111.1488800827702;
-	Mon, 06 Mar 2017 03:47:07 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.145.33 with HTTP; Mon, 6 Mar 2017 03:46:47 -0800 (PST)
-In-Reply-To: <6003064214f099ab5ec9625e356543b22f01b9cf.1488665935.git.balaton@eik.bme.hu>
-References: <cover.1488665935.git.balaton@eik.bme.hu>
-	<6003064214f099ab5ec9625e356543b22f01b9cf.1488665935.git.balaton@eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Mar 2017 11:46:47 +0000
-Message-ID: <CAFEAcA9Ux+sLonQU+JWCExmDAt7BFzWWWGC08pKdo5RJWmhNRA@mail.gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	(envelope-from <balaton@eik.bme.hu>) id 1ckxT9-0002QM-6C
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 13:34:52 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:29107)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1ckxT1-0002OI-1c; Mon, 06 Mar 2017 13:34:43 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id 980847456C2;
+	Mon,  6 Mar 2017 19:34:40 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 79E9B7456BC; Mon,  6 Mar 2017 19:34:40 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 794CC7456B0;
+	Mon,  6 Mar 2017 19:34:40 +0100 (CET)
+Date: Mon, 6 Mar 2017 19:34:40 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Magnus Damm <magnus.damm@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>, 
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22c
-Subject: Re: [Qemu-trivial] [PATCH v4 07/13] sm501: Fix device endianness
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
+In-Reply-To: <CAFEAcA8oWmN8tE66XsviXnBxtP5w+WLijXxsGk+6RwRquRo9Gw@mail.gmail.com>
+Message-ID: <alpine.BSF.2.20.1703061913040.39075@zero.eik.bme.hu>
+References: <cover.1488504063.git.balaton@eik.bme.hu>
+	<cc6a20fc4a2748f24920c03ce64ae34af0f61799.1488504063.git.balaton@eik.bme.hu>
+	<d5475df8-290b-07d4-d177-979d78850615@redhat.com>
+	<CAFEAcA90FRxghG0ZdH7H9y2bDk2U9XO1TUJgx0MN+N=7LzO5pQ@mail.gmail.com>
+	<4a30ecb4-77d0-795f-bf61-378546a8b034@redhat.com>
+	<CAFEAcA8oWmN8tE66XsviXnBxtP5w+WLijXxsGk+6RwRquRo9Gw@mail.gmail.com>
+User-Agent: Alpine 2.20 (BSF 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 13/13] ppc: Add SM501
+ device in config for ppc and ppcemb targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,121 +54,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2017 11:47:12 -0000
+X-List-Received-Date: Mon, 06 Mar 2017 18:34:53 -0000
 
-On 25 February 2017 at 18:46, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> We only emulate the sysbus device in its default LE mode and PCI is LE
-> as well so specify this for registers. Colors were also off on both
-> SH4 and PPC which is also fixed here.
-
-> diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
-> index 832ee61..6e56baf 100644
-> --- a/hw/display/sm501_template.h
-> +++ b/hw/display/sm501_template.h
-> @@ -64,10 +64,16 @@ static void glue(draw_line16_, PIXEL_NAME)(
->      uint8_t r, g, b;
+On Mon, 6 Mar 2017, Peter Maydell wrote:
+> On 6 March 2017 at 09:52, Thomas Huth <thuth@redhat.com> wrote:
+>> I guess we could do something like that on ppc, too (and ppc-softmmu.mak
+>> should likely include ppcemb-softmmu.mak), but
+>> that's something for QEMU 2.10 / 3.0 / whichever version will be next.
 >
->      do {
-> -        rgb565 = lduw_p(s);
-> -        r = ((rgb565 >> 11) & 0x1f) << 3;
-> -        g = ((rgb565 >>  5) & 0x3f) << 2;
-> -        b = ((rgb565 >>  0) & 0x1f) << 3;
-> +        rgb565 = lduw_le_p(s);
-> +#if defined(TARGET_WORDS_BIGENDIAN)
-> +        r = (rgb565 >> 8) & 0xf8;
-> +        g = (rgb565 >> 3) & 0xfc;
-> +        b = (rgb565 << 3) & 0xf8;
-> +#else
-> +        b = (rgb565 >> 8) & 0xf8;
-> +        g = (rgb565 >> 3) & 0xfc;
-> +        r = (rgb565 << 3) & 0xf8;
-> +#endif
+> Yeah, definitely 2.10 material (so is this whole series, but
+> let's not tangle it up with an unrelated cleanup).
 
-This says "the pixel in the framebuffer is little endian. If
-the guest CPU is bigendian then the pixel format is RGB565;
-otherwise it's BGR565". (This difference isn't a simple
-endianness thing because the G pixel crosses the boundary
-between two bytes.)
+Thanks for all the comments investigations and reviews, which were really 
+helpful. I'll test your suggestions and send another version if found to 
+be needed but I don't have access to real hardware to test on, so I can't 
+confirm this other than using images that are known to work on real 
+hardware and I only have those for PPC. So I cannot test LE guest more 
+than using the Linux images available on the net but can't guarantee those 
+are not buggy. The current version (however unlikely) does work for both 
+the more or less known good PPC images and the SH images I could find so 
+this is the most likely correct combination given the test cases. I'm 
+fairly sure the big endian case is correct and the SH LE case works better 
+with the images available so unless there's another image that is known to 
+work on SH, this is the best I could do.
 
-In the Linux kernel driver source, these two formats
-correspond to "SWAP_FB_ENDIAN set" (BGR565) and not set
-(RGB565), and the swap flag is set for BE PCI and for
-(LE) embedded sh. I'm not convinced by that code though,
-because the comment claims it's for handling an IO layer
-swap that makes the PCI bus little endian, but that can't
-make RGB565 turn into BGR565. See also kernel commit
-fedbb3625b3c1644 which also says that code is wrong.
-So I would not trust the kernel driver as a guide to the
-right behaviour for 16 bit formats: it is clearly buggy.
+If there is no chance to get this in for 2.9 (considering it changes a 
+relatively unmaintained and unused part, so the risk of breaking something 
+important is very low) then let's get back to this about a month from now 
+because no point to spend time on it if it just gets forgotten until the 
+next chance to get it merged. Unless you can take it during the freeze 
+I'll pick this up later when the window opens again. (By the way, the 
+planning link on the wiki still points to 2.8.)
 
->          *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
->          s += 2;
->          d += BPP;
-> @@ -80,15 +86,14 @@ static void glue(draw_line32_, PIXEL_NAME)(
->      uint8_t r, g, b;
->
->      do {
-> -        ldub_p(s);
->  #if defined(TARGET_WORDS_BIGENDIAN)
-> +        r = s[0];
-> +        g = s[1];
-> +        b = s[2];
-> +#else
->          r = s[1];
->          g = s[2];
->          b = s[3];
-> -#else
-> -        b = s[0];
-> -        g = s[1];
-> -        r = s[2];
->  #endif
-
-This says "the pixel in the framebuffer is 32-bits always
-little endian. If the guest CPU is bigendian then the
-pixel format is XBGR; otherwise it's RGBX".
-
-This is also saying the hardware behaves differently
-for big and little endian guest CPUs, but in a different
-way from 16 bit (both in whether big or little gets
-the RGB order and in whether the other order is a
-straight "all the fields in reverse order" or not).
-That seems even less likely.
-
-In the Linux kernel, "SWAP_FB_ENDIAN" flag set gets
-us BGRX; not set gets us XRGB.
-
-I think the correct behaviour here is for 16 bits:
-        rgb565 = lduw_le_p(s);
-        r = (rgb565 >> 8) & 0xf8;
-        g = (rgb565 >> 3) & 0xfc;
-        b = (rgb565 << 3) & 0xf8;
-
-ie "always LE framebuffer, RGB565"
-and for 32 bits:
-        r = s[2];
-        g = s[1];
-        b = s[0];
-ie "always LE framebuffer, XRGB8888".
-
-That makes sense, and it matches what the hardware
-claims it does. I would recommend implementing that, unless
-it doesn't work for some bit of guest software that you can
-100% guarantee does display correctly on real hardware.
-
-If it doesn't work on a particular bit of guest software
-then that is quite likely guest software error
-because nobody really thoroughly tested the driver
-code a decade ago and nobody has the hardware now
-to test the driver against.
-
-The sm501 x.org driver appears to have been independently
-implemented, so might be an interesting thing to test.
-
-(Yes, trying to sort out a model of ancient hardware so it's
-accurate sucks. If you can find a real copy of the hardware
-so you can cross-check what it really does that's about
-the only way to be sure about things.)
-
-thanks
--- PMM
+Regards,
+BALATON Zoltan
 
