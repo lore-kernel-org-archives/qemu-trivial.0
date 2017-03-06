@@ -1,51 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckns7-0007dG-Jc
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 03:19:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36078)
+	id 1ckpFC-0001aN-5T
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 04:47:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ckns5-0007cK-Md
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 03:19:58 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ckpF9-0001Z1-St
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 04:47:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ckns4-0002XN-Pz
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 03:19:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39840)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1ckns0-0002U0-7C; Mon, 06 Mar 2017 03:19:52 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 667F97E9C2;
-	Mon,  6 Mar 2017 08:19:52 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
-	[10.36.116.55])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v268JpGG014444
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 6 Mar 2017 03:19:52 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7917C1138647; Mon,  6 Mar 2017 09:19:49 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Daniel P. Berrange" <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20170302122429.7737-1-berrange@redhat.com>
-Date: Mon, 06 Mar 2017 09:19:49 +0100
-In-Reply-To: <20170302122429.7737-1-berrange@redhat.com> (Daniel P. Berrange's
-	message of "Thu, 2 Mar 2017 12:24:29 +0000")
-Message-ID: <87zigy3jh6.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1ckpF6-0003QX-Pt
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 04:47:49 -0500
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:37092)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ckpF6-0003Nv-Jh
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 04:47:48 -0500
+Received: by mail-wm0-x230.google.com with SMTP id n11so59391822wma.0
+	for <qemu-trivial@nongnu.org>; Mon, 06 Mar 2017 01:47:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=BUkRBPOLjojXBBMLTHC2TrjB6kbN8rnperrlwPhrSM8=;
+	b=GTjkkYucGkdtnp1mgCXahjhutZNUQDPtvxsLmK16kEIuuH2M+MYTg2NLAfIOMpihu+
+	tokPUCE4AUd861Llqhteq8rfuiqF2Kl+7rEv91ZwtH73fnS5uPTXjrz3jfwRFcX3gew+
+	AP4qrz4kDp+FP65Vza9+hsqBvyOSIUElpBfsY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=BUkRBPOLjojXBBMLTHC2TrjB6kbN8rnperrlwPhrSM8=;
+	b=L5ijzdc2rd9nGhTt6mjWSNDD0g7Ep8q4AE4d56WBmdOKvJ3jqOEhG9VmgFEcplWMyt
+	x/4zx6RClSeiJ4TqC+GOUpboJ8ZD3S/DgtxtyzRDvH0Ghvq9f3QL3a9FlDZHKLy5Y2qw
+	KmQRZkeenTzb5nAsN54XFb94A+gyz1SsL8oivWrVIPbwzGTJB8XIkm5DsiPkobWpzbsR
+	yjWdec1UxnJLLUiszl2Ian0KbcwXH5gN1+mYzAfvyM8TvwIAQgs+RxbeIS7bOhALCzoE
+	zCsIcnzqRiFKFi+bVDu6rZtvG68UfKVX7UZoFxzVQp/nwwu9fgN7GM4Ct1h4NUH4mYdW
+	UesQ==
+X-Gm-Message-State: AMke39kD7kAb1vuW37WKFg7iUqZrgOJYbH6kAlp9Z0tIZg6EpRsdlaX1IYFavIqYQfkWlQYWyy4MjGyPK3BwagbJ
+X-Received: by 10.28.172.68 with SMTP id v65mr12226776wme.111.1488793665276;
+	Mon, 06 Mar 2017 01:47:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 06 Mar 2017 08:19:52 +0000 (UTC)
+Received: by 10.223.145.33 with HTTP; Mon, 6 Mar 2017 01:47:24 -0800 (PST)
+In-Reply-To: <d5475df8-290b-07d4-d177-979d78850615@redhat.com>
+References: <cover.1488504063.git.balaton@eik.bme.hu>
+	<cc6a20fc4a2748f24920c03ce64ae34af0f61799.1488504063.git.balaton@eik.bme.hu>
+	<d5475df8-290b-07d4-d177-979d78850615@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Mar 2017 09:47:24 +0000
+Message-ID: <CAFEAcA90FRxghG0ZdH7H9y2bDk2U9XO1TUJgx0MN+N=7LzO5pQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Magnus Damm <magnus.damm@gmail.com>, 
+	Aurelien Jarno <aurelien@aurel32.net>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qmp: allow setting
- properties to empty string in qmp-shell
+X-Received-From: 2a00:1450:400c:c09::230
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 13/13] ppc: Add SM501
+ device in config for ppc and ppcemb targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,24 +67,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2017 08:19:58 -0000
+X-List-Received-Date: Mon, 06 Mar 2017 09:47:53 -0000
 
-"Daniel P. Berrange" <berrange@redhat.com> writes:
+On 6 March 2017 at 07:00, Thomas Huth <thuth@redhat.com> wrote:
+> Note: In case you respin the series, you might want to add this
+> CONFIG_SM501 to ppc64-softmmu.mak, too, since it is a superset of the
+> 32-bit config (i.e. it can also emulate the 32-bit embedded chips).
 
-> The qmp-shell property parser currently rejects attempts to
-> set string properties to the empty string eg
->
->   (QEMU) migrate-set-parameters  tls-hostname=
->   Error while parsing command line: Expected a key=value pair, got 'tls-hostname='
-> command format: <command-name>  [arg-name1=arg1] ... [arg-nameN=argN]
->
-> This is caused by checking the wrong condition after splitting
-> the parameter on '='. The "partition" method will return "" for
-> the separator field, if the seperator was not present, so that
-> is the correct thing to check for malformed syntax.
->
-> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+Yes, definitely do this please.
+(Missed this because ARM's 64-bit default config includes the
+32-bit one rather than duplicating its contents.)
 
-I'll take this through my tree, unless qemu-trivial beats me to the
-punch.  Thanks!
+
+thanks
+-- PMM
 
