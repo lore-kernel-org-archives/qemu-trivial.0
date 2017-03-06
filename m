@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ckl6r-0006e8-Ar
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 00:23:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57502)
+	id 1ckmdA-00081r-3R
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Mar 2017 02:00:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46824)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1ckl6o-0006ce-Ul
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 00:22:59 -0500
+	(envelope-from <thuth@redhat.com>) id 1ckmd4-0007xi-GU
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 02:00:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1ckl6n-0008Tc-W5
-	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 00:22:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42238)
+	(envelope-from <thuth@redhat.com>) id 1ckmd1-0003LW-El
+	for qemu-trivial@nongnu.org; Mon, 06 Mar 2017 02:00:22 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59754)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
-	id 1ckl6j-0008Sl-Fe; Mon, 06 Mar 2017 00:22:53 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1ckmcq-0003Ah-1E; Mon, 06 Mar 2017 02:00:08 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 74FC763144;
-	Mon,  6 Mar 2017 05:22:53 +0000 (UTC)
-Received: from [10.72.5.134] (vpn1-5-134.pek2.redhat.com [10.72.5.134])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id v265Ml6k030559
+	by mx1.redhat.com (Postfix) with ESMTPS id B247861B9C;
+	Mon,  6 Mar 2017 07:00:05 +0000 (UTC)
+Received: from [10.36.116.125] (ovpn-116-125.ams2.redhat.com [10.36.116.125])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v26701SL027182
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 6 Mar 2017 00:22:51 -0500
-To: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>,
-	qemu devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>
-References: <1488427170-28050-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <0266affa-397d-41ca-f14b-ba08b7b31398@redhat.com>
-Date: Mon, 6 Mar 2017 13:22:46 +0800
+	Mon, 6 Mar 2017 02:00:03 -0500
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <cover.1488504063.git.balaton@eik.bme.hu>
+	<cc6a20fc4a2748f24920c03ce64ae34af0f61799.1488504063.git.balaton@eik.bme.hu>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, qemu-ppc@nongnu.org
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <d5475df8-290b-07d4-d177-979d78850615@redhat.com>
+Date: Mon, 6 Mar 2017 08:00:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.7.0
 MIME-Version: 1.0
-In-Reply-To: <1488427170-28050-1-git-send-email-zhangchen.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+In-Reply-To: <cc6a20fc4a2748f24920c03ce64ae34af0f61799.1488504063.git.balaton@eik.bme.hu>
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 06 Mar 2017 05:22:53 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 06 Mar 2017 07:00:06 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] net/filter-mirror: Follow CODING_STYLE
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 13/13] ppc: Add SM501
+ device in config for ppc and ppcemb targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,41 +59,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Mar 2017 05:22:59 -0000
+X-List-Received-Date: Mon, 06 Mar 2017 07:00:26 -0000
 
-
-
-On 2017=E5=B9=B403=E6=9C=8802=E6=97=A5 11:59, Zhang Chen wrote:
-> Signed-off-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+On 13.12.2016 22:00, BALATON Zoltan wrote:
+> This is not used by default on any emulated machine yet but it is
+> still useful to have it compiled so it can be added from the command
+> line for clients that can use it (e.g. MorphOS has no driver for any
+> other emulated video cards but can output via SM501)
+>=20
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
->   net/filter-mirror.c | 7 ++++---
->   1 file changed, 4 insertions(+), 3 deletions(-)
->
-> diff --git a/net/filter-mirror.c b/net/filter-mirror.c
-> index aa0aa98..72fa7c2 100644
-> --- a/net/filter-mirror.c
-> +++ b/net/filter-mirror.c
-> @@ -49,7 +49,7 @@ static int filter_mirror_send(CharBackend *chr_out,
->   {
->       int ret =3D 0;
->       ssize_t size =3D 0;
-> -    uint32_t len =3D  0;
-> +    uint32_t len =3D 0;
->       char *buf;
->  =20
->       size =3D iov_size(iov, iovcnt);
-> @@ -77,8 +77,9 @@ err:
->       return ret < 0 ? ret : -EIO;
->   }
->  =20
-> -static void
-> -redirector_to_filter(NetFilterState *nf, const uint8_t *buf, int len)
-> +static void redirector_to_filter(NetFilterState *nf,
-> +                                 const uint8_t *buf,
-> +                                 int len)
->   {
->       struct iovec iov =3D {
->           .iov_base =3D (void *)buf,
+>  default-configs/ppc-softmmu.mak    | 1 +
+>  default-configs/ppcemb-softmmu.mak | 1 +
+>  2 files changed, 2 insertions(+)
+>=20
+> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-soft=
+mmu.mak
+> index 09c1d45..1f1cd85 100644
+> --- a/default-configs/ppc-softmmu.mak
+> +++ b/default-configs/ppc-softmmu.mak
+> @@ -45,6 +45,7 @@ CONFIG_OPENPIC_KVM=3D$(and $(CONFIG_E500),$(CONFIG_KV=
+M))
+>  CONFIG_PLATFORM_BUS=3Dy
+>  CONFIG_ETSEC=3Dy
+>  CONFIG_LIBDECNUMBER=3Dy
+> +CONFIG_SM501=3Dy
+>  # For PReP
+>  CONFIG_SERIAL_ISA=3Dy
+>  CONFIG_MC146818RTC=3Dy
+> diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcem=
+b-softmmu.mak
+> index 7f56004..94340de 100644
+> --- a/default-configs/ppcemb-softmmu.mak
+> +++ b/default-configs/ppcemb-softmmu.mak
+> @@ -15,3 +15,4 @@ CONFIG_I8259=3Dy
+>  CONFIG_XILINX=3Dy
+>  CONFIG_XILINX_ETHLITE=3Dy
+>  CONFIG_LIBDECNUMBER=3Dy
+> +CONFIG_SM501=3Dy
 
-Applied, thanks.
+Looks like there are indeed embedded PPC devices that are shipped with
+the SM501 controller (e.g. the TQM5200), so I think this makes sense:
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Note: In case you respin the series, you might want to add this
+CONFIG_SM501 to ppc64-softmmu.mak, too, since it is a superset of the
+32-bit config (i.e. it can also emulate the 32-bit embedded chips).
+
+ Thomas
+
 
