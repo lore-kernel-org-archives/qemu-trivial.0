@@ -1,47 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cmPvx-0004NU-AP
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Mar 2017 14:10:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34514)
+	id 1cmTGD-00022o-Sf
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Mar 2017 17:43:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1cmPvv-0004M5-0I
-	for qemu-trivial@nongnu.org; Fri, 10 Mar 2017 14:10:35 -0500
+	(envelope-from <krzk@kernel.org>) id 1cmQnk-00088a-Jf
+	for qemu-trivial@nongnu.org; Fri, 10 Mar 2017 15:06:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1cmPvu-0004FN-2Z
-	for qemu-trivial@nongnu.org; Fri, 10 Mar 2017 14:10:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57526)
+	(envelope-from <krzk@kernel.org>) id 1cmQnj-0002Rt-Ka
+	for qemu-trivial@nongnu.org; Fri, 10 Mar 2017 15:06:12 -0500
+Received: from mail.kernel.org ([198.145.29.136]:32800)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1cmPvp-0004EE-Ih; Fri, 10 Mar 2017 14:10:29 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Exim 4.71) (envelope-from <krzk@kernel.org>)
+	id 1cmQng-0002QY-9G; Fri, 10 Mar 2017 15:06:08 -0500
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id 8393F20595;
+	Fri, 10 Mar 2017 20:06:06 +0000 (UTC)
+Received: from localhost.localdomain (bzq-109-67-52-244.red.bezeqint.net
+	[109.67.52.244])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C84B085540;
-	Fri, 10 Mar 2017 19:10:28 +0000 (UTC)
-Received: from [10.36.116.244] (ovpn-116-244.ams2.redhat.com [10.36.116.244])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id v2AJAPqG005928; Fri, 10 Mar 2017 14:10:27 -0500
-To: Herbie Robinson <Herbie.Robinson@stratus.com>, qemu-devel@nongnu.org
-References: <1489161295-23864-1-git-send-email-Herbie.Robinson@stratus.com>
-Cc: qemu-trivial@nongnu.org
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <d43aec18-8b5c-0929-c4ea-3b643baf784d@redhat.com>
-Date: Fri, 10 Mar 2017 20:10:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
-MIME-Version: 1.0
-In-Reply-To: <1489161295-23864-1-git-send-email-Herbie.Robinson@stratus.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 10 Mar 2017 19:10:28 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v3] SGABIOS: fix wrong video attrs for
- int 10h, ah==13h
+	by mail.kernel.org (Postfix) with ESMTPSA id D241D205AA;
+	Fri, 10 Mar 2017 20:06:03 +0000 (UTC)
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Date: Fri, 10 Mar 2017 22:05:49 +0200
+Message-Id: <20170310200550.13313-2-krzk@kernel.org>
+X-Mailer: git-send-email 2.9.3
+In-Reply-To: <20170310200550.13313-1-krzk@kernel.org>
+References: <20170310200550.13313-1-krzk@kernel.org>
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+X-Mailman-Approved-At: Fri, 10 Mar 2017 17:43:44 -0500
+Subject: [Qemu-trivial] [PATCH v2 1/2] qdev: Constify value passed to
+ qdev_prop_set_macaddr
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,52 +48,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Mar 2017 19:10:36 -0000
+X-List-Received-Date: Fri, 10 Mar 2017 20:06:13 -0000
 
-On 10/03/2017 16:54, Herbie Robinson wrote:
-> Fix Bug #1670509: wrong video attrs for int 10h, ah==13h
-> The subroutine set_cursor_position is trashing %bx.
-> Unfortunately, %bl contains the video attribute for write_string.
-> 
-> The fix saves %bx in the function prolog and restores it in
-> the epilog. 
-> 
-> Signed-off-by: Herbie Robinson <Herbie.Robinson@stratus.com>
+The 'value' argument is not modified so this can be made const for code
+safeness.
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ hw/core/qdev-properties.c    | 3 ++-
+ include/hw/qdev-properties.h | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-
-> ---
-> Removed incorrect code deletions from set_current_cursor.
-> Removed explanation of same from the commit message.
-> 
-> BTW, I didn't see any test cases for this code, but if they exist
-> and somebody points me at them, I should be able to generate a 
-> very small qcow2 file that demonstrates the problem.
-> 
->  sgabios.S | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/sgabios.S b/sgabios.S
-> index 275d063..96c4e23 100644
-> --- a/sgabios.S
-> +++ b/sgabios.S
-> @@ -1728,6 +1728,7 @@ write_string_tail:
->  
->  set_cursor_position:
->    pushw %ax
-> +  pushw %bx
->    pushw %ds
->    pushw $BDA_SEG
->    popw %ds                             /* ds = 0x40 */
-> @@ -1738,6 +1739,7 @@ set_cursor_position:
->    movw %ax, %bx                        /* bx = cursor save offset */
->    movw %dx, (%bx)                      /* save new cursor value */
->    popw %ds
-> +  popw %bx
->    popw %ax
->    ret
->  
-> 
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 6ab4265eb478..fa3617db2df1 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -1010,7 +1010,8 @@ void qdev_prop_set_string(DeviceState *dev, const char *name, const char *value)
+     object_property_set_str(OBJECT(dev), value, name, &error_abort);
+ }
+ 
+-void qdev_prop_set_macaddr(DeviceState *dev, const char *name, uint8_t *value)
++void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
++                           const uint8_t *value)
+ {
+     char str[2 * 6 + 5 + 1];
+     snprintf(str, sizeof(str), "%02x:%02x:%02x:%02x:%02x:%02x",
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index 7ac315331aa0..1d69fa7a8f04 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -188,7 +188,8 @@ void qdev_prop_set_chr(DeviceState *dev, const char *name, Chardev *value);
+ void qdev_prop_set_netdev(DeviceState *dev, const char *name, NetClientState *value);
+ void qdev_prop_set_drive(DeviceState *dev, const char *name,
+                          BlockBackend *value, Error **errp);
+-void qdev_prop_set_macaddr(DeviceState *dev, const char *name, uint8_t *value);
++void qdev_prop_set_macaddr(DeviceState *dev, const char *name,
++                           const uint8_t *value);
+ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+ /* FIXME: Remove opaque pointer properties.  */
+ void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
+-- 
+2.9.3
 
 
