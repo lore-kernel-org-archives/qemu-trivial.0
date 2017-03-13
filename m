@@ -1,53 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cnJzX-0005EZ-Uj
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Mar 2017 03:02:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60944)
+	id 1cnRTv-0002nB-Db
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Mar 2017 11:01:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cnJzU-0005Cf-Vd
-	for qemu-trivial@nongnu.org; Mon, 13 Mar 2017 03:02:02 -0400
+	(envelope-from <shorne@gmail.com>) id 1cnRTt-0002k7-0n
+	for qemu-trivial@nongnu.org; Mon, 13 Mar 2017 11:01:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1cnJzT-0006nU-H4
-	for qemu-trivial@nongnu.org; Mon, 13 Mar 2017 03:02:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33938)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1cnJzN-0006md-M5; Mon, 13 Mar 2017 03:01:53 -0400
-Received: from smtp.corp.redhat.com (int-mx16.intmail.prod.int.phx2.redhat.com
-	[10.5.11.28])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A4D81C04B31F;
-	Mon, 13 Mar 2017 07:01:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-55.ams2.redhat.com
-	[10.36.116.55])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EED6F48749;
-	Mon, 13 Mar 2017 07:01:52 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 63E141138647; Mon, 13 Mar 2017 08:01:50 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mdroth@linux.vnet.ibm.com,
-	anderson@redhat.com, pbonzini@redhat.com, lersek@redhat.com
-References: <20170311132256.22951-1-marcandre.lureau@redhat.com>
-	<20170311132256.22951-2-marcandre.lureau@redhat.com>
-Date: Mon, 13 Mar 2017 08:01:50 +0100
-In-Reply-To: <20170311132256.22951-2-marcandre.lureau@redhat.com>
-	(=?utf-8?Q?=22Marc-Andr=C3=A9?=
-	Lureau"'s message of "Sat, 11 Mar 2017 17:22:36 +0400")
-Message-ID: <87o9x5k6ch.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.74 on 10.5.11.28
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Mon, 13 Mar 2017 07:01:53 +0000 (UTC)
+	(envelope-from <shorne@gmail.com>) id 1cnRTr-0005Yk-Vf
+	for qemu-trivial@nongnu.org; Mon, 13 Mar 2017 11:01:53 -0400
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:35050)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <shorne@gmail.com>)
+	id 1cnRTl-0005UD-GF; Mon, 13 Mar 2017 11:01:45 -0400
+Received: by mail-pf0-x243.google.com with SMTP id 67so19269514pfg.2;
+	Mon, 13 Mar 2017 08:01:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=dP8D5mXHfCmlZKkCceVV+mOKQHLFklS/BMRH3xOn8mI=;
+	b=N3cSeIrNqvvzh0KP0ETbQDW8SY8bRBrap8HBP2toEIYT3Ln/72KmpxsQ3WhMDBaZqd
+	kidvN+O88GySJ3QUZqtHTkwovuKJ4xrtJcTDhcXR81bmXEGjtLegc+N+yIX9O+WexTf1
+	cc6lRluOIwl6/I6dR8m7+WZQYXzDBKNx46P14Oz7mMpukzXsQJrl3FxIC+4CixaAlTQ3
+	8gtHjZFjmqqrVguSHZ0HSOx2TY1LeKicNvEyupMkmeJY1sVPjLOORLHlmUqvH7yk76XS
+	FlzJMHNHkBPkEBuv7QUS+TrIbEh05avxBThNGUbBJqf/7GwHdca9bzwByAlEjgG95dZk
+	zJQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=dP8D5mXHfCmlZKkCceVV+mOKQHLFklS/BMRH3xOn8mI=;
+	b=j/8YRl0+6X4PqssPYZj1EL3h0UqvH8s8N2hCckRqvVp3sWtIEewygaxVVBF5VSYlJH
+	Efb1M8Y8hVcd5sMjoIzAkjXRfsg1HbKkQuy2FBinvS7ArAGB9GUdgj/yBfR8xS/a0wAa
+	UrrCrJR9WiecZnHRIGuTA4IF4bEg3Rb5A+G6d0hsjFKANPHxPH1Jw3nwdVahtHJiY78v
+	wNrdXfsMMjS0Uo2ktqxP8TmMco3H2rJR2SaDr80J/nI81+nAwPqp1zGg+tlq3B0ZXHMK
+	iiaNdff+fcoSwafT+FLbBZ0UyYc0h2qbEOT0UdTRcfIEEIqKwcV6o3EuVYO+aVyCMKJF
+	HhIg==
+X-Gm-Message-State: AMke39kANmhs8TVWV5d3IHfYq+ZJAwRAaJvgkNKJsHiCcrzX/m1Ys1rEFjpU+YastBfU/g==
+X-Received: by 10.99.189.9 with SMTP id a9mr37451111pgf.190.1489417302040;
+	Mon, 13 Mar 2017 08:01:42 -0700 (PDT)
+Received: from localhost (z17.124-44-180.ppp.wakwak.ne.jp. [124.44.180.17])
+	by smtp.gmail.com with ESMTPSA id
+	b83sm33446538pfe.12.2017.03.13.08.01.40
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 13 Mar 2017 08:01:41 -0700 (PDT)
+From: Stafford Horne <shorne@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, openrisc@lists.librecores.org, rth@twiddle.net,
+	Stafford Horne <shorne@gmail.com>
+Date: Tue, 14 Mar 2017 00:01:24 +0900
+Message-Id: <20170313150124.4762-1-shorne@gmail.com>
+X-Mailer: git-send-email 2.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/21] qapi: add info
- comment for generated types
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-trivial] [PATCH] target/openrisc: Fixes for memory debugging
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,198 +62,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Mar 2017 07:02:02 -0000
+X-List-Received-Date: Mon, 13 Mar 2017 15:01:54 -0000
 
-Re qemu-trivial: since I got another lengthy series touching
-scripts/qapi* in the pipeline, I'd prefer to handle the conflicts in my
-tree.
+When debugging in gdb you might want to inspect instructions in mapped
+pages or in exception vectors like 0x800 etc.  This was previously not
+possible in qemu since the *get_phys_page_debug() routine only looked
+into the data tlb.
 
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
+Change to fall back to look into instruction tlb and plain physical
+pages.
 
-> This may help to find where the origin of the type was declared in the
-> json (when greping isn't easy enough).
+Signed-off-by: Stafford Horne <shorne@gmail.com>
+---
+ target/openrisc/mmu.c | 23 +++++++++++++++++++----
+ 1 file changed, 19 insertions(+), 4 deletions(-)
 
-An example for the generated comment would be nice here.
+diff --git a/target/openrisc/mmu.c b/target/openrisc/mmu.c
+index 56b11d3..a6d7bcd 100644
+--- a/target/openrisc/mmu.c
++++ b/target/openrisc/mmu.c
+@@ -124,7 +124,7 @@ static int cpu_openrisc_get_phys_addr(OpenRISCCPU *cpu,
+ {
+     int ret = TLBRET_MATCH;
+ 
+-    if (rw == 2) {    /* ITLB */
++    if (rw == MMU_INST_FETCH) {    /* ITLB */
+        *physical = 0;
+         ret = cpu->env.tlb->cpu_openrisc_map_address_code(cpu, physical,
+                                                           prot, address, rw);
+@@ -221,12 +221,27 @@ hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+     OpenRISCCPU *cpu = OPENRISC_CPU(cs);
+     hwaddr phys_addr;
+     int prot;
++    int miss;
+ 
+-    if (cpu_openrisc_get_phys_addr(cpu, &phys_addr, &prot, addr, 0)) {
+-        return -1;
++    /* Check memory for any kind of address, since during debug the
++       gdb can ask for anything, check data tlb for address */
++    miss = cpu_openrisc_get_phys_addr(cpu, &phys_addr, &prot, addr, 0);
++
++    /* Check instruction tlb */
++    if (miss) {
++        miss = cpu_openrisc_get_phys_addr(cpu, &phys_addr, &prot, addr, MMU_INST_FETCH);
++    }
++
++    /* Last, fall back to a plain address */
++    if (miss) {
++        miss = cpu_openrisc_get_phys_nommu(cpu, &phys_addr, &prot, addr, 0);
+     }
+ 
+-    return phys_addr;
++    if (miss) {
++        return -1;
++    } else {
++        return phys_addr;
++    }
+ }
+ 
+ void cpu_openrisc_mmu_init(OpenRISCCPU *cpu)
+-- 
+2.9.3
 
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Cc: qemu-trivial@nongnu.org
-> ---
->  scripts/qapi.py       | 11 +++++++++--
->  scripts/qapi-event.py |  4 +++-
->  scripts/qapi-types.py | 17 +++++++++--------
->  3 files changed, 21 insertions(+), 11 deletions(-)
->
-> diff --git a/scripts/qapi.py b/scripts/qapi.py
-> index 53a44779d0..9504ebd8c7 100644
-> --- a/scripts/qapi.py
-> +++ b/scripts/qapi.py
-> @@ -1874,15 +1874,22 @@ const char *const %(c_name)s_lookup[] =3D {
->      return ret
->=20=20
->=20=20
-> -def gen_enum(name, values, prefix=3DNone):
-> +def gen_info_comment(info):
-
-Well, aren't all comments "info comments"?  What distinguishes this one
-is that it's about the location of the source.  Suggest to rename to
-gen_loc_comment() or maybe gen_src_loc_comment().
-
-Hmm, the gen_ prefix is awkward.  Generated C should go through cgen()
-exactly once (see commit 1f9a7a1).  The common way to get this wrong is
-passing a foo=3Dgen_foo() keyword argument to mcgen().  I'd like us to
-adopt a naming convention where gen_ means "something that's been piped
-through cgen(), and thus must not be passed to cgen() or mcgen()".
-Requires renaming gen_params(), gen_marshal_proto() and
-gen_event_send_proto().
-
-> +    if info:
-> +        return "/* %s:%d */" % (info['file'], info['line'])
-> +    else:
-> +        return ""
-
-Please stick to the prevalent use of single vs. double quotes: use
-single quotes unless double quotes let you avoid backslashes, except
-always use double quotes for error messages.  See "[PATCH for-2.9 19/47]
-qapi: Prefer single-quoted strings more consistently".
-
-> +
-> +def gen_enum(info, name, values, prefix=3DNone):
->      # append automatically generated _MAX value
->      enum_values =3D values + ['_MAX']
->=20=20
->      ret =3D mcgen('''
->=20=20
-> +%(info)s
->  typedef enum %(c_name)s {
->  ''',
-> -                c_name=3Dc_name(name))
-> +                c_name=3Dc_name(name), info=3Dgen_info_comment(info))
-
-Your chance to use identifier infocom ;-P
-
-Seriously, I'd prefer comment to info.
-
->=20=20
->      i =3D 0
->      for value in enum_values:
-> diff --git a/scripts/qapi-event.py b/scripts/qapi-event.py
-> index f4eb7f85b1..ca90d6a5df 100644
-> --- a/scripts/qapi-event.py
-> +++ b/scripts/qapi-event.py
-> @@ -152,6 +152,7 @@ class QAPISchemaGenEventVisitor(QAPISchemaVisitor):
->          self.decl =3D None
->          self.defn =3D None
->          self._event_names =3D None
-> +        self.info =3D None
->=20=20
->      def visit_begin(self, schema):
->          self.decl =3D ''
-> @@ -159,7 +160,7 @@ class QAPISchemaGenEventVisitor(QAPISchemaVisitor):
->          self._event_names =3D []
->=20=20
->      def visit_end(self):
-> -        self.decl +=3D gen_enum(event_enum_name, self._event_names)
-> +        self.decl +=3D gen_enum(self.info, event_enum_name, self._event_=
-names)
->          self.defn +=3D gen_enum_lookup(event_enum_name, self._event_name=
-s)
->          self._event_names =3D None
->=20=20
-> @@ -167,6 +168,7 @@ class QAPISchemaGenEventVisitor(QAPISchemaVisitor):
->          self.decl +=3D gen_event_send_decl(name, arg_type, boxed)
->          self.defn +=3D gen_event_send(name, arg_type, boxed)
->          self._event_names.append(name)
-> +        self.info =3D info
->=20=20
->=20=20
-
-I'm afraid this doesn't make sense.
-
-You set self.info in each visit_event(), then use it in visit_end().
-visit_end() thus sees the info of whatever event was visited last.
-Won't produce a sane location comment.  None of the others would,
-either.  That's because the enumeration is defined implicitly by all the
-events together.
-
-Let's pass info=3DNone for this enum.
-
->  (input_file, output_dir, do_c, do_h, prefix, dummy) =3D parse_command_li=
-ne()
-> diff --git a/scripts/qapi-types.py b/scripts/qapi-types.py
-> index dabc42e047..896749bf61 100644
-> --- a/scripts/qapi-types.py
-> +++ b/scripts/qapi-types.py
-> @@ -19,12 +19,13 @@ from qapi import *
->  objects_seen =3D set()
->=20=20
->=20=20
-> -def gen_fwd_object_or_array(name):
-> +def gen_fwd_object_or_array(info, name):
->      return mcgen('''
->=20=20
-> +%(info)s
->  typedef struct %(c_name)s %(c_name)s;
-
-If info=3DNone, gen_info_comment(info) is '', and we get an unwanted blank
-line.
-
->  ''',
-> -                 c_name=3Dc_name(name))
-> +                 c_name=3Dc_name(name), info=3Dgen_info_comment(info))
->=20=20
->=20=20
->  def gen_array(name, element_type):
-> @@ -199,22 +200,22 @@ class QAPISchemaGenTypeVisitor(QAPISchemaVisitor):
->          # Special case for our lone builtin enum type
->          # TODO use something cleaner than existence of info
->          if not info:
-> -            self._btin +=3D gen_enum(name, values, prefix)
-> +            self._btin +=3D gen_enum(info, name, values, prefix)
-
-gen_enum(None, ...) feels slightly clearer to me.
-
->              if do_builtins:
->                  self.defn +=3D gen_enum_lookup(name, values, prefix)
->          else:
-> -            self._fwdecl +=3D gen_enum(name, values, prefix)
-> +            self._fwdecl +=3D gen_enum(info, name, values, prefix)
->              self.defn +=3D gen_enum_lookup(name, values, prefix)
->=20=20
->      def visit_array_type(self, name, info, element_type):
->          if isinstance(element_type, QAPISchemaBuiltinType):
-> -            self._btin +=3D gen_fwd_object_or_array(name)
-> +            self._btin +=3D gen_fwd_object_or_array(info, name)
->              self._btin +=3D gen_array(name, element_type)
->              self._btin +=3D gen_type_cleanup_decl(name)
->              if do_builtins:
->                  self.defn +=3D gen_type_cleanup(name)
->          else:
-> -            self._fwdecl +=3D gen_fwd_object_or_array(name)
-> +            self._fwdecl +=3D gen_fwd_object_or_array(info, name)
->              self.decl +=3D gen_array(name, element_type)
->              self._gen_type_cleanup(name)
->=20=20
-
-Note that @info points to an arbitrarily chosen user of the array type,
-*not* to the definition of the element type.  The resulting source
-location comment feels useless to me.  Suggest to pass None for arrays.
-
-> @@ -222,7 +223,7 @@ class QAPISchemaGenTypeVisitor(QAPISchemaVisitor):
->          # Nothing to do for the special empty builtin
->          if name =3D=3D 'q_empty':
->              return
-> -        self._fwdecl +=3D gen_fwd_object_or_array(name)
-> +        self._fwdecl +=3D gen_fwd_object_or_array(info, name)
->          self.decl +=3D gen_object(name, base, members, variants)
->          if base and not base.is_implicit():
->              self.decl +=3D gen_upcast(name, base)
-> @@ -233,7 +234,7 @@ class QAPISchemaGenTypeVisitor(QAPISchemaVisitor):
->              self._gen_type_cleanup(name)
->=20=20
->      def visit_alternate_type(self, name, info, variants):
-> -        self._fwdecl +=3D gen_fwd_object_or_array(name)
-> +        self._fwdecl +=3D gen_fwd_object_or_array(info, name)
->          self.decl +=3D gen_object(name, None, [variants.tag_member], var=
-iants)
->          self._gen_type_cleanup(name)
 
