@@ -1,46 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cnrLH-0000IE-No
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2017 14:38:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34033)
+	id 1cnuWG-0000Wc-VO
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2017 18:02:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas@grapentin.org>) id 1cnrLF-0000Hz-8S
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 14:38:42 -0400
+	(envelope-from <rth7680@gmail.com>) id 1cnuWE-0000QQ-9l
+	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 18:02:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas@grapentin.org>) id 1cnrLB-0000xZ-SQ
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 14:38:41 -0400
-Received: from www145.your-server.de ([78.47.15.66]:34529)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andreas@grapentin.org>)
-	id 1cnrLB-0000x4-Jy; Tue, 14 Mar 2017 14:38:37 -0400
-Received: from [88.198.220.131] (helo=sslproxy02.your-server.de)
-	by www145.your-server.de with esmtpsa
-	(TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.85_2)
-	(envelope-from <andreas@grapentin.org>)
-	id 1cnrL9-0000OG-ID; Tue, 14 Mar 2017 19:38:35 +0100
-Received: from [62.157.38.9] (helo=localhost)
-	by sslproxy02.your-server.de with esmtpsa
-	(TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.84_2)
-	(envelope-from <andreas@grapentin.org>)
-	id 1cnrL9-0006Wk-95; Tue, 14 Mar 2017 19:38:35 +0100
-Date: Tue, 14 Mar 2017 19:38:34 +0100
-From: Andreas Grapentin <andreas@grapentin.org>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170314183834.GA23093@parabola-pocket>
+	(envelope-from <rth7680@gmail.com>) id 1cnuWB-0006dH-2E
+	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 18:02:14 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:35675)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1cnuWA-0006cf-QU; Tue, 14 Mar 2017 18:02:10 -0400
+Received: by mail-pg0-x244.google.com with SMTP id g2so21691012pge.2;
+	Tue, 14 Mar 2017 15:02:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=K7BkIjRPQHuhSXb7b0EHPmB0gTIPljnOeMY4qm86ZLM=;
+	b=TM3hw7rbv0f4ohK1ufA5tG5tBMYZWcFPPjmXEWUA4//cG9G+SHxAJ+gK8WKb3P7DRY
+	OkVLtv46U+zvLo++x3KYdcaNuNxM6hBiKf0bhZoX16XWDLZXHKQREKQ9HtYJnSBtRkaG
+	sO5h/G37eXU82n+81MTdO0nd5O8YTCQKXSQL27piSjx/jNgoO1MGLVzjwCfYbOBNk6uJ
+	NiEAzyhdnTHPt+ftKyB54HruxrY/n9m/pEXU6tua6FFIMM6bsgkeUPc3BiE+G+hlBnOV
+	L54CLjc9mgFzdr8UFjgUgfyhMn4x7+3jtGLD6OSoBXeYT6o6YMc8VUbeqGViIZOUiqmd
+	4dCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=K7BkIjRPQHuhSXb7b0EHPmB0gTIPljnOeMY4qm86ZLM=;
+	b=YWbDVvijN7BT2bK6bN8go4wlN1blKBILs0ToAGX/q36+Mm6lM0i+2HmA8FDkaQQGpv
+	ifT1yHVOtobkFNvS+8Av0aYo4dDstW0ZjqRA/0/qv5GkB0yLld/8zKJ26DwHwCkqrJnx
+	TM28Vam7YgjyLOy4Qnq8weoNJakPcFLyiTVSx4Y5sn/CHuHxrw30sUpyUR6oDziEsGNo
+	Mlwp2AMfhNYY1Aa5Dfq0dW1wS0auPUX/2p97IezH2M7lQqmNp0h+X7+5gDIBATVJkNrV
+	Thbs31J2tHcLSWgBlL7rgeIc3o8PHX6+6jcWLSvCqumAgOwqv5U7D5j9Dl4gJ2ZvUwrP
+	8F4w==
+X-Gm-Message-State: AMke39nAy8yRp4P47TSTI7H1ezjQdCtw5ttmik4N9eWrW0Sp3vmcUiQhkVKLwe4k/nKasQ==
+X-Received: by 10.98.38.5 with SMTP id m5mr46180067pfm.65.1489528929331;
+	Tue, 14 Mar 2017 15:02:09 -0700 (PDT)
+Received: from bigtime.twiddle.net
+	(100.47.194.203.dial.dynamic.acc02-nort-cbr.comindico.com.au.
+	[203.194.47.100]) by smtp.googlemail.com with ESMTPSA id
+	o17sm305111pfa.98.2017.03.14.15.02.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 14 Mar 2017 15:02:08 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: Andreas Grapentin <andreas@grapentin.org>, qemu-devel@nongnu.org
 References: <20170314165953.18506-1-andreas@grapentin.org>
-	<ddea3a8a-715e-c24d-e434-3fa55f5d81b2@redhat.com>
+Cc: qemu-trivial@nongnu.org
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <03740bc1-1516-31ed-4821-75e113cc5d66@twiddle.net>
+Date: Wed, 15 Mar 2017 08:02:02 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="OXfL5xGRrasGEqWY"
-Content-Disposition: inline
-In-Reply-To: <ddea3a8a-715e-c24d-e434-3fa55f5d81b2@redhat.com>
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Authenticated-Sender: andreas@grapentin.org
-X-Virus-Scanned: Clear (ClamAV 0.99.2/23203/Tue Mar 14 13:13:21 2017)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic] [fuzzy]
-X-Received-From: 78.47.15.66
-Subject: Re: [Qemu-trivial] [PATCH v2] use _Static_assert in
+In-Reply-To: <20170314165953.18506-1-andreas@grapentin.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] use _Static_assert in
  QEMU_BUILD_BUG_ON
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -53,109 +72,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2017 18:38:42 -0000
+X-List-Received-Date: Tue, 14 Mar 2017 22:02:15 -0000
+
+On 03/15/2017 02:59 AM, Andreas Grapentin wrote:
+> QEMU_BUILD_BUG_ON should use C11's _Static_assert, if the compiler supports it,
+> to provide more readable messages on failure.
+>
+> We check for _Static_assert in configure, and set CONFIG_STATIC_ASSERT
+> accordingly. QEMU_BUILD_BUG_ON invokes _Static_assert if CONFIG_STATIC_ASSERT
+> is defined, and reverts to the old way otherwise.
+>
+> That way, systems without C11 conforming compiler will still have the old
+> messages, as verified by intentionally breaking the configure check.
+>
+> the following example output was generated by inverting the condition in
+> QEMU_BUILD_BUG_ON:
+>
+> without _Static_assert:
+>
+>> In file included from /qemu/include/qemu/osdep.h:36:0,
+>>                  from /qemu/qga/commands.c:13:
+>> /qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
+>> /qemu/include/qemu/compiler.h:89:12: error: negative width in bit-field ‘<anonymous>’
+>>      struct { \
+>>             ^
+>> /qemu/include/qemu/compiler.h:96:38: note: in expansion of macro  QEMU_BUILD_BUG_ON_STRUCT’
+>>  #define QEMU_BUILD_BUG_ON(x) typedef QEMU_BUILD_BUG_ON_STRUCT(x) \
+>>                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+>> /qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
+>>      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
+>>      ^~~~~~~~~~~~~~~~~
+>> /qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
+>>      atomic_load_acquire(ptr)
+>>      ^~~~~~~~~~~~~~~~~~~
+>> /qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
+>>      bool finished = atomic_mb_read(&gei->finished);
+>>                      ^~~~~~~~~~~~~~
+>
+> with _Static_assert:
+>
+>> In file included from /qemu/include/qemu/osdep.h:36:0,
+>>                  from /qemu/qga/commands.c:13:
+>> /qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
+>> /qemu/include/qemu/compiler.h:94:30: error: static assertion failed: "not expecting: sizeof(*&gei->finished) > sizeof(void *)"
+>>  #define QEMU_BUILD_BUG_ON(x) _Static_assert((x), #x)
+>>                               ^
+>> /qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
+>>      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
+>>      ^~~~~~~~~~~~~~~~~
+>> /qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
+>>      atomic_load_acquire(ptr)
+>>      ^~~~~~~~~~~~~~~~~~~
+>> /qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
+>>      bool finished = atomic_mb_read(&gei->finished);
+>>                      ^~~~~~~~~~~~~~
+>
+> Signed-off-by: Andreas Grapentin <andreas@grapentin.org>
+> ---
+>  configure               | 18 ++++++++++++++++++
+>  include/qemu/compiler.h |  4 +++-
+>  2 files changed, 21 insertions(+), 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index 75c7c3526c..e9b33d9cf8 100755
+> --- a/configure
+> +++ b/configure
+> @@ -4725,6 +4725,20 @@ if compile_prog "" "" ; then
+>  fi
+>
+>  ##########################################
+> +# check for _Static_assert()
+> +
+> +have_static_assert=no
+> +cat > $TMPC << EOF
+> +_Static_assert(1, "success");
+> +int main(void) {
+> +    return 0;
+> +}
+> +EOF
+> +if compile_prog "" "" ; then
+> +    have_static_assert=yes
+> +fi
+> +
+> +##########################################
+>  # End of CC checks
+>  # After here, no more $cc or $ld runs
+>
+> @@ -5694,6 +5708,10 @@ if test "$have_sysmacros" = "yes" ; then
+>    echo "CONFIG_SYSMACROS=y" >> $config_host_mak
+>  fi
+>
+> +if test "$have_static_assert" = "yes" ; then
+> +  echo "CONFIG_STATIC_ASSERT=y" >> $config_host_mak
+> +fi
+> +
+>  # Hold two types of flag:
+>  #   CONFIG_THREAD_SETNAME_BYTHREAD  - we've got a way of setting the name on
+>  #                                     a thread we have a handle to
+> diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+> index e0ce9ffb28..37a65d4bb7 100644
+> --- a/include/qemu/compiler.h
+> +++ b/include/qemu/compiler.h
+> @@ -90,7 +90,9 @@
+>          int:(x) ? -1 : 1; \
+>      }
+>
+> -#ifdef __COUNTER__
+> +#if defined(CONFIG_STATIC_ASSERT)
+> +#define QEMU_BUILD_BUG_ON(x) _Static_assert(!(x), "not expecting: " #x)
+> +#elif defined(__COUNTER__)
+>  #define QEMU_BUILD_BUG_ON(x) typedef QEMU_BUILD_BUG_ON_STRUCT(x) \
+>      glue(qemu_build_bug_on__, __COUNTER__) __attribute__((unused))
+>  #else
+>
+
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
 
---OXfL5xGRrasGEqWY
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-
-The missing ! is because I generated the error messages by inverting the
-condition and then forgot to change it back. I can send a v3 if you
-like.
-
-Thanks for being patient with me.
-
--A
-
-
-On Tue, Mar 14, 2017 at 12:43:56PM -0500, Eric Blake wrote:
-> On 03/14/2017 11:59 AM, Andreas Grapentin wrote:
-> > QEMU_BUILD_BUG_ON should use C11's _Static_assert, if the compiler supp=
-orts it,
-> > to provide more readable messages on failure.
->=20
-> >=20
-> > with _Static_assert:
-> >=20
-> >> In file included from /qemu/include/qemu/osdep.h:36:0,
-> >>                  from /qemu/qga/commands.c:13:
-> >> /qemu/qga/commands.c: In function =E2=80=98qmp_guest_exec_status=E2=80=
-=99:
-> >> /qemu/include/qemu/compiler.h:94:30: error: static assertion failed: "=
-not expecting: sizeof(*&gei->finished) > sizeof(void *)"
-> >>  #define QEMU_BUILD_BUG_ON(x) _Static_assert((x), #x)
->=20
-> Manual copy-and-paste? Because this is missing the ! present in the
-> actual definition...
->=20
-> >>                               ^
-> >> /qemu/include/qemu/atomic.h:146:5: note: in expansion of macro =E2=80=
-=98QEMU_BUILD_BUG_ON=E2=80=99
-> >>      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
-> >>      ^~~~~~~~~~~~~~~~~
-> >> /qemu/include/qemu/atomic.h:417:5: note: in expansion of macro =E2=80=
-=98atomic_load_acquire=E2=80=99
-> >>      atomic_load_acquire(ptr)
-> >>      ^~~~~~~~~~~~~~~~~~~
-> >> /qemu/qga/commands.c:160:21: note: in expansion of macro =E2=80=98atom=
-ic_mb_read=E2=80=99
-> >>      bool finished =3D atomic_mb_read(&gei->finished);
-> >>                      ^~~~~~~~~~~~~~
-> >=20
-> > Signed-off-by: Andreas Grapentin <andreas@grapentin.org>
-> > ---
->=20
-> > +++ b/include/qemu/compiler.h
-> > @@ -90,7 +90,9 @@
-> >          int:(x) ? -1 : 1; \
-> >      }
-> > =20
-> > -#ifdef __COUNTER__
-> > +#if defined(CONFIG_STATIC_ASSERT)
-> > +#define QEMU_BUILD_BUG_ON(x) _Static_assert(!(x), "not expecting: " #x)
->=20
-> ...here.
->=20
-> But that's trivial, if the maintainer would like to correct the commit
-> message.
->=20
-> Reviewed-by: Eric Blake <eblake@redhat.com>
->=20
->=20
-> --=20
-> Eric Blake   eblake redhat com    +1-919-301-3266
-> Libvirt virtualization library http://libvirt.org
->=20
-
-
-
-
---=20
-
----------------------------------------------------------------------------=
----
-my GPG Public Key:                 https://files.grapentin.org/.gpg/public.=
-key
----------------------------------------------------------------------------=
----
-
---OXfL5xGRrasGEqWY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEv6gAioJlZ3BjsRv0cXGYbkt0VTYFAljIOKgACgkQcXGYbkt0
-VTZlegf+LGR+KOHWD5Rg8q8N1eQFZXgVeigpLJdN18HU8aJfuos1AFFpp+mv+lRE
-Otm57KyPui3/qKa21Z9fx5m22ClgU+9vOfkBtCVE7/FaicQwOr6Fc9VuZVMli3S4
-Gw43jqXwgJvSELklHrzWfiqsey+NvYtqqTMZavB6Py9U1aRJYlmJuh11lxgmIaJX
-hYPLeobNfH/M4Y/1BcBM79otd3P7lsugPpdZZKsQ9+hIinFzegd4KFkZJcjKvQi/
-sacmpxqXyTzhTjWObMwtHd091sdHU2YOb9zOOAN8jhpJwBxu6aBTT9vO+y4Vu46a
-W+wglylLL33tjahB1IpK0I1l9YJjSw==
-=w2Bj
------END PGP SIGNATURE-----
-
---OXfL5xGRrasGEqWY--
+r~
 
