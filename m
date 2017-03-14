@@ -1,44 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cnnhP-000327-M7
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2017 10:45:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54696)
+	id 1cnnuN-0000Y0-VV
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2017 10:58:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60297)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andreas@grapentin.org>) id 1cnnhM-0002zc-MH
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 10:45:17 -0400
+	(envelope-from <eblake@redhat.com>) id 1cnnuL-0000Wf-9S
+	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 10:58:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andreas@grapentin.org>) id 1cnnhJ-0007HI-Fn
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 10:45:16 -0400
-Received: from www145.your-server.de ([78.47.15.66]:34904)
+	(envelope-from <eblake@redhat.com>) id 1cnnuK-0000Qc-6E
+	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 10:58:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39698)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andreas@grapentin.org>)
-	id 1cnnhJ-0007Fv-6e; Tue, 14 Mar 2017 10:45:13 -0400
-Received: from [88.198.220.132] (helo=sslproxy03.your-server.de)
-	by www145.your-server.de with esmtpsa
-	(TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256) (Exim 4.85_2)
-	(envelope-from <andreas@grapentin.org>)
-	id 1cnnhH-0006IA-HH; Tue, 14 Mar 2017 15:45:11 +0100
-Received: from [141.89.226.146] (helo=parabola-pocket.hpi.uni-potsdam.de)
-	by sslproxy03.your-server.de with esmtpsa
-	(TLSv1.2:DHE-RSA-AES128-GCM-SHA256:128) (Exim 4.84_2)
-	(envelope-from <andreas@grapentin.org>)
-	id 1cnnhH-0007SJ-4B; Tue, 14 Mar 2017 15:45:11 +0100
-From: Andreas Grapentin <andreas@grapentin.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Andreas Grapentin <andreas@grapentin.org>
-Date: Tue, 14 Mar 2017 15:44:52 +0100
-Message-Id: <20170314144453.5027-1-andreas@grapentin.org>
-X-Mailer: git-send-email 2.12.0
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cnnuD-0000P2-SQ; Tue, 14 Mar 2017 10:58:34 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C2C201293;
+	Tue, 14 Mar 2017 14:58:33 +0000 (UTC)
+Received: from [10.10.121.52] (ovpn-121-52.rdu2.redhat.com [10.10.121.52] (may
+	be forged))
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id v2EEwWr3013639; Tue, 14 Mar 2017 10:58:33 -0400
+To: Andreas Grapentin <andreas@grapentin.org>, qemu-devel@nongnu.org
+References: <20170314144453.5027-1-andreas@grapentin.org>
+Cc: qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <4be0bc1d-0942-50fd-53e2-769415c22e7b@redhat.com>
+Date: Tue, 14 Mar 2017 09:58:31 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: andreas@grapentin.org
-X-Virus-Scanned: Clear (ClamAV 0.99.2/23203/Tue Mar 14 13:13:21 2017)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic] [fuzzy]
-X-Received-From: 78.47.15.66
-Subject: [Qemu-trivial] [PATCH 0/1] Developer Conveniences - check for
- _Static_assert and use in QEMU_BUILD_BUG_ON
+In-Reply-To: <20170314144453.5027-1-andreas@grapentin.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="vLTl6VPsrQ3bx5eU0G6RoKK3cmI9ORXDp"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 14 Mar 2017 14:58:33 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/1] Developer Conveniences
+ - check for _Static_assert and use in QEMU_BUILD_BUG_ON
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,72 +57,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2017 14:45:18 -0000
+X-List-Received-Date: Tue, 14 Mar 2017 14:58:42 -0000
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--vLTl6VPsrQ3bx5eU0G6RoKK3cmI9ORXDp
+Content-Type: multipart/mixed; boundary="3WBX7bnHvLUGORijPU56ceJHTvW0n6A9i";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Andreas Grapentin <andreas@grapentin.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <4be0bc1d-0942-50fd-53e2-769415c22e7b@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 0/1] Developer Conveniences - check for
+ _Static_assert and use in QEMU_BUILD_BUG_ON
+References: <20170314144453.5027-1-andreas@grapentin.org>
+In-Reply-To: <20170314144453.5027-1-andreas@grapentin.org>
+
+--3WBX7bnHvLUGORijPU56ceJHTvW0n6A9i
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 03/14/2017 09:44 AM, Andreas Grapentin wrote:
+>=20
+> (as taken from here: http://wiki.qemu-project.org/Contribute/BiteSizedT=
+asks)
+>=20
+
+A single patch can be sent without a cover letter if desired (0/N cover
+letters are only mandatory on patch series).  In fact, much of the
+information you give here:
+
+>=20
+> I added a configure check for C11's _Static_assert, and based on the ou=
+tcome,
+> QEMU_BUILD_BUG_ON will now produce slightly more readable results on fa=
+ilures.
+>=20
+> Systems without C11 conforming compilers will still have the old messag=
+es, as
+> verified by intentionally breaking the configure check.
+>=20
+> the following example output was generated by inverting the condition i=
+n
+> QEMU_BUILD_BUG_ON:
+>=20
+> without _Static_assert:
+>=20
+=2E..
+
+> with _Static_assert:
+>=20
+>> In file included from /home/andi/research/qemu-shared-memory/qemu/incl=
+ude/qemu/osdep.h:36:0,
+>>                  from /home/andi/research/qemu-shared-memory/qemu/qga/=
+commands.c:13:
+>> /home/andi/research/qemu-shared-memory/qemu/qga/commands.c: In functio=
+n =E2=80=98qmp_guest_exec_status=E2=80=99:
+>> /home/andi/research/qemu-shared-memory/qemu/include/qemu/compiler.h:94=
+:30: error: static assertion failed: "sizeof(*&gei->finished) > sizeof(vo=
+id *)"
+>>  #define QEMU_BUILD_BUG_ON(x) _Static_assert((x), #x)
+>>                               ^
+
+should be in the commit message of the actual patch (right now, your 1/1
+message has a rather blank commit message).
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
 
-(as taken from here: http://wiki.qemu-project.org/Contribute/BiteSizedTasks)
+--3WBX7bnHvLUGORijPU56ceJHTvW0n6A9i--
 
+--vLTl6VPsrQ3bx5eU0G6RoKK3cmI9ORXDp
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-I added a configure check for C11's _Static_assert, and based on the outcome,
-QEMU_BUILD_BUG_ON will now produce slightly more readable results on failures.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-Systems without C11 conforming compilers will still have the old messages, as
-verified by intentionally breaking the configure check.
+iQEcBAEBCAAGBQJYyAUXAAoJEKeha0olJ0Nqw2sH/iHxTOeEclSM8wwtODmO6W7e
+525V9ABn6gSkP4ukdfT3KCWqBmJk6Bz/kLNtcoILoB3VnMFCgpAhT+qqiIVG3Oof
+Hgupht2ihTC0PugyTrC7jBswr/ign7QEqNaE3lGTDXuGdvBAFMpybuGbc9iF/GS8
+ha4Xsp4Jg0iSxLg3H2eqFuYR6Nz0PR8P8yq1GRAUjw9j//cJMx64qdUDPDkreTBA
+uOsWKQ1Sgw5mUQbAklTn8Ux3IWoFDUG5/7ztSkUSarDHzBbXuGK+sfcnLKlOCigK
+HsGqZNdk4i+9KKaIzEUF3Z0syxPj9z0OYvZLZlgd8Y6hBSb87EkGCMGx72XUzMM=
+=sQkm
+-----END PGP SIGNATURE-----
 
-the following example output was generated by inverting the condition in
-QEMU_BUILD_BUG_ON:
-
-without _Static_assert:
-
-> In file included from /home/andi/research/qemu-shared-memory/qemu/include/qemu/osdep.h:36:0,
->                  from /home/andi/research/qemu-shared-memory/qemu/qga/commands.c:13:
-> /home/andi/research/qemu-shared-memory/qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/compiler.h:89:12: error: negative width in bit-field ‘<anonymous>’
->      struct { \
->             ^
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/compiler.h:96:38: note: in expansion of macro  QEMU_BUILD_BUG_ON_STRUCT’
->  #define QEMU_BUILD_BUG_ON(x) typedef QEMU_BUILD_BUG_ON_STRUCT(x) \
->                                       ^~~~~~~~~~~~~~~~~~~~~~~~
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
->      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
->      ^~~~~~~~~~~~~~~~~
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
->      atomic_load_acquire(ptr)
->      ^~~~~~~~~~~~~~~~~~~
-> /home/andi/research/qemu-shared-memory/qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
->      bool finished = atomic_mb_read(&gei->finished);
->                      ^~~~~~~~~~~~~~
-
-with _Static_assert:
-
-> In file included from /home/andi/research/qemu-shared-memory/qemu/include/qemu/osdep.h:36:0,
->                  from /home/andi/research/qemu-shared-memory/qemu/qga/commands.c:13:
-> /home/andi/research/qemu-shared-memory/qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/compiler.h:94:30: error: static assertion failed: "sizeof(*&gei->finished) > sizeof(void *)"
->  #define QEMU_BUILD_BUG_ON(x) _Static_assert((x), #x)
->                               ^
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
->      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
->      ^~~~~~~~~~~~~~~~~
-> /home/andi/research/qemu-shared-memory/qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
->      atomic_load_acquire(ptr)
->      ^~~~~~~~~~~~~~~~~~~
-> /home/andi/research/qemu-shared-memory/qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
->      bool finished = atomic_mb_read(&gei->finished);
->                      ^~~~~~~~~~~~~~
-
-
-
-
-Andreas Grapentin (1):
-  added configure check for _Static_assert and updated
-    QEMU_BUILD_BUG_ON(...) accordingly
-
- configure               | 18 ++++++++++++++++++
- include/qemu/compiler.h |  4 +++-
- 2 files changed, 21 insertions(+), 1 deletion(-)
-
--- 
-2.12.0
-
+--vLTl6VPsrQ3bx5eU0G6RoKK3cmI9ORXDp--
 
