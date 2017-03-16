@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cnuWG-0000Wc-VO
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Mar 2017 18:02:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44845)
+	id 1coRSO-000195-8s
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Mar 2017 05:12:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cnuWE-0000QQ-9l
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 18:02:15 -0400
+	(envelope-from <stefanha@gmail.com>) id 1coRSL-000168-JL
+	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 05:12:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1cnuWB-0006dH-2E
-	for qemu-trivial@nongnu.org; Tue, 14 Mar 2017 18:02:14 -0400
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:35675)
+	(envelope-from <stefanha@gmail.com>) id 1coRSK-0003nl-La
+	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 05:12:25 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:33638)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1cnuWA-0006cf-QU; Tue, 14 Mar 2017 18:02:10 -0400
-Received: by mail-pg0-x244.google.com with SMTP id g2so21691012pge.2;
-	Tue, 14 Mar 2017 15:02:10 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1coRSG-0003kT-7g; Thu, 16 Mar 2017 05:12:20 -0400
+Received: by mail-pf0-x244.google.com with SMTP id v190so5124230pfb.0;
+	Thu, 16 Mar 2017 02:12:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=K7BkIjRPQHuhSXb7b0EHPmB0gTIPljnOeMY4qm86ZLM=;
-	b=TM3hw7rbv0f4ohK1ufA5tG5tBMYZWcFPPjmXEWUA4//cG9G+SHxAJ+gK8WKb3P7DRY
-	OkVLtv46U+zvLo++x3KYdcaNuNxM6hBiKf0bhZoX16XWDLZXHKQREKQ9HtYJnSBtRkaG
-	sO5h/G37eXU82n+81MTdO0nd5O8YTCQKXSQL27piSjx/jNgoO1MGLVzjwCfYbOBNk6uJ
-	NiEAzyhdnTHPt+ftKyB54HruxrY/n9m/pEXU6tua6FFIMM6bsgkeUPc3BiE+G+hlBnOV
-	L54CLjc9mgFzdr8UFjgUgfyhMn4x7+3jtGLD6OSoBXeYT6o6YMc8VUbeqGViIZOUiqmd
-	4dCA==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=FlmkTqTl4Iwq3fVuIO1fbKa9VPHbcztJh1aYTkuXQc8=;
+	b=vD17yFHOvlbPb1ul6wDkq4BnW+sFN/W4IQZw9HGAjrmZZnYDObc7wRzAh/hJ23tXMo
+	qXj0syAIft07cSGuUEIPg5CzA4v3QDkAwOJwqUN9zYtS1aKOUowonuQH0NXZ87VD6DPW
+	k/Syt01J0codzDE5J2dJoO44n3Bpx+LIahCx8bv0TUPx2f2kgBCLKkf11GoNF/2q5Jxa
+	b/RHiAvcuw0T7xLZB5QoQr2pc4zQJueqbxegXBS5VyrxwxIHxrR8gn6TmAUNbR9D1Ccv
+	PbAsuufQwrEOxO8YMbK0NFrD6DmNUlpVPrcjPxhKEIcFdrzjWWyevyYsD6fJ26vOBctZ
+	Wc9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=K7BkIjRPQHuhSXb7b0EHPmB0gTIPljnOeMY4qm86ZLM=;
-	b=YWbDVvijN7BT2bK6bN8go4wlN1blKBILs0ToAGX/q36+Mm6lM0i+2HmA8FDkaQQGpv
-	ifT1yHVOtobkFNvS+8Av0aYo4dDstW0ZjqRA/0/qv5GkB0yLld/8zKJ26DwHwCkqrJnx
-	TM28Vam7YgjyLOy4Qnq8weoNJakPcFLyiTVSx4Y5sn/CHuHxrw30sUpyUR6oDziEsGNo
-	Mlwp2AMfhNYY1Aa5Dfq0dW1wS0auPUX/2p97IezH2M7lQqmNp0h+X7+5gDIBATVJkNrV
-	Thbs31J2tHcLSWgBlL7rgeIc3o8PHX6+6jcWLSvCqumAgOwqv5U7D5j9Dl4gJ2ZvUwrP
-	8F4w==
-X-Gm-Message-State: AMke39nAy8yRp4P47TSTI7H1ezjQdCtw5ttmik4N9eWrW0Sp3vmcUiQhkVKLwe4k/nKasQ==
-X-Received: by 10.98.38.5 with SMTP id m5mr46180067pfm.65.1489528929331;
-	Tue, 14 Mar 2017 15:02:09 -0700 (PDT)
-Received: from bigtime.twiddle.net
-	(100.47.194.203.dial.dynamic.acc02-nort-cbr.comindico.com.au.
-	[203.194.47.100]) by smtp.googlemail.com with ESMTPSA id
-	o17sm305111pfa.98.2017.03.14.15.02.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 Mar 2017 15:02:08 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Andreas Grapentin <andreas@grapentin.org>, qemu-devel@nongnu.org
-References: <20170314165953.18506-1-andreas@grapentin.org>
-Cc: qemu-trivial@nongnu.org
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <03740bc1-1516-31ed-4821-75e113cc5d66@twiddle.net>
-Date: Wed, 15 Mar 2017 08:02:02 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.7.0
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=FlmkTqTl4Iwq3fVuIO1fbKa9VPHbcztJh1aYTkuXQc8=;
+	b=OKItxgSnxaIwUdAxTryfN5oluIb3vCrv1oFG7htl09KH2Miq5un8QvL6KEiVCsdLyg
+	A1zCO11Hrj0Z9bdM+Ziz5BqumEpuBlWVlwdsTWpulstSermEaM50ZX/uE3A6bJciGHq3
+	qZAaActBgSAYpWW8Mm9CcNe+yD4VlklTFD6dKX0EaMFMXBVdY3UKJsNDIhsrflOjJ4lm
+	dvW4/JFnx4oDrBZEoTiviYSDOFrj33RzDUTjJizheZTNT2l6NEwbg2doSulhsvOkpAW0
+	I0wfOOFDrAiZ++T7h+w7xH+89+LelfoB9UptbBvknfyK3F/4R24JJLqW8XEAJ+ebsrtX
+	f/mA==
+X-Gm-Message-State: AFeK/H31j2gfiz9TmZYGxLTpAnz9Yzy6A7zcnJbg+9a+kvSvcU81Q+pCOqQcPB2Dnrj43w==
+X-Received: by 10.84.146.140 with SMTP id g12mr10734682pla.70.1489655538932;
+	Thu, 16 Mar 2017 02:12:18 -0700 (PDT)
+Received: from localhost (123203157175.ctinets.com. [123.203.157.175])
+	by smtp.gmail.com with ESMTPSA id l3sm9147109pgn.10.2017.03.16.02.12.17
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 16 Mar 2017 02:12:17 -0700 (PDT)
+Date: Thu, 16 Mar 2017 17:12:14 +0800
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Saurav Sachidanand <sauravsachidanand@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu
+Message-ID: <20170316091214.GC27579@stefanha-x1.localdomain>
+References: <20170305025605.3824-1-sauravsachidanand@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20170314165953.18506-1-andreas@grapentin.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="xo44VMWPx7vlQ2+2"
+Content-Disposition: inline
+In-Reply-To: <20170305025605.3824-1-sauravsachidanand@gmail.com>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] use _Static_assert in
- QEMU_BUILD_BUG_ON
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] util: Use
+ g_malloc/g_free in envlist.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,122 +69,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Mar 2017 22:02:15 -0000
-
-On 03/15/2017 02:59 AM, Andreas Grapentin wrote:
-> QEMU_BUILD_BUG_ON should use C11's _Static_assert, if the compiler supports it,
-> to provide more readable messages on failure.
->
-> We check for _Static_assert in configure, and set CONFIG_STATIC_ASSERT
-> accordingly. QEMU_BUILD_BUG_ON invokes _Static_assert if CONFIG_STATIC_ASSERT
-> is defined, and reverts to the old way otherwise.
->
-> That way, systems without C11 conforming compiler will still have the old
-> messages, as verified by intentionally breaking the configure check.
->
-> the following example output was generated by inverting the condition in
-> QEMU_BUILD_BUG_ON:
->
-> without _Static_assert:
->
->> In file included from /qemu/include/qemu/osdep.h:36:0,
->>                  from /qemu/qga/commands.c:13:
->> /qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
->> /qemu/include/qemu/compiler.h:89:12: error: negative width in bit-field ‘<anonymous>’
->>      struct { \
->>             ^
->> /qemu/include/qemu/compiler.h:96:38: note: in expansion of macro  QEMU_BUILD_BUG_ON_STRUCT’
->>  #define QEMU_BUILD_BUG_ON(x) typedef QEMU_BUILD_BUG_ON_STRUCT(x) \
->>                                       ^~~~~~~~~~~~~~~~~~~~~~~~
->> /qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
->>      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
->>      ^~~~~~~~~~~~~~~~~
->> /qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
->>      atomic_load_acquire(ptr)
->>      ^~~~~~~~~~~~~~~~~~~
->> /qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
->>      bool finished = atomic_mb_read(&gei->finished);
->>                      ^~~~~~~~~~~~~~
->
-> with _Static_assert:
->
->> In file included from /qemu/include/qemu/osdep.h:36:0,
->>                  from /qemu/qga/commands.c:13:
->> /qemu/qga/commands.c: In function ‘qmp_guest_exec_status’:
->> /qemu/include/qemu/compiler.h:94:30: error: static assertion failed: "not expecting: sizeof(*&gei->finished) > sizeof(void *)"
->>  #define QEMU_BUILD_BUG_ON(x) _Static_assert((x), #x)
->>                               ^
->> /qemu/include/qemu/atomic.h:146:5: note: in expansion of macro ‘QEMU_BUILD_BUG_ON’
->>      QEMU_BUILD_BUG_ON(sizeof(*ptr) > sizeof(void *));   \
->>      ^~~~~~~~~~~~~~~~~
->> /qemu/include/qemu/atomic.h:417:5: note: in expansion of macro ‘atomic_load_acquire’
->>      atomic_load_acquire(ptr)
->>      ^~~~~~~~~~~~~~~~~~~
->> /qemu/qga/commands.c:160:21: note: in expansion of macro ‘atomic_mb_read’
->>      bool finished = atomic_mb_read(&gei->finished);
->>                      ^~~~~~~~~~~~~~
->
-> Signed-off-by: Andreas Grapentin <andreas@grapentin.org>
-> ---
->  configure               | 18 ++++++++++++++++++
->  include/qemu/compiler.h |  4 +++-
->  2 files changed, 21 insertions(+), 1 deletion(-)
->
-> diff --git a/configure b/configure
-> index 75c7c3526c..e9b33d9cf8 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4725,6 +4725,20 @@ if compile_prog "" "" ; then
->  fi
->
->  ##########################################
-> +# check for _Static_assert()
-> +
-> +have_static_assert=no
-> +cat > $TMPC << EOF
-> +_Static_assert(1, "success");
-> +int main(void) {
-> +    return 0;
-> +}
-> +EOF
-> +if compile_prog "" "" ; then
-> +    have_static_assert=yes
-> +fi
-> +
-> +##########################################
->  # End of CC checks
->  # After here, no more $cc or $ld runs
->
-> @@ -5694,6 +5708,10 @@ if test "$have_sysmacros" = "yes" ; then
->    echo "CONFIG_SYSMACROS=y" >> $config_host_mak
->  fi
->
-> +if test "$have_static_assert" = "yes" ; then
-> +  echo "CONFIG_STATIC_ASSERT=y" >> $config_host_mak
-> +fi
-> +
->  # Hold two types of flag:
->  #   CONFIG_THREAD_SETNAME_BYTHREAD  - we've got a way of setting the name on
->  #                                     a thread we have a handle to
-> diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
-> index e0ce9ffb28..37a65d4bb7 100644
-> --- a/include/qemu/compiler.h
-> +++ b/include/qemu/compiler.h
-> @@ -90,7 +90,9 @@
->          int:(x) ? -1 : 1; \
->      }
->
-> -#ifdef __COUNTER__
-> +#if defined(CONFIG_STATIC_ASSERT)
-> +#define QEMU_BUILD_BUG_ON(x) _Static_assert(!(x), "not expecting: " #x)
-> +#elif defined(__COUNTER__)
->  #define QEMU_BUILD_BUG_ON(x) typedef QEMU_BUILD_BUG_ON_STRUCT(x) \
->      glue(qemu_build_bug_on__, __COUNTER__) __attribute__((unused))
->  #else
->
-
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+X-List-Received-Date: Thu, 16 Mar 2017 09:12:26 -0000
 
 
-r~
+--xo44VMWPx7vlQ2+2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Mar 05, 2017 at 02:56:05AM +0000, Saurav Sachidanand wrote:
+> diff --git a/util/envlist.c b/util/envlist.c
+> index e86857e70a..a42eefa5fe 100644
+> --- a/util/envlist.c
+> +++ b/util/envlist.c
+> @@ -17,16 +17,14 @@ static int envlist_parse(envlist_t *envlist,
+>      const char *env, int (*)(envlist_t *, const char *));
+>=20
+>  /*
+> - * Allocates new envlist and returns pointer to that or
+> - * NULL in case of error.
+> + * Allocates new envlist and returns pointer to it.
+>   */
+>  envlist_t *
+>  envlist_create(void)
+>  {
+>  	envlist_t *envlist;
+>=20
+> -	if ((envlist =3D malloc(sizeof (*envlist))) =3D=3D NULL)
+> -		return (NULL);
+> +  envlist =3D g_malloc(sizeof(*envlist));
+
+Please use tabs to indent in this file.  Normally QEMU coding style uses
+4-space indentation but this file contains old code and it's easiest to
+leave it undisturbed.
+
+>=20
+>  	QLIST_INIT(&envlist->el_entries);
+>  	envlist->el_count =3D 0;
+> @@ -49,9 +47,9 @@ envlist_free(envlist_t *envlist)
+>  		QLIST_REMOVE(entry, ev_link);
+>=20
+>  		free((char *)entry->ev_var);
+> -		free(entry);
+> +    g_free(entry);
+>  	}
+> -	free(envlist);
+> +  g_free(envlist);
+>  }
+>=20
+>  /*
+> @@ -156,15 +154,15 @@ envlist_setenv(envlist_t *envlist, const char *env)
+>  	if (entry !=3D NULL) {
+>  		QLIST_REMOVE(entry, ev_link);
+>  		free((char *)entry->ev_var);
+> -		free(entry);
+> +    g_free(entry);
+>  	} else {
+>  		envlist->el_count++;
+>  	}
+>=20
+> -	if ((entry =3D malloc(sizeof (*entry))) =3D=3D NULL)
+> -		return (errno);
+> -	if ((entry->ev_var =3D strdup(env)) =3D=3D NULL) {
+> -		free(entry);
+> +  entry =3D g_malloc(sizeof(*entry));
+> +  entry->ev_var =3D strdup(env);
+
+Could this be converted to g_strdup() in a separate patch?
+
+--xo44VMWPx7vlQ2+2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJYylbuAAoJEJykq7OBq3PIYIMH/jFZM+oBZ0rbwFn1jWUrEZFT
+aKCECaIUnw++7EA3k7Zsx4dY5xLR+ENA3PN/9h+63oQG0qgCxvUE/z5UiN+KGrTp
+4iAf4gPv7GWPJO0hljfrjdLcMC/abQyl2z4rS7cXoIFVKqjbnxo9u0glb6ylI47x
+zYrR4rWeJUJKmmb/y31d+k7b9VZP4CdpLCe9j7leZ9XlWUv5VD91UwrvMmP5B63x
+6K+p5f7BOPG+t0zqt8wSO1UFJ3e4vvGrPfhCIfgXP/BJJ3pAohxuSH0ZpBE9tNmX
+32z0E7HS7gGkJuGQfGYSm3JfnziSU5NwasmyADDruPlkA7an17CYbLa4hwbjf48=
+=qC5H
+-----END PGP SIGNATURE-----
+
+--xo44VMWPx7vlQ2+2--
 
