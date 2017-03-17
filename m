@@ -1,63 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1coRSO-000195-8s
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Mar 2017 05:12:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44634)
+	id 1cohSj-0004W2-Ow
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Mar 2017 22:17:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47980)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1coRSL-000168-JL
-	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 05:12:26 -0400
+	(envelope-from <famz@redhat.com>) id 1cohSh-0004Uh-Bq
+	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 22:17:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1coRSK-0003nl-La
-	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 05:12:25 -0400
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:33638)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1coRSG-0003kT-7g; Thu, 16 Mar 2017 05:12:20 -0400
-Received: by mail-pf0-x244.google.com with SMTP id v190so5124230pfb.0;
-	Thu, 16 Mar 2017 02:12:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=FlmkTqTl4Iwq3fVuIO1fbKa9VPHbcztJh1aYTkuXQc8=;
-	b=vD17yFHOvlbPb1ul6wDkq4BnW+sFN/W4IQZw9HGAjrmZZnYDObc7wRzAh/hJ23tXMo
-	qXj0syAIft07cSGuUEIPg5CzA4v3QDkAwOJwqUN9zYtS1aKOUowonuQH0NXZ87VD6DPW
-	k/Syt01J0codzDE5J2dJoO44n3Bpx+LIahCx8bv0TUPx2f2kgBCLKkf11GoNF/2q5Jxa
-	b/RHiAvcuw0T7xLZB5QoQr2pc4zQJueqbxegXBS5VyrxwxIHxrR8gn6TmAUNbR9D1Ccv
-	PbAsuufQwrEOxO8YMbK0NFrD6DmNUlpVPrcjPxhKEIcFdrzjWWyevyYsD6fJ26vOBctZ
-	Wc9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=FlmkTqTl4Iwq3fVuIO1fbKa9VPHbcztJh1aYTkuXQc8=;
-	b=OKItxgSnxaIwUdAxTryfN5oluIb3vCrv1oFG7htl09KH2Miq5un8QvL6KEiVCsdLyg
-	A1zCO11Hrj0Z9bdM+Ziz5BqumEpuBlWVlwdsTWpulstSermEaM50ZX/uE3A6bJciGHq3
-	qZAaActBgSAYpWW8Mm9CcNe+yD4VlklTFD6dKX0EaMFMXBVdY3UKJsNDIhsrflOjJ4lm
-	dvW4/JFnx4oDrBZEoTiviYSDOFrj33RzDUTjJizheZTNT2l6NEwbg2doSulhsvOkpAW0
-	I0wfOOFDrAiZ++T7h+w7xH+89+LelfoB9UptbBvknfyK3F/4R24JJLqW8XEAJ+ebsrtX
-	f/mA==
-X-Gm-Message-State: AFeK/H31j2gfiz9TmZYGxLTpAnz9Yzy6A7zcnJbg+9a+kvSvcU81Q+pCOqQcPB2Dnrj43w==
-X-Received: by 10.84.146.140 with SMTP id g12mr10734682pla.70.1489655538932;
-	Thu, 16 Mar 2017 02:12:18 -0700 (PDT)
-Received: from localhost (123203157175.ctinets.com. [123.203.157.175])
-	by smtp.gmail.com with ESMTPSA id l3sm9147109pgn.10.2017.03.16.02.12.17
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 16 Mar 2017 02:12:17 -0700 (PDT)
-Date: Thu, 16 Mar 2017 17:12:14 +0800
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Saurav Sachidanand <sauravsachidanand@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu
-Message-ID: <20170316091214.GC27579@stefanha-x1.localdomain>
-References: <20170305025605.3824-1-sauravsachidanand@gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="xo44VMWPx7vlQ2+2"
-Content-Disposition: inline
-In-Reply-To: <20170305025605.3824-1-sauravsachidanand@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+	(envelope-from <famz@redhat.com>) id 1cohSf-0004QN-VC
+	for qemu-trivial@nongnu.org; Thu, 16 Mar 2017 22:17:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54654)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1cohSa-0004O9-R1; Thu, 16 Mar 2017 22:17:45 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B2EDE81247;
+	Fri, 17 Mar 2017 02:17:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B2EDE81247
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=famz@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B2EDE81247
+Received: from lemon.redhat.com (ovpn-8-19.pek2.redhat.com [10.72.8.19])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E82635DD62;
+	Fri, 17 Mar 2017 02:17:42 +0000 (UTC)
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 17 Mar 2017 10:17:39 +0800
+Message-Id: <20170317021739.16877-1-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 17 Mar 2017 02:17:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] util: Use
- g_malloc/g_free in envlist.c
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] block: Make 'replication_state' an enum
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,87 +51,167 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Mar 2017 09:12:26 -0000
+X-List-Received-Date: Fri, 17 Mar 2017 02:17:52 -0000
 
+BDRVReplicationState.replication_state is a name with a bit of
+duplication, plus it could be an enum like BDRVReplicationState.mode,
+which is be more readable and also more straightforward in a debuuger.
 
---xo44VMWPx7vlQ2+2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Rename it, and improve the type while at it.
 
-On Sun, Mar 05, 2017 at 02:56:05AM +0000, Saurav Sachidanand wrote:
-> diff --git a/util/envlist.c b/util/envlist.c
-> index e86857e70a..a42eefa5fe 100644
-> --- a/util/envlist.c
-> +++ b/util/envlist.c
-> @@ -17,16 +17,14 @@ static int envlist_parse(envlist_t *envlist,
->      const char *env, int (*)(envlist_t *, const char *));
->=20
->  /*
-> - * Allocates new envlist and returns pointer to that or
-> - * NULL in case of error.
-> + * Allocates new envlist and returns pointer to it.
->   */
->  envlist_t *
->  envlist_create(void)
->  {
->  	envlist_t *envlist;
->=20
-> -	if ((envlist =3D malloc(sizeof (*envlist))) =3D=3D NULL)
-> -		return (NULL);
-> +  envlist =3D g_malloc(sizeof(*envlist));
+Signed-off-by: Fam Zheng <famz@redhat.com>
+---
+ block/replication.c | 44 ++++++++++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
 
-Please use tabs to indent in this file.  Normally QEMU coding style uses
-4-space indentation but this file contains old code and it's easiest to
-leave it undisturbed.
+diff --git a/block/replication.c b/block/replication.c
+index bf3c395..a5475f7 100644
+--- a/block/replication.c
++++ b/block/replication.c
+@@ -22,9 +22,17 @@
+ #include "qapi/error.h"
+ #include "replication.h"
+ 
++typedef enum {
++    BLOCK_REPLICATION_NONE,             /* block replication is not started */
++    BLOCK_REPLICATION_RUNNING,          /* block replication is running */
++    BLOCK_REPLICATION_FAILOVER,         /* failover is running in background */
++    BLOCK_REPLICATION_FAILOVER_FAILED,  /* failover failed */
++    BLOCK_REPLICATION_DONE,             /* block replication is done */
++} ReplicationStage;
++
+ typedef struct BDRVReplicationState {
+     ReplicationMode mode;
+-    int replication_state;
++    ReplicationStage stage;
+     BdrvChild *active_disk;
+     BdrvChild *hidden_disk;
+     BdrvChild *secondary_disk;
+@@ -36,14 +44,6 @@ typedef struct BDRVReplicationState {
+     int error;
+ } BDRVReplicationState;
+ 
+-enum {
+-    BLOCK_REPLICATION_NONE,             /* block replication is not started */
+-    BLOCK_REPLICATION_RUNNING,          /* block replication is running */
+-    BLOCK_REPLICATION_FAILOVER,         /* failover is running in background */
+-    BLOCK_REPLICATION_FAILOVER_FAILED,  /* failover failed */
+-    BLOCK_REPLICATION_DONE,             /* block replication is done */
+-};
+-
+ static void replication_start(ReplicationState *rs, ReplicationMode mode,
+                               Error **errp);
+ static void replication_do_checkpoint(ReplicationState *rs, Error **errp);
+@@ -141,10 +141,10 @@ static void replication_close(BlockDriverState *bs)
+ {
+     BDRVReplicationState *s = bs->opaque;
+ 
+-    if (s->replication_state == BLOCK_REPLICATION_RUNNING) {
++    if (s->stage == BLOCK_REPLICATION_RUNNING) {
+         replication_stop(s->rs, false, NULL);
+     }
+-    if (s->replication_state == BLOCK_REPLICATION_FAILOVER) {
++    if (s->stage == BLOCK_REPLICATION_FAILOVER) {
+         block_job_cancel_sync(s->active_disk->bs->job);
+     }
+ 
+@@ -174,7 +174,7 @@ static int64_t replication_getlength(BlockDriverState *bs)
+ 
+ static int replication_get_io_status(BDRVReplicationState *s)
+ {
+-    switch (s->replication_state) {
++    switch (s->stage) {
+     case BLOCK_REPLICATION_NONE:
+         return -EIO;
+     case BLOCK_REPLICATION_RUNNING:
+@@ -403,7 +403,7 @@ static void backup_job_completed(void *opaque, int ret)
+     BlockDriverState *bs = opaque;
+     BDRVReplicationState *s = bs->opaque;
+ 
+-    if (s->replication_state != BLOCK_REPLICATION_FAILOVER) {
++    if (s->stage != BLOCK_REPLICATION_FAILOVER) {
+         /* The backup job is cancelled unexpectedly */
+         s->error = -EIO;
+     }
+@@ -445,7 +445,7 @@ static void replication_start(ReplicationState *rs, ReplicationMode mode,
+     aio_context_acquire(aio_context);
+     s = bs->opaque;
+ 
+-    if (s->replication_state != BLOCK_REPLICATION_NONE) {
++    if (s->stage != BLOCK_REPLICATION_NONE) {
+         error_setg(errp, "Block replication is running or done");
+         aio_context_release(aio_context);
+         return;
+@@ -545,7 +545,7 @@ static void replication_start(ReplicationState *rs, ReplicationMode mode,
+         abort();
+     }
+ 
+-    s->replication_state = BLOCK_REPLICATION_RUNNING;
++    s->stage = BLOCK_REPLICATION_RUNNING;
+ 
+     if (s->mode == REPLICATION_MODE_SECONDARY) {
+         secondary_do_checkpoint(s, errp);
+@@ -581,7 +581,7 @@ static void replication_get_error(ReplicationState *rs, Error **errp)
+     aio_context_acquire(aio_context);
+     s = bs->opaque;
+ 
+-    if (s->replication_state != BLOCK_REPLICATION_RUNNING) {
++    if (s->stage != BLOCK_REPLICATION_RUNNING) {
+         error_setg(errp, "Block replication is not running");
+         aio_context_release(aio_context);
+         return;
+@@ -601,7 +601,7 @@ static void replication_done(void *opaque, int ret)
+     BDRVReplicationState *s = bs->opaque;
+ 
+     if (ret == 0) {
+-        s->replication_state = BLOCK_REPLICATION_DONE;
++        s->stage = BLOCK_REPLICATION_DONE;
+ 
+         /* refresh top bs's filename */
+         bdrv_refresh_filename(bs);
+@@ -610,7 +610,7 @@ static void replication_done(void *opaque, int ret)
+         s->hidden_disk = NULL;
+         s->error = 0;
+     } else {
+-        s->replication_state = BLOCK_REPLICATION_FAILOVER_FAILED;
++        s->stage = BLOCK_REPLICATION_FAILOVER_FAILED;
+         s->error = -EIO;
+     }
+ }
+@@ -625,7 +625,7 @@ static void replication_stop(ReplicationState *rs, bool failover, Error **errp)
+     aio_context_acquire(aio_context);
+     s = bs->opaque;
+ 
+-    if (s->replication_state != BLOCK_REPLICATION_RUNNING) {
++    if (s->stage != BLOCK_REPLICATION_RUNNING) {
+         error_setg(errp, "Block replication is not running");
+         aio_context_release(aio_context);
+         return;
+@@ -633,7 +633,7 @@ static void replication_stop(ReplicationState *rs, bool failover, Error **errp)
+ 
+     switch (s->mode) {
+     case REPLICATION_MODE_PRIMARY:
+-        s->replication_state = BLOCK_REPLICATION_DONE;
++        s->stage = BLOCK_REPLICATION_DONE;
+         s->error = 0;
+         break;
+     case REPLICATION_MODE_SECONDARY:
+@@ -648,12 +648,12 @@ static void replication_stop(ReplicationState *rs, bool failover, Error **errp)
+ 
+         if (!failover) {
+             secondary_do_checkpoint(s, errp);
+-            s->replication_state = BLOCK_REPLICATION_DONE;
++            s->stage = BLOCK_REPLICATION_DONE;
+             aio_context_release(aio_context);
+             return;
+         }
+ 
+-        s->replication_state = BLOCK_REPLICATION_FAILOVER;
++        s->stage = BLOCK_REPLICATION_FAILOVER;
+         commit_active_start(NULL, s->active_disk->bs, s->secondary_disk->bs,
+                             BLOCK_JOB_INTERNAL, 0, BLOCKDEV_ON_ERROR_REPORT,
+                             NULL, replication_done, bs, errp, true);
+-- 
+2.9.3
 
->=20
->  	QLIST_INIT(&envlist->el_entries);
->  	envlist->el_count =3D 0;
-> @@ -49,9 +47,9 @@ envlist_free(envlist_t *envlist)
->  		QLIST_REMOVE(entry, ev_link);
->=20
->  		free((char *)entry->ev_var);
-> -		free(entry);
-> +    g_free(entry);
->  	}
-> -	free(envlist);
-> +  g_free(envlist);
->  }
->=20
->  /*
-> @@ -156,15 +154,15 @@ envlist_setenv(envlist_t *envlist, const char *env)
->  	if (entry !=3D NULL) {
->  		QLIST_REMOVE(entry, ev_link);
->  		free((char *)entry->ev_var);
-> -		free(entry);
-> +    g_free(entry);
->  	} else {
->  		envlist->el_count++;
->  	}
->=20
-> -	if ((entry =3D malloc(sizeof (*entry))) =3D=3D NULL)
-> -		return (errno);
-> -	if ((entry->ev_var =3D strdup(env)) =3D=3D NULL) {
-> -		free(entry);
-> +  entry =3D g_malloc(sizeof(*entry));
-> +  entry->ev_var =3D strdup(env);
-
-Could this be converted to g_strdup() in a separate patch?
-
---xo44VMWPx7vlQ2+2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYylbuAAoJEJykq7OBq3PIYIMH/jFZM+oBZ0rbwFn1jWUrEZFT
-aKCECaIUnw++7EA3k7Zsx4dY5xLR+ENA3PN/9h+63oQG0qgCxvUE/z5UiN+KGrTp
-4iAf4gPv7GWPJO0hljfrjdLcMC/abQyl2z4rS7cXoIFVKqjbnxo9u0glb6ylI47x
-zYrR4rWeJUJKmmb/y31d+k7b9VZP4CdpLCe9j7leZ9XlWUv5VD91UwrvMmP5B63x
-6K+p5f7BOPG+t0zqt8wSO1UFJ3e4vvGrPfhCIfgXP/BJJ3pAohxuSH0ZpBE9tNmX
-32z0E7HS7gGkJuGQfGYSm3JfnziSU5NwasmyADDruPlkA7an17CYbLa4hwbjf48=
-=qC5H
------END PGP SIGNATURE-----
-
---xo44VMWPx7vlQ2+2--
 
