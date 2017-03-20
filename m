@@ -1,62 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cpyLZ-0004zQ-AB
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Mar 2017 10:31:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46076)
+	id 1cq1BL-0001G3-8J
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Mar 2017 13:33:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45565)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cpyLU-0004wf-Kh
-	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 10:31:44 -0400
+	(envelope-from <sauravsachidanand@gmail.com>) id 1cq1BI-0001EZ-ID
+	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 13:33:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cpyLO-00027W-RO
-	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 10:31:40 -0400
-Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:38183)
+	(envelope-from <sauravsachidanand@gmail.com>) id 1cq1BH-0007qU-7w
+	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 13:33:20 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:34820)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cpyLJ-00022h-LU; Mon, 20 Mar 2017 10:31:29 -0400
-Received: by mail-wm0-x235.google.com with SMTP id t189so66118605wmt.1;
-	Mon, 20 Mar 2017 07:31:29 -0700 (PDT)
+	(Exim 4.71) (envelope-from <sauravsachidanand@gmail.com>)
+	id 1cq1BC-0007pJ-CO; Mon, 20 Mar 2017 13:33:14 -0400
+Received: by mail-pf0-x242.google.com with SMTP id n11so6956571pfg.2;
+	Mon, 20 Mar 2017 10:33:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=i0rMQ299wDVzi2kVxVEwoh7e7TYvQVlybOkphIesxUM=;
-	b=TgrWPYP+GDHKWZH5r+AAPN1o/k7Ji8jmMslLd2ThUMT4tLaTCz9tUs968PsesYCUXe
-	hqFxnnuzZZKni61ZVTAkRjD5BEVc7DTeUJ3mkEoEfMGrq9AsrvcO/KA+yH/MXX7F8NJw
-	WNCucF347+Efc/AciWutu46XGcvtupOU0F2nspBaHn45N5b9Tp6EBJn9zWl6us8MC5X2
-	y041Oh2m9eZ1tKJjJLpGjGIsyO90apcn3fVJEDERd5vk9jujgtsy0zR7TVXzql0SxnvA
-	efE8/YABBoEOr/3MMwu3Ex2gbIHCoID3npoTC0nu/8uWMeXmnWYNf1Y2TsdrZBkzUJUr
-	veTw==
+	h=from:to:cc:subject:date:message-id;
+	bh=JaSesk7TdWA0co9k9fgTE3KGdysdq8vB9Wj3DB4aIgE=;
+	b=YyBGFT7Hs12HvlCYLLMxS/9acWzjBgremQeA51rMfYU6ilvMhvA3Rem5rBtuG96WCW
+	zuoork+y/2J1+uGMf3giGL6Lzcj09VCzsOoGGKm6YcnlqrgGaeDzm7fCjl78lSZTl/93
+	nGFoCywX7yeHz+cZgXCTSXQO+nKToseuSCz6hR+tiIRxeAIhU8AjxNlQReuejfrNZ/sP
+	bxtwExDCwNObRG43Ni4IYP4impahy7Fp9WWNFuF7odlGi8Mg2A9T+L0MwEj92G/nZUsT
+	s/U1qSIwH5HO694XZhTOEuUD/RWHlm0gZPBU7BKbJZAoN4ZDDUO5mkkbmc/8eQa0zOxs
+	RyRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=i0rMQ299wDVzi2kVxVEwoh7e7TYvQVlybOkphIesxUM=;
-	b=WjxCDVZEA50s39ZSSFJb321rfCNPeP2cazdq0m/N/u7IUOivnsod5cx304+xYb5ZB6
-	6e1ivpwyktasH6+OGzezWkoptsjFO4WDT1xdYxhl505U4zSYp+9bgOoaSVQusg/1YqAK
-	7dwR99MQCw6/m5bbXfnfYChOeKRlNhpeaSXt/VDo7nutGx0nyBwA8dRHXtRQA9BzPBqH
-	uMN0CBGwKNNAETboaG7XjO4VjLDqb5fXzAvCPgq28rdIPXiyPZtgJ/0JWnfl3CicKCMa
-	2z/dSrvQYvLr+oStkkD/nBoFQCNnnwf72ImruZG1H3HSXVIq2kKlqDT/tOj2UywqzYRY
-	eMfw==
-X-Gm-Message-State: AFeK/H00H8d9zUA5i6W2jRNfMAQtTimYURAjsYQBEWhpHRbFsjtCGF1PlDO1Pj9DSzgXIw==
-X-Received: by 10.28.47.205 with SMTP id v196mr11242472wmv.20.1490020288469;
-	Mon, 20 Mar 2017 07:31:28 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	b13sm13724239wmf.6.2017.03.20.07.31.26
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 20 Mar 2017 07:31:27 -0700 (PDT)
-Date: Mon, 20 Mar 2017 14:31:25 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Saurav Sachidanand <sauravsachidanand@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu
-Message-ID: <20170320143125.GB17887@stefanha-x1.localdomain>
-References: <20170319162715.2260-1-sauravsachidanand@gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="OJWLbGElk4npXSe3"
-Content-Disposition: inline
-In-Reply-To: <20170319162715.2260-1-sauravsachidanand@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=JaSesk7TdWA0co9k9fgTE3KGdysdq8vB9Wj3DB4aIgE=;
+	b=MLry3eBwcWuHlZh+To+V0K86yWJcYuOfl6CA4Of8zLJFskuevbQ1doEzLFSqFTqdP7
+	Z+PkJ2FVBT45qqrocs/gMfCeV+6xT3AAwVMFpv3S87KuwoLw0H3BzIuEgoEOKnLEe3be
+	m99h0WRSa1heBmjBKTera4FMHGziUsZr/oOe1e0FrnYdLmOonYiCjitKp7YzefXabO+U
+	A32i/PXnpkRAUJ/XRgZX/9aszGUT+sIzvcSQ8hJvgPtZPAEM/RpAXFrANGhJqGeKoqkp
+	slFvqI9CcQ6KANtDY1HrWXrKtievLGs22UO22Gf7gLGKTcUc7LULJBWF/ULdTrJeFl/Q
+	Obfg==
+X-Gm-Message-State: AFeK/H1HEOPSHHshQ6eOwpvGn+5u1qoVsdHGMiMp09n8v2tk1SVlU2gTH6O75w6hIZqTfg==
+X-Received: by 10.84.129.3 with SMTP id 3mr42201136plb.150.1490031192765;
+	Mon, 20 Mar 2017 10:33:12 -0700 (PDT)
+Received: from localhost.localdomain ([49.207.48.255])
+	by smtp.gmail.com with ESMTPSA id
+	o17sm34460852pfa.98.2017.03.20.10.33.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 20 Mar 2017 10:33:11 -0700 (PDT)
+From: Saurav Sachidanand <sauravsachidanand@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, stefanha@gmail.com, laurent@vivier.eu,
+	Saurav Sachidanand <sauravsachidanand@gmail.com>
+Date: Mon, 20 Mar 2017 17:32:58 +0000
+Message-Id: <20170320173258.3621-1-sauravsachidanand@gmail.com>
+X-Mailer: git-send-email 2.12.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::235
-Subject: Re: [Qemu-trivial] [PATCH v3] util: Use g_malloc/g_free in envlist.c
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-trivial]  [PATCH v4] util: Use g_malloc/g_free in envlist.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,59 +62,219 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Mar 2017 14:31:44 -0000
+X-List-Received-Date: Mon, 20 Mar 2017 17:33:21 -0000
 
+Change malloc/strdup/free to g_malloc/g_strdup/g_free in
+util/envlist.c.
 
---OJWLbGElk4npXSe3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Remove NULL checks for pointers returned from g_malloc and g_strdup
+as they exit in case of failure. Also, update calls to envlist_create
+to reflect this.
 
-On Sun, Mar 19, 2017 at 04:27:15PM +0000, Saurav Sachidanand wrote:
-> @@ -48,10 +46,10 @@ envlist_free(envlist_t *envlist)
->  		entry =3D envlist->el_entries.lh_first;
->  		QLIST_REMOVE(entry, ev_link);
-> =20
-> -		free((char *)entry->ev_var);
-> +		g_free(entry->ev_var);
+Free array and array contents returned by envlist_to_environ using
+g_free in bsd-user/main.c and linux-user/main.c.
 
-You need to keep the const casts to silence the compiler.  Here, ...
+Update comments to reflect change in semantics.
+---
+ bsd-user/main.c   | 14 ++++----------
+ linux-user/main.c |  9 +++------
+ util/envlist.c    | 47 +++++++++++++++++++----------------------------
+ 3 files changed, 26 insertions(+), 44 deletions(-)
 
-> @@ -155,18 +152,14 @@ envlist_setenv(envlist_t *envlist, const char *env)
-> =20
->  	if (entry !=3D NULL) {
->  		QLIST_REMOVE(entry, ev_link);
-> -		free((char *)entry->ev_var);
-> +		g_free(entry->ev_var);
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 714a692e6f..04f95ddd54 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -744,10 +744,7 @@ int main(int argc, char **argv)
+     qemu_init_cpu_list();
+     module_call_init(MODULE_INIT_QOM);
+ 
+-    if ((envlist = envlist_create()) == NULL) {
+-        (void) fprintf(stderr, "Unable to allocate envlist\n");
+-        exit(1);
+-    }
++    envlist = envlist_create();
+ 
+     /* add current environment into the list */
+     for (wrk = environ; *wrk != NULL; wrk++) {
+@@ -785,10 +782,7 @@ int main(int argc, char **argv)
+                 usage();
+         } else if (!strcmp(r, "ignore-environment")) {
+             envlist_free(envlist);
+-            if ((envlist = envlist_create()) == NULL) {
+-                (void) fprintf(stderr, "Unable to allocate envlist\n");
+-                exit(1);
+-            }
++            envlist = envlist_create();
+         } else if (!strcmp(r, "U")) {
+             r = argv[optind++];
+             if (envlist_unsetenv(envlist, r) != 0)
+@@ -956,10 +950,10 @@ int main(int argc, char **argv)
+     }
+ 
+     for (wrk = target_environ; *wrk; wrk++) {
+-        free(*wrk);
++        g_free(*wrk);
+     }
+ 
+-    free(target_environ);
++    g_free(target_environ);
+ 
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+         qemu_log("guest_base  0x%lx\n", guest_base);
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 10a3bb3a12..5f20769cb9 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -4229,10 +4229,7 @@ int main(int argc, char **argv, char **envp)
+     qemu_init_cpu_list();
+     module_call_init(MODULE_INIT_QOM);
+ 
+-    if ((envlist = envlist_create()) == NULL) {
+-        (void) fprintf(stderr, "Unable to allocate envlist\n");
+-        exit(EXIT_FAILURE);
+-    }
++    envlist = envlist_create();
+ 
+     /* add current environment into the list */
+     for (wrk = environ; *wrk != NULL; wrk++) {
+@@ -4429,10 +4426,10 @@ int main(int argc, char **argv, char **envp)
+     }
+ 
+     for (wrk = target_environ; *wrk; wrk++) {
+-        free(*wrk);
++        g_free(*wrk);
+     }
+ 
+-    free(target_environ);
++    g_free(target_environ);
+ 
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+         qemu_log("guest_base  0x%lx\n", guest_base);
+diff --git a/util/envlist.c b/util/envlist.c
+index e86857e70a..1eeb7fca87 100644
+--- a/util/envlist.c
++++ b/util/envlist.c
+@@ -17,16 +17,14 @@ static int envlist_parse(envlist_t *envlist,
+     const char *env, int (*)(envlist_t *, const char *));
+ 
+ /*
+- * Allocates new envlist and returns pointer to that or
+- * NULL in case of error.
++ * Allocates new envlist and returns pointer to it.
+  */
+ envlist_t *
+ envlist_create(void)
+ {
+ 	envlist_t *envlist;
+ 
+-	if ((envlist = malloc(sizeof (*envlist))) == NULL)
+-		return (NULL);
++	envlist = g_malloc(sizeof(*envlist));
+ 
+ 	QLIST_INIT(&envlist->el_entries);
+ 	envlist->el_count = 0;
+@@ -48,10 +46,10 @@ envlist_free(envlist_t *envlist)
+ 		entry = envlist->el_entries.lh_first;
+ 		QLIST_REMOVE(entry, ev_link);
+ 
+-		free((char *)entry->ev_var);
+-		free(entry);
++		g_free((char *)entry->ev_var);
++		g_free(entry);
+ 	}
+-	free(envlist);
++	g_free(envlist);
+ }
+ 
+ /*
+@@ -101,8 +99,7 @@ envlist_parse(envlist_t *envlist, const char *env,
+ 	if ((envlist == NULL) || (env == NULL))
+ 		return (EINVAL);
+ 
+-	if ((tmpenv = strdup(env)) == NULL)
+-		return (errno);
++	tmpenv = g_strdup(env);
+     envsave = tmpenv;
+ 
+     do {
+@@ -117,7 +114,7 @@ envlist_parse(envlist_t *envlist, const char *env,
+         tmpenv = envvar + 1;
+     } while (envvar != NULL);
+ 
+-    free(envsave);
++    g_free(envsave);
+     return ret;
+ }
+ 
+@@ -155,18 +152,14 @@ envlist_setenv(envlist_t *envlist, const char *env)
+ 
+ 	if (entry != NULL) {
+ 		QLIST_REMOVE(entry, ev_link);
+-		free((char *)entry->ev_var);
+-		free(entry);
++		g_free((char *)entry->ev_var);
++		g_free(entry);
+ 	} else {
+ 		envlist->el_count++;
+ 	}
+ 
+-	if ((entry = malloc(sizeof (*entry))) == NULL)
+-		return (errno);
+-	if ((entry->ev_var = strdup(env)) == NULL) {
+-		free(entry);
+-		return (errno);
+-	}
++	entry = g_malloc(sizeof(*entry));
++	entry->ev_var = g_strdup(env);
+ 	QLIST_INSERT_HEAD(&envlist->el_entries, entry, ev_link);
+ 
+ 	return (0);
+@@ -201,8 +194,8 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
+ 	}
+ 	if (entry != NULL) {
+ 		QLIST_REMOVE(entry, ev_link);
+-		free((char *)entry->ev_var);
+-		free(entry);
++		g_free((char *)entry->ev_var);
++		g_free(entry);
+ 
+ 		envlist->el_count--;
+ 	}
+@@ -212,12 +205,12 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
+ /*
+  * Returns given envlist as array of strings (in same form that
+  * global variable environ is).  Caller must free returned memory
+- * by calling free(3) for each element and for the array.  Returned
+- * array and given envlist are not related (no common references).
++ * by calling g_free for each element and the array.
++ * Returned array and given envlist are not related (no common
++ * references).
+  *
+  * If caller provides count pointer, number of items in array is
+- * stored there.  In case of error, NULL is returned and no memory
+- * is allocated.
++ * stored there.
+  */
+ char **
+ envlist_to_environ(const envlist_t *envlist, size_t *count)
+@@ -225,13 +218,11 @@ envlist_to_environ(const envlist_t *envlist, size_t *count)
+ 	struct envlist_entry *entry;
+ 	char **env, **penv;
+ 
+-	penv = env = malloc((envlist->el_count + 1) * sizeof (char *));
+-	if (env == NULL)
+-		return (NULL);
++	penv = env = g_malloc((envlist->el_count + 1) * sizeof(char *));
+ 
+ 	for (entry = envlist->el_entries.lh_first; entry != NULL;
+ 	    entry = entry->ev_link.le_next) {
+-		*(penv++) = strdup(entry->ev_var);
++		*(penv++) = g_strdup(entry->ev_var);
+ 	}
+ 	*penv = NULL; /* NULL terminate the list */
+ 
+-- 
+2.12.0
 
-here, ...
-
-> @@ -201,8 +194,8 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
->  	}
->  	if (entry !=3D NULL) {
->  		QLIST_REMOVE(entry, ev_link);
-> -		free((char *)entry->ev_var);
-> +		g_free(entry->ev_var);
-
-and here.
-
-The problem is that const char * is not supposed to be freed.  The type
-would need to be non-const.  Most of the code does treat the string as
-const, so it's nice to have it except for the final free().
-
---OJWLbGElk4npXSe3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJYz+e9AAoJEJykq7OBq3PIqjkH+wZ8LbauT/uFs5gEgvRezIOi
-WNilawJjEJW0j4GqLhZ+brL0qypAx7ZKH8u8ca2rdQWUMhpBdod++Zd+E31l3bR3
-0xfdmc65Sx66vzf0HxbePPXSGcYO7/M5zGv1UqZ6kahO0JQZXIjKKW1UiMtakSKU
-f/xc29YVkVDMqvVrSd6pVWO5ibqHlVXr1U0q6vrfFL695kNUUvPP7QOCronLYqQI
-TEGMdVR1Mn8Jo4V3aii+0W+du59bDh1drjUBb9f4ToR73o1h49DsPTa7kzXyHQNS
-wl2aa3Tl5gSm3PDcr42FSph43mtDVYbA3vxuZllChETawEL4c3lPFXSg3LTviy4=
-=Exep
------END PGP SIGNATURE-----
-
---OJWLbGElk4npXSe3--
 
