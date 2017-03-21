@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cq1Gc-0003BZ-Ub
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Mar 2017 13:38:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47052)
+	id 1cq8CX-0000vD-Ix
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Mar 2017 21:03:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sauravsachidanand@gmail.com>) id 1cq1GY-00038p-DG
-	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 13:38:49 -0400
+	(envelope-from <eblake@redhat.com>) id 1cq8CS-0000sK-3O
+	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 21:03:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sauravsachidanand@gmail.com>) id 1cq1GX-00018s-6o
-	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 13:38:46 -0400
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:36202)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sauravsachidanand@gmail.com>)
-	id 1cq1GP-000177-Al; Mon, 20 Mar 2017 13:38:37 -0400
-Received: by mail-pf0-x243.google.com with SMTP id r137so14517627pfr.3;
-	Mon, 20 Mar 2017 10:38:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=Cnu6LQosjoNzO7Rb6shxQvUE0/Vf7xhoEGZJtzEWKRQ=;
-	b=YxF2FtxTyJq3700Nf1eVKiatB31WNth2sXUAj/y/qrApdRGiYizbhDf4mBNDGkHgWv
-	gpOIRXb484DdtZf0wDsWxDj9Rysy7f6hrMLvpMUg/6HtQWWaHihPEwla/eru8an6zxmh
-	YUxO4P+tdlsELT6pYfB7NwQEdUf53LYwssTssE3K82JAuVlRvu/D5XzqoFHDqRriUBHz
-	+LyETvkpPqf3kfADXn3Dqv8LEoFySuPWRYtqe0U6UIk3kxF2gld3C696g8Fk7LHbGNXz
-	62DBafZx1oKlBzWegmBm2ewQQRqS4m/v+2IwYZr0H9jrZqad9dP8tfSXpwvTBvpcZmJ7
-	YdAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Cnu6LQosjoNzO7Rb6shxQvUE0/Vf7xhoEGZJtzEWKRQ=;
-	b=efMokvRCZtGG4I+2MJq/+rJ0o7VQKw6HbcIivrsJei21LmJBiEKgd6sWGoAs/puwkf
-	DTLMYZnW5GLqpExK5KvBAYmoV+XCD9tZmimgG7HCdhE/QA1GRNPJW3aGYarpd4vKRk8j
-	HGDOK0cizwwDyhMAjMljCDKrB3eFlhtov3bx1nFY7Gh7R9uidMUEJjzRkrmATLN/LJLN
-	RYP+FQDM8MMoV9VTle4Qtn7Y27ZEfURiLnc9rdQEs4q3oJpD9ahN7W+DGv70Oyh8+jYY
-	aY4Uj104NRHrBaymxMA5+P+rjJcswYM6jDOgfPyRPQ4B2oCugOEmnaPL5FpWn09SbEGo
-	YlKg==
-X-Gm-Message-State: AFeK/H0Bz9+fWhW+kcXUnC/b+lUDhrlR0kFW1KqYwHXoZSyHvERHbMYCAv6NP7LaZ143VQ==
-X-Received: by 10.99.1.132 with SMTP id 126mr31625921pgb.25.1490031516000;
-	Mon, 20 Mar 2017 10:38:36 -0700 (PDT)
-Received: from localhost.localdomain ([49.207.48.255])
-	by smtp.gmail.com with ESMTPSA id
-	k76sm34502113pfg.42.2017.03.20.10.38.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Mar 2017 10:38:34 -0700 (PDT)
-From: Saurav Sachidanand <sauravsachidanand@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, stefanha@gmail.com, laurent@vivier.eu,
-	Saurav Sachidanand <sauravsachidanand@gmail.com>
-Date: Mon, 20 Mar 2017 17:38:28 +0000
-Message-Id: <20170320173828.3874-1-sauravsachidanand@gmail.com>
-X-Mailer: git-send-email 2.12.0
+	(envelope-from <eblake@redhat.com>) id 1cq8CP-0000S6-5r
+	for qemu-trivial@nongnu.org; Mon, 20 Mar 2017 21:02:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53356)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cq8CF-0000Ol-3b; Mon, 20 Mar 2017 21:02:47 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 625C680492;
+	Tue, 21 Mar 2017 01:02:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 625C680492
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 625C680492
+Received: from [10.10.121.124] (ovpn-121-124.rdu2.redhat.com [10.10.121.124])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A41FF177DF;
+	Tue, 21 Mar 2017 01:02:45 +0000 (UTC)
+To: wangguang <wang.guang55@zte.com.cn>, qemu-devel@nongnu.org,
+	qemu-trivial <qemu-trivial@nongnu.org>
+References: <1490056074976-474433.post@n7.nabble.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <28d15bd5-1620-b39b-ed92-d8812d1549c8@redhat.com>
+Date: Mon, 20 Mar 2017 20:02:42 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <1490056074976-474433.post@n7.nabble.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="VlKKkl6D1EwWunswkKRfMChNG2dGmjjRG"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 21 Mar 2017 01:02:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: [Qemu-trivial]  [PATCH v5] util: Use g_malloc/g_free in envlist.c
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4]COLO:Fix Colo doc,
+ secondeary should be secondary
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,221 +62,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Mar 2017 17:38:49 -0000
+X-List-Received-Date: Tue, 21 Mar 2017 01:03:04 -0000
 
-Change malloc/strdup/free to g_malloc/g_strdup/g_free in
-util/envlist.c.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--VlKKkl6D1EwWunswkKRfMChNG2dGmjjRG
+Content-Type: multipart/mixed; boundary="osDmuAXkBsxweWSKeqiUpTiv5ixmPRM4u";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: wangguang <wang.guang55@zte.com.cn>, qemu-devel@nongnu.org,
+ qemu-trivial <qemu-trivial@nongnu.org>
+Message-ID: <28d15bd5-1620-b39b-ed92-d8812d1549c8@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v4]COLO:Fix Colo doc, secondeary should be
+ secondary
+References: <1490056074976-474433.post@n7.nabble.com>
+In-Reply-To: <1490056074976-474433.post@n7.nabble.com>
 
-Remove NULL checks for pointers returned from g_malloc and g_strdup
-as they exit in case of failure. Also, update calls to envlist_create
-to reflect this.
+--osDmuAXkBsxweWSKeqiUpTiv5ixmPRM4u
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Free array and array contents returned by envlist_to_environ using
-g_free in bsd-user/main.c and linux-user/main.c.
+[adding qemu-trivial]
 
-Update comments to reflect change in semantics.
+On 03/20/2017 07:27 PM, wangguang wrote:
+> Subject: [PATCH] Fix Colo doc secondeary should be secondary=20
 
-Signed-off-by: Saurav Sachidanand <sauravsachidanand@gmail.com>
----
- bsd-user/main.c   | 14 ++++----------
- linux-user/main.c |  9 +++------
- util/envlist.c    | 47 +++++++++++++++++++----------------------------
- 3 files changed, 26 insertions(+), 44 deletions(-)
+This line feels redundant compared to the overall mail's subject line.
+In turn, that subject could use a space after colon.
 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 714a692e6f..04f95ddd54 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -744,10 +744,7 @@ int main(int argc, char **argv)
-     qemu_init_cpu_list();
-     module_call_init(MODULE_INIT_QOM);
- 
--    if ((envlist = envlist_create()) == NULL) {
--        (void) fprintf(stderr, "Unable to allocate envlist\n");
--        exit(1);
--    }
-+    envlist = envlist_create();
- 
-     /* add current environment into the list */
-     for (wrk = environ; *wrk != NULL; wrk++) {
-@@ -785,10 +782,7 @@ int main(int argc, char **argv)
-                 usage();
-         } else if (!strcmp(r, "ignore-environment")) {
-             envlist_free(envlist);
--            if ((envlist = envlist_create()) == NULL) {
--                (void) fprintf(stderr, "Unable to allocate envlist\n");
--                exit(1);
--            }
-+            envlist = envlist_create();
-         } else if (!strcmp(r, "U")) {
-             r = argv[optind++];
-             if (envlist_unsetenv(envlist, r) != 0)
-@@ -956,10 +950,10 @@ int main(int argc, char **argv)
-     }
- 
-     for (wrk = target_environ; *wrk; wrk++) {
--        free(*wrk);
-+        g_free(*wrk);
-     }
- 
--    free(target_environ);
-+    g_free(target_environ);
- 
-     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
-         qemu_log("guest_base  0x%lx\n", guest_base);
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 10a3bb3a12..5f20769cb9 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -4229,10 +4229,7 @@ int main(int argc, char **argv, char **envp)
-     qemu_init_cpu_list();
-     module_call_init(MODULE_INIT_QOM);
- 
--    if ((envlist = envlist_create()) == NULL) {
--        (void) fprintf(stderr, "Unable to allocate envlist\n");
--        exit(EXIT_FAILURE);
--    }
-+    envlist = envlist_create();
- 
-     /* add current environment into the list */
-     for (wrk = environ; *wrk != NULL; wrk++) {
-@@ -4429,10 +4426,10 @@ int main(int argc, char **argv, char **envp)
-     }
- 
-     for (wrk = target_environ; *wrk; wrk++) {
--        free(*wrk);
-+        g_free(*wrk);
-     }
- 
--    free(target_environ);
-+    g_free(target_environ);
- 
-     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
-         qemu_log("guest_base  0x%lx\n", guest_base);
-diff --git a/util/envlist.c b/util/envlist.c
-index e86857e70a..1eeb7fca87 100644
---- a/util/envlist.c
-+++ b/util/envlist.c
-@@ -17,16 +17,14 @@ static int envlist_parse(envlist_t *envlist,
-     const char *env, int (*)(envlist_t *, const char *));
- 
- /*
-- * Allocates new envlist and returns pointer to that or
-- * NULL in case of error.
-+ * Allocates new envlist and returns pointer to it.
-  */
- envlist_t *
- envlist_create(void)
- {
- 	envlist_t *envlist;
- 
--	if ((envlist = malloc(sizeof (*envlist))) == NULL)
--		return (NULL);
-+	envlist = g_malloc(sizeof(*envlist));
- 
- 	QLIST_INIT(&envlist->el_entries);
- 	envlist->el_count = 0;
-@@ -48,10 +46,10 @@ envlist_free(envlist_t *envlist)
- 		entry = envlist->el_entries.lh_first;
- 		QLIST_REMOVE(entry, ev_link);
- 
--		free((char *)entry->ev_var);
--		free(entry);
-+		g_free((char *)entry->ev_var);
-+		g_free(entry);
- 	}
--	free(envlist);
-+	g_free(envlist);
- }
- 
- /*
-@@ -101,8 +99,7 @@ envlist_parse(envlist_t *envlist, const char *env,
- 	if ((envlist == NULL) || (env == NULL))
- 		return (EINVAL);
- 
--	if ((tmpenv = strdup(env)) == NULL)
--		return (errno);
-+	tmpenv = g_strdup(env);
-     envsave = tmpenv;
- 
-     do {
-@@ -117,7 +114,7 @@ envlist_parse(envlist_t *envlist, const char *env,
-         tmpenv = envvar + 1;
-     } while (envvar != NULL);
- 
--    free(envsave);
-+    g_free(envsave);
-     return ret;
- }
- 
-@@ -155,18 +152,14 @@ envlist_setenv(envlist_t *envlist, const char *env)
- 
- 	if (entry != NULL) {
- 		QLIST_REMOVE(entry, ev_link);
--		free((char *)entry->ev_var);
--		free(entry);
-+		g_free((char *)entry->ev_var);
-+		g_free(entry);
- 	} else {
- 		envlist->el_count++;
- 	}
- 
--	if ((entry = malloc(sizeof (*entry))) == NULL)
--		return (errno);
--	if ((entry->ev_var = strdup(env)) == NULL) {
--		free(entry);
--		return (errno);
--	}
-+	entry = g_malloc(sizeof(*entry));
-+	entry->ev_var = g_strdup(env);
- 	QLIST_INSERT_HEAD(&envlist->el_entries, entry, ev_link);
- 
- 	return (0);
-@@ -201,8 +194,8 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
- 	}
- 	if (entry != NULL) {
- 		QLIST_REMOVE(entry, ev_link);
--		free((char *)entry->ev_var);
--		free(entry);
-+		g_free((char *)entry->ev_var);
-+		g_free(entry);
- 
- 		envlist->el_count--;
- 	}
-@@ -212,12 +205,12 @@ envlist_unsetenv(envlist_t *envlist, const char *env)
- /*
-  * Returns given envlist as array of strings (in same form that
-  * global variable environ is).  Caller must free returned memory
-- * by calling free(3) for each element and for the array.  Returned
-- * array and given envlist are not related (no common references).
-+ * by calling g_free for each element and the array.
-+ * Returned array and given envlist are not related (no common
-+ * references).
-  *
-  * If caller provides count pointer, number of items in array is
-- * stored there.  In case of error, NULL is returned and no memory
-- * is allocated.
-+ * stored there.
-  */
- char **
- envlist_to_environ(const envlist_t *envlist, size_t *count)
-@@ -225,13 +218,11 @@ envlist_to_environ(const envlist_t *envlist, size_t *count)
- 	struct envlist_entry *entry;
- 	char **env, **penv;
- 
--	penv = env = malloc((envlist->el_count + 1) * sizeof (char *));
--	if (env == NULL)
--		return (NULL);
-+	penv = env = g_malloc((envlist->el_count + 1) * sizeof(char *));
- 
- 	for (entry = envlist->el_entries.lh_first; entry != NULL;
- 	    entry = entry->ev_link.le_next) {
--		*(penv++) = strdup(entry->ev_var);
-+		*(penv++) = g_strdup(entry->ev_var);
- 	}
- 	*penv = NULL; /* NULL terminate the list */
- 
--- 
-2.12.0
+> This is an error in COLO-FT.txt.=20
+> secondeary-disk0 should be secondary-disk0.=20
+>=20
+> Signed-off-by: Guang Wang <wang.guang55@zte.com.cn>
+> ---=20
+>  docs/COLO-FT.txt | 2 +-=20
+>  1 file changed, 1 insertion(+), 1 deletion(-)=20
 
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+As it is doc-only, it is safe for hard freeze, but also not the end of
+the world if it doesn't go in until 2.10.
+
+>=20
+> diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt=20
+> index e289be2..bec7547 100644=20
+> --- a/docs/COLO-FT.txt=20
+> +++ b/docs/COLO-FT.txt=20
+> @@ -139,7 +139,7 @@ Secondary:=20
+>  { 'execute': 'nbd-server-start',=20
+>    'arguments': {'addr': {'type': 'inet', 'data': {'host': 'xx.xx.xx.xx=
+',
+> 'port': '8889'} } }=20
+>  }=20
+> -{'execute': 'nbd-server-add', 'arguments': {'device': 'secondeary-disk=
+0',
+> 'writable': true } }=20
+> +{'execute': 'nbd-server-add', 'arguments': {'device': 'secondary-disk0=
+',
+> 'writable': true } }=20
+>  =20
+>  Note:=20
+>    a. The qmp command nbd-server-start and nbd-server-add must be run=20
+>=20
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--osDmuAXkBsxweWSKeqiUpTiv5ixmPRM4u--
+
+--VlKKkl6D1EwWunswkKRfMChNG2dGmjjRG
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJY0HuyAAoJEKeha0olJ0NqWfIIAIabVwRkkr+CqBxHlxr7jpej
+8cmBdLAis9SSkotuRaOHqMQVlHEraXhu0Fr/nTQypyxNXB2RQG3YFnjLh46i5+jn
+KRgY+ymlfZk0nzDZzzew3GSIYRZoxp31P/v+2qqKzZv3cF7769p7LSGaHiE/PF0K
+zNONat5eS9leD0z5f0vKkCCsvV5gVpWZusUtxvQ+ER9/OERimoZ8QxQGHH83+2ol
+UZitu2lEyor4OKnFKEqlFPF3bzGT9EtaAuRDpZmjFzlcN2s3ZhJwAIZ2rE8eml3p
+r1SZHuf5W7NKmAJZmBcP3LT0hgl2PG3J4FiE4JhqxCpE625k/+8DjQQK0Eu/ROI=
+=/ru0
+-----END PGP SIGNATURE-----
+
+--VlKKkl6D1EwWunswkKRfMChNG2dGmjjRG--
 
