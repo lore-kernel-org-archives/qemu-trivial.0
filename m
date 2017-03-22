@@ -1,84 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cqni9-00056a-7i
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Mar 2017 17:22:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57846)
+	id 1cqorR-0003zm-G3
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Mar 2017 18:36:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1cqni6-000559-Qc
-	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 17:22:27 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1cqorO-0003yC-Rg
+	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 18:36:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1cqni2-0001sp-Tw
-	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 17:22:26 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:37521
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mdroth@linux.vnet.ibm.com>)
-	id 1cqni2-0001rq-OC
-	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 17:22:22 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.20/8.16.0.20) with SMTP id
-	v2MLIUwr076742
-	for <qemu-trivial@nongnu.org>; Wed, 22 Mar 2017 17:22:20 -0400
-Received: from e38.co.us.ibm.com (e38.co.us.ibm.com [32.97.110.159])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 29b9vnu347-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Wed, 22 Mar 2017 17:22:20 -0400
-Received: from localhost
-	by e38.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Wed, 22 Mar 2017 15:22:19 -0600
-Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
-	by e38.co.us.ibm.com (192.168.1.138) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 22 Mar 2017 15:22:16 -0600
-Received: from b03ledav005.gho.boulder.ibm.com
-	(b03ledav005.gho.boulder.ibm.com [9.17.130.236])
-	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id v2MLMFNc16515428; Wed, 22 Mar 2017 14:22:15 -0700
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 62185BE042;
-	Wed, 22 Mar 2017 15:22:15 -0600 (MDT)
-Received: from localhost (unknown [9.53.92.194])
-	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP id 4CA02BE03A; 
-	Wed, 22 Mar 2017 15:22:15 -0600 (MDT)
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <marcandre.lureau@gmail.com>) id 1cqorN-0007Mw-U7
+	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 18:36:06 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35815)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1cqorN-0007Lg-Jt; Wed, 22 Mar 2017 18:36:05 -0400
+Received: by mail-lf0-x241.google.com with SMTP id v2so15151449lfi.2;
+	Wed, 22 Mar 2017 15:36:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=gYuCg1K/P0RxYfddWrIc58MVouF0w8l3PAusHzZbsRU=;
+	b=lVF7v0ydNtg5PVr6sNlZZ3ciK6WlSNASgyG0BPXrsyOZ+BhZqiQ4Qxzm0kn/0/+nc/
+	rIxgK6CuYf3hqVgeB+v72iHDLNUWhlEcGdxVeTk0yj2cqli+YikGx5Q/C6pNX9LWGEpL
+	iDaz2l+HHQIC7WJHyr2YnW7WYtU7yBSBNp2YuB5PVJGt9iFNHaJ02qCznYDW1Gesv0wP
+	0306D8DMK1bELYuwFV3iyun9Ce+iqLgWnbpB39ow2MVA3TfGDaH3H28g9t89YPIm0ZUM
+	F+GXWzLf9/YKh9KdYeK0sbahk941NxQ0Cr7j0iX5RUPCCGyBpmt2TMsagFb6jwFKHJKg
+	e4Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=gYuCg1K/P0RxYfddWrIc58MVouF0w8l3PAusHzZbsRU=;
+	b=ZZtFo6td9pHVOZSxE253k9QZoES+FeReyl1r+AWfpE/kuRkJRmPTelsVMPQI9VkWBT
+	zBxv4vqf2tcsqL09WOuhm8aETw35doYtvyoRIJ+d6759eB6YfoP+1oZ9Bd71ws6jg1Z1
+	bs8gxEjZhPGeHvfFaE0p06hXHp0md7YziTOVBxkwcUYf0Ps+MFEJAebWMBnkwLCQFVpL
+	ONnXkv003RTFJhnmbIrFZXHnxV4De+1gpHFsFuOK9+U0g6LeHNU+omIHXAsEI3EPyvmc
+	ZnyaiJdQQ2UktPJP0pGtvFT+9AuXRg5fAMORaS2P4YEvXYsf1NbUkATYJBDsk7Ov4gSn
+	P/9g==
+X-Gm-Message-State: AFeK/H1edU83Swr35jiGAmyMcSG/xVKXUTmRHvd8T2gRlLMCTFRIcBDV3K2Qh7LTddFJAeaHFiGiiAK+97MIpA==
+X-Received: by 10.25.67.89 with SMTP id m25mr12380567lfj.139.1490222164161;
+	Wed, 22 Mar 2017 15:36:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"Peter Crosthwaite" <crosthwaite.peter@gmail.com>,
-	"Alexander Graf" <agraf@suse.de>, "Gerd Hoffmann" <kraxel@redhat.com>
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <20170322204844.446-4-f4bug@amsat.org>
-Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170322204844.446-1-f4bug@amsat.org>
-	<20170322204844.446-4-f4bug@amsat.org>
-User-Agent: alot/0.3.6
-Date: Wed, 22 Mar 2017 16:22:10 -0500
-X-TM-AS-GCONF: 00
-x-cbid: 17032221-0028-0000-0000-000007446211
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00006830; HX=3.00000240; KW=3.00000007;
-	PH=3.00000004; SC=3.00000206; SDB=6.00837476; UDB=6.00411716;
-	IPR=6.00615242; 
-	BA=6.00005232; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
-	ZB=6.00000000; 
-	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00014764;
-	XFM=3.00000013; UTC=2017-03-22 21:22:17
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17032221-0029-0000-0000-00003480EE9B
-Message-Id: <149021773050.3910.449421368071627004@loki>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-03-22_17:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1702020001
-	definitions=main-1703220183
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-trivial] [PATCH RESEND 3/3] qga: fix compiler warnings
- (clang 5)
+	<20170322204844.446-3-f4bug@amsat.org>
+In-Reply-To: <20170322204844.446-3-f4bug@amsat.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Wed, 22 Mar 2017 22:35:52 +0000
+Message-ID: <CAJ+F1CJmyqHRsgP6uSRYSc6M=4Ud5fP7-UPjs_nUzApDGa3VuA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	Alexander Graf <agraf@suse.de>, Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary=f403045ea2bebb3c1e054b5962b0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RESEND 2/3] device_tree: fix
+ compiler warnings (clang 5)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,68 +65,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Mar 2017 21:22:27 -0000
+X-List-Received-Date: Wed, 22 Mar 2017 22:36:07 -0000
 
-Quoting Philippe Mathieu-Daud=C3=A9 (2017-03-22 15:48:44)
+--f403045ea2bebb3c1e054b5962b0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Mar 23, 2017 at 12:49 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg>
+wrote:
+
 > static code analyzer complain:
-> =
-
-> qga/commands-posix.c:2127:9: warning: Null pointer passed as an argument =
-to a 'nonnull' parameter
->         closedir(dp);
->         ^~~~~~~~~~~~
-> =
-
+>
+> device_tree.c:155:18: warning: Null pointer passed as an argument to a
+> 'nonnull' parameter
+>     while ((de =3D readdir(d)) !=3D NULL) {
+>                  ^~~~~~~~~~
+>
 > Reported-by: Clang Static Analyzer
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+
 > ---
->  qga/commands-posix.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
-> =
-
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index 73d93eb5ce..8028141534 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -2122,9 +2122,11 @@ static void transfer_memory_block(GuestMemoryBlock=
- *mem_blk, bool sys2memblk,
->           * we think this VM does not support online/offline memory block,
->           * any other solution?
->           */
-> -        if (!dp && errno =3D=3D ENOENT) {
-> -            result->response =3D
-> -                GUEST_MEMORY_BLOCK_RESPONSE_TYPE_OPERATION_NOT_SUPPORTED;
-> +        if (!dp) {
-> +            if (errno =3D=3D ENOENT) {
-> +                result->response =3D
-> +                    GUEST_MEMORY_BLOCK_RESPONSE_TYPE_OPERATION_NOT_SUPPO=
-RTED;
-> +            }
->              goto out1;
->          }
-
-I think this should be:
-
-    if (!dp) {
-        if (errno =3D=3D ENOENT) {
-            result->response =3D
-                GUEST_MEMORY_BLOCK_RESPONSE_TYPE_OPERATION_NOT_SUPPORTED;
-        } else {
-            result->response =3D
-                GUEST_MEMORY_BLOCK_RESPONSE_TYPE_OPERATION_FAILED;
-        }
-        goto out1;
-    }
-
-otherwise we might set result->error_code while still indicating
-success for the operation. That wasn't handled properly before your
-patch either, it's just more apparent now.
-
->          closedir(dp);
-> -- =
-
+>  device_tree.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/device_tree.c b/device_tree.c
+> index 6e06320830..a24ddff02b 100644
+> --- a/device_tree.c
+> +++ b/device_tree.c
+> @@ -148,6 +148,7 @@ static void read_fstree(void *fdt, const char *dirnam=
+e)
+>      d =3D opendir(dirname);
+>      if (!d) {
+>          error_setg(&error_fatal, "%s cannot open %s", __func__, dirname)=
+;
+> +        return;
+>      }
+>
+>      while ((de =3D readdir(d)) !=3D NULL) {
+> --
 > 2.11.0
->=20
+>
+>
+> --
+Marc-Andr=C3=A9 Lureau
 
+--f403045ea2bebb3c1e054b5962b0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Thu=
+, Mar 23, 2017 at 12:49 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailt=
+o:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pad=
+ding-left:1ex">static code analyzer complain:<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+device_tree.c:155:18: warning: Null pointer passed as an argument to a &#39=
+;nonnull&#39; parameter<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 while ((de =3D readdir(d)) !=3D NULL) {<br class=3D"gmail_msg=
+">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~~~~<br=
+ class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+Reported-by: Clang Static Analyzer<br class=3D"gmail_msg">
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" class=3D"gmail_msg" target=3D"_blank">f4bug@amsat.org</a>&gt;<br cla=
+ss=3D"gmail_msg"></blockquote><div><br><br>Reviewed-by: Marc-Andr=C3=A9 Lur=
+eau &lt;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@red=
+hat.com</a>&gt;<br><br>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+---<br class=3D"gmail_msg">
+=C2=A0device_tree.c | 1 +<br class=3D"gmail_msg">
+=C2=A01 file changed, 1 insertion(+)<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+diff --git a/device_tree.c b/device_tree.c<br class=3D"gmail_msg">
+index 6e06320830..a24ddff02b 100644<br class=3D"gmail_msg">
+--- a/device_tree.c<br class=3D"gmail_msg">
++++ b/device_tree.c<br class=3D"gmail_msg">
+@@ -148,6 +148,7 @@ static void read_fstree(void *fdt, const char *dirname)=
+<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 =C2=A0d =3D opendir(dirname);<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 =C2=A0if (!d) {<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0error_setg(&amp;error_fatal, &quot;%s can=
+not open %s&quot;, __func__, dirname);<br class=3D"gmail_msg">
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 =C2=A0}<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+=C2=A0 =C2=A0 =C2=A0while ((de =3D readdir(d)) !=3D NULL) {<br class=3D"gma=
+il_msg">
+--<br class=3D"gmail_msg">
+2.11.0<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+<br class=3D"gmail_msg">
+</blockquote></div></div><div dir=3D"ltr">-- <br></div><div data-smartmail=
+=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div></div=
+>
+
+--f403045ea2bebb3c1e054b5962b0--
 
