@@ -1,56 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cqNxY-0000g1-8l
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Mar 2017 13:52:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56359)
+	id 1cqep6-0006pb-BO
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Mar 2017 07:53:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cqNxV-0000bP-De
-	for qemu-trivial@nongnu.org; Tue, 21 Mar 2017 13:52:38 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cqep3-0006oC-TO
+	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 07:53:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1cqNxU-0003ED-Fa
-	for qemu-trivial@nongnu.org; Tue, 21 Mar 2017 13:52:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38450)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1cqep3-00016y-9C
+	for qemu-trivial@nongnu.org; Wed, 22 Mar 2017 07:53:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55662)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1cqNxP-0003CC-PR; Tue, 21 Mar 2017 13:52:31 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1cqeoy-000125-2b; Wed, 22 Mar 2017 07:52:56 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 87867C06513E;
-	Tue, 21 Mar 2017 17:52:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 87867C06513E
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 4CDA8437F72;
+	Wed, 22 Mar 2017 11:52:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4CDA8437F72
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 87867C06513E
-Received: from [10.10.121.124] (ovpn-121-124.rdu2.redhat.com [10.10.121.124])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F28FC5C2F2;
-	Tue, 21 Mar 2017 17:52:28 +0000 (UTC)
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <20170317021739.16877-1-famz@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <1b5a71f6-6038-ac18-a3af-b2b75a4fd8ae@redhat.com>
-Date: Tue, 21 Mar 2017 12:52:22 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=marcandre.lureau@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4CDA8437F72
+Received: from localhost (ovpn-116-31.phx2.redhat.com [10.3.116.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8E43C7C8A0;
+	Wed, 22 Mar 2017 11:52:52 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: berrange@redhat.com, qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Wed, 22 Mar 2017 15:52:41 +0400
+Message-Id: <20170322115241.2810-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20170317021739.16877-1-famz@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="7Q9hpVOUnAJt4UNbal6mUg0OfBncTEHUl"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 21 Mar 2017 17:52:31 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 22 Mar 2017 11:52:55 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: Make
- 'replication_state' an enum
+Subject: [Qemu-trivial] [PATCH] doc: fix function spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,66 +55,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Mar 2017 17:52:38 -0000
+X-List-Received-Date: Wed, 22 Mar 2017 11:53:03 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---7Q9hpVOUnAJt4UNbal6mUg0OfBncTEHUl
-Content-Type: multipart/mixed; boundary="cTmGP9H6sTSIJe7tEMaKbXUpP6qUkAk8d";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Message-ID: <1b5a71f6-6038-ac18-a3af-b2b75a4fd8ae@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] block: Make 'replication_state' an enum
-References: <20170317021739.16877-1-famz@redhat.com>
-In-Reply-To: <20170317021739.16877-1-famz@redhat.com>
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ include/io/channel.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---cTmGP9H6sTSIJe7tEMaKbXUpP6qUkAk8d
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 03/16/2017 09:17 PM, Fam Zheng wrote:
-> BDRVReplicationState.replication_state is a name with a bit of
-> duplication, plus it could be an enum like BDRVReplicationState.mode,
-> which is be more readable and also more straightforward in a debuuger.
-
-With the followup commit message cleanups,
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> Rename it, and improve the type while at it.
->=20
-> Signed-off-by: Fam Zheng <famz@redhat.com>
-> ---
->  block/replication.c | 44 ++++++++++++++++++++++----------------------
->  1 file changed, 22 insertions(+), 22 deletions(-)
-
+diff --git a/include/io/channel.h b/include/io/channel.h
+index 5d48906998..db9bb022a1 100644
+--- a/include/io/channel.h
++++ b/include/io/channel.h
+@@ -315,7 +315,7 @@ ssize_t qio_channel_read(QIOChannel *ioc,
+                          Error **errp);
+=20
+ /**
+- * qio_channel_writev:
++ * qio_channel_write:
+  * @ioc: the channel object
+  * @buf: the memory regions to send data from
+  * @buflen: the length of @buf
 --=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+2.12.0.191.gc5d8de91d
 
-
---cTmGP9H6sTSIJe7tEMaKbXUpP6qUkAk8d--
-
---7Q9hpVOUnAJt4UNbal6mUg0OfBncTEHUl
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY0WhWAAoJEKeha0olJ0NqakkH/1GnCSUhGWTKVWEHHfFFxcU6
-7kyh+/MmADuliF2AgbJ8smfDx5Q1nM4/KHTDqvVPKhM/xZcARPBotxnYvtzl3D12
-MXUyrf7AoXWxucTYCLxRBLEd2BlcDYPRktzrQiqXs8CYEkRyvjH9hTkb+GwBSqEp
-6Aydwppabr1FvWyiHUVX7NT8p75wD5PmULTc0a1LIIyHTAA8EvEP78YX1dTHx7Vb
-n84/7zXW4bzqjGAjqHvsXd+2pQ4BEapayzv286AGDX6vVBs1Fornh7J8jV7XpM3e
-L1nP2yQQJ/LH1kD3su5S9+zbwvDXwaSp5mcVdycmgUz5eLq5vXG80hJ2piKaDEM=
-=Wz62
------END PGP SIGNATURE-----
-
---7Q9hpVOUnAJt4UNbal6mUg0OfBncTEHUl--
 
