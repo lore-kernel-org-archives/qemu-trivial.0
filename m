@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cqyjf-0001q2-61
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Mar 2017 05:08:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46146)
+	id 1cqzP2-0007XR-Oj
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Mar 2017 05:51:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59409)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cqyjd-0001p6-C2
-	for qemu-trivial@nongnu.org; Thu, 23 Mar 2017 05:08:46 -0400
+	(envelope-from <kraxel@redhat.com>) id 1cqzP1-0007WZ-2D
+	for qemu-trivial@nongnu.org; Thu, 23 Mar 2017 05:51:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cqyjc-00011o-Di
-	for qemu-trivial@nongnu.org; Thu, 23 Mar 2017 05:08:45 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33903)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cqyjY-000118-5y; Thu, 23 Mar 2017 05:08:40 -0400
-Received: by mail-wm0-x241.google.com with SMTP id u132so15127873wmg.1;
-	Thu, 23 Mar 2017 02:08:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=lp3LtrMVuaTWqWAszwrb4xqWde3fLjGZgKZb/aPo6U4=;
-	b=qeSBgK7FgRU/tPbW2Zd6KJHUPHqzb2CX7kVoExIPytz4/CHUfZi/jrzaOCc+8WP0z8
-	zsFUW5lD5qv+VEon3DEFNVq8njBUdTT6RHmbVsrWWivJU2PBlnLH+xzrKBdljYKKgvB8
-	f3t0kJ06KdYOPtWvVLCoN6El+Jd41rIVCRnHgjairBcK1MIitBYw5NBsncxfm/locybr
-	YU8C34VQUkyYJKu16t6uOu0pbPMGPMu/nUwzKv04uZpMRMXP/caKsGLnKdu7Mr9TCvYc
-	+1jblkqmCCHtogwDwzOKa5JDBB/VX6UhdHlMQBa6Lm+w2WOu96VaA7AzOCXoRbPPMlvB
-	3XRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=lp3LtrMVuaTWqWAszwrb4xqWde3fLjGZgKZb/aPo6U4=;
-	b=ddcy4Xk3sGgEX1tK+M5UjLBD08/+ETSlR4HgguZtQGt0jtCvxA3aOWM8UMqfn6VdFs
-	3W3ZqyEnsT7X/JYTPo6VVtGBVEMOeVGecTObOMzGsWwteBdtloMUAZoImmdHs79xYDpd
-	cBg97AJXHqRoGEP647lVRj97WqaolWY07iIhaWFGFqwWOa8VAJQzWmuYlRL6GW1hZ0Hd
-	+gIRugmPRgCR0sRC0Yfs/kXzwqj7UlKdLpfWpFRNat7ZEWBm5jWm6uigFsdtr0e5PNXu
-	OgU8c/ug90XTf+G7961NLGPdCdevTyhYHCgKQWCD19qGLvHSLSiPESOflVV6J2HvLs8k
-	UsLQ==
-X-Gm-Message-State: AFeK/H0eBq8gJU1O10fDdy94Zdl1yWm7cKfBtWPGBervWwxiVxpigZqcALvTCY9/rF67ug==
-X-Received: by 10.28.133.203 with SMTP id h194mr1711063wmd.122.1490260119257; 
-	Thu, 23 Mar 2017 02:08:39 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	k190sm3469176wmg.10.2017.03.23.02.08.37
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 23 Mar 2017 02:08:38 -0700 (PDT)
-Date: Thu, 23 Mar 2017 09:08:36 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170323090836.GP16717@stefanha-x1.localdomain>
-References: <20170322115241.2810-1-marcandre.lureau@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="4IFtMBbmeqbTM/ox"
-Content-Disposition: inline
-In-Reply-To: <20170322115241.2810-1-marcandre.lureau@redhat.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+	(envelope-from <kraxel@redhat.com>) id 1cqzP0-00080j-G2
+	for qemu-trivial@nongnu.org; Thu, 23 Mar 2017 05:51:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36616)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1cqzOu-0007w1-Bv; Thu, 23 Mar 2017 05:51:24 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E9E2483F45;
+	Thu, 23 Mar 2017 09:51:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E9E2483F45
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=kraxel@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E9E2483F45
+Received: from nilsson.home.kraxel.org (ovpn-116-80.ams2.redhat.com
+	[10.36.116.80])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8DE1E5DD71;
+	Thu, 23 Mar 2017 09:51:23 +0000 (UTC)
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id E99A480CB2; Thu, 23 Mar 2017 10:51:20 +0100 (CET)
+Message-ID: <1490262680.463.27.camel@redhat.com>
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth
+	<mdroth@linux.vnet.ibm.com>, Peter Crosthwaite
+	<crosthwaite.peter@gmail.com>, qemu-trivial@nongnu.org, Alexander Graf
+	<agraf@suse.de>, qemu-devel@nongnu.org,  Philippe
+	=?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Date: Thu, 23 Mar 2017 10:51:20 +0100
+In-Reply-To: <CAJ+F1CJNy+e83EHR_8uzAHURxDk6idnNTTL_FoD-krWPue7Lww@mail.gmail.com>
+References: <20170322204844.446-1-f4bug@amsat.org>
+	<20170322204844.446-2-f4bug@amsat.org>
+	<87y3vw1o94.fsf@dusky.pond.sub.org>
+	<1490255007.463.11.camel@redhat.com>
+	<CAJ+F1CJNy+e83EHR_8uzAHURxDk6idnNTTL_FoD-krWPue7Lww@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 23 Mar 2017 09:51:24 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] doc: fix function spelling
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RESEND 1/3] usb-ccid: make
+ ccid_write_data_block() cope with null buffers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,35 +68,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Mar 2017 09:08:46 -0000
+X-List-Received-Date: Thu, 23 Mar 2017 09:51:31 -0000
+
+  Hi,
+
+>  oops, there are hard-coded calls with NULL/0. I suppose to fix clang
+> warning, it would need to check if data !=3D null for memcpy.
+
+I'd check for len > 0, and in that if branch we can also assert on data
+=3D=3D NULL and thereby check that len and data are consistent.
+
+cheers,
+  Gerd
 
 
---4IFtMBbmeqbTM/ox
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Mar 22, 2017 at 03:52:41PM +0400, Marc-Andr=E9 Lureau wrote:
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  include/io/channel.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---4IFtMBbmeqbTM/ox
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJY05CUAAoJEJykq7OBq3PIxnMH/jocQDIaV6QamRCkrTvoNi7y
-oBYrUKlM7VvYljrpX31DHNwxW5BmWcdAfy7j8s7HC2OMFGIC8UUVhXLXLBk+aHN9
-Se214BugTJGSwEj7MMq4+yibM5JhcX5sJrmIcacNQVgnRM4ow9T/bj9TAF+h/IW4
-xRw9xzkgcangcVHp+QBPoVWIoMuwxBwgAtc6JwjIVMoDMNN2qTUfGnvUnrs4Dxig
-x8IzstBb4R/jeDLSyw2zzxDkGXO+oT9u+Q1R0m3mLlH4l+TXPrWR8OWCz3PxEyki
-FUm/kyTqq89j9JA3fPlW7kXMU8COgUglTVsGIxMLLi5auPvmbughj6DkhFSkm/w=
-=uopM
------END PGP SIGNATURE-----
-
---4IFtMBbmeqbTM/ox--
 
