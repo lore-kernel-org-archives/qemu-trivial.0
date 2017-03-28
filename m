@@ -1,58 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1csXv3-0008Mg-GG
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Mar 2017 12:55:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42785)
+	id 1cslys-0003xp-5A
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Mar 2017 03:55:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1csXv0-0008Kl-Py
-	for qemu-trivial@nongnu.org; Mon, 27 Mar 2017 12:55:00 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cslyq-0003wv-JR
+	for qemu-trivial@nongnu.org; Tue, 28 Mar 2017 03:55:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1csXuz-0002Vv-Pk
-	for qemu-trivial@nongnu.org; Mon, 27 Mar 2017 12:54:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57960)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1csXut-0002JF-8s; Mon, 27 Mar 2017 12:54:51 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2D6F961D2D;
-	Mon, 27 Mar 2017 16:54:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2D6F961D2D
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2D6F961D2D
-Received: from [10.10.122.200] (ovpn-122-200.rdu2.redhat.com [10.10.122.200])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7DD8F1882A;
-	Mon, 27 Mar 2017 16:54:43 +0000 (UTC)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1cslyn-0008ME-HC
+	for qemu-trivial@nongnu.org; Tue, 28 Mar 2017 03:55:52 -0400
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:35764)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1cslyn-0008LT-8r; Tue, 28 Mar 2017 03:55:49 -0400
+Received: by mail-wr0-x242.google.com with SMTP id p52so17112445wrc.2;
+	Tue, 28 Mar 2017 00:55:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=lU17VvWHm6OZwJyg2nZWopGNBHt/wy4H6hdAt4YbQHo=;
+	b=JNcrYVv76USPjydFZzWK3dkl1fNNxXrfsl7hcejkYXjDPCQ9phnjz85EcFh7ofrjdw
+	xu+0fNIuMqvySKVRee+ssroKW2GncsHc931IvKzd/ml4GUmrVgTZKv3IKJ/Xw6jAHjlW
+	/t68Ab01M3VF9TO+FDcDjM4n/Tjc8CpOCFqUeCeVORi+hwNeu97KmvaoEiHNYGnG/b+I
+	0MMmRev+SeovDXaTcNc/WjQJnqxVlaIDAHzzt6JuiTyXFVLzSYVgvFQUDVrcZPGX0Yo2
+	YDTcPSs2z1IiE6pQ0SEvUi2sTQ8K3g/CblZqSXMNKjEPB5E1TPL2lTU4BVk7br8HvliF
+	uCgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=lU17VvWHm6OZwJyg2nZWopGNBHt/wy4H6hdAt4YbQHo=;
+	b=kU17BNw0NiyoaxHZMHERQmCuIcRTIPjHg93xHJUh+cHqW3BKFjCOA9lyOwUkg7xMGQ
+	65Jj8vvBYPI9DfSgP6tyDl1oTH8N4cdqOJJVpPs73X87J30MHyDLOaFKjeqC9S5VUQnm
+	XJv2FgXYqB1KhegsLt/cGtNB5ExiNbJcQma39hCCyVfcttgGkZsATy/vZHW+RVc2zNCO
+	dHmREvfUUwm1suSPK1hAELrpJyCEOLQGmMoHfrOBdMiXjdpDn0jmYG9LuJMT4Zbt5TfH
+	Yno+bhbNpEm+qy4HzMHiCc7xQPvDjptA4g75Ote/y1U8U4DJUvPte20Ma7dXN9jQ547i
+	rbDw==
+X-Gm-Message-State: AFeK/H1ygft7+VFNvzWtc6ScvniGQvC2yNx8/rAI+3FzkuSQ8UiXiZobXcTVmWisHYv8Uw==
+X-Received: by 10.28.68.69 with SMTP id r66mr12607609wma.115.1490687747845;
+	Tue, 28 Mar 2017 00:55:47 -0700 (PDT)
+Received: from [192.168.10.150] (94-39-135-166.adsl-ull.clienti.tiscali.it.
+	[94.39.135.166]) by smtp.googlemail.com with ESMTPSA id
+	h76sm2460026wmd.33.2017.03.28.00.55.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 28 Mar 2017 00:55:47 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 References: <20170327165005.22038-1-stefanha@redhat.com>
 Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, qemu-block@nongnu.org,
-	qemu-trivial@nongnu.org, Peter Lieven <pl@kamp.de>,
-	Paolo Bonzini <pbonzini@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <3aa0768c-8378-99b3-2c2c-1188773a3a3b@redhat.com>
-Date: Mon, 27 Mar 2017 11:54:42 -0500
+	qemu-trivial@nongnu.org, Peter Lieven <pl@kamp.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <d9d2fcdb-d744-4cff-4373-7bbb3fc5c6b7@redhat.com>
+Date: Tue, 28 Mar 2017 09:55:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	Thunderbird/45.7.0
 MIME-Version: 1.0
 In-Reply-To: <20170327165005.22038-1-stefanha@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="qV6vq7Fi9CMJIoMwXhdDfPx3RKKffmpvg"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 27 Mar 2017 16:54:50 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] iscsi: drop unused
- IscsiAIOCB.qiov field
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-trivial] [PATCH] iscsi: drop unused IscsiAIOCB.qiov field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,78 +72,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Mar 2017 16:55:00 -0000
+X-List-Received-Date: Tue, 28 Mar 2017 07:55:53 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---qV6vq7Fi9CMJIoMwXhdDfPx3RKKffmpvg
-Content-Type: multipart/mixed; boundary="skIKAPNFggXrC479c5sQN4u8bpOIMhuDh";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Peter Lieven <pl@kamp.de>,
- Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3aa0768c-8378-99b3-2c2c-1188773a3a3b@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] iscsi: drop unused IscsiAIOCB.qiov field
-References: <20170327165005.22038-1-stefanha@redhat.com>
-In-Reply-To: <20170327165005.22038-1-stefanha@redhat.com>
 
---skIKAPNFggXrC479c5sQN4u8bpOIMhuDh
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
 
-On 03/27/2017 11:50 AM, Stefan Hajnoczi wrote:
+On 27/03/2017 18:50, Stefan Hajnoczi wrote:
 > The IscsiAIOCB.qiov field has been unused since commit
 > 063c3378a9e3c25cc0afac3c72e4823d0621e352 ("block/iscsi: introduce
 > bdrv_co_{readv, writev, flush_to_disk}") back in 2013.
->=20
+> 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
 >  block/iscsi.c | 1 -
 >  1 file changed, 1 deletion(-)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
+> 
 > diff --git a/block/iscsi.c b/block/iscsi.c
 > index 75d8905..716e74a 100644
 > --- a/block/iscsi.c
 > +++ b/block/iscsi.c
 > @@ -103,7 +103,6 @@ typedef struct IscsiTask {
-> =20
+>  
 >  typedef struct IscsiAIOCB {
 >      BlockAIOCB common;
 > -    QEMUIOVector *qiov;
 >      QEMUBH *bh;
 >      IscsiLun *iscsilun;
 >      struct scsi_task *task;
->=20
+> 
 
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
+Queued, thanks (don't know if for 2.9 or 2.10 right now).
 
-
---skIKAPNFggXrC479c5sQN4u8bpOIMhuDh--
-
---qV6vq7Fi9CMJIoMwXhdDfPx3RKKffmpvg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJY2UPSAAoJEKeha0olJ0NqR0UIAIqvvhKMxzh3ewbNbQS21EFe
-4XiFXrT+YOOBN4V2FUY33aRUyjNJsSWrzCKAgDVHPxvgb+t6U95bnSSYPOYsSzZr
-q2prKmFv/OK+l+CKXaHKukZFPEbtRGCMP9qocOUI4bijqsDXy0awvmy23UauU+zq
-9Hf9h6qW2iYfcVco0HERTt0n6C/8/vk5w/ebucE4k+uDOSgDWrFkhRgnjDSPNZjC
-hoWaqmFOTvaAjhKvkAvUcYDzIeYMPqgZaRLeLJUQD0WZc2tsr9/kNT6UvkIDl6bE
-YtRIwj+hmsCrADyqX3esCa6lZQyyGMGJdm0lV5oT5K9sUACZyUs/yEHgMugmEZY=
-=RWpf
------END PGP SIGNATURE-----
-
---qV6vq7Fi9CMJIoMwXhdDfPx3RKKffmpvg--
+Paolo
 
