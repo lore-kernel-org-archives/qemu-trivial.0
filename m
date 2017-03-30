@@ -1,32 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ctcP2-0007wU-8I
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Mar 2017 11:54:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56511)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <emaste@nuc>)
-	id 1ctcOz-0007wB-R2
-	for qemu-trivial@nongnu.org; Thu, 30 Mar 2017 11:54:22 -0400
+	id 1ctcdy-00078N-2H
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Mar 2017 12:09:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33773)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eblake@redhat.com>) id 1ctcds-00074Y-Gl
+	for qemu-trivial@nongnu.org; Thu, 30 Mar 2017 12:09:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <emaste@nuc>) id 1ctcOw-0002yM-TN
-	for qemu-trivial@nongnu.org; Thu, 30 Mar 2017 11:54:21 -0400
-Received: from mail3.start.ca ([2600:1611:1::e:3]:42159)
+	(envelope-from <eblake@redhat.com>) id 1ctcdr-0004O1-8h
+	for qemu-trivial@nongnu.org; Thu, 30 Mar 2017 12:09:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48944)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <emaste@nuc>) id 1ctcOw-0002xS-Oc
-	for qemu-trivial@nongnu.org; Thu, 30 Mar 2017 11:54:18 -0400
-Received: from nuc (ip-45-3-6-97.user.start.ca [45.3.6.97])
-	by mail3.start.ca (8.14.4/8.14.4/) with ESMTP id v2UFOQuI009278
-	for <qemu-trivial@nongnu.org>; Thu, 30 Mar 2017 11:24:28 -0400
-Received: from emaste (uid 1001) (envelope-from emaste@nuc) id 40ab8
-	by nuc (DragonFly Mail Agent v0.11+); Thu, 30 Mar 2017 19:22:37 -0400
-From: Ed Maste <emaste@freebsd.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Ed Maste <emaste@freebsd.org>
-Date: Thu, 30 Mar 2017 19:22:36 -0400
-Message-Id: <20170330232236.8272-1-emaste@freebsd.org>
-X-Mailer: git-send-email 2.11.1
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ctcdo-0004K8-I4; Thu, 30 Mar 2017 12:09:40 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 998FC4E4D8;
+	Thu, 30 Mar 2017 16:09:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 998FC4E4D8
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 998FC4E4D8
+Received: from [10.10.122.200] (ovpn-122-200.rdu2.redhat.com [10.10.122.200])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E3E72182D3;
+	Thu, 30 Mar 2017 16:09:37 +0000 (UTC)
+To: Ed Maste <emaste@freebsd.org>, qemu-devel@nongnu.org
+References: <20170330232236.8272-1-emaste@freebsd.org>
+Cc: qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <c81096d0-9f81-a299-eb51-976917a5251f@redhat.com>
+Date: Thu, 30 Mar 2017 11:09:37 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <20170330232236.8272-1-emaste@freebsd.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="meL790Db5xB9a2ah0JXALKrp39p87kh03"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 30 Mar 2017 16:09:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2600:1611:1::e:3
-Subject: [Qemu-trivial] [PATCH] ipmi: use parens to avoid unexpected macro
- var evaluation
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ipmi: use parens to avoid
+ unexpected macro var evaluation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -38,88 +62,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Mar 2017 15:54:22 -0000
+X-List-Received-Date: Thu, 30 Mar 2017 16:09:49 -0000
 
-Found via Clang warning: logical not is only applied to the left hand
-side of this bitwise operator [-Wlogical-not-parentheses]
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--meL790Db5xB9a2ah0JXALKrp39p87kh03
+Content-Type: multipart/mixed; boundary="36qwF6SNmwKjbeJi0dAihxh6OqWvIDLgi";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Ed Maste <emaste@freebsd.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <c81096d0-9f81-a299-eb51-976917a5251f@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] ipmi: use parens to avoid unexpected macro
+ var evaluation
+References: <20170330232236.8272-1-emaste@freebsd.org>
+In-Reply-To: <20170330232236.8272-1-emaste@freebsd.org>
 
-                              !IPMI_BT_GET_HBUSY(ib->control_reg));
-                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--36qwF6SNmwKjbeJi0dAihxh6OqWvIDLgi
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-expanded from macro 'IPMI_BT_SET_HBUSY'
-                                       (((v & 1) << IPMI_BT_HBUSY_BIT)))
-                                          ^ ~
+On 03/30/2017 06:22 PM, Ed Maste wrote:
+> Found via Clang warning: logical not is only applied to the left hand
+> side of this bitwise operator [-Wlogical-not-parentheses]
+>=20
+>                               !IPMI_BT_GET_HBUSY(ib->control_reg));
+>                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Signed-off-by: Ed Maste <emaste@freebsd.org>
----
- hw/ipmi/isa_ipmi_bt.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+You just re-found bug 1651167 reported in December:
+https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg02704.html
 
-diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
-index 1c69cb33f8..c1dea503a2 100644
---- a/hw/ipmi/isa_ipmi_bt.c
-+++ b/hw/ipmi/isa_ipmi_bt.c
-@@ -40,37 +40,37 @@
- #define IPMI_BT_CLR_WR_MASK        (1 << IPMI_BT_CLR_WR_BIT)
- #define IPMI_BT_GET_CLR_WR(d)      (((d) >> IPMI_BT_CLR_WR_BIT) & 0x1)
- #define IPMI_BT_SET_CLR_WR(d, v)   (d) = (((d) & ~IPMI_BT_CLR_WR_MASK) | \
--                                       (((v & 1) << IPMI_BT_CLR_WR_BIT)))
-+                                       ((((v) & 1) << IPMI_BT_CLR_WR_BIT)))
- 
- #define IPMI_BT_CLR_RD_MASK        (1 << IPMI_BT_CLR_RD_BIT)
- #define IPMI_BT_GET_CLR_RD(d)      (((d) >> IPMI_BT_CLR_RD_BIT) & 0x1)
- #define IPMI_BT_SET_CLR_RD(d, v)   (d) = (((d) & ~IPMI_BT_CLR_RD_MASK) | \
--                                       (((v & 1) << IPMI_BT_CLR_RD_BIT)))
-+                                       ((((v) & 1) << IPMI_BT_CLR_RD_BIT)))
- 
- #define IPMI_BT_H2B_ATN_MASK       (1 << IPMI_BT_H2B_ATN_BIT)
- #define IPMI_BT_GET_H2B_ATN(d)     (((d) >> IPMI_BT_H2B_ATN_BIT) & 0x1)
- #define IPMI_BT_SET_H2B_ATN(d, v)  (d) = (((d) & ~IPMI_BT_H2B_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_H2B_ATN_BIT)))
-+                                        ((((v) & 1) << IPMI_BT_H2B_ATN_BIT)))
- 
- #define IPMI_BT_B2H_ATN_MASK       (1 << IPMI_BT_B2H_ATN_BIT)
- #define IPMI_BT_GET_B2H_ATN(d)     (((d) >> IPMI_BT_B2H_ATN_BIT) & 0x1)
- #define IPMI_BT_SET_B2H_ATN(d, v)  (d) = (((d) & ~IPMI_BT_B2H_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_ATN_BIT)))
-+                                        ((((v) & 1) << IPMI_BT_B2H_ATN_BIT)))
- 
- #define IPMI_BT_SMS_ATN_MASK       (1 << IPMI_BT_SMS_ATN_BIT)
- #define IPMI_BT_GET_SMS_ATN(d)     (((d) >> IPMI_BT_SMS_ATN_BIT) & 0x1)
- #define IPMI_BT_SET_SMS_ATN(d, v)  (d) = (((d) & ~IPMI_BT_SMS_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_SMS_ATN_BIT)))
-+                                        ((((v) & 1) << IPMI_BT_SMS_ATN_BIT)))
- 
- #define IPMI_BT_HBUSY_MASK         (1 << IPMI_BT_HBUSY_BIT)
- #define IPMI_BT_GET_HBUSY(d)       (((d) >> IPMI_BT_HBUSY_BIT) & 0x1)
- #define IPMI_BT_SET_HBUSY(d, v)    (d) = (((d) & ~IPMI_BT_HBUSY_MASK) | \
--                                       (((v & 1) << IPMI_BT_HBUSY_BIT)))
-+                                       ((((v) & 1) << IPMI_BT_HBUSY_BIT)))
- 
- #define IPMI_BT_BBUSY_MASK         (1 << IPMI_BT_BBUSY_BIT)
- #define IPMI_BT_GET_BBUSY(d)       (((d) >> IPMI_BT_BBUSY_BIT) & 0x1)
- #define IPMI_BT_SET_BBUSY(d, v)    (d) = (((d) & ~IPMI_BT_BBUSY_MASK) | \
--                                       (((v & 1) << IPMI_BT_BBUSY_BIT)))
-+                                       ((((v) & 1) << IPMI_BT_BBUSY_BIT)))
- 
- 
- /* Mask register */
-@@ -80,12 +80,12 @@
- #define IPMI_BT_B2H_IRQ_EN_MASK      (1 << IPMI_BT_B2H_IRQ_EN_BIT)
- #define IPMI_BT_GET_B2H_IRQ_EN(d)    (((d) >> IPMI_BT_B2H_IRQ_EN_BIT) & 0x1)
- #define IPMI_BT_SET_B2H_IRQ_EN(d, v) (d) = (((d) & ~IPMI_BT_B2H_IRQ_EN_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_IRQ_EN_BIT)))
-+                                        ((((v) & 1) << IPMI_BT_B2H_IRQ_EN_BIT)))
- 
- #define IPMI_BT_B2H_IRQ_MASK         (1 << IPMI_BT_B2H_IRQ_BIT)
- #define IPMI_BT_GET_B2H_IRQ(d)       (((d) >> IPMI_BT_B2H_IRQ_BIT) & 0x1)
- #define IPMI_BT_SET_B2H_IRQ(d, v)    (d) = (((d) & ~IPMI_BT_B2H_IRQ_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_IRQ_BIT)))
-+                                        ((((v) & 1) << IPMI_BT_B2H_IRQ_BIT)))
- 
- typedef struct IPMIBT {
-     IPMIBmc *bmc;
--- 
-2.11.1
+>=20
+> expanded from macro 'IPMI_BT_SET_HBUSY'
+>                                        (((v & 1) << IPMI_BT_HBUSY_BIT))=
+)
+>                                           ^ ~
+>=20
+> Signed-off-by: Ed Maste <emaste@freebsd.org>
+> ---
+>  hw/ipmi/isa_ipmi_bt.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
+> index 1c69cb33f8..c1dea503a2 100644
+> --- a/hw/ipmi/isa_ipmi_bt.c
+> +++ b/hw/ipmi/isa_ipmi_bt.c
+> @@ -40,37 +40,37 @@
+>  #define IPMI_BT_CLR_WR_MASK        (1 << IPMI_BT_CLR_WR_BIT)
+>  #define IPMI_BT_GET_CLR_WR(d)      (((d) >> IPMI_BT_CLR_WR_BIT) & 0x1)=
 
+>  #define IPMI_BT_SET_CLR_WR(d, v)   (d) =3D (((d) & ~IPMI_BT_CLR_WR_MAS=
+K) | \
+> -                                       (((v & 1) << IPMI_BT_CLR_WR_BIT=
+)))
+> +                                       ((((v) & 1) << IPMI_BT_CLR_WR_B=
+IT)))
+
+and still overparenthesized.  My proposal back then was:
+https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg03095.html
+
+> Better would be:
+>=20
+> ((d) =3D (((d) & ~IPMI_BD_CLR_WR_MASK) | \
+>         (((v) & 1) << IPMI_BT_CLR_WR_BIT)))
+
+So why didn't we ever take v3 of the patch back then?
+https://lists.gnu.org/archive/html/qemu-devel/2016-12/msg03196.html
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--36qwF6SNmwKjbeJi0dAihxh6OqWvIDLgi--
+
+--meL790Db5xB9a2ah0JXALKrp39p87kh03
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJY3S3BAAoJEKeha0olJ0NqcNYH/219WGSgvfaHK6bdR1QGciwi
+yJ0Fp66YnIGiCH4QUuuA16Ng0vifvAPihRoGNFwRKH9tK7L7mTFIKfdZhCrJ5QI/
+gUg+Eiyci7Wx/Y2Ah2/0wFQ8pjALME6QiPy0m/UH6H9UE7fbDqjkW2qorc/dwq1/
+OMwY3Trid0YOyH4y84uFjoYNVzJ1jl7K3tsYZeFAP+wv9u7a0mdB+jXK7nEmvSgJ
+BXV0dQnrbNcu8FkiOhaab6JgwZT0OWMeBo5/HOFJhClpugi/MeTxOn9e25TdU4Aq
+8SVaJZt/D+jaGN4gFmvV4f9QGV3Si59XJH0GX5OUfMxAL7Pfxc2EFzpFitlavXE=
+=6LzB
+-----END PGP SIGNATURE-----
+
+--meL790Db5xB9a2ah0JXALKrp39p87kh03--
 
