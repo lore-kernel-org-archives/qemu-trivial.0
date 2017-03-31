@@ -1,62 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ctxcH-0004zl-8Z
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Mar 2017 10:33:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34966)
+	id 1cty6C-0000zd-23
+	for mharc-qemu-trivial@gnu.org; Fri, 31 Mar 2017 11:04:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tcminyard@gmail.com>) id 1ctxcE-0004xY-Be
-	for qemu-trivial@nongnu.org; Fri, 31 Mar 2017 10:33:27 -0400
+	(envelope-from <eblake@redhat.com>) id 1cty69-0000xZ-4Q
+	for qemu-trivial@nongnu.org; Fri, 31 Mar 2017 11:04:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tcminyard@gmail.com>) id 1ctxcC-00033y-Ta
-	for qemu-trivial@nongnu.org; Fri, 31 Mar 2017 10:33:26 -0400
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:34356)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <tcminyard@gmail.com>)
-	id 1ctxc7-00030Z-Dq; Fri, 31 Mar 2017 10:33:19 -0400
-Received: by mail-pg0-x244.google.com with SMTP id o123so17835859pga.1;
-	Fri, 31 Mar 2017 07:33:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=nwFc9PwYmTbK49hGmVJT1SmibLDC/S0fXcaybeo4PFo=;
-	b=OKGk/TTrtyQlAWq+Jk7Beb4z5rEqUo0ZAiot14+lhbmt3OwSM5LLo1UrQ45q7L62xN
-	XlSYNZ3VXWMWSG0NcZUoAycGbk7uI7jlsZ1+dXIs7+0spqum1kLCzTsCxo6gdbjjPiX9
-	/No1bbKLQ3YeqQG2AgH7wFzHRQ8DH8JVkw4A7wjd16Hn0D6M65hHBpiwxZcsEPfWe2+6
-	Y0Nxvdxrh9gXsPa7cKmSuvGrDKIknK4D1pxwBxkqOBfV65b6VrCUN09lcTn+HSwLvvbI
-	ruAd/tb/vGqW0dgt1f52Pru1F2sHSSGFZfxwsmuhmcr0klsdPN3Da13m7Lu9CFQvZU9/
-	vcJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=nwFc9PwYmTbK49hGmVJT1SmibLDC/S0fXcaybeo4PFo=;
-	b=klNZAH7g8MvOgFIzxFDkLE9oqBk+Ylrlh6/XaYSvgeNlpQLPtcklGAwcuku2HwAYh8
-	DitfwvFZVvIBTy4nVzgqh4SHSzulJFfmjgmE7ruc+8ywrrUJwPu89f7q80CDvb155DVN
-	gins7cvrAtjVMdhtcxbCT9qFIjMPj83SJxMkX0BdGOE6oed2ndVIvOeGnj9HC9sWEn8Z
-	wsJ+elymn75gHOmds7+oYPk4uvqrLd2LRqdh6bUpMJn4Hfc6uJxfI4CyWbRPRNQ5zFGZ
-	F+gIOmVO9x70p6gwVJ2CxuvetRamm0ioxHcr445aqlrDEy8KhSkvA8pF4mGxzDQDoxay
-	7YhQ==
-X-Gm-Message-State: AFeK/H3dr6+GgcorWIn1SzErIRat8Q+QBMHt8D3Ht1Fps9b/w+Q91XBsjiD2ZdxAE67x5Q==
-X-Received: by 10.98.196.12 with SMTP id y12mr3192762pff.49.1490970798299;
-	Fri, 31 Mar 2017 07:33:18 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.141.54])
-	by smtp.gmail.com with ESMTPSA id
-	a21sm11090684pfc.36.2017.03.31.07.33.16
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 31 Mar 2017 07:33:17 -0700 (PDT)
-Sender: Corey Minyard <tcminyard@gmail.com>
-Received: from t430.minyard.net (t430m.minyard.net [192.168.27.3])
-	by serve.minyard.net (Postfix) with ESMTPA id 9C408399;
-	Fri, 31 Mar 2017 09:33:15 -0500 (CDT)
-Received: by t430.minyard.net (Postfix, from userid 1000)
-	id 9703830006A; Fri, 31 Mar 2017 09:33:14 -0500 (CDT)
-From: minyard@acm.org
-To: qemu-devel@nongnu.org
+	(envelope-from <eblake@redhat.com>) id 1cty68-0004UI-4R
+	for qemu-trivial@nongnu.org; Fri, 31 Mar 2017 11:04:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53856)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1cty63-0004Oa-HI; Fri, 31 Mar 2017 11:04:15 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 312AB22BA33;
+	Fri, 31 Mar 2017 15:04:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 312AB22BA33
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 312AB22BA33
+Received: from [10.10.122.200] (ovpn-122-200.rdu2.redhat.com [10.10.122.200])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 64F3019CAA;
+	Fri, 31 Mar 2017 15:04:13 +0000 (UTC)
+To: minyard@acm.org, qemu-devel@nongnu.org
+References: <1490970783-29231-1-git-send-email-minyard@acm.org>
 Cc: qemu-trivial@nongnu.org, Ed Maste <emaste@freebsd.org>,
-	Eric Blake <eblake@redhat.com>, Corey Minyard <cminyard@mvista.com>
-Date: Fri, 31 Mar 2017 09:33:03 -0500
-Message-Id: <1490970783-29231-1-git-send-email-minyard@acm.org>
-X-Mailer: git-send-email 2.7.4
+	Corey Minyard <cminyard@mvista.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <8e26dbca-d2be-01bc-bfa3-a73fcb9d1498@redhat.com>
+Date: Fri, 31 Mar 2017 10:04:12 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <1490970783-29231-1-git-send-email-minyard@acm.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="uTmtCCX225vnCGM7pBXbCKQswu3Clqlgo"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 31 Mar 2017 15:04:14 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: [Qemu-trivial] [PATCH v4] ipmi: Fix macro issues
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH for-2.9? v4] ipmi: Fix macro issues
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,105 +62,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 31 Mar 2017 14:33:27 -0000
+X-List-Received-Date: Fri, 31 Mar 2017 15:04:22 -0000
 
-From: Corey Minyard <cminyard@mvista.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--uTmtCCX225vnCGM7pBXbCKQswu3Clqlgo
+Content-Type: multipart/mixed; boundary="9X1RTxap3hNlg4CFeAop6VHEdtcmhJO5l";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: minyard@acm.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Ed Maste <emaste@freebsd.org>,
+ Corey Minyard <cminyard@mvista.com>
+Message-ID: <8e26dbca-d2be-01bc-bfa3-a73fcb9d1498@redhat.com>
+Subject: Re: [PATCH for-2.9? v4] ipmi: Fix macro issues
+References: <1490970783-29231-1-git-send-email-minyard@acm.org>
+In-Reply-To: <1490970783-29231-1-git-send-email-minyard@acm.org>
 
-Macro parameters should almost always have () around them when used.
-llvm reported an error on this.
+--9X1RTxap3hNlg4CFeAop6VHEdtcmhJO5l
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Remove redundant parenthesis and put parenthesis around the entire
-macros with assignments in case they are used in an expression.
+On 03/31/2017 09:33 AM, minyard@acm.org wrote:
+> From: Corey Minyard <cminyard@mvista.com>
+>=20
+> Macro parameters should almost always have () around them when used.
+> llvm reported an error on this.
+>=20
+> Remove redundant parenthesis and put parenthesis around the entire
+> macros with assignments in case they are used in an expression.
+>=20
+> The macros were doing ((v) & 1) for a binary input, but that only works=
 
-The macros were doing ((v) & 1) for a binary input, but that only works
-if v == 0 or if v & 1.  Changed to !!(v) so they work for all values.
+> if v =3D=3D 0 or if v & 1.  Changed to !!(v) so they work for all value=
+s.
 
-Remove some unused macros.
+s/&/=3D=3D/
 
-Reported in https://bugs.launchpad.net/bugs/1651167
+>=20
+> Remove some unused macros.
+>=20
+> Reported in https://bugs.launchpad.net/bugs/1651167
 
-Signed-off-by: Corey Minyard <cminyard@mvista.com>
----
+Might also be worth adding that an audit of the code finds no semantic
+change, that this is just cleaning up the compiler warning.
 
-Changes since the last revision:
+>=20
+> Signed-off-by: Corey Minyard <cminyard@mvista.com>
+> ---
+>=20
+> Changes since the last revision:
+>=20
+>   * Added the !!(v) change
+>=20
+>  hw/ipmi/isa_ipmi_bt.c | 34 ++++++++++++----------------------
+>  1 file changed, 12 insertions(+), 22 deletions(-)
 
-  * Added the !!(v) change
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
- hw/ipmi/isa_ipmi_bt.c | 34 ++++++++++++----------------------
- 1 file changed, 12 insertions(+), 22 deletions(-)
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
-index 1c69cb3..13a8c09 100644
---- a/hw/ipmi/isa_ipmi_bt.c
-+++ b/hw/ipmi/isa_ipmi_bt.c
-@@ -37,40 +37,30 @@
- #define IPMI_BT_HBUSY_BIT          6
- #define IPMI_BT_BBUSY_BIT          7
- 
--#define IPMI_BT_CLR_WR_MASK        (1 << IPMI_BT_CLR_WR_BIT)
- #define IPMI_BT_GET_CLR_WR(d)      (((d) >> IPMI_BT_CLR_WR_BIT) & 0x1)
--#define IPMI_BT_SET_CLR_WR(d, v)   (d) = (((d) & ~IPMI_BT_CLR_WR_MASK) | \
--                                       (((v & 1) << IPMI_BT_CLR_WR_BIT)))
- 
--#define IPMI_BT_CLR_RD_MASK        (1 << IPMI_BT_CLR_RD_BIT)
- #define IPMI_BT_GET_CLR_RD(d)      (((d) >> IPMI_BT_CLR_RD_BIT) & 0x1)
--#define IPMI_BT_SET_CLR_RD(d, v)   (d) = (((d) & ~IPMI_BT_CLR_RD_MASK) | \
--                                       (((v & 1) << IPMI_BT_CLR_RD_BIT)))
- 
--#define IPMI_BT_H2B_ATN_MASK       (1 << IPMI_BT_H2B_ATN_BIT)
- #define IPMI_BT_GET_H2B_ATN(d)     (((d) >> IPMI_BT_H2B_ATN_BIT) & 0x1)
--#define IPMI_BT_SET_H2B_ATN(d, v)  (d) = (((d) & ~IPMI_BT_H2B_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_H2B_ATN_BIT)))
- 
- #define IPMI_BT_B2H_ATN_MASK       (1 << IPMI_BT_B2H_ATN_BIT)
- #define IPMI_BT_GET_B2H_ATN(d)     (((d) >> IPMI_BT_B2H_ATN_BIT) & 0x1)
--#define IPMI_BT_SET_B2H_ATN(d, v)  (d) = (((d) & ~IPMI_BT_B2H_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_ATN_BIT)))
-+#define IPMI_BT_SET_B2H_ATN(d, v)  ((d) = (((d) & ~IPMI_BT_B2H_ATN_MASK) | \
-+                                        (!!(v) << IPMI_BT_B2H_ATN_BIT)))
- 
- #define IPMI_BT_SMS_ATN_MASK       (1 << IPMI_BT_SMS_ATN_BIT)
- #define IPMI_BT_GET_SMS_ATN(d)     (((d) >> IPMI_BT_SMS_ATN_BIT) & 0x1)
--#define IPMI_BT_SET_SMS_ATN(d, v)  (d) = (((d) & ~IPMI_BT_SMS_ATN_MASK) | \
--                                        (((v & 1) << IPMI_BT_SMS_ATN_BIT)))
-+#define IPMI_BT_SET_SMS_ATN(d, v)  ((d) = (((d) & ~IPMI_BT_SMS_ATN_MASK) | \
-+                                        (!!(v) << IPMI_BT_SMS_ATN_BIT)))
- 
- #define IPMI_BT_HBUSY_MASK         (1 << IPMI_BT_HBUSY_BIT)
- #define IPMI_BT_GET_HBUSY(d)       (((d) >> IPMI_BT_HBUSY_BIT) & 0x1)
--#define IPMI_BT_SET_HBUSY(d, v)    (d) = (((d) & ~IPMI_BT_HBUSY_MASK) | \
--                                       (((v & 1) << IPMI_BT_HBUSY_BIT)))
-+#define IPMI_BT_SET_HBUSY(d, v)    ((d) = (((d) & ~IPMI_BT_HBUSY_MASK) | \
-+                                       (!!(v) << IPMI_BT_HBUSY_BIT)))
- 
- #define IPMI_BT_BBUSY_MASK         (1 << IPMI_BT_BBUSY_BIT)
--#define IPMI_BT_GET_BBUSY(d)       (((d) >> IPMI_BT_BBUSY_BIT) & 0x1)
--#define IPMI_BT_SET_BBUSY(d, v)    (d) = (((d) & ~IPMI_BT_BBUSY_MASK) | \
--                                       (((v & 1) << IPMI_BT_BBUSY_BIT)))
-+#define IPMI_BT_SET_BBUSY(d, v)    ((d) = (((d) & ~IPMI_BT_BBUSY_MASK) | \
-+                                       (!!(v) << IPMI_BT_BBUSY_BIT)))
- 
- 
- /* Mask register */
-@@ -79,13 +69,13 @@
- 
- #define IPMI_BT_B2H_IRQ_EN_MASK      (1 << IPMI_BT_B2H_IRQ_EN_BIT)
- #define IPMI_BT_GET_B2H_IRQ_EN(d)    (((d) >> IPMI_BT_B2H_IRQ_EN_BIT) & 0x1)
--#define IPMI_BT_SET_B2H_IRQ_EN(d, v) (d) = (((d) & ~IPMI_BT_B2H_IRQ_EN_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_IRQ_EN_BIT)))
-+#define IPMI_BT_SET_B2H_IRQ_EN(d, v) ((d) = (((d) & ~IPMI_BT_B2H_IRQ_EN_MASK) |\
-+                                        (!!(v) << IPMI_BT_B2H_IRQ_EN_BIT)))
- 
- #define IPMI_BT_B2H_IRQ_MASK         (1 << IPMI_BT_B2H_IRQ_BIT)
- #define IPMI_BT_GET_B2H_IRQ(d)       (((d) >> IPMI_BT_B2H_IRQ_BIT) & 0x1)
--#define IPMI_BT_SET_B2H_IRQ(d, v)    (d) = (((d) & ~IPMI_BT_B2H_IRQ_MASK) | \
--                                        (((v & 1) << IPMI_BT_B2H_IRQ_BIT)))
-+#define IPMI_BT_SET_B2H_IRQ(d, v)    ((d) = (((d) & ~IPMI_BT_B2H_IRQ_MASK) | \
-+                                        (!!(v) << IPMI_BT_B2H_IRQ_BIT)))
- 
- typedef struct IPMIBT {
-     IPMIBmc *bmc;
--- 
-2.7.4
 
+--9X1RTxap3hNlg4CFeAop6VHEdtcmhJO5l--
+
+--uTmtCCX225vnCGM7pBXbCKQswu3Clqlgo
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJY3m/sAAoJEKeha0olJ0NqHEsH/A1EhGfg5W48cAPkdCBq8JVL
+M7EA6TxGLS7Mlc1OHrXMtd0HYFAYnFU4yGdCuEWCvblmVzNqMl/WF41eVXwFWGvJ
+bxxmIkJ9ELzkBrCqqSUFhq0zf1Ox5ZBu/s5GURTyhFFepWmFa0yuZZC7G24hTuRR
+J9eoWsa4x7weXMKSA/ptwWddndqx5U0J6hPb+mfGGStPWVn5NfUfNm5dKEY089Rs
+v2mUL0oegLCOjknGz+WRYiIuf2OJnxlmwLGBEON1mQgyCLFizJISittA0qyG3NnC
+ARVfd79SigQg6iApFn5f/EMOKlDfnyTr37FIm2n2gIfV1dkQF0dFbtB8vMhjwkY=
+=nCq2
+-----END PGP SIGNATURE-----
+
+--uTmtCCX225vnCGM7pBXbCKQswu3Clqlgo--
 
