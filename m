@@ -1,63 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1cxWTR-0003Na-VW
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Apr 2017 06:23:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48979)
+	id 1cxYnQ-0000eK-3g
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Apr 2017 08:51:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52358)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cxWTP-0003MK-P7
-	for qemu-trivial@nongnu.org; Mon, 10 Apr 2017 06:23:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1cxYnN-0000c4-61
+	for qemu-trivial@nongnu.org; Mon, 10 Apr 2017 08:51:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1cxWTO-0000C6-Tn
-	for qemu-trivial@nongnu.org; Mon, 10 Apr 2017 06:23:03 -0400
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:35996)
+	(envelope-from <peter.maydell@linaro.org>) id 1cxYnM-0001ll-5f
+	for qemu-trivial@nongnu.org; Mon, 10 Apr 2017 08:51:49 -0400
+Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:36697)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1cxWTK-0000Ag-CL; Mon, 10 Apr 2017 06:22:58 -0400
-Received: by mail-wr0-x243.google.com with SMTP id o21so23415804wrb.3;
-	Mon, 10 Apr 2017 03:22:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=Of6h5ieXtjdm5HX+D8MTh5dG120nPI+JjDLs0GupHxQ=;
-	b=XOsrHL5jayaygKIVjlkbvyz5Lt/1xNLlXK48opzaClXtHeSuuAq6JPs0TEZRmsl8za
-	/tIASdO49VGLxpXBatbUcovMXpBhNOTxV8I9Bzapd8ClJpOtAhf5cQjXVNndhGUWN3EV
-	9sbeh/8DyoOeokly+Z+WXGFbNpLkV3i6z0IAw/wWX7oa0HhgFbheU3W9uYnk779D3oaO
-	+IN5U089TlCmgYPq5olJWe/2OXSeyFhL9kO6hjtVCHkNDkCQL9JXEP2Am1YmAxBwpW4Q
-	2oS/7pXPv1EbGkwMzf1idDLUplFi8FUsVqsLFVGEi34RwXPQUJVNJaNg/FaHQHpk41XX
-	35QQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1cxYnL-0001lX-Uu
+	for qemu-trivial@nongnu.org; Mon, 10 Apr 2017 08:51:48 -0400
+Received: by mail-wr0-x22d.google.com with SMTP id c55so74573407wrc.3
+	for <qemu-trivial@nongnu.org>; Mon, 10 Apr 2017 05:51:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=yqzRyhqqHb54M9z7GCfr5czcQMwk2ndGRFH8MuCZ+rI=;
+	b=JdcDpkZYo7yV5Y6emCQwFBxKS7/eHb4gTPufLmqU55CJT1jgNNsGr1/CoSx8zfZG0w
+	dVd2O1dRGXrq8KC9h+T0jPkJfs3mi2H5djmlyViyTzOdGPqCjoWS3ROYe7NN0L7Rzind
+	SwIOwGvPIcnpmjdSLp5VjmuFMZExLQTf7Qy4w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=Of6h5ieXtjdm5HX+D8MTh5dG120nPI+JjDLs0GupHxQ=;
-	b=P66jEtx7rMD0bHXxWgZwkcOoojt4F6z6Va2u1Q2Xkk/7pKiWsVxb2UE5XYeON6h73q
-	55pPk+IQe9a8LCIRgwPZ2VTwoLo0IgzLEqRvj2nwAvYPJ5fmgAUOM6siAG1M1rDmbl/I
-	Piu5OQGiawNC3IJ5u2aZD3REzzL/d4ZBbeAbdpPbfGktNh8dVoIeaQD5bO6CC2gEGq1k
-	KxORw9TY6NMKbC5JegI1HCQZqgJ4590Q/j0aZXa/YYOnvjTg601RezkaGt6OaqG9kFrw
-	y2qSrcg1mLvBqa8tfFQ1ZUDLPok+T4QQ4RepDNtvmTmHPABOfYfW5biZ0blmrp1aTlie
-	uaZw==
-X-Gm-Message-State: AN3rC/5mJxPaljqjHa+iJqsIeCRigv7T1QTUK388lElX0BXtnI79W7uVsKGtK9YRgUrabQ==
-X-Received: by 10.223.136.165 with SMTP id f34mr21345008wrf.145.1491819777214; 
-	Mon, 10 Apr 2017 03:22:57 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	c202sm5109421wmd.32.2017.04.10.03.22.55
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 10 Apr 2017 03:22:56 -0700 (PDT)
-Date: Mon, 10 Apr 2017 11:22:54 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Ishani Chugh <chugh.ishani@research.iiit.ac.in>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial@nongnu.org
-Message-ID: <20170410102254.GA20072@stefanha-x1.localdomain>
-References: <1491629987-6826-1-git-send-email-chugh.ishani@research.iiit.ac.in>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=yqzRyhqqHb54M9z7GCfr5czcQMwk2ndGRFH8MuCZ+rI=;
+	b=GmOeq8OuwJkNBiy2eAHysk2kPmmly4BYCIaYfo6LdPiuQNPoU32pKUlVzozVVBQxbp
+	4UQC3CMXFbfKokQJBzlp5zUnk7yNBQW4WF6Ra1XGbaGoMp0Loz6s4KUdbNzKwmDRmOxH
+	alCfaj9tRkxI6xhNbXS3i3r+KNbZoziNK3lpzjPpPibT3DfZdUmGPm8NrIojzCHfLZO4
+	wIDWoB8ZtYzTkgN8btPmGyfivtNJxS3gEgOcyGlz5pZ0Qf6AR0Ub5y/SuvVlWsmra3ox
+	TvV07xFQalmnr3gIUOif3i6c0GZoXnkCsspGWPxkJCQgNp1lC9j+mFZFRLPqHmn+sOZt
+	26IQ==
+X-Gm-Message-State: AFeK/H2IKbnxHrkcaXnquSM5gbfv6lq6AjxOb/dQ17pQvmSQznleHtkCezhLYtnV8LRdobI4mlfK9KKnZGqLRisu
+X-Received: by 10.223.150.149 with SMTP id u21mr27759791wrb.195.1491828706749; 
+	Mon, 10 Apr 2017 05:51:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="uAKRQypu60I7Lcqm"
-Content-Disposition: inline
-In-Reply-To: <1491629987-6826-1-git-send-email-chugh.ishani@research.iiit.ac.in>
-User-Agent: Mutt/1.8.0 (2017-02-23)
+Received: by 10.223.145.97 with HTTP; Mon, 10 Apr 2017 05:51:26 -0700 (PDT)
+In-Reply-To: <20170410102254.GA20072@stefanha-x1.localdomain>
+References: <1491629987-6826-1-git-send-email-chugh.ishani@research.iiit.ac.in>
+	<20170410102254.GA20072@stefanha-x1.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Apr 2017 13:51:26 +0100
+Message-ID: <CAFEAcA8DjtpNiuiEvZ7=rX6cTq0Dn6wj=ud8Bkted+W5+COc1w@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Cc: Ishani Chugh <chugh.ishani@research.iiit.ac.in>, 
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
+X-Received-From: 2a00:1450:400c:c0c::22d
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Removed trailing newline
  from error_report()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,53 +64,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Apr 2017 10:23:05 -0000
+X-List-Received-Date: Mon, 10 Apr 2017 12:51:50 -0000
 
+On 10 April 2017 at 11:22, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Sat, Apr 08, 2017 at 11:09:47AM +0530, Ishani Chugh wrote:
+>> Signed-off-by: Ishani Chugh <chugh.ishani@research.iiit.ac.in>
+>> ---
+>>  target/arm/kvm64.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> Thanks for the patch!
+>
+> I have CCed Peter Maydell who maintains this source file.  I also added
+> the trivial patches mailing list - a patch queue for small patches.
 
---uAKRQypu60I7Lcqm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I've applied this patch to my target-arm queue (with commit message
+tweak as Stefan suggests) -- thanks!
 
-On Sat, Apr 08, 2017 at 11:09:47AM +0530, Ishani Chugh wrote:
-> Signed-off-by: Ishani Chugh <chugh.ishani@research.iiit.ac.in>
-> ---
->  target/arm/kvm64.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Thanks for the patch!
-
-I have CCed Peter Maydell who maintains this source file.  I also added
-the trivial patches mailing list - a patch queue for small patches.
-
-Conventially QEMU commit messages are written like this:
-
-  target-arm: remove trailing newline from error_report()
-
-The "target-arm:" prefix names the subsystem that is affected.  It makes
-it easier for maintainer or people searching through patches to find
-relevant results.
-
-The commit message is written in the present imperative - "remove X"
-instead of "removed X".
-
-You do not need to resend the patch.  The maintainer can fix up the
-commit message if they like.
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---uAKRQypu60I7Lcqm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJY61z+AAoJEJykq7OBq3PIMycH/0W7MSXkoBWJeDMP5S1PU6Yz
-cPU+eMtUdfaTCbyVSa7A0jePO12x5q1htYZYE0DzxnfQQrKcD90WWuvQFLbP9tc2
-/ja1O8h3WPUbLdq6gxCwMy6Uu7qTQ2B9IsSNZkAJQvFdgXyFMd8W8Q+y5oEJBpd8
-WKSJfOKtuTR4uwC9OOUyux+O1J7VcJ38ycEwjgtosdMwhH8CEPvKiyF2m6wPIDCs
-eXO11YLaV7RPPhCssBQDY954eyBBjPhyj1mL1P5+fYtG6BiU/4ULPrj/WFGXvLyS
-KqwnC4XAxkrxhmeLJNT28tzgMk3LkYO2pyYJS/uK1hZOcs5lzWF1UjJYKAVn9U4=
-=BhTu
------END PGP SIGNATURE-----
-
---uAKRQypu60I7Lcqm--
+-- PMM
 
