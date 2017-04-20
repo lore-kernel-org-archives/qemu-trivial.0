@@ -1,23 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1J85-0005hX-Ty
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2017 16:56:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51613)
+	id 1d1J87-0005jZ-Mq
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2017 16:56:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1J80-0005eo-Ve
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 16:56:39 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1d1J84-0005fX-1K
+	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 16:56:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1J7x-0004zk-ML
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 16:56:37 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:30605)
+	(envelope-from <balaton@eik.bme.hu>) id 1d1J82-00055P-PW
+	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 16:56:40 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:30671)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>) id 1d1J7x-0004nT-EU
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 16:56:33 -0400
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1d1J7y-00050P-MR; Thu, 20 Apr 2017 16:56:34 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id D15DB7456D4;
-	Thu, 20 Apr 2017 22:56:16 +0200 (CEST)
+	by localhost (Postfix) with SMTP id AE2CB7456C0;
+	Thu, 20 Apr 2017 22:56:17 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id B83767456B5; Thu, 20 Apr 2017 22:56:16 +0200 (CEST)
-Message-Id: <cover.1492721026.git.balaton@eik.bme.hu>
+	id DF4E37456E4; Thu, 20 Apr 2017 22:56:16 +0200 (CEST)
+Message-Id: <c4328880c5a143eab3e835dd9d2e2efcd86d98d1.1492721026.git.balaton@eik.bme.hu>
+In-Reply-To: <cover.1492721026.git.balaton@eik.bme.hu>
+References: <cover.1492721026.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
 Date: Thu, 20 Apr 2017 22:43:46 +0200
 To: qemu-devel@nongnu.org,
@@ -25,10 +27,11 @@ To: qemu-devel@nongnu.org,
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH v5 00/13] Improvements for SM501 display
- controller emulation
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:738:2001:2001::2001
+Subject: [Qemu-trivial] [PATCH v5 13/13] ppc: Add SM501 device in ppc
+ softmmu targets default configs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -40,36 +43,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Apr 2017 20:56:39 -0000
+X-List-Received-Date: Thu, 20 Apr 2017 20:56:41 -0000
 
-Addressing all last review comments so hopefully this can get merged
-now that tree is thawed.
+This is not used by default on any emulated machine yet but it is
+still useful to have it compiled so it can be added from the command
+line for clients that can use it (e.g. MorphOS has no driver for any
+other emulated video cards but can output via SM501)
 
-BALATON Zoltan (13):
-  sm501: Fixed code style and a few typos in comments
-  sm501: Use defined constants instead of literal values where available
-  sm501: Add missing arbitration control register
-  sm501: QOMify
-  sm501: Get rid of base address in draw_hwc_line
-  sm501: Add emulation of chip connected via PCI
-  sm501: Fix device endianness
-  sm501: Fix hardware cursor
-  sm501: Misc clean ups
-  sm501: Add support for panel layer
-  sm501: Add some more missing registers
-  sm501: Add vmstate descriptor
-  ppc: Add SM501 device in ppc softmmu targets default configs
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
 
- default-configs/ppc-softmmu.mak    |    1 +
- default-configs/ppc64-softmmu.mak  |    1 +
- default-configs/ppcemb-softmmu.mak |    1 +
- hw/display/sm501.c                 | 1784 ++++++++++++++++++++++--------------
- hw/display/sm501_template.h        |   90 +-
- hw/sh4/r2d.c                       |   11 +-
- include/hw/devices.h               |    5 -
- include/hw/pci/pci_ids.h           |    3 +
- 8 files changed, 1150 insertions(+), 746 deletions(-)
+v5: Added sm501 also to ppc64-softmmu default config
 
+ default-configs/ppc-softmmu.mak    | 1 +
+ default-configs/ppc64-softmmu.mak  | 1 +
+ default-configs/ppcemb-softmmu.mak | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+index 09c1d45..1f1cd85 100644
+--- a/default-configs/ppc-softmmu.mak
++++ b/default-configs/ppc-softmmu.mak
+@@ -45,6 +45,7 @@ CONFIG_OPENPIC_KVM=$(and $(CONFIG_E500),$(CONFIG_KVM))
+ CONFIG_PLATFORM_BUS=y
+ CONFIG_ETSEC=y
+ CONFIG_LIBDECNUMBER=y
++CONFIG_SM501=y
+ # For PReP
+ CONFIG_SERIAL_ISA=y
+ CONFIG_MC146818RTC=y
+diff --git a/default-configs/ppc64-softmmu.mak b/default-configs/ppc64-softmmu.mak
+index 05c8335..f6ccb1b 100644
+--- a/default-configs/ppc64-softmmu.mak
++++ b/default-configs/ppc64-softmmu.mak
+@@ -47,6 +47,7 @@ CONFIG_OPENPIC_KVM=$(and $(CONFIG_E500),$(CONFIG_KVM))
+ CONFIG_PLATFORM_BUS=y
+ CONFIG_ETSEC=y
+ CONFIG_LIBDECNUMBER=y
++CONFIG_SM501=y
+ # For pSeries
+ CONFIG_XICS=$(CONFIG_PSERIES)
+ CONFIG_XICS_SPAPR=$(CONFIG_PSERIES)
+diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcemb-softmmu.mak
+index 7f56004..94340de 100644
+--- a/default-configs/ppcemb-softmmu.mak
++++ b/default-configs/ppcemb-softmmu.mak
+@@ -15,3 +15,4 @@ CONFIG_I8259=y
+ CONFIG_XILINX=y
+ CONFIG_XILINX_ETHLITE=y
+ CONFIG_LIBDECNUMBER=y
++CONFIG_SM501=y
 -- 
 2.7.4
 
