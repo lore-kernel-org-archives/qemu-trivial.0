@@ -1,37 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1W1Y-0004QL-Io
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56130)
+	id 1d1W1Z-0004R7-3X
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55954)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1V-0004LS-6w
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:46 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1O-0004DV-J6
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1S-0000C9-FR
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:45 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25235)
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1N-00008w-LX
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:38 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25184)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1d1W1Q-00009v-2Q; Fri, 21 Apr 2017 06:42:40 -0400
+	id 1d1W1I-0008VV-V3; Fri, 21 Apr 2017 06:42:33 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id D1BD57456FB;
-	Fri, 21 Apr 2017 12:42:38 +0200 (CEST)
+	by localhost (Postfix) with SMTP id D292E745700;
+	Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 6140E7456BD; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
-Message-Id: <552ee456f90028b4d813a9910fa4704809e2a5c1.1492770667.git.balaton@eik.bme.hu>
-In-Reply-To: <cover.1492770667.git.balaton@eik.bme.hu>
-References: <cover.1492770667.git.balaton@eik.bme.hu>
+	id 58AF67456BB; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
+Message-Id: <cover.1492770667.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
 Date: Fri, 21 Apr 2017 12:31:07 +0200
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	David Gibson <david@gibson.dropbear.id.au>
+	David Gibson <david@gibson.dropbear.id.au>,
+	Gerd Hoffmann <kraxel@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v6 03/13] sm501: Add missing arbitration
- control register
+Subject: [Qemu-trivial] [PATCH v6 00/13] Improvements for SM501 display
+ controller emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,54 +42,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Apr 2017 10:42:46 -0000
+X-List-Received-Date: Fri, 21 Apr 2017 10:42:40 -0000
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/sm501.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+This version just adds some more explanation to patch #7 and
+Reviewed/Acked by tags for the last patches.
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 6b72964..6e74200 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -474,6 +474,7 @@ typedef struct SM501State {
-     uint32_t gpio_31_0_control;
-     uint32_t gpio_63_32_control;
-     uint32_t dram_control;
-+    uint32_t arbitration_control;
-     uint32_t irq_mask;
-     uint32_t misc_timing;
-     uint32_t power_mode_control;
-@@ -757,6 +758,9 @@ static uint64_t sm501_system_config_read(void *opaque, hwaddr addr,
-     case SM501_DRAM_CONTROL:
-         ret = (s->dram_control & 0x07F107C0) | s->local_mem_size_index << 13;
-         break;
-+    case SM501_ARBTRTN_CONTROL:
-+        ret = s->arbitration_control;
-+        break;
-     case SM501_IRQ_MASK:
-         ret = s->irq_mask;
-         break;
-@@ -809,6 +813,9 @@ static void sm501_system_config_write(void *opaque, hwaddr addr,
-         /* TODO : check validity of size change */
-         s->dram_control |=  value & 0x7FFFFFC3;
-         break;
-+    case SM501_ARBTRTN_CONTROL:
-+        s->arbitration_control =  value & 0x37777777;
-+        break;
-     case SM501_IRQ_MASK:
-         s->irq_mask = value;
-         break;
-@@ -1422,6 +1429,7 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
-      *  BUS = 0 : Hitachi SH3/SH4
-      */
-     s->misc_control = SM501_MISC_DAC_POWER;
-+    s->arbitration_control = 0x05146732;
-     s->dc_panel_control = 0x00010000; /* FIFO level 3 */
-     s->dc_crt_control = 0x00010000;
- 
+BALATON Zoltan (13):
+  sm501: Fixed code style and a few typos in comments
+  sm501: Use defined constants instead of literal values where available
+  sm501: Add missing arbitration control register
+  sm501: QOMify
+  sm501: Get rid of base address in draw_hwc_line
+  sm501: Add emulation of chip connected via PCI
+  sm501: Fix device endianness
+  sm501: Fix hardware cursor
+  sm501: Misc clean ups
+  sm501: Add support for panel layer
+  sm501: Add some more missing registers
+  sm501: Add vmstate descriptor
+  ppc: Add SM501 device in ppc softmmu targets default configs
+
+ default-configs/ppc-softmmu.mak    |    1 +
+ default-configs/ppc64-softmmu.mak  |    1 +
+ default-configs/ppcemb-softmmu.mak |    1 +
+ hw/display/sm501.c                 | 1784 ++++++++++++++++++++++--------------
+ hw/display/sm501_template.h        |   90 +-
+ hw/sh4/r2d.c                       |   11 +-
+ include/hw/devices.h               |    5 -
+ include/hw/pci/pci_ids.h           |    3 +
+ 8 files changed, 1150 insertions(+), 746 deletions(-)
+
 -- 
 2.7.4
 
