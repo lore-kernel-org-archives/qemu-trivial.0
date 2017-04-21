@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1W1a-0004Sn-6r
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56040)
+	id 1d1W1c-0004Um-5R
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1Q-0004Ft-NS
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1R-0004GZ-A8
 	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1O-00009h-UL
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:40 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:25231)
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1P-0000AR-MR
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:41 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:25234)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1d1W1K-00004r-OQ; Fri, 21 Apr 2017 06:42:35 -0400
+	id 1d1W1K-00004v-OF; Fri, 21 Apr 2017 06:42:35 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 598427456D1;
+	by localhost (Postfix) with SMTP id 7DD107456E4;
 	Fri, 21 Apr 2017 12:42:32 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 7413D7456F9; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
-Message-Id: <00dae1b0bc327730ffa0aecf3461cd5e3f092d98.1492770667.git.balaton@eik.bme.hu>
+	id 76AC07456FB; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
+Message-Id: <636f37978052c74ffa1160d7e15dc6bb6c40ca26.1492770667.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1492770667.git.balaton@eik.bme.hu>
 References: <cover.1492770667.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
@@ -29,7 +29,8 @@ Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	David Gibson <david@gibson.dropbear.id.au>
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
 X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH v6 10/13] sm501: Add support for panel layer
+Subject: [Qemu-trivial] [PATCH v6 11/13] sm501: Add some more missing
+ registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,159 +42,235 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Apr 2017 10:42:42 -0000
+X-List-Received-Date: Fri, 21 Apr 2017 10:42:43 -0000
+
+This is to allow clients to initialise these without failing as long
+as no 2D engine function is called that would use the written value.
+Saved values are not used yet (may get used when more of 2D engine is
+added sometimes) and clients normally only write to most of these
+registers, nothing is known to ever read them but they are documented
+as read/write so also implement read for these.
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
 
-v2: Split off renaming a variable to separate clean up patch
+v2: Fixed mask of video_control register for a read only bit
+    Changed IRQ status register to write ignored as IRQ is not implemented
+v3: Squashed read implementation into this patch
+v4: Add reset for all 2D engine registers (although these are
+    documented to be 0 on reset, a comment in U-Boot source suggests that
+    they are really undefined so the previous version might have been enough)
 
- hw/display/sm501.c | 63 +++++++++++++++++++++++++++---------------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
+ hw/display/sm501.c | 126 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 125 insertions(+), 1 deletion(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 2385f59..8abac8f 100644
+index 8abac8f..851c7c8 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -2,6 +2,7 @@
-  * QEMU SM501 Device
-  *
-  * Copyright (c) 2008 Shin-ichiro KAWASAKI
-+ * Copyright (c) 2016 BALATON Zoltan
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining a copy
-  * of this software and associated documentation files (the "Software"), to deal
-@@ -42,8 +43,11 @@
-  *   - Minimum implementation for Linux console : mmio regs and CRT layer.
-  *   - 2D graphics acceleration partially supported : only fill rectangle.
-  *
-- * TODO:
-+ * Status: 2016/12/04
-+ *   - Misc fixes: endianness, hardware cursor
-  *   - Panel support
-+ *
-+ * TODO:
-  *   - Touch panel support
-  *   - USB support
-  *   - UART support
-@@ -1301,18 +1305,16 @@ static inline int get_depth_index(DisplaySurface *surface)
-     }
- }
+@@ -512,6 +512,8 @@ typedef struct SM501State {
+     uint32_t dc_panel_hwc_color_1_2;
+     uint32_t dc_panel_hwc_color_3;
  
--static void sm501_draw_crt(SM501State *s)
-+static void sm501_update_display(void *opaque)
- {
-+    SM501State *s = (SM501State *)opaque;
-     DisplaySurface *surface = qemu_console_surface(s->con);
-     int y, c_x, c_y;
--    uint8_t *hwc_src, *src = s->local_mem;
--    int width = get_width(s, 1);
--    int height = get_height(s, 1);
--    int src_bpp = get_bpp(s, 1);
-+    int crt = (s->dc_crt_control & SM501_DC_CRT_CONTROL_SEL) ? 1 : 0;
-+    int width = get_width(s, crt);
-+    int height = get_height(s, crt);
-+    int src_bpp = get_bpp(s, crt);
-     int dst_bpp = surface_bytes_per_pixel(surface);
--    uint32_t *palette = (uint32_t *)&s->dc_palette[SM501_DC_CRT_PALETTE -
--                                                   SM501_DC_PANEL_PALETTE];
--    uint8_t hwc_palette[3 * 3];
-     int dst_depth_index = get_depth_index(surface);
-     draw_line_func *draw_line = NULL;
-     draw_hwc_line_func *draw_hwc_line = NULL;
-@@ -1320,7 +1322,19 @@ static void sm501_draw_crt(SM501State *s)
-     int y_start = -1;
-     ram_addr_t page_min = ~0l;
-     ram_addr_t page_max = 0l;
--    ram_addr_t offset = 0;
-+    ram_addr_t offset;
-+    uint32_t *palette;
-+    uint8_t hwc_palette[3 * 3];
-+    uint8_t *hwc_src;
++    uint32_t dc_video_control;
 +
-+    if (!((crt ? s->dc_crt_control : s->dc_panel_control)
-+          & SM501_DC_CRT_CONTROL_ENABLE)) {
-+        return;
-+    }
-+
-+    palette = (uint32_t *)(crt ? &s->dc_palette[SM501_DC_CRT_PALETTE -
-+                                                SM501_DC_PANEL_PALETTE]
-+                               : &s->dc_palette[0]);
+     uint32_t dc_crt_control;
+     uint32_t dc_crt_fb_addr;
+     uint32_t dc_crt_fb_offset;
+@@ -531,13 +533,20 @@ typedef struct SM501State {
+     uint32_t twoD_control;
+     uint32_t twoD_pitch;
+     uint32_t twoD_foreground;
++    uint32_t twoD_background;
+     uint32_t twoD_stretch;
++    uint32_t twoD_color_compare;
+     uint32_t twoD_color_compare_mask;
+     uint32_t twoD_mask;
++    uint32_t twoD_clip_tl;
++    uint32_t twoD_clip_br;
++    uint32_t twoD_mono_pattern_low;
++    uint32_t twoD_mono_pattern_high;
+     uint32_t twoD_window_width;
+     uint32_t twoD_source_base;
+     uint32_t twoD_destination_base;
+-
++    uint32_t twoD_alpha;
++    uint32_t twoD_wrap;
+ } SM501State;
  
-     /* choose draw_line function */
-     switch (src_bpp) {
-@@ -1334,20 +1348,19 @@ static void sm501_draw_crt(SM501State *s)
-         draw_line = draw_line32_funcs[dst_depth_index];
+ static uint32_t get_local_mem_size_index(uint32_t size)
+@@ -946,6 +955,10 @@ static uint64_t sm501_disp_ctrl_read(void *opaque, hwaddr addr,
+         ret = s->dc_panel_v_sync;
          break;
+ 
++    case SM501_DC_VIDEO_CONTROL:
++        ret = s->dc_video_control;
++        break;
++
+     case SM501_DC_CRT_CONTROL:
+         ret = s->dc_crt_control;
+         break;
+@@ -1061,6 +1074,10 @@ static void sm501_disp_ctrl_write(void *opaque, hwaddr addr,
+         s->dc_panel_hwc_color_3 = value & 0x0000FFFF;
+         break;
+ 
++    case SM501_DC_VIDEO_CONTROL:
++        s->dc_video_control = value & 0x00037FFF;
++        break;
++
+     case SM501_DC_CRT_CONTROL:
+         s->dc_crt_control = value & 0x0003FFFF;
+         break;
+@@ -1133,9 +1150,69 @@ static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
+     SM501_DPRINTF("sm501 2d engine regs : read addr=%x\n", (int)addr);
+ 
+     switch (addr) {
++    case SM501_2D_SOURCE:
++        ret = s->twoD_source;
++        break;
++    case SM501_2D_DESTINATION:
++        ret = s->twoD_destination;
++        break;
++    case SM501_2D_DIMENSION:
++        ret = s->twoD_dimension;
++        break;
++    case SM501_2D_CONTROL:
++        ret = s->twoD_control;
++        break;
++    case SM501_2D_PITCH:
++        ret = s->twoD_pitch;
++        break;
++    case SM501_2D_FOREGROUND:
++        ret = s->twoD_foreground;
++        break;
++    case SM501_2D_BACKGROUND:
++        ret = s->twoD_background;
++        break;
++    case SM501_2D_STRETCH:
++        ret = s->twoD_stretch;
++        break;
++    case SM501_2D_COLOR_COMPARE:
++        ret = s->twoD_color_compare;
++        break;
++    case SM501_2D_COLOR_COMPARE_MASK:
++        ret = s->twoD_color_compare_mask;
++        break;
++    case SM501_2D_MASK:
++        ret = s->twoD_mask;
++        break;
++    case SM501_2D_CLIP_TL:
++        ret = s->twoD_clip_tl;
++        break;
++    case SM501_2D_CLIP_BR:
++        ret = s->twoD_clip_br;
++        break;
++    case SM501_2D_MONO_PATTERN_LOW:
++        ret = s->twoD_mono_pattern_low;
++        break;
++    case SM501_2D_MONO_PATTERN_HIGH:
++        ret = s->twoD_mono_pattern_high;
++        break;
++    case SM501_2D_WINDOW_WIDTH:
++        ret = s->twoD_window_width;
++        break;
+     case SM501_2D_SOURCE_BASE:
+         ret = s->twoD_source_base;
+         break;
++    case SM501_2D_DESTINATION_BASE:
++        ret = s->twoD_destination_base;
++        break;
++    case SM501_2D_ALPHA:
++        ret = s->twoD_alpha;
++        break;
++    case SM501_2D_WRAP:
++        ret = s->twoD_wrap;
++        break;
++    case SM501_2D_STATUS:
++        ret = 0; /* Should return interrupt status */
++        break;
      default:
--        printf("sm501 draw crt : invalid DC_CRT_CONTROL=%x.\n",
--               s->dc_crt_control);
-+        printf("sm501 update display : invalid control register value.\n");
-         abort();
+         printf("sm501 disp ctrl : not implemented register read."
+                " addr=%x\n", (int)addr);
+@@ -1178,15 +1255,33 @@ static void sm501_2d_engine_write(void *opaque, hwaddr addr,
+     case SM501_2D_FOREGROUND:
+         s->twoD_foreground = value;
          break;
-     }
- 
-     /* set up to draw hardware cursor */
--    if (is_hwc_enabled(s, 1)) {
-+    if (is_hwc_enabled(s, crt)) {
-         /* choose cursor draw line function */
-         draw_hwc_line = draw_hwc_line_funcs[dst_depth_index];
--        hwc_src = get_hwc_address(s, 1);
--        c_x = get_hwc_x(s, 1);
--        c_y = get_hwc_y(s, 1);
--        get_hwc_palette(s, 1, hwc_palette);
-+        hwc_src = get_hwc_address(s, crt);
-+        c_x = get_hwc_x(s, crt);
-+        c_y = get_hwc_y(s, crt);
-+        get_hwc_palette(s, crt, hwc_palette);
-     }
- 
-     /* adjust console size */
-@@ -1361,7 +1374,7 @@ static void sm501_draw_crt(SM501State *s)
- 
-     /* draw each line according to conditions */
-     memory_region_sync_dirty_bitmap(&s->local_mem_region);
--    for (y = 0; y < height; y++) {
-+    for (y = 0, offset = 0; y < height; y++, offset += width * src_bpp) {
-         int update, update_hwc;
-         ram_addr_t page0 = offset;
-         ram_addr_t page1 = offset + width * src_bpp - 1;
-@@ -1379,7 +1392,7 @@ static void sm501_draw_crt(SM501State *s)
-             d +=  y * width * dst_bpp;
- 
-             /* draw graphics layer */
--            draw_line(d, src, width, palette);
-+            draw_line(d, s->local_mem + offset, width, palette);
- 
-             /* draw hardware cursor */
-             if (update_hwc) {
-@@ -1402,9 +1415,6 @@ static void sm501_draw_crt(SM501State *s)
-                 y_start = -1;
-             }
-         }
--
--        src += width * src_bpp;
--        offset += width * src_bpp;
-     }
- 
-     /* complete flush to display */
-@@ -1420,15 +1430,6 @@ static void sm501_draw_crt(SM501State *s)
-     }
++    case SM501_2D_BACKGROUND:
++        s->twoD_background = value;
++        break;
+     case SM501_2D_STRETCH:
+         s->twoD_stretch = value;
+         break;
++    case SM501_2D_COLOR_COMPARE:
++        s->twoD_color_compare = value;
++        break;
+     case SM501_2D_COLOR_COMPARE_MASK:
+         s->twoD_color_compare_mask = value;
+         break;
+     case SM501_2D_MASK:
+         s->twoD_mask = value;
+         break;
++    case SM501_2D_CLIP_TL:
++        s->twoD_clip_tl = value;
++        break;
++    case SM501_2D_CLIP_BR:
++        s->twoD_clip_br = value;
++        break;
++    case SM501_2D_MONO_PATTERN_LOW:
++        s->twoD_mono_pattern_low = value;
++        break;
++    case SM501_2D_MONO_PATTERN_HIGH:
++        s->twoD_mono_pattern_high = value;
++        break;
+     case SM501_2D_WINDOW_WIDTH:
+         s->twoD_window_width = value;
+         break;
+@@ -1196,6 +1291,15 @@ static void sm501_2d_engine_write(void *opaque, hwaddr addr,
+     case SM501_2D_DESTINATION_BASE:
+         s->twoD_destination_base = value;
+         break;
++    case SM501_2D_ALPHA:
++        s->twoD_alpha = value;
++        break;
++    case SM501_2D_WRAP:
++        s->twoD_wrap = value;
++        break;
++    case SM501_2D_STATUS:
++        /* ignored, writing 0 should clear interrupt status */
++        break;
+     default:
+         printf("sm501 2d engine : not implemented register write."
+                " addr=%x, val=%x\n", (int)addr, (unsigned)value);
+@@ -1454,8 +1558,28 @@ static void sm501_reset(SM501State *s)
+     s->misc_timing = 0;
+     s->power_mode_control = 0;
+     s->dc_panel_control = 0x00010000; /* FIFO level 3 */
++    s->dc_video_control = 0;
+     s->dc_crt_control = 0x00010000;
++    s->twoD_source = 0;
++    s->twoD_destination = 0;
++    s->twoD_dimension = 0;
+     s->twoD_control = 0;
++    s->twoD_pitch = 0;
++    s->twoD_foreground = 0;
++    s->twoD_background = 0;
++    s->twoD_stretch = 0;
++    s->twoD_color_compare = 0;
++    s->twoD_color_compare_mask = 0;
++    s->twoD_mask = 0;
++    s->twoD_clip_tl = 0;
++    s->twoD_clip_br = 0;
++    s->twoD_mono_pattern_low = 0;
++    s->twoD_mono_pattern_high = 0;
++    s->twoD_window_width = 0;
++    s->twoD_source_base = 0;
++    s->twoD_destination_base = 0;
++    s->twoD_alpha = 0;
++    s->twoD_wrap = 0;
  }
  
--static void sm501_update_display(void *opaque)
--{
--    SM501State *s = (SM501State *)opaque;
--
--    if (s->dc_crt_control & SM501_DC_CRT_CONTROL_ENABLE) {
--        sm501_draw_crt(s);
--    }
--}
--
- static const GraphicHwOps sm501_ops = {
-     .gfx_update  = sm501_update_display,
- };
+ static void sm501_init(SM501State *s, DeviceState *dev,
 -- 
 2.7.4
 
