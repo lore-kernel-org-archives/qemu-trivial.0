@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1W1W-0004N6-B2
+	id 1d1W1W-0004NV-JZ
 	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56030)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1Q-0004Fh-HR
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1Q-0004Fs-Nu
 	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1P-00009r-3G
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1P-0000A5-7b
 	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:40 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:25228)
+Received: from zero.eik.bme.hu ([152.66.115.2]:25188)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1d1W1K-0008W3-8B; Fri, 21 Apr 2017 06:42:34 -0400
+	id 1d1W1J-0008VX-As; Fri, 21 Apr 2017 06:42:33 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 276A17456BB;
-	Fri, 21 Apr 2017 12:42:32 +0200 (CEST)
+	by localhost (Postfix) with SMTP id E3156745702;
+	Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 697DB7456D1; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
-Message-Id: <05a1c43d060f8e8a3d143eff6f037488e2f4b0f9.1492770667.git.balaton@eik.bme.hu>
+	id 5E2D37456B6; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
+Message-Id: <79d575f8d4747336cdf94d94d549f536e6bab15e.1492770667.git.balaton@eik.bme.hu>
 In-Reply-To: <cover.1492770667.git.balaton@eik.bme.hu>
 References: <cover.1492770667.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
@@ -29,8 +29,8 @@ Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	David Gibson <david@gibson.dropbear.id.au>
 X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
 X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH v6 06/13] sm501: Add emulation of chip
- connected via PCI
+Subject: [Qemu-trivial] [PATCH v6 02/13] sm501: Use defined constants
+ instead of literal values where available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -42,122 +42,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Apr 2017 10:42:41 -0000
-
-Only the display controller part is created automatically on PCI
+X-List-Received-Date: Fri, 21 Apr 2017 10:42:42 -0000
 
 Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
 
-v2: Split off removing dependency on base address to separate patch
-v3: Added reset function and PCI ID constant definitions in pci_ids.h
-v4: Return error for invalid VRAM size, set bit in misc_control for PCI bus
+v3: Fix initial value of misc_control register as Peter Maydell suggested
+    Also use M_BYTE constant from cutils.h
 
- hw/display/sm501.c       | 65 ++++++++++++++++++++++++++++++++++++++++++++++++
- include/hw/pci/pci_ids.h |  3 +++
- 2 files changed, 68 insertions(+)
+ hw/display/sm501.c          | 29 +++++++++++++++++++----------
+ hw/display/sm501_template.h |  2 +-
+ 2 files changed, 20 insertions(+), 11 deletions(-)
 
 diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 09c023d..c92a5fa 100644
+index 4f40dee..6b72964 100644
 --- a/hw/display/sm501.c
 +++ b/hw/display/sm501.c
-@@ -32,6 +32,7 @@
- #include "ui/console.h"
- #include "hw/devices.h"
- #include "hw/sysbus.h"
-+#include "hw/pci/pci.h"
- #include "qemu/range.h"
- #include "ui/pixel_ops.h"
- #include "exec/address-spaces.h"
-@@ -1547,9 +1548,73 @@ static const TypeInfo sm501_sysbus_info = {
-     .class_init    = sm501_sysbus_class_init,
- };
+@@ -23,6 +23,7 @@
+  */
  
-+#define TYPE_PCI_SM501 "sm501"
-+#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
-+
-+typedef struct {
-+    /*< private >*/
-+    PCIDevice parent_obj;
-+    /*< public >*/
-+    SM501State state;
-+    uint32_t vram_size;
-+} SM501PCIState;
-+
-+static void sm501_realize_pci(PCIDevice *dev, Error **errp)
-+{
-+    SM501PCIState *s = PCI_SM501(dev);
-+
-+    sm501_init(&s->state, DEVICE(dev), s->vram_size);
-+    if (get_local_mem_size(&s->state) != s->vram_size) {
-+        error_setg(errp, "Invalid VRAM size, nearest valid size is %" PRIu32,
-+                   get_local_mem_size(&s->state));
-+        return;
-+    }
-+    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
-+                     &s->state.local_mem_region);
-+    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
-+                     &s->state.mmio_region);
-+}
-+
-+static Property sm501_pci_properties[] = {
-+    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * M_BYTE),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void sm501_reset_pci(DeviceState *dev)
-+{
-+    SM501PCIState *s = PCI_SM501(dev);
-+    sm501_reset(&s->state);
-+    /* Bits 2:0 of misc_control register is 001 for PCI */
-+    s->state.misc_control |= 1;
-+}
-+
-+static void sm501_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-+
-+    k->realize = sm501_realize_pci;
-+    k->vendor_id = PCI_VENDOR_ID_SILICON_MOTION;
-+    k->device_id = PCI_DEVICE_ID_SM501;
-+    k->class_id = PCI_CLASS_DISPLAY_OTHER;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-+    dc->desc = "SM501 Display Controller";
-+    dc->props = sm501_pci_properties;
-+    dc->reset = sm501_reset_pci;
-+    dc->hotpluggable = false;
-+}
-+
-+static const TypeInfo sm501_pci_info = {
-+    .name          = TYPE_PCI_SM501,
-+    .parent        = TYPE_PCI_DEVICE,
-+    .instance_size = sizeof(SM501PCIState),
-+    .class_init    = sm501_pci_class_init,
-+};
-+
- static void sm501_register_types(void)
+ #include "qemu/osdep.h"
++#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -446,12 +447,12 @@
+ 
+ /* SM501 local memory size taken from "linux/drivers/mfd/sm501.c" */
+ static const uint32_t sm501_mem_local_size[] = {
+-    [0] = 4 * 1024 * 1024,
+-    [1] = 8 * 1024 * 1024,
+-    [2] = 16 * 1024 * 1024,
+-    [3] = 32 * 1024 * 1024,
+-    [4] = 64 * 1024 * 1024,
+-    [5] = 2 * 1024 * 1024,
++    [0] = 4 * M_BYTE,
++    [1] = 8 * M_BYTE,
++    [2] = 16 * M_BYTE,
++    [3] = 32 * M_BYTE,
++    [4] = 64 * M_BYTE,
++    [5] = 2 * M_BYTE,
+ };
+ #define get_local_mem_size(s) sm501_mem_local_size[(s)->local_mem_size_index]
+ 
+@@ -555,7 +556,7 @@ static uint32_t get_local_mem_size_index(uint32_t size)
+ static inline int is_hwc_enabled(SM501State *state, int crt)
  {
-     type_register_static(&sm501_sysbus_info);
-+    type_register_static(&sm501_pci_info);
+     uint32_t addr = crt ? state->dc_crt_hwc_addr : state->dc_panel_hwc_addr;
+-    return addr & 0x80000000;
++    return addr & SM501_HWC_EN;
  }
  
- type_init(sm501_register_types)
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index d22ad8d..3752ddc 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -207,6 +207,9 @@
+ /**
+@@ -1411,9 +1412,17 @@ void sm501_init(MemoryRegion *address_space_mem, uint32_t base,
+     s->local_mem_size_index = get_local_mem_size_index(local_mem_bytes);
+     SM501_DPRINTF("local mem size=%x. index=%d\n", get_local_mem_size(s),
+                   s->local_mem_size_index);
+-    s->system_control = 0x00100000;
+-    s->misc_control = 0x00001000; /* assumes SH, active=low */
+-    s->dc_panel_control = 0x00010000;
++    s->system_control = 0x00100000; /* 2D engine FIFO empty */
++    /* Bits 17 (SH), 7 (CDR), 6:5 (Test), 2:0 (Bus) are all supposed
++     * to be determined at reset by GPIO lines which set config bits.
++     * We hardwire them:
++     *  SH = 0 : Hitachi Ready Polarity == Active Low
++     *  CDR = 0 : do not reset clock divider
++     *  TEST = 0 : Normal mode (not testing the silicon)
++     *  BUS = 0 : Hitachi SH3/SH4
++     */
++    s->misc_control = SM501_MISC_DAC_POWER;
++    s->dc_panel_control = 0x00010000; /* FIFO level 3 */
+     s->dc_crt_control = 0x00010000;
  
- #define PCI_VENDOR_ID_MARVELL            0x11ab
+     /* allocate local memory */
+diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
+index aeeac5d..16e500b 100644
+--- a/hw/display/sm501_template.h
++++ b/hw/display/sm501_template.h
+@@ -108,7 +108,7 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(SM501State *s, int crt,
+     /* get hardware cursor pattern */
+     uint32_t cursor_addr = get_hwc_address(s, crt);
+     assert(0 <= c_y && c_y < SM501_HWC_HEIGHT);
+-    cursor_addr += 64 * c_y / 4;  /* 4 pixels per byte */
++    cursor_addr += SM501_HWC_WIDTH * c_y / 4;  /* 4 pixels per byte */
+     cursor_addr += s->base;
  
-+#define PCI_VENDOR_ID_SILICON_MOTION     0x126f
-+#define PCI_DEVICE_ID_SM501              0x0501
-+
- #define PCI_VENDOR_ID_ENSONIQ            0x1274
- #define PCI_DEVICE_ID_ENSONIQ_ES1370     0x5000
- 
+     /* get cursor position */
 -- 
 2.7.4
 
