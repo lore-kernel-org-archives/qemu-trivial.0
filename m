@@ -1,44 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1X3L-0007p1-K3
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 07:48:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43213)
+	id 1d1aWK-0001Zm-63
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 11:30:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49987)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1d1X3F-0007jR-0h
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 07:48:41 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1d1aWG-0001Ti-Di
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 11:30:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aurelien@aurel32.net>) id 1d1X39-00053C-0h
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 07:48:37 -0400
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:53862)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
-	id 1d1X35-0004xW-OS; Fri, 21 Apr 2017 07:48:27 -0400
-Received: from [37.161.82.63] (helo=ohm.local) by hall.aurel32.net with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d1X2x-00046R-7M; Fri, 21 Apr 2017 13:48:19 +0200
-Received: from aurel32 by ohm.local with local (Exim 4.89)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1d1X2p-0002Zv-Jd; Fri, 21 Apr 2017 13:48:11 +0200
-Date: Fri, 21 Apr 2017 13:48:11 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Magnus Damm <magnus.damm@gmail.com>,
+	(envelope-from <balaton@eik.bme.hu>) id 1d1aWF-0007tp-3z
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 11:30:48 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:33800)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1d1aW8-0007nz-D5; Fri, 21 Apr 2017 11:30:40 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id AC8F4745703;
+	Fri, 21 Apr 2017 17:30:38 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 2B8607456D1; Fri, 21 Apr 2017 17:30:38 +0200 (CEST)
+Message-Id: <647d292c6f5abba8b2a614687229949b5dcb864e.1492787889.git.balaton@eik.bme.hu>
+In-Reply-To: <cover.1492787889.git.balaton@eik.bme.hu>
+References: <cover.1492787889.git.balaton@eik.bme.hu>
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Fri, 21 Apr 2017 17:18:09 +0200
+To: qemu-devel@nongnu.org,
+    qemu-trivial@nongnu.org
+Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170421114811.hcqgwfuqrapzvzk4@aurel32.net>
-References: <cover.1492770667.git.balaton@eik.bme.hu>
-	<ebcd276cb56c012e196f7ed0ff0e548963fd6014.1492770667.git.balaton@eik.bme.hu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <ebcd276cb56c012e196f7ed0ff0e548963fd6014.1492770667.git.balaton@eik.bme.hu>
-User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:bc8:30d7:100::1
-Subject: Re: [Qemu-trivial] [PATCH v6 08/13] sm501: Fix hardware cursor
+X-Received-From: 2001:738:2001:2001::2001
+Subject: [Qemu-trivial] [PATCH v7 06/13] sm501: Add emulation of chip
+ connected via PCI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,101 +43,124 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Apr 2017 11:48:41 -0000
+X-List-Received-Date: Fri, 21 Apr 2017 15:30:49 -0000
 
-On 2017-04-21 12:31, BALATON Zoltan wrote:
-> Rework HWC handling to simplify it and fix cursor not updating on
-> screen as needed. Previously cursor was not updated because checking
-> for changes in a line overrode the update flag set for the cursor but
-> fixing this is not enough because the cursor should also be updated if
-> its shape or location changes. Introduce hwc_invalidate() function to
-> handle that similar to other display controller models.
->=20
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->=20
-> v3: simplify return expression in get_bpp
->=20
->  hw/display/sm501.c          | 169 +++++++++++++++++++++++++-------------=
-------
->  hw/display/sm501_template.h |  25 +++----
->  2 files changed, 107 insertions(+), 87 deletions(-)
->=20
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index a628ef1..dc806a3 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -1339,14 +1362,16 @@ static void sm501_draw_crt(SM501State *s)
->      /* draw each line according to conditions */
->      memory_region_sync_dirty_bitmap(&s->local_mem_region);
->      for (y =3D 0; y < height; y++) {
-> -        int update_hwc =3D draw_hwc_line ? within_hwc_y_range(s, y, 1) :=
- 0;
-> -        int update =3D full_update || update_hwc;
-> +        int update, update_hwc;
->          ram_addr_t page0 =3D offset;
->          ram_addr_t page1 =3D offset + width * src_bpp - 1;
-> =20
-> +        /* check if hardware cursor is enabled and we're within its rang=
-e */
-> +        update_hwc =3D draw_hwc_line && c_y <=3D y && y < c_y + SM501_HW=
-C_HEIGHT;
-> +        update =3D full_update || update_hwc;
->          /* check dirty flags for each line */
-> -        update =3D memory_region_get_dirty(&s->local_mem_region, page0,
-> -                                         page1 - page0, DIRTY_MEMORY_VGA=
-);
-> +        update |=3D memory_region_get_dirty(&s->local_mem_region, page0,
-> +                                          page1 - page0, DIRTY_MEMORY_VG=
-A);
-> =20
->          /* draw line and change status */
->          if (update) {
-> @@ -1358,7 +1383,7 @@ static void sm501_draw_crt(SM501State *s)
-> =20
->              /* draw hardware cursor */
->              if (update_hwc) {
-> -                draw_hwc_line(s, 1, hwc_palette, y - get_hwc_y(s, 1), d,=
- width);
-> +                draw_hwc_line(d, hwc_src, width, hwc_palette, c_x, y - c=
-_y);
->              }
-> =20
->              if (y_start < 0) {
+Only the display controller part is created automatically on PCI
 
-The above change causes a warning with at least GCC 6 and GCC 7, which
-causes a build failure when using -Werror:
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Tested-by: Aurelien Jarno <aurelien@aurel32.net>
+---
 
-|   CC      sh4-softmmu/hw/display/sm501.o
-| /home/aurel32/git/qemu/hw/display/sm501.c: In function =E2=80=98sm501_upd=
-ate_display=E2=80=99:
-| /home/aurel32/git/qemu/hw/display/sm501.c:1504:17: warning: =E2=80=98hwc_=
-src=E2=80=99 may be used uninitialized in this function [-Wmaybe-uninitiali=
-zed]
-|                  draw_hwc_line(d, hwc_src, width, hwc_palette, c_x, y - c=
-_y);
-|                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~
-| /home/aurel32/git/qemu/hw/display/sm501.c:1488:59: warning: =E2=80=98c_y=
-=E2=80=99 may be used uninitialized in this function [-Wmaybe-uninitialized]
-|          update_hwc =3D draw_hwc_line && c_y <=3D y && y < c_y + SM501_HW=
-C_HEIGHT;
-|                                                            ^
-| /home/aurel32/git/qemu/hw/display/sm501.c:1504:17: warning: =E2=80=98c_x=
-=E2=80=99 may be used uninitialized in this function [-Wmaybe-uninitialized]
-|                  draw_hwc_line(d, hwc_src, width, hwc_palette, c_x, y - c=
-_y);
-|                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~
+v2: Split off removing dependency on base address to separate patch
+v3: Added reset function and PCI ID constant definitions in pci_ids.h
+v4: Return error for invalid VRAM size, set bit in misc_control for PCI bus
 
-GCC fails to notice that hwc_src, c_x and c_y are always defined if
-draw_hwc_line is not NULL. This is obviously not a bug in the code, but
-it might be a good idea to put a workaround for example by defining
-default values for those variables.
+ hw/display/sm501.c       | 65 ++++++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/pci/pci_ids.h |  3 +++
+ 2 files changed, 68 insertions(+)
 
-Aurelien
---=20
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 09c023d..c92a5fa 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -32,6 +32,7 @@
+ #include "ui/console.h"
+ #include "hw/devices.h"
+ #include "hw/sysbus.h"
++#include "hw/pci/pci.h"
+ #include "qemu/range.h"
+ #include "ui/pixel_ops.h"
+ #include "exec/address-spaces.h"
+@@ -1547,9 +1548,73 @@ static const TypeInfo sm501_sysbus_info = {
+     .class_init    = sm501_sysbus_class_init,
+ };
+ 
++#define TYPE_PCI_SM501 "sm501"
++#define PCI_SM501(obj) OBJECT_CHECK(SM501PCIState, (obj), TYPE_PCI_SM501)
++
++typedef struct {
++    /*< private >*/
++    PCIDevice parent_obj;
++    /*< public >*/
++    SM501State state;
++    uint32_t vram_size;
++} SM501PCIState;
++
++static void sm501_realize_pci(PCIDevice *dev, Error **errp)
++{
++    SM501PCIState *s = PCI_SM501(dev);
++
++    sm501_init(&s->state, DEVICE(dev), s->vram_size);
++    if (get_local_mem_size(&s->state) != s->vram_size) {
++        error_setg(errp, "Invalid VRAM size, nearest valid size is %" PRIu32,
++                   get_local_mem_size(&s->state));
++        return;
++    }
++    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY,
++                     &s->state.local_mem_region);
++    pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY,
++                     &s->state.mmio_region);
++}
++
++static Property sm501_pci_properties[] = {
++    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * M_BYTE),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void sm501_reset_pci(DeviceState *dev)
++{
++    SM501PCIState *s = PCI_SM501(dev);
++    sm501_reset(&s->state);
++    /* Bits 2:0 of misc_control register is 001 for PCI */
++    s->state.misc_control |= 1;
++}
++
++static void sm501_pci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++
++    k->realize = sm501_realize_pci;
++    k->vendor_id = PCI_VENDOR_ID_SILICON_MOTION;
++    k->device_id = PCI_DEVICE_ID_SM501;
++    k->class_id = PCI_CLASS_DISPLAY_OTHER;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
++    dc->desc = "SM501 Display Controller";
++    dc->props = sm501_pci_properties;
++    dc->reset = sm501_reset_pci;
++    dc->hotpluggable = false;
++}
++
++static const TypeInfo sm501_pci_info = {
++    .name          = TYPE_PCI_SM501,
++    .parent        = TYPE_PCI_DEVICE,
++    .instance_size = sizeof(SM501PCIState),
++    .class_init    = sm501_pci_class_init,
++};
++
+ static void sm501_register_types(void)
+ {
+     type_register_static(&sm501_sysbus_info);
++    type_register_static(&sm501_pci_info);
+ }
+ 
+ type_init(sm501_register_types)
+diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+index d22ad8d..3752ddc 100644
+--- a/include/hw/pci/pci_ids.h
++++ b/include/hw/pci/pci_ids.h
+@@ -207,6 +207,9 @@
+ 
+ #define PCI_VENDOR_ID_MARVELL            0x11ab
+ 
++#define PCI_VENDOR_ID_SILICON_MOTION     0x126f
++#define PCI_DEVICE_ID_SM501              0x0501
++
+ #define PCI_VENDOR_ID_ENSONIQ            0x1274
+ #define PCI_DEVICE_ID_ENSONIQ_ES1370     0x5000
+ 
+-- 
+2.7.4
+
 
