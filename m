@@ -1,36 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1W1Z-0004R7-3X
+	id 1d1W1Z-0004Rl-JZ
 	for mharc-qemu-trivial@gnu.org; Fri, 21 Apr 2017 06:42:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55954)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55972)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1O-0004DV-J6
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:39 -0400
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1P-0004ES-4h
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1d1W1N-00008w-LX
-	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:38 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25184)
+	(envelope-from <balaton@eik.bme.hu>) id 1d1W1N-000093-UN
+	for qemu-trivial@nongnu.org; Fri, 21 Apr 2017 06:42:39 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:25227)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1d1W1I-0008VV-V3; Fri, 21 Apr 2017 06:42:33 -0400
+	id 1d1W1K-0008W1-2z; Fri, 21 Apr 2017 06:42:34 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id D292E745700;
-	Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
+	by localhost (Postfix) with SMTP id 342497456BC;
+	Fri, 21 Apr 2017 12:42:32 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 58AF67456BB; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
-Message-Id: <cover.1492770667.git.balaton@eik.bme.hu>
+	id 6C09A7456D4; Fri, 21 Apr 2017 12:42:31 +0200 (CEST)
+Message-Id: <3d654355201680faca4375eed57f312de8736df1.1492770667.git.balaton@eik.bme.hu>
+In-Reply-To: <cover.1492770667.git.balaton@eik.bme.hu>
+References: <cover.1492770667.git.balaton@eik.bme.hu>
 From: BALATON Zoltan <balaton@eik.bme.hu>
 Date: Fri, 21 Apr 2017 12:31:07 +0200
 To: qemu-devel@nongnu.org,
     qemu-trivial@nongnu.org
 Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Gerd Hoffmann <kraxel@redhat.com>
+	David Gibson <david@gibson.dropbear.id.au>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:738:2001:2001::2001
-Subject: [Qemu-trivial] [PATCH v6 00/13] Improvements for SM501 display
- controller emulation
+Subject: [Qemu-trivial] [PATCH v6 07/13] sm501: Fix device endianness
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,34 +44,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 21 Apr 2017 10:42:40 -0000
 
-This version just adds some more explanation to patch #7 and
-Reviewed/Acked by tags for the last patches.
+We only emulate the sysbus device in its default LE mode and PCI is LE
+as well so specify this for registers and framebuffer memory.
 
-BALATON Zoltan (13):
-  sm501: Fixed code style and a few typos in comments
-  sm501: Use defined constants instead of literal values where available
-  sm501: Add missing arbitration control register
-  sm501: QOMify
-  sm501: Get rid of base address in draw_hwc_line
-  sm501: Add emulation of chip connected via PCI
-  sm501: Fix device endianness
-  sm501: Fix hardware cursor
-  sm501: Misc clean ups
-  sm501: Add support for panel layer
-  sm501: Add some more missing registers
-  sm501: Add vmstate descriptor
-  ppc: Add SM501 device in ppc softmmu targets default configs
+Note that though the Linux kernel driver has code which claims to
+handle both big and little endian, it is obviously bogus for 16 bit
+and cannot be trusted as a source of information on the framebuffer
+pixel format. This is our best guess about device behaviour based on
+the specs and testing with MorphOS that is known to work on real HW.
 
- default-configs/ppc-softmmu.mak    |    1 +
- default-configs/ppc64-softmmu.mak  |    1 +
- default-configs/ppcemb-softmmu.mak |    1 +
- hw/display/sm501.c                 | 1784 ++++++++++++++++++++++--------------
- hw/display/sm501_template.h        |   90 +-
- hw/sh4/r2d.c                       |   11 +-
- include/hw/devices.h               |    5 -
- include/hw/pci/pci_ids.h           |    3 +
- 8 files changed, 1150 insertions(+), 746 deletions(-)
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
 
+v2: Split off small clean up to other patch
+v4: Set serial part to little endian as well
+v5: Make framebuffer always LE as suggested by Peter Maydell
+v6: Extended commit message
+
+ hw/display/sm501.c          |  8 ++++----
+ hw/display/sm501_template.h | 19 ++++++-------------
+ 2 files changed, 10 insertions(+), 17 deletions(-)
+
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index c92a5fa..a628ef1 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -850,7 +850,7 @@ static const MemoryRegionOps sm501_system_config_ops = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+     },
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static uint32_t sm501_palette_read(void *opaque, hwaddr addr)
+@@ -1086,7 +1086,7 @@ static const MemoryRegionOps sm501_disp_ctrl_ops = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+     },
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static uint64_t sm501_2d_engine_read(void *opaque, hwaddr addr,
+@@ -1174,7 +1174,7 @@ static const MemoryRegionOps sm501_2d_engine_ops = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+     },
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ /* draw line functions for all console modes */
+@@ -1510,7 +1510,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Error **errp)
+     if (s->chr_state) {
+         serial_mm_init(&s->state.mmio_region, SM501_UART0, 2,
+                        NULL, /* TODO : chain irq to IRL */
+-                       115200, s->chr_state, DEVICE_NATIVE_ENDIAN);
++                       115200, s->chr_state, DEVICE_LITTLE_ENDIAN);
+     }
+ }
+ 
+diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
+index 832ee61..54807bd 100644
+--- a/hw/display/sm501_template.h
++++ b/hw/display/sm501_template.h
+@@ -64,10 +64,10 @@ static void glue(draw_line16_, PIXEL_NAME)(
+     uint8_t r, g, b;
+ 
+     do {
+-        rgb565 = lduw_p(s);
+-        r = ((rgb565 >> 11) & 0x1f) << 3;
+-        g = ((rgb565 >>  5) & 0x3f) << 2;
+-        b = ((rgb565 >>  0) & 0x1f) << 3;
++        rgb565 = lduw_le_p(s);
++        r = (rgb565 >> 8) & 0xf8;
++        g = (rgb565 >> 3) & 0xfc;
++        b = (rgb565 << 3) & 0xf8;
+         *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
+         s += 2;
+         d += BPP;
+@@ -80,16 +80,9 @@ static void glue(draw_line32_, PIXEL_NAME)(
+     uint8_t r, g, b;
+ 
+     do {
+-        ldub_p(s);
+-#if defined(TARGET_WORDS_BIGENDIAN)
+-        r = s[1];
+-        g = s[2];
+-        b = s[3];
+-#else
+-        b = s[0];
+-        g = s[1];
+         r = s[2];
+-#endif
++        g = s[1];
++        b = s[0];
+         *(PIXEL_TYPE *)d = glue(rgb_to_pixel, PIXEL_NAME)(r, g, b);
+         s += 4;
+         d += BPP;
 -- 
 2.7.4
 
