@@ -1,59 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1JvN-0005yp-EC
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2017 17:47:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37890)
+	id 1d1MOk-0005QG-Dl
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Apr 2017 20:26:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1JvL-0005xI-58
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 17:47:36 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1d1MOh-0005Oj-SD
+	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 20:26:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d1JvK-00024x-5w
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 17:47:35 -0400
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:36049)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d1JvJ-00023z-VY
-	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 17:47:34 -0400
-Received: by mail-wm0-x22a.google.com with SMTP id o81so3066219wmb.1
-	for <qemu-trivial@nongnu.org>; Thu, 20 Apr 2017 14:47:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=JPQWioTjdVZsY1oPw5/7C8yAnhV/I22MljkOMpJv6pI=;
-	b=VWBKFW45zWZC+RuAU2puP4tDN47L8l4uVyFqEU+F3LDv0LBdJ34CYsMrY0abpD8vjO
-	f0dfRO3TnHQOFaRyiI9NKmuN8+QzTQHqZO47br9AR9V85GihWcnOIpvzsAszOwN7TIQa
-	jhRPHcK9639rXicgZbouslpsZjYXSPtjolja4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=JPQWioTjdVZsY1oPw5/7C8yAnhV/I22MljkOMpJv6pI=;
-	b=ZGBwWAhSod6hF+zP3kA2QRUPsRIjG6+GdxVWUZ1lRmnqobmQx9qd332u31cFJkbVP2
-	94QrHUMlIuGD/3pPN3xZ2JPyAiuSMvJvQlUhsFJGzOjUcnj4FdqDWkgMyotJ2EVnhyZE
-	8lnRFtyMguiNHq0WpdwXB/itXu8XsYD06DBQz6i8ESf9jlsKKvYR6EuS7i1dBvzAUaZU
-	f6IKYGYGcWiPRBmxIBQhXOtBJRj8Jb8+yVF7oa3OBwV8Y+FELdjvcyE5p1x+JknrpeDo
-	A7l1J2GfAzGzVAaC0qDrVhjtZ6tAMu7WbhTOiGMTZK1PIsUsz3gHV/Jo3wFqQRNRCfLj
-	3xCQ==
-X-Gm-Message-State: AN3rC/5/uzot+PF5xsfoOeRXTgVMCqkfIiDLq5QUKW67pO5iIkrmF4rN
-	0LLXdn+wwMSQk7jDwyCM/l/jcKiKSYMh
-X-Received: by 10.28.34.130 with SMTP id i124mr5027544wmi.111.1492724852829;
-	Thu, 20 Apr 2017 14:47:32 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Thu, 20 Apr 2017 14:47:12 -0700 (PDT)
-In-Reply-To: <33474e1b82c6459604edec522cee585ccdb871ee.1492721026.git.balaton@eik.bme.hu>
-References: <cover.1492721026.git.balaton@eik.bme.hu>
-	<33474e1b82c6459604edec522cee585ccdb871ee.1492721026.git.balaton@eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Apr 2017 22:47:12 +0100
-Message-ID: <CAFEAcA-Q7PaT0ejkXHCTnUkfsOHUg8HdY7KtYc0Bo7On3+oDhg@mail.gmail.com>
+	(envelope-from <dgibson@ozlabs.org>) id 1d1MOe-0005vF-Le
+	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 20:26:03 -0400
+Received: from ozlabs.org ([103.22.144.67]:41693)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1d1MOe-0005u2-9G
+	for qemu-trivial@nongnu.org; Thu, 20 Apr 2017 20:26:00 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3w8Gjr2rSnz9s73; Fri, 21 Apr 2017 10:25:52 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1492734352;
+	bh=KD2dOhoaPzof/4aAskGamuoS1IQ4kjukjvOiOhI+m+0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dPXgCpHKareibmeM9Ip7Ea1060PR1edaesMG2E1Oz4MY3MQs2q+5MgaUMdlPSL8g0
+	iaK6WJ6APbvLi1KzOwSUudnLkhrQzBr/n+baS3ENxX53qhmNQ4K0FnaZuwRnhIxXdS
+	R88btuZHSFp+GahJgzafJMFaIRbBrevVihNopMQc=
+Date: Fri, 21 Apr 2017 10:24:51 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
 To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Magnus Damm <magnus.damm@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset=UTF-8
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20170421002451.GE13992@umbus.fritz.box>
+References: <cover.1492721026.git.balaton@eik.bme.hu>
+	<c4328880c5a143eab3e835dd9d2e2efcd86d98d1.1492721026.git.balaton@eik.bme.hu>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="47eKBCiAZYFK5l32"
+Content-Disposition: inline
+In-Reply-To: <c4328880c5a143eab3e835dd9d2e2efcd86d98d1.1492721026.git.balaton@eik.bme.hu>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
-Subject: Re: [Qemu-trivial] [PATCH v5 07/13] sm501: Fix device endianness
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH v5 13/13] ppc: Add SM501 device in ppc
+ softmmu targets default configs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,29 +52,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Apr 2017 21:47:36 -0000
+X-List-Received-Date: Fri, 21 Apr 2017 00:26:05 -0000
 
-On 20 April 2017 at 21:43, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> We only emulate the sysbus device in its default LE mode and PCI is LE
-> as well so specify this for registers and framebuffer memory.
->
+
+--47eKBCiAZYFK5l32
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Apr 20, 2017 at 10:43:46PM +0200, BALATON Zoltan wrote:
+> This is not used by default on any emulated machine yet but it is
+> still useful to have it compiled so it can be added from the command
+> line for clients that can use it (e.g. MorphOS has no driver for any
+> other emulated video cards but can output via SM501)
+>=20
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+
+Sure, if you like.
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
+>=20
+> v5: Added sm501 also to ppc64-softmmu default config
+>=20
+>  default-configs/ppc-softmmu.mak    | 1 +
+>  default-configs/ppc64-softmmu.mak  | 1 +
+>  default-configs/ppcemb-softmmu.mak | 1 +
+>  3 files changed, 3 insertions(+)
+>=20
+> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmm=
+u.mak
+> index 09c1d45..1f1cd85 100644
+> --- a/default-configs/ppc-softmmu.mak
+> +++ b/default-configs/ppc-softmmu.mak
+> @@ -45,6 +45,7 @@ CONFIG_OPENPIC_KVM=3D$(and $(CONFIG_E500),$(CONFIG_KVM))
+>  CONFIG_PLATFORM_BUS=3Dy
+>  CONFIG_ETSEC=3Dy
+>  CONFIG_LIBDECNUMBER=3Dy
+> +CONFIG_SM501=3Dy
+>  # For PReP
+>  CONFIG_SERIAL_ISA=3Dy
+>  CONFIG_MC146818RTC=3Dy
+> diff --git a/default-configs/ppc64-softmmu.mak b/default-configs/ppc64-so=
+ftmmu.mak
+> index 05c8335..f6ccb1b 100644
+> --- a/default-configs/ppc64-softmmu.mak
+> +++ b/default-configs/ppc64-softmmu.mak
+> @@ -47,6 +47,7 @@ CONFIG_OPENPIC_KVM=3D$(and $(CONFIG_E500),$(CONFIG_KVM))
+>  CONFIG_PLATFORM_BUS=3Dy
+>  CONFIG_ETSEC=3Dy
+>  CONFIG_LIBDECNUMBER=3Dy
+> +CONFIG_SM501=3Dy
+>  # For pSeries
+>  CONFIG_XICS=3D$(CONFIG_PSERIES)
+>  CONFIG_XICS_SPAPR=3D$(CONFIG_PSERIES)
+> diff --git a/default-configs/ppcemb-softmmu.mak b/default-configs/ppcemb-=
+softmmu.mak
+> index 7f56004..94340de 100644
+> --- a/default-configs/ppcemb-softmmu.mak
+> +++ b/default-configs/ppcemb-softmmu.mak
+> @@ -15,3 +15,4 @@ CONFIG_I8259=3Dy
+>  CONFIG_XILINX=3Dy
+>  CONFIG_XILINX_ETHLITE=3Dy
+>  CONFIG_LIBDECNUMBER=3Dy
+> +CONFIG_SM501=3Dy
 
-I think it's worth a comment to the effect of:
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Note that though the Linux kernel driver has code which
-claims to handle both big and little endian, it is obviously
-bogus for 16 bit and cannot be trusted as a source of
-information on the framebuffer pixel format. This is
-our best guess about device behaviour based on the specs.
+--47eKBCiAZYFK5l32
+Content-Type: application/pgp-signature; name="signature.asc"
 
-(so if we find ourselves wondering about this mismatch
-in a couple of years time at least we'll know why this
-end is the way it is.)
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+iQIcBAEBCAAGBQJY+VFRAAoJEGw4ysog2bOSFgIQANnZ2ehBbfjjaEZ3tv8gomJg
+CzVKRNwlUkmSY0tx4hkbenqW2ob3QBYeCiU6s9HJlmEqtMcob9Khh7ATbBoWrgQa
+S/VMIMqBmN/W4lrgmKJfrmG17cCe8Dm5WAHo/N+pUlF5addyCCXCLItksRygCJuX
+sX5cK3vfdBzDPcjszHiGlj2fiw0/4CI6vZ6Y/+gd4YvI6sPcVjNypWZFylvsTgg8
+Cw1imloOguNTB16hf2l9Zm54TA57lBs8fC2e7hpyaCbvp9d1nA68riaHBQnl73ox
+/CVhe5QCDQzAQf5ZyPvIbdhR9GECQQLWl96TA8t5DZ93ImjHmSRTNBDHGnzleNyb
+hkycNhTKayRPZ7VZAF8ldN/o7HWy4X9U8wPMOZzjfx/bvsOEOY8hwNaiWH3n+M8o
+VdotMqntTQoU/BpFJAvbHVxGCeNCVh4JK4ArgVOGxK5GPKDhUvYfFvXbXIMiAb3d
+VPg0UOd7CuvUvpfspy3Zm73/PMIoylEcuaqAVBXksFII69t5nVUF3/StFg1yAy3+
+sgHRBaHYlO7mk5d1QBOaxPWDtLVsaPqtwXK7jo9UyiWl0dEhrUcjvjOB3O/b7/+A
+9B7+v35eu3wX5p77EalwsvtLDJS9BcbKPi5kjJUJciA8RbktvUIOIvHgfNTuuUUB
+vBtQTYBMRCIi7L8l+Zhb
+=RuiQ
+-----END PGP SIGNATURE-----
 
-thanks
--- PMM
+--47eKBCiAZYFK5l32--
 
