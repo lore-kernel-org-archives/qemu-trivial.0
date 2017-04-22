@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1zAB-0004Gb-GK
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Apr 2017 13:49:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58929)
+	id 1d1zFy-00054x-FH
+	for mharc-qemu-trivial@gnu.org; Sat, 22 Apr 2017 13:55:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d1zA9-0004GU-7Y
-	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 13:49:38 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1d1zFv-00054J-Rn
+	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 13:55:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d1zA6-00075R-65
-	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 13:49:37 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:37403)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d1zA5-00074G-UP
-	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 13:49:34 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 261F141E31;
-	Sat, 22 Apr 2017 20:49:23 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 096533F8;
-	Sat, 22 Apr 2017 20:49:23 +0300 (MSK)
-To: Ishani Chugh <chugh.ishani@research.iiit.ac.in>, qemu-trivial@nongnu.org
-References: <1492100079-4110-1-git-send-email-chugh.ishani@research.iiit.ac.in>
-Cc: marex@denx.de, ehabkost@redhat.com, kbastian@mail.uni-paderborn.de,
-	crwulff@gmail.com, agraf@suse.de, edgar.iglesias@gmail.com,
-	rth@twiddle.net, david@gibson.dropbear.id.au
-From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <5c570bd6-35a1-7507-6f38-b724b9a941fd@msgid.tls.msk.ru>
-Date: Sat, 22 Apr 2017 20:49:22 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <aurelien@aurel32.net>) id 1d1zFu-0008Pu-SS
+	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 13:55:35 -0400
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:36360)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
+	id 1d1zFs-0008Om-Ju; Sat, 22 Apr 2017 13:55:32 -0400
+Received: from [2001:bc8:30d7:120:9bb5:8936:7e6a:9e36] (helo=ohm.rr44.fr)
+	by hall.aurel32.net with esmtpsa
+	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1d1zFg-0001F4-RW; Sat, 22 Apr 2017 19:55:20 +0200
+Received: from aurel32 by ohm.local with local (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1d1xAZ-0005vA-MD; Sat, 22 Apr 2017 17:41:55 +0200
+Date: Sat, 22 Apr 2017 17:41:55 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20170422154155.cnberyxmr6bt2ghj@aurel32.net>
+References: <cover.1492787889.git.balaton@eik.bme.hu>
 MIME-Version: 1.0
-In-Reply-To: <1492100079-4110-1-git-send-email-chugh.ishani@research.iiit.ac.in>
-Content-Type: text/plain; charset=windows-1251
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] Remove reduntant qemu: from error
- functions
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1492787889.git.balaton@eik.bme.hu>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:bc8:30d7:100::1
+Subject: Re: [Qemu-trivial] [PATCH v7 00/13] Improvements for SM501 display
+ controller emulation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,13 +50,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Apr 2017 17:49:38 -0000
+X-List-Received-Date: Sat, 22 Apr 2017 17:55:37 -0000
 
-13.04.2017 19:14, Ishani Chugh wrote:
-> This patch removes redundant "qemu:" from error functions. The link to the bitesized task is:
-> http://wiki.qemu-project.org/Contribute/BiteSizedTasks#Error_checking
+On 2017-04-21 17:18, BALATON Zoltan wrote:
+> v7: Define default values for some variables to avoid an (invalid)
+>     warning from gcc 6 or 7 as suggested by Aurelien Jarno.
 
-Applied to -trivial, thanks!
+Thanks a lot for this new version, I confirm it now builds fine with GCC
+6 or 7.
 
-/mjt
+-- 
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
