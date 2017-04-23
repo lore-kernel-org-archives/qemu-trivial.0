@@ -1,40 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d1zNg-0008Jp-RN
-	for mharc-qemu-trivial@gnu.org; Sat, 22 Apr 2017 14:03:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33995)
+	id 1d2ChD-0002rN-M7
+	for mharc-qemu-trivial@gnu.org; Sun, 23 Apr 2017 04:16:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37708)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d1zNe-0008IM-IP
-	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 14:03:35 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1d2ChC-0002qy-9K
+	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 04:16:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d1zNd-0002Q2-Mv
-	for qemu-trivial@nongnu.org; Sat, 22 Apr 2017 14:03:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58585)
+	(envelope-from <mjt@tls.msk.ru>) id 1d2ChB-00071i-FQ
+	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 04:16:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:33587)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d1zNX-0002P1-PH; Sat, 22 Apr 2017 14:03:27 -0400
+	id 1d2Ch7-0006vJ-7b; Sun, 23 Apr 2017 04:16:33 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E006041E31;
-	Sat, 22 Apr 2017 21:03:26 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 3060641EF2;
+	Sun, 23 Apr 2017 11:16:27 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id CE7563F8;
-	Sat, 22 Apr 2017 21:03:26 +0300 (MSK)
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-References: <20170308151544.7606-1-eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 122F53F8;
+	Sun, 23 Apr 2017 11:16:27 +0300 (MSK)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alexander Graf <agraf@suse.de>, Michael Roth <mdroth@linux.vnet.ibm.com>
+References: <20170407222016.15308-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <2c2be9fe-ecd9-120d-0296-8704442e5f64@msgid.tls.msk.ru>
-Date: Sat, 22 Apr 2017 21:03:26 +0300
+Message-ID: <d21c06f2-497a-1d2b-ee6c-da0c3948a43d@msgid.tls.msk.ru>
+Date: Sun, 23 Apr 2017 11:16:27 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <20170308151544.7606-1-eblake@redhat.com>
-Content-Type: text/plain; charset=windows-1251
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20170407222016.15308-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH for-2.9? v2] tests: Ignore more test
- executables
+Subject: Re: [Qemu-trivial] [PATCH v2 0/4] 3 easy-to-fix clang warnings,
+ 1 error code fixed
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,15 +50,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Apr 2017 18:03:35 -0000
+X-List-Received-Date: Sun, 23 Apr 2017 08:16:39 -0000
 
-08.03.2017 18:15, Eric Blake wrote:
-> Ignore test executables when building in-tree:
-> test-arm-mptimer introduced in commit 882fac3
-> test-crypto-hmac introduced in commit 4fd460b
-> test-aio-multithread introduced in commit 0c330a7
+08.04.2017 01:20, Philippe Mathieu-Daud=C3=A9 wrote:
+> This patchset fixes three easy-to-fix unrelated clang warnings, so it w=
+as
+> probably better to send them separately the first time.
+>=20
+> v2:
+>     - hw/usb/dev-smartcard-reader.c: The first patch was treating NULL =
+and 0 as
+>       errors but those values are legal in some cases, i.e. no (virtual=
+)
+>       smartcard inserted into the card reader (Gerd Hoffmann's review).
+>     - device_tree.c: Added Marc-Andr=C3=A9 Lureau's Reviewed-by.
+>     - qga/commands-posix.c: Added a commit to improve failed operation,=
+ as
+>       suggested by Michael Roth.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (4):
+>   usb-ccid: make ccid_write_data_block() cope with null buffers
+>   device_tree: fix compiler warnings (clang 5)
+>   qga: fix compiler warnings (clang 5)
+>   qga: improve error handling in transfer_memory_block
 
-Applied to -trivial, thank you!
+Applied to -trivial, thanks!
 
 /mjt
 
