@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d2LJR-0003Bg-90
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Apr 2017 13:28:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35911)
+	id 1d2LL9-0003vl-Rs
+	for mharc-qemu-trivial@gnu.org; Sun, 23 Apr 2017 13:30:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d2LJP-0003B4-HU
-	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 13:28:40 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1d2LL7-0003u8-O3
+	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 13:30:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d2LJO-0006rf-Sg
-	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 13:28:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:50299)
+	(envelope-from <mjt@tls.msk.ru>) id 1d2LL7-00079v-1M
+	for qemu-trivial@nongnu.org; Sun, 23 Apr 2017 13:30:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56829)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d2LJK-0006qg-HF; Sun, 23 Apr 2017 13:28:34 -0400
+	id 1d2LL1-000791-6K; Sun, 23 Apr 2017 13:30:19 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6474241F5A;
-	Sun, 23 Apr 2017 20:28:33 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id B9ABA41F5A;
+	Sun, 23 Apr 2017 20:30:17 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 4FFEA3F8;
-	Sun, 23 Apr 2017 20:28:33 +0300 (MSK)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1488975205-26312-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 9FD5C3F8;
+	Sun, 23 Apr 2017 20:30:17 +0300 (MSK)
+To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+References: <20170207132723.13934-1-famz@redhat.com>
+	<20170207132723.13934-2-famz@redhat.com>
+Cc: Laszlo Ersek <lersek@redhat.com>, qemu-block@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <91599bbb-5c48-6ad5-e910-df5aad07e21e@msgid.tls.msk.ru>
-Date: Sun, 23 Apr 2017 20:28:33 +0300
+Message-ID: <a573309c-24a9-072d-4c0a-b55f66d77222@msgid.tls.msk.ru>
+Date: Sun, 23 Apr 2017 20:30:17 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1488975205-26312-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20170207132723.13934-2-famz@redhat.com>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] qemu-doc: Fix broken URLs of amnhltm.zip
- and dosidle210.zip
+Subject: Re: [Qemu-trivial] [PATCH 1/2] virtio-blk: Remove useless condition
+ around g_free()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,12 +49,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Apr 2017 17:28:40 -0000
+X-List-Received-Date: Sun, 23 Apr 2017 17:30:26 -0000
 
-08.03.2017 15:13, Thomas Huth wrote:
-> There are some broken URLs in the qemu-doc which reference tools that
-> are not available at their original location anymore. Fortunately, they
-> have been mirrored to archive.org, so point to that location instead.
+07.02.2017 16:27, Fam Zheng wrote:
+> Laszlo spotted and studied this wasteful "if". He pointed out:
+> 
+> The original virtio_blk_free_request needed an "if" as it accesses one
+> field, since 671ec3f05655 ("virtio-blk: Convert VirtIOBlockReq.elem to
+> pointer", 2014-06-11); later on in f897bf751fbd ("virtio-blk: embed
+> VirtQueueElement in VirtIOBlockReq", 2014-07-09) the field became
+> embedded, so the "if" became unnecessary (at which point we were using
+> g_slice_free(), but it is the same.
+> 
+> Now drop it.
 
 Applied to -trivial, thanks!
 
