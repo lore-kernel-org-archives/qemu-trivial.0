@@ -1,60 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d2coO-0002oE-Nt
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Apr 2017 08:09:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38975)
+	id 1d2f3R-00012W-0R
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Apr 2017 10:33:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51680)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d2coM-0002n7-QB
-	for qemu-trivial@nongnu.org; Mon, 24 Apr 2017 08:09:48 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1d2f3O-00010x-Cc
+	for qemu-trivial@nongnu.org; Mon, 24 Apr 2017 10:33:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1d2coL-0004ky-Fk
-	for qemu-trivial@nongnu.org; Mon, 24 Apr 2017 08:09:46 -0400
-Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:38209)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1d2coL-0004kN-9P
-	for qemu-trivial@nongnu.org; Mon, 24 Apr 2017 08:09:45 -0400
-Received: by mail-wm0-x233.google.com with SMTP id r190so65633669wme.1
-	for <qemu-trivial@nongnu.org>; Mon, 24 Apr 2017 05:09:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=aIwJgYr0Ru/r8I/W9AhTgq2/3x/QHqAvpTCru374erQ=;
-	b=kPI0+5yEw06Pohosvo3CA0APyMUISagA/divxnMNK83PK/iQuB2dJS594XCuVUW7w3
-	qKvz8fuvL/GKKsR86X2XHB3FgdRPZbjdgObaWQGi8B/fKzEiILsORJJIfrO9hZNbILSN
-	fHjjKbHqqVZ5nvKm+J10mgXZovj62zB3BjgwU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=aIwJgYr0Ru/r8I/W9AhTgq2/3x/QHqAvpTCru374erQ=;
-	b=PR8LZbDbq5PZnzzxAZWsR03XExEvkZ3RPAHD33yD/FE6Jy8PhIKb9GPolBYAfFz/Yp
-	Kyn56qfb6wteZrdJoG4kkoqYt83wWBxDdamVORM1p0KqntHTW+PfO0aNCDNgQ/T0Q4Bt
-	Lq9nIFD9xCzgscVmvYaClL6OuHnbTszcj28RZLRTd4D+euWiLSdHEqRljTTkzgiGCOOL
-	qJckxoVXFnWWSVz89VpgSTQZiPVV+S32B93AIuREfcpFQbijC7V2H3VG97yGa49Co+AL
-	y/Vm8zQnJUfxS8DNFvofUK5AOd9elXF/qonrcQNydLAc1EtkJBL51+PegN8EM5xudOBW
-	YBxg==
-X-Gm-Message-State: AN3rC/4Gfbl9h47+4Eq+dLmBAtLXWaorqfjP+Cv3epVqoEq9HR3Pe5tp
-	Bqu8rZeQ1IgZWcSSVn/hn19VXvR65VTs
-X-Received: by 10.28.57.138 with SMTP id g132mr9065576wma.92.1493035784170;
-	Mon, 24 Apr 2017 05:09:44 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.145.68 with HTTP; Mon, 24 Apr 2017 05:09:23 -0700 (PDT)
-In-Reply-To: <cover.1492787889.git.balaton@eik.bme.hu>
-References: <cover.1492787889.git.balaton@eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Apr 2017 13:09:23 +0100
-Message-ID: <CAFEAcA8zdKvg-y=kGGNH9x4s_Z9CSgu3gP8_GW8JANj74i2h0Q@mail.gmail.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Magnus Damm <magnus.damm@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::233
-Subject: Re: [Qemu-trivial] [PATCH v7 00/13] Improvements for SM501 display
- controller emulation
+	(envelope-from <mjt@tls.msk.ru>) id 1d2f3L-0003To-Ni
+	for qemu-trivial@nongnu.org; Mon, 24 Apr 2017 10:33:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57769)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1d2f3A-0003Jg-Uk; Mon, 24 Apr 2017 10:33:13 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id A811942007;
+	Mon, 24 Apr 2017 17:33:02 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 461B440F;
+	Mon, 24 Apr 2017 17:33:02 +0300 (MSK)
+Received: (nullmailer pid 20615 invoked by uid 1000);
+	Mon, 24 Apr 2017 14:33:02 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org, Chris Webb <chris@arachsys.com>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 24 Apr 2017 17:32:54 +0300
+Message-Id: <20170424143254.20569-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PATCH] virtfs: allow a device id to be specified in
+ the -virtfs option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,31 +42,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Apr 2017 12:09:48 -0000
+X-List-Received-Date: Mon, 24 Apr 2017 14:33:27 -0000
 
-On 21 April 2017 at 16:18, BALATON Zoltan <balaton@eik.bme.hu> wrote:
-> v7: Define default values for some variables to avoid an (invalid)
->     warning from gcc 6 or 7 as suggested by Aurelien Jarno.
->
-> BALATON Zoltan (13):
->   sm501: Fixed code style and a few typos in comments
->   sm501: Use defined constants instead of literal values where available
->   sm501: Add missing arbitration control register
->   sm501: QOMify
->   sm501: Get rid of base address in draw_hwc_line
->   sm501: Add emulation of chip connected via PCI
->   sm501: Fix device endianness
->   sm501: Fix hardware cursor
->   sm501: Misc clean ups
->   sm501: Add support for panel layer
->   sm501: Add some more missing registers
->   sm501: Add vmstate descriptor
->   ppc: Add SM501 device in ppc softmmu targets default configs
+From: Chris Webb <chris@arachsys.com>
 
-Thanks for working through the code review process on this one.
-Since SH4 is only 'odd fixes' and Aurelien has tested the code,
-I've applied it directly to git master.
+When using a virtfs root filesystem, the mount_tag needs to be set to
+/dev/root. This can be done long-hand as
 
-thanks
--- PMM
+  -fsdev local,id=root,path=/path/to/rootfs,...
+  -device virtio-9p-pci,fsdev=root,mount_tag=/dev/root
+
+but the -virtfs shortcut cannot be used as it hard-codes the device identifier
+to match the mount_tag, and device identifiers may not contain '/':
+
+  $ qemu-system-x86_64 -virtfs local,path=/foo,mount_tag=/dev/root,security_model=passthrough
+  qemu-system-x86_64: -virtfs local,path=/foo,mount_tag=/dev/root,security_model=passthrough: duplicate fsdev id: /dev/root
+
+To support this case using -virtfs, we allow the device identifier to be
+specified explicitly when the mount_tag is not suitable:
+
+  -virtfs local,id=root,path=/path/to/rootfs,mount_tag=/dev/root,...
+
+Signed-off-by: Chris Webb <chris@arachsys.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+mjt: ported to current code, simplified a bit using ?:
+operator.
+
+This is a patch from 2011,
+https://lists.gnu.org/archive/html/qemu-devel/2011-11/msg03083.html
+
+ qemu-options.hx | 2 +-
+ vl.c            | 5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index d7da182df4..968161ab25 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -863,7 +863,7 @@ ETEXI
+ 
+ DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
+     "-virtfs local,path=path,mount_tag=tag,security_model=[mapped-xattr|mapped-file|passthrough|none]\n"
+-    "        [,writeout=immediate][,readonly][,socket=socket|sock_fd=sock_fd]\n",
++    "        [,id=id][,writeout=immediate][,readonly][,socket=socket|sock_fd=sock_fd]\n",
+     QEMU_ARCH_ALL)
+ 
+ STEXI
+diff --git a/vl.c b/vl.c
+index 0b4ed5241c..d1da43ee4c 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3521,10 +3521,11 @@ int main(int argc, char **argv, char **envp)
+                     exit(1);
+                 }
+                 fsdev = qemu_opts_create(qemu_find_opts("fsdev"),
++                                         qemu_opts_id(opts) ?:
+                                          qemu_opt_get(opts, "mount_tag"),
+                                          1, NULL);
+                 if (!fsdev) {
+-                    error_report("duplicate fsdev id: %s",
++                    error_report("duplicate or invalid fsdev id: %s",
+                                  qemu_opt_get(opts, "mount_tag"));
+                     exit(1);
+                 }
+@@ -3562,7 +3563,7 @@ int main(int argc, char **argv, char **envp)
+                                           &error_abort);
+                 qemu_opt_set(device, "driver", "virtio-9p-pci", &error_abort);
+                 qemu_opt_set(device, "fsdev",
+-                             qemu_opt_get(opts, "mount_tag"), &error_abort);
++                             qemu_opts_id(fsdev), &error_abort);
+                 qemu_opt_set(device, "mount_tag",
+                              qemu_opt_get(opts, "mount_tag"), &error_abort);
+                 break;
+-- 
+2.11.0
+
 
