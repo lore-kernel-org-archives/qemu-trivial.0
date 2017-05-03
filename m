@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d5t9L-0005y0-CE
-	for mharc-qemu-trivial@gnu.org; Wed, 03 May 2017 08:12:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53531)
+	id 1d5tpt-000752-UX
+	for mharc-qemu-trivial@gnu.org; Wed, 03 May 2017 08:56:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38867)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1d5t9J-0005wb-8V
-	for qemu-trivial@nongnu.org; Wed, 03 May 2017 08:12:54 -0400
+	(envelope-from <armbru@redhat.com>) id 1d5tpr-00073O-KJ
+	for qemu-trivial@nongnu.org; Wed, 03 May 2017 08:56:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1d5t9I-0003EP-Ck
-	for qemu-trivial@nongnu.org; Wed, 03 May 2017 08:12:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39884)
+	(envelope-from <armbru@redhat.com>) id 1d5tpq-0000E6-QU
+	for qemu-trivial@nongnu.org; Wed, 03 May 2017 08:56:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43588)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1d5t9C-0003Br-5K; Wed, 03 May 2017 08:12:46 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1d5tpm-0000C4-BN; Wed, 03 May 2017 08:56:46 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E24580F90;
-	Wed,  3 May 2017 12:12:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1E24580F90
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id E50EF80C15;
+	Wed,  3 May 2017 12:56:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E50EF80C15
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=lvivier@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 1E24580F90
-Received: from [10.36.117.10] (ovpn-117-10.ams2.redhat.com [10.36.117.10])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B3433182D8;
-	Wed,  3 May 2017 12:12:43 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Cc: qemu-trivial@nongnu.org, leon.alrae@imgtec.com, qemu-devel@nongnu.org
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E50EF80C15
+Received: from blackfin.pond.sub.org (ovpn-116-149.ams2.redhat.com
+	[10.36.116.149])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AD37C1BD862;
+	Wed,  3 May 2017 12:56:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 12C571138646; Wed,  3 May 2017 14:56:41 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org,  leon.alrae@imgtec.com,  qemu-devel@nongnu.org
 References: <20170503104441.1349-1-pbonzini@redhat.com>
 	<874lx21880.fsf@dusky.pond.sub.org>
 	<8e6b18bc-eb3e-c77f-2b9a-c797c3c15680@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <a22156a5-0746-228d-7351-5b6f2537d714@redhat.com>
-Date: Wed, 3 May 2017 14:12:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.0
+Date: Wed, 03 May 2017 14:56:41 +0200
+In-Reply-To: <8e6b18bc-eb3e-c77f-2b9a-c797c3c15680@redhat.com> (Paolo
+	Bonzini's message of "Wed, 3 May 2017 13:54:30 +0200")
+Message-ID: <87pofqxfna.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <8e6b18bc-eb3e-c77f-2b9a-c797c3c15680@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 03 May 2017 12:12:45 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 03 May 2017 12:56:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -61,14 +62,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 May 2017 12:12:54 -0000
+X-List-Received-Date: Wed, 03 May 2017 12:56:52 -0000
 
-On 03/05/2017 13:54, Paolo Bonzini wrote:
-> 
-> 
+Paolo Bonzini <pbonzini@redhat.com> writes:
+
 > On 03/05/2017 13:38, Markus Armbruster wrote:
 >> Paolo Bonzini <pbonzini@redhat.com> writes:
->>
+>> 
 >>> Detected by GCC 7's -Wformat-truncation.  snprintf writes at most
 >>> 2 bytes here including the terminating NUL, so the result is
 >>> truncated.  In addition, the newline at the end is pointless.
@@ -97,23 +97,24 @@ On 03/05/2017 13:54, Paolo Bonzini wrote:
 >>>      console_write_ch(chardata++, ATTR2CHTYPE(buf[0], QEMU_COLOR_BLUE,
 >>>                                               QEMU_COLOR_BLACK, 1));
 >>>      console_write_ch(chardata++, ATTR2CHTYPE(buf[1], QEMU_COLOR_BLUE,
->>
+>> 
 >> Since we're only every interested in the first two characters, the
 >> truncation is totally harmless.  Thus, your patch cleans doesn't really
 >> "fix bad snprintf", it cleans up an unclean one.  Consider rewording the
 >> commit message accordingly.
-> 
+>
 > My reading is that buf[1] is always '\0' in the current code: "snprintf
 > writes at most 2 bytes here including the terminating NUL, so the result
 > is truncated".
 
-I agree, from printf(3):
+You're right; I forgot that snprintf() always adds a NUL.  So this *is*
+broken: we write NUL instead of the second digit.  Mentioning this in
+the commit message wouldn't hurt.
 
-"int snprintf(char *str, size_t size, const char *format, ...);
-...
-The  functions  snprintf()  and  vsnprintf()  write  at most size bytes
-(including the terminating null byte ('\0')) to str."
-
-Laurent
-
+>
+> Paolo
+>
+>> Regardless,
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>> 
 
