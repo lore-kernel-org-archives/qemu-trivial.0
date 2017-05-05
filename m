@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d6Wjg-0000aO-VF
-	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:29:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59470)
+	id 1d6Wl1-0001TI-Tj
+	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:30:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6Wjf-0000Yr-0I
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:29:03 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1d6Wkz-0001Rb-7d
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:30:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6Wje-0004Ed-Bt
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:29:03 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:51677)
+	(envelope-from <mjt@tls.msk.ru>) id 1d6Wky-0004uJ-FZ
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:30:25 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53437)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d6Wja-0004Dm-CI; Fri, 05 May 2017 02:28:58 -0400
+	id 1d6Wku-0004tR-Cb; Fri, 05 May 2017 02:30:20 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9354D40384;
-	Fri,  5 May 2017 09:28:57 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 1505040384;
+	Fri,  5 May 2017 09:30:18 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 80D3E19;
-	Fri,  5 May 2017 09:28:57 +0300 (MSK)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20170503103023.9247-1-pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org, famz@redhat.com, qemu-block@nongnu.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id EF34519;
+	Fri,  5 May 2017 09:30:17 +0300 (MSK)
+To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
+References: <20170505020430.2305-1-famz@redhat.com>
+Cc: qemu-trivial@nongnu.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <119274c9-e914-9f83-bc0a-fedfc259713d@msgid.tls.msk.ru>
-Date: Fri, 5 May 2017 09:28:57 +0300
+Message-ID: <abf070b1-527b-0412-8f21-672e542ee12f@msgid.tls.msk.ru>
+Date: Fri, 5 May 2017 09:30:17 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <20170503103023.9247-1-pbonzini@redhat.com>
+In-Reply-To: <20170505020430.2305-1-famz@redhat.com>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Update paths for AioContext
- implementation
+Subject: Re: [Qemu-trivial] [PATCH] tests: Remove redundant assignment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,9 +45,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 May 2017 06:29:03 -0000
+X-List-Received-Date: Fri, 05 May 2017 06:30:26 -0000
 
-Applied to -trivial, mentioning c2b38b2 in commit message, thanks!
+That's a good one :)
+
+Applied to -trivial, thanks!
 
 /mjt
 
