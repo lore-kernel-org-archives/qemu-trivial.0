@@ -1,39 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d6WfT-0005hV-Fe
-	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:24:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58355)
+	id 1d6Wg6-0006OI-7N
+	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:25:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6WfR-0005gQ-Bs
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:24:42 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1d6Wg4-0006MR-0j
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:25:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6WfQ-0002ox-KJ
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:24:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46063)
+	(envelope-from <mjt@tls.msk.ru>) id 1d6Wg3-00030V-8e
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:25:20 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39347)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d6WfM-0002oL-8r; Fri, 05 May 2017 02:24:36 -0400
+	id 1d6Wfy-0002zH-R0; Fri, 05 May 2017 02:25:15 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8A80540384;
-	Fri,  5 May 2017 09:24:33 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 27F7940384;
+	Fri,  5 May 2017 09:25:14 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 602093BB;
-	Fri,  5 May 2017 09:24:33 +0300 (MSK)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20170503104441.1349-1-pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org, leon.alrae@imgtec.com
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id A410519;
+	Fri,  5 May 2017 09:14:26 +0300 (MSK)
+To: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org
+References: <20170425131828.22480-1-n54@gmx.com>
+Cc: peter.maydell@linaro.org, qemu-devel <qemu-devel@nongnu.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <3a1419bd-710a-61f5-bfee-0eb5895a022c@msgid.tls.msk.ru>
-Date: Fri, 5 May 2017 09:24:33 +0300
+Message-ID: <690b205a-e3d1-f378-97a8-dca129743826@msgid.tls.msk.ru>
+Date: Fri, 5 May 2017 09:14:26 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <20170503104441.1349-1-pbonzini@redhat.com>
+In-Reply-To: <20170425131828.22480-1-n54@gmx.com>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] jazz_led: fix bad snprintf
+Subject: Re: [Qemu-trivial] [PATCH] scripts/qemu-binfmt-conf.sh: Fix shell
+ portability issue
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,18 +46,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 May 2017 06:24:42 -0000
+X-List-Received-Date: Fri, 05 May 2017 06:25:21 -0000
 
-03.05.2017 13:44, Paolo Bonzini wrote:
-> Detected by GCC 7's -Wformat-truncation.  snprintf writes at most
-> 2 bytes here including the terminating NUL, so the result is
-> truncated.  In addition, the newline at the end is pointless.
-> Fix the buffer size and the format string.
+25.04.2017 16:18, Kamil Rytarowski wrote:
+> Appease pkgsrc and use portable shell variable comparison.
+> This switches "==" to "=". It should not be a functional change.
 
-Polo, that's quite a bit too bureaucratic,
-but where's your s-o-b for this patch? :)
-
-Thanks,
+Applied to -trivial, thanks!
 
 /mjt
+
+> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+> ---
+>  scripts/qemu-binfmt-conf.sh | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+> index 0f1aa63872..8afc3eb5bb 100755
+> --- a/scripts/qemu-binfmt-conf.sh
+> +++ b/scripts/qemu-binfmt-conf.sh
+> @@ -284,12 +284,12 @@ while true ; do
+>          shift
+>          # check given cpu is in the supported CPU list
+>          for cpu in ${qemu_target_list} ; do
+> -            if [ "$cpu" == "$1" ] ; then
+> +            if [ "$cpu" = "$1" ] ; then
+>                  break
+>              fi
+>          done
+>  
+> -        if [ "$cpu" == "$1" ] ; then
+> +        if [ "$cpu" = "$1" ] ; then
+>              qemu_target_list="$1"
+>          else
+>              echo "ERROR: unknown CPU \"$1\"" 1>&2
+> 	
+
 
