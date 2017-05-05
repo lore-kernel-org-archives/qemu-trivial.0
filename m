@@ -1,39 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d6Wl1-0001TI-Tj
-	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:30:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59677)
+	id 1d6X91-00075b-3U
+	for mharc-qemu-trivial@gnu.org; Fri, 05 May 2017 02:55:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34720)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6Wkz-0001Rb-7d
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:30:25 -0400
+	(envelope-from <famz@redhat.com>) id 1d6X8z-00073G-HG
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:55:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d6Wky-0004uJ-FZ
-	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:30:25 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:53437)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1d6Wku-0004tR-Cb; Fri, 05 May 2017 02:30:20 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1505040384;
-	Fri,  5 May 2017 09:30:18 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id EF34519;
-	Fri,  5 May 2017 09:30:17 +0300 (MSK)
-To: Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org
-References: <20170505020430.2305-1-famz@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <abf070b1-527b-0412-8f21-672e542ee12f@msgid.tls.msk.ru>
-Date: Fri, 5 May 2017 09:30:17 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <famz@redhat.com>) id 1d6X8y-0006Ld-Um
+	for qemu-trivial@nongnu.org; Fri, 05 May 2017 02:55:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45688)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1d6X8u-0006HY-Ln; Fri, 05 May 2017 02:55:08 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B5C178046D;
+	Fri,  5 May 2017 06:55:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B5C178046D
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=famz@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B5C178046D
+Received: from localhost (ovpn-8-36.pek2.redhat.com [10.72.8.36])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D4CF618C54;
+	Fri,  5 May 2017 06:55:05 +0000 (UTC)
+Date: Fri, 5 May 2017 14:55:04 +0800
+From: Fam Zheng <famz@redhat.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, thuth@redhat.com, dgilbert@redhat.com
+Message-ID: <20170505065504.GA21435@lemon.lan>
+References: <20170428022329.30726-1-eblake@redhat.com>
+	<20170428085407.GC23819@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20170505020430.2305-1-famz@redhat.com>
-Content-Type: text/plain; charset=windows-1251
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170428085407.GC23819@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 05 May 2017 06:55:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] tests: Remove redundant assignment
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Ignore another built
+ executable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,11 +60,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 May 2017 06:30:26 -0000
+X-List-Received-Date: Fri, 05 May 2017 06:55:14 -0000
 
-That's a good one :)
+On Fri, 04/28 09:54, Daniel P. Berrange wrote:
+> On Thu, Apr 27, 2017 at 09:23:29PM -0500, Eric Blake wrote:
+> > Commit 78f86a2b7 added a new test, but forgot to exclude the built
+> > binary from version control.
+> 
+> CC Fam
+> 
+> I wonder if the patchew test system could be made to report an error
+> if git identifies built files that are not ignored.
+> 
 
-Applied to -trivial, thanks!
+If we had .git in the docker tests that patchew uses, it would be easy.  That's
+an unfortunate dependency for a number of other features, I'll see what I can
+do.
 
-/mjt
+Fam
 
