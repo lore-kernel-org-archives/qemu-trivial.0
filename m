@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d7GoA-0001Va-PJ
-	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 03:40:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58183)
+	id 1d7HUZ-0004GK-90
+	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 04:24:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34307)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7Go3-0001Qp-W8
-	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:40:40 -0400
+	(envelope-from <no-reply@patchew.org>) id 1d7HUW-0004Fj-Oh
+	for qemu-trivial@nongnu.org; Sun, 07 May 2017 04:24:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7Go2-000749-Sc
-	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:40:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52571)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1d7Gny-00072O-V4; Sun, 07 May 2017 03:40:35 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id AB56A40483;
-	Sun,  7 May 2017 10:40:32 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 157A1435;
-	Sun,  7 May 2017 10:02:31 +0300 (MSK)
-Received: (nullmailer pid 26571 invoked by uid 1000);
-	Sun, 07 May 2017 07:02:29 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Chris Webb <chris@arachsys.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  7 May 2017 10:02:19 +0300
-Message-Id: <5e78979d471f1fd49217155d4c6481c585c51ff1.1494140528.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
+	(envelope-from <no-reply@patchew.org>) id 1d7HUV-0007Wm-C5
+	for qemu-trivial@nongnu.org; Sun, 07 May 2017 04:24:32 -0400
+Resent-Date: Sun, 07 May 2017 04:24:32 -0400
+Resent-Message-Id: <E1d7HUV-0007Wm-C5@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21457)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1d7HUQ-0007Ul-8C; Sun, 07 May 2017 04:24:26 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 149414544679164.78715295356358;
+	Sun, 7 May 2017 01:24:06 -0700 (PDT)
 In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 16/23] virtfs: allow a device id to be
- specified in the -virtfs option
+Message-ID: <149414544619.228.1879657482779163616@c05f1edc8ed1>
+Reply-To: <qemu-devel@nongnu.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: mjt@tls.msk.ru
+Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru
+Date: Sun, 7 May 2017 01:24:06 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/23] Trivial patches for
+ 2017-05-07
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,74 +45,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 May 2017 07:40:41 -0000
+X-List-Received-Date: Sun, 07 May 2017 08:24:34 -0000
 
-From: Chris Webb <chris@arachsys.com>
-
-When using a virtfs root filesystem, the mount_tag needs to be set to
-/dev/root. This can be done long-hand as
-
-  -fsdev local,id=root,path=/path/to/rootfs,...
-  -device virtio-9p-pci,fsdev=root,mount_tag=/dev/root
-
-but the -virtfs shortcut cannot be used as it hard-codes the device identifier
-to match the mount_tag, and device identifiers may not contain '/':
-
-  $ qemu-system-x86_64 -virtfs local,path=/foo,mount_tag=/dev/root,security_model=passthrough
-  qemu-system-x86_64: -virtfs local,path=/foo,mount_tag=/dev/root,security_model=passthrough: duplicate fsdev id: /dev/root
-
-To support this case using -virtfs, we allow the device identifier to be
-specified explicitly when the mount_tag is not suitable:
-
-  -virtfs local,id=root,path=/path/to/rootfs,mount_tag=/dev/root,...
-
-Signed-off-by: Chris Webb <chris@arachsys.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- qemu-options.hx | 2 +-
- vl.c            | 5 +++--
- 2 files changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index a24fef2107..a5b0589cb7 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -876,7 +876,7 @@ ETEXI
- 
- DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
-     "-virtfs local,path=path,mount_tag=tag,security_model=[mapped-xattr|mapped-file|passthrough|none]\n"
--    "        [,writeout=immediate][,readonly][,socket=socket|sock_fd=sock_fd]\n",
-+    "        [,id=id][,writeout=immediate][,readonly][,socket=socket|sock_fd=sock_fd]\n",
-     QEMU_ARCH_ALL)
- 
- STEXI
-diff --git a/vl.c b/vl.c
-index 42d4bce439..10f3afd860 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3524,10 +3524,11 @@ int main(int argc, char **argv, char **envp)
-                     exit(1);
-                 }
-                 fsdev = qemu_opts_create(qemu_find_opts("fsdev"),
-+                                         qemu_opts_id(opts) ?:
-                                          qemu_opt_get(opts, "mount_tag"),
-                                          1, NULL);
-                 if (!fsdev) {
--                    error_report("duplicate fsdev id: %s",
-+                    error_report("duplicate or invalid fsdev id: %s",
-                                  qemu_opt_get(opts, "mount_tag"));
-                     exit(1);
-                 }
-@@ -3565,7 +3566,7 @@ int main(int argc, char **argv, char **envp)
-                                           &error_abort);
-                 qemu_opt_set(device, "driver", "virtio-9p-pci", &error_abort);
-                 qemu_opt_set(device, "fsdev",
--                             qemu_opt_get(opts, "mount_tag"), &error_abort);
-+                             qemu_opts_id(fsdev), &error_abort);
-                 qemu_opt_set(device, "mount_tag",
-                              qemu_opt_get(opts, "mount_tag"), &error_abort);
-                 break;
--- 
-2.11.0
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogY292
+ZXIuMTQ5NDE0MDUyNy5naXQubWp0QG1zZ2lkLnRscy5tc2sucnUKU3ViamVjdDogW1FlbXUtZGV2
+ZWxdIFtQVUxMIDAwLzIzXSBUcml2aWFsIHBhdGNoZXMgZm9yIDIwMTctMDUtMDcKVHlwZTogc2Vy
+aWVzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0x
+CnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2Ug
+JEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0gg
+JG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAgICBpZiAhIGdp
+dCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWls
+YmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBmaQogICAgbj0k
+KChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0
+aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dpdGNoZWQgdG8g
+YSBuZXcgYnJhbmNoICd0ZXN0Jwo4YWNmNWQzIHRlc3RzOiBSZW1vdmUgcmVkdW5kYW50IGFzc2ln
+bm1lbnQKMGY0OTRhNiBNQUlOVEFJTkVSUzogVXBkYXRlIHBhdGhzIGZvciBBaW9Db250ZXh0IGlt
+cGxlbWVudGF0aW9uCjk5NzRiZTAgTUFJTlRBSU5FUlM6IFVwZGF0ZSBwYXRocyBmb3IgbWFpbiBs
+b29wCjNlOGMzYWYgamF6el9sZWQ6IGZpeCBiYWQgc25wcmludGYKOGY3NTNiOSB0ZXN0czogSWdu
+b3JlIGFub3RoZXIgYnVpbHQgZXhlY3V0YWJsZSAodGVzdC1obXApCjdkNTQ4OWQgc2NyaXB0czog
+U3dpdGNoIHRvIG1vcmUgcG9ydGFibGUgUGVybCBzaGViYW5nCjUzNmQwMzEgc2NyaXB0cy9xZW11
+LWJpbmZtdC1jb25mLnNoOiBGaXggc2hlbGwgcG9ydGFiaWxpdHkgaXNzdWUKYTNlMGIyYiB2aXJ0
+ZnM6IGFsbG93IGEgZGV2aWNlIGlkIHRvIGJlIHNwZWNpZmllZCBpbiB0aGUgLXZpcnRmcyBvcHRp
+b24KMzIyN2M1NSBody9jb3JlL2dlbmVyaWMtbG9hZGVyOiBGaXggY3Jhc2ggd2hlbiBydW5uaW5n
+IHdpdGhvdXQgQ1BVCjIyYmY2Y2EgdmlydGlvLWJsazogUmVtb3ZlIHVzZWxlc3MgY29uZGl0aW9u
+IGFyb3VuZCBnX2ZyZWUoKQo2NWZlMDZjIHFlbXUtZG9jOiBGaXggYnJva2VuIFVSTHMgb2YgYW1u
+aGx0bS56aXAgYW5kIGRvc2lkbGUyMTAuemlwCjFmNTVhYzAgdXNlIF9TdGF0aWNfYXNzZXJ0IGlu
+IFFFTVVfQlVJTERfQlVHX09OCjU4MDA1ZmIgY2hhbm5lbC1maWxlOiBmaXggd3JvbmcgcGFyYW1l
+dGVyIGNvbW1lbnRzCjkwMjliOGIgYmxvY2s6IE1ha2UgJ3JlcGxpY2F0aW9uX3N0YXRlJyBhbiBl
+bnVtCmQ1ZjA3ZjAgdXRpbDogVXNlIGdfbWFsbG9jL2dfZnJlZSBpbiBlbnZsaXN0LmMKZTFkODI3
+MyBxZ2E6IGZpeCBjb21waWxlciB3YXJuaW5ncyAoY2xhbmcgNSkKMDc3YTc5ZSBkZXZpY2VfdHJl
+ZTogZml4IGNvbXBpbGVyIHdhcm5pbmdzIChjbGFuZyA1KQo5NjViMzA1IHVzYi1jY2lkOiBtYWtl
+IGNjaWRfd3JpdGVfZGF0YV9ibG9jaygpIGNvcGUgd2l0aCBudWxsIGJ1ZmZlcnMKM2IxOWQ5MyB0
+ZXN0czogSWdub3JlIG1vcmUgdGVzdCBleGVjdXRhYmxlcwoyOTZjYzBkIEFkZCAnbm9uZScgYXMg
+dHlwZSBmb3IgZHJpdmUncyBpZiBvcHRpb24KNzA4Njc0YSBkb2M6IGZpeCBmdW5jdGlvbiBzcGVs
+bGluZwphZmNjNTgzIHBwY19ib29rZTogZHJvcCB1c2VsZXNzIGFzc2lnbm1lbnQKOGI5NDU4OSBS
+ZW1vdmUgcmVkdW50YW50IHFlbXU6IGZyb20gZXJyb3IgZnVuY3Rpb25zCgo9PT0gT1VUUFVUIEJF
+R0lOID09PQpDaGVja2luZyBQQVRDSCAxLzIzOiBSZW1vdmUgcmVkdW50YW50IHFlbXU6IGZyb20g
+ZXJyb3IgZnVuY3Rpb25zLi4uCkNoZWNraW5nIFBBVENIIDIvMjM6IHBwY19ib29rZTogZHJvcCB1
+c2VsZXNzIGFzc2lnbm1lbnQuLi4KQ2hlY2tpbmcgUEFUQ0ggMy8yMzogZG9jOiBmaXggZnVuY3Rp
+b24gc3BlbGxpbmcuLi4KQ2hlY2tpbmcgUEFUQ0ggNC8yMzogQWRkICdub25lJyBhcyB0eXBlIGZv
+ciBkcml2ZSdzIGlmIG9wdGlvbi4uLgpDaGVja2luZyBQQVRDSCA1LzIzOiB0ZXN0czogSWdub3Jl
+IG1vcmUgdGVzdCBleGVjdXRhYmxlcy4uLgpDaGVja2luZyBQQVRDSCA2LzIzOiB1c2ItY2NpZDog
+bWFrZSBjY2lkX3dyaXRlX2RhdGFfYmxvY2soKSBjb3BlIHdpdGggbnVsbCBidWZmZXJzLi4uCkNo
+ZWNraW5nIFBBVENIIDcvMjM6IGRldmljZV90cmVlOiBmaXggY29tcGlsZXIgd2FybmluZ3MgKGNs
+YW5nIDUpLi4uCkNoZWNraW5nIFBBVENIIDgvMjM6IHFnYTogZml4IGNvbXBpbGVyIHdhcm5pbmdz
+IChjbGFuZyA1KS4uLgpDaGVja2luZyBQQVRDSCA5LzIzOiB1dGlsOiBVc2UgZ19tYWxsb2MvZ19m
+cmVlIGluIGVudmxpc3QuYy4uLgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0
+YWJzCiMxMTY6IEZJTEU6IHV0aWwvZW52bGlzdC5jOjI3OgorXkllbnZsaXN0ID0gZ19tYWxsb2Mo
+c2l6ZW9mKCplbnZsaXN0KSk7JAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2Ug
+dGFicwojMTI2OiBGSUxFOiB1dGlsL2Vudmxpc3QuYzo0OToKK15JXklnX2ZyZWUoKGNoYXIgKill
+bnRyeS0+ZXZfdmFyKTskCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJz
+CiMxMjc6IEZJTEU6IHV0aWwvZW52bGlzdC5jOjUwOgorXkleSWdfZnJlZShlbnRyeSk7JAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTMwOiBGSUxFOiB1dGlsL2Vu
+dmxpc3QuYzo1MjoKK15JZ19mcmVlKGVudmxpc3QpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91
+bGQgbmV2ZXIgdXNlIHRhYnMKIzE0MDogRklMRTogdXRpbC9lbnZsaXN0LmM6MTAyOgorXkl0bXBl
+bnYgPSBnX3N0cmR1cChlbnYpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNl
+IHRhYnMKIzE1OTogRklMRTogdXRpbC9lbnZsaXN0LmM6MTU1OgorXkleSWdfZnJlZSgoY2hhciAq
+KWVudHJ5LT5ldl92YXIpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRh
+YnMKIzE2MDogRklMRTogdXRpbC9lbnZsaXN0LmM6MTU2OgorXkleSWdfZnJlZShlbnRyeSk7JAoK
+RVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTcxOiBGSUxFOiB1dGls
+L2Vudmxpc3QuYzoxNjE6CiteSWVudHJ5ID0gZ19tYWxsb2Moc2l6ZW9mKCplbnRyeSkpOyQKCkVS
+Uk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzE3MjogRklMRTogdXRpbC9l
+bnZsaXN0LmM6MTYyOgorXkllbnRyeS0+ZXZfdmFyID0gZ19zdHJkdXAoZW52KTskCgpFUlJPUjog
+Y29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxODI6IEZJTEU6IHV0aWwvZW52bGlz
+dC5jOjE5NzoKK15JXklnX2ZyZWUoKGNoYXIgKillbnRyeS0+ZXZfdmFyKTskCgpFUlJPUjogY29k
+ZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxODM6IEZJTEU6IHV0aWwvZW52bGlzdC5j
+OjE5ODoKK15JXklnX2ZyZWUoZW50cnkpOyQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2
+ZXIgdXNlIHRhYnMKIzIxMTogRklMRTogdXRpbC9lbnZsaXN0LmM6MjIxOgorXklwZW52ID0gZW52
+ID0gZ19tYWxsb2MoKGVudmxpc3QtPmVsX2NvdW50ICsgMSkgKiBzaXplb2YoY2hhciAqKSk7JAoK
+RVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMjE2OiBGSUxFOiB1dGls
+L2Vudmxpc3QuYzoyMjU6CiteSV5JKihwZW52KyspID0gZ19zdHJkdXAoZW50cnktPmV2X3Zhcik7
+JAoKdG90YWw6IDEzIGVycm9ycywgMCB3YXJuaW5ncywgMTY4IGxpbmVzIGNoZWNrZWQKCllvdXIg
+cGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNl
+IGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVy
+LCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDEwLzIzOiBi
+bG9jazogTWFrZSAncmVwbGljYXRpb25fc3RhdGUnIGFuIGVudW0uLi4KQ2hlY2tpbmcgUEFUQ0gg
+MTEvMjM6IGNoYW5uZWwtZmlsZTogZml4IHdyb25nIHBhcmFtZXRlciBjb21tZW50cy4uLgpDaGVj
+a2luZyBQQVRDSCAxMi8yMzogdXNlIF9TdGF0aWNfYXNzZXJ0IGluIFFFTVVfQlVJTERfQlVHX09O
+Li4uCkNoZWNraW5nIFBBVENIIDEzLzIzOiBxZW11LWRvYzogRml4IGJyb2tlbiBVUkxzIG9mIGFt
+bmhsdG0uemlwIGFuZCBkb3NpZGxlMjEwLnppcC4uLgpDaGVja2luZyBQQVRDSCAxNC8yMzogdmly
+dGlvLWJsazogUmVtb3ZlIHVzZWxlc3MgY29uZGl0aW9uIGFyb3VuZCBnX2ZyZWUoKS4uLgpDaGVj
+a2luZyBQQVRDSCAxNS8yMzogaHcvY29yZS9nZW5lcmljLWxvYWRlcjogRml4IGNyYXNoIHdoZW4g
+cnVubmluZyB3aXRob3V0IENQVS4uLgpDaGVja2luZyBQQVRDSCAxNi8yMzogdmlydGZzOiBhbGxv
+dyBhIGRldmljZSBpZCB0byBiZSBzcGVjaWZpZWQgaW4gdGhlIC12aXJ0ZnMgb3B0aW9uLi4uCkNo
+ZWNraW5nIFBBVENIIDE3LzIzOiBzY3JpcHRzL3FlbXUtYmluZm10LWNvbmYuc2g6IEZpeCBzaGVs
+bCBwb3J0YWJpbGl0eSBpc3N1ZS4uLgpDaGVja2luZyBQQVRDSCAxOC8yMzogc2NyaXB0czogU3dp
+dGNoIHRvIG1vcmUgcG9ydGFibGUgUGVybCBzaGViYW5nLi4uCkNoZWNraW5nIFBBVENIIDE5LzIz
+OiB0ZXN0czogSWdub3JlIGFub3RoZXIgYnVpbHQgZXhlY3V0YWJsZSAodGVzdC1obXApLi4uCkNo
+ZWNraW5nIFBBVENIIDIwLzIzOiBqYXp6X2xlZDogZml4IGJhZCBzbnByaW50Zi4uLgpDaGVja2lu
+ZyBQQVRDSCAyMS8yMzogTUFJTlRBSU5FUlM6IFVwZGF0ZSBwYXRocyBmb3IgbWFpbiBsb29wLi4u
+CkNoZWNraW5nIFBBVENIIDIyLzIzOiBNQUlOVEFJTkVSUzogVXBkYXRlIHBhdGhzIGZvciBBaW9D
+b250ZXh0IGltcGxlbWVudGF0aW9uLi4uCkNoZWNraW5nIFBBVENIIDIzLzIzOiB0ZXN0czogUmVt
+b3ZlIHJlZHVuZGFudCBhc3NpZ25tZW50Li4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21t
+YW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2Fs
+bHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
+ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
 
 
