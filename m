@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d7GUm-0004QE-IV
-	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 03:20:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56098)
+	id 1d7GUn-0004R7-Ec
+	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 03:20:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7GUi-0004MD-Rb
-	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:20:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7GUh-00037M-Bm
+	(envelope-from <mjt@tls.msk.ru>) id 1d7GUh-0004KL-9z
 	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:20:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58749)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1d7GUg-00036q-Hu
+	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:20:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52129)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d7GUc-00034g-2l; Sun, 07 May 2017 03:20:34 -0400
+	id 1d7GUc-00034d-29; Sun, 07 May 2017 03:20:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id D62DF40476;
-	Sun,  7 May 2017 10:20:32 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 15A9440481;
+	Sun,  7 May 2017 10:20:33 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 31EA33F9;
-	Sun,  7 May 2017 10:02:31 +0300 (MSK)
-Received: (nullmailer pid 26575 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 0F5D6439;
+	Sun,  7 May 2017 10:02:32 +0300 (MSK)
+Received: (nullmailer pid 26583 invoked by uid 1000);
 	Sun, 07 May 2017 07:02:29 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org,
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  7 May 2017 10:02:21 +0300
-Message-Id: <66440e3b1578ebe891fa35a4c8d66722400a3b98.1494140528.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  7 May 2017 10:02:25 +0300
+Message-Id: <f5cdcaeea2944e6664b5abcfce5c3eaee71ca761.1494140528.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 18/23] scripts: Switch to more portable Perl
- shebang
+Subject: [Qemu-trivial] [PULL 22/23] MAINTAINERS: Update paths for
+ AioContext implementation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,156 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 May 2017 07:20:42 -0000
+X-List-Received-Date: Sun, 07 May 2017 07:20:40 -0000
 
-From: Kamil Rytarowski <n54@gmx.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-The default NetBSD package manager is pkgsrc and it installs Perl
-along other third party programs under custom and configurable prefix.
-The default prefix for binary prebuilt packages is /usr/pkg, and the
-Perl executable lands in /usr/pkg/bin/perl.
+Moved by c2b38b2
+("block: move AioContext, QEMUTimer, main-loop to libqemuutil")
 
-This change switches "/usr/bin/perl" to "/usr/bin/env perl" as it's
-the most portable solution that should work for almost everybody.
-Perl's executable is detected automatically.
-
-This change switches -w option passed to the executable with more
-modern "use warnings;" approach. There is no functional change to the
-default behavior.
-
-Signed-off-by: Kamil Rytarowski <n54@gmx.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- scripts/checkpatch.pl           | 3 ++-
- scripts/clean-header-guards.pl  | 3 ++-
- scripts/cleanup-trace-events.pl | 2 +-
- scripts/disas-objdump.pl        | 4 +++-
- scripts/get_maintainer.pl       | 3 ++-
- scripts/shaderinclude.pl        | 2 +-
- scripts/switch-timer-api        | 2 +-
- scripts/texi2pod.pl             | 4 +++-
- 8 files changed, 15 insertions(+), 8 deletions(-)
+ MAINTAINERS | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index f084542934..3bb6fc95bd 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl -w
-+#!/usr/bin/env perl
- # (c) 2001, Dave Jones. (the file handling bit)
- # (c) 2005, Joel Schopp <jschopp@austin.ibm.com> (the ugly bit)
- # (c) 2007,2008, Andy Whitcroft <apw@uk.ibm.com> (new conditions, test s=
-uite)
-@@ -6,6 +6,7 @@
- # Licensed under the terms of the GNU GPL License version 2
-=20
- use strict;
-+use warnings;
-=20
- my $P =3D $0;
- $P =3D~ s@.*/@@g;
-diff --git a/scripts/clean-header-guards.pl b/scripts/clean-header-guards=
-.pl
-index 54ab99ae29..5e67f1998c 100755
---- a/scripts/clean-header-guards.pl
-+++ b/scripts/clean-header-guards.pl
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl -w
-+#!/usr/bin/env perl
- #
- # Clean up include guards in headers
- #
-@@ -28,6 +28,7 @@
- #   "cc -E -DGUARD_H -c -P -", and fed the test program on stdin.
-=20
- use strict;
-+use warnings;
- use Getopt::Std;
-=20
- # Stuff we don't want to clean because we import it into our tree:
-diff --git a/scripts/cleanup-trace-events.pl b/scripts/cleanup-trace-even=
-ts.pl
-index 7e808efb6a..e93abc00da 100755
---- a/scripts/cleanup-trace-events.pl
-+++ b/scripts/cleanup-trace-events.pl
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl
-+#!/usr/bin/env perl
- # Copyright (C) 2013 Red Hat, Inc.
- #
- # Authors:
-diff --git a/scripts/disas-objdump.pl b/scripts/disas-objdump.pl
-index 8f7e8182a1..bec905f04b 100755
---- a/scripts/disas-objdump.pl
-+++ b/scripts/disas-objdump.pl
-@@ -1,4 +1,6 @@
--#!/usr/bin/perl -w
-+#!/usr/bin/env perl
-+
-+use warnings;
-=20
- use File::Temp qw/ tempfile /;
- use Getopt::Long;
-diff --git a/scripts/get_maintainer.pl b/scripts/get_maintainer.pl
-index 8261bcb1ad..d7c2311123 100755
---- a/scripts/get_maintainer.pl
-+++ b/scripts/get_maintainer.pl
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl -w
-+#!/usr/bin/env perl
- # (c) 2007, Joe Perches <joe@perches.com>
- #           created from checkpatch.pl
- #
-@@ -11,6 +11,7 @@
- # Licensed under the terms of the GNU GPL License version 2
-=20
- use strict;
-+use warnings;
-=20
- my $P =3D $0;
- my $V =3D '0.26';
-diff --git a/scripts/shaderinclude.pl b/scripts/shaderinclude.pl
-index 81b5146332..cd3bb40b12 100644
---- a/scripts/shaderinclude.pl
-+++ b/scripts/shaderinclude.pl
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl
-+#!/usr/bin/env perl
- use strict;
- use warnings;
-=20
-diff --git a/scripts/switch-timer-api b/scripts/switch-timer-api
-index b0e230b9f1..41736d11dd 100755
---- a/scripts/switch-timer-api
-+++ b/scripts/switch-timer-api
-@@ -1,4 +1,4 @@
--#!/usr/bin/perl
-+#!/usr/bin/env perl
-=20
- use strict;
- use warnings;
-diff --git a/scripts/texi2pod.pl b/scripts/texi2pod.pl
-index 6e8fec41a1..39ce584a32 100755
---- a/scripts/texi2pod.pl
-+++ b/scripts/texi2pod.pl
-@@ -1,4 +1,4 @@
--#! /usr/bin/perl -w
-+#! /usr/bin/env perl
-=20
- #   Copyright (C) 1999, 2000, 2001, 2003 Free Software Foundation, Inc.
-=20
-@@ -22,6 +22,8 @@
- # markup to Perl POD format.  It's intended to be used to extract
- # something suitable for a manpage from a Texinfo document.
-=20
-+use warnings;
-+
- $output =3D 0;
- $skipping =3D 0;
- %sects =3D ();
---=20
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e6822b23bf..e79ffb3f8a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1175,8 +1175,8 @@ M: Stefan Hajnoczi <stefanha@redhat.com>
+ M: Fam Zheng <famz@redhat.com>
+ L: qemu-block@nongnu.org
+ S: Supported
+-F: async.c
+-F: aio-*.c
++F: util/async.c
++F: util/aio-*.c
+ F: block/io.c
+ F: migration/block*
+ F: include/block/aio.h
+-- 
 2.11.0
 
 
