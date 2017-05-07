@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d7GL3-0006k0-DX
-	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 03:10:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54472)
+	id 1d7GL4-0006lL-Ga
+	for mharc-qemu-trivial@gnu.org; Sun, 07 May 2017 03:10:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54471)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7GL0-0006gl-Vu
+	(envelope-from <mjt@tls.msk.ru>) id 1d7GL0-0006gj-Vh
 	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:10:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d7GL0-0000kD-4n
+	(envelope-from <mjt@tls.msk.ru>) id 1d7GL0-0000jy-1b
 	for qemu-trivial@nongnu.org; Sun, 07 May 2017 03:10:38 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:36645)
+Received: from isrv.corpit.ru ([86.62.121.231]:39753)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1d7GKw-0000iJ-6V; Sun, 07 May 2017 03:10:34 -0400
+	id 1d7GKv-0000hg-Kf; Sun, 07 May 2017 03:10:33 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 15CAE40483;
-	Sun,  7 May 2017 10:10:33 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id EA34B40481;
+	Sun,  7 May 2017 10:10:32 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id B04AA3F8;
-	Sun,  7 May 2017 10:02:30 +0300 (MSK)
-Received: (nullmailer pid 26550 invoked by uid 1000);
-	Sun, 07 May 2017 07:02:28 -0000
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A11DE43B;
+	Sun,  7 May 2017 10:02:32 +0300 (MSK)
+Received: (nullmailer pid 26569 invoked by uid 1000);
+	Sun, 07 May 2017 07:02:29 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  7 May 2017 10:02:09 +0300
-Message-Id: <6b1de1484ee2f80d5795358ea79e90c3ceb64167.1494140528.git.mjt@msgid.tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  7 May 2017 10:02:18 +0300
+Message-Id: <cdc68b9a77e0296e2491b893763779cf2fe7a7c5.1494140528.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
 References: <cover.1494140527.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 06/23] usb-ccid: make ccid_write_data_block()
- cope with null buffers
+Subject: [Qemu-trivial] [PULL 15/23] hw/core/generic-loader: Fix crash when
+ running without CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,41 +49,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 07 May 2017 07:10:40 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
 
-static code analyzer complain:
+When running QEMU with "-M none -device loader,file=kernel.elf", it
+currently crashes with a segmentation fault, because the "none"-machine
+does not have any CPU by default and the generic loader code tries
+to dereference s->cpu. Fix it by adding an appropriate check for a
+NULL pointer.
 
-hw/usb/dev-smartcard-reader.c:816:5: warning: Null pointer passed as an a=
-rgument to a 'nonnull' parameter
-    memcpy(p->abData, data, len);
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reported-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/dev-smartcard-reader.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ hw/core/generic-loader.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.=
-c
-index 757b8b3f5a..49cb1829b5 100644
---- a/hw/usb/dev-smartcard-reader.c
-+++ b/hw/usb/dev-smartcard-reader.c
-@@ -813,7 +813,10 @@ static void ccid_write_data_block(USBCCIDState *s, u=
-int8_t slot, uint8_t seq,
-     if (p->b.bError) {
-         DPRINTF(s, D_VERBOSE, "error %d\n", p->b.bError);
-     }
--    memcpy(p->abData, data, len);
-+    if (len) {
-+        g_assert_nonnull(data);
-+        memcpy(p->abData, data, len);
-+    }
-     ccid_reset_error_status(s);
-     usb_wakeup(s->bulk, 0);
- }
---=20
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+index 58f1f02902..46012673c3 100644
+--- a/hw/core/generic-loader.c
++++ b/hw/core/generic-loader.c
+@@ -137,20 +137,21 @@ static void generic_loader_realize(DeviceState *dev, Error **errp)
+ #endif
+ 
+     if (s->file) {
++        AddressSpace *as = s->cpu ? s->cpu->as :  NULL;
++
+         if (!s->force_raw) {
+             size = load_elf_as(s->file, NULL, NULL, &entry, NULL, NULL,
+-                               big_endian, 0, 0, 0, s->cpu->as);
++                               big_endian, 0, 0, 0, as);
+ 
+             if (size < 0) {
+                 size = load_uimage_as(s->file, &entry, NULL, NULL, NULL, NULL,
+-                                      s->cpu->as);
++                                      as);
+             }
+         }
+ 
+         if (size < 0 || s->force_raw) {
+             /* Default to the maximum size being the machine's ram size */
+-            size = load_image_targphys_as(s->file, s->addr, ram_size,
+-                                          s->cpu->as);
++            size = load_image_targphys_as(s->file, s->addr, ram_size, as);
+         } else {
+             s->addr = entry;
+         }
+-- 
 2.11.0
 
 
