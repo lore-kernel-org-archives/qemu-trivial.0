@@ -1,72 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d7nqf-0006EE-8V
-	for mharc-qemu-trivial@gnu.org; Mon, 08 May 2017 14:57:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45930)
+	id 1d7sFe-0004uS-JM
+	for mharc-qemu-trivial@gnu.org; Mon, 08 May 2017 19:39:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52567)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d7nqc-0006Cq-NL
-	for qemu-trivial@nongnu.org; Mon, 08 May 2017 14:57:31 -0400
+	id 1d7sFb-0004t1-Pw
+	for qemu-trivial@nongnu.org; Mon, 08 May 2017 19:39:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d7nqZ-0004vi-MN
-	for qemu-trivial@nongnu.org; Mon, 08 May 2017 14:57:30 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33919)
+	id 1d7sFb-0002Aw-14
+	for qemu-trivial@nongnu.org; Mon, 08 May 2017 19:39:35 -0400
+Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:35554)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d7nqZ-0004v0-Hf; Mon, 08 May 2017 14:57:27 -0400
-Received: by mail-qk0-x242.google.com with SMTP id u75so11407427qka.1;
-	Mon, 08 May 2017 11:57:27 -0700 (PDT)
+	id 1d7sFW-00028e-Rj; Mon, 08 May 2017 19:39:30 -0400
+Received: by mail-qk0-x22c.google.com with SMTP id a72so49747424qkj.2;
+	Mon, 08 May 2017 16:39:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=u/N+h82PSJK1WNo9tdTEL0D8SwiJgHWuHCTTNeWN+RQ=;
-	b=m5w+c80Y80xTOPgc3Q52TfzMc/Ul/WSVPqPdcDM11nq86Q2MR3DUt6aGEv9G6Id3F/
-	68H60QYFx5CuHwo0IPjsYW9DH7PlTMxeCO865icAMTo28lzB2eG+6SgsQKw79ey5yCft
-	qHSl6UdQKImhly6boIPuoWBDnbucLn6cgDoa1AKs/i0ooK11SC2RP6VKtX+iLPRr4Kws
-	lD4uRQ0BIiAiz90/ZaBFhFRpYjjGWbZLK7l2tDIMsBAILn9M7TMfkGqHNKUKWVH04g6p
-	y9vHXdw/Q2aILVMVbsqxpWl850r8XwY49gnJ1OQB2tAfClk/kUbgMFP12arhCqm9dJkN
-	iDEw==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=fsh7WKaIG3d3cx5zxsiLj3wivmXqYuVkUZl+xya64+Q=;
+	b=a4u4+5GASZ8oVhsjmdbWTK4xP0LLrsycvFy4y07pBidPpIKRzVX3Ot2SG47wEmhKPO
+	Nqcbn903NdbEh+4nXw7glr14zrfr5HVUVP53XrkJ48JQ4zmxYRd6Gxbuh+HhnbRTkpxR
+	l8YXkBbTlllguzZyxaRJyZXQvUPNoGxk2OqcxZENooxyr3bl2ELRAM6E/z9BHDrl9X9e
+	aLWEeoOUPUyYzkbkOhjsimjdqURLUYTFHwP5Zolh37NL5dxeo0vnBquk8cwghr2J4HGM
+	EghIMke/Fy2E2NpYUKOqlpvjZ9qsW2HNS4zmh13t4QE/7enjiZcHiDOYp4XwDz471RkL
+	YD4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=u/N+h82PSJK1WNo9tdTEL0D8SwiJgHWuHCTTNeWN+RQ=;
-	b=Y7M0aIQDy1NB84bM5ccydcGtmP+CB7dWLcVmu+7RBpGJAC5asxeuqTz5Mdynl1vR0N
-	drgnfApewQb61RTQFZWmbIT/jDwsxlyJlgY8bp2W974wvojK8Vag2KFq9HeL6OUI9pzn
-	gfOC+wu1a8bhm3bg0WGZWMTz5xscEr6kZNFvD9a4Hz1MS+usN26OzPtrw0dqjBJ2/Yb3
-	lWL0/sV0hY65B3blrHUSSThYa/C5y0qbejVLvIbeyxi0G/qWC0HBfa4qYwHvnWaJMKY2
-	BAga5hBzGamtJ5l/HE5yncr3HxJpe+ohZz8lVU9oZ6k6QCuQPpTKXvQAFpGMqQ8gbeQo
-	rJjQ==
-X-Gm-Message-State: AN3rC/7V38N+pn16DstkXWlsgZaZQRM8NrH8W15wxqQDuBIaRdWa4Yc5
-	TPWI/YSuc886BA==
-X-Received: by 10.233.216.68 with SMTP id u65mr25005283qkf.37.1494269846832;
-	Mon, 08 May 2017 11:57:26 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=fsh7WKaIG3d3cx5zxsiLj3wivmXqYuVkUZl+xya64+Q=;
+	b=ah65Dmby1Qa40HZx9fpqhz372bEjUwr97Dxvl3JmUduUBGcpuFSrF0VUGTmiqgQIMI
+	MLRgf5fZDl7Nbf9oUCpmb1WOw5DU52BLvyTgux1M+z2xVv/C+8X2A/k327qjJnl6shuT
+	NkhxzLDakpJ2ESiOciKsKUuPRT14RccGTw0RHdnuv6+2NjF+o0fDklwPvPJsKxCJTqc0
+	7RevoquvD3AAWqlhp3+ahrUe0d+JafrNCW1/UQaDHVDbnXYa6tj6JBJAUegzg0l9rxnJ
+	IWdh8rV9Ok0TEDnpxS0D+lU3XsNkRscwt08wCa9mBou04eSTBxl997vDmkXIs4740Qpd
+	gVcg==
+X-Gm-Message-State: AODbwcAf+zpTf2KbqACQEPSxIJ9Yiq3xyvzi8BIiJV11OHLqJRCOTpMn
+	ZV6fEHwA0eY3Xw==
+X-Received: by 10.55.97.202 with SMTP id v193mr22345151qkb.186.1494286770247; 
+	Mon, 08 May 2017 16:39:30 -0700 (PDT)
+Received: from localhost.localdomain ([138.117.48.226])
 	by smtp.gmail.com with ESMTPSA id
-	x27sm7448565qtb.54.2017.05.08.11.57.24
+	v64sm13556099qkg.38.2017.05.08.16.39.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 May 2017 11:57:26 -0700 (PDT)
+	Mon, 08 May 2017 16:39:29 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Max Filippov <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org
-References: <1494266456-2251-1-git-send-email-jcmvbkbc@gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
-	<alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e73e252e-61fc-6b2c-6e3f-f5a2e1f934cc@amsat.org>
-Date: Mon, 8 May 2017 15:57:23 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Mon,  8 May 2017 20:39:07 -0300
+Message-Id: <20170508233918.9043-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
 MIME-Version: 1.0
-In-Reply-To: <1494266456-2251-1-git-send-email-jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/xtensa: sim: use
- g_string/g_new
+X-Received-From: 2607:f8b0:400d:c09::22c
+Subject: [Qemu-trivial] [PATCH 00/11] various easy cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,52 +73,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 May 2017 18:57:31 -0000
+X-List-Received-Date: Mon, 08 May 2017 23:39:36 -0000
 
-On 05/08/2017 03:00 PM, Max Filippov wrote:
-> Replace malloc/free/sprintf with g_string/g_string_printf/g_string_free.
-> Replace g_malloc with g_new when allocating the MemoryRegion to get more
-> type safety.
->
-> Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-> Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
+various easy patchs added while coding around:
+- remove old comments
+- add/remove includes
+- use TYPE_ names when available
+- use ARRAY_SIZE() macro
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Philippe Mathieu-Daudé (11):
+  hw/net: removed obsolete comments
+  hw/pci: define msi_nonbroken in pci-stub
+  hw/misc: add missing includes
+  ide/ahci: add missing includes
+  hw/mips: add missing include
+  hw/arm: removed unnecessary include
+  hw/arm: use defined type name instead of hard-coded string.
+  hw/sparc: use ARRAY_SIZE() macro
+  target/sparc: fix DEBUG_MMU DPRINTF() arguments
+  register: display register prefix (name) since it is available
+  MAINTAINERS: self-appoint me as reviewer of the Register API
 
-> ---
->  hw/xtensa/sim.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-> index d2d1d3a..b27e28d 100644
-> --- a/hw/xtensa/sim.c
-> +++ b/hw/xtensa/sim.c
-> @@ -41,21 +41,21 @@ static void xtensa_create_memory_regions(const XtensaMemory *memory,
->                                           const char *name)
->  {
->      unsigned i;
-> -    char *num_name = malloc(strlen(name) + sizeof(i) * 3 + 1);
-> +    GString *num_name = g_string_new(NULL);
->
->      for (i = 0; i < memory->num; ++i) {
->          MemoryRegion *m;
->
-> -        sprintf(num_name, "%s%u", name, i);
-> -        m = g_malloc(sizeof(*m));
-> -        memory_region_init_ram(m, NULL, num_name,
-> +        g_string_printf(num_name, "%s%u", name, i);
-> +        m = g_new(MemoryRegion, 1);
-> +        memory_region_init_ram(m, NULL, num_name->str,
->                                 memory->location[i].size,
->                                 &error_fatal);
->          vmstate_register_ram_global(m);
->          memory_region_add_subregion(get_system_memory(),
->                                      memory->location[i].addr, m);
->      }
-> -    free(num_name);
-> +    g_string_free(num_name, true);
->  }
->
->  static uint64_t translate_phys_addr(void *opaque, uint64_t addr)
->
+ MAINTAINERS                |  1 +
+ hw/arm/armv7m.c            |  4 ++--
+ hw/arm/exynos4210.c        |  4 ++--
+ hw/arm/highbank.c          | 11 +++++++----
+ hw/arm/realview.c          |  6 ++++--
+ hw/arm/vexpress.c          |  6 ++++--
+ hw/arm/xilinx_zynq.c       | 14 ++++++++------
+ hw/core/register.c         |  8 ++++----
+ hw/net/pcnet-pci.c         | 10 ----------
+ hw/pci/pci-stub.c          |  3 +++
+ hw/sparc64/sun4u.c         |  2 +-
+ include/hw/arm/arm.h       |  1 -
+ include/hw/ide/ahci.h      |  2 ++
+ include/hw/mips/mips.h     |  1 +
+ include/hw/misc/unimp.h    |  3 +++
+ target/sparc/ldst_helper.c |  4 ++--
+ 16 files changed, 44 insertions(+), 36 deletions(-)
+
+-- 
+2.11.0
+
 
