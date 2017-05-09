@@ -1,48 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d81e4-0001H3-Tb
+	id 1d81e5-0001HL-86
 	for mharc-qemu-trivial@gnu.org; Tue, 09 May 2017 05:41:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36277)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1d81e2-0001E6-21
+	(envelope-from <armbru@redhat.com>) id 1d81e2-0001EC-4N
 	for qemu-trivial@nongnu.org; Tue, 09 May 2017 05:41:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1d81e1-0001Xv-8y
+	(envelope-from <armbru@redhat.com>) id 1d81e1-0001Y0-Bk
 	for qemu-trivial@nongnu.org; Tue, 09 May 2017 05:41:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43582)
+Received: from mx1.redhat.com ([209.132.183.28]:47428)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1d81dw-0001WN-61; Tue, 09 May 2017 05:41:20 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1d81dw-0001WJ-5o; Tue, 09 May 2017 05:41:20 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 792E2C04B316;
+	by mx1.redhat.com (Postfix) with ESMTPS id 712E561D36;
 	Tue,  9 May 2017 09:41:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 792E2C04B316
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 712E561D36
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=armbru@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 792E2C04B316
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 712E561D36
 Received: from blackfin.pond.sub.org (ovpn-116-149.ams2.redhat.com
 	[10.36.116.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 26D8978344;
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 287A1782A5;
 	Tue,  9 May 2017 09:41:18 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 98B851138648; Tue,  9 May 2017 11:41:16 +0200 (CEST)
+	id 9DBD011386CB; Tue,  9 May 2017 11:41:16 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, "thuth@redhat.comthuth"@redhat.com
-Date: Tue,  9 May 2017 11:41:14 +0200
-Message-Id: <1494322876-28843-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Date: Tue,  9 May 2017 11:41:16 +0200
+Message-Id: <1494322876-28843-3-git-send-email-armbru@redhat.com>
+In-Reply-To: <1494322876-28843-1-git-send-email-armbru@redhat.com>
+References: <1494322876-28843-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
+	(mx1.redhat.com [10.5.110.39]);
 	Tue, 09 May 2017 09:41:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 0/2] docs: Minor updates around ide-drive
+Subject: [Qemu-trivial] [PATCH 2/2] docs/qdev-device-use.txt: update section
+ Default Devices
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,15 +59,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 09 May 2017 09:41:27 -0000
 
-Markus Armbruster (2):
-  docs qemu-doc: Avoid ide-drive, it's deprecated
-  docs/qdev-device-use.txt: update section Default Devices
+Resynchronize the table of default device suppressions with vl.c's
+default_list[].
 
- docs/bootindex.txt       |  2 +-
- docs/qdev-device-use.txt | 13 +++++++------
- qemu-options.hx          |  2 +-
- 3 files changed, 9 insertions(+), 8 deletions(-)
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ docs/qdev-device-use.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
+diff --git a/docs/qdev-device-use.txt b/docs/qdev-device-use.txt
+index caf779b..f9f9eaa 100644
+--- a/docs/qdev-device-use.txt
++++ b/docs/qdev-device-use.txt
+@@ -401,12 +401,13 @@ type.
+ some DEVNAMEs:
+ 
+     default device      suppressing DEVNAMEs
+-    CD-ROM              ide-cd, ide-drive, scsi-cd
+-    isa-fdc's driveA    isa-fdc
++    CD-ROM              ide-cd, ide-drive, ide-hd, scsi-cd, scsi-hd
++    isa-fdc's driveA    floppy, isa-fdc
+     parallel            isa-parallel
+     serial              isa-serial
+-    VGA                 VGA, cirrus-vga, vmware-svga
+-    virtioconsole       virtio-serial-pci, virtio-serial-s390, virtio-serial
++    VGA                 VGA, cirrus-vga, isa-vga, isa-cirrus-vga,
++                        vmware-svga, qxl-vga, virtio-vga
++    virtioconsole       virtio-serial-pci, virtio-serial
+ 
+ The default NIC is connected to a default part created along with it.
+ It is *not* suppressed by configuring a NIC with -device (you may call
 -- 
 2.7.4
 
