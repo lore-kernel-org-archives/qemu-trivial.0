@@ -1,55 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d7xZ5-0000hG-1H
-	for mharc-qemu-trivial@gnu.org; Tue, 09 May 2017 01:20:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40576)
+	id 1d7zVQ-0000qe-RT
+	for mharc-qemu-trivial@gnu.org; Tue, 09 May 2017 03:24:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33802)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1d7xZ2-0000fu-U7
-	for qemu-trivial@nongnu.org; Tue, 09 May 2017 01:20:01 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1d7zVO-0000p8-AP
+	for qemu-trivial@nongnu.org; Tue, 09 May 2017 03:24:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1d7xZ2-0004XF-2X
-	for qemu-trivial@nongnu.org; Tue, 09 May 2017 01:20:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41002)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1d7xYv-0004WM-S3; Tue, 09 May 2017 01:19:53 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7C744C056793;
-	Tue,  9 May 2017 05:19:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C744C056793
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=thuth@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7C744C056793
-Received: from [10.36.116.34] (ovpn-116-34.ams2.redhat.com [10.36.116.34])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A6B987442;
-	Tue,  9 May 2017 05:19:47 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>
+	(envelope-from <alex.bennee@linaro.org>) id 1d7zVK-0007Ka-HC
+	for qemu-trivial@nongnu.org; Tue, 09 May 2017 03:24:22 -0400
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:34450)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1d7zVK-0007KH-BO
+	for qemu-trivial@nongnu.org; Tue, 09 May 2017 03:24:18 -0400
+Received: by mail-wm0-x22a.google.com with SMTP id u65so22815798wmu.1
+	for <qemu-trivial@nongnu.org>; Tue, 09 May 2017 00:24:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=wW3tseA8HYyDh/0r1yz06NWcUOWzl/Cepi8OQNp8EF8=;
+	b=GVMobdOsiWpQoGIVD8l5MpK2svKVBZ46VJ4gm9QVP7/QGEdOiibeWFozyicdqePzSF
+	L+tz9jj8mctreuYSuvaS08kJopC1qOFZJltWxMoCgekhiJpQe2wEd0UUUjWGHlRL8Nzz
+	a3ZJDBBP+YbVuTMCH6f8+Ef1HExpMImh4vIs4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=wW3tseA8HYyDh/0r1yz06NWcUOWzl/Cepi8OQNp8EF8=;
+	b=ddLxK7mzR2oC7mzEAtncWW1xn4YXP7s7g7GTFClnPayB7NBourOpMcaPYvGnFpmqn7
+	MuO77be+AuB9AMF6dEiCOrMDyiApJMOAaXj2z+fHaXgakW20rci6cQpNIpzPweXCr/rv
+	NjMKnA1GNFjJeYVQULhlWcYfLPqSh7cz9IFdPX0Vlf+zGh1m73SS6o1HbiLgPNIm+6Ux
+	DQGCK1VUiNFEVY+IfNCdSs6IxW4SiYNTCIlIjgCwXGC6DaWx5MFRXpsumie95lbqDeSL
+	CEtsrVgarHarvS31gtg2rPMRxvglnZIrrp8KNWK+5Y695Kp/cbz+t86zmuFI9Bz8cDlG
+	TpXA==
+X-Gm-Message-State: AODbwcCfBPBat3GO2/J+aQt8NI5WzfsMBReyCCUiuPC5JNUIX8rwTpF0
+	zL2DJPBni1fJyV5B
+X-Received: by 10.28.167.197 with SMTP id q188mr28752wme.79.1494314656985;
+	Tue, 09 May 2017 00:24:16 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	z90sm25715977wrc.36.2017.05.09.00.24.15
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 09 May 2017 00:24:16 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id F3FEA3E01CB;
+	Tue,  9 May 2017 08:25:01 +0100 (BST)
 References: <20170508233918.9043-1-f4bug@amsat.org>
-	<20170508233918.9043-3-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <2cd1e7a1-7f92-88a2-cf98-0dcea0a2f9b1@redhat.com>
-Date: Tue, 9 May 2017 07:19:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	<20170508233918.9043-9-f4bug@amsat.org>
+User-agent: mu4e 0.9.19; emacs 25.2.17
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
+In-reply-to: <20170508233918.9043-9-f4bug@amsat.org>
+Date: Tue, 09 May 2017 08:25:01 +0100
+Message-ID: <87o9v28pbm.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20170508233918.9043-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 09 May 2017 05:19:52 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 02/11] hw/pci: define
- msi_nonbroken in pci-stub
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] hw/sparc: use
+ ARRAY_SIZE() macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,15 +75,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 May 2017 05:20:01 -0000
+X-List-Received-Date: Tue, 09 May 2017 07:24:23 -0000
 
-On 09.05.2017 01:39, Philippe Mathieu-Daud=C3=A9 wrote:
-> This field is accessed in hw/intc/arm_gicv[23*].c
 
-default-configs/arm-softmmu.mak sets CONFIG_PCI, so this should not be
-necessary, I think. Otherwise, you should extend your patch description,
-to elaborate on what you're trying to do here.
+Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 
- Thomas
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/sparc64/sun4u.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index d347b6616d..525d6f44a0 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -214,7 +214,7 @@ static void isa_irq_handler(void *opaque, int n, int level)
+>      qemu_irq *irqs = opaque;
+>      int ivec;
+>
+> -    assert(n < 16);
+> +    assert(n < ARRAY_SIZE(isa_irq_to_ivec));
+>      ivec = isa_irq_to_ivec[n];
+>      EBUS_DPRINTF("Set ISA IRQ %d level %d -> ivec 0x%x\n", n, level, ivec);
+>      if (ivec) {
 
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+--
+Alex Bennée
 
