@@ -1,71 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d8SlE-0006F4-1I
-	for mharc-qemu-trivial@gnu.org; Wed, 10 May 2017 10:38:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57954)
+	id 1d8Ubf-0006y2-3P
+	for mharc-qemu-trivial@gnu.org; Wed, 10 May 2017 12:36:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8SlB-0006DJ-Sn
-	for qemu-trivial@nongnu.org; Wed, 10 May 2017 10:38:38 -0400
+	(envelope-from <stefanha@gmail.com>) id 1d8UbZ-0006vw-MB
+	for qemu-trivial@nongnu.org; Wed, 10 May 2017 12:36:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8SlB-0004s9-2M
-	for qemu-trivial@nongnu.org; Wed, 10 May 2017 10:38:37 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35238)
+	(envelope-from <stefanha@gmail.com>) id 1d8UbY-0001VZ-9W
+	for qemu-trivial@nongnu.org; Wed, 10 May 2017 12:36:49 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:33748)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d8Sl6-0004pH-3Q; Wed, 10 May 2017 10:38:32 -0400
-Received: by mail-qk0-x241.google.com with SMTP id k74so5183905qke.2;
-	Wed, 10 May 2017 07:38:31 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1d8UbT-0001R9-G4; Wed, 10 May 2017 12:36:43 -0400
+Received: by mail-qt0-x244.google.com with SMTP id a46so141067qte.0;
+	Wed, 10 May 2017 09:36:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=252hIB/cvnf9cpGD9j9K5PkbMsGYR8SWsbYdTIrzhY8=;
-	b=YbQXtfDCYhiWJKQlu7+FPv8qAdlct4XsGS8NkkftT//kCmUixIPpd6DC42oKdHffOR
-	YO2NRPSvVRm454ceII05LsSErtEmKGojtuBJ+I1VIgN7qUcTrjsU61ReH1V99Bv6VRGE
-	7SUPzeQq0CUc0O0p3a6OMSTsr8Vj1iMIldtZCvrbupN7T9LSCJKV9sXlGGa/dsvPRnxF
-	q3VBQBIpYx6sbk4FH5t4tIwPl9pA06QaLKFprfi3aCDZ3iuSWepDYA6P6FqTzhypWRoB
-	gY8wH7tlCEQrYWj//eqLLkjM6nR/ObsX9Oi+wFu/SSJpjLR9k/LTRoLo4875aNMyaxkz
-	ILoA==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=klBoZaMW9OMWuY4TtwW6AFpf4dZ7C7Y7uKLlkZB8tJw=;
+	b=YEDmpgqu7n/sopJxKIlnFajtBTTGtOSh1YZu/HWxWG7IvSc7/hyoUMgkUkpa0ock17
+	a9EKjjnuh3IF5pPPy0tTuyTcKviE6HNsZQaizbpmYPq8LzBzDm/AfWbK6z+8MZNu9aDC
+	XnO0n9qoDNPhwoJ1H9iKJYyBSvW3J2adh8WgTRjiSPLBtbSH1PoYjBMITDENfSGhSgIr
+	ef1nd/0uFtvAz9g5cQQstyEXe2ZOyChl2bsKrbMpFrtNO2nLUS4m7N+Y2QmrbJw5Mnyk
+	Bi7jz/yqNEES1j1daiz8HxKeOD87GduRwvNhFummT1RjfBSpwvbxNB7j+XGjFd6Z1LBD
+	T5BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=252hIB/cvnf9cpGD9j9K5PkbMsGYR8SWsbYdTIrzhY8=;
-	b=pbtnj+zHP2UPEHdNeMO5KCtU8gIwixmhBc2I7Tdyo8G/JKhX8IXp4TX0cGgGPhSGEO
-	3vWIfXJcRLlO6y+UDiP47s/RgI9uPArz1pqTae06Wv+QjzZ5U+GbqKv/TGcJcedPxBCv
-	zfqZ+1cVnli6PbU7Wk6Mlj/+gypWQ9Q+4sDAukovgmWA6qGjs79WbpFNQUB8vktXQU9/
-	4naNe+NyvQLOqSGZe9sv6Ijjr7OQC74HuPaG8vJ2MLTPTqBMquMe7trNjakVI7nZEGIE
-	umByowJSMVps5rrPGF2D4YacmrMy2GIhObFg+QmCYvOQaOef1OkPUSmWG/JKgSwvaIWD
-	B/aQ==
-X-Gm-Message-State: AODbwcBYW+Imc85h2Rh9AUObmOpNIiYoXxmxXPYAQxmCmwMlH4Kdblnp
-	0D1ZD9J/+wrXHw==
-X-Received: by 10.55.75.71 with SMTP id y68mr5578256qka.53.1494427111398;
-	Wed, 10 May 2017 07:38:31 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	c21sm2277340qtd.60.2017.05.10.07.38.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 10 May 2017 07:38:30 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>, Riku Voipio <riku.voipio@iki.fi>
-References: <20170506004106.3291-1-f4bug@amsat.org>
-	<7f51d88d-0dea-5d64-7c6d-530365e29923@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f7193a8d-0086-d61c-b214-76c7f204d062@amsat.org>
-Date: Wed, 10 May 2017 11:38:28 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=klBoZaMW9OMWuY4TtwW6AFpf4dZ7C7Y7uKLlkZB8tJw=;
+	b=ori2Jx8sRiv3DbI4RcozsSKEB50f8ZvqmCISwWX8J4xVwoI02j54uI4W+HfSQtcqv1
+	Mn1/VUySNlDBLy1s16qVHl/0zRUSkUzi3Rq9J9MzbWyPuWrGXTEzny6aXaNviNl87zIn
+	A0Oq+J2AqXJv29hJCsr9BOpMXpib4w+qtzy6m+oIRw0uFq4cMlsrkLJy2QOihmuUd4Ap
+	4S+v6otxe+3ghYbW+ETC25YD9IFMImxOrHC8AIvZ14s6wA5w6BHGtbva3Kvy2zBrI+wZ
+	nHcyKMetf1XRjO3J/onGzp5b0ejRxLHM+6RTW0j4ELYNR9NpM1R+fAGkFG12en7zu9IH
+	Wxzg==
+X-Gm-Message-State: AODbwcBwmkQE+knEYmaRhphP6e+gP7ZMGokS8jyFcUH6Ryf4rUEsgKPJ
+	Mhrv6GEfI3mkKw==
+X-Received: by 10.237.60.77 with SMTP id u13mr6329305qte.18.1494434202813;
+	Wed, 10 May 2017 09:36:42 -0700 (PDT)
+Received: from localhost (50-206-204-8-static.hfc.comcastbusiness.net.
+	[50.206.204.8]) by smtp.gmail.com with ESMTPSA id
+	p89sm2483182qkl.34.2017.05.10.09.36.41
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 10 May 2017 09:36:41 -0700 (PDT)
+Date: Wed, 10 May 2017 12:36:40 -0400
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170510163640.GF19962@stefanha-x1.localdomain>
+References: <cover.1494400777.git.mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-In-Reply-To: <7f51d88d-0dea-5d64-7c6d-530365e29923@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="HCdXmnRlPgeNBad2"
+Content-Disposition: inline
+In-Reply-To: <cover.1494400777.git.mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] syscall: fix compiler
- warnings (clang 5)
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/23] Trivial patches for
+ 2017-05-10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,58 +72,152 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 May 2017 14:38:38 -0000
+X-List-Received-Date: Wed, 10 May 2017 16:36:51 -0000
 
-On 05/10/2017 09:32 AM, Laurent Vivier wrote:
-> On 06/05/2017 02:41, Philippe Mathieu-Daudé wrote:
->> static code analyzer complain:
->>
->> linux-user/syscall.c:5575:9: warning: Dereference of undefined pointer value
->>     if (*host_rt_dev_ptr != 0) {
->>         ^~~~~~~~~~~~~~~~
->>
->> Reported-by: Clang Static Analyzer
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  linux-user/syscall.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
->> index cec8428589..c541e22693 100644
->> --- a/linux-user/syscall.c
->> +++ b/linux-user/syscall.c
->> @@ -5526,7 +5526,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->>      int target_size;
->>      void *argptr;
->>      abi_ulong *target_rt_dev_ptr;
->> -    unsigned long *host_rt_dev_ptr;
->> +    unsigned long *host_rt_dev_ptr = NULL;
->>      abi_long ret;
->>      int i;
->>
->> @@ -5572,7 +5572,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->>      unlock_user(argptr, arg, 0);
->>
->>      ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
->
-> I think we should "assert(host_rt_dev_ptr)" here. It's a bug if
-> host_rt_dev_ptr is not set.
->
-> The "for" loop scans the structure to find the rt_dev field, and we
-> should always enter in the first "if", so "host_rt_dev_ptr" is always set.
 
-It's better indeed, I'll use g_assert_nonnull() and resend.
+--HCdXmnRlPgeNBad2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks!
+On Wed, May 10, 2017 at 10:22:45AM +0300, Michael Tokarev wrote:
+> It is the same as previous pull request (from 2017-05-07),
+> but with author of single patch fixed. I've no idea how
+> it happened, I don't touch patches manually, only add
+> S-o-b and R-o-b using commit --amend.  Either way, it
+> is fixed now.  Not resending everything, only the fixed
+> patch.
+>=20
+> /mjt
+>=20
+> The following changes since commit 12a95f320a36ef66f724a49bb05e4fb553ac5d=
+be:
+>=20
+>   Merge remote-tracking branch 'kwolf/tags/for-upstream' into staging (20=
+17-05-04 13:44:32 +0100)
+>=20
+> are available in the git repository at:
+>=20
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>=20
+> for you to fetch changes up to e1ae9fb6c2a35015ed4881def4a4a7b6be2d15f0:
+>=20
+>   tests: Remove redundant assignment (2017-05-10 10:19:24 +0300)
+>=20
+> ----------------------------------------------------------------
+> trivial patches for 2017-05-10
+>=20
+> ----------------------------------------------------------------
+> Andreas Grapentin (1):
+>       use _Static_assert in QEMU_BUILD_BUG_ON
+>=20
+> Chris Webb (1):
+>       virtfs: allow a device id to be specified in the -virtfs option
+>=20
+> Craig Jellick (1):
+>       Add 'none' as type for drive's if option
+>=20
+> Eric Blake (2):
+>       tests: Ignore more test executables
+>       tests: Ignore another built executable (test-hmp)
+>=20
+> Fam Zheng (3):
+>       block: Make 'replication_state' an enum
+>       virtio-blk: Remove useless condition around g_free()
+>       tests: Remove redundant assignment
+>=20
+> Ishani Chugh (1):
+>       Remove reduntant qemu: from error functions
+>=20
+> KONRAD Frederic (1):
+>       ppc_booke: drop useless assignment
+>=20
+> Kamil Rytarowski (2):
+>       scripts/qemu-binfmt-conf.sh: Fix shell portability issue
+>       scripts: Switch to more portable Perl shebang
+>=20
+> Marc-Andr=E9 Lureau (1):
+>       doc: fix function spelling
+>=20
+> Paolo Bonzini (3):
+>       jazz_led: fix bad snprintf
+>       MAINTAINERS: Update paths for main loop
+>       MAINTAINERS: Update paths for AioContext implementation
+>=20
+> Philippe Mathieu-Daud=E9 (3):
+>       usb-ccid: make ccid_write_data_block() cope with null buffers
+>       device_tree: fix compiler warnings (clang 5)
+>       qga: fix compiler warnings (clang 5)
+>=20
+> Saurav Sachidanand (1):
+>       util: Use g_malloc/g_free in envlist.c
+>=20
+> Thomas Huth (2):
+>       qemu-doc: Fix broken URLs of amnhltm.zip and dosidle210.zip
+>       hw/core/generic-loader: Fix crash when running without CPU
+>=20
+> sochin.jiang (1):
+>       channel-file: fix wrong parameter comments
+>=20
+>  MAINTAINERS                     |  8 +++----
+>  block/replication.c             | 44 +++++++++++++++++++----------------=
+---
+>  bsd-user/main.c                 | 14 ++++--------
+>  configure                       | 18 ++++++++++++++++
+>  device_tree.c                   |  1 +
+>  hw/block/virtio-blk.c           |  4 +---
+>  hw/core/generic-loader.c        |  9 ++++----
+>  hw/display/jazz_led.c           |  4 ++--
+>  hw/microblaze/boot.c            |  2 +-
+>  hw/nios2/boot.c                 |  2 +-
+>  hw/ppc/pnv.c                    |  2 +-
+>  hw/ppc/ppc_booke.c              |  1 -
+>  hw/s390x/sclp.c                 |  4 ++--
+>  hw/tricore/tricore_testboard.c  |  2 +-
+>  hw/usb/dev-smartcard-reader.c   |  5 ++++-
+>  include/io/channel-file.h       |  2 +-
+>  include/io/channel.h            |  2 +-
+>  include/qemu/compiler.h         |  4 +++-
+>  linux-user/main.c               |  9 +++-----
+>  numa.c                          |  4 ++--
+>  qemu-doc.texi                   | 10 ++++-----
+>  qemu-options.hx                 |  4 ++--
+>  qga/commands-posix.c            |  8 ++++---
+>  scripts/checkpatch.pl           |  3 ++-
+>  scripts/clean-header-guards.pl  |  3 ++-
+>  scripts/cleanup-trace-events.pl |  2 +-
+>  scripts/disas-objdump.pl        |  4 +++-
+>  scripts/get_maintainer.pl       |  3 ++-
+>  scripts/qemu-binfmt-conf.sh     |  4 ++--
+>  scripts/shaderinclude.pl        |  2 +-
+>  scripts/switch-timer-api        |  2 +-
+>  scripts/texi2pod.pl             |  4 +++-
+>  tests/.gitignore                |  4 ++++
+>  tests/postcopy-test.c           |  2 +-
+>  util/envlist.c                  | 47 +++++++++++++++++------------------=
+------
+>  vl.c                            |  5 +++--
+>  36 files changed, 133 insertions(+), 115 deletions(-)
+>=20
 
->
->> -    if (*host_rt_dev_ptr != 0) {
->> +    if (host_rt_dev_ptr != NULL && *host_rt_dev_ptr != 0) {
->>          unlock_user((void *)*host_rt_dev_ptr,
->>                      *target_rt_dev_ptr, 0);
->>      }
->>
->
-> Laurent
->
+Thanks, applied to my staging tree:
+https://github.com/stefanha/qemu/commits/staging
+
+Stefan
+
+--HCdXmnRlPgeNBad2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJZE0GYAAoJEJykq7OBq3PIeZ4H/1bbVfNzEBKfK/Kza8IS1L9F
+cX0HkAcYw9lxoVzIhdPN5MnpWCzFL6qYvr5Y4UQyQETBN4kJoPITbhYiKm0Rn9En
+2rtAWc+0K7vy0E1q4u+7nu12/do8sP4XiHKpIi61I9IiDUV/i9xJR2GWV2brv6gc
+ggCw+U8p6S0rEB76ffqoOSOn51gxJmBI84Nj/Ci7CQCNCSI+I9kGAO0FPLercNCd
+sYy4DVI1Z4yA74Pq7h+2Nml0EsQt1XCk7zTJaAsy06+5eDvwiqTAn30jfodBl5rd
+L/VpwakqeyfrYSOy0GQi+qkS/jxCPbO+uXAj4n4Uu+D1/eZYvu1RbeD7sM/q5PY=
+=KR/f
+-----END PGP SIGNATURE-----
+
+--HCdXmnRlPgeNBad2--
 
