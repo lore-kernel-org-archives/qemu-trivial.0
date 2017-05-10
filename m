@@ -1,38 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1d8Lxp-0003Yd-Mg
-	for mharc-qemu-trivial@gnu.org; Wed, 10 May 2017 03:23:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47650)
+	id 1d8QnQ-0001qU-7F
+	for mharc-qemu-trivial@gnu.org; Wed, 10 May 2017 08:32:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d8Lxk-0003V1-Rc
-	for qemu-trivial@nongnu.org; Wed, 10 May 2017 03:23:12 -0400
+	(envelope-from <lvivier@redhat.com>) id 1d8QnO-0001nu-2x
+	for qemu-trivial@nongnu.org; Wed, 10 May 2017 08:32:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1d8Lxe-00064a-UY
-	for qemu-trivial@nongnu.org; Wed, 10 May 2017 03:23:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56037)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1d8Lxa-00062L-8u; Wed, 10 May 2017 03:22:58 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 61158404EB;
-	Wed, 10 May 2017 10:22:48 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 51E2B3BB;
-	Wed, 10 May 2017 10:22:48 +0300 (MSK)
-Received: (nullmailer pid 12232 invoked by uid 1000);
-	Wed, 10 May 2017 07:22:48 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Wed, 10 May 2017 10:22:45 +0300
-Message-Id: <cover.1494400777.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
+	(envelope-from <lvivier@redhat.com>) id 1d8QnN-0006l6-5C
+	for qemu-trivial@nongnu.org; Wed, 10 May 2017 08:32:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53590)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1d8QnG-0006hY-SF; Wed, 10 May 2017 08:32:38 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0354E4E34D;
+	Wed, 10 May 2017 12:32:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 0354E4E34D
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lvivier@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 0354E4E34D
+Received: from [10.36.116.221] (ovpn-116-221.ams2.redhat.com [10.36.116.221])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D40C18AC40;
+	Wed, 10 May 2017 12:32:35 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20170506004106.3291-1-f4bug@amsat.org>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <7f51d88d-0dea-5d64-7c6d-530365e29923@redhat.com>
+Date: Wed, 10 May 2017 14:32:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20170506004106.3291-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 10 May 2017 12:32:37 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 00/23] Trivial patches for 2017-05-10
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] syscall: fix compiler
+ warnings (clang 5)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,123 +61,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 May 2017 07:23:12 -0000
+X-List-Received-Date: Wed, 10 May 2017 12:32:47 -0000
 
-It is the same as previous pull request (from 2017-05-07),
-but with author of single patch fixed. I've no idea how
-it happened, I don't touch patches manually, only add
-S-o-b and R-o-b using commit --amend.  Either way, it
-is fixed now.  Not resending everything, only the fixed
-patch.
+On 06/05/2017 02:41, Philippe Mathieu-Daud=C3=A9 wrote:
+> static code analyzer complain:
+>=20
+> linux-user/syscall.c:5575:9: warning: Dereference of undefined pointer =
+value
+>     if (*host_rt_dev_ptr !=3D 0) {
+>         ^~~~~~~~~~~~~~~~
+>=20
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  linux-user/syscall.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index cec8428589..c541e22693 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -5526,7 +5526,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie,=
+ uint8_t *buf_temp,
+>      int target_size;
+>      void *argptr;
+>      abi_ulong *target_rt_dev_ptr;
+> -    unsigned long *host_rt_dev_ptr;
+> +    unsigned long *host_rt_dev_ptr =3D NULL;
+>      abi_long ret;
+>      int i;
+> =20
+> @@ -5572,7 +5572,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie,=
+ uint8_t *buf_temp,
+>      unlock_user(argptr, arg, 0);
+> =20
+>      ret =3D get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
 
-/mjt
+I think we should "assert(host_rt_dev_ptr)" here. It's a bug if
+host_rt_dev_ptr is not set.
 
-The following changes since commit 12a95f320a36ef66f724a49bb05e4fb553ac5d=
-be:
+The "for" loop scans the structure to find the rt_dev field, and we
+should always enter in the first "if", so "host_rt_dev_ptr" is always set=
+.
 
-  Merge remote-tracking branch 'kwolf/tags/for-upstream' into staging (20=
-17-05-04 13:44:32 +0100)
+> -    if (*host_rt_dev_ptr !=3D 0) {
+> +    if (host_rt_dev_ptr !=3D NULL && *host_rt_dev_ptr !=3D 0) {
+>          unlock_user((void *)*host_rt_dev_ptr,
+>                      *target_rt_dev_ptr, 0);
+>      }
+>=20
 
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
-
-for you to fetch changes up to e1ae9fb6c2a35015ed4881def4a4a7b6be2d15f0:
-
-  tests: Remove redundant assignment (2017-05-10 10:19:24 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2017-05-10
-
-----------------------------------------------------------------
-Andreas Grapentin (1):
-      use _Static_assert in QEMU_BUILD_BUG_ON
-
-Chris Webb (1):
-      virtfs: allow a device id to be specified in the -virtfs option
-
-Craig Jellick (1):
-      Add 'none' as type for drive's if option
-
-Eric Blake (2):
-      tests: Ignore more test executables
-      tests: Ignore another built executable (test-hmp)
-
-Fam Zheng (3):
-      block: Make 'replication_state' an enum
-      virtio-blk: Remove useless condition around g_free()
-      tests: Remove redundant assignment
-
-Ishani Chugh (1):
-      Remove reduntant qemu: from error functions
-
-KONRAD Frederic (1):
-      ppc_booke: drop useless assignment
-
-Kamil Rytarowski (2):
-      scripts/qemu-binfmt-conf.sh: Fix shell portability issue
-      scripts: Switch to more portable Perl shebang
-
-Marc-Andr=C3=A9 Lureau (1):
-      doc: fix function spelling
-
-Paolo Bonzini (3):
-      jazz_led: fix bad snprintf
-      MAINTAINERS: Update paths for main loop
-      MAINTAINERS: Update paths for AioContext implementation
-
-Philippe Mathieu-Daud=C3=A9 (3):
-      usb-ccid: make ccid_write_data_block() cope with null buffers
-      device_tree: fix compiler warnings (clang 5)
-      qga: fix compiler warnings (clang 5)
-
-Saurav Sachidanand (1):
-      util: Use g_malloc/g_free in envlist.c
-
-Thomas Huth (2):
-      qemu-doc: Fix broken URLs of amnhltm.zip and dosidle210.zip
-      hw/core/generic-loader: Fix crash when running without CPU
-
-sochin.jiang (1):
-      channel-file: fix wrong parameter comments
-
- MAINTAINERS                     |  8 +++----
- block/replication.c             | 44 +++++++++++++++++++----------------=
----
- bsd-user/main.c                 | 14 ++++--------
- configure                       | 18 ++++++++++++++++
- device_tree.c                   |  1 +
- hw/block/virtio-blk.c           |  4 +---
- hw/core/generic-loader.c        |  9 ++++----
- hw/display/jazz_led.c           |  4 ++--
- hw/microblaze/boot.c            |  2 +-
- hw/nios2/boot.c                 |  2 +-
- hw/ppc/pnv.c                    |  2 +-
- hw/ppc/ppc_booke.c              |  1 -
- hw/s390x/sclp.c                 |  4 ++--
- hw/tricore/tricore_testboard.c  |  2 +-
- hw/usb/dev-smartcard-reader.c   |  5 ++++-
- include/io/channel-file.h       |  2 +-
- include/io/channel.h            |  2 +-
- include/qemu/compiler.h         |  4 +++-
- linux-user/main.c               |  9 +++-----
- numa.c                          |  4 ++--
- qemu-doc.texi                   | 10 ++++-----
- qemu-options.hx                 |  4 ++--
- qga/commands-posix.c            |  8 ++++---
- scripts/checkpatch.pl           |  3 ++-
- scripts/clean-header-guards.pl  |  3 ++-
- scripts/cleanup-trace-events.pl |  2 +-
- scripts/disas-objdump.pl        |  4 +++-
- scripts/get_maintainer.pl       |  3 ++-
- scripts/qemu-binfmt-conf.sh     |  4 ++--
- scripts/shaderinclude.pl        |  2 +-
- scripts/switch-timer-api        |  2 +-
- scripts/texi2pod.pl             |  4 +++-
- tests/.gitignore                |  4 ++++
- tests/postcopy-test.c           |  2 +-
- util/envlist.c                  | 47 +++++++++++++++++------------------=
-------
- vl.c                            |  5 +++--
- 36 files changed, 133 insertions(+), 115 deletions(-)
+Laurent
 
