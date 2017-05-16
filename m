@@ -1,47 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dAM58-0007fS-UI
-	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2017 15:55:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50505)
+	id 1dAQ5z-0000ZU-1E
+	for mharc-qemu-trivial@gnu.org; Mon, 15 May 2017 20:12:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51299)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dAM56-0007dG-AE
-	for qemu-trivial@nongnu.org; Mon, 15 May 2017 15:55:01 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAQ5w-0000Ql-EB
+	for qemu-trivial@nongnu.org; Mon, 15 May 2017 20:12:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dAM55-0002GS-Cz
-	for qemu-trivial@nongnu.org; Mon, 15 May 2017 15:55:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54690)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dAM4x-0002Bo-1a; Mon, 15 May 2017 15:54:51 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BF16820B1C;
-	Mon, 15 May 2017 19:54:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BF16820B1C
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BF16820B1C
-Received: from red.redhat.com (ovpn-123-244.rdu2.redhat.com [10.10.123.244])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9702E189A4;
-	Mon, 15 May 2017 19:54:46 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, famz@redhat.com, armbru@redhat.com,
-	qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>
-Date: Mon, 15 May 2017 14:54:39 -0500
-Message-Id: <20170515195439.17677-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 15 May 2017 19:54:49 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] block: Use QDict helpers for --force-share
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAQ5v-0005oM-Kr
+	for qemu-trivial@nongnu.org; Mon, 15 May 2017 20:12:08 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33150)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dAQ5t-0005n9-4Z; Mon, 15 May 2017 20:12:05 -0400
+Received: by mail-qk0-x241.google.com with SMTP id o85so20179805qkh.0;
+	Mon, 15 May 2017 17:12:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=tvgzvC53dvved+IvgQEmsiVrqQNnfESTxPE3eHEy1pc=;
+	b=i1SmG4QgVUcTpYC5e8GBazAGvPb23Gb0/Ft8tvgzPMTAx/43cbua6m7ehzwKL2WGtm
+	GnaEFYNWyNfptT2iAzQI5kF6TjrO2IcOMWyMFC3SD3Jvn/KGZpRojbYgszC7fgKaa5Bc
+	L5LObV4eCwqWVnO66GtcxBYZbk4xOqrkiM/xUfF11RfLn5fiHYiMqdjW/Mh+AYakvNdN
+	vR68gGWM3dfM/5YRxwUR8qryK3Rn/1v88X2pGsFNtqtCVdmn+OUvRiwmZNanDXSofuW7
+	GPIl1ozTk+1Wd2JADL2UCNNxvKlxo4IuIpyVN66DfNde7oWOlmLGzGp+OT3M7VIF7hlW
+	UPEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=tvgzvC53dvved+IvgQEmsiVrqQNnfESTxPE3eHEy1pc=;
+	b=RHDcKPUGZoZffxyIeBrPqUF+g6PK5SWciOmMyrLpggBeOBeOC4jymfZag0ASiFaL3j
+	WG5NPa29pC2V6OP4y6Vj5SKjhXVcaXtSwpmBCgOr3rjp1L0QJj+NNNH0bvcGEgpnv7mD
+	NlHnaNim0ZVYdCkUwhUbwMj8PLtOJ3dUt98KQeLGS2Zjo3nPNRwypkBhDylMxoimUxLP
+	vdWlead9BQeY/cGjHFPyD8zg625/tAO7o/6L47RRQA5cwBmhQwYA1AEb85BOORpFn2h8
+	wNCxp/u1iSucJx2HLqp0U0F7qsaL8BTYJRfE5iiU3ESY5KWveUxgKcTuoKJqAoPlG57B
+	cacg==
+X-Gm-Message-State: AODbwcCJjDf0mtVOzWE/zYG9zNOVEkJN2AYgF8CjGLOnGFUEAsQla11J
+	TB45Z6WsxrRvLg==
+X-Received: by 10.55.215.145 with SMTP id t17mr8610779qkt.78.1494893524784;
+	Mon, 15 May 2017 17:12:04 -0700 (PDT)
+Received: from localhost.localdomain ([138.117.48.226])
+	by smtp.gmail.com with ESMTPSA id
+	s21sm9424522qtc.58.2017.05.15.17.12.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 15 May 2017 17:12:04 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 15 May 2017 21:11:50 -0300
+Message-Id: <20170516001150.11508-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20170516001150.11508-1-f4bug@amsat.org>
+References: <20170516001150.11508-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-trivial] [PATCH] coccinelle: fix typo in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,74 +76,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 May 2017 19:55:01 -0000
+X-List-Received-Date: Tue, 16 May 2017 00:12:09 -0000
 
-Fam's addition of --force-share in commits 459571f7 and 335e9937
-were developed prior to the addition of QDict scalar insertion
-macros, but merged after the general cleanup in commit 46f5ac20.
-Patch created mechanically by rerunning:
-
- spatch --sp-file scripts/coccinelle/qobject.cocci \
-        --macro-file scripts/cocci-macro-file.h --dir . --in-place
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
+ scripts/coccinelle/return_directly.cocci | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This could go in through Markus' qapi tree (since he took the
-original cleanup), a block maintainer (since it only touches block
-files), or even the trivial patch queue (since it's so small and
-mechanical) - I don't care which, as long as we don't drop it!
-
- qemu-img.c | 7 +++----
- qemu-io.c  | 2 +-
- 2 files changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/qemu-img.c b/qemu-img.c
-index b506839..60f1784 100644
---- a/qemu-img.c
-+++ b/qemu-img.c
-@@ -296,7 +296,7 @@ static BlockBackend *img_open_opts(const char *optstr,
-             error_report("--force-share/-U conflicts with image options");
-             return NULL;
-         }
--        qdict_put(options, BDRV_OPT_FORCE_SHARE, qbool_from_bool(true));
-+        qdict_put_bool(options, BDRV_OPT_FORCE_SHARE, true);
-     }
-     blk = blk_new_open(NULL, NULL, options, flags, &local_err);
-     if (!blk) {
-@@ -326,7 +326,7 @@ static BlockBackend *img_open_file(const char *filename,
-     }
-
-     if (force_share) {
--        qdict_put(options, BDRV_OPT_FORCE_SHARE, qbool_from_bool(true));
-+        qdict_put_bool(options, BDRV_OPT_FORCE_SHARE, true);
-     }
-     blk = blk_new_open(filename, NULL, options, flags, &local_err);
-     if (!blk) {
-@@ -3156,8 +3156,7 @@ static int img_rebase(int argc, char **argv)
-             if (!options) {
-                 options = qdict_new();
-             }
--            qdict_put(options, BDRV_OPT_FORCE_SHARE,
--                      qbool_from_bool(true));
-+            qdict_put_bool(options, BDRV_OPT_FORCE_SHARE, true);
-         }
-         bdrv_get_backing_filename(bs, backing_name, sizeof(backing_name));
-         blk_old_backing = blk_new_open(backing_name, NULL,
-diff --git a/qemu-io.c b/qemu-io.c
-index 34fa8a1..8e38b28 100644
---- a/qemu-io.c
-+++ b/qemu-io.c
-@@ -76,7 +76,7 @@ static int openfile(char *name, int flags, bool writethrough, bool force_share,
-             QDECREF(opts);
-             return 1;
-         }
--        qdict_put(opts, BDRV_OPT_FORCE_SHARE, qbool_from_bool(true));
-+        qdict_put_bool(opts, BDRV_OPT_FORCE_SHARE, true);
-     }
-     qemuio_blk = blk_new_open(name, NULL, opts, flags, &local_err);
-     if (!qemuio_blk) {
+diff --git a/scripts/coccinelle/return_directly.cocci b/scripts/coccinelle/return_directly.cocci
+index 48680f2c2a..4cf50e75ea 100644
+--- a/scripts/coccinelle/return_directly.cocci
++++ b/scripts/coccinelle/return_directly.cocci
+@@ -1,4 +1,4 @@
+-// replace 'R = X; return R;' with 'return R;'
++// replace 'R = X; return R;' with 'return X;'
+ @@
+ identifier VAR;
+ expression E;
 -- 
-2.9.4
+2.11.0
 
 
