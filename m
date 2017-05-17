@@ -1,58 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dAdZX-0007IB-4A
-	for mharc-qemu-trivial@gnu.org; Tue, 16 May 2017 10:35:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48963)
+	id 1dAyNW-0004xv-25
+	for mharc-qemu-trivial@gnu.org; Wed, 17 May 2017 08:48:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46347)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dAdZU-0007Fs-4h
-	for qemu-trivial@nongnu.org; Tue, 16 May 2017 10:35:33 -0400
+	(envelope-from <stefanha@gmail.com>) id 1dAyNT-0004wE-R1
+	for qemu-trivial@nongnu.org; Wed, 17 May 2017 08:48:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dAdZT-00052T-4F
-	for qemu-trivial@nongnu.org; Tue, 16 May 2017 10:35:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58324)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dAdZN-00051E-Eh; Tue, 16 May 2017 10:35:25 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F3D07448D6B;
-	Tue, 16 May 2017 14:35:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F3D07448D6B
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com F3D07448D6B
-Received: from [10.10.123.244] (ovpn-123-244.rdu2.redhat.com [10.10.123.244])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 25F1C18C55;
-	Tue, 16 May 2017 14:35:07 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
+	(envelope-from <stefanha@gmail.com>) id 1dAyNS-0004Ur-U4
+	for qemu-trivial@nongnu.org; Wed, 17 May 2017 08:48:31 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33204)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1dAyNN-0004Ps-Mu; Wed, 17 May 2017 08:48:25 -0400
+Received: by mail-wm0-x241.google.com with SMTP id y10so3363242wmh.0;
+	Wed, 17 May 2017 05:48:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=jq3rjJv743zoE30bfJGhFZxvB/ZCbFWwtbhSJQiLOOU=;
+	b=n2xS/H4vZoyh7GhQljgj93qNpOLbG0ZmTXp8LTvHX7kJO29EjbYpbFR0aOib4cwtHM
+	T/TMRzuejNun+rbtrA2xyKmmkZQNwLSyjjc5+IhG2rvYCisco5vzM/aUliz5FbdYWkAV
+	xTeDlG9g/sQ+izzkvgjGGCrtBv57sks5qHXQAWk5fBhmQU1RKdVB+tl+n0/xbV5dc2XY
+	4JCn+j78HYnXde2cH/VNU7w/miu/FFYIIMPxrblpxnxQWI0bHXJJZCWC4KSS9AThwElo
+	XxWSW4KgdS/LqMbI3fWxqYkuItN3bbxoQtkWowUBgc8fwoSF+ESk4KwnFnYc6wFYyJtV
+	60oA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=jq3rjJv743zoE30bfJGhFZxvB/ZCbFWwtbhSJQiLOOU=;
+	b=mpDdxkv7DGW08oN46powCkdQUxnqYPUXgUxpHBpCebjVp8pRnbUT5+3H+YI0XOM2AK
+	9gAyIOl+Cy1/GDY/1mdLaLZgmHUhbXNCOF6NSIHZYnHcwb7ZcwiNTkwqpBsYWoiTSkAj
+	9de33Y7w84ilgmtHypdpLgL+AlTmesmbBGjWlbTAH0cmGBQDiCbFdP75OvYUau9bC0Hq
+	jQvC+PI7/Nl1VqRNrfuamKlbzfk6wXXABpjd1tCALxgX7zPoRjJX4X5EnV2ogM+yXdKp
+	JXSxJxc8ojXnssIDFrZFUyCz+wLhv7tfIiwPIxaJbmut5WZURWUfVEWvIacFk0r7zAAx
+	52Lw==
+X-Gm-Message-State: AODbwcDorvzVfZswpvX3tg1Ub4lSuicxo9KMWHqr5C7MN1BJXeAPay8i
+	QIP3Q3575jDQCA==
+X-Received: by 10.28.142.131 with SMTP id q125mr10150210wmd.2.1495025304372;
+	Wed, 17 May 2017 05:48:24 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+	by smtp.gmail.com with ESMTPSA id x9sm2381372wmb.21.2017.05.17.05.48.23
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 17 May 2017 05:48:23 -0700 (PDT)
+Date: Wed, 17 May 2017 13:48:22 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, Peter Lieven <pl@kamp.de>
+Message-ID: <20170517124822.GF8260@stefanha-x1.localdomain>
 References: <20170516001150.11508-1-f4bug@amsat.org>
-	<20170516001150.11508-2-f4bug@amsat.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <79ae9877-afd9-50a7-c9f2-a12d294ff1ac@redhat.com>
-Date: Tue, 16 May 2017 09:35:07 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.0
 MIME-Version: 1.0
-In-Reply-To: <20170516001150.11508-2-f4bug@amsat.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="2nSjV1s54Lmm76rN8I5d4eB6xc3NSRwup"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 16 May 2017 14:35:14 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] coccinelle: fix typo in comment
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="1Ow488MNN9B9o/ov"
+Content-Disposition: inline
+In-Reply-To: <20170516001150.11508-1-f4bug@amsat.org>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib: strip trailing '\n'
+ from error_setg() string argument
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,80 +74,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 May 2017 14:35:33 -0000
+X-List-Received-Date: Wed, 17 May 2017 12:48:32 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---2nSjV1s54Lmm76rN8I5d4eB6xc3NSRwup
-Content-Type: multipart/mixed; boundary="NF2xGcxJSCFRAgpDg5c2Ge0Rjuabki89x";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Message-ID: <79ae9877-afd9-50a7-c9f2-a12d294ff1ac@redhat.com>
-Subject: Re: [PATCH] coccinelle: fix typo in comment
-References: <20170516001150.11508-1-f4bug@amsat.org>
- <20170516001150.11508-2-f4bug@amsat.org>
-In-Reply-To: <20170516001150.11508-2-f4bug@amsat.org>
 
---NF2xGcxJSCFRAgpDg5c2Ge0Rjuabki89x
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--1Ow488MNN9B9o/ov
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 05/15/2017 07:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Mon, May 15, 2017 at 09:11:49PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> spotted by Coccinelle script scripts/coccinelle/err-bad-newline.cocci
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
->  scripts/coccinelle/return_directly.cocci | 2 +-
+>  util/oslib-posix.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Did you intend for this to be threaded with your other 'oslib: strip
-trailing '\n'...' patch? If so, where's the 0/2 cover letter and proper
-subject lines?
+Please send multi-patch series with a cover letter and proper patch
+numbering ([PATCH 0/2], [PATCH 1/2], [PATCH 2/2]).  git-format-patch and
+git-send-email normally do this.  It's important so that patch
+management tools and continuous integration systems can track your
+patches.
 
-At any rate,
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
->=20
-> diff --git a/scripts/coccinelle/return_directly.cocci b/scripts/coccine=
-lle/return_directly.cocci
-> index 48680f2c2a..4cf50e75ea 100644
-> --- a/scripts/coccinelle/return_directly.cocci
-> +++ b/scripts/coccinelle/return_directly.cocci
-> @@ -1,4 +1,4 @@
-> -// replace 'R =3D X; return R;' with 'return R;'
-> +// replace 'R =3D X; return R;' with 'return X;'
->  @@
->  identifier VAR;
->  expression E;
->=20
+Stefan
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---NF2xGcxJSCFRAgpDg5c2Ge0Rjuabki89x--
-
---2nSjV1s54Lmm76rN8I5d4eB6xc3NSRwup
+--1Ow488MNN9B9o/ov
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJZGw4bAAoJEKeha0olJ0NqX3MIAJDE3z4GYtwXE7vCUtQeocJ1
-H+Xo1vMRW2nuibw8pTQc1tva6LiJK8EbX2M3bDX4t9pjW7xytM1OWNP5TRcGyl3Q
-oGn1tFX8ysEXro7xwk1BXIOTc7I5ziyp1QB6uX+H4wvSjrh2RwXivLjVmWiYkfpy
-1INmbxZb5wypoDrsaA0BgKT69MAXsY1nUKp9UIJC198Pox64s9S5Z/12wGeRWjU+
-rtNw+zEbUQ3kohGk0Vyz2fclyquP/lBMHoX3VYAVHvBUIWSstTYYgwoarF1U90CJ
-ZJafwm7RlcUlda5/KMwv7MJV9AIXMy5O63orZ3k8fcc5lezDw016w/hIc1AegTU=
-=4LfI
+iQEcBAEBAgAGBQJZHEaWAAoJEJykq7OBq3PIpJoH/0vWGUIn40Ic36J/yaA0wAwk
+/CPm7lLd+Rj5LrHdy+rWcU9cSD7hUgVdFo9l4tbcKLHSjTunvIymsWxlLoNYL4g0
+sGi7bEhg9jTMjkMsACvJmpO3FMxYkURZBtbkO+IOQsAv8FrH8dWyFttoym7cGciO
+8/5WRzTPL8zJjOoxDKtaQkso+pjOrB3/7dEijF49FolVatzy7TqhfSuYuYHCxDCK
+XSNrBTMc2rCJjeyrFxb5E8rd5zTre4YT/ZSEjnxAaciOIHxglx7fbxaJbwaspRy6
+CfPmQJHYWx6ZzDWTiyfhe4JbuaHqw5WcU75qFLw0ASKG0kCF3xj0A+1JuRrkJpU=
+=7koE
 -----END PGP SIGNATURE-----
 
---2nSjV1s54Lmm76rN8I5d4eB6xc3NSRwup--
+--1Ow488MNN9B9o/ov--
 
