@@ -1,72 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dBvA6-0003vg-6J
-	for mharc-qemu-trivial@gnu.org; Fri, 19 May 2017 23:34:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57057)
+	id 1dBvFA-0004xn-N8
+	for mharc-qemu-trivial@gnu.org; Fri, 19 May 2017 23:39:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57474)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dBvA4-0003vZ-BP
-	for qemu-trivial@nongnu.org; Fri, 19 May 2017 23:34:37 -0400
+	id 1dBvF7-0004xT-QD
+	for qemu-trivial@nongnu.org; Fri, 19 May 2017 23:39:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dBvA0-00039Y-Cy
-	for qemu-trivial@nongnu.org; Fri, 19 May 2017 23:34:36 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:33594)
+	id 1dBvF3-00046I-Tw
+	for qemu-trivial@nongnu.org; Fri, 19 May 2017 23:39:49 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:32812)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dBvA0-00039U-77; Fri, 19 May 2017 23:34:32 -0400
-Received: by mail-oi0-x244.google.com with SMTP id h4so15177897oib.0;
-	Fri, 19 May 2017 20:34:32 -0700 (PDT)
+	id 1dBvF3-00046E-O7; Fri, 19 May 2017 23:39:45 -0400
+Received: by mail-oi0-x244.google.com with SMTP id h4so15186756oib.0;
+	Fri, 19 May 2017 20:39:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:message-id:date:user-agent
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Eh5a9Uoo9XLvw6xh3h3UuLaHAmp/+24YWU3gTSNB4cY=;
-	b=DNZboPTELVYkY6JJaV5ZA4IkwDXMcDoWBvU9Lbyadwd8VLkoxdZVs5g1UTquR4kp1q
-	dnbI7IV87im876m7eSU2Jx+kdmIECkaYTvIkr5KphYG6TnjNsfhUOaOFog1WS4BrojuR
-	zFOw6/wuZ9lkrh+LVEbDMNcA0+NHt6u+zo/R55YRxAXCYR+/1Hnv5ZfPJFDwr4M131tB
-	9Mt5bwxYuF3gqYpd5OexJ8i8+TnN6lPNSWQQ4OoGPY4lldETT2o8ZMQBh4xD3o2r8284
-	7AlwF8VJReDSJy4AD9ZhJAF1ZzDa9fQAcr3bB5XTxgsEh/VtMPjB9fbOlGWeFGtqA8L5
-	a+IA==
+	bh=+/Qmewod5hewm/3prf6POFaYGiXncq6NyuVovC8IeyU=;
+	b=P3PQfZTBa0A34nOFKmO7k76FnABQLTjq1XGpvjQyEBhLmNMHpWHunHqg0tnWZLc1BJ
+	tPyiwuUbjySRr/1N6P1wJnNCWva+RmXUSpdEuW5f51zKa8IsajDB9qFu6ZW/06bM4LAX
+	h+Qy1wZbfHVpbELXV0VVO8v1BRYqevsyzpiP9PAn4EqOQiEsm0PkY320rWMRyh/6TANp
+	+RBTX2IjprRkQPG2plFFupbJZJgxjlZFNpLu/FC/wLtbsXgZOUgi6gyw8+x28lrC7Zur
+	vsm1kTzoSG+7NlVGdjW0U9bH/mjgijlLKXZCQ6l5+wSHaSOYZwYNCON4hV13iG8xCFJ5
+	4cgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:message-id
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Eh5a9Uoo9XLvw6xh3h3UuLaHAmp/+24YWU3gTSNB4cY=;
-	b=sxNjDwtJ1NinnaEFR076Olx+MAVJsXp8iKRvROOWgGHvuoezp84jUloCg83BdjleIs
-	ARjgxGKSfgE1M6sWJY1nltjjK/P3odRQP54y8uVAc69uUwzlIrWSnMVH1OzU3Va2Tncy
-	yEWip+0lD6WUaKJWaKHBCWK9vn57hSZ+ecIxqsExLQOR3uaMGRyfdsALzmulrxIzfKem
-	42rIAfcPin2pb28OTG/y71W4/1y/qKghVXwllUPK3oaL4JgPbKkxrA/yOHEFjCcbDcdQ
-	UEo7dZ9QB1IWO+7m02uLgeSUhWl1+E0x+tCqzjTumRKbzmpuoaVjWJ6vxwg6t9pACbt/
-	6gAQ==
-X-Gm-Message-State: AODbwcCwA5ZC4SR10E6TBtYrIIbukTMBe5OWYXxNMUL64zNFUyupy52Z
-	T+EGlM9leXBccw==
-X-Received: by 10.202.226.85 with SMTP id z82mr6003649oig.183.1495251271507;
-	Fri, 19 May 2017 20:34:31 -0700 (PDT)
+	bh=+/Qmewod5hewm/3prf6POFaYGiXncq6NyuVovC8IeyU=;
+	b=IRt2ODnysgkIHSKkj+B++QLgmlYTi6tWFUhnyT/KjKLfVnf88t5ZrEZ34wn8xqTU+V
+	FU066jQk+eRXHcK/Z/HZGiP28PVcLzLduOelxq5qooRVWW9nzgb3d8H9St/9tRYTiVsw
+	6StZYkGN/iy32cGs5GAOOM4av/FDzvtv9+XMGpBmsjXinI02q7d9IuNajmeZ+Yr2i9Cv
+	yIwL2G4G1Z0An/jWIyj1sa03UCYJd1zT+ij9OqFn5MTlQkwRY63OFzq2MDpe0HIadXSF
+	Cvwvv6BRJCEpU0QEz0fGofXkNLZ+et7BOVVuwCN6FnPCrwTdEVB8eU/IrfM3o2/lBYUb
+	wpWA==
+X-Gm-Message-State: AODbwcB+moD2lA9iq6YDDQcSp549odr/pSh7v5sKQbHqIiKj6M4c7xhA
+	TFhCC0emjLfk/g==
+X-Received: by 10.202.78.200 with SMTP id c191mr6927237oib.203.1495251585045; 
+	Fri, 19 May 2017 20:39:45 -0700 (PDT)
 Received: from [192.168.1.107]
 	(162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-	by smtp.gmail.com with ESMTPSA id z23sm353271otz.11.2017.05.19.20.34.30
+	by smtp.gmail.com with ESMTPSA id s1sm5248701otd.48.2017.05.19.20.39.43
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 19 May 2017 20:34:30 -0700 (PDT)
+	Fri, 19 May 2017 20:39:43 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
 References: <20170516001150.11508-1-f4bug@amsat.org>
-	<20170516001150.11508-2-f4bug@amsat.org>
-	<79ae9877-afd9-50a7-c9f2-a12d294ff1ac@redhat.com>
+	<20170517124822.GF8260@stefanha-x1.localdomain>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+	Peter Lieven <pl@kamp.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <cb9fcebd-b201-4598-fc2f-41c6533e8b60@amsat.org>
-Date: Sat, 20 May 2017 00:34:29 -0300
+Message-ID: <1006af4d-3c51-4c8f-63df-f0e36e81d9bd@amsat.org>
+Date: Sat, 20 May 2017 00:39:42 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <79ae9877-afd9-50a7-c9f2-a12d294ff1ac@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20170517124822.GF8260@stefanha-x1.localdomain>
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-trivial] [PATCH] coccinelle: fix typo in comment
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib: strip trailing '\n'
+ from error_setg() string argument
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,42 +80,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 May 2017 03:34:37 -0000
+X-List-Received-Date: Sat, 20 May 2017 03:39:51 -0000
 
-On 05/16/2017 11:35 AM, Eric Blake wrote:
-> On 05/15/2017 07:11 PM, Philippe Mathieu-DaudÃ© wrote:
->> Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+On 05/17/2017 09:48 AM, Stefan Hajnoczi wrote:
+> On Mon, May 15, 2017 at 09:11:49PM -0300, Philippe Mathieu-Daudé wrote:
+>> spotted by Coccinelle script scripts/coccinelle/err-bad-newline.cocci
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  scripts/coccinelle/return_directly.cocci | 2 +-
+>>  util/oslib-posix.c | 2 +-
 >>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> Did you intend for this to be threaded with your other 'oslib: strip
-> trailing '\n'...' patch? If so, where's the 0/2 cover letter and proper
-> subject lines?
+> Please send multi-patch series with a cover letter and proper patch
+> numbering ([PATCH 0/2], [PATCH 1/2], [PATCH 2/2]).  git-format-patch and
+> git-send-email normally do this.  It's important so that patch
+> management tools and continuous integration systems can track your
+> patches.
 
-Hi Eric, I think I did a mistake in my command, I intended to generate 
-the patches in the same branch but wanted to send them as unrelated 
-(without cover). I didn't noticed while sending until your remark, I'll 
-double-check next time!
+Hi Stefan, I intended one command to generate unrelated patches from the 
+same branch at once and send them individually without cover letter. I 
+didn't noticed they'd go as a serie. I'll double-check next time!
+
+> Thanks, applied to my block tree:
+> https://github.com/stefanha/qemu/commits/block
+
+Hmm I can't see it there maybe this part was not for this patch, I'll 
+resend it soon with r-b tags.
 
 >
-> At any rate,
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-
-Thanks!
-
+> Stefan
 >
->>
->> diff --git a/scripts/coccinelle/return_directly.cocci b/scripts/coccinelle/return_directly.cocci
->> index 48680f2c2a..4cf50e75ea 100644
->> --- a/scripts/coccinelle/return_directly.cocci
->> +++ b/scripts/coccinelle/return_directly.cocci
->> @@ -1,4 +1,4 @@
->> -// replace 'R = X; return R;' with 'return R;'
->> +// replace 'R = X; return R;' with 'return X;'
->>  @@
->>  identifier VAR;
->>  expression E;
->>
->
+
+Regards,
+
+Phil.
 
