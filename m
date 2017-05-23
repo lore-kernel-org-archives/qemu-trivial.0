@@ -1,54 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dD4jA-0004vG-IB
-	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2017 03:59:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51422)
+	id 1dD81I-0005tg-Ap
+	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2017 07:30:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1dD4j9-0004uX-0U
-	for qemu-trivial@nongnu.org; Tue, 23 May 2017 03:59:35 -0400
+	(envelope-from <armbru@redhat.com>) id 1dD81F-0005rK-UW
+	for qemu-trivial@nongnu.org; Tue, 23 May 2017 07:30:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1dD4j8-0007J9-E0
-	for qemu-trivial@nongnu.org; Tue, 23 May 2017 03:59:35 -0400
-Received: from hera.aquilenet.fr ([141.255.128.1]:32990)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1dD4j4-0007EE-4p; Tue, 23 May 2017 03:59:30 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id B6396CB6C;
-	Tue, 23 May 2017 09:59:28 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V-Hp4hNNIYEo; Tue, 23 May 2017 09:59:28 +0200 (CEST)
-Received: from var.youpi.perso.aquilenet.fr (unknown
-	[IPv6:2a01:cb19:181:c200:3602:86ff:fe2c:6a19])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 189B4CB6B;
-	Tue, 23 May 2017 09:59:28 +0200 (CEST)
-Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.89)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1dD4j1-0001qv-BC; Tue, 23 May 2017 09:59:27 +0200
-Date: Tue, 23 May 2017 09:59:27 +0200
-From: Samuel Thibault <samuel.thibault@gnu.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, famz@redhat.com, qemu-trivial@nongnu.org,
-	armbru@redhat.com, Stefan Hajnoczi <stefanha@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>
-Message-ID: <20170523075927.vhxqlurygwycfwsu@var.youpi.perso.aquilenet.fr>
-References: <149546869825.1005.10210133978512879518@c05f1edc8ed1>
-	<48dfeca5-0640-796f-66ce-8cab198fcaef@redhat.com>
+	(envelope-from <armbru@redhat.com>) id 1dD81F-0003KS-7h
+	for qemu-trivial@nongnu.org; Tue, 23 May 2017 07:30:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55770)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1dD81A-0003IO-5S; Tue, 23 May 2017 07:30:24 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E61C420B1C;
+	Tue, 23 May 2017 11:30:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E61C420B1C
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com E61C420B1C
+Received: from blackfin.pond.sub.org (ovpn-116-98.ams2.redhat.com
+	[10.36.116.98])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F19E75C541;
+	Tue, 23 May 2017 11:30:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 683B11138648; Tue, 23 May 2017 13:30:17 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Thomas Huth <thuth@redhat.com>
+References: <1494322876-28843-1-git-send-email-armbru@redhat.com>
+	<ea74cfd3-9009-e99d-8f18-8edc9c0441c2@redhat.com>
+Date: Tue, 23 May 2017 13:30:17 +0200
+In-Reply-To: <ea74cfd3-9009-e99d-8f18-8edc9c0441c2@redhat.com> (John Snow's
+	message of "Tue, 9 May 2017 10:14:00 -0400")
+Message-ID: <87zie3byk6.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <48dfeca5-0640-796f-66ce-8cab198fcaef@redhat.com>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 23 May 2017 11:30:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 141.255.128.1
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tests/libqtest: Print
- error instead of aborting when env variable is missing
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] docs: Minor updates
+ around ide-drive
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,30 +63,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 May 2017 07:59:35 -0000
+X-List-Received-Date: Tue, 23 May 2017 11:30:30 -0000
 
-Thomas Huth, on mar. 23 mai 2017 09:25:30 +0200, wrote:
-> > /tmp/qemu-test/src/slirp/tcp_input.c: In function =E2=80=98tcp_input=E2=
-=80=99:
-> > /tmp/qemu-test/src/slirp/tcp_input.c:219: warning: =E2=80=98save_ip.i=
-p_p=E2=80=99 may be used uninitialized in this function
->=20
-> I've never seen these warnings in tcp_input.c before ... and they also
-> look like false positives too me ...=20
+John Snow <jsnow@redhat.com> writes:
 
-They are.  It's the classical false-positive:
+> On 05/09/2017 05:41 AM, Markus Armbruster wrote:
+>> Markus Armbruster (2):
+>>   docs qemu-doc: Avoid ide-drive, it's deprecated
+>>   docs/qdev-device-use.txt: update section Default Devices
+>> 
+>>  docs/bootindex.txt       |  2 +-
+>>  docs/qdev-device-use.txt | 13 +++++++------
+>>  qemu-options.hx          |  2 +-
+>>  3 files changed, 9 insertions(+), 8 deletions(-)
+>> 
+>
+> Shame on me for not noticing, but thank you.
+>
+> Acked-by: John Snow <jsnow@redhat.com>
 
-int foo;
-if (blah)
-	foo =3D 1;
-...
-if (blah)
-	f(foo);
+Thanks!
 
-where gcc doesn't realize it's the same condition between the
-initialization and the use.
-
-If that poses problem, we can force a dumb initialization...
-
-Samuel
+The canonical path is through your tree, but I could stick it into a
+miscellaneous pull request if you like.
 
