@@ -1,71 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dEL1t-0005vS-8A
-	for mharc-qemu-trivial@gnu.org; Fri, 26 May 2017 15:36:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49676)
+	id 1dFPIn-0001x5-2F
+	for mharc-qemu-trivial@gnu.org; Mon, 29 May 2017 14:22:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35682)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dEL1r-0005vD-4Z
-	for qemu-trivial@nongnu.org; Fri, 26 May 2017 15:36:08 -0400
+	(envelope-from <joserz@linux.vnet.ibm.com>) id 1dFNYn-0004iR-M9
+	for qemu-trivial@nongnu.org; Mon, 29 May 2017 12:30:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dEL1m-0003B8-7m
-	for qemu-trivial@nongnu.org; Fri, 26 May 2017 15:36:07 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33418)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dEL1l-0003Az-Vo; Fri, 26 May 2017 15:36:02 -0400
-Received: by mail-oi0-x242.google.com with SMTP id h4so3207534oib.0;
-	Fri, 26 May 2017 12:36:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=16W9KLkQYBvqZ4uASujLcPTAQk+oQcMc7mDqrhGnwzU=;
-	b=DgXcazZa15qpmw8SgppsY4g8LcwuKlbHnzXAIyobynOBUxgolJYoM7rj905zwVoD84
-	s1bM1BCS3XhWqCHFOZXm2gZzAFuSzLMjGn8+UYc00doulMz3ia2efMnf88bJJEip4Ts5
-	Ot9ejiWrOYeUAPCOpCcQilMfGJvfyU5mFem4ByVhcGRe82EZcrSYSvHzEF/baxB91iH9
-	Fu5kwOoBNI2RN1e0Xnm5P6nBJ5+mQx4gGFHQRewoAxbwLuXj1p+Jj3DT5V76n5kxll23
-	wIVKVYSX3LB2GIXJ/GErAkvvS4IeoVys0WlPVAz5kOUdwxcaN5uGEyWZSsUZwEpY8Rkh
-	hRKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=16W9KLkQYBvqZ4uASujLcPTAQk+oQcMc7mDqrhGnwzU=;
-	b=qq5uZ0bEYem9KMKCAHWrMSj0fAHxmTj2eymoUaUs9hHOaKTYQUdepvdQn3KMg1VVKe
-	kRQPbM7GYahMXEyV+jTE/T4u3irlOezDbW/GouBRdWIF3xHJigaGcX0dn9m8csMSdwTN
-	jQQAVOJyQdWOfMVpPfpN4VEx9n6maP3P3xeD8SVP2okjAUrwJPk1uUG98bWZAEGsi1Uk
-	c0Yx8fDv00RCDIFY2uKxo2ZOL2YC3LLDHkiFQXxW6AKNMEY0RMLPzww/mHD4+svpBYJP
-	bI+a6it9/T1GlgE78VvZ4Lm51CU4WFYnCGJ5e3SqpjfGAVBpjVAMtfCXb6l4dJbrFhJ1
-	ncuw==
-X-Gm-Message-State: AODbwcAC1hFKR9KpsLHGQ1sKtNLcdZSHwneR2F+E8iJ+saINbFgTJWMs
-	LHzKnQirzsNT+XpTkOY=
-X-Received: by 10.202.73.23 with SMTP id w23mr1571860oia.103.1495827360922;
-	Fri, 26 May 2017 12:36:00 -0700 (PDT)
-Received: from [192.168.1.107]
-	(162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-	by smtp.gmail.com with ESMTPSA id
-	m188sm748014oig.22.2017.05.26.12.35.59
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 26 May 2017 12:36:00 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20170526101337.4096-1-marcandre.lureau@redhat.com>
+	(envelope-from <joserz@linux.vnet.ibm.com>) id 1dFNYk-0000hX-H1
+	for qemu-trivial@nongnu.org; Mon, 29 May 2017 12:30:25 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:38039)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <joserz@linux.vnet.ibm.com>)
+	id 1dFNYk-0000hF-7t
+	for qemu-trivial@nongnu.org; Mon, 29 May 2017 12:30:22 -0400
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.20/8.16.0.20) with SMTP id
+	v4TGTiJo105055
+	for <qemu-trivial@nongnu.org>; Mon, 29 May 2017 12:30:20 -0400
+Received: from e24smtp01.br.ibm.com (e24smtp01.br.ibm.com [32.104.18.85])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2arpxxggkm-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Mon, 29 May 2017 12:30:20 -0400
+Received: from localhost
+	by e24smtp01.br.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <joserz@linux.vnet.ibm.com>;
+	Mon, 29 May 2017 13:30:17 -0300
+Received: from d24relay04.br.ibm.com (9.18.232.146)
+	by e24smtp01.br.ibm.com (10.172.0.143) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 29 May 2017 13:30:16 -0300
+Received: from d24av05.br.ibm.com (d24av05.br.ibm.com [9.18.232.44])
+	by d24relay04.br.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	v4TGUF7C50724986; Mon, 29 May 2017 13:30:15 -0300
+Received: from d24av05.br.ibm.com (localhost [127.0.0.1])
+	by d24av05.br.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	v4TGUG5D020271; Mon, 29 May 2017 13:30:16 -0300
+Received: from pacoca.ibm.com ([9.80.236.119])
+	by d24av05.br.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	v4TGUERC020230; Mon, 29 May 2017 13:30:15 -0300
+From: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f4e0f032-0af1-0e0e-7b6a-5f5dde63babd@amsat.org>
-Date: Fri, 26 May 2017 16:35:59 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
-MIME-Version: 1.0
-In-Reply-To: <20170526101337.4096-1-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-trivial] [PATCH] qemu-ga: remove useless allocation
+Date: Mon, 29 May 2017 13:30:04 -0300
+X-Mailer: git-send-email 2.7.4
+X-TM-AS-MML: disable
+x-cbid: 17052916-1523-0000-0000-000002A3FB99
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17052916-1524-0000-0000-00002A3A844A
+Message-Id: <1496075404-8845-1-git-send-email-joserz@linux.vnet.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-05-29_12:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=1
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1703280000
+	definitions=main-1705290310
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
+X-Mailman-Approved-At: Mon, 29 May 2017 14:21:59 -0400
+Subject: [Qemu-trivial] [PATCH] simpletrace: Improve the error message if
+ event is not declared
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,37 +72,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 May 2017 19:36:08 -0000
+X-List-Received-Date: Mon, 29 May 2017 16:30:26 -0000
 
-On 05/26/2017 07:13 AM, Marc-André Lureau wrote:
-> There is no need to duplicate a fixed string.
->
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Today, if we use a trace-event file which does not declare an event
+existing in the log file we'll get the following error:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+$ scripts/simpletrace.py trace-events trace-68508
+Traceback (most recent call last):
+  File "scripts/simpletrace.py", line 242, in <module>
+    run(Formatter())
+  File "scripts/simpletrace.py", line 217, in run
+    process(events, sys.argv[2], analyzer, read_header=read_header)
+  File "scripts/simpletrace.py", line 192, in process
+    for rec in read_trace_records(edict, log):
+  File "scripts/simpletrace.py", line 107, in read_trace_records
+    rec = read_record(edict, idtoname, fobj)
+  File "scripts/simpletrace.py", line 71, in read_record
+    return get_record(edict, idtoname, rechdr, fobj)
+  File "scripts/simpletrace.py", line 45, in get_record
+    event = edict[name]
+KeyError: 'qemu_mutex_locked'
 
-> ---
->  qga/commands-posix.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-> index 284ecc6d7e..d8e412275e 100644
-> --- a/qga/commands-posix.c
-> +++ b/qga/commands-posix.c
-> @@ -2197,12 +2197,10 @@ static void transfer_memory_block(GuestMemoryBlock *mem_blk, bool sys2memblk,
->          }
->      } else {
->          if (mem_blk->online != (strncmp(status, "online", 6) == 0)) {
-> -            char *new_state = mem_blk->online ? g_strdup("online") :
-> -                                                g_strdup("offline");
-> +            const char *new_state = mem_blk->online ? "online" : "offline";
->
->              ga_write_sysfs_file(dirfd, "state", new_state, strlen(new_state),
->                                  &local_err);
-> -            g_free(new_state);
->              if (local_err) {
->                  error_free(local_err);
->                  result->response =
->
+This patch improves this error by adding a hint instead of just that
+KeyError log:
+
+$ scripts/simpletrace.py trace-events trace-68508
+'qemu_mutex_locked' event is logged but is not declared in the trace
+events file, try using trace-events-all instead.
+
+Signed-off-by: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
+---
+ scripts/simpletrace.py | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/simpletrace.py b/scripts/simpletrace.py
+index d60b3a0..f1be6e4 100755
+--- a/scripts/simpletrace.py
++++ b/scripts/simpletrace.py
+@@ -42,7 +42,15 @@ def get_record(edict, idtoname, rechdr, fobj):
+         event_id = rechdr[0]
+         name = idtoname[event_id]
+         rec = (name, rechdr[1], rechdr[3])
+-        event = edict[name]
++        try:
++            event = edict[name]
++        except KeyError, e:
++            import sys
++            sys.stderr.write('%s event is logged but is not declared ' \
++                             'in the trace events file, try using ' \
++                             'trace-events-all instead.\n' % str(e))
++            sys.exit(1)
++
+         for type, name in event.args:
+             if is_string(type):
+                 l = fobj.read(4)
+-- 
+2.7.4
+
 
