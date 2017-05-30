@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dFdja-0003ZX-Kc
-	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 05:46:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47678)
+	id 1dFihK-0004Xu-RE
+	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 11:04:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1dFdjY-0003XN-3Q
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 05:46:37 -0400
+	(envelope-from <groug@kaod.org>) id 1dFihI-0004WM-N5
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 11:04:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1dFdjX-0003HW-2A
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 05:46:36 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36829)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1dFdjR-0003GJ-4y; Tue, 30 May 2017 05:46:29 -0400
-Received: by mail-wm0-x243.google.com with SMTP id k15so23902505wmh.3;
-	Tue, 30 May 2017 02:46:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=ZxcU1iBCCyUlZkzwbpXpWW2eJPuUzHj3AqKLbL49TbI=;
-	b=bphDsj56nrG5J0XB11cCGy5dH14sRxlmBegbSwY4HnhHKmBhWLG4IxZeVpt1g8EF21
-	u0tKH1pqSdQ/STVYQ+akmqrxpNLcsk4a7qhMJUezExguDUmtir0mpRC4GZT6ja+btP/m
-	LUX7OLbAiwiVnNEQy4edYtiItwAy+XsuqyZ4f2oPbTLL7iE3LyEkKsojHbiwOzDfHUON
-	k2iFUE2z2BKD6PPayNr8asutFNjtkKrL32YxslzpmiEztpX7+MuXPI5NfE8TDDheBx2V
-	39vHycrtEC2LgidJRwr4+6XcGnmkWXoY87LEZDjFA3b6cs/vR6+9Edtl2FpABkDmqAnK
-	RYZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=ZxcU1iBCCyUlZkzwbpXpWW2eJPuUzHj3AqKLbL49TbI=;
-	b=H/AbbB2HPjkxqhlgRzzSM0MSUDWgFV143JwRQHbnCIeLG4fXFh5DeqAqL7M6w2T1bs
-	TmdaBzE0+XhAtzLck7rxrp54jBt+sEydhXT3QheVyKQWTV75l0vIbscJZ3Y6vif17M0p
-	GGuGRdWLiORmtZQb/Ojly2S1Dt8QTW0ikqMyyBJFr4t6fpzh0LR1Z215qnqWxGWkADRX
-	DhIxGsJKJP9JBYm9qEYvBGprXK/05Ha98e9BXrWEhbsXLmdHFvD3YvRUHVu5lvRMxy47
-	b5cjFY88pIQDmEnqw5edKJ9cC91zSO9LFzi0L5tkm0EmPojoHexlPIsisHh5xdwydJvq
-	M9kQ==
-X-Gm-Message-State: AODbwcDTLzDmnuGUSjHatiECHvpTIo9GEMXGL4YPxFjNMlsvkgMFZ9G3
-	D2kDAqY1FhehnA==
-X-Received: by 10.223.130.37 with SMTP id 34mr6052140wrb.44.1496137588042;
-	Tue, 30 May 2017 02:46:28 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	x37sm21814143wrb.42.2017.05.30.02.46.26
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 30 May 2017 02:46:26 -0700 (PDT)
-Date: Tue, 30 May 2017 10:46:26 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170530094626.GO11362@stefanha-x1.localdomain>
-References: <1496075404-8845-1-git-send-email-joserz@linux.vnet.ibm.com>
+	(envelope-from <groug@kaod.org>) id 1dFihF-00042K-I7
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 11:04:36 -0400
+Received: from 12.mo5.mail-out.ovh.net ([46.105.39.65]:34967)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dFihF-000426-By
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 11:04:33 -0400
+Received: from player799.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id C33F210018B
+	for <qemu-trivial@nongnu.org>; Tue, 30 May 2017 17:04:27 +0200 (CEST)
+Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
+	(Authenticated sender: groug@kaod.org)
+	by player799.ha.ovh.net (Postfix) with ESMTPA id CB5A252007B;
+	Tue, 30 May 2017 17:04:21 +0200 (CEST)
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: Cornelia Huck <cornelia.huck@de.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>, qemu-trivial@nongnu.org,
+	Fam Zheng <famz@redhat.com>, Alexander Graf <agraf@suse.de>
+Date: Tue, 30 May 2017 17:04:14 +0200
+Message-ID: <149615665491.28067.17765793725374594694.stgit@bahia.lan>
+User-Agent: StGit/0.17.1-20-gc0b1b-dirty
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="8N0TQpGUCeEQshoq"
-Content-Disposition: inline
-In-Reply-To: <1496075404-8845-1-git-send-email-joserz@linux.vnet.ibm.com>
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] simpletrace: Improve the
- error message if event is not declared
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 9942540603221514611
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrgeeggdekiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.39.65
+Subject: [Qemu-trivial] [PATCH] pc-bios/s390-ccw: use STRIP variable in
+ Makefile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,64 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 May 2017 09:46:37 -0000
+X-List-Received-Date: Tue, 30 May 2017 15:04:37 -0000
 
+The docker-run-test-build@debian-s390x-cross target fails with:
 
---8N0TQpGUCeEQshoq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+strip --strip-unneeded s390-ccw.elf -o s390-ccw.img
+strip: Unable to recognise the format of the input file `s390-ccw.elf'
 
-On Mon, May 29, 2017 at 01:30:04PM -0300, Jose Ricardo Ziviani wrote:
-> Today, if we use a trace-event file which does not declare an event
-> existing in the log file we'll get the following error:
->=20
-> $ scripts/simpletrace.py trace-events trace-68508
-> Traceback (most recent call last):
->   File "scripts/simpletrace.py", line 242, in <module>
->     run(Formatter())
->   File "scripts/simpletrace.py", line 217, in run
->     process(events, sys.argv[2], analyzer, read_header=3Dread_header)
->   File "scripts/simpletrace.py", line 192, in process
->     for rec in read_trace_records(edict, log):
->   File "scripts/simpletrace.py", line 107, in read_trace_records
->     rec =3D read_record(edict, idtoname, fobj)
->   File "scripts/simpletrace.py", line 71, in read_record
->     return get_record(edict, idtoname, rechdr, fobj)
->   File "scripts/simpletrace.py", line 45, in get_record
->     event =3D edict[name]
-> KeyError: 'qemu_mutex_locked'
->=20
-> This patch improves this error by adding a hint instead of just that
-> KeyError log:
->=20
-> $ scripts/simpletrace.py trace-events trace-68508
-> 'qemu_mutex_locked' event is logged but is not declared in the trace
-> events file, try using trace-events-all instead.
->=20
-> Signed-off-by: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
-> ---
->  scripts/simpletrace.py | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
+The configure script defines a STRIP makefile variable whose default
+value is ${cross_prefix}strip. Let's use it.
 
-Thanks, applied to my tracing tree:
-https://github.com/stefanha/qemu/commits/tracing
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ pc-bios/s390-ccw/Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Stefan
+diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
+index 79a46b67356f..7af57dad109c 100644
+--- a/pc-bios/s390-ccw/Makefile
++++ b/pc-bios/s390-ccw/Makefile
+@@ -22,7 +22,7 @@ s390-ccw.elf: $(OBJECTS)
+ 	$(call quiet-command,$(CC) $(LDFLAGS) -o $@ $(OBJECTS),"BUILD","$(TARGET_DIR)$@")
+ 
+ s390-ccw.img: s390-ccw.elf
+-	$(call quiet-command,strip --strip-unneeded $< -o $@,"STRIP","$(TARGET_DIR)$@")
++	$(call quiet-command,$(STRIP) --strip-unneeded $< -o $@,"STRIP","$(TARGET_DIR)$@")
+ 
+ $(OBJECTS): Makefile
+ 
 
---8N0TQpGUCeEQshoq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJZLT9yAAoJEJykq7OBq3PIgjkIAMjM0vtxyMQDhhIJXFiN7C16
-zBssTs4vvWqXPOSqmedlc53sR9xycUDXA2s2pohjaGDLfWWPDRJ4Atf/qacg0xqq
-nRHxDxQ5Vtlpf6ypmUEXaD/LmUa7AqMY4OwhMCF0e9QEEMCITNu7yqZPvejkZSXs
-VXTgMsWMA5JzDBKY+d/vB21YTobR7r0vVZRpnLjvUwNegiwvPq5ij41jMCvVxJXP
-pHCE2Gm84eCqanGh35h6jOikHar85y0OaPaeRPR24dndOatcn2snG0AaN0RdlNhl
-ZpO6Ke3DGz6Qvqn8is1L2fzZ/+Yj4AxD3E40AW1dci8w2OeJK5ZXqKgJ1RhuOJk=
-=r1bS
------END PGP SIGNATURE-----
-
---8N0TQpGUCeEQshoq--
 
