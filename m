@@ -1,68 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dFReC-0001Yb-Hp
-	for mharc-qemu-trivial@gnu.org; Mon, 29 May 2017 16:52:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54360)
+	id 1dFdja-0003ZX-Kc
+	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 05:46:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47678)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFReA-0001Ug-9S
-	for qemu-trivial@nongnu.org; Mon, 29 May 2017 16:52:15 -0400
+	(envelope-from <stefanha@gmail.com>) id 1dFdjY-0003XN-3Q
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 05:46:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFRe5-0005dN-2K
-	for qemu-trivial@nongnu.org; Mon, 29 May 2017 16:52:14 -0400
-Received: from mail-oi0-x235.google.com ([2607:f8b0:4003:c06::235]:33095)
+	(envelope-from <stefanha@gmail.com>) id 1dFdjX-0003HW-2A
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 05:46:36 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36829)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dFRe4-0005cQ-Tl; Mon, 29 May 2017 16:52:08 -0400
-Received: by mail-oi0-x235.google.com with SMTP id w10so89878509oif.0;
-	Mon, 29 May 2017 13:52:08 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1dFdjR-0003GJ-4y; Tue, 30 May 2017 05:46:29 -0400
+Received: by mail-wm0-x243.google.com with SMTP id k15so23902505wmh.3;
+	Tue, 30 May 2017 02:46:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=CWZHe+pwDQ3e0N7gWAKRLL+8oyMuWe7JvceqJ5A90i8=;
-	b=nkiloRRTOggBFdCdVhdd0x6jM4DkuRd0o+WvqUv1c2R0LLcEBhAERjL92Uce82tdZt
-	WYmg0MBLVH1XCikDZQ3Nnowl3vKFqZVgMFLk7qgYQFMnop/ELuAGLQ2jBnJldnT1G3/P
-	Un/lx5nB8eWDgizkGyrOwNTCq+ji54Of2E1I9LGUYYT5v4X249PGhHxuHiTnFhXldb+8
-	0QkEj/u0eWkA0O+uv9GOxfgEZQ3RYZorzfN8XK3wM0UQSbVJ8krH9+I1/r9v07rs/DZn
-	bauWD21PaDUsbeIYEZS8row5l5B/w7wyKq5YH9DZdmyFdlc/+Vci7JIYFdv84XSA67ml
-	ZVGg==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=ZxcU1iBCCyUlZkzwbpXpWW2eJPuUzHj3AqKLbL49TbI=;
+	b=bphDsj56nrG5J0XB11cCGy5dH14sRxlmBegbSwY4HnhHKmBhWLG4IxZeVpt1g8EF21
+	u0tKH1pqSdQ/STVYQ+akmqrxpNLcsk4a7qhMJUezExguDUmtir0mpRC4GZT6ja+btP/m
+	LUX7OLbAiwiVnNEQy4edYtiItwAy+XsuqyZ4f2oPbTLL7iE3LyEkKsojHbiwOzDfHUON
+	k2iFUE2z2BKD6PPayNr8asutFNjtkKrL32YxslzpmiEztpX7+MuXPI5NfE8TDDheBx2V
+	39vHycrtEC2LgidJRwr4+6XcGnmkWXoY87LEZDjFA3b6cs/vR6+9Edtl2FpABkDmqAnK
+	RYZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=CWZHe+pwDQ3e0N7gWAKRLL+8oyMuWe7JvceqJ5A90i8=;
-	b=PGQsdf8czJlsTCg3NpSIA7MT39fQNZklsVYnsuIUB8HFFU9Escg603n6nFKZtnvp6m
-	qEfLMHnZYDtxaH2chN7txIZUJgPa+EF3japGFjsfBk0EUAzZt82TFF1B/urzg5LdGSRt
-	Xe187mro1iIDLBpb5y3gdvuU9tDOj9MUM84xD3tWF2HOuP5RABdS58b6zvE3DQkoqscg
-	8iIeaHR8MMEkbWmE/0jPHBZeKV/vMK9P6eFmRq1zEmtjtYDuiDHk6KroP7WuPVo7x/dT
-	3ePDkARNQSUAe3+Ty0P4JnkQ9ADo7Gc8GyBarIe7HlOqtvbkBaPP+F1ozcFnnuKgmHbd
-	tCUw==
-X-Gm-Message-State: AODbwcDjga/VokfZrpFfEwYMIQGXsKI1pHdC4HbEp7tpF5a/GWPGr0uX
-	6Bx+MUk2l7dBKK9ESSo=
-X-Received: by 10.157.23.133 with SMTP id j5mr7175963otj.37.1496091127942;
-	Mon, 29 May 2017 13:52:07 -0700 (PDT)
-Received: from [192.168.1.107]
-	(162-231-236-127.lightspeed.miamfl.sbcglobal.net. [162.231.236.127])
-	by smtp.gmail.com with ESMTPSA id 42sm4852179otj.30.2017.05.29.13.52.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 May 2017 13:52:07 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>, qemu-devel@nongnu.org
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=ZxcU1iBCCyUlZkzwbpXpWW2eJPuUzHj3AqKLbL49TbI=;
+	b=H/AbbB2HPjkxqhlgRzzSM0MSUDWgFV143JwRQHbnCIeLG4fXFh5DeqAqL7M6w2T1bs
+	TmdaBzE0+XhAtzLck7rxrp54jBt+sEydhXT3QheVyKQWTV75l0vIbscJZ3Y6vif17M0p
+	GGuGRdWLiORmtZQb/Ojly2S1Dt8QTW0ikqMyyBJFr4t6fpzh0LR1Z215qnqWxGWkADRX
+	DhIxGsJKJP9JBYm9qEYvBGprXK/05Ha98e9BXrWEhbsXLmdHFvD3YvRUHVu5lvRMxy47
+	b5cjFY88pIQDmEnqw5edKJ9cC91zSO9LFzi0L5tkm0EmPojoHexlPIsisHh5xdwydJvq
+	M9kQ==
+X-Gm-Message-State: AODbwcDTLzDmnuGUSjHatiECHvpTIo9GEMXGL4YPxFjNMlsvkgMFZ9G3
+	D2kDAqY1FhehnA==
+X-Received: by 10.223.130.37 with SMTP id 34mr6052140wrb.44.1496137588042;
+	Tue, 30 May 2017 02:46:28 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	x37sm21814143wrb.42.2017.05.30.02.46.26
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 30 May 2017 02:46:26 -0700 (PDT)
+Date: Tue, 30 May 2017 10:46:26 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170530094626.GO11362@stefanha-x1.localdomain>
 References: <1496075404-8845-1-git-send-email-joserz@linux.vnet.ibm.com>
-Cc: qemu-trivial@nongnu.org
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <bc558af7-c381-d74c-9806-569a6cd5ad33@amsat.org>
-Date: Mon, 29 May 2017 17:52:06 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="8N0TQpGUCeEQshoq"
+Content-Disposition: inline
 In-Reply-To: <1496075404-8845-1-git-send-email-joserz@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 8bit
+User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::235
+X-Received-From: 2a00:1450:400c:c09::243
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] simpletrace: Improve the
  error message if event is not declared
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,63 +71,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 May 2017 20:52:15 -0000
+X-List-Received-Date: Tue, 30 May 2017 09:46:37 -0000
 
-On 05/29/2017 01:30 PM, Jose Ricardo Ziviani wrote:
+
+--8N0TQpGUCeEQshoq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 29, 2017 at 01:30:04PM -0300, Jose Ricardo Ziviani wrote:
 > Today, if we use a trace-event file which does not declare an event
 > existing in the log file we'll get the following error:
->
+>=20
 > $ scripts/simpletrace.py trace-events trace-68508
 > Traceback (most recent call last):
 >   File "scripts/simpletrace.py", line 242, in <module>
 >     run(Formatter())
 >   File "scripts/simpletrace.py", line 217, in run
->     process(events, sys.argv[2], analyzer, read_header=read_header)
+>     process(events, sys.argv[2], analyzer, read_header=3Dread_header)
 >   File "scripts/simpletrace.py", line 192, in process
 >     for rec in read_trace_records(edict, log):
 >   File "scripts/simpletrace.py", line 107, in read_trace_records
->     rec = read_record(edict, idtoname, fobj)
+>     rec =3D read_record(edict, idtoname, fobj)
 >   File "scripts/simpletrace.py", line 71, in read_record
 >     return get_record(edict, idtoname, rechdr, fobj)
 >   File "scripts/simpletrace.py", line 45, in get_record
->     event = edict[name]
+>     event =3D edict[name]
 > KeyError: 'qemu_mutex_locked'
->
+>=20
 > This patch improves this error by adding a hint instead of just that
 > KeyError log:
->
+>=20
 > $ scripts/simpletrace.py trace-events trace-68508
 > 'qemu_mutex_locked' event is logged but is not declared in the trace
 > events file, try using trace-events-all instead.
->
+>=20
 > Signed-off-by: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
 > ---
 >  scripts/simpletrace.py | 10 +++++++++-
 >  1 file changed, 9 insertions(+), 1 deletion(-)
->
-> diff --git a/scripts/simpletrace.py b/scripts/simpletrace.py
-> index d60b3a0..f1be6e4 100755
-> --- a/scripts/simpletrace.py
-> +++ b/scripts/simpletrace.py
-> @@ -42,7 +42,15 @@ def get_record(edict, idtoname, rechdr, fobj):
->          event_id = rechdr[0]
->          name = idtoname[event_id]
->          rec = (name, rechdr[1], rechdr[3])
-> -        event = edict[name]
-> +        try:
-> +            event = edict[name]
-> +        except KeyError, e:
-> +            import sys
-> +            sys.stderr.write('%s event is logged but is not declared ' \
-> +                             'in the trace events file, try using ' \
-> +                             'trace-events-all instead.\n' % str(e))
-> +            sys.exit(1)
-> +
->          for type, name in event.args:
->              if is_string(type):
->                  l = fobj.read(4)
->
+
+Thanks, applied to my tracing tree:
+https://github.com/stefanha/qemu/commits/tracing
+
+Stefan
+
+--8N0TQpGUCeEQshoq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJZLT9yAAoJEJykq7OBq3PIgjkIAMjM0vtxyMQDhhIJXFiN7C16
+zBssTs4vvWqXPOSqmedlc53sR9xycUDXA2s2pohjaGDLfWWPDRJ4Atf/qacg0xqq
+nRHxDxQ5Vtlpf6ypmUEXaD/LmUa7AqMY4OwhMCF0e9QEEMCITNu7yqZPvejkZSXs
+VXTgMsWMA5JzDBKY+d/vB21YTobR7r0vVZRpnLjvUwNegiwvPq5ij41jMCvVxJXP
+pHCE2Gm84eCqanGh35h6jOikHar85y0OaPaeRPR24dndOatcn2snG0AaN0RdlNhl
+ZpO6Ke3DGz6Qvqn8is1L2fzZ/+Yj4AxD3E40AW1dci8w2OeJK5ZXqKgJ1RhuOJk=
+=r1bS
+-----END PGP SIGNATURE-----
+
+--8N0TQpGUCeEQshoq--
 
