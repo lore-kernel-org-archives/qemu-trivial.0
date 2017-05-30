@@ -1,81 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dFk6o-00058h-Ol
-	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 12:35:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35825)
+	id 1dFkRi-00048K-Ce
+	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 12:56:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1dFk6m-00057v-Vu
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:35:01 -0400
+	(envelope-from <groug@kaod.org>) id 1dFkRf-00047J-F5
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1dFk6i-0001H5-26
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:35:00 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:33873)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
-	id 1dFk6h-0001GW-Oq
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:34:55 -0400
-Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.20/8.16.0.20) with SMTP id
-	v4UGXfSC141808
-	for <qemu-trivial@nongnu.org>; Tue, 30 May 2017 12:34:54 -0400
-Received: from e15.ny.us.ibm.com (e15.ny.us.ibm.com [129.33.205.205])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 2asc7j8dgq-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Tue, 30 May 2017 12:34:53 -0400
-Received: from localhost
-	by e15.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
-	Tue, 30 May 2017 12:34:52 -0400
-Received: from b01cxnp22033.gho.pok.ibm.com (9.57.198.23)
-	by e15.ny.us.ibm.com (146.89.104.202) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Tue, 30 May 2017 12:34:49 -0400
-Received: from b01ledav001.gho.pok.ibm.com (b01ledav001.gho.pok.ibm.com
-	[9.57.199.106])
-	by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	v4UGYmZO27590796; Tue, 30 May 2017 16:34:48 GMT
-Received: from b01ledav001.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 459AD2803F;
-	Tue, 30 May 2017 12:34:43 -0400 (EDT)
-Received: from oc1450873852.ibm.com (unknown [9.145.164.210])
-	by b01ledav001.gho.pok.ibm.com (Postfix) with ESMTP id 6BF7B2803A;
-	Tue, 30 May 2017 12:34:42 -0400 (EDT)
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+	(envelope-from <groug@kaod.org>) id 1dFkRb-00048e-IO
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:35 -0400
+Received: from 17.mo5.mail-out.ovh.net ([46.105.56.132]:44304)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dFkRa-00047b-Rm
+	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:31 -0400
+Received: from player799.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id BC55BF7911
+	for <qemu-trivial@nongnu.org>; Tue, 30 May 2017 18:56:26 +0200 (CEST)
+Received: from bahia.ttt.fr.ibm.com (gar31-1-82-66-74-139.fbx.proxad.net
+	[82.66.74.139]) (Authenticated sender: groug@kaod.org)
+	by player799.ha.ovh.net (Postfix) with ESMTPSA id B1AFB520073;
+	Tue, 30 May 2017 18:56:20 +0200 (CEST)
+Date: Tue, 30 May 2017 18:56:18 +0200
+From: Greg Kurz <groug@kaod.org>
+To: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: qemu-devel@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>,
+	qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>, Alexander Graf
+	<agraf@suse.de>
+Message-ID: <20170530185618.2e875ebb@bahia.ttt.fr.ibm.com>
+In-Reply-To: <e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
 References: <149615665491.28067.17765793725374594694.stgit@bahia.lan>
-Cc: Cornelia Huck <cornelia.huck@de.ibm.com>, qemu-trivial@nongnu.org,
-	Fam Zheng <famz@redhat.com>, Alexander Graf <agraf@suse.de>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Date: Tue, 30 May 2017 18:34:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	<e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
+X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <149615665491.28067.17765793725374594694.stgit@bahia.lan>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 17053016-0036-0000-0000-000002175FDE
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00007145; HX=3.00000241; KW=3.00000007;
-	PH=3.00000004; SC=3.00000212; SDB=6.00867792; UDB=6.00431194;
-	IPR=6.00647671; 
-	BA=6.00005387; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
-	ZB=6.00000000; 
-	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00015647;
-	XFM=3.00000015; UTC=2017-05-30 16:34:50
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17053016-0037-0000-0000-0000408751FB
-Message-Id: <e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-05-30_10:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1703280000
-	definitions=main-1705300307
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-Subject: Re: [Qemu-trivial] [PATCH] pc-bios/s390-ccw: use STRIP variable in
- Makefile
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/DELfm1Nhd5zmjInezB448lz";
+	protocol="application/pgp-signature"
+X-Ovh-Tracer-Id: 11833770972851902807
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrgeeggddutdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.56.132
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pc-bios/s390-ccw: use STRIP
+ variable in Makefile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,45 +54,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 May 2017 16:35:02 -0000
+X-List-Received-Date: Tue, 30 May 2017 16:56:36 -0000
 
-On 05/30/2017 05:04 PM, Greg Kurz wrote:
-> The docker-run-test-build@debian-s390x-cross target fails with:
-> 
-> strip --strip-unneeded s390-ccw.elf -o s390-ccw.img
-> strip: Unable to recognise the format of the input file `s390-ccw.elf'
-> 
-> The configure script defines a STRIP makefile variable whose default
-> value is ${cross_prefix}strip. Let's use it.
-> 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  pc-bios/s390-ccw/Makefile |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
-> index 79a46b67356f..7af57dad109c 100644
-> --- a/pc-bios/s390-ccw/Makefile
-> +++ b/pc-bios/s390-ccw/Makefile
-> @@ -22,7 +22,7 @@ s390-ccw.elf: $(OBJECTS)
->  	$(call quiet-command,$(CC) $(LDFLAGS) -o $@ $(OBJECTS),"BUILD","$(TARGET_DIR)$@")
-> 
->  s390-ccw.img: s390-ccw.elf
-> -	$(call quiet-command,strip --strip-unneeded $< -o $@,"STRIP","$(TARGET_DIR)$@")
-> +	$(call quiet-command,$(STRIP) --strip-unneeded $< -o $@,"STRIP","$(TARGET_DIR)$@")
-> 
->  $(OBJECTS): Makefile
-> 
-> 
+--Sig_/DELfm1Nhd5zmjInezB448lz
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-I was going to apply this, but it fails with --disable-strip like
+On Tue, 30 May 2017 18:34:46 +0200
+Christian Borntraeger <borntraeger@de.ibm.com> wrote:
 
-    /bin/sh: --strip-unneeded: command not found
-    Makefile:25: recipe for target 's390-ccw.img' failed
-    make[1]: *** [s390-ccw.img] Error 127
-    Makefile:354: recipe for target 'romsubdir-s390-ccw' failed
-    make: *** [romsubdir-s390-ccw] Error 2
+> On 05/30/2017 05:04 PM, Greg Kurz wrote:
+> > The docker-run-test-build@debian-s390x-cross target fails with:
+> >=20
+> > strip --strip-unneeded s390-ccw.elf -o s390-ccw.img
+> > strip: Unable to recognise the format of the input file `s390-ccw.elf'
+> >=20
+> > The configure script defines a STRIP makefile variable whose default
+> > value is ${cross_prefix}strip. Let's use it.
+> >=20
+> > Signed-off-by: Greg Kurz <groug@kaod.org>
+> > ---
+> >  pc-bios/s390-ccw/Makefile |    2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
+> > index 79a46b67356f..7af57dad109c 100644
+> > --- a/pc-bios/s390-ccw/Makefile
+> > +++ b/pc-bios/s390-ccw/Makefile
+> > @@ -22,7 +22,7 @@ s390-ccw.elf: $(OBJECTS)
+> >  	$(call quiet-command,$(CC) $(LDFLAGS) -o $@ $(OBJECTS),"BUILD","$(TAR=
+GET_DIR)$@")
+> >=20
+> >  s390-ccw.img: s390-ccw.elf
+> > -	$(call quiet-command,strip --strip-unneeded $< -o $@,"STRIP","$(TARGE=
+T_DIR)$@")
+> > +	$(call quiet-command,$(STRIP) --strip-unneeded $< -o $@,"STRIP","$(TA=
+RGET_DIR)$@")
+> >=20
+> >  $(OBJECTS): Makefile
+> >=20
+> >  =20
+>=20
+> I was going to apply this, but it fails with --disable-strip like
+>=20
+>     /bin/sh: --strip-unneeded: command not found
+>     Makefile:25: recipe for target 's390-ccw.img' failed
+>     make[1]: *** [s390-ccw.img] Error 127
+>     Makefile:354: recipe for target 'romsubdir-s390-ccw' failed
+>     make: *** [romsubdir-s390-ccw] Error 2
+>=20
+> Not yet sure whats going on.
+>=20
 
-Not yet sure whats going on.
+configure doesn't generate STRIP when --disable-strip or --enable-debug... =
+so
+I guess we shouldn't use it here, but rather generate a s390_cross_prefix l=
+ike
+in roms/Makefile ?
 
+--Sig_/DELfm1Nhd5zmjInezB448lz
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEARECAAYFAlktpDMACgkQAvw66wEB28K30ACeOf/P+RdJHUVWKyj3bY7jP2JI
+y2IAnisPII1mIFBVffiJF5L7Ym8pfZV/
+=gst4
+-----END PGP SIGNATURE-----
+
+--Sig_/DELfm1Nhd5zmjInezB448lz--
 
