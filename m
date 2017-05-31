@@ -1,50 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dG3i1-00007I-Nv
-	for mharc-qemu-trivial@gnu.org; Wed, 31 May 2017 09:30:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42883)
+	id 1dG9IW-0001DF-IG
+	for mharc-qemu-trivial@gnu.org; Wed, 31 May 2017 15:28:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36175)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dG3hz-00005J-AN
-	for qemu-trivial@nongnu.org; Wed, 31 May 2017 09:30:44 -0400
+	(envelope-from <jsnow@redhat.com>) id 1dG9IU-0001Bb-7m
+	for qemu-trivial@nongnu.org; Wed, 31 May 2017 15:28:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dG3hv-0002LK-Uy
-	for qemu-trivial@nongnu.org; Wed, 31 May 2017 09:30:43 -0400
-Received: from 18.mo5.mail-out.ovh.net ([178.33.45.10]:34916)
+	(envelope-from <jsnow@redhat.com>) id 1dG9IT-0000Et-B3
+	for qemu-trivial@nongnu.org; Wed, 31 May 2017 15:28:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42434)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dG3hv-0002KS-OX
-	for qemu-trivial@nongnu.org; Wed, 31 May 2017 09:30:39 -0400
-Received: from player799.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id EACF3FF967
-	for <qemu-trivial@nongnu.org>; Wed, 31 May 2017 15:30:37 +0200 (CEST)
-Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
-	(Authenticated sender: groug@kaod.org)
-	by player799.ha.ovh.net (Postfix) with ESMTPSA id C486A520091;
-	Wed, 31 May 2017 15:30:29 +0200 (CEST)
-Date: Wed, 31 May 2017 15:30:27 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: Christian Borntraeger <borntraeger@de.ibm.com>, Cornelia Huck
-	<cornelia.huck@de.ibm.com>, qemu-trivial@nongnu.org, Fam Zheng
-	<famz@redhat.com>, qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>
-Message-ID: <20170531153027.6133baef@bahia.lan>
-In-Reply-To: <32546ddf-a725-5dd4-95cb-75a41da8e6ec@redhat.com>
-References: <149615665491.28067.17765793725374594694.stgit@bahia.lan>
-	<e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
-	<20170530185618.2e875ebb@bahia.ttt.fr.ibm.com>
-	<32546ddf-a725-5dd4-95cb-75a41da8e6ec@redhat.com>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/w6Qx23FL5Qi8A.0tYGi_Bgl";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 14230248924425328934
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrgeeigdeijecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1dG9IN-0000BX-32; Wed, 31 May 2017 15:28:39 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6949113B2F1;
+	Wed, 31 May 2017 19:28:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6949113B2F1
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=jsnow@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6949113B2F1
+Received: from probe.bos.redhat.com (dhcp-17-130.bos.redhat.com [10.18.17.130])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DC26917D7E;
+	Wed, 31 May 2017 19:28:36 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: thuth@redhat.com,
+	qemu-devel@nongnu.org,
+	John Snow <jsnow@redhat.com>
+Date: Wed, 31 May 2017 15:28:36 -0400
+Message-Id: <20170531192836.7187-1-jsnow@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 31 May 2017 19:28:37 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 178.33.45.10
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pc-bios/s390-ccw: use STRIP
- variable in Makefile
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] ide-test: check return of fwrite
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,96 +53,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 May 2017 13:30:44 -0000
+X-List-Received-Date: Wed, 31 May 2017 19:28:47 -0000
 
---Sig_/w6Qx23FL5Qi8A.0tYGi_Bgl
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+To quiet patchew, add an assert for fwrite's return value.
 
-On Wed, 31 May 2017 15:15:56 +0200
-Laurent Vivier <lvivier@redhat.com> wrote:
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ tests/ide-test.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-> On 30/05/2017 18:56, Greg Kurz wrote:
-> > On Tue, 30 May 2017 18:34:46 +0200
-> > Christian Borntraeger <borntraeger@de.ibm.com> wrote:
-> >  =20
-> >> On 05/30/2017 05:04 PM, Greg Kurz wrote: =20
-> >>> The docker-run-test-build@debian-s390x-cross target fails with:
-> >>>
-> >>> strip --strip-unneeded s390-ccw.elf -o s390-ccw.img
-> >>> strip: Unable to recognise the format of the input file `s390-ccw.elf'
-> >>>
-> >>> The configure script defines a STRIP makefile variable whose default
-> >>> value is ${cross_prefix}strip. Let's use it.
-> >>>
-> >>> Signed-off-by: Greg Kurz <groug@kaod.org>
-> >>> ---
-> >>>  pc-bios/s390-ccw/Makefile |    2 +-
-> >>>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
-> >>> index 79a46b67356f..7af57dad109c 100644
-> >>> --- a/pc-bios/s390-ccw/Makefile
-> >>> +++ b/pc-bios/s390-ccw/Makefile
-> >>> @@ -22,7 +22,7 @@ s390-ccw.elf: $(OBJECTS)
-> >>>  	$(call quiet-command,$(CC) $(LDFLAGS) -o $@ $(OBJECTS),"BUILD","$(T=
-ARGET_DIR)$@")
-> >>>
-> >>>  s390-ccw.img: s390-ccw.elf
-> >>> -	$(call quiet-command,strip --strip-unneeded $< -o $@,"STRIP","$(TAR=
-GET_DIR)$@")
-> >>> +	$(call quiet-command,$(STRIP) --strip-unneeded $< -o $@,"STRIP","$(=
-TARGET_DIR)$@")
-> >>>
-> >>>  $(OBJECTS): Makefile
-> >>>
-> >>>    =20
-> >>
-> >> I was going to apply this, but it fails with --disable-strip like
-> >>
-> >>     /bin/sh: --strip-unneeded: command not found
-> >>     Makefile:25: recipe for target 's390-ccw.img' failed
-> >>     make[1]: *** [s390-ccw.img] Error 127
-> >>     Makefile:354: recipe for target 'romsubdir-s390-ccw' failed
-> >>     make: *** [romsubdir-s390-ccw] Error 2
-> >>
-> >> Not yet sure whats going on.
-> >> =20
-> >=20
-> > configure doesn't generate STRIP when --disable-strip or --enable-debug=
-... so
-> > I guess we shouldn't use it here, but rather generate a s390_cross_pref=
-ix like
-> > in roms/Makefile ?
-> >  =20
->=20
-> I experimented the problem when I played with docker, and fixed the
-> problem as you did (with STRIP).
->=20
+diff --git a/tests/ide-test.c b/tests/ide-test.c
+index 139ebc0..bfd79dd 100644
+--- a/tests/ide-test.c
++++ b/tests/ide-test.c
+@@ -796,11 +796,13 @@ static void cdrom_pio_impl(int nblocks)
+     int i, j;
+     uint8_t data;
+     uint16_t limit;
++    size_t ret;
+ 
+     /* Prepopulate the CDROM with an interesting pattern */
+     generate_pattern(pattern, patt_len, ATAPI_BLOCK_SIZE);
+     fh = fopen(tmp_path, "w+");
+-    fwrite(pattern, ATAPI_BLOCK_SIZE, patt_blocks, fh);
++    ret = fwrite(pattern, ATAPI_BLOCK_SIZE, patt_blocks, fh);
++    g_assert_cmpint(ret, ==, patt_blocks);
+     fclose(fh);
+ 
+     ide_test_start("-drive if=none,file=%s,media=cdrom,format=raw,id=sr0,index=0 "
+@@ -880,6 +882,7 @@ static void test_cdrom_pio_large(void)
+ static void test_cdrom_dma(void)
+ {
+     static const size_t len = ATAPI_BLOCK_SIZE;
++    size_t ret;
+     char *pattern = g_malloc(ATAPI_BLOCK_SIZE * 16);
+     char *rx = g_malloc0(len);
+     uintptr_t guest_buf;
+@@ -896,7 +899,8 @@ static void test_cdrom_dma(void)
+ 
+     generate_pattern(pattern, ATAPI_BLOCK_SIZE * 16, ATAPI_BLOCK_SIZE);
+     fh = fopen(tmp_path, "w+");
+-    fwrite(pattern, ATAPI_BLOCK_SIZE, 16, fh);
++    ret = fwrite(pattern, ATAPI_BLOCK_SIZE, 16, fh);
++    g_assert_cmpint(ret, ==, 16);
+     fclose(fh);
+ 
+     send_dma_request(CMD_PACKET, 0, 1, prdt, 1, send_scsi_cdb_read10);
+-- 
+2.9.4
 
-I've sent a v2 with a 'STRIP ?=3D strip' line to handle the issue reported
-by Christian.
-
-> But I think it's a good idea to compile s390 rom as it is done for ppc64
-> and ppc roms.
->=20
-
-Yeah, I was thinking about that too but I don't know all the ins and outs.
-
-> Laurent
-
-
---Sig_/w6Qx23FL5Qi8A.0tYGi_Bgl
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAlkuxXQACgkQAvw66wEB28K00wCfdjhi2dR+/3cR0iZQBmtlKBDB
-ND0Anjr+Q7vGgjXN5nOq2tHDPwEXAGur
-=Fbi9
------END PGP SIGNATURE-----
-
---Sig_/w6Qx23FL5Qi8A.0tYGi_Bgl--
 
