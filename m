@@ -1,48 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dFkRi-00048K-Ce
-	for mharc-qemu-trivial@gnu.org; Tue, 30 May 2017 12:56:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42620)
+	id 1dG1I1-0002LC-3A
+	for mharc-qemu-trivial@gnu.org; Wed, 31 May 2017 06:55:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dFkRf-00047J-F5
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:36 -0400
+	(envelope-from <armbru@redhat.com>) id 1dG1Hz-0002Je-9L
+	for qemu-trivial@nongnu.org; Wed, 31 May 2017 06:55:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dFkRb-00048e-IO
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:35 -0400
-Received: from 17.mo5.mail-out.ovh.net ([46.105.56.132]:44304)
+	(envelope-from <armbru@redhat.com>) id 1dG1Hy-00088B-DZ
+	for qemu-trivial@nongnu.org; Wed, 31 May 2017 06:55:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36622)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dFkRa-00047b-Rm
-	for qemu-trivial@nongnu.org; Tue, 30 May 2017 12:56:31 -0400
-Received: from player799.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id BC55BF7911
-	for <qemu-trivial@nongnu.org>; Tue, 30 May 2017 18:56:26 +0200 (CEST)
-Received: from bahia.ttt.fr.ibm.com (gar31-1-82-66-74-139.fbx.proxad.net
-	[82.66.74.139]) (Authenticated sender: groug@kaod.org)
-	by player799.ha.ovh.net (Postfix) with ESMTPSA id B1AFB520073;
-	Tue, 30 May 2017 18:56:20 +0200 (CEST)
-Date: Tue, 30 May 2017 18:56:18 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Christian Borntraeger <borntraeger@de.ibm.com>
-Cc: qemu-devel@nongnu.org, Cornelia Huck <cornelia.huck@de.ibm.com>,
-	qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>, Alexander Graf
-	<agraf@suse.de>
-Message-ID: <20170530185618.2e875ebb@bahia.ttt.fr.ibm.com>
-In-Reply-To: <e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
-References: <149615665491.28067.17765793725374594694.stgit@bahia.lan>
-	<e8fdae1c-9d3c-1059-509a-6b85000e83a9@de.ibm.com>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1dG1Hs-00086K-Vq; Wed, 31 May 2017 06:55:37 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BD21A80C0D;
+	Wed, 31 May 2017 10:55:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BD21A80C0D
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=armbru@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com BD21A80C0D
+Received: from blackfin.pond.sub.org (ovpn-116-98.ams2.redhat.com
+	[10.36.116.98])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 85C8B183F0;
+	Wed, 31 May 2017 10:55:35 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id EC16F1138647; Wed, 31 May 2017 12:55:33 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Suraj Jitindar Singh <sjitindarsingh@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20170531061150.15755-1-sjitindarsingh@gmail.com>
+Date: Wed, 31 May 2017 12:55:33 +0200
+In-Reply-To: <20170531061150.15755-1-sjitindarsingh@gmail.com> (Suraj Jitindar
+	Singh's message of "Wed, 31 May 2017 16:11:50 +1000")
+Message-ID: <87vaohcn2y.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/DELfm1Nhd5zmjInezB448lz";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 11833770972851902807
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrgeeggddutdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 31 May 2017 10:55:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.56.132
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pc-bios/s390-ccw: use STRIP
- variable in Makefile
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] help: Add newline to end of
+ thread option help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,75 +61,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 May 2017 16:56:36 -0000
+X-List-Received-Date: Wed, 31 May 2017 10:55:44 -0000
 
---Sig_/DELfm1Nhd5zmjInezB448lz
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Cc: qemu-trivial
 
-On Tue, 30 May 2017 18:34:46 +0200
-Christian Borntraeger <borntraeger@de.ibm.com> wrote:
+Suraj Jitindar Singh <sjitindarsingh@gmail.com> writes:
 
-> On 05/30/2017 05:04 PM, Greg Kurz wrote:
-> > The docker-run-test-build@debian-s390x-cross target fails with:
-> >=20
-> > strip --strip-unneeded s390-ccw.elf -o s390-ccw.img
-> > strip: Unable to recognise the format of the input file `s390-ccw.elf'
-> >=20
-> > The configure script defines a STRIP makefile variable whose default
-> > value is ${cross_prefix}strip. Let's use it.
-> >=20
-> > Signed-off-by: Greg Kurz <groug@kaod.org>
-> > ---
-> >  pc-bios/s390-ccw/Makefile |    2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
-> > index 79a46b67356f..7af57dad109c 100644
-> > --- a/pc-bios/s390-ccw/Makefile
-> > +++ b/pc-bios/s390-ccw/Makefile
-> > @@ -22,7 +22,7 @@ s390-ccw.elf: $(OBJECTS)
-> >  	$(call quiet-command,$(CC) $(LDFLAGS) -o $@ $(OBJECTS),"BUILD","$(TAR=
-GET_DIR)$@")
-> >=20
-> >  s390-ccw.img: s390-ccw.elf
-> > -	$(call quiet-command,strip --strip-unneeded $< -o $@,"STRIP","$(TARGE=
-T_DIR)$@")
-> > +	$(call quiet-command,$(STRIP) --strip-unneeded $< -o $@,"STRIP","$(TA=
-RGET_DIR)$@")
-> >=20
-> >  $(OBJECTS): Makefile
-> >=20
-> >  =20
->=20
-> I was going to apply this, but it fails with --disable-strip like
->=20
->     /bin/sh: --strip-unneeded: command not found
->     Makefile:25: recipe for target 's390-ccw.img' failed
->     make[1]: *** [s390-ccw.img] Error 127
->     Makefile:354: recipe for target 'romsubdir-s390-ccw' failed
->     make: *** [romsubdir-s390-ccw] Error 2
->=20
-> Not yet sure whats going on.
->=20
-
-configure doesn't generate STRIP when --disable-strip or --enable-debug... =
-so
-I guess we shouldn't use it here, but rather generate a s390_cross_prefix l=
-ike
-in roms/Makefile ?
-
---Sig_/DELfm1Nhd5zmjInezB448lz
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAlktpDMACgkQAvw66wEB28K30ACeOf/P+RdJHUVWKyj3bY7jP2JI
-y2IAnisPII1mIFBVffiJF5L7Ym8pfZV/
-=gst4
------END PGP SIGNATURE-----
-
---Sig_/DELfm1Nhd5zmjInezB448lz--
+> The help text for the thread sub option of the accel option is missing
+> a newline at the end. This is annoying as it makes it hard to see the
+> help text for the next option.
+>
+> Add the new line so that the following option help text (-smp) is
+> displayed on a new line rather on the same line and directly after
+> the thread help.
+>
+> Before patch:
+>
+> -accel [accel=]accelerator[,thread=single|multi]
+>                 select accelerator (kvm, xen, hax or tcg; use 'help' for a list)
+>                 thread=single|multi (enable multi-threaded TCG)-smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,sockets=sockets]
+>                 set the number of CPUs to 'n' [default=1]
+>                 maxcpus= maximum number of total cpus, including
+>                 offline CPUs for hotplug, etc
+>                 cores= number of CPU cores on one socket
+>                 threads= number of threads on one CPU core
+>                 sockets= number of discrete sockets in the system
+>
+> After patch:
+>
+> -accel [accel=]accelerator[,thread=single|multi]
+>                 select accelerator (kvm, xen, hax or tcg; use 'help' for a list)
+>                 thread=single|multi (enable multi-threaded TCG)
+> -smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,sockets=sockets]
+>                 set the number of CPUs to 'n' [default=1]
+>                 maxcpus= maximum number of total cpus, including
+>                 offline CPUs for hotplug, etc
+>                 cores= number of CPU cores on one socket
+>                 threads= number of threads on one CPU core
+>                 sockets= number of discrete sockets in the system
+>
+> Signed-off-by: Suraj Jitindar Singh <sjitindarsingh@gmail.com>
+> ---
+>  qemu-options.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index a6c9b9e..8515db8 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -102,7 +102,7 @@ ETEXI
+>  DEF("accel", HAS_ARG, QEMU_OPTION_accel,
+>      "-accel [accel=]accelerator[,thread=single|multi]\n"
+>      "                select accelerator (kvm, xen, hax or tcg; use 'help' for a list)\n"
+> -    "                thread=single|multi (enable multi-threaded TCG)", QEMU_ARCH_ALL)
+> +    "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
+>  STEXI
+>  @item -accel @var{name}[,prop=@var{value}[,...]]
+>  @findex -accel
 
