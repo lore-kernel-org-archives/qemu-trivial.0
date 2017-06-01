@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dG9RG-0004Te-0K
-	for mharc-qemu-trivial@gnu.org; Wed, 31 May 2017 15:37:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38413)
+	id 1dGKN6-0005vA-KL
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2017 03:18:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49660)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1dG9RE-0004SV-Du
-	for qemu-trivial@nongnu.org; Wed, 31 May 2017 15:37:49 -0400
+	(envelope-from <lvivier@redhat.com>) id 1dGKN4-0005tK-Iv
+	for qemu-trivial@nongnu.org; Thu, 01 Jun 2017 03:18:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1dG9RD-0004nf-K2
-	for qemu-trivial@nongnu.org; Wed, 31 May 2017 15:37:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39488)
+	(envelope-from <lvivier@redhat.com>) id 1dGKN3-0000Gu-GK
+	for qemu-trivial@nongnu.org; Thu, 01 Jun 2017 03:18:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43274)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcody@redhat.com>)
-	id 1dG9R8-0004fe-Ed; Wed, 31 May 2017 15:37:42 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1dGKMz-0000Cp-3C; Thu, 01 Jun 2017 03:18:09 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B23F02DC3F5;
-	Wed, 31 May 2017 19:37:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B23F02DC3F5
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id EC1CF80C1D;
+	Thu,  1 Jun 2017 07:18:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EC1CF80C1D
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=jcody@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com B23F02DC3F5
-Received: from localhost (ovpn-117-1.phx2.redhat.com [10.3.117.1])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D84BC451B;
-	Wed, 31 May 2017 19:37:38 +0000 (UTC)
-Date: Wed, 31 May 2017 15:37:37 -0400
-From: Jeff Cody <jcody@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-trivial@nongnu.org, thuth@redhat.com, qemu-devel@nongnu.org
-Message-ID: <20170531193737.GC4395@localhost.localdomain>
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=lvivier@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com EC1CF80C1D
+Received: from [10.36.117.7] (ovpn-117-7.ams2.redhat.com [10.36.117.7])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 500E581419;
+	Thu,  1 Jun 2017 07:18:05 +0000 (UTC)
+To: John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org
+Cc: thuth@redhat.com, qemu-devel@nongnu.org
 References: <20170531192836.7187-1-jsnow@redhat.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <88293908-ce2e-32e3-8094-f9288f9c6c17@redhat.com>
+Date: Thu, 1 Jun 2017 09:18:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20170531192836.7187-1-jsnow@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 31 May 2017 19:37:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 01 Jun 2017 07:18:08 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ide-test: check return of
- fwrite
+Subject: Re: [Qemu-trivial] [PATCH] ide-test: check return of fwrite
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,12 +59,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 May 2017 19:37:49 -0000
+X-List-Received-Date: Thu, 01 Jun 2017 07:18:15 -0000
 
-On Wed, May 31, 2017 at 03:28:36PM -0400, John Snow wrote:
+On 31/05/2017 21:28, John Snow wrote:
 > To quiet patchew, add an assert for fwrite's return value.
 > 
 > Signed-off-by: John Snow <jsnow@redhat.com>
+
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+
 > ---
 >  tests/ide-test.c | 8 ++++++--
 >  1 file changed, 6 insertions(+), 2 deletions(-)
@@ -105,10 +109,6 @@ On Wed, May 31, 2017 at 03:28:36PM -0400, John Snow wrote:
 >      fclose(fh);
 >  
 >      send_dma_request(CMD_PACKET, 0, 1, prdt, 1, send_scsi_cdb_read10);
-> -- 
-> 2.9.4
 > 
->
 
-Reviewed-by: Jeff Cody <jcody@redhat.com>
 
