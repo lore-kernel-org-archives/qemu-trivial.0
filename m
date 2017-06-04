@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHYIj-000297-Jf
+	id 1dHYIj-00029d-SK
 	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 12:22:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39373)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39381)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHYIc-000237-Q3
+	(envelope-from <mjt@tls.msk.ru>) id 1dHYId-00023G-14
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:22:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHYIb-0004XJ-V7
-	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:22:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:47639)
+	(envelope-from <mjt@tls.msk.ru>) id 1dHYIc-0004XO-1H
+	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:22:43 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40701)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHYIW-0004O6-Dd; Sun, 04 Jun 2017 12:22:36 -0400
+	id 1dHYIW-0004O7-DT; Sun, 04 Jun 2017 12:22:36 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1D9CC404D1;
+	by isrv.corpit.ru (Postfix) with ESMTP id 687C2404E6;
 	Sun,  4 Jun 2017 19:22:33 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 2E62C5F6;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 1CBA75F5;
 	Sun,  4 Jun 2017 18:45:30 +0300 (MSK)
-Received: (nullmailer pid 16387 invoked by uid 1000);
+Received: (nullmailer pid 16397 invoked by uid 1000);
 	Sun, 04 Jun 2017 15:45:27 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>, qemu-trivial@nongnu.org,
+Cc: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  4 Jun 2017 18:45:20 +0300
-Message-Id: <3975bb56a7d39ba26211fc5fe4211cef766fd838.1496591095.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  4 Jun 2017 18:45:25 +0300
+Message-Id: <9d2c9031af6edb352eb83e58fe46cdd99333e7b6.1496591095.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
@@ -34,8 +34,8 @@ References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 16/22] scsi/lsi53c895a: Remove unused
- lsi_mem_*() return value
+Subject: [Qemu-trivial] [PULL 21/22] ivshmem-server: ivshmem-client: Build
+ when eventfd() is available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,56 +47,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Jun 2017 16:22:43 -0000
+X-List-Received-Date: Sun, 04 Jun 2017 16:22:44 -0000
 
-From: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>
+From: Kamil Rytarowski <n54@gmx.com>
 
-lsi_mem_read/write() always return 0 about which their
-callers actually don't care. Change the function type
-to void.
+Currently ivshmem requires eventfd() which is Linux specific.
+Do not and build it unconditionally on every Linux/BSD/Solaris.
 
-Signed-off-by: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>
+This patch indirectly fixes build failure on NetBSD, where these tools
+additionally require -lrt for shm_open(3). In future there should be
+added support for NetBSD and the linking addressed appropriately.
+
+Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/scsi/lsi53c895a.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ configure                            | 2 ++
+ contrib/ivshmem-client/Makefile.objs | 2 +-
+ contrib/ivshmem-server/Makefile.objs | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-index 595c26017a..3e56ab267c 100644
---- a/hw/scsi/lsi53c895a.c
-+++ b/hw/scsi/lsi53c895a.c
-@@ -408,27 +408,25 @@ static void lsi_reg_writeb(LSIState *s, int offset, uint8_t val);
- static void lsi_execute_script(LSIState *s);
- static void lsi_reselect(LSIState *s, lsi_request *p);
- 
--static inline int lsi_mem_read(LSIState *s, dma_addr_t addr,
-+static inline void lsi_mem_read(LSIState *s, dma_addr_t addr,
-                                void *buf, dma_addr_t len)
- {
-     if (s->dmode & LSI_DMODE_SIOM) {
-         address_space_read(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED,
-                            buf, len);
--        return 0;
-     } else {
--        return pci_dma_read(PCI_DEVICE(s), addr, buf, len);
-+        pci_dma_read(PCI_DEVICE(s), addr, buf, len);
-     }
- }
- 
--static inline int lsi_mem_write(LSIState *s, dma_addr_t addr,
-+static inline void lsi_mem_write(LSIState *s, dma_addr_t addr,
-                                 const void *buf, dma_addr_t len)
- {
-     if (s->dmode & LSI_DMODE_DIOM) {
-         address_space_write(&s->pci_io_as, addr, MEMTXATTRS_UNSPECIFIED,
-                             buf, len);
--        return 0;
-     } else {
--        return pci_dma_write(PCI_DEVICE(s), addr, buf, len);
-+        pci_dma_write(PCI_DEVICE(s), addr, buf, len);
-     }
- }
- 
+diff --git a/configure b/configure
+index fbb6a93c99..965727bca8 100755
+--- a/configure
++++ b/configure
+@@ -4910,6 +4910,8 @@ if test "$want_tools" = "yes" ; then
+   tools="qemu-img\$(EXESUF) qemu-io\$(EXESUF) $tools"
+   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
+     tools="qemu-nbd\$(EXESUF) $tools"
++  fi
++  if [ "$eventfd" = "yes" ]; then
+     tools="ivshmem-client\$(EXESUF) ivshmem-server\$(EXESUF) $tools"
+   fi
+ fi
+diff --git a/contrib/ivshmem-client/Makefile.objs b/contrib/ivshmem-client/Makefile.objs
+index bfab2d20dd..13d864082d 100644
+--- a/contrib/ivshmem-client/Makefile.objs
++++ b/contrib/ivshmem-client/Makefile.objs
+@@ -1 +1 @@
+-ivshmem-client-obj-y = ivshmem-client.o main.o
++ivshmem-client-obj-$(CONFIG_IVSHMEM) = ivshmem-client.o main.o
+diff --git a/contrib/ivshmem-server/Makefile.objs b/contrib/ivshmem-server/Makefile.objs
+index c060dd3698..d9469fd777 100644
+--- a/contrib/ivshmem-server/Makefile.objs
++++ b/contrib/ivshmem-server/Makefile.objs
+@@ -1 +1 @@
+-ivshmem-server-obj-y = ivshmem-server.o main.o
++ivshmem-server-obj-$(CONFIG_IVSHMEM) = ivshmem-server.o main.o
 -- 
 2.11.0
 
