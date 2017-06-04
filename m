@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHXzJ-00077u-JR
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 12:02:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35195)
+	id 1dHXzM-00079V-H6
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 12:02:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35203)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXzF-00073f-42
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXzF-00073q-B5
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:02:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXzE-0003z5-DN
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXzE-0003zC-EH
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:02:41 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46041)
+Received: from isrv.corpit.ru ([86.62.121.231]:55677)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHXz9-0003uI-EI; Sun, 04 Jun 2017 12:02:35 -0400
+	id 1dHXz9-0003uR-ET; Sun, 04 Jun 2017 12:02:35 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id E503D404E3;
-	Sun,  4 Jun 2017 19:02:33 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 251EE404E5;
+	Sun,  4 Jun 2017 19:02:34 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 91B495F0;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 45DBC5EC;
 	Sun,  4 Jun 2017 18:45:29 +0300 (MSK)
-Received: (nullmailer pid 16381 invoked by uid 1000);
+Received: (nullmailer pid 16391 invoked by uid 1000);
 	Sun, 04 Jun 2017 15:45:27 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  4 Jun 2017 18:45:17 +0300
-Message-Id: <016b4a93e733778d75088d8e87ab1bd7e73425b4.1496591095.git.mjt@msgid.tls.msk.ru>
+Cc: Suraj Jitindar Singh <sjitindarsingh@gmail.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  4 Jun 2017 18:45:22 +0300
+Message-Id: <f603164ae409d23e1fba012ded3b5dda33f9df5a.1496591095.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 13/22] register: display register prefix
- (name) since it is available
+Subject: [Qemu-trivial] [PULL 18/22] help: Add newline to end of thread
+ option help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,49 +49,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 04 Jun 2017 16:02:43 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Suraj Jitindar Singh <sjitindarsingh@gmail.com>
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+The help text for the thread sub option of the accel option is missing
+a newline at the end. This is annoying as it makes it hard to see the
+help text for the next option.
+
+Add the new line so that the following option help text (-smp) is
+displayed on a new line rather on the same line and directly after
+the thread help.
+
+Before patch:
+
+-accel [accel=]accelerator[,thread=single|multi]
+                select accelerator (kvm, xen, hax or tcg; use 'help' for a list)
+                thread=single|multi (enable multi-threaded TCG)-smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,sockets=sockets]
+                set the number of CPUs to 'n' [default=1]
+                maxcpus= maximum number of total cpus, including
+                offline CPUs for hotplug, etc
+                cores= number of CPU cores on one socket
+                threads= number of threads on one CPU core
+                sockets= number of discrete sockets in the system
+
+After patch:
+
+-accel [accel=]accelerator[,thread=single|multi]
+                select accelerator (kvm, xen, hax or tcg; use 'help' for a list)
+                thread=single|multi (enable multi-threaded TCG)
+-smp [cpus=]n[,maxcpus=cpus][,cores=cores][,threads=threads][,sockets=sockets]
+                set the number of CPUs to 'n' [default=1]
+                maxcpus= maximum number of total cpus, including
+                offline CPUs for hotplug, etc
+                cores= number of CPU cores on one socket
+                threads= number of threads on one CPU core
+                sockets= number of discrete sockets in the system
+
+Signed-off-by: Suraj Jitindar Singh <sjitindarsingh@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/core/register.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/core/register.c b/hw/core/register.c
-index da38ef3a54..900294b9c4 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -195,8 +195,8 @@ void register_write_memory(void *opaque, hwaddr addr,
-     }
-=20
-     if (!reg) {
--        qemu_log_mask(LOG_GUEST_ERROR, "Write to unimplemented register =
-at " \
--                      "address: %#" PRIx64 "\n", addr);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented regis=
-ter " \
-+                      "at address: %#" PRIx64 "\n", reg_array->prefix, a=
-ddr);
-         return;
-     }
-=20
-@@ -224,8 +224,8 @@ uint64_t register_read_memory(void *opaque, hwaddr ad=
-dr,
-     }
-=20
-     if (!reg) {
--        qemu_log_mask(LOG_GUEST_ERROR, "Read to unimplemented register a=
-t " \
--                      "address: %#" PRIx64 "\n", addr);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented regis=
-ter " \
-+                      "at address: %#" PRIx64 "\n", reg_array->prefix, a=
-ddr);
-         return 0;
-     }
-=20
---=20
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 10995dc932..30c4f9850f 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -102,7 +102,7 @@ ETEXI
+ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
+     "-accel [accel=]accelerator[,thread=single|multi]\n"
+     "                select accelerator (kvm, xen, hax or tcg; use 'help' for a list)\n"
+-    "                thread=single|multi (enable multi-threaded TCG)", QEMU_ARCH_ALL)
++    "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
+ STEXI
+ @item -accel @var{name}[,prop=@var{value}[,...]]
+ @findex -accel
+-- 
 2.11.0
 
 
