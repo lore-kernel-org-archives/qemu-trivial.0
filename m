@@ -1,54 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dGStl-00037P-PT
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2017 12:24:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49335)
+	id 1dHXiv-0002Ns-Fz
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 11:45:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59765)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1dGStj-00036G-PF
-	for qemu-trivial@nongnu.org; Thu, 01 Jun 2017 12:24:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXit-0002Mw-6i
+	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:45:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1dGSti-00031m-VR
-	for qemu-trivial@nongnu.org; Thu, 01 Jun 2017 12:24:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33318)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1dGSte-000318-OR; Thu, 01 Jun 2017 12:24:26 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8D24480F94;
-	Thu,  1 Jun 2017 16:24:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8D24480F94
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=quintela@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 8D24480F94
-Received: from localhost (ovpn-117-3.ams2.redhat.com [10.36.117.3])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1343B5279C;
-	Thu,  1 Jun 2017 16:24:22 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Bandan Das <bsd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>
-In-Reply-To: <1496310843-28771-1-git-send-email-thuth@redhat.com> (Thomas
-	Huth's message of "Thu, 1 Jun 2017 11:54:03 +0200")
-References: <1496310843-28771-1-git-send-email-thuth@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Thu, 01 Jun 2017 18:24:22 +0200
-Message-ID: <87shjjekw9.fsf@secure.mitica>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 01 Jun 2017 16:24:25 +0000 (UTC)
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXis-0005xu-FH
+	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:45:47 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:39151)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1dHXin-0005jy-99; Sun, 04 Jun 2017 11:45:41 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id E25A0404E4;
+	Sun,  4 Jun 2017 18:45:27 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id BDD165E6;
+	Sun,  4 Jun 2017 18:45:27 +0300 (MSK)
+Received: (nullmailer pid 16370 invoked by uid 1000);
+	Sun, 04 Jun 2017 15:45:27 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun,  4 Jun 2017 18:45:12 +0300
+Message-Id: <e8758b62290c45b5b2f3c7925e250b9f16293f27.1496591095.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
+References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
+References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/core: nmi.c can be compiled as
- common-obj nowadays
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 08/22] trivial: Remove unneeded ifndef in
+ memory.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,15 +47,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Jun 2017 16:24:32 -0000
+X-List-Received-Date: Sun, 04 Jun 2017 15:45:48 -0000
 
-Thomas Huth <thuth@redhat.com> wrote:
-> The target-specific code in nmi.c has been removed with this commit:
->
-> 	commit f7e981f29548fe4af7812f5920304fe607e5bf0d
-> 	nmi: remove x86 specific nmi handling
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+From: Juan Quintela <quintela@redhat.com>
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+All the file is surounded already by #ifndef CONFIG_USER_ONLY.
+
+Signed-off-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ include/exec/memory.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index bfdc685f24..80e605a96a 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -17,9 +17,7 @@
+ #ifndef CONFIG_USER_ONLY
+ 
+ #include "exec/cpu-common.h"
+-#ifndef CONFIG_USER_ONLY
+ #include "exec/hwaddr.h"
+-#endif
+ #include "exec/memattrs.h"
+ #include "exec/ramlist.h"
+ #include "qemu/queue.h"
+-- 
+2.11.0
+
 
