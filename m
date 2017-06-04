@@ -1,40 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHXnw-0005HX-QX
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 11:51:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60594)
+	id 1dHXny-0005Ix-2N
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 11:51:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60609)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXnt-0005EU-US
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXnu-0005Ez-Hp
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:50:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXnt-0003Bz-7v
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXnt-0003D1-Je
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:50:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:41061)
+Received: from isrv.corpit.ru ([86.62.121.231]:33555)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHXno-00034B-62; Sun, 04 Jun 2017 11:50:52 -0400
+	id 1dHXno-00034A-5z; Sun, 04 Jun 2017 11:50:52 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1B870404E5;
-	Sun,  4 Jun 2017 18:45:28 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id E49F25E3;
+	by isrv.corpit.ru (Postfix) with ESMTP id AB409404D1;
 	Sun,  4 Jun 2017 18:45:27 +0300 (MSK)
-Received: (nullmailer pid 16368 invoked by uid 1000);
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 820F35E3;
+	Sun,  4 Jun 2017 18:45:27 +0300 (MSK)
+Received: (nullmailer pid 16353 invoked by uid 1000);
 	Sun, 04 Jun 2017 15:45:27 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  4 Jun 2017 18:45:11 +0300
-Message-Id: <cc16ee9d4ecec35ea04eb5e44430207a447757ce.1496591095.git.mjt@msgid.tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Sun,  4 Jun 2017 18:45:04 +0300
+Message-Id: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 07/22] altera_timer: fix incorrect memset
+Subject: [Qemu-trivial] [PULL 00/22] Trivial patches for 2017-06-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,32 +46,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 04 Jun 2017 15:50:59 -0000
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+Trivial patches for 04 Jun 2017. Please consider applying.
 
-Use sizeof instead of ARRAY_SIZE, fixing -Wmemset-elt-size with recent
-GCC versions.
+/mjt
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- hw/timer/altera_timer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The following changes since commit c6e84fbd447a51e1161d74d71566a5f67b47ea=
+c5:
 
-diff --git a/hw/timer/altera_timer.c b/hw/timer/altera_timer.c
-index 6d4862661d..c9a0fc5dca 100644
---- a/hw/timer/altera_timer.c
-+++ b/hw/timer/altera_timer.c
-@@ -204,7 +204,7 @@ static void altera_timer_reset(DeviceState *dev)
- 
-     ptimer_stop(t->ptimer);
-     ptimer_set_limit(t->ptimer, 0xffffffff, 1);
--    memset(t->regs, 0, ARRAY_SIZE(t->regs));
-+    memset(t->regs, 0, sizeof(t->regs));
- }
- 
- static Property altera_timer_properties[] = {
--- 
-2.11.0
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into stagi=
+ng (2017-06-02 17:46:22 +0100)
 
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+
+for you to fetch changes up to 070ccceda3b23f85d048bbcf3c0040252a9a793a:
+
+  hw/core: nmi.c can be compiled as common-obj nowadays (2017-06-04 18:43=
+:09 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2017-06-04
+
+----------------------------------------------------------------
+Eric Blake (2):
+      block: Correct documentation for BLOCK_WRITE_THRESHOLD
+      qapi: Fix some QMP documentation regressions
+
+John Snow (1):
+      ide-test: check return of fwrite
+
+Juan Quintela (1):
+      trivial: Remove unneeded ifndef in memory.h
+
+Kamil Rytarowski (2):
+      configure: Detect native NetBSD curses(3)
+      ivshmem-server: ivshmem-client: Build when eventfd() is available
+
+Luc MICHEL (1):
+      target/arm: add data cache invalidation cp15 instruction to cortex-=
+r5
+
+Mao Zhongyi (1):
+      scsi/lsi53c895a: Remove unused lsi_mem_*() return value
+
+Marc-Andr=C3=A9 Lureau (2):
+      qemu-ga: remove useless allocation
+      dump: fix memory_mapping_filter leak
+
+Markus Armbruster (2):
+      docs qemu-doc: Avoid ide-drive, it's deprecated
+      docs/qdev-device-use.txt: update section Default Devices
+
+Max Filippov (1):
+      hw/xtensa: sim: use g_string/g_new
+
+Paolo Bonzini (1):
+      altera_timer: fix incorrect memset
+
+Philippe Mathieu-Daud=C3=A9 (3):
+      hw/sparc: use ARRAY_SIZE() macro
+      register: display register prefix (name) since it is available
+      hw/mips: add missing include
+
+Suraj Jitindar Singh (1):
+      help: Add newline to end of thread option help text
+
+Thomas Huth (4):
+      qemu-doc: Move the qemu-ga description into a separate chapter
+      qemu-doc: Add hyperlinks to further license information
+      tests/libqtest: Print error instead of aborting when env variable i=
+s missing
+      hw/core: nmi.c can be compiled as common-obj nowadays
+
+ configure                            |  5 +++--
+ contrib/ivshmem-client/Makefile.objs |  2 +-
+ contrib/ivshmem-server/Makefile.objs |  2 +-
+ docs/bootindex.txt                   |  2 +-
+ docs/qdev-device-use.txt             | 13 +++++++------
+ hw/core/Makefile.objs                |  2 +-
+ hw/core/register.c                   |  8 ++++----
+ hw/scsi/lsi53c895a.c                 | 10 ++++------
+ hw/sparc64/sun4u.c                   |  2 +-
+ hw/timer/altera_timer.c              |  2 +-
+ hw/xtensa/sim.c                      | 10 +++++-----
+ include/exec/memory.h                |  2 --
+ include/hw/mips/mips.h               |  1 +
+ memory_mapping.c                     |  1 +
+ qapi/block-core.json                 | 30 +++++++++++++++---------------
+ qapi/block.json                      |  2 +-
+ qemu-doc.texi                        | 21 +++++++++++----------
+ qemu-options.hx                      |  4 ++--
+ qga/commands-posix.c                 |  4 +---
+ target/arm/cpu.c                     |  2 ++
+ tests/ide-test.c                     |  8 ++++++--
+ tests/libqtest.c                     |  5 ++++-
+ 22 files changed, 73 insertions(+), 65 deletions(-)
 
