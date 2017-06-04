@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHXpb-0006wT-Qw
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 11:52:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32780)
+	id 1dHXpc-0006wr-43
+	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 11:52:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXpY-0006sY-KF
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXpY-0006sa-Ls
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:52:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHXpX-0005At-Lv
+	(envelope-from <mjt@tls.msk.ru>) id 1dHXpX-0005BO-Rc
 	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 11:52:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58581)
+Received: from isrv.corpit.ru ([86.62.121.231]:44943)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHXpS-0004yB-5u; Sun, 04 Jun 2017 11:52:34 -0400
+	id 1dHXpS-0004yG-6z; Sun, 04 Jun 2017 11:52:34 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6467E404E4;
+	by isrv.corpit.ru (Postfix) with ESMTP id 6AB8F404E5;
 	Sun,  4 Jun 2017 18:52:33 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id AFE9D5F1;
-	Sun,  4 Jun 2017 18:45:29 +0300 (MSK)
-Received: (nullmailer pid 16377 invoked by uid 1000);
+	by tsrv.tls.msk.ru (Postfix) with SMTP id B9DD95E7;
+	Sun,  4 Jun 2017 18:45:28 +0300 (MSK)
+Received: (nullmailer pid 16356 invoked by uid 1000);
 	Sun, 04 Jun 2017 15:45:27 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Max Filippov <jcmvbkbc@gmail.com>, qemu-trivial@nongnu.org,
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  4 Jun 2017 18:45:15 +0300
-Message-Id: <bb0b6f39c032c18e3a72c5ebef4e4968a9dcb4d0.1496591095.git.mjt@msgid.tls.msk.ru>
+Date: Sun,  4 Jun 2017 18:45:05 +0300
+Message-Id: <3f2ce724f1f10065169e2c79a68e0d7d7fa2a21c.1496591095.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 11/22] hw/xtensa: sim: use g_string/g_new
+Subject: [Qemu-trivial] [PULL 01/22] qemu-doc: Move the qemu-ga description
+ into a separate chapter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,53 +49,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 04 Jun 2017 15:52:41 -0000
 
-From: Max Filippov <jcmvbkbc@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Replace malloc/free/sprintf with g_string/g_string_printf/g_string_free.
-Replace g_malloc with g_new when allocating the MemoryRegion to get more
-type safety.
+The qemu-ga description is currently a subsection of the Disk Images
+chapter - which does not make much sense since the qemu-ga is not
+directly related to disk images. So let's move this information
+into a separate chapter instead.
 
-Suggested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/xtensa/sim.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ qemu-doc.texi | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index d2d1d3a6fd..b27e28d802 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -41,21 +41,21 @@ static void xtensa_create_memory_regions(const Xtensa=
-Memory *memory,
-                                          const char *name)
- {
-     unsigned i;
--    char *num_name =3D malloc(strlen(name) + sizeof(i) * 3 + 1);
-+    GString *num_name =3D g_string_new(NULL);
-=20
-     for (i =3D 0; i < memory->num; ++i) {
-         MemoryRegion *m;
-=20
--        sprintf(num_name, "%s%u", name, i);
--        m =3D g_malloc(sizeof(*m));
--        memory_region_init_ram(m, NULL, num_name,
-+        g_string_printf(num_name, "%s%u", name, i);
-+        m =3D g_new(MemoryRegion, 1);
-+        memory_region_init_ram(m, NULL, num_name->str,
-                                memory->location[i].size,
-                                &error_fatal);
-         vmstate_register_ram_global(m);
-         memory_region_add_subregion(get_system_memory(),
-                                     memory->location[i].addr, m);
-     }
--    free(num_name);
-+    g_string_free(num_name, true);
- }
-=20
- static uint64_t translate_phys_addr(void *opaque, uint64_t addr)
---=20
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index de0cc30790..3f4ed0aa9a 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -34,6 +34,7 @@
+ * Introduction::
+ * QEMU PC System emulator::
+ * QEMU System emulator for non PC targets::
++* QEMU Guest Agent::
+ * QEMU User space emulator::
+ * Implementation notes::
+ * License::
+@@ -396,7 +397,6 @@ snapshots.
+ * vm_snapshots::              VM snapshots
+ * qemu_img_invocation::       qemu-img Invocation
+ * qemu_nbd_invocation::       qemu-nbd Invocation
+-* qemu_ga_invocation::        qemu-ga Invocation
+ * disk_images_formats::       Disk image file formats
+ * host_drives::               Using host drives
+ * disk_images_fat_images::    Virtual FAT disk images
+@@ -490,11 +490,6 @@ state is not saved or restored properly (in particular USB).
+ 
+ @include qemu-nbd.texi
+ 
+-@node qemu_ga_invocation
+-@subsection @code{qemu-ga} Invocation
+-
+-@include qemu-ga.texi
+-
+ @node disk_images_formats
+ @subsection Disk image file formats
+ 
+@@ -2685,6 +2680,12 @@ Note that this allows guest direct access to the host filesystem,
+ so should only be used with trusted guest OS.
+ 
+ @end table
++
++@node QEMU Guest Agent
++@chapter QEMU Guest Agent invocation
++
++@include qemu-ga.texi
++
+ @node QEMU User space emulator
+ @chapter QEMU User space emulator
+ 
+-- 
 2.11.0
 
 
