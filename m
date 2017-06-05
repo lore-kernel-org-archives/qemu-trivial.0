@@ -1,41 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHYIj-00029d-SK
-	for mharc-qemu-trivial@gnu.org; Sun, 04 Jun 2017 12:22:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39381)
+	id 1dHqlC-0006mE-1f
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2017 08:05:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34726)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHYId-00023G-14
-	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:22:43 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dHql9-0006lB-LA
+	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 08:05:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHYIc-0004XO-1H
-	for qemu-trivial@nongnu.org; Sun, 04 Jun 2017 12:22:43 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40701)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHYIW-0004O7-DT; Sun, 04 Jun 2017 12:22:36 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 687C2404E6;
-	Sun,  4 Jun 2017 19:22:33 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 1CBA75F5;
-	Sun,  4 Jun 2017 18:45:30 +0300 (MSK)
-Received: (nullmailer pid 16397 invoked by uid 1000);
-	Sun, 04 Jun 2017 15:45:27 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun,  4 Jun 2017 18:45:25 +0300
-Message-Id: <9d2c9031af6edb352eb83e58fe46cdd99333e7b6.1496591095.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
+	(envelope-from <peter.maydell@linaro.org>) id 1dHql8-0006ov-GD
+	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 08:05:23 -0400
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:37321)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dHql8-0006np-A7
+	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 08:05:22 -0400
+Received: by mail-wm0-x22c.google.com with SMTP id d73so22257787wma.0
+	for <qemu-trivial@nongnu.org>; Mon, 05 Jun 2017 05:05:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=My6A2ylxlV2NfUwCT7yw6lp9Uyt1RHLlCQoBN4/9OiI=;
+	b=Qkck/nr5IIG3SkDtw4xNEljY2ZBdzq8W+TBhtgRnqjG/KRTU2KxcN6v6L0SGN1IzeX
+	YtO/qJ/8zOxHB9k8yGmGAdhmVYG22wP7eBZJYVBedknWxC/d05i6RIqAv51SaS+q6UQN
+	rX0o+hTFV0z3/eaIC5T8Siagjs06fQH07wvRw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=My6A2ylxlV2NfUwCT7yw6lp9Uyt1RHLlCQoBN4/9OiI=;
+	b=XHzbK/vZm61xmjEH2wIXIq1k9RyYM4q03CQ2q1VcB7dwJQp9OlI99EQx7wq5oXZxNr
+	z8isONbjJ/adhp5VasFvjLoN1zJNTHC8KYEY76s+6RlcAH5GdmRf3ziYhBdAzAaRtJcV
+	WHg4DRkYxamwspBMRotKH7UjBXPaIygb1bWcH+AV1RRX3hZshU7Dv7+GpbU2nB7CMY5Y
+	YHrgxFcIY+swa+PrePQY6jgkjbu+n+4GyNvbnH9rOi0ynVmDfq5j6A1IFZlaY7spf5qn
+	EBupSOH9zfmss8B7SeSiPLNToVqC78ceTzk+pPo+3EQwmemR+DBpv6V8IhxeQVL7hSHq
+	R1dg==
+X-Gm-Message-State: AODbwcAFnleNryoPEKyqiDn8aNoaf0i2tZNNywPgIIoXciUWnkfgKq/k
+	9igC8gS7qY0DowO80ebQlsLe2ZTl5uf3
+X-Received: by 10.28.24.202 with SMTP id 193mr7925018wmy.125.1496664321067;
+	Mon, 05 Jun 2017 05:05:21 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.55 with HTTP; Mon, 5 Jun 2017 05:05:00 -0700 (PDT)
 In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
 References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-References: <cover.1496591095.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 21/22] ivshmem-server: ivshmem-client: Build
- when eventfd() is available
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Jun 2017 13:05:00 +0100
+Message-ID: <CAFEAcA-ZWhrFHqoEGuvsigTYRvQcXTOOD3UnhtxhBSFZQJHWTA@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/22] Trivial patches for
+ 2017-06-04
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,54 +63,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 Jun 2017 16:22:44 -0000
+X-List-Received-Date: Mon, 05 Jun 2017 12:05:24 -0000
 
-From: Kamil Rytarowski <n54@gmx.com>
+On 4 June 2017 at 16:45, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Trivial patches for 04 Jun 2017. Please consider applying.
+>
+> /mjt
+>
+> The following changes since commit c6e84fbd447a51e1161d74d71566a5f67b47eac5:
+>
+>   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2017-06-02 17:46:22 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to 070ccceda3b23f85d048bbcf3c0040252a9a793a:
+>
+>   hw/core: nmi.c can be compiled as common-obj nowadays (2017-06-04 18:43:09 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-06-04
+>
+> ----------------------------------------------------------------
 
-Currently ivshmem requires eventfd() which is Linux specific.
-Do not and build it unconditionally on every Linux/BSD/Solaris.
+Hi. I'm afraid this doesn't build in the all-linux-static config
+(configure '--cc=ccache gcc' '--enable-debug' '--static' '--disable-system'):
 
-This patch indirectly fixes build failure on NetBSD, where these tools
-additionally require -lrt for shm_open(3). In future there should be
-added support for NetBSD and the linking addressed appropriately.
+$ make -C build/all-linux-static/ V=1
+make: Entering directory
+'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static'
+(cd /home/petmay01/linaro/qemu-for-merges; printf '#define
+QEMU_PKGVERSION '; if test -n ""; then printf '""\n'; else if test -d
+.git; then printf '" ('; git describe --match 'v*' 2>/dev/null | tr -d
+'\n'; if ! git diff-index --quiet HEAD &>/dev/null; then printf --
+'-dirty'; fi; printf ')"\n'; else printf '""\n'; fi; fi) >
+qemu-version.h.tmp
+if ! cmp -s qemu-version.h qemu-version.h.tmp; then mv
+qemu-version.h.tmp qemu-version.h; else rm qemu-version.h.tmp; fi
+c++ -I/usr/include/pixman-1  -Werror -pthread -I/usr/include/glib-2.0
+-I/usr/lib/x86_64-linux-gnu/glib-2.0/include -D_GNU_SOURCE
+-I/usr/include/ncursesw -m64 -mcx16 -D_GNU_SOURCE
+-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes
+-Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes
+-fno-strict-aliasing -fno-common -fwrapv  -Wendif-labels
+-Wno-missing-include-dirs -Wempty-body -Wnested-externs
+-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers
+-Wold-style-declaration -Wold-style-definition -Wtype-limits
+-fstack-protector-strong    -I/usr/include/libpng12
+-I/usr/include/libusb-1.0
+-I/home/petmay01/linaro/qemu-for-merges/tests -g  -Wl,--warn-common
+-m64 -static -g  -o ivshmem-client   libqemuutil.a libqemustub.a   -lm
+-lgthread-2.0 -pthread -lglib-2.0 -pthread -lpcre -pthread  -lz -lrt
+-lz -lcap-ng -lvdeplug -lnettle  -lutil
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o: In
+function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+Makefile:473: recipe for target 'ivshmem-client' failed
 
-Signed-off-by: Kamil Rytarowski <n54@gmx.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- configure                            | 2 ++
- contrib/ivshmem-client/Makefile.objs | 2 +-
- contrib/ivshmem-server/Makefile.objs | 2 +-
- 3 files changed, 4 insertions(+), 2 deletions(-)
+Looks like the makefile is trying to build ivshmem-client even though
+it has no .o files in the link line. Similarly for ivshmem-server.
 
-diff --git a/configure b/configure
-index fbb6a93c99..965727bca8 100755
---- a/configure
-+++ b/configure
-@@ -4910,6 +4910,8 @@ if test "$want_tools" = "yes" ; then
-   tools="qemu-img\$(EXESUF) qemu-io\$(EXESUF) $tools"
-   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
-     tools="qemu-nbd\$(EXESUF) $tools"
-+  fi
-+  if [ "$eventfd" = "yes" ]; then
-     tools="ivshmem-client\$(EXESUF) ivshmem-server\$(EXESUF) $tools"
-   fi
- fi
-diff --git a/contrib/ivshmem-client/Makefile.objs b/contrib/ivshmem-client/Makefile.objs
-index bfab2d20dd..13d864082d 100644
---- a/contrib/ivshmem-client/Makefile.objs
-+++ b/contrib/ivshmem-client/Makefile.objs
-@@ -1 +1 @@
--ivshmem-client-obj-y = ivshmem-client.o main.o
-+ivshmem-client-obj-$(CONFIG_IVSHMEM) = ivshmem-client.o main.o
-diff --git a/contrib/ivshmem-server/Makefile.objs b/contrib/ivshmem-server/Makefile.objs
-index c060dd3698..d9469fd777 100644
---- a/contrib/ivshmem-server/Makefile.objs
-+++ b/contrib/ivshmem-server/Makefile.objs
-@@ -1 +1 @@
--ivshmem-server-obj-y = ivshmem-server.o main.o
-+ivshmem-server-obj-$(CONFIG_IVSHMEM) = ivshmem-server.o main.o
--- 
-2.11.0
-
+thanks
+-- PMM
 
