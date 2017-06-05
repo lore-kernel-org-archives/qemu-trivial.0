@@ -1,38 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dHsxC-000406-3W
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2017 10:25:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41884)
+	id 1dHt0c-0005iu-Nk
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2017 10:29:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHsx3-0003vo-Hk
-	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 10:25:55 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dHt0a-0005e8-BY
+	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 10:29:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dHsx2-0004Ut-Ii
-	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 10:25:49 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:40401)
+	(envelope-from <mjt@tls.msk.ru>) id 1dHt0Z-0007mB-Jh
+	for qemu-trivial@nongnu.org; Mon, 05 Jun 2017 10:29:28 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:56577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dHsww-0004Ls-BZ; Mon, 05 Jun 2017 10:25:42 -0400
+	id 1dHt0U-0007kT-7r; Mon, 05 Jun 2017 10:29:22 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A1BD240599;
-	Mon,  5 Jun 2017 17:25:39 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 89F2A606;
-	Mon,  5 Jun 2017 17:25:39 +0300 (MSK)
-Received: (nullmailer pid 20200 invoked by uid 1000);
-	Mon, 05 Jun 2017 14:25:39 -0000
+	by isrv.corpit.ru (Postfix) with ESMTP id 671DF40599;
+	Mon,  5 Jun 2017 17:29:21 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 4D5A3606;
+	Mon,  5 Jun 2017 17:29:21 +0300 (MSK)
+To: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org
+References: <20170531120049.14111-1-n54@gmx.com>
+Cc: qemu-devel@nongnu.org, armbru@redhat.com, marcandre.lureau@gmail.com,
+	peter.maydell@redhat.com, eblake@redhat.com, f4bug@amsat.org
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Mon,  5 Jun 2017 17:25:36 +0300
-Message-Id: <cover.1496672631.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
+Message-ID: <26b48c35-b6cc-708d-c4d2-b26a9382e10a@msgid.tls.msk.ru>
+Date: Mon, 5 Jun 2017 17:29:21 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20170531120049.14111-1-n54@gmx.com>
+Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 00/21] Trivial patches for 2017-06-05
+Subject: Re: [Qemu-trivial] [PATCH v3] ivshmem-server: ivshmem-client: Build
+ when eventfd() is available
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,104 +47,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jun 2017 14:25:55 -0000
+X-List-Received-Date: Mon, 05 Jun 2017 14:29:29 -0000
 
-This is a resend of the yesterday's trivial-patches queue, without
-an ivshmem change which broke static build (will take a look at
-that later). The rest is exactly the same, so sending only the
-cover letter.
+31.05.2017 15:00, Kamil Rytarowski wrote:
+> Currently ivshmem requires eventfd() which is Linux specific.
+> Do not and build it unconditionally on every Linux/BSD/Solaris.
+>=20
+> This patch indirectly fixes build failure on NetBSD, where these tools
+> additionally require -lrt for shm_open(3). In future there should be
+> added support for NetBSD and the linking addressed appropriately.
+
+Unfortunately this breaks static build.
+
+$ ../configure --disable-system --disable-linux-user --static
+$ make V=3D1
+...
+c++ -I/usr/include/pixman-1  -Werror -pthread -I/usr/include/glib-2.0 -I/=
+usr/lib/x86_64-linux-gnu/glib-2.0/include -m64 -mcx16 -D_GNU_SOURCE
+-D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredund=
+ant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes
+-fno-strict-aliasing -fno-common -fwrapv  -Wendif-labels -Wno-shift-negat=
+ive-value -Wno-missing-include-dirs -Wempty-body -Wnested-externs
+-Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-sty=
+le-declaration -Wold-style-definition -Wtype-limits -fstack-protector-str=
+ong
+-I/usr/include/libpng16 -I/build/qemu/git/tests -O2 -U_FORTIFY_SOURCE -D_=
+FORTIFY_SOURCE=3D2 -g  -Wl,--warn-common -m64 -static -g  -o ivshmem-serv=
+er
+libqemuutil.a libqemustub.a   -lm -lgthread-2.0 -pthread -lglib-2.0 -pthr=
+ead -lpcre -pthread  -lz -lrt -lz -lnettle  -lutil
+/usr/lib/gcc/x86_64-linux-gnu/6/../../../x86_64-linux-gnu/crt1.o: In func=
+tion `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+Makefile:475: error building =ABivshmem-server=BB
+$ _
+
+I'll take a look at this later. reverting it for now.
 
 Thanks,
 
 /mjt
-
-The following changes since commit c6e84fbd447a51e1161d74d71566a5f67b47ea=
-c5:
-
-  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into stagi=
-ng (2017-06-02 17:46:22 +0100)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
-
-for you to fetch changes up to 03e947f9c2264356aef037e6bf9c496b5deae2d2:
-
-  hw/core: nmi.c can be compiled as common-obj nowadays (2017-06-05 17:23=
-:36 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2017-06-05
-
-----------------------------------------------------------------
-Eric Blake (2):
-      block: Correct documentation for BLOCK_WRITE_THRESHOLD
-      qapi: Fix some QMP documentation regressions
-
-John Snow (1):
-      ide-test: check return of fwrite
-
-Juan Quintela (1):
-      trivial: Remove unneeded ifndef in memory.h
-
-Kamil Rytarowski (1):
-      configure: Detect native NetBSD curses(3)
-
-Luc MICHEL (1):
-      target/arm: add data cache invalidation cp15 instruction to cortex-=
-r5
-
-Mao Zhongyi (1):
-      scsi/lsi53c895a: Remove unused lsi_mem_*() return value
-
-Marc-Andr=C3=A9 Lureau (2):
-      qemu-ga: remove useless allocation
-      dump: fix memory_mapping_filter leak
-
-Markus Armbruster (2):
-      docs qemu-doc: Avoid ide-drive, it's deprecated
-      docs/qdev-device-use.txt: update section Default Devices
-
-Max Filippov (1):
-      hw/xtensa: sim: use g_string/g_new
-
-Paolo Bonzini (1):
-      altera_timer: fix incorrect memset
-
-Philippe Mathieu-Daud=C3=A9 (3):
-      hw/sparc: use ARRAY_SIZE() macro
-      register: display register prefix (name) since it is available
-      hw/mips: add missing include
-
-Suraj Jitindar Singh (1):
-      help: Add newline to end of thread option help text
-
-Thomas Huth (4):
-      qemu-doc: Move the qemu-ga description into a separate chapter
-      qemu-doc: Add hyperlinks to further license information
-      tests/libqtest: Print error instead of aborting when env variable i=
-s missing
-      hw/core: nmi.c can be compiled as common-obj nowadays
-
- configure                |  3 +--
- docs/bootindex.txt       |  2 +-
- docs/qdev-device-use.txt | 13 +++++++------
- hw/core/Makefile.objs    |  2 +-
- hw/core/register.c       |  8 ++++----
- hw/scsi/lsi53c895a.c     | 10 ++++------
- hw/sparc64/sun4u.c       |  2 +-
- hw/timer/altera_timer.c  |  2 +-
- hw/xtensa/sim.c          | 10 +++++-----
- include/exec/memory.h    |  2 --
- include/hw/mips/mips.h   |  1 +
- memory_mapping.c         |  1 +
- qapi/block-core.json     | 30 +++++++++++++++---------------
- qapi/block.json          |  2 +-
- qemu-doc.texi            | 21 +++++++++++----------
- qemu-options.hx          |  4 ++--
- qga/commands-posix.c     |  4 +---
- target/arm/cpu.c         |  2 ++
- tests/ide-test.c         |  8 ++++++--
- tests/libqtest.c         |  5 ++++-
- 20 files changed, 69 insertions(+), 63 deletions(-)
 
