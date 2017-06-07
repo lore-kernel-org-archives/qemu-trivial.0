@@ -1,47 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dIgMZ-0001wt-Fc
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2017 15:11:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45951)
+	id 1dIglg-0004cu-UN
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2017 15:37:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIgMX-0001vC-0Q
-	for qemu-trivial@nongnu.org; Wed, 07 Jun 2017 15:11:26 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1dIgle-0004UU-TT
+	for qemu-trivial@nongnu.org; Wed, 07 Jun 2017 15:37:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIgMW-0004Tp-09
-	for qemu-trivial@nongnu.org; Wed, 07 Jun 2017 15:11:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45928)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dIgMR-0004S5-PF; Wed, 07 Jun 2017 15:11:19 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ADD731766A9;
-	Wed,  7 Jun 2017 19:11:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com ADD731766A9
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=thuth@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com ADD731766A9
-Received: from thh440s.redhat.com (ovpn-116-81.ams2.redhat.com [10.36.116.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 147085C54F;
-	Wed,  7 Jun 2017 19:11:14 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+	(envelope-from <jcmvbkbc@gmail.com>) id 1dIgle-0006ll-5r
+	for qemu-trivial@nongnu.org; Wed, 07 Jun 2017 15:37:22 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:32964)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
+	id 1dIglY-0006hW-0M; Wed, 07 Jun 2017 15:37:16 -0400
+Received: by mail-lf0-x242.google.com with SMTP id u62so1651059lfg.0;
+	Wed, 07 Jun 2017 12:37:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=deyzaVjezy8addkcE8HjoWDT7qy5sCaqXHEB39VGtAc=;
+	b=XuutBLsx8CBR4SWI4UyJ2d5dgjYEj3UTegvQR4WbsF5EfsXLckw73ptQneApRP7Que
+	TqVmFN9PaKKdmH5l0c22ZM4UET5DG2kYU113aBjwwDIXGnUYO4qZ5UnzRQw9NH67WLjF
+	ne3wcOlFcuKO41F35K9c79wmPa142lzqSZUBN8HispZZfu+M4VVZsFRpo7UTwgSEIg1A
+	NyKgcBGv1WlnSylvO7HpYIKL6B0wcq/pR/DZ/bzwULcS/Zi2NSoB74db7SVBZYoYyfGc
+	EFsZs1mqLZmO2qehXwnHHq39hC8LbqkooceozgUJ3w+fEvKghrvsejn/IOaoWyJ4H5Uv
+	t8hA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=deyzaVjezy8addkcE8HjoWDT7qy5sCaqXHEB39VGtAc=;
+	b=kEPa9KaLhGlUj/n6WspAcaiR7/bcTJVtRcwSuJJXRxdfO0YWPxSpNRHNGTiWXIlboP
+	O90qfnSh6hsk3YiYL7PO+IB1jKD/fqAYgbs6yMVXDv1hW9VxsIsU4m5ADqlcr/EU4/7r
+	uTbKyFtbrThnF26cRYt0+Dch/AwpqocpgYGUkkDfQAO9ZzOWsxm9/NdjTsaJUTt8B8Z/
+	KdS9+HP7mW9jmRGRFidANh3vgog8/c5uYEWRUkuoGkuO88IsV5y4ee20jLkXqLsjViRX
+	EbYqNpTIxuNLdAPUutTptLGZ58t5cxpvwxdR56WUzsuyAeUbhXBKpUDjnxxZypnQzDeO
+	XJ8w==
+X-Gm-Message-State: AODbwcC8BhSZMuorQoQm46jCoSiepVkbyCzl4L5+tezrktgScQKRCRuc
+	2uQ4zyIyZxQcjauc
+X-Received: by 10.25.149.4 with SMTP id x4mr753765lfd.136.1496864234219;
+	Wed, 07 Jun 2017 12:37:14 -0700 (PDT)
+Received: from octofox.metropolis ([5.19.183.212])
+	by smtp.gmail.com with ESMTPSA id e10sm525800ljb.68.2017.06.07.12.37.12
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 07 Jun 2017 12:37:13 -0700 (PDT)
+From: Max Filippov <jcmvbkbc@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Date: Wed,  7 Jun 2017 21:11:14 +0200
-Message-Id: <1496862674-23626-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 07 Jun 2017 19:11:18 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] Makefile: Do not generate files if
- "configure" has not been run yet
+Cc: qemu-trivial@nongnu.org,
+	Max Filippov <jcmvbkbc@gmail.com>
+Date: Wed,  7 Jun 2017 12:36:44 -0700
+Message-Id: <1496864204-5954-1-git-send-email-jcmvbkbc@gmail.com>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: [Qemu-trivial] [PATCH] target/xtensa: gdbstub: drop dead return
+ statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,51 +64,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jun 2017 19:11:26 -0000
+X-List-Received-Date: Wed, 07 Jun 2017 19:37:23 -0000
 
-When doing a "make -j10" in the vanilla QEMU source tree (without
-running "configure first), the Makefile currently generates two
-files already, qemu-version.h and qemu-options.def. This should not
-happen, so let's make these targets depend on config-host.mak.
-Also the python files can not be executed without $(PYTHON), so
-these scripts should depend on config-host.mak, too.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
 ---
- Makefile | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/xtensa/gdbstub.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index c830d7a..6786dc2 100644
---- a/Makefile
-+++ b/Makefile
-@@ -286,7 +286,7 @@ endif
+diff --git a/target/xtensa/gdbstub.c b/target/xtensa/gdbstub.c
+index da131ae..d78a1b4 100644
+--- a/target/xtensa/gdbstub.c
++++ b/target/xtensa/gdbstub.c
+@@ -72,7 +72,6 @@ int xtensa_cpu_gdb_read_register(CPUState *cs, uint8_t *mem_buf, int n)
+                       __func__, n, reg->type);
+         memset(mem_buf, 0, reg->size);
+         return reg->size;
+-        return 0;
+     }
+ }
  
- all: $(DOCS) $(TOOLS) $(HELPERS-y) recurse-all modules
- 
--qemu-version.h: FORCE
-+qemu-version.h: config-host.mak FORCE
- 	$(call quiet-command, \
- 		(cd $(SRC_PATH); \
- 		printf '#define QEMU_PKGVERSION '; \
-@@ -312,6 +312,7 @@ qemu-version.h: FORCE
- 
- config-host.h: config-host.h-timestamp
- config-host.h-timestamp: config-host.mak
-+qemu-options.def: config-host.mak
- qemu-options.def: $(SRC_PATH)/qemu-options.hx $(SRC_PATH)/scripts/hxtool
- 	$(call quiet-command,sh $(SRC_PATH)/scripts/hxtool -h < $< > $@,"GEN","$@")
- 
-@@ -393,6 +394,8 @@ gen-out-type = $(subst .,-,$(suffix $@))
- 
- qapi-py = $(SRC_PATH)/scripts/qapi.py $(SRC_PATH)/scripts/ordereddict.py
- 
-+$(qapi-py): config-host.mak
-+
- qga/qapi-generated/qga-qapi-types.c qga/qapi-generated/qga-qapi-types.h :\
- $(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-types.py $(qapi-py)
- 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-types.py \
 -- 
-1.8.3.1
+2.1.4
 
 
