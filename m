@@ -1,66 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dIrnf-0007xF-NL
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 03:24:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34740)
+	id 1dIs3K-00038z-V2
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 03:40:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37851)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1dIrnd-0007vx-BA
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 03:24:10 -0400
+	(envelope-from <thuth@redhat.com>) id 1dIs3H-00036t-BM
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 03:40:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1dIrnc-0006Kk-DQ
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 03:24:09 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35179)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1dIrnX-0006GE-Vy; Thu, 08 Jun 2017 03:24:04 -0400
-Received: by mail-wm0-x242.google.com with SMTP id g15so5807586wmc.2;
-	Thu, 08 Jun 2017 00:24:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=NhF6aXrRYKwunjzygjtAZIBhv2huP9rvgeGKR4aC30w=;
-	b=Z+50sKGa0jzbpudhuiVPf0nz4sA3oawoqb5pUdPTeXAOQ5/PJrFJXN7BZI4APOExrG
-	oh0F4ahIlUhaJ1lQo+S33m6dXXeQlJ6IuuB+cenxP0ocAjXbVOoz7qgGE9UoPPCQB6zS
-	PSxjjsfsLqOsb5udom8SN4RTsoe6KEqsl8bfdV7dmWBYHGMakY3ngv00IS6WpKSMna7t
-	FBkTmeyYRlrAXBvw7HjiAM3zG8c/eVR8ojMlz2UFRlHyGSokagJGRUDYRBsQM68YdJbr
-	fCCAlbh6dagqcKWU1ml4Asnr6/EOAlFqD4LDYnQm+zi/1quBAt6VKRY5+Y5RAlw6/l8f
-	Hv6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=NhF6aXrRYKwunjzygjtAZIBhv2huP9rvgeGKR4aC30w=;
-	b=XkSF9S1T/FZPGZ60XJxSSQ18izzC1ol4WDT2XpL9TiHi3w+PLztHqlU5vvPNmIFBKO
-	8G8m01tp/qFpE99qGCWjcHkxX4i5zjYn1qCb12dOfdgQj96+EwHoq3EquQbHrW9LaMSk
-	EoAvh6AMWjBG/wAXaEflM4T8luf2nIaikrKhUnjN2cxDqBtZSgcJrN4+WlTXZrp2yZvH
-	U8sdnbs2U1btUny6KtV96c9AIY85Jg5H23PdzeJGSk99Y/qWl+4ZxHTD8Nr3Mv2Wwprs
-	GqTCUlUnqD1iVH57M1Q0ycDWtF6cYrnxq8qbM088qJ6X7bIyld7fn8cxVMShmkZspaxm
-	X48g==
-X-Gm-Message-State: AODbwcDkTlGTQ2u9O5RZuOyoTvHM7h7qR4JTaCIYS2KgFI+GV5fBw9Az
-	/ThznDoMtb733g==
-X-Received: by 10.80.135.183 with SMTP id a52mr9616895eda.90.1496906642968;
-	Thu, 08 Jun 2017 00:24:02 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	e18sm1991424edd.27.2017.06.08.00.24.01
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 08 Jun 2017 00:24:01 -0700 (PDT)
-Date: Thu, 8 Jun 2017 08:24:00 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Manos Pitsidianakis <el13635@mail.ntua.gr>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>
-Message-ID: <20170608072400.GB2232@stefanha-x1.localdomain>
-References: <20170607224316.6952-1-el13635@mail.ntua.gr>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="9zSXsLTf0vkW971A"
-Content-Disposition: inline
-In-Reply-To: <20170607224316.6952-1-el13635@mail.ntua.gr>
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block: change variable
- names in BlockDriverState
+	(envelope-from <thuth@redhat.com>) id 1dIs3G-0003Xx-6z
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 03:40:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47694)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dIs3A-0003Vt-GQ; Thu, 08 Jun 2017 03:40:12 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4414F80C18;
+	Thu,  8 Jun 2017 07:40:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4414F80C18
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=thuth@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4414F80C18
+Received: from thh440s.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 952AD8948B;
+	Thu,  8 Jun 2017 07:40:05 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Eric Blake <eblake@redhat.com>
+Date: Thu,  8 Jun 2017 09:40:04 +0200
+Message-Id: <1496907604-2393-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 08 Jun 2017 07:40:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] Makefile: Do not generate files if
+ "configure" has not been run yet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,54 +54,115 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jun 2017 07:24:10 -0000
+X-List-Received-Date: Thu, 08 Jun 2017 07:40:20 -0000
 
+When doing a "make -j10" in the vanilla QEMU source tree (without
+running "configure first), the Makefile currently generates two
+files already, qemu-version.h and qemu-options.def. This should not
+happen, so let's make these targets depend on config-host.mak.
+Also the targets that use python  can not be executed without the
+$(PYTHON) from config-host.mak, so these should depend on the config-
+host.mak file, too (these targets generate some ugly error messages
+otherwise during "make -j10").
 
---9zSXsLTf0vkW971A
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2:
+ - Add the dependency to the targets that use $(PYTHON) instead of
+   adding it to $(qapi-py)
 
-On Thu, Jun 08, 2017 at 01:43:16AM +0300, Manos Pitsidianakis wrote:
-> Change the 'int count' parameter in bdrv_co_pwrite_zeros and
-> bdrv_co_pdiscard to 'int bytes', as they both refer to bytes.
-> This helps with code legibility.
->=20
-> Signed-off-by: Manos Pitsidianakis <el13635@mail.ntua.gr>
-> ---
->  include/block/block_int.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/include/block/block_int.h b/include/block/block_int.h
-> index cb78c4f..06e398b 100644
-> --- a/include/block/block_int.h
-> +++ b/include/block/block_int.h
-> @@ -162,9 +162,9 @@ struct BlockDriver {
->       * will be called instead.
->       */
->      int coroutine_fn (*bdrv_co_pwrite_zeroes)(BlockDriverState *bs,
-> -        int64_t offset, int count, BdrvRequestFlags flags);
-> +        int64_t offset, int bytes, BdrvRequestFlags flags);
->      int coroutine_fn (*bdrv_co_pdiscard)(BlockDriverState *bs,
-> -        int64_t offset, int count);
-> +        int64_t offset, int bytes);
+ Makefile | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
-Please also convert all the implementations of these function pointers.
-For example, block/qcow2.c:qcow2_co_pwrite_zeroes().
+diff --git a/Makefile b/Makefile
+index c830d7a..b5e0731 100644
+--- a/Makefile
++++ b/Makefile
+@@ -286,7 +286,7 @@ endif
+ 
+ all: $(DOCS) $(TOOLS) $(HELPERS-y) recurse-all modules
+ 
+-qemu-version.h: FORCE
++qemu-version.h: config-host.mak FORCE
+ 	$(call quiet-command, \
+ 		(cd $(SRC_PATH); \
+ 		printf '#define QEMU_PKGVERSION '; \
+@@ -312,6 +312,7 @@ qemu-version.h: FORCE
+ 
+ config-host.h: config-host.h-timestamp
+ config-host.h-timestamp: config-host.mak
++qemu-options.def: config-host.mak
+ qemu-options.def: $(SRC_PATH)/qemu-options.hx $(SRC_PATH)/scripts/hxtool
+ 	$(call quiet-command,sh $(SRC_PATH)/scripts/hxtool -h < $< > $@,"GEN","$@")
+ 
+@@ -394,17 +395,17 @@ gen-out-type = $(subst .,-,$(suffix $@))
+ qapi-py = $(SRC_PATH)/scripts/qapi.py $(SRC_PATH)/scripts/ordereddict.py
+ 
+ qga/qapi-generated/qga-qapi-types.c qga/qapi-generated/qga-qapi-types.h :\
+-$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-types.py $(qapi-py)
++$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-types.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-types.py \
+ 		$(gen-out-type) -o qga/qapi-generated -p "qga-" $<, \
+ 		"GEN","$@")
+ qga/qapi-generated/qga-qapi-visit.c qga/qapi-generated/qga-qapi-visit.h :\
+-$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-visit.py $(qapi-py)
++$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-visit.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-visit.py \
+ 		$(gen-out-type) -o qga/qapi-generated -p "qga-" $<, \
+ 		"GEN","$@")
+ qga/qapi-generated/qga-qmp-commands.h qga/qapi-generated/qga-qmp-marshal.c :\
+-$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-commands.py $(qapi-py)
++$(SRC_PATH)/qga/qapi-schema.json $(SRC_PATH)/scripts/qapi-commands.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-commands.py \
+ 		$(gen-out-type) -o qga/qapi-generated -p "qga-" $<, \
+ 		"GEN","$@")
+@@ -416,27 +417,27 @@ qapi-modules = $(SRC_PATH)/qapi-schema.json $(SRC_PATH)/qapi/common.json \
+                $(SRC_PATH)/qapi/trace.json
+ 
+ qapi-types.c qapi-types.h :\
+-$(qapi-modules) $(SRC_PATH)/scripts/qapi-types.py $(qapi-py)
++$(qapi-modules) $(SRC_PATH)/scripts/qapi-types.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-types.py \
+ 		$(gen-out-type) -o "." -b $<, \
+ 		"GEN","$@")
+ qapi-visit.c qapi-visit.h :\
+-$(qapi-modules) $(SRC_PATH)/scripts/qapi-visit.py $(qapi-py)
++$(qapi-modules) $(SRC_PATH)/scripts/qapi-visit.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-visit.py \
+ 		$(gen-out-type) -o "." -b $<, \
+ 		"GEN","$@")
+ qapi-event.c qapi-event.h :\
+-$(qapi-modules) $(SRC_PATH)/scripts/qapi-event.py $(qapi-py)
++$(qapi-modules) $(SRC_PATH)/scripts/qapi-event.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-event.py \
+ 		$(gen-out-type) -o "." $<, \
+ 		"GEN","$@")
+ qmp-commands.h qmp-marshal.c :\
+-$(qapi-modules) $(SRC_PATH)/scripts/qapi-commands.py $(qapi-py)
++$(qapi-modules) $(SRC_PATH)/scripts/qapi-commands.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-commands.py \
+ 		$(gen-out-type) -o "." $<, \
+ 		"GEN","$@")
+ qmp-introspect.h qmp-introspect.c :\
+-$(qapi-modules) $(SRC_PATH)/scripts/qapi-introspect.py $(qapi-py)
++$(qapi-modules) $(SRC_PATH)/scripts/qapi-introspect.py $(qapi-py) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-introspect.py \
+ 		$(gen-out-type) -o "." $<, \
+ 		"GEN","$@")
+@@ -703,10 +704,10 @@ qemu-img-cmds.texi: $(SRC_PATH)/qemu-img-cmds.hx $(SRC_PATH)/scripts/hxtool
+ 
+ docs/qemu-qmp-qapi.texi docs/qemu-ga-qapi.texi: $(SRC_PATH)/scripts/qapi2texi.py $(qapi-py)
+ 
+-docs/qemu-qmp-qapi.texi: $(qapi-modules)
++docs/qemu-qmp-qapi.texi: $(qapi-modules) config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi2texi.py $< > $@,"GEN","$@")
+ 
+-docs/qemu-ga-qapi.texi: $(SRC_PATH)/qga/qapi-schema.json
++docs/qemu-ga-qapi.texi: $(SRC_PATH)/qga/qapi-schema.json config-host.mak
+ 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi2texi.py $< > $@,"GEN","$@")
+ 
+ qemu.1: qemu-doc.texi qemu-options.texi qemu-monitor.texi qemu-monitor-info.texi
+-- 
+1.8.3.1
 
---9zSXsLTf0vkW971A
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJZOPuQAAoJEJykq7OBq3PIltsH/ia5pjLuN5WXQoinv9cOBAgL
-Q6xr6l8URPPzBsTW3Rid2qTxlnmbmV9FoY8gXwCXky6TQpYCZDZEERizm88NCEbP
-ph0N2xSZ03wZfUJEsUOQdKQpST8zqKbOQfdC86CROL829UcDfegDsjeb+JKc0o0b
-wzQn7S1RJ/M4i5daosgTjwbP9QGGYgi8L4lJjuAmYtD6HzKSY49ix7TrLq/7DYZ1
-uXbKh3C0IyyUlkPjOgJzXmU7NlBFEbrSkQASGrg373EMr0lIvpdE1iDFV4Wd9+v2
-RPuKLKf+2YQGbYyDLhYLMD1CCRa7R3DY9laa7Fhox9z0IFyR2aKo1gZEKn5i9F4=
-=eI7v
------END PGP SIGNATURE-----
-
---9zSXsLTf0vkW971A--
 
