@@ -1,48 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dIx36-0005b6-Ok
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 09:00:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36320)
+	id 1dIx8M-00085x-5t
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 09:05:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37660)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIx31-0005YK-FD
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 09:00:27 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1dIx8J-00084D-A7
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 09:05:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIx2x-0004CL-KF
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 09:00:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55990)
+	(envelope-from <pbonzini@redhat.com>) id 1dIx8I-0006EH-7J
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 09:05:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37404)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dIx2o-00046W-J9; Thu, 08 Jun 2017 09:00:10 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1dIx8C-0006B7-EV; Thu, 08 Jun 2017 09:05:44 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7AFB080503;
-	Thu,  8 Jun 2017 13:00:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7AFB080503
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 5F8D0796FC;
+	Thu,  8 Jun 2017 13:05:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5F8D0796FC
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=thuth@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7AFB080503
-Received: from thh440s.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 54C437F1CC;
-	Thu,  8 Jun 2017 13:00:00 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Eric Blake <eblake@redhat.com>
-Date: Thu,  8 Jun 2017 14:59:59 +0200
-Message-Id: <1496926799-13040-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=pbonzini@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5F8D0796FC
+Received: from [10.36.117.229] (ovpn-117-229.ams2.redhat.com [10.36.117.229])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id v58D5dRi015959
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Thu, 8 Jun 2017 09:05:40 -0400
+To: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
+Cc: berrange@redhat.com, kraxel@redhat.com, armbru@redhat.com,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20170608031124.8031-1-maozy.fnst@cn.fujitsu.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <faabf6b3-f7e3-fa2c-8adb-b1914dbe8f8a@redhat.com>
+Date: Thu, 8 Jun 2017 15:05:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
+MIME-Version: 1.0
+In-Reply-To: <20170608031124.8031-1-maozy.fnst@cn.fujitsu.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 08 Jun 2017 13:00:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 08 Jun 2017 13:05:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v3] Makefile: Do not generate files if
- "configure" has not been run yet
+Subject: Re: [Qemu-trivial] [PATCH] util/qemu-sockets: Drop unused helper
+ socket_address_to_string()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,41 +63,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jun 2017 13:00:27 -0000
+X-List-Received-Date: Thu, 08 Jun 2017 13:05:52 -0000
 
-When doing a "make -j10" in the vanilla QEMU source tree (without
-running "configure" first), the Makefile currently generates two
-files already, qemu-version.h and qemu-options.def. This should not
-happen, so let's only build the generated files if config-host.mak
-is available (i.e. "configure" has been run already).
+Cc: qemu-trivial@nongnu.org
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v3:
- - Check for config-host.mak at the place where we add the dependencies
-   for $(GENERATED_FILES) instead of adding single dependencies all over
-   the place
-
- Makefile | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/Makefile b/Makefile
-index c830d7a..32d4441 100644
---- a/Makefile
-+++ b/Makefile
-@@ -791,9 +791,11 @@ endif # CONFIG_WIN
- 
- # Add a dependency on the generated files, so that they are always
- # rebuilt before other object files
-+ifneq ($(wildcard config-host.mak),)
- ifneq ($(filter-out $(UNCHECKED_GOALS),$(MAKECMDGOALS)),$(if $(MAKECMDGOALS),,fail))
- Makefile: $(GENERATED_FILES)
- endif
-+endif
- 
- .SECONDARY: $(TRACE_HEADERS) $(TRACE_HEADERS:%=%-timestamp) \
- 	$(TRACE_SOURCES) $(TRACE_SOURCES:%=%-timestamp) \
--- 
-1.8.3.1
-
+On 08/06/2017 05:11, Mao Zhongyi wrote:
+> Signed-off-by: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>
+> ---
+>  include/qemu/sockets.h | 15 ---------------
+>  util/qemu-sockets.c    | 34 ----------------------------------
+>  2 files changed, 49 deletions(-)
+> 
+> diff --git a/include/qemu/sockets.h b/include/qemu/sockets.h
+> index 7abffc4..8eb0172 100644
+> --- a/include/qemu/sockets.h
+> +++ b/include/qemu/sockets.h
+> @@ -106,21 +106,6 @@ SocketAddress *socket_local_address(int fd, Error **errp);
+>  SocketAddress *socket_remote_address(int fd, Error **errp);
+>  
+>  /**
+> - * socket_address_to_string:
+> - * @addr: the socket address struct
+> - * @errp: pointer to uninitialized error object
+> - *
+> - * Get the string representation of the socket
+> - * address. A pointer to the char array containing
+> - * string format will be returned, the caller is
+> - * required to release the returned value when no
+> - * longer required with g_free.
+> - *
+> - * Returns: the socket address in string format, or NULL on error
+> - */
+> -char *socket_address_to_string(struct SocketAddress *addr, Error **errp);
+> -
+> -/**
+>   * socket_address_flatten:
+>   * @addr: the socket address to flatten
+>   *
+> diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+> index b39ae74..08b1a26 100644
+> --- a/util/qemu-sockets.c
+> +++ b/util/qemu-sockets.c
+> @@ -1301,40 +1301,6 @@ SocketAddress *socket_remote_address(int fd, Error **errp)
+>      return socket_sockaddr_to_address(&ss, sslen, errp);
+>  }
+>  
+> -char *socket_address_to_string(struct SocketAddress *addr, Error **errp)
+> -{
+> -    char *buf;
+> -    InetSocketAddress *inet;
+> -
+> -    switch (addr->type) {
+> -    case SOCKET_ADDRESS_TYPE_INET:
+> -        inet = &addr->u.inet;
+> -        if (strchr(inet->host, ':') == NULL) {
+> -            buf = g_strdup_printf("%s:%s", inet->host, inet->port);
+> -        } else {
+> -            buf = g_strdup_printf("[%s]:%s", inet->host, inet->port);
+> -        }
+> -        break;
+> -
+> -    case SOCKET_ADDRESS_TYPE_UNIX:
+> -        buf = g_strdup(addr->u.q_unix.path);
+> -        break;
+> -
+> -    case SOCKET_ADDRESS_TYPE_FD:
+> -        buf = g_strdup(addr->u.fd.str);
+> -        break;
+> -
+> -    case SOCKET_ADDRESS_TYPE_VSOCK:
+> -        buf = g_strdup_printf("%s:%s",
+> -                              addr->u.vsock.cid,
+> -                              addr->u.vsock.port);
+> -        break;
+> -
+> -    default:
+> -        abort();
+> -    }
+> -    return buf;
+> -}
+>  
+>  SocketAddress *socket_address_flatten(SocketAddressLegacy *addr_legacy)
+>  {
+> 
 
