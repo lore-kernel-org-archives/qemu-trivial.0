@@ -1,47 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dIyGK-0008M7-VC
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 10:18:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59974)
+	id 1dIyLf-0005M9-OE
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2017 10:23:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33126)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIyGJ-0008L4-IH
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 10:18:12 -0400
+	(envelope-from <quintela@redhat.com>) id 1dIyLd-0005K0-AG
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 10:23:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dIyGI-0002OO-LT
-	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 10:18:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55542)
+	(envelope-from <quintela@redhat.com>) id 1dIyLc-0004vC-GX
+	for qemu-trivial@nongnu.org; Thu, 08 Jun 2017 10:23:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50280)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dIyGE-0002Jn-9M; Thu, 08 Jun 2017 10:18:06 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <quintela@redhat.com>)
+	id 1dIyLa-0004te-G4; Thu, 08 Jun 2017 10:23:38 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C8CFBC0010A2;
-	Thu,  8 Jun 2017 14:18:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C8CFBC0010A2
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 13C61C0E640B;
+	Thu,  8 Jun 2017 14:23:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 13C61C0E640B
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=thuth@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C8CFBC0010A2
-Received: from thh440s.redhat.com (ovpn-116-59.ams2.redhat.com [10.36.116.59])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5385283840;
-	Thu,  8 Jun 2017 14:18:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, Andrew Jones <drjones@redhat.com>
-Date: Thu,  8 Jun 2017 16:18:02 +0200
-Message-Id: <1496931482-29914-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=quintela@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 13C61C0E640B
+Received: from localhost (ovpn-117-154.ams2.redhat.com [10.36.117.154])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 275DE7F1CB;
+	Thu,  8 Jun 2017 14:23:34 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Andrew Jones <drjones@redhat.com>
+In-Reply-To: <1496927934-21815-1-git-send-email-thuth@redhat.com> (Thomas
+	Huth's message of "Thu, 8 Jun 2017 15:18:54 +0200")
+References: <1496927934-21815-1-git-send-email-thuth@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
+Reply-To: quintela@redhat.com
+Date: Thu, 08 Jun 2017 16:23:34 +0200
+Message-ID: <871squblsp.fsf@secure.mitica>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 08 Jun 2017 14:18:04 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 08 Jun 2017 14:23:37 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] Makefile: Move balloon.o,
- numa.o and bootdevice.o to common-obj-y
+Subject: Re: [Qemu-trivial] [PATCH] hw/cpu: core.c can be compiled as common
+ object
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,45 +64,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jun 2017 14:18:12 -0000
+X-List-Received-Date: Thu, 08 Jun 2017 14:23:42 -0000
 
-There does not seem to be any target specific code in these files, so
-we can put them into "common-obj" instead of "obj" to compile them only
-once for all targets.
+Thomas Huth <thuth@redhat.com> wrote:
+> There does not seem to be any target specific code in core.c, so we can
+> put it into "common-obj" instead of "obj" to compile it only once for
+> all targets.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- Makefile.objs   | 1 +
- Makefile.target | 3 +--
- 2 files changed, 2 insertions(+), 2 deletions(-)
+It compiles.
+I can't see anything that is target dependent on core.c.
 
-diff --git a/Makefile.objs b/Makefile.objs
-index 0575802..a949502 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -40,6 +40,7 @@ io-obj-y = io/
- 
- ifeq ($(CONFIG_SOFTMMU),y)
- common-obj-y = blockdev.o blockdev-nbd.o block/
-+common-obj-y += balloon.o numa.o bootdevice.o
- common-obj-y += iothread.o
- common-obj-y += net/
- common-obj-y += qdev-monitor.o device-hotplug.o
-diff --git a/Makefile.target b/Makefile.target
-index ce8dfe4..da37258 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -139,8 +139,7 @@ endif #CONFIG_BSD_USER
- #########################################################
- # System emulator target
- ifdef CONFIG_SOFTMMU
--obj-y += arch_init.o cpus.o monitor.o gdbstub.o balloon.o ioport.o numa.o
--obj-y += qtest.o bootdevice.o
-+obj-y += arch_init.o cpus.o monitor.o gdbstub.o ioport.o qtest.o
- obj-y += hw/
- obj-$(CONFIG_KVM) += kvm-all.o
- obj-y += memory.o cputlb.o
--- 
-1.8.3.1
+So
 
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
