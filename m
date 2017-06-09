@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dJLy5-0003O1-C9
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 11:36:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41374)
+	id 1dJM1Z-00061r-0j
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 11:40:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42093)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dJLy2-0003Lv-JI
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:36:55 -0400
+	(envelope-from <eblake@redhat.com>) id 1dJM1T-0005z1-M2
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:40:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dJLy1-0005lD-NC
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:36:54 -0400
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33394)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dJLxy-0005kF-Qt; Fri, 09 Jun 2017 11:36:51 -0400
-Received: by mail-lf0-x242.google.com with SMTP id u62so5392631lfg.0;
-	Fri, 09 Jun 2017 08:36:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=eWgpp6FfQHAJdznnBQ4Y6kCUxTFs02RRmLFTjrUBcxo=;
-	b=hkDbTktRPB9pxdr1XhYl20C+/SPxKXsbcEtk5O4Eu+KkffaIFgFwcC+FcObJVF1Rjn
-	lbRYJitF2JDnY4U6urzH1U2Z760tm9qlbHiJc+MJUDFdZEkl5mpJBHq0EJUx7THCvbEX
-	p17HGb5xwPnK1vQAkFz3sF6CmUk0dL5jHrj05+zxWloGwjSjoczQKdSZKaeIPhY96EO1
-	Rz5aiLKO/1AcpV4Eh1Rpcz5Y2T5oqa1bNrZaJT8r+aNQLV4t7M54W5SEREi8zJiFSlTs
-	jP5snjR9/sFxSyGLCZOiAQAxjnuU9K6Uk7mlkDEXlzA83gz7qOKN2e+otmA7lDbEsB8B
-	g+zA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=eWgpp6FfQHAJdznnBQ4Y6kCUxTFs02RRmLFTjrUBcxo=;
-	b=UEIMleMn2hniYYA6tHS6mGZfJhnUboftGwH5bFrSE++Ueq0kkDoaL92qk6ci5WS5IP
-	Le0pICXdlq+uYmW84CiTNZVFPFWG5WmVLKzZQYWGTwPuxVBfZ1ViB0M8b6S0D1mR5NIR
-	wG39RCaAn/vS/3hdnqY+STRJ/8Z/6u4/qtDQYeM8cYhoQjJW/ElajcVl3/SgUtcqLZsn
-	BDwZfPSDMCK8M0UxTb8a7UTbt8lhl3wmvuiAWjkvQ9DPU5aLLn9nNj0ED1ibx9cfRTqS
-	f6oqLmL7kBy+WZdG0wOFgTYhX3zTnKW0NbJYoTRsG9NY7xULqkom+VjD6M0stXQI0nqu
-	KgFQ==
-X-Gm-Message-State: AODbwcBOSjQ2DbsdBLgsDDCXY6BUa2sEt5KJPYNsOkHpzZRYg/HqbhHP
-	FQqM/6O1JyYZu4swcmNN1v06CSYCAQ==
-X-Received: by 10.46.69.214 with SMTP id s205mr5770954lja.136.1497022609383;
-	Fri, 09 Jun 2017 08:36:49 -0700 (PDT)
-MIME-Version: 1.0
+	(envelope-from <eblake@redhat.com>) id 1dJM1N-0007VW-Po
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:40:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52498)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dJM1H-0007TN-M7; Fri, 09 Jun 2017 11:40:15 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6B43F13AA1;
+	Fri,  9 Jun 2017 15:40:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6B43F13AA1
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6B43F13AA1
+Received: from [10.10.121.94] (ovpn-121-94.rdu2.redhat.com [10.10.121.94])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BFD2C187BE;
+	Fri,  9 Jun 2017 15:40:13 +0000 (UTC)
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+	qemu-devel@nongnu.org
 References: <20170609152017.7286-1-eblake@redhat.com>
 	<20170609152017.7286-2-eblake@redhat.com>
 	<CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
-	<b3e66ce9-d503-bf6f-cd93-511097418480@redhat.com>
-In-Reply-To: <b3e66ce9-d503-bf6f-cd93-511097418480@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 09 Jun 2017 15:36:38 +0000
-Message-ID: <CAJ+F1CJTTjU_yLXabC5MaVktbmz6drZ6AwusdvEy15XAu_f7yg@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, armbru@redhat.com
-Content-Type: multipart/alternative; boundary="001a114b0a26da65ba055188bc41"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::242
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <f502b8ea-a3b0-1c9c-0c55-5a8b9cdecda6@redhat.com>
+Date: Fri, 9 Jun 2017 10:40:12 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
+MIME-Version: 1.0
+In-Reply-To: <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 09 Jun 2017 15:40:14 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] qobject: Update
  coccinelle script to catch Q{INC, DEC}REF
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,108 +65,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2017 15:36:55 -0000
+X-List-Received-Date: Fri, 09 Jun 2017 15:40:32 -0000
 
---001a114b0a26da65ba055188bc41
-Content-Type: text/plain; charset="UTF-8"
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us
+Content-Type: multipart/mixed; boundary="wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com
+Message-ID: <f502b8ea-a3b0-1c9c-0c55-5a8b9cdecda6@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 1/2] qobject: Update coccinelle script to
+ catch Q{INC, DEC}REF
+References: <20170609152017.7286-1-eblake@redhat.com>
+ <20170609152017.7286-2-eblake@redhat.com>
+ <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
+In-Reply-To: <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
+
+--wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 9, 2017 at 7:33 PM Eric Blake <eblake@redhat.com> wrote:
+On 06/09/2017 10:28 AM, Marc-Andr=C3=A9 Lureau wrote:
 
-> On 06/09/2017 10:28 AM, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi
-> >
-> > On Fri, Jun 9, 2017 at 7:20 PM Eric Blake <eblake@redhat.com> wrote:
-> >
-> >> A recent patch submission was about to use qobject_decref(QOBJECT(E)),
-> >> even though we already have QDECREF(E) for that purpose.  While our
-> >> tree is currently free from the longhand form, we might as well update
-> >>
-> >
-> > Oh?
-> >
-> >  $ git grep 'object_unref(OBJECT('  | wc -l
-> > 152
->
-> Quit mixing QOM and QObject ;)
->
-> $ git grep qobject_'..cref(QOBJECT'
-> include/qapi/qmp/qobject.h:    qobject_incref(QOBJECT(obj))
-> scripts/coccinelle/qobject.cocci:- qobject_incref(QOBJECT(E));
-> scripts/coccinelle/qobject.cocci:- qobject_decref(QOBJECT(E));
->
->
->
-Yeah, I got mixed by your comments, my patch doesn't do
-qobject_decref(QOBJECT(E)) but object_unref(OBJECT(E)), which doesn't have
-macro helper afaik.
+> sadly, coccinelle is unabarebly slow on my machine,
+
+Odd.  It's pretty fast for this series:
+
+$ time spatch --sp-file scripts/coccinelle/qobject.cocci \
+  --macro-file scripts/cocci-macro-file.h --dir . --in-place 2>/dev/null
+
+real	0m2.136s
+user	0m2.003s
+sys	0m0.125s
+
+This is on Fedora 25.  Although I _will_ grant that the time taken is
+also dependent on the complexity of the script it is running on (some
+scripts are inherently slower than others, and coccinelle takes
+shortcuts like grepping for which files to even fully analyze, but not
+all scripts are conducive to those shortcuts).
+
+> not easy to grasp, and
+> thereby fails to catch a lot of cases..
+
+I agree with the 'not easy to grasp'. As for not catching cases, you
+HAVE to use the --macro-file scripts/cocci-macro-file.h to avoid a lot
+of skipped files.  But even so, you're probably right that it still
+misses some things (although it often catches far more than "grep in
+anger" is able to do).
+
+> I am looking at alternative from
+> clang tools/lib, by curiosity.
+
+I'll be interested to see if it produces any (easy-to-reproduce) cleanup
+results.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
 
-> Yes, we may want to add a script to clean QOM abuses, but that's a
-> different project for a different day.
->
-> --
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3266 <+1%20919-301-3266>
-> Virtualization:  qemu.org | libvirt.org
->
-> --
-Marc-Andr=C3=A9 Lureau
+--wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6--
 
---001a114b0a26da65ba055188bc41
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+--T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Fri=
-, Jun 9, 2017 at 7:33 PM Eric Blake &lt;<a href=3D"mailto:eblake@redhat.com=
-">eblake@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
-On 06/09/2017 10:28 AM, Marc-Andr=C3=A9 Lureau wrote:<br>
-&gt; Hi<br>
-&gt;<br>
-&gt; On Fri, Jun 9, 2017 at 7:20 PM Eric Blake &lt;<a href=3D"mailto:eblake=
-@redhat.com" target=3D"_blank">eblake@redhat.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt;&gt; A recent patch submission was about to use qobject_decref(QOBJECT(=
-E)),<br>
-&gt;&gt; even though we already have QDECREF(E) for that purpose.=C2=A0 Whi=
-le our<br>
-&gt;&gt; tree is currently free from the longhand form, we might as well up=
-date<br>
-&gt;&gt;<br>
-&gt;<br>
-&gt; Oh?<br>
-&gt;<br>
-&gt;=C2=A0 $ git grep &#39;object_unref(OBJECT(&#39;=C2=A0 | wc -l<br>
-&gt; 152<br>
-<br>
-Quit mixing QOM and QObject ;)<br>
-<br>
-$ git grep qobject_&#39;..cref(QOBJECT&#39;<br>
-include/qapi/qmp/qobject.h:=C2=A0 =C2=A0 qobject_incref(QOBJECT(obj))<br>
-scripts/coccinelle/qobject.cocci:- qobject_incref(QOBJECT(E));<br>
-scripts/coccinelle/qobject.cocci:- qobject_decref(QOBJECT(E));<br><br><br><=
-/blockquote><div>=C2=A0<br>Yeah, I got mixed by your comments, my patch doe=
-sn&#39;t do qobject_decref(QOBJECT(E)) but object_unref(OBJECT(E)), which d=
-oesn&#39;t have macro helper afaik.<br></div><div><br> </div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;p=
-adding-left:1ex">
-<br>
-Yes, we may want to add a script to clean QOM abuses, but that&#39;s a<br>
-different project for a different day.<br>
-<br>
---<br>
-Eric Blake, Principal Software Engineer<br>
-Red Hat, Inc.=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"tel:+1%209=
-19-301-3266" value=3D"+19193013266" target=3D"_blank">+1-919-301-3266</a><b=
-r>
-Virtualization:=C2=A0 <a href=3D"http://qemu.org" rel=3D"noreferrer" target=
-=3D"_blank">qemu.org</a> | <a href=3D"http://libvirt.org" rel=3D"noreferrer=
-" target=3D"_blank">libvirt.org</a><br>
-<br>
-</blockquote></div></div><div dir=3D"ltr">-- <br></div><div data-smartmail=
-=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lureau<br></div></div=
->
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
---001a114b0a26da65ba055188bc41--
+iQEcBAEBCAAGBQJZOsFcAAoJEKeha0olJ0Nqk6IH/2M4NC88AqHgkSIsbxkUP6Fx
+6tdfffI/T6fgN0H7gNB6q9UI8xlUHaOlefFCsNrmyCNP9EebajutF5fPVuovNA0W
+pNjIlNjJ/81bkgo85CXE8ZTi73Hpec3oUy15Mgs/3abkaPu2/w9Ve9grha/AnUzX
+m4Sb1iezld/rdEnTsIEH6C8hOSvRgVeox/IPdAmctYmSDLqJZxK4Spk8jmuB+AQN
+EnAnHcYB9kDhQ28TSYqikpeMbjROiKhW2kr624OKk/o6WqIaohQAmFG6ipQ0bMN+
+ax0zP+ur/SAZ0Z6Xu2pDzY2k92MikypZo0y7/dsz0R6fYzyXc6m/gkJ8Qus6X4M=
+=/tyD
+-----END PGP SIGNATURE-----
+
+--T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us--
 
