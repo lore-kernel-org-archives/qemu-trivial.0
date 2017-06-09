@@ -1,59 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dJJqa-0002gv-UN
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 09:21:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58293)
+	id 1dJLV7-0002TF-Fx
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 11:07:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dJJqY-0002ff-O2
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 09:21:03 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dJLV2-0002Oj-Vz
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:06:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1dJJqY-0001aO-1B
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 09:21:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36500)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1dJJqT-0001ZZ-M2; Fri, 09 Jun 2017 09:20:57 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 12256C057FAF;
-	Fri,  9 Jun 2017 13:20:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 12256C057FAF
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=ehabkost@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 12256C057FAF
-Received: from localhost (ovpn-116-27.gru2.redhat.com [10.97.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7548318793;
-	Fri,  9 Jun 2017 13:20:55 +0000 (UTC)
-Date: Fri, 9 Jun 2017 10:20:53 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	Igor Mammedov <imammedo@redhat.com>, Andrew Jones <drjones@redhat.com>
-Message-ID: <20170609132053.GM5016@thinpad.lan.raisama.net>
-References: <1496927934-21815-1-git-send-email-thuth@redhat.com>
-	<871squblsp.fsf@secure.mitica>
-	<20170609020338.GC26521@umbus.fritz.box>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dJLV1-00012X-VF
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:06:56 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:33101)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dJLUx-0000zc-Vq; Fri, 09 Jun 2017 11:06:52 -0400
+Received: by mail-qt0-x243.google.com with SMTP id w1so15581586qtg.0;
+	Fri, 09 Jun 2017 08:06:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=MwgTyYxXOx18kl9NhOqld/C2F3m/ocrPDEGtflfGwq8=;
+	b=A7WgnAvFr3/2LKTXlRaU/e+4SXCvC3rDa+YshtucWrgjIKqHVUmmVJsgJGXf8/RF7o
+	LSk+ltjYQ7YkhxLLD2aqlYifn2BqN4t3dpqbunJMlZpdX2IobUR0IzBLh9+OPNyDSEqi
+	X8Tpo34XIkPYDmWPw+FFJeNLFZZ5XdSJ6I595qAkKpGqzKFEjQ9rnDZOVqMlR4qSwz3q
+	8WJD3+3WVQ5mph4mW/NINpAcHtqTK5y3KdKQysUlR6FOQ/uPSjdU020Dz0jcLuKIMTjY
+	THBpuvpNDyF0Vyn3BBj/peIHwV+nY/mgTn5SiPyTh675KS/JbLa7ME+FTkvRKOTZy9Lz
+	GIbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=MwgTyYxXOx18kl9NhOqld/C2F3m/ocrPDEGtflfGwq8=;
+	b=C1R9282JXhDO/e2oA2vq0eFqlXuks61dCUk3ZAz5AyKcFTqZvWOv2/4wJCzRlWUXkp
+	cXL6PHEcNnpaR5lwbPC4QUwMqtaPCuUMSLs2m84z1D3jvAQ3+kjvrcu0fQYk6WGxWHST
+	1dlDNAylgnV5AiEc1CH3WhBgLeW1dYcdIoT0oWQvHLrqFCaNqo3Tu8UWT29a90cuUq5C
+	Um2BNxKg/i1BHzWE35xOr6C7r4gO5gcVq/AvB3ET6SX+GZUPtdpbS0kJMoRI0Bbq0ODM
+	slgevyZtHwT+tKqlegm5/Ijjlf7wIaVfGc0hMoWCkQQaQkSsy4utdNTY5fgeXJVzQiLf
+	uj3g==
+X-Gm-Message-State: AODbwcC8DKNy3vp35jocNXS4ClNV6aon9rCU3Suejka9Ms2kpvFs5K2K
+	0wT1kPgPXhoT7gOSqUg=
+X-Received: by 10.200.3.97 with SMTP id w33mr49605328qtg.203.1497020809806;
+	Fri, 09 Jun 2017 08:06:49 -0700 (PDT)
+Received: from yoga.offpageads.com ([170.51.96.162])
+	by smtp.gmail.com with ESMTPSA id n11sm829983qtb.39.2017.06.09.08.06.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 09 Jun 2017 08:06:49 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Fri,  9 Jun 2017 12:06:20 -0300
+Message-Id: <20170609150622.4720-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170609020338.GC26521@umbus.fritz.box>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.8.0 (2017-02-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 09 Jun 2017 13:20:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/cpu: core.c can be compiled as common
- object
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v2] hw/misc: add missing includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,31 +72,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2017 13:21:03 -0000
+X-List-Received-Date: Fri, 09 Jun 2017 15:06:59 -0000
 
-On Fri, Jun 09, 2017 at 12:03:38PM +1000, David Gibson wrote:
-> On Thu, Jun 08, 2017 at 04:23:34PM +0200, Juan Quintela wrote:
-> > Thomas Huth <thuth@redhat.com> wrote:
-> > > There does not seem to be any target specific code in core.c, so we can
-> > > put it into "common-obj" instead of "obj" to compile it only once for
-> > > all targets.
-> > >
-> > > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > 
-> > It compiles.
-> > I can't see anything that is target dependent on core.c.
-> > 
-> > So
-> > 
-> > Reviewed-by: Juan Quintela <quintela@redhat.com>
-> 
-> I've merged this into my ppc-for-2.10 tree, on the basis that ppc is
-> the only user of core.c so far.  Any objections?
+inlined create_unimplemented_device() calls sysbus_mmio_map_overlap().
 
-No problem to me.  If you want, you can add my:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
 
-Acked-by: Eduardo Habkost <ehabkost@redhat.com>
+v2: Addressed review feedback from Eric Blake
 
+ include/hw/misc/unimp.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/hw/misc/unimp.h b/include/hw/misc/unimp.h
+index 3462d85836..52e068ec3e 100644
+--- a/include/hw/misc/unimp.h
++++ b/include/hw/misc/unimp.h
+@@ -8,6 +8,8 @@
+ #ifndef HW_MISC_UNIMP_H
+ #define HW_MISC_UNIMP_H
+ 
++#include "hw/sysbus.h"
++
+ #define TYPE_UNIMPLEMENTED_DEVICE "unimplemented-device"
+ 
+ /**
 -- 
-Eduardo
+2.11.0
+
 
