@@ -1,71 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dJRSu-0005ua-Hp
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 17:29:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54207)
+	id 1dJRcJ-0001Lw-Vr
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 17:38:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dJRSs-0005tE-FN
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 17:29:07 -0400
+	(envelope-from <eblake@redhat.com>) id 1dJRcI-0001Kj-1U
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 17:38:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dJRSr-0000GE-Mb
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 17:29:06 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35355)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dJRSn-0000F6-Fx; Fri, 09 Jun 2017 17:29:01 -0400
-Received: by mail-qt0-x241.google.com with SMTP id x58so17825361qtc.2;
-	Fri, 09 Jun 2017 14:29:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=O4goqAvWegVxieUjVvyGm/bhzONuui00+D2Tx9QWh20=;
-	b=t+3o20Co+29bwduZDwd2WsgBH7btyMpv5BN6MwSbzeim/ScJGyO4S/466QD8nnI7sQ
-	QLEzngVp8DF7PZjbhn+oxCCFAIN1PxHnRUZcY2hkG/wo/av++apyIwCzoJ68xNCMQXcC
-	KkiLOrPEndM0H4SUzL2YIjM80zRvy8256w+lUdf5/qljUmnsnfExKdlwpjER+3P/oY3u
-	C7pGbKBu5apOuvw7jdvO/dM5BSAlW/AVgkuorV/+owNXe2lsamCh4+lsdgkxeek9QdPM
-	Ovkq7q3X96dqn7P5Lg2z2cvJqcM7uzMSrFZLyXlXezJt4rqgHdp5tfWr/o5RH0rZoI08
-	LPfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=O4goqAvWegVxieUjVvyGm/bhzONuui00+D2Tx9QWh20=;
-	b=QxQNMFVAVjsbqW78Cf5fs+ukBbagdCkEeYDbNl3we/SvlVmX1lgFkpl0Dofoc6psBA
-	CpRh+QphYPG4xsyOovFTEn0uy7FF2nDC0/A49yUQkUcxgooKwSc0NvybKwTGzbu7QW3D
-	n8Ugb+9jI7BW9A91KNR4VtzrPPdHOad/w2FFOSSD+R2OjS1FwUlByz9SqkzbUMYRF519
-	U4K8J7lv3RUMy/KPRTUSfIYuKnweh0VwpaEuesmOuAb5S3Y7u/ag7vfLXc0kWaE4BclE
-	ORfupmWDWQ09jBlpLSJ0dBD3gzBqARtyQa+Tc5/Trx0WHpkZ24nsn5qk/gO9bzcQRuoC
-	y8+A==
-X-Gm-Message-State: AODbwcC6IQH7+8d1l5aI/Y3IZTIc9J8wPFRgXvh1dCslWiJuS89c0Jpc
-	uY1Anj8LzffFpquXOwM=
-X-Received: by 10.55.127.199 with SMTP id a190mr55970635qkd.100.1497043740675; 
-	Fri, 09 Jun 2017 14:29:00 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id w68sm1555133qkb.1.2017.06.09.14.28.58
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 09 Jun 2017 14:28:59 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-References: <20170508233918.9043-1-f4bug@amsat.org>
-	<20170508233918.9043-7-f4bug@amsat.org>
-	<79598bed-714f-7c3b-a806-3bf1a4968fd2@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <da9abd44-1f8b-2c1c-e63a-3ca706c95865@amsat.org>
-Date: Fri, 9 Jun 2017 18:28:56 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	(envelope-from <eblake@redhat.com>) id 1dJRcH-0004fd-3e
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 17:38:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55242)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dJRcC-0004dp-GO; Fri, 09 Jun 2017 17:38:44 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 603184E04A;
+	Fri,  9 Jun 2017 21:38:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 603184E04A
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 603184E04A
+Received: from [10.10.121.94] (ovpn-121-94.rdu2.redhat.com [10.10.121.94])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 794C517C6D;
+	Fri,  9 Jun 2017 21:38:41 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20170609150622.4720-1-f4bug@amsat.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <64263ec6-5e92-2a4a-c690-a5129eb71333@redhat.com>
+Date: Fri, 9 Jun 2017 16:38:40 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.1.0
 MIME-Version: 1.0
-In-Reply-To: <79598bed-714f-7c3b-a806-3bf1a4968fd2@msgid.tls.msk.ru>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-trivial] [PATCH 06/11] hw/arm: removed unnecessary include
+In-Reply-To: <20170609150622.4720-1-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="oEnidHMCO5bS7QbgOdndMkCHPKbONKa1h"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 09 Jun 2017 21:38:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2] hw/misc: add missing includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,44 +62,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2017 21:29:07 -0000
+X-List-Received-Date: Fri, 09 Jun 2017 21:38:51 -0000
 
-On 05/23/2017 11:58 AM, Michael Tokarev wrote:
-> 09.05.2017 02:39, Philippe Mathieu-Daudé wrote:
->> "exec/memory.h" already includes it.
->
-> I think this sort of include cleanups isn't really necessary.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--oEnidHMCO5bS7QbgOdndMkCHPKbONKa1h
+Content-Type: multipart/mixed; boundary="otMxuESAppflkXbSNeTbU4wCRvUGGiJUR";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <64263ec6-5e92-2a4a-c690-a5129eb71333@redhat.com>
+Subject: Re: [PATCH v2] hw/misc: add missing includes
+References: <20170609150622.4720-1-f4bug@amsat.org>
+In-Reply-To: <20170609150622.4720-1-f4bug@amsat.org>
 
-Some are useful ;)
+--otMxuESAppflkXbSNeTbU4wCRvUGGiJUR
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-> For a regular include file, it's better to include it if the
-> .c file in question uses definitions from there, no matter if
-> other .h files include that header already or not.
+On 06/09/2017 10:06 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> inlined create_unimplemented_device() calls sysbus_mmio_map_overlap().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>=20
+> v2: Addressed review feedback from Eric Blake
+>=20
+>  include/hw/misc/unimp.h | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Ok. This one was incorrect anyway :( thank for the review!
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
->
-> Thanks,
->
-> /mjt
->
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  include/hw/arm/arm.h | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
->> index a3f79d3379..b9c11d3fb8 100644
->> --- a/include/hw/arm/arm.h
->> +++ b/include/hw/arm/arm.h
->> @@ -14,7 +14,6 @@
->>  #include "exec/memory.h"
->>  #include "target/arm/cpu-qom.h"
->>  #include "hw/irq.h"
->> -#include "qemu/notify.h"
->>
->>  typedef enum {
->>      ARM_ENDIANNESS_UNKNOWN = 0,
->>
->
+>=20
+> diff --git a/include/hw/misc/unimp.h b/include/hw/misc/unimp.h
+> index 3462d85836..52e068ec3e 100644
+> --- a/include/hw/misc/unimp.h
+> +++ b/include/hw/misc/unimp.h
+> @@ -8,6 +8,8 @@
+>  #ifndef HW_MISC_UNIMP_H
+>  #define HW_MISC_UNIMP_H
+> =20
+> +#include "hw/sysbus.h"
+> +
+>  #define TYPE_UNIMPLEMENTED_DEVICE "unimplemented-device"
+> =20
+>  /**
+>=20
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--otMxuESAppflkXbSNeTbU4wCRvUGGiJUR--
+
+--oEnidHMCO5bS7QbgOdndMkCHPKbONKa1h
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJZOxVgAAoJEKeha0olJ0NqqSMIAI0zvUqlnnMFmLSKUaXXshj0
+nNCmEL7B4rAn2i1eapG05KfJMMOp3W88orsEJIDTYvtx8/30EfXlseZ/t1/ZF5gk
+KQfZIfjhZzyfyJnAULcdTdJgg7Oynu8oqyEIJeZRC7UDMdFVe8J/nZNefuwq114P
+ulnZGOPDTUWkwEMQ96iwK3ulcssBhLUqYRn/0gfwbaYCSR6Nc1BiWYBq6AlH8FoG
+QZNa+2UxRpUYmoT9jYI1hB+8tJGR5Etkf4n8/zj22fUkltSe8qtcKOZ9qBoj8YkE
+X6UPmBU41SUNYUTIrAxj7+mivj2RZvYpO7pS2lTeN9HbDG1xjwC7gCQ/tu+ALuA=
+=Qd4a
+-----END PGP SIGNATURE-----
+
+--oEnidHMCO5bS7QbgOdndMkCHPKbONKa1h--
 
