@@ -1,59 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dJM1Z-00061r-0j
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 11:40:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42093)
+	id 1dJMOE-0003Rj-R2
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2017 12:03:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47951)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dJM1T-0005z1-M2
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:40:32 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1dJMOA-0003MX-L4
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 12:03:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dJM1N-0007VW-Po
-	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 11:40:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52498)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dJM1H-0007TN-M7; Fri, 09 Jun 2017 11:40:15 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6B43F13AA1;
-	Fri,  9 Jun 2017 15:40:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6B43F13AA1
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6B43F13AA1
-Received: from [10.10.121.94] (ovpn-121-94.rdu2.redhat.com [10.10.121.94])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BFD2C187BE;
-	Fri,  9 Jun 2017 15:40:13 +0000 (UTC)
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	qemu-devel@nongnu.org
-References: <20170609152017.7286-1-eblake@redhat.com>
-	<20170609152017.7286-2-eblake@redhat.com>
-	<CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
-Cc: qemu-trivial@nongnu.org, armbru@redhat.com
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <f502b8ea-a3b0-1c9c-0c55-5a8b9cdecda6@redhat.com>
-Date: Fri, 9 Jun 2017 10:40:12 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.0
+	(envelope-from <alex.bennee@linaro.org>) id 1dJMO7-0001TG-Cr
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 12:03:54 -0400
+Received: from mail-wr0-x22f.google.com ([2a00:1450:400c:c0c::22f]:35814)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1dJMO7-0001SX-1M
+	for qemu-trivial@nongnu.org; Fri, 09 Jun 2017 12:03:51 -0400
+Received: by mail-wr0-x22f.google.com with SMTP id q97so38145079wrb.2
+	for <qemu-trivial@nongnu.org>; Fri, 09 Jun 2017 09:03:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=/LTcCnzm2LVth7NcpdFEgEqz8Gt6Jx3TSizYO5ieZ5U=;
+	b=X2X/DyFwzR3Orq/7kBcXdXsejABSO8kiQ3eeqo7CWlEuUoUh6mev2Jtnf631ryNHNG
+	I3RSqHq3QA/yUzIZTZN0mYFDnZBVqHZMtMdlcP23tuiR/6imxYC3rN1DVjkfk+Pj4QU+
+	RfQX04kTZMhrzJXw63Se6pu8lfUZ8Acra26XY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=/LTcCnzm2LVth7NcpdFEgEqz8Gt6Jx3TSizYO5ieZ5U=;
+	b=ORD6QdPr1p2XDBB3ehrWeKZqOILEawcTks51xlUSkCBKYOpiH+giegOmY4xmj68fe3
+	BYDRdBMSWIapta00kca16M12IvH3dY3/LrA7IxEqzPtWnXgjUfNYSWnViM/LGZkJv0rh
+	2NkfbC8ViIQ8HHtNb6jiLhbaQWdEYQ52uB/LxjA26l+4+SC4icT+IODWvYZaNAF03Ze2
+	ydcScxSjOW2C5toLUn7kNdfCNy96TSfyOZFsfMFYm4ckFyWnl7DNOIAdoPrcQ7NyCg6N
+	DGiDQeUbUzhtrSrJ8uDXMY2WElaerQQLdD0Hle78sSlXALE4nrGaB+fDjEYYEe1wpJJw
+	M7ug==
+X-Gm-Message-State: AKS2vOwhfqdIgBuwAufGlGmk1kpoomJOiHDnS/mj3EVkvd0z76zsqrbn
+	j8Vw7vjPcVwoI1FyT7pqnw==
+X-Received: by 10.28.150.200 with SMTP id y191mr206958wmd.77.1497024229197;
+	Fri, 09 Jun 2017 09:03:49 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	r78sm2300684wrb.37.2017.06.09.09.03.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 09 Jun 2017 09:03:48 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 5684D3E023D;
+	Fri,  9 Jun 2017 17:04:17 +0100 (BST)
+References: <20170609150622.4720-1-f4bug@amsat.org>
+	<20170609150622.4720-3-f4bug@amsat.org>
+User-agent: mu4e 0.9.19; emacs 25.2.50.3
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Jason Wang <jasowang@redhat.com>
+In-reply-to: <20170609150622.4720-3-f4bug@amsat.org>
+Date: Fri, 09 Jun 2017 17:04:17 +0100
+Message-ID: <87y3t1b11a.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 09 Jun 2017 15:40:14 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] qobject: Update
- coccinelle script to catch Q{INC, DEC}REF
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22f
+Subject: Re: [Qemu-trivial] [PATCH v2] net/pcnet: modernise PCNET_DEBUG
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,89 +73,484 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2017 15:40:32 -0000
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us
-Content-Type: multipart/mixed; boundary="wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, armbru@redhat.com
-Message-ID: <f502b8ea-a3b0-1c9c-0c55-5a8b9cdecda6@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/2] qobject: Update coccinelle script to
- catch Q{INC, DEC}REF
-References: <20170609152017.7286-1-eblake@redhat.com>
- <20170609152017.7286-2-eblake@redhat.com>
- <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
-In-Reply-To: <CAJ+F1CJL04MkrYmnhM3rLaSAuEXYo7JsZwyDLeXA35bV6dvqqA@mail.gmail.com>
-
---wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 06/09/2017 10:28 AM, Marc-Andr=C3=A9 Lureau wrote:
-
-> sadly, coccinelle is unabarebly slow on my machine,
-
-Odd.  It's pretty fast for this series:
-
-$ time spatch --sp-file scripts/coccinelle/qobject.cocci \
-  --macro-file scripts/cocci-macro-file.h --dir . --in-place 2>/dev/null
-
-real	0m2.136s
-user	0m2.003s
-sys	0m0.125s
-
-This is on Fedora 25.  Although I _will_ grant that the time taken is
-also dependent on the complexity of the script it is running on (some
-scripts are inherently slower than others, and coccinelle takes
-shortcuts like grepping for which files to even fully analyze, but not
-all scripts are conducive to those shortcuts).
-
-> not easy to grasp, and
-> thereby fails to catch a lot of cases..
-
-I agree with the 'not easy to grasp'. As for not catching cases, you
-HAVE to use the --macro-file scripts/cocci-macro-file.h to avoid a lot
-of skipped files.  But even so, you're probably right that it still
-misses some things (although it often catches far more than "grep in
-anger" is able to do).
-
-> I am looking at alternative from
-> clang tools/lib, by curiosity.
-
-I'll be interested to see if it produces any (easy-to-reproduce) cleanup
-results.
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+X-List-Received-Date: Fri, 09 Jun 2017 16:03:58 -0000
 
 
---wSL6oIjfchUiKJxIvsnuCLTVifT24fKq6--
+Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 
---T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+> Ensure the format strings are always preprocessed, so any problem get reported.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>
+> v2: Addressed review feedback from Alex Bennée
+>     No changes in *printf() calls but using qemu_log_mask() is an option.
+>
+>  hw/net/pcnet-pci.c |  13 ----
+>  hw/net/pcnet.c     | 190 +++++++++++++++++++++++++++--------------------------
+>  2 files changed, 96 insertions(+), 107 deletions(-)
+>
+> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+> index 0acf8a4879..331370a1f2 100644
+> --- a/hw/net/pcnet-pci.c
+> +++ b/hw/net/pcnet-pci.c
+> @@ -38,14 +38,6 @@
+>
+>  #include "pcnet.h"
+>
+> -//#define PCNET_DEBUG
+> -//#define PCNET_DEBUG_IO
+> -//#define PCNET_DEBUG_BCR
+> -//#define PCNET_DEBUG_CSR
+> -//#define PCNET_DEBUG_RMD
+> -//#define PCNET_DEBUG_TMD
+> -//#define PCNET_DEBUG_MATCH
+> -
+>  #define TYPE_PCI_PCNET "pcnet"
+>
+>  #define PCI_PCNET(obj) \
+> @@ -284,11 +276,6 @@ static void pci_pcnet_realize(PCIDevice *pci_dev, Error **errp)
+>      PCNetState *s = &d->state;
+>      uint8_t *pci_conf;
+>
+> -#if 0
+> -    printf("sizeof(RMD)=%d, sizeof(TMD)=%d\n",
+> -        sizeof(struct pcnet_RMD), sizeof(struct pcnet_TMD));
+> -#endif
+> -
+>      pci_conf = pci_dev->config;
+>
+>      pci_set_word(pci_conf + PCI_STATUS,
+> diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+> index 654455355f..6e97c0b176 100644
+> --- a/hw/net/pcnet.c
+> +++ b/hw/net/pcnet.c
+> @@ -45,13 +45,13 @@
+>
+>  #include "pcnet.h"
+>
+> -//#define PCNET_DEBUG
+> -//#define PCNET_DEBUG_IO
+> -//#define PCNET_DEBUG_BCR
+> -//#define PCNET_DEBUG_CSR
+> -//#define PCNET_DEBUG_RMD
+> -//#define PCNET_DEBUG_TMD
+> -//#define PCNET_DEBUG_MATCH
+> +#define PCNET_DEBUG         0
+> +#define PCNET_DEBUG_IO      0
+> +#define PCNET_DEBUG_BCR     0
+> +#define PCNET_DEBUG_CSR     0
+> +#define PCNET_DEBUG_RMD     0
+> +#define PCNET_DEBUG_TMD     0
+> +#define PCNET_DEBUG_MATCH   0
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+This is an aweful lot of debug knobs. Is there really such a variation
+in debug output to bother having this granularity?
 
-iQEcBAEBCAAGBQJZOsFcAAoJEKeha0olJ0Nqk6IH/2M4NC88AqHgkSIsbxkUP6Fx
-6tdfffI/T6fgN0H7gNB6q9UI8xlUHaOlefFCsNrmyCNP9EebajutF5fPVuovNA0W
-pNjIlNjJ/81bkgo85CXE8ZTi73Hpec3oUy15Mgs/3abkaPu2/w9Ve9grha/AnUzX
-m4Sb1iezld/rdEnTsIEH6C8hOSvRgVeox/IPdAmctYmSDLqJZxK4Spk8jmuB+AQN
-EnAnHcYB9kDhQ28TSYqikpeMbjROiKhW2kr624OKk/o6WqIaohQAmFG6ipQ0bMN+
-ax0zP+ur/SAZ0Z6Xu2pDzY2k92MikypZo0y7/dsz0R6fYzyXc6m/gkJ8Qus6X4M=
-=/tyD
------END PGP SIGNATURE-----
+>
+>
+>  struct qemu_ether_header {
+> @@ -268,7 +268,9 @@ struct pcnet_RMD {
+>          GET_FIELD((T)->misc, TMDM, TDR),                \
+>          GET_FIELD((T)->misc, TMDM, TRC))
+>
+> -#define PRINT_RMD(R) printf(                            \
+> +
+> +#define PRINT_RMD(R) do { if (PCNET_DEBUG_RMD) {        \
+> +        printf(                                         \
+>          "RMD0 : RBADR=0x%08x\n"                         \
+>          "RMD1 : OWN=%d, ERR=%d, FRAM=%d, OFLO=%d, "     \
+>          "CRC=%d, BUFF=%d, STP=%d, ENP=%d,\n       "     \
+> @@ -292,7 +294,9 @@ struct pcnet_RMD {
+>          GET_FIELD((R)->msg_length, RMDM, RCC),          \
+>          GET_FIELD((R)->msg_length, RMDM, RPC),          \
+>          GET_FIELD((R)->msg_length, RMDM, MCNT),         \
+> -        GET_FIELD((R)->msg_length, RMDM, ZEROS))
+> +        GET_FIELD((R)->msg_length, RMDM, ZEROS)); }     \
+> +        } while (0)
+> +
+>
+>  static inline void pcnet_tmd_load(PCNetState *s, struct pcnet_TMD *tmd,
+>                                    hwaddr addr)
+> @@ -510,7 +514,7 @@ static inline void pcnet_rmd_store(PCNetState *s, struct pcnet_RMD *rmd,
+>
+>  #endif
+>
+> -#define PRINT_PKTHDR(BUF) do {                  \
+> +#define PRINT_PKTHDR(BUF) do { if (PCNET_DEBUG_MATCH) { \
+>      struct qemu_ether_header *hdr = (void *)(BUF); \
+>      printf("packet dhost=%02x:%02x:%02x:%02x:%02x:%02x, " \
+>             "shost=%02x:%02x:%02x:%02x:%02x:%02x, " \
+> @@ -520,7 +524,7 @@ static inline void pcnet_rmd_store(PCNetState *s, struct pcnet_RMD *rmd,
+>             hdr->ether_shost[0],hdr->ether_shost[1],hdr->ether_shost[2], \
+>             hdr->ether_shost[3],hdr->ether_shost[4],hdr->ether_shost[5], \
+>             be16_to_cpu(hdr->ether_type));       \
+> -} while (0)
+> +    } } while (0)
+>
+>  #define MULTICAST_FILTER_LEN 8
+>
+> @@ -623,14 +627,14 @@ static inline int padr_match(PCNetState *s, const uint8_t *buf, int size)
+>          s->csr[14] & 0xff, s->csr[14] >> 8
+>      };
+>      int result = (!CSR_DRCVPA(s)) && !memcmp(hdr->ether_dhost, padr, 6);
+> -#ifdef PCNET_DEBUG_MATCH
+> -    printf("packet dhost=%02x:%02x:%02x:%02x:%02x:%02x, "
+> -           "padr=%02x:%02x:%02x:%02x:%02x:%02x\n",
+> -           hdr->ether_dhost[0],hdr->ether_dhost[1],hdr->ether_dhost[2],
+> -           hdr->ether_dhost[3],hdr->ether_dhost[4],hdr->ether_dhost[5],
+> -           padr[0],padr[1],padr[2],padr[3],padr[4],padr[5]);
+> -    printf("padr_match result=%d\n", result);
+> -#endif
+> +    if (PCNET_DEBUG_MATCH) {
+> +        printf("packet dhost=%02x:%02x:%02x:%02x:%02x:%02x, "
+> +               "padr=%02x:%02x:%02x:%02x:%02x:%02x\n",
+> +               hdr->ether_dhost[0], hdr->ether_dhost[1], hdr->ether_dhost[2],
+> +               hdr->ether_dhost[3], hdr->ether_dhost[4], hdr->ether_dhost[5],
+> +               padr[0], padr[1], padr[2], padr[3], padr[4], padr[5]);
+> +        printf("padr_match result=%d\n", result);
+> +    }
 
---T1gWRGVnUhhsaOO3Ugom6cXJBMJIMT7us--
+While this improves things it might be cleaner to debug helper/defines
+so we can have simpler:
+
+   debug_pcnet("foo=%x bar=%d", foo, bar)
+
+Or maybe:
+
+   debug_pci(PCNET_DEBUG_MATCH, "foo=%x, bar=%x", foo, bar)
+
+Depending on if we can rationlise the debug control knobs
+
+>      return result;
+>  }
+>
+> @@ -639,9 +643,9 @@ static inline int padr_bcast(PCNetState *s, const uint8_t *buf, int size)
+>      static const uint8_t BCAST[6] = { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff };
+>      struct qemu_ether_header *hdr = (void *)buf;
+>      int result = !CSR_DRCVBC(s) && !memcmp(hdr->ether_dhost, BCAST, 6);
+> -#ifdef PCNET_DEBUG_MATCH
+> -    printf("padr_bcast result=%d\n", result);
+> -#endif
+> +    if (PCNET_DEBUG_MATCH) {
+> +        printf("padr_bcast result=%d\n", result);
+> +    }
+>      return result;
+>  }
+>
+> @@ -790,6 +794,10 @@ static void pcnet_init(PCNetState *s)
+>      uint16_t padr[3], ladrf[4], mode;
+>      uint32_t rdra, tdra;
+>
+> +    if (PCNET_DEBUG) {
+> +        printf("sizeof(RMD)=%zu, sizeof(TMD)=%zu\n",
+> +            sizeof(struct pcnet_RMD), sizeof(struct pcnet_TMD));
+> +    }
+>      trace_pcnet_init(s, PHYSADDR(s, CSR_IADR(s)));
+>
+>      if (BCR_SSIZE32(s)) {
+> @@ -858,9 +866,9 @@ static void pcnet_init(PCNetState *s)
+>
+>  static void pcnet_start(PCNetState *s)
+>  {
+> -#ifdef PCNET_DEBUG
+> -    printf("pcnet_start\n");
+> -#endif
+> +    if (PCNET_DEBUG) {
+> +        printf("pcnet_start\n");
+> +    }
+>
+>      if (!CSR_DTX(s)) {
+>          s->csr[0] |= 0x0010;    /* set TXON */
+> @@ -877,9 +885,9 @@ static void pcnet_start(PCNetState *s)
+>
+>  static void pcnet_stop(PCNetState *s)
+>  {
+> -#ifdef PCNET_DEBUG
+> -    printf("pcnet_stop\n");
+> -#endif
+> +    if (PCNET_DEBUG) {
+> +        printf("pcnet_stop\n");
+> +    }
+>      s->csr[0] &= ~0xffeb;
+>      s->csr[0] |= 0x0014;
+>      s->csr[4] &= ~0x02c2;
+> @@ -939,12 +947,13 @@ static void pcnet_rdte_poll(PCNetState *s)
+>          RMDLOAD(&rmd, PHYSADDR(s,CSR_CRDA(s)));
+>          CSR_CRBC(s) = GET_FIELD(rmd.buf_length, RMDL, BCNT);
+>          CSR_CRST(s) = rmd.status;
+> -#ifdef PCNET_DEBUG_RMD_X
+> -        printf("CRDA=0x%08x CRST=0x%04x RCVRC=%d RMDL=0x%04x RMDS=0x%04x RMDM=0x%08x\n",
+> -                PHYSADDR(s,CSR_CRDA(s)), CSR_CRST(s), CSR_RCVRC(s),
+> -                rmd.buf_length, rmd.status, rmd.msg_length);
+> +        if (PCNET_DEBUG_RMD) {
+> +            printf("CRDA=0x%08x CRST=0x%04x RCVRC=%d RMDL=0x%04x "
+> +                    "RMDS=0x%04x RMDM=0x%08x\n",
+> +                    PHYSADDR(s, CSR_CRDA(s)), CSR_CRST(s), CSR_RCVRC(s),
+> +                    rmd.buf_length, rmd.status, rmd.msg_length);
+> +        }
+>          PRINT_RMD(&rmd);
+> -#endif
+>      } else {
+>          CSR_CRBC(s) = CSR_CRST(s) = 0;
+>      }
+> @@ -1013,9 +1022,9 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>          (CSR_LOOP(s) && !s->looptest)) {
+>          return -1;
+>      }
+> -#ifdef PCNET_DEBUG
+> -    printf("pcnet_receive size=%d\n", size);
+> -#endif
+> +    if (PCNET_DEBUG) {
+> +        printf("pcnet_receive size=%d\n", size);
+> +    }
+>
+>      /* if too small buffer, then expand it */
+>      if (size < MIN_BUF_SIZE) {
+> @@ -1044,10 +1053,10 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>                      (BCR_SWSTYLE(s) ? 16 : 8 );
+>                  RMDLOAD(&rmd, nrda);
+>                  if (GET_FIELD(rmd.status, RMDS, OWN)) {
+> -#ifdef PCNET_DEBUG_RMD
+> -                    printf("pcnet - scan buffer: RCVRC=%d PREV_RCVRC=%d\n",
+> +                    if (PCNET_DEBUG_RMD) {
+> +                        printf("pcnet - scan buffer: RCVRC=%d PREV_RCVRC=%d\n",
+>                                  rcvrc, CSR_RCVRC(s));
+> -#endif
+> +                    }
+>                      CSR_RCVRC(s) = rcvrc;
+>                      pcnet_rdte_poll(s);
+>                      break;
+> @@ -1056,9 +1065,9 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>          }
+>
+>          if (!(CSR_CRST(s) & 0x8000)) {
+> -#ifdef PCNET_DEBUG_RMD
+> -            printf("pcnet - no buffer: RCVRC=%d\n", CSR_RCVRC(s));
+> -#endif
+> +            if (PCNET_DEBUG_RMD) {
+> +                printf("pcnet - no buffer: RCVRC=%d\n", CSR_RCVRC(s));
+> +            }
+>              s->csr[0] |= 0x1000; /* Set MISS flag */
+>              CSR_MISSC(s)++;
+>          } else {
+> @@ -1069,9 +1078,9 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>
+>              if (!s->looptest) {
+>                  if (size > 4092) {
+> -#ifdef PCNET_DEBUG_RMD
+> -                    fprintf(stderr, "pcnet: truncates rx packet.\n");
+> -#endif
+> +                    if (PCNET_DEBUG_RMD) {
+> +                        fprintf(stderr, "pcnet: truncates rx packet.\n");
+> +                    }
+>                      size = 4092;
+>                  }
+>                  memcpy(src, buf, size);
+> @@ -1099,9 +1108,7 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>                  crc_err = (*(uint32_t *)p != htonl(fcs));
+>              }
+>
+> -#ifdef PCNET_DEBUG_MATCH
+>              PRINT_PKTHDR(buf);
+> -#endif
+>
+>              RMDLOAD(&rmd, PHYSADDR(s,crda));
+>              /*if (!CSR_LAPPEN(s))*/
+> @@ -1121,16 +1128,12 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>              PCNET_RECV_STORE();
+>              if ((remaining > 0) && CSR_NRDA(s)) {
+>                  hwaddr nrda = CSR_NRDA(s);
+> -#ifdef PCNET_DEBUG_RMD
+>                  PRINT_RMD(&rmd);
+> -#endif
+>                  RMDLOAD(&rmd, PHYSADDR(s,nrda));
+>                  if (GET_FIELD(rmd.status, RMDS, OWN)) {
+>                      crda = nrda;
+>                      PCNET_RECV_STORE();
+> -#ifdef PCNET_DEBUG_RMD
+>                      PRINT_RMD(&rmd);
+> -#endif
+>                      if ((remaining > 0) && (nrda=CSR_NNRD(s))) {
+>                          RMDLOAD(&rmd, PHYSADDR(s,nrda));
+>                          if (GET_FIELD(rmd.status, RMDS, OWN)) {
+> @@ -1162,13 +1165,11 @@ ssize_t pcnet_receive(NetClientState *nc, const uint8_t *buf, size_t size_)
+>              RMDSTORE(&rmd, PHYSADDR(s,crda));
+>              s->csr[0] |= 0x0400;
+>
+> -#ifdef PCNET_DEBUG
+> -            printf("RCVRC=%d CRDA=0x%08x BLKS=%d\n",
+> -                CSR_RCVRC(s), PHYSADDR(s,CSR_CRDA(s)), pktcount);
+> -#endif
+> -#ifdef PCNET_DEBUG_RMD
+> +            if (PCNET_DEBUG) {
+> +                printf("RCVRC=%d CRDA=0x%08x BLKS=%d\n",
+> +                    CSR_RCVRC(s), PHYSADDR(s, CSR_CRDA(s)), pktcount);
+> +            }
+>              PRINT_RMD(&rmd);
+> -#endif
+>
+>              while (pktcount--) {
+>                  if (CSR_RCVRC(s) <= 1) {
+> @@ -1217,10 +1218,10 @@ txagain:
+>
+>          TMDLOAD(&tmd, PHYSADDR(s,CSR_CXDA(s)));
+>
+> -#ifdef PCNET_DEBUG_TMD
+> -        printf("  TMDLOAD 0x%08x\n", PHYSADDR(s,CSR_CXDA(s)));
+> -        PRINT_TMD(&tmd);
+> -#endif
+> +        if (PCNET_DEBUG_TMD) {
+> +            printf("  TMDLOAD 0x%08x\n", PHYSADDR(s, CSR_CXDA(s)));
+> +            PRINT_TMD(&tmd);
+> +        }
+>          if (GET_FIELD(tmd.status, TMDS, STP)) {
+>              s->xmit_pos = 0;
+>              xmit_cxda = PHYSADDR(s,CSR_CXDA(s));
+> @@ -1260,9 +1261,9 @@ txagain:
+>              goto txdone;
+>          }
+>
+> -#ifdef PCNET_DEBUG
+> -        printf("pcnet_transmit size=%d\n", s->xmit_pos);
+> -#endif
+> +        if (PCNET_DEBUG) {
+> +            printf("pcnet_transmit size=%d\n", s->xmit_pos);
+> +        }
+>          if (CSR_LOOP(s)) {
+>              if (BCR_SWSTYLE(s) == 1)
+>                  add_crc = !GET_FIELD(tmd.status, TMDS, NOFCS);
+> @@ -1363,9 +1364,9 @@ static void pcnet_poll_timer(void *opaque)
+>  static void pcnet_csr_writew(PCNetState *s, uint32_t rap, uint32_t new_value)
+>  {
+>      uint16_t val = new_value;
+> -#ifdef PCNET_DEBUG_CSR
+> -    printf("pcnet_csr_writew rap=%d val=0x%04x\n", rap, val);
+> -#endif
+> +    if (PCNET_DEBUG_CSR) {
+> +        printf("pcnet_csr_writew rap=%d val=0x%04x\n", rap, val);
+> +    }
+>      switch (rap) {
+>      case 0:
+>          s->csr[0] &= ~(val & 0x7f00); /* Clear any interrupt flags */
+> @@ -1491,18 +1492,18 @@ static uint32_t pcnet_csr_readw(PCNetState *s, uint32_t rap)
+>      default:
+>          val = s->csr[rap];
+>      }
+> -#ifdef PCNET_DEBUG_CSR
+> -    printf("pcnet_csr_readw rap=%d val=0x%04x\n", rap, val);
+> -#endif
+> +    if (PCNET_DEBUG_CSR) {
+> +        printf("pcnet_csr_readw rap=%d val=0x%04x\n", rap, val);
+> +    }
+>      return val;
+>  }
+>
+>  static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+>  {
+>      rap &= 127;
+> -#ifdef PCNET_DEBUG_BCR
+> -    printf("pcnet_bcr_writew rap=%d val=0x%04x\n", rap, val);
+> -#endif
+> +    if (PCNET_DEBUG_BCR) {
+> +        printf("pcnet_bcr_writew rap=%d val=0x%04x\n", rap, val);
+> +    }
+>      switch (rap) {
+>      case BCR_SWS:
+>          if (!(CSR_STOP(s) || CSR_SPND(s)))
+> @@ -1524,9 +1525,9 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+>              val = 0x0200;
+>              break;
+>          }
+> -#ifdef PCNET_DEBUG
+> -       printf("BCR_SWS=0x%04x\n", val);
+> -#endif
+> +        if (PCNET_DEBUG) {
+> +            printf("BCR_SWS=0x%04x\n", val);
+> +        }
+>          /* fall through */
+>      case BCR_LNKST:
+>      case BCR_LED1:
+> @@ -1560,9 +1561,9 @@ uint32_t pcnet_bcr_readw(PCNetState *s, uint32_t rap)
+>          val = rap < 32 ? s->bcr[rap] : 0;
+>          break;
+>      }
+> -#ifdef PCNET_DEBUG_BCR
+> -    printf("pcnet_bcr_readw rap=%d val=0x%04x\n", rap, val);
+> -#endif
+> +    if (PCNET_DEBUG_BCR) {
+> +        printf("pcnet_bcr_readw rap=%d val=0x%04x\n", rap, val);
+> +    }
+>      return val;
+>  }
+>
+> @@ -1592,9 +1593,9 @@ void pcnet_ioport_writew(void *opaque, uint32_t addr, uint32_t val)
+>  {
+>      PCNetState *s = opaque;
+>      pcnet_poll_timer(s);
+> -#ifdef PCNET_DEBUG_IO
+> -    printf("pcnet_ioport_writew addr=0x%08x val=0x%04x\n", addr, val);
+> -#endif
+> +    if (PCNET_DEBUG_IO) {
+> +        printf("pcnet_ioport_writew addr=0x%08x val=0x%04x\n", addr, val);
+> +    }
+>      if (!BCR_DWIO(s)) {
+>          switch (addr & 0x0f) {
+>          case 0x00: /* RDP */
+> @@ -1634,9 +1635,10 @@ uint32_t pcnet_ioport_readw(void *opaque, uint32_t addr)
+>          }
+>      }
+>      pcnet_update_irq(s);
+> -#ifdef PCNET_DEBUG_IO
+> -    printf("pcnet_ioport_readw addr=0x%08x val=0x%04x\n", addr, val & 0xffff);
+> -#endif
+> +    if (PCNET_DEBUG_IO) {
+> +        printf("pcnet_ioport_readw addr=0x%08x val=0x%04x\n", addr,
+> +                val & 0xffff);
+> +    }
+>      return val;
+>  }
+>
+> @@ -1644,9 +1646,9 @@ void pcnet_ioport_writel(void *opaque, uint32_t addr, uint32_t val)
+>  {
+>      PCNetState *s = opaque;
+>      pcnet_poll_timer(s);
+> -#ifdef PCNET_DEBUG_IO
+> -    printf("pcnet_ioport_writel addr=0x%08x val=0x%08x\n", addr, val);
+> -#endif
+> +    if (PCNET_DEBUG_IO) {
+> +        printf("pcnet_ioport_writel addr=0x%08x val=0x%08x\n", addr, val);
+> +    }
+>      if (BCR_DWIO(s)) {
+>          switch (addr & 0x0f) {
+>          case 0x00: /* RDP */
+> @@ -1662,9 +1664,9 @@ void pcnet_ioport_writel(void *opaque, uint32_t addr, uint32_t val)
+>      } else if ((addr & 0x0f) == 0) {
+>          /* switch device to dword i/o mode */
+>          pcnet_bcr_writew(s, BCR_BSBC, pcnet_bcr_readw(s, BCR_BSBC) | 0x0080);
+> -#ifdef PCNET_DEBUG_IO
+> -        printf("device switched into dword i/o mode\n");
+> -#endif
+> +        if (PCNET_DEBUG_IO) {
+> +            printf("device switched into dword i/o mode\n");
+> +        }
+>      }
+>      pcnet_update_irq(s);
+>  }
+> @@ -1692,9 +1694,9 @@ uint32_t pcnet_ioport_readl(void *opaque, uint32_t addr)
+>          }
+>      }
+>      pcnet_update_irq(s);
+> -#ifdef PCNET_DEBUG_IO
+> -    printf("pcnet_ioport_readl addr=0x%08x val=0x%08x\n", addr, val);
+> -#endif
+> +    if (PCNET_DEBUG_IO) {
+> +        printf("pcnet_ioport_readl addr=0x%08x val=0x%08x\n", addr, val);
+> +    }
+>      return val;
+>  }
+
+
+--
+Alex Bennée
 
