@@ -1,70 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dO4tq-0007vE-Fx
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Jun 2017 12:24:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46142)
+	id 1dO5CG-00079X-R6
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Jun 2017 12:43:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dO4tn-0007tA-W4
-	for qemu-trivial@nongnu.org; Thu, 22 Jun 2017 12:24:04 -0400
+	(envelope-from <groug@kaod.org>) id 1dO5CE-00079J-BI
+	for qemu-trivial@nongnu.org; Thu, 22 Jun 2017 12:43:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dO4tn-0002zg-74
-	for qemu-trivial@nongnu.org; Thu, 22 Jun 2017 12:24:04 -0400
-Received: from mail-it0-x241.google.com ([2607:f8b0:4001:c0b::241]:33049)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dO4tn-0002yo-2b; Thu, 22 Jun 2017 12:24:03 -0400
-Received: by mail-it0-x241.google.com with SMTP id x12so3893643itb.0;
-	Thu, 22 Jun 2017 09:24:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=bhLNiDRU/EIEyq9QAqIYhsWlDjpm+naKpGN9Lr+/Pwg=;
-	b=U1vjr2n+nZIY3tBB52AOZBrb4bPiE617V7e5xLnF/8BkzVxvrmYDpjNVl5pCTisV6U
-	nNHuWPTGBBkFDsbufUP9M2psp3l4bQ0m7IPRQdhjTChp/m7Q4X83nbvvJTvkyFo+k/0F
-	OC65EM0+otRl38/c+QQpxeGH6YF3fC6aNrBFskLYTdjc/jsuIOBZNiTqrRcwB83sX0wu
-	vXONsfD/bSFcWSCB0eLuM2BydXR50i4BYNdcMjJe97bVb9f6zWjRIrIjvDB1wr3aUKPH
-	S32ch+Tg9DBv2b+5QTHRXiWAvAeI1OfAKcJfnXxWoQBDkSs8vhrW+b5sjUIU4EOTtHjx
-	M5kw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=bhLNiDRU/EIEyq9QAqIYhsWlDjpm+naKpGN9Lr+/Pwg=;
-	b=BbiKVShXo17UuXArAJdSHaK2i4dw5LjDdoxx8bW8kWSFWi3Gsa8FFtlKzrt6KmQD4z
-	MLSipCieEzcb3N6W9g0uDS5pJ8wnXAskX1wQiHPm5Tp81nhZbe6jUiKXgmdblyzGlh6j
-	Ny1N6rDDp0rGTwiYCL4yW9PSMWO8rnVuck+E+Fr9EP69ahswsgJTT1jK0i6mT1RJ2Otf
-	Q8OuX/lQ9IKJGtFXgCjuwYK2u1Vq5InRDDnpUOW+WLfhGygqZjeujAoe6/ZNxUi8ysXg
-	IeL2/YPTTsF0Tz61k9VovyRCfU/olbGx1QudI0rsF11OsHoiAbGW+z/GE5RHtFKhD7/I
-	JXNA==
-X-Gm-Message-State: AKS2vOwTuXVKr5/JIuq5huoxZThs2B0OaPXpOECtj0aDyS0McCfVb2VR
-	ft/OL5HO8Q3Hqox9G3WIuoR0cS49Zg==
-X-Received: by 10.36.106.5 with SMTP id l5mr2862097itc.95.1498148641033; Thu,
-	22 Jun 2017 09:24:01 -0700 (PDT)
-MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 10.107.139.135 with HTTP; Thu, 22 Jun 2017 09:24:00 -0700 (PDT)
-In-Reply-To: <CAFEAcA_kp1tVEd3km1+S7yCLtnVsRko6TQwPZL8xjqV3PVBu5w@mail.gmail.com>
-References: <20170531120049.14111-1-n54@gmx.com>
-	<26b48c35-b6cc-708d-c4d2-b26a9382e10a@msgid.tls.msk.ru>
-	<CAFEAcA_kp1tVEd3km1+S7yCLtnVsRko6TQwPZL8xjqV3PVBu5w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Thu, 22 Jun 2017 13:24:00 -0300
-X-Google-Sender-Auth: BRdSFppBkjxzYdWV-MnyBbH4LEQ
-Message-ID: <CAAdtpL72EXWFzd6cEgBk_WDdn2Ue=XVU3=2g=WUoPo6uum22fg@mail.gmail.com>
+	(envelope-from <groug@kaod.org>) id 1dO5CB-0001V5-79
+	for qemu-trivial@nongnu.org; Thu, 22 Jun 2017 12:43:06 -0400
+Received: from 2.mo5.mail-out.ovh.net ([178.33.109.111]:43836)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dO5CB-0001TW-0v
+	for qemu-trivial@nongnu.org; Thu, 22 Jun 2017 12:43:03 -0400
+Received: from player695.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 76A6E10C57C
+	for <qemu-trivial@nongnu.org>; Thu, 22 Jun 2017 18:43:01 +0200 (CEST)
+Received: from bahia.lab.toulouse-stg.fr.ibm.com
+	(gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
+	(Authenticated sender: groug@kaod.org)
+	by player695.ha.ovh.net (Postfix) with ESMTPSA id E5248460071;
+	Thu, 22 Jun 2017 18:42:56 +0200 (CEST)
+Date: Thu, 22 Jun 2017 18:42:55 +0200
+From: Greg Kurz <groug@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Kamil Rytarowski <n54@gmx.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>, 
-	peter.maydell@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] ivshmem-server:
- ivshmem-client: Build when eventfd() is available
+Cc: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+	<qemu-trivial@nongnu.org>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+	Juan Quintela <quintela@redhat.com>
+Message-ID: <20170622184255.2d44e3bd@bahia.lab.toulouse-stg.fr.ibm.com>
+In-Reply-To: <CAFEAcA8yqb8ykP8nCnoVNQUZd851RhOLFf2TfkHZmL2je+pP=Q@mail.gmail.com>
+References: <149814756006.27338.8723356702388175951.stgit@bahia>
+	<CAFEAcA8yqb8ykP8nCnoVNQUZd851RhOLFf2TfkHZmL2je+pP=Q@mail.gmail.com>
+X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/l6UDZ_XfHgpvO.GVsI_IG1d";
+	protocol="application/pgp-signature"
+X-Ovh-Tracer-Id: 17551935124070111505
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeljedrledvgddutdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 178.33.109.111
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Separate function types
+ from opaque types in include/qemu/typedefs.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,21 +55,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Jun 2017 16:24:05 -0000
+X-List-Received-Date: Thu, 22 Jun 2017 16:43:07 -0000
 
-On Thu, Jun 22, 2017 at 12:54 PM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 5 June 2017 at 15:29, Michael Tokarev <mjt@tls.msk.ru> wrote:
-[...]
->> $ ../configure --disable-system --disable-linux-user --static
->> $ make V=1
->> ...
->
-> Why are you trying to build with both system emulation QEMU
-> and linux-user QEMU disabled anyway? That doesn't leave very
-> much left to build...
+--Sig_/l6UDZ_XfHgpvO.GVsI_IG1d
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-Hmm the only point would be to build libqemuutil.a...
+On Thu, 22 Jun 2017 17:14:08 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Should the ./configure script return an error if $target_list is empty?
+> On 22 June 2017 at 17:06, Greg Kurz <groug@kaod.org> wrote:
+> > Function types cannot reside in the same sorted list as opaque types si=
+nce
+> > they may depend on a type which would be defined later.
+> >
+> > Of course, the same problem could arise if a function type depends on
+> > another function type with greater alphabetical order. Hopefully we
+> > don't have that at this time. =20
+>=20
+> The other approach would be to put function types somewhere
+> else and leave typedefs.h for the simple 'opaque types
+> for structures' that it was started as.
+>=20
+> For instance we have include/qemu/fprintf-fn.h as a precedent.
+>=20
+
+Indeed, and I'm not quite sure why Juan decided to put these types into
+typedefs.h instead of a dedicated header file in include/migration... is
+it only because it was the quickest fix ?
+
+> thanks
+> -- PMM
+
+
+--Sig_/l6UDZ_XfHgpvO.GVsI_IG1d
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEARECAAYFAllL848ACgkQAvw66wEB28KHpACdEKMhm+2wFlTmol5zFp5iEwqk
+N+wAoJqM1m9VLLOrPoTak37EP+gCTy/E
+=X6OY
+-----END PGP SIGNATURE-----
+
+--Sig_/l6UDZ_XfHgpvO.GVsI_IG1d--
 
