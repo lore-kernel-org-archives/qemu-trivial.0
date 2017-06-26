@@ -1,67 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dOS7G-0006lL-L5
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jun 2017 13:11:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46493)
+	id 1dPQJA-0000na-VL
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Jun 2017 05:27:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dOS7D-0006if-W9
-	for qemu-trivial@nongnu.org; Fri, 23 Jun 2017 13:11:28 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1dPQJ8-0000le-KC
+	for qemu-trivial@nongnu.org; Mon, 26 Jun 2017 05:27:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dOS7D-0006nX-3a
-	for qemu-trivial@nongnu.org; Fri, 23 Jun 2017 13:11:27 -0400
-Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:34790)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dOS7C-0006lk-UH
-	for qemu-trivial@nongnu.org; Fri, 23 Jun 2017 13:11:27 -0400
-Received: by mail-wr0-x22b.google.com with SMTP id 77so74110178wrb.1
-	for <qemu-trivial@nongnu.org>; Fri, 23 Jun 2017 10:11:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=o7l5AeEkqTX2GZjDPpR1Gf3h8ar2rx4dSOp/+dwG/KE=;
-	b=kUrQ3mB39ggkCt+/4CrYct5uOMGWHQi87LFlcJeETzoaH6E7ccEsZFgrib1mIeHoiy
-	JqvEzvEtIhHuyqWIQ8lFUWzRevjAv268L7JUpGAqRpwjx/hRBQCJvYbfmXvsZ47mCcEq
-	HykAaHFVhAq9dVG6VKIEuQhZ/Yk7mguIL0ZZQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=o7l5AeEkqTX2GZjDPpR1Gf3h8ar2rx4dSOp/+dwG/KE=;
-	b=TnRaETbMbQdEE4+T5btG/XU7EEnFRWDw/bgC8vhqzQhzWuU3uMKhv+seweNcf0GlgP
-	f3zmf7Pv+a4WJ7sFRwkYfIvr0TJQOsfo4692/UaZSUVGmu4XNIVgkCey9AWRlMAG/Qu6
-	2sv6BCU/PAtElMTBgQCIKiUWlNV6YjtLoWE7LeocDmwaXD9Qcg3xSy3IIFTvuxj72ta1
-	PQ6pEKGmbZqtqEnWgd+nkXlY911C+qjWLy/aALMNu0Arj1EISrTH9yK1VT0hlBsMv20U
-	sVaC8zADoONbH0NX3bVWd4/glrIjSnPIZuKCf0QVJv504OR1SiLhFzTMofbIju3mGoKH
-	RqFw==
-X-Gm-Message-State: AKS2vOz+bNYiiB2k/dJfk49tF/JvTOBIuiLGuh3jXM1wIIDBlxvFsAbj
-	tiKzA1Zdm+I8FGqritW5PRg5axZi4xbN
-X-Received: by 10.223.150.163 with SMTP id u32mr6807656wrb.195.1498237884096; 
-	Fri, 23 Jun 2017 10:11:24 -0700 (PDT)
+	(envelope-from <dgilbert@redhat.com>) id 1dPQJ7-0000ab-Gs
+	for qemu-trivial@nongnu.org; Mon, 26 Jun 2017 05:27:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34004)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1dPQJ4-0000Wq-Lw; Mon, 26 Jun 2017 05:27:42 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D962BC04B310;
+	Mon, 26 Jun 2017 09:27:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D962BC04B310
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=dgilbert@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D962BC04B310
+Received: from work-vm (ovpn-117-172.ams2.redhat.com [10.36.117.172])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8B00F779FC;
+	Mon, 26 Jun 2017 09:27:39 +0000 (UTC)
+Date: Mon, 26 Jun 2017 10:27:37 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Juan Quintela <quintela@redhat.com>
+Message-ID: <20170626092735.GA2136@work-vm>
+References: <20170622184255.2d44e3bd@bahia.lab.toulouse-stg.fr.ibm.com>
+	<87injo6jla.fsf@secure.mitica>
+	<CAFEAcA-g-=AkH3t8jOTFY_9zA6ECS57-3MS=cHPb+Q6sePzNsw@mail.gmail.com>
+	<20170622172555.GE2100@work-vm>
+	<20170622194649.6d251753@bahia.lab.toulouse-stg.fr.ibm.com>
+	<20170622175012.GF2100@work-vm>
+	<fb2c7124-2d3f-6684-e2f2-265bfb3eb6da@redhat.com>
+	<CAFEAcA-A=UrkKjLmVOcFA_d4rMW1AJwGffE4r2Uy6fw++XFF6w@mail.gmail.com>
+	<20170622183457.GG2100@work-vm>
+	<20170622212332.38f4b434@bahia.lab.toulouse-stg.fr.ibm.com>
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 23 Jun 2017 10:11:03 -0700 (PDT)
-In-Reply-To: <20170623164557.11636-2-f4bug@amsat.org>
-References: <20170623164557.11636-1-f4bug@amsat.org>
-	<20170623164557.11636-2-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Jun 2017 18:11:03 +0100
-Message-ID: <CAFEAcA_MwaYkN8tS0U9nkkic9VrEtppCm_bCS=2pWyKfgUSr-w@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Eric Blake <eblake@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Markus Armbruster <armbru@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Alexander Graf <agraf@suse.de>, 
-	David Gibson <david@gibson.dropbear.id.au>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	Alistair Francis <alistair.francis@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22b
-Subject: Re: [Qemu-trivial] [PATCH 1/3] elf-loader: warn about invalid
- endianess
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170622212332.38f4b434@bahia.lab.toulouse-stg.fr.ibm.com>
+User-Agent: Mutt/1.8.2 (2017-04-18)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 26 Jun 2017 09:27:41 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Separate function types
+ from opaque types in include/qemu/typedefs.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,35 +70,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jun 2017 17:11:29 -0000
+X-List-Received-Date: Mon, 26 Jun 2017 09:27:47 -0000
 
-On 23 June 2017 at 17:45, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
-te:
-> fprintf(stderr) is how errors are reported in this file.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/core/loader.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index f72930ca4a..094f24627f 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -478,6 +478,7 @@ int load_elf_ram(const char *filename,
->      }
->
->      if (target_data_order !=3D e_ident[EI_DATA]) {
-> +        fprintf(stderr, "%s: wrong endianess\n", filename);
+* Greg Kurz (groug@kaod.org) wrote:
+> On Thu, 22 Jun 2017 19:34:58 +0100
+> "Dr. David Alan Gilbert" <dgilbert@redhat.com> wrote:
+> 
+> > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > > On 22 June 2017 at 19:08, Thomas Huth <thuth@redhat.com> wrote:  
+> > > > On 22.06.2017 19:50, Dr. David Alan Gilbert wrote:  
+> > > >> Could do; I'm just not finding tiny header files with one or
+> > > >> two entries each that useful.  
+> > > 
+> > > Well, it means that the bulk of code that doesn't care about the
+> > > types doesn't get its compilation fractionally slowed by having
+> > > to parse the typedef anyway. In general I think we're drifting
+> > > towards "have each .c file get fewer things automatically" rather
+> > > than otherwise (eg more finely focused files rather than stuffing
+> > > everything into qemu-common.h).  
+> > 
+> > At the cost of things getting fractionally slower by including lots
+> > more tiny headers.
+> > 
+> > I generally agree in the case where there's a useful chunk,
+> > but when it's down to one or two definitions I don't see the point.
+> > 
+> > > > Do we really need these function typedefs at all? IMHO it's quite ugly
+> > > > to hide such things in a typedef unless it is really necessary (and in
+> > > > this case, it does not seem to be really necessary since it is only used
+> > > > in a few places). So what about simply removing the typedefs in this case?  
+> > > 
+> > > I find function typedefs much more readable than having the
+> > > function-types inline in function arguments and the like.
+> > > 
+> > > This is all fairly rapidly heading into bikeshed territory
+> > > though -- in the final analysis I don't think it matters
+> > > much what we do.  
+> > 
+> > Agreed.
+> > 
+> 
+> Last question for my own comprehension.
+> 
+> I can't think of a case where we would do something like:
+> 
+>    some_vmsd->load_state_old = some_se->ops->load_state;
+> 
+> Does it make sense for VMStateDescription::load_state_old and SaveVMHandlers::load_state
+> to be of the same type ?
 
-"endianness" (two 'n's).
+(I think this is what we discussed on irc)
+There's only a few _old's and they're the same interface as the
+non-_old's,   the only difference is the range of version_id's they're
+prepared to take.
 
->          ret =3D ELF_LOAD_WRONG_ENDIAN;
->          goto fail;
->      }
-> --
-> 2.13.1
+Dave
 
-thanks
--- PMM
+> > Dave
+> > 
+> > > thanks
+> > > -- PMM  
+> > --
+> > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> 
+
+
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
