@@ -1,72 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dPcdB-00071r-TZ
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Jun 2017 18:37:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35149)
+	id 1dPnXr-0000j8-DQ
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Jun 2017 06:16:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38133)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dPcd9-0006yq-Kq
-	for qemu-trivial@nongnu.org; Mon, 26 Jun 2017 18:37:16 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1dPnXo-0000iu-2i
+	for qemu-trivial@nongnu.org; Tue, 27 Jun 2017 06:16:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dPcd8-00017Z-QR
-	for qemu-trivial@nongnu.org; Mon, 26 Jun 2017 18:37:15 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:35968)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dPcd6-00016K-S0; Mon, 26 Jun 2017 18:37:12 -0400
-Received: by mail-wm0-x241.google.com with SMTP id y5so2742007wmh.3;
-	Mon, 26 Jun 2017 15:37:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=oZcse519rwGnXlWo8AEhiViS3tTMduPcareO5H+F8wA=;
-	b=ihLLuF8U/j45m6LhrYhHQ3N29NieG3jmm/7nKm0vDPMfso09EsKMGvglXQzUp/giy6
-	eEXfPXg1d+ffVs9XFqLsa2rr3ZEsBTMpRg7GLS5VwwpDOHo/6dsVmLJXFmso8vZsL+DE
-	KBmNf4VJtm5cBP0/tHPIdTvozL7yQLwg0B+rPbvPrJbpUVf4mWUt41kuPeOR4Uo/epLV
-	61ogeWxO3SZuK3RUho8kE2nsWEmK8SlLJ7bfZq0XoknC2g/FkwSVitukNvcXSEHEsCSt
-	TMO7RAdK9J+CjCOSWOa5GuYu7hs6c8X2Fgz3tXtMf670/f52hLIdgiDdXatV5bSnWCbT
-	9JRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=oZcse519rwGnXlWo8AEhiViS3tTMduPcareO5H+F8wA=;
-	b=EceQtR1KMjfze++nkDPMCtD87HFM2srXP5/QyKRyDu8QS6JCG9qgtFTzGmsQu8QvuY
-	dtlxqiW98Y2vzonFuMNIHOV1p88RP3FCOLz7X15z8s2fT5cpzcq4xqaZThvYCWwt8RcX
-	z1D+8SZr6CB735vRJ3tkAnSCBY4o4xK8T+yPR39luVPA6ayzXA5ayI91yMoFdjMxm5gh
-	Z1o0Vbetli+e2UmC+rrkjhWaP5di+kkdhXNE/jzvUxcnf3nC4J6xKIZEb/X+GbUSrBF1
-	HPB37ukefuayRPO2MT5EntMKRCmF/AaRl1IkQIOoFNu7QtERF1elbCRPqeZ5zqhsI/XD
-	nD8Q==
-X-Gm-Message-State: AKS2vOw7SWjUnyIM0dOlUAAU3FzcZM2sRR4eMwb4aRLHQr1iwWx3fUnJ
-	uMD/Rte1UeJdRhzYCKmhU0NiXodylg==
-X-Received: by 10.28.213.205 with SMTP id m196mr1120937wmg.61.1498516631601;
-	Mon, 26 Jun 2017 15:37:11 -0700 (PDT)
-MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.191.88 with HTTP; Mon, 26 Jun 2017 15:36:41 -0700 (PDT)
-In-Reply-To: <20170623164557.11636-3-f4bug@amsat.org>
-References: <20170623164557.11636-1-f4bug@amsat.org>
-	<20170623164557.11636-3-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 26 Jun 2017 15:36:41 -0700
-X-Google-Sender-Auth: vQReYjXUqpt2iAT4Q-efFDHx91o
-Message-ID: <CAKmqyKN7QXYQrP1_LgDoRe6SFkrx=Ogvt2N9CgW8QOaZ5RkMrA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Eric Blake <eblake@redhat.com>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>, 
-	Laszlo Ersek <lersek@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Alexander Graf <agraf@suse.de>,
-	David Gibson <david@gibson.dropbear.id.au>, 
+	(envelope-from <vilanova@ac.upc.edu>) id 1dPnXk-0004v1-1C
+	for qemu-trivial@nongnu.org; Tue, 27 Jun 2017 06:16:28 -0400
+Received: from roura.ac.upc.es ([147.83.33.10]:57976)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1dPnXj-0004ub-J1; Tue, 27 Jun 2017 06:16:23 -0400
+Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5RAGIR7018308;
+	Tue, 27 Jun 2017 12:16:18 +0200
+Received: from localhost (unknown [132.68.53.125])
+	by correu-1.ac.upc.es (Postfix) with ESMTPSA id 6E71B302;
+	Tue, 27 Jun 2017 12:16:13 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: "Emilio G. Cota" <cota@braap.org>, Eric Blake <eblake@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-trivial@nongnu.org (open list:Trivial patches)
+Date: Tue, 27 Jun 2017 13:16:12 +0300
+Message-Id: <149855857191.4578.606616630329486774.stgit@frigg.lan>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <149855711979.4578.11884555663631849051.stgit@frigg.lan>
+References: <149855711979.4578.11884555663631849051.stgit@frigg.lan>
+User-Agent: StGit/0.17.1-dirty
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] hw/core: fix missing
- return value in load_image_targphys_as()
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	v5RAGIR7018308
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
+X-Received-From: 147.83.33.10
+Subject: [Qemu-trivial] [PATCH v9 6/7] trace: [tcg,
+ trivial] Re-align generated code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,38 +51,196 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Jun 2017 22:37:16 -0000
+X-List-Received-Date: Tue, 27 Jun 2017 10:16:29 -0000
 
-On Fri, Jun 23, 2017 at 9:45 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Last patch removed a nesting level in generated code. Re-align all code
+generated by backends to be 4-column aligned.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+---
+ scripts/tracetool/backend/dtrace.py |    4 ++--
+ scripts/tracetool/backend/ftrace.py |   20 ++++++++++----------
+ scripts/tracetool/backend/log.py    |   19 ++++++++++---------
+ scripts/tracetool/backend/simple.py |    4 ++--
+ scripts/tracetool/backend/syslog.py |    6 +++---
+ scripts/tracetool/backend/ust.py    |    4 ++--
+ 6 files changed, 29 insertions(+), 28 deletions(-)
 
-Thanks,
-Alistair
+diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/back=
+end/dtrace.py
+index c469cbd1a3..c6812b70a2 100644
+--- a/scripts/tracetool/backend/dtrace.py
++++ b/scripts/tracetool/backend/dtrace.py
+@@ -6,7 +6,7 @@ DTrace/SystemTAP backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -46,6 +46,6 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        QEMU_%(uppername)s(%(argnames)s);',
++    out('    QEMU_%(uppername)s(%(argnames)s);',
+         uppername=3Devent.name.upper(),
+         argnames=3D", ".join(event.args.names()))
+diff --git a/scripts/tracetool/backend/ftrace.py b/scripts/tracetool/back=
+end/ftrace.py
+index db9fe7ad57..dd0eda4441 100644
+--- a/scripts/tracetool/backend/ftrace.py
++++ b/scripts/tracetool/backend/ftrace.py
+@@ -29,17 +29,17 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        {',
+-        '            char ftrace_buf[MAX_TRACE_STRLEN];',
+-        '            int unused __attribute__ ((unused));',
+-        '            int trlen;',
+-        '            if (trace_event_get_state(%(event_id)s)) {',
+-        '                trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN=
+,',
+-        '                                 "%(name)s " %(fmt)s "\\n" %(ar=
+gnames)s);',
+-        '                trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
+-        '                unused =3D write(trace_marker_fd, ftrace_buf, t=
+rlen);',
+-        '            }',
++    out('    {',
++        '        char ftrace_buf[MAX_TRACE_STRLEN];',
++        '        int unused __attribute__ ((unused));',
++        '        int trlen;',
++        '        if (trace_event_get_state(%(event_id)s)) {',
++        '            trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN,',
++        '                             "%(name)s " %(fmt)s "\\n" %(argnam=
+es)s);',
++        '            trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
++        '            unused =3D write(trace_marker_fd, ftrace_buf, trlen=
+);',
+         '        }',
++        '    }',
+         name=3Devent.name,
+         args=3Devent.args,
+         event_id=3D"TRACE_" + event.name.upper(),
+diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend=
+/log.py
+index 4f4a4d38b1..54f0a69886 100644
+--- a/scripts/tracetool/backend/log.py
++++ b/scripts/tracetool/backend/log.py
+@@ -6,7 +6,7 @@ Stderr built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -35,14 +35,15 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            struct timeval _now;',
+-        '            gettimeofday(&_now, NULL);',
+-        '            qemu_log_mask(LOG_TRACE, "%%d@%%zd.%%06zd:%(name)s =
+" %(fmt)s "\\n",',
+-        '                          getpid(),',
+-        '                          (size_t)_now.tv_sec, (size_t)_now.tv_=
+usec',
+-        '                          %(argnames)s);',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        struct timeval _now;',
++        '        gettimeofday(&_now, NULL);',
++        '        qemu_log_mask(LOG_TRACE,',
++        '                      "%%d@%%zd.%%06zd:%(name)s " %(fmt)s "\\n"=
+,',
++        '                      getpid(),',
++        '                      (size_t)_now.tv_sec, (size_t)_now.tv_usec=
+',
++        '                      %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/back=
+end/simple.py
+index 4acc06e81c..f983670ee1 100644
+--- a/scripts/tracetool/backend/simple.py
++++ b/scripts/tracetool/backend/simple.py
+@@ -6,7 +6,7 @@ Simple built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2014, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -37,7 +37,7 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        _simple_%(api)s(%(args)s);',
++    out('    _simple_%(api)s(%(args)s);',
+         api=3Devent.api(),
+         args=3D", ".join(event.args.names()))
+=20
+diff --git a/scripts/tracetool/backend/syslog.py b/scripts/tracetool/back=
+end/syslog.py
+index b8ff2790c4..1ce627f0fc 100644
+--- a/scripts/tracetool/backend/syslog.py
++++ b/scripts/tracetool/backend/syslog.py
+@@ -35,9 +35,9 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);=
+',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend=
+/ust.py
+index 52ce892478..2adaf548d5 100644
+--- a/scripts/tracetool/backend/ust.py
++++ b/scripts/tracetool/backend/ust.py
+@@ -6,7 +6,7 @@ LTTng User Space Tracing backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -35,6 +35,6 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        tracepoint(qemu, %(name)s%(tp_args)s);',
++    out('    tracepoint(qemu, %(name)s%(tp_args)s);',
+         name=3Devent.name,
+         tp_args=3Dargnames)
 
-> ---
->  hw/core/loader.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 094f24627f..e137e772ae 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -150,7 +150,9 @@ int load_image_targphys_as(const char *filename,
->          return -1;
->      }
->      if (size > 0) {
-> -        rom_add_file_fixed_as(filename, addr, -1, as);
-> +        if (rom_add_file_fixed_as(filename, addr, -1, as) < 0) {
-> +            return -1;
-> +        }
->      }
->      return size;
->  }
-> --
-> 2.13.1
->
->
 
