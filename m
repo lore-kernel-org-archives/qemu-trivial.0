@@ -1,68 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dQayb-0001Kl-Ol
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Jun 2017 11:03:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57846)
+	id 1dQayc-0001Lo-Un
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Jun 2017 11:03:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57861)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dQayZ-0001JP-Qi
-	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:03:24 -0400
+	id 1dQaya-0001Jq-SU
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:03:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dQayZ-0006cr-1N
-	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:03:23 -0400
-Received: from mail-qk0-x232.google.com ([2607:f8b0:400d:c09::232]:33145)
+	id 1dQaya-0006dh-5W
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:03:24 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:36389)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dQayU-0006aH-AL; Thu, 29 Jun 2017 11:03:18 -0400
-Received: by mail-qk0-x232.google.com with SMTP id r62so78535751qkf.0;
-	Thu, 29 Jun 2017 08:03:18 -0700 (PDT)
+	id 1dQayY-0006cH-7r; Thu, 29 Jun 2017 11:03:22 -0400
+Received: by mail-qt0-x243.google.com with SMTP id v31so11610083qtb.3;
+	Thu, 29 Jun 2017 08:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=bqauE4q5iMYLpbs4nTHf4T+9fEhm9UIZnvge2PvvYi4=;
-	b=ieiB2QPaK9OqnJ+SEiTForynObhT2FLmPfMLFzSlT3DDCJOqxg59u3vZ4Sy9ssJ8jh
-	3jY2wX4XP9t+yRE05l7Bl2S/X3gCaN/cNkHvIK1FQXSVrK+nppEMbD1DdqAJSP7ubCcZ
-	olfpYDBsmLDJWPfOc4vHGoKQ/qwWVMR/BLNItUHwj9glYtaCJCVr3xUqokhLWLXvlRxJ
-	U73eA1U19fjFnzvrhx0XKo9HneEaK3zn792NTt3pMaefTDMiUpkWl+tDOiRlrVlt3AG+
-	cAmjzV/b00tssn8KyM+rMF1IGU8o4SQsXM0QnCJV8oHJIDDSyrvhehXlEmgUVML1/5JE
-	rOYQ==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=qqoJY4ITkVvJvvIP/o5foAjUr4yXXVcCIApmmbvpWvA=;
+	b=ipH0dvzqUbMWOpdS5Cxmfy22YFDMqJgoP4/HoQnrX5PJm0Vclahbi6NJh9xNSUcvi2
+	SCqV9PcPHuomE/n/djEUR2lIaHS1qY06WbkdHb7A0sRwHFmvKfhqcpayXffTC3ioFi5K
+	eddxUab5h0IBTcpS0JC65S7dRGP+PwCwf2aXDT5nckzNCP/PLjAIM1DJdRvjZR0vchRh
+	XifkIo4/RdP7u/YlHLBLYuEG+cwcl6JNwT6kJNSfyFwotQ3Jfsh3ig8zVvJX6eMFx5fi
+	t0HP/G3J3ViVcqV0/hf4TE+OAhS8RrlfHwa76XJA0rNfOhn/UMBCLyyVaJ4Jvj3kuC2Q
+	/LNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=bqauE4q5iMYLpbs4nTHf4T+9fEhm9UIZnvge2PvvYi4=;
-	b=aacIQh4oTxIG4ZuXxPD+fUMtEcQpTMgr7RYXmNrKsUJbnWCRLS+xbK8H3DGP0qMjTI
-	zsJtjITgmmPGE6OKnWHOTD72U8uBXAP4fXNnVobEx3vqSqn7GFCkkk2Uy5vNyikhgZXj
-	OVXRQBD3dq8/ncM/hcOLkJRSUWVtbElGJPksmG2g6NFyzH4v8hunZS4UMMCCyeVDbqQz
-	6ZCxc5tiB2U8Bm6RrI6+d/7rIdQLL7od5ZjocvtAMrI0HpT8O1zaZArETlw43IXmFLBg
-	hJ58u39zNin+K260tW8pVJKwM4eMoY3xdyJvOl5rEtjaGEBBq1TLvpmBQBo1TXznUixe
-	9n6Q==
-X-Gm-Message-State: AKS2vOyG1zHEfUzJhR6pFnAqAY3bvCgYzvOqd5GJUrYfnCTjR7eII4fJ
-	T1CkhO7hl3Zh4r9xpUP32Q==
-X-Received: by 10.55.21.86 with SMTP id f83mr19004491qkh.199.1498748597321;
-	Thu, 29 Jun 2017 08:03:17 -0700 (PDT)
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=qqoJY4ITkVvJvvIP/o5foAjUr4yXXVcCIApmmbvpWvA=;
+	b=hrA/9sa8uFw6bdMc6U6lUKn489OVKUgYimjYXBEF2JdyZlT6GwyThwQs/zotrbcvbT
+	0JUovyW4v63VIm2TthJbpAYFnIcgDVBcjJcSrJrPuBYoRvfDpA/YSsnyFOeNVtwe8Hw6
+	yurXmG3DVGnhAv0Of7EPEittffUcRi+2oaR+6CqoAwQJzJWaG/EID2ZF4SF/1u0YqW/A
+	s3i1kK6rROHlH/TSW7oc+Jz4gQUl+CPydwzH4i0agHgSol6BqGExREae02j0TYPg4woN
+	j5+6jMJsW6XUndR6CzLHLJ86NQ1mxxhbqY9WmbwgGNF4AyESHE9v8gXQZXXeN05EXg5n
+	uX0g==
+X-Gm-Message-State: AKS2vOw9RTkNI0//bZSk3qifyc8KeeHypFfzt9o/qDvMjzcpIqsiMn6E
+	ACUdZzMgQC6atN2U4Ap6YA==
+X-Received: by 10.200.52.242 with SMTP id x47mr21016729qtb.70.1498748601151;
+	Thu, 29 Jun 2017 08:03:21 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id z1sm3873349qkb.37.2017.06.29.08.03.14
+	by smtp.gmail.com with ESMTPSA id z1sm3873349qkb.37.2017.06.29.08.03.17
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 29 Jun 2017 08:03:16 -0700 (PDT)
+	Thu, 29 Jun 2017 08:03:20 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Emilio G . Cota" <cota@braap.org>, Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Yang Zhong <yang.zhong@intel.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org
-Date: Thu, 29 Jun 2017 12:03:03 -0300
-Message-Id: <20170629150308.22766-1-f4bug@amsat.org>
+Date: Thu, 29 Jun 2017 12:03:04 -0300
+Message-Id: <20170629150308.22766-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.1
+In-Reply-To: <20170629150308.22766-1-f4bug@amsat.org>
+References: <20170629150308.22766-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::232
-Subject: [Qemu-trivial] [PATCH v2 0/5] MAINTAINERS: update
- TCG/KVM/Xen/TCI/Unimplemented device
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v2 1/5] MAINTAINERS: update TCG entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,38 +79,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Jun 2017 15:03:24 -0000
+X-List-Received-Date: Thu, 29 Jun 2017 15:03:25 -0000
 
-As requested by Thomas Huth, I separated these patches from my previous series
-"removal of tci (tcg interpreter)".
+moved in a9ded601..244f1441 to accel/
 
-TCG/KVM/Xen/TCI related files were moved in commits a9ded601..244f1441, update
-MAINTAINERS to match the new paths.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ MAINTAINERS | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-Also add an entry for the "Unimplemented" device and voluntary myself as
-reviewer.
-
-Regards,
-
-Phil.
-
-v2:
-- fix inaccurate Xen commit message (review feedback from Anthony PERARD)
-- add "Unimplemented" device
-
-v1:
-- update TCG/KVM/Xen/TCI entries
-
-Philippe Mathieu-Daudé (5):
-  MAINTAINERS: update TCG entries
-  MAINTAINERS: update KVM entries
-  MAINTAINERS: update Xen entries
-  MAINTAINERS: update TCI entry
-  MAINTAINERS: add entry for "Unimplemented" device
-
- MAINTAINERS | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 839f7ca063..06006fc7df 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -84,14 +84,10 @@ M: Paolo Bonzini <pbonzini@redhat.com>
+ M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+ M: Richard Henderson <rth@twiddle.net>
+ S: Maintained
+-F: cpu-exec.c
+-F: cpu-exec-common.c
+ F: cpus.c
+-F: cputlb.c
+ F: exec.c
+ F: softmmu_template.h
+-F: translate-all.*
+-F: translate-common.c
++F: accel/tcg/
+ F: include/exec/cpu*.h
+ F: include/exec/exec-all.h
+ F: include/exec/helper*.h
 -- 
 2.13.1
 
