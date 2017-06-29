@@ -1,66 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dQ9Kt-00070L-RN
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Jun 2017 05:32:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48599)
+	id 1dQYhq-0003oP-B9
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Jun 2017 08:37:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1dQ9Kr-0006yl-8e
-	for qemu-trivial@nongnu.org; Wed, 28 Jun 2017 05:32:34 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1dQYho-0003oJ-Cv
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 08:37:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1dQ9Kq-0006Za-71
-	for qemu-trivial@nongnu.org; Wed, 28 Jun 2017 05:32:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50836)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1dQ9Kk-0006Y2-NQ; Wed, 28 Jun 2017 05:32:26 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 67CB13D956;
-	Wed, 28 Jun 2017 09:32:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 67CB13D956
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=quintela@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 67CB13D956
-Received: from localhost (ovpn-116-157.ams2.redhat.com [10.36.116.157])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7D7EF7ABF4;
-	Wed, 28 Jun 2017 09:32:24 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>
-In-Reply-To: <87o9tf5gb8.fsf@dusky.pond.sub.org> (Markus Armbruster's message
-	of "Fri, 23 Jun 2017 09:11:39 +0200")
-References: <149814756006.27338.8723356702388175951.stgit@bahia>
-	<CAFEAcA8yqb8ykP8nCnoVNQUZd851RhOLFf2TfkHZmL2je+pP=Q@mail.gmail.com>
-	<20170622184255.2d44e3bd@bahia.lab.toulouse-stg.fr.ibm.com>
-	<87injo6jla.fsf@secure.mitica>
-	<CAFEAcA-g-=AkH3t8jOTFY_9zA6ECS57-3MS=cHPb+Q6sePzNsw@mail.gmail.com>
-	<20170622172555.GE2100@work-vm>
-	<20170622194649.6d251753@bahia.lab.toulouse-stg.fr.ibm.com>
-	<20170622175012.GF2100@work-vm>
-	<fb2c7124-2d3f-6684-e2f2-265bfb3eb6da@redhat.com>
-	<CAFEAcA-A=UrkKjLmVOcFA_d4rMW1AJwGffE4r2Uy6fw++XFF6w@mail.gmail.com>
-	<87o9tf5gb8.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Wed, 28 Jun 2017 11:32:20 +0200
-Message-ID: <8760fg790b.fsf@secure.mitica>
+	(envelope-from <vilanova@ac.upc.edu>) id 1dQYhl-00059R-Ne
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 08:37:56 -0400
+Received: from roura.ac.upc.edu ([147.83.33.10]:38591 helo=roura.ac.upc.es)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1dQYhl-00058m-Aw; Thu, 29 Jun 2017 08:37:53 -0400
+Received: from correu-1.ac.upc.es (correu-1.ac.upc.es [147.83.30.91])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id v5TCbnwe028261;
+	Thu, 29 Jun 2017 14:37:49 +0200
+Received: from localhost (unknown [132.68.50.243])
+	by correu-1.ac.upc.es (Postfix) with ESMTPSA id D49DA746;
+	Thu, 29 Jun 2017 14:37:43 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: "Emilio G. Cota" <cota@braap.org>, Eric Blake <eblake@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-trivial@nongnu.org (open list:Trivial patches)
+Date: Thu, 29 Jun 2017 15:37:42 +0300
+Message-Id: <149873986259.9180.3548474912992757287.stgit@frigg.lan>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <149873841036.9180.16600465902334229930.stgit@frigg.lan>
+References: <149873841036.9180.16600465902334229930.stgit@frigg.lan>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 28 Jun 2017 09:32:25 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] Separate function types from opaque
- types in include/qemu/typedefs.h
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	v5TCbnwe028261
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
+X-Received-From: 147.83.33.10
+Subject: [Qemu-trivial] [PATCH v10 6/7] trace: [tcg,
+ trivial] Re-align generated code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,46 +51,196 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Jun 2017 09:32:34 -0000
+X-List-Received-Date: Thu, 29 Jun 2017 12:37:57 -0000
 
-Markus Armbruster <armbru@redhat.com> wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> On 22 June 2017 at 19:08, Thomas Huth <thuth@redhat.com> wrote:
->>> On 22.06.2017 19:50, Dr. David Alan Gilbert wrote:
->>>> Could do; I'm just not finding tiny header files with one or
->>>> two entries each that useful.
->>
->> Well, it means that the bulk of code that doesn't care about the
->> types doesn't get its compilation fractionally slowed by having
->> to parse the typedef anyway. In general I think we're drifting
->> towards "have each .c file get fewer things automatically" rather
->> than otherwise (eg more finely focused files rather than stuffing
->> everything into qemu-common.h).
->
-> Yes.  See also "Our use of #include is undisciplined, and what to do
-> about it"
-> Message-ID: <87wpp4m6n1.fsf@blackfin.pond.sub.org>
-> https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg03271.html
->
-> I have some unfinished work towards emptying out qemu-common.h.  Need
-> to find the time to finish it.
->
-> [...]
+Last patch removed a nesting level in generated code. Re-align all code
+generated by backends to be 4-column aligned.
 
-YES!!!!!
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+---
+ scripts/tracetool/backend/dtrace.py |    4 ++--
+ scripts/tracetool/backend/ftrace.py |   20 ++++++++++----------
+ scripts/tracetool/backend/log.py    |   19 ++++++++++---------
+ scripts/tracetool/backend/simple.py |    4 ++--
+ scripts/tracetool/backend/syslog.py |    6 +++---
+ scripts/tracetool/backend/ust.py    |    4 ++--
+ 6 files changed, 29 insertions(+), 28 deletions(-)
 
-Once there, we can also do other cleanups.
+diff --git a/scripts/tracetool/backend/dtrace.py b/scripts/tracetool/back=
+end/dtrace.py
+index c469cbd1a3..c6812b70a2 100644
+--- a/scripts/tracetool/backend/dtrace.py
++++ b/scripts/tracetool/backend/dtrace.py
+@@ -6,7 +6,7 @@ DTrace/SystemTAP backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -46,6 +46,6 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        QEMU_%(uppername)s(%(argnames)s);',
++    out('    QEMU_%(uppername)s(%(argnames)s);',
+         uppername=3Devent.name.upper(),
+         argnames=3D", ".join(event.args.names()))
+diff --git a/scripts/tracetool/backend/ftrace.py b/scripts/tracetool/back=
+end/ftrace.py
+index db9fe7ad57..dd0eda4441 100644
+--- a/scripts/tracetool/backend/ftrace.py
++++ b/scripts/tracetool/backend/ftrace.py
+@@ -29,17 +29,17 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        {',
+-        '            char ftrace_buf[MAX_TRACE_STRLEN];',
+-        '            int unused __attribute__ ((unused));',
+-        '            int trlen;',
+-        '            if (trace_event_get_state(%(event_id)s)) {',
+-        '                trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN=
+,',
+-        '                                 "%(name)s " %(fmt)s "\\n" %(ar=
+gnames)s);',
+-        '                trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
+-        '                unused =3D write(trace_marker_fd, ftrace_buf, t=
+rlen);',
+-        '            }',
++    out('    {',
++        '        char ftrace_buf[MAX_TRACE_STRLEN];',
++        '        int unused __attribute__ ((unused));',
++        '        int trlen;',
++        '        if (trace_event_get_state(%(event_id)s)) {',
++        '            trlen =3D snprintf(ftrace_buf, MAX_TRACE_STRLEN,',
++        '                             "%(name)s " %(fmt)s "\\n" %(argnam=
+es)s);',
++        '            trlen =3D MIN(trlen, MAX_TRACE_STRLEN - 1);',
++        '            unused =3D write(trace_marker_fd, ftrace_buf, trlen=
+);',
+         '        }',
++        '    }',
+         name=3Devent.name,
+         args=3Devent.args,
+         event_id=3D"TRACE_" + event.name.upper(),
+diff --git a/scripts/tracetool/backend/log.py b/scripts/tracetool/backend=
+/log.py
+index 4f4a4d38b1..54f0a69886 100644
+--- a/scripts/tracetool/backend/log.py
++++ b/scripts/tracetool/backend/log.py
+@@ -6,7 +6,7 @@ Stderr built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -35,14 +35,15 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            struct timeval _now;',
+-        '            gettimeofday(&_now, NULL);',
+-        '            qemu_log_mask(LOG_TRACE, "%%d@%%zd.%%06zd:%(name)s =
+" %(fmt)s "\\n",',
+-        '                          getpid(),',
+-        '                          (size_t)_now.tv_sec, (size_t)_now.tv_=
+usec',
+-        '                          %(argnames)s);',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        struct timeval _now;',
++        '        gettimeofday(&_now, NULL);',
++        '        qemu_log_mask(LOG_TRACE,',
++        '                      "%%d@%%zd.%%06zd:%(name)s " %(fmt)s "\\n"=
+,',
++        '                      getpid(),',
++        '                      (size_t)_now.tv_sec, (size_t)_now.tv_usec=
+',
++        '                      %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/simple.py b/scripts/tracetool/back=
+end/simple.py
+index 4acc06e81c..f983670ee1 100644
+--- a/scripts/tracetool/backend/simple.py
++++ b/scripts/tracetool/backend/simple.py
+@@ -6,7 +6,7 @@ Simple built-in backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2014, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -37,7 +37,7 @@ def generate_h_begin(events, group):
+=20
+=20
+ def generate_h(event, group):
+-    out('        _simple_%(api)s(%(args)s);',
++    out('    _simple_%(api)s(%(args)s);',
+         api=3Devent.api(),
+         args=3D", ".join(event.args.names()))
+=20
+diff --git a/scripts/tracetool/backend/syslog.py b/scripts/tracetool/back=
+end/syslog.py
+index b8ff2790c4..1ce627f0fc 100644
+--- a/scripts/tracetool/backend/syslog.py
++++ b/scripts/tracetool/backend/syslog.py
+@@ -35,9 +35,9 @@ def generate_h(event, group):
+     else:
+         cond =3D "trace_event_get_state(%s)" % ("TRACE_" + event.name.up=
+per())
+=20
+-    out('        if (%(cond)s) {',
+-        '            syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);=
+',
+-        '        }',
++    out('    if (%(cond)s) {',
++        '        syslog(LOG_INFO, "%(name)s " %(fmt)s %(argnames)s);',
++        '    }',
+         cond=3Dcond,
+         name=3Devent.name,
+         fmt=3Devent.fmt.rstrip("\n"),
+diff --git a/scripts/tracetool/backend/ust.py b/scripts/tracetool/backend=
+/ust.py
+index 52ce892478..2adaf548d5 100644
+--- a/scripts/tracetool/backend/ust.py
++++ b/scripts/tracetool/backend/ust.py
+@@ -6,7 +6,7 @@ LTTng User Space Tracing backend.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2017, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -35,6 +35,6 @@ def generate_h(event, group):
+     if len(event.args) > 0:
+         argnames =3D ", " + argnames
+=20
+-    out('        tracepoint(qemu, %(name)s%(tp_args)s);',
++    out('    tracepoint(qemu, %(name)s%(tp_args)s);',
+         name=3Devent.name,
+         tp_args=3Dargnames)
 
-inclufde/sysemu/sysemu.h
-
-have things not related at all.
-I want to get rid of it on migration, because you know, we do zero
-emulation there, but there are things like "runstate" that are defined
-there.
-
-I removed on that version lots of migration functionality that were
-there, just from historical reasons, not because they belong there.
-
-Later, Juan.
 
