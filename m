@@ -1,50 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dQbJ6-0001xJ-BB
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Jun 2017 11:24:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38788)
+	id 1dQbiu-0003My-63
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Jun 2017 11:51:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1dQbJ1-0001te-FQ
-	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:24:35 -0400
+	(envelope-from <thuth@redhat.com>) id 1dQbis-0003KA-4p
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:51:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1dQbJ0-0000Jn-Mx
-	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:24:31 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:37592)
+	(envelope-from <thuth@redhat.com>) id 1dQbir-00041v-G3
+	for qemu-trivial@nongnu.org; Thu, 29 Jun 2017 11:51:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43936)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
-	id 1dQbIw-0000IV-UW; Thu, 29 Jun 2017 11:24:27 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id B4282104478;
-	Thu, 29 Jun 2017 17:24:24 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id WRFqzChOIrNg; Thu, 29 Jun 2017 17:24:24 +0200 (CEST)
-Received: from [134.155.36.73] (edv13.bib.uni-mannheim.de [134.155.36.73])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPSA id 9687A1040BA;
-	Thu, 29 Jun 2017 17:24:24 +0200 (CEST)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dQbil-0003xv-6w; Thu, 29 Jun 2017 11:51:07 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C9E41FB84;
+	Thu, 29 Jun 2017 15:51:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C9E41FB84
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=thuth@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C9E41FB84
+Received: from [10.36.116.90] (ovpn-116-90.ams2.redhat.com [10.36.116.90])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8343A8941D;
+	Thu, 29 Jun 2017 15:51:03 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <rth@twiddle.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
 	<alex.bennee@linaro.org>, "Emilio G . Cota" <cota@braap.org>,
-	Yang Zhong <yang.zhong@intel.com>
+	Stefan Weil <sw@weilnetz.de>, Peter Crosthwaite
+	<crosthwaite.peter@gmail.com>, Yang Zhong <yang.zhong@intel.com>
 Cc: qemu-trivial@nongnu.org
 References: <20170629150308.22766-1-f4bug@amsat.org>
-	<20170629150308.22766-5-f4bug@amsat.org>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <8e5fee51-a858-61d5-a10d-8f7e803d6a97@weilnetz.de>
-Date: Thu, 29 Jun 2017 17:24:21 +0200
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	<20170629150308.22766-2-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <47c69e2f-bbc2-0825-a7d3-e4292b20a22c@redhat.com>
+Date: Thu, 29 Jun 2017 17:51:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
 MIME-Version: 1.0
-In-Reply-To: <20170629150308.22766-5-f4bug@amsat.org>
+In-Reply-To: <20170629150308.22766-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-GB
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 29 Jun 2017 15:51:06 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 134.155.96.80
-Subject: Re: [Qemu-trivial] [PATCH v2 4/5] MAINTAINERS: update TCI entry
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/5] MAINTAINERS: update
+ TCG entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,34 +66,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Jun 2017 15:24:35 -0000
+X-List-Received-Date: Thu, 29 Jun 2017 15:51:15 -0000
 
-Am 29.06.2017 um 17:03 schrieb Philippe Mathieu-Daud=C3=A9:
-> moved in 244f1441 to tcg/
->
+On 29.06.2017 17:03, Philippe Mathieu-Daud=C3=A9 wrote:
+> moved in a9ded601..244f1441 to accel/
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
+>  MAINTAINERS | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+>=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 530293044b..9bad523060 100644
+> index 839f7ca063..06006fc7df 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1654,7 +1654,7 @@ TCI target
->  M: Stefan Weil <sw@weilnetz.de>
+> @@ -84,14 +84,10 @@ M: Paolo Bonzini <pbonzini@redhat.com>
+>  M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>  M: Richard Henderson <rth@twiddle.net>
 >  S: Maintained
->  F: tcg/tci/
-> -F: tci.c
-> +F: tcg/tci.c
->  F: disas/tci.c
-> =20
->  Block drivers
+> -F: cpu-exec.c
+> -F: cpu-exec-common.c
+>  F: cpus.c
+> -F: cputlb.c
+>  F: exec.c
+>  F: softmmu_template.h
+> -F: translate-all.*
+> -F: translate-common.c
+> +F: accel/tcg/
+>  F: include/exec/cpu*.h
+>  F: include/exec/exec-all.h
+>  F: include/exec/helper*.h
 
-
-Thank you for this fix.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
