@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dQtBl-0002GM-Ry
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Jun 2017 06:30:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58547)
+	id 1dQvob-00030N-0W
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Jun 2017 09:18:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dQtBk-0002F9-7L
-	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 06:30:12 -0400
+	(envelope-from <groug@kaod.org>) id 1dQvoY-0002u8-P9
+	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 09:18:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dQtBj-00081J-Fh
-	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 06:30:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43180)
+	(envelope-from <groug@kaod.org>) id 1dQvoU-0000Oc-Eh
+	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 09:18:26 -0400
+Received: from 16.mo5.mail-out.ovh.net ([87.98.174.144]:49411)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dQtBd-0007tf-5m; Fri, 30 Jun 2017 06:30:05 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2F397EB9C8;
-	Fri, 30 Jun 2017 10:30:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2F397EB9C8
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=thuth@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2F397EB9C8
-Received: from [10.36.116.66] (ovpn-116-66.ams2.redhat.com [10.36.116.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B32E60BE8;
-	Fri, 30 Jun 2017 10:30:01 +0000 (UTC)
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dQvoU-0000NJ-8C
+	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 09:18:22 -0400
+Received: from player799.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id C2C2C10ECAA
+	for <qemu-trivial@nongnu.org>; Fri, 30 Jun 2017 15:18:15 +0200 (CEST)
+Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
+	(Authenticated sender: groug@kaod.org)
+	by player799.ha.ovh.net (Postfix) with ESMTPA id CD735520095;
+	Fri, 30 Jun 2017 15:18:10 +0200 (CEST)
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
 	David Gibson <david@gibson.dropbear.id.au>
-References: <149881713243.18888.18140083803237379387.stgit@bahia>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <74e3d68d-d7b0-a3f2-c798-056d6b405740@redhat.com>
-Date: Fri, 30 Jun 2017 12:30:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
+Date: Fri, 30 Jun 2017 15:18:10 +0200
+Message-ID: <149882869053.24031.15086612121177689276.stgit@bahia.lan>
+User-Agent: StGit/0.17.1-20-gc0b1b-dirty
 MIME-Version: 1.0
-In-Reply-To: <149881713243.18888.18140083803237379387.stgit@bahia>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 30 Jun 2017 10:30:04 +0000 (UTC)
+X-Ovh-Tracer-Id: 5734771179218639339
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrtdeigdehiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] spapr: refresh
- "platform-specific" hcalls comment
+X-Received-From: 87.98.174.144
+Subject: [Qemu-trivial] [PATCH] spapr: make spapr_populate_hotplug_cpu_dt()
+ static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,34 +49,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Jun 2017 10:30:13 -0000
+X-List-Received-Date: Fri, 30 Jun 2017 13:18:27 -0000
 
-On 30.06.2017 12:05, Greg Kurz wrote:
-> We have more of these since the addition of KVMPPC_H_LOGICAL_MEMOP in 2012.
+Since commit ff9006ddbfd1 ("spapr: move spapr_core_[foo]plug() callbacks
+close to machine code in spapr.c"), this function doesn't need to be extern
+anymore.
 
-Right, and we don't need one for virtio :-)
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ hw/ppc/spapr.c         |    4 ++--
+ include/hw/ppc/spapr.h |    2 --
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  include/hw/ppc/spapr.h |    5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
-> index a66bbac35242..1826cc4fd696 100644
-> --- a/include/hw/ppc/spapr.h
-> +++ b/include/hw/ppc/spapr.h
-> @@ -377,9 +377,8 @@ struct sPAPRMachineState {
->   * as well.
->   *
->   * We also need some hcalls which are specific to qemu / KVM-on-POWER.
-> - * So far we just need one for H_RTAS, but in future we'll need more
-> - * for extensions like virtio.  We put those into the 0xf000-0xfffc
-> - * range which is reserved by PAPR for "platform-specific" hcalls.
-> + * We put those into the 0xf000-0xfffc range which is reserved by PAPR
-> + * for "platform-specific" hcalls.
->   */
->  #define KVMPPC_HCALL_BASE       0xf000
->  #define KVMPPC_H_RTAS           (KVMPPC_HCALL_BASE + 0x0)
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 0ee9fac50bd4..65d8ad2f4966 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -2863,8 +2863,8 @@ out:
+     error_propagate(errp, local_err);
+ }
+ 
+-void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
+-                                    sPAPRMachineState *spapr)
++static void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
++                                           sPAPRMachineState *spapr)
+ {
+     PowerPCCPU *cpu = POWERPC_CPU(cs);
+     DeviceClass *dc = DEVICE_GET_CLASS(cs);
+diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
+index a66bbac35242..12bf9697990e 100644
+--- a/include/hw/ppc/spapr.h
++++ b/include/hw/ppc/spapr.h
+@@ -640,8 +640,6 @@ void spapr_hotplug_req_add_by_count_indexed(sPAPRDRConnectorType drc_type,
+ void spapr_hotplug_req_remove_by_count_indexed(sPAPRDRConnectorType drc_type,
+                                                uint32_t count, uint32_t index);
+ void spapr_cpu_parse_features(sPAPRMachineState *spapr);
+-void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
+-                                    sPAPRMachineState *spapr);
+ 
+ /* CPU and LMB DRC release callbacks. */
+ void spapr_core_release(DeviceState *dev);
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 
