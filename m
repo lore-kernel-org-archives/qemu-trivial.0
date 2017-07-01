@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dRDbp-0004KY-LU
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57814)
+	id 1dRDbr-0004So-5N
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbl-0004D9-2P
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:28 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbp-0004I1-8Y
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbj-0002AT-Sx
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:25 -0400
-Received: from ozlabs.org ([103.22.144.67]:37209)
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbo-0002Gw-BT
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:29 -0400
+Received: from ozlabs.org ([103.22.144.67]:49397)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1dRDbj-00028P-Gl
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:23 -0400
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1dRDbg-000237-Fx; Sat, 01 Jul 2017 04:18:21 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3x05r35hMtz9sRT; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
+	id 3x05r36N3Lz9sNn; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1498897091;
-	bh=6/dyuitK+mSa++wLysUL9HJ4aJyvRKdFfLF6tIa90JQ=;
+	bh=5d8pR/b3AAVjczfZlCSvZqoKcQxJU9HuEXXnj9jxbLs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mq3pxrNhg/4l3mfz5WMzSVhCbOP/7n8/Rf1aYoB68uNRayTBXM3tA5l59e7tSi8oq
-	gYcO6df22BfV1yQkgGysOjT2iKQTcgVBJHMAlcy8OGEc3fdKqv1z6vwYaXGDfXy4S/
-	gbSThn6kzuP48oETbb7HuHwOfoYi7lrLad27aOdo=
-Date: Sat, 1 Jul 2017 17:50:24 +1000
+	b=guxydG9DjirCBn4b1VguV445ZJa6t+o270Fb2BlNo3+g7MlDMRONePne6ytJ9TYaD
+	oWGolyor9mRoG39rgODJ5RgXYCsRYalmBFS+Xpq08uiF0QYHJFprFBU1UXzDETTSkC
+	kgBRj0Z/Q6fv6YiC801C/r9/UaHjWqWzXOlyYbsI=
+Date: Sat, 1 Jul 2017 17:51:13 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Greg Kurz <groug@kaod.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Message-ID: <20170701075024.GI13989@umbus.fritz.box>
-References: <149882869053.24031.15086612121177689276.stgit@bahia.lan>
+Message-ID: <20170701075113.GJ13989@umbus.fritz.box>
+References: <149881713243.18888.18140083803237379387.stgit@bahia>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="2nTeH+t2PBomgucg"
+	protocol="application/pgp-signature"; boundary="x+WOirvrtTKur1pg"
 Content-Disposition: inline
-In-Reply-To: <149882869053.24031.15086612121177689276.stgit@bahia.lan>
+In-Reply-To: <149881713243.18888.18140083803237379387.stgit@bahia>
 User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] spapr: make
- spapr_populate_hotplug_cpu_dt() static
+Subject: Re: [Qemu-trivial] [PATCH] spapr: refresh "platform-specific"
+ hcalls comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,60 +49,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Jul 2017 08:18:28 -0000
+X-List-Received-Date: Sat, 01 Jul 2017 08:18:30 -0000
 
 
---2nTeH+t2PBomgucg
+--x+WOirvrtTKur1pg
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 30, 2017 at 03:18:10PM +0200, Greg Kurz wrote:
-> Since commit ff9006ddbfd1 ("spapr: move spapr_core_[foo]plug() callbacks
-> close to machine code in spapr.c"), this function doesn't need to be exte=
-rn
-> anymore.
+On Fri, Jun 30, 2017 at 12:05:32PM +0200, Greg Kurz wrote:
+> We have more of these since the addition of KVMPPC_H_LOGICAL_MEMOP in 201=
+2.
 >=20
 > Signed-off-by: Greg Kurz <groug@kaod.org>
 
 Applied to ppc-for-2.10.
 
 > ---
->  hw/ppc/spapr.c         |    4 ++--
->  include/hw/ppc/spapr.h |    2 --
->  2 files changed, 2 insertions(+), 4 deletions(-)
+>  include/hw/ppc/spapr.h |    5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 0ee9fac50bd4..65d8ad2f4966 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -2863,8 +2863,8 @@ out:
->      error_propagate(errp, local_err);
->  }
-> =20
-> -void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
-> -                                    sPAPRMachineState *spapr)
-> +static void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
-> +                                           sPAPRMachineState *spapr)
->  {
->      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
->      DeviceClass *dc =3D DEVICE_GET_CLASS(cs);
 > diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
-> index a66bbac35242..12bf9697990e 100644
+> index a66bbac35242..1826cc4fd696 100644
 > --- a/include/hw/ppc/spapr.h
 > +++ b/include/hw/ppc/spapr.h
-> @@ -640,8 +640,6 @@ void spapr_hotplug_req_add_by_count_indexed(sPAPRDRCo=
-nnectorType drc_type,
->  void spapr_hotplug_req_remove_by_count_indexed(sPAPRDRConnectorType drc_=
-type,
->                                                 uint32_t count, uint32_t =
-index);
->  void spapr_cpu_parse_features(sPAPRMachineState *spapr);
-> -void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
-> -                                    sPAPRMachineState *spapr);
-> =20
->  /* CPU and LMB DRC release callbacks. */
->  void spapr_core_release(DeviceState *dev);
+> @@ -377,9 +377,8 @@ struct sPAPRMachineState {
+>   * as well.
+>   *
+>   * We also need some hcalls which are specific to qemu / KVM-on-POWER.
+> - * So far we just need one for H_RTAS, but in future we'll need more
+> - * for extensions like virtio.  We put those into the 0xf000-0xfffc
+> - * range which is reserved by PAPR for "platform-specific" hcalls.
+> + * We put those into the 0xf000-0xfffc range which is reserved by PAPR
+> + * for "platform-specific" hcalls.
+>   */
+>  #define KVMPPC_HCALL_BASE       0xf000
+>  #define KVMPPC_H_RTAS           (KVMPPC_HCALL_BASE + 0x0)
 >=20
 
 --=20
@@ -111,26 +93,26 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---2nTeH+t2PBomgucg
+--x+WOirvrtTKur1pg
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZV1Q8AAoJEGw4ysog2bOS4P0QAObR28rEfoIlcJeW5W5U4vlo
-GESFD1iSkyQd3KW1N5pSql25DXTbpah8LSvClOMJIWf5I13nUqyo/Vt6bQepA9p9
-fw1vuO5MhiGwvR/bqDccXOuI4WdFct6NS4RAc/dhZG0c0ErJ3mhCjG+Yy+FSjm/T
-MvBf0VjeRSkqmsftBrpHHE7iPl68cKpRlCeDzhPrOmy9OSpMiF9nyutSuy2rv2S1
-LIxoYQylkeX7UGQR0xxUCSxomVYpSBhk56TGhycDZJIq0kNr+P8TLq+zyOfdUoGB
-eymbtPwL3EPUhRhYbwhSQLRdD/yvvYJi7ekf54tIggXt9igl3QoQBvTBvjdDdCpp
-BuAxmbPutXTlVRXPMmfU5yztYCx7Gcl0Z6eIu9cwIEcpvexKuHUbaa5DmDQttAM3
-pc4nj/Ks23lJLfW+xLbUScwu6Y9tqZQ+XwzDB1caWkj1IIrBbbbs1JyDjbE5LmKp
-DxkXASQKthZtBbAbwC0582dRi7AmLmK3QJinXOQI03HdCy15sQRDS8IarJ+LF7oA
-/t53Ob5YGIs++Ma4pWbkEFQTVS3xXOm5myK55pIunlEEwBWl1pT5ob5Y9kt4aJkg
-Mzv2JcOcQR57czmx1hlPVlhPxvlefvCwjxxNgZSQdDDTmBCsg1hFlAWOVBuYdQ9A
-CHgXceVCiKln6qJHAQYg
-=Aa4p
+iQIcBAEBCAAGBQJZV1RxAAoJEGw4ysog2bOSn6cQANScSdoTxBePzT1CwZYweePZ
+6NRZxjHNh1XQr0uZtq4aBUO+pvqSS3neapd01ZEG9egGJV4NWmcjwCcKp2jfZkn6
+cUuHkUBQBRkNxBu2dH0/urzviIeXPBCaeekeqpz93/K2/Wzjc342ebOTGYaTxQ3B
+Hd3BJf9JxvfYAAad67eNTJChuoxeBAwqnp5NjYgkdQk5o67NFTuGKnLLaz7uQJua
+wZWdnZ36w3U4OtHJi3GxwCIbmQqvuntE8jndNiw/BLS1KyjDj4b9E5C+MJrJjUVo
+yeQpEZwcP78xEwzXeKPKKHYEsLho8mREYBC+doROo1dfs4dwBNN4iHnI5DesIXTk
+Nxq9CfHCiiFaltFcTGbP5ea9ouhUc5XWYcop/GQtd55G3KqRqXHZyiSz8uQZX8FJ
+YX0IDjgYcJPZNtpBCjdlK+pGRRR0OW/6fECCImniuXYfFF6NwpKU4eqWGjv+vGMS
+VpR6HPe53HZ6uICQ/y0hcmhU76zXAr/jFL5+w+DNDGvV/odhwVvglEolktX/I7l+
+uyy93hN5bjJPUl3ateR5KOBINRL3X0JzlRwlNP4DQP1gyWTAxPqqExx12H1ccFml
+nkCJKfTVT6tLPVlh6qxP7G9MQRcTwJMujoHeH2MsYCliJhiGESpgPUDTEEXW4Yv6
+D9Zm0Q9avQIMBlsxfo4s
+=untr
 -----END PGP SIGNATURE-----
 
---2nTeH+t2PBomgucg--
+--x+WOirvrtTKur1pg--
 
