@@ -1,43 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dRDbr-0004So-5N
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57859)
+	id 1dRDbp-0004MG-Up
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbp-0004I1-8Y
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:30 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbl-0004Cy-11
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbo-0002Gw-BT
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:29 -0400
-Received: from ozlabs.org ([103.22.144.67]:49397)
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbj-0002AZ-Sm
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:25 -0400
+Received: from ozlabs.org ([103.22.144.67]:56383)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1dRDbg-000237-Fx; Sat, 01 Jul 2017 04:18:21 -0400
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1dRDbj-00028O-Hj
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:23 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3x05r36N3Lz9sNn; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
+	id 3x05r370Yvz9sRV; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1498897091;
-	bh=5d8pR/b3AAVjczfZlCSvZqoKcQxJU9HuEXXnj9jxbLs=;
+	bh=XjtrJOHTy6Y2r7Xh/MPyRYUUDAv+NgYYIIZXC3LBNm4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=guxydG9DjirCBn4b1VguV445ZJa6t+o270Fb2BlNo3+g7MlDMRONePne6ytJ9TYaD
-	oWGolyor9mRoG39rgODJ5RgXYCsRYalmBFS+Xpq08uiF0QYHJFprFBU1UXzDETTSkC
-	kgBRj0Z/Q6fv6YiC801C/r9/UaHjWqWzXOlyYbsI=
-Date: Sat, 1 Jul 2017 17:51:13 +1000
+	b=IAdl5OdBnAh29gSfO2ZXFC3iCqY6LtCnyKUOWW9DbKfsOwPKu0D7AdnUm3hA+0i7K
+	VXeaRdKtdo/WQBiZTWWoCf3Xz+n1kbapeHuyRKmJnr/OMOQO0QLJhiibSrEdG1SIWD
+	trbqQsn+60dg+1XT1FzNLFokL4KN4+dWDA7vKSvI=
+Date: Sat, 1 Jul 2017 17:51:38 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Greg Kurz <groug@kaod.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Message-ID: <20170701075113.GJ13989@umbus.fritz.box>
-References: <149881713243.18888.18140083803237379387.stgit@bahia>
+Message-ID: <20170701075138.GK13989@umbus.fritz.box>
+References: <149881542765.17418.16611868807694688341.stgit@bahia>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="x+WOirvrtTKur1pg"
+	protocol="application/pgp-signature"; boundary="AYsPlKobQGgtCvjI"
 Content-Disposition: inline
-In-Reply-To: <149881713243.18888.18140083803237379387.stgit@bahia>
+In-Reply-To: <149881542765.17418.16611868807694688341.stgit@bahia>
 User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] spapr: refresh "platform-specific"
- hcalls comment
+Subject: Re: [Qemu-trivial] [PATCH] spapr: fix bogus function name in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,42 +48,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Jul 2017 08:18:30 -0000
+X-List-Received-Date: Sat, 01 Jul 2017 08:18:28 -0000
 
 
---x+WOirvrtTKur1pg
+--AYsPlKobQGgtCvjI
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 30, 2017 at 12:05:32PM +0200, Greg Kurz wrote:
-> We have more of these since the addition of KVMPPC_H_LOGICAL_MEMOP in 201=
-2.
+On Fri, Jun 30, 2017 at 11:37:07AM +0200, Greg Kurz wrote:
+> $ git grep spapr_ppc_reset
+> hw/ppc/spapr.c: * as part of spapr_ppc_reset().
+>=20
+> $ git grep ppc_spapr_reset
+> hw/ppc/spapr.c:static void ppc_spapr_reset(void)
+> hw/ppc/spapr.c:    mc->reset =3D ppc_spapr_reset;
+> hw/ppc/spapr_hcall.c:        /* If ppc_spapr_reset() did not set up a HPT
+>  but one is necessary
 >=20
 > Signed-off-by: Greg Kurz <groug@kaod.org>
 
 Applied to ppc-for-2.10.
 
 > ---
->  include/hw/ppc/spapr.h |    5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+>  hw/ppc/spapr.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
-> index a66bbac35242..1826cc4fd696 100644
-> --- a/include/hw/ppc/spapr.h
-> +++ b/include/hw/ppc/spapr.h
-> @@ -377,9 +377,8 @@ struct sPAPRMachineState {
->   * as well.
->   *
->   * We also need some hcalls which are specific to qemu / KVM-on-POWER.
-> - * So far we just need one for H_RTAS, but in future we'll need more
-> - * for extensions like virtio.  We put those into the 0xf000-0xfffc
-> - * range which is reserved by PAPR for "platform-specific" hcalls.
-> + * We put those into the 0xf000-0xfffc range which is reserved by PAPR
-> + * for "platform-specific" hcalls.
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 0ee9fac50bd4..43a1cb5725d6 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -1973,7 +1973,7 @@ static void spapr_boot_set(void *opaque, const char=
+ *boot_device,
+>   * Unlike PCI DR devices, LMB DR devices explicitly register this reset
+>   * routine. Reset for PCI DR devices will be handled by PHB reset routine
+>   * when it walks all its children devices. LMB devices reset occurs
+> - * as part of spapr_ppc_reset().
+> + * as part of ppc_spapr_reset().
 >   */
->  #define KVMPPC_HCALL_BASE       0xf000
->  #define KVMPPC_H_RTAS           (KVMPPC_HCALL_BASE + 0x0)
+>  static void spapr_drc_reset(void *opaque)
+>  {
 >=20
 
 --=20
@@ -93,26 +96,26 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---x+WOirvrtTKur1pg
+--AYsPlKobQGgtCvjI
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZV1RxAAoJEGw4ysog2bOSn6cQANScSdoTxBePzT1CwZYweePZ
-6NRZxjHNh1XQr0uZtq4aBUO+pvqSS3neapd01ZEG9egGJV4NWmcjwCcKp2jfZkn6
-cUuHkUBQBRkNxBu2dH0/urzviIeXPBCaeekeqpz93/K2/Wzjc342ebOTGYaTxQ3B
-Hd3BJf9JxvfYAAad67eNTJChuoxeBAwqnp5NjYgkdQk5o67NFTuGKnLLaz7uQJua
-wZWdnZ36w3U4OtHJi3GxwCIbmQqvuntE8jndNiw/BLS1KyjDj4b9E5C+MJrJjUVo
-yeQpEZwcP78xEwzXeKPKKHYEsLho8mREYBC+doROo1dfs4dwBNN4iHnI5DesIXTk
-Nxq9CfHCiiFaltFcTGbP5ea9ouhUc5XWYcop/GQtd55G3KqRqXHZyiSz8uQZX8FJ
-YX0IDjgYcJPZNtpBCjdlK+pGRRR0OW/6fECCImniuXYfFF6NwpKU4eqWGjv+vGMS
-VpR6HPe53HZ6uICQ/y0hcmhU76zXAr/jFL5+w+DNDGvV/odhwVvglEolktX/I7l+
-uyy93hN5bjJPUl3ateR5KOBINRL3X0JzlRwlNP4DQP1gyWTAxPqqExx12H1ccFml
-nkCJKfTVT6tLPVlh6qxP7G9MQRcTwJMujoHeH2MsYCliJhiGESpgPUDTEEXW4Yv6
-D9Zm0Q9avQIMBlsxfo4s
-=untr
+iQIcBAEBCAAGBQJZV1SKAAoJEGw4ysog2bOSL/kQAI7hmWUqhIcESIRW1ghXUWie
+nstSVbetb2w05c7k4GPFrFlVTiPzGKTj04rJAyFw4C87ERmELMhungAj/XaM6pHI
+Y/zBduLW4q9wJsSVLrQPmPuZ0a1HMpd0zHlslaHwGcNzQNPUzlO14zoyIxLW7w2i
+u7MJ5GyWFL1OVQ2ZoG3Dch6sx/HA3ZxuKPiAgbosCsX5fvXvz+RXRPvVnt4PzIgW
+dxwA4niv8/RQoY1L6H0L8REy3G8qXZdWxXgg+rooqGvasU0fhtd8WU2dqg3Qfuwf
+C3W0cjV5EZ0N8/quljGs000Ni9PeTxiLb0tPojTwnCg20UfjEVM6R3jXQCv7gBeX
+tb2hTydKChFSQgRo1CgxN9qUZXxTwHpOljSZilZRMHrikjO+/KVEKbYY7RBp7d/E
+OK3XbGkM/kTFLkJNKAnWLANZjDwDqOi0KQ4YqCQ5/KoW10ESmg7kQLeystXkS0Av
+25PM+gg9VrbVBe27Bxz3o1ee9fnH3ZhR/8N7KYJeSiYWnVIWxGkh/9PaLszu7jNf
+iVetg6EC2P1UvJOjHu6Ecsgekx+Y0yj9AACQkmhOxW9K0n+T52e8nz4DtSAfkXy6
+O4fOCTFMGVHJ8XZaR6wc61+6NMENoG4+iN9rmODKZkDktNoHFCCyYmR87uCTc5lP
+b4nfV7rl2MBN2dkNKhlq
+=Nkzg
 -----END PGP SIGNATURE-----
 
---x+WOirvrtTKur1pg--
+--AYsPlKobQGgtCvjI--
 
