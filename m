@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dR3tx-0003Mo-MM
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Jun 2017 17:56:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32851)
+	id 1dRDbp-0004KY-LU
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1dR3tt-0003Kv-JI
-	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 17:56:31 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbl-0004D9-2P
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1dR3tq-0002Df-GH
-	for qemu-trivial@nongnu.org; Fri, 30 Jun 2017 17:56:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47598)
+	(envelope-from <dgibson@ozlabs.org>) id 1dRDbj-0002AT-Sx
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:25 -0400
+Received: from ozlabs.org ([103.22.144.67]:37209)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcody@redhat.com>)
-	id 1dR3tf-00020u-Ha; Fri, 30 Jun 2017 17:56:15 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 574EE8553D;
-	Fri, 30 Jun 2017 21:56:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 574EE8553D
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=jcody@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 574EE8553D
-Received: from localhost (ovpn-116-11.phx2.redhat.com [10.3.116.11])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 05D84627D7;
-	Fri, 30 Jun 2017 21:56:10 +0000 (UTC)
-Date: Fri, 30 Jun 2017 17:56:10 -0400
-From: Jeff Cody <jcody@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, edgar.iglesias@xilinx.com,
-	Kevin Wolf <kwolf@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org, mreitz@redhat.com,
-	stefanha@redhat.com, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Message-ID: <20170630215610.GD26034@localhost.localdomain>
-References: <20170630195831.26087-1-eblake@redhat.com>
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1dRDbj-00028P-Gl
+	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:23 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3x05r35hMtz9sRT; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1498897091;
+	bh=6/dyuitK+mSa++wLysUL9HJ4aJyvRKdFfLF6tIa90JQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mq3pxrNhg/4l3mfz5WMzSVhCbOP/7n8/Rf1aYoB68uNRayTBXM3tA5l59e7tSi8oq
+	gYcO6df22BfV1yQkgGysOjT2iKQTcgVBJHMAlcy8OGEc3fdKqv1z6vwYaXGDfXy4S/
+	gbSThn6kzuP48oETbb7HuHwOfoYi7lrLad27aOdo=
+Date: Sat, 1 Jul 2017 17:50:24 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Greg Kurz <groug@kaod.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+Message-ID: <20170701075024.GI13989@umbus.fritz.box>
+References: <149882869053.24031.15086612121177689276.stgit@bahia.lan>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="2nTeH+t2PBomgucg"
 Content-Disposition: inline
-In-Reply-To: <20170630195831.26087-1-eblake@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 30 Jun 2017 21:56:13 +0000 (UTC)
+In-Reply-To: <149882869053.24031.15086612121177689276.stgit@bahia.lan>
+User-Agent: Mutt/1.8.0 (2017-02-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH v2] tests: Avoid
- non-portable 'echo -ARG'
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH] spapr: make
+ spapr_populate_hotplug_cpu_dt() static
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,413 +49,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Jun 2017 21:56:31 -0000
+X-List-Received-Date: Sat, 01 Jul 2017 08:18:28 -0000
 
-On Fri, Jun 30, 2017 at 02:58:31PM -0500, Eric Blake wrote:
-> POSIX says that backslashes in the arguments to 'echo', as well as
-> any use of 'echo -n' and 'echo -e', are non-portable; it recommends
-> people should favor 'printf' instead.  This is definitely true where
-> we do not control which shell is running (such as in makefile snippets
-> or in documentation examples).  But even for scripts where we
-> require bash (and therefore, where echo does what we want by default),
-> it is still possible to use 'shopt -s xpg_echo' to change bash's
-> behavior of echo.  And setting a good example never hurts when we are
-> not sure if a snippet will be copied from a bash-only script to a
-> general shell script (although I don't change the use of non-portable
-> \e for ESC when we know the running shell is bash).
-> 
-> Replace 'echo -n "..."' with 'printf %s "..."', and 'echo -e "..."'
-> with 'printf %b "...\n"', with the optimization that the %s/%b
-> argument can be omitted if the string being printed contains no
-> substitutions that could result in '%' (trivial if there is no
-> $ or `, but also possible when using things like $ret that are
-> known to be numeric given the assignment to ret just above).
-> 
-> In the qemu-iotests check script, fix unusual shell quoting
-> that would result in word-splitting if 'date' outputs a space.
-> 
-> In test 051, take an opportunity to shorten the line.
-> 
-> In test 068, get rid of a pointless second invocation of bash.
-> 
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> 
+
+--2nTeH+t2PBomgucg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jun 30, 2017 at 03:18:10PM +0200, Greg Kurz wrote:
+> Since commit ff9006ddbfd1 ("spapr: move spapr_core_[foo]plug() callbacks
+> close to machine code in spapr.c"), this function doesn't need to be exte=
+rn
+> anymore.
+>=20
+> Signed-off-by: Greg Kurz <groug@kaod.org>
+
+Applied to ppc-for-2.10.
+
 > ---
-> v2: be robust to potential % in substitutions [Max], rebase to master,
-> shorten some long lines and an odd bash -c use
-> 
-> Add qemu-trivial in cc, although we may decide this is better through
-> Max's block tree since it is mostly iotests related
-> 
-> ---
->  qemu-options.hx             |  4 ++--
->  tests/multiboot/run_test.sh | 10 +++++-----
->  tests/qemu-iotests/051      |  7 ++++---
->  tests/qemu-iotests/068      |  2 +-
->  tests/qemu-iotests/142      | 48 ++++++++++++++++++++++-----------------------
->  tests/qemu-iotests/171      | 14 ++++++-------
->  tests/qemu-iotests/check    | 18 ++++++++---------
->  tests/rocker/all            | 10 +++++-----
->  tests/tcg/cris/Makefile     |  8 ++++----
->  9 files changed, 61 insertions(+), 60 deletions(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 297bd8a..05a0474 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4363,7 +4363,7 @@ The simplest (insecure) usage is to provide the secret inline
-> 
->  The simplest secure usage is to provide the secret via a file
-> 
-> - # echo -n "letmein" > mypasswd.txt
-> + # printf "letmein" > mypasswd.txt
->   # $QEMU -object secret,id=sec0,file=mypasswd.txt,format=raw
-> 
->  For greater security, AES-256-CBC should be used. To illustrate usage,
-> @@ -4391,7 +4391,7 @@ telling openssl to base64 encode the result, but it could be left
->  as raw bytes if desired.
-> 
->  @example
-> - # SECRET=$(echo -n "letmein" |
-> + # SECRET=$(printf "letmein" |
->              openssl enc -aes-256-cbc -a -K $KEY -iv $IV)
->  @end example
-> 
-> diff --git a/tests/multiboot/run_test.sh b/tests/multiboot/run_test.sh
-> index 78d7edf..9a1cd59 100755
-> --- a/tests/multiboot/run_test.sh
-> +++ b/tests/multiboot/run_test.sh
-> @@ -26,7 +26,7 @@ run_qemu() {
->      local kernel=$1
->      shift
-> 
-> -    echo -e "\n\n=== Running test case: $kernel $@ ===\n" >> test.log
-> +    printf %b "\n\n=== Running test case: $kernel $@ ===\n\n" >> test.log
-> 
->      $QEMU \
->          -kernel $kernel \
-> @@ -68,21 +68,21 @@ for t in mmap modules; do
->      pass=1
-> 
->      if [ $debugexit != 1 ]; then
-> -        echo -e "\e[31m ?? \e[0m $t (no debugexit used, exit code $ret)"
-> +        printf "\e[31m ?? \e[0m $t (no debugexit used, exit code $ret)\n"
->          pass=0
->      elif [ $ret != 0 ]; then
-> -        echo -e "\e[31mFAIL\e[0m $t (exit code $ret)"
-> +        printf "\e[31mFAIL\e[0m $t (exit code $ret)\n"
->          pass=0
->      fi
-> 
->      if ! diff $t.out test.log > /dev/null 2>&1; then
-> -        echo -e "\e[31mFAIL\e[0m $t (output difference)"
-> +        printf "\e[31mFAIL\e[0m $t (output difference)\n"
->          diff -u $t.out test.log
->          pass=0
->      fi
-> 
->      if [ $pass == 1 ]; then
-> -        echo -e "\e[32mPASS\e[0m $t"
-> +        printf "\e[32mPASS\e[0m $t\n"
->      fi
-> 
->  done
-> diff --git a/tests/qemu-iotests/051 b/tests/qemu-iotests/051
-> index 26c29de..c3c08bf 100755
-> --- a/tests/qemu-iotests/051
-> +++ b/tests/qemu-iotests/051
-> @@ -217,7 +217,7 @@ run_qemu -drive driver=null-co,cache=invalid_value
->  # Test 142 checks the direct=on cases
-> 
->  for cache in writeback writethrough unsafe invalid_value; do
-> -    echo -e "info block\ninfo block file\ninfo block backing\ninfo block backing-file" | \
-> +    printf "info block %s\n" '' file backing backing-file | \
->      run_qemu -drive file="$TEST_IMG",cache=$cache,backing.file.filename="$TEST_IMG.base",backing.cache.no-flush=on,backing.node-name=backing,backing.file.node-name=backing-file,file.node-name=file,if=none,id=$device_id -nodefaults
->  done
-> 
-> @@ -325,8 +325,9 @@ echo "qemu-io $device_id \"write -P 0x22 0 4k\"" | run_qemu -drive file="$TEST_I
-> 
->  $QEMU_IO -c "read -P 0x22 0 4k" "$TEST_IMG" | _filter_qemu_io
-> 
-> -echo -e "qemu-io $device_id \"write -P 0x33 0 4k\"\ncommit $device_id" | run_qemu -drive file="$TEST_IMG",snapshot=on,if=none,id=$device_id\
-> -                                                                       | _filter_qemu_io
-> +printf "qemu-io $device_id \"write -P 0x33 0 4k\"\ncommit $device_id\n" |
-> +    run_qemu -drive file="$TEST_IMG",snapshot=on,if=none,id=$device_id |
-> +    _filter_qemu_io
-> 
->  $QEMU_IO -c "read -P 0x33 0 4k" "$TEST_IMG" | _filter_qemu_io
-> 
-> diff --git a/tests/qemu-iotests/068 b/tests/qemu-iotests/068
-> index 3801b65..cfa0f2a 100755
-> --- a/tests/qemu-iotests/068
-> +++ b/tests/qemu-iotests/068
-> @@ -76,7 +76,7 @@ for extra_args in \
->      _make_test_img $IMG_SIZE
-> 
->      # Give qemu some time to boot before saving the VM state
-> -    bash -c 'sleep 1; echo -e "savevm 0\nquit"' | _qemu $extra_args
-> +    { sleep 1; printf "savevm 0\nquit\n"; } | _qemu $extra_args
->      # Now try to continue from that VM state (this should just work)
->      echo quit | _qemu $extra_args -loadvm 0
->  done
-> diff --git a/tests/qemu-iotests/142 b/tests/qemu-iotests/142
-> index 9a5b713..1639c83 100755
-> --- a/tests/qemu-iotests/142
-> +++ b/tests/qemu-iotests/142
-> @@ -94,36 +94,36 @@ function check_cache_all()
->      # cache.direct is supposed to be inherited by both bs->file and
->      # bs->backing
-> 
-> -    echo -e "cache.direct=on on none0"
-> +    printf "cache.direct=on on none0\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
-> -    echo -e "\ncache.direct=on on file"
-> +    printf "\ncache.direct=on on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
-> -    echo -e "\ncache.direct=on on backing"
-> +    printf "\ncache.direct=on on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
-> -    echo -e "\ncache.direct=on on backing-file"
-> +    printf "\ncache.direct=on on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
-> 
->      # cache.writeback is supposed to be inherited by bs->backing; bs->file
->      # always gets cache.writeback=on
-> 
-> -    echo -e "\n\ncache.writeback=off on none0"
-> +    printf "\n\ncache.writeback=off on none0\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.writeback=off | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.writeback=off on file"
-> +    printf "\ncache.writeback=off on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.writeback=off | grep -e "doesn't" -e "does not"
-> -    echo -e "\ncache.writeback=off on backing"
-> +    printf "\ncache.writeback=off on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.writeback=off | grep -e "doesn't" -e "does not"
-> -    echo -e "\ncache.writeback=off on backing-file"
-> +    printf "\ncache.writeback=off on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.writeback=off | grep -e "doesn't" -e "does not"
-> 
->      # cache.no-flush is supposed to be inherited by both bs->file and bs->backing
-> 
-> -    echo -e "\n\ncache.no-flush=on on none0"
-> +    printf "\n\ncache.no-flush=on on none0\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on file"
-> +    printf "\ncache.no-flush=on on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on backing"
-> +    printf "\ncache.no-flush=on on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on backing-file"
-> +    printf "\ncache.no-flush=on on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
+>  hw/ppc/spapr.c         |    4 ++--
+>  include/hw/ppc/spapr.h |    2 --
+>  2 files changed, 2 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 0ee9fac50bd4..65d8ad2f4966 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2863,8 +2863,8 @@ out:
+>      error_propagate(errp, local_err);
 >  }
-> 
-> @@ -236,35 +236,35 @@ function check_cache_all_separate()
+> =20
+> -void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
+> -                                    sPAPRMachineState *spapr)
+> +static void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
+> +                                           sPAPRMachineState *spapr)
 >  {
->      # Check cache.direct
-> 
-> -    echo -e "cache.direct=on on blk"
-> +    printf "cache.direct=on on blk\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.direct=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.direct=on on file"
-> +    printf "\ncache.direct=on on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.direct=on -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.direct=on on backing"
-> +    printf "\ncache.direct=on on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.direct=on -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.direct=on on backing-file"
-> +    printf "\ncache.direct=on on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.direct=on -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> 
->      # Check cache.writeback
-> 
-> -    echo -e "\n\ncache.writeback=off on blk"
-> +    printf "\n\ncache.writeback=off on blk\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.writeback=off | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.writeback=off on file"
-> +    printf "\ncache.writeback=off on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.writeback=off -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.writeback=off on backing"
-> +    printf "\ncache.writeback=off on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.writeback=off -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.writeback=off on backing-file"
-> +    printf "\ncache.writeback=off on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.writeback=off -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> 
->      # Check cache.no-flush
-> 
-> -    echo -e "\n\ncache.no-flush=on on blk"
-> +    printf "\n\ncache.no-flush=on on blk\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on file"
-> +    printf "\ncache.no-flush=on on file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.no-flush=on -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on backing"
-> +    printf "\ncache.no-flush=on on backing\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.no-flush=on -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-> -    echo -e "\ncache.no-flush=on on backing-file"
-> +    printf "\ncache.no-flush=on on backing-file\n"
->      echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.no-flush=on -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
->  }
-> 
-> diff --git a/tests/qemu-iotests/171 b/tests/qemu-iotests/171
-> index 257be10..54298ad 100755
-> --- a/tests/qemu-iotests/171
-> +++ b/tests/qemu-iotests/171
-> @@ -45,15 +45,15 @@ _supported_os Linux
-> 
->  # Create JSON with options
->  img_json() {
-> -    echo -n 'json:{"driver":"raw", '
-> -    echo -n "\"offset\":\"$img_offset\", "
-> +    printf 'json:{"driver":"raw", '
-> +    printf "\"offset\":\"$img_offset\", "
->      if [ "$img_size" -ne -1 ] ; then
-> -        echo -n "\"size\":\"$img_size\", "
-> +        printf "\"size\":\"$img_size\", "
->      fi
-> -    echo -n '"file": {'
-> -    echo -n    '"driver":"file", '
-> -    echo -n    "\"filename\":\"$TEST_IMG\" "
-> -    echo -n "} }"
-> +    printf '"file": {'
-> +    printf    '"driver":"file", '
-> +    printf %s "\"filename\":\"$TEST_IMG\" "
-> +    printf "} }"
->  }
-> 
->  do_general_test() {
-> diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
-> index 4b1c674..0a13df9 100755
-> --- a/tests/qemu-iotests/check
-> +++ b/tests/qemu-iotests/check
-> @@ -141,7 +141,7 @@ _wallclock()
->  _timestamp()
->  {
->      now=`date "+%T"`
-> -    echo -n " [$now]"
-> +    printf " [$now]"
->  }
-> 
->  _wrapup()
-> @@ -255,7 +255,7 @@ seq="check"
->  for seq in $list
->  do
->      err=false
-> -    echo -n "$seq"
-> +    printf "$seq"
->      if [ -n "$TESTS_REMAINING_LOG" ] ; then
->          sed -e "s/$seq//" -e 's/  / /' -e 's/^ *//' $TESTS_REMAINING_LOG > $TESTS_REMAINING_LOG.tmp
->          mv $TESTS_REMAINING_LOG.tmp $TESTS_REMAINING_LOG
-> @@ -281,9 +281,9 @@ do
->          rm -f $seq.out.bad
->          lasttime=`sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE`
->          if [ "X$lasttime" != X ]; then
-> -                echo -n " ${lasttime}s ..."
-> +                printf " ${lasttime}s ..."
->          else
-> -                echo -n "        "        # prettier output with timestamps.
-> +                printf "        "        # prettier output with timestamps.
->          fi
->          rm -f core $seq.notrun
-> 
-> @@ -291,7 +291,7 @@ do
->          echo "$seq" > "${TEST_DIR}"/check.sts
-> 
->          start=`_wallclock`
-> -        $timestamp && echo -n "        ["`date "+%T"`"]"
-> +        $timestamp && printf "        [$(date "+%T")]"
-> 
->          if [ "$(head -n 1 "$source_iotests/$seq")" == "#!/usr/bin/env python" ]; then
->              run_command="$PYTHON $seq"
-> @@ -314,21 +314,21 @@ do
-> 
->          if [ -f core ]
->          then
-> -            echo -n " [dumped core]"
-> +            printf " [dumped core]"
->              mv core $seq.core
->              err=true
->          fi
-> 
->          if [ -f $seq.notrun ]
->          then
-> -            $timestamp || echo -n " [not run] "
-> -            $timestamp && echo " [not run]" && echo -n "        $seq -- "
-> +            $timestamp || printf " [not run] "
-> +            $timestamp && echo " [not run]" && printf "        $seq -- "
->              cat $seq.notrun
->              notrun="$notrun $seq"
->          else
->              if [ $sts -ne 0 ]
->              then
-> -                echo -n " [failed, exit status $sts]"
-> +                printf " [failed, exit status $sts]"
->                  err=true
->              fi
-> 
-> diff --git a/tests/rocker/all b/tests/rocker/all
-> index d5ae963..3f9b786 100755
-> --- a/tests/rocker/all
-> +++ b/tests/rocker/all
-> @@ -1,19 +1,19 @@
-> -echo -n "Running port test...              "
-> +printf "Running port test...              "
->  ./port
->  if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-> 
-> -echo -n "Running bridge test...            "
-> +printf "Running bridge test...            "
->  ./bridge
->  if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-> 
-> -echo -n "Running bridge STP test...        "
-> +printf "Running bridge STP test...        "
->  ./bridge-stp
->  if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-> 
-> -echo -n "Running bridge VLAN test...       "
-> +printf "Running bridge VLAN test...       "
->  ./bridge-vlan
->  if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-> 
-> -echo -n "Running bridge VLAN STP test...   "
-> +printf "Running bridge VLAN STP test...   "
->  ./bridge-vlan-stp
->  if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-> diff --git a/tests/tcg/cris/Makefile b/tests/tcg/cris/Makefile
-> index 6b3dba4..6888263 100644
-> --- a/tests/tcg/cris/Makefile
-> +++ b/tests/tcg/cris/Makefile
-> @@ -150,17 +150,17 @@ check_addcv17.tst: crtv10.o sysv10.o
->  build: $(CRT) $(SYS) $(TESTCASES)
-> 
->  check: $(CRT) $(SYS) $(TESTCASES)
-> -	@echo -e "\nQEMU simulator."
-> +	@printf "\nQEMU simulator.\n"
->  	for case in $(TESTCASES); do \
-> -		echo -n "$$case "; \
-> +		printf "$$case "; \
->  		SIMARGS=; \
->  		case $$case in *v17*) SIMARGS="-cpu crisv17";; esac; \
->  		$(SIM) $$SIMARGS ./$$case; \
->  	done
->  check-g: $(CRT) $(SYS) $(TESTCASES)
-> -	@echo -e "\nGDB simulator."
-> +	@printf "\nGDB simulator.\n"
->  	@for case in $(TESTCASES); do \
-> -		echo -n "$$case "; \
-> +		printf "$$case "; \
->  		$(SIMG) $$case; \
->  	done
-> 
-> -- 
-> 2.9.4
-> 
-> 
+>      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
+>      DeviceClass *dc =3D DEVICE_GET_CLASS(cs);
+> diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
+> index a66bbac35242..12bf9697990e 100644
+> --- a/include/hw/ppc/spapr.h
+> +++ b/include/hw/ppc/spapr.h
+> @@ -640,8 +640,6 @@ void spapr_hotplug_req_add_by_count_indexed(sPAPRDRCo=
+nnectorType drc_type,
+>  void spapr_hotplug_req_remove_by_count_indexed(sPAPRDRConnectorType drc_=
+type,
+>                                                 uint32_t count, uint32_t =
+index);
+>  void spapr_cpu_parse_features(sPAPRMachineState *spapr);
+> -void *spapr_populate_hotplug_cpu_dt(CPUState *cs, int *fdt_offset,
+> -                                    sPAPRMachineState *spapr);
+> =20
+>  /* CPU and LMB DRC release callbacks. */
+>  void spapr_core_release(DeviceState *dev);
+>=20
 
-Reviewed-by: Jeff Cody <jcody@redhat.com>
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
+--2nTeH+t2PBomgucg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJZV1Q8AAoJEGw4ysog2bOS4P0QAObR28rEfoIlcJeW5W5U4vlo
+GESFD1iSkyQd3KW1N5pSql25DXTbpah8LSvClOMJIWf5I13nUqyo/Vt6bQepA9p9
+fw1vuO5MhiGwvR/bqDccXOuI4WdFct6NS4RAc/dhZG0c0ErJ3mhCjG+Yy+FSjm/T
+MvBf0VjeRSkqmsftBrpHHE7iPl68cKpRlCeDzhPrOmy9OSpMiF9nyutSuy2rv2S1
+LIxoYQylkeX7UGQR0xxUCSxomVYpSBhk56TGhycDZJIq0kNr+P8TLq+zyOfdUoGB
+eymbtPwL3EPUhRhYbwhSQLRdD/yvvYJi7ekf54tIggXt9igl3QoQBvTBvjdDdCpp
+BuAxmbPutXTlVRXPMmfU5yztYCx7Gcl0Z6eIu9cwIEcpvexKuHUbaa5DmDQttAM3
+pc4nj/Ks23lJLfW+xLbUScwu6Y9tqZQ+XwzDB1caWkj1IIrBbbbs1JyDjbE5LmKp
+DxkXASQKthZtBbAbwC0582dRi7AmLmK3QJinXOQI03HdCy15sQRDS8IarJ+LF7oA
+/t53Ob5YGIs++Ma4pWbkEFQTVS3xXOm5myK55pIunlEEwBWl1pT5ob5Y9kt4aJkg
+Mzv2JcOcQR57czmx1hlPVlhPxvlefvCwjxxNgZSQdDDTmBCsg1hFlAWOVBuYdQ9A
+CHgXceVCiKln6qJHAQYg
+=Aa4p
+-----END PGP SIGNATURE-----
+
+--2nTeH+t2PBomgucg--
 
