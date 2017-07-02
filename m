@@ -1,42 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dRDbp-0004MG-Up
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Jul 2017 04:18:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57810)
+	id 1dRgC2-00079Y-F4
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Jul 2017 10:49:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38733)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbl-0004Cy-11
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:28 -0400
+	(envelope-from <mreitz@redhat.com>) id 1dRgBz-00077P-Eu
+	for qemu-trivial@nongnu.org; Sun, 02 Jul 2017 10:49:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dRDbj-0002AZ-Sm
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:25 -0400
-Received: from ozlabs.org ([103.22.144.67]:56383)
+	(envelope-from <mreitz@redhat.com>) id 1dRgBy-0000fW-60
+	for qemu-trivial@nongnu.org; Sun, 02 Jul 2017 10:49:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37308)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>) id 1dRDbj-00028O-Hj
-	for qemu-trivial@nongnu.org; Sat, 01 Jul 2017 04:18:23 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3x05r370Yvz9sRV; Sat,  1 Jul 2017 18:18:11 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1498897091;
-	bh=XjtrJOHTy6Y2r7Xh/MPyRYUUDAv+NgYYIIZXC3LBNm4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IAdl5OdBnAh29gSfO2ZXFC3iCqY6LtCnyKUOWW9DbKfsOwPKu0D7AdnUm3hA+0i7K
-	VXeaRdKtdo/WQBiZTWWoCf3Xz+n1kbapeHuyRKmJnr/OMOQO0QLJhiibSrEdG1SIWD
-	trbqQsn+60dg+1XT1FzNLFokL4KN4+dWDA7vKSvI=
-Date: Sat, 1 Jul 2017 17:51:38 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Greg Kurz <groug@kaod.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Message-ID: <20170701075138.GK13989@umbus.fritz.box>
-References: <149881542765.17418.16611868807694688341.stgit@bahia>
+	(Exim 4.71) (envelope-from <mreitz@redhat.com>)
+	id 1dRgBq-0000SS-M1; Sun, 02 Jul 2017 10:49:34 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AAB25E1EE5;
+	Sun,  2 Jul 2017 14:49:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AAB25E1EE5
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=mreitz@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com AAB25E1EE5
+Received: from dresden.str.redhat.com (ovpn-204-44.brq.redhat.com
+	[10.40.204.44])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E593C7DFD5;
+	Sun,  2 Jul 2017 14:49:28 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: edgar.iglesias@xilinx.com, stefanha@redhat.com, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20170630195831.26087-1-eblake@redhat.com>
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <6ff70225-77c3-84ce-ada9-ce44192de608@redhat.com>
+Date: Sun, 2 Jul 2017 16:49:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
 MIME-Version: 1.0
+In-Reply-To: <20170630195831.26087-1-eblake@redhat.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="AYsPlKobQGgtCvjI"
-Content-Disposition: inline
-In-Reply-To: <149881542765.17418.16611868807694688341.stgit@bahia>
-User-Agent: Mutt/1.8.0 (2017-02-23)
+	protocol="application/pgp-signature";
+	boundary="4O2ldoQ47rNLlK3hT7JlXXFK16hNLKKnp"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Sun, 02 Jul 2017 14:49:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] spapr: fix bogus function name in comment
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2] tests: Avoid non-portable 'echo -ARG'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,74 +63,178 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Jul 2017 08:18:28 -0000
+X-List-Received-Date: Sun, 02 Jul 2017 14:49:44 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--4O2ldoQ47rNLlK3hT7JlXXFK16hNLKKnp
+Content-Type: multipart/mixed; boundary="1Hw8KFsTxJsMf7T81prdj9mNJfHhVsVaS";
+ protected-headers="v1"
+From: Max Reitz <mreitz@redhat.com>
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: edgar.iglesias@xilinx.com, stefanha@redhat.com, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Message-ID: <6ff70225-77c3-84ce-ada9-ce44192de608@redhat.com>
+Subject: Re: [PATCH v2] tests: Avoid non-portable 'echo -ARG'
+References: <20170630195831.26087-1-eblake@redhat.com>
+In-Reply-To: <20170630195831.26087-1-eblake@redhat.com>
 
---AYsPlKobQGgtCvjI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--1Hw8KFsTxJsMf7T81prdj9mNJfHhVsVaS
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 30, 2017 at 11:37:07AM +0200, Greg Kurz wrote:
-> $ git grep spapr_ppc_reset
-> hw/ppc/spapr.c: * as part of spapr_ppc_reset().
+On 2017-06-30 21:58, Eric Blake wrote:
+> POSIX says that backslashes in the arguments to 'echo', as well as
+> any use of 'echo -n' and 'echo -e', are non-portable; it recommends
+> people should favor 'printf' instead.  This is definitely true where
+> we do not control which shell is running (such as in makefile snippets
+> or in documentation examples).  But even for scripts where we
+> require bash (and therefore, where echo does what we want by default),
+> it is still possible to use 'shopt -s xpg_echo' to change bash's
+> behavior of echo.  And setting a good example never hurts when we are
+> not sure if a snippet will be copied from a bash-only script to a
+> general shell script (although I don't change the use of non-portable
+> \e for ESC when we know the running shell is bash).
 >=20
-> $ git grep ppc_spapr_reset
-> hw/ppc/spapr.c:static void ppc_spapr_reset(void)
-> hw/ppc/spapr.c:    mc->reset =3D ppc_spapr_reset;
-> hw/ppc/spapr_hcall.c:        /* If ppc_spapr_reset() did not set up a HPT
->  but one is necessary
+> Replace 'echo -n "..."' with 'printf %s "..."', and 'echo -e "..."'
+> with 'printf %b "...\n"', with the optimization that the %s/%b
+> argument can be omitted if the string being printed contains no
+> substitutions that could result in '%' (trivial if there is no
+> $ or `, but also possible when using things like $ret that are
+> known to be numeric given the assignment to ret just above).
+
+Well, yes, possible, but it's no longer trivial... And just using '%s'
+or '%b' in these cases would make reading the code simpler, in my opinion=
+=2E
+
+Sure, omitting it makes sense for constant format strings, but for
+variable the cost outweighs the benefit, in my opinion.
+
+(And since this is a bit supposed to go through qemu-trivial, it should
+be trivial, right? :-))
+
+> In the qemu-iotests check script, fix unusual shell quoting
+> that would result in word-splitting if 'date' outputs a space.
 >=20
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-
-Applied to ppc-for-2.10.
-
+> In test 051, take an opportunity to shorten the line.
+>=20
+> In test 068, get rid of a pointless second invocation of bash.
+>=20
+> CC: qemu-trivial@nongnu.org
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+>=20
 > ---
->  hw/ppc/spapr.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> v2: be robust to potential % in substitutions [Max], rebase to master,
+> shorten some long lines and an odd bash -c use
 >=20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 0ee9fac50bd4..43a1cb5725d6 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -1973,7 +1973,7 @@ static void spapr_boot_set(void *opaque, const char=
- *boot_device,
->   * Unlike PCI DR devices, LMB DR devices explicitly register this reset
->   * routine. Reset for PCI DR devices will be handled by PHB reset routine
->   * when it walks all its children devices. LMB devices reset occurs
-> - * as part of spapr_ppc_reset().
-> + * as part of ppc_spapr_reset().
->   */
->  static void spapr_drc_reset(void *opaque)
->  {
+> Add qemu-trivial in cc, although we may decide this is better through
+> Max's block tree since it is mostly iotests related
+>=20
+> ---
+>  qemu-options.hx             |  4 ++--
+>  tests/multiboot/run_test.sh | 10 +++++-----
+>  tests/qemu-iotests/051      |  7 ++++---
+>  tests/qemu-iotests/068      |  2 +-
+>  tests/qemu-iotests/142      | 48 ++++++++++++++++++++++---------------=
+--------
+>  tests/qemu-iotests/171      | 14 ++++++-------
+>  tests/qemu-iotests/check    | 18 ++++++++---------
+>  tests/rocker/all            | 10 +++++-----
+>  tests/tcg/cris/Makefile     |  8 ++++----
+>  9 files changed, 61 insertions(+), 60 deletions(-)
+
+[...]
+
+> diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
+> index 4b1c674..0a13df9 100755
+> --- a/tests/qemu-iotests/check
+> +++ b/tests/qemu-iotests/check
+
+[...]
+
+> @@ -281,9 +281,9 @@ do
+>          rm -f $seq.out.bad
+>          lasttime=3D`sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE`
+>          if [ "X$lasttime" !=3D X ]; then
+> -                echo -n " ${lasttime}s ..."
+> +                printf " ${lasttime}s ..."
+
+You cannot prove this doesn't contain a %. In fact, I can very easily
+put a % into the timestamp file and let printf print it here.
+
+Sure, there shouldn't be one there, but on one hand it's still possible
+and on the other, finding out that there shouldn't be a % there is very
+much non-trivial.
+
+>          else
+> -                echo -n "        "        # prettier output with times=
+tamps.
+> +                printf "        "        # prettier output with timest=
+amps.
+>          fi
+>          rm -f core $seq.notrun
 >=20
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+[...]
 
---AYsPlKobQGgtCvjI
+> diff --git a/tests/tcg/cris/Makefile b/tests/tcg/cris/Makefile
+> index 6b3dba4..6888263 100644
+> --- a/tests/tcg/cris/Makefile
+> +++ b/tests/tcg/cris/Makefile
+> @@ -150,17 +150,17 @@ check_addcv17.tst: crtv10.o sysv10.o
+>  build: $(CRT) $(SYS) $(TESTCASES)
+>=20
+>  check: $(CRT) $(SYS) $(TESTCASES)
+> -	@echo -e "\nQEMU simulator."
+> +	@printf "\nQEMU simulator.\n"
+>  	for case in $(TESTCASES); do \
+> -		echo -n "$$case "; \
+> +		printf "$$case "; \
+
+This is another rather non-trivial case: Checking that this doesn't
+contain a % means reading through the whole list defining TESTCASES.
+
+All in all, I'd really prefer just using %s and %b everywhere there is a
+variable format string.
+
+Max
+
+>  		SIMARGS=3D; \
+>  		case $$case in *v17*) SIMARGS=3D"-cpu crisv17";; esac; \
+>  		$(SIM) $$SIMARGS ./$$case; \
+>  	done
+>  check-g: $(CRT) $(SYS) $(TESTCASES)
+> -	@echo -e "\nGDB simulator."
+> +	@printf "\nGDB simulator.\n"
+>  	@for case in $(TESTCASES); do \
+> -		echo -n "$$case "; \
+> +		printf "$$case "; \
+>  		$(SIMG) $$case; \
+>  	done
+>=20
+
+
+
+--1Hw8KFsTxJsMf7T81prdj9mNJfHhVsVaS--
+
+--4O2ldoQ47rNLlK3hT7JlXXFK16hNLKKnp
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJZV1SKAAoJEGw4ysog2bOSL/kQAI7hmWUqhIcESIRW1ghXUWie
-nstSVbetb2w05c7k4GPFrFlVTiPzGKTj04rJAyFw4C87ERmELMhungAj/XaM6pHI
-Y/zBduLW4q9wJsSVLrQPmPuZ0a1HMpd0zHlslaHwGcNzQNPUzlO14zoyIxLW7w2i
-u7MJ5GyWFL1OVQ2ZoG3Dch6sx/HA3ZxuKPiAgbosCsX5fvXvz+RXRPvVnt4PzIgW
-dxwA4niv8/RQoY1L6H0L8REy3G8qXZdWxXgg+rooqGvasU0fhtd8WU2dqg3Qfuwf
-C3W0cjV5EZ0N8/quljGs000Ni9PeTxiLb0tPojTwnCg20UfjEVM6R3jXQCv7gBeX
-tb2hTydKChFSQgRo1CgxN9qUZXxTwHpOljSZilZRMHrikjO+/KVEKbYY7RBp7d/E
-OK3XbGkM/kTFLkJNKAnWLANZjDwDqOi0KQ4YqCQ5/KoW10ESmg7kQLeystXkS0Av
-25PM+gg9VrbVBe27Bxz3o1ee9fnH3ZhR/8N7KYJeSiYWnVIWxGkh/9PaLszu7jNf
-iVetg6EC2P1UvJOjHu6Ecsgekx+Y0yj9AACQkmhOxW9K0n+T52e8nz4DtSAfkXy6
-O4fOCTFMGVHJ8XZaR6wc61+6NMENoG4+iN9rmODKZkDktNoHFCCyYmR87uCTc5lP
-b4nfV7rl2MBN2dkNKhlq
-=Nkzg
+iQEvBAEBCAAZBQJZWQf3EhxtcmVpdHpAcmVkaGF0LmNvbQAKCRD0B9sAYdXPQDYN
+B/4zoYKYUO+M+Kyk6dlCTPLoCrtJ6njWOLl9G/g84QQAoUv7EfLeU0Bw6H4UoUPb
+ofpASN7/W7WG3lkCaPVnuFs+YPh3FitsupAiLGwq6F3Yw1rhKiE+/Xkd7wj5NpAj
+DdR1kwxmWaxF8pQBTj5aQMuOskptuaaGoIYwG7p/jfLjWzHwc22ebdrquAbUkyMj
+dN1Mrdc9VajXjLmeMkXAayMGINhgeoGltx2FMXtXgk9nZ8f+MbrEeHY51UwlrpHP
+wm92lyUegx50sIlybyItky0wreJ/sulVt6VlDoL1x/oQSLyekO0J81D4AP3F4/vG
+MZUidIVo1i9ueZN33gSFCzJZ
+=hIt/
 -----END PGP SIGNATURE-----
 
---AYsPlKobQGgtCvjI--
+--4O2ldoQ47rNLlK3hT7JlXXFK16hNLKKnp--
 
