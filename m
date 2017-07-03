@@ -1,33 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dS32u-0000pU-Lq
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jul 2017 11:13:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56283)
+	id 1dS41t-0000hj-Cq
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jul 2017 12:16:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47364)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dS32r-0000mg-Hf
-	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 11:13:50 -0400
+	(envelope-from <mreitz@redhat.com>) id 1dS41q-0000gB-GW
+	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 12:16:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dS32o-0001a1-6w
-	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 11:13:49 -0400
-Received: from orth.archaic.org.uk ([81.2.115.148]:48310)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dS32n-0001Zh-Ub
-	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 11:13:46 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dS32b-0007xQ-2M; Mon, 03 Jul 2017 16:13:33 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Date: Mon,  3 Jul 2017 16:13:32 +0100
-Message-Id: <1499094812-13239-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <mreitz@redhat.com>) id 1dS41p-0006Ax-64
+	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 12:16:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51226)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mreitz@redhat.com>)
+	id 1dS41h-000652-IS; Mon, 03 Jul 2017 12:16:41 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C91DC04B924;
+	Mon,  3 Jul 2017 16:16:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C91DC04B924
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=mreitz@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7C91DC04B924
+Received: from dresden.str.redhat.com (unknown [10.40.205.14])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FF696F984;
+	Mon,  3 Jul 2017 16:16:35 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: edgar.iglesias@xilinx.com, stefanha@redhat.com, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20170703123114.17103-1-eblake@redhat.com>
+	<73fa75d7-3aa7-e125-af55-c9f383007a28@redhat.com>
+	<8cc9c517-0ee5-a492-c596-6713db0e7d0f@redhat.com>
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <8777cb27-5245-697d-4b88-fc0216c2e5ea@redhat.com>
+Date: Mon, 3 Jul 2017 18:16:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
+MIME-Version: 1.0
+In-Reply-To: <8cc9c517-0ee5-a492-c596-6713db0e7d0f@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="ITco9le1USVFBoXf4qQGhVNgmf3qn4dAk"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 03 Jul 2017 16:16:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 81.2.115.148
-Subject: [Qemu-trivial] [PATCH] include/hw/ptimer.h: Add documentation
- comments
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v3] tests: Avoid non-portable 'echo -ARG'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -39,167 +64,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jul 2017 15:13:50 -0000
+X-List-Received-Date: Mon, 03 Jul 2017 16:16:51 -0000
 
-Add documentation comments describing the public API of the
-ptimer countdown timer.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--ITco9le1USVFBoXf4qQGhVNgmf3qn4dAk
+Content-Type: multipart/mixed; boundary="tw1sLvWV0u6kApCR7WkolAh4BFisbF3Ik";
+ protected-headers="v1"
+From: Max Reitz <mreitz@redhat.com>
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: edgar.iglesias@xilinx.com, stefanha@redhat.com, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Message-ID: <8777cb27-5245-697d-4b88-fc0216c2e5ea@redhat.com>
+Subject: Re: [PATCH v3] tests: Avoid non-portable 'echo -ARG'
+References: <20170703123114.17103-1-eblake@redhat.com>
+ <73fa75d7-3aa7-e125-af55-c9f383007a28@redhat.com>
+ <8cc9c517-0ee5-a492-c596-6713db0e7d0f@redhat.com>
+In-Reply-To: <8cc9c517-0ee5-a492-c596-6713db0e7d0f@redhat.com>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I was trying to write a timer device and discovered that the ptimer
-API wasn't actually documented, so I wrote some basic notes for it...
+--tw1sLvWV0u6kApCR7WkolAh4BFisbF3Ik
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
- include/hw/ptimer.h | 120 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 120 insertions(+)
+On 2017-07-03 16:32, Eric Blake wrote:
+> On 07/03/2017 07:57 AM, Max Reitz wrote:
+>> On 2017-07-03 14:31, Eric Blake wrote:
+>>> POSIX says that backslashes in the arguments to 'echo', as well as
+>>> any use of 'echo -n' and 'echo -e', are non-portable; it recommends
+>>> people should favor 'printf' instead.  This is definitely true where
+>>> we do not control which shell is running (such as in makefile snippet=
+s
+>>> or in documentation examples).  But even for scripts where we
+>>> require bash (and therefore, where echo does what we want by default)=
+,
+>>> it is still possible to use 'shopt -s xpg_echo' to change bash's
+>>> behavior of echo.  And setting a good example never hurts when we are=
 
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index eafc3f0..fc4ef5c 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -12,6 +12,20 @@
- #include "qemu/timer.h"
- #include "migration/vmstate.h"
- 
-+/* The ptimer API implements a simple periodic countdown timer.
-+ * The countdown timer has a value (which can be read and written via
-+ * ptimer_get_count() and ptimer_set_count()). When it is enabled
-+ * using ptimer_run(), the value will count downwards at the frequency
-+ * which has been configured using ptimer_set_period() or ptimer_set_freq().
-+ * When it reaches zero it will trigger a QEMU bottom half handler, and
-+ * can be set to either reload itself from a specified limit value
-+ * and keep counting down, or to stop (as a one-shot timer).
-+ *
-+ * Forgetting to set the period/frequency (or setting it to zero) is a
-+ * bug in the QEMU device and will cause warning messages to be printed
-+ * to stderr when the guest attempts to enable the timer.
-+ */
-+
- /* The default ptimer policy retains backward compatibility with the legacy
-  * timers. Custom policies are adjusting the default one. Consider providing
-  * a correct policy for your timer.
-@@ -59,15 +73,121 @@
- typedef struct ptimer_state ptimer_state;
- typedef void (*ptimer_cb)(void *opaque);
- 
-+/**
-+ * ptimer_init - Allocate and return a new ptimer
-+ * @bh: QEMU bottom half which is run on timer expiry
-+ * @policy: PTIMER_POLICY_* bits specifying behaviour
-+ *
-+ * The ptimer returned must be freed using ptimer_free().
-+ * The ptimer takes ownership of @bh and will delete it
-+ * when the ptimer is eventually freed.
-+ */
- ptimer_state *ptimer_init(QEMUBH *bh, uint8_t policy_mask);
-+
-+/**
-+ * ptimer_free - Free a ptimer
-+ * @s: timer to free
-+ *
-+ * Free a ptimer created using ptimer_init() (including
-+ * deleting the bottom half which it is using).
-+ */
- void ptimer_free(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_period - Set counter increment interval in nanoseconds
-+ * @s: ptimer to configure
-+ * @period: period of the counter in nanoseconds
-+ *
-+ * Note that if your counter behaviour is specified as having a
-+ * particular frequency rather than a period then ptimer_set_freq()
-+ * may be more appropriate.
-+ */
- void ptimer_set_period(ptimer_state *s, int64_t period);
-+
-+/**
-+ * ptimer_set_freq - Set counter frequency in Hz
-+ * @s: ptimer to configure
-+ * @freq: counter frequency in Hz
-+ *
-+ * This does the same thing as ptimer_set_period(), so you only
-+ * need to call one of them. If the counter behaviour is specified
-+ * as setting the frequency then this function is more appropriate,
-+ * because it allows specifying an effective period which is
-+ * precise to fractions of a nanosecond, avoiding rounding errors.
-+ */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq);
-+
-+/**
-+ * ptimer_get_limit - Get the configured limit of the ptimer
-+ * @s: ptimer to query
-+ *
-+ * This function returns the current limit (reload) value
-+ * of the down-counter; that is, the value which it will be
-+ * reset to when it hits zero.
-+ *
-+ * Generally timer devices using ptimers should be able to keep
-+ * their reload register state inside the ptimer using the get
-+ * and set limit functions rather than needing to also track it
-+ * in their own state structure.
-+ */
- uint64_t ptimer_get_limit(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_limit - Set the limit of the ptimer
-+ * @s: ptimer
-+ * @limit: initial countdown value
-+ * @reload: if nonzero, then reset the counter to the new limit
-+ *
-+ * Set the limit value of the down-counter. The @reload flag can
-+ * be used to emulate the behaviour of timers which immediately
-+ * reload the counter when their reload register is written to.
-+ */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
-+
-+/**
-+ * ptimer_get_count - Get the current value of the ptimer
-+ * @s: ptimer
-+ *
-+ * Return the current value of the down-counter. This will
-+ * return the correct value whether the counter is enabled or
-+ * disabled.
-+ */
- uint64_t ptimer_get_count(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_count - Set the current value of the ptimer
-+ * @s: ptimer
-+ * @count: count value to set
-+ *
-+ * Set the value of the down-counter. If the counter is currently
-+ * enabled this will arrange for a timer callback at the appropriate
-+ * point in the future.
-+ */
- void ptimer_set_count(ptimer_state *s, uint64_t count);
-+
-+/**
-+ * ptimer_run - Start a ptimer counting
-+ * @s: ptimer
-+ * @oneshot: non-zero if this timer should only count down once
-+ *
-+ * Start a ptimer counting down; when it reaches zero the bottom half
-+ * passed to ptimer_init() will be invoked. If the @oneshot argument is zero,
-+ * the counter value will then be reloaded from the limit and it will
-+ * start counting down again. If @oneshot is non-zero, then the counter
-+ * will disable itself when it reaches zero.
-+ */
- void ptimer_run(ptimer_state *s, int oneshot);
-+
-+/**
-+ * ptimer_stop - Stop a ptimer counting
-+ * @s: ptimer
-+ *
-+ * Pause a timer (the count stays at its current value until ptimer_run()
-+ * is called to start it counting again).
-+ *
-+ * Note that this can cause it to "lose" time, even if it is immediately
-+ * restarted.
-+ */
- void ptimer_stop(ptimer_state *s);
- 
- extern const VMStateDescription vmstate_ptimer;
--- 
-2.7.4
+>>> not sure if a snippet will be copied from a bash-only script to a
+>>> general shell script (although I don't change the use of non-portable=
 
+>>> \e for ESC when we know the running shell is bash).
+>>>
+>=20
+>>>
+>>>          if [ -f $seq.notrun ]
+>>>          then
+>>> -            $timestamp || echo -n " [not run] "
+>>> -            $timestamp && echo " [not run]" && echo -n "        $seq=
+ -- "
+>>> +            $timestamp || printf " [not run] "
+>>> +            $timestamp && echo " [not run]" && printf "        $seq =
+-- "
+>>
+>> Everywhere else, $seq got its own %s, but not here. That's at least
+>> inconsistent.
+>=20
+> True, and it's because $ is a bit easy to miss when I'm trying to
+> special case which $ are important.
+>=20
+>>
+>> I don't quite know why you're not simply using %s and %b everywhere
+>> there is a non-constant format string. Yes, if it is an exit code, it =
+is
+>> pretty clear that it won't contain a %. If it's a return value from
+>> "date +%T", it is kind of, too (but then you have to know what that do=
+es
+>> in order to review the change -- and I myself had to consult the man
+>> page, to be honest). If they are variables named "img_offset" and
+>> "img_size", then you'd hope they are numbers, but in order to check yo=
+u
+>> still have to look at the rest of the code (especially since they are
+>> embedded as strings into the JSON object).
+>> If you simply used %s and %b everywhere there is a $, reviewing would =
+be
+>> absolutely trivial. Yes, it seems a bit unnecessary, but it does make
+>> reviewing much easier and I think since this is also about setting a
+>> good example, that would be a good example, IMHO.
+>> (Sure, reviewing this already is easy enough, but there still is a
+>> difference between "very easy" and "trivial".)
+>=20
+> It's not every day a "trivial" patch gets to v4, but your arguments are=
+
+> persuasive enough that I'll respin.
+>=20
+>>
+>> Although at this point I have to admit that reviewing a really trivial=
+
+>> v4 would take me more time than to just write the following:
+>>
+>> With a %s added to the printf above:
+>>
+>> Reviewed-by: Max Reitz <mreitz@redhat.com>
+>>
+>>>              cat $seq.notrun
+>>>              notrun=3D"$notrun $seq"
+>>>          else
+>>>              if [ $sts -ne 0 ]
+>>>              then
+>>> -                echo -n " [failed, exit status $sts]"
+>>> +                printf " [failed, exit status $sts]"
+>=20
+> So, before I respin, let me double-check:
+>=20
+> Here's a case where the context makes it obvious that $sts is numeric
+> (if not, the '[ $sts -ne 0 ]' would have failed); do you want the %s
+> here or not?
+
+Well, I'd put a %s there anyway, just because that would mean exactly
+zero dependency on any context (even if the context is very small here).
+
+Max
+
+
+--tw1sLvWV0u6kApCR7WkolAh4BFisbF3Ik--
+
+--ITco9le1USVFBoXf4qQGhVNgmf3qn4dAk
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEvBAEBCAAZBQJZWm3iEhxtcmVpdHpAcmVkaGF0LmNvbQAKCRD0B9sAYdXPQLzv
+B/48rEBMoG6AiYtrX27TOTz95q3HqiuNG69jsLycWzGIoCIqvWasQRrcxdDIwy4H
+j5p3zooWZIIIJrnmziwoi/ppBxH4de+76E0qD7ww+nJVz7FKmS94orOF5kn/K62V
+uiUjxhLy60BygmbehZvJ1sl0f8qF4R2L7uHJ7Emv7PXo4qumbBbTF2mvDsEjuKLj
+MlEHJhVenGDZ19AAWX9WWlVcB+ZHnbXqGBNcZkpEFDwBgcNjTUZzRAtkE3Ti6QJR
+SD0VvKUx9+eMrGI+pTP9hpT8H9umm9k7GQVI1zgBCqurw81tPFta3WEg7xgRh79L
+8Ejiam3xFdV/vGS9QHvpxATh
+=Fovd
+-----END PGP SIGNATURE-----
+
+--ITco9le1USVFBoXf4qQGhVNgmf3qn4dAk--
 
