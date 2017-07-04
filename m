@@ -1,48 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dS5nf-0005fE-6t
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jul 2017 14:10:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45138)
+	id 1dSFd3-0003rQ-9U
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jul 2017 00:40:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52970)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dS5nb-0005cv-6P
-	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 14:10:17 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSFcx-0003pJ-P3
+	for qemu-trivial@nongnu.org; Tue, 04 Jul 2017 00:39:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dS5nW-0005Vo-C8
-	for qemu-trivial@nongnu.org; Mon, 03 Jul 2017 14:10:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54206)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dS5nK-0005Iv-8A; Mon, 03 Jul 2017 14:09:58 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C77D13DBE5;
-	Mon,  3 Jul 2017 18:09:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C77D13DBE5
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com C77D13DBE5
-Received: from red.redhat.com (ovpn-120-36.rdu2.redhat.com [10.10.120.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 282BD5D966;
-	Mon,  3 Jul 2017 18:09:53 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: edgar.iglesias@xilinx.com, stefanha@redhat.com, mreitz@redhat.com,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Mon,  3 Jul 2017 13:09:50 -0500
-Message-Id: <20170703180950.9895-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 03 Jul 2017 18:09:57 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v4] tests: Avoid non-portable 'echo -ARG'
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSFcw-0006lt-7a
+	for qemu-trivial@nongnu.org; Tue, 04 Jul 2017 00:39:55 -0400
+Received: from mail-it0-x230.google.com ([2607:f8b0:4001:c0b::230]:36466)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dSFcs-0006gE-Sl; Tue, 04 Jul 2017 00:39:51 -0400
+Received: by mail-it0-x230.google.com with SMTP id m68so96140918ith.1;
+	Mon, 03 Jul 2017 21:39:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=ni5KNU1YCI6KsH0/M6VZkBbBt6kUQ75GZYSVcauIpOo=;
+	b=qsC+im9fKv6dpsGA5h46g46hKa8p3q8yP4anQDK209nEOLxNeI9iBTyU8olPHhPlzK
+	M1qL/u9UJoH2p2u5O5TEFJ6Wl2+DVdNw5mYqpqHTiIzcFbcz9mnJaTRSSQgM7ygfmfem
+	WkR7Q1NIp5enUNYfYp3BNvD3boeZe6xy6kDWpFyT343fg8NcDoev3KX2WAu6FGTTDGmY
+	/aiznci+KuKekmL+DOrzmKK7Ge3r8Ffdvvup6p9KAuX2nEyf7KaTI+vK5EPO/lgjZIzc
+	82ZhByF/1fU5p9JbNnkdCK1y+gaco0iqU99bfhfLfGNI8eT9HnehDX8nhJrbiyJT4ZOs
+	qdnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=ni5KNU1YCI6KsH0/M6VZkBbBt6kUQ75GZYSVcauIpOo=;
+	b=ZJE+X79Xo0w7AzXpCuNcSK3XJCnXC4+XMtBwwpnyi7EN0kAyG6ThlmV6Ul4zyC8rxi
+	4+/tfV8lwZM7poC3E23VJuZu36Pyeqo1/xx2mAnqmIon6NmB57PMP60XyWvcoo13ewqy
+	j7qC+vLf72OGIyRwbUj25sBFKjTOF+fbbwkxlc2JF4v4RS0mkJAZzQCLl3pfJLxaXdLf
+	6cWbpNlSge91NCGY1keEG8CdC830yU8MNJzXne+mwNYsI53lSAuZokjwYYzCYoSlMEF9
+	vtADiGjn0NvRWSo4093nxjjztMX3StT+en484NgiLAmI9VGgDSq1K7Jww4huk22CsKMP
+	b6lg==
+X-Gm-Message-State: AIVw110cXpck2Z0FqrTFHRAK32UpHGHNNjUtGTr715rgrvQSbgSLR3Fw
+	jBMwgExtJ8Jy09Pasy7BNtGVipmjOA==
+X-Received: by 10.36.110.149 with SMTP id w143mr7609354itc.21.1499143183468;
+	Mon, 03 Jul 2017 21:39:43 -0700 (PDT)
+MIME-Version: 1.0
+Sender: philippe.mathieu.daude@gmail.com
+Received: by 10.107.139.135 with HTTP; Mon, 3 Jul 2017 21:39:42 -0700 (PDT)
+In-Reply-To: <1499094812-13239-1-git-send-email-peter.maydell@linaro.org>
+References: <1499094812-13239-1-git-send-email-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Tue, 4 Jul 2017 01:39:42 -0300
+X-Google-Sender-Auth: cRzHyOnGtT0riIrawVAri5mAfQw
+Message-ID: <CAAdtpL6MJJLy27ZRH-9jLWx-1U88+_H4xsfy0+3f=AKBdSQNfw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Patch Tracking <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::230
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] include/hw/ptimer.h: Add
+ documentation comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,407 +72,189 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jul 2017 18:10:17 -0000
+X-List-Received-Date: Tue, 04 Jul 2017 04:39:57 -0000
 
-POSIX says that backslashes in the arguments to 'echo', as well as
-any use of 'echo -n' and 'echo -e', are non-portable; it recommends
-people should favor 'printf' instead.  This is definitely true where
-we do not control which shell is running (such as in makefile snippets
-or in documentation examples).  But even for scripts where we
-require bash (and therefore, where echo does what we want by default),
-it is still possible to use 'shopt -s xpg_echo' to change bash's
-behavior of echo.  And setting a good example never hurts when we are
-not sure if a snippet will be copied from a bash-only script to a
-general shell script (although I don't change the use of non-portable
-\e for ESC when we know the running shell is bash).
+On Mon, Jul 3, 2017 at 12:13 PM, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> Add documentation comments describing the public API of the
+> ptimer countdown timer.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Replace 'echo -n "..."' with 'printf %s "..."', and 'echo -e "..."'
-with 'printf %b "...\n"', with the optimization that the %s/%b
-argument can be omitted if the string being printed is a strict
-literal with no '%', '$', or '`' (we could technically also make
-this optimization when there are $ or `` substitutions but where
-we can prove their results will not be problematic, but proving
-that such substitutions are safe makes the patch less trivial
-compared to just being consistent).
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-In the qemu-iotests check script, fix unusual shell quoting
-that would result in word-splitting if 'date' outputs a space.
+> ---
+> I was trying to write a timer device and discovered that the ptimer
+> API wasn't actually documented, so I wrote some basic notes for it...
 
-In test 051, take an opportunity to shorten the line.
+I used to believe this file had no comments on purpose, feeling hazed
+after reading "only the source code tells the full story" from the
+GettingStartedDevelopers wiki entry.
 
-In test 068, get rid of a pointless second invocation of bash.
+/me gives Peter a big hug!
 
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Eric Blake <eblake@redhat.com>
+>
+>  include/hw/ptimer.h | 120 ++++++++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  1 file changed, 120 insertions(+)
+>
+> diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+> index eafc3f0..fc4ef5c 100644
+> --- a/include/hw/ptimer.h
+> +++ b/include/hw/ptimer.h
+> @@ -12,6 +12,20 @@
+>  #include "qemu/timer.h"
+>  #include "migration/vmstate.h"
+>
+> +/* The ptimer API implements a simple periodic countdown timer.
+> + * The countdown timer has a value (which can be read and written via
+> + * ptimer_get_count() and ptimer_set_count()). When it is enabled
+> + * using ptimer_run(), the value will count downwards at the frequency
+> + * which has been configured using ptimer_set_period() or ptimer_set_fre=
+q().
+> + * When it reaches zero it will trigger a QEMU bottom half handler, and
+> + * can be set to either reload itself from a specified limit value
+> + * and keep counting down, or to stop (as a one-shot timer).
+> + *
+> + * Forgetting to set the period/frequency (or setting it to zero) is a
+> + * bug in the QEMU device and will cause warning messages to be printed
+> + * to stderr when the guest attempts to enable the timer.
+> + */
+> +
+>  /* The default ptimer policy retains backward compatibility with the leg=
+acy
+>   * timers. Custom policies are adjusting the default one. Consider provi=
+ding
+>   * a correct policy for your timer.
+> @@ -59,15 +73,121 @@
+>  typedef struct ptimer_state ptimer_state;
+>  typedef void (*ptimer_cb)(void *opaque);
+>
+> +/**
+> + * ptimer_init - Allocate and return a new ptimer
+> + * @bh: QEMU bottom half which is run on timer expiry
+> + * @policy: PTIMER_POLICY_* bits specifying behaviour
+> + *
+> + * The ptimer returned must be freed using ptimer_free().
+> + * The ptimer takes ownership of @bh and will delete it
+> + * when the ptimer is eventually freed.
+> + */
+>  ptimer_state *ptimer_init(QEMUBH *bh, uint8_t policy_mask);
+> +
+> +/**
+> + * ptimer_free - Free a ptimer
+> + * @s: timer to free
+> + *
+> + * Free a ptimer created using ptimer_init() (including
+> + * deleting the bottom half which it is using).
+> + */
+>  void ptimer_free(ptimer_state *s);
+> +
+> +/**
+> + * ptimer_set_period - Set counter increment interval in nanoseconds
+> + * @s: ptimer to configure
+> + * @period: period of the counter in nanoseconds
+> + *
+> + * Note that if your counter behaviour is specified as having a
+> + * particular frequency rather than a period then ptimer_set_freq()
+> + * may be more appropriate.
+> + */
+>  void ptimer_set_period(ptimer_state *s, int64_t period);
 
----
-v4: even more use of %b/%s [Max]
-v3: use 'printf %s' in a few more places that substitute [Max]
-v2: be robust to potential % in substitutions
----
- qemu-options.hx             |  4 ++--
- tests/multiboot/run_test.sh | 10 +++++-----
- tests/qemu-iotests/051      |  7 ++++---
- tests/qemu-iotests/068      |  2 +-
- tests/qemu-iotests/142      | 48 ++++++++++++++++++++++-----------------------
- tests/qemu-iotests/171      | 14 ++++++-------
- tests/qemu-iotests/check    | 18 ++++++++---------
- tests/rocker/all            | 10 +++++-----
- tests/tcg/cris/Makefile     |  8 ++++----
- 9 files changed, 61 insertions(+), 60 deletions(-)
+I like to use explicit unit in variable name, i.e. period_ns.
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 297bd8a..05a0474 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4363,7 +4363,7 @@ The simplest (insecure) usage is to provide the secret inline
-
- The simplest secure usage is to provide the secret via a file
-
-- # echo -n "letmein" > mypasswd.txt
-+ # printf "letmein" > mypasswd.txt
-  # $QEMU -object secret,id=sec0,file=mypasswd.txt,format=raw
-
- For greater security, AES-256-CBC should be used. To illustrate usage,
-@@ -4391,7 +4391,7 @@ telling openssl to base64 encode the result, but it could be left
- as raw bytes if desired.
-
- @example
-- # SECRET=$(echo -n "letmein" |
-+ # SECRET=$(printf "letmein" |
-             openssl enc -aes-256-cbc -a -K $KEY -iv $IV)
- @end example
-
-diff --git a/tests/multiboot/run_test.sh b/tests/multiboot/run_test.sh
-index 78d7edf..c8f3da8 100755
---- a/tests/multiboot/run_test.sh
-+++ b/tests/multiboot/run_test.sh
-@@ -26,7 +26,7 @@ run_qemu() {
-     local kernel=$1
-     shift
-
--    echo -e "\n\n=== Running test case: $kernel $@ ===\n" >> test.log
-+    printf %b "\n\n=== Running test case: $kernel $@ ===\n\n" >> test.log
-
-     $QEMU \
-         -kernel $kernel \
-@@ -68,21 +68,21 @@ for t in mmap modules; do
-     pass=1
-
-     if [ $debugexit != 1 ]; then
--        echo -e "\e[31m ?? \e[0m $t (no debugexit used, exit code $ret)"
-+        printf %b "\e[31m ?? \e[0m $t (no debugexit used, exit code $ret)\n"
-         pass=0
-     elif [ $ret != 0 ]; then
--        echo -e "\e[31mFAIL\e[0m $t (exit code $ret)"
-+        printf %b "\e[31mFAIL\e[0m $t (exit code $ret)\n"
-         pass=0
-     fi
-
-     if ! diff $t.out test.log > /dev/null 2>&1; then
--        echo -e "\e[31mFAIL\e[0m $t (output difference)"
-+        printf %b "\e[31mFAIL\e[0m $t (output difference)\n"
-         diff -u $t.out test.log
-         pass=0
-     fi
-
-     if [ $pass == 1 ]; then
--        echo -e "\e[32mPASS\e[0m $t"
-+        printf %b "\e[32mPASS\e[0m $t\n"
-     fi
-
- done
-diff --git a/tests/qemu-iotests/051 b/tests/qemu-iotests/051
-index 26c29de..c8cfc76 100755
---- a/tests/qemu-iotests/051
-+++ b/tests/qemu-iotests/051
-@@ -217,7 +217,7 @@ run_qemu -drive driver=null-co,cache=invalid_value
- # Test 142 checks the direct=on cases
-
- for cache in writeback writethrough unsafe invalid_value; do
--    echo -e "info block\ninfo block file\ninfo block backing\ninfo block backing-file" | \
-+    printf "info block %s\n" '' file backing backing-file | \
-     run_qemu -drive file="$TEST_IMG",cache=$cache,backing.file.filename="$TEST_IMG.base",backing.cache.no-flush=on,backing.node-name=backing,backing.file.node-name=backing-file,file.node-name=file,if=none,id=$device_id -nodefaults
- done
-
-@@ -325,8 +325,9 @@ echo "qemu-io $device_id \"write -P 0x22 0 4k\"" | run_qemu -drive file="$TEST_I
-
- $QEMU_IO -c "read -P 0x22 0 4k" "$TEST_IMG" | _filter_qemu_io
-
--echo -e "qemu-io $device_id \"write -P 0x33 0 4k\"\ncommit $device_id" | run_qemu -drive file="$TEST_IMG",snapshot=on,if=none,id=$device_id\
--                                                                       | _filter_qemu_io
-+printf %b "qemu-io $device_id \"write -P 0x33 0 4k\"\ncommit $device_id\n" |
-+    run_qemu -drive file="$TEST_IMG",snapshot=on,if=none,id=$device_id |
-+    _filter_qemu_io
-
- $QEMU_IO -c "read -P 0x33 0 4k" "$TEST_IMG" | _filter_qemu_io
-
-diff --git a/tests/qemu-iotests/068 b/tests/qemu-iotests/068
-index 3801b65..cfa0f2a 100755
---- a/tests/qemu-iotests/068
-+++ b/tests/qemu-iotests/068
-@@ -76,7 +76,7 @@ for extra_args in \
-     _make_test_img $IMG_SIZE
-
-     # Give qemu some time to boot before saving the VM state
--    bash -c 'sleep 1; echo -e "savevm 0\nquit"' | _qemu $extra_args
-+    { sleep 1; printf "savevm 0\nquit\n"; } | _qemu $extra_args
-     # Now try to continue from that VM state (this should just work)
-     echo quit | _qemu $extra_args -loadvm 0
- done
-diff --git a/tests/qemu-iotests/142 b/tests/qemu-iotests/142
-index 9a5b713..1639c83 100755
---- a/tests/qemu-iotests/142
-+++ b/tests/qemu-iotests/142
-@@ -94,36 +94,36 @@ function check_cache_all()
-     # cache.direct is supposed to be inherited by both bs->file and
-     # bs->backing
-
--    echo -e "cache.direct=on on none0"
-+    printf "cache.direct=on on none0\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
--    echo -e "\ncache.direct=on on file"
-+    printf "\ncache.direct=on on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
--    echo -e "\ncache.direct=on on backing"
-+    printf "\ncache.direct=on on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
--    echo -e "\ncache.direct=on on backing-file"
-+    printf "\ncache.direct=on on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.direct=on | grep -e "Cache" -e "[Cc]annot|[Cc]ould not|[Cc]an't"
-
-     # cache.writeback is supposed to be inherited by bs->backing; bs->file
-     # always gets cache.writeback=on
-
--    echo -e "\n\ncache.writeback=off on none0"
-+    printf "\n\ncache.writeback=off on none0\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.writeback=off | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.writeback=off on file"
-+    printf "\ncache.writeback=off on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.writeback=off | grep -e "doesn't" -e "does not"
--    echo -e "\ncache.writeback=off on backing"
-+    printf "\ncache.writeback=off on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.writeback=off | grep -e "doesn't" -e "does not"
--    echo -e "\ncache.writeback=off on backing-file"
-+    printf "\ncache.writeback=off on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.writeback=off | grep -e "doesn't" -e "does not"
-
-     # cache.no-flush is supposed to be inherited by both bs->file and bs->backing
-
--    echo -e "\n\ncache.no-flush=on on none0"
-+    printf "\n\ncache.no-flush=on on none0\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on file"
-+    printf "\ncache.no-flush=on on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",file.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on backing"
-+    printf "\ncache.no-flush=on on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on backing-file"
-+    printf "\ncache.no-flush=on on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$files","$ids",backing.file.cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
- }
-
-@@ -236,35 +236,35 @@ function check_cache_all_separate()
- {
-     # Check cache.direct
-
--    echo -e "cache.direct=on on blk"
-+    printf "cache.direct=on on blk\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.direct=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.direct=on on file"
-+    printf "\ncache.direct=on on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.direct=on -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.direct=on on backing"
-+    printf "\ncache.direct=on on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.direct=on -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.direct=on on backing-file"
-+    printf "\ncache.direct=on on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.direct=on -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-
-     # Check cache.writeback
-
--    echo -e "\n\ncache.writeback=off on blk"
-+    printf "\n\ncache.writeback=off on blk\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.writeback=off | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.writeback=off on file"
-+    printf "\ncache.writeback=off on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.writeback=off -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.writeback=off on backing"
-+    printf "\ncache.writeback=off on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.writeback=off -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.writeback=off on backing-file"
-+    printf "\ncache.writeback=off on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.writeback=off -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
-
-     # Check cache.no-flush
-
--    echo -e "\n\ncache.no-flush=on on blk"
-+    printf "\n\ncache.no-flush=on on blk\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img",cache.no-flush=on | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on file"
-+    printf "\ncache.no-flush=on on file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk" -drive "$drv_file",cache.no-flush=on -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on backing"
-+    printf "\ncache.no-flush=on on backing\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile" -drive "$drv_bk",cache.no-flush=on -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
--    echo -e "\ncache.no-flush=on on backing-file"
-+    printf "\ncache.no-flush=on on backing-file\n"
-     echo "$hmp_cmds" | run_qemu -drive "$drv_bkfile",cache.no-flush=on -drive "$drv_bk" -drive "$drv_file" -drive "$drv_img" | grep -e "Cache" -e "[Cc]annot\|[Cc]ould not\|[Cc]an't"
- }
-
-diff --git a/tests/qemu-iotests/171 b/tests/qemu-iotests/171
-index 257be10..bcfaaf1 100755
---- a/tests/qemu-iotests/171
-+++ b/tests/qemu-iotests/171
-@@ -45,15 +45,15 @@ _supported_os Linux
-
- # Create JSON with options
- img_json() {
--    echo -n 'json:{"driver":"raw", '
--    echo -n "\"offset\":\"$img_offset\", "
-+    printf %s 'json:{"driver":"raw", '
-+    printf %s "\"offset\":\"$img_offset\", "
-     if [ "$img_size" -ne -1 ] ; then
--        echo -n "\"size\":\"$img_size\", "
-+        printf %s "\"size\":\"$img_size\", "
-     fi
--    echo -n '"file": {'
--    echo -n    '"driver":"file", '
--    echo -n    "\"filename\":\"$TEST_IMG\" "
--    echo -n "} }"
-+    printf %s '"file": {'
-+    printf %s   '"driver":"file", '
-+    printf %s   "\"filename\":\"$TEST_IMG\" "
-+    printf %s "} }"
- }
-
- do_general_test() {
-diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
-index 4b1c674..9ded37c 100755
---- a/tests/qemu-iotests/check
-+++ b/tests/qemu-iotests/check
-@@ -141,7 +141,7 @@ _wallclock()
- _timestamp()
- {
-     now=`date "+%T"`
--    echo -n " [$now]"
-+    printf %s " [$now]"
- }
-
- _wrapup()
-@@ -255,7 +255,7 @@ seq="check"
- for seq in $list
- do
-     err=false
--    echo -n "$seq"
-+    printf %s "$seq"
-     if [ -n "$TESTS_REMAINING_LOG" ] ; then
-         sed -e "s/$seq//" -e 's/  / /' -e 's/^ *//' $TESTS_REMAINING_LOG > $TESTS_REMAINING_LOG.tmp
-         mv $TESTS_REMAINING_LOG.tmp $TESTS_REMAINING_LOG
-@@ -281,9 +281,9 @@ do
-         rm -f $seq.out.bad
-         lasttime=`sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE`
-         if [ "X$lasttime" != X ]; then
--                echo -n " ${lasttime}s ..."
-+                printf %s " ${lasttime}s ..."
-         else
--                echo -n "        "        # prettier output with timestamps.
-+                printf "        "        # prettier output with timestamps.
-         fi
-         rm -f core $seq.notrun
-
-@@ -291,7 +291,7 @@ do
-         echo "$seq" > "${TEST_DIR}"/check.sts
-
-         start=`_wallclock`
--        $timestamp && echo -n "        ["`date "+%T"`"]"
-+        $timestamp && printf %s "        [$(date "+%T")]"
-
-         if [ "$(head -n 1 "$source_iotests/$seq")" == "#!/usr/bin/env python" ]; then
-             run_command="$PYTHON $seq"
-@@ -314,21 +314,21 @@ do
-
-         if [ -f core ]
-         then
--            echo -n " [dumped core]"
-+            printf " [dumped core]"
-             mv core $seq.core
-             err=true
-         fi
-
-         if [ -f $seq.notrun ]
-         then
--            $timestamp || echo -n " [not run] "
--            $timestamp && echo " [not run]" && echo -n "        $seq -- "
-+            $timestamp || printf " [not run] "
-+            $timestamp && echo " [not run]" && printf %s "        $seq -- "
-             cat $seq.notrun
-             notrun="$notrun $seq"
-         else
-             if [ $sts -ne 0 ]
-             then
--                echo -n " [failed, exit status $sts]"
-+                printf %s " [failed, exit status $sts]"
-                 err=true
-             fi
-
-diff --git a/tests/rocker/all b/tests/rocker/all
-index d5ae963..3f9b786 100755
---- a/tests/rocker/all
-+++ b/tests/rocker/all
-@@ -1,19 +1,19 @@
--echo -n "Running port test...              "
-+printf "Running port test...              "
- ./port
- if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-
--echo -n "Running bridge test...            "
-+printf "Running bridge test...            "
- ./bridge
- if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-
--echo -n "Running bridge STP test...        "
-+printf "Running bridge STP test...        "
- ./bridge-stp
- if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-
--echo -n "Running bridge VLAN test...       "
-+printf "Running bridge VLAN test...       "
- ./bridge-vlan
- if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-
--echo -n "Running bridge VLAN STP test...   "
-+printf "Running bridge VLAN STP test...   "
- ./bridge-vlan-stp
- if [ $? -eq 0 ]; then echo "pass"; else echo "FAILED"; exit 1; fi
-diff --git a/tests/tcg/cris/Makefile b/tests/tcg/cris/Makefile
-index 6b3dba4..664b30c 100644
---- a/tests/tcg/cris/Makefile
-+++ b/tests/tcg/cris/Makefile
-@@ -150,17 +150,17 @@ check_addcv17.tst: crtv10.o sysv10.o
- build: $(CRT) $(SYS) $(TESTCASES)
-
- check: $(CRT) $(SYS) $(TESTCASES)
--	@echo -e "\nQEMU simulator."
-+	@printf "\nQEMU simulator.\n"
- 	for case in $(TESTCASES); do \
--		echo -n "$$case "; \
-+		printf %s "$$case "; \
- 		SIMARGS=; \
- 		case $$case in *v17*) SIMARGS="-cpu crisv17";; esac; \
- 		$(SIM) $$SIMARGS ./$$case; \
- 	done
- check-g: $(CRT) $(SYS) $(TESTCASES)
--	@echo -e "\nGDB simulator."
-+	@printf "\nGDB simulator.\n"
- 	@for case in $(TESTCASES); do \
--		echo -n "$$case "; \
-+		printf %s "$$case "; \
- 		$(SIMG) $$case; \
- 	done
-
--- 
-2.9.4
-
+> +
+> +/**
+> + * ptimer_set_freq - Set counter frequency in Hz
+> + * @s: ptimer to configure
+> + * @freq: counter frequency in Hz
+> + *
+> + * This does the same thing as ptimer_set_period(), so you only
+> + * need to call one of them. If the counter behaviour is specified
+> + * as setting the frequency then this function is more appropriate,
+> + * because it allows specifying an effective period which is
+> + * precise to fractions of a nanosecond, avoiding rounding errors.
+> + */
+>  void ptimer_set_freq(ptimer_state *s, uint32_t freq);
+> +
+> +/**
+> + * ptimer_get_limit - Get the configured limit of the ptimer
+> + * @s: ptimer to query
+> + *
+> + * This function returns the current limit (reload) value
+> + * of the down-counter; that is, the value which it will be
+> + * reset to when it hits zero.
+> + *
+> + * Generally timer devices using ptimers should be able to keep
+> + * their reload register state inside the ptimer using the get
+> + * and set limit functions rather than needing to also track it
+> + * in their own state structure.
+> + */
+>  uint64_t ptimer_get_limit(ptimer_state *s);
+> +
+> +/**
+> + * ptimer_set_limit - Set the limit of the ptimer
+> + * @s: ptimer
+> + * @limit: initial countdown value
+> + * @reload: if nonzero, then reset the counter to the new limit
+> + *
+> + * Set the limit value of the down-counter. The @reload flag can
+> + * be used to emulate the behaviour of timers which immediately
+> + * reload the counter when their reload register is written to.
+> + */
+>  void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
+> +
+> +/**
+> + * ptimer_get_count - Get the current value of the ptimer
+> + * @s: ptimer
+> + *
+> + * Return the current value of the down-counter. This will
+> + * return the correct value whether the counter is enabled or
+> + * disabled.
+> + */
+>  uint64_t ptimer_get_count(ptimer_state *s);
+> +
+> +/**
+> + * ptimer_set_count - Set the current value of the ptimer
+> + * @s: ptimer
+> + * @count: count value to set
+> + *
+> + * Set the value of the down-counter. If the counter is currently
+> + * enabled this will arrange for a timer callback at the appropriate
+> + * point in the future.
+> + */
+>  void ptimer_set_count(ptimer_state *s, uint64_t count);
+> +
+> +/**
+> + * ptimer_run - Start a ptimer counting
+> + * @s: ptimer
+> + * @oneshot: non-zero if this timer should only count down once
+> + *
+> + * Start a ptimer counting down; when it reaches zero the bottom half
+> + * passed to ptimer_init() will be invoked. If the @oneshot argument is =
+zero,
+> + * the counter value will then be reloaded from the limit and it will
+> + * start counting down again. If @oneshot is non-zero, then the counter
+> + * will disable itself when it reaches zero.
+> + */
+>  void ptimer_run(ptimer_state *s, int oneshot);
+> +
+> +/**
+> + * ptimer_stop - Stop a ptimer counting
+> + * @s: ptimer
+> + *
+> + * Pause a timer (the count stays at its current value until ptimer_run(=
+)
+> + * is called to start it counting again).
+> + *
+> + * Note that this can cause it to "lose" time, even if it is immediately
+> + * restarted.
+> + */
+>  void ptimer_stop(ptimer_state *s);
+>
+>  extern const VMStateDescription vmstate_ptimer;
+> --
+> 2.7.4
+>
+>
 
