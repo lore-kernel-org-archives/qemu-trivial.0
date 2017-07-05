@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dSmas-0004pO-UN
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jul 2017 11:51:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44767)
+	id 1dSrcw-0001Nk-FD
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jul 2017 17:14:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39970)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dSmaq-0004o2-2b
-	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 11:51:57 -0400
+	(envelope-from <eblake@redhat.com>) id 1dSrcu-0001M6-Je
+	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 17:14:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dSmap-0005eJ-6v
-	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 11:51:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39440)
+	(envelope-from <eblake@redhat.com>) id 1dSrct-0005EX-I0
+	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 17:14:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46930)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1dSmak-0005cY-MK; Wed, 05 Jul 2017 11:51:50 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dSrcn-0005BI-FV; Wed, 05 Jul 2017 17:14:17 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5E6A080474;
-	Wed,  5 Jul 2017 15:51:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5E6A080474
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id CED1E8535D;
+	Wed,  5 Jul 2017 21:14:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CED1E8535D
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=armbru@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5E6A080474
-Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 780176F449;
-	Wed,  5 Jul 2017 15:51:45 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id DD1531138619; Wed,  5 Jul 2017 17:51:43 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20170626101159.19676-1-berrange@redhat.com>
-	<c4381bd8-a417-0c3b-f3c2-1292ca9f6dfc@redhat.com>
-	<20170705134104.GD1280@stefanha-x1.localdomain>
-Date: Wed, 05 Jul 2017 17:51:43 +0200
-In-Reply-To: <20170705134104.GD1280@stefanha-x1.localdomain> (Stefan
-	Hajnoczi's message of "Wed, 5 Jul 2017 14:41:04 +0100")
-Message-ID: <87bmoynapc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CED1E8535D
+Received: from [10.10.120.36] (ovpn-120-36.rdu2.redhat.com [10.10.120.36])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 640365D962;
+	Wed,  5 Jul 2017 21:14:11 +0000 (UTC)
+To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+	qemu-devel@nongnu.org
+References: <149915701334.6295.1724301929524364123.stgit@frigg.lan>
+	<149915849243.6295.4484103824675839071.stgit@frigg.lan>
+Cc: "Emilio G. Cota" <cota@braap.org>, Eduardo Habkost <ehabkost@redhat.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>,
+	"open list:Trivial patches" <qemu-trivial@nongnu.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <d1a9d3b0-96a3-60e0-270b-3e9ef82cafac@redhat.com>
+Date: Wed, 5 Jul 2017 16:14:10 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <149915849243.6295.4484103824675839071.stgit@frigg.lan>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 05 Jul 2017 15:51:49 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Wed, 05 Jul 2017 21:14:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sockets: avoid formatting
- buffer that may not be NULL terminated
+Subject: Re: [Qemu-trivial] [PATCH v11 6/6] trace: [trivial] Statically
+ enable all guest events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,50 +67,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jul 2017 15:51:57 -0000
+X-List-Received-Date: Wed, 05 Jul 2017 21:14:25 -0000
 
-Stefan Hajnoczi <stefanha@gmail.com> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI
+Content-Type: multipart/mixed; boundary="Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+ qemu-devel@nongnu.org
+Cc: "Emilio G. Cota" <cota@braap.org>, Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "open list:Trivial patches" <qemu-trivial@nongnu.org>
+Message-ID: <d1a9d3b0-96a3-60e0-270b-3e9ef82cafac@redhat.com>
+Subject: Re: [PATCH v11 6/6] trace: [trivial] Statically enable all guest
+ events
+References: <149915701334.6295.1724301929524364123.stgit@frigg.lan>
+ <149915849243.6295.4484103824675839071.stgit@frigg.lan>
+In-Reply-To: <149915849243.6295.4484103824675839071.stgit@frigg.lan>
 
-> On Mon, Jun 26, 2017 at 12:19:40PM +0200, Thomas Huth wrote:
->> On 26.06.2017 12:11, Daniel P. Berrange wrote:
->> > The 'sun_path' field in the sockaddr_un struct is not required
->> > to be NULL termianted, so when reporting an error, we must use
->> 
->> s/NULL/NUL/
->> 
->> NULL is a pointer, NUL is the '\0' character.
->
-> I wanted to point out the same thing to someone recently, so I chased up
-> a reference to the NUL character in RFC 20 "ASCII format for Network
-> Interchange".  After all, no one can argue with an RFC.
->
-> What I found shocked me!  There must be a typo in the ASCII RFC:
-> https://tools.ietf.org/html/rfc20#section-5.2
->
-> I closed my browser tab quickly and headed to Wikipedia instead.  If the
-> primary source didn't support my argument, I could always count on good
-> old Wikipedia...
->
-> But do you know what I found?  Someone had conflated nul and null on the
-> Wikipedia entry:
-> https://en.wikipedia.org/wiki/Null_character
->
-> Amateurs!  The Wikipedia editors probably didn't have the intellectual
-> calibre to question the correctness of the RFC text the way I did.
->
-> But to cut a long story short, as my search continued the evidence
-> became overwhelming.  It is acceptable to refer to the nul character as
-> the null character.
->
-> Coming back to the patch in question, although we can't complain about
-> the "NULL" it's with considerable joy that I'd like to highlight:
->
-> s/termianted/terminated/
->
-> :)
-> Stefan
+--Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Despite this shocking, shocking precedence, I formally object to the use
-of NULL in the context of C for anything other than "one particular null
-pointer".  C's confusing enough without overloading identifiers.
+On 07/04/2017 03:54 AM, Llu=C3=ADs Vilanova wrote:
+> The existing optimizations makes it feasible to have them available on =
+all
+> builds.
+
+While this change may feel trivial, I think it is a misnomer to include
+"[trivial]" in the subject line, and I also think it should not go in
+through qemu-trivial.  The ideal trivial patch is one that can be
+applied in isolation, but your patch can only be applied as part of a
+series that includes the earlier optimizations that made this one possibl=
+e.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB--
+
+--3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJZXVaiAAoJEKeha0olJ0NqVPoH/3qrlg+HTuT56JX1kcYY98CV
+w+dw5wGsTdUxe7ew6Qlfk0RFmCvOJC/jtO8v5AT/VUXM+USCpPhxwZo92CQFvf+C
+T3yhZBtG9sztXstcoXNOHJQznRa9Vh/mA5FMxFRL5YFCfot+6CXxyQYS0Dt+FvHC
+IsIS+ZvYPGW7CFJpKMTi2OgqwB9MDBMS3CrErel1/0ABYmCsxXWtF8SKu+ZEpEO3
+sxkvsvcxXvF18aJwZFvj9zLxfvghkUZZ0lEuVvRrh+MM6S68u1UzOhyMhj98wBBJ
+01Q51WiUoqIungitMObgFh4M1ehVgsu8vNxhFnsR1YD92EH2x581+1hVeRWKHZ4=
+=Ksa2
+-----END PGP SIGNATURE-----
+
+--3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI--
 
