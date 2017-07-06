@@ -1,61 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dSrcw-0001Nk-FD
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jul 2017 17:14:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39970)
+	id 1dT2DF-0005Up-6k
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2017 04:32:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dSrcu-0001M6-Je
-	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 17:14:25 -0400
+	(envelope-from <stefanha@gmail.com>) id 1dT2DD-0005TW-Kx
+	for qemu-trivial@nongnu.org; Thu, 06 Jul 2017 04:32:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dSrct-0005EX-I0
-	for qemu-trivial@nongnu.org; Wed, 05 Jul 2017 17:14:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46930)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dSrcn-0005BI-FV; Wed, 05 Jul 2017 17:14:17 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CED1E8535D;
-	Wed,  5 Jul 2017 21:14:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CED1E8535D
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CED1E8535D
-Received: from [10.10.120.36] (ovpn-120-36.rdu2.redhat.com [10.10.120.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 640365D962;
-	Wed,  5 Jul 2017 21:14:11 +0000 (UTC)
-To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
-	qemu-devel@nongnu.org
-References: <149915701334.6295.1724301929524364123.stgit@frigg.lan>
-	<149915849243.6295.4484103824675839071.stgit@frigg.lan>
-Cc: "Emilio G. Cota" <cota@braap.org>, Eduardo Habkost <ehabkost@redhat.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>,
-	"open list:Trivial patches" <qemu-trivial@nongnu.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <d1a9d3b0-96a3-60e0-270b-3e9ef82cafac@redhat.com>
-Date: Wed, 5 Jul 2017 16:14:10 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
+	(envelope-from <stefanha@gmail.com>) id 1dT2DC-0005mp-Nz
+	for qemu-trivial@nongnu.org; Thu, 06 Jul 2017 04:32:35 -0400
+Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:33812)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1dT2D6-0005im-O1; Thu, 06 Jul 2017 04:32:28 -0400
+Received: by mail-wr0-x22a.google.com with SMTP id 77so18675964wrb.1;
+	Thu, 06 Jul 2017 01:32:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=/4cFlSnhCFOU/CchqXjdHC89DVqHeRJqsHgqzrs6ULM=;
+	b=Eou0JxFaxC7/OQzUOivAsLScuM+FLU2k9/QJhJGgnSfzeUjIgUjyuK9WKyWOsrUsEw
+	UAWD7TXN7SqonA+JX32IjQwSt+SGWE89JDCBUn2HXHoygqOsIdF0ALKGsENik+Kal6E0
+	N1lk4jQbqvi1Oi5+DpfDO9LhNU3Ed1+JkadlyMY9gMEm711IaPLtF4ui4+x2QAmZHMDY
+	CvcWVcmnAAvMNvDSzH1n295Pusi0I64Z5pxikipGT8FQDZ4pswu/OOinaFEMGiLvSjk7
+	T6Quuy6iW+YMCHpm1VkagXHaRJ4p5LTvKmXMhA2G+Luentjcpy0RmARTci2fRqkxbfMh
+	syOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=/4cFlSnhCFOU/CchqXjdHC89DVqHeRJqsHgqzrs6ULM=;
+	b=OZ8/n1nOGLuG7T82b/F/xYYYTjdkcvCpann/ZYoOt72rOXpgZARAM4Olm92hBp9RfC
+	1k5xZUO5f0AB8Ic41t8v034XVWE6z0lqq0FRvjFyzRKcwLmEN2JgTWb/45XRo593/3l8
+	z0/RDWbBcEglSvH3OTxt6ySgEhxxGZfwqAzOQ5/bBaExCBMTGJC7ar79LIRMTwhYk/AY
+	nxCaKpUYmF6OaqRlLYtsWo5wrB1iTdVE6rGh8LSz/hbcpug02WALzuwYbDFwB88o7w04
+	mR/oshDtXApsuT+Kv5N+tDBeSVjZMz1Iqm48arZ30wN7zRlyadEoJkEoo4hdRoSJz7rN
+	uF4A==
+X-Gm-Message-State: AIVw110zXR69LcGxW/hHSiNTRU5AQ89leU+MCIbvJsSAQ+XWHgV9ADCV
+	HMySSVZWXc08iw==
+X-Received: by 10.80.180.207 with SMTP id x15mr14902284edd.117.1499329947668; 
+	Thu, 06 Jul 2017 01:32:27 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	k49sm20544485eda.45.2017.07.06.01.32.26
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 06 Jul 2017 01:32:26 -0700 (PDT)
+Date: Thu, 6 Jul 2017 09:32:25 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Message-ID: <20170706083225.GA30447@stefanha-x1.localdomain>
+References: <20170629162046.4135-1-berrange@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <149915849243.6295.4484103824675839071.stgit@frigg.lan>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 05 Jul 2017 21:14:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v11 6/6] trace: [trivial] Statically
- enable all guest events
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Nq2Wo0NMKNjxTN9z"
+Content-Disposition: inline
+In-Reply-To: <20170629162046.4135-1-berrange@redhat.com>
+User-Agent: Mutt/1.8.0 (2017-02-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22a
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] backends: remove empty
+ trace-events file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,69 +73,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jul 2017 21:14:25 -0000
+X-List-Received-Date: Thu, 06 Jul 2017 08:32:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI
-Content-Type: multipart/mixed; boundary="Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
- qemu-devel@nongnu.org
-Cc: "Emilio G. Cota" <cota@braap.org>, Eduardo Habkost <ehabkost@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- "open list:Trivial patches" <qemu-trivial@nongnu.org>
-Message-ID: <d1a9d3b0-96a3-60e0-270b-3e9ef82cafac@redhat.com>
-Subject: Re: [PATCH v11 6/6] trace: [trivial] Statically enable all guest
- events
-References: <149915701334.6295.1724301929524364123.stgit@frigg.lan>
- <149915849243.6295.4484103824675839071.stgit@frigg.lan>
-In-Reply-To: <149915849243.6295.4484103824675839071.stgit@frigg.lan>
 
---Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--Nq2Wo0NMKNjxTN9z
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 07/04/2017 03:54 AM, Llu=C3=ADs Vilanova wrote:
-> The existing optimizations makes it feasible to have them available on =
-all
-> builds.
+On Thu, Jun 29, 2017 at 05:20:46PM +0100, Daniel P. Berrange wrote:
+> The content of the backends/trace-events file was entirely
+> removed in
+>=20
+>   commit 6b10e573d15ef82dbc5c5b3726028e6642e134f6
+>   Author: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+>   Date:   Mon May 29 12:39:42 2017 +0400
+>=20
+>     char: move char devices to chardev/
+>=20
+> Leaving the empty file around, causes tracetool to generate
+> an empty .dtrace file which makes the dtrace compiler throw
+> a syntax error.
+>=20
+> Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
+> ---
+>  Makefile.objs         | 1 -
+>  backends/trace-events | 0
+>  2 files changed, 1 deletion(-)
+>  delete mode 100644 backends/trace-events
 
-While this change may feel trivial, I think it is a misnomer to include
-"[trivial]" in the subject line, and I also think it should not go in
-through qemu-trivial.  The ideal trivial patch is one that can be
-applied in isolation, but your patch can only be applied as part of a
-series that includes the earlier optimizations that made this one possibl=
-e.
+Thanks, applied to my tracing tree:
+https://github.com/stefanha/qemu/commits/tracing
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Stefan
 
-
---Pa8qkCw332SFxUW7cf1fCNag7C9xDggpB--
-
---3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI
+--Nq2Wo0NMKNjxTN9z
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBCAAGBQJZXVaiAAoJEKeha0olJ0NqVPoH/3qrlg+HTuT56JX1kcYY98CV
-w+dw5wGsTdUxe7ew6Qlfk0RFmCvOJC/jtO8v5AT/VUXM+USCpPhxwZo92CQFvf+C
-T3yhZBtG9sztXstcoXNOHJQznRa9Vh/mA5FMxFRL5YFCfot+6CXxyQYS0Dt+FvHC
-IsIS+ZvYPGW7CFJpKMTi2OgqwB9MDBMS3CrErel1/0ABYmCsxXWtF8SKu+ZEpEO3
-sxkvsvcxXvF18aJwZFvj9zLxfvghkUZZ0lEuVvRrh+MM6S68u1UzOhyMhj98wBBJ
-01Q51WiUoqIungitMObgFh4M1ehVgsu8vNxhFnsR1YD92EH2x581+1hVeRWKHZ4=
-=Ksa2
+iQEcBAEBAgAGBQJZXfWZAAoJEJykq7OBq3PIdTYH/2MHwB0155Zlz7Qt+PnrxBje
+QUfBHZGkRcWmaNZBkrsFm6s4wROZZpPPtgn3E6XtylyBBwz4xu3sNIfL1RlVUjUr
+Zc0MePCnaKqJevKEjp1kno21No470ylHu5gZh0W9QjT9DV7RLQoK+Yiaarz3wlVM
+AbrgJCiuXPeQ+7VJ2j2lw7M32MurJVNmuGHDDlzPp1nQD92bl6QKEDbdtc8mCK7s
+cOxpiElo4x7RUZni6tK/3PXBedH5VAEYAKU8gpBqOFkmi8AmnrP3OG/41+pfTeuV
+NUwKHdxFsjpMCClkgWOaswsSOpLFKVlap2WH2Kqc+KIghhXWeduaCCoRR+IwmtU=
+=ID6p
 -----END PGP SIGNATURE-----
 
---3VlR0NJbEIOepVq1vcmSpvCeUJcf9limI--
+--Nq2Wo0NMKNjxTN9z--
 
