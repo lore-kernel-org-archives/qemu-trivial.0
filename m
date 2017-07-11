@@ -1,57 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dUtGU-0004H1-Bt
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jul 2017 07:23:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41150)
+	id 1dUwO3-0001uL-7I
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jul 2017 10:43:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44394)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dUtGR-0004EL-BH
-	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 07:23:36 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dUwO2-0001qv-0V
+	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 10:43:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dUtGQ-0002rx-8p
-	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 07:23:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33018)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1dUtGL-0002qk-JR; Tue, 11 Jul 2017 07:23:29 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2F83780472;
-	Tue, 11 Jul 2017 11:23:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2F83780472
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=pbonzini@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 2F83780472
-Received: from [10.36.116.87] (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9341018028;
-	Tue, 11 Jul 2017 11:23:23 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>
-References: <1499765477-10541-1-git-send-email-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <33ed2889-2285-bcb8-8e35-3ad75f3ab749@redhat.com>
-Date: Tue, 11 Jul 2017 13:23:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
+	(envelope-from <mjt@tls.msk.ru>) id 1dUwO1-0000Qu-FO
+	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 10:43:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60931)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1dUwNw-0000N0-Hy; Tue, 11 Jul 2017 10:43:32 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 0AF5740D6C;
+	Tue, 11 Jul 2017 17:43:24 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id DBAD06A3;
+	Tue, 11 Jul 2017 17:43:23 +0300 (MSK)
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+References: <20170707154646.22230-1-pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <a304046a-e2f4-8d01-7011-971ca6db96c5@msgid.tls.msk.ru>
+Date: Tue, 11 Jul 2017 17:43:23 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1499765477-10541-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <20170707154646.22230-1-pbonzini@redhat.com>
+Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 11 Jul 2017 11:23:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] trivial: Move softmmu_template.h to the
- accel/tcg/ folder
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] hxtool: remove dead -q option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,42 +45,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jul 2017 11:23:36 -0000
+X-List-Received-Date: Tue, 11 Jul 2017 14:43:38 -0000
 
-On 11/07/2017 11:31, Thomas Huth wrote:
-> The header is only used by accel/tcg/cputlb.c so we can
-> move it to the accel/tcg/ folder, too.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  Note: This patch should be applied after Philippe's "MAINTAINERS:
->  update TCG entries" patch here:
->  https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg06529.html
-> 
->  MAINTAINERS                                        | 1 -
->  softmmu_template.h => accel/tcg/softmmu_template.h | 0
->  2 files changed, 1 deletion(-)
->  rename softmmu_template.h => accel/tcg/softmmu_template.h (100%)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 74b3956..993b12e 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -86,7 +86,6 @@ M: Richard Henderson <rth@twiddle.net>
->  S: Maintained
->  F: cpus.c
->  F: exec.c
-> -F: softmmu_template.h
->  F: accel/tcg/
->  F: include/exec/cpu*.h
->  F: include/exec/exec-all.h
-> diff --git a/softmmu_template.h b/accel/tcg/softmmu_template.h
-> similarity index 100%
-> rename from softmmu_template.h
-> rename to accel/tcg/softmmu_template.h
-> 
+07.07.2017 18:46, Paolo Bonzini wrote:
+> This was used to extract .txt documentation for QMP.  This was
+> changed to use the QAPI schema instead, so zap it.
 
-Queued, thanks.
+Applied to -trivial, thanks!
 
-Paolo
+/mjt
+
 
