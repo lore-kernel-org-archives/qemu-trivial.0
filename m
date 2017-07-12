@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dUwPS-0003wg-UC
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jul 2017 10:45:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45077)
+	id 1dVHnT-0006EU-Ns
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:35:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58156)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dUwPQ-0003ux-Pe
-	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 10:45:05 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dVHnQ-0006Ac-KH
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:35:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dUwPQ-0000zq-6n
-	for qemu-trivial@nongnu.org; Tue, 11 Jul 2017 10:45:04 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:52719)
+	(envelope-from <mjt@tls.msk.ru>) id 1dVHnP-0003Xt-LM
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:35:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:52163)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dUwPO-0000yJ-6y; Tue, 11 Jul 2017 10:45:02 -0400
+	id 1dVHnK-0003Tq-7X; Wed, 12 Jul 2017 09:35:10 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5CFDB40D6C;
-	Tue, 11 Jul 2017 17:45:01 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 0794B40D64;
+	Wed, 12 Jul 2017 16:35:06 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with ESMTP id 062566A4;
-	Tue, 11 Jul 2017 17:45:00 +0300 (MSK)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1499094812-13239-1-git-send-email-peter.maydell@linaro.org>
-Cc: patches@linaro.org
+	by tsrv.tls.msk.ru (Postfix) with ESMTP id 62803ACF;
+	Wed, 12 Jul 2017 16:35:05 +0300 (MSK)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+References: <20170609152017.7286-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, armbru@redhat.com
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <79d90350-be7e-0f5b-0bd8-71280fba4b29@msgid.tls.msk.ru>
-Date: Tue, 11 Jul 2017 17:45:00 +0300
+Message-ID: <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
+Date: Wed, 12 Jul 2017 16:35:05 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.8.0
 MIME-Version: 1.0
-In-Reply-To: <1499094812-13239-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <20170609152017.7286-1-eblake@redhat.com>
 Content-Type: text/plain; charset=windows-1251
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] include/hw/ptimer.h: Add documentation
- comments
+Subject: Re: [Qemu-trivial] [PATCH 0/2] qobject coccinelle followups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,13 +45,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jul 2017 14:45:05 -0000
+X-List-Received-Date: Wed, 12 Jul 2017 13:35:17 -0000
 
-03.07.2017 18:13, Peter Maydell wrote:
-> Add documentation comments describing the public API of the
-> ptimer countdown timer.
+09.06.2017 18:20, Eric Blake wrote:
+> Inspired by https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg02505.html
+> 
+> Surprisingly, the updated script didn't find any existing longhand
+> use as candidates for QDECREF() (our last such use was cleaned up
+> as a side effect, in commit b72fe9e), but it DID find another straggler
+> missed in commit 579cf1d1.
+> 
+> Eric Blake (2):
+>   qobject: Update coccinelle script to catch Q{INC,DEC}REF
+>   qobject: Catch another straggler for use of qdict_put_str()
 
-Applied to -trivial, thanks a lot!
+Applied to -trivial, thanks!
 
 /mjt
 
