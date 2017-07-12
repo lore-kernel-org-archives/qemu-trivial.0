@@ -1,44 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVHyY-0006uC-D1
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:46:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35814)
+	id 1dVI7m-00087P-3F
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:56:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39209)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dVHyS-0006nh-VY
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:45 -0400
+	(envelope-from <eblake@redhat.com>) id 1dVI7j-00085N-Hw
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dVHyR-0003Tb-8r
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:40 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60401)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dVHyL-0003Ny-49; Wed, 12 Jul 2017 09:46:33 -0400
-Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 29B7B40F67;
-	Wed, 12 Jul 2017 16:46:31 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id A534EAEB;
-	Wed, 12 Jul 2017 16:38:14 +0300 (MSK)
-Received: (nullmailer pid 29053 invoked by uid 1000);
-	Wed, 12 Jul 2017 13:38:12 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 12 Jul 2017 16:38:07 +0300
-Message-Id: <a7a305aee1e9a74a3f4b263aa98babed795b1f0a.1499866676.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
-References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
-References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <eblake@redhat.com>) id 1dVI7i-0000fs-Gb
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52390)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dVI7f-0000eR-Ps; Wed, 12 Jul 2017 09:56:12 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9D9F45F7B6;
+	Wed, 12 Jul 2017 13:56:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9D9F45F7B6
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9D9F45F7B6
+Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8032760841;
+	Wed, 12 Jul 2017 13:56:06 +0000 (UTC)
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+References: <20170609152017.7286-1-eblake@redhat.com>
+	<1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, armbru@redhat.com
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com>
+Date: Wed, 12 Jul 2017 08:56:05 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 12 Jul 2017 13:56:10 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 11/13] include/hw/ptimer.h: Add documentation
- comments
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 0/2] qobject coccinelle followups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,174 +62,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jul 2017 13:46:45 -0000
+X-List-Received-Date: Wed, 12 Jul 2017 13:56:16 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM
+Content-Type: multipart/mixed; boundary="rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, armbru@redhat.com
+Message-ID: <15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com>
+Subject: Re: [PATCH 0/2] qobject coccinelle followups
+References: <20170609152017.7286-1-eblake@redhat.com>
+ <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
+In-Reply-To: <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
 
-Add documentation comments describing the public API of the
-ptimer countdown timer.
+--rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- include/hw/ptimer.h | 120 ++++++++++++++++++++++++++++++++++++++++++++++=
-++++++
- 1 file changed, 120 insertions(+)
+On 07/12/2017 08:35 AM, Michael Tokarev wrote:
+> 09.06.2017 18:20, Eric Blake wrote:
+>> Inspired by https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg0=
+2505.html
+>>
+>> Surprisingly, the updated script didn't find any existing longhand
+>> use as candidates for QDECREF() (our last such use was cleaned up
+>> as a side effect, in commit b72fe9e), but it DID find another straggle=
+r
+>> missed in commit 579cf1d1.
+>>
+>> Eric Blake (2):
+>>   qobject: Update coccinelle script to catch Q{INC,DEC}REF
+>>   qobject: Catch another straggler for use of qdict_put_str()
+>=20
+> Applied to -trivial, thanks!
 
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index eafc3f0a86..fc4ef5cc1d 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -12,6 +12,20 @@
- #include "qemu/timer.h"
- #include "migration/vmstate.h"
-=20
-+/* The ptimer API implements a simple periodic countdown timer.
-+ * The countdown timer has a value (which can be read and written via
-+ * ptimer_get_count() and ptimer_set_count()). When it is enabled
-+ * using ptimer_run(), the value will count downwards at the frequency
-+ * which has been configured using ptimer_set_period() or ptimer_set_fre=
-q().
-+ * When it reaches zero it will trigger a QEMU bottom half handler, and
-+ * can be set to either reload itself from a specified limit value
-+ * and keep counting down, or to stop (as a one-shot timer).
-+ *
-+ * Forgetting to set the period/frequency (or setting it to zero) is a
-+ * bug in the QEMU device and will cause warning messages to be printed
-+ * to stderr when the guest attempts to enable the timer.
-+ */
-+
- /* The default ptimer policy retains backward compatibility with the leg=
-acy
-  * timers. Custom policies are adjusting the default one. Consider provi=
-ding
-  * a correct policy for your timer.
-@@ -59,15 +73,121 @@
- typedef struct ptimer_state ptimer_state;
- typedef void (*ptimer_cb)(void *opaque);
-=20
-+/**
-+ * ptimer_init - Allocate and return a new ptimer
-+ * @bh: QEMU bottom half which is run on timer expiry
-+ * @policy: PTIMER_POLICY_* bits specifying behaviour
-+ *
-+ * The ptimer returned must be freed using ptimer_free().
-+ * The ptimer takes ownership of @bh and will delete it
-+ * when the ptimer is eventually freed.
-+ */
- ptimer_state *ptimer_init(QEMUBH *bh, uint8_t policy_mask);
-+
-+/**
-+ * ptimer_free - Free a ptimer
-+ * @s: timer to free
-+ *
-+ * Free a ptimer created using ptimer_init() (including
-+ * deleting the bottom half which it is using).
-+ */
- void ptimer_free(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_period - Set counter increment interval in nanoseconds
-+ * @s: ptimer to configure
-+ * @period: period of the counter in nanoseconds
-+ *
-+ * Note that if your counter behaviour is specified as having a
-+ * particular frequency rather than a period then ptimer_set_freq()
-+ * may be more appropriate.
-+ */
- void ptimer_set_period(ptimer_state *s, int64_t period);
-+
-+/**
-+ * ptimer_set_freq - Set counter frequency in Hz
-+ * @s: ptimer to configure
-+ * @freq: counter frequency in Hz
-+ *
-+ * This does the same thing as ptimer_set_period(), so you only
-+ * need to call one of them. If the counter behaviour is specified
-+ * as setting the frequency then this function is more appropriate,
-+ * because it allows specifying an effective period which is
-+ * precise to fractions of a nanosecond, avoiding rounding errors.
-+ */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq);
-+
-+/**
-+ * ptimer_get_limit - Get the configured limit of the ptimer
-+ * @s: ptimer to query
-+ *
-+ * This function returns the current limit (reload) value
-+ * of the down-counter; that is, the value which it will be
-+ * reset to when it hits zero.
-+ *
-+ * Generally timer devices using ptimers should be able to keep
-+ * their reload register state inside the ptimer using the get
-+ * and set limit functions rather than needing to also track it
-+ * in their own state structure.
-+ */
- uint64_t ptimer_get_limit(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_limit - Set the limit of the ptimer
-+ * @s: ptimer
-+ * @limit: initial countdown value
-+ * @reload: if nonzero, then reset the counter to the new limit
-+ *
-+ * Set the limit value of the down-counter. The @reload flag can
-+ * be used to emulate the behaviour of timers which immediately
-+ * reload the counter when their reload register is written to.
-+ */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
-+
-+/**
-+ * ptimer_get_count - Get the current value of the ptimer
-+ * @s: ptimer
-+ *
-+ * Return the current value of the down-counter. This will
-+ * return the correct value whether the counter is enabled or
-+ * disabled.
-+ */
- uint64_t ptimer_get_count(ptimer_state *s);
-+
-+/**
-+ * ptimer_set_count - Set the current value of the ptimer
-+ * @s: ptimer
-+ * @count: count value to set
-+ *
-+ * Set the value of the down-counter. If the counter is currently
-+ * enabled this will arrange for a timer callback at the appropriate
-+ * point in the future.
-+ */
- void ptimer_set_count(ptimer_state *s, uint64_t count);
-+
-+/**
-+ * ptimer_run - Start a ptimer counting
-+ * @s: ptimer
-+ * @oneshot: non-zero if this timer should only count down once
-+ *
-+ * Start a ptimer counting down; when it reaches zero the bottom half
-+ * passed to ptimer_init() will be invoked. If the @oneshot argument is =
-zero,
-+ * the counter value will then be reloaded from the limit and it will
-+ * start counting down again. If @oneshot is non-zero, then the counter
-+ * will disable itself when it reaches zero.
-+ */
- void ptimer_run(ptimer_state *s, int oneshot);
-+
-+/**
-+ * ptimer_stop - Stop a ptimer counting
-+ * @s: ptimer
-+ *
-+ * Pause a timer (the count stays at its current value until ptimer_run(=
-)
-+ * is called to start it counting again).
-+ *
-+ * Note that this can cause it to "lose" time, even if it is immediately
-+ * restarted.
-+ */
- void ptimer_stop(ptimer_state *s);
-=20
- extern const VMStateDescription vmstate_ptimer;
+Markus has taken v2 of these patches through his qapi-next tree:
+https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg05589.html
+
+so you can drop this v1 from -trivial
+
 --=20
-2.11.0
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
+
+--rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C--
+
+--04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJZZip1AAoJEKeha0olJ0Nq8poH/RFOTX5SVP0jvziqSIgO9GK6
+SoLpxNhiPKCZxkHJQmYKEijURIrCLtmv4evX1aw+tM+5ur6FuaGpO9nSHWiftQir
+60jai8Lnclae4BGFRkM0thw872GThRYraZuDgwzfRSlM1ZKIlFJxVhK/VDGu3705
+xAshIE35ykVLMcBbI3f/ZnY54LUjvIx9m6YjtfKz6C5Q8+9ZD4lUqTBTUgo2XeE9
+SEQBJbGe8KCUJl456F9jhR0EMCL/vPQDcUhU5RTUWy/ZIfiH9Ef5KmxpVNhfKui+
+XohePHZFgfvY/yIXPQyPnhY+ijY0XPWrmBZj9x5hQa1zVtDHt7yS2xyzubXegKc=
+=3ct3
+-----END PGP SIGNATURE-----
+
+--04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM--
 
