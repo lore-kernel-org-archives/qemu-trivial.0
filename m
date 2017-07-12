@@ -1,56 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVI7m-00087P-3F
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:56:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39209)
+	id 1dVI8A-0008Rv-9j
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:56:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39498)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dVI7j-00085N-Hw
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:16 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dVI87-0008P8-2r
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dVI7i-0000fs-Gb
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52390)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dVI7f-0000eR-Ps; Wed, 12 Jul 2017 09:56:12 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9D9F45F7B6;
-	Wed, 12 Jul 2017 13:56:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9D9F45F7B6
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9D9F45F7B6
-Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8032760841;
-	Wed, 12 Jul 2017 13:56:06 +0000 (UTC)
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-References: <20170609152017.7286-1-eblake@redhat.com>
-	<1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, armbru@redhat.com
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com>
-Date: Wed, 12 Jul 2017 08:56:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <mjt@tls.msk.ru>) id 1dVI86-0000t0-8V
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:56:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:54545)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1dVI80-0000q6-TV; Wed, 12 Jul 2017 09:56:33 -0400
+Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 910BF40F6A;
+	Wed, 12 Jul 2017 16:56:31 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.tls.msk.ru (Postfix) with SMTP id 8D90BAC8;
+	Wed, 12 Jul 2017 16:38:14 +0300 (MSK)
+Received: (nullmailer pid 29049 invoked by uid 1000);
+	Wed, 12 Jul 2017 13:38:12 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Li Ping <li.ping288@zte.com.cn>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Wed, 12 Jul 2017 16:38:05 +0300
+Message-Id: <9bd8e9330ade42878b19a5172131087220d590d5.1499866676.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
+References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
+References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-In-Reply-To: <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 12 Jul 2017 13:56:10 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 0/2] qobject coccinelle followups
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 09/13] qga-win32: Fix memory leak of device
+ information set
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,74 +50,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jul 2017 13:56:16 -0000
+X-List-Received-Date: Wed, 12 Jul 2017 13:56:41 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM
-Content-Type: multipart/mixed; boundary="rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com, armbru@redhat.com
-Message-ID: <15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com>
-Subject: Re: [PATCH 0/2] qobject coccinelle followups
-References: <20170609152017.7286-1-eblake@redhat.com>
- <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
-In-Reply-To: <1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
+From: Li Ping <li.ping288@zte.com.cn>
 
---rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+The caller of SetupDiGetClassDevs must delete the returned device informa=
+tion
+ set when it is no longer needed by calling SetupDiDestroyDeviceInfoList.
 
-On 07/12/2017 08:35 AM, Michael Tokarev wrote:
-> 09.06.2017 18:20, Eric Blake wrote:
->> Inspired by https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg0=
-2505.html
->>
->> Surprisingly, the updated script didn't find any existing longhand
->> use as candidates for QDECREF() (our last such use was cleaned up
->> as a side effect, in commit b72fe9e), but it DID find another straggle=
-r
->> missed in commit 579cf1d1.
->>
->> Eric Blake (2):
->>   qobject: Update coccinelle script to catch Q{INC,DEC}REF
->>   qobject: Catch another straggler for use of qdict_put_str()
->=20
-> Applied to -trivial, thanks!
+Signed-off-by: Li Ping <li.ping288@zte.com.cn>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qga/commands-win32.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Markus has taken v2 of these patches through his qapi-next tree:
-https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg05589.html
-
-so you can drop this v1 from -trivial
-
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index 439d229225..6f1645747b 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -512,7 +512,7 @@ static GuestPCIAddress *get_pci_info(char *guid, Erro=
+r **errp)
+             } else {
+                 error_setg_win32(errp, GetLastError(),
+                         "failed to get device name");
+-                goto out;
++                goto free_dev_info;
+             }
+         }
+=20
+@@ -560,6 +560,9 @@ static GuestPCIAddress *get_pci_info(char *guid, Erro=
+r **errp)
+         pci->bus =3D bus;
+         break;
+     }
++
++free_dev_info:
++    SetupDiDestroyDeviceInfoList(dev_info);
+ out:
+     g_free(buffer);
+     g_free(name);
 --=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+2.11.0
 
-
---rMqAU5C8k0QEWDGi0eid6fw4eCfBGkq8C--
-
---04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJZZip1AAoJEKeha0olJ0Nq8poH/RFOTX5SVP0jvziqSIgO9GK6
-SoLpxNhiPKCZxkHJQmYKEijURIrCLtmv4evX1aw+tM+5ur6FuaGpO9nSHWiftQir
-60jai8Lnclae4BGFRkM0thw872GThRYraZuDgwzfRSlM1ZKIlFJxVhK/VDGu3705
-xAshIE35ykVLMcBbI3f/ZnY54LUjvIx9m6YjtfKz6C5Q8+9ZD4lUqTBTUgo2XeE9
-SEQBJbGe8KCUJl456F9jhR0EMCL/vPQDcUhU5RTUWy/ZIfiH9Ef5KmxpVNhfKui+
-XohePHZFgfvY/yIXPQyPnhY+ijY0XPWrmBZj9x5hQa1zVtDHt7yS2xyzubXegKc=
-=3ct3
------END PGP SIGNATURE-----
-
---04bNNjAeuEo5TLUJvU8fircCO5HfmaEVM--
 
