@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVHyX-0006ss-64
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:46:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35842)
+	id 1dVHyY-0006uC-D1
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 09:46:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dVHyU-0006p4-0p
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:42 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dVHyS-0006nh-VY
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dVHyT-0003V9-6j
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:42 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:56165)
+	(envelope-from <mjt@tls.msk.ru>) id 1dVHyR-0003Tb-8r
+	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 09:46:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:60401)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dVHyL-0003Nw-4I; Wed, 12 Jul 2017 09:46:33 -0400
+	id 1dVHyL-0003Ny-49; Wed, 12 Jul 2017 09:46:33 -0400
 Received: from tsrv.tls.msk.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 280CD40F66;
+	by isrv.corpit.ru (Postfix) with ESMTP id 29B7B40F67;
 	Wed, 12 Jul 2017 16:46:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.tls.msk.ru (Postfix) with SMTP id 582A5AD0;
+	by tsrv.tls.msk.ru (Postfix) with SMTP id A534EAEB;
 	Wed, 12 Jul 2017 16:38:14 +0300 (MSK)
-Received: (nullmailer pid 29057 invoked by uid 1000);
+Received: (nullmailer pid 29053 invoked by uid 1000);
 	Wed, 12 Jul 2017 13:38:12 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 12 Jul 2017 16:38:09 +0300
-Message-Id: <10cb4ec41734243b2798bd1d53919827eaccd673.1499866676.git.mjt@msgid.tls.msk.ru>
+Date: Wed, 12 Jul 2017 16:38:07 +0300
+Message-Id: <a7a305aee1e9a74a3f4b263aa98babed795b1f0a.1499866676.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
 References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
 References: <cover.1499866676.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 13/13] qobject: Update coccinelle script to
- catch Q{INC, DEC}REF
+Subject: [Qemu-trivial] [PULL 11/13] include/hw/ptimer.h: Add documentation
+ comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,39 +50,174 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jul 2017 13:46:43 -0000
+X-List-Received-Date: Wed, 12 Jul 2017 13:46:45 -0000
 
-From: Eric Blake <eblake@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-A recent patch submission was about to use qobject_decref(QOBJECT(E)),
-even though we already have QDECREF(E) for that purpose.  While our
-tree is currently free from the longhand form, we might as well update
-our coccinelle script to catch any future relapses.
+Add documentation comments describing the public API of the
+ptimer countdown timer.
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- scripts/coccinelle/qobject.cocci | 6 ++++++
- 1 file changed, 6 insertions(+)
+ include/hw/ptimer.h | 120 ++++++++++++++++++++++++++++++++++++++++++++++=
+++++++
+ 1 file changed, 120 insertions(+)
 
-diff --git a/scripts/coccinelle/qobject.cocci b/scripts/coccinelle/qobject.cocci
-index c3253deb1b..c518caf7b1 100644
---- a/scripts/coccinelle/qobject.cocci
-+++ b/scripts/coccinelle/qobject.cocci
-@@ -3,6 +3,12 @@
- expression Obj, Key, E;
- @@
- (
-+- qobject_incref(QOBJECT(E));
-++ QINCREF(E);
-+|
-+- qobject_decref(QOBJECT(E));
-++ QDECREF(E);
-+|
- - qdict_put_obj(Obj, Key, QOBJECT(E));
- + qdict_put(Obj, Key, E);
- |
--- 
+diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+index eafc3f0a86..fc4ef5cc1d 100644
+--- a/include/hw/ptimer.h
++++ b/include/hw/ptimer.h
+@@ -12,6 +12,20 @@
+ #include "qemu/timer.h"
+ #include "migration/vmstate.h"
+=20
++/* The ptimer API implements a simple periodic countdown timer.
++ * The countdown timer has a value (which can be read and written via
++ * ptimer_get_count() and ptimer_set_count()). When it is enabled
++ * using ptimer_run(), the value will count downwards at the frequency
++ * which has been configured using ptimer_set_period() or ptimer_set_fre=
+q().
++ * When it reaches zero it will trigger a QEMU bottom half handler, and
++ * can be set to either reload itself from a specified limit value
++ * and keep counting down, or to stop (as a one-shot timer).
++ *
++ * Forgetting to set the period/frequency (or setting it to zero) is a
++ * bug in the QEMU device and will cause warning messages to be printed
++ * to stderr when the guest attempts to enable the timer.
++ */
++
+ /* The default ptimer policy retains backward compatibility with the leg=
+acy
+  * timers. Custom policies are adjusting the default one. Consider provi=
+ding
+  * a correct policy for your timer.
+@@ -59,15 +73,121 @@
+ typedef struct ptimer_state ptimer_state;
+ typedef void (*ptimer_cb)(void *opaque);
+=20
++/**
++ * ptimer_init - Allocate and return a new ptimer
++ * @bh: QEMU bottom half which is run on timer expiry
++ * @policy: PTIMER_POLICY_* bits specifying behaviour
++ *
++ * The ptimer returned must be freed using ptimer_free().
++ * The ptimer takes ownership of @bh and will delete it
++ * when the ptimer is eventually freed.
++ */
+ ptimer_state *ptimer_init(QEMUBH *bh, uint8_t policy_mask);
++
++/**
++ * ptimer_free - Free a ptimer
++ * @s: timer to free
++ *
++ * Free a ptimer created using ptimer_init() (including
++ * deleting the bottom half which it is using).
++ */
+ void ptimer_free(ptimer_state *s);
++
++/**
++ * ptimer_set_period - Set counter increment interval in nanoseconds
++ * @s: ptimer to configure
++ * @period: period of the counter in nanoseconds
++ *
++ * Note that if your counter behaviour is specified as having a
++ * particular frequency rather than a period then ptimer_set_freq()
++ * may be more appropriate.
++ */
+ void ptimer_set_period(ptimer_state *s, int64_t period);
++
++/**
++ * ptimer_set_freq - Set counter frequency in Hz
++ * @s: ptimer to configure
++ * @freq: counter frequency in Hz
++ *
++ * This does the same thing as ptimer_set_period(), so you only
++ * need to call one of them. If the counter behaviour is specified
++ * as setting the frequency then this function is more appropriate,
++ * because it allows specifying an effective period which is
++ * precise to fractions of a nanosecond, avoiding rounding errors.
++ */
+ void ptimer_set_freq(ptimer_state *s, uint32_t freq);
++
++/**
++ * ptimer_get_limit - Get the configured limit of the ptimer
++ * @s: ptimer to query
++ *
++ * This function returns the current limit (reload) value
++ * of the down-counter; that is, the value which it will be
++ * reset to when it hits zero.
++ *
++ * Generally timer devices using ptimers should be able to keep
++ * their reload register state inside the ptimer using the get
++ * and set limit functions rather than needing to also track it
++ * in their own state structure.
++ */
+ uint64_t ptimer_get_limit(ptimer_state *s);
++
++/**
++ * ptimer_set_limit - Set the limit of the ptimer
++ * @s: ptimer
++ * @limit: initial countdown value
++ * @reload: if nonzero, then reset the counter to the new limit
++ *
++ * Set the limit value of the down-counter. The @reload flag can
++ * be used to emulate the behaviour of timers which immediately
++ * reload the counter when their reload register is written to.
++ */
+ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
++
++/**
++ * ptimer_get_count - Get the current value of the ptimer
++ * @s: ptimer
++ *
++ * Return the current value of the down-counter. This will
++ * return the correct value whether the counter is enabled or
++ * disabled.
++ */
+ uint64_t ptimer_get_count(ptimer_state *s);
++
++/**
++ * ptimer_set_count - Set the current value of the ptimer
++ * @s: ptimer
++ * @count: count value to set
++ *
++ * Set the value of the down-counter. If the counter is currently
++ * enabled this will arrange for a timer callback at the appropriate
++ * point in the future.
++ */
+ void ptimer_set_count(ptimer_state *s, uint64_t count);
++
++/**
++ * ptimer_run - Start a ptimer counting
++ * @s: ptimer
++ * @oneshot: non-zero if this timer should only count down once
++ *
++ * Start a ptimer counting down; when it reaches zero the bottom half
++ * passed to ptimer_init() will be invoked. If the @oneshot argument is =
+zero,
++ * the counter value will then be reloaded from the limit and it will
++ * start counting down again. If @oneshot is non-zero, then the counter
++ * will disable itself when it reaches zero.
++ */
+ void ptimer_run(ptimer_state *s, int oneshot);
++
++/**
++ * ptimer_stop - Stop a ptimer counting
++ * @s: ptimer
++ *
++ * Pause a timer (the count stays at its current value until ptimer_run(=
+)
++ * is called to start it counting again).
++ *
++ * Note that this can cause it to "lose" time, even if it is immediately
++ * restarted.
++ */
+ void ptimer_stop(ptimer_state *s);
+=20
+ extern const VMStateDescription vmstate_ptimer;
+--=20
 2.11.0
 
 
