@@ -1,57 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVgUV-0007BY-An
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 11:57:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57310)
+	id 1dVh2Z-0002EC-O9
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 12:32:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dVgUS-000798-Jj
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:21 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh2W-0002Bq-Tf
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:32:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dVgUP-0002Od-JR
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:20 -0400
-Received: from mail-wm0-f48.google.com ([74.125.82.48]:36849)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dVgUP-0002O9-DM
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:17 -0400
-Received: by mail-wm0-f48.google.com with SMTP id 62so27864000wmw.1
-	for <qemu-trivial@nongnu.org>; Thu, 13 Jul 2017 08:57:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=qnv276cH6pwo+aHBYAIBiWNEEV0C5hhWsXANSlUYDGQ=;
-	b=ew+CfrGWqR+FKiG7kX7VZUFk3ceI1S+tGhWN/IgtaF4SQtsce1G3XTYyJ9r8G1bxfu
-	iUyanxwk28R/lkCsNPrsppVU3VhZR3FSIBDllqunex35lS/B0+XoAsW3YYjw2BaAfvXi
-	H83ca6v3YmfkXdgZbmn7Z2308DLacf0S9k/Ig=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=qnv276cH6pwo+aHBYAIBiWNEEV0C5hhWsXANSlUYDGQ=;
-	b=ks2IZTyVcgjtCT7IIkCfGmWPpcs3T8dCPwaPOcYQMgAxcLAibL7wL396VYyM8WhSyg
-	kbROqatI9Kdcv/Rlgvqyyw+AXoc3QgdsTWgHCqH8zYXhDWG/mTn2RayhO8t6oEgv3Vn6
-	twGTBv4lH5etMJnf7kZuKcQpjx/EOn2UCcqv3qVJZU7gru6VRPCRhCE6KfLAWQclArVM
-	ZRJMNI7SndH3XSXNJLxvYYUGGQ8/j3avy4m+bIP4Ux8+anCCRd9WwSCH0Rbeh+Cx6lbK
-	8DEYn9L/8ooBQzw+Kaxwwkiv9N/NE/Mkeyp75zBhsMSY95C92QvVGeYCMyCf8JqF/IPA
-	/FcA==
-X-Gm-Message-State: AIVw111AS0SR+mULTBsWqa6udXrm805o0adjiGeIRABsK1qtgJ+ZA80B
-	+vjIDqabjPqNotetxEenrBBnQ4tgw0iC
-X-Received: by 10.28.191.74 with SMTP id p71mr2461646wmf.45.1499961375931;
-	Thu, 13 Jul 2017 08:56:15 -0700 (PDT)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh2V-0003uQ-Vc
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:32:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60120)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1dVh2S-0003sv-Oj; Thu, 13 Jul 2017 12:32:28 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9FBB8C0272CE;
+	Thu, 13 Jul 2017 16:32:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9FBB8C0272CE
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=marcandre.lureau@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 9FBB8C0272CE
+Received: from localhost (ovpn-112-18.ams2.redhat.com [10.36.112.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 483087EA5D;
+	Thu, 13 Jul 2017 16:32:25 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Date: Thu, 13 Jul 2017 18:31:51 +0200
+Message-Id: <20170713163219.9024-2-marcandre.lureau@redhat.com>
+In-Reply-To: <20170713163219.9024-1-marcandre.lureau@redhat.com>
+References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Thu, 13 Jul 2017 08:55:55 -0700 (PDT)
-In-Reply-To: <cover.1499867930.git.mjt@msgid.tls.msk.ru>
-References: <cover.1499867930.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Jul 2017 16:55:55 +0100
-Message-ID: <CAFEAcA-1ehg6oet1wa40r85mxzFzuMFdTo3REM=n-8AG0zgK5w@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 13 Jul 2017 16:32:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.48
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/11] Trivial patches for
- 2017-07-12 (#2)
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2 01/29] i386: use ROUND_UP macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,30 +59,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 15:57:21 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 16:32:34 -0000
 
-On 12 July 2017 at 15:00, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> The same but without two patches from Eric Blake.
-> Not resending all the patches, only the cover letter.
->
-> The following changes since commit 6b06e3e49eb8c91cc286c16d6bf3181ac296f33d:
->
->   Merge remote-tracking branch 'remotes/ericb/tags/pull-nbd-2017-07-10-v2' into staging (2017-07-10 16:12:47 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
->
-> for you to fetch changes up to a7a305aee1e9a74a3f4b263aa98babed795b1f0a:
->
->   include/hw/ptimer.h: Add documentation comments (2017-07-11 17:44:27 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2017-07-12
->
-> ----------------------------------------------------------------
+I used the clang-tidy qemu-round check (with the option OnlyAlignUp)
+to generate the fix:
+https://github.com/elmarco/clang-tools-extra
 
-Applied, thanks.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+---
+ target/i386/arch_dump.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
--- PMM
+diff --git a/target/i386/arch_dump.c b/target/i386/arch_dump.c
+index fe0aa36932..1d51bb5206 100644
+--- a/target/i386/arch_dump.c
++++ b/target/i386/arch_dump.c
+@@ -84,9 +84,9 @@ static int x86_64_write_elf64_note(WriteCoreDumpFunctio=
+n f,
+     note->n_descsz =3D cpu_to_le32(descsz);
+     note->n_type =3D cpu_to_le32(NT_PRSTATUS);
+     buf =3D (char *)note;
+-    buf +=3D ((sizeof(Elf64_Nhdr) + 3) / 4) * 4;
++    buf +=3D ROUND_UP(sizeof(Elf64_Nhdr), 4);
+     memcpy(buf, name, name_size);
+-    buf +=3D ((name_size + 3) / 4) * 4;
++    buf +=3D ROUND_UP(name_size, 4);
+     memcpy(buf + 32, &id, 4); /* pr_pid */
+     buf +=3D descsz - sizeof(x86_64_user_regs_struct)-sizeof(target_ulon=
+g);
+     memcpy(buf, &regs, sizeof(x86_64_user_regs_struct));
+@@ -163,9 +163,9 @@ static int x86_write_elf64_note(WriteCoreDumpFunction=
+ f, CPUX86State *env,
+     note->n_descsz =3D cpu_to_le32(descsz);
+     note->n_type =3D cpu_to_le32(NT_PRSTATUS);
+     buf =3D (char *)note;
+-    buf +=3D ((sizeof(Elf64_Nhdr) + 3) / 4) * 4;
++    buf +=3D ROUND_UP(sizeof(Elf64_Nhdr), 4);
+     memcpy(buf, name, name_size);
+-    buf +=3D ((name_size + 3) / 4) * 4;
++    buf +=3D ROUND_UP(name_size, 4);
+     memcpy(buf, &prstatus, sizeof(prstatus));
+=20
+     ret =3D f(note, note_size, opaque);
+@@ -218,9 +218,9 @@ int x86_cpu_write_elf32_note(WriteCoreDumpFunction f,=
+ CPUState *cs,
+     note->n_descsz =3D cpu_to_le32(descsz);
+     note->n_type =3D cpu_to_le32(NT_PRSTATUS);
+     buf =3D (char *)note;
+-    buf +=3D ((sizeof(Elf32_Nhdr) + 3) / 4) * 4;
++    buf +=3D ROUND_UP(sizeof(Elf32_Nhdr), 4);
+     memcpy(buf, name, name_size);
+-    buf +=3D ((name_size + 3) / 4) * 4;
++    buf +=3D ROUND_UP(name_size, 4);
+     memcpy(buf, &prstatus, sizeof(prstatus));
+=20
+     ret =3D f(note, note_size, opaque);
+@@ -353,9 +353,9 @@ static inline int cpu_write_qemu_note(WriteCoreDumpFu=
+nction f,
+         note64->n_type =3D 0;
+     }
+     buf =3D note;
+-    buf +=3D ((note_head_size + 3) / 4) * 4;
++    buf +=3D ROUND_UP(note_head_size, 4);
+     memcpy(buf, name, name_size);
+-    buf +=3D ((name_size + 3) / 4) * 4;
++    buf +=3D ROUND_UP(name_size, 4);
+     memcpy(buf, &state, sizeof(state));
+=20
+     ret =3D f(note, note_size, opaque);
+--=20
+2.13.1.395.gf7b71de06
+
 
