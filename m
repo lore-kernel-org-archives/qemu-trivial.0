@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVh3p-0003sX-Ok
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 12:33:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42737)
+	id 1dVh3t-0003yI-UF
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 12:33:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh3k-0003j8-RV
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:33:52 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh3q-0003uU-PX
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:33:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh3j-0004hs-Sn
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:33:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38644)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh3p-0004oi-Nw
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:33:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33008)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1dVh3c-0004eq-V4; Thu, 13 Jul 2017 12:33:41 -0400
+	id 1dVh3k-0004hl-CB; Thu, 13 Jul 2017 12:33:48 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CA128C0733F5;
-	Thu, 13 Jul 2017 16:33:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CA128C0733F5
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 5600BA0221;
+	Thu, 13 Jul 2017 16:33:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5600BA0221
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=marcandre.lureau@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CA128C0733F5
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 5600BA0221
 Received: from localhost (ovpn-112-18.ams2.redhat.com [10.36.112.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7ED7D7F8C9;
-	Thu, 13 Jul 2017 16:33:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 625647F8D8;
+	Thu, 13 Jul 2017 16:33:41 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org (open list:vvfat)
-Date: Thu, 13 Jul 2017 18:32:00 +0200
-Message-Id: <20170713163219.9024-11-marcandre.lureau@redhat.com>
+	Gerd Hoffmann <kraxel@redhat.com>
+Date: Thu, 13 Jul 2017 18:32:01 +0200
+Message-Id: <20170713163219.9024-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20170713163219.9024-1-marcandre.lureau@redhat.com>
 References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 13 Jul 2017 16:33:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 13 Jul 2017 16:33:47 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 10/29] vvfat: use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PATCH v2 11/29] vnc: use DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,39 +58,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 16:33:52 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 16:33:56 -0000
 
 I used the clang-tidy qemu-round check to generate the fix:
 https://github.com/elmarco/clang-tools-extra
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- block/vvfat.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ ui/vnc-enc-tight.c | 2 +-
+ ui/vnc.c           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/block/vvfat.c b/block/vvfat.c
-index 4fd28e1e87..c08c4fb525 100644
---- a/block/vvfat.c
-+++ b/block/vvfat.c
-@@ -437,7 +437,7 @@ static direntry_t *create_long_filename(BDRVVVFATStat=
-e *s, const char *filename)
-         return NULL;
+diff --git a/ui/vnc-enc-tight.c b/ui/vnc-enc-tight.c
+index 89ab12c0d8..f38aceb4da 100644
+--- a/ui/vnc-enc-tight.c
++++ b/ui/vnc-enc-tight.c
+@@ -979,7 +979,7 @@ static int send_mono_rect(VncState *vs, int x, int y,
      }
+ #endif
 =20
--    number_of_entries =3D (length * 2 + 25) / 26;
-+    number_of_entries =3D DIV_ROUND_UP(length * 2, 26);
+-    bytes =3D ((w + 7) / 8) * h;
++    bytes =3D (DIV_ROUND_UP(w, 8)) * h;
 =20
-     for(i=3D0;i<number_of_entries;i++) {
-         entry=3Darray_get_next(&(s->directory));
-@@ -2520,7 +2520,7 @@ static int commit_one_file(BDRVVVFATState* s,
-                 (size > offset && c >=3D2 && !fat_eof(s, c)));
+     vnc_write_u8(vs, (stream | VNC_TIGHT_EXPLICIT_FILTER) << 4);
+     vnc_write_u8(vs, VNC_TIGHT_FILTER_PALETTE);
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 9710f11be8..dcf7f8ae93 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -2781,7 +2781,7 @@ static int vnc_refresh_server_surface(VncDisplay *v=
+d)
+             PIXMAN_FORMAT_BPP(pixman_image_get_format(vd->guest.fb));
+         guest_row0 =3D (uint8_t *)pixman_image_get_data(vd->guest.fb);
+         guest_stride =3D pixman_image_get_stride(vd->guest.fb);
+-        guest_ll =3D pixman_image_get_width(vd->guest.fb) * ((guest_bpp =
++ 7) / 8);
++        guest_ll =3D pixman_image_get_width(vd->guest.fb) * (DIV_ROUND_U=
+P(guest_bpp, 8));
+     }
+     line_bytes =3D MIN(server_stride, guest_ll);
 =20
-         ret =3D vvfat_read(s->bs, cluster2sector(s, c),
--            (uint8_t*)cluster, (rest_size + 0x1ff) / 0x200);
-+            (uint8_t*)cluster, DIV_ROUND_UP(rest_size, 0x200));
-=20
-         if (ret < 0) {
-             qemu_close(fd);
 --=20
 2.13.1.395.gf7b71de06
 
