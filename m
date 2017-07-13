@@ -1,53 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVfoq-00050T-GQ
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 11:14:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40934)
+	id 1dVfqE-00068h-LN
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 11:15:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1dVfoo-0004xe-0g
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:14:19 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dVfqB-00066L-GT
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:15:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1dVfom-0005GX-Ky
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:14:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36972)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1dVfog-0005Bu-7g; Thu, 13 Jul 2017 11:14:10 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 43D17C0587FE;
-	Thu, 13 Jul 2017 15:14:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 43D17C0587FE
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=berrange@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 43D17C0587FE
-Received: from redhat.com (unknown [10.42.22.189])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 054526E8F2;
-	Thu, 13 Jul 2017 15:14:07 +0000 (UTC)
-Date: Thu, 13 Jul 2017 16:14:05 +0100
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org
-Message-ID: <20170713151405.GS4011@redhat.com>
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
-References: <1499955697-28045-1-git-send-email-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1499955697-28045-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 13 Jul 2017 15:14:09 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1dVfqA-0005w2-7r
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:15:43 -0400
+Received: from orth.archaic.org.uk ([81.2.115.148]:48452)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dVfq4-0005sa-7u; Thu, 13 Jul 2017 11:15:36 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dVfq1-00061b-8L; Thu, 13 Jul 2017 16:15:33 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: patches@linaro.org
+Date: Thu, 13 Jul 2017 16:15:32 +0100
+Message-Id: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Drop ancient
- Solaris 9 and earlier support
+X-Received-From: 81.2.115.148
+Subject: [Qemu-trivial] [PATCH] configure: Never use 'uname' to identify
+ target OS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,34 +38,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 15:14:19 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 15:15:44 -0000
 
-On Thu, Jul 13, 2017 at 03:21:37PM +0100, Peter Maydell wrote:
-> Solaris 9 was released in 2002, its successor Solaris 10 was
-> released in 2005, and Solaris 9 was end-of-lifed in 2014.
-> Nobody has stepped forward to express interest in supporting
-> Solaris of any flavour, so removing support for the ancient
-> versions seems uncontroversial.
-> 
-> In particular, this allows us to remove a use of 'uname'
-> in configure that won't work if you're cross-compiling.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Not a big thing, but it's a start on cleaning out some
-> of the untested and untestable cruft from configure...
-> 
->  configure               | 21 ---------------------
->  include/fpu/softfloat.h |  5 -----
->  2 files changed, 26 deletions(-)
+For a very long time we have used 'uname -s' as our fallback if
+we don't identify the target OS using a compiler #define. This
+obviously doesn't work for cross-compilation, and we've had
+a comment suggesting we fix this in configure for a long time.
+Since we now have an exhaustive list of which OSes we can run
+on (thanks to commit 898be3e0415 making an unrecognized OS
+be a fatal error), we know which ones we're missing.
 
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+Add check_define tests for the remaining OSes we support.  The
+defines checked are based on ones we already use in the codebase for
+identifying the host OS (with the exception of GNU/kFreeBSD).
+We can now set bogus_os immediately rather than doing it later.
 
+We leave the comment about uname being bad untouched, since
+there is still a use of it for the fallback for unrecognized
+host CPU type.
 
-Regards,
-Daniel
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+
+All of these OSes except OSX are on the "not actually supported"
+list, so I don't care very much if we break them.  I did sanity check
+FreeBSD and NetBSD which are the two most plausible ones to
+get back into supported status.
+
+ configure | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/configure b/configure
+index 5096cbc..d733a05 100755
+--- a/configure
++++ b/configure
+@@ -536,8 +536,24 @@ elif check_define __sun__ ; then
+   targetos='SunOS'
+ elif check_define __HAIKU__ ; then
+   targetos='Haiku'
++elif check_define __FreeBSD__ ; then
++  targetos='FreeBSD'
++elif check_define __FreeBSD_kernel__ && check_define __GLIBC__; then
++  targetos='GNU/kFreeBSD'
++elif check_define __DragonFly__ ; then
++  targetos='DragonFly'
++elif check_define __NetBSD__; then
++  targetos='NetBSD'
++elif check_define __APPLE__; then
++  targetos='Darwin'
++elif check_define _AIX; then
++  targetos='AIX'
+ else
+-  targetos=$(uname -s)
++  # This is a fatal error, but don't report it yet, because we
++  # might be going to just print the --help text, or it might
++  # be the result of a missing compiler.
++  targetos='bogus'
++  bogus_os='yes'
+ fi
+ 
+ # Some host OSes need non-standard checks for which CPU to use.
+@@ -781,12 +797,6 @@ Linux)
+   QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-headers $QEMU_INCLUDES"
+   supported_os="yes"
+ ;;
+-*)
+-  # This is a fatal error, but don't report it yet, because we
+-  # might be going to just print the --help text, or it might
+-  # be the result of a missing compiler.
+-  bogus_os="yes"
+-;;
+ esac
+ 
+ if [ "$bsd" = "yes" ] ; then
+@@ -1576,7 +1586,7 @@ if test "$bogus_os" = "yes"; then
+     # the compiler works (so the results of the check_defines we used
+     # to identify the OS are reliable), if we didn't recognize the
+     # host OS we should stop now.
+-    error_exit "Unrecognized host OS $targetos"
++    error_exit "Unrecognized host OS (uname -s reports '$(uname -s)')"
+ fi
+ 
+ gcc_flags="-Wold-style-declaration -Wold-style-definition -Wtype-limits"
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.7.4
+
 
