@@ -1,58 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVJs8-00029R-GP
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2017 11:48:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57793)
+	id 1dVf2B-0007mG-KV
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 10:24:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dVJs6-00027d-6E
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 11:48:15 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dVf29-0007kR-Cw
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 10:24:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1dVJs5-0006K6-77
-	for qemu-trivial@nongnu.org; Wed, 12 Jul 2017 11:48:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59904)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1dVJry-0006E2-Vb; Wed, 12 Jul 2017 11:48:07 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 54F4FC04B924;
-	Wed, 12 Jul 2017 15:48:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 54F4FC04B924
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=armbru@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 54F4FC04B924
-Received: from blackfin.pond.sub.org (ovpn-116-60.ams2.redhat.com
-	[10.36.116.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CF356031A;
-	Wed, 12 Jul 2017 15:48:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8F1311138645; Wed, 12 Jul 2017 17:48:01 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
-References: <20170609152017.7286-1-eblake@redhat.com>
-	<1298d3b1-a6d6-499b-323b-b79c6e38bc7b@msgid.tls.msk.ru>
-	<15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com>
-Date: Wed, 12 Jul 2017 17:48:01 +0200
-In-Reply-To: <15dc487a-c340-e407-a7b0-b7159a5a49a2@redhat.com> (Eric Blake's
-	message of "Wed, 12 Jul 2017 08:56:05 -0500")
-Message-ID: <871spl4pxq.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 12 Jul 2017 15:48:06 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1dVf28-0001Jz-CI
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 10:24:01 -0400
+Received: from orth.archaic.org.uk ([81.2.115.148]:48451)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dVf22-00014j-1s; Thu, 13 Jul 2017 10:23:54 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dVezq-0005xS-MU; Thu, 13 Jul 2017 15:21:38 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: patches@linaro.org
+Date: Thu, 13 Jul 2017 15:21:37 +0100
+Message-Id: <1499955697-28045-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] qobject coccinelle
- followups
+X-Received-From: 81.2.115.148
+Subject: [Qemu-trivial] [PATCH] configure: Drop ancient Solaris 9 and
+ earlier support
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,30 +38,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jul 2017 15:48:15 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 14:24:02 -0000
 
-Eric Blake <eblake@redhat.com> writes:
+Solaris 9 was released in 2002, its successor Solaris 10 was
+released in 2005, and Solaris 9 was end-of-lifed in 2014.
+Nobody has stepped forward to express interest in supporting
+Solaris of any flavour, so removing support for the ancient
+versions seems uncontroversial.
 
-> On 07/12/2017 08:35 AM, Michael Tokarev wrote:
->> 09.06.2017 18:20, Eric Blake wrote:
->>> Inspired by https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg02505.html
->>>
->>> Surprisingly, the updated script didn't find any existing longhand
->>> use as candidates for QDECREF() (our last such use was cleaned up
->>> as a side effect, in commit b72fe9e), but it DID find another straggler
->>> missed in commit 579cf1d1.
->>>
->>> Eric Blake (2):
->>>   qobject: Update coccinelle script to catch Q{INC,DEC}REF
->>>   qobject: Catch another straggler for use of qdict_put_str()
->> 
->> Applied to -trivial, thanks!
->
-> Markus has taken v2 of these patches through his qapi-next tree:
-> https://lists.gnu.org/archive/html/qemu-devel/2017-06/msg05589.html
->
-> so you can drop this v1 from -trivial
+In particular, this allows us to remove a use of 'uname'
+in configure that won't work if you're cross-compiling.
 
-I've dragged my feet on the pull request in the hope of still adding a
-few patches of my own.  Figure I better put them into the next one.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Not a big thing, but it's a start on cleaning out some
+of the untested and untestable cruft from configure...
+
+ configure               | 21 ---------------------
+ include/fpu/softfloat.h |  5 -----
+ 2 files changed, 26 deletions(-)
+
+diff --git a/configure b/configure
+index 5096cbc..ff77896 100755
+--- a/configure
++++ b/configure
+@@ -730,23 +730,6 @@ SunOS)
+   install="${INSTALL-ginstall}"
+   ld="gld"
+   smbd="${SMBD-/usr/sfw/sbin/smbd}"
+-  needs_libsunmath="no"
+-  solarisrev=$(uname -r | cut -f2 -d.)
+-  if [ "$cpu" = "i386" -o "$cpu" = "x86_64" ] ; then
+-    if test "$solarisrev" -le 9 ; then
+-      if test -f /opt/SUNWspro/prod/lib/libsunmath.so.1; then
+-        needs_libsunmath="yes"
+-        QEMU_CFLAGS="-I/opt/SUNWspro/prod/include/cc $QEMU_CFLAGS"
+-        LDFLAGS="-L/opt/SUNWspro/prod/lib -R/opt/SUNWspro/prod/lib $LDFLAGS"
+-        LIBS="-lsunmath $LIBS"
+-      else
+-        error_exit "QEMU will not link correctly on Solaris 8/X86 or 9/x86 without" \
+-            "libsunmath from the Sun Studio compilers tools, due to a lack of" \
+-            "C99 math features in libm.so in Solaris 8/x86 and Solaris 9/x86" \
+-            "Studio 11 can be downloaded from www.sun.com."
+-      fi
+-    fi
+-  fi
+   if test -f /usr/include/sys/soundcard.h ; then
+     audio_drv_list="oss"
+   fi
+@@ -5430,10 +5413,6 @@ fi
+ 
+ if test "$solaris" = "yes" ; then
+   echo "CONFIG_SOLARIS=y" >> $config_host_mak
+-  echo "CONFIG_SOLARIS_VERSION=$solarisrev" >> $config_host_mak
+-  if test "$needs_libsunmath" = "yes" ; then
+-    echo "CONFIG_NEEDS_LIBSUNMATH=y" >> $config_host_mak
+-  fi
+ fi
+ if test "$haiku" = "yes" ; then
+   echo "CONFIG_HAIKU=y" >> $config_host_mak
+diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
+index d9689ec..0f96a0e 100644
+--- a/include/fpu/softfloat.h
++++ b/include/fpu/softfloat.h
+@@ -82,11 +82,6 @@ this code that are retained.
+ #ifndef SOFTFLOAT_H
+ #define SOFTFLOAT_H
+ 
+-#if defined(CONFIG_SOLARIS) && defined(CONFIG_NEEDS_LIBSUNMATH)
+-#include <sunmath.h>
+-#endif
+-
+-
+ /* This 'flag' type must be able to hold at least 0 and 1. It should
+  * probably be replaced with 'bool' but the uses would need to be audited
+  * to check that they weren't accidentally relying on it being a larger type.
+-- 
+2.7.4
+
 
