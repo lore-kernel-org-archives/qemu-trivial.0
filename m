@@ -1,32 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVfqE-00068h-LN
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 11:15:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41374)
+	id 1dVgUV-0007BY-An
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 11:57:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVfqB-00066L-GT
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:15:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dVgUS-000798-Jj
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dVfqA-0005w2-7r
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:15:43 -0400
-Received: from orth.archaic.org.uk ([81.2.115.148]:48452)
+	(envelope-from <peter.maydell@linaro.org>) id 1dVgUP-0002Od-JR
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:20 -0400
+Received: from mail-wm0-f48.google.com ([74.125.82.48]:36849)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dVfq4-0005sa-7u; Thu, 13 Jul 2017 11:15:36 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dVfq1-00061b-8L; Thu, 13 Jul 2017 16:15:33 +0100
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dVgUP-0002O9-DM
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 11:57:17 -0400
+Received: by mail-wm0-f48.google.com with SMTP id 62so27864000wmw.1
+	for <qemu-trivial@nongnu.org>; Thu, 13 Jul 2017 08:57:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=qnv276cH6pwo+aHBYAIBiWNEEV0C5hhWsXANSlUYDGQ=;
+	b=ew+CfrGWqR+FKiG7kX7VZUFk3ceI1S+tGhWN/IgtaF4SQtsce1G3XTYyJ9r8G1bxfu
+	iUyanxwk28R/lkCsNPrsppVU3VhZR3FSIBDllqunex35lS/B0+XoAsW3YYjw2BaAfvXi
+	H83ca6v3YmfkXdgZbmn7Z2308DLacf0S9k/Ig=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=qnv276cH6pwo+aHBYAIBiWNEEV0C5hhWsXANSlUYDGQ=;
+	b=ks2IZTyVcgjtCT7IIkCfGmWPpcs3T8dCPwaPOcYQMgAxcLAibL7wL396VYyM8WhSyg
+	kbROqatI9Kdcv/Rlgvqyyw+AXoc3QgdsTWgHCqH8zYXhDWG/mTn2RayhO8t6oEgv3Vn6
+	twGTBv4lH5etMJnf7kZuKcQpjx/EOn2UCcqv3qVJZU7gru6VRPCRhCE6KfLAWQclArVM
+	ZRJMNI7SndH3XSXNJLxvYYUGGQ8/j3avy4m+bIP4Ux8+anCCRd9WwSCH0Rbeh+Cx6lbK
+	8DEYn9L/8ooBQzw+Kaxwwkiv9N/NE/Mkeyp75zBhsMSY95C92QvVGeYCMyCf8JqF/IPA
+	/FcA==
+X-Gm-Message-State: AIVw111AS0SR+mULTBsWqa6udXrm805o0adjiGeIRABsK1qtgJ+ZA80B
+	+vjIDqabjPqNotetxEenrBBnQ4tgw0iC
+X-Received: by 10.28.191.74 with SMTP id p71mr2461646wmf.45.1499961375931;
+	Thu, 13 Jul 2017 08:56:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.2 with HTTP; Thu, 13 Jul 2017 08:55:55 -0700 (PDT)
+In-Reply-To: <cover.1499867930.git.mjt@msgid.tls.msk.ru>
+References: <cover.1499867930.git.mjt@msgid.tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Date: Thu, 13 Jul 2017 16:15:32 +0100
-Message-Id: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
+Date: Thu, 13 Jul 2017 16:55:55 +0100
+Message-ID: <CAFEAcA-1ehg6oet1wa40r85mxzFzuMFdTo3REM=n-8AG0zgK5w@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 81.2.115.148
-Subject: [Qemu-trivial] [PATCH] configure: Never use 'uname' to identify
- target OS
+X-Received-From: 74.125.82.48
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/11] Trivial patches for
+ 2017-07-12 (#2)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -38,89 +63,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 15:15:44 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 15:57:21 -0000
 
-For a very long time we have used 'uname -s' as our fallback if
-we don't identify the target OS using a compiler #define. This
-obviously doesn't work for cross-compilation, and we've had
-a comment suggesting we fix this in configure for a long time.
-Since we now have an exhaustive list of which OSes we can run
-on (thanks to commit 898be3e0415 making an unrecognized OS
-be a fatal error), we know which ones we're missing.
+On 12 July 2017 at 15:00, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> The same but without two patches from Eric Blake.
+> Not resending all the patches, only the cover letter.
+>
+> The following changes since commit 6b06e3e49eb8c91cc286c16d6bf3181ac296f33d:
+>
+>   Merge remote-tracking branch 'remotes/ericb/tags/pull-nbd-2017-07-10-v2' into staging (2017-07-10 16:12:47 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to a7a305aee1e9a74a3f4b263aa98babed795b1f0a:
+>
+>   include/hw/ptimer.h: Add documentation comments (2017-07-11 17:44:27 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-07-12
+>
+> ----------------------------------------------------------------
 
-Add check_define tests for the remaining OSes we support.  The
-defines checked are based on ones we already use in the codebase for
-identifying the host OS (with the exception of GNU/kFreeBSD).
-We can now set bogus_os immediately rather than doing it later.
+Applied, thanks.
 
-We leave the comment about uname being bad untouched, since
-there is still a use of it for the fallback for unrecognized
-host CPU type.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-
-All of these OSes except OSX are on the "not actually supported"
-list, so I don't care very much if we break them.  I did sanity check
-FreeBSD and NetBSD which are the two most plausible ones to
-get back into supported status.
-
- configure | 26 ++++++++++++++++++--------
- 1 file changed, 18 insertions(+), 8 deletions(-)
-
-diff --git a/configure b/configure
-index 5096cbc..d733a05 100755
---- a/configure
-+++ b/configure
-@@ -536,8 +536,24 @@ elif check_define __sun__ ; then
-   targetos='SunOS'
- elif check_define __HAIKU__ ; then
-   targetos='Haiku'
-+elif check_define __FreeBSD__ ; then
-+  targetos='FreeBSD'
-+elif check_define __FreeBSD_kernel__ && check_define __GLIBC__; then
-+  targetos='GNU/kFreeBSD'
-+elif check_define __DragonFly__ ; then
-+  targetos='DragonFly'
-+elif check_define __NetBSD__; then
-+  targetos='NetBSD'
-+elif check_define __APPLE__; then
-+  targetos='Darwin'
-+elif check_define _AIX; then
-+  targetos='AIX'
- else
--  targetos=$(uname -s)
-+  # This is a fatal error, but don't report it yet, because we
-+  # might be going to just print the --help text, or it might
-+  # be the result of a missing compiler.
-+  targetos='bogus'
-+  bogus_os='yes'
- fi
- 
- # Some host OSes need non-standard checks for which CPU to use.
-@@ -781,12 +797,6 @@ Linux)
-   QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-headers $QEMU_INCLUDES"
-   supported_os="yes"
- ;;
--*)
--  # This is a fatal error, but don't report it yet, because we
--  # might be going to just print the --help text, or it might
--  # be the result of a missing compiler.
--  bogus_os="yes"
--;;
- esac
- 
- if [ "$bsd" = "yes" ] ; then
-@@ -1576,7 +1586,7 @@ if test "$bogus_os" = "yes"; then
-     # the compiler works (so the results of the check_defines we used
-     # to identify the OS are reliable), if we didn't recognize the
-     # host OS we should stop now.
--    error_exit "Unrecognized host OS $targetos"
-+    error_exit "Unrecognized host OS (uname -s reports '$(uname -s)')"
- fi
- 
- gcc_flags="-Wold-style-declaration -Wold-style-definition -Wtype-limits"
--- 
-2.7.4
-
+-- PMM
 
