@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVh5R-0005oh-7n
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 12:35:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43677)
+	id 1dVh5T-0005qi-5e
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 12:35:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh5N-0005mj-EW
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:35:31 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh5Q-0005o9-Pi
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:35:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh5M-0006NZ-Nl
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:35:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:7312)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dVh5Q-0006SQ-0c
+	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 12:35:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44706)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1dVh5K-0006M9-OO; Thu, 13 Jul 2017 12:35:26 -0400
+	id 1dVh5N-0006NO-0v; Thu, 13 Jul 2017 12:35:29 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A1D077F7A9;
-	Thu, 13 Jul 2017 16:35:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A1D077F7A9
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id D3DFF8A003;
+	Thu, 13 Jul 2017 16:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D3DFF8A003
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=marcandre.lureau@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com A1D077F7A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D3DFF8A003
 Received: from localhost (ovpn-112-18.ams2.redhat.com [10.36.112.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3BDCC60466;
-	Thu, 13 Jul 2017 16:35:22 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2AF7E70475;
+	Thu, 13 Jul 2017 16:35:26 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Date: Thu, 13 Jul 2017 18:32:18 +0200
-Message-Id: <20170713163219.9024-29-marcandre.lureau@redhat.com>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Jason Wang <jasowang@redhat.com>
+Date: Thu, 13 Jul 2017 18:32:19 +0200
+Message-Id: <20170713163219.9024-30-marcandre.lureau@redhat.com>
 In-Reply-To: <20170713163219.9024-1-marcandre.lureau@redhat.com>
 References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 13 Jul 2017 16:35:25 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 13 Jul 2017 16:35:28 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 28/29] test-iov: replace
+Subject: [Qemu-trivial] [PATCH v2 29/29] eepro100: replace
  g_malloc()+memcpy() with g_memdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -58,30 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 16:35:32 -0000
+X-List-Received-Date: Thu, 13 Jul 2017 16:35:33 -0000
 
 I found these pattern via grepping the source tree. I don't have a
 coccinelle script for it!
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Jason Wang <jasowang@redhat.com>
 ---
- tests/test-iov.c | 3 +--
+ hw/net/eepro100.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/tests/test-iov.c b/tests/test-iov.c
-index a22d71fd2c..fa3d75aee1 100644
---- a/tests/test-iov.c
-+++ b/tests/test-iov.c
-@@ -167,8 +167,7 @@ static void test_io(void)
-     }
-     iov_from_buf(iov, niov, 0, buf, sz);
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 5a4774aab4..a7b9f77519 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1904,8 +1904,7 @@ static void e100_nic_realize(PCIDevice *pci_dev, Er=
+ror **errp)
 =20
--    siov =3D g_malloc(sizeof(*iov) * niov);
--    memcpy(siov, iov, sizeof(*iov) * niov);
-+    siov =3D g_memdup(iov, sizeof(*iov) * niov);
+     qemu_register_reset(nic_reset, s);
 =20
-     if (socketpair(PF_UNIX, SOCK_STREAM, 0, sv) < 0) {
-        perror("socketpair");
+-    s->vmstate =3D g_malloc(sizeof(vmstate_eepro100));
+-    memcpy(s->vmstate, &vmstate_eepro100, sizeof(vmstate_eepro100));
++    s->vmstate =3D g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100))=
+;
+     s->vmstate->name =3D qemu_get_queue(s->nic)->model;
+     vmstate_register(&pci_dev->qdev, -1, s->vmstate, s);
+ }
 --=20
 2.13.1.395.gf7b71de06
 
