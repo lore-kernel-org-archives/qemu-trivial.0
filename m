@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVvyY-0007oO-C4
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 04:29:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44112)
+	id 1dVw18-0001FN-Re
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 04:32:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dVvyV-0007hP-Df
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:29:24 -0400
+	(envelope-from <rth7680@gmail.com>) id 1dVw16-0001Dk-LE
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:32:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dVvyS-0005dZ-AK
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:29:23 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:36412)
+	(envelope-from <rth7680@gmail.com>) id 1dVw13-0006xj-Ih
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:32:04 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:34003)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1dVvyS-0005dP-5t; Fri, 14 Jul 2017 04:29:20 -0400
-Received: by mail-qk0-x243.google.com with SMTP id v17so8954362qka.3;
-	Fri, 14 Jul 2017 01:29:20 -0700 (PDT)
+	id 1dVw13-0006xT-F8; Fri, 14 Jul 2017 04:32:01 -0400
+Received: by mail-qk0-x244.google.com with SMTP id q66so11270020qki.1;
+	Fri, 14 Jul 2017 01:32:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=8D1QGWGKUgpU8H7otoxIwBZY+dmhjqX95bKFobQCUJI=;
-	b=A07FKvUOAJNgFcEN4F9Tq28mnxBNE1Bsi2utjX767MFWrf9HHgtzHFxGI+BF2kJQLf
-	au/SXIh+rwfJkgaut7lx6Kq+OGXS3qg+ove01UYBY6kuVz+M/58mmdFFJIB7g7laWoeF
-	ltbiFI1tHwdp8qJe1RuXnp5ZrOOhb/gez9JRAGcb6yjWtakyWxbqhBBuB2pkbxAAuw+J
-	Krqh1/Tdv/TijRPStiegMHn1TxG3eFGKZBQcK/ctuC2hXHh/TEKt7goo3QPKVTMwqiPl
-	3XQgw+aNZAeCkayTqmMo+jtagF1RGgaZbtx8efR56FZ/CsvVEkdZAwt8dwJpfcNerAXy
-	KYZQ==
+	bh=Sup4YrYc3dyVBGarE9XCHADI8Az2nQ/SjbdelGRZ9sw=;
+	b=NORKpzUhyWjJBkMZ6P27wjs2VDSIAQmIKu2FA4AWa90CDBeSklvhvmxAIW0I94Rph0
+	qPXxjJYu4vJrn9wIPaPscst94S17ya9e/zdFZc5RC4ICYx3YWL4ENno8pFtcPjw5+UDw
+	hNdVbhJj75YT2mG8Jpb3a5NTJ27X2CbvGyn0YU2X5S/GDvf2SUuFYUBNvPHZbMy/oS5N
+	tgkezs6i/N5Wcxvbc4hzzb+pZ3kIDWHAC//OV4xrzxIOGsjVS2LYW3cdR/Dbpex2eqXP
+	Y8dnmxmXtrncgJ4NTyOqXw3aNKLHRghiQVpeAQ5k3kxI8e2JAocNxzUg5HaP+ogr9/iY
+	pc/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=8D1QGWGKUgpU8H7otoxIwBZY+dmhjqX95bKFobQCUJI=;
-	b=A0hS72B6Yisv6b3lenRrE7U5VaXnunAkgGdF6zVdymXjvMChpR8FttrmYZhXRSmXYP
-	MkxLj0kHmgsuntEj3rHl3wEgzCHGJHV4hju3KD94atE/rzNpbFQBcZj3n6YFkGLTqtvg
-	wOWTlrOFJy7Ma8m5Dp2YaFlR6SKyMVFjgt+fIyVREXzQw1MtZScqpGCUpey2utHMU6En
-	Ko+wG6BBo64kY5rIhdHJ2+9ykHz2SMsCLw8dDi9AKnuC1hCf0/u+lOuvVGx7SW1DycZf
-	4rN8JctReMM3Mlx2+P1keslaCHKozgTjeXP0m1mhYqm5oqX3Ban0eFXch0eAJHwQbaMg
-	cbtw==
-X-Gm-Message-State: AIVw110N4uYyMZt6f6N5EnHsRdbuPAvt3b3k5jb6xnY78aNYFtrZg1wZ
-	XkJdsEIe5a7S9Q==
-X-Received: by 10.55.76.71 with SMTP id z68mr9432404qka.8.1500020959607;
-	Fri, 14 Jul 2017 01:29:19 -0700 (PDT)
+	bh=Sup4YrYc3dyVBGarE9XCHADI8Az2nQ/SjbdelGRZ9sw=;
+	b=Zt/TqFIOj1X2z32qRdiZge0T4qt+cwXcS2jsmEa2B4KhXI1NTLGoGuY5WK8TO+1/OU
+	uPGskLpiAekkUv5k4dWnJGWyk3tRGD/I9d0RVBLEMJciDK+D+eRJxsvJHtJ7hHW/nEfj
+	2eOvZuGM8lJYRSjRqfZaVrjwFb6ueyhd/FYRh54FdJBUEPO75cXWkt7JOgRYRO/GycYG
+	qKwMs5S/OKaXv1QgNMSOVdFLTLZdqMe7/NYqmRNSMSacXEcMq3+TL3A4RBDby/uKUVfR
+	FbBAONKpPsj63beqEjMo9xASobJ1Y9SKD4phh7RTk/HfhFJZQ/fgaePsIaYdh9Or/KkD
+	4RFQ==
+X-Gm-Message-State: AIVw113NTfMr3n88hXh78i+XcNiPKK+lzdH8JKzGHlLiCqK4ag9S48I9
+	ihoVxylHfuU0vw==
+X-Received: by 10.55.79.131 with SMTP id d125mr9478364qkb.169.1500021120659;
+	Fri, 14 Jul 2017 01:32:00 -0700 (PDT)
 Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com.
 	[173.197.98.123]) by smtp.googlemail.com with ESMTPSA id
-	g25sm6179093qte.57.2017.07.14.01.29.17
+	m49sm6528289qtf.32.2017.07.14.01.31.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 14 Jul 2017 01:29:19 -0700 (PDT)
+	Fri, 14 Jul 2017 01:32:00 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	Gerd Hoffmann <kraxel@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
+	"open list:dmg" <qemu-block@nongnu.org>, qemu-trivial@nongnu.org,
+	Max Reitz <mreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
 References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
-	<20170713163219.9024-7-marcandre.lureau@redhat.com>
+	<20170713163219.9024-8-marcandre.lureau@redhat.com>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <5943fdc0-cacd-a93a-d9c8-f65b1e8d00ca@twiddle.net>
-Date: Thu, 13 Jul 2017 22:29:15 -1000
+Message-ID: <abbaf8fc-1b11-72c2-40b9-a0a74f14826c@twiddle.net>
+Date: Thu, 13 Jul 2017 22:31:54 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170713163219.9024-7-marcandre.lureau@redhat.com>
+In-Reply-To: <20170713163219.9024-8-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 06/29] pcspk: use
- QEMU_ALIGN_DOWN
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 07/29] dmg: use
+ DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,17 +79,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2017 08:29:24 -0000
+X-List-Received-Date: Fri, 14 Jul 2017 08:32:05 -0000
 
 On 07/13/2017 06:31 AM, Marc-André Lureau wrote:
-> -        s->samples = (PCSPK_BUF_LEN * PIT_FREQ / m * m / (PIT_FREQ >> 1) + 1) >> 1;
-> +        s->samples = (QEMU_ALIGN_DOWN(PCSPK_BUF_LEN * PIT_FREQ, m) / (PIT_FREQ >> 1) + 1) >> 1;
-
-Wow.  Um.  Two divisions?
-
-Irritatingly, "m" appears to be the only non-constant.
-
-This a true and correct conversion, so
+> I used the clang-tidy qemu-round check to generate the fix:
+> https://github.com/elmarco/clang-tools-extra
+> 
+> Signed-off-by: Marc-André Lureau<marcandre.lureau@redhat.com>
+> Reviewed-by: Stefan Hajnoczi<stefanha@redhat.com>
+> ---
+>   block/dmg.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 
