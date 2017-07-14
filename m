@@ -1,73 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVs96-0008Io-W7
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 00:24:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53062)
+	id 1dVsA3-0000Wp-F0
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 00:25:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53294)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVs94-0008HY-Nr
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:24:03 -0400
+	id 1dVsA0-0000Uo-PK
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:25:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVs91-0002bn-4R
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:24:02 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35687)
+	id 1dVs9x-0002pQ-LB
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:25:00 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35851)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVs91-0002bj-0N; Fri, 14 Jul 2017 00:23:59 -0400
-Received: by mail-qk0-x241.google.com with SMTP id c18so646617qkb.2;
-	Thu, 13 Jul 2017 21:23:58 -0700 (PDT)
+	id 1dVs9x-0002pG-GZ; Fri, 14 Jul 2017 00:24:57 -0400
+Received: by mail-qk0-x243.google.com with SMTP id v17so8482244qka.3;
+	Thu, 13 Jul 2017 21:24:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=Ji30ont4RHhkkr+IeCQxOaCk6XG1u5rrBVxyDHuO5gg=;
-	b=Zhy5Gv+o1/dkCwrI+jxj1GeSZFQY4B0bIGQGZeJrgnv0OKAr3cfhsYTwf75W9lSYJO
-	Kimy/rseIZNMMYrL8k0GVMma4/3Hn4dnA6CUqWtWzTZKKnTTveB8PBvy1sg0Or/zZvXR
-	EPdEdIja23vRATPFaLotdWi7VTsJ7cg7p70wvyqSgQ1iaHkuD84Yo/7UH9eHt64hnnLB
-	ZSpMhkDeCBmQn6vrp7FExjUPXiWzsU/1AXOY/8kUWq76u1p3iNFsVXUW0JgeWyD3mJrR
-	h7MARiXCvEwhncUpX+wWSuPiXoFx5On0Dj/sBCZHVhXYU3q45jKEgd4e8o1N34u+SgMi
-	/hUA==
+	bh=1MpibwpmqGy02VulG2ZRe1PAzWqcQkz39AAJfxuzA+I=;
+	b=RB0Ollsg5wFKXucyTpo67kJNDWTfDMnpiPu5M1pi6mDYYOFJCkelXneDfxsNPiKN2e
+	xm227t5cR6ZciXtGp8B7L0CWBgDG6ooXTeusx5KcJwDrWql7kknFrPqMhM4XUxRG7Sdt
+	5a8rV0Okqn7sd930X2BMXE6XmymTv0tsMDYg6p/OShaYvyQTHEMJ7GpOa4yCXONmEFTf
+	QduNOPIaOQuoavIt8C/QHJBegHZL8k3FCxUD9PNAezhUJpwa8a2Ec3HwLbC2UxpxHpBG
+	zJd/CnAhN83cnZ/6f8LpU17A+2nJjAip9g0eW/9Tg5f/aBAcxjj2G+N3cpBfZdnpmpUC
+	siDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=Ji30ont4RHhkkr+IeCQxOaCk6XG1u5rrBVxyDHuO5gg=;
-	b=l+GIXBfPumnkCsMfB/DWCbtssNbExWkEFX0T9VUnKoPIbDs6MtqKLg2lJZxvhFSi2L
-	sHJuQbh9Is9qBV0BduE+lEiCEBbRlzNQXElUF70hR9eP6t0zVAUzMdu8gRh3Q3BGR7U+
-	uKiFUcyCoHsG1xtEhz1wZaI/XTRUVCMn0POYpZYcwI2XYPIrpiNkfh06+qtqnn3iX/Zf
-	CiczOtfRNYiG3acLNBjWwvkqYrR1dNDFefmkCXdUmLeqwe3rSldtwaGtoJ0lPejTUQsz
-	ykcyfnB02bewbGU/3QvPmGMg83ZwW5M4KTTmG1DrxkYOapzJ8nM2SQMb0+Phz9zgG84H
-	gsxg==
-X-Gm-Message-State: AIVw110S/zMtc3cGW7Uw3MOyrPcJicAnUs6IiviWvF3mfuF26bmLSf59
-	McqzzrABys5m9w==
-X-Received: by 10.55.150.134 with SMTP id y128mr9244907qkd.29.1500006238542;
-	Thu, 13 Jul 2017 21:23:58 -0700 (PDT)
+	bh=1MpibwpmqGy02VulG2ZRe1PAzWqcQkz39AAJfxuzA+I=;
+	b=pOBnrESpPocjR68V8l7V3rPdoNzqQlaoBd9iUdR3/Hnw5vrZbAaJrnxlHxjKOxY3ph
+	IjmStazR8x6ylpLmN079lcpYqRtY7wOtxLl/uRJSTjDhO1z888GadntE4D/IWbLa0zM6
+	Mwu215IpKDCamrC58Qdl2QihxcV5Ayga3dneEY20Yz1rXnA2Ey+cdiFgkU4oJGI+cCYN
+	ifiNUuko9blQMhxR07e7fwbYkZl1wURl0YE/dCwZIlnVVWHR/7kDmHUeszRTokVmxF+R
+	DxFoWMek0KWMn1SQuFrhPFOx0FTJv9Mjof6AbL75OnF6YNRnBsMKjvYpXUmTtzzIErPi
+	zg2g==
+X-Gm-Message-State: AIVw1109G9RIh/CjgmSa1z8n9PLl3f5tkB0HIA+QgvyRSeHCZkUIUksv
+	VOlGQMvOVCCYUA==
+X-Received: by 10.55.92.130 with SMTP id q124mr8682033qkb.205.1500006296988;
+	Thu, 13 Jul 2017 21:24:56 -0700 (PDT)
 Received: from [192.168.1.240] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id s5sm5890576qkl.9.2017.07.13.21.23.56
+	by smtp.gmail.com with ESMTPSA id
+	d14sm5878276qtc.58.2017.07.13.21.24.54
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 13 Jul 2017 21:23:57 -0700 (PDT)
+	Thu, 13 Jul 2017 21:24:56 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
-	"Michael S. Tsirkin" <mst@redhat.com>
+	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>
 References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
-	<20170713163219.9024-19-marcandre.lureau@redhat.com>
+	<20170713163219.9024-22-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d525140c-f99d-f7c3-916a-8b6c9f1453df@amsat.org>
-Date: Fri, 14 Jul 2017 01:23:55 -0300
+Message-ID: <913419f4-d2b9-be51-34ce-1644c48278fa@amsat.org>
+Date: Fri, 14 Jul 2017 01:24:53 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170713163219.9024-19-marcandre.lureau@redhat.com>
+In-Reply-To: <20170713163219.9024-22-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [PATCH v2 18/29] piix: use DIV_ROUND_UP
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-trivial] [PATCH v2 21/29] msix: use DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,7 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2017 04:24:03 -0000
+X-List-Received-Date: Fri, 14 Jul 2017 04:25:02 -0000
 
 On 07/13/2017 01:32 PM, Marc-André Lureau wrote:
 > I used the clang-tidy qemu-round check to generate the fix:
@@ -90,21 +91,30 @@ On 07/13/2017 01:32 PM, Marc-André Lureau wrote:
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->   hw/pci-host/piix.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/pci/msix.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-> index a2c1033dbe..3745b56c8e 100644
-> --- a/hw/pci-host/piix.c
-> +++ b/hw/pci-host/piix.c
-> @@ -140,7 +140,7 @@ static void i440fx_update_memory_mappings(PCII440FXState *d)
->       memory_region_transaction_begin();
->       for (i = 0; i < 13; i++) {
->           pam_update(&d->pam_regions[i], i,
-> -                   pd->config[I440FX_PAM + ((i + 1) / 2)]);
-> +                   pd->config[I440FX_PAM + (DIV_ROUND_UP(i, 2))]);
+> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+> index 5078d3dd19..c944c02135 100644
+> --- a/hw/pci/msix.c
+> +++ b/hw/pci/msix.c
+> @@ -438,7 +438,7 @@ void msix_save(PCIDevice *dev, QEMUFile *f)
 >       }
->       memory_region_set_enabled(&d->smram_region,
->                                 !(pd->config[I440FX_SMRAM] & SMRAM_D_OPEN));
+>   
+>       qemu_put_buffer(f, dev->msix_table, n * PCI_MSIX_ENTRY_SIZE);
+> -    qemu_put_buffer(f, dev->msix_pba, (n + 7) / 8);
+> +    qemu_put_buffer(f, dev->msix_pba, DIV_ROUND_UP(n, 8));
+>   }
+>   
+>   /* Should be called after restoring the config space. */
+> @@ -453,7 +453,7 @@ void msix_load(PCIDevice *dev, QEMUFile *f)
+>   
+>       msix_clear_all_vectors(dev);
+>       qemu_get_buffer(f, dev->msix_table, n * PCI_MSIX_ENTRY_SIZE);
+> -    qemu_get_buffer(f, dev->msix_pba, (n + 7) / 8);
+> +    qemu_get_buffer(f, dev->msix_pba, DIV_ROUND_UP(n, 8));
+>       msix_update_function_masked(dev);
+>   
+>       for (vector = 0; vector < n; vector++) {
 > 
 
