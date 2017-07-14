@@ -1,73 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVsiS-0005M4-Mu
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 01:00:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58641)
+	id 1dVvgp-0005Kc-NW
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 04:11:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39877)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsiP-0005Lw-VN
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 01:00:35 -0400
+	(envelope-from <rth7680@gmail.com>) id 1dVvgn-0005K7-LS
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:11:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsiL-0006hl-U1
-	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 01:00:34 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:36536)
+	(envelope-from <rth7680@gmail.com>) id 1dVvgk-0004RV-G7
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 04:11:05 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33821)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dVsiL-0006hO-O0; Fri, 14 Jul 2017 01:00:29 -0400
-Received: by mail-qk0-x244.google.com with SMTP id v17so8544887qka.3;
-	Thu, 13 Jul 2017 22:00:29 -0700 (PDT)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1dVvgk-0004RL-Bj; Fri, 14 Jul 2017 04:11:02 -0400
+Received: by mail-qt0-x241.google.com with SMTP id m54so9101093qtb.1;
+	Fri, 14 Jul 2017 01:11:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=hzliEMeQriTB9/5IDY2+0y0iFPfqsEp7VV+OBP5/Yso=;
-	b=kfp/5fxw3NhHi0wySxdVzZ+uG6kaTMTzpRQybJcpYC/NqaIgRq2RINmiGaFm6ZQJzW
-	3CLj+3K7sjp+wXvihFH1zdIWlB6YwuFJzLDpJmMu6JUgoT/yk+b2iPvEL5pMR0k7AVNN
-	AE2E5Q2YwUTmL4WQ5dn86Par2KzlDZj+tcTmXFOvUdraA/IFNyZLLXdPnC6Co+jXkFpc
-	BKbiZFn5EjlAwXJiEWw9ip5ju/A5wvkkEFpBdcyT3clRKiYGQk5pa8r4nssqGZxTVh8y
-	2Pap2tVT457ebNVF7gNtt4YQfQHKlyDC1jvXzpD9nt4zDfyUMKhb5VQOKxWU0+3kA6cD
-	rjSQ==
+	bh=ULCruixteg4ONOypYlNLRvBztkR+S/GUQf/OwF2gz3U=;
+	b=KqPzRWS9e48IDXn/L+IE2dOEbgHcvvjS9A8WTGv+8Q5nsB94wQzVuNPt3ALu8rH+yD
+	C3NWPnWn0PNtbSJqE5Yk2yUKWg6OuwrTpMkIThxA1iElcnzE2fXagb3iL9aBGf1GYENt
+	3bZMB08gB7FrFbX46SPmV8/ymjmUv6CStiEhMZZ3kGk163Ox8vJt9ZOabsRrG09j5IPr
+	QxdGZLX6G5N8ksJSoRQp51w3+A+0FrDfQ2fNfczHLeCy4SQkOOJAxRhr/6x9QFrQEC+e
+	gxU2R7A9Srrj9ie3sobtecd8pNYN06xeFKPLwL2XiyvH4MlE0+SSxorjAng8X3tr+mXj
+	MJ/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=hzliEMeQriTB9/5IDY2+0y0iFPfqsEp7VV+OBP5/Yso=;
-	b=UrnyWjuhwv9vWuDc3+D+7qoE83xVcylppPNwmo10wZX8uAQ+e7283LPfC8KnIq8gEV
-	BHbrlEMWIhkAL1hQ8mlT4uLkn+Oxl+4GeVQejO+SET0PjS5r9575s0Ua62xFvnVyPUN1
-	I/GAZy7+Zov3G14m4TCzO+kfJns/8nva5/KQYE9P4k93xD0nyQ6nNDMeoOUMxRHSJWlW
-	f2hYDXX4siXgL935uPXj5d1m6Ioa5LFJZmoGuCFkDwxhtgdeUhZCVb3HKeySp0rL9SGZ
-	LoTiYcu8pcNIEEeyB0mDCbvVcBXVGGcqjtH3cVLMopV/JrWiqFhL0oyBRssr01ymMPkJ
-	W2vA==
-X-Gm-Message-State: AIVw113yIEytzqDVIffXMv30SV4lRyXWFPMMgHc5W731Utd+OameK3HS
-	Ivy5g63yeBSthbJs8GQ=
-X-Received: by 10.55.105.130 with SMTP id e124mr8781942qkc.117.1500008428980; 
-	Thu, 13 Jul 2017 22:00:28 -0700 (PDT)
-Received: from [192.168.1.240] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	h68sm5365390qke.48.2017.07.13.22.00.26
+	bh=ULCruixteg4ONOypYlNLRvBztkR+S/GUQf/OwF2gz3U=;
+	b=quMmPqKH5xOxIS9a+evEBJDWV+l8Rvr+HM5+SjrwJyHz83z0hF4pYvz+QWGzLf8aRv
+	VYmwW3IhYvmlS5CzNcyg0mr4hfqEhYyfjYyGGhwlXXJ+Kz44SpEQZITFzFUVuPL0zUwR
+	v3f7mu87n8wjgq2/7Q09+XJPDLSRGF02bxvOz0CrWJ1ietQq8kJJ1IqlEP1w5i5UMXup
+	N3MPtlLKvcHC9wqvCMNFsjHnYbTrxyTXkm5DpwOm4R3C7YZ4c+RVsjmxzqCwPzsy0e4A
+	1gQlMo6t1gGr1RKYgQDjYz/RX/TJWzt8aa/Qm/VEO1D2/qHjJpuYIF17BhOmL44JJYUY
+	dYPA==
+X-Gm-Message-State: AIVw1122CyqvcsXoh7pWr9BJdQ7sOPJpUkHRyDCsljvqYnOIuR/tej2d
+	f+AYD2AkQ5R3VQ==
+X-Received: by 10.200.48.38 with SMTP id f35mr10565618qte.88.1500019861380;
+	Fri, 14 Jul 2017 01:11:01 -0700 (PDT)
+Received: from bigtime.twiddle.net (rrcs-173-197-98-123.west.biz.rr.com.
+	[173.197.98.123]) by smtp.googlemail.com with ESMTPSA id
+	t43sm6471779qth.30.2017.07.14.01.10.58
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 13 Jul 2017 22:00:28 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-References: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <06fb1fbf-3aa0-435e-df4a-e1e9e47f8dd9@amsat.org>
-Date: Fri, 14 Jul 2017 02:00:25 -0300
+	Fri, 14 Jul 2017 01:11:00 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
+	<20170713163219.9024-2-marcandre.lureau@redhat.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <3194d27e-b81f-8000-fdf5-24509efa170f@twiddle.net>
+Date: Thu, 13 Jul 2017 22:10:55 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <20170713163219.9024-2-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-trivial] [PATCH] configure: Never use 'uname' to identify
- target OS
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 01/29] i386: use ROUND_UP
+ macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,99 +78,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2017 05:00:35 -0000
+X-List-Received-Date: Fri, 14 Jul 2017 08:11:06 -0000
 
-On 07/13/2017 12:15 PM, Peter Maydell wrote:
-> For a very long time we have used 'uname -s' as our fallback if
-> we don't identify the target OS using a compiler #define. This
-> obviously doesn't work for cross-compilation, and we've had
-> a comment suggesting we fix this in configure for a long time.
-> Since we now have an exhaustive list of which OSes we can run
-> on (thanks to commit 898be3e0415 making an unrecognized OS
-> be a fatal error), we know which ones we're missing.
+On 07/13/2017 06:31 AM, Marc-André Lureau wrote:
+> I used the clang-tidy qemu-round check (with the option OnlyAlignUp)
+> to generate the fix:
+> https://github.com/elmarco/clang-tools-extra
 > 
-> Add check_define tests for the remaining OSes we support.  The
-> defines checked are based on ones we already use in the codebase for
-> identifying the host OS (with the exception of GNU/kFreeBSD).
-> We can now set bogus_os immediately rather than doing it later.
-> 
-> We leave the comment about uname being bad untouched, since
-> there is still a use of it for the fallback for unrecognized
-> host CPU type.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Marc-André Lureau<marcandre.lureau@redhat.com>
+> Reviewed-by: Juan Quintela<quintela@redhat.com>
 > ---
-> 
-> All of these OSes except OSX are on the "not actually supported"
-> list, so I don't care very much if we break them.  I did sanity check
-> FreeBSD and NetBSD which are the two most plausible ones to
-> get back into supported status.
-> 
->   configure | 26 ++++++++++++++++++--------
->   1 file changed, 18 insertions(+), 8 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index 5096cbc..d733a05 100755
-> --- a/configure
-> +++ b/configure
-> @@ -536,8 +536,24 @@ elif check_define __sun__ ; then
->     targetos='SunOS'
->   elif check_define __HAIKU__ ; then
->     targetos='Haiku'
-> +elif check_define __FreeBSD__ ; then
-> +  targetos='FreeBSD'
-> +elif check_define __FreeBSD_kernel__ && check_define __GLIBC__; then
-> +  targetos='GNU/kFreeBSD'
+>   target/i386/arch_dump.c | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
 
-My first thought was "this check should go _before_ FreeBSD" then 
-verified, can sound odd but indeed GNU/kFreeBSD does not define __FreeBSD__.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-> +elif check_define __DragonFly__ ; then
-> +  targetos='DragonFly'
-> +elif check_define __NetBSD__; then
-> +  targetos='NetBSD'
-> +elif check_define __APPLE__; then
 
-I guess Mac OS 9 MPW crippled C compiler also defined this, but 
-hopefully even Apple lost the last verbatim copy, so this assumption is 
-pretty safe :)
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +  targetos='Darwin'
-> +elif check_define _AIX; then
-> +  targetos='AIX'
->   else
-> -  targetos=$(uname -s)
-> +  # This is a fatal error, but don't report it yet, because we
-> +  # might be going to just print the --help text, or it might
-> +  # be the result of a missing compiler.
-> +  targetos='bogus'
-> +  bogus_os='yes'
->   fi
->   
->   # Some host OSes need non-standard checks for which CPU to use.
-> @@ -781,12 +797,6 @@ Linux)
->     QEMU_INCLUDES="-I\$(SRC_PATH)/linux-headers -I$(pwd)/linux-headers $QEMU_INCLUDES"
->     supported_os="yes"
->   ;;
-> -*)
-> -  # This is a fatal error, but don't report it yet, because we
-> -  # might be going to just print the --help text, or it might
-> -  # be the result of a missing compiler.
-> -  bogus_os="yes"
-> -;;
->   esac
->   
->   if [ "$bsd" = "yes" ] ; then
-> @@ -1576,7 +1586,7 @@ if test "$bogus_os" = "yes"; then
->       # the compiler works (so the results of the check_defines we used
->       # to identify the OS are reliable), if we didn't recognize the
->       # host OS we should stop now.
-> -    error_exit "Unrecognized host OS $targetos"
-> +    error_exit "Unrecognized host OS (uname -s reports '$(uname -s)')"
->   fi
->   
->   gcc_flags="-Wold-style-declaration -Wold-style-definition -Wtype-limits"
-> 
+r~
 
