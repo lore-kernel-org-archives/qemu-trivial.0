@@ -1,60 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dVkcL-000675-LK
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2017 16:21:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56081)
+	id 1dVs2k-0005XR-51
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2017 00:17:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dVkcI-00064Z-Sr
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 16:21:43 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dVs2h-0005XG-SZ
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:17:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dVkcH-0004m5-Ro
-	for qemu-trivial@nongnu.org; Thu, 13 Jul 2017 16:21:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:31719)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dVkcA-0004hK-Rw; Thu, 13 Jul 2017 16:21:35 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D052B7F3F1;
-	Thu, 13 Jul 2017 20:21:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D052B7F3F1
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com D052B7F3F1
-Received: from [10.10.121.60] (ovpn-121-60.rdu2.redhat.com [10.10.121.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D8E485DC1A;
-	Thu, 13 Jul 2017 20:21:29 +0000 (UTC)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dVs2e-0001Kc-NC
+	for qemu-trivial@nongnu.org; Fri, 14 Jul 2017 00:17:27 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33452)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dVs2e-0001Jf-JB; Fri, 14 Jul 2017 00:17:24 -0400
+Received: by mail-qt0-x242.google.com with SMTP id c20so8657164qte.0;
+	Thu, 13 Jul 2017 21:17:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=z5Sm0cHI+ofnZ6eP8gkpTC9nSlIxw7q99/zzeRA5zkA=;
+	b=VLB5dXHDhZpDclT1JCMJw8VcS8UT548LtxlOYjXRRV1P66y1XMtgnFdPD69Ozh5052
+	fjwZSUW80fj2zKIf1SMNw6g3LdzSzVHahBsnEQWHo2AiS1zR7qwR7xxn3OCyVWnwqp4m
+	tkQr0XgVvKC2ytiy5kAnfyF00E99BezOCacQWZkck2B6Mil8DuAW93F/sQLuw8bDNG+3
+	GYbZt89i1OC8V58zqjdUKOggQr/lBVeUUNDQUGs5o14PpKo7jhCczUTZOBm3WUg/iF8M
+	Xooopi8vM6F6KotHiB4+lXAHPNTaIuz3m7mlsiVWXsStb98BXsD6xLF/H4zJ4ko6wk9V
+	gjmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=z5Sm0cHI+ofnZ6eP8gkpTC9nSlIxw7q99/zzeRA5zkA=;
+	b=J+VRa1tmUOyAoO2WCTZBpNL/wEyj+3emg2cQ41SJgJhS94jI+lYWL7yXK2IfXrQ/9o
+	ErdtOzFK0DF97kNVxzo5QYB2KvFjitA/8DLTzdraq9OUNYS3nB+yN6X6FV3nRQonnUSv
+	AL42oObuHscmpGwvbBPt2Zq8hwRDWOKBrPSvExMFR4MGLtm4upaCgCin3HPm0BnC9Gly
+	gmO8Wiuz8BSCUxofS9T7sphPmuUg73Tl269vImkMtC1uGYNT88ug3yGOWWE6SD/cB+x2
+	UWmHoi16WpVSVpMlq390Ie/bv//ba0PjY1s/js2sA0GaNfhHqn6yCrCmSKj3QKIDgSqt
+	HTZQ==
+X-Gm-Message-State: AIVw11178Ky2zP5xvEn2cOH/mJxPh+YbSBPHlwVg00RLkieAwvA4N4wa
+	nUDEt32StlH6zw==
+X-Received: by 10.200.38.70 with SMTP id v6mr8789006qtv.157.1500005843929;
+	Thu, 13 Jul 2017 21:17:23 -0700 (PDT)
+Received: from [192.168.1.240] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	d125sm5587430qkg.43.2017.07.13.21.17.21
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 13 Jul 2017 21:17:23 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
 To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
-	<20170713163219.9024-11-marcandre.lureau@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
-	"open list:vvfat" <qemu-block@nongnu.org>, qemu-trivial@nongnu.org,
-	Max Reitz <mreitz@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <873282ab-9f53-6a48-c644-280ebf0e1a81@redhat.com>
-Date: Thu, 13 Jul 2017 15:21:28 -0500
+	<20170713163219.9024-6-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <41cf79c5-2042-a011-4162-b85dfcdd5af3@amsat.org>
+Date: Fri, 14 Jul 2017 01:17:20 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170713163219.9024-11-marcandre.lureau@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="m40CrhB2HjXb82kcqH8wUxTQukcC01UUl"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 13 Jul 2017 20:21:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 10/29] vvfat: use
- DIV_ROUND_UP
+In-Reply-To: <20170713163219.9024-6-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-trivial] [PATCH v2 05/29] i8254: use QEMU_ALIGN_DOWN
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,81 +80,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2017 20:21:44 -0000
+X-List-Received-Date: Fri, 14 Jul 2017 04:17:29 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---m40CrhB2HjXb82kcqH8wUxTQukcC01UUl
-Content-Type: multipart/mixed; boundary="3XLLbhCxNLUOSM7mwwX1IXeWgoIM8TVFV";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, peter.maydell@linaro.org,
- "open list:vvfat" <qemu-block@nongnu.org>, qemu-trivial@nongnu.org,
- Max Reitz <mreitz@redhat.com>
-Message-ID: <873282ab-9f53-6a48-c644-280ebf0e1a81@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v2 10/29] vvfat: use DIV_ROUND_UP
-References: <20170713163219.9024-1-marcandre.lureau@redhat.com>
- <20170713163219.9024-11-marcandre.lureau@redhat.com>
-In-Reply-To: <20170713163219.9024-11-marcandre.lureau@redhat.com>
-
---3XLLbhCxNLUOSM7mwwX1IXeWgoIM8TVFV
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 07/13/2017 11:32 AM, Marc-Andr=C3=A9 Lureau wrote:
+On 07/13/2017 01:31 PM, Marc-André Lureau wrote:
 > I used the clang-tidy qemu-round check to generate the fix:
 > https://github.com/elmarco/clang-tools-extra
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  block/vvfat.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> diff --git a/block/vvfat.c b/block/vvfat.c
-> index 4fd28e1e87..c08c4fb525 100644
-> --- a/block/vvfat.c
-> +++ b/block/vvfat.c
-> @@ -437,7 +437,7 @@ static direntry_t *create_long_filename(BDRVVVFATSt=
-ate *s, const char *filename)
->          return NULL;
->      }
-> =20
-> -    number_of_entries =3D (length * 2 + 25) / 26;
-> +    number_of_entries =3D DIV_ROUND_UP(length * 2, 26);
-
-Wow - a non-power-of-2!  Good thing our macro works for that.
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---3XLLbhCxNLUOSM7mwwX1IXeWgoIM8TVFV--
-
---m40CrhB2HjXb82kcqH8wUxTQukcC01UUl
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJZZ9ZIAAoJEKeha0olJ0NqCIAH/j/Ip3fzG4cwA0j1YnlSGSwK
-QNhAcoGuI53jkZh/b6b2y7msSlw1Y/qTb1heIveLwpHIKN/xiyJeNdHxMXil/nZN
-DBo6BXkcBr9RXJ7p2DNFnRzNSjwr0lV4eXnUzG33lH+bHaY72PK4YqflaZ5TiV+g
-Sj5v0yYd1oQ9IhTR3F0SAJ6hx4H30PmoMURiJ/2a4L4AqekJdAh01yW72eGFYY4G
-HZRdFC7iHWx84Olq9VirQbaYG/k+kwzkcTDZBqKq+KkAAC+MICAoUKumWBrmhSMO
-VvyAnFNMYNxSAFyd3SypKEdEORJ/2u7YZjkAx4OJilJWz4i+5ZnyKGumvBlb/Uo=
-=/yS+
------END PGP SIGNATURE-----
-
---m40CrhB2HjXb82kcqH8wUxTQukcC01UUl--
+>   hw/timer/i8254_common.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/timer/i8254_common.c b/hw/timer/i8254_common.c
+> index 976d5200f1..ee064aa819 100644
+> --- a/hw/timer/i8254_common.c
+> +++ b/hw/timer/i8254_common.c
+> @@ -93,7 +93,7 @@ int64_t pit_get_next_transition_time(PITChannelState *s, int64_t current_time)
+>           }
+>           break;
+>       case 2:
+> -        base = (d / s->count) * s->count;
+> +        base = QEMU_ALIGN_DOWN(d, s->count);
+>           if ((d - base) == 0 && d != 0) {
+>               next_time = base + s->count;
+>           } else {
+> @@ -101,7 +101,7 @@ int64_t pit_get_next_transition_time(PITChannelState *s, int64_t current_time)
+>           }
+>           break;
+>       case 3:
+> -        base = (d / s->count) * s->count;
+> +        base = QEMU_ALIGN_DOWN(d, s->count);
+>           period2 = ((s->count + 1) >> 1);
+>           if ((d - base) < period2) {
+>               next_time = base + period2;
+> 
 
