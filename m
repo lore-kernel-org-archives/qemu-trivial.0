@@ -1,73 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dWxka-0000dn-Rp
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2017 00:35:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48463)
+	id 1dX7iW-0002hT-B0
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2017 11:13:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxkY-0000cR-Kp
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 00:35:15 -0400
+	(envelope-from <eblake@redhat.com>) id 1dX7iU-0002e8-0h
+	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 11:13:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxkX-0005x0-Qo
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 00:35:14 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34298)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dWxkT-0005uM-Ea; Mon, 17 Jul 2017 00:35:09 -0400
-Received: by mail-qk0-x242.google.com with SMTP id q66so19383017qki.1;
-	Sun, 16 Jul 2017 21:35:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=QxY8dPEbmtmqLgF2BMj3w6lwqZ6UrCBH6xohAq1IUP8=;
-	b=L8c2ZcBuYHlnvT6J1hijk8Zl55zu+eAOWx6+C8K/qhkXUoYdJ7faYcdbPFFQX0nuQb
-	l1URI4ufDPyNwa1Jq6A/sUxlbGSmQxN18gXH7vToHeqnrWrHpvg/he8DZtNF7Fqtt3kC
-	I2UWWJGBzuMJHqp91M5Hn/lYqn0yqafduC3hdj4XuAO8wimsmbz38jqUpM1t2qWhqISF
-	Z76nneTSQ5cUuZYxmZel+Lv3UozgvgoyqX0rgxQO6QBej8LuN9Qh0+uqjcKkKNStrsVU
-	H//A18i+9+cS2F56yxhvYnpbp/ZgmAaXkkiZccm1Z5VfbRZH8GWvhETQiHzM0Vd46eGT
-	cyOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=QxY8dPEbmtmqLgF2BMj3w6lwqZ6UrCBH6xohAq1IUP8=;
-	b=h38cq7JZH2iH9Ly6eq9oc16VsvSnKrxczi0auk6+nmhHbk3sjxRnwmkCx4f9B++EKG
-	uF/62HqH6xyo0B9rRtMxVP8eyj49QtEUvsVv09Yz+71rq+d5NiV7R17IC1uUz4l2ENDH
-	nOkTq0EhJ8aU7xPUS6/0tRtTRaKQSa4Q7VLEPykUXbW6AncZJB/3DBEG+pL1H84leX9k
-	3psmteyNYWokrax3VtzIE6gkvulVpmNYgWxVTRKV5QAw5Mt59SQshHKqtN8cZMNDFVS8
-	UEeppJH0fr1kYuaoHAk48LNQz1YCg1MeGq8rAX7kCiiI7NiPVMwgm5CWFV4bjKm9so4m
-	/Guw==
-X-Gm-Message-State: AIVw111iqnfsLw2kqDBjS8IQml2gJGwgHYHjARI8MA3153Hdwa6GyBH6
-	RE62IC9gTczYiZf+wKk=
-X-Received: by 10.55.69.66 with SMTP id s63mr24799948qka.229.1500266108632;
-	Sun, 16 Jul 2017 21:35:08 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	m123sm11652692qke.12.2017.07.16.21.35.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 16 Jul 2017 21:35:07 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Peng Hao <peng.hao2@zte.com.cn>, mdroth@linux.vnet.ibm.com,
+	(envelope-from <eblake@redhat.com>) id 1dX7iT-0004qe-0G
+	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 11:13:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33460)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dX7iO-0004mM-Co; Mon, 17 Jul 2017 11:13:40 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 608C87CB96;
+	Mon, 17 Jul 2017 15:13:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 608C87CB96
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 608C87CB96
+Received: from red.redhat.com (ovpn-120-160.rdu2.redhat.com [10.10.120.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B89705C54A;
+	Mon, 17 Jul 2017 15:13:36 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: dgilbert@redhat.com,
+	kraxel@redhat.com,
 	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <1500158641-23033-1-git-send-email-peng.hao2@zte.com.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <953bc962-9929-c933-e0df-678a7e6a4c60@amsat.org>
-Date: Mon, 17 Jul 2017 01:35:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+Date: Mon, 17 Jul 2017 10:13:34 -0500
+Message-Id: <20170717151334.17954-1-eblake@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1500158641-23033-1-git-send-email-peng.hao2@zte.com.cn>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qga-win32: remove a
- redundancy code
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 17 Jul 2017 15:13:39 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] usb: Fix build with newer gcc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,34 +56,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jul 2017 04:35:15 -0000
+X-List-Received-Date: Mon, 17 Jul 2017 15:13:47 -0000
 
-Cc'ing qemu-trivial
+gcc 7 is pickier about our sources:
 
-On 07/15/2017 07:44 PM, Peng Hao wrote:
-> In the first line of run_agent,it has set ga_state = s,don't need
-> set ga_state = s again behind.
-> 
-> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+hw/usb/bus.c: In function =E2=80=98usb_port_location=E2=80=99:
+hw/usb/bus.c:410:66: error: =E2=80=98%d=E2=80=99 directive output may be =
+truncated writing between 1 and 11 bytes into a region of size between 0 =
+and 15 [-Werror=3Dformat-truncation=3D]
+         snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
+                                                                  ^~
+hw/usb/bus.c:410:9: note: =E2=80=98snprintf=E2=80=99 output between 3 and=
+ 28 bytes into a destination of size 16
+         snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                  upstream->path, portnr);
+                  ~~~~~~~~~~~~~~~~~~~~~~~
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+But we know that there are at most 5 levels of USB hubs, with at
+most two digits per level; that plus the separating dots means we
+use at most 15 bytes (including trailing NUL) of our 16-byte field.
+Adding an assertion to show gcc that we checked for truncation is
+enough to shut up the false-positive warning.
 
-> ---
->   qga/main.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qga/main.c b/qga/main.c
-> index 405c129..dcd6104 100644
-> --- a/qga/main.c
-> +++ b/qga/main.c
-> @@ -1314,7 +1314,7 @@ static int run_agent(GAState *s, GAConfig *config, int socket_activation)
->       ga_command_state_init(s, s->command_state);
->       ga_command_state_init_all(s->command_state);
->       json_message_parser_init(&s->parser, process_event);
-> -    ga_state = s;
-> +
->   #ifndef _WIN32
->       if (!register_signal_handlers()) {
->           g_critical("failed to register signal handlers");
-> 
+Inspired by an idea by Dr. David Alan Gilbert <dgilbert@redhat.com>.
+
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ hw/usb/bus.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+index 5939b273b9..d910f849e7 100644
+--- a/hw/usb/bus.c
++++ b/hw/usb/bus.c
+@@ -407,8 +407,10 @@ void usb_register_companion(const char *masterbus, U=
+SBPort *ports[],
+ void usb_port_location(USBPort *downstream, USBPort *upstream, int portn=
+r)
+ {
+     if (upstream) {
+-        snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
+-                 upstream->path, portnr);
++        int l =3D snprintf(downstream->path, sizeof(downstream->path), "=
+%s.%d",
++                         upstream->path, portnr);
++        /* Max string is nn.nn.nn.nn.nn, which fits in 16 bytes */
++        assert(l < sizeof(downstream->path));
+         downstream->hubcount =3D upstream->hubcount + 1;
+     } else {
+         snprintf(downstream->path, sizeof(downstream->path), "%d", portn=
+r);
+--=20
+2.13.3
+
 
