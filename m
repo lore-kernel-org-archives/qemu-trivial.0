@@ -1,50 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dX7iW-0002hT-B0
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2017 11:13:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44530)
+	id 1dX91t-0000SN-MM
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2017 12:37:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48572)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dX7iU-0002e8-0h
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 11:13:47 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dX91r-0000Po-FI
+	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 12:37:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dX7iT-0004qe-0G
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 11:13:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33460)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dX7iO-0004mM-Co; Mon, 17 Jul 2017 11:13:40 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 608C87CB96;
-	Mon, 17 Jul 2017 15:13:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 608C87CB96
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 608C87CB96
-Received: from red.redhat.com (ovpn-120-160.rdu2.redhat.com [10.10.120.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B89705C54A;
-	Mon, 17 Jul 2017 15:13:36 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1dX91o-0005QC-76
+	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 12:37:51 -0400
+Received: from orth.archaic.org.uk ([81.2.115.148]:48550)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dX91o-0005Pg-0j
+	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 12:37:48 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dX91j-0003lf-S4; Mon, 17 Jul 2017 17:37:43 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: dgilbert@redhat.com,
-	kraxel@redhat.com,
+Cc: patches@linaro.org,
 	qemu-trivial@nongnu.org
-Date: Mon, 17 Jul 2017 10:13:34 -0500
-Message-Id: <20170717151334.17954-1-eblake@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 17 Jul 2017 15:13:39 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Date: Mon, 17 Jul 2017 17:37:42 +0100
+Message-Id: <1500309462-12792-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] usb: Fix build with newer gcc
+X-Received-From: 81.2.115.148
+Subject: [Qemu-trivial] [PATCH for-2.10] hw/display/sm501: Don't use
+ vmstate_register_ram_global()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,58 +39,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jul 2017 15:13:47 -0000
+X-List-Received-Date: Mon, 17 Jul 2017 16:37:52 -0000
 
-gcc 7 is pickier about our sources:
+The sm501 device uses vmstate_register_ram_global() to register its
+memory region for migration.  This means it gets a name that is
+assumed to be global to the whole system, which in turn means that if
+you create two of the device we assert because of the duplication:
 
-hw/usb/bus.c: In function =E2=80=98usb_port_location=E2=80=99:
-hw/usb/bus.c:410:66: error: =E2=80=98%d=E2=80=99 directive output may be =
-truncated writing between 1 and 11 bytes into a region of size between 0 =
-and 15 [-Werror=3Dformat-truncation=3D]
-         snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
-                                                                  ^~
-hw/usb/bus.c:410:9: note: =E2=80=98snprintf=E2=80=99 output between 3 and=
- 28 bytes into a destination of size 16
-         snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
-         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                  upstream->path, portnr);
-                  ~~~~~~~~~~~~~~~~~~~~~~~
+qemu-system-ppc -device sm501 -device sm501
+RAMBlock "sm501.local" already registered, abort!
+Aborted (core dumped)
 
-But we know that there are at most 5 levels of USB hubs, with at
-most two digits per level; that plus the separating dots means we
-use at most 15 bytes (including trailing NUL) of our 16-byte field.
-Adding an assertion to show gcc that we checked for truncation is
-enough to shut up the false-positive warning.
+Changing this to just use memory_region_init_ram()'s automatic
+registration of the memory region with a device-local name fixes
+this.  The downside is that it breaks migration compatibility, but
+luckily we only added migration support to this device in the 2.10
+release cycle so we haven't released a QEMU version with the broken
+implementation.
 
-Inspired by an idea by Dr. David Alan Gilbert <dgilbert@redhat.com>.
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/usb/bus.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Recent refactoring that renamed the old "memory_region_init_ram"
+to memory_region_init_ram_nomigrate" made this bug a bit easier
+to find via grep...
 
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 5939b273b9..d910f849e7 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -407,8 +407,10 @@ void usb_register_companion(const char *masterbus, U=
-SBPort *ports[],
- void usb_port_location(USBPort *downstream, USBPort *upstream, int portn=
-r)
- {
-     if (upstream) {
--        snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
--                 upstream->path, portnr);
-+        int l =3D snprintf(downstream->path, sizeof(downstream->path), "=
-%s.%d",
-+                         upstream->path, portnr);
-+        /* Max string is nn.nn.nn.nn.nn, which fits in 16 bytes */
-+        assert(l < sizeof(downstream->path));
-         downstream->hubcount =3D upstream->hubcount + 1;
-     } else {
-         snprintf(downstream->path, sizeof(downstream->path), "%d", portn=
-r);
---=20
-2.13.3
+ hw/display/sm501.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index af792c5..9aa515b 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1578,9 +1578,8 @@ static void sm501_init(SM501State *s, DeviceState *dev,
+                   s->local_mem_size_index);
+ 
+     /* local memory */
+-    memory_region_init_ram_nomigrate(&s->local_mem_region, OBJECT(dev), "sm501.local",
++    memory_region_init_ram(&s->local_mem_region, OBJECT(dev), "sm501.local",
+                            get_local_mem_size(s), &error_fatal);
+-    vmstate_register_ram_global(&s->local_mem_region);
+     memory_region_set_log(&s->local_mem_region, true, DIRTY_MEMORY_VGA);
+     s->local_mem = memory_region_get_ram_ptr(&s->local_mem_region);
+ 
+-- 
+2.7.4
 
 
