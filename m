@@ -1,71 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXQXw-0006oo-7O
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:20:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58714)
+	id 1dXQbu-00027w-2S
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:24:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1dXQXp-0006h6-4y
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:20:07 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQbp-000235-9I
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:24:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1dXQXk-0002KS-F6
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:20:01 -0400
-Received: from mail-wr0-x22a.google.com ([2a00:1450:400c:c0c::22a]:36413)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQbi-00053e-Mf
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:24:09 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33408)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
-	id 1dXQXk-0002JS-8d
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:19:56 -0400
-Received: by mail-wr0-x22a.google.com with SMTP id y43so24422371wrd.3
-	for <qemu-trivial@nongnu.org>; Tue, 18 Jul 2017 04:19:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-transfer-encoding;
-	bh=pWLzr6A+re61JyUDF0C9Pyhr12H9sJR2DyaFvp/RXyQ=;
-	b=NjNEcLsF1CnLvwfdLMdMJ3nfXPWUKveYlaeoHVntOruvO/GXW0YHio8AXqRCipBi4D
-	MRk/5+sl1yp7PcmyfzbTQcWwaWsNx3KyRCqNurQIvFXjoanR9ZPSkAbD4sVG4GFlUS4t
-	8jKmaSHbWyf6CE4U2tSXTjOr4k/tMXvisHkC4=
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1dXQbi-00052t-Ee; Tue, 18 Jul 2017 07:24:02 -0400
+Received: by mail-lf0-x242.google.com with SMTP id t72so1469370lff.0;
+	Tue, 18 Jul 2017 04:24:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=z5Ca8hQkKgI16q7mASa5d6DKYA10XMpppB8Tou3Iszs=;
+	b=Lv87wQfEkbqXbHjdC9/JLDqBYBg1qwFofA1NF6xEZMYn6IDhxDIQo+3ZI8S2+g32Kw
+	x1jWlrJNinAwzDb3TEsRpX64riwdb9Hy2TvQlE1oZeL2YcmEbgDghWjjUOANESQMl2Xc
+	H+ouqsqV0Va75o1dfYpdoon7D2bPF/jE2y4YsTjZBMdvFlvdgJmkMR1tICf92cl9wmIN
+	eyZM1C5DVATmQeabpx0mhENKMuy4PpH2br4+/JqEkNDovvWTN/3fbFogrf5iA+eKcerA
+	mOFLclAr+BgmXfVKDYeHlomYB/C+DgW3I32+fB9qNECiE+qeCgIn4AJ/xPeJZgb6Sr8F
+	jA+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
-	bh=pWLzr6A+re61JyUDF0C9Pyhr12H9sJR2DyaFvp/RXyQ=;
-	b=NRKzlj8K2WpqfnzpMP9zskSvKAHXV4jrGNJ7TFCJcn8IQUxJmFus8SyxuHiuy/CyyJ
-	3Qt84avUbwr1utrKbF+T33gXjaOYonQQrSgLxA+RNZRforJ53t860GMupPJDaHEw8PK6
-	6ynUrpi8aIYwIKSWkmMPJ2miZBO6DnWNgx3XQ5LEYp2P7Hb0ilufkmyR+H4R4AAcRXl3
-	IBMWaxsigHxRrPvhvvaLS0+hY2LcdeszcFxHoqUYiNs0WgTtMoNjbMhKtdxkmjAOtkUM
-	+/xqL5MHuaWsWoceHF/RgtBrCaTX/ElozzoAnYWYxSVmp3FNp6Ya6hcjVp60dDt56Xke
-	B1Jg==
-X-Gm-Message-State: AIVw111PfMxCSkj9Nv4l/bx3gBvD13oEYIZywlT2L+ov4LvTdhOdDZ8T
-	XZXmurknIhxRnwDV
-X-Received: by 10.28.113.23 with SMTP id m23mr1790049wmc.128.1500376795103;
-	Tue, 18 Jul 2017 04:19:55 -0700 (PDT)
-Received: from zen.linaro.local ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	j137sm15511975wmd.18.2017.07.18.04.19.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 18 Jul 2017 04:19:54 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 7E6E13E0128;
-	Tue, 18 Jul 2017 12:19:53 +0100 (BST)
-References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-7-f4bug@amsat.org>
-	<87bmoiysko.fsf@secure.mitica>
-User-agent: mu4e 0.9.19; emacs 25.2.50.3
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: quintela@redhat.com
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, Fam Zheng
-	<famz@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org, "Dr.
-	David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org, Stefan
-	Hajnoczi <stefanha@redhat.com>
-In-reply-to: <87bmoiysko.fsf@secure.mitica>
-Date: Tue, 18 Jul 2017 12:19:53 +0100
-Message-ID: <87a8428012.fsf@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=z5Ca8hQkKgI16q7mASa5d6DKYA10XMpppB8Tou3Iszs=;
+	b=CF0rZ5mzTYyCUuT2eh+feLtJlA22Yt/qa1iXkdgzGOH+vMg4vXq46daqQ8klhCcqMY
+	ahAT1l92YN806uNLYYHLMKEZKtlbOlkqUc9LH7i87h1hk3CEZW/4M1T/dtq6jTh1G7h0
+	9HOGRqomyRPxQu+Xz4gwVZr0kRtOwR+3mG2SJiHz2k1e+KC8x/cX9PpSteX62pEoezxu
+	EjM8y/NhVR4QjZynXOSzRC2PgwoXFOROl1VsTKkT9OBk2X0yoKfDSZBxdOVmEqpuCcTA
+	NUpgwPjUp95LgN7Wd8DXWDfuoVJztH9nD1Y9POQ8xCLHnc1+CjxvnvLms4I9/mB3KW6C
+	DzOQ==
+X-Gm-Message-State: AIVw111mC/k2bo89owDnQ1LS7q1osW4SQ1eDjH0A1VRygKsz+aKlGh9Z
+	VhYYfReZrrjWkXOiXZqtSDleJ6cGNA==
+X-Received: by 10.25.56.28 with SMTP id f28mr473985lfa.167.1500377041162; Tue,
+	18 Jul 2017 04:24:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Received: by 10.25.59.145 with HTTP; Tue, 18 Jul 2017 04:24:00 -0700 (PDT)
+In-Reply-To: <87bmoi806u.fsf@linaro.org>
+References: <20170718061005.29518-1-f4bug@amsat.org>
+	<20170718061005.29518-27-f4bug@amsat.org>
+	<CAJ+F1C+WsdUp3Vtx+-FZ9g7URSAQuJWb6h7-w6yJXM+4TKQNjA@mail.gmail.com>
+	<87bmoi806u.fsf@linaro.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 18 Jul 2017 04:24:00 -0700
+Message-ID: <CAJ+F1CLXojLp2VxET469gBLsaSwCvkQoGODOMyFUs3jUbkdk3A@mail.gmail.com>
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/29] migration/block: use
- QEMU_IS_ALIGNED macro
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 26/29] tests/tcg: use
+ ARRAY_SIZE macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,41 +71,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 11:20:07 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 11:24:12 -0000
 
+Hi
 
-Juan Quintela <quintela@redhat.com> writes:
-
-> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  migration/block.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/migration/block.c b/migration/block.c
->> index 9171f60028..498c72ad59 100644
->> --- a/migration/block.c
->> +++ b/migration/block.c
->> @@ -933,7 +933,7 @@ static int block_load(QEMUFile *f, void *opaque, int version_id)
->>                  ret = bdrv_get_info(blk_bs(blk), &bdi);
->>                  if (ret == 0 && bdi.cluster_size > 0 &&
->>                      bdi.cluster_size <= BLOCK_SIZE &&
->> -                    BLOCK_SIZE % bdi.cluster_size == 0) {
->> +                    QEMU_IS_ALIGNED(BLOCK_SIZE, bdi.cluster_size)) {
->>                      cluster_size = bdi.cluster_size;
->>                  } else {
->>                      cluster_size = BLOCK_SIZE;
+On Tue, Jul 18, 2017 at 4:16 AM, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
 >
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
+> Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
 >
-> Should I take this patch, or does it go through the block layer?  Your
-> call.
+>> Hi
+>>
+>> On Mon, Jul 17, 2017 at 11:10 PM, Philippe Mathieu-Daud=C3=A9
+>> <f4bug@amsat.org> wrote:
+>>> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osde=
+p.cocci
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>>  tests/tcg/alpha/test-cond.c | 2 +-
+>>>  tests/tcg/alpha/test-ovf.c  | 2 +-
+>>>  2 files changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>
+>> I think those do not include osdep.h
+>>
+>> (sigh, tests/tcg would need some love ;)
+>
+> Pranith has had a couple of revs at this:
+>
+>   Subject: [PATCH v5 00/19] Cleanup of TCG tests
+>   Date: Thu,  1 Dec 2016 00:14:14 -0500
+>   Message-Id: <20161201051433.17168-1-bobby.prani@gmail.com>
+>
+> We have the cross-compilers available as a fallback via docker although
+> not every one can seamlessly use it for building stuff. Is getting a
+> working cross-compiler setup too much of a hurdle fore those that want
+> to build cross-arch tests?
 
-Given it is part of a set would it not make more sense going through
--trivial with the rest of them?
+Yes, I also did some experiments in cleaning up tests/tcg
+(https://github.com/elmarco/qemu/tree/tcg-tests)
 
---
-Alex Bennée
+The trouble is I don't see an official/automated way to run tests/tcg
+tests. Which cross-compiler should I use? When I played with this,
+they all had various quirks, on Fedora, Debian or crosstool-ng. I
+haven't looked at the docker tests, is this running tests/tcg test
+somehow?
 
