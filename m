@@ -1,71 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dX9YF-0006Hn-6G
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2017 13:11:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35116)
+	id 1dXLi7-0002DR-PU
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:10:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56680)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dX9Y9-0006HX-EL
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 13:11:18 -0400
+	id 1dXLi6-0002DI-1e
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:10:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dX9Y4-0005Bu-NY
-	for qemu-trivial@nongnu.org; Mon, 17 Jul 2017 13:11:13 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:35747)
+	id 1dXLi2-000361-TC
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:10:18 -0400
+Received: from mail-qk0-x231.google.com ([2607:f8b0:400d:c09::231]:35457)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dX9Y4-0005BX-JC; Mon, 17 Jul 2017 13:11:08 -0400
-Received: by mail-qt0-x244.google.com with SMTP id w12so18946410qta.2;
-	Mon, 17 Jul 2017 10:11:08 -0700 (PDT)
+	id 1dXLi2-00035n-Oh; Tue, 18 Jul 2017 02:10:14 -0400
+Received: by mail-qk0-x231.google.com with SMTP id p73so8450341qka.2;
+	Mon, 17 Jul 2017 23:10:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=lIlJcFtvVGVgnee6OXDGb2EyM6nsDWHpJauwciJ46f8=;
-	b=Z5R7aER05q2Sn/mmLl4YsOgojQzh9AsjK4Mf7fSCZXL2N3BPIJLytTSxZm73NE2W0e
-	vU5cLo8XMJ+dTOxn7IwHpQ6AbJyJXl/D7zlBzgEbAhD5ez3V7zPJBj+CdVv/sJ+Ruyw2
-	0WWi0WgFX0hEM9o9qlLzDiQUF0/KOrbSrMMpOMHv9VJLugN7Ubu12+c/C1fmgrEaNcrA
-	XSNFu7xOPzlpA0t+scpQkBS78Q7jOQS3nDVuSOKIkQAiONsf2uZTD88vJ0ek/QizQozV
-	AJ3ogBmxL/PY8LSRJcBzUvbrJvUNrvq+Hp8TVXrf9AplqR6RKkhE4/fKYHc3R0bZKjLO
-	t2lA==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=IkNIlrG+ixXAJ1YmB95u/UugcDd6UV+PscsG1+UFAho=;
+	b=OknledkwUZ1jcxR491oX5Rw5Fo1n6fvB/xVExFV3XXX66y9yuUaf9FeNvNtAAvR/08
+	MMSUgoIIm8WjK8ip8Lzo8At5jdTVXUbinZ7QOzMCy3hO+RTzHU8pu+D9NTRYoIEMfm6+
+	gd8ch9/pcpOK02onvCbUtY6Q4ZSgtcdT+HBkftCFwrmmbcByLTGkU3tYvGCDvm1IXU5c
+	FGmxJPhnxUL0JCPgUNLsCG2JYAcR8cp+quWVvIkZFvXNmMdTTxqbpR73mzY/hdZSmLva
+	orl0WsO3PO5jNdsDMXiRDfsYAU+OVAoBZ9wQcs7s/bs727+IZCfW+E4QHC5OL7sueQC9
+	4q1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=lIlJcFtvVGVgnee6OXDGb2EyM6nsDWHpJauwciJ46f8=;
-	b=QWUOD0pM7BuA6j/4ZqGD7pXz4nqhGw3k60EwnFjJjppA96vUX0H7Y3oc1hdb9r0GhP
-	Q8hXzOVu4QzfTrn17xW0mgx/cSbNz+Kgquiqj4PUVA0ygrMwvG/mgxkg1ExAXpJ2tvRr
-	FCvWtBlWA/M1lshom4lrhaPWwngDI1pB069Vfu2ZAm6n7uCUtpnc87pZ93DFB1Y8IGKQ
-	Fqpq2EKSoSL8DZlRdSnY2b50CqkZbWGFfLjkX1SAqXgHGdv4HHXJss6+yzB1K1jehoUR
-	dFpJgnfRuJE8wBFjQSZjpilyL4sxQkHn1Nxy6ido1yz0R+sMPDAcUEjRDgPHWb3Mqdab
-	sLiA==
-X-Gm-Message-State: AIVw1139DASdgazwBpAxAl7jOWsTX5of4KGDuOWpVvlcnMxbX7r1qNb8
-	4vkVuMnQNZFCDw==
-X-Received: by 10.237.61.146 with SMTP id i18mr9807949qtf.239.1500311467622;
-	Mon, 17 Jul 2017 10:11:07 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.223])
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=IkNIlrG+ixXAJ1YmB95u/UugcDd6UV+PscsG1+UFAho=;
+	b=hKqPxQ6OXODABHhN3Vjdj0K7Eq09IS6TIfUzXeihE/8MwuWTsngHJWfvFW68kwMIZ4
+	md9Z1yjHLyGm+gartQpB3SoTD7ZmLoxh2R+ixwysttra7RBtuIfK5FiT5HMGMbGq1gG1
+	EA2UfSKGwm4b3zYTC1cMsqHmJ9P6sVayLbOQtnemNqIlCTySyeYNVI4IKClT7Ey5uqij
+	ky31oVVWSlzROiTxdQo6HXJvfUT8cSgAC/NPvFn41od5vjH2jRZf4Fns/550QddoqDcr
+	/+heIUb6JzgbMRuhJIuGwQYDWVRc9p50wvgC/i7mt8OMekkCjXzKDUUpLOu7XDH90Ptb
+	2+fQ==
+X-Gm-Message-State: AIVw113HyJJayrJgNCDZuLTj7RN4PeZF4UXdTCPrLTmBKFR9vtvKXAtj
+	HerKB0XkA9VQLUSV7HHXVw==
+X-Received: by 10.55.134.69 with SMTP id i66mr18121qkd.33.1500358213952;
+	Mon, 17 Jul 2017 23:10:13 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	q17sm5060582qkh.53.2017.07.17.10.11.05
+	l31sm1099862qtc.64.2017.07.17.23.10.11
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jul 2017 10:11:07 -0700 (PDT)
+	Mon, 17 Jul 2017 23:10:13 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, dgilbert@redhat.com, kraxel@redhat.com
-References: <20170717151334.17954-1-eblake@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <64dc6715-c032-3e74-4eb8-f00b10e9c968@amsat.org>
-Date: Mon, 17 Jul 2017 14:11:03 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Eric Blake <eblake@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Date: Tue, 18 Jul 2017 03:09:36 -0300
+Message-Id: <20170718061005.29518-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.2
 MIME-Version: 1.0
-In-Reply-To: <20170717151334.17954-1-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-trivial] [PATCH] usb: Fix build with newer gcc
+X-Received-From: 2607:f8b0:400d:c09::231
+Subject: [Qemu-trivial] [PATCH 00/29] coccinelle script to enforce
+ qemu/osdep.h macros usage
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,56 +76,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jul 2017 17:11:18 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 06:10:19 -0000
 
-On 07/17/2017 12:13 PM, Eric Blake wrote:
-> gcc 7 is pickier about our sources:
-> 
-> hw/usb/bus.c: In function ‘usb_port_location’:
-> hw/usb/bus.c:410:66: error: ‘%d’ directive output may be truncated writing between 1 and 11 bytes into a region of size between 0 and 15 [-Werror=format-truncation=]
->           snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
->                                                                    ^~
-> hw/usb/bus.c:410:9: note: ‘snprintf’ output between 3 and 28 bytes into a destination of size 16
->           snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
->           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->                    upstream->path, portnr);
->                    ~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> But we know that there are at most 5 levels of USB hubs, with at
-> most two digits per level; that plus the separating dots means we
-> use at most 15 bytes (including trailing NUL) of our 16-byte field.
-> Adding an assertion to show gcc that we checked for truncation is
-> enough to shut up the false-positive warning.
-> 
-> Inspired by an idea by Dr. David Alan Gilbert <dgilbert@redhat.com>.
+Hi,
 
-elegant :)
+Another cocci script... Here the idea is to have the same script with all the
+osdep.h macros related rules altogether.
 
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+First run with QEMU_IS_ALIGNED() and ARRAY_SIZE().
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Regards,
 
-> ---
->   hw/usb/bus.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-> index 5939b273b9..d910f849e7 100644
-> --- a/hw/usb/bus.c
-> +++ b/hw/usb/bus.c
-> @@ -407,8 +407,10 @@ void usb_register_companion(const char *masterbus, USBPort *ports[],
->   void usb_port_location(USBPort *downstream, USBPort *upstream, int portnr)
->   {
->       if (upstream) {
-> -        snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
-> -                 upstream->path, portnr);
-> +        int l = snprintf(downstream->path, sizeof(downstream->path), "%s.%d",
-> +                         upstream->path, portnr);
-> +        /* Max string is nn.nn.nn.nn.nn, which fits in 16 bytes */
-> +        assert(l < sizeof(downstream->path));
->           downstream->hubcount = upstream->hubcount + 1;
->       } else {
->           snprintf(downstream->path, sizeof(downstream->path), "%d", portnr);
-> 
+Phil.
+
+PD: I used the "enforce" word because I plan to have some continuous integration
+job running such scripts (also the clang-tidy good stuff).
+
+Philippe Mathieu-Daudé (29):
+  coccinelle: add a script to enforce qemu/osdep.h macros usage
+  pci: remove superfluous parenthesis
+  qemu-img: use QEMU_IS_ALIGNED macro
+  scsi-disk: use QEMU_IS_ALIGNED macro
+  block: use QEMU_IS_ALIGNED macro
+  migration/block: use QEMU_IS_ALIGNED macro
+  ds1338: use QEMU_IS_ALIGNED macro
+  ui: use QEMU_IS_ALIGNED macro
+  net: use QEMU_IS_ALIGNED macro
+  net/rocker: use QEMU_IS_ALIGNED macro
+  s390x/sclp: use QEMU_IS_ALIGNED macro
+  sm501: use QEMU_IS_ALIGNED macro
+  tcg: use QEMU_IS_ALIGNED macro
+  cris: use QEMU_IS_ALIGNED macro
+  microblaze: use QEMU_IS_ALIGNED macro
+  lm32: use QEMU_IS_ALIGNED macro
+  sparc: use QEMU_IS_ALIGNED macro
+  nios2: use QEMU_IS_ALIGNED macro
+  disas: use QEMU_IS_ALIGNED macro
+  disas: use ARRAY_SIZE macro
+  qga: use ARRAY_SIZE macro
+  vmsvga: use ARRAY_SIZE macro
+  async: use ARRAY_SIZE macro
+  tests/acpi: use ARRAY_SIZE macro
+  tests/qos: use ARRAY_SIZE macro
+  tests/tcg: use ARRAY_SIZE macro
+  tests/hbitmap: use ARRAY_SIZE macro
+  tests/qapi: use QEMU_IS_ALIGNED macro
+  tests/qapi: use ARRAY_SIZE macro
+
+ accel/tcg/translate-all.c           |  2 +-
+ block/io.c                          |  4 +--
+ block/qcow2-cache.c                 |  2 +-
+ block/vhdx-log.c                    |  2 +-
+ block/vvfat.c                       |  2 +-
+ disas.c                             |  2 +-
+ disas/ia64.c                        |  4 +--
+ disas/m68k.c                        |  5 ++--
+ disas/ppc.c                         | 12 +++-----
+ disas/s390.c                        |  3 +-
+ hw/display/sm501_template.h         |  2 +-
+ hw/display/vmware_vga.c             |  5 ++--
+ hw/misc/pci-testdev.c               |  4 +--
+ hw/net/rocker/rocker.c              |  2 +-
+ hw/s390x/sclp.c                     |  4 +--
+ hw/scsi/scsi-disk.c                 |  4 +--
+ hw/timer/ds1338.c                   |  4 +--
+ migration/block.c                   |  2 +-
+ net/eth.c                           |  2 +-
+ qemu-img.c                          |  2 +-
+ qga/commands-posix.c                |  2 +-
+ scripts/coccinelle/use_osdep.cocci  | 60 +++++++++++++++++++++++++++++++++++++
+ target/cris/translate.c             |  6 ++--
+ target/lm32/translate.c             |  2 +-
+ target/microblaze/op_helper.c       |  3 +-
+ target/microblaze/translate.c       |  3 +-
+ target/nios2/translate.c            |  2 +-
+ target/sparc/cpu.c                  |  4 +--
+ tests/acpi-utils.h                  |  2 +-
+ tests/libqos/libqos.c               |  2 +-
+ tests/tcg/alpha/test-cond.c         |  2 +-
+ tests/tcg/alpha/test-ovf.c          |  2 +-
+ tests/test-hbitmap.c                |  6 ++--
+ tests/test-qobject-output-visitor.c |  2 +-
+ tests/test-string-output-visitor.c  |  2 +-
+ ui/console-gl.c                     |  2 +-
+ util/aio-posix.c                    |  2 +-
+ 37 files changed, 114 insertions(+), 59 deletions(-)
+ create mode 100644 scripts/coccinelle/use_osdep.cocci
+
+-- 
+2.13.2
+
 
