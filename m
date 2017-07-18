@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXLsd-0001pR-Vj
+	id 1dXLse-0001q8-Cv
 	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:21:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60308)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60340)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsZ-0001le-GN
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:08 -0400
+	id 1dXLsa-0001n3-Vj
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsX-0000sY-MA
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:07 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35765)
+	id 1dXLsa-0000w1-3k
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:08 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35766)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsX-0000rx-He; Tue, 18 Jul 2017 02:21:05 -0400
-Received: by mail-qt0-x241.google.com with SMTP id p25so253541qtp.2;
-	Mon, 17 Jul 2017 23:21:05 -0700 (PDT)
+	id 1dXLsZ-0000vR-Vy; Tue, 18 Jul 2017 02:21:08 -0400
+Received: by mail-qt0-x242.google.com with SMTP id p25so253587qtp.2;
+	Mon, 17 Jul 2017 23:21:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=r3Z39XvXYzdciMJ3wRAorPfYTGtm7iY/XDss8whpXnU=;
-	b=DlI087X98u8rv0dDMJEs6EyZbLRuIxxclVCM9nd7Es5l/ypVmoON3dkDTuiuxT7RqZ
-	2s4PmS9E8BV9HT9rysO16BhAvsIUz/Fni9uR4nzCj9Gu5HcB3rTT1XkAkTqr9vzwjNgP
-	YGTQftKWp+hIVr3gTJCLoI7eMu+D3SWzh7GUeAPOggnNHAuTS1+IR13f78LAaXOVlqQQ
-	0QW+1zuOMKhxlcuD4JOVno+fUxkipzG92B+JzZdZKAYdVttqR/nVvgZ/wqlzVjzc1Rcr
-	U2ymAeY+0731QrkcIITSe8Db+XiRcxs3+p4h2n+ZxllIBN1d4/r7NueU0259DakikP/H
-	rDfg==
+	bh=Os8K3RuD0Sg/Km1YQjYsFxtDsV1Bn2R66uZ3QaG3nR0=;
+	b=psNGYH43Lsf10AlzbxZE4PUI7jVRlYFL3qb+MtVgZ1vurhGdLahuEsWb642vVvaslW
+	5jsh4S0ohQMw6IEwNI7aM5L/joa64X+b4Zn3GZAuV94bRkpoW9Z89aDe0bAXTSxqq2yI
+	xdrx0n48SuG/y3PWkuxZU6WpXw0krKcAUAY+hmAoZv5quyw99Nbo/pK5Kww0ZQmcUoBf
+	/vmc51d+US7DXw7mv7RD4Lp+hi6c/VMOGAyCofPN4cnVM2P5EClgaGjTg8cOMyZwJKAw
+	cQQtb3corYZlVYe1i41BnNYxHuhvAVKbcDEOf3Gz6GeMk2MQnod+3vB7DVGM2ZGSO5Z1
+	g1Hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=r3Z39XvXYzdciMJ3wRAorPfYTGtm7iY/XDss8whpXnU=;
-	b=VsfGq5osAyEyeDGaK2hSp9ukjlTEvBKWHg9OPMQ/iH/uLZilYPtfR4AqiUjU7rkc/a
-	z3BLsFQXkqaiRJDODVqNjSjEbRBpQsZCMi6a871wNi3HiN2s20p07XupLl0BvebyBAW+
-	ehRp9LZNmzVLDwanTgKd+/qoZ1obiTU47Qa7S5a8hcaW6WN8R4n+EX+LBln5EEb2/WNv
-	+U2LiSlIXQZ8K3KChAMFn97aijzmKKUaibRMdKYjqyOy/2aH9u5huxnKDVwTHJf9waTp
-	UvhHxP/sCNrEd9CD5WQbP5r6ur6BIo/h2wFY68OT15fe/3qQflYFbiQIL71krGm36Epm
-	iL+A==
-X-Gm-Message-State: AIVw110enwkwMsd7aC3FyRTPS6Mt++5Nm+xfKyGY3eH6TFPD/S0rc7un
-	Sc6rdDcsDhFoVTUthkccKA==
-X-Received: by 10.237.32.141 with SMTP id 13mr91364qtb.41.1500358864861;
-	Mon, 17 Jul 2017 23:21:04 -0700 (PDT)
+	bh=Os8K3RuD0Sg/Km1YQjYsFxtDsV1Bn2R66uZ3QaG3nR0=;
+	b=jDZgsgtY7gSI5C0BUw42an9spvGFbdXMvOVHSmDKgnkxSvESUKOOL8YlEOLj/6KN7s
+	+ka+tF56LEi9+Q6kdtz5SupFzIbtHN+R3czSl6bLHd3jGEF/m6hnJNZQVOhZ775i9ldf
+	sD0C6LAAG45Baon6TKkedC7H28nBpdmolQ57c3NBagbx90UuN+vHPuPaPLHwnGeozCkD
+	/YJj9BopXoxr1X3W+FPaXl/WwXUs5ifeHZw8Pu/FePmj0U4be1GqkFKioypnjLa+y7qA
+	cHYQQoYrD+/ElpxPm7IdnT3wD3DDW1PAWBVbLemu5889XeCeiO9viGmAn8pDaC1iu7X+
+	GeNg==
+X-Gm-Message-State: AIVw113KHvxd5c1l0yyQRkyxot5VjX5bbFXIcHDdNuEnmoHrWgJRh76l
+	9iUvoIi/FS00aFXzSzSSsQ==
+X-Received: by 10.237.51.70 with SMTP id u64mr13773qtd.211.1500358867342;
+	Mon, 17 Jul 2017 23:21:07 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	l31sm1099862qtc.64.2017.07.17.23.21.02
+	l31sm1099862qtc.64.2017.07.17.23.21.05
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jul 2017 23:21:04 -0700 (PDT)
+	Mon, 17 Jul 2017 23:21:06 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>
+To: qemu-trivial@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
-Date: Tue, 18 Jul 2017 03:09:49 -0300
-Message-Id: <20170718061005.29518-14-f4bug@amsat.org>
+Date: Tue, 18 Jul 2017 03:09:50 -0300
+Message-Id: <20170718061005.29518-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.2
 In-Reply-To: <20170718061005.29518-1-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
@@ -64,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH 13/29] tcg: use QEMU_IS_ALIGNED macro
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 14/29] cris: use QEMU_IS_ALIGNED macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,28 +76,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 06:21:08 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 06:21:10 -0000
 
 Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- accel/tcg/translate-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/cris/translate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 4e1831cbb9..9011618157 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -151,7 +151,7 @@ static void page_table_config_init(void)
-     v_l2_levels = v_l1_shift / V_L2_BITS - 1;
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index 0ee05ca02d..46afdff145 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -3332,14 +3332,14 @@ void cris_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
  
-     assert(v_l1_bits <= V_L1_MAX_BITS);
--    assert(v_l1_shift % V_L2_BITS == 0);
-+    assert(QEMU_IS_ALIGNED(v_l1_shift, V_L2_BITS));
-     assert(v_l2_levels >= 0);
- }
- 
+     for (i = 0; i < 16; i++) {
+         cpu_fprintf(f, "%s=%8.8x ", regnames[i], env->regs[i]);
+-        if ((i + 1) % 4 == 0) {
++        if (QEMU_IS_ALIGNED(i + 1, 4)) {
+             cpu_fprintf(f, "\n");
+         }
+     }
+     cpu_fprintf(f, "\nspecial regs:\n");
+     for (i = 0; i < 16; i++) {
+         cpu_fprintf(f, "%s=%8.8x ", pregnames[i], env->pregs[i]);
+-        if ((i + 1) % 4 == 0) {
++        if (QEMU_IS_ALIGNED(i + 1, 4)) {
+             cpu_fprintf(f, "\n");
+         }
+     }
+@@ -3350,7 +3350,7 @@ void cris_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
+             for (i = 0; i < 16; i++) {
+                 cpu_fprintf(f, "s%2.2d=%8.8x ",
+                         i, env->sregs[srs][i]);
+-                if ((i + 1) % 4 == 0) {
++                if (QEMU_IS_ALIGNED(i + 1, 4)) {
+                     cpu_fprintf(f, "\n");
+                 }
+             }
 -- 
 2.13.2
 
