@@ -1,63 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXQ8O-0006FC-E1
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 06:53:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48934)
+	id 1dXQ96-0006oh-C2
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 06:54:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQ8K-0006CW-5O
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 06:53:41 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQ94-0006n2-Hs
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 06:54:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQ8J-0006u3-Dy
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 06:53:40 -0400
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:35614)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQ93-0007VF-Pi
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 06:54:26 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33357)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dXQ8J-0006tq-5o; Tue, 18 Jul 2017 06:53:39 -0400
-Received: by mail-lf0-x243.google.com with SMTP id z78so1376130lff.2;
-	Tue, 18 Jul 2017 03:53:38 -0700 (PDT)
+	id 1dXQ93-0007Uf-IV; Tue, 18 Jul 2017 06:54:25 -0400
+Received: by mail-lf0-x242.google.com with SMTP id t72so1396580lff.0;
+	Tue, 18 Jul 2017 03:54:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=1upIxprBQctTdymfilLk/oa//aE7kQ6uzhE6DHFEv+E=;
-	b=JK6uMJr44DM503jV2inu499z4qUpdfob8QSDZeq2JlPLg7ss9/2PgHgXDnZCwAgU0r
-	OHp/X87UJLwJNxteY3ueV/u0qUNvnX0uqlrWNy1NWZOh5gfYC40G7PF+u3WEAuK/pk0J
-	COnQE3KLYpa/bmyu/GUjqy/HS6xk0hGzBwvNMslSb1QrbbeIz8XP2Lg06OLYEIQCsoxJ
-	9Gy/iw/AZ5KJPj1T5bBvrobjHhSsAjptePrjDp7R7gknT2Nl59rUc39+cEwBAaE/04ZS
-	9EPeTNzwz5DpTw4qYRSL8bqXt4Hs2hnpywEPHmC66xGrDz9aySUDNUkdeuNxoyjxQK+7
-	mg3w==
+	bh=jcwQFy7bT+YnCKCAvx8XmXTg4x1KCs+Fz+hUOTPVRww=;
+	b=n1vAIFdkgIXf65LqkDab+7LTmP5QRiFcM3pFOtq27bDOGYOhfR2tSuu9XoyTGLWneQ
+	evD8gue9+nD79ONQ//kC6eWI8xMrxM+1/aaTj3isnKX8oSXzDHuEfL7b1J2Y/Veo9F5D
+	rkL+SToGf8B9Oi6woEPm+Db7MJlXEtl3d5mJH/am/EXG8vL1zpc9phc49L1Ijfp7EwTx
+	x+EaNQBAvg55CJ0HkVbQ3ZrnUTuYxSgEcB6eVKU4VAhFLpWK7ibU0951sTYZqnlg3Ti1
+	ixcSlvR3ZFhMUQHYs/kO36/etlwtEL08lk7+lxN/VSxKh2EMbGWClatwj1pf1ovDCHKW
+	gajA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=1upIxprBQctTdymfilLk/oa//aE7kQ6uzhE6DHFEv+E=;
-	b=jVqrhN88NggT92ndZFuhoufmSohVhH7C0ssGwSNagaIgHqW08mLXGQMNQ+ZGN1APRk
-	d5Qu5jwmVK4IEZS60GQkEyI2s4Z9pLm0HUdFJKdn1zxxInu0EN07i1e7/Y6IHy93sdYK
-	Ksgvxg5zbtAX/TBTVQchl/yJULSQkkto9IBhOSgXrhi8GmOmqOz7mvTU1uACBaZr1ZDV
-	P3xKvpY+UbqQehVdIODuI4nI2CmM/gRmgncucEUU4FDBgzOqT5ykacYjeOTUw4TzLLxj
-	swvjnTGxEu6RCRorPelkN2OWULz0QLQt/EjxJPNfq1NB/tOQFrboNEINqUgfvO7cw3f9
-	Tx+A==
-X-Gm-Message-State: AIVw111j1FQ1KT2WxEW1lyHkXst0mwue4w16sWdEARnwMNMGxJTGSeIO
-	DHsc8EudUGz15qjZC90UfAw+kDIizQ==
-X-Received: by 10.80.205.217 with SMTP id h25mr1416812edj.59.1500375217683;
-	Tue, 18 Jul 2017 03:53:37 -0700 (PDT)
+	bh=jcwQFy7bT+YnCKCAvx8XmXTg4x1KCs+Fz+hUOTPVRww=;
+	b=gaTQOjGHjNCfGEThEF62IesMgUflR3nM6CcTOsuiVgblr0mQgcwrbF0FyIWEYu+MwT
+	oyXGUvdJ8K/Os1Qfh5gprMyjNOLVnKxp0a4863AAkTN4qXYG/f0CefVK6Nm4O7qU8k5s
+	ycu+NEWB46iM6YuvOZuWbxNq1aLX1qE2hYCm0Qnjkcz8ueAt5e5YM3VIvjnY75YwtaIU
+	9uDegM2G36FzNkxCjBFlyZADSUFsvdPu8d5mUo2ZyeacmyHqF04RhlNAUWEEVy5SmFsN
+	WrdQ8gO4yCKnyc/tFIGYfWr3PxRyJ1A5RoULuKxXgHZG+fVbelXE3vHIHO7vkwOicI2C
+	tx7g==
+X-Gm-Message-State: AIVw111Rmzsdi362Emp1EIGvNscUu+VoqK3QFB468Ek1mHTkr4gfTtio
+	pfWfRnqQb3Hw+4R8bWPkCO6kqaQ4nQ==
+X-Received: by 10.80.152.106 with SMTP id h39mr71552edb.73.1500375264247; Tue,
+	18 Jul 2017 03:54:24 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.80.175.70 with HTTP; Tue, 18 Jul 2017 03:53:37 -0700 (PDT)
-In-Reply-To: <20170718061005.29518-29-f4bug@amsat.org>
+Received: by 10.80.175.70 with HTTP; Tue, 18 Jul 2017 03:54:23 -0700 (PDT)
+In-Reply-To: <20170718061005.29518-24-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-29-f4bug@amsat.org>
+	<20170718061005.29518-24-f4bug@amsat.org>
 From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 18 Jul 2017 03:53:37 -0700
-Message-ID: <CAJ+F1CJM0ueL1n39CxPvmL6EbW5TBP1XEruNMTT6JkzB4hGhEw@mail.gmail.com>
+Date: Tue, 18 Jul 2017 03:54:23 -0700
+Message-ID: <CAJ+F1CKM++cYHT2KL6LJeUFeYbDQsNS9b1D3hT=+NMSw7yhv-g@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: qemu trival <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, 
-	Michael Roth <mdroth@linux.vnet.ibm.com>, QEMU <qemu-devel@nongnu.org>
+	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	QEMU <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 28/29] tests/qapi: use
- QEMU_IS_ALIGNED macro
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 23/29] async: use ARRAY_SIZE
+ macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,9 +70,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 10:53:41 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 10:54:27 -0000
 
-On Mon, Jul 17, 2017 at 11:10 PM, Philippe Mathieu-Daud=C3=A9
+On Mon, Jul 17, 2017 at 11:09 PM, Philippe Mathieu-Daud=C3=A9
 <f4bug@amsat.org> wrote:
 > Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.=
 cocci
@@ -82,24 +83,22 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
 
 > ---
->  tests/test-qobject-output-visitor.c | 2 +-
+>  util/aio-posix.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/tests/test-qobject-output-visitor.c b/tests/test-qobject-out=
-put-visitor.c
-> index 749c54065f..121ee181a0 100644
-> --- a/tests/test-qobject-output-visitor.c
-> +++ b/tests/test-qobject-output-visitor.c
-> @@ -558,7 +558,7 @@ static void init_native_list(UserDefNativeListUnion *=
-cvalue)
->          boolList **list =3D &cvalue->u.boolean.data;
->          for (i =3D 0; i < 32; i++) {
->              *list =3D g_new0(boolList, 1);
-> -            (*list)->value =3D (i % 3 =3D=3D 0);
-> +            (*list)->value =3D QEMU_IS_ALIGNED(i, 3);
->              (*list)->next =3D NULL;
->              list =3D &(*list)->next;
->          }
+> diff --git a/util/aio-posix.c b/util/aio-posix.c
+> index 2d51239ec6..e89fd7024a 100644
+> --- a/util/aio-posix.c
+> +++ b/util/aio-posix.c
+> @@ -119,7 +119,7 @@ static int aio_epoll(AioContext *ctx, GPollFD *pfds,
+>      }
+>      if (timeout <=3D 0 || ret > 0) {
+>          ret =3D epoll_wait(ctx->epollfd, events,
+> -                         sizeof(events) / sizeof(events[0]),
+> +                         ARRAY_SIZE(events),
+>                           timeout);
+>          if (ret <=3D 0) {
+>              goto out;
 > --
 > 2.13.2
 >
