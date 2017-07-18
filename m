@@ -1,62 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXLkP-0003H0-H4
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:12:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57109)
+	id 1dXLkQ-0003IQ-NV
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:12:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57111)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLkM-0003Em-AZ
+	id 1dXLkM-0003Er-Cm
 	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:12:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLkJ-0004J2-5g
+	id 1dXLkL-0004K7-GC
 	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:12:38 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:34470)
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35381)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLkJ-0004Io-16; Tue, 18 Jul 2017 02:12:35 -0400
-Received: by mail-qt0-x243.google.com with SMTP id 19so1337172qty.1;
-	Mon, 17 Jul 2017 23:12:35 -0700 (PDT)
+	id 1dXLkL-0004Jy-C8; Tue, 18 Jul 2017 02:12:37 -0400
+Received: by mail-qt0-x243.google.com with SMTP id p25so239275qtp.2;
+	Mon, 17 Jul 2017 23:12:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=B9nbaOcIa0Ribz6lYF/aBjlcU5ozMLJrrC5Cy2GCnso=;
-	b=PFi6b0BSadF/3KoVcVvv+cYkqOcpn+hplp8tI+Zp/5Xcug68967jttvIA0hHiTs3Lo
-	eqTD824Jw+EAxVDX26QvjfTMmCswoGr5Y85JiHaf11dxfXTs4j7vzItUkvHws7Plv6H6
-	Prcv/e9pcV53QqDzuXXRXT/nYp5FNl0+VM6UYeQsmxfZGTKGdSHxhQgnE+PpBmJIT+6D
-	EpGeeckkWh6pXZyIP6R1cXa6D4pO6pybNgbps1YWVY029HUi0wRhfYZg492sBQdpNZqd
-	nyiSAQt7/PHB4h7yp4xA+lY1tktQ3nM1Ah9nPYiAQyg6SVEp0S5u4GD64HhiXW9oux3U
-	kP1g==
+	bh=sSvS5o/TuNncdarissGPM02fcrMCl/9iJibg/MYUZ+o=;
+	b=pedJUsNmvMN3uG9RhYIasX3vNvGtOSfaq3F1xgt+QgzJVI4AdOIexp5oVYyCd+yT0E
+	xAlS7L6HiqhdbTp+H4P8edo/oTvlNJNG37d80kO5M74mNikkMjraow9Sxx6iVflP70Mu
+	yCRHhLe39RkUamu6ZVNW4tzKLv2Debk9uLKbJfnqDr6rVkES7ZsbXVBA0JG56PMgNZXT
+	urkJIjJgL9QANDQIpewOLML/BLdfIGRfZgxbct9Lrjk4tbU+i8P5ZZJL9tsYhV/t4/ML
+	vuTa3C6+qsd0qvhMqlNNUd3jpJNs2L9rPdJbdViwFQFqN4OcEQcc2dn9E7KXPpqQiYbc
+	RYhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=B9nbaOcIa0Ribz6lYF/aBjlcU5ozMLJrrC5Cy2GCnso=;
-	b=eRyV4DdWImBrY1OQsVVZEMHuZ/oERt3VTfZ00aW2XCRmOOooDBFoqCcsRxVg1VoAME
-	Pt+abcXNYcKxVL8tvtKlXQ5z1JguxkA2EmqvX0B0hxRoX2ROo1FofXLV7As2A6pI/ZWy
-	43Udt+ENou9pBTq//Oo++QHLI+dPJgoPWub/khAhitVhQpBofISs557MP7qxVnuNRQWW
-	kqm1Pjl3ExWH8wPV9wrO0g1fyFUw2toSJx0X6AO3RQZG9lMnfNweCHXuVXyYluwVWsPK
-	7lBNAczAMIAGyl0oo++z31ezPmh16Up+gm8k4D/qAoER88WgGWPYSTiw7VKa2uNRrGE2
-	j9Fg==
-X-Gm-Message-State: AIVw11248as2OeVbVwiXLBruwc4lqd/AyRgnVn6rNiJzNTnq8JGQm/M2
-	GrzmdNkGdXVPHnC8yFy6xQ==
-X-Received: by 10.237.53.176 with SMTP id c45mr1475996qte.191.1500358354358;
-	Mon, 17 Jul 2017 23:12:34 -0700 (PDT)
+	bh=sSvS5o/TuNncdarissGPM02fcrMCl/9iJibg/MYUZ+o=;
+	b=ABktoYk8cEOZmn++IJ3CwXYDhsQ6g4YnaunQItw+5tVUx3q8iatAPKgWQq7gClNfBU
+	NvuGBAd+W06NXAkeOo9OiYagLCT5OAZgSvAstPwfzVo7sjhd0Y1f/ZtGlNSEXUELNdUe
+	+PAfs4nUiEgKICELDA05GEPdpM9fDKE7cpeEpbl0b8lSdsf9NxDxr8CZI9wW/jZaKb+Z
+	na+Ss08STJC4sNOjym7lB6dSIXfYQI7FnNGZ94ZI69TcfiWLlDux1qg9PeoHNm8P67fU
+	m5WzSr3SOAD6ca7bOszNZpEUY6g3pLu5XPHps57DnAa8k4LywNVLCDkA+kaGcDi1s0Z7
+	gWfA==
+X-Gm-Message-State: AIVw1118htVN4NZCmHOrwMKzegmh+9KOA3GTIy2KDCAr+MW2uYiROj8g
+	GWgWLGu7jwTXaADlXSKwWA==
+X-Received: by 10.200.47.152 with SMTP id l24mr4921qta.153.1500358356846;
+	Mon, 17 Jul 2017 23:12:36 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	l31sm1099862qtc.64.2017.07.17.23.12.31
+	l31sm1099862qtc.64.2017.07.17.23.12.34
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jul 2017 23:12:33 -0700 (PDT)
+	Mon, 17 Jul 2017 23:12:36 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Date: Tue, 18 Jul 2017 03:09:37 -0300
-Message-Id: <20170718061005.29518-2-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
+Date: Tue, 18 Jul 2017 03:09:38 -0300
+Message-Id: <20170718061005.29518-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.2
 In-Reply-To: <20170718061005.29518-1-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
@@ -66,8 +64,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH 01/29] coccinelle: add a script to enforce
- qemu/osdep.h macros usage
+Subject: [Qemu-trivial] [PATCH 02/29] pci: remove superfluous parenthesis
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,78 +78,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 18 Jul 2017 06:12:39 -0000
 
+Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- scripts/coccinelle/use_osdep.cocci | 60 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
- create mode 100644 scripts/coccinelle/use_osdep.cocci
+ hw/misc/pci-testdev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/scripts/coccinelle/use_osdep.cocci b/scripts/coccinelle/use_osdep.cocci
-new file mode 100644
-index 0000000000..356b36e358
---- /dev/null
-+++ b/scripts/coccinelle/use_osdep.cocci
-@@ -0,0 +1,60 @@
-+// Use macros from qemu/osdep.h
-+//
-+// Copyright: (C) 2017 Philippe Mathieu-Daudé. GPLv2+.
-+// Confidence: High
-+// Options: --macro-file scripts/cocci-macro-file.h
-+//
-+// docker run --rm -v `pwd`:`pwd` -w `pwd` philmd/coccinelle \
-+//     --macro-file scripts/cocci-macro-file.h \
-+//     --sp-file scripts/coccinelle/add_osdep.cocci \
-+//     --keep-comments --in-place \
-+//     --use-gitgrep --dir .
-+
-+// Use QEMU_IS_ALIGNED()
-+@@
-+typedef uintptr_t;
-+uintptr_t ptr;
-+expression n, m;
-+@@
-+(
-+-ptr % m == 0
-++QEMU_PTR_IS_ALIGNED(ptr, m)
-+|
-+-n % m == 0
-++QEMU_IS_ALIGNED(n, m)
-+)
-+
-+// Use QEMU_ALIGN_DOWN()
-+@@
-+expression n, m;
-+@@
-+-n / m * m
-++QEMU_ALIGN_DOWN(n, m)
-+
-+// Use ARRAY_SIZE()
-+@@
-+expression x;
-+@@
-+-sizeof(x) / sizeof((x)[0])
-++ARRAY_SIZE(x)
-+
-+// Drop superfluous parenthesis
-+@@
-+expression n, m;
-+@@
-+(
-+-(QEMU_IS_ALIGNED(n, m))
-++QEMU_IS_ALIGNED(n, m)
-+|
-+-QEMU_IS_ALIGNED((n), m)
-++QEMU_IS_ALIGNED(n, m)
-+|
-+-(QEMU_PTR_IS_ALIGNED(n, m))
-++QEMU_PTR_IS_ALIGNED(n, m)
-+|
-+-QEMU_ALIGN_DOWN((n), m)
-++QEMU_ALIGN_DOWN(n, m)
-+|
-+-(ARRAY_SIZE(n))
-++ARRAY_SIZE(n)
-+)
+diff --git a/hw/misc/pci-testdev.c b/hw/misc/pci-testdev.c
+index 7d5990213e..b928ce7e84 100644
+--- a/hw/misc/pci-testdev.c
++++ b/hw/misc/pci-testdev.c
+@@ -63,8 +63,8 @@ static const char *iotest_type[] = {
+ 
+ #define IOTEST_TEST(i) (iotest_test[((i) % ARRAY_SIZE(iotest_test))])
+ #define IOTEST_TYPE(i) (iotest_type[((i) / ARRAY_SIZE(iotest_test))])
+-#define IOTEST_MAX_TEST (ARRAY_SIZE(iotest_test))
+-#define IOTEST_MAX_TYPE (ARRAY_SIZE(iotest_type))
++#define IOTEST_MAX_TEST ARRAY_SIZE(iotest_test)
++#define IOTEST_MAX_TYPE ARRAY_SIZE(iotest_type)
+ #define IOTEST_MAX (IOTEST_MAX_TEST * IOTEST_MAX_TYPE)
+ 
+ enum {
 -- 
 2.13.2
 
