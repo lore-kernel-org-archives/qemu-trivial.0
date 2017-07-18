@@ -1,57 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXR8z-0005JD-Da
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:58:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48597)
+	id 1dXSTE-00050S-0V
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 09:23:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1dXR8t-0005EJ-On
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:58:23 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXSTC-0004zC-7d
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 09:23:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1dXR8s-0006Mn-Tf
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:58:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46872)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1dXR8o-0006Kl-G6; Tue, 18 Jul 2017 07:58:14 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 10E0F4E909;
-	Tue, 18 Jul 2017 11:58:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 10E0F4E909
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=lvivier@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 10E0F4E909
-Received: from [10.36.116.168] (ovpn-116-168.ams2.redhat.com [10.36.116.168])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7AFC777D63;
-	Tue, 18 Jul 2017 11:58:06 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
-References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-26-f4bug@amsat.org>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <4819b5c5-7ff9-dd32-d6c7-7516e8fb75fe@redhat.com>
-Date: Tue, 18 Jul 2017 13:58:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXSTB-0006nY-Bw
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 09:23:22 -0400
+Received: from mail-it0-x233.google.com ([2607:f8b0:4001:c0b::233]:34865)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dXSTB-0006nL-7F; Tue, 18 Jul 2017 09:23:21 -0400
+Received: by mail-it0-x233.google.com with SMTP id h199so8878444ith.0;
+	Tue, 18 Jul 2017 06:23:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=lxVshmEKch6iBxUqoVRmZ0Dx6XEesh7sgGUoBXvJitI=;
+	b=uyi38YccKR+wpej4R4BVVp4FCQdhPz+rRg1UcQKR4qRQZiM9qFmuECfEw2LHqbQCXo
+	7647aWcHgijOD1eVx2wn+LjgB30L3r+fh1TcxDsRoCkezWT0XL6VJgFvXIkGrtGw1xfu
+	N5PBm+BADTeyuvGjPyr2Luy2abh+PsvvYD0sCQ4cp8ejjZhamYZLPmp2+2VJZKqw+8tV
+	OzkXp7KOYGI887/YwbtEm/HKJXyN5I0Cf9I5o3+9tfjxKvzoFqhah9+Hk6JUKdifg4/P
+	iy/zkTeBk+yH+PmCfoDsxIQIUVZqmwFafdbzZTRdr2KHBNVx0GOz84OKXuJ+DiAq3q7E
+	RwLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=lxVshmEKch6iBxUqoVRmZ0Dx6XEesh7sgGUoBXvJitI=;
+	b=iSVIIAhuOdZnCbc6hhDM/kifqqmd7CPr/8oVD0jpRdYm5U2RZ47a3sL/p+TB+DJcY6
+	bN1v8NH/TfK8kooOUyaln+jOmEi+4p/pMOK7HqotNccykebAJF5WDyfmdt9dBgLcMLG5
+	dkhxBp4y0Nu0N+PvXBYLchrZB2CyCm5/ymu0U4XiV7qn1x44LK3RdcdmXy94uv8+qPwe
+	5jz2sX8+YpgWacypVJof6qG0ryCyrbs5NYChKyn/or99KJ/0rWlyWAbV+cqyhj5XgIM+
+	9MSCn4afxI5Ilr8AOyS9Ay18/68lZQUdoPLSR+ikCupmunwkHpfuOZNbDs90rhlqy09f
+	fSNQ==
+X-Gm-Message-State: AIVw110KbJ0ZWUeU2NImEvlQj80KdUK87dn8dzlKsLuOvmbTXr7KWj4w
+	8cnk6FGENJw1hz6jp+SXl6bNIDoHKg==
+X-Received: by 10.36.152.136 with SMTP id n130mr403315itd.79.1500384200582;
+	Tue, 18 Jul 2017 06:23:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170718061005.29518-26-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 18 Jul 2017 11:58:13 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 25/29] libqos: use ARRAY_SIZE macro
+Sender: philippe.mathieu.daude@gmail.com
+Received: by 10.107.152.16 with HTTP; Tue, 18 Jul 2017 06:23:19 -0700 (PDT)
+In-Reply-To: <045101d2ffaf$ef4b60e0$cde222a0$@d-silva.org>
+References: <20170718061005.29518-1-f4bug@amsat.org>
+	<20170718061005.29518-8-f4bug@amsat.org>
+	<045101d2ffaf$ef4b60e0$cde222a0$@d-silva.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Tue, 18 Jul 2017 10:23:19 -0300
+X-Google-Sender-Auth: whwnk-16UI7nHQaXHO3kE3WVhg8
+Message-ID: <CAAdtpL7MibpdNtmc-vJAGhjVh-FKpy0RzQkL=DCHr+WSnXqF7g@mail.gmail.com>
+To: "Alastair D'Silva" <alastair@d-silva.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, 
+	Corey Minyard <cminyard@mvista.com>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Eric Blake <eblake@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::233
+Subject: Re: [Qemu-trivial] [PATCH 07/29] ds1338: use QEMU_IS_ALIGNED macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,42 +74,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 11:58:23 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 13:23:23 -0000
 
-On 18/07/2017 08:10, Philippe Mathieu-Daud=C3=A9 wrote:
-> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osde=
-p.cocci
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->=20
-> No entry in MAINTAINERS for tests/libqos/* does it deserve it's own ent=
-ry?
->=20
->  tests/libqos/libqos.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/tests/libqos/libqos.c b/tests/libqos/libqos.c
-> index 6226546c28..0edb7e99ba 100644
-> --- a/tests/libqos/libqos.c
-> +++ b/tests/libqos/libqos.c
-> @@ -258,7 +258,7 @@ void generate_pattern(void *buffer, size_t len, siz=
-e_t cycle_len)
->      p =3D rand() % 256;
->      for (i =3D 0; i < len; i++) {
->          tx[i] =3D p++ % 256;
-> -        if (i % cycle_len =3D=3D 0) {
-> +        if (QEMU_IS_ALIGNED(i, cycle_len)) {
->              p =3D rand() % 256;
->          }
->      }
->=20
+On Tue, Jul 18, 2017 at 7:23 AM, Alastair D'Silva <alastair@d-silva.org> wrote:
+> I'm not sure this makes sense - we're dealing with time here.
 
-The title doesn't reflect the real change.
+Indeed, thanks for your review!
 
-otherwise:
-
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
-
-Laurent
+>> --- a/hw/timer/ds1338.c
+>> +++ b/hw/timer/ds1338.c
+>> @@ -65,7 +65,7 @@ static void capture_current_time(DS1338State *s)
+>>      s->nvram[1] = to_bcd(now.tm_min);
+>>      if (s->nvram[2] & HOURS_12) {
+>>          int tmp = now.tm_hour;
+>> -        if (tmp % 12 == 0) {
+>> +        if (QEMU_IS_ALIGNED(tmp, 12)) {
+>>              tmp += 12;
+>>          }
+>>          if (tmp <= 12) {
+>> @@ -154,7 +154,7 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>>                  if (data & HOURS_PM) {
+>>                      tmp += 12;
+>>                  }
+>> -                if (tmp % 12 == 0) {
+>> +                if (QEMU_IS_ALIGNED(tmp, 12)) {
+>>                      tmp -= 12;
+>>                  }
+>>                  now.tm_hour = tmp;
 
