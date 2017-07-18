@@ -1,67 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXVdF-0004re-49
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 12:45:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58490)
+	id 1dXWes-0006z0-LM
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 13:51:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50847)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXVdD-0004pO-76
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 12:45:56 -0400
+	(envelope-from <eblake@redhat.com>) id 1dXWep-0006ws-TU
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 13:51:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXVdC-00015c-96
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 12:45:55 -0400
-Received: from mail-io0-x243.google.com ([2607:f8b0:4001:c06::243]:34860)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXVdC-00014X-3r; Tue, 18 Jul 2017 12:45:54 -0400
-Received: by mail-io0-x243.google.com with SMTP id f1so1257320ioj.2;
-	Tue, 18 Jul 2017 09:45:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=uarsrpfxsTowdgmYPdt4A7vGoteeajzROSlKAr7bOXQ=;
-	b=G8mEeHMnwWLiaknPhLzSuDsaSeLE6wBw7t1YjGAmRLUOkjl4AbXBoHzNAbuHM5bYZs
-	R1CfLzEEdn1usnhRXKEiqgS39qZmvqQTcE6A0x4Jlk0qvhqnlEYffsVYNTH/KYRZNFSq
-	AVz9Uvqs8xie9HnULBjpENYYZq9mEnqUE2momjYek03Qt76uD88tmDt5pWgGexxO1Kzt
-	K8fP87f3thsbjcPU2OxkxsA/Hk4yHsZTbXK6E4YYyrYX/5j0yfAa939Xpi3VwwJGgs/Y
-	NgNjqZM9mWtUtKPpOwrjZ2f1UJ3H/MyLBB8fUcU8Pbw0Q+Jp4a1VJdMv0ucqbBPoP1g6
-	Q0rQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=uarsrpfxsTowdgmYPdt4A7vGoteeajzROSlKAr7bOXQ=;
-	b=b1lZ8dvTwXGAAKU6DluOzZvaV8Z8NhC6vtN0NWCG9i7o9CqbnaWVpqWkaVXWFTogBk
-	pmEvgsMvil1MMcVevwI02IXNEh6xgxvz1rsdmSc9gXw8B3Kbus/oFRZhBBhjKZLUWcjK
-	87UHbB/SnM6XmadBjKvchT8QKqGOc73BU+Xf0x280Rcd9bPDqJE14XJLlsh3uLVVyLO3
-	Ly8rClrqtQAOIIbUq+WYlB4UQD87Vnrc7xrm5QVqIJkpOZU0kViki7a9R8/XfAb5nImJ
-	ZbvZ0axSy3XtBRhKyJOdY+Mj2H5rW4IqMEGuJSgY9cuDPhIRAZuKRStbvGQRLaaSdbmi
-	PZrg==
-X-Gm-Message-State: AIVw112adiZSVv6vtbIfXSfvooIDZRexTW9jyJgxXnsnVyHP3aXONrfC
-	hwPQr9GnM0z3g4PN4uytwbwGesSjUA==
-X-Received: by 10.107.46.230 with SMTP id u99mr2660165iou.52.1500396353361;
-	Tue, 18 Jul 2017 09:45:53 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>) id 1dXWep-0002xj-0m
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 13:51:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45056)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dXWek-0002sy-EO; Tue, 18 Jul 2017 13:51:34 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3407D7DCE9;
+	Tue, 18 Jul 2017 17:51:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3407D7DCE9
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=eblake@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 3407D7DCE9
+Received: from [10.10.120.160] (ovpn-120-160.rdu2.redhat.com [10.10.120.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2D4987F8C0;
+	Tue, 18 Jul 2017 17:51:31 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org, Dmitry Fleytman <dmitry@daynix.com>,
+	Jason Wang <jasowang@redhat.com>
+References: <20170718061005.29518-1-f4bug@amsat.org>
+	<20170718061005.29518-10-f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <6818fd68-0741-76f0-4d2c-a4d975e9d131@redhat.com>
+Date: Tue, 18 Jul 2017 12:51:30 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 10.107.152.16 with HTTP; Tue, 18 Jul 2017 09:45:52 -0700 (PDT)
-Received: by 10.107.152.16 with HTTP; Tue, 18 Jul 2017 09:45:52 -0700 (PDT)
-In-Reply-To: <1500395194-21455-2-git-send-email-peter.maydell@linaro.org>
-References: <1500395194-21455-1-git-send-email-peter.maydell@linaro.org>
-	<1500395194-21455-2-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Tue, 18 Jul 2017 13:45:52 -0300
-X-Google-Sender-Auth: lgA8ZbV3gfMXslXsUIHEH9VsGwc
-Message-ID: <CAAdtpL7WjJWC1KT2fuZv=b2obT9dJwPgYp=QQK0agdVNhhn=tw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	patches@linaro.org
-Content-Type: multipart/alternative; boundary="001a11c16a96aab3a505549a3f27"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c06::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10 1/4]
- bsd-user/mmap.c: Move __thread attribute to right place
+In-Reply-To: <20170718061005.29518-10-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="V45CnDOBNvOtN7p6GFp9PhWlkgxJdAvEN"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 18 Jul 2017 17:51:33 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 09/29] net: use QEMU_IS_ALIGNED macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,88 +64,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 16:45:56 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 17:51:41 -0000
 
---001a11c16a96aab3a505549a3f27
-Content-Type: text/plain; charset="UTF-8"
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--V45CnDOBNvOtN7p6GFp9PhWlkgxJdAvEN
+Content-Type: multipart/mixed; boundary="rTOxq8BW08MMNKgd6TWNRkoJRRA2IqWDw";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-trivial@nongnu.org, Dmitry Fleytman <dmitry@daynix.com>,
+ Jason Wang <jasowang@redhat.com>
+Cc: qemu-devel@nongnu.org
+Message-ID: <6818fd68-0741-76f0-4d2c-a4d975e9d131@redhat.com>
+Subject: Re: [PATCH 09/29] net: use QEMU_IS_ALIGNED macro
+References: <20170718061005.29518-1-f4bug@amsat.org>
+ <20170718061005.29518-10-f4bug@amsat.org>
+In-Reply-To: <20170718061005.29518-10-f4bug@amsat.org>
+
+--rTOxq8BW08MMNKgd6TWNRkoJRRA2IqWDw
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Le 18 juil. 2017 1:29 PM, "Peter Maydell" <peter.maydell@linaro.org> a
-=C3=A9crit :
-
-> Avoid a compiler warning on OpenBSD:
-> bsd-user/mmap.c:28:1: warning: '__thread' is not at beginning of
-> declaration [-Wold-style-declaration]
-> by moving the __thread attribute to its proper place.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 07/18/2017 01:09 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osde=
+p.cocci
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  bsd-user/mmap.c | 2 +-
+>  net/eth.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/bsd-user/mmap.c b/bsd-user/mmap.c
-> index 7f2018e..20cd29d 100644
-> --- a/bsd-user/mmap.c
-> +++ b/bsd-user/mmap.c
-> @@ -25,7 +25,7 @@
->  //#define DEBUG_MMAP
->
->  static pthread_mutex_t mmap_mutex =3D PTHREAD_MUTEX_INITIALIZER;
-> -static int __thread mmap_lock_count;
-> +static __thread int mmap_lock_count;
->
->  void mmap_lock(void)
->  {
-> --
-> 2.7.4
->
->
->
+>=20
+> diff --git a/net/eth.c b/net/eth.c
+> index 5b9ba26a56..187a6812f6 100644
+> --- a/net/eth.c
+> +++ b/net/eth.c
+> @@ -332,7 +332,7 @@ eth_setup_ip4_fragmentation(const void *l2hdr, size=
+_t l2hdr_len,
+>          uint16_t frag_off_units =3D frag_offset / IP_FRAG_UNIT_SIZE;
+>          uint16_t new_ip_off;
+> =20
+> -        assert(frag_offset % IP_FRAG_UNIT_SIZE =3D=3D 0);
+> +        assert(QEMU_IS_ALIGNED(frag_offset, IP_FRAG_UNIT_SIZE));
+>          assert((frag_off_units & ~IP_OFFMASK) =3D=3D 0);
 
---001a11c16a96aab3a505549a3f27
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This line is also a candidate for using the macro, albeit in the form
+QEMU_IS_ALIGNED(frag_off_units, IP_OFFMASK + 1), which might not make as
+much sense (but it DOES re-visit my question of whether the coccinelle
+script should be taught more patterns)
 
-<div dir=3D"auto"><span style=3D"font-family:sans-serif;font-size:13.696px"=
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;</span><a href=3D"mailto:f4bu=
-g@amsat.org" style=3D"text-decoration:none;color:rgb(66,133,244);font-famil=
-y:sans-serif;font-size:13.696px">f4bug@amsat.org</a><span style=3D"font-fam=
-ily:sans-serif;font-size:13.696px">&gt;</span></div><div class=3D"gmail_ext=
-ra"><br><div class=3D"gmail_quote">Le=C2=A018 juil. 2017 1:29 PM, &quot;Pet=
-er Maydell&quot; &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.mayd=
-ell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br type=3D"attribution"><blockqu=
-ote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc s=
-olid;padding-left:1ex">Avoid a compiler warning on OpenBSD:<br>
-bsd-user/mmap.c:28:1: warning: &#39;__thread&#39; is not at beginning of de=
-claration [-Wold-style-declaration]<br>
-by moving the __thread attribute to its proper place.<br>
-<br>
-Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
-">peter.maydell@linaro.org</a>&gt;<br>
----<br>
-=C2=A0bsd-user/mmap.c | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/bsd-user/mmap.c b/bsd-user/mmap.c<br>
-index 7f2018e..20cd29d 100644<br>
---- a/bsd-user/mmap.c<br>
-+++ b/bsd-user/mmap.c<br>
-@@ -25,7 +25,7 @@<br>
-=C2=A0//#define DEBUG_MMAP<br>
-<br>
-=C2=A0static pthread_mutex_t mmap_mutex =3D PTHREAD_MUTEX_INITIALIZER;<br>
--static int __thread mmap_lock_count;<br>
-+static __thread int mmap_lock_count;<br>
-<br>
-=C2=A0void mmap_lock(void)<br>
-=C2=A0{<br>
---<br>
-2.7.4<br>
-<br>
-<br>
-</blockquote></div></div>
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
---001a11c16a96aab3a505549a3f27--
+
+--rTOxq8BW08MMNKgd6TWNRkoJRRA2IqWDw--
+
+--V45CnDOBNvOtN7p6GFp9PhWlkgxJdAvEN
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlluSqIACgkQp6FrSiUn
+Q2q6igf/egf/6v3M4wV/mYbWLqTbfbEZ5u9oCR+6s+zT52/+VUmPPUR9efHh5J9S
+Y2zqzj6ytEmrUIiYv7NAKVe9RxM0sad3GoPJEvfb9jdAw8nPERSE4bcquX9IfBoa
+ARU51sK4b4004suxZ+2yQXa3/DpkvkFPZdASJB/lrbvloF7DIPrNEGESg3FdnV4M
+HCEVqNf1qlY4H7MikPQ5M/cZOZEPKB5dAOEN2WXj4qyRevRb7zVKdiTE/YDebJAC
+H1ag3b1QvG03NCLFLy35amrokpnXa4G4PU4mAqpdQBxooCO6lJEiwIygzZ0Z2tZW
+fN8WLWzbjtwK9RvhT5Tn7yPxDl9z4A==
+=qKtd
+-----END PGP SIGNATURE-----
+
+--V45CnDOBNvOtN7p6GFp9PhWlkgxJdAvEN--
 
