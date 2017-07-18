@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXLtK-0002VT-4Q
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:21:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60830)
+	id 1dXLtL-0002XL-RU
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:21:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60850)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLtE-0002Pq-Se
+	id 1dXLtI-0002T5-3G
 	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLtE-0001sy-2m
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:48 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:33883)
+	id 1dXLtG-0001vu-P0
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:52 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33319)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLtD-0001sU-UX; Tue, 18 Jul 2017 02:21:48 -0400
-Received: by mail-qt0-x244.google.com with SMTP id 19so1352847qty.1;
-	Mon, 17 Jul 2017 23:21:47 -0700 (PDT)
+	id 1dXLtG-0001vb-Kg; Tue, 18 Jul 2017 02:21:50 -0400
+Received: by mail-qt0-x242.google.com with SMTP id 50so293752qtz.0;
+	Mon, 17 Jul 2017 23:21:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=k0QN5HgGI+IlTWNg+p9h59ALBvhBq6h99J53rIPqqd8=;
-	b=ONycszQyS2XQFOLPw8ZqktcU/tiwFpZHNGq1v5qC9TUhj6SXy3BF5+d/q4ohHPygKf
-	D+T4y7+i0X36dYI7wLJ0pRcZFOWusaAYlRHF25iy9lm0Fh9OSXpq4lXW00Xn9RlqdSHL
-	g71UxSPVyXBXgVJFtXLoMgm2a5MH0XWyOIIfd8rHNXS7CFyd54ckpWtG15h9F/wTIc4M
-	b3iPp4pSpiVCg33rF6v5q0G9nC+gIJMZwHk8BnAaGiNVX6eOfth7drtWqrlmfctMIpPd
-	bZ0kzgWrBhEEm7TgwjP7b10ErGuvsXjvO7lCp+wXYXYUzoxTD/IJK2cyRJIU3GXAMxWa
-	UFdg==
+	bh=2ZQM9+RbEoRBD7ER9rON4SUgjt3jWB0suMmQ1C639wc=;
+	b=fJMdcnX1j+GuC73oJBUemgmVrFHg/hU+gyqchPY4vTlIlPSZDGF1H13kKzrnD2OgSN
+	htua/D6rASYiQStRLsddZKAu931ChxHVIuGMEDqTFROg1P1dXWm6g7HEwVb26pU5x6EI
+	B/+ZN5C8zFaXVynjvX2g+BYIHuRBKZDG5HNfDBzjKBAw+93a2O8nGJfPXeTVhsUAT8OT
+	zNgh7syqRttUjEezU0WQVgJegfiJ8RdyeQNI6okWs4fJk0Y5rNeftzxDOJ9DS957uTus
+	f2B39DUyAxyXpzJxTP+9ZpwZMJEMOr9O68NasldZwkfc+r/+/6yXO4wysyk6aLQeJgvJ
+	s2DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=k0QN5HgGI+IlTWNg+p9h59ALBvhBq6h99J53rIPqqd8=;
-	b=VxQrrpj2n8JSDp71Jbyhb2gi/GQeFZm/IQ1QdQBzB1kSbKu5Tu4Q1Up9PRMhdvstNe
-	A/g/fOIPhfwET6uCZtNg34BulvgTd0jTYKO1m3KFvwqCkUEa3LQ2evg+I2pFkzoiua/O
-	eeFE+006sWPb0RO+Kzs0H7raPsauMbJ8Sglcg0U3RL5u4OGQMc6UPYFAu+VU4HkDeFVs
-	GWHUx41a0Z1PvTLJGHyZmy7p1Vy6hy8S1hGCk2m9WM2Zif/bjso+Dg+e6jyiywxOP8iK
-	SGT6ZOw5XwhMjffOsHtzRkSC2cZSIqKZpCFVsAfkCi1qdLTzsffZV/EoOhTEVgY4AkK/
-	j/Yw==
-X-Gm-Message-State: AIVw112rQcKsz0lXGq9TbrntjgmMNR+XgDTeGah/bOZBCEIu8JzYNGV1
-	IvLWmJsNtNbnp28/TdWoiQ==
-X-Received: by 10.200.50.2 with SMTP id x2mr95211qta.23.1500358907361;
-	Mon, 17 Jul 2017 23:21:47 -0700 (PDT)
+	bh=2ZQM9+RbEoRBD7ER9rON4SUgjt3jWB0suMmQ1C639wc=;
+	b=fCBFc4cfZOhFjKW8ZSZVnYmjU6t7QGVNMXSLyk2zjZLwkhXsjhP/qhq5cWpnw2Ayfk
+	I2mi8Q5q/xruKjpmhJYi931wvx80HEWQ3nFJ34k58yUCI1MI7dfeAl3c0no7oW7j5OCM
+	aOZXlUGpdvLVq73BIkVltww/fH8T/6U3WADDYieH9uf28FdJTJ7ur6YxcXXDEnpgUwCn
+	ZnlFKGhAEOF2qRuk7lTkU3C7jKCFTLygdhZvGkgzZ0CFS4DIy4OLJCCLfN4b20XzVVNu
+	3FMldNOJ0ikYZfl+TP3TLvdCTvGzeeULf9Yp4LJIlXaf4W5m81M17S/REXpi7W0R5/GC
+	7WGg==
+X-Gm-Message-State: AIVw1119dA+E/mO9jEyf3WRGLvpHgH5W+JyLpS22pp90IO6RhtZbzd5k
+	+1cNU2OgJxn9kCxUEU7A0Q==
+X-Received: by 10.237.38.71 with SMTP id z65mr95071qtc.21.1500358910064;
+	Mon, 17 Jul 2017 23:21:50 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	l31sm1099862qtc.64.2017.07.17.23.21.44
+	l31sm1099862qtc.64.2017.07.17.23.21.47
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jul 2017 23:21:46 -0700 (PDT)
+	Mon, 17 Jul 2017 23:21:49 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -53,8 +53,8 @@ To: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
-Date: Tue, 18 Jul 2017 03:10:04 -0300
-Message-Id: <20170718061005.29518-29-f4bug@amsat.org>
+Date: Tue, 18 Jul 2017 03:10:05 -0300
+Message-Id: <20170718061005.29518-30-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.2
 In-Reply-To: <20170718061005.29518-1-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
@@ -63,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH 28/29] tests/qapi: use QEMU_IS_ALIGNED macro
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 29/29] tests/qapi: use ARRAY_SIZE macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,28 +76,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 06:21:52 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 06:21:53 -0000
 
 Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/test-qobject-output-visitor.c | 2 +-
+ tests/test-string-output-visitor.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/test-qobject-output-visitor.c b/tests/test-qobject-output-visitor.c
-index 749c54065f..121ee181a0 100644
---- a/tests/test-qobject-output-visitor.c
-+++ b/tests/test-qobject-output-visitor.c
-@@ -558,7 +558,7 @@ static void init_native_list(UserDefNativeListUnion *cvalue)
-         boolList **list = &cvalue->u.boolean.data;
-         for (i = 0; i < 32; i++) {
-             *list = g_new0(boolList, 1);
--            (*list)->value = (i % 3 == 0);
-+            (*list)->value = QEMU_IS_ALIGNED(i, 3);
-             (*list)->next = NULL;
-             list = &(*list)->next;
-         }
+diff --git a/tests/test-string-output-visitor.c b/tests/test-string-output-visitor.c
+index e736db3af8..f0902dd49e 100644
+--- a/tests/test-string-output-visitor.c
++++ b/tests/test-string-output-visitor.c
+@@ -97,7 +97,7 @@ static void test_visitor_out_intList(TestOutputVisitorData *data,
+     Error *err = NULL;
+     char *str;
+ 
+-    for (i = 0; i < sizeof(value) / sizeof(value[0]); i++) {
++    for (i = 0; i < ARRAY_SIZE(value); i++) {
+         *tmp = g_malloc0(sizeof(**tmp));
+         (*tmp)->value = value[i];
+         tmp = &(*tmp)->next;
 -- 
 2.13.2
 
