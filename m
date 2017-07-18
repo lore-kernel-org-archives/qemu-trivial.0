@@ -1,63 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXQgQ-0005iW-Uj
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:28:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37516)
+	id 1dXQgp-0006IX-4j
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:29:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37596)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgP-0005hF-3d
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:28:53 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgm-0006GZ-EY
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:29:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgO-0008Lv-9v
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:28:53 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35082)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgl-0000B0-OS
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:29:16 -0400
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34249)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dXQgO-0008Ka-20; Tue, 18 Jul 2017 07:28:52 -0400
-Received: by mail-lf0-x241.google.com with SMTP id z78so1463524lff.2;
-	Tue, 18 Jul 2017 04:28:51 -0700 (PDT)
+	id 1dXQgl-0000Ah-HI; Tue, 18 Jul 2017 07:29:15 -0400
+Received: by mail-lf0-x244.google.com with SMTP id p11so1464041lfd.1;
+	Tue, 18 Jul 2017 04:29:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=6d6nSkfZYy7C4sL02I3jrIN2nfhKbnP9QrgK9LNvkFk=;
-	b=svTNAcJTjhDHc/6WOli96/EHRfSIWqeFGWuxchN+6MQD3Xi3Y6wNHA06U4lHJhy19l
-	yNazOerp0GwMGOi/PJOUJXutt8IC5OpuDfQrnLSf27CSKWtPsQDkvMg9XKO520DimREa
-	7hfs6QGYw+qvv4DKc8qvTHfXcKgMW2Ryt0EPrPDL+TGBOCFNMvUnM6TATibwOLgCtjWF
-	AL17vUGUGO65DDZNJIpVIvP2lbuXyMkuJp8CFPoEsuErunovZxcflv08cTb8OIY27nwA
-	7CCBd/YoIhxIv5Od87OUjG6zw67wF++Ed6RFPImttF+lfeWDPlGRKkdF/qH3fv5T7rZk
-	1JHg==
+	bh=6rJylQRD0RaJkRJdc7qk4uBIybBqFl6HAJQL8eSQxa8=;
+	b=WYSNAGBkAhDZypxPPaLcO+Jy0FSw2WpF7CALoMwrIy8blyqWyziGsTdr4FuFJ06gmy
+	MHBGp+qlNPn28FvCvDLY3iGwRqrlNPyV67DD4EWgdwjgTwDfByEqZ1IE+e6+b0lKjuch
+	vicg5mvFY+TXAZ2Zd/OeX/V4BvdzIRyRF6zdihWNd+zSohTl9ZzC0BKR6BWTXChgAE4R
+	v7HGoK3sv52u0j3EgACWXQItwRMNERT0S0Wm15PUpB2ES7O0DdUDSJFtAYPPvJvIQw+J
+	SEIa9KRsrVQbZL/KchLh9uUGXR+NSgkuIoA2g2xhfrgGKhUbzPp/4sDWuxCYVYGDJ9y0
+	otyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=6d6nSkfZYy7C4sL02I3jrIN2nfhKbnP9QrgK9LNvkFk=;
-	b=RmDwNJyiKXJ08CWcrZtIqokILR1+9kG0xMgDKQnY+Guf0CBrmnHv2aAOban9qXQte7
-	B97DRTFue/bdE8LPwhnHdeM7D8iaCPYNMIDURq7HjBVnSwbeHSnWGMxT8JAIcHZd8Ies
-	yG9r7S3eFAaGY5IsexyeEh2uRpqBmn2V9Z7VxgC1MkfSCaLnsjUjZ0UGLcih53pp7pt4
-	3mBLicglCkCUGvl+bskpargD42wKTrvkfmsnLAv4DI0DttGlzPWFxAqQoarWm9IPtO1d
-	olhsWvr6IS+UPvBllxo1h4klvTgC8sLw8+4eLAP3A3we457xw0PaxxXivGk6pa6ikFu8
-	/r2w==
-X-Gm-Message-State: AIVw111Dw/HbHObsGzhhJYOC9BD2nmPny2nQ10L9BJNy1DVVWQa5IbXG
-	/ugueNRn0+JxNya52mYj1Rg/z57p6g==
-X-Received: by 10.25.104.19 with SMTP id d19mr503716lfc.139.1500377329262;
-	Tue, 18 Jul 2017 04:28:49 -0700 (PDT)
+	bh=6rJylQRD0RaJkRJdc7qk4uBIybBqFl6HAJQL8eSQxa8=;
+	b=RcdqoFvQdHSjUnkbW5teNKfzWUyN0U9QS7y6zfXy45frMb/rCL3JhMOuEkAXnYmYPv
+	v3rCudAPHFHpbTcpZaiP/uGWjzP8Ywfd+p0VklaCwVRZ0VyxYOaL9AEOjE6dJtt5HEep
+	VqCK8y4lzZ7jklXMiMc536h/XJ1phm41/ddiM5AtpZdqaGPe0CrYRwFmP83apAJxsxBZ
+	pd08hsvgtbcKu7M1kjwocFfsqWv4LR2uT2x0ZaGv88Vgn7IysEEIYG5md17cfDN+w9EK
+	WJDKEI45wre2aBgzoYGW6rxKxRw7+5BYZMjM4TJjKXvY5srGWIXndoJAIAh5usxWRJmm
+	ncBg==
+X-Gm-Message-State: AIVw111ObgInXrupltm7FJDyaJT+rhy4BuFeWUcfsX/+DW02i+ZJ/e6S
+	IaFPvVks7cpN5gjiea78IqnSDlVJSg==
+X-Received: by 10.46.22.72 with SMTP id 8mr563881ljw.126.1500377354227; Tue,
+	18 Jul 2017 04:29:14 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.25.59.145 with HTTP; Tue, 18 Jul 2017 04:28:48 -0700 (PDT)
-In-Reply-To: <20170718061005.29518-23-f4bug@amsat.org>
+Received: by 10.25.59.145 with HTTP; Tue, 18 Jul 2017 04:29:13 -0700 (PDT)
+In-Reply-To: <20170718061005.29518-22-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-23-f4bug@amsat.org>
+	<20170718061005.29518-22-f4bug@amsat.org>
 From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 18 Jul 2017 04:28:48 -0700
-Message-ID: <CAJ+F1CJV5eMt0rTTzCKrEAH0vk7w3OrRNr4kz7jcYEquRCxXkA@mail.gmail.com>
+Date: Tue, 18 Jul 2017 04:29:13 -0700
+Message-ID: <CAJ+F1CLPBCL5XQ+gmZLF_fjguYekQSpss7XNsd2AtPPJqRc7+A@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu trival <qemu-trivial@nongnu.org>, Dmitry Fleytman <dmitry@daynix.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, QEMU <qemu-devel@nongnu.org>
+Cc: qemu trival <qemu-trivial@nongnu.org>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, QEMU <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 22/29] vmsvga: use
- ARRAY_SIZE macro
+X-Received-From: 2a00:1450:4010:c07::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 21/29] qga: use ARRAY_SIZE
+ macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,7 +68,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 11:28:54 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 11:29:17 -0000
 
 On Mon, Jul 17, 2017 at 11:09 PM, Philippe Mathieu-Daud=C3=A9
 <f4bug@amsat.org> wrote:
@@ -82,30 +81,23 @@ Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
 
 > ---
+>  qga/commands-posix.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> No entry in MAINTAINERS, should it go under Graphics or Vmware?
->
->  hw/display/vmware_vga.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-> index 4a64b41259..ff8130ff70 100644
-> --- a/hw/display/vmware_vga.c
-> +++ b/hw/display/vmware_vga.c
-> @@ -679,10 +679,9 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s=
-)
->              if (cursor.width > 256
->                  || cursor.height > 256
->                  || cursor.bpp > 32
-> -                || SVGA_BITMAP_SIZE(x, y)
-> -                    > sizeof(cursor.mask) / sizeof(cursor.mask[0])
-> +                || SVGA_BITMAP_SIZE(x, y) > ARRAY_SIZE(cursor.mask)
->                  || SVGA_PIXMAP_SIZE(x, y, cursor.bpp)
-> -                    > sizeof(cursor.image) / sizeof(cursor.image[0])) {
-> +                    > ARRAY_SIZE(cursor.image)) {
->                      goto badcmd;
->              }
->
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index d8e412275e..2a5d5cb4ba 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -896,7 +896,7 @@ static void build_guest_fsinfo_for_real_device(char c=
+onst *syspath,
+>      if (p && sscanf(q, "%u", &host) =3D=3D 1) {
+>          has_host =3D true;
+>          nhosts =3D build_hosts(syspath, p, has_ata, hosts,
+> -                             sizeof(hosts) / sizeof(hosts[0]), errp);
+> +                             ARRAY_SIZE(hosts), errp);
+>          if (nhosts < 0) {
+>              goto cleanup;
+>          }
 > --
 > 2.13.2
 >
