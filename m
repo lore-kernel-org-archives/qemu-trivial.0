@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXLsU-0001gn-Tu
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:21:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60220)
+	id 1dXLsX-0001jz-UG
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 02:21:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60262)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsS-0001em-OR
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:01 -0400
+	id 1dXLsV-0001hR-DH
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsR-0000lv-VA
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:00 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:35365)
+	id 1dXLsU-0000ow-K5
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 02:21:03 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33287)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dXLsR-0000lG-Qy; Tue, 18 Jul 2017 02:20:59 -0400
-Received: by mail-qk0-x244.google.com with SMTP id z22so1358722qka.2;
-	Mon, 17 Jul 2017 23:20:59 -0700 (PDT)
+	id 1dXLsU-0000no-Ff; Tue, 18 Jul 2017 02:21:02 -0400
+Received: by mail-qt0-x241.google.com with SMTP id 50so292611qtz.0;
+	Mon, 17 Jul 2017 23:21:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=9KOoM2OeoDoWb1aE2NHWvN+NypfQFv8yKFZANDTIiPI=;
-	b=HDs+UOU2+Aq3mAcFmgLNAqpNJjCqeR6Xgulnxa2pYFOKuZd2FLHZBJerx6UoXG0zFi
-	zOhxtTQOAz4S+5mYsKN+aUzVOaL5C2/BCrTWvzZHMMvdYS19dOTP7/LOZ4IBHCL7yYYw
-	83is2BAhMAT+mI634+Izv3xfK0OyRspEqfNecwkFs+tEKWtqBRD7OPBYRq/r5ZVsyONq
-	RqMmRlc6JubD0nZfShXiQf5CN10h45oBOt0CJPNKgYFAkKwYlToo0ZuGK4WZk/HmzA0v
-	w2wxJRmhKwKIABRTW5GY240K6yJzniLvzchCy5NdMeM+9egg+AvK+y4xxGCyMr1dTqfe
-	4qMg==
+	bh=22aXvepVcsDD/6Hq330QeijR3UM3Tq30AAxXR6wZ3iU=;
+	b=kjGLMjD/ajlsGNEXqbN79ZrcDh9Kw8zJQBSGt38XRWrBA5zvF3Z4/16RcGmtTjUr4s
+	hxDSatfQgtbFftHrzsw4ceSgLz7y8wDvLHMpqFmqpyXLcM2POOCdh5w9Euaomh/q2H2b
+	8yUmhXoJzvf+6LHbc9R62smYe/D4iJh5Mpz22wbh6o5KwgifegBd7k8uV2w84rNpHRpq
+	u75zADNol8LUmt/Ij2keaC2wOkc22HF1GybL4xqB6/hHNEnQVjVhU/UuG6hUnhUBOSL1
+	VNmZdNtzh66tcz8to0Tw9zec72epEamo+tp8dARozA81+fC7Bd4gGoa3UBHpSWMqe5Dc
+	AcJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=9KOoM2OeoDoWb1aE2NHWvN+NypfQFv8yKFZANDTIiPI=;
-	b=Idl94cvaflbOWDfxg7EOLdg2JoEGaRMMfG9PV6p65aXw1MvJhvxiQDYHSJUHL8SeR4
-	bF3+RjqE/ZHojQBDU8/MSJ9wWAcaH1H3ZJpQ6BKDaHsCetavnLRApw4qXRxsXItmu5h6
-	MSqrwTHmmD6xGotkwwiyhdNh2CoMNEmEIRcvKyuznaM746UV5bZ31ShP/7cB0J1gUKKc
-	ajfvddBEwD2MsKoZtu8k0eEShNxQYUP+ggxiYEJ9EJ0KxTZfjrLOJ8KgAV4kazLrLbfd
-	HUoK0J7wqV7D+xuYz0aciLGuT9pPRW8bRGX5AQjxopbSPsNdo2nugG5wWVrIdly9672i
-	Oy8A==
-X-Gm-Message-State: AIVw112UYu1QzgCx5cKyn9uui6HM8h5+p8ayzxPcD8MoJjhy/85D9W7x
-	jTLIT07JBiYATLJaNxSJVg==
-X-Received: by 10.55.43.144 with SMTP id r16mr56811qkr.59.1500358859228;
-	Mon, 17 Jul 2017 23:20:59 -0700 (PDT)
+	bh=22aXvepVcsDD/6Hq330QeijR3UM3Tq30AAxXR6wZ3iU=;
+	b=TjZXi9keO7C9z1vZ3WYNjD+w5nq3B+X/Jr92h/VukVEx0pEeeauF24QpOeX/g6wvQf
+	R2ayl1QWuyiOIx+eOQMggjK1KQ+isvQal01q5pt5xhyLz0nH6Gvar9TQ6oY+vB03Genf
+	5ovHA85BXp/yWayI2aHVJZZ4VUsE67qljlzO+RUwYoB9RxILYxVTJfzUz8LGFYRUlTT7
+	ilOMyA9N1tfjxFOL2tXOgkO+KjsOK12m5qc/d2ECDq1mJq2ms3UfbhDS+gCoIla9z2KL
+	nDdJK4cXzJZ9wdXkRtA7wixW2H6gPw18cZVQ8pAW/BU1D3t5RkawSNrxgjO9rXVERc5U
+	piXQ==
+X-Gm-Message-State: AIVw11138POzLnXu05kXNY6sw2JtU+jmvAE0t4BKJOzM1QX/uiOXE3Ne
+	s606MmsReaTH6qo0pffnag==
+X-Received: by 10.237.39.97 with SMTP id n88mr131091qtd.78.1500358861782;
+	Mon, 17 Jul 2017 23:21:01 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	l31sm1099862qtc.64.2017.07.17.23.20.56
+	l31sm1099862qtc.64.2017.07.17.23.20.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 17 Jul 2017 23:20:58 -0700 (PDT)
+	Mon, 17 Jul 2017 23:21:01 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Alexander Graf <agraf@suse.de>, Richard Henderson <rth@twiddle.net>
+To: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
-Date: Tue, 18 Jul 2017 03:09:47 -0300
-Message-Id: <20170718061005.29518-12-f4bug@amsat.org>
+Date: Tue, 18 Jul 2017 03:09:48 -0300
+Message-Id: <20170718061005.29518-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.2
 In-Reply-To: <20170718061005.29518-1-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
@@ -64,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH 11/29] s390x/sclp: use QEMU_IS_ALIGNED macro
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH 12/29] sm501: use QEMU_IS_ALIGNED macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,37 +76,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 06:21:02 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 06:21:04 -0000
 
 Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/s390x/sclp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/display/sm501_template.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
-index 9253dbbc64..0a207c7345 100644
---- a/hw/s390x/sclp.c
-+++ b/hw/s390x/sclp.c
-@@ -237,7 +237,7 @@ static void assign_storage(SCLPDevice *sclp, SCCB *sccb)
-     }
-     assign_addr = (assign_info->rn - 1) * mhd->rzm;
+diff --git a/hw/display/sm501_template.h b/hw/display/sm501_template.h
+index a60abad019..6b6386bc72 100644
+--- a/hw/display/sm501_template.h
++++ b/hw/display/sm501_template.h
+@@ -105,7 +105,7 @@ static void glue(draw_hwc_line_, PIXEL_NAME)(uint8_t *d, const uint8_t *s,
  
--    if ((assign_addr % MEM_SECTION_SIZE == 0) &&
-+    if (QEMU_IS_ALIGNED(assign_addr, MEM_SECTION_SIZE) &&
-         (assign_addr >= mhd->padded_ram_size)) {
-         /* Re-use existing memory region if found */
-         mr = memory_region_find(sysmem, assign_addr, 1).mr;
-@@ -297,7 +297,7 @@ static void unassign_storage(SCLPDevice *sclp, SCCB *sccb)
-     unassign_addr = (assign_info->rn - 1) * mhd->rzm;
- 
-     /* if the addr is a multiple of 256 MB */
--    if ((unassign_addr % MEM_SECTION_SIZE == 0) &&
-+    if (QEMU_IS_ALIGNED(unassign_addr, MEM_SECTION_SIZE) &&
-         (unassign_addr >= mhd->padded_ram_size)) {
-         mhd->standby_state_map[(unassign_addr -
-                            mhd->padded_ram_size) / MEM_SECTION_SIZE] = 0;
+     for (i = 0; i < SM501_HWC_WIDTH && c_x + i < width; i++) {
+         /* get pixel value */
+-        if (i % 4 == 0) {
++        if (QEMU_IS_ALIGNED(i, 4)) {
+             bitset = ldub_p(s);
+             s++;
+         }
 -- 
 2.13.2
 
