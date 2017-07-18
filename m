@@ -1,64 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dXQbu-00027w-2S
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:24:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35320)
+	id 1dXQgQ-0005iW-Uj
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Jul 2017 07:28:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQbp-000235-9I
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:24:12 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgP-0005hF-3d
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:28:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQbi-00053e-Mf
-	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:24:09 -0400
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33408)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dXQgO-0008Lv-9v
+	for qemu-trivial@nongnu.org; Tue, 18 Jul 2017 07:28:53 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35082)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dXQbi-00052t-Ee; Tue, 18 Jul 2017 07:24:02 -0400
-Received: by mail-lf0-x242.google.com with SMTP id t72so1469370lff.0;
-	Tue, 18 Jul 2017 04:24:02 -0700 (PDT)
+	id 1dXQgO-0008Ka-20; Tue, 18 Jul 2017 07:28:52 -0400
+Received: by mail-lf0-x241.google.com with SMTP id z78so1463524lff.2;
+	Tue, 18 Jul 2017 04:28:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=z5Ca8hQkKgI16q7mASa5d6DKYA10XMpppB8Tou3Iszs=;
-	b=Lv87wQfEkbqXbHjdC9/JLDqBYBg1qwFofA1NF6xEZMYn6IDhxDIQo+3ZI8S2+g32Kw
-	x1jWlrJNinAwzDb3TEsRpX64riwdb9Hy2TvQlE1oZeL2YcmEbgDghWjjUOANESQMl2Xc
-	H+ouqsqV0Va75o1dfYpdoon7D2bPF/jE2y4YsTjZBMdvFlvdgJmkMR1tICf92cl9wmIN
-	eyZM1C5DVATmQeabpx0mhENKMuy4PpH2br4+/JqEkNDovvWTN/3fbFogrf5iA+eKcerA
-	mOFLclAr+BgmXfVKDYeHlomYB/C+DgW3I32+fB9qNECiE+qeCgIn4AJ/xPeJZgb6Sr8F
-	jA+Q==
+	bh=6d6nSkfZYy7C4sL02I3jrIN2nfhKbnP9QrgK9LNvkFk=;
+	b=svTNAcJTjhDHc/6WOli96/EHRfSIWqeFGWuxchN+6MQD3Xi3Y6wNHA06U4lHJhy19l
+	yNazOerp0GwMGOi/PJOUJXutt8IC5OpuDfQrnLSf27CSKWtPsQDkvMg9XKO520DimREa
+	7hfs6QGYw+qvv4DKc8qvTHfXcKgMW2Ryt0EPrPDL+TGBOCFNMvUnM6TATibwOLgCtjWF
+	AL17vUGUGO65DDZNJIpVIvP2lbuXyMkuJp8CFPoEsuErunovZxcflv08cTb8OIY27nwA
+	7CCBd/YoIhxIv5Od87OUjG6zw67wF++Ed6RFPImttF+lfeWDPlGRKkdF/qH3fv5T7rZk
+	1JHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=z5Ca8hQkKgI16q7mASa5d6DKYA10XMpppB8Tou3Iszs=;
-	b=CF0rZ5mzTYyCUuT2eh+feLtJlA22Yt/qa1iXkdgzGOH+vMg4vXq46daqQ8klhCcqMY
-	ahAT1l92YN806uNLYYHLMKEZKtlbOlkqUc9LH7i87h1hk3CEZW/4M1T/dtq6jTh1G7h0
-	9HOGRqomyRPxQu+Xz4gwVZr0kRtOwR+3mG2SJiHz2k1e+KC8x/cX9PpSteX62pEoezxu
-	EjM8y/NhVR4QjZynXOSzRC2PgwoXFOROl1VsTKkT9OBk2X0yoKfDSZBxdOVmEqpuCcTA
-	NUpgwPjUp95LgN7Wd8DXWDfuoVJztH9nD1Y9POQ8xCLHnc1+CjxvnvLms4I9/mB3KW6C
-	DzOQ==
-X-Gm-Message-State: AIVw111mC/k2bo89owDnQ1LS7q1osW4SQ1eDjH0A1VRygKsz+aKlGh9Z
-	VhYYfReZrrjWkXOiXZqtSDleJ6cGNA==
-X-Received: by 10.25.56.28 with SMTP id f28mr473985lfa.167.1500377041162; Tue,
-	18 Jul 2017 04:24:01 -0700 (PDT)
+	bh=6d6nSkfZYy7C4sL02I3jrIN2nfhKbnP9QrgK9LNvkFk=;
+	b=RmDwNJyiKXJ08CWcrZtIqokILR1+9kG0xMgDKQnY+Guf0CBrmnHv2aAOban9qXQte7
+	B97DRTFue/bdE8LPwhnHdeM7D8iaCPYNMIDURq7HjBVnSwbeHSnWGMxT8JAIcHZd8Ies
+	yG9r7S3eFAaGY5IsexyeEh2uRpqBmn2V9Z7VxgC1MkfSCaLnsjUjZ0UGLcih53pp7pt4
+	3mBLicglCkCUGvl+bskpargD42wKTrvkfmsnLAv4DI0DttGlzPWFxAqQoarWm9IPtO1d
+	olhsWvr6IS+UPvBllxo1h4klvTgC8sLw8+4eLAP3A3we457xw0PaxxXivGk6pa6ikFu8
+	/r2w==
+X-Gm-Message-State: AIVw111Dw/HbHObsGzhhJYOC9BD2nmPny2nQ10L9BJNy1DVVWQa5IbXG
+	/ugueNRn0+JxNya52mYj1Rg/z57p6g==
+X-Received: by 10.25.104.19 with SMTP id d19mr503716lfc.139.1500377329262;
+	Tue, 18 Jul 2017 04:28:49 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.25.59.145 with HTTP; Tue, 18 Jul 2017 04:24:00 -0700 (PDT)
-In-Reply-To: <87bmoi806u.fsf@linaro.org>
+Received: by 10.25.59.145 with HTTP; Tue, 18 Jul 2017 04:28:48 -0700 (PDT)
+In-Reply-To: <20170718061005.29518-23-f4bug@amsat.org>
 References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-27-f4bug@amsat.org>
-	<CAJ+F1C+WsdUp3Vtx+-FZ9g7URSAQuJWb6h7-w6yJXM+4TKQNjA@mail.gmail.com>
-	<87bmoi806u.fsf@linaro.org>
+	<20170718061005.29518-23-f4bug@amsat.org>
 From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 18 Jul 2017 04:24:00 -0700
-Message-ID: <CAJ+F1CLXojLp2VxET469gBLsaSwCvkQoGODOMyFUs3jUbkdk3A@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
-	Richard Henderson <rth@twiddle.net>
+Date: Tue, 18 Jul 2017 04:28:48 -0700
+Message-ID: <CAJ+F1CJV5eMt0rTTzCKrEAH0vk7w3OrRNr4kz7jcYEquRCxXkA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu trival <qemu-trivial@nongnu.org>, Dmitry Fleytman <dmitry@daynix.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, QEMU <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 26/29] tests/tcg: use
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 22/29] vmsvga: use
  ARRAY_SIZE macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -71,50 +69,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Jul 2017 11:24:12 -0000
+X-List-Received-Date: Tue, 18 Jul 2017 11:28:54 -0000
 
-Hi
+On Mon, Jul 17, 2017 at 11:09 PM, Philippe Mathieu-Daud=C3=A9
+<f4bug@amsat.org> wrote:
+> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.=
+cocci
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-On Tue, Jul 18, 2017 at 4:16 AM, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->
-> Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
->
->> Hi
->>
->> On Mon, Jul 17, 2017 at 11:10 PM, Philippe Mathieu-Daud=C3=A9
->> <f4bug@amsat.org> wrote:
->>> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osde=
-p.cocci
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>> ---
->>>  tests/tcg/alpha/test-cond.c | 2 +-
->>>  tests/tcg/alpha/test-ovf.c  | 2 +-
->>>  2 files changed, 2 insertions(+), 2 deletions(-)
->>>
->>
->> I think those do not include osdep.h
->>
->> (sigh, tests/tcg would need some love ;)
->
-> Pranith has had a couple of revs at this:
->
->   Subject: [PATCH v5 00/19] Cleanup of TCG tests
->   Date: Thu,  1 Dec 2016 00:14:14 -0500
->   Message-Id: <20161201051433.17168-1-bobby.prani@gmail.com>
->
-> We have the cross-compilers available as a fallback via docker although
-> not every one can seamlessly use it for building stuff. Is getting a
-> working cross-compiler setup too much of a hurdle fore those that want
-> to build cross-arch tests?
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-Yes, I also did some experiments in cleaning up tests/tcg
-(https://github.com/elmarco/qemu/tree/tcg-tests)
 
-The trouble is I don't see an official/automated way to run tests/tcg
-tests. Which cross-compiler should I use? When I played with this,
-they all had various quirks, on Fedora, Debian or crosstool-ng. I
-haven't looked at the docker tests, is this running tests/tcg test
-somehow?
+> ---
+>
+> No entry in MAINTAINERS, should it go under Graphics or Vmware?
+>
+>  hw/display/vmware_vga.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+> index 4a64b41259..ff8130ff70 100644
+> --- a/hw/display/vmware_vga.c
+> +++ b/hw/display/vmware_vga.c
+> @@ -679,10 +679,9 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s=
+)
+>              if (cursor.width > 256
+>                  || cursor.height > 256
+>                  || cursor.bpp > 32
+> -                || SVGA_BITMAP_SIZE(x, y)
+> -                    > sizeof(cursor.mask) / sizeof(cursor.mask[0])
+> +                || SVGA_BITMAP_SIZE(x, y) > ARRAY_SIZE(cursor.mask)
+>                  || SVGA_PIXMAP_SIZE(x, y, cursor.bpp)
+> -                    > sizeof(cursor.image) / sizeof(cursor.image[0])) {
+> +                    > ARRAY_SIZE(cursor.image)) {
+>                      goto badcmd;
+>              }
+>
+> --
+> 2.13.2
+>
+>
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
