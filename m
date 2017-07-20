@@ -1,62 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYGVG-0004MW-Pg
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:48:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50084)
+	id 1dYGdx-0007Vl-JP
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:57:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYGVE-0004L1-5W
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:48:49 -0400
+	(envelope-from <rth7680@gmail.com>) id 1dYGdv-0007U1-8Z
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:57:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYGVA-0003i1-8E
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:48:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54884)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dYGUy-0003ay-VZ; Thu, 20 Jul 2017 14:48:33 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6878A7A170;
-	Thu, 20 Jul 2017 18:48:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6878A7A170
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6878A7A170
-Received: from [10.10.120.37] (ovpn-120-37.rdu2.redhat.com [10.10.120.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3414182062;
-	Thu, 20 Jul 2017 18:48:27 +0000 (UTC)
-To: Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-	<d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
+	(envelope-from <rth7680@gmail.com>) id 1dYGdu-0007Wx-LB
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:57:47 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33231)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1dYGdq-0007Vs-8o; Thu, 20 Jul 2017 14:57:42 -0400
+Received: by mail-qk0-x241.google.com with SMTP id u126so2298268qka.0;
+	Thu, 20 Jul 2017 11:57:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=S7OBXFz9OQpi0d7dDj6anFPPqGUOrApPikv1e3zvpts=;
+	b=mMslVwgGv2lgAmV/mqR9Sc7wA1Po4mWQCwoCwPPHDLDQqq3Ril7SkLFWNHDgGRRc3c
+	qdmpNZVd1InCHP9OuJfEJdjXJpXnbBCyojQzyhQPUG8dxdXrH8KfB2uSSaWtAVUOXTox
+	8maa0GpLXpMM1pHGjOg07PmDQ1jZUoSfmtGfrTTA4bYyKkxX0veTMDcnmdYMMA3F6ByN
+	tiS57JXSJ+xkdn+Zgq8TN6pDZphWPHCfzfRS8M2fdnRSuGUYxCsisdvTEOWSlUhOWgMJ
+	SrNn4w/7SrKSuNmoL7faBuvLubhqzoMqM2TVsTT/dxKcAiiwIJutMLGqt4eSus4Q1Hqt
+	ZyFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=S7OBXFz9OQpi0d7dDj6anFPPqGUOrApPikv1e3zvpts=;
+	b=OFih1+SU9/pzL/DaCA4pk1pkYWEeDGY9BpRpQC6RDIXkgBp2Bv0W4S1o7KckoTLiHx
+	x9U95CPYZVYzNsiDX6G4lXunzLvhHZnTknuhhxgpwNiyHAauk6AxGi4Z36hsYymfwmNz
+	AfhucsZsZ6L1uUm4VJ1CvGEoaxWUCx5NlmcVJddpvrmZlKSUzWnuX+nzI8K8ithJYLtS
+	4k5MBtzoXzHukzOl67aakjT3xB6LrjwT7b67IIiyfNS0s/+dHZ/r/GjlAhl7Hp2C0oiP
+	CV8OclfxxHSIC37PsD8u8/vkKemyZbrueDsz1yWKGG5Gc8bH+9YGsh1iDt33oxsMTDUK
+	arKg==
+X-Gm-Message-State: AIVw113yxl0ef8+7R0AVjZmxSYcK/vHd7JGKuqHKUBr0nEYaHgCncCIm
+	i277PM6o8mdalA==
+X-Received: by 10.55.22.100 with SMTP id g97mr6447086qkh.228.1500577061313;
+	Thu, 20 Jul 2017 11:57:41 -0700 (PDT)
+Received: from bigtime.twiddle.net (14-203-206-9.tpgi.com.au. [14.203.206.9])
+	by smtp.googlemail.com with ESMTPSA id
+	p9sm2273618qte.48.2017.07.20.11.57.33
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 20 Jul 2017 11:57:40 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
 	Alexander Graf <agraf@suse.de>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
-Date: Thu, 20 Jul 2017 13:48:27 -0500
+References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+	<d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
+	<c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <06919388-6794-d0a0-f014-b95a9cc68460@twiddle.net>
+Date: Thu, 20 Jul 2017 08:57:30 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 20 Jul 2017 18:48:31 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+In-Reply-To: <c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] Use qemu_tolower()
  and qemu_toupper(), not tolower() and toupper()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,115 +83,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 18:48:49 -0000
+X-List-Received-Date: Thu, 20 Jul 2017 18:57:48 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6
-Content-Type: multipart/mixed; boundary="tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Richard Henderson <rth@twiddle.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
- Alexander Graf <agraf@suse.de>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH for-2.10] Use qemu_tolower() and
- qemu_toupper(), not tolower() and toupper()
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
- <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
-In-Reply-To: <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
-
---tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 07/20/2017 01:26 PM, Richard Henderson wrote:
-> On 07/20/2017 06:31 AM, Peter Maydell wrote:
->> gdbstub.c:914:13: warning: array subscript has type 'char'
+On 07/20/2017 08:48 AM, Eric Blake wrote:
+> On 07/20/2017 01:26 PM, Richard Henderson wrote:
+>> On 07/20/2017 06:31 AM, Peter Maydell wrote:
+>>> gdbstub.c:914:13: warning: array subscript has type 'char'
+>>>
+>>> This reflects the fact that toupper() and tolower() give
+>>> undefined behaviour if they are passed a value that isn't
+>>> a valid 'unsigned char' or EOF.
 >>
->> This reflects the fact that toupper() and tolower() give
->> undefined behaviour if they are passed a value that isn't
->> a valid 'unsigned char' or EOF.
->=20
-> Not saying we shouldn't use qemu_tolower etc, but this statement is not=
+>> Not saying we shouldn't use qemu_tolower etc, but this statement is not
+>> true at all.  Officially, the argument to toupper and tolower is type int.
+> 
+> Correct. Officially, the argument to toupper is an int, but
+> range-constrained to the set of ints that represent either EOF or an
+> unsigned char value.
 
-> true at all.  Officially, the argument to toupper and tolower is type i=
-nt.
+Please show me that language in C11 (or any other version).
+My copy has:
 
-Correct. Officially, the argument to toupper is an int, but
-range-constrained to the set of ints that represent either EOF or an
-unsigned char value.  Calling toupper(char) (on platforms where char is
-signed) is thus undefined behavior for chars < 0 (and which happen to
-not coincide with EOF).
+    7.4.2.2 The toupper function
 
->=20
-> This sounds like a bug in NetBSD -- though it may not even be that, as
-> they may have done something clever and put the symbol in the middle of=
+    Synopsis
+1  #include <ctype.h>
+    int toupper(int c);
 
-> the data.  A trick that worked before compiler warnings got smarter.
+    Description
+2  The toupper function converts a lowercase letter to a corresponding
+    uppercase letter.
 
-No, it is intentional of NetBSD.  In fact, the Cygwin environment also
-INTENTIONALLY uses C99 magic to make gcc complain about calling
-toupper(char) while being silent on toupper(int) and toupper(unsigned
-char).  Because you really DO have portability problems (even if
-toupper(char) _happens_ to work on most platforms, even where char is
-signed, does not make it portable).  In fact, I'd love it if glibc would
-also adopt the appropriate gcc magic to warn about nonportable usage of
-ctype functions on signed char.
+    Returns
+3  If the argument is a character for which islower is true and there
+    are one or more corresponding characters, as specified by the current
+    locale, for which isupper is true, the toupper function returns one
+    of the corresponding characters (always the same one for any given
+    locale); otherwise, the argument is returned unchanged.
 
-=46rom Cygwin's ctype.h:
-
-/* These macros are intentionally written in a manner that will trigger
-   a gcc -Wall warning if the user mistakenly passes a 'char' instead
-   of an int containing an 'unsigned char'.  Note that the sizeof will
-   always be 1, which is what we want for mapping EOF to __CTYPE_PTR[0];
-   the use of a raw index inside the sizeof triggers the gcc warning if
-   __c was of type char, and sizeof masks side effects of the extra __c.
-   Meanwhile, the real index to __CTYPE_PTR+1 must be cast to int,
-   since isalpha(0x100000001LL) must equal isalpha(1), rather than being
-   an out-of-bounds reference on a 64-bit machine.  */
-#define __ctype_lookup(__c) ((__CTYPE_PTR+sizeof(""[__c]))[(int)(__c)])
-
-#define isalpha(__c)    (__ctype_lookup(__c)&(_U|_L))
-
->=20
-> Anyway, should we poison the iso name so this doesn't creep in again?
-
-Yes, for ALL of the ctype names where we work around the issue (and
-maybe we should work around the issue in more places?)
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+I see nothing about range constraints.  The word "unsigned" does not appear.
 
 
---tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q--
-
---ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAllw+vsACgkQp6FrSiUn
-Q2pe1QgAiQbxtPnwzrSr+84yT1L6lI5OLFZ/9pvI69zgw6c4IH1/PTYuLtxe7wy6
-eOWZUFxh0hU8oWTPdMzaIsb9oFsmv/5KpLhLq9W5ouKlFBjmqmXEbrvdHE1bDJZk
-KP1wpGSug7zfOXZOCchpEB03c3BNX2qDGOqRgA4xv1cCD/Cgv2sEFaRi83+nu2fe
-l9TaYAxEGxLJCBebMMwOxT1uHrvRRq0KO461IjgH8PfmGVrlpHs4mB7a/HES61Dj
-YKVIwh+e6hkQ5GaBSSwneGjZ10Ly9lsOFwVWYkLLxhWeXNvW1dlM/i9LNmuTk/kk
-8PyFC88YANb3F7ztLbOS3M6yvKZeOg==
-=QhC7
------END PGP SIGNATURE-----
-
---ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6--
+r~
 
