@@ -1,63 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYFiG-0000iP-AM
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 13:58:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38752)
+	id 1dYFtb-0004gp-FV
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:09:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41214)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYFiD-0000gb-Up
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 13:58:10 -0400
+	(envelope-from <borntraeger@de.ibm.com>) id 1dYFtZ-0004gg-7C
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYFiD-0007GU-8F
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 13:58:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51576)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dYFi5-0007EF-Qv; Thu, 20 Jul 2017 13:58:02 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7921E83F43;
-	Thu, 20 Jul 2017 17:58:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7921E83F43
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 7921E83F43
-Received: from [10.10.120.37] (ovpn-120-37.rdu2.redhat.com [10.10.120.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 15BEB176C6;
-	Thu, 20 Jul 2017 17:57:57 +0000 (UTC)
+	(envelope-from <borntraeger@de.ibm.com>) id 1dYFtW-0003je-1Y
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:53 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:57517)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
+	id 1dYFtV-0003j6-NP
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:49 -0400
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
+	v6KI9j2S036233
+	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 14:09:48 -0400
+Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2bu01a3yc0-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 14:09:47 -0400
+Received: from localhost
+	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
+	Thu, 20 Jul 2017 14:08:44 -0400
+Received: from b01cxnp23034.gho.pok.ibm.com (9.57.198.29)
+	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 20 Jul 2017 14:08:40 -0400
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+	[9.57.199.111])
+	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	v6KI8e4J23920824; Thu, 20 Jul 2017 18:08:40 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 9C579AC03F;
+	Thu, 20 Jul 2017 14:08:50 -0400 (EDT)
+Received: from oc1450873852.ibm.com (unknown [9.145.154.62])
+	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP id 18FAAAC03A;
+	Thu, 20 Jul 2017 14:08:47 -0400 (EDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
+Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>,
+	Alexander Graf <agraf@suse.de>, Cornelia Huck <cohuck@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <2ba1a0e2-3e15-189c-b66f-2128dfb61bad@redhat.com>
-Date: Thu, 20 Jul 2017 12:57:52 -0500
+	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org
+References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Date: Thu, 20 Jul 2017 20:08:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	Thunderbird/52.2.0
 MIME-Version: 1.0
 In-Reply-To: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="fttReTR1AOKOwKGEuFOXNi635VXj50GTX"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 20 Jul 2017 17:58:00 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] Use qemu_tolower()
- and qemu_toupper(), not tolower() and toupper()
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-IE
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 17072018-0008-0000-0000-0000026251B1
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00007394; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000214; SDB=6.00890390; UDB=6.00444847;
+	IPR=6.00670557; 
+	BA=6.00005482; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
+	ZB=6.00000000; 
+	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00016299;
+	XFM=3.00000015; UTC=2017-07-20 18:08:43
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17072018-0009-0000-0000-00003618C26B
+Message-Id: <a446cab4-a4f2-a20f-7a4b-122cb59166ef@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-07-20_09:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1706020000
+	definitions=main-1707200279
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
+Subject: Re: [Qemu-trivial] [PATCH for-2.10] Use qemu_tolower() and
+ qemu_toupper(), not tolower() and toupper()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,81 +92,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 17:58:11 -0000
+X-List-Received-Date: Thu, 20 Jul 2017 18:09:54 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---fttReTR1AOKOwKGEuFOXNi635VXj50GTX
-Content-Type: multipart/mixed; boundary="lRu3SdDnlMO5enX7qpJBcf59nPSXdr5Vk";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
- Alexander Graf <agraf@suse.de>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Message-ID: <2ba1a0e2-3e15-189c-b66f-2128dfb61bad@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH for-2.10] Use qemu_tolower() and
- qemu_toupper(), not tolower() and toupper()
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-
---lRu3SdDnlMO5enX7qpJBcf59nPSXdr5Vk
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 07/20/2017 11:31 AM, Peter Maydell wrote:
+On 07/20/2017 06:31 PM, Peter Maydell wrote:
 > On NetBSD, where tolower() and toupper() are implemented using an
 > array lookup, the compiler warns if you pass a plain 'char'
 > to these functions:
->=20
+> 
 > gdbstub.c:914:13: warning: array subscript has type 'char'
->=20
+> 
 > This reflects the fact that toupper() and tolower() give
 > undefined behaviour if they are passed a value that isn't
 > a valid 'unsigned char' or EOF.
->=20
+> 
 > We have qemu_tolower() and qemu_toupper() to avoid this problem;
 > use them.
->=20
+> 
 > (The use in scsi-generic.c does not trigger the warning because
 > it passes a uint8_t; we switch it anyway, for consistency.)
->=20
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Acked-by: Christian Borntraeger <borntraeger@de.ibm.com> for the s390 part.
 > ---
+>  gdbstub.c                  | 2 +-
+>  hw/s390x/s390-virtio-ccw.c | 2 +-
+>  hw/scsi/scsi-generic.c     | 2 +-
+>  target/ppc/monitor.c       | 4 ++--
+>  4 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index f936ddd..2a94030 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -911,7 +911,7 @@ static int gdb_handle_vcont(GDBState *s, const char *p)
+> 
+>          cur_action = *p++;
+>          if (cur_action == 'C' || cur_action == 'S') {
+> -            cur_action = tolower(cur_action);
+> +            cur_action = qemu_tolower(cur_action);
+>              res = qemu_strtoul(p + 1, &p, 16, &tmp);
+>              if (res) {
+>                  goto out;
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index ce3921e..1c7af39 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -318,7 +318,7 @@ static void machine_set_loadparm(Object *obj, const char *val, Error **errp)
+>      int i;
+> 
+>      for (i = 0; i < sizeof(ms->loadparm) && val[i]; i++) {
+> -        uint8_t c = toupper(val[i]); /* mimic HMC */
+> +        uint8_t c = qemu_toupper(val[i]); /* mimic HMC */
+> 
+>          if (('A' <= c && c <= 'Z') || ('0' <= c && c <= '9') || (c == '.') ||
+>              (c == ' ')) {
+> diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
+> index a55ff87..7e1cbab 100644
+> --- a/hw/scsi/scsi-generic.c
+> +++ b/hw/scsi/scsi-generic.c
+> @@ -406,7 +406,7 @@ static int read_naa_id(const uint8_t *p, uint64_t *p_wwn)
+>          }
+>          *p_wwn = 0;
+>          for (i = 8; i < 24; i++) {
+> -            char c = toupper(p[i]);
+> +            char c = qemu_toupper(p[i]);
+>              c -= (c >= '0' && c <= '9' ? '0' : 'A' - 10);
+>              *p_wwn = (*p_wwn << 4) | c;
+>          }
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index b8f30e9..1491511 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -115,14 +115,14 @@ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
+>      CPUPPCState *env = &cpu->env;
+> 
+>      /* General purpose registers */
+> -    if ((tolower(name[0]) == 'r') &&
+> +    if ((qemu_tolower(name[0]) == 'r') &&
+>          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->gpr), &regnum)) {
+>          *pval = env->gpr[regnum];
+>          return 0;
+>      }
+> 
+>      /* Floating point registers */
+> -    if ((tolower(name[0]) == 'f') &&
+> +    if ((qemu_tolower(name[0]) == 'f') &&
+>          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->fpr), &regnum)) {
+>          *pval = env->fpr[regnum];
+>          return 0;
+> 
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---lRu3SdDnlMO5enX7qpJBcf59nPSXdr5Vk--
-
---fttReTR1AOKOwKGEuFOXNi635VXj50GTX
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAllw7yAACgkQp6FrSiUn
-Q2oowgf/TqIbkjwW7kDuvJklojbmdlHqw3+CpZm0QPdatq7tlCSrh7H5e/QGbFUb
-aL5Dp9vFOjywUbIR6qCC5nK/+85lB+dW8LEJP0Jl7OY6YhenKPYO+z0RS2e/tx6Z
-ekeL+1KAgf5u0JVpvqh9MwyUh74JHb6ihK/gBfRRvVlOwnTSuq0keaCRO9N+DuP+
-xH+b/MdWSpO3joLR0fvharTv0+/jQIb33oasHSd34MT8wdZPiezUzW+ecZx7TOfz
-DcSCuxN6UhaZgyNejLWIrdKPLFZqMyCfNJr2QYN63NhVDoXHcU+6qHFrhsHlS9wy
-CwVX6GOb6Er0WWuUJikybaNwzS0BOg==
-=l3lX
------END PGP SIGNATURE-----
-
---fttReTR1AOKOwKGEuFOXNi635VXj50GTX--
 
