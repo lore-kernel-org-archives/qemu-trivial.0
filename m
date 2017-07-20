@@ -1,84 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYFtb-0004gp-FV
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:09:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41214)
+	id 1dYGA0-0002WV-4u
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:26:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1dYFtZ-0004gg-7C
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:54 -0400
+	(envelope-from <rth7680@gmail.com>) id 1dYG9x-0002V7-QP
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:26:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1dYFtW-0003je-1Y
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:53 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:57517)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
-	id 1dYFtV-0003j6-NP
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:09:49 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
-	v6KI9j2S036233
-	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 14:09:48 -0400
-Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 2bu01a3yc0-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 14:09:47 -0400
-Received: from localhost
-	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
-	Thu, 20 Jul 2017 14:08:44 -0400
-Received: from b01cxnp23034.gho.pok.ibm.com (9.57.198.29)
-	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 20 Jul 2017 14:08:40 -0400
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
-	[9.57.199.111])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	v6KI8e4J23920824; Thu, 20 Jul 2017 18:08:40 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 9C579AC03F;
-	Thu, 20 Jul 2017 14:08:50 -0400 (EDT)
-Received: from oc1450873852.ibm.com (unknown [9.145.154.62])
-	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP id 18FAAAC03A;
-	Thu, 20 Jul 2017 14:08:47 -0400 (EDT)
+	(envelope-from <rth7680@gmail.com>) id 1dYG9x-0002a2-1D
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:26:49 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36310)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1dYG9r-0002Wf-2o; Thu, 20 Jul 2017 14:26:43 -0400
+Received: by mail-qt0-x244.google.com with SMTP id l55so4466077qtl.3;
+	Thu, 20 Jul 2017 11:26:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=AzmOMwf/m/HSLrJrSthAbVxEWurrxRNkZDLK7BIO2FY=;
+	b=rsVjGcfvLRz4Mfpa9m1U7A+no/iSR7y9gMXnV42b9FWVpufLM/paOspFhNs5WzQJeB
+	QDMMTJtmOuoHB7LwBsmw7JqSITo8kAMsg5ldyHdu5Kz54U6HDpPimfI1F0tAp9x2VZqa
+	oHU15OLXpXMb4hi1ahH4J4gUKyGiVVoJCpwr1+ngRm88cozOr3I/K+93d2ovh1tKJRZg
+	SOQGXgdkF9/GK4YQSyfrVibltPVr6+Bf7nUlU8EnArnY5avrY3fOjzAKYK8T0QSLkpHT
+	RAISzOapCp9M8ZEVH95M22pt3zurpUaUEfIRpXVelS1138Y+VKTrcrViScBhrdscLFEE
+	fGhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=AzmOMwf/m/HSLrJrSthAbVxEWurrxRNkZDLK7BIO2FY=;
+	b=KUwr3ebZAnTy9GtWgzZNQL8MA9Gv3gSW5oO+4ji65I5EpoBYuGoUvk3ucOxNFt6t4q
+	5m3wh302IMsMcclXuyKm9OnA7pqId74a4bPxql3aCVg4vPoVhoXiZEdSJTIv9wxetJWU
+	koQtlaUFdr8SDBB+N+fdK/IIr+h/ZuOcFNW1YozeS7Zn+mU4xoZ5R9fGvUXPVWsl3DkM
+	DHoc4M2RDeNwJRQg5B8XccjYW42fBgMnV+vMofVInikFgLILEIJZKcIO94fN37ioMfZX
+	BSVTCRYnUEcFqeqmH8+TRglu5qsU5RTT/zEeEaNTg1J0KBQThHzD+quJGJLJUWs5WNnL
+	ayqA==
+X-Gm-Message-State: AIVw112FNRLDt56POU3wQHRTnw4i4Y/oebAuD04/2Q+LPusQ6hnyWOGN
+	U8FQg1wykaNy5Xn64xU=
+X-Received: by 10.237.57.163 with SMTP id m32mr6214386qte.117.1500575201803;
+	Thu, 20 Jul 2017 11:26:41 -0700 (PDT)
+Received: from bigtime.twiddle.net (14-203-206-9.tpgi.com.au. [14.203.206.9])
+	by smtp.googlemail.com with ESMTPSA id
+	r58sm2212092qtc.42.2017.07.20.11.26.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 20 Jul 2017 11:26:40 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>,
-	Alexander Graf <agraf@suse.de>, Cornelia Huck <cohuck@redhat.com>,
+Cc: patches@linaro.org, Alexander Graf <agraf@suse.de>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org
 References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Date: Thu, 20 Jul 2017 20:08:36 +0200
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
+Date: Thu, 20 Jul 2017 08:26:29 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
+	Thunderbird/52.2.1
 MIME-Version: 1.0
 In-Reply-To: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-IE
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 17072018-0008-0000-0000-0000026251B1
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00007394; HX=3.00000241; KW=3.00000007;
-	PH=3.00000004; SC=3.00000214; SDB=6.00890390; UDB=6.00444847;
-	IPR=6.00670557; 
-	BA=6.00005482; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
-	ZB=6.00000000; 
-	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00016299;
-	XFM=3.00000015; UTC=2017-07-20 18:08:43
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17072018-0009-0000-0000-00003618C26B
-Message-Id: <a446cab4-a4f2-a20f-7a4b-122cb59166ef@de.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-07-20_09:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1706020000
-	definitions=main-1707200279
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
 Subject: Re: [Qemu-trivial] [PATCH for-2.10] Use qemu_tolower() and
  qemu_toupper(), not tolower() and toupper()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -92,95 +81,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 18:09:54 -0000
+X-List-Received-Date: Thu, 20 Jul 2017 18:26:50 -0000
 
-On 07/20/2017 06:31 PM, Peter Maydell wrote:
-> On NetBSD, where tolower() and toupper() are implemented using an
-> array lookup, the compiler warns if you pass a plain 'char'
-> to these functions:
-> 
+On 07/20/2017 06:31 AM, Peter Maydell wrote:
 > gdbstub.c:914:13: warning: array subscript has type 'char'
 > 
 > This reflects the fact that toupper() and tolower() give
 > undefined behaviour if they are passed a value that isn't
 > a valid 'unsigned char' or EOF.
-> 
-> We have qemu_tolower() and qemu_toupper() to avoid this problem;
-> use them.
-> 
-> (The use in scsi-generic.c does not trigger the warning because
-> it passes a uint8_t; we switch it anyway, for consistency.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Acked-by: Christian Borntraeger <borntraeger@de.ibm.com> for the s390 part.
-> ---
->  gdbstub.c                  | 2 +-
->  hw/s390x/s390-virtio-ccw.c | 2 +-
->  hw/scsi/scsi-generic.c     | 2 +-
->  target/ppc/monitor.c       | 4 ++--
->  4 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/gdbstub.c b/gdbstub.c
-> index f936ddd..2a94030 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -911,7 +911,7 @@ static int gdb_handle_vcont(GDBState *s, const char *p)
-> 
->          cur_action = *p++;
->          if (cur_action == 'C' || cur_action == 'S') {
-> -            cur_action = tolower(cur_action);
-> +            cur_action = qemu_tolower(cur_action);
->              res = qemu_strtoul(p + 1, &p, 16, &tmp);
->              if (res) {
->                  goto out;
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index ce3921e..1c7af39 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -318,7 +318,7 @@ static void machine_set_loadparm(Object *obj, const char *val, Error **errp)
->      int i;
-> 
->      for (i = 0; i < sizeof(ms->loadparm) && val[i]; i++) {
-> -        uint8_t c = toupper(val[i]); /* mimic HMC */
-> +        uint8_t c = qemu_toupper(val[i]); /* mimic HMC */
-> 
->          if (('A' <= c && c <= 'Z') || ('0' <= c && c <= '9') || (c == '.') ||
->              (c == ' ')) {
-> diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-> index a55ff87..7e1cbab 100644
-> --- a/hw/scsi/scsi-generic.c
-> +++ b/hw/scsi/scsi-generic.c
-> @@ -406,7 +406,7 @@ static int read_naa_id(const uint8_t *p, uint64_t *p_wwn)
->          }
->          *p_wwn = 0;
->          for (i = 8; i < 24; i++) {
-> -            char c = toupper(p[i]);
-> +            char c = qemu_toupper(p[i]);
->              c -= (c >= '0' && c <= '9' ? '0' : 'A' - 10);
->              *p_wwn = (*p_wwn << 4) | c;
->          }
-> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
-> index b8f30e9..1491511 100644
-> --- a/target/ppc/monitor.c
-> +++ b/target/ppc/monitor.c
-> @@ -115,14 +115,14 @@ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
->      CPUPPCState *env = &cpu->env;
-> 
->      /* General purpose registers */
-> -    if ((tolower(name[0]) == 'r') &&
-> +    if ((qemu_tolower(name[0]) == 'r') &&
->          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->gpr), &regnum)) {
->          *pval = env->gpr[regnum];
->          return 0;
->      }
-> 
->      /* Floating point registers */
-> -    if ((tolower(name[0]) == 'f') &&
-> +    if ((qemu_tolower(name[0]) == 'f') &&
->          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->fpr), &regnum)) {
->          *pval = env->fpr[regnum];
->          return 0;
-> 
+Not saying we shouldn't use qemu_tolower etc, but this statement is not true at 
+all.  Officially, the argument to toupper and tolower is type int.
 
+This sounds like a bug in NetBSD -- though it may not even be that, as they may 
+have done something clever and put the symbol in the middle of the data.  A 
+trick that worked before compiler warnings got smarter.
+
+Anyway, should we poison the iso name so this doesn't creep in again?
+
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+
+
+r~
 
