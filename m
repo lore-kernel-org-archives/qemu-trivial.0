@@ -1,79 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYGug-0000pC-2j
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 15:15:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54515)
+	id 1dYISX-0004II-MY
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 16:54:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dYGud-0000m9-A6
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 15:15:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dYISU-0004G9-Jr
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 16:54:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1dYGuc-0000PP-Bj
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 15:15:03 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:38716)
+	(envelope-from <peter.maydell@linaro.org>) id 1dYIST-0008LR-Nr
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 16:54:06 -0400
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:34675)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1dYGuW-0000Jf-74; Thu, 20 Jul 2017 15:14:56 -0400
-Received: by mail-qt0-x242.google.com with SMTP id h47so4571466qta.5;
-	Thu, 20 Jul 2017 12:14:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=jZaR4GIZCWho5XOYOvITKiXn3VgHePG7INZHNOqMLec=;
-	b=XzS4aPnZeOlCweFrbeXdRhdErRKnFtYoIM+v8407XKHPb9+Kf92OiP2+mIb8aoQitw
-	SyFIj6hryRnaq2immgRnRdQCCrMbnCQGYHTygTI4Eyqq1wmfcsTsiLYq1OF2whxTJpXX
-	ESQhyYzyVv7/jeIx9pKPE+ZVjKpZA4u9/wVPxpMfUiMVL2dsUD6EFXAhOoMEZ9lZQSGh
-	ddCtml2ja6dWsjQ1Y5/LboVYFlzbQrGOokfFoVzAYygR/ewta+j7K3uXCpuZplMg3HcP
-	8gGYwyGbmNS9v53ieE92UzvJmaX8p+NzreUg+NewkcrUEnu0iksSIi1xBUtHcQOaJyfj
-	VB/A==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dYIST-0008KX-Fv
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 16:54:05 -0400
+Received: by mail-wm0-x233.google.com with SMTP id l81so299237wmg.1
+	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 13:54:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=wIzmFrQGtrgeEa+kDRzNfe4Doa6FOleeWCGHGRuvYQU=;
+	b=RaMa9iCY/KjiAZPZrNGft4KrFOXoDT7ivI1XzfNNtajWTRl69Fs/3tfVu/hwi3HVHU
+	VVrXbX54qRpTsCKRuaRgbztyjywz+LvxxyN4oPivmzcnK9/iSUW5Yuvp/R5gIRaKMRMI
+	gGavZlbmipc3LHXzwu/ps9e68hqY38quIs/2g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=jZaR4GIZCWho5XOYOvITKiXn3VgHePG7INZHNOqMLec=;
-	b=gaSPM91zRxWtj43SdEeMe1Ikf2wzeI5mkd/Dl+/XgnSlfz61HvKRx027eEDzHonpT9
-	WNM8ckoQtXmk4LNFkNC54AHonvv6+b3gBcFloUcxq7Un1nj9ygcMG8tksOOj7MIPJZkT
-	vAHg4GEz4BzI3zcL8DJQmQuhAt5/659n6YwHI1AlGhybr+TY3Xm9dtHnoE/NIVSzwQnZ
-	WTJy4eOeM3PGoZmCCJutldQcGxdL/LFy3FwuHaWHgJ+U5XA2UVMmZvZHo6sAA8AEsAKx
-	GHTyyK0yhev3xSdEXBcSkspWsygIJNMJaRZEPPGCS+GzssKMEFBDjN9LKGMbYP53sGRV
-	RACQ==
-X-Gm-Message-State: AIVw11320HJpBmtXaGDhsnOtjnJ938MtbCJFkoSSKmH99a3qVGlIW/X/
-	er4ySfJ9ZZeOrg==
-X-Received: by 10.200.8.106 with SMTP id x39mr6731437qth.309.1500578095654;
-	Thu, 20 Jul 2017 12:14:55 -0700 (PDT)
-Received: from bigtime.twiddle.net (14-203-206-9.tpgi.com.au. [14.203.206.9])
-	by smtp.googlemail.com with ESMTPSA id
-	w46sm2312940qtw.28.2017.07.20.12.14.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 20 Jul 2017 12:14:54 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-	<d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
-	<c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
-	<06919388-6794-d0a0-f014-b95a9cc68460@twiddle.net>
-	<10223971-6e02-fe3f-337f-de9c14081582@redhat.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <196b152f-6bc9-fcef-4fcb-27cb9acf4a25@twiddle.net>
-Date: Thu, 20 Jul 2017 09:14:44 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=wIzmFrQGtrgeEa+kDRzNfe4Doa6FOleeWCGHGRuvYQU=;
+	b=c7P5KSlGNIacjvjt1Rn+ZotZvuxNmWt0/r/S/cdW/+7MekON7+you+vt8xV2WeBxQz
+	I6HbyTsXxtG1Y5xGoA1Xx33Qk8ULMQoyN7UJGp9nDg9ZeXECa16tFWY5SZHJgDMb0Tzb
+	uSs3TWvTgIf7FI5O2ELmyhKi0baaVJ9D3q8+VL3TRcGspQCHGVhq3BiumzSWaDMCJuNU
+	pmFDBa3yzHgs+zU6p3e8M4T09HKpfK5Md52gCgqBgyjhLj1pDCVBrZF+inR5KOVXzG45
+	Fh0qAJrHlBgLdLoBqu7lssFk7ftqB7Zhx6Nt4UBKXM/giOslFI2ZMbSQNkQ/EpJ9LUo1
+	1+1g==
+X-Gm-Message-State: AIVw111SxSP8y1JbD6DLIwkOopb4WKNyiV963tyuezsN/KGzOiyPlKoT
+	wIyvFMeeVXTWfOrbSVke2ZAx7hyEV6mB
+X-Received: by 10.28.40.215 with SMTP id o206mr3307518wmo.74.1500584044290;
+	Thu, 20 Jul 2017 13:54:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <10223971-6e02-fe3f-337f-de9c14081582@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 10.223.134.2 with HTTP; Thu, 20 Jul 2017 13:53:43 -0700 (PDT)
+In-Reply-To: <eec67af4-3f8e-bb85-0854-61f4d450f627@redhat.com>
+References: <1500568341-8389-1-git-send-email-peter.maydell@linaro.org>
+	<eec67af4-3f8e-bb85-0854-61f4d450f627@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Jul 2017 21:53:43 +0100
+Message-ID: <CAFEAcA9M0jeER9Ygg74_kQXv4CeW2_PMns7=t=Jw6sxkYhANpA@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Kamil Rytarowski <kamil@netbsd.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] Use qemu_tolower()
- and qemu_toupper(), not tolower() and toupper()
+X-Received-From: 2a00:1450:400c:c09::233
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10]
+ util/oslib-posix.c: Avoid warning on NetBSD
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,23 +66,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 19:15:04 -0000
+X-List-Received-Date: Thu, 20 Jul 2017 20:54:07 -0000
 
-On 07/20/2017 09:04 AM, Eric Blake wrote:
-> And I found this in C11:
-> 
-> 7.4 Character handling <ctype.h>
-> 1 The header <ctype.h> declares several functions useful for classifying
-> and mapping
-> characters. 198) In all cases the argument is an int, the value of which
-> shall be
-> representable as an unsigned char or shall equal the value of the macro
-> EOF. If the
-> argument has any other value, the behavior is undefined.
+On 20 July 2017 at 19:26, Eric Blake <eblake@redhat.com> wrote:
+> On 07/20/2017 11:32 AM, Peter Maydell wrote:
+>> On NetBSD the compiler warns:
+>> util/oslib-posix.c: In function 'sigaction_invoke':
+>> util/oslib-posix.c:589:5: warning: missing braces around initializer [-Wmissing-braces]
+>>      siginfo_t si = { 0 };
+>>      ^
+>
+> Uggh. That is a broken compiler.  C99 declares that 'anything = {0}' is
+> supposed to be a valid way to zero-initialize anything.
 
+Looks like maybe it was https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53119
 
-Thanks.  I should have looked up there.
-
-
-r~
+thanks
+-- PMM
 
