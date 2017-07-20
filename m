@@ -1,57 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYGAB-0002fD-MD
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:27:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46172)
+	id 1dYGVG-0004MW-Pg
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 14:48:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYGA8-0002ch-Gz
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:27:01 -0400
+	(envelope-from <eblake@redhat.com>) id 1dYGVE-0004L1-5W
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:48:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dYGA7-0002gH-Ht
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:27:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56358)
+	(envelope-from <eblake@redhat.com>) id 1dYGVA-0003i1-8E
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 14:48:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54884)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dYGA1-0002cP-T8; Thu, 20 Jul 2017 14:26:54 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1dYGUy-0003ay-VZ; Thu, 20 Jul 2017 14:48:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CDFDEC056861;
-	Thu, 20 Jul 2017 18:26:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CDFDEC056861
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 6878A7A170;
+	Thu, 20 Jul 2017 18:48:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6878A7A170
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CDFDEC056861
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 6878A7A170
 Received: from [10.10.120.37] (ovpn-120-37.rdu2.redhat.com [10.10.120.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C9D5E1711A;
-	Thu, 20 Jul 2017 18:26:51 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3414182062;
+	Thu, 20 Jul 2017 18:48:27 +0000 (UTC)
+To: Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-References: <1500568341-8389-1-git-send-email-peter.maydell@linaro.org>
-Cc: Kamil Rytarowski <kamil@netbsd.org>, patches@linaro.org
+References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+	<d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
+Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
+	Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
 Organization: Red Hat, Inc.
-Message-ID: <eec67af4-3f8e-bb85-0854-61f4d450f627@redhat.com>
-Date: Thu, 20 Jul 2017 13:26:50 -0500
+Message-ID: <c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
+Date: Thu, 20 Jul 2017 13:48:27 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <1500568341-8389-1-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="DmOfBJXUroEnWpasoiLm51H24CH73FxB5"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+	boundary="ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 20 Jul 2017 18:26:53 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 20 Jul 2017 18:48:31 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10]
- util/oslib-posix.c: Avoid warning on NetBSD
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] Use qemu_tolower()
+ and qemu_toupper(), not tolower() and toupper()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,77 +70,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 18:27:02 -0000
+X-List-Received-Date: Thu, 20 Jul 2017 18:48:49 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---DmOfBJXUroEnWpasoiLm51H24CH73FxB5
-Content-Type: multipart/mixed; boundary="PqrP0Eam4QNnqMCEM54ek1WeaJBodfupW";
+--ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6
+Content-Type: multipart/mixed; boundary="tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q";
  protected-headers="v1"
 From: Eric Blake <eblake@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+To: Richard Henderson <rth@twiddle.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Cc: Kamil Rytarowski <kamil@netbsd.org>, patches@linaro.org
-Message-ID: <eec67af4-3f8e-bb85-0854-61f4d450f627@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH for-2.10] util/oslib-posix.c: Avoid warning
- on NetBSD
-References: <1500568341-8389-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1500568341-8389-1-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
+ Alexander Graf <agraf@suse.de>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <c1526558-db87-734b-c1dd-7601ceaa682c@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH for-2.10] Use qemu_tolower() and
+ qemu_toupper(), not tolower() and toupper()
+References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+ <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
+In-Reply-To: <d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
 
---PqrP0Eam4QNnqMCEM54ek1WeaJBodfupW
+--tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On 07/20/2017 11:32 AM, Peter Maydell wrote:
-> On NetBSD the compiler warns:
-> util/oslib-posix.c: In function 'sigaction_invoke':
-> util/oslib-posix.c:589:5: warning: missing braces around initializer [-=
-Wmissing-braces]
->      siginfo_t si =3D { 0 };
->      ^
-
-Uggh. That is a broken compiler.  C99 declares that 'anything =3D {0}' is=
-
-supposed to be a valid way to zero-initialize anything.
-
-> util/oslib-posix.c:589:5: warning: (near initialization for 'si.si_pad'=
-) [-Wmissing-braces]
+On 07/20/2017 01:26 PM, Richard Henderson wrote:
+> On 07/20/2017 06:31 AM, Peter Maydell wrote:
+>> gdbstub.c:914:13: warning: array subscript has type 'char'
+>>
+>> This reflects the fact that toupper() and tolower() give
+>> undefined behaviour if they are passed a value that isn't
+>> a valid 'unsigned char' or EOF.
 >=20
-> because on this platform siginfo_t is defined as
->   typedef union siginfo {
->           char    si_pad[128];    /* Total size; for future expansion *=
-/
->           struct _ksiginfo _info;
->   } siginfo_t;
->=20
-> Avoid this warning by initializing the struct with {} instead;
-> this is a GCC extension but we use it all over the codebase already.
+> Not saying we shouldn't use qemu_tolower etc, but this statement is not=
 
-Well, I'm glad that works to shut up the broken compiler.
+> true at all.  Officially, the argument to toupper and tolower is type i=
+nt.
+
+Correct. Officially, the argument to toupper is an int, but
+range-constrained to the set of ints that represent either EOF or an
+unsigned char value.  Calling toupper(char) (on platforms where char is
+signed) is thus undefined behavior for chars < 0 (and which happen to
+not coincide with EOF).
 
 >=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  util/oslib-posix.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> This sounds like a bug in NetBSD -- though it may not even be that, as
+> they may have done something clever and put the symbol in the middle of=
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+> the data.  A trick that worked before compiler warnings got smarter.
+
+No, it is intentional of NetBSD.  In fact, the Cygwin environment also
+INTENTIONALLY uses C99 magic to make gcc complain about calling
+toupper(char) while being silent on toupper(int) and toupper(unsigned
+char).  Because you really DO have portability problems (even if
+toupper(char) _happens_ to work on most platforms, even where char is
+signed, does not make it portable).  In fact, I'd love it if glibc would
+also adopt the appropriate gcc magic to warn about nonportable usage of
+ctype functions on signed char.
+
+=46rom Cygwin's ctype.h:
+
+/* These macros are intentionally written in a manner that will trigger
+   a gcc -Wall warning if the user mistakenly passes a 'char' instead
+   of an int containing an 'unsigned char'.  Note that the sizeof will
+   always be 1, which is what we want for mapping EOF to __CTYPE_PTR[0];
+   the use of a raw index inside the sizeof triggers the gcc warning if
+   __c was of type char, and sizeof masks side effects of the extra __c.
+   Meanwhile, the real index to __CTYPE_PTR+1 must be cast to int,
+   since isalpha(0x100000001LL) must equal isalpha(1), rather than being
+   an out-of-bounds reference on a 64-bit machine.  */
+#define __ctype_lookup(__c) ((__CTYPE_PTR+sizeof(""[__c]))[(int)(__c)])
+
+#define isalpha(__c)    (__ctype_lookup(__c)&(_U|_L))
 
 >=20
-> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-> index b2dea48..cacf0ef 100644
-> --- a/util/oslib-posix.c
-> +++ b/util/oslib-posix.c
-> @@ -586,7 +586,7 @@ void qemu_free_stack(void *stack, size_t sz)
->  void sigaction_invoke(struct sigaction *action,
->                        struct qemu_signalfd_siginfo *info)
->  {
-> -    siginfo_t si =3D { 0 };
-> +    siginfo_t si =3D {};
->      si.si_signo =3D info->ssi_signo;
->      si.si_errno =3D info->ssi_errno;
->      si.si_code =3D info->ssi_code;
->=20
+> Anyway, should we poison the iso name so this doesn't creep in again?
+
+Yes, for ALL of the ctype names where we work around the issue (and
+maybe we should work around the issue in more places?)
 
 --=20
 Eric Blake, Principal Software Engineer
@@ -141,9 +159,9 @@ Red Hat, Inc.           +1-919-301-3266
 Virtualization:  qemu.org | libvirt.org
 
 
---PqrP0Eam4QNnqMCEM54ek1WeaJBodfupW--
+--tWRSQ5PDCQCok4CpDNUxXP87gj00nKr6Q--
 
---DmOfBJXUroEnWpasoiLm51H24CH73FxB5
+--ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
@@ -152,15 +170,15 @@ Content-Disposition: attachment; filename="signature.asc"
 Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
 Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAllw9eoACgkQp6FrSiUn
-Q2ow2gf/dgjVCePlP+22F40D9ETGGN7p+QTV9g5RWo1d7mjiFyYZIa+uX2PHC4ij
-DqIPR030viKYPxXzvfM+iZ95i0DI2cKfkmad1sdHNMdVTm3KRXr1TeBlnBVplC3e
-KfdCvze6SqrQpf5v01Aa4pX50avMS1uQ8KCfAs230ixzOF7YRyCZxBS1RNePH74Y
-iUvqGGAFN3lvIkiWjtAcpjwiBmf2IUPqX6jPD8p3q6maNcSZBwd/iHfrEXz81bA4
-f8UlTRlhmHz70+Yk+Wt70q0U19iszu25P1MvF5BQbC+fc5tjTfTXoKimvI+qIvHY
-8ra6tdN4jNEgEJMK/0DyXIsTt8qqqw==
-=C3S1
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAllw+vsACgkQp6FrSiUn
+Q2pe1QgAiQbxtPnwzrSr+84yT1L6lI5OLFZ/9pvI69zgw6c4IH1/PTYuLtxe7wy6
+eOWZUFxh0hU8oWTPdMzaIsb9oFsmv/5KpLhLq9W5ouKlFBjmqmXEbrvdHE1bDJZk
+KP1wpGSug7zfOXZOCchpEB03c3BNX2qDGOqRgA4xv1cCD/Cgv2sEFaRi83+nu2fe
+l9TaYAxEGxLJCBebMMwOxT1uHrvRRq0KO461IjgH8PfmGVrlpHs4mB7a/HES61Dj
+YKVIwh+e6hkQ5GaBSSwneGjZ10Ly9lsOFwVWYkLLxhWeXNvW1dlM/i9LNmuTk/kk
+8PyFC88YANb3F7ztLbOS3M6yvKZeOg==
+=QhC7
 -----END PGP SIGNATURE-----
 
---DmOfBJXUroEnWpasoiLm51H24CH73FxB5--
+--ptnBeRnfV2VN8mJbelkq3ISvi7tKo6Lm6--
 
