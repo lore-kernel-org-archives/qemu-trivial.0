@@ -1,67 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYJDM-0007w5-PG
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 17:42:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57341)
+	id 1dYLcB-0007tw-CJ
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Jul 2017 20:16:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51373)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYJDK-0007uM-Vn
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 17:42:31 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dYLc8-0007sW-IK
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 20:16:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYJDK-0001k1-2u
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 17:42:31 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:34419)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dYJDJ-0001jJ-Q9
-	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 17:42:29 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id 12so75736905wrb.1
-	for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2017 14:42:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=LS1khxvwKCAMpicOrR6JyVEshmixjDdqOBgbNeXOg60=;
-	b=EdeSmrtFygsa82bY0FgHeFCnGeXejueM9XZUCTmXDoTkslIEdHrabJXcjNJI+XrJlx
-	BCnULo7kN+P3WEF54KdVUxDFDRrHnTqNk9rt3hZvCFS0nEDlpBzUlp0WIE6uil1qKSbK
-	kMcbNT63TnRPQqAsHKs9v2tZrLP1694LRxqGM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=LS1khxvwKCAMpicOrR6JyVEshmixjDdqOBgbNeXOg60=;
-	b=CHBDlbOUJ17eLFPhB1inKZ1bcCrz/l8Yxvm6tP3sr2+U9y0giago0LsjfRUfQ+A5OB
-	ZjaSqJsmkgI/c2sYE9nTySzUb+V6Jum5wyWG5mjOLlY4f51wW4J4dUNmk749NgSuhHt/
-	EasuNLUwGOlcwoGVeIGMD8sX+HY+DfHcA3UxgbYvjlf0mvfF37B383w3EBr7z/RDUbWh
-	e2OFV8fanIdosesos2fiD2WP2gKDiW+/ceaMlmRr8SK3j1Qa0nH7kASMJzpryOwBU9OI
-	zDMZZ3DjAka/XPPuNBS/sGIyh3X/yzMaCqBwTuZJSzHMB3wPdwGYoGEG0cb6tDeSHao8
-	F1aA==
-X-Gm-Message-State: AIVw112L8psdnJQbwzpZBb8kU7r2pWmmIaRjYm9DatkfVUJZWWYq6cmt
-	H+Bk00AXVXfsRTyBmv/s+LNTy33RRKcf
-X-Received: by 10.223.163.16 with SMTP id c16mr8653994wrb.173.1500586948677;
-	Thu, 20 Jul 2017 14:42:28 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Thu, 20 Jul 2017 14:42:08 -0700 (PDT)
-In-Reply-To: <2bba3c89-e4f0-655b-c9ed-aab911beaaa7@redhat.com>
-References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
-	<d4b6f6a0-3479-795a-97b2-68c98a6b0c24@twiddle.net>
-	<CAFEAcA8tkW2bk_O3iDO-wWpY9EUbUNkUL93OShipsvckj-jkoQ@mail.gmail.com>
-	<2bba3c89-e4f0-655b-c9ed-aab911beaaa7@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jul 2017 22:42:08 +0100
-Message-ID: <CAFEAcA9ZhxrnKzw9WUVCNrSJxy_y4pPyX92_DqXn89LRq7LVbQ@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Richard Henderson <rth@twiddle.net>,
-	"patches@linaro.org" <patches@linaro.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Cornelia Huck <cohuck@redhat.com>, 
-	Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	(envelope-from <dgibson@ozlabs.org>) id 1dYLc6-0005oz-Mb
+	for qemu-trivial@nongnu.org; Thu, 20 Jul 2017 20:16:15 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:47951)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1dYLc0-0005jy-3v; Thu, 20 Jul 2017 20:16:08 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3xDBBW6ccxz9s7g; Fri, 21 Jul 2017 10:16:03 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1500596163;
+	bh=+pJjLQgdnXv6Kv4KtP8QTsG4Ai8kUmCtS1fZutjfXEI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=e+maajZ6NRCxUb6oyxTsAvoOJFvqVeELj6JvKaxjxHBdQiVJ4yA8vLdJ99QmmNGr2
+	vtWgVD4SL6Zva6CmnT/yvlpl8TmYBvaBS9PzJehUkso5r8iYjmwnftyDyJyvnnJnJj
+	h65GUe0dkZuVJ5wa8vzMNCnrsxOAVZQ8BZ4Cy+9k=
+Date: Fri, 21 Jul 2017 09:58:22 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org,
+	Richard Henderson <rth@twiddle.net>, Alexander Graf <agraf@suse.de>,
+	Cornelia Huck <cohuck@redhat.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Kamil Rytarowski <kamil@netbsd.org>, 
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Kamil Rytarowski <kamil@netbsd.org>, qemu-ppc@nongnu.org
+Message-ID: <20170720235822.GA3717@umbus.fritz.box>
+References: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="5vNYLRcllDrimb99"
+Content-Disposition: inline
+In-Reply-To: <1500568290-7966-1-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] Use qemu_tolower()
- and qemu_toupper(), not tolower() and toupper()
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [PATCH for-2.10] Use qemu_tolower() and
+ qemu_toupper(), not tolower() and toupper()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,31 +54,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Jul 2017 21:42:32 -0000
+X-List-Received-Date: Fri, 21 Jul 2017 00:16:18 -0000
 
-On 20 July 2017 at 22:29, Eric Blake <eblake@redhat.com> wrote:
-> On 07/20/2017 04:03 PM, Peter Maydell wrote:
->> https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/sys/ctype_inline.h
->> The implementation is
->>   #define toupper(c) ((int)((_toupper_tab_ + 1)[(c)]))
->>
->> (where I assume _toupper_tab_ is the obvious array.)
->
-> In fact, if NetBSD's implementation is anything like Cygwin's, then it
-> is a safe bet that _toupper_tab_ is a symbol that lands in the middle of
-> a larger 384-byte array, such that _toupper_tab_[-1] (for (signed
-> char)'\xfe') happens to resolve to a valid image address, and will have
-> the same contents as _toupper_tab_[255] (for (unsigned char)'\xfe'),
-> precisely to cater to so many clueless programs have forgotten about
-> signed char widening to negative values (even though the standard says
-> the behavior is undefined, quality-of-implementation demands that you
-> try to do the sane thing anyway).
 
-Nope, looks like they just implement as _toupper_tab_[0] is for
-EOF, and indexes >0 are for the characters, if I've found the
-right bit of their libc:
-https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/lib/libc/locale/rune.c
+--5vNYLRcllDrimb99
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-thanks
--- PMM
+On Thu, Jul 20, 2017 at 05:31:30PM +0100, Peter Maydell wrote:
+> On NetBSD, where tolower() and toupper() are implemented using an
+> array lookup, the compiler warns if you pass a plain 'char'
+> to these functions:
+>=20
+> gdbstub.c:914:13: warning: array subscript has type 'char'
+>=20
+> This reflects the fact that toupper() and tolower() give
+> undefined behaviour if they are passed a value that isn't
+> a valid 'unsigned char' or EOF.
+>=20
+> We have qemu_tolower() and qemu_toupper() to avoid this problem;
+> use them.
+>=20
+> (The use in scsi-generic.c does not trigger the warning because
+> it passes a uint8_t; we switch it anyway, for consistency.)
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+ppc parts
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  gdbstub.c                  | 2 +-
+>  hw/s390x/s390-virtio-ccw.c | 2 +-
+>  hw/scsi/scsi-generic.c     | 2 +-
+>  target/ppc/monitor.c       | 4 ++--
+>  4 files changed, 5 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/gdbstub.c b/gdbstub.c
+> index f936ddd..2a94030 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -911,7 +911,7 @@ static int gdb_handle_vcont(GDBState *s, const char *=
+p)
+> =20
+>          cur_action =3D *p++;
+>          if (cur_action =3D=3D 'C' || cur_action =3D=3D 'S') {
+> -            cur_action =3D tolower(cur_action);
+> +            cur_action =3D qemu_tolower(cur_action);
+>              res =3D qemu_strtoul(p + 1, &p, 16, &tmp);
+>              if (res) {
+>                  goto out;
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index ce3921e..1c7af39 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -318,7 +318,7 @@ static void machine_set_loadparm(Object *obj, const c=
+har *val, Error **errp)
+>      int i;
+> =20
+>      for (i =3D 0; i < sizeof(ms->loadparm) && val[i]; i++) {
+> -        uint8_t c =3D toupper(val[i]); /* mimic HMC */
+> +        uint8_t c =3D qemu_toupper(val[i]); /* mimic HMC */
+> =20
+>          if (('A' <=3D c && c <=3D 'Z') || ('0' <=3D c && c <=3D '9') || =
+(c =3D=3D '.') ||
+>              (c =3D=3D ' ')) {
+> diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
+> index a55ff87..7e1cbab 100644
+> --- a/hw/scsi/scsi-generic.c
+> +++ b/hw/scsi/scsi-generic.c
+> @@ -406,7 +406,7 @@ static int read_naa_id(const uint8_t *p, uint64_t *p_=
+wwn)
+>          }
+>          *p_wwn =3D 0;
+>          for (i =3D 8; i < 24; i++) {
+> -            char c =3D toupper(p[i]);
+> +            char c =3D qemu_toupper(p[i]);
+>              c -=3D (c >=3D '0' && c <=3D '9' ? '0' : 'A' - 10);
+>              *p_wwn =3D (*p_wwn << 4) | c;
+>          }
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index b8f30e9..1491511 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -115,14 +115,14 @@ int target_get_monitor_def(CPUState *cs, const char=
+ *name, uint64_t *pval)
+>      CPUPPCState *env =3D &cpu->env;
+> =20
+>      /* General purpose registers */
+> -    if ((tolower(name[0]) =3D=3D 'r') &&
+> +    if ((qemu_tolower(name[0]) =3D=3D 'r') &&
+>          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->gpr), &regnum)) {
+>          *pval =3D env->gpr[regnum];
+>          return 0;
+>      }
+> =20
+>      /* Floating point registers */
+> -    if ((tolower(name[0]) =3D=3D 'f') &&
+> +    if ((qemu_tolower(name[0]) =3D=3D 'f') &&
+>          ppc_cpu_get_reg_num(name + 1, ARRAY_SIZE(env->fpr), &regnum)) {
+>          *pval =3D env->fpr[regnum];
+>          return 0;
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--5vNYLRcllDrimb99
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAllxQ5kACgkQbDjKyiDZ
+s5J0bhAA0IUgocl/2Nsh/DVbVZfXVn7BLFMC5r8jH3/laFW/0WKWBRulbNeYtX1W
+nTVpVHV05VKthu/YzhNGPoXiRq0oMznLy8QnAF9rYc+aslGr2GJoSRlE7EmHkVYg
+tWjhN3lNVCXNpHuejEgAINZIJpeybQoPUO7EnA9Fc1umBrpdxwh6iTpu9t2cfom1
+jf4/JslJ5s9hjHmQ0G0uRHOUEZxQLEskH9W80HpgVSJw2ttTWRrEEOtSCIAi8ob2
++wvRrzh/n3VseVm3Ncu0ZErmJ35sYs92ygpDB7Jh990dfoF4FHrCjmWTruuteK1g
+2oonE7xGC3Nrx/cnBnex09bTsS+D8TW2ERdPc3PhYkd2eEtipaC1gI3U9wOcDWmX
+9XOC6alVONeUCzm+aI+RO6mUGciHW8KY8I8kpceVp5eOPr3DICNawjZspFCd7akA
+z9mYq/ibc6STMQZx47KePd3kY3758scWIehIue08wYpLnyUYhQn7d77RWkCaTAic
+hywoVFgJWCGYoXaoC/yBL+vM7573aUWxdPFxijORkWGIvtxGmBl48T0khkJDu7hJ
+lmwqIKh22pkCGiaHCJtL0GPTQs3G56nMoVSzvKWLa9mJK8IghaPk+obljT+BEci3
+q4CvEs1fLtABa+ZluYm3Hl1KNkYJZMbECnJfPkVTb5Pw8p+dehg=
+=sZb8
+-----END PGP SIGNATURE-----
+
+--5vNYLRcllDrimb99--
 
