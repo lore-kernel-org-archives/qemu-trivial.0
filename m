@@ -1,57 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYZnk-0007vF-2r
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 11:25:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53341)
+	id 1dYZoC-0008BI-Ux
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 11:25:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZnd-0007nJ-AC
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:10 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dYZoB-0008A1-L1
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZnc-00009b-Cb
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:05 -0400
-Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:38785)
+	(envelope-from <peter.maydell@linaro.org>) id 1dYZo7-0000MB-IM
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:36 -0400
+Received: from mail-wr0-x229.google.com ([2a00:1450:400c:c0c::229]:34330)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dYZnc-00008j-6i
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:04 -0400
-Received: by mail-wm0-x22c.google.com with SMTP id w191so16989451wmw.1
-	for <qemu-trivial@nongnu.org>; Fri, 21 Jul 2017 08:25:04 -0700 (PDT)
+	id 1dYZo7-0000Lg-Bw
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:35 -0400
+Received: by mail-wr0-x229.google.com with SMTP id 12so83883656wrb.1
+	for <qemu-trivial@nongnu.org>; Fri, 21 Jul 2017 08:25:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Bub2VMQSYlILlKJKfQ2HRdf1D0c8j4jkcVHXjijjfBQ=;
-	b=BHFdpFF/Q7blIdpvb/6JdxnRAborgtFCi0HFAidWmfsCjNA5mDQD3j5JSmzrKcgTvd
-	9r0WAW5io29mwHaw2C/e54Po4mzKMti+so6FzZzdShUCJWdX7s2KdGfscmm371ROipsn
-	QSc1p2OoE/Z/Lsy034uC5g32yEMhROOKHaRZg=
+	:cc; bh=3N2Ct0Mg+Xu5skxwf/It+XQJVLZNIPHkR52NURU9Nws=;
+	b=GBKeeMl/2bSwV29EE3xXN/GqO8z32VKWDUgQsUHwk1lLMLtQ8oMREDXmknBjvqw0uL
+	AgoxqI5m3AN2lEzEFkl6a/GR3Gn/rQmWrd5DLonTpHU1BiqkiCXJUpxagJOc0KaJfVu/
+	L0G8utn0derRzNacH0HasN1rdHk1duZfEvNHQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Bub2VMQSYlILlKJKfQ2HRdf1D0c8j4jkcVHXjijjfBQ=;
-	b=JRYBOuu8PGPn4flA59stjXfk3plUXi0rdrd/RkgiPJXSsja8DQ4W/pGzZ26lomxxZd
-	sQ8umn9VdunEQTPvkmItHjE4ybrXy1VMFvpI9wtlu8EdQshiRvb9c4Jv8Jvs/UPB7yuW
-	PmSptBppdBWsLOcgwf7hUm493SQ+PBer5MEOgrmdyFWkOk0uwA0EOZejCvwo3Obg9igx
-	wzy6fBNm0lxyP78vOyGPB3AW1ZCGpJJftFhr5rT26Vs0zDBQI5spqvz2/kNg1isGl3pm
-	2rqjluaTo9lLjj2s9IxY+KK4UW2sKmMpSBna/j+xj0ORqmrrqAyxKdCpdGexa/dYjwO/
-	l3FA==
-X-Gm-Message-State: AIVw111Wtt3Av8rlmVNCSYUWRk4iCM478U4iLoSFzv5hHFVAyPEwih3W
-	4O9WhB89gO59/RtJxivpQn2NTRBNp5hM
-X-Received: by 10.28.40.215 with SMTP id o206mr5274614wmo.74.1500650703181;
-	Fri, 21 Jul 2017 08:25:03 -0700 (PDT)
+	bh=3N2Ct0Mg+Xu5skxwf/It+XQJVLZNIPHkR52NURU9Nws=;
+	b=XrVtxbw8QO87GmsIQ2kZ3DmQWSGqqhSBDK4DHzNr0qCgdgI28Avse0LNPmX1ROIK3r
+	Huxo1stfeu84vLrjCqtl4J5h9Qz0cViycI7t693zB8EFhjb+drixNNqt5neIEmmd9plq
+	28ENgt7WmWgNtSMaVbpqMKoazHKuIHteO60U3Ic2I9pC3VC5dTAEpq3wC+y/+sJeck5k
+	10OTBuFkhObr+XW7MiGoUBG+2M5liHhVokGBSHcfeFaEwH4WLxvzQk506brfpkUnwUW2
+	nraIwKhITez+pDt5lOjtPh2JPXjVJBzh6/Ng4EVmMjp/SYURinKLkxLQJQjXRFdU95h/
+	fOOQ==
+X-Gm-Message-State: AIVw112QsAoNhdkjVT+tKnNuBaDDc9LYlGHccQnf9dqZi/ptNpQPUNUp
+	hQ9KlQ71CwVV+XApifLPfdm6bx344MIb
+X-Received: by 10.223.163.16 with SMTP id c16mr10969586wrb.173.1500650732097; 
+	Fri, 21 Jul 2017 08:25:32 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 21 Jul 2017 08:24:42 -0700 (PDT)
-In-Reply-To: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
-References: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
+Received: by 10.223.134.2 with HTTP; Fri, 21 Jul 2017 08:25:11 -0700 (PDT)
+In-Reply-To: <5de01cad-5a63-ff42-8c6f-25210aa8348d@redhat.com>
+References: <1500395194-21455-1-git-send-email-peter.maydell@linaro.org>
+	<1500395194-21455-4-git-send-email-peter.maydell@linaro.org>
+	<5de01cad-5a63-ff42-8c6f-25210aa8348d@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Jul 2017 16:24:42 +0100
-Message-ID: <CAFEAcA_R4MpMCOX2F9-VgLsYFmqVebY1H27xkCNvfQJc61sUvQ@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: "patches@linaro.org" <patches@linaro.org>
+Date: Fri, 21 Jul 2017 16:25:11 +0100
+Message-ID: <CAFEAcA8nk2W2EBVyD16n1c8F3TZMb-7FBJ9HVuX86A+KyxtuYA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>,
+	Juan Quintela <quintela@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::22c
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Never use
- 'uname' to identify target OS
+X-Received-From: 2a00:1450:400c:c0c::229
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10 3/4]
+ bsd-user/bsdload.c: Remove write-only id_change variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,30 +67,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jul 2017 15:25:11 -0000
+X-List-Received-Date: Fri, 21 Jul 2017 15:25:40 -0000
 
-On 13 July 2017 at 16:15, Peter Maydell <peter.maydell@linaro.org> wrote:
-> For a very long time we have used 'uname -s' as our fallback if
-> we don't identify the target OS using a compiler #define. This
-> obviously doesn't work for cross-compilation, and we've had
-> a comment suggesting we fix this in configure for a long time.
-> Since we now have an exhaustive list of which OSes we can run
-> on (thanks to commit 898be3e0415 making an unrecognized OS
-> be a fatal error), we know which ones we're missing.
->
-> Add check_define tests for the remaining OSes we support.  The
-> defines checked are based on ones we already use in the codebase for
-> identifying the host OS (with the exception of GNU/kFreeBSD).
-> We can now set bogus_os immediately rather than doing it later.
->
-> We leave the comment about uname being bad untouched, since
-> there is still a use of it for the fallback for unrecognized
-> host CPU type.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+On 21 July 2017 at 12:12, Thomas Huth <thuth@redhat.com> wrote:
+> On 18.07.2017 18:26, Peter Maydell wrote:
+>> On OpenBSD the compiler complains:
+>> bsd-user/bsdload.c:54:17: warning: variable 'id_change' set but not used [-Wunused-but-set-variable]
+>>
+>> This is dead code that was originally copied from linux-user.
+>> We fixed this in linux-user in commit 331c23b5ca44293d1 in 2011;
+>> delete the useless code from bsd-user too.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
 
-Applied, thanks.
+>
+> Matches the commit from linux-user, and looks sane to me, so:
+>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Thanks; applied to master.
 
 -- PMM
 
