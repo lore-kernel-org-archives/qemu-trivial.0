@@ -1,62 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYZoU-0008On-GS
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 11:25:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53432)
+	id 1dYaiA-0001dB-CV
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 12:23:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZoR-0008Lc-EQ
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:56 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dYai8-0001cL-Ur
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 12:23:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZoQ-0000UG-Ei
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:55 -0400
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:38049)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dYai7-0007bO-QH
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 12:23:28 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38329)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dYZoQ-0000Tj-7u
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:54 -0400
-Received: by mail-wm0-x22e.google.com with SMTP id w191so17008575wmw.1
-	for <qemu-trivial@nongnu.org>; Fri, 21 Jul 2017 08:25:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=oKPAazJWgDB+VkUIyimb398Msiu1Zza1LC2gTmPvFRw=;
-	b=WAoeUiEbUa9jh0wVCep7xFqI0zedY32xsFQFT0rcxmyWSriqROCbEqwDW+QzXFWrgJ
-	w3rZp99Mj8HCumR8fw90bW+1JJZSW6imX+FO01JrN0BH1epoVhN6omg25VPIcvmd/H02
-	256mtcxIiyiypH+PhJVbc9Sp1ojtvByU93wGU=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dYai0-0007ZV-TJ; Fri, 21 Jul 2017 12:23:20 -0400
+Received: by mail-qt0-x241.google.com with SMTP id h47so6739941qta.5;
+	Fri, 21 Jul 2017 09:23:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=z9EGXY0Uz6hnoM7bFY6ebQwbPP6N3kw6GtihImsoYQI=;
+	b=m8xApkdt1R7a3xXidZo561WIo3dRrH74QMGTxRMG0b8H7aFYYRh66Y5aszdov8mTDn
+	Dy5x/VO8K5L9KbOsao1a8ETMfCOVQwg0cFZrem/YIPgJ+5eeBRs3UJzXJRH1mQyvq1pM
+	CBsg0O6itAqf1e3GYjFG6/xwcP/4ExEDJSwitSL54rzUFQqnlxz+v+10WoTeqQEHER1C
+	IV1ELXjSROIRNCa4flCDxJLELI/EqfKxalauay8w7+jLHlbvEHAKq1uUDJtOyqIxuUxz
+	rNskb92EMww3iUZxMNopWhY7ZUEiQv64Q/lRPGAO11XTpCuJaEcg04VZpwjOfitOEo4P
+	Aayg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=oKPAazJWgDB+VkUIyimb398Msiu1Zza1LC2gTmPvFRw=;
-	b=ndpjx5rLHZA3iVlcYTChmPIJtNmoty0KXEpICs+t+bdmkaZBHlnXJ5WMGLDD5yXD8J
-	sBUhrPOvR6GOZLcdVzwhVpy6IHM/QklDUM72uLse2/pjEgwVpwZ/UgbRR/prjdlKe5Xk
-	kqx8VbHN6JoMFgLZajdEagqaEyalXifFMh8MVV7xWUSGZ4jZ9Rca6DQSX650hwstDpTc
-	7zI5F9Nml2ymR5rXuTTxdubqGb5mrSA+QJOdbmWPHAu/qd5uTbFh7LdsRazvaOO4QeYG
-	6vBhz4va5txFvZQ5+uJvrNQv3sCkegNv96Br0jxiDiu0GmKbxG0lz74l2IHfy1G4ezH+
-	LEWw==
-X-Gm-Message-State: AIVw111OUUcIf4/j73ydQVdvOgq5bamD2MYxxwTgIm29xOy6bKF/iqZD
-	3du+m1rvgygZ6p482ZLN1L7v275w/ZMH
-X-Received: by 10.28.198.206 with SMTP id w197mr4913049wmf.86.1500650753312;
-	Fri, 21 Jul 2017 08:25:53 -0700 (PDT)
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=z9EGXY0Uz6hnoM7bFY6ebQwbPP6N3kw6GtihImsoYQI=;
+	b=I1EsxJW18sctjkTiktqi71p3beBwvVc3BTkXB18uGVcF/ryjm4vHmZsJHpr9qaG0Ku
+	CAkFsa40Upn4agvWWxsHl0jgojRil6lhO0nHWr6ZiogYwuJ982FznUYIwHDAIu2ofg9R
+	NXHXELorcr777sRMQnomsSCSk3b130DJupSciYlFVWq1aqWoz1J56nM9nUJsfIfRz7Xo
+	ze4Mg4eJipvb2E57yw/VicgmylKUQOD9UMBgPuNgu9rTEM++OChCxFzDT04VS47hWC82
+	yRSim1sIzZiOuy0/QmCgPN8EpGXk+Awjfc2E7KQIRz2Vf1/sfMExpTLQELHWarMlwVAE
+	8+lg==
+X-Gm-Message-State: AIVw111h8lDCvQEFAXPyZsmxAD1GCJ9UvAQEGF3/Q5S2rrzIxj5S+7du
+	U7uww+Vw7lpsprDVJ7Y=
+X-Received: by 10.200.37.98 with SMTP id 31mr10970617qtn.92.1500654200052;
+	Fri, 21 Jul 2017 09:23:20 -0700 (PDT)
+Received: from [192.168.1.240] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	t21sm3732637qte.97.2017.07.21.09.23.17
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 21 Jul 2017 09:23:18 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+	Jiri Pirko <jiri@resnulli.us>, Jason Wang <jasowang@redhat.com>
+Cc: qemu-devel@nongnu.org
+References: <20170718061005.29518-1-f4bug@amsat.org>
+	<20170718061005.29518-11-f4bug@amsat.org>
+	<53a83027-dde9-9728-90ab-b90a92484445@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a77b40e7-8483-c298-6707-59e65adaa904@amsat.org>
+Date: Fri, 21 Jul 2017 13:23:15 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 21 Jul 2017 08:25:32 -0700 (PDT)
-In-Reply-To: <dabe4865-05a0-eb85-f9db-8948db3e14bf@redhat.com>
-References: <1500395194-21455-1-git-send-email-peter.maydell@linaro.org>
-	<1500395194-21455-5-git-send-email-peter.maydell@linaro.org>
-	<b27c6322-49f7-3f73-6df3-e8f4ddae9652@redhat.com>
-	<CAFEAcA9vTrpRL-cihQ-DtDj2TYAbNtzLf8b-WTAx+4Mz5xoKiA@mail.gmail.com>
-	<dabe4865-05a0-eb85-f9db-8948db3e14bf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Jul 2017 16:25:32 +0100
-Message-ID: <CAFEAcA_T1CNZY+rnryt_r-kaffk838Q4jZOw9GogfQB7t-jFtA@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <53a83027-dde9-9728-90ab-b90a92484445@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::22e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10 4/4]
- bsd-user/main.c: Fix unused variable warning
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-trivial] [PATCH 10/29] net/rocker: use QEMU_IS_ALIGNED
+ macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,33 +81,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jul 2017 15:25:56 -0000
+X-List-Received-Date: Fri, 21 Jul 2017 16:23:29 -0000
 
-On 21 July 2017 at 13:23, Eric Blake <eblake@redhat.com> wrote:
-> On 07/19/2017 03:19 AM, Peter Maydell wrote:
->> On 18 July 2017 at 23:01, Eric Blake <eblake@redhat.com> wrote:
->>> On 07/18/2017 11:26 AM, Peter Maydell wrote:
->>>> On OpenBSD the compiler warns:
->>>> bsd-user/main.c:622:21: warning: variable 'sig' set but not used [-Wunused-but-set-variable]
->>>>
->>>> This is because a lot of the signal delivery code is #if-0'd
->>>> out as unused. Reshuffle #ifdefs a bit to silence the warning.
->>>
->>> Why not just nuke the #if 0 code instead (we can always 'git revert' it
->>> later as a starting point for someone that wants to implement it).
+On 07/18/2017 02:51 PM, Eric Blake wrote:
+> On 07/18/2017 01:09 AM, Philippe Mathieu-Daudé wrote:
+>> Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.cocci
 >>
->> I went for the minimal change, especially given we know
->> that the freebsd folks have a big patchset on top of
->> us fixing a lot of bsd-user code and it didn't seem worth
->> giving them a more awkward rebase task.
->
-> Perhaps worth mentioning in the commit message that keeping the #if 0 is
-> intentional, then. At any rate,
->
-> Reviewed-by: Eric Blake <eblake@redhat.com>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/net/rocker/rocker.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+>> index 4f0f6d71e5..55228f2f52 100644
+>> --- a/hw/net/rocker/rocker.c
+>> +++ b/hw/net/rocker/rocker.c
+>> @@ -1419,7 +1419,7 @@ static int pci_rocker_init(PCIDevice *dev)
+>>               desc_ring_set_consume(ring, cmd_consume, ROCKER_MSIX_VEC_CMD);
+>>           } else if (i == ROCKER_RING_EVENT) {
+>>               desc_ring_set_consume(ring, NULL, ROCKER_MSIX_VEC_EVENT);
+>> -        } else if (i % 2 == 0) {
+>> +        } else if (QEMU_IS_ALIGNED(i, 2)) {
+>>               desc_ring_set_consume(ring, tx_consume,
+>>                                     ROCKER_MSIX_VEC_TX((i - 2) / 2));
+>>           } else if (i % 2 == 1) {
+>>
+> 
+> Given the if chain, I think you don't want this one.
 
-Thanks; applied to master with an updated commit message.
+Indeed, dropped. Thanks for your review!
 
-
--- PMM
 
