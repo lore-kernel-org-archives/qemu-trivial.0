@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dYZnF-0007aY-UF
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 11:24:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53284)
+	id 1dYZnk-0007vF-2r
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2017 11:25:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53341)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZnD-0007aI-Sf
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:24:40 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dYZnd-0007nJ-AC
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dYZnD-0008QF-5o
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:24:39 -0400
-Received: from mail-wr0-x230.google.com ([2a00:1450:400c:c0c::230]:33590)
+	(envelope-from <peter.maydell@linaro.org>) id 1dYZnc-00009b-Cb
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:05 -0400
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:38785)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dYZnC-0008Pt-Ur
-	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:24:39 -0400
-Received: by mail-wr0-x230.google.com with SMTP id v105so53600256wrb.0
-	for <qemu-trivial@nongnu.org>; Fri, 21 Jul 2017 08:24:38 -0700 (PDT)
+	id 1dYZnc-00008j-6i
+	for qemu-trivial@nongnu.org; Fri, 21 Jul 2017 11:25:04 -0400
+Received: by mail-wm0-x22c.google.com with SMTP id w191so16989451wmw.1
+	for <qemu-trivial@nongnu.org>; Fri, 21 Jul 2017 08:25:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Jic6A2idB1ZYpE9sA91sZwu19tYphuMqegWCTQFFLfI=;
-	b=Qx7bYPhkNt1bM07UuXLvJnFC04wmX2MxWFDpjbmubjHljH5WgSBE3C+50UNC4/F1iL
-	N+TCW5tamQobvcu7SYZ2/7g1VWimFJkFOQxPbKEyqBMOuD3x6/AaEdHbM0kTenyetzkg
-	qkx5msdnqcZr4zHwl6BnMEJgFB+Tsr+bfNg2s=
+	:cc; bh=Bub2VMQSYlILlKJKfQ2HRdf1D0c8j4jkcVHXjijjfBQ=;
+	b=BHFdpFF/Q7blIdpvb/6JdxnRAborgtFCi0HFAidWmfsCjNA5mDQD3j5JSmzrKcgTvd
+	9r0WAW5io29mwHaw2C/e54Po4mzKMti+so6FzZzdShUCJWdX7s2KdGfscmm371ROipsn
+	QSc1p2OoE/Z/Lsy034uC5g32yEMhROOKHaRZg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Jic6A2idB1ZYpE9sA91sZwu19tYphuMqegWCTQFFLfI=;
-	b=Z0Mj/EojmW9r4lMJ8cG8d8ykQp0+17JSQTxV+OOx5ax78zcQJqdg33sDb7tbHjTW3b
-	A6cofjQE1LujLkMGCRV6XH0xg8l644BGAL7930zLfldJsDPkcfpB4JSZytfdSQUIGgRj
-	myKqsP9aCRkW0hcoJlGrWsYLgkayUB59KnzNIGRgs6Y9jJphSyvSiAHtEDk2PB6kcj09
-	sz4/yDOOZobwCjB3nsN29JwaLz/FdpVa2OqXxRJ3t/bOTx7IrwTrW5GCy2xMcbdXLiVp
-	PwoFygoJ+littlsGHHcpySEW/dMvud51DILDfzw4/vyH3XbSoXX89ALXyLJ1QMNWqYeT
-	3rKQ==
-X-Gm-Message-State: AIVw110dtnj7FuFx2mUdKNEgj+IYH5YGpuZ9HXvwH+anO4tCdzCSRn1W
-	75FRdxJzT+nSlIdulwgh8cARGgCEJZ08
-X-Received: by 10.223.163.16 with SMTP id c16mr10967481wrb.173.1500650677903; 
-	Fri, 21 Jul 2017 08:24:37 -0700 (PDT)
+	bh=Bub2VMQSYlILlKJKfQ2HRdf1D0c8j4jkcVHXjijjfBQ=;
+	b=JRYBOuu8PGPn4flA59stjXfk3plUXi0rdrd/RkgiPJXSsja8DQ4W/pGzZ26lomxxZd
+	sQ8umn9VdunEQTPvkmItHjE4ybrXy1VMFvpI9wtlu8EdQshiRvb9c4Jv8Jvs/UPB7yuW
+	PmSptBppdBWsLOcgwf7hUm493SQ+PBer5MEOgrmdyFWkOk0uwA0EOZejCvwo3Obg9igx
+	wzy6fBNm0lxyP78vOyGPB3AW1ZCGpJJftFhr5rT26Vs0zDBQI5spqvz2/kNg1isGl3pm
+	2rqjluaTo9lLjj2s9IxY+KK4UW2sKmMpSBna/j+xj0ORqmrrqAyxKdCpdGexa/dYjwO/
+	l3FA==
+X-Gm-Message-State: AIVw111Wtt3Av8rlmVNCSYUWRk4iCM478U4iLoSFzv5hHFVAyPEwih3W
+	4O9WhB89gO59/RtJxivpQn2NTRBNp5hM
+X-Received: by 10.28.40.215 with SMTP id o206mr5274614wmo.74.1500650703181;
+	Fri, 21 Jul 2017 08:25:03 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.134.2 with HTTP; Fri, 21 Jul 2017 08:24:17 -0700 (PDT)
-In-Reply-To: <1499955697-28045-1-git-send-email-peter.maydell@linaro.org>
-References: <1499955697-28045-1-git-send-email-peter.maydell@linaro.org>
+Received: by 10.223.134.2 with HTTP; Fri, 21 Jul 2017 08:24:42 -0700 (PDT)
+In-Reply-To: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
+References: <1499958932-23839-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Jul 2017 16:24:17 +0100
-Message-ID: <CAFEAcA_KWA=c0O7t5L+V3LngEUauRJREKFm8UyTnrMMhnTyBjQ@mail.gmail.com>
+Date: Fri, 21 Jul 2017 16:24:42 +0100
+Message-ID: <CAFEAcA_R4MpMCOX2F9-VgLsYFmqVebY1H27xkCNvfQJc61sUvQ@mail.gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>
 Cc: "patches@linaro.org" <patches@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::230
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Drop ancient
- Solaris 9 and earlier support
+X-Received-From: 2a00:1450:400c:c09::22c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Never use
+ 'uname' to identify target OS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,25 +63,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jul 2017 15:24:40 -0000
+X-List-Received-Date: Fri, 21 Jul 2017 15:25:11 -0000
 
-On 13 July 2017 at 15:21, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Solaris 9 was released in 2002, its successor Solaris 10 was
-> released in 2005, and Solaris 9 was end-of-lifed in 2014.
-> Nobody has stepped forward to express interest in supporting
-> Solaris of any flavour, so removing support for the ancient
-> versions seems uncontroversial.
+On 13 July 2017 at 16:15, Peter Maydell <peter.maydell@linaro.org> wrote:
+> For a very long time we have used 'uname -s' as our fallback if
+> we don't identify the target OS using a compiler #define. This
+> obviously doesn't work for cross-compilation, and we've had
+> a comment suggesting we fix this in configure for a long time.
+> Since we now have an exhaustive list of which OSes we can run
+> on (thanks to commit 898be3e0415 making an unrecognized OS
+> be a fatal error), we know which ones we're missing.
 >
-> In particular, this allows us to remove a use of 'uname'
-> in configure that won't work if you're cross-compiling.
+> Add check_define tests for the remaining OSes we support.  The
+> defines checked are based on ones we already use in the codebase for
+> identifying the host OS (with the exception of GNU/kFreeBSD).
+> We can now set bogus_os immediately rather than doing it later.
+>
+> We leave the comment about uname being bad untouched, since
+> there is still a use of it for the fallback for unrecognized
+> host CPU type.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Not a big thing, but it's a start on cleaning out some
-> of the untested and untestable cruft from configure...
->
 
-Applied to master, thanks.
+Applied, thanks.
 
 -- PMM
 
