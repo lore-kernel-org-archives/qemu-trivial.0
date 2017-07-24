@@ -1,65 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZcI8-0006R0-DN
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 08:16:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41331)
+	id 1dZi5d-0008BR-5t
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:28:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dZcI6-0006Ou-42
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 08:16:51 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi5a-00088Y-Ci
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dZcI5-0007pp-3e
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 08:16:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55976)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dZcI1-0007nk-N5; Mon, 24 Jul 2017 08:16:45 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4C71BC058EA2;
-	Mon, 24 Jul 2017 12:16:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4C71BC058EA2
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=eblake@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 4C71BC058EA2
-Received: from [10.10.121.48] (ovpn-121-48.rdu2.redhat.com [10.10.121.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6510261B8E;
-	Mon, 24 Jul 2017 12:16:42 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-20-f4bug@amsat.org>
-	<CAJ+F1CJL8krrmFwCgqx6qZepkNZbcvTJrkOEVcsWiHurCBcUZw@mail.gmail.com>
-	<3b25ec9f-5711-de4c-eade-eecef96b6379@redhat.com>
-	<a49428cc-88e9-dbd8-3d2f-207acbef68f9@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	qemu trival <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU <qemu-devel@nongnu.org>, Richard Henderson <rth@twiddle.net>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <90438d63-2cfc-ad79-a490-7a50e40fe53a@redhat.com>
-Date: Mon, 24 Jul 2017 07:16:41 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi5Z-0004iN-Gg
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:18 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34273)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dZi5X-0004hc-9A; Mon, 24 Jul 2017 14:28:15 -0400
+Received: by mail-qk0-x242.google.com with SMTP id q66so10660843qki.1;
+	Mon, 24 Jul 2017 11:28:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=uGyrHEzvy8FqoRMrRUgLWHf217VZM8hapwRVmbqBJY0=;
+	b=Q/U1a0g5vWsV6eMkX3ko9rOzhrSpu6LvbNGbVDi3U8UjBVGQO8lCUy98W1W6nPWRG3
+	l6L6Yrr+em6oueTyA7rCviKf6qXInkWs7nQVtYR58Hf0k6qQFhS+JFGzmcRth/SYgWFW
+	Wym6aeW1BaQtgKN8sc4Hq9uhNj+HnygfLCf0erG8UMKEMGO5CnkEXq7/Z5xROOBK2+pz
+	+TVvc5kHEe2UzgMDX3Pc9YGp9D8GqRZ65K2zXv3JepTkIbAmMrkPl9xtkrW7cRnjiDLh
+	26sw89dG7oFBiA73i5LK51Bdooeat2VaT4WgdxU8HyRs21l4mWjVP79tjL11msx/odGH
+	AYKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=uGyrHEzvy8FqoRMrRUgLWHf217VZM8hapwRVmbqBJY0=;
+	b=hO3kmoQg/JBCl8jUqhQEN/4xM81ViYxWoxfp7ui+ydVjxbeigUu9LDsdpBzTVkXmLm
+	Lyj3zxBkoCjSI/xI4kfkuHyemECc9cAMxFHw1Qrnj0PuVxNW40bhpNxdoFL2s6QtAmnF
+	dvnTUGAbrIMlEvPv84mpEBu3SWsa+2nyAFQBW+A7Yp0GTX8epmQmdSINL8H++pzDyjsm
+	H2CSzOT9GuwtrYVuq6z9E/Nwh36UhDEA9INDoQc1g5ksGBWcQrhO7ETWDiLsAvburc3y
+	r2vOFkND+aQO7VW6CYZG9YGSJ1SfrG8wYB8JHmq5BzUKfLcfQnBKGflj+SctBrLgq78/
+	6e1g==
+X-Gm-Message-State: AIVw113d7tqY2taKmDj5jhkENHYuAfqdM/AG4T83i9AkhWIs+1kwLa5k
+	2cpv/lCefttqYw==
+X-Received: by 10.55.31.34 with SMTP id f34mr20166510qkf.357.1500920894664;
+	Mon, 24 Jul 2017 11:28:14 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	t57sm9033799qtt.18.2017.07.24.11.28.12
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 24 Jul 2017 11:28:13 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 24 Jul 2017 15:27:17 -0300
+Message-Id: <20170724182751.18261-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
+In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
+References: <20170724182751.18261-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <a49428cc-88e9-dbd8-3d2f-207acbef68f9@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="9hvfmm8o325U8VpeThWUicNTF58AjdgqO"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 24 Jul 2017 12:16:44 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 19/29] disas: use
- QEMU_IS_ALIGNED macro
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH for 2.10 01/35] tests: add missing dependency
+ to build QTEST_QEMU_BINARY
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,79 +77,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 12:16:51 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:28:19 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---9hvfmm8o325U8VpeThWUicNTF58AjdgqO
-Content-Type: multipart/mixed; boundary="fOL1gtv5ESDb5NCiUFCopIXB7e5n2fJVT";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- qemu trival <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
- QEMU <qemu-devel@nongnu.org>, Richard Henderson <rth@twiddle.net>
-Message-ID: <90438d63-2cfc-ad79-a490-7a50e40fe53a@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 19/29] disas: use QEMU_IS_ALIGNED macro
-References: <20170718061005.29518-1-f4bug@amsat.org>
- <20170718061005.29518-20-f4bug@amsat.org>
- <CAJ+F1CJL8krrmFwCgqx6qZepkNZbcvTJrkOEVcsWiHurCBcUZw@mail.gmail.com>
- <3b25ec9f-5711-de4c-eade-eecef96b6379@redhat.com>
- <a49428cc-88e9-dbd8-3d2f-207acbef68f9@redhat.com>
-In-Reply-To: <a49428cc-88e9-dbd8-3d2f-207acbef68f9@redhat.com>
+This allow a one liner from fresh repository clone, i.e.:
 
---fOL1gtv5ESDb5NCiUFCopIXB7e5n2fJVT
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+  ./configure && make -j check-qtest-aarch64
 
-On 07/23/2017 09:52 AM, Paolo Bonzini wrote:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
+---
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->=20
-> But I agree that QEMU_IS_ALIGNED looks weird here.  I think it should
-> mostly be used when the argument is a pointer, to hide the cast.  Uses
-> for non-pointer arguments should be decided on a one-by-one basis; "is
-> the first argument an address" is definitely a good thing to consider.
-> Another might be "is the second argument a variable", because "i % n =3D=
-=3D
-> 0" is less efficient than "(i & (n - 1)) =3D=3D 0".
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 7af278db55..b55fe39d94 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -830,7 +830,7 @@ GCOV_OPTIONS = -n $(if $(V),-f,)
+ # gtester tests, possibly with verbose output
+ 
+ .PHONY: $(patsubst %, check-qtest-%, $(QTEST_TARGETS))
+-$(patsubst %, check-qtest-%, $(QTEST_TARGETS)): check-qtest-%: $(check-qtest-y)
++$(patsubst %, check-qtest-%, $(QTEST_TARGETS)): check-qtest-%: subdir-%-softmmu $(check-qtest-y)
+ 	$(if $(CONFIG_GCOV),@rm -f *.gcda */*.gcda */*/*.gcda */*/*/*.gcda,)
+ 	$(call quiet-command,QTEST_QEMU_BINARY=$*-softmmu/qemu-system-$* \
+ 		QTEST_QEMU_IMG=qemu-img$(EXESUF) \
+-- 
+2.13.3
 
-How often is QEMU_IS_ALIGNED used on non-power-of-2?  Would it be worth
-rewriting it into bit-wise ops, at the expense of declaring that any
-code aligning to other values must open-code their own %?  Can we have
-the compiler help us ensure that the second argument is a power-of-2?
-Conversely, if the compiler is given a constant for the second argument,
-and is not optimizing modulo power of two into bitwise ops (at least at
-CFLAGS=3D-O2), then that's a compiler bug.
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---fOL1gtv5ESDb5NCiUFCopIXB7e5n2fJVT--
-
---9hvfmm8o325U8VpeThWUicNTF58AjdgqO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll15SkACgkQp6FrSiUn
-Q2orHgf/Q3alf1cx9tr1nTJ/dQ0GuruPZDZxWHU6KEIKYnNCUD/aa4VWzFswQAiG
-MPpSFm76cKusH5B1FlMA5cwgvP2MKVdOYAlWI8BplQAwJI8h7PDlP2STEDPOoWey
-susrV8qWQ69iZlOGA3i4xvdN8xvwknrQl9+sGv5dRxA+02OPxvIST4531vzD8egD
-XxmE4scret21BswRSEmNVQAcY6PVG1Fa85FKMF6BswgxsGI3QCSdNxzByPBdrWQS
-qVZ+AJs7ZGFhwyaPfJDn7OFi+v3NxzGMWoUsViZLaknqW03laVf6cE0mHlcqA/q0
-Ye3ax+qKpo0xj+8//WsNKrbJ/v1vIA==
-=ND9r
------END PGP SIGNATURE-----
-
---9hvfmm8o325U8VpeThWUicNTF58AjdgqO--
 
