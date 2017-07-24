@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZi5q-0008P3-Cv
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:28:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50165)
+	id 1dZi5v-00004t-O8
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:28:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50216)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5n-0008LT-Im
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:32 -0400
+	id 1dZi5t-0008TW-7d
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5m-0004mc-MS
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:31 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:36227)
+	id 1dZi5s-0004oJ-CK
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:37 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:37438)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5k-0004lv-Uv; Mon, 24 Jul 2017 14:28:29 -0400
-Received: by mail-qt0-x243.google.com with SMTP id l55so12883333qtl.3;
-	Mon, 24 Jul 2017 11:28:28 -0700 (PDT)
+	id 1dZi5n-0004mt-UB; Mon, 24 Jul 2017 14:28:31 -0400
+Received: by mail-qt0-x244.google.com with SMTP id d10so1058825qtb.4;
+	Mon, 24 Jul 2017 11:28:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=oC29Xthh5htKicMmTdacTWVlYUt0HacjYrnWbEybAyU=;
-	b=B1SoFQBIxILsSvlNIlj09hcY4MJWmMXE9KT0po20l0iIgp9xuy42YcjGluHqsH0OHb
-	HFuAJyPR2iotNmPTKXb0t7z4Yw82VMux+ERNHS+8tSwaqGmA+7QMynSFM/raKf3/Tduz
-	0X5Gr+KqgmCffgKaYaZR5NZ1tVtKrmQt5H45ls8oeYq7i0sRJN5Xap+WtgtdV/GrJVHK
-	riPz8IzImNOmm+FlzIL8o6p0PZFMIpzEIcpK1pxbWF79f+i00RIK76aN8ldswIbwUv9Y
-	fRQlN3Pwn5HW3ucNgHpwIRfeu0raADBLZWlFKNSFeQyr7ydrP6gY4bn4wtrzE25aqmMz
-	6bqg==
+	bh=vPG4/DR3PkvmHSx+GehJ9J4lEg0BZ/0dnKyPC4P7YvU=;
+	b=fVzKGmTfkYTWTHig7J3ZpHX9siB6X8g2HZALQ7puS9YhQEfdcw/oTd2GGqYNvplmE9
+	syREaHtf/EB4q4wYYdRxUPGEFwzImSU5esU5KHcLwDYWVkcwA0nr+AN6Gq16DFATrkl1
+	zhpY4AwkMCIdg+dYlJlEsnHO+z5WvYiT3kh3XiLkCpz2D3tMxBWAz7B94/2USuMwSgc2
+	EmyqnaH/BL9rApE9mYOIF8eghHSO81N/ni9xMXgf58JnMRExt5p+3E4WDC+dgrFLLo6q
+	c8HGtU7OKwyPIVJ8ExPyfRnxOT9yS1SUbqWczNqxGfMQMt8TTPSQVs9SxNbUwK+cZnrG
+	HoGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=oC29Xthh5htKicMmTdacTWVlYUt0HacjYrnWbEybAyU=;
-	b=tovvv7il+6EuLqda3RhI2UHT4g7WaS1huMEWbGVBw55n0jEFdJ2XckkMKhcVJXXf0g
-	XYcGUTcna4oj0j8GudOA2NSZLA6k1Fu1qe430EOR2lo0vNiJyQN3zLrkZwFxtwhBtxk1
-	t43Eiuw+RNQHC4CAJimZrBjAMAtLhPUaWBaTPdi4EoWKvCzyX30q5XepdUmun/jFEvsw
-	E4J7y0cYgNCxVqiFQRUPS1hql4o3qozxfe9jm31PMgPldBgCS/zjnxvzKn6VKxU8ldjH
-	6a4EEP3kCYgg24WxjCXWGudWXYFZHPZQJsbbaOvIkWLIOOPB5emVbBLmxhbQbY7hTv9r
-	M2aQ==
-X-Gm-Message-State: AIVw112AnZx9Vd9bMwLNy/rQXBRe9HH9UNIrSUJBhZ5n4mn4YRc/wpZq
-	Gkp/rZA7wxjeWg==
-X-Received: by 10.237.37.70 with SMTP id w6mr2464337qtc.215.1500920908397;
-	Mon, 24 Jul 2017 11:28:28 -0700 (PDT)
+	bh=vPG4/DR3PkvmHSx+GehJ9J4lEg0BZ/0dnKyPC4P7YvU=;
+	b=V8I47JMVnGiuV3pX9Nz4eqpZY5opz1/WISLavZgDETsXF15RuBofl6KU2mb3wM56u6
+	adAMnVmz8oaleQHNwueMhk7hO25rl/YJKc54IEsbT5GYf3qimtHO5yVs4Xr7zkQ5P/nE
+	SDHmn9Qfp4xVXnEwUPNiJ2GupawVk4sGqj3Hb7pk/1fSvI9MVWM18NKVv92wEkd9LoDu
+	1zyqb0hiAL0LGrSLO1iQXvIEiGA0jCKfGIJF+d2+zA7qTmsVTXm+9QgAJ3hNSuVuu01G
+	LuYqhq2SMcGicdvwQ3MFUMhR+1kJHQHXU4QxZZuTb74HpEsvw3ysKixbjqi2NMsDs0UE
+	puFA==
+X-Gm-Message-State: AIVw113oiRR88UOZC+qsK8+c9czNTST4k3o/4q6eG6RRAw+WRUAMAi9C
+	5Fim2rb2Fl1tKg==
+X-Received: by 10.200.35.47 with SMTP id a44mr20554367qta.262.1500920911374;
+	Mon, 24 Jul 2017 11:28:31 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.28.25
+	t57sm9033799qtt.18.2017.07.24.11.28.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:28:27 -0700 (PDT)
+	Mon, 24 Jul 2017 11:28:30 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,8 +54,8 @@ To: Eric Blake <eblake@redhat.com>,
 	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
-Date: Mon, 24 Jul 2017 15:27:22 -0300
-Message-Id: <20170724182751.18261-7-f4bug@amsat.org>
+Date: Mon, 24 Jul 2017 15:27:23 -0300
+Message-Id: <20170724182751.18261-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH for 2.10 06/35] qcow2: remove inconsistent
- check
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH for 2.10 07/35] qcow2: fix null pointer
+ dereference
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,31 +78,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 18:28:32 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:28:38 -0000
 
-This is equivalent to assert(russian roulette) so better remove it.
+If find_bitmap_by_name() fails we have bm=NULL and go to the 'fail' label, then
+call bitmap_free(bm) which does g_free(bm->name) with bm=NULL...
 
-block/qcow2-bitmap.c:259:29: warning: The left operand of '==' is a garbage value
-        assert(bitmap_table == NULL);
-               ~~~~~~~~~~~~ ^
+Clang's scan-build-5.0 output:
+block/qcow2-bitmap.c:492:12: warning: Access to field 'name' results in a dereference of a null pointer (loaded from variable 'bm')
+    g_free(bm->name);
+           ^~~~~~~~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- block/qcow2-bitmap.c | 1 -
- 1 file changed, 1 deletion(-)
+ block/qcow2-bitmap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
-index 3e8735a20d..fe72df5057 100644
+index fe72df5057..2fd75781ce 100644
 --- a/block/qcow2-bitmap.c
 +++ b/block/qcow2-bitmap.c
-@@ -254,7 +254,6 @@ static int free_bitmap_clusters(BlockDriverState *bs, Qcow2BitmapTable *tb)
+@@ -1259,7 +1259,7 @@ void qcow2_remove_persistent_dirty_bitmap(BlockDriverState *bs,
  
-     ret = bitmap_table_load(bs, tb, &bitmap_table);
-     if (ret < 0) {
--        assert(bitmap_table == NULL);
-         return ret;
+     bm = find_bitmap_by_name(bm_list, name);
+     if (bm == NULL) {
+-        goto fail;
++        goto fail_list;
      }
+ 
+     QSIMPLEQ_REMOVE(bm_list, bm, Qcow2Bitmap, entry);
+@@ -1274,6 +1274,7 @@ void qcow2_remove_persistent_dirty_bitmap(BlockDriverState *bs,
+ 
+ fail:
+     bitmap_free(bm);
++fail_list:
+     bitmap_list_free(bm_list);
+ }
  
 -- 
 2.13.3
