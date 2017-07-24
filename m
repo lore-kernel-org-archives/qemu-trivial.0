@@ -1,69 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZkSI-0002z0-Gx
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 16:59:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57634)
+	id 1dZkTy-0004MK-Ib
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 17:01:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58110)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dZkSH-0002yA-1z
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 16:59:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dZkTv-0004Jj-PX
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 17:01:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1dZkSG-0001FK-3O
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 16:59:53 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:33461)
+	(envelope-from <peter.maydell@linaro.org>) id 1dZkTv-0001yk-5b
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 17:01:35 -0400
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:35060)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1dZkSF-0001Dv-Sr; Mon, 24 Jul 2017 16:59:52 -0400
-Received: by mail-wm0-x242.google.com with SMTP id q189so2872251wmd.0;
-	Mon, 24 Jul 2017 13:59:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=mF9vRcJQaYmOfV6xz8/V1uSplA4ylcagY23YIrQsVj8=;
-	b=mS4qSsiqoV9t7jaH2zFWuChyAXPQA+Kpw5kSCNgNP1yCQFPxxY0g8l+saoZ0r8LyBK
-	SMCSdlSnAzib2PAE0ZCYqHaJh6PIZtBJ0WG2D2Vhtfy0wUwNzwhQyEymcP72AifudyPW
-	y7tGI3RowOCb0daxB4f4FvqWJlTt/f+xfUp5NLbGJn/Uf/tgmt9IWd1rAblW03d+TCgl
-	g0ywAVkOz1tQoI6sApJEVxLu5qoNb0+bWT+RFz9MdhNfffVL1QCjVE6YJ0vRo02ihh97
-	9K6LAr34svzSHpjAw+iO5K5vZSKEDKYlUwAQt1aO9507lGQtWUCqy1o9ESmrCEvvNjwC
-	lllw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dZkTu-0001xa-VQ
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 17:01:35 -0400
+Received: by mail-wm0-x230.google.com with SMTP id c184so35862329wmd.0
+	for <qemu-trivial@nongnu.org>; Mon, 24 Jul 2017 14:01:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=O+VE5dteh2/fp3a3iUpehO/fFTfopI6pswzEpD+TdKE=;
+	b=B6qaXET2csYcIt9BcAJyfns41P1LqKtCDF2IPPZ2TLAbl0x71nsJwmD69BwRscIwxp
+	X4CvPmpAGy9UJGUqh9DIPFJ4gNk5CHb5AeuMXEzD4vKa3ACIU2JYuD+9/W0AeyB6rU02
+	I1JsgE9Onli6YsIvAN/P/BYErCxEyFJu+QtH8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=mF9vRcJQaYmOfV6xz8/V1uSplA4ylcagY23YIrQsVj8=;
-	b=TW+Lh7zR0wOCEE1nn+ALf5JDl22xqYj/UrN1TISuJthCMauTqqJ9mZ1OK3rtHs4Dcf
-	Z4IsI8/qVu89O1IXejosemCJxSihJTMlqYjOzhezWMZo26MsAUqbr1tw8ZQ8XNANq8b6
-	F+jvAadK8yjaN4F5gDwvr4hOYi1rejmWjUIy+8QuTayx5Ji6IXVtKN4aIY/z6rd/2jTH
-	SMMvacVUgBIPALSJ49U8OqCGNsVBnkF0w8Cd1hMqr9Wsw9n+OYsNp9bphsCz1tftFvLJ
-	gReJCPM9czLGtrUY1Byyj4NGjWCS4mavNuMkWZvKMde51W0yKcC+Ows1/I5OuUG7yTIX
-	qUJg==
-X-Gm-Message-State: AIVw113nyrpO4Of88mKrM6cwqroSnwL07bJ/oUyjYQvO1RSoIUSzX7Bx
-	/ajy1RQIeXaDr/KZI2o8fHdXnw2vNw==
-X-Received: by 10.28.69.197 with SMTP id l66mr5305719wmi.140.1500929988914;
-	Mon, 24 Jul 2017 13:59:48 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=O+VE5dteh2/fp3a3iUpehO/fFTfopI6pswzEpD+TdKE=;
+	b=BVrOQtfrUFD+uHcNE2+fXsftkp7S1bbLQVLyh+1OSGA8qIpfhfiF6BfnN2QQgOlqY6
+	WeKDJ43MNXxVA5j4vaVb7v5i3wJVw5KShR40RakZ2O2IG4eDv5IIl7APfjQ0mOBvUJSO
+	GpEx8To4OobSN21BbWq5awF0xv3WTgNFnljOS1uw9p8OHRBn8WQdIE5kvUjKFqmnH+lr
+	llSA0x7cegNCm+zvUUMBpVmjjicdjkIN04EjuUDos5MriYyzi3HYjGuW90G1dhggQs3H
+	3ASaLMyoeocsowhZCvORW3aLMuM/Pk3wZ2CPTM7G4Pz2OMsXuhfcUSfwvGIKYq7pE4zq
+	WX5w==
+X-Gm-Message-State: AIVw112GzG9wl+X9Zh6qMs7CM3iaFFUwoFREXLYykyRHCfOzPA518JgB
+	uDUD39Y3s/hLTsau/aVmm09XPu2S6YVE
+X-Received: by 10.28.193.138 with SMTP id r132mr6032571wmf.155.1500930092147; 
+	Mon, 24 Jul 2017 14:01:32 -0700 (PDT)
 MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.191.88 with HTTP; Mon, 24 Jul 2017 13:59:18 -0700 (PDT)
-In-Reply-To: <12087bf6-7ff4-58f4-5a4a-1bdf1661abfb@redhat.com>
+Received: by 10.223.134.54 with HTTP; Mon, 24 Jul 2017 14:01:11 -0700 (PDT)
+In-Reply-To: <20170724182751.18261-33-f4bug@amsat.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-3-f4bug@amsat.org>
-	<12087bf6-7ff4-58f4-5a4a-1bdf1661abfb@redhat.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 24 Jul 2017 13:59:18 -0700
-X-Google-Sender-Auth: n_biBdi1435g5vQMAeopsLXtCzE
-Message-ID: <CAKmqyKNo18_JGveUWZMjspRyTPY-g2q3JcOP3tt7s8q15Wogrg@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>, 
+	<20170724182751.18261-33-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jul 2017 22:01:11 +0100
+Message-ID: <CAFEAcA9d5SE-+=YxJ_dwjvkpxs2R0QJszESExGoG2y+Bnyk2aA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 02/35] loader:
- check get_image_size() return value
+X-Received-From: 2a00:1450:400c:c09::230
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 32/35]
+ timer/pxa2xx: silent warning about out-of-bound memory access
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,36 +69,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 20:59:54 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 21:01:36 -0000
 
-On Mon, Jul 24, 2017 at 11:38 AM, Eric Blake <eblake@redhat.com> wrote:
-> On 07/24/2017 01:27 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> since a negative value means it errored.
->>
->> hw/core/loader.c:149:9: warning: Loss of sign in implicit conversion
->>     if (size > max_sz) {
->>         ^~~~
->> hw/core/loader.c:171:9: warning: Loss of sign in implicit conversion
->>     if (size > memory_region_size(mr)) {
->>         ^~~~
->>
->> Reported-by: Clang Static Analyzer
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>  hw/core/loader.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
+On 24 July 2017 at 19:27, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
+te:
+> Unlikely to happen.
 >
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-
-Thanks,
-Alistair
-
+> hw/timer/pxa2xx_timer.c:145:19: warning: Out of bound memory access (acce=
+ssed memory precedes memory block)
+>         counter =3D counters[n];
+>                   ^~~~~~~~~~~
 >
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/timer/pxa2xx_timer.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
+> index 68ba5a70b3..d47f463636 100644
+> --- a/hw/timer/pxa2xx_timer.c
+> +++ b/hw/timer/pxa2xx_timer.c
+> @@ -139,7 +139,7 @@ static void pxa2xx_timer_update4(void *opaque, uint64=
+_t now_qemu, int n)
+>      if (s->tm4[n].control & (1 << 7))
+>          counter =3D n;
+>      else
+> -        counter =3D counters[n];
+> +        counter =3D counters[n & 7];
+>
+>      if (!s->tm4[counter].freq) {
+>          timer_del(s->tm4[n].tm.qtimer);
 > --
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3266
-> Virtualization:  qemu.org | libvirt.org
->
+
+This looks rather odd, because we use a mask to guard
+the counters[] array index, but we do an access into
+another 8-element array with n both immediately
+above and immediately below that.
+
+It's not actually possible to call this function
+with n not between 0 and 7 -- if the static
+analyser can't figure that out does adding an
+assert at the top of the function help it out?
+
+thanks
+-- PMM
 
