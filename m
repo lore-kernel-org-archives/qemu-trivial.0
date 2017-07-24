@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZi5y-00008A-Np
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:28:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50272)
+	id 1dZi63-0000DR-Hk
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:28:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50314)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5w-00005w-Oy
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:41 -0400
+	id 1dZi61-0000B7-ID
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5v-0004po-Rl
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:40 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35924)
+	id 1dZi60-0004sA-OH
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:28:45 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:34194)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi5t-0004on-H8; Mon, 24 Jul 2017 14:28:37 -0400
-Received: by mail-qk0-x243.google.com with SMTP id d136so10665960qkg.3;
-	Mon, 24 Jul 2017 11:28:37 -0700 (PDT)
+	id 1dZi5w-0004pz-Cy; Mon, 24 Jul 2017 14:28:40 -0400
+Received: by mail-qt0-x244.google.com with SMTP id i19so2260718qte.1;
+	Mon, 24 Jul 2017 11:28:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=2VCA6ci3zhhoe80qtBC1tJlOXxnuy9ZJf6/QUBn12bw=;
-	b=i3fkuV8Rp7Rli7v2Bcf1vblnI8bGjyAjajDiaTCVaLuKKmECMG1nefcD0Pjm4gu7uQ
-	7LfDgyKKvUL5F4SIv8TOOmTlqmLlfdTWrmxGZYWB1Nq/to+U345IpVC4pA0kw4UlWT4A
-	eAMhEh0gRB4QI5DKjCFpLdfwvoU+OvxPRpjeO6pYSfSAsfiSBInH+iaquHC+KCBys9ky
-	Ux5ZbTT4Td88yuQbOL2DiyrnB8m7Ex4tO5Fof4VGpAgR6STojH9UmuRih8vnS0/0pDUN
-	dZmJFL7norn5nJaz/B1QiyD6Pjo9grYbYYRVx2ygPF32lzQuIp1O9354PaRj79FZNcka
-	1llw==
+	bh=HeLvrmgwsCLM/mAlPUrAzgq/PIseiLcehgwY5T3ei10=;
+	b=KK12STfJDh+fBiPb1g3m6jlBPdFKv6Vs86cbGSzhi9toc1Pj+hAsE+F5igYxtEczkO
+	eb7b9QQ4skcH5TH1jlCgenYdAuvz8BT2ejQ2qAsWOeyDK+MS57oIS/RdrJj/ChgtQHs5
+	9u697kY6OrhVnjlqaZtKLDvf6WU/XuNSAF1WvGsLiNwFf9jo/p024Ojjoqg1IFvWJ8lL
+	tzzn1jKQcM8i/JGofROWj5ymRbcQ3Nd6iCDwPYltyVWUELBjgeQjCsxBeHLoY6Z4gFTv
+	NDWrfz0nKKg6zprouebim7ddatGoicnanpu3nh0LBgge+DooLEcnKAEFseSrPX0Kf4cF
+	pkQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=2VCA6ci3zhhoe80qtBC1tJlOXxnuy9ZJf6/QUBn12bw=;
-	b=Wa4wWJJhuTTRtpuSwHF+fHLFhhOg8M6MgbXJvhWkz6G1ElMPiCRv6qO+HO4LGfU+83
-	GuwVmqWavWJNn5zxlDqFyShRJgrVxBOzg+6Qd8wHgEx11J/E1Ae0/GsdIBpls6xLbN33
-	9w8afTZRE+kPWcpZ0fmUnPfoAn49XGYm9klrsWi6WA5FUX6t1/Z9Hetu3hU6t2PZS0jv
-	Wf7U+ZG1fRVlUKP8/9LPQV0N/kbwg7yESGiVvoernDwyx/Ni7HAaBOI/f++0PkYd50pE
-	qPsShbylbhGt5yJG/+rlY/DvysUD9UsOB0w7qpdROFSEWw2A19T7+5a+tmBg+W3b0OIK
-	oHaQ==
-X-Gm-Message-State: AIVw113utoXcKWZlev3fsreGgkFk9WDEdBCbUq2CxWlv0C2a+qaShiuO
-	0WrfuKiyevzwKw==
-X-Received: by 10.55.33.77 with SMTP id h74mr22980670qkh.353.1500920917080;
-	Mon, 24 Jul 2017 11:28:37 -0700 (PDT)
+	bh=HeLvrmgwsCLM/mAlPUrAzgq/PIseiLcehgwY5T3ei10=;
+	b=ZDuZaDZtwqsShlbnKBoL8v8bXKqYvFv9PaKD5D4Xl3WLbAsuTzbkGu72/De0yRjhil
+	L7V1WxlfTZo3dvLzPhB/Y0U/VYLTVv5LhA3XfJgObQ7z8NkYGhlN5y+TyCDYXO2uCLPN
+	msT8Y7GWk5NiSWY4IhG8J5T8VePHYwsjhikxvNUhOYaC0zTALbNl69Lt/lhYYx8ZwjAZ
+	nK5XyOCgCCGwTpjW1+1i5Eo/9Q0kuRPrsl01LFziM8ZvqQ821b6yo9ZC+Kk7lyNmOk17
+	pyo/+jxHoq85k5lhUl4Y64H1pP1nh79up9gL/wLSLoh+cdoodoG0FQWIiGZLvhguqnNV
+	LRuQ==
+X-Gm-Message-State: AIVw112tf+QUAVjNoDaMYrvGZ4RQ39qLqJnNlolPpsWct/3I1ZzM2WeA
+	asDBphDvIDLglQlVE5I=
+X-Received: by 10.237.53.44 with SMTP id a41mr11358227qte.231.1500920919969;
+	Mon, 24 Jul 2017 11:28:39 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.28.34
+	t57sm9033799qtt.18.2017.07.24.11.28.37
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:28:36 -0700 (PDT)
+	Mon, 24 Jul 2017 11:28:39 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Eric Blake <eblake@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
+	Dmitry Fleytman <dmitry@daynix.com>, Jason Wang <jasowang@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 24 Jul 2017 15:27:25 -0300
-Message-Id: <20170724182751.18261-10-f4bug@amsat.org>
+Date: Mon, 24 Jul 2017 15:27:26 -0300
+Message-Id: <20170724182751.18261-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH for 2.10 09/35] ui/vnc: fix leak of
- SocketAddress **
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH for 2.10 10/35] net/eth: fix incorrect check
+ of iov_to_buf() return value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,92 +78,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 18:28:41 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:28:46 -0000
 
-Extract the (correct) cleaning code as a new function vnc_free_addresses() then
-use it to remove the memory leaks.
+So we have sizeof(struct in6_address) != sizeof(uintptr_t)
+and Clang > Coverity on this, see 4555ca6816c :)
+
+net/eth.c:426:30: warning: The code calls sizeof() on a pointer type. This can produce an unexpected result
+        return bytes_read == sizeof(dst_addr);
+                             ^     ~~~~~~~~~~
+net/eth.c:475:34: warning: The code calls sizeof() on a pointer type. This can produce an unexpected result
+            return bytes_read == sizeof(src_addr);
+                                 ^     ~~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- ui/vnc.c | 36 ++++++++++++++++++------------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+ net/eth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/ui/vnc.c b/ui/vnc.c
-index eb91559b6b..651cbb8606 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -3521,6 +3521,20 @@ static int vnc_display_get_address(const char *addrstr,
-     return ret;
- }
+diff --git a/net/eth.c b/net/eth.c
+index 5b9ba26a56..ae5d881aae 100644
+--- a/net/eth.c
++++ b/net/eth.c
+@@ -423,7 +423,7 @@ _eth_get_rss_ex_dst_addr(const struct iovec *pkt, int pkt_frags,
+                                 rthdr_offset + sizeof(*ext_hdr),
+                                 dst_addr, sizeof(*dst_addr));
  
-+static void vnc_free_addresses(SocketAddress ***retsaddr,
-+                               size_t *retnsaddr)
-+{
-+    size_t i;
-+
-+    for (i = 0; i < *retnsaddr; i++) {
-+        qapi_free_SocketAddress((*retsaddr)[i]);
-+    }
-+    g_free(*retsaddr);
-+
-+    *retsaddr = NULL;
-+    *retnsaddr = 0;
-+}
-+
- static int vnc_display_get_addresses(QemuOpts *opts,
-                                      bool reverse,
-                                      SocketAddress ***retsaddr,
-@@ -3538,7 +3552,6 @@ static int vnc_display_get_addresses(QemuOpts *opts,
-     bool has_ipv6 = qemu_opt_get(opts, "ipv6");
-     bool ipv4 = qemu_opt_get_bool(opts, "ipv4", false);
-     bool ipv6 = qemu_opt_get_bool(opts, "ipv6", false);
--    size_t i;
-     int displaynum = -1;
-     int ret = -1;
- 
-@@ -3614,16 +3627,8 @@ static int vnc_display_get_addresses(QemuOpts *opts,
-     ret = 0;
-  cleanup:
-     if (ret < 0) {
--        for (i = 0; i < *retnsaddr; i++) {
--            qapi_free_SocketAddress((*retsaddr)[i]);
--        }
--        g_free(*retsaddr);
--        for (i = 0; i < *retnwsaddr; i++) {
--            qapi_free_SocketAddress((*retwsaddr)[i]);
--        }
--        g_free(*retwsaddr);
--        *retsaddr = *retwsaddr = NULL;
--        *retnsaddr = *retnwsaddr = 0;
-+        vnc_free_addresses(retsaddr, retnsaddr);
-+        vnc_free_addresses(retwsaddr, retnwsaddr);
-     }
-     return ret;
- }
-@@ -3772,7 +3777,6 @@ void vnc_display_open(const char *id, Error **errp)
-     int acl = 0;
-     int lock_key_sync = 1;
-     int key_delay_ms;
--    size_t i;
- 
-     if (!vd) {
-         error_setg(errp, "VNC display not active");
-@@ -3993,12 +3997,8 @@ void vnc_display_open(const char *id, Error **errp)
+-        return bytes_read == sizeof(dst_addr);
++        return bytes_read == sizeof(*dst_addr);
      }
  
-  cleanup:
--    for (i = 0; i < nsaddr; i++) {
--        qapi_free_SocketAddress(saddr[i]);
--    }
--    for (i = 0; i < nwsaddr; i++) {
--        qapi_free_SocketAddress(wsaddr[i]);
--    }
-+    vnc_free_addresses(&saddr, &nsaddr);
-+    vnc_free_addresses(&wsaddr, &nwsaddr);
-     return;
+     return false;
+@@ -472,7 +472,7 @@ _eth_get_rss_ex_src_addr(const struct iovec *pkt, int pkt_frags,
+                                     opt_offset + sizeof(opthdr),
+                                     src_addr, sizeof(*src_addr));
  
- fail:
+-            return bytes_read == sizeof(src_addr);
++            return bytes_read == sizeof(*src_addr);
+         }
+ 
+         opt_offset += optlen;
 -- 
 2.13.3
 
