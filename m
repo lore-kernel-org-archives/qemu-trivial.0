@@ -1,62 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZIF1-0001yx-SU
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Jul 2017 10:52:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40342)
+	id 1dZac6-0001uH-GI
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 06:29:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47720)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dZIEz-0001xQ-28
-	for qemu-trivial@nongnu.org; Sun, 23 Jul 2017 10:52:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dZac4-0001tz-8J
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 06:29:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dZIEy-0005l8-9V
-	for qemu-trivial@nongnu.org; Sun, 23 Jul 2017 10:52:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53962)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1dZIEt-0005hx-TE; Sun, 23 Jul 2017 10:52:12 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 05E704E4CB;
-	Sun, 23 Jul 2017 14:52:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 05E704E4CB
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=pbonzini@redhat.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com 05E704E4CB
-Received: from [10.36.116.31] (ovpn-116-31.ams2.redhat.com [10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1153760BEE;
-	Sun, 23 Jul 2017 14:52:06 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	qemu trival <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU <qemu-devel@nongnu.org>, Richard Henderson <rth@twiddle.net>
-References: <20170718061005.29518-1-f4bug@amsat.org>
-	<20170718061005.29518-20-f4bug@amsat.org>
-	<CAJ+F1CJL8krrmFwCgqx6qZepkNZbcvTJrkOEVcsWiHurCBcUZw@mail.gmail.com>
-	<3b25ec9f-5711-de4c-eade-eecef96b6379@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <a49428cc-88e9-dbd8-3d2f-207acbef68f9@redhat.com>
-Date: Sun, 23 Jul 2017 16:52:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <peter.maydell@linaro.org>) id 1dZac3-00016n-B4
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 06:29:20 -0400
+Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:35970)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dZac3-00016C-1Z
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 06:29:19 -0400
+Received: by mail-wm0-x22b.google.com with SMTP id t201so14653089wmt.1
+	for <qemu-trivial@nongnu.org>; Mon, 24 Jul 2017 03:29:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Vyp9NMpKb785HIrWPxZVL2EeDFClo4I4j6yMl+56V3s=;
+	b=ZGnpvKY9twRJJgU0UM9nR672unzK4tMA89Z2mMp0kdmuarOoU1g0IwCVsCa623Dkv9
+	SJqofJ/DN7bClkezZblVtJRFK6AsPUqOv0QHV7bpgiDCRy79eab7ZeeJitcKuHl72QaH
+	rmHPbIb4mLqJBshlW9m7v67lx9+Jr8okOIfEY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Vyp9NMpKb785HIrWPxZVL2EeDFClo4I4j6yMl+56V3s=;
+	b=L0qJAa13wnIrZ5GcmgnSGJ2sJAQu/cZLWp9Ng4f+/p30O3jpM7/H7r0LDx0LLWzwrN
+	lXxzLlRZGzZd5TBJKF+TXkboxDKtViD7VsaGEkSg/1mMjUDyPL3h5IJZDzUW3sVjKuDg
+	MBO4FqZZK3hL6ztdh/a9yV5jicg22GUUHVp96SPLTaO/MwzWkmgSHC3lnh54bVR+wA6x
+	0Q4kdN2Ki2J+q3BySUbkwLCr3hsNSdHBKDtUEvwym1sSVdW2Q+ulwFdX2PQbdrIRyOtA
+	HCNd37aaJXcnaGxGKltRzQ11/gROGg1ezPv6ZZTUxtG+HesV439hwRvHuyB+BmGk0r5P
+	2o0Q==
+X-Gm-Message-State: AIVw113W+qHwLcv8oWlZyExFPKYqVB5tZYRET6qvwiO01iGxznz6nhK/
+	Y0hOdULEHRnmIxdzwv9/qNXPdkGaFYU10Vs=
+X-Received: by 10.28.40.215 with SMTP id o206mr4654545wmo.74.1500892158007;
+	Mon, 24 Jul 2017 03:29:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <3b25ec9f-5711-de4c-eade-eecef96b6379@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Sun, 23 Jul 2017 14:52:10 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 19/29] disas: use
- QEMU_IS_ALIGNED macro
+Received: by 10.223.134.54 with HTTP; Mon, 24 Jul 2017 03:28:57 -0700 (PDT)
+In-Reply-To: <1500309462-12792-1-git-send-email-peter.maydell@linaro.org>
+References: <1500309462-12792-1-git-send-email-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jul 2017 11:28:57 +0100
+Message-ID: <CAFEAcA9yup9CQzst6m14oO+7JHZ2F0mkrsnUN5LLx++=9ctqMw@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22b
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] hw/display/sm501:
+ Don't use vmstate_register_ram_global()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,50 +63,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Jul 2017 14:52:18 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 10:29:21 -0000
 
-On 18/07/2017 16:43, Thomas Huth wrote:
-> On 18.07.2017 13:07, Marc-Andr=C3=A9 Lureau wrote:
->> Hi
->>
->> On Mon, Jul 17, 2017 at 11:09 PM, Philippe Mathieu-Daud=C3=A9
->> <f4bug@amsat.org> wrote:
->>> Applied using the Coccinelle semantic patch scripts/coccinelle/use_os=
-dep.cocci
-> [...]
->>> diff --git a/disas.c b/disas.c
->>> index d335c55bbf..8b59448286 100644
->>> --- a/disas.c
->>> +++ b/disas.c
->>> @@ -151,7 +151,7 @@ static int print_insn_objdump(bfd_vma pc, disasse=
-mble_info *info,
->>>      info->read_memory_func(pc, buf, n, info);
->>>
->>>      for (i =3D 0; i < n; ++i) {
->>> -        if (i % 32 =3D=3D 0) {
->>> +        if (QEMU_IS_ALIGNED(i, 32)) {
->>>              info->fprintf_func(info->stream, "\n%s: ", prefix);
->>>          }
->>>          info->fprintf_func(info->stream, "%02x", buf[i]);
->=20
-> This looks wrong to me. QEMU_IS_ALIGNED should be used for addresses an=
-d
-> similar things. This part here is about pretty printing a hex dump.
->=20
-> The code should likely be converted to use qemu_hexdump() instead, I gu=
-ess.
+Ping for review, please? Would be nice to get this into rc0.
 
-qemu_hexdump only works with FILE*.
+thanks
+-- PMM
 
-But I agree that QEMU_IS_ALIGNED looks weird here.  I think it should
-mostly be used when the argument is a pointer, to hide the cast.  Uses
-for non-pointer arguments should be decided on a one-by-one basis; "is
-the first argument an address" is definitely a good thing to consider.
-Another might be "is the second argument a variable", because "i % n =3D=3D
-0" is less efficient than "(i & (n - 1)) =3D=3D 0".
-
-Paolo
-
-
-Paolo
+On 17 July 2017 at 17:37, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The sm501 device uses vmstate_register_ram_global() to register its
+> memory region for migration.  This means it gets a name that is
+> assumed to be global to the whole system, which in turn means that if
+> you create two of the device we assert because of the duplication:
+>
+> qemu-system-ppc -device sm501 -device sm501
+> RAMBlock "sm501.local" already registered, abort!
+> Aborted (core dumped)
+>
+> Changing this to just use memory_region_init_ram()'s automatic
+> registration of the memory region with a device-local name fixes
+> this.  The downside is that it breaks migration compatibility, but
+> luckily we only added migration support to this device in the 2.10
+> release cycle so we haven't released a QEMU version with the broken
+> implementation.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Recent refactoring that renamed the old "memory_region_init_ram"
+> to memory_region_init_ram_nomigrate" made this bug a bit easier
+> to find via grep...
+>
+>  hw/display/sm501.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index af792c5..9aa515b 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -1578,9 +1578,8 @@ static void sm501_init(SM501State *s, DeviceState *dev,
+>                    s->local_mem_size_index);
+>
+>      /* local memory */
+> -    memory_region_init_ram_nomigrate(&s->local_mem_region, OBJECT(dev), "sm501.local",
+> +    memory_region_init_ram(&s->local_mem_region, OBJECT(dev), "sm501.local",
+>                             get_local_mem_size(s), &error_fatal);
+> -    vmstate_register_ram_global(&s->local_mem_region);
+>      memory_region_set_log(&s->local_mem_region, true, DIRTY_MEMORY_VGA);
+>      s->local_mem = memory_region_get_ram_ptr(&s->local_mem_region);
+>
+> --P
 
