@@ -1,58 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZjO8-0003s4-Tz
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 15:51:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40338)
+	id 1dZkSI-0002z0-Gx
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 16:59:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZjO6-0003rp-J5
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:51:31 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dZkSH-0002yA-1z
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 16:59:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZjO2-0002yN-MZ
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:51:30 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:52324)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1dZjO2-0002x0-CB; Mon, 24 Jul 2017 15:51:26 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue103 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0MgZE7-1dCIaA0c7D-00NxEf; Mon, 24 Jul 2017 21:51:09 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Eric Blake <eblake@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-31-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <82a0e0b4-392a-020f-eb98-9bc1039f66c4@vivier.eu>
-Date: Mon, 24 Jul 2017 21:51:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <alistair23@gmail.com>) id 1dZkSG-0001FK-3O
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 16:59:53 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:33461)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dZkSF-0001Dv-Sr; Mon, 24 Jul 2017 16:59:52 -0400
+Received: by mail-wm0-x242.google.com with SMTP id q189so2872251wmd.0;
+	Mon, 24 Jul 2017 13:59:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=mF9vRcJQaYmOfV6xz8/V1uSplA4ylcagY23YIrQsVj8=;
+	b=mS4qSsiqoV9t7jaH2zFWuChyAXPQA+Kpw5kSCNgNP1yCQFPxxY0g8l+saoZ0r8LyBK
+	SMCSdlSnAzib2PAE0ZCYqHaJh6PIZtBJ0WG2D2Vhtfy0wUwNzwhQyEymcP72AifudyPW
+	y7tGI3RowOCb0daxB4f4FvqWJlTt/f+xfUp5NLbGJn/Uf/tgmt9IWd1rAblW03d+TCgl
+	g0ywAVkOz1tQoI6sApJEVxLu5qoNb0+bWT+RFz9MdhNfffVL1QCjVE6YJ0vRo02ihh97
+	9K6LAr34svzSHpjAw+iO5K5vZSKEDKYlUwAQt1aO9507lGQtWUCqy1o9ESmrCEvvNjwC
+	lllw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=mF9vRcJQaYmOfV6xz8/V1uSplA4ylcagY23YIrQsVj8=;
+	b=TW+Lh7zR0wOCEE1nn+ALf5JDl22xqYj/UrN1TISuJthCMauTqqJ9mZ1OK3rtHs4Dcf
+	Z4IsI8/qVu89O1IXejosemCJxSihJTMlqYjOzhezWMZo26MsAUqbr1tw8ZQ8XNANq8b6
+	F+jvAadK8yjaN4F5gDwvr4hOYi1rejmWjUIy+8QuTayx5Ji6IXVtKN4aIY/z6rd/2jTH
+	SMMvacVUgBIPALSJ49U8OqCGNsVBnkF0w8Cd1hMqr9Wsw9n+OYsNp9bphsCz1tftFvLJ
+	gReJCPM9czLGtrUY1Byyj4NGjWCS4mavNuMkWZvKMde51W0yKcC+Ows1/I5OuUG7yTIX
+	qUJg==
+X-Gm-Message-State: AIVw113nyrpO4Of88mKrM6cwqroSnwL07bJ/oUyjYQvO1RSoIUSzX7Bx
+	/ajy1RQIeXaDr/KZI2o8fHdXnw2vNw==
+X-Received: by 10.28.69.197 with SMTP id l66mr5305719wmi.140.1500929988914;
+	Mon, 24 Jul 2017 13:59:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170724182751.18261-31-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:7CTLe31ERnW7vi7Tl1elLNPdBJhIAPyWfm7AGFUmw/9n/49zsSM
-	WN/nvcK0iiLWOfonOg0h7LC87xuXuS8M918CAVkYLTuDR8q2tRLdmM5KwMHrqN7KMFfK0+S
-	L0+1f98rotrdqmSLi2NUrUZpqjcwQ0CxAlE1pLrM84ciS4ifXNbK3kXsGmSH/PVYVP/vZzO
-	uOjNWPv5QBymHpt2+ujbA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:liFHaHlfy/8=:Ln2EJbYPO4oJHTSdBmRZXY
-	lgu46BtK+2wkMWK3b4J2TeVasVS+G+cmRt8IiXBg3uEcRn+MAAD1etGeLbdJtMkNynqtiHpBL
-	D/MieHzghynk4T5G2qAalzYAISrENIbAxCaXQ7NuMP80JsqRxOc9EIlNkmbqUQnYFLfLfACwd
-	0fAYLw+jkTpHkISsxwBZXdxU6GrEVv2FFoH0Fc5G9TzWcwU7RIL5yzJ5xJ+WfI7SK7R2bLVsK
-	jfz2ehOBhi89MTV2XeNFEvuCahd4JKtI3X562tGCA/0Y/8w5gSxLbpapeH2mR/xTosx3h+zLw
-	F2yNdLd94WBA1gtsbqbZ3QExD3+RCoLEy4/m48/x7bVHfb1uNoVJS94/8GZCAHbvEGVrWtGa7
-	4PaJg0VN1evxwHhPepqcfSWyg0rWwsx7DqkEpzlpFojP0P2WdW5Pegec09SQL3J6Az5grUdMo
-	I9Sg3g3vjOxfU5CptxFJfk4hTqTllpWbXUdR5fUdEjJkkweB8T2xQ4jtDLBWGCWbZtHlpTZJn
-	Gkhs8M7yGNjj1v28lASFsypQFW8ijv8cgSGlvF3hbI/57X7eoJ8raq5LYoVBRtMc4Sq3g5TRm
-	xK+o2mpPQOhgzt2NcFL6f++y8Fugjem3X9F2alE9DKYoj/ou6Rr+HLZ9j60aXM663dUP/dbz6
-	HU6bIDNONMkl30JkLHmTz62nWsxLapMQHey0IA0wyT1DomVHVgqCFtO5hJjaoyyXGUOEUvqWx
-	1/5PZ8mvj/4OyfPoVIfYKrqu2ocdxRYN9/d+Kn74v4vLF6eMXYQRBRu1dhk=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 30/35] syscall: fix use of
- uninitialized values
+Sender: alistair23@gmail.com
+Received: by 10.28.191.88 with HTTP; Mon, 24 Jul 2017 13:59:18 -0700 (PDT)
+In-Reply-To: <12087bf6-7ff4-58f4-5a4a-1bdf1661abfb@redhat.com>
+References: <20170724182751.18261-1-f4bug@amsat.org>
+	<20170724182751.18261-3-f4bug@amsat.org>
+	<12087bf6-7ff4-58f4-5a4a-1bdf1661abfb@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Mon, 24 Jul 2017 13:59:18 -0700
+X-Google-Sender-Auth: n_biBdi1435g5vQMAeopsLXtCzE
+Message-ID: <CAKmqyKNo18_JGveUWZMjspRyTPY-g2q3JcOP3tt7s8q15Wogrg@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 02/35] loader:
+ check get_image_size() return value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,36 +75,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 19:51:31 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 20:59:54 -0000
 
-Le 24/07/2017 à 20:27, Philippe Mathieu-Daudé a écrit :
-> linux-user/syscall.c:1627:35: warning: 1st function call argument is an uninitialized value
->         target_saddr->sa_family = tswap16(addr->sa_family);
->                                   ^~~~~~~~~~~~~~~~~~~~~~~~
-> linux-user/syscall.c:1629:25: warning: The left operand of '==' is a garbage value
->     if (addr->sa_family == AF_NETLINK && len >= sizeof(struct sockaddr_nl)) {
->         ~~~~~~~~~~~~~~~ ^
-> 
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  linux-user/syscall.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 26450d235f..963b9c8f4b 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -1618,6 +1618,7 @@ static inline abi_long host_to_target_sockaddr(abi_ulong target_addr,
->      if (len == 0) {
->          return 0;
->      }
-> +    assert(addr);
->  
->      target_saddr = lock_user(VERIFY_WRITE, target_addr, len, 0);
->      if (!target_saddr)
-> 
+On Mon, Jul 24, 2017 at 11:38 AM, Eric Blake <eblake@redhat.com> wrote:
+> On 07/24/2017 01:27 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> since a negative value means it errored.
+>>
+>> hw/core/loader.c:149:9: warning: Loss of sign in implicit conversion
+>>     if (size > max_sz) {
+>>         ^~~~
+>> hw/core/loader.c:171:9: warning: Loss of sign in implicit conversion
+>>     if (size > memory_region_size(mr)) {
+>>         ^~~~
+>>
+>> Reported-by: Clang Static Analyzer
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> ---
+>>  hw/core/loader.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
+Thanks,
+Alistair
+
+>
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org
+>
 
