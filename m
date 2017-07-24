@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZi6P-0000gQ-6C
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:29:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50511)
+	id 1dZi6U-0000lY-0i
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:29:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50583)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6N-0000eE-1l
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:08 -0400
+	id 1dZi6S-0000jM-6v
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6M-0005GP-64
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:07 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35767)
+	id 1dZi6P-0005LI-3q
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:12 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35959)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6K-0005DV-4Z; Mon, 24 Jul 2017 14:29:04 -0400
-Received: by mail-qk0-x242.google.com with SMTP id k2so3225645qkf.2;
-	Mon, 24 Jul 2017 11:29:04 -0700 (PDT)
+	id 1dZi6N-0005HV-2W; Mon, 24 Jul 2017 14:29:07 -0400
+Received: by mail-qk0-x241.google.com with SMTP id d136so10667176qkg.3;
+	Mon, 24 Jul 2017 11:29:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=JF1zCj/a2H3l+jm97v/rsw2Xg+MX/98ug/OteBtS8tQ=;
-	b=SQU5nnGs5/ZwTNnYY7xbTl3S0fxg6N0xS7KBOBXzggGrBlwzAJuKerV1DDWcA3hluS
-	NW/dJsgoZka8XArPJhH1eP775ba8fXcRWHrEVj82vBqVDQXpXP5fO1yQEWfRyJfrAa2w
-	uZofnJ1WF6+srNO4TeZTOnPeC3e2wZn9L1arxWlYgdZgD91tIRuPxMg0PoIHKK7/kHfx
-	cxD6Rt44svnvRvJEC1t7KHsVv7MdCLM3VuzZM4OFf82UzdBA/sLWR/jYNAigd/f2At5t
-	53JR/RFG1A1XcOCSlZGu3wZEW0aQzJTU+6nfpJmiv2JmJwqYOGjyIkM128/yPZoX96to
-	RmEg==
+	bh=rS3tqT19YdULv0e9r4PvbAfIJexWBni5G2TDPShS8kQ=;
+	b=W3hijY2HaCvuu7ZY0kc+Kgkegao9kPXej/+NBBom1XsOlgH/hhHUwj94/GGzdT/LJQ
+	fhQxwMuwP12ICPY0396mOKZ7QfP/hnwsHO819ND/1tdiMl5ndV3iRyKfIhW/bN3zGu/d
+	XjY7fKz84m8gOh9ZSbX6Q6iH5lZTztNbHUXS6y72RGnYCq0REpI1WAiLyWVcZGPtXrC3
+	iHT6qFPempGuAVNGZa7/NUgmoLOMDoverzU2ftT3tOiQX9ulMd56J2tME+t3UPlXVmLy
+	+ltMOyh0WGYakS3UOYPtWgzzo+SBGo+Oos2A+CptB7c3DPR657c1VA2CKVc9Y34usu7X
+	UHZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=JF1zCj/a2H3l+jm97v/rsw2Xg+MX/98ug/OteBtS8tQ=;
-	b=awLsMcX9Q8MGEKDw22mZK/tg2pfYef79QFND51ubxUaeV9amjQ1k5U26rPvzFxYFjj
-	sGXkaAhS9VA9g2EUGKyqI14b13a1t9zz08jfdpZ+QKhmbjX9Fx1AvYKhsF5cDlw+/HCB
-	pdvov4Qq5wVVDFKXAWBHgbpsuMlG7VdUYKm1IPBE2YcvxZ/UqeNhB2eSdBxf4jJwnSQ4
-	GUCxu+t79D4Y7Q937Ei9ZUFr1+aqOtVDWfhqNZ2WD4j1cbXXvWO3c+EvOiyJ8mZK+5N2
-	mvxe7WrP3Wrz2ROrNz4J40nzdu/J+FtbgU/yLXqjjsH9/7h9Te0yTfYuc9lXqzGgRC4a
-	A7BQ==
-X-Gm-Message-State: AIVw1104IVJyoOWPzvO7f1n32L0OOlqkjNwfNvzrN/qVp4dXmp6EZjeW
-	Z/cS42q95GXpwA==
-X-Received: by 10.55.43.144 with SMTP id r16mr20732155qkr.59.1500920943718;
-	Mon, 24 Jul 2017 11:29:03 -0700 (PDT)
+	bh=rS3tqT19YdULv0e9r4PvbAfIJexWBni5G2TDPShS8kQ=;
+	b=fHdNX2rsKiHMLiBb8acxQ6EmDDwvSfK1BBYYv/JEnyumj9n/1YtukiRw8hfZ7rGSsA
+	EPbGcMWCXa5WYnXWtXt3Dzp/lW/K+5jrQiogat5QdTzlcRuD/ynCV8XJ84q8OEqN29yC
+	pw0h7fYrZx2KemP6d740EdIyLUS1KZU1gsvjrlZbniWYjCHVjfQHXihEeFXTrWth04fh
+	8yxRmraKzXh1Gom8KdqlHAXrGVrrwLbMbip3xLdNanRrZQBYbEug8a2Tf8gq7saGy+Zp
+	3HQB8zH3/LD3INV9GibA5CKV8NVofZPG2Ck6YtCV/w3zEbaF4MVgUhfc5/1yOqroOh4D
+	4mBA==
+X-Gm-Message-State: AIVw1108kmX2NoGnrmANvTjnH0/At5x371BKPGR/BBBHV0zZUO9MvGK7
+	Tq3qnjGVUxtbbw==
+X-Received: by 10.55.42.104 with SMTP id q101mr20383599qkh.84.1500920946594;
+	Mon, 24 Jul 2017 11:29:06 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.29.01
+	t57sm9033799qtt.18.2017.07.24.11.29.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:29:02 -0700 (PDT)
+	Mon, 24 Jul 2017 11:29:06 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Eric Blake <eblake@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
+	Peter Maydell <peter.maydell@linaro.org>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 24 Jul 2017 15:27:35 -0300
-Message-Id: <20170724182751.18261-20-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 24 Jul 2017 15:27:36 -0300
+Message-Id: <20170724182751.18261-21-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH for 2.10 19/35] usb/dev-mtp: fix use of
- uninitialized variable
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-trivial] [PATCH for 2.10 20/35] arm/boot: fix undefined
+ instruction on secondary smp cpu bootloader
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,31 +78,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 18:29:08 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:29:13 -0000
 
-hw/usb/dev-mtp.c:1200:15: warning: The left operand of '==' is a garbage value
-        if (o == NULL) {
-            ~ ^
+In a ARM multicore system, write_secondary_boot() only initializes fixups for
+FIXUP_GIC_CPU_IF and FIXUP_BOOTREG, while smpboot[] also uses FIXUP_DSB.
+This results in write_bootloader() using uninitialized fixupcontext[FIXUP_DSB]
+instruction in the bootloader code...
+Zero-initialize fixupcontext[] to avoid this issue.
+
+hw/arm/boot.c:157:18: warning: Assigned value is garbage or undefined
+            insn = fixupcontext[fixup];
+                 ^ ~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/usb/dev-mtp.c | 2 +-
+ hw/arm/boot.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index b4f0b5dafd..5615fb3634 100644
---- a/hw/usb/dev-mtp.c
-+++ b/hw/usb/dev-mtp.c
-@@ -1117,7 +1117,7 @@ static MTPData *usb_mtp_get_object_prop_value(MTPState *s, MTPControl *c,
- static void usb_mtp_command(MTPState *s, MTPControl *c)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c2720c8046..fb21f113c2 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -170,7 +170,7 @@ static void write_bootloader(const char *name, hwaddr addr,
+ static void default_write_secondary(ARMCPU *cpu,
+                                     const struct arm_boot_info *info)
  {
-     MTPData *data_in = NULL;
--    MTPObject *o;
-+    MTPObject *o = NULL;
-     uint32_t nres = 0, res0 = 0;
+-    uint32_t fixupcontext[FIXUP_MAX];
++    uint32_t fixupcontext[FIXUP_MAX] = {};
  
-     /* sanity checks */
+     fixupcontext[FIXUP_GIC_CPU_IF] = info->gic_cpu_if_addr;
+     fixupcontext[FIXUP_BOOTREG] = info->smp_bootreg_addr;
 -- 
 2.13.3
 
