@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZj2U-0007ZM-6b
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 15:29:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35804)
+	id 1dZj6u-0000fp-RU
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 15:33:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36683)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZj2R-0007Xz-T2
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:29:08 -0400
+	(envelope-from <laurent@vivier.eu>) id 1dZj6s-0000eS-Ks
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:33:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZj2R-0001nk-1a
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:29:07 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:58282)
+	(envelope-from <laurent@vivier.eu>) id 1dZj6r-0003Uw-NO
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 15:33:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:54607)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1dZj2M-0001iA-9g; Mon, 24 Jul 2017 15:29:02 -0400
+	id 1dZj6n-0003TU-86; Mon, 24 Jul 2017 15:33:37 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0M1XmT-1dtrPj1HR3-00tXZw; Mon, 24 Jul 2017 21:28:46 +0200
+	(mreue102 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	0M9oRE-1dT9XU3eEy-00B6Sd; Mon, 24 Jul 2017 21:33:21 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Eric Blake <eblake@redhat.com>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-32-f4bug@amsat.org>
+	<20170724182751.18261-28-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <950e1d4b-3a65-6cf5-88a7-13a986f69e0f@vivier.eu>
-Date: Mon, 24 Jul 2017 21:28:44 +0200
+Message-ID: <9ed15cf4-3b4b-2d67-7278-feb5503bd9f6@vivier.eu>
+Date: Mon, 24 Jul 2017 21:33:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170724182751.18261-32-f4bug@amsat.org>
+In-Reply-To: <20170724182751.18261-28-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:UiKYDQ3iONFBU/yLPP9PcHUWiTuac7ZPsMQ8ifza2gN3lwVqYvW
-	5gVXTVWh8qXu7YbJLuqWt5qTlfj15DZV1Ouk3OYOWHTYPyyq+8UTCpfqzBHYT6vb+tqjP7t
-	I2UsM/3mAuqVfGVphLDrzjUKDizPl3/fv3S1buRpf8yhXPHL6BzKTS4UvcoNdhzeB4037h9
-	yEyCBbj4IK6C26qJSo4EA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:380sB0VMLhY=:Kjp5VEirnzVneAN3GB+30J
-	r782k3iwybJ8y1NGOyAB5AS2tkfs/MS6tFnopPYPGQ/9q47FYHibBbtCN8pdraaFCvSinT/3y
-	yMz4sdLm8h+Z3LvHJowG+MIG4YzQxqc56BfjZPa2bMWaAfjF+PrIssWVBaO20f5lS9wbT+Tnx
-	6bMdpcueYduzxOLadpNdge4pnhjQHj99GQgjCskc6sh8dFdoZU+Ciedw8Wl+Wk8Hw8k74JBOL
-	u2GA53BGvJolZFvl5wTKfqcDq4GzE3lJXzsrnLbEcNcIq9VUPyOP5l+1mtY9+1qA1A07U32gF
-	Nx+rBdeJYvIXI0Qzi84kU+3OQYA7wv4Nmc2DMqhN4yd2+h/XpkoX4utD8k/c5t1SMypPEjETj
-	aa9uz24T5BF/F+Dk7W8ilSlOWokp0pGmHgJSN62GD0xX8IbQFrGIL76kqjiu/AfuOHYmpddhn
-	lbP/7uRmJm14l15KwwNXkqiZ04qcPWEQL8Kp/MBHKbcO08MU2uqfz/jO1RiujlGL37e/J64+b
-	K/ZxsR6gJp41lP3gSUwPvIXmn/UDDpvcW6dAGOmgQmHxPftrGQ676sGSzSJtgBuu/10PmpBc7
-	xv5tVOD66UbS09lFX1kxi+3z0oRTO+kyevcQ/m2dGOU5fCoq6OmohHrx0UvRps30GAVEGAxBA
-	A+tbwle6qmKF32kcpAflx8G63RXO2gxXKk3lq1LC3/ZuPSL/+N/uCxFiwQN67yihreB9mKbi1
-	kGv7bXdcO2CUkcib1HZZuXvZ+inK3YXfPPKlnl/tiSApxkWjNGPgGfZZAMk=
+X-Provags-ID: V03:K0:Y53w8YIqYQbuFzMKS5McNFskBfrXoPr7MuRevVkK0vs4MklnLty
+	06isbmEQ8RpMtAPhgxRTa5Pkn7khi6iLXC6g4uvS0zhfYTuhcKYhUnB9uxy4K8VxTDz6Lxa
+	6CKDn93hNh5EMn1buqA+n+8KtV2rrTdOC6UdiCx5S6Tfombe4tAKC52ODBERRm2S8azpWrj
+	KaAGItvQephiTCVhoaH3g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:da6TkT1mPrk=:GYOMTGCo6tsTa+4fc6vD6k
+	GQsGuormNALqbQqzD0D0K2pzNesVUYjQ39OdYdfrFt37HOyezVZyWwozqOqOb8egGOP7ixBVu
+	G9Uwu2xev0hcQOZ4CYkw7C2Kg9Fy0rwEwc7SSQlH2a7Ga3xYVVH4H24OXEJeJzUpXipoXAZ9N
+	gFiWMXymA+395v3AL/5kKO4329zHmK8dfwF20ErltoE+2ptP96bpRxyz0cBLrTIgatEQO5RA3
+	uJ4JYqR8p8yzGWljk7qMosb6Qu8gM9WFyMtdDQSBmLqbDDzUZg0u1eKpH6HMDXemoo5GCWzLS
+	TRWciUGYCVdpuJ1PoVhJNwAWhYW6H201YsUQaOpLrQIwnpdOTCH2wS5rj3j3tsBWJ3DWil+1q
+	PIwZP65jsVF0nTSqlBTs52wdqa3tzUh5n4LxU+EXBgqHmc4DVUeIekSmtGYJ3Yuc5SVa+StYR
+	cOXrdTx3R4g4eZBYfRjwwLYMJuVsIAGUCLB0SWMXGAy8vUlycqcRo1a4BTaiArN6gke9MesRV
+	0hM/vNUijFmoZw7IOcp68jrMvLmfE+xnwx8TVjCgddz3NYLBdM0bCyH9og2tA5oKXMDcZu+td
+	/7tEkQqQXmFWOxUefwBRHIT/AdRk0+imB/5DnlLjxgrbk/Q6ZXc4XboY6xZejTkbetQw6l1nF
+	TuC4UPXUf9szUcqUHViGmZNrz8zBAlvpc45ZukQITaCl8sLBkdyHUio8ZNbvTkyeYjFKaz83y
+	1QLxOmJDH5+iGLL2khU7udee509nooyEd2DwULjko3+C3W+QefdC6Eddtkw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 31/35] syscall: replace strcpy()
- by g_strlcpy()
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 27/35] syscall: fix dereference
+ of undefined pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,38 +64,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 19:29:08 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 19:33:43 -0000
 
 Le 24/07/2017 à 20:27, Philippe Mathieu-Daudé a écrit :
-> linux-user/syscall.c:9860:17: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
->                 strcpy (buf->machine, cpu_to_uname_machine(cpu_env));
->                 ^~~~~~
+> Clang's scan-build-5.0 reports:
+> 
+> linux-user/syscall.c:5581:9: warning: Dereference of undefined pointer value
+>     if (*host_rt_dev_ptr != 0) {
+>         ^~~~~~~~~~~~~~~~
 > 
 > Reported-by: Clang Static Analyzer
+> Suggested-by: Laurent Vivier <lvivier@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
 >  linux-user/syscall.c | 3 ++-
 >  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 963b9c8f4b..847f729834 100644
+> index fcd20fa276..e79b5baec4 100644
 > --- a/linux-user/syscall.c
 > +++ b/linux-user/syscall.c
-> @@ -9853,7 +9853,8 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->              if (!is_error(ret)) {
->                  /* Overwrite the native machine name with whatever is being
->                     emulated. */
-> -                strcpy (buf->machine, cpu_to_uname_machine(cpu_env));
-> +                g_strlcpy(buf->machine, cpu_to_uname_machine(cpu_env),
-> +                          sizeof(buf->machine));
->                  /* Allow the user to override the reported release.  */
->                  if (qemu_uname_release && *qemu_uname_release) {
->                      g_strlcpy(buf->release, qemu_uname_release,
+> @@ -5524,7 +5524,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
+>      int target_size;
+>      void *argptr;
+>      abi_ulong *target_rt_dev_ptr;
+> -    unsigned long *host_rt_dev_ptr;
+> +    unsigned long *host_rt_dev_ptr = NULL;
+>      abi_long ret;
+>      int i;
+>  
+> @@ -5570,6 +5570,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
+>      unlock_user(argptr, arg, 0);
+>  
+>      ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+> +    assert(host_rt_dev_ptr);
+>      if (*host_rt_dev_ptr != 0) {
+>          unlock_user((void *)*host_rt_dev_ptr,
+>                      *target_rt_dev_ptr, 0);
 > 
 
-We should not have a problem here as cpu_to_uname_machine() is "const
-char *" and the string is defined inside QEMU (so it should fit into
-machine[]).
+I think if you add the assert you should not have to add the "= NULL".
+Could you check?
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Thanks,
+Laurent
 
