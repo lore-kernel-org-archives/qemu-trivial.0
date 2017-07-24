@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZi6u-0001GK-Hw
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:29:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50822)
+	id 1dZi6y-0001Kh-Fp
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:29:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50861)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6q-0001C1-Ff
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:39 -0400
+	id 1dZi6v-0001HY-L7
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6p-0005kq-LO
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:36 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:34260)
+	id 1dZi6u-0005sC-Pj
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:41 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:36307)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi6n-0005ji-Pj; Mon, 24 Jul 2017 14:29:33 -0400
-Received: by mail-qt0-x244.google.com with SMTP id i19so2264078qte.1;
-	Mon, 24 Jul 2017 11:29:33 -0700 (PDT)
+	id 1dZi6q-0005m6-LB; Mon, 24 Jul 2017 14:29:36 -0400
+Received: by mail-qt0-x241.google.com with SMTP id l55so12887240qtl.3;
+	Mon, 24 Jul 2017 11:29:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=kd4Jew/zJE3yP4ur0TokL0/ky6LGLlhd6inO/dzDM28=;
-	b=famKsP+PO3aWXmIOU62g/LjKDBT64fMK/kUS8vvcEm3dWAtIc8K3N325aRylqKlVQp
-	yii9Xud/krcwisLTpDDejUWuv8WqRSoe2jgqpb4Tf0UNr67g7I8AJq1oDuSXQ4GSlivC
-	XeU+JfDt3lunmASIOUtQ5IFTe4xxUaYda6uwTYoq6ImefkcktTiSSCbpBTRFnud145Lh
-	iJlsFWQ/U3mHsF3fo/tz1orj55PZchd8pu5uR5idkoTcDfcnuTsrOPWSuX8y0uptmMoe
-	X1Zvix437NJO7fwuX4ktRP/uWWue6T5sv9vjOqJJTSNzobve0V4tO40ZQHdArfyifKey
-	K2ew==
+	bh=qnbYYX+IG7GzYSOGIFhdBZxjwL/rUovFZSD0NbwCE1A=;
+	b=JDyMQrqPvHDomUfbjjEd7QsYfpBQ4yNcl4AZiyOUnk9pQkc/JguXeKdNjw0WNmq9h5
+	T6P/ywoF96dL+P0l/6+INQ/rlxtwTXOqyYI3442G6j6t/lRSDll3caf7dswFGWmHRP13
+	EMQkqWJwgYbGs9IQ+W4LmvkjEF4zDVsc3kSbJIhtavo2Zre65Pcq6I9RZcoA3UaWioiV
+	XoAUrz323EPIayJWH6pmX53f38f1w61K7T5x0bJxrSizH0ygS/THUJwdWkGXiibRTwVg
+	ZV89QP7DpwBezmf4uQ3c4l/bdy8NwA5lmOYRsFPee9w8CfY5mcRTTEvpxC/mcqVqXRsO
+	Xh8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=kd4Jew/zJE3yP4ur0TokL0/ky6LGLlhd6inO/dzDM28=;
-	b=fAkwglibbiqwfr/HNcvUmCTInig+c/ztk9QxQjodd6GA/w9iL2rXSFQbeDFjyguj6v
-	hKG4aLcwVwOAJ9LPUa3Zz2dfZC1JuAjV+T3lMxE9LASj3xs67DyLovp8fdKxCZO6Xqqs
-	M+i8lW9FpBZnwu0PyWl4h0aT5MCEwAotDpWI9lBZTqDDMclmO/0N4wrkOG7hhKMt7nOo
-	TiqRAFlbWw9yFFj7AESl5hOHDtj4mGIYBrnnQZYZe/dy/6wRITUNoUU/dk8FDJ6xbLUy
-	TRhU82H46UVgW3wlNQJpdFbB/QVuQGbmg2jaBQ/e20WFbHVOs1q85g7xotQq1pJOJPzV
-	EV4w==
-X-Gm-Message-State: AIVw110780E1KRGgSj6WND2N+EwOrV2rHo2VsYA52amjjtYuM9XlvMo1
-	m3PHqoZItLmU0Q==
-X-Received: by 10.200.54.210 with SMTP id b18mr23441921qtc.145.1500920973331; 
-	Mon, 24 Jul 2017 11:29:33 -0700 (PDT)
+	bh=qnbYYX+IG7GzYSOGIFhdBZxjwL/rUovFZSD0NbwCE1A=;
+	b=Ll+oXSVKOCKWjthWNzh6woBDWikkOn+oKuBBICkc09GtIOwOi1WdwNkJQoiw1oKm2S
+	l5p0wZ979IMMgL8qRLq1RY1sAKdGZ56zbokeT6bN34MMyXkxQgVFDoGm+wnedp9ZSxX2
+	S/8ulpeKCD8qZcghngJ+jahgrWa5f1UORiR0tx/jywd3j26DuiRQkPSJRxPvTl4B71bH
+	fpjxkaH8KBLdeUe4A+UKDd0UapHCBqhqhLMRrl4WJZK1wLyD+oHWfQyV6aTb2ZDx9jUN
+	LZRWFwsXQSyt7f4CAp9aoJ6VUV70DyWR51yaLrhmouWcQupEmW9UNSauEOTJROC4w8H7
+	n3TA==
+X-Gm-Message-State: AIVw110JnxyVy8tNlC52691njwIM3RAUHWSMCE9BNzaJxd/JVY8C652F
+	RkTyVh3Ui0B4YQ==
+X-Received: by 10.200.46.19 with SMTP id r19mr4611467qta.24.1500920976193;
+	Mon, 24 Jul 2017 11:29:36 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.29.30
+	t57sm9033799qtt.18.2017.07.24.11.29.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:29:32 -0700 (PDT)
+	Mon, 24 Jul 2017 11:29:35 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,8 +54,8 @@ To: Eric Blake <eblake@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 24 Jul 2017 15:27:45 -0300
-Message-Id: <20170724182751.18261-30-f4bug@amsat.org>
+Date: Mon, 24 Jul 2017 15:27:46 -0300
+Message-Id: <20170724182751.18261-31-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
 References: <20170724182751.18261-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH for 2.10 29/35] syscall: fix out-of-bound
- memory access
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH for 2.10 30/35] syscall: fix use of
+ uninitialized values
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,11 +78,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 18:29:39 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:29:42 -0000
 
-linux-user/syscall.c:555:25: warning: Out of bound memory access (accessed memory precedes memory block)
-    target_fd_trans[fd] = trans;
-    ~~~~~~~~~~~~~~~~~~~~^~~~~~~
+linux-user/syscall.c:1627:35: warning: 1st function call argument is an uninitialized value
+        target_saddr->sa_family = tswap16(addr->sa_family);
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+linux-user/syscall.c:1629:25: warning: The left operand of '==' is a garbage value
+    if (addr->sa_family == AF_NETLINK && len >= sizeof(struct sockaddr_nl)) {
+        ~~~~~~~~~~~~~~~ ^
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
@@ -91,17 +94,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 637270a02d..26450d235f 100644
+index 26450d235f..963b9c8f4b 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -544,6 +544,7 @@ static void fd_trans_register(int fd, TargetFdTrans *trans)
- {
-     unsigned int oldmax;
+@@ -1618,6 +1618,7 @@ static inline abi_long host_to_target_sockaddr(abi_ulong target_addr,
+     if (len == 0) {
+         return 0;
+     }
++    assert(addr);
  
-+    assert(fd >= 0);
-     if (fd >= target_fd_max) {
-         oldmax = target_fd_max;
-         target_fd_max = ((fd >> 6) + 1) << 6; /* by slice of 64 entries */
+     target_saddr = lock_user(VERIFY_WRITE, target_addr, len, 0);
+     if (!target_saddr)
 -- 
 2.13.3
 
