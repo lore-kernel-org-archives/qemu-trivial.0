@@ -1,72 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZi7C-0001Y5-I8
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:29:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50968)
+	id 1dZiCb-0006I5-E9
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2017 14:35:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51818)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi78-0001UG-64
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:57 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1dZiCY-0006FD-5P
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:35:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi77-000671-EC
-	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:29:54 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36323)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dZi75-00065o-GC; Mon, 24 Jul 2017 14:29:51 -0400
-Received: by mail-qt0-x244.google.com with SMTP id l55so12887791qtl.3;
-	Mon, 24 Jul 2017 11:29:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=AfCcZSJYqRZF6Ur+KvtsZ+H8mfSHGJUablw83XGMtwE=;
-	b=qeJYMYjv8gBz/6lD5HmHKL8rV7bgDgzhWE5JpnfAvzz4Ov4xwBnm8CGs5yrg5MsIFZ
-	LM2143JKKNo0YTMUgqspdBtd/xCrEP7xguIhDx8mS+919aVgOuxfPpXQGCNPmKWLjG8X
-	pT3ioHug/vjL9NqErNhmyxSMl8yS+yYsFUnpcE4Psf177pDOgdH1FbLY0vKtkK4RaKcQ
-	8Vli74GfzV5b7GZmU2F9uRKlPkDrYOsfSlIRZ6prh5FSi94DsGeB+Jbv9CHqsTFFdmvL
-	FDXUyl+Fpi/NizMq2aGB0JjnaLMs2s5eiCd6AjDxQttBIqYecf8bd78COZ1QjE8zKMvb
-	UJMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=AfCcZSJYqRZF6Ur+KvtsZ+H8mfSHGJUablw83XGMtwE=;
-	b=H2BplDxLLYEc5lbEyBXRbG3II0UVHKYR4I+B51GixRp2JpVwh9cVfNigGpzZc/gNSo
-	howxTM9y7lWOrKf4SyJbluBYsZ837oe3l71p3O2gmeFKF9ei7SLVlICQOHC/KKc1dD9D
-	XNmuRPJXZZE1K1cxZmpJsahJ5nfvdZVuAZg055jc6Bx9Wr/7H6xEdBpZ4/FP3XJf6f4G
-	iMepvv7FvGWZxLDJwK/7QZYfxlN/gv9HnHF0fx6UNomf5tyGOUu1+ki2vfxnrDy2prKl
-	DBpfrJ6+b4uWC2WxEtDilrrO+27RtAnj2qq2wGJ1B2Wy7D08QYCE8QYi9SYO3W6mYG+k
-	agmw==
-X-Gm-Message-State: AIVw1132y3lsdwMYDtUgreRktzyX3TMsivE5z4JSylrwa+4MGYtM7UN0
-	pWBBVHBd72VCGg==
-X-Received: by 10.200.9.27 with SMTP id t27mr21058235qth.107.1500920991061;
-	Mon, 24 Jul 2017 11:29:51 -0700 (PDT)
-Received: from yoga.offpageads.com ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	t57sm9033799qtt.18.2017.07.24.11.29.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 24 Jul 2017 11:29:50 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Eric Blake <eblake@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Fam Zheng <famz@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 24 Jul 2017 15:27:51 -0300
-Message-Id: <20170724182751.18261-36-f4bug@amsat.org>
-X-Mailer: git-send-email 2.13.3
-In-Reply-To: <20170724182751.18261-1-f4bug@amsat.org>
-References: <20170724182751.18261-1-f4bug@amsat.org>
+	(envelope-from <dgilbert@redhat.com>) id 1dZiCX-0008Bi-8J
+	for qemu-trivial@nongnu.org; Mon, 24 Jul 2017 14:35:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59472)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1dZiCR-0008Aj-3M; Mon, 24 Jul 2017 14:35:23 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CF53461B9D;
+	Mon, 24 Jul 2017 18:35:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CF53461B9D
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=dgilbert@redhat.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.redhat.com CF53461B9D
+Received: from work-vm (ovpn-117-120.ams2.redhat.com [10.36.117.120])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C6F7E619CD;
+	Mon, 24 Jul 2017 18:35:20 +0000 (UTC)
+Date: Mon, 24 Jul 2017 19:35:18 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
+Message-ID: <20170724183517.GA2427@work-vm>
+References: <1500309462-12792-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA9yup9CQzst6m14oO+7JHZ2F0mkrsnUN5LLx++=9ctqMw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [RFC PATCH for 2.10 35/35] script to run docker image
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9yup9CQzst6m14oO+7JHZ2F0mkrsnUN5LLx++=9ctqMw@mail.gmail.com>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 24 Jul 2017 18:35:22 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.10] hw/display/sm501:
+ Don't use vmstate_register_ram_global()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,51 +61,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Jul 2017 18:29:57 -0000
+X-List-Received-Date: Mon, 24 Jul 2017 18:35:31 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- scripts/dockershell | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
- create mode 100755 scripts/dockershell
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> Ping for review, please? Would be nice to get this into rc0.
 
-diff --git a/scripts/dockershell b/scripts/dockershell
-new file mode 100755
-index 0000000000..f6a2276172
---- /dev/null
-+++ b/scripts/dockershell
-@@ -0,0 +1,30 @@
-+#! /bin/sh
-+
-+# This script starts a docker shell with QEMU directory mounted
-+#
-+# Copyright (C) 2017 Philippe Mathieu-Daudé. GPLv2+.
-+#
-+# Usage:
-+# ./scripts/dockershell qemu:debian-bleeding-dev
-+
-+if [ $# -lt 1 ]; then
-+    echo
-+    echo "error: missing image name"
-+    echo
-+    docker images qemu --no-trunc --format="- {{.Repository}}:{{.Tag}}"
-+    exit 1
-+fi
-+
-+SDIR=$(cd "$(dirname "$0")/.." && pwd -P)
-+CDIR=$(pwd -P)
-+
-+VOLS="-v /tmp:/tmp"
-+if [ "${SDIR}" = "${CDIR}" ]; then
-+    VOLS="${VOLS} -v ${SDIR}:${SDIR} -w ${SDIR}"
-+else
-+    VOLS="${VOLS} -v ${SDIR}:${SDIR}:ro -v ${CDIR}:${CDIR} -w ${CDIR}"
-+fi
-+
-+docker run --rm -it ${VOLS} \
-+    -u $(id -u) \
-+    $1
--- 
-2.13.3
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
+> 
+> thanks
+> -- PMM
+> 
+> On 17 July 2017 at 17:37, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > The sm501 device uses vmstate_register_ram_global() to register its
+> > memory region for migration.  This means it gets a name that is
+> > assumed to be global to the whole system, which in turn means that if
+> > you create two of the device we assert because of the duplication:
+> >
+> > qemu-system-ppc -device sm501 -device sm501
+> > RAMBlock "sm501.local" already registered, abort!
+> > Aborted (core dumped)
+> >
+> > Changing this to just use memory_region_init_ram()'s automatic
+> > registration of the memory region with a device-local name fixes
+> > this.  The downside is that it breaks migration compatibility, but
+> > luckily we only added migration support to this device in the 2.10
+> > release cycle so we haven't released a QEMU version with the broken
+> > implementation.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > Recent refactoring that renamed the old "memory_region_init_ram"
+> > to memory_region_init_ram_nomigrate" made this bug a bit easier
+> > to find via grep...
+> >
+> >  hw/display/sm501.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> >
+> > diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> > index af792c5..9aa515b 100644
+> > --- a/hw/display/sm501.c
+> > +++ b/hw/display/sm501.c
+> > @@ -1578,9 +1578,8 @@ static void sm501_init(SM501State *s, DeviceState *dev,
+> >                    s->local_mem_size_index);
+> >
+> >      /* local memory */
+> > -    memory_region_init_ram_nomigrate(&s->local_mem_region, OBJECT(dev), "sm501.local",
+> > +    memory_region_init_ram(&s->local_mem_region, OBJECT(dev), "sm501.local",
+> >                             get_local_mem_size(s), &error_fatal);
+> > -    vmstate_register_ram_global(&s->local_mem_region);
+> >      memory_region_set_log(&s->local_mem_region, true, DIRTY_MEMORY_VGA);
+> >      s->local_mem = memory_region_get_ram_ptr(&s->local_mem_region);
+> >
+> > --P
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
