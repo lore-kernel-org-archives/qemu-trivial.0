@@ -1,57 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZvLC-0007wc-Pf
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 04:37:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55253)
+	id 1dZvve-0001pB-T8
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 05:14:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1dZvLA-0007up-De
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 04:37:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dZvvd-0001p0-7L
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 05:14:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1dZvL9-0003jK-K5
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 04:37:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52292)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1dZvL7-0003gK-2r; Tue, 25 Jul 2017 04:37:13 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 07CF461E7C;
-	Tue, 25 Jul 2017 08:37:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 07CF461E7C
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=pass smtp.mailfrom=berrange@redhat.com
-Received: from redhat.com (ovpn-117-158.ams2.redhat.com [10.36.117.158])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 55C0860602;
-	Tue, 25 Jul 2017 08:37:06 +0000 (UTC)
-Date: Tue, 25 Jul 2017 09:37:01 +0100
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Eric Blake <eblake@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Message-ID: <20170725083701.GD26394@redhat.com>
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
-References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-10-f4bug@amsat.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1dZvvc-0006bO-Dt
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 05:14:57 -0400
+Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:35414)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dZvvc-0006at-7C
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 05:14:56 -0400
+Received: by mail-wm0-x232.google.com with SMTP id c184so46354431wmd.0
+	for <qemu-trivial@nongnu.org>; Tue, 25 Jul 2017 02:14:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=emuOkOaDVOT1/587mIhf4k5cAPTE6tU4efH0AVeqXBw=;
+	b=aW0E5KAL6Ycjdw7eS+Yn2ileWO8xHCZMTiptibnPZB5Xt1UeAkwnuYJRgGkUEIWyYg
+	QurBEI0ZhyN9VtN9osKeF49ynxy8lQIZv83OXHzn/HiKU1SGroqOE6twFPY4+GdzmvKF
+	aM8AaaBtRXh+m72tszk6abvoM4r0Et5S10F1I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=emuOkOaDVOT1/587mIhf4k5cAPTE6tU4efH0AVeqXBw=;
+	b=QiWG7y5Tbe8YbPJ2pN4sTMc1KUyATyfxuXVISjeiSGz3YLMps3qZy07sTOPthaKxu/
+	bKXT/n57tVY7WNn9APHPUaF3VI7BPsEJwUC9/pJw1VGx5iV+3s0bNz2mFAEW+w4rP7vJ
+	jWK9JUyze67mjiMl/SfAKL5KDwS+Xafo4zMdbsrCXvH2XpIoc2gOus/8eiR/2Y8H5gZM
+	sOU4xJByBXUmdwTTfcGFdE8mNu2fSYLP5l8yzucqQoe/x05iUnTBRU31QG9XKmeScu1P
+	iErwx/1amOwArsCzjvvNGUJFFKyxO+ALPsQ71r8w0DJAz1vQnJJWA0bZfCj2CQP3McG5
+	UPAg==
+X-Gm-Message-State: AIVw110jEIt54yTvwo5HcJM3oysj5/BJZ+Xwok2FxpIpOI7BBTKdf5GW
+	HoX4HaoaOn1XXSNgqaD1vkGFUkjULPII
+X-Received: by 10.28.198.206 with SMTP id w197mr7468238wmf.86.1500974095102;
+	Tue, 25 Jul 2017 02:14:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20170724182751.18261-10-f4bug@amsat.org>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 25 Jul 2017 08:37:12 +0000 (UTC)
+Received: by 10.223.134.54 with HTTP; Tue, 25 Jul 2017 02:14:34 -0700 (PDT)
+In-Reply-To: <20170725061158.10745-1-f4bug@amsat.org>
+References: <20170725061158.10745-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Jul 2017 10:14:34 +0100
+Message-ID: <CAFEAcA8QV9iScELrbOYXGmsZ2GeU9bYoNaO4mGHtNHgP8aOeWQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Fam Zheng <famz@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 09/35] ui/vnc: fix
- leak of SocketAddress **
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::232
+Subject: Re: [Qemu-trivial] [PATCH] Makefile: add
+ all-user/all-linux-user/all-softmmu meta-targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,30 +72,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2017 08:37:17 -0000
+X-List-Received-Date: Tue, 25 Jul 2017 09:14:58 -0000
 
-On Mon, Jul 24, 2017 at 03:27:25PM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+On 25 July 2017 at 07:11, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
 te:
-> Extract the (correct) cleaning code as a new function vnc_free_addresse=
-s() then
-> use it to remove the memory leaks.
->=20
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  ui/vnc.c | 36 ++++++++++++++++++------------------
->  1 file changed, 18 insertions(+), 18 deletions(-)
+> Useful to build a whole set at once.
 
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+You can already do this by not specifying a --target-list=3D
+option and using whichever of --disable-system and
+--disable-user you need to skip the ones you don't want,
+can't you?
 
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+thanks
+-- PMM
 
