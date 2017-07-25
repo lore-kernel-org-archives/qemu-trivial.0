@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1da0Ze-0004XL-6K
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 10:12:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55260)
+	id 1da128-0001va-Hw
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 10:42:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36470)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1da0Zb-0004V6-Nx
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 10:12:32 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1da125-0001qz-2e
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 10:41:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1da0ZY-0003Sj-IB
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 10:12:31 -0400
-Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:33797)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1da11z-0000sq-Rn
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 10:41:57 -0400
+Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:36182)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
-	id 1da0ZY-0003SK-9r
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 10:12:28 -0400
-Received: by mail-wr0-x231.google.com with SMTP id 12so119802636wrb.1
-	for <qemu-trivial@nongnu.org>; Tue, 25 Jul 2017 07:12:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-transfer-encoding;
-	bh=OjivPNwH41lbjOrSq7ZYsnI6cbYUoQqYUeF0bAQUx78=;
-	b=AJYUo8UGd0UE5xzPMrCCu6uqit/bApbeqVeEdltrY3YbHq95EmH+l/oyDLsmzWADNw
-	m7AJDPbSva+K3MDPw2R1uQ+I8BcMgM9P6YNctXFnGXQu7VNAIvaaovSBFlTBKA6Un0ta
-	8X92xlT4/M0HvVIVtYu0R2VQmMdpIYlMLit/Q=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1da11z-0000sY-O7; Tue, 25 Jul 2017 10:41:51 -0400
+Received: by mail-qk0-x22d.google.com with SMTP id d136so73921694qkg.3;
+	Tue, 25 Jul 2017 07:41:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=TQgMsa+7OU32RG/XcZN3RoIMN/Kxy97EVgW9jwtWqUM=;
+	b=nZDP3onF45eKm7K4oe2Yqo6EdHz+/1nvwAOWfhAU8I4/ovuK4upFP01010TB93KlII
+	zOGsxOlem5PnSVxXLXiBjhQA6Lqzg4Nu/YiOEzHttPf+UtyyWn/H0u+p4w4p3LZNjr0d
+	C7Thku3OSs2zb1lfXtrVYycbqC1WLlW5wfngRI2ZELRjO/+/rhfC5dpGZPcbfMnsSCr0
+	MKmYsPnCKWS5KldENgRvfwpwl6NhUqhWiOezsnUHrNlVhrrFYEMstyhGeVuHpd3uOz8j
+	1P/ZDnhigDqdSZ3GEwZ7WGCWV7MYMs67i1ItvrxTILwRGAqHOm3kE1qTl/waasYh43yU
+	YSUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
-	bh=OjivPNwH41lbjOrSq7ZYsnI6cbYUoQqYUeF0bAQUx78=;
-	b=ABrD3+ckxFal0Q3wmQZ5SQO6Nx+YJPNQw8fgm9wJ0agL2JV0tB5d/3FAQQZLuaBQxe
-	rMBQ+MXUxGrM02LG9Ekfvzz6BzW65HLjSasHxIU+9k+Hy4i8oyEK2I6iB5QAbIG2p86k
-	mKQkeXI80oVMlMQ/NGqDJXVfmoxTzmdWU57I9la5IXS+6OcT4nCCI6p8vT+cxqisw+Ra
-	rpCFmz0o5qESLhPwlL0QScTY+4RzbtvnDmEtWfQqhzIGLp6DYR8492Zn2+2yQ8EgdNMf
-	4azQriHgmWFyUd5sytrdukugqTOsMUn6MWPe/z8Wn1tHtiZmdBbl2l+NOYZERG9LfrNK
-	+U+g==
-X-Gm-Message-State: AIVw112lKpG6s2GGIVmYyHQHROeQf85rg7a/ORLPFnRqKtZbVdakuRIH
-	Tx29XRaBgxkeEnhl
-X-Received: by 10.223.165.23 with SMTP id i23mr5247550wrb.35.1500991947010;
-	Tue, 25 Jul 2017 07:12:27 -0700 (PDT)
-Received: from zen.linaro.local ([81.128.185.34])
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=TQgMsa+7OU32RG/XcZN3RoIMN/Kxy97EVgW9jwtWqUM=;
+	b=M/TPwWyB4ZUrbV3KJFUcYOqXz+waiJDe8v8q/PvQeu2N/fmON1Up53m/IXuX1FoM0D
+	mXoDO2scv2sPUI052OmIy7E/iU3udER1YE+0n6SKcuFRfqR9n51KTvtLIj67cwl/yglr
+	R5oOWeBUKpFlygHdtIqh9LmZJM6V2gb2nCxQOx4r6RU1EZTGiZll5OrVtiFCNRdPgqmv
+	FqdY+UeYSuimYjYz1ccbU1dPF0ZU7jKIAewlAnESAMlvKXrL85VQGvYqZbZ0/INQbY7b
+	VRm1txU0nKR4mXTfOc2yFQeEAQusJ8CNIYtgZf2wcZkyW/m+G5FJTocePZh1r9yxDh1M
+	I4fw==
+X-Gm-Message-State: AIVw112e9xyvBWLpowVF+ThBYN9SVZ9Kgtt/Dlz7s+OIPK0h40bXeFBK
+	bed9VTFBKWV5e3SNJ/rF1Q==
+X-Received: by 10.55.129.7 with SMTP id c7mr7489729qkd.29.1500993710543;
+	Tue, 25 Jul 2017 07:41:50 -0700 (PDT)
+Received: from [192.168.1.240] ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	c47sm10535108wrc.7.2017.07.25.07.12.25
+	s18sm10290183qts.77.2017.07.25.07.41.47
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 25 Jul 2017 07:12:25 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 37CED3E0127;
-	Tue, 25 Jul 2017 15:12:25 +0100 (BST)
+	Tue, 25 Jul 2017 07:41:49 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Fam Zheng <famz@redhat.com>, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-36-f4bug@amsat.org>
-User-agent: mu4e 0.9.19; emacs 25.2.50.3
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Eric Blake <eblake@redhat.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
-	<marcandre.lureau@redhat.com>, Fam Zheng <famz@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-In-reply-to: <20170724182751.18261-36-f4bug@amsat.org>
-Date: Tue, 25 Jul 2017 15:12:25 +0100
-Message-ID: <87lgncehbq.fsf@linaro.org>
+	<20170724182751.18261-36-f4bug@amsat.org> <87lgncehbq.fsf@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5effed07-96c1-ae79-32a5-46b75516bf21@amsat.org>
+Date: Tue, 25 Jul 2017 11:41:46 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <87lgncehbq.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::231
+X-Received-From: 2607:f8b0:400d:c09::22d
 Subject: Re: [Qemu-trivial] [RFC PATCH for 2.10 35/35] script to run docker
  image
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,40 +81,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2017 14:12:32 -0000
+X-List-Received-Date: Tue, 25 Jul 2017 14:41:58 -0000
 
+> This isn't appropriate for 2.10 now we are feature frozen. That said I
 
-Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
+Surely. From the cover:
 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  scripts/dockershell | 30 ++++++++++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->  create mode 100755 scripts/dockershell
->
-> diff --git a/scripts/dockershell b/scripts/dockershell
-> new file mode 100755
-> index 0000000000..f6a2276172
-> --- /dev/null
-> +++ b/scripts/dockershell
-> @@ -0,0 +1,30 @@
-> +#! /bin/sh
-> +
-> +# This script starts a docker shell with QEMU directory mounted
-> +#
-> +# Copyright (C) 2017 Philippe Mathieu-Daudé. GPLv2+.
-> +#
-> +# Usage:
-> +# ./scripts/dockershell qemu:debian-bleeding-dev
-<snip>
+"... provided at the end of this series as RFC for people wanted
+to give a try (also include 'dockershell' script and a fix in 
+./configure). These RFC patches (33-35) are not expected to enter 2.10."
 
-This isn't appropriate for 2.10 now we are feature frozen. That said I
-have pondered a helper script for this sort of thing before. As it stand
-I just rely on my shell to remember the correct invocation for me.
+Peter also commented on the "./configure" patch, so I probably 
+mis-titled "RFC" those patch
 
-This is the sort of functionality we would need for maybe cross
-compiling tests using docker.
+http://lists.nongnu.org/archive/html/qemu-devel/2017-07/msg07584.html:
+"I prefixed this patch 'RFC' to not consider it but provide it
+if someone wanted to reproduce the analysis. Maybe I should prefix it
+'XXX' next time or 'NOT FOR MERGE'."
 
---
-Alex Bennée
+better "NOT FOR REVIEW" or "!RFC"? :p
+
+> have pondered a helper script for this sort of thing before. As it stand
+> I just rely on my shell to remember the correct invocation for me.
+> 
+> This is the sort of functionality we would need for maybe cross
+> compiling tests using docker.
+
+This script is way incomplete and far being finished.
+
+Regards,
+
+Phil.
 
