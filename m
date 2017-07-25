@@ -1,72 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1da1au-0006ez-97
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 11:17:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47398)
+	id 1da1sv-0002JJ-PA
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 11:36:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1da1ar-0006ci-5G
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:17:54 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1da1sr-0002HB-Ag
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1da1ap-0000s3-Uy
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:17:53 -0400
-Received: from mail-io0-x22f.google.com ([2607:f8b0:4001:c06::22f]:33255)
+	(envelope-from <pbonzini@redhat.com>) id 1da1sm-0000hL-Bp
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:29 -0400
+Received: from mail-wm0-f51.google.com ([74.125.82.51]:37206)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1da1an-0000qp-SR; Tue, 25 Jul 2017 11:17:49 -0400
-Received: by mail-io0-x22f.google.com with SMTP id j32so36359260iod.0;
-	Tue, 25 Jul 2017 08:17:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=28nouHF9rDTlZJvEvWfbkRF+rCvTAWMkfDRKGQXKHvM=;
-	b=spz+oKPsel+nsJhwKHzhmf35RP+smag4XhQIXuDqrH0KVTq0cAWCN3WbcGQUpPABa/
-	C+NqeOAI8sHFenj0gQGoB0ytKVJCKJCrvnxPoX00/OOnHBMOH6Sk4yGuPWQpOgzcOUHh
-	snmguI08FIaNbpTOEnlCGrnGS6VjtKI+A9A/g2tJWJN3dbNSY/G6GtPOcsKjdxPujlsS
-	ObYv3NyKEyHW9xB4WcvuoFlL+ib7Lj8Vj/E3ZUc2Y7IuXzXXql4//fnjE6476DuFcuPf
-	5NXiYvbPoJvilQReNqaMDMAk9u8y/phP0OGWvY0CDPgCf12vV0t7XEbY1h1+jYQsqcUf
-	+U8Q==
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1da1sm-0000gW-60
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:24 -0400
+Received: by mail-wm0-f51.google.com with SMTP id c184so59699770wmd.0
+	for <qemu-trivial@nongnu.org>; Tue, 25 Jul 2017 08:36:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=28nouHF9rDTlZJvEvWfbkRF+rCvTAWMkfDRKGQXKHvM=;
-	b=tgKlth6IQEXWTHWaSU+aARBO0yFesM3d0si6Qd7Q9niFPS15qiiBOfNnRG2Z0+6oki
-	2eqHV0gNi1UWKVz0s9dlubAu7ZQdz1+qBvk2CupGRKM30Mvcnz4J3r4TVHQ7RIO2x1Lc
-	+RetY30abN0pD8d5zKvdwnHQaO6uosQVgRXK/qPc05zgyz6HWeNTocuIanikks+toXzQ
-	kn5QFGGN1OLMvhOqxuLZAK/GDPl9ozNiq2L8muGcvnwumYZnw35Wh8obnzKk3YVn2f0J
-	uSurvhYCDwAA70KhQhezgKUwgY1p0qPxp76rKlIwmC0GfZrcnaR4eVFE7sHWIhZJ5GTf
-	dVEg==
-X-Gm-Message-State: AIVw112haV57lJGsb+AB9N7v08bFjrlw6HpkxaSndlkcQC3lwVjjtHra
-	UgWc1MLMrhMAUqim04CYK0FU8eQyzw==
-X-Received: by 10.107.146.198 with SMTP id u189mr1629975iod.7.1500995869096;
-	Tue, 25 Jul 2017 08:17:49 -0700 (PDT)
-MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 10.107.152.16 with HTTP; Tue, 25 Jul 2017 08:17:48 -0700 (PDT)
-In-Reply-To: <87eft4eeye.fsf@linaro.org>
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=EAKnDSZBt9id2ql1XJUxJIaOnhU3sHcJUJKrgl5sP/A=;
+	b=JKt/7qy6vqRyNV1b5sihOmUBaJZLfOpcOooL/g830zpZoGZCvZZWHxQRzloGTTLYdY
+	aorACaM7ICJlIIPOvt5KcsfGvmsS3bDAboLKSR4nzIAmEeZKd++uMY3RlethVzIcEuQl
+	TXilgEzgmjVb8Dmd0RMEh5IOp8kT6xuV7p2ePmVZuSmj64a3G5QLehf6TWrHn2Jo7UFy
+	ID64do6nGVWUxRD6CHRryvryhQAYlPR/Y+FQobeTt6hupF4Qc9o+54De9PpIO9Th9djQ
+	EFn2OBcx4R0DMBGn+eG4Jv653Yu04C4qF9OLmWvACWX7N8w56oFlMlNztTdznWfo3SaA
+	Vo/w==
+X-Gm-Message-State: AIVw110ED2YH/F+oiAT3dZhYDMx9/ZVV78fG6KD8CJBFux6CvW9ru6fy
+	C09Qx3tAS6RwbYkz
+X-Received: by 10.28.34.130 with SMTP id i124mr8571164wmi.135.1500996981259;
+	Tue, 25 Jul 2017 08:36:21 -0700 (PDT)
+Received: from [192.168.10.165] (94-39-195-172.adsl-ull.clienti.tiscali.it.
+	[94.39.195.172]) by smtp.gmail.com with ESMTPSA id
+	c34sm23848730wra.80.2017.07.25.08.36.19
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 25 Jul 2017 08:36:20 -0700 (PDT)
+To: Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<f4bug@amsat.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-36-f4bug@amsat.org>
-	<87lgncehbq.fsf@linaro.org>
-	<5effed07-96c1-ae79-32a5-46b75516bf21@amsat.org>
-	<87eft4eeye.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Tue, 25 Jul 2017 12:17:48 -0300
-X-Google-Sender-Auth: f7evSpKW0WYvksx_9ALvOuDQw_k
-Message-ID: <CAAdtpL7qoN=Nn-ubFgmotB=O_BNMQ4nq4crKThuyBaORYbDi-g@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Eric Blake <eblake@redhat.com>,
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
-	Fam Zheng <famz@redhat.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c06::22f
-Subject: Re: [Qemu-trivial] [RFC PATCH for 2.10 35/35] script to run docker
- image
+	<20170724182751.18261-7-f4bug@amsat.org>
+	<35e2489f-9cd6-ae5e-39b6-297b6cf5d2ea@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <f59b38db-f2a4-cb13-73a3-8167be3df217@redhat.com>
+Date: Tue, 25 Jul 2017 17:36:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <35e2489f-9cd6-ae5e-39b6-297b6cf5d2ea@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 74.125.82.51
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 06/35] qcow2:
+ remove inconsistent check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,25 +69,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2017 15:17:54 -0000
+X-List-Received-Date: Tue, 25 Jul 2017 15:36:32 -0000
 
-On Tue, Jul 25, 2017 at 12:03 PM, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
-> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>> This isn't appropriate for 2.10 now we are feature frozen. That said I
+On 24/07/2017 20:42, Eric Blake wrote:
+> On 07/24/2017 01:27 PM, Philippe Mathieu-Daudé wrote:
+>> This is equivalent to assert(russian roulette) so better remove it.
 >>
->> Surely. From the cover:
+>> block/qcow2-bitmap.c:259:29: warning: The left operand of '==' is a garbage value
+>>         assert(bitmap_table == NULL);
+>>                ~~~~~~~~~~~~ ^
 >>
->> "... provided at the end of this series as RFC for people wanted
->> to give a try (also include 'dockershell' script and a fix in
->> ./configure). These RFC patches (33-35) are not expected to enter
->> 2.10."
->
-> My mistake - I hadn't gone over the cover letter. I would usually expect
-> a series with [PATCH for 2.10] just to contain stuff being considered
-> for the immediate future.
+>> Reported-by: Clang Static Analyzer
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  block/qcow2-bitmap.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
+>> index 3e8735a20d..fe72df5057 100644
+>> --- a/block/qcow2-bitmap.c
+>> +++ b/block/qcow2-bitmap.c
+>> @@ -254,7 +254,6 @@ static int free_bitmap_clusters(BlockDriverState *bs, Qcow2BitmapTable *tb)
+>>  
+>>      ret = bitmap_table_load(bs, tb, &bitmap_table);
+>>      if (ret < 0) {
+>> -        assert(bitmap_table == NULL);
+> 
+> Rather, we should fix bitmap_table_load() to ensure that bitmap_table is
+> always assigned, even on error.
 
-Ah I see, I used --subject-prefix=3D'PATCH for 2.10' thinking "I'v to
-remember to mark the 3 last patches as "RFC" and when I prefixed with
-"RFC" I forgot to remove the "for 2.10" suffix. My bad!
+I think it's even better to initialize bitmap_table to NULL in
+free_bitmap_clusters, as all other callers do.
+
+Paolo
+
 
