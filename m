@@ -1,63 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1da1sv-0002JJ-PA
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 11:36:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53074)
+	id 1da1uS-0003T0-1s
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 11:38:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53884)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1da1sr-0002HB-Ag
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:32 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1da1uP-0003QK-Jd
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:38:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1da1sm-0000hL-Bp
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:29 -0400
-Received: from mail-wm0-f51.google.com ([74.125.82.51]:37206)
+	(envelope-from <pbonzini@redhat.com>) id 1da1uK-0001aT-KK
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:38:05 -0400
+Received: from mail-wm0-f42.google.com ([74.125.82.42]:34674)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1da1sm-0000gW-60
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:36:24 -0400
-Received: by mail-wm0-f51.google.com with SMTP id c184so59699770wmd.0
-	for <qemu-trivial@nongnu.org>; Tue, 25 Jul 2017 08:36:22 -0700 (PDT)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1da1uK-0001Zo-Do
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 11:38:00 -0400
+Received: by mail-wm0-f42.google.com with SMTP id l81so27808005wmg.1
+	for <qemu-trivial@nongnu.org>; Tue, 25 Jul 2017 08:38:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=EAKnDSZBt9id2ql1XJUxJIaOnhU3sHcJUJKrgl5sP/A=;
-	b=JKt/7qy6vqRyNV1b5sihOmUBaJZLfOpcOooL/g830zpZoGZCvZZWHxQRzloGTTLYdY
-	aorACaM7ICJlIIPOvt5KcsfGvmsS3bDAboLKSR4nzIAmEeZKd++uMY3RlethVzIcEuQl
-	TXilgEzgmjVb8Dmd0RMEh5IOp8kT6xuV7p2ePmVZuSmj64a3G5QLehf6TWrHn2Jo7UFy
-	ID64do6nGVWUxRD6CHRryvryhQAYlPR/Y+FQobeTt6hupF4Qc9o+54De9PpIO9Th9djQ
-	EFn2OBcx4R0DMBGn+eG4Jv653Yu04C4qF9OLmWvACWX7N8w56oFlMlNztTdznWfo3SaA
-	Vo/w==
-X-Gm-Message-State: AIVw110ED2YH/F+oiAT3dZhYDMx9/ZVV78fG6KD8CJBFux6CvW9ru6fy
-	C09Qx3tAS6RwbYkz
-X-Received: by 10.28.34.130 with SMTP id i124mr8571164wmi.135.1500996981259;
-	Tue, 25 Jul 2017 08:36:21 -0700 (PDT)
+	bh=sKL3QkZjznQvzauvPzI1/9HkFClqiJj4J9wq7hdUeTY=;
+	b=lS5xi70lyqMYtLvJhrC+Ha6M0temJDbYeG9Q81A0B2+swsqGzH25tR3DGjGfo6Yoww
+	kZVKKM15yQEJLWiiN7V40bT1v46P9vwCzQy7I53EEIsZ4ACzC4/W1rfVJaNZo6GHusMp
+	apzUquSU6RtuOaDzIhEEyu93Q6uyeGsgYV3hd8KR00ubj3gP1M4ibKRUCnb5XTxYW8hA
+	bAMxFlaVQGERvA5gqm05NE3R44gDxba7LPNCgYPNYoDLjQwZFTkmWBBcs87VYYbSlTYd
+	QDCn3ipYqot3G4R+CAMvcwAbvr0bG1MgeHU7aUHYrpeIrdxDu/pgOdLrLM6CnQU52KAE
+	O9Ww==
+X-Gm-Message-State: AIVw113B3N/TzdW2ywIHRcnNmMbaxbtI+x3D1lwKtVYHANKqKAgd5v3c
+	uo1CXHB2/xkZt3zp
+X-Received: by 10.28.48.136 with SMTP id w130mr8637148wmw.54.1500997079241;
+	Tue, 25 Jul 2017 08:37:59 -0700 (PDT)
 Received: from [192.168.10.165] (94-39-195-172.adsl-ull.clienti.tiscali.it.
 	[94.39.195.172]) by smtp.gmail.com with ESMTPSA id
-	c34sm23848730wra.80.2017.07.25.08.36.19
+	39sm21182705wrc.84.2017.07.25.08.37.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 25 Jul 2017 08:36:20 -0700 (PDT)
-To: Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
-	<marcandre.lureau@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org
+	Tue, 25 Jul 2017 08:37:58 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Eric Blake <eblake@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-7-f4bug@amsat.org>
-	<35e2489f-9cd6-ae5e-39b6-297b6cf5d2ea@redhat.com>
+	<20170724182751.18261-13-f4bug@amsat.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <f59b38db-f2a4-cb13-73a3-8167be3df217@redhat.com>
-Date: Tue, 25 Jul 2017 17:36:19 +0200
+Message-ID: <e12418c8-3619-7377-1f92-02f143da5367@redhat.com>
+Date: Tue, 25 Jul 2017 17:37:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <35e2489f-9cd6-ae5e-39b6-297b6cf5d2ea@redhat.com>
+In-Reply-To: <20170724182751.18261-13-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.51
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 06/35] qcow2:
- remove inconsistent check
+X-Received-From: 74.125.82.42
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 12/35]
+ vfio/platform: fix use of freed memory
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,38 +68,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2017 15:36:32 -0000
+X-List-Received-Date: Tue, 25 Jul 2017 15:38:06 -0000
 
-On 24/07/2017 20:42, Eric Blake wrote:
-> On 07/24/2017 01:27 PM, Philippe Mathieu-Daudé wrote:
->> This is equivalent to assert(russian roulette) so better remove it.
->>
->> block/qcow2-bitmap.c:259:29: warning: The left operand of '==' is a garbage value
->>         assert(bitmap_table == NULL);
->>                ~~~~~~~~~~~~ ^
->>
->> Reported-by: Clang Static Analyzer
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  block/qcow2-bitmap.c | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
->> index 3e8735a20d..fe72df5057 100644
->> --- a/block/qcow2-bitmap.c
->> +++ b/block/qcow2-bitmap.c
->> @@ -254,7 +254,6 @@ static int free_bitmap_clusters(BlockDriverState *bs, Qcow2BitmapTable *tb)
->>  
->>      ret = bitmap_table_load(bs, tb, &bitmap_table);
->>      if (ret < 0) {
->> -        assert(bitmap_table == NULL);
+On 24/07/2017 20:27, Philippe Mathieu-Daudé wrote:
+> free the data _after_ using it.
 > 
-> Rather, we should fix bitmap_table_load() to ensure that bitmap_table is
-> always assigned, even on error.
+> hw/vfio/platform.c:126:29: warning: Use of memory after it is freed
+>         qemu_set_fd_handler(*pfd, NULL, NULL, NULL);
+>                             ^~~~
+> 
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/vfio/platform.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+> index 7c09deda61..da84abf4fc 100644
+> --- a/hw/vfio/platform.c
+> +++ b/hw/vfio/platform.c
+> @@ -120,11 +120,11 @@ static int vfio_set_trigger_eventfd(VFIOINTp *intp,
+>      *pfd = event_notifier_get_fd(intp->interrupt);
+>      qemu_set_fd_handler(*pfd, (IOHandler *)handler, NULL, intp);
+>      ret = ioctl(vbasedev->fd, VFIO_DEVICE_SET_IRQS, irq_set);
+> -    g_free(irq_set);
+>      if (ret < 0) {
+>          error_report("vfio: Failed to set trigger eventfd: %m");
+>          qemu_set_fd_handler(*pfd, NULL, NULL, NULL);
+>      }
+> +    g_free(irq_set);
+>      return ret;
+>  }
+>  
+> 
 
-I think it's even better to initialize bitmap_table to NULL in
-free_bitmap_clusters, as all other callers do.
-
-Paolo
-
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
