@@ -1,60 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dZuEQ-0005l5-II
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 03:26:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40012)
+	id 1dZvLC-0007wc-Pf
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2017 04:37:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZuEO-0005kw-8K
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 03:26:13 -0400
+	(envelope-from <berrange@redhat.com>) id 1dZvLA-0007up-De
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 04:37:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dZuEK-00065o-71
-	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 03:26:12 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:56820)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1dZuEJ-00065K-SK; Tue, 25 Jul 2017 03:26:08 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0LvAna-1dhueH3WpW-010MiG; Tue, 25 Jul 2017 09:25:48 +0200
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+	(envelope-from <berrange@redhat.com>) id 1dZvL9-0003jK-K5
+	for qemu-trivial@nongnu.org; Tue, 25 Jul 2017 04:37:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52292)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1dZvL7-0003gK-2r; Tue, 25 Jul 2017 04:37:13 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 07CF461E7C;
+	Tue, 25 Jul 2017 08:37:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 07CF461E7C
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=pass smtp.mailfrom=berrange@redhat.com
+Received: from redhat.com (ovpn-117-158.ams2.redhat.com [10.36.117.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 55C0860602;
+	Tue, 25 Jul 2017 08:37:06 +0000 (UTC)
+Date: Tue, 25 Jul 2017 09:37:01 +0100
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Cc: Eric Blake <eblake@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Message-ID: <20170725083701.GD26394@redhat.com>
+Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-28-f4bug@amsat.org>
-	<CAFEAcA86cuTukJ4HXVKDjewpxy2myPU1Gdbn671zqxJq6d09Wg@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <069e3f18-317e-49d7-263f-206d5c21a755@vivier.eu>
-Date: Tue, 25 Jul 2017 09:25:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	<20170724182751.18261-10-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA86cuTukJ4HXVKDjewpxy2myPU1Gdbn671zqxJq6d09Wg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:L3xZLhbocsLVLV891HWWeFOb8G/Xw0/LvgWHDE33pBCVfInZdjj
-	0BCS7gUs1Xw6RR7K/40yjIlHwSOr9dEC+V0NsQbgToyyX/lsK0oOngYod7O7T6FyzNieCZ0
-	2HtzH90tHYzYM0WGgkT+aph4RUhPB7eihLoiSQYS8JvaX7r96KBTMFiHBpzeYf3I67BWRQw
-	wQTLkgnvWROZucWKue/1A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:SaEEiHF1rLA=:YnCELDcYH4ajozVB9aXMrB
-	My/EI3qsa5TlnuTUuDdeE9FIqWXuRgnBPCgUEGaeemdiUdTFIseWDHSJB47q4phC/H8BRSZoy
-	1aNxuMPgMbDcDZWQO8DrDvn5W2XTe40DxHcAWtDNAYoUfTESKtxb4f91BP1yhMe4xN7r5vCcM
-	IHl+WvjNXuKsXC6NkzEu936EN3d/x8vfYCnGLQRzRXedXtZXIvJxzdwQIUOu0Q++A2+qdqDam
-	EmjVGO1jWxKD62FfTHj4WxPR42smrYjl4hUgTS6+sGS5VVxtXRyEVOmaT96uL4QkDrHPDNLNi
-	UhcXLpX3UKZEns62/Jld8PsQuZQJhTj6T0pvNnaqc5LUXGlUKCNVu62PEVsbSh88bA2mUGWGZ
-	G9XgtzV2Pb82hZAdl9mS5hiarrLw4oXVtmQuFSe8pVcNZMHhynL0BT4l9gRLg6ZLwx22oq32E
-	Bdf9a0B/Kqj4iL/fIIbXKjMhWixaP3b01tmvRCTbaGaL6gV7cS6ee2uKJJ+Syf0u7P6YVwxVS
-	4OEZ9Ug/0teVIjIa/QiTVCMQlTFaHQd2618fcBmOseWUYe+9l+AKAjoG8cnK7e3PSGEsAo2zJ
-	MbWJNF1AFgj+sKQ+p378dxokiHlZLWAvJbV8S5OZ0HSS9ijbmJo2CnXTzzAwUPnYJ6SGy8gdb
-	1MGM1YoenVdTQhR10M7z0WVHBUHIJO08vZzlFrLVB/CGSXjkevWYsmcI0DpjIFHPN39B6WNbh
-	YAIz7vL1nWFhwSSh39BWrztHZq7DRc8Tzw7QLpqwcmHS/zhnOqeZ4pf/Jgw=
+Content-Disposition: inline
+In-Reply-To: <20170724182751.18261-10-f4bug@amsat.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 25 Jul 2017 08:37:12 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 27/35] syscall: fix
- dereference of undefined pointer
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 09/35] ui/vnc: fix
+ leak of SocketAddress **
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,56 +63,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2017 07:26:13 -0000
+X-List-Received-Date: Tue, 25 Jul 2017 08:37:17 -0000
 
-Le 24/07/2017 à 23:26, Peter Maydell a écrit :
-> On 24 July 2017 at 19:27, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> Clang's scan-build-5.0 reports:
->>
->> linux-user/syscall.c:5581:9: warning: Dereference of undefined pointer value
->>     if (*host_rt_dev_ptr != 0) {
->>         ^~~~~~~~~~~~~~~~
->>
->> Reported-by: Clang Static Analyzer
->> Suggested-by: Laurent Vivier <lvivier@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  linux-user/syscall.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
->> index fcd20fa276..e79b5baec4 100644
->> --- a/linux-user/syscall.c
->> +++ b/linux-user/syscall.c
->> @@ -5524,7 +5524,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->>      int target_size;
->>      void *argptr;
->>      abi_ulong *target_rt_dev_ptr;
->> -    unsigned long *host_rt_dev_ptr;
->> +    unsigned long *host_rt_dev_ptr = NULL;
->>      abi_long ret;
->>      int i;
->>
->> @@ -5570,6 +5570,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->>      unlock_user(argptr, arg, 0);
->>
->>      ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
->> +    assert(host_rt_dev_ptr);
-> 
-> There's not much point in this assert because it doesn't
-> tell us anything we're not about to find out immediately
-> by dereferencing the pointer...
+On Mon, Jul 24, 2017 at 03:27:25PM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> Extract the (correct) cleaning code as a new function vnc_free_addresse=
+s() then
+> use it to remove the memory leaks.
+>=20
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  ui/vnc.c | 36 ++++++++++++++++++------------------
+>  1 file changed, 18 insertions(+), 18 deletions(-)
 
-It's just to shut off the warning.
+Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
 
-What I said in the comment of the previous version of this patch:
 
-I think we should "assert(host_rt_dev_ptr)" here. It's a bug if
-host_rt_dev_ptr is not set.
-
-The "for" loop scans the structure to find the rt_dev field, and we
-should always enter in the first "if", so "host_rt_dev_ptr" is always set.
-
-Thanks,
-Laurent
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|
 
