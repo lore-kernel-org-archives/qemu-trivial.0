@@ -1,53 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daQLU-0002B0-Bg
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jul 2017 13:43:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57537)
+	id 1daV6q-0003rk-2j
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jul 2017 18:48:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1daQLS-00026d-4o
-	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 13:43:38 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daV6o-0003m3-0r
+	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 18:48:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1daQLR-0001fW-G1
-	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 13:43:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35554)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1daQLM-0001cl-9n; Wed, 26 Jul 2017 13:43:32 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 39BDA8E382;
-	Wed, 26 Jul 2017 17:43:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 39BDA8E382
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=alex.williamson@redhat.com
-Received: from w520.home (ovpn-116-254.phx2.redhat.com [10.3.116.254])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DDB8E5D96C;
-	Wed, 26 Jul 2017 17:43:28 +0000 (UTC)
-Date: Wed, 26 Jul 2017 11:43:28 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Eric Blake <eblake@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Message-ID: <20170726114328.43416891@w520.home>
-In-Reply-To: <20170724182751.18261-13-f4bug@amsat.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daV6k-0006mv-Uo
+	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 18:48:50 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:36478)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1daV6k-0006mQ-Nr; Wed, 26 Jul 2017 18:48:46 -0400
+Received: by mail-pg0-x244.google.com with SMTP id y129so18576389pgy.3;
+	Wed, 26 Jul 2017 15:48:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=KHObEARGRAlXDcQkEjf1TDN5s3njmklKvxu8vVoe+Pk=;
+	b=kxbyitEqH1JFR6Gz9haXdmNciI6BRX04wY3asjAfEVJC1HUyG2DzOvGyKOFJ6i6M0F
+	SYzECYK8AVl96j/Uqy52RY/7vY9cTbG9eORyzUmcCBroRhSCa+PRsHJK7de1ZPQUCzQm
+	mln0WLjeQzoKQtPPZqJW9y/6m6jNFgyFuehec8gnm0FPK4Lg8EgbzoJ4+xfsBj9n2ZKP
+	Fhgqu4Ra2YJ/zZVV5y2A4yrWqi+26tY3gKXQ0g3LLIKQ/bPIBTZ6KFS5qSWDE7iqj+Yy
+	HuDd/N96R362FOe7IvKT3mU7Nh/3/CbS0uDHg9UB+DV1Uuge7rc6YIgcSX0G+HWJ9u+9
+	yRkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=KHObEARGRAlXDcQkEjf1TDN5s3njmklKvxu8vVoe+Pk=;
+	b=S4GyHJw6iU6jlEF1eW09V71mwIDq6dL56S6ksl3GsXekTrrs9/3VE0WGedsNZ1KJIe
+	MsW6VB4bnXMES5qA5uFemUrkWvP7ZBV4NVC5H2oSFfUn2RBCSjESeVE24o8nw5Ep+YTY
+	MFWPKQF8nNV+NbAt+iFwmg00X+J1IbyiVjHPfUuNbDEgMRe1eXHx+o4CMJG8TaFTeR0I
+	z5D8AzP68oKCh40SgJ7mgobFgRhaxuzCGklkKEI256Xb2y64xq1WzEL8JjahB23qmlbm
+	2FNnmGHYYL76gA2S5QxJXVnxE0hbPnejibCRnZQwygsAXGGXCsk/rsl4FoMlzy1EJYg1
+	uVqw==
+X-Gm-Message-State: AIVw11260Lq7BUtn0wbaWz37RwBmiUy1jB5kEwJYCY2RkIWJQXJUT26s
+	Rw9gJvyVTZU4rCNa3AGSSQ==
+X-Received: by 10.98.67.147 with SMTP id l19mr2172285pfi.198.1501109325277;
+	Wed, 26 Jul 2017 15:48:45 -0700 (PDT)
+Received: from [192.168.1.10] ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	q24sm37393053pfg.167.2017.07.26.15.48.41
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 26 Jul 2017 15:48:43 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-13-f4bug@amsat.org>
+	<20170724182751.18261-4-f4bug@amsat.org>
+	<acb16999-952f-bd1e-254b-befe65a259d3@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <06c19484-b285-ccd8-90d1-2557191b6d2e@amsat.org>
+Date: Wed, 26 Jul 2017 19:48:38 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 26 Jul 2017 17:43:31 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 12/35] vfio/platform: fix use of
- freed memory
+In-Reply-To: <acb16999-952f-bd1e-254b-befe65a259d3@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 03/35] thunk: check nb_fields is
+ valid before continuing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,43 +82,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jul 2017 17:43:39 -0000
+X-List-Received-Date: Wed, 26 Jul 2017 22:48:51 -0000
 
-On Mon, 24 Jul 2017 15:27:28 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+On 07/24/2017 03:37 PM, Eric Blake wrote:
+> On 07/24/2017 01:27 PM, Philippe Mathieu-Daudé wrote:
+>> thunk.c:91:32: warning: Call to 'malloc' has an allocation size of 0 bytes
+>>          se->field_offsets[i] = malloc(nb_fields * sizeof(int));
+>>                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>
+>> Reported-by: Clang Static Analyzer
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   thunk.c | 5 ++++-
+>>   1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> Better would be fixing the code to use g_new0, and the corresponding free.
 
-> free the data _after_ using it.
->=20
-> hw/vfio/platform.c:126:29: warning: Use of memory after it is freed
->         qemu_set_fd_handler(*pfd, NULL, NULL, NULL);
->                             ^~~~
->=20
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/vfio/platform.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index 7c09deda61..da84abf4fc 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -120,11 +120,11 @@ static int vfio_set_trigger_eventfd(VFIOINTp *intp,
->      *pfd =3D event_notifier_get_fd(intp->interrupt);
->      qemu_set_fd_handler(*pfd, (IOHandler *)handler, NULL, intp);
->      ret =3D ioctl(vbasedev->fd, VFIO_DEVICE_SET_IRQS, irq_set);
-> -    g_free(irq_set);
->      if (ret < 0) {
->          error_report("vfio: Failed to set trigger eventfd: %m");
->          qemu_set_fd_handler(*pfd, NULL, NULL, NULL);
->      }
-> +    g_free(irq_set);
->      return ret;
->  }
-> =20
+Ok, for 2.11 although (not a fix).
 
-I'll snag this and 13/35 for a pull request with Paolo's R-b.  Connie
-has already put a fix in for the other vfio related one, 14/35.  Thanks!
-
-Alex
+Also thunk* alloc'd are never free'd during process lifetime, so will 
+keep like that (no g_free).
 
