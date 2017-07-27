@@ -1,50 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dah9i-0001QI-GO
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 07:40:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43178)
+	id 1dahhQ-00038k-CA
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 08:15:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42425)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dah9g-0001Q7-I2
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:37 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dahhO-00038L-A7
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1dah9d-0001Ua-OH
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:36 -0400
-Received: from 19.mo4.mail-out.ovh.net ([87.98.179.66]:38215)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dah9d-0001Qz-GP
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:33 -0400
-Received: from player759.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 6E29789035
-	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 13:40:24 +0200 (CEST)
-Received: from bahia.lan (deibp9eh1--blueice1n7.emea.ibm.com [195.212.29.161])
-	(Authenticated sender: groug@kaod.org)
-	by player759.ha.ovh.net (Postfix) with ESMTPSA id 0850C6400C8;
-	Thu, 27 Jul 2017 13:40:12 +0200 (CEST)
-Date: Thu, 27 Jul 2017 13:40:05 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?TWFyYy1BbmRyw6k=?=
-	Lureau <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Eric Blake <eblake@redhat.com>, "Aneesh Kumar K . V"
-	<aneesh.kumar@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Message-ID: <20170727134005.76e74eb6@bahia.lan>
-In-Reply-To: <20170727024224.22900-18-f4bug@amsat.org>
-References: <20170727024224.22900-1-f4bug@amsat.org>
-	<20170727024224.22900-18-f4bug@amsat.org>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	(envelope-from <peter.maydell@linaro.org>) id 1dahhN-0002Hh-Gj
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:26 -0400
+Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:37391)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dahhN-0002H1-AY
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:25 -0400
+Received: by mail-wr0-x22d.google.com with SMTP id 33so86333582wrz.4
+	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 05:15:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Yyz2FatahnTiQbf7qNDWVOahPecabKISRH+06Rh6XNw=;
+	b=I6q4Nf14XbSllqXhXK4tZlXAPQCcBFcuLt1IWOhAXHC9vzSw3bLYUUrhljq6Y/qsfB
+	JM97AVeeSjHlv2GR6jcppBEW3i1AbY6yVNoHdsMeU9B8aLu3GWS0o4HzL05kymowpLbv
+	55SyRxSLspXeX86eF0Hho1LhRF9nRUnygE504=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Yyz2FatahnTiQbf7qNDWVOahPecabKISRH+06Rh6XNw=;
+	b=rlHxcl879tF6l+gCkQBFOrhkybqjMxgiYsplqLEVQ2y4LhY/xcaX3x1075Xcmvjlc7
+	ZfFHOXAvLVqc28dZC+0OURksEpXLjQazy5jUXNt8oogpCPp3NL3e2/2XNDF5eJjdxolE
+	aSS7hG9on6NrlbpBa4X38g3DXR6Y8h7p1Y7M56QD646V9CvV8fuksYLrwhD12Xbmq/ix
+	Lr9rr/5FN9RSzhynyXV5eAXgwy8pJYFobgzkWR4D+loKGAVJPMfzgOVCEYQU5Y4G/RLO
+	aiBR3S8Y4THJJEhiSS1ICZNYiQcG3U/JsXd7/7BpC+OcaOj40HS9BGbaE7B80Goe3xbA
+	h7CQ==
+X-Gm-Message-State: AIVw11313up6JIX8jmQDrBv0jr/RoydaYfwpKgjDONfd6QXMpW4YNoDm
+	cn/Y/4HOMSkx9O5CQn6t2bzxVdfpLEy1
+X-Received: by 10.223.160.229 with SMTP id n34mr3817776wrn.117.1501157723985; 
+	Thu, 27 Jul 2017 05:15:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/bfnJXxrYhM9lY8WmPrISK5q";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 15071296153352247748
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrheelgdeggecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 87.98.179.66
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 18/20] 9pfs: avoid sign
- conversion error simplifying the code
+Received: by 10.223.134.54 with HTTP; Thu, 27 Jul 2017 05:15:03 -0700 (PDT)
+In-Reply-To: <20170727120210.6943-2-crosa@redhat.com>
+References: <20170727120210.6943-1-crosa@redhat.com>
+	<20170727120210.6943-2-crosa@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Jul 2017 13:15:03 +0100
+Message-ID: <CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
+To: Cleber Rosa <crosa@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::22d
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] configure: remove
+ duplicate single quotes on config.log header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,74 +64,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 11:40:37 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 12:15:27 -0000
 
---Sig_/bfnJXxrYhM9lY8WmPrISK5q
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 27 July 2017 at 13:02, Cleber Rosa <crosa@redhat.com> wrote:
+> The generation of the informational header on config.log contains two
+> pairs of single quotes, which seems unintentional, and looks like
+> this:
+>
+>   # QEMU configure log Thu Jul 26 08:17:15 EDT 2017
+>   # Configured with: './configure' '--target-list=x86_64-softmmu'
 
-On Wed, 26 Jul 2017 23:42:22 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+I think this is deliberate. The idea is that the string is a
+validly shell-quoted string that you can cut and paste
+into a shell prompt if you want to. (This is less important
+than it used to be now we have config.status.)
 
-> (note this is how other functions also handle the errors).
->=20
-> hw/9pfs/9p.c:948:18: warning: Loss of sign in implicit conversion
->         offset =3D err;
->                  ^~~
->=20
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
+If your configure command has more than one line you get
+something like this:
 
-Reviewed-by: Greg Kurz <groug@kaod.org>
+# Configured with: '../../configure'
+'--target-list=arm-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user'
+'--enable-debug' '--cc=ccache gcc' '--audio-drv-list=pa'
 
-Now, I'm not sure this can be merged during hard freeze since it is
-more code cleanup than actual bug fixing...
+...and note in particular how the '--cc=ccache gcc' argument
+is printed. Your change would give
 
->  hw/9pfs/9p.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index 333dbb6f8e..0a37c8bd13 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -945,7 +945,6 @@ static void coroutine_fn v9fs_version(void *opaque)
->      v9fs_string_init(&version);
->      err =3D pdu_unmarshal(pdu, offset, "ds", &s->msize, &version);
->      if (err < 0) {
-> -        offset =3D err;
->          goto out;
->      }
->      trace_v9fs_version(pdu->tag, pdu->id, s->msize, version.data);
-> @@ -962,13 +961,12 @@ static void coroutine_fn v9fs_version(void *opaque)
-> =20
->      err =3D pdu_marshal(pdu, offset, "ds", s->msize, &version);
->      if (err < 0) {
-> -        offset =3D err;
->          goto out;
->      }
-> -    offset +=3D err;
-> +    err +=3D offset;
->      trace_v9fs_version_return(pdu->tag, pdu->id, s->msize, version.data);
->  out:
-> -    pdu_complete(pdu, offset);
-> +    pdu_complete(pdu, err);
->      v9fs_string_free(&version);
->  }
-> =20
+# Configured with: '../../configure
+--target-list=arm-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user
+--enable-debug --cc=ccache gcc --audio-drv-list=pa'
 
+which can't be cut and pasted, and is ambiguous.
 
---Sig_/bfnJXxrYhM9lY8WmPrISK5q
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAll50RYACgkQAvw66wEB28LfBQCgjlsg2Pm9Nzt8b8MzQjfKhtrp
-WnEAn1nTWirDcX4MlUK7hE0/sHDZRzEL
-=wsQE
------END PGP SIGNATURE-----
-
---Sig_/bfnJXxrYhM9lY8WmPrISK5q--
+thanks
+-- PMM
 
