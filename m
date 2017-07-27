@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dacSe-0004Yo-Sh
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 02:39:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48205)
+	id 1dacSl-0004dk-3U
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 02:39:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dacSc-0004XE-Tr
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 02:39:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1dacSg-0004aY-Tr
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 02:39:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dacSb-0000rX-Uw
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 02:39:50 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:55846)
+	(envelope-from <laurent@vivier.eu>) id 1dacSd-0000u1-PN
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 02:39:54 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:50695)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1dacSX-0000kg-93; Thu, 27 Jul 2017 02:39:45 -0400
+	id 1dacSd-0000sD-FG; Thu, 27 Jul 2017 02:39:51 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MBG3l-1dSgVV0tPx-00ABY8; Thu, 27 Jul 2017 08:39:24 +0200
+	0MPc3R-1dVxlJ3Df7-004k0y; Thu, 27 Jul 2017 08:39:36 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
@@ -22,38 +22,38 @@ To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Riku Voipio <riku.voipio@iki.fi>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170727024224.22900-1-f4bug@amsat.org>
-	<20170727024224.22900-15-f4bug@amsat.org>
+	<20170727024224.22900-13-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <5cd7f2d6-04e7-52a5-c045-973b9ef0d365@vivier.eu>
-Date: Thu, 27 Jul 2017 08:39:21 +0200
+Message-ID: <d95e5790-09c5-1075-0cd9-4f33daedd566@vivier.eu>
+Date: Thu, 27 Jul 2017 08:39:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170727024224.22900-15-f4bug@amsat.org>
+In-Reply-To: <20170727024224.22900-13-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:5WKiMxoT7Jf8LYQrqz/tsAOqGFpSNMtCbi84oGkfX1lge/zffnO
-	OA1kwcf/lUl+WwF9TILRscl+Ycawvow3ZBoot5EtCJyJKJnlqDVbHPKCXforKXm18vnDQqy
-	lvWdvKexhoIxqDj+527HaX729ET8JF6RqFVJG5dMHT8QtUZwArt7+PP1Abrk3+ueks0sn5f
-	x89JaAHSMJCA5+jaUF9Tw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:R4aURpxlmGk=:+aPW4NhNZYdqTmc6K9uzmc
-	AvXmLQV/OMO21wg3BTluNV3hli6N5IZBnh6/5E6ZpglG+CF0AEXWAcFIzUeCrAEMkBPv/6RvO
-	Bjfpc0qODsxSf6DECaq4A4PSAgl0seM4KAeCNwQ4SVq55VxC5O0vZWokELXbB2gXBvymaGRXX
-	OxHvbOcgn7BeOtegv8G/BKde7RhG+wKC3y+d6O7fp8HEPyrIiiA8y+r2LHpxh6jsslFi/zx5G
-	N38+bYaNDR/ZLuFO+yRDq7D55z2qEc/zUuM4Q+zamxwmqTMnLtxuyT1BshtZVk2+M0EZrhnZh
-	POfxy0kAA/9kfh+eN/81S0aSESyCkL8ytEu9JGBCVInHU/BpB0PP917pCPMkDefpL4SOAsw6G
-	jGcKYnIOg4cgi5NDH4PSKoi0TqFO3PRDMQLtH1CvJ8C6BrV6ggU2JzllQ4oYsqUTAw4eObg6y
-	+y7dtE7ynu8AiI/DKzUxJZN1CC272wHy26Gh6L7SjTxwM5q0fhhGHUs5GTnrtoWeUmWTujMwr
-	77IyJm+W/Ed7wzsc7ifglfh5BA6Gcvxb5Nwen8xEyzzc/c9YJ/Uh/BzvJ1PcSfv0W2i0i2Xrt
-	0OBZ5psTY2RPloHqPvSDHQtc49x2TZDdMrrDAbNIsXq2Kdi1BjXeA18MmdTtMnqqKuB5hCR8F
-	dt3o/xE7smK/EhiD/DgI45Zqc7x8W/FSVwpsufT7hNgzgrMwFbCTdT3k4pvGKpUmY2mDat8Bd
-	yUCynaJen/s3T6NXnvfgOINe0TqriUUd3LzdSChAzmJ4qq6YT7WrMqWb70E=
+X-Provags-ID: V03:K0:GZEfrkyvxFQhmFPaEdJByC2mEO6XAzlQbP1Tr5hvjcU+JPf0eOL
+	LlwXXCvOUrPUo4M5PpyR5h5U3YNdg7cG7JGZ8Xeq2ti48SyaxDADqmaqPAvAZnyatROaxad
+	giT+an9t+RebuAFzMpFiJ1QVHAS1LESW71Z+uiKudFyhBfEe4Bu9AMExuicxT8OUxes9mQs
+	MBKB5ddlqVlHgPWbqd9sw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:poBiRroupCI=:NxMDBoDwWVZrTWDp3+ZHx9
+	G2NkdGbhMzpVZVUC3/Lt3HLpvQtGlMaXtYEV9ZW9Xuw95j7GY7ms1RjLQxFxyqLQVK7wHhKxU
+	sMgt1YvKdRIdbNX8EFfa5aJMu+cki7wLtZrEOa6u9qwEpdboXpbVWwnPApSB7jUytd/JEyh5L
+	wP3f9aGEmAgJ7QyC95ciUDW9SXoFzGgGaJG3bM9A+9r36NN0nvRi8ebAQSrWKpIsh2yieCpSi
+	Osoa9pNgvzS++zx9K4/8qRn7XeEVF7Ws9o6orq7llPM/V31VSvXXMDGF4HxzRIJDlzeBN8kGj
+	wGLGOnF/Coy589aHDtxoviaAPIJafObcjSP7YmO1oc2A235uFWBP3oS14yqtX5++bqJer08ZL
+	gHoe9zhD9fvIAzF2mw+XwsPtsid23Z++fhizbtZA1c0Kii5PKsE3s2ieDx/XpHkCURFlsS/od
+	Y2tVUUQSgqvfHpsdjslB837io1aojwdCqDJzqYtwuCyG7SpvmFtBotxDSXTAtgu5Ij2jufAds
+	vibkuCzqyxCw8np+Eyy92NUFbGclpJHt07w2xUAoUxMiSLKqZSwGc8Elg7XbL7jcyQgV/H2PR
+	bLFoeoLwp/J5WpcUPjB5e4HvHyjmuXojG+bTCzHW9M9NGYHTsM3IYsK590VnjgFcU4C0ALGLT
+	eOaW/TpEf9pt/gohrtfHoIAH72TPaKZicsIMod4ipobAcno1D/4qPrTTQeQT8PkUztlM4XDb3
+	yE/a0HEXGVp9bb0pa7cYJL/AzyRCnA7eYb0d4DZ01kTBi/2eznEMbQ3pWmQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 14/20] syscall: check
- inotify() and eventfd() return value
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 12/20] syscall: fix
+ dereference of undefined pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,12 +65,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 06:39:52 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 06:39:58 -0000
 
 Le 27/07/2017 à 04:42, Philippe Mathieu-Daudé a écrit :
-> linux-user/syscall.c:555:25: warning: Out of bound memory access (accessed memory precedes memory block)
->     target_fd_trans[fd] = trans;
->     ~~~~~~~~~~~~~~~~~~~~^~~~~~~
+> linux-user/syscall.c:5581:9: warning: Dereference of undefined pointer value
+>     if (*host_rt_dev_ptr != 0) {
+>         ^~~~~~~~~~~~~~~~
 > 
 > Reported-by: Clang Static Analyzer
 > Suggested-by: Laurent Vivier <lvivier@redhat.com>
@@ -79,57 +79,21 @@ Le 27/07/2017 à 04:42, Philippe Mathieu-Daudé a écrit :
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
 > ---
->  linux-user/syscall.c | 16 ++++++++++++----
->  1 file changed, 12 insertions(+), 4 deletions(-)
+>  linux-user/syscall.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 81f52f7483..dfc1301e63 100644
+> index 003943b736..71d45a9963 100644
 > --- a/linux-user/syscall.c
 > +++ b/linux-user/syscall.c
-> @@ -11742,7 +11742,9 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->  #if defined(TARGET_NR_inotify_init) && defined(__NR_inotify_init)
->      case TARGET_NR_inotify_init:
->          ret = get_errno(sys_inotify_init());
-> -        fd_trans_register(ret, &target_inotify_trans);
-> +        if (ret >= 0) {
-> +            fd_trans_register(ret, &target_inotify_trans);
-> +        }
->          break;
->  #endif
->  #ifdef CONFIG_INOTIFY1
-> @@ -11750,7 +11752,9 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->      case TARGET_NR_inotify_init1:
->          ret = get_errno(sys_inotify_init1(target_to_host_bitmask(arg1,
->                                            fcntl_flags_tbl)));
-> -        fd_trans_register(ret, &target_inotify_trans);
-> +        if (ret >= 0) {
-> +            fd_trans_register(ret, &target_inotify_trans);
-> +        }
->          break;
->  #endif
->  #endif
-> @@ -11916,7 +11920,9 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->  #if defined(TARGET_NR_eventfd)
->      case TARGET_NR_eventfd:
->          ret = get_errno(eventfd(arg1, 0));
-> -        fd_trans_register(ret, &target_eventfd_trans);
-> +        if (ret >= 0) {
-> +            fd_trans_register(ret, &target_eventfd_trans);
-> +        }
->          break;
->  #endif
->  #if defined(TARGET_NR_eventfd2)
-> @@ -11930,7 +11936,9 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
->              host_flags |= O_CLOEXEC;
->          }
->          ret = get_errno(eventfd(arg1, host_flags));
-> -        fd_trans_register(ret, &target_eventfd_trans);
-> +        if (ret >= 0) {
-> +            fd_trans_register(ret, &target_eventfd_trans);
-> +        }
->          break;
+> @@ -5573,6 +5573,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
+>                                      field_types, THUNK_HOST);
 >      }
->  #endif
+>      unlock_user(argptr, arg, 0);
+> +    assert(host_rt_dev_ptr);
+>  
+>      ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+>      if (*host_rt_dev_ptr != 0) {
 > 
 
 
