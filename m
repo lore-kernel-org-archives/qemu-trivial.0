@@ -1,58 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dahq8-00073r-2p
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 08:24:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49041)
+	id 1daiyE-0004Ne-TI
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 09:36:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44142)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dahq5-00071m-7W
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:24:26 -0400
+	(envelope-from <thuth@redhat.com>) id 1daiyC-0004M9-J7
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 09:36:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dahq4-0000Cb-9V
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:24:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57722)
+	(envelope-from <thuth@redhat.com>) id 1daiyB-0007ud-ES
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 09:36:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34924)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dahpz-0008VX-89; Thu, 27 Jul 2017 08:24:19 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1daiy5-0007oQ-He; Thu, 27 Jul 2017 09:36:45 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3A17E2E4551;
-	Thu, 27 Jul 2017 12:24:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3A17E2E4551
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id EA08CA1F52;
+	Thu, 27 Jul 2017 13:36:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EA08CA1F52
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.121.48] (ovpn-121-48.rdu2.redhat.com [10.10.121.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4264C18222;
-	Thu, 27 Jul 2017 12:24:17 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>
-References: <20170727120210.6943-1-crosa@redhat.com>
-	<20170727120210.6943-2-crosa@redhat.com>
-	<CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 12E6F5D961;
+	Thu, 27 Jul 2017 13:36:34 +0000 (UTC)
+To: Eduardo Otubo <otubo@redhat.com>, qemu-trivial@nongnu.org
+References: <20170727123710.29817-1-otubo@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	QEMU Developers <qemu-devel@nongnu.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <e6978405-6492-1124-d6e4-4a6a5b124c48@redhat.com>
-Date: Thu, 27 Jul 2017 07:24:16 -0500
+Message-ID: <79d4cecf-3f84-2727-9f73-b3588ec6db9d@redhat.com>
+Date: Thu, 27 Jul 2017 15:36:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	Thunderbird/52.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="W8TFJp0V4wfWb40vtj4a1n2MMMKuMDquC"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20170727123710.29817-1-otubo@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 27 Jul 2017 12:24:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 27 Jul 2017 13:36:42 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] configure: remove
- duplicate single quotes on config.log header
+Subject: Re: [Qemu-trivial] [PATCH] qemu-system-tricore: segfault when
+ entering "x 0" on the monitor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,78 +60,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 12:24:26 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 13:36:53 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---W8TFJp0V4wfWb40vtj4a1n2MMMKuMDquC
-Content-Type: multipart/mixed; boundary="L7mBCEU4pbuRNoQ8cPJ8O2TX1t6dgmTAQ";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Message-ID: <e6978405-6492-1124-d6e4-4a6a5b124c48@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 1/5] configure: remove duplicate single
- quotes on config.log header
-References: <20170727120210.6943-1-crosa@redhat.com>
- <20170727120210.6943-2-crosa@redhat.com>
- <CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
+ Hi Eduardo,
 
---L7mBCEU4pbuRNoQ8cPJ8O2TX1t6dgmTAQ
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Meta comment: Please always put the maintainer(s) and qemu-devel on CC:
 
-On 07/27/2017 07:15 AM, Peter Maydell wrote:
-> On 27 July 2017 at 13:02, Cleber Rosa <crosa@redhat.com> wrote:
->> The generation of the informational header on config.log contains two
->> pairs of single quotes, which seems unintentional, and looks like
->> this:
->>
->>   # QEMU configure log Thu Jul 26 08:17:15 EDT 2017
->>   # Configured with: './configure' '--target-list=3Dx86_64-softmmu'
+On 27.07.2017 14:37, Eduardo Otubo wrote:
+> Starting Qemu with "qemu-system-tricore -nographic -M tricore_testboard
+> -S" and entering "x 0" at the monitor prompt leads to Segmentation
+> fault. This happens because tricore_cpu_get_phys_page_debug() is not
+> implemented yet, this is a temporary workaround to avoid the crash do
+> just abort the execution with exit(1).
 >=20
-> I think this is deliberate. The idea is that the string is a
-> validly shell-quoted string that you can cut and paste
-> into a shell prompt if you want to.
+> Signed-off-by: Eduardo Otubo <otubo@redhat.com>
+> ---
+>  target/tricore/cpu.c | 10 ++++++++++
+>  target/tricore/cpu.h |  3 +++
+>  2 files changed, 13 insertions(+)
+>=20
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index 08f50e2ba7..822c7f4092 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
+> @@ -22,6 +22,15 @@
+>  #include "cpu.h"
+>  #include "qemu-common.h"
+>  #include "exec/exec-all.h"
+> +#include "qemu/error-report.h"
+> +
+> +hwaddr tricore_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr=
+,
+> +                                         MemTxAttrs *attrs)
+> +{
+> +    error_report("function cpu_get_phys_page_attrs_debug not"
+> +                    "implemented, aborting");
+> +    exit(1);
 
-It IS deliberate.  If you want, you could improve the code to only emit
-'' around arguments that require it rather than all arguments, but that
-requires more shell code (it's easier to quote everywhere, even when it
-looks strange because the quotes weren't necessary).
+Looking at the description in include/qom/cpu.h and the callers in
+exec.c, it seems like it is OK if these functions return -1 if the page
+could not be found. I think you should do that here, too, instead of
+exiting - it's always a little bit annoying for the users if QEMU exits
+unexpectedly, so we should try to avoid that if possible.
 
-> ...and note in particular how the '--cc=3Dccache gcc' argument
-> is printed.
+> +}
+> =20
+>  static inline void set_feature(CPUTriCoreState *env, int feature)
+>  {
+> @@ -176,6 +185,7 @@ static void tricore_cpu_class_init(ObjectClass *c, =
+void *data)
+>      cc->dump_state =3D tricore_cpu_dump_state;
+>      cc->set_pc =3D tricore_cpu_set_pc;
+>      cc->synchronize_from_tb =3D tricore_cpu_synchronize_from_tb;
+> +    cc->get_phys_page_attrs_debug =3D tricore_cpu_get_phys_page_attrs_=
+debug;
+>  }
+> =20
+>  static void cpu_register(const TriCoreCPUInfo *info)
+> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+> index a3493a123c..c374ed3213 100644
+> --- a/target/tricore/cpu.h
+> +++ b/target/tricore/cpu.h
+> @@ -224,6 +224,9 @@ static inline TriCoreCPU *tricore_env_get_cpu(CPUTr=
+iCoreState *env)
+>  #define ENV_OFFSET offsetof(TriCoreCPU, env)
+> =20
+>  hwaddr tricore_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
 
-Yes, that's a case where the quotes are necessary.
+I think you could also remove that prototype above now - since there is
+no implementation for this.
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+> +hwaddr tricore_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr=
+,
+> +                                         MemTxAttrs *attrs);
+> +
+>  void tricore_cpu_dump_state(CPUState *cpu, FILE *f,
+>                              fprintf_function cpu_fprintf, int flags);
+> =20
+>=20
 
-
---L7mBCEU4pbuRNoQ8cPJ8O2TX1t6dgmTAQ--
-
---W8TFJp0V4wfWb40vtj4a1n2MMMKuMDquC
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll523AACgkQp6FrSiUn
-Q2qYSAf/ZGJilzw3J3/3i5vjW/tyY0vUqFAg8VrkWk+Du+nn3nq17tm0dskDmzci
-oh9rhWa+v9Kpzcv5nL+26Rw81HPCEK6OH76SLJSPWT7e4Zn85lHuaMTbP/DTRRyP
-sJAXBkPkx+3X0USB2axi9wIqGIYCN88L/p4pHM0EAnfyDElf24LoYKx1MhRZPg35
-gTVSNy4cx8zL4dFiPLrLpjOCFvQGLhF2d+eWm6OQ2q9lXpGG/TQPfBE68eEGU58m
-/GXRdqQ6ICvElxOz3WBj39op/2lO3ofX+66FFu9FjkJrYZAbe51cUCynMTr+pSlW
-jT3SXa1vHbVkrhXoAwMbpcC6+J7PWw==
-=RJRX
------END PGP SIGNATURE-----
-
---W8TFJp0V4wfWb40vtj4a1n2MMMKuMDquC--
+ Thomas
 
