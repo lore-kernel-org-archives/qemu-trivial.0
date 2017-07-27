@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daYlY-0005bu-Vk
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jul 2017 22:43:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54730)
+	id 1daYlc-0005f0-5w
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jul 2017 22:43:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54797)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daYlT-0005Xc-TS
-	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 22:43:07 -0400
+	id 1daYlZ-0005cO-B3
+	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 22:43:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daYlT-0007zN-4b
-	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 22:43:03 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33265)
+	id 1daYlY-00083S-E9
+	for qemu-trivial@nongnu.org; Wed, 26 Jul 2017 22:43:09 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:35742)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daYlR-0007wi-3X; Wed, 26 Jul 2017 22:43:01 -0400
-Received: by mail-qk0-x242.google.com with SMTP id d145so14634290qkc.0;
-	Wed, 26 Jul 2017 19:43:00 -0700 (PDT)
+	id 1daYlU-000808-Gq; Wed, 26 Jul 2017 22:43:04 -0400
+Received: by mail-qk0-x244.google.com with SMTP id k2so9706518qkf.2;
+	Wed, 26 Jul 2017 19:43:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=H23FVpCid9feWmXmb1T5ujJgbQv1GZZHSHDMEKnXeao=;
-	b=iaMyEI9TNPviiXHLXDgUP8W+8hqRz42yKEK84Yi7QUutoc26tGY2gBXF700gsoQEsF
-	33g8hbgvHFOa7J/7EnBjr9iwEA8h/a66r5TxLCCb05fLrWnPRbnVdBXyvEqsKgMBV4Xx
-	Ynz8OcZ0qgAEV1WvNgxHqiQNcnnCFWYfNl2pCDDDw1t2HhcMMGFvroxrgyskoSDrFGPs
-	WWPcQyFdYBGhg1oaP5qSwN8oP97aLBDj4SwbAatBsez00SYpVcTgl81j8ZaqG5a9ArYl
-	SQyzOMJtpo5j1zO+zmBOJWH1XNbJtnMqNtTezQEzFJ4lCA+hLkdJMz0lkTTk3XiBgV4F
-	r7fQ==
+	bh=CHr4kd++24Ot3/a/V/t4juFWGLOyUcYiGFmSODiiAqA=;
+	b=oZOQ/mdny8H5EkStd5KwJ+9Yc1s9VpfiQbo7IA3xdW8RqNBAMPkq2anUgoFHtWhj36
+	jWvJEM2rZQBbJl9q8/qWzAgyRDvtt5NRzBDASgaYnVIsVzItJakIL1AZidg8fjD3EfTC
+	XfN70W0YT9EeSz88HqFNyFzL35ZTRLOTYyHLGqZApqSUjMI4MyO28Bas8M7buL9v0rHk
+	QQqRniWSyVx8P/vH4KSAUOSMa6+ULFBw7mLMBilHwSWcJJi36Jq7hWMGU403OK8pUrDD
+	jaVgNVph4GXB5nNJoFoPe9WOaOse/RTUAcpP0wV5B2TkKsbF3fvgWq3DxirUhKjwY/c3
+	YP2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=H23FVpCid9feWmXmb1T5ujJgbQv1GZZHSHDMEKnXeao=;
-	b=HXzCcssrrKnjRm04yifLVvsOIvPlwVXp2Lhfy6j3/Km+60IRNd0n+bScl8TLla62J+
-	jKdIJP5oSZ9r1Exgga1St5jysk9t14hRL2J/TNCf01SXqboOqQBng7aP+ZlIfaUax/om
-	9c6A8j8QScvul2ycr4xCHEMs9qv+WOTISqKODZVXLXm7TC/U1slklGjBc3raT2axiwvh
-	vucvEiIXSN8w3kT872NRKOUsUwyJy7U4+lDKsFQggbae03pR5sq+bFWJpZeDFknrR/BZ
-	lemxgzI318zI6V2Z9wHb5CZqo2UWiqZ5EH4+hCFsc34G/ctrQ+YcLqKguEK65002KJUU
-	KDIw==
-X-Gm-Message-State: AIVw113NLSmSVYjn4jKl87bvIaGYIxs0Gh3mT+IiYCDncxYtKA2gLHAS
-	xwP+WVZF/Ii++w==
-X-Received: by 10.55.146.133 with SMTP id u127mr3771975qkd.17.1501123380615;
-	Wed, 26 Jul 2017 19:43:00 -0700 (PDT)
+	bh=CHr4kd++24Ot3/a/V/t4juFWGLOyUcYiGFmSODiiAqA=;
+	b=LXotSN94nLqYlQzWJPsWRyWRjvdnnX7b7QF6fEIY9NH4hi8u7lGhcLjDsCv3P4/SXO
+	3Bp5unGm3kroqTnmdvUdFU3FzchbY31EWn3x3t//HjigOQ23s3dtBMP6nhpMjMPYEQH4
+	tqaBy4/fC4pg+ZrBMne8wmGvfsUODRiQdka6RlEox+jp5bDcLA8yvJGwGzZeGGkIaLq8
+	XPeOdzYl/qOGUF0G183mIr04Ii33yIVkwuD76C+d+5X/RD1IHZfw2HQJLL8nDT+AX/vS
+	d8ZHCPQrvqtaDXUstEdOg7RL4ulecOMPKJ6+MMa2CAa/ZFlK1VOV28h7ouXCudlcG/RT
+	xJ1g==
+X-Gm-Message-State: AIVw113lgAyvMHc6u00IK/nB4thXFjQ+QWrnDDjIbFqvDT2cLvSAc0FW
+	/tsn7oN3rKtT/w==
+X-Received: by 10.55.42.216 with SMTP id q85mr3701474qkq.202.1501123384022;
+	Wed, 26 Jul 2017 19:43:04 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	g27sm13221147qtg.84.2017.07.26.19.42.58
+	g27sm13221147qtg.84.2017.07.26.19.43.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 26 Jul 2017 19:43:00 -0700 (PDT)
+	Wed, 26 Jul 2017 19:43:02 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+	Laurent Vivier <laurent@vivier.eu>, Richard Henderson <rth@twiddle.net>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Wed, 26 Jul 2017 23:42:14 -0300
-Message-Id: <20170727024224.22900-10-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>
+Date: Wed, 26 Jul 2017 23:42:15 -0300
+Message-Id: <20170727024224.22900-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170727024224.22900-1-f4bug@amsat.org>
 References: <20170727024224.22900-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH for 2.10 v2 09/20] vfio/pci: fix use of freed
- memory
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH for 2.10 v2 10/20] m68k/translate: fix
+ incorrect copy/paste
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,59 +78,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 02:43:07 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 02:43:10 -0000
 
-hw/vfio/pci.c:308:29: warning: Use of memory after it is freed
-        qemu_set_fd_handler(*pfd, NULL, NULL, vdev);
-                            ^~~~
+db3d7945ae extended gen_cc_cond() for cond [6, 7, 9, 10] but misswrote [4, 5]
+
+target/m68k/translate.c:1323:70: warning: identical expressions on both sides of logical operator
+        if (op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL ||
+            op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL) {
+            ~~~~~~~~~~~~~~~~    ~~~~~~~~~~~~~~~~    ~~~~~~~~~~~~~~~~ ^
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/vfio/pci.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ target/m68k/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index d4051cb951..31e1edf447 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -257,7 +257,7 @@ static void vfio_intx_update(PCIDevice *pdev)
- static int vfio_intx_enable(VFIOPCIDevice *vdev, Error **errp)
- {
-     uint8_t pin = vfio_pci_read_config(&vdev->pdev, PCI_INTERRUPT_PIN, 1);
--    int ret, argsz;
-+    int ret, argsz, retval = 0;
-     struct vfio_irq_set *irq_set;
-     int32_t *pfd;
-     Error *err = NULL;
-@@ -302,12 +302,12 @@ static int vfio_intx_enable(VFIOPCIDevice *vdev, Error **errp)
-     qemu_set_fd_handler(*pfd, vfio_intx_interrupt, NULL, vdev);
- 
-     ret = ioctl(vdev->vbasedev.fd, VFIO_DEVICE_SET_IRQS, irq_set);
--    g_free(irq_set);
-     if (ret) {
-         error_setg_errno(errp, -ret, "failed to setup INTx fd");
-         qemu_set_fd_handler(*pfd, NULL, NULL, vdev);
-         event_notifier_cleanup(&vdev->intx.interrupt);
--        return -errno;
-+        retval = -errno;
-+        goto cleanup;
-     }
- 
-     vfio_intx_enable_kvm(vdev, &err);
-@@ -319,7 +319,10 @@ static int vfio_intx_enable(VFIOPCIDevice *vdev, Error **errp)
- 
-     trace_vfio_intx_enable(vdev->vbasedev.name);
- 
--    return 0;
-+cleanup:
-+    g_free(irq_set);
-+
-+    return retval;
- }
- 
- static void vfio_intx_disable(VFIOPCIDevice *vdev)
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index ada2a91b64..be24355080 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -1321,7 +1321,7 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
+     case 5: /* CS (C) */
+         /* Some cases fold C into X.  */
+         if (op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL ||
+-            op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL) {
++            op == CC_OP_SUBB || op == CC_OP_SUBW || op == CC_OP_SUBL) {
+             tcond = TCG_COND_NE;
+             c->v1 = QREG_CC_X;
+             goto done;
 -- 
 2.13.3
 
