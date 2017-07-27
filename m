@@ -1,58 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dah5J-0006ZB-8X
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 07:36:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38182)
+	id 1dah9i-0001QI-GO
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 07:40:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43178)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dah5H-0006XV-Fd
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:36:04 -0400
+	(envelope-from <groug@kaod.org>) id 1dah9g-0001Q7-I2
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dah5E-000506-PE
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:36:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45184)
+	(envelope-from <groug@kaod.org>) id 1dah9d-0001Ua-OH
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:36 -0400
+Received: from 19.mo4.mail-out.ovh.net ([87.98.179.66]:38215)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dah5C-0004um-93; Thu, 27 Jul 2017 07:35:58 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 40BCB40250;
-	Thu, 27 Jul 2017 11:35:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 40BCB40250
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.121.48] (ovpn-121-48.rdu2.redhat.com [10.10.121.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2F98C6F43A;
-	Thu, 27 Jul 2017 11:35:56 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, Kamil Rytarowski <kamil@netbsd.org>,
-	qemu-devel@nongnu.org
-References: <1501150174-19431-1-git-send-email-thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <d4584a14-ff65-b10e-03bf-417235065e9f@redhat.com>
-Date: Thu, 27 Jul 2017 06:35:55 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1dah9d-0001Qz-GP
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:40:33 -0400
+Received: from player759.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 6E29789035
+	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 13:40:24 +0200 (CEST)
+Received: from bahia.lan (deibp9eh1--blueice1n7.emea.ibm.com [195.212.29.161])
+	(Authenticated sender: groug@kaod.org)
+	by player759.ha.ovh.net (Postfix) with ESMTPSA id 0850C6400C8;
+	Thu, 27 Jul 2017 13:40:12 +0200 (CEST)
+Date: Thu, 27 Jul 2017 13:40:05 +0200
+From: Greg Kurz <groug@kaod.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?TWFyYy1BbmRyw6k=?=
+	Lureau <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Eric Blake <eblake@redhat.com>, "Aneesh Kumar K . V"
+	<aneesh.kumar@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Message-ID: <20170727134005.76e74eb6@bahia.lan>
+In-Reply-To: <20170727024224.22900-18-f4bug@amsat.org>
+References: <20170727024224.22900-1-f4bug@amsat.org>
+	<20170727024224.22900-18-f4bug@amsat.org>
+X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <1501150174-19431-1-git-send-email-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="6TuasVrtnB22bbDeHU3rK7WS0CgJaj5Ac"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 27 Jul 2017 11:35:57 +0000 (UTC)
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/bfnJXxrYhM9lY8WmPrISK5q";
+	protocol="application/pgp-signature"
+X-Ovh-Tracer-Id: 15071296153352247748
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrheelgdeggecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Improve the
- NetBSD regex pattern
+X-Received-From: 87.98.179.66
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 18/20] 9pfs: avoid sign
+ conversion error simplifying the code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,76 +56,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 11:36:04 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 11:40:37 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---6TuasVrtnB22bbDeHU3rK7WS0CgJaj5Ac
-Content-Type: multipart/mixed; boundary="wIiRsr7IRw9KsVb8lenLDSWQ1TQcncWGi";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, Kamil Rytarowski <kamil@netbsd.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <d4584a14-ff65-b10e-03bf-417235065e9f@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] MAINTAINERS: Improve the NetBSD regex
- pattern
-References: <1501150174-19431-1-git-send-email-thuth@redhat.com>
-In-Reply-To: <1501150174-19431-1-git-send-email-thuth@redhat.com>
-
---wIiRsr7IRw9KsVb8lenLDSWQ1TQcncWGi
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--Sig_/bfnJXxrYhM9lY8WmPrISK5q
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-On 07/27/2017 05:09 AM, Thomas Huth wrote:
-> Currently get_maintainers.pl claims that the configure script is
-> maintained by Kamil:
+On Wed, 26 Jul 2017 23:42:22 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> (note this is how other functions also handle the errors).
 >=20
->  $ scripts/get_maintainer.pl -f configure
->  Kamil Rytarowski <kamil@netbsd.org> (maintainer:NETBSD)
->  qemu-devel@nongnu.org (open list:All patches CC here)
+> hw/9pfs/9p.c:948:18: warning: Loss of sign in implicit conversion
+>         offset =3D err;
+>                  ^~~
 >=20
-> This happens because the regex pattern for the NETBSD entry triggers
-> on everything that contains the keyword "NetBSD". Ease the situation
-> a little bit by restricting this to "Subject:" lines only, like
-> we do it in the "trivial patches" section already.
->=20
-> Reported-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Greg Kurz <groug@kaod.org>
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Now, I'm not sure this can be merged during hard freeze since it is
+more code cleanup than actual bug fixing...
+
+>  hw/9pfs/9p.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+> index 333dbb6f8e..0a37c8bd13 100644
+> --- a/hw/9pfs/9p.c
+> +++ b/hw/9pfs/9p.c
+> @@ -945,7 +945,6 @@ static void coroutine_fn v9fs_version(void *opaque)
+>      v9fs_string_init(&version);
+>      err =3D pdu_unmarshal(pdu, offset, "ds", &s->msize, &version);
+>      if (err < 0) {
+> -        offset =3D err;
+>          goto out;
+>      }
+>      trace_v9fs_version(pdu->tag, pdu->id, s->msize, version.data);
+> @@ -962,13 +961,12 @@ static void coroutine_fn v9fs_version(void *opaque)
+> =20
+>      err =3D pdu_marshal(pdu, offset, "ds", s->msize, &version);
+>      if (err < 0) {
+> -        offset =3D err;
+>          goto out;
+>      }
+> -    offset +=3D err;
+> +    err +=3D offset;
+>      trace_v9fs_version_return(pdu->tag, pdu->id, s->msize, version.data);
+>  out:
+> -    pdu_complete(pdu, offset);
+> +    pdu_complete(pdu, err);
+>      v9fs_string_free(&version);
+>  }
+> =20
 
 
---wIiRsr7IRw9KsVb8lenLDSWQ1TQcncWGi--
-
---6TuasVrtnB22bbDeHU3rK7WS0CgJaj5Ac
-Content-Type: application/pgp-signature; name="signature.asc"
+--Sig_/bfnJXxrYhM9lY8WmPrISK5q
+Content-Type: application/pgp-signature
 Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Version: GnuPG v2
 
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll50BsACgkQp6FrSiUn
-Q2qqJAf9FS2sI0TSPaGTrd60ak2KGGiA3sbdOm01Cjgbc1kXJOWZt5ZU89J+0N40
-wZTSpX62m7iDZion6ijpMQokKulQYg9p/324GtQPF116k7gorY/BksWv69j7EDAT
-lnK8+TXg9GgnbiCBpvduZtITe8k2elW4RKq86qPdsvMPK+ryLmKTeeQ+oztxOZna
-FUM5y+XQ4Zm5OgspRh3NjAxvNvKjStxTUnMNDnmu3yEqJkdcl6agd8PqdiF+FHmQ
-uXSIyimHnQHADrS0gQXOuy4Uxzy2mRMy3PE7SL1790Z8MNdcG1YdV+vOx9bZ13Hx
-or1+Kw1JBeUR0k0wgudJnkeLye5WiQ==
-=DVq4
+iEYEARECAAYFAll50RYACgkQAvw66wEB28LfBQCgjlsg2Pm9Nzt8b8MzQjfKhtrp
+WnEAn1nTWirDcX4MlUK7hE0/sHDZRzEL
+=wsQE
 -----END PGP SIGNATURE-----
 
---6TuasVrtnB22bbDeHU3rK7WS0CgJaj5Ac--
+--Sig_/bfnJXxrYhM9lY8WmPrISK5q--
 
