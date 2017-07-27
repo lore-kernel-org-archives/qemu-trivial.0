@@ -1,54 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daoPQ-0001XP-Nc
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 15:25:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40586)
+	id 1dapkB-0003hE-Q2
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 16:50:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34885)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1daoPO-0001Vd-0P
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 15:25:18 -0400
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1dapkA-0003ge-4z
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1daoPN-0005t8-9L
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 15:25:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44452)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1daoPJ-0005ov-6T; Thu, 27 Jul 2017 15:25:13 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7B161F1D8F;
-	Thu, 27 Jul 2017 19:25:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7B161F1D8F
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=jsnow@redhat.com
-Received: from [10.10.124.230] (ovpn-124-230.rdu2.redhat.com [10.10.124.230])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C6AF707A1;
-	Thu, 27 Jul 2017 19:25:07 +0000 (UTC)
-To: Jiang Biao <jiang.biao2@zte.com.cn>, qemu-devel@nongnu.org
-Cc: shi.zhongbing@zte.com.cn, jiang.yong5@zte.com.cn, rth@twiddle.net,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1501122983-20801-1-git-send-email-jiang.biao2@zte.com.cn>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <22cd68ee-bebd-3de0-24b4-59373b37390b@redhat.com>
-Date: Thu, 27 Jul 2017 15:25:06 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1dapk6-0005Lp-8B
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:50 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47207
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mdroth@linux.vnet.ibm.com>)
+	id 1dapk6-0005LM-1n
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:46 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
+	v6RKn7Q1066720
+	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 16:50:45 -0400
+Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2bymp6yhf2-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 16:50:45 -0400
+Received: from localhost
+	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
+	Thu, 27 Jul 2017 16:50:44 -0400
+Received: from b01cxnp23034.gho.pok.ibm.com (9.57.198.29)
+	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 27 Jul 2017 16:50:42 -0400
+Received: from b01ledav003.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
+	[9.57.199.108])
+	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	v6RKoeIB24117496; Thu, 27 Jul 2017 20:50:41 GMT
+Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id BC766B2065;
+	Thu, 27 Jul 2017 16:48:09 -0400 (EDT)
+Received: from localhost (unknown [9.53.92.194])
+	by b01ledav003.gho.pok.ibm.com (Postfix) with ESMTP id A229AB205E;
+	Thu, 27 Jul 2017 16:48:09 -0400 (EDT)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <1501122983-20801-1-git-send-email-jiang.biao2@zte.com.cn>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 27 Jul 2017 19:25:10 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg/README: fix a
- description error.
+Content-Transfer-Encoding: quoted-printable
+To: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+In-Reply-To: <20170727154505.14838-1-marcandre.lureau@redhat.com>
+Cc: qemu-trivial@nongnu.org,
+	=?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20170727154505.14838-1-marcandre.lureau@redhat.com>
+User-Agent: alot/0.5.1
+Date: Thu, 27 Jul 2017 15:22:26 -0500
+X-TM-AS-GCONF: 00
+x-cbid: 17072720-0008-0000-0000-00000265A676
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00007437; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000214; SDB=6.00893794; UDB=6.00446874;
+	IPR=6.00673954; 
+	BA=6.00005495; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
+	ZB=6.00000000; 
+	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00016413;
+	XFM=3.00000015; UTC=2017-07-27 20:50:43
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17072720-0009-0000-0000-0000362D42F0
+Message-Id: <150118694640.22858.12035679972281344198@loki>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-07-27_12:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1706020000
+	definitions=main-1707270323
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build-sys: there is no
+ qemu-ga.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,35 +88,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 19:25:18 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 20:50:51 -0000
 
+Quoting Marc-Andr=C3=A9 Lureau (2017-07-27 10:45:05)
+> It got moved in qga/main.c from commit 2870dc3456c9c.
+> =
 
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-On 07/26/2017 10:36 PM, Jiang Biao wrote:
-> The atomics.txt is not in the docs directory but in docs/devel/
-> instead.
-> 
-> Signed-off-by: Jiang Biao <jiang.biao2@zte.com.cn>
+Reviewed-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+
 > ---
->   tcg/README | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tcg/README b/tcg/README
-> index bf49e82..03bfb6a 100644
-> --- a/tcg/README
-> +++ b/tcg/README
-> @@ -446,7 +446,7 @@ when MTTCG is enabled.
->   The guest translators should generate this opcode for all guest instructions
->   which have ordering side effects.
->   
-> -Please see docs/atomics.txt for more information on memory barriers.
-> +Please see docs/devel/atomics.txt for more information on memory barriers.
->   
->   ********* 64-bit guest on 32-bit host support
->   
-> 
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+> diff --git a/Makefile b/Makefile
+> index ef721480eb..97a58a0f4e 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -443,7 +443,7 @@ $(qapi-modules) $(SRC_PATH)/scripts/qapi-introspect.p=
+y $(qapi-py)
+>                 "GEN","$@")
+>  =
 
-CC qemu-trivial
+>  QGALIB_GEN=3D$(addprefix qga/qapi-generated/, qga-qapi-types.h qga-qapi-=
+visit.h qga-qmp-commands.h)
+> -$(qga-obj-y) qemu-ga.o: $(QGALIB_GEN)
+> +$(qga-obj-y): $(QGALIB_GEN)
+>  =
+
+>  qemu-ga$(EXESUF): $(qga-obj-y) $(COMMON_LDADDS)
+>         $(call LINK, $^)
+> -- =
+
+> 2.14.0.rc0.1.g40ca67566
+> =
+
+>=20
+
 
