@@ -1,51 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dafjl-0000sO-Lw
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 06:09:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37405)
+	id 1dagvW-0001di-DY
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 07:25:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58083)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dafjj-0000rE-RX
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 06:09:44 -0400
+	(envelope-from <eblake@redhat.com>) id 1dagvT-0001bu-Tv
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:25:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dafjj-0000qG-0D
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 06:09:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52956)
+	(envelope-from <eblake@redhat.com>) id 1dagvT-0004RX-1I
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 07:25:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42646)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dafjd-0000fc-Lk; Thu, 27 Jul 2017 06:09:37 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dagvM-0004Jc-43; Thu, 27 Jul 2017 07:25:48 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BAE0E12CA25;
-	Thu, 27 Jul 2017 10:09:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BAE0E12CA25
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id D839D7DD05;
+	Thu, 27 Jul 2017 11:25:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D839D7DD05
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from thh440s.str.redhat.com (dhcp-192-189.str.redhat.com
-	[10.33.192.189])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9B2F76F9C1;
-	Thu, 27 Jul 2017 10:09:35 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Kamil Rytarowski <kamil@netbsd.org>,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
-Date: Thu, 27 Jul 2017 12:09:34 +0200
-Message-Id: <1501150174-19431-1-git-send-email-thuth@redhat.com>
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from [10.10.121.48] (ovpn-121-48.rdu2.redhat.com [10.10.121.48])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 185DC5D961;
+	Thu, 27 Jul 2017 11:25:43 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <20170727024224.22900-1-f4bug@amsat.org>
+	<20170727024224.22900-5-f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <517a5beb-b272-e114-3626-ba81be919a04@redhat.com>
+Date: Thu, 27 Jul 2017 06:25:43 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20170727024224.22900-5-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="NUQpvC4p68Vc82UwueII3bOcL2FXiIS5P"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 27 Jul 2017 10:09:36 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 27 Jul 2017 11:25:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Improve the NetBSD regex pattern
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 04/20] nbd: fix memory leak
+ in nbd_opt_go()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,40 +65,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 10:09:44 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 11:25:57 -0000
 
-Currently get_maintainers.pl claims that the configure script is
-maintained by Kamil:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--NUQpvC4p68Vc82UwueII3bOcL2FXiIS5P
+Content-Type: multipart/mixed; boundary="j1lIcLGm0u4EHxX4tKUbKED9nG71Pi8kB";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <517a5beb-b272-e114-3626-ba81be919a04@redhat.com>
+Subject: Re: [PATCH for 2.10 v2 04/20] nbd: fix memory leak in nbd_opt_go()
+References: <20170727024224.22900-1-f4bug@amsat.org>
+ <20170727024224.22900-5-f4bug@amsat.org>
+In-Reply-To: <20170727024224.22900-5-f4bug@amsat.org>
 
- $ scripts/get_maintainer.pl -f configure
- Kamil Rytarowski <kamil@netbsd.org> (maintainer:NETBSD)
- qemu-devel@nongnu.org (open list:All patches CC here)
+--j1lIcLGm0u4EHxX4tKUbKED9nG71Pi8kB
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-This happens because the regex pattern for the NETBSD entry triggers
-on everything that contains the keyword "NetBSD". Ease the situation
-a little bit by restricting this to "Subject:" lines only, like
-we do it in the "trivial patches" section already.
+On 07/26/2017 09:42 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> nbd/client.c:385:12: warning: Potential leak of memory pointed to by 'b=
+uf'
+>=20
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> ---
+>  nbd/client.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 
-Reported-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks; queued on my NBD branch for rc1:
+git://repo.or.cz/qemu/ericb.git nbd
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ce2341a..ccee28b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -353,7 +353,7 @@ NETBSD
- L: qemu-devel@nongnu.org
- M: Kamil Rytarowski <kamil@netbsd.org>
- S: Maintained
--K: (?i)NetBSD
-+K: ^Subject:.*(?i)NetBSD
-=20
- W32, W64
- L: qemu-devel@nongnu.org
 --=20
-1.8.3.1
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
+
+--j1lIcLGm0u4EHxX4tKUbKED9nG71Pi8kB--
+
+--NUQpvC4p68Vc82UwueII3bOcL2FXiIS5P
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll5zbcACgkQp6FrSiUn
+Q2pyRwgApuowZHXwntXwABVa0VQ8KbL4Xu2RM2lh0Fs49MW7V0s7JSveKh1x6ETi
+e2fH+ELEN5QXeW1Q7RI130MvnYjHcBPFVfKXtnA1sb5TIDZ0an1zJdq3VqWq7/d8
+/EQm9yJivnZOhFVJb6VwiOJiZfwoNgjrZFB6wqbALt1/4YccSVtu0Tk6jQ+b2s5S
+3TUUXEp3r7/Vf81PBrhDJ9vnLpFB4bgN+V77+SsngOQt4LgTX7Oap+wE8PiGEGv3
+kekKltZ8eWNx+DkNBz911PsTxUGxj21udt/U6iP9EStzlXWbX9Cpd93jcro9qgoL
+Hj+jl+vLT3SgIkSJSkt3cMCi+ZtHUw==
+=Ms6W
+-----END PGP SIGNATURE-----
+
+--NUQpvC4p68Vc82UwueII3bOcL2FXiIS5P--
 
