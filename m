@@ -1,58 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dahhQ-00038k-CA
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 08:15:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42425)
+	id 1dahoN-0005bm-KV
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 08:22:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47872)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dahhO-00038L-A7
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:27 -0400
+	(envelope-from <eblake@redhat.com>) id 1dahoI-0005aw-II
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:22:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dahhN-0002Hh-Gj
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:26 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:37391)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dahhN-0002H1-AY
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:15:25 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id 33so86333582wrz.4
-	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 05:15:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Yyz2FatahnTiQbf7qNDWVOahPecabKISRH+06Rh6XNw=;
-	b=I6q4Nf14XbSllqXhXK4tZlXAPQCcBFcuLt1IWOhAXHC9vzSw3bLYUUrhljq6Y/qsfB
-	JM97AVeeSjHlv2GR6jcppBEW3i1AbY6yVNoHdsMeU9B8aLu3GWS0o4HzL05kymowpLbv
-	55SyRxSLspXeX86eF0Hho1LhRF9nRUnygE504=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Yyz2FatahnTiQbf7qNDWVOahPecabKISRH+06Rh6XNw=;
-	b=rlHxcl879tF6l+gCkQBFOrhkybqjMxgiYsplqLEVQ2y4LhY/xcaX3x1075Xcmvjlc7
-	ZfFHOXAvLVqc28dZC+0OURksEpXLjQazy5jUXNt8oogpCPp3NL3e2/2XNDF5eJjdxolE
-	aSS7hG9on6NrlbpBa4X38g3DXR6Y8h7p1Y7M56QD646V9CvV8fuksYLrwhD12Xbmq/ix
-	Lr9rr/5FN9RSzhynyXV5eAXgwy8pJYFobgzkWR4D+loKGAVJPMfzgOVCEYQU5Y4G/RLO
-	aiBR3S8Y4THJJEhiSS1ICZNYiQcG3U/JsXd7/7BpC+OcaOj40HS9BGbaE7B80Goe3xbA
-	h7CQ==
-X-Gm-Message-State: AIVw11313up6JIX8jmQDrBv0jr/RoydaYfwpKgjDONfd6QXMpW4YNoDm
-	cn/Y/4HOMSkx9O5CQn6t2bzxVdfpLEy1
-X-Received: by 10.223.160.229 with SMTP id n34mr3817776wrn.117.1501157723985; 
-	Thu, 27 Jul 2017 05:15:23 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Thu, 27 Jul 2017 05:15:03 -0700 (PDT)
-In-Reply-To: <20170727120210.6943-2-crosa@redhat.com>
+	(envelope-from <eblake@redhat.com>) id 1dahoH-0007Mb-Lh
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 08:22:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:24146)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dahoD-0007KK-8D; Thu, 27 Jul 2017 08:22:29 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3637233459B;
+	Thu, 27 Jul 2017 12:22:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3637233459B
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from [10.10.121.48] (ovpn-121-48.rdu2.redhat.com [10.10.121.48])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D5DDD4FA30;
+	Thu, 27 Jul 2017 12:22:25 +0000 (UTC)
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 References: <20170727120210.6943-1-crosa@redhat.com>
-	<20170727120210.6943-2-crosa@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Jul 2017 13:15:03 +0100
-Message-ID: <CAFEAcA-CzG=JYjajJqMRL+pcMC2_06HTm1_xhD=ca=AReXHmTA@mail.gmail.com>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/5] configure: remove
- duplicate single quotes on config.log header
+	<20170727120210.6943-6-crosa@redhat.com>
+Cc: qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <c5df31fb-3859-ab7a-9a61-5526360fd0f7@redhat.com>
+Date: Thu, 27 Jul 2017 07:22:24 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <20170727120210.6943-6-crosa@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="3ovhIhU8ivSDFCWE5fS2rDw1Xl8cqCIVq"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 27 Jul 2017 12:22:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 5/5] docs: fix broken paths
+ to docs/interop dir
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,37 +62,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 12:15:27 -0000
+X-List-Received-Date: Thu, 27 Jul 2017 12:22:38 -0000
 
-On 27 July 2017 at 13:02, Cleber Rosa <crosa@redhat.com> wrote:
-> The generation of the informational header on config.log contains two
-> pairs of single quotes, which seems unintentional, and looks like
-> this:
->
->   # QEMU configure log Thu Jul 26 08:17:15 EDT 2017
->   # Configured with: './configure' '--target-list=x86_64-softmmu'
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--3ovhIhU8ivSDFCWE5fS2rDw1Xl8cqCIVq
+Content-Type: multipart/mixed; boundary="QNwW99FQuSFLf1gpkHmrG0Jv840NNK0iQ";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <c5df31fb-3859-ab7a-9a61-5526360fd0f7@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 5/5] docs: fix broken paths to docs/interop
+ dir
+References: <20170727120210.6943-1-crosa@redhat.com>
+ <20170727120210.6943-6-crosa@redhat.com>
+In-Reply-To: <20170727120210.6943-6-crosa@redhat.com>
 
-I think this is deliberate. The idea is that the string is a
-validly shell-quoted string that you can cut and paste
-into a shell prompt if you want to. (This is less important
-than it used to be now we have config.status.)
+--QNwW99FQuSFLf1gpkHmrG0Jv840NNK0iQ
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-If your configure command has more than one line you get
-something like this:
+On 07/27/2017 07:02 AM, Cleber Rosa wrote:
+> With the move of some docs to docs/interop on d59157e, a couple of
+> references where not updated.
+>=20
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>  docs/devel/writing-qmp-commands.txt | 2 +-
+>  qapi-schema.json                    | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
-# Configured with: '../../configure'
-'--target-list=arm-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user'
-'--enable-debug' '--cc=ccache gcc' '--audio-drv-list=pa'
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-...and note in particular how the '--cc=ccache gcc' argument
-is printed. Your change would give
+Safe for 2.10, but also okay if it slips to 2.11
 
-# Configured with: '../../configure
---target-list=arm-softmmu,aarch64-softmmu,arm-linux-user,aarch64-linux-user
---enable-debug --cc=ccache gcc --audio-drv-list=pa'
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
-which can't be cut and pasted, and is ambiguous.
 
-thanks
--- PMM
+--QNwW99FQuSFLf1gpkHmrG0Jv840NNK0iQ--
+
+--3ovhIhU8ivSDFCWE5fS2rDw1Xl8cqCIVq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll52wAACgkQp6FrSiUn
+Q2odMQf/dD93bwSEPNJYqxbUJrvnkl4s8Oe3YVd2U2nyLsCrf38JjcDKbOZAVFqZ
+WKrlO1TDkZxh9rI9VihLhMcBy09Wv+zZ84k8AsduzgXVGl8hCdatkb8j4MdX0T+S
+uBu6cNwny2GUz6rr2gt58A+GxXEDOFW29XDHsXj/80/BeWIH2yVleDANjPGt1sE1
+Ss1j0IKj6KjukUOiH3gufZWHq96Cwx1zvun0XIONGjOuKuGp6m/yoNZtZd87kO78
+fyXVLFBj/TtIeHYOrpgo+fC0G3Fhn1qMLqNvxG8s/8ezgVqnpLm81cOAYp+cCgmW
+DMuUehoxO3ANwKURJvxdn6SvnNs6Sg==
+=G1QP
+-----END PGP SIGNATURE-----
+
+--3ovhIhU8ivSDFCWE5fS2rDw1Xl8cqCIVq--
 
