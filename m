@@ -1,61 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dau2b-0002Z4-6H
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 21:26:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35502)
+	id 1dau2i-0002gh-B6
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 21:26:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35591)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2Y-0002W8-Oj
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:07 -0400
+	id 1dau2g-0002eC-5X
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2X-00026W-Ju
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:06 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:38265)
+	id 1dau2c-00029d-UA
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:14 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:32780)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2S-00023o-SU; Thu, 27 Jul 2017 21:26:00 -0400
-Received: by mail-qt0-x244.google.com with SMTP id p3so11595681qtg.5;
-	Thu, 27 Jul 2017 18:26:00 -0700 (PDT)
+	id 1dau2a-00028I-SU; Thu, 27 Jul 2017 21:26:08 -0400
+Received: by mail-qk0-x243.google.com with SMTP id d145so17397234qkc.0;
+	Thu, 27 Jul 2017 18:26:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=FlE5nJZA3eJqYHVZJYO8naC0/H7VpEt5FrcMOSTk6lU=;
-	b=pc34haX0wnHHPJrBnNnMCmvU8kDbr5OleswUJX6xP2JXJr9Xc18UZP3pbHJR49zIzg
-	7zesYTbQWKFdY3P4bUD72K3reqK4S2maRA42NyFhxsUSu3cgZ1vZVX4fGSe2jyCoaIbu
-	W04cyW110TWjIDbBvk1FBn1DgIUG8oqsaw76BIyAoPsWXm3+M5SvKlXEbHckALMpC2Iv
-	fNa/h3U8OvDoB6VB7MBJ0Hw9oKmcwyy36Nn7+Tuma9jxnPKeUW4/jlAu+Y5e0L8bOR/w
-	cAEI3nuQWMzHci75f0zIJpl6FZfKNBChJnUMBF//PxbJ+WeZz2/d3BAg540315TLu0PA
-	oh9Q==
+	bh=D8luNx0z/vW6ZhXsbMdvwYCims9sVN4h95xeled4/Wc=;
+	b=VHIQfPtPOyq7jz8zYjTHPqqBBouPFeFrYr28/u0igVX7rK497jtZn6W7lpxF7pf1ZN
+	8kG+ZrTnjxmYsHrOv5fsorFo7Qy77NZzcgvkfzrnwsDwA+ztw2P4svRq99G9KsKyQTXt
+	/28kqxMIzQ5GT5sYPkbh3rrsM2tONMN4zFvZF1Ry82cxQtdKW4FkNQtB8lNwokxWja8g
+	6rpf4yCykXGEK3ji29VXFEd+J+N7as1MTGco7UPrzIfkgsOLMLV8WEau9oqwMWAbjnC8
+	xlv05Ec3FvsXrx9AlDp3tTujoGFAF9O2DyBWoEsmCPVAgApDhbU3npMOtzbpof9aLnC0
+	EsNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=FlE5nJZA3eJqYHVZJYO8naC0/H7VpEt5FrcMOSTk6lU=;
-	b=STylcuCvX2SOjHxX3z8J1tPrUYUrM5CdN18JiKXRSyqpRedigxrZkHHrLUrQmZybdf
-	c/XcovjSJTpDKG9m8d+LuzUNmqOnL5lm2MJGKEYZ6FkueV+GFPsd0u6CpNbMTfY2NjD2
-	VFCT8Av5lhoVlesbV8CD2H7RaJFrXzbGxMfXi296q6OKELxx5/CoSZjh90cb3s0AZxyD
-	FCko/LuEpS67ClOwHg6TDsZck8T20lOSkYQlBc8bIEAqVSd5zv8JtJLiejl0wIS4MGZz
-	MWg96oZb0VkToKKz9gGFaEpCizjstVLoFBCeQqFYRRrE6UaR7StCS1OXoTQ4Gr0UeDy5
-	Hdaw==
-X-Gm-Message-State: AIVw113MUEg/9sEfRy8LXh7yapjDnallqgXpsCSDrpT7YxHaCN0GeWbY
-	mRx8dDd8o4ZUNw==
-X-Received: by 10.200.52.100 with SMTP id v33mr8955382qtb.67.1501205160336;
-	Thu, 27 Jul 2017 18:26:00 -0700 (PDT)
+	bh=D8luNx0z/vW6ZhXsbMdvwYCims9sVN4h95xeled4/Wc=;
+	b=OQGdvNHmzv1odhPAaylUCd2Neqea84DzEV6clzIXNwgAt04jOUCRy+n3GLJHoItw9L
+	RleWLVaj7B8aAXdRqknNwddS97nkhD6Py5lxPh5TpVQv5WXbF6P3i4aeKO+5BHa8zT8c
+	K8l9APY5fqqUitVDXWKKQCkjJSn30ss6lSoxz46S3RQG0eZGqaAhNNzBDTPoEW8M6ZmG
+	BneicAl1g1eGp2etKxLXcWaw8t+/Grh/6AhXZ3eI5xH2o+ImUePGCD/u2wgi28+ZFeU/
+	yA9cMOLdk1v/lRb+bpWjQXuS/J/ex/JVIhqdnYeYPVfTK5MLjS/XoYWygTlxgoMc2IiC
+	BzAg==
+X-Gm-Message-State: AIVw113vAeiTAWx5O7nYrDreNXO+DXqYelNhzYGBbVkMeoFEUhY0Xvgm
+	v+TdwZDeUlrboA==
+X-Received: by 10.55.207.18 with SMTP id e18mr8645099qkj.82.1501205168373;
+	Thu, 27 Jul 2017 18:26:08 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	o97sm15010202qte.56.2017.07.27.18.25.57
+	o97sm15010202qte.56.2017.07.27.18.26.06
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 18:25:59 -0700 (PDT)
+	Thu, 27 Jul 2017 18:26:07 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Thu, 27 Jul 2017 22:25:37 -0300
-Message-Id: <20170728012542.29975-4-f4bug@amsat.org>
+Date: Thu, 27 Jul 2017 22:25:40 -0300
+Message-Id: <20170728012542.29975-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
 References: <20170728012542.29975-1-f4bug@amsat.org>
@@ -64,9 +62,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH for 2.10 3/8] docs: fix broken paths to
- docs/devel/qapi-code-gen.txt
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH for 2.10 6/8] docs: fix broken paths to
+ docs/config/ich9-ehci-uhci.cfg
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,82 +76,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 01:26:08 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 01:26:15 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- docs/devel/writing-qmp-commands.txt | 2 +-
- include/qapi/visitor.h              | 2 +-
- qapi/introspect.json                | 2 +-
- qapi/qapi-util.c                    | 2 +-
- scripts/qapi2texi.py                | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ docs/usb2.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/devel/writing-qmp-commands.txt b/docs/devel/writing-qmp-commands.txt
-index 69793e320e..4f5b24c0c4 100644
---- a/docs/devel/writing-qmp-commands.txt
-+++ b/docs/devel/writing-qmp-commands.txt
-@@ -7,7 +7,7 @@ This document doesn't discuss QMP protocol level details, nor does it dive
- into the QAPI framework implementation.
+diff --git a/docs/usb2.txt b/docs/usb2.txt
+index b9e7548073..09df45b5b1 100644
+--- a/docs/usb2.txt
++++ b/docs/usb2.txt
+@@ -50,7 +50,7 @@ companion controllers with two ports each.
+ There is a config file in docs which will do all this for you, just
+ try ...
  
- For an in-depth introduction to the QAPI framework, please refer to
--docs/qapi-code-gen.txt. For documentation about the QMP protocol,
-+docs/devel/qapi-code-gen.txt. For documentation about the QMP protocol,
- start with docs/interop/qmp-intro.txt.
+-    qemu -readconfig docs/ich9-ehci-uhci.cfg
++    qemu -readconfig docs/config/ich9-ehci-uhci.cfg
  
- == Overview ==
-diff --git a/include/qapi/visitor.h b/include/qapi/visitor.h
-index fe9faf469f..0f3b8cb459 100644
---- a/include/qapi/visitor.h
-+++ b/include/qapi/visitor.h
-@@ -36,7 +36,7 @@
-  * QemuOpts, and clone visitors have some implementation limitations;
-  * see the documentation for each visitor for more details on what it
-  * supports.  Also, see visitor-impl.h for the callback contracts
-- * implemented by each visitor, and docs/qapi-code-gen.txt for more
-+ * implemented by each visitor, and docs/devel/qapi-code-gen.txt for more
-  * about the QAPI code generator.
-  *
-  * All of the visitors are created via:
-diff --git a/qapi/introspect.json b/qapi/introspect.json
-index 1dbaef56eb..cf77ff0669 100644
---- a/qapi/introspect.json
-+++ b/qapi/introspect.json
-@@ -226,7 +226,7 @@
- #
- # @members: the alternate type's members, in no particular order.
- #           The members' wire encoding is distinct, see
--#           docs/qapi-code-gen.txt section Alternate types.
-+#           docs/devel/qapi-code-gen.txt section Alternate types.
- #
- # On the wire, this can be any of the members.
- #
-diff --git a/qapi/qapi-util.c b/qapi/qapi-util.c
-index e28dbd0ac3..46eda7d196 100644
---- a/qapi/qapi-util.c
-+++ b/qapi/qapi-util.c
-@@ -40,7 +40,7 @@ int qapi_enum_parse(const char * const lookup[], const char *buf,
-  * It may be prefixed by __RFQDN_ (downstream extension), where RFQDN
-  * may contain only letters, digits, hyphen and period.
-  * The special exception for enumeration names is not implemented.
-- * See docs/qapi-code-gen.txt for more on QAPI naming rules.
-+ * See docs/devel/qapi-code-gen.txt for more on QAPI naming rules.
-  * Keep this consistent with scripts/qapi.py!
-  * If @complete, the parse fails unless it consumes @str completely.
-  * Return its length on success, -1 on failure.
-diff --git a/scripts/qapi2texi.py b/scripts/qapi2texi.py
-index 9e015002ef..a317526e51 100755
---- a/scripts/qapi2texi.py
-+++ b/scripts/qapi2texi.py
-@@ -91,7 +91,7 @@ def texi_format(doc):
-         # doesn't.
-         #
-         # Make sure to update section "Documentation markup" in
--        # docs/qapi-code-gen.txt when fixing this.
-+        # docs/devel/qapi-code-gen.txt when fixing this.
-         if line.startswith('| '):
-             line = EXAMPLE_FMT(code=line[2:])
-         elif line.startswith('= '):
+ ... then use "bus=ehci.0" to assign your usb devices to that bus.
+ 
 -- 
 2.13.3
 
