@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db1z1-0000g6-0O
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 05:54:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54020)
+	id 1db3IW-0006BQ-P2
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 07:19:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1db1yy-0000cb-8e
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:54:58 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1db3IU-000685-SW
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:19:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1db1yx-0007sR-Ei
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:54:56 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:60045)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>)
-	id 1db1yt-0007kx-Kn; Fri, 28 Jul 2017 05:54:51 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Forcepoint Email with ESMTPS id 2C2502DD4F1E9;
-	Fri, 28 Jul 2017 10:54:38 +0100 (IST)
-Received: from [192.168.169.52] (192.168.169.52) by HHMAIL01.hh.imgtec.org
-	(10.100.10.21) with Microsoft SMTP Server (TLS) id 14.3.294.0;
-	Fri, 28 Jul 2017 10:54:41 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Aurelien Jarno
-	<aurelien@aurel32.net>
+	(envelope-from <aurelien@aurel32.net>) id 1db3IT-0007C5-SN
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:19:10 -0400
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:53176)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
+	id 1db3IM-0006vA-Pw; Fri, 28 Jul 2017 07:19:02 -0400
+Received: from aurel32 by hall.aurel32.net with local (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1db3ID-0006m3-4o; Fri, 28 Jul 2017 13:18:53 +0200
+Date: Fri, 28 Jul 2017 13:18:53 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Philippe =?iso-8859-15?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170728111853.llmfq5ayjp2j36sh@aurel32.net>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-26-f4bug@amsat.org>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-From: Yongbok Kim <yongbok.kim@imgtec.com>
-Message-ID: <635b7f27-cf61-61b8-b363-255578c54547@imgtec.com>
-Date: Fri, 28 Jul 2017 10:54:40 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+	<20170728053610.15770-30-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20170728053610.15770-26-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-X-Originating-IP: [192.168.169.52]
+Content-Type: text/plain; charset=iso-8859-15
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-trivial] [PATCH 25/47] MAINTAINERS: add missing MIPS entry
+In-Reply-To: <20170728053610.15770-30-f4bug@amsat.org>
+User-Agent: NeoMutt/20170113 (1.7.2)
+Sender: Aurelien Jarno <aurelien@aurel32.net>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:bc8:30d7:100::1
+Subject: Re: [Qemu-trivial] [PATCH 29/47] MAINTAINERS: add missing SH-4 entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,32 +44,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 09:54:58 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 11:19:11 -0000
 
-
-
-On 28/07/2017 06:35, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 2017-07-28 02:35, Philippe Mathieu-Daud=E9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index fa6b0d189a..7354afb9f4 100644
+> index 9a0da13bcd..bb1cb1fc1c 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -182,6 +182,7 @@ F: include/hw/intc/mips_gic.h
->  F: include/hw/timer/mips_gictimer.h
->  F: tests/tcg/mips/
->  F: disas/mips.c
-> +F: default-configs/mips*-softmmu.mak
+> @@ -235,6 +235,7 @@ F: target/sh4/
+>  F: hw/sh4/
+>  F: disas/sh4.c
+>  F: include/hw/sh4/
+> +F: default-configs/sh4*-softmmu.mak
 > =20
->  Moxie
->  M: Anthony Green <green@moxielogic.com>
->=20
+>  SPARC
+>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-Acked-by: Yongbok Kim <yongbok.kim@imgtec.com>
+Acked-by: Aurelien Jarno <aurelien@aurel32.net>
 
-Regards,
-Yongbok
+--=20
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
