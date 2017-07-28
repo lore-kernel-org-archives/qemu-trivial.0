@@ -1,59 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db3xW-00061L-CD
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:01:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46700)
+	id 1db43F-0001ny-H8
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:07:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1db3xT-0005zQ-LW
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:01:32 -0400
+	(envelope-from <stefanha@gmail.com>) id 1db43D-0001nj-Q7
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:07:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1db3xQ-0004fW-T5
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:01:31 -0400
-Received: from mail-wm0-f52.google.com ([74.125.82.52]:34702)
+	(envelope-from <stefanha@gmail.com>) id 1db43B-0001Db-2G
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:07:27 -0400
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:34560)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1db3xQ-0004f2-OG
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:01:28 -0400
-Received: by mail-wm0-f52.google.com with SMTP id t138so9348845wmt.1
-	for <qemu-trivial@nongnu.org>; Fri, 28 Jul 2017 05:01:28 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1db43A-0001Ci-SK; Fri, 28 Jul 2017 08:07:24 -0400
+Received: by mail-wm0-x235.google.com with SMTP id t138so9383899wmt.1;
+	Fri, 28 Jul 2017 05:07:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=Xh8nPKbBOf0ZNe6JBFxYCx+l7fpmLTbEeP2KUr1bBHQ=;
+	b=ipPrkPB0mPAwNgDg56YcL8XCW8/VVE6VnhOYeAeTQPyU9eEUQwf4nvhsjQCRBrcWlo
+	0XBJgJHxxRx+lFQcZzLb7hBi3ycZYdYaA9M3RB3ywNwApn0ynT6Qc/WeNAEGZTJ4cnZK
+	oX8TPA26izv2QX3TL8S7F9VoXbvRs4u1p0OoC0WwV7V0W6etwfBRCRVpZ6WGZbeRtUYe
+	jYDtrwsRMuUNuefihwrUrl7A99Qp2WIfL2lz0b6MNoUKi2Vw/gZVwJJ3Vcq8CAS4V3nn
+	pO0jav8NyzWEgpo/brG7rMGjv/mABqS2pPCvFLXet93pibh2icv8LNhC3Xg/TPgMtGr8
+	KSAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=1/pKTDFH7oJc1gfG4Y3eks4z6sxxnMqJiB1alaYOYO4=;
-	b=c1jXyPPM80KhuKIoBf/EDUAUY2TB5ERLYaCrvlAHlryajQM9DR21orpuvsF6bkqzvN
-	TyeKF5zrOqlRy7hafrltsci7nMYJ8xry64CykcpVjI3+6uWLKUm/rouq+JvMs4wFi9ZJ
-	q9phwg1YJghqrV0KRA9RROP1xExhQhP7GljGd9WLvPM86dg77/F7JGSYDyq68XDzfSTV
-	fAboqdAsGo5T4LMfAgshsK3VqAka/KSt09mAxarvSgt663QeELlxeJOoPHh0vvRNbjzf
-	lEIbcaQT3q3Geqa94ROVTIwuMeZF6C5F1EY+uOOrIqv1nC2vAAisvs1QttPo4XiEXkxb
-	G3KA==
-X-Gm-Message-State: AIVw112H169M0yjP6rcV/KhiB0I/Ew4MNj2Bj1ypkxvkMwwXqRn9MxyK
-	i2aVLN4/Zc3vrVPHa3dxnw==
-X-Received: by 10.28.131.130 with SMTP id f124mr5545526wmd.25.1501243287409;
-	Fri, 28 Jul 2017 05:01:27 -0700 (PDT)
-Received: from [192.168.10.165] (94-39-192-75.adsl-ull.clienti.tiscali.it.
-	[94.39.192.75]) by smtp.gmail.com with ESMTPSA id
-	a31sm47816250wrc.64.2017.07.28.05.01.26
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Jul 2017 05:01:26 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20170728012542.29975-1-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <975681ad-8262-af4b-ecb7-8ec1f4379298@redhat.com>
-Date: Fri, 28 Jul 2017 14:01:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=Xh8nPKbBOf0ZNe6JBFxYCx+l7fpmLTbEeP2KUr1bBHQ=;
+	b=kaRf6bZPul9pibb1MgBtrzTbdhiMk79dF+cpaWjfydoNFn3Uy/b9YL6G6ci+3FSIcR
+	K6XlJLemww9NYsy5mQkreEWjwv66Zi66q3ugqabOzni9/wbr8GbG0mmNL03NVE46NbE/
+	JW3s5OY5WEmPX1+hbX7B/IVQiPevUIiQCnp+lfWotJ8YWD7Qoh8DW6EMq5d8nTAlXlgf
+	KLRaIRagoc818PcFjVCgOiMurz4VXtF8EgHOjckf5vH+wOl/S75dmQiCYJmM553JhJP1
+	q0ehLQ3yWDSlZveIgl8UoqdiULg9h6uGqUm06nlSG1BoSElV4bDDxMbsrZk8M+9nFLyk
+	loYA==
+X-Gm-Message-State: AIVw110lqEM5ZXW7Hzf7CrRWyw9pDLfL3nHlXJ6XatendYU20sYVXVQW
+	WC+Se/rN9DpjWA==
+X-Received: by 10.80.142.10 with SMTP id 10mr2481987edw.127.1501243643792;
+	Fri, 28 Jul 2017 05:07:23 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+	by smtp.gmail.com with ESMTPSA id f48sm565643edb.70.2017.07.28.05.07.22
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 28 Jul 2017 05:07:22 -0700 (PDT)
+Date: Fri, 28 Jul 2017 13:07:21 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-block@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20170728120721.GB12364@stefanha-x1.localdomain>
+References: <20170728053610.15770-1-f4bug@amsat.org>
+	<20170728053610.15770-41-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.52
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 0/8] docs: fix
- broken paths
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="p4qYPpj5QlsIQJ0K"
+Content-Disposition: inline
+In-Reply-To: <20170728053610.15770-41-f4bug@amsat.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::235
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 40/47] MAINTAINERS: add
+ missing entry for AIO
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,13 +73,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 12:01:32 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 12:07:28 -0000
 
-On 28/07/2017 03:25, Philippe Mathieu-Daudé wrote:
-> Eric said this can wait 2.11, however these patches don't change any code
-> generated, I think the 2.10 users deserve an up-to-date doc :p
 
-I agree, especially because this is a 2.10 regression.
+--p4qYPpj5QlsIQJ0K
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Paolo
+On Fri, Jul 28, 2017 at 02:36:03AM -0300, Philippe Mathieu-Daud=E9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--p4qYPpj5QlsIQJ0K
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJZeyj5AAoJEJykq7OBq3PI0ycH/jHfAxaal6aEmpqz7J2lVzEE
+WBe/rHcaILlgYW3kP5RrpEM9jRmVnuIFzbbpbGz8ov9Ft+24ml8T+v5bJ9ZLoAC0
+KK4Ndi/HjyfjdfN+23NncCjztwZGqCdIyNvWLU8Xa8Fc9tZtVjACYqnolpAsBJ2K
+66IieFQOaPrnaCkPwc6Y8lmQa/VYle5aJfrhVcDBJBAQnJ0k+Bzbcxk3gIpJmxQV
+3Hx9y20UcfmUVBOGDiKj18bS09R75egHEhlZ9BTaZgXp3hNv6tpnGCChWolEFXoL
+wl4ncWYLZGAxTgcAdW2FNjJ+lU1magg3zfZr4hNxDka77YA8UciZg5PQsTqA93E=
+=m4QZ
+-----END PGP SIGNATURE-----
+
+--p4qYPpj5QlsIQJ0K--
 
