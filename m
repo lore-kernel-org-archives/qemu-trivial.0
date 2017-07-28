@@ -1,67 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db47j-0006UH-8v
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:12:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54802)
+	id 1db49e-0000w2-0R
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:14:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56217)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1db47e-0006Q8-3X
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:12:06 -0400
+	(envelope-from <cohuck@redhat.com>) id 1db49b-0000oO-D1
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:14:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1db47b-0004D7-9Y
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:12:02 -0400
-Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:37926)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1db47b-0004CP-3v; Fri, 28 Jul 2017 08:11:59 -0400
-Received: by mail-wm0-x234.google.com with SMTP id m85so115872405wma.1;
-	Fri, 28 Jul 2017 05:11:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=kgKgXvuFazMX4pp1AKPUQiEtO1vchTqUY5LfCCAlkgA=;
-	b=dpaF6wq2r18Qj5vaxL2m54SF4mUvTLxYe40W4yNIum/47ZEKGuh98M4D94CNFmFeSD
-	rPT7WqHStyL8UdKV2bmxDwYmPddxGGrpTXgAzenCDRoHdp0zxFaOK/hvMIj4Sp1qPwdl
-	p0/cM/19mR9Ykj/LHx5b7FQK7nn0IbdnNKBVhZtOUJRw761NWlTeNQBF62TlkSUbC0gB
-	/OI8xuDFW4xkbw1BOL9eTGiX7Z0cQpwHqaGAylc/or60DnxU21OS1CAwDc0GwauWzjX4
-	S8hqKnULwVEyTfZeGbZcfzZeUQHLD/luAg73XifCP4CSbYA/8TSqteyzG+TT9QG6gJ0D
-	MN6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=kgKgXvuFazMX4pp1AKPUQiEtO1vchTqUY5LfCCAlkgA=;
-	b=IPhpWC0t/ZpaDYsNFppKXImAK1nRA6DwOu9yv6+CvEtAlfmQSiBWFN1CZd+oPsnzyh
-	o17dXWoZCDIaVy36bBvuP1lxMhwJVod6nmir7hZIUDDzvpkZP7iJNtb4OEbUWCy/3XCT
-	ek+7IbPZlZsUjjOx+qc/7vVSyNW4qSW1XP+PVVDPXgUC9LEuftZHrONjHM+oQLDFCsOJ
-	q+FNOnDDIBZI4847qynJIS8vpTcMKe7QUX7tKBSM7FmnZ0t3CsrHZqz6TT0tD5TMug1P
-	T3YN36Iqzfb16dsSeVzm7G8J3bwm1zoTPDXi71lszQmqaYcPwHhvEvgM+ujVto78PF5G
-	lGVA==
-X-Gm-Message-State: AIVw112nKgrLnHi3P2ZxX3pmztmmBUX5XuQkH6CGJl9RrxF62VfmmWpb
-	JC8dcNK+R0la8g==
-X-Received: by 10.80.157.136 with SMTP id w8mr6466209ede.224.1501243918072;
-	Fri, 28 Jul 2017 05:11:58 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	c57sm3428644eda.46.2017.07.28.05.11.56
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 28 Jul 2017 05:11:57 -0700 (PDT)
-Date: Fri, 28 Jul 2017 13:11:56 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
+	(envelope-from <cohuck@redhat.com>) id 1db49a-0005sD-BM
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:14:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53736)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1db49V-0005kp-VA; Fri, 28 Jul 2017 08:13:58 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CABE7C007988;
+	Fri, 28 Jul 2017 12:13:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CABE7C007988
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=cohuck@redhat.com
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D55FE5C8AE;
+	Fri, 28 Jul 2017 12:13:55 +0000 (UTC)
+Date: Fri, 28 Jul 2017 14:13:53 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVk?=
+	=?UTF-8?B?w6k=?= <f4bug@amsat.org>, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
-Message-ID: <20170728121156.GG12364@stefanha-x1.localdomain>
-References: <20170728012542.29975-1-f4bug@amsat.org>
-	<20170728012542.29975-6-f4bug@amsat.org>
+Message-ID: <20170728141353.3b8382be@gondolin>
+In-Reply-To: <3abbfa87-d882-39ab-b4ab-66f3e68a2fb4@redhat.com>
+References: <20170728053610.15770-1-f4bug@amsat.org>
+	<20170728053610.15770-6-f4bug@amsat.org>
+	<a7fdc125-9a1b-bec3-915f-e8f764816b0d@redhat.com>
+	<c44770f5-df9d-2340-5dba-2f5db7acd046@redhat.com>
+	<20170728135614.3f14e3ad@gondolin>
+	<3abbfa87-d882-39ab-b4ab-66f3e68a2fb4@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TmwHKJoIRFM7Mu/A"
-Content-Disposition: inline
-In-Reply-To: <20170728012542.29975-6-f4bug@amsat.org>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::234
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 5/8] docs: fix
- broken paths to docs/devel/tracing.txt
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 28 Jul 2017 12:13:56 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 05/47] MAINTAINERS: add
+ missing KVM entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,85 +64,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 12:12:06 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 12:14:04 -0000
 
+On Fri, 28 Jul 2017 13:59:08 +0200
+Paolo Bonzini <pbonzini@redhat.com> wrote:
 
---TmwHKJoIRFM7Mu/A
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On 28/07/2017 13:56, Cornelia Huck wrote:
+> > On Fri, 28 Jul 2017 13:51:14 +0200
+> > Paolo Bonzini <pbonzini@redhat.com> wrote:
+> >  =20
+> >> On 28/07/2017 09:00, Thomas Huth wrote: =20
+> >>> On 28.07.2017 07:35, Philippe Mathieu-Daud=C3=A9 wrote:   =20
+> >>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >>>> ---
+> >>>>  MAINTAINERS | 1 +
+> >>>>  1 file changed, 1 insertion(+)
+> >>>>
+> >>>> diff --git a/MAINTAINERS b/MAINTAINERS
+> >>>> index 3b472d7a09..ece02522be 100644
+> >>>> --- a/MAINTAINERS
+> >>>> +++ b/MAINTAINERS
+> >>>> @@ -278,6 +278,7 @@ S: Supported
+> >>>>  F: */kvm.*
+> >>>>  F: accel/kvm/
+> >>>>  F: include/sysemu/kvm*.h
+> >>>> +F: linux-headers/asm-*/kvm*.h   =20
+> >>>
+> >>> The linux-headers are not really maintained by the QEMU project - so I
+> >>> guess we do not need an entry for these?   =20
+> >>
+> >> Actually I agree with the patch.  I'd like to be CCed on
+> >> update-linux-headers patches, and this achieves it. :) =20
+> >=20
+> > But would it not a better idea to add an entry for all headers touched
+> > by update-linux-headers, then? =20
+>=20
+> One thing doesn't exclude the other.  That entry would also list the
+> script itself and linux-headers.  KVM, VFIO and virtio patterns can only
+> list the files they care about.  Migration could list userfaultfd,
+> possibly.  And there's also include/standard-headers/, which includes
+> PCI and input subsystem files...  It has to be perfected, but it's a
+> good idea.
 
-On Thu, Jul 27, 2017 at 10:25:39PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
->  audio/trace-events              | 2 +-
->  block/trace-events              | 2 +-
->  chardev/trace-events            | 2 +-
->  crypto/trace-events             | 2 +-
->  hw/9pfs/trace-events            | 2 +-
->  hw/acpi/trace-events            | 2 +-
->  hw/alpha/trace-events           | 2 +-
->  hw/arm/trace-events             | 2 +-
->  hw/audio/trace-events           | 2 +-
->  hw/block/dataplane/trace-events | 2 +-
->  hw/block/trace-events           | 2 +-
->  hw/char/trace-events            | 2 +-
->  hw/display/trace-events         | 2 +-
->  hw/dma/trace-events             | 2 +-
->  hw/i386/trace-events            | 2 +-
->  hw/input/trace-events           | 2 +-
->  hw/intc/trace-events            | 2 +-
->  hw/isa/trace-events             | 2 +-
->  hw/mem/trace-events             | 2 +-
->  hw/misc/trace-events            | 2 +-
->  hw/net/trace-events             | 2 +-
->  hw/nvram/trace-events           | 2 +-
->  hw/pci/trace-events             | 2 +-
->  hw/ppc/trace-events             | 2 +-
->  hw/s390x/trace-events           | 2 +-
->  hw/scsi/trace-events            | 2 +-
->  hw/sd/trace-events              | 2 +-
->  hw/sparc/trace-events           | 2 +-
->  hw/timer/trace-events           | 2 +-
->  hw/usb/trace-events             | 2 +-
->  hw/vfio/trace-events            | 2 +-
->  hw/virtio/trace-events          | 2 +-
->  hw/xen/trace-events             | 2 +-
->  io/trace-events                 | 2 +-
->  linux-user/trace-events         | 2 +-
->  migration/trace-events          | 2 +-
->  net/trace-events                | 2 +-
->  qom/trace-events                | 2 +-
->  scripts/simpletrace.py          | 2 +-
->  target/arm/trace-events         | 2 +-
->  target/i386/trace-events        | 2 +-
->  target/mips/trace-events        | 2 +-
->  target/ppc/trace-events         | 2 +-
->  target/s390x/trace-events       | 2 +-
->  target/sparc/trace-events       | 2 +-
->  ui/trace-events                 | 2 +-
->  util/trace-events               | 2 +-
->  47 files changed, 47 insertions(+), 47 deletions(-)
-
-Thank you!
-
-301 Moved Permanently :)
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---TmwHKJoIRFM7Mu/A
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJZeyoMAAoJEJykq7OBq3PIz84H/1T1TgPN2VmasG9mRekfOIVm
-jIT6NyigfudjMtI2XTtx7PeIQqHej2xg0PiFzj+WWXzui2iBzD35US8C7o/QCIEz
-7qYoZn9GfwSF4SdnBCmwXfpEChYrDb21fyfOeMQhwob4j1girzfaE2pmHnkBiP7X
-5JGDf2JujoGVAL2du1BkRxILfPNjKzqERfZ0hfpn+yTg4GzY4hqSEeBKF0dbNmEe
-zdp5oyLvc91iXVVyhj4Nn/5JjEfg9NJ8IdVUBxAxsxFFdpl3URVlhOcIWKFAFUhk
-n/suCuNfSTutf+xYYfX/JQ/RcjSJT97G2R3hySgFnzVHnQyBLvCklr/lQ+i04/E=
-=QPjd
------END PGP SIGNATURE-----
-
---TmwHKJoIRFM7Mu/A--
+Personally, I'm not really a fan. If something is changed in one of the
+headers, it implies that either it has already been changed in the
+original headers in Linux (and I will have seen it then), or that
+someone is sending a preliminary patch (and I should hope that I'm
+already cc:ed for the changes that this headers change is for then). It
+does not really hurt, but it feels wrong.
 
