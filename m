@@ -1,69 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dbE1X-00056N-F8
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 18:46:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60880)
+	id 1dbE1a-00058H-0E
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 18:46:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60927)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbE1U-00055R-Gj
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 18:46:21 -0400
+	id 1dbE1W-000569-DA
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 18:46:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbE1R-00027X-9r
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 18:46:20 -0400
-Received: from mail-qt0-x233.google.com ([2607:f8b0:400d:c0d::233]:38235)
+	id 1dbE1V-0002CC-M2
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 18:46:22 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33091)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbE1R-00026n-34; Fri, 28 Jul 2017 18:46:17 -0400
-Received: by mail-qt0-x233.google.com with SMTP id t37so90769009qtg.5;
-	Fri, 28 Jul 2017 15:46:15 -0700 (PDT)
+	id 1dbE1S-00028P-C6; Fri, 28 Jul 2017 18:46:18 -0400
+Received: by mail-qt0-x242.google.com with SMTP id u19so11301174qtc.0;
+	Fri, 28 Jul 2017 15:46:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=VLruKz0faxFHhrYCLP1yhc9aThsn19BMF2V+IfHKvd4=;
-	b=IN4vn1eRrwh7x44MEMrdUzKSO0qB3cahgAxh2Pq3VT6iLmj+VIGkjca3CNf2BE4z3B
-	pjEBXpXcCbu+9esujDbFZQW68loSNMHzRyvdUeziIScZHsqitEnCoBRg1gMOZxghQ4yC
-	ZXBOqqK+sS69PBH4mEmkE5pgtPV9ENj/zNOaIJzZ3e5EYLaUD2RzeLpqUSAT1cx+XLoV
-	l3gRvqpJAjDzrpvteczftU4nl0L//SonrRWtxRpkldX+TnyRZY47SMa56ZtL02tW3ixk
-	rEOyZ4pU6hhZx3nni8l+f5RNYtJG+JfyTCVE9l74h+ALzetWAgUQIIfng3PcE2oVTMh/
-	/6JA==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=iPv9Hs5dmDOXgG4NOdt2zaW0dSwbDYXHue1ZfMv0wdA=;
+	b=EH77O09C3qN5MViPX5TK91jFqA2Owr0UmMPtPQNRZLui2cZdPOMShubSXBqsDf8fnC
+	fgqtB5CK1/D57bNVpIAABXp7md8UOrucHsk31MXBhvfyFqJmD6C1MERQGUkpA9y2ddhV
+	Z1GrM4z8HJXH/aztXM9GaIPHzVubpRvx6JK13kSJGBg/v2LVz3uUYv2CTG0GNlQZoG1f
+	mzqkhgwwcksmIrSYJVUsud4Rny1hwLVuQJXQot1N1ne3yXrGu66Ofm2ujATilbYTiujs
+	IybwbSrDxRUWCp5JKXrF4crKuUSomr3XjfYy1KJgC3yxRg9wNOB8nFlr1goHGFFShIiy
+	81Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=VLruKz0faxFHhrYCLP1yhc9aThsn19BMF2V+IfHKvd4=;
-	b=YOBJYO340TwfboSENiF9aaWCVU8lWqlilctI0t8nTWyAWIyNI2+uGsAjlEOPagvjm8
-	Mcc+GujFISYYuouhbugnoSfMdtxFvyJU5aXNYyPDIpBoKeypBg6+gtV4QEO0Erwk6Uf7
-	9Ih3J5mEOPEbu2ZAyXsfMkR7HTz204Q4ldWmN3QztNyDVHnJ6iJM8rdmS0Ln9kN3CUtf
-	slgczKOLgGW6Tn3Y/HOPVpRfP4GUsUx7mSkqAJZOREaHFmSc5F09bLnct2Agz7J/CgXX
-	9GKQ5lsmCssbSMUF2jVwekib+ttIgjve9tTkxBiMsCIXYU8eOoWDRiCF7GZA2sVcEty4
-	4UUw==
-X-Gm-Message-State: AIVw112HkxkG2JgYZgSsDZYWhDJ7MC/nUaReicwXwS4fVGaKmNHEFL7/
-	RNLon4Ywbwj/eA==
-X-Received: by 10.237.62.14 with SMTP id l14mr14188680qtf.52.1501281974951;
-	Fri, 28 Jul 2017 15:46:14 -0700 (PDT)
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=iPv9Hs5dmDOXgG4NOdt2zaW0dSwbDYXHue1ZfMv0wdA=;
+	b=HFa2Tx11xoNuFxGC1zRw3Q/hIHS6N1na7+oh+p3rZhlZ1BOpO388wLyb8dAJFb7Rx+
+	9R++YnrP8srgwKQBR/a7XwJVSFshlFyHdq+UXR8RqDYARZGByfZ9dE+hsXYoephSDDJ5
+	qxnZXhwFlx6qbMKrt/pE2yZmWIzbMtrDc5gSO5NWuIZRvXU5n/ekSiYD8RWvtRBraSUF
+	aQ1adZRnwOdG1P70zvWnUa+3RC/0+PBl0ryFuQZciBAZT5d5PELfEvRSc8UVUkqERBxg
+	yTAHjPEndzTdNU8F7rcDUlp74QMXpm1w39n+RO5Pzzie+g/PK6eodorasOQB2RDezYsh
+	gpPA==
+X-Gm-Message-State: AIVw111HqScQDhXXtQFTVxATvrZ0H+gJM1KTjvkPKkVn1btEYx0EI14O
+	AQF6k7RZ5rCBkTDmyHQTng==
+X-Received: by 10.200.44.212 with SMTP id 20mr13569083qtx.282.1501281977746;
+	Fri, 28 Jul 2017 15:46:17 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	m129sm15831970qkc.2.2017.07.28.15.46.12
+	m129sm15831970qkc.2.2017.07.28.15.46.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Jul 2017 15:46:14 -0700 (PDT)
+	Fri, 28 Jul 2017 15:46:17 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>
-Date: Fri, 28 Jul 2017 19:46:00 -0300
-Message-Id: <20170728224608.3598-1-f4bug@amsat.org>
+To: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Cc: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Fri, 28 Jul 2017 19:46:01 -0300
+Message-Id: <20170728224608.3598-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
+In-Reply-To: <20170728224608.3598-1-f4bug@amsat.org>
+References: <20170728224608.3598-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::233
-Subject: [Qemu-trivial] [PATCH v2 for 2.10 0/8] docs: fix broken paths
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v2 for 2.10 1/8] docs: fix broken paths to
+ docs/interop dir
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,116 +78,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 22:46:21 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 22:46:23 -0000
 
-Hi Michael, you already applied this series to -trivial, however I updated the
-commits message, not requested but not a heavy task to do neither. Since you
-didn't not sent PR yet, if you mind can you take those instead? Else it's not
-a big deal. Thanks!
+From: Cleber Rosa <crosa@redhat.com>
 
-v2:
-- fixed what I misunderstood Eric said,
-- fixed shell command using Eric feedback,
-- added commit id of the change that introduce the invalid reference in the
-  commit message.
+With the move of some docs to docs/interop on d59157e, a couple of
+references were not updated.
 
-following Cleber Rosa example I cleaned more invalid references.
-
-Eric said "this doesn't change code and doc updates are find during freeze,
-so this is a GOOD candidate for 2.10; but if it misses 2.10, slipping to 2.11
-doesn't hurt." and I agree :)
-
-I used the following command (improved by Eric) which I consider to include
-in some CI test job:
-
-$ git grep docs/ \
-    | sed -ne "s/.* \(docs[^ :)}\"\']*\).*/\1/p" \
-    | sed -e 's/\(.*\)\.$/\1/p' \
-    | sort -u \
-    | xargs ls -d >/dev/null
-
-Regards,
-
-Phil.
-
-Cleber Rosa (1):
-  docs: fix broken paths to docs/interop dir
-
-Philippe Mathieu-Daudé (7):
-  docs: fix broken paths to docs/interop/qcow2.txt
-  docs: fix broken paths to docs/devel/qapi-code-gen.txt
-  docs: fix broken paths to docs/devel/atomics.txt
-  docs: fix broken paths to docs/devel/tracing.txt
-  docs: fix broken paths to docs/config/ich9-ehci-uhci.cfg
-  docs: fix broken paths to docs/specs/ivshmem-spec.txt
-  docs: fix broken paths to docs/spin/
-
- audio/trace-events                  | 2 +-
- block/trace-events                  | 2 +-
- chardev/trace-events                | 2 +-
- crypto/trace-events                 | 2 +-
- docs/devel/lockcnt.txt              | 2 +-
- docs/devel/writing-qmp-commands.txt | 4 ++--
- docs/qcow2-cache.txt                | 2 +-
- docs/specs/pci-ids.txt              | 2 +-
- docs/spin/aio_notify.promela        | 6 +++---
- docs/spin/aio_notify_accept.promela | 4 ++--
- docs/spin/aio_notify_bug.promela    | 4 ++--
- docs/spin/tcg-exclusive.promela     | 2 +-
- docs/usb2.txt                       | 2 +-
- hw/9pfs/trace-events                | 2 +-
- hw/acpi/trace-events                | 2 +-
- hw/alpha/trace-events               | 2 +-
- hw/arm/trace-events                 | 2 +-
- hw/audio/trace-events               | 2 +-
- hw/block/dataplane/trace-events     | 2 +-
- hw/block/trace-events               | 2 +-
- hw/char/trace-events                | 2 +-
- hw/display/trace-events             | 2 +-
- hw/dma/trace-events                 | 2 +-
- hw/i386/trace-events                | 2 +-
- hw/input/trace-events               | 2 +-
- hw/intc/trace-events                | 2 +-
- hw/isa/trace-events                 | 2 +-
- hw/mem/trace-events                 | 2 +-
- hw/misc/trace-events                | 2 +-
- hw/net/trace-events                 | 2 +-
- hw/nvram/trace-events               | 2 +-
- hw/pci/trace-events                 | 2 +-
- hw/ppc/trace-events                 | 2 +-
- hw/s390x/trace-events               | 2 +-
- hw/scsi/trace-events                | 2 +-
- hw/sd/trace-events                  | 2 +-
- hw/sparc/trace-events               | 2 +-
- hw/timer/trace-events               | 2 +-
- hw/usb/trace-events                 | 2 +-
- hw/vfio/trace-events                | 2 +-
- hw/virtio/trace-events              | 2 +-
- hw/xen/trace-events                 | 2 +-
- include/block/aio.h                 | 2 +-
- include/qapi/visitor.h              | 2 +-
- include/qemu/atomic.h               | 4 ++--
- io/trace-events                     | 2 +-
- linux-user/trace-events             | 2 +-
- migration/trace-events              | 2 +-
- net/trace-events                    | 2 +-
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+[PMD: fixed a typo and another reference of docs/interop/qmp-spec.txt]
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+ docs/devel/writing-qmp-commands.txt | 2 +-
  qapi-schema.json                    | 4 ++--
- qapi/introspect.json                | 2 +-
- qapi/qapi-util.c                    | 2 +-
- qom/trace-events                    | 2 +-
- scripts/qapi2texi.py                | 2 +-
- scripts/simpletrace.py              | 2 +-
- target/arm/trace-events             | 2 +-
- target/i386/trace-events            | 2 +-
- target/mips/trace-events            | 2 +-
- target/ppc/trace-events             | 2 +-
- target/s390x/trace-events           | 2 +-
- target/sparc/trace-events           | 2 +-
- tcg/README                          | 2 +-
- ui/trace-events                     | 2 +-
- util/trace-events                   | 2 +-
- 64 files changed, 71 insertions(+), 71 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/docs/devel/writing-qmp-commands.txt b/docs/devel/writing-qmp-commands.txt
+index 1e6375495b..69793e320e 100644
+--- a/docs/devel/writing-qmp-commands.txt
++++ b/docs/devel/writing-qmp-commands.txt
+@@ -8,7 +8,7 @@ into the QAPI framework implementation.
+ 
+ For an in-depth introduction to the QAPI framework, please refer to
+ docs/qapi-code-gen.txt. For documentation about the QMP protocol,
+-start with docs/qmp-intro.txt.
++start with docs/interop/qmp-intro.txt.
+ 
+ == Overview ==
+ 
+diff --git a/qapi-schema.json b/qapi-schema.json
+index c96f0a26f6..802ea53d00 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -23,7 +23,7 @@
+ # | -> data issued by the Client
+ # | <- Server data response
+ #
+-# Please, refer to the QMP specification (docs/qmp-spec.txt) for
++# Please, refer to the QMP specification (docs/interop/qmp-spec.txt) for
+ # detailed information on the Server command and response formats.
+ #
+ # = Stability Considerations
+@@ -108,7 +108,7 @@
+ #
+ # Notes: This command is valid exactly when first connecting: it must be
+ # issued before any other command will be accepted, and will fail once the
+-# monitor is accepting other commands. (see qemu docs/qmp-spec.txt)
++# monitor is accepting other commands. (see qemu docs/interop/qmp-spec.txt)
+ #
+ # Since: 0.13
+ #
 -- 
 2.13.3
 
