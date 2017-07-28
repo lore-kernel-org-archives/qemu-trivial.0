@@ -1,62 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daxxT-0004QP-0D
+	id 1daxxT-0004Qq-6g
 	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 01:37:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47954)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47953)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxO-0004Mz-8T
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:04 -0400
+	id 1daxxO-0004Mx-7U
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxN-0003Wz-33
+	id 1daxxK-0003T2-TW
 	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:02 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36457)
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:38459)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxM-0003WU-W4; Fri, 28 Jul 2017 01:37:01 -0400
-Received: by mail-qt0-x244.google.com with SMTP id c15so6554700qta.3;
-	Thu, 27 Jul 2017 22:37:00 -0700 (PDT)
+	id 1daxxI-0003MW-0E; Fri, 28 Jul 2017 01:36:56 -0400
+Received: by mail-qt0-x242.google.com with SMTP id p3so11916800qtg.5;
+	Thu, 27 Jul 2017 22:36:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Ow6sLwsYe3Fik1BlBA/zGzHFruEbF4xFmDdlrk0knq0=;
-	b=qSKpkbGSiHZNfJPFwHAfmtoUgvNWaN3TCDTIcKzntIzsREFgZc53Upg7KJGjbbBwm/
-	5pkcnle7hELmtmqh0L0T/f3641cm+ZKYX7+rAFFykSI1OR+ir+8QWFwRrzTUUrUizff2
-	HP9WHC/8h73OAB0SBJI8t05zWi6zXkiEoqm6oGO7mPFke9MHHI50AVxPx2pUeqxlY+49
-	PLZJaavxLTuvdTgDwXr4PNJFFBc2cu3ruaCm4EXkd6ZgUr70u/gTyVkk85MAYIO7ziik
-	J96wc74IfroS1RemUWomE0bSgTglyrl89QwfG2GqI61tjzVG2rGgf4RS9m6oL9rJPM6m
-	fY2g==
+	bh=RQ07ZokKeFbys/ZjInTx/+PnZq4dTWpq9vuhcBwEUTI=;
+	b=NoGOpxI1T68fgRz3VgOk/OclTbfJq5FySU6x4RnMbMkYA6e0Ebpm5rFU/5v1ljvSBX
+	GAwpNUiHDHcSL86NCV9jV/QHO0FWY+hzpSvCgPoQ+vh7jqN0TeFSnmjwi/WU3BW80SlV
+	2OIhqWza3slnTGNN9dna0TBWXcs3wrA0y1yEQlt/ibdMnwR9Zl7V99wmjY3DKeGUDYig
+	zlwGxVuig2gTwtWHnC1YONC1xfGdH9brNA9T/WDUBYxvOh6DXA9vjK8/Kqxm/1jCPN7w
+	g/euGApcQtlPYcOOPPbtvm6YymmA/Q7PWMYnAD9GDodvwIg6r1CVKJuuQ+iTgct8DWLH
+	lsSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Ow6sLwsYe3Fik1BlBA/zGzHFruEbF4xFmDdlrk0knq0=;
-	b=ErshUu2dtPObqGaPB30jqHgAHqA0Yv8NIaN2TuZHlX3uV97i4TsZB3MHi46xX3szFH
-	Tn0uVMusjkAtM+mOZDnxDfb5633taKyqoF+xs7t5uGz/eJXUGOReSr8/LjoT6BwgSAom
-	rOJodn6FcdtPWvyZzubur9dZqnVMeCDmARDZF7yLmTjwRvUmaqpH/jZG6ZvOlpsQX3SL
-	KfYz9/5VdAQchMZgnUYY8DSZKTGOsOYEFrH8ogAK/jnZynb3W8/8pjzcbT9YD6zEZosp
-	bEnmcI+K3EzvYcMdjVk0REMiuRT0jZCXgjKOc5RQNECFIqr+gPdxYZMnMenBeBcUi2HC
-	EhMQ==
-X-Gm-Message-State: AIVw1135C2DBaU5e9YIo8LtesrH3R11xZkgNCJl5FRSvytaGFHSoSrNl
-	Zb40vt4Rzg0KPBmw+Akmhw==
-X-Received: by 10.200.48.2 with SMTP id f2mr8681165qte.0.1501220220582;
-	Thu, 27 Jul 2017 22:37:00 -0700 (PDT)
+	bh=RQ07ZokKeFbys/ZjInTx/+PnZq4dTWpq9vuhcBwEUTI=;
+	b=AnrcQBTcLLYrCZtCmMs03HQx5EZKAJ0rJeNu6XWpi6mGlRAEo7KyU/TXE/F1F2yNHa
+	a7Hj81oQ5KkdPhdi+mL+UMB131fYCsnxTSrqqzNGGO4RC0RisGyBE6aUsLwqKEUdynh0
+	pnehWjoaU9UxFb1CkYBoTY+0wCtkFHvGQEvOgBgcU1aw83LdNy1dHyuJ4gJct+5GPx56
+	lJ/A0Tni6dyLux2YZXW0H/VOO8FpP9OxmGgxy9Dr2QxSjQuxPypzL6ioNBvcorABzRrT
+	n17H09qAEj9PlW7KX5r8XjutDR39enBjdCDNDgFRLDAwMDDdOZs6JrxP8JY/elA61o9A
+	g5XA==
+X-Gm-Message-State: AIVw112TUcilbL+1QUc4VSiM0VCnV+2v8lTccj1mcGkD/ledVYeGrIoo
+	yM8T9HaQxqGmZXRNvWa+Bw==
+X-Received: by 10.200.38.234 with SMTP id 39mr8622063qtp.252.1501220215453;
+	Thu, 27 Jul 2017 22:36:55 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	h41sm12129560qta.45.2017.07.27.22.36.57
+	h41sm12129560qta.45.2017.07.27.22.36.53
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 22:37:00 -0700 (PDT)
+	Thu, 27 Jul 2017 22:36:54 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+To: Gonglei <arei.gonglei@huawei.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
-Date: Fri, 28 Jul 2017 02:35:39 -0300
-Message-Id: <20170728053610.15770-17-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 28 Jul 2017 02:35:37 -0300
+Message-Id: <20170728053610.15770-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170728053610.15770-1-f4bug@amsat.org>
 References: <20170728053610.15770-1-f4bug@amsat.org>
@@ -65,8 +62,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH 16/47] MAINTAINERS: add missing entry for gdb
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 14/47] MAINTAINERS: add missing entry for
+ virtio/crypto
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,17 +84,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 9670a3901a..653c2a1db1 100644
+index 842c66c325..d8aef164ca 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1320,6 +1320,7 @@ L: qemu-devel@nongnu.org
- S: Odd Fixes
- F: gdbstub*
- F: gdb-xml/
-+F: scripts/qemugdb/
+@@ -1111,6 +1111,7 @@ S: Supported
+ F: hw/virtio/virtio-crypto.c
+ F: hw/virtio/virtio-crypto-pci.c
+ F: include/hw/virtio/virtio-crypto.h
++F: include/standard-headers/linux/virtio_crypto.h
  
- Memory API
- M: Paolo Bonzini <pbonzini@redhat.com>
+ nvme
+ M: Keith Busch <keith.busch@intel.com>
 -- 
 2.13.3
 
