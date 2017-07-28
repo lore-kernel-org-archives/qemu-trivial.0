@@ -1,82 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dapkB-0003hE-Q2
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 16:50:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34885)
+	id 1dau2S-0002SG-VS
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 21:26:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1dapkA-0003ge-4z
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:50 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dau2Q-0002QB-4d
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:25:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1dapk6-0005Lp-8B
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:50 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47207
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mdroth@linux.vnet.ibm.com>)
-	id 1dapk6-0005LM-1n
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 16:50:46 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
-	v6RKn7Q1066720
-	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 16:50:45 -0400
-Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 2bymp6yhf2-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 27 Jul 2017 16:50:45 -0400
-Received: from localhost
-	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
-	Thu, 27 Jul 2017 16:50:44 -0400
-Received: from b01cxnp23034.gho.pok.ibm.com (9.57.198.29)
-	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 27 Jul 2017 16:50:42 -0400
-Received: from b01ledav003.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
-	[9.57.199.108])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	v6RKoeIB24117496; Thu, 27 Jul 2017 20:50:41 GMT
-Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id BC766B2065;
-	Thu, 27 Jul 2017 16:48:09 -0400 (EDT)
-Received: from localhost (unknown [9.53.92.194])
-	by b01ledav003.gho.pok.ibm.com (Postfix) with ESMTP id A229AB205E;
-	Thu, 27 Jul 2017 16:48:09 -0400 (EDT)
-Content-Type: text/plain; charset="utf-8"
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dau2O-00020q-W6
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:25:58 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:38666)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dau2K-0001wg-AY; Thu, 27 Jul 2017 21:25:52 -0400
+Received: by mail-qk0-x242.google.com with SMTP id v76so8318174qka.5;
+	Thu, 27 Jul 2017 18:25:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=c8N1IIvRtodZdi42fXg6PKmhcly4KpXhqjhstkAH8SU=;
+	b=Hx98jyWNMfJ4DkaBqvGx11hGt/4dEwcW3DRGCsWe0nbRtoQ27ZNhuJ71zr9eZU/RZM
+	+d2crIFUEeXIA4YNxJaH8omGBnCnwSZe7SPj9ij5MSsT65nJAFc45dWXZE3+Ta57KxXo
+	nFW+fAlHKQO4q36eiZ+HEPjnl92NaFd7aSVqSCMNM5ftnbSOkbHbhVwKn6HD2SRknboU
+	95BCCRky2cptlfBA2p++2Ox8xc/BcCQvHEtPaBjuItwFRG3SDgeopaTQpYIVrYweW69W
+	oQ24YvC+WOUGsTCvo1U8JRScGi8wvOG7wbiYsMIhI0fMbODGOzTYO5lYuU0fTKOE8SyQ
+	nxSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=c8N1IIvRtodZdi42fXg6PKmhcly4KpXhqjhstkAH8SU=;
+	b=n6aNlGpqY0jUJH+GQunNqSJ/XjxsbMKubTdIA3dtsxGds39uvMlgr8LMgCw2Zp9Z9C
+	9f0X3/fb83hW2ferhLX3Bs79l9IpFB3ZDwrFymeq/G5eC50zlMgAUj/B5sAVaPB6zVy3
+	fSIlDHA+g2U1Mk+oPoqW3YpaRgzmLOMeWpgGkXazHhChoJpJYmT4zS3X5bezh409TDe9
+	0bJCvejXswDz9itrZzys+w4tJ9498ExhaKDtozhem+rklj6wT3QW0PlEd97mrTSkzED7
+	Iit/d44QBalQiYtD5PGfPlAhIhK7yLsQCFtisdExfYgwobJxOw+eEXQvFFyH8aDuyURW
+	ogUQ==
+X-Gm-Message-State: AIVw110lnyRPQk7M19tW+JYjOu2Yft0+aItXRPt5IHC6bked6DOzJiGI
+	UKZOhFkOFkZwE8qWd9k8Dw==
+X-Received: by 10.55.46.66 with SMTP id u63mr8184235qkh.333.1501205151427;
+	Thu, 27 Jul 2017 18:25:51 -0700 (PDT)
+Received: from yoga.offpageads.com ([138.117.48.223])
+	by smtp.gmail.com with ESMTPSA id
+	o97sm15010202qte.56.2017.07.27.18.25.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 27 Jul 2017 18:25:50 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>
+Date: Thu, 27 Jul 2017 22:25:34 -0300
+Message-Id: <20170728012542.29975-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.13.3
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-To: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-From: Michael Roth <mdroth@linux.vnet.ibm.com>
-In-Reply-To: <20170727154505.14838-1-marcandre.lureau@redhat.com>
-Cc: qemu-trivial@nongnu.org,
-	=?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20170727154505.14838-1-marcandre.lureau@redhat.com>
-User-Agent: alot/0.5.1
-Date: Thu, 27 Jul 2017 15:22:26 -0500
-X-TM-AS-GCONF: 00
-x-cbid: 17072720-0008-0000-0000-00000265A676
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00007437; HX=3.00000241; KW=3.00000007;
-	PH=3.00000004; SC=3.00000214; SDB=6.00893794; UDB=6.00446874;
-	IPR=6.00673954; 
-	BA=6.00005495; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
-	ZB=6.00000000; 
-	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00016413;
-	XFM=3.00000015; UTC=2017-07-27 20:50:43
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17072720-0009-0000-0000-0000362D42F0
-Message-Id: <150118694640.22858.12035679972281344198@loki>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-07-27_12:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1706020000
-	definitions=main-1707270323
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build-sys: there is no
- qemu-ga.c
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH for 2.10 0/8] docs: fix broken paths
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,43 +73,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jul 2017 20:50:51 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 01:26:00 -0000
 
-Quoting Marc-Andr=C3=A9 Lureau (2017-07-27 10:45:05)
-> It got moved in qga/main.c from commit 2870dc3456c9c.
-> =
+Hi, following Cleber Rosa example I cleaned more invalid references.
 
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Eric said this can wait 2.11, however these patches don't change any code
+generated, I think the 2.10 users deserve an up-to-date doc :p
 
-Reviewed-by: Michael Roth <mdroth@linux.vnet.ibm.com>
+I used the following command (and consider include it in some CI test job):
 
-> ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> =
+$ git grep docs/ \
+      | sed -ne "s/.* \(docs[^ :)}\"\']*\).*/\1/p" \
+      | sed -e 's/\(.*\)\.$/\1/p' | sort -u | while read p;do
+    ls -ld $p 1>/dev/null
+  done
 
-> diff --git a/Makefile b/Makefile
-> index ef721480eb..97a58a0f4e 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -443,7 +443,7 @@ $(qapi-modules) $(SRC_PATH)/scripts/qapi-introspect.p=
-y $(qapi-py)
->                 "GEN","$@")
->  =
+Regards,
 
->  QGALIB_GEN=3D$(addprefix qga/qapi-generated/, qga-qapi-types.h qga-qapi-=
-visit.h qga-qmp-commands.h)
-> -$(qga-obj-y) qemu-ga.o: $(QGALIB_GEN)
-> +$(qga-obj-y): $(QGALIB_GEN)
->  =
+Phil.
 
->  qemu-ga$(EXESUF): $(qga-obj-y) $(COMMON_LDADDS)
->         $(call LINK, $^)
-> -- =
+Cleber Rosa (1):
+  docs: fix broken paths to docs/interop dir
 
-> 2.14.0.rc0.1.g40ca67566
-> =
+Philippe Mathieu-Daudé (7):
+  docs: fix broken paths to docs/interop/qcow2.txt
+  docs: fix broken paths to docs/devel/qapi-code-gen.txt
+  docs: fix broken paths to docs/devel/atomics.txt
+  docs: fix broken paths to docs/devel/tracing.txt
+  docs: fix broken paths to docs/config/ich9-ehci-uhci.cfg
+  docs: fix broken paths to docs/specs/ivshmem-spec.txt
+  docs: fix broken paths to docs/spin/
 
->=20
+ audio/trace-events                  | 2 +-
+ block/trace-events                  | 2 +-
+ chardev/trace-events                | 2 +-
+ crypto/trace-events                 | 2 +-
+ docs/devel/lockcnt.txt              | 2 +-
+ docs/devel/writing-qmp-commands.txt | 4 ++--
+ docs/qcow2-cache.txt                | 2 +-
+ docs/specs/pci-ids.txt              | 2 +-
+ docs/spin/aio_notify.promela        | 6 +++---
+ docs/spin/aio_notify_accept.promela | 4 ++--
+ docs/spin/aio_notify_bug.promela    | 4 ++--
+ docs/spin/tcg-exclusive.promela     | 2 +-
+ docs/usb2.txt                       | 2 +-
+ hw/9pfs/trace-events                | 2 +-
+ hw/acpi/trace-events                | 2 +-
+ hw/alpha/trace-events               | 2 +-
+ hw/arm/trace-events                 | 2 +-
+ hw/audio/trace-events               | 2 +-
+ hw/block/dataplane/trace-events     | 2 +-
+ hw/block/trace-events               | 2 +-
+ hw/char/trace-events                | 2 +-
+ hw/display/trace-events             | 2 +-
+ hw/dma/trace-events                 | 2 +-
+ hw/i386/trace-events                | 2 +-
+ hw/input/trace-events               | 2 +-
+ hw/intc/trace-events                | 2 +-
+ hw/isa/trace-events                 | 2 +-
+ hw/mem/trace-events                 | 2 +-
+ hw/misc/trace-events                | 2 +-
+ hw/net/trace-events                 | 2 +-
+ hw/nvram/trace-events               | 2 +-
+ hw/pci/trace-events                 | 2 +-
+ hw/ppc/trace-events                 | 2 +-
+ hw/s390x/trace-events               | 2 +-
+ hw/scsi/trace-events                | 2 +-
+ hw/sd/trace-events                  | 2 +-
+ hw/sparc/trace-events               | 2 +-
+ hw/timer/trace-events               | 2 +-
+ hw/usb/trace-events                 | 2 +-
+ hw/vfio/trace-events                | 2 +-
+ hw/virtio/trace-events              | 2 +-
+ hw/xen/trace-events                 | 2 +-
+ include/block/aio.h                 | 2 +-
+ include/qapi/visitor.h              | 2 +-
+ include/qemu/atomic.h               | 4 ++--
+ io/trace-events                     | 2 +-
+ linux-user/trace-events             | 2 +-
+ migration/trace-events              | 2 +-
+ net/trace-events                    | 2 +-
+ qapi-schema.json                    | 4 ++--
+ qapi/introspect.json                | 2 +-
+ qapi/qapi-util.c                    | 2 +-
+ qom/trace-events                    | 2 +-
+ scripts/qapi2texi.py                | 2 +-
+ scripts/simpletrace.py              | 2 +-
+ target/arm/trace-events             | 2 +-
+ target/i386/trace-events            | 2 +-
+ target/mips/trace-events            | 2 +-
+ target/ppc/trace-events             | 2 +-
+ target/s390x/trace-events           | 2 +-
+ target/sparc/trace-events           | 2 +-
+ tcg/README                          | 2 +-
+ ui/trace-events                     | 2 +-
+ util/trace-events                   | 2 +-
+ 64 files changed, 71 insertions(+), 71 deletions(-)
+
+-- 
+2.13.3
 
 
