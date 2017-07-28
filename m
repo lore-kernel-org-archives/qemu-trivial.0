@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dau2i-0002gh-B6
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 21:26:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35591)
+	id 1dau2m-0002ix-H3
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jul 2017 21:26:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35629)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2g-0002eC-5X
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:15 -0400
+	id 1dau2i-0002gM-1o
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2c-00029d-UA
-	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:14 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:32780)
+	id 1dau2h-0002D1-6D
+	for qemu-trivial@nongnu.org; Thu, 27 Jul 2017 21:26:16 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:34752)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dau2a-00028I-SU; Thu, 27 Jul 2017 21:26:08 -0400
-Received: by mail-qk0-x243.google.com with SMTP id d145so17397234qkc.0;
-	Thu, 27 Jul 2017 18:26:08 -0700 (PDT)
+	id 1dau2d-0002AG-RJ; Thu, 27 Jul 2017 21:26:11 -0400
+Received: by mail-qt0-x241.google.com with SMTP id i19so11485527qte.1;
+	Thu, 27 Jul 2017 18:26:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=D8luNx0z/vW6ZhXsbMdvwYCims9sVN4h95xeled4/Wc=;
-	b=VHIQfPtPOyq7jz8zYjTHPqqBBouPFeFrYr28/u0igVX7rK497jtZn6W7lpxF7pf1ZN
-	8kG+ZrTnjxmYsHrOv5fsorFo7Qy77NZzcgvkfzrnwsDwA+ztw2P4svRq99G9KsKyQTXt
-	/28kqxMIzQ5GT5sYPkbh3rrsM2tONMN4zFvZF1Ry82cxQtdKW4FkNQtB8lNwokxWja8g
-	6rpf4yCykXGEK3ji29VXFEd+J+N7as1MTGco7UPrzIfkgsOLMLV8WEau9oqwMWAbjnC8
-	xlv05Ec3FvsXrx9AlDp3tTujoGFAF9O2DyBWoEsmCPVAgApDhbU3npMOtzbpof9aLnC0
-	EsNg==
+	bh=PtuE54iEPDNFkb/sdtRbH4BsXPhfhDJmmeGqGpUQAcU=;
+	b=rgFA3tGd5k/kVheKPQ0jVCjW325f72rLfkWqYSN7/ZxOkcvr2aHzLlqx9GxDihS54A
+	lHFEyh3Mnn3yr/YcRZiESSWnpIB5uIdOkz0Iz8gDjEGy35oVu84/vsO+bSj1jkkNwepk
+	NyDB9IW1apiBo+bmrAqLyx3zR+Y3IU8TLhTCV87fwfOURzNSVGvC9qB/Sjj/MyuYnRPI
+	2wc78b2sXVKlXSMJFcBvptRVq1pEgYbreWkGc5nIe1LSYGTrdnREpYieGpYz3xdfYLZg
+	E/7i1/+exY1baT/L7RqSTxMyDRyHqTgStwHP4FffsUJj8lVITFTMwvanUq95gp3hDa5k
+	EXrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=D8luNx0z/vW6ZhXsbMdvwYCims9sVN4h95xeled4/Wc=;
-	b=OQGdvNHmzv1odhPAaylUCd2Neqea84DzEV6clzIXNwgAt04jOUCRy+n3GLJHoItw9L
-	RleWLVaj7B8aAXdRqknNwddS97nkhD6Py5lxPh5TpVQv5WXbF6P3i4aeKO+5BHa8zT8c
-	K8l9APY5fqqUitVDXWKKQCkjJSn30ss6lSoxz46S3RQG0eZGqaAhNNzBDTPoEW8M6ZmG
-	BneicAl1g1eGp2etKxLXcWaw8t+/Grh/6AhXZ3eI5xH2o+ImUePGCD/u2wgi28+ZFeU/
-	yA9cMOLdk1v/lRb+bpWjQXuS/J/ex/JVIhqdnYeYPVfTK5MLjS/XoYWygTlxgoMc2IiC
-	BzAg==
-X-Gm-Message-State: AIVw113vAeiTAWx5O7nYrDreNXO+DXqYelNhzYGBbVkMeoFEUhY0Xvgm
-	v+TdwZDeUlrboA==
-X-Received: by 10.55.207.18 with SMTP id e18mr8645099qkj.82.1501205168373;
-	Thu, 27 Jul 2017 18:26:08 -0700 (PDT)
+	bh=PtuE54iEPDNFkb/sdtRbH4BsXPhfhDJmmeGqGpUQAcU=;
+	b=NChHYTxTkyQDXosiy9UgJdNM44SNTeUMQCwQ7OahFCnIusRBgCl4zSlpM1wW0fYKDW
+	lz/D9wyNWmzb1B2o1rxWlSrcT+7V7N/NTEJt0uRm7jHkyy7ooxdRLDrvLWdYrXU6XvAt
+	7MtCSZSJV9Yk5E6lkwK+icF52Pybbz/x9MLMSfMMYWPFsGYQhhKw9G6son4GnPB+Io+Q
+	2aHyVvwcd5TwRWKOozPQmRLc7Y0CfhyBO/R2OWO4MUXfYIaiWiaiLRnx6v+wa19vbpa5
+	V9RJhBBlvGDshhw4FYbEIrQ7ao773WzcOIiuS60AFWvWfHJFvZ1VEIVU0jpi2M/IkeWx
+	Rbvg==
+X-Gm-Message-State: AIVw112Ljx0TBrxveDOq1CkEpfVrLKw6I5iH3kKhCO4WGjQXJQ3kQa75
+	tXJsNZC70NLWRg==
+X-Received: by 10.200.3.220 with SMTP id z28mr8772488qtg.35.1501205171450;
+	Thu, 27 Jul 2017 18:26:11 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	o97sm15010202qte.56.2017.07.27.18.26.06
+	o97sm15010202qte.56.2017.07.27.18.26.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 18:26:07 -0700 (PDT)
+	Thu, 27 Jul 2017 18:26:10 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Gerd Hoffmann <kraxel@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Thu, 27 Jul 2017 22:25:40 -0300
-Message-Id: <20170728012542.29975-7-f4bug@amsat.org>
+Date: Thu, 27 Jul 2017 22:25:41 -0300
+Message-Id: <20170728012542.29975-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
 References: <20170728012542.29975-1-f4bug@amsat.org>
@@ -62,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH for 2.10 6/8] docs: fix broken paths to
- docs/config/ich9-ehci-uhci.cfg
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH for 2.10 7/8] docs: fix broken paths to
+ docs/specs/ivshmem-spec.txt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,25 +78,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 01:26:15 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 01:26:17 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- docs/usb2.txt | 2 +-
+ docs/specs/pci-ids.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/usb2.txt b/docs/usb2.txt
-index b9e7548073..09df45b5b1 100644
---- a/docs/usb2.txt
-+++ b/docs/usb2.txt
-@@ -50,7 +50,7 @@ companion controllers with two ports each.
- There is a config file in docs which will do all this for you, just
- try ...
+diff --git a/docs/specs/pci-ids.txt b/docs/specs/pci-ids.txt
+index 95adee07d6..bb99a0257e 100644
+--- a/docs/specs/pci-ids.txt
++++ b/docs/specs/pci-ids.txt
+@@ -40,7 +40,7 @@ maintained as part of the virtio specification.
+ 1af4:1100  Used as PCI Subsystem ID for existing hardware devices emulated
+            by qemu.
  
--    qemu -readconfig docs/ich9-ehci-uhci.cfg
-+    qemu -readconfig docs/config/ich9-ehci-uhci.cfg
+-1af4:1110  ivshmem device (shared memory, docs/specs/ivshmem_device_spec.txt)
++1af4:1110  ivshmem device (shared memory, docs/specs/ivshmem-spec.txt)
  
- ... then use "bus=ehci.0" to assign your usb devices to that bus.
+ All other device IDs are reserved.
  
 -- 
 2.13.3
