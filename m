@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db3vP-0004Wd-Cw
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 07:59:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44602)
+	id 1db3wi-0005Vb-Td
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:00:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1db3vN-0004VT-Bk
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:59:22 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1db3we-0005Qe-QK
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:00:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1db3vM-0002Lo-FK
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:59:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:28594)
+	(envelope-from <pbonzini@redhat.com>) id 1db3wa-0003oM-2q
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:00:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56130)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1db3vH-0002HR-G2; Fri, 28 Jul 2017 07:59:15 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1db3wX-0003lJ-Le; Fri, 28 Jul 2017 08:00:33 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 67E3710E2D;
-	Fri, 28 Jul 2017 11:59:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 67E3710E2D
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 77D1FC0B2B4B;
+	Fri, 28 Jul 2017 12:00:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 77D1FC0B2B4B
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=pbonzini@redhat.com
 Received: from [10.36.117.163] (ovpn-117-163.ams2.redhat.com [10.36.117.163])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A319E7767A;
-	Fri, 28 Jul 2017 11:59:09 +0000 (UTC)
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1F7835C8A6;
+	Fri, 28 Jul 2017 12:00:23 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-6-f4bug@amsat.org>
-	<a7fdc125-9a1b-bec3-915f-e8f764816b0d@redhat.com>
-	<c44770f5-df9d-2340-5dba-2f5db7acd046@redhat.com>
-	<20170728135614.3f14e3ad@gondolin>
+	<20170728053610.15770-17-f4bug@amsat.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3abbfa87-d882-39ab-b4ab-66f3e68a2fb4@redhat.com>
-Date: Fri, 28 Jul 2017 13:59:08 +0200
+Message-ID: <7100714b-6789-15e4-f883-9e8684ddc9e7@redhat.com>
+Date: Fri, 28 Jul 2017 14:00:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170728135614.3f14e3ad@gondolin>
+In-Reply-To: <20170728053610.15770-17-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 28 Jul 2017 11:59:14 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 28 Jul 2017 12:00:32 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 05/47] MAINTAINERS: add
- missing KVM entry
+Subject: Re: [Qemu-trivial] [PATCH 16/47] MAINTAINERS: add missing entry for
+ gdb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,48 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 11:59:22 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 12:00:44 -0000
 
-On 28/07/2017 13:56, Cornelia Huck wrote:
-> On Fri, 28 Jul 2017 13:51:14 +0200
-> Paolo Bonzini <pbonzini@redhat.com> wrote:
+On 28/07/2017 07:35, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
->> On 28/07/2017 09:00, Thomas Huth wrote:
->>> On 28.07.2017 07:35, Philippe Mathieu-Daud=C3=A9 wrote: =20
->>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>>> ---
->>>>  MAINTAINERS | 1 +
->>>>  1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index 3b472d7a09..ece02522be 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -278,6 +278,7 @@ S: Supported
->>>>  F: */kvm.*
->>>>  F: accel/kvm/
->>>>  F: include/sysemu/kvm*.h
->>>> +F: linux-headers/asm-*/kvm*.h =20
->>>
->>> The linux-headers are not really maintained by the QEMU project - so =
-I
->>> guess we do not need an entry for these? =20
->>
->> Actually I agree with the patch.  I'd like to be CCed on
->> update-linux-headers patches, and this achieves it. :)
->=20
-> But would it not a better idea to add an entry for all headers touched
-> by update-linux-headers, then?
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 9670a3901a..653c2a1db1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1320,6 +1320,7 @@ L: qemu-devel@nongnu.org
+>  S: Odd Fixes
+>  F: gdbstub*
+>  F: gdb-xml/
+> +F: scripts/qemugdb/
 
-One thing doesn't exclude the other.  That entry would also list the
-script itself and linux-headers.  KVM, VFIO and virtio patterns can only
-list the files they care about.  Migration could list userfaultfd,
-possibly.  And there's also include/standard-headers/, which includes
-PCI and input subsystem files...  It has to be perfected, but it's a
-good idea.
+This is unrelated.  It's for debugging QEMU, while the others are for
+debugging QEMU guests.
 
 Paolo
 
-Paolo
+>  Memory API
+>  M: Paolo Bonzini <pbonzini@redhat.com>
+>=20
 
 
