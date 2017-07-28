@@ -1,58 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db49e-0000w2-0R
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:14:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56217)
+	id 1db4BT-0002la-BM
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 08:15:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1db49b-0000oO-D1
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:14:04 -0400
+	(envelope-from <stefanha@gmail.com>) id 1db4BR-0002jr-Fg
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:15:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1db49a-0005sD-BM
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:14:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53736)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1db49V-0005kp-VA; Fri, 28 Jul 2017 08:13:58 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CABE7C007988;
-	Fri, 28 Jul 2017 12:13:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CABE7C007988
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D55FE5C8AE;
-	Fri, 28 Jul 2017 12:13:55 +0000 (UTC)
-Date: Fri, 28 Jul 2017 14:13:53 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVk?=
-	=?UTF-8?B?w6k=?= <f4bug@amsat.org>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Message-ID: <20170728141353.3b8382be@gondolin>
-In-Reply-To: <3abbfa87-d882-39ab-b4ab-66f3e68a2fb4@redhat.com>
-References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-6-f4bug@amsat.org>
-	<a7fdc125-9a1b-bec3-915f-e8f764816b0d@redhat.com>
-	<c44770f5-df9d-2340-5dba-2f5db7acd046@redhat.com>
-	<20170728135614.3f14e3ad@gondolin>
-	<3abbfa87-d882-39ab-b4ab-66f3e68a2fb4@redhat.com>
-Organization: Red Hat GmbH
+	(envelope-from <stefanha@gmail.com>) id 1db4BQ-0008I4-Lp
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 08:15:57 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34335)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1db4BO-0008F1-M4; Fri, 28 Jul 2017 08:15:54 -0400
+Received: by mail-wm0-x243.google.com with SMTP id x64so2883026wmg.1;
+	Fri, 28 Jul 2017 05:15:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=TsO8wUeOU5YuQNX4XA02Uwh7muOL/amM0VSfDVYq8qc=;
+	b=JxcrWLXaSrwDNtK+pp0ykwyyMI2UEuAZAJPcBgd5c9NpVZ5T3JKmvuOdIrkfUuUnZS
+	QEIKtAjS3rlFwxL5PTGXrN+hHAjItH9K6T+jZ0qj4VSKt0RB8/wJcjAKhR1l7jFV7Yvo
+	CtTdQs6b+olZ1q6bkGzZxW1OH+I/gPQyC3IMk3m9NQ7qNTi6R02ylzAmkLiuFWnW7m7+
+	hO+AeeMFQb+CnLziZUkMafDNqpvmdqtfFmr9W432FT23Tq98Ko3PhtzVqd/arxx2p0SM
+	1Or+fryZyLSyq8i0CNkOPEV2df+hOrcoB2S5VBYGRMb4I0VOKjRIW4QZddlgOmpkFmmH
+	1b7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=TsO8wUeOU5YuQNX4XA02Uwh7muOL/amM0VSfDVYq8qc=;
+	b=GTpvalmxpCV2PAsFLtKm6Hy/tGGNkwW/FaFT1XGqhQt6eWzjBft+PIC3/LBXobJOiY
+	fVyNWnaKafNAGNKHkDHyHmXLivx7IUH7FTkFLL/oJh2PpKfX27pMG/btvYrZr/CroXg9
+	7cUf4CF7sHpCHMWVmBVoPypQCcBVlx0RWCgS2L/2zIcUymYOkuGB8tQ1C3J56Ks0QQK1
+	f6u8/ZC2HBvCRSEcun7rXnkNoiqDGU8u4otJf1DbZvf2KIG1o7179MQ0KYk0eR/fD+s6
+	YpYTF/Lu+NqhLTjsF7OiN9A/u9wLjfWKv39/EhrAXgXdJbxXvc9wnmMMoxaYh+DUtuhr
+	Y/bg==
+X-Gm-Message-State: AIVw110ycH2WCdXgd3j39eWym17m9FPYt9xppJaOM05PAj588lnr3+Yq
+	gDp4hogx5wLOHA==
+X-Received: by 10.80.241.8 with SMTP id w8mr6432784edl.245.1501244153761;
+	Fri, 28 Jul 2017 05:15:53 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	c57sm3433619eda.46.2017.07.28.05.15.52
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 28 Jul 2017 05:15:52 -0700 (PDT)
+Date: Fri, 28 Jul 2017 13:15:51 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Cleber Rosa <crosa@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170728121551.GH12364@stefanha-x1.localdomain>
+References: <20170727120210.6943-1-crosa@redhat.com>
+	<20170727120210.6943-4-crosa@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 28 Jul 2017 12:13:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 05/47] MAINTAINERS: add
- missing KVM entry
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="1EKig6ypoSyM7jaD"
+Content-Disposition: inline
+In-Reply-To: <20170727120210.6943-4-crosa@redhat.com>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/5] qemu-iotests: remove
+ commented out variables
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,52 +72,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 12:14:04 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 12:15:58 -0000
 
-On Fri, 28 Jul 2017 13:59:08 +0200
-Paolo Bonzini <pbonzini@redhat.com> wrote:
 
-> On 28/07/2017 13:56, Cornelia Huck wrote:
-> > On Fri, 28 Jul 2017 13:51:14 +0200
-> > Paolo Bonzini <pbonzini@redhat.com> wrote:
-> >  =20
-> >> On 28/07/2017 09:00, Thomas Huth wrote: =20
-> >>> On 28.07.2017 07:35, Philippe Mathieu-Daud=C3=A9 wrote:   =20
-> >>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >>>> ---
-> >>>>  MAINTAINERS | 1 +
-> >>>>  1 file changed, 1 insertion(+)
-> >>>>
-> >>>> diff --git a/MAINTAINERS b/MAINTAINERS
-> >>>> index 3b472d7a09..ece02522be 100644
-> >>>> --- a/MAINTAINERS
-> >>>> +++ b/MAINTAINERS
-> >>>> @@ -278,6 +278,7 @@ S: Supported
-> >>>>  F: */kvm.*
-> >>>>  F: accel/kvm/
-> >>>>  F: include/sysemu/kvm*.h
-> >>>> +F: linux-headers/asm-*/kvm*.h   =20
-> >>>
-> >>> The linux-headers are not really maintained by the QEMU project - so I
-> >>> guess we do not need an entry for these?   =20
-> >>
-> >> Actually I agree with the patch.  I'd like to be CCed on
-> >> update-linux-headers patches, and this achieves it. :) =20
-> >=20
-> > But would it not a better idea to add an entry for all headers touched
-> > by update-linux-headers, then? =20
+--1EKig6ypoSyM7jaD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jul 27, 2017 at 08:02:08AM -0400, Cleber Rosa wrote:
+> The variables FULL_MKFS_OPTIONS and FULL_MOUNT_OPTIONS are commented
+> out, never used, and even refer to functions that do exist.  The last
+> time these were touched was around 8 years ago, so I guess it's safe
+> to assume outputting such information on test execution is still on the
+> radar.
 >=20
-> One thing doesn't exclude the other.  That entry would also list the
-> script itself and linux-headers.  KVM, VFIO and virtio patterns can only
-> list the files they care about.  Migration could list userfaultfd,
-> possibly.  And there's also include/standard-headers/, which includes
-> PCI and input subsystem files...  It has to be perfected, but it's a
-> good idea.
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>  tests/qemu-iotests/check | 4 ----
+>  1 file changed, 4 deletions(-)
 
-Personally, I'm not really a fan. If something is changed in one of the
-headers, it implies that either it has already been changed in the
-original headers in Linux (and I will have seen it then), or that
-someone is sending a preliminary patch (and I should hope that I'm
-already cc:ed for the changes that this headers change is for then). It
-does not really hurt, but it feels wrong.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--1EKig6ypoSyM7jaD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJZeyr3AAoJEJykq7OBq3PIoLMH/0k46GD3Ug/f4SaAehmPuqUw
+VGlzFXqU39doBv4WzzQsjeS4a7DivzyyXvSxUVsARy/1xKrXQBf3oNHu86i+wDUK
+U9rjxS6dKrcH7C0VxnDiyJYb4ksczTmA2DqhcGaWvc8YTeK+WmzPwFf0O2v4hHI0
+A7vjq+1mONcdM3hEf506z7A3CmPWJ9N516EaAV5RF0P0mmSS4VDMfDUbFjHJuezT
+2pqaMtByioGvd6jJnxboeDKrcYjsAuOtd7MfytP00WEHCmtClWwgL8n/kFbPhNrM
+Y8ztLitstPiFh/ffGO96snSrEvfsNzUryvRXBRvuFkRmhLHt04sohLtNmhcsGIw=
+=Hfvs
+-----END PGP SIGNATURE-----
+
+--1EKig6ypoSyM7jaD--
 
