@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db01w-0002HX-Ti
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 03:49:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35938)
+	id 1db05N-0003T6-Qw
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 03:53:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1db01u-0002HG-Tn
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:49:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1db05M-0003Sy-0v
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:53:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1db01r-0003bO-1X
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:49:50 -0400
-Received: from 15.mo7.mail-out.ovh.net ([87.98.180.21]:53820)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1db01q-0003YK-R9
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:49:46 -0400
-Received: from player762.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 1706965583
-	for <qemu-trivial@nongnu.org>; Fri, 28 Jul 2017 09:49:44 +0200 (CEST)
-Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
-	(Authenticated sender: groug@kaod.org)
-	by player762.ha.ovh.net (Postfix) with ESMTPSA id 20DBDE0093;
-	Fri, 28 Jul 2017 09:49:35 +0200 (CEST)
-Date: Fri, 28 Jul 2017 09:49:33 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, "Aneesh Kumar K . V"
-	<aneesh.kumar@linux.vnet.ibm.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Eric
-	Blake <eblake@redhat.com>
-Message-ID: <20170728094933.30d23ff6@bahia.lan>
-In-Reply-To: <96837087-e5a3-3c8c-63f3-fab1f821274a@amsat.org>
-References: <20170727024224.22900-1-f4bug@amsat.org>
-	<20170727024224.22900-18-f4bug@amsat.org>
-	<20170727134005.76e74eb6@bahia.lan>
-	<96837087-e5a3-3c8c-63f3-fab1f821274a@amsat.org>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	(envelope-from <laurent@vivier.eu>) id 1db05I-0006bR-5y
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:53:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:65025)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1db05H-0006af-RE; Fri, 28 Jul 2017 03:53:20 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0MYrDT-1d5qH21M4h-00ViXT; Fri, 28 Jul 2017 09:53:15 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20170728053610.15770-1-f4bug@amsat.org>
+	<20170728053610.15770-23-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <981abfd8-09f6-39f7-0921-8b87020b5b6c@vivier.eu>
+Date: Fri, 28 Jul 2017 09:53:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/rbspyCDtCY3JEIGSCul2CTV";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 17048376390499670468
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedriedtgdduvdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+In-Reply-To: <20170728053610.15770-23-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:1vywqroFp6GKPkUNqQOAMio8Keh5DJ0dI5n0iUri2VoHC+dYAbu
+	ju12pghEr2zDyWtex3Hmgz0hvTxvSj5H6yC7QOWLVwVJUkcrQiJpc0sgDuJ24lgMcCRErWI
+	II4+50eC9Q9+7EJiJtISh8n1AF1/03bxBVflf3Yz/I8sWdbZ/Ke3rhAYs/q32U5qmZfDtaO
+	5NA6fx1P4ndlnrc8h0YeQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:qkb8VRTQ+Nc=:FqoaBqtwbopX8PqHl9Ld46
+	wAovBww2zlLupEAJiwrzxFU2Zh05hqQwPcH6ofs63RytBIO1DBHZKMhpF6r81PRPjWzlD03Qn
+	soHm71K1DAsSRjYOlVDqx3SnEcazfnmiqIYDeGNgopl7Wm0e14+fGU/racCbans/kSnWvWYMl
+	9RVYcCRHxgUKILJlA5i1vNAxMD1PPPiow3FoYEDcB6+SfoNQEzOFZPSUqrz04nYq0ZTsF1bPV
+	U36MyaXBE44I0dPFM6gxcKgasQcnuBtnC6I9tuYSLs+tT6qMjFcmbe4zFq0Ug33Vhs/R4eYUy
+	zq0f7u6FkZgN6ruKS1O/5OPbbAiWaNyrZvsgBfSJTSylN7fdibkwznYAZriXAC0g9R70aDM6Z
+	ZKUZi1Bf6ZsPtc+Pc+WwOikN5Wuo+lSq9Sqb0ci7bSVkamxxZ5cLynQxQUqNxKnWtVL+SLW82
+	scjP0E3zXR1HHSVOQKJLIJNXTVteVQK45f4kBN0v3D4QDkjGJRN+PPvVaAU0lBTfsidJIW+9k
+	LN/pk71JNqJsaPY6c16QeXcuTOQUslXNPLOcKfOn3JX/E8cDalz/xtL6Uvesv6/oeN+5cNWPd
+	d8Zsv3UHLK6VkOr63xKSvrrpMCGaFkwefRy0fb6c0yIX0nXCHA59VwbrVAQ3G167dvBds+HHp
+	0oojnlvswELTE9rUMnkx0Ooc8KN0vPRipbKy75eIDm69nNayt5+FEPNdMvXT0+qwP6J4+PMcZ
+	kovcIOZ6ed1+WdFZ6bGa1VbC/LLw+kPBWV3Gaqi4ereIO1jnSWE6KjRZ3Uk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 87.98.180.21
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 v2 18/20] 9pfs: avoid sign
- conversion error simplifying the code
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH 22/47] MAINTAINERS: add missing M68k entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,104 +60,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 07:49:52 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 07:53:25 -0000
 
---Sig_/rbspyCDtCY3JEIGSCul2CTV
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Le 28/07/2017 à 07:35, Philippe Mathieu-Daudé a écrit :
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 14109f4513..06b092bf85 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -156,6 +156,7 @@ M: Laurent Vivier <laurent@vivier.eu>
+>  S: Maintained
+>  F: target/m68k/
+>  F: disas/m68k.c
+> +F: default-configs/m68k-softmmu.mak
 
-On Thu, 27 Jul 2017 16:18:07 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+I think *-softmmu.mak would better fit under a machine section, but I
+agree it is easier to manage by adding it here, so:
 
-> On 07/27/2017 08:40 AM, Greg Kurz wrote:
-> > On Wed, 26 Jul 2017 23:42:22 -0300
-> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> > Reviewed-by: Greg Kurz <groug@kaod.org>
-> >=20
-> > Now, I'm not sure this can be merged during hard freeze since it is
-> > more code cleanup than actual bug fixing... =20
->=20
-> Hmm the commit message is probably not enough.
-> The problem is this code can send broken packets, see inlined:
->=20
-> >  =20
-> >>   hw/9pfs/9p.c | 6 ++----
-> >>   1 file changed, 2 insertions(+), 4 deletions(-)
-> >>
-> >> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> >> index 333dbb6f8e..0a37c8bd13 100644
-> >> --- a/hw/9pfs/9p.c
-> >> +++ b/hw/9pfs/9p.c
-> >> @@ -945,7 +945,6 @@ static void coroutine_fn v9fs_version(void *opaque)
-> >>       v9fs_string_init(&version);
-> >>       err =3D pdu_unmarshal(pdu, offset, "ds", &s->msize, &version);
-> >>       if (err < 0) { =20
->=20
-> if err =3D=3D -1
->=20
-> >> -        offset =3D err; =20
->=20
-> here this sets offset =3D (size_t)(-1) =3D SIZE_MAX
->=20
-> >>           goto out;
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-and here we jump directly to the out label, so...
-
-> >>       }
-> >>       trace_v9fs_version(pdu->tag, pdu->id, s->msize, version.data);
-> >> @@ -962,13 +961,12 @@ static void coroutine_fn v9fs_version(void *opaq=
-ue)
-> >>  =20
-> >>       err =3D pdu_marshal(pdu, offset, "ds", s->msize, &version);
-> >>       if (err < 0) {
-> >> -        offset =3D err;
-> >>           goto out;
-> >>       }
-> >> -    offset +=3D err; =20
->=20
-> here offset +=3D SIZE_MAX which wraps, so this equivs to offset -=3D 1
->=20
-
-... this cannot happen.
-
-> >> +    err +=3D offset;
-> >>       trace_v9fs_version_return(pdu->tag, pdu->id, s->msize, version.d=
-ata);
-> >>   out:
-> >> -    pdu_complete(pdu, offset); =20
->=20
-> now we have offset =3D 7 - 1 =3D 6, since 6 > 0 pdu_complete() does not=20
-> marshal the error code but 6 bytes of crap from pdu?
->=20
-> Maybe I missed something.
->=20
-> >> +    pdu_complete(pdu, err);
-> >>       v9fs_string_free(&version);
-> >>   }
-> >>    =20
->=20
-> Regards,
->=20
-> Phil.
-
-I've pushed this to my 9p-next branch to be merged in 2.11.
-
-Cheers,
-
---
-Greg
-
---Sig_/rbspyCDtCY3JEIGSCul2CTV
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAll67I4ACgkQAvw66wEB28ISnQCfW5opHwz5eS5ug0tDOmm7dE46
-MBUAmwTGzZ/ijOXs1rwbpkpqL86JLilS
-=L/Ls
------END PGP SIGNATURE-----
-
---Sig_/rbspyCDtCY3JEIGSCul2CTV--
+Laurent
 
