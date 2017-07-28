@@ -1,74 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daxyd-0005W6-RP
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 01:38:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49235)
+	id 1dayV8-0007Zm-PH
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 02:11:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxyb-0005U9-W2
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:38:18 -0400
+	(envelope-from <thuth@redhat.com>) id 1dayV6-0007XI-8C
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 02:11:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxyb-00057d-8P
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:38:18 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37508)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxyW-00050r-Pc; Fri, 28 Jul 2017 01:38:12 -0400
-Received: by mail-qk0-x241.google.com with SMTP id x77so5585108qka.4;
-	Thu, 27 Jul 2017 22:38:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=dHwUwup2g/LQRU7Mh5rvMfQvTY0/4ZEdT6huY7HMP7A=;
-	b=Xxe0igYUUNopMEqJFvoQ9j5R4Kf+lyQggrLhcSh+ffekLNMG6k7ncLH2I+YVyp3fK5
-	ftHYA9GVGDoq6ISB1HxR+5yYBr17vY5sYtKrJKp2yw+MGz1nRgLeD7XclXzuo+1Bw7dY
-	g1mwRQijQ9BTxy2Syb8DxLzmCLCZE3n5PXh0A7plpkPWvW8YxK3F62pDq7g7B0Cgi/xD
-	CbYKkSFczvr6Wv/2IgSdE42d0fXVY+P1ehkOjtHtoc7iJYT8ZkpX1gqMx0iNpGG0fNjD
-	Gn0Qjj6mMKnnju3hoWp4s+DOY/KisHu8ZbilsaYXQ7HW30TBVtcd70UbuOpgfP8yPlyC
-	l1+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=dHwUwup2g/LQRU7Mh5rvMfQvTY0/4ZEdT6huY7HMP7A=;
-	b=IJtA65254uSd9kJWlglZkxtWl4X16EYoiSEcBggseXDuMrCsRl78XiHsikKhIbAnwu
-	TjbmUFVMV/HpCaMimVDbf5BHk2WsAonuhaNAeIiLcOD3Nmh6egmCjPOH2B2KbPnKO5ZP
-	gePTGLhPIIUU+T56FNQyjD567sr0u9GE5u/3pZy/TMK78o9hnOY31wTzkfqkTw8+fqZT
-	eZGfm4PAeA4+jzQJosjQ7ed2rD8U2Q9D8WYPhnQWJy/qQgEljjRX5OoY6+gMNmNbjUSP
-	44YHrrYtjNViei4zXn1J5mTltMamHdF0S/+71Fwhr0n0XhyFMgyCa80bVcJexoTLbaXT
-	v1KA==
-X-Gm-Message-State: AIVw1127edVAbtwa7RgSMxDXARc7dJF8hcI1GvGs00xyEVxEaekK7Kle
-	OZvonqH18QlZaA==
-X-Received: by 10.55.103.23 with SMTP id b23mr9338286qkc.55.1501220292304;
-	Thu, 27 Jul 2017 22:38:12 -0700 (PDT)
-Received: from yoga.offpageads.com ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	h41sm12129560qta.45.2017.07.27.22.38.09
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 22:38:11 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Eric Blake <eblake@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 28 Jul 2017 02:36:09 -0300
-Message-Id: <20170728053610.15770-47-f4bug@amsat.org>
-X-Mailer: git-send-email 2.13.3
-In-Reply-To: <20170728053610.15770-1-f4bug@amsat.org>
-References: <20170728053610.15770-1-f4bug@amsat.org>
+	(envelope-from <thuth@redhat.com>) id 1dayV5-0004sN-EQ
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 02:11:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34194)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dayUz-0004gK-Su; Fri, 28 Jul 2017 02:11:46 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 75DC4148E06;
+	Fri, 28 Jul 2017 06:11:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 75DC4148E06
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.117] (ovpn-116-117.ams2.redhat.com [10.36.116.117])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 71F995DD6B;
+	Fri, 28 Jul 2017 06:11:40 +0000 (UTC)
+To: Eduardo Otubo <otubo@redhat.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, kbastian@mail.uni-paderborn.de
+References: <20170727143040.7236-1-otubo@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e7c14185-57ac-36be-9f64-251258145678@redhat.com>
+Date: Fri, 28 Jul 2017 08:11:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [RFC PATCH 46/47] MAINTAINERS: add missing entries
- for Coccinelle scripts
+In-Reply-To: <20170727143040.7236-1-otubo@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 28 Jul 2017 06:11:44 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] qemu-system-tricore: segfault when
+ entering "x 0" on the monitor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,41 +59,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 05:38:19 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 06:11:53 -0000
 
-and voluntary myself as reviewer
+On 27.07.2017 16:30, Eduardo Otubo wrote:
+> Starting Qemu with "qemu-system-tricore -nographic -M tricore_testboard -S"
+> and entering "x 0" at the monitor prompt leads to Segmentation fault. This happens
+> because tricore_cpu_get_phys_page_debug() is not implemented yet, this
+> is a temporary workaround to avoid the crash.
+> 
+> Signed-off-by: Eduardo Otubo <otubo@redhat.com>
+> ---
+>  target/tricore/cpu.c | 10 ++++++++++
+>  target/tricore/cpu.h |  1 +
+>  2 files changed, 11 insertions(+)
+> 
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index 08f50e2ba7..5ab5b56454 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
+> @@ -22,6 +22,15 @@
+>  #include "cpu.h"
+>  #include "qemu-common.h"
+>  #include "exec/exec-all.h"
+> +#include "qemu/error-report.h"
+> +
+> +static hwaddr tricore_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+> +                                         MemTxAttrs *attrs)
+> +{
+> +    error_report("function cpu_get_phys_page_attrs_debug not "
+> +                    "implemented, aborting");
+> +    return -1;
+> +}
+>  
+>  static inline void set_feature(CPUTriCoreState *env, int feature)
+>  {
+> @@ -176,6 +185,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+>      cc->dump_state = tricore_cpu_dump_state;
+>      cc->set_pc = tricore_cpu_set_pc;
+>      cc->synchronize_from_tb = tricore_cpu_synchronize_from_tb;
+> +    cc->get_phys_page_attrs_debug = tricore_cpu_get_phys_page_attrs_debug;
+>  }
+>  
+>  static void cpu_register(const TriCoreCPUInfo *info)
+> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+> index a3493a123c..2663723955 100644
+> --- a/target/tricore/cpu.h
+> +++ b/target/tricore/cpu.h
+> @@ -224,6 +224,7 @@ static inline TriCoreCPU *tricore_env_get_cpu(CPUTriCoreState *env)
+>  #define ENV_OFFSET offsetof(TriCoreCPU, env)
+>  
+>  hwaddr tricore_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+> +
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
+Unnecessary white-space change ... rather remove the
+tricore_cpu_get_phys_page_debug() line instead?
 
-I'm not a Coccinelle specialist but willing to learn and help!
+>  void tricore_cpu_dump_state(CPUState *cpu, FILE *f,
+>                              fprintf_function cpu_fprintf, int flags);
 
- MAINTAINERS | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Apart from the nit above, looks like this fixes the crash indeed:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 224890643d..7854792765 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1537,6 +1537,12 @@ Checkpatch
- S: Odd Fixes
- F: scripts/checkpatch.pl
- 
-+Coccinelle scripts
-+R: Philippe Mathieu-Daudé <f4bug@amsat.org>
-+S: Orphan
-+F: scripts/cocci-macro-file.h
-+F: scripts/coccinelle/
-+
- Migration
- M: Juan Quintela <quintela@redhat.com>
- M: Dr. David Alan Gilbert <dgilbert@redhat.com>
-@@ -1970,4 +1976,3 @@ Build system architecture
- M: Daniel P. Berrange <berrange@redhat.com>
- S: Odd Fixes
- F: docs/devel/build-system.txt
--
--- 
-2.13.3
+Tested-by: Thomas Huth <thuth@redhat.com>
+
 
 
