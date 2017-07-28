@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1daxxf-0004be-8g
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 01:37:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48198)
+	id 1daxxg-0004dB-LA
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 01:37:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48240)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxZ-0004XI-8S
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:14 -0400
+	id 1daxxb-0004ZK-56
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxY-0003mA-En
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:13 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34085)
+	id 1daxxa-0003on-Cg
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 01:37:15 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:34090)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1daxxT-0003gq-RP; Fri, 28 Jul 2017 01:37:07 -0400
-Received: by mail-qk0-x242.google.com with SMTP id q66so20242094qki.1;
-	Thu, 27 Jul 2017 22:37:07 -0700 (PDT)
+	id 1daxxY-0003m1-GY; Fri, 28 Jul 2017 01:37:12 -0400
+Received: by mail-qk0-x243.google.com with SMTP id q66so20242167qki.1;
+	Thu, 27 Jul 2017 22:37:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=AYA4e93G+k29HR7RTw1B6aYW5/q+lDfuK/XDZjH2TN4=;
-	b=sg0KhTYP+LtBBd9oOJwx2JYfHXMRXShtBA/VzTH1hk9P4xSqsS5WIZT+RePjPg0cCY
-	0Dhxk0ufoG3xpCRd2uCLMeorz4t43/9TY1eH+le7tqob3Axs14v0QyrLtbiaiUN8cmhX
-	a7IOgYjzOthzlVbTc1X7piTtRGsbFqkMu4o9aYQiWIijXmRkI+N1JXZ1dSWa/1NX3oIm
-	FGGpU/ksOwbO/HsPb8i2RaLZQKa2FGols/zPu1VB8JgXiv3/J8jogktqUbthh5EGrL4q
-	1IgTF17aTV0BDuniG154zS8HxHsckJX5ncQAcfpe1mGuw+1EcbumB9p5XjS9WBDokkBb
-	Qh8A==
+	bh=OM5gClitjUe1+sjySvF6nDoCjeeaKUFNnWgQiIJBtX8=;
+	b=bRoc3BxmxGp1NZMiJsrVJEbtTR/B9OU8YOtaMoVcfdlCp/NW4UqkqbrSml9511qTfF
+	hj49BiyIArHvK1MImic+KemgRTaWsLz/Xn8KtkpztKHNCY+ttoQ/cAP0QuIPwVzOxM6+
+	MRoEZ4WGvBCIx7M0FdRPH5l/6mZzj3OU3KdcqDVlYeBIdwr6B40g0f8v12oA0GkoT7DK
+	WRbv1S0e+iaZGOGL0pO3e4Ulrr9zwZhOqT5KDjRnPsnL/8ns3zA5Mco6dCN5Jws0Q/7V
+	2DT2PA0/ocghEZDjfs+gsde7+lVnJ8HSbN1ZNUWtAwSPNttN4UvzxDHO9H8wh7TS1qfm
+	dhig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=AYA4e93G+k29HR7RTw1B6aYW5/q+lDfuK/XDZjH2TN4=;
-	b=ryNszjDmTEYSPLVN8zMsszWIJYneh2CgJToRv14N4OXrHBkXQTcQajc7Exg27zWWFg
-	YuZ6cfV4VFdpv04jEkUZt+J2KG/YrEIF4GxSZ0UIuICPjSeVds9WcdGVwFe0TtjeLYZa
-	DdX2yR+Pilz/Gwi/aZPFF/HzkPO6smxGfsYyU1gXSih1UKEQXar+YlAg1ABy0QQX1kCR
-	/4Ke6zCrSK4FTEa3r4b76H2fIPd5B8gcmViK7gOFOS4ErX8eKGoKVN4f3GMvE8pcmF9q
-	o+o8BhOJns5pzo5ACSo8yGSnFNJ/HG74kq+viP2LC5h0iMBE7aJ3Fmb1dLPfxl4UHh8H
-	kcZA==
-X-Gm-Message-State: AIVw1131v41rbyZzXRBNqVjn/GjtD6W7C4KCEoFC9NOa9+ltqTJaIs7Y
-	HT83xxle1tB2Bg==
-X-Received: by 10.55.177.133 with SMTP id a127mr8203068qkf.303.1501220227454; 
-	Thu, 27 Jul 2017 22:37:07 -0700 (PDT)
+	bh=OM5gClitjUe1+sjySvF6nDoCjeeaKUFNnWgQiIJBtX8=;
+	b=F8j/PJ9NzX8s2VFUmxpSlUFTE22tzb0gQhclpOczrtHMwfL1uemqHomWd013igrhSx
+	Pq4T6Rhl3M87cLcf/Bd7Jnao/JQ75ZmffTMss9itso+m/hRgMSo5FSrKpv/OQABuEHMK
+	lxXIRbBzG/oQH5v4N0uRgObeO0nlvtDCm8mQ1PU+BZKR93Psj0rAKOljD+3x+PXgKxCo
+	vFYy6+aXRhg994QpTLXbKAa9ozxGZ67of/5ZUMY8jiTHuqKgqGz83ALilm8M1EfzoC7L
+	u2O64RDjCfKsOnrzRQghISizC23+hzBjjpp4RnJf6bnCxe2KKkGeqW3OdOCORve2Mob/
+	Ogtw==
+X-Gm-Message-State: AIVw113tbUzVvHPJKZTnsm//lV85lDIcpu/9SvAb4ozIKeo3a+fS7pnH
+	nMwme+0C0n8PXlWAFVy/1w==
+X-Received: by 10.55.16.161 with SMTP id 33mr8983679qkq.312.1501220232102;
+	Thu, 27 Jul 2017 22:37:12 -0700 (PDT)
 Received: from yoga.offpageads.com ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	h41sm12129560qta.45.2017.07.27.22.37.05
+	h41sm12129560qta.45.2017.07.27.22.37.10
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Jul 2017 22:37:06 -0700 (PDT)
+	Thu, 27 Jul 2017 22:37:11 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>
+To: "Edgar E . Iglesias" <edgar.iglesias@gmail.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
-Date: Fri, 28 Jul 2017 02:35:42 -0300
-Message-Id: <20170728053610.15770-20-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 28 Jul 2017 02:35:44 -0300
+Message-Id: <20170728053610.15770-22-f4bug@amsat.org>
 X-Mailer: git-send-email 2.13.3
 In-Reply-To: <20170728053610.15770-1-f4bug@amsat.org>
 References: <20170728053610.15770-1-f4bug@amsat.org>
@@ -63,8 +62,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH 19/47] MAINTAINERS: add missing qcow2 entry
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH 21/47] MAINTAINERS: add missing CRIS entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,7 +75,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 05:37:14 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 05:37:17 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
@@ -84,17 +83,17 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 6b83dac812..2dcdda4cd5 100644
+index 286ff7e509..14109f4513 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1856,6 +1856,7 @@ M: Max Reitz <mreitz@redhat.com>
- L: qemu-block@nongnu.org
- S: Supported
- F: block/qcow2*
-+F: docs/interop/qcow2.txt
+@@ -131,6 +131,7 @@ F: hw/cris/
+ F: include/hw/cris/
+ F: tests/tcg/cris/
+ F: disas/cris.c
++F: default-configs/cris-softmmu.mak
  
- qcow
- M: Kevin Wolf <kwolf@redhat.com>
+ HPPA (PA-RISC)
+ M: Richard Henderson <rth@twiddle.net>
 -- 
 2.13.3
 
