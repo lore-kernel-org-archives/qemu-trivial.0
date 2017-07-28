@@ -1,40 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db3In-0006ch-RI
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 07:19:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47660)
+	id 1db3Jb-0007Cf-9U
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 07:20:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48241)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1db3Il-0006ad-4F
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:19:27 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1db3JY-0007AH-FP
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:20:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1db3Ik-0007iI-DV
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:19:27 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:55079)
+	(envelope-from <mjt@tls.msk.ru>) id 1db3JX-0000Dx-AV
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 07:20:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:55535)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1db3Id-0007AD-Hv; Fri, 28 Jul 2017 07:19:19 -0400
+	id 1db3JT-0000AM-7x; Fri, 28 Jul 2017 07:20:11 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 152924283F;
-	Fri, 28 Jul 2017 14:19:07 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 862184284B;
+	Fri, 28 Jul 2017 14:20:10 +0300 (MSK)
 Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 1A38B5E0;
-	Fri, 28 Jul 2017 14:19:05 +0300 (MSK)
-To: Eduardo Otubo <otubo@redhat.com>, qemu-trivial@nongnu.org
-References: <20170727143040.7236-1-otubo@redhat.com>
-Cc: kbastian@mail.uni-paderborn.de, thuth@redhat.com, qemu-devel@nongnu.org
+	by tsrv.corpit.ru (Postfix) with ESMTP id 903895E0;
+	Fri, 28 Jul 2017 14:20:08 +0300 (MSK)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>
+References: <20170728012542.29975-1-f4bug@amsat.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <9858302e-566c-2ce8-45a1-29a5551bc367@msgid.tls.msk.ru>
-Date: Fri, 28 Jul 2017 14:19:06 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
+Message-ID: <7b3268cc-fbcb-8b13-25a0-eafd50e8dca3@msgid.tls.msk.ru>
+Date: Fri, 28 Jul 2017 14:20:10 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20170727143040.7236-1-otubo@redhat.com>
-Content-Type: text/plain; charset=windows-1251
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] qemu-system-tricore: segfault when entering "x
- 0" on the monitor
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 0/8] docs: fix broken paths
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,15 +47,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 11:19:28 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 11:20:17 -0000
 
-27.07.2017 17:30, Eduardo Otubo wrote:
-> Starting Qemu with "qemu-system-tricore -nographic -M tricore_testboard -S"
-> and entering "x 0" at the monitor prompt leads to Segmentation fault. This happens
-> because tricore_cpu_get_phys_page_debug() is not implemented yet, this
-> is a temporary workaround to avoid the crash.
+28.07.2017 04:25, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi, following Cleber Rosa example I cleaned more invalid references.
+>=20
+> Eric said this can wait 2.11, however these patches don't change any co=
+de
+> generated, I think the 2.10 users deserve an up-to-date doc :p
 
-Applied to -trivial, without the extra newline in target/tricore/cpu.h
+Applied all to -trivial, thanks!
 
 /mjt
 
