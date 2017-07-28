@@ -1,54 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db05N-0003T6-Qw
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 03:53:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38001)
+	id 1db0Y6-0000kO-C1
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 04:23:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55666)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1db05M-0003Sy-0v
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:53:24 -0400
+	(envelope-from <groug@kaod.org>) id 1db0Y4-0000iW-Av
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:23:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1db05I-0006bR-5y
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 03:53:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:65025)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1db05H-0006af-RE; Fri, 28 Jul 2017 03:53:20 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MYrDT-1d5qH21M4h-00ViXT; Fri, 28 Jul 2017 09:53:15 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	(envelope-from <groug@kaod.org>) id 1db0Xz-0003xS-AS
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:23:04 -0400
+Received: from 8.mo7.mail-out.ovh.net ([46.105.77.114]:47587)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1db0Xz-0003vp-39
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:22:59 -0400
+Received: from player762.ha.ovh.net (b6.ovh.net [213.186.33.56])
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id A655566D03
+	for <qemu-trivial@nongnu.org>; Fri, 28 Jul 2017 10:22:57 +0200 (CEST)
+Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
+	(Authenticated sender: groug@kaod.org)
+	by player762.ha.ovh.net (Postfix) with ESMTPSA id 1EE67E0097;
+	Fri, 28 Jul 2017 10:22:54 +0200 (CEST)
+Date: Fri, 28 Jul 2017 10:22:53 +0200
+From: Greg Kurz <groug@kaod.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: "Aneesh Kumar K . V" <aneesh.kumar@linux.vnet.ibm.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170728102253.3872842f@bahia.lan>
+In-Reply-To: <20170728053610.15770-10-f4bug@amsat.org>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-23-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <981abfd8-09f6-39f7-0921-8b87020b5b6c@vivier.eu>
-Date: Fri, 28 Jul 2017 09:53:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	<20170728053610.15770-10-f4bug@amsat.org>
+X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20170728053610.15770-23-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:1vywqroFp6GKPkUNqQOAMio8Keh5DJ0dI5n0iUri2VoHC+dYAbu
-	ju12pghEr2zDyWtex3Hmgz0hvTxvSj5H6yC7QOWLVwVJUkcrQiJpc0sgDuJ24lgMcCRErWI
-	II4+50eC9Q9+7EJiJtISh8n1AF1/03bxBVflf3Yz/I8sWdbZ/Ke3rhAYs/q32U5qmZfDtaO
-	5NA6fx1P4ndlnrc8h0YeQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:qkb8VRTQ+Nc=:FqoaBqtwbopX8PqHl9Ld46
-	wAovBww2zlLupEAJiwrzxFU2Zh05hqQwPcH6ofs63RytBIO1DBHZKMhpF6r81PRPjWzlD03Qn
-	soHm71K1DAsSRjYOlVDqx3SnEcazfnmiqIYDeGNgopl7Wm0e14+fGU/racCbans/kSnWvWYMl
-	9RVYcCRHxgUKILJlA5i1vNAxMD1PPPiow3FoYEDcB6+SfoNQEzOFZPSUqrz04nYq0ZTsF1bPV
-	U36MyaXBE44I0dPFM6gxcKgasQcnuBtnC6I9tuYSLs+tT6qMjFcmbe4zFq0Ug33Vhs/R4eYUy
-	zq0f7u6FkZgN6ruKS1O/5OPbbAiWaNyrZvsgBfSJTSylN7fdibkwznYAZriXAC0g9R70aDM6Z
-	ZKUZi1Bf6ZsPtc+Pc+WwOikN5Wuo+lSq9Sqb0ci7bSVkamxxZ5cLynQxQUqNxKnWtVL+SLW82
-	scjP0E3zXR1HHSVOQKJLIJNXTVteVQK45f4kBN0v3D4QDkjGJRN+PPvVaAU0lBTfsidJIW+9k
-	LN/pk71JNqJsaPY6c16QeXcuTOQUslXNPLOcKfOn3JX/E8cDalz/xtL6Uvesv6/oeN+5cNWPd
-	d8Zsv3UHLK6VkOr63xKSvrrpMCGaFkwefRy0fb6c0yIX0nXCHA59VwbrVAQ3G167dvBds+HHp
-	0oojnlvswELTE9rUMnkx0Ooc8KN0vPRipbKy75eIDm69nNayt5+FEPNdMvXT0+qwP6J4+PMcZ
-	kovcIOZ6ed1+WdFZ6bGa1VbC/LLw+kPBWV3Gaqi4ereIO1jnSWE6KjRZ3Uk=
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/pmTKLw_myNSr..ZFMVTmkmW";
+	protocol="application/pgp-signature"
+X-Ovh-Tracer-Id: 17609356018704751044
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrieduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH 22/47] MAINTAINERS: add missing M68k entry
+X-Received-From: 46.105.77.114
+Subject: Re: [Qemu-trivial] [PATCH 09/47] MAINTAINERS: add missing entry for
+ virtio/9p
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,28 +53,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 07:53:25 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 08:23:05 -0000
 
-Le 28/07/2017 à 07:35, Philippe Mathieu-Daudé a écrit :
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+--Sig_/pmTKLw_myNSr..ZFMVTmkmW
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, 28 Jul 2017 02:35:32 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
-> 
+>=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 14109f4513..06b092bf85 100644
+> index 6da3264d4e..4f9ce6e686 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -156,6 +156,7 @@ M: Laurent Vivier <laurent@vivier.eu>
->  S: Maintained
->  F: target/m68k/
->  F: disas/m68k.c
-> +F: default-configs/m68k-softmmu.mak
+> @@ -1056,6 +1056,7 @@ S: Supported
+>  F: hw/9pfs/
+>  F: fsdev/
+>  F: tests/virtio-9p-test.c
+> +F: include/standard-headers/linux/virtio_9p.h
 
-I think *-softmmu.mak would better fit under a machine section, but I
-agree it is easier to manage by adding it here, so:
+I don't really know what to do here... I see no other standard headers in
+the MAINTAINERS file.
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>  T: git git://github.com/kvaneesh/QEMU.git
+>  T: git git://github.com/gkurz/qemu.git 9p-next
+> =20
 
-Laurent
+
+--Sig_/pmTKLw_myNSr..ZFMVTmkmW
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEARECAAYFAll69F0ACgkQAvw66wEB28KXbgCdGVE5sHWMdh/Lq8hIZDn+EKtL
+yx0AmwQLf/XfP/fW4XTagn6TpDVfxNm+
+=oIFv
+-----END PGP SIGNATURE-----
+
+--Sig_/pmTKLw_myNSr..ZFMVTmkmW--
 
