@@ -1,62 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db1PW-0003tE-24
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 05:18:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59602)
+	id 1db1z1-0000g6-0O
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 05:54:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54020)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <atar4qemu@gmail.com>) id 1db1PT-0003qq-Sc
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:18:16 -0400
+	(envelope-from <Yongbok.Kim@imgtec.com>) id 1db1yy-0000cb-8e
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:54:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <atar4qemu@gmail.com>) id 1db1PS-0004o0-OT
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:18:15 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33414)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <atar4qemu@gmail.com>)
-	id 1db1PQ-0004mH-4p; Fri, 28 Jul 2017 05:18:12 -0400
-Received: by mail-oi0-x242.google.com with SMTP id e124so16807283oig.0;
-	Fri, 28 Jul 2017 02:18:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=nVta+BIXqim3ExkFa2hS1KqwLJ/18ybSxSsiyp/Sals=;
-	b=bQOJ0NQrSLEiIb5PrNHHi1elAusxeF2GMcglkKBNhzg+BKns50jWkEsFi2amQWqPjy
-	qcT092oFiLgOVx3jOW+rtqLcpR+rIAzGzecE1uNjBsnuQ2pRGaZ4DW4IaOrfPRjPtuwu
-	4Pwy2NkFn+sElkReDIealxMSUcoeZfq4VFjaCWBKMatuGAurzrXU/U3kikCV1gMT+YA+
-	4f3pn53+dEafy+2knr22MyJkqdqJb46cZ+DC/yewpUn7EoLgNuoPHF7L239y23bBdI0l
-	VDdiX84uEi4t9md5S5LUXC85u5M249MQib+KFYG6oSN8xAbF1bE+AN7Q7PmhnTCugDUi
-	V29w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=nVta+BIXqim3ExkFa2hS1KqwLJ/18ybSxSsiyp/Sals=;
-	b=L57X+ftpZKSo1Iq1I3rjmXF5OxzvxoIbuB9cJnXEUePb+JJshK+L2qLr+W20gmthCS
-	HkFnzegqgx/0tFufc9xNGHCoe4JMxcXITrfk/puoDge7CWDiayGLSujYObiqMPkCFxaf
-	52SXzdF6GKoMTOgIbo+NmP6MQUI0ktrrHLwwpYztETHQKJRoeAUbCkEme76A2lMcZHwD
-	GgI31wUc6GcloYlN/Db4T7hqTn0CrZs2Fc72NQYQXvGUsODeOHURqrbTu6Jjt6XTqLav
-	jpWRjovisfkqTmG90KYQInn0PGSCUSa0NGmCEfUYzQDOOihRUvvhTSPY0rxDjRxxYIN6
-	zMIw==
-X-Gm-Message-State: AIVw110xKuBuJiiyzFz85COiq6hsPX2k065TiFdLJM/DMac1yug8v1lu
-	DAo8NpKQY/roLksMDzr6RL3Y+34w6w==
-X-Received: by 10.202.93.2 with SMTP id r2mr6826335oib.193.1501233489730; Fri,
-	28 Jul 2017 02:18:09 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.182.98.232 with HTTP; Fri, 28 Jul 2017 02:17:49 -0700 (PDT)
-In-Reply-To: <20170728053610.15770-31-f4bug@amsat.org>
+	(envelope-from <Yongbok.Kim@imgtec.com>) id 1db1yx-0007sR-Ei
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:54:56 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:60045)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Yongbok.Kim@imgtec.com>)
+	id 1db1yt-0007kx-Kn; Fri, 28 Jul 2017 05:54:51 -0400
+Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
+	by Forcepoint Email with ESMTPS id 2C2502DD4F1E9;
+	Fri, 28 Jul 2017 10:54:38 +0100 (IST)
+Received: from [192.168.169.52] (192.168.169.52) by HHMAIL01.hh.imgtec.org
+	(10.100.10.21) with Microsoft SMTP Server (TLS) id 14.3.294.0;
+	Fri, 28 Jul 2017 10:54:41 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, Aurelien Jarno
+	<aurelien@aurel32.net>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-31-f4bug@amsat.org>
-From: Artyom Tarasenko <atar4qemu@gmail.com>
-Date: Fri, 28 Jul 2017 11:17:49 +0200
-Message-ID: <CACXAS8BfLgi5X1rKHDm05RmvE7WMWUtOqQ=roRUtzRQ22yCqmw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+	<20170728053610.15770-26-f4bug@amsat.org>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+From: Yongbok Kim <yongbok.kim@imgtec.com>
+Message-ID: <635b7f27-cf61-61b8-b363-255578c54547@imgtec.com>
+Date: Fri, 28 Jul 2017 10:54:40 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.8.0
+MIME-Version: 1.0
+In-Reply-To: <20170728053610.15770-26-f4bug@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+X-Originating-IP: [192.168.169.52]
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-trivial] [PATCH 30/47] MAINTAINERS: add missing SPARC
- entry
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-trivial] [PATCH 25/47] MAINTAINERS: add missing MIPS entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,40 +47,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 09:18:16 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 09:54:58 -0000
 
-On Fri, Jul 28, 2017 at 7:35 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
+
+
+On 28/07/2017 06:35, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Acked-By: Artyom Tarasenko <atar4qemu@gmail.com>
-
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
->
+>=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index bb1cb1fc1c..e363a18631 100644
+> index fa6b0d189a..7354afb9f4 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -245,6 +245,7 @@ F: target/sparc/
->  F: hw/sparc/
->  F: hw/sparc64/
->  F: disas/sparc.c
-> +F: default-configs/sparc*-softmmu.mak
->
->  UniCore32
->  M: Guan Xuetao <gxt@mprc.pku.edu.cn>
-> --
-> 2.13.3
->
+> @@ -182,6 +182,7 @@ F: include/hw/intc/mips_gic.h
+>  F: include/hw/timer/mips_gictimer.h
+>  F: tests/tcg/mips/
+>  F: disas/mips.c
+> +F: default-configs/mips*-softmmu.mak
+> =20
+>  Moxie
+>  M: Anthony Green <green@moxielogic.com>
+>=20
 
+Acked-by: Yongbok Kim <yongbok.kim@imgtec.com>
 
-
---=20
 Regards,
-Artyom Tarasenko
-
-SPARC and PPC PReP under qemu blog: http://tyom.blogspot.com/search/label/q=
-emu
+Yongbok
 
