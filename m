@@ -1,47 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db0Y6-0000kO-C1
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 04:23:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55666)
+	id 1db1K3-00005Y-II
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 05:12:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1db0Y4-0000iW-Av
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:23:05 -0400
+	(envelope-from <kwolf@redhat.com>) id 1db1K0-00005B-M2
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:12:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1db0Xz-0003xS-AS
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:23:04 -0400
-Received: from 8.mo7.mail-out.ovh.net ([46.105.77.114]:47587)
+	(envelope-from <kwolf@redhat.com>) id 1db1Jx-0000wM-Tp
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:12:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48406)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1db0Xz-0003vp-39
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 04:22:59 -0400
-Received: from player762.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id A655566D03
-	for <qemu-trivial@nongnu.org>; Fri, 28 Jul 2017 10:22:57 +0200 (CEST)
-Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
-	(Authenticated sender: groug@kaod.org)
-	by player762.ha.ovh.net (Postfix) with ESMTPSA id 1EE67E0097;
-	Fri, 28 Jul 2017 10:22:54 +0200 (CEST)
-Date: Fri, 28 Jul 2017 10:22:53 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: "Aneesh Kumar K . V" <aneesh.kumar@linux.vnet.ibm.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170728102253.3872842f@bahia.lan>
-In-Reply-To: <20170728053610.15770-10-f4bug@amsat.org>
+	(Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1db1Jx-0000oc-NC
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 05:12:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 85CB21CA444;
+	Fri, 28 Jul 2017 09:12:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 85CB21CA444
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=kwolf@redhat.com
+Received: from localhost.localdomain (ovpn-117-155.ams2.redhat.com
+	[10.36.117.155])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 278655C667;
+	Fri, 28 Jul 2017 09:12:23 +0000 (UTC)
+Date: Fri, 28 Jul 2017 11:12:22 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Max Reitz <mreitz@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-block@nongnu.org
+Message-ID: <20170728091222.GA3983@localhost.localdomain>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-10-f4bug@amsat.org>
-X-Mailer: Claws Mail 3.14.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	<20170728053610.15770-20-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/pmTKLw_myNSr..ZFMVTmkmW";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 17609356018704751044
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelkedrieduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170728053610.15770-20-f4bug@amsat.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 28 Jul 2017 09:12:25 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.77.114
-Subject: Re: [Qemu-trivial] [PATCH 09/47] MAINTAINERS: add missing entry for
- virtio/9p
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 19/47] MAINTAINERS: add missing qcow2
+ entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,49 +61,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 08:23:05 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 09:12:37 -0000
 
---Sig_/pmTKLw_myNSr..ZFMVTmkmW
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, 28 Jul 2017 02:35:32 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Am 28.07.2017 um 07:35 hat Philippe Mathieu-Daud=E9 geschrieben:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 6da3264d4e..4f9ce6e686 100644
+> index 6b83dac812..2dcdda4cd5 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1056,6 +1056,7 @@ S: Supported
->  F: hw/9pfs/
->  F: fsdev/
->  F: tests/virtio-9p-test.c
-> +F: include/standard-headers/linux/virtio_9p.h
+> @@ -1856,6 +1856,7 @@ M: Max Reitz <mreitz@redhat.com>
+>  L: qemu-block@nongnu.org
+>  S: Supported
+>  F: block/qcow2*
+> +F: docs/interop/qcow2.txt
 
-I don't really know what to do here... I see no other standard headers in
-the MAINTAINERS file.
-
->  T: git git://github.com/kvaneesh/QEMU.git
->  T: git git://github.com/gkurz/qemu.git 9p-next
-> =20
-
-
---Sig_/pmTKLw_myNSr..ZFMVTmkmW
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iEYEARECAAYFAll69F0ACgkQAvw66wEB28KXbgCdGVE5sHWMdh/Lq8hIZDn+EKtL
-yx0AmwQLf/XfP/fW4XTagn6TpDVfxNm+
-=oIFv
------END PGP SIGNATURE-----
-
---Sig_/pmTKLw_myNSr..ZFMVTmkmW--
+Acked-by: Kevin Wolf <kwolf@redhat.com>
 
