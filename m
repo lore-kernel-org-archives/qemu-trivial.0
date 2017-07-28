@@ -1,65 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1db8Qc-0004ZX-H6
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 12:47:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53808)
+	id 1dbA5e-0002UC-US
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 14:34:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53599)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1db8Qa-0004Xv-6x
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 12:47:53 -0400
+	(envelope-from <eblake@redhat.com>) id 1dbA5d-0002Sk-2e
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 14:34:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1db8QZ-0002cP-09
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 12:47:52 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36851)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1db8QY-0002ZT-Om; Fri, 28 Jul 2017 12:47:50 -0400
-Received: by mail-wm0-x243.google.com with SMTP id 184so28069611wmo.3;
-	Fri, 28 Jul 2017 09:47:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=2V7lLz1BDbnKURw25/zqw9o68FkLUTdl8YCJBVGawes=;
-	b=grtJMv5tKFRgYYOCkA39f/oHEfMjxs0kkx+pQz6+s6pvD+A83fsC4bVNyIBTsYt3Qy
-	+YBWe7oxE4QzsFhPmzTVXSX9/laFRo60bBCXCm2jy6JWWWVo3NdRok1BHr9z1HT3KQgg
-	nLdEJrm4dXEmssn8KgLN3L1Q+En6TIoDtPmF6Uk1JsMfYIHYeQ9P52qneUXDhRenTR09
-	MRgyEzY5MCYpdO8ZHi9iAgDtVMkKiAKc5tx4GYUjgxBsW4iHkRqPEcfLLfN9tpuOdP0m
-	5xUzoI/X3ASK2weulpuWuFdTM5ysLlf1XP281xAM4c8faCEy4a7pUUZ6L3nAHIW0l11Q
-	swDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=2V7lLz1BDbnKURw25/zqw9o68FkLUTdl8YCJBVGawes=;
-	b=hm9wBkQgaYbGAXhYBFklishomt+PruEKR7oCxRd7pDVlmXvICuXJCgY0A7wB2LeEnx
-	z99N+6VPXPSbRvl4Pv+vCy7Nc4mvzKcTtpOLij20yiqL6l7ceTvOw+ymvG0JrQ+I0478
-	0WttQmOJlEpjfpNBlt9L+YUhEaMbv/lSI+Fvh9cwqOV87pGqgo6Vnb9bTfgqwABMxt1g
-	hYJF4Qt2pmWJvUAdalphhLSb+vOWA30f65UbFfYZnQA8d5PdeMBWpR6H/lnOaPupAs++
-	XLG3S0VOSxYcJdricY77PI1PxU0MNM24Bx2kLm3tjch9PLL0dXE17+DrTwDwt2Tk0yH/
-	tEBw==
-X-Gm-Message-State: AIVw112W+adxQXVJbxtEs3JwR3RCWg7O2HeONCrCQzRg/bWnn0x7cc2y
-	+rk1q0D4b2S5+QY/EDKsgTIJvIbqzg==
-X-Received: by 10.28.20.76 with SMTP id 73mr6164176wmu.66.1501260466863; Fri,
-	28 Jul 2017 09:47:46 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>) id 1dbA5c-0007w7-0J
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 14:34:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36298)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dbA5X-0007s1-7j; Fri, 28 Jul 2017 14:34:15 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1DB586527C;
+	Fri, 28 Jul 2017 18:34:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1DB586527C
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from [10.10.120.22] (ovpn-120-22.rdu2.redhat.com [10.10.120.22])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7C8006046A;
+	Fri, 28 Jul 2017 18:34:12 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+References: <20170728012542.29975-1-f4bug@amsat.org>
+Cc: qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <9bf5ddf1-3b81-ceb3-66a0-1d3267e7cae4@redhat.com>
+Date: Fri, 28 Jul 2017 13:34:11 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.191.88 with HTTP; Fri, 28 Jul 2017 09:47:16 -0700 (PDT)
-In-Reply-To: <20170728053610.15770-46-f4bug@amsat.org>
-References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-46-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 28 Jul 2017 09:47:16 -0700
-X-Google-Sender-Auth: Z9Ligl_hg5dPL1bYr2yduOYAtRI
-Message-ID: <CAKmqyKNdP8aHTWo1XdAqjQt4tXXNOn4ORaXgcZKa=+zxSY-CVg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 45/47] MAINTAINERS: add
- missing entries for loader
+In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="uUD4CgVF4QPKgQPFAkrRmrGjPnXVRgvcb"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 28 Jul 2017 18:34:13 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 0/8] docs: fix broken paths
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,43 +61,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2017 16:47:53 -0000
+X-List-Received-Date: Fri, 28 Jul 2017 18:34:22 -0000
 
-On Thu, Jul 27, 2017 at 10:36 PM, Philippe Mathieu-Daud=C3=A9
-<f4bug@amsat.org> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->
-> RFC because I'm not sure 'loader' is the same goal than 'generic-loader'
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--uUD4CgVF4QPKgQPFAkrRmrGjPnXVRgvcb
+Content-Type: multipart/mixed; boundary="uA4nWwId9slfrCPm7pkLvQixfOmkED9Hl";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <9bf5ddf1-3b81-ceb3-66a0-1d3267e7cae4@redhat.com>
+Subject: Re: [PATCH for 2.10 0/8] docs: fix broken paths
+References: <20170728012542.29975-1-f4bug@amsat.org>
+In-Reply-To: <20170728012542.29975-1-f4bug@amsat.org>
 
-loader.c is not the same, it is the core loading framework for QEMU
-while generic-loader is just something that uses it. This greatly
-increases the amount on maintainership here.
+--uA4nWwId9slfrCPm7pkLvQixfOmkED9Hl
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-In saying that if no one else wants it I can maintain it.
+On 07/27/2017 08:25 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi, following Cleber Rosa example I cleaned more invalid references.
+>=20
+> Eric said this can wait 2.11, however these patches don't change any co=
+de
+> generated, I think the 2.10 users deserve an up-to-date doc :p
 
-Thanks,
-Alistair
+I think what I said was: this doesn't change code and doc updates are
+find during freeze, so this is a GOOD candidate for 2.10; but if it
+misses 2.10, slipping to 2.11 doesn't hurt.  (If I didn't say that, it's
+what I should have done).  But you caught on to my intention, even if in
+the process it sounds like I was asking you to wait.
 
->
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index dc1a69051c..224890643d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1196,6 +1196,8 @@ M: Alistair Francis <alistair.francis@xilinx.com>
->  S: Maintained
->  F: hw/core/generic-loader.c
->  F: include/hw/core/generic-loader.h
-> +F: docs/generic-loader.txt
-> +F: hw/core/loader.c
->
->  CHRP NVRAM
->  M: Thomas Huth <thuth@redhat.com>
-> --
-> 2.13.3
->
->
+>=20
+> I used the following command (and consider include it in some CI test j=
+ob):
+>=20
+> $ git grep docs/ \
+>       | sed -ne "s/.* \(docs[^ :)}\"\']*\).*/\1/p" \
+>       | sed -e 's/\(.*\)\.$/\1/p' | sort -u | while read p;do
+>     ls -ld $p 1>/dev/null
+
+Wait. What? 'ls -ld' with stdout sent to /dev/null?  (I never cease to
+be amazed at the random shell constructs that people come up with).  I
+guess you are just trying to check for file existence, by going off of
+the stderr droppings from ls?  'ls -d' is less effort than 'ls -ld'; and
+if all you care about is stderr messages, spawning one ls per filename
+is much slower than just doing it wholesale via xargs to minimize ls call=
+s:
+
+git grep ... | sort -u | xargs ls -d >/dev/null
+
+But then again, efficiency in generating the list of problems isn't a
+bottleneck.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--uA4nWwId9slfrCPm7pkLvQixfOmkED9Hl--
+
+--uUD4CgVF4QPKgQPFAkrRmrGjPnXVRgvcb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAll7g6MACgkQp6FrSiUn
+Q2olQwf/ZaX430jnE16HN4gvAjRyQ7CZT1J/yFW7Sro7zs/Y1rCLRh2kS3T3Xpzz
+rG3TKNU1/EQ3VMnq108nL1m9icX5cvYOEPw41SiRqjOCHwbJNue9GdMhM2Ti5OUa
+G72z/s6DpB4HZnAZHYTctGi0MknQK9Q8JlnZ2BPadr1QZUovkRgEhdxjOgZ0XcYx
+N3VbkQtbrGgOgLW0EkBC3xWy3Q7UWnIClYRFgU8D2Q/Uvb0opdAN27qjSgm6DdbH
+R5G0ZFOrOd6QR8RGKaC81yyKImMMgMJorMJG7GQHyLdPzCaqvToV2hWoSWZ5fvHL
+NsjLmz1WuY5Z3ZW+ogaNzex7zbezhg==
+=OupY
+-----END PGP SIGNATURE-----
+
+--uUD4CgVF4QPKgQPFAkrRmrGjPnXVRgvcb--
 
