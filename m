@@ -1,76 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dbFwW-0008HJ-DW
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 20:49:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37670)
+	id 1dbFyI-00019G-Mz
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2017 20:51:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38570)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbFwU-0008Fp-32
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 20:49:18 -0400
+	id 1dbFyG-000185-NN
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 20:51:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbFwT-0006Qp-8b
-	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 20:49:18 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35469)
+	id 1dbFyG-0008RO-4m
+	for qemu-trivial@nongnu.org; Fri, 28 Jul 2017 20:51:08 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34017)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dbFwM-0006KH-W6; Fri, 28 Jul 2017 20:49:11 -0400
-Received: by mail-qk0-x243.google.com with SMTP id a77so5099524qkb.2;
-	Fri, 28 Jul 2017 17:49:10 -0700 (PDT)
+	id 1dbFyA-0008MF-2d; Fri, 28 Jul 2017 20:51:02 -0400
+Received: by mail-qk0-x241.google.com with SMTP id q66so22465474qki.1;
+	Fri, 28 Jul 2017 17:51:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=Bpv7RpDna/Qjs+LYdXPJFZ0NTOmJrCuY+aOuSQEx1es=;
-	b=uqUZ/em6I/gOhoqJA5Pyia5715958ALV0QVdns7g0fJj2uug/xha4cxgKVRzT17u0Y
-	9jsX7d2Y7LgMA5bx1PrXj6iUz9JrliYRAC4d1Kf46vrFkVh6kVw+8LS7shC+DCSA3lqy
-	QstISkdK08V/3zh8wN/+dqspoASGW/KvcUKXjAKgr9lWv5GeQJQnizL2eqEQXZZjfaZq
-	ayhsxLroIleuUx8S2fCB09Og7MQq+CVgKhALMdm2OIzUmVbRLPhu1SeUT0VfK6zNwYQc
-	xo5QJkjqw1+VL+JatZbCn6rss4TbdOXOkBLHuZ51Ni1cKO2hAakQnhI/V2A6LU58RXhl
-	YKEQ==
+	bh=zdla8HvBfvGX4+AtbyLZA7vbf79ND7/dBwdR5NyjSN8=;
+	b=RsWwyPZ6OUn47H1k+Foqmp/w6Ow6GtSWLBHa8LnMsH6LENkMIB26EUqGRB1Cb6kw1E
+	Gxm7r4I6qkdmF05fC6HrpDAcAti/uu1UdyzQ30e+MTK4FZj3QHeCq5LZvMuW6jU39Ntz
+	tpgh8YO4AMlYb8XYIlxNDRqSyFA6p8tSdFr6g9vWl2vDBMbNaDh4TPO7dQfonGDPkpnt
+	6g5XYYfTidl54h4c9wMbW6vo0jcOGD/bYM8HaOeuVhj3LytzqQDBMbrOL143pxBxu8Vz
+	G2omKci760o770BSNTNpjTKZqxbGBpmyckArbVN3fby98Y4lFB/DYeOO2kePDe2HNH6N
+	zRyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=Bpv7RpDna/Qjs+LYdXPJFZ0NTOmJrCuY+aOuSQEx1es=;
-	b=gQKmf43c07fcoKGE7nv+cT0Y0fFmHebyST+Gs922UxevSHxQISM8W923UxCfJ07uy/
-	ELKSAr5FefHgWgTTvGEhGK7S3k1vQ2w5Jlz3JFJ9MsERKgk8mWrsNcTFb0w6WTRRXQN5
-	0GLSRGq1YiC6FhLRfboGyy2q/RxKVYS8seG31blMDqj9eKC2XI048smSXNN4GGXEpW/1
-	cT+aF5/wGBV8ZX/DG1sFjQrNijVny5KiWNvQAcq//kppTX372Q3Ro0+nkY8k9jQkXCGG
-	NsRZo/9YbsNu7HTUBuP1jHwQy9IT3T8hPTuJ3L8gU7SBKk5qlUO19o4OzIKMYLUgbyqi
-	UJnA==
-X-Gm-Message-State: AIVw113OPqIg1T4Ew0cuHKMTsp90yJuoo0e6sB/CG4wIJH/3BL7lXsuH
-	JdxPpSzrOfykyNhLHfrsfw==
-X-Received: by 10.55.169.134 with SMTP id s128mr12421337qke.69.1501289349813; 
-	Fri, 28 Jul 2017 17:49:09 -0700 (PDT)
+	bh=zdla8HvBfvGX4+AtbyLZA7vbf79ND7/dBwdR5NyjSN8=;
+	b=dpSaln50dHuStYbBs0zT1QHQdh754y6GQYJ8rd2PlSgZ8wKIzV4z3jmkynAHqmhxSo
+	R9utVsKO0LRoKjyZ6e0y1iyrPPut9hZ8i4YeRHjlUqR2ZE4e7qnCdcAWfJyDSyuLfH7S
+	rVingFmZBdklwgLsiUW0Eo1ysNrPgoYlvJJrf6fRz0tF7YPBqovSdJaQWYyrCSxrIIfW
+	BlJQKp7y9mMcxEWkwL3LC/KzyYFqBiHRbsZ0akU8j4UcU8Y9ZVdhAq2qicPf4ZsV2eqG
+	O3cSZdgnUcdOrtU31gsuvW4gcgAQMRxnfEVSQJZmBEK9xlPaIa5Pp4ipF5he0yCFRsc0
+	rrNg==
+X-Gm-Message-State: AIVw111RNKY4pQK5LO7jZFzGNY1E1uQ9QGKdwLWcz6MoVAl53fH/SHDm
+	xt1rv66YM1CFz3fq1OM7cQ==
+X-Received: by 10.55.4.131 with SMTP id 125mr11834432qke.193.1501289461473;
+	Fri, 28 Jul 2017 17:51:01 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.223])
 	by smtp.gmail.com with ESMTPSA id
-	u68sm19994715qkg.58.2017.07.28.17.49.07
+	c199sm16895101qka.9.2017.07.28.17.50.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Jul 2017 17:49:09 -0700 (PDT)
+	Fri, 28 Jul 2017 17:50:59 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+To: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-40-f4bug@amsat.org>
-	<CAKmqyKOonEpSCs2k-qJrOP76TV3Nnk08A1s7nBRJV-Ok+q4kow@mail.gmail.com>
+	<20170728053610.15770-17-f4bug@amsat.org>
+	<7100714b-6789-15e4-f883-9e8684ddc9e7@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1c64b26d-e86d-44a6-66c4-f79d68d393ef@amsat.org>
-Date: Fri, 28 Jul 2017 21:49:06 -0300
+Message-ID: <07a7006e-394d-adfe-0525-b0daa008bd43@amsat.org>
+Date: Fri, 28 Jul 2017 21:50:56 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKOonEpSCs2k-qJrOP76TV3Nnk08A1s7nBRJV-Ok+q4kow@mail.gmail.com>
+In-Reply-To: <7100714b-6789-15e4-f883-9e8684ddc9e7@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 39/47] MAINTAINERS: add
- missing SSI entries
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-trivial] [PATCH 16/47] MAINTAINERS: add missing entry for
+ gdb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,45 +83,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Jul 2017 00:49:19 -0000
+X-List-Received-Date: Sat, 29 Jul 2017 00:51:09 -0000
 
-On 07/28/2017 08:56 PM, Alistair Francis wrote:
-> On Thu, Jul 27, 2017 at 10:36 PM, Philippe Mathieu-Daudé
-> <f4bug@amsat.org> wrote:
+On 07/28/2017 09:00 AM, Paolo Bonzini wrote:
+> On 28/07/2017 07:35, Philippe Mathieu-Daudé wrote:
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->> RFC because I'm not sure m25p80 fits.
->>
->>   MAINTAINERS | 2 ++
->>   1 file changed, 2 insertions(+)
+>>   MAINTAINERS | 1 +
+>>   1 file changed, 1 insertion(+)
 >>
 >> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 54e35fdab9..83597fca4e 100644
+>> index 9670a3901a..653c2a1db1 100644
 >> --- a/MAINTAINERS
 >> +++ b/MAINTAINERS
->> @@ -1010,7 +1010,9 @@ M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
->>   S: Maintained
->>   F: hw/ssi/*
->>   F: hw/block/m25p80.c
->> +F: include/hw/ssi/ssi.h
->>   X: hw/ssi/xilinx_*
->> +F: tests/m25p80-test.c
+>> @@ -1320,6 +1320,7 @@ L: qemu-devel@nongnu.org
+>>   S: Odd Fixes
+>>   F: gdbstub*
+>>   F: gdb-xml/
+>> +F: scripts/qemugdb/
 > 
-> I'm not sure if Peter is still maintaining this. Maybe it's worth
-> adding another Xilinx email in here as well.
+> This is unrelated.  It's for debugging QEMU, while the others are for
+> debugging QEMU guests.
 
-you mean yours? M: Alistair Francis <alistair.francis@xilinx.com> below 
-Peter's?
+Thank for clarifying it, dropped.
 
 > 
-> Thanks,
-> Alistair
+> Paolo
 > 
+>>   Memory API
+>>   M: Paolo Bonzini <pbonzini@redhat.com>
 >>
->>   Xilinx SPI
->>   M: Alistair Francis <alistair.francis@xilinx.com>
->> --
->> 2.13.3
->>
->>
+> 
 
