@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc7pj-0004Ak-32
+	id 1dc7pj-0004Ay-8V
 	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:21:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50993)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7pg-000481-Dm
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pg-00048A-Gj
 	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-0006Bw-Fb
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-0006Br-FR
 	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:46587)
+Received: from isrv.corpit.ru ([86.62.121.231]:42073)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dc7pa-00068H-ID; Mon, 31 Jul 2017 06:21:46 -0400
+	id 1dc7pa-00068I-IK; Mon, 31 Jul 2017 06:21:46 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id A53BE42ABC;
+	by isrv.corpit.ru (Postfix) with ESMTP id A1F5E42ABB;
 	Mon, 31 Jul 2017 13:21:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 95022B78;
+	by tsrv.corpit.ru (Postfix) with SMTP id 81D8FB77;
 	Mon, 31 Jul 2017 13:21:43 +0300 (MSK)
-Received: (nullmailer pid 5550 invoked by uid 1000);
+Received: (nullmailer pid 5537 invoked by uid 1000);
 	Mon, 31 Jul 2017 10:21:45 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Eduardo Otubo <otubo@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 31 Jul 2017 13:21:25 +0300
-Message-Id: <b190f477e29c7cd03a8fee49c96d27f160e3f5b0.1501496349.git.mjt@msgid.tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Mon, 31 Jul 2017 13:21:19 +0300
+Message-Id: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 06/25] qemu-system-tricore: segfault when
- entering "x 0" on the monitor
+Subject: [Qemu-trivial] [PULL 00/25 for-2.10] Trivial patches for 2017-07-31
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,49 +46,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 31 Jul 2017 10:21:53 -0000
 
-From: Eduardo Otubo <otubo@redhat.com>
+Here's a collection of trivial stuff merged to date.
+A few minor cleanups, older tests trivial fixes, changing
+crash to clean exit for unicore32 and tricore, and many
+small documentation fixes mostly by Philippe Mathieu-Daud=C3=A9.
 
-Starting Qemu with "qemu-system-tricore -nographic -M tricore_testboard -S"
-and entering "x 0" at the monitor prompt leads to Segmentation fault.
-This happens because tricore_cpu_get_phys_page_debug() is not implemented
-yet, this is a temporary workaround to avoid the crash.
+Please consider applying.
 
-Signed-off-by: Eduardo Otubo <otubo@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- target/tricore/cpu.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Thanks,
 
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index 08f50e2ba7..5ab5b56454 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
-@@ -22,6 +22,15 @@
- #include "cpu.h"
- #include "qemu-common.h"
- #include "exec/exec-all.h"
-+#include "qemu/error-report.h"
-+
-+static hwaddr tricore_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-+                                         MemTxAttrs *attrs)
-+{
-+    error_report("function cpu_get_phys_page_attrs_debug not "
-+                    "implemented, aborting");
-+    return -1;
-+}
- 
- static inline void set_feature(CPUTriCoreState *env, int feature)
- {
-@@ -176,6 +185,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
-     cc->dump_state = tricore_cpu_dump_state;
-     cc->set_pc = tricore_cpu_set_pc;
-     cc->synchronize_from_tb = tricore_cpu_synchronize_from_tb;
-+    cc->get_phys_page_attrs_debug = tricore_cpu_get_phys_page_attrs_debug;
- }
- 
- static void cpu_register(const TriCoreCPUInfo *info)
--- 
-2.11.0
+/mjt
 
+The following changes since commit 0c26c080ee592ea47597d3ab8fd712d7d2c4ba=
+0f:
+
+  Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-2.10-2017073=
+1' into staging (2017-07-31 09:59:26 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+
+for you to fetch changes up to 25e11d8774630600ef4c5e9906419a77163a28a1:
+
+  docs: fix broken paths to docs/specs/ivshmem-spec.txt (2017-07-31 13:13=
+:01 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2017-07-31
+
+----------------------------------------------------------------
+Cleber Rosa (1):
+      docs: fix broken paths to docs/interop dir
+
+Eduardo Otubo (2):
+      fix qemu-system-unicore32 crashing when calling without -kernel
+      qemu-system-tricore: segfault when entering "x 0" on the monitor
+
+Marc-Andr=C3=A9 Lureau (3):
+      tests: check-qom-proplist: fix leak
+      tests: test-netfilter && pxe-test require slirp
+      build-sys: there is no qemu-ga.c
+
+Philippe Mathieu-Daud=C3=A9 (18):
+      tests: add missing dependency to build QTEST_QEMU_BINARY
+      loader: check get_image_size() return value
+      ivshmem: fix incorrect error handling in ivshmem_recv_msg()
+      qcow2: fix null pointer dereference
+      ui/vnc: fix leak of SocketAddress **
+      net/eth: fix incorrect check of iov_to_buf() return value
+      m68k/translate: fix incorrect copy/paste
+      linux-user/sh4: fix incorrect memory write
+      syscall: fix dereference of undefined pointer
+      syscall: fix use of uninitialized values
+      syscall: check inotify() and eventfd() return value
+      thunk: assert nb_fields is valid
+      docs: fix broken paths to docs/interop/qcow2.txt
+      docs: fix broken paths to docs/devel/qapi-code-gen.txt
+      docs: fix broken paths to docs/devel/atomics.txt
+      docs: fix broken paths to docs/devel/tracing.txt
+      docs: fix broken paths to docs/config/ich9-ehci-uhci.cfg
+      docs: fix broken paths to docs/specs/ivshmem-spec.txt
+
+Thomas Huth (1):
+      MAINTAINERS: Improve the NetBSD regex pattern
+
+ MAINTAINERS                         |  2 +-
+ Makefile                            |  2 +-
+ audio/trace-events                  |  2 +-
+ block/qcow2-refcount.c              |  4 ++--
+ block/trace-events                  |  2 +-
+ chardev/trace-events                |  2 +-
+ crypto/trace-events                 |  2 +-
+ docs/devel/lockcnt.txt              |  2 +-
+ docs/devel/writing-qmp-commands.txt |  4 ++--
+ docs/qcow2-cache.txt                |  2 +-
+ docs/specs/pci-ids.txt              |  2 +-
+ docs/usb2.txt                       |  2 +-
+ hw/9pfs/trace-events                |  2 +-
+ hw/acpi/trace-events                |  2 +-
+ hw/alpha/trace-events               |  2 +-
+ hw/arm/trace-events                 |  2 +-
+ hw/audio/trace-events               |  2 +-
+ hw/block/dataplane/trace-events     |  2 +-
+ hw/block/trace-events               |  2 +-
+ hw/char/trace-events                |  2 +-
+ hw/core/loader.c                    |  4 ++--
+ hw/display/trace-events             |  2 +-
+ hw/dma/trace-events                 |  2 +-
+ hw/i386/trace-events                |  2 +-
+ hw/input/trace-events               |  2 +-
+ hw/intc/trace-events                |  2 +-
+ hw/isa/trace-events                 |  2 +-
+ hw/mem/trace-events                 |  2 +-
+ hw/misc/ivshmem.c                   |  5 ++++-
+ hw/misc/trace-events                |  2 +-
+ hw/net/trace-events                 |  2 +-
+ hw/nvram/trace-events               |  2 +-
+ hw/pci/trace-events                 |  2 +-
+ hw/ppc/trace-events                 |  2 +-
+ hw/s390x/trace-events               |  2 +-
+ hw/scsi/trace-events                |  2 +-
+ hw/sd/trace-events                  |  2 +-
+ hw/sparc/trace-events               |  2 +-
+ hw/timer/trace-events               |  2 +-
+ hw/unicore32/puv3.c                 |  5 ++++-
+ hw/usb/trace-events                 |  2 +-
+ hw/vfio/trace-events                |  2 +-
+ hw/virtio/trace-events              |  2 +-
+ hw/xen/trace-events                 |  2 +-
+ include/qapi/visitor.h              |  2 +-
+ include/qemu/atomic.h               |  4 ++--
+ io/trace-events                     |  2 +-
+ linux-user/elfload.c                |  2 +-
+ linux-user/syscall.c                | 18 ++++++++++++++----
+ linux-user/trace-events             |  2 +-
+ migration/trace-events              |  2 +-
+ net/eth.c                           |  4 ++--
+ net/trace-events                    |  2 +-
+ qapi-schema.json                    |  4 ++--
+ qapi/introspect.json                |  2 +-
+ qapi/qapi-util.c                    |  2 +-
+ qom/trace-events                    |  2 +-
+ scripts/qapi2texi.py                |  2 +-
+ scripts/simpletrace.py              |  2 +-
+ target/arm/trace-events             |  2 +-
+ target/i386/trace-events            |  2 +-
+ target/m68k/translate.c             |  2 +-
+ target/mips/trace-events            |  2 +-
+ target/ppc/trace-events             |  2 +-
+ target/s390x/trace-events           |  2 +-
+ target/sparc/trace-events           |  2 +-
+ target/tricore/cpu.c                | 10 ++++++++++
+ tcg/README                          |  2 +-
+ tests/Makefile.include              | 10 +++++-----
+ tests/check-qom-proplist.c          |  2 ++
+ thunk.c                             |  3 ++-
+ ui/trace-events                     |  2 +-
+ ui/vnc.c                            | 36 ++++++++++++++++++-------------=
+-----
+ util/trace-events                   |  2 +-
+ 74 files changed, 131 insertions(+), 102 deletions(-)
 
