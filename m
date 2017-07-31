@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc7ux-0007vd-4q
+	id 1dc7ux-0007vx-A7
 	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:27:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53184)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7us-0007rO-St
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:27:15 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7ut-0007rT-39
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:27:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7us-00023A-3g
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:27:14 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:38213)
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7us-00023V-D3
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:27:15 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:57471)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dc7uo-0001ye-5V; Mon, 31 Jul 2017 06:27:10 -0400
+	id 1dc7uo-0001yc-3F; Mon, 31 Jul 2017 06:27:10 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 6EC0242ABC;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5315442A9D;
 	Mon, 31 Jul 2017 13:27:09 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 535A3B81;
+	by tsrv.corpit.ru (Postfix) with SMTP id D9381B89;
 	Mon, 31 Jul 2017 13:21:45 +0300 (MSK)
-Received: (nullmailer pid 5563 invoked by uid 1000);
+Received: (nullmailer pid 5565 invoked by uid 1000);
 	Mon, 31 Jul 2017 10:21:45 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 31 Jul 2017 13:21:31 +0300
-Message-Id: <b2caa3b82edca29ccb5e7d6311ffcf841b9b7786.1501496349.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 31 Jul 2017 13:21:32 +0300
+Message-Id: <4b5660e403c9cae998dc70b51288968655977896.1501496349.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
 References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
@@ -37,8 +37,7 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 12/25] net/eth: fix incorrect check of
- iov_to_buf() return value
+Subject: [Qemu-trivial] [PULL 13/25] m68k/translate: fix incorrect copy/paste
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,50 +53,43 @@ X-List-Received-Date: Mon, 31 Jul 2017 10:27:16 -0000
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-So we have sizeof(struct in6_address) !=3D sizeof(uintptr_t)
-and Clang > Coverity on this, see 4555ca6816c :)
+db3d7945ae extended gen_cc_cond() for cond [6, 7, 9, 10] but misswrote [4=
+, 5]
 
-net/eth.c:426:30: warning: The code calls sizeof() on a pointer type. Thi=
-s can produce an unexpected result
-        return bytes_read =3D=3D sizeof(dst_addr);
-                             ^     ~~~~~~~~~~
-net/eth.c:475:34: warning: The code calls sizeof() on a pointer type. Thi=
-s can produce an unexpected result
-            return bytes_read =3D=3D sizeof(src_addr);
-                                 ^     ~~~~~~~~~~
+target/m68k/translate.c:1323:70: warning: identical expressions on both s=
+ides of logical operator
+        if (op =3D=3D CC_OP_ADDB || op =3D=3D CC_OP_ADDW || op =3D=3D CC_=
+OP_ADDL ||
+            op =3D=3D CC_OP_ADDB || op =3D=3D CC_OP_ADDW || op =3D=3D CC_=
+OP_ADDL) {
+            ~~~~~~~~~~~~~~~~    ~~~~~~~~~~~~~~~~    ~~~~~~~~~~~~~~~~ ^
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Dmitry Fleytman <dmitry@daynix.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- net/eth.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/m68k/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/eth.c b/net/eth.c
-index 5b9ba26a56..ae5d881aae 100644
---- a/net/eth.c
-+++ b/net/eth.c
-@@ -423,7 +423,7 @@ _eth_get_rss_ex_dst_addr(const struct iovec *pkt, int=
- pkt_frags,
-                                 rthdr_offset + sizeof(*ext_hdr),
-                                 dst_addr, sizeof(*dst_addr));
-=20
--        return bytes_read =3D=3D sizeof(dst_addr);
-+        return bytes_read =3D=3D sizeof(*dst_addr);
-     }
-=20
-     return false;
-@@ -472,7 +472,7 @@ _eth_get_rss_ex_src_addr(const struct iovec *pkt, int=
- pkt_frags,
-                                     opt_offset + sizeof(opthdr),
-                                     src_addr, sizeof(*src_addr));
-=20
--            return bytes_read =3D=3D sizeof(src_addr);
-+            return bytes_read =3D=3D sizeof(*src_addr);
-         }
-=20
-         opt_offset +=3D optlen;
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index ada2a91b64..be24355080 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -1321,7 +1321,7 @@ static void gen_cc_cond(DisasCompare *c, DisasConte=
+xt *s, int cond)
+     case 5: /* CS (C) */
+         /* Some cases fold C into X.  */
+         if (op =3D=3D CC_OP_ADDB || op =3D=3D CC_OP_ADDW || op =3D=3D CC=
+_OP_ADDL ||
+-            op =3D=3D CC_OP_ADDB || op =3D=3D CC_OP_ADDW || op =3D=3D CC=
+_OP_ADDL) {
++            op =3D=3D CC_OP_SUBB || op =3D=3D CC_OP_SUBW || op =3D=3D CC=
+_OP_SUBL) {
+             tcond =3D TCG_COND_NE;
+             c->v1 =3D QREG_CC_X;
+             goto done;
 --=20
 2.11.0
 
