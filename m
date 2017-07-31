@@ -1,44 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc8O8-00053p-OH
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:57:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60758)
+	id 1dc9Of-0004V5-MD
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 08:02:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc8O2-0004xu-U8
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:57:27 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dc9Od-0004Uu-K1
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:02:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc8O0-0004pw-KP
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:57:22 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58883)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dc8Ns-0004er-Ho; Mon, 31 Jul 2017 06:57:13 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 04BB542ABD;
-	Mon, 31 Jul 2017 13:57:09 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 456B0B8D;
-	Mon, 31 Jul 2017 13:21:46 +0300 (MSK)
-Received: (nullmailer pid 5585 invoked by uid 1000);
-	Mon, 31 Jul 2017 10:21:45 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 31 Jul 2017 13:21:42 +0300
-Message-Id: <87e0331c5a2ac1d8d654e565ecbe72705118606b.1501496350.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <peter.maydell@linaro.org>) id 1dc9OZ-0006m3-26
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:02:03 -0400
+Received: from mail-wr0-x233.google.com ([2a00:1450:400c:c0c::233]:33091)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dc9OY-0006ki-Q8
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:01:58 -0400
+Received: by mail-wr0-x233.google.com with SMTP id v105so148028570wrb.0
+	for <qemu-trivial@nongnu.org>; Mon, 31 Jul 2017 05:01:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=4ceor/mEANsXj1NSAR8o/5CuVYwrQuMTRBAHR1A6pu0=;
+	b=W3KIw+ZBHY5W37URJ3nw1mquGcCxstsTujkfUjZJ9XIWVUJan9T+sjaJ/TGFAv82tD
+	GqfzjzW9eatr/AhKmq27y8r3S1NXkqVZyLprdJXNvIAPPQkHBhJpf6r2vTO+pA4ZuCfN
+	mDSqZ40mc+dG75Xj0vFItuHFNKpITG5FlGpzs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=4ceor/mEANsXj1NSAR8o/5CuVYwrQuMTRBAHR1A6pu0=;
+	b=A30NhIjVdz8r9HQGyLxTEImyNbGpsBTjRK9Eb80wW4X7KroyySSTJOmo2BnU3kbAlc
+	b9MIBvSvdYLX7YlxRihP9mR8a6MqwHpZtJw4IwwaL7By1JfkSUFKc/tLuT/018kvzIx6
+	TmbG81QkjuH4aX2zK8QY0PfKzWdro3HSVl9k/UjpR7VrQDRcVxDjrguG0ABZY95onORD
+	VvyATaFMag8kKzMfN5nUv0kt0vz9cpPTJiV82KTez9VsdlM/t243wURFpxh4PPK85UJm
+	mMkbHEvB3CSz63BSCAWkRQB5kdme5ISWQ/vfp+OpzheDBeuQoXdW8pab29fxT55NBSHV
+	GI4A==
+X-Gm-Message-State: AIVw113YkwgFZ98gRc9S6sd9PtCag918/gXT78q5b3T6QA+ZacPT1vFm
+	mtPpuysKiTTL38b0r5XGDL2XhKEWUYNB
+X-Received: by 10.223.163.16 with SMTP id c16mr13470877wrb.173.1501502517599; 
+	Mon, 31 Jul 2017 05:01:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 05:01:37 -0700 (PDT)
+In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 31 Jul 2017 13:01:37 +0100
+Message-ID: <CAFEAcA-hS-rnanMg2bbKDDQt1T2S7hZV61Utmh3VdioRcJGAOw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 23/25] docs: fix broken paths to
- docs/devel/tracing.txt
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::233
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/25 for-2.10] Trivial
+ patches for 2017-07-31
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,566 +65,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jul 2017 10:57:27 -0000
+X-List-Received-Date: Mon, 31 Jul 2017 12:02:04 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 31 July 2017 at 11:21, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's a collection of trivial stuff merged to date.
+> A few minor cleanups, older tests trivial fixes, changing
+> crash to clean exit for unicore32 and tricore, and many
+> small documentation fixes mostly by Philippe Mathieu-Daud=C3=A9.
+>
+> Please consider applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 0c26c080ee592ea47597d3ab8fd712d7d2c4ba=
+0f:
+>
+>   Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-2.10-2017073=
+1' into staging (2017-07-31 09:59:26 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to 25e11d8774630600ef4c5e9906419a77163a28a1:
+>
+>   docs: fix broken paths to docs/specs/ivshmem-spec.txt (2017-07-31 13:13=
+:01 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-07-31
+>
 
-With the move of some docs/ to docs/devel/ on ac06724a71,
-no references were updated.
+Applied, thanks.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- audio/trace-events              | 2 +-
- block/trace-events              | 2 +-
- chardev/trace-events            | 2 +-
- crypto/trace-events             | 2 +-
- hw/9pfs/trace-events            | 2 +-
- hw/acpi/trace-events            | 2 +-
- hw/alpha/trace-events           | 2 +-
- hw/arm/trace-events             | 2 +-
- hw/audio/trace-events           | 2 +-
- hw/block/dataplane/trace-events | 2 +-
- hw/block/trace-events           | 2 +-
- hw/char/trace-events            | 2 +-
- hw/display/trace-events         | 2 +-
- hw/dma/trace-events             | 2 +-
- hw/i386/trace-events            | 2 +-
- hw/input/trace-events           | 2 +-
- hw/intc/trace-events            | 2 +-
- hw/isa/trace-events             | 2 +-
- hw/mem/trace-events             | 2 +-
- hw/misc/trace-events            | 2 +-
- hw/net/trace-events             | 2 +-
- hw/nvram/trace-events           | 2 +-
- hw/pci/trace-events             | 2 +-
- hw/ppc/trace-events             | 2 +-
- hw/s390x/trace-events           | 2 +-
- hw/scsi/trace-events            | 2 +-
- hw/sd/trace-events              | 2 +-
- hw/sparc/trace-events           | 2 +-
- hw/timer/trace-events           | 2 +-
- hw/usb/trace-events             | 2 +-
- hw/vfio/trace-events            | 2 +-
- hw/virtio/trace-events          | 2 +-
- hw/xen/trace-events             | 2 +-
- io/trace-events                 | 2 +-
- linux-user/trace-events         | 2 +-
- migration/trace-events          | 2 +-
- net/trace-events                | 2 +-
- qom/trace-events                | 2 +-
- scripts/simpletrace.py          | 2 +-
- target/arm/trace-events         | 2 +-
- target/i386/trace-events        | 2 +-
- target/mips/trace-events        | 2 +-
- target/ppc/trace-events         | 2 +-
- target/s390x/trace-events       | 2 +-
- target/sparc/trace-events       | 2 +-
- ui/trace-events                 | 2 +-
- util/trace-events               | 2 +-
- 47 files changed, 47 insertions(+), 47 deletions(-)
-
-diff --git a/audio/trace-events b/audio/trace-events
-index 517359039e..122604287f 100644
---- a/audio/trace-events
-+++ b/audio/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # audio/alsaaudio.c
- alsa_revents(int revents) "revents =3D %d"
-diff --git a/block/trace-events b/block/trace-events
-index 4a4df25323..8d10a82941 100644
---- a/block/trace-events
-+++ b/block/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # block.c
- bdrv_open_common(void *bs, const char *filename, int flags, const char *=
-format_name) "bs %p filename \"%s\" flags %#x format_name \"%s\""
-diff --git a/chardev/trace-events b/chardev/trace-events
-index 822dde668b..d0e5f3bbc1 100644
---- a/chardev/trace-events
-+++ b/chardev/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # chardev/wctablet.c
- wct_init(void) ""
-diff --git a/crypto/trace-events b/crypto/trace-events
-index dc6ddd30d6..e589990359 100644
---- a/crypto/trace-events
-+++ b/crypto/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # crypto/tlscreds.c
- qcrypto_tls_creds_load_dh(void *creds, const char *filename) "TLS creds =
-load DH creds=3D%p filename=3D%s"
-diff --git a/hw/9pfs/trace-events b/hw/9pfs/trace-events
-index fb4de3d465..08a4abf22e 100644
---- a/hw/9pfs/trace-events
-+++ b/hw/9pfs/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/9pfs/virtio-9p.c
- v9fs_rerror(uint16_t tag, uint8_t id, int err) "tag %d id %d err %d"
-diff --git a/hw/acpi/trace-events b/hw/acpi/trace-events
-index c379607a3e..e3b41e9df4 100644
---- a/hw/acpi/trace-events
-+++ b/hw/acpi/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/acpi/memory_hotplug.c
- mhp_acpi_invalid_slot_selected(uint32_t slot) "0x%"PRIx32
-diff --git a/hw/alpha/trace-events b/hw/alpha/trace-events
-index e44ff01a09..46024cca0b 100644
---- a/hw/alpha/trace-events
-+++ b/hw/alpha/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/alpha/pci.c
- alpha_pci_iack_write(void) ""
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index d5f33a2a03..193063ed99 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/arm/virt-acpi-build.c
- virt_acpi_setup(void) "No fw cfg or ACPI disabled. Bailing out."
-diff --git a/hw/audio/trace-events b/hw/audio/trace-events
-index 3210386e86..47e2ed53d7 100644
---- a/hw/audio/trace-events
-+++ b/hw/audio/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/audio/cs4231.c
- cs4231_mem_readl_dreg(uint32_t reg, uint32_t ret) "read dreg %d: 0x%02x"
-diff --git a/hw/block/dataplane/trace-events b/hw/block/dataplane/trace-e=
-vents
-index e07673ab1f..1a7ea277b0 100644
---- a/hw/block/dataplane/trace-events
-+++ b/hw/block/dataplane/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/block/dataplane/virtio-blk.c
- virtio_blk_data_plane_start(void *s) "dataplane %p"
-diff --git a/hw/block/trace-events b/hw/block/trace-events
-index c332c01ea8..cb6767b3ee 100644
---- a/hw/block/trace-events
-+++ b/hw/block/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/block/virtio-blk.c
- virtio_blk_req_complete(void *vdev, void *req, int status) "vdev %p req =
-%p status %d"
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index daf4ee470a..eeb1a0a527 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/char/virtio-serial-bus.c
- virtio_serial_send_control_event(unsigned int port, uint16_t event, uint=
-16_t value) "port %u, event %u, value %u"
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index 3e896d2e3f..02d03a9ccc 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/display/jazz_led.c
- jazz_led_read(uint64_t addr, uint8_t val) "read addr=3D0x%"PRIx64": 0x%x=
-"
-diff --git a/hw/dma/trace-events b/hw/dma/trace-events
-index 22878dfdb6..40e9688325 100644
---- a/hw/dma/trace-events
-+++ b/hw/dma/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/dma/rc4030.c
- jazzio_read(uint64_t addr, uint32_t ret) "read reg[0x%"PRIx64"] =3D 0x%x=
-"
-diff --git a/hw/i386/trace-events b/hw/i386/trace-events
-index 42d8a7e27a..d43b4b6cd3 100644
---- a/hw/i386/trace-events
-+++ b/hw/i386/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/i386/x86-iommu.c
- x86_iommu_iec_notify(bool global, uint32_t index, uint32_t mask) "Notify=
- IEC invalidation: global=3D%d index=3D%" PRIu32 " mask=3D%" PRIu32
-diff --git a/hw/input/trace-events b/hw/input/trace-events
-index 5a87818b49..e1c8780771 100644
---- a/hw/input/trace-events
-+++ b/hw/input/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/input/ps2.c
- ps2_put_keycode(void *opaque, int keycode) "%p keycode %d"
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index c586714d89..1788dda197 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/intc/apic_common.c
- cpu_set_apic_base(uint64_t val) "%016"PRIx64
-diff --git a/hw/isa/trace-events b/hw/isa/trace-events
-index 9faca41a97..254500a3f6 100644
---- a/hw/isa/trace-events
-+++ b/hw/isa/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/isa/pc87312.c
- pc87312_io_read(uint32_t addr, uint32_t val) "read addr=3D%x val=3D%x"
-diff --git a/hw/mem/trace-events b/hw/mem/trace-events
-index 323c3c10d5..e150dcc497 100644
---- a/hw/mem/trace-events
-+++ b/hw/mem/trace-events
-@@ -1,4 +1,4 @@
--# See docs/trace-events.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/mem/pc-dimm.c
- mhp_pc_dimm_assigned_slot(int slot) "%d"
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 28b8cd1c2e..56ee4fb5f6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/misc/eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable %08x"
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index c71480535e..2535d5b0b8 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/net/lance.c
- lance_mem_readw(uint64_t addr, uint32_t ret) "addr=3D%"PRIx64"val=3D0x%0=
-4x"
-diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
-index 1f1e05ab69..f9a778d152 100644
---- a/hw/nvram/trace-events
-+++ b/hw/nvram/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/nvram/ds1225y.c
- nvram_read(uint32_t addr, uint32_t ret) "read addr %d: 0x%02x"
-diff --git a/hw/pci/trace-events b/hw/pci/trace-events
-index 83c8f5ace7..2f0da76733 100644
---- a/hw/pci/trace-events
-+++ b/hw/pci/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/pci/pci.c
- pci_update_mappings_del(void *d, uint32_t bus, uint32_t slot, uint32_t f=
-unc, int bar, uint64_t addr, uint64_t size) "d=3D%p %02x:%02x.%x %d,%#"PR=
-Ix64"+%#"PRIx64
-diff --git a/hw/ppc/trace-events b/hw/ppc/trace-events
-index 0f7d9be4ef..0501b88477 100644
---- a/hw/ppc/trace-events
-+++ b/hw/ppc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/ppc/spapr_pci.c
- spapr_pci_msi(const char *msg, uint32_t ca) "%s (cfg=3D%x)"
-diff --git a/hw/s390x/trace-events b/hw/s390x/trace-events
-index f07e974678..5086cd9ad9 100644
---- a/hw/s390x/trace-events
-+++ b/hw/s390x/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/s390x/css.c
- css_enable_facility(const char *facility) "CSS: enable %s"
-diff --git a/hw/scsi/trace-events b/hw/scsi/trace-events
-index 4a2e5d66df..652a815e77 100644
---- a/hw/scsi/trace-events
-+++ b/hw/scsi/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/scsi/scsi-bus.c
- scsi_req_alloc(int target, int lun, int tag) "target %d lun %d tag %d"
-diff --git a/hw/sd/trace-events b/hw/sd/trace-events
-index b17e7ba442..42ebc2d0d8 100644
---- a/hw/sd/trace-events
-+++ b/hw/sd/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/sd/milkymist-memcard.c
- milkymist_memcard_memory_read(uint32_t addr, uint32_t value) "addr %08x =
-value %08x"
-diff --git a/hw/sparc/trace-events b/hw/sparc/trace-events
-index 30fb0373e7..efd765cbe6 100644
---- a/hw/sparc/trace-events
-+++ b/hw/sparc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/sparc/sun4m.c
- sun4m_cpu_interrupt(unsigned int level) "Set CPU IRQ %d"
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index fd8196be66..62c4e0dc75 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/timer/slavio_timer.c
- slavio_timer_get_out(uint64_t limit, uint32_t counthigh, uint32_t count)=
- "limit %"PRIx64" count %x%08x"
-diff --git a/hw/usb/trace-events b/hw/usb/trace-events
-index 0c323d4cac..f74cbd5bcd 100644
---- a/hw/usb/trace-events
-+++ b/hw/usb/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/usb/core.c
- usb_packet_state_change(int bus, const char *port, int ep, void *p, cons=
-t char *o, const char *n) "bus %d, port %s, ep %d, packet %p, state %s ->=
- %s"
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index 2561c6d31a..f7f891439a 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/vfio/pci.c
- vfio_intx_interrupt(const char *name, char line) " (%s) Pin %c"
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index e24d8fa997..012bbaa694 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # hw/virtio/virtio.c
- virtqueue_alloc_element(void *elem, size_t sz, unsigned in_num, unsigned=
- out_num) "elem %p size %zd in_num %u out_num %u"
-diff --git a/hw/xen/trace-events b/hw/xen/trace-events
-index 5615dce2c1..bff4f2319b 100644
---- a/hw/xen/trace-events
-+++ b/hw/xen/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # include/hw/xen/xen_common.h
- xen_default_ioreq_server(void) ""
-diff --git a/io/trace-events b/io/trace-events
-index ff993bef45..3d233698d0 100644
---- a/io/trace-events
-+++ b/io/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # io/task.c
- qio_task_new(void *task, void *source, void *func, void *opaque) "Task n=
-ew task=3D%p source=3D%p func=3D%p opaque=3D%p"
-diff --git a/linux-user/trace-events b/linux-user/trace-events
-index fc71f91ccb..80ad957dfd 100644
---- a/linux-user/trace-events
-+++ b/linux-user/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # linux-user/signal.c
- user_setup_frame(void *env, uint64_t frame_addr) "env=3D%p frame_addr=3D=
-%"PRIx64
-diff --git a/migration/trace-events b/migration/trace-events
-index cb2c4b5b40..a7d546b289 100644
---- a/migration/trace-events
-+++ b/migration/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # migration/savevm.c
- qemu_loadvm_state_section(unsigned int section_type) "%d"
-diff --git a/net/trace-events b/net/trace-events
-index 247e5c04db..201813941d 100644
---- a/net/trace-events
-+++ b/net/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # net/vhost-user.c
- vhost_user_event(const char *chr, int event) "chr: %s got event: %d"
-diff --git a/qom/trace-events b/qom/trace-events
-index 97db357207..5d86fbf019 100644
---- a/qom/trace-events
-+++ b/qom/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # qom/object.c
- object_dynamic_cast_assert(const char *type, const char *target, const c=
-har *file, int line, const char *func) "%s->%s (%s:%d:%s)"
-diff --git a/scripts/simpletrace.py b/scripts/simpletrace.py
-index f1be6e419a..2a977e2ab9 100755
---- a/scripts/simpletrace.py
-+++ b/scripts/simpletrace.py
-@@ -7,7 +7,7 @@
- # This work is licensed under the terms of the GNU GPL, version 2.  See
- # the COPYING file in the top-level directory.
- #
--# For help see docs/tracing.txt
-+# For help see docs/devel/tracing.txt
-=20
- import struct
- import re
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index e21c84fc6f..c4fcda59b4 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/arm/helper.c
- arm_gt_recalc(int timer, int irqstate, uint64_t nexttick) "gt recalc: ti=
-mer %d irqstate %d next tick %" PRIx64
-diff --git a/target/i386/trace-events b/target/i386/trace-events
-index de6a1cf0cb..3153fd4454 100644
---- a/target/i386/trace-events
-+++ b/target/i386/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/i386/kvm.c
- kvm_x86_fixup_msi_error(uint32_t gsi) "VT-d failed to remap interrupt fo=
-r GSI %" PRIu32
-diff --git a/target/mips/trace-events b/target/mips/trace-events
-index 43824089b3..05eafd7870 100644
---- a/target/mips/trace-events
-+++ b/target/mips/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/mips/translate.c
- mips_translate_c0(const char *instr, const char *rn, int reg, int sel) "=
-%s %s (reg %d sel %d)"
-diff --git a/target/ppc/trace-events b/target/ppc/trace-events
-index b666156114..35ee898566 100644
---- a/target/ppc/trace-events
-+++ b/target/ppc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/ppc/kvm.c
- kvm_failed_spr_set(int str, const char *msg) "Warning: Unable to set SPR=
- %d to KVM: %s"
-diff --git a/target/s390x/trace-events b/target/s390x/trace-events
-index 1574033e31..852a248d66 100644
---- a/target/s390x/trace-events
-+++ b/target/s390x/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/s390x/mmu_helper.c
- get_skeys_nonzero(int rc) "SKEY: Call to get_skeys unexpectedly returned=
- %d"
-diff --git a/target/sparc/trace-events b/target/sparc/trace-events
-index 8df178a347..8d1ed1b913 100644
---- a/target/sparc/trace-events
-+++ b/target/sparc/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # target/sparc/mmu_helper.c
- mmu_helper_dfault(uint64_t address, uint64_t context, int mmu_idx, uint3=
-2_t tl) "DFAULT at %"PRIx64" context %"PRIx64" mmu_idx=3D%d tl=3D%d"
-diff --git a/ui/trace-events b/ui/trace-events
-index 19ce5f85f6..34c2213700 100644
---- a/ui/trace-events
-+++ b/ui/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # ui/console.c
- console_gfx_new(void) ""
-diff --git a/util/trace-events b/util/trace-events
-index fa540c620b..025499f83f 100644
---- a/util/trace-events
-+++ b/util/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.txt for syntax documentation.
-=20
- # util/aio-posix.c
- run_poll_handlers_begin(void *ctx, int64_t max_ns) "ctx %p max_ns %"PRId=
-64
---=20
-2.11.0
-
+-- PMM
 
