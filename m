@@ -1,42 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc7mI-0002Oj-Qr
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:18:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49725)
+	id 1dc7pj-0004Ak-32
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:21:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50993)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7mE-0002L2-A8
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:18:21 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pg-000481-Dm
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7m9-0003bZ-Tm
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:18:18 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:45743)
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-0006Bw-Fb
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:52 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46587)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dc7m4-0003Xy-Ej; Mon, 31 Jul 2017 06:18:08 -0400
+	id 1dc7pa-00068H-ID; Mon, 31 Jul 2017 06:21:46 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C9C2F42ABB;
-	Mon, 31 Jul 2017 13:18:07 +0300 (MSK)
-Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with ESMTP id CB545B77;
-	Mon, 31 Jul 2017 13:18:05 +0300 (MSK)
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20170727154537.15303-1-marcandre.lureau@redhat.com>
+	by isrv.corpit.ru (Postfix) with ESMTP id A53BE42ABC;
+	Mon, 31 Jul 2017 13:21:45 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 95022B78;
+	Mon, 31 Jul 2017 13:21:43 +0300 (MSK)
+Received: (nullmailer pid 5550 invoked by uid 1000);
+	Mon, 31 Jul 2017 10:21:45 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <dcc381fd-2391-9943-7cff-941d735d6982@msgid.tls.msk.ru>
-Date: Mon, 31 Jul 2017 13:18:07 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <20170727154537.15303-1-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+To: qemu-devel@nongnu.org
+Cc: Eduardo Otubo <otubo@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 31 Jul 2017 13:21:25 +0300
+Message-Id: <b190f477e29c7cd03a8fee49c96d27f160e3f5b0.1501496349.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: Re: [Qemu-trivial] [PATCH] tests: test-netfilter && pxe-test
- require slirp
+Subject: [Qemu-trivial] [PULL 06/25] qemu-system-tricore: segfault when
+ entering "x 0" on the monitor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,12 +47,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jul 2017 10:18:21 -0000
+X-List-Received-Date: Mon, 31 Jul 2017 10:21:53 -0000
 
-27.07.2017 18:45, Marc-Andr=C3=A9 Lureau wrote:
-> If slirp is disabled, it will fail with:
+From: Eduardo Otubo <otubo@redhat.com>
 
-Applied to -trivial, thanks!
+Starting Qemu with "qemu-system-tricore -nographic -M tricore_testboard -S"
+and entering "x 0" at the monitor prompt leads to Segmentation fault.
+This happens because tricore_cpu_get_phys_page_debug() is not implemented
+yet, this is a temporary workaround to avoid the crash.
 
-/mjt
+Signed-off-by: Eduardo Otubo <otubo@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ target/tricore/cpu.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 08f50e2ba7..5ab5b56454 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -22,6 +22,15 @@
+ #include "cpu.h"
+ #include "qemu-common.h"
+ #include "exec/exec-all.h"
++#include "qemu/error-report.h"
++
++static hwaddr tricore_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
++                                         MemTxAttrs *attrs)
++{
++    error_report("function cpu_get_phys_page_attrs_debug not "
++                    "implemented, aborting");
++    return -1;
++}
+ 
+ static inline void set_feature(CPUTriCoreState *env, int feature)
+ {
+@@ -176,6 +185,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+     cc->dump_state = tricore_cpu_dump_state;
+     cc->set_pc = tricore_cpu_set_pc;
+     cc->synchronize_from_tb = tricore_cpu_synchronize_from_tb;
++    cc->get_phys_page_attrs_debug = tricore_cpu_get_phys_page_attrs_debug;
+ }
+ 
+ static void cpu_register(const TriCoreCPUInfo *info)
+-- 
+2.11.0
+
 
