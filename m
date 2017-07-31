@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc7pk-0004Bs-0K
+	id 1dc7pk-0004C3-5e
 	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 06:21:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50986)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50970)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7pg-00047Z-5t
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:53 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-0006Bl-DH
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-00047L-Ou
 	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:32833)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1dc7pf-0006BE-0t
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 06:21:51 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58391)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dc7pb-00068X-30; Mon, 31 Jul 2017 06:21:47 -0400
+	id 1dc7pb-00068S-1j; Mon, 31 Jul 2017 06:21:47 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 341EF42ABF;
+	by isrv.corpit.ru (Postfix) with ESMTP id 148BB42ABE;
 	Mon, 31 Jul 2017 13:21:46 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 2691BB78;
-	Mon, 31 Jul 2017 13:21:44 +0300 (MSK)
-Received: (nullmailer pid 5558 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id F2AB6B77;
+	Mon, 31 Jul 2017 13:21:43 +0300 (MSK)
+Received: (nullmailer pid 5556 invoked by uid 1000);
 	Mon, 31 Jul 2017 10:21:45 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 31 Jul 2017 13:21:29 +0300
-Message-Id: <f80ac75d0e6e6e7481d61cdb86e5a741a442f100.1501496349.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 31 Jul 2017 13:21:28 +0300
+Message-Id: <b7b1e9dd6d56612d4656817b11e43d9fbefdc497.1501496349.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
 References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
@@ -37,7 +37,8 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 10/25] qcow2: fix null pointer dereference
+Subject: [Qemu-trivial] [PULL 09/25] ivshmem: fix incorrect error handling
+ in ivshmem_recv_msg()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,49 +50,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jul 2017 10:21:53 -0000
+X-List-Received-Date: Mon, 31 Jul 2017 10:21:52 -0000
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-It seems this assert() was somehow misplaced.
+Screwed up in commit 3a55fc0f, v2.6.0.
 
-block/qcow2-refcount.c:2193:42: warning: Array access (from variable 'on_=
-disk_reftable') results in a null pointer dereference
-        on_disk_reftable[refblock_index] =3D refblock_offset;
-        ~~~~~~~~~~~~~~~~                 ^
+If qemu_chr_fe_read_all() returns -EINTR the do {} statement continues an=
+d the
+n accumulator used to complete reads upto sizeof(msg) is decremented by 4=
+ (the
+value of EINTR on Linux).
+To avoid that, use simpler if() statements and continue if EINTR occured.
+
+hw/misc/ivshmem.c:650:14: warning: Loss of sign in implicit conversion
+    } while (n < sizeof(msg));
+             ^
 
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- block/qcow2-refcount.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/misc/ivshmem.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
-index c9b0dcb4f3..168fc32e7b 100644
---- a/block/qcow2-refcount.c
-+++ b/block/qcow2-refcount.c
-@@ -2189,6 +2189,8 @@ write_refblocks:
-              * this will leak that range, but we can easily fix that by =
-running
-              * a leak-fixing check after this rebuild operation */
-             reftable_offset =3D -1;
-+        } else {
-+            assert(on_disk_reftable);
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index a58f9ee579..47a015f072 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -642,7 +642,10 @@ static int64_t ivshmem_recv_msg(IVShmemState *s, int=
+ *pfd, Error **errp)
+     do {
+         ret =3D qemu_chr_fe_read_all(&s->server_chr, (uint8_t *)&msg + n=
+,
+                                    sizeof(msg) - n);
+-        if (ret < 0 && ret !=3D -EINTR) {
++        if (ret < 0) {
++            if (ret =3D=3D -EINTR) {
++                continue;
++            }
+             error_setg_errno(errp, -ret, "read from server failed");
+             return INT64_MIN;
          }
-         on_disk_reftable[refblock_index] =3D refblock_offset;
-=20
-@@ -2258,8 +2260,6 @@ write_refblocks:
-         goto write_refblocks;
-     }
-=20
--    assert(on_disk_reftable);
--
-     for (refblock_index =3D 0; refblock_index < reftable_size; refblock_=
-index++) {
-         cpu_to_be64s(&on_disk_reftable[refblock_index]);
-     }
 --=20
 2.11.0
 
