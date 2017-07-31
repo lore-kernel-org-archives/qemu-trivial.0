@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dc9Of-0004V5-MD
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 08:02:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50218)
+	id 1dcAKJ-0008Kb-EQ
+	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 09:01:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dc9Od-0004Uu-K1
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:02:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dcAKD-0008KO-RQ
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dc9OZ-0006m3-26
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:02:03 -0400
-Received: from mail-wr0-x233.google.com ([2a00:1450:400c:c0c::233]:33091)
+	(envelope-from <peter.maydell@linaro.org>) id 1dcAKC-0006Qq-QU
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:33 -0400
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38014)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dc9OY-0006ki-Q8
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 08:01:58 -0400
-Received: by mail-wr0-x233.google.com with SMTP id v105so148028570wrb.0
-	for <qemu-trivial@nongnu.org>; Mon, 31 Jul 2017 05:01:58 -0700 (PDT)
+	id 1dcAKC-0006QA-KP
+	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:32 -0400
+Received: by mail-wm0-x22d.google.com with SMTP id m85so169383447wma.1
+	for <qemu-trivial@nongnu.org>; Mon, 31 Jul 2017 06:01:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=4ceor/mEANsXj1NSAR8o/5CuVYwrQuMTRBAHR1A6pu0=;
-	b=W3KIw+ZBHY5W37URJ3nw1mquGcCxstsTujkfUjZJ9XIWVUJan9T+sjaJ/TGFAv82tD
-	GqfzjzW9eatr/AhKmq27y8r3S1NXkqVZyLprdJXNvIAPPQkHBhJpf6r2vTO+pA4ZuCfN
-	mDSqZ40mc+dG75Xj0vFItuHFNKpITG5FlGpzs=
+	bh=H8qzQUQggnHntxh615GADKgsUV5j4z8b9Z+3Wo/Qbj0=;
+	b=fY95kb+cWAzE0o9blPw3Lzo4xHBzOrDGSVLoV1cBWF6v+cIVr5QONux8n8yGZYXxJH
+	0akv0+rdQczaBECKZ2LIbhJQVK/WpaDDcpL3E3jMsJllEwFWZyicEpOqaWu4LGB8yXC+
+	Kc2/N7UxuEh75K9smcfjcYc33CzzSXqHJrG80=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=4ceor/mEANsXj1NSAR8o/5CuVYwrQuMTRBAHR1A6pu0=;
-	b=A30NhIjVdz8r9HQGyLxTEImyNbGpsBTjRK9Eb80wW4X7KroyySSTJOmo2BnU3kbAlc
-	b9MIBvSvdYLX7YlxRihP9mR8a6MqwHpZtJw4IwwaL7By1JfkSUFKc/tLuT/018kvzIx6
-	TmbG81QkjuH4aX2zK8QY0PfKzWdro3HSVl9k/UjpR7VrQDRcVxDjrguG0ABZY95onORD
-	VvyATaFMag8kKzMfN5nUv0kt0vz9cpPTJiV82KTez9VsdlM/t243wURFpxh4PPK85UJm
-	mMkbHEvB3CSz63BSCAWkRQB5kdme5ISWQ/vfp+OpzheDBeuQoXdW8pab29fxT55NBSHV
-	GI4A==
-X-Gm-Message-State: AIVw113YkwgFZ98gRc9S6sd9PtCag918/gXT78q5b3T6QA+ZacPT1vFm
-	mtPpuysKiTTL38b0r5XGDL2XhKEWUYNB
-X-Received: by 10.223.163.16 with SMTP id c16mr13470877wrb.173.1501502517599; 
-	Mon, 31 Jul 2017 05:01:57 -0700 (PDT)
+	bh=H8qzQUQggnHntxh615GADKgsUV5j4z8b9Z+3Wo/Qbj0=;
+	b=o3wE/UNWmgZEFliTE2u8ZKna+fj3MoXLdaIQb5M6IsTXl9huvK96Cveo7n0OrLl3y2
+	WRJA4vxAl4OEj7sc4h2/ICPuXwFihR5OrYYEQntiOOSo8kKcx5UPEmUephbB4+wsrTEE
+	qowfq2UcZ4tszdT4yzvoMBkFRc7iOA/LINOidCryiotVpv15lFGkrTbvHOMF4/PdQLmw
+	MPvV7Y8CEnHdUQJcOUSprgWmkBU4wQRkgPn/9cdo1B7n6NkEeGDSU+NMpTMiVuissrPR
+	HqXg/nmrdsKc0DPBFxnPsmkT++y/e9YfacHCK+jhTByqNn5HST9W12+KdsHHN+nZmG6W
+	8FHw==
+X-Gm-Message-State: AIVw111ui7wkheJkXxXhCpFRgNNYZq+FMtIkqgzLraIIIPI3hp9+XyDS
+	jvPH2L0kmOgP7cEOFdk62IYnObzDwFTf
+X-Received: by 10.28.40.215 with SMTP id o206mr11623857wmo.74.1501506091286;
+	Mon, 31 Jul 2017 06:01:31 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 05:01:37 -0700 (PDT)
-In-Reply-To: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 06:01:10 -0700 (PDT)
+In-Reply-To: <bc658e4a2e81593f75a3ae34b112be77efbb3e0a.1501496349.git.mjt@msgid.tls.msk.ru>
 References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
+	<bc658e4a2e81593f75a3ae34b112be77efbb3e0a.1501496349.git.mjt@msgid.tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 31 Jul 2017 13:01:37 +0100
-Message-ID: <CAFEAcA-hS-rnanMg2bbKDDQt1T2S7hZV61Utmh3VdioRcJGAOw@mail.gmail.com>
+Date: Mon, 31 Jul 2017 14:01:10 +0100
+Message-ID: <CAFEAcA-4_nqre=0BQSCgFtanNnVajubNH4r5SrG7Lg67QqeVRw@mail.gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::233
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/25 for-2.10] Trivial
- patches for 2017-07-31
+X-Received-From: 2a00:1450:400c:c09::22d
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 15/25] syscall: fix
+ dereference of undefined pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,40 +67,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jul 2017 12:02:04 -0000
+X-List-Received-Date: Mon, 31 Jul 2017 13:01:38 -0000
 
 On 31 July 2017 at 11:21, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> Here's a collection of trivial stuff merged to date.
-> A few minor cleanups, older tests trivial fixes, changing
-> crash to clean exit for unicore32 and tricore, and many
-> small documentation fixes mostly by Philippe Mathieu-Daud=C3=A9.
+> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >
-> Please consider applying.
+> linux-user/syscall.c:5581:9: warning: Dereference of undefined pointer va=
+lue
+>     if (*host_rt_dev_ptr !=3D 0) {
+>         ^~~~~~~~~~~~~~~~
 >
-> Thanks,
+> Reported-by: Clang Static Analyzer
+> Suggested-by: Laurent Vivier <lvivier@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  linux-user/syscall.c | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> /mjt
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 003943b736..71d45a9963 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -5573,6 +5573,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, u=
+int8_t *buf_temp,
+>                                      field_types, THUNK_HOST);
+>      }
+>      unlock_user(argptr, arg, 0);
+> +    assert(host_rt_dev_ptr);
 >
-> The following changes since commit 0c26c080ee592ea47597d3ab8fd712d7d2c4ba=
-0f:
->
->   Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-2.10-2017073=
-1' into staging (2017-07-31 09:59:26 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
->
-> for you to fetch changes up to 25e11d8774630600ef4c5e9906419a77163a28a1:
->
->   docs: fix broken paths to docs/specs/ivshmem-spec.txt (2017-07-31 13:13=
-:01 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2017-07-31
->
+>      ret =3D get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+>      if (*host_rt_dev_ptr !=3D 0) {
+> --
 
-Applied, thanks.
+This appears not to build with all versions of gcc; the ones in my
+test set were fine but the gcc 4.6.3 that some of the travis
+configs use complains:
+linux-user/syscall.c: In function 'do_ioctl_rt':
+linux-user/syscall.c:5577:37: error: 'host_rt_dev_ptr' may be used uninitia=
+lized
 
+It's not obvious to me that the compiler is wrong, either,
+though why it complains about the assert but not the if()
+I have no idea.
+
+In any case, I'm going to revert this commit to fix the
+Travis builds; we can have another go at it later.
+
+thanks
 -- PMM
 
