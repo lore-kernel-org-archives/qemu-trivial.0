@@ -1,61 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dcAKJ-0008Kb-EQ
-	for mharc-qemu-trivial@gnu.org; Mon, 31 Jul 2017 09:01:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37004)
+	id 1dd4d4-0002AY-KN
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Aug 2017 21:08:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dcAKD-0008KO-RQ
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:38 -0400
+	(envelope-from <eblake@redhat.com>) id 1dd4d2-00029T-Gz
+	for qemu-trivial@nongnu.org; Wed, 02 Aug 2017 21:08:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dcAKC-0006Qq-QU
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:33 -0400
-Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38014)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dcAKC-0006QA-KP
-	for qemu-trivial@nongnu.org; Mon, 31 Jul 2017 09:01:32 -0400
-Received: by mail-wm0-x22d.google.com with SMTP id m85so169383447wma.1
-	for <qemu-trivial@nongnu.org>; Mon, 31 Jul 2017 06:01:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=H8qzQUQggnHntxh615GADKgsUV5j4z8b9Z+3Wo/Qbj0=;
-	b=fY95kb+cWAzE0o9blPw3Lzo4xHBzOrDGSVLoV1cBWF6v+cIVr5QONux8n8yGZYXxJH
-	0akv0+rdQczaBECKZ2LIbhJQVK/WpaDDcpL3E3jMsJllEwFWZyicEpOqaWu4LGB8yXC+
-	Kc2/N7UxuEh75K9smcfjcYc33CzzSXqHJrG80=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=H8qzQUQggnHntxh615GADKgsUV5j4z8b9Z+3Wo/Qbj0=;
-	b=o3wE/UNWmgZEFliTE2u8ZKna+fj3MoXLdaIQb5M6IsTXl9huvK96Cveo7n0OrLl3y2
-	WRJA4vxAl4OEj7sc4h2/ICPuXwFihR5OrYYEQntiOOSo8kKcx5UPEmUephbB4+wsrTEE
-	qowfq2UcZ4tszdT4yzvoMBkFRc7iOA/LINOidCryiotVpv15lFGkrTbvHOMF4/PdQLmw
-	MPvV7Y8CEnHdUQJcOUSprgWmkBU4wQRkgPn/9cdo1B7n6NkEeGDSU+NMpTMiVuissrPR
-	HqXg/nmrdsKc0DPBFxnPsmkT++y/e9YfacHCK+jhTByqNn5HST9W12+KdsHHN+nZmG6W
-	8FHw==
-X-Gm-Message-State: AIVw111ui7wkheJkXxXhCpFRgNNYZq+FMtIkqgzLraIIIPI3hp9+XyDS
-	jvPH2L0kmOgP7cEOFdk62IYnObzDwFTf
-X-Received: by 10.28.40.215 with SMTP id o206mr11623857wmo.74.1501506091286;
-	Mon, 31 Jul 2017 06:01:31 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Mon, 31 Jul 2017 06:01:10 -0700 (PDT)
-In-Reply-To: <bc658e4a2e81593f75a3ae34b112be77efbb3e0a.1501496349.git.mjt@msgid.tls.msk.ru>
-References: <cover.1501496349.git.mjt@msgid.tls.msk.ru>
-	<bc658e4a2e81593f75a3ae34b112be77efbb3e0a.1501496349.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 31 Jul 2017 14:01:10 +0100
-Message-ID: <CAFEAcA-4_nqre=0BQSCgFtanNnVajubNH4r5SrG7Lg67QqeVRw@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::22d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 15/25] syscall: fix
- dereference of undefined pointer
+	(envelope-from <eblake@redhat.com>) id 1dd4d1-00060r-NJ
+	for qemu-trivial@nongnu.org; Wed, 02 Aug 2017 21:08:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47822)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dd4cw-0005xr-DS; Wed, 02 Aug 2017 21:08:38 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 66E9061464;
+	Thu,  3 Aug 2017 01:08:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 66E9061464
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from red.redhat.com (ovpn-121-23.rdu2.redhat.com [10.10.121.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CE0DE7BAF1;
+	Thu,  3 Aug 2017 01:08:35 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Wed,  2 Aug 2017 20:08:33 -0500
+Message-Id: <20170803010833.19647-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 03 Aug 2017 01:08:36 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] libqtest: Fix typo in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,54 +50,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 31 Jul 2017 13:01:38 -0000
+X-List-Received-Date: Thu, 03 Aug 2017 01:08:45 -0000
 
-On 31 July 2017 at 11:21, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> linux-user/syscall.c:5581:9: warning: Dereference of undefined pointer va=
-lue
->     if (*host_rt_dev_ptr !=3D 0) {
->         ^~~~~~~~~~~~~~~~
->
-> Reported-by: Clang Static Analyzer
-> Suggested-by: Laurent Vivier <lvivier@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  linux-user/syscall.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 003943b736..71d45a9963 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -5573,6 +5573,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, u=
-int8_t *buf_temp,
->                                      field_types, THUNK_HOST);
->      }
->      unlock_user(argptr, arg, 0);
-> +    assert(host_rt_dev_ptr);
->
->      ret =3D get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
->      if (*host_rt_dev_ptr !=3D 0) {
-> --
+s/continuosly/continuously/
 
-This appears not to build with all versions of gcc; the ones in my
-test set were fine but the gcc 4.6.3 that some of the travis
-configs use complains:
-linux-user/syscall.c: In function 'do_ioctl_rt':
-linux-user/syscall.c:5577:37: error: 'host_rt_dev_ptr' may be used uninitia=
-lized
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ tests/libqtest.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-It's not obvious to me that the compiler is wrong, either,
-though why it complains about the assert but not the if()
-I have no idea.
+diff --git a/tests/libqtest.h b/tests/libqtest.h
+index 38bc1e9953..3ae570927a 100644
+--- a/tests/libqtest.h
++++ b/tests/libqtest.h
+@@ -117,7 +117,7 @@ QDict *qtest_qmp_receive(QTestState *s);
+  * @s: #QTestState instance to operate on.
+  * @s: #event event to wait for.
+  *
+- * Continuosly polls for QMP responses until it receives the desired event.
++ * Continuously polls for QMP responses until it receives the desired event.
+  */
+ void qtest_qmp_eventwait(QTestState *s, const char *event);
 
-In any case, I'm going to revert this commit to fix the
-Travis builds; we can have another go at it later.
+@@ -126,7 +126,7 @@ void qtest_qmp_eventwait(QTestState *s, const char *event);
+  * @s: #QTestState instance to operate on.
+  * @s: #event event to wait for.
+  *
+- * Continuosly polls for QMP responses until it receives the desired event.
++ * Continuously polls for QMP responses until it receives the desired event.
+  * Returns a copy of the event for further investigation.
+  */
+ QDict *qtest_qmp_eventwait_ref(QTestState *s, const char *event);
+@@ -571,7 +571,7 @@ static inline QDict *qmp_receive(void)
+  * qmp_eventwait:
+  * @s: #event event to wait for.
+  *
+- * Continuosly polls for QMP responses until it receives the desired event.
++ * Continuously polls for QMP responses until it receives the desired event.
+  */
+ static inline void qmp_eventwait(const char *event)
+ {
+@@ -582,7 +582,7 @@ static inline void qmp_eventwait(const char *event)
+  * qmp_eventwait_ref:
+  * @s: #event event to wait for.
+  *
+- * Continuosly polls for QMP responses until it receives the desired event.
++ * Continuously polls for QMP responses until it receives the desired event.
+  * Returns a copy of the event for further investigation.
+  */
+ static inline QDict *qmp_eventwait_ref(const char *event)
+-- 
+2.13.3
 
-thanks
--- PMM
 
