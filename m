@@ -1,75 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dfRdn-0006A2-4u
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Aug 2017 10:07:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51754)
+	id 1dfRis-00020r-Dh
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Aug 2017 10:12:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54779)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dfRdh-000657-Q5
-	for qemu-trivial@nongnu.org; Wed, 09 Aug 2017 10:07:17 -0400
+	id 1dfRiq-0001zM-Nw
+	for qemu-trivial@nongnu.org; Wed, 09 Aug 2017 10:12:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dfRdg-0005c0-OX
-	for qemu-trivial@nongnu.org; Wed, 09 Aug 2017 10:07:13 -0400
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:33442)
+	id 1dfRil-00020U-Ms
+	for qemu-trivial@nongnu.org; Wed, 09 Aug 2017 10:12:32 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:35088)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dfRdX-0005Uj-Ev; Wed, 09 Aug 2017 10:07:03 -0400
-Received: by mail-qk0-x233.google.com with SMTP id a77so36382241qkb.0;
-	Wed, 09 Aug 2017 07:07:03 -0700 (PDT)
+	id 1dfRil-0001zw-IX; Wed, 09 Aug 2017 10:12:27 -0400
+Received: by mail-qk0-x241.google.com with SMTP id a77so5715463qkb.2;
+	Wed, 09 Aug 2017 07:12:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=JKDf+mBevBTGPNqQsYAFfBR/4w7ohTMoy3k5ejnvVeI=;
-	b=LYTwJHzwqUY9J1JQQlH5FrOcExWaC4WZob50+Xzj1zAOR7HMpXqOW/8rqByw5LJMNY
-	39BwlWm9KjDRXWenBO0BVX7SvzSzNKOFK7pKD+uSAULyeNBjwnjTkdCPUKtluue8flMv
-	32EetrVo8kgxtB2vAE5gktgyZFHatmAyQpfFPeb2ldng8QwfvnWa0kltAh53G93Qy1ej
-	LbZDmmSPk+fhJcEKdskHFXr+Lx7QwdvIklyQileeHX9xCJTYPrNdHNKvKsebo2eAmzEx
-	BysX3mcfTy2zJrZdlUBwKoxFk9W3eT01TxzINkqFp6JbuQMa4jQzYK+Ce8Dfv5fhS6CP
-	0J6Q==
+	bh=zTvVkW3D+1kqM3IPllx6mCukl2qOXdbkv88Xk8uxpTQ=;
+	b=lJxNiaqxAJHX5nieMKM0SDolT2D+hfWC+7E3xv28BBU56OZYhg6q1zjspRPv/eO4Nr
+	4eBHK3S0n/KEKmjGsbvzz0kjzlcSTCxty+qzUZGEjL356Tiygx4QfB9NiiPKQN0+hNAQ
+	8f6qoSNkfhWtSm1wzZ24cxq8QhpavhgNByuEYMTZBQG3KxYZ5MHhd5J/InL3BHwKnG/c
+	WHQprGhdAQ9RJzsD3TS7mn4a439wvCrRJm6TaI2ha4EnWkiZYAjTcvnUSe1OmVNbFsIV
+	LZNr4HRpqEmJ9HVbO6cgUfGSTNnvUuNWg+guIffeZSE7SPyI9kwLUdiZI7YX395gRMkL
+	49Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=JKDf+mBevBTGPNqQsYAFfBR/4w7ohTMoy3k5ejnvVeI=;
-	b=DpccVfWqzZR5RtBAbqDSpbrUCFwDGAPeLybH6tLfb4ppN3qPuHBPep9jwxbbVoRQJB
-	7NW4uq4ez6AVNei9Oilkxpkez2S+1V98MbycvMARsUtDIRwFKaY+kbySi1Su987EjhFs
-	mLub7ICIqX+vfxxiTaYJQb59YJbqsgmS8c85aXLRZ3ptAb18OKaUamij6wzrBHCP1vM6
-	yGNAnAYvjKlX169dqYzGm5rJATZfZp8qu6l1vwmbie82TbvLrl+AGdNRlhbVOdZyPPJU
-	GTdWaemwk8FOH+MQjDAwzFspEZOSgErFFHyvL+fIupHPZBEVdUuqwoRFsa9r4HF8lzEa
-	AeBw==
-X-Gm-Message-State: AHYfb5i+S6SQzyh//j2EXSHlOLy4+VI/whV7bwQotv7oMZ0V4OuHXQEd
-	5GSTWvfvBhCGgQ==
-X-Received: by 10.55.91.70 with SMTP id p67mr9983913qkb.237.1502287622757;
-	Wed, 09 Aug 2017 07:07:02 -0700 (PDT)
+	bh=zTvVkW3D+1kqM3IPllx6mCukl2qOXdbkv88Xk8uxpTQ=;
+	b=tqNDWsyGy+zQPOSxw95MUpzymoWpLpU4ERHViHlaHP4PTAI7wNxP8GGMcca5DVgV26
+	YTcmXVpJNxI/h5DgxNasqmnsVs3dr/GGhlbVpNJOPXDszAHW3X+CbLfHsvGzP6uwR9HP
+	vC6UmEUAPPZiDbM6sre5o9N1V7FH02py1QNJordBy1n7a6SDWzAgdlpiJuhs3hF8930z
+	puLQRafM+s8p6zWjiNGUSEOI/YTKzKNJbeXlcXLabV1C/ciEbbPHSN9fFVcaSB5Cy5BO
+	NEuTYJr8Z8jVBGgY5X1JFMPuAw8mrwOhwRwODWpfaV+U2U/0j537S2H1icAbuVJ+mmkf
+	izQQ==
+X-Gm-Message-State: AHYfb5hHTooJCDo4P8Nn004CG7nsIyI6sZwzspMv3VxD+f3GzIG3+589
+	Skc3MZGLsGUUWJMw/6I=
+X-Received: by 10.55.76.193 with SMTP id z184mr10328559qka.146.1502287946804; 
+	Wed, 09 Aug 2017 07:12:26 -0700 (PDT)
 Received: from [192.168.1.10] ([138.117.48.223])
-	by smtp.gmail.com with ESMTPSA id
-	x49sm2128233qtc.96.2017.08.09.07.07.00
+	by smtp.gmail.com with ESMTPSA id 4sm1924738qkl.56.2017.08.09.07.12.25
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 09 Aug 2017 07:07:02 -0700 (PDT)
+	Wed, 09 Aug 2017 07:12:26 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Richard Henderson <rth@twiddle.net>, Chen Gang <gang.chen.5i5j@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170728053610.15770-1-f4bug@amsat.org>
-	<20170728053610.15770-19-f4bug@amsat.org> <87mv7aumav.fsf@linaro.org>
+	<20170728053610.15770-45-f4bug@amsat.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8e2e3aa5-4459-76ba-3309-af6b30220346@amsat.org>
-Date: Wed, 9 Aug 2017 11:06:59 -0300
+Message-ID: <ff2ef34e-39d2-9048-2ef5-7073b3606271@amsat.org>
+Date: Wed, 9 Aug 2017 11:12:24 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <87mv7aumav.fsf@linaro.org>
+In-Reply-To: <20170728053610.15770-45-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::233
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 18/47] MAINTAINERS: add
- missing TCG entry
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-trivial] [RFC PATCH 44/47] MAINTAINERS: add missing entry
+ for tilegx
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,27 +78,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Aug 2017 14:07:18 -0000
+X-List-Received-Date: Wed, 09 Aug 2017 14:12:33 -0000
 
-On 08/08/2017 12:11 PM, Alex Bennée wrote:
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-[...]>> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 8cb94af6c5..6b83dac812 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -1633,6 +1633,7 @@ Common code
->>   M: Richard Henderson <rth@twiddle.net>
->>   S: Maintained
->>   F: tcg/
->> +F: disas.c
+ping?
+
+I suppose no answer/ping timeout confirms there is no maintainer for 
+"Odd Fixes" so the "Orphan" status is correct.
+
+On 07/28/2017 02:36 AM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   MAINTAINERS | 4 ++++
+>   1 file changed, 4 insertions(+)
 > 
-> Is this really TCG only? Can't the monitor call monitor_disas in any
-> mode?
-
-Indeed, this doesn't seem TCG only.
-
-Do you think there should be another entry in "Block QAPI, monitor, 
-command line"?
-or this file (and related include) rather deserves an own section 
-(possibly tagged Odd Fixes) to unburden Richard?
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 453f5fb3d7..dc1a69051c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -283,6 +283,10 @@ F: hw/tricore/
+>   F: include/hw/tricore/
+>   F: default-configs/tricore-softmmu.mak
+>   
+> +TILE-Gx
+> +S: Orphan
+> +F: target/tilegx/
+> +
+>   Guest CPU Cores (KVM):
+>   ----------------------
+>   
+> 
 
