@@ -1,94 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dfiHB-00054G-BP
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Aug 2017 03:53:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57874)
+	id 1dfj6m-0000vK-IW
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Aug 2017 04:46:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42493)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <chaojianhu@hotmail.com>) id 1dfiH9-000534-74
-	for qemu-trivial@nongnu.org; Thu, 10 Aug 2017 03:53:04 -0400
+	(envelope-from <cohuck@redhat.com>) id 1dfj6j-0000t3-82
+	for qemu-trivial@nongnu.org; Thu, 10 Aug 2017 04:46:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <chaojianhu@hotmail.com>) id 1dfiH8-00041s-6P
-	for qemu-trivial@nongnu.org; Thu, 10 Aug 2017 03:53:03 -0400
-Received: from mail-co1nam05olkn0804.outbound.protection.outlook.com
-	([2a01:111:f400:fe50::804]:45011
-	helo=NAM05-CO1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <chaojianhu@hotmail.com>)
-	id 1dfiH5-0003xZ-FI; Thu, 10 Aug 2017 03:52:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
-	s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
-	bh=K6tvHzLW7fumnTa5OOisXuGsFMHfwI1ruJzXie0n1T4=;
-	b=UFwOXh3GxxNH6S5NFVvm2gx1EmjsubzshBVjWl4vpIxL7d2rH2MiHwHZKvvPIaTF0F6C1kWc8xMoLv3fL2dw/ofqlOhtH8laO9vrZ4dOERLTJ/ZFzoP3O9L5YzOnJoJlqwhdeDIzvaS16NYB4Jf9ochRiHkqmt+03c+wK2HVnG7+8a2KDfRczoUxnXA/vwFFCmZ0vp6BcGCtFOskhFZ0iVyhW4AGLoXnmzSFXBIi55gF1H/PLKaISD1I411W/wc2NaGzvqXs36PRw2AVkN8Ag32rLy/wpdltEygycLAHtVfsOZKXYFh6lyMESUR3elP7qxajqDgxtTmAjvMi22z6Ag==
-Received: from CO1NAM05FT036.eop-nam05.prod.protection.outlook.com
-	(10.152.96.55) by CO1NAM05HT166.eop-nam05.prod.protection.outlook.com
-	(10.152.97.112) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.1304.16;
-	Thu, 10 Aug 2017 07:52:38 +0000
-Received: from DM5PR17MB1451.namprd17.prod.outlook.com (10.152.96.55) by
-	CO1NAM05FT036.mail.protection.outlook.com (10.152.96.149) with
-	Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
-	15.1.1304.16 via Frontend Transport; Thu, 10 Aug 2017 07:52:37 +0000
-Received: from DM5PR17MB1451.namprd17.prod.outlook.com ([10.175.221.139]) by
-	DM5PR17MB1451.namprd17.prod.outlook.com ([10.175.221.139]) with mapi id
-	15.01.1304.027; Thu, 10 Aug 2017 07:52:37 +0000
-From: Hu Chaojian <chaojianhu@hotmail.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, "ppandit@redhat.com"
-	<ppandit@redhat.com>, "jasowang@redhat.com" <jasowang@redhat.com>,
-	"kwolf@redhat.com" <kwolf@redhat.com>, "stefanha@redhat.com"
-	<stefanha@redhat.com>, Hu Chaojian <chaojianhu@hotmail.com>
-Thread-Topic: [PATCH] block/qcow2-snapshot: Fix a null pointer dereference in
-	qcow2_free_snapshots
-Thread-Index: AQHTEa2iaWdYqPpFAEa0RT5UUbUZHA==
-Date: Thu, 10 Aug 2017 07:52:37 +0000
-Message-ID: <DM5PR17MB1451D437FA7145AEBE4688CFDB880@DM5PR17MB1451.namprd17.prod.outlook.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:E5E6494E407611332E746871EF9183C82BE0E89383199A476B5108E4EBEF1630;
-	UpperCasedChecksum:8F9BA6DDECD2ED51A4876FACFBA26AF680756474F0CEA3FAB4368604C3847D4F;
-	SizeAsReceived:7383; Count:44
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tmn: [XWlQAJFRQm4RsfbFMtU28ezV4OL8DYDK]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; CO1NAM05HT166;
-	7:3Ph9efe8xuTZQ64kKhjtSqcXYjLDDbGQpXcReXTgm8Iq0WL84fFaH5ImsQxK7FTANt8ZT/c5U8VjzVvl0z3J3wYb/Av70GswzzciqtiklnaaO1uA/PgK7Y+VggOi/+HsvuNUnOx05WYqsO05+L0ETgxOdOR/FFxYr87nOp+Lj2T8+s7AeLh1Fs6hLCCZOSLB/lwnmjYV4Ya/D9cO89maKrE5aLazPKRYsscZow3BwjTmHkFtCXdxfEVws1JKzsbwFvQRBn49H3csCWs3JvzZyLnsk7jej3Z0ZcbQqdpWv43SU0xe+u49oh6JAe0qedpgePM9oEB6bXT3TVBq4vA/uibr1AW+MRhvSuJJPNIAjwbIYvoAlQLYnl7hqPk2jYY4PI8VPD3Nduxl05MGLNijHTUZp89ahFp785cfVJnXv19bqpvGsuXmeDFzWOtfo16QCBM6baSYh6vQDwz6x9yWS+vtW7rV+a9WIn1aAGqBNl1YvhrD72ygm/9JAIeORoJDOxKwn9vUjyedsuW4nFaiRleWlN2m7s8LOBFGcouqjHMgqRlesxhSrqHfuwOC6ZiCINZI23YFD7lMBWjdM7T8plk+gxJjXqDgXMNALiSVH1fBh4B6s9fNKsNPiLJlvQFtiUWIyF1L5BoN6e1417ov+H1VQ72KBKlAdhCjGIygJWJat1UvfQmV96gTdd2jpEkkiQzZZDEYwRxQDezyhjW6oUzo+9C3llcWEHP73tW61pORGlToAD1xpxkPThsfdLo13uT4EqB8zy9DLil3OPYsAw==
-x-incomingheadercount: 44
-x-eopattributedmessage: 0
-x-forefront-antispam-report: EFV:NLI; SFV:NSPM; SFS:(7070007)(98901004);
-	DIR:OUT; SFP:1901; SCL:1; SRVR:CO1NAM05HT166;
-	H:DM5PR17MB1451.namprd17.prod.outlook.com; FPR:; SPF:None; LANG:;
-x-ms-office365-filtering-correlation-id: 87fdb116-960c-41e2-3fdb-08d4dfc4c44b
-x-microsoft-antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(300000503095)(300135400095)(201702061074)(5061506573)(5061507331)(1603103135)(2017031320274)(2017031324274)(2017031323274)(201702181274)(2017031322377)(1601125374)(1603101448)(1701031045)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);
-	SRVR:CO1NAM05HT166; 
-x-ms-exchange-slblob-mailprops: Zv/SX2iM+5XB1LoHjPpcVYGnEfjZhsy3dW0NfOeEpnWvdVMgC3NoaFCCy3muwebptYRaH50MdYPXYA5/lW4wu2DKN4zcnlYhSug40wnuHbiazLApWtoxilgxtA97pXq3t5da8k62bUSwxbFmarO7YI/NXt7EP3jnZJFHnKSeETQcpjdvEqQ7+QdHAM/oHCu/Nfrr29U3wI5bqjqtHymsptMvocUcmFVnlULkDgJO3aPh3A7/zYX/uED58fS5TCpQGn38x9ffOP3ylV/4L1G/zy0uhnymig40lctrtQV0cSIPJu8LZu7Xcr/uAbUaW2kfzL79lJZP8Y7vD1rRlB8dNMoTHWqBFB/BZpw2KI0zOJP137pZsJ/pIgB28xR4wxUHcDahIxGZ7DSjKuGIu/eY6Z9lH9eekJ8tidkryx6+Zy20G1Sbj+uKO5xOnOPy9bu4UKdrhpnBkVgr6UOQSWqRCUHQXZ6/8t2XTunGWf6vr42fZ1fJVqIlkTg1pHQ+iuZs7kcXCphzOn1d5sBffP6xSJrO3A8OA+HXAdV/8nmJpThcUyKgMfKjOkwAlj16MaFRB+CrV97dw3x3EpUWNWDnQ476xwUhSVE6qiLWpPuk/JcNNIWDEe6V5Mfz+jQjJ/JrtY6Dqzll/7Un4N+Bsf5Fe7nsZ63YLUxgtcarW/4QSGY5Zf1/teeRxb17JlHkyncLaY+Ctcj/Xy4=
-x-ms-traffictypediagnostic: CO1NAM05HT166:
-authentication-results: outbound.protection.outlook.com; spf=skipped
-	(originating message); dkim=none (message not signed) header.d=none;
-	dmarc=none action=none header.from=hotmail.com;
-x-exchange-antispam-report-test: UriScan:(130873036417446)(194151415913766);
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(444000031);
-	SRVR:CO1NAM05HT166; BCL:0; PCL:0;
-	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:CO1NAM05HT166; 
-x-forefront-prvs: 03950F25EC
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <cohuck@redhat.com>) id 1dfj6h-0000yT-LI
+	for qemu-trivial@nongnu.org; Thu, 10 Aug 2017 04:46:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55958)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1dfj6c-0000w7-CX; Thu, 10 Aug 2017 04:46:14 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4DA487E44E;
+	Thu, 10 Aug 2017 08:46:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4DA487E44E
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=cohuck@redhat.com
+Received: from gondolin (ovpn-117-6.ams2.redhat.com [10.36.117.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C38ED7E91A;
+	Thu, 10 Aug 2017 08:46:07 +0000 (UTC)
+Date: Thu, 10 Aug 2017 10:46:04 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Peter Maydell
+	<peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>, Fam Zheng
+	<famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson
+	<rth@twiddle.net>, qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Markus
+	Armbruster <armbru@redhat.com>, "Dr. David Alan Gilbert"
+	<dgilbert@redhat.com>
+Message-ID: <20170810104604.342af354.cohuck@redhat.com>
+In-Reply-To: <3e66742f-04c5-51b7-de3a-f692c0637bc5@amsat.org>
+References: <20170728053610.15770-1-f4bug@amsat.org>
+	<20170728053610.15770-19-f4bug@amsat.org>
+	<87mv7aumav.fsf@linaro.org>
+	<8e2e3aa5-4459-76ba-3309-af6b30220346@amsat.org>
+	<87fud0vmak.fsf@linaro.org>
+	<3e66742f-04c5-51b7-de3a-f692c0637bc5@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Aug 2017 07:52:37.6088 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1NAM05HT166
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 2a01:111:f400:fe50::804
-Subject: [Qemu-trivial] [PATCH] block/qcow2-snapshot: Fix a null pointer
- dereference in qcow2_free_snapshots
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 10 Aug 2017 08:46:13 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 18/47] MAINTAINERS: add
+ missing TCG entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,39 +67,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Aug 2017 07:53:04 -0000
+X-List-Received-Date: Thu, 10 Aug 2017 08:46:23 -0000
 
-From: chaojianhu <chaojianhu@hotmail.com>
+On Wed, 9 Aug 2017 18:30:25 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-In function qcow2_do_open, if "go fail;" before calling qcow2_read_snapshot=
-s, then snapshots=20
-will always be NULL. When dealing with "fail:", qcow2_free_snapshots will b=
-e called, and=20
-s->snapshots will be dereferenced without checked.
+> [I added mails of other person who reply to this series, this mail is=20
+> not directly addressed to Alex]
 
-Reported-by: chaojianhu <chaojianhu@hotmail.com>
-Signed-off-by: chaojianhu <chaojianhu@hotmail.com>
+Hey, a maintainership discussion! I don't think we had one before 8)
 
----
- block/qcow2-snapshot.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/block/qcow2-snapshot.c b/block/qcow2-snapshot.c
-index 44243e0..4a8128c 100644
---- a/block/qcow2-snapshot.c
-+++ b/block/qcow2-snapshot.c
-@@ -35,6 +35,10 @@ void qcow2_free_snapshots(BlockDriverState *bs)
-     BDRVQcow2State *s =3D bs->opaque;
-     int i;
+>=20
+> On 08/09/2017 11:38 AM, Alex Benn=C3=A9e wrote:
+> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes: =20
+> [...]
+> >> Do you think there should be another entry in "Block QAPI, monitor,
+> >> command line"?
+> >> or this file (and related include) rather deserves an own section
+> >> (possibly tagged Odd Fixes) to unburden Richard? =20
+> >=20
+> > Well the default for un-matched files is qemu-devel right? It would be
+> > nice for it to be properly maintained but that requires someone to
+> > step-up to the plate. =20
+>=20
+> I wonder if I'm understanding correctly what the MAINTAINERS file is for=
 =20
-+    if (NULL =3D=3D s->snapshots) {
-+        return;
-+    }
-+
-     for(i =3D 0; i < s->nb_snapshots; i++) {
-         g_free(s->snapshots[i].name);
-         g_free(s->snapshots[i].id_str);
---=20
-1.9.1
+> and how to use it.
+
+The blurb at the start of MAINTAINERS should describe this; I'm
+wondering how much it reflects current reality, though (the 'ownership'
+part).
+
+>=20
+>  From an submitter view I feel a bit confused. I thought=20
+> ./get_maintainer.pl would give me the list of person to email the=20
+> changes I did on some file from the repository. This script seems=20
+> correctly named, I'm looking for some ./get_reviewers.pl instead, to=20
+> know who I'v to keep updated, apart from the ./get_maintainer.pl.
+>=20
+> currently we have:
+> "M: Mail patches to: FullName <address@domain>"
+> Does this imply FullName is a maintainer?
+> If so is it ok I do this change:
+>=20
+> -    M: Mail patches to: FullName <address@domain>
+> +    M: Maintainer: FullName <address@domain>
+> +       These maintainers must be mailed on patches.
+
+This line seems to have originally come from the Linux kernel's
+MAINTAINERS file. But I like your version better.
+
+>       R: Designated reviewer: FullName <address@domain>
+>          These reviewers should be CCed on patches.
+
+I'm wondering whether we need some more detailed descriptions about the
+roles of maintainers and reviewers, i.e.
+- maintainers are responsible for an area; they review and pick up
+  patches; a non-trivial patch merged through someone else needs at
+  least an ack from them
+- reviewers are interested in an area, the entries are mostly there so
+  that they are sure to get cc:ed on patches; while their feedback
+  (like everyone's) is valued, it is not essential to getting a change
+  merged
+
+>=20
+>=20
+> actual default for un-matched: "recent contributors" + qemu-devel@
+>=20
+>    $ ./scripts/get_maintainer.pl -f disas.c
+>    get_maintainer.pl: No maintainers found, printing recent contributors.
+>    get_maintainer.pl: Do not blindly cc: them on patches!  Use common sen=
+se.
+>    Peter Maydell <peter.maydell@linaro.org> (commit_signer:2/3=3D67%)
+>    Richard Henderson <rth@twiddle.net> (commit_signer:1/3=3D33%)
+>    Thomas Huth <thuth@redhat.com> (commit_signer:1/3=3D33%)
+>    Michael Tokarev <mjt@tls.msk.ru> (commit_signer:1/3=3D33%)
+>    Julian Brown <julian@codesourcery.com> (commit_signer:1/3=3D33%)
+>    qemu-devel@nongnu.org (open list:All patches CC here)
+>=20
+> I find the un-matched "recent contributors" list often confuse, due to=20
+> files being moved, header updated, checkpatch indented.
+> Most of the time you get the list of queue maintainers since they accept=
+=20
+> patches and sign-of the pull request.
+>=20
+> Having to use 'git log --follow' and 'git blame' to figure out is not=20
+> bad, to be aware of who modified this file before you, but there are=20
+> some files I already hit 3 times in different series, and wondered about=
+=20
+> how avoid those manual steps.
+>=20
+> Anyway I now understand these recent contributors are not maintainers=20
+> but no-designated reviewers, unwilling to be maintainers (else they'd=20
+> have added a section/entry by themselves).
+
+The root problem is "some files have no maintainers". The reasons range
+from "forgot to include the file in the pattern" (easily fixed), over
+"file is updated via a script" (the linux-headers case), to "nobody
+feels up to the task" (which is the worst case).
+
+In most cases, I don't think the recent contributors list is very
+helpful. Somebody who simply did a tree-wide rename is unlikely to be
+able to make a good judgment about a complicated logic change. Just
+printing qemu-devel as the address to send this to is probably better;
+unfortunately, it may cause patches to languish on the list if nobody
+takes pity on them.
+
+Do we need someone collecting non-trivial patches like that, who either
+pesters others or picks up the patches themselves?
+
+>=20
+> I also understand why Fam said it sounds weird to add an new section as=20
+> "Orphan".
+>=20
+> For the linux-headers case, if people want to be notified of changes the=
+=20
+> easiest seems to modify the update-linux-headers.sh script.
+
+The approach I like the most for this is to add a pattern that covers
+both the script and the directories updated by it. If someone
+explicitly wants notifications for header changes that are used by
+their code, they can add it to their files as well, but I don't think
+that should be the default.
+
+>=20
+> I'll review the whole series thinking differently and resend when 2.11=20
+> opens.
+>=20
+> Regards,
+>=20
+> Phil.
 
 
