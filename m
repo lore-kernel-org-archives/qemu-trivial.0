@@ -1,55 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dhDvd-00054a-9z
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2017 07:53:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34471)
+	id 1dhDyn-0006HN-5Q
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2017 07:56:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dhDvb-00053R-7h
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:53:04 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dhDyk-0006Ge-Tv
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:56:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dhDva-0005i6-Ep
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:53:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50176)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dhDvV-0005g7-Uj; Mon, 14 Aug 2017 07:52:58 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 888076407E;
-	Mon, 14 Aug 2017 11:52:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 888076407E
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.101] (ovpn-116-101.ams2.redhat.com [10.36.116.101])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F2E07FCC6;
-	Mon, 14 Aug 2017 11:52:54 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	KONRAD Frederic <fred.konrad@greensocs.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1dhDyk-0008FD-7U
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:56:19 -0400
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:37299)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dhDyj-0008EB-WC
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:56:18 -0400
+Received: by mail-wm0-x22d.google.com with SMTP id i66so41847315wmg.0
+	for <qemu-trivial@nongnu.org>; Mon, 14 Aug 2017 04:56:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=iwo7RivoM91dR4m/WhdL8/qYcfSaCNn9Eefia5vS42s=;
+	b=Aie74NM/VxiABOFRqv03/tgLlDlQoSGQxrGkdRe+2XhNfqAy7tl1GCjr6Z8fMyckMJ
+	eiMDL0ZRH3WmCp27xvSgZ46UXLAGGfoKvAMuRi19BEbg2CwB0qA5gONtNjdy5FF/Inyl
+	d+azcwRO02rrxsGi67L0sHSika/oC8Do8Hcr0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=iwo7RivoM91dR4m/WhdL8/qYcfSaCNn9Eefia5vS42s=;
+	b=DOh8SFNt9AVh5uKT+99yjy5IvEtBZVnhRr+Taar7bJrCvYFMO1HwTQQDPBfbhA4V7m
+	sQgtcOvDd53RLLCdvVA5z6HcMaegr0PxHJ0nYDjND/aXvFGpGa+x0Kcjgqgcut7HiWym
+	hWHAg/wZLXnzyCvQzcK4A9z50E+W1eszWCmIEnCAs29JBdtSFUIC9S4GO89tCCUqzmgu
+	uWjBBzsphWxjOI5DAUYVaF7E+4k8ZWrzzjAD+tWJdY0Q2UNk53wFIbMOVF5t/oV9DJAP
+	lUYUMvmAX0J1EtGmMke1sl4tblQF2zQnk3Af4e62oWlk7cRr5hrDiAoMpzUdFdjDunrP
+	ZziA==
+X-Gm-Message-State: AHYfb5iTejXrHoHtuB48MncCuXC5V4nz0KFgBxCh8oPG2tdflkgKLXA2
+	TAqJjSX6yzeOYinelnhRhv9fVOn38hIt
+X-Received: by 10.28.175.8 with SMTP id y8mr3608738wme.42.1502711776721; Mon,
+	14 Aug 2017 04:56:16 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.54 with HTTP; Mon, 14 Aug 2017 04:55:56 -0700 (PDT)
+In-Reply-To: <ff54b90d-9912-ce03-31cf-9fd08571eab2@redhat.com>
 References: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
 	<a808c0865b720e22ca2929ec3d362d4610fbad51.1502708830.git.mjt@msgid.tls.msk.ru>
 	<CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <ff54b90d-9912-ce03-31cf-9fd08571eab2@redhat.com>
-Date: Mon, 14 Aug 2017 13:52:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 14 Aug 2017 11:52:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+	<ff54b90d-9912-ce03-31cf-9fd08571eab2@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Aug 2017 12:55:56 +0100
+Message-ID: <CAFEAcA_Fr3U5n+pBqfDk1J9GeaLREU1ttgKvMmmawMF+W1Fi+A@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	KONRAD Frederic <fred.konrad@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22d
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 7/7] hw/misc/mmio_interface:
  Return after error_setg() to avoid crash
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,32 +67,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Aug 2017 11:53:04 -0000
+X-List-Received-Date: Mon, 14 Aug 2017 11:56:19 -0000
 
-On 14.08.2017 13:45, Peter Maydell wrote:
-> On 14 August 2017 at 12:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
->> From: Thomas Huth <thuth@redhat.com>
->>
->> QEMU currently abort()s if the user tries to specify the mmio_interface
->> device without parameters:
->>
->> x86_64-softmmu/qemu-system-x86_64 -nographic -device mmio_interface
->> qemu-system-x86_64: /home/thuth/devel/qemu/util/error.c:57: error_setv:
->>  Assertion `*errp == ((void *)0)' failed.
->> Aborted (core dumped)
->>
->> This happens because the realize function is trying to set the errp
->> twice in this case. After setting an error, the realize function
->> should immediately return instead.
-> 
-> It seems like it should be an error to permit this to be
-> created from the command line at all
-That's also what thought first ... but the commit message of commit
-7cc2298c46a6afa4f4ff7e5cd262809c782d701b says that it "can be
-hotplugged/hotunplugged" ? ... that's confusing ...
+On 14 August 2017 at 12:52, Thomas Huth <thuth@redhat.com> wrote:
+> On 14.08.2017 13:45, Peter Maydell wrote:
+>> It seems like it should be an error to permit this to be
+>> created from the command line at all
 
-Frederic, I think some more comments in the header of the file would be
-really useful here.
+> That's also what thought first ... but the commit message of commit
+> 7cc2298c46a6afa4f4ff7e5cd262809c782d701b says that it "can be
+> hotplugged/hotunplugged" ? ... that's confusing ...
 
- Thomas
+It means that memory.c creates and deletes instances of the
+device on demand, not that it's hotplugged in the "controlled by
+the user simulating PCI or other hotplug" sense.
+
+thanks
+-- PMM
 
