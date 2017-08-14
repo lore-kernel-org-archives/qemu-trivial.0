@@ -1,41 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dhDJM-0007gv-KW
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2017 07:13:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53786)
+	id 1dhDoT-0002Yq-DI
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2017 07:45:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dhDJG-0007YK-DT
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:13:29 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dhDoQ-0002X3-O0
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:45:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dhDJF-0007a9-Fc
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:13:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57367)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dhDJD-0007YP-6B; Mon, 14 Aug 2017 07:13:23 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 9ADF840D22;
-	Mon, 14 Aug 2017 14:13:22 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B41B3B78;
-	Mon, 14 Aug 2017 14:07:44 +0300 (MSK)
-Received: (nullmailer pid 31405 invoked by uid 1000);
-	Mon, 14 Aug 2017 11:07:46 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Cleber Rosa <crosa@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 14 Aug 2017 14:07:41 +0300
-Message-Id: <657c572afe8dae393f2321db8866c02b4bf7bc77.1502708830.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <peter.maydell@linaro.org>) id 1dhDoP-0000Xd-VX
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:45:38 -0400
+Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:33566)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dhDoP-0000Vs-OW
+	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 07:45:37 -0400
+Received: by mail-wr0-x231.google.com with SMTP id b65so8963408wrd.0
+	for <qemu-trivial@nongnu.org>; Mon, 14 Aug 2017 04:45:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ePelPL14IZHmMpZOEH2Pc90kgn5Vf2VK6fci86aBkJI=;
+	b=byR2Ka8QS96JvijaVO9Wikag3A5+d17WxPyvW86G0JRl2xDSTRRY1Ani0NU6VdSXLk
+	cYCOSbI8y/qCVGiKvvNMQ9JFYsdjmtSOCvmE+hkwsbIcnaE942cLOivn90xDBO/7XwoD
+	8v5i4s1LO2m0x2yBJjaYgqaGPqwz7+JHH02l8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ePelPL14IZHmMpZOEH2Pc90kgn5Vf2VK6fci86aBkJI=;
+	b=Tlw6uuZfO1TuzoTR8dhtY8Qxcsni6Kt81MGkEmBV0CtM9+ym45yLbNLe1uijyeUJAd
+	1Vw84f/brmnbepc7sQOf8HH8kZzWBEmgEMaUWqf+KnMW8ZnDgfOH8xvtlYRJ94m+0LAW
+	C5sMkfdvSSj1qdxqyViIOBxBS7j6TaywFHjI4rZ33ITwBEmvTg42aeJ/pLPWB8FC7blb
+	8miOUq37mR9aX4F5NRie8uX9kJMhO/XNcysA/cve8CHQG/tNbUsOlG3ZiK408WAq5+pI
+	bC+KL97HzaWvckUXDs4BK7QAxq9u9/cuKD81Rxr0Dqh8f2wQCkA3GHNErzkzXsSGV+Dm
+	MGMA==
+X-Gm-Message-State: AHYfb5h1AFf0mrLjR5UXXiJxi+xRkbSSD1Wi9rBFoNxlXD6SLHTx3YEI
+	dmpDor+B8DdpY6BIbSqdOhe8YDX60sDx
+X-Received: by 10.223.165.138 with SMTP id g10mr15012847wrc.167.1502711136719; 
+	Mon, 14 Aug 2017 04:45:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.134.54 with HTTP; Mon, 14 Aug 2017 04:45:16 -0700 (PDT)
+In-Reply-To: <a808c0865b720e22ca2929ec3d362d4610fbad51.1502708830.git.mjt@msgid.tls.msk.ru>
 References: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
-References: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 4/7] qemu-iotests: get rid of
- _full_imgproto_details()
+	<a808c0865b720e22ca2929ec3d362d4610fbad51.1502708830.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Aug 2017 12:45:16 +0100
+Message-ID: <CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::231
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 7/7] hw/misc/mmio_interface:
+ Return after error_setg() to avoid crash
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,60 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Aug 2017 11:13:29 -0000
+X-List-Received-Date: Mon, 14 Aug 2017 11:45:39 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+On 14 August 2017 at 12:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> From: Thomas Huth <thuth@redhat.com>
+>
+> QEMU currently abort()s if the user tries to specify the mmio_interface
+> device without parameters:
+>
+> x86_64-softmmu/qemu-system-x86_64 -nographic -device mmio_interface
+> qemu-system-x86_64: /home/thuth/devel/qemu/util/error.c:57: error_setv:
+>  Assertion `*errp == ((void *)0)' failed.
+> Aborted (core dumped)
+>
+> This happens because the realize function is trying to set the errp
+> twice in this case. After setting an error, the realize function
+> should immediately return instead.
 
-Although this function is used, its implementation does nothing
-besides echoing a variable name.  There's no need to wrap this
-functionality in a function, and based on the one usage it has, it's
-not even required to adhere to a convention or code style.
+It seems like it should be an error to permit this to be
+created from the command line at all -- the device is intended
+only as an internal implementation detail of the memory system,
+and it has a PROP_PTR property which can't be sensibly set
+from the command line.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- tests/qemu-iotests/check     | 3 +--
- tests/qemu-iotests/common.rc | 5 -----
- 2 files changed, 1 insertion(+), 7 deletions(-)
+This patch is a correct fix for an immediate problem, but we should disable
+using this via -device somehow.
 
-diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
-index 2a55ec9ada..7a2e0d0119 100755
---- a/tests/qemu-iotests/check
-+++ b/tests/qemu-iotests/check
-@@ -228,7 +228,6 @@ rm -f check.full
- [ -f $TIMESTAMP_FILE ] || touch $TIMESTAMP_FILE
- 
- FULL_IMGFMT_DETAILS=`_full_imgfmt_details`
--FULL_IMGPROTO_DETAILS=`_full_imgproto_details`
- FULL_HOST_DETAILS=`_full_platform_details`
- #FULL_MKFS_OPTIONS=`_scratch_mkfs_options`
- #FULL_MOUNT_OPTIONS=`_scratch_mount_options`
-@@ -239,7 +238,7 @@ QEMU_IMG      -- "$QEMU_IMG_PROG" $QEMU_IMG_OPTIONS
- QEMU_IO       -- "$QEMU_IO_PROG" $QEMU_IO_OPTIONS
- QEMU_NBD      -- "$QEMU_NBD_PROG" $QEMU_NBD_OPTIONS
- IMGFMT        -- $FULL_IMGFMT_DETAILS
--IMGPROTO      -- $FULL_IMGPROTO_DETAILS
-+IMGPROTO      -- $IMGPROTO
- PLATFORM      -- $FULL_HOST_DETAILS
- TEST_DIR      -- $TEST_DIR
- SOCKET_SCM_HELPER -- $SOCKET_SCM_HELPER
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index bfbc80e5f6..8d486dbeb4 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -482,11 +482,6 @@ _full_imgfmt_details()
-     fi
- }
- 
--_full_imgproto_details()
--{
--    echo "$IMGPROTO"
--}
--
- _full_platform_details()
- {
-     os=`uname -s`
--- 
-2.11.0
-
+thanks
+-- PMM
 
