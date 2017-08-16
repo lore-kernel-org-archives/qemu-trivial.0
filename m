@@ -1,54 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dhFA2-0008MF-QP
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2017 09:12:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54505)
+	id 1dhxtO-0007q5-Us
+	for mharc-qemu-trivial@gnu.org; Wed, 16 Aug 2017 08:57:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43517)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dhFA0-0008JO-LI
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 09:12:01 -0400
+	(envelope-from <sw@weilnetz.de>) id 1dhxtL-0007nu-TQ
+	for qemu-trivial@nongnu.org; Wed, 16 Aug 2017 08:57:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1dhF9z-0002Ki-My
-	for qemu-trivial@nongnu.org; Mon, 14 Aug 2017 09:12:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46444)
+	(envelope-from <sw@weilnetz.de>) id 1dhxtL-0005Pa-8s
+	for qemu-trivial@nongnu.org; Wed, 16 Aug 2017 08:57:48 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:42958
+	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1dhF9v-0002ID-49; Mon, 14 Aug 2017 09:11:55 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1dhxtD-0005MF-VC; Wed, 16 Aug 2017 08:57:40 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 57364DA5986;
+	Wed, 16 Aug 2017 14:57:38 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id 4xcPy9O1wh3g; Wed, 16 Aug 2017 14:57:37 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (x590feeed.dyn.telefonica.de
+	[89.15.238.237])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 031A2554D5;
-	Mon, 14 Aug 2017 13:11:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 031A2554D5
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=imammedo@redhat.com
-Received: from nial.brq.redhat.com (ovpn-116-93.ams2.redhat.com [10.36.116.93])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 607FD61344;
-	Mon, 14 Aug 2017 13:11:52 +0000 (UTC)
-Date: Mon, 14 Aug 2017 15:11:50 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, QEMU Trivial
-	<qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>, QEMU Developers
-	<qemu-devel@nongnu.org>
-Message-ID: <20170814151150.415977c9@nial.brq.redhat.com>
-In-Reply-To: <CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
-References: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
-	<a808c0865b720e22ca2929ec3d362d4610fbad51.1502708830.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 38970DA53E8; 
+	Wed, 16 Aug 2017 14:57:37 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu-devel@nongnu.org
+References: <20170328184959.5550-1-sw@weilnetz.de>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <6a5b9248-312c-cb66-c189-9a3e1651013a@weilnetz.de>
+Date: Wed, 16 Aug 2017 14:57:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20170328184959.5550-1-sw@weilnetz.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: de-DE
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 14 Aug 2017 13:11:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 7/7] hw/misc/mmio_interface:
- Return after error_setg() to avoid crash
+X-Received-From: 37.120.169.71
+Subject: Re: [Qemu-trivial] [PATCH for-2.9?] configure: Remove unused code
+ (found by shellcheck)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,41 +57,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Aug 2017 13:12:01 -0000
+X-List-Received-Date: Wed, 16 Aug 2017 12:57:49 -0000
 
-On Mon, 14 Aug 2017 12:45:16 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+It looks like this patch got lost somehow.
 
-> On 14 August 2017 at 12:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> > From: Thomas Huth <thuth@redhat.com>
-> >
-> > QEMU currently abort()s if the user tries to specify the mmio_interface
-> > device without parameters:
-> >
-> > x86_64-softmmu/qemu-system-x86_64 -nographic -device mmio_interface
-> > qemu-system-x86_64: /home/thuth/devel/qemu/util/error.c:57: error_setv:
-> >  Assertion `*errp == ((void *)0)' failed.
-> > Aborted (core dumped)
-> >
-> > This happens because the realize function is trying to set the errp
-> > twice in this case. After setting an error, the realize function
-> > should immediately return instead.  
+Stefan
+
+See also https://patchwork.codeaurora.org/patch/210129/
+
+
+Am 28.03.2017 um 20:49 schrieb Stefan Weil:
+> smartcard_cflags is no longer needed since commit
+> 0b22ef0f57a8910d849602bef0940edcd0553d2c.
 > 
-> It seems like it should be an error to permit this to be
-> created from the command line at all -- the device is intended
-> only as an internal implementation detail of the memory system,
-> and it has a PROP_PTR property which can't be sensibly set
-> from the command line.
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
 > 
-> This patch is a correct fix for an immediate problem, but we should disable
-> using this via -device somehow.
-
-Setting DeviceClass::user_creatable to false should prevent creating device
-with device_add interface. See: qdev_get_device_class()
-
+> This is a very old patch which I just found in my patch queue.
+> It's not mandatory for 2.9, but I also think that there is
+> no risk to apply it.
 > 
-> thanks
-> -- PMM
+> Sorry for sending it so late.
+> 
+> Regards
+> Stefan
+> 
+>  configure | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index d1ce33bc79..b65ea2931c 100755
+> --- a/configure
+> +++ b/configure
+> @@ -4096,7 +4096,6 @@ EOF
+>  fi
+>  
+>  # check for smartcard support
+> -smartcard_cflags=""
+>  if test "$smartcard" != "no"; then
+>      if $pkg_config libcacard; then
+>          libcacard_cflags=$($pkg_config --cflags libcacard)
 > 
 
 
