@@ -1,55 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1diL2l-0004KS-An
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Aug 2017 09:41:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36245)
+	id 1djp4t-00054O-Pv
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Aug 2017 11:57:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60776)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1diK6h-00068b-4P
-	for qemu-trivial@nongnu.org; Thu, 17 Aug 2017 08:41:04 -0400
+	(envelope-from <otubo@redhat.com>) id 1djp4r-00052h-QF
+	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 11:57:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1diK6e-0008Fb-H2
-	for qemu-trivial@nongnu.org; Thu, 17 Aug 2017 08:41:03 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:44613
-	helo=smtp.eu.adacore.com)
+	(envelope-from <otubo@redhat.com>) id 1djp4r-0005Bp-1C
+	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 11:57:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60762)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
-	id 1diK6e-0008FC-Bv
-	for qemu-trivial@nongnu.org; Thu, 17 Aug 2017 08:41:00 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 49E4A82415;
-	Thu, 17 Aug 2017 14:40:57 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bTalnXPv7W4N; Thu, 17 Aug 2017 14:40:57 +0200 (CEST)
-Received: from localhost.localdomain (unknown
-	[IPv6:2a01:e35:87f0:3180:2b18:7e65:c33:7f62])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Exim 4.71) (envelope-from <otubo@redhat.com>)
+	id 1djp4l-000590-RH; Mon, 21 Aug 2017 11:57:15 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id B2D9F823B2;
-	Thu, 17 Aug 2017 14:40:55 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <cover.1502708830.git.mjt@msgid.tls.msk.ru>
-	<a808c0865b720e22ca2929ec3d362d4610fbad51.1502708830.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA-Jac8wFzQ9vRyKjcEwDKYBdXysNyDP7ERFfXFhVcF56w@mail.gmail.com>
-	<ff54b90d-9912-ce03-31cf-9fd08571eab2@redhat.com>
-	<CAFEAcA_Fr3U5n+pBqfDk1J9GeaLREU1ttgKvMmmawMF+W1Fi+A@mail.gmail.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <d2f92c3e-34ee-9a38-96b8-623fbc316e61@adacore.com>
-Date: Thu, 17 Aug 2017 14:40:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Fr3U5n+pBqfDk1J9GeaLREU1ttgKvMmmawMF+W1Fi+A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.98.77.210
-X-Mailman-Approved-At: Thu, 17 Aug 2017 09:41:01 -0400
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 7/7] hw/misc/mmio_interface:
- Return after error_setg() to avoid crash
+	by mx1.redhat.com (Postfix) with ESMTPS id 26B31356E3;
+	Mon, 21 Aug 2017 15:50:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 26B31356E3
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=otubo@redhat.com
+Received: from vader.redhat.com (ovpn-117-175.ams2.redhat.com [10.36.117.175])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2A85177BED;
+	Mon, 21 Aug 2017 15:50:06 +0000 (UTC)
+From: Eduardo Otubo <otubo@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, zhangchen.fnst@cn.fujitsu.com,
+	lizhijian@cn.fujitsu.com, mjt@tls.msk.ru
+Date: Mon, 21 Aug 2017 17:50:05 +0200
+Message-Id: <20170821155005.16885-1-otubo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 21 Aug 2017 15:50:09 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] filter-mirror: segfault when specifying non
+ existent device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,34 +52,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Aug 2017 12:41:04 -0000
+X-List-Received-Date: Mon, 21 Aug 2017 15:57:22 -0000
 
+When using filter-mirror like the example below where the interface
+'ndev0' does not exist on the host, QEMU crashes into segmentation
+fault.
 
+ $ qemu-system-x86_64 -S -machine pc -netdev user,id=ndev0 -object filter-mirror,id=test-object,netdev=ndev0
 
-On 08/14/2017 01:55 PM, Peter Maydell wrote:
-> On 14 August 2017 at 12:52, Thomas Huth <thuth@redhat.com> wrote:
->> On 14.08.2017 13:45, Peter Maydell wrote:
->>> It seems like it should be an error to permit this to be
->>> created from the command line at all
-> 
->> That's also what thought first ... but the commit message of commit
->> 7cc2298c46a6afa4f4ff7e5cd262809c782d701b says that it "can be
->> hotplugged/hotunplugged" ? ... that's confusing ...
-> 
-> It means that memory.c creates and deletes instances of the
-> device on demand, not that it's hotplugged in the "controlled by
-> the user simulating PCI or other hotplug" sense.
-> 
-> thanks
-> -- PMM
-> 
+This happens because the function filter_mirror_setup() does not checks
+if the device actually exists and still keep on processing calling
+qemu_chr_find(). This patch fixes this issue.
 
-Sorry, missed that I changed my email address recently.
-I'll add some docs and fix the things we mentioned for 2.11.
+Signed-off-by: Eduardo Otubo <otubo@redhat.com>
+---
+ net/filter-mirror.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-For the context:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg446748.html
+diff --git a/net/filter-mirror.c b/net/filter-mirror.c
+index 90e2c92337..e18a4b16a0 100644
+--- a/net/filter-mirror.c
++++ b/net/filter-mirror.c
+@@ -213,14 +213,22 @@ static void filter_mirror_setup(NetFilterState *nf, Error **errp)
+     MirrorState *s = FILTER_MIRROR(nf);
+     Chardev *chr;
+ 
++    if (s->outdev == NULL) {
++        goto err;
++    }
++
+     chr = qemu_chr_find(s->outdev);
++
+     if (chr == NULL) {
+-        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
+-                  "Device '%s' not found", s->outdev);
+-        return;
++        goto err;
+     }
+ 
+     qemu_chr_fe_init(&s->chr_out, chr, errp);
++
++err:
++    error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND, "Device '%s' not found",
++              nf->netdev_id);
++    return;
+ }
+ 
+ static void redirector_rs_finalize(SocketReadState *rs)
+-- 
+2.13.5
 
-Thanks,
-Fred
 
