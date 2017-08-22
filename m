@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1djp4t-00054O-Pv
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Aug 2017 11:57:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60776)
+	id 1djxp5-0002Wo-8n
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Aug 2017 21:17:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1djp4r-00052h-QF
-	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 11:57:22 -0400
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1djxp2-0002V4-H4
+	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 21:17:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1djp4r-0005Bp-1C
-	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 11:57:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60762)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <otubo@redhat.com>)
-	id 1djp4l-000590-RH; Mon, 21 Aug 2017 11:57:15 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 26B31356E3;
-	Mon, 21 Aug 2017 15:50:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 26B31356E3
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=otubo@redhat.com
-Received: from vader.redhat.com (ovpn-117-175.ams2.redhat.com [10.36.117.175])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2A85177BED;
-	Mon, 21 Aug 2017 15:50:06 +0000 (UTC)
-From: Eduardo Otubo <otubo@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, zhangchen.fnst@cn.fujitsu.com,
-	lizhijian@cn.fujitsu.com, mjt@tls.msk.ru
-Date: Mon, 21 Aug 2017 17:50:05 +0200
-Message-Id: <20170821155005.16885-1-otubo@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 21 Aug 2017 15:50:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] filter-mirror: segfault when specifying non
- existent device
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>) id 1djxp1-0000LK-J1
+	for qemu-trivial@nongnu.org; Mon, 21 Aug 2017 21:17:36 -0400
+Received: from mail.cn.fujitsu.com ([183.91.158.132]:62964
+	helo=heian.cn.fujitsu.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhangchen.fnst@cn.fujitsu.com>)
+	id 1djxox-0000J5-Gz; Mon, 21 Aug 2017 21:17:31 -0400
+X-IronPort-AV: E=Sophos;i="5.41,410,1498492800"; d="scan'208";a="24311814"
+Received: from localhost (HELO cn.fujitsu.com) ([10.167.33.5])
+	by heian.cn.fujitsu.com with ESMTP; 22 Aug 2017 09:17:26 +0800
+Received: from G08CNEXCHPEKD02.g08.fujitsu.local (unknown [10.167.33.83])
+	by cn.fujitsu.com (Postfix) with ESMTP id 8277747243AB;
+	Tue, 22 Aug 2017 09:17:24 +0800 (CST)
+Received: from [10.167.226.56] (10.167.226.56) by
+	G08CNEXCHPEKD02.g08.fujitsu.local (10.167.33.89) with Microsoft SMTP
+	Server (TLS) id 14.3.319.2; Tue, 22 Aug 2017 09:17:21 +0800
+CC: <zhangchen.fnst@cn.fujitsu.com>, <qemu-devel@nongnu.org>,
+	<lizhijian@cn.fujitsu.com>, <mjt@tls.msk.ru>
+To: Eduardo Otubo <otubo@redhat.com>, <qemu-trivial@nongnu.org>
+References: <20170821155005.16885-1-otubo@redhat.com>
+From: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <45e8e004-5a55-07a3-190b-c01106af5de4@cn.fujitsu.com>
+Date: Tue, 22 Aug 2017 09:19:20 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
+MIME-Version: 1.0
+In-Reply-To: <20170821155005.16885-1-otubo@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [10.167.226.56]
+X-yoursite-MailScanner-ID: 8277747243AB.A6CA9
+X-yoursite-MailScanner: Found to be clean
+X-yoursite-MailScanner-From: zhangchen.fnst@cn.fujitsu.com
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 183.91.158.132
+Subject: Re: [Qemu-trivial] [PATCH] filter-mirror: segfault when specifying
+ non existent device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,54 +55,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Aug 2017 15:57:22 -0000
+X-List-Received-Date: Tue, 22 Aug 2017 01:17:37 -0000
 
-When using filter-mirror like the example below where the interface
-'ndev0' does not exist on the host, QEMU crashes into segmentation
-fault.
 
- $ qemu-system-x86_64 -S -machine pc -netdev user,id=ndev0 -object filter-mirror,id=test-object,netdev=ndev0
 
-This happens because the function filter_mirror_setup() does not checks
-if the device actually exists and still keep on processing calling
-qemu_chr_find(). This patch fixes this issue.
+On 08/21/2017 11:50 PM, Eduardo Otubo wrote:
+> When using filter-mirror like the example below where the interface
+> 'ndev0' does not exist on the host, QEMU crashes into segmentation
+> fault.
+>
+>   $ qemu-system-x86_64 -S -machine pc -netdev user,id=ndev0 -object filter-mirror,id=test-object,netdev=ndev0
+>
+> This happens because the function filter_mirror_setup() does not checks
+> if the device actually exists and still keep on processing calling
+> qemu_chr_find(). This patch fixes this issue.
+>
+> Signed-off-by: Eduardo Otubo <otubo@redhat.com>
 
-Signed-off-by: Eduardo Otubo <otubo@redhat.com>
----
- net/filter-mirror.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+Looks good for me.
 
-diff --git a/net/filter-mirror.c b/net/filter-mirror.c
-index 90e2c92337..e18a4b16a0 100644
---- a/net/filter-mirror.c
-+++ b/net/filter-mirror.c
-@@ -213,14 +213,22 @@ static void filter_mirror_setup(NetFilterState *nf, Error **errp)
-     MirrorState *s = FILTER_MIRROR(nf);
-     Chardev *chr;
- 
-+    if (s->outdev == NULL) {
-+        goto err;
-+    }
-+
-     chr = qemu_chr_find(s->outdev);
-+
-     if (chr == NULL) {
--        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
--                  "Device '%s' not found", s->outdev);
--        return;
-+        goto err;
-     }
- 
-     qemu_chr_fe_init(&s->chr_out, chr, errp);
-+
-+err:
-+    error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND, "Device '%s' not found",
-+              nf->netdev_id);
-+    return;
- }
- 
- static void redirector_rs_finalize(SocketReadState *rs)
+Reviewed-by: Zhang Chen<zhangchen.fnst@cn.fujitsu.com>
+
+Thanks
+Zhang Chen
+
+> ---
+>   net/filter-mirror.c | 14 +++++++++++---
+>   1 file changed, 11 insertions(+), 3 deletions(-)
+>
+> diff --git a/net/filter-mirror.c b/net/filter-mirror.c
+> index 90e2c92337..e18a4b16a0 100644
+> --- a/net/filter-mirror.c
+> +++ b/net/filter-mirror.c
+> @@ -213,14 +213,22 @@ static void filter_mirror_setup(NetFilterState *nf, Error **errp)
+>       MirrorState *s = FILTER_MIRROR(nf);
+>       Chardev *chr;
+>   
+> +    if (s->outdev == NULL) {
+> +        goto err;
+> +    }
+> +
+>       chr = qemu_chr_find(s->outdev);
+> +
+>       if (chr == NULL) {
+> -        error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
+> -                  "Device '%s' not found", s->outdev);
+> -        return;
+> +        goto err;
+>       }
+>   
+>       qemu_chr_fe_init(&s->chr_out, chr, errp);
+> +
+> +err:
+> +    error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND, "Device '%s' not found",
+> +              nf->netdev_id);
+> +    return;
+>   }
+>   
+>   static void redirector_rs_finalize(SocketReadState *rs)
+
 -- 
-2.13.5
+Thanks
+Zhang Chen
+
+
 
 
