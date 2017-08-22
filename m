@@ -1,59 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dkBKm-0004JO-1z
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Aug 2017 11:43:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35697)
+	id 1dkDiW-0004cg-Bs
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Aug 2017 14:15:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkBKi-0004GK-Rw
-	for qemu-trivial@nongnu.org; Tue, 22 Aug 2017 11:43:13 -0400
+	(envelope-from <frederic.konrad@adacore.com>) id 1dkDiT-0004Zs-Gu
+	for qemu-trivial@nongnu.org; Tue, 22 Aug 2017 14:15:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkBKh-0003OK-Tk
-	for qemu-trivial@nongnu.org; Tue, 22 Aug 2017 11:43:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34886)
+	(envelope-from <frederic.konrad@adacore.com>) id 1dkDiS-0005iC-0i
+	for qemu-trivial@nongnu.org; Tue, 22 Aug 2017 14:15:52 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:49198
+	helo=smtp.eu.adacore.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dkBKb-0003Iu-0e; Tue, 22 Aug 2017 11:43:05 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
+	id 1dkDiK-0005NE-Hz; Tue, 22 Aug 2017 14:15:44 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 3496D82422;
+	Tue, 22 Aug 2017 20:15:43 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ULt-5F_Qv4_9; Tue, 22 Aug 2017 20:15:43 +0200 (CEST)
+Received: from localhost.localdomain (182667ea.cst.lightpath.net
+	[24.38.103.234])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AD3D368C2;
-	Tue, 22 Aug 2017 15:43:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AD3D368C2
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.21] (ovpn-116-21.ams2.redhat.com [10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D2B85C6DC;
-	Tue, 22 Aug 2017 15:43:01 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Markus Armbruster
-	<armbru@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 1B3C6822CE;
+	Tue, 22 Aug 2017 20:15:42 +0200 (CEST)
+To: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	Alistair Francis <alistair.francis@xilinx.com>, qemu-trivial@nongnu.org
 References: <1503414375-21009-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA-92Jjz2uCC387oX2u0NWfijPwB_8zGaagC1m=sKD8zhQ@mail.gmail.com>
-	<443135b4-4b36-bae6-b50a-12fb4a55a858@redhat.com>
-	<CAFEAcA-AG5XoOJr3p_UU9dACjawp3OtKDy8GMRMpdFfE8foqTA@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <06c16109-cdd2-0732-176d-6ec80b1f7f4e@redhat.com>
-Date: Tue, 22 Aug 2017 17:42:59 +0200
+From: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-ID: <27da1dae-1e2f-559a-d8f0-c7e15289363e@adacore.com>
+Date: Tue, 22 Aug 2017 20:15:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.0
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-AG5XoOJr3p_UU9dACjawp3OtKDy8GMRMpdFfE8foqTA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1503414375-21009-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 22 Aug 2017 15:43:03 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 194.98.77.210
 Subject: Re: [Qemu-trivial] [PATCH] hw/misc/auxbus.c: Mark the
  aux-to-i2c-bridge device as non-hotpluggable
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,49 +56,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Aug 2017 15:43:13 -0000
+X-List-Received-Date: Tue, 22 Aug 2017 18:15:54 -0000
 
-On 22.08.2017 17:30, Peter Maydell wrote:
-> On 22 August 2017 at 16:26, Thomas Huth <thuth@redhat.com> wrote:
->> On 22.08.2017 17:12, Peter Maydell wrote:
->>> Why is our default "hotpluggable" rather than "not hotpluggable" ?
->>> We must have way more non-hotpluggable devices than hotpluggable
->>> ones, and it takes active effort to make a hotpluggable device
->>> model, so it seems like it would be much less bug-prone to
->>> require hotpluggable devices to set dc->hotpluggable true
->>> rather than all the non-hotpluggable ones to set it false...
->>
->> I think most devices are already non-hotpluggable automatically because
->> they sit on a bus that is not hot-pluggable (e.g. sysbus devices). The
->> problematic ones are the devices with .parent = TYPE_DEVICE. And for
->> these, I think it is quite hard to say whether they should be
->> hot-pluggable by default or not?
-> 
-> To implement hotplug you need to write extra code (notably some
-> kind of unrealize method to undo whatever you did in realize),
-> at which point also setting the hotpluggable flag is trivial.
-> 
->> Anyway, according to my tests (I'm currently working on a test that
->> automatically does device_add + device_del for all devices, as you might
->> have guessed already), there are not that many devices that cause
->> problems here, so I guess marking some few with hotpluggable = false
->> should be OK?
-> 
-> The problem is not the devices we have today but the ones we're
-> going to write tomorrow. Having hotpluggable default to false
-> "fails safe" -- the worst that happens is that somebody writing
-> a hotpluggable device finds in their testing that they need to
-> set the flag to make it work. Having it default to true fails
-> non-safely -- as you've found, people writing devices that
-> were never expected to be hotplugged don't try to test the
-> error case of attempting hotplug anyway, and in code review
-> the absence of a line of code is very hard to reliably spot,
-> so we get devices in tree that crash QEMU if you try to
-> hotplug them. If we make the default be not-hotpluggable
-> we fix this not just today but forever.
+Hi Thomas,
 
-OK, you've got a point. I'll ponder about this a little bit and will try
-to come up with a patch / some patches ...
+Looking to this seems there is a second issue:
+The aux-to-i2c-bridge device should connect on a TYPE_AUX_BUS.
 
- Thomas
+I don't think there isn't any on integratorcp..
+
+Anyway the patch you sent fix this issue indirectly and as far as
+I remember I wasn't able to make this I2C bridge an
+TYPE_AUX_DEVICE as it's a special device and it is internal (only 
+instantiated at the bus creation).
+
+Thanks,
+Fred
+
+On 08/22/2017 05:06 PM, Thomas Huth wrote:
+> QEMU currently aborts if the user tries to do something like this:
+> 
+> $ aarch64-softmmu/qemu-system-aarch64 -S -M integratorcp -nographic
+> QEMU 2.9.93 monitor - type 'help' for more information
+> (qemu) device_add aux-to-i2c-bridge,id=x
+> (qemu) device_del x
+> **
+> ERROR:qemu/qdev-monitor.c:872:qdev_unplug: assertion failed: (hotplug_ctrl)
+> Aborted (core dumped)
+> 
+> Looks like the device is not hot-pluggable, so let's mark it
+> accordingly.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/misc/auxbus.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> index 8a90ddd..2c62515 100644
+> --- a/hw/misc/auxbus.c
+> +++ b/hw/misc/auxbus.c
+> @@ -222,9 +222,17 @@ static inline I2CBus *aux_bridge_get_i2c_bus(AUXTOI2CState *bridge)
+>       return bridge->i2c_bus;
+>   }
+>   
+> +static void aux_bridge_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+> +
+> +    dc->hotpluggable = false;
+> +}
+> +
+>   static const TypeInfo aux_to_i2c_type_info = {
+>       .name = TYPE_AUXTOI2C,
+>       .parent = TYPE_DEVICE,
+> +    .class_init = aux_bridge_class_init,
+>       .instance_size = sizeof(AUXTOI2CState),
+>       .instance_init = aux_bridge_init
+>   };
+> 
 
