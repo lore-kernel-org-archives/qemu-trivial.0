@@ -1,52 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dkbIR-0003YZ-ND
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Aug 2017 15:26:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60274)
+	id 1dkgeB-0002cq-Ns
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Aug 2017 21:09:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53373)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1dkbIP-0003Vj-C4
-	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 15:26:34 -0400
+	(envelope-from <lyan@suse.com>) id 1dkXHi-0000pu-Uh
+	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:09:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1dkbIO-0002Oe-JF
-	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 15:26:33 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:44199
-	helo=smtp.eu.adacore.com)
+	(envelope-from <lyan@suse.com>) id 1dkXHi-000386-3t
+	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:09:34 -0400
+Received: from smtp.nue.novell.com ([195.135.221.5]:58820)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
-	id 1dkbII-0002LN-Dk; Wed, 23 Aug 2017 15:26:26 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 9675A82439;
-	Wed, 23 Aug 2017 21:26:25 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uKLUyB8BwMyu; Wed, 23 Aug 2017 21:26:25 +0200 (CEST)
-Received: from localhost.localdomain (182667ea.cst.lightpath.net
-	[24.38.103.234])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 4093A8137A;
-	Wed, 23 Aug 2017 21:26:24 +0200 (CEST)
-To: Thomas Huth <thuth@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Alistair Francis <alistair.francis@xilinx.com>, qemu-trivial@nongnu.org
-References: <1503414375-21009-1-git-send-email-thuth@redhat.com>
-	<27da1dae-1e2f-559a-d8f0-c7e15289363e@adacore.com>
-	<d5be8092-dc56-14aa-b950-d82e7f959ec1@redhat.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <ee875a77-c10e-cb36-6932-2dc60bf08365@adacore.com>
-Date: Wed, 23 Aug 2017 21:26:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
-MIME-Version: 1.0
-In-Reply-To: <d5be8092-dc56-14aa-b950-d82e7f959ec1@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+	(Exim 4.71) (envelope-from <lyan@suse.com>)
+	id 1dkXHb-00032b-Ip; Wed, 23 Aug 2017 11:09:27 -0400
+Received: from emea4-mta.ukb.novell.com ([10.120.13.87])
+	by smtp.nue.novell.com with ESMTP (TLS encrypted);
+	Wed, 23 Aug 2017 17:09:24 +0200
+Received: from linux-gp66.suse.de (nwb-a10-snat.microfocus.com [10.120.13.202])
+	by emea4-mta.ukb.novell.com with ESMTP (TLS encrypted);
+	Wed, 23 Aug 2017 16:09:10 +0100
+From: Liang Yan <lyan@suse.com>
+To: sstabellini@kernel.org,
+	anthony.perard@citrix.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	xen-devel@lists.xenproject.org
+Date: Wed, 23 Aug 2017 11:09:03 -0400
+Message-Id: <20170823150903.19982-1-lyan@suse.com>
+X-Mailer: git-send-email 2.14.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 194.98.77.210
-Subject: Re: [Qemu-trivial] [PATCH] hw/misc/auxbus.c: Mark the
- aux-to-i2c-bridge device as non-hotpluggable
+X-Received-From: 195.135.221.5
+X-Mailman-Approved-At: Wed, 23 Aug 2017 21:09:22 -0400
+Subject: [Qemu-trivial] [PATCH] hw/display/xenfb.c: Add trace_xenfb_key_event
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,37 +41,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Aug 2017 19:26:34 -0000
+X-List-Received-Date: Wed, 23 Aug 2017 15:09:36 -0000
 
+It may be better to add a trace event to monitor the last moment of
+a key event from QEMU to guest VM
 
+Signed-off-by: Liang Yan <lyan@suse.com>
+---
+ hw/display/trace-events | 1 +
+ hw/display/xenfb.c      | 2 ++
+ 2 files changed, 3 insertions(+)
 
-On 08/23/2017 07:22 AM, Thomas Huth wrote:
-> On 22.08.2017 20:15, KONRAD Frederic wrote:
->> Hi Thomas,
->>
->> Looking to this seems there is a second issue:
->> The aux-to-i2c-bridge device should connect on a TYPE_AUX_BUS.
->>
->> I don't think there isn't any on integratorcp..
->>
->> Anyway the patch you sent fix this issue indirectly and as far as
->> I remember I wasn't able to make this I2C bridge an
->> TYPE_AUX_DEVICE as it's a special device and it is internal (only
->> instantiated at the bus creation).
-> 
-> If it is intended to be completely internal only (i.e. also not for use
-> with the "-device" parameter), then it should even be marked with
-> "user_creatable = false"! ... if you got some spare minutes, could you
-> maybe sent a patch for that? I'm not familiar with that code, so I'm
-> always having trouble to give the reasoning for setting a
-> "user_creatable = false" somewhere...
-> 
->   Thanks,
->    Thomas
-> 
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index ed8cca0755..da498c1def 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -6,6 +6,7 @@ jazz_led_write(uint64_t addr, uint8_t new) "write addr=0x%"PRIx64": 0x%x"
+ 
+ # hw/display/xenfb.c
+ xenfb_mouse_event(void *opaque, int dx, int dy, int dz, int button_state, int abs_pointer_wanted) "%p x %d y %d z %d bs 0x%x abs %d"
++xenfb_key_event(void *opaque, int scancode, int button_state) "%p scancode %d bs 0x%x"
+ xenfb_input_connected(void *xendev, int abs_pointer_wanted) "%p abs %d"
+ 
+ # hw/display/g364fb.c
+diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+index df8b78f6f4..afc43f33a2 100644
+--- a/hw/display/xenfb.c
++++ b/hw/display/xenfb.c
+@@ -290,6 +290,8 @@ static void xenfb_key_event(void *opaque, int scancode)
+ 	scancode |= 0x80;
+ 	xenfb->extended = 0;
+     }
++
++    trace_xenfb_key_event(opaque, scancode2linux[scancode], down);
+     xenfb_send_key(xenfb, down, scancode2linux[scancode]);
+ }
+ 
+-- 
+2.14.1
 
-Ok will do!
-
-Thanks,
-Fred
 
