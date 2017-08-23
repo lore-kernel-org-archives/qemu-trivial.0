@@ -1,35 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dkgeB-0002cq-Ns
+	id 1dkgeB-0002cz-To
 	for mharc-qemu-trivial@gnu.org; Wed, 23 Aug 2017 21:09:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53373)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lyan@suse.com>) id 1dkXHi-0000pu-Uh
-	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:09:35 -0400
+	(envelope-from <lyan@suse.com>) id 1dkXZZ-0003QX-D0
+	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:28:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lyan@suse.com>) id 1dkXHi-000386-3t
-	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:09:34 -0400
-Received: from smtp.nue.novell.com ([195.135.221.5]:58820)
+	(envelope-from <lyan@suse.com>) id 1dkXZY-0004zn-MM
+	for qemu-trivial@nongnu.org; Wed, 23 Aug 2017 11:28:01 -0400
+Received: from smtp.nue.novell.com ([195.135.221.5]:36239)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lyan@suse.com>)
-	id 1dkXHb-00032b-Ip; Wed, 23 Aug 2017 11:09:27 -0400
+	id 1dkXZU-0004ws-6V; Wed, 23 Aug 2017 11:27:56 -0400
 Received: from emea4-mta.ukb.novell.com ([10.120.13.87])
 	by smtp.nue.novell.com with ESMTP (TLS encrypted);
-	Wed, 23 Aug 2017 17:09:24 +0200
+	Wed, 23 Aug 2017 17:27:54 +0200
 Received: from linux-gp66.suse.de (nwb-a10-snat.microfocus.com [10.120.13.202])
 	by emea4-mta.ukb.novell.com with ESMTP (TLS encrypted);
-	Wed, 23 Aug 2017 16:09:10 +0100
+	Wed, 23 Aug 2017 16:27:43 +0100
 From: Liang Yan <lyan@suse.com>
 To: sstabellini@kernel.org,
 	anthony.perard@citrix.com
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
 	xen-devel@lists.xenproject.org
-Date: Wed, 23 Aug 2017 11:09:03 -0400
-Message-Id: <20170823150903.19982-1-lyan@suse.com>
+Date: Wed, 23 Aug 2017 11:27:36 -0400
+Message-Id: <20170823152736.21814-1-lyan@suse.com>
 X-Mailer: git-send-email 2.14.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 195.135.221.5
 X-Mailman-Approved-At: Wed, 23 Aug 2017 21:09:22 -0400
-Subject: [Qemu-trivial] [PATCH] hw/display/xenfb.c: Add trace_xenfb_key_event
+Subject: [Qemu-trivial] [PATCH v2] hw/display/xenfb.c: Add
+ trace_xenfb_key_event
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,7 +42,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Aug 2017 15:09:36 -0000
+X-List-Received-Date: Wed, 23 Aug 2017 15:28:02 -0000
 
 It may be better to add a trace event to monitor the last moment of
 a key event from QEMU to guest VM
@@ -49,8 +50,8 @@ a key event from QEMU to guest VM
 Signed-off-by: Liang Yan <lyan@suse.com>
 ---
  hw/display/trace-events | 1 +
- hw/display/xenfb.c      | 2 ++
- 2 files changed, 3 insertions(+)
+ hw/display/xenfb.c      | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/hw/display/trace-events b/hw/display/trace-events
 index ed8cca0755..da498c1def 100644
@@ -65,14 +66,13 @@ index ed8cca0755..da498c1def 100644
  
  # hw/display/g364fb.c
 diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index df8b78f6f4..afc43f33a2 100644
+index df8b78f6f4..8e2547ac05 100644
 --- a/hw/display/xenfb.c
 +++ b/hw/display/xenfb.c
-@@ -290,6 +290,8 @@ static void xenfb_key_event(void *opaque, int scancode)
+@@ -290,6 +290,7 @@ static void xenfb_key_event(void *opaque, int scancode)
  	scancode |= 0x80;
  	xenfb->extended = 0;
      }
-+
 +    trace_xenfb_key_event(opaque, scancode2linux[scancode], down);
      xenfb_send_key(xenfb, down, scancode2linux[scancode]);
  }
