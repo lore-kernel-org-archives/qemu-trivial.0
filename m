@@ -1,47 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dkkNA-0005ll-Fj
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Aug 2017 01:08:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59902)
+	id 1dlD4f-000564-3V
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2017 07:46:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36055)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkkN8-0005kZ-3A
-	for qemu-trivial@nongnu.org; Thu, 24 Aug 2017 01:08:02 -0400
+	(envelope-from <frederic.konrad@adacore.com>) id 1dlD4d-00054y-3u
+	for qemu-trivial@nongnu.org; Fri, 25 Aug 2017 07:46:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkkN7-0008KA-By
-	for qemu-trivial@nongnu.org; Thu, 24 Aug 2017 01:08:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46376)
+	(envelope-from <frederic.konrad@adacore.com>) id 1dlD4c-0001US-6G
+	for qemu-trivial@nongnu.org; Fri, 25 Aug 2017 07:46:51 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:57764
+	helo=smtp.eu.adacore.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dkkN1-0008Ic-Oi; Thu, 24 Aug 2017 01:07:55 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
+	id 1dlD4W-0001RP-IE; Fri, 25 Aug 2017 07:46:44 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 90CAC82286;
+	Fri, 25 Aug 2017 13:46:42 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x3HzjyuCsnbY; Fri, 25 Aug 2017 13:46:42 +0200 (CEST)
+Received: from localhost.localdomain.localdomain (unknown
+	[IPv6:2a01:e35:87f0:3180:2b18:7e65:c33:7f62])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C056680F75;
-	Thu, 24 Aug 2017 05:07:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C056680F75
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from thh440s.redhat.com (ovpn-116-96.ams2.redhat.com [10.36.116.96])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C122D5C88D;
-	Thu, 24 Aug 2017 05:07:51 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-devel@nongnu.org
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 1C9C082284;
+	Fri, 25 Aug 2017 13:46:41 +0200 (CEST)
+From: KONRAD Frederic <frederic.konrad@adacore.com>
+To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
-	Eduardo Otubo <otubo@redhat.com>
-Date: Thu, 24 Aug 2017 07:07:50 +0200
-Message-Id: <1503551270-30648-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 24 Aug 2017 05:07:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH for-2.11] tests/test-hmp: Remove puv3 and
- tricore_testboard from the blacklist
+	thuth@redhat.com,
+	frederic.konrad@adacore.com
+Date: Fri, 25 Aug 2017 13:46:09 +0200
+Message-Id: <1503661569-11408-1-git-send-email-frederic.konrad@adacore.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 194.98.77.210
+Subject: [Qemu-trivial] [PATCH for-2.11] aux-to-i2c-bridge: don't allow user
+ to create one
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,32 +49,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Aug 2017 05:08:03 -0000
+X-List-Received-Date: Fri, 25 Aug 2017 11:46:52 -0000
 
-The problem with puv3 has been fixed with 0ac241bcf9f9d99a252a352a162f
-('unicore32: abort when entering "x 0" on the monitor') and the problem
-with tricore_testboard has been fixed with b190f477e29c7cd03a8fee49c96d
-('qemu-system-tricore: segfault when entering "x 0" on the monitor').
+This device is private and is created once per aux-bus.
+So don't allow the user to create one from command-line.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reported-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
 ---
- tests/test-hmp.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/misc/auxbus.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/tests/test-hmp.c b/tests/test-hmp.c
-index 4382df0..9f286bf 100644
---- a/tests/test-hmp.c
-+++ b/tests/test-hmp.c
-@@ -192,8 +192,7 @@ static void add_machine_test_case(const char *mname)
-     char *path;
+diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+index 8a90ddd..1182745 100644
+--- a/hw/misc/auxbus.c
++++ b/hw/misc/auxbus.c
+@@ -210,6 +210,16 @@ struct AUXTOI2CState {
+     I2CBus *i2c_bus;
+ };
  
-     /* Ignore blacklisted machines that have known problems */
--    if (!strcmp("puv3", mname) || !strcmp("tricore_testboard", mname) ||
--        !strcmp("xenfv", mname) || !strcmp("xenpv", mname)) {
-+    if (!strcmp("xenfv", mname) || !strcmp("xenpv", mname)) {
-         return;
-     }
- 
++static void aux_bridge_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    /* This device is private and is created only once for each
++     * aux-bus in aux_init_bus(..). So don't allow the user to add one.
++     */
++    dc->user_creatable = false;
++}
++
+ static void aux_bridge_init(Object *obj)
+ {
+     AUXTOI2CState *s = AUXTOI2C(obj);
+@@ -225,6 +235,7 @@ static inline I2CBus *aux_bridge_get_i2c_bus(AUXTOI2CState *bridge)
+ static const TypeInfo aux_to_i2c_type_info = {
+     .name = TYPE_AUXTOI2C,
+     .parent = TYPE_DEVICE,
++    .class_init = aux_bridge_class_init,
+     .instance_size = sizeof(AUXTOI2CState),
+     .instance_init = aux_bridge_init
+ };
 -- 
 1.8.3.1
 
