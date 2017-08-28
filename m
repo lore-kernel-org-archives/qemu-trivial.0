@@ -1,56 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dmM63-00010p-AH
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Aug 2017 11:37:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59457)
+	id 1dmNPT-00024v-4f
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Aug 2017 13:01:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51930)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dmM61-0000yN-G1
-	for qemu-trivial@nongnu.org; Mon, 28 Aug 2017 11:37:02 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dmNPP-000240-Rt
+	for qemu-trivial@nongnu.org; Mon, 28 Aug 2017 13:01:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dmM60-0006Se-JX
-	for qemu-trivial@nongnu.org; Mon, 28 Aug 2017 11:37:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41000)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dmM5u-0006RF-M9; Mon, 28 Aug 2017 11:36:54 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A055380C20;
-	Mon, 28 Aug 2017 15:36:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A055380C20
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.122.186] (ovpn-122-186.rdu2.redhat.com [10.10.122.186])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0AFC56887D;
-	Mon, 28 Aug 2017 15:36:51 +0000 (UTC)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dmNPK-0003jg-61
+	for qemu-trivial@nongnu.org; Mon, 28 Aug 2017 13:01:07 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36872)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dmNPK-0003iD-10; Mon, 28 Aug 2017 13:01:02 -0400
+Received: by mail-qt0-x244.google.com with SMTP id g13so921580qta.4;
+	Mon, 28 Aug 2017 10:01:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=cNbCUhQYoPxF/DxZswBnTo0OlJazxYo7IFNj/1qzCMU=;
+	b=C1jNhvNMew2nj6inxPCZLNWaaxjgRo5cfYu6+baHGIYmrFKFrtBZldNnJvs/G73UqC
+	2NSL25yKZ4IjaLN3EP3D16XlhW7EUDqZRDvanlNZ6rARjmaFK1brMa+D6uxpaLPram/C
+	QrXVK8wXpr4/MadPw6pyj2qetQza0eBtW4v88qe69fcdFN3hvrdU3r0SpziuUdPBim6Q
+	/UcjBGViWY29PR7R7zJKTWrtTiFdMfC5XQJSvPXbwwPFaiz+8OrCBG/rssfIL6d/gY1N
+	T/6KDug73CTXcaolK/MkPv4Pb1GoqTCrtRPnZ3X6GpxGAjz6enZm0S6uWKHjVnA7Ea/R
+	ksag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=cNbCUhQYoPxF/DxZswBnTo0OlJazxYo7IFNj/1qzCMU=;
+	b=JSzYpMZjhlpZ7CJk58pMCzXb53DPsNMGxgjWAqrHVRuKvRNrvIRax0gq0Bf3u5OrgQ
+	y0HCabkA58PZjllNnBv6An3dWOwhgtRHusHDEoRospwM1XntfvGgig6qLUpt6lq3RyK3
+	QHI5LWY76hmBNCiHRxPq6tNEOWPeGqenyMiGmfly/05I5ROTXXhLW+hYWtwhUIeG89Bb
+	yRO5lFWfpnakKqRqKL6Bn5nmxm5HxWcINS3ViLhOkPajrapzaMS+dh3fqBho/fbzFZvs
+	w6VbK6eJZBKuwIMZtlg73tiKkQmy32IGnXeGirr9ruOXDqAqrgv+rNcjNK8sOSzibOW6
+	D5nA==
+X-Gm-Message-State: AHPjjUhLs9Ev/eD8aF2HD0o3UEVaDpEYmoDYwzD5UbejpLIcOxlCRzk1
+	OTOzUNevDitGJA==
+X-Received: by 10.237.63.9 with SMTP id p9mr1853279qtf.109.1503939661303;
+	Mon, 28 Aug 2017 10:01:01 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id 92sm546243qta.42.2017.08.28.10.00.55
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 Aug 2017 10:00:57 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-References: <1503916557-1292-1-git-send-email-thuth@redhat.com>
 Cc: Markus Armbruster <armbru@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <facb59b4-6992-b7a5-7d63-bead2ff29f8a@redhat.com>
-Date: Mon, 28 Aug 2017 10:36:51 -0500
+References: <1503916557-1292-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <89648d53-987c-c0a7-bed8-a93a63fde2a2@amsat.org>
+Date: Mon, 28 Aug 2017 14:00:54 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
 In-Reply-To: <1503916557-1292-1-git-send-email-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="TpvhGFtdWxow6geKGk5CpoJIlSbXLjq6d"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 28 Aug 2017 15:36:53 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] tests/libqtest: Use a proper error
- message if QTEST_QEMU_BINARY is missing
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/libqtest: Use a
+ proper error message if QTEST_QEMU_BINARY is missing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,71 +78,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Aug 2017 15:37:02 -0000
+X-List-Received-Date: Mon, 28 Aug 2017 17:01:09 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---TpvhGFtdWxow6geKGk5CpoJIlSbXLjq6d
-Content-Type: multipart/mixed; boundary="NfNmilSn2gq3B6K08rhGL18WoBxdduvCF";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>
-Message-ID: <facb59b4-6992-b7a5-7d63-bead2ff29f8a@redhat.com>
-Subject: Re: [PATCH] tests/libqtest: Use a proper error message if
- QTEST_QEMU_BINARY is missing
-References: <1503916557-1292-1-git-send-email-thuth@redhat.com>
-In-Reply-To: <1503916557-1292-1-git-send-email-thuth@redhat.com>
-
---NfNmilSn2gq3B6K08rhGL18WoBxdduvCF
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 08/28/2017 05:35 AM, Thomas Huth wrote:
+On 08/28/2017 07:35 AM, Thomas Huth wrote:
 > The user can currently still cause an abort() if running certain tests
 > (like the prom-env-test) without setting the QTEST_QEMU_BINARY first.
 > A similar problem has been fixed with commit 7c933ad61b8f3f51337
-> already, but forgot to also take care of the qtest_get_arch() function,=
-
+> already, but forgot to also take care of the qtest_get_arch() function,
 > so let's introduce a proper wrapper around getenv("QTEST_QEMU_BINARY")
 > that can be used in both locations now.
->=20
+> 
 > Buglink: https://bugs.launchpad.net/qemu/+bug/1713434
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  tests/libqtest.c | 24 +++++++++++++++---------
->  1 file changed, 15 insertions(+), 9 deletions(-)
->=20
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---NfNmilSn2gq3B6K08rhGL18WoBxdduvCF--
-
---TpvhGFtdWxow6geKGk5CpoJIlSbXLjq6d
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlmkOJMACgkQp6FrSiUn
-Q2pp5Qf/aaaROzOvc8KVAnuiZWmN2vhbP63BujduyfcaCb/DBiCrmdZudEy7/0hW
-0rpn6scil7E8zaP8NvP7atIrJR+hZHy6vsk3aZjySM4okD1Ftb9VFT3Hc9XPaW8F
-RmChnSqfF0P8Z6BPyvr/prJzo1NZI/vmqNbEK2gt+qqNiundHFZOAwrYDRd09pqb
-1Pmm8jcS8z8yMA2EfpTFiKwLduRlUAYPOEWse+DE7hbCIMbEarMaHQS8MN/d6wdD
-nx6QwqnPpj25SgHJwLc2sw9+Kt2yeKo3ejPf7WXtyMKMLbLjrGWxmHW14SXwqmvN
-To9XoEN2xz8/TPEXRzjWf9mTJbS01A==
-=lHWA
------END PGP SIGNATURE-----
-
---TpvhGFtdWxow6geKGk5CpoJIlSbXLjq6d--
+>   tests/libqtest.c | 24 +++++++++++++++---------
+>   1 file changed, 15 insertions(+), 9 deletions(-)
+> 
+> diff --git a/tests/libqtest.c b/tests/libqtest.c
+> index b9a1f18..342a77b 100644
+> --- a/tests/libqtest.c
+> +++ b/tests/libqtest.c
+> @@ -150,6 +150,19 @@ void qtest_add_abrt_handler(GHookFunc fn, const void *data)
+>       g_hook_prepend(&abrt_hooks, hook);
+>   }
+>   
+> +static const char *qtest_qemu_binary(void)
+> +{
+> +    const char *qemu_bin;
+> +
+> +    qemu_bin = getenv("QTEST_QEMU_BINARY");
+> +    if (!qemu_bin) {
+> +        fprintf(stderr, "Environment variable QTEST_QEMU_BINARY required\n");
+> +        exit(1);
+> +    }
+> +
+> +    return qemu_bin;
+> +}
+> +
+>   QTestState *qtest_init_without_qmp_handshake(const char *extra_args)
+>   {
+>       QTestState *s;
+> @@ -157,13 +170,7 @@ QTestState *qtest_init_without_qmp_handshake(const char *extra_args)
+>       gchar *socket_path;
+>       gchar *qmp_socket_path;
+>       gchar *command;
+> -    const char *qemu_binary;
+> -
+> -    qemu_binary = getenv("QTEST_QEMU_BINARY");
+> -    if (!qemu_binary) {
+> -        fprintf(stderr, "Environment variable QTEST_QEMU_BINARY required\n");
+> -        exit(1);
+> -    }
+> +    const char *qemu_binary = qtest_qemu_binary();
+>   
+>       s = g_malloc(sizeof(*s));
+>   
+> @@ -624,8 +631,7 @@ char *qtest_hmp(QTestState *s, const char *fmt, ...)
+>   
+>   const char *qtest_get_arch(void)
+>   {
+> -    const char *qemu = getenv("QTEST_QEMU_BINARY");
+> -    g_assert(qemu != NULL);
+> +    const char *qemu = qtest_qemu_binary();
+>       const char *end = strrchr(qemu, '/');
+>   
+>       return end + strlen("/qemu-system-");
+> 
 
