@@ -1,55 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dmhhK-0001Ct-Cw
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2017 10:40:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59793)
+	id 1dmhlo-0003BZ-Oh
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2017 10:45:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dmhhH-0001BS-Jv
-	for qemu-trivial@nongnu.org; Tue, 29 Aug 2017 10:40:56 -0400
+	(envelope-from <berto@igalia.com>) id 1dmhlm-00038P-Dv
+	for qemu-trivial@nongnu.org; Tue, 29 Aug 2017 10:45:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dmhhD-0003yl-CV
-	for qemu-trivial@nongnu.org; Tue, 29 Aug 2017 10:40:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58304)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dmhh1-0003jp-1S; Tue, 29 Aug 2017 10:40:39 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A8B147EA85;
-	Tue, 29 Aug 2017 14:40:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A8B147EA85
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.122.186] (ovpn-122-186.rdu2.redhat.com [10.10.122.186])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B6BDF4F6D8;
-	Tue, 29 Aug 2017 14:40:36 +0000 (UTC)
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
-References: <20170829120836.16091-1-berto@igalia.com>
+	(envelope-from <berto@igalia.com>) id 1dmhlh-0007ij-JM
+	for qemu-trivial@nongnu.org; Tue, 29 Aug 2017 10:45:34 -0400
+Received: from fanzine.igalia.com ([91.117.99.155]:42846)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <berto@igalia.com>)
+	id 1dmhlU-0007XO-KC; Tue, 29 Aug 2017 10:45:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
+	s=20170329; 
+	h=Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From;
+	bh=LUzYb999xuZhu5j6m/LM4r5x23GqBdiLeyKV8gbvSVE=; 
+	b=TXIaT0TikN1x6XedQ2bQDj86yBtJRIzdKSdeAgmHZ8a+dmnwtNgvPNKaL/7j73YzGxfrc9EZToKhxAcBmqr64kf8ueOEfh7+EZOsvx9LKw9xvBSlZtk0Gn7bywsB/reUA3RNvPPU15ibvOvOk+24MhRfpo0uOcMElQrZrqztAwWuNVFqysRlLYFGYl81HrIFFV9qh6PPJZeowauoVuEva9ubbNT/FUARusf0heoI9Q8xTKLyg+onXTTVaEajGzo6F+4vtmxQ78urqRXuUKHHc0U9Xgk5noBWkTB3XQmz7eNlRY7Zj6lZvniRiLMc40Hw9H+7sY1XIv+5CxJokRxTCw==;
+Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
+	by fanzine.igalia.com with esmtps 
+	(Cipher TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim)
+	id 1dmhlS-0002V2-7o; Tue, 29 Aug 2017 16:45:14 +0200
+Received: from berto by mail.igalia.com with local (Exim)
+	id 1dmhlS-0006tH-5F; Tue, 29 Aug 2017 16:45:14 +0200
+From: Alberto Garcia <berto@igalia.com>
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
-	Max Reitz <mreitz@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>, 
+	Max Reitz <mreitz@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
 	Markus Armbruster <armbru@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <ac13cdf8-7725-8d5a-9c8b-49ad51eba38e@redhat.com>
-Date: Tue, 29 Aug 2017 09:40:35 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+In-Reply-To: <ac13cdf8-7725-8d5a-9c8b-49ad51eba38e@redhat.com>
+References: <20170829120836.16091-1-berto@igalia.com>
+	<ac13cdf8-7725-8d5a-9c8b-49ad51eba38e@redhat.com>
+User-Agent: Notmuch/0.18.2 (http://notmuchmail.org) Emacs/24.4.1
+	(i586-pc-linux-gnu)
+Date: Tue, 29 Aug 2017 16:45:14 +0200
+Message-ID: <w51d17efn5x.fsf@maestria.local.igalia.com>
 MIME-Version: 1.0
-In-Reply-To: <20170829120836.16091-1-berto@igalia.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="9gTI37VWVnWTTngGR74SUkEdMgWUerS07"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 29 Aug 2017 14:40:37 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic] [fuzzy]
+X-Received-From: 91.117.99.155
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: Remove unused Error
  variables
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,72 +53,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Aug 2017 14:40:56 -0000
+X-List-Received-Date: Tue, 29 Aug 2017 14:45:35 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---9gTI37VWVnWTTngGR74SUkEdMgWUerS07
-Content-Type: multipart/mixed; boundary="HFUJhJ19PxWeTng41NJbTPw35j0RDNkB9";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>
-Message-ID: <ac13cdf8-7725-8d5a-9c8b-49ad51eba38e@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] misc: Remove unused Error variables
-References: <20170829120836.16091-1-berto@igalia.com>
-In-Reply-To: <20170829120836.16091-1-berto@igalia.com>
+On Tue 29 Aug 2017 04:40:35 PM CEST, Eric Blake wrote:
 
---HFUJhJ19PxWeTng41NJbTPw35j0RDNkB9
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+>> There's a few cases which we're passing an Error pointer to a
 
-On 08/29/2017 07:08 AM, Alberto Garcia wrote:
-> There's a few cases which we're passing an Error pointer to a function
-> only to discard it immediately afterwards without checking it. In
-> these cases we can simply remove the variable and pass NULL instead.
+Hmmm... this was "few cases in which", but it seems that I accidentally
+removed the "in". Not very important, but whoever commits this feel free
+to fix the message.
 
-Could also go in via qemu-trivial or Markus' error tree (both added in
-cc) if the block maintainers don't take it quickly.
-
->=20
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
-> ---
->  block/qcow.c  | 12 +++---------
->  block/qcow2.c |  8 ++------
->  dump.c        |  4 +---
->  3 files changed, 6 insertions(+), 18 deletions(-)
->=20
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
-
-
---HFUJhJ19PxWeTng41NJbTPw35j0RDNkB9--
-
---9gTI37VWVnWTTngGR74SUkEdMgWUerS07
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlmlfOMACgkQp6FrSiUn
-Q2qn0wf/eO7j8LYPU2hj3Tg6gfCxEVUtxc/sNzyQixGSgCo9Ud8Jan5/EVV9lJAP
-XjJPAyNYQBUl5XV7WUrfjm4HDReMCn50xXQOTHcsOCP2TNfnQ6AwWJMiL3NQJFv7
-o5Xk8MrLMyOMC3tcf13S6LIDCslZdVPhlDO0ezvP5GW/ldHrFnmtbe6fxWBxHP99
-48GinYPKZmkT7psGklZA+/rF5vy4JJu9WPE0RG5dj2b7fgUW6AiXObe7apBSWYRt
-w4z6NUO5hEkyE+TRiAzCIA6QF72WfXsWWEyrOvmSKobRvAeJjoEYJAMKqkDbtbaB
-C27D9FQjya4BGB7cdzjtr5Md550hvA==
-=qViJ
------END PGP SIGNATURE-----
-
---9gTI37VWVnWTTngGR74SUkEdMgWUerS07--
+Berto
 
