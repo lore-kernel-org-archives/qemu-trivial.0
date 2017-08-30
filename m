@@ -1,56 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dn4eb-0003S1-85
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 11:11:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58103)
+	id 1dnAE8-0005tf-SN
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 17:08:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37780)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1dn4eW-0003Pn-LS
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 11:11:40 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dnAE5-0005qg-TW
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:08:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1dn4eR-0000lN-UC
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 11:11:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58742)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1dn4eN-0000iC-8x; Wed, 30 Aug 2017 11:11:27 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4BB53495;
-	Wed, 30 Aug 2017 15:11:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4BB53495
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2086F98163;
-	Wed, 30 Aug 2017 15:11:21 +0000 (UTC)
-Date: Wed, 30 Aug 2017 17:11:20 +0200
-From: Cornelia Huck <cohuck@redhat.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dnAE4-0008N4-VY
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:08:41 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35959)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dnAE0-0008Lk-HU; Wed, 30 Aug 2017 17:08:36 -0400
+Received: by mail-qt0-x243.google.com with SMTP id e2so6169800qta.3;
+	Wed, 30 Aug 2017 14:08:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=VBuwkpRpb3BecmNtHmhR9s12eROWJP7VddKivxCCnxU=;
+	b=XdmmJGtcfCrzVjwU0/Efij/lxT2cqsb8H1qFEPilQX6iI1v24ziWIe3BYTmbPEShrE
+	r3EeuZ4EEy6f6PQsHaziWogov1g/erjAthBltBz3dhI+Qsv5wyGiQgVz1a9oKNWMzrMa
+	Cp4Q1+S7Nn1dGHD/zWbCFKHlA+znFzVdbOxDcocPgYjC0XCbhxdir8H/AjZ0jQbelJdF
+	YfL0CL82xEbWhwQeCVSJI7EspvjHFsBUmXb5uMiGGKI4KzjrBfwWUEtc1otBoT5CpUK1
+	bKQEIEAY66Ku5ZlkhjjkCZcucD3nZ14LEATU0sMTIgIkopM99zZeSEFvh9sec8hNEQJA
+	OTvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=VBuwkpRpb3BecmNtHmhR9s12eROWJP7VddKivxCCnxU=;
+	b=FfDODtwdta19iLtUIzVTw9+gIrWF0IgxJhuO6Va0BmS076HsFkFWN/CGhbOgv6otWL
+	0n19cjgA32WewH9z7HB8c4WlbPFqqxfd0gflpvvuQTKEbSw0SGF2i0UIz8Qve+olviZ+
+	05GHTSKl2pqebrHzc6T9fpgAme1Hl7+9NOoMUQBpVj0ZX2eyN+RJcmwmjHUcXiaqleEi
+	lX/oVY5eyNI/F43JJiZsxnXiyIiyin0e8Rq8k4Pfh9sobMti1mcMOvpDwJYgn+6AOI8m
+	5TscyZ2Q9DzQbnuEJ+d/TTJAeFK7gD0UqeA6qMokS5aQMUe4ZN92G7de36S41+YS5Fpg
+	qiOA==
+X-Gm-Message-State: AHYfb5hBCmO47Ae0e/l/lNaRYD2IK0cMWRGIFL+wkcDRNv60UQplPibl
+	+XXfBHbXcilvPkC2u5IcxQ==
+X-Received: by 10.200.50.156 with SMTP id z28mr4176410qta.98.1504127315780;
+	Wed, 30 Aug 2017 14:08:35 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id
+	a50sm4388110qtc.25.2017.08.30.14.08.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 30 Aug 2017 14:08:35 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Laurent Vivier
-	<lvivier@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20170830171120.190439f5.cohuck@redhat.com>
-In-Reply-To: <52928093-36d5-89cf-bb89-ab5abf54b8f0@redhat.com>
-References: <1504100343-26607-1-git-send-email-thuth@redhat.com>
-	<b98a4c56-f386-f827-5aa7-9a00e6fdf790@amsat.org>
-	<52928093-36d5-89cf-bb89-ab5abf54b8f0@redhat.com>
-Organization: Red Hat GmbH
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20170728053610.15770-1-f4bug@amsat.org>
+	<20170728053610.15770-2-f4bug@amsat.org>
+	<3be12552-daf6-450f-765e-ce390c4bf3c6@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3f5c7cc2-16b6-4e72-707d-58b29f0f376a@amsat.org>
+Date: Wed, 30 Aug 2017 18:08:32 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 30 Aug 2017 15:11:26 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] hw/misc/ivshmem:
- Fix ivshmem_recv_msg() to also work on big endian systems
+In-Reply-To: <3be12552-daf6-450f-765e-ce390c4bf3c6@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 01/47] MAINTAINERS: add
+ missing entry for documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,45 +80,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Aug 2017 15:11:40 -0000
+X-List-Received-Date: Wed, 30 Aug 2017 21:08:43 -0000
 
-On Wed, 30 Aug 2017 16:59:03 +0200
-Thomas Huth <thuth@redhat.com> wrote:
+On 07/28/2017 03:47 AM, Thomas Huth wrote:
+> On 28.07.2017 07:35, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>
+>> because having only a "Build system architecture" entry in Documentation seems
+>> odd to me, so RFC.
+>>
+>>   MAINTAINERS | 3 +++
+>>   1 file changed, 3 insertions(+)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 5ea273f899..972118e70b 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1886,6 +1886,9 @@ W: http://patchew.org/QEMU/
+>>   
+>>   Documentation
+>>   -------------
+>> +Overall
+>> +F: docs/
+> 
+> But it also does not make sense to add such an entry without a "M:"
+> line, does it?
 
-> On 30.08.2017 16:53, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 08/30/2017 10:39 AM, Thomas Huth wrote: =20
-> >> The "slow" ivshmem-tests currently fail when they are running on a
-> >> big endian host:
-> >>
-> >> $ uname -m
-> >> ppc64
-> >> $ V=3D1 QTEST_QEMU_BINARY=3Dx86_64-softmmu/qemu-system-x86_64
-> >> tests/ivshmem-test -m slow
-> >> /x86_64/ivshmem/single: OK
-> >> /x86_64/ivshmem/hotplug: OK
-> >> /x86_64/ivshmem/memdev: OK
-> >> /x86_64/ivshmem/pair: OK
-> >> /x86_64/ivshmem/server-msi: qemu-system-x86_64:
-> >> =C2=A0 -device ivshmem-doorbell,chardev=3Dchr0,vectors=3D2: server sen=
-t invalid
-> >> ID message
-> >> Broken pipe
-> >>
-> >> The problem is that the server side code in ivshmem_server_send_one_ms=
-g()
-> >> correctly translates all messages IDs into little endian 64-bit values,
-> >> but the client side code in the ivshmem_recv_msg() function does not s=
-wap
-> >> the byte order back. Fix it by passing the value through le64_to_cpu()=
-. =20
-> >=20
-> > Yes, we lack BE testing :( =20
->=20
-> As far as I know, some people are already running the tests on s390x and
-> ppc64 ... the problem is that apparently nobody is running with
-> SPEED=3Dslow there - that's why this problem slipped through so far.
-> Maybe we should switch to the SPEED=3Dslow by default in the Makefile?
-
-Not sure whether that is a good idea. /me adding this to my s390x tests
-should help, though.
+Indeed, dropped.
 
