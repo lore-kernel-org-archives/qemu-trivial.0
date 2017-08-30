@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnAxz-0005bc-7c
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 17:56:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48924)
+	id 1dnAy2-0005eu-Fi
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 17:56:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48962)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxw-0005WS-3S
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:56:05 -0400
+	id 1dnAxy-0005aX-6A
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:56:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxv-0007mj-B8
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:56:04 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35398)
+	id 1dnAxx-0007ot-IK
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:56:06 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33868)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxt-0007jQ-7g; Wed, 30 Aug 2017 17:56:01 -0400
-Received: by mail-qt0-x241.google.com with SMTP id u11so6270002qtu.2;
-	Wed, 30 Aug 2017 14:56:00 -0700 (PDT)
+	id 1dnAxv-0007n1-K6; Wed, 30 Aug 2017 17:56:03 -0400
+Received: by mail-qt0-x241.google.com with SMTP id v20so854551qtg.1;
+	Wed, 30 Aug 2017 14:56:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Gtjaan22qx6wDs40lDSNGCLNDIYxIc5Zyr3d9QJvtBc=;
-	b=RhmoelgRL1WeUEnl07uMRvd0Bwig0sewuKayYxkrHQdaCWlYOKyTJtP81z4b8xKQVn
-	WSkO734ipVYBRwKAlhVPIfSB67qJl3ipgiVEXwYXpbQ3c8jcnBpq+4oy+L++fbYw3y9L
-	IowKKls362lRe8uUdG7CdAeK0ENGp+kpuwx4Vvr1uYMH1MIEx/+qzyNckzwazfjSEOWL
-	0h6G3BMA5jxp2CGmfeaMnlE1EuqjzGoyNDoUgBHdf7gErhmBrID6NRRXyAqNwKqskYGs
-	MLa6yExv9GAW1BJO3M6wLnix/nWCkgZhacnRjGMdpzP2OHQ3glJthrDMBrxCDyZRtXXw
-	zY5w==
+	bh=xhSpPirtYleI+8Ern6rvlbLecOR7sVVW0JIKFHAFmXI=;
+	b=I/8NYWVwvEDKuB6dFenhrzO3521nP3tjIz7SShfNRHCl+HsMt2iNwbNlOWCQQYNYqp
+	0Gf/dNPgwW28CaoC0PGDml2nF0nvHKU4yDS+uCiDbyG/bZfutCPDxq+1tm/53k7yM6Dv
+	/CHngMtG+Ffidt53qvaeVWQxwdxuVKL2FGXEYIuFJOh2EFqm6sUXHUFavJ6WVCIQHyUN
+	cqOKltM7gnlyHVuF539nPByyyswMGCD/ofOvEuJ57a6gwoGwV+dmbPG13KcgbbDIU7rw
+	vf9RCaIKRpOc1aRmATSxVpmMl+AB2Ad8f7XTYLpp+qViE6/7dPq5gRAlbak7UFQMxODs
+	+byg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Gtjaan22qx6wDs40lDSNGCLNDIYxIc5Zyr3d9QJvtBc=;
-	b=jKLFHKfvi/nOyXaCB+KV2UTFw9hkJbRTw2aMwqgCCMr0PKX2DBlNAB0hX34O85pwhw
-	qDl39NZp3be+rOxelcx9C4tH9EZ7PYZXkehrO2VnR+knDlvH9oaU6ReKMGAgLIBMM2VF
-	CnF9hIgbxGrC0AwtiXy/6GjhEdM9cLeGEPTqqOc7XMpGsX3VCDHJuN2CydPQZOvLc1JI
-	PsQCTCclRPm2OMPKHT1wWB8i+MuHTtqOIJhdcZsmYh5As1arcN6nTA7fUqTUmCeQp/c2
-	tUK5C3xYAHW/6muhDFp/Po++4rUEgsqYSAxq/bLemGW3HBML01Atvu9Wd3s2ID012Qoj
-	0nbQ==
-X-Gm-Message-State: AHPjjUhJLsNAHEBIgSuzt9ahzzx7ctYtifDGalp64X8/Jqt6upBy+TU8
-	8OaDpNsCrhJ4kw==
-X-Received: by 10.200.58.193 with SMTP id x59mr4079288qte.261.1504130160671;
-	Wed, 30 Aug 2017 14:56:00 -0700 (PDT)
+	bh=xhSpPirtYleI+8Ern6rvlbLecOR7sVVW0JIKFHAFmXI=;
+	b=cxV/JLU7d2xtd3CQyAB2uzqkxJ6EDIzCHCDbhYSDDQGdd7XdEJPsNQ/Txqfj8SzZbf
+	zf8zf5wUozQrkJNA4nBjS9tFECFkao+uMhzXknuFZFcqZ1JfWfQ9oWAPC+86MBwqbwls
+	i4bazMgVdu+uGQDT+Ramb+rIFIK6XVXn01JgjIFCgbyojNkIyWfIxLiqdkQ8BbMFXUAk
+	NR94ClVbyhsZgkdXO00jt7LayCtKjQ1OUlHvAnoQxbzTPlR+/elwkDFlu//mKDjmJsbu
+	9xIB2/UP2FG4gE+J32vgQAwwnegrToXWOBlC6evqWNOyBnjui47K9gGhM0HgBbHIRRIC
+	eYyg==
+X-Gm-Message-State: AHYfb5h8Sb0TMdCLEte/4bgfS+y3nv+d5GfZDgseTmgcIlY947uyRZcX
+	883uxrA9oMyELD81b+15mg==
+X-Received: by 10.237.33.1 with SMTP id 1mr4358349qtc.225.1504130163100;
+	Wed, 30 Aug 2017 14:56:03 -0700 (PDT)
 Received: from yoga.offpageads.com ([181.93.89.178])
 	by smtp.gmail.com with ESMTPSA id
-	w131sm4298690qkb.85.2017.08.30.14.55.58
+	w131sm4298690qkb.85.2017.08.30.14.56.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Aug 2017 14:56:00 -0700 (PDT)
+	Wed, 30 Aug 2017 14:56:02 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
+To: "Michael S . Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Wed, 30 Aug 2017 18:55:14 -0300
-Message-Id: <20170830215523.25278-9-f4bug@amsat.org>
+Date: Wed, 30 Aug 2017 18:55:15 -0300
+Message-Id: <20170830215523.25278-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170830215523.25278-1-f4bug@amsat.org>
 References: <20170830215523.25278-1-f4bug@amsat.org>
@@ -64,7 +64,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v2 08/17] MAINTAINERS: add missing USB entry
+Subject: [Qemu-trivial] [PATCH v2 09/17] MAINTAINERS: add missing PCI entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,26 +76,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Aug 2017 21:56:05 -0000
+X-List-Received-Date: Wed, 30 Aug 2017 21:56:09 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index eb20365fbb..dd5e2c2b6b 100644
+index dd5e2c2b6b..bbe1191883 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1004,6 +1004,7 @@ F: docs/usb2.txt
- F: docs/usb-storage.txt
- F: include/hw/usb.h
- F: include/hw/usb/
-+F: default-configs/usb.mak
+@@ -928,6 +928,8 @@ F: include/hw/pci/*
+ F: hw/misc/pci-testdev.c
+ F: hw/pci/*
+ F: hw/pci-bridge/*
++F: docs/pci*
++F: docs/specs/*pci*
  
- USB (serial adapter)
- M: Gerd Hoffmann <kraxel@redhat.com>
+ ACPI/SMBIOS
+ M: Michael S. Tsirkin <mst@redhat.com>
 -- 
 2.14.1
 
