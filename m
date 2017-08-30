@@ -1,67 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnAxc-00059e-6Y
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 17:55:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48662)
+	id 1dnAxf-0005CY-OL
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 17:55:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48702)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxa-00059W-Ns
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:55:43 -0400
+	id 1dnAxd-0005AY-K8
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:55:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxX-0007Qe-IG
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:55:42 -0400
-Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:34962)
+	id 1dnAxc-0007Vs-Rd
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 17:55:45 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35372)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dnAxX-0007Pt-E1; Wed, 30 Aug 2017 17:55:39 -0400
-Received: by mail-qt0-x231.google.com with SMTP id x36so33047116qtx.2;
-	Wed, 30 Aug 2017 14:55:39 -0700 (PDT)
+	id 1dnAxa-0007RW-3e; Wed, 30 Aug 2017 17:55:42 -0400
+Received: by mail-qt0-x242.google.com with SMTP id u11so6269513qtu.2;
+	Wed, 30 Aug 2017 14:55:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=6rV7ojCzrGH7W+pM5N9ZpbOlC7xSBOBSogSPAtanc9M=;
-	b=BauWsIETNCyYKBEE/kG8GjMPd/ygpP7nCW1ywd8RKx4mKg/woA0YnzOcFIvFaTkabj
-	ZcynoCRNAHaLwKi4o77TmYgVojywMeXvXBKtZOp1Qx3c5eZbD5CMonFikMXpGp/AinxQ
-	tC2T5hGFLgmwouTOxAS6ay1OF+Ns6XDU8w2/zMBxa7B1aqZ/YSF9ivryWPluSiyTCBiq
-	e4k4DPF4O9aNJDrvjXvLk7HxQNAWTk9FVdlhrVSWTSY+lpW9ti0OfnbzAgmc9GT+jcVB
-	S9dzNaNviCMtvwXCauuaxX6YmFf4rxfQwoSVvybDfVVEZ7OvAjtrMgllMf98MOcjkNIr
-	Sf4A==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=i7DICPMjD1LkEeBKl04nBKD47wy864nsi72KEboM26o=;
+	b=jeh3tYU5epWh1U64H/vTahGgKgs+DJG6mmQxFBOr210l6E6NQlu7L2IyenFwj8Ye9F
+	7yTXuKiS2gAEu4Rawupf5u0Gl/ktL7Z7GalfrjqMKCbf1Q2oR+rrVR9xmZ/Fg+YFoJ3v
+	aYteg3ZsGNNQ1LSt9CDP+OLce43FvgWMYN4MG23RjFvZ8vv/sxji1ZaTERZ4PnOUpWdS
+	yQFmT1nKuzAGY7vnBDw2PnI1H05+DfssdUdTeaN7BkyIVa74+YdbXrWECw2bkWw7Mq7N
+	qg2k3k28bK9D1fKqtOS+82aRwqOdEZI8gYRgYArcD+KeyuRK173jU07mdWpdZwbvbNHT
+	Rjfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=6rV7ojCzrGH7W+pM5N9ZpbOlC7xSBOBSogSPAtanc9M=;
-	b=C+jKNnqvPwgB8QDm0K1mXbe1vm0CVXqIPo1zQObnfOc2PbiS5WILDG4jOebvDa2wx+
-	I/z6x23lOn0ArIIGLbeG8pWV6uKDTR2UX7n56wBa6HtuR6XHS3L2qk4MkufWz7dGa01L
-	knCHNe3f9VAeQAcp8NXYIvo5rgE7LCISHCwLBlMlqml1gUTMLokGLCFXCnevQocam9Lu
-	zhpkm9nyWG8rnYrJL9rDIVr2BN/7SUFJ4Vrk23blJiVACr0wqfewk1+bUMU8d+gwhR3N
-	cvUowpQtkpy9iREIAD+c/6jzCcO0xR7hzXGTBNHFmY045RSWLlXFlQac0ChCSSFpFk0t
-	8vqA==
-X-Gm-Message-State: AHYfb5hqYDCEGJErcyV3+1okNuIspJ+RRfb0rDwt+9ZtIUZ3yZHP0Xag
-	B5QZHBOMemw9CDFMc6NjtQ==
-X-Received: by 10.237.62.92 with SMTP id m28mr4050886qtf.235.1504130138509;
-	Wed, 30 Aug 2017 14:55:38 -0700 (PDT)
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=i7DICPMjD1LkEeBKl04nBKD47wy864nsi72KEboM26o=;
+	b=uEN0e1oLYJ2DHWr359ybdA1cxEceBZCFeR1X7hih8X6w6ZvEOSPoNbwoMewkDVFClX
+	HUDKPnGMYCtvbGaHFb3/6yH4+w2tigX7a6Ie/AcmaA14YpIMFV6Bu2AVz/b8dzGIeQ5x
+	KEoiRviRjuSQOyw6w/1FNrP99PY1i3LYeOr+19rX2GBk2VykKMiZh2wlFodpsvumrc/+
+	oygYzA7MJSv1Uix+A6IuucfvaLx5PQGwv3wNCXSr/p6Nr07PhZQoRVm8UZOP8FvrkisD
+	ZNqBu6aQ3VZMUfjvlC0iaZoAaOXBqlw5C5OZG8Lb0u/zQqNgqr96DCRjOg7Z02YG6VEp
+	0TuQ==
+X-Gm-Message-State: AHYfb5hIsyZZ9I0uvoCLBuiZ2ItN8ztjn9Fym/jHupIDI01qul/rmjmT
+	tWrfb1bYVKv0zA==
+X-Received: by 10.200.22.34 with SMTP id p31mr4388556qtj.310.1504130141468;
+	Wed, 30 Aug 2017 14:55:41 -0700 (PDT)
 Received: from yoga.offpageads.com ([181.93.89.178])
 	by smtp.gmail.com with ESMTPSA id
-	w131sm4298690qkb.85.2017.08.30.14.55.36
+	w131sm4298690qkb.85.2017.08.30.14.55.38
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Aug 2017 14:55:37 -0700 (PDT)
+	Wed, 30 Aug 2017 14:55:40 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Date: Wed, 30 Aug 2017 18:55:06 -0300
-Message-Id: <20170830215523.25278-1-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Date: Wed, 30 Aug 2017 18:55:07 -0300
+Message-Id: <20170830215523.25278-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20170830215523.25278-1-f4bug@amsat.org>
+References: <20170830215523.25278-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::231
-Subject: [Qemu-trivial] [PATCH v2 00/17] add missing entries in MAINTAINERS
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v2 01/17] MAINTAINERS: add missing ARM entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,47 +76,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Aug 2017 21:55:43 -0000
+X-List-Received-Date: Wed, 30 Aug 2017 21:55:46 -0000
 
-Hi,
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ MAINTAINERS | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-I tried to have a more helpful ./scripts/get_maintainer.pl output, filling
-missing entries in MAINTAINERS.
-
-Regards,
-
-Phil.
-
-v2:
-- add R-b & A-b
-- clean ARM entries (Thomas Huth)
-- moved files: comment since which commit (Eric Blake)
-- drop inconsistent patches (default-configs.mak related to hw/machine, no CPU)
-- drop unhappy patches (include/standard-headers/linux/*)
-- drop unreplied patches
-
-Philippe Mathieu-Daudé (17):
-  MAINTAINERS: add missing ARM entries
-  MAINTAINERS: add missing Versatile PB entry
-  MAINTAINERS: add missing STM32 entry
-  MAINTAINERS: add missing entry for vhost
-  MAINTAINERS: add missing VMWare entry
-  MAINTAINERS: add missing Guest Agent entries
-  MAINTAINERS: add missing qcow2 entry
-  MAINTAINERS: add missing USB entry
-  MAINTAINERS: add missing PCI entries
-  MAINTAINERS: add missing SSI entries
-  MAINTAINERS: add missing entries for throttling infra
-  MAINTAINERS: add missing megasas test entry
-  MAINTAINERS: add missing AIO entry
-  MAINTAINERS: add missing entry for Generic Loader
-  MAINTAINERS: add missing Cryptography entry
-  MAINTAINERS: update docs/devel/ entries
-  MAINTAINERS: update docs/interop/ entries
-
- MAINTAINERS | 44 ++++++++++++++++++++++++++++++++++----------
- 1 file changed, 34 insertions(+), 10 deletions(-)
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ccee28b12d..b363e1b9c9 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -380,6 +380,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/char/pl011.c
++F: include/hw/char/pl011.h
+ F: hw/display/pl110*
+ F: hw/dma/pl080.c
+ F: hw/dma/pl330.c
+@@ -403,13 +404,15 @@ F: hw/intc/gic_internal.h
+ F: hw/misc/a9scu.c
+ F: hw/misc/arm11scu.c
+ F: hw/timer/a9gtimer*
+-F: hw/timer/arm_*
+-F: include/hw/arm/arm.h
++F: hw/timer/arm*
++F: include/hw/arm/arm*.h
+ F: include/hw/intc/arm*
+ F: include/hw/misc/a9scu.h
+ F: include/hw/misc/arm11scu.h
+ F: include/hw/timer/a9gtimer.h
+ F: include/hw/timer/arm_mptimer.h
++F: include/hw/timer/armv7m_systick.h
++F: tests/test-arm-mptimer.c
+ 
+ Exynos
+ M: Igor Mitsyanko <i.mitsyanko@gmail.com>
 -- 
 2.14.1
 
