@@ -1,62 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dn4Su-0003vM-MK
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 10:59:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53353)
+	id 1dn4c8-0001JN-Qk
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Aug 2017 11:09:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56729)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dn4So-0003pr-1g
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 10:59:35 -0400
+	(envelope-from <cohuck@redhat.com>) id 1dn4c6-0001Hn-PG
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 11:09:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dn4Sn-0003sC-Co
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 10:59:30 -0400
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:33590)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dn4Sn-0003ra-5d
-	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 10:59:29 -0400
-Received: by mail-wr0-x232.google.com with SMTP id k94so19312626wrc.0
-	for <qemu-trivial@nongnu.org>; Wed, 30 Aug 2017 07:59:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=29PJUV4JWxbuxmdC2rrWSkNy5lGJgN5ywIOzbgbl2ig=;
-	b=VW87E4e60N3wrt+LMOOMF9yJyyt0+R5acU2CrtD4QwMKHuMdrfIEE1Wm4b68u8bIzU
-	HovbntMGURBT+hFt/9AcaOlIRwYs2qo1hz7+jRccjP2EMmNXamRYVuN7YhYRFuSFKb4b
-	PA9yG0zguhU4vFt3NRHXoV/5HvwSi1N1oCh9A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=29PJUV4JWxbuxmdC2rrWSkNy5lGJgN5ywIOzbgbl2ig=;
-	b=lMz5GrDn0L/Soh0WGej9jVMiZws0Gn2157xLsnS0Z1//uOszghHYP9WILRWxx0HM60
-	vLJ3LdtVs92HXLrjl3iGDgH8QhKuoFh9tWJ2JxsUvIEjJFuXX1vaKDwFZCw111ICRTxc
-	viZVO1mB1cos8LQh1PD7PL2M0xPKNmR87JF06N7h/AeybxbqbPGRX64hRsoQ954xKNsz
-	TJCbL3seYgPTKy4M1Qg8CHSA2ccwhqLmutcxFTQwiks9W9Cabqt0vkBwdmllCgrDJ+1S
-	EC51/UkEs50YEU/oklU2FbeAa9ppLx+IQlF/uoeDoeX58i3ECYMawP4oIYQYc9APQCcQ
-	Uorg==
-X-Gm-Message-State: AHYfb5hjwG1RhPiuDmCsw0wPbnyQvx8AML6IApXS3Q1atwzhSP0xVBhR
-	Ogbgzebmmhyc02PMKJSR7+WKuYMd+gV0
-X-Received: by 10.223.132.98 with SMTP id 89mr1138193wrf.97.1504105167931;
-	Wed, 30 Aug 2017 07:59:27 -0700 (PDT)
+	(envelope-from <cohuck@redhat.com>) id 1dn4c5-0007uK-TH
+	for qemu-trivial@nongnu.org; Wed, 30 Aug 2017 11:09:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53668)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1dn4by-0007qO-8h; Wed, 30 Aug 2017 11:08:58 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1601AC0587D1;
+	Wed, 30 Aug 2017 15:08:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 1601AC0587D1
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=cohuck@redhat.com
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EB81291552;
+	Wed, 30 Aug 2017 15:08:52 +0000 (UTC)
+Date: Wed, 30 Aug 2017 17:08:50 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Laurent Vivier
+	<lvivier@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+	<f4bug@amsat.org>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+	<marcandre.lureau@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20170830170850.631d1f8c.cohuck@redhat.com>
+In-Reply-To: <1504030416-18618-1-git-send-email-thuth@redhat.com>
+References: <1504030416-18618-1-git-send-email-thuth@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Wed, 30 Aug 2017 07:59:07 -0700 (PDT)
-In-Reply-To: <b98a4c56-f386-f827-5aa7-9a00e6fdf790@amsat.org>
-References: <1504100343-26607-1-git-send-email-thuth@redhat.com>
-	<b98a4c56-f386-f827-5aa7-9a00e6fdf790@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 30 Aug 2017 15:59:07 +0100
-Message-ID: <CAFEAcA8O5T5cX8XqBVZqXLt5MPvF7qEcJK8Az2GBei07P0dZGQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <lvivier@redhat.com>,
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::232
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] hw/misc/ivshmem:
- Fix ivshmem_recv_msg() to also work on big endian systems
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 30 Aug 2017 15:08:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] tests: Fix broken
+ ivshmem-server-msi/-irq tests
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,25 +60,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Aug 2017 14:59:36 -0000
+X-List-Received-Date: Wed, 30 Aug 2017 15:09:07 -0000
 
-On 30 August 2017 at 15:53, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> w=
-rote:
-> On 08/30/2017 10:39 AM, Thomas Huth wrote:
->> The problem is that the server side code in ivshmem_server_send_one_msg(=
-)
->> correctly translates all messages IDs into little endian 64-bit values,
->> but the client side code in the ivshmem_recv_msg() function does not swa=
-p
->> the byte order back. Fix it by passing the value through le64_to_cpu().
->
->
-> Yes, we lack BE testing :(
+On Tue, 29 Aug 2017 20:13:36 +0200
+Thomas Huth <thuth@redhat.com> wrote:
 
-My pre-pull-request test set includes s390 and ppc64 bigendian.
-This one was just missed because the 'slow' tests aren't in
-'make check'.
+> Broken with commit b4ba67d9a7025 ("libqos: Change PCI accessors to take
+> opaque BAR handle") a while ago, but nobody noticed since the tests are
+> only run in SPEED=slow mode: The msix_pba_bar is not correctly initialized
+> anymore if bir_pba has the same value as bir_table. With this fix,
+> "make check SPEED=slow" should work fine again.
+> 
+> Fixes: b4ba67d9a702507793c2724e56f98e9b0f7be02b
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/libqos/pci.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 
-thanks
--- PMM
+With that (and "hw/misc/ivshmem: Fix ivshmem_recv_msg() to also work on
+big endian systems"), "make check SPEED=slow" now works for me both on
+x86_64 and s390x, so
+
+Tested-by: Cornelia Huck <cohuck@redhat.com>
 
