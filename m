@@ -1,38 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnO6k-000533-Pi
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 07:58:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36041)
+	id 1dnPdx-0003lE-R0
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 09:36:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59785)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dnO6h-00050F-DI
-	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 07:58:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1dnPdu-0003jm-N8
+	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 09:36:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1dnO6g-0001yB-1T
-	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 07:57:59 -0400
-Resent-Date: Thu, 31 Aug 2017 07:57:59 -0400
-Resent-Message-Id: <E1dnO6g-0001yB-1T@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21410)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1dnO6Z-0001uT-1Q; Thu, 31 Aug 2017 07:57:51 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1504180663530623.9136827280126;
-	Thu, 31 Aug 2017 04:57:43 -0700 (PDT)
-In-Reply-To: <20170831103432.6007-1-marcandre.lureau@redhat.com>
-Message-ID: <150418066169.135.15852304113006184698@b5667b65043c>
-Reply-To: <qemu-devel@nongnu.org>
+	(envelope-from <thuth@redhat.com>) id 1dnPdq-0008Bh-Rd
+	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 09:36:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51765)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dnPdm-0008An-FR; Thu, 31 Aug 2017 09:36:14 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C97A806D1;
+	Thu, 31 Aug 2017 13:36:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6C97A806D1
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.27] (ovpn-116-27.ams2.redhat.com [10.36.116.27])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD9AAB5149;
+	Thu, 31 Aug 2017 13:36:00 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <1503941985-25657-1-git-send-email-thuth@redhat.com>
+	<20170830154803.46bc99fc@nial.brq.redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <0cf2b541-a9da-ddbf-bfe4-fe0bb24327c1@redhat.com>
+Date: Thu, 31 Aug 2017 15:35:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: marcandre.lureau@redhat.com
-Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org, marcandre.lureau@redhat.com
-Date: Thu, 31 Aug 2017 04:57:43 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/29] Code cleanup patches
+In-Reply-To: <20170830154803.46bc99fc@nial.brq.redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 31 Aug 2017 13:36:13 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] tests/bios-tables:
+ Silence some messages with V=1, print them with V=2 only
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,125 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Aug 2017 11:58:01 -0000
+X-List-Received-Date: Thu, 31 Aug 2017 13:36:24 -0000
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAx
-NzA4MzExMDM0MzIuNjAwNy0xLW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0LmNvbQpTdWJqZWN0OiBb
-UWVtdS1kZXZlbF0gW1BVTEwgMDAvMjldIENvZGUgY2xlYW51cCBwYXRjaGVzClR5cGU6IHNlcmll
-cwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0
-b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBj
-b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYu
-cmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdpdCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRC
-QVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRu
-LyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQg
-c2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJh
-Y2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgo
-bisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGlu
-ZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEg
-bmV3IGJyYW5jaCAndGVzdCcKYmZkY2JjNTc2ZSBlZXBybzEwMDogcmVwbGFjZSBnX21hbGxvYygp
-K21lbWNweSgpIHdpdGggZ19tZW1kdXAoKQphMWM0ODU0ZThiIHRlc3QtaW92OiByZXBsYWNlIGdf
-bWFsbG9jKCkrbWVtY3B5KCkgd2l0aCBnX21lbWR1cCgpCjJjNzc2MDg2OTEgaTM4NjogcmVwbGFj
-ZSBnX21hbGxvYygpK21lbWNweSgpIHdpdGggZ19tZW1kdXAoKQo5M2Q5NjQ2OTE0IGkzODY6IGlu
-dHJvZHVjZSBFTEZfTk9URV9TSVpFIG1hY3JvCmZiZDIxYzU4MjkgZGVjbnVtYmVyOiB1c2UgRElW
-X1JPVU5EX1VQCjU2ZjRkOGZkZjgga3ZtOiB1c2UgRElWX1JPVU5EX1VQCmI0ZDNiNjg0ZmIgaTM4
-Ni9kdW1wOiB1c2UgRElWX1JPVU5EX1VQCjgyMjY5OTVhMTcgcHBjOiB1c2UgRElWX1JPVU5EX1VQ
-CmQ5MzYyYzJlZTggbXNpeDogdXNlIERJVl9ST1VORF9VUApkZDdmM2JjYjdiIHVzYi1odWI6IHVz
-ZSBESVZfUk9VTkRfVVAKZDUzNmM2NzMyNCBxMzU6IHVzZSBESVZfUk9VTkRfVVAKMThkMDE1M2Qx
-OSBwaWl4OiB1c2UgRElWX1JPVU5EX1VQCjQ2ZmJkNzI4Y2UgdmlydGlvLXNlcmlhbDogdXNlIERJ
-Vl9ST1VORF9VUApmMWQyZDU0ZTgwIGNvbnNvbGU6IHVzZSBESVZfUk9VTkRfVVAKZDA0ZmVlYjJh
-NSBtb25pdG9yOiB1c2UgRElWX1JPVU5EX1VQCjA0YjdlM2JkOTcgdmlydGlvLWdwdTogdXNlIERJ
-Vl9ST1VORF9VUAphOGNiNDRhNTdjIHZnYTogdXNlIERJVl9ST1VORF9VUAo4OTY3YzRjYjE1IHVp
-OiB1c2UgRElWX1JPVU5EX1VQCjg2ZjFhN2NhN2Mgdm5jOiB1c2UgRElWX1JPVU5EX1VQCjBjM2Q1
-YjdhZmQgdnZmYXQ6IHVzZSBESVZfUk9VTkRfVVAKNDRhNmJjYmVjNyB2cGM6IHVzZSBESVZfUk9V
-TkRfVVAKOTJhZjM3Y2E1YyBxY293MjogdXNlIERJVl9ST1VORF9VUAplZTRmNTY0MmQ5IGRtZzog
-dXNlIERJVl9ST1VORF9VUApiYjZhYWZlNjM5IHBjc3BrOiB1c2UgUUVNVV9BTElHTl9ET1dOCjM0
-MmQ0YzNmMDMgaTgyNTQ6IHVzZSBRRU1VX0FMSUdOX0RPV04KYmFhYmM4NWJhYiB2aG9zdDogdXNl
-IFFFTVVfQUxJR05fRE9XTgo5Y2Q4ZGZkYjEwIHZoZHg6IHVzZSBRRU1VX0FMSUdOX0RPV04KYjQx
-NjRkNjYzOCB2bmM6IHVzZSBRRU1VX0FMSUdOX0RPV04KOTY0NmRmNzg4NSBpMzg2OiB1c2UgUk9V
-TkRfVVAgbWFjcm8KCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMjk6IGkz
-ODY6IHVzZSBST1VORF9VUCBtYWNyby4uLgpDaGVja2luZyBQQVRDSCAyLzI5OiB2bmM6IHVzZSBR
-RU1VX0FMSUdOX0RPV04uLi4KQ2hlY2tpbmcgUEFUQ0ggMy8yOTogdmhkeDogdXNlIFFFTVVfQUxJ
-R05fRE9XTi4uLgpDaGVja2luZyBQQVRDSCA0LzI5OiB2aG9zdDogdXNlIFFFTVVfQUxJR05fRE9X
-Ti4uLgpDaGVja2luZyBQQVRDSCA1LzI5OiBpODI1NDogdXNlIFFFTVVfQUxJR05fRE9XTi4uLgpD
-aGVja2luZyBQQVRDSCA2LzI5OiBwY3NwazogdXNlIFFFTVVfQUxJR05fRE9XTi4uLgpFUlJPUjog
-bGluZSBvdmVyIDkwIGNoYXJhY3RlcnMKIzI1OiBGSUxFOiBody9hdWRpby9wY3Nway5jOjcyOgor
-ICAgICAgICBzLT5zYW1wbGVzID0gKFFFTVVfQUxJR05fRE9XTihQQ1NQS19CVUZfTEVOICogUElU
-X0ZSRVEsIG0pIC8gKFBJVF9GUkVRID4+IDEpICsgMSkgPj4gMTsKCnRvdGFsOiAxIGVycm9ycywg
-MCB3YXJuaW5ncywgOCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVt
-cywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0
-aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJ
-TlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCA3LzI5OiBkbWc6IHVzZSBESVZfUk9VTkRfVVAuLi4K
-Q2hlY2tpbmcgUEFUQ0ggOC8yOTogcWNvdzI6IHVzZSBESVZfUk9VTkRfVVAuLi4KQ2hlY2tpbmcg
-UEFUQ0ggOS8yOTogdnBjOiB1c2UgRElWX1JPVU5EX1VQLi4uCkNoZWNraW5nIFBBVENIIDEwLzI5
-OiB2dmZhdDogdXNlIERJVl9ST1VORF9VUC4uLgpFUlJPUjogIihmb28qKSIgc2hvdWxkIGJlICIo
-Zm9vICopIgojMzU6IEZJTEU6IGJsb2NrL3Z2ZmF0LmM6MjU1NzoKKyAgICAgICAgICAgICh1aW50
-OF90KiljbHVzdGVyLCBESVZfUk9VTkRfVVAocmVzdF9zaXplLCAweDIwMCkpOwoKdG90YWw6IDEg
-ZXJyb3JzLCAwIHdhcm5pbmdzLCAxNiBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHls
-ZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZh
-bHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFU
-Q0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCAxMS8yOTogdm5jOiB1c2UgRElWX1JP
-VU5EX1VQLi4uCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMzODogRklMRTogdWkv
-dm5jLmM6Mjc4NDoKKyAgICAgICAgZ3Vlc3RfbGwgPSBwaXhtYW5faW1hZ2VfZ2V0X3dpZHRoKHZk
-LT5ndWVzdC5mYikgKiAoRElWX1JPVU5EX1VQKGd1ZXN0X2JwcCwgOCkpOwoKdG90YWw6IDAgZXJy
-b3JzLCAxIHdhcm5pbmdzLCAxNiBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBw
-cm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNl
-IHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0gg
-aW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDEyLzI5OiB1aTogdXNlIERJVl9ST1VORF9V
-UC4uLgpDaGVja2luZyBQQVRDSCAxMy8yOTogdmdhOiB1c2UgRElWX1JPVU5EX1VQLi4uCkNoZWNr
-aW5nIFBBVENIIDE0LzI5OiB2aXJ0aW8tZ3B1OiB1c2UgRElWX1JPVU5EX1VQLi4uCkNoZWNraW5n
-IFBBVENIIDE1LzI5OiBtb25pdG9yOiB1c2UgRElWX1JPVU5EX1VQLi4uCkNoZWNraW5nIFBBVENI
-IDE2LzI5OiBjb25zb2xlOiB1c2UgRElWX1JPVU5EX1VQLi4uCkNoZWNraW5nIFBBVENIIDE3LzI5
-OiB2aXJ0aW8tc2VyaWFsOiB1c2UgRElWX1JPVU5EX1VQLi4uCldBUk5JTkc6IGxpbmUgb3ZlciA4
-MCBjaGFyYWN0ZXJzCiM1NDogRklMRTogaHcvY2hhci92aXJ0aW8tc2VyaWFsLWJ1cy5jOjEwNzg6
-CisgICAgdnNlci0+cG9ydHNfbWFwID0gZ19tYWxsb2MwKChESVZfUk9VTkRfVVAodnNlci0+c2Vy
-aWFsLm1heF92aXJ0c2VyaWFsX3BvcnRzLCAzMikpCgp0b3RhbDogMCBlcnJvcnMsIDEgd2Fybmlu
-Z3MsIDMyIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
-c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
-cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
-Uy4KQ2hlY2tpbmcgUEFUQ0ggMTgvMjk6IHBpaXg6IHVzZSBESVZfUk9VTkRfVVAuLi4KQ2hlY2tp
-bmcgUEFUQ0ggMTkvMjk6IHEzNTogdXNlIERJVl9ST1VORF9VUC4uLgpDaGVja2luZyBQQVRDSCAy
-MC8yOTogdXNiLWh1YjogdXNlIERJVl9ST1VORF9VUC4uLgpDaGVja2luZyBQQVRDSCAyMS8yOTog
-bXNpeDogdXNlIERJVl9ST1VORF9VUC4uLgpDaGVja2luZyBQQVRDSCAyMi8yOTogcHBjOiB1c2Ug
-RElWX1JPVU5EX1VQLi4uCkNoZWNraW5nIFBBVENIIDIzLzI5OiBpMzg2L2R1bXA6IHVzZSBESVZf
-Uk9VTkRfVVAuLi4KV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzI3OiBGSUxFOiB0
-YXJnZXQvaTM4Ni9hcmNoX2R1bXAuYzo4MDoKKyAgICBub3RlX3NpemUgPSAoRElWX1JPVU5EX1VQ
-KHNpemVvZihFbGY2NF9OaGRyKSwgNCkgKyBESVZfUk9VTkRfVVAobmFtZV9zaXplLCA0KSArCgpX
-QVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMzg6IEZJTEU6IHRhcmdldC9pMzg2L2Fy
-Y2hfZHVtcC5jOjE1OToKKyAgICBub3RlX3NpemUgPSAoRElWX1JPVU5EX1VQKHNpemVvZihFbGY2
-NF9OaGRyKSwgNCkgKyBESVZfUk9VTkRfVVAobmFtZV9zaXplLCA0KSArCgpXQVJOSU5HOiBsaW5l
-IG92ZXIgODAgY2hhcmFjdGVycwojNDk6IEZJTEU6IHRhcmdldC9pMzg2L2FyY2hfZHVtcC5jOjIx
-NDoKKyAgICBub3RlX3NpemUgPSAoRElWX1JPVU5EX1VQKHNpemVvZihFbGYzMl9OaGRyKSwgNCkg
-KyBESVZfUk9VTkRfVVAobmFtZV9zaXplLCA0KSArCgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hh
-cmFjdGVycwojNzM6IEZJTEU6IHRhcmdldC9pMzg2L2FyY2hfZHVtcC5jOjQ0NjoKKyAgICBlbGZf
-bm90ZV9zaXplID0gKERJVl9ST1VORF9VUChub3RlX2hlYWRfc2l6ZSwgNCkgKyBESVZfUk9VTkRf
-VVAobmFtZV9zaXplLCA0KSArCgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNzU6
-IEZJTEU6IHRhcmdldC9pMzg2L2FyY2hfZHVtcC5jOjQ0ODoKKyAgICBxZW11X25vdGVfc2l6ZSA9
-IChESVZfUk9VTkRfVVAobm90ZV9oZWFkX3NpemUsIDQpICsgRElWX1JPVU5EX1VQKG5hbWVfc2l6
-ZSwgNCkgKwoKdG90YWw6IDAgZXJyb3JzLCA1IHdhcm5pbmdzLCA1NCBsaW5lcyBjaGVja2VkCgpZ
-b3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0
-aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRh
-aW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDI0LzI5
-OiBrdm06IHVzZSBESVZfUk9VTkRfVVAuLi4KQ2hlY2tpbmcgUEFUQ0ggMjUvMjk6IGRlY251bWJl
-cjogdXNlIERJVl9ST1VORF9VUC4uLgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVz
-ZSB0YWJzCiMyNTogRklMRTogbGliZGVjbnVtYmVyL2RlY051bWJlci5jOjQ3Nzg6CiteSSAgICAq
-KHVwLTEpKz1ESVZfUk9VTkRfVVAoREVDRFBVTk1BWCwgMik7JAoKRVJST1I6IHNwYWNlcyByZXF1
-aXJlZCBhcm91bmQgdGhhdCAnLScgKGN0eDpWeFYpCiMyNTogRklMRTogbGliZGVjbnVtYmVyL2Rl
-Y051bWJlci5jOjQ3Nzg6CisJICAgICoodXAtMSkrPURJVl9ST1VORF9VUChERUNEUFVOTUFYLCAy
-KTsKIAkgICAgICAgIF4KCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJys9JyAo
-Y3R4OlZ4VikKIzI1OiBGSUxFOiBsaWJkZWNudW1iZXIvZGVjTnVtYmVyLmM6NDc3ODoKKwkgICAg
-Kih1cC0xKSs9RElWX1JPVU5EX1VQKERFQ0RQVU5NQVgsIDIpOwogCSAgICAgICAgICAgXgoKdG90
-YWw6IDMgZXJyb3JzLCAwIHdhcm5pbmdzLCA4IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFz
-IHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwph
-cmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hF
-Q0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDI2LzI5OiBpMzg2OiBpbnRy
-b2R1Y2UgRUxGX05PVEVfU0laRSBtYWNyby4uLgpDaGVja2luZyBQQVRDSCAyNy8yOTogaTM4Njog
-cmVwbGFjZSBnX21hbGxvYygpK21lbWNweSgpIHdpdGggZ19tZW1kdXAoKS4uLgpDaGVja2luZyBQ
-QVRDSCAyOC8yOTogdGVzdC1pb3Y6IHJlcGxhY2UgZ19tYWxsb2MoKSttZW1jcHkoKSB3aXRoIGdf
-bWVtZHVwKCkuLi4KQ2hlY2tpbmcgUEFUQ0ggMjkvMjk6IGVlcHJvMTAwOiByZXBsYWNlIGdfbWFs
-bG9jKCkrbWVtY3B5KCkgd2l0aCBnX21lbWR1cCgpLi4uCj09PSBPVVRQVVQgRU5EID09PQoKVGVz
-dCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9t
-YXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlv
-dXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
+On 30.08.2017 15:48, Igor Mammedov wrote:
+> On Mon, 28 Aug 2017 19:39:45 +0200
+> Thomas Huth <thuth@redhat.com> wrote:
+> 
+>> When running "make check-qtest-x86_64 V=1", the output is currently flooded
+>> with "Looking for expected file ..." and "Using expected file ..." messages.
+>> None of the other tests is doing that with V=1, so this is a little bit
+>> annoying. Let's only print these debug messages when we're running the test
+>> with V=2 or higher.
+> well, normally make check is run without V=
+> and if someone once in a while need to run it in verbose mode,
+> he/she can tolerate it since it's a verbose mode after all.
+> 
+> Hiding message behind V=XX is going to make us remember/recall
+> at which verbosity level one needs to run tests to get needed
+> diagnostic info.
+> 
+> I'd rather keep it as it is now.
 
+Well, I love to run the tests with V=1, especially as soon as one of the
+tests hangs. But the output of the bios-tables-test really breaks the
+well-formatted output of the test framework in that case, so adding a
+V=2 debug level is IMHO a good idea. But if I'm the only who's annoyed
+by the current output of the bios-tables-test, feel free to ignore me ;-)
+
+ Thomas
 
