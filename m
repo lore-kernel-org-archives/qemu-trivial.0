@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnMq5-0003DA-J3
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 06:36:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42048)
+	id 1dnMqC-0003KN-MK
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 06:36:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpx-000380-Ni
-	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:41 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMq8-0003GE-Eu
+	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpw-0006gi-Mr
-	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55062)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMq7-0006lo-Jt
+	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42990)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1dnMpu-0006d2-7V; Thu, 31 Aug 2017 06:36:34 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1dnMq0-0006i8-S9; Thu, 31 Aug 2017 06:36:40 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3E3BF80F79;
-	Thu, 31 Aug 2017 10:36:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3E3BF80F79
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id CE5E2883BF;
+	Thu, 31 Aug 2017 10:36:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CE5E2883BF
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=marcandre.lureau@redhat.com
 Received: from localhost (ovpn-112-36.ams2.redhat.com [10.36.112.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DD5B177DCE;
-	Thu, 31 Aug 2017 10:36:30 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CCC2A92D27;
+	Thu, 31 Aug 2017 10:36:34 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Date: Thu, 31 Aug 2017 12:34:29 +0200
-Message-Id: <20170831103432.6007-27-marcandre.lureau@redhat.com>
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Date: Thu, 31 Aug 2017 12:34:30 +0200
+Message-Id: <20170831103432.6007-28-marcandre.lureau@redhat.com>
 In-Reply-To: <20170831103432.6007-1-marcandre.lureau@redhat.com>
 References: <20170831103432.6007-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 31 Aug 2017 10:36:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 31 Aug 2017 10:36:40 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PULL 26/29] i386: introduce ELF_NOTE_SIZE macro
+Subject: [Qemu-trivial] [PULL 27/29] i386: replace g_malloc()+memcpy() with
+ g_memdup()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,87 +60,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Aug 2017 10:36:41 -0000
+X-List-Received-Date: Thu, 31 Aug 2017 10:36:51 -0000
 
-Factour out a common pattern to compute the ELF note size.
+I found these pattern via grepping the source tree. I don't have a
+coccinelle script for it!
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 ---
- target/i386/arch_dump.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ hw/i386/multiboot.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/target/i386/arch_dump.c b/target/i386/arch_dump.c
-index e081f677fa..e682904052 100644
---- a/target/i386/arch_dump.c
-+++ b/target/i386/arch_dump.c
-@@ -18,6 +18,11 @@
- #include "elf.h"
- #include "sysemu/memory_mapping.h"
+diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
+index f13e23139b..6001f4caa2 100644
+--- a/hw/i386/multiboot.c
++++ b/hw/i386/multiboot.c
+@@ -352,8 +352,7 @@ int load_multiboot(FWCfgState *fw_cfg,
+     mb_debug("           mb_mods_count =3D %d\n", mbs.mb_mods_count);
 =20
-+#define ELF_NOTE_SIZE(hdr_size, name_size, desc_size)   \
-+    ((DIV_ROUND_UP((hdr_size), 4)                       \
-+      + DIV_ROUND_UP((name_size), 4)                    \
-+      + DIV_ROUND_UP((desc_size), 4)) * 4)
-+
- #ifdef TARGET_X86_64
- typedef struct {
-     target_ulong r15, r14, r13, r12, rbp, rbx, r11, r10;
-@@ -77,8 +82,7 @@ static int x86_64_write_elf64_note(WriteCoreDumpFunctio=
-n f,
-     regs.gs =3D env->segs[R_GS].selector;
+     /* save bootinfo off the stack */
+-    mb_bootinfo_data =3D g_malloc(sizeof(bootinfo));
+-    memcpy(mb_bootinfo_data, bootinfo, sizeof(bootinfo));
++    mb_bootinfo_data =3D g_memdup(bootinfo, sizeof(bootinfo));
 =20
-     descsz =3D sizeof(x86_64_elf_prstatus);
--    note_size =3D (DIV_ROUND_UP(sizeof(Elf64_Nhdr), 4) + DIV_ROUND_UP(na=
-me_size, 4) +
--                DIV_ROUND_UP(descsz, 4)) * 4;
-+    note_size =3D ELF_NOTE_SIZE(sizeof(Elf64_Nhdr), name_size, descsz);
-     note =3D g_malloc0(note_size);
-     note->n_namesz =3D cpu_to_le32(name_size);
-     note->n_descsz =3D cpu_to_le32(descsz);
-@@ -156,8 +160,7 @@ static int x86_write_elf64_note(WriteCoreDumpFunction=
- f, CPUX86State *env,
-=20
-     x86_fill_elf_prstatus(&prstatus, env, id);
-     descsz =3D sizeof(x86_elf_prstatus);
--    note_size =3D (DIV_ROUND_UP(sizeof(Elf64_Nhdr), 4) + DIV_ROUND_UP(na=
-me_size, 4) +
--                DIV_ROUND_UP(descsz, 4)) * 4;
-+    note_size =3D ELF_NOTE_SIZE(sizeof(Elf64_Nhdr), name_size, descsz);
-     note =3D g_malloc0(note_size);
-     note->n_namesz =3D cpu_to_le32(name_size);
-     note->n_descsz =3D cpu_to_le32(descsz);
-@@ -211,8 +214,7 @@ int x86_cpu_write_elf32_note(WriteCoreDumpFunction f,=
- CPUState *cs,
-=20
-     x86_fill_elf_prstatus(&prstatus, &cpu->env, cpuid);
-     descsz =3D sizeof(x86_elf_prstatus);
--    note_size =3D (DIV_ROUND_UP(sizeof(Elf32_Nhdr), 4) + DIV_ROUND_UP(na=
-me_size, 4) +
--                DIV_ROUND_UP(descsz, 4)) * 4;
-+    note_size =3D ELF_NOTE_SIZE(sizeof(Elf32_Nhdr), name_size, descsz);
-     note =3D g_malloc0(note_size);
-     note->n_namesz =3D cpu_to_le32(name_size);
-     note->n_descsz =3D cpu_to_le32(descsz);
-@@ -443,10 +445,8 @@ ssize_t cpu_get_note_size(int class, int machine, in=
-t nr_cpus)
- #endif
-     qemu_desc_size =3D sizeof(QEMUCPUState);
-=20
--    elf_note_size =3D (DIV_ROUND_UP(note_head_size, 4) + DIV_ROUND_UP(na=
-me_size, 4) +
--                     DIV_ROUND_UP(elf_desc_size, 4)) * 4;
--    qemu_note_size =3D (DIV_ROUND_UP(note_head_size, 4) + DIV_ROUND_UP(n=
-ame_size, 4) +
--                      DIV_ROUND_UP(qemu_desc_size, 4)) * 4;
-+    elf_note_size =3D ELF_NOTE_SIZE(note_head_size, name_size, elf_desc_=
-size);
-+    qemu_note_size =3D ELF_NOTE_SIZE(note_head_size, name_size, qemu_des=
-c_size);
-=20
-     return (elf_note_size + qemu_note_size) * nr_cpus;
- }
+     /* Pass variables to option rom */
+     fw_cfg_add_i32(fw_cfg, FW_CFG_KERNEL_ENTRY, mh_entry_addr);
 --=20
 2.14.1.146.gd35faa819
 
