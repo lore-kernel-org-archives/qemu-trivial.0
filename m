@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnMq2-00039z-95
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 06:36:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42009)
+	id 1dnMq3-0003BH-I6
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Aug 2017 06:36:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42017)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpw-000362-1C
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpw-00036F-5g
 	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpv-0006f9-04
+	(envelope-from <marcandre.lureau@redhat.com>) id 1dnMpv-0006fd-9U
 	for qemu-trivial@nongnu.org; Thu, 31 Aug 2017 06:36:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59250)
+Received: from mx1.redhat.com ([209.132.183.28]:59046)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1dnMpr-0006Ya-2j; Thu, 31 Aug 2017 06:36:31 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1dnMpq-0006Xi-H6; Thu, 31 Aug 2017 06:36:30 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 129B6356D4;
-	Thu, 31 Aug 2017 10:36:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 129B6356D4
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 3BDFAC047B68;
+	Thu, 31 Aug 2017 10:36:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3BDFAC047B68
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	spf=fail smtp.mailfrom=marcandre.lureau@redhat.com
 Received: from localhost (ovpn-112-36.ams2.redhat.com [10.36.112.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BE77C92B93;
-	Thu, 31 Aug 2017 10:36:26 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D4EAD841C7;
+	Thu, 31 Aug 2017 10:36:24 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Date: Thu, 31 Aug 2017 12:34:28 +0200
-Message-Id: <20170831103432.6007-26-marcandre.lureau@redhat.com>
+Date: Thu, 31 Aug 2017 12:34:27 +0200
+Message-Id: <20170831103432.6007-25-marcandre.lureau@redhat.com>
 In-Reply-To: <20170831103432.6007-1-marcandre.lureau@redhat.com>
 References: <20170831103432.6007-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 31 Aug 2017 10:36:29 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 31 Aug 2017 10:36:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PULL 25/29] decnumber: use DIV_ROUND_UP
+Subject: [Qemu-trivial] [PULL 24/29] kvm: use DIV_ROUND_UP
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,22 +64,22 @@ https://github.com/elmarco/clang-tools-extra
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Richard Henderson <rth@twiddle.net>
 ---
- libdecnumber/decNumber.c | 2 +-
+ linux-headers/asm-x86/kvm.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
-index c9e7807f87..8c197023f4 100644
---- a/libdecnumber/decNumber.c
-+++ b/libdecnumber/decNumber.c
-@@ -4775,7 +4775,7 @@ static decNumber * decDivideOp(decNumber *res,
- 	    half=3D*up & 0x01;
- 	    *up/=3D2;		   /* [shift] */
- 	    if (!half) continue;
--	    *(up-1)+=3D(DECDPUNMAX+1)/2;
-+	    *(up-1)+=3DDIV_ROUND_UP(DECDPUNMAX, 2);
- 	    }
- 	  /* [accunits still describes the original remainder length] */
+diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
+index c2824d02ba..1930b95bcb 100644
+--- a/linux-headers/asm-x86/kvm.h
++++ b/linux-headers/asm-x86/kvm.h
+@@ -153,7 +153,7 @@ struct kvm_sregs {
+ 	__u64 cr0, cr2, cr3, cr4, cr8;
+ 	__u64 efer;
+ 	__u64 apic_base;
+-	__u64 interrupt_bitmap[(KVM_NR_INTERRUPTS + 63) / 64];
++	__u64 interrupt_bitmap[DIV_ROUND_UP(KVM_NR_INTERRUPTS, 64)];
+ };
 =20
+ /* for KVM_GET_FPU and KVM_SET_FPU */
 --=20
 2.14.1.146.gd35faa819
 
