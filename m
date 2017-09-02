@@ -1,53 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dnrda-0000tQ-Tz
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Sep 2017 15:29:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40853)
+	id 1do4X9-0007rK-Nw
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Sep 2017 05:16:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47966)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1dnrdW-0000pb-EG
-	for qemu-trivial@nongnu.org; Fri, 01 Sep 2017 15:29:53 -0400
+	(envelope-from <aurelien@aurel32.net>) id 1do4Wz-0007lZ-Hr
+	for qemu-trivial@nongnu.org; Sat, 02 Sep 2017 05:16:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1dnrdR-0007UL-Nn
-	for qemu-trivial@nongnu.org; Fri, 01 Sep 2017 15:29:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:4506)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1dnrdD-0007LR-L0; Fri, 01 Sep 2017 15:29:31 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AC7DA7EA9D;
-	Fri,  1 Sep 2017 19:29:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com AC7DA7EA9D
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=jsnow@redhat.com
-Received: from [10.18.17.130] (dhcp-17-130.bos.redhat.com [10.18.17.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5DDFF7BB6D;
-	Fri,  1 Sep 2017 19:29:28 +0000 (UTC)
-To: Eduardo Otubo <otubo@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
-References: <20170901110706.429-1-otubo@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <af65a01a-d4a5-e043-b222-87bbaf797d2a@redhat.com>
-Date: Fri, 1 Sep 2017 15:29:27 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(envelope-from <aurelien@aurel32.net>) id 1do4Wu-0005PK-Ts
+	for qemu-trivial@nongnu.org; Sat, 02 Sep 2017 05:15:57 -0400
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1]:35460)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <aurelien@aurel32.net>)
+	id 1do4Wk-00055u-TD; Sat, 02 Sep 2017 05:15:43 -0400
+Received: from [2001:bc8:30d7:120:9bb5:8936:7e6a:9e36] (helo=ohm.rr44.fr)
+	by hall.aurel32.net with esmtpsa
+	(TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1do4WP-0003lS-Mb; Sat, 02 Sep 2017 11:15:21 +0200
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.89)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1do4WO-00041G-QD; Sat, 02 Sep 2017 11:15:20 +0200
+Date: Sat, 2 Sep 2017 11:15:20 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Eduardo Otubo <otubo@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, mst@redhat.com, pbonzini@redhat.com,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alexander Graf <agraf@suse.de>, qemu-ppc@nongnu.org
+Message-ID: <20170902091520.bxecfhisvy46o4cb@aurel32.net>
+References: <20170901110332.32650-1-otubo@redhat.com>
+	<20170901143016.GK7570@localhost.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20170901110706.429-1-otubo@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 01 Sep 2017 19:29:30 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] isa-fdc: assert replaced by
- proper error exit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170901143016.GK7570@localhost.localdomain>
+User-Agent: NeoMutt/20170609 (1.8.3)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:bc8:30d7:100::1
+Subject: Re: [Qemu-trivial] [PATCH] dma/i82374: avoid double creation of
+ i82374 device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,51 +51,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Sep 2017 19:29:53 -0000
+X-List-Received-Date: Sat, 02 Sep 2017 09:16:02 -0000
 
+On 2017-09-01 11:30, Eduardo Habkost wrote:
+> i82374 is compiled in only on ppc and sh4, so I'm CCing the
+> maintainers for those architectures.
 
+The i82374 device is not useful nor usable on SH4. It has just been
+added in commit 85d3846a39 to be able to run the tests.
 
-On 09/01/2017 07:07 AM, Eduardo Otubo wrote:
-> When not available, isa-fdc falls into assert instead of proper error
-> exit. This patch fixes this behavior.
-> 
-> Signed-off-by: Eduardo Otubo <otubo@redhat.com>
-> ---
->  hw/block/fdc.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
-> index 401129073b..0b6def4e1d 100644
-> --- a/hw/block/fdc.c
-> +++ b/hw/block/fdc.c
-> @@ -2699,11 +2699,15 @@ static void isabus_fdc_realize(DeviceState *dev, Error **errp)
->      fdctrl->dma_chann = isa->dma;
->      if (fdctrl->dma_chann != -1) {
->          fdctrl->dma = isa_get_dma(isa_bus_from_device(isadev), isa->dma);
-> -        assert(fdctrl->dma);
-> +        if (!fdctrl->dma) {
-> +            error_setg(errp, "isa-fdc not supported");
-> +            goto error;
-> +        }
->      }
->  
->      qdev_set_legacy_instance_id(dev, isa->iobase, 2);
->      fdctrl_realize_common(dev, fdctrl, &err);
-> +error:
->      if (err != NULL) {
->          error_propagate(errp, err);
->          return;
-> 
+Aurelien
 
-I was going to ask if we needn't take care of undoing the portio or IRQ
-registration, but it turns out that there is not one single caller of
-portio_list_destroy in all of QEMU...
-
-Paolo admitted as much in e3fb0ade83420a86464ee50c71f2daf5641cab10 when
-he updated the destroy function :)
-
-It looks like the way we assign IRQs to ISA devices is kind of simple
-and not trivial to undo correctly, so instead of barking up that tree,
-why don't we hoist the isa_get_dma call up and fail before we try to
-initialize portio or IRQs?
+-- 
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
