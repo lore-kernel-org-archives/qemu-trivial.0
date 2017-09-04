@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1doldY-0003p4-6r
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Sep 2017 03:17:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45551)
+	id 1donkP-0007FW-BD
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Sep 2017 05:32:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1doldW-0003nt-B4
-	for qemu-trivial@nongnu.org; Mon, 04 Sep 2017 03:17:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1donkI-0007CK-H0
+	for qemu-trivial@nongnu.org; Mon, 04 Sep 2017 05:32:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1doldV-0001fv-C1
-	for qemu-trivial@nongnu.org; Mon, 04 Sep 2017 03:17:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55526)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1doldQ-0001ak-Qj; Mon, 04 Sep 2017 03:17:28 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CE735806A1;
-	Mon,  4 Sep 2017 07:17:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CE735806A1
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 047A417136;
-	Mon,  4 Sep 2017 07:17:22 +0000 (UTC)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <1504030416-18618-1-git-send-email-thuth@redhat.com>
-	<eb148e1c-6cfa-b871-c201-de3f3565e4c8@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <b60993f4-a20e-fdca-283d-089f272bb4cd@redhat.com>
-Date: Mon, 4 Sep 2017 09:17:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1donkD-0007jz-Rv
+	for qemu-trivial@nongnu.org; Mon, 04 Sep 2017 05:32:42 -0400
+Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:34787)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1donkD-0007jg-Jk
+	for qemu-trivial@nongnu.org; Mon, 04 Sep 2017 05:32:37 -0400
+Received: by mail-wm0-x234.google.com with SMTP id 137so14323817wmj.1
+	for <qemu-trivial@nongnu.org>; Mon, 04 Sep 2017 02:32:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6f1R0pHz1Gzcf+HWU6nVD5gKJA28M5ARnbtbJb0MkhI=;
+	b=Zq8IWex3EPoCZaF7QOvY+Kravmul9vlqoRodHqjm5X2vHjOTjFnTSxc+LqL9NNBbkJ
+	A9IbX85+/ysrPtAuYJRp7/a4lfNzjYZPjr6sixHHcXJ9HkgoQoZt0OEmqSRuvVVSLMIa
+	PEVx/PJOyIidl6CDhL5X4HVXYJxArOSeFG5I4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6f1R0pHz1Gzcf+HWU6nVD5gKJA28M5ARnbtbJb0MkhI=;
+	b=XS/SV7OaCOzzOx2WiKuOcO9c4YU0BM9VVTPoeDFWymjXGU6NtXwuFlGM+uaid4rk9+
+	/ACprenz52EDV+3OA+j5Nx4G/+mWYBuGJneJOBLtLn4x1ffKQhKOMUs2EnYBanKy+4lu
+	HS96GQzM95F5ujD53bpIB7eN9Xeyky7iB2h3zbsgQPpe1MKGD2dSzVTXpOMWSpzuTFX2
+	N8qSz7TvmrDXS+uBIWB6w8TMFfIRJnn2bC+IzC3er8NT4a1I27MRVuzrzPw1KSE1e259
+	BctTIZIAb+83prvlRZyzrgRGnqgekcDcWhihibDRHmtesrKXe7kaElfnfDMNaebqQyYJ
+	8oTw==
+X-Gm-Message-State: AHPjjUgygQAPx+0tVv8jZQ8VLJq75U/gyq9jj0s95WxrzaWMSuwHRD4Z
+	YKbMswQ2LwdS0ngAr7wei10JXb5Vj+cE
+X-Google-Smtp-Source: ADKCNb6WwnJOzRcE3J3lGpCKb6Q3tYelTpu2VuqnNXKKUTF5wRPuCVIoxdHhnR1DE7v/BZ+3YW4vEuDjuScCTC+AmlM=
+X-Received: by 10.28.58.199 with SMTP id h190mr3071148wma.82.1504517556313;
+	Mon, 04 Sep 2017 02:32:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <eb148e1c-6cfa-b871-c201-de3f3565e4c8@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 04 Sep 2017 07:17:26 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for-2.11] tests: Fix broken
- ivshmem-server-msi/-irq tests
+Received: by 10.223.159.68 with HTTP; Mon, 4 Sep 2017 02:32:15 -0700 (PDT)
+In-Reply-To: <20170903164952.26760-1-n54@gmx.com>
+References: <20170903164952.26760-1-n54@gmx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Sep 2017 10:32:15 +0100
+Message-ID: <CAFEAcA-wB8JezCNjyU92U83+75C5NccfBHe1G5q-D67H4CMTKA@mail.gmail.com>
+To: Kamil Rytarowski <n54@gmx.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::234
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Do not include lutil
+ on SunOS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,60 +64,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Sep 2017 07:17:35 -0000
+X-List-Received-Date: Mon, 04 Sep 2017 09:32:47 -0000
 
-On 04.09.2017 08:53, Laurent Vivier wrote:
-> On 29/08/2017 20:13, Thomas Huth wrote:
->> Broken with commit b4ba67d9a7025 ("libqos: Change PCI accessors to take
->> opaque BAR handle") a while ago, but nobody noticed since the tests are
->> only run in SPEED=slow mode: The msix_pba_bar is not correctly initialized
-> 
-> you mean "SPEED=quick"?
+On 3 September 2017 at 17:49, Kamil Rytarowski <n54@gmx.com> wrote:
+> This fixes build on SmartOS (Joyent).
+>
+> Patch cherry-picked from pkgsrc by jperkin (Joyent).
+>
+> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+> ---
+>  tests/Makefile.include | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index f08b7418f0..0e5e6cb9b8 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -810,8 +810,10 @@ tests/migration/initrd-stress.img: tests/migration/stress$(EXESUF)
+>         rmdir $(INITRD_WORK_DIR)
+>
+>  ifeq ($(CONFIG_POSIX),y)
+> +ifneq ($(CONFIG_SOLARIS),y)
+>  LIBS += -lutil
+>  endif
+> +endif
 
-Ah, well, that sentence was ambiguous - I meant "nobody noticed since
-the *ivshmem* tests are only run in SPEED=slow mode *and we are running
-the tests in quick mode only by default*".
-Maybe this could be fixed up when the patch is picked up...
+I don't object to this patch in principle, but I don't think
+this is the best way to fix the underlying problem.
 
->> anymore if bir_pba has the same value as bir_table. With this fix,
->> "make check SPEED=slow" should work fine again.
->>
->> Fixes: b4ba67d9a702507793c2724e56f98e9b0f7be02b
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  tests/libqos/pci.c | 7 ++++++-
->>  1 file changed, 6 insertions(+), 1 deletion(-)
->>
->> diff --git a/tests/libqos/pci.c b/tests/libqos/pci.c
->> index 2dcdead..28d576c 100644
->> --- a/tests/libqos/pci.c
->> +++ b/tests/libqos/pci.c
->> @@ -120,6 +120,8 @@ void qpci_msix_enable(QPCIDevice *dev)
->>      bir_pba = table & PCI_MSIX_FLAGS_BIRMASK;
->>      if (bir_pba != bir_table) {
->>          dev->msix_pba_bar = qpci_iomap(dev, bir_pba, NULL);
->> +    } else {
->> +        dev->msix_pba_bar = dev->msix_table_bar;
->>      }
->>      dev->msix_pba_off = table & ~PCI_MSIX_FLAGS_BIRMASK;
->>  
->> @@ -138,8 +140,11 @@ void qpci_msix_disable(QPCIDevice *dev)
->>      qpci_config_writew(dev, addr + PCI_MSIX_FLAGS,
->>                                                  val & ~PCI_MSIX_FLAGS_ENABLE);
->>  
->> +    if (dev->msix_pba_bar.addr != dev->msix_table_bar.addr) {
->> +        qpci_iounmap(dev, dev->msix_pba_bar);
->> +    }
->>      qpci_iounmap(dev, dev->msix_table_bar);
->> -    qpci_iounmap(dev, dev->msix_pba_bar);
->> +
->>      dev->msix_enabled = 0;
->>      dev->msix_table_off = 0;
->>      dev->msix_pba_off = 0;
->>
-> 
-> Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+My assumption is that the issue is that Solaris doesn't
+have a -lutil (it's helpful to quote the linker or
+compiler error message for this kind of patch to clarify
+what the failure is that we're trying to fix).
 
-Thanks!
- Thomas
+It looks like we use libutil here for openpty, which
+is used in the test-char test. But the condition we're
+using in tests/Makefile.include isn't the same as the
+one we used to decide whether to add -lutil to the
+emulator binary link line, which is in configure:
+
+if test "$darwin" != "yes" -a "$mingw32" != "yes" -a "$solaris" != yes -a \
+        "$aix" != "yes" -a "$haiku" != "yes" ; then
+    libs_softmmu="-lutil $libs_softmmu"
+fi
+
+So I think I'd prefer it if we have:
+ * a configure test for "is openpty() in libutil"
+ * use that to determine whether to add -lutil to
+   libs_softmmu and to the libs for tests, rather than
+   doing OS-specific tests
+
+Q: does Solaris still not have an openpty() implementation?
+Currently we have a local implementation in util/qemu-openpty.c,
+but if that workaround is only needed in old Solaris we don't
+support any more we could perhaps drop it.
+
+thanks
+-- PMM
 
