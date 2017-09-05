@@ -1,57 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dpClC-0001bs-LZ
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 08:15:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43329)
+	id 1dpCpO-0002yL-JA
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 08:19:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45120)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dpCl5-0001Wx-Ix
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:15:16 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1dpCpI-0002vs-8s
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:19:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dpCkv-00070c-Vz
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:15:11 -0400
-Received: from mail-oi0-x236.google.com ([2607:f8b0:4003:c06::236]:36211)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dpCke-0006pV-C3; Tue, 05 Sep 2017 08:14:44 -0400
-Received: by mail-oi0-x236.google.com with SMTP id x190so7516912oix.3;
-	Tue, 05 Sep 2017 05:14:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to
-	:content-transfer-encoding;
-	bh=cY5hRczZCcApUoUFFhtEv3ZbLgK164PzRFxH7dcxCvE=;
-	b=dMFVp4cEGJExSGjTI4Qi8qn2X3nFzvDjrprIwzUly8iMEx8v88baaNnQ2b1Zpp4qm2
-	16wOX3Yvw7SdjVbA4UOAqoCdl61fwUo/Zou28NuzSrq9CpJT0/cvPNd/4k984LPJnB45
-	2pYOL1+OQ3RcZNIeakzlRqTRPA4ZiJ3//rRi9m5OJ3PqRDgaqAHuStd6EetIeHv0QmzW
-	DzTySx3dC6SN7VzQ5z2Y1OtPgNgIfBX/QZDtCqzezCL3tib52v+ZO6EOFjH8xWySoMFc
-	RBAy2NQzPoTRq01d4zhYEkNdZl8K3X17ZqKYjJRO2aXFZ82WE016edNRpQmwIdm4+tg3
-	/OqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to
-	:content-transfer-encoding;
-	bh=cY5hRczZCcApUoUFFhtEv3ZbLgK164PzRFxH7dcxCvE=;
-	b=myc+8zYBTqbSdYqotJ9knb46K6lwSjcEB/DzHpZeCcHwb74lmKtHUDDrZcq+1rsPEU
-	Oma61NYFyY111AQ/8h2m3BYYbh/zFpQI1q584K/ErWVht33nHiqLJq6w4IPgRl3mLy+D
-	98o4ESiVgwWL8TbEL7XiIJYC4QaSqax0iUSKT9LC///6YnZZtJh/ognuFTt2P3lZVY7p
-	h8qgNoihgbE7grZW9IwKAiYSsQvB9GCtQn6222MBFw40pkoS0MDxMN9z1vk26wF2D64z
-	7u4zMxPj0KCWcrrSBrbMLyYQOSCZnr8ypPgpRDWiL65l9tXPoAwIAIce428x2rBsxSNv
-	6Ypw==
-X-Gm-Message-State: AHPjjUi0xa4pSJTg41tCtb0iEnG3p7kDssVdkpFiQxstU5/iAMP4vUft
-	iw7dIS+UwOPIGce2N6na0ek9hO9vVww5J0A=
-X-Google-Smtp-Source: ADKCNb7kTJIzyb2rifhzOvTUA4EhRymRxaP/EZvmY5+ie6mXBLQjHpa+Ek2Y/1zUNO/HEQfZgI77d0e1ndD7+PNXV2U=
-X-Received: by 10.202.86.211 with SMTP id k202mr3134073oib.122.1504613683430; 
-	Tue, 05 Sep 2017 05:14:43 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.58.39.139 with HTTP; Tue, 5 Sep 2017 05:14:42 -0700 (PDT)
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 5 Sep 2017 14:14:42 +0200
-Message-ID: <CAJ+F1C+mPu9ftXwgs4UrGTQp4f65-thhvmWoB-kuRmu0=vnFFw@mail.gmail.com>
-To: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <pm215@archaic.org.uk>) id 1dpCpD-0001Wm-Aw
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:19:32 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:37156)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1dpCp3-0001Ry-9r; Tue, 05 Sep 2017 08:19:17 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1dpCp0-0006zf-CH; Tue, 05 Sep 2017 13:19:14 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: patches@linaro.org
+Date: Tue,  5 Sep 2017 13:19:32 +0100
+Message-Id: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::236
-Subject: [Qemu-trivial] clang-tidy: use g_new() family of functions
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-trivial] [PATCH] util/qemu-thread-posix.c: Replace OS ifdefs
+ with CONFIG_HAVE_SEM_TIMEDWAIT
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,51 +38,131 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Sep 2017 12:15:17 -0000
+X-List-Received-Date: Tue, 05 Sep 2017 12:19:37 -0000
 
-Hi,
+In qemu-thread-posix.c we have two implementations of the
+various qemu_sem_* functions, one of which uses native POSIX
+sem_* and the other of which emulates them with pthread conditions.
+This is necessary because not all our host OSes support
+sem_timedwait().
 
-I have a series of changes generated with clang-tidy qemu [1] pending
-for review [2].
+Instead of a hard-coded list of OSes which don't implement
+sem_timedwait(), which gets out of date, make configure
+test for the presence of the function and set a new
+CONFIG_HAVE_SEM_TIMEDWAIT appropriately.
 
-It translates calloc/*malloc*/*realloc() calls to
-g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].
+In particular, newer NetBSDs have sem_timedwait(), so this
+commit will switch them over to using it. OSX still does
+not have an implementation.
 
-This is the first commit to give you an idea:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+It would be nice to gradually reduce the number of places
+we do per-OS ifdeffery in favour of checking for the specific
+feature we care about in each case...
+Tested on Linux, NetBSD, OSX.
 
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 98fddd7ac1..75affcb8a6 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
-     arm_timer_state *s;
-     QEMUBH *bh;
+ configure                   | 15 +++++++++++++++
+ include/qemu/thread-posix.h |  2 +-
+ util/qemu-thread-posix.c    | 10 +++++-----
+ 3 files changed, 21 insertions(+), 6 deletions(-)
 
--    s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_state));
-+    s =3D g_new0(arm_timer_state, 1);
-     s->freq =3D freq;
-     s->control =3D TIMER_CTRL_IE;
+diff --git a/configure b/configure
+index fb7e34a..aa8d4d9 100755
+--- a/configure
++++ b/configure
+@@ -4448,6 +4448,18 @@ if compile_prog "" "" ; then
+ fi
+ 
+ ##########################################
++# check if we have sem_timedwait
++
++sem_timedwait=no
++cat > $TMPC << EOF
++#include <semaphore.h>
++int main(void) { return sem_timedwait(0, 0); }
++EOF
++if compile_prog "" "" ; then
++    sem_timedwait=yes
++fi
++
++##########################################
+ # check if trace backend exists
+ 
+ $python "$source_path/scripts/tracetool.py" "--backends=$trace_backends" --check-backends  > /dev/null 2> /dev/null
+@@ -5680,6 +5692,9 @@ fi
+ if test "$inotify1" = "yes" ; then
+   echo "CONFIG_INOTIFY1=y" >> $config_host_mak
+ fi
++if test "$sem_timedwait" = "yes" ; then
++  echo "CONFIG_SEM_TIMEDWAIT=y" >> $config_host_mak
++fi
+ if test "$byteswap_h" = "yes" ; then
+   echo "CONFIG_BYTESWAP_H=y" >> $config_host_mak
+ fi
+diff --git a/include/qemu/thread-posix.h b/include/qemu/thread-posix.h
+index e5e3a0f..f4296d3 100644
+--- a/include/qemu/thread-posix.h
++++ b/include/qemu/thread-posix.h
+@@ -21,7 +21,7 @@ struct QemuCond {
+ };
+ 
+ struct QemuSemaphore {
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     pthread_mutex_t lock;
+     pthread_cond_t cond;
+     unsigned int count;
+diff --git a/util/qemu-thread-posix.c b/util/qemu-thread-posix.c
+index 4e95d27..7306475 100644
+--- a/util/qemu-thread-posix.c
++++ b/util/qemu-thread-posix.c
+@@ -168,7 +168,7 @@ void qemu_sem_init(QemuSemaphore *sem, int init)
+ {
+     int rc;
+ 
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     rc = pthread_mutex_init(&sem->lock, NULL);
+     if (rc != 0) {
+         error_exit(rc, __func__);
+@@ -196,7 +196,7 @@ void qemu_sem_destroy(QemuSemaphore *sem)
+ 
+     assert(sem->initialized);
+     sem->initialized = false;
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     rc = pthread_cond_destroy(&sem->cond);
+     if (rc < 0) {
+         error_exit(rc, __func__);
+@@ -218,7 +218,7 @@ void qemu_sem_post(QemuSemaphore *sem)
+     int rc;
+ 
+     assert(sem->initialized);
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     pthread_mutex_lock(&sem->lock);
+     if (sem->count == UINT_MAX) {
+         rc = EINVAL;
+@@ -256,7 +256,7 @@ int qemu_sem_timedwait(QemuSemaphore *sem, int ms)
+     struct timespec ts;
+ 
+     assert(sem->initialized);
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     rc = 0;
+     compute_abs_deadline(&ts, ms);
+     pthread_mutex_lock(&sem->lock);
+@@ -304,7 +304,7 @@ void qemu_sem_wait(QemuSemaphore *sem)
+     int rc;
+ 
+     assert(sem->initialized);
+-#if defined(__APPLE__) || defined(__NetBSD__)
++#ifndef CONFIG_SEM_TIMEDWAIT
+     pthread_mutex_lock(&sem->lock);
+     while (sem->count == 0) {
+         rc = pthread_cond_wait(&sem->cond, &sem->lock);
+-- 
+2.7.4
 
-g_new() advantages (from glib doc):
-- the returned pointer is cast to a pointer to the given type.
-- care is taken to avoid overflow when calculating the size of the
-allocated block.
-
-But it is also shorter&nicer :)
-
-I have not included in the first batch the opportunity to also
-translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is
-arguably not much nicer. But for consistency, I think it would be good
-to use g_new(). What do you think?
-
-I splitted the changes amont the various MAINTAINERS entries, but it
-is still about 70 patches (without the typeof() changes).
-
-
-[1] https://github.com/elmarco/clang-tools-extra/
-[2] https://github.com/elmarco/qemu/commits/gnew
-
-
---=20
-Marc-Andr=C3=A9 Lureau
 
