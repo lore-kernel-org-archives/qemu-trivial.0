@@ -1,56 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dpDZt-0003Pc-Ha
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 09:07:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40963)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1dpDZl-0003LF-LK
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 09:07:38 -0400
+	id 1dpDw5-0001up-R1
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 09:30:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51657)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dpDvv-0001m2-AB
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 09:30:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1dpDZd-0003uk-Er
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 09:07:33 -0400
-Received: from mout.gmx.net ([212.227.15.15]:60419)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1dpDZd-0003tu-3A; Tue, 05 Sep 2017 09:07:25 -0400
-Received: from [192.168.1.4] ([185.58.161.191]) by mail.gmx.com (mrgmx001
-	[212.227.17.184]) with ESMTPSA (Nemesis) id 0MOw4N-1dsGVx1kMJ-006NgH;
-	Tue, 05 Sep 2017 15:07:22 +0200
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-References: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-From: Kamil Rytarowski <n54@gmx.com>
-Message-ID: <9daeb0c9-b1b3-66d4-2b0c-77affb449efd@gmx.com>
-Date: Tue, 5 Sep 2017 14:57:18 +0200
-User-Agent: Mozilla/5.0 (X11; NetBSD amd64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.0
+	(envelope-from <marcandre.lureau@gmail.com>) id 1dpDvk-0004Ut-VV
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 09:30:27 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33423)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1dpDvU-0004Fq-0H; Tue, 05 Sep 2017 09:30:00 -0400
+Received: by mail-oi0-x242.google.com with SMTP id k191so2648935oih.0;
+	Tue, 05 Sep 2017 06:29:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=cxNcQD6oS2QBoVnmjqCLBPJmbt7PdbeW7QGIIHsQXX0=;
+	b=ZCteUXCE1JGbI2nGM+z3q+pBX+WU5IVzZtO6kT1psgwAn27ALJPEMmuf+uxiTMjBVN
+	yqrWaNBazOUe6kmda+puEUwW9XvSGJT22f/Pjtl+nqmN/zGgoD2zHelAdTHgyWSeUAnO
+	alX8Q7GF09Fs59b2HoVJMn/9Qurb6TTGK3c+jdHjPQSg2c3qrXP28nkJP52poLDiyCk8
+	fI7Su0zGY403/7Jl6OV+DECmDa1mqJCdWbgW7aGaW1b6XTvDyvekYWuE3BROmBV+5Vmj
+	me4jHFo4sLeiIWPaQW6JJ6atNFM/gqhOPxfiFETnxoccGz+N6fUk+tnfwMe2aERX6s7I
+	eEWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=cxNcQD6oS2QBoVnmjqCLBPJmbt7PdbeW7QGIIHsQXX0=;
+	b=IxMg12vr++9d1BVjG/3GoRKKa4QAHDpHp9Mn0bxNfe33eqkkxdtFGGzIfpyaaNgt0g
+	zvpCN1y/0q3P+/+tGuPjvDhzKhlsyq5zdJXt1qFf+PZkFvb8FrnWv0TvrGw06Qk5QN9A
+	qGRJFxknfXNfhYQui+xn9/r+Ra+dg1z/LFuAbZVCeAnsFGIIGIj2zrokPNf1yJuydEQ1
+	HDgOAzL8+V9Oa+0VLX3O3Vkx1aXZxnC19bvZ8aeSfCRQIv/dBKwOtK83CgFZQ4xH89mO
+	WKxmtqRpiGnmvqPKrJw7uela5WL04TJ2Jm0ojoDlXZSDBd3/5dVXwk23Xol2ZnLoTc27
+	Xvbg==
+X-Gm-Message-State: AHPjjUgzoG94nJm55YeyFerFlALLvT+EM3lfi5xVxO1TaGfGwJYKc2nQ
+	gbSbfCbkdvaKoFR9eQRwNlWnhekP9w==
+X-Google-Smtp-Source: ADKCNb4Jbb+V9CWpKJpoP77PP7w/lLxbyvmMf0bZdM5GPNoayUhXmjh9YbnWKmSyVSVuvf7iYuSKFYHjs9awexwFjdc=
+X-Received: by 10.202.57.69 with SMTP id g66mr3315924oia.28.1504618199121;
+	Tue, 05 Sep 2017 06:29:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="iTaeI2rF1bX5llqKJ40IrkEEUW83P4TL0"
-X-Provags-ID: V03:K0:zmWdR9866NfBPPGvkimyb96wV0yBuiAnhwyJAA/rTryN/mUR7hE
-	8bbbK2fB59nA51aa+brJZ5zEGfePAntYdkWvpNpht9NR4h/g8R6myJj2VA4n0qZbAoohdad
-	ArwHvRhtvvf18wreAjAoLkRYNQPSbOVmXFJY+0Ko7gbUFN8Un29fX/dOLsPWoSa5fTUqKYp
-	PQ1ZcHfR0YDIb2ocx6uJQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:JBarAnTt99I=:y++Ams5lIZm+9FZ8Z2QaW3
-	IxET2R9Frvl1hLk3Cgrqw+5yICuUan5kY19ERSsBpD7ZT/athXEa3zMBJ5knG5KSADqektzhc
-	2RaXWfx21J9OML+QH1OWxP9FPF7LyywV4ObJES7DVLWCArcnfDxr5zhLPlGtcCZlJXVIPjACu
-	PkdeGo0+elIGaHs8xsuKN+4AoDZKyHELt8xhBxBxYjDTCciN3bdk4W8p4JXXw0GxOI4DjZGt1
-	OWhyHKfkfU6Nz46lzgpbjB3fvLQTYnWtROvAXo64+AWtt0m3DiDZzNUoS2BdWHLZTjJjiLC1A
-	dQBcMWi0IJ67pZYI/FlcOF2iYNsJziES3vt5VmCBwP2UdUcDAmclHwaiz7UiGx+YIERow4QWr
-	Mvg5wC82IZov9Bu0uXVedMxj9Bw3Gc8R+P6E0bvdT6GPTOxWy8sOr9pc7a/0rUJTo7IxjOGOG
-	NGKXFhOdkM8S9I9ifn3UoeV80vKWhM8URIPF1Qsy9BxcHG28pLKWbx9ISLcRl8pBbKkeY17kk
-	d2krJVe78RgEsqPUYhqGMwuPJI6+4NM+FGaTEwZQUsGT/QyR9s7uC6B3WzHiRSg3jxLqt9ooC
-	leKzvcnuNm1RHhTXxUh0C5UNAIThO/tWmUu6RO2690HI/vCwXyRz9ngz4Tqs7Y/5b14ZsTYR3
-	X0ytW9V7Noad2KmxVJr9+gniIFQ0HW3hoNOuzzM5LNBNKHnnw9GfNYylhkZGdvv7g+hdLc06T
-	GXz4G5zgqef5923wNJEDQ/bI8CT8PDlc0yzETKWX5IEBRSfcch5Vpdche3X+gBlv94Qj44vfm
-	DwkR+IfyCyBNYMgbU0fgG1KFy//tQ==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.15.15
-Subject: Re: [Qemu-trivial] [PATCH] util/qemu-thread-posix.c: Replace OS
- ifdefs with CONFIG_HAVE_SEM_TIMEDWAIT
+References: <CAJ+F1C+mPu9ftXwgs4UrGTQp4f65-thhvmWoB-kuRmu0=vnFFw@mail.gmail.com>
+	<87zia9palk.fsf@dusky.pond.sub.org>
+In-Reply-To: <87zia9palk.fsf@dusky.pond.sub.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 05 Sep 2017 13:29:48 +0000
+Message-ID: <CAJ+F1CJaxdbHnLQy6H=5=Q3ZMw0w01xsvK3ybhj80=6F9dR6gQ@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="001a113cd1d848093d05587139c9"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] clang-tidy: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,186 +65,433 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Sep 2017 13:07:38 -0000
+X-List-Received-Date: Tue, 05 Sep 2017 13:30:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---iTaeI2rF1bX5llqKJ40IrkEEUW83P4TL0
-Content-Type: multipart/mixed; boundary="Jhjh1paO2M2k9IAnkuEMn2mG0h6cua0sQ";
- protected-headers="v1"
-From: Kamil Rytarowski <n54@gmx.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Message-ID: <9daeb0c9-b1b3-66d4-2b0c-77affb449efd@gmx.com>
-Subject: Re: [Qemu-trivial] [PATCH] util/qemu-thread-posix.c: Replace OS
- ifdefs with CONFIG_HAVE_SEM_TIMEDWAIT
-References: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-
---Jhjh1paO2M2k9IAnkuEMn2mG0h6cua0sQ
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--001a113cd1d848093d05587139c9
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 05.09.2017 14:19, Peter Maydell wrote:
-> In qemu-thread-posix.c we have two implementations of the
-> various qemu_sem_* functions, one of which uses native POSIX
-> sem_* and the other of which emulates them with pthread conditions.
-> This is necessary because not all our host OSes support
-> sem_timedwait().
->=20
-> Instead of a hard-coded list of OSes which don't implement
-> sem_timedwait(), which gets out of date, make configure
-> test for the presence of the function and set a new
-> CONFIG_HAVE_SEM_TIMEDWAIT appropriately.
->=20
-> In particular, newer NetBSDs have sem_timedwait(), so this
-> commit will switch them over to using it. OSX still does
-> not have an implementation.
->=20
+Hi
 
-The NetBSD part looks fine. It builds fine on NetBSD/amd64 8.99.2. All
-tests pass (with disabled PaX MPROTECT).
+On Tue, Sep 5, 2017 at 2:56 PM Markus Armbruster <armbru@redhat.com> wrote:
 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
+>
+> > Hi,
+> >
+> > I have a series of changes generated with clang-tidy qemu [1] pending
+> > for review [2].
+> >
+> > It translates calloc/*malloc*/*realloc() calls to
+> > g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].
+>
+> Only for *type* T, or for arbitrary T?
+>
+>
+If sizeof() argument is a type:
+https://github.com/elmarco/clang-tools-extra/blob/master/clang-tidy/qemu/Us=
+eGnewCheck.cpp#L65
 
-Reviewed-by: Kamil Rytarowski <n54@gmx.com>
+For type T, we've done the transformation repeatedly with Coccinelle,
+> first in commit b45c03f (commit message appended).  Repeatedly, because
+> they creep back in.
+>
+> How does your technique compare to this prior one?
+>
 
-> ---
-> It would be nice to gradually reduce the number of places
-> we do per-OS ifdeffery in favour of checking for the specific
-> feature we care about in each case...
-> Tested on Linux, NetBSD, OSX.
->=20
->  configure                   | 15 +++++++++++++++
->  include/qemu/thread-posix.h |  2 +-
->  util/qemu-thread-posix.c    | 10 +++++-----
->  3 files changed, 21 insertions(+), 6 deletions(-)
->=20
-> diff --git a/configure b/configure
-> index fb7e34a..aa8d4d9 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4448,6 +4448,18 @@ if compile_prog "" "" ; then
->  fi
-> =20
->  ##########################################
-> +# check if we have sem_timedwait
-> +
-> +sem_timedwait=3Dno
-> +cat > $TMPC << EOF
-> +#include <semaphore.h>
-> +int main(void) { return sem_timedwait(0, 0); }
-> +EOF
-> +if compile_prog "" "" ; then
-> +    sem_timedwait=3Dyes
-> +fi
-> +
-> +##########################################
->  # check if trace backend exists
-> =20
->  $python "$source_path/scripts/tracetool.py" "--backends=3D$trace_backe=
-nds" --check-backends  > /dev/null 2> /dev/null
-> @@ -5680,6 +5692,9 @@ fi
->  if test "$inotify1" =3D "yes" ; then
->    echo "CONFIG_INOTIFY1=3Dy" >> $config_host_mak
->  fi
-> +if test "$sem_timedwait" =3D "yes" ; then
-> +  echo "CONFIG_SEM_TIMEDWAIT=3Dy" >> $config_host_mak
-> +fi
->  if test "$byteswap_h" =3D "yes" ; then
->    echo "CONFIG_BYTESWAP_H=3Dy" >> $config_host_mak
->  fi
-> diff --git a/include/qemu/thread-posix.h b/include/qemu/thread-posix.h
-> index e5e3a0f..f4296d3 100644
-> --- a/include/qemu/thread-posix.h
-> +++ b/include/qemu/thread-posix.h
-> @@ -21,7 +21,7 @@ struct QemuCond {
->  };
-> =20
->  struct QemuSemaphore {
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      pthread_mutex_t lock;
->      pthread_cond_t cond;
->      unsigned int count;
-> diff --git a/util/qemu-thread-posix.c b/util/qemu-thread-posix.c
-> index 4e95d27..7306475 100644
-> --- a/util/qemu-thread-posix.c
-> +++ b/util/qemu-thread-posix.c
-> @@ -168,7 +168,7 @@ void qemu_sem_init(QemuSemaphore *sem, int init)
->  {
->      int rc;
-> =20
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      rc =3D pthread_mutex_init(&sem->lock, NULL);
->      if (rc !=3D 0) {
->          error_exit(rc, __func__);
-> @@ -196,7 +196,7 @@ void qemu_sem_destroy(QemuSemaphore *sem)
-> =20
->      assert(sem->initialized);
->      sem->initialized =3D false;
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      rc =3D pthread_cond_destroy(&sem->cond);
->      if (rc < 0) {
->          error_exit(rc, __func__);
-> @@ -218,7 +218,7 @@ void qemu_sem_post(QemuSemaphore *sem)
->      int rc;
-> =20
->      assert(sem->initialized);
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      pthread_mutex_lock(&sem->lock);
->      if (sem->count =3D=3D UINT_MAX) {
->          rc =3D EINVAL;
-> @@ -256,7 +256,7 @@ int qemu_sem_timedwait(QemuSemaphore *sem, int ms)
->      struct timespec ts;
-> =20
->      assert(sem->initialized);
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      rc =3D 0;
->      compute_abs_deadline(&ts, ms);
->      pthread_mutex_lock(&sem->lock);
-> @@ -304,7 +304,7 @@ void qemu_sem_wait(QemuSemaphore *sem)
->      int rc;
-> =20
->      assert(sem->initialized);
-> -#if defined(__APPLE__) || defined(__NetBSD__)
-> +#ifndef CONFIG_SEM_TIMEDWAIT
->      pthread_mutex_lock(&sem->lock);
->      while (sem->count =3D=3D 0) {
->          rc =3D pthread_cond_wait(&sem->cond, &sem->lock);
->=20
+Well, for one, I have a lot of trouble running coccinelle, mostly because
+it is slow and/or eat all my memory. Afaik, coccinelle also has trouble
+parsing the code in various cases. I have also trouble writing coccinelle
+semantic patch... And, I gave up.
 
+clang-tidy in comparison, is quite fast (it takes a minute to apply on qemu
+code base). I find it easier to write a tidy check, and more friendly
+command line / output etc:
 
+/tmp/test.c:3:17: warning: use g_new() instead [qemu-use-gnew]
+        int *f =3D (int*)malloc(sizeof(int) * 2);
+                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+                 g_new(int, 2)
 
---Jhjh1paO2M2k9IAnkuEMn2mG0h6cua0sQ--
+clang-tidy should also respect clang-format rules when modifying the code
+(see also
+https://lists.nongnu.org/archive/html/qemu-devel/2017-08/msg05762.html).
 
---iTaeI2rF1bX5llqKJ40IrkEEUW83P4TL0
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+I also imagine it should be possible to integrate to clang warnings in the
+future (similar to libreoffice clang plugins for ex). All in all,
+coccinelle or clang-tidy are probably both capable of doing this job, but
+clang-tidy is snappier and has more potentials for toolchain integration.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+> This is the first commit to give you an idea:
+> >
+> > diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+> > index 98fddd7ac1..75affcb8a6 100644
+> > --- a/hw/timer/arm_timer.c
+> > +++ b/hw/timer/arm_timer.c
+> > @@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t fre=
+q)
+> >      arm_timer_state *s;
+> >      QEMUBH *bh;
+> >
+> > -    s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_state));
+> > +    s =3D g_new0(arm_timer_state, 1);
+> >      s->freq =3D freq;
+> >      s->control =3D TIMER_CTRL_IE;
+> >
+> > g_new() advantages (from glib doc):
+> > - the returned pointer is cast to a pointer to the given type.
+> > - care is taken to avoid overflow when calculating the size of the
+> > allocated block.
+> >
+> > But it is also shorter&nicer :)
+> >
+> > I have not included in the first batch the opportunity to also
+> > translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is
+> > arguably not much nicer. But for consistency, I think it would be good
+> > to use g_new(). What do you think?
+>
+> p =3D g_malloc(sizeof(*p)) is idiomatic, and not obviously inferior to
+> p =3D g_new(T, 1), where T is the type of *p.  Use whatever is easier to
+> read, I guess.
+>
+> But once you add multiplication, g_new() adds something useful: overflow
+> protection.  Conversion to g_new() might make sense then.
+>
+> > I splitted the changes amont the various MAINTAINERS entries, but it
+> > is still about 70 patches (without the typeof() changes).
+> >
+> >
+> > [1] https://github.com/elmarco/clang-tools-extra/
+> > [2] https://github.com/elmarco/qemu/commits/gnew
+>
+>
+> commit b45c03f585ea9bb1af76c73e82195418c294919d
+> Author: Markus Armbruster <armbru@redhat.com>
+> Date:   Mon Sep 7 10:39:27 2015 +0100
+>
+>     arm: Use g_new() & friends where that makes obvious sense
+>
+>     g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+>     for two reasons.  One, it catches multiplication overflowing size_t.
+>     Two, it returns T * rather than void *, which lets the compiler catch
+>     more type errors.
+>
+>     This commit only touches allocations with size arguments of the form
+>     sizeof(T).
+>
+>     Coccinelle semantic patch:
+>
+>         @@
+>         type T;
+>         @@
+>         -g_malloc(sizeof(T))
+>         +g_new(T, 1)
+>         @@
+>         type T;
+>         @@
+>         -g_try_malloc(sizeof(T))
+>         +g_try_new(T, 1)
+>
 
-iQIcBAEBCAAGBQJZrp81AAoJEEuzCOmwLnZs6q0QAI573EKu8J7jXS1CqfBK/gFv
-y2AdD4lX13hS6z5gGjSewKq7QaSwUl9w04KPZyhpeUV8Dj2FkPQgXlQp+bS5E7eL
-20j59Ripug1xsH0TxW6HQ9jxELhjz982JtgYP6M9vKE0AxPN35l4Nm4S6wQ0UDE/
-r+RrHOI31lkRXcFfqYrCh8uZwTA/mJYjcXfETOykF+/hDOnHfMbbcUqFFS7rI1Wv
-dRQX+2/60SXoxlQoAKkwl5qoPWXEIE1I9W3tjQc6pGA5kgKU7uHow9GqffoPpxrw
-blIsJIjigD1C6Ft8FlA9FZYqK+cLHDBxusdB0PBb8TezbDzzKXWhPUDexMV+neKg
-7KN53il5/1lYhiSfU9hnm+QPPzWZla2ZVqJVndvaro8F45pxmDN78v3Xhti+56OV
-nJdlQvihOs0sI6AC+ukYdnSux3AEDJt9S+fGbOdS8CYevrHCMExB/mlscmwYihZV
-bt/y/Je5wP1y032X0fPMJLjU/nRoUcex4R4YpTF68hq9hpVsB99opkkyFyqku8ew
-mfPeGnBEtMz1b1aSGwfHAxpcwkEdhE9cRxRSPGpcM5uevUu7Kaf1REVGI4w9T3Ra
-kc6ViMJuHQzG3l1j47IheimH1ccuCpD5jrFuuxiCweSEtgBZUssLX5sTvuejM9+9
-cwxD61az1nz4qsezIfVW
-=4oPD
------END PGP SIGNATURE-----
+thanks, I actually forgot the g_try_new() family (I thought we didn't use
+it!)
 
---iTaeI2rF1bX5llqKJ40IrkEEUW83P4TL0--
+        @@
+>         type T;
+>         @@
+>         -g_malloc0(sizeof(T))
+>         +g_new0(T, 1)
+>         @@
+>         type T;
+>         @@
+>         -g_try_malloc0(sizeof(T))
+>         +g_try_new0(T, 1)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -g_malloc(sizeof(T) * (n))
+>         +g_new(T, n)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -g_try_malloc(sizeof(T) * (n))
+>         +g_try_new(T, n)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -g_malloc0(sizeof(T) * (n))
+>         +g_new0(T, n)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -g_try_malloc0(sizeof(T) * (n))
+>         +g_try_new0(T, n)
+>         @@
+>         type T;
+>         expression p, n;
+>         @@
+>         -g_realloc(p, sizeof(T) * (n))
+>         +g_renew(T, p, n)
+>         @@
+>         type T;
+>         expression p, n;
+>         @@
+>         -g_try_realloc(p, sizeof(T) * (n))
+>         +g_try_renew(T, p, n)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -(T *)g_new(T, n)
+>         +g_new(T, n)
+>         @@
+>         type T;
+>         expression n;
+>         @@
+>         -(T *)g_new0(T, n)
+>         +g_new0(T, n)
+>         @@
+>         type T;
+>         expression p, n;
+>         @@
+>         -(T *)g_renew(T, p, n)
+>         +g_renew(T, p, n)
+>
+>     Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>     Reviewed-by: Eric Blake <eblake@redhat.com>
+>     Message-id: 1440524394-15640-1-git-send-email-armbru@redhat.com
+>     Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--001a113cd1d848093d05587139c9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi<br><div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+>On Tue, Sep 5, 2017 at 2:56 PM Markus Armbruster &lt;<a href=3D"mailto:arm=
+bru@redhat.com">armbru@redhat.com</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex">Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau=
+@gmail.com" target=3D"_blank">marcandre.lureau@gmail.com</a>&gt; writes:<br=
+>
+<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; I have a series of changes generated with clang-tidy qemu [1] pending<=
+br>
+&gt; for review [2].<br>
+&gt;<br>
+&gt; It translates calloc/*malloc*/*realloc() calls to<br>
+&gt; g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].=
+<br>
+<br>
+Only for *type* T, or for arbitrary T?<br>
+<br></blockquote><div><br></div><div>If sizeof() argument is a type:<br></d=
+iv><div><a href=3D"https://github.com/elmarco/clang-tools-extra/blob/master=
+/clang-tidy/qemu/UseGnewCheck.cpp#L65">https://github.com/elmarco/clang-too=
+ls-extra/blob/master/clang-tidy/qemu/UseGnewCheck.cpp#L65</a></div><div> <b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex">
+For type T, we&#39;ve done the transformation repeatedly with Coccinelle,<b=
+r>
+first in commit b45c03f (commit message appended).=C2=A0 Repeatedly, becaus=
+e<br>
+they creep back in.<br>
+<br>
+How does your technique compare to this prior one?<br></blockquote><div><br=
+></div><div>Well, for one, I have a lot of trouble running coccinelle, most=
+ly because it is slow and/or eat all my memory. Afaik, coccinelle also has =
+trouble parsing the code in various cases. I have also trouble writing cocc=
+inelle semantic patch... And, I gave up.<br></div><div><br></div><div>clang=
+-tidy in comparison, is quite fast (it takes a minute to apply on qemu code=
+ base). I find it easier to write a tidy check, and more friendly command l=
+ine / output etc:<br></div><div><br></div><div>/tmp/test.c:3:17: warning: u=
+se g_new() instead [qemu-use-gnew]<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 int *f =3D (int*)malloc(sizeof(int) * 2);<br>=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_new(int, 2)<br>=
+</div><div><br></div><div>clang-tidy should also respect clang-format rules=
+ when modifying the code (see also <a href=3D"https://lists.nongnu.org/arch=
+ive/html/qemu-devel/2017-08/msg05762.html">https://lists.nongnu.org/archive=
+/html/qemu-devel/2017-08/msg05762.html</a>).<br></div><div><br></div><div>I=
+ also imagine it should be possible to integrate to clang warnings in the f=
+uture (similar to libreoffice clang plugins for ex). All in all, coccinelle=
+ or clang-tidy are probably both capable of doing this job, but clang-tidy =
+is snappier and has more potentials for toolchain integration.</div><div><b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex">
+&gt; This is the first commit to give you an idea:<br>
+&gt;<br>
+&gt; diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c<br>
+&gt; index 98fddd7ac1..75affcb8a6 100644<br>
+&gt; --- a/hw/timer/arm_timer.c<br>
+&gt; +++ b/hw/timer/arm_timer.c<br>
+&gt; @@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t fr=
+eq)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 arm_timer_state *s;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 QEMUBH *bh;<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_sta=
+te));<br>
+&gt; +=C2=A0 =C2=A0 s =3D g_new0(arm_timer_state, 1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 s-&gt;freq =3D freq;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 s-&gt;control =3D TIMER_CTRL_IE;<br>
+&gt;<br>
+&gt; g_new() advantages (from glib doc):<br>
+&gt; - the returned pointer is cast to a pointer to the given type.<br>
+&gt; - care is taken to avoid overflow when calculating the size of the<br>
+&gt; allocated block.<br>
+&gt;<br>
+&gt; But it is also shorter&amp;nicer :)<br>
+&gt;<br>
+&gt; I have not included in the first batch the opportunity to also<br>
+&gt; translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is<=
+br>
+&gt; arguably not much nicer. But for consistency, I think it would be good=
+<br>
+&gt; to use g_new(). What do you think?<br>
+<br>
+p =3D g_malloc(sizeof(*p)) is idiomatic, and not obviously inferior to<br>
+p =3D g_new(T, 1), where T is the type of *p.=C2=A0 Use whatever is easier =
+to<br>
+read, I guess.<br>
+<br>
+But once you add multiplication, g_new() adds something useful: overflow<br=
+>
+protection.=C2=A0 Conversion to g_new() might make sense then.<br>
+<br>
+&gt; I splitted the changes amont the various MAINTAINERS entries, but it<b=
+r>
+&gt; is still about 70 patches (without the typeof() changes).<br>
+&gt;<br>
+&gt;<br>
+&gt; [1] <a href=3D"https://github.com/elmarco/clang-tools-extra/" rel=3D"n=
+oreferrer" target=3D"_blank">https://github.com/elmarco/clang-tools-extra/<=
+/a><br>
+&gt; [2] <a href=3D"https://github.com/elmarco/qemu/commits/gnew" rel=3D"no=
+referrer" target=3D"_blank">https://github.com/elmarco/qemu/commits/gnew</a=
+><br>
+<br>
+<br>
+commit b45c03f585ea9bb1af76c73e82195418c294919d<br>
+Author: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com" target=
+=3D"_blank">armbru@redhat.com</a>&gt;<br>
+Date:=C2=A0 =C2=A0Mon Sep 7 10:39:27 2015 +0100<br>
+<br>
+=C2=A0 =C2=A0 arm: Use g_new() &amp; friends where that makes obvious sense=
+<br>
+<br>
+=C2=A0 =C2=A0 g_new(T, n) is neater than g_malloc(sizeof(T) * n).=C2=A0 It&=
+#39;s also safer,<br>
+=C2=A0 =C2=A0 for two reasons.=C2=A0 One, it catches multiplication overflo=
+wing size_t.<br>
+=C2=A0 =C2=A0 Two, it returns T * rather than void *, which lets the compil=
+er catch<br>
+=C2=A0 =C2=A0 more type errors.<br>
+<br>
+=C2=A0 =C2=A0 This commit only touches allocations with size arguments of t=
+he form<br>
+=C2=A0 =C2=A0 sizeof(T).<br>
+<br>
+=C2=A0 =C2=A0 Coccinelle semantic patch:<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_malloc(sizeof(T))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new(T, 1)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_try_malloc(sizeof(T))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_try_new(T, 1)<br></blockquote><div><br></div=
+><div>thanks, I actually forgot the g_try_new() family (I thought we didn&#=
+39;t use it!)<br></div><div> <br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_malloc0(sizeof(T))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new0(T, 1)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_try_malloc0(sizeof(T))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_try_new0(T, 1)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_malloc(sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_try_malloc(sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_try_new(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_malloc0(sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new0(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_try_malloc0(sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_try_new0(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression p, n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_realloc(p, sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_renew(T, p, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression p, n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -g_try_realloc(p, sizeof(T) * (n))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_try_renew(T, p, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -(T *)g_new(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -(T *)g_new0(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_new0(T, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 type T;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 expression p, n;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @@<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 -(T *)g_renew(T, p, n)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 +g_renew(T, p, n)<br>
+<br>
+=C2=A0 =C2=A0 Signed-off-by: Markus Armbruster &lt;<a href=3D"mailto:armbru=
+@redhat.com" target=3D"_blank">armbru@redhat.com</a>&gt;<br>
+=C2=A0 =C2=A0 Reviewed-by: Eric Blake &lt;<a href=3D"mailto:eblake@redhat.c=
+om" target=3D"_blank">eblake@redhat.com</a>&gt;<br>
+=C2=A0 =C2=A0 Message-id: <a href=3D"mailto:1440524394-15640-1-git-send-ema=
+il-armbru@redhat.com" target=3D"_blank">1440524394-15640-1-git-send-email-a=
+rmbru@redhat.com</a><br>
+=C2=A0 =C2=A0 Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.mayd=
+ell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+</blockquote></div></div></div><div dir=3D"ltr">-- <br></div><div class=3D"=
+gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Marc-A=
+ndr=C3=A9 Lureau<br></div></div>
+
+--001a113cd1d848093d05587139c9--
 
