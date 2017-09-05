@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dpEaa-0005fm-JI
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 10:12:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42836)
+	id 1dpFrh-0007lH-Pg
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 11:34:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49913)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dpEaR-0005aS-Br
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 10:12:27 -0400
+	(envelope-from <armbru@redhat.com>) id 1dpFrY-0007gZ-Lx
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 11:34:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dpEaM-0003Ih-JC
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 10:12:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52516)
+	(envelope-from <armbru@redhat.com>) id 1dpFrT-0006Ic-Of
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 11:34:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36418)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dpEa4-00033e-TF; Tue, 05 Sep 2017 10:11:57 -0400
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1dpFrG-00069p-C4; Tue, 05 Sep 2017 11:33:46 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A311644BF4;
-	Tue,  5 Sep 2017 14:11:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A311644BF4
+	by mx1.redhat.com (Postfix) with ESMTPS id 6537F335F;
+	Tue,  5 Sep 2017 15:33:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6537F335F
 Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.120.228] (ovpn-120-228.rdu2.redhat.com [10.10.120.228])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B569D675C0;
-	Tue,  5 Sep 2017 14:11:54 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-Cc: patches@linaro.org
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <f1f3dc26-8499-02ba-9dfc-a2e96e766b79@redhat.com>
-Date: Tue, 5 Sep 2017 09:11:53 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	spf=fail smtp.mailfrom=armbru@redhat.com
+Received: from blackfin.pond.sub.org (ovpn-116-75.ams2.redhat.com
+	[10.36.116.75])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E91428E368;
+	Tue,  5 Sep 2017 15:33:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 6C02E1138645; Tue,  5 Sep 2017 17:33:42 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>
+Cc: qemu trival <qemu-trivial@nongnu.org>,  QEMU <qemu-devel@nongnu.org>
+References: <CAJ+F1C+mPu9ftXwgs4UrGTQp4f65-thhvmWoB-kuRmu0=vnFFw@mail.gmail.com>
+	<87zia9palk.fsf@dusky.pond.sub.org>
+	<CAJ+F1CJaxdbHnLQy6H=5=Q3ZMw0w01xsvK3ybhj80=6F9dR6gQ@mail.gmail.com>
+Date: Tue, 05 Sep 2017 17:33:42 +0200
+In-Reply-To: <CAJ+F1CJaxdbHnLQy6H=5=Q3ZMw0w01xsvK3ybhj80=6F9dR6gQ@mail.gmail.com>
+	(=?utf-8?Q?=22Marc-Andr=C3=A9?= Lureau"'s message of "Tue, 05 Sep 2017
+	13:29:48 +0000")
+Message-ID: <87fuc1ma7d.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="bJOmNbG3DJNkxbMDHbKugOLHhIM41Gw89"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.30]);
-	Tue, 05 Sep 2017 14:11:55 +0000 (UTC)
+	Tue, 05 Sep 2017 15:33:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] util/qemu-thread-posix.c:
- Replace OS ifdefs with CONFIG_HAVE_SEM_TIMEDWAIT
+Subject: Re: [Qemu-trivial] [Qemu-devel] clang-tidy: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,85 +64,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Sep 2017 14:12:27 -0000
+X-List-Received-Date: Tue, 05 Sep 2017 15:34:12 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---bJOmNbG3DJNkxbMDHbKugOLHhIM41Gw89
-Content-Type: multipart/mixed; boundary="XoxObjAs0djFEb0kI87gG2trqEifnaqoW";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: patches@linaro.org
-Message-ID: <f1f3dc26-8499-02ba-9dfc-a2e96e766b79@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] util/qemu-thread-posix.c: Replace OS ifdefs
- with CONFIG_HAVE_SEM_TIMEDWAIT
-References: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1504613972-15847-1-git-send-email-peter.maydell@linaro.org>
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
 
---XoxObjAs0djFEb0kI87gG2trqEifnaqoW
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+> Hi
+>
+> On Tue, Sep 5, 2017 at 2:56 PM Markus Armbruster <armbru@redhat.com> wrot=
+e:
+>
+>> Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
+>>
+>> > Hi,
+>> >
+>> > I have a series of changes generated with clang-tidy qemu [1] pending
+>> > for review [2].
+>> >
+>> > It translates calloc/*malloc*/*realloc() calls to
+>> > g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].
+>>
+>> Only for *type* T, or for arbitrary T?
+>>
+>>
+> If sizeof() argument is a type:
+> https://github.com/elmarco/clang-tools-extra/blob/master/clang-tidy/qemu/=
+UseGnewCheck.cpp#L65
+>
+> For type T, we've done the transformation repeatedly with Coccinelle,
+>> first in commit b45c03f (commit message appended).  Repeatedly, because
+>> they creep back in.
+>>
+>> How does your technique compare to this prior one?
+>>
+>
+> Well, for one, I have a lot of trouble running coccinelle, mostly because
+> it is slow and/or eat all my memory.
 
-On 09/05/2017 07:19 AM, Peter Maydell wrote:
-> In qemu-thread-posix.c we have two implementations of the
-> various qemu_sem_* functions, one of which uses native POSIX
-> sem_* and the other of which emulates them with pthread conditions.
-> This is necessary because not all our host OSes support
-> sem_timedwait().
->=20
-> Instead of a hard-coded list of OSes which don't implement
-> sem_timedwait(), which gets out of date, make configure
-> test for the presence of the function and set a new
-> CONFIG_HAVE_SEM_TIMEDWAIT appropriately.
->=20
-> In particular, newer NetBSDs have sem_timedwait(), so this
-> commit will switch them over to using it. OSX still does
-> not have an implementation.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> It would be nice to gradually reduce the number of places
-> we do per-OS ifdeffery in favour of checking for the specific
-> feature we care about in each case...
+It's a bit of a pig, but it doesn't get anywhere close to prohibitive
+even on my rather modest development box.  Example run with a minor
+variation of the semantic patch from commit b45c03f:
 
-Yes, that's always been autoconf's philosophy: feature tests trump
-platform tests every time, because platforms can add features over time,
-and because an ifdef on a single feature test is easier to read than a
-list of platform names.
+$ time spatch --in-place --sp-file g_new.cocci --macro-file scripts/cocci-m=
+acro-file.h --use-idutils --dir .
+[...]
+real	0m42.379s
+user	0m38.988s
+sys	0m2.179s
+$ git-diff --shortstat
+ 123 files changed, 211 insertions(+), 216 deletions(-)
 
-> Tested on Linux, NetBSD, OSX.
->=20
+Note that "--use-idutils --dir ." directs spatch to work only on files
+that need work.  There's also --use-glimpse.  You can easily do the
+directing by hand with a judicious `git-grep ...`.  Your experience can
+be far worse if you feed it source files indiscriminately.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+>                                      Afaik, coccinelle also has trouble
+> parsing the code in various cases.
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Yes, but anything else that doesn't is almost certainly not tackling the
+full problem.
 
+Preprocessing C is easy enough.  Parsing preprocessed C is easy enough.
+Parsing unpreprocessed C into something that's suitable for transforming
+is darn hard.
 
---XoxObjAs0djFEb0kI87gG2trqEifnaqoW--
+Doesn't mean that clang-tidy couldn't be doing a better job for our
+code.
 
---bJOmNbG3DJNkxbMDHbKugOLHhIM41Gw89
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+>                                    I have also trouble writing coccinelle
+> semantic patch...
 
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+Point taken.
 
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlmusKkACgkQp6FrSiUn
-Q2oUFgf+I8JiApI4P+Pzxykrl5lVGjzQTMaXmA9pJ+DupHiRyATf3S5zygEUMkZU
-Xn85Sniqt/WZNtJ0yMzo8onplqD6aYgCTev4EUs4ci9tHfUyot9SKXBJeJpwXoCX
-0PKrMnvU6nOAieUHad8xo8H46l1sv1WwYT31leCdj4r3KpMY4PbmPFo4wmhYg10Q
-aqGn4qjnG2FKUkIQM/Asm/xlYMY13HmY4tl32FuiTiH6SxAfanW5/t8hztZA2Oht
-IYxvSLuNaBQJjdkTfLdJC/G65TPBoLSw3OhbCBNyaspB8dw71FjgNoAIYJ9XzvgZ
-YgBR1dsVrXHczm12/ml6RZ+QWhwImQ==
-=SA8i
------END PGP SIGNATURE-----
+>                   And, I gave up.
 
---bJOmNbG3DJNkxbMDHbKugOLHhIM41Gw89--
+I've found it frustrating at times, but overall too useful to pass up.
+
+I'd love to buy a well-written book on the thing.
+
+> clang-tidy in comparison, is quite fast (it takes a minute to apply on qe=
+mu
+
+Same order of magnitude as my spatch run above.
+
+> code base). I find it easier to write a tidy check, and more friendly
+> command line / output etc:
+>
+> /tmp/test.c:3:17: warning: use g_new() instead [qemu-use-gnew]
+>         int *f =3D (int*)malloc(sizeof(int) * 2);
+>                  ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+>                  g_new(int, 2)
+>
+> clang-tidy should also respect clang-format rules when modifying the code
+> (see also
+> https://lists.nongnu.org/archive/html/qemu-devel/2017-08/msg05762.html).
+>
+> I also imagine it should be possible to integrate to clang warnings in the
+> future (similar to libreoffice clang plugins for ex). All in all,
+> coccinelle or clang-tidy are probably both capable of doing this job, but
+> clang-tidy is snappier and has more potentials for toolchain integration.
+
+Suggest you show us cool things you can do with clang-tidy that haven't
+been done with Coccinelle :)
+
+[...]
 
