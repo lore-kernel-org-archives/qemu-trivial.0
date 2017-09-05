@@ -1,58 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dpDI1-0003jh-0B
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 08:49:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34581)
+	id 1dpDPw-00078v-Mi
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 08:57:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37609)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dpDHt-0003eN-Vm
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:49:10 -0400
+	(envelope-from <armbru@redhat.com>) id 1dpDPq-00075A-89
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:57:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1dpDHo-0006Xl-SU
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:49:06 -0400
-Received: from mail-oi0-x22c.google.com ([2607:f8b0:4003:c06::22c]:33230)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1dpDHb-0006Kq-3o; Tue, 05 Sep 2017 08:48:47 -0400
-Received: by mail-oi0-x22c.google.com with SMTP id x184so23881143oia.0;
-	Tue, 05 Sep 2017 05:48:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to; 
-	bh=qRpJjd6Ai2dT4y1KebMiUxQL8r8ZhevGZh9McwkCLo8=;
-	b=GJd3PAqZivNy+KYjWSW01DhDC7Z/mOX29mlXKKsqPXj4viFiQKcfkCHNZsk6sKBb9c
-	EamqtLO1+y3miQxK9V7ouER42Jf5I7ql5Bg3exo+jPkmwlUKWaBANh94HHkirA8WokOk
-	MW7DTri4ugPzToGpvWOOfjDpAagx8ddbLSMcnM/pCa6qvnDO2vzyCu6TX9vdJi8l7FVF
-	5An1Aqr5gbHZhoOu8gtpwJ6eymtuPyfxdFdFd7oBFfRKdh8sP14w0aIQbBQCG7CBIqr0
-	9CWbGMYTVi/E3YoE8ggJ+QUp+W/9cI9y67k+AVQZ6IQQDvAO3C66S+vyMvIG+54iwSOr
-	BxlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to;
-	bh=qRpJjd6Ai2dT4y1KebMiUxQL8r8ZhevGZh9McwkCLo8=;
-	b=eOx8vecr1NE7m679g6HxZNRtYsrcQN4StBYHSPsWJVbzrqlQn0DmSFdZt6KVPYRt82
-	nKc3xau9oNMLaYHHtCAVl1YOIFKKMDRnMQhGzqJgY7IATp9WgJekDE8wgPwwXM2Aid5Q
-	HDhdHgEoZs7io+Oq5RgkjT9PwUQbXvLGwMQJeeOyyuzPP4CxkPT0NOfah1RMjg5W65A+
-	AYXhD3JCgcd9LH68mHybOeFEvy/RdDxAmJSOklS8IdxjHBidYSyYfwz+0r9T69fgtDWg
-	3nS8V5U0WdTSk28xsOmC/mihckHNcEkf1zALKskrkGloLyquqkXjlfntAwlW5uyBswCe
-	2TVQ==
-X-Gm-Message-State: AHPjjUhSo049Q/DrDk8Mgnt1W2j5R8CVH81WNK9DgGuNH6QWzoP7vJ7R
-	IRRBHPm8n46E4jFSyDnmIu2n4Yw+JA==
-X-Google-Smtp-Source: ADKCNb5fb0ieaiMsK9FkEi9AB9A8+worq4kbtnYXNAbn03TRp5v3CcnkWQX6/fnO9pzu6WJejZdqyjktTfpzSFr0su4=
-X-Received: by 10.202.81.200 with SMTP id f191mr3587714oib.137.1504615726071; 
-	Tue, 05 Sep 2017 05:48:46 -0700 (PDT)
-MIME-Version: 1.0
+	(envelope-from <armbru@redhat.com>) id 1dpDPl-0004nB-Ch
+	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 08:57:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36182)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1dpDPV-0004WH-UQ; Tue, 05 Sep 2017 08:56:58 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E3CBC67730;
+	Tue,  5 Sep 2017 12:56:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E3CBC67730
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=armbru@redhat.com
+Received: from blackfin.pond.sub.org (ovpn-116-75.ams2.redhat.com
+	[10.36.116.75])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 87FC56BE7D;
+	Tue,  5 Sep 2017 12:56:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 100561138645; Tue,  5 Sep 2017 14:56:55 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>,  qemu trival <qemu-trivial@nongnu.org>
 References: <CAJ+F1C+mPu9ftXwgs4UrGTQp4f65-thhvmWoB-kuRmu0=vnFFw@mail.gmail.com>
-	<54c80221-aaf8-48c3-d58d-485003f77988@amsat.org>
-In-Reply-To: <54c80221-aaf8-48c3-d58d-485003f77988@amsat.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 05 Sep 2017 12:48:35 +0000
-Message-ID: <CAJ+F1C+JR8QqRGXaFizqHNrmWfi7v4ZuFAsOzUeqmXW=rqnFZw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
-	Juan Quintela <quintela@redhat.com>
-Content-Type: multipart/alternative; boundary="001a113b065ae044c8055870a565"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22c
+Date: Tue, 05 Sep 2017 14:56:55 +0200
+In-Reply-To: <CAJ+F1C+mPu9ftXwgs4UrGTQp4f65-thhvmWoB-kuRmu0=vnFFw@mail.gmail.com>
+	(=?utf-8?Q?=22Marc-Andr=C3=A9?= Lureau"'s message of "Tue, 5 Sep 2017
+	14:14:42 +0200")
+Message-ID: <87zia9palk.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 05 Sep 2017 12:56:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] clang-tidy: use g_new() family of
  functions
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,167 +62,161 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Sep 2017 12:49:11 -0000
+X-List-Received-Date: Tue, 05 Sep 2017 12:57:23 -0000
 
---001a113b065ae044c8055870a565
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> writes:
 
-On Tue, Sep 5, 2017 at 2:41 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> Hi,
 >
-wrote:
-
-> Hi Marc-Andr=C3=A9,
+> I have a series of changes generated with clang-tidy qemu [1] pending
+> for review [2].
 >
-> On 09/05/2017 09:14 AM, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi,
-> >
-> > I have a series of changes generated with clang-tidy qemu [1] pending
-> > for review [2].
-> >
-> > It translates calloc/*malloc*/*realloc() calls to
-> > g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].
-> >
-> > This is the first commit to give you an idea:
-> >
-> > diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-> > index 98fddd7ac1..75affcb8a6 100644
-> > --- a/hw/timer/arm_timer.c
-> > +++ b/hw/timer/arm_timer.c
-> > @@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t fre=
-q)
-> >       arm_timer_state *s;
-> >       QEMUBH *bh;
-> >
-> > -    s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_state));
-> > +    s =3D g_new0(arm_timer_state, 1);
-> >       s->freq =3D freq;
-> >       s->control =3D TIMER_CTRL_IE;
-> >
-> > g_new() advantages (from glib doc):
-> > - the returned pointer is cast to a pointer to the given type.
-> > - care is taken to avoid overflow when calculating the size of the
-> > allocated block.
-> >
-> > But it is also shorter&nicer :)
-> >
-> > I have not included in the first batch the opportunity to also
-> > translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is
-> > arguably not much nicer. But for consistency, I think it would be good
+> It translates calloc/*malloc*/*realloc() calls to
+> g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].
+
+Only for *type* T, or for arbitrary T?
+
+For type T, we've done the transformation repeatedly with Coccinelle,
+first in commit b45c03f (commit message appended).  Repeatedly, because
+they creep back in.
+
+How does your technique compare to this prior one?
+
+> This is the first commit to give you an idea:
 >
-> "avoid overflow when calculating the size" sounds nicer.
+> diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+> index 98fddd7ac1..75affcb8a6 100644
+> --- a/hw/timer/arm_timer.c
+> +++ b/hw/timer/arm_timer.c
+> @@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
+>      arm_timer_state *s;
+>      QEMUBH *bh;
 >
-> > to use g_new(). What do you think?
+> -    s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_state));
+> +    s =3D g_new0(arm_timer_state, 1);
+>      s->freq =3D freq;
+>      s->control =3D TIMER_CTRL_IE;
 >
-> Dunno if useful, but Juan Quintela had some issue:
+> g_new() advantages (from glib doc):
+> - the returned pointer is cast to a pointer to the given type.
+> - care is taken to avoid overflow when calculating the size of the
+> allocated block.
 >
-> http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg00085.html
-
-
-Thanks for pointing this out.
-
-It looks like the last iteration didn't change it after all:
-https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg00076.html
-
-
+> But it is also shorter&nicer :)
 >
-> >
-> > I splitted the changes amont the various MAINTAINERS entries, but it
-> > is still about 70 patches (without the typeof() changes).
-> >
-> >
-> > [1] https://github.com/elmarco/clang-tools-extra/
-> > [2] https://github.com/elmarco/qemu/commits/gnew
-> >
-> >
+> I have not included in the first batch the opportunity to also
+> translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is
+> arguably not much nicer. But for consistency, I think it would be good
+> to use g_new(). What do you think?
+
+p =3D g_malloc(sizeof(*p)) is idiomatic, and not obviously inferior to
+p =3D g_new(T, 1), where T is the type of *p.  Use whatever is easier to
+read, I guess.
+
+But once you add multiplication, g_new() adds something useful: overflow
+protection.  Conversion to g_new() might make sense then.
+
+> I splitted the changes amont the various MAINTAINERS entries, but it
+> is still about 70 patches (without the typeof() changes).
 >
---=20
-Marc-Andr=C3=A9 Lureau
+>
+> [1] https://github.com/elmarco/clang-tools-extra/
+> [2] https://github.com/elmarco/qemu/commits/gnew
 
---001a113b065ae044c8055870a565
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">On Tue=
-, Sep 5, 2017 at 2:41 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:=
-f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">Hi Marc-Andr=C3=A9,<br>
-<br>
-On 09/05/2017 09:14 AM, Marc-Andr=C3=A9 Lureau wrote:<br>
-&gt; Hi,<br>
-&gt;<br>
-&gt; I have a series of changes generated with clang-tidy qemu [1] pending<=
-br>
-&gt; for review [2].<br>
-&gt;<br>
-&gt; It translates calloc/*malloc*/*realloc() calls to<br>
-&gt; g_new/g_newa/g_new0/g_renew() where the argument is a sizeof(T) [* N].=
-<br>
-&gt;<br>
-&gt; This is the first commit to give you an idea:<br>
-&gt;<br>
-&gt; diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c<br>
-&gt; index 98fddd7ac1..75affcb8a6 100644<br>
-&gt; --- a/hw/timer/arm_timer.c<br>
-&gt; +++ b/hw/timer/arm_timer.c<br>
-&gt; @@ -166,7 +166,7 @@ static arm_timer_state *arm_timer_init(uint32_t fr=
-eq)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0arm_timer_state *s;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0QEMUBH *bh;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 s =3D (arm_timer_state *)g_malloc0(sizeof(arm_timer_sta=
-te));<br>
-&gt; +=C2=A0 =C2=A0 s =3D g_new0(arm_timer_state, 1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;freq =3D freq;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;control =3D TIMER_CTRL_IE;<br>
-&gt;<br>
-&gt; g_new() advantages (from glib doc):<br>
-&gt; - the returned pointer is cast to a pointer to the given type.<br>
-&gt; - care is taken to avoid overflow when calculating the size of the<br>
-&gt; allocated block.<br>
-&gt;<br>
-&gt; But it is also shorter&amp;nicer :)<br>
-&gt;<br>
-&gt; I have not included in the first batch the opportunity to also<br>
-&gt; translate: alloc(sizeof(*p) * x) to g_new(typeof(*p), x), since it is<=
-br>
-&gt; arguably not much nicer. But for consistency, I think it would be good=
-<br>
-<br>
-&quot;avoid overflow when calculating the size&quot; sounds nicer.<br>
-<br>
-&gt; to use g_new(). What do you think?<br>
-<br>
-Dunno if useful, but Juan Quintela had some issue:<br>
-<br>
-<a href=3D"http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg00085=
-.html" rel=3D"noreferrer" target=3D"_blank">http://lists.nongnu.org/archive=
-/html/qemu-devel/2017-09/msg00085.html</a></blockquote><div><br></div><div>=
-Thanks for pointing this out.</div><div><br></div>It looks like the last it=
-eration didn&#39;t change it after all:</div><div class=3D"gmail_quote"><a =
-href=3D"https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg00076.html=
-">https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg00076.html</a></=
-div><div class=3D"gmail_quote"><br><blockquote class=3D"gmail_quote" style=
-=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
-<br>
-&gt;<br>
-&gt; I splitted the changes amont the various MAINTAINERS entries, but it<b=
-r>
-&gt; is still about 70 patches (without the typeof() changes).<br>
-&gt;<br>
-&gt;<br>
-&gt; [1] <a href=3D"https://github.com/elmarco/clang-tools-extra/" rel=3D"n=
-oreferrer" target=3D"_blank">https://github.com/elmarco/clang-tools-extra/<=
-/a><br>
-&gt; [2] <a href=3D"https://github.com/elmarco/qemu/commits/gnew" rel=3D"no=
-referrer" target=3D"_blank">https://github.com/elmarco/qemu/commits/gnew</a=
-><br>
-&gt;<br>
-&gt;<br>
-</blockquote></div></div><div dir=3D"ltr">-- <br></div><div class=3D"gmail_=
-signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=
-=A9 Lureau<br></div></div>
+commit b45c03f585ea9bb1af76c73e82195418c294919d
+Author: Markus Armbruster <armbru@redhat.com>
+Date:   Mon Sep 7 10:39:27 2015 +0100
 
---001a113b065ae044c8055870a565--
+    arm: Use g_new() & friends where that makes obvious sense
+=20=20=20=20
+    g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
+    for two reasons.  One, it catches multiplication overflowing size_t.
+    Two, it returns T * rather than void *, which lets the compiler catch
+    more type errors.
+=20=20=20=20
+    This commit only touches allocations with size arguments of the form
+    sizeof(T).
+=20=20=20=20
+    Coccinelle semantic patch:
+=20=20=20=20
+        @@
+        type T;
+        @@
+        -g_malloc(sizeof(T))
+        +g_new(T, 1)
+        @@
+        type T;
+        @@
+        -g_try_malloc(sizeof(T))
+        +g_try_new(T, 1)
+        @@
+        type T;
+        @@
+        -g_malloc0(sizeof(T))
+        +g_new0(T, 1)
+        @@
+        type T;
+        @@
+        -g_try_malloc0(sizeof(T))
+        +g_try_new0(T, 1)
+        @@
+        type T;
+        expression n;
+        @@
+        -g_malloc(sizeof(T) * (n))
+        +g_new(T, n)
+        @@
+        type T;
+        expression n;
+        @@
+        -g_try_malloc(sizeof(T) * (n))
+        +g_try_new(T, n)
+        @@
+        type T;
+        expression n;
+        @@
+        -g_malloc0(sizeof(T) * (n))
+        +g_new0(T, n)
+        @@
+        type T;
+        expression n;
+        @@
+        -g_try_malloc0(sizeof(T) * (n))
+        +g_try_new0(T, n)
+        @@
+        type T;
+        expression p, n;
+        @@
+        -g_realloc(p, sizeof(T) * (n))
+        +g_renew(T, p, n)
+        @@
+        type T;
+        expression p, n;
+        @@
+        -g_try_realloc(p, sizeof(T) * (n))
+        +g_try_renew(T, p, n)
+        @@
+        type T;
+        expression n;
+        @@
+        -(T *)g_new(T, n)
+        +g_new(T, n)
+        @@
+        type T;
+        expression n;
+        @@
+        -(T *)g_new0(T, n)
+        +g_new0(T, n)
+        @@
+        type T;
+        expression p, n;
+        @@
+        -(T *)g_renew(T, p, n)
+        +g_renew(T, p, n)
+=20=20=20=20
+    Signed-off-by: Markus Armbruster <armbru@redhat.com>
+    Reviewed-by: Eric Blake <eblake@redhat.com>
+    Message-id: 1440524394-15640-1-git-send-email-armbru@redhat.com
+    Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
