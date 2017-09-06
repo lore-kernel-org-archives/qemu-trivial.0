@@ -1,60 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dpI4Z-00016I-AP
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Sep 2017 13:55:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58307)
+	id 1dpW2S-0005os-9C
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Sep 2017 04:50:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54530)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dpI4S-00014O-Lv
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 13:55:37 -0400
+	(envelope-from <rjones@redhat.com>) id 1dpW2Q-0005nj-Cq
+	for qemu-trivial@nongnu.org; Wed, 06 Sep 2017 04:50:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dpI4N-0001Ca-VG
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 13:55:32 -0400
-Received: from mail-wr0-x231.google.com ([2a00:1450:400c:c0c::231]:37334)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dpI4N-0001C1-Ls
-	for qemu-trivial@nongnu.org; Tue, 05 Sep 2017 13:55:27 -0400
-Received: by mail-wr0-x231.google.com with SMTP id k20so1332935wre.4
-	for <qemu-trivial@nongnu.org>; Tue, 05 Sep 2017 10:55:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=UaOx/Ow5eZIHuYgzsSWaBlVNdj2laG2MyLR75bR9rbo=;
-	b=I0NSPbnPn3folEHUoAeH6CWgMv1ndsKYb0XujHFfp6dlYXKNf3FtIVsBRxksvC06sU
-	84LXfSY5Yl/w+48iwtq3rzbbaf7pqW+kmu4dKxnA3z9NvdkF1i5wIzgATWT37xCqivva
-	a5Uvm1/7JBB4pvGA2jvmxL0rFGRvRdHZiccpE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=UaOx/Ow5eZIHuYgzsSWaBlVNdj2laG2MyLR75bR9rbo=;
-	b=N5QqhLicekgZHKP6W0rE8TWGMY2veIgcZWv9V+OKtzDlHtP7+zKEvud6N0xIKbG970
-	75pocXld7FS1irFjekT3JQLN6Q7BiekJtHx3x5t/Rdq+Qwd+00AQR4SqQERp3vPn+mml
-	XX4CfWQzF2rV5rNF3q17vMWToVfK3zbDB9O0Lf4nC3jnVTS3J15ABGDLdK1VDkWsYqqx
-	ZI4E5+EJZSEJb1JcjtrwhY768Jhj7VbrSU904M/W8JkGzrl2V3ydb+CTTGlb/+wWUcv5
-	q55roxqQWrc07VCL2CRA1P3k0WgqD/2ZMftmo2yBgEURbOh4wRYpFzMyEn8pJKjqWai3
-	3d9Q==
-X-Gm-Message-State: AHPjjUhEKGOTOBz7zSg+ni4NGDyipIjS7rxB4q2ZqIFhBW7Qstepvwv2
-	oFfqICJmZe98Hu6Jxba9osVVgMPcH7wl
-X-Google-Smtp-Source: ADKCNb7w2Ta8B2kclVaXyiUi5du3FhG5twwXCwqEsQYQURTfx32mTv+EEWj/hcB6LS/wMFuq20URy/KagZjyV1A0oMU=
-X-Received: by 10.223.130.21 with SMTP id 21mr2801630wrb.196.1504634126517;
-	Tue, 05 Sep 2017 10:55:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.159.68 with HTTP; Tue, 5 Sep 2017 10:55:06 -0700 (PDT)
-In-Reply-To: <20170831103432.6007-25-marcandre.lureau@redhat.com>
-References: <20170831103432.6007-1-marcandre.lureau@redhat.com>
-	<20170831103432.6007-25-marcandre.lureau@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Sep 2017 18:55:06 +0100
-Message-ID: <CAFEAcA-BcuFQcw3gnotbN=Km7RWNr5=AwBRb2VUAsD7xkaTqhQ@mail.gmail.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::231
-Subject: Re: [Qemu-trivial] [PULL 24/29] kvm: use DIV_ROUND_UP
+	(envelope-from <rjones@redhat.com>) id 1dpW2P-0004d2-IW
+	for qemu-trivial@nongnu.org; Wed, 06 Sep 2017 04:50:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45968)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <rjones@redhat.com>)
+	id 1dpW2L-0004aj-Oc; Wed, 06 Sep 2017 04:50:17 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C55AC356C7;
+	Wed,  6 Sep 2017 08:50:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C55AC356C7
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=rjones@redhat.com
+Received: from moo.home.annexia.org (ovpn-117-64.ams2.redhat.com
+	[10.36.117.64])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B9DA019E0A;
+	Wed,  6 Sep 2017 08:50:09 +0000 (UTC)
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: armbru@redhat.com, famz@redhat.com, kwolf@redhat.com,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru
+Date: Wed,  6 Sep 2017 09:50:06 +0100
+Message-Id: <20170906085006.26983-1-rjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 06 Sep 2017 08:50:15 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH for-2.10] qemu-options: Document the -drive
+ locking parameter.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,40 +53,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Sep 2017 17:55:37 -0000
+X-List-Received-Date: Wed, 06 Sep 2017 08:50:23 -0000
 
-On 31 August 2017 at 11:34, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
-> I used the clang-tidy qemu-round check to generate the fix:
-> https://github.com/elmarco/clang-tools-extra
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Reviewed-by: Richard Henderson <rth@twiddle.net>
-> ---
->  linux-headers/asm-x86/kvm.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
-> index c2824d02ba..1930b95bcb 100644
-> --- a/linux-headers/asm-x86/kvm.h
-> +++ b/linux-headers/asm-x86/kvm.h
-> @@ -153,7 +153,7 @@ struct kvm_sregs {
->         __u64 cr0, cr2, cr3, cr4, cr8;
->         __u64 efer;
->         __u64 apic_base;
-> -       __u64 interrupt_bitmap[(KVM_NR_INTERRUPTS + 63) / 64];
-> +       __u64 interrupt_bitmap[DIV_ROUND_UP(KVM_NR_INTERRUPTS, 64)];
->  };
->
->  /* for KVM_GET_FPU and KVM_SET_FPU */
+Commit 16b48d5d66d2 ("file-posix: Add 'locking' option") added this
+option, but as it was not documented in the -help output it was not
+easily possible to tell if a particular qemu binary supports it.
 
-Hi -- I just noticed that this commit makes a change to linux-headers/.
-This directory is for kernel headers which we keep in sync with the
-upstream kernel via scripts/update-linux-headers.sh, so we shouldn't
-be applying our code cleanups to it.
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+---
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I'm going to revert it (206a0fc75d5f54886c1b3f3a65782a75e36b6b97).
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 9f6e2adfff..f8f95eb498 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -796,7 +796,7 @@ DEF("drive", HAS_ARG, QEMU_OPTION_drive,
+     "       [,cache=writethrough|writeback|none|directsync|unsafe][,format=f]\n"
+     "       [,serial=s][,addr=A][,rerror=ignore|stop|report]\n"
+     "       [,werror=ignore|stop|report|enospc][,id=name][,aio=threads|native]\n"
+-    "       [,readonly=on|off][,copy-on-read=on|off]\n"
++    "       [,readonly=on|off][,copy-on-read=on|off][,locking=off|auto|on]\n"
+     "       [,discard=ignore|unmap][,detect-zeroes=on|off|unmap]\n"
+     "       [[,bps=b]|[[,bps_rd=r][,bps_wr=w]]]\n"
+     "       [[,iops=i]|[[,iops_rd=r][,iops_wr=w]]]\n"
+-- 
+2.13.2
 
-thanks
--- PMM
 
