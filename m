@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dqNEJ-0007Sz-TB
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2017 13:38:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39130)
+	id 1dqNEM-0007VT-5P
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2017 13:38:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39191)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dqNEI-0007R1-EP
-	for qemu-trivial@nongnu.org; Fri, 08 Sep 2017 13:38:11 -0400
+	id 1dqNEJ-0007So-OP
+	for qemu-trivial@nongnu.org; Fri, 08 Sep 2017 13:38:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dqNEB-0007Wa-6W
-	for qemu-trivial@nongnu.org; Fri, 08 Sep 2017 13:38:09 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:38745)
+	id 1dqNEI-0007ai-Na
+	for qemu-trivial@nongnu.org; Fri, 08 Sep 2017 13:38:11 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:37572)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dqNEB-0007WK-2N; Fri, 08 Sep 2017 13:38:03 -0400
-Received: by mail-qt0-x242.google.com with SMTP id k2so1940211qte.5;
-	Fri, 08 Sep 2017 10:38:02 -0700 (PDT)
+	id 1dqNEI-0007a8-Iu; Fri, 08 Sep 2017 13:38:10 -0400
+Received: by mail-qt0-x242.google.com with SMTP id h21so1946738qth.4;
+	Fri, 08 Sep 2017 10:38:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:mime-version:content-transfer-encoding;
-	bh=kgYv8JvrRxEZPC2hAUtY+7wSoyqshmAzrLATYGFL9b0=;
-	b=i+rupmM4Ni1tL5mAmwVWZur+mRvWOeuxq1xg8HMBa6MhLCHEwUovSUl2G9fAFinlra
-	aIjPevKCPQC3Zaqhgn4QhJIkxwNH6tTt4+bzwlMkUl+j9WUfGlKCObvcSQTnsbX/GFbC
-	scojnG+hdHzD9veMWB4CaiF7MDHX6goN7yIKcGfSEFdCAWB3/TKU9xjAbtZ8YGxZJ5PD
-	qbXMnaTncKofzdAuQPIR/7SQKE3UzgZkFopygrw3rLCTFSpOoWfqCTfFYvAdIkHcU1d1
-	2e4sGCJq6blQwPYt+M0ZF9HAPttRnhE9gUWRPRyIOApw64tASPYPamEArmA70+35BUDK
-	M1Og==
+	bh=BZsoXntJcuTb8Bk+QjOpgMW7kKRm7yiraFHvIzf334g=;
+	b=VNN/5BuuWX96lsLkIDxBRQ1a5yL/ukKZpEjcvbdGIdnEsosVT0RJQN7fk7Uo/LgM8P
+	PJ+eLwHpIJaTTPIusYhTFbHs8zXvaVNKNnBFD47pwsTzegTD6ifF+ylg4vSDLgI6MngH
+	nbha2W6WsE+QuaUA2mlbsukHQUDdwhMI3qWCez03FR1SBkasH6dvGWA7+xbsquNvRQ8D
+	yzekfNH7bc0Zmp96tFTLvv+AB0qTl8Q6rN8jC83VTyz2yazuuhqPrKOqQhMr2OrTjKst
+	qyT0oHaErN4xxzv0v/lUR6s9rJ1ijLjG1g6iRFSGz92CkWMN6GyTuw9uDKs3HX0c5kWF
+	5qhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:in-reply-to:mime-version
 	:content-transfer-encoding;
-	bh=kgYv8JvrRxEZPC2hAUtY+7wSoyqshmAzrLATYGFL9b0=;
-	b=pAb1QF6oqJRG815EJfKyX7Pp1ld5YgIlsBpxPza4bmCFF9eUppgfdz1HAUINOazOVJ
-	Z/BR6m82avM1JrVETM+Wdgiz5KQRV45nlKgz8CvQkJJwdJH0fb65gTWgkwp5oFuES8nz
-	WWEa8xIJ3EbnubNrSZwzv8IxP/gYRSGE5IqT1/uCjanC3n/qlWYfbQ3HwMjLmLkBfczo
-	SVCOMy6khAjECQCxSnJcUha80sgSxlUSNFQJR3viVoJS5IW2RsyV1exHZpBjKvvV2y+9
-	2ej0OWzN1f9tXcQtNckCfrpSYumXPUzX09UqA+4Z+eIDgbLLiR2aawlGwO1IMSfG2NSA
-	bYoA==
-X-Gm-Message-State: AHPjjUj3GwH6HRU9CHWlQx4RyXFzfhX+DirMr7LK7Uk/qPOe52Q3ztWL
-	FUctg5fRVhWP9SHoQnG1vQ==
-X-Google-Smtp-Source: AOwi7QCxyDD6adwIwt203zI5bp+KsMPT2KP8ikkvxxgKExXBAIt0NCiPHttOBtiP0H/ysE0Jf2VwmA==
-X-Received: by 10.200.39.252 with SMTP id x57mr5601880qtx.22.1504892282306;
-	Fri, 08 Sep 2017 10:38:02 -0700 (PDT)
+	bh=BZsoXntJcuTb8Bk+QjOpgMW7kKRm7yiraFHvIzf334g=;
+	b=MsbHOvlaqwLogI05yXrKvd80kJeMfoV3bmbeBYzfcCXFZvI8flmsL0DXdjxXMQ/+0/
+	2y+0MhgDhfzG8QLOsQs09fhXMbHhmGrp0MUZeS2qF/5htxrbI4rAsGHn++3B0fgLEVZ2
+	DqtctW8anrxgfIM0loMwkdN4I3slyWQxZIpE9EtfJgT8V52US7hlShVz+o9eCNThOIzu
+	CoZlnrksJWUXJ2TzZSUzdPgfp/fkz4zSO0lDA7Y7EVMD3GR/fvLnVI+GV2eY2LYtgh8O
+	9+VUK8gY8vrNvrx4i3FlY0IaWmL5fOAJfmTzH1c1YCi/aa1hRrEl3KhdWBERaHlU0UP3
+	GCBg==
+X-Gm-Message-State: AHPjjUj7dSyKSodEuiJ8uWRXqvsmDtrLvdUjkJ9xShrRZiGbvjbob/v0
+	NvVYuF2GExvURErkhe90/A==
+X-Google-Smtp-Source: AOwi7QCUtHelcTLuCzNIq+APlGQUQdyHu766R4ZFg08eHjGySVZPgQlyNGtxSHJgr43YTAokgYnsXw==
+X-Received: by 10.200.45.26 with SMTP id n26mr5340038qta.183.1504892289782;
+	Fri, 08 Sep 2017 10:38:09 -0700 (PDT)
 Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id f4sm1605859qtg.35.2017.09.08.10.37.59
+	by smtp.gmail.com with ESMTPSA id f4sm1605859qtg.35.2017.09.08.10.38.07
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 08 Sep 2017 10:38:01 -0700 (PDT)
+	Fri, 08 Sep 2017 10:38:09 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
-	qemu-block@nongnu.org
-Date: Fri,  8 Sep 2017 14:36:28 -0300
-Message-Id: <20170908173632.6711-10-f4bug@amsat.org>
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
+	qemu-devel@nongnu.org
+Date: Fri,  8 Sep 2017 14:36:31 -0300
+Message-Id: <20170908173632.6711-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170908173632.6711-1-f4bug@amsat.org>
 References: <20170908173632.6711-1-f4bug@amsat.org>
@@ -67,7 +67,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-trivial] [PATCH v3 11/15] MAINTAINERS: add missing AIO entry
+Subject: [Qemu-trivial] [PATCH v3 14/15] MAINTAINERS: update docs/devel/
+ entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,27 +80,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2017 17:38:11 -0000
+X-List-Received-Date: Fri, 08 Sep 2017 17:38:12 -0000
+
+moved in commit ac06724a7158
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Fam Zheng <famz@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 4e05831bda..98b7edc8b3 100644
+index 53891bd36e..f8630561de 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1224,6 +1224,7 @@ F: util/aio-*.c
- F: block/io.c
- F: migration/block*
- F: include/block/aio.h
-+F: scripts/qemugdb/aio.py
- T: git git://github.com/stefanha/qemu.git block
+@@ -1419,7 +1419,7 @@ F: tests/test-qapi-*.c
+ F: tests/test-qmp-*.c
+ F: tests/test-visitor-serialization.c
+ F: scripts/qapi*
+-F: docs/qapi*
++F: docs/devel/qapi*
+ T: git git://repo.or.cz/qemu/armbru.git qapi-next
  
- Block Jobs
+ QAPI Schema
+@@ -1471,7 +1471,7 @@ M: Markus Armbruster <armbru@redhat.com>
+ S: Supported
+ F: qmp.c
+ F: monitor.c
+-F: docs/*qmp-*
++F: docs/devel/*qmp-*
+ F: scripts/qmp/
+ F: tests/qmp-test.c
+ T: git git://repo.or.cz/qemu/armbru.git qapi-next
+@@ -1502,7 +1502,7 @@ S: Maintained
+ F: trace/
+ F: scripts/tracetool.py
+ F: scripts/tracetool/
+-F: docs/tracing.txt
++F: docs/devel/tracing.txt
+ T: git git://github.com/stefanha/qemu.git tracing
+ 
+ TPM
+@@ -1525,7 +1525,7 @@ F: include/migration/
+ F: migration/
+ F: scripts/vmstate-static-checker.py
+ F: tests/vmstate-static-checker-data/
+-F: docs/migration.txt
++F: docs/devel/migration.txt
+ F: qapi/migration.json
+ 
+ Seccomp
+@@ -1923,5 +1923,5 @@ Documentation
+ Build system architecture
+ M: Daniel P. Berrange <berrange@redhat.com>
+ S: Odd Fixes
+-F: docs/build-system.txt
++F: docs/devel/build-system.txt
+ 
 -- 
 2.14.1
 
