@@ -1,71 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dr5qF-0003OR-Mr
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Sep 2017 13:16:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55454)
+	id 1drEZM-0004gY-JV
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Sep 2017 22:35:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dr5qD-0003O7-72
-	for qemu-trivial@nongnu.org; Sun, 10 Sep 2017 13:16:18 -0400
+	(envelope-from <thuth@redhat.com>) id 1drEZK-0004f3-En
+	for qemu-trivial@nongnu.org; Sun, 10 Sep 2017 22:35:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dr5q9-0003Wx-1N
-	for qemu-trivial@nongnu.org; Sun, 10 Sep 2017 13:16:17 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35628)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dr5q8-0003Wc-Sg; Sun, 10 Sep 2017 13:16:12 -0400
-Received: by mail-qt0-x242.google.com with SMTP id l25so1487064qtf.2;
-	Sun, 10 Sep 2017 10:16:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=Tpjbv4NA22yxNTYGugKthImXouxOCQbSF13uql0Q9kQ=;
-	b=qtcjJNEfLkMlamhLCUIYDrPK63yLhRdeFHh0+9YDaKR395j0CBXdo7Z+Y/UEKFrkkP
-	TG8XX/nkvX82M6JpKwgceLgiUNzYgXZtzIO4EJ3kBfDjZs/efsEYBjNgHcSmrsdJqlep
-	wIznWDS1UU/Qk3/QSTikdurygGIoQuGi98OKyCK3zWzkNaoLTVq6qd08mri9UR9K5RL3
-	lBrJ41umA56KJeO4f1ayH3gK6kRWEajHu8WzpHhEEPBzEm8mjNqd68qM6YPOxPA8R31h
-	AftC3IXS/UIWLhhFsfQ2mLAV+thXEdcWc/gooILJ9QRw5Gfe5cbFW96HIrHQxEVsY5EV
-	Dxcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=Tpjbv4NA22yxNTYGugKthImXouxOCQbSF13uql0Q9kQ=;
-	b=pShQYyhGr6HXJsN73SqTG3G2q1gKJWRrI+04R6+enXhPx8jMEnVuDQvIT/Bw+3F+dp
-	Ckc7URcZ4f3EomiiUTIH0teL1/uC94BzZ6eq2TUG30bIauo5+kF30iiRf1Yb9WQiR2eQ
-	ZF0K282VIxXp8ye26JTxT1BZniX1N2cMm3HbbVb0sp40Gn5tm14wQYToUASbKn/Y3dHg
-	smVQUW/82Fcvdr7lfmttRQvt2SEQMme0cy65JRvrFBpwz/ONI2O4+ezCCRLtf8RytXbX
-	etPE74pEnVigQa6/KJKdjw234FPQV5C95yURFla1wZ1W4uU4UD+dnqVnDFL+0cxn+tIV
-	aDeA==
-X-Gm-Message-State: AHPjjUgebsWzxPcBngHjQIzMoBUfvPtdrr40wLuP9NFaQEDhiS1TwRwA
-	D4g8sJ4bRmKGYA==
-X-Google-Smtp-Source: AOwi7QDtAjCDGOfkoykOJm27CLIpAgzKkN1TA2XZmEpX7wYrKU1Qx7107emBw1s9xu5I06jzDxhTXQ==
-X-Received: by 10.200.26.135 with SMTP id x7mr10292044qtj.14.1505063772235;
-	Sun, 10 Sep 2017 10:16:12 -0700 (PDT)
-Received: from yoga.offpageads.com ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	e126sm4470485qkd.86.2017.09.10.10.16.08
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Sep 2017 10:16:11 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Hannes Reinecke <hare@suse.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-block@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Laszlo Ersek <lersek@redhat.com>
-Date: Sun, 10 Sep 2017 14:15:57 -0300
-Message-Id: <20170910171557.12689-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.14.1
+	(envelope-from <thuth@redhat.com>) id 1drEZJ-0005eV-G1
+	for qemu-trivial@nongnu.org; Sun, 10 Sep 2017 22:35:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55828)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1drEZE-0005cN-SO; Sun, 10 Sep 2017 22:35:21 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7A80931DC2C;
+	Mon, 11 Sep 2017 02:35:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7A80931DC2C
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.54] (ovpn-116-54.ams2.redhat.com [10.36.116.54])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 28EC45C8B9;
+	Mon, 11 Sep 2017 02:35:14 +0000 (UTC)
+To: David Gibson <david@gibson.dropbear.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Laurent Vivier <lvivier@redhat.com>, 
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>
+References: <1504100343-26607-1-git-send-email-thuth@redhat.com>
+	<b98a4c56-f386-f827-5aa7-9a00e6fdf790@amsat.org>
+	<CAFEAcA8O5T5cX8XqBVZqXLt5MPvF7qEcJK8Az2GBei07P0dZGQ@mail.gmail.com>
+	<20170910032413.GB2735@umbus.fritz.box>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <9058bb80-4e5c-3316-576f-1c21924a8a07@redhat.com>
+Date: Mon, 11 Sep 2017 04:35:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: update email,
- add missing test entry for megasas
+In-Reply-To: <20170910032413.GB2735@umbus.fritz.box>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature";
+	boundary="GQHCXIGEsWoOcJ4EASUpJB3SX7A3CE837"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 11 Sep 2017 02:35:19 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] hw/misc/ivshmem:
+ Fix ivshmem_recv_msg() to also work on big endian systems
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,37 +68,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Sep 2017 17:16:18 -0000
+X-List-Received-Date: Mon, 11 Sep 2017 02:35:27 -0000
 
-and update maintainer email address
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--GQHCXIGEsWoOcJ4EASUpJB3SX7A3CE837
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Hannes Reinecke replied:
-I'm currently on vacation with no internet access, but will be happy to answer your mail once I'm back at work on Sep, 12th.
+On 10.09.2017 05:24, David Gibson wrote:
+> On Wed, Aug 30, 2017 at 03:59:07PM +0100, Peter Maydell wrote:
+>> On 30 August 2017 at 15:53, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+>>> On 08/30/2017 10:39 AM, Thomas Huth wrote:
+>>>> The problem is that the server side code in ivshmem_server_send_one_=
+msg()
+>>>> correctly translates all messages IDs into little endian 64-bit valu=
+es,
+>>>> but the client side code in the ivshmem_recv_msg() function does not=
+ swap
+>>>> the byte order back. Fix it by passing the value through le64_to_cpu=
+().
+>>>
+>>>
+>>> Yes, we lack BE testing :(
+>>
+>> My pre-pull-request test set includes s390 and ppc64 bigendian.
+>> This one was just missed because the 'slow' tests aren't in
+>> 'make check'.
+>=20
+> I'm not what makes sense for staging this fix.  I could take it
+> through my tree, but it's not an obvious match, since this isn't
+> really related to ppc at all.
 
- MAINTAINERS | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+There does not seem to be maintainer for ivshmem, as far as I can see,
+so I'd say any tree that is distantly related is fine. So I think you
+could either take it through your ppc tree (since the bug affects big
+endian ppc machines), or maybe Cornelia could take it through the s390x
+tree (since we've seen the problem on the big endian s390x machines,
+too). Otherwise I have to wait and see whether it goes through misc or
+trivial, I guess...
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 36eeb42d19..371e23a9ff 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1101,11 +1101,12 @@ F: hw/block/nvme*
- F: tests/nvme-test.c
- 
- megasas
--M: Hannes Reinecke <hare@suse.de>
-+M: Hannes Reinecke <hare@suse.com>
- L: qemu-block@nongnu.org
- S: Supported
- F: hw/scsi/megasas.c
- F: hw/scsi/mfi.h
-+F: tests/megasas-test.c
- 
- Network packet abstractions
- M: Dmitry Fleytman <dmitry@daynix.com>
--- 
-2.14.1
+ Thomas
 
+
+--GQHCXIGEsWoOcJ4EASUpJB3SX7A3CE837
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iQIcBAEBAgAGBQJZtfZhAAoJEC7Z13T+cC21kjAQAKAnBTVWYkp3dVFH8I3YyPgx
+cZTt6l4O6+I3cewKtUBgn1o/tlJPM+NCS3iJwCngfYuL0RDu4F1Rb9eVRSury86b
+M14D//Odt03XTFnnWZjBzctv6BoZ3uoV68ZwnfAHKttl7sVUgY04PQ0/PQ/kE0O1
++WH8pvz1dwdQGTueqhxtnNK0soVfS3o8SvRXRFa1aUlgA0+sIigLTb5SWqbhFdRZ
+BJbbv2+4HNw2xHtaPfP5tEZM3+nEKyyIfQgYQcP0Yl9VpMdOByizNbMALig8Ie4Z
+UHoGSINPtRydTV+Lw5wqWyWkM2JVrJQ0pRje7619BkTj80KaVc2cdmq3LJAPN+Ni
+axwwFEn+NiPUd/6LFCyqOGlMwXwncGomuaV9MEl/slUaZg/u5VIFWSN9UR8mBceu
+JDMpzJHEMCieqBdxzIz4OifLUzwDzxX3pH18NBBZukMuEZpYdpcY7bLPXWZKGuYu
+zOmtbCZfYUzBqdseL1pX+fCwcBonYns0rKRBMiF4koVytpbhzm2XTcO82ZEekRIb
+LR3L/fUPVlwzP46GfFuXGN9yEzeVpcmmcZfRRp33WV9yiN29b9DTqagCLh57Ia5T
+XAfocD5nTp0K3sR0QeGPtkQDPLQSbjocrmcJquypmx2S/ZOXf5I8IPoyUHT4khRr
+rHmQ26LWX9Z258Bi4TCf
+=uzn9
+-----END PGP SIGNATURE-----
+
+--GQHCXIGEsWoOcJ4EASUpJB3SX7A3CE837--
 
