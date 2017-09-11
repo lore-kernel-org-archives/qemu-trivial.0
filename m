@@ -1,47 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drMPY-0007sy-Rt
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 06:57:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39449)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1drMPW-0007qA-83
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:57:51 -0400
+	id 1drSWB-000765-2R
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 13:29:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41931)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
+	id 1drSW8-00073i-EW
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 13:29:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1drMPV-0002JZ-9H
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:57:50 -0400
-Received: from ozlabs.org ([103.22.144.67]:60731)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1drMPP-0002Ei-9F; Mon, 11 Sep 2017 06:57:43 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xrPyq3RDbz9sBd; Mon, 11 Sep 2017 20:57:39 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1505127459;
-	bh=FnqVP91w7LoI3iUx+85ta1eBZ6kw8sPlNeRF6pf/Uvk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=B14il6vnqOW0MaeokikbfTb9ePZXS0vtwAWx1V/lHuV/vwxXDk7OkkIrlADfz6tDN
-	jSh3LGCWlyKljRMvpKRvldTqs287AeurXAuoonFEyk2QgIqHPl0X9Ai/jc/kPDY0Z3
-	iTF9+HS4avsut15FAEOrD6NhmX00hefbhgRRajjk=
-Date: Mon, 11 Sep 2017 19:49:50 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Message-ID: <20170911094950.GA2784@umbus.fritz.box>
-References: <1504030416-18618-1-git-send-email-thuth@redhat.com>
-	<20170911093207.4375c534.cohuck@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="oyUTqETQ0mS9luUI"
-Content-Disposition: inline
-In-Reply-To: <20170911093207.4375c534.cohuck@redhat.com>
-User-Agent: Mutt/1.8.3 (2017-05-23)
+	(envelope-from <n54@gmx.com>) id 1drSW5-0005y3-An
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 13:29:04 -0400
+Received: from mout.gmx.net ([212.227.15.19]:55125)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <n54@gmx.com>)
+	id 1drSW5-0005wk-0K; Mon, 11 Sep 2017 13:29:01 -0400
+Received: from localhost.localdomain ([185.58.161.191]) by mail.gmx.com
+	(mrgmx003 [212.227.17.184]) with ESMTPSA (Nemesis) id
+	0LiDrv-1d4hIo1rSV-00nOSM; Mon, 11 Sep 2017 19:28:57 +0200
+From: Kamil Rytarowski <n54@gmx.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, jperkin@joyent.com, peter.maydell@linaro.org,
+	Kamil Rytarowski <n54@gmx.com>
+Date: Mon, 11 Sep 2017 19:16:39 +0200
+Message-Id: <20170911171639.22005-1-n54@gmx.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20170903164952.26760-1-n54@gmx.com>
+References: <20170903164952.26760-1-n54@gmx.com>
+X-Provags-ID: V03:K0:tFQ8LyO7mIgWyEwQVsNmdpbsXcj4jSrSiWlbLtb38HYOGhH+Fdk
+	aZpFTSPUsjBp51VeprKf6n0fN6iX5jm1k8JbiAGimJI+/aCSzQ/WhByuDU7ks6ztY76qb/k
+	rS40NSgY5xnlt07mSqk1f89MgcvSghazVMfyYYka8dWsvWTFqZEIIHJzFk0hS1FKtcXS17d
+	ddP2KbeHqvGIyTR8sGNEA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:IF+4N/kQpgc=:B6+mW7IdvT/uxKvsU7ShT7
+	TYrNELMFPXDs0HSTgdGW+Nq+XEM+djQgiAdCa+ARpxI5eEy87NOtmHE9wt5FnZhhalTWbM1iE
+	zTrT9WASlQstn5a42PwcpsSPdJ2KweULNs1FWTMbJbp4nf4vhFdqSSkpYRffRyex+UcfEbULw
+	LbhBvGZmccEQgoVTJKSaejGXvFCcyLLN0GaSwCeGF86pi0bRZdDACy697aFChK/v3jdVIjR4Y
+	Xkf8dREb0r9Dcg5InGbClnkGxBG87rqV1pEmOJYWZzFwtoAJ6IkP8rMafG8AT5SzSMEo509VC
+	JDI5TD4HpydzIHoZe7Pr5jUJ2fVvQ6HcH9pI4rdBg4DsKeIaQM460t0naPFypfj3ODcHxAtxg
+	uvs9KDDiYjED7nLQmD3l5zw4uCtmBEjEDIY83YvNRq/lD9t0UsB0mwtCruGDRVNyqRrCaPc/y
+	GZnI3CuMouus3Ct+YJJSwJyTIQ6DzznoryM/y4FX15ZSiTvGX9rgCZa4XUyOjrxiWkZzy95/e
+	iefjCp7UjFP0T4BBerDX70upSkWVavZMXp1l6qISuQNX/0cDskH90GJSuShusKY80RmS9W/yR
+	stROMGTadk6OEmEs2xrHi2mUtZxMQuBOTJoa7L6W4Sg8UwMeWyrmCguhW49plFE+YBSpFSlsg
+	LPZfjvUW8lErHwNV7RShniMyouShFuIvpZDCbU7Qmzp4XX6tZDTv8/qs4nX7YytNKvnO52bQP
+	m6HH83Mkjo40WbWQmzVpNcPczUEpcUT1kvQBjm84EpQUukNy8tg75864iGxsLtjzQyR5SZqXE
+	DfUImB4Qa9Om/9GpvmUOXx1D42A7w==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] tests: Fix broken
- ivshmem-server-msi/-irq tests
+X-Received-From: 212.227.15.19
+Subject: [Qemu-trivial] [PATCH v2] Discover openpty(3) dynamically in
+ configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,63 +57,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2017 10:57:51 -0000
+X-List-Received-Date: Mon, 11 Sep 2017 17:29:05 -0000
 
+openpty(3) might:
+ - exists in libc (OSX)
+ - exists in libutil (GNU, BSD)
+ - does not exist (SmartOS)
 
---oyUTqETQ0mS9luUI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Add a function to discover this function in the ./configure script.
+Add new config types: CONFIG_OPENPTY_LIBC and CONFIG_OPENPTY_LIBUTIL,
+respectively defined when openpts(3) links with -lc or -lutil.
 
-On Mon, Sep 11, 2017 at 09:32:07AM +0200, Cornelia Huck wrote:
-> On Tue, 29 Aug 2017 20:13:36 +0200
-> Thomas Huth <thuth@redhat.com> wrote:
->=20
-> > Broken with commit b4ba67d9a7025 ("libqos: Change PCI accessors to take
-> > opaque BAR handle") a while ago, but nobody noticed since the tests are
-> > only run in SPEED=3Dslow mode: The msix_pba_bar is not correctly initia=
-lized
-> > anymore if bir_pba has the same value as bir_table. With this fix,
-> > "make check SPEED=3Dslow" should work fine again.
-> >=20
-> > Fixes: b4ba67d9a702507793c2724e56f98e9b0f7be02b
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  tests/libqos/pci.c | 7 ++++++-
-> >  1 file changed, 6 insertions(+), 1 deletion(-)
->=20
-> There really should be a better tree for that than my s390 tree, but
-> the other ivshmem patch was feeling a bit lonely, so I queued this as
-> well. Better than having the patch languish on the list.
+Replace the condition adding -lutil in tests (for openpty(3)) from
+CONFIG_POSIX to CONFIG_OPENPTY_LIBUTIL.
 
-Thanks, Cornelia.
+Replace the fallback openpty(3) impelementation comment from Solaris
+to SmartOS. Solaris is EOL'ed and it's confirmed that it does not work
+on Oracle Solaris.
+---
+ configure              | 25 +++++++++++++++++++++++++
+ tests/Makefile.include |  2 +-
+ util/qemu-openpty.c    |  4 ++--
+ 3 files changed, 28 insertions(+), 3 deletions(-)
 
+diff --git a/configure b/configure
+index fd7e3a5e81..a614adcd29 100755
+--- a/configure
++++ b/configure
+@@ -3819,6 +3819,25 @@ EOF
+   fi
+ fi
+ 
++##########################################
++# openpty probe
++openpty_libc=no
++openpty_libutil=no
++cat > $TMPC << EOF
++extern int openpty(int *amaster, int *aslave, char *name, void *termp, void *winp);
++
++int main(void)
++{
++    int master_fd, slave_fd;
++    return openpty(&master_fd, &slave_fd, 0, 0, 0) == 0;
++}
++EOF
++if compile_prog "" "" ; then
++  openpty_libc=yes
++elif compile_prog "" "-lutil" ; then
++  openpty_libutil=yes
++fi
++
+ ##########################################
+ # signalfd probe
+ signalfd="no"
+@@ -5788,6 +5807,12 @@ fi
+ if test "$fdt" = "yes" ; then
+   echo "CONFIG_FDT=y" >> $config_host_mak
+ fi
++if test "$openpty_libc" = "yes" ; then
++  echo "CONFIG_OPENPTY_LIBC=y" >> $config_host_mak
++fi
++if test "$openpty_libutil" = "yes" ; then
++  echo "CONFIG_OPENPTY_LIBUTIL=y" >> $config_host_mak
++fi
+ if test "$signalfd" = "yes" ; then
+   echo "CONFIG_SIGNALFD=y" >> $config_host_mak
+ fi
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index fae5715e9c..e7e0bc2724 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -814,7 +814,7 @@ tests/migration/initrd-stress.img: tests/migration/stress$(EXESUF)
+ 	rm $(INITRD_WORK_DIR)/init
+ 	rmdir $(INITRD_WORK_DIR)
+ 
+-ifeq ($(CONFIG_POSIX),y)
++ifeq ($(CONFIG_OPENPTY_LIBUTIL),y)
+ LIBS += -lutil
+ endif
+ 
+diff --git a/util/qemu-openpty.c b/util/qemu-openpty.c
+index 2e8b43bdf5..62c87e5563 100644
+--- a/util/qemu-openpty.c
++++ b/util/qemu-openpty.c
+@@ -51,8 +51,8 @@
+ # include <termios.h>
+ #endif
+ 
+-#ifdef __sun__
+-/* Once Solaris has openpty(), this is going to be removed. */
++/* The fallback implementation is needed at least on SmartOS. */
++#if !defined(CONFIG_OPENPTY_LIBC) && !defined(CONFIG_OPENPTY_LIBUTIL)
+ static int openpty(int *amaster, int *aslave, char *name,
+                    struct termios *termp, struct winsize *winp)
+ {
+-- 
+2.14.1
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---oyUTqETQ0mS9luUI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlm2XDsACgkQbDjKyiDZ
-s5J0ZRAA5YsbXrSGFOCL4ByflXUU2ct5rahj2O0O72PKfmqZL6NnU0WLCAgviJN1
-0bh26ENnYU3ef/sfsWlqdd9p1gKhz0FTmVzi0tv+41NT0TpW/wGVKvtzjSIXOz3a
-YL3LyBHXf7NmKo2o1sBQu7k8N2stg/VjY0kel2ZBD6qpO6v4JnkjqwMmBfxLjTat
-EfY0s/FdH+xIdgCGLBY3hMHElDEyrjHBdD++S9qw0Y5IYcGKpnNF7oWrlSRgbwch
-ThuyZ6m/NedGKAqSVraFZYuHZqCUgkebz0/pdTodepwHLJ59nYI95iPkltOL8qK5
-d/oMAGZhuWxbeB5sqX0vls56+yxdlLkD6Hh7YVbnatasHXk6Xud9Q8RlpNka/SlC
-ixee9uo5hNxPf6Xp7ElHysfTxtD4omlJ0+7IaVwxsy9CeCkF4cUvXDyn/frrPc1R
-9MfN/6iPA4IgSt5d+1u11MrCtNHqzfyWN6bq7CWZ/akDR3yojuu6iA47sPMwguDF
-nP3A6zulDgeuknpr93VqPrtQRjce5Es6SxqHpPQfSnsONb1gELUgm3v4Kx+YvZ05
-hvmPbuXa0xyNNHSmKlFZbeEHIXtr2BWmjEy4MYnKGPDBkooYVfj4jtckae7g/4Uz
-oKAJHhy+ZlvS2zQjDIeY8LmceqmbkO50mAZglTABcVWTCQEz94I=
-=Q8y2
------END PGP SIGNATURE-----
-
---oyUTqETQ0mS9luUI--
 
