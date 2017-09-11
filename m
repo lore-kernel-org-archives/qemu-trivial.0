@@ -1,55 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drLth-00050n-3V
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 06:24:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59487)
+	id 1drMPY-0007sy-Rt
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 06:57:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39449)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1drLte-0004zH-KE
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:24:55 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1drMPW-0007qA-83
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:57:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1drLtd-0008HY-Oe
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:24:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37758)
+	(envelope-from <dgibson@ozlabs.org>) id 1drMPV-0002JZ-9H
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 06:57:50 -0400
+Received: from ozlabs.org ([103.22.144.67]:60731)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1drLtX-0008ES-Bl; Mon, 11 Sep 2017 06:24:47 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5D78DCBB96;
-	Mon, 11 Sep 2017 10:24:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5D78DCBB96
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=pbonzini@redhat.com
-Received: from [10.32.181.85] (unknown [10.32.181.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DF9E870523;
-	Mon, 11 Sep 2017 10:24:44 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Hannes Reinecke <hare@suse.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Laszlo Ersek <lersek@redhat.com>
-References: <20170910171557.12689-1-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0c1bf125-1431-cdf7-3e4b-7fb95113acfc@redhat.com>
-Date: Mon, 11 Sep 2017 12:24:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1drMPP-0002Ei-9F; Mon, 11 Sep 2017 06:57:43 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3xrPyq3RDbz9sBd; Mon, 11 Sep 2017 20:57:39 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1505127459;
+	bh=FnqVP91w7LoI3iUx+85ta1eBZ6kw8sPlNeRF6pf/Uvk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B14il6vnqOW0MaeokikbfTb9ePZXS0vtwAWx1V/lHuV/vwxXDk7OkkIrlADfz6tDN
+	jSh3LGCWlyKljRMvpKRvldTqs287AeurXAuoonFEyk2QgIqHPl0X9Ai/jc/kPDY0Z3
+	iTF9+HS4avsut15FAEOrD6NhmX00hefbhgRRajjk=
+Date: Mon, 11 Sep 2017 19:49:50 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20170911094950.GA2784@umbus.fritz.box>
+References: <1504030416-18618-1-git-send-email-thuth@redhat.com>
+	<20170911093207.4375c534.cohuck@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20170910171557.12689-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 11 Sep 2017 10:24:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="oyUTqETQ0mS9luUI"
+Content-Disposition: inline
+In-Reply-To: <20170911093207.4375c534.cohuck@redhat.com>
+User-Agent: Mutt/1.8.3 (2017-05-23)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: update email,
- add missing test entry for megasas
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] tests: Fix broken
+ ivshmem-server-msi/-irq tests
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,41 +53,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2017 10:24:55 -0000
+X-List-Received-Date: Mon, 11 Sep 2017 10:57:51 -0000
 
-On 10/09/2017 19:15, Philippe Mathieu-Daud=C3=A9 wrote:
-> and update maintainer email address
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Hannes Reinecke replied:
-> I'm currently on vacation with no internet access, but will be happy to=
- answer your mail once I'm back at work on Sep, 12th.
->=20
->  MAINTAINERS | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 36eeb42d19..371e23a9ff 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1101,11 +1101,12 @@ F: hw/block/nvme*
->  F: tests/nvme-test.c
-> =20
->  megasas
-> -M: Hannes Reinecke <hare@suse.de>
-> +M: Hannes Reinecke <hare@suse.com>
->  L: qemu-block@nongnu.org
->  S: Supported
->  F: hw/scsi/megasas.c
->  F: hw/scsi/mfi.h
-> +F: tests/megasas-test.c
-> =20
->  Network packet abstractions
->  M: Dmitry Fleytman <dmitry@daynix.com>
->=20
 
-Queued, thanks.
+--oyUTqETQ0mS9luUI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Paolo
+On Mon, Sep 11, 2017 at 09:32:07AM +0200, Cornelia Huck wrote:
+> On Tue, 29 Aug 2017 20:13:36 +0200
+> Thomas Huth <thuth@redhat.com> wrote:
+>=20
+> > Broken with commit b4ba67d9a7025 ("libqos: Change PCI accessors to take
+> > opaque BAR handle") a while ago, but nobody noticed since the tests are
+> > only run in SPEED=3Dslow mode: The msix_pba_bar is not correctly initia=
+lized
+> > anymore if bir_pba has the same value as bir_table. With this fix,
+> > "make check SPEED=3Dslow" should work fine again.
+> >=20
+> > Fixes: b4ba67d9a702507793c2724e56f98e9b0f7be02b
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  tests/libqos/pci.c | 7 ++++++-
+> >  1 file changed, 6 insertions(+), 1 deletion(-)
+>=20
+> There really should be a better tree for that than my s390 tree, but
+> the other ivshmem patch was feeling a bit lonely, so I queued this as
+> well. Better than having the patch languish on the list.
+
+Thanks, Cornelia.
+
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--oyUTqETQ0mS9luUI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlm2XDsACgkQbDjKyiDZ
+s5J0ZRAA5YsbXrSGFOCL4ByflXUU2ct5rahj2O0O72PKfmqZL6NnU0WLCAgviJN1
+0bh26ENnYU3ef/sfsWlqdd9p1gKhz0FTmVzi0tv+41NT0TpW/wGVKvtzjSIXOz3a
+YL3LyBHXf7NmKo2o1sBQu7k8N2stg/VjY0kel2ZBD6qpO6v4JnkjqwMmBfxLjTat
+EfY0s/FdH+xIdgCGLBY3hMHElDEyrjHBdD++S9qw0Y5IYcGKpnNF7oWrlSRgbwch
+ThuyZ6m/NedGKAqSVraFZYuHZqCUgkebz0/pdTodepwHLJ59nYI95iPkltOL8qK5
+d/oMAGZhuWxbeB5sqX0vls56+yxdlLkD6Hh7YVbnatasHXk6Xud9Q8RlpNka/SlC
+ixee9uo5hNxPf6Xp7ElHysfTxtD4omlJ0+7IaVwxsy9CeCkF4cUvXDyn/frrPc1R
+9MfN/6iPA4IgSt5d+1u11MrCtNHqzfyWN6bq7CWZ/akDR3yojuu6iA47sPMwguDF
+nP3A6zulDgeuknpr93VqPrtQRjce5Es6SxqHpPQfSnsONb1gELUgm3v4Kx+YvZ05
+hvmPbuXa0xyNNHSmKlFZbeEHIXtr2BWmjEy4MYnKGPDBkooYVfj4jtckae7g/4Uz
+oKAJHhy+ZlvS2zQjDIeY8LmceqmbkO50mAZglTABcVWTCQEz94I=
+=Q8y2
+-----END PGP SIGNATURE-----
+
+--oyUTqETQ0mS9luUI--
 
