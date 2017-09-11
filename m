@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drVDv-0004nz-G5
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 16:22:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51068)
+	id 1drVK2-0007Fo-B2
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 16:28:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52480)
 	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVDt-0004nE-7M
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:22:26 -0400
+	id 1drVK0-0007D8-0p
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:28:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1drVDp-00086N-Vw
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:22:25 -0400
-Received: from mout.gmx.net ([212.227.15.15]:62536)
+	(envelope-from <n54@gmx.com>) id 1drVJw-0002E3-Tz
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:28:44 -0400
+Received: from mout.gmx.net ([212.227.17.22]:63793)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVDp-00083t-LG; Mon, 11 Sep 2017 16:22:21 -0400
-Received: from [192.168.1.3] ([185.58.161.191]) by mail.gmx.com (mrgmx002
-	[212.227.17.184]) with ESMTPSA (Nemesis) id 0M3RZI-1dZhJz1S9g-00qxOY;
-	Mon, 11 Sep 2017 22:22:19 +0200
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <20170911200002.4511-1-n54@gmx.com>
-	<CAFEAcA-5uT+vMfoNRDkHadGo-O3S-_LOmgj5_7dQgCS8NVzfvA@mail.gmail.com>
+	id 1drVJw-0002DM-Jc; Mon, 11 Sep 2017 16:28:40 -0400
+Received: from localhost.localdomain ([185.58.161.191]) by mail.gmx.com
+	(mrgmx101 [212.227.17.174]) with ESMTPSA (Nemesis) id
+	0MZ8fw-1eA9AQ05HQ-00KuEm; Mon, 11 Sep 2017 22:28:38 +0200
 From: Kamil Rytarowski <n54@gmx.com>
-Message-ID: <b8cc160b-349a-4bd0-efcd-04871cd47f02@gmx.com>
-Date: Mon, 11 Sep 2017 22:24:41 +0200
-User-Agent: Mozilla/5.0 (X11; NetBSD amd64; rv:52.0) Gecko/20100101
-	Thunderbird/52.1.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-5uT+vMfoNRDkHadGo-O3S-_LOmgj5_7dQgCS8NVzfvA@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="3LhNWIxW0XXM9QA2ELWg2AgHQ7L4tBWie"
-X-Provags-ID: V03:K0:zuJlKCUcXhX6zNge76HpnGsEAkw7UtUvXXnbE+Dm98trkVhzeZA
-	57vYoPlAe5978lPI/ZQOcN27HxQC57UnU8tfrHCSAAqXja4wxa3ZEFdkNAiOS6lNVqOAgFJ
-	0AEiVMvH3wmQSndBtRADdNTRTrByRoAOBPbO6FC8pfzzxWCIlY5vggMpB2BJ6IhZyRGSTYz
-	k9/8WuR/eNRgW7itR9m5Q==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:OvcLWpdFlIo=:GFJhFTJOuR8oU+jt87oZDw
-	63hImDI15IfFx3IDt34IavjdBXOVQDBc+DDr8fZD9VAOpE9zR2OPGY6JmJGybX/4RQcJKhBSD
-	8jxxcAMRbP8/VkmL0QvVAVEUdpRIz5KXEAGEFZw52gR4a8GLuit/jm1uOhuK+GxY1iJlttQ2S
-	PMcfBYIdiRxs1VyybUstTehVnHKuA2YWzFiyU0Kuo17dk6qZk6u9f9j0GcAN8+OYNS2Kuu+ST
-	ivR6wSXQKifWDLM903ro1g7IVkwEKKY83x1QFiX+Rqto3fSvGdRvfUhP4UP879xLRpxOWCpOV
-	70ehge8l0l4MTkDGGg/06WWUza3wGzzwAkvyTVDkbnbskV40Vcfp9tycFoW7YL8iK9+u3mCPs
-	gJ1EzNa9DvGGgmvCeJArZWs8xEAETofLhCIotZzAKryCqmgEoSW2iE8k4fV/v5SIUztWnZmDK
-	ysas9H6MmAki+ZNo0CXv7b8cBAT7om95iK5GvNVH4kEz+Y6K1147tpTbLZvUi7ypEENuLLNoA
-	XWhxdsUUbsnZiGGfxDLBVX0twSrHB1JKQDTHwtWdjiqfI72Wd0bCGIhDBtwR3dv2y/Pjdi2Zd
-	rRvkn0oyJJZ23x9Ml+Q+l6slHdobGkjXAuzADneEnfKaLUMwpbDXtDxP24q+IsVAAG7/Fu88J
-	+t/mYdSr5HgO5Zqz8Rk4j5F8mLk6gg7vXpvtF5xhnbQriOeOJMCNCbpR3ZPBRFPRrt3wN7luU
-	2O0nHyUPtkIU/HFUbTqc946gf7+VW5KcClwu2oW+dBg+XSSZhf84Z5mh4o0iRZW5xxywS1AhF
-	j/nzno6C9Y9CjyJ6rAMhCmt7deruA==
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+	Kamil Rytarowski <n54@gmx.com>
+Date: Mon, 11 Sep 2017 22:16:10 +0200
+Message-Id: <20170911201610.15204-1-n54@gmx.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20170911200002.4511-1-n54@gmx.com>
+References: <20170911200002.4511-1-n54@gmx.com>
+X-Provags-ID: V03:K0:a6Qg0LDi187GCVUA6u73ZCFV0C5cO5fiXXz/vj8+Ior6N/K4LHl
+	Kq7D/U/XD+UH5I0Z2xSRc7RVGkuyvpfxy7pF5FEN7SCAkrLYrSg/mxZV/+G7Qc81eNDJsFV
+	7LHmjWg5mZBAcB3k6nOWBZfb/jKiGsU9h7XQdmC4PnUy5TV/F28DA5jaKDlcG+tzgPoUxZw
+	Bc3YROo7SlzbjsOyUMhJw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:tVX5TN5zyCk=:3JELP5n7CVgeSY7FZRXzxN
+	Fk26EpJiXFjVnIzv0+43Kn43yr0WdgAH4PbOXQFq+oo7YypQahUy8DIVMNLC9i7Th0hstTkoG
+	pZrF/BRI7Sy+0w/D9LBvhhI4g9O03D2X+rhHPwUmTretD0vFoUYU2rvnrv5ML6u3eF8qaanlW
+	UE1/jDzNDbm+RyN8Bcn0pFudBW4Vg6FKiq8JggD5VBn/cD7gy89HUCiVa0qEKVvKKmPwHCDLF
+	IHu2Pva7Rs0SS1029545HboMo7uj9d502i+49kduEWQauQb/Tabv/2fnCPW8gdastvaQ7z7LR
+	yWDeciFTVcScRdBbj9yIzNgSfrQkIFzh0tro7LjbeGroFjU0E7BJixymeVqkEeVafwtYgbpRf
+	x4gN9UDY2AdKfGw97wG+Cy/DuM/Mn6IJtry741wZFAiewytSgoZ0KmYZopSQi+YOvZnRV674I
+	TYGMO4vyxXI67ECVeLfQZsEb2cKkFuwvcKqCGUexpMl0jy5G8qOhg1VM5zgFl4clwmL70SZK9
+	CUPBPIugSObkLuvrMhuEv7/G6mF73K6iMOXdS+olE1FyErhtGZMI0aeln47kYXFmxhT3KW+8o
+	lV1yycx58Aq7vypZaZq3B5YR9Ant90gGoe7hniCdEmGOr41bpQtRDx9AHfZXkngA/AOJZAi7O
+	/tXWSFAakiJwOwPMbELQwNG465POduiz8uXhj5TuVwdqo/ipEfX7y/b2jGYetR1froIJQOvRW
+	QoBRAgLYmTngL4EZEvSr5JSXuH4T1qVnE8j/H0v325A/wdhTJV7JlrAbrm8BkRaLl0ao1RkCT
+	FPlB/MPEdg6vUiNE25KsK4qFQZiqA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.15.15
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Rename round_page() to
- round_pageq()
+X-Received-From: 212.227.17.22
+Subject: [Qemu-trivial] [PATCH v2] Replace round_page() with
+ TARGET_PAGE_ALIGN()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,68 +57,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2017 20:22:26 -0000
+X-List-Received-Date: Mon, 11 Sep 2017 20:28:45 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3LhNWIxW0XXM9QA2ELWg2AgHQ7L4tBWie
-Content-Type: multipart/mixed; boundary="cr7amreHxk6sBB2WojKtkopA4FNT6hIHB";
- protected-headers="v1"
-From: Kamil Rytarowski <n54@gmx.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Message-ID: <b8cc160b-349a-4bd0-efcd-04871cd47f02@gmx.com>
-Subject: Re: [Qemu-devel] [PATCH] Rename round_page() to round_pageq()
-References: <20170911200002.4511-1-n54@gmx.com>
- <CAFEAcA-5uT+vMfoNRDkHadGo-O3S-_LOmgj5_7dQgCS8NVzfvA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-5uT+vMfoNRDkHadGo-O3S-_LOmgj5_7dQgCS8NVzfvA@mail.gmail.com>
+This change fixes conflict with the DragonFly BSD headers.
 
---cr7amreHxk6sBB2WojKtkopA4FNT6hIHB
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+---
+ hw/ppc/mac_newworld.c | 11 +++--------
+ hw/ppc/mac_oldworld.c | 11 +++--------
+ 2 files changed, 6 insertions(+), 16 deletions(-)
 
-On 11.09.2017 22:16, Peter Maydell wrote:
-> On 11 September 2017 at 21:00, Kamil Rytarowski <n54@gmx.com> wrote:
->> This change fixes conflict with the DragonFly BSD headers.
->>
->> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
->=20
-> What's the rationale for calling it round_pageq()
-> in particular?
->=20
-> thanks
-> -- PMM
->=20
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index d466634997..51bf83019b 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -124,11 +124,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
+     return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
+ }
+ 
+-static hwaddr round_page(hwaddr addr)
+-{
+-    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
+-}
+-
+ static void ppc_core99_reset(void *opaque)
+ {
+     PowerPCCPU *cpu = opaque;
+@@ -256,7 +251,7 @@ static void ppc_core99_init(MachineState *machine)
+         }
+         /* load initrd */
+         if (initrd_filename) {
+-            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
++            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+@@ -264,11 +259,11 @@ static void ppc_core99_init(MachineState *machine)
+                              initrd_filename);
+                 exit(1);
+             }
+-            cmdline_base = round_page(initrd_base + initrd_size);
++            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
+         } else {
+             initrd_base = 0;
+             initrd_size = 0;
+-            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
++            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+         }
+         ppc_boot_device = 'm';
+     } else {
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index fcac399562..feb31911ca 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -66,11 +66,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
+     return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
+ }
+ 
+-static hwaddr round_page(hwaddr addr)
+-{
+-    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
+-}
+-
+ static void ppc_heathrow_reset(void *opaque)
+ {
+     PowerPCCPU *cpu = opaque;
+@@ -191,7 +186,7 @@ static void ppc_heathrow_init(MachineState *machine)
+         }
+         /* load initrd */
+         if (initrd_filename) {
+-            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
++            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+@@ -199,11 +194,11 @@ static void ppc_heathrow_init(MachineState *machine)
+                              initrd_filename);
+                 exit(1);
+             }
+-            cmdline_base = round_page(initrd_base + initrd_size);
++            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
+         } else {
+             initrd_base = 0;
+             initrd_size = 0;
+-            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
++            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+         }
+         ppc_boot_device = 'm';
+     } else {
+-- 
+2.14.1
 
-It might be a bad taste, but q stands for qemu.. I'm going to send a
-better patch soon with a switch to TARGET_PAGE_ALIGN().
-
-
---cr7amreHxk6sBB2WojKtkopA4FNT6hIHB--
-
---3LhNWIxW0XXM9QA2ELWg2AgHQ7L4tBWie
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAEBCAAGBQJZtvEPAAoJEEuzCOmwLnZsOpUP/2q+9Ithhnqe/lyFMI45JRKm
-+3pv+YA4QfuWQ3N+YUjyRIoLX3ZsAVJcd/cJMj3+O3yrps7gV7NOZELR6W+AiD8M
-wpk9cibnLvxdVR9nPsp2sLuWHT/LNJK2YC5envQVUaa2BhITCi7xL2Sd2CgXV3ex
-ddxog6YoOhtIounrTf67QvwSv0gUAlQXTV6cmcu3UOHToo8TGlKKv1AeL8tIuAQu
-JYJmixMokZzv5pu8c6Mgu2FolzZCN4060d0Tjk/fBFZOkFmfabvTmAwD9WZ3fcpu
-t7xxI21zkCe9AZJBj0lDJ/j/UyC6Q0voeeP3JymDs7kJBn+16Fir1WA0v9fTRLP8
-halCzYs7HOQDXn+tpVc3mk1E6na4nXTHGoRehYCmJOD7MsJoAG9yI0cPI+bs6rU7
-Laf6YouRbhD59jOgNDuLElJzMK4X9y19CDyHY1XcxUYPOxNHpyUEk4kCMgNc4/0Y
-4dx+BnAHa7LDTgNAs24drY+34HHw9uCiII1evea/v8u/DAkqHCOV0ng56EhaNtmR
-iQIhkrjAHlojmfT8cnwBBChYIr19SmJ0BfP+U2U/HcUJiaqeXTeSbjFmWaqDMmvy
-cdCB/p5WgQy+kJ6Wpo2BwkbnVmhCosfKFlGdKQMmKpgRaX1SVnj1G92GU3uBKJW8
-ikN13WBNN+Z7ru4n/696
-=QgZ/
------END PGP SIGNATURE-----
-
---3LhNWIxW0XXM9QA2ELWg2AgHQ7L4tBWie--
 
