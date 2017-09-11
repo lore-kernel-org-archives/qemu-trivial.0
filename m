@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drVK2-0007Fo-B2
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 16:28:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52480)
+	id 1drVqk-0003xd-6P
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 17:02:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34534)
 	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVK0-0007D8-0p
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:28:45 -0400
+	id 1drVqh-0003vM-Sa
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 17:02:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1drVJw-0002E3-Tz
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 16:28:44 -0400
-Received: from mout.gmx.net ([212.227.17.22]:63793)
+	(envelope-from <n54@gmx.com>) id 1drVqh-00034F-2L
+	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 17:02:31 -0400
+Received: from mout.gmx.net ([212.227.17.20]:62803)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVJw-0002DM-Jc; Mon, 11 Sep 2017 16:28:40 -0400
+	id 1drVqa-00030u-BV; Mon, 11 Sep 2017 17:02:24 -0400
 Received: from localhost.localdomain ([185.58.161.191]) by mail.gmx.com
-	(mrgmx101 [212.227.17.174]) with ESMTPSA (Nemesis) id
-	0MZ8fw-1eA9AQ05HQ-00KuEm; Mon, 11 Sep 2017 22:28:38 +0200
+	(mrgmx102 [212.227.17.174]) with ESMTPSA (Nemesis) id
+	0Lpxdr-1dCOGQ15hX-00fk9k; Mon, 11 Sep 2017 23:02:21 +0200
 From: Kamil Rytarowski <n54@gmx.com>
 To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
-	Kamil Rytarowski <n54@gmx.com>
-Date: Mon, 11 Sep 2017 22:16:10 +0200
-Message-Id: <20170911201610.15204-1-n54@gmx.com>
+Cc: qemu-devel@nongnu.org, jperkin@joyent.com, Kamil Rytarowski <n54@gmx.com>
+Date: Mon, 11 Sep 2017 22:50:01 +0200
+Message-Id: <20170911205001.11789-1-n54@gmx.com>
 X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20170911200002.4511-1-n54@gmx.com>
-References: <20170911200002.4511-1-n54@gmx.com>
-X-Provags-ID: V03:K0:a6Qg0LDi187GCVUA6u73ZCFV0C5cO5fiXXz/vj8+Ior6N/K4LHl
-	Kq7D/U/XD+UH5I0Z2xSRc7RVGkuyvpfxy7pF5FEN7SCAkrLYrSg/mxZV/+G7Qc81eNDJsFV
-	7LHmjWg5mZBAcB3k6nOWBZfb/jKiGsU9h7XQdmC4PnUy5TV/F28DA5jaKDlcG+tzgPoUxZw
-	Bc3YROo7SlzbjsOyUMhJw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:tVX5TN5zyCk=:3JELP5n7CVgeSY7FZRXzxN
-	Fk26EpJiXFjVnIzv0+43Kn43yr0WdgAH4PbOXQFq+oo7YypQahUy8DIVMNLC9i7Th0hstTkoG
-	pZrF/BRI7Sy+0w/D9LBvhhI4g9O03D2X+rhHPwUmTretD0vFoUYU2rvnrv5ML6u3eF8qaanlW
-	UE1/jDzNDbm+RyN8Bcn0pFudBW4Vg6FKiq8JggD5VBn/cD7gy89HUCiVa0qEKVvKKmPwHCDLF
-	IHu2Pva7Rs0SS1029545HboMo7uj9d502i+49kduEWQauQb/Tabv/2fnCPW8gdastvaQ7z7LR
-	yWDeciFTVcScRdBbj9yIzNgSfrQkIFzh0tro7LjbeGroFjU0E7BJixymeVqkEeVafwtYgbpRf
-	x4gN9UDY2AdKfGw97wG+Cy/DuM/Mn6IJtry741wZFAiewytSgoZ0KmYZopSQi+YOvZnRV674I
-	TYGMO4vyxXI67ECVeLfQZsEb2cKkFuwvcKqCGUexpMl0jy5G8qOhg1VM5zgFl4clwmL70SZK9
-	CUPBPIugSObkLuvrMhuEv7/G6mF73K6iMOXdS+olE1FyErhtGZMI0aeln47kYXFmxhT3KW+8o
-	lV1yycx58Aq7vypZaZq3B5YR9Ant90gGoe7hniCdEmGOr41bpQtRDx9AHfZXkngA/AOJZAi7O
-	/tXWSFAakiJwOwPMbELQwNG465POduiz8uXhj5TuVwdqo/ipEfX7y/b2jGYetR1froIJQOvRW
-	QoBRAgLYmTngL4EZEvSr5JSXuH4T1qVnE8j/H0v325A/wdhTJV7JlrAbrm8BkRaLl0ao1RkCT
-	FPlB/MPEdg6vUiNE25KsK4qFQZiqA==
+X-Provags-ID: V03:K0:yDCIJ71MyDmp6l1AqxKELUXnmWjUFs+RsetosWDgeqpxQXqnbs7
+	NqP9epHkLDh+kP4GhGzh6M79JqfoSuU10CyNtbdXj4v5bs9PkxRVqK4yzoVIGqKRgn5TfYF
+	dIU64WqOip8fxSgEKS15J1u1Q095sRyEeJYNkBWSGzffFLoW3LP9VAS4RRlQCb2nFpyx1BL
+	8JtFPAoXep5uR9vIBQJuw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:42xkGtxmyoM=:nX9Cpip5c55kF+FwO/uVY5
+	UQx1T/6JqBPc1KnEGGvVHlKPIkjERmLC71lgVhA81ZB9Zo4VpBoKmQsnGcos9NVqzxHRaWwI9
+	znzY1JHLjE0pmTEN4iSx4tol54qRZzxhGbV9isN/6eO8OLPxbZZ1P6EjKqeaiTIARRuR58xQ1
+	/SK6IMNSc5UzIcQWqUQ3Njru0PihbEPKx4L87X7FKr5xB8uwyHCne3Hp/45oxYya093Id8NUO
+	nkH+LrH4I8sKXctVPgPlHt7hLUgtUlzRzyXfYoO7bBlox1+5eIwun5BvYQrX1xV7u98PRBIZA
+	QfcF2SWBUyrd6+BvQ3aevVBCvXQTBPg5Vsy6dWbcz5GBAQ80VMllPDArndCbTH9lhuWMZavIp
+	fXpbeEOmgP/Tde+mn1GynEViGR0WlQ9Un+eJ4jyI7dIKeFgByaATaXtv6yN0xeOMz2KUtgoNm
+	pIvfkZLzDQJFB2F6ofm3G2DCJVXvwHKD36SH2t2vVToiWJjYEeiv4xoWYhZmtcc4acSanlct5
+	zTgkSTYhWPWCXoBDUj43dZnj/C2aSbMUb9NKpix4BwTpbpPCvViKQ3I6dXyCZOAUBi2FyXCTy
+	suQCOfg5/06U0f7HoCmH4KsI61Bf3uYUzwu2fqM1NTmB1zDulY9o39QS+RDJ1zWC0qmjy1qd/
+	xhy4JR4wt01M7lZM6ekAxy7CSoxkOfigQy9tU39G/7kZpOCZCD/15XVTdTdcLDemKJCMBPPmM
+	KBftalQ5fUwJUbJ4ILKFo9YOtZToTopp7vxlCZePaQu8Q8tuk6pT1rXuizS4g83lT8nUgFQKW
+	hkQ0x1GEvAaOkNf0yDmA5v57vXTFg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.17.22
-Subject: [Qemu-trivial] [PATCH v2] Replace round_page() with
- TARGET_PAGE_ALIGN()
+X-Received-From: 212.227.17.20
+Subject: [Qemu-trivial] [PATCH] Drop gld linker usage on SunOS
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,94 +53,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2017 20:28:45 -0000
+X-List-Received-Date: Mon, 11 Sep 2017 21:02:32 -0000
 
-This change fixes conflict with the DragonFly BSD headers.
+This is required to be removed on SmartOS (Illumos).
+As of now there are no alternative supported SunOS distributions.
 
 Signed-off-by: Kamil Rytarowski <n54@gmx.com>
 ---
- hw/ppc/mac_newworld.c | 11 +++--------
- hw/ppc/mac_oldworld.c | 11 +++--------
- 2 files changed, 6 insertions(+), 16 deletions(-)
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index d466634997..51bf83019b 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -124,11 +124,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
-     return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
- }
- 
--static hwaddr round_page(hwaddr addr)
--{
--    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
--}
--
- static void ppc_core99_reset(void *opaque)
- {
-     PowerPCCPU *cpu = opaque;
-@@ -256,7 +251,7 @@ static void ppc_core99_init(MachineState *machine)
-         }
-         /* load initrd */
-         if (initrd_filename) {
--            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
-+            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
-             initrd_size = load_image_targphys(initrd_filename, initrd_base,
-                                               ram_size - initrd_base);
-             if (initrd_size < 0) {
-@@ -264,11 +259,11 @@ static void ppc_core99_init(MachineState *machine)
-                              initrd_filename);
-                 exit(1);
-             }
--            cmdline_base = round_page(initrd_base + initrd_size);
-+            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
-         } else {
-             initrd_base = 0;
-             initrd_size = 0;
--            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
-+            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
-         }
-         ppc_boot_device = 'm';
-     } else {
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index fcac399562..feb31911ca 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -66,11 +66,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
-     return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
- }
- 
--static hwaddr round_page(hwaddr addr)
--{
--    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
--}
--
- static void ppc_heathrow_reset(void *opaque)
- {
-     PowerPCCPU *cpu = opaque;
-@@ -191,7 +186,7 @@ static void ppc_heathrow_init(MachineState *machine)
-         }
-         /* load initrd */
-         if (initrd_filename) {
--            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
-+            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
-             initrd_size = load_image_targphys(initrd_filename, initrd_base,
-                                               ram_size - initrd_base);
-             if (initrd_size < 0) {
-@@ -199,11 +194,11 @@ static void ppc_heathrow_init(MachineState *machine)
-                              initrd_filename);
-                 exit(1);
-             }
--            cmdline_base = round_page(initrd_base + initrd_size);
-+            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
-         } else {
-             initrd_base = 0;
-             initrd_size = 0;
--            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
-+            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
-         }
-         ppc_boot_device = 'm';
-     } else {
+diff --git a/configure b/configure
+index fd7e3a5e81..3dc0a71984 100755
+--- a/configure
++++ b/configure
+@@ -746,7 +746,6 @@ SunOS)
+   solaris="yes"
+   make="${MAKE-gmake}"
+   install="${INSTALL-ginstall}"
+-  ld="gld"
+   smbd="${SMBD-/usr/sfw/sbin/smbd}"
+   if test -f /usr/include/sys/soundcard.h ; then
+     audio_drv_list="oss"
 -- 
 2.14.1
 
