@@ -1,57 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drjbi-0003s1-0P
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2017 07:43:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58260)
+	id 1drjeQ-0004yg-N0
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2017 07:46:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1drjbf-0003qE-B0
-	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 07:43:56 -0400
+	(envelope-from <thuth@redhat.com>) id 1drjeN-0004vn-R3
+	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 07:46:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1drjbe-0002rg-6D
-	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 07:43:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51692)
+	(envelope-from <thuth@redhat.com>) id 1drjeM-0004Hj-QI
+	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 07:46:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51630)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <rjones@redhat.com>)
-	id 1drjbZ-0002oR-5O; Tue, 12 Sep 2017 07:43:49 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1drjeA-00044p-KO; Tue, 12 Sep 2017 07:46:30 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC5A0C0587D1;
-	Tue, 12 Sep 2017 11:43:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BC5A0C0587D1
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 6FAFEC04B938;
+	Tue, 12 Sep 2017 11:46:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6FAFEC04B938
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=rjones@redhat.com
-Received: from localhost (ovpn-117-64.ams2.redhat.com [10.36.117.64])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0F6436062A;
-	Tue, 12 Sep 2017 11:43:44 +0000 (UTC)
-Date: Tue, 12 Sep 2017 12:43:44 +0100
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-devel@nongnu.org, armbru@redhat.com, famz@redhat.com,
-	qemu-trivial@nongnu.org, mjt@tls.msk.ru, berrange@redhat.com
-Message-ID: <20170912114344.GQ20914@redhat.com>
-References: <20170906085006.26983-1-rjones@redhat.com>
-	<20170906101905.GD3753@dhcp-200-186.str.redhat.com>
-	<20170906104451.GM20914@redhat.com>
-	<20170906113845.GE3753@dhcp-200-186.str.redhat.com>
-	<20170912094558.GO20914@redhat.com>
-	<20170912113205.GG29136@localhost.localdomain>
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.40.204.137] (ovpn-204-137.brq.redhat.com [10.40.204.137])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5EB8766833;
+	Tue, 12 Sep 2017 11:46:26 +0000 (UTC)
+To: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>
+References: <20170911200002.4511-1-n54@gmx.com>
+	<20170911201610.15204-1-n54@gmx.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <8fbe987a-99cf-4213-486d-547db87cab55@redhat.com>
+Date: Tue, 12 Sep 2017 13:46:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170912113205.GG29136@localhost.localdomain>
-User-Agent: Mutt/1.5.20 (2009-12-10)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20170911201610.15204-1-n54@gmx.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 12 Sep 2017 11:43:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 12 Sep 2017 11:46:29 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for-2.10] qemu-options: Document the
- -drive locking parameter.
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] Replace round_page()
+ with TARGET_PAGE_ALIGN()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,58 +61,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Sep 2017 11:43:56 -0000
+X-List-Received-Date: Tue, 12 Sep 2017 11:46:45 -0000
 
-On Tue, Sep 12, 2017 at 01:32:05PM +0200, Kevin Wolf wrote:
-> Am 12.09.2017 um 11:45 hat Richard W.M. Jones geschrieben:
-> > On Wed, Sep 06, 2017 at 01:38:45PM +0200, Kevin Wolf wrote:
-> > > This command line fragment looks correct to me. For me, it seems to
-> > > work. I'm starting a first qemu in the background with default locking
-> > > options:
-> > > 
-> > >     $ x86_64-softmmu/qemu-system-x86_64 -hda /tmp/test.qcow2
-> > > 
-> > > And then starting a second one with a command line resembling yours:
-> > > 
-> > >     $ x86_64-softmmu/qemu-system-x86_64 -device virtio-scsi \
-> > >       -drive file=/tmp/test.qcow2,cache=unsafe,format=qcow2,file.locking=off,id=hd0,if=none \
-> > >       -device scsi-hd,drive=hd0
-> > 
-> > The problem is with overlays, where file.locking doesn't propagate to
-> > the backing file.  Thus:
-> > 
-> >   $ qemu-system-x86_64 -drive file=backing,format=raw
-> > 
-> > while in another terminal:
-> > 
-> >   $ qemu-img create -b backing -f qcow2 overlay
-> >   $ qemu-system-x86_64 -drive file=overlay,format=qcow2,file.locking=off
-> >   qemu-system-x86_64: Failed to get shared "write" lock
-> >   Is another process using the image?
+On 11.09.2017 22:16, Kamil Rytarowski wrote:
+> This change fixes conflict with the DragonFly BSD headers.
 > 
-> locking=off isn't the right tool for the case. Try this:
+> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+> ---
+>  hw/ppc/mac_newworld.c | 11 +++--------
+>  hw/ppc/mac_oldworld.c | 11 +++--------
+>  2 files changed, 6 insertions(+), 16 deletions(-)
 > 
-> $ qemu-system-x86_64 -drive file=overlay,if=none -device virtio-blk-pci,drive=none0,share-rw=on
+> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+> index d466634997..51bf83019b 100644
+> --- a/hw/ppc/mac_newworld.c
+> +++ b/hw/ppc/mac_newworld.c
+> @@ -124,11 +124,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
+>      return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
+>  }
+>  
+> -static hwaddr round_page(hwaddr addr)
+> -{
+> -    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
+> -}
+> -
+>  static void ppc_core99_reset(void *opaque)
+>  {
+>      PowerPCCPU *cpu = opaque;
+> @@ -256,7 +251,7 @@ static void ppc_core99_init(MachineState *machine)
+>          }
+>          /* load initrd */
+>          if (initrd_filename) {
+> -            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
+> +            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+>              initrd_size = load_image_targphys(initrd_filename, initrd_base,
+>                                                ram_size - initrd_base);
+>              if (initrd_size < 0) {
+> @@ -264,11 +259,11 @@ static void ppc_core99_init(MachineState *machine)
+>                               initrd_filename);
+>                  exit(1);
+>              }
+> -            cmdline_base = round_page(initrd_base + initrd_size);
+> +            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
+>          } else {
+>              initrd_base = 0;
+>              initrd_size = 0;
+> -            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
+> +            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+>          }
+>          ppc_boot_device = 'm';
+>      } else {
+> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+> index fcac399562..feb31911ca 100644
+> --- a/hw/ppc/mac_oldworld.c
+> +++ b/hw/ppc/mac_oldworld.c
+> @@ -66,11 +66,6 @@ static uint64_t translate_kernel_address(void *opaque, uint64_t addr)
+>      return (addr & 0x0fffffff) + KERNEL_LOAD_ADDR;
+>  }
+>  
+> -static hwaddr round_page(hwaddr addr)
+> -{
+> -    return (addr + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK;
+> -}
+> -
+>  static void ppc_heathrow_reset(void *opaque)
+>  {
+>      PowerPCCPU *cpu = opaque;
+> @@ -191,7 +186,7 @@ static void ppc_heathrow_init(MachineState *machine)
+>          }
+>          /* load initrd */
+>          if (initrd_filename) {
+> -            initrd_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
+> +            initrd_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+>              initrd_size = load_image_targphys(initrd_filename, initrd_base,
+>                                                ram_size - initrd_base);
+>              if (initrd_size < 0) {
+> @@ -199,11 +194,11 @@ static void ppc_heathrow_init(MachineState *machine)
+>                               initrd_filename);
+>                  exit(1);
+>              }
+> -            cmdline_base = round_page(initrd_base + initrd_size);
+> +            cmdline_base = TARGET_PAGE_ALIGN(initrd_base + initrd_size);
+>          } else {
+>              initrd_base = 0;
+>              initrd_size = 0;
+> -            cmdline_base = round_page(kernel_base + kernel_size + KERNEL_GAP);
+> +            cmdline_base = TARGET_PAGE_ALIGN(kernel_base + kernel_size + KERNEL_GAP);
+>          }
+>          ppc_boot_device = 'm';
+>      } else {
 > 
-> Unless you're doing really evil things, just telling qemu that your
-> guest can cope with concurrent writers to the same image is enough. This
-> propagates through the whole chain as appropriate.
 
-Our guest certainly *cannot* cope with multiple writers to the backing
-disk (file "raw" in my example).  In fact that would be a disaster.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-The overlay protects the backing disk from ever seeing any writes.
-
-In our case because the initial qemu instance (which we don't control)
-opened the disk ("raw") with an exclusive lock, our only choice for
-monitoring that disk is to turn off locking.
-
-Rich.
-
--- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-Read my programming and virtualization blog: http://rwmj.wordpress.com
-virt-df lists disk usage of guests without needing to install any
-software inside the virtual machine.  Supports Linux and Windows.
-http://people.redhat.com/~rjones/virt-df/
+(and please make sure to CC: qemu-ppc@nongnu.org for ppc related changes)
 
