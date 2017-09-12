@@ -1,47 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1drVqk-0003xd-6P
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2017 17:02:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34534)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVqh-0003vM-Sa
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 17:02:32 -0400
+	id 1drhln-00064F-6k
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2017 05:46:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52016)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <rjones@redhat.com>) id 1drhlk-00062c-F7
+	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 05:46:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1drVqh-00034F-2L
-	for qemu-trivial@nongnu.org; Mon, 11 Sep 2017 17:02:31 -0400
-Received: from mout.gmx.net ([212.227.17.20]:62803)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1drVqa-00030u-BV; Mon, 11 Sep 2017 17:02:24 -0400
-Received: from localhost.localdomain ([185.58.161.191]) by mail.gmx.com
-	(mrgmx102 [212.227.17.174]) with ESMTPSA (Nemesis) id
-	0Lpxdr-1dCOGQ15hX-00fk9k; Mon, 11 Sep 2017 23:02:21 +0200
-From: Kamil Rytarowski <n54@gmx.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, jperkin@joyent.com, Kamil Rytarowski <n54@gmx.com>
-Date: Mon, 11 Sep 2017 22:50:01 +0200
-Message-Id: <20170911205001.11789-1-n54@gmx.com>
-X-Mailer: git-send-email 2.14.1
-X-Provags-ID: V03:K0:yDCIJ71MyDmp6l1AqxKELUXnmWjUFs+RsetosWDgeqpxQXqnbs7
-	NqP9epHkLDh+kP4GhGzh6M79JqfoSuU10CyNtbdXj4v5bs9PkxRVqK4yzoVIGqKRgn5TfYF
-	dIU64WqOip8fxSgEKS15J1u1Q095sRyEeJYNkBWSGzffFLoW3LP9VAS4RRlQCb2nFpyx1BL
-	8JtFPAoXep5uR9vIBQJuw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:42xkGtxmyoM=:nX9Cpip5c55kF+FwO/uVY5
-	UQx1T/6JqBPc1KnEGGvVHlKPIkjERmLC71lgVhA81ZB9Zo4VpBoKmQsnGcos9NVqzxHRaWwI9
-	znzY1JHLjE0pmTEN4iSx4tol54qRZzxhGbV9isN/6eO8OLPxbZZ1P6EjKqeaiTIARRuR58xQ1
-	/SK6IMNSc5UzIcQWqUQ3Njru0PihbEPKx4L87X7FKr5xB8uwyHCne3Hp/45oxYya093Id8NUO
-	nkH+LrH4I8sKXctVPgPlHt7hLUgtUlzRzyXfYoO7bBlox1+5eIwun5BvYQrX1xV7u98PRBIZA
-	QfcF2SWBUyrd6+BvQ3aevVBCvXQTBPg5Vsy6dWbcz5GBAQ80VMllPDArndCbTH9lhuWMZavIp
-	fXpbeEOmgP/Tde+mn1GynEViGR0WlQ9Un+eJ4jyI7dIKeFgByaATaXtv6yN0xeOMz2KUtgoNm
-	pIvfkZLzDQJFB2F6ofm3G2DCJVXvwHKD36SH2t2vVToiWJjYEeiv4xoWYhZmtcc4acSanlct5
-	zTgkSTYhWPWCXoBDUj43dZnj/C2aSbMUb9NKpix4BwTpbpPCvViKQ3I6dXyCZOAUBi2FyXCTy
-	suQCOfg5/06U0f7HoCmH4KsI61Bf3uYUzwu2fqM1NTmB1zDulY9o39QS+RDJ1zWC0qmjy1qd/
-	xhy4JR4wt01M7lZM6ekAxy7CSoxkOfigQy9tU39G/7kZpOCZCD/15XVTdTdcLDemKJCMBPPmM
-	KBftalQ5fUwJUbJ4ILKFo9YOtZToTopp7vxlCZePaQu8Q8tuk6pT1rXuizS4g83lT8nUgFQKW
-	hkQ0x1GEvAaOkNf0yDmA5v57vXTFg==
+	(envelope-from <rjones@redhat.com>) id 1drhlj-00076F-K0
+	for qemu-trivial@nongnu.org; Tue, 12 Sep 2017 05:46:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47232)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <rjones@redhat.com>)
+	id 1drhlf-00074T-04; Tue, 12 Sep 2017 05:46:07 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D0C904E33D;
+	Tue, 12 Sep 2017 09:46:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D0C904E33D
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=rjones@redhat.com
+Received: from localhost (ovpn-117-64.ams2.redhat.com [10.36.117.64])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1EB156E1E7;
+	Tue, 12 Sep 2017 09:45:59 +0000 (UTC)
+Date: Tue, 12 Sep 2017 10:45:59 +0100
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org, armbru@redhat.com, famz@redhat.com,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru, berrange@redhat.com
+Message-ID: <20170912094558.GO20914@redhat.com>
+References: <20170906085006.26983-1-rjones@redhat.com>
+	<20170906101905.GD3753@dhcp-200-186.str.redhat.com>
+	<20170906104451.GM20914@redhat.com>
+	<20170906113845.GE3753@dhcp-200-186.str.redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20170906113845.GE3753@dhcp-200-186.str.redhat.com>
+User-Agent: Mutt/1.5.20 (2009-12-10)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 12 Sep 2017 09:46:04 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.17.20
-Subject: [Qemu-trivial] [PATCH] Drop gld linker usage on SunOS
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH for-2.10] qemu-options: Document the
+ -drive locking parameter.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,29 +61,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2017 21:02:32 -0000
+X-List-Received-Date: Tue, 12 Sep 2017 09:46:13 -0000
 
-This is required to be removed on SmartOS (Illumos).
-As of now there are no alternative supported SunOS distributions.
+On Wed, Sep 06, 2017 at 01:38:45PM +0200, Kevin Wolf wrote:
+> This command line fragment looks correct to me. For me, it seems to
+> work. I'm starting a first qemu in the background with default locking
+> options:
+> 
+>     $ x86_64-softmmu/qemu-system-x86_64 -hda /tmp/test.qcow2
+> 
+> And then starting a second one with a command line resembling yours:
+> 
+>     $ x86_64-softmmu/qemu-system-x86_64 -device virtio-scsi \
+>       -drive file=/tmp/test.qcow2,cache=unsafe,format=qcow2,file.locking=off,id=hd0,if=none \
+>       -device scsi-hd,drive=hd0
 
-Signed-off-by: Kamil Rytarowski <n54@gmx.com>
----
- configure | 1 -
- 1 file changed, 1 deletion(-)
+The problem is with overlays, where file.locking doesn't propagate to
+the backing file.  Thus:
 
-diff --git a/configure b/configure
-index fd7e3a5e81..3dc0a71984 100755
---- a/configure
-+++ b/configure
-@@ -746,7 +746,6 @@ SunOS)
-   solaris="yes"
-   make="${MAKE-gmake}"
-   install="${INSTALL-ginstall}"
--  ld="gld"
-   smbd="${SMBD-/usr/sfw/sbin/smbd}"
-   if test -f /usr/include/sys/soundcard.h ; then
-     audio_drv_list="oss"
+  $ qemu-system-x86_64 -drive file=backing,format=raw
+
+while in another terminal:
+
+  $ qemu-img create -b backing -f qcow2 overlay
+  $ qemu-system-x86_64 -drive file=overlay,format=qcow2,file.locking=off
+  qemu-system-x86_64: Failed to get shared "write" lock
+  Is another process using the image?
+
+After some experimentation, I came up with this command which works:
+
+  $ qemu-system-x86_64 -drive file.file.filename=overlay,file.driver=qcow2,file.backing.file.locking=off
+
+Rich.
+
 -- 
-2.14.1
-
+Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
+Read my programming and virtualization blog: http://rwmj.wordpress.com
+virt-df lists disk usage of guests without needing to install any
+software inside the virtual machine.  Supports Linux and Windows.
+http://people.redhat.com/~rjones/virt-df/
 
