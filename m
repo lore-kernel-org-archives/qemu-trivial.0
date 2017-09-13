@@ -1,48 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ds3dy-0003Ng-2K
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Sep 2017 05:07:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35248)
+	id 1dsEpI-0006cC-KP
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Sep 2017 17:04:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60297)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ds3dv-0003LZ-MJ
-	for qemu-trivial@nongnu.org; Wed, 13 Sep 2017 05:07:36 -0400
+	(envelope-from <eblake@redhat.com>) id 1dsEpG-0006ai-OM
+	for qemu-trivial@nongnu.org; Wed, 13 Sep 2017 17:04:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ds3ds-0000dD-Gv
-	for qemu-trivial@nongnu.org; Wed, 13 Sep 2017 05:07:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48918)
+	(envelope-from <eblake@redhat.com>) id 1dsEpF-0006CB-Rm
+	for qemu-trivial@nongnu.org; Wed, 13 Sep 2017 17:04:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41904)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ds3dg-0000QK-Ft; Wed, 13 Sep 2017 05:07:20 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dsEp7-00066L-6N; Wed, 13 Sep 2017 17:03:53 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8F5CA80464;
-	Wed, 13 Sep 2017 09:07:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8F5CA80464
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 8838D5D697;
+	Wed, 13 Sep 2017 21:03:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8838D5D697
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from thh440s.redhat.com (ovpn-116-123.ams2.redhat.com
-	[10.36.116.123])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 046F861981;
-	Wed, 13 Sep 2017 09:07:17 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	qemu-ppc@nongnu.org
-Cc: qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from red.redhat.com (ovpn-120-201.rdu2.redhat.com [10.10.120.201])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7A060600CD;
+	Wed, 13 Sep 2017 21:03:50 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, lersek@redhat.com, qemu-block@nongnu.org,
 	qemu-trivial@nongnu.org
-Date: Wed, 13 Sep 2017 11:07:17 +0200
-Message-Id: <1505293637-10450-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Date: Wed, 13 Sep 2017 16:03:43 -0500
+Message-Id: <20170913210343.19078-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 13 Sep 2017 09:07:19 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 13 Sep 2017 21:03:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] hw/isa/pc87312: Mark the device with
- user_creatable = false
+Subject: [Qemu-trivial] [PATCH] osdep: Fix ROUND_UP(64-bit, 32-bit)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,38 +51,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Sep 2017 09:07:37 -0000
+X-List-Received-Date: Wed, 13 Sep 2017 21:04:03 -0000
 
-QEMU currently aborts if you try to use the device at the command
-line:
+When using bit-wise operations that exploit the power-of-two
+nature of the second argument of ROUND_UP(), we still need to
+ensure that the mask is as wide as the first argument (done
+by using addition of 0 to force proper arithmetic promotion).
+Unpatched, ROUND_UP(2ULL*1024*1024*1024*1024, 512) produces 0,
+instead of the intended 2TiB.
 
-$ ppc64-softmmu/qemu-system-ppc64 -S -machine prep -device pc87312
-Unexpected error in qemu_chr_fe_init() at chardev/char-fe.c:222:
-qemu-system-ppc64: -device pc87312: Device 'parallel0' is in use
-Aborted (core dumped)
+Broken since its introduction in commit 292c8e50 (v1.5.0).
 
-It uses parallel_hds in its realize function, so I can not be
-instantiated by the user again.
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Eric Blake <eblake@redhat.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/isa/pc87312.c | 2 ++
- 1 file changed, 2 insertions(+)
+I did not audit to see how many potential users of ROUND_UP
+are actually passing in different sized types where the first
+argument can be larger than UINT32_MAX; I stumbled across the
+problem when iotests 190 started failing on a patch where I
+added a new use.  We can either be conservative and put this
+on qemu-stable no matter what, or go through the effort of an
+audit to see what might be broken (many callers in the block
+layer, but not just there).
+---
+ include/qemu/osdep.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/isa/pc87312.c b/hw/isa/pc87312.c
-index 5ce9f0a..48b29e3 100644
---- a/hw/isa/pc87312.c
-+++ b/hw/isa/pc87312.c
-@@ -386,6 +386,8 @@ static void pc87312_class_init(ObjectClass *klass, void *data)
-     dc->reset = pc87312_reset;
-     dc->vmsd = &vmstate_pc87312;
-     dc->props = pc87312_properties;
-+    /* Reason: Uses parallel_hds[0] in realize(), so it can't be used twice */
-+    dc->user_creatable = false;
- }
- 
- static const TypeInfo pc87312_type_info = {
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 6855b94bbf..7a3000efc5 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -189,13 +189,13 @@ extern int daemon(int, int);
+
+ /* Round number up to multiple. Requires that d be a power of 2 (see
+  * QEMU_ALIGN_UP for a safer but slower version on arbitrary
+- * numbers) */
++ * numbers); works even if d is a smaller type than n.  */
+ #ifndef ROUND_UP
+-#define ROUND_UP(n,d) (((n) + (d) - 1) & -(d))
++#define ROUND_UP(n, d) (((n) + (d) - 1) & -((n) - (n) + (d)))
+ #endif
+
+ #ifndef DIV_ROUND_UP
+-#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
++#define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+ #endif
+
+ /*
 -- 
-1.8.3.1
+2.13.5
 
 
