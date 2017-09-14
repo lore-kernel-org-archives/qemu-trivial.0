@@ -1,39 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dsWsY-0000Mn-Gm
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Sep 2017 12:20:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48366)
+	id 1dsadS-0005b8-0z
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Sep 2017 16:21:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52637)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dsWsW-0000Ke-0Z
-	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 12:20:37 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1dsZjr-0000L7-6w
+	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 15:23:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1dsWsV-0003h7-0w
-	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 12:20:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35358)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1dsWsG-0003Rz-HK; Thu, 14 Sep 2017 12:20:20 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5B789883C7;
-	Thu, 14 Sep 2017 16:20:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5B789883C7
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=lersek@redhat.com
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-80.rdu2.redhat.com
-	[10.10.121.80])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BDCE577D54;
-	Thu, 14 Sep 2017 16:20:17 +0000 (UTC)
+	(envelope-from <richard.henderson@linaro.org>) id 1dsZjn-0004w1-8f
+	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 15:23:51 -0400
+Received: from mail-pf0-x229.google.com ([2607:f8b0:400e:c00::229]:56670)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1dsZjn-0004vL-17
+	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 15:23:47 -0400
+Received: by mail-pf0-x229.google.com with SMTP id g65so170811pfe.13
+	for <qemu-trivial@nongnu.org>; Thu, 14 Sep 2017 12:23:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=VzdtIgc3CmpXZf4K8A6TN7mmLl5wnzxduXdnfY4PoDo=;
+	b=Wcw57x1u/GGD8POAhMTG30lfaxSYeAMSPRiQJCjNppGiQHV8+Bl5TiOAqnqEkvQTw9
+	r7wZtnqnmzVCWMs0B+fYr2BZjASKT6jzCT0Ibfkxldz2HFdYwnmI1ySnE2NZiGZKNNDo
+	1nn5E6ynbcvbbfq1R5QQSBxNCJGY0riJ3TuzM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=VzdtIgc3CmpXZf4K8A6TN7mmLl5wnzxduXdnfY4PoDo=;
+	b=huyg8/l6IglbJK5UcMg3K9vAcXO0gpevFyBwMPeg3H1ggcg4ibAGhQsu2iTSGm8IKl
+	frG1hpM7oJDkj7E188deUbnGeLNXqZWi2ucopoUvjD0GbLxL42aNOE6iNHcU41Ar0rHR
+	4e2RdZBpFumYMJWXkOL9eRWurAndg7mVvujFjUsLmWfKqkYkgi8g4rf7BF29yX4UFhJ4
+	o7AQdGc2oF37PccKH9LMSt0gSxrEUP6JOtmTnJdja81RwIcTh/Min485YWnU1r0WMoTl
+	Lvd5yRYRMszeHX8DVDVyzE52PImSLflH2pjfDoYcuAXMflNK+YU4bmw0coe46Ahb5vKB
+	ruqQ==
+X-Gm-Message-State: AHPjjUg8VaXGrSzCvMVjmhWn7eetwvxykY/zVMYELgQ+Vavvb2nxJju0
+	F2RkOz1igiaLonP7
+X-Google-Smtp-Source: ADKCNb6rK+7AEL47UAgm2CVIcZL10EiP2/jQE/1T63wpeaY+l+OV8HPK4RluppRnp/d0SBiVO+hUMA==
+X-Received: by 10.84.245.16 with SMTP id i16mr25335847pll.373.1505417025955;
+	Thu, 14 Sep 2017 12:23:45 -0700 (PDT)
+Received: from bigtime.twiddle.net (97-126-103-167.tukw.qwest.net.
+	[97.126.103.167]) by smtp.gmail.com with ESMTPSA id
+	e3sm32105483pga.80.2017.09.14.12.23.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 14 Sep 2017 12:23:45 -0700 (PDT)
 To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	qemu-stable@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, lersek@redhat.com,
+	qemu-stable@nongnu.org, qemu-block@nongnu.org
 References: <20170914134923.2479-1-eblake@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <fba0ccfb-73ca-eb0a-d92a-70a85289fb33@redhat.com>
-Date: Thu, 14 Sep 2017 18:20:16 +0200
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <5c45d5fc-c1a7-b65e-62c6-6e52a956b46f@linaro.org>
+Date: Thu, 14 Sep 2017 12:23:43 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
@@ -41,14 +58,12 @@ In-Reply-To: <20170914134923.2479-1-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 14 Sep 2017 16:20:19 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2] osdep: Fix ROUND_UP(64-bit, 32-bit)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::229
+X-Mailman-Approved-At: Thu, 14 Sep 2017 16:21:17 -0400
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] osdep: Fix
+ ROUND_UP(64-bit, 32-bit)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,9 +75,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Sep 2017 16:20:37 -0000
+X-List-Received-Date: Thu, 14 Sep 2017 19:23:52 -0000
 
-On 09/14/17 15:49, Eric Blake wrote:
+On 09/14/2017 06:49 AM, Eric Blake wrote:
 > When using bit-wise operations that exploit the power-of-two
 > nature of the second argument of ROUND_UP(), we still need to
 > ensure that the mask is as wide as the first argument (done
@@ -92,29 +107,8 @@ On 09/14/17 15:49, Eric Blake wrote:
 > ---
 >  include/qemu/osdep.h | 6 +++---
 >  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-> index 6855b94bbf..f4ff372d41 100644
-> --- a/include/qemu/osdep.h
-> +++ b/include/qemu/osdep.h
-> @@ -189,13 +189,13 @@ extern int daemon(int, int);
-> 
->  /* Round number up to multiple. Requires that d be a power of 2 (see
->   * QEMU_ALIGN_UP for a safer but slower version on arbitrary
-> - * numbers) */
-> + * numbers); works even if d is a smaller type than n.  */
->  #ifndef ROUND_UP
-> -#define ROUND_UP(n,d) (((n) + (d) - 1) & -(d))
-> +#define ROUND_UP(n, d) (((n) + (d) - 1) & -(0 ? (n) : (d)))
->  #endif
-> 
->  #ifndef DIV_ROUND_UP
-> -#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
-> +#define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
->  #endif
-> 
->  /*
-> 
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 
