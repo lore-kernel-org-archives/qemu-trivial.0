@@ -1,60 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dsUZV-0001Aj-6Y
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Sep 2017 09:52:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46793)
+	id 1dsWsY-0000Mn-Gm
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Sep 2017 12:20:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dsUZS-00013U-Rm
-	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 09:52:47 -0400
+	(envelope-from <lersek@redhat.com>) id 1dsWsW-0000Ke-0Z
+	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 12:20:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dsUZR-000212-RP
-	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 09:52:46 -0400
-Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:47644)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dsUZR-0001yG-J2
-	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 09:52:45 -0400
-Received: by mail-wr0-x234.google.com with SMTP id k20so5945339wre.4
-	for <qemu-trivial@nongnu.org>; Thu, 14 Sep 2017 06:52:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IWG2zu+JCq/QcPDFycnWZ962/QcHlX9mmmjJypgoiIo=;
-	b=OYYpiXDxQiSDnee+P4or4uP87cT9ygi2KvQcoaolP4BbFU7h++yKamQCxCvbKlCrQU
-	7H9+1ICJF4Nd16fd9gszmgxlO6UA+/IhI5JO4yWTl4em7RsOcde5kQdbBuFcbmTRd9+Z
-	fQ1Q6r7RS+bE/2mkA3lSDlI4XWzlzZ2gu7lPs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=IWG2zu+JCq/QcPDFycnWZ962/QcHlX9mmmjJypgoiIo=;
-	b=nRvtdzhz4qxLfrilOp8yiKrFsTIncdh6o1/HB8jBpgwJdzxL3i8pl2iLGaL+Tmo4tp
-	erodAV5nTWzj9xgdefdHry6lriwHMrUV9UqjJv3P4IZ+BURlN9wTcwVVwNeLganjX+vw
-	uhi6ehaDP2dRqT+OL83huBZOVd6fcUJasxfivFL3imyHOmBPsTXIBMaBnWPoK5KhU2Mz
-	Brcw0FixfRroo6ai7kCc+eeS5Qr36NVOUMLIDay/E66UEpKyTJcnHgZBaaLE+XSrHJno
-	jWEUr3QZ7SxkPQifIdkwyvzpPCksP6U6Z7K5bjHJ5YqWM7c3DA2gnDLMzhR6aJi0gcAD
-	I5rg==
-X-Gm-Message-State: AHPjjUiIhe5khBWIbJLg6lbKd9KSDO8L2ch7SeSG5OkMtfiEydB6vGbs
-	MiikKg+ztcG+earehYwgG265i673ledDxGAu3GYKpg==
-X-Google-Smtp-Source: ADKCNb4EoYAvRUbzEd+GjbYqNLOuyXO9jFT6FrSFb1NCTDzx6DzdTyNWb/OZjBbCPW5tfMsziAaI8QpEgV+mCVSUtLc=
-X-Received: by 10.223.134.174 with SMTP id 43mr20287619wrx.173.1505397164320; 
-	Thu, 14 Sep 2017 06:52:44 -0700 (PDT)
+	(envelope-from <lersek@redhat.com>) id 1dsWsV-0003h7-0w
+	for qemu-trivial@nongnu.org; Thu, 14 Sep 2017 12:20:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35358)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1dsWsG-0003Rz-HK; Thu, 14 Sep 2017 12:20:20 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5B789883C7;
+	Thu, 14 Sep 2017 16:20:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5B789883C7
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lersek@redhat.com
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-80.rdu2.redhat.com
+	[10.10.121.80])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BDCE577D54;
+	Thu, 14 Sep 2017 16:20:17 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+	qemu-stable@nongnu.org
+References: <20170914134923.2479-1-eblake@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <fba0ccfb-73ca-eb0a-d92a-70a85289fb33@redhat.com>
+Date: Thu, 14 Sep 2017 18:20:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Thu, 14 Sep 2017 06:52:23 -0700 (PDT)
-In-Reply-To: <20170911171639.22005-1-n54@gmx.com>
-References: <20170903164952.26760-1-n54@gmx.com>
-	<20170911171639.22005-1-n54@gmx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Sep 2017 14:52:23 +0100
-Message-ID: <CAFEAcA-wNp2T7BGih1O3-Tq1+OrYNnM1VqAneM3QfXrd5u9ZPg@mail.gmail.com>
-To: Kamil Rytarowski <n54@gmx.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Jonathan Perkin <jperkin@joyent.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::234
-Subject: Re: [Qemu-trivial] [PATCH v2] Discover openpty(3) dynamically in
- configure
+In-Reply-To: <20170914134923.2479-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 14 Sep 2017 16:20:19 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2] osdep: Fix ROUND_UP(64-bit, 32-bit)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,107 +60,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Sep 2017 13:52:47 -0000
+X-List-Received-Date: Thu, 14 Sep 2017 16:20:37 -0000
 
-On 11 September 2017 at 18:16, Kamil Rytarowski <n54@gmx.com> wrote:
-> openpty(3) might:
->  - exists in libc (OSX)
->  - exists in libutil (GNU, BSD)
->  - does not exist (SmartOS)
->
-> Add a function to discover this function in the ./configure script.
-> Add new config types: CONFIG_OPENPTY_LIBC and CONFIG_OPENPTY_LIBUTIL,
-> respectively defined when openpts(3) links with -lc or -lutil.
->
-> Replace the condition adding -lutil in tests (for openpty(3)) from
-> CONFIG_POSIX to CONFIG_OPENPTY_LIBUTIL.
->
-> Replace the fallback openpty(3) impelementation comment from Solaris
-> to SmartOS. Solaris is EOL'ed and it's confirmed that it does not work
-> on Oracle Solaris.
+On 09/14/17 15:49, Eric Blake wrote:
+> When using bit-wise operations that exploit the power-of-two
+> nature of the second argument of ROUND_UP(), we still need to
+> ensure that the mask is as wide as the first argument (done
+> by using a ternary to force proper arithmetic promotion).
+> Unpatched, ROUND_UP(2ULL*1024*1024*1024*1024, 512U) produces 0,
+> instead of the intended 2TiB, because negation of an unsigned
+> 32-bit quantity followed by widening to 64-bits does not
+> sign-extend the mask.
+> 
+> Broken since its introduction in commit 292c8e50 (v1.5.0).
+> Callers that passed the same width type to both macro parameters,
+> or that had other code to ensure the first parameter's maximum
+> runtime value did not exceed the second parameter's width, are
+> unaffected, but I did not audit to see which (if any) existing
+> clients of the macro could trigger incorrect behavior (I found
+> the bug while adding a new use of the macro).
+> 
+> While preparing the patch, checkpatch complained about poor
+> spacing, so I also fixed that here and in the nearby DIV_ROUND_UP.
+> 
+> CC: qemu-trivial@nongnu.org
+> CC: qemu-stable@nongnu.org
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> 
 > ---
->  configure              | 25 +++++++++++++++++++++++++
->  tests/Makefile.include |  2 +-
->  util/qemu-openpty.c    |  4 ++--
->  3 files changed, 28 insertions(+), 3 deletions(-)
->
-> diff --git a/configure b/configure
-> index fd7e3a5e81..a614adcd29 100755
-> --- a/configure
-> +++ b/configure
-> @@ -3819,6 +3819,25 @@ EOF
->    fi
->  fi
->
-> +##########################################
-> +# openpty probe
-> +openpty_libc=no
-> +openpty_libutil=no
-> +cat > $TMPC << EOF
-> +extern int openpty(int *amaster, int *aslave, char *name, void *termp, void *winp);
+> v2: use ternary instead of addition of 0 [Laszlo], improve commit message
+> ---
+>  include/qemu/osdep.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 6855b94bbf..f4ff372d41 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -189,13 +189,13 @@ extern int daemon(int, int);
+> 
+>  /* Round number up to multiple. Requires that d be a power of 2 (see
+>   * QEMU_ALIGN_UP for a safer but slower version on arbitrary
+> - * numbers) */
+> + * numbers); works even if d is a smaller type than n.  */
+>  #ifndef ROUND_UP
+> -#define ROUND_UP(n,d) (((n) + (d) - 1) & -(d))
+> +#define ROUND_UP(n, d) (((n) + (d) - 1) & -(0 ? (n) : (d)))
+>  #endif
+> 
+>  #ifndef DIV_ROUND_UP
+> -#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
+> +#define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+>  #endif
+> 
+>  /*
+> 
 
-I think the need to provide a prototype here rather than
-using the system header to define it is revealing that we
-also need a configure test for
- * openpty() in <pty.h>
- * openpty() in <libutil.h>
- * openpty() in <util.h>
-
-Something like this untested code ought to do:
-
-cat > $TMPC << EOF
-#if defined(CONFIG_OPENPTY_IN_PTY_H)
-#include <pty.h>
-#elif defined(CONFIG_OPENPTY_IN_LIBUTIL_H)
-#include <libutil.h>
-#elif defined(CONFIG_OPENPTY_IN_UTIL_H)
-#include <util.h>
-#endif
-int main(void) { return openpty(0, 0, 0, 0, 0); }
-EOF
-
-# Different platforms put openpty() in different headers,
-# and may or may not need us to link against -lutil
-if compile_prog -DCONFIG_OPENPTY_IN_PTY_H ""; then
-  openpty_in_pty_h=yes
-elif compile_prog -D_CONFIG_OPENPTY_IN_PTY_H -lutil; then
-  openpty_in_pty_h=yes
-  openpty_libutil=yes
-elif compile_object -DCONFIG_OPENPTY_IN_LIBUTIL_H; then
-  openpty_in_libutil_h=yes
-elif compile_prog -D_CONFIG_OPENPTY_IN_LIBUTIL_H -lutil; then
-  openpty_in_libutil_h=yes
-  openpty_libutil=yes
-elif compile_object -DCONFIG_OPENPTY_IN_UTIL_H; then
-  openpty_in_util_h=yes
-elif compile_prog -D_CONFIG_OPENPTY_IN_UTIL_H -lutil; then
-  openpty_in_util_h=yes
-  openpty_libutil=yes
-fi
-
-Then in qemu-openpty.c we can do
-
-#include <termios.h>
-
-#if defined(CONFIG_OPENPTY_IN_PTY_H)
-#include <pty.h>
-#elif defined(CONFIG_OPENPTY_IN_LIBUTIL_H)
-#include <libutil.h>
-#elif defined(CONFIG_OPENPTY_IN_UTIL_H)
-#include <util.h>
-#else
-/* sunos fallback code */
-#endif
-
-
-> +if test "$openpty_libc" = "yes" ; then
-> +  echo "CONFIG_OPENPTY_LIBC=y" >> $config_host_mak
-> +fi
-
-
-If we use the CONFIG_OPENPTY_IN_*_H constants as above
-we don't need CONFIG_OPENPTY_LIBC any more.
-
-thanks
--- PMM
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
