@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dsmtF-0001Ro-WC
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Sep 2017 05:26:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56346)
+	id 1dsnha-0001Xz-FF
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Sep 2017 06:18:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39665)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1dsmtD-0001PX-82
-	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 05:26:24 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1dsnhY-0001Po-1K
+	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 06:18:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1dsmt9-00040H-B6
-	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 05:26:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52978)
+	(envelope-from <pbonzini@redhat.com>) id 1dsnhU-0005DV-1M
+	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 06:18:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52004)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <otubo@redhat.com>)
-	id 1dsmt4-0003wU-5G; Fri, 15 Sep 2017 05:26:14 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1dsnhR-0005Am-Gv; Fri, 15 Sep 2017 06:18:17 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 41460C0587F5;
-	Fri, 15 Sep 2017 09:26:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 41460C0587F5
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C173821C7;
+	Fri, 15 Sep 2017 10:18:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7C173821C7
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=otubo@redhat.com
-Received: from vader (ovpn-117-68.ams2.redhat.com [10.36.117.68])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 5D1CE614D3;
-	Fri, 15 Sep 2017 09:26:08 +0000 (UTC)
-Date: Fri, 15 Sep 2017 11:26:07 +0200
-From: Eduardo Otubo <otubo@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: ehabkost@redhat.com, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, Alexander Graf <agraf@suse.de>,
-	Markus Armbruster <armbru@redhat.com>, pbonzini@redhat.com
-Message-ID: <20170915092607.GA6835@vader>
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=pbonzini@redhat.com
+Received: from [10.36.117.159] (ovpn-117-159.ams2.redhat.com [10.36.117.159])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EBB906F955;
+	Fri, 15 Sep 2017 10:18:12 +0000 (UTC)
+To: Eduardo Otubo <otubo@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	ehabkost@redhat.com, Markus Armbruster <armbru@redhat.com>,
+	Alexander Graf <agraf@suse.de>
 References: <20170915090643.6043-1-otubo@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <0d4bdcbb-3153-0064-d280-d9ca4f0671e4@redhat.com>
+Date: Fri, 15 Sep 2017 12:18:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 In-Reply-To: <20170915090643.6043-1-otubo@redhat.com>
-User-Agent: Mutt/1.8.3+47 (5f034395e53d) (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 15 Sep 2017 09:26:13 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 15 Sep 2017 10:18:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -59,11 +61,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Sep 2017 09:26:24 -0000
+X-List-Received-Date: Fri, 15 Sep 2017 10:18:25 -0000
 
-(oups, forgot the v2 on Subject)
-
-On Fri, Sep 15, 2017 at 11:06:43AM +0200, Eduardo Otubo wrote:
+On 15/09/2017 11:06, Eduardo Otubo wrote:
 > QEMU fails when used with the following command line:
 > 
 >   ./ppc64-softmmu/qemu-system-ppc64 -S -machine 40p,accel=tcg -device i82374
@@ -100,12 +100,11 @@ On Fri, Sep 15, 2017 at 11:06:43AM +0200, Eduardo Otubo wrote:
 >  }
 >  
 >  static const TypeInfo i82374_info = {
-> -- 
-> 2.13.5
-> 
 > 
 
--- 
-Eduardo Otubo
-Senior Software Engineer @ RedHat
+This breaks "make check", doesn't it?
+
+v2 should be the one that returns an error instead of asserting.
+
+Paolo
 
