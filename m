@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dsmGi-0004u2-0m
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Sep 2017 04:46:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40549)
+	id 1dsmaX-0001PA-6O
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Sep 2017 05:07:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dsmGg-0004s6-1V
-	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 04:46:34 -0400
+	(envelope-from <otubo@redhat.com>) id 1dsmaU-0001KR-3p
+	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 05:07:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dsmGf-0005iq-Dz
-	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 04:46:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56170)
+	(envelope-from <otubo@redhat.com>) id 1dsmaT-0005PP-6c
+	for qemu-trivial@nongnu.org; Fri, 15 Sep 2017 05:07:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56156)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dsmGb-0005dM-4h; Fri, 15 Sep 2017 04:46:29 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <otubo@redhat.com>)
+	id 1dsmaM-0005JM-Vm; Fri, 15 Sep 2017 05:06:55 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 252DD80B29;
-	Fri, 15 Sep 2017 08:46:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 252DD80B29
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 2141F4E909;
+	Fri, 15 Sep 2017 09:06:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2141F4E909
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from thh440s.redhat.com (ovpn-116-76.ams2.redhat.com [10.36.116.76])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F308E78C3A;
-	Fri, 15 Sep 2017 08:46:22 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=otubo@redhat.com
+Received: from vader.redhat.com (ovpn-117-68.ams2.redhat.com [10.36.117.68])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5300366D4A;
+	Fri, 15 Sep 2017 09:06:49 +0000 (UTC)
+From: Eduardo Otubo <otubo@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org
-Date: Fri, 15 Sep 2017 10:46:21 +0200
-Message-Id: <1505465181-4147-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	pbonzini@redhat.com, ehabkost@redhat.com,
+	Markus Armbruster <armbru@redhat.com>, Alexander Graf <agraf@suse.de>
+Date: Fri, 15 Sep 2017 11:06:43 +0200
+Message-Id: <20170915090643.6043-1-otubo@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 15 Sep 2017 08:46:28 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 15 Sep 2017 09:06:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] hw/display/virtio-gpu: Put the
- virtio-gpu-device into the display category
+Subject: [Qemu-trivial] [PATCH] dma/i82374: avoid double creation of i82374
+ device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,29 +53,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Sep 2017 08:46:35 -0000
+X-List-Received-Date: Fri, 15 Sep 2017 09:07:04 -0000
 
-The virtio-gpu-pci device is already in the display category, so the
-virtio-gpu-device should be there, too.
+QEMU fails when used with the following command line:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+  ./ppc64-softmmu/qemu-system-ppc64 -S -machine 40p,accel=tcg -device i82374
+  qemu-system-ppc64: hw/isa/isa-bus.c:110: isa_bus_dma: Assertion `!bus->dma[0] && !bus->dma[1]' failed.
+  Aborted (core dumped)
+
+The 40p machine type already creates the device i82374. If specified in the
+command line, it will try to create it again, hence generating the error. The
+function isa_bus_dma() isn't supposed to be called twice for the same bus. One
+way to avoid this problem is to set user_creatable=false.
+
+A possible fix in a near future would be making
+isa_bus_dma()/DMA_init()/i82374_realize() return an error instead of asserting
+as well.
+
+Signed-off-by: Eduardo Otubo <otubo@redhat.com>
 ---
- hw/display/virtio-gpu.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/dma/i82374.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-index f0761cf..cc9385d 100644
---- a/hw/display/virtio-gpu.c
-+++ b/hw/display/virtio-gpu.c
-@@ -1279,6 +1279,7 @@ static void virtio_gpu_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/dma/i82374.c b/hw/dma/i82374.c
+index 6c0f975df0..e76dea8dc7 100644
+--- a/hw/dma/i82374.c
++++ b/hw/dma/i82374.c
+@@ -139,6 +139,11 @@ static void i82374_class_init(ObjectClass *klass, void *data)
+     dc->realize = i82374_realize;
+     dc->vmsd = &vmstate_i82374;
+     dc->props = i82374_properties;
++    dc->user_creatable = false;
++    /*
++     * Reason: i82374_realize() crashes (assertion failure inside isa_bus_dma()
++     *         if the device is instantiated twice.
++     */
+ }
  
-     vdc->reset = virtio_gpu_reset;
- 
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-     dc->props = virtio_gpu_properties;
-     dc->vmsd = &vmstate_virtio_gpu;
-     dc->hotpluggable = false;
+ static const TypeInfo i82374_info = {
 -- 
-1.8.3.1
+2.13.5
 
 
