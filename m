@@ -1,48 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1duMQ0-0008Uj-7f
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 13:34:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35247)
+	id 1duSMz-0002ef-L0
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 19:56:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38777)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duKM8-00087W-KI
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:37 -0400
+	(envelope-from <alistair23@gmail.com>) id 1duSMy-0002eV-4i
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 19:56:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1duKM4-0001sn-BB
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:36 -0400
-Received: from 5.mo3.mail-out.ovh.net ([87.98.178.36]:54927)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1duKM4-0001s5-5w
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:32 -0400
-Received: from player797.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id BE17215958A
-	for <qemu-trivial@nongnu.org>; Tue, 19 Sep 2017 17:22:30 +0200 (CEST)
-Received: from zorba.kaod.org (deibp9eh1--blueice1n4.emea.ibm.com
-	[195.212.29.166]) (Authenticated sender: postmaster@kaod.org)
-	by player797.ha.ovh.net (Postfix) with ESMTPSA id A19FC2E0091;
-	Tue, 19 Sep 2017 17:22:24 +0200 (CEST)
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "open list:PowerPC" <qemu-ppc@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>
-References: <20170919141603.27713-1-eblake@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <e5dbc278-f848-ade0-92c4-f144e6b27964@kaod.org>
-Date: Tue, 19 Sep 2017 17:22:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <alistair23@gmail.com>) id 1duSMx-0005Gw-8o
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 19:56:00 -0400
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34816)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1duSMx-0005FB-2j; Tue, 19 Sep 2017 19:55:59 -0400
+Received: by mail-wr0-x241.google.com with SMTP id n64so582718wrb.2;
+	Tue, 19 Sep 2017 16:55:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=D/M5+gXleJ8oMZxNoRJUO6d3XkV+m39Z6Agy5lfYNVw=;
+	b=Sq+2gH0/ptIhBSB7Pd0yYdxhm/JoMbeGiStZBm+l1QEmC7if3oQrkZ1E4R4PH4Q2Jz
+	g0CZq08ujsii+7GIb51NofjtNcOeJosMpX57RIfhmuhuC/k4hozgmw8amzH/MX0CHLyF
+	MxPME4RTashGtjmwuH12QNYt3j5EnSUUxOCs8PSZgQsckrM9rwMmxG/Bz+5eiBIJ5RVm
+	uJwqAavAQEqGZsiSD9hYuS/OBYtlznxoQyIxGzLskJlfwzf9hmtcIS//9ixI5lg6NsnK
+	0ZU6SIXUePy09+vowtQMlJISZdQL79i3rN8hazFvikyyI8AC+XwdhjAGp+RytWMQSZIe
+	DNqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=D/M5+gXleJ8oMZxNoRJUO6d3XkV+m39Z6Agy5lfYNVw=;
+	b=Az7JoxVSpbtbgg2HOGikDLYnZBwXnZTnEd0k03z4d4atYYpfNs4QxVYHMjYQVmByzE
+	F3/rH7yy5gV+6oACUCYKc7BQWD2nltXOZinoPOBXnm/rZQr7QkWIyLpmA/9uSxVnZ/oE
+	TIGIhVJQlW+8K3g/mzN5loK93dht8XLOM1e62LDfdMj9Ze+c9LLkeLye+/1y7QH8/FTZ
+	Y6SHmHj9hf6xG2sEqxeWDx4MOvosC1yvBDHnIzaB4EIY7BNA+XYKAPL2yjm+xUx5emT/
+	4JmBcYRNaPoaFJDXOCuvWuCHUl6PbqK5UTHvwgphuzvM8VaercA5ZsvktZhGirkSQQFl
+	Zojw==
+X-Gm-Message-State: AHPjjUi3oq12GqasvJUxYh9K0yMm6pUbiuvgHL5EoUbs79szakXdxxV3
+	SsoUiqPccmYjeMU+lOkr6u4ANISddkOnqJxebTI=
+X-Google-Smtp-Source: AOwi7QD5WUvpSV7R5CzPUFwOqO553jHWDtwjzs3X77IsJnrDe47CjVCWY9RZFS4MXohR7yJGLOY1g4yYsEX1WnkUZAA=
+X-Received: by 10.223.187.74 with SMTP id x10mr2631452wrg.66.1505865356309;
+	Tue, 19 Sep 2017 16:55:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170919141603.27713-1-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 3906309727485922278
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelledrheejgdeltdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 87.98.178.36
-X-Mailman-Approved-At: Tue, 19 Sep 2017 13:34:43 -0400
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] ppc/pnv: Improve macro
- parenthesization
+Sender: alistair23@gmail.com
+Received: by 10.28.191.130 with HTTP; Tue, 19 Sep 2017 16:55:25 -0700 (PDT)
+In-Reply-To: <CAMo8BfJp=dLbgGsqu8rKAoKxTkMNRHeAUcT74pQSdCpKWqxLPg@mail.gmail.com>
+References: <134bcf2e2c0bb9160aa822ddfbc46d9bd51c4305.1505512474.git.alistair.francis@xilinx.com>
+	<CAMo8BfJp=dLbgGsqu8rKAoKxTkMNRHeAUcT74pQSdCpKWqxLPg@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 19 Sep 2017 16:55:25 -0700
+X-Google-Sender-Auth: 1vV2ecDqB063MbleZip2wIwB1PY
+Message-ID: <CAKmqyKPkCpVpBaEWuHX541uq+V-jvOhommWKiPXXs+cgK3MqLQ@mail.gmail.com>
+To: Max Filippov <jcmvbkbc@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-devel <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::241
+Subject: Re: [Qemu-trivial] [PATCH v2 1/1] target/xtensa: Use the
+ pre-defined MEMTXATTRS_UNSPECIFIED macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,39 +70,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Sep 2017 15:22:37 -0000
+X-List-Received-Date: Tue, 19 Sep 2017 23:56:01 -0000
 
-On 09/19/2017 04:16 PM, Eric Blake wrote:
-> Although none of the existing macro call-sites were broken,
-> it's always better to write macros that properly parenthesize
-> arguments that can be complex expressions, so that the intended
-> order of operations is not broken.
+On Fri, Sep 15, 2017 at 3:37 PM, Max Filippov <jcmvbkbc@gmail.com> wrote:
+> On Fri, Sep 15, 2017 at 2:56 PM, Alistair Francis
+> <alistair.francis@xilinx.com> wrote:
+>> Instead of using the hardcoded (MemTxAttrs){0} for no memory attributes
+>> let's use the already defined MEMTXATTRS_UNSPECIFIED macro instead.
+>>
+>> This is technically a change of behaviour as MEMTXATTRS_UNSPECIFIED sets
+>> the unspecified field to 1, but it doesn't look like anything is
+>> checking this field.
+>>
+>> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+>> ---
+>> V2:
+>>  - Update commit message to indicate the change in behaviour
+>>
+>>  target/xtensa/op_helper.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 
-yes.
++ QEMU trivial, can this go through you?
 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+Thanks,
+Alistair
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-C.
-> ---
->  include/hw/ppc/pnv_xscom.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
-> index 3757b2cab9..38077b4796 100644
-> --- a/include/hw/ppc/pnv_xscom.h
-> +++ b/include/hw/ppc/pnv_xscom.h
-> @@ -54,7 +54,7 @@ typedef struct PnvXScomInterfaceClass {
->   *   PCB SLAVE   0x110Fxxxx
->   */
->=20
-> -#define PNV_XSCOM_EX_CORE_BASE(base, i) (base | (((uint64_t)i) << 24))
-> +#define PNV_XSCOM_EX_CORE_BASE(base, i) ((base) | ((uint64_t)(i) << 24=
-))
->  #define PNV_XSCOM_EX_CORE_SIZE    0x100000
->=20
->  #define PNV_XSCOM_LPC_BASE        0xb0020
->=20
-
+>
+> --
+> Thanks.
+> -- Max
 
