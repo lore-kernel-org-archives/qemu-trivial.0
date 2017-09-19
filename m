@@ -1,40 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1duJdJ-0004s2-Gg
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 10:36:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58833)
+	id 1duMQ0-0008Uj-7f
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 13:34:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1duJdH-0004pr-Hx
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 10:36:16 -0400
+	(envelope-from <clg@kaod.org>) id 1duKM8-00087W-KI
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>) id 1duJdB-0001ca-BC
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 10:36:15 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:20906)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Yongbok.Kim@imgtec.com>)
-	id 1duJcz-0001R2-Hr; Tue, 19 Sep 2017 10:35:57 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Forcepoint Email with ESMTPS id A8B5D42680EDD;
-	Tue, 19 Sep 2017 15:35:46 +0100 (IST)
-Received: from [192.168.169.52] (192.168.169.52) by HHMAIL01.hh.imgtec.org
-	(10.100.10.21) with Microsoft SMTP Server (TLS) id 14.3.361.1;
-	Tue, 19 Sep 2017 15:35:49 +0100
-To: Eric Blake <eblake@redhat.com>, <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>
-References: <20170919141307.23113-1-eblake@redhat.com>
-From: Yongbok Kim <yongbok.kim@imgtec.com>
-Message-ID: <1d765929-c654-80d6-b949-87429f4c0aa8@imgtec.com>
-Date: Tue, 19 Sep 2017 15:35:49 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	(envelope-from <clg@kaod.org>) id 1duKM4-0001sn-BB
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:36 -0400
+Received: from 5.mo3.mail-out.ovh.net ([87.98.178.36]:54927)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1duKM4-0001s5-5w
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 11:22:32 -0400
+Received: from player797.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo3.mail-out.ovh.net (Postfix) with ESMTP id BE17215958A
+	for <qemu-trivial@nongnu.org>; Tue, 19 Sep 2017 17:22:30 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice1n4.emea.ibm.com
+	[195.212.29.166]) (Authenticated sender: postmaster@kaod.org)
+	by player797.ha.ovh.net (Postfix) with ESMTPSA id A19FC2E0091;
+	Tue, 19 Sep 2017 17:22:24 +0200 (CEST)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "open list:PowerPC" <qemu-ppc@nongnu.org>,
+	David Gibson <david@gibson.dropbear.id.au>
+References: <20170919141603.27713-1-eblake@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e5dbc278-f848-ade0-92c4-f144e6b27964@kaod.org>
+Date: Tue, 19 Sep 2017 17:22:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170919141307.23113-1-eblake@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [192.168.169.52]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-trivial] [PATCH] mips: Improve macro parenthesization
+In-Reply-To: <20170919141603.27713-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 3906309727485922278
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelledrheejgdeltdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 87.98.178.36
+X-Mailman-Approved-At: Tue, 19 Sep 2017 13:34:43 -0400
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] ppc/pnv: Improve macro
+ parenthesization
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,115 +54,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Sep 2017 14:36:16 -0000
+X-List-Received-Date: Tue, 19 Sep 2017 15:22:37 -0000
 
-
-
-On 19/09/2017 15:13, Eric Blake wrote:
+On 09/19/2017 04:16 PM, Eric Blake wrote:
 > Although none of the existing macro call-sites were broken,
 > it's always better to write macros that properly parenthesize
 > arguments that can be complex expressions, so that the intended
 > order of operations is not broken.
-> 
+
+yes.
+
 > Signed-off-by: Eric Blake <eblake@redhat.com>
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+C.
 > ---
->  target/mips/dsp_helper.c | 56 ++++++++++++++++++++++++------------------------
->  1 file changed, 28 insertions(+), 28 deletions(-)
-> 
-> diff --git a/target/mips/dsp_helper.c b/target/mips/dsp_helper.c
-> index dc707934ea..f152fea34a 100644
-> --- a/target/mips/dsp_helper.c
-> +++ b/target/mips/dsp_helper.c
-> @@ -45,9 +45,9 @@ typedef union {
->  } DSP64Value;
-> 
->  /*** MIPS DSP internal functions begin ***/
-> -#define MIPSDSP_ABS(x) (((x) >= 0) ? x : -x)
-> -#define MIPSDSP_OVERFLOW_ADD(a, b, c, d) (~(a ^ b) & (a ^ c) & d)
-> -#define MIPSDSP_OVERFLOW_SUB(a, b, c, d) ((a ^ b) & (a ^ c) & d)
-> +#define MIPSDSP_ABS(x) (((x) >= 0) ? (x) : -(x))
-> +#define MIPSDSP_OVERFLOW_ADD(a, b, c, d) (~((a) ^ (b)) & ((a) ^ (c)) & (d))
-> +#define MIPSDSP_OVERFLOW_SUB(a, b, c, d) (((a) ^ (b)) & ((a) ^ (c)) & (d))
-> 
->  static inline void set_DSPControl_overflow_flag(uint32_t flag, int position,
->                                                  CPUMIPSState *env)
-> @@ -1047,47 +1047,47 @@ static inline int32_t mipsdsp_cmpu_lt(uint32_t a, uint32_t b)
-> 
->  #define MIPSDSP_SPLIT32_8(num, a, b, c, d)  \
->      do {                                    \
-> -        a = (num >> 24) & MIPSDSP_Q0;       \
-> -        b = (num >> 16) & MIPSDSP_Q0;       \
-> -        c = (num >> 8) & MIPSDSP_Q0;        \
-> -        d = num & MIPSDSP_Q0;               \
-> +        a = ((num) >> 24) & MIPSDSP_Q0;     \
-> +        b = ((num) >> 16) & MIPSDSP_Q0;     \
-> +        c = ((num) >> 8) & MIPSDSP_Q0;      \
-> +        d = (num) & MIPSDSP_Q0;             \
->      } while (0)
-> 
->  #define MIPSDSP_SPLIT32_16(num, a, b)       \
->      do {                                    \
-> -        a = (num >> 16) & MIPSDSP_LO;       \
-> -        b = num & MIPSDSP_LO;               \
-> +        a = ((num) >> 16) & MIPSDSP_LO;     \
-> +        b = (num) & MIPSDSP_LO;             \
->      } while (0)
-> 
-> -#define MIPSDSP_RETURN32_8(a, b, c, d)  ((target_long)(int32_t) \
-> -                                         (((uint32_t)a << 24) | \
-> -                                         (((uint32_t)b << 16) | \
-> -                                         (((uint32_t)c << 8) |  \
-> -                                          ((uint32_t)d & 0xFF)))))
-> -#define MIPSDSP_RETURN32_16(a, b)       ((target_long)(int32_t) \
-> -                                         (((uint32_t)a << 16) | \
-> -                                          ((uint32_t)b & 0xFFFF)))
-> +#define MIPSDSP_RETURN32_8(a, b, c, d)  ((target_long)(int32_t)         \
-> +                                         (((uint32_t)(a) << 24) |       \
-> +                                          ((uint32_t)(b) << 16) |       \
-> +                                          ((uint32_t)(c) << 8) |        \
-> +                                          ((uint32_t)(d) & 0xFF)))
-> +#define MIPSDSP_RETURN32_16(a, b)       ((target_long)(int32_t)         \
-> +                                         (((uint32_t)(a) << 16) |       \
-> +                                          ((uint32_t)(b) & 0xFFFF)))
-> 
->  #ifdef TARGET_MIPS64
->  #define MIPSDSP_SPLIT64_16(num, a, b, c, d)  \
->      do {                                     \
-> -        a = (num >> 48) & MIPSDSP_LO;        \
-> -        b = (num >> 32) & MIPSDSP_LO;        \
-> -        c = (num >> 16) & MIPSDSP_LO;        \
-> -        d = num & MIPSDSP_LO;                \
-> +        a = ((num) >> 48) & MIPSDSP_LO;      \
-> +        b = ((num) >> 32) & MIPSDSP_LO;      \
-> +        c = ((num) >> 16) & MIPSDSP_LO;      \
-> +        d = (num) & MIPSDSP_LO;              \
->      } while (0)
-> 
->  #define MIPSDSP_SPLIT64_32(num, a, b)       \
->      do {                                    \
-> -        a = (num >> 32) & MIPSDSP_LLO;      \
-> -        b = num & MIPSDSP_LLO;              \
-> +        a = ((num) >> 32) & MIPSDSP_LLO;    \
-> +        b = (num) & MIPSDSP_LLO;            \
->      } while (0)
-> 
-> -#define MIPSDSP_RETURN64_16(a, b, c, d) (((uint64_t)a << 48) | \
-> -                                         ((uint64_t)b << 32) | \
-> -                                         ((uint64_t)c << 16) | \
-> -                                         (uint64_t)d)
-> -#define MIPSDSP_RETURN64_32(a, b)       (((uint64_t)a << 32) | (uint64_t)b)
-> +#define MIPSDSP_RETURN64_16(a, b, c, d) (((uint64_t)(a) << 48) |        \
-> +                                         ((uint64_t)(b) << 32) |        \
-> +                                         ((uint64_t)(c) << 16) |        \
-> +                                         (uint64_t)(d))
-> +#define MIPSDSP_RETURN64_32(a, b)       (((uint64_t)(a) << 32) | (uint64_t)(b))
->  #endif
-> 
->  /** DSP Arithmetic Sub-class insns **/
-> 
+>  include/hw/ppc/pnv_xscom.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
+> index 3757b2cab9..38077b4796 100644
+> --- a/include/hw/ppc/pnv_xscom.h
+> +++ b/include/hw/ppc/pnv_xscom.h
+> @@ -54,7 +54,7 @@ typedef struct PnvXScomInterfaceClass {
+>   *   PCB SLAVE   0x110Fxxxx
+>   */
+>=20
+> -#define PNV_XSCOM_EX_CORE_BASE(base, i) (base | (((uint64_t)i) << 24))
+> +#define PNV_XSCOM_EX_CORE_BASE(base, i) ((base) | ((uint64_t)(i) << 24=
+))
+>  #define PNV_XSCOM_EX_CORE_SIZE    0x100000
+>=20
+>  #define PNV_XSCOM_LPC_BASE        0xb0020
+>=20
 
-Reviewed-by: Yongbok Kim <yongbok.kim@imgtec.com>
-
-Regards,
-Yongbok
 
