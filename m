@@ -1,68 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1duEar-0002uK-1r
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 05:13:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48255)
+	id 1duJHE-0005eq-UG
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 10:13:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1duEap-0002tK-A8
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 05:13:24 -0400
+	(envelope-from <eblake@redhat.com>) id 1duJH6-0005Yj-SA
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 10:13:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1duEao-0007kU-G6
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 05:13:23 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:35249)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1duEak-0007gf-4G; Tue, 19 Sep 2017 05:13:18 -0400
-Received: by mail-wm0-x241.google.com with SMTP id e64so3245981wmi.2;
-	Tue, 19 Sep 2017 02:13:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=hDQgxs+fQh/GZOaX3zPYQWKmEa5AvGjTq2zjHpqiFUE=;
-	b=CUhKpBprTt8uoq4uMh6q4wjeUMRyx0aCYgVBrM/sHvjKbEGmbRozjDc2FlvxgbeMwI
-	6kQZR9VE7ojikrZpjJ+kTGTtMsCuOZJsxK6UpffpgpqJhpTzKELxygWZf6edb3S3XdfE
-	j5Z6GFE6ldNfSg+Kcumt6DpCaK5s1Kr7B2YZCdWyfjfmuzLjiKSO6shdUOw5F2reiY/f
-	mXkFh8TesGc29T/uIeHilLG2/R7p0h7Qm6ca+RCbahVm2EwzcAmbRPxf3pCRJ4OStu+y
-	bhcUoDvXh/j0zNzVbmtrVcA2+XQ8bXUKDEY5kev0+AQZTKCkkeosleS+rIA8leDpTzG0
-	23mA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=hDQgxs+fQh/GZOaX3zPYQWKmEa5AvGjTq2zjHpqiFUE=;
-	b=Ib2hH7BOqHRdyhkxpz2rUEPIhRqvecDp3QZZHh3B+NM+sxuOfo0+f3McZZvhOaCfLj
-	nJf618HTMSNzXvWlwS3FuF1CN2uvIi04z6RtAIShlERITQ2O65TRzskQ8p7A7R6d9fEh
-	n9bxntWQHqoxY9Fmei1wLOAr1qGkdybalbJqeWlquMeUAYpOL/eo2jgzQm65J77iQTjb
-	9fo77EbIJO4MoUOeVXbypW7VVV4SQKYcY1qSYptJRljX0mulflSxHREAFRP0CbrO80OM
-	Oi8G+F/mPk4eZVq6eZ8jQcT/whTn1TtD5wCupXfpzKRPerc0nCxJ9kwlJXcN64UlwiZ8
-	t9Jw==
-X-Gm-Message-State: AHPjjUjGhmEbsc2Jrh7sUoOy8BEbOTDld6BMMm6NmbHJsAmBrwirT8Hp
-	BndrJGmnJEiN50oUrHzvBjI=
-X-Google-Smtp-Source: AOwi7QCGUSh+4Gihti3ISiCzkhq5O208m1uGZJw0l+lSVVN7t80pqf9KcAPMl7qq1P/dawGPorGllg==
-X-Received: by 10.28.216.75 with SMTP id p72mr481236wmg.128.1505812397128;
-	Tue, 19 Sep 2017 02:13:17 -0700 (PDT)
-Received: from localhost (33.59.7.51.dyn.plus.net. [51.7.59.33])
-	by smtp.gmail.com with ESMTPSA id k18sm903453wmd.22.2017.09.19.02.13.15
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 19 Sep 2017 02:13:16 -0700 (PDT)
-Date: Tue, 19 Sep 2017 10:13:04 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"open list:Network Block Dev..." <qemu-block@nongnu.org>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
-Message-ID: <20170919091304.GA22797@stefanha-x1.localdomain>
-References: <20170918214649.17550-1-eblake@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20170918214649.17550-1-eblake@redhat.com>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] nbd-client: Use correct
- macro parenthesization
+	(envelope-from <eblake@redhat.com>) id 1duJH5-0004KZ-ON
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 10:13:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37644)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1duJGy-0004BY-I4; Tue, 19 Sep 2017 10:13:12 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CC8737EA9A;
+	Tue, 19 Sep 2017 14:13:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CC8737EA9A
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from red.redhat.com (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D77BC600C2;
+	Tue, 19 Sep 2017 14:13:09 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>
+Date: Tue, 19 Sep 2017 09:13:07 -0500
+Message-Id: <20170919141307.23113-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 19 Sep 2017 14:13:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] mips: Improve macro parenthesization
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,21 +51,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Sep 2017 09:13:24 -0000
+X-List-Received-Date: Tue, 19 Sep 2017 14:13:27 -0000
 
-On Mon, Sep 18, 2017 at 04:46:49PM -0500, Eric Blake wrote:
-> If 'bs' is a complex expression, we were only casting the front half
-> rather than the full expression.  Luckily, none of the callers were
-> passing bad arguments, but it's better to be robust up front.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
-> 
-> I plan to take this through my NBD queue, unless it is picked up
-> by qemu-trivial first...
-> 
->  block/nbd-client.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Although none of the existing macro call-sites were broken,
+it's always better to write macros that properly parenthesize
+arguments that can be complex expressions, so that the intended
+order of operations is not broken.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ target/mips/dsp_helper.c | 56 ++++++++++++++++++++++++------------------------
+ 1 file changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/target/mips/dsp_helper.c b/target/mips/dsp_helper.c
+index dc707934ea..f152fea34a 100644
+--- a/target/mips/dsp_helper.c
++++ b/target/mips/dsp_helper.c
+@@ -45,9 +45,9 @@ typedef union {
+ } DSP64Value;
+
+ /*** MIPS DSP internal functions begin ***/
+-#define MIPSDSP_ABS(x) (((x) >= 0) ? x : -x)
+-#define MIPSDSP_OVERFLOW_ADD(a, b, c, d) (~(a ^ b) & (a ^ c) & d)
+-#define MIPSDSP_OVERFLOW_SUB(a, b, c, d) ((a ^ b) & (a ^ c) & d)
++#define MIPSDSP_ABS(x) (((x) >= 0) ? (x) : -(x))
++#define MIPSDSP_OVERFLOW_ADD(a, b, c, d) (~((a) ^ (b)) & ((a) ^ (c)) & (d))
++#define MIPSDSP_OVERFLOW_SUB(a, b, c, d) (((a) ^ (b)) & ((a) ^ (c)) & (d))
+
+ static inline void set_DSPControl_overflow_flag(uint32_t flag, int position,
+                                                 CPUMIPSState *env)
+@@ -1047,47 +1047,47 @@ static inline int32_t mipsdsp_cmpu_lt(uint32_t a, uint32_t b)
+
+ #define MIPSDSP_SPLIT32_8(num, a, b, c, d)  \
+     do {                                    \
+-        a = (num >> 24) & MIPSDSP_Q0;       \
+-        b = (num >> 16) & MIPSDSP_Q0;       \
+-        c = (num >> 8) & MIPSDSP_Q0;        \
+-        d = num & MIPSDSP_Q0;               \
++        a = ((num) >> 24) & MIPSDSP_Q0;     \
++        b = ((num) >> 16) & MIPSDSP_Q0;     \
++        c = ((num) >> 8) & MIPSDSP_Q0;      \
++        d = (num) & MIPSDSP_Q0;             \
+     } while (0)
+
+ #define MIPSDSP_SPLIT32_16(num, a, b)       \
+     do {                                    \
+-        a = (num >> 16) & MIPSDSP_LO;       \
+-        b = num & MIPSDSP_LO;               \
++        a = ((num) >> 16) & MIPSDSP_LO;     \
++        b = (num) & MIPSDSP_LO;             \
+     } while (0)
+
+-#define MIPSDSP_RETURN32_8(a, b, c, d)  ((target_long)(int32_t) \
+-                                         (((uint32_t)a << 24) | \
+-                                         (((uint32_t)b << 16) | \
+-                                         (((uint32_t)c << 8) |  \
+-                                          ((uint32_t)d & 0xFF)))))
+-#define MIPSDSP_RETURN32_16(a, b)       ((target_long)(int32_t) \
+-                                         (((uint32_t)a << 16) | \
+-                                          ((uint32_t)b & 0xFFFF)))
++#define MIPSDSP_RETURN32_8(a, b, c, d)  ((target_long)(int32_t)         \
++                                         (((uint32_t)(a) << 24) |       \
++                                          ((uint32_t)(b) << 16) |       \
++                                          ((uint32_t)(c) << 8) |        \
++                                          ((uint32_t)(d) & 0xFF)))
++#define MIPSDSP_RETURN32_16(a, b)       ((target_long)(int32_t)         \
++                                         (((uint32_t)(a) << 16) |       \
++                                          ((uint32_t)(b) & 0xFFFF)))
+
+ #ifdef TARGET_MIPS64
+ #define MIPSDSP_SPLIT64_16(num, a, b, c, d)  \
+     do {                                     \
+-        a = (num >> 48) & MIPSDSP_LO;        \
+-        b = (num >> 32) & MIPSDSP_LO;        \
+-        c = (num >> 16) & MIPSDSP_LO;        \
+-        d = num & MIPSDSP_LO;                \
++        a = ((num) >> 48) & MIPSDSP_LO;      \
++        b = ((num) >> 32) & MIPSDSP_LO;      \
++        c = ((num) >> 16) & MIPSDSP_LO;      \
++        d = (num) & MIPSDSP_LO;              \
+     } while (0)
+
+ #define MIPSDSP_SPLIT64_32(num, a, b)       \
+     do {                                    \
+-        a = (num >> 32) & MIPSDSP_LLO;      \
+-        b = num & MIPSDSP_LLO;              \
++        a = ((num) >> 32) & MIPSDSP_LLO;    \
++        b = (num) & MIPSDSP_LLO;            \
+     } while (0)
+
+-#define MIPSDSP_RETURN64_16(a, b, c, d) (((uint64_t)a << 48) | \
+-                                         ((uint64_t)b << 32) | \
+-                                         ((uint64_t)c << 16) | \
+-                                         (uint64_t)d)
+-#define MIPSDSP_RETURN64_32(a, b)       (((uint64_t)a << 32) | (uint64_t)b)
++#define MIPSDSP_RETURN64_16(a, b, c, d) (((uint64_t)(a) << 48) |        \
++                                         ((uint64_t)(b) << 32) |        \
++                                         ((uint64_t)(c) << 16) |        \
++                                         (uint64_t)(d))
++#define MIPSDSP_RETURN64_32(a, b)       (((uint64_t)(a) << 32) | (uint64_t)(b))
+ #endif
+
+ /** DSP Arithmetic Sub-class insns **/
+-- 
+2.13.5
+
 
