@@ -1,64 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1duSMz-0002ef-L0
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 19:56:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38777)
+	id 1duUUM-0002b3-Vx
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 22:11:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58773)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1duSMy-0002eV-4i
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 19:56:01 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1duUUI-0002Vv-RN
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 22:11:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1duSMx-0005Gw-8o
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 19:56:00 -0400
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:34816)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1duSMx-0005FB-2j; Tue, 19 Sep 2017 19:55:59 -0400
-Received: by mail-wr0-x241.google.com with SMTP id n64so582718wrb.2;
-	Tue, 19 Sep 2017 16:55:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=D/M5+gXleJ8oMZxNoRJUO6d3XkV+m39Z6Agy5lfYNVw=;
-	b=Sq+2gH0/ptIhBSB7Pd0yYdxhm/JoMbeGiStZBm+l1QEmC7if3oQrkZ1E4R4PH4Q2Jz
-	g0CZq08ujsii+7GIb51NofjtNcOeJosMpX57RIfhmuhuC/k4hozgmw8amzH/MX0CHLyF
-	MxPME4RTashGtjmwuH12QNYt3j5EnSUUxOCs8PSZgQsckrM9rwMmxG/Bz+5eiBIJ5RVm
-	uJwqAavAQEqGZsiSD9hYuS/OBYtlznxoQyIxGzLskJlfwzf9hmtcIS//9ixI5lg6NsnK
-	0ZU6SIXUePy09+vowtQMlJISZdQL79i3rN8hazFvikyyI8AC+XwdhjAGp+RytWMQSZIe
-	DNqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=D/M5+gXleJ8oMZxNoRJUO6d3XkV+m39Z6Agy5lfYNVw=;
-	b=Az7JoxVSpbtbgg2HOGikDLYnZBwXnZTnEd0k03z4d4atYYpfNs4QxVYHMjYQVmByzE
-	F3/rH7yy5gV+6oACUCYKc7BQWD2nltXOZinoPOBXnm/rZQr7QkWIyLpmA/9uSxVnZ/oE
-	TIGIhVJQlW+8K3g/mzN5loK93dht8XLOM1e62LDfdMj9Ze+c9LLkeLye+/1y7QH8/FTZ
-	Y6SHmHj9hf6xG2sEqxeWDx4MOvosC1yvBDHnIzaB4EIY7BNA+XYKAPL2yjm+xUx5emT/
-	4JmBcYRNaPoaFJDXOCuvWuCHUl6PbqK5UTHvwgphuzvM8VaercA5ZsvktZhGirkSQQFl
-	Zojw==
-X-Gm-Message-State: AHPjjUi3oq12GqasvJUxYh9K0yMm6pUbiuvgHL5EoUbs79szakXdxxV3
-	SsoUiqPccmYjeMU+lOkr6u4ANISddkOnqJxebTI=
-X-Google-Smtp-Source: AOwi7QD5WUvpSV7R5CzPUFwOqO553jHWDtwjzs3X77IsJnrDe47CjVCWY9RZFS4MXohR7yJGLOY1g4yYsEX1WnkUZAA=
-X-Received: by 10.223.187.74 with SMTP id x10mr2631452wrg.66.1505865356309;
-	Tue, 19 Sep 2017 16:55:56 -0700 (PDT)
+	(envelope-from <dgibson@ozlabs.org>) id 1duUUH-0004Z5-U7
+	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 22:11:42 -0400
+Received: from ozlabs.org ([103.22.144.67]:34653)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1duUU8-0004SS-SZ; Tue, 19 Sep 2017 22:11:33 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3xxjsX5W4Hz9sBW; Wed, 20 Sep 2017 12:11:28 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1505873488;
+	bh=IPZcGhSSOiU5G0BFf5cyPI3YYRZrvJcqO+1wWxfc/SI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=f+kcHMmIuQstaaCxTVIrzTzNXn3KOmnG1WYRcK8TfyiiTZXGjlld+HuKQq95qdB2B
+	3j2EJguLSjR39TDlcYVMyxYbRyZw7FF1CeQZJR7LqweULPuEcWa9IBpi6EoRBdfC9j
+	iXihfwcXsveieA8OJFJlrvIuMlLdVC7hTk8szJy8=
+Date: Wed, 20 Sep 2017 11:00:24 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Alexander Graf <agraf@suse.de>, "open list:PowerPC" <qemu-ppc@nongnu.org>
+Message-ID: <20170920010024.GB5520@umbus.fritz.box>
+References: <20170919141603.27713-1-eblake@redhat.com>
 MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.191.130 with HTTP; Tue, 19 Sep 2017 16:55:25 -0700 (PDT)
-In-Reply-To: <CAMo8BfJp=dLbgGsqu8rKAoKxTkMNRHeAUcT74pQSdCpKWqxLPg@mail.gmail.com>
-References: <134bcf2e2c0bb9160aa822ddfbc46d9bd51c4305.1505512474.git.alistair.francis@xilinx.com>
-	<CAMo8BfJp=dLbgGsqu8rKAoKxTkMNRHeAUcT74pQSdCpKWqxLPg@mail.gmail.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 19 Sep 2017 16:55:25 -0700
-X-Google-Sender-Auth: 1vV2ecDqB063MbleZip2wIwB1PY
-Message-ID: <CAKmqyKPkCpVpBaEWuHX541uq+V-jvOhommWKiPXXs+cgK3MqLQ@mail.gmail.com>
-To: Max Filippov <jcmvbkbc@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-devel <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-trivial] [PATCH v2 1/1] target/xtensa: Use the
- pre-defined MEMTXATTRS_UNSPECIFIED macro
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="MW5yreqqjyrRcusr"
+Content-Disposition: inline
+In-Reply-To: <20170919141603.27713-1-eblake@redhat.com>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH] ppc/pnv: Improve macro parenthesization
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,35 +49,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Sep 2017 23:56:01 -0000
+X-List-Received-Date: Wed, 20 Sep 2017 02:11:45 -0000
 
-On Fri, Sep 15, 2017 at 3:37 PM, Max Filippov <jcmvbkbc@gmail.com> wrote:
-> On Fri, Sep 15, 2017 at 2:56 PM, Alistair Francis
-> <alistair.francis@xilinx.com> wrote:
->> Instead of using the hardcoded (MemTxAttrs){0} for no memory attributes
->> let's use the already defined MEMTXATTRS_UNSPECIFIED macro instead.
->>
->> This is technically a change of behaviour as MEMTXATTRS_UNSPECIFIED sets
->> the unspecified field to 1, but it doesn't look like anything is
->> checking this field.
->>
->> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
->> ---
->> V2:
->>  - Update commit message to indicate the change in behaviour
->>
->>  target/xtensa/op_helper.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 
-+ QEMU trivial, can this go through you?
+--MW5yreqqjyrRcusr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Alistair
+On Tue, Sep 19, 2017 at 09:16:03AM -0500, Eric Blake wrote:
+> Although none of the existing macro call-sites were broken,
+> it's always better to write macros that properly parenthesize
+> arguments that can be complex expressions, so that the intended
+> order of operations is not broken.
+>=20
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 
->
-> --
-> Thanks.
-> -- Max
+Applied to ppc-for-2.11, thanks.
+
+> ---
+>  include/hw/ppc/pnv_xscom.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
+> index 3757b2cab9..38077b4796 100644
+> --- a/include/hw/ppc/pnv_xscom.h
+> +++ b/include/hw/ppc/pnv_xscom.h
+> @@ -54,7 +54,7 @@ typedef struct PnvXScomInterfaceClass {
+>   *   PCB SLAVE   0x110Fxxxx
+>   */
+>=20
+> -#define PNV_XSCOM_EX_CORE_BASE(base, i) (base | (((uint64_t)i) << 24))
+> +#define PNV_XSCOM_EX_CORE_BASE(base, i) ((base) | ((uint64_t)(i) << 24))
+>  #define PNV_XSCOM_EX_CORE_SIZE    0x100000
+>=20
+>  #define PNV_XSCOM_LPC_BASE        0xb0020
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--MW5yreqqjyrRcusr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnBvagACgkQbDjKyiDZ
+s5J1ag/+KzYGD2H8lgUlser8sWN5x4sueaj/ufXFBjeeWlQVyJrXPP7Ta9elMBX8
+rF2gXZ+ToHoXoRmQ0Kn6lqwB1RKxer2Gl7dgk1L+9P6/Fdxji9d9AGE014p9EQz4
+N5BciZkNwCx+uuuzmWjctJ4Y9gVkAmVmhNACHnI7SS4woyaKnjBo7+D4vEN+LuX3
+SU5vj8WpZXxHa64Bo/zVyrsR9KBKtiaOD6ExN/1AjF3mW9I/9s1s/ShAGQ/MHXqL
+1MZU1R619fRlLyeN+ohS7MFgnbmfZmJRwYAYJjY46IgxRk0Fr0oTElIHgeVMBVeg
+7Xof24yQ1V78ezulkOxGOwEDzgZcGkHbhnI5J7xnyZ21IR9Qhf+WCvQmQFt+c0MJ
+KB5JLDVQOp3ZAD7xCFP7VgucvNXbMnLD/2hU+NkzjrG3iBAB7Ef1F+H2YilCweu+
+1pDdhlLe9GSEYRHPINQ2hLYArPm4wLInUi8P/D+2lM/b4Yv/ZP8/PeGn3p0H+XJ0
+IS9H6GFbZk1fdI+0CB8vrOeeLg/69gvkFPPjHBp/nQ2/CkGp5uW3c/QbfYZMmvgB
+0iSYkBg3NhtW7NKWYGgxHbQABTYlVuUCSioWifg2O5oMp2hMnRwebfzdRbQTZav2
+J20gHFwywN6d5syRME4WN4zbDT3PKNpScusU0OWRDXhwBeK5OyI=
+=W+Za
+-----END PGP SIGNATURE-----
+
+--MW5yreqqjyrRcusr--
 
