@@ -1,43 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1duUUM-0002b3-Vx
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Sep 2017 22:11:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58773)
+	id 1duZi2-0003EV-5z
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Sep 2017 03:46:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1duUUI-0002Vv-RN
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 22:11:45 -0400
+	(envelope-from <thuth@redhat.com>) id 1duZhz-0003CC-7p
+	for qemu-trivial@nongnu.org; Wed, 20 Sep 2017 03:46:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1duUUH-0004Z5-U7
-	for qemu-trivial@nongnu.org; Tue, 19 Sep 2017 22:11:42 -0400
-Received: from ozlabs.org ([103.22.144.67]:34653)
+	(envelope-from <thuth@redhat.com>) id 1duZhy-0000cJ-5T
+	for qemu-trivial@nongnu.org; Wed, 20 Sep 2017 03:46:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49698)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1duUU8-0004SS-SZ; Tue, 19 Sep 2017 22:11:33 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xxjsX5W4Hz9sBW; Wed, 20 Sep 2017 12:11:28 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1505873488;
-	bh=IPZcGhSSOiU5G0BFf5cyPI3YYRZrvJcqO+1wWxfc/SI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f+kcHMmIuQstaaCxTVIrzTzNXn3KOmnG1WYRcK8TfyiiTZXGjlld+HuKQq95qdB2B
-	3j2EJguLSjR39TDlcYVMyxYbRyZw7FF1CeQZJR7LqweULPuEcWa9IBpi6EoRBdfC9j
-	iXihfwcXsveieA8OJFJlrvIuMlLdVC7hTk8szJy8=
-Date: Wed, 20 Sep 2017 11:00:24 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Alexander Graf <agraf@suse.de>, "open list:PowerPC" <qemu-ppc@nongnu.org>
-Message-ID: <20170920010024.GB5520@umbus.fritz.box>
-References: <20170919141603.27713-1-eblake@redhat.com>
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1duZhr-0000Aj-Dl; Wed, 20 Sep 2017 03:46:03 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C5CF356D8;
+	Wed, 20 Sep 2017 07:46:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6C5CF356D8
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.62] (ovpn-116-62.ams2.redhat.com [10.36.116.62])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 587A95D6A4;
+	Wed, 20 Sep 2017 07:46:01 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1495613046-6430-1-git-send-email-thuth@redhat.com>
+Message-ID: <5e647277-d688-071d-7def-bd8d57dd7e66@redhat.com>
+Date: Wed, 20 Sep 2017 09:45:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="MW5yreqqjyrRcusr"
-Content-Disposition: inline
-In-Reply-To: <20170919141603.27713-1-eblake@redhat.com>
-User-Agent: Mutt/1.8.3 (2017-05-23)
+In-Reply-To: <1495613046-6430-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 20 Sep 2017 07:46:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] ppc/pnv: Improve macro parenthesization
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Mark the 'hubport'
+ netdev as deprecated
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,67 +59,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Sep 2017 02:11:45 -0000
+X-List-Received-Date: Wed, 20 Sep 2017 07:46:12 -0000
 
-
---MW5yreqqjyrRcusr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Sep 19, 2017 at 09:16:03AM -0500, Eric Blake wrote:
-> Although none of the existing macro call-sites were broken,
-> it's always better to write macros that properly parenthesize
-> arguments that can be complex expressions, so that the intended
-> order of operations is not broken.
->=20
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-
-Applied to ppc-for-2.11, thanks.
-
+On 24.05.2017 10:04, Thomas Huth wrote:
+> The 'hubport' netdev is closely tied to the 'vlan' concept which
+> has been marked as deprecated in commit a2dbe1356faff3cb6 already.
+> Thus we should also mark the hubport netdevs as deprecated to make
+> the remaining users aware that they should not use this anymore.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/hw/ppc/pnv_xscom.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
-> index 3757b2cab9..38077b4796 100644
-> --- a/include/hw/ppc/pnv_xscom.h
-> +++ b/include/hw/ppc/pnv_xscom.h
-> @@ -54,7 +54,7 @@ typedef struct PnvXScomInterfaceClass {
->   *   PCB SLAVE   0x110Fxxxx
+>  net/hub.c       | 4 ++++
+>  qemu-options.hx | 6 ++++--
+>  2 files changed, 8 insertions(+), 2 deletions(-)
+> 
+> diff --git a/net/hub.c b/net/hub.c
+> index 32d8cf5..85bd5bc 100644
+> --- a/net/hub.c
+> +++ b/net/hub.c
+> @@ -13,6 +13,7 @@
 >   */
->=20
-> -#define PNV_XSCOM_EX_CORE_BASE(base, i) (base | (((uint64_t)i) << 24))
-> +#define PNV_XSCOM_EX_CORE_BASE(base, i) ((base) | ((uint64_t)(i) << 24))
->  #define PNV_XSCOM_EX_CORE_SIZE    0x100000
->=20
->  #define PNV_XSCOM_LPC_BASE        0xb0020
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "monitor/monitor.h"
+>  #include "net/net.h"
+>  #include "clients.h"
+> @@ -286,6 +287,9 @@ int net_init_hubport(const Netdev *netdev, const char *name,
+>  {
+>      const NetdevHubPortOptions *hubport;
+>  
+> +    error_report("hubports are deprecated and will be removed in a "
+> +                 "future release");
+> +
+>      assert(netdev->type == NET_CLIENT_DRIVER_HUBPORT);
+>      assert(!peer);
+>      hubport = &netdev->u.hubport;
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index dc1a48a..efb555c 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1810,7 +1810,7 @@ DEF("netdev", HAS_ARG, QEMU_OPTION_netdev,
+>      "-netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]\n"
+>      "                configure a vhost-user network, backed by a chardev 'dev'\n"
+>      "-netdev hubport,id=str,hubid=n\n"
+> -    "                configure a hub port on QEMU VLAN 'n'\n", QEMU_ARCH_ALL)
+> +    "                configure a hub port on QEMU VLAN 'n' (deprecated)\n", QEMU_ARCH_ALL)
+>  DEF("net", HAS_ARG, QEMU_OPTION_net,
+>      "-net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]\n"
+>      "                old way to create a new NIC and connect it to VLAN 'n'\n"
+> @@ -2239,7 +2239,9 @@ Create a hub port on QEMU "vlan" @var{hubid}.
+>  
+>  The hubport netdev lets you connect a NIC to a QEMU "vlan" instead of a single
+>  netdev.  @code{-net} and @code{-device} with parameter @option{vlan} create the
+> -required hub automatically.
+> +required hub automatically. Note that the "vlan" concept and thus the hubport
+> +option, too, are considered as deprecated and might be removed in a future
+> +release of QEMU.
+>  
+>  @item -netdev vhost-user,chardev=@var{id}[,vhostforce=on|off][,queues=n]
+>  
+> 
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+ping?
 
---MW5yreqqjyrRcusr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnBvagACgkQbDjKyiDZ
-s5J1ag/+KzYGD2H8lgUlser8sWN5x4sueaj/ufXFBjeeWlQVyJrXPP7Ta9elMBX8
-rF2gXZ+ToHoXoRmQ0Kn6lqwB1RKxer2Gl7dgk1L+9P6/Fdxji9d9AGE014p9EQz4
-N5BciZkNwCx+uuuzmWjctJ4Y9gVkAmVmhNACHnI7SS4woyaKnjBo7+D4vEN+LuX3
-SU5vj8WpZXxHa64Bo/zVyrsR9KBKtiaOD6ExN/1AjF3mW9I/9s1s/ShAGQ/MHXqL
-1MZU1R619fRlLyeN+ohS7MFgnbmfZmJRwYAYJjY46IgxRk0Fr0oTElIHgeVMBVeg
-7Xof24yQ1V78ezulkOxGOwEDzgZcGkHbhnI5J7xnyZ21IR9Qhf+WCvQmQFt+c0MJ
-KB5JLDVQOp3ZAD7xCFP7VgucvNXbMnLD/2hU+NkzjrG3iBAB7Ef1F+H2YilCweu+
-1pDdhlLe9GSEYRHPINQ2hLYArPm4wLInUi8P/D+2lM/b4Yv/ZP8/PeGn3p0H+XJ0
-IS9H6GFbZk1fdI+0CB8vrOeeLg/69gvkFPPjHBp/nQ2/CkGp5uW3c/QbfYZMmvgB
-0iSYkBg3NhtW7NKWYGgxHbQABTYlVuUCSioWifg2O5oMp2hMnRwebfzdRbQTZav2
-J20gHFwywN6d5syRME4WN4zbDT3PKNpScusU0OWRDXhwBeK5OyI=
-=W+Za
------END PGP SIGNATURE-----
-
---MW5yreqqjyrRcusr--
+ Thomas
 
