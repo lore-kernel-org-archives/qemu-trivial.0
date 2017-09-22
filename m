@@ -1,69 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQU4-000320-1w
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:07:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55202)
+	id 1dvQV2-0003tJ-N8
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:08:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55903)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dvQTx-0002uG-71
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:07:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dvQV0-0003p7-04
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:08:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dvQTw-0003Qj-B0
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:07:13 -0400
-Received: from mail-wr0-x22e.google.com ([2a00:1450:400c:c0c::22e]:49822)
+	(envelope-from <peter.maydell@linaro.org>) id 1dvQUz-00046G-7g
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:08:17 -0400
+Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:50605)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dvQTw-0003Q6-3G
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:07:12 -0400
-Received: by mail-wr0-x22e.google.com with SMTP id u96so1281284wrb.6
-	for <qemu-trivial@nongnu.org>; Fri, 22 Sep 2017 09:07:12 -0700 (PDT)
+	id 1dvQUz-00045l-1X
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:08:17 -0400
+Received: by mail-wm0-x236.google.com with SMTP id b195so5270187wmb.5
+	for <qemu-trivial@nongnu.org>; Fri, 22 Sep 2017 09:08:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=b13WuC00167dGW1L0cbLJWZd2qX4e5008ZJETl3G4Qw=;
-	b=QvBAok+DFI4zJ/30N6Kf4xsdkvD+9p1A6HCo6lB0hR40si1lxJSCbXHiefow1XtUiI
-	hkMbVNaAQtkbegTrCxPSVc0dQ8vWfB5kscglbi2m3U897VAd/3BC77pEYcCn8OmoLQed
-	IZHowXqRIeMeY6d/4TD2YyvWRHSQt0txEIsQ8=
+	bh=zI519BvzH7z8IavIaWwUez1LQDp49wS7Lmx1/VsoNps=;
+	b=Gd1pMUzz5Xtb5u6EaxhHw6id7jQ+RVM1Jh3rshg3qW5Cr4b4gX0TF07doBZBwWwCSK
+	uHiyyS2NFQbICj3EIkUAI2Ki6YR7GAMOZ6UG7sw4h9r1z7ew6BrKHZ3ZwnKMQrFsOqZC
+	sh3fWkosk5J/kYDnTT2lln00Oux/KwNxY3urQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=b13WuC00167dGW1L0cbLJWZd2qX4e5008ZJETl3G4Qw=;
-	b=RmGSNLX/XkBVUPsgtuP1CdPaDOT6qgfnC8v6Z7ECNUfbBFPCV2UbTwnZZr2Xn2BZ4m
-	l8oUYPZh3EDm8Ap9XBot5w70Env+OzJ61aaomYdeLrSq0/mh8/qJBpKsEEjGHXeKO8Yn
-	5dOEIn4zfPYu+074XG2rvbyVv6GqF+wRClmQje697CIddKk3sDnBXJEPOFhSyM+8/WLA
-	c9m8N8hX0oh+Fh/e7FM+qhsUYCwPI5HKeZ376i2RNkegVmEFPCQ65DZqH1iAWWOm5Jfi
-	O4OwKOdY+8/ZxrOS9MqNIEDxynz+4spBl8BltNXyx56s8446gt6aeEZQIJLsomUt1+pS
-	n/bA==
-X-Gm-Message-State: AHPjjUihl0sFupPumSVfUWf+J1RCmJDmP5NRHa0p6yRB25wQaUkwMfNu
-	04rqmnO9cSKu7y8OfJeFLvqz+sBTa0LoVCFjemSZVQ==
-X-Google-Smtp-Source: AOwi7QDd1Afazp72VB8VV1F37tmDolhI6sOiEgup5liKkBsSgr8tMAjszQeayyW6ciaNIIujwJwHp88GhHEbeee46wE=
-X-Received: by 10.223.198.202 with SMTP id c10mr5171655wrh.230.1506096430996; 
-	Fri, 22 Sep 2017 09:07:10 -0700 (PDT)
+	bh=zI519BvzH7z8IavIaWwUez1LQDp49wS7Lmx1/VsoNps=;
+	b=cXmOXTAoqmOIGSxaxmzeoJwcjs4moUDQ3eLkZC3Sa02I1Ksm5LxF2X6RC1VUcMgGGT
+	TN/dJ/BIAwvjQJuA4gfC2Sakpe754iLFR2Nltjx79XxV+rIIOabC2PumkElSSrPj+q1Z
+	jeTiik9DoRVPv24wzKAg4ZGE6jFfqPiCipGDjG6LOVk6L9WxWlEY3cY0P9VCvDWa/qo4
+	VSWa9lg2yWaduGQGuO9dqBQUJe13NKYflzv4sAlRbkYZGEHkYpme8i1P0LQd8UhhyUs2
+	dCLiLhlm+GHhAGd4F1KXOgNTrWvb+pTI9TLt3lN8quaTa1mUcsHg1zoGASTl0llkDFPJ
+	v3KQ==
+X-Gm-Message-State: AHPjjUg2FwsbvwEBtw8ncVFy4Y5GbfsQI7fpeCUy4tMjbFdcdJNz0xCt
+	hidh1shUCjzCfp//vDh6zA4bKYQZNP5ApxZwnWa5Dw==
+X-Google-Smtp-Source: AOwi7QAgsN3o8x9/uhhUa9JdLdCkyd1t2alubhFr3N9d/1TTU3wkWuxSQxs8RbgulzSoWWGgrMli/im+XAr6exyr8S4=
+X-Received: by 10.28.103.195 with SMTP id b186mr4246012wmc.101.1506096496108; 
+	Fri, 22 Sep 2017 09:08:16 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Fri, 22 Sep 2017 09:06:50 -0700 (PDT)
-In-Reply-To: <20170922154014.29350-2-f4bug@amsat.org>
+Received: by 10.223.139.215 with HTTP; Fri, 22 Sep 2017 09:07:55 -0700 (PDT)
+In-Reply-To: <20170922154014.29350-3-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922154014.29350-2-f4bug@amsat.org>
+	<20170922154014.29350-3-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Sep 2017 17:06:50 +0100
-Message-ID: <CAFEAcA9L2LL-aKFVJGCwe3QJdGsftKBcVNXSYnEG7gFy22cfEQ@mail.gmail.com>
+Date: Fri, 22 Sep 2017 17:07:55 +0100
+Message-ID: <CAFEAcA8oovA56LwFtKoY1c-P93zxGoyH+vKAXF+hAK6r9bHxvg@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, 
-	Alexander Graf <agraf@suse.de>, Cornelia Huck <cohuck@redhat.com>, 
-	Alex Williamson <alex.williamson@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Corey Minyard <minyard@acm.org>, 
+	Balaton Zoltan <balaton@eik.bme.hu>, Alexander Graf <agraf@suse.de>, 
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22e
-Subject: Re: [Qemu-trivial] [PATCH 01/34] hw: use "qemu/osdep.h" as first
- #include in source files
+X-Received-From: 2a00:1450:400c:c09::236
+Subject: Re: [Qemu-trivial] [PATCH 02/34] hw: remove "qemu/osdep.h" from
+ header files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,23 +72,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 16:07:18 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 16:08:19 -0000
 
 On 22 September 2017 at 16:39, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 > wrote:
+> while here, add entries for ppc4xx_i2c in MAINTAINERS
+>
 > applied using ./scripts/clean-includes
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/acpi/ipmi-stub.c             | 1 +
->  hw/audio/fmopl.c                | 1 -
->  hw/cpu/core.c                   | 1 +
->  hw/ppc/spapr_cpu_core.c         | 1 +
->  hw/smbios/smbios_type_38-stub.c | 1 +
->  hw/vfio/ccw.c                   | 2 +-
->  hw/virtio/vhost-vsock.c         | 2 +-
->  7 files changed, 6 insertions(+), 3 deletions(-)
->
+
+This is doing two things at once and would ideally be
+two patches. Still,
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
