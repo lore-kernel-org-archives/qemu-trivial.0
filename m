@@ -1,62 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQOs-0006HX-Up
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:01:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51655)
+	id 1dvQOu-0006Iy-6J
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51675)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQOl-0006C1-PC
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:57 -0400
+	id 1dvQOn-0006CO-AN
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQOk-0008T8-RT
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:51 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:37306)
+	id 1dvQOm-0008Tj-1H
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:53 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36448)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQOf-0008Oi-Lt; Fri, 22 Sep 2017 12:01:45 -0400
-Received: by mail-qt0-x243.google.com with SMTP id u48so923684qtc.4;
-	Fri, 22 Sep 2017 09:01:45 -0700 (PDT)
+	id 1dvQOc-0008NN-Gm; Fri, 22 Sep 2017 12:01:42 -0400
+Received: by mail-qt0-x244.google.com with SMTP id t46so920607qtj.3;
+	Fri, 22 Sep 2017 09:01:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=/vTJhoXWoZsgcDOXvcRuqqfhOoSV0vVpPdkW06HrZ3w=;
-	b=PJTM1r9LKA9S/icPTAoM/7NvGUw4UB4QFQHkdI6axCvJylzZYrkIRX/ueoU4+4N5bN
-	Ae9/Yykcc7qB5sE3NY9GaL4JsBS+OuR+i4/FzDs1sBi5e/ZSMCwSFH2KC1vNGj9x/IL1
-	HOKL1hrq+YK3cYtdVE45UT/fkGpjT9GtBa6bibUtd6mLI8Vol7JW9JsAaPsadm6OX4EZ
-	Vq1AqblcwaOw6xXuL4hSWN42D1sdm04aWlRfbEo7o/nRs0HQlgRehDIA737q8MCmN8Sh
-	axcmj3Ja3EadHouC/DI5oY0x3h6NQW3qxD1trkcFgsPl0FOhhqjMTTlaisly/Yukx2uj
-	xCIg==
+	bh=CG3JkLfzmFq08KAOWuKpGIc67luu5oY1muwbG4sTQWc=;
+	b=a9vW8jCvgraH47F8/AwMjTnjQOPJAXKfXD8PeDIQkonpVSUaje1BI6DewhDpji8CRE
+	qTeJaH95jsj8tOBhZ6U4fkU62++A90ssVa7ZiozSSx9Xo24v9g223MnJmUn6nFPpRNRV
+	ZBv+36ivLr4xBgOWfJRnPACjUnVn8hUu1ujI7o1dJdXbzDRwtrscGxfZlXYbrE4gCOJ/
+	1h5zuXVB5A4v02QI/3VFnxxO3KJ41DvGBlNExDd8BNOWOkAo4l+DnGX3lSKcp8W+geX5
+	43+S0kbTFP5j06aDHG0rcGir+P28z2eDyvmxRayeM65M0hofxFPN5Hc6hVpvTkfqmtcs
+	YmIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=/vTJhoXWoZsgcDOXvcRuqqfhOoSV0vVpPdkW06HrZ3w=;
-	b=iZ13HTMh2CRQA7tpcpmVmjabwfjWiy+0B4IGaI92ms0FPnxMX60FtWI3+04Oh5PuGX
-	E67RC+F1gSFMU/5kylE+evs3fPMa5ftgY221RznKHj5dsocJd88+/Aoc2YskeEZ9TKiY
-	AObgVZrR0rdxBQZLunJYAgmi9Q41UDD715Jv+6B7OcrIV2UUIPmsPkYpTORKICP99LUA
-	bRkH9J4db14onqYgRJ/Qah/QKt8sprvQALZZQbDVMaXZItPFKCW+bKsViXnOic972c3U
-	sIdNgRIvhelPX/bw784mpR5C0WGOrIVAdENbw9k62AlhHKAPFCOW7VAW7I1UzTSO2S80
-	uyug==
-X-Gm-Message-State: AHPjjUhxgxqF/QHOTK65jE02Jp/lc8ZbedlyA0V05lqCbEBo29lAjO9q
-	zvLJS5CoQ64dSKTIX4SWlbs=
-X-Google-Smtp-Source: AOwi7QBrrK1Bp5+A4RDiUkDgxsJ9/9fCKV+tt1PuTGULunjXRFW3+PHaFhqcmdpMh19t5HdaUN9y8g==
-X-Received: by 10.200.27.85 with SMTP id p21mr8433969qtk.3.1506096104946;
-	Fri, 22 Sep 2017 09:01:44 -0700 (PDT)
+	bh=CG3JkLfzmFq08KAOWuKpGIc67luu5oY1muwbG4sTQWc=;
+	b=obLHB1VQzkK0TpEuEtvSvrctg9TTpL1i52z/v3NcPzsaurpQjVWLxVqmQs9QpjZs77
+	KUd16q6o2gPqvy3NJ5OBJy7PxddwhcCbJVHN+h6e13/601u5ZaZ1VN47BtivPMmoW04S
+	PF/eDvqH+lJ08jetSrhaX8/jC0/1hHVZtTZDkPOysl19su/TU6mbH49JizwpOG7/353f
+	Ir3SgbEm7Laz0xZlfSSnuZaOkwvnLDOS8hVnMRmEZc36ITqXtJLIGHp90c+9ASWsms2Y
+	4lT/QlMlSAyGSCQSuLuxwK/YnbLDRVddf7dBVNgtmMjMJk4xWBvqPGtXtOqAOlbablVl
+	HUOw==
+X-Gm-Message-State: AHPjjUj4J2XNbkwa89fsq3oFikG6ZlLqGIUk0EwaR2gOnUrdVI2xk1wB
+	zawHsU5Ppq76c14Ak9ZRItc=
+X-Google-Smtp-Source: AOwi7QCjSxahy20AAwTOjX3v3RRrnugFbz8cj/rNylcc6gx3i2PsT4CPu3ehwqhdbcR38RmD/FfVQw==
+X-Received: by 10.237.37.14 with SMTP id v14mr8492205qtc.116.1506096101689;
+	Fri, 22 Sep 2017 09:01:41 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.01.41
+	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.01.37
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Sep 2017 09:01:44 -0700 (PDT)
+	Fri, 22 Sep 2017 09:01:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
 	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 22 Sep 2017 13:01:02 -0300
-Message-Id: <20170922160111.31885-3-f4bug@amsat.org>
+Date: Fri, 22 Sep 2017 13:01:01 -0300
+Message-Id: <20170922160111.31885-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170922154014.29350-1-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
@@ -65,9 +67,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH 25/34] hw/timer/m48t59: use TYPE_M48T59_ISA,
- add entries to MAINTAINERS
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH 24/34] hw/timer/mc146818: rename rtc_init()
+ -> mc146818_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,68 +81,163 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 16:01:57 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 16:01:58 -0000
+
+and remove the old i386/pc dependency
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/timer/m48t59.h | 2 ++
- hw/ppc/prep.c             | 2 +-
- hw/timer/m48t59-isa.c     | 2 +-
- MAINTAINERS               | 2 ++
- 4 files changed, 6 insertions(+), 2 deletions(-)
+ include/hw/timer/mc146818rtc.h | 3 ++-
+ hw/alpha/dp264.c               | 2 +-
+ hw/i386/pc.c                   | 2 +-
+ hw/isa/i82378.c                | 3 ++-
+ hw/mips/mips_fulong2e.c        | 2 +-
+ hw/mips/mips_jazz.c            | 2 +-
+ hw/mips/mips_malta.c           | 2 +-
+ hw/mips/mips_r4k.c             | 2 +-
+ hw/ppc/pnv.c                   | 2 +-
+ hw/timer/mc146818rtc.c         | 2 +-
+ 10 files changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/include/hw/timer/m48t59.h b/include/hw/timer/m48t59.h
-index db5e43a8da..069bb045d7 100644
---- a/include/hw/timer/m48t59.h
-+++ b/include/hw/timer/m48t59.h
-@@ -25,6 +25,8 @@ typedef struct NvramClass {
-     void (*toggle_lock)(Nvram *obj, int lock);
- } NvramClass;
+diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/timer/mc146818rtc.h
+index 7c8e64b203..fe6ed63f71 100644
+--- a/include/hw/timer/mc146818rtc.h
++++ b/include/hw/timer/mc146818rtc.h
+@@ -6,7 +6,8 @@
  
-+#define TYPE_M48T59_ISA "isa-m48t59"
-+
- Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
-                        int base_year, int type);
- Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 16f4537093..1f8ef4819b 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -777,7 +777,7 @@ static void ibm_40p_init(MachineState *machine)
-     /* add some more devices */
-     if (defaults_enabled()) {
-         isa_create_simple(isa_bus, TYPE_I8042);
--        m48t59 = NVRAM(isa_create_simple(isa_bus, "isa-m48t59"));
-+        m48t59 = NVRAM(isa_create_simple(isa_bus, TYPE_M48T59_ISA));
+ #define TYPE_MC146818_RTC "mc146818rtc"
  
-         dev = DEVICE(isa_create(isa_bus, "cs4231a"));
-         qdev_prop_set_uint32(dev, "iobase", 0x830);
-diff --git a/hw/timer/m48t59-isa.c b/hw/timer/m48t59-isa.c
-index ea1ba703d7..077346f7ca 100644
---- a/hw/timer/m48t59-isa.c
-+++ b/hw/timer/m48t59-isa.c
-@@ -49,7 +49,7 @@ typedef struct M48txxISADeviceClass {
+-ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq);
++ISADevice *mc146818_rtc_init(ISABus *bus, int base_year,
++                             qemu_irq intercept_irq);
+ void rtc_set_memory(ISADevice *dev, int addr, int val);
+ int rtc_get_memory(ISADevice *dev, int addr);
  
- static M48txxInfo m48txx_isa_info[] = {
-     {
--        .bus_name = "isa-m48t59",
-+        .bus_name = TYPE_M48T59_ISA,
-         .model = 59,
-         .size = 0x2000,
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index 2253990654..df6dadf13f 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -80,7 +80,7 @@ static void clipper_init(MachineState *machine)
+                            clipper_pci_map_irq);
+ 
+     /* Since we have an SRM-compatible PALcode, use the SRM epoch.  */
+-    rtc_init(isa_bus, 1900, rtc_irq);
++    mc146818_rtc_init(isa_bus, 1900, rtc_irq);
+ 
+     i8254_pit_init(isa_bus, 0x40, 0, NULL);
+     isa_create_simple(isa_bus, TYPE_I8042);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 76d4be5991..788844e0de 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1545,7 +1545,7 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
+             rtc_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_RTC_INT);
+         }
      }
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a79723601c..3cb6bc190c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -708,6 +708,8 @@ F: hw/pci-host/prep.[hc]
- F: hw/isa/i82378.c
- F: hw/isa/pc87312.[hc]
- F: hw/dma/i82374.c
-+F: hw/timer/m48t59-isa.c
-+F: include/hw/timer/m48t59.h
- F: pc-bios/ppc_rom.bin
+-    *rtc_state = rtc_init(isa_bus, 2000, rtc_irq);
++    *rtc_state = mc146818_rtc_init(isa_bus, 2000, rtc_irq);
  
- sPAPR
+     qemu_register_boot_set(pc_boot_set, *rtc_state);
+ 
+diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
+index 7a8baef23c..14b006cadc 100644
+--- a/hw/isa/i82378.c
++++ b/hw/isa/i82378.c
+@@ -21,6 +21,7 @@
+ #include "hw/pci/pci.h"
+ #include "hw/i386/pc.h"
+ #include "hw/timer/i8254.h"
++#include "hw/timer/mc146818rtc.h"
+ #include "hw/audio/pcspk.h"
+ 
+ #define TYPE_I82378 "i82378"
+@@ -106,7 +107,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
+     isa = isa_create_simple(isabus, "i82374");
+ 
+     /* timer */
+-    isa_create_simple(isabus, "mc146818rtc");
++    isa_create_simple(isabus, TYPE_MC146818_RTC);
+ }
+ 
+ static void i82378_init(Object *obj)
+diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+index 6dc6a0ac18..7ebbffa8f2 100644
+--- a/hw/mips/mips_fulong2e.c
++++ b/hw/mips/mips_fulong2e.c
+@@ -371,7 +371,7 @@ static void mips_fulong2e_init(MachineState *machine)
+     /* Super I/O */
+     isa_create_simple(isa_bus, TYPE_I8042);
+ 
+-    rtc_init(isa_bus, 2000, NULL);
++    mc146818_rtc_init(isa_bus, 2000, NULL);
+ 
+     serial_hds_isa_init(isa_bus, 0, MAX_SERIAL_PORTS);
+     parallel_hds_isa_init(isa_bus, 1);
+diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+index 1b54602c1d..439bbd71fe 100644
+--- a/hw/mips/mips_jazz.c
++++ b/hw/mips/mips_jazz.c
+@@ -295,7 +295,7 @@ static void mips_jazz_init(MachineState *machine,
+     fdctrl_init_sysbus(qdev_get_gpio_in(rc4030, 1), -1, 0x80003000, fds);
+ 
+     /* Real time clock */
+-    rtc_init(isa_bus, 1980, NULL);
++    mc146818_rtc_init(isa_bus, 1980, NULL);
+     memory_region_init_io(rtc, NULL, &rtc_ops, NULL, "rtc", 0x1000);
+     memory_region_add_subregion(address_space, 0x80004000, rtc);
+ 
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index 050da36f1d..6945fa47c3 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -1225,7 +1225,7 @@ void mips_malta_init(MachineState *machine)
+     /* Super I/O */
+     isa_create_simple(isa_bus, TYPE_I8042);
+ 
+-    rtc_init(isa_bus, 2000, NULL);
++    mc146818_rtc_init(isa_bus, 2000, NULL);
+     serial_hds_isa_init(isa_bus, 0, 2);
+     parallel_hds_isa_init(isa_bus, 1);
+ 
+diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+index 946097a31f..349da59912 100644
+--- a/hw/mips/mips_r4k.c
++++ b/hw/mips/mips_r4k.c
+@@ -279,7 +279,7 @@ void mips_r4k_init(MachineState *machine)
+     i8259 = i8259_init(isa_bus, env->irq[2]);
+     isa_bus_irqs(isa_bus, i8259);
+ 
+-    rtc_init(isa_bus, 2000, NULL);
++    mc146818_rtc_init(isa_bus, 2000, NULL);
+ 
+     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
+ 
+diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+index 47221158d4..d188b899c5 100644
+--- a/hw/ppc/pnv.c
++++ b/hw/ppc/pnv.c
+@@ -647,7 +647,7 @@ static void ppc_powernv_init(MachineState *machine)
+     serial_hds_isa_init(pnv->isa_bus, 0, MAX_SERIAL_PORTS);
+ 
+     /* Create an RTC ISA device too */
+-    rtc_init(pnv->isa_bus, 2000, NULL);
++    mc146818_rtc_init(pnv->isa_bus, 2000, NULL);
+ 
+     /* OpenPOWER systems use a IPMI SEL Event message to notify the
+      * host to powerdown */
+diff --git a/hw/timer/mc146818rtc.c b/hw/timer/mc146818rtc.c
+index 82843ed03f..f7d8c4bae4 100644
+--- a/hw/timer/mc146818rtc.c
++++ b/hw/timer/mc146818rtc.c
+@@ -997,7 +997,7 @@ static void rtc_realizefn(DeviceState *dev, Error **errp)
+     qdev_init_gpio_out(dev, &s->irq, 1);
+ }
+ 
+-ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq)
++ISADevice *mc146818_rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq)
+ {
+     DeviceState *dev;
+     ISADevice *isadev;
 -- 
 2.14.1
 
