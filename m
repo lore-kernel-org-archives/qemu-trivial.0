@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQPQ-0006ne-D4
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52245)
+	id 1dvQPS-0006pn-KH
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52510)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPE-0006e5-IK
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:30 -0400
+	id 1dvQPO-0006lc-Mk
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQP7-0000I9-Gp
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:20 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:36751)
+	id 1dvQPL-0000XJ-GY
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:30 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33382)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQOo-0008Ua-0a; Fri, 22 Sep 2017 12:01:54 -0400
-Received: by mail-qk0-x242.google.com with SMTP id i14so908191qke.3;
-	Fri, 22 Sep 2017 09:01:53 -0700 (PDT)
+	id 1dvQP3-0000DP-8S; Fri, 22 Sep 2017 12:02:09 -0400
+Received: by mail-qt0-x242.google.com with SMTP id b1so930600qtc.0;
+	Fri, 22 Sep 2017 09:02:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=wB9cQWZ63jBoxAPIWOrQ2/o89ItltycECfcVfEDTyjQ=;
-	b=lhldpALcRSql0uZYm52aXhsWNTvMsD+W6ubYEFrDV6+bdw3wPR2vtvt39jkUstDHDW
-	giRGamRumbLO2su4tvlsKcXZ45PQX/IRGpR9IW3e0fIpEQiXKKJwRtVfleFZtWMAf45a
-	tI0sC1pgMA09BqS3XsmgWovxAq8j9Xnr6Eum1Yu6PenAx/ZJaO/LHFAUYmCHvytk6pDz
-	yXQJIWr/0eDJfVQqaaBuDxX+DrabsIm9VmuexbyIn6eE+DUKwTLxLQnpycN7qLps506G
-	SGOw0x6YYGJYlRdV4okmI6RjbbPW2i3n3tiLzHSFMwMn678+xQSsbpTkgCB65x2QQlyj
-	RfvA==
+	bh=a6h2NXEXKYQkP/pFrbML8x3vzg+ev/dvgMIczgNPBLg=;
+	b=SXC6poPBdhNIWfw7/aaJXiVBe0EABun0rnOvD9EyY2lWf/CLEfOArQTtDxHEOFGJ3d
+	h12uM0dq/j6E7bBK1TOvRrQBid1htN/AlqF4ouZ6laHTkJGD9al1VFl8KtzcjEBWozpW
+	O6P6bIFNnrjBP4s3Vb7OCdnG+nrpVNIqUCLWIaZH+ApwoXH7WpsLu3M/0tO7nrC/gkLQ
+	uGwZ6UCmh/4f3xdKCfib9kiQ27eyEQ715+UPIOUN0Gw/U26ZkmIrBe1nk7LnM/iKKFav
+	7YnwpZD1Q5fFf3v6PGRn6wUOxRbNWvF6mdVU7TXX8X7i2mJHsQxqgNHLG5wyDz3rUbdy
+	OS3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=wB9cQWZ63jBoxAPIWOrQ2/o89ItltycECfcVfEDTyjQ=;
-	b=f4l7lfd1ZLEFKHWE9c6Sh95eSGLQ9lFcYpy+BHCoTwtZ8zoVZbNUuBjRhUJ304RG7g
-	jfpDQUzODwHbQwpPsJ4Fgknsqs/zFM0SjqiOpAfdqkeg0+IhU/4oq9O887jC/PtD08JD
-	ImDY2u0O5UjkhVZyCYHm6TdW8qnygPc+OR+kqpADV4GsYd+2jPpDxrFg0MixodpSEU4U
-	f982CZPUE3zkc0nnEszO8abft+sgvbnb2bPIp78Fl6B+nRk3oguudiS+wWB4kf5u8crI
-	yfKvQsTXp9e+P5z9JRuA8XIu3es5KFD3TF/MdL0QvIXJmHb0NU+XVRKSoXh4B6RrTDSo
-	zoBg==
-X-Gm-Message-State: AHPjjUie9uxoI5gZ3NP9JZSfFzggtZ+kGOsjlwvfOI/YJTZWzKA49Utw
-	NDTRwH0/esUMfKF36Br7hic=
-X-Google-Smtp-Source: AOwi7QBXhTISXJx2mHKlC8twiPktg6QBjr5KgqPlAeHQ4CRPKKuDQpwS1hd9VoWF4NjX8aGuSQ3ggg==
-X-Received: by 10.55.54.12 with SMTP id d12mr7884240qka.20.1506096113283;
-	Fri, 22 Sep 2017 09:01:53 -0700 (PDT)
+	bh=a6h2NXEXKYQkP/pFrbML8x3vzg+ev/dvgMIczgNPBLg=;
+	b=CQOzIgjIiTUNZB4HCSf/ck9AVJfejlFgLQpAI+thFGrHmbC5OjIwwxf+EajAPln9A8
+	rHAmbzNtfWBqDEcA78Gw5IvVRU/DwLtcP9UIOn/bPCjgSBbAlXEAo5MCuGAvFc/tBkwa
+	HMEUFub9lS5W1y1ah29EB6GogtM4/FuU/8IHndm9TaICAZIVXiZSl8wuweKUxepVAJDF
+	uEO1vBcL2Vqj2IQDXPAOqASoy9vyG2YQTXRIaHu4k5cxyUY1NufRFD1ji66Xc838lKky
+	PhdPeKFiDbBRWCzV8s/rD0g7josoDmH9brr9OwCQn4HzrUUWpMqzbqvoIiAKVeB35ksP
+	QS6Q==
+X-Gm-Message-State: AHPjjUi7aOocHzur8fDFdZJxHmR3k8LYZ3ZXiEUc6pkZYL7UJyFQDzFq
+	Q3CI5Q3wHZI130VyWVqXFc8=
+X-Google-Smtp-Source: AOwi7QDwlEabJI6QFXq7PFcMgm5oC4jYl45dtOyhlX4FTHZurprHyoEOUqiBYoUo/QsKtGpK/sjyKQ==
+X-Received: by 10.200.17.131 with SMTP id d3mr8428365qtj.329.1506096128611;
+	Fri, 22 Sep 2017 09:02:08 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.01.48
+	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.02.04
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Sep 2017 09:01:52 -0700 (PDT)
+	Fri, 22 Sep 2017 09:02:07 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -53,14 +53,12 @@ To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
 	Marcel Apfelbaum <marcel@redhat.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, Alexander Graf <agraf@suse.de>,
-	David Gibson <david@gibson.dropbear.id.au>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Magnus Damm <magnus.damm@gmail.com>,
 	Jason Wang <jasowang@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Fri, 22 Sep 2017 13:01:04 -0300
-Message-Id: <20170922160111.31885-5-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Sep 2017 13:01:08 -0300
+Message-Id: <20170922160111.31885-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170922154014.29350-1-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
@@ -69,9 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH 27/34] hw/pci: declare pci_nic_init_nofail()
- in "hw/net/pci.h"
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 31/34] hw/net/rtl8139: use TYPE_PCI_RTL8139
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,328 +80,149 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 16:02:30 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 16:02:32 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci/pci_internal.h | 16 +++++++++++
- include/hw/net/pci.h  | 20 +++++++++++++
- include/hw/pci/pci.h  |  4 ---
- hw/arm/virt.c         |  1 +
- hw/mips/mips_malta.c  |  1 +
- hw/pci/pci.c          | 67 ++------------------------------------------
- hw/pci/pci_nic.c      | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++
- hw/ppc/e500.c         |  1 +
- hw/ppc/spapr.c        |  1 +
- hw/pci/Makefile.objs  |  1 +
- 10 files changed, 120 insertions(+), 69 deletions(-)
- create mode 100644 hw/pci/pci_internal.h
- create mode 100644 include/hw/net/pci.h
- create mode 100644 hw/pci/pci_nic.c
+ include/hw/net/pci.h    | 1 +
+ hw/arm/realview.c       | 3 ++-
+ hw/arm/versatilepb.c    | 3 ++-
+ hw/mips/mips_fulong2e.c | 3 ++-
+ hw/net/rtl8139.c        | 7 +++----
+ hw/sh4/r2d.c            | 5 +++--
+ 6 files changed, 13 insertions(+), 9 deletions(-)
 
-diff --git a/hw/pci/pci_internal.h b/hw/pci/pci_internal.h
-new file mode 100644
-index 0000000000..d967468767
---- /dev/null
-+++ b/hw/pci/pci_internal.h
-@@ -0,0 +1,16 @@
-+/*
-+ * QEMU PCI internal
-+ *
-+ * Copyright (c) 2005 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef QEMU_HW_PCI_INTERNAL_H
-+#define QEMU_HW_PCI_INTERNAL_H
-+
-+#include "hw/pci/pci_bus.h"
-+
-+PCIBus *pci_get_bus_devfn(int *devfnp, PCIBus *root, const char *devaddr);
-+
-+#endif
 diff --git a/include/hw/net/pci.h b/include/hw/net/pci.h
-new file mode 100644
-index 0000000000..529591b7f3
---- /dev/null
+index 5ad5487a91..43ed3b0145 100644
+--- a/include/hw/net/pci.h
 +++ b/include/hw/net/pci.h
-@@ -0,0 +1,20 @@
-+/*
-+ * QEMU network devices
-+ *
-+ * Copyright (c) 2005 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef QEMU_HW_NET_PCI_H
-+#define QEMU_HW_NET_PCI_H
-+
-+#include "net/net.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pci_bus.h"
-+
-+PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-+                               const char *default_model,
-+                               const char *default_devaddr);
-+
-+#endif
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index aa7ef9cf69..6a0f7b5472 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -422,10 +422,6 @@ void pci_device_set_intx_routing_notifier(PCIDevice *dev,
-                                           PCIINTxRoutingNotifier notifier);
- void pci_device_reset(PCIDevice *dev);
+@@ -16,6 +16,7 @@
+ #define TYPE_PCI_E1000      "e1000"
+ #define TYPE_PCI_E1000E     "e1000e"
+ #define TYPE_PCI_PCNET      "pcnet"
++#define TYPE_PCI_RTL8139    "rtl8139"
  
--PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
--                               const char *default_model,
--                               const char *default_devaddr);
--
- PCIDevice *pci_vga_init(PCIBus *bus);
- 
- int pci_bus_num(PCIBus *s);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9e18b410d7..39fab3acb9 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -35,6 +35,7 @@
- #include "hw/arm/primecell.h"
- #include "hw/arm/virt.h"
- #include "hw/devices.h"
+ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
+                                const char *default_model,
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 87cd1e583c..35f0da28e4 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -20,6 +20,7 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+ #include "hw/i2c/i2c.h"
 +#include "hw/net/pci.h"
- #include "net/net.h"
  #include "sysemu/block-backend.h"
- #include "sysemu/device_tree.h"
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 6945fa47c3..fb6a2f9363 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -48,6 +48,7 @@
+ #include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+@@ -269,7 +270,7 @@ static void realview_init(MachineState *machine,
+             done_nic = 1;
+         } else {
+             if (pci_bus) {
+-                pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
++                pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, NULL);
+             }
+         }
+     }
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 418792cd02..297aad78e1 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -18,6 +18,7 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/pci/pci.h"
+ #include "hw/i2c/i2c.h"
++#include "hw/net/pci.h"
+ #include "hw/boards.h"
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+@@ -271,7 +272,7 @@ static void versatile_init(MachineState *machine, int board_id)
+             smc91c111_init(nd, 0x10010000, sic[25]);
+             done_smc = 1;
+         } else {
+-            pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
++            pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, NULL);
+         }
+     }
+     if (machine_usb(machine)) {
+diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+index 7ebbffa8f2..fe618953c9 100644
+--- a/hw/mips/mips_fulong2e.c
++++ b/hw/mips/mips_fulong2e.c
+@@ -44,6 +44,7 @@
  #include "hw/timer/mc146818rtc.h"
- #include "hw/input/i8042.h"
  #include "hw/timer/i8254.h"
+ #include "hw/input/i8042.h"
 +#include "hw/net/pci.h"
  #include "sysemu/blockdev.h"
  #include "exec/address-spaces.h"
- #include "hw/sysbus.h"             /* SysBusDevice */
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 1e6fb88eba..9b678c8fd0 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -28,7 +28,6 @@
- #include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_host.h"
- #include "monitor/monitor.h"
--#include "net/net.h"
- #include "sysemu/sysemu.h"
+ #include "sysemu/qtest.h"
+@@ -253,7 +254,7 @@ static void network_init (PCIBus *pci_bus)
+             default_devaddr = "07";
+         }
+ 
+-        pci_nic_init_nofail(nd, pci_bus, "rtl8139", default_devaddr);
++        pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, default_devaddr);
+     }
+ }
+ 
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 3be24bbee7..0f952eceba 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -59,6 +59,7 @@
+ #include "net/net.h"
+ #include "net/eth.h"
  #include "hw/loader.h"
- #include "qemu/error-report.h"
-@@ -41,6 +40,7 @@
- #include "hw/hotplug.h"
- #include "hw/boards.h"
- #include "qemu/cutils.h"
-+#include "pci_internal.h"
- 
- //#define DEBUG_PCI
- #ifdef DEBUG_PCI
-@@ -671,8 +671,7 @@ static int pci_parse_devaddr(const char *addr, int *domp, int *busp,
-     return 0;
- }
- 
--static PCIBus *pci_get_bus_devfn(int *devfnp, PCIBus *root,
--                                 const char *devaddr)
-+PCIBus *pci_get_bus_devfn(int *devfnp, PCIBus *root, const char *devaddr)
- {
-     int dom, bus;
-     unsigned slot;
-@@ -1812,68 +1811,6 @@ PciInfoList *qmp_query_pci(Error **errp)
-     return head;
- }
- 
--static const char * const pci_nic_models[] = {
--    "ne2k_pci",
--    "i82551",
--    "i82557b",
--    "i82559er",
--    "rtl8139",
--    "e1000",
--    "pcnet",
--    "virtio",
--    "sungem",
--    NULL
--};
--
--static const char * const pci_nic_names[] = {
--    "ne2k_pci",
--    "i82551",
--    "i82557b",
--    "i82559er",
--    "rtl8139",
--    "e1000",
--    "pcnet",
--    "virtio-net-pci",
--    "sungem",
--    NULL
--};
--
--/* Initialize a PCI NIC.  */
--PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
--                               const char *default_model,
--                               const char *default_devaddr)
--{
--    const char *devaddr = nd->devaddr ? nd->devaddr : default_devaddr;
--    PCIBus *bus;
--    PCIDevice *pci_dev;
--    DeviceState *dev;
--    int devfn;
--    int i;
--
--    if (qemu_show_nic_models(nd->model, pci_nic_models)) {
--        exit(0);
--    }
--
--    i = qemu_find_nic_model(nd, pci_nic_models, default_model);
--    if (i < 0) {
--        exit(1);
--    }
--
--    bus = pci_get_bus_devfn(&devfn, rootbus, devaddr);
--    if (!bus) {
--        error_report("Invalid PCI device address %s for device %s",
--                     devaddr, pci_nic_names[i]);
--        exit(1);
--    }
--
--    pci_dev = pci_create(bus, devfn, pci_nic_names[i]);
--    dev = &pci_dev->qdev;
--    qdev_set_nic_properties(dev, nd);
--    qdev_init_nofail(dev);
--
--    return pci_dev;
--}
--
- PCIDevice *pci_vga_init(PCIBus *bus)
- {
-     switch (vga_interface_type) {
-diff --git a/hw/pci/pci_nic.c b/hw/pci/pci_nic.c
-new file mode 100644
-index 0000000000..fb1a10ff12
---- /dev/null
-+++ b/hw/pci/pci_nic.c
-@@ -0,0 +1,77 @@
-+/*
-+ * QEMU PCI network interface
-+ *
-+ * Copyright (c) 2004 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pci_bus.h"
 +#include "hw/net/pci.h"
-+#include "net/net.h"
-+#include "pci_internal.h"
-+
-+static const char *const pci_nic_models[] = {
-+    "ne2k_pci",
-+    "i82551",
-+    "i82557b",
-+    "i82559er",
-+    "rtl8139",
-+    "e1000",
-+    "pcnet",
-+    "virtio",
-+    "sungem",
-+    NULL
-+};
-+
-+static const char *const pci_nic_names[] = {
-+    "ne2k_pci",
-+    "i82551",
-+    "i82557b",
-+    "i82559er",
-+    "rtl8139",
-+    "e1000",
-+    "pcnet",
-+    "virtio-net-pci",
-+    "sungem",
-+    NULL
-+};
-+
-+/* Initialize a PCI NIC.  */
-+PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-+                               const char *default_model,
-+                               const char *default_devaddr)
-+{
-+    const char *devaddr = nd->devaddr ? nd->devaddr : default_devaddr;
-+    PCIBus *bus;
-+    PCIDevice *pci_dev;
-+    DeviceState *dev;
-+    int devfn;
-+    int i;
-+
-+    if (qemu_show_nic_models(nd->model, pci_nic_models)) {
-+        exit(0);
-+    }
-+
-+    i = qemu_find_nic_model(nd, pci_nic_models, default_model);
-+    if (i < 0) {
-+        exit(1);
-+    }
-+
-+    bus = pci_get_bus_devfn(&devfn, rootbus, devaddr);
-+    if (!bus) {
-+        error_report("Invalid PCI device address %s for device %s",
-+                     devaddr, pci_nic_names[i]);
-+        exit(1);
-+    }
-+
-+    pci_dev = pci_create(bus, devfn, pci_nic_names[i]);
-+    dev = &pci_dev->qdev;
-+    qdev_set_nic_properties(dev, nd);
-+    qdev_init_nofail(dev);
-+
-+    return pci_dev;
-+}
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index db0e49ab8f..482757ca7b 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -24,6 +24,7 @@
- #include "hw/hw.h"
- #include "hw/char/serial.h"
- #include "hw/pci/pci.h"
-+#include "hw/net/pci.h"
- #include "hw/boards.h"
  #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 17ea77618c..96007051e2 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -56,6 +56,7 @@
- #include "hw/pci-host/spapr.h"
- #include "hw/ppc/xics.h"
- #include "hw/pci/msi.h"
-+#include "hw/net/pci.h"
+ #include "qemu/iov.h"
  
- #include "hw/pci/pci.h"
- #include "hw/scsi/scsi.h"
-diff --git a/hw/pci/Makefile.objs b/hw/pci/Makefile.objs
-index 9f905e6344..125428fd54 100644
---- a/hw/pci/Makefile.objs
-+++ b/hw/pci/Makefile.objs
-@@ -1,4 +1,5 @@
- common-obj-$(CONFIG_PCI) += pci.o pci_bridge.o
-+common-obj-$(CONFIG_PCI) += pci_nic.o
- common-obj-$(CONFIG_PCI) += msix.o msi.o
- common-obj-$(CONFIG_PCI) += shpc.o
- common-obj-$(CONFIG_PCI) += slotid_cap.o
+@@ -90,10 +91,8 @@ static inline GCC_FMT_ATTR(1, 2) int DPRINTF(const char *fmt, ...)
+ }
+ #endif
+ 
+-#define TYPE_RTL8139 "rtl8139"
+-
+ #define RTL8139(obj) \
+-     OBJECT_CHECK(RTL8139State, (obj), TYPE_RTL8139)
++     OBJECT_CHECK(RTL8139State, (obj), TYPE_PCI_RTL8139)
+ 
+ /* Symbolic offsets to registers. */
+ enum RTL8139_registers {
+@@ -3437,7 +3436,7 @@ static void rtl8139_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo rtl8139_info = {
+-    .name          = TYPE_RTL8139,
++    .name          = TYPE_PCI_RTL8139,
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(RTL8139State),
+     .class_init    = rtl8139_class_init,
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 16b9ed2db2..dde60b2bc2 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -39,6 +39,7 @@
+ #include "hw/ide.h"
+ #include "hw/loader.h"
+ #include "hw/usb.h"
++#include "hw/net/pci.h"
+ #include "hw/block/flash.h"
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+@@ -303,8 +304,8 @@ static void r2d_init(MachineState *machine)
+ 
+     /* NIC: rtl8139 on-board, and 2 slots. */
+     for (i = 0; i < nb_nics; i++)
+-        pci_nic_init_nofail(&nd_table[i], pci_bus,
+-                            "rtl8139", i==0 ? "2" : NULL);
++        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_RTL8139,
++                            i == 0 ? "2" : NULL);
+ 
+     /* USB keyboard */
+     usb_create_simple(usb_bus_find(-1), "usb-kbd");
 -- 
 2.14.1
 
