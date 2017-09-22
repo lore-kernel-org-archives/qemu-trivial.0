@@ -1,52 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvGLH-0002YK-Ke
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 01:17:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41123)
+	id 1dvQ4E-0004Br-08
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 11:40:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1dvGLE-0002Wc-Ru
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 01:17:33 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvQ4B-00049G-Bd
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 11:40:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1dvGLE-0006Im-0l
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 01:17:32 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:38886
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
-	id 1dvGL9-0006Dw-DM; Fri, 22 Sep 2017 01:17:27 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id C82F9DA5CC9;
-	Fri, 22 Sep 2017 07:17:25 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id DG9Elrv9OqhO; Fri, 22 Sep 2017 07:17:25 +0200 (CEST)
-Received: from edv32.bib.uni-mannheim.de (pD9E01F8D.dip0.t-ipconnect.de
-	[217.224.31.141])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 1D810DA5B82; 
-	Fri, 22 Sep 2017 07:17:25 +0200 (CEST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Cc: Jason Wang <jasowang@redhat.com>, Victor Kaplansky <victork@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1506049617-25716-1-git-send-email-thuth@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Message-ID: <260e3fea-6fc3-4d6c-a6b7-5fd2fd73eb42@weilnetz.de>
-Date: Fri, 22 Sep 2017 07:17:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvQ49-0002me-TR
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 11:40:35 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:56514)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvQ44-0002ga-Of; Fri, 22 Sep 2017 11:40:28 -0400
+Received: by mail-qt0-x232.google.com with SMTP id l25so1439172qtf.13;
+	Fri, 22 Sep 2017 08:40:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=lAGsBVkyGdIot4Mzc2AcTeV67iQxj//iVw0D++JLSqQ=;
+	b=C5IibXMC+U/CaJpT5xZV15zrvONzMk+RTkcix9HOevjFcIgjbsvd30RZmJuiy514Yj
+	RZXauOrN+va9tnRhJ2LmWBvuwr2ywkDIZ9RsMQU0DFHKOEewyfAmC+fzVJvdl57MIBqc
+	TPuNyZECd45mnjoSk48kzmnir7VLaJACD7A+Lrh4G2b6ZVVsxh+zYMdwzDPHlXOOqNdf
+	Llbsbq1UPEEE6EwcxH+AnjvEQfACWFq+rZ5R/70S/x/qB2QAcE5kKScmzCM8fsf6tbjw
+	PkR4dLbzagE74TitA9N0semxA5qERW1uCMGEhOeUxK5rO2vIuJjNtiX7CrFvljzYKt6M
+	d3Jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=lAGsBVkyGdIot4Mzc2AcTeV67iQxj//iVw0D++JLSqQ=;
+	b=eidoptZleqkvGoniNA16d7CYLZPWqFvgac8lNcEuvBeG/8puwJf3wfxL6eRU+Nixpo
+	l62ug0r5EbvswG/iXqDcpbkpHwWoJ+yZXrZ5OS7LGN9Cea2JhyGFXtjGHZwf3Q8ZTt/q
+	+11AIAfJ3lTdJY4KVixXuT44Is7MWXYO4ez1GIPsiUzMPbeEQONGlvQOuwb7WTgtMvgz
+	0BDC++FyBoqafniqFyOupM3yKyj7qtolGVFzDvMupMbEfJR/9cBKTPlMgqg9ry3IXFzI
+	lkK8EKb+deT2RO8qDDYZSKtlSINrcrneDrGBXLDqVpMnVA5/m4l3qmDWZfsh0h8jqR11
+	LCmw==
+X-Gm-Message-State: AHPjjUhxYmnVvanjXctSwdfNw3J26ciYXePAmWYicM4wUuDw1ziZ995Z
+	d64w0viOL2S4Rr+eMjgHvUI=
+X-Google-Smtp-Source: AOwi7QAZIhXkeUco479dwp7KcTT28nHnqPNazK16DTDJrc632BOJTkSBjLY7FO1bLK/4EKzXnIBknw==
+X-Received: by 10.200.6.144 with SMTP id f16mr8619524qth.32.1506094827990;
+	Fri, 22 Sep 2017 08:40:27 -0700 (PDT)
+Received: from yoga.lan ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id z75sm71742qkb.71.2017.09.22.08.40.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Sep 2017 08:40:27 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Sep 2017 12:39:40 -0300
+Message-Id: <20170922154014.29350-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.14.1
 MIME-Version: 1.0
-In-Reply-To: <1506049617-25716-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: de-DE
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 37.120.169.71
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/boot-sector: Increase
- timeout to 600 seconds
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: [Qemu-trivial] [PATCH 00/34] remove i386/pc dependency from non-PC
+ world (part 1)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,44 +80,211 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 05:17:34 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 15:40:37 -0000
 
-Am 22.09.2017 um 05:06 schrieb Thomas Huth:
-> If QEMU has been compiled with the flags --enable-tcg-interpreter and
-> --enable-debug, the guest is running incredibly slow. The pxe boot test
-> can take up to 400 seconds when testing the pseries ppc64 machine. While
-> we should still look for ways to speed up the test on the pseries machine,
-> it's better to increase the timeout in this test to 600 seconds anyway to
-> allow the test to pass successfully now with this unusal configuration
-> already.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/boot-sector.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tests/boot-sector.c b/tests/boot-sector.c
-> index 9ee8537..be29d5b 100644
-> --- a/tests/boot-sector.c
-> +++ b/tests/boot-sector.c
-> @@ -137,9 +137,9 @@ void boot_sector_test(void)
->      uint16_t signature;
->      int i;
->  
-> -    /* Wait at most 90 seconds */
-> +    /* Wait at most 600 seconds (test is slow with TCI and --enable-debug) */
->  #define TEST_DELAY (1 * G_USEC_PER_SEC / 10)
-> -#define TEST_CYCLES MAX((90 * G_USEC_PER_SEC / TEST_DELAY), 1)
-> +#define TEST_CYCLES MAX((600 * G_USEC_PER_SEC / TEST_DELAY), 1)
->  
->      /* Poll until code has run and modified memory.  Once it has we know BIOS
->       * initialization is done.  TODO: check that IP reached the halt
-> 
+Hi,
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+quite a bunch of patches and files modified, but the diffstat is not that big.
 
-cc'ing qemu-trivial
+First part is from clean-includes script,
+Then comes code movement, about no logical changes.
 
-Thanks,
-Stefan
+Now some non-x86 builds and cocci spatch run a bit faster :)
+
+I updated some MAINTAINERS entries while here.
+
+Also I couldn't test the KVM/XEN/HAX part.
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (34):
+  hw: use "qemu/osdep.h" as first #include in source files
+  hw: remove "qemu/osdep.h" from header files
+  block: remove "qemu/osdep.h" from header file
+  misc: remove headers implicitly included
+  misc: remove duplicated includes
+  ppc: remove duplicated includes
+  i386/hax: remove duplicated includes
+  nios2: remove duplicated includes
+  misc: avoid "include/" in include path
+  amd_iommu: avoid needless includes in header file
+  i386/pc: use TYPE_PORT92
+  misc: remove old i386 dependency
+  hw/ide: remove old i386 dependency
+  hw/ipmi: remove old i386 dependency
+  hw/i2c: remove old i386 dependency
+  hw/tpm: remove old i386 dependency
+  hw/virtio-balloon: remove old i386 dependency
+  hw/unicore32: restrict hw addr defines to source file
+  hw/acpi: ACPI_PM_* defines are not restricted to i386 arch
+  hw/timer/i8254: rename pit_init() -> i8254_pit_init()
+  hw/display/vga: remove the old i386/pc dependency
+  hw/input/i8042: extract API from hw/i386/pc.h
+  hw/dma/i8257: rename DMA_init() to i8257_dma_init()
+  hw/timer/mc146818: rename rtc_init() -> mc146818_init()
+  hw/timer/m48t59: use TYPE_M48T59_ISA, add entries to MAINTAINERS
+  hw/net/ne2000: extract ne2k-isa code from i386/pc to ne2000-isa.c
+  hw/pci: declare pci_nic_init_nofail() in "hw/net/pci.h"
+  hw/net/e1000: use TYPE_PCI_E1000
+  hw/net/e1000e: use TYPE_PCI_E1000E
+  hw/net/pcnet: use TYPE_PCI_PCNET
+  hw/net/rtl8139: use TYPE_PCI_RTL8139
+  hw/net/ne2000: use TYPE_PCI_NE2000
+  hw/alpha: remove old i386 dependency
+  misc: drop old i386 dependency
+
+ block/dmg.h                                 |  1 -
+ hw/alpha/alpha_sys.h                        |  2 -
+ hw/audio/fmopl.h                            |  1 -
+ hw/display/vga_int.h                        |  3 +-
+ hw/display/{vga.h => vga_int_regs.h}        |  0
+ hw/i386/amd_iommu.h                         |  5 --
+ hw/net/ne2000.h                             |  3 ++
+ hw/pci/pci_internal.h                       | 16 ++++++
+ include/hw/acpi/acpi.h                      | 12 +++++
+ include/hw/acpi/ipmi.h                      |  1 -
+ include/hw/cpu/core.h                       |  1 -
+ include/hw/display/vga.h                    | 25 ++++++++++
+ include/hw/{isa/i8257.h => dma/i8257_dma.h} |  6 +++
+ include/hw/i2c/ppc4xx_i2c.h                 |  1 -
+ include/hw/i386/pc.h                        | 56 ---------------------
+ include/hw/input/i8042.h                    | 30 +++++++++++
+ include/hw/isa/isa.h                        |  2 -
+ include/hw/net/ne2000-isa.h                 | 33 +++++++++++++
+ include/hw/net/pci.h                        | 26 ++++++++++
+ include/hw/pci/pci.h                        |  4 --
+ include/hw/timer/i8254.h                    |  5 +-
+ include/hw/timer/i8254_internal.h           |  2 +-
+ include/hw/timer/m48t59.h                   |  2 +
+ include/hw/timer/mc146818rtc.h              |  3 +-
+ include/hw/unicore32/puv3.h                 | 10 ----
+ include/sysemu/hax.h                        |  1 -
+ target/i386/hax-darwin.h                    |  3 --
+ target/i386/hax-windows.h                   |  2 -
+ target/nios2/cpu.h                          |  1 -
+ accel/tcg/translate-all.c                   |  1 -
+ bsd-user/main.c                             |  1 -
+ chardev/wctablet.c                          |  4 --
+ disas/nios2.c                               |  3 --
+ exec.c                                      |  3 --
+ hw/acpi/ipmi-stub.c                         |  1 +
+ hw/alpha/dp264.c                            | 10 ++--
+ hw/alpha/pci.c                              |  2 +
+ hw/alpha/typhoon.c                          |  2 +-
+ hw/arm/realview.c                           |  3 +-
+ hw/arm/spitz.c                              |  1 -
+ hw/arm/versatilepb.c                        |  3 +-
+ hw/arm/virt.c                               |  1 +
+ hw/audio/fmopl.c                            |  1 -
+ hw/audio/pcspk.c                            |  1 -
+ hw/char/debugcon.c                          |  1 -
+ hw/char/xen_console.c                       |  1 -
+ hw/core/machine.c                           |  1 -
+ hw/cpu/core.c                               |  1 +
+ hw/display/vga-isa-mm.c                     |  4 +-
+ hw/display/vga-isa.c                        |  2 +-
+ hw/display/vga.c                            |  4 +-
+ hw/dma/i82374.c                             |  3 +-
+ hw/dma/i8257.c                              |  4 +-
+ hw/i2c/pm_smbus.c                           |  1 -
+ hw/i2c/smbus_ich9.c                         |  1 -
+ hw/i386/amd_iommu.c                         |  5 +-
+ hw/i386/kvm/pci-assign.c                    |  1 -
+ hw/i386/pc.c                                | 18 ++++---
+ hw/i386/pci-assign-load-rom.c               |  1 -
+ hw/i386/xen/xen_platform.c                  |  1 -
+ hw/ide/ahci.c                               |  1 -
+ hw/ide/cmd646.c                             |  1 -
+ hw/ide/core.c                               |  3 +-
+ hw/ide/ich.c                                |  1 -
+ hw/ide/isa.c                                |  1 -
+ hw/ide/microdrive.c                         |  1 -
+ hw/ide/pci.c                                |  1 -
+ hw/ide/piix.c                               |  2 +-
+ hw/ide/via.c                                |  1 -
+ hw/input/adb.c                              |  2 +-
+ hw/input/pckbd.c                            |  2 +-
+ hw/input/vmmouse.c                          |  3 +-
+ hw/intc/lm32_pic.c                          |  1 -
+ hw/ipmi/isa_ipmi_bt.c                       |  1 -
+ hw/ipmi/isa_ipmi_kcs.c                      |  1 -
+ hw/isa/i82378.c                             |  5 +-
+ hw/isa/vt82c686.c                           |  1 -
+ hw/mips/mips_fulong2e.c                     | 13 +++--
+ hw/mips/mips_jazz.c                         |  9 ++--
+ hw/mips/mips_malta.c                        | 13 +++--
+ hw/mips/mips_r4k.c                          |  8 +--
+ hw/misc/ivshmem.c                           |  1 -
+ hw/misc/sga.c                               |  1 -
+ hw/misc/vmport.c                            |  1 +
+ hw/moxie/moxiesim.c                         |  1 -
+ hw/net/e1000e.c                             |  6 +--
+ hw/net/ne2000-isa.c                         |  6 +--
+ hw/net/ne2000.c                             |  5 +-
+ hw/net/pcnet-pci.c                          |  3 +-
+ hw/net/rtl8139.c                            |  7 ++-
+ hw/nios2/boot.c                             |  1 -
+ hw/pci-bridge/pci_expander_bridge.c         |  1 -
+ hw/pci/pci.c                                | 67 +------------------------
+ hw/pci/pci_nic.c                            | 77 +++++++++++++++++++++++++++++
+ hw/ppc/e500.c                               |  1 +
+ hw/ppc/mac_newworld.c                       |  3 +-
+ hw/ppc/mac_oldworld.c                       |  3 +-
+ hw/ppc/pnv.c                                |  2 +-
+ hw/ppc/ppc440_bamboo.c                      |  3 +-
+ hw/ppc/prep.c                               | 13 +++--
+ hw/ppc/spapr.c                              |  1 +
+ hw/ppc/spapr_cpu_core.c                     |  1 +
+ hw/ppc/spapr_hcall.c                        |  1 -
+ hw/s390x/css.c                              |  1 -
+ hw/scsi/vhost-user-scsi.c                   |  1 -
+ hw/sh4/r2d.c                                |  5 +-
+ hw/smbios/smbios_type_38-stub.c             |  1 +
+ hw/sparc/sun4m.c                            |  5 --
+ hw/sparc64/sun4u.c                          | 10 ++--
+ hw/ssi/aspeed_smc.c                         |  3 +-
+ hw/timer/i8254.c                            |  1 -
+ hw/timer/i8254_common.c                     |  1 -
+ hw/timer/m48t59-isa.c                       |  2 +-
+ hw/timer/mc146818rtc.c                      |  2 +-
+ hw/tpm/tpm_passthrough.c                    |  1 -
+ hw/tpm/tpm_tis.c                            |  1 -
+ hw/unicore32/puv3.c                         | 17 ++++---
+ hw/vfio/ccw.c                               |  2 +-
+ hw/virtio/vhost-vsock.c                     |  2 +-
+ hw/virtio/virtio-balloon.c                  |  2 +-
+ hw/watchdog/wdt_ib700.c                     |  1 -
+ linux-user/main.c                           |  1 -
+ monitor.c                                   |  1 -
+ net/colo-compare.c                          |  1 -
+ numa.c                                      |  1 -
+ target/i386/hax-darwin.c                    |  8 +--
+ target/nios2/helper.c                       |  7 +--
+ target/nios2/op_helper.c                    |  1 +
+ target/nios2/translate.c                    |  1 +
+ target/openrisc/exception_helper.c          |  1 -
+ target/ppc/kvm.c                            |  3 --
+ tests/test-aio-multithread.c                |  1 -
+ tests/test-clone-visitor.c                  |  1 -
+ tests/vhost-user-test.c                     |  1 -
+ tests/vmgenid-test.c                        |  3 --
+ util/qemu-sockets.c                         |  1 -
+ vl.c                                        |  3 +-
+ hw/pci/Makefile.objs                        |  1 +
+ MAINTAINERS                                 | 13 ++++-
+ 139 files changed, 389 insertions(+), 337 deletions(-)
+ rename hw/display/{vga.h => vga_int_regs.h} (100%)
+ create mode 100644 hw/pci/pci_internal.h
+ create mode 100644 include/hw/display/vga.h
+ rename include/hw/{isa/i8257.h => dma/i8257_dma.h} (86%)
+ create mode 100644 include/hw/input/i8042.h
+ create mode 100644 include/hw/net/ne2000-isa.h
+ create mode 100644 include/hw/net/pci.h
+ create mode 100644 hw/pci/pci_nic.c
+
+-- 
+2.14.1
+
 
