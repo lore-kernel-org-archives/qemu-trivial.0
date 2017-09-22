@@ -1,63 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQ5O-0005Pv-BS
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 11:41:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41977)
+	id 1dvQOq-0006F7-IB
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:01:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51659)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQ5I-0005KX-VD
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 11:41:48 -0400
+	id 1dvQOm-0006CH-8J
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQ5F-0003ak-Rl
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 11:41:44 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38701)
+	id 1dvQOk-0008T2-Pm
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:01:52 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34818)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQ5C-0003YB-L4; Fri, 22 Sep 2017 11:41:38 -0400
-Received: by mail-qt0-x241.google.com with SMTP id o3so882433qte.5;
-	Fri, 22 Sep 2017 08:41:38 -0700 (PDT)
+	id 1dvQOY-0008L7-As; Fri, 22 Sep 2017 12:01:38 -0400
+Received: by mail-qk0-x242.google.com with SMTP id o77so906268qke.2;
+	Fri, 22 Sep 2017 09:01:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=WnfLy07d8CgOU9m6fr5W5G59F8m3luymQtirRIVYzcg=;
-	b=Mr79v41eWvtK6a+LwPcSNTJssmgideWc6dtbJd0Kv+XXGQ9jQDPceMTo9e2beI6tq0
-	CQYqzw+7q6i/VYXrCJbdX+cCYOrAY2yUmyejB9XQ4CC64wucEAOiBnxab1vp0byJp3p2
-	v40ZGVO1VRhuJSpleGFsbguqQm74jr7TO4BJdQWuYbji6QpUdpV/DmJgmx0HHRoQsXlW
-	GcVqmOJTBOqVRqauBs7N7PBqXJIlYFcjJDfsRyFVQuMB5MVolAX4arCe9YUPIZ9Q1Kok
-	XlYn6w9m9QFPIcR/2erRrf2ROpWJG5zEUF4jSFxGtEVN53c/6Mkd1pSc9dIfhDYOBIhE
-	n6vA==
+	bh=ZJX+ywZj/5dqqMdAhmNdoW3qOEJ4qwXKxL1Vnk6qhCo=;
+	b=fiR1RnSHghAZ/luUnaAGKt2Q+bdz2G883K33bD0sIw8EPBtbqH4ZwMhMxJ+gJ6Bmt4
+	L/MucrpG8Gf4ThkwFL3IGKBwuRd7fn2LhU7k+RuZOJmwlCvLt0RqOwvX8r2NC/p9JEO3
+	30Zgr3B+LGS29tMjVLTfsIXJQZi+Aqz5Goyr8BGzZW/GkPzaWqRPbBtU4CjuwMqMlTOi
+	FpS93hX78x3AhqowYerJ5XyOZIq9LvAc8Dn13V+D/bBmmfO2sVpOjp/Yaqymu6qmSNEt
+	+sXuOJxHczvJ0+2FNBld60Fo5jGVB+4t8ImLPOggfoHTk3Pt2ZSOefSaZ9hRBh48LSCx
+	B+FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=WnfLy07d8CgOU9m6fr5W5G59F8m3luymQtirRIVYzcg=;
-	b=pFWeyw0RGe7amsCzb6+982kmq/cSI3gVmX1ssizbks0pZE1kv5VGVF08IlBeAzTUrn
-	FT6MFrDhUvzdEgbnDLf5g8BzcSmxymaf//YT1jmhQT17iC/iIt3DrgINUcgxC/iIkIxF
-	htTm9aMhGT7XnhIBBQ2T5JgHGihdYppVOvBU+IIkD3rFyq/Uff8vLgD8WQVe9WQ/t8sB
-	6pbyaDN+Tf9VI6aUJbpDqFeGDq5cfVcJu49mHPY3Imv9nZAGmB8DXdM6kyDujhAZjE44
-	Aaq5zV1zBR6hTi2vcqkLHheo5DKKnYetTeApGD7N7HoCgQioJI8pMmJ2pXWmrzPqP/d8
-	Bz3w==
-X-Gm-Message-State: AHPjjUglxZhyXTi0E+nEo8x1jBt+KCrsECp5DxtKE6qPUuJS0hBhtrEs
-	OnDuu5Eil2egB/Zj45ngh9M=
-X-Google-Smtp-Source: AOwi7QDptKm6D0UTjPTtgHxOjSTU74TWAucXbs8bSdUFHJpnfP1o0zUGSmp4V66x4vkZ9LASlontaw==
-X-Received: by 10.200.33.235 with SMTP id 40mr8835211qtz.185.1506094898032;
-	Fri, 22 Sep 2017 08:41:38 -0700 (PDT)
+	bh=ZJX+ywZj/5dqqMdAhmNdoW3qOEJ4qwXKxL1Vnk6qhCo=;
+	b=JdKZFiWoogYSnLDvLQxNKy47in9VEfDOnddQbISLmBfhO/BREg01hTSJx2mf4j9xtD
+	HFQk49eGaj4k3xEV78Lf0So4lemjBRBDUwt4aKdGUayL9BczLfPIgBPxMhOlGYNC27uB
+	wPmnNeODlpvT9zMaK6XRtPSX3mNBVfOR0/b4Wsc+tpEVzr6/M3OqdkA5ZZw/3PG2XTzk
+	wmOvrFeC+Tdn00IAGu+UOn+/Pt36pBJJnynb1YEDUrLXmYcUVRzjglMB2eiu0OSqoW05
+	0Becug9YJeKdgr+aBY6uynwOBo10kwGcG7dIgaAPLbMGpcN//OePonYw87prpdEx/BTN
+	lB+g==
+X-Gm-Message-State: AHPjjUios7PBoIkrqxBj6TS+BuRdQTVPBpRNN7F2nz8iyduTJb8v/jPK
+	K69eJpeLPcDkZnwcSEmn214=
+X-Google-Smtp-Source: AOwi7QCtqbhvyCAFP5hYxUegOaAaWJjyykOvJO2PirzNhMM5YDkNRIn8mz2PIbjWuj4m/Qj9nmpppg==
+X-Received: by 10.55.165.202 with SMTP id o193mr8355162qke.291.1506096097441; 
+	Fri, 22 Sep 2017 09:01:37 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id z75sm71742qkb.71.2017.09.22.08.41.34
+	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.01.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Sep 2017 08:41:37 -0700 (PDT)
+	Fri, 22 Sep 2017 09:01:36 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, Richard Henderson <rth@twiddle.net>
+	Yongbok Kim <yongbok.kim@imgtec.com>, Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Date: Fri, 22 Sep 2017 12:40:00 -0300
-Message-Id: <20170922154014.29350-21-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Sep 2017 13:01:00 -0300
+Message-Id: <20170922160111.31885-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170922154014.29350-1-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
@@ -66,9 +69,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH 20/34] hw/timer/i8254: rename pit_init() ->
- i8254_pit_init()
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH 23/34] hw/dma/i8257: rename DMA_init() to
+ i8257_dma_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,191 +83,241 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 15:41:48 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 16:01:54 -0000
 
-- add entry for i82378 in MAINTAINERS
+- move the header from hw/isa/ to hw/dma/
+- add entry for i82374 in MAINTAINERS
 - remove the old i386/pc dependency
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/timer/i8254.h          | 5 +++--
- include/hw/timer/i8254_internal.h | 2 +-
- hw/alpha/dp264.c                  | 2 +-
- hw/i386/pc.c                      | 2 +-
- hw/isa/i82378.c                   | 2 +-
- hw/mips/mips_fulong2e.c           | 2 +-
- hw/mips/mips_jazz.c               | 2 +-
- hw/mips/mips_malta.c              | 2 +-
- hw/mips/mips_r4k.c                | 2 +-
- hw/timer/i8254.c                  | 1 -
- hw/timer/i8254_common.c           | 1 -
- MAINTAINERS                       | 1 +
- 12 files changed, 12 insertions(+), 12 deletions(-)
+ include/hw/{isa/i8257.h => dma/i8257_dma.h} | 6 ++++++
+ include/hw/isa/isa.h                        | 2 --
+ hw/dma/i82374.c                             | 3 ++-
+ hw/dma/i8257.c                              | 4 ++--
+ hw/i386/pc.c                                | 3 ++-
+ hw/mips/mips_fulong2e.c                     | 3 ++-
+ hw/mips/mips_jazz.c                         | 3 ++-
+ hw/mips/mips_malta.c                        | 3 ++-
+ hw/sparc/sun4m.c                            | 4 ----
+ hw/sparc64/sun4u.c                          | 4 ----
+ MAINTAINERS                                 | 2 ++
+ 11 files changed, 20 insertions(+), 17 deletions(-)
+ rename include/hw/{isa/i8257.h => dma/i8257_dma.h} (86%)
 
-diff --git a/include/hw/timer/i8254.h b/include/hw/timer/i8254.h
-index 5adae9fa44..5b12eb918e 100644
---- a/include/hw/timer/i8254.h
-+++ b/include/hw/timer/i8254.h
-@@ -26,6 +26,7 @@
- #define HW_I8254_H
+diff --git a/include/hw/isa/i8257.h b/include/hw/dma/i8257_dma.h
+similarity index 86%
+rename from include/hw/isa/i8257.h
+rename to include/hw/dma/i8257_dma.h
+index 88a2766a3f..0041565177 100644
+--- a/include/hw/isa/i8257.h
++++ b/include/hw/dma/i8257_dma.h
+@@ -1,6 +1,10 @@
+ #ifndef HW_I8257_H
+ #define HW_I8257_H
  
- #include "hw/hw.h"
-+#include "hw/qdev.h"
++#include "hw/hw.h"
++#include "hw/isa/isa.h"
++#include "exec/ioport.h"
++
+ #define TYPE_I8257 "i8257"
+ 
+ typedef struct I8257Regs {
+@@ -40,4 +44,6 @@ typedef struct I8257State {
+     PortioList portio_pageh;
+ } I8257State;
+ 
++void i8257_dma_init(ISABus *bus, int high_page_enable);
++
+ #endif
+diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+index 95593408ef..b9dbab24b4 100644
+--- a/include/hw/isa/isa.h
++++ b/include/hw/isa/isa.h
+@@ -151,6 +151,4 @@ static inline ISABus *isa_bus_from_device(ISADevice *d)
+     return ISA_BUS(qdev_get_parent_bus(DEVICE(d)));
+ }
+ 
+-/* i8257.c */
+-void DMA_init(ISABus *bus, int high_page_enable);
+ #endif
+diff --git a/hw/dma/i82374.c b/hw/dma/i82374.c
+index 6c0f975df0..4048bedcf2 100644
+--- a/hw/dma/i82374.c
++++ b/hw/dma/i82374.c
+@@ -24,6 +24,7 @@
+ 
+ #include "qemu/osdep.h"
  #include "hw/isa/isa.h"
++#include "hw/dma/i8257_dma.h"
  
- #define PIT_FREQ 1193182
-@@ -48,8 +49,8 @@ typedef struct PITChannelInfo {
- #define TYPE_I8254 "isa-pit"
- #define TYPE_KVM_I8254 "kvm-pit"
+ #define TYPE_I82374 "i82374"
+ #define I82374(obj) OBJECT_CHECK(I82374State, (obj), TYPE_I82374)
+@@ -123,7 +124,7 @@ static void i82374_realize(DeviceState *dev, Error **errp)
+     portio_list_add(&s->port_list, isa_address_space_io(&s->parent_obj),
+                     s->iobase);
  
--static inline ISADevice *pit_init(ISABus *bus, int base, int isa_irq,
--                                  qemu_irq alt_irq)
-+static inline ISADevice *i8254_pit_init(ISABus *bus, int base, int isa_irq,
-+                                        qemu_irq alt_irq)
+-    DMA_init(isa_bus_from_device(ISA_DEVICE(dev)), 1);
++    i8257_dma_init(isa_bus_from_device(ISA_DEVICE(dev)), 1);
+     memset(s->commands, 0, sizeof(s->commands));
+ }
+ 
+diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c
+index bd23e893bf..a8f26b003b 100644
+--- a/hw/dma/i8257.c
++++ b/hw/dma/i8257.c
+@@ -24,7 +24,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/hw.h"
+ #include "hw/isa/isa.h"
+-#include "hw/isa/i8257.h"
++#include "hw/dma/i8257_dma.h"
+ #include "qemu/main-loop.h"
+ #include "trace.h"
+ 
+@@ -622,7 +622,7 @@ static void i8257_register_types(void)
+ 
+ type_init(i8257_register_types)
+ 
+-void DMA_init(ISABus *bus, int high_page_enable)
++void i8257_dma_init(ISABus *bus, int high_page_enable)
  {
-     DeviceState *dev;
-     ISADevice *d;
-diff --git a/include/hw/timer/i8254_internal.h b/include/hw/timer/i8254_internal.h
-index dc09cc0467..c37a438f82 100644
---- a/include/hw/timer/i8254_internal.h
-+++ b/include/hw/timer/i8254_internal.h
-@@ -26,8 +26,8 @@
- #define QEMU_I8254_INTERNAL_H
- 
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
-+#include "qemu/timer.h"
- 
- typedef struct PITChannelState {
-     int count; /* can be 65536 */
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 1b121306c2..1bd5243648 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -81,7 +81,7 @@ static void clipper_init(MachineState *machine)
-     /* Since we have an SRM-compatible PALcode, use the SRM epoch.  */
-     rtc_init(isa_bus, 1900, rtc_irq);
- 
--    pit_init(isa_bus, 0x40, 0, NULL);
-+    i8254_pit_init(isa_bus, 0x40, 0, NULL);
-     isa_create_simple(isa_bus, "i8042");
- 
-     /* VGA setup.  Don't bother loading the bios.  */
+     ISADevice *isa1, *isa2;
+     DeviceState *d;
 diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index f116cede91..5cb0ae67cd 100644
+index 3aa10c780b..76d4be5991 100644
 --- a/hw/i386/pc.c
 +++ b/hw/i386/pc.c
-@@ -1551,7 +1551,7 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
-         if (kvm_pit_in_kernel()) {
-             pit = kvm_pit_init(isa_bus, 0x40);
-         } else {
--            pit = pit_init(isa_bus, 0x40, pit_isa_irq, pit_alt_irq);
-+            pit = i8254_pit_init(isa_bus, 0x40, pit_isa_irq, pit_alt_irq);
-         }
-         if (hpet) {
-             /* connect PIT to output control line of the HPET */
-diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-index 4d29a9900c..7a8baef23c 100644
---- a/hw/isa/i82378.c
-+++ b/hw/isa/i82378.c
-@@ -97,7 +97,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     isa_bus_irqs(isabus, s->i8259);
+@@ -39,6 +39,7 @@
+ #include "elf.h"
+ #include "multiboot.h"
+ #include "hw/timer/mc146818rtc.h"
++#include "hw/dma/i8257_dma.h"
+ #include "hw/timer/i8254.h"
+ #include "hw/input/i8042.h"
+ #include "hw/audio/pcspk.h"
+@@ -1582,7 +1583,7 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
+     port92_init(port92, a20_line[1]);
+     g_free(a20_line);
  
-     /* 1 82C54 (pit) */
--    isa = pit_init(isabus, 0x40, 0, NULL);
-+    isa = i8254_pit_init(isabus, 0x40, 0, NULL);
+-    DMA_init(isa_bus, 0);
++    i8257_dma_init(isa_bus, 0);
  
-     /* speaker */
-     pcspk_init(isabus, isa);
+     for(i = 0; i < MAX_FD; i++) {
+         fd[i] = drive_get(IF_FLOPPY, 0, i);
 diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 75318680e1..22e6c05fb5 100644
+index a35745a407..6dc6a0ac18 100644
 --- a/hw/mips/mips_fulong2e.c
 +++ b/hw/mips/mips_fulong2e.c
-@@ -363,7 +363,7 @@ static void mips_fulong2e_init(MachineState *machine)
-     smbus_eeprom_init(smbus, 1, eeprom_spd, sizeof(eeprom_spd));
+@@ -22,6 +22,7 @@
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+ #include "hw/i386/pc.h"
++#include "hw/dma/i8257_dma.h"
+ #include "hw/char/serial.h"
+ #include "hw/block/fdc.h"
+ #include "net/net.h"
+@@ -365,7 +366,7 @@ static void mips_fulong2e_init(MachineState *machine)
  
      /* init other devices */
--    pit = pit_init(isa_bus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
-     DMA_init(isa_bus, 0);
+     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
+-    DMA_init(isa_bus, 0);
++    i8257_dma_init(isa_bus, 0);
  
      /* Super I/O */
+     isa_create_simple(isa_bus, TYPE_I8042);
 diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 7e6626dc88..5f37852499 100644
+index 1bbef7eeb5..1b54602c1d 100644
 --- a/hw/mips/mips_jazz.c
 +++ b/hw/mips/mips_jazz.c
-@@ -222,7 +222,7 @@ static void mips_jazz_init(MachineState *machine,
+@@ -27,6 +27,7 @@
+ #include "hw/mips/mips.h"
+ #include "hw/mips/cpudevs.h"
+ #include "hw/i386/pc.h"
++#include "hw/dma/i8257_dma.h"
+ #include "hw/char/serial.h"
+ #include "hw/isa/isa.h"
+ #include "hw/block/fdc.h"
+@@ -223,7 +224,7 @@ static void mips_jazz_init(MachineState *machine,
+     /* ISA devices */
      i8259 = i8259_init(isa_bus, env->irq[4]);
      isa_bus_irqs(isa_bus, i8259);
-     DMA_init(isa_bus, 0);
--    pit = pit_init(isa_bus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
+-    DMA_init(isa_bus, 0);
++    i8257_dma_init(isa_bus, 0);
+     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
      pcspk_init(isa_bus, pit);
  
-     /* Video card */
 diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 2adb9bcf89..de547d732f 100644
+index 45c7f589aa..050da36f1d 100644
 --- a/hw/mips/mips_malta.c
 +++ b/hw/mips/mips_malta.c
-@@ -1217,7 +1217,7 @@ void mips_malta_init(MachineState *machine)
-                           isa_get_irq(NULL, 9), NULL, 0, NULL);
+@@ -27,6 +27,7 @@
+ #include "cpu.h"
+ #include "hw/hw.h"
+ #include "hw/i386/pc.h"
++#include "hw/dma/i8257_dma.h"
+ #include "hw/char/serial.h"
+ #include "hw/block/fdc.h"
+ #include "net/net.h"
+@@ -1219,7 +1220,7 @@ void mips_malta_init(MachineState *machine)
      smbus_eeprom_init(smbus, 8, smbus_eeprom_buf, smbus_eeprom_size);
      g_free(smbus_eeprom_buf);
--    pit = pit_init(isa_bus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
-     DMA_init(isa_bus, 0);
+     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
+-    DMA_init(isa_bus, 0);
++    i8257_dma_init(isa_bus, 0);
  
      /* Super I/O */
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index 1272d4ef9d..48fad52540 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -280,7 +280,7 @@ void mips_r4k_init(MachineState *machine)
+     isa_create_simple(isa_bus, TYPE_I8042);
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index e1bdd4828d..a4ba3d2917 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -101,10 +101,6 @@ struct sun4m_hwdef {
+     uint8_t nvram_machine_id;
+ };
  
-     rtc_init(isa_bus, 2000, NULL);
+-void DMA_init(ISABus *bus, int high_page_enable)
+-{
+-}
+-
+ static void fw_cfg_boot_set(void *opaque, const char *boot_device,
+                             Error **errp)
+ {
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index 973daed977..fd10741607 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -86,10 +86,6 @@ typedef struct EbusState {
+     MemoryRegion bar1;
+ } EbusState;
  
--    pit = pit_init(isa_bus, 0x40, 0, NULL);
-+    pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
- 
-     serial_hds_isa_init(isa_bus, 0, MAX_SERIAL_PORTS);
- 
-diff --git a/hw/timer/i8254.c b/hw/timer/i8254.c
-index 5e61ad50a8..dbc4a0baec 100644
---- a/hw/timer/i8254.c
-+++ b/hw/timer/i8254.c
-@@ -23,7 +23,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "qemu/timer.h"
- #include "hw/timer/i8254.h"
-diff --git a/hw/timer/i8254_common.c b/hw/timer/i8254_common.c
-index ee064aa819..c850950699 100644
---- a/hw/timer/i8254_common.c
-+++ b/hw/timer/i8254_common.c
-@@ -24,7 +24,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "qemu/timer.h"
- #include "hw/timer/i8254.h"
+-void DMA_init(ISABus *bus, int high_page_enable)
+-{
+-}
+-
+ static void fw_cfg_boot_set(void *opaque, const char *boot_device,
+                             Error **errp)
+ {
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 7f49f1d046..f7d377ead9 100644
+index cc1f8bb66b..a79723601c 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -705,6 +705,7 @@ F: hw/ppc/prep.c
- F: hw/ppc/prep_systemio.c
- F: hw/ppc/rs6000_mc.c
+@@ -707,6 +707,7 @@ F: hw/ppc/rs6000_mc.c
  F: hw/pci-host/prep.[hc]
-+F: hw/isa/i82378.c
+ F: hw/isa/i82378.c
  F: hw/isa/pc87312.[hc]
++F: hw/dma/i82374.c
  F: pc-bios/ppc_rom.bin
  
+ sPAPR
+@@ -849,6 +850,7 @@ F: hw/misc/pc-testdev.c
+ F: hw/timer/hpet*
+ F: hw/timer/i8254*
+ F: hw/timer/mc146818rtc*
++F: include/hw/dma/i8257_dma.h
+ F: include/hw/i2c/pm_smbus.h
+ F: include/hw/input/i8042.h
+ F: include/hw/timer/hpet.h
 -- 
 2.14.1
 
