@@ -1,64 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQPS-0006pn-KH
+	id 1dvQPS-0006q0-QX
 	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52510)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52531)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPO-0006lc-Mk
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:31 -0400
+	id 1dvQPP-0006ml-FR
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPL-0000XJ-GY
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:30 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:33382)
+	id 1dvQPH-0000Tn-NW
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:31 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36455)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQP3-0000DP-8S; Fri, 22 Sep 2017 12:02:09 -0400
-Received: by mail-qt0-x242.google.com with SMTP id b1so930600qtc.0;
-	Fri, 22 Sep 2017 09:02:09 -0700 (PDT)
+	id 1dvQPA-0000MK-Kp; Fri, 22 Sep 2017 12:02:16 -0400
+Received: by mail-qt0-x244.google.com with SMTP id t46so921282qtj.3;
+	Fri, 22 Sep 2017 09:02:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=a6h2NXEXKYQkP/pFrbML8x3vzg+ev/dvgMIczgNPBLg=;
-	b=SXC6poPBdhNIWfw7/aaJXiVBe0EABun0rnOvD9EyY2lWf/CLEfOArQTtDxHEOFGJ3d
-	h12uM0dq/j6E7bBK1TOvRrQBid1htN/AlqF4ouZ6laHTkJGD9al1VFl8KtzcjEBWozpW
-	O6P6bIFNnrjBP4s3Vb7OCdnG+nrpVNIqUCLWIaZH+ApwoXH7WpsLu3M/0tO7nrC/gkLQ
-	uGwZ6UCmh/4f3xdKCfib9kiQ27eyEQ715+UPIOUN0Gw/U26ZkmIrBe1nk7LnM/iKKFav
-	7YnwpZD1Q5fFf3v6PGRn6wUOxRbNWvF6mdVU7TXX8X7i2mJHsQxqgNHLG5wyDz3rUbdy
-	OS3A==
+	bh=NMGOcApUVqTQ4IGibQCfL666b3JC73dhF5axZeVSTgk=;
+	b=hhpXlq35+lc7YklNyl+RVe5gOnoEbF3Ka90BkyfE5ijx/qtDeYBZs1ZqcqJYbzilIt
+	9ZYoF1Ts538ruikGqTg7mmHhshyiMTK0FCuqqTBj0vniiX2sReXKv1ZdjIG5sRYbxDZE
+	xfP4oeRYmhAv/rpJYj8a7xNY6CyZlfqXJHEn2SE9YNyXg2lMXP7fGdTgZKKrh5l4yl4R
+	JZKZ9p/vCbZmfXImuprfK2tIbP7AFLNRC5kO7SpJ559icvaX1vmHPVUeNZFqUkIJ/DjA
+	0DehIeZoZF8nQqep1AXRYSGBzWKKSy+AyaQrQdkEtGhdbs6uXG8eppB+32+u964Ds5Yh
+	a2PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=a6h2NXEXKYQkP/pFrbML8x3vzg+ev/dvgMIczgNPBLg=;
-	b=CQOzIgjIiTUNZB4HCSf/ck9AVJfejlFgLQpAI+thFGrHmbC5OjIwwxf+EajAPln9A8
-	rHAmbzNtfWBqDEcA78Gw5IvVRU/DwLtcP9UIOn/bPCjgSBbAlXEAo5MCuGAvFc/tBkwa
-	HMEUFub9lS5W1y1ah29EB6GogtM4/FuU/8IHndm9TaICAZIVXiZSl8wuweKUxepVAJDF
-	uEO1vBcL2Vqj2IQDXPAOqASoy9vyG2YQTXRIaHu4k5cxyUY1NufRFD1ji66Xc838lKky
-	PhdPeKFiDbBRWCzV8s/rD0g7josoDmH9brr9OwCQn4HzrUUWpMqzbqvoIiAKVeB35ksP
-	QS6Q==
-X-Gm-Message-State: AHPjjUi7aOocHzur8fDFdZJxHmR3k8LYZ3ZXiEUc6pkZYL7UJyFQDzFq
-	Q3CI5Q3wHZI130VyWVqXFc8=
-X-Google-Smtp-Source: AOwi7QDwlEabJI6QFXq7PFcMgm5oC4jYl45dtOyhlX4FTHZurprHyoEOUqiBYoUo/QsKtGpK/sjyKQ==
-X-Received: by 10.200.17.131 with SMTP id d3mr8428365qtj.329.1506096128611;
-	Fri, 22 Sep 2017 09:02:08 -0700 (PDT)
+	bh=NMGOcApUVqTQ4IGibQCfL666b3JC73dhF5axZeVSTgk=;
+	b=ktROJd0/81Dl4x2ZdpLDlFNDOFPX55dpx9h5gW8fHTF28un2J3R0C0DZ/d1eLxdCTj
+	HJoovX21jz9bBEYyaBMfdEKcZ2poDUweUW72FVcsM2LKxuY4UA047jZ5rIcy+ognVvHo
+	5xI2pFP6Lttrf0JDiZohAnltRGvTm7F1UN4xs7nQNOIhcERtAHUgJEHllkp/6AhPyPRl
+	uOjwTO7DtpnmrNNUh9/+dqoodz25cxAAhYs/xn1M6NB9OpjbPbBu8vX5VqSPq/oe89DT
+	BKLmIWgvU1kRYkwpaznpXq9D0k0Pp0CuN90tnIW80iNNPkdeLsD/6hJBSgv/p+H5cSlF
+	hoUQ==
+X-Gm-Message-State: AHPjjUi5h/4ad2FCKxIAolWtlGRiOIwsoqxH3kuYdqgBLY48Zf9ECx2t
+	tQz7SvIOaigr5GMmvakq7Jo=
+X-Google-Smtp-Source: AOwi7QBnGrndxWXT1oTuq+KrOjqR0Pf1VrJtPpOSZWVA7wS3sa8cQoxUqCDv0EHISORiby5mxcxIdg==
+X-Received: by 10.200.15.13 with SMTP id e13mr8988994qtk.295.1506096135998;
+	Fri, 22 Sep 2017 09:02:15 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.02.04
+	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.02.13
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Sep 2017 09:02:07 -0700 (PDT)
+	Fri, 22 Sep 2017 09:02:15 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, Magnus Damm <magnus.damm@gmail.com>,
-	Jason Wang <jasowang@redhat.com>
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 22 Sep 2017 13:01:08 -0300
-Message-Id: <20170922160111.31885-9-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Sep 2017 13:01:10 -0300
+Message-Id: <20170922160111.31885-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170922154014.29350-1-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
@@ -67,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-trivial] [PATCH 31/34] hw/net/rtl8139: use TYPE_PCI_RTL8139
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH 33/34] hw/alpha: remove old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,145 +80,52 @@ X-List-Received-Date: Fri, 22 Sep 2017 16:02:32 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/net/pci.h    | 1 +
- hw/arm/realview.c       | 3 ++-
- hw/arm/versatilepb.c    | 3 ++-
- hw/mips/mips_fulong2e.c | 3 ++-
- hw/net/rtl8139.c        | 7 +++----
- hw/sh4/r2d.c            | 5 +++--
- 6 files changed, 13 insertions(+), 9 deletions(-)
+ hw/alpha/alpha_sys.h | 2 --
+ hw/alpha/pci.c       | 2 ++
+ hw/alpha/typhoon.c   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/net/pci.h b/include/hw/net/pci.h
-index 5ad5487a91..43ed3b0145 100644
---- a/include/hw/net/pci.h
-+++ b/include/hw/net/pci.h
-@@ -16,6 +16,7 @@
- #define TYPE_PCI_E1000      "e1000"
- #define TYPE_PCI_E1000E     "e1000e"
- #define TYPE_PCI_PCNET      "pcnet"
-+#define TYPE_PCI_RTL8139    "rtl8139"
+diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
+index b6d8369ed7..ac685c1c46 100644
+--- a/hw/alpha/alpha_sys.h
++++ b/hw/alpha/alpha_sys.h
+@@ -5,8 +5,6 @@
  
- PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
-                                const char *default_model,
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 87cd1e583c..35f0da28e4 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -20,6 +20,7 @@
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/net/pci.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
- #include "qemu/error-report.h"
-@@ -269,7 +270,7 @@ static void realview_init(MachineState *machine,
-             done_nic = 1;
-         } else {
-             if (pci_bus) {
--                pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
-+                pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, NULL);
-             }
-         }
-     }
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 418792cd02..297aad78e1 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -18,6 +18,7 @@
- #include "sysemu/sysemu.h"
+ #include "target/alpha/cpu-qom.h"
  #include "hw/pci/pci.h"
- #include "hw/i2c/i2c.h"
-+#include "hw/net/pci.h"
- #include "hw/boards.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
-@@ -271,7 +272,7 @@ static void versatile_init(MachineState *machine, int board_id)
-             smc91c111_init(nd, 0x10010000, sic[25]);
-             done_smc = 1;
-         } else {
--            pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
-+            pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, NULL);
-         }
-     }
-     if (machine_usb(machine)) {
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 7ebbffa8f2..fe618953c9 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -44,6 +44,7 @@
- #include "hw/timer/mc146818rtc.h"
- #include "hw/timer/i8254.h"
- #include "hw/input/i8042.h"
-+#include "hw/net/pci.h"
- #include "sysemu/blockdev.h"
- #include "exec/address-spaces.h"
- #include "sysemu/qtest.h"
-@@ -253,7 +254,7 @@ static void network_init (PCIBus *pci_bus)
-             default_devaddr = "07";
-         }
+-#include "hw/pci/pci_host.h"
+-#include "hw/ide.h"
+ #include "hw/i386/pc.h"
+ #include "hw/irq.h"
  
--        pci_nic_init_nofail(nd, pci_bus, "rtl8139", default_devaddr);
-+        pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_RTL8139, default_devaddr);
-     }
- }
+diff --git a/hw/alpha/pci.c b/hw/alpha/pci.c
+index 8dde637bfe..c370762ea6 100644
+--- a/hw/alpha/pci.c
++++ b/hw/alpha/pci.c
+@@ -8,6 +8,8 @@
  
-diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-index 3be24bbee7..0f952eceba 100644
---- a/hw/net/rtl8139.c
-+++ b/hw/net/rtl8139.c
-@@ -59,6 +59,7 @@
- #include "net/net.h"
- #include "net/eth.h"
- #include "hw/loader.h"
-+#include "hw/net/pci.h"
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
++#include "hw/pci/pci.h"
++#include "hw/pci/pci_host.h"
+ #include "alpha_sys.h"
+ #include "qemu/log.h"
  #include "sysemu/sysemu.h"
- #include "qemu/iov.h"
+diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
+index ae11e012c7..75ac4ed354 100644
+--- a/hw/alpha/typhoon.c
++++ b/hw/alpha/typhoon.c
+@@ -11,9 +11,9 @@
+ #include "cpu.h"
+ #include "hw/hw.h"
+ #include "hw/devices.h"
++#include "hw/pci/pci_host.h"
+ #include "sysemu/sysemu.h"
+ #include "alpha_sys.h"
+-#include "exec/address-spaces.h"
  
-@@ -90,10 +91,8 @@ static inline GCC_FMT_ATTR(1, 2) int DPRINTF(const char *fmt, ...)
- }
- #endif
  
--#define TYPE_RTL8139 "rtl8139"
--
- #define RTL8139(obj) \
--     OBJECT_CHECK(RTL8139State, (obj), TYPE_RTL8139)
-+     OBJECT_CHECK(RTL8139State, (obj), TYPE_PCI_RTL8139)
- 
- /* Symbolic offsets to registers. */
- enum RTL8139_registers {
-@@ -3437,7 +3436,7 @@ static void rtl8139_class_init(ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo rtl8139_info = {
--    .name          = TYPE_RTL8139,
-+    .name          = TYPE_PCI_RTL8139,
-     .parent        = TYPE_PCI_DEVICE,
-     .instance_size = sizeof(RTL8139State),
-     .class_init    = rtl8139_class_init,
-diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-index 16b9ed2db2..dde60b2bc2 100644
---- a/hw/sh4/r2d.c
-+++ b/hw/sh4/r2d.c
-@@ -39,6 +39,7 @@
- #include "hw/ide.h"
- #include "hw/loader.h"
- #include "hw/usb.h"
-+#include "hw/net/pci.h"
- #include "hw/block/flash.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
-@@ -303,8 +304,8 @@ static void r2d_init(MachineState *machine)
- 
-     /* NIC: rtl8139 on-board, and 2 slots. */
-     for (i = 0; i < nb_nics; i++)
--        pci_nic_init_nofail(&nd_table[i], pci_bus,
--                            "rtl8139", i==0 ? "2" : NULL);
-+        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_RTL8139,
-+                            i == 0 ? "2" : NULL);
- 
-     /* USB keyboard */
-     usb_create_simple(usb_bus_find(-1), "usb-kbd");
+ #define TYPE_TYPHOON_PCI_HOST_BRIDGE "typhoon-pcihost"
 -- 
 2.14.1
 
