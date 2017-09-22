@@ -1,60 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvQPS-0006q0-QX
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52531)
+	id 1dvQPT-0006qK-0c
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 12:02:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52552)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPP-0006ml-FR
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:32 -0400
+	id 1dvQPQ-0006nG-0m
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPH-0000Tn-NW
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:31 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36455)
+	id 1dvQPP-0000aB-04
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 12:02:32 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:34824)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dvQPA-0000MK-Kp; Fri, 22 Sep 2017 12:02:16 -0400
-Received: by mail-qt0-x244.google.com with SMTP id t46so921282qtj.3;
-	Fri, 22 Sep 2017 09:02:16 -0700 (PDT)
+	id 1dvQOz-0000Az-BI; Fri, 22 Sep 2017 12:02:05 -0400
+Received: by mail-qk0-x244.google.com with SMTP id o77so907005qke.2;
+	Fri, 22 Sep 2017 09:02:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=NMGOcApUVqTQ4IGibQCfL666b3JC73dhF5axZeVSTgk=;
-	b=hhpXlq35+lc7YklNyl+RVe5gOnoEbF3Ka90BkyfE5ijx/qtDeYBZs1ZqcqJYbzilIt
-	9ZYoF1Ts538ruikGqTg7mmHhshyiMTK0FCuqqTBj0vniiX2sReXKv1ZdjIG5sRYbxDZE
-	xfP4oeRYmhAv/rpJYj8a7xNY6CyZlfqXJHEn2SE9YNyXg2lMXP7fGdTgZKKrh5l4yl4R
-	JZKZ9p/vCbZmfXImuprfK2tIbP7AFLNRC5kO7SpJ559icvaX1vmHPVUeNZFqUkIJ/DjA
-	0DehIeZoZF8nQqep1AXRYSGBzWKKSy+AyaQrQdkEtGhdbs6uXG8eppB+32+u964Ds5Yh
-	a2PQ==
+	bh=tJG+9K3zMw8ol/QDWTtz58a5cs2/dRTxO9ibj7Pmppw=;
+	b=svNhiCPpAjsN9+V6XyG6rr0jAyZiycQgIvFZc2f2SnVm257CcfKGfmQiHEciAIdMUr
+	BEr6p9Of5it7d1chtueDu5pKOMTBMnJH71GCQvdM9MofraQLFbr2tNAxHAgwmEwAuVbw
+	3LbPZeqCDyu+DQCWbCfAJhv2qr+DwOl7K0pB9eM4zA9KZnBuuEl3fEJXyrCBp/HP15dy
+	4W463F5Nah0vvm7c/M63U3YJSWRZsnYGNAgJR17JhpQMk3LuZUHrLcaNvaFPU5IJxgmZ
+	qKONe5dWjSXjjFwCEHVpB0vo+zOPPLgYjmxQUTpQD8eg38PA5Aj3hUR0iKS0TnnTphDr
+	Kp/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=NMGOcApUVqTQ4IGibQCfL666b3JC73dhF5axZeVSTgk=;
-	b=ktROJd0/81Dl4x2ZdpLDlFNDOFPX55dpx9h5gW8fHTF28un2J3R0C0DZ/d1eLxdCTj
-	HJoovX21jz9bBEYyaBMfdEKcZ2poDUweUW72FVcsM2LKxuY4UA047jZ5rIcy+ognVvHo
-	5xI2pFP6Lttrf0JDiZohAnltRGvTm7F1UN4xs7nQNOIhcERtAHUgJEHllkp/6AhPyPRl
-	uOjwTO7DtpnmrNNUh9/+dqoodz25cxAAhYs/xn1M6NB9OpjbPbBu8vX5VqSPq/oe89DT
-	BKLmIWgvU1kRYkwpaznpXq9D0k0Pp0CuN90tnIW80iNNPkdeLsD/6hJBSgv/p+H5cSlF
-	hoUQ==
-X-Gm-Message-State: AHPjjUi5h/4ad2FCKxIAolWtlGRiOIwsoqxH3kuYdqgBLY48Zf9ECx2t
-	tQz7SvIOaigr5GMmvakq7Jo=
-X-Google-Smtp-Source: AOwi7QBnGrndxWXT1oTuq+KrOjqR0Pf1VrJtPpOSZWVA7wS3sa8cQoxUqCDv0EHISORiby5mxcxIdg==
-X-Received: by 10.200.15.13 with SMTP id e13mr8988994qtk.295.1506096135998;
-	Fri, 22 Sep 2017 09:02:15 -0700 (PDT)
+	bh=tJG+9K3zMw8ol/QDWTtz58a5cs2/dRTxO9ibj7Pmppw=;
+	b=WmKuDcgUXa5pKcEkmkWcAzFBFD8GYsDhEvbVwAILxVYwO7d34TQWAtDr680vMB2yny
+	6PSCHQ+78RkWGSScFqC3+33INTaBcLpc9rJE8utUT8/+9BsXB9niS67GNLTYYArkgOnL
+	bwd4LWM5YEbLwwC7NFCY2HtRcaY5jaa+qQOxMJAtQ8cwSFl+eSgJPbwSoipow/2vasYR
+	RYKpMyxLlOI7bDJwqk0nxXhjQEyqXrrgkBBwPONRzhvcBFCRlkVtqAApj0tep5OTBq7B
+	MU1VJZyPA2TAI9reUt3ATA8LNGGko9C4i7c1QuRlSD/axsw+v9QP7GeVFpQzSpP2sIJj
+	tUlw==
+X-Gm-Message-State: AHPjjUjyQ+YaAXfVtwg5ps0h9gKe3UVtNqs/lhsA3gDKccyZ6Yc671cE
+	sWr/PsCthTwqOHFR+ZKr5xs=
+X-Google-Smtp-Source: AOwi7QD6lMtsgYZgXHodwHl1ZnadhUi3N5l99tIDL7AahsmXSWqBQqZy9Cgu9fzk73Yh5I3HHI/HIA==
+X-Received: by 10.55.45.199 with SMTP id t190mr8790760qkh.230.1506096124647;
+	Fri, 22 Sep 2017 09:02:04 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.02.13
+	by smtp.gmail.com with ESMTPSA id y31sm108325qta.83.2017.09.22.09.02.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Sep 2017 09:02:15 -0700 (PDT)
+	Fri, 22 Sep 2017 09:02:03 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Alexander Graf <agraf@suse.de>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Jason Wang <jasowang@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 22 Sep 2017 13:01:10 -0300
-Message-Id: <20170922160111.31885-11-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Sep 2017 13:01:07 -0300
+Message-Id: <20170922160111.31885-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20170922154014.29350-1-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
@@ -63,8 +69,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH 33/34] hw/alpha: remove old i386 dependency
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH 30/34] hw/net/pcnet: use TYPE_PCI_PCNET
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,56 +82,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 16:02:32 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 16:02:33 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/alpha/alpha_sys.h | 2 --
- hw/alpha/pci.c       | 2 ++
- hw/alpha/typhoon.c   | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ include/hw/net/pci.h | 1 +
+ hw/mips/mips_malta.c | 2 +-
+ hw/net/pcnet-pci.c   | 3 +--
+ hw/ppc/prep.c        | 3 ++-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
-index b6d8369ed7..ac685c1c46 100644
---- a/hw/alpha/alpha_sys.h
-+++ b/hw/alpha/alpha_sys.h
-@@ -5,8 +5,6 @@
+diff --git a/include/hw/net/pci.h b/include/hw/net/pci.h
+index 92111f86f3..5ad5487a91 100644
+--- a/include/hw/net/pci.h
++++ b/include/hw/net/pci.h
+@@ -15,6 +15,7 @@
  
- #include "target/alpha/cpu-qom.h"
- #include "hw/pci/pci.h"
--#include "hw/pci/pci_host.h"
--#include "hw/ide.h"
- #include "hw/i386/pc.h"
- #include "hw/irq.h"
+ #define TYPE_PCI_E1000      "e1000"
+ #define TYPE_PCI_E1000E     "e1000e"
++#define TYPE_PCI_PCNET      "pcnet"
  
-diff --git a/hw/alpha/pci.c b/hw/alpha/pci.c
-index 8dde637bfe..c370762ea6 100644
---- a/hw/alpha/pci.c
-+++ b/hw/alpha/pci.c
-@@ -8,6 +8,8 @@
+ PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
+                                const char *default_model,
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index fb6a2f9363..921678fdb0 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -597,7 +597,7 @@ static void network_init(PCIBus *pci_bus)
+             /* The malta board has a PCNet card using PCI SLOT 11 */
+             default_devaddr = "0b";
+ 
+-        pci_nic_init_nofail(nd, pci_bus, "pcnet", default_devaddr);
++        pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_PCNET, default_devaddr);
+     }
+ }
+ 
+diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+index 0acf8a4879..878e2c89c1 100644
+--- a/hw/net/pcnet-pci.c
++++ b/hw/net/pcnet-pci.c
+@@ -29,6 +29,7 @@
  
  #include "qemu/osdep.h"
- #include "qemu-common.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pci_host.h"
- #include "alpha_sys.h"
- #include "qemu/log.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index ae11e012c7..75ac4ed354 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -11,9 +11,9 @@
- #include "cpu.h"
- #include "hw/hw.h"
- #include "hw/devices.h"
-+#include "hw/pci/pci_host.h"
- #include "sysemu/sysemu.h"
- #include "alpha_sys.h"
--#include "exec/address-spaces.h"
+ #include "hw/pci/pci.h"
++#include "hw/net/pci.h"
+ #include "net/net.h"
+ #include "hw/loader.h"
+ #include "qemu/timer.h"
+@@ -46,8 +47,6 @@
+ //#define PCNET_DEBUG_TMD
+ //#define PCNET_DEBUG_MATCH
  
+-#define TYPE_PCI_PCNET "pcnet"
+-
+ #define PCI_PCNET(obj) \
+      OBJECT_CHECK(PCIPCNetState, (obj), TYPE_PCI_PCNET)
  
- #define TYPE_TYPHOON_PCI_HOST_BRIDGE "typhoon-pcihost"
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index fb330a1769..b2c7a62ebc 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -44,6 +44,7 @@
+ #include "hw/input/i8042.h"
+ #include "hw/isa/pc87312.h"
+ #include "hw/net/ne2000-isa.h"
++#include "hw/net/pci.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/arch_init.h"
+ #include "sysemu/kvm.h"
+@@ -800,7 +801,7 @@ static void ibm_40p_init(MachineState *machine)
+         pci_vga_init(pci_bus);
+ 
+         for (i = 0; i < nb_nics; i++) {
+-            pci_nic_init_nofail(&nd_table[i], pci_bus, "pcnet",
++            pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_PCNET,
+                                 i == 0 ? "3" : NULL);
+         }
+     }
 -- 
 2.14.1
 
