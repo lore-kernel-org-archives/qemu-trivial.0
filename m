@@ -1,53 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvUL9-0006sD-Dj
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 16:14:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34039)
+	id 1dvUWi-0007iS-ER
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 16:26:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38078)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1dvUL7-0006qg-Od
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 16:14:22 -0400
+	(envelope-from <eblake@redhat.com>) id 1dvUWg-0007aa-8O
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 16:26:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1dvUL6-0006SL-SK
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 16:14:21 -0400
-Received: from iserv.reactos.org ([2a01:4f8:221:4c5::3]:47280)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hpoussin@reactos.org>)
-	id 1dvUL6-0006Rv-LX; Fri, 22 Sep 2017 16:14:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=reactos.org;
-	s=25047; 
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject;
-	bh=dMfaSw14t4+MRQupmEUZjff355c+jw/6L7nPd7XhZOg=; 
-	b=X3Mb/iHvDsefpywTo9RULqVhSw8ur5qPSJCcfG8TWIEtJSM4n3I6Rf6tXhh30hyzMa3g3Upm3uMhQN6E6EWdcGV20WFjRb8rWEsBFBFH8jWcOKnNTICmLE7AKdO07JGNm3Yn6t22BpS452vqYFw+S6QKw2K0Ix9CO/gCGgcuW/4=;
-Received: from rob92-5-82-227-227-196.fbx.proxad.net ([82.227.227.196]
-	helo=[192.168.0.35]) by iserv.reactos.org with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84_2)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1dvUL5-0005h6-2c; Fri, 22 Sep 2017 20:14:19 +0000
+	(envelope-from <eblake@redhat.com>) id 1dvUWf-00058A-5p
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 16:26:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41384)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dvUWZ-00055W-P2; Fri, 22 Sep 2017 16:26:12 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B1FCBD7123;
+	Fri, 22 Sep 2017 20:26:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B1FCBD7123
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from [10.10.124.97] (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7117660BE1;
+	Fri, 22 Sep 2017 20:26:06 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, 
-	Marcel Apfelbaum <marcel@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Alexander Graf <agraf@suse.de>,
-	David Gibson <david@gibson.dropbear.id.au>, 
-	Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-10-f4bug@amsat.org>
-From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-Message-ID: <812ae714-83b4-909e-544a-03844a33ddab@reactos.org>
-Date: Fri, 22 Sep 2017 22:14:16 +0200
+	Gerd Hoffmann <kraxel@redhat.com>, "Emilio G . Cota" <cota@braap.org>
+References: <20170922161345.331-1-f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <cae93aba-ca97-1d21-354d-aab209ce05cd@redhat.com>
+Date: Fri, 22 Sep 2017 15:26:03 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170922160111.31885-10-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20170922161345.331-1-f4bug@amsat.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="QKpr6CPG6jWFjxP1jTLmd8I0f0PTlWhSV"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 22 Sep 2017 20:26:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a01:4f8:221:4c5::3
-Subject: Re: [Qemu-trivial] [PATCH 32/34] hw/net/ne2000: use TYPE_PCI_NE2000
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] scripts/orderfile: keep MAINTAINERS at
+ bottom
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,19 +62,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 20:14:22 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 20:26:19 -0000
 
-Le 22/09/2017 à 18:01, Philippe Mathieu-Daudé a écrit :
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--QKpr6CPG6jWFjxP1jTLmd8I0f0PTlWhSV
+Content-Type: multipart/mixed; boundary="d0iW7vTJTBJ9lqnEMnjVjavdK9nFVvkhB";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Emilio G . Cota" <cota@braap.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <cae93aba-ca97-1d21-354d-aab209ce05cd@redhat.com>
+Subject: Re: [PATCH] scripts/orderfile: keep MAINTAINERS at bottom
+References: <20170922161345.331-1-f4bug@amsat.org>
+In-Reply-To: <20170922161345.331-1-f4bug@amsat.org>
+
+--d0iW7vTJTBJ9lqnEMnjVjavdK9nFVvkhB
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 09/22/2017 11:13 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->   include/hw/net/pci.h  | 1 +
->   hw/net/ne2000.c       | 3 ++-
->   hw/ppc/mac_newworld.c | 3 ++-
->   hw/ppc/mac_oldworld.c | 3 ++-
->   hw/ppc/prep.c         | 2 +-
->   hw/sparc64/sun4u.c    | 3 ++-
->   6 files changed, 10 insertions(+), 5 deletions(-)
+>  scripts/git.orderfile | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+> index ac699700b1..34619769c2 100644
+> --- a/scripts/git.orderfile
+> +++ b/scripts/git.orderfile
+> @@ -27,3 +27,4 @@ Makefile*
+>  # code
+>  *.c
+> =20
+> +MAINTAINERS
 
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
+Well, after any file that matches above, but before any file that
+doesn't match any pattern, so not strictly the end.
 
+But why not earlier with the build system?  Generally, if you are going
+to add a file, you are going to also tweak a Makefile to get it to build
+- at which point, a MAINTAINERS tweak feels more on par with a Makefile
+tweak.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--d0iW7vTJTBJ9lqnEMnjVjavdK9nFVvkhB--
+
+--QKpr6CPG6jWFjxP1jTLmd8I0f0PTlWhSV
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlnFcd0ACgkQp6FrSiUn
+Q2o6ywf7BAl5P9hknD37LOzo/t8F50TF1Ov7kzbdLSCEQpiN7IueJbg79m1b5qEf
+aAU2/6beqmK5Ay/5bAoDmmIbuoqr91vh0+Tlf1bJVjD8JGq1Z8hcLnbUhFqJOPvT
+XzkHSRlbtWOAcd75AKAQ93i8UHwSdXxlMIJdi4larVZ32t48MEWW9JaJ1pGlYHd2
+8OQRKBRutgD/96AcqdjGOYHU+8BqvJ4UNDAJz6o8cvI1E4gwd8jnaOrQe1gZOWSJ
+/OV987skPZr4Zm6gl+fpILLqAx3Us7w/eI/ettVoIEjRbiRQ8q5y+qpCXvAM29Na
+JwWrpFMsdp21o9yXIyCke3gvvZvY8g==
+=ZMy2
+-----END PGP SIGNATURE-----
+
+--QKpr6CPG6jWFjxP1jTLmd8I0f0PTlWhSV--
 
