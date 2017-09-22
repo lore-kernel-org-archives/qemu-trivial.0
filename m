@@ -1,55 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvRzT-0008B6-8B
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 13:43:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42064)
+	id 1dvSDj-0004PV-Nq
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2017 13:58:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1dvRzQ-0008AC-CH
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 13:43:49 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvSDh-0004OI-KZ
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 13:58:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1dvRzM-00064Y-Aw
-	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 13:43:48 -0400
-Received: from iserv.reactos.org ([188.40.64.40]:43989)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvSDe-000618-Dj
+	for qemu-trivial@nongnu.org; Fri, 22 Sep 2017 13:58:33 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:37840)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hpoussin@reactos.org>)
-	id 1dvRzM-00063t-1B; Fri, 22 Sep 2017 13:43:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=reactos.org;
-	s=25047; 
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject;
-	bh=H2vcF3ERQWSAekYHFlDA7V+AU5wxG016SM4QRZ+uiGU=; 
-	b=r16HF6swF/Xqknzy2yOScKAnXt6/Q1azeglBTBSWSj7/ycuJi3DySmUpu2yvZA/NN+iHt9AOKQZMgpCTC6nm0lG9FwxBSp1Oyw2j4b4qA3TarRPuFRUnh/6B0R8F6N6hy6NHcNK90v75Uh00ETL8mAS9wELxRijIcSOCuNvRTto=;
-Received: from rob92-5-82-227-227-196.fbx.proxad.net ([82.227.227.196]
-	helo=[192.168.0.35]) by iserv.reactos.org with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84_2)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1dvRzH-0000sZ-Fh; Fri, 22 Sep 2017 17:43:39 +0000
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>, Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Alexander Graf <agraf@suse.de>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1dvSDe-00060k-AI; Fri, 22 Sep 2017 13:58:30 -0400
+Received: by mail-qk0-x242.google.com with SMTP id r66so1092794qke.4;
+	Fri, 22 Sep 2017 10:58:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=xcyJSBKs0gKaM3LgguRWe3UJApDgdSLQtgymVn9xcgM=;
+	b=t7zWu2Db9HZQEwxzN/8MAJeJa/dYhlefDXNiVlS2PAYjPn/lvu+Ub4qocLB0nJ1pJi
+	dNESKQWlEYE6X53RYLka/LoopjVW0T0w/mvdvR2tTwDzH6qamQyFEECyUDCOicuFUBeH
+	h+QmivMjmCrz8c8MFq3jH6Ez0gJcmDsR3+bddF1CL0AUN8B7jN25xpWWMaJxWiczGz5s
+	YT3vv985rEp4ZaAAAH+AzDVV3s4ncMVvrvEkimq62jmN2ZzmMzeBqo4Eh8u/KYqIZsM+
+	n+2CrDytMVcFDiXZc14opWPHCntP/+9xAxezx7dT3C6xO8OfO/Yp94otPxi76DbvmsaA
+	aPTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=xcyJSBKs0gKaM3LgguRWe3UJApDgdSLQtgymVn9xcgM=;
+	b=JjyoD6eUE07aCLsgwoXgdtmDpdwtxkHhyD+cwm3A1/ys2NHVthh8umg3s/fYid1VhD
+	N7Xp4JCcnqdSlrFHaIg31GGsNZQs7AI5gfIfyrY+l+6JettRYbdwjxCgP+SIRdy4UDR7
+	jdjZbMXQyHA6IIyLXYR3T261hGs+e6mQAoYkaRfD13/hJjLWLuNnoz/1ajAjswKI1bKm
+	n/YyUJHR/muh7I2nvqYpvu9llk6QRhnUwAO9Ohgopw7IRhc2yJCZMtMsxqDTwkL5epao
+	vT1eTwsNXlnUtKMUdjJsrLM5SERK37dKR63/p2UaOKFIn9eJZ6vYR47e7SIvFob5vDHl
+	VzyQ==
+X-Gm-Message-State: AHPjjUg/icCUV9XFd7u0UUZ2zmbRiLlDA2+6yhyTxbgPDEMTdahylLJB
+	yY3oWlBGOsEmUR4TXApHV/PYxJQMe0o=
+X-Google-Smtp-Source: AOwi7QCyDcjEJaqjytd4lpBaZPhc0GI7MmW+8sNE/8GrhWReoATXxMe7s6yfnuWdX2PdAlg/vURCiA==
+X-Received: by 10.55.42.5 with SMTP id q5mr9304236qkh.71.1506103109502;
+	Fri, 22 Sep 2017 10:58:29 -0700 (PDT)
+Received: from [192.168.1.10] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id k7sm275495qkf.61.2017.09.22.10.58.26
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Sep 2017 10:58:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, 
+	Corey Minyard <minyard@acm.org>, Balaton Zoltan <balaton@eik.bme.hu>,
+	Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-Message-ID: <a6bedac0-0e58-8709-f549-a602914c9077@reactos.org>
-Date: Fri, 22 Sep 2017 19:43:29 +0200
+	<20170922154014.29350-3-f4bug@amsat.org>
+	<CAFEAcA8oovA56LwFtKoY1c-P93zxGoyH+vKAXF+hAK6r9bHxvg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6f5d2c42-21b0-6741-deb7-e154163fc0bb@amsat.org>
+Date: Fri, 22 Sep 2017 14:58:24 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.2.1
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20170922160111.31885-1-f4bug@amsat.org>
+In-Reply-To: <CAFEAcA8oovA56LwFtKoY1c-P93zxGoyH+vKAXF+hAK6r9bHxvg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 188.40.64.40
-Subject: Re: [Qemu-trivial] [PATCH 23/34] hw/dma/i8257: rename DMA_init() to
- i8257_dma_init()
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: Re: [Qemu-trivial] [PATCH 02/34] hw: remove "qemu/osdep.h" from
+ header files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,252 +86,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Sep 2017 17:43:50 -0000
+X-List-Received-Date: Fri, 22 Sep 2017 17:58:34 -0000
 
-Hi,
-
-Le 22/09/2017 à 18:01, Philippe Mathieu-Daudé a écrit :
-> - move the header from hw/isa/ to hw/dma/
-> - add entry for i82374 in MAINTAINERS
-> - remove the old i386/pc dependency
+On 09/22/2017 01:07 PM, Peter Maydell wrote:
+> On 22 September 2017 at 16:39, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> while here, add entries for ppc4xx_i2c in MAINTAINERS
+>>
+>> applied using ./scripts/clean-includes
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/{isa/i8257.h => dma/i8257_dma.h} | 6 ++++++
->   include/hw/isa/isa.h                        | 2 --
->   hw/dma/i82374.c                             | 3 ++-
->   hw/dma/i8257.c                              | 4 ++--
->   hw/i386/pc.c                                | 3 ++-
->   hw/mips/mips_fulong2e.c                     | 3 ++-
->   hw/mips/mips_jazz.c                         | 3 ++-
->   hw/mips/mips_malta.c                        | 3 ++-
->   hw/sparc/sun4m.c                            | 4 ----
->   hw/sparc64/sun4u.c                          | 4 ----
->   MAINTAINERS                                 | 2 ++
->   11 files changed, 20 insertions(+), 17 deletions(-)
->   rename include/hw/{isa/i8257.h => dma/i8257_dma.h} (86%)
+> This is doing two things at once and would ideally be
+> two patches. Still,
+
+OK I'll split "while here" patches.
+
 > 
-> diff --git a/include/hw/isa/i8257.h b/include/hw/dma/i8257_dma.h
-> similarity index 86%
-> rename from include/hw/isa/i8257.h
-> rename to include/hw/dma/i8257_dma.h
-> index 88a2766a3f..0041565177 100644
-> --- a/include/hw/isa/i8257.h
-> +++ b/include/hw/dma/i8257_dma.h
-> @@ -1,6 +1,10 @@
->   #ifndef HW_I8257_H
->   #define HW_I8257_H
->   
-> +#include "hw/hw.h"
-> +#include "hw/isa/isa.h"
-> +#include "exec/ioport.h"
-> +
->   #define TYPE_I8257 "i8257"
->   
->   typedef struct I8257Regs {
-> @@ -40,4 +44,6 @@ typedef struct I8257State {
->       PortioList portio_pageh;
->   } I8257State;
->   
-> +void i8257_dma_init(ISABus *bus, int high_page_enable);
-> +
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-As you're changing the DMA_init prototype, can you add an Error **errp parameter,
-and pass &error_abort in each caller?
-
-See http://lists.gnu.org/archive/html/qemu-devel/2017-09/msg00262.html for more details
-
-Hervé
-
->   #endif
-> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
-> index 95593408ef..b9dbab24b4 100644
-> --- a/include/hw/isa/isa.h
-> +++ b/include/hw/isa/isa.h
-> @@ -151,6 +151,4 @@ static inline ISABus *isa_bus_from_device(ISADevice *d)
->       return ISA_BUS(qdev_get_parent_bus(DEVICE(d)));
->   }
->   
-> -/* i8257.c */
-> -void DMA_init(ISABus *bus, int high_page_enable);
->   #endif
-> diff --git a/hw/dma/i82374.c b/hw/dma/i82374.c
-> index 6c0f975df0..4048bedcf2 100644
-> --- a/hw/dma/i82374.c
-> +++ b/hw/dma/i82374.c
-> @@ -24,6 +24,7 @@
->   
->   #include "qemu/osdep.h"
->   #include "hw/isa/isa.h"
-> +#include "hw/dma/i8257_dma.h"
->   
->   #define TYPE_I82374 "i82374"
->   #define I82374(obj) OBJECT_CHECK(I82374State, (obj), TYPE_I82374)
-> @@ -123,7 +124,7 @@ static void i82374_realize(DeviceState *dev, Error **errp)
->       portio_list_add(&s->port_list, isa_address_space_io(&s->parent_obj),
->                       s->iobase);
->   
-> -    DMA_init(isa_bus_from_device(ISA_DEVICE(dev)), 1);
-> +    i8257_dma_init(isa_bus_from_device(ISA_DEVICE(dev)), 1);
->       memset(s->commands, 0, sizeof(s->commands));
->   }
->   
-> diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c
-> index bd23e893bf..a8f26b003b 100644
-> --- a/hw/dma/i8257.c
-> +++ b/hw/dma/i8257.c
-> @@ -24,7 +24,7 @@
->   #include "qemu/osdep.h"
->   #include "hw/hw.h"
->   #include "hw/isa/isa.h"
-> -#include "hw/isa/i8257.h"
-> +#include "hw/dma/i8257_dma.h"
->   #include "qemu/main-loop.h"
->   #include "trace.h"
->   
-> @@ -622,7 +622,7 @@ static void i8257_register_types(void)
->   
->   type_init(i8257_register_types)
->   
-> -void DMA_init(ISABus *bus, int high_page_enable)
-> +void i8257_dma_init(ISABus *bus, int high_page_enable)
->   {
->       ISADevice *isa1, *isa2;
->       DeviceState *d;
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 3aa10c780b..76d4be5991 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -39,6 +39,7 @@
->   #include "elf.h"
->   #include "multiboot.h"
->   #include "hw/timer/mc146818rtc.h"
-> +#include "hw/dma/i8257_dma.h"
->   #include "hw/timer/i8254.h"
->   #include "hw/input/i8042.h"
->   #include "hw/audio/pcspk.h"
-> @@ -1582,7 +1583,7 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
->       port92_init(port92, a20_line[1]);
->       g_free(a20_line);
->   
-> -    DMA_init(isa_bus, 0);
-> +    i8257_dma_init(isa_bus, 0);
->   
->       for(i = 0; i < MAX_FD; i++) {
->           fd[i] = drive_get(IF_FLOPPY, 0, i);
-> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-> index a35745a407..6dc6a0ac18 100644
-> --- a/hw/mips/mips_fulong2e.c
-> +++ b/hw/mips/mips_fulong2e.c
-> @@ -22,6 +22,7 @@
->   #include "qapi/error.h"
->   #include "hw/hw.h"
->   #include "hw/i386/pc.h"
-> +#include "hw/dma/i8257_dma.h"
->   #include "hw/char/serial.h"
->   #include "hw/block/fdc.h"
->   #include "net/net.h"
-> @@ -365,7 +366,7 @@ static void mips_fulong2e_init(MachineState *machine)
->   
->       /* init other devices */
->       pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
-> -    DMA_init(isa_bus, 0);
-> +    i8257_dma_init(isa_bus, 0);
->   
->       /* Super I/O */
->       isa_create_simple(isa_bus, TYPE_I8042);
-> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-> index 1bbef7eeb5..1b54602c1d 100644
-> --- a/hw/mips/mips_jazz.c
-> +++ b/hw/mips/mips_jazz.c
-> @@ -27,6 +27,7 @@
->   #include "hw/mips/mips.h"
->   #include "hw/mips/cpudevs.h"
->   #include "hw/i386/pc.h"
-> +#include "hw/dma/i8257_dma.h"
->   #include "hw/char/serial.h"
->   #include "hw/isa/isa.h"
->   #include "hw/block/fdc.h"
-> @@ -223,7 +224,7 @@ static void mips_jazz_init(MachineState *machine,
->       /* ISA devices */
->       i8259 = i8259_init(isa_bus, env->irq[4]);
->       isa_bus_irqs(isa_bus, i8259);
-> -    DMA_init(isa_bus, 0);
-> +    i8257_dma_init(isa_bus, 0);
->       pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
->       pcspk_init(isa_bus, pit);
->   
-> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-> index 45c7f589aa..050da36f1d 100644
-> --- a/hw/mips/mips_malta.c
-> +++ b/hw/mips/mips_malta.c
-> @@ -27,6 +27,7 @@
->   #include "cpu.h"
->   #include "hw/hw.h"
->   #include "hw/i386/pc.h"
-> +#include "hw/dma/i8257_dma.h"
->   #include "hw/char/serial.h"
->   #include "hw/block/fdc.h"
->   #include "net/net.h"
-> @@ -1219,7 +1220,7 @@ void mips_malta_init(MachineState *machine)
->       smbus_eeprom_init(smbus, 8, smbus_eeprom_buf, smbus_eeprom_size);
->       g_free(smbus_eeprom_buf);
->       pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
-> -    DMA_init(isa_bus, 0);
-> +    i8257_dma_init(isa_bus, 0);
->   
->       /* Super I/O */
->       isa_create_simple(isa_bus, TYPE_I8042);
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index e1bdd4828d..a4ba3d2917 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -101,10 +101,6 @@ struct sun4m_hwdef {
->       uint8_t nvram_machine_id;
->   };
->   
-> -void DMA_init(ISABus *bus, int high_page_enable)
-> -{
-> -}
-> -
->   static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->                               Error **errp)
->   {
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index 973daed977..fd10741607 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -86,10 +86,6 @@ typedef struct EbusState {
->       MemoryRegion bar1;
->   } EbusState;
->   
-> -void DMA_init(ISABus *bus, int high_page_enable)
-> -{
-> -}
-> -
->   static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->                               Error **errp)
->   {
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cc1f8bb66b..a79723601c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -707,6 +707,7 @@ F: hw/ppc/rs6000_mc.c
->   F: hw/pci-host/prep.[hc]
->   F: hw/isa/i82378.c
->   F: hw/isa/pc87312.[hc]
-> +F: hw/dma/i82374.c
->   F: pc-bios/ppc_rom.bin
->   
->   sPAPR
-> @@ -849,6 +850,7 @@ F: hw/misc/pc-testdev.c
->   F: hw/timer/hpet*
->   F: hw/timer/i8254*
->   F: hw/timer/mc146818rtc*
-> +F: include/hw/dma/i8257_dma.h
->   F: include/hw/i2c/pm_smbus.h
->   F: include/hw/input/i8042.h
->   F: include/hw/timer/hpet.h
-> 
-
+Thanks!
 
