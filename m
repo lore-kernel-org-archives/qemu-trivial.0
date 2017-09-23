@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvd0V-0007WT-Fp
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2017 01:29:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36340)
+	id 1dvd0X-0007Zq-Qr
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2017 01:29:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd0Q-0007P7-4N
-	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:35 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1dvd0U-0007VB-Kk
+	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd0M-0002F7-Sv
-	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:34 -0400
-Received: from ozlabs.org ([103.22.144.67]:60467)
+	(envelope-from <dgibson@ozlabs.org>) id 1dvd0T-0002J6-CD
+	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:38 -0400
+Received: from ozlabs.org ([103.22.144.67]:34539)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1dvd0G-00029u-Ba; Sat, 23 Sep 2017 01:29:24 -0400
+	id 1dvd0K-0002A1-7y; Sat, 23 Sep 2017 01:29:28 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xzf6R6FVTz9t3w; Sat, 23 Sep 2017 15:29:19 +1000 (AEST)
+	id 3xzf6S1Cy2z9t42; Sat, 23 Sep 2017 15:29:19 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1506144559;
-	bh=esW/+Pi5zbqQzWFAlHDFsKt+BkR37b7mI0KJap01vWk=;
+	d=gibson.dropbear.id.au; s=201602; t=1506144560;
+	bh=lD7b9XbWM2PZ9SFsg0uxzn91Cz0bUZn4je2vN+xUeg8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UFulw7CbUHpxVvDgWi66V3Gybx2VHm4wldzgvCN5DyxY1Zx8pEw1i3ujxE1mosO9y
-	b4/ryOLkM2fcrmgQauBeYL3fZkjv8ilkeXMuXwdL+JqHZeT3mJbjsZdxY8m80P5gRi
-	YrpJykvcCc/mMK79Hv6bWfcDWytsoaW4UMdAbGjE=
-Date: Sat, 23 Sep 2017 15:14:03 +1000
+	b=aM/GtyFIcXwetzQC56jrBLY5uLWLSSMWXczwctRgI1JSK0Ft8qsfOiPKBMCXHiIiO
+	hKsNAtXWPxoIoNCU4azqbcaKcui3Ref3z9DvO4EaF30LmG14OlpCapnEZwdSgLNZD4
+	OxVGIj1uV1stzQyTIQModQOO9c830UziFnzwJZ5M=
+Date: Sat, 23 Sep 2017 15:14:39 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -30,22 +30,23 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Marcel Apfelbaum <marcel@redhat.com>,
 	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>,
 	Alexander Graf <agraf@suse.de>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170923051403.GD4998@umbus.fritz.box>
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, qemu-devel@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170923051439.GE4998@umbus.fritz.box>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-8-f4bug@amsat.org>
+	<20170922160111.31885-10-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="FJ766Kk/2p6HVARF"
+	protocol="application/pgp-signature"; boundary="eQ8QKBgzzGzhafWG"
 Content-Disposition: inline
-In-Reply-To: <20170922160111.31885-8-f4bug@amsat.org>
+In-Reply-To: <20170922160111.31885-10-f4bug@amsat.org>
 User-Agent: Mutt/1.9.0 (2017-09-02)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH 30/34] hw/net/pcnet: use TYPE_PCI_PCNET
+Subject: Re: [Qemu-trivial] [PATCH 32/34] hw/net/ne2000: use TYPE_PCI_NE2000
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,96 +58,144 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Sep 2017 05:29:35 -0000
+X-List-Received-Date: Sat, 23 Sep 2017 05:29:40 -0000
 
 
---FJ766Kk/2p6HVARF
+--eQ8QKBgzzGzhafWG
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Sep 22, 2017 at 01:01:07PM -0300, Philippe Mathieu-Daud=E9 wrote:
+On Fri, Sep 22, 2017 at 01:01:09PM -0300, Philippe Mathieu-Daud=E9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-ppc portion
+ppc portions
 
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  include/hw/net/pci.h | 1 +
->  hw/mips/mips_malta.c | 2 +-
->  hw/net/pcnet-pci.c   | 3 +--
->  hw/ppc/prep.c        | 3 ++-
->  4 files changed, 5 insertions(+), 4 deletions(-)
+>  include/hw/net/pci.h  | 1 +
+>  hw/net/ne2000.c       | 3 ++-
+>  hw/ppc/mac_newworld.c | 3 ++-
+>  hw/ppc/mac_oldworld.c | 3 ++-
+>  hw/ppc/prep.c         | 2 +-
+>  hw/sparc64/sun4u.c    | 3 ++-
+>  6 files changed, 10 insertions(+), 5 deletions(-)
 >=20
 > diff --git a/include/hw/net/pci.h b/include/hw/net/pci.h
-> index 92111f86f3..5ad5487a91 100644
+> index 43ed3b0145..da733dd1d9 100644
 > --- a/include/hw/net/pci.h
 > +++ b/include/hw/net/pci.h
 > @@ -15,6 +15,7 @@
 > =20
 >  #define TYPE_PCI_E1000      "e1000"
 >  #define TYPE_PCI_E1000E     "e1000e"
-> +#define TYPE_PCI_PCNET      "pcnet"
+> +#define TYPE_PCI_NE2000     "ne2k_pci"
+>  #define TYPE_PCI_PCNET      "pcnet"
+>  #define TYPE_PCI_RTL8139    "rtl8139"
 > =20
->  PCIDevice *pci_nic_init_nofail(NICInfo *nd, PCIBus *rootbus,
->                                 const char *default_model,
-> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-> index fb6a2f9363..921678fdb0 100644
-> --- a/hw/mips/mips_malta.c
-> +++ b/hw/mips/mips_malta.c
-> @@ -597,7 +597,7 @@ static void network_init(PCIBus *pci_bus)
->              /* The malta board has a PCNet card using PCI SLOT 11 */
->              default_devaddr =3D "0b";
-> =20
-> -        pci_nic_init_nofail(nd, pci_bus, "pcnet", default_devaddr);
-> +        pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_PCNET, default_devaddr=
-);
->      }
->  }
-> =20
-> diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
-> index 0acf8a4879..878e2c89c1 100644
-> --- a/hw/net/pcnet-pci.c
-> +++ b/hw/net/pcnet-pci.c
-> @@ -29,6 +29,7 @@
-> =20
+> diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+> index 29bd4adb3f..b0a664d302 100644
+> --- a/hw/net/ne2000.c
+> +++ b/hw/net/ne2000.c
+> @@ -23,6 +23,7 @@
+>   */
 >  #include "qemu/osdep.h"
 >  #include "hw/pci/pci.h"
 > +#include "hw/net/pci.h"
->  #include "net/net.h"
+>  #include "ne2000.h"
 >  #include "hw/loader.h"
->  #include "qemu/timer.h"
-> @@ -46,8 +47,6 @@
->  //#define PCNET_DEBUG_TMD
->  //#define PCNET_DEBUG_MATCH
+>  #include "sysemu/sysemu.h"
+> @@ -779,7 +780,7 @@ static void ne2000_class_init(ObjectClass *klass, voi=
+d *data)
+>  }
 > =20
-> -#define TYPE_PCI_PCNET "pcnet"
-> -
->  #define PCI_PCNET(obj) \
->       OBJECT_CHECK(PCIPCNetState, (obj), TYPE_PCI_PCNET)
+>  static const TypeInfo ne2000_info =3D {
+> -    .name          =3D "ne2k_pci",
+> +    .name          =3D TYPE_PCI_NE2000,
+>      .parent        =3D TYPE_PCI_DEVICE,
+>      .instance_size =3D sizeof(PCINE2000State),
+>      .class_init    =3D ne2000_class_init,
+> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+> index 33b46cb50b..2afc35c27f 100644
+> --- a/hw/ppc/mac_newworld.c
+> +++ b/hw/ppc/mac_newworld.c
+> @@ -55,6 +55,7 @@
+>  #include "hw/ppc/mac_dbdma.h"
+>  #include "hw/timer/m48t59.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/net/pci.h"
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+> @@ -435,7 +436,7 @@ static void ppc_core99_init(MachineState *machine)
+>      }
 > =20
+>      for (i =3D 0; i < nb_nics; i++) {
+> -        pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
+> +        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, NULL=
+);
+>      }
+> =20
+>      /* The NewWorld NVRAM is not located in the MacIO device */
+> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+> index 193b9047d9..8096e5a126 100644
+> --- a/hw/ppc/mac_oldworld.c
+> +++ b/hw/ppc/mac_oldworld.c
+> @@ -34,6 +34,7 @@
+>  #include "net/net.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/net/pci.h"
+>  #include "hw/boards.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/char/escc.h"
+> @@ -278,7 +279,7 @@ static void ppc_heathrow_init(MachineState *machine)
+>                               escc_mem, 0, memory_region_size(escc_mem));
+> =20
+>      for(i =3D 0; i < nb_nics; i++)
+> -        pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
+> +        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, NULL=
+);
+> =20
+> =20
+>      ide_drive_get(hd, ARRAY_SIZE(hd));
 > diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index fb330a1769..b2c7a62ebc 100644
+> index b2c7a62ebc..103beafef3 100644
 > --- a/hw/ppc/prep.c
 > +++ b/hw/ppc/prep.c
-> @@ -44,6 +44,7 @@
->  #include "hw/input/i8042.h"
->  #include "hw/isa/pc87312.h"
->  #include "hw/net/ne2000-isa.h"
-> +#include "hw/net/pci.h"
->  #include "sysemu/block-backend.h"
->  #include "sysemu/arch_init.h"
->  #include "sysemu/kvm.h"
-> @@ -800,7 +801,7 @@ static void ibm_40p_init(MachineState *machine)
->          pci_vga_init(pci_bus);
-> =20
->          for (i =3D 0; i < nb_nics; i++) {
-> -            pci_nic_init_nofail(&nd_table[i], pci_bus, "pcnet",
-> +            pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_PCNET,
->                                  i =3D=3D 0 ? "3" : NULL);
+> @@ -636,7 +636,7 @@ static void ppc_prep_init(MachineState *machine)
+>              isa_ne2000_init(isa_bus, ne2000_io[i], ne2000_irq[i],
+>                              &nd_table[i]);
+>          } else {
+> -            pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
+> +            pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, =
+NULL);
 >          }
 >      }
+> =20
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index fd10741607..67879c5135 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -32,6 +32,7 @@
+>  #include "hw/char/serial.h"
+>  #include "hw/timer/m48t59.h"
+>  #include "hw/input/i8042.h"
+> +#include "hw/net/pci.h"
+>  #include "hw/block/fdc.h"
+>  #include "net/net.h"
+>  #include "qemu/timer.h"
+> @@ -476,7 +477,7 @@ static void sun4uv_init(MemoryRegion *address_space_m=
+em,
+> =20
+>              onboard_nic_idx =3D i;
+>          } else {
+> -            pci_nic_init_nofail(nd, pci_bus, "ne2k_pci", NULL);
+> +            pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_NE2000, NULL);
+>          }
+>      }
+>      onboard_nic_idx =3D MAX(onboard_nic_idx, 0);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -154,25 +203,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---FJ766Kk/2p6HVARF
+--eQ8QKBgzzGzhafWG
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnF7ZsACgkQbDjKyiDZ
-s5KjEg/+PDQr+QccK4hE+upZjmuJzkuQILaiTRxsukyodpODDlkBzPu+/he7kPU1
-6InBbk7UJKI8MXOvp48j9JHwCLN0mhVYuNU+A+vb6EQvZgEAs1noQt80JPEjjeuI
-xpZq5lqGQ5aXsRxhY6L/cW7xpGJmJQ+VyMAE58tjmUTcznASUgdD9YB1Xdg81daA
-AwOkAvzWYal3ct4MDQ2vB6M/fS9wZtl6QXt8uovBH6xleVrGW0AtyWZo68mEE1+u
-eGpfS76ZyR7I39H/5cBViz7jBwAtKPx06VzMayiz9/O8nmGcDWI/fN3dy0l8GEfU
-MhK3fzwhgO8W6hTSr5F57ECpAUq2O/0M6zGbX+9IvK/6g9b1GsV8BcaD1AZsWV+x
-HIHhv1GhIHszn4INizTML/Y2E6Q+qquYVceMHPUgXbgN9bGMxLuP9aEUJ7Wq1msU
-uAPb1pQwQIPXnhh1U645JcH4NpnB5ADoJkq2kJeRSLzUetnSqG40HWjgwBVM4wm2
-SvgCw+l0p8XRA9MnM1Fq3Bvu4AZeZKv2aCf+jSh9ko2PUStb8t2kzlctDLVEr7ak
-bntLKlVqQaRpA6Lq+id0BIOR7ZLmBHhuVPhgS4fN7UOKksEoG+zDQQXG2HWffBsk
-sn0tjeOCkZ+/o8tU3ZuG/TJa8wo6lkPgcMrWgrG+6juTRneOgF0=
-=4mXj
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnF7b8ACgkQbDjKyiDZ
+s5LW5w/9G8+GXm5Doj+lxWuroVUfLx8CFKwO8J+KeHHK4s+zSrdTEqLDvnnw19qN
+Hqj65mA+Z/eYhyI12ylP3QyWJrcjvNTZwPccpjoXWzdxhY+L0MbY0RO+vbE3Amgr
+hqCoJQu5/A6ssU9yMf8yYv6ol1yNPwoHqyiCNGn0CiKzkdeO49pih00ALB0xkk1J
+3wtgQ8JMqSbNy8G7gWM4pwDs5BSw9xJz3M7PHx+KBaeIqFmkgrdzmzojMZ/wa4DB
+JGvyA4f4e4P7Ot3JDWl6teblQwjrQaVf/gtlLeM1aKEqxiCUfJabgzeKI1n7SKZB
+3SwBvBBP0aBhSO7Klsk9T7IYG9/hvrvP3cquMwyfY714TwV2TkjESEtWE1GESoZ6
+jBttZpgkGhcsM4Xs0z1V1PggF3IzUkwUWkw8W/lYSVXmAEgabhMSOAoqw7Kby+ig
+Y2BBNFevpDM19ldINPMFtBXcZLfUNsUDNXJZh4CcKKCkfkj9NMZ9EdZXgvaS8A18
+I6/s1w45AGK3qmzIf4PNfqVhXW9pQsxZ4vQDIhILGCyXkAxZNp3pIvM4P6Vi7zM/
+PG/1fvnfC8d6vNzbhay7zZ3weMfDLS0fCLS8CKo2cTpPCiA3EIk+aV/hpCrjl9XI
+gNfTNwYwHivn0KF5BoI/fBsgH73xFRXNw44TIKWvrH6KuYUQACE=
+=Zd0Q
 -----END PGP SIGNATURE-----
 
---FJ766Kk/2p6HVARF--
+--eQ8QKBgzzGzhafWG--
 
