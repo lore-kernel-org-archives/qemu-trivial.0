@@ -1,52 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvd0X-0007Zq-Qr
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2017 01:29:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36389)
+	id 1dvd0Z-0007b3-23
+	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2017 01:29:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd0U-0007VB-Kk
+	(envelope-from <dgibson@ozlabs.org>) id 1dvd0V-0007Vq-5H
 	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd0T-0002J6-CD
-	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:38 -0400
-Received: from ozlabs.org ([103.22.144.67]:34539)
+	(envelope-from <dgibson@ozlabs.org>) id 1dvd0T-0002JB-Ja
+	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:29:39 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:49783)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1dvd0K-0002A1-7y; Sat, 23 Sep 2017 01:29:28 -0400
+	id 1dvd0K-00029z-DS; Sat, 23 Sep 2017 01:29:29 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xzf6S1Cy2z9t42; Sat, 23 Sep 2017 15:29:19 +1000 (AEST)
+	id 3xzf6S0Yw6z9t4B; Sat, 23 Sep 2017 15:29:19 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1506144560;
-	bh=lD7b9XbWM2PZ9SFsg0uxzn91Cz0bUZn4je2vN+xUeg8=;
+	bh=AVUYf9pVGuzUZXwHKAwQaZ0340AUvio224kBJ7yce0Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aM/GtyFIcXwetzQC56jrBLY5uLWLSSMWXczwctRgI1JSK0Ft8qsfOiPKBMCXHiIiO
-	hKsNAtXWPxoIoNCU4azqbcaKcui3Ref3z9DvO4EaF30LmG14OlpCapnEZwdSgLNZD4
-	OxVGIj1uV1stzQyTIQModQOO9c830UziFnzwJZ5M=
-Date: Sat, 23 Sep 2017 15:14:39 +1000
+	b=UFVw0UtE1TSJkhAx1bBp4pLykhv9B2iTeDoJLU03ef1zQUBTrA0oOb08cJO8ZCR8T
+	EQhHIArncCj1EX/ZJhXcCUDmq8s74/ftvzukiyZtgbi02k3RhU2RaabzSJ4i86XY7i
+	c1guDsu0zz0bz+7iNXIp5wxOVoK90pgQ2kcUltYo=
+Date: Sat, 23 Sep 2017 15:11:53 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel@redhat.com>,
 	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
 	Alexander Graf <agraf@suse.de>, Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, qemu-devel@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170923051439.GE4998@umbus.fritz.box>
+	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170923051153.GA4998@umbus.fritz.box>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-10-f4bug@amsat.org>
+	<20170922160111.31885-4-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="eQ8QKBgzzGzhafWG"
+	protocol="application/pgp-signature"; boundary="QxSStYAgvEtE+iQJ"
 Content-Disposition: inline
-In-Reply-To: <20170922160111.31885-10-f4bug@amsat.org>
+In-Reply-To: <20170922160111.31885-4-f4bug@amsat.org>
 User-Agent: Mutt/1.9.0 (2017-09-02)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH 32/34] hw/net/ne2000: use TYPE_PCI_NE2000
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [PATCH 26/34] hw/net/ne2000: extract ne2k-isa
+ code from i386/pc to ne2000-isa.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,141 +57,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 X-List-Received-Date: Sat, 23 Sep 2017 05:29:40 -0000
 
 
---eQ8QKBgzzGzhafWG
+--QxSStYAgvEtE+iQJ
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Sep 22, 2017 at 01:01:09PM -0300, Philippe Mathieu-Daud=E9 wrote:
+On Fri, Sep 22, 2017 at 01:01:03PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> - add "hw/net/ne2000-isa.h" (and new entry in MAINTAINERS)
+> - remove the old i386 dependency
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-ppc portions
+ppc portion
 
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  include/hw/net/pci.h  | 1 +
->  hw/net/ne2000.c       | 3 ++-
->  hw/ppc/mac_newworld.c | 3 ++-
->  hw/ppc/mac_oldworld.c | 3 ++-
->  hw/ppc/prep.c         | 2 +-
->  hw/sparc64/sun4u.c    | 3 ++-
->  6 files changed, 10 insertions(+), 5 deletions(-)
+>  hw/net/ne2000.h             |  3 +++
+>  include/hw/i386/pc.h        | 20 --------------------
+>  include/hw/net/ne2000-isa.h | 33 +++++++++++++++++++++++++++++++++
+>  hw/i386/pc.c                |  1 +
+>  hw/mips/mips_r4k.c          |  1 +
+>  hw/net/ne2000-isa.c         |  6 ++----
+>  hw/net/ne2000.c             |  2 --
+>  hw/ppc/prep.c               |  1 +
+>  MAINTAINERS                 |  1 +
+>  9 files changed, 42 insertions(+), 26 deletions(-)
+>  create mode 100644 include/hw/net/ne2000-isa.h
 >=20
-> diff --git a/include/hw/net/pci.h b/include/hw/net/pci.h
-> index 43ed3b0145..da733dd1d9 100644
-> --- a/include/hw/net/pci.h
-> +++ b/include/hw/net/pci.h
-> @@ -15,6 +15,7 @@
+> diff --git a/hw/net/ne2000.h b/hw/net/ne2000.h
+> index d213dccae3..adb8021bd1 100644
+> --- a/hw/net/ne2000.h
+> +++ b/hw/net/ne2000.h
+> @@ -1,6 +1,9 @@
+>  #ifndef HW_NE2000_H
+>  #define HW_NE2000_H
 > =20
->  #define TYPE_PCI_E1000      "e1000"
->  #define TYPE_PCI_E1000E     "e1000e"
-> +#define TYPE_PCI_NE2000     "ne2k_pci"
->  #define TYPE_PCI_PCNET      "pcnet"
->  #define TYPE_PCI_RTL8139    "rtl8139"
+> +#include "hw/hw.h"
+> +#include "net/net.h"
+> +
+>  #define NE2000_PMEM_SIZE    (32*1024)
+>  #define NE2000_PMEM_START   (16*1024)
+>  #define NE2000_PMEM_END     (NE2000_PMEM_SIZE+NE2000_PMEM_START)
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 6a2e947332..020792c2e8 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -291,26 +291,6 @@ PCIBus *find_i440fx(void);
+>  extern PCIDevice *piix4_dev;
+>  int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
 > =20
-> diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
-> index 29bd4adb3f..b0a664d302 100644
-> --- a/hw/net/ne2000.c
-> +++ b/hw/net/ne2000.c
-> @@ -23,6 +23,7 @@
+> -/* ne2000.c */
+> -static inline bool isa_ne2000_init(ISABus *bus, int base, int irq, NICIn=
+fo *nd)
+> -{
+> -    DeviceState *dev;
+> -    ISADevice *isadev;
+> -
+> -    qemu_check_nic_model(nd, "ne2k_isa");
+> -
+> -    isadev =3D isa_try_create(bus, "ne2k_isa");
+> -    if (!isadev) {
+> -        return false;
+> -    }
+> -    dev =3D DEVICE(isadev);
+> -    qdev_prop_set_uint32(dev, "iobase", base);
+> -    qdev_prop_set_uint32(dev, "irq",    irq);
+> -    qdev_set_nic_properties(dev, nd);
+> -    qdev_init_nofail(dev);
+> -    return true;
+> -}
+> -
+>  /* pc_sysfw.c */
+>  void pc_system_firmware_init(MemoryRegion *rom_memory,
+>                               bool isapc_ram_fw);
+> diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
+> new file mode 100644
+> index 0000000000..ff2bed9c95
+> --- /dev/null
+> +++ b/include/hw/net/ne2000-isa.h
+> @@ -0,0 +1,33 @@
+> +/*
+> + * QEMU NE2000 emulation -- isa bus windup
+> + *
+> + * Copyright (c) 2003-2004 Fabrice Bellard
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +#include "hw/hw.h"
+> +#include "hw/qdev.h"
+> +#include "hw/isa/isa.h"
+> +#include "net/net.h"
+> +
+> +#define TYPE_ISA_NE2000 "ne2k_isa"
+> +
+> +static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
+> +                                         NICInfo *nd)
+> +{
+> +    ISADevice *d;
+> +
+> +    qemu_check_nic_model(nd, "ne2k_isa");
+> +
+> +    d =3D isa_try_create(bus, TYPE_ISA_NE2000);
+> +    if (d) {
+> +        DeviceState *dev =3D DEVICE(d);
+> +
+> +        qdev_prop_set_uint32(dev, "iobase", base);
+> +        qdev_prop_set_uint32(dev, "irq",    irq);
+> +        qdev_set_nic_properties(dev, nd);
+> +        qdev_init_nofail(dev);
+> +    }
+> +    return d;
+> +}
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 788844e0de..085577e066 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -71,6 +71,7 @@
+>  #include "qom/cpu.h"
+>  #include "hw/nmi.h"
+>  #include "hw/i386/intel_iommu.h"
+> +#include "hw/net/ne2000-isa.h"
+> =20
+>  /* debug PC/ISA interrupts */
+>  //#define DEBUG_IRQ
+> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+> index 349da59912..33ff89f02c 100644
+> --- a/hw/mips/mips_r4k.c
+> +++ b/hw/mips/mips_r4k.c
+> @@ -18,6 +18,7 @@
+>  #include "hw/char/serial.h"
+>  #include "hw/isa/isa.h"
+>  #include "net/net.h"
+> +#include "hw/net/ne2000-isa.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+>  #include "hw/block/flash.h"
+> diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
+> index f3455339ee..70e5c1d3d4 100644
+> --- a/hw/net/ne2000-isa.c
+> +++ b/hw/net/ne2000-isa.c
+> @@ -22,17 +22,15 @@
+>   * THE SOFTWARE.
 >   */
 >  #include "qemu/osdep.h"
+> -#include "hw/hw.h"
+> -#include "hw/i386/pc.h"
+>  #include "hw/isa/isa.h"
+> +#include "hw/net/ne2000-isa.h"
+>  #include "hw/qdev.h"
+> -#include "net/net.h"
+>  #include "ne2000.h"
+> +#include "sysemu/sysemu.h"
+>  #include "exec/address-spaces.h"
+>  #include "qapi/error.h"
+>  #include "qapi/visitor.h"
+> =20
+> -#define TYPE_ISA_NE2000 "ne2k_isa"
+>  #define ISA_NE2000(obj) OBJECT_CHECK(ISANE2000State, (obj), TYPE_ISA_NE2=
+000)
+> =20
+>  typedef struct ISANE2000State {
+> diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+> index 798d681e25..29bd4adb3f 100644
+> --- a/hw/net/ne2000.c
+> +++ b/hw/net/ne2000.c
+> @@ -22,9 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> -#include "hw/hw.h"
 >  #include "hw/pci/pci.h"
-> +#include "hw/net/pci.h"
+> -#include "net/net.h"
 >  #include "ne2000.h"
 >  #include "hw/loader.h"
 >  #include "sysemu/sysemu.h"
-> @@ -779,7 +780,7 @@ static void ne2000_class_init(ObjectClass *klass, voi=
-d *data)
->  }
-> =20
->  static const TypeInfo ne2000_info =3D {
-> -    .name          =3D "ne2k_pci",
-> +    .name          =3D TYPE_PCI_NE2000,
->      .parent        =3D TYPE_PCI_DEVICE,
->      .instance_size =3D sizeof(PCINE2000State),
->      .class_init    =3D ne2000_class_init,
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index 33b46cb50b..2afc35c27f 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -55,6 +55,7 @@
->  #include "hw/ppc/mac_dbdma.h"
->  #include "hw/timer/m48t59.h"
->  #include "hw/pci/pci.h"
-> +#include "hw/net/pci.h"
->  #include "net/net.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
-> @@ -435,7 +436,7 @@ static void ppc_core99_init(MachineState *machine)
->      }
-> =20
->      for (i =3D 0; i < nb_nics; i++) {
-> -        pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
-> +        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, NULL=
-);
->      }
-> =20
->      /* The NewWorld NVRAM is not located in the MacIO device */
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index 193b9047d9..8096e5a126 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -34,6 +34,7 @@
->  #include "net/net.h"
->  #include "hw/isa/isa.h"
->  #include "hw/pci/pci.h"
-> +#include "hw/net/pci.h"
->  #include "hw/boards.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "hw/char/escc.h"
-> @@ -278,7 +279,7 @@ static void ppc_heathrow_init(MachineState *machine)
->                               escc_mem, 0, memory_region_size(escc_mem));
-> =20
->      for(i =3D 0; i < nb_nics; i++)
-> -        pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
-> +        pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, NULL=
-);
-> =20
-> =20
->      ide_drive_get(hd, ARRAY_SIZE(hd));
 > diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index b2c7a62ebc..103beafef3 100644
+> index 1f8ef4819b..fb330a1769 100644
 > --- a/hw/ppc/prep.c
 > +++ b/hw/ppc/prep.c
-> @@ -636,7 +636,7 @@ static void ppc_prep_init(MachineState *machine)
->              isa_ne2000_init(isa_bus, ne2000_io[i], ne2000_irq[i],
->                              &nd_table[i]);
->          } else {
-> -            pci_nic_init_nofail(&nd_table[i], pci_bus, "ne2k_pci", NULL);
-> +            pci_nic_init_nofail(&nd_table[i], pci_bus, TYPE_PCI_NE2000, =
-NULL);
->          }
->      }
-> =20
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index fd10741607..67879c5135 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -32,6 +32,7 @@
->  #include "hw/char/serial.h"
->  #include "hw/timer/m48t59.h"
+> @@ -43,6 +43,7 @@
+>  #include "hw/timer/mc146818rtc.h"
 >  #include "hw/input/i8042.h"
-> +#include "hw/net/pci.h"
->  #include "hw/block/fdc.h"
->  #include "net/net.h"
->  #include "qemu/timer.h"
-> @@ -476,7 +477,7 @@ static void sun4uv_init(MemoryRegion *address_space_m=
-em,
+>  #include "hw/isa/pc87312.h"
+> +#include "hw/net/ne2000-isa.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/arch_init.h"
+>  #include "sysemu/kvm.h"
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3cb6bc190c..37917af0f0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -973,6 +973,7 @@ Network devices
+>  M: Jason Wang <jasowang@redhat.com>
+>  S: Odd Fixes
+>  F: hw/net/
+> +F: include/hw/net/
+>  F: tests/virtio-net-test.c
+>  T: git git://github.com/jasowang/qemu.git net
 > =20
->              onboard_nic_idx =3D i;
->          } else {
-> -            pci_nic_init_nofail(nd, pci_bus, "ne2k_pci", NULL);
-> +            pci_nic_init_nofail(nd, pci_bus, TYPE_PCI_NE2000, NULL);
->          }
->      }
->      onboard_nic_idx =3D MAX(onboard_nic_idx, 0);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -203,25 +265,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---eQ8QKBgzzGzhafWG
+--QxSStYAgvEtE+iQJ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnF7b8ACgkQbDjKyiDZ
-s5LW5w/9G8+GXm5Doj+lxWuroVUfLx8CFKwO8J+KeHHK4s+zSrdTEqLDvnnw19qN
-Hqj65mA+Z/eYhyI12ylP3QyWJrcjvNTZwPccpjoXWzdxhY+L0MbY0RO+vbE3Amgr
-hqCoJQu5/A6ssU9yMf8yYv6ol1yNPwoHqyiCNGn0CiKzkdeO49pih00ALB0xkk1J
-3wtgQ8JMqSbNy8G7gWM4pwDs5BSw9xJz3M7PHx+KBaeIqFmkgrdzmzojMZ/wa4DB
-JGvyA4f4e4P7Ot3JDWl6teblQwjrQaVf/gtlLeM1aKEqxiCUfJabgzeKI1n7SKZB
-3SwBvBBP0aBhSO7Klsk9T7IYG9/hvrvP3cquMwyfY714TwV2TkjESEtWE1GESoZ6
-jBttZpgkGhcsM4Xs0z1V1PggF3IzUkwUWkw8W/lYSVXmAEgabhMSOAoqw7Kby+ig
-Y2BBNFevpDM19ldINPMFtBXcZLfUNsUDNXJZh4CcKKCkfkj9NMZ9EdZXgvaS8A18
-I6/s1w45AGK3qmzIf4PNfqVhXW9pQsxZ4vQDIhILGCyXkAxZNp3pIvM4P6Vi7zM/
-PG/1fvnfC8d6vNzbhay7zZ3weMfDLS0fCLS8CKo2cTpPCiA3EIk+aV/hpCrjl9XI
-gNfTNwYwHivn0KF5BoI/fBsgH73xFRXNw44TIKWvrH6KuYUQACE=
-=Zd0Q
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnF7RkACgkQbDjKyiDZ
+s5KnGg//RtiYqDFPM6SYpVkaqnmqP3Ktfc65IMUKYcQGd7Sph5rJlbYF8P2r+RS2
+Q3k8SHxxKC3XfEbFu8SsI+JAHMmo/gnKgg9qnrYU9mM9cgV2RPprB4dAbNeSEsrZ
+sMKexVqb/AhtZG6DO9TdQxwhGvaq3DmMYz8xTGrMXDKC/Ph4BuDnhT9szND+auk4
+/v28k5gff/Pdn6a8iGSyusk/ODgW3ZPM8pjRFLWhpbvNT71avsHoeeyMT2kLoHAp
+pGGZJrEKjsdCa8OlXNZ9s5g013/ERnvxs1UF4WRW3T9CKB3Sg9ajCj37b5uynHe5
+1vf5hpbCIPtDWZSxLkb4RJEtzEkZN+qPAyBzEeNKAuU8gkT4Dlkv+tFnZBOm4vYP
+C1wPbctU7CqgrYt27YXdRO1akEHZFuJOgCLtUwRWzgtqbDB9xOJi3HOy8a5tWN4j
+9SSeCGmILkcmqiAHKCo+Z7gpSET3s5ZyJX/aF3WzFv4laCa3En4A5kMH53epxn8t
+qhmS2n4FsDb5mPdlyrK6u4O8IwIRFRke+6AYeV77Z6ecaNvlWX1H68jec9p4g/V4
+oE2iDaq+7qWXtu6yeCC1bCB4NTsAeBMfRBiJ+m5B90xx5/ZfskmY5oxW+brL2oSR
+F1uQfde87L+B4q7YRcHv7gQpiHsfYW37LaeGFL/BpRviQg3K/Vw=
+=nR+P
 -----END PGP SIGNATURE-----
 
---eQ8QKBgzzGzhafWG--
+--QxSStYAgvEtE+iQJ--
 
