@@ -1,46 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dvd2e-0000pi-8q
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2017 01:31:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36947)
+	id 1dwACc-00008N-6w
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Sep 2017 12:56:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51708)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd2X-0000j7-SZ
-	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:31:49 -0400
+	(envelope-from <mlureau@redhat.com>) id 1dwACZ-00006j-NS
+	for qemu-trivial@nongnu.org; Sun, 24 Sep 2017 12:56:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1dvd2V-0003ff-UN
-	for qemu-trivial@nongnu.org; Sat, 23 Sep 2017 01:31:44 -0400
-Received: from ozlabs.org ([103.22.144.67]:50411)
+	(envelope-from <mlureau@redhat.com>) id 1dwACZ-0007Et-1R
+	for qemu-trivial@nongnu.org; Sun, 24 Sep 2017 12:56:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43370)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1dvd2O-0003Yp-8J; Sat, 23 Sep 2017 01:31:36 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3xzf920w07z9t6K; Sat, 23 Sep 2017 15:31:34 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1506144694;
-	bh=6Fx55GnfoSv1AAyZSUireV5VKv7+k6C/Qf7TFwB1Vj4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KibyXawU3sfq/N36WPEJxtatQ9Vei8I7gLyYKnNMuRzFxn9VvCz/LKgcnbulGOD2k
-	VgSaaWps68E7gTm9fnOUGb8pVAgAgCL7cOW7jx0izvLTD8C2F2AtsjrcztuzeCSZIp
-	9xTAI1Cxynm+kDGaGLJzsqLtP3ezs7RlQ3SRLSVg=
-Date: Sat, 23 Sep 2017 15:31:28 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170923053127.GA12504@umbus>
-References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922154014.29350-7-f4bug@amsat.org>
+	(Exim 4.71) (envelope-from <mlureau@redhat.com>)
+	id 1dwACU-0007Ai-MC; Sun, 24 Sep 2017 12:56:14 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 73DBE356CE;
+	Sun, 24 Sep 2017 16:56:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 73DBE356CE
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=mlureau@redhat.com
+Received: from colo-mx.corp.redhat.com
+	(colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 66B6668D5C;
+	Sun, 24 Sep 2017 16:56:12 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 2D7751809547;
+	Sun, 24 Sep 2017 16:56:12 +0000 (UTC)
+Date: Sun, 24 Sep 2017 12:56:11 -0400 (EDT)
+From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+To: Liang Yan <lyan@suse.com>
+Cc: samuel thibault <samuel.thibault@ens-lyon.org>, pbonzini@redhat.com, 
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <1327714502.20871949.1506272171027.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20170922225533.1928-1-lyan@suse.com>
+References: <20170922225533.1928-1-lyan@suse.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ew6BAiZeqk4r7MaW"
-Content-Disposition: inline
-In-Reply-To: <20170922154014.29350-7-f4bug@amsat.org>
-User-Agent: Mutt/1.9.0 (2017-09-02)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.36.112.11, 10.4.195.1]
+Thread-Topic: chardev/baum: fix baum that releases brlapi twice
+Thread-Index: 6nz1Gd2bctgobkIGKXodg2DnFzbWMw==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Sun, 24 Sep 2017 16:56:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH 06/34] ppc: remove duplicated includes
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] chardev/baum: fix baum that releases
+ brlapi twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,80 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Sep 2017 05:31:49 -0000
+X-List-Received-Date: Sun, 24 Sep 2017 16:56:20 -0000
 
 
---ew6BAiZeqk4r7MaW
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Sep 22, 2017 at 12:39:46PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> applied using ./scripts/clean-includes
+----- Original Message -----
+> Error process of baum_chr_open needs to set brlapi null, so it won't
+> get released twice in char_braille_finalize, which will cause
+> "/usr/bin/qemu-system-x86_64: double free or corruption (!prev)"
 >=20
-> not needed since 7ebaf795560
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> Signed-off-by: Liang Yan <lyan@suse.com>
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
 > ---
->  hw/ppc/spapr_hcall.c | 1 -
->  target/ppc/kvm.c     | 3 ---
->  2 files changed, 4 deletions(-)
+>  chardev/baum.c | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
-> index 57bb411394..2aeee28fe6 100644
-> --- a/hw/ppc/spapr_hcall.c
-> +++ b/hw/ppc/spapr_hcall.c
-> @@ -13,7 +13,6 @@
->  #include "trace.h"
->  #include "kvm_ppc.h"
->  #include "hw/ppc/spapr_ovec.h"
-> -#include "qemu/error-report.h"
->  #include "mmu-book3s-v3.h"
-> =20
->  struct SPRSyncState {
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 1deaf106d2..c9105af393 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -47,9 +47,6 @@
->  #include "sysemu/hostmem.h"
->  #include "qemu/cutils.h"
->  #include "qemu/mmap-alloc.h"
-> -#if defined(TARGET_PPC64)
-> -#include "hw/ppc/spapr_cpu_core.h"
-> -#endif
->  #include "elf.h"
->  #include "sysemu/kvm_int.h"
-> =20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---ew6BAiZeqk4r7MaW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnF8a8ACgkQbDjKyiDZ
-s5KCqBAAiSKO4TjrW2Ipp83di9lFF0sBcVMp9Vu/YP2YtT8JOEe2xVyGSLft74Hw
-Kc6mVgNg0xrLX1LjaK2yp4+FPgU1p+z9VAs+uPrZQarV19+lPWHRoskmGzCS9kFq
-2WyRjkGimZMwDITQ72wjoufuFd5IkTWtM3D2H2XOs1uGEmlGqz9NLcThyqzbAsv5
-gAB13mHLcfyGbgot2ZwYoSN146UtzMC5xLLa7VH6iXdXVIttvr6RkQ2n6Ht0dE9t
-gj82BQxcq0MyE5+prhkXS/kBuz3D6M5Q0SXcD9zfuI6CCDwEpVeI6qxwbrGetpoi
-h6o80R0r4ymiAE4ot4Gdy9Nxf/O6SoLDN6PGM1+ZBeyby80oaqFK/BtWbpyasmf2
-uJ0EHwgRMnxoFIZ+yXKkuc6mbS5gLYJ7MBU0cxB9J116Jhf5IU2+jm4uZohtWuZM
-LreTDT/6fQT9HnQytzGxo7E80yKUP6OSuWi39kuTKeAUqsF/WhqEcXh5mdXVPicp
-6fSup7ww9iT6Y0do95vkF54s5O/fEd4EiR8mKwcrM+B23aXInTX76/w2cNiEQQA3
-ansoSTzljRaoV4+pgx/Pk5yxBbBpDjuzkIzv++U5VqFNRXaj4bUL5YqoGDVvFtDK
-Jt9Lrv/W/HgRf25cU54bVUL3PW+nra9TWAOONmJWD/+gWjejZUo=
-=iCzI
------END PGP SIGNATURE-----
-
---ew6BAiZeqk4r7MaW--
+> diff --git a/chardev/baum.c b/chardev/baum.c
+> index 302dd9666c..67fd783a59 100644
+> --- a/chardev/baum.c
+> +++ b/chardev/baum.c
+> @@ -643,6 +643,7 @@ static void baum_chr_open(Chardev *chr,
+>          error_setg(errp, "brlapi__openConnection: %s",
+>                     brlapi_strerror(brlapi_error_location()));
+>          g_free(handle);
+> +        baum->brlapi =3D NULL;
+>          return;
+>      }
+>      baum->deferred_init =3D 0;
+> --
+> 2.14.1
+>=20
+>=20
 
