@@ -1,62 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwPHK-00036t-Ed
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 05:02:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55777)
+	id 1dwPQf-0006U4-Dt
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 05:11:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58464)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1dwPHG-00033t-Nw
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:02:13 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1dwPQc-0006Rw-P8
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:11:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1dwPHB-0004im-2V
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:02:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42452)
+	(envelope-from <pbonzini@redhat.com>) id 1dwPQb-0001dD-Tn
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:11:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52938)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1dwPGz-0004bz-KC; Mon, 25 Sep 2017 05:01:53 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1dwPQW-0001ZY-8s; Mon, 25 Sep 2017 05:11:44 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A6EA08764C;
-	Mon, 25 Sep 2017 09:01:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A6EA08764C
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 2FEEDC0587DE;
+	Mon, 25 Sep 2017 09:11:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2FEEDC0587DE
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=stefanha@redhat.com
-Received: from localhost (ovpn-117-160.ams2.redhat.com [10.36.117.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C33F5C3FA;
-	Mon, 25 Sep 2017 09:01:45 +0000 (UTC)
-Date: Mon, 25 Sep 2017 10:01:44 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Zhang Chen <zhangckid@gmail.com>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Ben Warren <ben@skyportsystems.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Message-ID: <20170925090144.GB14140@stefanha-x1.localdomain>
-References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922154014.29350-5-f4bug@amsat.org>
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=pbonzini@redhat.com
+Received: from [10.32.181.85] (unknown [10.32.181.85])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CAF06C1EE;
+	Mon, 25 Sep 2017 09:11:38 +0000 (UTC)
+To: Michael Tokarev <mjt@tls.msk.ru>, Eduardo Otubo <otubo@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: ehabkost@redhat.com, qemu-trivial@nongnu.org,
+	Alexander Graf <agraf@suse.de>, Markus Armbruster <armbru@redhat.com>
+References: <20170915090643.6043-1-otubo@redhat.com>
+	<fbe31cc8-c628-32e6-90b0-0341ef1972d3@msgid.tls.msk.ru>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <0e84971b-592e-22f7-8815-2b3e193f6c1d@redhat.com>
+Date: Mon, 25 Sep 2017 11:11:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20170922154014.29350-5-f4bug@amsat.org>
-User-Agent: Mutt/1.8.3 (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <fbe31cc8-c628-32e6-90b0-0341ef1972d3@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 25 Sep 2017 09:01:52 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.32]);
+	Mon, 25 Sep 2017 09:11:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 04/34] misc: remove headers implicitly
- included
+Subject: Re: [Qemu-trivial] [[PATCH] dma/i82374: avoid double creation of
+ i82374 device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,23 +62,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Sep 2017 09:02:13 -0000
+X-List-Received-Date: Mon, 25 Sep 2017 09:11:51 -0000
 
-On Fri, Sep 22, 2017 at 12:39:44PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> applied using ./scripts/clean-includes
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
->  hw/audio/fmopl.h             | 1 -
->  bsd-user/main.c              | 1 -
->  chardev/wctablet.c           | 4 ----
->  hw/scsi/vhost-user-scsi.c    | 1 -
->  linux-user/main.c            | 1 -
->  net/colo-compare.c           | 1 -
->  tests/test-aio-multithread.c | 1 -
->  tests/test-clone-visitor.c   | 1 -
->  tests/vmgenid-test.c         | 3 ---
->  9 files changed, 14 deletions(-)
+On 24/09/2017 23:02, Michael Tokarev wrote:
+> 15.09.2017 12:06, Eduardo Otubo wrote:
+>> QEMU fails when used with the following command line:
+>>
+>>   ./ppc64-softmmu/qemu-system-ppc64 -S -machine 40p,accel=tcg -device i82374
+>>   qemu-system-ppc64: hw/isa/isa-bus.c:110: isa_bus_dma: Assertion `!bus->dma[0] && !bus->dma[1]' failed.
+>>   Aborted (core dumped)
+>>
+>> The 40p machine type already creates the device i82374. If specified in the
+>> command line, it will try to create it again, hence generating the error. The
+>> function isa_bus_dma() isn't supposed to be called twice for the same bus. One
+>> way to avoid this problem is to set user_creatable=false.
+> 
+> Applied to -trivial, thanks!
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Eduardo, weren't you going to send a version that propagates Error*
+correctly instead?
+
+Paolo
+
 
