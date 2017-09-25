@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwM8P-0000HW-Da
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 01:40:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45110)
+	id 1dwOTD-0007td-V3
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 04:10:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dwM8N-0000GR-8U
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 01:40:48 -0400
+	(envelope-from <cohuck@redhat.com>) id 1dwOTC-0007sT-8R
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 04:10:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dwM8M-000756-LG
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 01:40:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46124)
+	(envelope-from <cohuck@redhat.com>) id 1dwOTB-0007xW-GU
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 04:10:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43630)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dwM8H-00073I-9i; Mon, 25 Sep 2017 01:40:41 -0400
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1dwOT2-0007rD-S6; Mon, 25 Sep 2017 04:10:17 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F1BB1C057FA7;
-	Mon, 25 Sep 2017 05:40:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com F1BB1C057FA7
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id E36E281DFE;
+	Mon, 25 Sep 2017 08:10:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E36E281DFE
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.76] (ovpn-116-76.ams2.redhat.com [10.36.116.76])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DFE216016F;
-	Mon, 25 Sep 2017 05:40:36 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, Anton Nefedov <anton.nefedov@virtuozzo.com>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Kirill Batuzov <batuzovk@ispras.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=cohuck@redhat.com
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 24C1D6017D;
+	Mon, 25 Sep 2017 08:10:04 +0000 (UTC)
+Date: Mon, 25 Sep 2017 10:10:00 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth
+	<thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann
+	<kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov
+	<imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, David Gibson
+	<david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>, Alex
+	Williamson <alex.williamson@redhat.com>, qemu-devel@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170925101000.7e996270.cohuck@redhat.com>
+In-Reply-To: <20170922154014.29350-2-f4bug@amsat.org>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-12-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <27718a16-6d55-ed2e-3c65-1dbab106bd11@redhat.com>
-Date: Mon, 25 Sep 2017 07:40:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	<20170922154014.29350-2-f4bug@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <20170922160111.31885-12-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 25 Sep 2017 05:40:40 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 25 Sep 2017 08:10:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 34/34] misc: drop old i386 dependency
+Subject: Re: [Qemu-trivial] [PATCH 01/34] hw: use "qemu/osdep.h" as first
+ #include in source files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,22 +64,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Sep 2017 05:40:48 -0000
+X-List-Received-Date: Mon, 25 Sep 2017 08:10:27 -0000
 
-On 22.09.2017 18:01, Philippe Mathieu-Daud=C3=A9 wrote:
-> while here, add an entry for wdt_ib700 in MAINTAINERS
+On Fri, 22 Sep 2017 12:39:41 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> applied using ./scripts/clean-includes
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/char/debugcon.c      | 1 -
->  hw/intc/lm32_pic.c      | 1 -
->  hw/moxie/moxiesim.c     | 1 -
->  hw/sparc/sun4m.c        | 1 -
->  hw/watchdog/wdt_ib700.c | 1 -
->  MAINTAINERS             | 1 +
->  6 files changed, 1 insertion(+), 5 deletions(-)
+>  hw/acpi/ipmi-stub.c             | 1 +
+>  hw/audio/fmopl.c                | 1 -
+>  hw/cpu/core.c                   | 1 +
+>  hw/ppc/spapr_cpu_core.c         | 1 +
+>  hw/smbios/smbios_type_38-stub.c | 1 +
+>  hw/vfio/ccw.c                   | 2 +-
+>  hw/virtio/vhost-vsock.c         | 2 +-
+>  7 files changed, 6 insertions(+), 3 deletions(-)
+>=20
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
+> index a8baadf57a..4810fa0b50 100644
+> --- a/hw/vfio/ccw.c
+> +++ b/hw/vfio/ccw.c
+> @@ -11,11 +11,11 @@
+>   * directory.
+>   */
+> =20
+> +#include "qemu/osdep.h"
+>  #include <linux/vfio.h>
+>  #include <linux/vfio_ccw.h>
+>  #include <sys/ioctl.h>
+> =20
+> -#include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/vfio/vfio.h"
 
-
+Acked-by: Cornelia Huck <cohuck@redhat.com>
 
