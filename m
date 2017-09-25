@@ -1,44 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwGh0-0006Aw-KN
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Sep 2017 19:52:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40859)
+	id 1dwLhv-0006vx-CF
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 01:13:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwGgy-0005zt-3D
-	for qemu-trivial@nongnu.org; Sun, 24 Sep 2017 19:52:08 -0400
+	(envelope-from <thuth@redhat.com>) id 1dwLhs-0006tI-Rd
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 01:13:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwGgx-0000iv-Cx
-	for qemu-trivial@nongnu.org; Sun, 24 Sep 2017 19:52:08 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:57461)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dwGgt-0000gv-2T; Sun, 24 Sep 2017 19:52:03 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7A93E41C9C;
-	Mon, 25 Sep 2017 02:52:00 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1AE53C2C;
-	Mon, 25 Sep 2017 00:22:56 +0300 (MSK)
-Received: (nullmailer pid 28294 invoked by uid 1000);
-	Sun, 24 Sep 2017 21:22:52 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 25 Sep 2017 00:22:45 +0300
-Message-Id: <7d2ed4f2343951a7ca4c322119eacff09d9f8db0.1506288070.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
-References: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
-References: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <thuth@redhat.com>) id 1dwLhs-0002ib-1c
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 01:13:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46260)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dwLhn-0002gD-Oa; Mon, 25 Sep 2017 01:13:19 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E229AC0587E5;
+	Mon, 25 Sep 2017 05:13:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E229AC0587E5
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.76] (ovpn-116-76.ams2.redhat.com [10.36.116.76])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F2F4860493;
+	Mon, 25 Sep 2017 05:13:13 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20170922154014.29350-1-f4bug@amsat.org>
+	<20170922154014.29350-11-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <ea7fa662-5167-a9ed-93c8-50603d874d83@redhat.com>
+Date: Mon, 25 Sep 2017 07:13:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20170922154014.29350-11-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Mon, 25 Sep 2017 05:13:18 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 27/31] nbd-client: Use correct macro
- parenthesization
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 10/34] amd_iommu: avoid needless includes
+ in header file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,42 +64,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Sep 2017 23:52:09 -0000
+X-List-Received-Date: Mon, 25 Sep 2017 05:13:25 -0000
 
-From: Eric Blake <eblake@redhat.com>
+On 22.09.2017 17:39, Philippe Mathieu-Daud=C3=A9 wrote:
+> instead move them to the source file
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/i386/amd_iommu.h | 5 -----
+>  hw/i386/amd_iommu.c | 5 ++++-
+>  2 files changed, 4 insertions(+), 6 deletions(-)
 
-If 'bs' is a complex expression, we were only casting the front half
-rather than the full expression.  Luckily, none of the callers were
-passing bad arguments, but it's better to be robust up front.
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- block/nbd-client.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/block/nbd-client.c b/block/nbd-client.c
-index ee7f758e68..cc05e73c2d 100644
---- a/block/nbd-client.c
-+++ b/block/nbd-client.c
-@@ -31,8 +31,8 @@
- #include "qapi/error.h"
- #include "nbd-client.h"
-=20
--#define HANDLE_TO_INDEX(bs, handle) ((handle) ^ ((uint64_t)(intptr_t)bs)=
-)
--#define INDEX_TO_HANDLE(bs, index)  ((index)  ^ ((uint64_t)(intptr_t)bs)=
-)
-+#define HANDLE_TO_INDEX(bs, handle) ((handle) ^ (uint64_t)(intptr_t)(bs)=
-)
-+#define INDEX_TO_HANDLE(bs, index)  ((index)  ^ (uint64_t)(intptr_t)(bs)=
-)
-=20
- static void nbd_recv_coroutines_wake_all(NBDClientSession *s)
- {
---=20
-2.11.0
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
