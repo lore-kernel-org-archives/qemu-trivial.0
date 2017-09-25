@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwOVY-0001Aj-Kr
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 04:12:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43508)
+	id 1dwPHK-00036t-Ed
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Sep 2017 05:02:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55777)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1dwOVW-00019C-FS
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 04:12:51 -0400
+	(envelope-from <stefanha@redhat.com>) id 1dwPHG-00033t-Nw
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:02:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1dwOVT-0000tb-Rh
-	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 04:12:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47428)
+	(envelope-from <stefanha@redhat.com>) id 1dwPHB-0004im-2V
+	for qemu-trivial@nongnu.org; Mon, 25 Sep 2017 05:02:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42452)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1dwOVP-0000qX-Oe; Mon, 25 Sep 2017 04:12:43 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1dwPGz-0004bz-KC; Mon, 25 Sep 2017 05:01:53 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C54A680F9C;
-	Mon, 25 Sep 2017 08:12:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com C54A680F9C
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id A6EA08764C;
+	Mon, 25 Sep 2017 09:01:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com A6EA08764C
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 164746C1E0;
-	Mon, 25 Sep 2017 08:12:34 +0000 (UTC)
-Date: Mon, 25 Sep 2017 10:12:32 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth
-	<thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite
-	<crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Stefano
-	Stabellini <sstabellini@kernel.org>, Anthony Perard
-	<anthony.perard@citrix.com>, Eduardo Habkost <ehabkost@redhat.com>, Marcel
-	Apfelbaum <marcel@redhat.com>, Christian Borntraeger
-	<borntraeger@de.ibm.com>, Alexander Graf <agraf@suse.de>, Stafford Horne
-	<shorne@gmail.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>, 
-	Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20170925101232.4d5dd45c.cohuck@redhat.com>
-In-Reply-To: <20170922154014.29350-6-f4bug@amsat.org>
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=stefanha@redhat.com
+Received: from localhost (ovpn-117-160.ams2.redhat.com [10.36.117.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C33F5C3FA;
+	Mon, 25 Sep 2017 09:01:45 +0000 (UTC)
+Date: Mon, 25 Sep 2017 10:01:44 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Zhang Chen <zhangckid@gmail.com>,
+	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Ben Warren <ben@skyportsystems.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Message-ID: <20170925090144.GB14140@stefanha-x1.localdomain>
 References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922154014.29350-6-f4bug@amsat.org>
-Organization: Red Hat GmbH
+	<20170922154014.29350-5-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20170922154014.29350-5-f4bug@amsat.org>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 25 Sep 2017 08:12:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 25 Sep 2017 09:01:52 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 05/34] misc: remove duplicated includes
+Subject: Re: [Qemu-trivial] [PATCH 04/34] misc: remove headers implicitly
+ included
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,41 +68,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Sep 2017 08:12:51 -0000
+X-List-Received-Date: Mon, 25 Sep 2017 09:02:13 -0000
 
-On Fri, 22 Sep 2017 12:39:45 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-
-> exec: housekeeping (funny since 02d0e095031)
->=20
+On Fri, Sep 22, 2017 at 12:39:44PM -0300, Philippe Mathieu-Daud=E9 wrote:
 > applied using ./scripts/clean-includes
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 > ---
->  accel/tcg/translate-all.c          | 1 -
->  exec.c                             | 3 ---
->  hw/arm/spitz.c                     | 1 -
->  hw/char/xen_console.c              | 1 -
->  hw/core/machine.c                  | 1 -
->  hw/s390x/css.c                     | 1 -
->  target/openrisc/exception_helper.c | 1 -
->  tests/vhost-user-test.c            | 1 -
->  util/qemu-sockets.c                | 1 -
->  vl.c                               | 1 -
->  10 files changed, 12 deletions(-)
+>  hw/audio/fmopl.h             | 1 -
+>  bsd-user/main.c              | 1 -
+>  chardev/wctablet.c           | 4 ----
+>  hw/scsi/vhost-user-scsi.c    | 1 -
+>  linux-user/main.c            | 1 -
+>  net/colo-compare.c           | 1 -
+>  tests/test-aio-multithread.c | 1 -
+>  tests/test-clone-visitor.c   | 1 -
+>  tests/vmgenid-test.c         | 3 ---
+>  9 files changed, 14 deletions(-)
 
-> diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-> index 75d4f301fb..3938fa5909 100644
-> --- a/hw/s390x/css.c
-> +++ b/hw/s390x/css.c
-> @@ -13,7 +13,6 @@
->  #include "qapi/error.h"
->  #include "qapi/visitor.h"
->  #include "hw/qdev.h"
-> -#include "qemu/error-report.h"
->  #include "qemu/bitops.h"
->  #include "qemu/error-report.h"
->  #include "exec/address-spaces.h"
-
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
