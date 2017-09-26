@@ -1,55 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwt5r-0005IK-DP
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 12:52:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47000)
+	id 1dwtHO-0008HK-7S
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 13:04:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dwt5n-0005DG-FZ
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 12:52:22 -0400
+	(envelope-from <alistair23@gmail.com>) id 1dwtHM-0008GH-7z
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 13:04:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dwt5m-0001th-Nn
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 12:52:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52150)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dwt5i-0001mT-Jy; Tue, 26 Sep 2017 12:52:14 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 86D685AFD9;
-	Tue, 26 Sep 2017 16:52:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 86D685AFD9
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from [10.36.116.52] (ovpn-116-52.ams2.redhat.com [10.36.116.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14B24183C3;
-	Tue, 26 Sep 2017 16:52:11 +0000 (UTC)
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+	(envelope-from <alistair23@gmail.com>) id 1dwtHJ-0005YT-Tx
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 13:04:14 -0400
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:36816)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1dwtHJ-0005Xg-Mc; Tue, 26 Sep 2017 13:04:13 -0400
+Received: by mail-wr0-x244.google.com with SMTP id g50so2866404wra.3;
+	Tue, 26 Sep 2017 10:04:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=SPOpOpjQnUCh3JtSNkAfbs0PXPag5qYVBNBW4oR9RFo=;
+	b=mJOfcwhqZFUhNQcK7TVyOKAw/9005+lCJd4rL24OAl1uToguSOrqt9P50XAIfRXxDF
+	UCDKZWNi/7L9K7/GqdedTzgZWe6XXR8svNqEoKu6pJqzL/P+QRO7EMdsiJQTA9qBPoaC
+	nHa7SDv0VMLiOVQHOaUZV6TJsZtK8nmZ6PuxaZFA+CjULwkbT3bo9Pgvz5W+B833sDTJ
+	oeTfRqk1S0/NJxSw+wP9Xm1p4rmpJS8Xid7rY/LoLMBlq06JQGyB/vS78gzgQG9/hBIy
+	dJBLQ98cPG9/WlXHkhHU8qyyF1EJBE/u2gfjP7zmqjZ0xAXhJk52kc4SIkYtW4iQbuAC
+	PU2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=SPOpOpjQnUCh3JtSNkAfbs0PXPag5qYVBNBW4oR9RFo=;
+	b=bXSwH4owk839fnG0zVBsccbnmmAZXUsuPWe/miYjn9ZtziKrKqpu8sC5rhqwGd+PL3
+	+BvmEUVm9HeDg5H4Qc6ANk06Cu/9BKnWwhzyNCGXNe8tkT1Jx1YKqdkWmwqiG4/JvZT/
+	6yH1KlFzRUo0nrmtPn0O9gRsNKZ3/7KjRtEmdVQI97S1dBhfB8tAGK2qyirbBisHfClp
+	vpt4bduIwqy4q0yaHcb/snLhNDc5vu4msdLSayOPP4ALj3UFPeghYWVUl3wCUf5l7suu
+	FOaBngfidhOYep0kqTjSUkhO9lfq9upNM0ow73vlYwbJfTzXQAgS9inXt4ghr9LkYIO9
+	J5ow==
+X-Gm-Message-State: AHPjjUj2yT9GeZYb696z27hw8IewsH79mqS1p7/zCY7nS8kf6AZXSY87
+	+U9Uz2m6JfQgYJ3kxh2p0R95Hzl68YDlKThZCnM=
+X-Google-Smtp-Source: AOwi7QAE91UXvlEYXfkIcUHX+EesWHr2enJ+Cqp9ja8dCWaarTDRtH7h1DB4UMdUIq2cQbypgZoy7v+TGwqykR1qRhE=
+X-Received: by 10.223.169.143 with SMTP id b15mr10919560wrd.127.1506445452512; 
+	Tue, 26 Sep 2017 10:04:12 -0700 (PDT)
+MIME-Version: 1.0
+Sender: alistair23@gmail.com
+Received: by 10.28.135.139 with HTTP; Tue, 26 Sep 2017 10:03:41 -0700 (PDT)
+In-Reply-To: <cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
 References: <1506441116-16627-1-git-send-email-thuth@redhat.com>
 	<CAKmqyKOCsyCHnaNzo_zrRQjZi30ENdPoSc+dFehHvevm-9nrZg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
-Date: Tue, 26 Sep 2017 18:52:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <CAKmqyKOCsyCHnaNzo_zrRQjZi30ENdPoSc+dFehHvevm-9nrZg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 26 Sep 2017 16:52:13 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+	<cbcf25a4-db9c-910f-fdbc-b7620d013b14@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 26 Sep 2017 10:03:41 -0700
+X-Google-Sender-Auth: OveU2hl9mTYqPFcJUqtM2fPFEpg
+Message-ID: <CAKmqyKO2jfVZ9d1epxVWKMy9FUfByCoVXMV4JQ-qGAV=vzKwnQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::244
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/arm/xlnx-zynqmp: Mark
  the "xlnx, zynqmp" device with user_creatable = false
 X-BeenThere: qemu-trivial@nongnu.org
@@ -63,27 +75,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 16:52:22 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 17:04:17 -0000
 
-On 26.09.2017 18:36, Alistair Francis wrote:
-> On Tue, Sep 26, 2017 at 8:51 AM, Thomas Huth <thuth@redhat.com> wrote:
->> The device uses serial_hds in its realize function and thus can't be
->> used twice. Apart from that, the comma in its name makes it quite hard
->> to use for the user anyway, since a comma is normally used to separate
->> the device name from its properties when using the "-device" parameter
->> or the "device_add" HMP command.
->=20
-> Is it worth changing the name now then as well?
+On Tue, Sep 26, 2017 at 9:52 AM, Thomas Huth <thuth@redhat.com> wrote:
+> On 26.09.2017 18:36, Alistair Francis wrote:
+>> On Tue, Sep 26, 2017 at 8:51 AM, Thomas Huth <thuth@redhat.com> wrote:
+>>> The device uses serial_hds in its realize function and thus can't be
+>>> used twice. Apart from that, the comma in its name makes it quite hard
+>>> to use for the user anyway, since a comma is normally used to separate
+>>> the device name from its properties when using the "-device" parameter
+>>> or the "device_add" HMP command.
+>>
+>> Is it worth changing the name now then as well?
+>
+> Not sure, was there a reason for this name? E.g. is it used in a device
+> tree somewhere somehow? Anyway, with user_creatable = false, I think it
+> is not so urgent anymore to change it.
 
-Not sure, was there a reason for this name? E.g. is it used in a device
-tree somewhere somehow? Anyway, with user_creatable =3D false, I think it
-is not so urgent anymore to change it.
+I don't think there was a specific reason. Maybe it was copied from a
+device tree, but I'm not tied to keeping the comma. Maybe that's
+something we can investigate in the future.
 
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->=20
-> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Thanks,
+Alistair
 
-Thanks!
-
- Thomas
+>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>
+>> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+>
+> Thanks!
+>
+>  Thomas
+>
 
