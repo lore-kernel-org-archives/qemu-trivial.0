@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwrZP-0005w6-Ho
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 11:14:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49008)
+	id 1dws9m-0006NE-Qt
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 11:52:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dwrZN-0005uh-0O
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:14:45 -0400
+	(envelope-from <thuth@redhat.com>) id 1dws9k-0006L0-5W
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:52:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dwrZM-0005w5-CK
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:14:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60150)
+	(envelope-from <thuth@redhat.com>) id 1dws9i-00062a-08
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:52:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37454)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dwrZD-0005pI-HC; Tue, 26 Sep 2017 11:14:35 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1dws9Q-0005vd-Pt; Tue, 26 Sep 2017 11:52:00 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 79F6FD7136;
-	Tue, 26 Sep 2017 15:14:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 79F6FD7136
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id B8BBBC04B946;
+	Tue, 26 Sep 2017 15:51:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B8BBBC04B946
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from red.redhat.com (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A4F8678131;
-	Tue, 26 Sep 2017 15:14:31 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com,
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from thh440s.redhat.com (ovpn-116-52.ams2.redhat.com [10.36.116.52])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 08C4169A66;
+	Tue, 26 Sep 2017 15:51:56 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Date: Tue, 26 Sep 2017 10:14:21 -0500
-Message-Id: <20170926151421.14557-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Date: Tue, 26 Sep 2017 17:51:56 +0200
+Message-Id: <1506441116-16627-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 26 Sep 2017 15:14:34 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 26 Sep 2017 15:51:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] scsi: Ignore executable for in-tree builds
+Subject: [Qemu-trivial] [PATCH] hw/arm/xlnx-zynqmp: Mark the "xlnx,
+ zynqmp" device with user_creatable = false
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,29 +53,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 15:14:45 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 15:52:21 -0000
 
-The new qemu-pr-helper (commit b855f8d17) should not be checked in,
-even when doing in-tree builds.
+The device uses serial_hds in its realize function and thus can't be
+used twice. Apart from that, the comma in its name makes it quite hard
+to use for the user anyway, since a comma is normally used to separate
+the device name from its properties when using the "-device" parameter
+or the "device_add" HMP command.
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- .gitignore | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/xlnx-zynqmp.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/.gitignore b/.gitignore
-index 40acfcb9e2..3a7e01dc6a 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -49,6 +49,7 @@
- /qemu-version.h
- /qemu-version.h.tmp
- /module_block.h
-+/scsi/qemu-pr-helper
- /vscclient
- /vhost-user-scsi
- /fsdev/virtfs-proxy-helper
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 2b27daf..d4b6560 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -440,6 +440,8 @@ static void xlnx_zynqmp_class_init(ObjectClass *oc, void *data)
+ 
+     dc->props = xlnx_zynqmp_props;
+     dc->realize = xlnx_zynqmp_realize;
++    /* Reason: Uses serial_hds in realize function, thus can't be used twice */
++    dc->user_creatable = false;
+ }
+ 
+ static const TypeInfo xlnx_zynqmp_type_info = {
 -- 
-2.13.5
+1.8.3.1
 
 
