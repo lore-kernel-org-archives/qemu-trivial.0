@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwhO6-0003b5-2x
+	id 1dwhO6-0003cB-B5
 	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 00:22:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44755)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <daniel@loffgren.org>) id 1dwhO2-0003VL-3D
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:22:23 -0400
+	(envelope-from <daniel@loffgren.org>) id 1dwhO4-0003Ya-Ou
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:22:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <daniel@loffgren.org>) id 1dwhO0-0002aG-Tp
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:22:22 -0400
-Received: from tk2-216-17739.vs.sakura.ne.jp ([160.16.80.243]:60366
+	(envelope-from <daniel@loffgren.org>) id 1dwhO4-0002br-1z
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:22:24 -0400
+Received: from tk2-216-17739.vs.sakura.ne.jp ([160.16.80.243]:60365
 	helo=maro.localdomain)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <daniel@loffgren.org>)
-	id 1dwhNv-0002Wx-Ma; Tue, 26 Sep 2017 00:22:16 -0400
+	id 1dwhO1-0002Zs-Ks; Tue, 26 Sep 2017 00:22:22 -0400
 Received: from [10.0.0.206] (c-24-23-203-58.hsd1.ca.comcast.net [24.23.203.58])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by maro.localdomain (Postfix) with ESMTPSA id 6AEF319D436;
-	Tue, 26 Sep 2017 13:19:57 +0900 (JST)
-From: Daniel Loffgren <daniel@loffgren.org>
-Message-Id: <415B68ED-AFB4-4673-8B66-90F74C4B64E1@loffgren.org>
-Content-Type: multipart/alternative;
-	boundary="Apple-Mail=_D1D13756-4302-4451-9239-848A8F864F4D"
+	by maro.localdomain (Postfix) with ESMTPSA id DDE9D19D43D;
+	Tue, 26 Sep 2017 13:20:05 +0900 (JST)
+Content-Type: text/plain; charset=us-ascii
 Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Date: Mon, 25 Sep 2017 21:22:08 -0700
-In-Reply-To: <759768e1-9acb-c14b-7136-743cba166ef0@redhat.com>
+From: Daniel Loffgren <daniel@loffgren.org>
+In-Reply-To: <7726e35d-4869-e5aa-4151-f40bed148825@redhat.com>
+Date: Mon, 25 Sep 2017 21:22:18 -0700
 Cc: qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-To: Eric Blake <eblake@redhat.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <8DDD6AB1-B01F-4B6E-96E4-7AEE486CAFDD@loffgren.org>
 References: <5DAE0523-80F8-4F68-93CB-0571C0C62B20@loffgren.org>
-	<759768e1-9acb-c14b-7136-743cba166ef0@redhat.com>
+	<7726e35d-4869-e5aa-4151-f40bed148825@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
 X-Mailer: Apple Mail (2.3273)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
@@ -47,40 +47,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 04:22:23 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 04:22:25 -0000
 
+I am attempting to get ppc-darwin-user in a good working state again, =
+and this broke one of the .c files that included it. I figured this =
+change should be made regardless of my branch, and would help reduce the =
+size of my branch for future rebasing.
 
---Apple-Mail=_D1D13756-4302-4451-9239-848A8F864F4D
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
-
-
-> On Sep 25, 2017, at 9:10 AM, Eric Blake <eblake@redhat.com> wrote:
+> On Sep 25, 2017, at 9:37 AM, Thomas Huth <thuth@redhat.com> wrote:
 >=20
-> On 09/24/2017 08:02 PM, Daniel Loffgren wrote:
+>=20
+> Did this cause any trouble? ... one of two sentences in the patch
+> description would be nice, I think.
+>=20
+> Thomas
+>=20
+>=20
+> On 25.09.2017 03:02, Daniel Loffgren wrote:
 >>=20
->> Signed-off-by: Daniel Loffgren <daniel@loffgren.org =
-<mailto:daniel@loffgren.org>>
+>> Signed-off-by: Daniel Loffgren <daniel@loffgren.org>
 >> ---
 >> include/exec/user/thunk.h | 1 +
 >> 1 file changed, 1 insertion(+)
->=20
-> meta-comment: your patch is titled 2/2, but was sent as its own
-> top-level thread (it is missing In-Reply-To: and References: headers).
-> When sending 2 patches as a series, it is important to include a 0/2
-> cover letter, and to properly thread things so that both 1/2 and 2/2 =
-are
-> in-reply-to the 0/2 cover letter.  'git send-email' is probably the
-> easiest way to get this to work.  More patch submission hints at:
->=20
-> https://wiki.qemu.org/Contribute/SubmitAPatch =
-<https://wiki.qemu.org/Contribute/SubmitAPatch>
-
-Oops, sorry about that! I used 'git format-patch' to get this email from =
-a set of two commits, and sent each as-is. This commit can totally stand =
-alone.
-
 >>=20
 >> diff --git a/include/exec/user/thunk.h b/include/exec/user/thunk.h
 >> index f19ef4b230..12b5449d8c 100644
@@ -96,206 +84,5 @@ alone.
 >> /* types enums definitions */
 >>=20
 >=20
-> --=20
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3266
-> Virtualization:  qemu.org <http://qemu.org/> | libvirt.org =
-<http://libvirt.org/>
 
---Apple-Mail=_D1D13756-4302-4451-9239-848A8F864F4D
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
-charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" =
-class=3D""><div dir=3D"auto" style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; line-break: after-white-space;" =
-class=3D""><div><br class=3D""><blockquote type=3D"cite" class=3D""><div =
-class=3D"">On Sep 25, 2017, at 9:10 AM, Eric Blake &lt;<a =
-href=3D"mailto:eblake@redhat.com" class=3D"">eblake@redhat.com</a>&gt; =
-wrote:</div><br class=3D"Apple-interchange-newline"><div class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">On 09/24/2017 08:02 PM, Daniel =
-Loffgren wrote:</span><br style=3D"font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><blockquote type=3D"cite" =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" =
-class=3D""><br class=3D"">Signed-off-by: Daniel Loffgren &lt;<a =
-href=3D"mailto:daniel@loffgren.org" =
-class=3D"">daniel@loffgren.org</a>&gt;<br class=3D"">---<br =
-class=3D"">include/exec/user/thunk.h | 1 +<br class=3D"">1 file changed, =
-1 insertion(+)<br class=3D""></blockquote><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">meta-comment: your patch is =
-titled 2/2, but was sent as its own</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">top-level thread (it is missing =
-In-Reply-To: and References: headers).</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">When sending 2 patches as a =
-series, it is important to include a 0/2</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">cover letter, and to properly =
-thread things so that both 1/2 and 2/2 are</span><br style=3D"font-family:=
- Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D"">in-reply-to the 0/2 cover =
-letter. &nbsp;'git send-email' is probably the</span><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px;" =
-class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; float: none; display: inline =
-!important;" class=3D"">easiest way to get this to work. &nbsp;More =
-patch submission hints at:</span><br style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><a =
-href=3D"https://wiki.qemu.org/Contribute/SubmitAPatch" =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;" =
-class=3D"">https://wiki.qemu.org/Contribute/SubmitAPatch</a><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px;" =
-class=3D""></div></blockquote><div><br class=3D""></div><div>Oops, sorry =
-about that! I used 'git format-patch' to get this email from a set of =
-two commits, and sent each as-is. This commit can totally stand =
-alone.</div><br class=3D""><blockquote type=3D"cite" class=3D""><div =
-class=3D""><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: normal; letter-spacing: normal; orphans: auto; text-align: =
-start; text-indent: 0px; text-transform: none; white-space: normal; =
-widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; =
--webkit-text-stroke-width: 0px;" class=3D""><br class=3D"">diff --git =
-a/include/exec/user/thunk.h b/include/exec/user/thunk.h<br =
-class=3D"">index f19ef4b230..12b5449d8c 100644<br class=3D"">--- =
-a/include/exec/user/thunk.h<br class=3D"">+++ =
-b/include/exec/user/thunk.h<br class=3D"">@@ -19,6 +19,7 @@<br =
-class=3D"">#ifndef THUNK_H<br class=3D"">#define THUNK_H<br class=3D""><br=
- class=3D"">+#include "abitypes.h"<br class=3D"">#include "cpu.h"<br =
-class=3D""><br class=3D"">/* types enums definitions */<br class=3D""><br =
-class=3D""></blockquote><br style=3D"font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><span style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">--<span =
-class=3D"Apple-converted-space">&nbsp;</span></span><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px;" =
-class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; float: none; display: inline =
-!important;" class=3D"">Eric Blake, Principal Software =
-Engineer</span><br style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><span style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">Red Hat, Inc. =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+1-919-301-326=
-6</span><br style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><span style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">Virtualization: &nbsp;</span><a =
-href=3D"http://qemu.org/" style=3D"font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; orphans: auto; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: =
-auto; word-spacing: 0px; -webkit-text-size-adjust: auto; =
--webkit-text-stroke-width: 0px;" class=3D"">qemu.org</a><span =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; =
-display: inline !important;" class=3D""><span =
-class=3D"Apple-converted-space">&nbsp;</span>|<span =
-class=3D"Apple-converted-space">&nbsp;</span></span><a =
-href=3D"http://libvirt.org/" style=3D"font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; orphans: auto; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: =
-auto; word-spacing: 0px; -webkit-text-size-adjust: auto; =
--webkit-text-stroke-width: 0px;" =
-class=3D"">libvirt.org</a></div></blockquote></div><br =
-class=3D""></div></body></html>=
-
---Apple-Mail=_D1D13756-4302-4451-9239-848A8F864F4D--
 
