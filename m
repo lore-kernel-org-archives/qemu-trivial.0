@@ -1,58 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwx3d-0002hy-OJ
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 17:06:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55706)
+	id 1dwx4v-0003ND-O2
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 17:07:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dwx3a-0002gU-VE
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:20 -0400
+	(envelope-from <carenas@gmail.com>) id 1dwx4t-0003LS-Ak
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:07:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dwx3a-0005ZA-6m
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:18 -0400
-Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:50161)
+	(envelope-from <carenas@gmail.com>) id 1dwx4s-0006KB-EM
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:07:39 -0400
+Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:34062)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dwx3Z-0005YT-WF
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:18 -0400
-Received: by mail-wr0-x234.google.com with SMTP id h16so18509wrf.6
-	for <qemu-trivial@nongnu.org>; Tue, 26 Sep 2017 14:06:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=U4b9lBhO3WyKimkd+rESaoJca3Suee7M28laLy+igSE=;
-	b=i+XFK8u7RV3QhxAXwcj0YLIG3sujVZ6KzcJMuO6quXN7sd2CvFAeSxl0z/Tf9M82/s
-	S9UDP1zvPqiPSKz1L0xtMFdjKiEzgFm3fzk2KmVXPr20usoR0+e9zo1M+a5gfYZqs1+7
-	sX21cIG/oH0cUh9UwlsHMjYBXLp2IZbCTkKu8=
+	(Exim 4.71) (envelope-from <carenas@gmail.com>)
+	id 1dwx4o-0006I1-4k; Tue, 26 Sep 2017 17:07:34 -0400
+Received: by mail-pg0-x242.google.com with SMTP id u18so7415731pgo.1;
+	Tue, 26 Sep 2017 14:07:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=AaoNomXxex+vXn9sAVRUHr4b0uZONb0jFeaTlBiWhk4=;
+	b=mPZGiL7/ZQs+LTvD5oMWhDC1XfVQ7HrpfBzpGQtH+yXzE87N7F9MmkMdKJL3x1Sq4z
+	KU/0f443zaRYjhZNVyBM3SODk2olQV1cYyJOGAzLgGNRvWZk713LvZlyoQU+dpKbFgez
+	9PpwDJcSEpi4br5IgSG1VGJ1TtKO++8vAYQrrlJ2dWkDh1qmp0f0kLPY8kDTY7QufgD3
+	zlIbLlegCKuyDDVfzprxg4BV4Fkxp9SRMrhByfZSRtOQLKf4wa8lPW/iffFTxTCQgh4y
+	QYGuvJ+M7A9uPqN9hHn6sDhnkerDbBHqd44Smcl8Ruszfgf4lY5oUKFsaizEyQzo1GNp
+	54pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=U4b9lBhO3WyKimkd+rESaoJca3Suee7M28laLy+igSE=;
-	b=Efu8VaxBDY7sE7ESykhVxaVk+cv9PQ/J63fmy6TE95vVtNL7JjoH/QJ9ZqxFKwCu9X
-	OBnIC/UhnnSfHsOtkOI8kXSS3jQZMXDv4PN8AvkpYVk2+XCKT/DTMoX+UiwPKPOjUOSC
-	LvauH4jcKH8ew44iVe4BntvrUTPagVS/mEfui+d3ZQ5TqDHc4ZG7Tg/WiufIkUBl+ig2
-	F3gruXdKzXlfkLCt2EUbnPUZymt6X7pw7AlXo86irASiVATCz4XOmebzZ4HBxnl0z/D6
-	4j3N2UdvoXVOetdSds0b7aDZuGuH+Q41cZGaj7MhAuu7iVHu+pZpfiJs+/dqZGRHX9zS
-	zwFA==
-X-Gm-Message-State: AHPjjUgkEGe6ZbrxBL+uU4TnlBLTNclD1ORIlO5SIUp70F8FfljcXv+t
-	O0fUfi1QCFRy3jjrBzq74pL066ToH4GFmrNf+dJnOw==
-X-Google-Smtp-Source: AOwi7QCPrqzJy7sa3zmlkId/2zRSIFqCQBmpD+NE45jhCPUsgpQV+uuajjpem8dP4AGqeV49aWLXAb9Xb8SleWXTUTQ=
-X-Received: by 10.223.134.174 with SMTP id 43mr11364824wrx.173.1506459976764; 
-	Tue, 26 Sep 2017 14:06:16 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=AaoNomXxex+vXn9sAVRUHr4b0uZONb0jFeaTlBiWhk4=;
+	b=aC2122K1jDUls4oDJdWJ9GQwzgCpnqX7vNayLS+rVU1GV9vLzY2T8DhmUEC4D+mQEK
+	D2Qg7+OZTuAwodXA88AM9vvMmFZpZhLRS6UsQwqKQlqQaJYfdqUKzbMHq1aZ9i1SBHZY
+	HoCAROg6BhPIZtn2iA7dzl41nwTC8IE2a/qJYfbx0aC1wssq5l2ZvpZrH124jlBbjQbh
+	8EhHXzQcD1OGND8r6myxCdIokK3LeyBRflVwivLis/YE211vj0BYB/8oW4KGjjiCHeex
+	r2h3L+uAL/j4iVt3k3wAO+/uHQ90TS5stFP9tz5Tee0KbUnSXSfdjg2O71Rbj9WwROhL
+	SXmg==
+X-Gm-Message-State: AHPjjUha6aKyQ+QHFyhu5r1hlNAhQu4es2BrMXBFL7Poft0Mtzanem8z
+	7jol2BQQ7p3BegrCGBMeh79Av2T+v2A=
+X-Google-Smtp-Source: AOwi7QCpa8+FkiKeh3yKPLI+DgrtPUk4HJc7JHHDMds15BnP1p6bTdgqBrSHfmwUsOcwsncWrNJJPw==
+X-Received: by 10.84.129.193 with SMTP id b59mr12006540plb.121.1506460053010; 
+	Tue, 26 Sep 2017 14:07:33 -0700 (PDT)
+Received: from 172-11-32-171.lightspeed.mmphtn.sbcglobal.net
+	(50-207-95-178-static.hfc.comcastbusiness.net. [50.207.95.178])
+	by smtp.gmail.com with ESMTPSA id
+	l131sm18326939pga.24.2017.09.26.14.07.31
+	(version=TLS1 cipher=AES128-SHA bits=128/128);
+	Tue, 26 Sep 2017 14:07:32 -0700 (PDT)
+From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: marcandre.lureau@redhat.com, qemu-trivial@nongnu.org, eblake@redhat.com,
+	=?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
+Date: Tue, 26 Sep 2017 14:07:23 -0700
+Message-Id: <20170926210723.38042-1-carenas@gmail.com>
+X-Mailer: git-send-email 2.13.5 (Apple Git-94)
 MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Tue, 26 Sep 2017 14:05:56 -0700 (PDT)
-In-Reply-To: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
-References: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 Sep 2017 22:05:56 +0100
-Message-ID: <CAFEAcA-RPHGo3-6ASrfFq5hoWLm_ETPLqOXAaLHr8MSStxTb=A@mail.gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::234
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/29] Trivial patches for
- 2017-09-26
+X-Received-From: 2607:f8b0:400e:c05::242
+Subject: [Qemu-trivial] [PATCH v2] gitignore: ignore check-qlit test
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,44 +71,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 21:06:20 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 21:07:40 -0000
 
-On 26 September 2017 at 07:14, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> This is a resend of yesterday's pull request, with two patches
-> removed:
->   filter-mirror: segfault when specifying non existent device
->     (causes testsuite to fail)
->   dma/i82374: avoid double creation of i82374 device
->     (better version is in the work)
->
-> and with one patch with additional R-b line:
->   remove trailing whitespace from qemu-options.hx
->
-> Not resending any patches, just the cover letter.
->
-> Please consider applying.
->
-> Thanks,
->
-> /mjt
->
-> The following changes since commit 1e3ee834083227f552179f6e43902cba5a866e6b:
->
->   Merge remote-tracking branch 'remotes/thibault/tags/samuel-thibault' into staging (2017-09-25 20:31:24 +0100)
->
-> are available in the git repository at:
->
->   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
->
-> for you to fetch changes up to 35deebb2327227d8c5f4816476befb06f6329de6:
->
->   hw/isa/pc87312: Mark the device with user_creatable = false (2017-09-26 09:11:23 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2017-09-26
+test introduced in 382176b4d78e070d119af8e0dcd00884c11bbec2
 
+Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+ tests/.gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-Applied, thanks.
+diff --git a/tests/.gitignore b/tests/.gitignore
+index cf6d99c91e..53cb2efaee 100644
+--- a/tests/.gitignore
++++ b/tests/.gitignore
+@@ -6,6 +6,7 @@ check-qdict
+ check-qnum
+ check-qjson
+ check-qlist
++check-qlit
+ check-qnull
+ check-qstring
+ check-qom-interface
+-- 
+2.13.5 (Apple Git-94)
 
--- PMM
 
