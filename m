@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwwbn-0006wU-NG
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 16:37:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50842)
+	id 1dwx3d-0002hy-OJ
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 17:06:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dwwbl-0006ul-7D
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 16:37:34 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1dwx3a-0002gU-VE
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1dwwbk-0008Hs-7d
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 16:37:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35316)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1dwwbd-0008EB-A3; Tue, 26 Sep 2017 16:37:25 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5E07883F40;
-	Tue, 26 Sep 2017 20:37:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5E07883F40
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=eblake@redhat.com
-Received: from [10.10.124.97] (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A5C3268708;
-	Tue, 26 Sep 2017 20:37:21 +0000 (UTC)
-To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=c3=b3n?= <carenas@gmail.com>,
-	qemu-devel@nongnu.org
-References: <20170926202512.37670-1-carenas@gmail.com>
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <581bdcc9-6826-3fd9-f531-c37041cf34d1@redhat.com>
-Date: Tue, 26 Sep 2017 15:37:20 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1dwx3a-0005ZA-6m
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:18 -0400
+Received: from mail-wr0-x234.google.com ([2a00:1450:400c:c0c::234]:50161)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1dwx3Z-0005YT-WF
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:06:18 -0400
+Received: by mail-wr0-x234.google.com with SMTP id h16so18509wrf.6
+	for <qemu-trivial@nongnu.org>; Tue, 26 Sep 2017 14:06:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=U4b9lBhO3WyKimkd+rESaoJca3Suee7M28laLy+igSE=;
+	b=i+XFK8u7RV3QhxAXwcj0YLIG3sujVZ6KzcJMuO6quXN7sd2CvFAeSxl0z/Tf9M82/s
+	S9UDP1zvPqiPSKz1L0xtMFdjKiEzgFm3fzk2KmVXPr20usoR0+e9zo1M+a5gfYZqs1+7
+	sX21cIG/oH0cUh9UwlsHMjYBXLp2IZbCTkKu8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=U4b9lBhO3WyKimkd+rESaoJca3Suee7M28laLy+igSE=;
+	b=Efu8VaxBDY7sE7ESykhVxaVk+cv9PQ/J63fmy6TE95vVtNL7JjoH/QJ9ZqxFKwCu9X
+	OBnIC/UhnnSfHsOtkOI8kXSS3jQZMXDv4PN8AvkpYVk2+XCKT/DTMoX+UiwPKPOjUOSC
+	LvauH4jcKH8ew44iVe4BntvrUTPagVS/mEfui+d3ZQ5TqDHc4ZG7Tg/WiufIkUBl+ig2
+	F3gruXdKzXlfkLCt2EUbnPUZymt6X7pw7AlXo86irASiVATCz4XOmebzZ4HBxnl0z/D6
+	4j3N2UdvoXVOetdSds0b7aDZuGuH+Q41cZGaj7MhAuu7iVHu+pZpfiJs+/dqZGRHX9zS
+	zwFA==
+X-Gm-Message-State: AHPjjUgkEGe6ZbrxBL+uU4TnlBLTNclD1ORIlO5SIUp70F8FfljcXv+t
+	O0fUfi1QCFRy3jjrBzq74pL066ToH4GFmrNf+dJnOw==
+X-Google-Smtp-Source: AOwi7QCPrqzJy7sa3zmlkId/2zRSIFqCQBmpD+NE45jhCPUsgpQV+uuajjpem8dP4AGqeV49aWLXAb9Xb8SleWXTUTQ=
+X-Received: by 10.223.134.174 with SMTP id 43mr11364824wrx.173.1506459976764; 
+	Tue, 26 Sep 2017 14:06:16 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20170926202512.37670-1-carenas@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="VVhE9VFSVK81iDHQ6KdORkUFwjWqBJ6dN"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 26 Sep 2017 20:37:24 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gitignore: ignore
- check-qlit test
+Received: by 10.223.139.215 with HTTP; Tue, 26 Sep 2017 14:05:56 -0700 (PDT)
+In-Reply-To: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
+References: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 26 Sep 2017 22:05:56 +0100
+Message-ID: <CAFEAcA-RPHGo3-6ASrfFq5hoWLm_ETPLqOXAaLHr8MSStxTb=A@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::234
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/29] Trivial patches for
+ 2017-09-26
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,79 +64,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 20:37:34 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 21:06:20 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---VVhE9VFSVK81iDHQ6KdORkUFwjWqBJ6dN
-Content-Type: multipart/mixed; boundary="RXaREKTuj59o63evAro6okfJ77klwFIRu";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=c3=b3n?= <carenas@gmail.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
-Message-ID: <581bdcc9-6826-3fd9-f531-c37041cf34d1@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] gitignore: ignore check-qlit test
-References: <20170926202512.37670-1-carenas@gmail.com>
-In-Reply-To: <20170926202512.37670-1-carenas@gmail.com>
-
---RXaREKTuj59o63evAro6okfJ77klwFIRu
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 09/26/2017 03:25 PM, Carlo Marcelo Arenas Bel=C3=B3n wrote:
-
-Worth mentioning in the commit message body that it was introduced in
-commit 382176b4.
-
-> Signed-off-by: Carlo Marcelo Arenas Bel=C3=B3n <carenas@gmail.com>
-> ---
->  tests/.gitignore | 1 +
->  1 file changed, 1 insertion(+)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
-> diff --git a/tests/.gitignore b/tests/.gitignore
-> index cf6d99c91e..53cb2efaee 100644
-> --- a/tests/.gitignore
-> +++ b/tests/.gitignore
-> @@ -6,6 +6,7 @@ check-qdict
->  check-qnum
->  check-qjson
->  check-qlist
-> +check-qlit
->  check-qnull
->  check-qstring
->  check-qom-interface
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+On 26 September 2017 at 07:14, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> This is a resend of yesterday's pull request, with two patches
+> removed:
+>   filter-mirror: segfault when specifying non existent device
+>     (causes testsuite to fail)
+>   dma/i82374: avoid double creation of i82374 device
+>     (better version is in the work)
+>
+> and with one patch with additional R-b line:
+>   remove trailing whitespace from qemu-options.hx
+>
+> Not resending any patches, just the cover letter.
+>
+> Please consider applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 1e3ee834083227f552179f6e43902cba5a866e6b:
+>
+>   Merge remote-tracking branch 'remotes/thibault/tags/samuel-thibault' into staging (2017-09-25 20:31:24 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to 35deebb2327227d8c5f4816476befb06f6329de6:
+>
+>   hw/isa/pc87312: Mark the device with user_creatable = false (2017-09-26 09:11:23 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-09-26
 
 
---RXaREKTuj59o63evAro6okfJ77klwFIRu--
+Applied, thanks.
 
---VVhE9VFSVK81iDHQ6KdORkUFwjWqBJ6dN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlnKuoAACgkQp6FrSiUn
-Q2rhggf9E0EZDseAZbl3AC/aP/AMMNvnotG/t7QNPpzCDzpCGOtGj68ZAOSx9NOM
-c7nSX0JctWZcIegKLjW2KNYSD4KUB+Z16ehLTFcl2j4G14nH6LiPtGimJtl6JVzb
-rBiWn5q7hAv9AzjPlcxHhb2FTpG4lKKq6W8BqXCTlE78d0iwWR/ZpIi6YINEUqhm
-zilbxWh1Oc5wDXP5XgPaSY4Y10opXY4pJBxC3oBPVH8VrQNYgMDencpfxPF7/cb9
-QBXIj3WO5EU4mMpzbxYLasa7iHkVs+LG1tEW6NAznwlA+XSLvmpYSWYd/gdFKbB1
-duJV5fmsDTQyNcWCNDkglCt4t+wY6w==
-=uFUY
------END PGP SIGNATURE-----
-
---VVhE9VFSVK81iDHQ6KdORkUFwjWqBJ6dN--
+-- PMM
 
