@@ -1,55 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwkcM-0006Gp-8m
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 03:49:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57787)
+	id 1dwl8m-0004m1-V9
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 04:22:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1dwkcJ-0006Ej-F3
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 03:49:20 -0400
+	(envelope-from <stefanha@gmail.com>) id 1dwl8k-0004lB-KY
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 04:22:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <otubo@redhat.com>) id 1dwkcF-0004jd-IX
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 03:49:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47026)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <otubo@redhat.com>)
-	id 1dwkc5-0004gk-GH; Tue, 26 Sep 2017 03:49:05 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DDFBE91FCE;
-	Tue, 26 Sep 2017 07:49:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DDFBE91FCE
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=otubo@redhat.com
-Received: from vader (ovpn-117-76.ams2.redhat.com [10.36.117.76])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 27E9860462;
-	Tue, 26 Sep 2017 07:48:57 +0000 (UTC)
-Date: Tue, 26 Sep 2017 09:48:57 +0200
-From: Eduardo Otubo <otubo@redhat.com>
+	(envelope-from <stefanha@gmail.com>) id 1dwl8j-000249-T0
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 04:22:50 -0400
+Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:47855)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1dwl8d-00022T-RX; Tue, 26 Sep 2017 04:22:43 -0400
+Received: by mail-wm0-x232.google.com with SMTP id r136so5007513wmf.2;
+	Tue, 26 Sep 2017 01:22:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=yhAxbx8FB5cX1YwsmCmRHxKIyqYMd9+JMdJDHrPYW8M=;
+	b=WInp0W6SA3rP8oV9KgnKWhZD7epRxw4kzQpc2Jwga9QYvzj00Tygqr5wR9IE65+Zbg
+	UP+xuaWs0y1F/pEzXzxvRA2EIU6yoULEKUniRnciqam//gEeClrMQ5KcygzDc3KD6ZgQ
+	XjQulcxSkKtq36HLjPZPlUxLtUKi7113CJ3XuvA7XodMxpC4dpQ9E0L7ovwsk3e1RUUI
+	BHPYNbY6cTHgfMQH7Mh8oWskwKHI8pUiKGMYp1U+eVFn5/VN3QGMiRRy8h/OEDp8FJ/O
+	5sHpGdpEOFxKbBKqE8j1k2cjGH2pOIb2wVTgh7DUtr/Wk4RQuPM3ygJZBNyVCnfWS6jO
+	dmLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=yhAxbx8FB5cX1YwsmCmRHxKIyqYMd9+JMdJDHrPYW8M=;
+	b=e0cz/2NF20tbWEWg52Ytqn7ZtV9UuqEL4w2lX4qmztJrcmgltuSYkR4BGiuPbpQh0W
+	j/g8YeCOnhd5qQdiQ09sykl3fiCLByWjv6kUFnspybKoPJ3VoXBMBnUbjyPhXozXFXe4
+	NQWHkD2jfFANITamW3n48BT6rLAMb+IVCSblRYpk2STLjNYkK91wgr0aP0qmITroJJc6
+	W3xSinU1/+oPRfK+RxKl4SILi+39WoZhHmjFts1gCmCteOZciLPM/1NX9eS18MNsUvu9
+	GVg0d4b3tWOiLPKBRun+/7Pdm0pPV/HqBwM9vh7VP/RrQCIGSeNUSklahHQoWhzgxtB1
+	B+Sg==
+X-Gm-Message-State: AHPjjUiUTkO3C9+6sS7Jxjub+cqGJEnXyAtbhF/4ChYTwgYd/K0zRAZz
+	y/fYbXIuel9Eqt5ZlJDZNQc=
+X-Google-Smtp-Source: AOwi7QB1/g4Gixq4zXmdQuKsGddiz7Fd2AZhuFPa3S7ER27dIEAFF12mQQSJkzQScY3B6vfGyqwkpg==
+X-Received: by 10.28.13.76 with SMTP id 73mr2191325wmn.101.1506414162720;
+	Tue, 26 Sep 2017 01:22:42 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+	by smtp.gmail.com with ESMTPSA id n9sm2217844wmd.12.2017.09.26.01.22.41
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 26 Sep 2017 01:22:41 -0700 (PDT)
+Date: Tue, 26 Sep 2017 09:22:40 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-Message-ID: <20170926074857.GA6415@vader>
-References: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
-	<CAFEAcA9GtLniZNyO7Uv=vL9HiSBGjvWRYdR-Zi1E+W4N9qiB6A@mail.gmail.com>
-	<55782343-4bb4-d5ed-2c5d-4dd0fc5764dd@msgid.tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20170926082240.GA16834@stefanha-x1.localdomain>
+References: <20170926060944.5962-1-mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <55782343-4bb4-d5ed-2c5d-4dd0fc5764dd@msgid.tls.msk.ru>
-User-Agent: Mutt/1.8.3+47 (5f034395e53d) (2017-05-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 26 Sep 2017 07:49:03 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PULL 00/31] Trivial patches for 2017-09-25
+In-Reply-To: <20170926060944.5962-1-mjt@msgid.tls.msk.ru>
+User-Agent: Mutt/1.8.3 (2017-05-23)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::232
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-doc.texi: remove
+ trailing whitespace
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,64 +71,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 07:49:20 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 08:22:51 -0000
 
-On Tue, Sep 26, 2017 at 08:57:00AM +0300, Michael Tokarev wrote:
-> 26.09.2017 02:22, Peter Maydell wrote:
-> []
-> >> trivial patches for 2017-09-25
-> > 
-> > This fails 'make check' on most of my configs:
-> > 
-> >   GTESTER check-qtest-ppc64
-> > qemu-system-ppc64: -object
-> > filter-mirror,id=qtest-f0,netdev=qtest-bn0,queue=tx,outdev=mirror0:
-> > Device 'qtest-bn0' not found
-> > Broken pipe
-> > GTester: last random seed: R02Sb816ff80b7d08ef6a5328ff373d8cd65
-> > 
-> > GLib-CRITICAL **: void g_hook_destroy_link(GHookList *, GHook *):
-> > assertion `hook != NULL' failed
-> > aborting...
-> 
+On Tue, Sep 26, 2017 at 09:09:44AM +0300, Michael Tokarev wrote:
+> Reported-By: Vagrant Cascadian <vagrant@debian.org>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  qemu-doc.texi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-That's really weird, I'm pretty sure I did run make check before
-sending it. Anyways, thanks for catching this. I'll fix and resend.
-
-> For what it's worth, this time I just _forgot_ to run tests. What a shame..
-> 
-> It fails due to:
-> 
-> Author: Eduardo Otubo <otubo@redhat.com>
-> Date:   Mon Aug 21 17:50:05 2017 +0200
-> 
->     filter-mirror: segfault when specifying non existent device
-> 
->     When using filter-mirror like the example below where the interface
->     'ndev0' does not exist on the host, QEMU crashes into segmentation
->     fault.
-> 
->      $ qemu-system-x86_64 -S -machine pc -netdev user,id=ndev0 -object filter-mirror,id=test-object,netdev=ndev0
-> 
->     This happens because the function filter_mirror_setup() does not checks
->     if the device actually exists and still keep on processing calling
->     qemu_chr_find(). This patch fixes this issue.
-> 
->     Signed-off-by: Eduardo Otubo <otubo@redhat.com>
->     Reviewed-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
-> 
-> Reverting this patch makes it run again. Cc'ing Eduardo.
-> 
-> I'll remove this patch, patch "hw/isa/pc87312: Mark the device with
-> user_creatable = false" (will be replaced with a better variant),
-> and update another patch stripping one more trailing whitespace,
-> and resend.
-> 
-> Thanks,
-> 
-> /mjt
-
--- 
-Eduardo Otubo
-Senior Software Engineer @ RedHat
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
