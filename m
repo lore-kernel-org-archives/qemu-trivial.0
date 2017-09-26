@@ -1,38 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwj91-00066y-Ee
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 02:14:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37158)
+	id 1dwkcM-0006Gp-8m
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 03:49:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwj8y-00065C-TN
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:14:57 -0400
+	(envelope-from <otubo@redhat.com>) id 1dwkcJ-0006Ej-F3
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 03:49:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwj8x-0003h4-RT
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:14:56 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58787)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1dwj8s-0003ZU-BS; Tue, 26 Sep 2017 02:14:50 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 3F87441F8B;
-	Tue, 26 Sep 2017 09:14:49 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 22E7417;
-	Tue, 26 Sep 2017 09:14:49 +0300 (MSK)
-Received: (nullmailer pid 7284 invoked by uid 1000);
-	Tue, 26 Sep 2017 06:14:49 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Tue, 26 Sep 2017 09:14:44 +0300
-Message-Id: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
+	(envelope-from <otubo@redhat.com>) id 1dwkcF-0004jd-IX
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 03:49:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47026)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <otubo@redhat.com>)
+	id 1dwkc5-0004gk-GH; Tue, 26 Sep 2017 03:49:05 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DDFBE91FCE;
+	Tue, 26 Sep 2017 07:49:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com DDFBE91FCE
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=otubo@redhat.com
+Received: from vader (ovpn-117-76.ams2.redhat.com [10.36.117.76])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 27E9860462;
+	Tue, 26 Sep 2017 07:48:57 +0000 (UTC)
+Date: Tue, 26 Sep 2017 09:48:57 +0200
+From: Eduardo Otubo <otubo@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+Message-ID: <20170926074857.GA6415@vader>
+References: <cover.1506288070.git.mjt@msgid.tls.msk.ru>
+	<CAFEAcA9GtLniZNyO7Uv=vL9HiSBGjvWRYdR-Zi1E+W4N9qiB6A@mail.gmail.com>
+	<55782343-4bb4-d5ed-2c5d-4dd0fc5764dd@msgid.tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <55782343-4bb4-d5ed-2c5d-4dd0fc5764dd@msgid.tls.msk.ru>
+User-Agent: Mutt/1.8.3+47 (5f034395e53d) (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 26 Sep 2017 07:49:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 00/29] Trivial patches for 2017-09-26
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PULL 00/31] Trivial patches for 2017-09-25
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,114 +61,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 06:14:57 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 07:49:20 -0000
 
-This is a resend of yesterday's pull request, with two patches
-removed:
-  filter-mirror: segfault when specifying non existent device
-    (causes testsuite to fail)
-  dma/i82374: avoid double creation of i82374 device
-    (better version is in the work)
+On Tue, Sep 26, 2017 at 08:57:00AM +0300, Michael Tokarev wrote:
+> 26.09.2017 02:22, Peter Maydell wrote:
+> []
+> >> trivial patches for 2017-09-25
+> > 
+> > This fails 'make check' on most of my configs:
+> > 
+> >   GTESTER check-qtest-ppc64
+> > qemu-system-ppc64: -object
+> > filter-mirror,id=qtest-f0,netdev=qtest-bn0,queue=tx,outdev=mirror0:
+> > Device 'qtest-bn0' not found
+> > Broken pipe
+> > GTester: last random seed: R02Sb816ff80b7d08ef6a5328ff373d8cd65
+> > 
+> > GLib-CRITICAL **: void g_hook_destroy_link(GHookList *, GHook *):
+> > assertion `hook != NULL' failed
+> > aborting...
+> 
 
-and with one patch with additional R-b line:
-  remove trailing whitespace from qemu-options.hx
+That's really weird, I'm pretty sure I did run make check before
+sending it. Anyways, thanks for catching this. I'll fix and resend.
 
-Not resending any patches, just the cover letter.
+> For what it's worth, this time I just _forgot_ to run tests. What a shame..
+> 
+> It fails due to:
+> 
+> Author: Eduardo Otubo <otubo@redhat.com>
+> Date:   Mon Aug 21 17:50:05 2017 +0200
+> 
+>     filter-mirror: segfault when specifying non existent device
+> 
+>     When using filter-mirror like the example below where the interface
+>     'ndev0' does not exist on the host, QEMU crashes into segmentation
+>     fault.
+> 
+>      $ qemu-system-x86_64 -S -machine pc -netdev user,id=ndev0 -object filter-mirror,id=test-object,netdev=ndev0
+> 
+>     This happens because the function filter_mirror_setup() does not checks
+>     if the device actually exists and still keep on processing calling
+>     qemu_chr_find(). This patch fixes this issue.
+> 
+>     Signed-off-by: Eduardo Otubo <otubo@redhat.com>
+>     Reviewed-by: Zhang Chen <zhangchen.fnst@cn.fujitsu.com>
+> 
+> Reverting this patch makes it run again. Cc'ing Eduardo.
+> 
+> I'll remove this patch, patch "hw/isa/pc87312: Mark the device with
+> user_creatable = false" (will be replaced with a better variant),
+> and update another patch stripping one more trailing whitespace,
+> and resend.
+> 
+> Thanks,
+> 
+> /mjt
 
-Please consider applying.
-
-Thanks,
-
-/mjt
-
-The following changes since commit 1e3ee834083227f552179f6e43902cba5a866e=
-6b:
-
-  Merge remote-tracking branch 'remotes/thibault/tags/samuel-thibault' in=
-to staging (2017-09-25 20:31:24 +0100)
-
-are available in the git repository at:
-
-  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
-
-for you to fetch changes up to 35deebb2327227d8c5f4816476befb06f6329de6:
-
-  hw/isa/pc87312: Mark the device with user_creatable =3D false (2017-09-=
-26 09:11:23 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2017-09-26
-
-----------------------------------------------------------------
-Alistair Francis (1):
-      target/xtensa: Use the pre-defined MEMTXATTRS_UNSPECIFIED macro
-
-Eric Blake (2):
-      osdep: Fix ROUND_UP(64-bit, 32-bit)
-      nbd-client: Use correct macro parenthesization
-
-KONRAD Frederic (1):
-      aux-to-i2c-bridge: don't allow user to create one
-
-Kamil Rytarowski (2):
-      Replace round_page() with TARGET_PAGE_ALIGN()
-      Drop gld linker usage on SunOS
-
-Liang Yan (2):
-      hw/display/xenfb.c: Add trace_xenfb_key_event
-      chardev/baum: fix baum that releases brlapi twice
-
-Michael Tokarev (1):
-      remove trailing whitespace from qemu-options.hx
-
-Peter Maydell (1):
-      util/qemu-thread-posix.c: Replace OS ifdefs with CONFIG_HAVE_SEM_TI=
-MEDWAIT
-
-Philippe Mathieu-Daud=C3=A9 (14):
-      MAINTAINERS: add missing ARM entries
-      MAINTAINERS: add missing STM32 entry
-      MAINTAINERS: add missing entry for vhost
-      MAINTAINERS: add missing VMWare entry
-      MAINTAINERS: add missing Guest Agent entries
-      MAINTAINERS: add missing qcow2 entry
-      MAINTAINERS: add missing PCI entries
-      MAINTAINERS: add missing SSI entries
-      MAINTAINERS: add missing entries for throttling infra
-      MAINTAINERS: add missing AIO entry
-      MAINTAINERS: add missing entry for Generic Loader
-      MAINTAINERS: add missing Cryptography entry
-      MAINTAINERS: update docs/devel/ entries
-      MAINTAINERS: update docs/interop/ entries
-
-Stefan Weil (1):
-      configure: Remove unused code (found by shellcheck)
-
-Thomas Huth (4):
-      trivial: Add missing "-m" parameter in docs/memory-hotplug.txt
-      hw/display/virtio-gpu: Put the virtio-gpu-device into the display c=
-ategory
-      tests/boot-sector: Increase timeout to 600 seconds
-      hw/isa/pc87312: Mark the device with user_creatable =3D false
-
- MAINTAINERS                 | 42 ++++++++++++++++++++++++++++++++-------=
----
- block/nbd-client.c          |  4 ++--
- chardev/baum.c              |  1 +
- configure                   | 17 +++++++++++++++--
- docs/memory-hotplug.txt     |  2 +-
- hw/display/trace-events     |  1 +
- hw/display/virtio-gpu.c     |  1 +
- hw/display/xenfb.c          |  1 +
- hw/isa/pc87312.c            |  2 ++
- hw/misc/auxbus.c            | 11 +++++++++++
- hw/ppc/mac_newworld.c       | 11 +++--------
- hw/ppc/mac_oldworld.c       | 11 +++--------
- include/qemu/osdep.h        |  6 +++---
- include/qemu/thread-posix.h |  2 +-
- qemu-options.hx             |  4 ++--
- target/xtensa/op_helper.c   |  4 ++--
- tests/boot-sector.c         |  4 ++--
- util/qemu-thread-posix.c    | 10 +++++-----
- 18 files changed, 88 insertions(+), 46 deletions(-)
+-- 
+Eduardo Otubo
+Senior Software Engineer @ RedHat
 
