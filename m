@@ -1,35 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwj47-00059r-Tm
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 02:09:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35935)
+	id 1dwj91-00066y-Ee
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 02:14:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwj46-00058a-0a
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:09:54 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1dwj8y-00065C-TN
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:14:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1dwj45-0000ls-3V
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:09:53 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48701)
+	(envelope-from <mjt@tls.msk.ru>) id 1dwj8x-0003h4-RT
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 02:14:56 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:58787)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1dwj3y-0000ho-W7; Tue, 26 Sep 2017 02:09:47 -0400
+	id 1dwj8s-0003ZU-BS; Tue, 26 Sep 2017 02:14:50 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 28FBC41F8B;
-	Tue, 26 Sep 2017 09:09:46 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 3F87441F8B;
+	Tue, 26 Sep 2017 09:14:49 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id DAB0217;
-	Tue, 26 Sep 2017 09:09:45 +0300 (MSK)
-Received: (nullmailer pid 6007 invoked by uid 1000);
-	Tue, 26 Sep 2017 06:09:45 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 22E7417;
+	Tue, 26 Sep 2017 09:14:49 +0300 (MSK)
+Received: (nullmailer pid 7284 invoked by uid 1000);
+	Tue, 26 Sep 2017 06:14:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue, 26 Sep 2017 09:09:44 +0300
-Message-Id: <20170926060944.5962-1-mjt@msgid.tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Date: Tue, 26 Sep 2017 09:14:44 +0300
+Message-Id: <cover.1506406399.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PATCH] qemu-doc.texi: remove trailing whitespace
+Subject: [Qemu-trivial] [PULL 00/29] Trivial patches for 2017-09-26
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -41,28 +44,114 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 06:09:55 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 06:14:57 -0000
 
-Reported-By: Vagrant Cascadian <vagrant@debian.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+This is a resend of yesterday's pull request, with two patches
+removed:
+  filter-mirror: segfault when specifying non existent device
+    (causes testsuite to fail)
+  dma/i82374: avoid double creation of i82374 device
+    (better version is in the work)
+
+and with one patch with additional R-b line:
+  remove trailing whitespace from qemu-options.hx
+
+Not resending any patches, just the cover letter.
+
+Please consider applying.
+
+Thanks,
+
+/mjt
+
+The following changes since commit 1e3ee834083227f552179f6e43902cba5a866e=
+6b:
+
+  Merge remote-tracking branch 'remotes/thibault/tags/samuel-thibault' in=
+to staging (2017-09-25 20:31:24 +0100)
+
+are available in the git repository at:
+
+  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+
+for you to fetch changes up to 35deebb2327227d8c5f4816476befb06f6329de6:
+
+  hw/isa/pc87312: Mark the device with user_creatable =3D false (2017-09-=
+26 09:11:23 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2017-09-26
+
+----------------------------------------------------------------
+Alistair Francis (1):
+      target/xtensa: Use the pre-defined MEMTXATTRS_UNSPECIFIED macro
+
+Eric Blake (2):
+      osdep: Fix ROUND_UP(64-bit, 32-bit)
+      nbd-client: Use correct macro parenthesization
+
+KONRAD Frederic (1):
+      aux-to-i2c-bridge: don't allow user to create one
+
+Kamil Rytarowski (2):
+      Replace round_page() with TARGET_PAGE_ALIGN()
+      Drop gld linker usage on SunOS
+
+Liang Yan (2):
+      hw/display/xenfb.c: Add trace_xenfb_key_event
+      chardev/baum: fix baum that releases brlapi twice
+
+Michael Tokarev (1):
+      remove trailing whitespace from qemu-options.hx
+
+Peter Maydell (1):
+      util/qemu-thread-posix.c: Replace OS ifdefs with CONFIG_HAVE_SEM_TI=
+MEDWAIT
+
+Philippe Mathieu-Daud=C3=A9 (14):
+      MAINTAINERS: add missing ARM entries
+      MAINTAINERS: add missing STM32 entry
+      MAINTAINERS: add missing entry for vhost
+      MAINTAINERS: add missing VMWare entry
+      MAINTAINERS: add missing Guest Agent entries
+      MAINTAINERS: add missing qcow2 entry
+      MAINTAINERS: add missing PCI entries
+      MAINTAINERS: add missing SSI entries
+      MAINTAINERS: add missing entries for throttling infra
+      MAINTAINERS: add missing AIO entry
+      MAINTAINERS: add missing entry for Generic Loader
+      MAINTAINERS: add missing Cryptography entry
+      MAINTAINERS: update docs/devel/ entries
+      MAINTAINERS: update docs/interop/ entries
+
+Stefan Weil (1):
+      configure: Remove unused code (found by shellcheck)
+
+Thomas Huth (4):
+      trivial: Add missing "-m" parameter in docs/memory-hotplug.txt
+      hw/display/virtio-gpu: Put the virtio-gpu-device into the display c=
+ategory
+      tests/boot-sector: Increase timeout to 600 seconds
+      hw/isa/pc87312: Mark the device with user_creatable =3D false
+
+ MAINTAINERS                 | 42 ++++++++++++++++++++++++++++++++-------=
 ---
- qemu-doc.texi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/qemu-doc.texi b/qemu-doc.texi
-index 4076226f39..de23fca9dc 100644
---- a/qemu-doc.texi
-+++ b/qemu-doc.texi
-@@ -105,7 +105,7 @@ QEMU full system emulation has the following features:
- QEMU uses a full software MMU for maximum portability.
- 
- @item
--QEMU can optionally use an in-kernel accelerator, like kvm. The accelerators 
-+QEMU can optionally use an in-kernel accelerator, like kvm. The accelerators
- execute most of the guest code natively, while
- continuing to emulate the rest of the machine.
- 
--- 
-2.11.0
-
+ block/nbd-client.c          |  4 ++--
+ chardev/baum.c              |  1 +
+ configure                   | 17 +++++++++++++++--
+ docs/memory-hotplug.txt     |  2 +-
+ hw/display/trace-events     |  1 +
+ hw/display/virtio-gpu.c     |  1 +
+ hw/display/xenfb.c          |  1 +
+ hw/isa/pc87312.c            |  2 ++
+ hw/misc/auxbus.c            | 11 +++++++++++
+ hw/ppc/mac_newworld.c       | 11 +++--------
+ hw/ppc/mac_oldworld.c       | 11 +++--------
+ include/qemu/osdep.h        |  6 +++---
+ include/qemu/thread-posix.h |  2 +-
+ qemu-options.hx             |  4 ++--
+ target/xtensa/op_helper.c   |  4 ++--
+ tests/boot-sector.c         |  4 ++--
+ util/qemu-thread-posix.c    | 10 +++++-----
+ 18 files changed, 88 insertions(+), 46 deletions(-)
 
