@@ -1,65 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwpWC-0002fV-Vt
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 09:03:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43299)
+	id 1dwrZP-0005w6-Ho
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 11:14:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49008)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carenas@gmail.com>) id 1dwhGf-0000R5-Dr
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:14:46 -0400
+	(envelope-from <eblake@redhat.com>) id 1dwrZN-0005uh-0O
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:14:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carenas@gmail.com>) id 1dwhGe-0006BW-OT
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 00:14:45 -0400
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:36763)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <carenas@gmail.com>)
-	id 1dwhGa-00066L-8i; Tue, 26 Sep 2017 00:14:40 -0400
-Received: by mail-pf0-x244.google.com with SMTP id f84so4513340pfj.3;
-	Mon, 25 Sep 2017 21:14:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=6WPuAec3swa+S6XLzVYPzNOmtfkojvEgHhEVnFubLRE=;
-	b=gYygoxgo4TCn2qq99sugRpwXAZW52ApKvTTttJ6JDs/owoCfXGBmdt4lvn+rvJ1rXg
-	d2wwsj5QMOb5sM+BQUwYtCX2GdVCKU8jzUj+olrXZxd2Xo1pfTH5hPYGwVNnJGShiCex
-	t2pAUbm9qo4l9RrZSIps2mAKOPd2x1DwqjB0nykhLPxAnphFbDBh+0QIS1hu83hpe5PP
-	R8VjYnDT5dHOKh/IYCyokJoR/eFAAUiWB9hDnUxw71KkiNW/3DxYGaCaTTIAsTgVZCem
-	4amqbV4/5JFRltV1lZKpbBRcPPwDYxAhRnsr9knMs9YXTmsAjiSqYfg9rKYkG6Ffbrii
-	5/wA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=6WPuAec3swa+S6XLzVYPzNOmtfkojvEgHhEVnFubLRE=;
-	b=Me0mEph6+DzFkHsVEjN+GfkUNFdt0PAx1LtrYqIPODr0CCuWIpUqq4CDI3V9p9oTFC
-	FOlgjWNGijtv+v7KUQEnISo7y6xocmMDhvk25NEzq7e4kH/KBjM6YLjvSBIHUaC66+Ji
-	ouweO9kXqy241/PWuZCMQZwA2JIH6YbCEr1JLTysCUnjhwc24Q8/PqsocB7+4xBOHrva
-	OT6VyFxlGGks9T1PgrqkXRiUdzeCqK/40llYGdKDmyQV4J6J/ysF0wLR5V4VBMTErNJo
-	2wdVQlx4Fn0oGXDNH8GdHWB5JDMJbBjhhieGwEpl5ar6dmitxp942H+tjrfPz+/N1cUJ
-	O+kw==
-X-Gm-Message-State: AHPjjUjd/vPHarn5hBfKOHHEPDbaSG/rRny1/ZuV6sJOU3ba6TLgmbzc
-	3z0ONo9E3odyU2CtRCPbl4kL0ssqdMU=
-X-Google-Smtp-Source: AOwi7QB622BxPQgTiut0qUD+gJaZnN7rn2mybR2tVm9dF82VBGjPHgZUyGoO7lFM4SEzd8YCWguBoQ==
-X-Received: by 10.101.66.70 with SMTP id d6mr9627540pgq.169.1506399278788;
-	Mon, 25 Sep 2017 21:14:38 -0700 (PDT)
-Received: from localhost.localdomain (c-73-189-82-67.hsd1.ca.comcast.net.
-	[73.189.82.67]) by smtp.gmail.com with ESMTPSA id
-	c16sm13979670pfj.123.2017.09.25.21.14.37
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Mon, 25 Sep 2017 21:14:37 -0700 (PDT)
-From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
+	(envelope-from <eblake@redhat.com>) id 1dwrZM-0005w5-CK
+	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 11:14:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60150)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dwrZD-0005pI-HC; Tue, 26 Sep 2017 11:14:35 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 79F6FD7136;
+	Tue, 26 Sep 2017 15:14:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 79F6FD7136
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from red.redhat.com (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A4F8678131;
+	Tue, 26 Sep 2017 15:14:31 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: riku.voipio@iki.fi, laurent@vivier.eu, qemu-trivial@nongnu.org,
-	=?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-Date: Mon, 25 Sep 2017 21:14:20 -0700
-Message-Id: <20170926041420.32673-1-carenas@gmail.com>
-X-Mailer: git-send-email 2.14.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-X-Mailman-Approved-At: Tue, 26 Sep 2017 09:03:18 -0400
-Subject: [Qemu-trivial] [PATCH] linux-user: remove duplicate break in syscall
+Cc: pbonzini@redhat.com,
+	qemu-trivial@nongnu.org
+Date: Tue, 26 Sep 2017 10:14:21 -0500
+Message-Id: <20170926151421.14557-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 26 Sep 2017 15:14:34 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] scsi: Ignore executable for in-tree builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,28 +51,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 04:14:46 -0000
+X-List-Received-Date: Tue, 26 Sep 2017 15:14:45 -0000
 
-likely introduced in 3532fa7402cda16f7b95261b0339c58630051f0b
+The new qemu-pr-helper (commit b855f8d17) should not be checked in,
+even when doing in-tree builds.
 
-Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 ---
- linux-user/syscall.c | 1 -
- 1 file changed, 1 deletion(-)
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 9b6364a266..3ef4d1c568 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -3131,7 +3131,6 @@ set_timeout:
-         case TARGET_SO_RCVLOWAT:
- 		optname = SO_RCVLOWAT;
- 		break;
--            break;
-         default:
-             goto unimplemented;
-         }
+diff --git a/.gitignore b/.gitignore
+index 40acfcb9e2..3a7e01dc6a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -49,6 +49,7 @@
+ /qemu-version.h
+ /qemu-version.h.tmp
+ /module_block.h
++/scsi/qemu-pr-helper
+ /vscclient
+ /vhost-user-scsi
+ /fsdev/virtfs-proxy-helper
 -- 
-2.14.1
+2.13.5
 
 
