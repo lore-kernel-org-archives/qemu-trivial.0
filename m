@@ -1,65 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dwx4v-0003ND-O2
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Sep 2017 17:07:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56138)
+	id 1dxLXf-0002NV-To
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Sep 2017 19:14:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37476)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <carenas@gmail.com>) id 1dwx4t-0003LS-Ak
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:07:40 -0400
+	(envelope-from <mst@redhat.com>) id 1dxLXe-0002Ml-EF
+	for qemu-trivial@nongnu.org; Wed, 27 Sep 2017 19:14:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <carenas@gmail.com>) id 1dwx4s-0006KB-EM
-	for qemu-trivial@nongnu.org; Tue, 26 Sep 2017 17:07:39 -0400
-Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:34062)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <carenas@gmail.com>)
-	id 1dwx4o-0006I1-4k; Tue, 26 Sep 2017 17:07:34 -0400
-Received: by mail-pg0-x242.google.com with SMTP id u18so7415731pgo.1;
-	Tue, 26 Sep 2017 14:07:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=AaoNomXxex+vXn9sAVRUHr4b0uZONb0jFeaTlBiWhk4=;
-	b=mPZGiL7/ZQs+LTvD5oMWhDC1XfVQ7HrpfBzpGQtH+yXzE87N7F9MmkMdKJL3x1Sq4z
-	KU/0f443zaRYjhZNVyBM3SODk2olQV1cYyJOGAzLgGNRvWZk713LvZlyoQU+dpKbFgez
-	9PpwDJcSEpi4br5IgSG1VGJ1TtKO++8vAYQrrlJ2dWkDh1qmp0f0kLPY8kDTY7QufgD3
-	zlIbLlegCKuyDDVfzprxg4BV4Fkxp9SRMrhByfZSRtOQLKf4wa8lPW/iffFTxTCQgh4y
-	QYGuvJ+M7A9uPqN9hHn6sDhnkerDbBHqd44Smcl8Ruszfgf4lY5oUKFsaizEyQzo1GNp
-	54pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=AaoNomXxex+vXn9sAVRUHr4b0uZONb0jFeaTlBiWhk4=;
-	b=aC2122K1jDUls4oDJdWJ9GQwzgCpnqX7vNayLS+rVU1GV9vLzY2T8DhmUEC4D+mQEK
-	D2Qg7+OZTuAwodXA88AM9vvMmFZpZhLRS6UsQwqKQlqQaJYfdqUKzbMHq1aZ9i1SBHZY
-	HoCAROg6BhPIZtn2iA7dzl41nwTC8IE2a/qJYfbx0aC1wssq5l2ZvpZrH124jlBbjQbh
-	8EhHXzQcD1OGND8r6myxCdIokK3LeyBRflVwivLis/YE211vj0BYB/8oW4KGjjiCHeex
-	r2h3L+uAL/j4iVt3k3wAO+/uHQ90TS5stFP9tz5Tee0KbUnSXSfdjg2O71Rbj9WwROhL
-	SXmg==
-X-Gm-Message-State: AHPjjUha6aKyQ+QHFyhu5r1hlNAhQu4es2BrMXBFL7Poft0Mtzanem8z
-	7jol2BQQ7p3BegrCGBMeh79Av2T+v2A=
-X-Google-Smtp-Source: AOwi7QCpa8+FkiKeh3yKPLI+DgrtPUk4HJc7JHHDMds15BnP1p6bTdgqBrSHfmwUsOcwsncWrNJJPw==
-X-Received: by 10.84.129.193 with SMTP id b59mr12006540plb.121.1506460053010; 
-	Tue, 26 Sep 2017 14:07:33 -0700 (PDT)
-Received: from 172-11-32-171.lightspeed.mmphtn.sbcglobal.net
-	(50-207-95-178-static.hfc.comcastbusiness.net. [50.207.95.178])
-	by smtp.gmail.com with ESMTPSA id
-	l131sm18326939pga.24.2017.09.26.14.07.31
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Tue, 26 Sep 2017 14:07:32 -0700 (PDT)
-From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: marcandre.lureau@redhat.com, qemu-trivial@nongnu.org, eblake@redhat.com,
-	=?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-Date: Tue, 26 Sep 2017 14:07:23 -0700
-Message-Id: <20170926210723.38042-1-carenas@gmail.com>
-X-Mailer: git-send-email 2.13.5 (Apple Git-94)
+	(envelope-from <mst@redhat.com>) id 1dxLXd-0008PP-JC
+	for qemu-trivial@nongnu.org; Wed, 27 Sep 2017 19:14:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36408)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1dxLXX-0008L9-BZ; Wed, 27 Sep 2017 19:14:51 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 082F12DBE66;
+	Wed, 27 Sep 2017 23:14:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 082F12DBE66
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=mst@redhat.com
+Received: from redhat.com (ovpn-123-149.rdu2.redhat.com [10.10.123.149])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 594A27E58F;
+	Wed, 27 Sep 2017 23:14:46 +0000 (UTC)
+Date: Thu, 28 Sep 2017 02:14:45 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
+	Victor Kaplansky <victork@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <20170928020110-mutt-send-email-mst@kernel.org>
+References: <1506049617-25716-1-git-send-email-thuth@redhat.com>
+	<513bbb2d-280b-92f8-b45f-89963f7118e2@msgid.tls.msk.ru>
+	<20170926223046-mutt-send-email-mst@kernel.org>
+	<CAFEAcA-dWVfX2i7ZYdHVg3G_kSSM6Gos8TRk=dfYYML4Jrn9HQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::242
-Subject: [Qemu-trivial] [PATCH v2] gitignore: ignore check-qlit test
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-dWVfX2i7ZYdHVg3G_kSSM6Gos8TRk=dfYYML4Jrn9HQ@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 27 Sep 2017 23:14:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/boot-sector: Increase
+ timeout to 600 seconds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,29 +63,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Sep 2017 21:07:40 -0000
+X-List-Received-Date: Wed, 27 Sep 2017 23:14:59 -0000
 
-test introduced in 382176b4d78e070d119af8e0dcd00884c11bbec2
+On Tue, Sep 26, 2017 at 08:35:59PM +0100, Peter Maydell wrote:
+> On 26 September 2017 at 20:31, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > On Mon, Sep 25, 2017 at 12:06:40AM +0300, Michael Tokarev wrote:
+> >> 22.09.2017 06:06, Thomas Huth wrote:
+> >> > If QEMU has been compiled with the flags --enable-tcg-interpreter and
+> >> > --enable-debug, the guest is running incredibly slow. The pxe boot test
+> >> > can take up to 400 seconds when testing the pseries ppc64 machine. While
+> >> > we should still look for ways to speed up the test on the pseries machine,
+> >> > it's better to increase the timeout in this test to 600 seconds anyway to
+> >> > allow the test to pass successfully now with this unusal configuration
+> >> > already.
+> >>
+> >> Applied to -trivial, thanks!
+> >>
+> >> /mjt
+> >
+> > Please do not apply this, trivial is not appropriate for functional
+> > changes like this.
+> 
+> It's not a functional change, it's just bumping a test timeout.
+> If you think we should be doing something else that's fine (as
+> with any other patch), but in principle I think this is totally
+> fine as a -trivial patch.
+> 
+> thanks
+> -- PMM
 
-Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
----
- tests/.gitignore | 1 +
- 1 file changed, 1 insertion(+)
+OK. I'd rather not see it applied as-is though.
 
-diff --git a/tests/.gitignore b/tests/.gitignore
-index cf6d99c91e..53cb2efaee 100644
---- a/tests/.gitignore
-+++ b/tests/.gitignore
-@@ -6,6 +6,7 @@ check-qdict
- check-qnum
- check-qjson
- check-qlist
-+check-qlit
- check-qnull
- check-qstring
- check-qom-interface
 -- 
-2.13.5 (Apple Git-94)
-
+MST
 
