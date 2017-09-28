@@ -1,99 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dxLld-0004tb-F9
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Sep 2017 19:29:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40471)
+	id 1dxeG2-0006Y8-Lz
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Sep 2017 15:14:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33994)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dxLlb-0004sM-4p
-	for qemu-trivial@nongnu.org; Wed, 27 Sep 2017 19:29:23 -0400
+	(envelope-from <eblake@redhat.com>) id 1dxeFx-0006V8-O8
+	for qemu-trivial@nongnu.org; Thu, 28 Sep 2017 15:14:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dxLla-0001Xn-5y
-	for qemu-trivial@nongnu.org; Wed, 27 Sep 2017 19:29:23 -0400
-Received: from mail-wr0-x22d.google.com ([2a00:1450:400c:c0c::22d]:45267)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dxLlZ-0001XH-Ss
-	for qemu-trivial@nongnu.org; Wed, 27 Sep 2017 19:29:22 -0400
-Received: by mail-wr0-x22d.google.com with SMTP id m18so19062705wrm.2
-	for <qemu-trivial@nongnu.org>; Wed, 27 Sep 2017 16:29:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Si34v+173DwH+WjUMAR/r3RpMgcgSGwxybn8hAh/gck=;
-	b=au7QKQ2heuKX8RjJ/pUMWNPb5afMnBss7xvX5/kmX2LoA1vRbMrb2DpgHqKUIS/2eh
-	LAu7qStvVE7F3jhC+mAVHM16VZE94nnIu+1pXN0q7f/H0YliLwG6LEJau4sKoWWu5EMI
-	Olc96Zp5lEuGqeAP7bcQJt+xYOmmTDyUUtB4s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Si34v+173DwH+WjUMAR/r3RpMgcgSGwxybn8hAh/gck=;
-	b=WqprpqqQhFGEPfgZdPrHRK+NJ9Bhvqh2d+blV2ereQUCuRm+p9Ww6QwD8mrO//UP63
-	E/XQFeqMy1LSyx484DtwWIVy4WD/hxFbt7TzkG6UjN+yI99662tNmg3Nlma+p1H0OzLE
-	Dntego7MAv7fuO0r/BR3qyfmLjzlebiTpk852jJJGqKzpNfygElSK7dpV7x+qzyomDqV
-	u0ROML8mST8tfdYVSzPqEo/e5YrI3dTkPYWjA7t83dQ2rpARSwPBpSVzI+z8mk070rDC
-	+v241JRMIL+O9FePKIElHJJK9gaVsNGwFDG5N9qnzInu1mAY08Hm2GjsfOV0UKedI6n4
-	Ftmg==
-X-Gm-Message-State: AHPjjUgVY2PldF8DKz6Tp80Op12XfxNG+osX6HzY/pA/cvIAZU9AOoRB
-	AeJ/f3A0VZl4X1XsRL93SD6wvvkRddBz4XxY6GOcCg==
-X-Google-Smtp-Source: AOwi7QAKU6zTaLlmOqOrAQhVXXYbPJyMxXY7tb7IlAADc2MSfN33w2TyWKekMFdF0KpaB+cReN8JNj6Tw+lzNil/QOE=
-X-Received: by 10.223.142.82 with SMTP id n76mr3100787wrb.272.1506554960640;
-	Wed, 27 Sep 2017 16:29:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.223.139.215 with HTTP; Wed, 27 Sep 2017 16:28:59 -0700 (PDT)
-In-Reply-To: <20170928020110-mutt-send-email-mst@kernel.org>
-References: <1506049617-25716-1-git-send-email-thuth@redhat.com>
-	<513bbb2d-280b-92f8-b45f-89963f7118e2@msgid.tls.msk.ru>
-	<20170926223046-mutt-send-email-mst@kernel.org>
-	<CAFEAcA-dWVfX2i7ZYdHVg3G_kSSM6Gos8TRk=dfYYML4Jrn9HQ@mail.gmail.com>
-	<20170928020110-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 27 Sep 2017 16:28:59 -0700
-Message-ID: <CAFEAcA98PbN50zeR5guO4ZB3PXCwwb_65irQzkYzdtHfNR-33A@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>, 
-	Victor Kaplansky <victork@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Stefan Weil <sw@weilnetz.de>, Jason Wang <jasowang@redhat.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/boot-sector: Increase
- timeout to 600 seconds
-X-BeenThere: qemu-trivial@nongnu.org
+	(envelope-from <eblake@redhat.com>) id 1dxeFr-0002TO-Sy
+	for qemu-trivial@nongnu.org; Thu, 28 Sep 2017 15:13:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33750)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1dxeFe-0002PO-2Y; Thu, 28 Sep 2017 15:13:38 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 89872C2D0D47;
+	Thu, 28 Sep 2017 19:13:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 89872C2D0D47
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=eblake@redhat.com
+Received: from red.redhat.com (ovpn-124-97.rdu2.redhat.com [10.10.124.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 703FA17BAF;
+	Thu, 28 Sep 2017 19:13:29 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Fam Zheng <famz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	qemu-block@nongnu.org (open list:Block I/O path)
+Date: Thu, 28 Sep 2017 14:13:25 -0500
+Message-Id: <20170928191325.30253-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Thu, 28 Sep 2017 19:13:36 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] block: Typo fix in copy_on_readv()
+X-BeenThere: qemu-trivial@gnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-trivial.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-trivial>,
-	<mailto:qemu-trivial-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-trivial/>
-List-Post: <mailto:qemu-trivial@nongnu.org>
-List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
-	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Sep 2017 23:29:24 -0000
+List-Id: <qemu-trivial.gnu.org>
+List-Unsubscribe: <https://lists.gnu.org/mailman/options/qemu-trivial>,
+	<mailto:qemu-trivial-request@gnu.org?subject=unsubscribe>
+List-Archive: <http://lists.gnu.org/archive/html/qemu-trivial/>
+List-Post: <mailto:qemu-trivial@gnu.org>
+List-Help: <mailto:qemu-trivial-request@gnu.org?subject=help>
+List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-trivial>,
+	<mailto:qemu-trivial-request@gnu.org?subject=subscribe>
+X-List-Received-Date: Thu, 28 Sep 2017 19:14:01 -0000
 
-On 27 September 2017 at 16:14, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Tue, Sep 26, 2017 at 08:35:59PM +0100, Peter Maydell wrote:
->> On 26 September 2017 at 20:31, Michael S. Tsirkin <mst@redhat.com> wrote:
->> > Please do not apply this, trivial is not appropriate for functional
->> > changes like this.
->>
->> It's not a functional change, it's just bumping a test timeout.
->> If you think we should be doing something else that's fine (as
->> with any other patch), but in principle I think this is totally
->> fine as a -trivial patch.
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ block/io.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> OK. I'd rather not see it applied as-is though.
+diff --git a/block/io.c b/block/io.c
+index c02c4c9c20..38c55d1c8a 100644
+--- a/block/io.c
++++ b/block/io.c
+@@ -953,7 +953,7 @@ static int coroutine_fn bdrv_co_do_copy_on_readv(BdrvChild *child,
+     /* FIXME We cannot require callers to have write permissions when all they
+      * are doing is a read request. If we did things right, write permissions
+      * would be obtained anyway, but internally by the copy-on-read code. As
+-     * long as it is implemented here rather than in a separat filter driver,
++     * long as it is implemented here rather than in a separate filter driver,
+      * the copy-on-read code doesn't have its own BdrvChild, however, for which
+      * it could request permissions. Therefore we have to bypass the permission
+      * system for the moment. */
+-- 
+2.13.5
 
-Oops, looks like it's already hit master (07897000194a).
-I can revert it if you feel strongly about it, but my personal
-feeling is that the timeout needs to be long enough that you
-don't hit it in any configuration. Usually if you're running
-tests yourself then you'll notice it's stuck before it
-hits a timeout -- the timeout is just so that fully automated
-test runs don't hang forever.
-
-thanks
--- PMM
 
