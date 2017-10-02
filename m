@@ -1,56 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1dz0BH-0004Af-G2
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Oct 2017 08:50:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44015)
+	id 1dz0kS-0003Nj-3R
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Oct 2017 09:27:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dz0B9-00047N-SP
-	for qemu-trivial@nongnu.org; Mon, 02 Oct 2017 08:50:41 -0400
+	(envelope-from <anthoine.bourgeois@gmail.com>) id 1dyxe5-00020K-Nq
+	for qemu-trivial@nongnu.org; Mon, 02 Oct 2017 06:08:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1dz0B6-0005tS-48
-	for qemu-trivial@nongnu.org; Mon, 02 Oct 2017 08:50:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33572)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1dz0Az-0005nA-6g; Mon, 02 Oct 2017 08:50:25 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33ACD4A6E6;
-	Mon,  2 Oct 2017 12:50:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 33ACD4A6E6
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=pbonzini@redhat.com
-Received: from [10.36.118.50] (unknown [10.36.118.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6233D99DDD;
-	Mon,  2 Oct 2017 12:50:09 +0000 (UTC)
-To: Eduardo Habkost <ehabkost@redhat.com>, Eduardo Otubo <otubo@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, Alexander Graf <agraf@suse.de>,
-	Markus Armbruster <armbru@redhat.com>
-References: <20170929140540.13766-1-otubo@redhat.com>
-	<20170929193139.GB17385@localhost.localdomain>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <9c365c30-8b63-f762-aa56-5b952b491aec@redhat.com>
-Date: Mon, 2 Oct 2017 14:50:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <20170929193139.GB17385@localhost.localdomain>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 02 Oct 2017 12:50:24 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCHv2] dma/i82374: avoid double creation of
- i82374 device
+	(envelope-from <anthoine.bourgeois@gmail.com>) id 1dyxe2-0004SB-6k
+	for qemu-trivial@nongnu.org; Mon, 02 Oct 2017 06:08:17 -0400
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:32944)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <anthoine.bourgeois@gmail.com>)
+	id 1dyxds-0004NA-5V; Mon, 02 Oct 2017 06:08:04 -0400
+Received: by mail-wr0-x242.google.com with SMTP id z96so2156142wrb.0;
+	Mon, 02 Oct 2017 03:08:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=j+n4Xwly6Cn8tkInFU2v79SklVcn+Oyr370/h5yntjc=;
+	b=Gw+aD6ywtR70+YYAnvBqDmIVQrrjaJs4KCGbpcwvX7Dg1i8OFyEayHQ5f/8UrO7/T5
+	qqGkB5+eYdRyFt6bydyID9pv5Y6XmoLcTfhtHWx9w5qBZ43y9tV7LFPBTDJI7crnyLV2
+	eNAG5HP0+RYJmZZcFJ2iGXQ6Wpn3sLl7qWHw5hYCCJLFgWlBqErAQ28vRJCR1bgfv5AN
+	k+W/pnGxzrIaxqMxqlSLFMuy/z/WcJeTFmTS36eSZwHyLoS3V/v6jIR7immD0lqq4XRy
+	psGOj8dMqmjtAF9mQLHs8y2syPG+KxT5q7QAV2s8Uc7o7O0mQ+H4x+wENy3Bz/agF6kC
+	UXQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=j+n4Xwly6Cn8tkInFU2v79SklVcn+Oyr370/h5yntjc=;
+	b=jJOaZ4rKi+TMI1WtY7/3TuzX0amHiSC22leXoa9LITVgj1mmssoC9fl4TyOdm6Gb8j
+	EWTqH0hDqXX3/K+iOYpplkN4NJS7gIn5xgSdz26lGX0kDM+xPVgN0XRjr6dq6QDeMGNI
+	Xcsef8Kq2SxBfI4GKvCXXNWB0m0X0+pF0aRB5bXnLfAAScmrzXx/lm+Pi4pfEQ9gvX/t
+	yRV0zEnnWgJ1jawREGtX6pgFgo/6KoIuq9ARXRU+EnyPM8a/FuxZgw4jIjK93A/xkLlz
+	DIYFOfEvsjzFdszRb8bf+6n5itA9I73ulzitsrX7LmMPbX1DqxDsga921PFCpwycCHH2
+	mRnQ==
+X-Gm-Message-State: AHPjjUjPzGq7I+0DuWqgMoiTtlthHKgbSDQnBfOecPqzw9EGajP/4oWZ
+	TZbY2Jbphs46prLt9jypF0M=
+X-Google-Smtp-Source: AOwi7QCb201wILyH/JOrdr5Jdv5e8WTQCrdCDcmVhQ2+EqU2AuU8EdVUWFtovL79MtkB3oTlGk4+TQ==
+X-Received: by 10.223.187.80 with SMTP id x16mr14453041wrg.33.1506938882960;
+	Mon, 02 Oct 2017 03:08:02 -0700 (PDT)
+Received: from localhost.localdomain ([178.208.16.32])
+	by smtp.gmail.com with ESMTPSA id o3sm10118024wmg.3.2017.10.02.03.08.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 02 Oct 2017 03:08:02 -0700 (PDT)
+From: Anthoine Bourgeois <anthoine.bourgeois@gmail.com>
+X-Google-Original-From: Anthoine Bourgeois <anthoine.bourgeois@blade-group.com>
+To: Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Anthoine Bourgeois <anthoine.bourgeois@blade-group.com>
+Date: Mon,  2 Oct 2017 12:07:46 +0200
+Message-Id: <20171002100746.9408-1-anthoine.bourgeois@blade-group.com>
+X-Mailer: git-send-email 2.9.3
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+X-Mailman-Approved-At: Mon, 02 Oct 2017 09:27:02 -0400
+Subject: [Qemu-trivial] [PATCH] gtk: fix wrong id between texture and
+ framebuffer
 X-BeenThere: qemu-trivial@gnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,18 +68,34 @@ List-Post: <mailto:qemu-trivial@gnu.org>
 List-Help: <mailto:qemu-trivial-request@gnu.org?subject=help>
 List-Subscribe: <https://lists.gnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@gnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Oct 2017 12:50:42 -0000
+X-List-Received-Date: Mon, 02 Oct 2017 10:08:18 -0000
 
-On 29/09/2017 21:31, Eduardo Habkost wrote:
->> -void DMA_init(ISABus *bus, int high_page_enable)
->> +void DMA_init(ISABus *bus, int high_page_enable, Error **errp)
-> 
-> If you make the function return a boolean to indicate success (in
-> addition to setting *errp), you avoid the need for a local_err
-> variable on the caller.
+The gd_gl_area_scanout_texture must destroy framebuffer if there is
+no texture id instead of no framebuffer id.
+The effect was a black screen with "-vga virtio -display gtk,gl=on"
+options.
+The bug was introduce by a4f113fd "gtk: use framebuffer helper functions."
 
-I think in this case, rather than a bool, it would be better to return 0
-or -EBUSY.  A check for "< 0" would be more self-explanatory in the caller.
+Signed-off-by: Anthoine Bourgeois <anthoine.bourgeois@blade-group.com>
+---
+ ui/gtk-gl-area.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Paolo
+diff --git a/ui/gtk-gl-area.c b/ui/gtk-gl-area.c
+index 18b298f..026b7d7 100644
+--- a/ui/gtk-gl-area.c
++++ b/ui/gtk-gl-area.c
+@@ -178,8 +178,7 @@ void gd_gl_area_scanout_texture(DisplayChangeListener *dcl,
+ 
+     gtk_gl_area_make_current(GTK_GL_AREA(vc->gfx.drawing_area));
+ 
+-    if (vc->gfx.guest_fb.framebuffer  == 0 ||
+-        vc->gfx.w == 0 || vc->gfx.h == 0) {
++    if (backing_id == 0 || vc->gfx.w == 0 || vc->gfx.h == 0) {
+         gtk_gl_area_set_scanout_mode(vc, false);
+         return;
+     }
+-- 
+2.9.3
+
 
