@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e06dz-0003t7-Co
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Oct 2017 09:56:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54938)
+	id 1e07G0-0002Gx-MS
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Oct 2017 10:36:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e06dw-0003qs-S5
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 09:56:54 -0400
+	(envelope-from <malbarbo@gmail.com>) id 1e07Fx-0002Fw-Md
+	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e06dv-0004uk-JT
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 09:56:52 -0400
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:33871)
+	(envelope-from <malbarbo@gmail.com>) id 1e07Fs-0001ps-6c
+	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:09 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:56226)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <malbarbo@gmail.com>) id 1e06dv-0004t6-63
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 09:56:51 -0400
-Received: by mail-lf0-x242.google.com with SMTP id h80so5752513lfe.1
-	for <qemu-trivial@nongnu.org>; Thu, 05 Oct 2017 06:56:50 -0700 (PDT)
+	(Exim 4.71) (envelope-from <malbarbo@gmail.com>) id 1e07Fs-0001pK-1j
+	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:04 -0400
+Received: by mail-qt0-x242.google.com with SMTP id x54so25683411qth.12
+	for <qemu-trivial@nongnu.org>; Thu, 05 Oct 2017 07:36:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Pfg9GGO59nyAX28zSvOv/BGP5YNPFCo08H0u64MS11I=;
-	b=H9UXJmNfEug1Vf1Wga32IgQRRRENDLaZAFrdrRIyFkfoqUlQ8XlCGK4n4mMZC2PYVq
-	fkoj4/WUH5zPvxD7RGpKuP5N921c/PLrQuJRvMXd7+7MI+KZ6sHzmiN4Fg3egeG/+CMS
-	SSEX5gAiVGHps74JtxZu6Xr+McV04zScfLDZJ6lbVBO12gcmN5QKJzAdLqdOZJQ4J7T1
-	9DewdpeJ8zmK3ZQP+teK/Oy6QssfNK0eOh5tJxdkhCIuFb2WcAcsyiBqE1kKFXBV+EKh
-	Pig3wgNSQswCZ8wJM6ts+5jEsahAUvhjvVaPVMtt76ljiuRdUq7K2wgaNrYDhJK3vzOv
-	/iJA==
+	h=from:to:subject:date:message-id;
+	bh=lw8C0cJmHSoiJfKrDwubs4Y8Gd7FDmMabH1sWGCC9Ns=;
+	b=MQ13GOSS7cbv1+J8T1gFAetKStEboVPXzHzUjOES48J9VGX0hCf/G25DwU4MbgZ4X1
+	EtF0aTYYDxP64jWOfbVUJEow+tuXZmZwkHXLkGhrZlRfyxUfYNkq+8I52XPwoiDSm9oB
+	e+B9mmi1Sh68yByscLo3pTbH0xuusCslNNpNVPLwjEeiDh2y6uSUCkTXjCSyWTeDVW3F
+	MoDorkY9hKVvsUolneqRr1mOGdcA1Uhp2J/bJW6NlVq5hSOk/M4bIKn+yufIyr522p98
+	7gJjAvJZ48j5e5wFXrEFIOWChlGQ7O/Rq2/Oomm4HLUTpnTrCNoCwcFdKC9L1kV3DvjK
+	RbBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Pfg9GGO59nyAX28zSvOv/BGP5YNPFCo08H0u64MS11I=;
-	b=bzZKyusMfLdpVPb9vqysiReqzRkZz3mAsXjE3Nku3bRAocFN7gmLtFdx2ZULQAcrIq
-	O7028Quc+3O3cl14P/P2y2NSU9UBqKLjh27pmBnVILQlMYuM1GEoeEQCgj3y9ZuHDm8p
-	K4pQZUsuYhBnoMMSslUBk9/DRQhcjaMHJgb0D+goiIYr/ao31otgEpUZ/ZgcW022Z+A0
-	wnYxmcM7ZYOYg/E5s3QRKz8+kZRCLCUWT8+CC7lohe5J0mJzmA/PhKHkJRFFpK1jZWHW
-	l6RUDYYr+vZGZzWGCVVZXPl5NdCzxggblmlKe/5mpCSKQYwONmawA+N0E2hKhkFcGjxO
-	Tmig==
-X-Gm-Message-State: AHPjjUh2uyL3F37U6z+Fvhs7o5ndPeBFU8rdVSDFvtXwrCfhqacd9ALO
-	x+tWaSMShmH2jcb/VhXQqCr2S4sPtMpmA/ujfI8=
-X-Google-Smtp-Source: AOwi7QBu9MwAU9MoJmiW/tgD0dokP5rpsNmnD1KGcpnziH4BhghpKIhVJLsVB5e2/XCZQqjJYMhvN3qBBwazfQ5v+ZM=
-X-Received: by 10.46.75.18 with SMTP id y18mr11819763lja.113.1507211809700;
-	Thu, 05 Oct 2017 06:56:49 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.25.40.193 with HTTP; Thu, 5 Oct 2017 06:56:48 -0700 (PDT)
-In-Reply-To: <f9178990-3656-c2ec-b4d6-aae161b7959b@redhat.com>
-References: <20171005110425.25522-1-malbarbo@gmail.com>
-	<f9178990-3656-c2ec-b4d6-aae161b7959b@redhat.com>
+	h=x-gm-message-state:from:to:subject:date:message-id;
+	bh=lw8C0cJmHSoiJfKrDwubs4Y8Gd7FDmMabH1sWGCC9Ns=;
+	b=Ek5bjsPfCtpVH3h24mXfoqUfntorT2bw8NQFFaSJuTdEoNU0+CjYTY43sS8mMQ3r8v
+	22QQgHRHv+601qMhqLecHV6AG5Z8jOMoAkkzvEiR3nqkkFobEyR1x0CFOls7YKqb1dDr
+	n4+xK90lOczy5bY6fnTIgR2w3An/2trGOq41uY6jVejvhw4+MNPf8prfvm4Z41LMATZf
+	0kCxRK4bP7sWAdPOk5VPTuqeNB8+rkU7qaYUA+Deb5hQ1XPEBxJCe2TE6GmdWU4t/BQZ
+	Rn6rdtsSHy5mxsNbP5bFHgYYGu2JBoNXhOJgIsWcRRaUFRBQifxw+0f/MWC6QBPWPbYs
+	smdA==
+X-Gm-Message-State: AMCzsaXjqDc7YykqiiwZJOF3nUYZetRUZd7SxGfi+i2GG996aLRHsgNy
+	MxDnmlCMOTuuhNYKJkfzWh4ZrA==
+X-Google-Smtp-Source: AOwi7QCbwLfpxDpuBnRR1No/0pJ3hIAHQoyxyDMiazXSYVnDGrqNVX4xKrB0KjO3YCe2cwCvd3OCoA==
+X-Received: by 10.237.57.135 with SMTP id m7mr23753578qte.4.1507214163033;
+	Thu, 05 Oct 2017 07:36:03 -0700 (PDT)
+Received: from localhost.localdomain ([168.181.48.170])
+	by smtp.googlemail.com with ESMTPSA id
+	x124sm11611975qka.85.2017.10.05.07.36.00
+	for <qemu-trivial@nongnu.org>
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 Oct 2017 07:36:01 -0700 (PDT)
 From: Marco A L Barbosa <malbarbo@gmail.com>
-Date: Thu, 5 Oct 2017 10:56:48 -0300
-Message-ID: <CAHpsRN-t3iruAWYcH7D6_Eu0RcprbqzU52jkfWE2Rg0ncnvv7Q@mail.gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="f403045ea76084c01d055acd181d"
+To: qemu-trivial@nongnu.org
+Date: Thu,  5 Oct 2017 11:35:53 -0300
+Message-Id: <20171005143553.23784-1-malbarbo@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::242
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add RNDGETENTCNT ioctl
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH] linux-user: Add AT_SECURE auxval
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,170 +64,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Oct 2017 13:56:54 -0000
+X-List-Received-Date: Thu, 05 Oct 2017 14:36:11 -0000
 
---f403045ea76084c01d055acd181d
-Content-Type: text/plain; charset="UTF-8"
+This is necessary to run android ndk applications. Without this patch, the
+following error is generated:
 
-Ok, I sent another patch. Thanks.
+FATAL: kernel did not supply AT_SECURE
 
-On Thu, Oct 5, 2017 at 10:38 AM, Laurent Vivier <lvivier@redhat.com> wrote:
+Should AT_SECURE from host be considered or is the ids comparisons enough?
 
-> On 05/10/2017 13:04, Marco A L Barbosa wrote:
-> > I'm using qemu with this patch (and another one) to run android ndk
-> > applications.
-> >
-> > Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
-> > ---
-> >  linux-user/ioctls.h       | 2 ++
-> >  linux-user/syscall.c      | 1 +
-> >  linux-user/syscall_defs.h | 4 ++++
-> >  3 files changed, 7 insertions(+)
-> >
-> > diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
-> > index e6997ff230..18127288cc 100644
-> > --- a/linux-user/ioctls.h
-> > +++ b/linux-user/ioctls.h
-> > @@ -173,6 +173,8 @@
-> >    IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timeval)))
-> >    IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timespec)))
-> >
-> > +  IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))
-> > +
-> >    IOCTL(CDROMPAUSE, 0, TYPE_NULL)
-> >    IOCTL(CDROMSTART, 0, TYPE_NULL)
-> >    IOCTL(CDROMSTOP, 0, TYPE_NULL)
-> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> > index 9b6364a266..d4c21a557c 100644
-> > --- a/linux-user/syscall.c
-> > +++ b/linux-user/syscall.c
-> > @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
-> >  #include <linux/icmp.h>
-> >  #include <linux/icmpv6.h>
-> >  #include <linux/errqueue.h>
-> > +#include <linux/random.h>
-> >  #include "qemu-common.h"
-> >  #ifdef CONFIG_TIMERFD
-> >  #include <sys/timerfd.h>
-> > diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-> > index 40c5027e93..2b27786dae 100644
-> > --- a/linux-user/syscall_defs.h
-> > +++ b/linux-user/syscall_defs.h
-> > @@ -1060,6 +1060,10 @@ struct target_pollfd {
-> >
-> >  #define TARGET_SIOCGIWNAME     0x8B01          /* get name == wireless
-> protocol */
-> >
-> > +/* From <linux/random.h> */
-> > +
-> > +#define TARGET_RNDGETENTCNT    TARGET_IOR('R', 0x00, int)
-> > +
-> >  /* From <linux/fs.h> */
-> >
-> >  #define TARGET_BLKROSET   TARGET_IO(0x12,93) /* set device read-only (0
-> = read-write) */
-> >
->
-> It would be better to keep RNDADDTOENTCNT, RNDZAPENTCNT and RNDCLEARPOOL
-> as the changes are trivial too.
->
-> Anyway:
->
-> Reviewed-by: Laurent Vivier <lvivier@redhat.com>
->
->
+Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
+---
+ linux-user/elfload.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 79062882ba..177ce30e89 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -1354,7 +1354,7 @@ struct exec
+                                  ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
+ #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+ 
+-#define DLINFO_ITEMS 14
++#define DLINFO_ITEMS 15
+ 
+ static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
+ {
+@@ -1782,6 +1782,7 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+     NEW_AUX_ENT(AT_HWCAP, (abi_ulong) ELF_HWCAP);
+     NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
+     NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
++    NEW_AUX_ENT(AT_SECURE, (abi_ulong) (getuid() != geteuid() || getgid() != getegid()));
+ 
+ #ifdef ELF_HWCAP2
+     NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
 -- 
-Marco A L Barbosa
-http://malbarbo.pro.br
---
+2.11.0
 
---f403045ea76084c01d055acd181d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Ok, I sent another patch. Thanks.<br></div><div class=3D"g=
-mail_extra"><br><div class=3D"gmail_quote">On Thu, Oct 5, 2017 at 10:38 AM,=
- Laurent Vivier <span dir=3D"ltr">&lt;<a href=3D"mailto:lvivier@redhat.com"=
- target=3D"_blank">lvivier@redhat.com</a>&gt;</span> wrote:<br><blockquote =
-class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid=
-;padding-left:1ex"><div class=3D"HOEnZb"><div class=3D"h5">On 05/10/2017 13=
-:04, Marco A L Barbosa wrote:<br>
-&gt; I&#39;m using qemu with this patch (and another one) to run android nd=
-k<br>
-&gt; applications.<br>
-&gt;<br>
-&gt; Signed-off-by: Marco A L Barbosa &lt;<a href=3D"mailto:malbarbo@gmail.=
-com">malbarbo@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 linux-user/ioctls.h=C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 ++<br>
-&gt;=C2=A0 linux-user/syscall.c=C2=A0 =C2=A0 =C2=A0 | 1 +<br>
-&gt;=C2=A0 linux-user/syscall_defs.h | 4 ++++<br>
-&gt;=C2=A0 3 files changed, 7 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h<br>
-&gt; index e6997ff230..18127288cc 100644<br>
-&gt; --- a/linux-user/ioctls.h<br>
-&gt; +++ b/linux-user/ioctls.h<br>
-&gt; @@ -173,6 +173,8 @@<br>
-&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>tim=
-eval)))<br>
-&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>t=
-imespec)))<br>
-&gt;<br>
-&gt; +=C2=A0 IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMPAUSE, 0, TYPE_NULL)<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTART, 0, TYPE_NULL)<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTOP, 0, TYPE_NULL)<br>
-&gt; diff --git a/linux-user/syscall.c b/linux-user/syscall.c<br>
-&gt; index 9b6364a266..d4c21a557c 100644<br>
-&gt; --- a/linux-user/syscall.c<br>
-&gt; +++ b/linux-user/syscall.c<br>
-&gt; @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_ba=
-se,<br>
-&gt;=C2=A0 #include &lt;linux/icmp.h&gt;<br>
-&gt;=C2=A0 #include &lt;linux/icmpv6.h&gt;<br>
-&gt;=C2=A0 #include &lt;linux/errqueue.h&gt;<br>
-&gt; +#include &lt;linux/random.h&gt;<br>
-&gt;=C2=A0 #include &quot;qemu-common.h&quot;<br>
-&gt;=C2=A0 #ifdef CONFIG_TIMERFD<br>
-&gt;=C2=A0 #include &lt;sys/timerfd.h&gt;<br>
-&gt; diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h<br>
-&gt; index 40c5027e93..2b27786dae 100644<br>
-&gt; --- a/linux-user/syscall_defs.h<br>
-&gt; +++ b/linux-user/syscall_defs.h<br>
-&gt; @@ -1060,6 +1060,10 @@ struct target_pollfd {<br>
-&gt;<br>
-&gt;=C2=A0 #define TARGET_SIOCGIWNAME=C2=A0 =C2=A0 =C2=A00x8B01=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 /* get name =3D=3D wireless protocol */<br>
-&gt;<br>
-&gt; +/* From &lt;linux/random.h&gt; */<br>
-&gt; +<br>
-&gt; +#define TARGET_RNDGETENTCNT=C2=A0 =C2=A0 TARGET_IOR(&#39;R&#39;, 0x00=
-, int)<br>
-&gt; +<br>
-&gt;=C2=A0 /* From &lt;linux/fs.h&gt; */<br>
-&gt;<br>
-&gt;=C2=A0 #define TARGET_BLKROSET=C2=A0 =C2=A0TARGET_IO(0x12,93) /* set de=
-vice read-only (0 =3D read-write) */<br>
-&gt;<br>
-<br>
-</div></div>It would be better to keep RNDADDTOENTCNT, RNDZAPENTCNT and RND=
-CLEARPOOL<br>
-as the changes are trivial too.<br>
-<br>
-Anyway:<br>
-<br>
-Reviewed-by: Laurent Vivier &lt;<a href=3D"mailto:lvivier@redhat.com">lvivi=
-er@redhat.com</a>&gt;<br>
-<br>
-</blockquote></div><br><br clear=3D"all"><br>-- <br><div class=3D"gmail_sig=
-nature" data-smartmail=3D"gmail_signature">Marco A L Barbosa<br><a href=3D"=
-http://malbarbo.pro.br" target=3D"_blank">http://malbarbo.pro.br</a><br>--<=
-/div>
-</div>
-
---f403045ea76084c01d055acd181d--
 
