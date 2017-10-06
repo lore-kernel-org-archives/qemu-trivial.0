@@ -1,62 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cR2-0000uP-Ei
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42416)
+	id 1e0cR5-0000xH-4r
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42444)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cR1-0000so-1p
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:39 -0400
+	id 1e0cR3-0000v7-2z
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cR0-0006hq-Ce
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:39 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:33099)
+	id 1e0cR2-0006l8-Fh
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:41 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:35192)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQv-0006fD-W9; Fri, 06 Oct 2017 19:53:34 -0400
-Received: by mail-qk0-x244.google.com with SMTP id z12so9700654qkb.0;
-	Fri, 06 Oct 2017 16:53:33 -0700 (PDT)
+	id 1e0cR0-0006i3-N0; Fri, 06 Oct 2017 19:53:38 -0400
+Received: by mail-qk0-x242.google.com with SMTP id w63so11297853qkd.2;
+	Fri, 06 Oct 2017 16:53:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=K11BF4s8VQOqU6nEorWyCTrelnBi8QPU65wJU5KBOvQ=;
-	b=iaqz5SlRs2WeBmN3/1CEh38Cll16nB1xATBjYxS/1uKy+OiTMFIuM2WJkNIQxXKLJR
-	ZIN4j5E2bNZCHiTn6bSTdLtuCJ5Y71LKwdhMErVEOTiLnn1IwrWZXDSEnJWRF+SyUFz0
-	en6/LCQvt08ML+ce1qbEn+4DTi5hw4zt+RsqeDs0MZWLGSNEGWUTGM3jZOKHIMXK+3+8
-	tT/3FEL1dJixGgjOoVDLZ906gS0u2SPcYCETyhsGwIl7B7e7gUjwG+wObBaCd7bYbnd0
-	NC40TXs4ApTsWA+RPXo+pYw+e2yFNF/qKyYEPoSpoYtmUo5qGQgTXYkX1puPsC42Gajf
-	pdCg==
+	bh=jIrG+a6KimlGzqMXERmfHO2ieK/rsLvFRe7ABtgy544=;
+	b=ISCgSry7u0NSsjcT4JS7WcFdzSmn8owFz9Q62WUW+OMu8DJ02SKX8+edAMjV74EzMA
+	0LzLBDNdBay5JDIK3qBP984FhgFPdXb/+4Tfhhpuj7SvnReBaitLDtof2fr5Cjrtdh1n
+	LCSwZGvfHU/iiH4WzJmo5QJZnD1a2oz5nRevqihjC1VEk32JsJXxkNXz+3NzOpOjAjBJ
+	IUCOIhjn6YJgrJce1ipYWGO7Q6xOd2YrMlOBXF3fbY/uAMpbO1ZQmY9YdhRmsn9k63DJ
+	Luih96dF1C2QXyRfkLEvulTrcvIWAo3dbPbh7Dp4QPeFNP7U+gJBT642CJidIW+s0Nm7
+	qT/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=K11BF4s8VQOqU6nEorWyCTrelnBi8QPU65wJU5KBOvQ=;
-	b=Ch/jlhXD8F22dd3hQP+RneVxRQ/7RodELMSPxTDCOmII1VQeyIjGAoS7Lq+le6YOyw
-	s0g0uu8DZKX4mygxPrPHV5x5BIn2FTg1SiyCPDqBNXP8dhuIDy6KXwV2d520Nw4BpUMJ
-	ngTrGmxAHcVh+wi+YOHdgxIU9ggDhuibe8G0jOXDV8E2B2pSj+n8zKS1UC3KlrRS3kE3
-	JH2qFw6HDpfk/PTGlV5bw4rwKB0ZmIVYtIQdxKypxIfh9WqFcwlka5uHrTSGgrjoCer9
-	0sb971LLiNB+/xcf8bs/eT+09mxjOD3wa9MjVZOxRXmKmuToZYILAWaRQfIAJOlLmt6m
-	lsLQ==
-X-Gm-Message-State: AMCzsaUe4FplMtOIHiam4Utdc/KAbUmivvBMsWH0weQ5vkBQAJKpbS24
-	3xHpuq1xjOYOJHhEDz2AAyU=
-X-Google-Smtp-Source: AOwi7QCVN20tIASnmxLG1u0cgLNgyEj8L9oOsss9VN33Wu+viT4+9h780aY53U6Wq1YTm9Wp6u08VA==
-X-Received: by 10.55.25.85 with SMTP id k82mr624058qkh.223.1507334013457;
-	Fri, 06 Oct 2017 16:53:33 -0700 (PDT)
+	bh=jIrG+a6KimlGzqMXERmfHO2ieK/rsLvFRe7ABtgy544=;
+	b=hTW6m/VLzMg0jBHjht08Ro5faG6s0FJtFRGQmMZhCRXnmbsiIio0+4zPemGWmCLe6Q
+	inqCZfl/imif6rAxZ57yieuUq28s6JsMfktwaWyIpvJXuS+EiqUV5EOh9kct72o9F/B6
+	959rtWKdZafOMwUeanokUW7gf5C7hEK01sR2jdlO+kyr/Aqyby366K2JrSzgNamrpxyH
+	+QBiDy1pP6ybnAD6mA4b2zuAQwbQWNS52I5wDFLx1HAuwlyHhWHdbQFBnMnKkq/7jLvg
+	ErhE9fmwadtTsJTrzoReA13ZhztqXxb+PLWhVzrOgqBlCskR/uQhAT7yqQQVXjNGhV7V
+	LhxQ==
+X-Gm-Message-State: AMCzsaVsv01CsdYRPuaHaHMZ9Rhsyr+DmG6ALbMKPvoc53xLTzW4FZb3
+	Y45cjlqLtDRXjoLV6UyDMjs=
+X-Google-Smtp-Source: AOwi7QCaLGO0Gbp40uk0XD218uquauaqpo9Upsr4mgv4cK5xYQT19sqlblif+maxPIC0vh6yzfnvHw==
+X-Received: by 10.55.127.70 with SMTP id a67mr698163qkd.90.1507334018182;
+	Fri, 06 Oct 2017 16:53:38 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.29
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:53:32 -0700 (PDT)
+	Fri, 06 Oct 2017 16:53:37 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>
+	Ronnie Sahlberg <ronniesahlberg@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>,
+	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org
-Date: Fri,  6 Oct 2017 20:49:47 -0300
-Message-Id: <20171006235023.11952-53-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu trival <qemu-trivial@nongnu.org>,
+	qemu-block@nongnu.org
+Date: Fri,  6 Oct 2017 20:49:48 -0300
+Message-Id: <20171006235023.11952-54-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -65,8 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH 52/88] i.MX31: use g_new() family of functions
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH 53/88] iSCSI: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,28 +80,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:53:40 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:53:42 -0000
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/misc/imx6_src.c | 2 +-
+ block/iscsi.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
-index cfb08710fb..9342bce6de 100644
---- a/hw/misc/imx6_src.c
-+++ b/hw/misc/imx6_src.c
-@@ -149,7 +149,7 @@ static void imx6_defer_clear_reset_bit(int cpuid,
-         return;
+diff --git a/block/iscsi.c b/block/iscsi.c
+index 4683f3b244..f9f910168d 100644
+--- a/block/iscsi.c
++++ b/block/iscsi.c
+@@ -1001,7 +1001,7 @@ static BlockAIOCB *iscsi_aio_ioctl(BlockDriverState *bs,
+         return NULL;
      }
  
--    ri = g_malloc(sizeof(struct SRCSCRResetInfo));
-+    ri = g_new(struct SRCSCRResetInfo, 1);
-     ri->s = s;
-     ri->reset_bit = reset_shift;
- 
+-    acb->task = malloc(sizeof(struct scsi_task));
++    acb->task = g_new(struct scsi_task, 1);
+     if (acb->task == NULL) {
+         error_report("iSCSI: Failed to allocate task for scsi command. %s",
+                      iscsi_get_error(iscsi));
 -- 
 2.14.2
 
