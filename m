@@ -1,80 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0Riu-0000gz-P0
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 08:27:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46613)
+	id 1e0aHt-0001Ue-LO
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 17:36:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38515)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0Ris-0000fu-U4
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 08:27:23 -0400
+	(envelope-from <malbarbo@gmail.com>) id 1e0aHr-0001UR-4W
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0Ris-0005KC-3D
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 08:27:22 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:37825)
+	(envelope-from <malbarbo@gmail.com>) id 1e0aHp-0005oR-O1
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:03 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:55240)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0Ril-0005Fv-Vl; Fri, 06 Oct 2017 08:27:16 -0400
-Received: by mail-qk0-x244.google.com with SMTP id a12so9113524qka.4;
-	Fri, 06 Oct 2017 05:27:15 -0700 (PDT)
+	(Exim 4.71) (envelope-from <malbarbo@gmail.com>) id 1e0aHp-0005my-B5
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:01 -0400
+Received: by mail-lf0-x243.google.com with SMTP id d10so19414303lfg.11
+	for <qemu-trivial@nongnu.org>; Fri, 06 Oct 2017 14:36:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=3UbVle6d7XZT/5ZPOw66swkTJ4BI7ITlXbHvUB0LJ54=;
-	b=QmsnTzkM7jBLzEjofHAhHy70TWFkqd5B8KSUjWcZ0yqZRO06MG9/RisEZOw5SSMeKu
-	Qa5NmkcDOt/sknzojPUVb+S1e1PfhLrWPieIQTJNny1Ml0wC8p96KOC74HIdz55OJaQb
-	jVMQtDA6iS6A7rHjz8+y+VfouhMHV+0ORqFI+oF5pl35tQkF6P5LADubE4QaZT6dtWOD
-	XDPUYCRMJXYUOdlQ4prrThTWiGmTgvNGw4KZebtoiZZk1nH3VKSycAPDPaoMBUoPy+8j
-	UplOiR5X0QQtfloNuzux78jOVcMlzAvpjTazycZ2jmgcRrhbYjZgiXqz0EDFEAB0m3TX
-	qC4g==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=PZfBz8U10p4q3e8ffyXMFKna7XxAnfi0NCVM0pGcmpg=;
+	b=b0JmuSCQyTGVPVYSJc5qpkZCWQiixvzQek98470eyb8p1cE432bcjyzT8XBl7SNTPX
+	VS7cov5ird95wy57+HGlAWtls+blO2qRQC1a7Zv9vCHWvt1usJ2g4CWza2pkFhTTg+6F
+	Tatf3XnwdnozubPRY59+Mc8ncVOFHdHHy2rq1uNO2IOD6LpfIiywPPwZ1FN79E91FZS5
+	AoEyTVk33wJKQ/kPP9dcsasatXmVygXv/Oj896UX3j62LzeCEEck01bKt1yUAoSAS33G
+	Q6LFga1z3io64tbOQPlRmkerUmIGmbqWUweVnnnR+ecW7N2EJHHmH+i5sG9Ye3pXQ7UI
+	hENQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=3UbVle6d7XZT/5ZPOw66swkTJ4BI7ITlXbHvUB0LJ54=;
-	b=fcIfd8JlWhya9evMClHL7bVtwKWoFqyBtgE50XW8GNu3HbxmAT9odA4REQ0xTydTU+
-	N44EghJGDIaZYG+EH5Y9Zo3z/TtVPUFPk8PuW7gdvfYllCZn4+SE8cRyL/X3XsuNK6Y5
-	cSSv2E36/c2fhlig3T15StvvZTyBvbhVBZmWXc3cR5ACHnogKI+bIXgSz3g5Yb/q1Z30
-	QJQVf/nQYCzwKKvMItd9ohEw2vq5FPK5UFvPQbxqEtLyOEJ1Dv3t3XkwrOEDdtMW6n5W
-	nQ5vjCF3JqWnV7j5q8AR0H+jkgUZs6idh9Oh4PBV6B462MqpU2XpW8yDSsfA5tB8urba
-	ZoPw==
-X-Gm-Message-State: AMCzsaUg1TVZbjYszD75Zd8UaZUMrV4biYcmpEA8SVbUz4OXOtDqPQHd
-	hl8JbGVU+mr0xQ6dBcSPhRlMJZDS
-X-Google-Smtp-Source: AOwi7QDD6JKkUBF5ShNfh7r8B8cjLxpaVElb0E3Up2cCbeW/iMK6hkxdhulPGVxykiThS7Dsy8zPkw==
-X-Received: by 10.55.217.82 with SMTP id u79mr5632260qki.106.1507292834824;
-	Fri, 06 Oct 2017 05:27:14 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id 35sm843201qtx.43.2017.10.06.05.27.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 05:27:13 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
-	qemu-trivial@nongnu.org,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-References: <20170922154014.29350-1-f4bug@amsat.org>
-	<20170922160111.31885-11-f4bug@amsat.org>
-	<CAFXwXrnnvn0MStu=bPvtTVJbE7TXX-j9t6qaKGeqQTL7OnCwBg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <3ed2a5a2-e30f-d139-d5bf-e145a8480787@amsat.org>
-Date: Fri, 6 Oct 2017 09:27:11 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=PZfBz8U10p4q3e8ffyXMFKna7XxAnfi0NCVM0pGcmpg=;
+	b=Nv8iIzoD/zMnMzXOXf0b1Mpvxq8LS8Rl3B9aqtcDaLSkyppx4PjAdpRKJxxM0bHdpD
+	h2zqmSFJAqugGOQeIYFLvYAY7fVZ/3HXmRQE/lojltiOP5Db2TMao8R5sDGKm6REHVnG
+	j8zAJYv8dAqmq1rRPbFrL4Y1IfixN7SfhdzZhSiV7mBAtFLhwGfBztXsxKirFt8ZKb+K
+	ioJ4E04w8brb+oiZOP2bbPthWXawr738vLzuNBF6Pt8YXc9x6ThFqsCk6FU8rclzgV3s
+	dyPQV4LR9U8ZmEkEMnvpe5XOMXk8c3GMteXKD8PfBsbvBzdx7zX5GcDBQrNbNivSXKHz
+	dVdA==
+X-Gm-Message-State: AMCzsaW0ft2skm2grExj3dCVUop44nbIlxIetvFFD+6G4uelOmS1CgOd
+	8V1BO2dA8CMmLR6oF3DhaxfH3yJPX9lOIrt+wb8=
+X-Google-Smtp-Source: AOwi7QBGs1XOgEehcpb7v80qwd/INiv0BsH8cqqAPAFtb3P4h9bnNJag9pCQNpjjrRpSxsGRBKeTpTd+2CKDDrJw5C0=
+X-Received: by 10.25.125.67 with SMTP id y64mr870457lfc.44.1507325759563; Fri,
+	06 Oct 2017 14:35:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFXwXrnnvn0MStu=bPvtTVJbE7TXX-j9t6qaKGeqQTL7OnCwBg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.25.40.193 with HTTP; Fri, 6 Oct 2017 14:35:58 -0700 (PDT)
+In-Reply-To: <498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
+References: <20171005135530.837-1-malbarbo@gmail.com>
+	<498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
+From: Marco A L Barbosa <malbarbo@gmail.com>
+Date: Fri, 6 Oct 2017 18:35:58 -0300
+Message-ID: <CAHpsRN-qFgp-QzjX-QdDUYgUA-DbWinp=hsk-V8L4WxXFDti8A@mail.gmail.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="001a114a575c75ad68055ae7a0d2"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 33/34] hw/alpha: remove old
- i386 dependency
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add some random ioctls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,44 +65,186 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 12:27:23 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 21:36:04 -0000
 
-On 10/02/2017 04:03 PM, Richard Henderson wrote:
-> 2017-09-22 12:01 GMT-04:00 Philippe Mathieu-Daudé <f4bug@amsat.org>:
-> 
->> diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
->> index b6d8369ed7..ac685c1c46 100644
->> --- a/hw/alpha/alpha_sys.h
->> +++ b/hw/alpha/alpha_sys.h
->> @@ -5,8 +5,6 @@
->>
->>  #include "target/alpha/cpu-qom.h"
->>  #include "hw/pci/pci.h"
->> -#include "hw/pci/pci_host.h"
->> -#include "hw/ide.h"
->>
-> 
-> Why are you deleting pci/pci_host.h here?
+--001a114a575c75ad68055ae7a0d2
+Content-Type: text/plain; charset="UTF-8"
 
-Indeed it is required since PCIBus is defined there.
+Thanks again for the advice.
 
-> Alternately, why are you leaving pci/pci.h?
-> 
-> 
->> diff --git a/hw/alpha/pci.c b/hw/alpha/pci.c
->> index 8dde637bfe..c370762ea6 100644
->> --- a/hw/alpha/pci.c
->> +++ b/hw/alpha/pci.c
->> @@ -8,6 +8,8 @@
->>
->>  #include "qemu/osdep.h"
->>  #include "qemu-common.h"
->> +#include "hw/pci/pci.h"
->> +#include "hw/pci/pci_host.h"
->>
-> 
-> One way we have a double-include of pci/pci.h here,
-> the other way we shouldn't re-include either.
+This and the other patch should be resubmitted following those instructions
+or it is not necessary?
 
-Please ignore this patch.
+On Fri, Oct 6, 2017 at 4:32 AM, Laurent Vivier <lvivier@redhat.com> wrote:
+
+> On 05/10/2017 15:55, Marco A L Barbosa wrote:
+> > Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
+> > ---
+> >  linux-user/ioctls.h       | 5 +++++
+> >  linux-user/syscall.c      | 1 +
+> >  linux-user/syscall_defs.h | 7 +++++++
+> >  3 files changed, 13 insertions(+)
+> >
+> > diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
+> > index e6997ff230..35cad6f944 100644
+> > --- a/linux-user/ioctls.h
+> > +++ b/linux-user/ioctls.h
+> > @@ -173,6 +173,11 @@
+> >    IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timeval)))
+> >    IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timespec)))
+> >
+> > +  IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))
+> > +  IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))
+> > +  IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)
+> > +  IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)
+> > +
+> >    IOCTL(CDROMPAUSE, 0, TYPE_NULL)
+> >    IOCTL(CDROMSTART, 0, TYPE_NULL)
+> >    IOCTL(CDROMSTOP, 0, TYPE_NULL)
+> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> > index 9b6364a266..d4c21a557c 100644
+> > --- a/linux-user/syscall.c
+> > +++ b/linux-user/syscall.c
+> > @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
+> >  #include <linux/icmp.h>
+> >  #include <linux/icmpv6.h>
+> >  #include <linux/errqueue.h>
+> > +#include <linux/random.h>
+> >  #include "qemu-common.h"
+> >  #ifdef CONFIG_TIMERFD
+> >  #include <sys/timerfd.h>
+> > diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+> > index 40c5027e93..b3d55e35ac 100644
+> > --- a/linux-user/syscall_defs.h
+> > +++ b/linux-user/syscall_defs.h
+> > @@ -1060,6 +1060,13 @@ struct target_pollfd {
+> >
+> >  #define TARGET_SIOCGIWNAME     0x8B01          /* get name == wireless
+> protocol */
+> >
+> > +/* From <linux/random.h> */
+> > +
+> > +#define TARGET_RNDGETENTCNT    TARGET_IOR('R', 0x00, int)
+> > +#define TARGET_RNDADDTOENTCNT  TARGET_IOW('R', 0x01, int)
+> > +#define TARGET_RNDZAPENTCNT    TARGET_IO('R', 0x04)
+> > +#define TARGET_RNDCLEARPOOL    TARGET_IO('R', 0x06)
+> > +
+> >  /* From <linux/fs.h> */
+> >
+> >  #define TARGET_BLKROSET   TARGET_IO(0x12,93) /* set device read-only (0
+> = read-write) */
+> >
+>
+> Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+>
+> Please, add a tag version and include history when you resend a series.
+>
+> Read https://wiki.qemu.org/Contribute/SubmitAPatch
+>
+> Thanks,
+> Laurent
+>
+
+
+
+-- 
+Marco A L Barbosa
+http://malbarbo.pro.br
+--
+
+--001a114a575c75ad68055ae7a0d2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thanks again for the advice.<br><br>This and the other pat=
+ch should be resubmitted following those instructions or it is not necessar=
+y?<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Fr=
+i, Oct 6, 2017 at 4:32 AM, Laurent Vivier <span dir=3D"ltr">&lt;<a href=3D"=
+mailto:lvivier@redhat.com" target=3D"_blank">lvivier@redhat.com</a>&gt;</sp=
+an> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
+border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><div cla=
+ss=3D"h5">On 05/10/2017 15:55, Marco A L Barbosa wrote:<br>
+&gt; Signed-off-by: Marco A L Barbosa &lt;<a href=3D"mailto:malbarbo@gmail.=
+com">malbarbo@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 linux-user/ioctls.h=C2=A0 =C2=A0 =C2=A0 =C2=A0| 5 +++++<br>
+&gt;=C2=A0 linux-user/syscall.c=C2=A0 =C2=A0 =C2=A0 | 1 +<br>
+&gt;=C2=A0 linux-user/syscall_defs.h | 7 +++++++<br>
+&gt;=C2=A0 3 files changed, 13 insertions(+)<br>
+&gt;<br>
+&gt; diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h<br>
+&gt; index e6997ff230..35cad6f944 100644<br>
+&gt; --- a/linux-user/ioctls.h<br>
+&gt; +++ b/linux-user/ioctls.h<br>
+&gt; @@ -173,6 +173,11 @@<br>
+&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>tim=
+eval)))<br>
+&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>t=
+imespec)))<br>
+&gt;<br>
+&gt; +=C2=A0 IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))<br>
+&gt; +=C2=A0 IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))<br>
+&gt; +=C2=A0 IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)<br>
+&gt; +=C2=A0 IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 IOCTL(CDROMPAUSE, 0, TYPE_NULL)<br>
+&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTART, 0, TYPE_NULL)<br>
+&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTOP, 0, TYPE_NULL)<br>
+&gt; diff --git a/linux-user/syscall.c b/linux-user/syscall.c<br>
+&gt; index 9b6364a266..d4c21a557c 100644<br>
+&gt; --- a/linux-user/syscall.c<br>
+&gt; +++ b/linux-user/syscall.c<br>
+&gt; @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_ba=
+se,<br>
+&gt;=C2=A0 #include &lt;linux/icmp.h&gt;<br>
+&gt;=C2=A0 #include &lt;linux/icmpv6.h&gt;<br>
+&gt;=C2=A0 #include &lt;linux/errqueue.h&gt;<br>
+&gt; +#include &lt;linux/random.h&gt;<br>
+&gt;=C2=A0 #include &quot;qemu-common.h&quot;<br>
+&gt;=C2=A0 #ifdef CONFIG_TIMERFD<br>
+&gt;=C2=A0 #include &lt;sys/timerfd.h&gt;<br>
+&gt; diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h<br>
+&gt; index 40c5027e93..b3d55e35ac 100644<br>
+&gt; --- a/linux-user/syscall_defs.h<br>
+&gt; +++ b/linux-user/syscall_defs.h<br>
+&gt; @@ -1060,6 +1060,13 @@ struct target_pollfd {<br>
+&gt;<br>
+&gt;=C2=A0 #define TARGET_SIOCGIWNAME=C2=A0 =C2=A0 =C2=A00x8B01=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* get name =3D=3D wireless protocol */<br>
+&gt;<br>
+&gt; +/* From &lt;linux/random.h&gt; */<br>
+&gt; +<br>
+&gt; +#define TARGET_RNDGETENTCNT=C2=A0 =C2=A0 TARGET_IOR(&#39;R&#39;, 0x00=
+, int)<br>
+&gt; +#define TARGET_RNDADDTOENTCNT=C2=A0 TARGET_IOW(&#39;R&#39;, 0x01, int=
+)<br>
+&gt; +#define TARGET_RNDZAPENTCNT=C2=A0 =C2=A0 TARGET_IO(&#39;R&#39;, 0x04)=
+<br>
+&gt; +#define TARGET_RNDCLEARPOOL=C2=A0 =C2=A0 TARGET_IO(&#39;R&#39;, 0x06)=
+<br>
+&gt; +<br>
+&gt;=C2=A0 /* From &lt;linux/fs.h&gt; */<br>
+&gt;<br>
+&gt;=C2=A0 #define TARGET_BLKROSET=C2=A0 =C2=A0TARGET_IO(0x12,93) /* set de=
+vice read-only (0 =3D read-write) */<br>
+&gt;<br>
+<br>
+</div></div>Reviewed-by: Laurent Vivier &lt;<a href=3D"mailto:lvivier@redha=
+t.com">lvivier@redhat.com</a>&gt;<br>
+<br>
+Please, add a tag version and include history when you resend a series.<br>
+<br>
+Read <a href=3D"https://wiki.qemu.org/Contribute/SubmitAPatch" rel=3D"noref=
+errer" target=3D"_blank">https://wiki.qemu.org/<wbr>Contribute/SubmitAPatch=
+</a><br>
+<br>
+Thanks,<br>
+Laurent<br>
+</blockquote></div><br><br clear=3D"all"><br>-- <br><div class=3D"gmail_sig=
+nature" data-smartmail=3D"gmail_signature">Marco A L Barbosa<br><a href=3D"=
+http://malbarbo.pro.br" target=3D"_blank">http://malbarbo.pro.br</a><br>--<=
+/div>
+</div>
+
+--001a114a575c75ad68055ae7a0d2--
 
