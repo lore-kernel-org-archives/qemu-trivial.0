@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cPi-0008Dr-Dq
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:52:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41545)
+	id 1e0cPl-0008Ff-Oy
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:52:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41509)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPg-0008CG-AC
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:17 -0400
+	id 1e0cPe-0008AL-7m
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPf-0005mD-GW
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:16 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:51467)
+	id 1e0cPb-0005i9-FP
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:14 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:52760)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPb-0005hg-2C; Fri, 06 Oct 2017 19:52:11 -0400
-Received: by mail-qt0-x241.google.com with SMTP id q4so34329897qtq.8;
-	Fri, 06 Oct 2017 16:52:10 -0700 (PDT)
+	id 1e0cPX-0005dM-Ag; Fri, 06 Oct 2017 19:52:07 -0400
+Received: by mail-qt0-x242.google.com with SMTP id o52so34323323qtc.9;
+	Fri, 06 Oct 2017 16:52:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Diko5qXOLF4sVroZHpITLZhVtWKNf7zhiL/atUuRpcM=;
-	b=J6KIVncI35prZDDEwyDTplK2lFech/TMfuubUeDEzSpnJfMqEbuv9S1cJecUK5lcWi
-	vn2ipmSUbnZoCKo+c3t9ux7+u30PhiUB5SFo7BHMiQwQpd+ZV8/A/A/FP+L0uL7IanMh
-	UhZ1xxfrbjoK41EzNiE0IxM+z8Rrmw26rr6WJggfWTR1Z5iaBNx2DKr0sjLJTLV7WVw3
-	QZOcJypWMI1kCwbiC+higqs7fu+Q1fuP/sJggYAB2RKv7eoStK5rfr26uNdWOivIEYzN
-	RQaQrD1FS246S65wnrv+wLhs0243rR7nMpxKmDRbYwW2J+WdgG/He23mH+d/uZNZjqiz
-	qyaw==
+	bh=wpv8EGIq3j7qi+6pArxULtJw2EKh1Du6IsovEPutuLs=;
+	b=Wu2QJhbs8nhdYfcroDVS+z3fr4VgOy9Shr8Wfbe306M7G2WftJqjenM6tYWrTVvkBs
+	EAFDcpZxCy7nNxnL8s6/rjIWLxODRKyWSll8fxZlsQznFW4IMct/bz1lryZWcgkaZGxw
+	81fk1zK3HQGDk4VhjmsibA2ItQH9/63e2cRxE3fQQOgNPCq0xVJL9q4lInGleCauEIYl
+	Lr8Hq7Z14DxCUfx/VvCOZ8HW+Xbbyjf+n4A+O3X/A+0So3GZVzpYs1TSsMFPBdHuCNau
+	6voM8NuWA4PZQrsjLQFQWfwaQkX0kMAbfYUhsxbAoMICJeoQ75f4FQnu58OyRB+dyVFM
+	tZ3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Diko5qXOLF4sVroZHpITLZhVtWKNf7zhiL/atUuRpcM=;
-	b=Zx2Fk5oiFBe/5R40UkIPVrhnydAhs+9PrC6EBC1+Hi5ty76M4YTIuXzMb/BUpupvPc
-	HsX7Ta3e8I/TYziyx944y4a0a5f7D7mdAFRR/hwrl3tdz8jzzmUtIVHgfFWy9rBhg4jA
-	iaBoDd/uv2QfOddPkamttQd4irBy9L2yzKGq/ea2W9pzFE1ei5wNLPOxt49sIFWfV1JF
-	veCJHO9efv61yPWDj59T1YBbEpWvxfXny6BFvqxVo9I4zxieXC8qoQFFZpI3X0G7y+rC
-	kpgfoT5YCc+ydcU3w0Eww+g22T9QpaBiCmT1TeAg7Q4ZjbNCAVPqjDXrEi89g52q3GFZ
-	oLcw==
-X-Gm-Message-State: AMCzsaV7gtLr61XpbRrsPjZQcb3fGelWPAhYlN94PsKXCUcm9TBagj6C
-	epXjvj3PFPS7qGZYlLIOTsE=
-X-Google-Smtp-Source: AOwi7QCuTZ7NwFuV3ZlKbUh6+A1+vz6E+DWlQxsc9JB5eW/Zm7krg7wCB5fpWHuSnW2/+1kd4nkr/w==
-X-Received: by 10.200.25.137 with SMTP id u9mr5696740qtj.81.1507333930544;
-	Fri, 06 Oct 2017 16:52:10 -0700 (PDT)
+	bh=wpv8EGIq3j7qi+6pArxULtJw2EKh1Du6IsovEPutuLs=;
+	b=Wy4vhEK0H5YpwAr9Dg9HruJ9AB8mzxxyQEGte8JnoJFsD+pSuJQ0blEcPQIh1grQLq
+	ftY3cOgNjU6Oh93T5VdOGNYtoaDAk7tGIYJJ0RkQC8Pwu/qfmReuArY+yH+oTaRI96sX
+	e1qAb5BR1B1xUFbROB48F1VP8H1yG7C9W/vDL7NETEyUl92B03eRYEX8dUD5jnvTdlVh
+	ig4W3OrV2/hFS5tDgNm/79Wgn5/mWsWer+cfdQ6MBooRT5K2l0uud2q9Vj+bWadYIM3D
+	10pYI2dTyJfemwCAbJiHevwilO7Dp7Dk8A9vB9LmsqLCF6+ohti7Tt7xTDjmQqzEIuFX
+	pKfA==
+X-Gm-Message-State: AMCzsaVQC2IqAHgvmnsWk1VJXdaP0k2HS4NJzRuXuFM3iuUojGnlVnW/
+	v+KCQnO5KX9SE/Vx4KKPVoo=
+X-Google-Smtp-Source: AOwi7QCfG62t0e2P7AjL9jCsYL3DovkTIFpR1ZiDFN07ba3AP/yMaFRd6YCaAY8iANjvY19KgsUuFQ==
+X-Received: by 10.200.23.36 with SMTP id w33mr5651652qtj.50.1507333926782;
+	Fri, 06 Oct 2017 16:52:06 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.06
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:52:10 -0700 (PDT)
+	Fri, 06 Oct 2017 16:52:06 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>
+	Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
 	qemu trival <qemu-trivial@nongnu.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Fri,  6 Oct 2017 20:49:23 -0300
-Message-Id: <20171006235023.11952-29-f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:49:22 -0300
+Message-Id: <20171006235023.11952-28-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -69,8 +66,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH 28/88] disas: use g_new() family of functions
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 27/88] SH4: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,61 +79,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:52:17 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:52:15 -0000
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: fixed const cast, squashed M68K + NiosII + SPARC, renamed subject "disas"]
+[PMD: squashed R2D]
 ---
- disas/m68k.c  | 3 +--
- disas/nios2.c | 3 +--
- disas/sparc.c | 3 +--
- 3 files changed, 3 insertions(+), 6 deletions(-)
+ hw/sh4/r2d.c        | 4 ++--
+ hw/sh4/sh7750.c     | 2 +-
+ hw/timer/sh_timer.c | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/disas/m68k.c b/disas/m68k.c
-index 61b689ef3e..31cf6ea5f9 100644
---- a/disas/m68k.c
-+++ b/disas/m68k.c
-@@ -1886,8 +1886,7 @@ print_insn_m68k (bfd_vma memaddr, disassemble_info *info)
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 16b9ed2db2..92d1fb99d7 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -186,7 +186,7 @@ static qemu_irq *r2d_fpga_init(MemoryRegion *sysmem,
+ {
+     r2d_fpga_t *s;
  
-       /* Then create a sorted table of pointers
- 	 that point into the unsorted table.  */
--      opc_pointer[0] = malloc (sizeof (struct m68k_opcode *)
--                               * m68k_numopcodes);
-+      opc_pointer[0] = g_new(const struct m68k_opcode *, m68k_numopcodes);
-       opcodes[0] = opc_pointer[0];
+-    s = g_malloc0(sizeof(r2d_fpga_t));
++    s = g_new0(r2d_fpga_t, 1);
  
-       for (i = 1; i < 16; i++)
-diff --git a/disas/nios2.c b/disas/nios2.c
-index b342936d21..9e6e1e6a1f 100644
---- a/disas/nios2.c
-+++ b/disas/nios2.c
-@@ -2625,8 +2625,7 @@ nios2_init_opcode_hash (nios2_disassembler_state *state)
+     s->irl = irl;
  
- 	if (bucket)
- 	  {
--	    new_hash =
--	      (nios2_opcode_hash *) malloc (sizeof (nios2_opcode_hash));
-+	    new_hash = g_new(nios2_opcode_hash, 1);
- 	    if (new_hash == NULL)
- 	      {
- 		fprintf (stderr,
-diff --git a/disas/sparc.c b/disas/sparc.c
-index f120f4e86d..6d0adab8a7 100644
---- a/disas/sparc.c
-+++ b/disas/sparc.c
-@@ -2684,8 +2684,7 @@ print_insn_sparc (bfd_vma memaddr, disassemble_info *info)
-       current_arch_mask = compute_arch_mask (info->mach);
+@@ -249,7 +249,7 @@ static void r2d_init(MachineState *machine)
+     cpu = SUPERH_CPU(cpu_generic_init(TYPE_SUPERH_CPU, cpu_model));
+     env = &cpu->env;
  
-       if (!opcodes_initialized)
--        sorted_opcodes =
--          malloc (sparc_num_opcodes * sizeof (sparc_opcode *));
-+        sorted_opcodes = g_new(const sparc_opcode *, sparc_num_opcodes);
-       /* Reset the sorted table so we can resort it.  */
-       for (i = 0; i < sparc_num_opcodes; ++i)
-         sorted_opcodes[i] = &sparc_opcodes[i];
+-    reset_info = g_malloc0(sizeof(ResetData));
++    reset_info = g_new0(ResetData, 1);
+     reset_info->cpu = cpu;
+     reset_info->vector = env->pc;
+     qemu_register_reset(main_cpu_reset, reset_info);
+diff --git a/hw/sh4/sh7750.c b/hw/sh4/sh7750.c
+index 166e4bd947..49c49c110b 100644
+--- a/hw/sh4/sh7750.c
++++ b/hw/sh4/sh7750.c
+@@ -728,7 +728,7 @@ SH7750State *sh7750_init(SuperHCPU *cpu, MemoryRegion *sysmem)
+ {
+     SH7750State *s;
+ 
+-    s = g_malloc0(sizeof(SH7750State));
++    s = g_new0(SH7750State, 1);
+     s->cpu = cpu;
+     s->periph_freq = 60000000;	/* 60MHz */
+     memory_region_init_io(&s->iomem, NULL, &sh7750_mem_ops, s,
+diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
+index 9afb2d048c..46f3eb9647 100644
+--- a/hw/timer/sh_timer.c
++++ b/hw/timer/sh_timer.c
+@@ -192,7 +192,7 @@ static void *sh_timer_init(uint32_t freq, int feat, qemu_irq irq)
+     sh_timer_state *s;
+     QEMUBH *bh;
+ 
+-    s = (sh_timer_state *)g_malloc0(sizeof(sh_timer_state));
++    s = g_new0(sh_timer_state, 1);
+     s->freq = freq;
+     s->feat = feat;
+     s->tcor = 0xffffffff;
+@@ -313,7 +313,7 @@ void tmu012_init(MemoryRegion *sysmem, hwaddr base,
+     tmu012_state *s;
+     int timer_feat = (feat & TMU012_FEAT_EXTCLK) ? TIMER_FEAT_EXTCLK : 0;
+ 
+-    s = (tmu012_state *)g_malloc0(sizeof(tmu012_state));
++    s = g_new0(tmu012_state, 1);
+     s->feat = feat;
+     s->timer[0] = sh_timer_init(freq, timer_feat, ch0_irq);
+     s->timer[1] = sh_timer_init(freq, timer_feat, ch1_irq);
 -- 
 2.14.2
 
