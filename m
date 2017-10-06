@@ -1,62 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cSP-0002L5-MB
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:55:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43681)
+	id 1e0cSZ-0002VI-IB
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:55:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43754)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSN-0002Ib-9H
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:55:04 -0400
+	id 1e0cST-0002Q4-39
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:55:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSM-00083r-F6
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:55:03 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33116)
+	id 1e0cSR-00087m-Uo
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:55:09 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:52775)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSK-00080T-Ew; Fri, 06 Oct 2017 19:55:00 -0400
-Received: by mail-qk0-x241.google.com with SMTP id z12so9701918qkb.0;
-	Fri, 06 Oct 2017 16:55:00 -0700 (PDT)
+	id 1e0cSN-00084x-Je; Fri, 06 Oct 2017 19:55:03 -0400
+Received: by mail-qt0-x241.google.com with SMTP id o52so34330014qtc.9;
+	Fri, 06 Oct 2017 16:55:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=emUG2b4ULg5F7e9jN8IRLpYzrBPuTHK8wTyzKxPYH/8=;
-	b=T+O7vVAWHcPzVVMID0+My53YVan82+I/GpVbRIHHcZ869VzdpATf8ezMCR/omFMoJu
-	EB8HHxyLjwSYl+Ud/KthI8Ce9+1TGTV43FX5lcr4zsuS6xZYAnAcPW4fKl159oUFouWj
-	KN/PRz1Wd7hEG0BXFrLaGvUehG5LKUUx+OpUHFQ/sbOi+RpgIcbK0pmLrEDMsUX5xkLu
-	yHlZzL/CdErcSOH5UO6SIhEBCSOm+ZT/s303vbY0BzDcefSPfCAsD4TNs93XdbpK0jEv
-	/pW6XOxpX79Y9GiE8P8a8Y+lqhdjv2PuX/5L7PQBnp/tE2KpUZR+IqP5/+iVRewmOZE0
-	Kgmw==
+	bh=rR36fwBv7mScxAVZSpIrXHl8/e30rqjRXFK308/5Kd8=;
+	b=ddgwKw1Cm5XMP/a13chBsQYTR9Y9t+yvvAqd65R+tZaTRyzLoWkhtmY/85gn5NAILN
+	6eSQJZWZRDqGwId4KTu/VxJKUhqS724YHgv97qBe/MXg9SjCKvk/lrfqw0gCLwcDn+MK
+	AJbIkCNUQJdxOAUhilavgVDQad1ipsbbllLzUv14MNOQnIOr1U/OxOXBhCe0iN+THSKy
+	LMj8P0PGOiQlp3oiQyripAw71U1YRGp3rjwQztmV5Xk10RSt2r4OW1B+FfNjfZqblsFZ
+	5YWFu4aJN46qHZUILYViozuQfeM+wr/lsz7tsHOn23syOSV6zAg3ZSg7stzEdb7u+flQ
+	wNZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=emUG2b4ULg5F7e9jN8IRLpYzrBPuTHK8wTyzKxPYH/8=;
-	b=JyNLNuUK/VxTaAY1TnhQIUAaNMkZg8S/Q+plWtYvs4aRhwMh0w5RTLGMYPbjTHmCjM
-	GdOJKiMRo99tkAvX7dGuExHhZNZU5tLXF2U0a6/JQHiNl3jNniWm/rDmPEBxyUvseDVM
-	S96cIq/z/OYT7r05qw/luc65nwMcvqOtKrL+lT3Mwt1lz+0w3KUPtuVzdyWCGt/FEIEE
-	ffgTsKlA7/88cPcTfDPJf8JHDVUkW13JDZY8MyKl8x5ZEuKzJ99TuT0+jbVJNMi6HFdn
-	63lV4IMra0uFnLMQL9Hg2WgXUDgdHLE+u4ZLkdddGoP4eZv+vXxoeVZfh9sGMTjRhner
-	SqZg==
-X-Gm-Message-State: AMCzsaVPeEQn+N2teBFwdUzZi/e2w/TxBPgcEyRi6Nb+mksi7K/Lbw45
-	1s23agVUyItibndLJlPiY50=
-X-Google-Smtp-Source: AOwi7QDocsCzq3qA9ETQ6TWXAl/mZrRUwfhuelNn5KytXRayT3Y80dIEY/gFQCziLaaaUk05aOl03A==
-X-Received: by 10.55.140.68 with SMTP id o65mr731060qkd.293.1507334099847;
-	Fri, 06 Oct 2017 16:54:59 -0700 (PDT)
+	bh=rR36fwBv7mScxAVZSpIrXHl8/e30rqjRXFK308/5Kd8=;
+	b=G//QWC/Tm8Um3+5TDcmr9Po+Y53EQX68gDwNloqQF5a/LjVX6lHOdI11JUBLYTS6Tq
+	R1rY47JhF5Eah6RGO6L6/ewxXLWl2N8x0wQNU4mYANDfjctyGNEEjJyuJO3zjeANibFh
+	XPsW2iw53bttKQBz750TnZYSZ69O4bexJljXcPJhzg1yeC73JWCyA2cn8Pt0cALBrr6R
+	DoLli5VDKN4RhVKBCklVHcgA8UafRjhedhf/FpvCjBPEoOq+WZfxs3imJ2tNaIgai8G6
+	EpDIC1ZT4Q4Ml2poPnfCGXdbG3vMZIm7LSWQcxopufMciF3/muRmzD+k/IN7GRinfWtd
+	Vfsg==
+X-Gm-Message-State: AMCzsaU9NICRJJY1KvykUA1a5RSsEdLnwuRybis7D8Ji+2M+Qa3URT3w
+	/P9YO/y0WCNOGIgT4r+UfPk=
+X-Google-Smtp-Source: AOwi7QCbwU3hNN7FEa0ntcxezQ7sS1QoBNLfSkVkRO3RH7TjN5WrYzWtUVRvt1I9RF7hvvs6/uu93A==
+X-Received: by 10.200.56.108 with SMTP id r41mr5071728qtb.143.1507334103062;
+	Fri, 06 Oct 2017 16:55:03 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.54.56
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.55.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:54:58 -0700 (PDT)
+	Fri, 06 Oct 2017 16:55:02 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>
-Date: Fri,  6 Oct 2017 20:50:10 -0300
-Message-Id: <20171006235023.11952-76-f4bug@amsat.org>
+	qemu trival <qemu-trivial@nongnu.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:50:11 -0300
+Message-Id: <20171006235023.11952-77-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -65,9 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH 75/88] decnumber: use g_new() family of
- functions
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH 76/88] dma: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,55 +80,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:55:04 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:55:10 -0000
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+[PMD: added hw/dma/etraxfs_dma.c]
 ---
- libdecnumber/decNumber.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ dma-helpers.c        | 4 ++--
+ hw/dma/etraxfs_dma.c | 2 +-
+ hw/dma/rc4030.c      | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/libdecnumber/decNumber.c b/libdecnumber/decNumber.c
-index 8c197023f4..2d13198730 100644
---- a/libdecnumber/decNumber.c
-+++ b/libdecnumber/decNumber.c
-@@ -4089,7 +4089,7 @@ static decNumber * decAddOp(decNumber *res, const decNumber *lhs,
-       acc=accbuff;			/* assume use local buffer */
-       if (need*sizeof(Unit)>sizeof(accbuff)) {
- 	/* printf("malloc add %ld %ld\n", need, sizeof(accbuff)); */
--	allocacc=(Unit *)malloc(need*sizeof(Unit));
-+	allocacc=g_new(uint16_t, need);
- 	if (allocacc==NULL) {		/* hopeless -- abandon */
- 	  *status|=DEC_Insufficient_storage;
- 	  break;}
-@@ -4452,7 +4452,7 @@ static decNumber * decDivideOp(decNumber *res,
-     acclength=D2U(reqdigits+DECDPUN);	/* in Units */
-     if (acclength*sizeof(Unit)>sizeof(accbuff)) {
-       /* printf("malloc dvacc %ld units\n", acclength); */
--      allocacc=(Unit *)malloc(acclength*sizeof(Unit));
-+      allocacc=g_new(uint16_t, acclength);
-       if (allocacc==NULL) {		/* hopeless -- abandon */
- 	*status|=DEC_Insufficient_storage;
- 	break;}
-@@ -4477,7 +4477,7 @@ static decNumber * decDivideOp(decNumber *res,
-     if (!(op&DIVIDE)) var1units++;
-     if ((var1units+1)*sizeof(Unit)>sizeof(varbuff)) {
-       /* printf("malloc dvvar %ld units\n", var1units+1); */
--      varalloc=(Unit *)malloc((var1units+1)*sizeof(Unit));
-+      varalloc=g_new(uint16_t, (var1units+1));
-       if (varalloc==NULL) {		/* hopeless -- abandon */
- 	*status|=DEC_Insufficient_storage;
- 	break;}
-@@ -6314,7 +6314,7 @@ static Int decUnitCompare(const Unit *a, Int alength,
-   need+=2;
-   acc=accbuff;				/* assume use local buffer */
-   if (need*sizeof(Unit)>sizeof(accbuff)) {
--    allocacc=(Unit *)malloc(need*sizeof(Unit));
-+    allocacc=g_new(uint16_t, need);
-     if (allocacc==NULL) return BADINT;	/* hopeless -- abandon */
-     acc=allocacc;
+diff --git a/dma-helpers.c b/dma-helpers.c
+index 2d7e02d35e..e327fc21c4 100644
+--- a/dma-helpers.c
++++ b/dma-helpers.c
+@@ -40,7 +40,7 @@ int dma_memory_set(AddressSpace *as, dma_addr_t addr, uint8_t c, dma_addr_t len)
+ void qemu_sglist_init(QEMUSGList *qsg, DeviceState *dev, int alloc_hint,
+                       AddressSpace *as)
+ {
+-    qsg->sg = g_malloc(alloc_hint * sizeof(ScatterGatherEntry));
++    qsg->sg = g_new(ScatterGatherEntry, alloc_hint);
+     qsg->nsg = 0;
+     qsg->nalloc = alloc_hint;
+     qsg->size = 0;
+@@ -53,7 +53,7 @@ void qemu_sglist_add(QEMUSGList *qsg, dma_addr_t base, dma_addr_t len)
+ {
+     if (qsg->nsg == qsg->nalloc) {
+         qsg->nalloc = 2 * qsg->nalloc + 1;
+-        qsg->sg = g_realloc(qsg->sg, qsg->nalloc * sizeof(ScatterGatherEntry));
++        qsg->sg = g_renew(ScatterGatherEntry, qsg->sg, qsg->nalloc);
      }
+     qsg->sg[qsg->nsg].base = base;
+     qsg->sg[qsg->nsg].len = len;
+diff --git a/hw/dma/etraxfs_dma.c b/hw/dma/etraxfs_dma.c
+index d5650eb885..97951a2abe 100644
+--- a/hw/dma/etraxfs_dma.c
++++ b/hw/dma/etraxfs_dma.c
+@@ -768,7 +768,7 @@ void *etraxfs_dmac_init(hwaddr base, int nr_channels)
+ {
+ 	struct fs_dma_ctrl *ctrl = NULL;
+ 
+-	ctrl = g_malloc0(sizeof *ctrl);
++	ctrl = g_new0(struct fs_dma_ctrl, 1);
+ 
+         ctrl->bh = qemu_bh_new(DMA_run, ctrl);
+ 
+diff --git a/hw/dma/rc4030.c b/hw/dma/rc4030.c
+index 5d4833eeca..14bcab9fb3 100644
+--- a/hw/dma/rc4030.c
++++ b/hw/dma/rc4030.c
+@@ -636,8 +636,8 @@ static rc4030_dma *rc4030_allocate_dmas(void *opaque, int n)
+     struct rc4030DMAState *p;
+     int i;
+ 
+-    s = (rc4030_dma *)g_malloc0(sizeof(rc4030_dma) * n);
+-    p = (struct rc4030DMAState *)g_malloc0(sizeof(struct rc4030DMAState) * n);
++    s = g_new0(rc4030_dma, n);
++    p = g_new0(struct rc4030DMAState, n);
+     for (i = 0; i < n; i++) {
+         p->opaque = opaque;
+         p->n = i;
 -- 
 2.14.2
 
