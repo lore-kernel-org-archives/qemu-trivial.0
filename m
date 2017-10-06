@@ -1,51 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0N7F-0008Fc-9G
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 03:32:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49663)
+	id 1e0RSM-0002JM-Qh
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 08:10:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40425)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1e0N79-0008B2-OZ
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:11 -0400
+	(envelope-from <otubo@redhat.com>) id 1e0RSH-0002HT-RZ
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 08:10:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1e0N76-0005LB-Ji
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41872)
+	(envelope-from <otubo@redhat.com>) id 1e0RSC-0004eg-2y
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 08:10:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46882)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1e0N76-0005IM-DE
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:04 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <otubo@redhat.com>)
+	id 1e0RS4-0004WZ-NP; Fri, 06 Oct 2017 08:10:00 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8949325BB8;
-	Fri,  6 Oct 2017 07:32:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8949325BB8
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id B77F513A42;
+	Fri,  6 Oct 2017 12:09:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B77F513A42
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=lvivier@redhat.com
-Received: from [10.36.116.122] (ovpn-116-122.ams2.redhat.com [10.36.116.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D79555DD69;
-	Fri,  6 Oct 2017 07:32:01 +0000 (UTC)
-To: Marco A L Barbosa <malbarbo@gmail.com>, qemu-trivial@nongnu.org
-References: <20171005135530.837-1-malbarbo@gmail.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
-Date: Fri, 6 Oct 2017 09:32:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=otubo@redhat.com
+Received: from vader (ovpn-117-77.ams2.redhat.com [10.36.117.77])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AEDCA6444B;
+	Fri,  6 Oct 2017 12:09:49 +0000 (UTC)
+Date: Fri, 6 Oct 2017 14:09:48 +0200
+From: "Eduardo Otubo\"" <otubo@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>, Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20171006120948.GA12173@vader>
+References: <20170922154014.29350-1-f4bug@amsat.org>
+	<20170922160111.31885-1-f4bug@amsat.org>
+	<a6bedac0-0e58-8709-f549-a602914c9077@reactos.org>
+	<400dde93-d110-ee49-b2a0-76ea633b4abe@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20171005135530.837-1-malbarbo@gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Disposition: inline
+In-Reply-To: <400dde93-d110-ee49-b2a0-76ea633b4abe@amsat.org>
+User-Agent: Mutt/1.8.3+47 (5f034395e53d) (2017-05-23)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 06 Oct 2017 07:32:02 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 06 Oct 2017 12:09:58 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add some random ioctls
+Subject: Re: [Qemu-trivial] [PATCH 23/34] hw/dma/i8257: rename DMA_init() to
+ i8257_dma_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,70 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 07:32:12 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 12:10:17 -0000
 
-On 05/10/2017 15:55, Marco A L Barbosa wrote:
-> Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
-> ---
->  linux-user/ioctls.h       | 5 +++++
->  linux-user/syscall.c      | 1 +
->  linux-user/syscall_defs.h | 7 +++++++
->  3 files changed, 13 insertions(+)
-> 
-> diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
-> index e6997ff230..35cad6f944 100644
-> --- a/linux-user/ioctls.h
-> +++ b/linux-user/ioctls.h
-> @@ -173,6 +173,11 @@
->    IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timeval)))
->    IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timespec)))
->  
-> +  IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))
-> +  IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))
-> +  IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)
-> +  IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)
-> +
->    IOCTL(CDROMPAUSE, 0, TYPE_NULL)
->    IOCTL(CDROMSTART, 0, TYPE_NULL)
->    IOCTL(CDROMSTOP, 0, TYPE_NULL)
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 9b6364a266..d4c21a557c 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
->  #include <linux/icmp.h>
->  #include <linux/icmpv6.h>
->  #include <linux/errqueue.h>
-> +#include <linux/random.h>
->  #include "qemu-common.h"
->  #ifdef CONFIG_TIMERFD
->  #include <sys/timerfd.h>
-> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-> index 40c5027e93..b3d55e35ac 100644
-> --- a/linux-user/syscall_defs.h
-> +++ b/linux-user/syscall_defs.h
-> @@ -1060,6 +1060,13 @@ struct target_pollfd {
->  
->  #define TARGET_SIOCGIWNAME     0x8B01          /* get name == wireless protocol */
->  
-> +/* From <linux/random.h> */
-> +
-> +#define TARGET_RNDGETENTCNT    TARGET_IOR('R', 0x00, int)
-> +#define TARGET_RNDADDTOENTCNT  TARGET_IOW('R', 0x01, int)
-> +#define TARGET_RNDZAPENTCNT    TARGET_IO('R', 0x04)
-> +#define TARGET_RNDCLEARPOOL    TARGET_IO('R', 0x06)
-> +
->  /* From <linux/fs.h> */
->  
->  #define TARGET_BLKROSET   TARGET_IO(0x12,93) /* set device read-only (0 = read-write) */
-> 
+On Fri, Sep 22, 2017 at 03:08:03PM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> On 09/22/2017 02:43 PM, Herv=C3=A9 Poussineau wrote:
+> > Le 22/09/2017 =C3=A0 18:01, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit =
+:
+> [...]
+> > > +void i8257_dma_init(ISABus *bus, int high_page_enable);
+> > > +
+> >=20
+> > As you're changing the DMA_init prototype, can you add an Error **err=
+p
+> > parameter, and pass &error_abort in each caller?
+> >=20
+> > See http://lists.gnu.org/archive/html/qemu-devel/2017-09/msg00262.htm=
+l
+> > for more details
+>=20
+> If Eduardo doesn't have a patch ready I can do it.
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Please go ahead.
+You can also use my patch set (v2) for that as a base if you want.
+https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg08007.html
 
-Please, add a tag version and include history when you resend a series.
-
-Read https://wiki.qemu.org/Contribute/SubmitAPatch
-
-Thanks,
-Laurent
+--=20
+Eduardo Otubo
+Senior Software Engineer @ RedHat
 
