@@ -1,58 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e07G0-0002Gx-MS
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Oct 2017 10:36:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40702)
+	id 1e0N7F-0008Fc-9G
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 03:32:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49663)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e07Fx-0002Fw-Md
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:11 -0400
+	(envelope-from <lvivier@redhat.com>) id 1e0N79-0008B2-OZ
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e07Fs-0001ps-6c
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:09 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:56226)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <malbarbo@gmail.com>) id 1e07Fs-0001pK-1j
-	for qemu-trivial@nongnu.org; Thu, 05 Oct 2017 10:36:04 -0400
-Received: by mail-qt0-x242.google.com with SMTP id x54so25683411qth.12
-	for <qemu-trivial@nongnu.org>; Thu, 05 Oct 2017 07:36:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:subject:date:message-id;
-	bh=lw8C0cJmHSoiJfKrDwubs4Y8Gd7FDmMabH1sWGCC9Ns=;
-	b=MQ13GOSS7cbv1+J8T1gFAetKStEboVPXzHzUjOES48J9VGX0hCf/G25DwU4MbgZ4X1
-	EtF0aTYYDxP64jWOfbVUJEow+tuXZmZwkHXLkGhrZlRfyxUfYNkq+8I52XPwoiDSm9oB
-	e+B9mmi1Sh68yByscLo3pTbH0xuusCslNNpNVPLwjEeiDh2y6uSUCkTXjCSyWTeDVW3F
-	MoDorkY9hKVvsUolneqRr1mOGdcA1Uhp2J/bJW6NlVq5hSOk/M4bIKn+yufIyr522p98
-	7gJjAvJZ48j5e5wFXrEFIOWChlGQ7O/Rq2/Oomm4HLUTpnTrCNoCwcFdKC9L1kV3DvjK
-	RbBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:subject:date:message-id;
-	bh=lw8C0cJmHSoiJfKrDwubs4Y8Gd7FDmMabH1sWGCC9Ns=;
-	b=Ek5bjsPfCtpVH3h24mXfoqUfntorT2bw8NQFFaSJuTdEoNU0+CjYTY43sS8mMQ3r8v
-	22QQgHRHv+601qMhqLecHV6AG5Z8jOMoAkkzvEiR3nqkkFobEyR1x0CFOls7YKqb1dDr
-	n4+xK90lOczy5bY6fnTIgR2w3An/2trGOq41uY6jVejvhw4+MNPf8prfvm4Z41LMATZf
-	0kCxRK4bP7sWAdPOk5VPTuqeNB8+rkU7qaYUA+Deb5hQ1XPEBxJCe2TE6GmdWU4t/BQZ
-	Rn6rdtsSHy5mxsNbP5bFHgYYGu2JBoNXhOJgIsWcRRaUFRBQifxw+0f/MWC6QBPWPbYs
-	smdA==
-X-Gm-Message-State: AMCzsaXjqDc7YykqiiwZJOF3nUYZetRUZd7SxGfi+i2GG996aLRHsgNy
-	MxDnmlCMOTuuhNYKJkfzWh4ZrA==
-X-Google-Smtp-Source: AOwi7QCbwLfpxDpuBnRR1No/0pJ3hIAHQoyxyDMiazXSYVnDGrqNVX4xKrB0KjO3YCe2cwCvd3OCoA==
-X-Received: by 10.237.57.135 with SMTP id m7mr23753578qte.4.1507214163033;
-	Thu, 05 Oct 2017 07:36:03 -0700 (PDT)
-Received: from localhost.localdomain ([168.181.48.170])
-	by smtp.googlemail.com with ESMTPSA id
-	x124sm11611975qka.85.2017.10.05.07.36.00
-	for <qemu-trivial@nongnu.org>
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 05 Oct 2017 07:36:01 -0700 (PDT)
-From: Marco A L Barbosa <malbarbo@gmail.com>
-To: qemu-trivial@nongnu.org
-Date: Thu,  5 Oct 2017 11:35:53 -0300
-Message-Id: <20171005143553.23784-1-malbarbo@gmail.com>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-trivial] [PATCH] linux-user: Add AT_SECURE auxval
+	(envelope-from <lvivier@redhat.com>) id 1e0N76-0005LB-Ji
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41872)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1e0N76-0005IM-DE
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 03:32:04 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8949325BB8;
+	Fri,  6 Oct 2017 07:32:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 8949325BB8
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lvivier@redhat.com
+Received: from [10.36.116.122] (ovpn-116-122.ams2.redhat.com [10.36.116.122])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D79555DD69;
+	Fri,  6 Oct 2017 07:32:01 +0000 (UTC)
+To: Marco A L Barbosa <malbarbo@gmail.com>, qemu-trivial@nongnu.org
+References: <20171005135530.837-1-malbarbo@gmail.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
+Date: Fri, 6 Oct 2017 09:32:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
+MIME-Version: 1.0
+In-Reply-To: <20171005135530.837-1-malbarbo@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 06 Oct 2017 07:32:02 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add some random ioctls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,42 +57,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Oct 2017 14:36:11 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 07:32:12 -0000
 
-This is necessary to run android ndk applications. Without this patch, the
-following error is generated:
+On 05/10/2017 15:55, Marco A L Barbosa wrote:
+> Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
+> ---
+>  linux-user/ioctls.h       | 5 +++++
+>  linux-user/syscall.c      | 1 +
+>  linux-user/syscall_defs.h | 7 +++++++
+>  3 files changed, 13 insertions(+)
+> 
+> diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
+> index e6997ff230..35cad6f944 100644
+> --- a/linux-user/ioctls.h
+> +++ b/linux-user/ioctls.h
+> @@ -173,6 +173,11 @@
+>    IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timeval)))
+>    IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timespec)))
+>  
+> +  IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))
+> +  IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))
+> +  IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)
+> +  IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)
+> +
+>    IOCTL(CDROMPAUSE, 0, TYPE_NULL)
+>    IOCTL(CDROMSTART, 0, TYPE_NULL)
+>    IOCTL(CDROMSTOP, 0, TYPE_NULL)
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 9b6364a266..d4c21a557c 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
+>  #include <linux/icmp.h>
+>  #include <linux/icmpv6.h>
+>  #include <linux/errqueue.h>
+> +#include <linux/random.h>
+>  #include "qemu-common.h"
+>  #ifdef CONFIG_TIMERFD
+>  #include <sys/timerfd.h>
+> diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+> index 40c5027e93..b3d55e35ac 100644
+> --- a/linux-user/syscall_defs.h
+> +++ b/linux-user/syscall_defs.h
+> @@ -1060,6 +1060,13 @@ struct target_pollfd {
+>  
+>  #define TARGET_SIOCGIWNAME     0x8B01          /* get name == wireless protocol */
+>  
+> +/* From <linux/random.h> */
+> +
+> +#define TARGET_RNDGETENTCNT    TARGET_IOR('R', 0x00, int)
+> +#define TARGET_RNDADDTOENTCNT  TARGET_IOW('R', 0x01, int)
+> +#define TARGET_RNDZAPENTCNT    TARGET_IO('R', 0x04)
+> +#define TARGET_RNDCLEARPOOL    TARGET_IO('R', 0x06)
+> +
+>  /* From <linux/fs.h> */
+>  
+>  #define TARGET_BLKROSET   TARGET_IO(0x12,93) /* set device read-only (0 = read-write) */
+> 
 
-FATAL: kernel did not supply AT_SECURE
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
 
-Should AT_SECURE from host be considered or is the ids comparisons enough?
+Please, add a tag version and include history when you resend a series.
 
-Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
----
- linux-user/elfload.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Read https://wiki.qemu.org/Contribute/SubmitAPatch
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 79062882ba..177ce30e89 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -1354,7 +1354,7 @@ struct exec
-                                  ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
- #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
- 
--#define DLINFO_ITEMS 14
-+#define DLINFO_ITEMS 15
- 
- static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
- {
-@@ -1782,6 +1782,7 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
-     NEW_AUX_ENT(AT_HWCAP, (abi_ulong) ELF_HWCAP);
-     NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
-     NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
-+    NEW_AUX_ENT(AT_SECURE, (abi_ulong) (getuid() != geteuid() || getgid() != getegid()));
- 
- #ifdef ELF_HWCAP2
-     NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
--- 
-2.11.0
-
+Thanks,
+Laurent
 
