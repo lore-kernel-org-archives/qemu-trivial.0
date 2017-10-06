@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cQd-0000aS-Ai
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42167)
+	id 1e0cQh-0000co-JE
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42201)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQa-0000XF-2y
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:12 -0400
+	id 1e0cQd-0000aN-7q
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQZ-0006TH-Bv
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:12 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:51472)
+	id 1e0cQc-0006Vz-Fs
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:15 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:48143)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQX-0006Qk-3S; Fri, 06 Oct 2017 19:53:09 -0400
-Received: by mail-qt0-x241.google.com with SMTP id q4so34332092qtq.8;
-	Fri, 06 Oct 2017 16:53:08 -0700 (PDT)
+	id 1e0cQa-0006Tg-7f; Fri, 06 Oct 2017 19:53:12 -0400
+Received: by mail-qt0-x243.google.com with SMTP id d13so33659950qta.5;
+	Fri, 06 Oct 2017 16:53:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=QnSAemlhAlxePX2Db1XfE+qraoQWJcXTmefuRFTkacs=;
-	b=uea+WMpgJ2R3yhnRA7aE+r7vHGeU4xHH/Xsq+f7M2cr8VjuTEV9iCpX8u40e5xN0D1
-	VHPErV9NVm7w6a1khNF7IvKfHtScci+4f/gWIL1Ds734Sz1xKItYn9a0qpbn0qUJ04xL
-	1LTlO0BGPKhZVuzgqPasPA82QS/VM/09Oz+ooDKhOQwLydfVOWv+XCgU1VLzw7TLVP55
-	tC1Mbvl7YLc7OjDS2mZbZvBqEuK6gC3sZE2QR5ARMvjrGk/QdKcpto1H6Sjr62U5Cnen
-	GBb+U2qlbMabERi4v+sLYa9kdxrxKVvV4xCvU9EYOaPe1Qy3jkoK6CmLJmkzFThWVbv/
-	Wfeg==
+	bh=AwzxV1u+FMFWfMxm8oAn6a2MVILBkbhR53tGYP/q+ms=;
+	b=YA5rd6aG69gS+uQ1/Ya/BtTe5PHGRUQElyajU/1zKuyK8pymK396xMPy1E1wHo8bbc
+	EZ5bDzABKJpYoFOAwi3QPVtQQLU8NZm0Yvsrwlt9r+SlfmuVyapVLPDgjxiE82mOJfUS
+	i6a1KLC+YI3wuLfry76brqwPoWMQAkKLpIMiYy7nQHqbnFnRTWO9Tm+yLvM8jSXYcmdE
+	Ilhvky+jdORVpcWC3G2+IIP/42Is6vHLH4dFbqUrXm0A0/I/XN62IL/WgdJWSzKpDoEl
+	0Fq2EnmUDYXGzrNI0Cto0XLGd/LUTSVaz9QaqVaPc6jRN8JQroFvTDEUUYsrGBP5FJnJ
+	AecA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=QnSAemlhAlxePX2Db1XfE+qraoQWJcXTmefuRFTkacs=;
-	b=d3YRwrTV+xD5lnrQlb22D5j9j3cq1kMedpcpmVn9CMDklvFPGPh5QDmnm/Sj7XPSb1
-	nkSsyM7aEjbKXwRk8q4WjselpAOh7/Z9b3qSzXzu+nceU6SCOHTGvOYKWQ2fqwMD6lsg
-	aBe/+tug27cYGGZwGzxNmuTyeAGCOktM6rQER/dXhura68xOD3HQnS2DJ6BgC9WmpBa/
-	S0H7/IDRKp33lYt2YjKq2bDIJ0ILY5iV1f40NHKm9g2ClzEadYv2hSR6HzhylHKT2+UZ
-	B0QZRHNzagjXvpeK+iuvM/hpN1pe2cADpNTIaFLJBp6huEg1ZDullvZ9xmq9/bDUdiGZ
-	Rm3A==
-X-Gm-Message-State: AMCzsaWG2qezMmbDqFid1u67iV+mrp8GRa0vJqgMtklMNxBigpNtRFWt
-	TuNzBTilTh5yLSbAvo7dXjg=
-X-Google-Smtp-Source: AOwi7QBm4i8k6Z/+UAqZRtzUQKQBxF6BurSmrLZMTKfIxQkVYrnRZFw7CFplYAlUn0O/EFKl3O/WlQ==
-X-Received: by 10.237.60.101 with SMTP id u34mr5153388qte.153.1507333988567;
-	Fri, 06 Oct 2017 16:53:08 -0700 (PDT)
+	bh=AwzxV1u+FMFWfMxm8oAn6a2MVILBkbhR53tGYP/q+ms=;
+	b=l6ipSrhFo7VCFSTBa6WAtVnSjNp4XarWbqKXYukB2Ugf1hCEg3qyoUm2T4akc9T5eE
+	SBqibNgGQinrDkczedqutDIhX0mC+mF34QFRiA3HG5dvHygVlpdX7LtyRSl/MNj7Ze46
+	+1/enKmsyIA68feZNz1aB58zVzZSST5H0EUt3E9oNumR+Xo9etPUB+brmV+VWDTUqMJQ
+	Z60RPMARTiPNywlp+Iop9BGq4+lv5ytnKCqPhRcQYxcJ0rpVntUn8jEcc0u2gehIKm98
+	sLwt8jNwy2nGV80akuEdIYTfJRE5gW+qCAd/Nn9x3TrUXObaX+YCFz179SOmyL7V6mFr
+	GVHQ==
+X-Gm-Message-State: AMCzsaWbLcoD8FIatnX/afmbc/DNxtpNSK/w0e6PWbMTM4Yy24thiH87
+	GUfB2c0C+GvrnWaHGnEukuM=
+X-Google-Smtp-Source: AOwi7QCG8KLe7wxrfd/gMfRTsBfKIhWQEv3k24U0hdikJ9ahcGX2qGd4liY/cofkhZGjVwQzwc02tg==
+X-Received: by 10.237.48.236 with SMTP id 99mr5560935qtf.316.1507333991686;
+	Fri, 06 Oct 2017 16:53:11 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.05
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:53:08 -0700 (PDT)
+	Fri, 06 Oct 2017 16:53:11 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Fri,  6 Oct 2017 20:49:40 -0300
-Message-Id: <20171006235023.11952-46-f4bug@amsat.org>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu trival <qemu-trivial@nongnu.org>
+Date: Fri,  6 Oct 2017 20:49:41 -0300
+Message-Id: <20171006235023.11952-47-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -66,8 +66,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH 45/88] hw/display: use g_new() family of
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH 46/88] hw/display/vga: use g_new() family of
  functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -80,46 +80,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:53:13 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:53:18 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: squashed pxa2xx_lcd.c]
 ---
-Andrzej should the tc6393xb files go under the PXA2XX section in MAINTAINERS?
+Gerd: should those files go under Graphics section in MAINTAINERS?
 
- hw/display/pxa2xx_lcd.c | 2 +-
- hw/display/tc6393xb.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/display/vga-isa-mm.c | 6 +++---
+ hw/display/vga.c        | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index 845521c5b2..0ca997cae2 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -1006,7 +1006,7 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
-     PXA2xxLCDState *s;
-     DisplaySurface *surface;
+diff --git a/hw/display/vga-isa-mm.c b/hw/display/vga-isa-mm.c
+index 51ccbccc41..7af72864df 100644
+--- a/hw/display/vga-isa-mm.c
++++ b/hw/display/vga-isa-mm.c
+@@ -105,12 +105,12 @@ static void vga_mm_init(ISAVGAMMState *s, hwaddr vram_base,
+     MemoryRegion *s_ioport_ctrl, *vga_io_memory;
  
--    s = (PXA2xxLCDState *) g_malloc0(sizeof(PXA2xxLCDState));
-+    s = g_new0(PXA2xxLCDState, 1);
-     s->invalidated = 1;
-     s->irq = irq;
-     s->sysmem = sysmem;
-diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-index 74d10af3d4..2bd73a27e0 100644
---- a/hw/display/tc6393xb.c
-+++ b/hw/display/tc6393xb.c
-@@ -570,7 +570,7 @@ TC6393xbState *tc6393xb_init(MemoryRegion *sysmem, uint32_t base, qemu_irq irq)
-         },
-     };
+     s->it_shift = it_shift;
+-    s_ioport_ctrl = g_malloc(sizeof(*s_ioport_ctrl));
++    s_ioport_ctrl = g_new(MemoryRegion, 1);
+     memory_region_init_io(s_ioport_ctrl, NULL, &vga_mm_ctrl_ops, s,
+                           "vga-mm-ctrl", 0x100000);
+     memory_region_set_flush_coalesced(s_ioport_ctrl);
  
--    s = (TC6393xbState *) g_malloc0(sizeof(TC6393xbState));
-+    s = g_new0(TC6393xbState, 1);
-     s->irq = irq;
-     s->gpio_in = qemu_allocate_irqs(tc6393xb_gpio_set, s, TC6393XB_GPIOS);
+-    vga_io_memory = g_malloc(sizeof(*vga_io_memory));
++    vga_io_memory = g_new(MemoryRegion, 1);
+     /* XXX: endianness? */
+     memory_region_init_io(vga_io_memory, NULL, &vga_mem_ops, &s->vga,
+                           "vga-mem", 0x20000);
+@@ -130,7 +130,7 @@ int isa_vga_mm_init(hwaddr vram_base,
+ {
+     ISAVGAMMState *s;
  
+-    s = g_malloc0(sizeof(*s));
++    s = g_new0(ISAVGAMMState, 1);
+ 
+     s->vga.vram_size_mb = VGA_RAM_SIZE >> 20;
+     vga_common_init(&s->vga, NULL, true);
+diff --git a/hw/display/vga.c b/hw/display/vga.c
+index ed24ef7076..bdefa60f30 100644
+--- a/hw/display/vga.c
++++ b/hw/display/vga.c
+@@ -2236,7 +2236,7 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
+     *vga_ports = vga_portio_list;
+     *vbe_ports = vbe_portio_list;
+ 
+-    vga_mem = g_malloc(sizeof(*vga_mem));
++    vga_mem = g_new(MemoryRegion, 1);
+     memory_region_init_io(vga_mem, obj, &vga_mem_ops, s,
+                           "vga-lowmem", 0x20000);
+     memory_region_set_flush_coalesced(vga_mem);
 -- 
 2.14.2
 
