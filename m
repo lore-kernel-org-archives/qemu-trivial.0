@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cS4-0001yX-60
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:54:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43336)
+	id 1e0cSC-00025M-TY
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:54:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43384)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cS2-0001t1-25
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:42 -0400
+	id 1e0cS6-00020e-Al
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cS1-0007e6-5H
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:42 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:38001)
+	id 1e0cS5-0007hM-4F
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:46 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:38002)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cRw-0007Za-PN; Fri, 06 Oct 2017 19:54:36 -0400
-Received: by mail-qk0-x242.google.com with SMTP id 17so5920308qkq.5;
-	Fri, 06 Oct 2017 16:54:36 -0700 (PDT)
+	id 1e0cS1-0007eV-PX; Fri, 06 Oct 2017 19:54:41 -0400
+Received: by mail-qk0-x242.google.com with SMTP id 17so5920385qkq.5;
+	Fri, 06 Oct 2017 16:54:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=dCfaAM0acezQcI245LE9dyOnJRkUYyTmmnx7CBUHFn4=;
-	b=Qoj5+J6UTuLI0+8RuovsBUUXLUr2IdmpcUxmec8/93303cy7ElVHIDpbnCDBkJ8R8o
-	ICktrD8Wv8XI71OiQMhYDlAyca1z3eXtV2lle4IwiFud8GI+iobNpsfYsk88G9gSgbL3
-	4to9l4R6/ynYbEj7DzFuyTYYfHSYjlYmBkQ4KPoPZ3ud/3RgjRT8xeSd0zPeWUi3ZUsJ
-	yah9kKGUSI0R7ipFXbuh4MPmPN8mXZAWlikN6r19vnMUKrTyoC5uZovgPzcehROBeSZx
-	SZoJCgOqLOJRsUAAfUVoD0Gwg3bGmnMXr0cd3yN/dlKZzNhYxEI0CTpf7SZlJf/xNGHM
-	7Utg==
+	bh=zbrNxpd/pIWhJ0CPFZVJdm4d3wIqGdRGFMKeWZzx0to=;
+	b=Ou2JdHKOJBnA8633GZVvH8pLqrhoqBQHUhO75J3jLlqZ+TKItD/xvUT6mHQHbSkW+C
+	G4uMXv13R7wAjXZF3TjeD1fgyxVnbfy8qSlUQPZiRGxMlj0MwsomA/SqRrHk4qOisQ7m
+	oP3h1ISdA4S8ianshqGWGVNjQHyQpBQY4SZ8WvtV3PzwEWJW8I2V7eSydub8mqIAxgpf
+	NEOfERktmAZCZ4eYQCjc62xdExI8t7/El6vbQExRrFqKFPsIM3+N2MmGt4wcGVxpgpq/
+	lMKNjhZwwjplo7rg0nUxJrt/3U+9aiw2D6wxre/zuhOrgKXgwjLcMOvk1IdkPxHCeqW3
+	Fmxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=dCfaAM0acezQcI245LE9dyOnJRkUYyTmmnx7CBUHFn4=;
-	b=C6kZkzBMZ8krwRoTUOUps7PkmY6SKvCagxwA2MT1YOHDnzhOpdCxdK5aAjpsMAqT6P
-	3evZubyFibm2Otytg1kfs/hm4LxHCEiil9maPt0SPblf4OF27WfT7KeY/nJIUgpaE9VA
-	Z0UF8010CFoOMP/xoHsn0Esi+ytFAX4XSzrCZln62ty1grWnJFoChe11gTpDx0gQDpmN
-	FICLkTIQbCJkqK4Yhfk0d4K8wftrJs9WhEihk0u/JzkHNJmqeUblHU3WMIBXmOjPJBDJ
-	tbjM8M2VsO0WoUJgNgO6QpEmjqqigvrM+nT5/j5nXqLc0x7GSxnw9V/QqiuTLVpd57cM
-	94Og==
-X-Gm-Message-State: AMCzsaWxen/rvS8MAMz/vfzfLmeMyC8shpl+/23qrED1uVNfTBfqOWaT
-	E2WAcJw9NkJ3OssEYn/ltrI=
-X-Google-Smtp-Source: AOwi7QAKk1nDbEZ9seTW+X+SFPi2oV6PaiEUQmIMavD3sesqObhx3/nGytS8iNg7IDo10wf3sm1aig==
-X-Received: by 10.55.91.199 with SMTP id p190mr677630qkb.291.1507334076194;
-	Fri, 06 Oct 2017 16:54:36 -0700 (PDT)
+	bh=zbrNxpd/pIWhJ0CPFZVJdm4d3wIqGdRGFMKeWZzx0to=;
+	b=rOvLxC+DncBljHCCcb38GAel9K1aTKywx3dBGl2fAHkfYalCeX4iRBcNNn2gFKN/B0
+	0c9Kaa9Tn37uyeh/F3uDbUNw4FjWcsTCYEBk4tDC+MhMg4eUS07N9UvaLrp1AUyAR7AN
+	A32vB63H2M86CJNiuxgC9418nWPwpTE/K/ywEZTg1/nSn3b1DzdBq0R7CsVqsGxiFIY1
+	g6Dad0OtNz6xtCkqc+sVjoVa1gNvLHDoe7b+T784PbjNt2WZwQRHEr9I9L2p7MpvpGD1
+	gdlVdoZARWCLlxZg8k8cy5jEZ0RIl/77CNzPOaiZOUu8wDRTx9ayKKsYUwC684l43g6D
+	8FQg==
+X-Gm-Message-State: AMCzsaXiCmaueSNz+wwqVwpawT8aenGAu2CIKGbaL2x6gYhj8SvfoYtz
+	qtFymdM5G75aZXYT4cLzT5g=
+X-Google-Smtp-Source: AOwi7QAjaN3vp7Tm/FwKstrFELZvZ/tbvFp0iWkeQyifTpxkLFE3fPeNY9h1srPYty1RAVSqRMeYlQ==
+X-Received: by 10.55.6.149 with SMTP id 143mr674880qkg.231.1507334081136;
+	Fri, 06 Oct 2017 16:54:41 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.54.33
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.54.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:54:35 -0700 (PDT)
+	Fri, 06 Oct 2017 16:54:40 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	"Aneesh Kumar K.V" <aneesh.kumar@linux.vnet.ibm.com>,
-	Greg Kurz <groug@kaod.org>
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Fri,  6 Oct 2017 20:50:04 -0300
-Message-Id: <20171006235023.11952-70-f4bug@amsat.org>
+	Jeff Cody <jcody@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu trival <qemu-trivial@nongnu.org>, qemu-block@nongnu.org
+Date: Fri,  6 Oct 2017 20:50:05 -0300
+Message-Id: <20171006235023.11952-71-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -68,8 +68,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH 69/88] virtio-9p: use g_new() family of
- functions
+Subject: [Qemu-trivial] [PATCH 70/88] block: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,99 +80,229 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:54:43 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:54:51 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: added 2 more uses in hw/9pfs/9p-synth.c]
 ---
- hw/9pfs/9p-handle.c | 2 +-
- hw/9pfs/9p-proxy.c  | 2 +-
- hw/9pfs/9p-synth.c  | 8 ++++----
- hw/9pfs/9p.c        | 2 +-
- 4 files changed, 7 insertions(+), 7 deletions(-)
+ block/backup.c         |  2 +-
+ block/blkdebug.c       |  4 ++--
+ block/commit.c         |  2 +-
+ block/linux-aio.c      |  2 +-
+ block/mirror.c         |  2 +-
+ block/qapi.c           |  4 ++--
+ block/qcow2-refcount.c | 12 +++++-------
+ block/qed-l2-cache.c   |  2 +-
+ block/sheepdog.c       |  2 +-
+ block/stream.c         |  2 +-
+ block/vhdx.c           |  2 +-
+ block/win32-aio.c      |  2 +-
+ 12 files changed, 18 insertions(+), 20 deletions(-)
 
-diff --git a/hw/9pfs/9p-handle.c b/hw/9pfs/9p-handle.c
-index 9875f1894c..357ced3079 100644
---- a/hw/9pfs/9p-handle.c
-+++ b/hw/9pfs/9p-handle.c
-@@ -609,7 +609,7 @@ static int handle_init(FsContext *ctx)
-     int ret, mnt_id;
-     struct statfs stbuf;
-     struct file_handle fh;
--    struct handle_data *data = g_malloc(sizeof(struct handle_data));
-+    struct handle_data *data = g_new(struct handle_data, 1);
+diff --git a/block/backup.c b/block/backup.c
+index 06ddbfd03d..cd73e7d905 100644
+--- a/block/backup.c
++++ b/block/backup.c
+@@ -514,7 +514,7 @@ static void coroutine_fn backup_run(void *opaque)
+     qemu_co_rwlock_unlock(&job->flush_rwlock);
+     g_free(job->done_bitmap);
  
-     data->mountfd = open(ctx->fs_root, O_DIRECTORY);
-     if (data->mountfd < 0) {
-diff --git a/hw/9pfs/9p-proxy.c b/hw/9pfs/9p-proxy.c
-index 28b20a7c3d..2de303d713 100644
---- a/hw/9pfs/9p-proxy.c
-+++ b/hw/9pfs/9p-proxy.c
-@@ -1136,7 +1136,7 @@ static int proxy_parse_opts(QemuOpts *opts, struct FsDriverEntry *fs)
- 
- static int proxy_init(FsContext *ctx)
- {
--    V9fsProxy *proxy = g_malloc(sizeof(V9fsProxy));
-+    V9fsProxy *proxy = g_new(V9fsProxy, 1);
-     int sock_id;
- 
-     if (ctx->export_flags & V9FS_PROXY_SOCK_NAME) {
-diff --git a/hw/9pfs/9p-synth.c b/hw/9pfs/9p-synth.c
-index df0a8de08a..3aa69cf465 100644
---- a/hw/9pfs/9p-synth.c
-+++ b/hw/9pfs/9p-synth.c
-@@ -43,7 +43,7 @@ static V9fsSynthNode *v9fs_add_dir_node(V9fsSynthNode *parent, int mode,
- 
-     /* Add directory type and remove write bits */
-     mode = ((mode & 0777) | S_IFDIR) & ~(S_IWUSR | S_IWGRP | S_IWOTH);
--    node = g_malloc0(sizeof(V9fsSynthNode));
-+    node = g_new0(V9fsSynthNode, 1);
-     if (attr) {
-         /* We are adding .. or . entries */
-         node->attr = attr;
-@@ -124,7 +124,7 @@ int qemu_v9fs_synth_add_file(V9fsSynthNode *parent, int mode,
+-    data = g_malloc(sizeof(*data));
++    data = g_new(BackupCompleteData, 1);
+     data->ret = ret;
+     block_job_defer_to_main_loop(&job->common, backup_complete, data);
+ }
+diff --git a/block/blkdebug.c b/block/blkdebug.c
+index 46e53f2f09..4d05bcb1d9 100644
+--- a/block/blkdebug.c
++++ b/block/blkdebug.c
+@@ -175,7 +175,7 @@ static int add_rule(void *opaque, QemuOpts *opts, Error **errp)
      }
-     /* Add file type and remove write bits */
-     mode = ((mode & 0777) | S_IFREG);
--    node = g_malloc0(sizeof(V9fsSynthNode));
-+    node = g_new0(V9fsSynthNode, 1);
-     node->attr         = &node->actual_attr;
-     node->attr->inode  = synth_node_count++;
-     node->attr->nlink  = 1;
-@@ -180,7 +180,7 @@ static int synth_opendir(FsContext *ctx,
-     V9fsSynthOpenState *synth_open;
-     V9fsSynthNode *node = *(V9fsSynthNode **)fs_path->data;
  
--    synth_open = g_malloc(sizeof(*synth_open));
-+    synth_open = g_new(V9fsSynthOpenState, 1);
-     synth_open->node = node;
-     node->open_count++;
-     fs->private = synth_open;
-@@ -264,7 +264,7 @@ static int synth_open(FsContext *ctx, V9fsPath *fs_path,
-     V9fsSynthOpenState *synth_open;
-     V9fsSynthNode *node = *(V9fsSynthNode **)fs_path->data;
+     /* Set attributes common for all actions */
+-    rule = g_malloc0(sizeof(*rule));
++    rule = g_new(struct BlkdebugRule, 1);
+     *rule = (struct BlkdebugRule) {
+         .event  = event,
+         .action = d->action,
+@@ -727,7 +727,7 @@ static int blkdebug_debug_breakpoint(BlockDriverState *bs, const char *event,
+         return -ENOENT;
+     }
  
--    synth_open = g_malloc(sizeof(*synth_open));
-+    synth_open = g_new(V9fsSynthOpenState, 1);
-     synth_open->node = node;
-     node->open_count++;
-     fs->private = synth_open;
-diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-index 23ac7bb532..510867b4dc 100644
---- a/hw/9pfs/9p.c
-+++ b/hw/9pfs/9p.c
-@@ -298,7 +298,7 @@ static V9fsFidState *alloc_fid(V9fsState *s, int32_t fid)
-             return NULL;
+-    rule = g_malloc(sizeof(*rule));
++    rule = g_new(struct BlkdebugRule, 1);
+     *rule = (struct BlkdebugRule) {
+         .event  = blkdebug_event,
+         .action = ACTION_SUSPEND,
+diff --git a/block/commit.c b/block/commit.c
+index 5036eec434..e698311d5f 100644
+--- a/block/commit.c
++++ b/block/commit.c
+@@ -210,7 +210,7 @@ static void coroutine_fn commit_run(void *opaque)
+ out:
+     qemu_vfree(buf);
+ 
+-    data = g_malloc(sizeof(*data));
++    data = g_new(CommitCompleteData, 1);
+     data->ret = ret;
+     block_job_defer_to_main_loop(&s->common, commit_complete, data);
+ }
+diff --git a/block/linux-aio.c b/block/linux-aio.c
+index 88b8d55ec7..e5a9d7fdeb 100644
+--- a/block/linux-aio.c
++++ b/block/linux-aio.c
+@@ -474,7 +474,7 @@ LinuxAioState *laio_init(void)
+ {
+     LinuxAioState *s;
+ 
+-    s = g_malloc0(sizeof(*s));
++    s = g_new0(LinuxAioState, 1);
+     if (event_notifier_init(&s->e, false) < 0) {
+         goto out_free_state;
+     }
+diff --git a/block/mirror.c b/block/mirror.c
+index 153758ca9f..948e5321a7 100644
+--- a/block/mirror.c
++++ b/block/mirror.c
+@@ -904,7 +904,7 @@ immediate_exit:
+     g_free(s->in_flight_bitmap);
+     bdrv_dirty_iter_free(s->dbi);
+ 
+-    data = g_malloc(sizeof(*data));
++    data = g_new(MirrorExitData, 1);
+     data->ret = ret;
+ 
+     if (need_drain) {
+diff --git a/block/qapi.c b/block/qapi.c
+index 7fa2437923..808246bfc4 100644
+--- a/block/qapi.c
++++ b/block/qapi.c
+@@ -455,7 +455,7 @@ static BlockStats *bdrv_query_bds_stats(BlockDriverState *bs,
+ {
+     BlockStats *s = NULL;
+ 
+-    s = g_malloc0(sizeof(*s));
++    s = g_new0(BlockStats, 1);
+     s->stats = g_malloc0(sizeof(*s->stats));
+ 
+     if (!bs) {
+@@ -503,7 +503,7 @@ BlockInfoList *qmp_query_block(Error **errp)
+             continue;
+         }
+ 
+-        info = g_malloc0(sizeof(*info));
++        info = g_new0(BlockInfoList, 1);
+         bdrv_query_info(blk, &info->value, &local_err);
+         if (local_err) {
+             error_propagate(errp, local_err);
+diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+index aa3fd6cf17..dd2387d2bb 100644
+--- a/block/qcow2-refcount.c
++++ b/block/qcow2-refcount.c
+@@ -755,7 +755,7 @@ static void update_refcount_discard(BlockDriverState *bs,
          }
      }
--    f = g_malloc0(sizeof(V9fsFidState));
-+    f = g_new0(V9fsFidState, 1);
-     f->fid = fid;
-     f->fid_type = P9_FID_NONE;
-     f->ref = 1;
+ 
+-    d = g_malloc(sizeof(*d));
++    d = g_new(Qcow2DiscardRegion, 1);
+     *d = (Qcow2DiscardRegion) {
+         .bs     = bs,
+         .offset = offset,
+@@ -2189,9 +2189,8 @@ write_refblocks:
+ 
+             reftable_size = ROUND_UP((refblock_index + 1) * sizeof(uint64_t),
+                                      s->cluster_size) / sizeof(uint64_t);
+-            new_on_disk_reftable = g_try_realloc(on_disk_reftable,
+-                                                 reftable_size *
+-                                                 sizeof(uint64_t));
++            new_on_disk_reftable = g_try_renew(uint64_t, on_disk_reftable,
++                                               reftable_size);
+             if (!new_on_disk_reftable) {
+                 res->check_errors++;
+                 ret = -ENOMEM;
+@@ -2656,8 +2655,7 @@ static int alloc_refblock(BlockDriverState *bs, uint64_t **reftable,
+             return -ENOTSUP;
+         }
+ 
+-        new_reftable = g_try_realloc(*reftable, new_reftable_size *
+-                                                sizeof(uint64_t));
++        new_reftable = g_try_renew(uint64_t, *reftable, new_reftable_size);
+         if (!new_reftable) {
+             error_setg(errp, "Failed to increase reftable buffer size");
+             return -ENOMEM;
+@@ -3119,7 +3117,7 @@ int qcow2_shrink_reftable(BlockDriverState *bs)
+ {
+     BDRVQcow2State *s = bs->opaque;
+     uint64_t *reftable_tmp =
+-        g_malloc(s->refcount_table_size * sizeof(uint64_t));
++        g_new(uint64_t, s->refcount_table_size);
+     int i, ret;
+ 
+     for (i = 0; i < s->refcount_table_size; i++) {
+diff --git a/block/qed-l2-cache.c b/block/qed-l2-cache.c
+index b548362398..48689a6650 100644
+--- a/block/qed-l2-cache.c
++++ b/block/qed-l2-cache.c
+@@ -90,7 +90,7 @@ CachedL2Table *qed_alloc_l2_cache_entry(L2TableCache *l2_cache)
+ {
+     CachedL2Table *entry;
+ 
+-    entry = g_malloc0(sizeof(*entry));
++    entry = g_new0(CachedL2Table, 1);
+     entry->ref++;
+ 
+     trace_qed_alloc_l2_cache_entry(l2_cache, entry);
+diff --git a/block/sheepdog.c b/block/sheepdog.c
+index 696a71442a..1f67ed43ca 100644
+--- a/block/sheepdog.c
++++ b/block/sheepdog.c
+@@ -467,7 +467,7 @@ static inline AIOReq *alloc_aio_req(BDRVSheepdogState *s, SheepdogAIOCB *acb,
+ {
+     AIOReq *aio_req;
+ 
+-    aio_req = g_malloc(sizeof(*aio_req));
++    aio_req = g_new(AIOReq, 1);
+     aio_req->aiocb = acb;
+     aio_req->iov_offset = iov_offset;
+     aio_req->oid = oid;
+diff --git a/block/stream.c b/block/stream.c
+index e6f72346e5..2b4c67de41 100644
+--- a/block/stream.c
++++ b/block/stream.c
+@@ -202,7 +202,7 @@ static void coroutine_fn stream_run(void *opaque)
+ 
+ out:
+     /* Modify backing chain and close BDSes in main loop */
+-    data = g_malloc(sizeof(*data));
++    data = g_new(StreamCompleteData, 1);
+     data->ret = ret;
+     block_job_defer_to_main_loop(&s->common, stream_complete, data);
+ }
+diff --git a/block/vhdx.c b/block/vhdx.c
+index 7ae4589879..8260fb46cd 100644
+--- a/block/vhdx.c
++++ b/block/vhdx.c
+@@ -244,7 +244,7 @@ static void vhdx_region_register(BDRVVHDXState *s,
+ {
+     VHDXRegionEntry *r;
+ 
+-    r = g_malloc0(sizeof(*r));
++    r = g_new0(VHDXRegionEntry, 1);
+ 
+     r->start = start;
+     r->end = start + length;
+diff --git a/block/win32-aio.c b/block/win32-aio.c
+index 3be8f458fa..dfa062562f 100644
+--- a/block/win32-aio.c
++++ b/block/win32-aio.c
+@@ -190,7 +190,7 @@ QEMUWin32AIOState *win32_aio_init(void)
+ {
+     QEMUWin32AIOState *s;
+ 
+-    s = g_malloc0(sizeof(*s));
++    s = g_new0(QEMUWin32AIOState, 1);
+     if (event_notifier_init(&s->e, false) < 0) {
+         goto out_free_state;
+     }
 -- 
 2.14.2
 
