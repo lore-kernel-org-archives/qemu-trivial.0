@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cP9-0007Yi-0e
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:51:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41093)
+	id 1e0cPE-0007hX-NS
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:51:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41176)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cP6-0007VI-2n
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:51:40 -0400
+	id 1e0cPC-0007by-6z
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:51:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cP5-0005D2-Ec
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:51:40 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:37975)
+	id 1e0cPB-0005Ja-Cv
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:51:46 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:50908)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cP3-0005BQ-Df; Fri, 06 Oct 2017 19:51:37 -0400
-Received: by mail-qk0-x241.google.com with SMTP id 17so5917540qkq.5;
-	Fri, 06 Oct 2017 16:51:37 -0700 (PDT)
+	id 1e0cP6-0005Ee-U1; Fri, 06 Oct 2017 19:51:40 -0400
+Received: by mail-qt0-x241.google.com with SMTP id f15so34348508qtf.7;
+	Fri, 06 Oct 2017 16:51:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ghZP7L4yP7uTN13RiHneifNe/t4pi72rDTbu8R7L+tk=;
-	b=K+jukSIIqb36dgQPsgC5uze6ooJbH9/Y4tT3xaV2AkqWgzTtFSbHnejwzL8SmHHmpo
-	ADWg+M7uBAy9MHuhe5CbFE6dkCHzPoj8vj5POtgfmxbRMkC19TIglrE5L2L53fpJXo6i
-	5llrd8a7SCSUUfZP0cyBASg+LnmJ0yJ0FHupZYbblA5ZSt+YdJyXoa6AHBB62Lnd/B4s
-	GkekQk4SjRgKnQwDif7C7dQOuhpx4sxPgrrql3pnojLGtjFQUIm6mhtwrek1xyjrNvFI
-	eQuCQ1c1w4E2R+aOLMsHrgAkP0imKmBHHqAFYXuG4SQQiaT8zPPRrKRXKBLXyHxO+xqm
-	8ypQ==
+	bh=ou5DYi2TigEtJhbKCSg64Q9IEsfjgCcfCqLZSaXAnpo=;
+	b=vAromYtI3jDnprhua2sa/QZVahbRxSIOcSTLcLUfDI7sXq7B5AX7erIDoHwhjR2w25
+	cjgjOVHl0nJAOUUTo2kKshMIVMP86EqZHRRUYgnuEH9t7aQQHIM1h0YormHseIcO3nRG
+	RvTaZPwoYPDcgBbgB1f8pnjH3XZVWXVz6J9z3bA8C/H//ClnMgEMkLqT+yjTTaPCWD4a
+	0r1f59M448q8ayMZf9+qGO1yKjxkW9jm9w1xbVbaTnvWmoPzcYgvehFuJKczRjzbTXFB
+	T6idFuaSagcfsv1svYgDNNnDrPWAkLDOt/UVqtBgYzHViTupCNc3zLQ812+gfiCH07Az
+	3QQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ghZP7L4yP7uTN13RiHneifNe/t4pi72rDTbu8R7L+tk=;
-	b=SaASX1NmYt2+++NB8mh8f92UjAVgGfW8sHsFqD9JJz1EjML3Wsz+FOlN3eHSasaT47
-	CwLXIo0IgHhMXAubqC7XVP4Qd1PKW1vz6U/defsUvnqBAqwhx+ziJnEkm+wDd/jpLMpV
-	xhv0NPI1osC5Vt6kSeqJbhpnUc4rpU2+kSkXg1dNLGOngHZ8qE5x7PGFva/tYrhHrbXL
-	Air5USSlgBNlnETiLh1x7v7mSjzJQNoZkx8Almk7hRyVG8pkOp2syjzM1Isy/zPEaytQ
-	5wZf1MreDZy+FE+UjZ4xfn0sHLl5VUtfsx3UY840XGz+ZSrVuZNH7xyRlgRe3ACW4iwu
-	uH0A==
-X-Gm-Message-State: AMCzsaVvrTru3DjvTcBPTLKFw3lOR00LIdqZuZmpQcecgw66+VmzBsKW
-	pUMZ3UCAiXXFj50qfo43k7o=
-X-Google-Smtp-Source: AOwi7QCgY/0DVC4SVsgF7jvrFuGcrl8yXWbOjtsI41qm28a5MOdcjfty03Nr4ABbrJHUP6l183ngOA==
-X-Received: by 10.55.207.11 with SMTP id e11mr701216qkj.89.1507333896890;
-	Fri, 06 Oct 2017 16:51:36 -0700 (PDT)
+	bh=ou5DYi2TigEtJhbKCSg64Q9IEsfjgCcfCqLZSaXAnpo=;
+	b=GAWWG7l4w5BzoQzQt4Byv3e51yMeNh2LZG1/IMmLs9K7QmvHHJPbfujlAnMFoQwKUF
+	dKyzkBF5CPkUTzzwKS+c5n8LO4DwH+LqGRVSe7Oj/htK214kO92IIGrBnJQ0Rs+QWPo1
+	3IW5xRwjVDCCsWgxSB5JP9dp79TZX7U0XYJQ5zn1WQc/5eybT7NtR7chS5tpY9QOEt7N
+	oJbQWFWNSZz17P50Cy/8OBYZGu//6puFwreGuHqxjnBArkiqAMznhEdrkhJ3eJD3Rh3b
+	nZCzLzzpCsPWiNfL7CnV3s9+x39JjbfaJdvsRig1Gbbzp+pDmX3s0J5ChbH1sD6ney1n
+	iH2g==
+X-Gm-Message-State: AMCzsaUjZmqK66u/seT5rga2gsRLArUB4GH0YzQ5mF0ZST0lWZAJUkFE
+	9DBfJBVVdIa3RwDOrhZafik1tj4Q
+X-Google-Smtp-Source: AOwi7QBhVJFTfQjmbhtAjMx5x/gYQoWY4eRtcMxq7oaIrakKwg75nq9+kTqreFySW21geDWBTVWv4Q==
+X-Received: by 10.200.52.56 with SMTP id u53mr5494951qtb.16.1507333900415;
+	Fri, 06 Oct 2017 16:51:40 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.51.33
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.51.37
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:51:36 -0700 (PDT)
+	Fri, 06 Oct 2017 16:51:39 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Alex Williamson <alex.williamson@redhat.com>
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu trival <qemu-trivial@nongnu.org>
-Date: Fri,  6 Oct 2017 20:49:13 -0300
-Message-Id: <20171006235023.11952-19-f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:49:14 -0300
+Message-Id: <20171006235023.11952-20-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -66,8 +68,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH 18/88] memory: use g_new() family of functions
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH 19/88] exec: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,30 +81,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:51:41 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:51:47 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-does this file belong to the Memory API subsystem in MAINTAINERS?
+ exec.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- memory_mapping.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/memory_mapping.c b/memory_mapping.c
-index a5d38552a6..9c78b41363 100644
---- a/memory_mapping.c
-+++ b/memory_mapping.c
-@@ -43,7 +43,7 @@ static void create_new_memory_mapping(MemoryMappingList *list,
- {
-     MemoryMapping *memory_mapping;
+diff --git a/exec.c b/exec.c
+index 7a80460725..e060c6fea7 100644
+--- a/exec.c
++++ b/exec.c
+@@ -836,7 +836,7 @@ int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+                      VADDR_PRIx ", len=%" VADDR_PRIu, addr, len);
+         return -EINVAL;
+     }
+-    wp = g_malloc(sizeof(*wp));
++    wp = g_new(CPUWatchpoint, 1);
  
--    memory_mapping = g_malloc(sizeof(MemoryMapping));
-+    memory_mapping = g_new(MemoryMapping, 1);
-     memory_mapping->phys_addr = phys_addr;
-     memory_mapping->virt_addr = virt_addr;
-     memory_mapping->length = length;
+     wp->vaddr = addr;
+     wp->len = len;
+@@ -922,7 +922,7 @@ int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, int flags,
+ {
+     CPUBreakpoint *bp;
+ 
+-    bp = g_malloc(sizeof(*bp));
++    bp = g_new(CPUBreakpoint, 1);
+ 
+     bp->pc = pc;
+     bp->flags = flags;
+@@ -1975,7 +1975,7 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
+         return NULL;
+     }
+ 
+-    new_block = g_malloc0(sizeof(*new_block));
++    new_block = g_new0(RAMBlock, 1);
+     new_block->mr = mr;
+     new_block->used_length = size;
+     new_block->max_length = size;
+@@ -2036,7 +2036,7 @@ RAMBlock *qemu_ram_alloc_internal(ram_addr_t size, ram_addr_t max_size,
+ 
+     size = HOST_PAGE_ALIGN(size);
+     max_size = HOST_PAGE_ALIGN(max_size);
+-    new_block = g_malloc0(sizeof(*new_block));
++    new_block = g_new0(RAMBlock, 1);
+     new_block->mr = mr;
+     new_block->resized = resized;
+     new_block->used_length = size;
 -- 
 2.14.2
 
