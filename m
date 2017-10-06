@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cQk-0000fL-0f
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42238)
+	id 1e0cQn-0000ii-Dv
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:53:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42259)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQi-0000dc-AK
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:21 -0400
+	id 1e0cQk-0000ff-7c
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQh-0006Ys-J1
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:20 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:37988)
+	id 1e0cQj-0006aN-AD
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:53:22 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:50913)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQd-0006WG-FB; Fri, 06 Oct 2017 19:53:15 -0400
-Received: by mail-qk0-x244.google.com with SMTP id 17so5919173qkq.5;
-	Fri, 06 Oct 2017 16:53:15 -0700 (PDT)
+	id 1e0cQh-0006Xw-3Z; Fri, 06 Oct 2017 19:53:19 -0400
+Received: by mail-qt0-x242.google.com with SMTP id f15so34352210qtf.7;
+	Fri, 06 Oct 2017 16:53:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=edaFnNj2NF0wlhE1awkFNUNVg++iVsowZaQaA7wkc9E=;
-	b=MptSe0SBhxG38ezA0ohkTGQJeE1uDM4bMsjdT0bhbWhT8XjVhdQZgpRPYHuAfAjtKG
-	HUCFw6J35ZmwUIoi3VurB8PcYRbbkXI6c9kDi0xI8reimteBV4cdF4ndH0iN4aJkXtCl
-	boosc+WG78/U5lMBh/+r7c0le5jPtJvBH+IA+IrA9+lx/knOxjaVlbupp1jIbLX77vWi
-	6DhqXw+Z0EUXf80fiK4iOOCSvmtcO1VQG7s/KsjmWEGrJexu1+XrDhXfLAN4FieA4cgb
-	vOacKlZAR+mQzT1+7qHLEk2MzWR7JIkThW9mDoSb2H9B5q00Moa7+IFltZokeWKctER2
-	YOYA==
+	bh=k0eXN00AQ8GTUou7mfAYYCN+s5gjdW17Nycg9K+gzqE=;
+	b=f15xcgSU3SAjrh8Bza/5pgEWQ0zlTUrwouzuMn3UIfRcu/NcgCAGAYiQ5BmdPHXBAC
+	XwvE/IFIw57SLWBA37PeX4z1cHgqntkrgv/rc51TSbSUczwnXeurqk8vhYbcoROVOjYB
+	mvWf9tfC67Vbw/CDjwJYau8gltZ/QNOY6VPSPOIb9hPSJt8Bygp4a2T/xqbZ9pSbSxwq
+	vZGlyz+VOslbC49AJ4n/0eBtIHz0Y7gl935M1Mi9QX9+kL/hWspj027oNZjjXpOWL9r0
+	y1bRtq2ozlEd1DyEZ4bFbSgj0QXBlyyNXtPRoGuJ1l0q6oTH61ca9MboGcg5okouu22z
+	fyjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=edaFnNj2NF0wlhE1awkFNUNVg++iVsowZaQaA7wkc9E=;
-	b=MRhX7yXqcKEbcpxIg2U3wr+8a4IRg8dnvROvRkV/DWsIuiSZ3EIvTxG85GtL1oj/AB
-	tLpXr4hkb8t+0zNmQAomAmwwNSeeDH0OaWS3jNHi3m1pUyoJXcTESLAbU11IRIvkDjVn
-	+fA3bwUz1oIxHggru20Bx9RookFFMTN3212OcyjUFJ3YPbeBHeLT2L8tZOX/xu3MklN7
-	LZdFKyxg7kkXugvhZXQYzmswPsVXCken2T9HjsG/K1gl85fK2sw7iRNbWQkcMiEZ/HXt
-	XXQ9iT+FxFQgrUjMmTLnreR1KA61+fvnIDhzXEnJ5Egc0VWPAqrnQIzVfGECUHWcYpXs
-	c29A==
-X-Gm-Message-State: AMCzsaUquvujW49ckykGKjFUWYM8Nc3oAbK6Ccu2wa9mbp7fPhv7rp60
-	zBwKSq3+QK7zpLNdgGyPt4Q=
-X-Google-Smtp-Source: AOwi7QBdS+ObTpGGO6M8+pWFV9EwfsNDfXKXj5KCI49czkQjM3yRhBwn6KyuwGW3AjuqS9EmMPzGJA==
-X-Received: by 10.55.181.129 with SMTP id e123mr765446qkf.128.1507333994896;
-	Fri, 06 Oct 2017 16:53:14 -0700 (PDT)
+	bh=k0eXN00AQ8GTUou7mfAYYCN+s5gjdW17Nycg9K+gzqE=;
+	b=pmQK4khPmXRhfUk7eg7yK0kaMfP0KeZS6TIWK3TeiMr6BMbqUh2BLZN7Kz172nBmQn
+	aT4MTXEzLX30/a1duYfUtYBskkTRHksz/VAGzgdaf14qamSmYHqvwSUlOBK48xG8s5CG
+	dwXSYC4vbc4o6+ac3fjt1hxlJgW8q937CJzw1zIA1VfOn76V6xzYI6r5prCNm6VwKQe4
+	/zGbH+U7WDlSqxO+zlFWXe9ji8YCam1jq4vljeGZZTsCP3bLpDy7kZ6DAL3jSUbYwg7x
+	NhHwCn1pKpciCdwDTZssPwLFZdLl20Lg1GFkz9aLz0vShZgjYdrtIKsqrOtloYaKSGh4
+	IKpg==
+X-Gm-Message-State: AMCzsaWBmUKYHZCupdgbAUOfxmF+fVTmGKFfoLSbRzSOI79hwWP+YEjz
+	QW3tQU8i7GdWzBYGQaUa3z4=
+X-Google-Smtp-Source: AOwi7QDFv+2ZjKBfRbAPLVhGzEF8ZbpFju2Trxgob2H3DIBf38VZHUuGLQIj2N7A4+chsbjNLgn1qg==
+X-Received: by 10.200.56.108 with SMTP id r41mr5068034qtb.143.1507333998543;
+	Fri, 06 Oct 2017 16:53:18 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.11
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.53.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:53:14 -0700 (PDT)
+	Fri, 06 Oct 2017 16:53:17 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Corey Minyard <cminyard@mvista.com>, Andrzej Zaborowski <balrogg@gmail.com>
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	"M : Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>
-Date: Fri,  6 Oct 2017 20:49:42 -0300
-Message-Id: <20171006235023.11952-48-f4bug@amsat.org>
+	qemu trival <qemu-trivial@nongnu.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:49:43 -0300
+Message-Id: <20171006235023.11952-49-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -66,8 +68,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH 47/88] hw/i2c: use g_new() family of functions
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 48/88] hw/input: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,51 +82,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:53:21 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:53:23 -0000
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+[PMD: squashed hw/input/pxa2xx_keypad.c]
 ---
- hw/i2c/bitbang_i2c.c | 2 +-
- hw/i2c/core.c        | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Andrzej: can you add an entry for tsc2005.c in MAINTAINERS? (or tell me where)
 
-diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
-index 8be88ee265..20a9deef1a 100644
---- a/hw/i2c/bitbang_i2c.c
-+++ b/hw/i2c/bitbang_i2c.c
-@@ -186,7 +186,7 @@ bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus)
+ hw/input/pckbd.c         | 2 +-
+ hw/input/ps2.c           | 4 ++--
+ hw/input/pxa2xx_keypad.c | 2 +-
+ hw/input/tsc2005.c       | 3 +--
+ 4 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index c479f827b6..ef9e055b1d 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -465,7 +465,7 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
+                    MemoryRegion *region, ram_addr_t size,
+                    hwaddr mask)
  {
-     bitbang_i2c_interface *s;
+-    KBDState *s = g_malloc0(sizeof(KBDState));
++    KBDState *s = g_new0(KBDState, 1);
  
--    s = g_malloc0(sizeof(bitbang_i2c_interface));
-+    s = g_new0(bitbang_i2c_interface, 1);
+     s->irq_kbd = kbd_irq;
+     s->irq_mouse = mouse_irq;
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index dff3f1e024..3e8f5ee98d 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -1296,7 +1296,7 @@ static QemuInputHandler ps2_keyboard_handler = {
  
-     s->bus = bus;
-     s->last_data = 1;
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 59068f157e..be84d6735f 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -132,7 +132,7 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
-             DeviceState *qdev = kid->child;
-             I2CSlave *candidate = I2C_SLAVE(qdev);
-             if ((candidate->address == address) || (bus->broadcast)) {
--                node = g_malloc(sizeof(struct I2CNode));
-+                node = g_new(struct I2CNode, 1);
-                 node->elt = candidate;
-                 QLIST_INSERT_HEAD(&bus->current_devs, node, next);
-                 if (!bus->broadcast) {
-@@ -258,7 +258,7 @@ static int i2c_slave_post_load(void *opaque, int version_id)
-     bus = I2C_BUS(qdev_get_parent_bus(DEVICE(dev)));
-     if ((bus->saved_address == dev->address) ||
-         (bus->saved_address == I2C_BROADCAST)) {
--        node = g_malloc(sizeof(struct I2CNode));
-+        node = g_new(struct I2CNode, 1);
-         node->elt = dev;
-         QLIST_INSERT_HEAD(&bus->current_devs, node, next);
-     }
+ void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
+ {
+-    PS2KbdState *s = (PS2KbdState *)g_malloc0(sizeof(PS2KbdState));
++    PS2KbdState *s = g_new0(PS2KbdState, 1);
+ 
+     trace_ps2_kbd_init(s);
+     s->common.update_irq = update_irq;
+@@ -1318,7 +1318,7 @@ static QemuInputHandler ps2_mouse_handler = {
+ 
+ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
+ {
+-    PS2MouseState *s = (PS2MouseState *)g_malloc0(sizeof(PS2MouseState));
++    PS2MouseState *s = g_new0(PS2MouseState, 1);
+ 
+     trace_ps2_mouse_init(s);
+     s->common.update_irq = update_irq;
+diff --git a/hw/input/pxa2xx_keypad.c b/hw/input/pxa2xx_keypad.c
+index 2b70bbb95c..016b095e94 100644
+--- a/hw/input/pxa2xx_keypad.c
++++ b/hw/input/pxa2xx_keypad.c
+@@ -310,7 +310,7 @@ PXA2xxKeyPadState *pxa27x_keypad_init(MemoryRegion *sysmem,
+ {
+     PXA2xxKeyPadState *s;
+ 
+-    s = (PXA2xxKeyPadState *) g_malloc0(sizeof(PXA2xxKeyPadState));
++    s = g_new0(PXA2xxKeyPadState, 1);
+     s->irq = irq;
+ 
+     memory_region_init_io(&s->iomem, NULL, &pxa2xx_keypad_ops, s,
+diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
+index eb5320af40..34dd4ea0da 100644
+--- a/hw/input/tsc2005.c
++++ b/hw/input/tsc2005.c
+@@ -485,8 +485,7 @@ void *tsc2005_init(qemu_irq pintdav)
+ {
+     TSC2005State *s;
+ 
+-    s = (TSC2005State *)
+-            g_malloc0(sizeof(TSC2005State));
++    s = g_new0(TSC2005State, 1);
+     s->x = 400;
+     s->y = 240;
+     s->pressure = false;
 -- 
 2.14.2
 
