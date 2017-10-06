@@ -1,66 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cSK-0002F4-9T
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:55:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43617)
+	id 1e0cSL-0002Gn-LV
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:55:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43646)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSI-0002BU-32
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:59 -0400
+	id 1e0cSJ-0002EJ-QU
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:55:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSF-0007up-N0
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:58 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:48156)
+	id 1e0cSJ-0007zH-6N
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:54:59 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:47289)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cSD-0007qI-Bi; Fri, 06 Oct 2017 19:54:53 -0400
-Received: by mail-qt0-x241.google.com with SMTP id d13so33663634qta.5;
-	Fri, 06 Oct 2017 16:54:53 -0700 (PDT)
+	id 1e0cSG-0007wh-VF; Fri, 06 Oct 2017 19:54:57 -0400
+Received: by mail-qt0-x244.google.com with SMTP id z50so29317584qtj.4;
+	Fri, 06 Oct 2017 16:54:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=k2Vi1Bv+CSnDlN/GqBVXgQT24hAmoOQo6hWaGCQbWSg=;
-	b=Z2R2VpTLQQR4vQma8rLCVSMqzIsI3f9ghDqoSZ3+1zP5H3cCtGGlCN5cJ89EJXIfgT
-	PxWn9rZ4RSkjwyTz4i7gagqUYNV0aVFcpLWvmGtlajQLI3vOTqJbIfS6+Ri0M+2Z/W/C
-	HoB4G1RiLHYbrqfM51QPmHpjdfTc5dhF7/KzM2en8caSXwWuQ8yNpSztja9D95cS59+4
-	QjGkWrHQyGJZsRr/kgbj4vp4xl31lIVRTHlpXFFhcW54UkH19hVl2P0E0qd8Y2jA78IG
-	mGpSX7568nidmdKbZmzhb34e6Ju7iG711yQOk2fX5MCoU0sBDRokm8pckeP8tmlTCOL8
-	Gm8A==
+	bh=sF5UHJotnEoBCp34Be3hjw7Ud6Krvr/9RbpLjCV0RJI=;
+	b=uI5HCHYx+XvD6/2seoYsJo2FeGRSUcc9GHCmAQFR/9cqEyHS4whG0h/Lo+3/Xfa6Zx
+	y5Wb5imzjxhC/wpHoQ9sKhgGzWcQMjOOzmSUciJVo2Vkh7HSR+rlXNqgKhIsNEce/R0H
+	Z4I0HUfayitR7AoPzKCsN+4Dyk5HMfFqdzHqtmaRG7u+51p5HYkDAP9qtu0tTx9e66Fa
+	Ky3PzMgtgxnuIjQqtI3BRNPIorB6pQX02ObwRFrcb3+KkZ/Vv8kGnDYccgGEMzDsc/4r
+	v0VKJIqpOaDSSqYl97u6sujKnPp1piAOlmgKN//wG4yf5nJHdjhM3IUx0NyXqiscIbeo
+	dcPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=k2Vi1Bv+CSnDlN/GqBVXgQT24hAmoOQo6hWaGCQbWSg=;
-	b=TMZ8IERjt8KBHK9G+jM1mI+JeOhzqOrL1W/dfXt7GVJ8l0iqiuBLZ/YIm1cWbY5PwX
-	Uxb9QQ8aayoXB2jpTmSiwpb9jftijkmEc1x2O8lD6WyP5n1DfjXp8o4pfDs9P8Cbufss
-	uoJyjguFCSJ4/NZJgK9sx/jKS3p4SJCc7+Z0XOMQewg/+LrtfbEM0ImlFTSn1/rpkVrX
-	VSc4LwO/q9qb6P6L5lW5XkQfXq7NURn403l7vEEyae03QRAIKU2XOgIkacHA17ZzUjF1
-	qSF4Ns/h14L/Oyj8yxuqWxxWWbHMh63v64tYEfwJ+0bfJ45YXG8+4cur+4T5dL6WPEyY
-	ac2Q==
-X-Gm-Message-State: AMCzsaXFHJZUcRudyJCxPOSbkZhM8pRbCGQJAuOlKK2nhXIW0oZUZMoR
-	Jzi9xKKHhDxwe/gBXUrhq3s=
-X-Google-Smtp-Source: AOwi7QBg2rh6AWlX8NBOKIwboSyFpaIm9jTe7ZXke+7eecUEoqHGdte7EGD/iW51XCxlMVpaypat6A==
-X-Received: by 10.200.8.109 with SMTP id x42mr5782429qth.54.1507334092820;
-	Fri, 06 Oct 2017 16:54:52 -0700 (PDT)
+	bh=sF5UHJotnEoBCp34Be3hjw7Ud6Krvr/9RbpLjCV0RJI=;
+	b=gWvgPp16nx7kH/Rp7/Ll9/BQ7ZDEeToEj3HxBDYe24ePswwgNj0Gd2HHIr8S0PeCTI
+	ftzpqfaSoAaNY6XPP6mPF1ZaGKdUjm7fG1RKRvJtrTzGG3nbAx01sgK2eo4+gBNK/bfe
+	EEubZ/rt3Tcm4KH0I/COBZo0tdK+gsmGLhOKfrIVPTBGGO9BL49en2r0OKHLDEFey9+7
+	PLBhfQQ2ZVuDBr9OmqQLwwxrTvCsproyfNrUstxIccdRKBupLyqJZ6fizVJb9nYgpaDp
+	F+06klDbhEFzndGMdWiWcO53hfHCdWtCfljcgct2leKD3HxgWzZc9qeZAGv8xcrQ6eCq
+	muvQ==
+X-Gm-Message-State: AMCzsaV93GzduZYcho1ctZ9EaMqGWND17c1w9BdTGA1Nuv+g0U76F9/U
+	1yLb0C25Duwu4ntNDE9wX7Q=
+X-Google-Smtp-Source: AOwi7QDOeEnHWtuD8GRCF2DPpGJFnPXBJXrG2lzMsc6X58VKL4m+YO15nJxRxeS0XlUESnoWVIK5bg==
+X-Received: by 10.200.22.231 with SMTP id y36mr5546807qtk.31.1507334096461;
+	Fri, 06 Oct 2017 16:54:56 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.54.48
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.54.53
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:54:52 -0700 (PDT)
+	Fri, 06 Oct 2017 16:54:55 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Jeff Cody <jcody@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, Jan Beulich <jbeulich@suse.com>
-Cc: qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	"Daniel P. Berrange" <berrange@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>, qemu-block@nongnu.org,
-	Paul Durrant <paul.durrant@citrix.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Fri,  6 Oct 2017 20:50:08 -0300
-Message-Id: <20171006235023.11952-74-f4bug@amsat.org>
+	qemu trival <qemu-trivial@nongnu.org>
+Date: Fri,  6 Oct 2017 20:50:09 -0300
+Message-Id: <20171006235023.11952-75-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -69,9 +67,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH 73/88] hw/block/xen_disk: avoid use of
- g_new0()
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH 74/88] balloon: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,36 +81,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:54:59 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:55:00 -0000
 
-From: Jan Beulich <jbeulich@suse.com>
-
-Prefer g_new() / g_new0() to be farther backwards compatible with older
-glib versions. As there's no point in zeroing the allocation here (the
-loop right afterwards fully initializes the memory), use the former.
-
-Signed-off-by: Jan Beulich <jbeulich@suse.com>
-Reviewed-by: Paul Durrant <paul.durrant@citrix.com>
-Acked-by: Anthony Perard <anthony.perard@citrix.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: rebase & subject tweak]
 ---
- hw/block/xen_disk.c | 2 +-
+ balloon.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/block/xen_disk.c b/hw/block/xen_disk.c
-index 536e2ee735..6d2fd4d284 100644
---- a/hw/block/xen_disk.c
-+++ b/hw/block/xen_disk.c
-@@ -1232,7 +1232,7 @@ static int blk_connect(struct XenDevice *xendev)
-         return -1;
+diff --git a/balloon.c b/balloon.c
+index 1d720fff81..d77918fd37 100644
+--- a/balloon.c
++++ b/balloon.c
+@@ -97,7 +97,7 @@ BalloonInfo *qmp_query_balloon(Error **errp)
+         return NULL;
      }
  
--    domids = g_new0(uint32_t, blkdev->nr_ring_ref);
-+    domids = g_new(uint32_t, blkdev->nr_ring_ref);
-     for (i = 0; i < blkdev->nr_ring_ref; i++) {
-         domids[i] = blkdev->xendev.dom;
-     }
+-    info = g_malloc0(sizeof(*info));
++    info = g_new0(BalloonInfo, 1);
+     balloon_stat_fn(balloon_opaque, info);
+     return info;
+ }
 -- 
 2.14.2
 
