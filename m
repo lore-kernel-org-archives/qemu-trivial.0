@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cPs-0008NM-Sx
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:52:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41654)
+	id 1e0cPu-0008PF-EB
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:52:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41660)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPr-0008Lc-9s
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:28 -0400
+	id 1e0cPr-0008Lp-Fy
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPq-0005sM-Ec
+	id 1e0cPq-0005sD-4F
 	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:27 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:37981)
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:33089)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPn-0005r1-TO; Fri, 06 Oct 2017 19:52:23 -0400
-Received: by mail-qk0-x243.google.com with SMTP id 17so5918263qkq.5;
-	Fri, 06 Oct 2017 16:52:23 -0700 (PDT)
+	id 1e0cPk-0005pY-Sh; Fri, 06 Oct 2017 19:52:20 -0400
+Received: by mail-qk0-x242.google.com with SMTP id z12so9699423qkb.0;
+	Fri, 06 Oct 2017 16:52:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=3qUa7/KSXIzXArKF8GKr+VoGLv9fgCRzdz+hLRUy2J0=;
-	b=G7YGO/weNeg7ZTSg/WqjgBzr623UvTLuWn/7s7Jzg4pLP115u9xn6zGPFwTpo40aKA
-	z/EdE3BjK4dCnFxbPqNTr9d1IA+Et21qJqtKIuzYKNRaGM0JbXbn6100bbC/kFBFvDjG
-	LEYCvmcFtVCOCmeXEYmKX36KMxem/vYsm80IznaYHs9DUacyEpA/f+3b3BXbk9eb+XQn
-	WCwjvqvjN+CN4aAOGcLbCo7rlFVGjh9al9x67o0YFZZ9IQjOfwguDh2lHy7RfZPeakcC
-	8io2LMxFJvFdpHTQ0dVWtCbucZ9Rl0nLthCxpAamnHR7C2VppwXCSXnCp+RFAOpF/87r
-	zSCQ==
+	bh=SratUe3w9q0+0lXX2FxlOcFtdtVwgrAbdCNWZ/OQwXY=;
+	b=Wgptvq13msx2ZRmfbNFSI/q+8tYflPRB9oeSdIQ1ngKne7dGT125cC0AQqVLnr9ypx
+	+SINvlUGz6d1ta4Os4yHN/JaW2n0B8OuLVOkQJy6xAR8WWBTwAcni6S3PS0xz6hkkORm
+	4+MqIFimClrDsRRGNaG0esaYifTTUpIUm/Ws6x1wTdXu9zZzRWEECKhCfwa56C73u/yt
+	5dIi+J6c6rEWv2FMDe1EV3quSG8E1nCzfohI0JP6ML8xPEpW5R8SjXu8HcsRz4tVJD5D
+	vnfhZqrO7V3Azj+y6G3HTwJ9fM30Ba5xmzVgBQB0xMY4xrA/pe918KqlEX40BOr373+P
+	JcqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=3qUa7/KSXIzXArKF8GKr+VoGLv9fgCRzdz+hLRUy2J0=;
-	b=H1M5GSyiWpduM+XPptpDyY7buW8IlkrZ9H807yWmWYWttDwiwzlEBhrl8/XSq2uToi
-	nw8CwmG32Zq/0fP5g6pXClmW0l8soMYCGQ26VUCvAFf8T6A40j5MbdPo6GHNfOqj3sfy
-	TvQN+r81IbkVrdN1BP0YgZ7NZ2GP9jKxKQ8ODSTh0OjI474mpAE6VQISnhRseaVMTiX0
-	WF0p6BNNTN0PqDqPO37ZD8fqXEoCX/uDg1nWEb9+53nFiZpoMqqcaq1FdqJS32NAWGVt
-	jpJ2nitH249iUJHVRx6dDKANkOs7kjV27lhPj4hcc8GGm57NwzxQDHnZEMYavwM0bbYQ
-	8agw==
-X-Gm-Message-State: AMCzsaWWWI2c6ELcsRIsUf9vRiRTUtJji3dO1mhEyG18FZ1sGjVNlqZz
-	x4DXT4Tyl2vTx+YOhp4LfpQ=
-X-Google-Smtp-Source: AOwi7QDNinc70URGUgowrWXzmqgGbRHjDQYKuN31LGEKiCXR+9/h2MwptUliVTuRQCJN3hVOV2Ek3w==
-X-Received: by 10.55.100.67 with SMTP id y64mr731336qkb.252.1507333943328;
-	Fri, 06 Oct 2017 16:52:23 -0700 (PDT)
+	bh=SratUe3w9q0+0lXX2FxlOcFtdtVwgrAbdCNWZ/OQwXY=;
+	b=pmC/t9cDDWQgA3PsOiJRQpRvXnFO5YWzmlSd2VmIJGyGbN7ZmihiPewKyUHKV6knVD
+	+ohkUFdrDQXHoJnxVjJ+W17YDrBd42KSxsy9MH+zBEvNGM5ac/Kacm1J1hBZZS6A0kic
+	jpiVt705tcVSZYDKDALxLcnLDhH52IkIsXhD7xnC5Z6w9xPKQw4MDdTLnUbxeHdC0tR1
+	jDMyOXRzh4B7i73PcaX6mi8QoCmq6Jz7C1O5TLQp9QbtjdFkHU4E8VmPhawOR6qvzZEV
+	R9N9Yiz00vbpCawsd/6YxI2gmKxy9uvA/TeBsYGVPFxmRlLRTxrURlBLo7M7QBKKb9ut
+	dIjw==
+X-Gm-Message-State: AMCzsaW+1WHkS/F7thQTpqJ4gN/ZUZFngZAxxHI9k4KS7njpuzaog16/
+	Z4Xgt6xHmglTgUzEtzIvrfXV4Tp7gvU=
+X-Google-Smtp-Source: AOwi7QC1JHBjbc1iz149lfWfIP7JrqkBTwOCJ24WmBo0BKsC2SoizzEjjxe9TaprOf2D8yaJP/006A==
+X-Received: by 10.55.16.87 with SMTP id a84mr766136qkh.170.1507333940301;
+	Fri, 06 Oct 2017 16:52:20 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.20
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.17
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:52:22 -0700 (PDT)
+	Fri, 06 Oct 2017 16:52:19 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
 	qemu trival <qemu-trivial@nongnu.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Fri,  6 Oct 2017 20:49:27 -0300
-Message-Id: <20171006235023.11952-33-f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:49:26 -0300
+Message-Id: <20171006235023.11952-32-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -65,9 +66,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH 32/88] QObject: use g_new() family of
- functions
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH 31/88] QMP: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,127 +79,197 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 23:52:28 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:52:29 -0000
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-[PMD: added qbool.c, qdict.c, qlist.c, qstring.c and tests/]
+[PMD: more changes]
 ---
- qobject/json-parser.c               | 2 +-
- qobject/qbool.c                     | 2 +-
- qobject/qdict.c                     | 4 ++--
- qobject/qlist.c                     | 4 ++--
- qobject/qstring.c                   | 2 +-
- tests/test-qobject-output-visitor.c | 4 ++--
- 6 files changed, 9 insertions(+), 9 deletions(-)
+ monitor.c                 | 14 +++++++-------
+ qmp.c                     | 14 +++++++-------
+ tests/test-qmp-commands.c | 14 +++++++-------
+ 3 files changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/qobject/json-parser.c b/qobject/json-parser.c
-index 724ca240e4..37dda9bc3f 100644
---- a/qobject/json-parser.c
-+++ b/qobject/json-parser.c
-@@ -247,7 +247,7 @@ static JSONParserContext *parser_context_new(GQueue *tokens)
-         return NULL;
+diff --git a/monitor.c b/monitor.c
+index fe0d1bdbb4..ea6a485f11 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -906,7 +906,7 @@ static void query_commands_cb(QmpCommand *cmd, void *opaque)
+         return;
      }
  
--    ctxt = g_malloc0(sizeof(JSONParserContext));
-+    ctxt = g_new0(JSONParserContext, 1);
-     ctxt->buf = tokens;
+-    info = g_malloc0(sizeof(*info));
++    info = g_new0(CommandInfoList, 1);
+     info->value = g_malloc0(sizeof(*info->value));
+     info->value->name = g_strdup(cmd->name);
+     info->next = *list;
+@@ -1799,7 +1799,7 @@ static void hmp_wavcapture(Monitor *mon, const QDict *qdict)
+     int nchannels = qdict_get_try_int(qdict, "nchannels", -1);
+     CaptureState *s;
  
-     return ctxt;
-diff --git a/qobject/qbool.c b/qobject/qbool.c
-index 0606bbd2a3..5ad7f6d98f 100644
---- a/qobject/qbool.c
-+++ b/qobject/qbool.c
-@@ -25,7 +25,7 @@ QBool *qbool_from_bool(bool value)
+-    s = g_malloc0 (sizeof (*s));
++    s = g_new0(CaptureState, 1);
+ 
+     freq = has_freq ? freq : 44100;
+     bits = has_bits ? bits : 16;
+@@ -1947,7 +1947,7 @@ void qmp_getfd(const char *fdname, Error **errp)
+         return;
+     }
+ 
+-    monfd = g_malloc0(sizeof(mon_fd_t));
++    monfd = g_new0(mon_fd_t, 1);
+     monfd->name = g_strdup(fdname);
+     monfd->fd = fd;
+ 
+@@ -2110,7 +2110,7 @@ FdsetInfoList *qmp_query_fdsets(Error **errp)
+         QLIST_FOREACH(mon_fdset_fd, &mon_fdset->fds, next) {
+             FdsetFdInfoList *fdsetfd_info;
+ 
+-            fdsetfd_info = g_malloc0(sizeof(*fdsetfd_info));
++            fdsetfd_info = g_new0(FdsetFdInfoList, 1);
+             fdsetfd_info->value = g_malloc0(sizeof(*fdsetfd_info->value));
+             fdsetfd_info->value->fd = mon_fdset_fd->fd;
+             if (mon_fdset_fd->opaque) {
+@@ -2199,7 +2199,7 @@ AddfdInfo *monitor_fdset_add_fd(int fd, bool has_fdset_id, int64_t fdset_id,
+         }
+     }
+ 
+-    mon_fdset_fd = g_malloc0(sizeof(*mon_fdset_fd));
++    mon_fdset_fd = g_new0(MonFdsetFd, 1);
+     mon_fdset_fd->fd = fd;
+     mon_fdset_fd->removed = false;
+     if (has_opaque) {
+@@ -2207,7 +2207,7 @@ AddfdInfo *monitor_fdset_add_fd(int fd, bool has_fdset_id, int64_t fdset_id,
+     }
+     QLIST_INSERT_HEAD(&mon_fdset->fds, mon_fdset_fd, next);
+ 
+-    fdinfo = g_malloc0(sizeof(*fdinfo));
++    fdinfo = g_new0(AddfdInfo, 1);
+     fdinfo->fdset_id = mon_fdset->id;
+     fdinfo->fd = mon_fdset_fd->fd;
+ 
+@@ -4102,7 +4102,7 @@ void monitor_init(Chardev *chr, int flags)
+         is_first_init = 0;
+     }
+ 
+-    mon = g_malloc(sizeof(*mon));
++    mon = g_new(Monitor, 1);
+     monitor_data_init(mon);
+ 
+     qemu_chr_fe_init(&mon->chr, chr, &error_abort);
+diff --git a/qmp.c b/qmp.c
+index e8c303116a..e965020e37 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -232,7 +232,7 @@ ObjectPropertyInfoList *qmp_qom_list(const char *path, Error **errp)
+     while ((prop = object_property_iter_next(&iter))) {
+         ObjectPropertyInfoList *entry = g_malloc0(sizeof(*entry));
+ 
+-        entry->value = g_malloc0(sizeof(ObjectPropertyInfo));
++        entry->value = g_new0(ObjectPropertyInfo, 1);
+         entry->next = props;
+         props = entry;
+ 
+@@ -432,7 +432,7 @@ static void qom_list_types_tramp(ObjectClass *klass, void *data)
+     ObjectTypeInfo *info;
+     ObjectClass *parent = object_class_get_parent(klass);
+ 
+-    info = g_malloc0(sizeof(*info));
++    info = g_new0(ObjectTypeInfo, 1);
+     info->name = g_strdup(object_class_get_name(klass));
+     info->has_abstract = info->abstract = object_class_is_abstract(klass);
+     if (parent) {
+@@ -440,7 +440,7 @@ static void qom_list_types_tramp(ObjectClass *klass, void *data)
+         info->parent = g_strdup(object_class_get_name(parent));
+     }
+ 
+-    e = g_malloc0(sizeof(*e));
++    e = g_new0(ObjectTypeInfoList, 1);
+     e->value = info;
+     e->next = *pret;
+     *pret = e;
+@@ -490,7 +490,7 @@ static DevicePropertyInfo *make_device_property_info(ObjectClass *klass,
+                 return NULL;           /* no way to set it, don't show */
+             }
+ 
+-            info = g_malloc0(sizeof(*info));
++            info = g_new0(DevicePropertyInfo, 1);
+             info->name = g_strdup(prop->name);
+             info->type = default_type ? g_strdup(default_type)
+                                       : g_strdup(prop->info->name);
+@@ -502,7 +502,7 @@ static DevicePropertyInfo *make_device_property_info(ObjectClass *klass,
+     } while (klass != object_class_by_name(TYPE_DEVICE));
+ 
+     /* Not a qdev property, use the default type */
+-    info = g_malloc0(sizeof(*info));
++    info = g_new0(DevicePropertyInfo, 1);
+     info->name = g_strdup(name);
+     info->type = g_strdup(default_type);
+     info->has_description = !!description;
+@@ -568,7 +568,7 @@ DevicePropertyInfoList *qmp_device_list_properties(const char *typename,
+             continue;
+         }
+ 
+-        entry = g_malloc0(sizeof(*entry));
++        entry = g_new0(DevicePropertyInfoList, 1);
+         entry->value = info;
+         entry->next = prop_list;
+         prop_list = entry;
+@@ -712,7 +712,7 @@ ACPIOSTInfoList *qmp_query_acpi_ospm_status(Error **errp)
+ 
+ MemoryInfo *qmp_query_memory_size_summary(Error **errp)
  {
-     QBool *qb;
+-    MemoryInfo *mem_info = g_malloc0(sizeof(MemoryInfo));
++    MemoryInfo *mem_info = g_new0(MemoryInfo, 1);
  
--    qb = g_malloc(sizeof(*qb));
-+    qb = g_new(QBool, 1);
-     qobject_init(QOBJECT(qb), QTYPE_QBOOL);
-     qb->value = value;
+     mem_info->base_memory = ram_size;
  
-diff --git a/qobject/qdict.c b/qobject/qdict.c
-index 576018e531..857e71c7a1 100644
---- a/qobject/qdict.c
-+++ b/qobject/qdict.c
-@@ -30,7 +30,7 @@ QDict *qdict_new(void)
+diff --git a/tests/test-qmp-commands.c b/tests/test-qmp-commands.c
+index 904c89d4d4..e715c45a23 100644
+--- a/tests/test-qmp-commands.c
++++ b/tests/test-qmp-commands.c
+@@ -28,8 +28,8 @@ UserDefTwo *qmp_user_def_cmd2(UserDefOne *ud1a,
+                               Error **errp)
  {
-     QDict *qdict;
+     UserDefTwo *ret;
+-    UserDefOne *ud1c = g_malloc0(sizeof(UserDefOne));
+-    UserDefOne *ud1d = g_malloc0(sizeof(UserDefOne));
++    UserDefOne *ud1c = g_new0(UserDefOne, 1);
++    UserDefOne *ud1d = g_new0(UserDefOne, 1);
  
--    qdict = g_malloc0(sizeof(*qdict));
-+    qdict = g_new0(QDict, 1);
-     qobject_init(QOBJECT(qdict), QTYPE_QDICT);
+     ud1c->string = strdup(ud1a->string);
+     ud1c->integer = ud1a->integer;
+@@ -209,23 +209,23 @@ static void test_dealloc_types(void)
+     UserDefOne *ud1test, *ud1a, *ud1b;
+     UserDefOneList *ud1list;
  
-     return qdict;
-@@ -70,7 +70,7 @@ static QDictEntry *alloc_entry(const char *key, QObject *value)
- {
-     QDictEntry *entry;
+-    ud1test = g_malloc0(sizeof(UserDefOne));
++    ud1test = g_new0(UserDefOne, 1);
+     ud1test->integer = 42;
+     ud1test->string = g_strdup("hi there 42");
  
--    entry = g_malloc0(sizeof(*entry));
-+    entry = g_new0(QDictEntry, 1);
-     entry->key = g_strdup(key);
-     entry->value = value;
+     qapi_free_UserDefOne(ud1test);
  
-diff --git a/qobject/qlist.c b/qobject/qlist.c
-index 86b60cb88c..8afc594d0d 100644
---- a/qobject/qlist.c
-+++ b/qobject/qlist.c
-@@ -25,7 +25,7 @@ QList *qlist_new(void)
- {
-     QList *qlist;
+-    ud1a = g_malloc0(sizeof(UserDefOne));
++    ud1a = g_new0(UserDefOne, 1);
+     ud1a->integer = 43;
+     ud1a->string = g_strdup("hi there 43");
  
--    qlist = g_malloc(sizeof(*qlist));
-+    qlist = g_new(QList, 1);
-     qobject_init(QOBJECT(qlist), QTYPE_QLIST);
-     QTAILQ_INIT(&qlist->head);
+-    ud1b = g_malloc0(sizeof(UserDefOne));
++    ud1b = g_new0(UserDefOne, 1);
+     ud1b->integer = 44;
+     ud1b->string = g_strdup("hi there 44");
  
-@@ -58,7 +58,7 @@ void qlist_append_obj(QList *qlist, QObject *value)
- {
-     QListEntry *entry;
+-    ud1list = g_malloc0(sizeof(UserDefOneList));
++    ud1list = g_new0(UserDefOneList, 1);
+     ud1list->value = ud1a;
+-    ud1list->next = g_malloc0(sizeof(UserDefOneList));
++    ud1list->next = g_new0(UserDefOneList, 1);
+     ud1list->next->value = ud1b;
  
--    entry = g_malloc(sizeof(*entry));
-+    entry = g_new(QListEntry, 1);
-     entry->value = value;
- 
-     QTAILQ_INSERT_TAIL(&qlist->head, entry, next);
-diff --git a/qobject/qstring.c b/qobject/qstring.c
-index 5da7b5f37c..806c0306a2 100644
---- a/qobject/qstring.c
-+++ b/qobject/qstring.c
-@@ -42,7 +42,7 @@ QString *qstring_from_substr(const char *str, int start, int end)
- {
-     QString *qstring;
- 
--    qstring = g_malloc(sizeof(*qstring));
-+    qstring = g_new(QString, 1);
-     qobject_init(QOBJECT(qstring), QTYPE_QSTRING);
- 
-     qstring->length = end - start + 1;
-diff --git a/tests/test-qobject-output-visitor.c b/tests/test-qobject-output-visitor.c
-index d375100a52..d0a66a5dca 100644
---- a/tests/test-qobject-output-visitor.c
-+++ b/tests/test-qobject-output-visitor.c
-@@ -182,7 +182,7 @@ static void test_visitor_out_struct_nested(TestOutputVisitorData *data,
-     const char *strings[] = { "forty two", "forty three", "forty four",
-                               "forty five" };
- 
--    ud2 = g_malloc0(sizeof(*ud2));
-+    ud2 = g_new0(UserDefTwo, 1);
-     ud2->string0 = g_strdup(strings[0]);
- 
-     ud2->dict1 = g_malloc0(sizeof(*ud2->dict1));
-@@ -372,7 +372,7 @@ static void test_visitor_out_union_flat(TestOutputVisitorData *data,
- {
-     QDict *qdict;
- 
--    UserDefFlatUnion *tmp = g_malloc0(sizeof(UserDefFlatUnion));
-+    UserDefFlatUnion *tmp = g_new0(UserDefFlatUnion, 1);
-     tmp->enum1 = ENUM_ONE_VALUE1;
-     tmp->string = g_strdup("str");
-     tmp->integer = 41;
+     qapi_free_UserDefOneList(ud1list);
 -- 
 2.14.2
 
