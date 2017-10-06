@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0cQ3-0008Vb-82
+	id 1e0cQ3-0008WH-PG
 	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:52:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41732)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41745)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQ1-0008TG-4H
+	id 1e0cQ1-0008Th-Jk
 	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cQ0-0005wK-7c
+	id 1e0cQ0-0005x2-RO
 	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:52:37 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:51468)
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:52762)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0cPu-0005uE-0E; Fri, 06 Oct 2017 19:52:30 -0400
-Received: by mail-qt0-x243.google.com with SMTP id q4so34330598qtq.8;
-	Fri, 06 Oct 2017 16:52:29 -0700 (PDT)
+	id 1e0cPx-0005vC-2i; Fri, 06 Oct 2017 19:52:33 -0400
+Received: by mail-qt0-x242.google.com with SMTP id o52so34324241qtc.9;
+	Fri, 06 Oct 2017 16:52:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=sEAV8iV9XD7HgeDf6osItPPW50MKgd+mg69ytT74yhA=;
-	b=e9TzfqdutZffBA7z95ynulVum53IqpYN0d4pseKvcT3v8+PKONTxko5iuCl39jWn7d
-	I7xRww4ZN3bRjt95bWlwqSkHPkCjXg2TbWEC9X+n5XYHsheS3bmRRxg64lm6aY/MBRdE
-	vrNCnKqMbcYK4N2Rl0CW6KIBWd6vXKgQQPBABHhsRP52gqdtD5sQbNeFrEEc4+JCz0gm
-	+BIVlfnL+7ZzPHDaGXFqsoDxW+koroBscj/3p7hXDSbnnCS461L75kCrsYWekt+aCJx4
-	Hd2NI/k4sQnsp/lHdysHbcGMm2drsctQx1irQBRluLLhnLvvD2v4HxjwkzP8XrlHBTUD
-	OFOQ==
+	bh=bw7665vpljTXEkTpy+0QhVuCAEzaJ+jXXbYxz5ZxUMo=;
+	b=fskHiP1WnzTe2UAIltLkhg+glt3D63bhriP0K31lJ0dn9FNud7+LMIXaoTE/bo2VC2
+	JQEv1/z7zZDu9kA0EuIxNd1czJSLEScaDqKNLdeWf2YJc2YNIQKAAWHWlezYmqAM7sd/
+	cU9cp8fGMWlmnz6MDH2y1vZI48MfjbiCNmFJS9r0Nplvy9xkmijLCEQabPmc3grbc/Jx
+	Zv971bKfs1pCeYozWgD3AQpwE6Vv9R9MVCDFnW3wCfOscbWuwTqpmB+YPwRYAnbY9dPi
+	HiVH5eybFdpPjupU7aPtPbNQNfqjEjzRxVOMjtEHGyx9clg8IB33oddUSLn8YTjaOr53
+	3pLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=sEAV8iV9XD7HgeDf6osItPPW50MKgd+mg69ytT74yhA=;
-	b=V/jNApSI/o9eQVHx161X0nETRZBItj12prGxuO+5NCYr1lpdZH+e2d9AJsC7D7M/NW
-	6Pa/tTNJZKpKqHkC+AoHe3PtjY5gzHiwEXdoIl9ekr6HPhvMfb+QozVWRwIBtD929bGJ
-	XPEEJxVV4oPDzudfXVprRCyf2nnlTAdwYsEHOHJ/dpXs5LWWfmk6LH8aAkZipb3pOmKa
-	jS6r7YePWIoIKuzQRJAP/tFE7eWs4Q0GYyEqZNwymID8oTg7YhfbmAKIiyjeLlHfhIn0
-	VNb4AAfNKptBrs1777ZdnPOxX+25Q3IZcTyIHnDj/cU25XT91iUCMfqC3QobMbKB5i+y
-	lijw==
-X-Gm-Message-State: AMCzsaWUD5rANpFz+rzi7sj8Cff2TsizNeTMPxgbSRTk5MB2w8blWoG8
-	W+6GSLO+KHrkHwaUOJ6rWaY=
-X-Google-Smtp-Source: AOwi7QAdVI+FdZoSwM1LMcEj0hp415IRnlakh35/uqNOA1zdEyZtovYUgve3sU1qGl6tP8ugb0rq8w==
-X-Received: by 10.237.36.125 with SMTP id s58mr5558081qtc.24.1507333949465;
-	Fri, 06 Oct 2017 16:52:29 -0700 (PDT)
+	bh=bw7665vpljTXEkTpy+0QhVuCAEzaJ+jXXbYxz5ZxUMo=;
+	b=RaVaFmoXhLOCmmIpSzdhjuMfTrruzMx1XCoLxXeRe4m+ND77xCVMqkOkoWz14GC9yh
+	w6QIDQOpWgisOHKde4qD/Akat//VyIgmtQX0IgjfX6zYOyL6aUtzCZ2BUScM7aCzu3rc
+	Rqna8VnP835/lTx7P76XFghxkLl2ZBMF77XE7jBfPwi09btFXc9bsNk7cw3016TaNJbK
+	kq4Zbl8aVPgN43+CUzDjdxNftKK4Mcjls8PqArlIjo3btG0r4LonNpbmlK24P0ZfecQ1
+	cfeh79Aighpig8lqmnIbIzQuKgT0xtsOaCmFIOLppYIwGUecoK6ixDv7aYfmyn8gyxIU
+	XTHQ==
+X-Gm-Message-State: AMCzsaVS2FXu4swI7Nz1ClGT0qUkjU3e4+OcPOqnAr2fmcKXZ4HDLQDl
+	Be1F4Ma7TJ1mMTOH3dZsFuo=
+X-Google-Smtp-Source: AOwi7QAUHsFFevavnLr1++yXnx/Xrq/uiVb/ZPMSdRZBsLzjbe8We5HCWzO3D2YnHfAzgVfOWXyBZQ==
+X-Received: by 10.200.44.167 with SMTP id 36mr5580503qtw.285.1507333952537;
+	Fri, 06 Oct 2017 16:52:32 -0700 (PDT)
 Received: from yoga.lan ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.26
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.52.29
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 16:52:28 -0700 (PDT)
+	Fri, 06 Oct 2017 16:52:32 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu trival <qemu-trivial@nongnu.org>
-Date: Fri,  6 Oct 2017 20:49:29 -0300
-Message-Id: <20171006235023.11952-35-f4bug@amsat.org>
+Date: Fri,  6 Oct 2017 20:49:30 -0300
+Message-Id: <20171006235023.11952-36-f4bug@amsat.org>
 X-Mailer: git-send-email 2.14.2
 In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
@@ -66,8 +66,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH 34/88] qapi: use g_new() family of functions
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 35/88] Record/replay: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,94 +82,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 06 Oct 2017 23:52:38 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- qapi/opts-visitor.c           | 2 +-
- qapi/qapi-clone-visitor.c     | 2 +-
- qapi/qapi-dealloc-visitor.c   | 2 +-
- qapi/qobject-output-visitor.c | 2 +-
- qapi/string-input-visitor.c   | 2 +-
- qapi/string-output-visitor.c  | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
-index 324b197495..34ac49f3c2 100644
---- a/qapi/opts-visitor.c
-+++ b/qapi/opts-visitor.c
-@@ -539,7 +539,7 @@ opts_visitor_new(const QemuOpts *opts)
-     OptsVisitor *ov;
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ replay/replay-char.c   |  4 ++--
+ replay/replay-events.c | 10 +++++-----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/replay/replay-char.c b/replay/replay-char.c
+index cbf7c04a9f..b8ed5c51d1 100755
+--- a/replay/replay-char.c
++++ b/replay/replay-char.c
+@@ -51,7 +51,7 @@ void replay_register_char_driver(Chardev *chr)
  
-     assert(opts);
--    ov = g_malloc0(sizeof *ov);
-+    ov = g_new0(OptsVisitor, 1);
- 
-     ov->visitor.type = VISITOR_INPUT;
- 
-diff --git a/qapi/qapi-clone-visitor.c b/qapi/qapi-clone-visitor.c
-index d8b62792bc..3d216e5906 100644
---- a/qapi/qapi-clone-visitor.c
-+++ b/qapi/qapi-clone-visitor.c
-@@ -145,7 +145,7 @@ static Visitor *qapi_clone_visitor_new(void)
+ void replay_chr_be_write(Chardev *s, uint8_t *buf, int len)
  {
-     QapiCloneVisitor *v;
+-    CharEvent *event = g_malloc0(sizeof(CharEvent));
++    CharEvent *event = g_new0(CharEvent, 1);
  
--    v = g_malloc0(sizeof(*v));
-+    v = g_new0(QapiCloneVisitor, 1);
+     event->id = find_char_driver(s);
+     if (event->id < 0) {
+@@ -86,7 +86,7 @@ void replay_event_char_read_save(void *opaque)
  
-     v->visitor.type = VISITOR_CLONE;
-     v->visitor.start_struct = qapi_clone_start_struct;
-diff --git a/qapi/qapi-dealloc-visitor.c b/qapi/qapi-dealloc-visitor.c
-index ed70a0158b..ad0d0eb7e4 100644
---- a/qapi/qapi-dealloc-visitor.c
-+++ b/qapi/qapi-dealloc-visitor.c
-@@ -120,7 +120,7 @@ Visitor *qapi_dealloc_visitor_new(void)
+ void *replay_event_char_read_load(void)
  {
-     QapiDeallocVisitor *v;
+-    CharEvent *event = g_malloc0(sizeof(CharEvent));
++    CharEvent *event = g_new0(CharEvent, 1);
  
--    v = g_malloc0(sizeof(*v));
-+    v = g_new0(QapiDeallocVisitor, 1);
+     event->id = replay_get_byte();
+     replay_get_array_alloc(&event->buf, &event->len);
+diff --git a/replay/replay-events.c b/replay/replay-events.c
+index 94a6dcccfc..c72dcaa708 100644
+--- a/replay/replay-events.c
++++ b/replay/replay-events.c
+@@ -128,7 +128,7 @@ void replay_add_event(ReplayAsyncEventKind event_kind,
+         return;
+     }
  
-     v->visitor.type = VISITOR_DEALLOC;
-     v->visitor.start_struct = qapi_dealloc_start_struct;
-diff --git a/qapi/qobject-output-visitor.c b/qapi/qobject-output-visitor.c
-index d325163e55..7228986c0c 100644
---- a/qapi/qobject-output-visitor.c
-+++ b/qapi/qobject-output-visitor.c
-@@ -229,7 +229,7 @@ Visitor *qobject_output_visitor_new(QObject **result)
- {
-     QObjectOutputVisitor *v;
- 
--    v = g_malloc0(sizeof(*v));
-+    v = g_new0(QObjectOutputVisitor, 1);
- 
-     v->visitor.type = VISITOR_OUTPUT;
-     v->visitor.start_struct = qobject_output_start_struct;
-diff --git a/qapi/string-input-visitor.c b/qapi/string-input-visitor.c
-index 67a0a4a58b..3a2fe58478 100644
---- a/qapi/string-input-visitor.c
-+++ b/qapi/string-input-visitor.c
-@@ -356,7 +356,7 @@ Visitor *string_input_visitor_new(const char *str)
-     StringInputVisitor *v;
- 
-     assert(str);
--    v = g_malloc0(sizeof(*v));
-+    v = g_new0(StringInputVisitor, 1);
- 
-     v->visitor.type = VISITOR_INPUT;
-     v->visitor.type_int64 = parse_type_int64;
-diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
-index 7ab64468d9..a7bbbae109 100644
---- a/qapi/string-output-visitor.c
-+++ b/qapi/string-output-visitor.c
-@@ -341,7 +341,7 @@ Visitor *string_output_visitor_new(bool human, char **result)
- {
-     StringOutputVisitor *v;
- 
--    v = g_malloc0(sizeof(*v));
-+    v = g_new0(StringOutputVisitor, 1);
- 
-     v->string = g_string_new(NULL);
-     v->human = human;
+-    Event *event = g_malloc0(sizeof(Event));
++    Event *event = g_new0(Event, 1);
+     event->event_kind = event_kind;
+     event->opaque = opaque;
+     event->opaque2 = opaque2;
+@@ -239,17 +239,17 @@ static Event *replay_read_event(int checkpoint)
+         }
+         break;
+     case REPLAY_ASYNC_EVENT_INPUT:
+-        event = g_malloc0(sizeof(Event));
++        event = g_new0(Event, 1);
+         event->event_kind = read_event_kind;
+         event->opaque = replay_read_input_event();
+         return event;
+     case REPLAY_ASYNC_EVENT_INPUT_SYNC:
+-        event = g_malloc0(sizeof(Event));
++        event = g_new0(Event, 1);
+         event->event_kind = read_event_kind;
+         event->opaque = 0;
+         return event;
+     case REPLAY_ASYNC_EVENT_CHAR_READ:
+-        event = g_malloc0(sizeof(Event));
++        event = g_new0(Event, 1);
+         event->event_kind = read_event_kind;
+         event->opaque = replay_event_char_read_load();
+         return event;
+@@ -259,7 +259,7 @@ static Event *replay_read_event(int checkpoint)
+         }
+         break;
+     case REPLAY_ASYNC_EVENT_NET:
+-        event = g_malloc0(sizeof(Event));
++        event = g_new0(Event, 1);
+         event->event_kind = read_event_kind;
+         event->opaque = replay_event_net_load();
+         return event;
 -- 
 2.14.2
 
