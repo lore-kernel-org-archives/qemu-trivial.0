@@ -1,59 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0aHt-0001Ue-LO
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 17:36:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38515)
+	id 1e0cOD-0006lJ-Mo
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 19:50:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40383)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e0aHr-0001UR-4W
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:04 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e0cO9-0006j0-4M
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:50:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <malbarbo@gmail.com>) id 1e0aHp-0005oR-O1
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:03 -0400
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:55240)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e0cO7-0004fJ-UM
+	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 19:50:41 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:35166)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <malbarbo@gmail.com>) id 1e0aHp-0005my-B5
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 17:36:01 -0400
-Received: by mail-lf0-x243.google.com with SMTP id d10so19414303lfg.11
-	for <qemu-trivial@nongnu.org>; Fri, 06 Oct 2017 14:36:00 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e0cO4-0004e2-TY; Fri, 06 Oct 2017 19:50:36 -0400
+Received: by mail-qk0-x244.google.com with SMTP id w63so11295169qkd.2;
+	Fri, 06 Oct 2017 16:50:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=PZfBz8U10p4q3e8ffyXMFKna7XxAnfi0NCVM0pGcmpg=;
-	b=b0JmuSCQyTGVPVYSJc5qpkZCWQiixvzQek98470eyb8p1cE432bcjyzT8XBl7SNTPX
-	VS7cov5ird95wy57+HGlAWtls+blO2qRQC1a7Zv9vCHWvt1usJ2g4CWza2pkFhTTg+6F
-	Tatf3XnwdnozubPRY59+Mc8ncVOFHdHHy2rq1uNO2IOD6LpfIiywPPwZ1FN79E91FZS5
-	AoEyTVk33wJKQ/kPP9dcsasatXmVygXv/Oj896UX3j62LzeCEEck01bKt1yUAoSAS33G
-	Q6LFga1z3io64tbOQPlRmkerUmIGmbqWUweVnnnR+ecW7N2EJHHmH+i5sG9Ye3pXQ7UI
-	hENQ==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=i/vhrUBaARR/Mhy6khnw9WsMSCJbNAoI8AgQVF/EVpk=;
+	b=i1TsrS65/hsywiFJv8cmSrW6St/IdNrApRlX+e24OWbAeoARGp0jpXw8p1MqRTrOA1
+	3Bksb+dm+Bk2ne6CKXUk5B16jUVFfmeBhokTPpzmOMtk45ofXdRDZhF7E3cGt/x1kFqg
+	NENUgLAb0bBnkNhwfuiblc4HD37Q4dpiDrII5X7KbAxLYdRxzg4FeMJ+MmX/i2zZZorl
+	EOLmx9pasMV43ZV0sy9Vsul//P+8Awi9q1qxoKvh9MlwaXafyMOiF+qG+8bfiG/B4Sbs
+	zOogz8H3jxPWLe2ToeQooLn3FpAWraLhItYm7PI+BLBHYNLo6BSR+A8FGNS8Xh7IkG5Z
+	NjbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=PZfBz8U10p4q3e8ffyXMFKna7XxAnfi0NCVM0pGcmpg=;
-	b=Nv8iIzoD/zMnMzXOXf0b1Mpvxq8LS8Rl3B9aqtcDaLSkyppx4PjAdpRKJxxM0bHdpD
-	h2zqmSFJAqugGOQeIYFLvYAY7fVZ/3HXmRQE/lojltiOP5Db2TMao8R5sDGKm6REHVnG
-	j8zAJYv8dAqmq1rRPbFrL4Y1IfixN7SfhdzZhSiV7mBAtFLhwGfBztXsxKirFt8ZKb+K
-	ioJ4E04w8brb+oiZOP2bbPthWXawr738vLzuNBF6Pt8YXc9x6ThFqsCk6FU8rclzgV3s
-	dyPQV4LR9U8ZmEkEMnvpe5XOMXk8c3GMteXKD8PfBsbvBzdx7zX5GcDBQrNbNivSXKHz
-	dVdA==
-X-Gm-Message-State: AMCzsaW0ft2skm2grExj3dCVUop44nbIlxIetvFFD+6G4uelOmS1CgOd
-	8V1BO2dA8CMmLR6oF3DhaxfH3yJPX9lOIrt+wb8=
-X-Google-Smtp-Source: AOwi7QBGs1XOgEehcpb7v80qwd/INiv0BsH8cqqAPAFtb3P4h9bnNJag9pCQNpjjrRpSxsGRBKeTpTd+2CKDDrJw5C0=
-X-Received: by 10.25.125.67 with SMTP id y64mr870457lfc.44.1507325759563; Fri,
-	06 Oct 2017 14:35:59 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=i/vhrUBaARR/Mhy6khnw9WsMSCJbNAoI8AgQVF/EVpk=;
+	b=fqExgyuaUpmr+Ui2D9i9WTmAvULvho4OwOoU3V9CJlWHQJ93yYiDQefOOTT1EXhLIy
+	LxJcaUi1tOFX0j9NmqifOpr3/mJSJv3oQVTFwNEExLcLwnLGqNwkm6tQO6etl2vFRlep
+	MPKufCOKxrYC0/5WCVhHWvVo+L5kxRKvrthmwI7h/lv2jY3mWh7nUUw5HjPTMZj70/C6
+	wZvD2bThzLHVJ/H+lKNzFxuiEgHc+c2q8pidbhQqDkyXHugwM/EG3r77DoXsXy2TE1l/
+	AEX2x9YSOI3QcNpOS4enA0Dz5SdxYnI5dLgCslad3EPONdkOnlaIV13MGESAnMvp0Hw8
+	MwIw==
+X-Gm-Message-State: AMCzsaW2MYP1BULindZar0DC8gSIaSqM8eHXXs/eCRbUdNEh+LQ1M2KY
+	VbaEvdCmPtbF7WJVexUCknQ=
+X-Google-Smtp-Source: AOwi7QB/ZPKbCsUTS1NtP15Gj5C5IP6H6QG5buOlbgB/+EGSRHDZfytfgwJ8o1r7UNWkg009GhcMrg==
+X-Received: by 10.55.26.138 with SMTP id l10mr727791qkh.71.1507333836317;
+	Fri, 06 Oct 2017 16:50:36 -0700 (PDT)
+Received: from yoga.lan ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id g1sm1705226qta.95.2017.10.06.16.50.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 06 Oct 2017 16:50:35 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu trival <qemu-trivial@nongnu.org>
+Date: Fri,  6 Oct 2017 20:48:56 -0300
+Message-Id: <20171006235023.11952-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.14.2
+In-Reply-To: <20171006235023.11952-1-f4bug@amsat.org>
+References: <20171006235023.11952-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Received: by 10.25.40.193 with HTTP; Fri, 6 Oct 2017 14:35:58 -0700 (PDT)
-In-Reply-To: <498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
-References: <20171005135530.837-1-malbarbo@gmail.com>
-	<498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
-From: Marco A L Barbosa <malbarbo@gmail.com>
-Date: Fri, 6 Oct 2017 18:35:58 -0300
-Message-ID: <CAHpsRN-qFgp-QzjX-QdDUYgUA-DbWinp=hsk-V8L4WxXFDti8A@mail.gmail.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="001a114a575c75ad68055ae7a0d2"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add some random ioctls
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH 01/88] cocci: script to use g_new() & friends
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,186 +81,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2017 21:36:04 -0000
+X-List-Received-Date: Fri, 06 Oct 2017 23:50:42 -0000
 
---001a114a575c75ad68055ae7a0d2
-Content-Type: text/plain; charset="UTF-8"
+Imported from Markus Armbruster commit b45c03f
 
-Thanks again for the advice.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Signed-off-by: Markus Armbruster <armbru@redhat.com>?
 
-This and the other patch should be resubmitted following those instructions
-or it is not necessary?
+ scripts/coccinelle/g_new.cocci | 101 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 101 insertions(+)
+ create mode 100644 scripts/coccinelle/g_new.cocci
 
-On Fri, Oct 6, 2017 at 4:32 AM, Laurent Vivier <lvivier@redhat.com> wrote:
-
-> On 05/10/2017 15:55, Marco A L Barbosa wrote:
-> > Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
-> > ---
-> >  linux-user/ioctls.h       | 5 +++++
-> >  linux-user/syscall.c      | 1 +
-> >  linux-user/syscall_defs.h | 7 +++++++
-> >  3 files changed, 13 insertions(+)
-> >
-> > diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
-> > index e6997ff230..35cad6f944 100644
-> > --- a/linux-user/ioctls.h
-> > +++ b/linux-user/ioctls.h
-> > @@ -173,6 +173,11 @@
-> >    IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timeval)))
-> >    IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_timespec)))
-> >
-> > +  IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))
-> > +  IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))
-> > +  IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)
-> > +  IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)
-> > +
-> >    IOCTL(CDROMPAUSE, 0, TYPE_NULL)
-> >    IOCTL(CDROMSTART, 0, TYPE_NULL)
-> >    IOCTL(CDROMSTOP, 0, TYPE_NULL)
-> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> > index 9b6364a266..d4c21a557c 100644
-> > --- a/linux-user/syscall.c
-> > +++ b/linux-user/syscall.c
-> > @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_base,
-> >  #include <linux/icmp.h>
-> >  #include <linux/icmpv6.h>
-> >  #include <linux/errqueue.h>
-> > +#include <linux/random.h>
-> >  #include "qemu-common.h"
-> >  #ifdef CONFIG_TIMERFD
-> >  #include <sys/timerfd.h>
-> > diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-> > index 40c5027e93..b3d55e35ac 100644
-> > --- a/linux-user/syscall_defs.h
-> > +++ b/linux-user/syscall_defs.h
-> > @@ -1060,6 +1060,13 @@ struct target_pollfd {
-> >
-> >  #define TARGET_SIOCGIWNAME     0x8B01          /* get name == wireless
-> protocol */
-> >
-> > +/* From <linux/random.h> */
-> > +
-> > +#define TARGET_RNDGETENTCNT    TARGET_IOR('R', 0x00, int)
-> > +#define TARGET_RNDADDTOENTCNT  TARGET_IOW('R', 0x01, int)
-> > +#define TARGET_RNDZAPENTCNT    TARGET_IO('R', 0x04)
-> > +#define TARGET_RNDCLEARPOOL    TARGET_IO('R', 0x06)
-> > +
-> >  /* From <linux/fs.h> */
-> >
-> >  #define TARGET_BLKROSET   TARGET_IO(0x12,93) /* set device read-only (0
-> = read-write) */
-> >
->
-> Reviewed-by: Laurent Vivier <lvivier@redhat.com>
->
-> Please, add a tag version and include history when you resend a series.
->
-> Read https://wiki.qemu.org/Contribute/SubmitAPatch
->
-> Thanks,
-> Laurent
->
-
-
-
+diff --git a/scripts/coccinelle/g_new.cocci b/scripts/coccinelle/g_new.cocci
+new file mode 100644
+index 0000000000..1e57685a6b
+--- /dev/null
++++ b/scripts/coccinelle/g_new.cocci
+@@ -0,0 +1,101 @@
++/* transform g_new*() alloc with size arguments of the form sizeof(T) [* N]
++ *
++ *   g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
++ *   for two reasons.  One, it catches multiplication overflowing size_t.
++ *   two, it returns T * rather than void *, which lets the compiler catch
++ *   more type errors.
++ *
++ *    Copyright: (C) 2017 Markus Armbruster <armbru@redhat.com>. GPLv2+.
++ *    (Imported from b45c03f585ea9bb1af76c73e82195418c294919d)
++ *
++ * See http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg00908.html:
++ *
++ *   g_new() advantages (from glib doc):
++ *   - the returned pointer is cast to a pointer to the given type.
++ *   - care is taken to avoid overflow when calculating the size of the
++ *   allocated block.
++ *
++ *   p = g_malloc(sizeof(*p)) is idiomatic, and not obviously inferior to
++ *   p = g_new(T, 1), where T is the type of *p.
++ *   But once you add multiplication, g_new() adds something useful: overflow
++ *   protection.  Conversion to g_new() might make sense then.
++ */
++
++@@
++type T;
++@@
++-g_malloc(sizeof(T))
+++g_new(T, 1)
++@@
++type T;
++@@
++-g_try_malloc(sizeof(T))
+++g_try_new(T, 1)
++@@
++type T;
++@@
++-g_malloc0(sizeof(T))
+++g_new0(T, 1)
++@@
++type T;
++@@
++-g_try_malloc0(sizeof(T))
+++g_try_new0(T, 1)
++
++@@
++type T;
++expression n;
++@@
++-g_malloc(sizeof(T) * (n))
+++g_new(T, n)
++@@
++type T;
++expression n;
++@@
++-g_try_malloc(sizeof(T) * (n))
+++g_try_new(T, n)
++@@
++type T;
++expression n;
++@@
++-g_malloc0(sizeof(T) * (n))
+++g_new0(T, n)
++@@
++type T;
++expression n;
++@@
++-g_try_malloc0(sizeof(T) * (n))
+++g_try_new0(T, n)
++
++@@
++type T;
++expression p, n;
++@@
++-g_realloc(p, sizeof(T) * (n))
+++g_renew(T, p, n)
++@@
++type T;
++expression p, n;
++@@
++-g_try_realloc(p, sizeof(T) * (n))
+++g_try_renew(T, p, n)
++
++// drop superfluous cast
++@@
++type T;
++expression n;
++@@
++-(T *)g_new(T, n)
+++g_new(T, n)
++@@
++type T;
++expression n;
++@@
++-(T *)g_new0(T, n)
+++g_new0(T, n)
++@@
++type T;
++expression p, n;
++@@
++-(T *)g_renew(T, p, n)
+++g_renew(T, p, n)
 -- 
-Marco A L Barbosa
-http://malbarbo.pro.br
---
+2.14.2
 
---001a114a575c75ad68055ae7a0d2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thanks again for the advice.<br><br>This and the other pat=
-ch should be resubmitted following those instructions or it is not necessar=
-y?<br></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote">On Fr=
-i, Oct 6, 2017 at 4:32 AM, Laurent Vivier <span dir=3D"ltr">&lt;<a href=3D"=
-mailto:lvivier@redhat.com" target=3D"_blank">lvivier@redhat.com</a>&gt;</sp=
-an> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
-border-left:1px #ccc solid;padding-left:1ex"><div class=3D"HOEnZb"><div cla=
-ss=3D"h5">On 05/10/2017 15:55, Marco A L Barbosa wrote:<br>
-&gt; Signed-off-by: Marco A L Barbosa &lt;<a href=3D"mailto:malbarbo@gmail.=
-com">malbarbo@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 linux-user/ioctls.h=C2=A0 =C2=A0 =C2=A0 =C2=A0| 5 +++++<br>
-&gt;=C2=A0 linux-user/syscall.c=C2=A0 =C2=A0 =C2=A0 | 1 +<br>
-&gt;=C2=A0 linux-user/syscall_defs.h | 7 +++++++<br>
-&gt;=C2=A0 3 files changed, 13 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h<br>
-&gt; index e6997ff230..35cad6f944 100644<br>
-&gt; --- a/linux-user/ioctls.h<br>
-&gt; +++ b/linux-user/ioctls.h<br>
-&gt; @@ -173,6 +173,11 @@<br>
-&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMP, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>tim=
-eval)))<br>
-&gt;=C2=A0 =C2=A0 IOCTL(SIOCGSTAMPNS, IOC_R, MK_PTR(MK_STRUCT(STRUCT_<wbr>t=
-imespec)))<br>
-&gt;<br>
-&gt; +=C2=A0 IOCTL(RNDGETENTCNT, IOC_R, MK_PTR(TYPE_INT))<br>
-&gt; +=C2=A0 IOCTL(RNDADDTOENTCNT, IOC_W, MK_PTR(TYPE_INT))<br>
-&gt; +=C2=A0 IOCTL(RNDZAPENTCNT, 0, TYPE_NULL)<br>
-&gt; +=C2=A0 IOCTL(RNDCLEARPOOL, 0, TYPE_NULL)<br>
-&gt; +<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMPAUSE, 0, TYPE_NULL)<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTART, 0, TYPE_NULL)<br>
-&gt;=C2=A0 =C2=A0 IOCTL(CDROMSTOP, 0, TYPE_NULL)<br>
-&gt; diff --git a/linux-user/syscall.c b/linux-user/syscall.c<br>
-&gt; index 9b6364a266..d4c21a557c 100644<br>
-&gt; --- a/linux-user/syscall.c<br>
-&gt; +++ b/linux-user/syscall.c<br>
-&gt; @@ -59,6 +59,7 @@ int __clone2(int (*fn)(void *), void *child_stack_ba=
-se,<br>
-&gt;=C2=A0 #include &lt;linux/icmp.h&gt;<br>
-&gt;=C2=A0 #include &lt;linux/icmpv6.h&gt;<br>
-&gt;=C2=A0 #include &lt;linux/errqueue.h&gt;<br>
-&gt; +#include &lt;linux/random.h&gt;<br>
-&gt;=C2=A0 #include &quot;qemu-common.h&quot;<br>
-&gt;=C2=A0 #ifdef CONFIG_TIMERFD<br>
-&gt;=C2=A0 #include &lt;sys/timerfd.h&gt;<br>
-&gt; diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h<br>
-&gt; index 40c5027e93..b3d55e35ac 100644<br>
-&gt; --- a/linux-user/syscall_defs.h<br>
-&gt; +++ b/linux-user/syscall_defs.h<br>
-&gt; @@ -1060,6 +1060,13 @@ struct target_pollfd {<br>
-&gt;<br>
-&gt;=C2=A0 #define TARGET_SIOCGIWNAME=C2=A0 =C2=A0 =C2=A00x8B01=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 /* get name =3D=3D wireless protocol */<br>
-&gt;<br>
-&gt; +/* From &lt;linux/random.h&gt; */<br>
-&gt; +<br>
-&gt; +#define TARGET_RNDGETENTCNT=C2=A0 =C2=A0 TARGET_IOR(&#39;R&#39;, 0x00=
-, int)<br>
-&gt; +#define TARGET_RNDADDTOENTCNT=C2=A0 TARGET_IOW(&#39;R&#39;, 0x01, int=
-)<br>
-&gt; +#define TARGET_RNDZAPENTCNT=C2=A0 =C2=A0 TARGET_IO(&#39;R&#39;, 0x04)=
-<br>
-&gt; +#define TARGET_RNDCLEARPOOL=C2=A0 =C2=A0 TARGET_IO(&#39;R&#39;, 0x06)=
-<br>
-&gt; +<br>
-&gt;=C2=A0 /* From &lt;linux/fs.h&gt; */<br>
-&gt;<br>
-&gt;=C2=A0 #define TARGET_BLKROSET=C2=A0 =C2=A0TARGET_IO(0x12,93) /* set de=
-vice read-only (0 =3D read-write) */<br>
-&gt;<br>
-<br>
-</div></div>Reviewed-by: Laurent Vivier &lt;<a href=3D"mailto:lvivier@redha=
-t.com">lvivier@redhat.com</a>&gt;<br>
-<br>
-Please, add a tag version and include history when you resend a series.<br>
-<br>
-Read <a href=3D"https://wiki.qemu.org/Contribute/SubmitAPatch" rel=3D"noref=
-errer" target=3D"_blank">https://wiki.qemu.org/<wbr>Contribute/SubmitAPatch=
-</a><br>
-<br>
-Thanks,<br>
-Laurent<br>
-</blockquote></div><br><br clear=3D"all"><br>-- <br><div class=3D"gmail_sig=
-nature" data-smartmail=3D"gmail_signature">Marco A L Barbosa<br><a href=3D"=
-http://malbarbo.pro.br" target=3D"_blank">http://malbarbo.pro.br</a><br>--<=
-/div>
-</div>
-
---001a114a575c75ad68055ae7a0d2--
 
