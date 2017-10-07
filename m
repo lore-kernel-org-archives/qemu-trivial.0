@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0hSM-0002Q6-2Q
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2017 01:15:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42742)
+	id 1e0hSN-0002Ru-U6
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2017 01:15:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1e0hSJ-0002NF-9h
-	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:20 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1e0hSK-0002OM-6v
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1e0hSI-00007i-2A
-	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:19 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:48539)
+	(envelope-from <dgibson@ozlabs.org>) id 1e0hSI-000087-R9
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:20 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:48661)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1e0hSB-0008Io-2A; Sat, 07 Oct 2017 01:15:11 -0400
+	id 1e0hSB-0008In-1x; Sat, 07 Oct 2017 01:15:11 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3y8F7T6QpBz9t7B; Sat,  7 Oct 2017 16:15:01 +1100 (AEDT)
+	id 3y8F7T5rsWz9t3t; Sat,  7 Oct 2017 16:15:01 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1507353301;
-	bh=IZRngHP5pBfXlwGfJbedqcEd9K8EeNEYKbDLZDO1E30=;
+	bh=dfxI3lYDnCZNZQywWSZXNcHLRyFeJJHiEkEoI2Paw0A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jK20P8fU6LfrDb6EnBeOMBZdk7v8j4kZmKhG6wHWHWPT1NcZD7Y5PjOUskZ679YFg
-	Ye++qHxNJ9ca7IQxgcz9UlpHMcICtS32hTIqnePI+4687Ai/CFFwIRaYSkjRbcKyp9
-	YOfME6mIM5d/XRSxOX6dI540kIb1xeVpCA/sDDwg=
-Date: Sat, 7 Oct 2017 15:40:37 +1100
+	b=WPRb7VrSqHQK7MUvMLdZDhAirV4Lhay6g4dKpu6U06ATZN9roVeKlmiVIRXoDucWY
+	VZ8v+g91YslF68KL69DI0HKx6P7aWk1FNIQyfk4ps+PdmkecxYFrvVpm9aEzsT1cuR
+	Qg2CM+s2mo5ZnACtS6T9vPFPqUBqA/UStZ6EtIVY=
+Date: Sat, 7 Oct 2017 15:39:35 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
@@ -30,19 +30,19 @@ Cc: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
 	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
 	qemu trival <qemu-trivial@nongnu.org>, qemu-ppc@nongnu.org
-Message-ID: <20171007044037.GF10050@umbus.fritz.box>
+Message-ID: <20171007043934.GE10050@umbus.fritz.box>
 References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-58-f4bug@amsat.org>
+	<20171006235023.11952-57-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="TeJTyD9hb8KJN2Jy"
+	protocol="application/pgp-signature"; boundary="vmttodhTwj0NAgWp"
 Content-Disposition: inline
-In-Reply-To: <20171006235023.11952-58-f4bug@amsat.org>
+In-Reply-To: <20171006235023.11952-57-f4bug@amsat.org>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [PATCH 57/88] ppc: use g_new() family of
+Subject: Re: [Qemu-trivial] [PATCH 56/88] PowerPC: use g_new() family of
  functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -55,105 +55,151 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Oct 2017 05:15:20 -0000
+X-List-Received-Date: Sat, 07 Oct 2017 05:15:22 -0000
 
 
---TeJTyD9hb8KJN2Jy
+--vmttodhTwj0NAgWp
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Oct 06, 2017 at 08:49:52PM -0300, Philippe Mathieu-Daud=E9 wrote:
+On Fri, Oct 06, 2017 at 08:49:51PM -0300, Philippe Mathieu-Daud=E9 wrote:
 > From: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
 >=20
 > Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> [PMD: replaced g_new0() -> g_new() in mac_newworld.c, added
-> virtex_ml507]
+> [PMD: one more change in target/ppc/translate_init.c, added
+> target/ppc/kvm.c]
 
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/intc/heathrow_pic.c | 2 +-
->  hw/ppc/mac_newworld.c  | 5 ++---
->  hw/ppc/mac_oldworld.c  | 2 +-
->  hw/ppc/virtex_ml507.c  | 2 +-
->  4 files changed, 5 insertions(+), 6 deletions(-)
+>  hw/ppc/ppc.c                |  8 ++++----
+>  hw/ppc/ppc_booke.c          |  4 ++--
+>  target/ppc/kvm.c            |  2 +-
+>  target/ppc/translate_init.c | 14 +++++++-------
+>  4 files changed, 14 insertions(+), 14 deletions(-)
 >=20
-> diff --git a/hw/intc/heathrow_pic.c b/hw/intc/heathrow_pic.c
-> index 171f5ed814..90c1e6a4b1 100644
-> --- a/hw/intc/heathrow_pic.c
-> +++ b/hw/intc/heathrow_pic.c
-> @@ -201,7 +201,7 @@ qemu_irq *heathrow_pic_init(MemoryRegion **pmem,
+> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+> index 05da316e0b..647d70fc13 100644
+> --- a/hw/ppc/ppc.c
+> +++ b/hw/ppc/ppc.c
+> @@ -965,7 +965,7 @@ clk_setup_cb cpu_ppc_tb_init (CPUPPCState *env, uint3=
+2_t freq)
+>      PowerPCCPU *cpu =3D ppc_env_get_cpu(env);
+>      ppc_tb_t *tb_env;
+> =20
+> -    tb_env =3D g_malloc0(sizeof(ppc_tb_t));
+> +    tb_env =3D g_new0(ppc_tb_t, 1);
+>      env->tb_env =3D tb_env;
+>      tb_env->flags =3D PPC_DECR_UNDERFLOW_TRIGGERED;
+>      if (env->insns_flags & PPC_SEGMENT_64B) {
+> @@ -1224,10 +1224,10 @@ clk_setup_cb ppc_40x_timers_init (CPUPPCState *en=
+v, uint32_t freq,
+>      ppc_tb_t *tb_env;
+>      ppc40x_timer_t *ppc40x_timer;
+> =20
+> -    tb_env =3D g_malloc0(sizeof(ppc_tb_t));
+> +    tb_env =3D g_new0(ppc_tb_t, 1);
+>      env->tb_env =3D tb_env;
+>      tb_env->flags =3D PPC_DECR_UNDERFLOW_TRIGGERED;
+> -    ppc40x_timer =3D g_malloc0(sizeof(ppc40x_timer_t));
+> +    ppc40x_timer =3D g_new0(ppc40x_timer_t, 1);
+>      tb_env->tb_freq =3D freq;
+>      tb_env->decr_freq =3D freq;
+>      tb_env->opaque =3D ppc40x_timer;
+> @@ -1332,7 +1332,7 @@ int ppc_dcr_init (CPUPPCState *env, int (*read_erro=
+r)(int dcrn),
 >  {
->      HeathrowPICS *s;
+>      ppc_dcr_t *dcr_env;
 > =20
-> -    s =3D g_malloc0(sizeof(HeathrowPICS));
-> +    s =3D g_new0(HeathrowPICS, 1);
->      /* only 1 CPU */
->      s->irqs =3D irqs[0];
->      memory_region_init_io(&s->mem, NULL, &heathrow_pic_ops, s,
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index 6d0ace20ca..59cded95b8 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -295,7 +295,7 @@ static void ppc_core99_init(MachineState *machine)
->      memory_region_init_io(unin2_memory, NULL, &unin_ops, token, "unin", =
-0x1000);
->      memory_region_add_subregion(get_system_memory(), 0xf3000000, unin2_m=
-emory);
+> -    dcr_env =3D g_malloc0(sizeof(ppc_dcr_t));
+> +    dcr_env =3D g_new0(ppc_dcr_t, 1);
+>      dcr_env->read_error =3D read_error;
+>      dcr_env->write_error =3D write_error;
+>      env->dcr_env =3D dcr_env;
+> diff --git a/hw/ppc/ppc_booke.c b/hw/ppc/ppc_booke.c
+> index 23bcf1b138..dafc6aa3fc 100644
+> --- a/hw/ppc/ppc_booke.c
+> +++ b/hw/ppc/ppc_booke.c
+> @@ -339,8 +339,8 @@ void ppc_booke_timers_init(PowerPCCPU *cpu, uint32_t =
+freq, uint32_t flags)
+>      booke_timer_t *booke_timer;
+>      int ret =3D 0;
 > =20
-> -    openpic_irqs =3D g_malloc0(smp_cpus * sizeof(qemu_irq *));
-> +    openpic_irqs =3D g_new0(qemu_irq *, smp_cpus);
->      openpic_irqs[0] =3D
->          g_malloc0(smp_cpus * sizeof(qemu_irq) * OPENPIC_OUTPUT_NB);
->      for (i =3D 0; i < smp_cpus; i++) {
-> @@ -339,8 +339,6 @@ static void ppc_core99_init(MachineState *machine)
+> -    tb_env      =3D g_malloc0(sizeof(ppc_tb_t));
+> -    booke_timer =3D g_malloc0(sizeof(booke_timer_t));
+> +    tb_env      =3D g_new0(ppc_tb_t, 1);
+> +    booke_timer =3D g_new0(booke_timer_t, 1);
+> =20
+>      cpu->env.tb_env =3D tb_env;
+>      tb_env->flags =3D flags | PPC_TIMER_BOOKE | PPC_DECR_ZERO_TRIGGERED;
+> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+> index 171d3d8040..d8565fd4a3 100644
+> --- a/target/ppc/kvm.c
+> +++ b/target/ppc/kvm.c
+> @@ -364,7 +364,7 @@ struct ppc_radix_page_info *kvm_get_radix_page_info(v=
+oid)
+>      if (kvm_vm_ioctl(s, KVM_PPC_GET_RMMU_INFO, &rmmu_info)) {
+>          return NULL;
+>      }
+> -    radix_page_info =3D g_malloc0(sizeof(*radix_page_info));
+> +    radix_page_info =3D g_new0(struct ppc_radix_page_info, 1);
+>      radix_page_info->count =3D 0;
+>      for (i =3D 0; i < PPC_PAGE_SIZES_MAX_SZ; i++) {
+>          if (rmmu_info.ap_encodings[i]) {
+> diff --git a/target/ppc/translate_init.c b/target/ppc/translate_init.c
+> index c6399a3a0d..850ff038ca 100644
+> --- a/target/ppc/translate_init.c
+> +++ b/target/ppc/translate_init.c
+> @@ -9341,13 +9341,13 @@ static void init_ppc_proc(PowerPCCPU *cpu)
+>              nb_tlb *=3D 2;
+>          switch (env->tlb_type) {
+>          case TLB_6XX:
+> -            env->tlb.tlb6 =3D g_malloc0(nb_tlb * sizeof(ppc6xx_tlb_t));
+> +            env->tlb.tlb6 =3D g_new0(ppc6xx_tlb_t, nb_tlb);
+>              break;
+>          case TLB_EMB:
+> -            env->tlb.tlbe =3D g_malloc0(nb_tlb * sizeof(ppcemb_tlb_t));
+> +            env->tlb.tlbe =3D g_new0(ppcemb_tlb_t, nb_tlb);
+>              break;
+>          case TLB_MAS:
+> -            env->tlb.tlbm =3D g_malloc0(nb_tlb * sizeof(ppcmas_tlb_t));
+> +            env->tlb.tlbm =3D g_new0(ppcmas_tlb_t, nb_tlb);
+>              break;
 >          }
+>          /* Pre-compute some useful values */
+> @@ -10442,11 +10442,11 @@ static void ppc_cpu_defs_entry(gpointer data, g=
+pointer user_data)
 >      }
 > =20
-> -    pic =3D g_new0(qemu_irq, 64);
-> -
->      dev =3D qdev_create(NULL, TYPE_OPENPIC);
->      qdev_prop_set_uint32(dev, "model", OPENPIC_MODEL_KEYLARGO);
->      qdev_init_nofail(dev);
-> @@ -353,6 +351,7 @@ static void ppc_core99_init(MachineState *machine)
+>      typename =3D object_class_get_name(oc);
+> -    info =3D g_malloc0(sizeof(*info));
+> +    info =3D g_new0(CpuDefinitionInfo, 1);
+>      info->name =3D g_strndup(typename,
+>                             strlen(typename) - strlen(POWERPC_CPU_TYPE_SU=
+FFIX));
+> =20
+> -    entry =3D g_malloc0(sizeof(*entry));
+> +    entry =3D g_new0(CpuDefinitionInfoList, 1);
+>      entry->value =3D info;
+>      entry->next =3D *first;
+>      *first =3D entry;
+> @@ -10473,11 +10473,11 @@ CpuDefinitionInfoList *arch_query_cpu_definitio=
+ns(Error **errp)
+>              continue;
 >          }
->      }
 > =20
-> +    pic =3D g_new(qemu_irq, 64);
->      for (i =3D 0; i < 64; i++) {
->          pic[i] =3D qdev_get_gpio_in(dev, i);
->      }
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index bc7c8b7bd7..50ad9c56cb 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -232,7 +232,7 @@ static void ppc_heathrow_init(MachineState *machine)
->      memory_region_add_subregion(sysmem, 0xfe000000, isa);
+> -        info =3D g_malloc0(sizeof(*info));
+> +        info =3D g_new0(CpuDefinitionInfo, 1);
+>          info->name =3D g_strdup(alias->alias);
+>          info->q_typename =3D g_strdup(object_class_get_name(oc));
 > =20
->      /* XXX: we register only 1 output pin for heathrow PIC */
-> -    heathrow_irqs =3D g_malloc0(smp_cpus * sizeof(qemu_irq *));
-> +    heathrow_irqs =3D g_new0(qemu_irq *, smp_cpus);
->      heathrow_irqs[0] =3D
->          g_malloc0(smp_cpus * sizeof(qemu_irq) * 1);
->      /* Connect the heathrow PIC outputs to the 6xx bus */
-> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-> index ed9b406fd3..ed6e054611 100644
-> --- a/hw/ppc/virtex_ml507.c
-> +++ b/hw/ppc/virtex_ml507.c
-> @@ -104,7 +104,7 @@ static PowerPCCPU *ppc440_init_xilinx(ram_addr_t *ram=
-_size,
->      ppc_dcr_init(env, NULL, NULL);
-> =20
->      /* interrupt controller */
-> -    irqs =3D g_malloc0(sizeof(qemu_irq) * PPCUIC_OUTPUT_NB);
-> +    irqs =3D g_new0(qemu_irq, PPCUIC_OUTPUT_NB);
->      irqs[PPCUIC_OUTPUT_INT] =3D ((qemu_irq *)env->irq_inputs)[PPC40x_INP=
-UT_INT];
->      irqs[PPCUIC_OUTPUT_CINT] =3D ((qemu_irq *)env->irq_inputs)[PPC40x_IN=
-PUT_CINT];
->      ppcuic_init(env, irqs, 0x0C0, 0, 1);
+> -        entry =3D g_malloc0(sizeof(*entry));
+> +        entry =3D g_new0(CpuDefinitionInfoList, 1);
+>          entry->value =3D info;
+>          entry->next =3D cpu_list;
+>          cpu_list =3D entry;
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -161,25 +207,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---TeJTyD9hb8KJN2Jy
+--vmttodhTwj0NAgWp
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnYWsUACgkQbDjKyiDZ
-s5IciRAAoYze7hsdm1B2PNRBC+tZsP3+u6RAi2L/B9UwuOGBZ2lHtvor5JYIxhcO
-6P8T8NiygQMnEBiLFDRe2+ZV+8C78MyjcqREj4OqbukLrjGuwDwq/yYOV1ft6e+B
-lAv7A8LbERHWEEWzXS9CMJmoGQeTkNm2zQmregYCjNbks7tjFJLfTD23vk3C5/G4
-215DB5pXpnqVhdnnHm5c1W0Ls8A/gHD7MlgDkmjKVBKWIw3WoG3Q6XOoTx2YICvZ
-TxHuTVpB8zKiL/GkFb4efFCZQVAhKPW5nrZNfhX+Gs196Q472UlRAITsa5ofU55R
-TM4Tn3+hMdykEjkS+yStKK1Sg36oQek9XmrH76EZxNifOuDObmPjw9uj04WMykJX
-Wkbf9gEY5F1ngR1/M+tScZ1yTEB1iGbii5K3ydLxd5uvHuqPI/ke8OjoUV6J4tGD
-QtBqwPUTmq8Q3BYYCpu3bXjL7u0k06Zo+bB+dRtl/0FHWh56sBu6rTD5Sm0jffSI
-f7XwaXvxmfp2iOrUzABWf4/xam/5tEfU7zF27/ybO85sfVLzAGGu3ISiCzU+bFw9
-eBqIXuKxezAeKh57yGI16fNqJ7/+TcocupVChM74CzVzOPsG9cIwegAsuAdCRvt+
-nhx4iaxsbz1FHwdGFnGpZwt+xxTjWj3RQVmeniAtpj4MIMznR94=
-=p/H8
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnYWoYACgkQbDjKyiDZ
+s5IwOQ//Ry2mV+Zysjvm9moddET2YEEleN+XXnrIyd0EwoAEtUxjXE81OpWTiMUr
+HtFuDTk2L14WHl+idbzgcfuL3w7/bHUSJ1EeipPkYQO7t4xosThIa2xpgs2jTdfH
+yM1HiKevP0jM3M8hEl7Gj3tRRtsvphJL5MWNMyLj9Dj8LnZii7bWqrNvZ03qSvGk
+FFzROn8h2D+DmGoyVkpgFNfhZYOlHf2V3T3WCNdnuVBFX7sYHW8WVrLMIzINudkE
+dUcqWIf/Eoi53rgIY4cCre9i1QdAqEF2bzjWeuX5vjdHrcHTyvKmHvonBGYX7rZu
+DvT857jbGY3zEDDd2jPZ15sn20SB9u8NaiM4IxWzKCq1ZrlBRV6R3hnIeJ0mfmyN
+Hpz/as4J/8xYU5zQ28RSSZ+F2qcS4cmatRhxtZ+UIJX1FG87uG8jxV8b2t2k54vO
+ZLh4OIko1vTF+O+4lCC+gcJVzUweSnfAAn33mG2hyeslDoCNdzvfi/+mGgDFkeRK
+oIqlGEOk9qIqYlHfs/hwbDG8tPXYtfnhavtpHoCO+VIN/zyE4NPCEKDtgu1ocV69
+i5g5jwPhGKEnPhRYw65lSLPNBlfaFbK2QMEwzKJjwjnrEoUPa88upI13YTkqIMP2
+F7l6M0g8LDSI5QwTmPG+eVMR7k5hZAnD3GgHWQIZOy5II4kMj3A=
+=swfk
 -----END PGP SIGNATURE-----
 
---TeJTyD9hb8KJN2Jy--
+--vmttodhTwj0NAgWp--
 
