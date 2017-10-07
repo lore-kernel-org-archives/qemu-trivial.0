@@ -1,62 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0i1J-0002pt-Fm
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2017 01:51:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47687)
+	id 1e0itV-0001dy-8D
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2017 02:47:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1e0i1G-0002o8-MT
-	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:51:27 -0400
+	(envelope-from <sw@weilnetz.de>) id 1e0itT-0001dL-FJ
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 02:47:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1e0i1F-00066T-Ud
-	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:51:26 -0400
-Received: from mail-wm0-f65.google.com ([74.125.82.65]:35316)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1e0i1B-00064I-J4; Sat, 07 Oct 2017 01:51:21 -0400
-Received: by mail-wm0-f65.google.com with SMTP id b189so13260713wmd.2;
-	Fri, 06 Oct 2017 22:51:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=+hf1hMuUAy0TCCsz5aqK6M4/3MLog3djH2ajCCa55Hs=;
-	b=IbQF9CtseNmaJ5HQn0xDgDAKAH3sTd+17CG3FzRVHP8EChcm26wiXcX/mEQBnu+/W1
-	hg3V+6BHs82icKRuJ1NXy/Ebuons+pR2YBXyoKuCFxa9U5Xo6zKQotgDKfjGVd0NYfZV
-	fbaNcNOlF+ghs3ylZWqguSNiRGFZ3W0UjICBxNa/LlCXW/XNJtxLbPynQsCp3hYy0hNg
-	rc/RFGuczCpbXz4mCt2k1MFigHY4Wm21wV1MDPaZl63NEkzvrShpAWj1wFTU6GnbeFqC
-	Oo7XCchIW0vakGKUVaMW0/vqqBg0HipbVsfw4xkKzwuu7yTcVP1Itzlndfm+tEBci8F+
-	DT4A==
-X-Gm-Message-State: AMCzsaXltOHknsaqlaTyPaudqF4I3sfM6Yjxc9yWBZnJnU3ALRxfW8Cm
-	EB8Z3GBJyNa8mwE/Jfw3tCI=
-X-Google-Smtp-Source: AOwi7QAF9S1bEiDr8emEXb1GY3oJ41L/Iwtau3cslrVW4XQaqcv0fnMblIU8FT6epjZ6J0BlG2isvA==
-X-Received: by 10.80.173.37 with SMTP id y34mr5857296edc.193.1507355480170;
-	Fri, 06 Oct 2017 22:51:20 -0700 (PDT)
-Received: from thl530.SpeedportEntry2090126200030
-	(p200300C11BDBC401867AA81B31A1B577.dip0.t-ipconnect.de.
-	[2003:c1:1bdb:c401:867a:a81b:31a1:b577])
-	by smtp.gmail.com with ESMTPSA id f9sm3776657ede.38.2017.10.06.22.51.17
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 06 Oct 2017 22:51:18 -0700 (PDT)
-Date: Sat, 7 Oct 2017 07:51:08 +0200
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@gmail.com>, Markus
-	Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	=?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>, qemu trival
-	<qemu-trivial@nongnu.org>
-Message-ID: <20171007075108.00c82288@thl530.SpeedportEntry2090126200030>
-In-Reply-To: <20171006235023.11952-24-f4bug@amsat.org>
+	(envelope-from <sw@weilnetz.de>) id 1e0itS-0007Mx-Kk
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 02:47:27 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:55418
+	helo=v2201612906741603.powersrv.de)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1e0itO-0007KR-0o; Sat, 07 Oct 2017 02:47:22 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id AB9C4DA813F;
+	Sat,  7 Oct 2017 08:47:19 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id DLD29xIW4tAh; Sat,  7 Oct 2017 08:47:17 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (pD9E01A83.dip0.t-ipconnect.de
+	[217.224.26.131])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 7EADCDA39E8; 
+	Sat,  7 Oct 2017 08:47:17 +0200 (CEST)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu trival <qemu-trivial@nongnu.org>
 References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-24-f4bug@amsat.org>
-X-Mailer: Claws Mail 3.15.1-dirty (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	<20171006235023.11952-67-f4bug@amsat.org>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <172f427e-ef26-8934-29f8-cc6cbbbea6ca@weilnetz.de>
+Date: Sat, 7 Oct 2017 08:47:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20171006235023.11952-67-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: de-DE
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.65
-Subject: Re: [Qemu-trivial] [PATCH 23/88] M68K: use g_new() family of
- functions
+X-Received-From: 37.120.169.71
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 66/88]
+ util/qemu-thread-win32: use g_new() family of functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,20 +62,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Oct 2017 05:51:27 -0000
+X-List-Received-Date: Sat, 07 Oct 2017 06:47:28 -0000
 
-Am Fri,  6 Oct 2017 20:49:18 -0300
-schrieb Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>:
-
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Am 07.10.2017 um 01:50 schrieb Philippe Mathieu-Daud=C3=A9:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> [PMD: squashed commits]
 > ---
->  hw/m68k/mcf5206.c | 4 ++--
->  hw/m68k/mcf5208.c | 2 +-
->  2 files changed, 3 insertions(+), 3 deletions(-)
+>  util/qemu-thread-win32.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/util/qemu-thread-win32.c b/util/qemu-thread-win32.c
+> index 94f3491a87..098fddb2af 100644
+> --- a/util/qemu-thread-win32.c
+> +++ b/util/qemu-thread-win32.c
+> @@ -394,7 +394,7 @@ void qemu_thread_create(QemuThread *thread, const c=
+har *name,
+>      HANDLE hThread;
+>      struct QemuThreadData *data;
+> =20
+> -    data =3D g_malloc(sizeof *data);
+> +    data =3D g_new(struct QemuThreadData, 1);
+>      data->start_routine =3D start_routine;
+>      data->arg =3D arg;
+>      data->mode =3D mode;
+>=20
 
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+Maybe you can use this simplified variant:
+
+    QemuThreadData *data =3D g_new(QemuThreadData, 1);
+
+Stefan
 
