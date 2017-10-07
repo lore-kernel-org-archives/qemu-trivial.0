@@ -1,80 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e0g2f-0007SJ-9J
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2017 23:44:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60862)
+	id 1e0hSK-0002Og-KK
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2017 01:15:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42730)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0g2d-0007R7-AT
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 23:44:44 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1e0hSI-0002MJ-Ft
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0g2c-00067p-GV
-	for qemu-trivial@nongnu.org; Fri, 06 Oct 2017 23:44:43 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:56332)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e0g2Y-00066I-8U; Fri, 06 Oct 2017 23:44:38 -0400
-Received: by mail-qt0-x241.google.com with SMTP id 34so17718481qtb.13;
-	Fri, 06 Oct 2017 20:44:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ERPSeK3l4rvPk629nwGKXddzbrm6FZeDqUlr6NZcero=;
-	b=DK5rKEXQ/SyAY+1czywpZ/1rBAwR9epMDEj/o113sQq5/2JCkFXQQrBGoUhurTonjg
-	2xuMVD4QE0G/gfZhNq04KR/apT8nGTrdjbX0BsYzXYaGLz4Vzngb91ZVReO3DnA13awD
-	7SkEd1n83KBMentlcfMFltBio5oosBo1wIzaw4X7i05cwKmhT4r1kHohOdgfv+UtZTNH
-	BGm9fGe09Zkf1ZdIUQ3VhfFy5byQLyE7iBmWhJhGIqOWV4O5cQTQjZ66AeRNOZcbi6Xh
-	V+L0T2UG3pHufkazhirroxP+mQtEfOtYJ4A0LKcjlMCSBNxfdXHa+nDT4i2sQFbx/DpG
-	ioiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=ERPSeK3l4rvPk629nwGKXddzbrm6FZeDqUlr6NZcero=;
-	b=a041anrNgH5/SJvFfU6Tbct4C/QwH3a2ayPkFyZhVBpVJPBLTOjwjTa+LhuonhiezA
-	nebTdxIs9rDVP/F3aFRl5w+ECaYl//BsyzlS4VhXOifpXkpUKfM82QSf7llCzlxccCpF
-	lYA1xMU6OAOyuoJc9N6dZA01Gm18JYvu0bYZP/Qgj7l9GMC8qOBZYDcKz65o5HvInu1v
-	bor5a0y/BgTIXMNfQwgupvVQPuCQFKMZx6rjGtkynXcGojawDr31iohbdNvRY41llfAO
-	F7LcSLnrVtnpgfk9Wlikrxs4Ckq2IqrNtiAIkhX2Q5olUxYT9J4PURZY4mLk1JlFNt7C
-	p+nQ==
-X-Gm-Message-State: AMCzsaXwan+GkuZsVsAdTxEZtzqeL4E2Af7vJAq6JLjbB6o6jFmv42AJ
-	DkcoUMMA1BOmDjCu97vO9VhLA+57ovo=
-X-Google-Smtp-Source: AOwi7QA4mxrlzZrjk2EThi8suf/UfdEtyLyJtdygfO3Y7dmC+TF7sS11XNb+86O10bDeKc+aOwe68Q==
-X-Received: by 10.200.50.113 with SMTP id y46mr4901741qta.315.1507347877435;
-	Fri, 06 Oct 2017 20:44:37 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id t32sm1938531qtb.5.2017.10.06.20.44.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Oct 2017 20:44:36 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	Jeff Cody <jcody@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
-	<marcandre.lureau@redhat.com>, qemu trival <qemu-trivial@nongnu.org>,
-	qemu-block@nongnu.org
+	(envelope-from <dgibson@ozlabs.org>) id 1e0hSH-00006d-8f
+	for qemu-trivial@nongnu.org; Sat, 07 Oct 2017 01:15:18 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:50649)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1e0hSB-0008Ip-2R; Sat, 07 Oct 2017 01:15:11 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3y8F7T4tCSz9t6m; Sat,  7 Oct 2017 16:15:01 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1507353301;
+	bh=/lwVqk4cTbFA1bmDxltoYarW3o8+WFRKafL2r3wkzpc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nePWuTCXmRIdz1EXlQ8BVA1eDSOsF7IykSPrbxPlXmbWDRyrXnXdQ7gB2G0EQgiQM
+	5bUtJckwzXzYzHvbyEJ94V74yirdthN+yfAXAIYYM2wccLcOmE+DeqitmPF+B+1Tlc
+	zEFXYN55eYqzP5Is+4d3IhlMmIniaPD61OkIQtpA=
+Date: Sat, 7 Oct 2017 15:38:35 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	Alexander Graf <agraf@suse.de>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	qemu trival <qemu-trivial@nongnu.org>, qemu-ppc@nongnu.org
+Message-ID: <20171007043835.GD10050@umbus.fritz.box>
 References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-72-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <5c3044e1-abfd-5156-6098-21844ba6d928@amsat.org>
-Date: Sat, 7 Oct 2017 00:44:32 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	<20171006235023.11952-56-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20171006235023.11952-72-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="g7w8+K/95kPelPD2"
+Content-Disposition: inline
+In-Reply-To: <20171006235023.11952-56-f4bug@amsat.org>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-trivial] [PATCH 71/88] block: avoid use of g_new0()
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [PATCH 55/88] PReP: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,55 +56,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Oct 2017 03:44:44 -0000
+X-List-Received-Date: Sat, 07 Oct 2017 05:15:19 -0000
 
-On 10/06/2017 08:50 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+--g7w8+K/95kPelPD2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Oct 06, 2017 at 08:49:50PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> From: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+>=20
+> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  block/qcow2.c | 2 +-
->  block/vhdx.c  | 9 +++++----
->  2 files changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/block/qcow2.c b/block/qcow2.c
-> index f63d1831f8..3e7d6c81be 100644
-> --- a/block/qcow2.c
-> +++ b/block/qcow2.c
-> @@ -2738,7 +2738,7 @@ static int qcow2_create2(const char *filename, int64_t total_size,
->  
->      /* Write the header */
->      QEMU_BUILD_BUG_ON((1 << MIN_CLUSTER_BITS) < sizeof(*header));
-> -    header = g_malloc0(cluster_size);
-> +    header = g_malloc(cluster_size);
+>  hw/ppc/prep.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index 94138a4e8c..c638d3d17a 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -512,7 +512,7 @@ static void ppc_prep_init(MachineState *machine)
+>      int ppc_boot_device;
+>      DriveInfo *hd[MAX_IDE_BUS * MAX_IDE_DEVS];
+> =20
+> -    sysctrl =3D g_malloc0(sizeof(sysctrl_t));
+> +    sysctrl =3D g_new0(sysctrl_t, 1);
+> =20
+>      linux_boot =3D (kernel_filename !=3D NULL);
+> =20
 
-self-NACK since this is wrong.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
->      *header = (QCowHeader) {
->          .magic                      = cpu_to_be32(QCOW_MAGIC),
->          .version                    = cpu_to_be32(version),
-> diff --git a/block/vhdx.c b/block/vhdx.c
-> index 8260fb46cd..91e532df8a 100644
-> --- a/block/vhdx.c
-> +++ b/block/vhdx.c
-> @@ -244,10 +244,11 @@ static void vhdx_region_register(BDRVVHDXState *s,
->  {
->      VHDXRegionEntry *r;
->  
-> -    r = g_new0(VHDXRegionEntry, 1);
-> -
-> -    r->start = start;
-> -    r->end = start + length;
-> +    r = g_new(VHDXRegionEntry, 1);
-> +    *r = (VHDXRegionEntry) {
-> +        .start = start,
-> +        .end = start + length,
+--g7w8+K/95kPelPD2
+Content-Type: application/pgp-signature; name="signature.asc"
 
-this is not wrong since all members are initialized, but it is not good
-code practice (if the VHDXRegionEntry structure is expanded with another
-member).
+-----BEGIN PGP SIGNATURE-----
 
-> +    };
->  
->      QLIST_INSERT_HEAD(&s->regions, r, entries);
->  }
-> 
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlnYWkkACgkQbDjKyiDZ
+s5LuhxAAp9FQk73Q/sIzyoa9XyFZgOPo00brOX8S1MZaUX/3VfkBnQyHi75dVnD8
+zHpIi+xDFKvzQ+X+YQsTqiFhiIAtKzWp8ZvdjDZKzALy7mkBDI/BLfIbGzGu/VBC
+hY957F9ECPZrE18Z3sPLoju335bFJ7Nta4HQUA6eSvZCYlLvvO83BTuYC4ZUq/DC
+gUCKN0UT51w/eT2J2C6YC4jjq/XY5j0+RLR0ZA4C8/OVoPNKOoR7BS8LZGRYYwBW
+Lgj5sbs8cPGNrHQ2rX4KCnpZ+i5WwGYU91ZMKBoYLhi8deiUcoiHj1fZKRLrsHAG
+qJmpa/UBgfOGVWfoH4AsuAIPuTGsQFpR3kDcG2/BQdthTOzF50Rr+sv4CR8zlQha
+ANZFpawOlgP5V89+8D441uo4fl4kCrQ/BYnvzy586PqmSTCSBvqTAA2NNNvM12oK
+FFpRSSxjraa+/FB/3e64YoAdKsIbgRBarL/BW7DnsyUBS/WvtucUDhGrkRQ6PPxd
+k8EAjAiOwY2SLwJhTWXlAFZlhZd+udKfAklt0JJLNQOxOxfJcoKk/JrKg4MPlsVq
+CRkxL+R4jVK5Z02C/8jFyGA1oIPJSsXzxNN+cOfa3DshtoEBFcbJP4JxDlnHlSlu
+JloVk7N8yM9/Ba5b57Q8/Azpk/1xjvcV3OZC2QzniCvKG8UIgrg=
+=CNhv
+-----END PGP SIGNATURE-----
+
+--g7w8+K/95kPelPD2--
 
