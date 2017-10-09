@@ -1,75 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1YwB-00080a-RZ
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 10:21:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54459)
+	id 1e1b2n-0006Sn-4X
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 12:36:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37699)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gsomlo@gmail.com>) id 1e1Yw9-0007yX-Go
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 10:21:42 -0400
+	(envelope-from <jsnow@redhat.com>) id 1e1b2h-0006Qn-Tm
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 12:36:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gsomlo@gmail.com>) id 1e1Yw8-0004KZ-KJ
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 10:21:41 -0400
-Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:37286)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <gsomlo@gmail.com>)
-	id 1e1Yw3-0004Ia-Us; Mon, 09 Oct 2017 10:21:36 -0400
-Received: by mail-io0-x241.google.com with SMTP id h70so1931411ioi.4;
-	Mon, 09 Oct 2017 07:21:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:content-transfer-encoding:in-reply-to
-	:user-agent; bh=9N6JmWtAIvW0sy7/1Wsu4abNjeNGNU+RJcVdbZhlW0A=;
-	b=AYANgAKJuXAloTnWnH9KvgubebB8C6bAnt6qtJ5IStfvGqvK5a/ZQhEk4Z0vdgI5eN
-	aI1oujFSsanjvzrRcatgn0VDxVeEZXSaSXZPql/YmFBNGM1YBaLwC6PFLbDtLZIjnL4J
-	RbcLNbqwhj7QdmNzdkBDPAEFeolBAK9hJGCJqEPmAYdm4AWujmldZ+Lwp3RigWD/MgES
-	kM9tUkONgRuBUSCh4rmzoQEUE+5rxKiUzan9nEcYCUNDnjFAHhMcL8YU2QECaKij0FOK
-	nK+jPl9YIfR29ITd5unDE43kmwCjpEMHxK4b8YqRlA8k7Q1qRwY9vTKIy7AL14NUSw2t
-	FD+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=9N6JmWtAIvW0sy7/1Wsu4abNjeNGNU+RJcVdbZhlW0A=;
-	b=jRKlpaJ4mKewQLsP0Y8XUvPdcbmjZPDd0bBpXb+jHPdzLHGl0j6X3WWL0qQ4e+MUHS
-	xDgzfgl//I3y3qt1mxvoKGv+qC0KeZ1lOniNFZTbvD/re8ZQMimvE2oYsGfxnK2vVNDD
-	KxeNDvlD4b65uNF7c/Y2FhYYiFBg2zZH2FlCmoOvfaXwJyB5XQz0OfHrjTJ3J2ci1+Aw
-	7+IYpB+qtunajzXorXiXyyjnAR7r9ndNv+0SCZUCZ8i2IXshqg+RsCrJUvxUxg4gyTKR
-	SwanulC2LvHBe3nNJCdDjb3WBrXoTcw5WhqBYybQPYmzA8asy1tBatwrGHI4Etp/swoS
-	q8OA==
-X-Gm-Message-State: AMCzsaWLqi6oJ/N3+lILq3MgfCyAPSZlywk7H22RW/2rS+8JQD/8SZfl
-	sA23Cx9jxhz4JfuRfkDXxJk=
-X-Google-Smtp-Source: AOwi7QCW78c/kmwHWcbdbJ46L1lRtVbn0vQBzLeFhjVzrXAQXDREZ5XwkquBq3+Goas//23MpeQHJg==
-X-Received: by 10.107.162.67 with SMTP id l64mr774370ioe.278.1507558895364;
-	Mon, 09 Oct 2017 07:21:35 -0700 (PDT)
-Received: from hedwig.ini.cmu.edu (HEDWIG.INI.CMU.EDU. [128.2.16.51])
-	by smtp.gmail.com with ESMTPSA id
-	q82sm4052870itb.22.2017.10.09.07.21.33
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 09 Oct 2017 07:21:34 -0700 (PDT)
-Date: Mon, 9 Oct 2017 10:21:32 -0400
-From: "Gabriel L. Somlo" <gsomlo@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	kvm@vger.kernel.org,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	(envelope-from <jsnow@redhat.com>) id 1e1b2g-0003kf-Ii
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 12:36:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39832)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1e1b2W-0003Xh-B4; Mon, 09 Oct 2017 12:36:24 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4ABC64ACA5;
+	Mon,  9 Oct 2017 16:36:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4ABC64ACA5
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=jsnow@redhat.com
+Received: from [10.18.17.231] (dhcp-17-231.bos.redhat.com [10.18.17.231])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 534FC60604;
+	Mon,  9 Oct 2017 16:36:01 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>
-Message-ID: <20171009142130.GE8968@hedwig.ini.cmu.edu>
+	qemu trival <qemu-trivial@nongnu.org>, qemu-block@nongnu.org
 References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-55-f4bug@amsat.org>
+	<20171006235023.11952-62-f4bug@amsat.org>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <49ac284f-45c6-0424-753b-895059c50908@redhat.com>
+Date: Mon, 9 Oct 2017 12:36:00 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20171006235023.11952-55-f4bug@amsat.org>
-X-Clacks-Overhead: GNU Terry Pratchett
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c06::241
-Subject: Re: [Qemu-trivial] [PATCH 54/88] KVM: use g_new() family of
+In-Reply-To: <20171006235023.11952-62-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 09 Oct 2017 16:36:23 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 61/88] tests: use g_new() family of
  functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -82,61 +66,157 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Oct 2017 14:21:42 -0000
+X-List-Received-Date: Mon, 09 Oct 2017 16:36:40 -0000
 
-Reviewed-by: Gabriel Somlo <gsomlo@gmail.com>
 
-On Fri, Oct 06, 2017 at 08:49:49PM -0300, Philippe Mathieu-Daudé wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> [PMD: more changes]
+
+On 10/06/2017 07:49 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> [PMD: split of some files in other commits of the same series, add libq=
+test.c]
+
+I think you don't need to add a maintainer's note here unless you
+changed something after it was posted to the list.
+
+Acked-by: John Snow <jsnow@redhat.com>
+
 > ---
->  accel/kvm/kvm-all.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 90c88b517d..12568d703c 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -278,7 +278,7 @@ int kvm_destroy_vcpu(CPUState *cpu)
->          goto err;
->      }
->  
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu = g_new0(struct KVMParkedVcpu, 1);
->      vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
->      vcpu->kvm_fd = cpu->kvm_fd;
->      QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> @@ -865,7 +865,7 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+
+You can put a V2 notice down here instead.
+
+>  tests/ahci-test.c     | 4 ++--
+>  tests/fw_cfg-test.c   | 4 ++--
+>  tests/libqos/ahci.c   | 2 +-
+>  tests/libqos/libqos.c | 2 +-
+>  tests/libqos/malloc.c | 6 +++---
+>  tests/libqtest.c      | 2 +-
+>  tests/pc-cpu-test.c   | 2 +-
+>  7 files changed, 11 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/tests/ahci-test.c b/tests/ahci-test.c
+> index 999121bb7c..cb84edc8fb 100644
+> --- a/tests/ahci-test.c
+> +++ b/tests/ahci-test.c
+> @@ -155,7 +155,7 @@ static AHCIQState *ahci_vboot(const char *cli, va_l=
+ist ap)
 >  {
->      int i;
->  
-> -    kml->slots = g_malloc0(s->nr_slots * sizeof(KVMSlot));
-> +    kml->slots = g_new0(KVMSlot, s->nr_slots);
->      kml->as_id = as_id;
->  
->      for (i = 0; i < s->nr_slots; i++) {
-> @@ -1129,7 +1129,7 @@ int kvm_irqchip_send_msi(KVMState *s, MSIMessage msg)
->              return virq;
->          }
->  
-> -        route = g_malloc0(sizeof(KVMMSIRoute));
-> +        route = g_new0(KVMMSIRoute, 1);
->          route->kroute.gsi = virq;
->          route->kroute.type = KVM_IRQ_ROUTING_MSI;
->          route->kroute.flags = 0;
-> @@ -2243,7 +2243,7 @@ int kvm_insert_breakpoint(CPUState *cpu, target_ulong addr,
->              return 0;
->          }
->  
-> -        bp = g_malloc(sizeof(struct kvm_sw_breakpoint));
-> +        bp = g_new(struct kvm_sw_breakpoint, 1);
->          bp->pc = addr;
->          bp->use_count = 1;
->          err = kvm_arch_insert_sw_breakpoint(cpu, bp);
-> -- 
-> 2.14.2
-> 
+>      AHCIQState *s;
+> =20
+> -    s =3D g_malloc0(sizeof(AHCIQState));
+> +    s =3D g_new0(AHCIQState, 1);
+>      s->parent =3D qtest_pc_vboot(cli, ap);
+>      alloc_set_flags(s->parent->alloc, ALLOC_LEAK_ASSERT);
+> =20
+> @@ -1806,7 +1806,7 @@ static void create_ahci_io_test(enum IOMode type,=
+ enum AddrMode addr,
+>      char *name;
+>      AHCIIOTestOptions *opts;
+> =20
+> -    opts =3D g_malloc(sizeof(AHCIIOTestOptions));
+> +    opts =3D g_new(AHCIIOTestOptions, 1);
+>      opts->length =3D len;
+>      opts->address_type =3D addr;
+>      opts->io_type =3D type;
+> diff --git a/tests/fw_cfg-test.c b/tests/fw_cfg-test.c
+> index 688342bed5..81f45bdfc8 100644
+> --- a/tests/fw_cfg-test.c
+> +++ b/tests/fw_cfg-test.c
+> @@ -79,8 +79,8 @@ static void test_fw_cfg_numa(void)
+> =20
+>      g_assert_cmpint(qfw_cfg_get_u64(fw_cfg, FW_CFG_NUMA), =3D=3D, nb_n=
+odes);
+> =20
+> -    cpu_mask =3D g_malloc0(sizeof(uint64_t) * max_cpus);
+> -    node_mask =3D g_malloc0(sizeof(uint64_t) * nb_nodes);
+> +    cpu_mask =3D g_new0(uint64_t, max_cpus);
+> +    node_mask =3D g_new0(uint64_t, nb_nodes);
+> =20
+>      qfw_cfg_read_data(fw_cfg, cpu_mask, sizeof(uint64_t) * max_cpus);
+>      qfw_cfg_read_data(fw_cfg, node_mask, sizeof(uint64_t) * nb_nodes);
+> diff --git a/tests/libqos/ahci.c b/tests/libqos/ahci.c
+> index 1ca7f456b5..13c0749582 100644
+> --- a/tests/libqos/ahci.c
+> +++ b/tests/libqos/ahci.c
+> @@ -843,7 +843,7 @@ AHCICommand *ahci_command_create(uint8_t command_na=
+me)
+>      AHCICommand *cmd;
+> =20
+>      g_assert(props);
+> -    cmd =3D g_malloc0(sizeof(AHCICommand));
+> +    cmd =3D g_new0(AHCICommand, 1);
+>      g_assert(!(props->dma && props->pio));
+>      g_assert(!(props->lba28 && props->lba48));
+>      g_assert(!(props->read && props->write));
+> diff --git a/tests/libqos/libqos.c b/tests/libqos/libqos.c
+> index 6226546c28..991bc1aec2 100644
+> --- a/tests/libqos/libqos.c
+> +++ b/tests/libqos/libqos.c
+> @@ -17,7 +17,7 @@ QOSState *qtest_vboot(QOSOps *ops, const char *cmdlin=
+e_fmt, va_list ap)
+>  {
+>      char *cmdline;
+> =20
+> -    struct QOSState *qs =3D g_malloc(sizeof(QOSState));
+> +    struct QOSState *qs =3D g_new(QOSState, 1);
+> =20
+>      cmdline =3D g_strdup_vprintf(cmdline_fmt, ap);
+>      qs->qts =3D qtest_start(cmdline);
+> diff --git a/tests/libqos/malloc.c b/tests/libqos/malloc.c
+> index b8eff5f495..ac05874b0a 100644
+> --- a/tests/libqos/malloc.c
+> +++ b/tests/libqos/malloc.c
+> @@ -129,7 +129,7 @@ static MemBlock *mlist_new(uint64_t addr, uint64_t =
+size)
+>      if (!size) {
+>          return NULL;
+>      }
+> -    block =3D g_malloc0(sizeof(MemBlock));
+> +    block =3D g_new0(MemBlock, 1);
+> =20
+>      block->addr =3D addr;
+>      block->size =3D size;
+> @@ -305,8 +305,8 @@ QGuestAllocator *alloc_init(uint64_t start, uint64_=
+t end)
+>      s->start =3D start;
+>      s->end =3D end;
+> =20
+> -    s->used =3D g_malloc(sizeof(MemList));
+> -    s->free =3D g_malloc(sizeof(MemList));
+> +    s->used =3D g_new(MemList, 1);
+> +    s->free =3D g_new(MemList, 1);
+>      QTAILQ_INIT(s->used);
+>      QTAILQ_INIT(s->free);
+> =20
+> diff --git a/tests/libqtest.c b/tests/libqtest.c
+> index cbd709470b..adf71188b6 100644
+> --- a/tests/libqtest.c
+> +++ b/tests/libqtest.c
+> @@ -171,7 +171,7 @@ QTestState *qtest_init_without_qmp_handshake(const =
+char *extra_args)
+>      gchar *command;
+>      const char *qemu_binary =3D qtest_qemu_binary();
+> =20
+> -    s =3D g_malloc(sizeof(*s));
+> +    s =3D g_new(QTestState, 1);
+> =20
+>      socket_path =3D g_strdup_printf("/tmp/qtest-%d.sock", getpid());
+>      qmp_socket_path =3D g_strdup_printf("/tmp/qtest-%d.qmp", getpid())=
+;
+> diff --git a/tests/pc-cpu-test.c b/tests/pc-cpu-test.c
+> index c4211a4e85..11d3e810ef 100644
+> --- a/tests/pc-cpu-test.c
+> +++ b/tests/pc-cpu-test.c
+> @@ -87,7 +87,7 @@ static void add_pc_test_case(const char *mname)
+>      if (!g_str_has_prefix(mname, "pc-")) {
+>          return;
+>      }
+> -    data =3D g_malloc(sizeof(PCTestData));
+> +    data =3D g_new(PCTestData, 1);
+>      data->machine =3D g_strdup(mname);
+>      data->cpu_model =3D "Haswell"; /* 1.3+ theoretically */
+>      data->sockets =3D 1;
+>=20
 
