@@ -1,57 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1Jwf-0006Qc-M1
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Oct 2017 18:21:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49474)
+	id 1e1RbS-0005vb-BB
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 02:31:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48895)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1e1Jwb-0006PX-4h
-	for qemu-trivial@nongnu.org; Sun, 08 Oct 2017 18:21:09 -0400
+	(envelope-from <lvivier@redhat.com>) id 1e1RbQ-0005vV-Dk
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 02:31:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <samuel.thibault@ens-lyon.org>) id 1e1JwW-0005Bk-7b
-	for qemu-trivial@nongnu.org; Sun, 08 Oct 2017 18:21:09 -0400
-Received: from hera.aquilenet.fr ([141.255.128.1]:42711)
+	(envelope-from <lvivier@redhat.com>) id 1e1RbN-0004U9-4Y
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 02:31:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50696)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1e1JwW-0005B6-0o
-	for qemu-trivial@nongnu.org; Sun, 08 Oct 2017 18:21:04 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id 35C60EDA7;
-	Mon,  9 Oct 2017 00:21:01 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g-_qxkPsSZHO; Mon,  9 Oct 2017 00:21:00 +0200 (CEST)
-Received: from var.youpi.perso.aquilenet.fr (unknown
-	[IPv6:2a01:cb19:181:c200:3602:86ff:fe2c:6a19])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 80108E98D;
-	Mon,  9 Oct 2017 00:21:00 +0200 (CEST)
-Received: from samy by var.youpi.perso.aquilenet.fr with local (Exim 4.89)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1e1JwQ-0000U8-Pt; Mon, 09 Oct 2017 00:20:58 +0200
-Date: Mon, 9 Oct 2017 00:20:58 +0200
-From: Samuel Thibault <samuel.thibault@gnu.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Jason Wang <jasowang@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>
-Message-ID: <20171008222058.3ngrwgadmhyucekf@var.youpi.perso.aquilenet.fr>
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-37-f4bug@amsat.org>
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>) id 1e1RbM-0004TR-Uw
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 02:31:45 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 309BB8765D;
+	Mon,  9 Oct 2017 06:31:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 309BB8765D
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lvivier@redhat.com
+Received: from [10.36.116.166] (ovpn-116-166.ams2.redhat.com [10.36.116.166])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C1335C699;
+	Mon,  9 Oct 2017 06:31:41 +0000 (UTC)
+To: Marco A L Barbosa <malbarbo@gmail.com>
+Cc: qemu-trivial@nongnu.org
+References: <20171005135530.837-1-malbarbo@gmail.com>
+	<498b5456-1a96-fbd9-6202-0a1301e3a8c5@redhat.com>
+	<CAHpsRN-qFgp-QzjX-QdDUYgUA-DbWinp=hsk-V8L4WxXFDti8A@mail.gmail.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <477627a9-3441-be7d-bea2-abc409d1cfc8@redhat.com>
+Date: Mon, 9 Oct 2017 08:31:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
+In-Reply-To: <CAHpsRN-qFgp-QzjX-QdDUYgUA-DbWinp=hsk-V8L4WxXFDti8A@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20171006235023.11952-37-f4bug@amsat.org>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 09 Oct 2017 06:31:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 141.255.128.1
-Subject: Re: [Qemu-trivial] [PATCH 36/88] SLIRP: use g_new() family of
- functions
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add some random ioctls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,38 +60,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Oct 2017 22:21:10 -0000
+X-List-Received-Date: Mon, 09 Oct 2017 06:31:49 -0000
 
-Hello,
+On 06/10/2017 23:35, Marco A L Barbosa wrote:
+> Thanks again for the advice.
+> 
+> This and the other patch should be resubmitted following those
+> instructions or it is not necessary?
 
-Philippe Mathieu-Daud=C3=A9, on ven. 06 oct. 2017 20:49:31 -0300, wrote:
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -869,7 +869,7 @@ net_init_slirp_configs(const StringList *fwd, int f=
-lags)
->      while (fwd) {
->          struct slirp_config_str *config;
-> =20
-> -        config =3D g_malloc0(sizeof(*config));
-> +        config =3D g_new0(struct slirp_config_str, 1);
+I don't think it's necessary.
 
-It doesn't really seem like an improvement to me in such case: we don't
-have overflow issues here, and using sizeof(*config) makes the line
-clearly correct, while expliciting the struct behind means we need to
-make sure of the coherency.
-
-> diff --git a/slirp/socket.c b/slirp/socket.c
-> index cb7b5b608d..2eccb68c2e 100644
-> --- a/slirp/socket.c
-> +++ b/slirp/socket.c
-> @@ -48,7 +48,7 @@ socreate(Slirp *slirp)
->  {
->    struct socket *so;
-> =20
-> -  so =3D (struct socket *)malloc(sizeof(struct socket));
-> +  so =3D g_new(struct socket, 1);
-
-Similarly, here I'd rather write g_malloc(sizeof(*so));
-
-Samuel
+Thanks,
+Laurent
 
