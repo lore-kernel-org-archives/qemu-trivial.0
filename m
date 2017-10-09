@@ -1,57 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1UUp-0004eN-TB
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 05:37:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34033)
+	id 1e1UWC-0005bZ-AC
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 05:38:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1e1UUn-0004cF-1N
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 05:37:09 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1e1UWA-0005a0-7d
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 05:38:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1e1UUm-0001o1-D7
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 05:37:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50006)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1e1UUf-0001k8-Up; Mon, 09 Oct 2017 05:37:02 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CAE3B4A6EB;
-	Mon,  9 Oct 2017 09:37:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CAE3B4A6EB
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A4E155D9C7;
-	Mon,  9 Oct 2017 09:36:53 +0000 (UTC)
-Date: Mon, 9 Oct 2017 11:36:51 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@gmail.com>, Markus
-	Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, Christian
-	Borntraeger <borntraeger@de.ibm.com>, Alexander Graf <agraf@suse.de>,
-	Richard Henderson <rth@twiddle.net>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, qemu-devel@nongnu.org, Kevin Wolf
-	<kwolf@redhat.com>, qemu trival <qemu-trivial@nongnu.org>,
-	qemu-s390x@nongnu.org
-Message-ID: <20171009113651.526bd8ad.cohuck@redhat.com>
-In-Reply-To: <20171006235023.11952-27-f4bug@amsat.org>
+	(envelope-from <alex.bennee@linaro.org>) id 1e1UW5-0002SW-IO
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 05:38:34 -0400
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:48218)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1e1UW5-0002Rj-BT
+	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 05:38:29 -0400
+Received: by mail-wm0-x22e.google.com with SMTP id i124so20648025wmf.3
+	for <qemu-trivial@nongnu.org>; Mon, 09 Oct 2017 02:38:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=pOrhD0B6DRm6QGuv2daiH4Mlpb634bz4yEzR8FzMbd4=;
+	b=auN9+8VwiaH7LxYW1Zldh6mxQVaF5aufueApBSCMlmDyoOKdby1+QsIXBgT/E4XfU9
+	kj52O6CVNfSBiuMzl5C7wSiD0RIrYT3oJWQTyOb9C3Z1eBDKWaJRKeCxK6O6RFp0bPDY
+	h/h1cenH7UmbegplYPRtplVHRMhTd8BPQveV0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=pOrhD0B6DRm6QGuv2daiH4Mlpb634bz4yEzR8FzMbd4=;
+	b=FXSwhLiPdRy/J8sx+XYtWcwFOeE6uWK2f93hoBfld0MiXlwk5nQ3XaVDQogXoisIJ+
+	YMt++7xAWdaNZmYqEszYwI8CfQY82DEhsbfdUwor7ZsfevJQ/JH7+ywZKLoITlxhG2AH
+	d/9q929fxxuC3LPkvVzIayb0cJeZOJLEax/yRngziG7Ii/18v+JlQ+LUm0RMl1Jg4fqe
+	xtAJQcpLMhnf3qKFOxqPLSqnB2UT8uIza/HEnyaIXW/zDu98pEAUB1AsnDeE8Vubp4Tc
+	QlP0OYSjlyqm2SfWHbkQIeEOjv/p9vOKSDwnzMHgCRvClVhQuvbcVdD10hxcuX5EK+V9
+	K4Dg==
+X-Gm-Message-State: AMCzsaXmAOSUPiEoakWlBkFDvtFrz2130KXPBfElOUd/0aBWa9kJlfWf
+	8HsrM0jTwIyumJbnKPQO6sOrZQ==
+X-Google-Smtp-Source: AOwi7QACOL0/vqikMaIVwcMvxauvuuMcgDC91e9ieDwjHfaCiEOYLGHE8MiHFtvH15yI1WgZX/Pteg==
+X-Received: by 10.223.134.212 with SMTP id 20mr8231633wry.81.1507541907869;
+	Mon, 09 Oct 2017 02:38:27 -0700 (PDT)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id m25sm7407736wmi.7.2017.10.09.02.38.26
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 09 Oct 2017 02:38:27 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 9570D3E0342;
+	Mon,  9 Oct 2017 10:38:26 +0100 (BST)
 References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-27-f4bug@amsat.org>
-Organization: Red Hat GmbH
+	<20171006235023.11952-79-f4bug@amsat.org>
+User-agent: mu4e 0.9.19; emacs 26.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>, Markus
+	Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, Paolo
+	Bonzini <pbonzini@redhat.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+	<marcandre.lureau@redhat.com>, qemu-devel@nongnu.org, Kevin Wolf
+	<kwolf@redhat.com>, qemu trival <qemu-trivial@nongnu.org>
+In-reply-to: <20171006235023.11952-79-f4bug@amsat.org>
+Date: Mon, 09 Oct 2017 10:38:26 +0100
+Message-ID: <877ew4bqzx.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 09 Oct 2017 09:37:01 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 26/88] S390: use g_new() family of
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::22e
+Subject: Re: [Qemu-trivial] [PATCH 78/88] gdb: use g_new() family of
  functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -64,26 +77,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Oct 2017 09:37:10 -0000
+X-List-Received-Date: Mon, 09 Oct 2017 09:38:35 -0000
 
-On Fri,  6 Oct 2017 20:49:21 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
 > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->=20
+>
 > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> [PMD: more changes in hw/s390x/css.c, added target/s390x/cpu_models.c]
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
->  hw/s390x/css.c            | 10 +++++-----
->  hw/s390x/s390-pci-bus.c   |  4 ++--
->  target/s390x/cpu_models.c | 12 ++++++------
->  target/s390x/diag.c       |  2 +-
->  4 files changed, 14 insertions(+), 14 deletions(-)
+>  gdbstub.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/gdbstub.c b/gdbstub.c
+> index 2a94030d3b..5f0d8af1c0 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -1786,7 +1786,7 @@ static void gdb_accept(void)
+>      /* set short latency */
+>      socket_set_nodelay(fd);
+>
+> -    s =3D g_malloc0(sizeof(GDBState));
+> +    s =3D g_new0(GDBState, 1);
+>      s->c_cpu =3D first_cpu;
+>      s->g_cpu =3D first_cpu;
+>      s->fd =3D fd;
+> @@ -1980,7 +1980,7 @@ int gdbserver_start(const char *device)
+>
+>      s =3D gdbserver_state;
+>      if (!s) {
+> -        s =3D g_malloc0(sizeof(GDBState));
+> +        s =3D g_new0(GDBState, 1);
+>          gdbserver_state =3D s;
+>
+>          qemu_add_vm_change_state_handler(gdb_vm_state_change, NULL);
 
-I think I'll just queue that on s390-next.
 
-In case somebody wants to take the whole patchset after all,
-
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+--
+Alex Benn=C3=A9e
 
