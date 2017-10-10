@@ -1,58 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1uXX-00043h-FV
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 09:25:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56254)
+	id 1e1ufA-0000EM-MI
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 09:33:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1e1uXP-0003zn-TU
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 09:25:41 -0400
+	(envelope-from <lvivier@redhat.com>) id 1e1uf2-0000BC-NU
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 09:33:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1e1uXP-0005SN-2B
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 09:25:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37665)
+	(envelope-from <lvivier@redhat.com>) id 1e1uey-00015p-Rt
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 09:33:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45758)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1e1uXI-0005Lm-ST; Tue, 10 Oct 2017 09:25:29 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1e1ueo-00011U-QY; Tue, 10 Oct 2017 09:33:14 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B163BC058EBF;
-	Tue, 10 Oct 2017 13:25:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B163BC058EBF
+	by mx1.redhat.com (Postfix) with ESMTPS id 4DC59C057FA8;
+	Tue, 10 Oct 2017 13:33:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 4DC59C057FA8
 Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
 Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=cohuck@redhat.com
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 883D162494;
-	Tue, 10 Oct 2017 13:25:22 +0000 (UTC)
-Date: Tue, 10 Oct 2017 15:25:20 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@gmail.com>, Markus
-	Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, Christian
-	Borntraeger <borntraeger@de.ibm.com>, Alexander Graf <agraf@suse.de>,
-	Richard Henderson <rth@twiddle.net>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
-	<marcandre.lureau@redhat.com>, qemu-devel@nongnu.org, Kevin Wolf
-	<kwolf@redhat.com>, qemu trival <qemu-trivial@nongnu.org>,
-	qemu-s390x@nongnu.org
-Message-ID: <20171010152520.4d77f7dc.cohuck@redhat.com>
-In-Reply-To: <20171006235023.11952-27-f4bug@amsat.org>
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-27-f4bug@amsat.org>
-Organization: Red Hat GmbH
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+	spf=fail smtp.mailfrom=lvivier@redhat.com
+Received: from thinkpad.redhat.com (ovpn-116-166.ams2.redhat.com
+	[10.36.116.166])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A40BF77718;
+	Tue, 10 Oct 2017 13:33:07 +0000 (UTC)
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Laurent Vivier <lvivier@redhat.com>
+Date: Tue, 10 Oct 2017 15:32:41 +0200
+Message-Id: <20171010133241.11330-1-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.32]);
-	Tue, 10 Oct 2017 13:25:28 +0000 (UTC)
+	Tue, 10 Oct 2017 13:33:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 26/88] S390: use g_new() family of
- functions
+Subject: [Qemu-trivial] [PATCH] pc: remove useless hot_add_cpu initialisation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,22 +55,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Oct 2017 13:25:41 -0000
+X-List-Received-Date: Tue, 10 Oct 2017 13:33:35 -0000
 
-On Fri,  6 Oct 2017 20:49:21 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+Since 4458fb3a79 (pc: Eliminate pc_default_machine_options()),
+hot_add_cpu is set in pc_machine_class_init(), so we don't
+need to set it in pc_q35_machine_options(), pc_i440fx_machine_options()
+and xenfv_machine_options(), except to clear it in
+pc_i440fx_1_4_machine_opt().
 
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> [PMD: more changes in hw/s390x/css.c, added target/s390x/cpu_models.c]
-> ---
->  hw/s390x/css.c            | 10 +++++-----
->  hw/s390x/s390-pci-bus.c   |  4 ++--
->  target/s390x/cpu_models.c | 12 ++++++------
->  target/s390x/diag.c       |  2 +-
->  4 files changed, 14 insertions(+), 14 deletions(-)
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+ hw/i386/pc_piix.c | 2 --
+ hw/i386/pc_q35.c  | 1 -
+ 2 files changed, 3 deletions(-)
 
-Thanks, applied.
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 9ff79b1fd9..caf166aede 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -428,7 +428,6 @@ static void pc_i440fx_machine_options(MachineClass *m)
+ {
+     m->family = "pc_piix";
+     m->desc = "Standard PC (i440FX + PIIX, 1996)";
+-    m->hot_add_cpu = pc_hot_add_cpu;
+     m->default_machine_opts = "firmware=bios-256k.bin";
+     m->default_display = "std";
+ }
+@@ -1123,7 +1122,6 @@ static void xenfv_machine_options(MachineClass *m)
+     m->desc = "Xen Fully-virtualized PC";
+     m->max_cpus = HVM_MAX_VCPUS;
+     m->default_machine_opts = "accel=xen";
+-    m->hot_add_cpu = pc_hot_add_cpu;
+ }
+ 
+ DEFINE_PC_MACHINE(xenfv, "xenfv", pc_xen_hvm_init,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 6c4ec4be4e..da3ea602e1 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -295,7 +295,6 @@ static void pc_q35_machine_options(MachineClass *m)
+ {
+     m->family = "pc_q35";
+     m->desc = "Standard PC (Q35 + ICH9, 2009)";
+-    m->hot_add_cpu = pc_hot_add_cpu;
+     m->units_per_default_bus = 1;
+     m->default_machine_opts = "firmware=bios-256k.bin";
+     m->default_display = "std";
+-- 
+2.13.6
+
 
