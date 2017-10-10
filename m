@@ -1,54 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1x3P-0001tV-9p
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 12:06:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55935)
+	id 1e22Yl-0003zk-Bk
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 17:59:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1e1x3N-0001rr-1S
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 12:06:45 -0400
+	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
+	id 1e22Yi-0003yS-T8
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 17:59:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1e1x3J-0006hF-BK
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 12:06:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49636)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1e1x3D-0006eK-Bi; Tue, 10 Oct 2017 12:06:35 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 691C8CD18C;
-	Tue, 10 Oct 2017 16:06:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 691C8CD18C
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-24.gru2.redhat.com [10.97.116.24])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C69C168B00;
-	Tue, 10 Oct 2017 16:06:27 +0000 (UTC)
-Date: Tue, 10 Oct 2017 13:00:15 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, "Michael S . Tsirkin" <mst@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>
-Message-ID: <20171010160015.GF3246@localhost.localdomain>
-References: <20171010133241.11330-1-lvivier@redhat.com>
+	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
+	id 1e22Yf-0004nD-PO
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 17:59:28 -0400
+Received: from smtp02.citrix.com ([66.165.176.63]:25254)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
+	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
+	id 1e22Yf-0004mI-Hm; Tue, 10 Oct 2017 17:59:25 -0400
+X-IronPort-AV: E=Sophos;i="5.43,359,1503360000"; d="scan'208";a="453062497"
+Date: Tue, 10 Oct 2017 16:55:52 +0100
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+CC: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>, "Markus
+	Armbruster" <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, "Stefano
+	Stabellini" <sstabellini@kernel.org>, Aneesh Kumar K.V
+	<aneesh.kumar@linux.vnet.ibm.com>, Greg Kurz <groug@kaod.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost
+	<ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	<qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, qemu trival
+	<qemu-trivial@nongnu.org>
+Message-ID: <20171010155551.GN1771@perard.uk.xensource.com>
+References: <20171006235023.11952-1-f4bug@amsat.org>
+	<20171006235023.11952-41-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
-In-Reply-To: <20171010133241.11330-1-lvivier@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.0 (2017-09-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 10 Oct 2017 16:06:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] pc: remove useless hot_add_cpu
- initialisation
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20171006235023.11952-41-f4bug@amsat.org>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 66.165.176.63
+Subject: Re: [Qemu-trivial] [PATCH 40/88] hw/xen: use g_new() family of
+ functions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,19 +53,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Oct 2017 16:06:46 -0000
+X-List-Received-Date: Tue, 10 Oct 2017 21:59:29 -0000
 
-On Tue, Oct 10, 2017 at 03:32:41PM +0200, Laurent Vivier wrote:
-> Since 4458fb3a79 (pc: Eliminate pc_default_machine_options()),
-> hot_add_cpu is set in pc_machine_class_init(), so we don't
-> need to set it in pc_q35_machine_options(), pc_i440fx_machine_options()
-> and xenfv_machine_options(), except to clear it in
-> pc_i440fx_1_4_machine_opt().
+On Fri, Oct 06, 2017 at 08:49:35PM -0300, Philippe Mathieu-Daudé wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> [PMD: replaced g_new0() -> g_new() in xen_remap_bucket() (no bzero required),
+>       renamed X86 -> hw/xen and few other changes]
 
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+
+Thanks,
 
 -- 
-Eduardo
+Anthony PERARD
 
