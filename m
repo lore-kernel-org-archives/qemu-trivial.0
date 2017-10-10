@@ -1,47 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e22Yl-0003zk-Bk
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 17:59:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45280)
+	id 1e23Wb-0007pw-FI
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 19:01:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57854)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
-	id 1e22Yi-0003yS-T8
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 17:59:29 -0400
+	id 1e23WZ-0007pp-NC
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 19:01:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
-	id 1e22Yf-0004nD-PO
-	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 17:59:28 -0400
-Received: from smtp02.citrix.com ([66.165.176.63]:25254)
+	id 1e23WX-0008HI-7J
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 19:01:19 -0400
+Received: from smtp.citrix.com ([66.165.176.89]:47381)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <prvs=449813866=anthony.perard@citrix.com>)
-	id 1e22Yf-0004mI-Hm; Tue, 10 Oct 2017 17:59:25 -0400
-X-IronPort-AV: E=Sophos;i="5.43,359,1503360000"; d="scan'208";a="453062497"
-Date: Tue, 10 Oct 2017 16:55:52 +0100
+	id 1e23WX-0008Fz-0J; Tue, 10 Oct 2017 19:01:17 -0400
+X-IronPort-AV: E=Sophos;i="5.43,359,1503360000"; d="scan'208";a="445238558"
+Date: Tue, 10 Oct 2017 16:37:33 +0100
 From: Anthony PERARD <anthony.perard@citrix.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-CC: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>, "Markus
-	Armbruster" <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, "Stefano
-	Stabellini" <sstabellini@kernel.org>, Aneesh Kumar K.V
-	<aneesh.kumar@linux.vnet.ibm.com>, Greg Kurz <groug@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost
-	<ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	<qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, qemu trival
-	<qemu-trivial@nongnu.org>
-Message-ID: <20171010155551.GN1771@perard.uk.xensource.com>
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-41-f4bug@amsat.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>, 
+	Markus Armbruster <armbru@redhat.com>, "Dr. David Alan Gilbert"
+	<dgilbert@redhat.com>, Richard Henderson <rth@twiddle.net>, Eduardo Habkost
+	<ehabkost@redhat.com>, <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+Message-ID: <20171010153733.GM1771@perard.uk.xensource.com>
+References: <20170922154014.29350-1-f4bug@amsat.org>
+	<20170922154014.29350-13-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20171006235023.11952-41-f4bug@amsat.org>
+In-Reply-To: <20170922154014.29350-13-f4bug@amsat.org>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 66.165.176.63
-Subject: Re: [Qemu-trivial] [PATCH 40/88] hw/xen: use g_new() family of
- functions
+X-Received-From: 66.165.176.89
+Subject: Re: [Qemu-trivial] [PATCH 12/34] misc: remove old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,19 +49,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Oct 2017 21:59:29 -0000
+X-List-Received-Date: Tue, 10 Oct 2017 23:01:20 -0000
 
-On Fri, Oct 06, 2017 at 08:49:35PM -0300, Philippe Mathieu-Daudé wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+On Fri, Sep 22, 2017 at 12:39:52PM -0300, Philippe Mathieu-Daudé wrote:
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> [PMD: replaced g_new0() -> g_new() in xen_remap_bucket() (no bzero required),
->       renamed X86 -> hw/xen and few other changes]
+> ---
+>  hw/audio/pcspk.c                    | 1 -
+>  hw/i386/kvm/pci-assign.c            | 1 -
+>  hw/i386/pci-assign-load-rom.c       | 1 -
+>  hw/i386/xen/xen_platform.c          | 1 -
+>  hw/isa/vt82c686.c                   | 1 -
+>  hw/misc/ivshmem.c                   | 1 -
+>  hw/misc/sga.c                       | 1 -
+>  hw/pci-bridge/pci_expander_bridge.c | 1 -
+>  monitor.c                           | 1 -
+>  9 files changed, 9 deletions(-)
+> 
 
 Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
-
-Thanks,
 
 -- 
 Anthony PERARD
