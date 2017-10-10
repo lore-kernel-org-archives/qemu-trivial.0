@@ -1,70 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e1i1J-0003Yy-VA
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2017 20:03:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42617)
+	id 1e1tfd-0007dp-J0
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Oct 2017 08:30:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56760)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1i1I-0003Yp-1H
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 20:03:37 -0400
+	(envelope-from <Jim.Quigley@oracle.com>) id 1e1rgD-0002tS-EY
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 06:22:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e1i1H-0003uw-2Y
-	for qemu-trivial@nongnu.org; Mon, 09 Oct 2017 20:03:36 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:34322)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1e1i1G-0003re-S7; Mon, 09 Oct 2017 20:03:35 -0400
-Received: by mail-wm0-x241.google.com with SMTP id l10so20189812wmg.1;
-	Mon, 09 Oct 2017 17:03:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=lV/tLPG8WkrEcE2CB3DmvNm0/YzrQsv1Hd53f6dv4h0=;
-	b=Hnw/5y40BwD3UoKaX7SkAgJreVAMb+LDgtU3NItBkaTzkDjYAL5qeOLRBjP+RHcicr
-	KAbIxGXF5ocfmkSm6ehPhVIQ1To6mhr88tfHxv/EUFj1sxPF0Vizasq82eYdh0Sk5QnP
-	HN/lUiJ6SjkHyDNN3i65HkAptipT7qMn6Yj2LDkpcGAHN1JZ41MAhGE/JSfG/2jPiyeO
-	aithXoZB/4I4CB8r4rYcgJAGCKwa6MsD2mFKV85uJ3Fwe4VCC6iDejEnWOq7R/YSnem8
-	OfHJiOslCMu1pJvzuV8DPRbPFtiySnVDjzvpY3kKvyh/90pikGi7G+yoVIHIZ86U9aGs
-	miDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=lV/tLPG8WkrEcE2CB3DmvNm0/YzrQsv1Hd53f6dv4h0=;
-	b=ub6Ls7nr7AqV1Ekk+57N1PdtwMSiBz74bkrFlcl49ExTgSzg4JwPY9cvJdMDTaw2nw
-	uuiGAPMgYMaiiVspp4n2ku/LPG78Ln8h81it6NOuTUb4CaCxFvM5eSwyAAWGJW7FkF81
-	Y0nSIn3TPJ+z6RxGGqLJ/DGhGFF4nAVbq1QRDmeYwcSUkywigvirpkheYsO91H51Dv1W
-	vehNEOzlMM+k6yZ1RHsBOgc3IVuM/LnFkqABEVoRsUAQ8XeTojnObIEgbpT3cjd59Upz
-	xOMTqKhwpWK9XDd6KbHZSOnbcxZoyUaYU3iuA+aNM8zzVFwC4zHl1mtz2rqk0rVX6d0Q
-	OXuw==
-X-Gm-Message-State: AMCzsaXJhhDS9iMjxtkTR3Fo4o+V/F9pxJ8CbiodBmM6TIQAo3+cX9Ch
-	aGoWF2EsvWfnhryt7H16tG7Q4e3VozCMYbjLO+8=
-X-Google-Smtp-Source: AOwi7QAx9VC4Xl54SXW5UV1vebe5wsMFdesLoGJaGHadpHRtGgHx7tkYYISmDbZILz3IkUHKF0djvhbe6WEY8ONrLNw=
-X-Received: by 10.223.144.71 with SMTP id h65mr10914972wrh.41.1507593812157;
-	Mon, 09 Oct 2017 17:03:32 -0700 (PDT)
-MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.157.2 with HTTP; Mon, 9 Oct 2017 17:03:01 -0700 (PDT)
-In-Reply-To: <20171006235023.11952-45-f4bug@amsat.org>
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-45-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 9 Oct 2017 17:03:01 -0700
-X-Google-Sender-Auth: h14yc19M-izXyw32WOeVYa-jFQM
-Message-ID: <CAKmqyKOYNUQnUeLhrTWOQprsDaQxo=0RGpNnCwS5bswTZBSZ4Q@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>, 
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Kevin Wolf <kwolf@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	qemu trival <qemu-trivial@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 44/88] hw/core/loader: use
- g_new() family of functions
+	(envelope-from <Jim.Quigley@oracle.com>) id 1e1rg9-0007B7-Ew
+	for qemu-trivial@nongnu.org; Tue, 10 Oct 2017 06:22:29 -0400
+Received: from userp1040.oracle.com ([156.151.31.81]:51362)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Jim.Quigley@oracle.com>)
+	id 1e1rg9-0007AF-5I; Tue, 10 Oct 2017 06:22:25 -0400
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by userp1040.oracle.com (Sentrion-MTA-4.3.2/Sentrion-MTA-4.3.2) with
+	ESMTP id v9AAMLXc014723
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 10 Oct 2017 10:22:21 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id v9AAMKDb015811
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 10 Oct 2017 10:22:20 GMT
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id v9AAMHbI005621;
+	Tue, 10 Oct 2017 10:22:17 GMT
+Received: from aus-x4-2-1.us.oracle.com (/10.135.198.88)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 10 Oct 2017 03:22:16 -0700
+From: Jim Quigley <Jim.Quigley@oracle.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
+	alex.williamson@redhat.com
+Date: Tue, 10 Oct 2017 06:22:08 -0400
+Message-Id: <1507630928-28307-1-git-send-email-Jim.Quigley@oracle.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Source-IP: userv0021.oracle.com [156.151.31.71]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+	[fuzzy]
+X-Received-From: 156.151.31.81
+X-Mailman-Approved-At: Tue, 10 Oct 2017 08:30:00 -0400
+Subject: [Qemu-trivial] [PATCH] hw/vfio: improve error message when cannot
+ init vfio event notifiers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,57 +52,112 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Oct 2017 00:03:37 -0000
+X-List-Received-Date: Tue, 10 Oct 2017 10:22:30 -0000
 
-On Fri, Oct 6, 2017 at 4:49 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+More information is required to assist trouble-shooting when
+QEMU fails to initialise the event notifications for devices
+assigned with VFIO-PCI. Instead of supplying the user with a cryptic
+error number only, print out a proper error message with strerror()
+so that the user has a better way to figure out what the problem is.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
+Signed-off-by: Jim Quigley <Jim.Quigley@oracle.com>
+---
+Cc: qemu-trivial@nongnu.org
+Cc: mjt@tls.msk.ru
+Cc: laurent@vivier.eu
+Cc: alex.williamson@redhat.com
+---
+ hw/vfio/pci.c | 35 ++++++++++++++++++++++++-----------
+ 1 file changed, 24 insertions(+), 11 deletions(-)
 
-Thanks,
-Alistair
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 31e1edf..3bffb93 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -430,13 +430,16 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
+ static void vfio_add_kvm_msi_virq(VFIOPCIDevice *vdev, VFIOMSIVector *vector,
+                                   int vector_n, bool msix)
+ {
+-    int virq;
++    int virq, ret;
+ 
+     if ((msix && vdev->no_kvm_msix) || (!msix && vdev->no_kvm_msi)) {
+         return;
+     }
+ 
+-    if (event_notifier_init(&vector->kvm_interrupt, 0)) {
++    ret = event_notifier_init(&vector->kvm_interrupt, 0);
++    if (ret) {
++        error_report("vfio (%s): Error: unable to init event notifier: %s (%d)",
++                     __func__, strerror(-ret), -ret);
+         return;
+     }
+ 
+@@ -486,8 +489,11 @@ static int vfio_msix_vector_do_use(PCIDevice *pdev, unsigned int nr,
+     if (!vector->use) {
+         vector->vdev = vdev;
+         vector->virq = -1;
+-        if (event_notifier_init(&vector->interrupt, 0)) {
+-            error_report("vfio: Error: event_notifier_init failed");
++        ret = event_notifier_init(&vector->interrupt, 0);
++        if (ret) {
++            error_report("vfio (%s): Error: "
++                         "unable to init event notifier: %s (%d)",
++                         __func__, strerror(-ret), -ret);
+         }
+         vector->use = true;
+         msix_vector_use(pdev, nr);
+@@ -658,8 +664,11 @@ retry:
+         vector->virq = -1;
+         vector->use = true;
+ 
+-        if (event_notifier_init(&vector->interrupt, 0)) {
+-            error_report("vfio: Error: event_notifier_init failed");
++        ret = event_notifier_init(&vector->interrupt, 0);
++        if (ret) {
++            error_report("vfio (%s): Error: "
++                         "unable to init event notifier: %s (%d)",
++                         __func__, strerror(-ret), -ret);
+         }
+ 
+         qemu_set_fd_handler(event_notifier_get_fd(&vector->interrupt),
+@@ -2471,8 +2480,10 @@ static void vfio_register_err_notifier(VFIOPCIDevice *vdev)
+         return;
+     }
+ 
+-    if (event_notifier_init(&vdev->err_notifier, 0)) {
+-        error_report("vfio: Unable to init event notifier for error detection");
++    ret = event_notifier_init(&vdev->err_notifier, 0);
++    if (ret) {
++        error_report("vfio (%s): Error: unable to init event notifier: %s (%d)"
++            " for error detection", __func__, strerror(-ret), -ret);
+         vdev->pci_aer = false;
+         return;
+     }
+@@ -2553,7 +2564,7 @@ static void vfio_register_req_notifier(VFIOPCIDevice *vdev)
+ {
+     struct vfio_irq_info irq_info = { .argsz = sizeof(irq_info),
+                                       .index = VFIO_PCI_REQ_IRQ_INDEX };
+-    int argsz;
++    int argsz, ret;
+     struct vfio_irq_set *irq_set;
+     int32_t *pfd;
+ 
+@@ -2566,8 +2577,10 @@ static void vfio_register_req_notifier(VFIOPCIDevice *vdev)
+         return;
+     }
+ 
+-    if (event_notifier_init(&vdev->req_notifier, 0)) {
+-        error_report("vfio: Unable to init event notifier for device request");
++    ret = event_notifier_init(&vdev->req_notifier, 0);
++    if (ret) {
++        error_report("vfio (%s): Error: unable to init event notifier: %s (%d)"
++            " for device request", __func__, strerror(-ret), -ret);
+         return;
+     }
+ 
+-- 
+1.8.3.1
 
-> ---
->  hw/core/loader.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 4593061445..def4766dbb 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -899,7 +899,7 @@ int rom_add_file(const char *file, const char *fw_dir=
-,
->          return -1;
->      }
->
-> -    rom =3D g_malloc0(sizeof(*rom));
-> +    rom =3D g_new0(Rom, 1);
->      rom->name =3D g_strdup(file);
->      rom->path =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, rom->name);
->      rom->as =3D as;
-> @@ -996,7 +996,7 @@ MemoryRegion *rom_add_blob(const char *name, const vo=
-id *blob, size_t len,
->      Rom *rom;
->      MemoryRegion *mr =3D NULL;
->
-> -    rom           =3D g_malloc0(sizeof(*rom));
-> +    rom           =3D g_new0(Rom, 1);
->      rom->name     =3D g_strdup(name);
->      rom->as       =3D as;
->      rom->addr     =3D addr;
-> @@ -1039,7 +1039,7 @@ int rom_add_elf_program(const char *name, void *dat=
-a, size_t datasize,
->  {
->      Rom *rom;
->
-> -    rom           =3D g_malloc0(sizeof(*rom));
-> +    rom =3D g_new0(Rom, 1);
->      rom->name     =3D g_strdup(name);
->      rom->addr     =3D addr;
->      rom->datasize =3D datasize;
-> --
-> 2.14.2
->
->
 
