@@ -1,49 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e2vDF-0008Ek-CJ
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Oct 2017 04:20:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54422)
+	id 1e2vMO-0003sK-P2
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Oct 2017 04:30:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56908)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1e2vDC-0008C6-Ek
-	for qemu-trivial@nongnu.org; Fri, 13 Oct 2017 04:20:55 -0400
+	(envelope-from <thuth@redhat.com>) id 1e2vML-0003qi-QI
+	for qemu-trivial@nongnu.org; Fri, 13 Oct 2017 04:30:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1e2vDB-0000V1-Ih
-	for qemu-trivial@nongnu.org; Fri, 13 Oct 2017 04:20:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:23866)
+	(envelope-from <thuth@redhat.com>) id 1e2vMK-0007T5-UP
+	for qemu-trivial@nongnu.org; Fri, 13 Oct 2017 04:30:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55248)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1e2vD7-0000SP-AV; Fri, 13 Oct 2017 04:20:49 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e2vME-0007M9-I7; Fri, 13 Oct 2017 04:30:14 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6D50F7EA87;
-	Fri, 13 Oct 2017 08:20:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 6D50F7EA87
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 64C7A641C5;
+	Fri, 13 Oct 2017 08:30:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 64C7A641C5
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=famz@redhat.com
-Received: from localhost (ovpn-12-113.pek2.redhat.com [10.72.12.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DC8945D6A3;
-	Fri, 13 Oct 2017 08:20:47 +0000 (UTC)
-Date: Fri, 13 Oct 2017 16:20:46 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.33.192.189] (dhcp-192-189.str.redhat.com [10.33.192.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 87E0E60176;
+	Fri, 13 Oct 2017 08:30:10 +0000 (UTC)
+To: Fam Zheng <famz@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20171013082046.GA2756@lemon>
 References: <20171013012455.10737-1-famz@redhat.com>
 	<20171013012455.10737-2-famz@redhat.com>
 	<2d524426-1467-8d9b-f216-1014d5b18f00@redhat.com>
+	<20171013082046.GA2756@lemon>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <048daae2-370a-e8cf-ef75-aee2e7a6508a@redhat.com>
+Date: Fri, 13 Oct 2017 10:30:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2d524426-1467-8d9b-f216-1014d5b18f00@redhat.com>
-User-Agent: Mutt/1.9.0 (2017-09-02)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20171013082046.GA2756@lemon>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 13 Oct 2017 08:20:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 13 Oct 2017 08:30:13 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
@@ -60,30 +63,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Oct 2017 08:20:55 -0000
+X-List-Received-Date: Fri, 13 Oct 2017 08:30:22 -0000
 
-On Fri, 10/13 10:04, Thomas Huth wrote:
-> On 13.10.2017 03:24, Fam Zheng wrote:
-> > Signed-off-by: Fam Zheng <famz@redhat.com>
-> > ---
-> >  MAINTAINERS | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 772ac209e1..da3c78df47 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -982,7 +982,7 @@ S: Supported
-> >  F: include/hw/scsi/*
-> >  F: include/scsi/*
-> >  F: hw/scsi/*
-> > -F: util/scsi*
-> > +F: scsi/*
-> 
-> scsi/* is already covered by the new "Block SCSI subsystem" section, so
-> I think you can also simply remove that line instead.
+On 13.10.2017 10:20, Fam Zheng wrote:
+> On Fri, 10/13 10:04, Thomas Huth wrote:
+>> On 13.10.2017 03:24, Fam Zheng wrote:
+>>> Signed-off-by: Fam Zheng <famz@redhat.com>
+>>> ---
+>>>  MAINTAINERS | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index 772ac209e1..da3c78df47 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -982,7 +982,7 @@ S: Supported
+>>>  F: include/hw/scsi/*
+>>>  F: include/scsi/*
+>>>  F: hw/scsi/*
+>>> -F: util/scsi*
+>>> +F: scsi/*
+>>
+>> scsi/* is already covered by the new "Block SCSI subsystem" section, s=
+o
+>> I think you can also simply remove that line instead.
+>=20
+> I didn't notice that section existing, should the two be merged into on=
+e?
 
-I didn't notice that section existing, should the two be merged into one?
+I don't think so. One section is about the emulated SCSI devices, and
+the other one about the SCSI block backend code, so that's two different
+parts.
 
-Fam
+Some other ideas though:
+
+1) I think "include/scsi/*" should be removed from the SCSI devices
+section, it is already handled in the "Block SCSI subsystem" - and
+headers that are related to devices should go into include/hw/scsi/
+anyway instead.
+
+2) The orphan LSI53C895A section could maybe be removed from the
+MAINTAINERS file? It's of no use in its current "Orphan" state, and the
+file is already covered by the generic SCSI devices section.
+
+ Thomas
 
