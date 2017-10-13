@@ -1,65 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e2gUL-0003Bm-Bx
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2017 12:37:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55261)
+	id 1e2oin-0004WN-Hi
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2017 21:25:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e2gUJ-0003Ar-Jf
-	for qemu-trivial@nongnu.org; Thu, 12 Oct 2017 12:37:36 -0400
+	(envelope-from <famz@redhat.com>) id 1e2oil-0004Uu-Pn
+	for qemu-trivial@nongnu.org; Thu, 12 Oct 2017 21:25:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1e2gUI-0005Sk-S3
-	for qemu-trivial@nongnu.org; Thu, 12 Oct 2017 12:37:35 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:45522)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1e2gUG-0005Qk-Oj; Thu, 12 Oct 2017 12:37:32 -0400
-Received: by mail-wm0-x243.google.com with SMTP id q124so14795977wmb.0;
-	Thu, 12 Oct 2017 09:37:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=MZIA9Fo1x6Uzk+iTeV5gsm1gC/QSAl0MCt4LIDnor90=;
-	b=KQOGhN02IdtvDbn0mx3zYVMys+FJEVfLxuNAN+K5Io0PGNvePrr2fsLkQ+lEQC61iL
-	bxuecj6cDxU1en8q0F174Br48Ujvgk54itLxNQN9VashDM0bYk70WVjshwyXjXSvlr4V
-	4NBWwDXqRR1mNTjo2qeaUZbrSUz6UyvCGdvz86CjBfzbAHm65Q8ERbqiFFIPEtWIUmYy
-	ZBbZRCIDZ4rAIzpuUQbhLbkF6UKtXgBOQPixTfq01Gs3wHTNNH2skuAlpdJRRnK3ex6Q
-	a1DDpwoeM9oJ9JmOBWpMUfFz+Hr9Wc03BpSb9CmCrziAY2z+t3tgmYYsvuI9F54sIF9H
-	V/Dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=MZIA9Fo1x6Uzk+iTeV5gsm1gC/QSAl0MCt4LIDnor90=;
-	b=IgRRNIECVQ9+WvxTOqqdFFJP+Wt8Vr8MLYagGDUHjpooTRQjYJhdgXuD3uMdZosFts
-	LtYbDYR0HUYtyEcCg0vfCwPfT5T6UZsIxk+GBqP0DbEQZxdStBxwOt5fQRg0FIYfUgSg
-	+HmH8xpCgssDEcnn7BNwBhOdbQhIKIbkb3g/P0kRu7BoGeEYQSef1pO86TCd/EcbLeB0
-	+1bcV/nQ8KC+P6y0rzmEz9lrGJilQMcoC8I6Tpu1mYx6ozeBK8fdHU7fFxw/5z5VDope
-	+LC0AIViwgU09YuVXDbJ3RJ64wyPLuhfbv74R6gaL7AudwvPuIxawxHqfQ4USvSqRzV0
-	3i6w==
-X-Gm-Message-State: AMCzsaVAtZ/4E1kkcCngsEgl4qkZ7LtNoiWGFFnEaTi82uuGxNXi9dUO
-	0Jqjjx0CSUr5bhO0PoOgc0lKKVf/lU2zpSWSnDk=
-X-Google-Smtp-Source: AOwi7QDlRwNWFw0Lgm23ZmrU5B7s+53S1eVTnGgj7htE8ITxWoWzhDTpInRuR8f7LdgCXuEm5bHKO5wk1iYVrkkfN9w=
-X-Received: by 10.28.2.2 with SMTP id 2mr2616482wmc.128.1507826250320; Thu, 12
-	Oct 2017 09:37:30 -0700 (PDT)
-MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.157.2 with HTTP; Thu, 12 Oct 2017 09:36:59 -0700 (PDT)
-In-Reply-To: <1507814267-21400-1-git-send-email-peter.maydell@linaro.org>
-References: <1507814267-21400-1-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Thu, 12 Oct 2017 09:36:59 -0700
-X-Google-Sender-Auth: kzExxpo5DjndoCd0d3je9HO0BK0
-Message-ID: <CAKmqyKN56URJjH06gyOJA3HS86N8ap4WkRCL97RHN7Y-P7bBXg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Patch Tracking <patches@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] include/hw/or-irq.h: Drop
- unused in_irqs field
+	(envelope-from <famz@redhat.com>) id 1e2oil-00014X-1J
+	for qemu-trivial@nongnu.org; Thu, 12 Oct 2017 21:25:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56284)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1e2oig-0000xm-Vo; Thu, 12 Oct 2017 21:24:59 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D25EE267C2;
+	Fri, 13 Oct 2017 01:24:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D25EE267C2
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=famz@redhat.com
+Received: from lemon.redhat.com (ovpn-12-49.pek2.redhat.com [10.72.12.49])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 94E1F5D9CB;
+	Fri, 13 Oct 2017 01:24:56 +0000 (UTC)
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 13 Oct 2017 09:24:53 +0800
+Message-Id: <20171013012455.10737-1-famz@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 13 Oct 2017 01:24:58 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 0/2] MAINTAINERS: Two small fixes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,42 +50,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Oct 2017 16:37:36 -0000
+X-List-Received-Date: Fri, 13 Oct 2017 01:25:04 -0000
 
-On Thu, Oct 12, 2017 at 6:17 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The struct OrIRQState has an unused member field in_irqs.
-> This is a legacy of earlier versions of the patch; the
-> code that used it was dropped from the final version of
-> the code that went into master, but we forgot to delete
-> the no-longer-used struct field. Do so now.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Good catch.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Fam Zheng (2):
+  MAINTAINERS: Fix scsi path
+  MAINTAINERS: Drop Sun4v nonexistent file
 
-Thanks,
-Alistair
+ MAINTAINERS | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> ---
->  include/hw/or-irq.h | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/include/hw/or-irq.h b/include/hw/or-irq.h
-> index d400a81..fd900fc 100644
-> --- a/include/hw/or-irq.h
-> +++ b/include/hw/or-irq.h
-> @@ -38,7 +38,6 @@ struct OrIRQState {
->      DeviceState parent_obj;
->
->      qemu_irq out_irq;
-> -    qemu_irq *in_irqs;
->      bool levels[MAX_OR_LINES];
->      uint16_t num_lines;
->  };
-> --
-> 2.7.4
->
->
+-- 
+2.13.5
+
 
