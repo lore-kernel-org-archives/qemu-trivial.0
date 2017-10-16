@@ -1,41 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e44cI-0002WJ-12
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 08:35:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47344)
+	id 1e49jr-0000j6-BS
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 14:03:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36976)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <voipio@kos.to>) id 1e44cA-0002So-0D
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 08:35:32 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1e49jo-0000gw-Ol
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 14:03:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <voipio@kos.to>) id 1e44c9-0006DF-8U
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 08:35:26 -0400
-Received: from jessie.kos.to ([212.47.231.226]:52366 helo=pilvi.kos.to)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <voipio@kos.to>)
-	id 1e44br-000609-KI; Mon, 16 Oct 2017 08:35:20 -0400
-Received: from kos.to (jessie.kos.to [212.47.231.226])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by pilvi.kos.to (Postfix) with ESMTPSA id 3444A2C19B0;
-	Mon, 16 Oct 2017 12:35:06 +0000 (UTC)
-Received: (nullmailer pid 4674 invoked by uid 1000);
-	Mon, 16 Oct 2017 12:35:05 -0000
-Date: Mon, 16 Oct 2017 12:35:05 +0000
-From: Riku Voipio <riku.voipio@iki.fi>
-To: Carlo Marcelo Arenas =?utf-8?B?QmVsw7Nu?= <carenas@gmail.com>
-Cc: qemu-devel@nongnu.org, laurent@vivier.eu, qemu-trivial@nongnu.org
-Message-ID: <20171016123505.GC1918@kos.to>
-References: <20170926041420.32673-1-carenas@gmail.com>
+	(envelope-from <mjt@tls.msk.ru>) id 1e49jk-0005zY-OE
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 14:03:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:36707)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1e49jk-0005ms-G1
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 14:03:36 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3355440D0A;
+	Mon, 16 Oct 2017 21:03:25 +0300 (MSK)
+Received: from [192.168.177.99] (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with ESMTP id 06C613C3;
+	Mon, 16 Oct 2017 21:03:25 +0300 (MSK)
+To: Marco A L Barbosa <malbarbo@gmail.com>, qemu-trivial@nongnu.org
+References: <20171005143553.23784-1-malbarbo@gmail.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <8f68a2f7-164a-f4ad-ff6f-beb9336cac6b@msgid.tls.msk.ru>
+Date: Mon, 16 Oct 2017 21:03:24 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
+In-Reply-To: <20171005143553.23784-1-malbarbo@gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20170926041420.32673-1-carenas@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.47.231.226
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: remove duplicate break in
- syscall
+X-Received-From: 86.62.121.231
+Subject: Re: [Qemu-trivial] [PATCH] linux-user: Add AT_SECURE auxval
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,33 +45,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2017 12:35:33 -0000
+X-List-Received-Date: Mon, 16 Oct 2017 18:03:41 -0000
 
-On Mon, Sep 25, 2017 at 09:14:20PM -0700, Carlo Marcelo Arenas Bel=C3=B3n=
- wrote:
-> likely introduced in 3532fa7402cda16f7b95261b0339c58630051f0b
->=20
-> Signed-off-by: Carlo Marcelo Arenas Bel=C3=B3n <carenas@gmail.com>
+I'm Cc'ing this to qemu-devel@ for review, since this patch hasn't got any reviews.
+Please the next time always inclure qemu-devel@ and other addresses according
+to the output of scripts/get_maintainer.pl
 
-Applied to linux-user, thanks
+Thanks,
 
+/mjt
+
+05.10.2017 17:35, Marco A L Barbosa wrote:
+> This is necessary to run android ndk applications. Without this patch, the
+> following error is generated:
+> 
+> FATAL: kernel did not supply AT_SECURE
+> 
+> Should AT_SECURE from host be considered or is the ids comparisons enough?
+> 
+> Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
 > ---
->  linux-user/syscall.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 9b6364a266..3ef4d1c568 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -3131,7 +3131,6 @@ set_timeout:
->          case TARGET_SO_RCVLOWAT:
->  		optname =3D SO_RCVLOWAT;
->  		break;
-> -            break;
->          default:
->              goto unimplemented;
->          }
-> --=20
-> 2.14.1
->=20
+>  linux-user/elfload.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index 79062882ba..177ce30e89 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -1354,7 +1354,7 @@ struct exec
+>                                   ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
+>  #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+>  
+> -#define DLINFO_ITEMS 14
+> +#define DLINFO_ITEMS 15
+>  
+>  static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
+>  {
+> @@ -1782,6 +1782,7 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+>      NEW_AUX_ENT(AT_HWCAP, (abi_ulong) ELF_HWCAP);
+>      NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
+>      NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
+> +    NEW_AUX_ENT(AT_SECURE, (abi_ulong) (getuid() != geteuid() || getgid() != getegid()));
+>  
+>  #ifdef ELF_HWCAP2
+>      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+> 
+
 
