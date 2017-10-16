@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4C0u-0006IF-B0
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:29:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48148)
+	id 1e4C5B-0000vb-Vs
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:33:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1e4C0s-0006GP-C3
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:29:27 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1e4C59-0000rH-BA
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:33:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1e4C0r-0008Gd-Ev
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:29:26 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:40400
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
-	id 1e4C0m-0008Eh-Ic; Mon, 16 Oct 2017 16:29:20 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id BB539DA8480;
-	Mon, 16 Oct 2017 22:29:18 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id 6lF5EbTd5BXM; Mon, 16 Oct 2017 22:29:18 +0200 (CEST)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 3BF0FDA8424;
-	Mon, 16 Oct 2017 22:29:18 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 245F6462248; Mon, 16 Oct 2017 22:29:18 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Date: Mon, 16 Oct 2017 22:29:12 +0200
-Message-Id: <20171016202912.1117-1-sw@weilnetz.de>
+	(envelope-from <mjt@tls.msk.ru>) id 1e4C58-00021B-IT
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:33:51 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:53975)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1e4C53-0001vy-Ql; Mon, 16 Oct 2017 16:33:45 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 3BCAD40D2D;
+	Mon, 16 Oct 2017 23:33:43 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 5A0E2B32;
+	Mon, 16 Oct 2017 23:33:43 +0300 (MSK)
+Received: (nullmailer pid 12327 invoked by uid 1000);
+	Mon, 16 Oct 2017 20:33:42 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 16 Oct 2017 23:33:36 +0300
+Message-Id: <69fa4f9568b18b9b1726a3e51a0bc48478798ad4.1508185933.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH] oslib-posix: Fix compiler warning and some
- data types
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 09/14] include/hw/or-irq.h: Drop unused
+ in_irqs field
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,88 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2017 20:29:27 -0000
+X-List-Received-Date: Mon, 16 Oct 2017 20:33:52 -0000
 
-gcc warning:
+From: Peter Maydell <peter.maydell@linaro.org>
 
-/qemu/util/oslib-posix.c:304:11: error:
- variable =E2=80=98addr=E2=80=99 might be clobbered by =E2=80=98longjmp=E2=
-=80=99 or =E2=80=98vfork=E2=80=99
- [-Werror=3Dclobbered]
+The struct OrIRQState has an unused member field in_irqs.
+This is a legacy of earlier versions of the patch; the
+code that used it was dropped from the final version of
+the code that went into master, but we forgot to delete
+the no-longer-used struct field. Do so now.
 
-Fix also some related data types:
-
-numpages, hpagesize are used as pointer offset.
-Always use size_t for them and also for the derived
-numpages_per_thread and size_per_thread.
-
-Avoid a type cast by declaring addr volatile.
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
+ include/hw/or-irq.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-v2: Fix more data types (partially as discussed with Richard)
-
-v3: Keep volatile type cast (suggested by Philippe and Paolo)
-
-Regards
-Stefan
-
- util/oslib-posix.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 80086c549f..382bd4a231 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -59,8 +59,8 @@
-=20
- struct MemsetThread {
-     char *addr;
--    uint64_t numpages;
--    uint64_t hpagesize;
-+    size_t numpages;
-+    size_t hpagesize;
-     QemuThread pgthread;
-     sigjmp_buf env;
+diff --git a/include/hw/or-irq.h b/include/hw/or-irq.h
+index d400a8120b..fd900fcf19 100644
+--- a/include/hw/or-irq.h
++++ b/include/hw/or-irq.h
+@@ -38,7 +38,6 @@ struct OrIRQState {
+     DeviceState parent_obj;
+ 
+     qemu_irq out_irq;
+-    qemu_irq *in_irqs;
+     bool levels[MAX_OR_LINES];
+     uint16_t num_lines;
  };
-@@ -301,11 +301,7 @@ static void sigbus_handler(int signal)
- static void *do_touch_pages(void *arg)
- {
-     MemsetThread *memset_args =3D (MemsetThread *)arg;
--    char *addr =3D memset_args->addr;
--    uint64_t numpages =3D memset_args->numpages;
--    uint64_t hpagesize =3D memset_args->hpagesize;
-     sigset_t set, oldset;
--    int i =3D 0;
-=20
-     /* unblock SIGBUS */
-     sigemptyset(&set);
-@@ -315,6 +311,10 @@ static void *do_touch_pages(void *arg)
-     if (sigsetjmp(memset_args->env, 1)) {
-         memset_thread_failed =3D true;
-     } else {
-+        char *addr =3D memset_args->addr;
-+        size_t numpages =3D memset_args->numpages;
-+        size_t hpagesize =3D memset_args->hpagesize;
-+        size_t i;
-         for (i =3D 0; i < numpages; i++) {
-             /*
-              * Read & write back the same value, so we don't
-@@ -351,7 +351,8 @@ static inline int get_memset_num_threads(int smp_cpus=
-)
- static bool touch_all_pages(char *area, size_t hpagesize, size_t numpage=
-s,
-                             int smp_cpus)
- {
--    uint64_t numpages_per_thread, size_per_thread;
-+    size_t numpages_per_thread;
-+    size_t size_per_thread;
-     char *addr =3D area;
-     int i =3D 0;
-=20
---=20
+-- 
 2.11.0
 
 
