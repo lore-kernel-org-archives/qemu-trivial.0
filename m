@@ -1,38 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4C5D-0000xm-MM
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:33:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49428)
+	id 1e4C5D-0000xy-Ud
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:33:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1e4C59-0000ri-T5
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:33:52 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1e4C59-0000rI-BL
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:33:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1e4C58-00021V-TB
+	(envelope-from <mjt@tls.msk.ru>) id 1e4C58-00021N-KM
 	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:33:51 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:58059)
+Received: from isrv.corpit.ru ([86.62.121.231]:36025)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1e4C53-0001w1-Qw; Mon, 16 Oct 2017 16:33:46 -0400
+	id 1e4C53-0001vx-Qz; Mon, 16 Oct 2017 16:33:46 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id B74BC40D0A;
-	Mon, 16 Oct 2017 23:33:42 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 252EA40D2C;
+	Mon, 16 Oct 2017 23:33:43 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id DBB07AF8;
-	Mon, 16 Oct 2017 23:33:42 +0300 (MSK)
-Received: (nullmailer pid 12308 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 2A462B31;
+	Mon, 16 Oct 2017 23:33:43 +0300 (MSK)
+Received: (nullmailer pid 12325 invoked by uid 1000);
 	Mon, 16 Oct 2017 20:33:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Date: Mon, 16 Oct 2017 23:33:27 +0300
-Message-Id: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 16 Oct 2017 23:33:35 +0300
+Message-Id: <52aa5644e8e89ebfc3b1d0abdb7cc502ce9db599.1508185933.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
+In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 00/14] Trivial patches for 2017-10-16
+Subject: [Qemu-trivial] [PULL 08/14] io: Add missing GCC_FMT_ATTR (fix
+ -Werror=suggest-attribute=format)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -44,77 +50,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2017 20:33:52 -0000
+X-List-Received-Date: Mon, 16 Oct 2017 20:33:53 -0000
 
-Here's a set of trivial changes accumulated so far.
-Not including large series by Philippe Mathieu-Daud=C3=A9.
+From: Stefan Weil <sw@weilnetz.de>
 
-The following changes since commit c5bbcaa4b7c0f8a322bebe9ec563560178a68b=
-55:
+This fixes a compiler warning:
 
-  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into stagi=
-ng (2017-10-16 17:29:16 +0100)
+/qemu/io/channel-websock.c:163:5: error:
+ function might be possible candidate for =E2=80=98gnu_printf=E2=80=99 fo=
+rmat attribute
+ [-Werror=3Dsuggest-attribute=3Dformat]
 
-are available in the git repository at:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Acked-by: Daniel P. Berrange <berrange@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ io/channel-websock.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-  git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+diff --git a/io/channel-websock.c b/io/channel-websock.c
+index d1d471f86e..7bf1340958 100644
+--- a/io/channel-websock.c
++++ b/io/channel-websock.c
+@@ -151,9 +151,10 @@ enum {
+     QIO_CHANNEL_WEBSOCK_OPCODE_PONG =3D 0xA
+ };
+=20
+-static void qio_channel_websock_handshake_send_res(QIOChannelWebsock *io=
+c,
+-                                                   const char *resmsg,
+-                                                   ...)
++static void GCC_FMT_ATTR(2, 3)
++qio_channel_websock_handshake_send_res(QIOChannelWebsock *ioc,
++                                       const char *resmsg,
++                                       ...)
+ {
+     va_list vargs;
+     char *response;
+--=20
+2.11.0
 
-for you to fetch changes up to 6b4f250bfc529bdf73a10ca6873a460175e666cc:
-
-  Add myself as maintainer for TPM code (2017-10-16 23:17:44 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2017-10-16
-
-----------------------------------------------------------------
-Anthony PERARD (1):
-      ui/gtk: Fix deprecation of vte_terminal_copy_clipboard
-
-Carlo Marcelo Arenas Bel=C3=B3n (2):
-      linux-user: remove duplicate break in syscall
-      gitignore: ignore check-qlit test
-
-Eduardo Otubo (1):
-      filter-mirror: segfault when specifying non existent device
-
-Emilio G. Cota (1):
-      futex: add missing header guards
-
-Fam Zheng (3):
-      MAINTAINERS: Clean up SCSI device section
-      MAINTAINERS: Fix Sun4v file
-      MAINTAINERS: Track default-configs/pci.mak
-
-Marco A L Barbosa (1):
-      linux-user: Add some random ioctls
-
-Markus Armbruster (1):
-      os-posix: Drop misleading comment
-
-Michael Tokarev (1):
-      qemu-doc.texi: remove trailing whitespace
-
-Peter Maydell (1):
-      include/hw/or-irq.h: Drop unused in_irqs field
-
-Stefan Berger (1):
-      Add myself as maintainer for TPM code
-
-Stefan Weil (1):
-      io: Add missing GCC_FMT_ATTR (fix -Werror=3Dsuggest-attribute=3Dfor=
-mat)
-
- MAINTAINERS               | 13 +++++--------
- include/hw/or-irq.h       |  1 -
- include/qemu/futex.h      |  5 +++++
- io/channel-websock.c      |  7 ++++---
- linux-user/ioctls.h       |  5 +++++
- linux-user/syscall.c      |  2 +-
- linux-user/syscall_defs.h |  7 +++++++
- net/filter-mirror.c       |  6 ++++++
- os-posix.c                |  1 -
- qemu-doc.texi             |  2 +-
- tests/.gitignore          |  1 +
- ui/gtk.c                  |  5 +++++
- 12 files changed, 40 insertions(+), 15 deletions(-)
 
