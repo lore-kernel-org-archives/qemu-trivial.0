@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4CE3-0006n6-KB
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:43:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52030)
+	id 1e4CNh-0006Kb-9N
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 16:53:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54748)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1e4CDz-0006gT-79
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:43:00 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1e4CNe-0006IE-Mo
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:52:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1e4CDx-0006TA-9o
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:42:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48277)
+	(envelope-from <mjt@tls.msk.ru>) id 1e4CNd-0004gp-Ul
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 16:52:58 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:46185)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1e4CDs-0006Ph-Sp; Mon, 16 Oct 2017 16:42:53 -0400
+	id 1e4CNZ-0004cA-Kb; Mon, 16 Oct 2017 16:52:53 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 29C3B40D2C;
-	Mon, 16 Oct 2017 23:42:52 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 828B840D2C;
+	Mon, 16 Oct 2017 23:52:52 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id BBEC5C3F;
+	by tsrv.corpit.ru (Postfix) with SMTP id 14A5AB32;
 	Mon, 16 Oct 2017 23:33:44 +0300 (MSK)
-Received: (nullmailer pid 12334 invoked by uid 1000);
+Received: (nullmailer pid 12319 invoked by uid 1000);
 	Mon, 16 Oct 2017 20:33:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Fam Zheng <famz@redhat.com>, qemu-trivial@nongnu.org,
+Cc: "Emilio G. Cota" <cota@braap.org>, qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 16 Oct 2017 23:33:39 +0300
-Message-Id: <534fd8142fae81b621ff61524f319163d2bb1f7b.1508185933.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 16 Oct 2017 23:33:32 +0300
+Message-Id: <f3245d63a0df51184fdf12f483436329ef322d35.1508185933.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
 References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
 References: <cover.1508185933.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 12/14] MAINTAINERS: Track
- default-configs/pci.mak
+Subject: [Qemu-trivial] [PULL 05/14] futex: add missing header guards
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,31 +49,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2017 20:43:00 -0000
+X-List-Received-Date: Mon, 16 Oct 2017 20:52:59 -0000
 
-From: Fam Zheng <famz@redhat.com>
+From: "Emilio G. Cota" <cota@braap.org>
 
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Fam Zheng <famz@redhat.com>
+The header file was introduced by fbcc3e5 ("qemu-thread: optimize QemuLoc=
+kCnt
+with futexes on Linux", 2017-01-16) without header guards. Add them.
+
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ include/qemu/futex.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6ce393f50d..162e914a2d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -934,6 +934,7 @@ F: hw/pci/*
- F: hw/pci-bridge/*
- F: docs/pci*
- F: docs/specs/*pci*
-+F: default-configs/pci.mak
- 
- ACPI/SMBIOS
- M: Michael S. Tsirkin <mst@redhat.com>
--- 
+diff --git a/include/qemu/futex.h b/include/qemu/futex.h
+index bb7dc9e296..91ae88966e 100644
+--- a/include/qemu/futex.h
++++ b/include/qemu/futex.h
+@@ -11,6 +11,9 @@
+  *
+  */
+=20
++#ifndef QEMU_FUTEX_H
++#define QEMU_FUTEX_H
++
+ #include <sys/syscall.h>
+ #include <linux/futex.h>
+=20
+@@ -34,3 +37,5 @@ static inline void qemu_futex_wait(void *f, unsigned va=
+l)
+         }
+     }
+ }
++
++#endif /* QEMU_FUTEX_H */
+--=20
 2.11.0
 
 
