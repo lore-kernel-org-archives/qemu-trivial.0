@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4V12-0002k5-75
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:46:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47377)
+	id 1e4V15-0002mo-CG
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:46:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47404)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0z-0002gS-5B
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:50 -0400
+	id 1e4V10-0002iF-NL
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0y-0003iA-Cj
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:49 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:47859)
+	id 1e4V10-0003j0-1D
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:50 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:51386)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0u-0003gJ-TR; Tue, 17 Oct 2017 12:46:44 -0400
-Received: by mail-qt0-x243.google.com with SMTP id z50so4921339qtj.4;
-	Tue, 17 Oct 2017 09:46:44 -0700 (PDT)
+	id 1e4V0x-0003hp-Tv; Tue, 17 Oct 2017 12:46:47 -0400
+Received: by mail-qk0-x243.google.com with SMTP id 17so2819733qkq.8;
+	Tue, 17 Oct 2017 09:46:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ML60JehRDLpgid1nj+2rgPTzVAslf7kiV9IEUWmWMTg=;
-	b=PtZGVl7ZCaK0FqajNiuQLnaWITfosAf5bHl39NeD3GCSV0FatjjxYmCpSra7A7uEYq
-	ennx8Uv2SnSvghLrj7CfFS2wBSZBBdDRICo2Bwo2Izb2n3XOiyaHYnvbZIYTmreVHJOq
-	/m3m3jcWqk7EEMngzM3F/o18czdFTgCiMosGHJ5c3nsiAdcRMflyTuFmsoRZAfP9ts5F
-	zeDj82ZvUr3RQAuagH10CIO44BbSQupNZuO4JXdW8klW8Xemr+of7RcC9CGV9xCMYI8d
-	DNwrpAR1g4kT7GjNk5NDVPAau5EV8TsMCcrnhN20tZrLb2Sfigpmq/+QBTr6edR0gPlh
-	YA8w==
+	bh=mUyULARCrODKwvARoNwGEDj8rUT0zNCfSozT3++jstc=;
+	b=BrSK1WW+YzrKOg5mhsptJG3ZPs8yOlEBYRl6mi4B9QGom5BimDQ3r63jcCENPikuIW
+	VUw4sX2GPbEugj8IMSGdNgLT1o04R8SyZdreCcLKc5CqCESTBWvUCXGCUhd4Y/a7EZfw
+	pZXAlxrYA4ppzlVe2ZzNOsQlyZG2kvaziuDtSGia4PwBvGPbOm4btE+NkXDym/pnHcx/
+	mCUIHqaV7RYD1oq1xUgpZliXKBSDgYVu7iiGnLd7tdNEXudnZClm5GY8s8lLLirj/nhF
+	/1TFOyqCwdMneNCov+BJHKEwocv8033OGW9cJ54s3CQ6TikcHhxNltKfvUP9T+sE+3Xv
+	2GcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ML60JehRDLpgid1nj+2rgPTzVAslf7kiV9IEUWmWMTg=;
-	b=U3k9WWf1J1/cKxL2rBP7HZAzDhEMuUNa5I9psbkVjyHFfonjhCoWYWm4VcSgHM8N0Z
-	er5CS8a544wmL9vLUSkd/KJe8HLAeq572tjKOEjeOji1Ja+ZgJzZRkiph2dbx9PCmFTp
-	aBPWDsR4sdnayQwYTb5bY3AN69PPINDCbca7UNqnMECZqADO5koz8sSdU8S2RxQPQj+V
-	UxfbyPFfCkAbKaFhh267Sz2xARj9LBdsX7MSVCuxyNfL3rg0qFxUwOabIPrGv25ifGCm
-	L5TtjlQPhlnkvG5oEQ+rwuXzI1zsZfryDdfpg6l/q59jL39ki0J4EUOW1DLonK2d3jip
-	owJA==
-X-Gm-Message-State: AMCzsaVMEr3ENwe0T+r+jLAFOm8VnfnuB4tuTm7TRdnWHY+gvGgi0meR
-	oiaLbZ7FoMqtc4YhcFxzZvE=
-X-Google-Smtp-Source: AOwi7QCFQYzi9R16qtM5LOk8sO/eY+Sf814f/54Luor1dfq3JeCuNA6ruto2YtRt+VgYj141NWXIeQ==
-X-Received: by 10.200.44.77 with SMTP id e13mr21088103qta.238.1508258804321;
-	Tue, 17 Oct 2017 09:46:44 -0700 (PDT)
+	bh=mUyULARCrODKwvARoNwGEDj8rUT0zNCfSozT3++jstc=;
+	b=r12KAl618XUVY0jUFU0t2E/yeoLEkvS41UPwAfaKwf66kqRvyiCMk86vXbDPSb4YWa
+	cTuNXovNDsC3KX1DwxWhdx4fYDVFmyr1b5U0+htVJNJQBZ/pg+aTvc5nCzdQh4BipsRT
+	nZ8qAhMtKOPjHBY+NfNFEFjWCKPTcZpt3jcANaLbtBBCSrm/FLwFzF+gkYSZiycr2n4J
+	oPdpOc0iePacqIZAll1F8xXM85X+byP/d9WXxjsJ5tSygkblr9Lkd5XpEcTer1uTakxv
+	POStO+t6s5RosiW7KPFkfrNRc7FEEH/idU2LaoUURbCxlbgdvSDPnSTIMHIW77Fe2z7F
+	96hQ==
+X-Gm-Message-State: AMCzsaVNWRN7/VAOGrv/s732MjI5mnpvKYFxJgbjCvFaIWhXD21vlCO2
+	+QFNNbrnYsJ+MQx9GQBpcnE=
+X-Google-Smtp-Source: ABhQp+SZKIHlDfwayBm5GXo1ufMPh+TVGdDWS5DEtOrSTh5FCAZPAZ9Cr2R/09nRijcMsNEWbo+IPA==
+X-Received: by 10.55.160.135 with SMTP id j129mr18195999qke.274.1508258807460; 
+	Tue, 17 Oct 2017 09:46:47 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.46.41
+	q49sm6687653qtq.80.2017.10.17.09.46.44
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:46:43 -0700 (PDT)
+	Tue, 17 Oct 2017 09:46:46 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,8 +54,8 @@ To: Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 17 Oct 2017 13:44:17 -0300
-Message-Id: <20171017164426.25277-34-f4bug@amsat.org>
+Date: Tue, 17 Oct 2017 13:44:18 -0300
+Message-Id: <20171017164426.25277-35-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
 References: <20171017164426.25277-1-f4bug@amsat.org>
@@ -64,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v3 33/42] hw/acpi: ACPI_PM_* defines are not
- restricted to i386 arch
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH v3 34/42] hw/acpi/ich9: extract
+ ACPI_PM_PROP_TCO_ENABLED from i386/pc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,73 +78,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 16:46:50 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 16:46:51 -0000
 
-this allows to remove the old i386/pc dependency on acpi/core.
+enable_tco is specific to i386/pc.
 
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/acpi/acpi.h | 11 +++++++++++
- include/hw/i386/pc.h   | 11 -----------
- hw/acpi/core.c         |  1 -
- 3 files changed, 11 insertions(+), 12 deletions(-)
+ include/hw/acpi/ich9.h | 2 ++
+ include/hw/i386/pc.h   | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
-index 7b3d93cf0d..39ff512129 100644
---- a/include/hw/acpi/acpi.h
-+++ b/include/hw/acpi/acpi.h
-@@ -39,6 +39,17 @@
- #define ACPI_PM2_REGISTER_WIDTH         8
- #define ACPI_PM_TIMER_WIDTH             32
+diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
+index a352c94fde..59aeb06393 100644
+--- a/include/hw/acpi/ich9.h
++++ b/include/hw/acpi/ich9.h
+@@ -63,6 +63,8 @@ typedef struct ICH9LPCPMRegs {
+     TCOIORegs tco_regs;
+ } ICH9LPCPMRegs;
  
-+/* PC-style peripherals (also used by other machines).  */
-+#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
-+#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
-+#define ACPI_PM_PROP_S4_VAL "s4_val"
-+#define ACPI_PM_PROP_SCI_INT "sci_int"
-+#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
-+#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
-+#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
-+#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
-+#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
++#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
 +
- /* PM Timer ticks per second (HZ) */
- #define PM_TIMER_FREQUENCY  3579545
- 
+ void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
+                   bool smm_enabled,
+                   qemu_irq sci_irq);
 diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 087d184ef5..6335e2bf47 100644
+index 6335e2bf47..b1b4c918af 100644
 --- a/include/hw/i386/pc.h
 +++ b/include/hw/i386/pc.h
-@@ -151,17 +151,6 @@ struct PCMachineClass {
+@@ -151,8 +151,6 @@ struct PCMachineClass {
  #define PC_MACHINE_CLASS(klass) \
      OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
  
--/* PC-style peripherals (also used by other machines).  */
+-#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
 -
--#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
--#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
--#define ACPI_PM_PROP_S4_VAL "s4_val"
--#define ACPI_PM_PROP_SCI_INT "sci_int"
--#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
--#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
--#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
--#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
--#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
- #define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
- 
  /* parallel.c */
-diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-index cd0a1d357b..eb9b76f70b 100644
---- a/hw/acpi/core.c
-+++ b/hw/acpi/core.c
-@@ -21,7 +21,6 @@
- #include "qemu/osdep.h"
- #include "sysemu/sysemu.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/acpi/acpi.h"
- #include "hw/nvram/fw_cfg.h"
- #include "qemu/config-file.h"
+ 
+ void parallel_hds_isa_init(ISABus *bus, int n);
 -- 
 2.15.0.rc0
 
