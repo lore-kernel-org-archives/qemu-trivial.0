@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4V1X-0003Jl-5d
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:47:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47756)
+	id 1e4ahK-0001uF-AI
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 18:50:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50162)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1U-0003Gg-8t
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:21 -0400
+	id 1e4ahG-0001sz-0N
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 18:50:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1T-0003xd-6P
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:20 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:54646)
+	id 1e4ahF-0007XH-5A
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 18:50:50 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:50056)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1Q-0003wV-HU; Tue, 17 Oct 2017 12:47:16 -0400
-Received: by mail-qt0-x241.google.com with SMTP id z19so4900839qtg.11;
-	Tue, 17 Oct 2017 09:47:16 -0700 (PDT)
+	id 1e4ah8-0007R8-Qv; Tue, 17 Oct 2017 18:50:42 -0400
+Received: by mail-qt0-x243.google.com with SMTP id k31so7069517qta.6;
+	Tue, 17 Oct 2017 15:50:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=8ROr7wKR1HNM3arK+N3XS2nqKzhARhHINhAJSV6TCM0=;
-	b=HeqFcnx7wVPgiTKeHUZiIoCQMNxiMXgRUriroE5p3Tlzh8sIqHcGnp0XsIl9N6AaKA
-	51gakPehql+EmmvLst0JHq2KETQpaWjdt5XI3c1+HrwMJ7ZmXulu2eYt9CFnkpj7easQ
-	9aYiyvUBDhuUF8r8j6/yOcNq6gaSSjseocVimeJ8VXLhJOtwLSlg1GuG/HfeTfgBPbvs
-	jCHtYnNJgLlbEMQsCA+XVHNJontXY0WZGfa/vPQ7GaAXKOt2iBQngJMs0azWvrl/fSQX
-	wrKzq2ZXw1DBZxQu23WGovLLZ54WmOQvOgfERFCfOgSdqVrD1DecKWTRZm07JM+yFgy3
-	NFHQ==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=2WQe5bbeeieIBL77DuJ1diozXnZqzRaSKuEgiNu8aNw=;
+	b=vAlsAg1a6G7frJo5Xr86G2MrPRh5QN5t00DJZrXG1xPCgyruePR8eCjdzWQA65dItQ
+	uUZo+a+mtcis1CmqACDoSBeyZXFDQwSgaEqZrONC0U+wZk7Hp1aKqczcrKkM8jkqs+Dt
+	a/pu2nUgsFdcwXhA65Jvx6yrhEUK7G+tf2a/VtzwvFhWH6HsGKF285BztyNXC3jkEIkX
+	kCjuVnrHSMMXPqUjQ3478nrPPAUiOaVmeSy0c3xc8pPh9IyKiNChKubf9SInxEeSqMmo
+	+lW8o9BwaSXp8ZXij14uGm4Wkg6C1q3hfqGqMRrl9PCTV+okpCR0IXpYzuPp9a+clJXo
+	Y/jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=8ROr7wKR1HNM3arK+N3XS2nqKzhARhHINhAJSV6TCM0=;
-	b=KW81earPuHiFg3RFdy5a1S5FT57NlQhfE+hoWoHxVGTZ/CAh/fNdKi0Bo13BDTH2Mj
-	1vAsiox1ATq7goULomjiILqq/pDmIi8LCUBiGY5c0f9p3ydq40ZiwicNjrB2CmS4kebW
-	T0je+RBv1RT3/i49KpW1hwDvKpX/367TU9IrsY0YAHOJJ6U1hiA6w2hP/4vxVmZj6d52
-	4F+7MSWWLeIX5XYsYgoTrpD8J3i0hbnWLBDKg8hWGgVig4ZnCoHQp9BCGw/fmlNjflW9
-	KigvgfNpG8IXKWuEDKZ+4VEDnOYRYIyvRyFtZhoVVbDix4oTAhVA/68O7CJ6DwO75Pu0
-	kIog==
-X-Gm-Message-State: AMCzsaUlGeHyyLBVqovt4kBGwhnhW63Clhba4p53aB/ejidIHFKw7bok
-	2cjSUm4snmEVSbn/2+ZuhufbVo9P
-X-Google-Smtp-Source: AOwi7QAgfjWRC+sOx4bYUd8YwmVRUBH3cuatMvjicQuWiyVrhuhix3uQLMSDlwIoaPUsVz0AdQ9xuQ==
-X-Received: by 10.200.26.146 with SMTP id x18mr21068847qtj.145.1508258836001; 
-	Tue, 17 Oct 2017 09:47:16 -0700 (PDT)
+	:mime-version:content-transfer-encoding;
+	bh=2WQe5bbeeieIBL77DuJ1diozXnZqzRaSKuEgiNu8aNw=;
+	b=jCmlbfAJNfSlWBt53nTK0BijQ6pDSNSDffj7UKOX5KBBmDlqqN0BYMTVACfle/BkDz
+	qArzc/HAr5IndWuGzYL2c8Xa1q19iwSznvXtdDhmg44TnhdmwGRgLKk/Xhxa1EZMTiUc
+	E8k4oYHx5QLgMLm08YjKnlMG71nj6yLKwcNfC0Yz1td+pY2Ecxgm4Q3H02ZyMx0tdxLC
+	CgvDCtL1c9lu7q7Ez4924uUaBxdtj5Zm/bEURT12J2brjC40oOqQ+fGcxjN9Mh/cDxgm
+	8nk2fJjdGpWg+zHCZGMk5EaiZ3p0N2MVaJ2LI+dqtfMccsUUNAepBUllMsPN7pkgoKtf
+	gRlQ==
+X-Gm-Message-State: AMCzsaUmBYona65VBzzECQXp2MD5Um5j/WgZu+fYGHfNb1LxHkECv6KI
+	kxwL2qbuMf6frnhyVWfHwYo=
+X-Google-Smtp-Source: ABhQp+QFBJGWkq/IIuu24Dd6Fszq5cq+4pPs23bdm3F8/FlF77d8puvIioNbBHm5bIYdYbGR9TKkgA==
+X-Received: by 10.200.15.118 with SMTP id l51mr450288qtk.181.1508280640944;
+	Tue, 17 Oct 2017 15:50:40 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.47.14
+	h36sm6952451qtd.69.2017.10.17.15.50.38
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:47:15 -0700 (PDT)
+	Tue, 17 Oct 2017 15:50:40 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
+To: Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 17 Oct 2017 13:44:26 -0300
-Message-Id: <20171017164426.25277-43-f4bug@amsat.org>
+Date: Tue, 17 Oct 2017 19:50:25 -0300
+Message-Id: <20171017225025.25451-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
-In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
-References: <20171017164426.25277-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v3 42/42] misc: drop old i386 dependency
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH] hw/alpha/typhoon: simplify using the
+ "unimplemented" sysbus device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,78 +75,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 16:47:21 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 22:50:51 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/char/debugcon.c      | 1 -
- hw/intc/lm32_pic.c      | 1 -
- hw/moxie/moxiesim.c     | 1 -
- hw/sparc/sun4m.c        | 1 -
- hw/watchdog/wdt_ib700.c | 1 -
- 5 files changed, 5 deletions(-)
+ hw/alpha/alpha_sys.h |  1 -
+ hw/alpha/pci.c       | 26 --------------------------
+ hw/alpha/typhoon.c   |  6 ++----
+ 3 files changed, 2 insertions(+), 31 deletions(-)
 
-diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
-index 95ccec6f8b..e2abc61b04 100644
---- a/hw/char/debugcon.c
-+++ b/hw/char/debugcon.c
-@@ -29,7 +29,6 @@
- #include "hw/hw.h"
- #include "chardev/char-fe.h"
- #include "hw/isa/isa.h"
--#include "hw/i386/pc.h"
+diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
+index b6d8369ed7..9e67f78c60 100644
+--- a/hw/alpha/alpha_sys.h
++++ b/hw/alpha/alpha_sys.h
+@@ -15,7 +15,6 @@ PCIBus *typhoon_init(ram_addr_t, ISABus **, qemu_irq *, AlphaCPU *[4],
+                      pci_map_irq_fn);
  
- #define TYPE_ISA_DEBUGCON_DEVICE "isa-debugcon"
- #define ISA_DEBUGCON_DEVICE(obj) \
-diff --git a/hw/intc/lm32_pic.c b/hw/intc/lm32_pic.c
-index 09e15115fb..db6c7afc2f 100644
---- a/hw/intc/lm32_pic.c
-+++ b/hw/intc/lm32_pic.c
-@@ -20,7 +20,6 @@
- #include "qemu/osdep.h"
+ /* alpha_pci.c.  */
+-extern const MemoryRegionOps alpha_pci_ignore_ops;
+ extern const MemoryRegionOps alpha_pci_conf1_ops;
+ extern const MemoryRegionOps alpha_pci_iack_ops;
  
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "monitor/monitor.h"
- #include "hw/sysbus.h"
+diff --git a/hw/alpha/pci.c b/hw/alpha/pci.c
+index 8dde637bfe..e0bcde9f70 100644
+--- a/hw/alpha/pci.c
++++ b/hw/alpha/pci.c
+@@ -14,32 +14,6 @@
  #include "trace.h"
-diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
-index 5ea8dd3a93..5c9a4211ac 100644
---- a/hw/moxie/moxiesim.c
-+++ b/hw/moxie/moxiesim.c
-@@ -30,7 +30,6 @@
+ 
+ 
+-/* Fallback for unassigned PCI I/O operations.  Avoids MCHK.  */
+-
+-static uint64_t ignore_read(void *opaque, hwaddr addr, unsigned size)
+-{
+-    return 0;
+-}
+-
+-static void ignore_write(void *opaque, hwaddr addr, uint64_t v, unsigned size)
+-{
+-}
+-
+-const MemoryRegionOps alpha_pci_ignore_ops = {
+-    .read = ignore_read,
+-    .write = ignore_write,
+-    .endianness = DEVICE_LITTLE_ENDIAN,
+-    .valid = {
+-        .min_access_size = 1,
+-        .max_access_size = 8,
+-    },
+-    .impl = {
+-        .min_access_size = 1,
+-        .max_access_size = 8,
+-    },
+-};
+-
+-
+ /* PCI config space reads/writes, to byte-word addressable memory.  */
+ static uint64_t bw_conf1_read(void *opaque, hwaddr addr,
+                               unsigned size)
+diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
+index ae11e012c7..5852d6c582 100644
+--- a/hw/alpha/typhoon.c
++++ b/hw/alpha/typhoon.c
+@@ -11,6 +11,7 @@
  #include "cpu.h"
- #include "hw/sysbus.h"
  #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "net/net.h"
+ #include "hw/devices.h"
++#include "hw/misc/unimp.h"
  #include "sysemu/sysemu.h"
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index e1bdd4828d..93424b186f 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -36,7 +36,6 @@
- #include "net/net.h"
- #include "hw/boards.h"
- #include "hw/scsi/esp.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "hw/nvram/sun_nvram.h"
- #include "hw/nvram/chrp_nvram.h"
-diff --git a/hw/watchdog/wdt_ib700.c b/hw/watchdog/wdt_ib700.c
-index 532afe89e7..d045032bf4 100644
---- a/hw/watchdog/wdt_ib700.c
-+++ b/hw/watchdog/wdt_ib700.c
-@@ -25,7 +25,6 @@
- #include "sysemu/watchdog.h"
- #include "hw/hw.h"
- #include "hw/isa/isa.h"
--#include "hw/i386/pc.h"
+ #include "alpha_sys.h"
+ #include "exec/address-spaces.h"
+@@ -876,10 +877,7 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus **isa_bus,
+                                 &s->pchip.reg_mem);
  
- /*#define IB700_DEBUG 1*/
+     /* Pchip0 PCI I/O, 0x801.FC00.0000, 32MB.  */
+-    memory_region_init_io(&s->pchip.reg_io, OBJECT(s), &alpha_pci_ignore_ops,
+-                          NULL, "pci0-io", 32*MB);
+-    memory_region_add_subregion(addr_space, 0x801fc000000ULL,
+-                                &s->pchip.reg_io);
++    create_unimplemented_device("pci0-io", 0x801fc000000ULL, 32*MB);
  
+     b = pci_register_bus(dev, "pci",
+                          typhoon_set_irq, sys_map_irq, s,
 -- 
 2.15.0.rc0
 
