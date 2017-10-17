@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4Uzs-0001Qy-Gc
+	id 1e4Uzs-0001RG-Ni
 	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:45:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46375)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46387)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4Uzp-0001Nm-9R
+	id 1e4Uzq-0001Oh-4V
 	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:45:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4Uzo-00037O-Ic
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:45:37 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:55308)
+	id 1e4Uzp-00037e-8y
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:45:38 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:50265)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4Uzh-00033Y-Kn; Tue, 17 Oct 2017 12:45:29 -0400
-Received: by mail-qk0-x241.google.com with SMTP id x82so2826794qkb.12;
-	Tue, 17 Oct 2017 09:45:29 -0700 (PDT)
+	id 1e4Uzn-00036c-7O; Tue, 17 Oct 2017 12:45:35 -0400
+Received: by mail-qt0-x241.google.com with SMTP id f15so4897921qtf.7;
+	Tue, 17 Oct 2017 09:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ls1dptIf2tNlYttA26VhPMzRZ/QMi9fjCPd+v2MW8wY=;
-	b=HebehbkXvQD7yyagLQ5oAXo2kS1JrnIfmVMqcdaKivnfpB1gIcc/0Sy0PaffjzQx4d
-	0QKXWV+sce82kHDl7CyfoX+1SE90yitKashOwLX87XumNOwsSBunuQ5NK44o+HDO1/od
-	qI+KyXsAy1WMbdCLlItqJSH+4GtvGEbKgk5R72irAFVT3tV8251F9AvsQ1uTDMut0oOm
-	6E/4BkhjFjI7tl0UIpgMdlM/m/1Hgb7UEEB2k/JKpdpHj82YDljEl7831QhItplwyKxF
-	8Gowt2fU5oS6Li7UV4lwq9zJ+MWz9Y2IFbhNKdHDE6XCXMfg2VKAU7+T3FNHP//crHkU
-	6zBw==
+	bh=pbkygjYMrABPvChCt0B6mGgs+WT5bdYIWlm0PjMA3Iw=;
+	b=Frk1KDh5JfTCvjrtLKMhkGOWxy53MMp8pwCHYT0htFl9GR9JH5xl6lNKKVTR0kInbd
+	1Xo23AZ5wrbLAGErntuPclJeBNLWUcDE8aSjWgti+ODcCQ0cAh8dNvA7qBwdG0OTIA7T
+	9ZlZWQeXXBuDU3R8DkPYM4JnaJpBInEORI9f7D/BXcsuDqyaZGJRp0ER4Yk0Om2biLRF
+	jhvFzeIANgh6DN58KfKYfs2WJN89YwG3Eqa2rNbRvIBF9bzqHTqhlqiNmiuRSfOQU/et
+	mDnth9MpP5CKwCf0sC49UyPxn5u/0dOs8tyTVE/SxFlvZjzZOyhJ44bfT7kdmCN/4Y9y
+	xTkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ls1dptIf2tNlYttA26VhPMzRZ/QMi9fjCPd+v2MW8wY=;
-	b=cAhxHrDSgHUqsuCL0WTF441jq0piuXOdFkKdXpdfmLD+VbOEX3lzADAxjW8t9HcKIw
-	GXUqA3XZDTTVC4IOQ9Ei5COGha1yqy0PYswtfi6MzmHvjGdDElFZjVKuKgx3idvEKUhO
-	4F0Rv6Dauf1QZSWcytfJgcQib/P1stG7i6KHZAuvfWUJw/t4zSDhEHv2W24O+rU0zMfa
-	5KUwSN9xeQhMRmjQWvvb11kIg/2w+ezh+D36esThFBTB5eozCocWL2eZgCqA51um72Im
-	W2b381LtEDUDgNsTeGSEdADXhQxQ7EQ8UUy3pyx8cpZPEceZGsuO9e27USx0uT+DFE7z
-	A7Qg==
-X-Gm-Message-State: AMCzsaV7hPHdzE1CMPQ4BrCME9UnKjMQtAIBtE7dW6lCS2ozgmhMLgth
-	CFRkMYM+BsJjDXZIXVakktIpG5KH
-X-Google-Smtp-Source: ABhQp+Sqm8rPfo+O0E8tit72dS4HMi05PubVZ3VbSjVHJuDKLTqUJQgV0bvo3OTr67kmdrg3Yu61tA==
-X-Received: by 10.55.149.70 with SMTP id x67mr19637222qkd.62.1508258729091;
-	Tue, 17 Oct 2017 09:45:29 -0700 (PDT)
+	bh=pbkygjYMrABPvChCt0B6mGgs+WT5bdYIWlm0PjMA3Iw=;
+	b=KfKEYcoycaJ0yvMZFRRWUGR/FxwonU6uFcEpPd6ktBIB0IX+9Jcs0UFsDF8y3wqNmR
+	t+jtD7h0+FdVG9C4Vmheylqg8BHV6FfAucThdr3ecR2Eyo7szCm7MBALjP79itV/63GN
+	PWJA7nsk03MWZyiScEpPXkeFxPpvMkPHyzXnPghnEPkMZxJTc71B6uQYynOe9D6I7ZOb
+	6oqC2I/JL8cHrBBnSc+AmgwhRZHsscFi0smvGItz8ZxY6VDqn47OxQAeBMhXgvFD+yNM
+	JWLIrNHtT1TepmYMLyO2gkH5yo9FaVB4n1aRf6v8nnt1JlnG/nZscJsQh1814ziMExBz
+	AzRg==
+X-Gm-Message-State: AMCzsaWzG2Wum8gYmpRsscRCXN3i1As4/wq8pOjHX0GImBte0TQope2F
+	vpXJqwLfrE5Um/Z5AXcnfwcxIXID
+X-Google-Smtp-Source: ABhQp+TkQL54RfpzxEjzHppcaoJIS6LGQs9bGfdW+MS+Cww9TYXuUcS0aloo/sHoS8nNqIhVCfG+Mw==
+X-Received: by 10.200.24.185 with SMTP id s54mr4525710qtj.328.1508258734639;
+	Tue, 17 Oct 2017 09:45:34 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.45.26
+	q49sm6687653qtq.80.2017.10.17.09.45.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:45:28 -0700 (PDT)
+	Tue, 17 Oct 2017 09:45:33 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
+To: Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Date: Tue, 17 Oct 2017 13:43:48 -0300
-Message-Id: <20171017164426.25277-5-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Tue, 17 Oct 2017 13:43:50 -0300
+Message-Id: <20171017164426.25277-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
 References: <20171017164426.25277-1-f4bug@amsat.org>
@@ -63,9 +63,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH v3 04/42] MAINTAINERS: add an entry for the
- i82378 (superio)
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH v3 06/42] MAINTAINERS: add an entry for
+ input/pckbd.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,26 +77,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 16:45:38 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 16:45:39 -0000
+
+and fix a typo in the "PC Chipset" section
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 0706b474e7..510505b2f3 100644
+index 907e067903..1700f3a541 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -712,6 +712,7 @@ F: hw/ppc/prep.c
- F: hw/ppc/prep_systemio.c
- F: hw/ppc/rs6000_mc.c
- F: hw/pci-host/prep.[hc]
-+F: hw/isa/i82378.c
- F: hw/isa/pc87312.[hc]
- F: hw/dma/i82374.c
- F: pc-bios/ppc_rom.bin
+@@ -842,12 +842,13 @@ F: hw/misc/sga.c
+ PC Chipset
+ M: Michael S. Tsirkin <mst@redhat.com>
+ M: Paolo Bonzini <pbonzini@redhat.com>
+-S: Support
++S: Supported
+ F: hw/char/debugcon.c
+ F: hw/char/parallel.c
+ F: hw/char/serial*
+ F: hw/dma/i8257*
+ F: hw/i2c/pm_smbus.c
++F: hw/input/pckbd.c
+ F: hw/intc/apic*
+ F: hw/intc/ioapic*
+ F: hw/intc/i8259*
 -- 
 2.15.0.rc0
 
