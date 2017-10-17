@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4FWZ-0007OX-MM
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 20:14:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34340)
+	id 1e4FWa-0007Pl-TN
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 20:14:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34359)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWW-0007LO-DP
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:21 -0400
+	id 1e4FWY-0007NM-IR
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWT-00050q-9X
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:20 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:43476)
+	id 1e4FWX-00052k-J5
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:22 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:45636)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWQ-0004yJ-SB; Mon, 16 Oct 2017 20:14:14 -0400
-Received: by mail-qt0-x244.google.com with SMTP id j58so80617qtj.0;
-	Mon, 16 Oct 2017 17:14:14 -0700 (PDT)
+	id 1e4FWV-00051R-5z; Mon, 16 Oct 2017 20:14:19 -0400
+Received: by mail-qk0-x242.google.com with SMTP id f199so32990qke.2;
+	Mon, 16 Oct 2017 17:14:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=xQ0BUrqOTBr2242YTc97Gf98kMMY/BNwgwnn+L3Tc/8=;
-	b=GnNqilIc0BZHphSNIXY82BCyS2ghyZvI6/SnZNX/ETpSNBCrcWBLr20EXPVX4A0/mC
-	H2iF4/wSY45Ab11buoM3N6d/BASm41L6d08CVv34OIcMSrzKJbfNEloa4MS8Se8uo+Ya
-	pTC8HH3EKghoCJ3o5qgEWll2VWr3er7S3iksLtlNbVG/NPLieM98I1i0KI//cJMrOpcv
-	6L4UiCxfDIuvXNoDIPYeJJWUWlCdKJbED3xVEIE2a/TK6TwwlC38r+0E3NVgVcQkciN1
-	4sRttjD9dz+pHCMIbg/E2vDvi2AkHOnPuATSbqypIu/YpI/11C9xytVZNjRUiu026NMb
-	0bHw==
+	bh=+ISYs3l6xypf2ckPjA3GDCMzA6U11y/hwgDbsP/fkHc=;
+	b=GjOimRmOnVFDh2tB2xzTEMEzPz65AeDRMPVHTeQi9ebReSX2tqwv8ePUYPSTtHNZNe
+	HtpxaEvE+dvvEQDA5c0b/RTC+CggsoO9LkbtioayHRslfB0Vg44LW5cO9TfXCdZXidrd
+	SWS7WFwrq6hJo+vlFDtyP25gJqSGPduv37DWH4kGc6TRDUurGXry2FG0fIhLlTHc6IGA
+	VtCjff4pcjYej/LGn2DZkr00Z/6lnxCgoHUbxD0GacbhR2jF62WRlMZYJdSO1VloEnaN
+	EtMBNFCxIuoLvW4FWGvH3tKrmefbqArK+UhsmZl4WrXzuwaUJKYqgIJ6OJQ1+OjqBhKj
+	JeGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=xQ0BUrqOTBr2242YTc97Gf98kMMY/BNwgwnn+L3Tc/8=;
-	b=gHJGf/yiFDxJi2N95C4YHSYA6jbbUgKqhZa3TgNXnZ6Oi9LYlSC7bDWwfza8yixigA
-	6YjM+hCnlxzRKDN07dHKcM5OKJe+fRluS9Nf2MwB0RM2TvJVCu6phOX3cdlaK2DzpsK1
-	OlYPGMk4rMj7zV3W9Plf4MrkqJpNCKni23DE9dHChrYyyloLMVcNaQBjAmtBRsSlDMWy
-	gB4pZjY9Cn+IW5Hw32cDjlcp9D0LefG81kLIz5hRem2OddkxpuTxRKmhXA6JWebZmdQk
-	kcIe0b8mRX69pHBPvb7rkhIZHVJfkambMyqIHtLHTHWmg/ypRY7rWzq6bosceapxsRO4
-	EB9A==
-X-Gm-Message-State: AMCzsaVEnY9wqmYunXHsC6lvqCi5tEKFHgQMmzr9OTZq5CvGs9EfTTB9
-	i91HK5o4OJIwZ0Cku85xUIU=
-X-Google-Smtp-Source: ABhQp+SyRDkmd43iXMR3yl1+PgNpKOWrVkHwdCOC7abGkJHPfHuBcMuA+cbp7+0WUHW7XvqPymDdyw==
-X-Received: by 10.200.47.187 with SMTP id l56mr16799713qta.319.1508199254451; 
-	Mon, 16 Oct 2017 17:14:14 -0700 (PDT)
+	bh=+ISYs3l6xypf2ckPjA3GDCMzA6U11y/hwgDbsP/fkHc=;
+	b=tQto95oPbZ+7WRwest62zKtbcg+WuFx9WyyarIYx4/dJLWCyytLzGoy59LDxxmcXzX
+	pgAoIrP6u4uyAt7Fd/3rVMP7py5SMNLFompkKYpmJeQA7GXdKhDSUpMIZV9D2dwcFQQE
+	S4ZE9fa/6L9sp4v8pxiZeiEjZ6VyClc56p2zRNP9Q9DE/XZfwZQogvaGs0XU0uouAFa0
+	M1/fVDJWNe9/+Jcp5ufFVUe+rVjUGjmIO3JxIJAuqPpg8QJcfSQ8Fe5R2rgBqtlT5ZGz
+	7xSt6Hvz1B5rsRxsk1TCJcj8+Lpt+yWXzDB4mfyadc5/bxK19ZQnZ6r3WZraqL4YdGG5
+	hIyg==
+X-Gm-Message-State: AMCzsaU/C/mWPiqOGsXNAYObfcVx3jqNo4xlXaihem1alWLfcYHlhpSP
+	AxSN+FKPNPTWuoU7RjOcx1o=
+X-Google-Smtp-Source: AOwi7QDhc3xZtdFblidHoT5XGqkDYBcMJPiAMZtCTcaKpo6VDlaXr0Sk6CLBXvpB6Wj4Q3UBj7pPWA==
+X-Received: by 10.55.200.27 with SMTP id c27mr16608585qkj.115.1508199258758;
+	Mon, 16 Oct 2017 17:14:18 -0700 (PDT)
 Received: from x1.local ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id r6sm5409043qkh.22.2017.10.16.17.14.10
+	by smtp.gmail.com with ESMTPSA id r6sm5409043qkh.22.2017.10.16.17.14.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Oct 2017 17:14:13 -0700 (PDT)
+	Mon, 16 Oct 2017 17:14:18 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -55,8 +55,8 @@ To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 16 Oct 2017 21:12:05 -0300
-Message-Id: <20171017001209.32276-36-f4bug@amsat.org>
+Date: Mon, 16 Oct 2017 21:12:06 -0300
+Message-Id: <20171017001209.32276-37-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017001209.32276-1-f4bug@amsat.org>
 References: <20171017001209.32276-1-f4bug@amsat.org>
@@ -65,8 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH v2 35/39] i386/pc: move vmport.c from
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH v2 36/39] i386/pc: move pvpanic.c from
  hw/misc/ to hw/i386/
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -79,68 +79,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 00:14:21 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 00:14:23 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
  default-configs/i386-softmmu.mak   | 1 -
  default-configs/x86_64-softmmu.mak | 1 -
- hw/{misc => i386}/vmport.c         | 0
- hw/i386/Makefile.objs              | 1 +
- hw/misc/Makefile.objs              | 2 --
+ hw/{misc => i386}/pvpanic.c        | 0
+ hw/i386/Makefile.objs              | 2 +-
+ hw/misc/Makefile.objs              | 1 -
  5 files changed, 1 insertion(+), 4 deletions(-)
- rename hw/{misc => i386}/vmport.c (100%)
+ rename hw/{misc => i386}/pvpanic.c (100%)
 
 diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
-index d2ab2f6655..dbc4e65652 100644
+index dbc4e65652..541ec8604d 100644
 --- a/default-configs/i386-softmmu.mak
 +++ b/default-configs/i386-softmmu.mak
-@@ -41,7 +41,6 @@ CONFIG_PCI_PIIX=y
- CONFIG_WDT_IB700=y
- CONFIG_ISA_DEBUG=y
- CONFIG_ISA_TESTDEV=y
--CONFIG_VMPORT=y
- CONFIG_SGA=y
- CONFIG_LPC_ICH9=y
+@@ -46,7 +46,6 @@ CONFIG_LPC_ICH9=y
  CONFIG_PCI_Q35=y
+ CONFIG_APIC=y
+ CONFIG_IOAPIC=y
+-CONFIG_PVPANIC=y
+ CONFIG_MEM_HOTPLUG=y
+ CONFIG_NVDIMM=y
+ CONFIG_ACPI_NVDIMM=y
 diff --git a/default-configs/x86_64-softmmu.mak b/default-configs/x86_64-softmmu.mak
-index 9bde2f1c4b..f1fe508ff4 100644
+index f1fe508ff4..23488d324f 100644
 --- a/default-configs/x86_64-softmmu.mak
 +++ b/default-configs/x86_64-softmmu.mak
-@@ -41,7 +41,6 @@ CONFIG_PCI_PIIX=y
- CONFIG_WDT_IB700=y
- CONFIG_ISA_DEBUG=y
- CONFIG_ISA_TESTDEV=y
--CONFIG_VMPORT=y
- CONFIG_SGA=y
- CONFIG_LPC_ICH9=y
+@@ -46,7 +46,6 @@ CONFIG_LPC_ICH9=y
  CONFIG_PCI_Q35=y
-diff --git a/hw/misc/vmport.c b/hw/i386/vmport.c
+ CONFIG_APIC=y
+ CONFIG_IOAPIC=y
+-CONFIG_PVPANIC=y
+ CONFIG_MEM_HOTPLUG=y
+ CONFIG_NVDIMM=y
+ CONFIG_ACPI_NVDIMM=y
+diff --git a/hw/misc/pvpanic.c b/hw/i386/pvpanic.c
 similarity index 100%
-rename from hw/misc/vmport.c
-rename to hw/i386/vmport.c
+rename from hw/misc/pvpanic.c
+rename to hw/i386/pvpanic.c
 diff --git a/hw/i386/Makefile.objs b/hw/i386/Makefile.objs
-index 909ead6a77..feff56a9b7 100644
+index feff56a9b7..41574096f1 100644
 --- a/hw/i386/Makefile.objs
 +++ b/hw/i386/Makefile.objs
-@@ -9,3 +9,4 @@ obj-$(CONFIG_XEN) += ../xenpv/ xen/
+@@ -7,6 +7,6 @@ obj-y += amd_iommu.o
+ obj-$(CONFIG_XEN) += ../xenpv/ xen/
+ 
  obj-y += kvmvapic.o
- obj-y += acpi-build.o
+-obj-y += acpi-build.o
++obj-y += acpi-build.o pvpanic.o
  obj-y += pci-assign-load-rom.o
-+obj-y += vmport.o
+ obj-y += vmport.o
 diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 19202d90cf..03bc758592 100644
+index 03bc758592..182f9a7d54 100644
 --- a/hw/misc/Makefile.objs
 +++ b/hw/misc/Makefile.objs
-@@ -11,8 +11,6 @@ common-obj-$(CONFIG_EDU) += edu.o
- common-obj-y += unimp.o
- common-obj-y += vmcoreinfo.o
+@@ -53,7 +53,6 @@ obj-$(CONFIG_MIPS_CPS) += mips_cpc.o
+ obj-$(CONFIG_MIPS_ITU) += mips_itu.o
+ obj-$(CONFIG_MPS2_SCC) += mps2-scc.o
  
--obj-$(CONFIG_VMPORT) += vmport.o
--
- # ARM devices
- common-obj-$(CONFIG_PL310) += arm_l2x0.o
- common-obj-$(CONFIG_INTEGRATOR_DEBUG) += arm_integrator_debug.o
+-obj-$(CONFIG_PVPANIC) += pvpanic.o
+ obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+ obj-$(CONFIG_AUX) += auxbus.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
 -- 
 2.15.0.rc0
 
