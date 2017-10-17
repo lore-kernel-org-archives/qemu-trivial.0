@@ -1,46 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4NvN-0000pk-OK
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 05:12:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42767)
+	id 1e4Oiq-0002of-T7
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 06:03:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34115)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e4NvL-0000o0-0v
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 05:12:32 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e4Oio-0002oW-Lw
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 06:03:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e4NvG-0003Eh-DQ
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 05:12:30 -0400
-Resent-Date: Tue, 17 Oct 2017 05:12:30 -0400
-Resent-Message-Id: <E1e4NvG-0003Eh-DQ@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21388)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1e4NvG-0003DT-78
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 05:12:26 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1508203460607361.9302757059587;
-	Mon, 16 Oct 2017 18:24:20 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <150820345940.362.5312503530020632345@b58463cdfd5f>
-In-Reply-To: <20171017001209.32276-1-f4bug@amsat.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e4Oij-0007QO-0o
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 06:03:38 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:51370)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1e4Oii-0007Q5-TI; Tue, 17 Oct 2017 06:03:32 -0400
+Received: by mail-qt0-x232.google.com with SMTP id h4so2230259qtk.8;
+	Tue, 17 Oct 2017 03:03:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=NIu67or8bOoMPArtyrCV1UAofXDNCZZmAJQ/1e8yMqA=;
+	b=NT/tyh7UAauA1TYJET/pCxjq7cSMmn2fdQLalldDhrPVz4ui8mk0Vi16sTIGdlj6Qw
+	ISXPiuXZZnKiSJMAylWH4HAPo8aGqvky0ZC1otZGi4ptcGwXO57y0D/v41HFtR96D/rI
+	rL0Vnpwqem9Qp9KYkSv7c2jE+YzgF4iaTlJgaFbciKXY8V4UR3t2qC5/BkigwBTj1SAP
+	fi5rmjsh7vKkndSq0DztlR7yX7UfDZetIyTQjcBNf9qDh0aslsp3/CDz6l2sOek6uCzn
+	gkWGLhfRgCuqZCgRN4na6V5OkL9iKEOuCnaLduKunXnY2xONIQmnkmGD58XiATslOrXz
+	n2eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=NIu67or8bOoMPArtyrCV1UAofXDNCZZmAJQ/1e8yMqA=;
+	b=W4nmw8lwF7i6hg9FycmGYXmpttrKZZ4F/+K1uTq86osTZU+ZbwTReR7lXJJC8ZytLA
+	DqP/JZB6bmNEoGyaPBtaRhkgEXPBSHl82Hk8LJsMLCS8WlktRf8ua2ZhH3AE3d+/uGGj
+	IJEVPKWiLKRxy9lIZoif8B/HpUYdCFCYJbVDGDnr9dAVI3B6eKWTw+zHdrWBw2ZawUMy
+	s7PJq8lRAunIw5d5RUnyI9etntCBtJ8HwwSNb7342qf001TG0KMugILKoEDnDFb7fF8N
+	NLnm8Dju3Yv2SHKIrxPhSi01AkZVr+wIBKZpQGJVTQzZo/SEO2ODeElEZaMyCkDNe+YO
+	VyPw==
+X-Gm-Message-State: AMCzsaUmZraInPeqvxm2Kd2UV2ldzrt54lq5+F/TJf5kVGmrvSPGK4JB
+	3rpaKURloaQrxEsa1MNBnZIzig/w
+X-Google-Smtp-Source: AOwi7QCUaJYLNVuFgHUIUua7WGJlrrYZaX5GESvtlToIoepcpZE/TNz1ri9LxFcLjUy2fV4wYLPv0Q==
+X-Received: by 10.200.23.85 with SMTP id u21mr16885579qtk.200.1508234612141;
+	Tue, 17 Oct 2017 03:03:32 -0700 (PDT)
+Received: from [192.168.1.240] ([181.93.89.178])
+	by smtp.gmail.com with ESMTPSA id
+	r22sm6112728qtj.70.2017.10.17.03.03.29
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 17 Oct 2017 03:03:31 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
+	Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20171017001209.32276-1-f4bug@amsat.org>
+	<20171017001209.32276-38-f4bug@amsat.org>
+	<0f7d83c7-b814-0e07-a043-f4cd957136c6@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <7f55b220-d80b-2f0d-b77d-be9bafea6734@amsat.org>
+Date: Tue, 17 Oct 2017 07:03:27 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Cc: famz@redhat.com, peter.maydell@linaro.org, thuth@redhat.com,
-	armbru@redhat.com, pbonzini@redhat.com, mst@redhat.com,
-	aurelien@aurel32.net, yongbok.kim@imgtec.com, rth@twiddle.net,
-	hpoussin@reactos.org, david@gibson.dropbear.id.au, agraf@suse.de,
-	kraxel@redhat.com, mark.cave-ayland@ilande.co.uk,
-	atar4qemu@gmail.com, mjt@tls.msk.ru, otubo@redhat.com,
-	ehabkost@redhat.com, qemu-trivial@nongnu.org, f4bug@amsat.org,
-	qemu-devel@nongnu.org
-Date: Mon, 16 Oct 2017 18:24:20 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 00/39] remove i386/pc
- dependency from non-PC world (part 1)
+In-Reply-To: <0f7d83c7-b814-0e07-a043-f4cd957136c6@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: Re: [Qemu-trivial] [PATCH v2 37/39] i386/pc: extract port92 from
+ pc.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,120 +87,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 09:12:32 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 10:03:39 -0000
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTcxMDE3MDAxMjA5LjMyMjc2LTEtZjRidWdAYW1zYXQub3JnClN1YmplY3Q6
-IFtRZW11LWRldmVsXSBbUEFUQ0ggdjIgMDAvMzldIHJlbW92ZSBpMzg2L3BjIGRlcGVuZGVuY3kg
-ZnJvbSBub24tUEMgd29ybGQgKHBhcnQgMSkKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
-YmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFTRS4u
-IHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAw
-CmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQgbG9n
-IC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRvCiAg
-ICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9ybWF0
-PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3Njcmlw
-dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQogICAg
-ICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0gVEVT
-VCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRi
-ZDg4ODcxMzM4NApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmY5YjVhZGJjOTggaHcv
-ZG1hL2k4MjU3OiByZW5hbWUgRE1BX2luaXQoKSB0byBpODI1N19kbWFfaW5pdCgpCmY3MWUzOWNh
-ZWYgaHcvZG1hL2k4MjM3NDogYXZvaWQgbXVsdGlwbGUgY3JlYXRpb25zIG9uIHRoZSBzYW1lIElT
-QSBidXMKOTU4NWZmMjdlZSBpMzg2L3BjOiBleHRyYWN0IHBvcnQ5MiBmcm9tIHBjLmMKOTBhNjY1
-MGNjMiBpMzg2L3BjOiBtb3ZlIHB2cGFuaWMuYyBmcm9tIGh3L21pc2MvIHRvIGh3L2kzODYvCjM2
-OTM1OWQwYTMgaTM4Ni9wYzogbW92ZSB2bXBvcnQuYyBmcm9tIGh3L21pc2MvIHRvIGh3L2kzODYv
-CmQxYmEwNTJlNDAgbWlzYzogZHJvcCBvbGQgaTM4NiBkZXBlbmRlbmN5CmUzN2VjZTBlNjYgaHcv
-bmV0L25lMjAwMDogZXh0cmFjdCBuZTJrLWlzYSBjb2RlIGZyb20gaTM4Ni9wYyB0byBuZTIwMDAt
-aXNhLmMKNjFlNTQzMmRmYiBody90aW1lci9tYzE0NjgxODogcmVuYW1lIHJ0Y19pbml0KCkgLT4g
-bWMxNDY4MThfcnRjX2luaXQoKQoyNTI3YWRiZDk0IGh3L2lucHV0L2k4MDQyOiBleHRyYWN0IHBj
-a2JkIGFuZCB2bW1vdXNlIEFQSSBmcm9tIGh3L2kzODYvcGMuaAplNGFlYTY5YzU3IGh3L2Rpc3Bs
-YXkvdmdhOiByZW1vdmUgdGhlIG9sZCBpMzg2L3BjIGRlcGVuZGVuY3kKMDBjMmI1MTI4MiBody90
-aW1lci9pODI1NDogcmVuYW1lIHBpdF9pbml0KCkgLT4gaTgyNTRfcGl0X2luaXQoKQo1YTJkYTMw
-OTExIGh3L2FjcGk6IEFDUElfUE1fKiBkZWZpbmVzIGFyZSBub3QgcmVzdHJpY3RlZCB0byBpMzg2
-IGFyY2gKZDk4Zjg2ZGRjZSBody91bmljb3JlMzI6IHJlc3RyaWN0IGh3IGFkZHIgZGVmaW5lcyB0
-byBzb3VyY2UgZmlsZQpiYTU4N2RmOWM2IGh3L3ZpcnRpby1iYWxsb29uOiByZW1vdmUgb2xkIGkz
-ODYgZGVwZW5kZW5jeQo4NGUwMjQ5MzFjIGh3L3RwbTogcmVtb3ZlIG9sZCBpMzg2IGRlcGVuZGVu
-Y3kKZDMxZTJmMmY5NyBody9pMmM6IHJlbW92ZSBvbGQgaTM4NiBkZXBlbmRlbmN5CmYyYWFmOWJj
-MmEgaHcvaXBtaTogcmVtb3ZlIG9sZCBpMzg2IGRlcGVuZGVuY3kKM2QwMzIzZWNmNSBody9pZGU6
-IHJlbW92ZSBvbGQgaTM4NiBkZXBlbmRlbmN5CmI2MzcyN2ZiMDcgbWlzYzogcmVtb3ZlIG9sZCBp
-Mzg2IGRlcGVuZGVuY3kKMzk5NGQwN2FiMSBhbWRfaW9tbXU6IGF2b2lkIG5lZWRsZXNzIGluY2x1
-ZGVzIGluIGhlYWRlciBmaWxlCjcwNzhmZWZjMGQgaHcvc3NpL2FzcGVlZF9zbWM6IHJlbW92ZSB1
-bnVzZWQgI2luY2x1ZGUKYmYzNmY1Y2UxYyBudW1hOiByZW1vdmUgdW51c2VkICNpbmNsdWRlCjVk
-ZDNlODExNjEgbWlzYzogYXZvaWQgImluY2x1ZGUvIiBpbiBpbmNsdWRlIHBhdGgKZDUwNDZiZTMw
-OCBuaW9zMjogcmVtb3ZlIGR1cGxpY2F0ZWQgaW5jbHVkZXMgKGluIGNvZGUgY29tbWVudGVkIG91
-dCkKOTk5OTAwYzE4YyBpMzg2L2hheDogcmVtb3ZlIGR1cGxpY2F0ZWQgaW5jbHVkZQoxODgyZDUx
-NjM1IGkzODYvaGF4OiByZW1vdmUgZHVwbGljYXRlZCBpbmNsdWRlcwozMWQ0Mjg2NzM1IHBwYzog
-cmVtb3ZlIGR1cGxpY2F0ZWQgaW5jbHVkZXMKOWU0ZmY1ZDZhZCBtaXNjOiByZW1vdmUgZHVwbGlj
-YXRlZCBpbmNsdWRlcwo0ZmI5NDFkNWU0IG1pc2M6IHJlbW92ZSBoZWFkZXJzIGltcGxpY2l0bHkg
-aW5jbHVkZWQKOWYyYWNiZjhkYiBibG9jazogcmVtb3ZlICJxZW11L29zZGVwLmgiIGZyb20gaGVh
-ZGVyIGZpbGUKYWIzNTQxZDE0NSBodzogcmVtb3ZlICJxZW11L29zZGVwLmgiIGZyb20gaGVhZGVy
-IGZpbGVzCjI4ZWEwMzZiOWQgaHc6IHVzZSAicWVtdS9vc2RlcC5oIiBhcyBmaXJzdCAjaW5jbHVk
-ZSBpbiBzb3VyY2UgZmlsZXMKYjY0YWJlZmNjYSBNQUlOVEFJTkVSUzogYWRkIG1pc3NpbmcgZW50
-cnkgZm9yIGluY2x1ZGUvaHcvbmV0LwpmYTk4Njc2ODZhIE1BSU5UQUlORVJTOiBhZGQgZW50cmll
-cyBmb3IgdGltZXIvbTQ4dDU5CmEyYTU1NGNmODQgTUFJTlRBSU5FUlM6IGFkZCBhbiBlbnRyeSBm
-b3IgaW5wdXQvcGNrYmQuYwpiOTY4NmEwNDY5IE1BSU5UQUlORVJTOiBhZGQgYW4gZW50cnkgZm9y
-IHdhdGNoZG9nL3dkdF9pYjcwMApiYzRhYjIzYWE1IE1BSU5UQUlORVJTOiBhZGQgYW4gZW50cnkg
-Zm9yIHRoZSBpODIzNzggKHN1cGVyaW8pCmZmNjM1NjUxZTYgTUFJTlRBSU5FUlM6IGFkZCBlbnRy
-aWVzIGZvciBkbWEvaTgyMzc0CmQ0NjI0ZWEzN2UgTUFJTlRBSU5FUlM6IGFkZCBlbnRyaWVzIGZv
-ciBpMmMvcHBjNHh4X2kyYwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0ggMS8z
-OTogTUFJTlRBSU5FUlM6IGFkZCBlbnRyaWVzIGZvciBpMmMvcHBjNHh4X2kyYy4uLgpDaGVja2lu
-ZyBQQVRDSCAyLzM5OiBNQUlOVEFJTkVSUzogYWRkIGVudHJpZXMgZm9yIGRtYS9pODIzNzQuLi4K
-Q2hlY2tpbmcgUEFUQ0ggMy8zOTogTUFJTlRBSU5FUlM6IGFkZCBhbiBlbnRyeSBmb3IgdGhlIGk4
-MjM3OCAoc3VwZXJpbykuLi4KQ2hlY2tpbmcgUEFUQ0ggNC8zOTogTUFJTlRBSU5FUlM6IGFkZCBh
-biBlbnRyeSBmb3Igd2F0Y2hkb2cvd2R0X2liNzAwLi4uCkNoZWNraW5nIFBBVENIIDUvMzk6IE1B
-SU5UQUlORVJTOiBhZGQgYW4gZW50cnkgZm9yIGlucHV0L3Bja2JkLmMuLi4KQ2hlY2tpbmcgUEFU
-Q0ggNi8zOTogTUFJTlRBSU5FUlM6IGFkZCBlbnRyaWVzIGZvciB0aW1lci9tNDh0NTkuLi4KQ2hl
-Y2tpbmcgUEFUQ0ggNy8zOTogTUFJTlRBSU5FUlM6IGFkZCBtaXNzaW5nIGVudHJ5IGZvciBpbmNs
-dWRlL2h3L25ldC8uLi4KQ2hlY2tpbmcgUEFUQ0ggOC8zOTogaHc6IHVzZSAicWVtdS9vc2RlcC5o
-IiBhcyBmaXJzdCAjaW5jbHVkZSBpbiBzb3VyY2UgZmlsZXMuLi4KQ2hlY2tpbmcgUEFUQ0ggOS8z
-OTogaHc6IHJlbW92ZSAicWVtdS9vc2RlcC5oIiBmcm9tIGhlYWRlciBmaWxlcy4uLgpDaGVja2lu
-ZyBQQVRDSCAxMC8zOTogYmxvY2s6IHJlbW92ZSAicWVtdS9vc2RlcC5oIiBmcm9tIGhlYWRlciBm
-aWxlLi4uCkNoZWNraW5nIFBBVENIIDExLzM5OiBtaXNjOiByZW1vdmUgaGVhZGVycyBpbXBsaWNp
-dGx5IGluY2x1ZGVkLi4uCkNoZWNraW5nIFBBVENIIDEyLzM5OiBtaXNjOiByZW1vdmUgZHVwbGlj
-YXRlZCBpbmNsdWRlcy4uLgpDaGVja2luZyBQQVRDSCAxMy8zOTogcHBjOiByZW1vdmUgZHVwbGlj
-YXRlZCBpbmNsdWRlcy4uLgpDaGVja2luZyBQQVRDSCAxNC8zOTogaTM4Ni9oYXg6IHJlbW92ZSBk
-dXBsaWNhdGVkIGluY2x1ZGVzLi4uCkNoZWNraW5nIFBBVENIIDE1LzM5OiBpMzg2L2hheDogcmVt
-b3ZlIGR1cGxpY2F0ZWQgaW5jbHVkZS4uLgpDaGVja2luZyBQQVRDSCAxNi8zOTogbmlvczI6IHJl
-bW92ZSBkdXBsaWNhdGVkIGluY2x1ZGVzIChpbiBjb2RlIGNvbW1lbnRlZCBvdXQpLi4uCkNoZWNr
-aW5nIFBBVENIIDE3LzM5OiBtaXNjOiBhdm9pZCAiaW5jbHVkZS8iIGluIGluY2x1ZGUgcGF0aC4u
-LgpDaGVja2luZyBQQVRDSCAxOC8zOTogbnVtYTogcmVtb3ZlIHVudXNlZCAjaW5jbHVkZS4uLgpD
-aGVja2luZyBQQVRDSCAxOS8zOTogaHcvc3NpL2FzcGVlZF9zbWM6IHJlbW92ZSB1bnVzZWQgI2lu
-Y2x1ZGUuLi4KQ2hlY2tpbmcgUEFUQ0ggMjAvMzk6IGFtZF9pb21tdTogYXZvaWQgbmVlZGxlc3Mg
-aW5jbHVkZXMgaW4gaGVhZGVyIGZpbGUuLi4KQ2hlY2tpbmcgUEFUQ0ggMjEvMzk6IG1pc2M6IHJl
-bW92ZSBvbGQgaTM4NiBkZXBlbmRlbmN5Li4uCkNoZWNraW5nIFBBVENIIDIyLzM5OiBody9pZGU6
-IHJlbW92ZSBvbGQgaTM4NiBkZXBlbmRlbmN5Li4uCkNoZWNraW5nIFBBVENIIDIzLzM5OiBody9p
-cG1pOiByZW1vdmUgb2xkIGkzODYgZGVwZW5kZW5jeS4uLgpDaGVja2luZyBQQVRDSCAyNC8zOTog
-aHcvaTJjOiByZW1vdmUgb2xkIGkzODYgZGVwZW5kZW5jeS4uLgpDaGVja2luZyBQQVRDSCAyNS8z
-OTogaHcvdHBtOiByZW1vdmUgb2xkIGkzODYgZGVwZW5kZW5jeS4uLgpDaGVja2luZyBQQVRDSCAy
-Ni8zOTogaHcvdmlydGlvLWJhbGxvb246IHJlbW92ZSBvbGQgaTM4NiBkZXBlbmRlbmN5Li4uCkNo
-ZWNraW5nIFBBVENIIDI3LzM5OiBody91bmljb3JlMzI6IHJlc3RyaWN0IGh3IGFkZHIgZGVmaW5l
-cyB0byBzb3VyY2UgZmlsZS4uLgpDaGVja2luZyBQQVRDSCAyOC8zOTogaHcvYWNwaTogQUNQSV9Q
-TV8qIGRlZmluZXMgYXJlIG5vdCByZXN0cmljdGVkIHRvIGkzODYgYXJjaC4uLgpDaGVja2luZyBQ
-QVRDSCAyOS8zOTogaHcvdGltZXIvaTgyNTQ6IHJlbmFtZSBwaXRfaW5pdCgpIC0+IGk4MjU0X3Bp
-dF9pbml0KCkuLi4KQ2hlY2tpbmcgUEFUQ0ggMzAvMzk6IGh3L2Rpc3BsYXkvdmdhOiByZW1vdmUg
-dGhlIG9sZCBpMzg2L3BjIGRlcGVuZGVuY3kuLi4KQ2hlY2tpbmcgUEFUQ0ggMzEvMzk6IGh3L2lu
-cHV0L2k4MDQyOiBleHRyYWN0IHBja2JkIGFuZCB2bW1vdXNlIEFQSSBmcm9tIGh3L2kzODYvcGMu
-aC4uLgpDaGVja2luZyBQQVRDSCAzMi8zOTogaHcvdGltZXIvbWMxNDY4MTg6IHJlbmFtZSBydGNf
-aW5pdCgpIC0+IG1jMTQ2ODE4X3J0Y19pbml0KCkuLi4KQ2hlY2tpbmcgUEFUQ0ggMzMvMzk6IGh3
-L25ldC9uZTIwMDA6IGV4dHJhY3QgbmUyay1pc2EgY29kZSBmcm9tIGkzODYvcGMgdG8gbmUyMDAw
-LWlzYS5jLi4uCkNoZWNraW5nIFBBVENIIDM0LzM5OiBtaXNjOiBkcm9wIG9sZCBpMzg2IGRlcGVu
-ZGVuY3kuLi4KQ2hlY2tpbmcgUEFUQ0ggMzUvMzk6IGkzODYvcGM6IG1vdmUgdm1wb3J0LmMgZnJv
-bSBody9taXNjLyB0byBody9pMzg2Ly4uLgpDaGVja2luZyBQQVRDSCAzNi8zOTogaTM4Ni9wYzog
-bW92ZSBwdnBhbmljLmMgZnJvbSBody9taXNjLyB0byBody9pMzg2Ly4uLgpDaGVja2luZyBQQVRD
-SCAzNy8zOTogaTM4Ni9wYzogZXh0cmFjdCBwb3J0OTIgZnJvbSBwYy5jLi4uCkVSUk9SOiBkbyBu
-b3QgdXNlIEM5OSAvLyBjb21tZW50cwojMjAyOiBGSUxFOiBody9pMzg2L3BvcnQ5Mi5jOjI0Ogor
-ICAgIC8vRFBSSU5URigicG9ydDkyOiB3cml0ZSAweCUwMiIgUFJJeDY0ICJcbiIsIHZhbCk7CgpF
-UlJPUjogZG8gbm90IHVzZSBDOTkgLy8gY29tbWVudHMKIzIxNzogRklMRTogaHcvaTM4Ni9wb3J0
-OTIuYzozOToKKyAgICAvL0RQUklOVEYoInBvcnQ5MjogcmVhZCAweCUwMnhcbiIsIHJldCk7Cgp0
-b3RhbDogMiBlcnJvcnMsIDAgd2FybmluZ3MsIDI4MCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNo
-IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJv
-cnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2Vl
-CkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVja2luZyBQQVRDSCAzOC8zOTogaHcvZG1h
-L2k4MjM3NDogYXZvaWQgbXVsdGlwbGUgY3JlYXRpb25zIG9uIHRoZSBzYW1lIElTQSBidXMuLi4K
-Q2hlY2tpbmcgUEFUQ0ggMzkvMzk6IGh3L2RtYS9pODI1NzogcmVuYW1lIERNQV9pbml0KCkgdG8g
-aTgyNTdfZG1hX2luaXQoKS4uLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0
-ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBh
-dGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
-IHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+> Why are you doing this? I really fail to see the rationale here. Please
+> add proper patch descriptions!
 
+Oops sorry :/
+
+Mostly because while moving things around I read this comment laying
+around since commit 4b78a802ffa:
+
+    /* port 92 stuff: could be split off */
+
+No further rational (except it eases static analysis) so I won't change
+this code and drop this patch.
+
+Regards,
+
+Phil.
 
