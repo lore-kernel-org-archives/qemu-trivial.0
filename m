@@ -1,55 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4StW-0006vN-IF
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 10:30:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35498)
+	id 1e4T3L-00026V-MO
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 10:41:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38246)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <James.Hogan@mips.com>) id 1e4StT-0006vA-PE
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 10:30:57 -0400
+	(envelope-from <lprosek@redhat.com>) id 1e4T3D-00022K-Ue
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 10:41:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <James.Hogan@mips.com>) id 1e4StP-0001Qh-QP
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 10:30:55 -0400
-Received: from 20pmail.ess.barracuda.com ([64.235.154.232]:56460)
+	(envelope-from <lprosek@redhat.com>) id 1e4T3C-0006pN-TB
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 10:40:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43570)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <James.Hogan@mips.com>)
-	id 1e4StP-0001Nt-HG; Tue, 17 Oct 2017 10:30:51 -0400
-Received: from MIPSMAIL01.mipstec.com (mailrelay.mips.com [12.201.5.28]) by
-	mx1412.ess.rzc.cudaops.com (version=TLSv1.2
-	cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NO);
-	Tue, 17 Oct 2017 14:30:15 +0000
-Received: from localhost (192.168.154.110) by MIPSMAIL01.mipstec.com
-	(10.20.43.31) with Microsoft SMTP Server (TLS) id 14.3.361.1;
-	Tue, 17 Oct 2017 07:29:51 -0700
-Date: Tue, 17 Oct 2017 15:30:16 +0100
-From: James Hogan <james.hogan@mips.com>
-To: Laurent Vivier <laurent@vivier.eu>
-CC: <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	<qemu-trivial@nongnu.org>
-Message-ID: <20171017143015.GP15235@jhogan-linux>
-References: <20171017141311.22194-1-james.hogan@imgtec.com>
-	<1abdfc6b-6e23-0949-84b1-bd1b1f6121c3@vivier.eu>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Ie5iOtK4e9kgqh2F"
-Content-Disposition: inline
-In-Reply-To: <1abdfc6b-6e23-0949-84b1-bd1b1f6121c3@vivier.eu>
-User-Agent: Mutt/1.7.2 (2016-11-26)
-X-Originating-IP: [192.168.154.110]
-X-BESS-ID: 1508250615-452060-2490-420279-1
-X-BESS-VER: 2017.12.1-r1709122024
-X-BESS-Apparent-Source-IP: 12.201.5.28
-X-BESS-Outbound-Spam-Score: 0.00
-X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 3.2.2.186055
-	Rule breakdown below
-	pts rule name              description
-	---- ---------------------- --------------------------------
-	0.00 BSF_BESS_OUTBOUND      META: BESS Outbound 
-X-BESS-Outbound-Spam-Status: SCORE=0.00 using account:ESS59374 scores of
-	KILL_LEVEL=7.0 tests=BSF_BESS_OUTBOUND
-X-BESS-BRTS-Status: 1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 64.235.154.232
-Subject: Re: [Qemu-trivial] [PATCH v2] Update James Hogan's email address
+	(Exim 4.71) (envelope-from <lprosek@redhat.com>)
+	id 1e4T39-0006l9-4u; Tue, 17 Oct 2017 10:40:55 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 97FF081E03;
+	Tue, 17 Oct 2017 14:40:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 97FF081E03
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lprosek@redhat.com
+Received: from dhcp-1-107.brq.redhat.com (unknown [10.43.2.17])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BBE0777FFA;
+	Tue, 17 Oct 2017 14:40:52 +0000 (UTC)
+From: Ladi Prosek <lprosek@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: lersek@redhat.com
+Date: Tue, 17 Oct 2017 16:40:51 +0200
+Message-Id: <20171017144051.8452-1-lprosek@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 17 Oct 2017 14:40:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH trivial] Remove empty statements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,102 +51,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 14:30:57 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 14:41:06 -0000
 
---Ie5iOtK4e9kgqh2F
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks to Laszlo Ersek for spotting the double semicolon in target/i386/kvm.c
 
-On Tue, Oct 17, 2017 at 04:21:13PM +0200, Laurent Vivier wrote:
-> Le 17/10/2017 =C3=A0 16:13, james.hogan@imgtec.com a =C3=A9crit=C2=A0:
-> > From: James Hogan <james.hogan@imgtec.com>
-> >=20
-> > Update my imgtec.com email address to my kernel.org one in MAINTAINERS
-> > as MIPS will soon no longer be part of Imagination Technologies, and add
-> > a mapping in .mailcap so get_maintainer.pl reports the right address.
-> >=20
-> > Signed-off-by: James Hogan <james.hogan@imgtec.com>
-> > Cc: Michael Tokarev <mjt@tls.msk.ru>
-> > Cc: Laurent Vivier <laurent@vivier.eu>
-> > Cc: qemu-devel@nongnu.org
-> > Cc: qemu-trivial@nongnu.org
-> > ---
-> > Changes in v2:
-> > - Use my imgtec address as the author / SoB (Laurent Vivier)
-> > ---
-> >  .mailmap    | 1 +
-> >  MAINTAINERS | 2 +-
-> >  2 files changed, 2 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/.mailmap b/.mailmap
-> > index 28defa1b2c57..5aec1bdf9f7d 100644
-> > --- a/.mailmap
-> > +++ b/.mailmap
-> > @@ -8,6 +8,7 @@ Aurelien Jarno <aurelien@aurel32.net> aurel32 <aurel32@=
-c046a42c-6fe2-441c-8c8c-7
-> >  Blue Swirl <blauwirbel@gmail.com> blueswir1 <blueswir1@c046a42c-6fe2-4=
-41c-8c8c-71466251a162>
-> >  Edgar E. Iglesias <edgar.iglesias@gmail.com> edgar_igl <edgar_igl@c046=
-a42c-6fe2-441c-8c8c-71466251a162>
-> >  Fabrice Bellard <fabrice@bellard.org> bellard <bellard@c046a42c-6fe2-4=
-41c-8c8c-71466251a162>
-> > +James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
-> >  Jocelyn Mayer <l_indien@magic.fr> j_mayer <j_mayer@c046a42c-6fe2-441c-=
-8c8c-71466251a162>
-> >  Paul Brook <paul@codesourcery.com> pbrook <pbrook@c046a42c-6fe2-441c-8=
-c8c-71466251a162>
-> >  Thiemo Seufer <ths@networkno.de> ths <ths@c046a42c-6fe2-441c-8c8c-7146=
-6251a162>
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 9522d1b621bd..b01f5c46ef83 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -284,7 +284,7 @@ S: Maintained
-> >  F: target/arm/kvm.c
-> > =20
-> >  MIPS
-> > -M: James Hogan <james.hogan@imgtec.com>
-> > +M: James Hogan <jhogan@kernel.org>
-> >  S: Maintained
-> >  F: target/mips/kvm.c
-> > =20
-> >=20
->=20
-> Thank you.
->=20
-> I don't understand why you need to update the .mailmap: updating the
-> MAINTAINERS file should be enough to have the correct address with
-> get_maintainer.pl?
+I have trivially grepped the tree for ';;' in C files.
 
-It allows get_maintainer.pl results based on git history (e.g. git
-blame) to show the up to date address. Admitedly I based that on my
-equivalent patch for the Linux kernel, so perhaps it is less relevant
-with QEMU?
+Suggested-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Ladi Prosek <lprosek@redhat.com>
+---
+ hw/misc/imx6_ccm.c     | 2 +-
+ hw/s390x/virtio-ccw.c  | 2 +-
+ linux-user/signal.c    | 2 +-
+ migration/block.c      | 2 +-
+ target/i386/cpu.c      | 2 +-
+ target/i386/kvm.c      | 2 +-
+ target/sh4/translate.c | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
-Cheers
-James
+diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+index 1b421013a3..4fa94835fe 100644
+--- a/hw/misc/imx6_ccm.c
++++ b/hw/misc/imx6_ccm.c
+@@ -335,7 +335,7 @@ static uint64_t imx6_ccm_get_ipg_clk(IMX6CCMState *dev)
+     uint64_t freq = 0;
+ 
+     freq = imx6_ccm_get_ahb_clk(dev)
+-           / (1 + EXTRACT(dev->ccm[CCM_CBCDR], IPG_PODF));;
++           / (1 + EXTRACT(dev->ccm[CCM_CBCDR], IPG_PODF));
+ 
+     DPRINTF("freq = %d\n", (uint32_t)freq);
+ 
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index 085f17f871..429f10bc90 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -486,7 +486,7 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         } else {
+             address_space_stb(&address_space_memory, ccw.cda, vdev->status,
+                                         MEMTXATTRS_UNSPECIFIED, NULL);
+-            sch->curr_status.scsw.count = ccw.count - sizeof(vdev->status);;
++            sch->curr_status.scsw.count = ccw.count - sizeof(vdev->status);
+             ret = 0;
+         }
+         break;
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index cc0c3fcee9..09055e8920 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -6487,7 +6487,7 @@ static void setup_rt_frame(int sig, struct target_sigaction *ka,
+         haddr = dest;
+     }
+     env->iaoq_f = haddr;
+-    env->iaoq_b = haddr + 4;;
++    env->iaoq_b = haddr + 4;
+     return;
+ 
+  give_sigsegv:
+diff --git a/migration/block.c b/migration/block.c
+index 3282809583..565625b9b2 100644
+--- a/migration/block.c
++++ b/migration/block.c
+@@ -896,7 +896,7 @@ static int block_load(QEMUFile *f, void *opaque, int version_id)
+     int len, flags;
+     char device_name[256];
+     int64_t addr;
+-    BlockBackend *blk, *blk_prev = NULL;;
++    BlockBackend *blk, *blk_prev = NULL;
+     Error *local_err = NULL;
+     uint8_t *buf;
+     int64_t total_sectors = 0;
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 98732cd65f..d44b0ed56c 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -2218,7 +2218,7 @@ static void x86_cpu_class_check_missing_features(X86CPUClass *xcc,
+ 
+     if (xcc->kvm_required && !kvm_enabled()) {
+         strList *new = g_new0(strList, 1);
+-        new->value = g_strdup("kvm");;
++        new->value = g_strdup("kvm");
+         *missing_feats = new;
+         return;
+     }
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index b1e32e95d3..d4b2ce2e94 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -1122,7 +1122,7 @@ static int kvm_get_supported_msrs(KVMState *s)
+                     break;
+                 case MSR_IA32_XSS:
+                     has_msr_xss = true;
+-                    break;;
++                    break;
+                 case HV_X64_MSR_CRASH_CTL:
+                     has_msr_hv_crash = true;
+                     break;
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 8db9fba26e..2b00cd2f35 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -679,7 +679,7 @@ static void _decode_opc(DisasContext * ctx)
+ 	return;
+     case 0x6008:		/* swap.b Rm,Rn */
+ 	{
+-            TCGv low = tcg_temp_new();;
++            TCGv low = tcg_temp_new();
+ 	    tcg_gen_ext16u_i32(low, REG(B7_4));
+ 	    tcg_gen_bswap16_i32(low, low);
+             tcg_gen_deposit_i32(REG(B11_8), REG(B7_4), low, 0, 16);
+-- 
+2.13.5
 
---Ie5iOtK4e9kgqh2F
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEd80NauSabkiESfLYbAtpk944dnoFAlnmE/cACgkQbAtpk944
-dnrSwxAAozhfXqaMDP+XEcMeJdTE+vSV6Jhh+J+leA2NRfxqvkRXFPbooyKNJiuS
-fz+Iw5OZYwMaVbRyOzrYejWObVITr+R5ykHbjsqgF23R2jFMEsY4xyJaaR01aOlK
-Xq0WXuYazKnjt2KjjegqG1SvL8i0Bd4xv7w3s6i9DRvwk867sA8ZfTnvmouUY+JX
-Yp2b5enm2VEAW5hXR2b9QpnaVT9oM+v3Y1qcSEiaAfc++ChGG1B0elTBdQVW4bJ9
-IA9oZHR0X3xyRWGm6tbnQtrMp6LTGPmEDS0l+XiR/TP4/g9ajPMwJ1vuFqPQcwTS
-GHZDCKXdt3rTLZ3FaSDiAc9YQD7duEg/hrHcxyMBgZ7oZ31quhFRP7fBFH+iwIR4
-tgRexrUP2R7WtYK2FgKL8xFfyzaVVhJB/cGhylhf+P5YmMiByqwEwOnpwxmlLNdH
-AQZ4t1cZFSb2UzxQNDfE2RA508A76hjzOA7Ue6ru34xCmNFH1AoEl6168dPdOZMa
-AcoEzbr9+E3ZzGNLhds54oZh3gQYH6b85wMz9TqDg/45uzJwb3mKt1kmnzFcr38Q
-iGKHnq2YjviQIXP15/pLWGomWPe0BYe8l7Zmp+Uj6ngTQ62T8uPv02FkM/Ej19cN
-U3XD6ccHFbQFfgmoaxtf2SJ7txpNNYavw47GvtuwHJhOGmDuHds=
-=oSQ1
------END PGP SIGNATURE-----
-
---Ie5iOtK4e9kgqh2F--
 
