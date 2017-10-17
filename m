@@ -1,59 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4V1T-0003FO-36
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:47:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47693)
+	id 1e4V1U-0003Ge-8i
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:47:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47697)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1N-00035H-KH
+	id 1e4V1N-000369-Pq
 	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1M-0003ty-By
+	id 1e4V1M-0003uC-Sz
 	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:13 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:47086)
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:57085)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1D-0003qK-KA; Tue, 17 Oct 2017 12:47:03 -0400
-Received: by mail-qk0-x241.google.com with SMTP id k123so2847977qke.3;
-	Tue, 17 Oct 2017 09:47:03 -0700 (PDT)
+	id 1e4V1K-0003tG-PB; Tue, 17 Oct 2017 12:47:10 -0400
+Received: by mail-qt0-x242.google.com with SMTP id z28so4903580qtz.13;
+	Tue, 17 Oct 2017 09:47:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=XPpKZGW+zNKiOYx2xLj+wxyOKmv6bg6mkqHcruqnfOM=;
-	b=RFdsZvHBpp3f7pxZacBg3es3uo7bBrMze7W1aZukytGjgi93RmJk6V52A1JnqnhLa4
-	FZF4sr57oXZU6ESweag7k+qqjpvdZ2Iz6BhVH+5d4ue0JPg//8Un2TKew/NQBQ3dqTMc
-	FEA6bpKOaAHIbRZOIJiGU4bJ4Wh00EXlDmLC01cRxz2KpYcVS5mrQ1PK9UdUqfsl5vAh
-	98ePWr8YosQfyCdMYbf7U8hNf5EkHl7MgBSUFDuVLPG73pfne1hhnCzok29LNHnvf7Wp
-	8nuez4nNCM9+nmPSfkV48I698ZpmU69GTPe/4ietF+AIRJO7m0dm6YQLZvGpoIAkzowI
-	wlJg==
+	bh=ZdE2/u31aPItGjDO4IDaM2er9Gg82Xp1BcEcbbT5J5s=;
+	b=SWewvzLbpaLOu07xchHaNy5nvHS+wFSWrKvKYQKehoOWxNzUqCQe6/66JOJnkTDiB6
+	1gnMcs9cUsK3T0yWlcczJY44AmWeYabf9E+OfkZbRsXRUFwxElHR09QKF7suho0X2XdP
+	KUDFAADu7T4l6Apa0X5IwBx4Y/vAl7O7qNDTiLFdYu5Gp9xSU2DeshndGIzisuBPqnNQ
+	U4D8LV6YtukEhN6HrYNlcCYT1HEJHdRv0wiTS+9hqQ/uaXLqJlICY90Q+kLzoCkbddr4
+	tuTXRAtc2803yCa5zEXgBaRuOR74I8AQxn83Z7deikm0iEv8XWi+TDOQAx5E5QvsYEEH
+	t+6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=XPpKZGW+zNKiOYx2xLj+wxyOKmv6bg6mkqHcruqnfOM=;
-	b=ZYToAgxZZwRU5uubm/hKLdvyctYihCwG/s8KjU/Z+2cHGsIbQ5babo5j/yhHCNWaDp
-	6j9/J/JahaAbF444s8BVWGmv3zgzKANLpBi27O9N8YXMYX5YCJdXvq0fENE9B9yaeHsn
-	RjEBygACGa3tMpIEw+EJK6x/SvZ911pFUkSc0YYWAV8FGNSLfMzZYL+Tm9igCky0beao
-	dnGB7QRCCpOsc+P3Y7mqCGicDLH8SPOq8a7H/d+B3n8J5wpalY3fFVLGxbuesH2pgpiq
-	bHkPjRnjiOZ2ebx4V4m+sDUxG2PjVPggwL1FhkgM6r7G0fMA+4dqX28c0CGfJjGy/l1r
-	3qog==
-X-Gm-Message-State: AMCzsaVYwrsNNA/FMxAqWnCQqoD9MsVmTXY7C3zdFbsp3sXgvoinfDJa
-	9y/JX2LyR1eLwN5QqbooNcE=
-X-Google-Smtp-Source: ABhQp+T5KgjXJ1f305dJ58wkdrCsTrzDcMxqqJrTbb5TmJiJJrgaWfyvTXm3FlWrgNq8AFvJstC57g==
-X-Received: by 10.55.160.135 with SMTP id j129mr18197102qke.274.1508258822997; 
-	Tue, 17 Oct 2017 09:47:02 -0700 (PDT)
+	bh=ZdE2/u31aPItGjDO4IDaM2er9Gg82Xp1BcEcbbT5J5s=;
+	b=DFIW0sNUT4E1PyAGRLNYBaU7H7eEOEv2T48YCrsx+zqQlIYovTJwcNzQYSP77P/Rt3
+	HvXEOfhcvb6ikPpMe1fxl+vKWDabsFC5dIJf9yqQc3SFhiI7/FwgGi+yp06cUD0dxlUI
+	bSvq2Xoe3awNmvz4KKUKCaEiP7++ZnKXzPdyOcvowWryXnLdGl50ip5QMuTSxjqHkXKW
+	rBhRIsRRQF6Bqj+h57soPkoChh6Q+BoQWsQq5BvlFw37mKXkL2OFBGxwSZ9D544Kerqq
+	U9Ag81bAmMAKnaRx+dnDSFJt5Cm5h2aszFofhVah0b4QGaFa8LjCNXVSf4wEUcKJ9n2q
+	EFIg==
+X-Gm-Message-State: AMCzsaWJQy2U3WZxrm48jDUBQx2P5G1cWa8OewH/HI2/w6o2HEfhuK9p
+	dFDa9l4hDzfJVGD/3wB+A1aKfDTezws=
+X-Google-Smtp-Source: ABhQp+SAxHNwY0ZTwu9EhQkOa2xZlLEvzsy3uz/skqYPVVkgysilt3fTOsV4fVozQ++lwV2P3Gr/DQ==
+X-Received: by 10.200.50.15 with SMTP id x15mr19043789qta.302.1508258830238;
+	Tue, 17 Oct 2017 09:47:10 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.47.00
+	q49sm6687653qtq.80.2017.10.17.09.47.06
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:47:02 -0700 (PDT)
+	Tue, 17 Oct 2017 09:47:09 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
+To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 17 Oct 2017 13:44:22 -0300
-Message-Id: <20171017164426.25277-39-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Tue, 17 Oct 2017 13:44:24 -0300
+Message-Id: <20171017164426.25277-41-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
 References: <20171017164426.25277-1-f4bug@amsat.org>
@@ -62,9 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH v3 38/42] hw/net/ne2000: extract ne2k-isa
- code from i386/pc to ne2000-isa.c
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v3 40/42] i386/pc: move vmport.c to hw/i386/
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,182 +80,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 17 Oct 2017 16:47:18 -0000
 
-- add "hw/net/ne2000-isa.h"
-- remove the old i386 dependency
+It's a x86-only device, so it does not make sense to keep it
+in the shared misc folder.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
 ---
- hw/net/ne2000.h             |  3 +++
- include/hw/i386/pc.h        | 20 --------------------
- include/hw/net/ne2000-isa.h | 33 +++++++++++++++++++++++++++++++++
- hw/i386/pc.c                |  1 +
- hw/mips/mips_r4k.c          |  1 +
- hw/net/ne2000-isa.c         |  6 ++----
- hw/net/ne2000.c             |  2 --
- hw/ppc/prep.c               |  1 +
- 8 files changed, 41 insertions(+), 26 deletions(-)
- create mode 100644 include/hw/net/ne2000-isa.h
+ hw/{misc => i386}/vmport.c | 0
+ hw/i386/Makefile.objs      | 1 +
+ hw/misc/Makefile.objs      | 2 --
+ 3 files changed, 1 insertion(+), 2 deletions(-)
+ rename hw/{misc => i386}/vmport.c (100%)
 
-diff --git a/hw/net/ne2000.h b/hw/net/ne2000.h
-index d213dccae3..adb8021bd1 100644
---- a/hw/net/ne2000.h
-+++ b/hw/net/ne2000.h
-@@ -1,6 +1,9 @@
- #ifndef HW_NE2000_H
- #define HW_NE2000_H
+diff --git a/hw/misc/vmport.c b/hw/i386/vmport.c
+similarity index 100%
+rename from hw/misc/vmport.c
+rename to hw/i386/vmport.c
+diff --git a/hw/i386/Makefile.objs b/hw/i386/Makefile.objs
+index 909ead6a77..64a461c929 100644
+--- a/hw/i386/Makefile.objs
++++ b/hw/i386/Makefile.objs
+@@ -5,6 +5,7 @@ obj-y += pc_sysfw.o
+ obj-y += x86-iommu.o intel_iommu.o
+ obj-y += amd_iommu.o
+ obj-$(CONFIG_XEN) += ../xenpv/ xen/
++obj-$(CONFIG_VMPORT) += vmport.o
  
-+#include "hw/hw.h"
-+#include "net/net.h"
-+
- #define NE2000_PMEM_SIZE    (32*1024)
- #define NE2000_PMEM_START   (16*1024)
- #define NE2000_PMEM_END     (NE2000_PMEM_SIZE+NE2000_PMEM_START)
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 25ba378bd8..846d37b9fb 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -302,26 +302,6 @@ PCIBus *find_i440fx(void);
- extern PCIDevice *piix4_dev;
- int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
+ obj-y += kvmvapic.o
+ obj-y += acpi-build.o
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 19202d90cf..03bc758592 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -11,8 +11,6 @@ common-obj-$(CONFIG_EDU) += edu.o
+ common-obj-y += unimp.o
+ common-obj-y += vmcoreinfo.o
  
--/* ne2000.c */
--static inline bool isa_ne2000_init(ISABus *bus, int base, int irq, NICInfo *nd)
--{
--    DeviceState *dev;
--    ISADevice *isadev;
+-obj-$(CONFIG_VMPORT) += vmport.o
 -
--    qemu_check_nic_model(nd, "ne2k_isa");
--
--    isadev = isa_try_create(bus, "ne2k_isa");
--    if (!isadev) {
--        return false;
--    }
--    dev = DEVICE(isadev);
--    qdev_prop_set_uint32(dev, "iobase", base);
--    qdev_prop_set_uint32(dev, "irq",    irq);
--    qdev_set_nic_properties(dev, nd);
--    qdev_init_nofail(dev);
--    return true;
--}
--
- /* pc_sysfw.c */
- void pc_system_firmware_init(MemoryRegion *rom_memory,
-                              bool isapc_ram_fw);
-diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
-new file mode 100644
-index 0000000000..ff2bed9c95
---- /dev/null
-+++ b/include/hw/net/ne2000-isa.h
-@@ -0,0 +1,33 @@
-+/*
-+ * QEMU NE2000 emulation -- isa bus windup
-+ *
-+ * Copyright (c) 2003-2004 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#include "hw/hw.h"
-+#include "hw/qdev.h"
-+#include "hw/isa/isa.h"
-+#include "net/net.h"
-+
-+#define TYPE_ISA_NE2000 "ne2k_isa"
-+
-+static inline ISADevice *isa_ne2000_init(ISABus *bus, int base, int irq,
-+                                         NICInfo *nd)
-+{
-+    ISADevice *d;
-+
-+    qemu_check_nic_model(nd, "ne2k_isa");
-+
-+    d = isa_try_create(bus, TYPE_ISA_NE2000);
-+    if (d) {
-+        DeviceState *dev = DEVICE(d);
-+
-+        qdev_prop_set_uint32(dev, "iobase", base);
-+        qdev_prop_set_uint32(dev, "irq",    irq);
-+        qdev_set_nic_properties(dev, nd);
-+        qdev_init_nofail(dev);
-+    }
-+    return d;
-+}
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 88e64d84c3..48c92e64ae 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -69,6 +69,7 @@
- #include "qom/cpu.h"
- #include "hw/nmi.h"
- #include "hw/i386/intel_iommu.h"
-+#include "hw/net/ne2000-isa.h"
- 
- /* debug PC/ISA interrupts */
- //#define DEBUG_IRQ
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index cdb91e31c5..b40168fa08 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -18,6 +18,7 @@
- #include "hw/char/serial.h"
- #include "hw/isa/isa.h"
- #include "net/net.h"
-+#include "hw/net/ne2000-isa.h"
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
- #include "hw/block/flash.h"
-diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
-index f3455339ee..70e5c1d3d4 100644
---- a/hw/net/ne2000-isa.c
-+++ b/hw/net/ne2000-isa.c
-@@ -22,17 +22,15 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
--#include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
-+#include "hw/net/ne2000-isa.h"
- #include "hw/qdev.h"
--#include "net/net.h"
- #include "ne2000.h"
-+#include "sysemu/sysemu.h"
- #include "exec/address-spaces.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- 
--#define TYPE_ISA_NE2000 "ne2k_isa"
- #define ISA_NE2000(obj) OBJECT_CHECK(ISANE2000State, (obj), TYPE_ISA_NE2000)
- 
- typedef struct ISANE2000State {
-diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
-index 3938e6ddd8..6874c8c6b9 100644
---- a/hw/net/ne2000.c
-+++ b/hw/net/ne2000.c
-@@ -22,9 +22,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
--#include "hw/hw.h"
- #include "hw/pci/pci.h"
--#include "net/net.h"
- #include "ne2000.h"
- #include "hw/loader.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 94138a4e8c..f9c958b785 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -42,6 +42,7 @@
- #include "hw/loader.h"
- #include "hw/timer/mc146818rtc.h"
- #include "hw/isa/pc87312.h"
-+#include "hw/net/ne2000-isa.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/arch_init.h"
- #include "sysemu/kvm.h"
+ # ARM devices
+ common-obj-$(CONFIG_PL310) += arm_l2x0.o
+ common-obj-$(CONFIG_INTEGRATOR_DEBUG) += arm_integrator_debug.o
 -- 
 2.15.0.rc0
 
