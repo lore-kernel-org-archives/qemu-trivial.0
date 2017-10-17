@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4FWS-0007Gf-Hk
+	id 1e4FWS-0007HJ-Tw
 	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2017 20:14:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34236)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34289)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWN-0007B1-7F
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:12 -0400
+	id 1e4FWQ-0007EE-EG
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWK-0004uT-0g
-	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:11 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:47679)
+	id 1e4FWP-0004xS-Be
+	for qemu-trivial@nongnu.org; Mon, 16 Oct 2017 20:14:14 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:54187)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4FWC-0004q2-TJ; Mon, 16 Oct 2017 20:14:01 -0400
-Received: by mail-qt0-x241.google.com with SMTP id z50so63917qtj.4;
-	Mon, 16 Oct 2017 17:14:00 -0700 (PDT)
+	id 1e4FWN-0004vl-2K; Mon, 16 Oct 2017 20:14:11 -0400
+Received: by mail-qt0-x243.google.com with SMTP id n61so43023qte.10;
+	Mon, 16 Oct 2017 17:14:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=/0pwdqjEadMZbKLTF8ZdjgCcwLcbvnT1wtaVR+IB2+c=;
-	b=QZCt2dPsqVRQzdWrSR72lBA6vxdex1DdBG9mKZWFytbYoiGpfL4SUZM+KLSTn23i5J
-	OfOfUiI8MvWU3bwVrJpRTosl45GVvPsIMAMdR5536GDlX+qRn41KJT3AT4nt5+7D9c2H
-	vcCZgf+P1SSfJGwer5jWBv23dba5hRrfTaSeryzjUPbZum3MlsvajcbtAR2FqcKV6p/6
-	6GkJp4dfruBSN+zKCLd7kV0B0qEbvN7rzmMKR9Apc1MURQv0BIQacQ3fGqQOuXaaglsD
-	2mbGqryZLaqhbMwX6AlCHtd/V+VZkF6myd89+N6SHYdzY7DImkIMoMbZ+zwkDqv7zNgO
-	k8IQ==
+	bh=8ROr7wKR1HNM3arK+N3XS2nqKzhARhHINhAJSV6TCM0=;
+	b=UqXtY9TVcKiJ4FGzS24ekzVI8d6S2oHsBCz+VEVVomtc8jBWIBpux3MXC2fycdzYc4
+	06zQR6Zy1BsJCLYdwLU37bB56NAoL2EGOz7TixpMshyLNRmZruCwkt+fHi7ywZE/HKUU
+	tyYD9D7x607a3uXHHSON55pI0aWZrK6eaoeI1+Fk74jiGCgGZN/71A0pKaXDif13yI83
+	ATl28+g4Zjyj2mKKCuWfsJjpgYQC8iJ/VNL5yQoMl6N2uO+6oBLmZ5ZaZ5n/fV026hzS
+	nHgI7raijHxwkYQ5KdkCPYX/yzzKFD+ZY04D70yWOtADHyxQ/HFZZXpfg5QJaXG4REyl
+	XI7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=/0pwdqjEadMZbKLTF8ZdjgCcwLcbvnT1wtaVR+IB2+c=;
-	b=rybvAMNi6RB3p1drmE1gF8XIO+jsAAIAecM5h9VG8mp7g26rQTLt2v3S8HY9iL4SAF
-	cfFKvHuGzh4SlBtuOjrxMbxQSuAEBie6knmh8DFImBt9SHD8kSzhFetfbWNE8agNv/eY
-	LFQHbzBNBGhdb8Kzf959VSt/Rug9lUR5KPWQMThW1l+URA3AVBFEdMu2A5LfECi9CU2R
-	FdKi+THMtcSZmNzT4dPwyuQIwWQbphK7qYugQ3k9aiXf5DMegfeeL/VVBu8/ziPGsz13
-	gZt20c3XmQRlRcRlpTVvDxameb7PaB1/1BwkSepc0fdME1paxlv68ti+ZznElWeWpFam
-	vueA==
-X-Gm-Message-State: AMCzsaUQoJ1sHDAbDDWE4kxmqpm3YmATv2SVqmZV+HFpFDLtJGAo33xU
-	S/BlZshCtJboxNakYbUBuDCTGseW
-X-Google-Smtp-Source: AOwi7QCReLJqY6R3r9jZKCqRY7QaGu0xMUwvNfqNcVqhiA+ixyKkI+Z6R4VYUINqvgYeChwjdEMhYg==
-X-Received: by 10.200.23.153 with SMTP id o25mr17405048qtj.119.1508199240348; 
-	Mon, 16 Oct 2017 17:14:00 -0700 (PDT)
+	bh=8ROr7wKR1HNM3arK+N3XS2nqKzhARhHINhAJSV6TCM0=;
+	b=o1mdVaLKvpsjZ0q0opksSEScKrQvDrLHlPTUF09QbRLh5kvEvB3TCOU5/yXLOZLOzR
+	imRq7kZuXr1gsfJtuG/I5+hZb90IWF2Rx/2rCC0k66ZnwQKk/WRMWFnVacI8ao77vZ3F
+	PpTNLIxshzGa0Ur/lIq+NSVyz3IxrlFXxNV7fJyhU6teR9oeCrXsKFiKJVictkRUW3jB
+	lOzgOu8vyC2haGMxfY+d9WQgiv1DZEcrIjeVRBCVTK5tYhjYvemxplrvgb9+OEi7ImXr
+	R1EeppiOE/RsNs1BBvvgc88InBan5/iufmapDZ/kG51qY4AQ1aulMN9HpkZDjd7buH9I
+	FwRw==
+X-Gm-Message-State: AMCzsaWA0ImDFcEOujQaNQQpfz3iLkZu1takZQK0C/ZLdnqjDeicH7Yp
+	8CkUPm1G1gwQS0x6TOLwHonS0IC/
+X-Google-Smtp-Source: ABhQp+RVWbQZTQyShnTkcAe1KqftxoxxL/htKXqASs77mGTOPIvMbeW02nkijnbx3bSWJMyhkFsMyQ==
+X-Received: by 10.200.36.68 with SMTP id d4mr4228744qtd.180.1508199250658;
+	Mon, 16 Oct 2017 17:14:10 -0700 (PDT)
 Received: from x1.local ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id r6sm5409043qkh.22.2017.10.16.17.13.57
+	by smtp.gmail.com with ESMTPSA id r6sm5409043qkh.22.2017.10.16.17.14.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Oct 2017 17:13:59 -0700 (PDT)
+	Mon, 16 Oct 2017 17:14:10 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Date: Mon, 16 Oct 2017 21:12:01 -0300
-Message-Id: <20171017001209.32276-32-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 16 Oct 2017 21:12:04 -0300
+Message-Id: <20171017001209.32276-35-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017001209.32276-1-f4bug@amsat.org>
 References: <20171017001209.32276-1-f4bug@amsat.org>
@@ -62,9 +62,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v2 31/39] hw/input/i8042: extract pckbd and
- vmmouse API from hw/i386/pc.h
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v2 34/39] misc: drop old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,338 +75,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 00:14:13 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 00:14:15 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- include/hw/i386/pc.h     | 11 -----------
- include/hw/input/i8042.h | 30 ++++++++++++++++++++++++++++++
- hw/alpha/dp264.c         |  3 ++-
- hw/i386/pc.c             |  5 +++--
- hw/input/pckbd.c         |  2 +-
- hw/input/vmmouse.c       |  3 +--
- hw/mips/mips_fulong2e.c  |  3 ++-
- hw/mips/mips_jazz.c      |  1 +
- hw/mips/mips_malta.c     |  3 ++-
- hw/mips/mips_r4k.c       |  3 ++-
- hw/misc/vmport.c         |  1 +
- hw/ppc/prep.c            |  5 +++--
- hw/sparc64/sun4u.c       |  3 ++-
- hw/unicore32/puv3.c      |  1 +
- MAINTAINERS              |  1 +
- 15 files changed, 52 insertions(+), 23 deletions(-)
- create mode 100644 include/hw/input/i8042.h
+ hw/char/debugcon.c      | 1 -
+ hw/intc/lm32_pic.c      | 1 -
+ hw/moxie/moxiesim.c     | 1 -
+ hw/sparc/sun4m.c        | 1 -
+ hw/watchdog/wdt_ib700.c | 1 -
+ 5 files changed, 5 deletions(-)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 25ba378bd8..6a2e947332 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -193,17 +193,6 @@ static inline void vmport_init(ISABus *bus)
- }
- 
- void vmport_register(unsigned char command, VMPortReadFunc *func, void *opaque);
--void vmmouse_get_data(uint32_t *data);
--void vmmouse_set_data(const uint32_t *data);
--
--/* pckbd.c */
--#define I8042_A20_LINE "a20"
--
--void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
--                   MemoryRegion *region, ram_addr_t size,
--                   hwaddr mask);
--void i8042_isa_mouse_fake_event(void *opaque);
--void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
- 
- /* pc.c */
- extern int fd_bootchk;
-diff --git a/include/hw/input/i8042.h b/include/hw/input/i8042.h
-new file mode 100644
-index 0000000000..836417304b
---- /dev/null
-+++ b/include/hw/input/i8042.h
-@@ -0,0 +1,30 @@
-+/*
-+ * QEMU PS/2 Controller
-+ *
-+ * Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef HW_INPUT_I8042_H
-+#define HW_INPUT_I8042_H
-+
-+#include "hw/hw.h"
-+#include "hw/isa/isa.h"
-+
-+#define TYPE_I8042 "i8042"
-+
-+#define I8042_A20_LINE "a20"
-+
-+void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
-+                   MemoryRegion *region, ram_addr_t size,
-+                   hwaddr mask);
-+void i8042_isa_mouse_fake_event(void *opaque);
-+void i8042_setup_a20_line(ISADevice *dev, qemu_irq a20_out);
-+
-+#define TYPE_VMMOUSE "vmmouse"
-+
-+void vmmouse_get_data(uint32_t *data);
-+void vmmouse_set_data(const uint32_t *data);
-+
-+#endif /* HW_INPUT_I8042_H */
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 1bd5243648..2253990654 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -19,6 +19,7 @@
- #include "hw/timer/mc146818rtc.h"
- #include "hw/ide.h"
- #include "hw/timer/i8254.h"
-+#include "hw/input/i8042.h"
- #include "hw/char/serial.h"
- #include "qemu/cutils.h"
- 
-@@ -82,7 +83,7 @@ static void clipper_init(MachineState *machine)
-     rtc_init(isa_bus, 1900, rtc_irq);
- 
-     i8254_pit_init(isa_bus, 0x40, 0, NULL);
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
- 
-     /* VGA setup.  Don't bother loading the bios.  */
-     pci_vga_init(pci_bus);
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index b565c6086c..6959a0a712 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -40,6 +40,7 @@
- #include "multiboot.h"
- #include "hw/timer/mc146818rtc.h"
- #include "hw/timer/i8254.h"
-+#include "hw/input/i8042.h"
- #include "hw/audio/pcspk.h"
- #include "hw/pci/msi.h"
- #include "hw/sysbus.h"
-@@ -1564,11 +1565,11 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
-     parallel_hds_isa_init(isa_bus, MAX_PARALLEL_PORTS);
- 
-     a20_line = qemu_allocate_irqs(handle_a20_line_change, first_cpu, 2);
--    i8042 = isa_create_simple(isa_bus, "i8042");
-+    i8042 = isa_create_simple(isa_bus, TYPE_I8042);
-     i8042_setup_a20_line(i8042, a20_line[0]);
-     if (!no_vmport) {
-         vmport_init(isa_bus);
--        vmmouse = isa_try_create(isa_bus, "vmmouse");
-+        vmmouse = isa_try_create(isa_bus, TYPE_VMMOUSE);
-     } else {
-         vmmouse = NULL;
-     }
-diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-index c479f827b6..f17f18e51b 100644
---- a/hw/input/pckbd.c
-+++ b/hw/input/pckbd.c
-@@ -26,6 +26,7 @@
+diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
+index 95ccec6f8b..e2abc61b04 100644
+--- a/hw/char/debugcon.c
++++ b/hw/char/debugcon.c
+@@ -29,7 +29,6 @@
+ #include "hw/hw.h"
+ #include "chardev/char-fe.h"
  #include "hw/isa/isa.h"
- #include "hw/i386/pc.h"
- #include "hw/input/ps2.h"
-+#include "hw/input/i8042.h"
- #include "sysemu/sysemu.h"
+-#include "hw/i386/pc.h"
  
- /* debug PC keyboard */
-@@ -480,7 +481,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
-     qemu_register_reset(kbd_reset, s);
- }
- 
--#define TYPE_I8042 "i8042"
- #define I8042(obj) OBJECT_CHECK(ISAKBDState, (obj), TYPE_I8042)
- 
- typedef struct ISAKBDState {
-diff --git a/hw/input/vmmouse.c b/hw/input/vmmouse.c
-index b6d22086f4..c48c07c564 100644
---- a/hw/input/vmmouse.c
-+++ b/hw/input/vmmouse.c
-@@ -24,7 +24,7 @@
+ #define TYPE_ISA_DEBUGCON_DEVICE "isa-debugcon"
+ #define ISA_DEBUGCON_DEVICE(obj) \
+diff --git a/hw/intc/lm32_pic.c b/hw/intc/lm32_pic.c
+index 09e15115fb..db6c7afc2f 100644
+--- a/hw/intc/lm32_pic.c
++++ b/hw/intc/lm32_pic.c
+@@ -20,7 +20,6 @@
  #include "qemu/osdep.h"
+ 
  #include "hw/hw.h"
- #include "ui/console.h"
--#include "hw/input/ps2.h"
-+#include "hw/input/i8042.h"
- #include "hw/i386/pc.h"
- #include "hw/qdev.h"
- 
-@@ -52,7 +52,6 @@
- #define DPRINTF(fmt, ...) do { } while (0)
- #endif
- 
--#define TYPE_VMMOUSE "vmmouse"
- #define VMMOUSE(obj) OBJECT_CHECK(VMMouseState, (obj), TYPE_VMMOUSE)
- 
- typedef struct VMMouseState
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 22e6c05fb5..a35745a407 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -42,6 +42,7 @@
- #include "hw/isa/vt82c686.h"
- #include "hw/timer/mc146818rtc.h"
- #include "hw/timer/i8254.h"
-+#include "hw/input/i8042.h"
- #include "sysemu/blockdev.h"
- #include "exec/address-spaces.h"
- #include "sysemu/qtest.h"
-@@ -367,7 +368,7 @@ static void mips_fulong2e_init(MachineState *machine)
-     DMA_init(isa_bus, 0);
- 
-     /* Super I/O */
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
- 
-     rtc_init(isa_bus, 2000, NULL);
- 
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 25f0294236..1bbef7eeb5 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -41,6 +41,7 @@
- #include "hw/timer/i8254.h"
- #include "hw/display/vga.h"
- #include "hw/audio/pcspk.h"
-+#include "hw/input/i8042.h"
- #include "sysemu/block-backend.h"
+-#include "hw/i386/pc.h"
+ #include "monitor/monitor.h"
  #include "hw/sysbus.h"
- #include "exec/address-spaces.h"
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index de547d732f..45c7f589aa 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -45,6 +45,7 @@
- #include "hw/loader.h"
- #include "elf.h"
- #include "hw/timer/mc146818rtc.h"
-+#include "hw/input/i8042.h"
- #include "hw/timer/i8254.h"
- #include "sysemu/blockdev.h"
- #include "exec/address-spaces.h"
-@@ -1221,7 +1222,7 @@ void mips_malta_init(MachineState *machine)
-     DMA_init(isa_bus, 0);
- 
-     /* Super I/O */
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
- 
-     rtc_init(isa_bus, 2000, NULL);
-     serial_hds_isa_init(isa_bus, 0, 2);
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index 48fad52540..946097a31f 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -27,6 +27,7 @@
- #include "hw/loader.h"
- #include "elf.h"
- #include "hw/timer/mc146818rtc.h"
-+#include "hw/input/i8042.h"
- #include "hw/timer/i8254.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
-@@ -295,7 +296,7 @@ void mips_r4k_init(MachineState *machine)
-                      hd[MAX_IDE_DEVS * i],
- 		     hd[MAX_IDE_DEVS * i + 1]);
- 
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
- }
- 
- static void mips_machine_init(MachineClass *mc)
-diff --git a/hw/misc/vmport.c b/hw/misc/vmport.c
-index 165500223f..bc078eb20a 100644
---- a/hw/misc/vmport.c
-+++ b/hw/misc/vmport.c
-@@ -25,6 +25,7 @@
+ #include "trace.h"
+diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
+index 5ea8dd3a93..5c9a4211ac 100644
+--- a/hw/moxie/moxiesim.c
++++ b/hw/moxie/moxiesim.c
+@@ -30,7 +30,6 @@
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "hw/hw.h"
+-#include "hw/i386/pc.h"
+ #include "hw/isa/isa.h"
+ #include "net/net.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index e1bdd4828d..93424b186f 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -36,7 +36,6 @@
+ #include "net/net.h"
+ #include "hw/boards.h"
+ #include "hw/scsi/esp.h"
+-#include "hw/i386/pc.h"
+ #include "hw/isa/isa.h"
+ #include "hw/nvram/sun_nvram.h"
+ #include "hw/nvram/chrp_nvram.h"
+diff --git a/hw/watchdog/wdt_ib700.c b/hw/watchdog/wdt_ib700.c
+index 532afe89e7..d045032bf4 100644
+--- a/hw/watchdog/wdt_ib700.c
++++ b/hw/watchdog/wdt_ib700.c
+@@ -25,7 +25,6 @@
+ #include "sysemu/watchdog.h"
  #include "hw/hw.h"
  #include "hw/isa/isa.h"
- #include "hw/i386/pc.h"
-+#include "hw/input/i8042.h"
- #include "sysemu/hw_accel.h"
- #include "hw/qdev.h"
+-#include "hw/i386/pc.h"
  
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 94138a4e8c..16f4537093 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -41,6 +41,7 @@
- #include "hw/ide.h"
- #include "hw/loader.h"
- #include "hw/timer/mc146818rtc.h"
-+#include "hw/input/i8042.h"
- #include "hw/isa/pc87312.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/arch_init.h"
-@@ -643,7 +644,7 @@ static void ppc_prep_init(MachineState *machine)
-                      hd[2 * i],
- 		     hd[2 * i + 1]);
-     }
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
+ /*#define IB700_DEBUG 1*/
  
-     cpu = POWERPC_CPU(first_cpu);
-     sysctrl->reset_irq = cpu->env.irq_inputs[PPC6xx_INPUT_HRESET];
-@@ -775,7 +776,7 @@ static void ibm_40p_init(MachineState *machine)
- 
-     /* add some more devices */
-     if (defaults_enabled()) {
--        isa_create_simple(isa_bus, "i8042");
-+        isa_create_simple(isa_bus, TYPE_I8042);
-         m48t59 = NVRAM(isa_create_simple(isa_bus, "isa-m48t59"));
- 
-         dev = DEVICE(isa_create(isa_bus, "cs4231a"));
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index 8282651aeb..1cd283063e 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -31,6 +31,7 @@
- #include "hw/i386/pc.h"
- #include "hw/char/serial.h"
- #include "hw/timer/m48t59.h"
-+#include "hw/input/i8042.h"
- #include "hw/block/fdc.h"
- #include "net/net.h"
- #include "qemu/timer.h"
-@@ -492,7 +493,7 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
- 
-     pci_cmd646_ide_init(pci_bus, hd, 1);
- 
--    isa_create_simple(isa_bus, "i8042");
-+    isa_create_simple(isa_bus, TYPE_I8042);
- 
-     /* Floppy */
-     for(i = 0; i < MAX_FD; i++) {
-diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
-index 6849bac59c..cf79c89f12 100644
---- a/hw/unicore32/puv3.c
-+++ b/hw/unicore32/puv3.c
-@@ -19,6 +19,7 @@
- 
- #undef DEBUG_PUV3
- #include "hw/unicore32/puv3.h"
-+#include "hw/input/i8042.h"
- 
- #define KERNEL_LOAD_ADDR        0x03000000
- #define KERNEL_MAX_SIZE         0x00800000 /* Just a guess */
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9907b3dae2..632eb3f50e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -863,6 +863,7 @@ F: hw/watchdog/wdt_ib700.c
- F: include/hw/display/vga.h
- F: include/hw/dma/i8257_dma.h
- F: include/hw/i2c/pm_smbus.h
-+F: include/hw/input/i8042.h
- F: include/hw/timer/hpet.h
- F: include/hw/timer/i8254*
- F: include/hw/timer/mc146818rtc*
 -- 
 2.15.0.rc0
 
