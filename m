@@ -1,65 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4V1K-00030r-7R
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:47:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47620)
+	id 1e4V1N-00034y-Hi
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:47:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47660)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1H-0002yd-SG
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:09 -0400
+	id 1e4V1K-00031S-SK
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1D-0003qh-Mo
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:07 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:51388)
+	id 1e4V1J-0003t7-Pd
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:47:10 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:49715)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V1B-0003oo-17; Tue, 17 Oct 2017 12:47:01 -0400
-Received: by mail-qk0-x244.google.com with SMTP id 17so2820561qkq.8;
-	Tue, 17 Oct 2017 09:47:00 -0700 (PDT)
+	id 1e4V1H-0003rq-8P; Tue, 17 Oct 2017 12:47:07 -0400
+Received: by mail-qk0-x244.google.com with SMTP id q83so2841160qke.6;
+	Tue, 17 Oct 2017 09:47:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Ho1UKauFL0sQpkUuLjZ1/iGoh8B+B0eNv85u9OsQFHQ=;
-	b=D+Rk5wJeIwRe6zaGPbOhmOOrCgdpjN7QuSW9an8utD1Khnj3eVpW1ylydsQ1Yu97yr
-	RA4M3SBRkrBeFp345Kbezkg7+cnrODcXTet+ZVkETEUawfdmFFasSGJnR02EHfSqNCB6
-	CjFfQ0cEj9UqWypfRJpzhqWAkFz+HnDvHpBzwFTUcwHC8oMcraQQYfLtVZ0vUxzsrOOw
-	CKanQ3eVB2E95kRFc9YxX5gYcgNxWv2yaLcHflMTwMUYt2HUNpq0iKIGkfdN3yAzTpTX
-	EyfPk9HVhki50nKLssUZ8Utk0FDJ665pp+BEaYdSfj4UkwJ9JPehcOo16ZaGlVBaAiEG
-	ABSA==
+	bh=2I+aFjs0l4N/i2xRW8EjrNoOJqnDXO7wET7r+c9yca8=;
+	b=S1Tn33p/+kCe0EtUeB0RvAR04qPi4L01J148UH1oth9VQeHpv8SVpE8gExFsmZ3VqG
+	/zUVnuHuDOLrWx0oJeaD0qtLuHcQYWEu/9M//z2WkpSdc1774tFjOKTzaFMh+gndGM0O
+	PglMDTy8olRlq0Qh1XhVPrqwP+C/aakK9OOre+PPPisn0Do6yZpKw1nkSL498RDC/ySn
+	iqupnI2pxZa+SszzTvtx71i6OhnM1pAP6ovaPEdZGsVmTcf+7ajS/w/8iN+XRBP3qth7
+	TOdoMOXcXHxR8vB5GREixJhw672mjjH6Wg4LUr5h+knbdOEARIO1YimwA/6EVWnUBBGJ
+	5cMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Ho1UKauFL0sQpkUuLjZ1/iGoh8B+B0eNv85u9OsQFHQ=;
-	b=UqZmpn+1NC39snruyphdD47Ipf4UX2hMVpuLx/2JRN3prsYd7NcrUkRs4FE7BjljIo
-	os0QSGljLd19DCHhne9vBzSfx+LQ5yzkxcW656cqY6sSDvhVEwGOQ/XxlfI6WddT8Qwd
-	DhUcZ2UXEcRVa49juXAvRI5uPEHlZzob08o78HszZI9kAxEhNamAcFWHmh/CsQFjiVoJ
-	SEHImXz5/ZdjWlkRodd7oV/q4K3DWbi7MfKs3SsOOBR7n6SeywVQ0HF3t9rkreaYtSEh
-	R4Je7mPyQ0yKuVFhOjOoqXq+8mXcesMyfNrGRpD0uRkR7SZt+9CVnDmdCgJ6skmtSM/q
-	N1mA==
-X-Gm-Message-State: AMCzsaWLLZLPqekJJ/0NNS9lYW6AbAIgk8lUysT7XCsretT1eFfRynBm
-	dM7DuCXR3CK/BwP9oXNClxY=
-X-Google-Smtp-Source: ABhQp+Sa/A4FDOZ36cP37jRXZQSa49tCw2ZphiUCzOv5iJbfoYizH1Psv+iX/zm6jmUVF7UURLpOLQ==
-X-Received: by 10.55.22.132 with SMTP id 4mr15068395qkw.39.1508258820455;
-	Tue, 17 Oct 2017 09:47:00 -0700 (PDT)
+	bh=2I+aFjs0l4N/i2xRW8EjrNoOJqnDXO7wET7r+c9yca8=;
+	b=CiRkxmuSdr9hOz8RrjD09MCTScAZ5vUw9KHAXIiGIjxRZ9ZFvORgLUi0m1bNUFwUPI
+	HhEd8j5QU2PwtTGnlx+/mP8C/5q34l/KDoU5l/nk0SkWB2ldna/hWYCHG9ypNjAa3S8Y
+	yF9KL0WGR61Mi/x7qgFBt0EJdOPWWZF5zBv8mxmbT3SlnkHcXaiwNWv1gxUxR8N//2va
+	jswWnMNFgGp6bumTtZ6N1hy58MAwr75bIMAw2Y1MYlcpxxcyYwMzF20jfrE4dvXSbRO7
+	/77s56tEnyx+K9uU1haExijitj72xQcH0iFdu9tFYy5R1P9ounzGrSlHy52s44wpbwyY
+	dQHw==
+X-Gm-Message-State: AMCzsaVn1iXohFt61/7xGdeElFPZDHjQiPKe9xXPPL95ELcul4rA5r2y
+	ERJhzM81P82oJ9EQDEmtrZo=
+X-Google-Smtp-Source: ABhQp+Q8AlpAy7D+goAQG42nleNO0rjJ1H5S72S99YrmuxaYNtSLejvUL8yt3AZHx+8vOtZUuqIhig==
+X-Received: by 10.55.77.67 with SMTP id a64mr6825425qkb.172.1508258826602;
+	Tue, 17 Oct 2017 09:47:06 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.46.56
+	q49sm6687653qtq.80.2017.10.17.09.47.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:46:59 -0700 (PDT)
+	Tue, 17 Oct 2017 09:47:06 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, Yongbok Kim <yongbok.kim@imgtec.com>
+	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 17 Oct 2017 13:44:21 -0300
-Message-Id: <20171017164426.25277-38-f4bug@amsat.org>
+Date: Tue, 17 Oct 2017 13:44:23 -0300
+Message-Id: <20171017164426.25277-40-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
 References: <20171017164426.25277-1-f4bug@amsat.org>
@@ -69,8 +66,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH v3 37/42] hw/display/vga: extract public API
- from i386/pc to "hw/display/vga.h"
+Subject: [Qemu-trivial] [PATCH v3 39/42] hw/misc/pvpanic: extract public API
+ from i386/pc to "hw/misc/pvpanic.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,158 +79,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 16:47:09 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 16:47:12 -0000
 
 and remove the old i386/pc dependency.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/display/vga.h | 25 +++++++++++++++++++++++++
- include/hw/i386/pc.h     | 12 ------------
- hw/display/vga-isa-mm.c  |  3 +--
- hw/display/vga-isa.c     |  2 +-
- hw/display/vga.c         |  2 +-
- hw/mips/mips_jazz.c      |  1 +
- vl.c                     |  2 +-
- MAINTAINERS              |  1 +
- 8 files changed, 31 insertions(+), 17 deletions(-)
- create mode 100644 include/hw/display/vga.h
+no MAINTAINERS entry, does this belong to "PC Chipset"?
 
-diff --git a/include/hw/display/vga.h b/include/hw/display/vga.h
+ include/hw/i386/pc.h      |  3 ---
+ include/hw/misc/pvpanic.h | 21 +++++++++++++++++++++
+ hw/i386/acpi-build.c      |  2 +-
+ hw/misc/pvpanic.c         |  9 ++++-----
+ 4 files changed, 26 insertions(+), 9 deletions(-)
+ create mode 100644 include/hw/misc/pvpanic.h
+
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 846d37b9fb..1a74ccd73b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -306,9 +306,6 @@ int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
+ void pc_system_firmware_init(MemoryRegion *rom_memory,
+                              bool isapc_ram_fw);
+ 
+-/* pvpanic.c */
+-uint16_t pvpanic_port(void);
+-
+ /* acpi-build.c */
+ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+                        const CPUArchIdList *apic_ids, GArray *entry);
+diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
 new file mode 100644
-index 0000000000..0401a3a292
+index 0000000000..36a54e270c
 --- /dev/null
-+++ b/include/hw/display/vga.h
-@@ -0,0 +1,25 @@
++++ b/include/hw/misc/pvpanic.h
+@@ -0,0 +1,21 @@
 +/*
-+ * QEMU VGA Emulator.
++ * QEMU simulated pvpanic device.
 + *
-+ * Copyright (c) 2003 Fabrice Bellard
++ * Copyright Fujitsu, Corp. 2013
++ *
++ * Authors:
++ *     Wen Congyang <wency@cn.fujitsu.com>
++ *     Hu Tao <hutao@cn.fujitsu.com>
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or later.
 + * See the COPYING file in the top-level directory.
++ *
 + */
-+#ifndef QEMU_HW_DISPLAY_VGA_H
-+#define QEMU_HW_DISPLAY_VGA_H
++#ifndef HW_MISC_PVPANIC_H
++#define HW_MISC_PVPANIC_H
 +
-+#include "exec/memory.h"
++#define TYPE_PVPANIC "pvpanic"
 +
-+enum vga_retrace_method {
-+    VGA_RETRACE_DUMB,
-+    VGA_RETRACE_PRECISE
-+};
-+
-+extern enum vga_retrace_method vga_retrace_method;
-+
-+int isa_vga_mm_init(hwaddr vram_base,
-+                    hwaddr ctrl_base, int it_shift,
-+                    MemoryRegion *address_space);
++uint16_t pvpanic_port(void);
 +
 +#endif
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index b1b4c918af..25ba378bd8 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -302,18 +302,6 @@ PCIBus *find_i440fx(void);
- extern PCIDevice *piix4_dev;
- int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
- 
--/* vga.c */
--enum vga_retrace_method {
--    VGA_RETRACE_DUMB,
--    VGA_RETRACE_PRECISE
--};
--
--extern enum vga_retrace_method vga_retrace_method;
--
--int isa_vga_mm_init(hwaddr vram_base,
--                    hwaddr ctrl_base, int it_shift,
--                    MemoryRegion *address_space);
--
- /* ne2000.c */
- static inline bool isa_ne2000_init(ISABus *bus, int base, int irq, NICInfo *nd)
- {
-diff --git a/hw/display/vga-isa-mm.c b/hw/display/vga-isa-mm.c
-index 68c4d6e23e..e887b45651 100644
---- a/hw/display/vga-isa-mm.c
-+++ b/hw/display/vga-isa-mm.c
-@@ -23,10 +23,9 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/display/vga.h"
- #include "vga_int.h"
- #include "ui/pixel_ops.h"
--#include "qemu/timer.h"
- 
- #define VGA_RAM_SIZE (8192 * 1024)
- 
-diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
-index 26f69fd40a..469834add5 100644
---- a/hw/display/vga-isa.c
-+++ b/hw/display/vga-isa.c
-@@ -25,7 +25,7 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/isa/isa.h"
- #include "vga_int.h"
- #include "ui/pixel_ops.h"
- #include "qemu/timer.h"
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 22fd069ad2..59729f7031 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -24,7 +24,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/display/vga.h"
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 73519ab3ac..63bbc610eb 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -28,8 +28,8 @@
+ #include "qemu/error-report.h"
  #include "hw/pci/pci.h"
- #include "vga_int.h"
- #include "vga_regs.h"
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index b9ffb33b45..ece4a153b2 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -39,6 +39,7 @@
- #include "hw/loader.h"
- #include "hw/timer/mc146818rtc.h"
- #include "hw/timer/i8254.h"
-+#include "hw/display/vga.h"
- #include "hw/audio/pcspk.h"
- #include "sysemu/block-backend.h"
- #include "hw/sysbus.h"
-diff --git a/vl.c b/vl.c
-index 0d1f612629..f0b7106feb 100644
---- a/vl.c
-+++ b/vl.c
-@@ -57,9 +57,9 @@ int main(int argc, char **argv)
- #include "hw/boards.h"
- #include "sysemu/accel.h"
- #include "hw/usb.h"
+ #include "qom/cpu.h"
 -#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "hw/scsi/scsi.h"
-+#include "hw/display/vga.h"
- #include "hw/bt.h"
- #include "sysemu/watchdog.h"
- #include "hw/smbios/smbios.h"
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0e926a942b..81b67e4685 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -860,6 +860,7 @@ F: hw/timer/hpet*
- F: hw/timer/i8254*
- F: hw/timer/mc146818rtc*
- F: hw/watchdog/wdt_ib700.c
-+F: include/hw/display/vga.h
- F: include/hw/i2c/pm_smbus.h
- F: include/hw/isa/i8257.h
- F: include/hw/timer/hpet.h
+ #include "target/i386/cpu.h"
++#include "hw/misc/pvpanic.h"
+ #include "hw/timer/hpet.h"
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/acpi.h"
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 3a0e4ba828..b26250dec9 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -17,7 +17,7 @@
+ #include "qemu/log.h"
+ 
+ #include "hw/nvram/fw_cfg.h"
+-#include "hw/i386/pc.h"
++#include "hw/misc/pvpanic.h"
+ 
+ /* The bit of supported pv event */
+ #define PVPANIC_F_PANICKED      0
+@@ -25,9 +25,8 @@
+ /* The pv event value */
+ #define PVPANIC_PANICKED        (1 << PVPANIC_F_PANICKED)
+ 
+-#define TYPE_ISA_PVPANIC_DEVICE    "pvpanic"
+ #define ISA_PVPANIC_DEVICE(obj)    \
+-    OBJECT_CHECK(PVPanicState, (obj), TYPE_ISA_PVPANIC_DEVICE)
++    OBJECT_CHECK(PVPanicState, (obj), TYPE_PVPANIC)
+ 
+ static void handle_event(int event)
+ {
+@@ -104,7 +103,7 @@ static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
+ 
+ uint16_t pvpanic_port(void)
+ {
+-    Object *o = object_resolve_path_type("", TYPE_ISA_PVPANIC_DEVICE, NULL);
++    Object *o = object_resolve_path_type("", TYPE_PVPANIC, NULL);
+     if (!o) {
+         return 0;
+     }
+@@ -126,7 +125,7 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static TypeInfo pvpanic_isa_info = {
+-    .name          = TYPE_ISA_PVPANIC_DEVICE,
++    .name          = TYPE_PVPANIC,
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(PVPanicState),
+     .instance_init = pvpanic_isa_initfn,
 -- 
 2.15.0.rc0
 
