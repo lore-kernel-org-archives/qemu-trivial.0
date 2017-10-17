@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4V0Y-00029x-FJ
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:46:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46983)
+	id 1e4V0b-0002C5-2c
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 12:46:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46999)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0V-00026u-Ej
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:20 -0400
+	id 1e4V0W-00027n-7Z
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0U-0003U1-Q9
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:19 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:47853)
+	id 1e4V0S-0003Sd-I1
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 12:46:20 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:49709)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e4V0S-0003St-To; Tue, 17 Oct 2017 12:46:16 -0400
-Received: by mail-qt0-x243.google.com with SMTP id z50so4918213qtj.4;
-	Tue, 17 Oct 2017 09:46:16 -0700 (PDT)
+	id 1e4V0Q-0003Ps-KI; Tue, 17 Oct 2017 12:46:14 -0400
+Received: by mail-qk0-x243.google.com with SMTP id q83so2837629qke.6;
+	Tue, 17 Oct 2017 09:46:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=L0zjNG/KJCrWqUy4/vjewFYt4qrERV93FJ02IL6gHSs=;
-	b=qmV69AWTqWUS+VIa/3aby4WQaAcHcjPkzhHgc1Y33TDsIg6TkrWeXW6qyJCjin8GlM
-	XPi9bAjJ6DHXRF/V7ar2HXmgtMSEPk7c1okgwDLLSWGzUcaJa5Qc0LGeKxKR/jtoL8z0
-	Gc+MURQjoGPlwNvIQZHFaKNGnNlEYRZyLPKQ0A3OPvCYDAXDJlIOEUCoPEFCqgulp1at
-	n2f0KEXK6KaRUG2un6V+4bDVb/zg43YqRmzPSnvGDotabQ6Y27PJb51YY/1IlUuy+y3z
-	YM9ig0JeMZtpAF+IfgWf+cBJ+m5DmJWvnFoonwumQ54zUzi4cukjrq86lFkB7bufOCUQ
-	HKMg==
+	bh=id9tjcUM09cNEgTmRhpO9COHWdOdMJH7AJE9y014LDk=;
+	b=U8B5KMMTpN0UQVNU0FpxFjPbY+rJEhXauuYAJSpAGk1LlDtuNCv1uMvP4S/7nwedGl
+	w+WBwJQCcmJp8sM+iQ5gwYrgS88we726dYMhERTZCLU8yeN4D5f+0SA6zhAyRfCp5r12
+	tvBCxCuzvR7K3BGhZ98U6jdNZiijLikOXnf9g2eoMHsUX/0gT2bqaexHcuXs/YuialXa
+	a+NGClAS3/bpkaGFJ5luDXQJhcd2hYrteFK/OCJsQxiGewoQ1A25guai74VQTEypnIaP
+	HvBXI1L34piQt4Lk9Uuw97a5tGEi5F1kOkDaJjsrNNCI2Dbariu4pNXsoM6JzCWeV7iZ
+	9HHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=L0zjNG/KJCrWqUy4/vjewFYt4qrERV93FJ02IL6gHSs=;
-	b=ZmaliJy714ST4cCBHXxUkMwmI2nTvmqOvxWnFk2oaHxGr4FwHSAg3WwVLE5FWP8sCA
-	xYYuc1WbYkXwMJriqD3K3gTJn6iDth0Q66qkTsvw9UB+NEX/yVt+Y2ZOyJjQEtWXzwLD
-	I1QtRQ6qXkQqaf+79KMV0EuLiirkMmXKoTlvOxXfR2TeAITyan8S8rNQmyr3LObBs+5t
-	ZwTR5wJ1X7KeuFgg5SyHqksfAJykZvO5fLajaOVaOJkNezOn0yEc9c0G3+p/vL7Auawb
-	YCOCyAAg+2tI5/tTrdBU9RHCxPP0dBjBVP9svd6ThaymfxBRiK/JoQTk7E8lxKLjjsHN
-	mcNQ==
-X-Gm-Message-State: AMCzsaV7uc4aLYlSVn8IVPFDj1dfTPW/2MtP+A8e8tgwqHkGODHOcRny
-	AqBahMSL+C8ovW/e3C3ic3k=
-X-Google-Smtp-Source: ABhQp+RoslbYXH452qIvr09uTtx6L+bwofTTNsWKxCeqjlXjvZxKdo0cvZW8I58R7syU5PYz5IMAwA==
-X-Received: by 10.237.37.8 with SMTP id v8mr21480573qtc.275.1508258776438;
-	Tue, 17 Oct 2017 09:46:16 -0700 (PDT)
+	bh=id9tjcUM09cNEgTmRhpO9COHWdOdMJH7AJE9y014LDk=;
+	b=F9GqhXfVNr/mDK1+wVQ+SnGeTfwmh2qNMx6r3uyqqjkKg4iMQjbujOh+4Rbbc3YXHo
+	zSNleJfLqZrDmvmbLDcUGTAk6/XxrjRB8Fpu2qF0xv5A0iLVJ1EQEFDYINkdrnrO2PKQ
+	pjz9N6hMQvWSfQGhnduGlr1o9NyFjKLsmznG5Gmkw7P5VlfadcS1Cj+ZRQyA8Rhty1t/
+	Bo6YFHywp+flalqkpVvn3xjKh3OCK35iY5n4YIQRb+Oc9EpilSzPp0X6cupPKJc3hzWP
+	vB5z0P0ewBU/3CYHVG2fyMlmMMK2TSj1XYCtB0cHaQibS32mEOrVrNLyu6uNjBi5m2cK
+	2B/w==
+X-Gm-Message-State: AMCzsaXcWcnVCWdnz6xrcBN5eYWmeJc5HYuqQilk3Bm1mLAGLHA8bh7B
+	SNaX5PymW0u5Dd9FdGf/uoidoinq
+X-Google-Smtp-Source: ABhQp+TVMX9f1J5J+0pNDFm+FYABEXtRUev1naFo4CwvL6ytXLz0i0fESOo206UczmQkLjfUBPTwAQ==
+X-Received: by 10.55.214.201 with SMTP id p70mr19637844qkl.21.1508258774084;
+	Tue, 17 Oct 2017 09:46:14 -0700 (PDT)
 Received: from x1.local ([181.93.89.178]) by smtp.gmail.com with ESMTPSA id
-	q49sm6687653qtq.80.2017.10.17.09.46.14
+	q49sm6687653qtq.80.2017.10.17.09.46.12
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 09:46:15 -0700 (PDT)
+	Tue, 17 Oct 2017 09:46:13 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Tue, 17 Oct 2017 13:44:06 -0300
-Message-Id: <20171017164426.25277-23-f4bug@amsat.org>
+Date: Tue, 17 Oct 2017 13:44:05 -0300
+Message-Id: <20171017164426.25277-22-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc0
 In-Reply-To: <20171017164426.25277-1-f4bug@amsat.org>
 References: <20171017164426.25277-1-f4bug@amsat.org>
@@ -62,8 +62,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v3 22/42] hw/ssi/aspeed_smc: remove unused
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH v3 21/42] hw/misc/pvpanic: remove unused
  #include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -76,26 +76,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 16:46:20 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 16:46:24 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/ssi/aspeed_smc.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/misc/pvpanic.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 992617fd3a..5059396bc6 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -27,7 +27,6 @@
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 2b1e9a6450..3a0e4ba828 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -13,14 +13,11 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qapi/qmp/qobject.h"
+-#include "qapi/qmp/qjson.h"
  #include "sysemu/sysemu.h"
  #include "qemu/log.h"
- #include "qemu/error-report.h"
--#include "exec/address-spaces.h"
  
- #include "hw/ssi/aspeed_smc.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "hw/i386/pc.h"
+-#include "qapi-event.h"
  
+ /* The bit of supported pv event */
+ #define PVPANIC_F_PANICKED      0
 -- 
 2.15.0.rc0
 
