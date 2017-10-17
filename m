@@ -1,58 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4Phx-0000AC-V5
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 07:06:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49608)
+	id 1e4PlR-0002UC-UB
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 07:10:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1e4Pht-000067-JV
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 07:06:48 -0400
+	(envelope-from <thuth@redhat.com>) id 1e4PlL-0002Px-2X
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 07:10:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1e4Phk-0004Qd-2h
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 07:06:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50304)
+	(envelope-from <thuth@redhat.com>) id 1e4PlJ-0007AO-TJ
+	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 07:10:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60128)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1e4PhZ-0004HQ-Nw; Tue, 17 Oct 2017 07:06:25 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e4PlA-00070U-Ne; Tue, 17 Oct 2017 07:10:08 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CF2A67E43E;
-	Tue, 17 Oct 2017 11:06:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com CF2A67E43E
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B7AB4DD58;
+	Tue, 17 Oct 2017 11:10:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 0B7AB4DD58
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx03.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=pbonzini@redhat.com
-Received: from [10.36.117.51] (ovpn-117-51.ams2.redhat.com [10.36.117.51])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADEBC516EF;
-	Tue, 17 Oct 2017 11:06:20 +0000 (UTC)
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.33.192.189] (dhcp-192-189.str.redhat.com [10.33.192.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E5E656251B;
+	Tue, 17 Oct 2017 11:09:55 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
+	Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Gerd Hoffmann <kraxel@redhat.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+	<hpoussin@reactos.org>, Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@imgtec.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20171017001209.32276-1-f4bug@amsat.org>
-	<20171017001209.32276-29-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <53e262a3-deb1-7d63-f1bc-98a323928d4e@redhat.com>
-Date: Tue, 17 Oct 2017 13:06:18 +0200
+	<20171017001209.32276-31-f4bug@amsat.org>
+	<44b57d76-6d10-84c8-3a13-cdac7331c5d9@redhat.com>
+	<47c7b41d-23ff-3dd1-9c07-69bd5df08685@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <d1f23a08-364b-b9c3-fec1-495ce9ce9e47@redhat.com>
+Date: Tue, 17 Oct 2017 13:09:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <20171017001209.32276-29-f4bug@amsat.org>
+In-Reply-To: <47c7b41d-23ff-3dd1-9c07-69bd5df08685@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 17 Oct 2017 11:06:24 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 17 Oct 2017 11:10:07 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 28/39] hw/acpi: ACPI_PM_* defines are
- not restricted to i386 arch
+Subject: Re: [Qemu-trivial] [PATCH v2 30/39] hw/display/vga: remove the old
+ i386/pc dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,83 +69,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2017 11:06:49 -0000
+X-List-Received-Date: Tue, 17 Oct 2017 11:10:24 -0000
 
-On 17/10/2017 02:11, Philippe Mathieu-Daud=C3=A9 wrote:
-> this allows to remove the old i386/pc dependency on acpi/core.
-
-enable_tco is specific to i386/pc.
-
-You can move it to include/hw/acpi/ich9.h.
-
-Paolo
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/hw/acpi/acpi.h | 12 ++++++++++++
->  include/hw/i386/pc.h   | 13 -------------
->  hw/acpi/core.c         |  1 -
->  3 files changed, 12 insertions(+), 14 deletions(-)
+On 17.10.2017 12:49, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Thomas,
 >=20
-> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
-> index 7b3d93cf0d..30013b0464 100644
-> --- a/include/hw/acpi/acpi.h
-> +++ b/include/hw/acpi/acpi.h
-> @@ -39,6 +39,18 @@
->  #define ACPI_PM2_REGISTER_WIDTH         8
->  #define ACPI_PM_TIMER_WIDTH             32
-> =20
-> +/* PC-style peripherals (also used by other machines).  */
-> +#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
-> +#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
-> +#define ACPI_PM_PROP_S4_VAL "s4_val"
-> +#define ACPI_PM_PROP_SCI_INT "sci_int"
-> +#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
-> +#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
-> +#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
-> +#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
-> +#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
-> +#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
-> +
->  /* PM Timer ticks per second (HZ) */
->  #define PM_TIMER_FREQUENCY  3579545
-> =20
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 087d184ef5..b1b4c918af 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -151,19 +151,6 @@ struct PCMachineClass {
->  #define PC_MACHINE_CLASS(klass) \
->      OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
-> =20
-> -/* PC-style peripherals (also used by other machines).  */
-> -
-> -#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
-> -#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
-> -#define ACPI_PM_PROP_S4_VAL "s4_val"
-> -#define ACPI_PM_PROP_SCI_INT "sci_int"
-> -#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
-> -#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
-> -#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
-> -#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
-> -#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
-> -#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
-> -
->  /* parallel.c */
-> =20
->  void parallel_hds_isa_init(ISABus *bus, int n);
-> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index cd0a1d357b..eb9b76f70b 100644
-> --- a/hw/acpi/core.c
-> +++ b/hw/acpi/core.c
-> @@ -21,7 +21,6 @@
->  #include "qemu/osdep.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/hw.h"
-> -#include "hw/i386/pc.h"
->  #include "hw/acpi/acpi.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "qemu/config-file.h"
+>>> diff --git a/hw/display/vga_int.h b/hw/display/vga_int.h
+>>> index ad34a1f048..fe23b81442 100644
+>>> --- a/hw/display/vga_int.h
+>>> +++ b/hw/display/vga_int.h
+>>> @@ -25,8 +25,9 @@
+>>>  #ifndef HW_VGA_INT_H
+>>>  #define HW_VGA_INT_H
+>>> =20
+>>> -#include "hw/hw.h"
+>>> +#include "exec/ioport.h"
+>>>  #include "exec/memory.h"
+>>> +#include "ui/console.h"
+>>
+>> So vga_int.h now includes console.h (is it really necessary?) ...
 >=20
+> The VGACommonState struct has a GraphicHwOps *hw_ops member.
 
+Ok, thanks, I just wanted to confirm that this is needed here.
+
+[...]
+> Do you suggest me do declare GraphicHwOps opaque in "qemu/typedefs.h"?
+
+No, I think it's fine if you keep the #include in vga_int.h, I just
+wanted to make sure that it is really needed there. So please just
+remove the #includes from the .c files instead.
+
+ Thomas
 
