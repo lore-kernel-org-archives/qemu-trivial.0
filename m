@@ -1,71 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4fts-00027m-4y
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 00:24:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43288)
+	id 1e4j2U-0002as-1r
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 03:45:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1e4ftq-00027e-SX
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 00:24:11 -0400
+	(envelope-from <imammedo@redhat.com>) id 1e4j2R-0002We-Mu
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 03:45:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1e4ftn-0002NW-K0
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 00:24:10 -0400
-Received: from mail-pg0-x234.google.com ([2607:f8b0:400e:c05::234]:47188)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1e4ftn-0002Mv-DO; Wed, 18 Oct 2017 00:24:07 -0400
-Received: by mail-pg0-x234.google.com with SMTP id r25so3223682pgn.4;
-	Tue, 17 Oct 2017 21:24:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=heBhdBsTaEcevvheMB+hxA3Qegy3KRbSD+uxizfGTxk=;
-	b=RgKHI6h7v9tALKM+O75xkJwdhFlr0FPIBmbCAqkiSRGNY27lmOjeb2QnAZF/DsRnqh
-	ft0uFHbUeCVEsTSTIYJu0O+I5STdUSSPVX3gVHPXpScSZvNIoQNLISRx9JIKk0cJqeEf
-	IfOUU1c9yixA95Pu+R0C/2x4cKHBMXZ7wwxSINvNC5J8Q9PyG8L2G1nsWxDEme9Q3KUI
-	uT1RWTt5DuKgnP47hqMGT3rvwsk6KvCsVHMEUgUgDJqROHpau5LQKNRq6s4VoLVfNEz2
-	KiHTOUYk2+YgbJ6zLLUArlBaVK7sxD001OjSO66UKfeLFudJK2utB7Z4CyS/HvqJk+gd
-	pmGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=heBhdBsTaEcevvheMB+hxA3Qegy3KRbSD+uxizfGTxk=;
-	b=NdFgePa3Z9RqvZ5sEAbgYbd/CJ/82iGL6glYkDB1GaGsJPPGUQFEUHlC/6nC58VIyy
-	twHzAHfgkQKACR5HuBpnN0xlpf2XEjtegpOylV0+Dv21+Ht6dqx+QzUC/x9VgKVrCDlz
-	Uhh4Q+qc5FQmypgjbfadzhblbl6toblcWUeMWCtv68MJXWPZsrLEKiKZjxcANDgsQ9wQ
-	VX5vtH70udG8yQg5EjEmnsoWAgTuQO15Y7C/wLJat5MFuVbVC3KHqW5WO5wr9E8V/zMO
-	4Eim2SGH5OKU9nx2k8l/BR88pgyKaD54p4KwpmMdhu/dvxqBQelvdlen9382G715t+z2
-	3AjQ==
-X-Gm-Message-State: AMCzsaXxgt5KRf9sqMHmJ+kFx6tIf7yQG+Up/b8z6r5vEE1YiqSq0d1I
-	YAR8+NhQGvQsuFrNLBXPVJelQlrg
-X-Google-Smtp-Source: AOwi7QCkKzaCDbjdjueUQmf3S+JPulV/WHlESfTMhhyWw287SV1+qXcFIkUhxl71kkt317xFyV610Q==
-X-Received: by 10.98.34.131 with SMTP id p3mr13511175pfj.1.1508300646237;
-	Tue, 17 Oct 2017 21:24:06 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-104-76.tukw.qwest.net.
-	[97.126.104.76]) by smtp.googlemail.com with ESMTPSA id
-	u77sm17939538pfd.168.2017.10.17.21.24.04
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 17 Oct 2017 21:24:05 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20171018000053.27348-1-f4bug@amsat.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <eec60d48-c410-6201-2d67-81e29d6c6c33@twiddle.net>
-Date: Tue, 17 Oct 2017 21:24:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <imammedo@redhat.com>) id 1e4j2O-0006sy-Fe
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 03:45:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42912)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1e4j2E-0006mc-RA; Wed, 18 Oct 2017 03:45:03 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BD60E5F7AC;
+	Wed, 18 Oct 2017 07:45:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BD60E5F7AC
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx10.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=imammedo@redhat.com
+Received: from nial.brq.redhat.com (unknown [10.43.2.209])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DC19B18EF3;
+	Wed, 18 Oct 2017 07:44:57 +0000 (UTC)
+Date: Wed, 18 Oct 2017 09:44:57 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell
+	<peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini
+	<pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20171018094457.1e9a0ee0@nial.brq.redhat.com>
+In-Reply-To: <20171017164426.25277-34-f4bug@amsat.org>
+References: <20171017164426.25277-1-f4bug@amsat.org>
+	<20171017164426.25277-34-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20171018000053.27348-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::234
-Subject: Re: [Qemu-trivial] [PATCH v2] hw/alpha/typhoon: simplify using the
- "unimplemented" sysbus device
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 18 Oct 2017 07:45:01 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v3 33/42] hw/acpi: ACPI_PM_* defines are
+ not restricted to i386 arch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,21 +60,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2017 04:24:11 -0000
+X-List-Received-Date: Wed, 18 Oct 2017 07:45:16 -0000
 
-On 10/17/2017 05:00 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Tue, 17 Oct 2017 13:44:17 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> this allows to remove the old i386/pc dependency on acpi/core.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
-> v2: add spaces for checkpatch...
-> 
-> ERROR: spaces required around that '*' (ctx:VxV)
-> #82: FILE: hw/alpha/typhoon.c:880:
-> +    create_unimplemented_device("pci0-io", 0x801fc000000ULL, 32*MB);
->                                                                 ^
-> total: 1 errors, 0 warnings, 57 lines checked
+>  include/hw/acpi/acpi.h | 11 +++++++++++
+>  include/hw/i386/pc.h   | 11 -----------
+>  hw/acpi/core.c         |  1 -
+>  3 files changed, 11 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+> index 7b3d93cf0d..39ff512129 100644
+> --- a/include/hw/acpi/acpi.h
+> +++ b/include/hw/acpi/acpi.h
+> @@ -39,6 +39,17 @@
+>  #define ACPI_PM2_REGISTER_WIDTH         8
+>  #define ACPI_PM_TIMER_WIDTH             32
+> =20
+> +/* PC-style peripherals (also used by other machines).  */
+> +#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
+> +#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
+> +#define ACPI_PM_PROP_S4_VAL "s4_val"
+> +#define ACPI_PM_PROP_SCI_INT "sci_int"
+> +#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
+> +#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
+> +#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
+> +#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
+> +#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
+> +
+>  /* PM Timer ticks per second (HZ) */
+>  #define PM_TIMER_FREQUENCY  3579545
+> =20
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 087d184ef5..6335e2bf47 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -151,17 +151,6 @@ struct PCMachineClass {
+>  #define PC_MACHINE_CLASS(klass) \
+>      OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
+> =20
+> -/* PC-style peripherals (also used by other machines).  */
+> -
+> -#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
+> -#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
+> -#define ACPI_PM_PROP_S4_VAL "s4_val"
+> -#define ACPI_PM_PROP_SCI_INT "sci_int"
+> -#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
+> -#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
+> -#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
+> -#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
+> -#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
+>  #define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
+> =20
+>  /* parallel.c */
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index cd0a1d357b..eb9b76f70b 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -21,7 +21,6 @@
+>  #include "qemu/osdep.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/hw.h"
+> -#include "hw/i386/pc.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "qemu/config-file.h"
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
 
