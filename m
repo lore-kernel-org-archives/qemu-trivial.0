@@ -1,54 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4j3P-0003AN-8X
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 03:46:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35699)
+	id 1e4n5q-0003YP-Ln
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 08:05:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49830)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1e4j3H-00035H-Vd
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 03:46:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1e4n5l-0003Ul-Mv
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 08:05:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1e4j3H-0007kj-38
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 03:46:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55276)
+	(envelope-from <thuth@redhat.com>) id 1e4n5i-0006aF-IF
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 08:04:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38800)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1e4j3C-0007fY-N9; Wed, 18 Oct 2017 03:46:02 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e4n5W-0006XH-1L; Wed, 18 Oct 2017 08:04:42 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B59680460;
-	Wed, 18 Oct 2017 07:46:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 9B59680460
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id D2A6913AA8;
+	Wed, 18 Oct 2017 12:04:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com D2A6913AA8
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=imammedo@redhat.com
-Received: from nial.brq.redhat.com (unknown [10.43.2.209])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 44A097C633;
-	Wed, 18 Oct 2017 07:45:58 +0000 (UTC)
-Date: Wed, 18 Oct 2017 09:45:57 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell
-	<peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20171018094557.1473b323@nial.brq.redhat.com>
-In-Reply-To: <20171017164426.25277-35-f4bug@amsat.org>
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.33.192.189] (dhcp-192-189.str.redhat.com [10.33.192.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 01F6181EF4;
+	Wed, 18 Oct 2017 12:04:31 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Eduardo Otubo <otubo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
 References: <20171017164426.25277-1-f4bug@amsat.org>
-	<20171017164426.25277-35-f4bug@amsat.org>
+	<20171017164426.25277-3-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <c562db63-e5ec-3873-923f-b90f0c027b6c@redhat.com>
+Date: Wed, 18 Oct 2017 14:04:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20171017164426.25277-3-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 18 Oct 2017 07:46:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 18 Oct 2017 12:04:41 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v3 34/42] hw/acpi/ich9: extract
- ACPI_PM_PROP_TCO_ENABLED from i386/pc
+Subject: Re: [Qemu-trivial] [PATCH v3 02/42] MAINTAINERS: add an entry for
+ the i82374 (southbridge)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,47 +65,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2017 07:46:13 -0000
+X-List-Received-Date: Wed, 18 Oct 2017 12:05:01 -0000
 
-On Tue, 17 Oct 2017 13:44:18 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-
-> enable_tco is specific to i386/pc.
->=20
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+On 17.10.2017 18:43, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
 > ---
->  include/hw/acpi/ich9.h | 2 ++
->  include/hw/i386/pc.h   | 2 --
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
-> index a352c94fde..59aeb06393 100644
-> --- a/include/hw/acpi/ich9.h
-> +++ b/include/hw/acpi/ich9.h
-> @@ -63,6 +63,8 @@ typedef struct ICH9LPCPMRegs {
->      TCOIORegs tco_regs;
->  } ICH9LPCPMRegs;
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 6f56c1349b..331f7391c1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -713,6 +713,7 @@ F: hw/ppc/prep_systemio.c
+>  F: hw/ppc/rs6000_mc.c
+>  F: hw/pci-host/prep.[hc]
+>  F: hw/isa/pc87312.[hc]
+> +F: hw/dma/i82374.c
+>  F: pc-bios/ppc_rom.bin
 > =20
-> +#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
-> +
->  void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
->                    bool smm_enabled,
->                    qemu_irq sci_irq);
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 6335e2bf47..b1b4c918af 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -151,8 +151,6 @@ struct PCMachineClass {
->  #define PC_MACHINE_CLASS(klass) \
->      OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
-> =20
-> -#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
-> -
->  /* parallel.c */
-> =20
->  void parallel_hds_isa_init(ISABus *bus, int n);
+>  sPAPR
+>=20
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
