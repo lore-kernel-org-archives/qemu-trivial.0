@@ -1,40 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4cL5-0005cs-1w
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2017 20:36:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38610)
+	id 1e4fts-00027m-4y
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 00:24:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43288)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e4cL2-0005cd-T9
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 20:36:01 -0400
+	(envelope-from <rth7680@gmail.com>) id 1e4ftq-00027e-SX
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 00:24:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1e4cL0-0004ax-I5
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 20:36:00 -0400
-Resent-Date: Tue, 17 Oct 2017 20:36:00 -0400
-Resent-Message-Id: <E1e4cL0-0004ax-I5@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21369)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1e4cL0-0004Zu-AR
-	for qemu-trivial@nongnu.org; Tue, 17 Oct 2017 20:35:58 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1508284192084322.60781368102846;
-	Tue, 17 Oct 2017 16:49:52 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <150828419145.368.17867352006215177263@b58463cdfd5f>
-In-Reply-To: <20171017225025.25451-1-f4bug@amsat.org>
+	(envelope-from <rth7680@gmail.com>) id 1e4ftn-0002NW-K0
+	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 00:24:10 -0400
+Received: from mail-pg0-x234.google.com ([2607:f8b0:400e:c05::234]:47188)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1e4ftn-0002Mv-DO; Wed, 18 Oct 2017 00:24:07 -0400
+Received: by mail-pg0-x234.google.com with SMTP id r25so3223682pgn.4;
+	Tue, 17 Oct 2017 21:24:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=heBhdBsTaEcevvheMB+hxA3Qegy3KRbSD+uxizfGTxk=;
+	b=RgKHI6h7v9tALKM+O75xkJwdhFlr0FPIBmbCAqkiSRGNY27lmOjeb2QnAZF/DsRnqh
+	ft0uFHbUeCVEsTSTIYJu0O+I5STdUSSPVX3gVHPXpScSZvNIoQNLISRx9JIKk0cJqeEf
+	IfOUU1c9yixA95Pu+R0C/2x4cKHBMXZ7wwxSINvNC5J8Q9PyG8L2G1nsWxDEme9Q3KUI
+	uT1RWTt5DuKgnP47hqMGT3rvwsk6KvCsVHMEUgUgDJqROHpau5LQKNRq6s4VoLVfNEz2
+	KiHTOUYk2+YgbJ6zLLUArlBaVK7sxD001OjSO66UKfeLFudJK2utB7Z4CyS/HvqJk+gd
+	pmGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=heBhdBsTaEcevvheMB+hxA3Qegy3KRbSD+uxizfGTxk=;
+	b=NdFgePa3Z9RqvZ5sEAbgYbd/CJ/82iGL6glYkDB1GaGsJPPGUQFEUHlC/6nC58VIyy
+	twHzAHfgkQKACR5HuBpnN0xlpf2XEjtegpOylV0+Dv21+Ht6dqx+QzUC/x9VgKVrCDlz
+	Uhh4Q+qc5FQmypgjbfadzhblbl6toblcWUeMWCtv68MJXWPZsrLEKiKZjxcANDgsQ9wQ
+	VX5vtH70udG8yQg5EjEmnsoWAgTuQO15Y7C/wLJat5MFuVbVC3KHqW5WO5wr9E8V/zMO
+	4Eim2SGH5OKU9nx2k8l/BR88pgyKaD54p4KwpmMdhu/dvxqBQelvdlen9382G715t+z2
+	3AjQ==
+X-Gm-Message-State: AMCzsaXxgt5KRf9sqMHmJ+kFx6tIf7yQG+Up/b8z6r5vEE1YiqSq0d1I
+	YAR8+NhQGvQsuFrNLBXPVJelQlrg
+X-Google-Smtp-Source: AOwi7QCkKzaCDbjdjueUQmf3S+JPulV/WHlESfTMhhyWw287SV1+qXcFIkUhxl71kkt317xFyV610Q==
+X-Received: by 10.98.34.131 with SMTP id p3mr13511175pfj.1.1508300646237;
+	Tue, 17 Oct 2017 21:24:06 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-104-76.tukw.qwest.net.
+	[97.126.104.76]) by smtp.googlemail.com with ESMTPSA id
+	u77sm17939538pfd.168.2017.10.17.21.24.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 17 Oct 2017 21:24:05 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20171018000053.27348-1-f4bug@amsat.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <eec60d48-c410-6201-2d67-81e29d6c6c33@twiddle.net>
+Date: Tue, 17 Oct 2017 21:24:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Cc: famz@redhat.com, rth@twiddle.net, peter.maydell@linaro.org,
-	qemu-trivial@nongnu.org, f4bug@amsat.org, qemu-devel@nongnu.org
-Date: Tue, 17 Oct 2017 16:49:52 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/alpha/typhoon: simplify
- using the "unimplemented" sysbus device
+In-Reply-To: <20171018000053.27348-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::234
+Subject: Re: [Qemu-trivial] [PATCH v2] hw/alpha/typhoon: simplify using the
+ "unimplemented" sysbus device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,40 +77,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2017 00:36:02 -0000
+X-List-Received-Date: Wed, 18 Oct 2017 04:24:11 -0000
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTcxMDE3MjI1MDI1LjI1NDUxLTEtZjRidWdAYW1zYXQub3JnClN1YmplY3Q6
-IFtRZW11LWRldmVsXSBbUEFUQ0hdIGh3L2FscGhhL3R5cGhvb246IHNpbXBsaWZ5IHVzaW5nIHRo
-ZSAidW5pbXBsZW1lbnRlZCIgc3lzYnVzIGRldmljZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09
-PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRC
-QVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxp
-bWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCgpjb21taXRzPSIkKGdp
-dCBsb2cgLS1mb3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsg
-ZG8KICAgIGVjaG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1m
-b3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4v
-c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0x
-CiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09
-PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVm
-N2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9x
-ZW11CiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAgIHBhdGNoZXcvY292ZXIuMTUwODI3OTQyMS5n
-aXQuYWxpc3RhaXIuZnJhbmNpc0B4aWxpbnguY29tIC0+IHBhdGNoZXcvY292ZXIuMTUwODI3OTQy
-MS5naXQuYWxpc3RhaXIuZnJhbmNpc0B4aWxpbnguY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5j
-aCAndGVzdCcKN2EzOTEwZjdiMiBody9hbHBoYS90eXBob29uOiBzaW1wbGlmeSB1c2luZyB0aGUg
-InVuaW1wbGVtZW50ZWQiIHN5c2J1cyBkZXZpY2UKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNr
-aW5nIFBBVENIIDEvMTogaHcvYWxwaGEvdHlwaG9vbjogc2ltcGxpZnkgdXNpbmcgdGhlICJ1bmlt
-cGxlbWVudGVkIiBzeXNidXMgZGV2aWNlLi4uCkVSUk9SOiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5k
-IHRoYXQgJyonIChjdHg6VnhWKQojODI6IEZJTEU6IGh3L2FscGhhL3R5cGhvb24uYzo4ODA6Cisg
-ICAgY3JlYXRlX3VuaW1wbGVtZW50ZWRfZGV2aWNlKCJwY2kwLWlvIiwgMHg4MDFmYzAwMDAwMFVM
-TCwgMzIqTUIpOwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1NyBsaW5l
-cyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4g
-IElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0
-byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VU
-UFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWls
-IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9d
-LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9y
-Zw==
+On 10/17/2017 05:00 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> v2: add spaces for checkpatch...
+> 
+> ERROR: spaces required around that '*' (ctx:VxV)
+> #82: FILE: hw/alpha/typhoon.c:880:
+> +    create_unimplemented_device("pci0-io", 0x801fc000000ULL, 32*MB);
+>                                                                 ^
+> total: 1 errors, 0 warnings, 57 lines checked
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
 
