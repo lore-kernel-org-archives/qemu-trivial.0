@@ -1,46 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e5A7e-0000iR-RH
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 08:40:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34751)
+	id 1e5BSo-0002gN-Ij
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 10:06:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lu.zhipeng@zte.com.cn>) id 1e58ot-0006Uh-LQ
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:17:00 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e5BSl-0002ff-GS
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lu.zhipeng@zte.com.cn>) id 1e58op-0002rH-2Y
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:16:59 -0400
-Received: from mxhk.zte.com.cn ([63.217.80.70]:41014)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lu.zhipeng@zte.com.cn>)
-	id 1e58oo-0002oe-Ms
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:16:54 -0400
-Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 7C582DAAA5C2AB596D36;
-	Thu, 19 Oct 2017 19:16:47 +0800 (CST)
-Received: from notes_smtp.zte.com.cn ([10.30.1.239])
-	by mse01.zte.com.cn with ESMTP id v9JBGcZF012596;
-	Thu, 19 Oct 2017 19:16:38 +0800 (GMT-8)
-	(envelope-from lu.zhipeng@zte.com.cn)
-Received: from ceshi.localdomain ([10.74.120.130])
-	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
-	with ESMTP id 2017101919164409-1061551 ;
-	Thu, 19 Oct 2017 19:16:44 +0800 
-From: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
-To: dgilbert@redhat.com
-Cc: qemu-trivial@nongnu.org, ZhiPeng Lu <lu.zhipeng@zte.com.cn>
-Date: Thu, 19 Oct 2017 19:16:33 +0800
-Message-Id: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
-X-Mailer: git-send-email 1.8.3.1
-X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
-	8.5.3FP6|November 21, 2013) at 2017-10-19 19:16:44,
-	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
-	2016) at 2017-10-19 19:16:27,
-	Serialize complete at 2017-10-19 19:16:27
-X-MAIL: mse01.zte.com.cn v9JBGcZF012596
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 63.217.80.70
-X-Mailman-Approved-At: Thu, 19 Oct 2017 08:40:26 -0400
-Subject: [Qemu-trivial] [PATCH] hmp: Replace error_report_err
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e5BSi-00014o-Nz
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:19 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:45436
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanb@linux.vnet.ibm.com>)
+	id 1e5BSi-00013K-Iz
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:16 -0400
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
+	v9JDxFfC028180
+	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 10:06:09 -0400
+Received: from e32.co.us.ibm.com (e32.co.us.ibm.com [32.97.110.150])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2dpu42a8b1-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 10:06:09 -0400
+Received: from localhost
+	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Thu, 19 Oct 2017 08:06:08 -0600
+Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
+	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 19 Oct 2017 08:06:06 -0600
+Received: from b03ledav006.gho.boulder.ibm.com
+	(b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id v9JE65m610289514; Thu, 19 Oct 2017 07:06:05 -0700
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 813FAC6042;
+	Thu, 19 Oct 2017 08:06:05 -0600 (MDT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+	by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTP id 009B5C6037; 
+	Thu, 19 Oct 2017 08:06:04 -0600 (MDT)
+To: "Richard W.M. Jones" <rjones@redhat.com>, qemu-devel@nongnu.org
+References: <20171019075031.25507-1-rjones@redhat.com>
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, amarnath.valluri@intel.com, 
+	marcandre.lureau@gmail.com
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Date: Thu, 19 Oct 2017 10:06:04 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <20171019075031.25507-1-rjones@redhat.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 17101914-0004-0000-0000-00001316388D
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00007919; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000238; SDB=6.00933401; UDB=6.00470136;
+	IPR=6.00713689; 
+	BA=6.00005650; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
+	ZB=6.00000000; 
+	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00017605;
+	XFM=3.00000015; UTC=2017-10-19 14:06:08
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17101914-0005-0000-0000-0000848A2A78
+Message-Id: <3edd9a86-24b4-c236-0153-899704336dde@linux.vnet.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-10-19_05:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=2
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1707230000
+	definitions=main-1710190193
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tpm: Don't call tpm_cleanup
+ unless CONFIG_TPM.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,103 +88,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 11:17:00 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 14:06:20 -0000
 
-Use hmp_handle_error instend of error_report_err to set error.
+On 10/19/2017 03:50 AM, Richard W.M. Jones wrote:
+> When compiling with --disable-tpm:
+>
+>    ../vl.o: In function `main':
+>    /home/rjones/d/qemu/vl.c:4908: undefined reference to `tpm_cleanup'
+>
+> This appears to have been introduced in commit c37cacabf228
+> ("tpm: Move tpm_cleanup() to right place").
+>
+> Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
 
-Signed-off-by: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
-Reviewed-by: Jiyun Fan <fan.jiyun@zte.com.cn>
----
- hmp.c | 26 ++++++++------------------
- 1 file changed, 8 insertions(+), 18 deletions(-)
+Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 
-diff --git a/hmp.c b/hmp.c
-index ec61329..a03bd03 100644
---- a/hmp.c
-+++ b/hmp.c
-@@ -667,7 +667,7 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
- 
-     info2l = qmp_query_vnc_servers(&err);
-     if (err) {
--        error_report_err(err);
-+        hmp_handle_error(mon, &err);
-         return;
-     }
-     if (!info2l) {
-@@ -782,7 +782,7 @@ void hmp_info_balloon(Monitor *mon, const QDict *qdict)
- 
-     info = qmp_query_balloon(&err);
-     if (err) {
--        error_report_err(err);
-+        hmp_handle_error(mon, &err);
-         return;
-     }
- 
-@@ -1125,7 +1125,7 @@ void hmp_ringbuf_read(Monitor *mon, const QDict *qdict)
- 
-     data = qmp_ringbuf_read(chardev, size, false, 0, &err);
-     if (err) {
--        error_report_err(err);
-+        hmp_handle_error(mon, &err);
-         return;
-     }
- 
-@@ -1192,9 +1192,7 @@ void hmp_balloon(Monitor *mon, const QDict *qdict)
-     Error *err = NULL;
- 
-     qmp_balloon(value, &err);
--    if (err) {
--        error_report_err(err);
--    }
-+    hmp_handle_error(mon, &err);
- }
- 
- void hmp_block_resize(Monitor *mon, const QDict *qdict)
-@@ -1518,10 +1516,7 @@ void hmp_migrate_set_cache_size(Monitor *mon, const QDict *qdict)
-     Error *err = NULL;
- 
-     qmp_migrate_set_cache_size(value, &err);
--    if (err) {
--        error_report_err(err);
--        return;
--    }
-+    hmp_handle_error(mon, &err);
- }
- 
- /* Kept for backwards compatibility */
-@@ -1552,10 +1547,7 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
- 
- end:
-     qapi_free_MigrationCapabilityStatusList(caps);
--
--    if (err) {
--        error_report_err(err);
--    }
-+    hmp_handle_error(mon, &err);
- }
- 
- void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
-@@ -1653,9 +1645,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
-  cleanup:
-     qapi_free_MigrateSetParameters(p);
-     visit_free(v);
--    if (err) {
--        error_report_err(err);
--    }
-+    hmp_handle_error(mon, &err);
- }
- 
- void hmp_client_migrate_info(Monitor *mon, const QDict *qdict)
-@@ -1909,7 +1899,7 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
- 
-     qmp_migrate(uri, !!blk, blk, !!inc, inc, false, false, &err);
-     if (err) {
--        error_report_err(err);
-+        hmp_handle_error(mon, &err);
-         return;
-     }
- 
--- 
-1.8.3.1
+
+> ---
+>   vl.c | 2 ++
+>   1 file changed, 2 insertions(+)
+>
+> diff --git a/vl.c b/vl.c
+> index 0723835bbf..dbfd06d4bc 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4905,7 +4905,9 @@ int main(int argc, char **argv, char **envp)
+>       res_free();
+>
+>       /* vhost-user must be cleaned up before chardevs.  */
+> +#ifdef CONFIG_TPM
+>       tpm_cleanup();
+> +#endif
+>       net_cleanup();
+>       audio_cleanup();
+>       monitor_cleanup();
+
 
 
