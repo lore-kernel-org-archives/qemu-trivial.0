@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e4wPi-0000bw-RD
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2017 18:02:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34369)
+	id 1e55bK-0002wx-S8
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 03:50:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41330)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1e4wPg-0000Zq-GT
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 18:02:09 -0400
+	(envelope-from <rjones@redhat.com>) id 1e55bF-0002sf-K2
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 03:50:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1e4wPd-0003zQ-Do
-	for qemu-trivial@nongnu.org; Wed, 18 Oct 2017 18:02:08 -0400
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:47877)
+	(envelope-from <rjones@redhat.com>) id 1e55bE-0000mO-SC
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 03:50:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39616)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1e4wPT-0003mB-Ry; Wed, 18 Oct 2017 18:01:55 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 3F57621333;
-	Wed, 18 Oct 2017 18:01:55 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-	by compute4.internal (MEProxy); Wed, 18 Oct 2017 18:01:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:date:from:message-id:subject:to:x-me-sender:x-me-sender
-	:x-sasl-enc; s=mesmtp; bh=cU6QfXhZhrSCICO/pSeCYLY/kJZacA7OF9fc+Q
-	2kxEg=; b=E03t6Z44NHHuQBISJOX/T8xMplZ1NsYjZ5JUC4lP7rFJ4LFdZheBkD
-	UDZXmd7MZja855XmE2UF4TxPrjfPD4DT1d1ZmkW+vyKs2F4zX3nWYi+xTnSIVgVu
-	5L/DZCGD4PsINRBePJWK39f71pXldj952jXpjWqYatpUB/sd4d8KU=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:date:from:message-id:subject:to
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=cU6QfXhZhrSCICO/p
-	SeCYLY/kJZacA7OF9fc+Q2kxEg=; b=gRxhQj0TAHIoMWj03c7+GXWK9zvgQCI76
-	xaNrNoinQ5Y1KngaiaJ/WC9EpPs4oOZoBpy+GrvGm2UKDBeZ2TYASng3qHuuRlhc
-	B1s3owzn7x/wCSI1/TwQu8OVtdYx6bm92XLPe3WHHqiFc6CuI4zXBhkK+71dFgvt
-	Bx44QZD3EdrweoBZpcIpSdRWBixbiXMaFp0PMSrHmZOBAZcAawmDrRxSIFRfVMd1
-	/etr2axEptvQ+9TsQq6m4vmzSI9IMfywZPo/7h49zi6xAQALt8XROtmhbvoq/jif
-	Jyczod42eqmygNCgzKaz/Nq37Sb6z8YHy2d4uGpKbaFmQUCSjLHBg==
-X-ME-Sender: <xms:U8_nWXhrSEh9kWaB4JFxQBfbVFaZWNYZK0AV4Rgma0KpF3Ac1_PhYw>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id E65E2247AD;
-	Wed, 18 Oct 2017 18:01:54 -0400 (EDT)
-From: "Emilio G. Cota" <cota@braap.org>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-Date: Wed, 18 Oct 2017 18:01:39 -0400
-Message-Id: <1508364103-16131-1-git-send-email-cota@braap.org>
-X-Mailer: git-send-email 2.7.4
+	(Exim 4.71) (envelope-from <rjones@redhat.com>)
+	id 1e55bA-0000ji-Go; Thu, 19 Oct 2017 03:50:36 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5F8D23E2CE;
+	Thu, 19 Oct 2017 07:50:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5F8D23E2CE
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=rjones@redhat.com
+Received: from trick.home.annexia.org (ovpn-117-40.ams2.redhat.com
+	[10.36.117.40])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 164119D97D;
+	Thu, 19 Oct 2017 07:50:33 +0000 (UTC)
+From: "Richard W.M. Jones" <rjones@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, amarnath.valluri@intel.com, pbonzini@redhat.com,
+	marcandre.lureau@gmail.com, stefanb@linux.vnet.ibm.com
+Date: Thu, 19 Oct 2017 08:50:31 +0100
+Message-Id: <20171019075031.25507-1-rjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 19 Oct 2017 07:50:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.111.4.28
-Subject: [Qemu-trivial] [PATCH 0/4] Some trivial fixes, mostly comment typos
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] tpm: Don't call tpm_cleanup unless
+ CONFIG_TPM.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,18 +53,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2017 22:02:09 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 07:50:45 -0000
 
-A few trivial fixes that I embedded in a previous (unrelated) patchset.
-Better to submit them separately as a standalone "trivial" patchset.
+When compiling with --disable-tpm:
 
-Note that in patch 1 I went with space indentation instead of
-a hard tab just to appease checkpatch. However, the surrounding
-code uses hard tabs. Wasn't sure what's preferred in cases like
-this.
+  ../vl.o: In function `main':
+  /home/rjones/d/qemu/vl.c:4908: undefined reference to `tpm_cleanup'
 
-Thanks,
+This appears to have been introduced in commit c37cacabf228
+("tpm: Move tpm_cleanup() to right place").
 
-		Emilio
+Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+---
+ vl.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/vl.c b/vl.c
+index 0723835bbf..dbfd06d4bc 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4905,7 +4905,9 @@ int main(int argc, char **argv, char **envp)
+     res_free();
+ 
+     /* vhost-user must be cleaned up before chardevs.  */
++#ifdef CONFIG_TPM
+     tpm_cleanup();
++#endif
+     net_cleanup();
+     audio_cleanup();
+     monitor_cleanup();
+-- 
+2.13.1
 
 
