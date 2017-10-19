@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e58wn-0007kC-AT
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 07:25:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37108)
+	id 1e59CH-0003eD-5A
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 07:41:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1e58wl-0007jz-7i
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:08 -0400
+	(envelope-from <groug@kaod.org>) id 1e59CE-0003dd-NH
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:41:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1e58wf-00005D-HT
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52020)
+	(envelope-from <groug@kaod.org>) id 1e59CA-0001Ni-PZ
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:41:06 -0400
+Received: from 17.mo5.mail-out.ovh.net ([46.105.56.132]:39860)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1e58wf-0008WH-7t
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:01 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EFF5720271;
-	Thu, 19 Oct 2017 11:24:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EFF5720271
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=dgilbert@redhat.com
-Received: from work-vm (ovpn-117-208.ams2.redhat.com [10.36.117.208])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4527FACBF4;
-	Thu, 19 Oct 2017 11:24:58 +0000 (UTC)
-Date: Thu, 19 Oct 2017 12:24:56 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
-Cc: qemu-trivial@nongnu.org
-Message-ID: <20171019112456.GG2281@work-vm>
-References: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1e59CA-0001Ir-Ij
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:41:02 -0400
+Received: from player773.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 7BDA81454FA
+	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 13:40:53 +0200 (CEST)
+Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
+	(Authenticated sender: groug@kaod.org)
+	by player773.ha.ovh.net (Postfix) with ESMTPA id 3B4CD600074;
+	Thu, 19 Oct 2017 13:40:48 +0200 (CEST)
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Alex =?utf-8?q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Fam Zheng <famz@redhat.com>,
+	Philippe =?utf-8?q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Thu, 19 Oct 2017 13:40:42 +0200
+Message-ID: <150841324224.31292.4012464539983692364.stgit@bahia.lan>
+User-Agent: StGit/0.17.1-46-g6855-dirty
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 19 Oct 2017 11:25:00 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 10323657722739923435
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrudekgdeghecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hmp: Replace error_report_err
+X-Received-From: 46.105.56.132
+Subject: [Qemu-trivial] [PATCH] docker: fix out-of-tree 'make
+ docker-test-build@debian-powerpc-cross'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,110 +51,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 11:25:08 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 11:41:07 -0000
 
-* ZhiPeng Lu (lu.zhipeng@zte.com.cn) wrote:
-> Use hmp_handle_error instend of error_report_err to set error.
-> 
-> Signed-off-by: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
-> Reviewed-by: Jiyun Fan <fan.jiyun@zte.com.cn>
+Without this patch, it fails with:
 
+IOError: [Errno 2] No such file or directory:
+ 'tests/docker/dockerfiles/debian-apt-fake.sh'
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ tests/docker/Makefile.include |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  hmp.c | 26 ++++++++------------------
->  1 file changed, 8 insertions(+), 18 deletions(-)
-> 
-> diff --git a/hmp.c b/hmp.c
-> index ec61329..a03bd03 100644
-> --- a/hmp.c
-> +++ b/hmp.c
-> @@ -667,7 +667,7 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
->  
->      info2l = qmp_query_vnc_servers(&err);
->      if (err) {
-> -        error_report_err(err);
-> +        hmp_handle_error(mon, &err);
->          return;
->      }
->      if (!info2l) {
-> @@ -782,7 +782,7 @@ void hmp_info_balloon(Monitor *mon, const QDict *qdict)
->  
->      info = qmp_query_balloon(&err);
->      if (err) {
-> -        error_report_err(err);
-> +        hmp_handle_error(mon, &err);
->          return;
->      }
->  
-> @@ -1125,7 +1125,7 @@ void hmp_ringbuf_read(Monitor *mon, const QDict *qdict)
->  
->      data = qmp_ringbuf_read(chardev, size, false, 0, &err);
->      if (err) {
-> -        error_report_err(err);
-> +        hmp_handle_error(mon, &err);
->          return;
->      }
->  
-> @@ -1192,9 +1192,7 @@ void hmp_balloon(Monitor *mon, const QDict *qdict)
->      Error *err = NULL;
->  
->      qmp_balloon(value, &err);
-> -    if (err) {
-> -        error_report_err(err);
-> -    }
-> +    hmp_handle_error(mon, &err);
->  }
->  
->  void hmp_block_resize(Monitor *mon, const QDict *qdict)
-> @@ -1518,10 +1516,7 @@ void hmp_migrate_set_cache_size(Monitor *mon, const QDict *qdict)
->      Error *err = NULL;
->  
->      qmp_migrate_set_cache_size(value, &err);
-> -    if (err) {
-> -        error_report_err(err);
-> -        return;
-> -    }
-> +    hmp_handle_error(mon, &err);
->  }
->  
->  /* Kept for backwards compatibility */
-> @@ -1552,10 +1547,7 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
->  
->  end:
->      qapi_free_MigrationCapabilityStatusList(caps);
-> -
-> -    if (err) {
-> -        error_report_err(err);
-> -    }
-> +    hmp_handle_error(mon, &err);
->  }
->  
->  void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
-> @@ -1653,9 +1645,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
->   cleanup:
->      qapi_free_MigrateSetParameters(p);
->      visit_free(v);
-> -    if (err) {
-> -        error_report_err(err);
-> -    }
-> +    hmp_handle_error(mon, &err);
->  }
->  
->  void hmp_client_migrate_info(Monitor *mon, const QDict *qdict)
-> @@ -1909,7 +1899,7 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
->  
->      qmp_migrate(uri, !!blk, blk, !!inc, inc, false, false, &err);
->      if (err) {
-> -        error_report_err(err);
-> +        hmp_handle_error(mon, &err);
->          return;
->      }
->  
-> -- 
-> 1.8.3.1
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 6f9ea196a7b8..5d54eca5d0b3 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -44,7 +44,7 @@ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
+ 		$(if $(EXECUTABLE),--include-executable=$(EXECUTABLE)),\
+ 		"BUILD","$*")
+ 
+-docker-image-debian-powerpc-cross: EXTRA_FILES:=tests/docker/dockerfiles/debian-apt-fake.sh
++docker-image-debian-powerpc-cross: EXTRA_FILES:=$(SRC_PATH)/tests/docker/dockerfiles/debian-apt-fake.sh
+ 
+ # Enforce dependancies for composite images
+ docker-image-debian: docker-image-debian9
+
 
