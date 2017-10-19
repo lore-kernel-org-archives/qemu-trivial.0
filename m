@@ -1,47 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e55bK-0002wx-S8
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 03:50:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41330)
+	id 1e58wn-0007kC-AT
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 07:25:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1e55bF-0002sf-K2
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 03:50:45 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1e58wl-0007jz-7i
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1e55bE-0000mO-SC
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 03:50:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39616)
+	(envelope-from <dgilbert@redhat.com>) id 1e58wf-00005D-HT
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52020)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <rjones@redhat.com>)
-	id 1e55bA-0000ji-Go; Thu, 19 Oct 2017 03:50:36 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1e58wf-0008WH-7t
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:25:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F8D23E2CE;
-	Thu, 19 Oct 2017 07:50:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5F8D23E2CE
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id EFF5720271;
+	Thu, 19 Oct 2017 11:24:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com EFF5720271
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=rjones@redhat.com
-Received: from trick.home.annexia.org (ovpn-117-40.ams2.redhat.com
-	[10.36.117.40])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 164119D97D;
-	Thu, 19 Oct 2017 07:50:33 +0000 (UTC)
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, amarnath.valluri@intel.com, pbonzini@redhat.com,
-	marcandre.lureau@gmail.com, stefanb@linux.vnet.ibm.com
-Date: Thu, 19 Oct 2017 08:50:31 +0100
-Message-Id: <20171019075031.25507-1-rjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: ext-mx05.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=dgilbert@redhat.com
+Received: from work-vm (ovpn-117-208.ams2.redhat.com [10.36.117.208])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4527FACBF4;
+	Thu, 19 Oct 2017 11:24:58 +0000 (UTC)
+Date: Thu, 19 Oct 2017 12:24:56 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
+Cc: qemu-trivial@nongnu.org
+Message-ID: <20171019112456.GG2281@work-vm>
+References: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 19 Oct 2017 07:50:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 19 Oct 2017 11:25:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] tpm: Don't call tpm_cleanup unless
- CONFIG_TPM.
+Subject: Re: [Qemu-trivial] [PATCH] hmp: Replace error_report_err
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,36 +56,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 07:50:45 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 11:25:08 -0000
 
-When compiling with --disable-tpm:
+* ZhiPeng Lu (lu.zhipeng@zte.com.cn) wrote:
+> Use hmp_handle_error instend of error_report_err to set error.
+> 
+> Signed-off-by: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
+> Reviewed-by: Jiyun Fan <fan.jiyun@zte.com.cn>
 
-  ../vl.o: In function `main':
-  /home/rjones/d/qemu/vl.c:4908: undefined reference to `tpm_cleanup'
 
-This appears to have been introduced in commit c37cacabf228
-("tpm: Move tpm_cleanup() to right place").
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
-Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
----
- vl.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/vl.c b/vl.c
-index 0723835bbf..dbfd06d4bc 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4905,7 +4905,9 @@ int main(int argc, char **argv, char **envp)
-     res_free();
- 
-     /* vhost-user must be cleaned up before chardevs.  */
-+#ifdef CONFIG_TPM
-     tpm_cleanup();
-+#endif
-     net_cleanup();
-     audio_cleanup();
-     monitor_cleanup();
--- 
-2.13.1
-
+> ---
+>  hmp.c | 26 ++++++++------------------
+>  1 file changed, 8 insertions(+), 18 deletions(-)
+> 
+> diff --git a/hmp.c b/hmp.c
+> index ec61329..a03bd03 100644
+> --- a/hmp.c
+> +++ b/hmp.c
+> @@ -667,7 +667,7 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
+>  
+>      info2l = qmp_query_vnc_servers(&err);
+>      if (err) {
+> -        error_report_err(err);
+> +        hmp_handle_error(mon, &err);
+>          return;
+>      }
+>      if (!info2l) {
+> @@ -782,7 +782,7 @@ void hmp_info_balloon(Monitor *mon, const QDict *qdict)
+>  
+>      info = qmp_query_balloon(&err);
+>      if (err) {
+> -        error_report_err(err);
+> +        hmp_handle_error(mon, &err);
+>          return;
+>      }
+>  
+> @@ -1125,7 +1125,7 @@ void hmp_ringbuf_read(Monitor *mon, const QDict *qdict)
+>  
+>      data = qmp_ringbuf_read(chardev, size, false, 0, &err);
+>      if (err) {
+> -        error_report_err(err);
+> +        hmp_handle_error(mon, &err);
+>          return;
+>      }
+>  
+> @@ -1192,9 +1192,7 @@ void hmp_balloon(Monitor *mon, const QDict *qdict)
+>      Error *err = NULL;
+>  
+>      qmp_balloon(value, &err);
+> -    if (err) {
+> -        error_report_err(err);
+> -    }
+> +    hmp_handle_error(mon, &err);
+>  }
+>  
+>  void hmp_block_resize(Monitor *mon, const QDict *qdict)
+> @@ -1518,10 +1516,7 @@ void hmp_migrate_set_cache_size(Monitor *mon, const QDict *qdict)
+>      Error *err = NULL;
+>  
+>      qmp_migrate_set_cache_size(value, &err);
+> -    if (err) {
+> -        error_report_err(err);
+> -        return;
+> -    }
+> +    hmp_handle_error(mon, &err);
+>  }
+>  
+>  /* Kept for backwards compatibility */
+> @@ -1552,10 +1547,7 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
+>  
+>  end:
+>      qapi_free_MigrationCapabilityStatusList(caps);
+> -
+> -    if (err) {
+> -        error_report_err(err);
+> -    }
+> +    hmp_handle_error(mon, &err);
+>  }
+>  
+>  void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+> @@ -1653,9 +1645,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+>   cleanup:
+>      qapi_free_MigrateSetParameters(p);
+>      visit_free(v);
+> -    if (err) {
+> -        error_report_err(err);
+> -    }
+> +    hmp_handle_error(mon, &err);
+>  }
+>  
+>  void hmp_client_migrate_info(Monitor *mon, const QDict *qdict)
+> @@ -1909,7 +1899,7 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
+>  
+>      qmp_migrate(uri, !!blk, blk, !!inc, inc, false, false, &err);
+>      if (err) {
+> -        error_report_err(err);
+> +        hmp_handle_error(mon, &err);
+>          return;
+>      }
+>  
+> -- 
+> 1.8.3.1
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
