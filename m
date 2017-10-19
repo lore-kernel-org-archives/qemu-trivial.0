@@ -1,77 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e59s9-0005EM-B4
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 08:24:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51846)
+	id 1e5A7e-0000iR-RH
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 08:40:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34751)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e59s6-0005Ax-Cx
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 08:24:23 -0400
+	(envelope-from <lu.zhipeng@zte.com.cn>) id 1e58ot-0006Uh-LQ
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:17:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e59s3-0000F8-7r
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 08:24:22 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:50064)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e59s3-0000Ep-37; Thu, 19 Oct 2017 08:24:19 -0400
-Received: by mail-qt0-x244.google.com with SMTP id k31so14139896qta.6;
-	Thu, 19 Oct 2017 05:24:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Cml1G+gery/4iV/pBVsrUU2pUT3QDwcjZMFhmlyQi9o=;
-	b=k+mj1YueOJc1tFpTpwVpdy4RhUOQl65Rmkrw047VVPWK5JnNjtTB9stLPYH731vUDz
-	g7l94uV+HxEbMEYrVEqQGXzMRp/son2zPLkVRTxUnuJYWYeOK8/+pueS2Bojq8VpefAg
-	ozJneWQY9N6C/TvxqmKCiACthdtKJ5LQRnj3L4LDrVA8tyqCdyfVtI9qkRTHhKuTQozA
-	sj/WvZB52C7GuUejQbyfsNdhPdgWY6cZOyl/SDSbfSRagHh24LysbH5NJszmZ4auBmtQ
-	rla+NqUnSNYZzSjThPQnZKyswJPBf8399u2WetNr3LhZxih3pyyDxOuMi4Y8NRvwaeii
-	2yWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Cml1G+gery/4iV/pBVsrUU2pUT3QDwcjZMFhmlyQi9o=;
-	b=eu2udYRTwHRWDM8vf9O1WIrSiz/Tm0qBJkHpCp/pAFxQwnnbXuwvjwrzNOg2CP3bw4
-	IrPly15iChp7dcpLgSiClVRwsrSpltMNz32DVjDnlX8THF1zUtlsyEcIbNc/Tuy9hiYJ
-	Hk9EYa5AoRLcmvJSBc6h8Y4tXxJ2Dlz81ANQ2MkRIa3KG+o1ZKMwXKmgvey/zkv4iBDF
-	40r3LwSlxvyOyFSqLUPbJLf7dBR0gProEg+LdITGZkp6C8ORaOeLNiK+qjmGMYhYQnaB
-	JF99lvX1bCKld//4oRrkGfFLbPdsho7Qtj6fBttz6reUz+8ifVjhasWtDfzh767qFoTp
-	WXlQ==
-X-Gm-Message-State: AMCzsaXTvy7hNI5p4q8RSDAEoJ0/JepdcGDm9aWHOWp3YMaXFGnPhB8B
-	IbY9XRryOL1Y3ef1YZlfmW8=
-X-Google-Smtp-Source: ABhQp+SI33l3hvt7rtM3NFU3DGVl0M4z04uMj6xOQD9DXphP+6TPs+TDcuI7ElJs2NYIIBCmqCFqwQ==
-X-Received: by 10.200.43.26 with SMTP id 26mr1869126qtu.51.1508415858572;
-	Thu, 19 Oct 2017 05:24:18 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	v30sm9423321qtg.88.2017.10.19.05.24.16
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 19 Oct 2017 05:24:18 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Fam Zheng <famz@redhat.com>,
-	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <150841324224.31292.4012464539983692364.stgit@bahia.lan>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <75a0ecaa-f45b-b4a8-131d-97b52fca2ccd@amsat.org>
-Date: Thu, 19 Oct 2017 09:24:15 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <150841324224.31292.4012464539983692364.stgit@bahia.lan>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-trivial] [PATCH] docker: fix out-of-tree 'make
- docker-test-build@debian-powerpc-cross'
+	(envelope-from <lu.zhipeng@zte.com.cn>) id 1e58op-0002rH-2Y
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:16:59 -0400
+Received: from mxhk.zte.com.cn ([63.217.80.70]:41014)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lu.zhipeng@zte.com.cn>)
+	id 1e58oo-0002oe-Ms
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 07:16:54 -0400
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id 7C582DAAA5C2AB596D36;
+	Thu, 19 Oct 2017 19:16:47 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id v9JBGcZF012596;
+	Thu, 19 Oct 2017 19:16:38 +0800 (GMT-8)
+	(envelope-from lu.zhipeng@zte.com.cn)
+Received: from ceshi.localdomain ([10.74.120.130])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2017101919164409-1061551 ;
+	Thu, 19 Oct 2017 19:16:44 +0800 
+From: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
+To: dgilbert@redhat.com
+Cc: qemu-trivial@nongnu.org, ZhiPeng Lu <lu.zhipeng@zte.com.cn>
+Date: Thu, 19 Oct 2017 19:16:33 +0800
+Message-Id: <1508411793-22868-1-git-send-email-lu.zhipeng@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2017-10-19 19:16:44,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2017-10-19 19:16:27,
+	Serialize complete at 2017-10-19 19:16:27
+X-MAIL: mse01.zte.com.cn v9JBGcZF012596
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 63.217.80.70
+X-Mailman-Approved-At: Thu, 19 Oct 2017 08:40:26 -0400
+Subject: [Qemu-trivial] [PATCH] hmp: Replace error_report_err
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,40 +52,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 12:24:23 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 11:17:00 -0000
 
-On 10/19/2017 08:40 AM, Greg Kurz wrote:
-> Without this patch, it fails with:
-> 
-> IOError: [Errno 2] No such file or directory:
->  'tests/docker/dockerfiles/debian-apt-fake.sh'
+Use hmp_handle_error instend of error_report_err to set error.
 
-Yes, my bad :)
+Signed-off-by: ZhiPeng Lu <lu.zhipeng@zte.com.cn>
+Reviewed-by: Jiyun Fan <fan.jiyun@zte.com.cn>
+---
+ hmp.c | 26 ++++++++------------------
+ 1 file changed, 8 insertions(+), 18 deletions(-)
 
-I have the same fix in my CI-WIP branch which sadly lacks of love.
-
-> 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> ---
->  tests/docker/Makefile.include |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-> index 6f9ea196a7b8..5d54eca5d0b3 100644
-> --- a/tests/docker/Makefile.include
-> +++ b/tests/docker/Makefile.include
-> @@ -44,7 +44,7 @@ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
->  		$(if $(EXECUTABLE),--include-executable=$(EXECUTABLE)),\
->  		"BUILD","$*")
->  
-> -docker-image-debian-powerpc-cross: EXTRA_FILES:=tests/docker/dockerfiles/debian-apt-fake.sh
-> +docker-image-debian-powerpc-cross: EXTRA_FILES:=$(SRC_PATH)/tests/docker/dockerfiles/debian-apt-fake.sh
->  
->  # Enforce dependancies for composite images
->  docker-image-debian: docker-image-debian9
+diff --git a/hmp.c b/hmp.c
+index ec61329..a03bd03 100644
+--- a/hmp.c
++++ b/hmp.c
+@@ -667,7 +667,7 @@ void hmp_info_vnc(Monitor *mon, const QDict *qdict)
+ 
+     info2l = qmp_query_vnc_servers(&err);
+     if (err) {
+-        error_report_err(err);
++        hmp_handle_error(mon, &err);
+         return;
+     }
+     if (!info2l) {
+@@ -782,7 +782,7 @@ void hmp_info_balloon(Monitor *mon, const QDict *qdict)
+ 
+     info = qmp_query_balloon(&err);
+     if (err) {
+-        error_report_err(err);
++        hmp_handle_error(mon, &err);
+         return;
+     }
+ 
+@@ -1125,7 +1125,7 @@ void hmp_ringbuf_read(Monitor *mon, const QDict *qdict)
+ 
+     data = qmp_ringbuf_read(chardev, size, false, 0, &err);
+     if (err) {
+-        error_report_err(err);
++        hmp_handle_error(mon, &err);
+         return;
+     }
+ 
+@@ -1192,9 +1192,7 @@ void hmp_balloon(Monitor *mon, const QDict *qdict)
+     Error *err = NULL;
+ 
+     qmp_balloon(value, &err);
+-    if (err) {
+-        error_report_err(err);
+-    }
++    hmp_handle_error(mon, &err);
+ }
+ 
+ void hmp_block_resize(Monitor *mon, const QDict *qdict)
+@@ -1518,10 +1516,7 @@ void hmp_migrate_set_cache_size(Monitor *mon, const QDict *qdict)
+     Error *err = NULL;
+ 
+     qmp_migrate_set_cache_size(value, &err);
+-    if (err) {
+-        error_report_err(err);
+-        return;
+-    }
++    hmp_handle_error(mon, &err);
+ }
+ 
+ /* Kept for backwards compatibility */
+@@ -1552,10 +1547,7 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
+ 
+ end:
+     qapi_free_MigrationCapabilityStatusList(caps);
+-
+-    if (err) {
+-        error_report_err(err);
+-    }
++    hmp_handle_error(mon, &err);
+ }
+ 
+ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+@@ -1653,9 +1645,7 @@ void hmp_migrate_set_parameter(Monitor *mon, const QDict *qdict)
+  cleanup:
+     qapi_free_MigrateSetParameters(p);
+     visit_free(v);
+-    if (err) {
+-        error_report_err(err);
+-    }
++    hmp_handle_error(mon, &err);
+ }
+ 
+ void hmp_client_migrate_info(Monitor *mon, const QDict *qdict)
+@@ -1909,7 +1899,7 @@ void hmp_migrate(Monitor *mon, const QDict *qdict)
+ 
+     qmp_migrate(uri, !!blk, blk, !!inc, inc, false, false, &err);
+     if (err) {
+-        error_report_err(err);
++        hmp_handle_error(mon, &err);
+         return;
+     }
+ 
+-- 
+1.8.3.1
 
 
