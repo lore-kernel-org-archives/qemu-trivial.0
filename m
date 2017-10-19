@@ -1,82 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e5BSo-0002gN-Ij
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 10:06:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47516)
+	id 1e5BXd-0004ul-VO
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 10:11:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49925)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e5BSl-0002ff-GS
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:20 -0400
+	(envelope-from <famz@redhat.com>) id 1e5BXa-0004sO-0Y
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:11:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e5BSi-00014o-Nz
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:19 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:45436
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanb@linux.vnet.ibm.com>)
-	id 1e5BSi-00013K-Iz
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:06:16 -0400
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
-	v9JDxFfC028180
-	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 10:06:09 -0400
-Received: from e32.co.us.ibm.com (e32.co.us.ibm.com [32.97.110.150])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 2dpu42a8b1-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 10:06:09 -0400
-Received: from localhost
-	by e32.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
-	Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
-	Thu, 19 Oct 2017 08:06:08 -0600
-Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
-	by e32.co.us.ibm.com (192.168.1.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Thu, 19 Oct 2017 08:06:06 -0600
-Received: from b03ledav006.gho.boulder.ibm.com
-	(b03ledav006.gho.boulder.ibm.com [9.17.130.237])
-	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id v9JE65m610289514; Thu, 19 Oct 2017 07:06:05 -0700
-Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 813FAC6042;
-	Thu, 19 Oct 2017 08:06:05 -0600 (MDT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
-	by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTP id 009B5C6037; 
-	Thu, 19 Oct 2017 08:06:04 -0600 (MDT)
-To: "Richard W.M. Jones" <rjones@redhat.com>, qemu-devel@nongnu.org
-References: <20171019075031.25507-1-rjones@redhat.com>
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, amarnath.valluri@intel.com, 
-	marcandre.lureau@gmail.com
-From: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Date: Thu, 19 Oct 2017 10:06:04 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <famz@redhat.com>) id 1e5BXW-00047U-8p
+	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 10:11:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50608)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1e5BXN-00042V-3W; Thu, 19 Oct 2017 10:11:05 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5F58D3E2DB;
+	Thu, 19 Oct 2017 14:11:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5F58D3E2DB
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=famz@redhat.com
+Received: from localhost (ovpn-12-61.pek2.redhat.com [10.72.12.61])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8B4ACD6061;
+	Thu, 19 Oct 2017 14:11:00 +0000 (UTC)
+Date: Thu, 19 Oct 2017 22:10:58 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20171019141058.GB29815@lemon>
+References: <150841324224.31292.4012464539983692364.stgit@bahia.lan>
 MIME-Version: 1.0
-In-Reply-To: <20171019075031.25507-1-rjones@redhat.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 17101914-0004-0000-0000-00001316388D
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00007919; HX=3.00000241; KW=3.00000007;
-	PH=3.00000004; SC=3.00000238; SDB=6.00933401; UDB=6.00470136;
-	IPR=6.00713689; 
-	BA=6.00005650; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
-	ZB=6.00000000; 
-	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00017605;
-	XFM=3.00000015; UTC=2017-10-19 14:06:08
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 17101914-0005-0000-0000-0000848A2A78
-Message-Id: <3edd9a86-24b4-c236-0153-899704336dde@linux.vnet.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2017-10-19_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=2
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1707230000
-	definitions=main-1710190193
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tpm: Don't call tpm_cleanup
- unless CONFIG_TPM.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <150841324224.31292.4012464539983692364.stgit@bahia.lan>
+User-Agent: Mutt/1.9.0 (2017-09-02)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 19 Oct 2017 14:11:02 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] docker: fix out-of-tree 'make
+ docker-test-build@debian-powerpc-cross'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,40 +59,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 14:06:20 -0000
+X-List-Received-Date: Thu, 19 Oct 2017 14:11:20 -0000
 
-On 10/19/2017 03:50 AM, Richard W.M. Jones wrote:
-> When compiling with --disable-tpm:
->
->    ../vl.o: In function `main':
->    /home/rjones/d/qemu/vl.c:4908: undefined reference to `tpm_cleanup'
->
-> This appears to have been introduced in commit c37cacabf228
-> ("tpm: Move tpm_cleanup() to right place").
->
-> Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
+On Thu, 10/19 13:40, Greg Kurz wrote:
+> Without this patch, it fails with:
+> 
+> IOError: [Errno 2] No such file or directory:
+>  'tests/docker/dockerfiles/debian-apt-fake.sh'
+> 
+> Signed-off-by: Greg Kurz <groug@kaod.org>
 
-Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Reasonable. Queued, thanks!
 
-
-> ---
->   vl.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/vl.c b/vl.c
-> index 0723835bbf..dbfd06d4bc 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4905,7 +4905,9 @@ int main(int argc, char **argv, char **envp)
->       res_free();
->
->       /* vhost-user must be cleaned up before chardevs.  */
-> +#ifdef CONFIG_TPM
->       tpm_cleanup();
-> +#endif
->       net_cleanup();
->       audio_cleanup();
->       monitor_cleanup();
-
-
+Fam
 
