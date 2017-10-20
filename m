@@ -1,69 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e5K2Z-0002tl-F8
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2017 19:15:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45167)
+	id 1e5U0K-0002zm-PV
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Oct 2017 05:54:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e5K2X-0002tb-CB
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 19:15:50 -0400
+	(envelope-from <thuth@redhat.com>) id 1e5U0F-0002x1-E4
+	for qemu-trivial@nongnu.org; Fri, 20 Oct 2017 05:54:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1e5K2U-0001g8-67
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 19:15:49 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:52973)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1e5K2T-0001fe-V6
-	for qemu-trivial@nongnu.org; Thu, 19 Oct 2017 19:15:46 -0400
-Received: by mail-pf0-x241.google.com with SMTP id e64so8194829pfk.9
-	for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2017 16:15:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=0Rpfnj2BWfcUlw/Kc8Ju9TuuGRYTSjChHQwAIbWRroc=;
-	b=iblPaignguHKp4Czpe6kdeC1hZ1+RIYHOyslp7jEs4k5TBg8Yf8a/DCe0Ref8loJFY
-	ghi3Cyi6C/E9IuvC1oAfQ2gAON/ukQJLdUJCGxd9g0/O/OzWwkFxWF5E65ebPTUVcyyd
-	JQavKw8kF0KYPBPHhLukTn1mY/lDZv7e4C9t0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=0Rpfnj2BWfcUlw/Kc8Ju9TuuGRYTSjChHQwAIbWRroc=;
-	b=Qn6u9jfVFo/+PZLaHeKMwS3qaj2+WWsVvVM0fWVQmvb+PrCuwo+w5+7Ys9IbtTx+iW
-	QOOzqFVTHq4Kgm1e4MvjmM2F0OmtNpopoUZ+yeK9dls5NzTMfCHEHTvxDXoItwkkM6nQ
-	0FNunruzJNlVEJ0NJggEw/l4MXRcBx6ISfAX+m574Guld5FJcsL+fAzq9yheoQT0nV2P
-	tTHFwuQj6nM4erTvvVtylPp8lnSBvskkWoD4KoBsqzzUETCl3NwT/5L4ro9zUHrJgu7+
-	VGJ2jNKWzeSIRqE9iei5mG7TdvNL+LsOrNd1pc5YZiySRxFK7KzPSEGnhVcmGa2Cj3tb
-	FAMg==
-X-Gm-Message-State: AMCzsaVT9jfKOPejzKlOUIxFcRwSPMD091xUlrChYeZSJsvawYaAAmDV
-	YA5t8eF5fI9V0iJgLi8nDyoUpw==
-X-Google-Smtp-Source: ABhQp+QbcbAkhK+jBK1dIyM1sVUJOQBsdr9xudipdaGJa1IVnNYBYE379yuH/77+0J6RgP6dXyr+Sg==
-X-Received: by 10.99.3.1 with SMTP id 1mr2698546pgd.111.1508454944807;
-	Thu, 19 Oct 2017 16:15:44 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-113-165-104.tukw.qwest.net.
-	[97.113.165.104]) by smtp.gmail.com with ESMTPSA id
-	q73sm29513479pfl.146.2017.10.19.16.15.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 19 Oct 2017 16:15:43 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20171017225025.25451-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fb6141dd-d31e-5a8e-6d0d-a00c1ff9aa34@linaro.org>
-Date: Thu, 19 Oct 2017 16:15:42 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <20171017225025.25451-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/alpha/typhoon: simplify
- using the "unimplemented" sysbus device
+	(envelope-from <thuth@redhat.com>) id 1e5U0E-0006KF-HD
+	for qemu-trivial@nongnu.org; Fri, 20 Oct 2017 05:54:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42450)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1e5U07-00068s-GP; Fri, 20 Oct 2017 05:53:59 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BB7EA820FC;
+	Fri, 20 Oct 2017 09:53:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com BB7EA820FC
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx02.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from thh440s.str.redhat.com (dhcp-192-189.str.redhat.com
+	[10.33.192.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 23C3A600C2;
+	Fri, 20 Oct 2017 09:53:53 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Date: Fri, 20 Oct 2017 11:53:53 +0200
+Message-Id: <1508493233-1166-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 20 Oct 2017 09:53:58 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/display/sm501: Fix comment in
+ sm501_sysbus_class_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,18 +55,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2017 23:15:50 -0000
+X-List-Received-Date: Fri, 20 Oct 2017 09:54:11 -0000
 
-On 10/17/2017 03:50 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/alpha/alpha_sys.h |  1 -
->  hw/alpha/pci.c       | 26 --------------------------
->  hw/alpha/typhoon.c   |  6 ++----
->  3 files changed, 2 insertions(+), 31 deletions(-)
+The "cannot_instantiate_with_device_add_yet" flag has been renamed
+to "user_creatable" a while ago.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/display/sm501.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index 6eddac9..7f18224 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -1758,7 +1758,7 @@ static void sm501_sysbus_class_init(ObjectClass *klass, void *data)
+     dc->reset = sm501_reset_sysbus;
+     dc->vmsd = &vmstate_sm501_sysbus;
+     /* Note: pointer property "chr-state" may remain null, thus
+-     * no need for dc->cannot_instantiate_with_device_add_yet = true;
++     * no need for dc->user_creatable = false;
+      */
+ }
+ 
+-- 
+1.8.3.1
 
-r~
 
