@@ -1,56 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e6dUr-00083L-02
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Oct 2017 10:14:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39497)
+	id 1e6e0O-0004qw-Ae
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Oct 2017 10:47:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46542)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e6dUp-00082Y-2X
-	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 10:14:27 -0400
+	(envelope-from <Yongbok.Kim@imgtec.com>) id 1e6e0L-0004o8-Cj
+	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 10:47:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1e6dUo-0006ci-C2
-	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 10:14:27 -0400
-Received: from frisell.zx2c4.com ([192.95.5.64]:34545)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
-	id 1e6dUf-0006X5-HC; Mon, 23 Oct 2017 10:14:17 -0400
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 9458a592;
-	Mon, 23 Oct 2017 14:12:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
-	:in-reply-to:references:from:date:message-id:subject:to:cc
-	:content-type; s=mail; bh=ABjAIV+qCLCFCVk6Xv5CqAGBfXU=; b=l44rHM
-	w00VzKPSv4VrT4Hfs5lZrWVN0e3t+WnZrQGNtayRU8IbYtSFb2E9qGE1kfrqyEWo
-	YJQwcjbVVB2gvMz/Uq3fIW8sD8RRJNbnV0IRkNw3G8Naicu3dUY6NWgYH+gO1JC8
-	OHD7cFh0W3GcTP0ClnaGBy4QmvGvCucXWEleAH7rxrSyZ9pFoUXLORn6VX9pRMFn
-	2dcMKrr8AR21r0itafttMCA6u6oHD5wm5XPBNWV/m+vi1r/6OZQvlTAH4FCX+AAr
-	tLYxISlPDTJS8fCtVv2+B4YkyZAfrin83mQtlS5qAkvb+qsZ7l4uqSo7fLmkHouQ
-	wZD6VTZ0B7r4PZ9g==
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id ae8dccd2
-	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
-	Mon, 23 Oct 2017 14:12:54 +0000 (UTC)
-Received: by mail-oi0-f46.google.com with SMTP id m198so30909069oig.5;
-	Mon, 23 Oct 2017 07:14:15 -0700 (PDT)
-X-Gm-Message-State: AMCzsaWXm+KVNadH1XDBcbNea/K6TkwkZAqkTlI1G27bZhby7eNQz7C3
-	4jKtHIMAR4lzX2DIGHSK4Nra0nRDtbQqjVg1eFg=
-X-Google-Smtp-Source: ABhQp+TXKOXmyh61xloDH/rw9uSf/LMx9TXbfa3iS4TYfBJK7vqBGSbFUYzqTTTymly8n2JHqxoVvHkyCXJYtQbAysY=
-X-Received: by 10.157.26.107 with SMTP id u40mr7422964otu.182.1508768054811;
-	Mon, 23 Oct 2017 07:14:14 -0700 (PDT)
+	(envelope-from <Yongbok.Kim@imgtec.com>) id 1e6e0K-0004XS-2z
+	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 10:47:01 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:59561)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Yongbok.Kim@imgtec.com>)
+	id 1e6e0C-0004S3-Bh; Mon, 23 Oct 2017 10:46:52 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Forcepoint Email with ESMTPS id 266D6C5DA97C5;
+	Mon, 23 Oct 2017 15:46:40 +0100 (IST)
+Received: from a32.hh.imgtec.org (10.100.21.170) by hhmail02.hh.imgtec.org
+	(10.100.10.21) with Microsoft SMTP Server (TLS) id 14.3.361.1;
+	Mon, 23 Oct 2017 15:46:43 +0100
+From: Yongbok Kim <yongbok.kim@imgtec.com>
+To: <qemu-devel@nongnu.org>
+CC: Paul Burton <paul.burton@imgtec.com>, Laurent Vivier <laurent@vivier.eu>, 
+	Michael Tokarev <mjt@tls.msk.ru>, Yongbok Kim <yongbok.kim@mips.com>,
+	<qemu-trivial@nongnu.org>
+Date: Mon, 23 Oct 2017 15:46:36 +0100
+Message-ID: <1508769996-5747-4-git-send-email-yongbok.kim@imgtec.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1508769996-5747-1-git-send-email-yongbok.kim@imgtec.com>
+References: <1508769996-5747-1-git-send-email-yongbok.kim@imgtec.com>
 MIME-Version: 1.0
-Received: by 10.74.41.205 with HTTP; Mon, 23 Oct 2017 07:14:14 -0700 (PDT)
-In-Reply-To: <CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
-References: <20171023122719.17199-1-Jason@zx2c4.com>
-	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Date: Mon, 23 Oct 2017 16:14:14 +0200
-X-Gmail-Original-Message-ID: <CAHmME9oMPg1LS6tB6RDUPxrXzTxdp+ZsVsbT9pLSd9QvX5S0vQ@mail.gmail.com>
-Message-ID: <CAHmME9oMPg1LS6tB6RDUPxrXzTxdp+ZsVsbT9pLSd9QvX5S0vQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 192.95.5.64
-Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH] hw/arm/virt: support 4 serial
- ports
+X-Originating-IP: [10.100.21.170]
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 195.59.15.196
+Subject: [Qemu-trivial] [PULL 3/3] MAINTAINERS: Update Paul Burton's email
+ address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,20 +47,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Oct 2017 14:14:28 -0000
+X-List-Received-Date: Mon, 23 Oct 2017 14:47:02 -0000
 
-Hey Peter,
+From: Paul Burton <paul.burton@imgtec.com>
 
-I really do need more serial ports. Two, actually. I'm using qemu on
-build.wireguard.com for CI. I have normal output come on ttyS0
-(ttyAMA0) and then if it's successful, the final step is writing
-"success" into ttyS1 (ttyAMA1), so that I can confirm with certainty
-that the tests succeeded. In other words, one channel for text output
-and one channel for control messages. (And I really really don't want
-to use virtio or PCI-based stuff for this.)
+Update my email address from paul.burton@imgtec.com to
+paul.burton@mips.com, since MIPS will soon no longer be a part of
+Imagination Technologies & as such the @imgtec.com address will soon
+cease to function.
 
-So I'm extending the CI on build.wireguard.com now to support ARM and
-MIPS, and things are not very smooth in the ARM world.
+A mapping is added in .mailmap such that git reports the new @mips.com
+address, and get_maintainer.pl in turn reports it when examining git
+history. Whilst here add a mapping for my also-defunct
+paul@archlinuxmips.org email address too.
 
-Jason
+Signed-off-by: Paul Burton <paul.burton@imgtec.com>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Yongbok Kim <yongbok.kim@imgtec.com>
+Cc: Yongbok Kim <yongbok.kim@mips.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+[Yongbok Kim:
+  Updated message subject]
+Signed-off-by: Yongbok Kim <yongbok.kim@imgtec.com>
+---
+ .mailmap    |    2 ++
+ MAINTAINERS |    2 +-
+ 2 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/.mailmap b/.mailmap
+index 5aec1bd..ee81ac8 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -11,6 +11,8 @@ Fabrice Bellard <fabrice@bellard.org> bellard <bellard@=
+c046a42c-6fe2-441c-8c8c-7
+ James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+ Jocelyn Mayer <l_indien@magic.fr> j_mayer <j_mayer@c046a42c-6fe2-441c-8c=
+8c-71466251a162>
+ Paul Brook <paul@codesourcery.com> pbrook <pbrook@c046a42c-6fe2-441c-8c8=
+c-71466251a162>
++Paul Burton <paul.burton@mips.com> <paul.burton@imgtec.com>
++Paul Burton <paul.burton@mips.com> <paul@archlinuxmips.org>
+ Thiemo Seufer <ths@networkno.de> ths <ths@c046a42c-6fe2-441c-8c8c-714662=
+51a162>
+ malc <av1474@comtv.ru> malc <malc@c046a42c-6fe2-441c-8c8c-71466251a162>
+ # There is also a:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1aedc9f..7625256 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -642,7 +642,7 @@ S: Odd Fixes
+ F: hw/mips/mips_fulong2e.c
+=20
+ Boston
+-M: Paul Burton <paul.burton@imgtec.com>
++M: Paul Burton <paul.burton@mips.com>
+ S: Maintained
+ F: hw/core/loader-fit.c
+ F: hw/mips/boston.c
+--=20
+1.7.1
+
 
