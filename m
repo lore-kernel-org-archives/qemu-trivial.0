@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e6YQR-0006lD-Ke
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Oct 2017 04:49:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59023)
+	id 1e6cW4-0000ZE-A0
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Oct 2017 09:11:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55341)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1e6YQL-0006iR-Ra
-	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 04:49:33 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1e6cW1-0000X7-IO
+	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 09:11:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1e6YQL-0002Se-5r
-	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 04:49:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50682)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1e6YQG-0002QC-Q3; Mon, 23 Oct 2017 04:49:24 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 75FAF2A0E;
-	Mon, 23 Oct 2017 08:49:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 75FAF2A0E
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=kraxel@redhat.com
-Received: from sirius.home.kraxel.org (ovpn-117-195.ams2.redhat.com
-	[10.36.117.195])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CF8C760462;
-	Mon, 23 Oct 2017 08:49:21 +0000 (UTC)
-Received: from localhost (localhost [IPv6:::1])
-	by sirius.home.kraxel.org (Postfix) with ESMTP id E5A9C4FD7B;
-	Mon, 23 Oct 2017 10:49:15 +0200 (CEST)
-Message-ID: <1508748555.16488.4.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>, BALATON
-	Zoltan <balaton@eik.bme.hu>, David Gibson <david@gibson.dropbear.id.au>
-Date: Mon, 23 Oct 2017 10:49:15 +0200
-In-Reply-To: <1508493233-1166-1-git-send-email-thuth@redhat.com>
-References: <1508493233-1166-1-git-send-email-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1e6cVv-00086R-Kg
+	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 09:11:37 -0400
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:50963)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1e6cVv-00085e-EL
+	for qemu-trivial@nongnu.org; Mon, 23 Oct 2017 09:11:31 -0400
+Received: by mail-wr0-x243.google.com with SMTP id p96so3441391wrb.7
+	for <qemu-trivial@nongnu.org>; Mon, 23 Oct 2017 06:11:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=3Jz9ap/eE3yRLs8IkG8EUBuLug+HrQhxdNIrmJYeeJE=;
+	b=kChPsecNUljJwBHED+3T92z6JdQpnvXZJWnyejbrHMlE7EjeJ9UD612guJa2g/Fg49
+	9Xn+6FyoKsNeef9ug70W0u55MdkB25/5ue7g17cY25AtKZtTdFpWXhigMTB3dSNgkUa0
+	0WsHJnQERcOj3dxINoShmp+H27K22tFfQZPb4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=3Jz9ap/eE3yRLs8IkG8EUBuLug+HrQhxdNIrmJYeeJE=;
+	b=LiGj4VqUk8sf4b+BliTw7t+BLPwsHqrZ7tZcslF1A31MG0JHuEsWJEAbokfCxaQe+S
+	PlGlnrHTv3vsMw+aDX4pQSxSaiG/zcA+VxkyWOjAtfqpdcbgUdcxTjFLV/Ues/poBOjz
+	FugBQ3jdDBGLEH50Nh96gnW+3vjg747lglVewTEmzecnAq8qAYgJukeUQ62RikN0wY3d
+	dCILLs9EDhn8qwd0M2ea502Rvqu2f5Lt91t7oKkreOxDRllrWQp/lQzQbuQTXAnz/S7R
+	Thksb/NLTwl9hfX4aUMJjqFqkmBCxG5HBbfth5oq7OvUPbY1Ep0SAWtABdIQ09RYiw3x
+	EpmQ==
+X-Gm-Message-State: AMCzsaUlB7h11kzQ5hAcr0QGEZnkZhtJ98D1zU0HvaRmNax7bbKI46kD
+	47NUwCJqvqph9d9UhYojQZRIs4arpkT7oYxUuPj+CQ==
+X-Google-Smtp-Source: ABhQp+TfCiTVKaY9pekMkaZMKYulth2mTztdMr1xcoo3n/ajRAiHYxDoFjU7Jv0VsuBRFNAyPtz21XAHrzyD7/TpjjE=
+X-Received: by 10.223.171.161 with SMTP id s30mr5075796wrc.194.1508764290251; 
+	Mon, 23 Oct 2017 06:11:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.161.5 with HTTP; Mon, 23 Oct 2017 06:11:09 -0700 (PDT)
+In-Reply-To: <20171023122719.17199-1-Jason@zx2c4.com>
+References: <20171023122719.17199-1-Jason@zx2c4.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Oct 2017 14:11:09 +0100
+Message-ID: <CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 23 Oct 2017 08:49:23 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/display/sm501: Fix comment in
- sm501_sysbus_class_init()
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH] hw/arm/virt: support 4 serial
+ ports
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,36 +64,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Oct 2017 08:49:33 -0000
+X-List-Received-Date: Mon, 23 Oct 2017 13:11:38 -0000
 
-On Fri, 2017-10-20 at 11:53 +0200, Thomas Huth wrote:
-> The "cannot_instantiate_with_device_add_yet" flag has been renamed
-> to "user_creatable" a while ago.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
-> =C2=A0hw/display/sm501.c | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 6eddac9..7f18224 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -1758,7 +1758,7 @@ static void sm501_sysbus_class_init(ObjectClass
-> *klass, void *data)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0dc->reset =3D sm501_reset_sysbus;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0dc->vmsd =3D &vmstate_sm501_sysbus;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* Note: pointer property "chr-state" may=
- remain null, thus
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0* no need for dc->cannot_instantiate_wit=
-h_device_add_yet =3D
-> true;
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0* no need for dc->user_creatable =3D fal=
-se;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0*/
-> =C2=A0}
-> =C2=A0
+On 23 October 2017 at 13:27, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> The QEMU man page says:
+>
+>        -serial dev
+>            This option can be used several times to
+>            simulate up to 4 serial ports.
+>
+> However, the ARM virt machine erroneously only provides 1 serial port.
+> This patch fixes it by populating 4 of them.
+>
+> But, unfortunately, this patch doesn't actually work. Sending it to the
+> list as inspiration for somebody on the ARM team who might be able to do
+> this more properly.
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+This is really the documentation being wrong -- that is actually
+a PC specific thing. In QEMU generally, -serial can be used
+for as many serial ports as the machine model provides, up
+to a maximum of four.
 
+Why do you want more than one serial port in the virt board?
+If there's a good reason we can add more, but mostly I only
+expected that one would be needed, for the console.
+(If you're using the TrustZone/EL3 support then there's
+a second UART for the Secure world.)
+
+thanks
+-- PMM
 
