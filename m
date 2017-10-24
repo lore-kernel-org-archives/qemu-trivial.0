@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e6yCy-0006X3-5L
+	id 1e6yCy-0006XF-BA
 	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 08:21:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42489)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42507)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6yCt-0006TE-V9
+	id 1e6yCu-0006Tr-Qj
 	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 08:21:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6yCs-0007EG-2r
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 08:21:19 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:44182)
+	id 1e6yCt-0007FC-U4
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 08:21:20 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:50403)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6yCe-00074H-V3; Tue, 24 Oct 2017 08:21:05 -0400
-Received: by mail-qk0-x243.google.com with SMTP id r64so25927478qkc.1;
-	Tue, 24 Oct 2017 05:21:04 -0700 (PDT)
+	id 1e6yCm-0007Aw-QU; Tue, 24 Oct 2017 08:21:12 -0400
+Received: by mail-qt0-x243.google.com with SMTP id d9so23300519qtd.7;
+	Tue, 24 Oct 2017 05:21:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=fwHh1OAweOZOHx7kkW8yOHZufjrY41Xyf5L9ndLoZ3o=;
-	b=HUlBg5ZjP5ajwGJnHgKUvWvGg6gQPrVIEzymqxbkBmUUA9kKkc3jOfE4eHHL6E0Jk1
-	Lzr4kTMTrbK/t72eAwv4ioG5NQZsOJMi5VHRN+9vqPIBmPSY19IGK01ARIcxBsP2LyBM
-	G2DAsxPerdoXRLhbuONgJxVrQloCoQvj8tqM2tdENTl3v3S7bu9fZX+g2SSe+HJgMhpM
-	EfwMT9ZuFuWJgIGPxg56F2RvPLHLKiCanUBJj+lOe43cJog+MR0nCeXN/bELfXXEU7IJ
-	IutWJVHqfEApGOClNPmEDjlqX4Md7C1ZstyZIv8/aFQz761ruDoIa+/nIxl/eHa472ww
-	K9mw==
+	bh=RuxqJoY8o+MvoJrBKpmNAkcYjUHQKm+mlOY5DYZt1zA=;
+	b=ccZ38MdOamCFDlc2C8dPP6puKaJIgqO8jit6ClyxfoWu0A75SFQprEvhq0DeNvdY/H
+	qDKfNNrlmnPnO3E2bz0tjZ08zuZOh5NjbZ21QhTpZYzMeg9+iSLVy7k92fJuyzAOxSIc
+	M0Z3QztD+c6ntUmZClHbsxCS5lxrvns/Kxj31DJagquqwwJCykD3mPbqVoDcRn1aHjy3
+	XdXdv26phRTky0sZ4tZ4HXd2ojuJrmXlo6GKkpV/ymUDA3UEEIChI+SeHKgpBCJue+0p
+	Yekk0nK0/bU3wev1ivkt1PxRwo622Z0NIGgFuh8iTuLwW4ld3+Gbn+VOFAtSYPd7p82+
+	s82A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=fwHh1OAweOZOHx7kkW8yOHZufjrY41Xyf5L9ndLoZ3o=;
-	b=qi1TG+zpNAJWaH11VkOlSZ/xOGNRFP29YXGAf3+j4nsBdIIVITLXGv5JDEvA/bi730
-	bYGeXAGhzYcnNPaI7E10oTnHtuYsQqehIuEQDM5RNfZWVyBG+pqnqbRTnmb9yED6v591
-	LXwcAnPdwV+Fpg9PY5jrLQ2lX9QKyjmMAdYWzEOrJdYtYXlBSfIn/PqgQ+yPy4H0DCD0
-	qMMJQlYe9KytRyviqjstoOUHS/OxKBNh7CFdKUlrXibRYjOUGr8SoSriIQMOcat9mMD5
-	iwEHaP3qY6J8V+3YpMRi0YnXLLNXShwTI2H8fnjQhwiBxCGrBsNStp4Fa+Bqs7ym3+a7
-	RzTQ==
-X-Gm-Message-State: AMCzsaVsRTYRIundjrY8sUNXyrUQc8EfHfqd19SbA0DjYeepUmZeu90M
-	WqnLZ2WT1Tb7wE90FdlAbic=
-X-Google-Smtp-Source: ABhQp+QF7LYJzc9PVnSTlXbidnDXL6xecCdMhPxpr0ojYIKKsrDs06itpy5hI/rpASSSulbu68jDBw==
-X-Received: by 10.55.180.132 with SMTP id d126mr24778644qkf.268.1508847664453; 
-	Tue, 24 Oct 2017 05:21:04 -0700 (PDT)
+	bh=RuxqJoY8o+MvoJrBKpmNAkcYjUHQKm+mlOY5DYZt1zA=;
+	b=QSj755IC8CvOEoUlzMorAO8TxUpIlMyRdo06ir6FNs4plJrLFe7GmL/pABvtPHcBdx
+	OX+IlmRxHBJMT9njn3b9Z/Rjs1iq/JHmbXUcb6hL9O5mXWCmYj9tWaGCpV7lxX1xMPO1
+	7ChT82/Z+YwDAdzT1WJDcXV2PAMID3lIUTcAoYqlX5R2QxJcI9271Qj+4A/d4tcUQhbY
+	Q1saHPcMEU5pYxGTBSNomST+/QOMAnVXB0e1K9gQ6imlfAPdjKtyyY8jS7AWXAR9k/mK
+	iNoXtKzzUsaea+5JaoSgUtLsmjeNJ6hTAPU93SJ3d8q8e+k4GXTNE40wup9k0Pfmx//l
+	D7WQ==
+X-Gm-Message-State: AMCzsaVVqmoFEg/dLdiRRCTC67xzUZ0606SlqwE3DFclQq3IH7NzJsTo
+	MMXEfrEGeCZpY7Eu0cawwds=
+X-Google-Smtp-Source: ABhQp+S85YG2htHqdS8JiLOl/ZPnJ/vf3HnN4LGFhAYRLoYbxsveA6m8hYdcrri0b3+vBRiZW69KsQ==
+X-Received: by 10.200.49.92 with SMTP id h28mr25547284qtb.340.1508847672279;
+	Tue, 24 Oct 2017 05:21:12 -0700 (PDT)
 Received: from x1.local ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id n76sm103983qkn.85.2017.10.24.05.21.00
+	by smtp.gmail.com with ESMTPSA id n76sm103983qkn.85.2017.10.24.05.21.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 24 Oct 2017 05:21:03 -0700 (PDT)
+	Tue, 24 Oct 2017 05:21:11 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,15 +54,15 @@ To: BALATON Zoltan <balaton@eik.bme.hu>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Stefan Berger <stefanb@linux.vnet.ibm.com>,
 	Amarnath Valluri <amarnath.valluri@intel.com>,
-	Juan Quintela <quintela@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>,
 	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
 	Peter Xu <peterx@redhat.com>
-Date: Tue, 24 Oct 2017 09:20:43 -0300
-Message-Id: <20171024122045.30072-3-f4bug@amsat.org>
+Date: Tue, 24 Oct 2017 09:20:45 -0300
+Message-Id: <20171024122045.30072-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.0.rc1
 In-Reply-To: <20171024122045.30072-1-f4bug@amsat.org>
 References: <20171024122045.30072-1-f4bug@amsat.org>
@@ -71,8 +71,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH v2 2/4] tpm: add stubs
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v2 4/4] vl: remove unnecessary #ifdef
+ CONFIG_TPM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,99 +87,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 24 Oct 2017 12:21:21 -0000
 
-Commit c37cacabf22 moved tpm_cleanup() in the main loop exit, however this
-function is not available when compiling with --disable-tpm.
+a stub is now provided.
 
-Provides necessary stubs to keep code clean of #ifdef'fery.
-
-Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
-Message-Id: <20171023102903.256AF7456A0@zero.eik.bme.hu>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Richard W.M. Jones <rjones@redhat.com>
 ---
- Makefile.objs       |  2 +-
- stubs/tpm.c         | 33 +++++++++++++++++++++++++++++++++
- MAINTAINERS         |  1 +
- stubs/Makefile.objs |  1 +
- 4 files changed, 36 insertions(+), 1 deletion(-)
- create mode 100644 stubs/tpm.c
+ vl.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/Makefile.objs b/Makefile.objs
-index d4f973a8fc..285c6f3c15 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -62,7 +62,7 @@ bt-host.o-cflags := $(BLUEZ_CFLAGS)
- common-obj-y += dma-helpers.o
- common-obj-y += vl.o
- vl.o-cflags := $(GPROF_CFLAGS) $(SDL_CFLAGS)
--common-obj-y += tpm.o
-+common-obj-$(CONFIG_TPM) += tpm.o
+diff --git a/vl.c b/vl.c
+index 0723835bbf..ec299099ff 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4624,11 +4624,9 @@ int main(int argc, char **argv, char **envp)
+         exit(1);
+     }
  
- common-obj-$(CONFIG_SLIRP) += slirp/
+-#ifdef CONFIG_TPM
+     if (tpm_init() < 0) {
+         exit(1);
+     }
+-#endif
  
-diff --git a/stubs/tpm.c b/stubs/tpm.c
-new file mode 100644
-index 0000000000..c18aac1c73
---- /dev/null
-+++ b/stubs/tpm.c
-@@ -0,0 +1,33 @@
-+/*
-+ * TPM stubs
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#include "qemu/osdep.h"
-+#include "sysemu/tpm.h"
-+#include "qmp-commands.h"
-+
-+int tpm_init(void)
-+{
-+    return 0;
-+}
-+
-+void tpm_cleanup(void)
-+{
-+}
-+
-+TPMInfoList *qmp_query_tpm(Error **errp)
-+{
-+    return NULL;
-+}
-+
-+TpmTypeList *qmp_query_tpm_types(Error **errp)
-+{
-+    return NULL;
-+}
-+
-+TpmModelList *qmp_query_tpm_models(Error **errp)
-+{
-+    return NULL;
-+}
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 12175425a7..2650063242 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1544,6 +1544,7 @@ TPM
- M: Stefan Berger <stefanb@linux.vnet.ibm.com>
- S: Maintained
- F: tpm.c
-+F: stubs/tpm.c
- F: hw/tpm/*
- F: include/hw/acpi/tpm.h
- F: include/sysemu/tpm*
-diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-index c7594796c3..8cfe34328a 100644
---- a/stubs/Makefile.objs
-+++ b/stubs/Makefile.objs
-@@ -28,6 +28,7 @@ stub-obj-y += runstate-check.o
- stub-obj-y += set-fd-handler.o
- stub-obj-y += slirp.o
- stub-obj-y += sysbus.o
-+stub-obj-y += tpm.o
- stub-obj-y += trace-control.o
- stub-obj-y += uuid.o
- stub-obj-y += vm-stop.o
+     /* init the bluetooth world */
+     if (foreach_device_config(DEV_BT, bt_parse))
 -- 
 2.15.0.rc1
 
