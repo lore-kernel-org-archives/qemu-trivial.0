@@ -1,65 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e7Ces-0000eK-3B
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 23:47:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49276)
+	id 1e7Cet-0000fG-87
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 23:47:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1e7CT0-0006pa-AV
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 23:34:55 -0400
+	(envelope-from <zachriggle@gmail.com>) id 1e78JU-0008MZ-6k
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 19:08:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1e7CSz-0005Vi-Ef
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 23:34:54 -0400
-Received: from mail-yw0-x243.google.com ([2607:f8b0:4002:c05::243]:51191)
+	(envelope-from <zachriggle@gmail.com>) id 1e78JT-0002hG-5Z
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 19:08:48 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:56107)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <zachriggle@gmail.com>)
-	id 1e7CSz-0005VA-AI; Tue, 24 Oct 2017 23:34:53 -0400
-Received: by mail-yw0-x243.google.com with SMTP id i198so16915228ywe.7;
-	Tue, 24 Oct 2017 20:34:53 -0700 (PDT)
+	id 1e78JT-0002gt-0b; Tue, 24 Oct 2017 19:08:47 -0400
+Received: by mail-oi0-x242.google.com with SMTP id g125so40112233oib.12;
+	Tue, 24 Oct 2017 16:08:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=H6uq2BY2WAil6dqudVuF2JhQ6M7GsnKg+U188Ogwfa0=;
-	b=eAsdUnnxcK1WlF+2X/vkRhGNdBT9B2wDgNKxK3IXL6WREB6AJiMSRwufpIczK0fKTL
-	U6COoMetw7vHTT2KP/m2BhpBV3cFEF/Be0qVzIv1Dd9VbVG5M9KJZkEJ/DgsWF7+45+8
-	T5aYbFTPzWe6SrWCIMWq6mjXAdVoKXc7t92xh/5i4Fr3eeK+elFczbgvI8GsLQjwjj/A
-	JfzfGqZDAGYD2oLt85l4Pe6ebA+L83PoJHv5sO9S1AtVZ8TY/IlcU4g3O+YRlvt1m4Ev
-	knLZ3s3z52gSOq2DaC9zZTX+xYInhgXnDwei2ETXIXjDO5EdyCGykeoMsOzSBEtCC3B5
-	6Mjw==
+	h=from:to:cc:subject:date:message-id;
+	bh=UNX5LeRBaPungLYmGR+puUMm13E5PYH1s0dHXYJceIg=;
+	b=hXaUq/1Hk/bass8EBhiJrFq8Jp95tBYAet92Q3ilQPd1U8Ot7YHxpgfhwHrn6sGEsK
+	mnfZDB9kLj0xDOJeYraeocQv5++bflxU3SyPIkmjq/YmgxZpNe7hy97KOZFNjnwUNiUw
+	vWe6UP68d4t/zXu0L4qZft8oM/A4X10jFp/zsfEJe6MCK2JC1Poh4FqNFqvPhmMPJQGm
+	CO4xrZhqPtrnz3r/Qy/8VGmUFx4o06Vohux6Y2qQHKwu5j/EqwoJCq79t0Hhi40DvDYn
+	otHPdbvwLVNT05DIcxDbKC4ETfcEDiLNQ8EZ3GJFAL4wS2DaHjmn0/RtynhaVXMIlTOY
+	B0rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=H6uq2BY2WAil6dqudVuF2JhQ6M7GsnKg+U188Ogwfa0=;
-	b=VH8SRMSwU4jwJYKvPWQzEw2F9WXLa5XfnybNLFcNNR6aDw3m8kNABRu02L6MglTg5t
-	7V1LxNlwI73o40JWLhepE2pTUIijhpK5SAfJYHqxUV65gL/l3PtFNJksoZVfXIPVxZ4l
-	D4OgGIxl3GSCTP0uCBc3ir8eYQx+ll2QEh5Vl89TgaNruOgp8OXcjwwS95ttxsPb/QWu
-	Ji1TXQScz8OaN/2oHcF8IcthO4XDHjJErtFg6aGEIBzshfAEynSTih3KJzPyOpdYdFI+
-	jmRd2nGafzuzGOlsC/b/tFjQq0H12tNp0OGEmuv02hWp0vJWV263NjmR+joh4wdcWroT
-	k9gw==
-X-Gm-Message-State: AMCzsaUusUCFOp61VWueuSatXIv7w99IikdjeyDfwRH5/qr3xFiDNxRG
-	k2UfhLoa2NRcAdci10KAixtM0prt
-X-Google-Smtp-Source: ABhQp+TbEIa37ARMxg20ughdLIA08lppakLlqrHnTrSQ60ejhw0vH3gqvppKigUCllRJYYzkq0zzRw==
-X-Received: by 10.129.160.129 with SMTP id x123mr12794736ywg.508.1508902492318;
-	Tue, 24 Oct 2017 20:34:52 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=UNX5LeRBaPungLYmGR+puUMm13E5PYH1s0dHXYJceIg=;
+	b=kQlxrLsbwi0nw0bxmVF916YPRI0MiO9xDkWfpExosviKPbccpvx7X2WMOeLh9YnrTl
+	Kjo5tTfJWiqPxQHSdgmLm0XpH9VTyd6HHl24qJIMTO/oxvOw/hwJzffpi+LrvukodDYq
+	7Av3QB+IbO3ZN22F3Hy0H1QI4Ya2OmZANFry/FTdPdXuuxr/Iadu8rrPN5jv3uW0VJBS
+	Xxc0QR5/F6VNKrKj1nA6k6Y2Jvi/SuRlBsULx/LD5owGwq++QCGMWp5StuvlpMbR/vjT
+	P0sHCGq/7MziLLhn7cfGGFlzpSnzEchXPnc2vnp5c2bq2DzOqyLjn1X1AVn57PQiThAA
+	2Y6A==
+X-Gm-Message-State: AMCzsaUN5gwqXzrnBAOBSMn2lvcs0s33CZYFwpLq7IH+DCJMo7QZYpGG
+	+7Q06jxaNk1AkEdzxP2OEObJsvsw
+X-Google-Smtp-Source: ABhQp+ROqJhp7noCwcuG4TY9ntQMlGzuKQbjcZhMnwQu94MW6cYp8/L0KMEl3b7t5nsQyC86f3PXrg==
+X-Received: by 10.202.240.65 with SMTP id o62mr131065oih.300.1508886525734;
+	Tue, 24 Oct 2017 16:08:45 -0700 (PDT)
 Received: from riggle-macbookpro.roam.corp.google.com.com
-	([2620:15c:2a:2:3c3d:b40:6b34:821]) by smtp.gmail.com with ESMTPSA id
-	b129sm915949ywe.99.2017.10.24.20.34.50
+	([2620:15c:2a:2:3c3d:b40:6b34:821])
+	by smtp.gmail.com with ESMTPSA id 8sm713761otf.13.2017.10.24.16.08.43
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 24 Oct 2017 20:34:51 -0700 (PDT)
+	Tue, 24 Oct 2017 16:08:44 -0700 (PDT)
 From: Zach Riggle <zachriggle@gmail.com>
+X-Google-Original-From: Zach Riggle <riggle@google.com>
 To: 
 Cc: qemu-trivial@nongnu.org, Zach Riggle <zachriggle@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-devel@nongnu.org (open list:All patches CC here)
-Date: Tue, 24 Oct 2017 22:34:42 -0500
-Message-Id: <20171025033442.44872-1-zachriggle@gmail.com>
+Date: Tue, 24 Oct 2017 18:07:58 -0500
+Message-Id: <20171024230758.31779-1-riggle@google.com>
 X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20171024230758.31779-1-riggle@google.com>
-References: <20171024230758.31779-1-riggle@google.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4002:c05::243
+X-Received-From: 2607:f8b0:4003:c06::242
 X-Mailman-Approved-At: Tue, 24 Oct 2017 23:47:09 -0400
-Subject: [Qemu-trivial] [PATCH v2] linux-user: fix is_proc_myself to check
- the paths via realpath
+Subject: [Qemu-trivial] [PATCH] linux-user: fix is_proc_myself to check the
+ paths via realpath
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,7 +69,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Oct 2017 03:34:55 -0000
+X-List-Received-Date: Tue, 24 Oct 2017 23:08:50 -0000
+
+From: Zach Riggle <zachriggle@gmail.com>
 
 Previously, it was possible to get a handle to the "real" /proc/self/mem
 by creating a symlink to it and opening the symlink, or opening e.g.
@@ -85,14 +85,14 @@ by creating a symlink to it and opening the symlink, or opening e.g.
 
 Signed-off-by: Zach Riggle <zachriggle@gmail.com>
 ---
- linux-user/syscall.c | 47 ++++++++++++++++++++++++++++-------------------
- 1 file changed, 28 insertions(+), 19 deletions(-)
+ linux-user/syscall.c | 44 +++++++++++++++++++++++++-------------------
+ 1 file changed, 25 insertions(+), 19 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 9bf901fa11..6c1f28a1f7 100644
+index 9bf901fa11..8fef3bb28e 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -7496,26 +7496,35 @@ static int open_self_auxv(void *cpu_env, int fd)
+@@ -7496,26 +7496,32 @@ static int open_self_auxv(void *cpu_env, int fd)
 
  static int is_proc_myself(const char *filename, const char *entry)
  {
@@ -118,10 +118,7 @@ index 9bf901fa11..6c1f28a1f7 100644
 +    char proc_self_entry_realpath[PATH_MAX + 1];
 +    char filename_realpath[PATH_MAX + 1];
 +
-+    if (PATH_MAX < snprintf(proc_self_entry,
-+                            sizeof(proc_self_entry),
-+                            "/proc/self/%s",
-+                            entry)) {
++    if(PATH_MAX < snprintf(proc_self_entry, sizeof(proc_self_entry), "/proc/self/%s", entry)) {
 +        /* Full path to "entry" is too long to fit in the buffer */
 +        return 0;
      }
