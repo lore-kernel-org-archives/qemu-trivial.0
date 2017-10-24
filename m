@@ -1,85 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e6zAz-0006mA-EU
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 09:23:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56475)
+	id 1e737O-0008QE-H9
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 13:35:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38458)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6zAv-0006jo-UN
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 09:23:23 -0400
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e737L-0008PY-RE
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 13:35:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6zAs-0002nU-5v
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 09:23:21 -0400
-Received: from mail-qt0-x22c.google.com ([2607:f8b0:400d:c0d::22c]:44529)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e6zAs-0002nG-14; Tue, 24 Oct 2017 09:23:18 -0400
-Received: by mail-qt0-x22c.google.com with SMTP id 8so30374490qtv.1;
-	Tue, 24 Oct 2017 06:23:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Y8VzmJdhl3JLBd9aK8RJhffYJhAmKFwtg63fj6nB4lA=;
-	b=bf29jdKmb2eS+qFB96LsQeoeW4isuCwfKMXzqxKDn5zYflqvhSl45q4JPpEy/ehrya
-	19GuDJ9HiUUOv+k5DIOrWhdppX0Dk9o5zhMA9DXQF0s1QMpYKQG/o3E+6fMBPOqGF7fe
-	4lt57+nIxI+tswZBe18xqFSSmsq1nrDCxwdYrSg1GBWeIKlpAMA3fXQHpVUYo4tPodVB
-	pl/VLFgw4mxVyJCrMemJInJqi+RvdW9VnjZ9eegh1l81dmsVS3Vy8yAz5PkW355XGkXV
-	Ud/MKAO4iaN9kmGP4qInx1RQ27IpCi61/xG4sf4RhcM1OeymIPCp5b0yjkaRLvqnSPnm
-	K3Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Y8VzmJdhl3JLBd9aK8RJhffYJhAmKFwtg63fj6nB4lA=;
-	b=h2Q06llMDLV0rxZRgOUNr70YQtDHzn+I8xgGgrlbYkA7BwoSWOQlrHgAzZGgMvkBXg
-	eST3WW4vVwVk9XM9lhUwMn3xYfXZH9p2QaeDF/RkEQl/pHo+cUfDa4Ip6ntfPkQtNiIs
-	grqXDTS9fHi+ayRNbqTZjf9PdfcuwmDZh3oKq/R4bxznZgxguzZ/dxFchxcnZvLlkA6b
-	YiIsndEq9gzAVRzODP7pP6y3JiPV5OjRFWHGH0WAFoJ7DAT6BmMrtxg+6NqcPUZQS6wk
-	deUU35GqRyDkJ3lpgWR+LwtTv8MqvST1FMj0RTqVobGyTOQmjnQleMNP/tdLiNlCjUg5
-	FlFw==
-X-Gm-Message-State: AMCzsaWc9n7cnkno3l1rD8vQsC48j7baK9m4SGUYD7qD6xEFb/7/NuD1
-	9PW++v3P3nTNlXEccmTYlnU=
-X-Google-Smtp-Source: ABhQp+TsNVptpuuyQEIosQj1iZt9nc2O/BFZ4OTnY4jnDc/jdzGZSnGy1aGUIhEwFFIxXb4+qxtIXA==
-X-Received: by 10.200.52.118 with SMTP id v51mr15248172qtb.266.1508851397514; 
-	Tue, 24 Oct 2017 06:23:17 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id a26sm224957qta.50.2017.10.24.06.23.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 24 Oct 2017 06:23:16 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: "Richard W.M. Jones" <rjones@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+	(envelope-from <stefanb@linux.vnet.ibm.com>) id 1e737I-0000nZ-Jx
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 13:35:55 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:47878
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanb@linux.vnet.ibm.com>)
+	id 1e737I-0000n2-Do
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 13:35:52 -0400
+Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.21/8.16.0.21) with SMTP id
+	v9OHUWZ1080595
+	for <qemu-trivial@nongnu.org>; Tue, 24 Oct 2017 13:35:48 -0400
+Received: from e36.co.us.ibm.com (e36.co.us.ibm.com [32.97.110.154])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2dt9s5sa0k-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Tue, 24 Oct 2017 13:35:48 -0400
+Received: from localhost
+	by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.vnet.ibm.com>;
+	Tue, 24 Oct 2017 11:35:47 -0600
+Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
+	by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 24 Oct 2017 11:35:43 -0600
+Received: from b03ledav001.gho.boulder.ibm.com
+	(b03ledav001.gho.boulder.ibm.com [9.17.130.232])
+	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id v9OHZhQX9503210; Tue, 24 Oct 2017 10:35:43 -0700
+Received: from b03ledav001.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id EA96B6E035;
+	Tue, 24 Oct 2017 11:35:42 -0600 (MDT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+	by b03ledav001.gho.boulder.ibm.com (Postfix) with ESMTP id C43EA6E040; 
+	Tue, 24 Oct 2017 11:35:41 -0600 (MDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	"Richard W . M . Jones" <rjones@redhat.com>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
 	Amarnath Valluri <amarnath.valluri@intel.com>,
-	Juan Quintela <quintela@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, 
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Peter Xu <peterx@redhat.com>
+	Juan Quintela <quintela@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <20171024122045.30072-1-f4bug@amsat.org>
-	<20171024123913.GB2787@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <e1b90ef1-33dc-41d5-2aea-405385f02b4b@amsat.org>
-Date: Tue, 24 Oct 2017 10:23:03 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	<20171024122045.30072-4-f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Peter Xu <peterx@redhat.com>, "Dr . David Alan Gilbert"
+	<dgilbert@redhat.com>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@gmail.com>
+From: Stefan Berger <stefanb@linux.vnet.ibm.com>
+Date: Tue, 24 Oct 2017 13:35:41 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20171024123913.GB2787@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22c
-Subject: Re: [Qemu-trivial] [PATCH v2 0/4] tpm: add stubs to fix compiling
- with --disable-tpm
+In-Reply-To: <20171024122045.30072-4-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+X-TM-AS-GCONF: 00
+x-cbid: 17102417-0020-0000-0000-00000CE4E486
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00007947; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000239; SDB=6.00935863; UDB=6.00471545;
+	IPR=6.00716129; 
+	BA=6.00005658; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
+	ZB=6.00000000; 
+	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00017690;
+	XFM=3.00000015; UTC=2017-10-24 17:35:46
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 17102417-0021-0000-0000-00005EA3B518
+Message-Id: <0d7dd764-27e5-b7b7-de42-56e6e1b1cebd@linux.vnet.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2017-10-24_09:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1707230000
+	definitions=main-1710240240
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+	mx0b-001b2d01.pphosted.com id v9OHUWZ1080595
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 3/4] tpm: remove
+ unnecessary #ifdef CONFIG_TPM
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,13 +99,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Oct 2017 13:23:23 -0000
+X-List-Received-Date: Tue, 24 Oct 2017 17:35:56 -0000
 
->> v2:
->> - added Richard W.M. Jones Tested-by tag
->> - remove #ifdef CONFIG_TPM in tpm.c (Stefan Berger)
-> 
-> Can confirm v2 works as well.
+On 10/24/2017 08:20 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Makefile.objs now checks for $(CONFIG_TPM).
+>
+> Suggested-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Thanks for testing!
+Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+
+> ---
+>   tpm.c | 4 ----
+>   1 file changed, 4 deletions(-)
+>
+> diff --git a/tpm.c b/tpm.c
+> index 45520f555d..ab5d29e91e 100644
+> --- a/tpm.c
+> +++ b/tpm.c
+> @@ -30,8 +30,6 @@ void tpm_register_model(enum TpmModel model)
+>       tpm_models[model] =3D true;
+>   }
+>
+> -#ifdef CONFIG_TPM
+> -
+>   static const TPMBackendClass *
+>   tpm_be_find_by_type(enum TpmType type)
+>   {
+> @@ -192,8 +190,6 @@ int tpm_config_parse(QemuOptsList *opts_list, const=
+ char *optarg)
+>       return 0;
+>   }
+>
+> -#endif /* CONFIG_TPM */
+> -
+>   /*
+>    * Walk the list of active TPM backends and collect information about=
+ them
+>    * following the schema description in qapi-schema.json.
+
+
 
