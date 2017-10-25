@@ -1,62 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e78VP-00036Z-O4
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 19:21:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48995)
+	id 1e7Brn-000190-1T
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2017 22:56:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1e78VL-00033X-9p
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 19:21:06 -0400
+	(envelope-from <no-reply@patchew.org>) id 1e7Brl-00017m-0f
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 22:56:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1e78VK-0003kJ-IJ
-	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 19:21:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57780)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1e78VG-0003fb-71; Tue, 24 Oct 2017 19:20:58 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 48B3A2A5B;
-	Tue, 24 Oct 2017 23:20:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 48B3A2A5B
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=quintela@redhat.com
-Received: from localhost (ovpn-116-43.ams2.redhat.com [10.36.116.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5AD7B5D6A2;
-	Tue, 24 Oct 2017 23:20:52 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,  "Richard W . M . Jones"
-	<rjones@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
-	<marcandre.lureau@redhat.com>,  Stefan Berger
-	<stefanb@linux.vnet.ibm.com>,  Amarnath Valluri
-	<amarnath.valluri@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, =?utf-8?Q?Marc-Andr?=
-	=?utf-8?Q?=C3=A9?= Lureau <marcandre.lureau@gmail.com>, "Dr . David Alan
-	Gilbert" <dgilbert@redhat.com>,  Peter Xu <peterx@redhat.com>
-In-Reply-To: <20171024122045.30072-5-f4bug@amsat.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue,
-	24 Oct 2017 09:20:45 -0300")
-References: <20171024122045.30072-1-f4bug@amsat.org>
-	<20171024122045.30072-5-f4bug@amsat.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Wed, 25 Oct 2017 01:20:50 +0200
-Message-ID: <871slsnne5.fsf@secure.laptop>
+	(envelope-from <no-reply@patchew.org>) id 1e7Brk-0000Ch-1k
+	for qemu-trivial@nongnu.org; Tue, 24 Oct 2017 22:56:25 -0400
+Resent-Date: Tue, 24 Oct 2017 22:56:25 -0400
+Resent-Message-Id: <E1e7Brk-0000Ch-1k@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21472)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1e7Brf-0008Sn-Bq; Tue, 24 Oct 2017 22:56:19 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1508900138266980.789783106421;
+	Tue, 24 Oct 2017 19:55:38 -0700 (PDT)
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <150890013721.503.837236947876469970@b58463cdfd5f>
+In-Reply-To: <20171024230758.31779-1-riggle@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 24 Oct 2017 23:20:57 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 4/4] vl: remove unnecessary #ifdef
- CONFIG_TPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: zachriggle@gmail.com
+Cc: famz@redhat.com, qemu-trivial@nongnu.org, zachriggle@gmail.com,
+	riku.voipio@iki.fi, laurent@vivier.eu, qemu-devel@nongnu.org
+Date: Tue, 24 Oct 2017 19:55:38 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: fix
+ is_proc_myself to check the paths via realpath
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,13 +45,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Oct 2017 23:21:06 -0000
+X-List-Received-Date: Wed, 25 Oct 2017 02:56:26 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> a stub is now provided.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Tested-by: Richard W.M. Jones <rjones@redhat.com>
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTcxMDI0MjMwNzU4LjMxNzc5LTEtcmlnZ2xlQGdvb2dsZS5jb20KU3ViamVj
+dDogW1FlbXUtZGV2ZWxdIFtQQVRDSF0gbGludXgtdXNlcjogZml4IGlzX3Byb2NfbXlzZWxmIHRv
+IGNoZWNrIHRoZSBwYXRocyB2aWEgcmVhbHBhdGgKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0K
+IyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGluZSAkQkFT
+RS4uIHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1p
+dCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQoKY29tbWl0cz0iJChnaXQg
+bG9nIC0tZm9ybWF0PSVIIC0tcmV2ZXJzZSAkQkFTRS4uKSIKZm9yIGMgaW4gJGNvbW1pdHM7IGRv
+CiAgICBlY2hvICJDaGVja2luZyBQQVRDSCAkbi8kdG90YWw6ICQoZ2l0IGxvZyAtbiAxIC0tZm9y
+bWF0PSVzICRjKS4uLiIKICAgIGlmICEgZ2l0IHNob3cgJGMgLS1mb3JtYXQ9ZW1haWwgfCAuL3Nj
+cmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIC07IHRoZW4KICAgICAgICBmYWlsZWQ9MQog
+ICAgICAgIGVjaG8KICAgIGZpCiAgICBuPSQoKG4rMSkpCmRvbmUKCmV4aXQgJGZhaWxlZAo9PT0g
+VEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdm
+NDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVt
+dQogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzE1MDg4OTg1NDQtMTAzMDctMS1n
+aXQtc2VuZC1lbWFpbC1zdW5kZWVwLmxrbWxAZ21haWwuY29tIC0+IHBhdGNoZXcvMTUwODg5ODU0
+NC0xMDMwNy0xLWdpdC1zZW5kLWVtYWlsLXN1bmRlZXAubGttbEBnbWFpbC5jb20KU3dpdGNoZWQg
+dG8gYSBuZXcgYnJhbmNoICd0ZXN0JwphMDlmYjU4NTczIGxpbnV4LXVzZXI6IGZpeCBpc19wcm9j
+X215c2VsZiB0byBjaGVjayB0aGUgcGF0aHMgdmlhIHJlYWxwYXRoCgo9PT0gT1VUUFVUIEJFR0lO
+ID09PQpDaGVja2luZyBQQVRDSCAxLzE6IGxpbnV4LXVzZXI6IGZpeCBpc19wcm9jX215c2VsZiB0
+byBjaGVjayB0aGUgcGF0aHMgdmlhIHJlYWxwYXRoLi4uCkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hh
+cmFjdGVycwojNTA6IEZJTEU6IGxpbnV4LXVzZXIvc3lzY2FsbC5jOjc1MDM6CisgICAgaWYoUEFU
+SF9NQVggPCBzbnByaW50Zihwcm9jX3NlbGZfZW50cnksIHNpemVvZihwcm9jX3NlbGZfZW50cnkp
+LCAiL3Byb2Mvc2VsZi8lcyIsIGVudHJ5KSkgewoKRVJST1I6IHNwYWNlIHJlcXVpcmVkIGJlZm9y
+ZSB0aGUgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzUwOiBGSUxFOiBsaW51eC11c2VyL3N5c2NhbGwu
+Yzo3NTAzOgorICAgIGlmKFBBVEhfTUFYIDwgc25wcmludGYocHJvY19zZWxmX2VudHJ5LCBzaXpl
+b2YocHJvY19zZWxmX2VudHJ5KSwgIi9wcm9jL3NlbGYvJXMiLCBlbnRyeSkpIHsKCnRvdGFsOiAy
+IGVycm9ycywgMCB3YXJuaW5ncywgNTEgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5
+bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
+YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
+VENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhp
+dGVkIHdpdGggY29kZTogMQoKCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQ
+YXRjaGV3IFtodHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0
+byBwYXRjaGV3LWRldmVsQGZyZWVsaXN0cy5vcmc=
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 
