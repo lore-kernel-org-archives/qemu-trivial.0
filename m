@@ -1,45 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1e7l7q-0003sn-8P
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Oct 2017 12:35:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57076)
+	id 1e7l9F-0004bY-6H
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Oct 2017 12:36:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57474)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e7l7o-0003sD-0y
-	for qemu-trivial@nongnu.org; Thu, 26 Oct 2017 12:35:20 -0400
+	(envelope-from <Jason@zx2c4.com>) id 1e7l9D-0004aZ-45
+	for qemu-trivial@nongnu.org; Thu, 26 Oct 2017 12:36:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1e7l7n-00063W-B8
-	for qemu-trivial@nongnu.org; Thu, 26 Oct 2017 12:35:20 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:46982)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1e7l7m-00062f-RG
-	for qemu-trivial@nongnu.org; Thu, 26 Oct 2017 12:35:19 -0400
-Received: by mail-wm0-x241.google.com with SMTP id m72so9144100wmc.1
-	for <qemu-trivial@nongnu.org>; Thu, 26 Oct 2017 09:35:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=QZTJK7TfbYuvKld1o+yGxkB31wZhunK1/oJtp4gaTlY=;
-	b=c0B+qO6aftcKE5onaaHkDk9h8K1qXMnlghMyiW9R3E7TqmxmfFCzftdYUaOyT/ZZGM
-	zVMrWDgFSpkMCv96Xn743ZEVSdFh1LcaPfIeUGd6dEaGcAh912h4CP6s58fFWMw5ge//
-	XS1SoPhlOqvC93zl70IC1mv7OLyCyVIfDexsg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=QZTJK7TfbYuvKld1o+yGxkB31wZhunK1/oJtp4gaTlY=;
-	b=SRDwub00a5o/r+foUWr2kqYn82EjoVkxR1aXW3rgHQCl48lrcyICcoI2rImPBS0ktd
-	tPo9Lij0u02QV8a6z4GNRtRdwN6sM8rqhJIvp6pQ4Y6fixnc0UUd/Vy3XMIxMA/LjvAd
-	gh8A6E7o9jBAS8qzsS4IYze+QI+3OT4urHgyJ4dl2+9uVz/h0tXlFD96NJWHFRF7HqV+
-	yMqkWW9qP35or52oc/UG04/IG3Ja+4b7VYKOdIJjtK9aGCvs0f84znwlIrRodM6sysfP
-	fOY2tpcKNGEx8FLeoWIP76eLNAvnXUSVl68oTJQGHhKf5dGY7zxcXGFDg53cqLyHbGhF
-	0LUg==
-X-Gm-Message-State: AMCzsaWZTunbq9DkdkIAMabearfTIWRCNQmI7QVXC0C8q52f0Bi/H1QF
-	wLySekvQhVfKNGS59/sj9dxDQRU2hX6jPo0f+rNjRA==
-X-Google-Smtp-Source: ABhQp+SrV/i+442Zdke0Z4U5pC1/KPyasdRt3683hnbPxtlQgpH5qnO62cwJrjV/4sd+VezOC6o1cDAx8zvQl9fYsgo=
-X-Received: by 10.28.10.195 with SMTP id 186mr1958599wmk.136.1509035717591;
-	Thu, 26 Oct 2017 09:35:17 -0700 (PDT)
+	(envelope-from <Jason@zx2c4.com>) id 1e7l9C-0007Ru-FH
+	for qemu-trivial@nongnu.org; Thu, 26 Oct 2017 12:36:47 -0400
+Received: from frisell.zx2c4.com ([192.95.5.64]:43071)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
+	id 1e7l97-0007Q0-6O; Thu, 26 Oct 2017 12:36:41 -0400
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 2ded56cd;
+	Thu, 26 Oct 2017 16:34:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
+	:in-reply-to:references:from:date:message-id:subject:to:cc
+	:content-type; s=mail; bh=E/PmwxGJ4LQg2SRv+hmexafrDG0=; b=HronU7
+	wzg2QW8FYVZMxGr0QU2fIF1DuWh7GZYIfyGn4wBOcPxMPT717UTtieu4mAa366++
+	HkNtVMJfuid6oCx7+imiNuQXmJQoXDtH0gl68MkNC0ZHeYNg83YxhnQqBpfOacc6
+	cs7w5G59X0jMyMdJ8TWmy2coQFXZRzN5kbIQSSM3vG5Ekdz0+oTle1ZCOg/hDF/C
+	YcmzhweixlApY2Cjg7gnd27MGduXa8n/yqciYJh67UAjEFmg30UKvGA9YAXIeg3g
+	OCjhP/ho5DObBP/UIbYXYGniiKZpyBNXBHQeBmzo4WAOazSRlelwldiHYkqq2rq/
+	acAl55/p3y5NEbJQ==
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 7c2e57a1
+	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
+	Thu, 26 Oct 2017 16:34:53 +0000 (UTC)
+Received: by mail-oi0-f50.google.com with SMTP id c77so6686780oig.0;
+	Thu, 26 Oct 2017 09:36:38 -0700 (PDT)
+X-Gm-Message-State: AMCzsaVUcfQXXyRgIqTweGebXWImPr75Vc2X6Ku1h/sr/ULGl7uaJnww
+	Iv3nrcD7tYiwvhby/gBh/vDpU353QFromkAB0qg=
+X-Google-Smtp-Source: ABhQp+T7wxQCYilJCvFSR6t704K0l2z18aRP4WWwRny4ceG/PIN79FhrhCAD+VgM7lMYMjN9XQ6tqv1Qspq3uvq7q6s=
+X-Received: by 10.157.47.163 with SMTP id r32mr3173491otb.108.1509035797568;
+	Thu, 26 Oct 2017 09:36:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Thu, 26 Oct 2017 09:34:56 -0700 (PDT)
-In-Reply-To: <CAHmME9pE79krWx-zD=VGiScT4c=4TZ1wVxYFiF3m+8wsx9Fqeg@mail.gmail.com>
+Received: by 10.74.41.205 with HTTP; Thu, 26 Oct 2017 09:36:37 -0700 (PDT)
+In-Reply-To: <CAFEAcA9XoeXDCQCmRBehntWSo0WGRBsaMDmC8QCqgU1K8jAF_A@mail.gmail.com>
 References: <20171023122719.17199-1-Jason@zx2c4.com>
 	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
 	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
@@ -48,18 +44,20 @@ References: <20171023122719.17199-1-Jason@zx2c4.com>
 	<CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
 	<CAFEAcA8O6YyS1tSzaydckFpsqpb8HXgW5PJe-VTWud_5YGdW5A@mail.gmail.com>
 	<CAHmME9pE79krWx-zD=VGiScT4c=4TZ1wVxYFiF3m+8wsx9Fqeg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Oct 2017 17:34:56 +0100
-Message-ID: <CAFEAcA9XoeXDCQCmRBehntWSo0WGRBsaMDmC8QCqgU1K8jAF_A@mail.gmail.com>
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+	<CAFEAcA9XoeXDCQCmRBehntWSo0WGRBsaMDmC8QCqgU1K8jAF_A@mail.gmail.com>
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Thu, 26 Oct 2017 18:36:37 +0200
+X-Gmail-Original-Message-ID: <CAHmME9qSJSPjANce_cWN6nm=qJsncfczgk7PoPa0xkOHmZjLUA@mail.gmail.com>
+Message-ID: <CAHmME9qSJSPjANce_cWN6nm=qJsncfczgk7PoPa0xkOHmZjLUA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Andrew Jones <drjones@redhat.com>,
 	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 192.95.5.64
 Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-arm] [PATCH] hw/arm/virt:
  support 4 serial ports
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,19 +71,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Oct 2017 16:35:21 -0000
+X-List-Received-Date: Thu, 26 Oct 2017 16:36:48 -0000
 
-On 26 October 2017 at 17:15, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
-> On Thu, Oct 26, 2017 at 4:36 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> I'm still thinking about this. (You definitely can't have four,
->> though, because we already have 2 in the trustzone-enabled
->> config, so we can only add another 2.)
->
-> The trustzone one could be the 5th? Since it's only useful for trustzone.
+On Thu, Oct 26, 2017 at 6:34 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Reordering it would break existing users of the trustzone uart,
+> whose command lines would stop working.
 
-Reordering it would break existing users of the trustzone uart,
-whose command lines would stop working.
-
-thanks
--- PMM
+I thought this was the reason for all of those virt26, virt28,etc
+types -- people who want stability code the revision into their
+scripts. Everybody else then gets the latest.
 
