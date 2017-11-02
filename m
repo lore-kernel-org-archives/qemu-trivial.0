@@ -1,66 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eALHh-0000NT-OW
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 15:36:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53197)
+	id 1eAMXg-0001pv-S1
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 16:56:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41870)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eALHf-0000Mf-JZ
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 15:36:12 -0400
+	(envelope-from <jsnow@redhat.com>) id 1eAMXe-0001o3-E9
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 16:56:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eALHe-00070C-U8
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 15:36:11 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:53556)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eALHe-0006zv-Mn
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 15:36:10 -0400
-Received: by mail-wm0-x244.google.com with SMTP id r196so1108446wmf.2
-	for <qemu-trivial@nongnu.org>; Thu, 02 Nov 2017 12:36:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=VGbN3zKSOiXTLnWJEb1pnoODoHxP7g+f7cUICIwmsP8=;
-	b=iDOX2WWpcSf1KpNkIPEoe1YP02x5EcRDlNAPOrNavYSc4vHuONF9/l4SpXonZErccF
-	bVogcPByyjl5rWafFcTu8SpM0Ju5uPQdPFPrVYxEd/7OkdxR+abxNLB2nDAgQ4J/VZ9J
-	nC8vR1u5iE3O70xk2xBGHBHklJANRVoEkdX88=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=VGbN3zKSOiXTLnWJEb1pnoODoHxP7g+f7cUICIwmsP8=;
-	b=MqXO+/2IJzx++5ZLUQa4bUoGfThS85KCL2s+oWyhscwVlwGwkV45npSSmK65JJuhzn
-	XzxEVnGfFqhGS7VgfrbNrZmi9u8tDkhOsUSyKNJg5W6gt5QRP1uSZ41O4tazVxb8gUr9
-	PCLUmDbUCnb3fmJVPz94L84RMH9BTWerHX4WpI7SAx6wwM+vRFo8FNzMFOSZ4AipzWwD
-	dXcPFgylzVaoqv+Ig9kvbv6hHTDpFXQ3FNXzFZirXJZCQeg+t83X2LhOa15NaLxIcFzI
-	kW9+PS3eWgHp3RbNXbPVaGS5C93TVLSKIYWPBKLjvt1bOp7tXAx9GR0TNRuQs3dz9UW3
-	6zsA==
-X-Gm-Message-State: AMCzsaVBMtKX4EhC+c7YzRK/t1bKFUmq9Mm21CXcfypJM2hOTHTS14GH
-	yGbmbt3CJz0kap55zb5b7tF9XF+yCDo3iybjQaoHtA==
-X-Google-Smtp-Source: ABhQp+TsYdG9LprPY9mdIReiSHyN1RdQ3wUB3kmSXADNwsMfspfVJpGNlYqfl+XszB+HWx+u8qc6HNZ+ZVHfGLYrmrg=
-X-Received: by 10.28.46.136 with SMTP id u130mr2330654wmu.127.1509651369576;
-	Thu, 02 Nov 2017 12:36:09 -0700 (PDT)
+	(envelope-from <jsnow@redhat.com>) id 1eAMXd-0006Oc-JX
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 16:56:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58638)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1eAMXO-0005wY-Hc; Thu, 02 Nov 2017 16:56:30 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7E5F385547;
+	Thu,  2 Nov 2017 20:56:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 7E5F385547
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx04.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=jsnow@redhat.com
+Received: from [10.18.17.35] (dhcp-17-35.bos.redhat.com [10.18.17.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D89FE60618;
+	Thu,  2 Nov 2017 20:56:28 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+References: <1508784509-29377-1-git-send-email-thuth@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <2aa7bf9c-cceb-fdf7-4eac-5d318c854518@redhat.com>
+Date: Thu, 2 Nov 2017 16:56:28 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.3.0
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Thu, 2 Nov 2017 12:35:48 -0700 (PDT)
-In-Reply-To: <2251f54e-4c55-7495-8f60-af40cdd80594@redhat.com>
-References: <20171024230758.31779-1-riggle@google.com>
-	<20171025033442.44872-1-zachriggle@gmail.com>
-	<CAMP9c5=whCgR4qkOPDRKZ+adpWEPiVM=BwZp_r7qCAR7UAsWAQ@mail.gmail.com>
-	<20171027093600.GA29513@kos.to>
-	<CAMP9c5mm7icy06goXr3iiOEgqPbzyaWDt775+9+L=oxnqwRhpA@mail.gmail.com>
-	<CAMP9c5kTQmKd7GVE8DZzvY8tTtWV=tLsgV1ptWPKhEAh=J-maQ@mail.gmail.com>
-	<2251f54e-4c55-7495-8f60-af40cdd80594@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 2 Nov 2017 19:35:48 +0000
-Message-ID: <CAFEAcA-r-KxNDkHFJEdQDVnNXf4N-8zptjQK9a-uPixnSMsg+w@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Zach Riggle <zachriggle@gmail.com>, Riku Voipio <riku.voipio@iki.fi>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Laurent Vivier <laurent@vivier.eu>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: fix
- is_proc_myself to check the paths via realpath
+In-Reply-To: <1508784509-29377-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 02 Nov 2017 20:56:29 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/ide/ahci: Move allwinner
+ code into a separate file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,14 +60,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Nov 2017 19:36:12 -0000
+X-List-Received-Date: Thu, 02 Nov 2017 20:56:47 -0000
 
-On 28 October 2017 at 06:14, Eric Blake <eblake@redhat.com> wrote:
-> By definition, in linux-user, we ARE using glibc; therefore, you are
-> free to use all GNU extensions.
 
-Don't we also support musl libc? I forget...
 
-thanks
--- PMM
+On 10/23/2017 02:48 PM, Thomas Huth wrote:
+> The allwinner code is only needed for the allwinner board (for which
+> we also have a separate CONFIG_ALLWINNER_A10 config switch), so it
+> does not make sense that we compile this for all the other boards
+> that need AHCI, too. Let's move it to a separate file that is only
+> compiled when CONFIG_ALLWINNER_A10 is set.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Belated, as it's already merged to master, but:
+
+Thanks, applied to my IDE tree:
+
+https://github.com/jnsnow/qemu/commits/ide
+https://github.com/jnsnow/qemu.git
+
+--js
 
