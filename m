@@ -1,83 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eA6vu-0004te-C2
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 00:16:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48913)
+	id 1eA92H-0000N7-92
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 02:31:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6vs-0004sO-Lz
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 00:16:45 -0400
+	(envelope-from <thuth@redhat.com>) id 1eA92E-0000Li-IQ
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 02:31:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6vr-0004ED-Bq
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 00:16:44 -0400
-Received: from mail-qt0-x235.google.com ([2607:f8b0:400d:c0d::235]:56707)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eA6vm-0004BM-MM; Thu, 02 Nov 2017 00:16:38 -0400
-Received: by mail-qt0-x235.google.com with SMTP id z28so5162935qtz.13;
-	Wed, 01 Nov 2017 21:16:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=IoGi8DsguE8cMTmocWbctGUhP30ZC6ehM1mdNKQ9tzk=;
-	b=SqPOjm3MVGO6tsHToKdtwgBdwibm81sNE8+wd3vKQkakQoVZz10ZIBXsRf39ooL6gy
-	7PsMUnkOZjC5CIluvblrI1HzWM3PTh7akSK0wioNYFO6hrJrKisdX9F+Xm8m/BPIZdI0
-	CFLz8cJ/MqgD9GNTfKO6SIB2OBEy/HY2x440j7bcXFSUTtQrcP2jcAOYYEnGfT0QFeq4
-	e7OOJEdI8I2uHYkFwgLJA1YrV+bAP5pd+kJZmkKKcXhknKR5qoknygcCTlqPP8TXI5jx
-	FWmI4OF7AHv3GCSNoXkbuNrHbT7d8eH6SrMN22ScuHxM9bO5m52KaLJP98WoPc2jSXo0
-	DwqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=IoGi8DsguE8cMTmocWbctGUhP30ZC6ehM1mdNKQ9tzk=;
-	b=nSDhJZUYD1M1Po6lUUZZMU4gpgeL4jPe85KJ4gHkrEYd+EWEiJW+Pxc9SfpOdh+Q9c
-	h1O1dH/0J1dmd6kL5vec11jRqGAOeeFDXwhbVDTGN5W2nMtHQedve6nbX3aVDETjvJJA
-	hh6Z+0T1r+0WDvljGyR6SDG4kHK8i3Bc5mipA2UqdjhlMhBnwIFjjG58m7US4g3zUQvL
-	VjeiAGG3Y+28qPhhsdHNirMFfYpFayv4iHtdFC1Pw7l21l2ZtrCZrRV/zP5/dNYHVkh0
-	XM1oh5M07ZFlV3wX/L0jrGTrDdsXVwb/Wy1VPqS8TSVZo5WRSGs9kfex+K7NnWJh1+rt
-	cQZQ==
-X-Gm-Message-State: AMCzsaUPYOBnkowHPJlb9f9EK9ZS99RA28ij6Pi1/qqlWSWV4sUTUsQ2
-	yvoMtCk4CI5niwnzS/AsoWVPOWO3
-X-Google-Smtp-Source: ABhQp+S/pcQolUNieWM6gkpNfcoPuJo3TYzYNaO5XJi4o9/O7jBv1r9INFBKG66pz0TCA659rK0WMw==
-X-Received: by 10.200.55.101 with SMTP id p34mr3327029qtb.27.1509596197981;
-	Wed, 01 Nov 2017 21:16:37 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	j40sm1560894qtj.52.2017.11.01.21.16.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 01 Nov 2017 21:16:37 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-2-f4bug@amsat.org>
-	<871smcss0v.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <5ef711ad-506b-e331-e6f9-9287d6500742@amsat.org>
-Date: Thu, 2 Nov 2017 01:16:32 -0300
+	(envelope-from <thuth@redhat.com>) id 1eA92D-0002ct-RQ
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 02:31:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53330)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eA928-0002XC-3i; Thu, 02 Nov 2017 02:31:20 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5C7B881DEB;
+	Thu,  2 Nov 2017 06:31:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 5C7B881DEB
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx01.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=thuth@redhat.com
+Received: from [10.36.116.111] (ovpn-116-111.ams2.redhat.com [10.36.116.111])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5A64F60602;
+	Thu,  2 Nov 2017 06:31:15 +0000 (UTC)
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20170126153837.25597-1-stefanha@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <3ca6376a-ae3e-1e5c-503f-239e4e62799c@redhat.com>
+Date: Thu, 2 Nov 2017 07:31:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <871smcss0v.fsf@dusky.pond.sub.org>
+In-Reply-To: <20170126153837.25597-1-stefanha@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::235
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/88] cocci: script to use
- g_new() & friends
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 02 Nov 2017 06:31:18 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] aio-posix: drop
+ QEMU_AIO_POLL_MAX_NS env var
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,190 +59,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Nov 2017 04:16:46 -0000
+X-List-Received-Date: Thu, 02 Nov 2017 06:31:27 -0000
 
-Hi Markus,
+On 26.01.2017 16:38, Stefan Hajnoczi wrote:
+> This hunk should not have been merged but I forgot to remove it.  Let's
+> remove it before it slips into a QEMU release.
 
-On 10/09/2017 04:24 AM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> 
->> Imported from Markus Armbruster commit b45c03f
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>?
->>
->>  scripts/coccinelle/g_new.cocci | 101 +++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 101 insertions(+)
->>  create mode 100644 scripts/coccinelle/g_new.cocci
->>
->> diff --git a/scripts/coccinelle/g_new.cocci b/scripts/coccinelle/g_new.cocci
->> new file mode 100644
->> index 0000000000..1e57685a6b
->> --- /dev/null
->> +++ b/scripts/coccinelle/g_new.cocci
->> @@ -0,0 +1,101 @@
->> +/* transform g_new*() alloc with size arguments of the form sizeof(T) [* N]
-> 
-> Confusing.  Sounds like we transform g_new() into something else.  Also,
-> wing both ends of the comment, and start with a capital letter.
-
-Ok
+Too late - looks like this patch has never been committed :-(
 
 > 
->> + *
->> + *   g_new(T, n) is neater than g_malloc(sizeof(T) * n).  It's also safer,
->> + *   for two reasons.  One, it catches multiplication overflowing size_t.
->> + *   two, it returns T * rather than void *, which lets the compiler catch
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  aio-posix.c | 7 -------
+>  1 file changed, 7 deletions(-)
 > 
-> Start your sentences with a capital letter.  Or rather, keep my commit
-> message's capital letters intact ;)
-
-Yes :|
-
+> diff --git a/aio-posix.c b/aio-posix.c
+> index 9453d83..9a6348b 100644
+> --- a/aio-posix.c
+> +++ b/aio-posix.c
+> @@ -723,13 +723,6 @@ bool aio_poll(AioContext *ctx, bool blocking)
+>  
+>  void aio_context_setup(AioContext *ctx)
+>  {
+> -    /* TODO remove this in final patch submission */
+> -    if (getenv("QEMU_AIO_POLL_MAX_NS")) {
+> -        fprintf(stderr, "The QEMU_AIO_POLL_MAX_NS environment variable has "
+> -                "been replaced with -object iothread,poll-max-ns=NUM\n");
+> -        exit(1);
+> -    }
+> -
+>  #ifdef CONFIG_EPOLL_CREATE1
+>      assert(!ctx->epollfd);
+>      ctx->epollfd = epoll_create1(EPOLL_CLOEXEC);
 > 
->> + *   more type errors.
->> + *
->> + *    Copyright: (C) 2017 Markus Armbruster <armbru@redhat.com>. GPLv2+.
-> 
-> If you want to put a copyright note into this file, you should stick to
-> the common format:
-> 
-> /*
->  * Rewrite memory allocations to use g_new() & friends
->  *
->  * Copyright (C) 2014-2017 Red Hat, Inc.
->  *
->  * Authors:
->  *  Markus Armbruster <armbru@redhat.com>,
->  *
->  * This work is licensed under the terms of the GNU GPL, version 2 or later.
->  * See the COPYING file in the top-level directory.
->  */
 
-Ok
+Could we get this at least added for QEMU 2.11 ?
 
->> + *    (Imported from b45c03f585ea9bb1af76c73e82195418c294919d)
-> 
-> Scratch this line.  It's in the commit message, and that suffices.
-
-Ok
-
->> + *
->> + * See http://lists.nongnu.org/archive/html/qemu-devel/2017-09/msg00908.html:
->> + *
->> + *   g_new() advantages (from glib doc):
->> + *   - the returned pointer is cast to a pointer to the given type.
->> + *   - care is taken to avoid overflow when calculating the size of the
->> + *   allocated block.
-> 
-> Repeats what you just said in the text pasted from my commit message.
-
-Ok
-
->> + *
->> + *   p = g_malloc(sizeof(*p)) is idiomatic, and not obviously inferior to
->> + *   p = g_new(T, 1), where T is the type of *p.
->> + *   But once you add multiplication, g_new() adds something useful: overflow
->> + *   protection.  Conversion to g_new() might make sense then.
->> + */
-> 
-> This part doesn't really apply, yet: the semantic patch doesn't deal
-> with sizeof(*p).
-> 
-> Please write a coherent introduction instead of a series of quotations.
-
-Sorry :S I'll try :)
-
->> +
->> +@@
->> +type T;
->> +@@
->> +-g_malloc(sizeof(T))
->> ++g_new(T, 1)
->> +@@
->> +type T;
->> +@@
->> +-g_try_malloc(sizeof(T))
->> ++g_try_new(T, 1)
->> +@@
->> +type T;
->> +@@
->> +-g_malloc0(sizeof(T))
->> ++g_new0(T, 1)
->> +@@
->> +type T;
->> +@@
->> +-g_try_malloc0(sizeof(T))
->> ++g_try_new0(T, 1)
->> +
-> 
-> Any particular reason for adding this blank line?
-> 
-> You add more below, and a comment.  Okay, but I'd commit the script
-> exactly as given in commit b45c03f, then add improvements on top.
-
-Yes.
-
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-g_malloc(sizeof(T) * (n))
->> ++g_new(T, n)
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-g_try_malloc(sizeof(T) * (n))
->> ++g_try_new(T, n)
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-g_malloc0(sizeof(T) * (n))
->> ++g_new0(T, n)
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-g_try_malloc0(sizeof(T) * (n))
->> ++g_try_new0(T, n)
->> +
->> +@@
->> +type T;
->> +expression p, n;
->> +@@
->> +-g_realloc(p, sizeof(T) * (n))
->> ++g_renew(T, p, n)
->> +@@
->> +type T;
->> +expression p, n;
->> +@@
->> +-g_try_realloc(p, sizeof(T) * (n))
->> ++g_try_renew(T, p, n)
->> +
->> +// drop superfluous cast
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-(T *)g_new(T, n)
->> ++g_new(T, n)
->> +@@
->> +type T;
->> +expression n;
->> +@@
->> +-(T *)g_new0(T, n)
->> ++g_new0(T, n)
->> +@@
->> +type T;
->> +expression p, n;
->> +@@
->> +-(T *)g_renew(T, p, n)
->> ++g_renew(T, p, n)
-
-Thanks for your review :)
-
-Phil.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
