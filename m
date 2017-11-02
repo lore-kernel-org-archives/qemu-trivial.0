@@ -1,47 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eAJvw-0007yM-Q9
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 14:09:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37269)
+	id 1eAKCb-000326-3C
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 14:26:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40040)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lyan@suse.com>) id 1eAJvu-0007wn-6r
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 14:09:39 -0400
+	(envelope-from <zachriggle@gmail.com>) id 1eAKCW-00030O-CO
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 14:26:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lyan@suse.com>) id 1eAJvt-0003w3-4B
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 14:09:38 -0400
-Received: from smtp.nue.novell.com ([195.135.221.5]:37780)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lyan@suse.com>)
-	id 1eAJvn-0003pS-FK; Thu, 02 Nov 2017 14:09:31 -0400
-Received: from emea4-mta.ukb.novell.com ([10.120.13.87])
-	by smtp.nue.novell.com with ESMTP (TLS encrypted);
-	Thu, 02 Nov 2017 19:09:29 +0100
-Received: from [192.168.2.155] (nwb-a10-snat.microfocus.com [10.120.13.201])
-	by emea4-mta.ukb.novell.com with ESMTP (TLS encrypted);
-	Thu, 02 Nov 2017 18:09:17 +0000
-To: "Daniel P. Berrange" <berrange@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: Anthony PERARD <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <20171102171846.21445-1-lyan@suse.com>
-	<CAFEAcA8JDVKBE1pFssTwFTybT=Kamc+_ra8qRF-DGSpb7=7QZA@mail.gmail.com>
-	<20171102174022.GA32533@redhat.com>
-From: Liang Yan <lyan@suse.com>
-Message-ID: <5d923413-23ce-4bce-f9e6-9cb1d5486b8e@suse.com>
-Date: Thu, 2 Nov 2017 14:09:07 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:56.0) Gecko/20100101
-	Thunderbird/56.0
+	(envelope-from <zachriggle@gmail.com>) id 1eAKCV-0006ce-BA
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 14:26:48 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:56181)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <zachriggle@gmail.com>)
+	id 1eAKCV-0006c6-6g; Thu, 02 Nov 2017 14:26:47 -0400
+Received: by mail-qt0-x242.google.com with SMTP id v41so502336qtv.12;
+	Thu, 02 Nov 2017 11:26:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=HsRGBHF09lMAoDhb/2Wap58M/l3eaViTGhuRA06vldQ=;
+	b=uj/iJiNcUEMgL0lruHxS0PvpD16Gn6Q0X/agkEenb/ggx5DCcFfaKH9priuCn97AMS
+	rGQfzowmAE+UgGAoCOKgmBjeepUsPZRd8eurEZpGAIJU/IZUlgwA9abn2o+3rHr49Q8T
+	UivHAwh8Ch3awiUwRkHJb+yYr37KPavTsW1AS/mLGiXQQk/OBPfw3vhqOKfTL44Az6IV
+	CsSSFNL6yrnE21WOo7G1DvuJcAvXdYklHsgG/NTCxxASgZtVP39e9YdZh6odZe2OH53z
+	hhqAEQmC8ClPdInMXMcWCkWPhwfpXvormSmzSruGYmWaoMkZcyyKi7LyA82TM/U3kDQF
+	DjTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=HsRGBHF09lMAoDhb/2Wap58M/l3eaViTGhuRA06vldQ=;
+	b=cut9GBJ33OBJlCkvqLDsgiXy35/lf7rSZyVy+Vztk69SDUk4UEZ3EsUpA4QyyLBe5Z
+	PnWNc3WbBynamkLxPaWyej9a6M+2a4e0hxJ3ZDPtXsMoPlUyVUheIqlk3suE4xTpN1fj
+	HVRHjA39p3K9Do9j2eDLN4jLnR5TlDxWoGWq0zsN1+xSkmRK8JW68uNYMrzAa8yMW0VN
+	KdFZ8OpjD1WqA0x+rVmgSh6q5wLYcw6hFOzyWrg8DLxkEy5UAbr/ieH10UaWM0Feahba
+	xty5TcZowOikdErY29MGNStXZX0l2MUg4DXwMgDleXorZBJi10+Gi1j8ROilPb6+bw1K
+	3GIA==
+X-Gm-Message-State: AMCzsaX9FZnKQD6VIjHIKyG/rp2vqG+1gTAA/ewEr3wSI9I0p+pvvON7
+	3Yh5WdpuH0vYKw6yLlbpANoWuz8ifTL1GjA5+hA=
+X-Google-Smtp-Source: ABhQp+QFsiiIgDbNj43XK/cd6cV3UzX3X7s3qhe70dD59+HlZjbpz/ivXLyZCY+zJbUFD7ozgc8v3v/Vkr8oeo6FSGY=
+X-Received: by 10.200.17.1 with SMTP id c1mr6054528qtj.252.1509647206294; Thu,
+	02 Nov 2017 11:26:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20171102174022.GA32533@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 195.135.221.5
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/display/xenfb:
- Simulate auto-repeat key events
+References: <20171024230758.31779-1-riggle@google.com>
+	<20171025033442.44872-1-zachriggle@gmail.com>
+	<CAMP9c5=whCgR4qkOPDRKZ+adpWEPiVM=BwZp_r7qCAR7UAsWAQ@mail.gmail.com>
+	<20171027093600.GA29513@kos.to>
+	<CAMP9c5mm7icy06goXr3iiOEgqPbzyaWDt775+9+L=oxnqwRhpA@mail.gmail.com>
+	<CAMP9c5kTQmKd7GVE8DZzvY8tTtWV=tLsgV1ptWPKhEAh=J-maQ@mail.gmail.com>
+	<2251f54e-4c55-7495-8f60-af40cdd80594@redhat.com>
+In-Reply-To: <2251f54e-4c55-7495-8f60-af40cdd80594@redhat.com>
+From: Zach Riggle <zachriggle@gmail.com>
+Date: Thu, 02 Nov 2017 18:26:35 +0000
+Message-ID: <CAMP9c5=3rpH_84w8sRNhdRufnu7sisiyu_U0Bz+cyqdpP=C2_A@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-trivial@nongnu.org, 
+	Laurent Vivier <laurent@vivier.eu>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>
+Content-Type: multipart/alternative; boundary="089e0826516877ab6f055d0421fe"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: fix
+ is_proc_myself to check the paths via realpath
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,83 +72,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Nov 2017 18:09:39 -0000
+X-List-Received-Date: Thu, 02 Nov 2017 18:26:49 -0000
 
+--089e0826516877ab6f055d0421fe
+Content-Type: text/plain; charset="UTF-8"
 
+Ping. What changes do I need to make to land this?
+On Sat, Oct 28, 2017 at 12:49 AM Eric Blake <eblake@redhat.com> wrote:
 
-On 11/2/17 1:40 PM, Daniel P. Berrange wrote:
-> On Thu, Nov 02, 2017 at 05:26:50PM +0000, Peter Maydell wrote:
->> On 2 November 2017 at 17:18, Liang Yan <lyan@suse.com> wrote:
->>> New tigervnc changes the way to send long pressed key,
->>> from "down up down up ..." to "down down ... up", it only
->>> affects xen pv console mode. I send a patch to latest
->>> kernel side, but it may have a fix in qemu backend for
->>> back compatible becase guest VMs may use very old kernel.
->>> This patch inserts an up event after each regular key down
->>> event to simulate an auto-repeat key event for xen keyboard
->>> frontend driver.
->>>
->>> Signed-off-by: Liang Yan <lyan@suse.com>
->>> ---
->>> v2:
->>> - exclude extended key
->>> - change log comment
->>>
->>>  hw/display/xenfb.c | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
->>> index 8e2547ac05..1bc5b41ab7 100644
->>> --- a/hw/display/xenfb.c
->>> +++ b/hw/display/xenfb.c
->>> @@ -292,6 +292,11 @@ static void xenfb_key_event(void *opaque, int scancode)
->>>      }
->>>      trace_xenfb_key_event(opaque, scancode2linux[scancode], down);
->>>      xenfb_send_key(xenfb, down, scancode2linux[scancode]);
->>> +
->>> +    /* insert an up event for regular down key event */
->>> +    if (down && !xenfb->extended) {
->>> +        xenfb_send_key(xenfb, 0, scancode2linux[scancode]);
->>> +    }
->>>  }
->> This doesn't look to me like the right place to fix this bug.
->> The xenfb key event handler is just one QEMU keyboard backend
->> (in a setup where there are many possible sources of keyboard
->> events: vnc, gtk, SDL, cocoa UI frontends; and many possible
->> sinks: xenfb's key handling, ps2 keyboard emulator, etc etc).
->>
->> We need to be clear in our definition of generic QEMU key
->> events how key repeat is supposed to be handled, and then
->> every consumer and every producer needs to follow that.
->> In the specific case of the vnc UI frontend, we need to
->> also look at what the VNC protocol specifies for key repeat.
->> That then tells us whether the bug to be fixed is in QEMU,
->> or in a particular VNC client.
-> I'm somewhat inclined to say this is a Tigervnc bug. We fixed this
-> same issue in GTK-VNC ~10 years ago. While X11 would send a sequence
-> of press,release,press,release,  GTK would turn this into
-> press,press,press,press,release which broke some VNC servers.
-> So GTK-VNC undoes this optimization from GTK to ensure a full set
-> of press,release,press,release pairs is always sent.
-Tigervnc uses "press press press ... release" now,  this one is actually
-because xenkb couldn't handler these repeat events. I sent a fix to
-front-end side, and this patch here is for old compatibly only,
-otherwise we need to patch all those guest VMs even we run a newer host.
-
-Thanks,
-Liang
-> The official RFC for VNC does not specify any auto-repeat behaviour
+> On 10/27/2017 09:07 PM, Zach Riggle wrote:
+> > Another case that may be more relevant for general QEMU use, is that the
+> > current code fails if the software under test has poor path-handling
+> code.
+> > For example, any of
+> >
+> > - //proc/self/maps
+> > - /proc//self/maps
+> > - /proc/self//maps
+> >
+> > Will all return the non-emulated results.  Those examples are just path
+> > canonicalization issues and could be resolved with e.g.
+> > canonicalize_file_name, but I'm not sure if QEMU allows GNU extensions --
+> > and realpath() is portable.
 >
->   https://tools.ietf.org/html/rfc6143#section-7.5.4
+> By definition, in linux-user, we ARE using glibc; therefore, you are
+> free to use all GNU extensions.
 >
-> The unofficial community authored extension to the RFC suggests
-> taking the press,press,press,release approach to allow servers to
-> distinguish auto-repeat from manual repeat, but I'm not really
-> convinced by that justification really
+> And you'd be surprised at how many non-glibc implementations of
+> realpath() are not POSIX-compliant, even though that is not relevant here.
 >
->   http://vncdotool.readthedocs.io/en/latest/rfbproto.html#keyevent
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org
 >
-> Regards,
-> Daniel
+>
 
+--089e0826516877ab6f055d0421fe
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ping.  What changes do I need to make to land this?<br><div class=3D"gmail_=
+quote"><div dir=3D"ltr">On Sat, Oct 28, 2017 at 12:49 AM Eric Blake &lt;<a =
+href=3D"mailto:eblake@redhat.com">eblake@redhat.com</a>&gt; wrote:<br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1=
+px #ccc solid;padding-left:1ex">On 10/27/2017 09:07 PM, Zach Riggle wrote:<=
+br>
+&gt; Another case that may be more relevant for general QEMU use, is that t=
+he<br>
+&gt; current code fails if the software under test has poor path-handling c=
+ode.<br>
+&gt; For example, any of<br>
+&gt;<br>
+&gt; - //proc/self/maps<br>
+&gt; - /proc//self/maps<br>
+&gt; - /proc/self//maps<br>
+&gt;<br>
+&gt; Will all return the non-emulated results.=C2=A0 Those examples are jus=
+t path<br>
+&gt; canonicalization issues and could be resolved with e.g.<br>
+&gt; canonicalize_file_name, but I&#39;m not sure if QEMU allows GNU extens=
+ions --<br>
+&gt; and realpath() is portable.<br>
+<br>
+By definition, in linux-user, we ARE using glibc; therefore, you are<br>
+free to use all GNU extensions.<br>
+<br>
+And you&#39;d be surprised at how many non-glibc implementations of<br>
+realpath() are not POSIX-compliant, even though that is not relevant here.<=
+br>
+<br>
+--<br>
+Eric Blake, Principal Software Engineer<br>
+Red Hat, Inc.=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0+1-919-301-3266<br>
+Virtualization:=C2=A0 <a href=3D"http://qemu.org" rel=3D"noreferrer" target=
+=3D"_blank">qemu.org</a> | <a href=3D"http://libvirt.org" rel=3D"noreferrer=
+" target=3D"_blank">libvirt.org</a><br>
+<br>
+</blockquote></div>
+
+--089e0826516877ab6f055d0421fe--
 
