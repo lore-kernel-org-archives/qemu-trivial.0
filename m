@@ -1,58 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eAPxR-0004Gl-Uy
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 20:35:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57915)
+	id 1eAQXK-0002QE-ML
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 21:12:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41173)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eAPxP-0004FU-ON
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 20:35:36 -0400
+	(envelope-from <lyan@suse.com>) id 1eAQXH-0002OU-S0
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 21:12:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eAPxO-0001pO-PD
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 20:35:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49164)
+	(envelope-from <lyan@suse.com>) id 1eAQXG-0005G5-G8
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 21:12:39 -0400
+Received: from smtp.nue.novell.com ([195.135.221.5]:56727)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eAPxK-0001mb-8g; Thu, 02 Nov 2017 20:35:30 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3E9DD356C1;
-	Fri,  3 Nov 2017 00:35:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3E9DD356C1
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=ehabkost@redhat.com
-Received: from localhost (ovpn-116-17.gru2.redhat.com [10.97.116.17])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2691D5D757;
-	Fri,  3 Nov 2017 00:35:21 +0000 (UTC)
-Date: Fri, 3 Nov 2017 01:35:20 +0100
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	(Exim 4.71) (envelope-from <lyan@suse.com>)
+	id 1eAQXA-0005DJ-UK; Thu, 02 Nov 2017 21:12:33 -0400
+Received: from emea4-mta.ukb.novell.com ([10.120.13.87])
+	by smtp.nue.novell.com with ESMTP (TLS encrypted);
+	Fri, 03 Nov 2017 02:12:30 +0100
+Received: from [192.168.2.155] (nwb-a10-snat.microfocus.com [10.120.13.201])
+	by emea4-mta.ukb.novell.com with ESMTP (TLS encrypted);
+	Fri, 03 Nov 2017 01:12:24 +0000
+To: "Daniel P. Berrange" <berrange@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Anthony PERARD <anthony.perard@citrix.com>,
+	"open list:X86" <xen-devel@lists.xenproject.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, "Emilio G . Cota" <cota@braap.org>,
-	Eric Blake <eblake@redhat.com>, Richard Henderson <rth@twiddle.net>
-Message-ID: <20171103003520.GF3111@localhost.localdomain>
-References: <20171030181459.1951-1-f4bug@amsat.org>
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <20171102171846.21445-1-lyan@suse.com>
+	<CAFEAcA8JDVKBE1pFssTwFTybT=Kamc+_ra8qRF-DGSpb7=7QZA@mail.gmail.com>
+	<20171102174022.GA32533@redhat.com>
+From: Liang Yan <lyan@suse.com>
+Message-ID: <f6328000-4a61-51bf-8739-9d18976794f7@suse.com>
+Date: Thu, 2 Nov 2017 21:12:22 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:56.0) Gecko/20100101
+	Thunderbird/56.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20171030181459.1951-1-f4bug@amsat.org>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 03 Nov 2017 00:35:25 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [RFC PATCH] vl: only display available
- accelerators
+In-Reply-To: <20171102174022.GA32533@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 195.135.221.5
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/display/xenfb:
+ Simulate auto-repeat key events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,117 +53,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Nov 2017 00:35:36 -0000
+X-List-Received-Date: Fri, 03 Nov 2017 01:12:41 -0000
 
-On Mon, Oct 30, 2017 at 03:14:59PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> examples configuring with '--enable-kvm --disable-tcg'
->=20
-> - before
->=20
->   $ qemu-system-x86_64 -accel help
->   Possible accelerators: kvm, xen, hax, tcg
->=20
->   $ qemu-system-x86_64 -accel tcg
->   qemu-system-x86_64: -machine accel=3Dtcg: No accelerator found
->=20
->   # qemu-system-x86_64 -accel hax
->   qemu-system-x86_64: -machine accel=3Dhax: No accelerator found
->=20
-> - after
->=20
->   $ qemu-system-x86_64 -accel help
->   Possible accelerators:
->     xen
->     kvm
->=20
-> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
-> since RFC:
->   - use much cleaner object_class_get_list(TYPE_ACCEL, false)
->=20
->  vl.c | 39 ++++++++++++++++++++++++++++++++++-----
->  1 file changed, 34 insertions(+), 5 deletions(-)
->=20
-> diff --git a/vl.c b/vl.c
-> index ec299099ff..0f13641715 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -2764,6 +2764,39 @@ static gint machine_class_cmp(gconstpointer a, g=
-constpointer b)
->      exit(!name || !is_help_option(name));
->  }
-> =20
-> +static void accel_list_entry(gpointer data, gpointer user_data)
-> +{
-> +    ObjectClass *oc =3D data;
-> +    const char *typename =3D object_class_get_name(oc);
-> +    int len;
-> +
-> +    if (!qtest_driver() && !g_strcmp0(typename, ACCEL_CLASS_NAME("qtes=
-t"))) {
-> +        return; /* used by test cases */
-> +    }
+This patch doesn't work here, my test environment actually broke, I am
+so sorry for the mess!
+Please just ignore it.
 
-I would prefer to not hardcode the accel name here.  If you want
-qtest to have special behavior, you can add a new field to
-AccelClass to implement that.
+On 11/2/17 1:40 PM, Daniel P. Berrange wrote:
+> On Thu, Nov 02, 2017 at 05:26:50PM +0000, Peter Maydell wrote:
+>> On 2 November 2017 at 17:18, Liang Yan <lyan@suse.com> wrote:
+>>> New tigervnc changes the way to send long pressed key,
+>>> from "down up down up ..." to "down down ... up", it only
+>>> affects xen pv console mode. I send a patch to latest
+>>> kernel side, but it may have a fix in qemu backend for
+>>> back compatible becase guest VMs may use very old kernel.
+>>> This patch inserts an up event after each regular key down
+>>> event to simulate an auto-repeat key event for xen keyboard
+>>> frontend driver.
+>>>
+>>> Signed-off-by: Liang Yan <lyan@suse.com>
+>>> ---
+>>> v2:
+>>> - exclude extended key
+>>> - change log comment
+>>>
+>>>  hw/display/xenfb.c | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+>>> index 8e2547ac05..1bc5b41ab7 100644
+>>> --- a/hw/display/xenfb.c
+>>> +++ b/hw/display/xenfb.c
+>>> @@ -292,6 +292,11 @@ static void xenfb_key_event(void *opaque, int scancode)
+>>>      }
+>>>      trace_xenfb_key_event(opaque, scancode2linux[scancode], down);
+>>>      xenfb_send_key(xenfb, down, scancode2linux[scancode]);
+>>> +
+>>> +    /* insert an up event for regular down key event */
+>>> +    if (down && !xenfb->extended) {
+>>> +        xenfb_send_key(xenfb, 0, scancode2linux[scancode]);
+>>> +    }
+>>>  }
+>> This doesn't look to me like the right place to fix this bug.
+>> The xenfb key event handler is just one QEMU keyboard backend
+>> (in a setup where there are many possible sources of keyboard
+>> events: vnc, gtk, SDL, cocoa UI frontends; and many possible
+>> sinks: xenfb's key handling, ps2 keyboard emulator, etc etc).
+You are right, this is not a good place. Sorry did not think this much
+at first time.
+>> We need to be clear in our definition of generic QEMU key
+>> events how key repeat is supposed to be handled, and then
+>> every consumer and every producer needs to follow that.
+The is good, but I do not think it could be done easily.
+>> In the specific case of the vnc UI frontend, we need to
+>> also look at what the VNC protocol specifies for key repeat.
+>> That then tells us whether the bug to be fixed is in QEMU,
+>> or in a particular VNC client.
+> I'm somewhat inclined to say this is a Tigervnc bug. We fixed this
+> same issue in GTK-VNC ~10 years ago. While X11 would send a sequence
+> of press,release,press,release,  GTK would turn this into
+> press,press,press,press,release which broke some VNC servers.
+> So GTK-VNC undoes this optimization from GTK to ensure a full set
+> of press,release,press,release pairs is always sent.
+yeah, I saw both here and there. This one looks in a reverse way.
+> The official RFC for VNC does not specify any auto-repeat behaviour
+>
+>   https://tools.ietf.org/html/rfc6143#section-7.5.4
+>
+> The unofficial community authored extension to the RFC suggests
+> taking the press,press,press,release approach to allow servers to
+Kernel input subsystem looks use this way now.
 
-However, I don't think I agree we should hide qtest from the
-user: it is accepted on the command-line, so why should we lie?
-Why not add a description field and indicate that qtest is useful
-only for testing?
+Best,
+Liang
+> distinguish auto-repeat from manual repeat, but I'm not really
+> convinced by that justification really
+>
+>   http://vncdotool.readthedocs.io/en/latest/rfbproto.html#keyevent
+>
+> Regards,
+> Daniel
 
-> +
-> +    len =3D strlen(typename) - strlen("-" TYPE_ACCEL);
-
-You can use AccelClass::name here.
-
-> +    if (len > 0) {
-> +        error_printf("  %.*s\n", len, typename);
-> +    }
-> +}
-> +
-> +static void accel_parse(const char *name, QemuOpts *accel_opts)
-> +{
-> +    const char *optarg =3D qemu_opt_get(accel_opts, "accel");
-> +    GSList *list;
-> +
-> +    if (!is_help_option(optarg)) {
-> +        return;
-> +    }
-> +
-> +    list =3D object_class_get_list(TYPE_ACCEL, false);
-> +    error_printf("Possible accelerators:\n");
-> +    g_slist_foreach(list, accel_list_entry, NULL);
-> +    g_slist_free(list);
-> +
-> +    exit(0);
-> +}
-> +
->  void qemu_add_exit_notifier(Notifier *notify)
->  {
->      notifier_list_add(&exit_notifiers, notify);
-> @@ -3881,11 +3914,7 @@ int main(int argc, char **argv, char **envp)
->              case QEMU_OPTION_accel:
->                  accel_opts =3D qemu_opts_parse_noisily(qemu_find_opts(=
-"accel"),
->                                                       optarg, true);
-> -                optarg =3D qemu_opt_get(accel_opts, "accel");
-> -                if (!optarg || is_help_option(optarg)) {
-> -                    error_printf("Possible accelerators: kvm, xen, hax=
-, tcg\n");
-> -                    exit(0);
-> -                }
-> +                accel_parse(optarg, accel_opts);
->                  opts =3D qemu_opts_create(qemu_find_opts("machine"), N=
-ULL,
->                                          false, &error_abort);
->                  qemu_opt_set(opts, "accel", optarg, &error_abort);
-> --=20
-> 2.15.0.rc2
->=20
-
---=20
-Eduardo
 
