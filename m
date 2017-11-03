@@ -1,67 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eANDA-00033S-3K
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 17:39:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49484)
+	id 1eAPxR-0004Gl-Uy
+	for mharc-qemu-trivial@gnu.org; Thu, 02 Nov 2017 20:35:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <domen.puncer@gmail.com>) id 1eAND7-00031r-Vz
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 17:39:39 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1eAPxP-0004FU-ON
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 20:35:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <domen.puncer@gmail.com>) id 1eAND7-0000Av-0d
-	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 17:39:38 -0400
-Received: from mail-pg0-x242.google.com ([2607:f8b0:400e:c05::242]:53652)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <domen.puncer@gmail.com>)
-	id 1eAND4-00009o-Hc; Thu, 02 Nov 2017 17:39:34 -0400
-Received: by mail-pg0-x242.google.com with SMTP id s2so731305pge.10;
-	Thu, 02 Nov 2017 14:39:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=X3Z+eov/6cLCKQoU5LguHn/ITqQmklfYdabWYXVWZKw=;
-	b=FfH8oE010h9RyUlXMZ6NWkED9/6tjmtBz2QwGX43OsskRJSca2Yg30qDm/u5gF/Yr5
-	qAhPHKQoEAO4+hCzNkGx8JZFlkaU2oKt/cDYb5Ur/hMJwGWSszgaVvJAeXOVjzKqmcmQ
-	pP+RBLQn1oftMl9hE5DrPy2/4YiP7Oi8yQUlsMWJkvQArTuPUxkYA4Q1gd+6pCCmqlkT
-	JsX2L1E3kmB8oUjK/6vDvZwWdrQOCuH5qooZEdAnjju7oZsUz38GCFkPE+Ush/Dgucv4
-	32q1XRuMFflhdVQe1GU0hf+gr8O6PLJZ6wMKFUdwH8BxcBq/chHmnDqsvsaBjq2umh8O
-	ydhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=X3Z+eov/6cLCKQoU5LguHn/ITqQmklfYdabWYXVWZKw=;
-	b=CXQxcg9nVkCNlvRBOYhT5LUoWkZkUvhPYOwfWoMXhJi+Qe6w0n3KINp5zHa2O1J5M9
-	XqKsd0Jw/BPLjynCwMOu2FqApwsb0KAr4V54RqRuROGWKHqj1rTaG7MpjeNIqopn/H7k
-	i0iBnOxbEFk9uBaY/gwjhESP4fVgV6/hIyNiUGksFfhnN0NmVlLS/OMoOxixkU3UxWsp
-	ARQnUsUfl2NtpnfAgv/mPTfg239a5mavi+3uuwYJStjY5wEesA3mBbwOYSgctjDarSYi
-	C7PgfxXXkTtz67frYwFMM3I22EfUOcNsdYM7W8sXA0370l9EnYwgRgj+MngGfsvQMKiI
-	5uRw==
-X-Gm-Message-State: AMCzsaUjRbJa64OorBAWbv45E3BX/UfYUVUrBD+OgPN039HaibykwAvh
-	OrYRSTRy/mw0w5/ty7ABtIgfYKpK0iFnrY9Sao8=
-X-Google-Smtp-Source: ABhQp+Q9PculBw6WN46NfKupGRWVscEaoRK4+DG09zQ5Ey71rlUNvZIt1/gNCCLUS3lSNiaXAVgumpXA+T+dsw8COGk=
-X-Received: by 10.99.99.71 with SMTP id x68mr5076275pgb.334.1509658772950;
-	Thu, 02 Nov 2017 14:39:32 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1eAPxO-0001pO-PD
+	for qemu-trivial@nongnu.org; Thu, 02 Nov 2017 20:35:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49164)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1eAPxK-0001mb-8g; Thu, 02 Nov 2017 20:35:30 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3E9DD356C1;
+	Fri,  3 Nov 2017 00:35:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 3E9DD356C1
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=ehabkost@redhat.com
+Received: from localhost (ovpn-116-17.gru2.redhat.com [10.97.116.17])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2691D5D757;
+	Fri,  3 Nov 2017 00:35:21 +0000 (UTC)
+Date: Fri, 3 Nov 2017 01:35:20 +0100
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, "Emilio G . Cota" <cota@braap.org>,
+	Eric Blake <eblake@redhat.com>, Richard Henderson <rth@twiddle.net>
+Message-ID: <20171103003520.GF3111@localhost.localdomain>
+References: <20171030181459.1951-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Sender: domen.puncer@gmail.com
-Received: by 10.100.164.97 with HTTP; Thu, 2 Nov 2017 14:39:32 -0700 (PDT)
-In-Reply-To: <70579e6d-0fb2-c6d8-9541-0eea53272db2@amsat.org>
-References: <CAB1b2sgGrJbpC5vDMJ2D2kPms_4cGmyfMjpcww4nj6rfNZaF9Q@mail.gmail.com>
-	<70579e6d-0fb2-c6d8-9541-0eea53272db2@amsat.org>
-From: Domen Puncer Kugler <domen@cba.si>
-Date: Thu, 2 Nov 2017 21:39:32 +0000
-X-Google-Sender-Auth: VCqp4b7nEbLPHjJQWEScL-cdNSs
-Message-ID: <CAB1b2shHRD1RSSMvO+QgwFRQKwMVuj8+hASACNquGNtC3tSgCw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
-	Konrad Frederic <fred.konrad@greensocs.com>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20171030181459.1951-1-f4bug@amsat.org>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 03 Nov 2017 00:35:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::242
-Subject: Re: [Qemu-trivial] 
-	=?utf-8?q?=5BPATCH=5D_hw/timer/armv7m=5Fsystick?=
-	=?utf-8?q?=3A_Fix_default_system=5Fclock=5Fscale=2E_Resolves_SIGFP?=
-	=?utf-8?q?E_divide_by_zero=2E=EF=BF=BC?=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [RFC PATCH] vl: only display available
+ accelerators
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,45 +64,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Nov 2017 21:39:39 -0000
+X-List-Received-Date: Fri, 03 Nov 2017 00:35:36 -0000
 
-On 2 November 2017 at 03:31, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
-> Please have a look at the Contribute/SubmitAPatch guidelines for QEMU,
-> in particular about CC'ing the maintainers so your patch won't get lost:
+On Mon, Oct 30, 2017 at 03:14:59PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> examples configuring with '--enable-kvm --disable-tcg'
+>=20
+> - before
+>=20
+>   $ qemu-system-x86_64 -accel help
+>   Possible accelerators: kvm, xen, hax, tcg
+>=20
+>   $ qemu-system-x86_64 -accel tcg
+>   qemu-system-x86_64: -machine accel=3Dtcg: No accelerator found
+>=20
+>   # qemu-system-x86_64 -accel hax
+>   qemu-system-x86_64: -machine accel=3Dhax: No accelerator found
+>=20
+> - after
+>=20
+>   $ qemu-system-x86_64 -accel help
+>   Possible accelerators:
+>     xen
+>     kvm
+>=20
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> ---
+> since RFC:
+>   - use much cleaner object_class_get_list(TYPE_ACCEL, false)
+>=20
+>  vl.c | 39 ++++++++++++++++++++++++++++++++++-----
+>  1 file changed, 34 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/vl.c b/vl.c
+> index ec299099ff..0f13641715 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -2764,6 +2764,39 @@ static gint machine_class_cmp(gconstpointer a, g=
+constpointer b)
+>      exit(!name || !is_help_option(name));
+>  }
+> =20
+> +static void accel_list_entry(gpointer data, gpointer user_data)
+> +{
+> +    ObjectClass *oc =3D data;
+> +    const char *typename =3D object_class_get_name(oc);
+> +    int len;
+> +
+> +    if (!qtest_driver() && !g_strcmp0(typename, ACCEL_CLASS_NAME("qtes=
+t"))) {
+> +        return; /* used by test cases */
+> +    }
 
-Apologies for that.
-Thanks
+I would prefer to not hardcode the accel name here.  If you want
+qtest to have special behavior, you can add a new field to
+AccelClass to implement that.
 
->> Netduino platform code does not provide a way to set
->> system_clock_scale, so it remains 0.
->> This causes a divide by zero, when emulated code asks systick for
->> current timer value:
->>     (s->tick - (t + 1)) / systick_scale(s)) + 1;
->> Patch fixes this by providing a default value.
->
-> See the thread around this reply:
-> http://lists.nongnu.org/archive/html/qemu-devel/2017-06/msg06678.html
+However, I don't think I agree we should hide qtest from the
+user: it is accepted on the command-line, so why should we lie?
+Why not add a description field and indicate that qtest is useful
+only for testing?
 
-I see. Personally, I don't really mind waiting for proper support.
-It's a solved problem for me now (SYSTICK_CLKSOURCE =3D 0 [external] for
-qemu target), but I suspect it might also bite someone else.
-Are there any downsides to the simple fix?
+> +
+> +    len =3D strlen(typename) - strlen("-" TYPE_ACCEL);
 
-For background:
+You can use AccelClass::name here.
 
-arm arm v7m says:
-[2] R/W CLKSOURCE 0: clock source is (optional) external reference clock
-                  1: core clock used for SysTick
-                  If no external clock provided, this bit will read as
-1 and ignore writes.
-// note that the optional case actually works fine with qemu, core
-clock case doesn't
+> +    if (len > 0) {
+> +        error_printf("  %.*s\n", len, typename);
+> +    }
+> +}
+> +
+> +static void accel_parse(const char *name, QemuOpts *accel_opts)
+> +{
+> +    const char *optarg =3D qemu_opt_get(accel_opts, "accel");
+> +    GSList *list;
+> +
+> +    if (!is_help_option(optarg)) {
+> +        return;
+> +    }
+> +
+> +    list =3D object_class_get_list(TYPE_ACCEL, false);
+> +    error_printf("Possible accelerators:\n");
+> +    g_slist_foreach(list, accel_list_entry, NULL);
+> +    g_slist_free(list);
+> +
+> +    exit(0);
+> +}
+> +
+>  void qemu_add_exit_notifier(Notifier *notify)
+>  {
+>      notifier_list_add(&exit_notifiers, notify);
+> @@ -3881,11 +3914,7 @@ int main(int argc, char **argv, char **envp)
+>              case QEMU_OPTION_accel:
+>                  accel_opts =3D qemu_opts_parse_noisily(qemu_find_opts(=
+"accel"),
+>                                                       optarg, true);
+> -                optarg =3D qemu_opt_get(accel_opts, "accel");
+> -                if (!optarg || is_help_option(optarg)) {
+> -                    error_printf("Possible accelerators: kvm, xen, hax=
+, tcg\n");
+> -                    exit(0);
+> -                }
+> +                accel_parse(optarg, accel_opts);
+>                  opts =3D qemu_opts_create(qemu_find_opts("machine"), N=
+ULL,
+>                                          false, &error_abort);
+>                  qemu_opt_set(opts, "accel", optarg, &error_abort);
+> --=20
+> 2.15.0.rc2
+>=20
 
-stm32 docs say (my target is stm32/netduino2):
-The RCC feeds the external clock of the Cortex System Timer (SysTick)
-with the AHB clock (HCLK) divided by 8. The SysTick can work either
-with this clock or with the Cortex clock (HCLK), configurable in the
-SysTick control and status register.
-The timer clock frequencies are automatically set by hardware.
+--=20
+Eduardo
 
