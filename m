@@ -1,82 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eBmj4-0004Nh-Ae
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Nov 2017 14:06:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51266)
+	id 1eBndD-0005YI-8p
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Nov 2017 15:04:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43178)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eBmj1-0004MC-W8
-	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 14:06:25 -0500
+	(envelope-from <voipio@kos.to>) id 1eBndC-0005Xs-1W
+	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 15:04:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eBmiy-0002L9-1s
-	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 14:06:23 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:54832)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eBmix-0002Kt-U9; Mon, 06 Nov 2017 14:06:19 -0500
-Received: by mail-qk0-x242.google.com with SMTP id n5so12262845qke.11;
-	Mon, 06 Nov 2017 11:06:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=zDYMkiOa0AmEJS/iNxr/I7LVc/oezcxrGShEsv0HhBY=;
-	b=qCFdiyOcReprokX6KxVNiYSotjDQsbW9GUBhxm7/fPCkBjhkFEWMJD3Mc4hlBo4sub
-	ieuf/B/pKbOu2O52CtNmWv0kVG5P03zlHy93AXcsAKfRV6CEp4t47gh/Sf9+s8H0ZVqI
-	2hzhTLj5DMOvXRbBBFHUg2imoHfvwDtN0w7BeJcoALKpcF1S3oXOiZysKw5mry+kIfRZ
-	bWM+nmm6AqQSboY9ejQmzIz8788sH17kmLXQai75yreDDLT6cljLHoIBldcKTOia1w+D
-	bKr6JVCvWEYEoMSe6Kc7mWYM6AR13JM2IZ0fIyemd4CoI/zKpIdGp0N13I+kPoYfkdJ9
-	544A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=zDYMkiOa0AmEJS/iNxr/I7LVc/oezcxrGShEsv0HhBY=;
-	b=JaOFipskDYZsy1XLv3MaKMJ0qhkpggDMu3opuxTtic1/FdKU0IOMQmAlLweAp35koO
-	uZpjspyvjtNQQWezU2IkldWWwyIIigzlsLMfjqe5PLZFTjSKFkvYge0mvoe1uGcH3We7
-	UP+6Bum1KlH5F5UG04h1wd4FVVVm4hjHWXvO8KJSPXT5au69rzY7UMP1u5sDeXAkdmkd
-	W9PMiG1cLbanqegLmzTHqxX0fIrbwA8fXCWh6s9PFy6coJ3wNZQGZFzV6wQf+gagSCpj
-	Z/pML0Urkg2INR9vlngINLUz4XesB7fBdd6ch2pR1787InM7XWX9dN4FPd3FCEamx48K
-	fMhQ==
-X-Gm-Message-State: AJaThX6KVhzsiTEe3KYFMXEux+My+C1V0TpmyI/d2AjUP9ljeAPZQ3kv
-	ZjBiMekUpJniTeg7JuWPlo429w5z
-X-Google-Smtp-Source: ABhQp+RcvGGYrremI+O5qJk6rEWjvXxkTTVd82lDTug3bPbU9WixVtOWt/O3/UL6McrSIrJz8fzd7w==
-X-Received: by 10.55.27.70 with SMTP id b67mr10191283qkb.356.1509995179224;
-	Mon, 06 Nov 2017 11:06:19 -0800 (PST)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id s27sm9251393qtj.3.2017.11.06.11.06.15
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 Nov 2017 11:06:18 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>,
-	Kamil Rytarowski <kamil@netbsd.org>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>
-References: <20171006235023.11952-1-f4bug@amsat.org>
-	<20171006235023.11952-64-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <d09209e7-5221-5b1e-dc17-1db05b84c614@amsat.org>
-Date: Mon, 6 Nov 2017 16:06:14 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	(envelope-from <voipio@kos.to>) id 1eBndB-0001IJ-2S
+	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 15:04:26 -0500
+Received: from jessie.kos.to ([212.47.231.226]:50012 helo=pilvi.kos.to)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <voipio@kos.to>)
+	id 1eBnd5-0001GX-Rm; Mon, 06 Nov 2017 15:04:19 -0500
+Received: from kos.to (jessie.kos.to [212.47.231.226])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by pilvi.kos.to (Postfix) with ESMTPSA id 2BFA12C19BE;
+	Mon,  6 Nov 2017 20:04:18 +0000 (UTC)
+Received: (nullmailer pid 20775 invoked by uid 1000);
+	Mon, 06 Nov 2017 20:04:17 -0000
+Date: Mon, 6 Nov 2017 20:04:17 +0000
+From: Riku Voipio <riku.voipio@iki.fi>
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20171106200417.GC19281@kos.to>
+References: <1508364103-16131-1-git-send-email-cota@braap.org>
+	<1508364103-16131-3-git-send-email-cota@braap.org>
 MIME-Version: 1.0
-In-Reply-To: <20171006235023.11952-64-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-trivial] [PATCH 63/88] bsd-user/syscall: fix a memory
- leak on EFAULT, use g_new()
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1508364103-16131-3-git-send-email-cota@braap.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.47.231.226
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] linux-user: fix
+ 'finshed' typo in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,45 +47,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Nov 2017 19:06:25 -0000
+X-List-Received-Date: Mon, 06 Nov 2017 20:04:27 -0000
 
-Hi Michael,
+Applied to linux-user, thanks
 
-Since there is no bsd-user maintainers, can you take this single patch
-for 2.11? It fixes a memory leak.
+Riku
 
-Regards,
-
-Phil.
-
-On 10/06/2017 08:49 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Wed, Oct 18, 2017 at 06:01:41PM -0400, Emilio G. Cota wrote:
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
 > ---
-> Kamil are you interested in maintaining bsd-user? :)
->  
->  bsd-user/syscall.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  linux-user/syscall.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
-> index 66492aaf5d..9120cea61e 100644
-> --- a/bsd-user/syscall.c
-> +++ b/bsd-user/syscall.c
-> @@ -227,7 +227,7 @@ static abi_long do_freebsd_sysctl(abi_ulong namep, int32_t namelen, abi_ulong ol
->      void *hnamep, *holdp, *hnewp = NULL;
->      size_t holdlen;
->      abi_ulong oldlen = 0;
-> -    int32_t *snamep = g_malloc(sizeof(int32_t) * namelen), *p, *q, i;
-> +    int32_t *snamep, *p, *q, i;
->      uint32_t kind = 0;
->  
->      if (oldlenp)
-> @@ -239,6 +239,7 @@ static abi_long do_freebsd_sysctl(abi_ulong namep, int32_t namelen, abi_ulong ol
->      if (!(holdp = lock_user(VERIFY_WRITE, oldp, oldlen, 0)))
->          return -TARGET_EFAULT;
->      holdlen = oldlen;
-> +    snamep = g_new(int32_t, namelen);
->      for (p = hnamep, q = snamep, i = 0; i < namelen; p++, i++)
->         *q++ = tswap32(*p);
->      oidfmt(snamep, namelen, NULL, &kind);
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 9d4cc4c..47b4a79 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -6231,7 +6231,7 @@ static void *clone_func(void *arg)
+>      pthread_mutex_lock(&info->mutex);
+>      pthread_cond_broadcast(&info->cond);
+>      pthread_mutex_unlock(&info->mutex);
+> -    /* Wait until the parent has finshed initializing the tls state.  */
+> +    /* Wait until the parent has finished initializing the tls state.  */
+>      pthread_mutex_lock(&clone_lock);
+>      pthread_mutex_unlock(&clone_lock);
+>      cpu_loop(env);
+> -- 
+> 2.7.4
+> 
 > 
 
