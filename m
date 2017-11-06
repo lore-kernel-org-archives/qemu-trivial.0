@@ -1,36 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eAj3Y-0002X1-RS
-	for mharc-qemu-trivial@gnu.org; Fri, 03 Nov 2017 16:59:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50195)
+	id 1eBkZ4-00012L-Re
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Nov 2017 11:47:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pixo@polepetko.eu>) id 1eAgRE-0004VT-Hm
-	for qemu-trivial@nongnu.org; Fri, 03 Nov 2017 14:11:29 -0400
+	(envelope-from <Yongbok.Kim@mips.com>) id 1eBjzU-00010j-2w
+	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 11:11:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pixo@polepetko.eu>) id 1eAgRA-0007X4-GM
-	for qemu-trivial@nongnu.org; Fri, 03 Nov 2017 14:11:28 -0400
-Received: from [77.247.229.177] (port=41210 helo=neth.polepetko.eu)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pixo@polepetko.eu>) id 1eAgRA-0007WS-5N
-	for qemu-trivial@nongnu.org; Fri, 03 Nov 2017 14:11:24 -0400
-Received: from neth.polepetko.eu (localhost [127.0.0.1])
-	by neth.polepetko.eu (Postfix) with ESMTP id 02D2359A91;
-	Fri,  3 Nov 2017 18:31:39 +0100 (CET)
-Received: from localhost.localdomain (unknown [77.247.229.177])
-	(Authenticated sender: pixo@polepetko.eu)
-	by neth.polepetko.eu (Postfix) with ESMTPSA;
-	Fri,  3 Nov 2017 18:31:39 +0100 (CET)
-From: Stanislav Lanci <pixo@polepetko.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Stanislav Lanci <pixo@polepetko.eu>
-Date: Fri,  3 Nov 2017 18:30:37 +0100
-Message-Id: <20171103173037.17012-1-pixo@polepetko.eu>
+	(envelope-from <Yongbok.Kim@mips.com>) id 1eBjzP-00049I-Vd
+	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 11:11:12 -0500
+Received: from 19pmail.ess.barracuda.com ([64.235.150.244]:58893)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Yongbok.Kim@mips.com>)
+	id 1eBjzP-00047k-Ol; Mon, 06 Nov 2017 11:11:07 -0500
+Received: from MIPSMAIL01.mipstec.com (mailrelay.mips.com [12.201.5.28]) by
+	mx2.ess.sfj.cudaops.com (version=TLSv1.2
+	cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NO);
+	Mon, 06 Nov 2017 16:10:46 +0000
+Received: from ubuntu1404.mipstec.com (192.168.40.32) by
+	MIPSMAIL01.mipstec.com (10.20.43.31) with Microsoft SMTP Server (TLS)
+	id 14.3.361.1; Mon, 6 Nov 2017 08:08:42 -0800
+From: Yongbok Kim <yongbok.kim@mips.com>
+To: <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Paul Burton
+	<paul.burton@imgtec.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Tokarev <mjt@tls.msk.ru>, Yongbok Kim <yongbok.kim@imgtec.com>,
+	<qemu-trivial@nongnu.org>
+Date: Mon, 6 Nov 2017 16:07:44 +0000
+Message-ID: <20171106160744.14399-4-yongbok.kim@mips.com>
 X-Mailer: git-send-email 2.15.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 77.247.229.177
-X-Mailman-Approved-At: Fri, 03 Nov 2017 16:59:11 -0400
-Subject: [Qemu-trivial] [PATCH] AMD Processor Topology Information
+In-Reply-To: <20171106160744.14399-1-yongbok.kim@mips.com>
+References: <20171106160744.14399-1-yongbok.kim@mips.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [192.168.40.32]
+X-BESS-ID: 1509984634-298553-1542-293672-6
+X-BESS-VER: 2017.12-r1710252241
+X-BESS-Apparent-Source-IP: 12.201.5.28
+X-BESS-Outbound-Spam-Score: 0.00
+X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 3.2.2.186636
+	Rule breakdown below
+	pts rule name              description
+	---- ---------------------- --------------------------------
+	0.00 MAILTO_TO_SPAM_ADDR    META: Includes a link 
+	to a likely spammer email 
+	0.00 BSF_BESS_OUTBOUND      META: BESS Outbound 
+X-BESS-Outbound-Spam-Status: SCORE=0.00 using account:ESS59374 scores of
+	KILL_LEVEL=7.0 tests=MAILTO_TO_SPAM_ADDR, BSF_BESS_OUTBOUND
+X-BESS-BRTS-Status: 1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 64.235.150.244
+X-Mailman-Approved-At: Mon, 06 Nov 2017 11:47:57 -0500
+Subject: [Qemu-trivial] [PULL v2 3/3] MAINTAINERS: Update Paul Burton's
+ email address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -42,195 +65,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 Nov 2017 18:11:29 -0000
+X-List-Received-Date: Mon, 06 Nov 2017 16:11:13 -0000
 
-V2:
-Adds information about cache size and topology on leaf 0x8000001D for family 17h
-Without the added cache topology guest with SMT suffers latency problems
+From: Paul Burton <paul.burton@imgtec.com>
 
-Add CPUID 0x8000001E for describing AMD Processor Topology Information
-Disables warning about smt for 17h family of AMD CPUs
+Update my email address from paul.burton@imgtec.com to
+paul.burton@mips.com, since MIPS will soon no longer be a part of
+Imagination Technologies & as such the @imgtec.com address will soon
+cease to function.
 
-Signed-off-by: Stanislav Lanci <pixo@polepetko.eu>
+A mapping is added in .mailmap such that git reports the new @mips.com
+address, and get_maintainer.pl in turn reports it when examining git
+history. Whilst here add a mapping for my also-defunct
+paul@archlinuxmips.org email address too.
+
+Signed-off-by: Paul Burton <paul.burton@imgtec.com>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Yongbok Kim <yongbok.kim@imgtec.com>
+Cc: Yongbok Kim <yongbok.kim@mips.com>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+[Yongbok Kim:
+  Updated message subject]
+Signed-off-by: Yongbok Kim <yongbok.kim@imgtec.com>
 ---
- target/i386/cpu.c | 93 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
- target/i386/kvm.c | 28 +++++++++++++++--
- 2 files changed, 117 insertions(+), 4 deletions(-)
+ .mailmap    | 2 ++
+ MAINTAINERS | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index ddc45abd70..1545e3fe31 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -113,7 +113,9 @@
- /* L1 instruction cache: */
- #define L1I_LINE_SIZE         64
- #define L1I_ASSOCIATIVITY      8
-+#define L1I_ASSOC_AMD_ZEN      4
- #define L1I_SETS              64
-+#define L1I_SETS_AMD_ZEN     256
- #define L1I_PARTITIONS         1
- /* Size = LINE_SIZE*ASSOCIATIVITY*SETS*PARTITIONS = 32KiB */
- #define L1I_DESCRIPTOR CPUID_2_L1I_32KB_8WAY_64B
-@@ -125,7 +127,9 @@
- /* Level 2 unified cache: */
- #define L2_LINE_SIZE          64
- #define L2_ASSOCIATIVITY      16
-+#define L2_ASSOC_AMD_ZEN       8
- #define L2_SETS             4096
-+#define L2_SETS_AMD_ZEN     1024
- #define L2_PARTITIONS          1
- /* Size = LINE_SIZE*ASSOCIATIVITY*SETS*PARTITIONS = 4MiB */
- /*FIXME: CPUID leaf 2 descriptor is inconsistent with CPUID leaf 4 */
-@@ -142,6 +146,7 @@
- #define L3_N_LINE_SIZE         64
- #define L3_N_ASSOCIATIVITY     16
- #define L3_N_SETS           16384
-+#define L3_N_SETS_AMD_ZEN    4096
- #define L3_N_PARTITIONS         1
- #define L3_N_DESCRIPTOR CPUID_2_L3_16MB_16WAY_64B
- #define L3_N_LINES_PER_TAG      1
-@@ -3072,6 +3077,91 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
-             *edx = 0;
-         }
-         break;
-+    case 0x8000001D: /* AMD TOPOEXT cache info for ZEN */
-+        if (cpu->cache_info_passthrough) {
-+            host_cpuid(index, count, eax, ebx, ecx, edx);
-+            break;
-+        } else if ((env->cpuid_version & 0xFF00F00) == 0x800F00) {
-+            *eax = 0;
-+            switch (count) {
-+            case 0: /* L1 dcache info */
-+                *eax |= CPUID_4_TYPE_DCACHE | \
-+                        CPUID_4_LEVEL(1) | \
-+                        CPUID_4_SELF_INIT_LEVEL | \
-+                        ((cs->nr_threads - 1) << 14);
-+                *ebx = (L1D_LINE_SIZE - 1) | \
-+                       ((L1D_PARTITIONS - 1) << 12) | \
-+                       ((L1D_ASSOCIATIVITY - 1) << 22);
-+                *ecx = L1D_SETS - 1;
-+                *edx = 0;
-+                break;
-+            case 1: /* L1 icache info */
-+                *eax |= CPUID_4_TYPE_ICACHE | \
-+                        CPUID_4_LEVEL(1) | \
-+                        CPUID_4_SELF_INIT_LEVEL | \
-+                        ((cs->nr_threads - 1) << 14);
-+                *ebx = (L1I_LINE_SIZE - 1) | \
-+                       ((L1I_PARTITIONS - 1) << 12) | \
-+                       ((L1I_ASSOC_AMD_ZEN - 1) << 22);
-+                *ecx = L1I_SETS_AMD_ZEN - 1;
-+                *edx = 0;
-+                break;
-+            case 2: /* L2 cache info */
-+                *eax |= CPUID_4_TYPE_UNIFIED | \
-+                        CPUID_4_LEVEL(2) | \
-+                        CPUID_4_SELF_INIT_LEVEL | \
-+                        ((cs->nr_threads - 1) << 14);
-+                *ebx = (L2_LINE_SIZE - 1) | \
-+                       ((L2_PARTITIONS - 1) << 12) | \
-+                       ((L2_ASSOC_AMD_ZEN - 1) << 22);
-+                *ecx = L2_SETS_AMD_ZEN - 1;
-+                *edx = CPUID_4_INCLUSIVE;
-+                break;
-+            case 3: /* L3 cache info */
-+                if (!cpu->enable_l3_cache) {
-+                    *eax = 0;
-+                    *ebx = 0;
-+                    *ecx = 0;
-+                    *edx = 0;
-+                    break;
-+                }
-+                *eax |= CPUID_4_TYPE_UNIFIED | \
-+                        CPUID_4_LEVEL(3) | \
-+                        CPUID_4_SELF_INIT_LEVEL | \
-+                        ((cs->nr_cores * cs->nr_threads - 1) << 14);
-+                *ebx = (L3_N_LINE_SIZE - 1) | \
-+                       ((L3_N_PARTITIONS - 1) << 12) | \
-+                       ((L3_N_ASSOCIATIVITY - 1) << 22);
-+                *ecx = L3_N_SETS_AMD_ZEN - 1;
-+                *edx = CPUID_4_NO_INVD_SHARING;
-+                break;
-+            default: /* end of info */
-+                *eax = 0;
-+                *ebx = 0;
-+                *ecx = 0;
-+                *edx = 0;
-+                break;
-+            }
-+        } else {
-+            *eax = 0;
-+            *ebx = 0;
-+            *ecx = 0;
-+            *edx = 0;
-+        }
-+        break;
-+    case 0x8000001E: /* AMD TOPOEXT cpu topology info for ZEN */
-+        if ((env->cpuid_version & 0xFF00F00) == 0x800F00) {
-+            *eax = cpu->apic_id;
-+            *ebx = (cs->nr_threads - 1) << 8 | cpu->core_id;
-+            *ecx = cpu->socket_id;
-+            *edx = 0;
-+        } else {
-+            *eax = 0;
-+            *ebx = 0;
-+            *ecx = 0;
-+            *edx = 0;
-+        }
-+        break;
-     case 0xC0000000:
-         *eax = env->cpuid_xlevel2;
-         *ebx = 0;
-@@ -3742,7 +3832,8 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
-      * NOTE: the following code has to follow qemu_init_vcpu(). Otherwise
-      * cs->nr_threads hasn't be populated yet and the checking is incorrect.
-      */
--    if (!IS_INTEL_CPU(env) && cs->nr_threads > 1 && !ht_warned) {
-+    if (!IS_INTEL_CPU(env) && cs->nr_threads > 1 && !ht_warned && \
-+       (env->cpuid_version & 0xFF00F00) != 0x800F00) {
-         error_report("AMD CPU doesn't support hyperthreading. Please configure"
-                      " -smp options properly.");
-         ht_warned = true;
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 6db7783edc..d6b4e1ae74 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -869,9 +869,31 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         }
-         c = &cpuid_data.entries[cpuid_i++];
- 
--        c->function = i;
--        c->flags = 0;
--        cpu_x86_cpuid(env, i, 0, &c->eax, &c->ebx, &c->ecx, &c->edx);
-+        switch (i) {
-+        case 0x8000001d:
-+            for (j = 0; ; j++) {
-+                c->function = i;
-+                c->flags = KVM_CPUID_FLAG_SIGNIFCANT_INDEX;
-+                c->index = j;
-+                cpu_x86_cpuid(env, i, j, &c->eax, &c->ebx, &c->ecx, &c->edx);
-+
-+                if (c->eax == 0) {
-+                    break;
-+                }
-+                if (cpuid_i == KVM_MAX_CPUID_ENTRIES) {
-+                    fprintf(stderr, "cpuid_data is full, no space for "
-+                            "cpuid(eax:0x%x,ecx:0x%x)\n", i, j);
-+                    abort();
-+                }
-+                c = &cpuid_data.entries[cpuid_i++];
-+            }
-+            break;
-+        default:
-+            c->function = i;
-+            c->flags = 0;
-+            cpu_x86_cpuid(env, i, 0, &c->eax, &c->ebx, &c->ecx, &c->edx);
-+            break;
-+        }
-     }
- 
-     /* Call Centaur's CPUID instructions they are supported. */
--- 
-2.15.0
+diff --git a/.mailmap b/.mailmap
+index 5aec1bd..ee81ac8 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -11,6 +11,8 @@ Fabrice Bellard <fabrice@bellard.org> bellard <bellard@c0=
+46a42c-6fe2-441c-8c8c-7
+ James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+ Jocelyn Mayer <l_indien@magic.fr> j_mayer <j_mayer@c046a42c-6fe2-441c-8c8c=
+-71466251a162>
+ Paul Brook <paul@codesourcery.com> pbrook <pbrook@c046a42c-6fe2-441c-8c8c-=
+71466251a162>
++Paul Burton <paul.burton@mips.com> <paul.burton@imgtec.com>
++Paul Burton <paul.burton@mips.com> <paul@archlinuxmips.org>
+ Thiemo Seufer <ths@networkno.de> ths <ths@c046a42c-6fe2-441c-8c8c-71466251=
+a162>
+ malc <av1474@comtv.ru> malc <malc@c046a42c-6fe2-441c-8c8c-71466251a162>
+ # There is also a:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index abbf2b4..0cd4d02 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -642,7 +642,7 @@ S: Odd Fixes
+ F: hw/mips/mips_fulong2e.c
+=20
+ Boston
+-M: Paul Burton <paul.burton@imgtec.com>
++M: Paul Burton <paul.burton@mips.com>
+ S: Maintained
+ F: hw/core/loader-fit.c
+ F: hw/mips/boston.c
+--=20
+2.4.5
 
 
