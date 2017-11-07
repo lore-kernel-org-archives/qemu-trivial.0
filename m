@@ -1,56 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eC0cp-0002XY-ST
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Nov 2017 04:56:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44636)
+	id 1eC23X-00023x-BZ
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Nov 2017 06:28:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1eC0cn-0002UB-Mo
-	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:54 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1eC23R-00020o-FN
+	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 06:28:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1eC0ch-0003ES-VE
-	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36688)
+	(envelope-from <pbonzini@redhat.com>) id 1eC23L-0003ts-OP
+	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 06:28:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50932)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1eC0ch-0003Dk-P0
-	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:47 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1eC23H-0003rp-FA; Tue, 07 Nov 2017 06:28:19 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E5F79C0587CA
-	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E5F79C0587CA
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 31A58C04AC49;
+	Tue,  7 Nov 2017 11:28:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 31A58C04AC49
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=mlureau@redhat.com
-Received: from colo-mx.corp.redhat.com
-	(colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE1615C460
-	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
-Received: from zmail17.collab.prod.int.phx2.redhat.com
-	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by colo-mx.corp.redhat.com (Postfix) with ESMTP id D77664BB78
-	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
-Date: Tue, 7 Nov 2017 04:56:45 -0500 (EST)
-From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-To: qemu-trivial@nongnu.org
-Message-ID: <1101861683.37201679.1510048605600.JavaMail.zimbra@redhat.com>
-In-Reply-To: <20171106185411.19551-1-marcandre.lureau@redhat.com>
-References: <20171106185411.19551-1-marcandre.lureau@redhat.com>
+Authentication-Results: ext-mx07.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=pbonzini@redhat.com
+Received: from [10.36.118.41] (unknown [10.36.118.41])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ACF4360C90;
+	Tue,  7 Nov 2017 11:28:14 +0000 (UTC)
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20171106185506.20334-1-marcandre.lureau@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5a537eb5-27c6-912b-899b-e2ca86faf00f@redhat.com>
+Date: Tue, 7 Nov 2017 12:28:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
+In-Reply-To: <20171106185506.20334-1-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.36.112.38, 10.4.195.10]
-Thread-Topic: .gitignore: remove vscclient
-Thread-Index: k2n9zWLv2s4z3nck9lxhfrSSSo7Uww==
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 07 Nov 2017 09:56:46 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 07 Nov 2017 11:28:18 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] Fwd: [PATCH] .gitignore: remove vscclient
+Subject: Re: [Qemu-trivial] [PATCH] memory: remove unused
+ memory_region_set_global_locking()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,37 +59,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Nov 2017 09:56:54 -0000
+X-List-Received-Date: Tue, 07 Nov 2017 11:28:33 -0000
 
-CC qemu-trivial
+On 06/11/2017 19:55, Marc-Andr=C3=A9 Lureau wrote:
+> This was never used since its introduction in commit
+> 196ea13104f8 ("memory: Add global-locking property to memory
+> regions").
+>=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
------ Forwarded Message -----
-From: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
-Sent: Monday, November 6, 2017 7:54:10 PM
-Subject: [PATCH] .gitignore: remove vscclient
+Indeed, it was introduced for symmetry with
+memory_region_clear_global_locking but it isn't very useful.
 
-It was removed with libcacard.
+Adding qemu-trivial.
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- .gitignore | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/.gitignore b/.gitignore
-index 588769b250..433f64f429 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -53,7 +53,6 @@
- /qemu-version.h.tmp
- /module_block.h
- /scsi/qemu-pr-helper
--/vscclient
- /vhost-user-scsi
- /fsdev/virtfs-proxy-helper
- *.tmp
---=20
-2.15.0.rc0.40.gaefcc5f6f
-
+Paolo
 
