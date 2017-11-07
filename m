@@ -1,46 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eBpdp-00031I-Np
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Nov 2017 17:13:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57739)
+	id 1eC0cp-0002XY-ST
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Nov 2017 04:56:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1eBpdn-00031A-Iz
-	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 17:13:12 -0500
+	(envelope-from <mlureau@redhat.com>) id 1eC0cn-0002UB-Mo
+	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hpoussin@reactos.org>) id 1eBpdk-00009a-D9
-	for qemu-trivial@nongnu.org; Mon, 06 Nov 2017 17:13:11 -0500
-Received: from iserv.reactos.org ([2a01:4f8:221:4c5::3]:37227)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hpoussin@reactos.org>)
-	id 1eBpdj-000098-VW; Mon, 06 Nov 2017 17:13:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=reactos.org;
-	s=25047; 
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject;
-	bh=BMkIFksAd/W6hrPkEnrbk/pPEl7fm5ZXxqVgib4IR4A=; 
-	b=itX2VsvFGszgNKdeezcoRK4/y7Dx4ReWCDN0MlIgej0hcuMz2zZuitpkv6EuVsJCyR2ZRiP+3u2kb0HqTSjoexHzMdHFd+SkTBrc69VLAKbG6ZgesMd3xaenk0uwingYlZ+kuE55igmGH4b1yGgGyIfRj4cK05bzwYe13KPGlfM=;
-Received: from rob92-5-82-227-227-196.fbx.proxad.net ([82.227.227.196]
-	helo=[192.168.0.35]) by iserv.reactos.org with esmtpsa
-	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.84_2)
-	(envelope-from <hpoussin@reactos.org>)
-	id 1eBpdg-0004Ku-IC; Mon, 06 Nov 2017 22:13:05 +0000
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <20171017164426.25277-1-f4bug@amsat.org>
-	<20171017164426.25277-5-f4bug@amsat.org>
-From: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>
-Message-ID: <132ef0a6-0c45-461d-5e13-001877c90746@reactos.org>
-Date: Mon, 6 Nov 2017 23:12:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <mlureau@redhat.com>) id 1eC0ch-0003ES-VE
+	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36688)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1eC0ch-0003Dk-P0
+	for qemu-trivial@nongnu.org; Tue, 07 Nov 2017 04:56:47 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E5F79C0587CA
+	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com E5F79C0587CA
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	dmarc=none (p=none dis=none) header.from=redhat.com
+Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=mlureau@redhat.com
+Received: from colo-mx.corp.redhat.com
+	(colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE1615C460
+	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id D77664BB78
+	for <qemu-trivial@nongnu.org>; Tue,  7 Nov 2017 09:56:45 +0000 (UTC)
+Date: Tue, 7 Nov 2017 04:56:45 -0500 (EST)
+From: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+To: qemu-trivial@nongnu.org
+Message-ID: <1101861683.37201679.1510048605600.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20171106185411.19551-1-marcandre.lureau@redhat.com>
+References: <20171106185411.19551-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20171017164426.25277-5-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.36.112.38, 10.4.195.10]
+Thread-Topic: .gitignore: remove vscclient
+Thread-Index: k2n9zWLv2s4z3nck9lxhfrSSSo7Uww==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 07 Nov 2017 09:56:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a01:4f8:221:4c5::3
-Subject: Re: [Qemu-trivial] [PATCH v3 04/42] MAINTAINERS: add an entry for
- the i82378 (superio)
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] Fwd: [PATCH] .gitignore: remove vscclient
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,28 +62,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Nov 2017 22:13:12 -0000
+X-List-Received-Date: Tue, 07 Nov 2017 09:56:54 -0000
 
-Le 17/10/2017 à 18:43, Philippe Mathieu-Daudé a écrit :
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
-> ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 0706b474e7..510505b2f3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -712,6 +712,7 @@ F: hw/ppc/prep.c
->   F: hw/ppc/prep_systemio.c
->   F: hw/ppc/rs6000_mc.c
->   F: hw/pci-host/prep.[hc]
-> +F: hw/isa/i82378.c
->   F: hw/isa/pc87312.[hc]
->   F: hw/dma/i82374.c
->   F: pc-bios/ppc_rom.bin
-> 
+CC qemu-trivial
 
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
+----- Forwarded Message -----
+From: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
+Sent: Monday, November 6, 2017 7:54:10 PM
+Subject: [PATCH] .gitignore: remove vscclient
+
+It was removed with libcacard.
+
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ .gitignore | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/.gitignore b/.gitignore
+index 588769b250..433f64f429 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -53,7 +53,6 @@
+ /qemu-version.h.tmp
+ /module_block.h
+ /scsi/qemu-pr-helper
+-/vscclient
+ /vhost-user-scsi
+ /fsdev/virtfs-proxy-helper
+ *.tmp
+--=20
+2.15.0.rc0.40.gaefcc5f6f
+
 
