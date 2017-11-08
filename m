@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eCMWA-0000X3-5P
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Nov 2017 04:19:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59045)
+	id 1eCNyc-00032N-6d
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Nov 2017 05:52:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53466)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1eCMW7-0000VO-LY
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 04:19:29 -0500
+	(envelope-from <lvivier@redhat.com>) id 1eCNyV-0002xU-SO
+	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 05:52:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1eCMW6-0006Be-9M
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 04:19:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33750)
+	(envelope-from <lvivier@redhat.com>) id 1eCNyR-0007a3-3r
+	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 05:52:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35176)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1eCMVx-00068F-NQ; Wed, 08 Nov 2017 04:19:17 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1eCNyK-0007Wd-OC; Wed, 08 Nov 2017 05:52:40 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B118CC0587EA;
-	Wed,  8 Nov 2017 09:19:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com B118CC0587EA
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
+	by mx1.redhat.com (Postfix) with ESMTPS id 28E9CCCFF7;
+	Wed,  8 Nov 2017 10:52:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 28E9CCCFF7
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
 	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx08.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=berrange@redhat.com
-Received: from redhat.com (unknown [10.33.36.57])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1465B5D6B4;
-	Wed,  8 Nov 2017 09:19:10 +0000 (UTC)
-Date: Wed, 8 Nov 2017 09:19:08 +0000
-From: "Daniel P. Berrange" <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Authentication-Results: ext-mx09.extmail.prod.ext.phx2.redhat.com;
+	spf=fail smtp.mailfrom=lvivier@redhat.com
+Received: from [10.36.116.68] (ovpn-116-68.ams2.redhat.com [10.36.116.68])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6C9E860BE3;
+	Wed,  8 Nov 2017 10:52:31 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Fam Zheng <famz@redhat.com>, Eric Blake <eblake@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Message-ID: <20171108091908.GK12670@redhat.com>
-Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
+	"Daniel P . Berrange" <berrange@redhat.com>, Fam Zheng <famz@redhat.com>,
+	Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>, Stefan Hajnoczi
+	<stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20171108032052.20029-1-f4bug@amsat.org>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <c8ed664e-26ec-efb1-1b61-70d016bee400@redhat.com>
+Date: Wed, 8 Nov 2017 11:52:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 In-Reply-To: <20171108032052.20029-1-f4bug@amsat.org>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 08 Nov 2017 09:19:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 08 Nov 2017 10:52:39 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
@@ -63,10 +64,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Nov 2017 09:19:29 -0000
+X-List-Received-Date: Wed, 08 Nov 2017 10:52:57 -0000
 
-On Wed, Nov 08, 2017 at 12:20:52AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
-te:
+On 08/11/2017 04:20, Philippe Mathieu-Daud=C3=A9 wrote:
 > Using obscure black magic introduced in eaa2ddbb767 :)
 >=20
 > In an out-of-tree directory, running "../configure && make help" will g=
@@ -80,9 +80,6 @@ ay
 > On an outdated computer (Sun Blade workstation), running "make help" to=
 ok
 > more than 5h :) With this patch it took roughly 37min.
-
-Wow, that's some seriously slow hardware :-)
-
 >=20
 > Suggested-by: Daniel P. Berrange <berrange@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
@@ -178,17 +175,8 @@ ce tree
 > =20
 >  # All following code might depend on configuration variables
 >  ifneq ($(wildcard config-host.mak),)
+>=20
 
-Reviewed-by: Daniel P. Berrange <berrange@redhat.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
 
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
 
