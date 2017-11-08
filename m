@@ -1,69 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eCUHC-000170-5c
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Nov 2017 12:36:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38780)
+	id 1eCUMi-0003If-LQ
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Nov 2017 12:42:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40090)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1eCUH8-00016H-FS
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 12:36:31 -0500
+	(envelope-from <eblake@redhat.com>) id 1eCUMg-0003H4-HR
+	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 12:42:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1eCUH5-0001Hs-Nt
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 12:36:30 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:54467)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1eCUH5-0001HS-Fm; Wed, 08 Nov 2017 12:36:27 -0500
-Received: by mail-wm0-x242.google.com with SMTP id r68so12484327wmr.3;
-	Wed, 08 Nov 2017 09:36:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=eaYEOTpep5R3x/VdGFHR4c/KSyx2EKhRy3xng5juXKU=;
-	b=iC3rmIlSxUmxcGX6toGGO0ccoEGjSkOwBXfFq1/Jbn60K2yEVXLMMQ0/FxTRMkrDA1
-	LIJGpDLTX1uTqhD3ghc5Tjq8+WUbl/cnIrEYGXCFI0rL7ax+P7kwJ05eAqzU8niqdo3q
-	QqYtiHjYCdCq1SFYaDde3BzLkMxN+Mowo3YStKU8z13jSLFUicOa5wE7zpK2A+XI1upk
-	J245SVyG6tMwb5SOW6hgu9jg+D/CY7ozTcm1Efje2n4GRZKzTUW0q73CPK85QefwU7g/
-	LqKe2eOPnwQ3edrmFtqL+REZGpZA7knx+hfLJBsDCZ00lw0GlVB9FJ6sQfK6gqeRJ0np
-	ElJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=eaYEOTpep5R3x/VdGFHR4c/KSyx2EKhRy3xng5juXKU=;
-	b=XJFrRmJ53knpU+MyZiNJbKrB0MRU0PYvGC08SPesQI0MRRjcUjyJenLztDQkSwgxfF
-	2iQTTVCbMLbdloN3BtKkNT+LFme1N9859rzmdfeGVQiW0igDLnhT4rakZ4pBCVsPO4eO
-	PsgIeRsQ9P7pHSMOGI1HbxUnEhKwKpiSGUvOuoZ2dZ4Ah0YnPXA/XpkKvihnke1iEziW
-	M4lVkAl69nskKodf6QBi2m12kuvSLFk08b3p/+gcIqhkRUo5cnVj+M5ZNhl3K3FnYHX4
-	HXqZEvq96DnnR+AYew27Lfyj8KMKHdJFwJ/Wn3oWe6Rikr0UVl3amzAsgAr+E1Xv/m6e
-	jbPw==
-X-Gm-Message-State: AJaThX4AeFbwi3CbBWboYkDxcJ14eaYo92n/d8bVOQ7lKWm+ay4wAons
-	oFrXjDu/lvcSQiQxXKcc2p0=
-X-Google-Smtp-Source: ABhQp+SkxRMG94lCWI3LoJpIqW2NZcR0M/Qm3OhQIQX7M0aFJtSFnQ34htv9POt462kekF22nxzRQQ==
-X-Received: by 10.28.57.4 with SMTP id g4mr934381wma.92.1510162586351;
-	Wed, 08 Nov 2017 09:36:26 -0800 (PST)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	x65sm3333603wmg.11.2017.11.08.09.36.25
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 08 Nov 2017 09:36:25 -0800 (PST)
-Date: Wed, 8 Nov 2017 17:36:21 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-trivial@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>, qemu-devel@nongnu.org
-Message-ID: <20171108173621.GB8403@stefanha-x1.localdomain>
+	(envelope-from <eblake@redhat.com>) id 1eCUMf-0003Xq-I3
+	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 12:42:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52822)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eCUMZ-0003WD-Eo; Wed, 08 Nov 2017 12:42:07 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 810755D688;
+	Wed,  8 Nov 2017 17:42:06 +0000 (UTC)
+Received: from [10.10.125.14] (ovpn-125-14.rdu2.redhat.com [10.10.125.14])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 342935C737;
+	Wed,  8 Nov 2017 17:42:02 +0000 (UTC)
+To: Stefan Hajnoczi <stefanha@gmail.com>
 References: <20171107223708.17935-1-eblake@redhat.com>
 	<20171108154226.GC6118@stefanha-x1.localdomain>
 	<462c8b69-9665-1342-fd01-5ba57049a39c@redhat.com>
 	<061e94f4-602e-3ff3-0f20-d3915e7a5550@redhat.com>
+	<20171108173621.GB8403@stefanha-x1.localdomain>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi
+	<stefanha@redhat.com>, qemu-trivial@nongnu.org, Kevin Wolf
+	<kwolf@redhat.com>, qemu-devel@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <34d8f43a-483a-fb2d-13b3-994d0a67f464@redhat.com>
+Date: Wed, 8 Nov 2017 11:42:01 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="pvezYHf7grwyp3Bc"
-Content-Disposition: inline
-In-Reply-To: <061e94f4-602e-3ff3-0f20-d3915e7a5550@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
+In-Reply-To: <20171108173621.GB8403@stefanha-x1.localdomain>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="ew6eqX2AKd9niUbLCdtr1egiGbMQxTGtJ"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 08 Nov 2017 17:42:06 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] coroutine: Fix
  documentation of co_aio_sleep_ns()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,77 +62,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Nov 2017 17:36:31 -0000
+X-List-Received-Date: Wed, 08 Nov 2017 17:42:15 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--ew6eqX2AKd9niUbLCdtr1egiGbMQxTGtJ
+Content-Type: multipart/mixed; boundary="itJ3UlR9V8M0drUso7qEepUckA8RpCtjU";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi
+ <stefanha@redhat.com>, qemu-trivial@nongnu.org, Kevin Wolf
+ <kwolf@redhat.com>, qemu-devel@nongnu.org
+Message-ID: <34d8f43a-483a-fb2d-13b3-994d0a67f464@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] coroutine: Fix documentation of
+ co_aio_sleep_ns()
+References: <20171107223708.17935-1-eblake@redhat.com>
+ <20171108154226.GC6118@stefanha-x1.localdomain>
+ <462c8b69-9665-1342-fd01-5ba57049a39c@redhat.com>
+ <061e94f4-602e-3ff3-0f20-d3915e7a5550@redhat.com>
+ <20171108173621.GB8403@stefanha-x1.localdomain>
+In-Reply-To: <20171108173621.GB8403@stefanha-x1.localdomain>
 
---pvezYHf7grwyp3Bc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--itJ3UlR9V8M0drUso7qEepUckA8RpCtjU
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Nov 08, 2017 at 09:57:47AM -0600, Eric Blake wrote:
-> On 11/08/2017 09:47 AM, Paolo Bonzini wrote:
-> > On 08/11/2017 16:42, Stefan Hajnoczi wrote:
-> >>> In any case, co_aio_sleep_ns()
-> >>> + * does not affect the #AioContext where the current coroutine is ru=
-nning,
-> >>> + * as the coroutine will restart on the same #AioContext that it is
-> >>> + * running on.
-> >> I cannot parse the second sentence.  What does "affecting" an AioConte=
-xt
-> >> mean?  Does "where the current coroutine is running" simply mean "the
-> >> caller"?
-> >>
-> >> What is it trying to say?  My guess is: the caller will be resumed in
-> >> the current AioContext, not the timer's AioContext.
-> >=20
-> > Yes, that is the intended meaning.  Perhaps just s/current//.
+On 11/08/2017 11:36 AM, Stefan Hajnoczi wrote:
+
+>> This function uses timers and hence needs to know the event loop
+>> (#AioContext) to place the timer on.  After the time elapses, the
+>> current coroutine will restart with the same #AioContext it is current=
+ly
+>> running in, even if that is different than the timer context passed to=
+
+>> co_aio_sleep_ns().
 >=20
-> How about:
+> These complicated semantics are a clue that the API should be
+> simplified.  QEMU has changed since this function was first introduced.=
+
+> Now we can do the following:
 >=20
-> This function uses timers and hence needs to know the event loop
-> (#AioContext) to place the timer on.  After the time elapses, the
-> current coroutine will restart with the same #AioContext it is currently
-> running in, even if that is different than the timer context passed to
-> co_aio_sleep_ns().
+>   void coroutine_fn qemu_co_sleep_ns(QEMUClockType type, int64_t ns)
+>   {
+>       AioContext *ctx =3D qemu_get_current_aio_context();
+>       CoSleepCB sleep_cb =3D {
+>           .co =3D qemu_coroutine_self(),
+>       };
+>       sleep_cb.ts =3D aio_timer_new(ctx, type, SCALE_NS, co_sleep_cb, &=
+sleep_cb);
+>       timer_mod(sleep_cb.ts, qemu_clock_get_ns(type) + ns);
+>       qemu_coroutine_yield();
+>       timer_del(sleep_cb.ts);
+>       timer_free(sleep_cb.ts);
+>   }
+>=20
+> I don't see a reason for the caller to pass in an AioContext.
+>=20
+> Any objections?  Will send a patch if this is okay.
 
-These complicated semantics are a clue that the API should be
-simplified.  QEMU has changed since this function was first introduced.
-Now we can do the following:
+Makes sense to me.
 
-  void coroutine_fn qemu_co_sleep_ns(QEMUClockType type, int64_t ns)
-  {
-      AioContext *ctx =3D qemu_get_current_aio_context();
-      CoSleepCB sleep_cb =3D {
-          .co =3D qemu_coroutine_self(),
-      };
-      sleep_cb.ts =3D aio_timer_new(ctx, type, SCALE_NS, co_sleep_cb, &slee=
-p_cb);
-      timer_mod(sleep_cb.ts, qemu_clock_get_ns(type) + ns);
-      qemu_coroutine_yield();
-      timer_del(sleep_cb.ts);
-      timer_free(sleep_cb.ts);
-  }
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
-I don't see a reason for the caller to pass in an AioContext.
 
-Any objections?  Will send a patch if this is okay.
+--itJ3UlR9V8M0drUso7qEepUckA8RpCtjU--
 
-Stefan
-
---pvezYHf7grwyp3Bc
+--ew6eqX2AKd9niUbLCdtr1egiGbMQxTGtJ
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQEcBAEBAgAGBQJaA0CVAAoJEJykq7OBq3PIi14H+gK3EFo9UR9K8fnE9xmRo94R
-nkSd1xQMcyI497zNjIlALIbyKszPJLeBkwEf7q6KuZQG2KYB0FoS3hFBGTWNuBgc
-RUDvfuwPnK3CbbYtZlboUa9S5e5WVXNBTKB+UDyVlBU0yFD32sLahrnJy5bUhzx4
-AHQ/S09t7Kpoi+5MASepPeTkFt/z2DM/cxIcLNkak0jIn59vmzO0marHXecGOMHM
-ojCq/nfXi3Z1RhER43kLWCHlwWXXSaJuEbnofyT1QYjswVfBcvvdTUaTKzVNv/jt
-r/oDPIr3ZLRtGS8FBpgKp5s+4djR7RDfZs0/ZguHst6TdKj/UQhE19IF3CZmIGE=
-=jJ6y
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAloDQekACgkQp6FrSiUn
+Q2qy6Af/RIB0a/WZ3VRjJkFzMdrgFL93ZTIIlPEDSCHlGlxncgXU3W1QkO51/1sa
+Mo6BcTELjLTEPlg3j+2Cvh4sJBSaZbiGZXwr92ojKFqasbSoDaoAeb7J6vVFH3O7
+kb1CyVYibzpb/ERzfIyB4hyNrF3MU+Ji85EKZs/4bdrMxXbbsJezzR1Y7evehaND
+Uuaz6iz8NgAuMmsOLSOa7ANKdWmfUNQrNo6Lxb6b5rT/FKQjeq6oh2wX+rcJ/hBz
+MVHAqJ0VTqpkIwVKhVcE9BTO4LW3Tf2zOmEHVO2/20yl7bUvYBf2ruVaaWu57+S/
+ZQnq9MpCKgGU9hKmuK4pO+pYXoy7LQ==
+=6wcQ
 -----END PGP SIGNATURE-----
 
---pvezYHf7grwyp3Bc--
+--ew6eqX2AKd9niUbLCdtr1egiGbMQxTGtJ--
 
