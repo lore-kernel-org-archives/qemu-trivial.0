@@ -1,76 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eCdCR-0001ZZ-Pd
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Nov 2017 22:08:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45527)
+	id 1eCg4X-0006uY-2c
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2017 01:12:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39687)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCdCP-0001ZT-OG
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 22:08:14 -0500
+	(envelope-from <famz@redhat.com>) id 1eCg4U-0006sd-Ga
+	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 01:12:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCdCM-0004yU-HT
-	for qemu-trivial@nongnu.org; Wed, 08 Nov 2017 22:08:13 -0500
-Received: from mail-qt0-x230.google.com ([2607:f8b0:400d:c0d::230]:50611)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eCdCM-0004yO-CG; Wed, 08 Nov 2017 22:08:10 -0500
-Received: by mail-qt0-x230.google.com with SMTP id d9so6025246qtd.7;
-	Wed, 08 Nov 2017 19:08:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=FqSwUMHwQ/C7ASDyGT05uYEtQeEZ6BXISi6OaR6TLXw=;
-	b=LJGXWdjR79hJjQzIdRa/Hi4wv3DyMxGIGEI+FzniZ4UcN464dfbkojZEmcXBK2jBzu
-	w4iOreHnHvM2dPrjE5OgnrPDzGM/UzdWZWXmcAQI1Y5uCKgLWH6z7lBOt+UHTvOxZ+U/
-	crEH+ayuoFskUccZZbEzAhsHuk7i+DnzDZcOxH12XmylFqXrUN8g89JTaGYxeFwGLEIv
-	YsB2zXkf1i9EdBt8WFawNP/VaN2CNNmFEkMv1gu600EM8Lz2tVYE2ihXmHXxh+/HGUpc
-	X3dgdaR5qsgtv+Nl6AA1wgZ4ayH69X7YVXcc9BSm8/HOkCtyky7j92x7DBDp93KGgk1a
-	5piA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=FqSwUMHwQ/C7ASDyGT05uYEtQeEZ6BXISi6OaR6TLXw=;
-	b=XkI4s77A8NZVSrKG1UFArmyci2RVAEzs93ofCEpBoFccicxQDtJNLqb4xwDUxUQcGc
-	jhBOQb3ed8ggz/t+nznGAU1KX0CiNZwUhIT6thczupPEFk3/ZLnG8G1XmLDTOOFD0a4e
-	G3u2EcR4Pt4Jtu0FpPUAq34qV4LF91m3BSTpM8d60TyMhhIUa9hCfU0FX8jcijG6fka6
-	lSYZVvx5W5BIYNgGgWmAQ+t3NS2rzeRolPCoRSxCm+NPu2/sUHuzVl4lYhjZ/ymSuQud
-	zVqqlyc3aGiOXqEC3YRl4mKAc4nJxoyyUrCEk/K1lyzQksErB7uTkOHqZjAJBCDVHdoq
-	8tcw==
-X-Gm-Message-State: AJaThX5aU5vzB6bA+y5Yg8vW/i+kHkMhiZ+7l2w+U2xAYf+Q21aANUf5
-	BXcXIKa5NOsugXkngB1j4BysdcU9Mu0=
-X-Google-Smtp-Source: AGs4zMZ1F9ydSk/v0ScUPCHAaOQsTl7KSiXdmL+EpjR4pHafTFPkwQXoDsSo0fFFXIErHtt3xzH1Xw==
-X-Received: by 10.200.27.163 with SMTP id z32mr4505671qtj.8.1510196889718;
-	Wed, 08 Nov 2017 19:08:09 -0800 (PST)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id 76sm1341092qky.56.2017.11.08.19.08.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 Nov 2017 19:08:08 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-devel@nongnu.org, alistair23@gmail.com, armbru@redhat.com,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <cover.1510181732.git.alistair.francis@xilinx.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <63b860be-0bbd-78b7-d722-81d1c94da5f4@amsat.org>
-Date: Thu, 9 Nov 2017 00:08:06 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	(envelope-from <famz@redhat.com>) id 1eCg4T-0005XP-E2
+	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 01:12:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35150)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1eCg4P-0005Vk-3E; Thu, 09 Nov 2017 01:12:09 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 056DE81DEA;
+	Thu,  9 Nov 2017 06:12:08 +0000 (UTC)
+Received: from localhost (ovpn-12-135.pek2.redhat.com [10.72.12.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D07B1600C8;
+	Thu,  9 Nov 2017 06:12:01 +0000 (UTC)
+Date: Thu, 9 Nov 2017 14:12:00 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	Kevin Wolf <kwolf@redhat.com>, stefanha@redhat.com
+Message-ID: <20171109061200.GC13786@lemon>
+References: <20171108165519.8931-1-eblake@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <cover.1510181732.git.alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::230
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 00/45] Remove some of the
- fprintf(stderr, "*
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20171108165519.8931-1-eblake@redhat.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 09 Nov 2017 06:12:08 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] coroutine: Fix
+ documentation of co_aio_sleep_ns()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,85 +53,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2017 03:08:15 -0000
+X-List-Received-Date: Thu, 09 Nov 2017 06:12:15 -0000
 
-Hi Alistair,
-
-On 11/08/2017 07:56 PM, Alistair Francis wrote:
-> Continue on improving QEMUs logging/error messages by removing more
-> fprintf()'s.
+On Wed, 11/08 10:55, Eric Blake wrote:
+> co_sleep_ns() was removed in commit 0b9caf9b, leaving behind a
+> stale comment.  Update the documentation to match the current
+> usage of this function.
 > 
-> Unfortunatley my Coccinelle skills aren't that great so it's all done in
-> some nasty regex and a little bit of manual work.
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 > 
-> V4:
->  - Reorder patch 3 (the audio func patch)
->  - Add all tags
->  - Small fixes
-> V3:
->  - Rebase
->  - All sorts of style fixes
->  - Remove "qemu: " prefixes from print messages
-> V2:
->  - Fix build issues
->  - Drop block patches
->  - Split the hw patches into subdirectories
->  - Remove AUDIO_FUNC macro as well
->  - Add some __FUNCTION__ rename fixes in a seperate patch
->  - Create a qemu_log() conversion patch for target/
+> ---
+> v2: instead of just blindly cribbing from Paolo's email, try to incorporate
+> the feedback given on the wording
+> ---
+>  include/qemu/coroutine.h | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
 > 
-> Alistair Francis (45):
->   audio: Replace AUDIO_FUNC with __func__
->   Replace all occurances of __FUNCTION__ with __func__
->   Fixes after renaming __FUNCTION__ to __func__
->   tests: Replace fprintf(stderr, "*\n" with error_report()
->   hw/arm: Replace fprintf(stderr, "*\n" with error_report()
->   hw/block: Replace fprintf(stderr, "*\n" with error_report()
->   hw/bt: Replace fprintf(stderr, "*\n" with error_report()
->   hw/char: Replace fprintf(stderr, "*\n" with error_report()
->   hw/core: Replace fprintf(stderr, "*\n" with error_report()
->   hw/cris: Replace fprintf(stderr, "*\n" with error_report()
->   hw/display: Replace fprintf(stderr, "*\n" with error_report()
->   hw/dma: Replace fprintf(stderr, "*\n" with error_report()
->   hw/gpio: Replace fprintf(stderr, "*\n" with error_report()
->   hw/i2c: Replace fprintf(stderr, "*\n" with error_report()
->   hw/i386: Replace fprintf(stderr, "*\n" with error_report()
->   hw/ide: Replace fprintf(stderr, "*\n" with error_report()
->   hw/input: Replace fprintf(stderr, "*\n" with error_report()
->   hw/intc: Replace fprintf(stderr, "*\n" with error_report()
->   hw/ipmi: Replace fprintf(stderr, "*\n" with error_report()
->   hw/isa: Replace fprintf(stderr, "*\n" with error_report()
->   hw/lm32: Replace fprintf(stderr, "*\n" with error_report()
->   hw/microblaze: Replace fprintf(stderr, "*\n" with error_report()
->   hw/mips: Replace fprintf(stderr, "*\n" with error_report()
->   hw/misc: Replace fprintf(stderr, "*\n" with error_report()
->   hw/moxie: Replace fprintf(stderr, "*\n" with error_report()
->   hw/net: Replace fprintf(stderr, "*\n" with error_report()
->   hw/nios2: Replace fprintf(stderr, "*\n" with error_report()
->   hw/nvram: Replace fprintf(stderr, "*\n" with error_report()
->   hw/openrisc: Replace fprintf(stderr, "*\n" with error_report()
->   hw/pci*: Replace fprintf(stderr, "*\n" with error_report()
->   hw/ppc: Replace fprintf(stderr, "*\n" with error_report()
->   hw/s390x: Replace fprintf(stderr, "*\n" with error_report()
->   hw/scsi: Replace fprintf(stderr, "*\n" with error_report()
->   hw/sd: Replace fprintf(stderr, "*\n" with error_report()
->   hw/sh4: Replace fprintf(stderr, "*\n" with error_report()
->   hw/sparc*: Replace fprintf(stderr, "*\n" with error_report()
->   hw/ssi: Replace fprintf(stderr, "*\n" with error_report()
->   hw/timer: Replace fprintf(stderr, "*\n" with error_report()
->   hw/usb: Replace fprintf(stderr, "*\n" with error_report()
->   hw/watchdog: Replace fprintf(stderr, "*\n" with error_report()
->   hw/xen*: Replace fprintf(stderr, "*\n" with error_report()
->   util: Replace fprintf(stderr, "*\n" with error_report()
->   ui: Replace fprintf(stderr, "*\n" with error_report()
->   tcg: Replace fprintf(stderr, "*\n" with error_report()
->   target: Use qemu_log() instead of fprintf(stderr, ...)
+> diff --git a/include/qemu/coroutine.h b/include/qemu/coroutine.h
+> index 9aff9a735e..10ab50a98c 100644
+> --- a/include/qemu/coroutine.h
+> +++ b/include/qemu/coroutine.h
+> @@ -262,8 +262,11 @@ void qemu_co_rwlock_unlock(CoRwlock *lock);
+>  /**
+>   * Yield the coroutine for a given duration
+>   *
+> - * Behaves similarly to co_sleep_ns(), but the sleeping coroutine will be
+> - * resumed when using aio_poll().
+> + * This function uses timers and hence needs to know the event loop
+> + * (#AioContext) to place the timer on.  After the time elapses, the
+> + * current coroutine will restart with the same #AioContext it is
+> + * currently running in, even if that is different than the timer
+> + * context passed to co_aio_sleep_ns().
+>   */
+>  void coroutine_fn co_aio_sleep_ns(AioContext *ctx, QEMUClockType type,
+>                                    int64_t ns);
+> -- 
+> 2.13.6
+> 
+> 
 
-You should split this series :)
-- all the reviewed patches Cc'ing qemu-trivial@,
-- respin the rest, it will be much less scary.
+Reviewed-by: Fam Zheng <famz@redhat.com>
 
-Regards,
-
-Phil.
 
