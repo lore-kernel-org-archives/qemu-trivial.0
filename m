@@ -1,61 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eCp2q-0002sM-W9
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2017 10:47:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50012)
+	id 1eCpKC-0002I7-61
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2017 11:05:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eCp2o-0002qT-SG
-	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 10:47:07 -0500
+	(envelope-from <pixo@polepetko.eu>) id 1eCpK4-0002Cb-AC
+	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 11:05:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eCp2o-0002N7-22
-	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 10:47:06 -0500
-Received: from mail-vk0-x241.google.com ([2607:f8b0:400c:c05::241]:54606)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1eCp2m-0002MJ-AJ; Thu, 09 Nov 2017 10:47:04 -0500
-Received: by mail-vk0-x241.google.com with SMTP id b18so1921536vkd.11;
-	Thu, 09 Nov 2017 07:47:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=ZHkpXSfLN436bcutddkYibfSt4Jspg5PUboF2+Gyk8o=;
-	b=GhI3mk2EQk3MHPRaUsF3BSHPmOxeiJ0oTcl0An5G/uwLG2zo4OY/ymCw+poxhhz2PL
-	IpAyFHnVEnKk3X3wuV4Gj0/Y+4jrZ1hgxsH5og5yVATin6LTXIHpYBfDZsUmAMKy42Co
-	+ZMr91Od/PDK7UFKJsa3hKJ9Th9MaNaX4nzPV92wcVAohawR3HUR18CMwm+/SUi54vaE
-	q18883jQxXpJD68qDdaiy7z/5uV+Fc81mINefW2pPYPN3uWOyFj1JEdQOanr7nImoymQ
-	brbHo9kTMTcnL7yMLGC9/6vzQIjaik143qYP0Kk6SBgXoG+FFtSqfAXPdLPZHLE3dojr
-	vtuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=ZHkpXSfLN436bcutddkYibfSt4Jspg5PUboF2+Gyk8o=;
-	b=RY6IUbV/ZE9RL8xMoMZ0ebNwIqE0hVm1qVlsW6CTlBhymA260/M641ioTzr1g9Pqqc
-	zxO6TW71ujbebqCvKE/C83SiIUAQiN6WDYziiNnh983CLq74xo9KYu4j8woBYFi+UJHP
-	zPnGaMr4T19fsV/70jvn6nEKih82LZVCJKeu1RQVi4sfINkiFy8Dbdk9iN3EbpArif/p
-	coP65dTKIgUnCQqy8kddZb2Etq7hpTf1uWWPQTYnzzNMnrmlAFX8YKi0RCl9roFSBjo2
-	Vw3yz8djj3j8zEVwScobK7LqXJq7v+GEFZ65kxiKjKeiJJM2JgcSqnjW5pVMiwIn6nXL
-	/vOw==
-X-Gm-Message-State: AJaThX7T6IfPHW1C/iDVSh+RcgK6LLk2c6c2eiLJxEvTjIfe2QCHK07K
-	CDyYFEC7XsqmQbNdl6nHjtQKrR3hv719j7wVcZY=
-X-Google-Smtp-Source: AGs4zMamjJ/5FO8gJUHn3b8usIaFOa3WcOUFZSTz0bjJJZQPFS/I16wzniWk9CtzILATLYoZwkx+w1bs7jVdCkCqtZ0=
-X-Received: by 10.31.1.137 with SMTP id 131mr714072vkb.50.1510242423565; Thu,
-	09 Nov 2017 07:47:03 -0800 (PST)
+	(envelope-from <pixo@polepetko.eu>) id 1eCpJy-0002WU-3f
+	for qemu-trivial@nongnu.org; Thu, 09 Nov 2017 11:04:56 -0500
+Received: from [77.247.229.177] (port=59372 helo=neth.polepetko.eu)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pixo@polepetko.eu>)
+	id 1eCpJd-0002Mo-VG; Thu, 09 Nov 2017 11:04:30 -0500
+Received: from neth.polepetko.eu (localhost [127.0.0.1])
+	by neth.polepetko.eu (Postfix) with ESMTP id 8D3646780C;
+	Thu,  9 Nov 2017 17:04:27 +0100 (CET)
+Received: from mail.polepetko.eu (localhost [127.0.0.1])
+	by neth.polepetko.eu (Postfix) with ESMTP;
+	Thu,  9 Nov 2017 17:04:27 +0100 (CET)
 MIME-Version: 1.0
-Received: by 10.176.27.129 with HTTP; Thu, 9 Nov 2017 07:47:02 -0800 (PST)
-In-Reply-To: <20171109121903.24510-1-googuy@gmail.com>
-References: <20171109121903.24510-1-googuy@gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 9 Nov 2017 16:47:02 +0100
-Message-ID: <CAJ+F1CKtoqXWP8ORZd52b3EKv=BjFX5DO-xksTkkd_ZNG9fhZQ@mail.gmail.com>
-To: Vicente Jimenez Aguilar <googuy@gmail.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Date: Thu, 09 Nov 2017 17:04:27 +0100
+From: pixo@polepetko.eu
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Andre Przywara <andre.przywara@amd.com>, Eduardo Habkost
+	<ehabkost@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>,
+	"Longpeng(Mike)" <longpeng2@huawei.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Richard Henderson <rth@twiddle.net>, =?UTF-8?Q?Andre?=
+	=?UTF-8?Q?as_F=C3=A4rber?= <afaerber@suse.de>, =?UTF-8?Q?Beno=C3=AEt_C?=
+	=?UTF-8?Q?anet?= <benoit@irqsave.net>,
+	Paolo Bonzini <pbonzini@redhat.com>, 
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mat?=
+	=?UTF-8?Q?hieu-Daud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+In-Reply-To: <111e80b1-025c-aa6c-1df8-27ded2258371@amsat.org>
+References: <20171103173037.17012-1-pixo@polepetko.eu>
+	<111e80b1-025c-aa6c-1df8-27ded2258371@amsat.org>
+Message-ID: <1c6e1d30b20c4b6963bca5f59585497a@polepetko.eu>
+X-Sender: pixo@polepetko.eu
+User-Agent: Roundcube Webmail/1.1.9
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c05::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Add missing parameters to
- mon option documentation
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 77.247.229.177
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] AMD Processor Topology
+ Information
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,53 +56,223 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2017 15:47:07 -0000
+X-List-Received-Date: Thu, 09 Nov 2017 16:05:02 -0000
 
-Hi
+Hi Philippe,
 
-On Thu, Nov 9, 2017 at 1:19 PM, Vicente Jimenez Aguilar
-<googuy@gmail.com> wrote:
-> Documentation missed 'mon' option's 'pretty' and 'default' parameters
->
-> Signed-off-by: Vicente Jimenez Aguilar <googuy@gmail.com>
-> ---
->  qemu-options.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 3728e9b4dd..72cf48a8e5 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -3477,9 +3477,9 @@ Like -qmp but uses pretty JSON formatting.
->  ETEXI
->
->  DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
-> -    "-mon [chardev=3D]name[,mode=3Dreadline|control]\n", QEMU_ARCH_ALL)
-> +    "-mon [chardev=3D]name[,mode=3Dreadline|control][,pretty[=3Don|off]]=
-[,default[=3Don|off]]\n", QEMU_ARCH_ALL)
->  STEXI
-> -@item -mon [chardev=3D]name[,mode=3Dreadline|control]
-> +@item -mon [chardev=3D]name[,mode=3Dreadline|control][,pretty[=3Don|off]=
-][,default[=3Don|off]]
+Most of the code for 'case 0x8000001E:' is a copy of 'case 4:' of the=20
+same procedure in both cpu.c and kvm.c
+Values were changes for AMD Zen architecture.
+The only new code is 'case 0x8000001D:' which defines core topology.
 
-"default" is deprecated since commit 06ac27f (2.4.0). It does nothing
-anymore, so should probably not be documented.
+Hope this info helps wit review.
 
-"pretty" was added in commit 39eaab9ac2a82f. You write some
-documentation for it based on the commit message perhaps?
-
-thanks
-
->  @findex -mon
->  Setup monitor on chardev @var{name}.
->  ETEXI
-> --
-> 2.14.1
->
->
-
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+On 2017-11-08 13:44, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Stanislav,
+>=20
+> This does not seem so trivial ;)
+>=20
+> Cc'ing more reviewers.
+>=20
+> On 11/03/2017 02:30 PM, Stanislav Lanci wrote:
+>> V2:
+>> Adds information about cache size and topology on leaf 0x8000001D for=20
+>> family 17h
+>> Without the added cache topology guest with SMT suffers latency=20
+>> problems
+>>=20
+>> Add CPUID 0x8000001E for describing AMD Processor Topology Information
+>> Disables warning about smt for 17h family of AMD CPUs
+>>=20
+>> Signed-off-by: Stanislav Lanci <pixo@polepetko.eu>
+>> ---
+>>  target/i386/cpu.c | 93=20
+>> ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+>>  target/i386/kvm.c | 28 +++++++++++++++--
+>>  2 files changed, 117 insertions(+), 4 deletions(-)
+>>=20
+>> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+>> index ddc45abd70..1545e3fe31 100644
+>> --- a/target/i386/cpu.c
+>> +++ b/target/i386/cpu.c
+>> @@ -113,7 +113,9 @@
+>>  /* L1 instruction cache: */
+>>  #define L1I_LINE_SIZE         64
+>>  #define L1I_ASSOCIATIVITY      8
+>> +#define L1I_ASSOC_AMD_ZEN      4
+>>  #define L1I_SETS              64
+>> +#define L1I_SETS_AMD_ZEN     256
+>>  #define L1I_PARTITIONS         1
+>>  /* Size =3D LINE_SIZE*ASSOCIATIVITY*SETS*PARTITIONS =3D 32KiB */
+>>  #define L1I_DESCRIPTOR CPUID_2_L1I_32KB_8WAY_64B
+>> @@ -125,7 +127,9 @@
+>>  /* Level 2 unified cache: */
+>>  #define L2_LINE_SIZE          64
+>>  #define L2_ASSOCIATIVITY      16
+>> +#define L2_ASSOC_AMD_ZEN       8
+>>  #define L2_SETS             4096
+>> +#define L2_SETS_AMD_ZEN     1024
+>>  #define L2_PARTITIONS          1
+>>  /* Size =3D LINE_SIZE*ASSOCIATIVITY*SETS*PARTITIONS =3D 4MiB */
+>>  /*FIXME: CPUID leaf 2 descriptor is inconsistent with CPUID leaf 4 */
+>> @@ -142,6 +146,7 @@
+>>  #define L3_N_LINE_SIZE         64
+>>  #define L3_N_ASSOCIATIVITY     16
+>>  #define L3_N_SETS           16384
+>> +#define L3_N_SETS_AMD_ZEN    4096
+>>  #define L3_N_PARTITIONS         1
+>>  #define L3_N_DESCRIPTOR CPUID_2_L3_16MB_16WAY_64B
+>>  #define L3_N_LINES_PER_TAG      1
+>> @@ -3072,6 +3077,91 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t=20
+>> index, uint32_t count,
+>>              *edx =3D 0;
+>>          }
+>>          break;
+>> +    case 0x8000001D: /* AMD TOPOEXT cache info for ZEN */
+>> +        if (cpu->cache_info_passthrough) {
+>> +            host_cpuid(index, count, eax, ebx, ecx, edx);
+>> +            break;
+>> +        } else if ((env->cpuid_version & 0xFF00F00) =3D=3D 0x800F00) =
+{
+>> +            *eax =3D 0;
+>> +            switch (count) {
+>> +            case 0: /* L1 dcache info */
+>> +                *eax |=3D CPUID_4_TYPE_DCACHE | \
+>> +                        CPUID_4_LEVEL(1) | \
+>> +                        CPUID_4_SELF_INIT_LEVEL | \
+>> +                        ((cs->nr_threads - 1) << 14);
+>> +                *ebx =3D (L1D_LINE_SIZE - 1) | \
+>> +                       ((L1D_PARTITIONS - 1) << 12) | \
+>> +                       ((L1D_ASSOCIATIVITY - 1) << 22);
+>> +                *ecx =3D L1D_SETS - 1;
+>> +                *edx =3D 0;
+>> +                break;
+>> +            case 1: /* L1 icache info */
+>> +                *eax |=3D CPUID_4_TYPE_ICACHE | \
+>> +                        CPUID_4_LEVEL(1) | \
+>> +                        CPUID_4_SELF_INIT_LEVEL | \
+>> +                        ((cs->nr_threads - 1) << 14);
+>> +                *ebx =3D (L1I_LINE_SIZE - 1) | \
+>> +                       ((L1I_PARTITIONS - 1) << 12) | \
+>> +                       ((L1I_ASSOC_AMD_ZEN - 1) << 22);
+>> +                *ecx =3D L1I_SETS_AMD_ZEN - 1;
+>> +                *edx =3D 0;
+>> +                break;
+>> +            case 2: /* L2 cache info */
+>> +                *eax |=3D CPUID_4_TYPE_UNIFIED | \
+>> +                        CPUID_4_LEVEL(2) | \
+>> +                        CPUID_4_SELF_INIT_LEVEL | \
+>> +                        ((cs->nr_threads - 1) << 14);
+>> +                *ebx =3D (L2_LINE_SIZE - 1) | \
+>> +                       ((L2_PARTITIONS - 1) << 12) | \
+>> +                       ((L2_ASSOC_AMD_ZEN - 1) << 22);
+>> +                *ecx =3D L2_SETS_AMD_ZEN - 1;
+>> +                *edx =3D CPUID_4_INCLUSIVE;
+>> +                break;
+>> +            case 3: /* L3 cache info */
+>> +                if (!cpu->enable_l3_cache) {
+>> +                    *eax =3D 0;
+>> +                    *ebx =3D 0;
+>> +                    *ecx =3D 0;
+>> +                    *edx =3D 0;
+>> +                    break;
+>> +                }
+>> +                *eax |=3D CPUID_4_TYPE_UNIFIED | \
+>> +                        CPUID_4_LEVEL(3) | \
+>> +                        CPUID_4_SELF_INIT_LEVEL | \
+>> +                        ((cs->nr_cores * cs->nr_threads - 1) << 14);
+>> +                *ebx =3D (L3_N_LINE_SIZE - 1) | \
+>> +                       ((L3_N_PARTITIONS - 1) << 12) | \
+>> +                       ((L3_N_ASSOCIATIVITY - 1) << 22);
+>> +                *ecx =3D L3_N_SETS_AMD_ZEN - 1;
+>> +                *edx =3D CPUID_4_NO_INVD_SHARING;
+>> +                break;
+>> +            default: /* end of info */
+>> +                *eax =3D 0;
+>> +                *ebx =3D 0;
+>> +                *ecx =3D 0;
+>> +                *edx =3D 0;
+>> +                break;
+>> +            }
+>> +        } else {
+>> +            *eax =3D 0;
+>> +            *ebx =3D 0;
+>> +            *ecx =3D 0;
+>> +            *edx =3D 0;
+>> +        }
+>> +        break;
+>> +    case 0x8000001E: /* AMD TOPOEXT cpu topology info for ZEN */
+>> +        if ((env->cpuid_version & 0xFF00F00) =3D=3D 0x800F00) {
+>> +            *eax =3D cpu->apic_id;
+>> +            *ebx =3D (cs->nr_threads - 1) << 8 | cpu->core_id;
+>> +            *ecx =3D cpu->socket_id;
+>> +            *edx =3D 0;
+>> +        } else {
+>> +            *eax =3D 0;
+>> +            *ebx =3D 0;
+>> +            *ecx =3D 0;
+>> +            *edx =3D 0;
+>> +        }
+>> +        break;
+>>      case 0xC0000000:
+>>          *eax =3D env->cpuid_xlevel2;
+>>          *ebx =3D 0;
+>> @@ -3742,7 +3832,8 @@ static void x86_cpu_realizefn(DeviceState *dev,=20
+>> Error **errp)
+>>       * NOTE: the following code has to follow qemu_init_vcpu().=20
+>> Otherwise
+>>       * cs->nr_threads hasn't be populated yet and the checking is=20
+>> incorrect.
+>>       */
+>> -    if (!IS_INTEL_CPU(env) && cs->nr_threads > 1 && !ht_warned) {
+>> +    if (!IS_INTEL_CPU(env) && cs->nr_threads > 1 && !ht_warned && \
+>> +       (env->cpuid_version & 0xFF00F00) !=3D 0x800F00) {
+>>          error_report("AMD CPU doesn't support hyperthreading. Please=20
+>> configure"
+>>                       " -smp options properly.");
+>>          ht_warned =3D true;
+>> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+>> index 6db7783edc..d6b4e1ae74 100644
+>> --- a/target/i386/kvm.c
+>> +++ b/target/i386/kvm.c
+>> @@ -869,9 +869,31 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>          }
+>>          c =3D &cpuid_data.entries[cpuid_i++];
+>>=20
+>> -        c->function =3D i;
+>> -        c->flags =3D 0;
+>> -        cpu_x86_cpuid(env, i, 0, &c->eax, &c->ebx, &c->ecx, &c->edx);
+>> +        switch (i) {
+>> +        case 0x8000001d:
+>> +            for (j =3D 0; ; j++) {
+>> +                c->function =3D i;
+>> +                c->flags =3D KVM_CPUID_FLAG_SIGNIFCANT_INDEX;
+>> +                c->index =3D j;
+>> +                cpu_x86_cpuid(env, i, j, &c->eax, &c->ebx, &c->ecx,=20
+>> &c->edx);
+>> +
+>> +                if (c->eax =3D=3D 0) {
+>> +                    break;
+>> +                }
+>> +                if (cpuid_i =3D=3D KVM_MAX_CPUID_ENTRIES) {
+>> +                    fprintf(stderr, "cpuid_data is full, no space for=
+=20
+>> "
+>> +                            "cpuid(eax:0x%x,ecx:0x%x)\n", i, j);
+>> +                    abort();
+>> +                }
+>> +                c =3D &cpuid_data.entries[cpuid_i++];
+>> +            }
+>> +            break;
+>> +        default:
+>> +            c->function =3D i;
+>> +            c->flags =3D 0;
+>> +            cpu_x86_cpuid(env, i, 0, &c->eax, &c->ebx, &c->ecx,=20
+>> &c->edx);
+>> +            break;
+>> +        }
+>>      }
+>>=20
+>>      /* Call Centaur's CPUID instructions they are supported. */
+>>=20
 
