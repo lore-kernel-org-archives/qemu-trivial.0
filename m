@@ -1,68 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eDH6Q-0005uZ-Vd
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2017 16:44:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42115)
+	id 1eDIyY-0005Gy-TO
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2017 18:44:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38042)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1eDH6L-0005ti-NN
-	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 16:44:41 -0500
+	(envelope-from <laurent@vivier.eu>) id 1eDIyW-0005FR-Dv
+	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 18:44:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1eDH6E-0001zL-FO
-	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 16:44:37 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:43133)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <zachriggle@gmail.com>)
-	id 1eDH6E-0001ys-8Y; Fri, 10 Nov 2017 16:44:30 -0500
-Received: by mail-qk0-x241.google.com with SMTP id 78so13601346qkz.0;
-	Fri, 10 Nov 2017 13:44:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=r8PCxq+Ha7oS75m5TTaVMCTsCaxiq5OCUTvzONuCr5I=;
-	b=FbixhCrtrZB/Z2SopFBaTqsatFqgRf5MH7o+AyMOiHvJLUhD82xBRbU+ytu3L1o/+x
-	1t43MxbN2vrlD8Kyxwzc8wj5n9AxWokM8kCes/APL8AZjnKwg7gEe44nyth48HypG+xj
-	lmwfJYod8J7BydSDmI4JGwUYj/Li7ad/z7r9SqQQTomlqW//EpfcLaPEiifKxx9RIowh
-	Mo88tm1p4YF/cKc3V+Ygsw+jm84JdUAfXTajMXRRKzMiw6sdQKXdinTpC9fyNv/Hj5A+
-	pVU28avej3nA98T0MYkBaja5b8m5+xtWlMTG9Hl6k7rgadRGdF/HLhevCjsGz2SYjTST
-	ekPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=r8PCxq+Ha7oS75m5TTaVMCTsCaxiq5OCUTvzONuCr5I=;
-	b=X3pZTb2z1tL3A6M+YVqz5+53mnYhiUXuucda6mGJSg3MfeJ94SRThz4v694YYftTjt
-	tviFYkIfa4aWkIRyuXYxlWfzcaWVpz3wfKbMp8u0NRXVvADywlFs28lH/Mj4VGwVV1rD
-	p95VhQyw+DiSPCmjUoaMfP7RaVYd3xne6uo8Ftc+5ko4J9wjzDuPF3DOnc77mdb06AM0
-	Q60TzidxWU6fwJM2POr3S6LoXWf/2ta/sffm7ZfDTpuHOeZJxIw5+zDkqxwhUe59Zm2P
-	cNViGU5XwP+P3JzaXmG/ki5g13E7c81myjB0yrhmqdn+0hhnlHGEkTKZeTWidT1DuWPt
-	VHaw==
-X-Gm-Message-State: AJaThX4oP+orAAGXdHzUxz7UjOtng05GkTkkM1dibN/D1UMYmjrjrfVt
-	6d8n5qNBi29P9Db6wC7um+8TLFbf9/0Tt+tattg=
-X-Google-Smtp-Source: AGs4zMYxT+sV6aJx8cPDorREgLCVl/2ejCz+jFqXWvVIq61YlwKeFY4/FKHhucKgbuj5w3tkhqBjVYh3/TlhKJ1309c=
-X-Received: by 10.55.17.150 with SMTP id 22mr2873898qkr.208.1510350268928;
-	Fri, 10 Nov 2017 13:44:28 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.140.108.139 with HTTP; Fri, 10 Nov 2017 13:44:08 -0800 (PST)
-In-Reply-To: <20171107200634.GB27631@kos.to>
+	(envelope-from <laurent@vivier.eu>) id 1eDIyV-0003Sk-LV
+	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 18:44:40 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:64175)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1eDIyR-0003Ok-1v; Fri, 10 Nov 2017 18:44:35 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue101 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	0MCZWc-1eLWRv1PRy-009N15; Sat, 11 Nov 2017 00:44:25 +0100
+To: Zach Riggle <zachriggle@gmail.com>
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>
 References: <20171024230758.31779-1-riggle@google.com>
 	<20171025033442.44872-1-zachriggle@gmail.com>
-	<CAMP9c5=whCgR4qkOPDRKZ+adpWEPiVM=BwZp_r7qCAR7UAsWAQ@mail.gmail.com>
-	<20171027093600.GA29513@kos.to>
-	<CAMP9c5mm7icy06goXr3iiOEgqPbzyaWDt775+9+L=oxnqwRhpA@mail.gmail.com>
-	<CAMP9c5kTQmKd7GVE8DZzvY8tTtWV=tLsgV1ptWPKhEAh=J-maQ@mail.gmail.com>
-	<2251f54e-4c55-7495-8f60-af40cdd80594@redhat.com>
-	<CAFEAcA-r-KxNDkHFJEdQDVnNXf4N-8zptjQK9a-uPixnSMsg+w@mail.gmail.com>
-	<CAMP9c5krrvH-TpH0mM1D3Fm8=E+C7nYHU8h3b5CwU1Nb2HxN-A@mail.gmail.com>
-	<20171107200634.GB27631@kos.to>
-From: Zach Riggle <zachriggle@gmail.com>
-Date: Fri, 10 Nov 2017 15:44:08 -0600
-Message-ID: <CAMP9c5==+vgyYzb2+VdijvaxBhYLx4zhhyqJoptdhLZAdEaEGQ@mail.gmail.com>
-To: Riku Voipio <riku.voipio@iki.fi>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="001a11473804441636055da7d36e"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <fac44468-7869-57fa-fb5f-fbd98828489f@vivier.eu>
+Date: Sat, 11 Nov 2017 00:44:24 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <20171025033442.44872-1-zachriggle@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:rK6ESUEc7Cu1mEVckM0cZG3wrEMpcU0nwxUVHKKSa9VD6AfG8BT
+	Qme19E35LK8ou1osRHczmFMq8f7BcfQn47Qs7xKp3LappiTqUojo93FQkeXPuGyUkI5bSCL
+	+Fr8S33e6wwxIm1xLHKA8ysAesqZnHn34iLx66+HTq9BoAd70VxV9EckT+ZHheCXx1oyX5G
+	KbtqaMkXJpE0sJn9disNA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:uGIQMG2kYqo=:QKfZDqvoThN4La0qUNMx9/
+	3JVdEIpX8z54r/mnNbh3OOFQHWvGOoZ0JwBlDQb/b0+zm9ocWF6uhraagNlzESysDdOC8mkb7
+	fMiiTQ1lOFjvO4eFvHetgqyR/eWoJ3E++ft1cJ7U+Qnzr6FElUvWVHjWvQLAPFqPo6xSAjMpz
+	NmOVORwMRQn0T9dsHjbf+G3XebBBhBIoGiLXROsOwKgnV+VjIOHQ68l3BiSq9EBZlEH6Zmrhb
+	ymQaKIqFR1qtwvpkm/zDGXRYm/yBc0T9EG0qA3Lf2gUuoVrczUmxGPQVu38EcQvUoXIeVuSB/
+	nzJKM1LMeDBr2OmFkAD3dcPffl7xR0ZQjWEnge9XsQ5a9uV8/7Xf+TPlICjwUMjbfdalEHgfC
+	+np8WJn8u2rC44cmCVgPMmu8ACG8z1eJJgEt8uTaoFWNPxqwSqinPg/PJv+3o3Ki4Hp4yyCOE
+	KEgfI1lOVew/O6DmeT2h3TjKuyblhtiE2y4mzLtRjcYwo5eZTfZYB7dgAI1SWlUYryFYKOwBk
+	Cf1DCrzY99FgnaAGQXJ1a27yc8qodxla63L2BHTJpdQG5MEnUGGhTcnw5/oInlQwAng+Vlhn5
+	u0dl2eaV7YLvYlRT5OlnJz8gCvHdQ5YSUWcsEKWGoz9TGp9t65PCZCbkVmnEjwn6zdrjnTOTo
+	J0+V8yl/twsErgpQiHzTsDLLMxK5jbMJeBLbpfhWk5dLN5HhMrI98NYr6AMC2NTN/RMCJvbGH
+	mq0tdPBEkkcxAjeSATlbDRw2CQZZAPKYVWAMwBO8FmuHSafDXO+bDaHYBdw=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 217.72.192.75
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: fix
  is_proc_myself to check the paths via realpath
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,83 +62,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Nov 2017 21:44:42 -0000
+X-List-Received-Date: Fri, 10 Nov 2017 23:44:41 -0000
 
---001a11473804441636055da7d36e
-Content-Type: text/plain; charset="UTF-8"
+Le 25/10/2017 à 05:34, Zach Riggle a écrit :
+> Previously, it was possible to get a handle to the "real" /proc/self/mem
+> by creating a symlink to it and opening the symlink, or opening e.g.
+> "./mem" after chdir'ing to "/proc/self".
+> 
+>     $ ln -s /proc/self self
+>     $ cat self/maps
+>     60000000-602bc000 r-xp 00000000 fc:01 270375                             /usr/bin/qemu-arm-static
+>     604bc000-6050f000 rw-p 002bc000 fc:01 270375                             /usr/bin/qemu-arm-static
+>     ...
+> 
+> Signed-off-by: Zach Riggle <zachriggle@gmail.com>
+> ---
+>  linux-user/syscall.c | 47 ++++++++++++++++++++++++++++-------------------
+>  1 file changed, 28 insertions(+), 19 deletions(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 9bf901fa11..6c1f28a1f7 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -7496,26 +7496,35 @@ static int open_self_auxv(void *cpu_env, int fd)
+> 
+>  static int is_proc_myself(const char *filename, const char *entry)
+>  {
+> -    if (!strncmp(filename, "/proc/", strlen("/proc/"))) {
+> -        filename += strlen("/proc/");
+> -        if (!strncmp(filename, "self/", strlen("self/"))) {
+> -            filename += strlen("self/");
+> -        } else if (*filename >= '1' && *filename <= '9') {
+> -            char myself[80];
+> -            snprintf(myself, sizeof(myself), "%d/", getpid());
+> -            if (!strncmp(filename, myself, strlen(myself))) {
+> -                filename += strlen(myself);
+> -            } else {
+> -                return 0;
+> -            }
+> -        } else {
+> -            return 0;
+> -        }
+> -        if (!strcmp(filename, entry)) {
+> -            return 1;
+> -        }
+> +    char proc_self_entry[PATH_MAX + 1];
+> +    char proc_self_entry_realpath[PATH_MAX + 1];
+> +    char filename_realpath[PATH_MAX + 1];
+> +
+> +    if (PATH_MAX < snprintf(proc_self_entry,
+> +                            sizeof(proc_self_entry),
+> +                            "/proc/self/%s",
+> +                            entry)) {
+> +        /* Full path to "entry" is too long to fit in the buffer */
+> +        return 0;
+>      }
+> -    return 0;
+> +
+> +    if (!realpath(filename, filename_realpath)) {
+> +        /* File does not exist, or can't be canonicalized */
+> +        return 0;
+> +    }
+> +
+> +    if (!realpath(proc_self_entry, proc_self_entry_realpath)) {
+> +        /* Procfs entry does not exist */
+> +        return 0;
+> +    }
+> +
+> +    if (strcmp(filename_realpath, proc_self_entry_realpath) != 0) {
+> +        /* Paths are different */
 
-Day 17 Ping :)
+I think it doesn't work with /proc/map/exe (or other soft link in
+/proc/self) as realpath will give the path of the executable and not the
+path inside /proc so it will be true for any process with the same
+executable (which in our case is qemu for all).
 
+Thanks,
+Laurent
 
-
-*Zach Riggle*
-
-On Tue, Nov 7, 2017 at 2:06 PM, Riku Voipio <riku.voipio@iki.fi> wrote:
-
-> Hi,
->
-> On Mon, Nov 06, 2017 at 08:17:44PM +0000, Zach Riggle wrote:
-> > Ping! What needs to be done to move this forward? My current
-> implementation
-> > is compatible with musl.
->
-> I'll have a look at it soon.
->
-> Riku
->
-> > On Thu, Nov 2, 2017 at 12:36 PM Peter Maydell <peter.maydell@linaro.org>
-> > wrote:
-> >
-> > > On 28 October 2017 at 06:14, Eric Blake <eblake@redhat.com> wrote:
-> > > > By definition, in linux-user, we ARE using glibc; therefore, you are
-> > > > free to use all GNU extensions.
-> > >
-> > > Don't we also support musl libc? I forget...
-> > >
-> > > thanks
-> > > -- PMM
-> > >
->
-
---001a11473804441636055da7d36e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Day 17 Ping :)<div><br></div></div><div class=3D"gmail_ext=
-ra"><br clear=3D"all"><div><div class=3D"gmail_signature" data-smartmail=3D=
-"gmail_signature"><div dir=3D"ltr"><b><font face=3D"arial, helvetica, sans-=
-serif"><br>Zach Riggle</font></b><br></div></div></div>
-<br><div class=3D"gmail_quote">On Tue, Nov 7, 2017 at 2:06 PM, Riku Voipio =
-<span dir=3D"ltr">&lt;<a href=3D"mailto:riku.voipio@iki.fi" target=3D"_blan=
-k">riku.voipio@iki.fi</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_q=
-uote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1e=
-x">Hi,<br>
-<span class=3D"im HOEnZb"><br>
-On Mon, Nov 06, 2017 at 08:17:44PM +0000, Zach Riggle wrote:<br>
-&gt; Ping! What needs to be done to move this forward? My current implement=
-ation<br>
-&gt; is compatible with musl.<br>
-<br>
-</span><span class=3D"im HOEnZb">I&#39;ll have a look at it soon.<br>
-<br>
-</span><span class=3D"HOEnZb"><font color=3D"#888888">Riku<br>
-</font></span><div class=3D"HOEnZb"><div class=3D"h5"><br>
-&gt; On Thu, Nov 2, 2017 at 12:36 PM Peter Maydell &lt;<a href=3D"mailto:pe=
-ter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt;<br>
-&gt; wrote:<br>
-&gt;<br>
-&gt; &gt; On 28 October 2017 at 06:14, Eric Blake &lt;<a href=3D"mailto:ebl=
-ake@redhat.com">eblake@redhat.com</a>&gt; wrote:<br>
-&gt; &gt; &gt; By definition, in linux-user, we ARE using glibc; therefore,=
- you are<br>
-&gt; &gt; &gt; free to use all GNU extensions.<br>
-&gt; &gt;<br>
-&gt; &gt; Don&#39;t we also support musl libc? I forget...<br>
-&gt; &gt;<br>
-&gt; &gt; thanks<br>
-&gt; &gt; -- PMM<br>
-&gt; &gt;<br>
-</div></div></blockquote></div><br></div>
-
---001a11473804441636055da7d36e--
 
