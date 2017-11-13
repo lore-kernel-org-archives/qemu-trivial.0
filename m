@@ -1,63 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eDKub-0004Us-VG
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2017 20:48:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52685)
+	id 1eE8Mh-0005Gn-Uq
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 01:37:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35408)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1eDKuY-0004Sf-5z
-	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 20:48:44 -0500
+	(envelope-from <armbru@redhat.com>) id 1eE8Mb-0005DG-Qb
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 01:37:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zachriggle@gmail.com>) id 1eDKuN-0001Cs-FP
-	for qemu-trivial@nongnu.org; Fri, 10 Nov 2017 20:48:42 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:43347)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <zachriggle@gmail.com>)
-	id 1eDKuN-0001Cl-4n; Fri, 10 Nov 2017 20:48:31 -0500
-Received: by mail-qk0-x243.google.com with SMTP id 78so14061157qkz.0;
-	Fri, 10 Nov 2017 17:48:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=5FNqodo/DN+uD+iMx+kmH4lIyYAduWiXqLcSZz7nNLk=;
-	b=GKVoWuLS9h0uzV4aOGXM5zd+/OCW6/GOY9ZW/N+HXxvtSN90YjmsbKSslpKGnkS7W3
-	weFPVyZmL3KwEZQ+k5ifraUdTqeyEDguIPbdNi2FC5cmY/It0wQe6ZiAygkWA4zWwgzk
-	nGmcItATIdnZRNhzpze8UQkktPbqGDk+sEQ0RzrJCC5G57fZbSKfVBE+mtG2F7mm06rF
-	LCE0QCBfl4BztcBHEYn+l6IMWpI59zol24KR5GHcTHiRu4Bj/GYy34aNxkhcyun45IpK
-	v+qTNXhb+TThZKuonrPGNCOtL0MCfS+ZXo2dxz7xmo0E4YGeYhKmoxQyHesJ6f3GsqoF
-	UAvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=5FNqodo/DN+uD+iMx+kmH4lIyYAduWiXqLcSZz7nNLk=;
-	b=B96h4Lz+TZQFrCjlBfgBlHeorbQM2NPsTdDCeB8819r3CGts1F5omNzbaz9lhBQgEI
-	Cki+vEtWZGUfe7LtIKtgnTG11up/4KoR3xE3rXz8FRCjcMN+mB97/uVqcFEUilfLzJZD
-	pMzMhOCnvPAca5JoDtaLeoJJcYfYJ3eEq/iPAnwGY0mYT0YQQsS30CDUIDrrV+3pGDNd
-	t/k7oqFhb03cjj4pdKhD8Q613paUQv7NWnF2Mj56+griRphKlaDcfqSZFp0tZPdu1MAR
-	OqJDLr3nTxX4ALzn0M4SUBnxuX02vfDp8I5W/0p1o/d5vErXG+ID3Q4T9kv3uCxqwdJS
-	TQMw==
-X-Gm-Message-State: AJaThX4kj9sUByORM2optc6UTmx3kRL6PJe7kgK7o4NApolIqORmlBGS
-	yQN6RGEmnxGqZMG64g1HO2T/UGq06j+zLsZsnpueB4Cs
-X-Google-Smtp-Source: AGs4zMZN9TCrBe9qwQYBlf+6eNd/uImKUNCKu6vKzwY3i6fbh1oOuLW3woVBCpBGI54rE6e41DyCEOCgrfrDTkqeHto=
-X-Received: by 10.55.170.15 with SMTP id t15mr1642334qke.114.1510364910340;
-	Fri, 10 Nov 2017 17:48:30 -0800 (PST)
+	(envelope-from <armbru@redhat.com>) id 1eE8Ma-0002BL-OI
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 01:36:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41070)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1eE8MT-000293-2n; Mon, 13 Nov 2017 01:36:49 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1897C49010;
+	Mon, 13 Nov 2017 06:36:47 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7146218947;
+	Mon, 13 Nov 2017 06:36:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E05AE1138647; Mon, 13 Nov 2017 07:36:41 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Jim Quigley <jim.quigley@oracle.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, alex.williamson@redhat.com, laurent@vivier.eu
+References: <1507630928-28307-1-git-send-email-Jim.Quigley@oracle.com>
+	<78aed453-49b8-a9e4-ae7c-39c731158eaa@msgid.tls.msk.ru>
+	<1c3087f3-9019-26b3-b4be-df71da2033fc@oracle.com>
+Date: Mon, 13 Nov 2017 07:36:41 +0100
+In-Reply-To: <1c3087f3-9019-26b3-b4be-df71da2033fc@oracle.com> (Jim Quigley's
+	message of "Fri, 10 Nov 2017 10:03:07 +0000")
+Message-ID: <8760aey9ae.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.140.108.139 with HTTP; Fri, 10 Nov 2017 17:48:09 -0800 (PST)
-In-Reply-To: <CAMP9c5m6GK_Xwt6z3Bj+1WauHzHffzFb1cVD9ojeh2m8gA-D8w@mail.gmail.com>
-References: <20171024230758.31779-1-riggle@google.com>
-	<20171025033442.44872-1-zachriggle@gmail.com>
-	<fac44468-7869-57fa-fb5f-fbd98828489f@vivier.eu>
-	<CAMP9c5m6GK_Xwt6z3Bj+1WauHzHffzFb1cVD9ojeh2m8gA-D8w@mail.gmail.com>
-From: Zach Riggle <zachriggle@gmail.com>
-Date: Fri, 10 Nov 2017 19:48:09 -0600
-Message-ID: <CAMP9c5kG9m-swMJBtdQPzPkjLy7zq9sEdRA-PGcdeFDAT-DH9w@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="94eb2c063566f650fa055dab3b6e"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: fix
- is_proc_myself to check the paths via realpath
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 13 Nov 2017 06:36:47 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/vfio: improve error
+ message when cannot init vfio event notifiers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,275 +59,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Nov 2017 01:48:44 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 06:37:02 -0000
 
---94eb2c063566f650fa055dab3b6e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Jim Quigley <jim.quigley@oracle.com> writes:
 
-I wrote up a quick example to show that this should work specifically for
-/proc/self/exe:
+> On 16/10/2017 19:07, Michael Tokarev wrote:
+>> 10.10.2017 13:22, Jim Quigley wrote:
+>>> More information is required to assist trouble-shooting when
+>>> QEMU fails to initialise the event notifications for devices
+>>> assigned with VFIO-PCI. Instead of supplying the user with a cryptic
+>>> error number only, print out a proper error message with strerror()
+>>> so that the user has a better way to figure out what the problem is.
+>>>
+>>> Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
+>>> Signed-off-by: Jim Quigley <Jim.Quigley@oracle.com>
+>>> ---
+>>> Cc: qemu-trivial@nongnu.org
+>>> Cc: mjt@tls.msk.ru
+>>> Cc: laurent@vivier.eu
+>>> Cc: alex.williamson@redhat.com
+>>> ---
+>>>   hw/vfio/pci.c | 35 ++++++++++++++++++++++++-----------
+>>>   1 file changed, 24 insertions(+), 11 deletions(-)
+>>>
+>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>>> index 31e1edf..3bffb93 100644
+>>> --- a/hw/vfio/pci.c
+>>> +++ b/hw/vfio/pci.c
+>>> @@ -430,13 +430,16 @@ static int vfio_enable_vectors(VFIOPCIDevice *vde=
+v, bool msix)
+>>>   static void vfio_add_kvm_msi_virq(VFIOPCIDevice *vdev, VFIOMSIVector =
+*vector,
+>>>                                     int vector_n, bool msix)
+>>>   {
+>>> -    int virq;
+>>> +    int virq, ret;
+>>>         if ((msix && vdev->no_kvm_msix) || (!msix &&
+>>> vdev->no_kvm_msi)) {
+>>>           return;
+>>>       }
+>>>   -    if (event_notifier_init(&vector->kvm_interrupt, 0)) {
+>>> +    ret =3D event_notifier_init(&vector->kvm_interrupt, 0);
+>>> +    if (ret) {
+>>> +        error_report("vfio (%s): Error: unable to init event notifier:=
+ %s (%d)",
+>>> +                     __func__, strerror(-ret), -ret);
+>> Since this pattern gets repeated again and again, maybe we can either
 
-#define _GNU_SOURCE
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-int main(int argc, char** argv) {
-    int fd =3D open("/proc/self/exe", O_NOFOLLOW | O_PATH);
-    system("ls -la /proc/$PPID/fd/");
-}
+Parts of it are anti-patterns:
 
+* Error messages are by definition meant for the user.  If you feel you
+  need to include __func__ so it makes sense, you're obviously failing
+  to address the end user.
 
-*Zach Riggle*
+* Likewise for the numeric encoding of errno.
 
-On Fri, Nov 10, 2017 at 7:47 PM, Zach Riggle <zachriggle@gmail.com> wrote:
+* Printing "Error: " or similar is error_report()'s job.
 
-> Good catch.  Relying on realpath() for *exe* does cause issues.
+That leaves printing strerror().
+
+>> use a common wrapper or move that eror reporting into event_notifier_ini=
+t()?
+>> Note there are other users of this function, besides hw/vfio, and maybe
+>> these, too, can benefit from better error reporting?
 >
-> A better general solution (which handles the "exe" case) is to use open(2=
-)
-> with O_PATH | O_NOFOLLOW for the candidate path (e.g. /proc/self/exe) and
-> to do the same for the path we're testing along with readlink().
->
-> If, in the process of link resolution via the readlink() loop, we end up
-> with the same path as our candidate, we can return true.  This avoids the
-> need to rely on any libc implementation of realpath(), since we're just
-> relying on the host kernel.
->
->
-> *Zach Riggle*
->
-> On Fri, Nov 10, 2017 at 5:44 PM, Laurent Vivier <laurent@vivier.eu> wrote=
-:
->
->> Le 25/10/2017 =C3=A0 05:34, Zach Riggle a =C3=A9crit :
->> > Previously, it was possible to get a handle to the "real" /proc/self/m=
-em
->> > by creating a symlink to it and opening the symlink, or opening e.g.
->> > "./mem" after chdir'ing to "/proc/self".
->> >
->> >     $ ln -s /proc/self self
->> >     $ cat self/maps
->> >     60000000-602bc000 r-xp 00000000 fc:01 270375
->>      /usr/bin/qemu-arm-static
->> >     604bc000-6050f000 rw-p 002bc000 fc:01 270375
->>      /usr/bin/qemu-arm-static
->> >     ...
->> >
->> > Signed-off-by: Zach Riggle <zachriggle@gmail.com>
->> > ---
->> >  linux-user/syscall.c | 47 ++++++++++++++++++++++++++++--
->> -----------------
->> >  1 file changed, 28 insertions(+), 19 deletions(-)
->> >
->> > diff --git a/linux-user/syscall.c b/linux-user/syscall.c
->> > index 9bf901fa11..6c1f28a1f7 100644
->> > --- a/linux-user/syscall.c
->> > +++ b/linux-user/syscall.c
->> > @@ -7496,26 +7496,35 @@ static int open_self_auxv(void *cpu_env, int f=
-d)
->> >
->> >  static int is_proc_myself(const char *filename, const char *entry)
->> >  {
->> > -    if (!strncmp(filename, "/proc/", strlen("/proc/"))) {
->> > -        filename +=3D strlen("/proc/");
->> > -        if (!strncmp(filename, "self/", strlen("self/"))) {
->> > -            filename +=3D strlen("self/");
->> > -        } else if (*filename >=3D '1' && *filename <=3D '9') {
->> > -            char myself[80];
->> > -            snprintf(myself, sizeof(myself), "%d/", getpid());
->> > -            if (!strncmp(filename, myself, strlen(myself))) {
->> > -                filename +=3D strlen(myself);
->> > -            } else {
->> > -                return 0;
->> > -            }
->> > -        } else {
->> > -            return 0;
->> > -        }
->> > -        if (!strcmp(filename, entry)) {
->> > -            return 1;
->> > -        }
->> > +    char proc_self_entry[PATH_MAX + 1];
->> > +    char proc_self_entry_realpath[PATH_MAX + 1];
->> > +    char filename_realpath[PATH_MAX + 1];
->> > +
->> > +    if (PATH_MAX < snprintf(proc_self_entry,
->> > +                            sizeof(proc_self_entry),
->> > +                            "/proc/self/%s",
->> > +                            entry)) {
->> > +        /* Full path to "entry" is too long to fit in the buffer */
->> > +        return 0;
->> >      }
->> > -    return 0;
->> > +
->> > +    if (!realpath(filename, filename_realpath)) {
->> > +        /* File does not exist, or can't be canonicalized */
->> > +        return 0;
->> > +    }
->> > +
->> > +    if (!realpath(proc_self_entry, proc_self_entry_realpath)) {
->> > +        /* Procfs entry does not exist */
->> > +        return 0;
->> > +    }
->> > +
->> > +    if (strcmp(filename_realpath, proc_self_entry_realpath) !=3D 0) {
->> > +        /* Paths are different */
->>
->> I think it doesn't work with /proc/map/exe (or other soft link in
->> /proc/self) as realpath will give the path of the executable and not the
->> path inside /proc so it will be true for any process with the same
->> executable (which in our case is qemu for all).
->>
->> Thanks,
->> Laurent
->>
->>
->
+> =C2=A0=C2=A0=C2=A0 Ideally the strerror() would be included in the error_=
+report()
+> function,
+> =C2=A0=C2=A0=C2=A0 (as per the error_setg() function), which obviously wo=
+uld involve
+> a more
+> =C2=A0=C2=A0=C2=A0 extensive change to the code base. Would that be an ac=
+ceptable
+> solution ?
 
---94eb2c063566f650fa055dab3b6e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+All existing uses error_report() that print strerror() would have to be
+converted to the new function.  Same for error_vreport(), warn_report(),
+...  Whether that's worthwhile is not obvious until we see patches.
 
-<div dir=3D"ltr">I wrote up a quick example to show that this should work s=
-pecifically for /proc/self/exe:<div><br></div><div><div>#define _GNU_SOURCE=
-</div><div>#include &lt;sys/types.h&gt;</div><div>#include &lt;sys/stat.h&g=
-t;</div><div>#include &lt;fcntl.h&gt;</div><div>#include &lt;unistd.h&gt;</=
-div><div>int main(int argc, char** argv) {</div><div>=C2=A0 =C2=A0 int fd =
-=3D open(&quot;/proc/self/exe&quot;, O_NOFOLLOW | O_PATH);</div><div>=C2=A0=
- =C2=A0 system(&quot;ls -la /proc/$PPID/fd/&quot;);</div><div>}</div></div>=
-</div><div class=3D"gmail_extra"><br clear=3D"all"><div><div class=3D"gmail=
-_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><b><font fa=
-ce=3D"arial, helvetica, sans-serif"><br>Zach Riggle</font></b><br></div></d=
-iv></div>
-<br><div class=3D"gmail_quote">On Fri, Nov 10, 2017 at 7:47 PM, Zach Riggle=
- <span dir=3D"ltr">&lt;<a href=3D"mailto:zachriggle@gmail.com" target=3D"_b=
-lank">zachriggle@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
-ft:1ex"><div dir=3D"ltr">Good catch.=C2=A0 Relying on realpath() for <i>exe=
-</i>=C2=A0does cause issues.=C2=A0=C2=A0<div><br></div><div>A better genera=
-l solution (which handles the &quot;exe&quot; case) is to use open(2) with =
-O_PATH | O_NOFOLLOW for the candidate path (e.g. /proc/self/exe) and to do =
-the same for the path we&#39;re testing along with readlink().</div><div><b=
-r></div><div>If, in the process of link resolution via the readlink() loop,=
- we end up with the same path as our candidate, we can return true.=C2=A0 T=
-his avoids the need to rely on any libc implementation of realpath(), since=
- we&#39;re just relying on the host kernel.=C2=A0=C2=A0</div></div><div cla=
-ss=3D"gmail_extra"><span class=3D"HOEnZb"><font color=3D"#888888"><br clear=
-=3D"all"><div><div class=3D"m_8555934408960091644gmail_signature" data-smar=
-tmail=3D"gmail_signature"><div dir=3D"ltr"><b><font face=3D"arial, helvetic=
-a, sans-serif"><br>Zach Riggle</font></b><br></div></div></div></font></spa=
-n><div><div class=3D"h5">
-<br><div class=3D"gmail_quote">On Fri, Nov 10, 2017 at 5:44 PM, Laurent Viv=
-ier <span dir=3D"ltr">&lt;<a href=3D"mailto:laurent@vivier.eu" target=3D"_b=
-lank">laurent@vivier.eu</a>&gt;</span> wrote:<br><blockquote class=3D"gmail=
-_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
-1ex"><div class=3D"m_8555934408960091644HOEnZb"><div class=3D"m_85559344089=
-60091644h5">Le 25/10/2017 =C3=A0 05:34, Zach Riggle a =C3=A9crit=C2=A0:<br>
-&gt; Previously, it was possible to get a handle to the &quot;real&quot; /p=
-roc/self/mem<br>
-&gt; by creating a symlink to it and opening the symlink, or opening e.g.<b=
-r>
-&gt; &quot;./mem&quot; after chdir&#39;ing to &quot;/proc/self&quot;.<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0$ ln -s /proc/self self<br>
-&gt;=C2=A0 =C2=A0 =C2=A0$ cat self/maps<br>
-&gt;=C2=A0 =C2=A0 =C2=A060000000-602bc000 r-xp 00000000 fc:01 270375=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0/usr/bin/qemu-arm-static<br>
-&gt;=C2=A0 =C2=A0 =C2=A0604bc000-6050f000 rw-p 002bc000 fc:01 270375=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0/usr/bin/qemu-arm-static<br>
-&gt;=C2=A0 =C2=A0 =C2=A0...<br>
-&gt;<br>
-&gt; Signed-off-by: Zach Riggle &lt;<a href=3D"mailto:zachriggle@gmail.com"=
- target=3D"_blank">zachriggle@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 linux-user/syscall.c | 47 ++++++++++++++++++++++++++++--<wbr>---=
---------------<br>
-&gt;=C2=A0 1 file changed, 28 insertions(+), 19 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/linux-user/syscall.c b/linux-user/syscall.c<br>
-&gt; index 9bf901fa11..6c1f28a1f7 100644<br>
-&gt; --- a/linux-user/syscall.c<br>
-&gt; +++ b/linux-user/syscall.c<br>
-&gt; @@ -7496,26 +7496,35 @@ static int open_self_auxv(void *cpu_env, int f=
-d)<br>
-&gt;<br>
-&gt;=C2=A0 static int is_proc_myself(const char *filename, const char *entr=
-y)<br>
-&gt;=C2=A0 {<br>
-&gt; -=C2=A0 =C2=A0 if (!strncmp(filename, &quot;/proc/&quot;, strlen(&quot=
-;/proc/&quot;))) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 filename +=3D strlen(&quot;/proc/&quot;);=
-<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!strncmp(filename, &quot;self/&quot;,=
- strlen(&quot;self/&quot;))) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 filename +=3D strlen(&quot;=
-self/&quot;);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else if (*filename &gt;=3D &#39;1&#39; =
-&amp;&amp; *filename &lt;=3D &#39;9&#39;) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 char myself[80];<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 snprintf(myself, sizeof(mys=
-elf), &quot;%d/&quot;, getpid());<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!strncmp(filename, myse=
-lf, strlen(myself))) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 filename +=3D=
- strlen(myself);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!strcmp(filename, entry)) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 1;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 char proc_self_entry[PATH_MAX + 1];<br>
-&gt; +=C2=A0 =C2=A0 char proc_self_entry_realpath[PATH_<wbr>MAX + 1];<br>
-&gt; +=C2=A0 =C2=A0 char filename_realpath[PATH_MAX + 1];<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (PATH_MAX &lt; snprintf(proc_self_entry,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 sizeof(proc_self_entry),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;/proc/self/%s&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 entry)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Full path to &quot;entry&quot; is too =
-long to fit in the buffer */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; -=C2=A0 =C2=A0 return 0;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (!realpath(filename, filename_realpath)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* File does not exist, or can&#39;t be c=
-anonicalized */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (!realpath(proc_self_entry, proc_self_entry_realpath=
-)) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Procfs entry does not exist */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if (strcmp(filename_realpath, proc_self_entry_realpath)=
- !=3D 0) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Paths are different */<br>
-<br>
-</div></div>I think it doesn&#39;t work with /proc/map/exe (or other soft l=
-ink in<br>
-/proc/self) as realpath will give the path of the executable and not the<br=
->
-path inside /proc so it will be true for any process with the same<br>
-executable (which in our case is qemu for all).<br>
-<br>
-Thanks,<br>
-Laurent<br>
-<br>
-</blockquote></div><br></div></div></div>
-</blockquote></div><br></div>
+> =C2=A0=C2=A0=C2=A0 Or I can move the reporting into theevent_notifier_ini=
+t() function
+> if that is
+> =C2=A0=C2=A0=C2=A0 the preferred approach ?
 
---94eb2c063566f650fa055dab3b6e--
+Moving error_report() into event_notifier_init() makes it unusable in
+contexts where error_report() is unwanted or wrong.
 
