@@ -1,142 +1,146 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eENOq-0003W9-Kc
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 17:40:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57241)
+	id 1eENOx-0003gm-8i
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 17:40:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57251)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eENOn-0003Mc-BD
+	(envelope-from <alistai@xilinx.com>) id 1eENOn-0003OJ-Or
 	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 17:40:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eENOk-0007Xz-6B
+	(envelope-from <alistai@xilinx.com>) id 1eENOk-0007YQ-II
 	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 17:40:13 -0500
-Received: from mail-cys01nam02on0060.outbound.protection.outlook.com
-	([104.47.37.60]:55840
-	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+Received: from mail-by2nam01on0042.outbound.protection.outlook.com
+	([104.47.34.42]:55486
+	helo=NAM01-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eENOj-0007WK-Sn; Mon, 13 Nov 2017 17:40:10 -0500
+	id 1eENOk-0007WW-4y; Mon, 13 Nov 2017 17:40:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=U7kKAWV+BDHAUEro3mmyB6A2LU8BTDxou+qlPwQ5wIo=;
-	b=HOnkQwuRqdBiARDty4VaIzLKL++aLow1WvaTp0/mgEUi1VY0ADQRGCE3ZNyI19UCVHwdBDguGZ4WMNONSghhqz/F/OKvPj0w4t2qInv1Qi0FwWqMawx4JGGvl23KsD1mAECv2fckzGNtCiR13VtIgZGT+DPPWQl6cLDpRKjDUtc=
-Received: from BLUPR0201CA0034.namprd02.prod.outlook.com (10.163.116.44) by
-	MWHPR02MB3280.namprd02.prod.outlook.com (10.164.187.140) with Microsoft
+	bh=3D9f0Ji5BrzqsPCESXSQjjaH1NICRmQLtYa30yJWLOc=;
+	b=iM1aBnUtSFkdMktOak4MR1aHdEwp2brPUKBqZIDTGksE1vRqsObD93uCPYIxBH8SOExLsDYx29+7nlcLx7j58YXrnhCJJRkK93xHyykoy+0tvLr8pEoY3ve7cZKKmbnjzfT/AIbpIO8LNXPvXi3B4fxckp3QW1DbmPwEdToPwO4=
+Received: from MWHPR02CA0033.namprd02.prod.outlook.com (10.164.133.22) by
+	SN1PR02MB1343.namprd02.prod.outlook.com (10.162.0.149) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
 	15.20.218.12; Mon, 13 Nov 2017 22:40:06 +0000
-Received: from SN1NAM02FT031.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e44::200) by BLUPR0201CA0034.outlook.office365.com
-	(2a01:111:e400:52e7::44) with Microsoft SMTP Server (version=TLS1_2,
+Received: from SN1NAM02FT035.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::201) by MWHPR02CA0033.outlook.office365.com
+	(2603:10b6:301:60::22) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.218.12 via
-	Frontend Transport; Mon, 13 Nov 2017 22:40:06 +0000
+	Frontend Transport; Mon, 13 Nov 2017 22:40:04 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+	smtp.mailfrom=xilinx.com; suse.de; dkim=none (message not signed)
+	header.d=none;suse.de; dmarc=bestguesspass action=none
+	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
-	SN1NAM02FT031.mail.protection.outlook.com (10.152.72.116) with
+	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
+Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
+	SN1NAM02FT035.mail.protection.outlook.com (10.152.72.145) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.197.9
-	via Frontend Transport; Mon, 13 Nov 2017 22:40:05 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
-	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
+	via Frontend Transport; Mon, 13 Nov 2017 22:40:03 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66]:46318
+	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENOf-0004AG-2J; Mon, 13 Nov 2017 14:40:05 -0800
+	id 1eENOd-0004WK-1y; Mon, 13 Nov 2017 14:40:03 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENOe-0000dB-FB; Mon, 13 Nov 2017 14:40:04 -0800
-Received: from xsj-pvapsmtp01 (xsj-mail.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vADMdv5h002886; Mon, 13 Nov 2017 14:39:57 -0800
+	id 1eENOc-0000dB-V3; Mon, 13 Nov 2017 14:40:03 -0800
+Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
+	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	vADMdpbl012670; Mon, 13 Nov 2017 14:39:51 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENOX-0000Wq-DS; Mon, 13 Nov 2017 14:39:57 -0800
+	id 1eENOR-0000W7-8B; Mon, 13 Nov 2017 14:39:51 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>,
-	<armbru@redhat.com>, Fabien Chouteau <chouteau@adacore.com>,
-	Mark Cave-Ayland
-	<mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>
-Date: Mon, 13 Nov 2017 14:35:57 -0800
-Message-ID: <a78b2c8879bded4abe59b71d7e9fb172e784a35d.1510612380.git.alistair.francis@xilinx.com>
+	<armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, David Gibson
+	<david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>
+Date: Mon, 13 Nov 2017 14:35:51 -0800
+Message-ID: <eaa633797a5d0e92fd13bdac6d0cc8b76e36791a.1510612380.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1510612380.git.alistair.francis@xilinx.com>
 References: <cover.1510612380.git.alistair.francis@xilinx.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.1.0.1062-23462.005
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(39860400002)(376002)(346002)(2980300002)(438002)(189002)(199003)(33646002)(8676002)(5660300001)(106466001)(316002)(63266004)(189998001)(575784001)(54906003)(50226002)(81166006)(305945005)(2950100002)(81156014)(9786002)(118296001)(47776003)(4326008)(8936002)(356003)(2870700001)(23676003)(36386004)(5820100001)(2906002)(50986999)(76176999)(106002)(50466002)(110136005)(478600001)(39060400002)(36756003)(77096006)(107986001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR02MB3280; H:xsj-pvapsmtpgw01;
-	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
-X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT031;
-	1:DjG28QSVqblI4UetcsWEGAAEYF15qos7zpgYOEvWn3mmdyN/EAwq6SUXwfo5/indpT0PshlLM9BiTBOJjtDQgTSA1Cr09T4AaSAgH3jXRZ5SieXYZYt6Kk7+EyRtfU4t
+	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(2980300002)(438002)(199003)(189002)(9786002)(110136005)(54906003)(316002)(39060400002)(16586007)(8936002)(50466002)(5003940100001)(47776003)(48376002)(4326008)(5660300001)(36756003)(305945005)(50986999)(63266004)(77096006)(81156014)(81166006)(76176999)(106466001)(189998001)(2906002)(50226002)(356003)(106002)(33646002)(8676002)(118296001)(478600001)(36386004)(2950100002)(107986001)(21314002)(5001870100001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:SN1PR02MB1343; H:xsj-pvapsmtpgw02;
+	FPR:; SPF:Pass; PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com;
+	A:1; MX:1; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT035;
+	1:jdr7VteKzgpolSQn0tgm2VCRosFKTVybXpQLpIWmtpgf2VbLhGwPLSijQxyyy5w/U5dKnJxXtmgjsafch6vau/7XeSiIXEdEzFXVFy1StsDxkEiWlV6nYYqfsExwwOBc
+MIME-Version: 1.0
+Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c2d6a89c-d606-4406-594b-08d52ae77cd8
+X-MS-Office365-Filtering-Correlation-Id: f51ca6a6-f6e2-44fd-bf1f-08d52ae77b97
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(22001)(8251501002)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603258);
-	SRVR:MWHPR02MB3280; 
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR02MB3280;
-	3:sYI6OcJkwiG9XNBV7c+MahI0RFthPPitRtcL46vt8NiFw7pSVWeKURjd/uy5ASDZi1jZO23qZ4oCbIdwEstLWgtFtmGOUsgrbg/eP+zbuBgtXDhGNVCUc6L0AuXQsb1GQ866y1/mNEtmByzbOHlhdO30uyFugV7k/sYeA3tTISW6FtDHY7RKZJKi0zlb1bQV6O3+eNKas1m/TJq9PpGGYZkVCmzFeQbrG7zNUNSDuywBbmHdjF+QlP7x+iZ4n0gPDPEVPAQK+Vo1cNgkQ6qV10euOS3wvytjin2i9SFzRfzR+9cE7usLaGdbjxW7eR7Xfl13hGT36mxsbFra9Tp3mXHPNzkq93vg0cxIazpARLY=;
-	25:ajrQw08jVV1kjEXikP5FS1XfE98I0E2yO0ta5pdX4bftj40xGU6wRQHQJqol+wn24pb2P4EMdFyW1M28ULvN9P8KFyWvgwUlwDdIuaL5PFMWgEVA7mrvCfIKQwF2/ESCxANoIKUEjGz8xDSkChYEy3BjxDmfscJxEJonA9ZN4MjNbsU+88q5knfN6fqlVPzCP65kvwJb5vDqYwW8OOmBJD69/4m+ldbnWGsOb2vKXjworI+L2tEocaxNRWHJaDbtithcXDY8vQBkFx8cAXEmCDbP+ZfnSh8VSyglZt67NiBmK9mBSh652k26WcHd0nOYjY4VCXxWnd4ZrnS1D6GHmZBTRMRYcg/2fIJ37TtwGeI=
-X-MS-TrafficTypeDiagnostic: MWHPR02MB3280:
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR02MB3280;
-	31:SA/12ZufGQwxCbjrx2fCR3wCOCclnDfugpy9uLF517QC1hbwnc7rcAFtnqG4UB13f0iDRuHW2lNv7c1Ej65lJF72EK/xQEiR+ygUeQSJGgtTG3/FXX7NvIi4VhcWw5Oz07lWJPz++fUMsOTFBRlYrrBm3gc1nz7L1LExQnhP0yjByJ3p4Dqtos2iUuHhWPaixI1/BEIw5oMG+N93OzYjDQ+qrrIMLZZlEMIwRAXoakk=;
-	20:s0IhG48/W/qeP87CR8yfOy/uhAzoB3GdUgZHHnL9DGixYxI8NNFM1rH+ivaDlRj2TKHFKHEYda1TUjDVogPY+RdzF99jBOz5BYKZgpb4NsBPALbdamuaWLWp/LVSRgmWwp3gVE8PrqhpW8DvW2Sd5+Ziy1OudovsfqD9rQlwsY1nIPkqzi68kyNcpPVbEgp+SAVM+8cmaMBh1xCp80jDOHq2JbQVClVa8WBwWCljV6EFrgzp9z4SivOvWjl/hhWo2v4+/N6nqld3o0SE7kgEzS/bM/ZUj/e2Ql+yDT6DyDLOuPh7P/7LJvMyDTHsm8ERT7tVeuILwdHpQw2hQuffqKMWXfqXeIEcfKhoZpX2zqZ0zBZzjo8nLCj/1lvecd/ckZPigEZmZ09+PujhFw3J2DGhMuUY6VtOllLuYUnThK7zOm0X1ohc0IBmFkuj6u59nBsYs/nKowuFMDaF5FvHEs2HTRyjffrOcxF9pl7NAEI9HcR2EEAIzQg8C3onBbSu
-X-Microsoft-Antispam-PRVS: <MWHPR02MB3280F49FC028F0DEA23860D7DC2B0@MWHPR02MB3280.namprd02.prod.outlook.com>
+	RULEID:(22001)(8251501002)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603199);
+	SRVR:SN1PR02MB1343; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1343;
+	3:vxrp71TQfL/iKj72gLLqA0EuftSTG4vwlzXJb7XVCPPEBw3a8J8ArN3eSt4fMVXqCdCO0bXYb0ioLY1iSEbPBPtu5x4c4WjswxE6E36lT2uE/gflaNbK/sNm4ncC9or6tkWCHsBhCiRDMHdEeqXuk5oc70P1d1xYrBTerNQXUBdgVrFBStimJhN92RR9yhu3+TC3ekrgimf0owLDvDEjAX85kFQxn4vWVna+8MqGgc4hDx9/fruTuMBdWuDphik/C1dVPMkt+AK9v8mHMgVqnCh6F7SfYWVR+jwdQd+1mMxgiGZeVafgZ2e0WGvvhm2NX45yu69zFCSYtGE9Vh7Ak6Dl4Nlq9IRcnQHwh9L257o=;
+	25:BgowZ0djnJ4AwJTJwricXK8eL389yzPNHxDqEEBaoqXLb57+9qKwOyUwZLCk9NpEf9kveSuLDVbuYirp092uS45yliIMRfvmLdZoZe+eZEON8fZ7uRh4Mama78ORyydsPEKQcNrJkepiohwErzrqEbkLAG8uZZgccTkZcM+e8iT/3euJICT5GaLU7TaGrCPXi7YMx/NmuRSE4DTyP9L57uOiJOPtJ6EdvzXI/mo7L9tiLoG79cdTQQzYiD3jdxyj9rrzJTmsxYZiAgc20t/z69Xgu/8H1R/ybtI+YpXL1cg094ZFaTTcztbwiSQ8Ydy6TGR7rZNm/Y3RpxNZoFORVCU6qzopwliiEV7VkbEv7OQ=
+X-MS-TrafficTypeDiagnostic: SN1PR02MB1343:
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1343;
+	31:Caz9to2S0kwFUfzBM8405mVRkixiJPjCIKcAksaShUy9J2XPGWQ4tmY9eBmcX6h3qMeUT+GZ3CMNApBGmTlflt8RSA1GJPOL5n176Il67O0SO+GuRsjSePAhUxvb1gBlwwv+oCaEFO0B+UbskDYxY5ivcoq9Y43YjzZCTTgeHwTZm0E4+NhraGLwxctYZ1h15LMeCVC4YxAQIYFwjC9CyuMW6rG6P8qmd3dVR+3I4Jw=;
+	20:MtyyKv4iizxjLIIkd/nvBPZzyn8vtB4xs0UtOPaMUokMH2DBCJicHuyZvkeIHNKglF762/afMR1443wnm3T804Ic43eG04JXvVzTTmNf3waE6jcgmTo4grkPk2hJqQ8SqXxYEVPXYqoZAmoH7NsGz6bCPiZyp4hDaAHgV3r1D7Lot+WGH1iEeTnLPpC+rIHAPxQ5L+re1CNQc0KgdSgUvmUoqBFn7UbhINSnM2+T0SrpVyPOYE3pzUqGFDVfyGsQaZ6sZgsZsdJ1L9iMJqdSrVRecqa1kn/i1KCkEU7Qts9Dfs9k5fwz1qIiYuRjYjnrHK4BrLDcdP4SP12iiU78KWix/QKFzplIeq6vZTEhbpg+LEWH7YIVu+fIpi7NOvs+8NiWrnPpGCI+8oqwg1pb0pJpfh1hbf0MRYFN+tzQUrDyBX8b2gXEoGwqlqLSjAP2wCeBBJ+VqTqdjSEu8FTLeDfFB+lpnO71MLx0OZ31I1XFpKhFdyTYb+FWxfzqmB/J
+X-Microsoft-Antispam-PRVS: <SN1PR02MB13439AA1F143FC42060729FCDC2B0@SN1PR02MB1343.namprd02.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(93006095)(93004095)(3002001)(10201501046)(3231022)(100000703101)(100105400095)(6055026)(6041248)(20161123555025)(20161123558100)(20161123562025)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123560025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:MWHPR02MB3280; BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(8121501046)(5005006)(93006095)(93004095)(100000703101)(100105400095)(10201501046)(3231022)(3002001)(6055026)(6041248)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123564025)(20161123562025)(20161123560025)(20161123558100)(20161123555025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:SN1PR02MB1343; BCL:0; PCL:0;
 	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:MWHPR02MB3280; 
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR02MB3280;
-	4:GUM70DKTDtRHsIcbUn6ks/xTiT6ay7iWRUVuDCg5jHcQkwoVjxVrVIt88SO9EV5vbbYmCj9DvZ1cyFg8rVhGL27EyR9NH4ZhQVcHnRZoFs8VTp0iaCh2M3kice21HqZyzanwqmNp4LmFYgPeXBxfLJdlK63AjeTrab3IeFTZUv7tgWe+SS1tAbAeo6phIClsyf7tfuzAZkvx/IZi1NrfnqIjIe2PjDWDrMPfVRWq07HUjO0QgfAV84SJwC1T6QMmXBpZLBAmML8JX+nEIBMbjGIFLJJAkn9SHvM/dnpqvodYZbGVcZfyHLaSZWJvdrCg1oY2XMCCFdBpBKTfFbuybQ==
+	SRVR:SN1PR02MB1343; 
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1343;
+	4:TQHqDZH1NNGZ+iVae8XvhcyM4fO8/vim3zUx8xERddgKWCmJEU2/TUAbzXETWFCDTmEcCP7384ZDPiNhSOxw8tBC482C4B7kjISU2vGStvAiwhm9x1KZ0oTl2u5i9p95+ScEnWvQl/wxQgKU9zjQy6dhR6/5RmInLkUMPchhJGYhsB0FwChtqBBcZvXGwWtz4AiqsFLRGhMI5GZeT+syvVGR3BKvfq4Gui3Vnui2Bw0StNCEOmcv5x28zCxqOXYn9coo3lldb3LTrNatMT+XbKqCq7WOG9GCOJFd53ae5RXtcFNJ19xKhv9mPg+pA98su4GtwrMl2VcHQGkMxFa+hw==
 X-Forefront-PRVS: 0490BBA1F0
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; MWHPR02MB3280;
-	23:M4yXLvrrk7hQD3GgwDEXQdYa8BIUYro1NVxmVhrIF?=
-	=?us-ascii?Q?BHe4L5iwWB48op+UlWxSqeUwpGbFU08yYOyfCtqYMrwwHRM3HjB0XS1VoshR?=
-	=?us-ascii?Q?wz66HKBlPQvlMAt5GW/8J9f+SiTzXfVUXt0d612v61bMNZFgaVwHAopF04US?=
-	=?us-ascii?Q?o/dfrkJc9XiLLs9vIKuR0E4D00ZnDw2hi3U8Dg5eLpSs3ywqofX7zjv6UOiy?=
-	=?us-ascii?Q?Hx1tuhR5NCwFO28dcO01CoBY8yMFtUBx+A5HibZYPOOQ3H+x/8iU8cRoCsmC?=
-	=?us-ascii?Q?ERNkmDgcW8eOqEkE3SneBPzsyV4MlkDmv/1ZTc/TdCe3dVUCVNJitxSH5BOb?=
-	=?us-ascii?Q?mLTwvcOvgA0ZACFDRMpDVz8U6j8N2wVsF4/CLb0xgUB1smUrxtD0OMBCy3FO?=
-	=?us-ascii?Q?aj6QkBjxGknU9B1R4keNVYF/7MePPgae+fTy59PnYJun5op0Cpfzyao6Mk8N?=
-	=?us-ascii?Q?1X1f4QMy/03rv19qEltT1uaiUA/5P0L9zuY1B2dSDrl8yN4tg+c8w+Rrsygg?=
-	=?us-ascii?Q?mqtAOK8QoCV5lCDSH7MDkJ0eT+vvDn3b0fqGIjUxPxpxU1+6fEoQFin81S+x?=
-	=?us-ascii?Q?Lj2TkGqlcUBTNDntiXCKy63OdS30K49veQWfxLDuYgNjHbDyYqy5DsWiHK4e?=
-	=?us-ascii?Q?KSmlG41KfPRK594/zJtiJr1VESJWGWbK7HvhvBTQnWylU3qZHXNTzQPvUbVE?=
-	=?us-ascii?Q?RvuRwkWxiOkY9g3Sw3zfoH3dHF0vxa4ZxaGZtcWaYF9kvj+y5PD6/jDp7W4u?=
-	=?us-ascii?Q?Kma8VnaCRjt2NyYY5SP/xxjwhXh0ejPs9XGA4Kcm5MWrj6HP0nWuOGgpcxwe?=
-	=?us-ascii?Q?Ax4T+lvEth66LtDy4yrhfuoIUHkcWbWb4l7+51G153ZdFI8pZp5QMsPN1LqV?=
-	=?us-ascii?Q?C/Oq5jWpKf4y4UkJDVRu+UbChraElR3SmXpMHUPfvpHRLE+4AMwoANONqeH1?=
-	=?us-ascii?Q?nz0/A2Kb7v6mo0ESaqCEV0kWjHeNH5LogU5oedK8laLIgKT3T4KenbkNupCd?=
-	=?us-ascii?Q?lP5yREIBxBPfj65fMeVpzOjhB1wzngEHyAqtvFtiFV+Ag=3D=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; MWHPR02MB3280;
-	6:S5wNM6tFkRebInrsDyoxsjanWS1RwoiyCST0j9zhXT7cCltYLI7FM7QClCBdzPxTDtDI9p3mgBgMOJ8orTL2gNjoiAx57Y4pFgUUjMea1AmRxS6UkivUim8p1jJhWVPlvyj2W/kLVB+Ml0jUf2dhnZZh9rQNhAyVKTjNRGm7POrSflitAYzQMbGE2/5N2xe/NgMoSvSZpyFXGu4uONTftSSnvaWKypuc9mlkpRUoCctXZPlvgx+Jd822HPIqNVc35lYnw1V/IltJFtYTlfjNZtlpW2N0N8/aoIHLeQvp7WuQ+rw6UnwAnj0tGkaUrNAL0EDMsgoUbwb2iU6Vc2RiYa2xJE88UYL7SNdTKwoa4U0=;
-	5:RhXg3qqzRT8xxapAIHwNxCG2ZbDAQ/CBmRzF7rUP4eKISh9rWxXmNchEf8KwfbWguK/BrJEnobTSvnQdENaG9wfwKfHx89F7pSQHjmne3m2CzLPQtEIlzqRAekE8ejRVrQVQaPrdPZq0iHmGydttYdQ9Kgs76ukREPXGCYdCFF0=;
-	24:OkNcSpia1U2PX36jMoFrkANrwARHfpY4RbXwDEWUUzVOD1GvhS1r/0z+mSQVAdw9xnbNO9GCSg+42KaTUs+Jwcs8JeucDXkH/ikDg3uvXiU=;
-	7:yEUnEKwmtZvOiAFpPNWFVuLxdHaQJSkFYZx0rSZeP/KUGAZp9tORv8jJPA6wzgTpEUBN8LpN2ofTylcZ/sBP73l2HYIyrDjLxeroRhFVZknsV94WmPYK7Lfp9c0sl6NmxA4AA6Z8DKfOALhFvTmLT3fBCBM274tMs58q7u0Q+W9ESBrDJ3YbGHODdRhlvmKS/3z3BlYsQeoHrC/3jPtIZ4cHEZLWP1Yo10cEkj9Ev2CPe8930TL3DY1aSD8Is7P/
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; SN1PR02MB1343;
+	23:MK4A4j/ccxIIrVKYgNiBuOpquy9rEEBaxZggmwXl9?=
+	=?us-ascii?Q?vJkQY27yLy/U6014dViUnDbJqBpFLitJerjMHOfjX5uLJwlofn6ra2OWeIpf?=
+	=?us-ascii?Q?OTyzf+IT59+nJFVyvpeDXa+Wa232PaVuWRBVE9Eh4F1LrIYl9VlYMhBoLYHm?=
+	=?us-ascii?Q?nMLq20wD3uKtZ85JBJzyjElGckdUu/ThKsB9yBDtG+EVQ2wN7BHkdbY++zJZ?=
+	=?us-ascii?Q?PuapqP05hgTUHZtwZ7SxThWC6R92MypTSZ9l2Zw/DNVNhn/05NL4mPQoM7oP?=
+	=?us-ascii?Q?7WSMq9jU3XGGjRWCu7IowRjRRdHnsyd/E2q+UfFeMLu5WCbejTCnIb2TtQoT?=
+	=?us-ascii?Q?28yR23D07ZJEU0uJXsI0tzDe/WtRwMrruXUHTqVenHkDZhqMlK+lTjVF9wDU?=
+	=?us-ascii?Q?LFwG5RCFSFWX8AQiLn4Yk37QIv7+39SrMHOcqAt0bj5jvURpJlKCMP98t7yb?=
+	=?us-ascii?Q?4iau1C4khlYiENnfDlWbHCt3GXDbqA5xI45lOQtFvvdg8uF4B5/lPwlSg6Yx?=
+	=?us-ascii?Q?PqnMuDlLPcEP0S8d2VwECIg+vZLmH+/gyDHtMxefCXYjaEXKiEa9T8wUwq8l?=
+	=?us-ascii?Q?omcqhURxMV9sY0CLiOCYxWlXPto/3itLIUQRBEEk+AOfDYpmCpnWQtzhEbYd?=
+	=?us-ascii?Q?8aiTySk8Sv91XhG794S2qEleMJQXB5C3BNQqAcKO5wbu4cGsHWxaqN4tBxIZ?=
+	=?us-ascii?Q?2Wp6H5Cp9B6CeR3BP3zp7LxWjHncMhCTiTB+OW2ui9O5AmQ3Dp9X0JHg8/nd?=
+	=?us-ascii?Q?LFVrz9Sz/tSlF299c0jDPpADCujcEbtX+ww6bldwljD8GmbBB3OPb9eU1uKI?=
+	=?us-ascii?Q?gLHctxn37svsjbuL8aQpziCWDLmz6GenZ+nU122mMdE+AO1QzL7MQP0VeX4s?=
+	=?us-ascii?Q?xChjS5RhJ9XZ0NjtLHenxET+pQvL4oFyz7ZzLOmCqmBy4cc+g22EFxiJGgT1?=
+	=?us-ascii?Q?2sPq2RC+0N6e71zix2yvnvf8CLkwi0yLpbOHSagSgwyEx41F6a/PTzg4fFHK?=
+	=?us-ascii?Q?I2IJP7K8JXA9n6GSE2PDIr6SmeM1EY7P7l6tIGEZxk2Habg0VPG3ggftMWGa?=
+	=?us-ascii?Q?3hU/eNIEqEmqFZjRO1SNUxbdykJ?=
+X-Microsoft-Exchange-Diagnostics: 1; SN1PR02MB1343;
+	6:HYZB99KPTEE+TmNl3MewK75v6Z4JIHITcr34Aj3d91+vgcYtsTT9WPV2IS4U3psp/Ir9AVXJzrVMIZOLEKmv1a761AjmuEY5Ix6MNg3wYV4bAb3+xA5FDzKeZegrS0ePSwfkwK4pRoVB/fzP1sDHrWrW5oaM9iXQ3zdWiahho/KM+pphqzG93CIf47V00GmuyHbyuzQqXHzfnMipiPRrqRtA280hB5r3ZsiP9UVYul8DZzdwMBwBNoXCj7mAMD2DT+l/wUGCoGLG6LG0bWvcbbK7r+w0XJ+vwyXFitMXafclub1ToL6tCAPFoSsHOu/33gWP+SBfvr4EYK/arSfvnnUhIyXDxLUhLDpNFk8YWT0=;
+	5:nJ5HmepNDUWaS+8TQSTgKteV4bzgzUVUaPU5lVm6qWTHmcSnv3qOKUW37hYnhoR25GwiQtmUTqkmh7uVhy5GwfTi6P847nEIYc6I5zoJwRgrSvke2pL055WC5k+yaBlD+edXhnR74m8jJoZpceNQqmqHNciwDUeYbK8eAbIhZ20=;
+	24:zeDvA7L/6VL5txnDixuod/b7T1zx2v6Q2inYDE8+WB0knWay6aQXW76Q9KA0LR+51GH7w/2iBAsmBZPfKFEVi0b+72a0tryTGmrvDIJOU5s=;
+	7:tUdJroEhHtGlqF75XH8V1nf6aY2WWm5RuRWXZXtMafGQgCDG7OqbJeq40nALS/uxBbsxtwZ4PMD+OXJikyPX6sFOEqwjrOg4WeZDrJzpWDxrhuuMwclYSX97/4vPZkb9SVKwIWlTItnjRVtVtddNsQXPKDbFIJZl/Bxg/cG5NE138b6UQAzCR04JiIPJky/O8Jc42rDJUgkt8u+Qza01PVG8EmG2IR+2nzYFolLBqrtwf2WwK9Jt6wtuseJN6HVY
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2017 22:40:05.8627 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c2d6a89c-d606-4406-594b-08d52ae77cd8
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2017 22:40:03.7616 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f51ca6a6-f6e2-44fd-bf1f-08d52ae77b97
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
+	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR02MB3280
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR02MB1343
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.37.60
-Subject: [Qemu-trivial] [PATCH v5 24/29] hw/sparc*: Replace fprintf(stderr,
+X-Received-From: 104.47.34.42
+Subject: [Qemu-trivial] [PATCH v5 22/29] hw/scsi: Replace fprintf(stderr,
  "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -156,44 +160,34 @@ error_report(). The functions were renamed with these commands and then
 compiler issues where manually fixed.
 
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
-report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_re=
-port("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
-("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
-\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
-"\2);|Ig}' \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
-2);|Ig}' \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
-;|Ig}' \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
-Ig}' \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
-}' \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
- \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
@@ -202,201 +196,278 @@ find ./* -type f -exec sed -i \
 Some lines where then manually tweaked to pass checkpatch.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Fabien Chouteau <chouteau@adacore.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Alexander Graf <agraf@suse.de>
+Acked-by: David Gibson <david@gibson.dropbear.id.au> (virtio_scsi part)
 ---
 V2:
  - Split hw patch into individual directories
 
- hw/sparc/leon3.c     | 16 +++++++---------
- hw/sparc/sun4m.c     | 16 +++++++---------
- hw/sparc64/niagara.c |  4 ++--
- hw/sparc64/sun4u.c   | 10 +++++-----
- 4 files changed, 21 insertions(+), 25 deletions(-)
+ hw/scsi/lsi53c895a.c            |  4 ++--
+ hw/scsi/spapr_vscsi.c           | 49 +++++++++++++++++++++--------------------
+ hw/scsi/virtio-scsi-dataplane.c |  6 ++---
+ 3 files changed, 30 insertions(+), 29 deletions(-)
 
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index 8c66d5af24..bba3aa3dee 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index 191505df5b..7c9a930e2f 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -14,7 +14,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-
++#include "qemu/error-report.h"
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "hw/scsi/scsi.h"
+@@ -1501,7 +1501,7 @@ again:
+            This is apparently sufficient to beat the drivers into submission.
+          */
+         if (!(s->sien0 & LSI_SIST0_UDC))
+-            fprintf(stderr, "inf. loop with UDC masked\n");
++            error_report("inf. loop with UDC masked");
+         lsi_script_scsi_interrupt(s, LSI_SIST0_UDC, 0);
+         lsi_disconnect(s);
+     } else if (s->istat1 & LSI_ISTAT1_SRUN && !s->waiting) {
+diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+index 360db53ac8..8c4eabcf3d 100644
+--- a/hw/scsi/spapr_vscsi.c
++++ b/hw/scsi/spapr_vscsi.c
+@@ -32,6 +32,7 @@
+  *  - Maybe do autosense (PAPR seems to mandate it, linux doesn't care)
   */
  #include "qemu/osdep.h"
 +#include "qemu/error-report.h"
- #include "qapi/error.h"
  #include "qemu-common.h"
  #include "cpu.h"
-@@ -139,9 +140,8 @@ static void leon3_generic_hw_init(MachineState *machine=
-)
-=20
-     /* Allocate RAM */
-     if ((uint64_t)ram_size > (1UL << 30)) {
--        fprintf(stderr,
--                "qemu: Too much memory for this machine: %d, maximum 1G\n"=
-,
--                (unsigned int)(ram_size / (1024 * 1024)));
-+        error_report("Too much memory for this machine: %d, maximum 1G",
-+                     (unsigned int)(ram_size / (1024 * 1024)));
-         exit(1);
+ #include "hw/hw.h"
+@@ -179,7 +180,7 @@ static int vscsi_send_iu(VSCSIState *s, vscsi_req *req,
+     rc = spapr_vio_dma_write(&s->vdev, req->crq.s.IU_data_ptr,
+                              &req->iu, length);
+     if (rc) {
+-        fprintf(stderr, "vscsi_send_iu: DMA write failure !\n");
++        error_report("vscsi_send_iu: DMA write failure !");
      }
-=20
-@@ -167,19 +167,18 @@ static void leon3_generic_hw_init(MachineState *machi=
-ne)
+ 
+     req->crq.s.valid = 0x80;
+@@ -197,7 +198,7 @@ static int vscsi_send_iu(VSCSIState *s, vscsi_req *req,
+ 
+     rc1 = spapr_vio_send_crq(&s->vdev, req->crq.raw);
+     if (rc1) {
+-        fprintf(stderr, "vscsi_send_iu: Error sending response\n");
++        error_report("vscsi_send_iu: Error sending response");
+         return rc1;
      }
-=20
-     if (bios_size > prom_size) {
--        fprintf(stderr, "qemu: could not load prom '%s': file too big\n",
--                filename);
-+        error_report("could not load prom '%s': file too big", filename);
-         exit(1);
+ 
+@@ -330,7 +331,7 @@ static int vscsi_fetch_desc(VSCSIState *s, struct vscsi_req *req,
+         break;
      }
-=20
-     if (bios_size > 0) {
-         ret =3D load_image_targphys(filename, 0x00000000, bios_size);
-         if (ret < 0 || ret > prom_size) {
--            fprintf(stderr, "qemu: could not load prom '%s'\n", filename);
-+            error_report("could not load prom '%s'", filename);
-             exit(1);
+     default:
+-        fprintf(stderr, "VSCSI:   Unknown format %x\n", req->dma_fmt);
++        error_report("VSCSI:   Unknown format %x", req->dma_fmt);
+         return -1;
+     }
+ 
+@@ -518,7 +519,7 @@ static void vscsi_transfer_data(SCSIRequest *sreq, uint32_t len)
+ 
+     trace_spapr_vscsi_transfer_data(sreq->tag, len, req);
+     if (req == NULL) {
+-        fprintf(stderr, "VSCSI: Can't find request for tag 0x%x\n", sreq->tag);
++        error_report("VSCSI: Can't find request for tag 0x%x", sreq->tag);
+         return;
+     }
+ 
+@@ -527,7 +528,7 @@ static void vscsi_transfer_data(SCSIRequest *sreq, uint32_t len)
+         rc = vscsi_srp_transfer_data(s, req, req->writing, buf, len);
+     }
+     if (rc < 0) {
+-        fprintf(stderr, "VSCSI: RDMA error rc=%d!\n", rc);
++        error_report("VSCSI: RDMA error rc=%d!", rc);
+         req->dma_error = true;
+         scsi_req_cancel(req->sreq);
+         return;
+@@ -547,7 +548,7 @@ static void vscsi_command_complete(SCSIRequest *sreq, uint32_t status, size_t re
+ 
+     trace_spapr_vscsi_command_complete(sreq->tag, status, req);
+     if (req == NULL) {
+-        fprintf(stderr, "VSCSI: Can't find request for tag 0x%x\n", sreq->tag);
++        error_report("VSCSI: Can't find request for tag 0x%x", sreq->tag);
+         return;
+     }
+ 
+@@ -639,7 +640,7 @@ static void *vscsi_load_request(QEMUFile *f, SCSIRequest *sreq)
+     memset(req, 0, sizeof(*req));
+     rc = vmstate_load_state(f, &vmstate_spapr_vscsi_req, req, 1);
+     if (rc) {
+-        fprintf(stderr, "VSCSI: failed loading request tag#%u\n", sreq->tag);
++        error_report("VSCSI: failed loading request tag#%u", sreq->tag);
+         return NULL;
+     }
+     assert(req->active);
+@@ -827,7 +828,7 @@ static int vscsi_process_tsk_mgmt(VSCSIState *s, vscsi_req *req)
+     uint64_t tag = iu->srp.rsp.tag;
+     uint8_t sol_not = iu->srp.cmd.sol_not;
+ 
+-    fprintf(stderr, "vscsi_process_tsk_mgmt %02x\n",
++    error_report("vscsi_process_tsk_mgmt %02x",
+             iu->srp.tsk_mgmt.tsk_mgmt_func);
+ 
+     d = vscsi_device_find(&s->bus, be64_to_cpu(req->iu.srp.tsk_mgmt.lun), &lun);
+@@ -932,10 +933,10 @@ static int vscsi_handle_srp_req(VSCSIState *s, vscsi_req *req)
+     case SRP_CRED_RSP:
+     case SRP_AER_REQ:
+     case SRP_AER_RSP:
+-        fprintf(stderr, "VSCSI: Unsupported opcode %02x\n", opcode);
++        error_report("VSCSI: Unsupported opcode %02x", opcode);
+         break;
+     default:
+-        fprintf(stderr, "VSCSI: Unknown type %02x\n", opcode);
++        error_report("VSCSI: Unknown type %02x", opcode);
+     }
+ 
+     return done;
+@@ -953,7 +954,7 @@ static int vscsi_send_adapter_info(VSCSIState *s, vscsi_req *req)
+     rc = spapr_vio_dma_read(&s->vdev, be64_to_cpu(sinfo->buffer),
+                             &info, be16_to_cpu(sinfo->common.length));
+     if (rc) {
+-        fprintf(stderr, "vscsi_send_adapter_info: DMA read failure !\n");
++        error_report("vscsi_send_adapter_info: DMA read failure !");
+     }
+ #endif
+     memset(&info, 0, sizeof(info));
+@@ -967,7 +968,7 @@ static int vscsi_send_adapter_info(VSCSIState *s, vscsi_req *req)
+     rc = spapr_vio_dma_write(&s->vdev, be64_to_cpu(sinfo->buffer),
+                              &info, be16_to_cpu(sinfo->common.length));
+     if (rc)  {
+-        fprintf(stderr, "vscsi_send_adapter_info: DMA write failure !\n");
++        error_report("vscsi_send_adapter_info: DMA write failure !");
+     }
+ 
+     sinfo->common.status = rc ? cpu_to_be32(1) : 0;
+@@ -987,7 +988,7 @@ static int vscsi_send_capabilities(VSCSIState *s, vscsi_req *req)
+     req_len = len = be16_to_cpu(vcap->common.length);
+     buffer = be64_to_cpu(vcap->buffer);
+     if (len > sizeof(cap)) {
+-        fprintf(stderr, "vscsi_send_capabilities: capabilities size mismatch !\n");
++        error_report("vscsi_send_capabilities: capabilities size mismatch !");
+ 
+         /*
+          * Just read and populate the structure that is known.
+@@ -997,7 +998,7 @@ static int vscsi_send_capabilities(VSCSIState *s, vscsi_req *req)
+     }
+     rc = spapr_vio_dma_read(&s->vdev, buffer, &cap, len);
+     if (rc)  {
+-        fprintf(stderr, "vscsi_send_capabilities: DMA read failure !\n");
++        error_report("vscsi_send_capabilities: DMA read failure !");
+     }
+ 
+     /*
+@@ -1013,7 +1014,7 @@ static int vscsi_send_capabilities(VSCSIState *s, vscsi_req *req)
+ 
+     rc = spapr_vio_dma_write(&s->vdev, buffer, &cap, len);
+     if (rc)  {
+-        fprintf(stderr, "vscsi_send_capabilities: DMA write failure !\n");
++        error_report("vscsi_send_capabilities: DMA write failure !");
+     }
+     if (req_len > len) {
+         /*
+@@ -1034,11 +1035,11 @@ static int vscsi_handle_mad_req(VSCSIState *s, vscsi_req *req)
+ 
+     switch (be32_to_cpu(mad->empty_iu.common.type)) {
+     case VIOSRP_EMPTY_IU_TYPE:
+-        fprintf(stderr, "Unsupported EMPTY MAD IU\n");
++        error_report("Unsupported EMPTY MAD IU");
+         retlen = sizeof(mad->empty_iu);
+         break;
+     case VIOSRP_ERROR_LOG_TYPE:
+-        fprintf(stderr, "Unsupported ERROR LOG MAD IU\n");
++        error_report("Unsupported ERROR LOG MAD IU");
+         retlen = sizeof(mad->error_log);
+         break;
+     case VIOSRP_ADAPTER_INFO_TYPE:
+@@ -1053,7 +1054,7 @@ static int vscsi_handle_mad_req(VSCSIState *s, vscsi_req *req)
+         request_handled = true;
+         break;
+     default:
+-        fprintf(stderr, "VSCSI: Unknown MAD type %02x\n",
++        error_report("VSCSI: Unknown MAD type %02x",
+                 be32_to_cpu(mad->empty_iu.common.type));
+         /*
+          * PAPR+ says that "The length field is set to the length
+@@ -1078,7 +1079,7 @@ static void vscsi_got_payload(VSCSIState *s, vscsi_crq *crq)
+ 
+     req = vscsi_get_req(s);
+     if (req == NULL) {
+-        fprintf(stderr, "VSCSI: Failed to get a request !\n");
++        error_report("VSCSI: Failed to get a request !");
+         return;
+     }
+ 
+@@ -1088,7 +1089,7 @@ static void vscsi_got_payload(VSCSIState *s, vscsi_crq *crq)
+      * of the structure.
+      */
+     if (crq->s.IU_length > sizeof(union viosrp_iu)) {
+-        fprintf(stderr, "VSCSI: SRP IU too long (%d bytes) !\n",
++        error_report("VSCSI: SRP IU too long (%d bytes) !",
+                 crq->s.IU_length);
+         vscsi_put_req(req);
+         return;
+@@ -1097,7 +1098,7 @@ static void vscsi_got_payload(VSCSIState *s, vscsi_crq *crq)
+     /* XXX Handle failure differently ? */
+     if (spapr_vio_dma_read(&s->vdev, crq->s.IU_data_ptr, &req->iu,
+                            crq->s.IU_length)) {
+-        fprintf(stderr, "vscsi_got_payload: DMA read failure !\n");
++        error_report("vscsi_got_payload: DMA read failure !");
+         vscsi_put_req(req);
+         return;
+     }
+@@ -1158,16 +1159,16 @@ static int vscsi_do_crq(struct VIOsPAPRDevice *dev, uint8_t *crq_data)
+         case VIOSRP_AIX_FORMAT:
+         case VIOSRP_LINUX_FORMAT:
+         case VIOSRP_INLINE_FORMAT:
+-            fprintf(stderr, "vscsi_do_srq: Unsupported payload format %02x\n",
++            error_report("vscsi_do_srq: Unsupported payload format %02x",
+                     crq.s.format);
+             break;
+         default:
+-            fprintf(stderr, "vscsi_do_srq: Unknown payload format %02x\n",
++            error_report("vscsi_do_srq: Unknown payload format %02x",
+                     crq.s.format);
          }
-     } else if (kernel_filename =3D=3D NULL && !qtest_enabled()) {
--        fprintf(stderr, "Can't read bios image %s\n", filename);
-+        error_report("Can't read bios image %s", filename);
-         exit(1);
+         break;
+     default:
+-        fprintf(stderr, "vscsi_do_crq: unknown CRQ %02x %02x ...\n",
++        error_report("vscsi_do_crq: unknown CRQ %02x %02x ...",
+                 crq.raw[0], crq.raw[1]);
+     };
+ 
+diff --git a/hw/scsi/virtio-scsi-dataplane.c b/hw/scsi/virtio-scsi-dataplane.c
+index add4b3f4a4..e047361310 100644
+--- a/hw/scsi/virtio-scsi-dataplane.c
++++ b/hw/scsi/virtio-scsi-dataplane.c
+@@ -97,7 +97,7 @@ static int virtio_scsi_vring_init(VirtIOSCSI *s, VirtQueue *vq, int n,
+     /* Set up virtqueue notify */
+     rc = virtio_bus_set_host_notifier(VIRTIO_BUS(qbus), n, true);
+     if (rc != 0) {
+-        fprintf(stderr, "virtio-scsi: Failed to set host notifier (%d)\n",
++        error_report("virtio-scsi: Failed to set host notifier (%d)",
+                 rc);
+         s->dataplane_fenced = true;
+         return rc;
+@@ -141,8 +141,8 @@ int virtio_scsi_dataplane_start(VirtIODevice *vdev)
+     /* Set up guest notifier (irq) */
+     rc = k->set_guest_notifiers(qbus->parent, vs->conf.num_queues + 2, true);
+     if (rc != 0) {
+-        fprintf(stderr, "virtio-scsi: Failed to set guest notifiers (%d), "
+-                "ensure -enable-kvm is set\n", rc);
++        error_report("virtio-scsi: Failed to set guest notifiers (%d), "
++                "ensure -enable-kvm is set", rc);
+         goto fail_guest_notifiers;
      }
-     g_free(filename);
-@@ -192,8 +191,7 @@ static void leon3_generic_hw_init(MachineState *machine=
-)
-         kernel_size =3D load_elf(kernel_filename, NULL, NULL, &entry, NULL=
-, NULL,
-                                1 /* big endian */, EM_SPARC, 0, 0);
-         if (kernel_size < 0) {
--            fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                    kernel_filename);
-+            error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
-         }
-         if (bios_size <=3D 0) {
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 24c2b8a555..e9e0ef0630 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -260,8 +260,7 @@ static unsigned long sun4m_load_kernel(const char *kern=
-el_filename,
-                                               KERNEL_LOAD_ADDR,
-                                               RAM_size - KERNEL_LOAD_ADDR)=
-;
-         if (kernel_size < 0) {
--            fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                    kernel_filename);
-+            error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
-         }
-=20
-@@ -272,8 +271,8 @@ static unsigned long sun4m_load_kernel(const char *kern=
-el_filename,
-                                               INITRD_LOAD_ADDR,
-                                               RAM_size - INITRD_LOAD_ADDR)=
-;
-             if (initrd_size < 0) {
--                fprintf(stderr, "qemu: could not load initial ram disk '%s=
-'\n",
--                        initrd_filename);
-+                error_report("could not load initial ram disk '%s'",
-+                             initrd_filename);
-                 exit(1);
-             }
-         }
-@@ -681,7 +680,7 @@ static void prom_init(hwaddr addr, const char *bios_nam=
-e)
-         ret =3D -1;
-     }
-     if (ret < 0 || ret > PROM_SIZE_MAX) {
--        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
-+        error_report("could not load prom '%s'", bios_name);
-         exit(1);
-     }
- }
-@@ -747,10 +746,9 @@ static void ram_init(hwaddr addr, ram_addr_t RAM_size,
-=20
-     /* allocate RAM */
-     if ((uint64_t)RAM_size > max_mem) {
--        fprintf(stderr,
--                "qemu: Too much memory for this machine: %d, maximum %d\n"=
-,
--                (unsigned int)(RAM_size / (1024 * 1024)),
--                (unsigned int)(max_mem / (1024 * 1024)));
-+        error_report("Too much memory for this machine: %d, maximum %d",
-+                     (unsigned int)(RAM_size / (1024 * 1024)),
-+                     (unsigned int)(max_mem / (1024 * 1024)));
-         exit(1);
-     }
-     dev =3D qdev_create(NULL, "memory");
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index 7a723326c5..996ce2ada0 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -152,8 +152,8 @@ static void niagara_init(MachineState *machine)
-             dinfo->is_default =3D 1;
-             rom_add_file_fixed(blk_bs(blk)->filename, NIAGARA_VDISK_BASE, =
--1);
-         } else {
--            fprintf(stderr, "qemu: could not load ram disk '%s'\n",
--                    blk_bs(blk)->filename);
-+            error_report("could not load ram disk '%s'",
-+                         blk_bs(blk)->filename);
-             exit(1);
-         }
-     }
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index 1672f256e7..1fd1c3c861 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -166,8 +167,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_fi=
-lename,
-                                               RAM_size - KERNEL_LOAD_ADDR)=
-;
-         }
-         if (kernel_size < 0) {
--            fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                    kernel_filename);
-+            error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
-         }
-         /* load initrd above kernel */
-@@ -179,8 +179,8 @@ static uint64_t sun4u_load_kernel(const char *kernel_fi=
-lename,
-                                                *initrd_addr,
-                                                RAM_size - *initrd_addr);
-             if ((int)*initrd_size < 0) {
--                fprintf(stderr, "qemu: could not load initial ram disk '%s=
-'\n",
--                        initrd_filename);
-+                error_report("could not load initial ram disk '%s'",
-+                             initrd_filename);
-                 exit(1);
-             }
-         }
-@@ -327,7 +327,7 @@ static void prom_init(hwaddr addr, const char *bios_nam=
-e)
-         ret =3D -1;
-     }
-     if (ret < 0 || ret > PROM_SIZE_MAX) {
--        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
-+        error_report("could not load prom '%s'", bios_name);
-         exit(1);
-     }
- }
---=20
+ 
+-- 
 2.14.1
 
 
