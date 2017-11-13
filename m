@@ -1,48 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eEKTp-0002sT-WE
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 14:33:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45604)
+	id 1eEKjJ-00058t-Mt
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 14:49:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53212)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eEKTn-0002qF-OV
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 14:33:12 -0500
+	(envelope-from <eblake@redhat.com>) id 1eEKjH-000557-BO
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 14:49:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eEKTm-0003WL-Mn
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 14:33:11 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59558)
+	(envelope-from <eblake@redhat.com>) id 1eEKjG-0004hs-5K
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 14:49:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53956)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1eEKTg-0003So-Ac; Mon, 13 Nov 2017 14:33:04 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eEKj8-0004a4-M4; Mon, 13 Nov 2017 14:49:02 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 89D6D7653F;
-	Mon, 13 Nov 2017 19:33:02 +0000 (UTC)
-Received: from [10.18.17.35] (dhcp-17-35.bos.redhat.com [10.18.17.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E757B7F6A9;
-	Mon, 13 Nov 2017 19:33:01 +0000 (UTC)
-To: Vicente Jimenez Aguilar <googuy@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20171113182752.8223-1-googuy@gmail.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <d22ec102-065f-5570-52f8-f848e5f71640@redhat.com>
-Date: Mon, 13 Nov 2017 14:33:00 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <20171113182752.8223-1-googuy@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+	by mx1.redhat.com (Postfix) with ESMTPS id 80DD8C047B91;
+	Mon, 13 Nov 2017 19:49:01 +0000 (UTC)
+Received: from red.redhat.com (ovpn-123-105.rdu2.redhat.com [10.10.123.105])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 47867993DD;
+	Mon, 13 Nov 2017 19:49:00 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, vsementsov@virtuozzo.com, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 13 Nov 2017 13:48:57 -0600
+Message-Id: <20171113194857.13933-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 13 Nov 2017 19:33:02 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 13 Nov 2017 19:49:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Document mon's pretty
- parameter
+Subject: [Qemu-trivial] [PATCH for-2.11] nbd/client: Don't hard-disconnect
+ on ESHUTDOWN from server
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,47 +47,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2017 19:33:12 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 19:49:12 -0000
 
-Vicente,
+The NBD spec says that a server may fail any transmission request
+with ESHUTDOWN when it is apparent that no further request from
+the client can be successfully honored.  The client is supposed
+to then initiate a soft shutdown (wait for all remaining in-flight
+requests to be answered, then send NBD_CMD_DISC).  However, since
+qemu's server never uses ESHUTDOWN errors, this code was mostly
+untested since its introduction in commit b6f5d3b5.
 
-Thanks for helping to improve our documentation.
+More recently, I learned that nbdkit as the NBD server is able to
+send ESHUTDOWN errors, so I finally tested this code, and noticed
+that our client was special-casing ESHUTDOWN to cause a hard
+shutdown (immediate disconnect, with no NBD_CMD_DISC), but only
+if the server sends this error as a simple reply.  Further
+investigation found that commit d2febedb introduced a regression
+where structured replies behave differently than simple replies -
+but that the structured reply behavior is more in line with the
+spec (even if we still lack code in nbd-client.c to properly quit
+sending further requests).  So this patch reverts the portion of
+b6f5d3b5 that introduced an improper hard-disconnect special-case
+at the lower level, and leaves the future enhancement of a nicer
+soft-disconnect at the higher level for another day.
 
-On 11/13/2017 01:27 PM, Vicente Jimenez Aguilar wrote:
-> ---
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ nbd/client.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-This patch is missing a signed-off-by line, which we require for
-contributions to the project. If you'd like, you can reply to your patch
-email to add said line if further edits to the patch aren't required.
+diff --git a/nbd/client.c b/nbd/client.c
+index 4e15fc484d..eea236ca06 100644
+--- a/nbd/client.c
++++ b/nbd/client.c
+@@ -996,15 +996,9 @@ int nbd_receive_reply(QIOChannel *ioc, NBDReply *reply, Error **errp)
+         if (ret < 0) {
+             break;
+         }
+-
+         trace_nbd_receive_simple_reply(reply->simple.error,
+                                        nbd_err_lookup(reply->simple.error),
+                                        reply->handle);
+-        if (reply->simple.error == NBD_ESHUTDOWN) {
+-            /* This works even on mingw which lacks a native ESHUTDOWN */
+-            error_setg(errp, "server shutting down");
+-            return -EINVAL;
+-        }
+         break;
+     case NBD_STRUCTURED_REPLY_MAGIC:
+         ret = nbd_receive_structured_reply_chunk(ioc, &reply->structured, errp);
+-- 
+2.13.6
 
-[See https://wiki.qemu.org/Contribute/SubmitAPatch; this page is very
-long, so here's the relevant excerpt: "You must provide a Signed-off-by:
-line (this is a hard requirement because it's how you say "I'm legally
-okay to contribute this and happy for it to go into QEMU", modeled after
-the Linux kernel policy.) git commit -s or git format-patch -s will add
-one."]
-
-Every patch also needs a commit message of some kind, something akin to:
-
-"Documentation: document pretty parameter for mon option"
-
->  qemu-options.hx | 7 ++++--->  1 file changed, 4 insertions(+), 3 deletions(-)> > diff --git
-a/qemu-options.hx b/qemu-options.hx> index 3728e9b4dd..f06002689d
-100644> --- a/qemu-options.hx> +++ b/qemu-options.hx> @@ -3477,11
-+3477,12 @@ Like -qmp but uses pretty JSON formatting.>  ETEXI>  >
-DEF("mon", HAS_ARG, QEMU_OPTION_mon, \> -    "-mon
-[chardev=]name[,mode=readline|control]\n", QEMU_ARCH_ALL)> +    "-mon
-[chardev=]name[,mode=readline|control][,pretty[=on|off]]\n",
-QEMU_ARCH_ALL)>  STEXI> -@item -mon
-[chardev=]name[,mode=readline|control]> +@item -mon
-[chardev=]name[,mode=readline|control][,pretty[=on|off]]>  @findex -mon>
--Setup monitor on chardev @var{name}.> +Setup monitor on chardev
-@var{name}. @code{pretty} turn on JSON pretty printing> +easing human
-reading and debugging.>  ETEXI>  >  DEF("debugcon", HAS_ARG,
-QEMU_OPTION_debugcon, \>
-I'm not sure if any other changes are needed or not; it looks OK to me
-based on vl.c:2522 where the option is added at runtime.
-
-Thanks,
-John
 
