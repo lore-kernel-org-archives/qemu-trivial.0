@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eENNw-0002Iz-JR
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 17:39:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56598)
+	id 1eENNx-0002KY-1O
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 17:39:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eENNr-0002DO-M7
+	(envelope-from <alistai@xilinx.com>) id 1eENNu-0002Fk-4J
 	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 17:39:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eENNo-0006zC-Jq
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 17:39:15 -0500
-Received: from mail-cys01nam02on0046.outbound.protection.outlook.com
-	([104.47.37.46]:59760
+	(envelope-from <alistai@xilinx.com>) id 1eENNq-00070f-Vw
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 17:39:18 -0500
+Received: from mail-cys01nam02on0044.outbound.protection.outlook.com
+	([104.47.37.44]:19632
 	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eENNg-0006sK-VA; Mon, 13 Nov 2017 17:39:05 -0500
+	id 1eENNq-000706-KA; Mon, 13 Nov 2017 17:39:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=DWX+8uzs60In0pDgNFxckd5/ULNdINuTHq6bVgozZzo=;
-	b=mkEEWgjIOmpY8XvpHlc7OYO4MZvyuxBV9f3zBUMENvIeaEub3MWfcjJS//DoUhynLfLC/Bw7ZeyeVWOTKJQUxnC8VDDX7cAiKNVLgjq4jglyuFO6EsuYtKBnabzMEGWejkT2NMsltR/EmM4DtiiL9WGepp+za/2npaHQtY6Kv8E=
-Received: from MWHPR0201CA0019.namprd02.prod.outlook.com (10.167.160.160) by
-	DM5PR02MB3387.namprd02.prod.outlook.com (10.164.153.10) with Microsoft
+	bh=3sCVdQ7nZhopq35xrouOkeRHYdSgCrF+tRkwdjsFnrc=;
+	b=evGhAcsutnVwlKOL0XIA+yhgb4B3DZcsmG9qjGeRPi2YKEXTfcmBfbNXDXCFH+6a65r8VHTvPx0BYG8EpQv6SXCe2CzdQfnM5yJAhRwPnNkXEmwg5FTmwAVpo4Wk4UnSp3vW44sm6Bz833tfOg2HCbgsmxxQs3eI/unwL39dzSI=
+Received: from SN4PR0201CA0041.namprd02.prod.outlook.com (10.162.76.27) by
+	BN6PR02MB3378.namprd02.prod.outlook.com (10.161.152.166) with Microsoft
 	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
-	15.20.218.12; Mon, 13 Nov 2017 22:39:01 +0000
-Received: from BL2NAM02FT030.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::209) by MWHPR0201CA0019.outlook.office365.com
-	(2603:10b6:301:74::32) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
+	15.20.218.12; Mon, 13 Nov 2017 22:39:12 +0000
+Received: from SN1NAM02FT002.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::200) by SN4PR0201CA0041.outlook.office365.com
+	(2603:10b6:803:2e::27) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.218.12 via
-	Frontend Transport; Mon, 13 Nov 2017 22:39:01 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
-	header.d=none;nongnu.org; dmarc=bestguesspass action=none
+	Frontend Transport; Mon, 13 Nov 2017 22:39:11 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+	smtp.mailfrom=xilinx.com; suse.de; dkim=none (message not signed)
+	header.d=none;suse.de; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	BL2NAM02FT030.mail.protection.outlook.com (10.152.77.172) with
-	Microsoft SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	SN1NAM02FT002.mail.protection.outlook.com (10.152.72.94) with Microsoft
+	SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.197.9
-	via Frontend Transport; Mon, 13 Nov 2017 22:39:00 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:45068
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	via Frontend Transport; Mon, 13 Nov 2017 22:39:11 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENNb-0004VN-TL; Mon, 13 Nov 2017 14:38:59 -0800
+	id 1eENNm-000497-Mq; Mon, 13 Nov 2017 14:39:10 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENNb-0000Md-Ng; Mon, 13 Nov 2017 14:38:59 -0800
-Received: from xsj-pvapsmtp01 (xsj-smtp1.xilinx.com [149.199.38.66])
+	id 1eENNm-0000RI-K5; Mon, 13 Nov 2017 14:39:10 -0800
+Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vADMcnhH012436; Mon, 13 Nov 2017 14:38:49 -0800
+	vADMd7W7012573; Mon, 13 Nov 2017 14:39:07 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eENNQ-0000Ki-TN; Mon, 13 Nov 2017 14:38:48 -0800
+	id 1eENNj-0000Qm-6K; Mon, 13 Nov 2017 14:39:07 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>,
-	<armbru@redhat.com>, <qemu-arm@nongnu.org>
-Date: Mon, 13 Nov 2017 14:34:48 -0800
-Message-ID: <7e6bb381c0278c977ce5c0eee2de1b230c5005a1.1510612380.git.alistair.francis@xilinx.com>
+	<armbru@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Christian
+	Borntraeger <borntraeger@de.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+	Alexander Graf <agraf@suse.de>
+Date: Mon, 13 Nov 2017 14:35:07 -0800
+Message-ID: <ae9d2524367e169827ddd608a2f1c52eb91c47e4.1510612380.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1510612380.git.alistair.francis@xilinx.com>
 References: <cover.1510612380.git.alistair.francis@xilinx.com>
@@ -73,74 +75,72 @@ X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.1.0.1062-23462.005
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(2980300002)(438002)(199003)(189002)(76176999)(39060400002)(50986999)(47776003)(63266004)(4326008)(54906003)(478600001)(8936002)(106002)(5660300001)(2950100002)(316002)(189998001)(118296001)(23676003)(50226002)(110136005)(106466001)(5820100001)(50466002)(33646002)(575784001)(77096006)(356003)(36756003)(9786002)(5890100001)(2870700001)(2906002)(81156014)(305945005)(36386004)(8676002)(81166006)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR02MB3387; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com;
-	A:1; MX:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT030;
-	1:DqsOrJZPr8j6jq3dtmdJh/AhyeVA6KnMhMW9Ij2vGBjQ8OeYtZ8oyP310/u6B8DTVkvT9mYGCQ2+U3C1eMap2i2U5di7jS1n0JDE4Mug8d4DgPp3WWEs6DhSOpjjeRx3
+	SFS:(10009020)(6009001)(376002)(346002)(39860400002)(2980300002)(438002)(189002)(199003)(77096006)(39060400002)(316002)(8676002)(81166006)(81156014)(189998001)(47776003)(8936002)(4326008)(2906002)(54906003)(50466002)(110136005)(36386004)(106002)(118296001)(36756003)(23676003)(9786002)(478600001)(33646002)(106466001)(63266004)(5820100001)(2950100002)(76176999)(50986999)(2870700001)(5660300001)(305945005)(356003)(50226002)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR02MB3378; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT002;
+	1:dJH9pQaw2lhXx9dO0AHeF3f8WNESMQfn2u6Zlf5foK8gemqh0YGRGD74a04ODpHvQyUs+hKG+XHtI/jja8IRExdRgNpjSPnLwJICgu3WdnU5bRNXUyNrLxxoj5mP9U5P
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: bc4f0938-9cc2-446e-27ca-08d52ae755e4
+X-MS-Office365-Filtering-Correlation-Id: 3fd7de9d-39e4-4995-ca9b-08d52ae75c35
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(22001)(8251501002)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603199);
-	SRVR:DM5PR02MB3387; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3387;
-	3:x71eKESTQV1ymZ1y5VRoDJi1p3KiHtZP2qVXYoU47r24zi9KQrQljxu+oMKkvQCQn0/Ov9dCGshJK5gWrdBzTAC7hwiun2eMYrm0oyrMXuvZCE0XXem+CCJdU0uJYvbIg7PJBDMgMXOSVU2XBAca83GDw56EVE2+EDgcRxhsuOxFqZbPQUXZrpxhX7GKEf1Zqcm2gwpTbLtDTWVSibumoyBx3+re9j/vXCVxhy8D50Lrx/Pn2Bq+VIlgesoFtSq0WZ3FVHB6uYT8UeimQicps9CmEMoaE1Wzkmr9WO2oimlFbSXinXB1NXEgfLA/NcDyTPuCyilafYuC41AZ1xsxTQNh0ba32RMr1G+P/7hAT60=;
-	25:sEUSd5BoNg2z8Di2s11pVxpwa74TEQpkEXKLp4B8QzZ1E3pB5NEeC0hnix6kGPrxzNGhU9egF+1s+909ffTlslc5msodn4O5dOkBhQTV6NjKxoWjeQsWKk4K0pTCmxmyY/r5fn+NAilDHq5GBp2HnuaHLWyydbUVt5zAZJqRysF+QA1TbmwJYuuyWNM4kFkm5gZ8xtF9cezfNloFR69Qvaxy0IgGoT74gnjcWTnDwGvPXqrVWBYbWiOuJXghdrczs3hyJFVIuWMImf57RVKoEUu4XNBakd4snZg6bNYgyPLowcpasVxhhFUFkDjagPtgQFa6Ekr54lJBkkaHXCSHDhnu2CIvmpxDTmFaqJWLivs=
-X-MS-TrafficTypeDiagnostic: DM5PR02MB3387:
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3387;
-	31:NsLheOEA2DOw0OngM/XkVWUC6dggpx+/VMxu+Wxws213FVTkpP7O01Lf1UmIY1ZFlr5IdqU0ULSG60f4/PVnJ232JJRymvblx7PwjKaqb2x/Wwzy9Xx7/2KS5yHCMgoGBp0TpnjigyU1PQVa9f4fI8JtsB53xiSjV35/2rEK92/LlywHTVqMMuZvUIvHTzQD7OkcDJk+18bEOCZ56cUa4CTClQwtDtxO9Vxk+wK6J24=;
-	20:LWoy+wkISBrPLLcFiH8QS0QaDe7Ypgrjk4eNpT2IwqV/xWYgky8yVS8L+4+9ReM3jqa+KzkhPa06D/F5KhiyUoHrryjY1k6A5Fdhmx9DpaOsKa1V/r18Ogr/v+IhQOlxzqBRRFXAdjfc+fHfnaOL30BurPP1GGmb7HZwVMHM0XEaC8bG0AuomavHPrWpfZ61PE6P0PMDiVoE3AxAEtS5XuHFrqcPxyC7mVTpzDT03S7rlEJcQFRgfJzKclYNoEL3euETU3R77efC1n9Kn2Ftsft0cO/6QwXQYdmh0sck6NlxHyJX7J6I4IagDg3vqT+0AKcLXj6vb8tSL8ImDOgM6Z7SjGkcHH3U7XOc83IjnPma6wbPGYCBaTe9f8xqPJojAB66kPqLhYtsTLX1HaiF+l68oDBqTRNKHapd9aQQNG+jr72OS+7zOmQQ4wVRutVy6DbGsXr7scXQSh0iDJLjyEYWajFpOCevbQMWy67CYYBP8SLFVh5gn8CYo5T6L2SC
-X-Microsoft-Antispam-PRVS: <DM5PR02MB338719F511EFD62B4411DCCFDC2B0@DM5PR02MB3387.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
+	RULEID:(22001)(8251501002)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603258);
+	SRVR:BN6PR02MB3378; 
+X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
+	3:aoz8aIgTag48MQ6vWcuMx1wIvZf7z/UXdyFHxv+EDbTKux13LWX+5q4idoiX4T4E86IRMQAl8icd1/68iMzwOZOSmJbldIZ/P0yaQmRjtGUMGfdxAER9j+dvXpYJTSGMMc7TJ8SxEsycUs6mEhfX18TfxFx6ZOsO+O2y06Z72zNY2fhciiAF4sHYkv0EpqVccXE8LAXIw92PGmUWQ6vZvYKxnai7eSm6hBztl1I4mslHj63Emvjs25fFdDSpcmP+BN38EU+lvKRqOBEYAnq8vJsH8Ab4NpW0SRbEJtdVbc7FAIvrVmLigqEtcQMXg/atKI8py6dIpzKxTn45UmVHVLVXu/6DTsRVeIlP3z5zSs8=;
+	25:JKGJXPVhlFeDw9tEFivLcpCBaKihHmo7IuSwywgUJZDPWnAA8mMvRuz7N+0AdNBmxbdax6MeykZIls9QETM6qNQuTAUVQ0ywRlyz2O/Mjv7ThN5CuG6cD41W84e2815iRUHCJE6YBrICcRCLPJ8WC/hmw6xkO6+v5c/vbLoduZsKlvf670b4RT6aRj+21lY5+G3gKr81wXLjjWcIsD8vjZ0diHdr46WJmwxUHY3OzBpY4oKqPUoiVdvr5oW1MOvh0NVsXxfD4uTa/zaqANc/moTuk0+NwwbPfqG1hOQqCbE9DZAxcRZ6XMuNdnLA+k22HF2Jlo7977S/0arSMBnwta3sCipIV/OGwH1WI73Sh8g=
+X-MS-TrafficTypeDiagnostic: BN6PR02MB3378:
+X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
+	31:EHpBmw7BWvGPe5mzS7IOYccrCSnGUe1ybyL95kYZtA0ufec9CF9Um/dmm6paFI8TTU33PXacyWKYo9gNBeAnzVRaBvA0/EOM11xtoTIf/aD1MUhWbnp0/JbyoUvBTveupD1nV6GxhpWh/Tp73cU00rTn/YDztFY+1K0xw+9HAS9Pyqe+FzmdwKrT6UgWSvzQhU7b1yXaeomfrBPMgs5Nseha5d6r0dWr/vl0YG4H4M8=;
+	20:4XBfYGxEcQdOERaOSQyvc00bbZ/jRQYffydwgifqA/6eRCAixCYMhjvguCyWsPD9jKzZiPQHDiU3vAOc9Fbmno0TbZVS62WzUfAPVjhDKRhI8j19FaWBrP0qRU7tnQTCGb3jD0zdwhPCyi3EKW5ZluWO5+2nH18cdqwI1I+N39ERggW/PD121WscgF3y7K17HONFgJ8rZbXZG6TdtdvHdCFw6bgrHwvCEGeDPjRH5rDF3ZSuiv0Ap8+oet342zh2r1qywHS7k3IKkHOLOPh4IJs/qH6X+Z2q8uRCxvZFdCuVvFzYDco9ltU06oSXTmK+4Mhf7k1MwdnSj6B4wkoRFdC9YBwsrx3l6t6HMWZnG/4iY97M2NIfZ5EBf0WBvA4WTJGRq7CUdIQ1f3zaWRA/8O/mN1vufXX6O/jf1R3CX4wdbRTWTNGG5f6VmUOcL6kYUgqOyjEN+7oXVvAlk4ggR3GcF8KUCA4HNmtKX+HtToxEPPRgXu/FdJaffbfUQJ4A
+X-Microsoft-Antispam-PRVS: <BN6PR02MB33785C3088B08060C557E6F4DC2B0@BN6PR02MB3378.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(190383065149520)(192813158149592)(104084551191319);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(5005006)(8121501046)(3002001)(10201501046)(100000703101)(100105400095)(3231022)(93006095)(93004095)(6055026)(6041248)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123560025)(20161123562025)(20161123558100)(20161123564025)(20161123555025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
-	SRVR:DM5PR02MB3387; BCL:0; PCL:0;
+	RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(2401047)(5005006)(8121501046)(93006095)(93004095)(10201501046)(3231022)(100000703101)(100105400095)(3002001)(6055026)(6041248)(20161123564025)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123560025)(20161123558100)(20161123555025)(20161123562025)(6072148)(201708071742011)(100000704101)(100105200095)(100000705101)(100105500095);
+	SRVR:BN6PR02MB3378; BCL:0; PCL:0;
 	RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);
-	SRVR:DM5PR02MB3387; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3387;
-	4:JDDN15yPMS9WBm1Hbe3tUjjDfdycNmOcLyT5/9TK1KJUrm/04Sq+oueZTWamNy29NRK65ET2ZRYTlTtJtEzw44SImtxewCLtOc3CjCNqt5nlpWc5b1qhsCY8jrZXzlMIrgt8dfkXN0uFLEBftPnQ8Cd46FzLOqtit87BibouSnYUydpU6gNG2LJTg8VPFM5cCohTD8sBJldzNL8RBejDbfgfnPRA0HvcpzjzUfxCxrhXVKLIIpc0c65rBAfYjCu6odLK6sPrhPbNXjHmUTiwD1CRbHfBodfbH7aBrGrsGTQIGxBV3OTN5GkSIf3i8m+4NbjjQR6yANNwhGc0zAD3pg==
+	SRVR:BN6PR02MB3378; 
+X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
+	4:dvuVogH+z5Posl712GCu46nOJxQK8J8bY6gkthbJhASBmKmnghcnRy+kTh3St6mch5C6royI9/2YOIdSB5lBPnO5NFTAvVueWV9aI6WlPiyiO7XRvHBBZpo+4vLAJEg/tvrDRhmOwqSxoYWS9oLWHhSt/bfozkyRxfzWC/2n8BhYdLh8sOA+/meGkWJKukjIPKCdbG/rzgRUxrURNAXQ3yP4AeO8WWHnes3g4PHfsg113qLEaeuXqUAhNsYWSje0puu0h8BAwdcO3oeJnmp+j4LzBbN0uoM64JNUVDR+NMaPURIwths7p/U5eeWLAmzLX/HLsLukLTLh0t2J41vlE6yJ327MyxyKLJP30shJQx+/Yp1OAGj0TKkkLooPhL8FU+P0O5SP5aDSK36DKld0TxMSSgCM3zK6oBWSb+r1K2c=
 X-Forefront-PRVS: 0490BBA1F0
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM5PR02MB3387;
-	23:u9S8P+DIcm4oFOYuAKlikGM75dMMTdieVBpwImpJO?=
-	=?us-ascii?Q?+SuBjLGnP6jLAaXc++kr6bXHdjM+N/bFVJHnibGx9VMsJHlvB074x5YLdmjA?=
-	=?us-ascii?Q?6v5Kdba44TNrP/nUzEmumFQIBwBfE0m34/0dyjXbiMlJXod4T04nnGCmhIU9?=
-	=?us-ascii?Q?V0dwfCKSLW/bl4BMWhvGCu3Nfy13ruwgrijiJXIxrP1ja2lloctWrO1RAET2?=
-	=?us-ascii?Q?vD+1Dc9py50yTHq73l4V08emc9U115sPwqxwrPcbfEVKQyX9hKQ5Mr9WLknb?=
-	=?us-ascii?Q?ozzmmGdEew5I6y3jDSRNStAF7Qyv/4K0gbQVmZ6aps1ohdtGuNUTJUiXMEsT?=
-	=?us-ascii?Q?gdypGhoGNok5TdNAm5xqkW8z+E5obKIbx0j9TarU0vgM3LoUlpzVGwCR25C+?=
-	=?us-ascii?Q?23RVuXWuuaiBOXncRvfjPk/iOCVFeR+jgba34KmIXwN1tVQGQR1ArVlMW38U?=
-	=?us-ascii?Q?4AvVUG+tt4JeP+nT+DJmc+XHgFb9TX23LSWzl7cf4x4TQGebID1TGpSB/q7c?=
-	=?us-ascii?Q?NkS68MQxTXiGJfM/5H5+qXFAZuZj67tzJ6K7zBJkOW4JCZXlzlULOaqNjzrz?=
-	=?us-ascii?Q?yuwk+/24fpDJzPDZA9+4seUk2Bli5A0yAOjFWntqkx7i352+rWGfyRr1Utqm?=
-	=?us-ascii?Q?8XgFlYy0v5O2YpfqcV3wfWDL40lfHAPsuITs7H1yM8ybYIvn8lB/SYosW2ty?=
-	=?us-ascii?Q?u6CZS1IjJLNI0LjsDPb4j87PtVrHqqnU0tXwAn7NeJbz18uPl+kSEvqmzzWR?=
-	=?us-ascii?Q?yVt+7kOLDz+GL8ve9s3V6pNYeCRuseRP49cd/aP4WbJqfuiTAljXcgmmUFXL?=
-	=?us-ascii?Q?yCDLJZLLflyWdudI/+HXXQw4SXdZBf4dRGZCMc0GBnGfgFGtV/+yrYvyI4If?=
-	=?us-ascii?Q?RX31h4ASMw8XuLlCQGXbTMhlmOx5T9DNWiFy9RzNAbd3ljHLceFG0+KjC282?=
-	=?us-ascii?Q?IkvWz81SGOqY7HKNPi688I9wlttExoEquZ6f1Zip53OCtblii7xZBzv9MxFe?=
-	=?us-ascii?Q?P/F+W9fONUHdIk17UNs/VcAbE/bzlOijS08HHHMSKB9D/t7qOOiCRcXidMt7?=
-	=?us-ascii?Q?EE7ierMqE7qaUw8cPmwiDYieZD7jo3KjsqLb00B8jKO+FitlQ=3D=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3387;
-	6:Gx8Yqdlnm3LV9LjstY7S/p7cJUD61YyUnvqbsTKjKo5rEl5Htqo+i0EEZZhwYI+sqOHNlRjodzNMkp31+3TvW+MQy9QlSszDg8gID71u9pgHKriRskbQwkDkpqyk+5zu7DFlFtj8Qd9pIFwRI/GZ98o49GjsmMvPclbt00f/iK/MVxXGP9lEsXDyHYj2CyIlCZJWwhOKrXI7NoOc3HYITJqVxRm77C7o5sEYd1aDRbaTIEiV6B3kWYsT7DivAGOzrZBFyvmijv9Q7RA1XfnCwcYUvaKjnt3dLlCMfwd3wYxci+A+H9pEAOrWk3/jAgPVHg2/2yaTxcff3lNm069BZTtH/HSL/fJ7s7Cbyrnmfuk=;
-	5:zhSo/V868MDUvYQjts8eXzADGEHKo1lguz49IWyHjsLJtavZqvu3ZtDbLPkB1cwbRF9LCz6+sd3py1eLOFkdqMO8XQOlZn63RD2K+GRRz6g0d3ZECiMhGLywHioiimmUWiH7P1vPGyvE2+TxkfmDK4emF+L2+F4zVV0aKTmq4yA=;
-	24:XCByJsa50SWNP8ItV2TUtg2Ojim+kp/xggxYYLz+4/vyR6IYrd6jZ5fFbh7M1mB8lgXYqfm6pllhSKWPKLrQdIA4PMeS1+9aC4BzDgrn6HI=;
-	7:uBYAk/w2faB7l0whr7F7EU7n47WhLct0HdCDquXet8Sigces7m1wVItB5bRn6E4tUfcz1qftmxKcp9GlTUZCCZjP9f6T7t8RA0YDbd+0qphrQgXbQRRQbZAFuTLTtZ1fpXiTfpbhDUFzQeTYpxUBtmLmc2KyTrK8EgDo/y68azJdkuupBrtXXEp6dtSXh+suiOY2Mb8YMjYCd15ypeLfdFbN7GU7Nac0pascnwR+s9qyVFxXW8Y5Se3FmZNB4W+4
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BN6PR02MB3378;
+	23:OBmxMVeCaEBCkEIwnWXIBVnWTruQdzLYu9CDycGlu?=
+	=?us-ascii?Q?hWF6BS+H7BSEnJo68lcLZ0kWADwYjLdEjo/P3slKABVfTWhFQbQuonHlWO61?=
+	=?us-ascii?Q?b8bBtFIvDR5hL/7BQubrcxQMZYAmVksZn06pCMylgnvGv356F13VGnKr8rvs?=
+	=?us-ascii?Q?5l4KXROW4hVftXM1AWOZokcJyXYPnXTQK+b1nV8bspIa4JqI6RKer3nblhSp?=
+	=?us-ascii?Q?eEuyPicTCkBRvxfNUPqZASxn72/mIL6LzbbaIBfhEB1VUAJSll7oz+phGORq?=
+	=?us-ascii?Q?e7nzU71a8OPq9qNYZ6yaHT9wPXeXaGI3pySlCq98wmQPX8fCoTd0udVruk0U?=
+	=?us-ascii?Q?SJMoYxH89JxIidjzRcFyOM8qiKrQjSaptpAlWzcQwe49aGGUtGlkSJJdHMaW?=
+	=?us-ascii?Q?H7p/9RyC5xFuU7MCBcbGeO3zSiKihZbjQLHmhCc6GjqTKJqKcEWVeWJznPYp?=
+	=?us-ascii?Q?YHElTmwtwYYiiAETdwaDlmj4Npxowr/2za8nZJ7wo2pE1o6UeXiYGZ2X0jWN?=
+	=?us-ascii?Q?IS6hvB9BWQeeDNeWzY8ab56XNcoNDyynssBj45SOqnUrBBT2O7i1YZEBvHfh?=
+	=?us-ascii?Q?J90mHaSoOyjuzBGpImHT2jiXxK93eeDdsdHfqt0y8Yj8NSS0/Lybu5VOzJvb?=
+	=?us-ascii?Q?EEs2CohSpRLu5DK9uzdhBTbd3bfo/UBOoK6cOGWAQmhN5YZHvQnkvXYNY3+a?=
+	=?us-ascii?Q?aiDxN0WCcUoja+dPr1kl69cEQ8o+0t/QDvAHRvivs7bEFHFmxmpASQh1EwPg?=
+	=?us-ascii?Q?Xl4FQwAn8N/MoTv6jEZNlQYyFoFFkFxoy6sqTJEjRUKqAaZIRnBioqV2/BVE?=
+	=?us-ascii?Q?7oac9DhdMJj6eOVojeDvRdS0UvhrzKy70rpygTKcDWjwyLLHz/nlB0g/xejD?=
+	=?us-ascii?Q?uXMYFh4bH+2zQM3URyWvhP2ieQcCWawMTP1PueZ67tgIVNEx18JL7yJTqJz3?=
+	=?us-ascii?Q?IGS23SyQCfpLVUyDwLzpeUTtdUNz/PfvMOtbxJjoApM2ahwtYrZbemg2Ub65?=
+	=?us-ascii?Q?NGPuf9ZCSh+e/15Obcuk582?=
+X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
+	6:3t+IPzVpGAIV988hcqgMFdJvA9yi9RZdvzcNHu6n1PV61tDGAvD2xSWC6JTS0P/9VGefY6+m8HXjG/N23mrBsbadbHjtAVoJw4eBoHgbrD1g2GT85j3p2JzU8FvAmzJhLHQh9ocVoyPVKlY03AZ36qCm/GIHZ1yAVeYDSBQwgVAhSGd+ZTRS1JdlFq0zSSpdyl+k8hMlb8jai9PUvfjkSpidY/cjKEOp418tf4PbMJyaMptb7vQLSwzujRRLc09SH+dgKWYui0q9nMDhnYWeD1bELu76th70ndkDUBSKrrZNixW5rhlhWqxhcTcw6r+vMiFFi5sAVNua48lmI2s1z/ZENhC5ovDtJuF9Xn+2xIA=;
+	5:WOjb7MhEF1MBrGaY1uWGCVzuYuACnDwifYd7YMlvWP39BLmszlDymw8JRh5ycPYUvnIa8rb94ZAiv6DMp+mR2aRFhhd/ETzZHABJ3aPZRznIVlr2/iZclNBh91uYt8W6qSidbjNnMVR7ITQHVn1jsgSqixz8Ny01jWqTICVmcYU=;
+	24:0e+RcnHNTxgfv6XwUw8dqR12L0tn2JnZHpd01BNED8P1PnnH5S/MaELdEMkMxyy330N0exsEuZ1iJJ0YQOaorF71UwdYS4oScltENqRO/8Q=;
+	7:u52bVMwJ55+JNHNCYMEZOd5zs3Qymmxt1b8in/ZHkQo8HLRIOpGfz8nVc/mClwPvx3DVvt2ZELf+8wtRVq9u9ZCjo2RFZU+B64jEemETmsq1KGISfk9x5+9i2rNhRaFd84n/hJjbBBBL33hlAdKoj9K1Lo0JjkWZmmMlvAAYJ+bitMR+wbHDMAhAyBI1hYpe+uut/6anaHcuXOF62iES6JNJL2kEhkf8x22v9hWPGkhFwgwib2mAzdZzvJ3QU00Y
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2017 22:39:00.5558 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc4f0938-9cc2-446e-27ca-08d52ae755e4
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2017 22:39:11.0477 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fd7de9d-39e4-4995-ca9b-08d52ae75c35
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB3387
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR02MB3378
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.37.46
-Subject: [Qemu-trivial] [PATCH v5 04/29] hw/arm: Replace fprintf(stderr,
+X-Received-From: 104.47.37.44
+Subject: [Qemu-trivial] [PATCH v5 10/29] hw/intc: Replace fprintf(stderr,
  "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -160,756 +160,213 @@ error_report(). The functions were renamed with these commands and then
 compiler issues where manually fixed.
 
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
-report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_re=
-port("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
-("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
-\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
-"\2);|Ig}' \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
-2);|Ig}' \
+    'N;N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
-;|Ig}' \
+    'N;N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
-Ig}' \
+    'N;N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
-}' \
+    'N;N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
- \
+    'N;N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N; {s|fprintf(stderr,
+"\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 
 Some lines where then manually tweaked to pass checkpatch.
 
-The 'qemu: ' prefix was manually removed from the hw/arm/boot.c file.
-
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: Alexander Graf <agraf@suse.de>
+Acked-by: Cornelia Huck <cohuck@redhat.com> (s390x part)
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
-V3:
- - Remoave 'qemu: ' prefix
 V2:
  - Split hw patch into individual directories
 
- hw/arm/armv7m.c      |  2 +-
- hw/arm/boot.c        | 37 ++++++++++++++++++-------------------
- hw/arm/gumstix.c     | 13 +++++++------
- hw/arm/mainstone.c   |  7 ++++---
- hw/arm/musicpal.c    |  2 +-
- hw/arm/omap1.c       |  5 +++--
- hw/arm/omap2.c       | 23 ++++++++++++-----------
- hw/arm/omap_sx1.c    |  6 +++---
- hw/arm/palm.c        | 10 +++++-----
- hw/arm/pxa2xx.c      |  7 ++++---
- hw/arm/stellaris.c   |  3 ++-
- hw/arm/tosa.c        | 17 +++++++++--------
- hw/arm/versatilepb.c |  2 +-
- hw/arm/vexpress.c    |  8 ++++----
- hw/arm/z2.c          |  6 +++---
- 15 files changed, 77 insertions(+), 71 deletions(-)
+ hw/intc/arm_gic_kvm.c   | 12 ++++++------
+ hw/intc/omap_intc.c     |  4 ++--
+ hw/intc/openpic.c       |  7 ++++---
+ hw/intc/openpic_kvm.c   |  8 ++++----
+ hw/intc/s390_flic_kvm.c |  4 ++--
+ 5 files changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index bb2dfc942b..56770a7048 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -278,7 +278,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel=
-_filename, int mem_size)
- #endif
+diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+index ae095d08a3..a5478d3e20 100644
+--- a/hw/intc/arm_gic_kvm.c
++++ b/hw/intc/arm_gic_kvm.c
+@@ -316,12 +316,12 @@ static void kvm_arm_gic_put(GICState *s)
+     num_cpu =3D ((reg & 0xe0) >> 5) + 1;
 =20
-     if (!kernel_filename && !qtest_enabled()) {
--        fprintf(stderr, "Guest image must be specified (using -kernel)\n")=
-;
-+        error_report("Guest image must be specified (using -kernel)");
-         exit(1);
+     if (num_irq < s->num_irq) {
+-            fprintf(stderr, "Restoring %u IRQs, but kernel supports max %d=
+\n",
+-                    s->num_irq, num_irq);
++            error_report("Restoring %u IRQs, but kernel supports max %d",
++                         s->num_irq, num_irq);
+             abort();
+     } else if (num_cpu !=3D s->num_cpu) {
+-            fprintf(stderr, "Restoring %u CPU interfaces, kernel only has =
+%d\n",
+-                    s->num_cpu, num_cpu);
++            error_report("Restoring %u CPU interfaces, kernel only has %d"=
+,
++                         s->num_cpu, num_cpu);
+             /* Did we not create the VCPUs in the kernel yet? */
+             abort();
+     }
+@@ -411,8 +411,8 @@ static void kvm_arm_gic_get(GICState *s)
+     s->num_cpu =3D ((reg & 0xe0) >> 5) + 1;
+=20
+     if (s->num_irq > GIC_MAXIRQ) {
+-            fprintf(stderr, "Too many IRQs reported from the kernel: %d\n"=
+,
+-                    s->num_irq);
++            error_report("Too many IRQs reported from the kernel: %d",
++                         s->num_irq);
+             abort();
      }
 =20
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c2720c8046..6e6b8c0c6a 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -8,6 +8,7 @@
+diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
+index 6844c1aa83..7fc239715a 100644
+--- a/hw/intc/omap_intc.c
++++ b/hw/intc/omap_intc.c
+@@ -539,8 +539,8 @@ static void omap2_inth_write(void *opaque, hwaddr addr,
+         /* TODO: Make a bitmap (or sizeof(char)map) of access privileges
+          * for every register, see Chapter 3 and 4 for privileged mode.  *=
+/
+         if (value & 1)
+-            fprintf(stderr, "%s: protection mode enable attempt\n",
+-                            __func__);
++            error_report("%s: protection mode enable attempt",
++                          __func__);
+         return;
+=20
+     case 0x50:	/* INTC_IDLE */
+diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
+index 10d6e871fb..7b1cafcc50 100644
+--- a/hw/intc/openpic.c
++++ b/hw/intc/openpic.c
+@@ -34,6 +34,7 @@
+  *
   */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include <libfdt.h>
- #include "hw/hw.h"
-@@ -418,13 +419,13 @@ static int load_dtb(hwaddr addr, const struct arm_boo=
-t_info *binfo,
-         char *filename;
-         filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, binfo->dtb_filena=
-me);
-         if (!filename) {
--            fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_file=
-name);
-+            error_report("Couldn't open dtb file %s", binfo->dtb_filename)=
-;
-             goto fail;
-         }
-=20
-         fdt =3D load_device_tree(filename, &size);
-         if (!fdt) {
--            fprintf(stderr, "Couldn't open dtb file %s\n", filename);
-+            error_report("Couldn't open dtb file %s", filename);
-             g_free(filename);
-             goto fail;
-         }
-@@ -432,7 +433,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-     } else {
-         fdt =3D binfo->get_dtb(binfo, &size);
-         if (!fdt) {
--            fprintf(stderr, "Board was unable to create a dtb blob\n");
-+            error_report("Board was unable to create a dtb blob");
-             goto fail;
-         }
-     }
-@@ -451,7 +452,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-     scells =3D qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-                                    NULL, &error_fatal);
-     if (acells =3D=3D 0 || scells =3D=3D 0) {
--        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0=
-)\n");
-+        error_report("dtb file invalid (#address-cells or #size-cells 0)")=
-;
-         goto fail;
-     }
-=20
-@@ -459,8 +460,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-         /* This is user error so deserves a friendlier error message
-          * than the failure of setprop_sized_cells would provide
-          */
--        fprintf(stderr, "qemu: dtb file not compatible with "
--                "RAM size > 4GB\n");
-+        error_report("dtb file not compatible with RAM size > 4GB");
-         goto fail;
-     }
-=20
-@@ -480,7 +480,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-                                               acells, mem_base,
-                                               scells, mem_len);
-             if (rc < 0) {
--                fprintf(stderr, "couldn't set %s/reg for node %d\n", noden=
-ame,
-+                error_report("couldn't set %s/reg for node %d", nodename,
-                         i);
-                 goto fail;
-             }
-@@ -505,7 +505,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-                                           acells, binfo->loader_start,
-                                           scells, binfo->ram_size);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set /memory/reg\n");
-+            error_report("couldn't set /memory/reg");
-             goto fail;
-         }
-     }
-@@ -519,7 +519,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
-info *binfo,
-         rc =3D qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
-                                      binfo->kernel_cmdline);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set /chosen/bootargs\n");
-+            error_report("couldn't set /chosen/bootargs");
-             goto fail;
-         }
-     }
-@@ -528,14 +528,14 @@ static int load_dtb(hwaddr addr, const struct arm_boo=
-t_info *binfo,
-         rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start",
-                                    binfo->initrd_start);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
-+            error_report("couldn't set /chosen/linux,initrd-start");
-             goto fail;
-         }
-=20
-         rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
-                                    binfo->initrd_start + binfo->initrd_siz=
-e);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
-+            error_report("couldn't set /chosen/linux,initrd-end");
-             goto fail;
-         }
-     }
-@@ -690,7 +690,7 @@ static void load_image_to_fw_cfg(FWCfgState *fw_cfg, ui=
-nt16_t size_key,
-         gsize length;
-=20
-         if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
--            fprintf(stderr, "failed to load \"%s\"\n", image_name);
-+            error_report("failed to load \"%s\"", image_name);
-             exit(1);
-         }
-         size =3D length;
-@@ -956,8 +956,7 @@ static void arm_load_kernel_notify(Notifier *notifier, =
-void *data)
-         is_linux =3D 1;
-     }
-     if (kernel_size < 0) {
--        fprintf(stderr, "qemu: could not load kernel '%s'\n",
--                info->kernel_filename);
-+        error_report("could not load kernel '%s'", info->kernel_filename);
-         exit(1);
-     }
-     info->entry =3D entry;
-@@ -976,8 +975,8 @@ static void arm_load_kernel_notify(Notifier *notifier, =
-void *data)
-                                                   info->initrd_start);
-             }
-             if (initrd_size < 0) {
--                fprintf(stderr, "qemu: could not load initrd '%s'\n",
--                        info->initrd_filename);
-+                error_report("could not load initrd '%s'",
-+                             info->initrd_filename);
-                 exit(1);
-             }
-         } else {
-@@ -1021,9 +1020,9 @@ static void arm_load_kernel_notify(Notifier *notifier=
-, void *data)
-         } else {
-             fixupcontext[FIXUP_ARGPTR] =3D info->loader_start + KERNEL_ARG=
-S_ADDR;
-             if (info->ram_size >=3D (1ULL << 32)) {
--                fprintf(stderr, "qemu: RAM size must be less than 4GB to b=
-oot"
--                        " Linux kernel using ATAGS (try passing a device t=
-ree"
--                        " using -dtb)\n");
-+                error_report("RAM size must be less than 4GB to boot"
-+                             " Linux kernel using ATAGS (try passing a dev=
-ice tree"
-+                             " using -dtb)");
-                 exit(1);
-             }
-         }
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index bba9e9f57a..8f11b03066 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -35,6 +35,7 @@
-  */
-=20
  #include "qemu/osdep.h"
 +#include "qemu/error-report.h"
  #include "hw/hw.h"
- #include "hw/arm/pxa.h"
- #include "net/net.h"
-@@ -62,8 +63,8 @@ static void connex_init(MachineState *machine)
-=20
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "A flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("A flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
-=20
-@@ -76,7 +77,7 @@ static void connex_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, connex_rom / sector_len,
-                                2, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
-=20
-@@ -99,8 +100,8 @@ static void verdex_init(MachineState *machine)
-=20
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "A flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("A flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
-=20
-@@ -113,7 +114,7 @@ static void verdex_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, verdex_rom / sector_len,
-                                2, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
-=20
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index d07972a966..189febf8b7 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -12,6 +12,7 @@
-  * GNU GPL, version 2 or (at your option) any later version.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/arm/pxa.h"
-@@ -143,8 +144,8 @@ static void mainstone_common_init(MemoryRegion *address=
-_space_mem,
-             if (qtest_enabled()) {
-                 break;
-             }
--            fprintf(stderr, "Two flash images must be given with the "
--                    "'pflash' parameter\n");
-+            error_report("Two flash images must be given with the "
-+                         "'pflash' parameter");
-             exit(1);
-         }
-=20
-@@ -154,7 +155,7 @@ static void mainstone_common_init(MemoryRegion *address=
-_space_mem,
-                                    blk_by_legacy_dinfo(dinfo),
-                                    sector_len, MAINSTONE_FLASH / sector_le=
-n,
-                                    4, 0, 0, 0, 0, be)) {
--            fprintf(stderr, "qemu: Error registering flash memory.\n");
-+            error_report("Error registering flash memory.");
-             exit(1);
+ #include "hw/ppc/mac.h"
+ #include "hw/pci/pci.h"
+@@ -173,7 +174,7 @@ static int inttgt_to_output(int inttgt)
          }
      }
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index b648770882..06127a873d 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1626,7 +1626,7 @@ static void musicpal_init(MachineState *machine)
-         flash_size =3D blk_getlength(blk);
-         if (flash_size !=3D 8*1024*1024 && flash_size !=3D 16*1024*1024 &&
-             flash_size !=3D 32*1024*1024) {
--            fprintf(stderr, "Invalid flash image size\n");
-+            error_report("Invalid flash image size");
-             exit(1);
-         }
 =20
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 92e58f09c8..b3a23a83d1 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -18,6 +18,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -2313,7 +2314,7 @@ void omap_uwire_attach(struct omap_uwire_s *s,
-                 uWireSlave *slave, int chipselect)
- {
-     if (chipselect < 0 || chipselect > 3) {
--        fprintf(stderr, "%s: Bad chipselect %i\n", __func__, chipselect);
-+        error_report("%s: Bad chipselect %i", __func__, chipselect);
-         exit(-1);
-     }
-=20
-@@ -3987,7 +3988,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
-n *system_memory,
-=20
-     dinfo =3D drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc =3D omap_mmc_init(0xfffb7800, system_memory,
-diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-index b53878b8b9..3a1d995d6a 100644
---- a/hw/arm/omap2.c
-+++ b/hw/arm/omap2.c
-@@ -19,6 +19,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s =
-*s)
-     /* TODO: update clocks */
-=20
-     if (mode[0] =3D=3D 1 || mode[0] =3D=3D 2 || mode[1] =3D=3D 1 || mode[1=
-] =3D=3D 2)
--        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
--                        __func__);
-+        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
-+                     __func__);
+-    fprintf(stderr, "%s: unsupported inttgt %d\n", __func__, inttgt);
++    error_report("%s: unsupported inttgt %d", __func__, inttgt);
+     return OPENPIC_OUTPUT_INT;
  }
 =20
- static void omap_prcm_dpll_update(struct omap_prcm_s *s)
-@@ -1331,7 +1332,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s =
-*s)
-     s->dpll_lock =3D 0;
-     switch (mode) {
-     case 0:
--        fprintf(stderr, "%s: bad EN_DPLL\n", __func__);
-+        error_report("%s: bad EN_DPLL", __func__);
-         break;
-     case 1:	/* Low-power bypass mode (Default) */
-     case 2:	/* Fast-relock bypass mode */
-@@ -1358,7 +1359,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s =
-*s)
-         omap_clk_reparent(core, dpll_x2);
-         break;
-     case 3:
--        fprintf(stderr, "%s: bad CORE_CLK_SRC\n", __func__);
-+        error_report("%s: bad CORE_CLK_SRC", __func__);
-         break;
+@@ -547,7 +548,7 @@ static void openpic_set_irq(void *opaque, int n_IRQ, in=
+t level)
+     IRQSource *src;
+=20
+     if (n_IRQ >=3D OPENPIC_MAX_IRQ) {
+-        fprintf(stderr, "%s: IRQ %d out of range\n", __func__, n_IRQ);
++        error_report("%s: IRQ %d out of range", __func__, n_IRQ);
+         abort();
+     }
+=20
+@@ -1221,7 +1222,7 @@ static uint32_t openpic_iack(OpenPICState *opp, IRQDe=
+st *dst, int cpu)
+     src =3D &opp->src[irq];
+     if (!(src->ivpr & IVPR_ACTIVITY_MASK) ||
+             !(IVPR_PRIORITY(src->ivpr) > dst->ctpr)) {
+-        fprintf(stderr, "%s: bad raised IRQ %d ctpr %d ivpr 0x%08x\n",
++        error_report("%s: bad raised IRQ %d ctpr %d ivpr 0x%08x",
+                 __func__, irq, dst->ctpr, src->ivpr);
+         openpic_update_irq(opp, irq);
+         retval =3D opp->spve;
+diff --git a/hw/intc/openpic_kvm.c b/hw/intc/openpic_kvm.c
+index fa83420254..60c784ae86 100644
+--- a/hw/intc/openpic_kvm.c
++++ b/hw/intc/openpic_kvm.c
+@@ -150,8 +150,8 @@ static void kvm_openpic_region_add(MemoryListener *list=
+ener,
+=20
+     ret =3D ioctl(opp->fd, KVM_SET_DEVICE_ATTR, &attr);
+     if (ret < 0) {
+-        fprintf(stderr, "%s: %s %" PRIx64 "\n", __func__,
+-                strerror(errno), reg_base);
++        error_report("%s: %s %" PRIx64 "", __func__,
++                     strerror(errno), reg_base);
      }
  }
-@@ -1627,8 +1628,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
-,
 =20
-     case 0x500:	/* CM_CLKEN_PLL */
-         if (value & 0xffffff30)
--            fprintf(stderr, "%s: write 0s in CM_CLKEN_PLL for "
--                            "future compatibility\n", __func__);
-+            error_report("%s: write 0s in CM_CLKEN_PLL for "
-+                         "future compatibility", __func__);
-         if ((s->clken[9] ^ value) & 0xcc) {
-             s->clken[9] &=3D ~0xcc;
-             s->clken[9] |=3D value & 0xcc;
-@@ -1646,8 +1647,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
-,
-         break;
-     case 0x540:	/* CM_CLKSEL1_PLL */
-         if (value & 0xfc4000d7)
--            fprintf(stderr, "%s: write 0s in CM_CLKSEL1_PLL for "
--                            "future compatibility\n", __func__);
-+            error_report("%s: write 0s in CM_CLKSEL1_PLL for "
-+                         "future compatibility", __func__);
-         if ((s->clksel[5] ^ value) & 0x003fff00) {
-             s->clksel[5] =3D value & 0x03bfff28;
-             omap_prcm_dpll_update(s);
-@@ -1658,8 +1659,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
-,
-         break;
-     case 0x544:	/* CM_CLKSEL2_PLL */
-         if (value & ~3)
--            fprintf(stderr, "%s: write 0s in CM_CLKSEL2_PLL[31:2] for "
--                            "future compatibility\n", __func__);
-+            error_report("%s: write 0s in CM_CLKSEL2_PLL[31:2] for "
-+                         "future compatibility", __func__);
-         if (s->clksel[6] !=3D (value & 3)) {
-             s->clksel[6] =3D value & 3;
-             omap_prcm_dpll_update(s);
-@@ -2486,7 +2487,7 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
-on *sysmem,
+@@ -184,8 +184,8 @@ static void kvm_openpic_region_del(MemoryListener *list=
+ener,
 =20
-     dinfo =3D drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc =3D omap2_mmc_init(omap_l4tao(s->l4, 9),
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index 9a14270795..e510465137 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -158,7 +158,7 @@ static void sx1_init(MachineState *machine, const int v=
-ersion)
-                                    blk_by_legacy_dinfo(dinfo),
-                                    sector_size, flash_size / sector_size,
-                                    4, 0, 0, 0, 0, be)) {
--            fprintf(stderr, "qemu: Error registering flash memory %d.\n",
-+            error_report("Error registering flash memory %d.",
-                            fl_idx);
-         }
-         fl_idx++;
-@@ -182,7 +182,7 @@ static void sx1_init(MachineState *machine, const int v=
-ersion)
-                                    blk_by_legacy_dinfo(dinfo),
-                                    sector_size, flash1_size / sector_size,
-                                    4, 0, 0, 0, 0, be)) {
--            fprintf(stderr, "qemu: Error registering flash memory %d.\n",
-+            error_report("Error registering flash memory %d.",
-                            fl_idx);
-         }
-         fl_idx++;
-@@ -194,7 +194,7 @@ static void sx1_init(MachineState *machine, const int v=
-ersion)
-     }
-=20
-     if (!machine->kernel_filename && !fl_idx && !qtest_enabled()) {
--        fprintf(stderr, "Kernel or Flash image must be specified\n");
-+        error_report("Kernel or Flash image must be specified");
-         exit(1);
-     }
-=20
-diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-index 285f43709d..7f3637041a 100644
---- a/hw/arm/palm.c
-+++ b/hw/arm/palm.c
-@@ -233,8 +233,8 @@ static void palmte_init(MachineState *machine)
-     if (nb_option_roms) {
-         rom_size =3D get_image_size(option_rom[0].name);
-         if (rom_size > flash_size) {
--            fprintf(stderr, "%s: ROM image too big (%x > %x)\n",
--                            __func__, rom_size, flash_size);
-+            error_report("%s: ROM image too big (%x > %x)",
-+                         __func__, rom_size, flash_size);
-             rom_size =3D 0;
-         }
-         if (rom_size > 0) {
-@@ -243,13 +243,13 @@ static void palmte_init(MachineState *machine)
-             rom_loaded =3D 1;
-         }
-         if (rom_size < 0) {
--            fprintf(stderr, "%s: error loading '%s'\n",
--                            __func__, option_rom[0].name);
-+            error_report("%s: error loading '%s'",
-+                         __func__, option_rom[0].name);
-         }
-     }
-=20
-     if (!rom_loaded && !kernel_filename && !qtest_enabled()) {
--        fprintf(stderr, "Kernel or ROM image must be specified\n");
-+        fprintf(stderr, "Kernel or ROM image must be specified");
-         exit(1);
-     }
-=20
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index db860c238e..0386a0d8bf 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -8,6 +8,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -2062,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
-     s =3D g_new0(PXA2xxState, 1);
-=20
-     if (strncmp(cpu_type, "pxa27", 5)) {
--        fprintf(stderr, "Machine requires a PXA27x processor.\n");
-+        error_report("Machine requires a PXA27x processor.");
-         exit(1);
-     }
-=20
-@@ -2095,7 +2096,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
-=20
-     dinfo =3D drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
-@@ -2220,7 +2221,7 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space,=
- unsigned int sdram_size)
-=20
-     dinfo =3D drive_get(IF_SD, 0, 0);
-     if (!dinfo) {
--        fprintf(stderr, "qemu: missing SecureDigital device\n");
-+        error_report("missing SecureDigital device");
-         exit(1);
-     }
-     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index de7c0fc4a6..f6f295b363 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -8,6 +8,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/ssi/ssi.h"
-@@ -559,7 +560,7 @@ static void ssys_write(void *opaque, hwaddr offset,
-     case 0x040: /* SRCR0 */
-     case 0x044: /* SRCR1 */
-     case 0x048: /* SRCR2 */
--        fprintf(stderr, "Peripheral reset not implemented\n");
-+        error_report("Peripheral reset not implemented");
-         break;
-     case 0x054: /* IMC */
-         s->int_mask =3D value & 0x7f;
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index a55b1a369c..a069c95f1c 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -12,6 +12,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/arm/pxa.h"
-@@ -70,19 +71,19 @@ static void tosa_out_switch(void *opaque, int line, int=
- level)
- {
-     switch (line) {
-         case 0:
--            fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
-+            error_report("blue LED %s.", level ? "on" : "off");
-             break;
-         case 1:
--            fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
-+            error_report("green LED %s.", level ? "on" : "off");
-             break;
-         case 2:
--            fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
-+            error_report("amber LED %s.", level ? "on" : "off");
-             break;
-         case 3:
--            fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
-+            fprintf(stderr, "wlan LED %s.", level ? "on" : "off");
-             break;
-         default:
--            fprintf(stderr, "Uhandled out event: %d =3D %d\n", line, level=
-);
-+            fprintf(stderr, "Uhandled out event: %d =3D %d", line, level);
-             break;
+     ret =3D ioctl(opp->fd, KVM_SET_DEVICE_ATTR, &attr);
+     if (ret < 0) {
+-        fprintf(stderr, "%s: %s %" PRIx64 "\n", __func__,
+-                strerror(errno), reg_base);
++        error_report("%s: %s %" PRIx64 "", __func__,
++                     strerror(errno), reg_base);
      }
  }
-@@ -133,7 +134,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
 =20
- static uint32_t tosa_ssp_tansfer(SSISlave *dev, uint32_t value)
- {
--    fprintf(stderr, "TG: %d %02x\n", value >> 5, value & 0x1f);
-+    error_report("TG: %d %02x", value >> 5, value & 0x1f);
-     return 0;
+diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
+index d208cb81c4..e710bfdcda 100644
+--- a/hw/intc/s390_flic_kvm.c
++++ b/hw/intc/s390_flic_kvm.c
+@@ -83,7 +83,7 @@ static void flic_enable_pfault(KVMS390FLICState *flic)
+     rc =3D ioctl(flic->fd, KVM_SET_DEVICE_ATTR, &attr);
+=20
+     if (rc) {
+-        fprintf(stderr, "flic: couldn't enable pfault\n");
++        error_report("flic: couldn't enable pfault");
+     }
  }
 =20
-@@ -159,13 +160,13 @@ static int tosa_dac_send(I2CSlave *i2c, uint8_t data)
-     s->buf[s->len] =3D data;
-     if (s->len ++ > 2) {
- #ifdef VERBOSE
--        fprintf(stderr, "%s: message too long (%i bytes)\n", __func__, s->=
-len);
-+        error_report("%s: message too long (%i bytes)", __func__, s->len);
- #endif
-         return 1;
-     }
+@@ -97,7 +97,7 @@ static void flic_disable_wait_pfault(KVMS390FLICState *fl=
+ic)
+     rc =3D ioctl(flic->fd, KVM_SET_DEVICE_ATTR, &attr);
 =20
-     if (s->len =3D=3D 2) {
--        fprintf(stderr, "dac: channel %d value 0x%02x\n",
-+        error_report("dac: channel %d value 0x%02x",
-                 s->buf[0], s->buf[1]);
+     if (rc) {
+-        fprintf(stderr, "flic: couldn't disable pfault\n");
++        error_report("flic: couldn't disable pfault");
      }
-=20
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 418792cd02..56f9d60bed 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -364,7 +364,7 @@ static void versatile_init(MachineState *machine, int b=
-oard_id)
-                           VERSATILE_FLASH_SECT_SIZE,
-                           VERSATILE_FLASH_SIZE / VERSATILE_FLASH_SECT_SIZE=
-,
-                           4, 0x0089, 0x0018, 0x0000, 0x0, 0)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-     }
-=20
-     versatile_binfo.ram_size =3D machine->ram_size;
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index efb5a29475..508629dfe9 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -266,7 +266,7 @@ static void a9_daughterboard_init(const VexpressMachine=
-State *vms,
-=20
-     if (ram_size > 0x40000000) {
-         /* 1GB is the maximum the address space permits */
--        fprintf(stderr, "vexpress-a9: cannot model more than 1GB RAM\n");
-+        error_report("vexpress-a9: cannot model more than 1GB RAM");
-         exit(1);
-     }
-=20
-@@ -355,7 +355,7 @@ static void a15_daughterboard_init(const VexpressMachin=
-eState *vms,
-          */
-         uint64_t rsz =3D ram_size;
-         if (rsz > (30ULL * 1024 * 1024 * 1024)) {
--            fprintf(stderr, "vexpress-a15: cannot model more than 30GB RAM=
-\n");
-+            error_report("vexpress-a15: cannot model more than 30GB RAM");
-             exit(1);
-         }
-     }
-@@ -640,7 +640,7 @@ static void vexpress_common_init(MachineState *machine)
-     pflash0 =3D ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flas=
-h0",
-                                        dinfo);
-     if (!pflash0) {
--        fprintf(stderr, "vexpress: error registering flash 0.\n");
-+        error_report("vexpress: error registering flash 0.");
-         exit(1);
-     }
-=20
-@@ -655,7 +655,7 @@ static void vexpress_common_init(MachineState *machine)
-     dinfo =3D drive_get_next(IF_PFLASH);
-     if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
-                                   dinfo)) {
--        fprintf(stderr, "vexpress: error registering flash 1.\n");
-+        error_report("vexpress: error registering flash 1.");
-         exit(1);
-     }
-=20
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 60561c7b7c..ee59142667 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -319,8 +319,8 @@ static void z2_init(MachineState *machine)
- #endif
-     dinfo =3D drive_get(IF_PFLASH, 0, 0);
-     if (!dinfo && !qtest_enabled()) {
--        fprintf(stderr, "Flash image must be given with the "
--                "'pflash' parameter\n");
-+        error_report("Flash image must be given with the "
-+                     "'pflash' parameter");
-         exit(1);
-     }
-=20
-@@ -329,7 +329,7 @@ static void z2_init(MachineState *machine)
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                sector_len, Z2_FLASH_SIZE / sector_len,
-                                4, 0, 0, 0, 0, be)) {
--        fprintf(stderr, "qemu: Error registering flash memory.\n");
-+        error_report("Error registering flash memory.");
-         exit(1);
-     }
+ }
 =20
 --=20
 2.14.1
