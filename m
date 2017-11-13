@@ -1,46 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eEGET-0005Ga-QE
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 10:01:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35850)
+	id 1eEJCP-00042t-4z
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 13:11:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44363)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1eEGEM-00059M-EJ
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 10:01:03 -0500
+	(envelope-from <alistair23@gmail.com>) id 1eEJCN-000428-Sq
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:11:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1eEGEJ-0001Lb-TI
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 10:00:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48224)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1eEGE7-0001F5-1v; Mon, 13 Nov 2017 10:00:43 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E53953D95D;
-	Mon, 13 Nov 2017 15:00:41 +0000 (UTC)
-Received: from localhost (ovpn-12-39.pek2.redhat.com [10.72.12.39])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 815E882482;
-	Mon, 13 Nov 2017 15:00:39 +0000 (UTC)
-Date: Mon, 13 Nov 2017 23:00:37 +0800
-From: Fam Zheng <famz@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org, mdroth@linux.vnet.ibm.com, qemu-block@nongnu.org
-Message-ID: <20171113145942.GA29617@lemon>
-References: <151056619347.390.15270351875314848925@bafd83ae6430>
-	<0241ad8e-dd22-a029-5918-62ed4c49cf47@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1eEJCN-0004Hi-0I
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:11:07 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:34380)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1eEJCG-0004Eh-3m; Mon, 13 Nov 2017 13:11:00 -0500
+Received: by mail-wm0-x241.google.com with SMTP id n74so15070420wmi.1;
+	Mon, 13 Nov 2017 10:10:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=zQVt7Y3PEcY/h0JsyaXJIF2LTn/r2dvRP3HGlO8SaO8=;
+	b=LEsA7KDOmXo+nvA25fhyCGyq9XKBDzAMLzUGtpfkXTzhbT4FIp1UyVRTLYKp/tGUI2
+	sU/CUEHnBm7dV+spCUEMQ/Q0Us6GlKQiuAMLyOYrZS4fnY1swFTvyKQ+LZlAnHdxzrpv
+	cs27fyYecCH5JsXiHFrLnykXkCKigRo+C+GhoBpSyYtRyXVbLbhAz1m+0iLBSjzFA81d
+	YlHishwjgo09xCIGZGdvog6PW4YNvQLWrFp4cXGCMDcweJj1ciz0ECYLojIzECXAP1qb
+	/PUXR/iVkX+qjJpG1jdKKevwtGoMX7TapC8sxsdpZRRF3i8QhdFNwzV44xBi5+oHCspU
+	8cKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=zQVt7Y3PEcY/h0JsyaXJIF2LTn/r2dvRP3HGlO8SaO8=;
+	b=jK+IfVP7NEEN6Zp5wLS7e6SFdJwbB0Atntp2kh0wOsdxIYIjrFlbPiLVkoGh3VEbIW
+	itm9oth+gUN8zICWLztyGoKg1U75/gE8yErwCYw1V2GPGPDMJuDIslVy11bup4HmJLQY
+	yW809ZwbqPCFrqSapAXnR72CzX4GOHMMsTIn0SHtngQW4Li8jUtZ45wqwVziHi6XX32b
+	FzbIYfrZlxk3CAdFpA6sUlIjl6rkXTSOwjiu8F9OaRnZHCJg0SgbJGzcudlzN+h+TYWG
+	11+oyqHiq7Wy4zQbvn0gZJflFxhfmn7w1zHrgHpGUCtnuBbXfKMjJHTjUzDfPoKctn89
+	qmvg==
+X-Gm-Message-State: AJaThX5tg07qEtFlEL/x/Ezhp/P699+0P8N6QhlyU/S/CarVGdwK6QjY
+	mKDVobA5ZEUJ15M6tS3FcM9WUZWtMUUa9RlHWOo=
+X-Google-Smtp-Source: AGs4zMZ6OWXH0f0MBktmeqmFvbgLu9M/sYZFWDXEnD6Y163aAKR6P7D83Za+iiDH/XB8zXdxywgXfnUC4ZYykS8nSvA=
+X-Received: by 10.28.247.16 with SMTP id v16mr7619742wmh.128.1510596658511;
+	Mon, 13 Nov 2017 10:10:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0241ad8e-dd22-a029-5918-62ed4c49cf47@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 13 Nov 2017 15:00:41 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+Received: by 10.28.147.11 with HTTP; Mon, 13 Nov 2017 10:10:27 -0800 (PST)
+In-Reply-To: <1510564905-6185-1-git-send-email-thuth@redhat.com>
+References: <1510564905-6185-1-git-send-email-thuth@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 Nov 2017 10:10:27 -0800
+Message-ID: <CAKmqyKMvFAZ3p+2csO=viTyF7ruCpWL4iReZVzNRcO9DnaAkkQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, 
+	Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::241
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts/make-release: No
  need to delete pixman/.git anymore
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,27 +69,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2017 15:01:04 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 18:11:08 -0000
 
-On Mon, 11/13 10:48, Thomas Huth wrote:
-> > 077         - output mismatch (see 077.out.bad)
-> > --- /tmp/qemu-test/src/tests/qemu-iotests/077.out	2017-11-13 09:38:59.000000000 +0000
-> > +++ /tmp/qemu-test/build/tests/qemu-iotests/077.out.bad	2017-11-13 09:41:20.601278693 +0000
-> > @@ -56,9 +56,9 @@
-> >  wrote XXX/XXX bytes at offset XXX
-> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
-> >  blkdebug: Resuming request 'B'
-> > +blkdebug: Resuming request 'A'
-> >  wrote XXX/XXX bytes at offset XXX
-> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
-> > -blkdebug: Resuming request 'A'
-> >  wrote XXX/XXX bytes at offset XXX
-> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
-> >  wrote XXX/XXX bytes at offset XXX
-> That's certainly *not* caused by my patch. Is this already a known
-> problem? Otherwise, Fam, could you please have a look at this?
+On Mon, Nov 13, 2017 at 1:21 AM, Thomas Huth <thuth@redhat.com> wrote:
+> The pixman submodule has been removed in commit c12b6d70e384c769ca372e1,
+> so there is no need anymore to delete pixman/.git while building a
+> release tarball.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-I will try to fix the test.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
-Fam
+Alistair
+
+> ---
+>  scripts/make-release | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/scripts/make-release b/scripts/make-release
+> index fa6323f..70367ab 100755
+> --- a/scripts/make-release
+> +++ b/scripts/make-release
+> @@ -19,7 +19,7 @@ pushd ${destination}
+>  git checkout "v${version}"
+>  git submodule update --init
+>  (cd roms/seabios && git describe --tags --long --dirty > .version)
+> -rm -rf .git roms/*/.git dtc/.git pixman/.git
+> +rm -rf .git roms/*/.git dtc/.git
+>  popd
+>  tar cfj ${destination}.tar.bz2 ${destination}
+>  rm -rf ${destination}
+> --
+> 1.8.3.1
+>
+>
 
