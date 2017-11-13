@@ -1,63 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eEJCP-00042t-4z
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 13:11:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44363)
+	id 1eEJTO-0004AJ-Vc
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 13:28:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eEJCN-000428-Sq
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:11:08 -0500
+	(envelope-from <googuy@gmail.com>) id 1eEJTN-00047y-9c
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:28:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eEJCN-0004Hi-0I
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:11:07 -0500
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:34380)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eEJCG-0004Eh-3m; Mon, 13 Nov 2017 13:11:00 -0500
-Received: by mail-wm0-x241.google.com with SMTP id n74so15070420wmi.1;
-	Mon, 13 Nov 2017 10:10:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=zQVt7Y3PEcY/h0JsyaXJIF2LTn/r2dvRP3HGlO8SaO8=;
-	b=LEsA7KDOmXo+nvA25fhyCGyq9XKBDzAMLzUGtpfkXTzhbT4FIp1UyVRTLYKp/tGUI2
-	sU/CUEHnBm7dV+spCUEMQ/Q0Us6GlKQiuAMLyOYrZS4fnY1swFTvyKQ+LZlAnHdxzrpv
-	cs27fyYecCH5JsXiHFrLnykXkCKigRo+C+GhoBpSyYtRyXVbLbhAz1m+0iLBSjzFA81d
-	YlHishwjgo09xCIGZGdvog6PW4YNvQLWrFp4cXGCMDcweJj1ciz0ECYLojIzECXAP1qb
-	/PUXR/iVkX+qjJpG1jdKKevwtGoMX7TapC8sxsdpZRRF3i8QhdFNwzV44xBi5+oHCspU
-	8cKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=zQVt7Y3PEcY/h0JsyaXJIF2LTn/r2dvRP3HGlO8SaO8=;
-	b=jK+IfVP7NEEN6Zp5wLS7e6SFdJwbB0Atntp2kh0wOsdxIYIjrFlbPiLVkoGh3VEbIW
-	itm9oth+gUN8zICWLztyGoKg1U75/gE8yErwCYw1V2GPGPDMJuDIslVy11bup4HmJLQY
-	yW809ZwbqPCFrqSapAXnR72CzX4GOHMMsTIn0SHtngQW4Li8jUtZ45wqwVziHi6XX32b
-	FzbIYfrZlxk3CAdFpA6sUlIjl6rkXTSOwjiu8F9OaRnZHCJg0SgbJGzcudlzN+h+TYWG
-	11+oyqHiq7Wy4zQbvn0gZJflFxhfmn7w1zHrgHpGUCtnuBbXfKMjJHTjUzDfPoKctn89
-	qmvg==
-X-Gm-Message-State: AJaThX5tg07qEtFlEL/x/Ezhp/P699+0P8N6QhlyU/S/CarVGdwK6QjY
-	mKDVobA5ZEUJ15M6tS3FcM9WUZWtMUUa9RlHWOo=
-X-Google-Smtp-Source: AGs4zMZ6OWXH0f0MBktmeqmFvbgLu9M/sYZFWDXEnD6Y163aAKR6P7D83Za+iiDH/XB8zXdxywgXfnUC4ZYykS8nSvA=
-X-Received: by 10.28.247.16 with SMTP id v16mr7619742wmh.128.1510596658511;
-	Mon, 13 Nov 2017 10:10:58 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.28.147.11 with HTTP; Mon, 13 Nov 2017 10:10:27 -0800 (PST)
-In-Reply-To: <1510564905-6185-1-git-send-email-thuth@redhat.com>
-References: <1510564905-6185-1-git-send-email-thuth@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Nov 2017 10:10:27 -0800
-Message-ID: <CAKmqyKMvFAZ3p+2csO=viTyF7ruCpWL4iReZVzNRcO9DnaAkkQ@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, 
-	Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts/make-release: No
- need to delete pixman/.git anymore
+	(envelope-from <googuy@gmail.com>) id 1eEJTM-0005Qk-Gh
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 13:28:41 -0500
+Received: from teknoservice.es ([213.4.81.82]:1885)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <googuy@gmail.com>)
+	id 1eEJTG-0005NA-8w; Mon, 13 Nov 2017 13:28:34 -0500
+Received: from localhost.localdomain ([10.7.7.88]) by teknoservice.es with
+	Microsoft SMTPSVC(6.0.3790.211); Mon, 13 Nov 2017 19:28:19 +0100
+From: Vicente Jimenez Aguilar <googuy@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Vicente Jimenez Aguilar <googuy@gmail.com>
+Date: Mon, 13 Nov 2017 19:27:52 +0100
+Message-Id: <20171113182752.8223-1-googuy@gmail.com>
+X-Mailer: git-send-email 2.14.1
+X-OriginalArrivalTime: 13 Nov 2017 18:28:19.0939 (UTC)
+	FILETIME=[2E472B30:01D35CAD]
+X-detected-operating-system: by eggs.gnu.org: Windows XP [fuzzy]
+X-Received-From: 213.4.81.82
+Subject: [Qemu-trivial] [PATCH] Document mon's pretty parameter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,38 +37,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2017 18:11:08 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 18:28:42 -0000
 
-On Mon, Nov 13, 2017 at 1:21 AM, Thomas Huth <thuth@redhat.com> wrote:
-> The pixman submodule has been removed in commit c12b6d70e384c769ca372e1,
-> so there is no need anymore to delete pixman/.git while building a
-> release tarball.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qemu-options.hx | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 3728e9b4dd..f06002689d 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3477,11 +3477,12 @@ Like -qmp but uses pretty JSON formatting.
+ ETEXI
+ 
+ DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
+-    "-mon [chardev=]name[,mode=readline|control]\n", QEMU_ARCH_ALL)
++    "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
+ STEXI
+-@item -mon [chardev=]name[,mode=readline|control]
++@item -mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]
+ @findex -mon
+-Setup monitor on chardev @var{name}.
++Setup monitor on chardev @var{name}. @code{pretty} turn on JSON pretty printing
++easing human reading and debugging.
+ ETEXI
+ 
+ DEF("debugcon", HAS_ARG, QEMU_OPTION_debugcon, \
+-- 
+2.14.1
 
-Alistair
-
-> ---
->  scripts/make-release | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/scripts/make-release b/scripts/make-release
-> index fa6323f..70367ab 100755
-> --- a/scripts/make-release
-> +++ b/scripts/make-release
-> @@ -19,7 +19,7 @@ pushd ${destination}
->  git checkout "v${version}"
->  git submodule update --init
->  (cd roms/seabios && git describe --tags --long --dirty > .version)
-> -rm -rf .git roms/*/.git dtc/.git pixman/.git
-> +rm -rf .git roms/*/.git dtc/.git
->  popd
->  tar cfj ${destination}.tar.bz2 ${destination}
->  rm -rf ${destination}
-> --
-> 1.8.3.1
->
->
 
