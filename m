@@ -1,61 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eECtI-0002uu-5Z
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 06:27:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58851)
+	id 1eEGET-0005Ga-QE
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 10:01:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eECtF-0002u8-I6
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 06:26:58 -0500
+	(envelope-from <famz@redhat.com>) id 1eEGEM-00059M-EJ
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 10:01:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eECtE-0003Mv-JT
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 06:26:57 -0500
-Received: from mail-wr0-x232.google.com ([2a00:1450:400c:c0c::232]:43662)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eECtE-0003Kn-86
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 06:26:56 -0500
-Received: by mail-wr0-x232.google.com with SMTP id 4so14124312wrt.0
-	for <qemu-trivial@nongnu.org>; Mon, 13 Nov 2017 03:26:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=yNhxVHZ66BEPoKhid0zfDRpdvrqJE1/qX/uHY6rb6Xs=;
-	b=DIWgQzl1G7fzEvj4AzvAdBTmkC99Gt7yo3AIyqYLX0J8g23V1ezj7iJE0oU3QMe/kT
-	JKo8UINvvd12nh2jO2T0gl1Lak0J8HWMOdWW5qXwWMhEOS+PCSPejXIbftbjSh43W1We
-	5Sr3lt+LmO0PZ+URPfWmAFZA5U4Df5q2SEH0A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=yNhxVHZ66BEPoKhid0zfDRpdvrqJE1/qX/uHY6rb6Xs=;
-	b=E8qUdJvZNjH0DF0m2ap3zSk8na4zAw8FAZPAyhfh+9PjLopwHcVRfTzriFg481eKqx
-	oU1prWEYM39EurMLemLesNp53Ljes+gaRtNeJqFUfMlQhJ9xcAEvnnoOw7x2wEM0hhka
-	ZF6eG8qIM2OW35T90MKd9OM1H0gf8M2QbihbHnPfpdJZ+P87kKJhZYHd3XxgmZxQrXV+
-	u1G4t0A02Zux5KQu/XBlTy2a8Ey9a6qqh77RAQvZ89jPHemC3Uk0Oz/YvvhVU/6SEBSf
-	/jsus36j0VA0jps4B1gi801TEfY7NVapwcSJ50ad46q6DU4AQ8VQ0mUKSnlOzPG4L8Dc
-	FBIA==
-X-Gm-Message-State: AJaThX6uKDb4bOZK0qT2tlm80hVuM7pRrQb/MEP4cZjLSTh6YvoyQJYc
-	n+n4oouAVFLVoZqu2mDvCQaJ8FrcCkdelSylHh6BoA==
-X-Google-Smtp-Source: AGs4zManJZMSA3eMo7pHvLhblx/nXTxMLuiE0gbYP5Yiy5f2V08B+3B2PMrthiwRSFx94C/HSZVGr15u7zMUcErZAxI=
-X-Received: by 10.223.171.161 with SMTP id s30mr6600555wrc.194.1510572415080; 
-	Mon, 13 Nov 2017 03:26:55 -0800 (PST)
+	(envelope-from <famz@redhat.com>) id 1eEGEJ-0001Lb-TI
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 10:00:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48224)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1eEGE7-0001F5-1v; Mon, 13 Nov 2017 10:00:43 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E53953D95D;
+	Mon, 13 Nov 2017 15:00:41 +0000 (UTC)
+Received: from localhost (ovpn-12-39.pek2.redhat.com [10.72.12.39])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 815E882482;
+	Mon, 13 Nov 2017 15:00:39 +0000 (UTC)
+Date: Mon, 13 Nov 2017 23:00:37 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	peter.maydell@linaro.org, mdroth@linux.vnet.ibm.com, qemu-block@nongnu.org
+Message-ID: <20171113145942.GA29617@lemon>
+References: <151056619347.390.15270351875314848925@bafd83ae6430>
+	<0241ad8e-dd22-a029-5918-62ed4c49cf47@redhat.com>
 MIME-Version: 1.0
-Received: by 10.223.161.5 with HTTP; Mon, 13 Nov 2017 03:26:34 -0800 (PST)
-In-Reply-To: <49151b79-7ec4-b728-1ea9-d5c393a5bada@amsat.org>
-References: <1510087611-1851-1-git-send-email-cota@braap.org>
-	<49151b79-7ec4-b728-1ea9-d5c393a5bada@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Nov 2017 11:26:34 +0000
-Message-ID: <CAFEAcA-pwxfR-+XSu+q117Po=Lh2aRDGtW9jNAEZuPZNjbFC_Q@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: "Emilio G. Cota" <cota@braap.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::232
-Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH] arm/translate-a64: mark path
- as unreachable to eliminate warning
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <0241ad8e-dd22-a029-5918-62ed4c49cf47@redhat.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 13 Nov 2017 15:00:41 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts/make-release: No
+ need to delete pixman/.git anymore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,49 +54,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2017 11:26:58 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 15:01:04 -0000
 
-On 8 November 2017 at 12:37, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
-> On 11/07/2017 05:46 PM, Emilio G. Cota wrote:
->> Fixes the following warning when compiling with gcc 5.4.0 with -O1
->> optimizations and --enable-debug:
->>
->> target/arm/translate-a64.c: In function =E2=80=98aarch64_tr_translate_in=
-sn=E2=80=99:
->> target/arm/translate-a64.c:2361:8: error: =E2=80=98post_index=E2=80=99 m=
-ay be used uninitialized in this function [-Werror=3Dmaybe-uninitialized]
->>      if (!post_index) {
->>         ^
->> target/arm/translate-a64.c:2307:10: note: =E2=80=98post_index=E2=80=99 w=
-as declared here
->>      bool post_index;
->>           ^
->> target/arm/translate-a64.c:2386:8: error: =E2=80=98writeback=E2=80=99 ma=
-y be used uninitialized in this function [-Werror=3Dmaybe-uninitialized]
->>      if (writeback) {
->>         ^
->> target/arm/translate-a64.c:2308:10: note: =E2=80=98writeback=E2=80=99 wa=
-s declared here
->>      bool writeback;
->>           ^
->>
->> Note that idx comes from selecting 2 bits, and therefore its value
->> can be at most 3.
->>
->> Signed-off-by: Emilio G. Cota <cota@braap.org>
+On Mon, 11/13 10:48, Thomas Huth wrote:
+> > 077         - output mismatch (see 077.out.bad)
+> > --- /tmp/qemu-test/src/tests/qemu-iotests/077.out	2017-11-13 09:38:59.000000000 +0000
+> > +++ /tmp/qemu-test/build/tests/qemu-iotests/077.out.bad	2017-11-13 09:41:20.601278693 +0000
+> > @@ -56,9 +56,9 @@
+> >  wrote XXX/XXX bytes at offset XXX
+> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+> >  blkdebug: Resuming request 'B'
+> > +blkdebug: Resuming request 'A'
+> >  wrote XXX/XXX bytes at offset XXX
+> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+> > -blkdebug: Resuming request 'A'
+> >  wrote XXX/XXX bytes at offset XXX
+> >  XXX bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+> >  wrote XXX/XXX bytes at offset XXX
+> That's certainly *not* caused by my patch. Is this already a known
+> problem? Otherwise, Fam, could you please have a look at this?
 
-Applied to target-arm.next, thanks. (It's a bit sad that
-gcc can't figure out that the result of x & 3 is constrained
-to [0,3], but there you go.)
+I will try to fix the test.
 
-> Acked-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-By the way, Philippe, what are you intending to convey with
-an acked-by tag? Usually "acked-by" means "I'm the maintainer
-for this area and I haven't actually reviewed this but I don't
-object to it"...
-
-thanks
--- PMM
+Fam
 
