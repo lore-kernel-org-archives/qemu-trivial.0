@@ -1,42 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eE99S-0006rv-Na
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 02:27:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41031)
+	id 1eE9CZ-0007fk-Fv
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2017 02:30:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1eE99P-0006o3-Iz
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 02:27:24 -0500
+	(envelope-from <no-reply@patchew.org>) id 1eE9CW-0007eV-Oy
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 02:30:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1eE99O-0000B3-OT
-	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 02:27:23 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:52256
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
-	id 1eE99K-00009V-Dv; Mon, 13 Nov 2017 02:27:18 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 3A0F8DA8D96;
-	Mon, 13 Nov 2017 08:27:17 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id sRHIhiSMsZMh; Mon, 13 Nov 2017 08:27:16 +0100 (CET)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id BFCAFDA8D95;
-	Mon, 13 Nov 2017 08:27:16 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id B560C46162C; Mon, 13 Nov 2017 08:27:16 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Date: Mon, 13 Nov 2017 08:27:15 +0100
-Message-Id: <20171113072715.3443-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH for 2.12] disas/hppa: Fix compiler errors
+	(envelope-from <no-reply@patchew.org>) id 1eE9CV-0000jV-Mt
+	for qemu-trivial@nongnu.org; Mon, 13 Nov 2017 02:30:36 -0500
+Resent-Date: Mon, 13 Nov 2017 02:30:36 -0500
+Resent-Message-Id: <E1eE9CV-0000jV-Mt@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21325)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1eE9CQ-0000iE-Ib; Mon, 13 Nov 2017 02:30:30 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 15105582063561023.4967871894654;
+	Sun, 12 Nov 2017 23:30:06 -0800 (PST)
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <151055820537.390.14030945316491927841@bafd83ae6430>
+In-Reply-To: <20171113072715.3443-1-sw@weilnetz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: sw@weilnetz.de
+Cc: famz@redhat.com, richard.henderson@linaro.org, qemu-trivial@nongnu.org,
+	sw@weilnetz.de, qemu-devel@nongnu.org
+Date: Sun, 12 Nov 2017 23:30:06 -0800 (PST)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.12] disas/hppa: Fix
+ compiler errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,47 +45,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2017 07:27:24 -0000
+X-List-Received-Date: Mon, 13 Nov 2017 07:30:38 -0000
 
-gcc (Debian 6.3.0-18) 6.3.0 20170516 reports these errors:
-
-disas/hppa.c:2702:20: error:
- left shift of negative value [-Werror=shift-negative-value]
-disas/hppa.c:2718:20: error:
- left shift of negative value [-Werror=shift-negative-value]
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
-
-This patch fails with checkpatch.pl because the code uses
-tab indention.
-
- disas/hppa.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/disas/hppa.c b/disas/hppa.c
-index a2d371fdb1..0d1e99eab3 100644
---- a/disas/hppa.c
-+++ b/disas/hppa.c
-@@ -2699,7 +2699,7 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
- 		    int disp;
- 
- 		    if (sign)
--		      disp = (-1 << 10) | imm10;
-+		      disp = (UINT_MAX << 10) | imm10;
- 		    else
- 		      disp = imm10;
- 
-@@ -2715,7 +2715,7 @@ print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
- 		    int disp;
- 
- 		    if (sign)
--		      disp = (-1 << 11) | imm11;
-+		      disp = (UINT_MAX << 11) | imm11;
- 		    else
- 		      disp = imm11;
- 
--- 
-2.11.0
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSCBmb3IgMi4xMl0gZGlzYXMvaHBwYTogRml4IGNvbXBpbGVyIGVycm9ycwpU
+eXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxNzExMTMwNzI3MTUuMzQ0My0xLXN3QHdlaWxuZXR6
+LmRlCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0x
+CnRvdGFsPSQoZ2l0IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2Ug
+JEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0gg
+JG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAgICBpZiAhIGdp
+dCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWls
+YmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBmaQogICAgbj0k
+KChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0
+aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczov
+L2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgICAg
+ICAgcGF0Y2hldy8yMDE3MTExMzA3MjcxNS4zNDQzLTEtc3dAd2VpbG5ldHouZGUgLT4gcGF0Y2hl
+dy8yMDE3MTExMzA3MjcxNS4zNDQzLTEtc3dAd2VpbG5ldHouZGUKU3dpdGNoZWQgdG8gYSBuZXcg
+YnJhbmNoICd0ZXN0JwplMGJiZDRkNzFiIGRpc2FzL2hwcGE6IEZpeCBjb21waWxlciBlcnJvcnMK
+Cj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMTogZGlzYXMvaHBwYTogRml4
+IGNvbXBpbGVyIGVycm9ycy4uLgpFUlJPUjogc3VzcGVjdCBjb2RlIGluZGVudCBmb3IgY29uZGl0
+aW9uYWwgc3RhdGVtZW50cyAoMjAsIDIyKQojMjM6IEZJTEU6IGRpc2FzL2hwcGEuYzoyNzAxOgog
+CQkgICAgaWYgKHNpZ24pCisJCSAgICAgIGRpc3AgPSAoVUlOVF9NQVggPDwgMTApIHwgaW1tMTA7
+CgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMyNTogRklMRTogZGlz
+YXMvaHBwYS5jOjI3MDI6CiteSV5JICAgICAgZGlzcCA9IChVSU5UX01BWCA8PCAxMCkgfCBpbW0x
+MDskCgpFUlJPUjogc3VzcGVjdCBjb2RlIGluZGVudCBmb3IgY29uZGl0aW9uYWwgc3RhdGVtZW50
+cyAoMjAsIDIyKQojMzI6IEZJTEU6IGRpc2FzL2hwcGEuYzoyNzE3OgogCQkgICAgaWYgKHNpZ24p
+CisJCSAgICAgIGRpc3AgPSAoVUlOVF9NQVggPDwgMTEpIHwgaW1tMTE7CgpFUlJPUjogY29kZSBp
+bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMzNDogRklMRTogZGlzYXMvaHBwYS5jOjI3MTg6
+CiteSV5JICAgICAgZGlzcCA9IChVSU5UX01BWCA8PCAxMSkgfCBpbW0xMTskCgp0b3RhbDogNCBl
+cnJvcnMsIDAgd2FybmluZ3MsIDE2IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxl
+IHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFs
+c2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRD
+SCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRl
+ZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
+Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8g
+cGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMub3Jn
 
 
