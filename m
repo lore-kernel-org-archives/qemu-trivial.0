@@ -1,51 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eEW2n-0005ws-UA
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2017 02:54:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58403)
+	id 1eEW6q-0000Ax-9D
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2017 02:58:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eEW2l-0005vr-P7
-	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 02:54:04 -0500
+	(envelope-from <googuy@gmail.com>) id 1eEW6n-00008r-Q0
+	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 02:58:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eEW2k-0005Qh-V8
-	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 02:54:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33562)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eEW2e-0005Li-US; Tue, 14 Nov 2017 02:53:57 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C5E6480481;
-	Tue, 14 Nov 2017 07:53:55 +0000 (UTC)
-Received: from [10.36.116.149] (ovpn-116-149.ams2.redhat.com [10.36.116.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4ED6B1897E;
-	Tue, 14 Nov 2017 07:53:54 +0000 (UTC)
-To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: alistair23@gmail.com, Anthony Green <green@moxielogic.com>,
-	armbru@redhat.com
-References: <cover.1510612380.git.alistair.francis@xilinx.com>
-	<ccfeb16d932f9570efc871c6aa1c2d1229bf31ba.1510612380.git.alistair.francis@xilinx.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <3220ca4b-12f9-727e-da70-188dd1f9c262@redhat.com>
-Date: Tue, 14 Nov 2017 08:53:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <ccfeb16d932f9570efc871c6aa1c2d1229bf31ba.1510612380.git.alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 14 Nov 2017 07:53:55 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 15/29] hw/moxie: Replace
- fprintf(stderr, "*\n" with error_report()
+	(envelope-from <googuy@gmail.com>) id 1eEW6n-0000gD-48
+	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 02:58:13 -0500
+Received: from teknoservice.es ([213.4.81.82]:26214)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <googuy@gmail.com>)
+	id 1eEW6g-0000Zq-UO; Tue, 14 Nov 2017 02:58:07 -0500
+Received: from localhost.localdomain ([10.7.7.88]) by teknoservice.es with
+	Microsoft SMTPSVC(6.0.3790.211); Tue, 14 Nov 2017 08:58:03 +0100
+From: Vicente Jimenez Aguilar <googuy@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Vicente Jimenez Aguilar <googuy@gmail.com>
+Date: Tue, 14 Nov 2017 08:57:41 +0100
+Message-Id: <20171114075741.12372-1-googuy@gmail.com>
+X-Mailer: git-send-email 2.14.1
+X-OriginalArrivalTime: 14 Nov 2017 07:58:04.0016 (UTC)
+	FILETIME=[4CA4FF00:01D35D1E]
+X-detected-operating-system: by eggs.gnu.org: Windows XP [fuzzy]
+X-Received-From: 213.4.81.82
+Subject: [Qemu-trivial] [PATCH] Document pretty parameter for mon option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,12 +37,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2017 07:54:04 -0000
+X-List-Received-Date: Tue, 14 Nov 2017 07:58:14 -0000
 
-On 13.11.2017 23:35, Alistair Francis wrote:
-> Replace a large number of the fprintf(stderr, "*\n" calls with
-> error_report(). The functions were renamed with these commands and then
-> compiler issues where manually fixed.
+Documentation: document pretty parameter for mon option
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Vicente Jimenez Aguilar <googuy@gmail.com>
+---
+ qemu-options.hx | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 3728e9b4dd..f06002689d 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3477,11 +3477,12 @@ Like -qmp but uses pretty JSON formatting.
+ ETEXI
+ 
+ DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
+-    "-mon [chardev=]name[,mode=readline|control]\n", QEMU_ARCH_ALL)
++    "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
+ STEXI
+-@item -mon [chardev=]name[,mode=readline|control]
++@item -mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]
+ @findex -mon
+-Setup monitor on chardev @var{name}.
++Setup monitor on chardev @var{name}. @code{pretty} turn on JSON pretty printing
++easing human reading and debugging.
+ ETEXI
+ 
+ DEF("debugcon", HAS_ARG, QEMU_OPTION_debugcon, \
+-- 
+2.14.1
+
 
