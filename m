@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eEXxl-0003gU-Pu
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2017 04:57:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37548)
+	id 1eEh95-0008JZ-LA
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2017 14:45:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51664)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1eEXxj-0003X9-5I
-	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 04:57:00 -0500
+	(envelope-from <laurent@vivier.eu>) id 1eEh92-0008GF-TW
+	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 14:45:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1eEXxi-0006U5-42
-	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 04:56:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46342)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1eEXxP-0006Ed-8E; Tue, 14 Nov 2017 04:56:39 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1ADF776543;
-	Tue, 14 Nov 2017 09:56:38 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-18.ams2.redhat.com
-	[10.36.116.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EC0FB2C311;
-	Tue, 14 Nov 2017 09:56:31 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 01F18A1F4; Tue, 14 Nov 2017 10:56:31 +0100 (CET)
-Date: Tue, 14 Nov 2017 10:56:30 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair23@gmail.com,
-	armbru@redhat.com, Andrzej Zaborowski <balrogg@gmail.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@imgtec.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
-	qemu-block@nongnu.org, xen-devel@lists.xenproject.org
-Message-ID: <20171114095630.2v4lzfxlmpom33mi@sirius.home.kraxel.org>
-References: <cover.1510612380.git.alistair.francis@xilinx.com>
-	<67465b2020def3680dfd15d6473d3316c3fc8be0.1510612380.git.alistair.francis@xilinx.com>
+	(envelope-from <laurent@vivier.eu>) id 1eEh8x-0005iI-Pq
+	for qemu-trivial@nongnu.org; Tue, 14 Nov 2017 14:45:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:59664)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1eEh8x-0005ge-GB; Tue, 14 Nov 2017 14:45:11 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue006 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	0M2kBW-1f66TS1csY-00sbre; Tue, 14 Nov 2017 20:45:00 +0100
+To: Zach Riggle <zachriggle@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>, 
+	"open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20171024230758.31779-1-riggle@google.com>
+	<20171025033442.44872-1-zachriggle@gmail.com>
+	<fac44468-7869-57fa-fb5f-fbd98828489f@vivier.eu>
+	<CAMP9c5m6GK_Xwt6z3Bj+1WauHzHffzFb1cVD9ojeh2m8gA-D8w@mail.gmail.com>
+	<CAMP9c5kG9m-swMJBtdQPzPkjLy7zq9sEdRA-PGcdeFDAT-DH9w@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <b4ed3fcb-48a1-4304-9dab-1694e63eef3f@vivier.eu>
+Date: Tue, 14 Nov 2017 20:44:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <67465b2020def3680dfd15d6473d3316c3fc8be0.1510612380.git.alistair.francis@xilinx.com>
-User-Agent: NeoMutt/20171027
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 14 Nov 2017 09:56:38 +0000 (UTC)
+In-Reply-To: <CAMP9c5kG9m-swMJBtdQPzPkjLy7zq9sEdRA-PGcdeFDAT-DH9w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K0:YJlxJIRMNRz4/ngQ96iauTTSNPVi3UYvHZFBXFSyoMVRxUizrbf
+	2Bvuv7dUwjgA1qjWggYCiNUw3iIhxTfTvA65Yy6NrHit6Maya6GcBVe6rEvtdCWk/05iKDy
+	JI7LQpKr1sLYPChgQfaykLbdV3flGXA0xgtSkLDilVYz6+qMhN452wUGbt8Y2qPeWgbL5G8
+	9DMMmhY6sKGl9jmqA34jg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ac96HZpNeMY=:qYbbWZwVc4Rxpvll+sfjhH
+	tBPc4GO20wQZqrhO61MHV1wAF4Njf4eYhxIfthMr8IAlSyf34j4FzlLE5SXTd2K/fC/1/RY0Q
+	hJGFLq7G6R+fbljvyTGCHn67/mfWw41s5jJpYTunwWLZ0oV7oQXzk4mCeVHN83sOkNiOsPwr0
+	lhbb7KWY5FhoOZfcflSTChBSN69aS0HW8bP5At/7t8MFWLC5/wxQZbyX3icup/NSAZrOXCWwz
+	Feu6m4q5By1uQt1LVIhJSWDFLuH4tZ+NrQKH+bRnrgM9+w0vLnfAOisdldduy6COXIXSXOnH5
+	QDzymDq+/bP13SaoWOvWlr0nsGZ3KKD3JwWbA91k+u/LCVVJ+MG2a3+LIYcaT4YUezCAjiMky
+	oPuMou1Q+MhxTkDA72MCSV8lR3IKAD0iDyFR10IBPXASBWWwO5IUm4hN7V6O93gss9QqSy0R5
+	kL4927spMtvqRE6MQZz+y+Iqxx9U91mNKH4zmafcz7AxWe4rIpAl4cUV3IuNglchVp+F6hwPr
+	p58NA95ONfodbUyPNK8Z4lMI5LhDJBr6f2hyR/6IZzicWi7jP7jCAUXVmMwbCGPhJJDlIrT2P
+	SH/hs+zijiJADvHCcMUM09mK1Kz0pWH+eCWGqe9EoNADqns35BqVFNNcSZIAaVMVhlOS11sY5
+	fhtwH6j/oql+FJ+HBSycm/aAY2VpwD6KxNnPeA6Kd/i8RBir7+b7/wy58EYOAmfpanf3je3+0
+	o2uHZT1wyHD0cfUU2mjpHR/GMB9CQRRgFTdyjMGk1Frmue8LEgs3R+iq6yo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v5 02/29] Replace all occurances of
- __FUNCTION__ with __func__
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: fix
+ is_proc_myself to check the paths via realpath
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,34 +65,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2017 09:57:00 -0000
+X-List-Received-Date: Tue, 14 Nov 2017 19:45:17 -0000
 
-On Mon, Nov 13, 2017 at 02:34:42PM -0800, Alistair Francis wrote:
-> Replace all occurs of __FUNCTION__ except for the check in checkpatch
-> with the non GCC specific __func__.
+Le 11/11/2017 à 02:48, Zach Riggle a écrit :
+> I wrote up a quick example to show that this should work specifically for
+> /proc/self/exe:
 > 
-> One line in hcd-musb.c was manually tweaked to pass checkpatch.
+> #define _GNU_SOURCE
+> #include <sys/types.h>
+> #include <sys/stat.h>
+> #include <fcntl.h>
+> #include <unistd.h>
+> int main(int argc, char** argv) {
+>     int fd = open("/proc/self/exe", O_NOFOLLOW | O_PATH);
+>     system("ls -la /proc/$PPID/fd/");
+> }
 > 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Cc: John Snow <jsnow@redhat.com>
-> Cc: Aurelien Jarno <aurelien@aurel32.net>
-> Cc: Yongbok Kim <yongbok.kim@imgtec.com>
-> Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> Cc: Fam Zheng <famz@redhat.com>
-> Cc: Juan Quintela <quintela@redhat.com>
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-block@nongnu.org
-> Cc: xen-devel@lists.xenproject.org
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+And what about a readlink() in a loop until we cross "/proc/<pid>" (or not)?
+
+Thanks,
+Laurent
 
