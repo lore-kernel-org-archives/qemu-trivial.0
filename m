@@ -1,44 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eFQA5-0004iQ-L4
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2017 14:49:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56852)
+	id 1eFQOW-0000KG-Mu
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2017 15:04:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60072)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1eFQA3-0004gO-68
-	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 14:49:20 -0500
+	(envelope-from <cota@braap.org>) id 1eFQOS-0000HS-8p
+	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 15:04:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1eFQA2-000575-DQ
-	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 14:49:19 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:60098
-	helo=v2201612906741603.powersrv.de)
+	(envelope-from <cota@braap.org>) id 1eFQOR-0006n9-Jd
+	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 15:04:12 -0500
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:33597)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
-	id 1eFQ9v-0004wq-I9; Thu, 16 Nov 2017 14:49:11 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id CEC54DA8E46;
-	Thu, 16 Nov 2017 20:49:09 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id ANeSJeAqNRdS; Thu, 16 Nov 2017 20:49:08 +0100 (CET)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 78E9CDA8E39;
-	Thu, 16 Nov 2017 20:49:08 +0100 (CET)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 4260C46162E; Thu, 16 Nov 2017 20:49:08 +0100 (CET)
-From: Stefan Weil <sw@weilnetz.de>
-To: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>
-Date: Thu, 16 Nov 2017 20:49:02 +0100
-Message-Id: <20171116194902.5887-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.11.0
+	(Exim 4.71) (envelope-from <cota@braap.org>)
+	id 1eFQOM-0006ai-Ep; Thu, 16 Nov 2017 15:04:06 -0500
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 7B1A120FA8;
+	Thu, 16 Nov 2017 15:04:04 -0500 (EST)
+Received: from frontend1 ([10.202.2.160])
+	by compute4.internal (MEProxy); Thu, 16 Nov 2017 15:04:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+	mesmtp; bh=xNcI4X7Lrgdi70yLffGs8rMfRKJ6g55x2WyfIM2v/Ns=; b=Igi0n
+	Y+GFm/YUWe1SXe4WmVnG85c24rVJjcfSLIrywULv+2Ro6pX9V0j/spM2VRVMPnk7
+	PqAf0sObZa2fqByz9NgQG6pbkkcIlRQi989jMK9sX/yXJxuitK9nUljzMgWRcU9T
+	cmiaFaGhu/rl/rGRiTy85oz7YOc8DlvHo9AvvA=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm1; bh=xNcI4X7Lrgdi70yLffGs8rMfRKJ6g
+	55x2WyfIM2v/Ns=; b=XRNE5ipbNroKOuGZU4gVBJkn/afrNC856GFWQavQy+blQ
+	FLtCnMZ3OeX5catnwVqTwldVvj1uYF6O2shtWsF4uuWGC0WvmNqLhtoHpaqEU+uS
+	5rrJB10zxpITQ3zbQFHmB+dskMzdNaDMTYRJg3aUgs3XB1212jTfwfmOcCo1ba/Q
+	z8g03WMiMfByDvS26zIowrdJCvK6LBSen3h3pFTfkEj9VV/6MC/H2hLqL81I1dHy
+	A/KJAIuVEJ55dFI15wi72O7b342LKKDLVwz9Um2sZl+yKeq+NhM9ND1ZyhAHVGSq
+	1zLcbKfeiwODqcHyL5u47PH1mOw2zpLF4N7HqjjFQ==
+X-ME-Sender: <xms:NO8NWr022-AOcw73P-VsU7ZIxAKgbX-xkBilqt7dvoKmqxSe4QVZbA>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 3AEB07E804;
+	Thu, 16 Nov 2017 15:04:04 -0500 (EST)
+Date: Thu, 16 Nov 2017 15:04:03 -0500
+From: "Emilio G. Cota" <cota@braap.org>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20171116200403.GA9824@flamenco>
+References: <1508364103-16131-1-git-send-email-cota@braap.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1508364103-16131-1-git-send-email-cota@braap.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH for-2.11] MAINTAINERS: Add missing entry for
- eepro100 emulation
+X-Received-From: 66.111.4.28
+Subject: Re: [Qemu-trivial] [PATCH 0/4] Some trivial fixes,
+ mostly comment typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,30 +65,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2017 19:49:20 -0000
+X-List-Received-Date: Thu, 16 Nov 2017 20:04:16 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- MAINTAINERS | 5 +++++
- 1 file changed, 5 insertions(+)
+On Wed, Oct 18, 2017 at 18:01:39 -0400, Emilio G. Cota wrote:
+> A few trivial fixes that I embedded in a previous (unrelated) patchset.
+> Better to submit them separately as a standalone "trivial" patchset.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ffd77b461c..83434e09af 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1183,6 +1183,11 @@ M: Dmitry Fleytman <dmitry@daynix.com>
- S: Maintained
- F: hw/net/e1000e*
- 
-+eepro100
-+M: Stefan Weil <sw@weilnetz.de>
-+S: Maintained
-+F: hw/net/eepro100.c
-+
- Generic Loader
- M: Alistair Francis <alistair.francis@xilinx.com>
- S: Maintained
--- 
-2.11.0
+*ping*
 
+Can someone please pick up patches 1, 3 and 4?
+
+Thanks,
+
+		Emilio
 
