@@ -1,49 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eFgxb-0002oC-P2
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Nov 2017 08:45:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57848)
+	id 1eFhj4-0004Yl-MX
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Nov 2017 09:34:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49757)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1eFgxY-0002l8-Dh
-	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 08:45:34 -0500
+	(envelope-from <eblake@redhat.com>) id 1eFhj1-0004WU-Sv
+	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 09:34:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1eFgxW-0003X9-N1
-	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 08:45:32 -0500
-Received: from chuckie.co.uk ([82.165.15.123]:59132
-	helo=s16892447.onlinehome-server.info)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1eFgxW-0003Vk-Cj; Fri, 17 Nov 2017 08:45:30 -0500
-Received: from host109-152-46-120.range109-152.btcentralplus.com
-	([109.152.46.120] helo=[192.168.1.65])
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1eFgxZ-0001pE-Jg; Fri, 17 Nov 2017 13:45:35 +0000
-To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: alistair23@gmail.com, armbru@redhat.com,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-References: <cover.1510612380.git.alistair.francis@xilinx.com>
-	<a78b2c8879bded4abe59b71d7e9fb172e784a35d.1510612380.git.alistair.francis@xilinx.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <abbeaa0a-2023-7f04-41b2-cd9837acb8e4@ilande.co.uk>
-Date: Fri, 17 Nov 2017 13:45:18 +0000
+	(envelope-from <eblake@redhat.com>) id 1eFhiz-0001p4-8H
+	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 09:34:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51902)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eFhip-0001Zs-IU; Fri, 17 Nov 2017 09:34:23 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A7A87883C9;
+	Fri, 17 Nov 2017 14:34:22 +0000 (UTC)
+Received: from [10.10.123.34] (ovpn-123-34.rdu2.redhat.com [10.10.123.34])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 75AC17C19C;
+	Fri, 17 Nov 2017 14:34:21 +0000 (UTC)
+To: qemu-devel@nongnu.org
+References: <20171113194857.13933-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	vsementsov@virtuozzo.com, qemu-block@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <119e49f8-9dfb-ffb2-6301-ff581d6fb2b5@redhat.com>
+Date: Fri, 17 Nov 2017 08:34:20 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <a78b2c8879bded4abe59b71d7e9fb172e784a35d.1510612380.git.alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 109.152.46.120
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 82.165.15.123
-Subject: Re: [Qemu-trivial] [PATCH v5 24/29] hw/sparc*: Replace
- fprintf(stderr, "*\n" with error_report()
+In-Reply-To: <20171113194857.13933-1-eblake@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="KphEPpfptKJNlO8tL8RI2DbLjAl9uS2OC"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 17 Nov 2017 14:34:22 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] nbd/client: Don't
+ hard-disconnect on ESHUTDOWN from server
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,232 +57,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Nov 2017 13:45:34 -0000
+X-List-Received-Date: Fri, 17 Nov 2017 14:34:37 -0000
 
-On 13/11/17 22:35, Alistair Francis wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--KphEPpfptKJNlO8tL8RI2DbLjAl9uS2OC
+Content-Type: multipart/mixed; boundary="2rl1TRa70ftxS7Eukc3hVOkQX05mRiiiV";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ vsementsov@virtuozzo.com, qemu-block@nongnu.org
+Message-ID: <119e49f8-9dfb-ffb2-6301-ff581d6fb2b5@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH for-2.11] nbd/client: Don't hard-disconnect
+ on ESHUTDOWN from server
+References: <20171113194857.13933-1-eblake@redhat.com>
+In-Reply-To: <20171113194857.13933-1-eblake@redhat.com>
 
-> Replace a large number of the fprintf(stderr, "*\n" calls with
-> error_report(). The functions were renamed with these commands and then
-> compiler issues where manually fixed.
-> 
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> 
-> Some lines where then manually tweaked to pass checkpatch.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Fabien Chouteau <chouteau@adacore.com>
-> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> V2:
->  - Split hw patch into individual directories
-> 
->  hw/sparc/leon3.c     | 16 +++++++---------
->  hw/sparc/sun4m.c     | 16 +++++++---------
->  hw/sparc64/niagara.c |  4 ++--
->  hw/sparc64/sun4u.c   | 10 +++++-----
->  4 files changed, 21 insertions(+), 25 deletions(-)
-> 
-> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-> index 8c66d5af24..bba3aa3dee 100644
-> --- a/hw/sparc/leon3.c
-> +++ b/hw/sparc/leon3.c
-> @@ -22,6 +22,7 @@
->   * THE SOFTWARE.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> @@ -139,9 +140,8 @@ static void leon3_generic_hw_init(MachineState *machine)
->  
->      /* Allocate RAM */
->      if ((uint64_t)ram_size > (1UL << 30)) {
-> -        fprintf(stderr,
-> -                "qemu: Too much memory for this machine: %d, maximum 1G\n",
-> -                (unsigned int)(ram_size / (1024 * 1024)));
-> +        error_report("Too much memory for this machine: %d, maximum 1G",
-> +                     (unsigned int)(ram_size / (1024 * 1024)));
->          exit(1);
->      }
->  
-> @@ -167,19 +167,18 @@ static void leon3_generic_hw_init(MachineState *machine)
->      }
->  
->      if (bios_size > prom_size) {
-> -        fprintf(stderr, "qemu: could not load prom '%s': file too big\n",
-> -                filename);
-> +        error_report("could not load prom '%s': file too big", filename);
->          exit(1);
->      }
->  
->      if (bios_size > 0) {
->          ret = load_image_targphys(filename, 0x00000000, bios_size);
->          if (ret < 0 || ret > prom_size) {
-> -            fprintf(stderr, "qemu: could not load prom '%s'\n", filename);
-> +            error_report("could not load prom '%s'", filename);
->              exit(1);
->          }
->      } else if (kernel_filename == NULL && !qtest_enabled()) {
-> -        fprintf(stderr, "Can't read bios image %s\n", filename);
-> +        error_report("Can't read bios image %s", filename);
->          exit(1);
->      }
->      g_free(filename);
-> @@ -192,8 +191,7 @@ static void leon3_generic_hw_init(MachineState *machine)
->          kernel_size = load_elf(kernel_filename, NULL, NULL, &entry, NULL, NULL,
->                                 1 /* big endian */, EM_SPARC, 0, 0);
->          if (kernel_size < 0) {
-> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
-> -                    kernel_filename);
-> +            error_report("could not load kernel '%s'", kernel_filename);
->              exit(1);
->          }
->          if (bios_size <= 0) {
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 24c2b8a555..e9e0ef0630 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -260,8 +260,7 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
->                                                KERNEL_LOAD_ADDR,
->                                                RAM_size - KERNEL_LOAD_ADDR);
->          if (kernel_size < 0) {
-> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
-> -                    kernel_filename);
-> +            error_report("could not load kernel '%s'", kernel_filename);
->              exit(1);
->          }
->  
-> @@ -272,8 +271,8 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
->                                                INITRD_LOAD_ADDR,
->                                                RAM_size - INITRD_LOAD_ADDR);
->              if (initrd_size < 0) {
-> -                fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
-> -                        initrd_filename);
-> +                error_report("could not load initial ram disk '%s'",
-> +                             initrd_filename);
->                  exit(1);
->              }
->          }
-> @@ -681,7 +680,7 @@ static void prom_init(hwaddr addr, const char *bios_name)
->          ret = -1;
->      }
->      if (ret < 0 || ret > PROM_SIZE_MAX) {
-> -        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
-> +        error_report("could not load prom '%s'", bios_name);
->          exit(1);
->      }
->  }
-> @@ -747,10 +746,9 @@ static void ram_init(hwaddr addr, ram_addr_t RAM_size,
->  
->      /* allocate RAM */
->      if ((uint64_t)RAM_size > max_mem) {
-> -        fprintf(stderr,
-> -                "qemu: Too much memory for this machine: %d, maximum %d\n",
-> -                (unsigned int)(RAM_size / (1024 * 1024)),
-> -                (unsigned int)(max_mem / (1024 * 1024)));
-> +        error_report("Too much memory for this machine: %d, maximum %d",
-> +                     (unsigned int)(RAM_size / (1024 * 1024)),
-> +                     (unsigned int)(max_mem / (1024 * 1024)));
->          exit(1);
->      }
->      dev = qdev_create(NULL, "memory");
-> diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-> index 7a723326c5..996ce2ada0 100644
-> --- a/hw/sparc64/niagara.c
-> +++ b/hw/sparc64/niagara.c
-> @@ -152,8 +152,8 @@ static void niagara_init(MachineState *machine)
->              dinfo->is_default = 1;
->              rom_add_file_fixed(blk_bs(blk)->filename, NIAGARA_VDISK_BASE, -1);
->          } else {
-> -            fprintf(stderr, "qemu: could not load ram disk '%s'\n",
-> -                    blk_bs(blk)->filename);
-> +            error_report("could not load ram disk '%s'",
-> +                         blk_bs(blk)->filename);
->              exit(1);
->          }
->      }
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index 1672f256e7..1fd1c3c861 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -22,6 +22,7 @@
->   * THE SOFTWARE.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> @@ -166,8 +167,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
->                                                RAM_size - KERNEL_LOAD_ADDR);
->          }
->          if (kernel_size < 0) {
-> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
-> -                    kernel_filename);
-> +            error_report("could not load kernel '%s'", kernel_filename);
->              exit(1);
->          }
->          /* load initrd above kernel */
-> @@ -179,8 +179,8 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
->                                                 *initrd_addr,
->                                                 RAM_size - *initrd_addr);
->              if ((int)*initrd_size < 0) {
-> -                fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
-> -                        initrd_filename);
-> +                error_report("could not load initial ram disk '%s'",
-> +                             initrd_filename);
->                  exit(1);
->              }
->          }
-> @@ -327,7 +327,7 @@ static void prom_init(hwaddr addr, const char *bios_name)
->          ret = -1;
->      }
->      if (ret < 0 || ret > PROM_SIZE_MAX) {
-> -        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
-> +        error_report("could not load prom '%s'", bios_name);
->          exit(1);
->      }
->  }
+--2rl1TRa70ftxS7Eukc3hVOkQX05mRiiiV
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+On 11/13/2017 01:48 PM, Eric Blake wrote:
+> The NBD spec says that a server may fail any transmission request
+> with ESHUTDOWN when it is apparent that no further request from
+> the client can be successfully honored.  The client is supposed
+> to then initiate a soft shutdown (wait for all remaining in-flight
+> requests to be answered, then send NBD_CMD_DISC).  However, since
+> qemu's server never uses ESHUTDOWN errors, this code was mostly
+> untested since its introduction in commit b6f5d3b5.
+>=20
+> More recently, I learned that nbdkit as the NBD server is able to
+> send ESHUTDOWN errors, so I finally tested this code, and noticed
+> that our client was special-casing ESHUTDOWN to cause a hard
+> shutdown (immediate disconnect, with no NBD_CMD_DISC), but only
+> if the server sends this error as a simple reply.  Further
+> investigation found that commit d2febedb introduced a regression
+> where structured replies behave differently than simple replies -
+> but that the structured reply behavior is more in line with the
+> spec (even if we still lack code in nbd-client.c to properly quit
+> sending further requests).  So this patch reverts the portion of
+> b6f5d3b5 that introduced an improper hard-disconnect special-case
+> at the lower level, and leaves the future enhancement of a nicer
+> soft-disconnect at the higher level for another day.
+>=20
+> CC: qemu-trivial@nongnu.org
+
+I think I meant qemu-stable, not qemu-trivial.  At any rate, this is now
+queued on my NBD tree for 2.11-rc2.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
 
-ATB,
+--2rl1TRa70ftxS7Eukc3hVOkQX05mRiiiV--
 
-Mark.
+--KphEPpfptKJNlO8tL8RI2DbLjAl9uS2OC
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAloO82wACgkQp6FrSiUn
+Q2pRFgf+JPNaMJVqISsX7coKfHm4oVlGfWaIrccaEdfpEzHHCflImdfyosZ3QH5l
+dOwmDg5e/3N1Pvm+RqwRUqijlrLGdDEv2TOCglyXi/nQhHBX1YS2rz0o9qoyda7f
+dalB2mKVtIELSvyzBYPzJSDVU+JdYbim3L0BGNRmcrjCmXasmEPfIeteiCR0gmXl
+kS33MHCMlIhiYhEWvmYzgi4oOl4yE+Sp3zWTe+6MrGzU3bgAi4e1F6mbiVpGEB+X
+BQoFfHLacKrRg6h45DgA0+50n4F97d5sco/son+dG1fEXRlFBxN7ByEabp5YOrgD
+rSkZ2lvHO3vfnAJ0wsZNjznGC2z1aA==
+=Rr7A
+-----END PGP SIGNATURE-----
+
+--KphEPpfptKJNlO8tL8RI2DbLjAl9uS2OC--
 
