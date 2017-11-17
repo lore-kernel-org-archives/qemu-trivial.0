@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eFWgo-0003Ow-U5
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2017 21:47:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39913)
+	id 1eFgxb-0002oC-P2
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Nov 2017 08:45:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1eFWgn-0003Nf-AI
-	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 21:47:34 -0500
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1eFgxY-0002l8-Dh
+	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 08:45:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1eFWgm-0000vS-MZ
-	for qemu-trivial@nongnu.org; Thu, 16 Nov 2017 21:47:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42434)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
-	id 1eFWgh-0000tY-8I; Thu, 16 Nov 2017 21:47:27 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F4632D0FC1;
-	Fri, 17 Nov 2017 02:47:26 +0000 (UTC)
-Received: from [10.72.12.163] (ovpn-12-163.pek2.redhat.com [10.72.12.163])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CAA2A17CEB;
-	Fri, 17 Nov 2017 02:47:24 +0000 (UTC)
-To: Stefan Weil <sw@weilnetz.de>, Peter Maydell <peter.maydell@linaro.org>,
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1eFgxW-0003X9-N1
+	for qemu-trivial@nongnu.org; Fri, 17 Nov 2017 08:45:32 -0500
+Received: from chuckie.co.uk ([82.165.15.123]:59132
+	helo=s16892447.onlinehome-server.info)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1eFgxW-0003Vk-Cj; Fri, 17 Nov 2017 08:45:30 -0500
+Received: from host109-152-46-120.range109-152.btcentralplus.com
+	([109.152.46.120] helo=[192.168.1.65])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1eFgxZ-0001pE-Jg; Fri, 17 Nov 2017 13:45:35 +0000
+To: Alistair Francis <alistair.francis@xilinx.com>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20171116194902.5887-1-sw@weilnetz.de>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <52eaa698-87e1-e40a-5bf1-db4b62412838@redhat.com>
-Date: Fri, 17 Nov 2017 10:47:21 +0800
+Cc: alistair23@gmail.com, armbru@redhat.com,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
+References: <cover.1510612380.git.alistair.francis@xilinx.com>
+	<a78b2c8879bded4abe59b71d7e9fb172e784a35d.1510612380.git.alistair.francis@xilinx.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <abbeaa0a-2023-7f04-41b2-cd9837acb8e4@ilande.co.uk>
+Date: Fri, 17 Nov 2017 13:45:18 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.4.0
 MIME-Version: 1.0
-In-Reply-To: <20171116194902.5887-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <a78b2c8879bded4abe59b71d7e9fb172e784a35d.1510612380.git.alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 17 Nov 2017 02:47:26 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.11] MAINTAINERS: Add
- missing entry for eepro100 emulation
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 109.152.46.120
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-trivial] [PATCH v5 24/29] hw/sparc*: Replace
+ fprintf(stderr, "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,34 +55,232 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Nov 2017 02:47:34 -0000
+X-List-Received-Date: Fri, 17 Nov 2017 13:45:34 -0000
 
+On 13/11/17 22:35, Alistair Francis wrote:
 
-
-On 2017=E5=B9=B411=E6=9C=8817=E6=97=A5 03:49, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Replace a large number of the fprintf(stderr, "*\n" calls with
+> error_report(). The functions were renamed with these commands and then
+> compiler issues where manually fixed.
+> 
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> find ./* -type f -exec sed -i \
+>     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+>     {} +
+> 
+> Some lines where then manually tweaked to pass checkpatch.
+> 
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Fabien Chouteau <chouteau@adacore.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   MAINTAINERS | 5 +++++
->   1 file changed, 5 insertions(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ffd77b461c..83434e09af 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1183,6 +1183,11 @@ M: Dmitry Fleytman <dmitry@daynix.com>
->   S: Maintained
->   F: hw/net/e1000e*
->  =20
-> +eepro100
-> +M: Stefan Weil <sw@weilnetz.de>
-> +S: Maintained
-> +F: hw/net/eepro100.c
-> +
->   Generic Loader
->   M: Alistair Francis <alistair.francis@xilinx.com>
->   S: Maintained
+> V2:
+>  - Split hw patch into individual directories
+> 
+>  hw/sparc/leon3.c     | 16 +++++++---------
+>  hw/sparc/sun4m.c     | 16 +++++++---------
+>  hw/sparc64/niagara.c |  4 ++--
+>  hw/sparc64/sun4u.c   | 10 +++++-----
+>  4 files changed, 21 insertions(+), 25 deletions(-)
+> 
+> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+> index 8c66d5af24..bba3aa3dee 100644
+> --- a/hw/sparc/leon3.c
+> +++ b/hw/sparc/leon3.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> @@ -139,9 +140,8 @@ static void leon3_generic_hw_init(MachineState *machine)
+>  
+>      /* Allocate RAM */
+>      if ((uint64_t)ram_size > (1UL << 30)) {
+> -        fprintf(stderr,
+> -                "qemu: Too much memory for this machine: %d, maximum 1G\n",
+> -                (unsigned int)(ram_size / (1024 * 1024)));
+> +        error_report("Too much memory for this machine: %d, maximum 1G",
+> +                     (unsigned int)(ram_size / (1024 * 1024)));
+>          exit(1);
+>      }
+>  
+> @@ -167,19 +167,18 @@ static void leon3_generic_hw_init(MachineState *machine)
+>      }
+>  
+>      if (bios_size > prom_size) {
+> -        fprintf(stderr, "qemu: could not load prom '%s': file too big\n",
+> -                filename);
+> +        error_report("could not load prom '%s': file too big", filename);
+>          exit(1);
+>      }
+>  
+>      if (bios_size > 0) {
+>          ret = load_image_targphys(filename, 0x00000000, bios_size);
+>          if (ret < 0 || ret > prom_size) {
+> -            fprintf(stderr, "qemu: could not load prom '%s'\n", filename);
+> +            error_report("could not load prom '%s'", filename);
+>              exit(1);
+>          }
+>      } else if (kernel_filename == NULL && !qtest_enabled()) {
+> -        fprintf(stderr, "Can't read bios image %s\n", filename);
+> +        error_report("Can't read bios image %s", filename);
+>          exit(1);
+>      }
+>      g_free(filename);
+> @@ -192,8 +191,7 @@ static void leon3_generic_hw_init(MachineState *machine)
+>          kernel_size = load_elf(kernel_filename, NULL, NULL, &entry, NULL, NULL,
+>                                 1 /* big endian */, EM_SPARC, 0, 0);
+>          if (kernel_size < 0) {
+> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+> -                    kernel_filename);
+> +            error_report("could not load kernel '%s'", kernel_filename);
+>              exit(1);
+>          }
+>          if (bios_size <= 0) {
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 24c2b8a555..e9e0ef0630 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -260,8 +260,7 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
+>                                                KERNEL_LOAD_ADDR,
+>                                                RAM_size - KERNEL_LOAD_ADDR);
+>          if (kernel_size < 0) {
+> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+> -                    kernel_filename);
+> +            error_report("could not load kernel '%s'", kernel_filename);
+>              exit(1);
+>          }
+>  
+> @@ -272,8 +271,8 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
+>                                                INITRD_LOAD_ADDR,
+>                                                RAM_size - INITRD_LOAD_ADDR);
+>              if (initrd_size < 0) {
+> -                fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
+> -                        initrd_filename);
+> +                error_report("could not load initial ram disk '%s'",
+> +                             initrd_filename);
+>                  exit(1);
+>              }
+>          }
+> @@ -681,7 +680,7 @@ static void prom_init(hwaddr addr, const char *bios_name)
+>          ret = -1;
+>      }
+>      if (ret < 0 || ret > PROM_SIZE_MAX) {
+> -        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
+> +        error_report("could not load prom '%s'", bios_name);
+>          exit(1);
+>      }
+>  }
+> @@ -747,10 +746,9 @@ static void ram_init(hwaddr addr, ram_addr_t RAM_size,
+>  
+>      /* allocate RAM */
+>      if ((uint64_t)RAM_size > max_mem) {
+> -        fprintf(stderr,
+> -                "qemu: Too much memory for this machine: %d, maximum %d\n",
+> -                (unsigned int)(RAM_size / (1024 * 1024)),
+> -                (unsigned int)(max_mem / (1024 * 1024)));
+> +        error_report("Too much memory for this machine: %d, maximum %d",
+> +                     (unsigned int)(RAM_size / (1024 * 1024)),
+> +                     (unsigned int)(max_mem / (1024 * 1024)));
+>          exit(1);
+>      }
+>      dev = qdev_create(NULL, "memory");
+> diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+> index 7a723326c5..996ce2ada0 100644
+> --- a/hw/sparc64/niagara.c
+> +++ b/hw/sparc64/niagara.c
+> @@ -152,8 +152,8 @@ static void niagara_init(MachineState *machine)
+>              dinfo->is_default = 1;
+>              rom_add_file_fixed(blk_bs(blk)->filename, NIAGARA_VDISK_BASE, -1);
+>          } else {
+> -            fprintf(stderr, "qemu: could not load ram disk '%s'\n",
+> -                    blk_bs(blk)->filename);
+> +            error_report("could not load ram disk '%s'",
+> +                         blk_bs(blk)->filename);
+>              exit(1);
+>          }
+>      }
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index 1672f256e7..1fd1c3c861 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> @@ -166,8 +167,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
+>                                                RAM_size - KERNEL_LOAD_ADDR);
+>          }
+>          if (kernel_size < 0) {
+> -            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+> -                    kernel_filename);
+> +            error_report("could not load kernel '%s'", kernel_filename);
+>              exit(1);
+>          }
+>          /* load initrd above kernel */
+> @@ -179,8 +179,8 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
+>                                                 *initrd_addr,
+>                                                 RAM_size - *initrd_addr);
+>              if ((int)*initrd_size < 0) {
+> -                fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
+> -                        initrd_filename);
+> +                error_report("could not load initial ram disk '%s'",
+> +                             initrd_filename);
+>                  exit(1);
+>              }
+>          }
+> @@ -327,7 +327,7 @@ static void prom_init(hwaddr addr, const char *bios_name)
+>          ret = -1;
+>      }
+>      if (ret < 0 || ret > PROM_SIZE_MAX) {
+> -        fprintf(stderr, "qemu: could not load prom '%s'\n", bios_name);
+> +        error_report("could not load prom '%s'", bios_name);
+>          exit(1);
+>      }
+>  }
 
-Applied.
+Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-Thanks
+
+ATB,
+
+Mark.
 
