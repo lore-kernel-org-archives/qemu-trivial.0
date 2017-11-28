@@ -1,48 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eJPB7-0004yl-MC
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Nov 2017 14:34:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36996)
+	id 1eJdSt-0006sf-TR
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Nov 2017 05:50:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44226)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eJPB2-0004xT-Su
-	for qemu-trivial@nongnu.org; Mon, 27 Nov 2017 14:34:49 -0500
+	(envelope-from <stefanha@redhat.com>) id 1eJdSg-0006jJ-RB
+	for qemu-trivial@nongnu.org; Tue, 28 Nov 2017 05:50:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eJPB2-00051d-4C
-	for qemu-trivial@nongnu.org; Mon, 27 Nov 2017 14:34:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39284)
+	(envelope-from <stefanha@redhat.com>) id 1eJdSg-0008HN-1R
+	for qemu-trivial@nongnu.org; Tue, 28 Nov 2017 05:49:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59508)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1eJPAx-0004yq-Pv; Mon, 27 Nov 2017 14:34:43 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1eJdSZ-0008C7-BN; Tue, 28 Nov 2017 05:49:51 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2DB0D4E4C3;
-	Mon, 27 Nov 2017 19:34:42 +0000 (UTC)
-Received: from [10.18.17.130] (dhcp-17-130.bos.redhat.com [10.18.17.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B2C555D9C6;
-	Mon, 27 Nov 2017 19:34:41 +0000 (UTC)
-To: Mike Frysinger <vapier@gentoo.org>, qemu-devel@nongnu.org
-References: <20171127174944.12362-1-vapier@gentoo.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <c0cecdb2-6d20-b229-a92a-110721fc2bbf@redhat.com>
-Date: Mon, 27 Nov 2017 14:34:41 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 6A14B13AAA;
+	Tue, 28 Nov 2017 10:49:50 +0000 (UTC)
+Received: from localhost (unknown [10.36.118.43])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D99905C549;
+	Tue, 28 Nov 2017 10:49:49 +0000 (UTC)
+Date: Tue, 28 Nov 2017 10:49:48 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: Doug Gale <doug16k@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
+	qemu-block@nongnu.org, Keith Busch <keith.busch@intel.com>,
+	pbonzini@redhat.com, Max Reitz <mreitz@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <20171128104948.GF17146@stefanha-x1.localdomain>
+References: <20171103133753.20028-1-doug16k@gmail.com>
+	<5bf942fe-bd03-7f83-9b01-8469375c98cc@amsat.org>
+	<CAEfK_47jhiZAGvF=nfso4P2Pit2CAcgvMLtXHeD5As0aX2FGDQ@mail.gmail.com>
+	<CAEfK_47OtZk1Ok-9Bye5MLCCKKQAKKsMQ4Cr2O9kTs+hL_ATLw@mail.gmail.com>
+	<20171127115832.GC4903@localhost.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20171127174944.12362-1-vapier@gentoo.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="QNDPHrPUIc00TOLW"
+Content-Disposition: inline
+In-Reply-To: <20171127115832.GC4903@localhost.localdomain>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 27 Nov 2017 19:34:42 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 28 Nov 2017 10:49:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: fix typo in error
- message
+Subject: Re: [Qemu-trivial] [PATCH v5] nvme: Add tracing
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,32 +62,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Nov 2017 19:34:49 -0000
+X-List-Received-Date: Tue, 28 Nov 2017 10:50:08 -0000
 
 
+--QNDPHrPUIc00TOLW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 11/27/2017 12:49 PM, Mike Frysinger wrote:
-> Signed-off-by: Mike Frysinger <vapier@gentoo.org>
-> ---
->  scripts/git-submodule.sh | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/scripts/git-submodule.sh b/scripts/git-submodule.sh
-> index 030617b4ac0c..bc7224a27fe3 100755
-> --- a/scripts/git-submodule.sh
-> +++ b/scripts/git-submodule.sh
-> @@ -24,7 +24,7 @@ error() {
->      echo "Alternatively you may disable automatic GIT submodule checkout"
->      echo "with:"
->      echo
-> -    echo " $ ./configure --disable-git-update'"
-> +    echo " $ ./configure --disable-git-update"
->      echo
->      echo "and then manually update submodules prior to running make, with:"
->      echo
-> 
+On Mon, Nov 27, 2017 at 12:58:32PM +0100, Kevin Wolf wrote:
+> Am 25.11.2017 um 08:08 hat Doug Gale geschrieben:
+> > Ping
+>=20
+> Stefan, do you expect this to go through a different tree than the
+> tracing one?
 
-cc qemu-trivial
+Yes, patches that just add/remove/modify trace events go through the
+affected component's tree rather than the tracing tree.
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+For example, the most recent patch was commit
+a2e6ffab97e57f823b6bf15371920c6901bb7cbc ("ioapic/tracing: Remove last
+DPRINTFs").  It went through Paolo for the PC chipset tree.
+
+Please take this patch via the nvme -> block tree.
+
+One reason to do it this way is that conflicts happen frequently if
+trace events changes go through the tracing tree while there are other
+patches queued in your tree.
+
+--QNDPHrPUIc00TOLW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJaHT9MAAoJEJykq7OBq3PIag4IAMgU9MLdcR1XEMy+YWsF3AHP
+we/3FZOXZG2ED6tKnWJR4+5by/pOYW/f3QuPjFVYWPmtc8sp1JHi/S6i56Adgdqd
+Dm6nKZfvV/JVup59hhwIhlrUYuADAPyqukHy7FbP/+sloCcJ/OOA4gs8ev6dFtCv
+yF1Lnz4QOG7CKhLbGEahzn7bk8f5S42g7Jh/yu5BvenQmUVgaiB2N2yrisrxircc
+QAVz9YmnKE60luWYhzpJM5gpgIR31MKiE9AB0sp8ailxKEQyGYpHXPc7ctdfs7oo
+Nf965RvEHhAbnAAC5y0dmXgY8OziuxUiNokVG+7q4Y2AmoHBj0+iCkXzlBBQcoE=
+=o9Xa
+-----END PGP SIGNATURE-----
+
+--QNDPHrPUIc00TOLW--
 
