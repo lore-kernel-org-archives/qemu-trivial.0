@@ -1,56 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eJdSt-0006sf-TR
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Nov 2017 05:50:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44226)
+	id 1eKP6T-0006yC-1j
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Nov 2017 08:42:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1eJdSg-0006jJ-RB
-	for qemu-trivial@nongnu.org; Tue, 28 Nov 2017 05:50:08 -0500
+	(envelope-from <eblake@redhat.com>) id 1eKP6P-0006wK-7j
+	for qemu-trivial@nongnu.org; Thu, 30 Nov 2017 08:42:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1eJdSg-0008HN-1R
-	for qemu-trivial@nongnu.org; Tue, 28 Nov 2017 05:49:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59508)
+	(envelope-from <eblake@redhat.com>) id 1eKP6O-0005j8-AO
+	for qemu-trivial@nongnu.org; Thu, 30 Nov 2017 08:42:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48758)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1eJdSZ-0008C7-BN; Tue, 28 Nov 2017 05:49:51 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eKP6I-0005V8-C1; Thu, 30 Nov 2017 08:42:02 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6A14B13AAA;
-	Tue, 28 Nov 2017 10:49:50 +0000 (UTC)
-Received: from localhost (unknown [10.36.118.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D99905C549;
-	Tue, 28 Nov 2017 10:49:49 +0000 (UTC)
-Date: Tue, 28 Nov 2017 10:49:48 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: Doug Gale <doug16k@gmail.com>, qemu-devel <qemu-devel@nongnu.org>,
-	qemu-block@nongnu.org, Keith Busch <keith.busch@intel.com>,
-	pbonzini@redhat.com, Max Reitz <mreitz@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Message-ID: <20171128104948.GF17146@stefanha-x1.localdomain>
-References: <20171103133753.20028-1-doug16k@gmail.com>
-	<5bf942fe-bd03-7f83-9b01-8469375c98cc@amsat.org>
-	<CAEfK_47jhiZAGvF=nfso4P2Pit2CAcgvMLtXHeD5As0aX2FGDQ@mail.gmail.com>
-	<CAEfK_47OtZk1Ok-9Bye5MLCCKKQAKKsMQ4Cr2O9kTs+hL_ATLw@mail.gmail.com>
-	<20171127115832.GC4903@localhost.localdomain>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="QNDPHrPUIc00TOLW"
-Content-Disposition: inline
-In-Reply-To: <20171127115832.GC4903@localhost.localdomain>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+	by mx1.redhat.com (Postfix) with ESMTPS id 53143BDEA;
+	Thu, 30 Nov 2017 13:42:01 +0000 (UTC)
+Received: from red.redhat.com (ovpn-122-213.rdu2.redhat.com [10.10.122.213])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A31C95D6B4;
+	Thu, 30 Nov 2017 13:42:00 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Thu, 30 Nov 2017 07:41:56 -0600
+Message-Id: <20171130134159.9697-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.29]);
-	Tue, 28 Nov 2017 10:49:50 +0000 (UTC)
+	Thu, 30 Nov 2017 13:42:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v5] nvme: Add tracing
+Subject: [Qemu-trivial] [PATCH 0/3] macro do/while (0) cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,47 +45,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Nov 2017 10:50:08 -0000
+X-List-Received-Date: Thu, 30 Nov 2017 13:42:11 -0000
 
+Noticed this by chance in the tests/ directory, so I broadened
+it to a grep of the entire code base.  I suspect many of the
+bad macros were the victims of copy-and-paste from some other
+bad location (particularly given how many bit-rotten debug
+print macros were involved).
 
---QNDPHrPUIc00TOLW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+https://wiki.qemu.org/BiteSizedTasks#Bitrot_prevention is still
+left for someone else, for another day.
 
-On Mon, Nov 27, 2017 at 12:58:32PM +0100, Kevin Wolf wrote:
-> Am 25.11.2017 um 08:08 hat Doug Gale geschrieben:
-> > Ping
->=20
-> Stefan, do you expect this to go through a different tree than the
-> tracing one?
+Eric Blake (3):
+  net: Drop unusual use of do { } while (0);
+  mips: Tweak location of ';' in macros
+  maint: Fix macros with broken 'do/while(0);' usage
 
-Yes, patches that just add/remove/modify trace events go through the
-affected component's tree rather than the tracing tree.
+ tests/acpi-utils.h         |  8 ++++----
+ ui/sdl_zoom_template.h     |  8 ++++----
+ audio/paaudio.c            |  4 ++--
+ hw/adc/stm32f2xx_adc.c     |  2 +-
+ hw/block/m25p80.c          |  2 +-
+ hw/char/cadence_uart.c     |  2 +-
+ hw/char/stm32f2xx_usart.c  |  2 +-
+ hw/display/cg3.c           |  2 +-
+ hw/display/dpcd.c          |  2 +-
+ hw/display/xlnx_dp.c       |  2 +-
+ hw/dma/pl330.c             |  2 +-
+ hw/dma/xlnx-zynq-devcfg.c  |  2 +-
+ hw/dma/xlnx_dpdma.c        |  2 +-
+ hw/i2c/i2c-ddc.c           |  2 +-
+ hw/misc/auxbus.c           |  2 +-
+ hw/misc/macio/mac_dbdma.c  |  4 ++--
+ hw/misc/mmio_interface.c   |  2 +-
+ hw/misc/stm32f2xx_syscfg.c |  2 +-
+ hw/misc/zynq_slcr.c        |  2 +-
+ hw/net/cadence_gem.c       |  2 +-
+ hw/net/pcnet.c             | 20 ++++++++++----------
+ hw/ssi/mss-spi.c           |  2 +-
+ hw/ssi/stm32f2xx_spi.c     |  2 +-
+ hw/ssi/xilinx_spi.c        |  2 +-
+ hw/ssi/xilinx_spips.c      |  2 +-
+ hw/timer/a9gtimer.c        |  2 +-
+ hw/timer/cadence_ttc.c     |  2 +-
+ hw/timer/mss-timer.c       |  2 +-
+ hw/timer/stm32f2xx_timer.c |  2 +-
+ hw/tpm/tpm_passthrough.c   |  2 +-
+ hw/tpm/tpm_tis.c           |  2 +-
+ migration/rdma.c           |  2 +-
+ target/arm/translate-a64.c |  2 +-
+ target/mips/msa_helper.c   | 34 ++++++++++++++++++----------------
+ target/s390x/kvm.c         |  2 +-
+ tests/tcg/test-mmap.c      |  2 +-
+ 36 files changed, 70 insertions(+), 68 deletions(-)
 
-For example, the most recent patch was commit
-a2e6ffab97e57f823b6bf15371920c6901bb7cbc ("ioapic/tracing: Remove last
-DPRINTFs").  It went through Paolo for the PC chipset tree.
+-- 
+2.14.3
 
-Please take this patch via the nvme -> block tree.
-
-One reason to do it this way is that conflicts happen frequently if
-trace events changes go through the tracing tree while there are other
-patches queued in your tree.
-
---QNDPHrPUIc00TOLW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJaHT9MAAoJEJykq7OBq3PIag4IAMgU9MLdcR1XEMy+YWsF3AHP
-we/3FZOXZG2ED6tKnWJR4+5by/pOYW/f3QuPjFVYWPmtc8sp1JHi/S6i56Adgdqd
-Dm6nKZfvV/JVup59hhwIhlrUYuADAPyqukHy7FbP/+sloCcJ/OOA4gs8ev6dFtCv
-yF1Lnz4QOG7CKhLbGEahzn7bk8f5S42g7Jh/yu5BvenQmUVgaiB2N2yrisrxircc
-QAVz9YmnKE60luWYhzpJM5gpgIR31MKiE9AB0sp8ailxKEQyGYpHXPc7ctdfs7oo
-Nf965RvEHhAbnAAC5y0dmXgY8OziuxUiNokVG+7q4Y2AmoHBj0+iCkXzlBBQcoE=
-=o9Xa
------END PGP SIGNATURE-----
-
---QNDPHrPUIc00TOLW--
 
