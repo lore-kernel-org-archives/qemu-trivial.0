@@ -1,65 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eL6Mr-0004qj-HG
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Dec 2017 06:54:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33503)
+	id 1eLKm7-0006qp-63
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Dec 2017 22:17:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1eL6Mn-0004oo-7l
-	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 06:53:58 -0500
+	(envelope-from <shravan2x@utexas.edu>) id 1eLGLn-0002X7-MR
+	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:33:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1eL6Mm-0001cs-Br
-	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 06:53:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44894)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1eL6MT-0001P1-Km; Sat, 02 Dec 2017 06:53:37 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CAD7C049D4F;
-	Sat,  2 Dec 2017 11:53:36 +0000 (UTC)
-Received: from localhost (ovpn-116-30.ams2.redhat.com [10.36.116.30])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CFB1C64446;
-	Sat,  2 Dec 2017 11:53:31 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, armbru@redhat.com, qemu-trivial@nongnu.org,
-	pbonzini@redhat.com, Gerd Hoffmann <kraxel@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alexander Graf <agraf@suse.de>, Jason Wang <jasowang@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cohuck@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	qemu-block@nongnu.org (open list:Block layer core),
-	qemu-arm@nongnu.org (open list:Xilinx Zynq),
-	qemu-ppc@nongnu.org (open list:New World),
-	qemu-s390x@nongnu.org (open list:S390)
-In-Reply-To: <20171201232433.25193-7-eblake@redhat.com> (Eric Blake's message
-	of "Fri, 1 Dec 2017 17:24:32 -0600")
-References: <20171201232433.25193-1-eblake@redhat.com>
-	<20171201232433.25193-7-eblake@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Sat, 02 Dec 2017 12:53:28 +0100
-Message-ID: <87wp25qrbb.fsf@secure.laptop>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Sat, 02 Dec 2017 11:53:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 6/7] maint: Fix macros with broken
- 'do/while(0); ' usage
+	(envelope-from <shravan2x@utexas.edu>) id 1eLGLk-0007eN-Jw
+	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:33:35 -0500
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:39072)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <shravan2x@utexas.edu>)
+	id 1eLGLk-0007dJ-Al
+	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:33:32 -0500
+Received: by mail-ot0-x242.google.com with SMTP id v21so11912974oth.6
+	for <qemu-trivial@nongnu.org>; Sat, 02 Dec 2017 14:33:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=utexas-edu.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=YAz5vapA0rJqPoZ9GrCBO9Ehw2iYfrqzLf2Qc3FhDCw=;
+	b=gCqg5/HJaqW2hETotJ9o4UKLobqSu2NCTLOavvN09yWqvmpNiIK6z3j4vGdQ3/aikh
+	OCWQwjOUZJwQboMwo6fD/txVjdkUx5Ejqub0whCSTjmm7/jbgnkefkS6gb5mYQOgACMo
+	KtsO35gf6KbG7WsdbEQHFOkoNwSraFkYUV9RVjBg8qYl4pwd2cTCokfGB5Mo9wE/xIwt
+	0HkqZu3HVZ+LUkwdanGaekP3ltFOP/TFuSs0bXuj4GyURi+ltu9xIA5V08/mhxjT7AlY
+	VRtZd+TASLTTttw8BI6qBY0ov//lfDfGlyXblM/0v0EPDAZ1L3lTgeSJCmf0rsOZfgvV
+	QshQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=YAz5vapA0rJqPoZ9GrCBO9Ehw2iYfrqzLf2Qc3FhDCw=;
+	b=jUIbz6NM37WYNd4WRvlLaQAj/57W5ginBKaJyUSLFkzWkG9Unnb0AAFPxV8pMpmeZY
+	voPq2O9Dq4gAz/6G/mpaPv+cz+fomBfc+RjAanFkW256C53YV8xycxy9qHZc1i91nlOS
+	R1mj+bQ9F2vSh0qFath/K5CguxixyNr+AlLc3xMOwfMA1xSx/iUuPUVQtyHbrHHnAl+U
+	A9uXTd4aUCvPBW1xp+8FZXk/jLcowkMBKzH64xUt8Lty7Wnn3guEs1nJruFQIaEip4hF
+	yv8ahZwhBqg7TwZ8NnPgdaVogoDPB8NLh5gqtLE/pOnUxb0r/7a37hsh0AXYpoFsDv5d
+	tkMQ==
+X-Gm-Message-State: AJaThX7Sc4KK4pd8eiplD9lSn2Jbpfnd+e0N+gh17SzYMDShZ+ZJIBvB
+	0kP6BgKICDRFJiFm3DD8EzY7dA==
+X-Google-Smtp-Source: AGs4zMYX3sk/QqKB8Z0sekwW0ZQHvYiWE3/+nr/WlUmRqexiex+sL82Sa9AXDgITyGJK1HkFRYZIPw==
+X-Received: by 10.157.89.165 with SMTP id u37mr13017177oth.186.1512254008690; 
+	Sat, 02 Dec 2017 14:33:28 -0800 (PST)
+Received: from ubuntu.localdomain (cpe-72-182-52-135.austin.res.rr.com.
+	[72.182.52.135]) by smtp.gmail.com with ESMTPSA id
+	r129sm4156344oig.14.2017.12.02.14.33.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sat, 02 Dec 2017 14:33:28 -0800 (PST)
+From: Shravan Rajinikanth <shravan2x@utexas.edu>
+To: star.shravan@gmail.com
+Cc: Shravan Rajinikanth <shravan2x@utexas.edu>,
+	qemu-trivial@nongnu.org
+Date: Sat,  2 Dec 2017 14:33:03 -0800
+Message-Id: <1512253983-7453-1-git-send-email-shravan2x@utexas.edu>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::242
+X-Mailman-Approved-At: Sat, 02 Dec 2017 22:17:02 -0500
+Subject: [Qemu-trivial] [PATCH] qemu-img: Fixed grammatical error in
+ dump_human_image_check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,44 +69,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Dec 2017 11:53:58 -0000
+X-List-Received-Date: Sat, 02 Dec 2017 22:33:36 -0000
 
-Eric Blake <eblake@redhat.com> wrote:
-> The point of writing a macro embedded in a 'do { ... } while (0)'
-> loop (particularly if the macro has multiple statements or would
-> otherwise end with an 'if' statement) is so that the macro can be
-> used as a drop-in statement with the caller supplying the
-> trailing ';'.  Although our coding style frowns on brace-less 'if':
->   if (cond)
->     statement;
->   else
->     something else;
-> that is the classic case where failure to use do/while(0) wrapping
-> would cause the 'else' to pair with any embedded 'if' in the macro
-> rather than the intended outer 'if'.  But conversely, if the macro
-> includes an embedded ';', then the same brace-less coding style
-> would now have two statements, making the 'else' a syntax error
-> rather than pairing with the outer 'if'.  Thus, even though our
-> coding style with required braces is not impacted, ending a macro
-> with ';' makes our code harder to port to projects that use
-> brace-less styles.
->
-> The change should have no semantic impact.  I was not able to
-> fully compile-test all of the changes (as some of them are
-> examples of the ugly bit-rotting debug print statements that are
-> completely elided by default, and I didn't want to recompile
-> with the necessary -D witnesses - cleaning those up is left as a
-> bite-sized task for another day); I did, however, audit that for
-> all files touched, all callers of the changed macros DID supply
-> a trailing ';' at the callsite, and did not appear to be used
-> as part of a brace-less conditional.
->
-> Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> Acked-by: Cornelia Huck <cohuck@redhat.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Acked-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Signed-off-by: Shravan Rajinikanth <shravan2x@utexas.edu>
+---
+ qemu-img.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+diff --git a/qemu-img.c b/qemu-img.c
+index 68b375f..bea9268 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -580,7 +580,7 @@ static void dump_human_image_check(ImageCheck *check, bool quiet)
+         if (check->leaks) {
+             qprintf(quiet,
+                     "\n%" PRId64 " leaked clusters were found on the image.\n"
+-                    "This means waste of disk space, but no harm to data.\n",
++                    "This means disk space is wasted, but data is safe.\n",
+                     check->leaks);
+         }
+ 
+-- 
+2.7.4
+
 
