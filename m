@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eLKm9-0006tG-N3
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Dec 2017 22:17:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45206)
+	id 1eLV7r-0007Fy-Kd
+	for mharc-qemu-trivial@gnu.org; Sun, 03 Dec 2017 09:20:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shravan2x@utexas.edu>) id 1eLGQt-0003sD-20
-	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:38:51 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eLV7o-0007ED-Mx
+	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 09:20:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shravan2x@utexas.edu>) id 1eLGQp-0001np-U3
-	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:38:51 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:45207)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eLV7n-0003Ld-TW
+	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 09:20:08 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:42944)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shravan2x@utexas.edu>)
-	id 1eLGQp-0001nb-Pn
-	for qemu-trivial@nongnu.org; Sat, 02 Dec 2017 17:38:47 -0500
-Received: by mail-ot0-x242.google.com with SMTP id j64so11884941otj.12
-	for <qemu-trivial@nongnu.org>; Sat, 02 Dec 2017 14:38:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=utexas-edu.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id;
-	bh=YAz5vapA0rJqPoZ9GrCBO9Ehw2iYfrqzLf2Qc3FhDCw=;
-	b=g9mPEyswOFcFNFyX7BUcy+ufmygZRB/WslIW+Hb9cp8bZLl2bReYmEBRAKF0kEE9Nj
-	Nqr1X3RAOpB6xFpugv1HtNrUEnSBrBpIp/r6ztOSMt/gOPDRdJ0UmsqyrCO1797UDzK5
-	CtZOzW/64KiGbLtAXsga41UIfsH9bQb+iOuLXnO6aB+qZBUrYBGajxh2ln6OSFV8KRL1
-	x1xxZkFxQFGX8DvwVgzMhuy9vwvy3F+r5H/GLjeLtZfPxzlB5WoLivHY0EJgZVwGU45l
-	utYpUicLHICAWDD6+zC1Daos9rwg+9ORwkq8WCkqTQtqvzVXstixCYVniel/lMp848W9
-	y5xw==
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1eLV7m-0003HZ-14; Sun, 03 Dec 2017 09:20:06 -0500
+Received: by mail-wr0-x242.google.com with SMTP id s66so14538289wrc.9;
+	Sun, 03 Dec 2017 06:20:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=vPLfarRGTP9/enGEE862i6w6EpRM5WW+FtYLjN6KCyA=;
+	b=PJi17Ogj1W8LtWnlSV6aBNpLKS+/C/VEsk99IjvNYsSHQLoMN3Zr9ALd12PQJvAoTf
+	mQ5puFnZbLH5DJQ0H1CwAniLXOyFGYV61EwHoaTmkxvuLZr2EJAdNvGI3SOyTkOpGjxT
+	JmhcdHqREUAqk+wJ+bJOPeYpi1jZvaZ92HVMJysAKbLdMXdwnbccrr5LFFCsmylOS3gk
+	C6Ao+36s5FBtj/uEBC4WeXpUuQvm357w3gEuXlUpz06eZNBpXcIwnlHZOj7068SStbDC
+	hE80+rC9tazXzzqxga2ZD4BWyGNor8dVRdpCsqGf1at3W/Woq8AE7slwG60Vubw1Rmfq
+	PAjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=YAz5vapA0rJqPoZ9GrCBO9Ehw2iYfrqzLf2Qc3FhDCw=;
-	b=eLF4hUFJN0KxYaW8Ybo4T3frq9qHmUQJf4jmwrE+ETlrCf9+8cRE/8UEL3k+NvBvG/
-	xEveB+2V7JyRmECnEWeqBJ2w2cpXbg6NHPDoK2NqBGbhjx9/OHyMQz03Hn6E1XZnQs6o
-	8wIN4um+sMcPNeOiAI1FF6MgfoVYNLFMdf/Rbyjpa8pWdRPghkHqyBUrWS8So0gjXuuK
-	JfT+RDcDzwNix+quNmrL0i6CvJ0vHb+J1SkCBWGDhRPTk9S7shlFFjh/EhVeSU7dqzhd
-	Q4xGRksXpQsDniTqepBKlXwG1L0zFh5U+0E1EteMV+0lNV+OmN/VVdJcs4eRBokC/9w4
-	zKJA==
-X-Gm-Message-State: AJaThX7MLPaDweEnds5uDCu+ixdr8VHhbIR9PITNRlC0bS3lT4mqLbLi
-	zpSgVGNy9DryAuj4dl9KKrkC1w==
-X-Google-Smtp-Source: AGs4zMbpy8j3CRl7uEG8SSuj4hure3Mjk2cXn7VovQ+PDdFF2Nw+clvx/SOP0UUHJvFQRJmh7+N1vw==
-X-Received: by 10.157.54.235 with SMTP id s40mr11044399otd.397.1512254326969; 
-	Sat, 02 Dec 2017 14:38:46 -0800 (PST)
-Received: from ubuntu.localdomain (cpe-72-182-52-135.austin.res.rr.com.
-	[72.182.52.135]) by smtp.gmail.com with ESMTPSA id
-	y126sm4167901oia.39.2017.12.02.14.38.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 02 Dec 2017 14:38:46 -0800 (PST)
-From: Shravan Rajinikanth <shravan2x@utexas.edu>
-To: qemu-devel@nongnu.org
-Cc: Shravan Rajinikanth <shravan2x@utexas.edu>,
-	qemu-trivial@nongnu.org
-Date: Sat,  2 Dec 2017 14:37:53 -0800
-Message-Id: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
-X-Mailer: git-send-email 2.7.4
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=vPLfarRGTP9/enGEE862i6w6EpRM5WW+FtYLjN6KCyA=;
+	b=lA0bplHezuwii1XL5CvXHukboZeRXxbxIS1XCO0gLpmaTUNYd81FMCRRwzbRzoCDu5
+	DDXxJEDCOIUAjZegNKKTjC87KSu1DYS/WTZvkzw9vK2oORU7i4K+hco+CB4EggfemriC
+	zvek/51V3JX+6nHWf9Fxriu9CtsjWEyAjM+u8ep4K2Be9ttHOq1MRBp/v1j1E3VgoPkK
+	XVbAt3Vk7IEkjyQn0EsRO63hA9y1fFxFSkPpFF4OnAj2PVhyIOCYdcsLFejzhdeou5G5
+	Q7DeeOjwUce7Vh6wIq3zz4wZaNyYaKgnLjzFR5d1NG/Binyds+y9SOPoDNgaTynQmgPD
+	JYKg==
+X-Gm-Message-State: AJaThX5cpUMNcicckIMOzvJXozE7uC8wiKO7YvdTKG6AoTaCQsqmwkfy
+	8kEgHGHm98iE1CpA3kyyXWjifZD7vohnOdezhns=
+X-Google-Smtp-Source: AGs4zMbYZJwMy3BBXTaGBSnfhbGkULO7jMaRD9HwWnXj2LnDn7QTe8Gp6ZDkyB7a53sajxo0Yb8ggv5mfq3qqPf31kY=
+X-Received: by 10.223.161.158 with SMTP id u30mr10921188wru.96.1512310804795; 
+	Sun, 03 Dec 2017 06:20:04 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.165.153 with HTTP; Sun, 3 Dec 2017 06:20:04 -0800 (PST)
+In-Reply-To: <20171201232433.25193-4-eblake@redhat.com>
+References: <20171201232433.25193-1-eblake@redhat.com>
+	<20171201232433.25193-4-eblake@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Sun, 3 Dec 2017 15:20:04 +0100
+Message-ID: <CAJ+F1CJCuH5r12mpuzHgUjA0MqhE38CtiVwYoiimo667zwXg5A@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-X-Mailman-Approved-At: Sat, 02 Dec 2017 22:17:04 -0500
-Subject: [Qemu-trivial] [PATCH] qemu-img: Fixed grammatical error in
- dump_human_image_check
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 3/7] chardev: Use
+ goto/label instead of do/break/while(0)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,27 +69,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Dec 2017 22:38:52 -0000
+X-List-Received-Date: Sun, 03 Dec 2017 14:20:09 -0000
 
-Signed-off-by: Shravan Rajinikanth <shravan2x@utexas.edu>
----
- qemu-img.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Sat, Dec 2, 2017 at 12:24 AM, Eric Blake <eblake@redhat.com> wrote:
+> Use of a do/while(0) control flow in order to permit an early break
+> is an unusual paradigm, and triggers a false positive with a planned
+> future syntax check against 'while (0);'.  Rewrite the code to use a
+> goto instead.  This patch temporarily keeps an extra level of
+> indentation to highlight the change; the next patch cleans it up.
+>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
 
-diff --git a/qemu-img.c b/qemu-img.c
-index 68b375f..bea9268 100644
---- a/qemu-img.c
-+++ b/qemu-img.c
-@@ -580,7 +580,7 @@ static void dump_human_image_check(ImageCheck *check, bool quiet)
-         if (check->leaks) {
-             qprintf(quiet,
-                     "\n%" PRId64 " leaked clusters were found on the image.\n"
--                    "This means waste of disk space, but no harm to data.\n",
-+                    "This means disk space is wasted, but data is safe.\n",
-                     check->leaks);
-         }
- 
--- 
-2.7.4
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
+
+>  chardev/char-serial.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+>
+> diff --git a/chardev/char-serial.c b/chardev/char-serial.c
+> index 2f8f83821d..10162f9fa3 100644
+> --- a/chardev/char-serial.c
+> +++ b/chardev/char-serial.c
+> @@ -64,9 +64,14 @@ static void tty_serial_init(int fd, int speed,
+>  #endif
+>      tcgetattr(fd, &tty);
+>
+> -#define check_speed(val) if (speed <=3D val) { spd =3D B##val; break; }
+> +#define check_speed(val) \
+> +    if (speed <=3D val) {  \
+> +        spd =3D B##val;    \
+> +        goto done;       \
+> +    }
+> +
+>      speed =3D speed * 10 / 11;
+> -    do {
+> +    {
+>          check_speed(50);
+>          check_speed(75);
+>          check_speed(110);
+> @@ -125,8 +130,10 @@ static void tty_serial_init(int fd, int speed,
+>          check_speed(4000000);
+>  #endif
+>          spd =3D B115200;
+> -    } while (0);
+> +    }
+>
+> +#undef check_speed
+> + done:
+>      cfsetispeed(&tty, spd);
+>      cfsetospeed(&tty, spd);
+>
+> --
+> 2.14.3
+>
+>
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
