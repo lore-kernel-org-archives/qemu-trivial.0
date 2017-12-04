@@ -1,60 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eLfFI-0008Lm-E0
-	for mharc-qemu-trivial@gnu.org; Sun, 03 Dec 2017 20:08:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36427)
+	id 1eLsvT-0005m3-Qd
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Dec 2017 10:44:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33560)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1eLfFF-0008KD-Bh
-	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 20:08:30 -0500
+	(envelope-from <famz@redhat.com>) id 1eLsvN-0005fl-BM
+	for qemu-trivial@nongnu.org; Mon, 04 Dec 2017 10:44:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1eLfFE-0000Ro-At
-	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 20:08:29 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:58023)
+	(envelope-from <famz@redhat.com>) id 1eLsvH-0001Vv-RK
+	for qemu-trivial@nongnu.org; Mon, 04 Dec 2017 10:44:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55950)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1eLfEy-0000K6-Hb; Sun, 03 Dec 2017 20:08:12 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3yqmvl5JGdz9s7g; Mon,  4 Dec 2017 12:08:03 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1512349683;
-	bh=AoY64/FTb+T0bH+ya+290WyTkEKCpb+vAyZsKzN10Us=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=No8LobAVEiMEEbWu7i7WitlBzGqnDZZo7xwuegAGDPJiL6ZUw/mAGUQ1FwjOhg+4V
-	U20qe6YR0NiTBM5i228bKde2eJLxBgha0CbPTklA7iQMj7i+ar+FVFKUqfgK7RmnRZ
-	UWAHSzWAtOp52fV+q1wmVfdcpNRHVhpMvstrVy0A=
-Date: Mon, 4 Dec 2017 11:45:26 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-trivial@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"open list:New World" <qemu-ppc@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20171204004526.GE2130@umbus.fritz.box>
-References: <20171130134159.9697-1-eblake@redhat.com>
-	<20171130134159.9697-4-eblake@redhat.com>
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1eLsvC-0001Rw-2q; Mon, 04 Dec 2017 10:44:42 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 790ED7970A;
+	Mon,  4 Dec 2017 15:44:40 +0000 (UTC)
+Received: from localhost (ovpn-12-25.pek2.redhat.com [10.72.12.25])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8D4E1619F7;
+	Mon,  4 Dec 2017 15:44:39 +0000 (UTC)
+Date: Mon, 4 Dec 2017 23:44:36 +0800
+From: Fam Zheng <famz@redhat.com>
+To: Shravan Rajinikanth <shravan2x@utexas.edu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20171204154436.GC10628@lemon>
+References: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="phCU5ROyZO6kBE05"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20171130134159.9697-4-eblake@redhat.com>
+In-Reply-To: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
 User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 3/3] maint: Fix macros with
- broken 'do/while(0); ' usage
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 04 Dec 2017 15:44:40 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: Fixed grammatical
+ error in dump_human_image_check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,66 +52,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Dec 2017 01:08:30 -0000
+X-List-Received-Date: Mon, 04 Dec 2017 15:44:58 -0000
 
+On Sat, 12/02 14:37, Shravan Rajinikanth wrote:
+> Signed-off-by: Shravan Rajinikanth <shravan2x@utexas.edu>
+> ---
+>  qemu-img.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qemu-img.c b/qemu-img.c
+> index 68b375f..bea9268 100644
+> --- a/qemu-img.c
+> +++ b/qemu-img.c
+> @@ -580,7 +580,7 @@ static void dump_human_image_check(ImageCheck *check, bool quiet)
+>          if (check->leaks) {
+>              qprintf(quiet,
+>                      "\n%" PRId64 " leaked clusters were found on the image.\n"
+> -                    "This means waste of disk space, but no harm to data.\n",
+> +                    "This means disk space is wasted, but data is safe.\n",
 
---phCU5ROyZO6kBE05
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+To me both versions seem fine, could you explain the grammatical error in the
+old message?
 
-On Thu, Nov 30, 2017 at 07:41:59AM -0600, Eric Blake wrote:
-> The point of writing a macro embedded in a 'do { ... } while (0)'
-> loop is so that the macro can be used as a drop-in statement with
-> the caller supplying the trailing ';'.  Although our coding style
-> frowns on brace-less 'if':
->   if (cond)
->     statement;
->   else
->     something else;
-> the use of do/while (0) in a macro is absolutely essential for the
-> purpose of avoiding a syntax error on the 'else' - but it only works
-> if there is no trailing ';' in the macro (as the ';' in the code
-> calling the macro would then be a second statement and cause the
-> 'else' to not pair to the 'if').
->=20
-> Many of the places touched in this code are examples of the ugly
-> bit-rotting debug print statements; cleaning those up is left as
-> a bite-sized task for another day.
->=20
-> Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
->=20
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+Fam
 
-ppc related portions
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---phCU5ROyZO6kBE05
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlokmqYACgkQbDjKyiDZ
-s5JlyRAAmG2FNrMuFZQkEx6DIjE6ZBj9SOYXPPwhesK5z/9JLbRDW9S0dmqWJg7a
-XvPXWaKVKox1Rt7ikCIVKgaCepwQT+mQjbA5god5D+KqdTRj2cLGAGaceKK987c1
-8WIMUTv4QLGQkxvZvhUsyCUFg3VBBIFR3xdKxMArSb+4zNwN3IBh6+yYPFrOwsg6
-CxjxQ1mioi64Ucp94MuExQ62RxDO4TJ/0uKExhNsYhYSpPYpenNVxIrhqjNshbOD
-PR3i7nSDU8Ip49E+AN9CaTAJ8kX8eGK6u7024gMXfvpAWOvuo/u4i+4EMAXkWrcP
-IWpevm/F53+T1zOKNSCm9R4KMw4d0cGz+FV5U7HmE7H6C+OzuSx5KpLa6p3XKN5i
-wPsco9WeHihaza6hnDVoF/Xqmmzq12NtU3CAsF+cmCTn84NY5stpLJQBdYo3qK+w
-z4kX2zwIniENUEbdNqn/bOgd/vRcea1wWMSnlZTpr1PyvVRRBLtgxsZ2mp6h1t9t
-IPmN5XwDyko3IxZ87jUgzOmoeLnVVnNe/5DiFtUMdUhACfGflXd8Xq2pww3WP48z
-mujpyWwub7tmt4vkhP2p5iS5ea/THuFp/dP05ji32RUcdAAIfrKbKWv0WFB4y4u2
-qdhceKxte/9X7DUa7QKfO3JW8sGtz+wxExQpVupbogqivvL/hZk=
-=+q/8
------END PGP SIGNATURE-----
-
---phCU5ROyZO6kBE05--
+>                      check->leaks);
+>          }
+>  
+> -- 
+> 2.7.4
+> 
+> 
 
