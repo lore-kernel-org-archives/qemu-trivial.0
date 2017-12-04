@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eLV8I-0007Zd-Gi
-	for mharc-qemu-trivial@gnu.org; Sun, 03 Dec 2017 09:20:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40317)
+	id 1eLfFI-0008Lm-E0
+	for mharc-qemu-trivial@gnu.org; Sun, 03 Dec 2017 20:08:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eLV8F-0007Xk-Uk
-	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 09:20:36 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1eLfFF-0008KD-Bh
+	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 20:08:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eLV8E-0003nr-Ul
-	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 09:20:35 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:38391)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1eLV8C-0003mM-AE; Sun, 03 Dec 2017 09:20:32 -0500
-Received: by mail-wm0-x244.google.com with SMTP id 64so10113308wme.3;
-	Sun, 03 Dec 2017 06:20:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=LAdBCng42JKBp82x9z1eMjaCfoxmweE/NurCQBOnWI0=;
-	b=pc/3RitJx2H5CeKcHRu5sXqg7W3OzO3bAhmiwKbME58tjVzQenIEi3DPuE8DeulowU
-	6EHpULljLg58dIqlTtTDMUl6GwvMSTSwEDR/ZZPWS50n/65pZ5g+em5J9lbpyTxZ6WhD
-	o+n45ZkEtRPVUmcGJS6viL0aUsjNc8smII+UcWBWyl/sQhMKvTCTgLVZN9AIS9i6PN98
-	ilj7vZsnGUygGBGDX7EL5ZLYF3RSU4jfMRI+ANIdz1udD7z4yytGaU9oijjyoLhDjSWv
-	4BNf3KwRW9Ki/uT+pX9x2Fn5qtPghn0ZDWfTIMR9hZNIT8PAOtPzV6irY9nW1Z7RfWBG
-	PT2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=LAdBCng42JKBp82x9z1eMjaCfoxmweE/NurCQBOnWI0=;
-	b=XTCsqKuslpvmLsCY2Hjt0KMb0ZLCfTJkjFdcIP8b+nCxFq0/ucgSdQXhCnnbBaK7+6
-	l6rjgkBbP5fr/wJrH/dvRChwwPFLYcspeK21hJkzABPkqZP+ZBMu/iJ5lDqhUxj5uDsa
-	6kzDEZZi6KnEHuFByncMiTmBKN5s0CDZfCeCuFMgmSPexNrrojlnuU7GH5WAmT1j55SM
-	gCRZRKeYVCrKZ8CyQz0URo52ZAWuOpMf9axGdsll11zMSevmRwBbu+CCTJrft8xFKSKz
-	iztf6+1EFt4ZMVJgkzxPJpAB2qwDuNu8l0rLYJquQoukwi3ShduW9vE/C6uRHnq1c7Uz
-	wdnw==
-X-Gm-Message-State: AKGB3mJPURfeVF7vEPvTLH60TXTUicxqq04RA/yolaDIYRbVDjqR02Wa
-	9lD6m5b43b5JhXno0DAWCxHKdiNSipJfh7T7Pwc=
-X-Google-Smtp-Source: AGs4zMZYfzKKWhd1yiy0hV1hJTUti1HeZKIgs21VHx20LgGwibNUI3pD4SlnNzW4PSVXNpOJxmDgaRb7cd0j1gNMm/k=
-X-Received: by 10.28.92.4 with SMTP id q4mr2393232wmb.42.1512310831253; Sun,
-	03 Dec 2017 06:20:31 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.165.153 with HTTP; Sun, 3 Dec 2017 06:20:30 -0800 (PST)
-In-Reply-To: <20171201232433.25193-5-eblake@redhat.com>
-References: <20171201232433.25193-1-eblake@redhat.com>
-	<20171201232433.25193-5-eblake@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Sun, 3 Dec 2017 15:20:30 +0100
-Message-ID: <CAJ+F1C+F-pHW2RAMZHAEizSG6-E3mf+6sUe7r3GAoGsq5fUUMA@mail.gmail.com>
+	(envelope-from <dgibson@ozlabs.org>) id 1eLfFE-0000Ro-At
+	for qemu-trivial@nongnu.org; Sun, 03 Dec 2017 20:08:29 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:58023)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1eLfEy-0000K6-Hb; Sun, 03 Dec 2017 20:08:12 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3yqmvl5JGdz9s7g; Mon,  4 Dec 2017 12:08:03 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1512349683;
+	bh=AoY64/FTb+T0bH+ya+290WyTkEKCpb+vAyZsKzN10Us=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=No8LobAVEiMEEbWu7i7WitlBzGqnDZZo7xwuegAGDPJiL6ZUw/mAGUQ1FwjOhg+4V
+	U20qe6YR0NiTBM5i228bKde2eJLxBgha0CbPTklA7iQMj7i+ar+FVFKUqfgK7RmnRZ
+	UWAHSzWAtOp52fV+q1wmVfdcpNRHVhpMvstrVy0A=
+Date: Mon, 4 Dec 2017 11:45:26 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Eric Blake <eblake@redhat.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Juan Quintela <quintela@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-trivial@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	"open list:New World" <qemu-ppc@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20171204004526.GE2130@umbus.fritz.box>
+References: <20171130134159.9697-1-eblake@redhat.com>
+	<20171130134159.9697-4-eblake@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="phCU5ROyZO6kBE05"
+Content-Disposition: inline
+In-Reply-To: <20171130134159.9697-4-eblake@redhat.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/7] chardev: Clean up
- previous patch indentation
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 3/3] maint: Fix macros with
+ broken 'do/while(0); ' usage
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,135 +66,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 03 Dec 2017 14:20:36 -0000
+X-List-Received-Date: Mon, 04 Dec 2017 01:08:30 -0000
 
-On Sat, Dec 2, 2017 at 12:24 AM, Eric Blake <eblake@redhat.com> wrote:
-> The previous patch left in an extra scope layer for ease of
-> review; time to remove it.  No semantic change.
->
+
+--phCU5ROyZO6kBE05
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Nov 30, 2017 at 07:41:59AM -0600, Eric Blake wrote:
+> The point of writing a macro embedded in a 'do { ... } while (0)'
+> loop is so that the macro can be used as a drop-in statement with
+> the caller supplying the trailing ';'.  Although our coding style
+> frowns on brace-less 'if':
+>   if (cond)
+>     statement;
+>   else
+>     something else;
+> the use of do/while (0) in a macro is absolutely essential for the
+> purpose of avoiding a syntax error on the 'else' - but it only works
+> if there is no trailing ';' in the macro (as the ';' in the code
+> calling the macro would then be a second statement and cause the
+> 'else' to not pair to the 'if').
+>=20
+> Many of the places touched in this code are examples of the ugly
+> bit-rotting debug print statements; cleaning those up is left as
+> a bite-sized task for another day.
+>=20
+> Found mechanically via: $ git grep -B1 'while (0);' | grep -A1 \\\\
+>=20
 > Signed-off-by: Eric Blake <eblake@redhat.com>
->
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+ppc related portions
 
-
- ---
->  chardev/char-serial.c | 66 +++++++++++++++++++++++++--------------------=
-------
->  1 file changed, 32 insertions(+), 34 deletions(-)
->
-> diff --git a/chardev/char-serial.c b/chardev/char-serial.c
-> index 10162f9fa3..93392c528c 100644
-> --- a/chardev/char-serial.c
-> +++ b/chardev/char-serial.c
-> @@ -71,66 +71,64 @@ static void tty_serial_init(int fd, int speed,
->      }
->
->      speed =3D speed * 10 / 11;
-> -    {
-> -        check_speed(50);
-> -        check_speed(75);
-> -        check_speed(110);
-> -        check_speed(134);
-> -        check_speed(150);
-> -        check_speed(200);
-> -        check_speed(300);
-> -        check_speed(600);
-> -        check_speed(1200);
-> -        check_speed(1800);
-> -        check_speed(2400);
-> -        check_speed(4800);
-> -        check_speed(9600);
-> -        check_speed(19200);
-> -        check_speed(38400);
-> -        /* Non-Posix values follow. They may be unsupported on some syst=
-ems. */
-> -        check_speed(57600);
-> -        check_speed(115200);
-> +    check_speed(50);
-> +    check_speed(75);
-> +    check_speed(110);
-> +    check_speed(134);
-> +    check_speed(150);
-> +    check_speed(200);
-> +    check_speed(300);
-> +    check_speed(600);
-> +    check_speed(1200);
-> +    check_speed(1800);
-> +    check_speed(2400);
-> +    check_speed(4800);
-> +    check_speed(9600);
-> +    check_speed(19200);
-> +    check_speed(38400);
-> +    /* Non-Posix values follow. They may be unsupported on some systems.=
- */
-> +    check_speed(57600);
-> +    check_speed(115200);
->  #ifdef B230400
-> -        check_speed(230400);
-> +    check_speed(230400);
->  #endif
->  #ifdef B460800
-> -        check_speed(460800);
-> +    check_speed(460800);
->  #endif
->  #ifdef B500000
-> -        check_speed(500000);
-> +    check_speed(500000);
->  #endif
->  #ifdef B576000
-> -        check_speed(576000);
-> +    check_speed(576000);
->  #endif
->  #ifdef B921600
-> -        check_speed(921600);
-> +    check_speed(921600);
->  #endif
->  #ifdef B1000000
-> -        check_speed(1000000);
-> +    check_speed(1000000);
->  #endif
->  #ifdef B1152000
-> -        check_speed(1152000);
-> +    check_speed(1152000);
->  #endif
->  #ifdef B1500000
-> -        check_speed(1500000);
-> +    check_speed(1500000);
->  #endif
->  #ifdef B2000000
-> -        check_speed(2000000);
-> +    check_speed(2000000);
->  #endif
->  #ifdef B2500000
-> -        check_speed(2500000);
-> +    check_speed(2500000);
->  #endif
->  #ifdef B3000000
-> -        check_speed(3000000);
-> +    check_speed(3000000);
->  #endif
->  #ifdef B3500000
-> -        check_speed(3500000);
-> +    check_speed(3500000);
->  #endif
->  #ifdef B4000000
-> -        check_speed(4000000);
-> +    check_speed(4000000);
->  #endif
-> -        spd =3D B115200;
-> -    }
-> +    spd =3D B115200;
->
->  #undef check_speed
->   done:
-> --
-> 2.14.3
->
->
-
-
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 --=20
-Marc-Andr=C3=A9 Lureau
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--phCU5ROyZO6kBE05
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlokmqYACgkQbDjKyiDZ
+s5JlyRAAmG2FNrMuFZQkEx6DIjE6ZBj9SOYXPPwhesK5z/9JLbRDW9S0dmqWJg7a
+XvPXWaKVKox1Rt7ikCIVKgaCepwQT+mQjbA5god5D+KqdTRj2cLGAGaceKK987c1
+8WIMUTv4QLGQkxvZvhUsyCUFg3VBBIFR3xdKxMArSb+4zNwN3IBh6+yYPFrOwsg6
+CxjxQ1mioi64Ucp94MuExQ62RxDO4TJ/0uKExhNsYhYSpPYpenNVxIrhqjNshbOD
+PR3i7nSDU8Ip49E+AN9CaTAJ8kX8eGK6u7024gMXfvpAWOvuo/u4i+4EMAXkWrcP
+IWpevm/F53+T1zOKNSCm9R4KMw4d0cGz+FV5U7HmE7H6C+OzuSx5KpLa6p3XKN5i
+wPsco9WeHihaza6hnDVoF/Xqmmzq12NtU3CAsF+cmCTn84NY5stpLJQBdYo3qK+w
+z4kX2zwIniENUEbdNqn/bOgd/vRcea1wWMSnlZTpr1PyvVRRBLtgxsZ2mp6h1t9t
+IPmN5XwDyko3IxZ87jUgzOmoeLnVVnNe/5DiFtUMdUhACfGflXd8Xq2pww3WP48z
+mujpyWwub7tmt4vkhP2p5iS5ea/THuFp/dP05ji32RUcdAAIfrKbKWv0WFB4y4u2
+qdhceKxte/9X7DUa7QKfO3JW8sGtz+wxExQpVupbogqivvL/hZk=
+=+q/8
+-----END PGP SIGNATURE-----
+
+--phCU5ROyZO6kBE05--
 
