@@ -1,48 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eNOwS-0004CH-6H
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Dec 2017 15:08:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44546)
+	id 1eO68Z-00020t-9m
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Dec 2017 13:15:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eNOwN-00049J-P0
-	for qemu-trivial@nongnu.org; Fri, 08 Dec 2017 15:08:14 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eO68X-00020c-8Q
+	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1eNOwM-0002Uo-MK
-	for qemu-trivial@nongnu.org; Fri, 08 Dec 2017 15:08:11 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43832)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1eNOwE-0002Mn-PK; Fri, 08 Dec 2017 15:08:02 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A72CD1546B;
-	Fri,  8 Dec 2017 20:08:01 +0000 (UTC)
-Received: from [10.18.17.231] (dhcp-17-231.bos.redhat.com [10.18.17.231])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 449E918B1B;
-	Fri,  8 Dec 2017 20:07:59 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
-References: <1512457825-3847-1-git-send-email-thuth@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <fb9ed70a-af7b-78eb-be57-5781cb44d1b8@redhat.com>
-Date: Fri, 8 Dec 2017 15:07:58 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1eO68W-0002HX-Ee
+	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:37 -0500
+Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:35027)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eO68W-0002Gj-9A
+	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:36 -0500
+Received: by mail-ot0-x242.google.com with SMTP id q3so13007085oth.2
+	for <qemu-trivial@nongnu.org>; Sun, 10 Dec 2017 10:15:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=nSUgL9HHKTnhvTUH3BFAnIS7vj2bFWU2M+5B/bquaAo=;
+	b=QGZu0UIiO3AxmCG0kqkG+A9Ja7i1VfpL5jWUqhDnLG3HwMnsWMYa2yJ0BIP6UhXRB5
+	DWN0gUKG96ACDwahKSVLKcY3wHUlC8eILWOwuhEQrxrZiTaeNZu8YZrwXCK/iwEvcKxE
+	s4ofp2cSvv/GVGJEZTGq5O5EmHO0bXhzSAWFw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=nSUgL9HHKTnhvTUH3BFAnIS7vj2bFWU2M+5B/bquaAo=;
+	b=kzcPVoSCubGDay15c6hode5YPZ2rCTTk6mRk8R1QNl4rH02Q5MojHPoSlZQ8HskovS
+	I59EZMeASk0/uc8i8M5zU1DCnf+2xEEaXDvh8FgmJz3v1vbJCEbuZmrJYlal8SZ5ehyI
+	WKJuIrKPM61mmniO0qFQUYqbUKYigQS9RV3KgSoMmWYl3tEOLpa4LB9mPpRLu4FndfMI
+	TdUk4Y71R8CWBa+qqVvppBJmvfJZCyuT+m04C2kHuFBUbvwul0UuAVM0Z39A2poqUGku
+	ScEZQnPtukV8+LccPA6Y4afmXJi+zXka3vvb8+j9jl5ZIMOwP5e2BBQJ6Hy8D8z6yQEN
+	H9EA==
+X-Gm-Message-State: AJaThX4G9+fVb1CMxrG461+r+J3N1cqFsWnAXHqg8Ih2cMl/URthlo5n
+	OoypyXBxdHXe0BEalt5KXEgApjZAYmXlja0efr2OeQ==
+X-Google-Smtp-Source: AGs4zMZ0YQgqV22vWm4e5ZauIeZQ7vZt+73+pyTEt20mtTsEQLCqlAPC6MGvzP0+GlCDyderTpXUzSad8aHWbZa4qHo=
+X-Received: by 10.157.80.24 with SMTP id a24mr30449807oth.335.1512929735128;
+	Sun, 10 Dec 2017 10:15:35 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1512457825-3847-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 08 Dec 2017 20:08:01 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/ide: Remove
- duplicated definitions from ahci_internal.h
+Received: by 10.157.63.74 with HTTP; Sun, 10 Dec 2017 10:15:14 -0800 (PST)
+In-Reply-To: <CAHmME9rSEtwg=n1gtqOVh=Et5yn45Yveh3LEFj357aqRZXwwcQ@mail.gmail.com>
+References: <20171023122719.17199-1-Jason@zx2c4.com>
+	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
+	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
+	<CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
+	<20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
+	<CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
+	<CAFEAcA8O6YyS1tSzaydckFpsqpb8HXgW5PJe-VTWud_5YGdW5A@mail.gmail.com>
+	<CAHmME9pE79krWx-zD=VGiScT4c=4TZ1wVxYFiF3m+8wsx9Fqeg@mail.gmail.com>
+	<CAFEAcA9XoeXDCQCmRBehntWSo0WGRBsaMDmC8QCqgU1K8jAF_A@mail.gmail.com>
+	<CAHmME9qSJSPjANce_cWN6nm=qJsncfczgk7PoPa0xkOHmZjLUA@mail.gmail.com>
+	<CAFEAcA-bKPNwJpcny=1azScO8bzHsi0Ou+m3rYPq-=v52Gf26g@mail.gmail.com>
+	<CAHmME9qNnqYEbW_m8LG0E0HBKUE38YjUodbBihnSi2k0FrZJtw@mail.gmail.com>
+	<CAFEAcA-5F2GMx9UNoH=LJAa-m1DXg2HW8PJZ47kurjx5x3NhWA@mail.gmail.com>
+	<CAHmME9rSEtwg=n1gtqOVh=Et5yn45Yveh3LEFj357aqRZXwwcQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 10 Dec 2017 18:15:14 +0000
+Message-ID: <CAFEAcA9R4=+aTuvrkkOBTTFnu5jnOKaVWLY9t+2Hj+dQrtdaHA@mail.gmail.com>
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Cc: Andrew Jones <drjones@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-arm] [PATCH] hw/arm/virt:
+ support 4 serial ports
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,59 +79,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Dec 2017 20:08:15 -0000
+X-List-Received-Date: Sun, 10 Dec 2017 18:15:38 -0000
 
+On 8 December 2017 at 18:39, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> On Fri, Dec 8, 2017 at 12:49 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> My suggestion is that we should add a second non-secure UART
+>> to the virt board, so if you're using secure=no then you
+>> get serial 1 and 2, and for secure=yes serial 1 is the first
+>> NS uart, serial 2 is the secure uart and serial 3 is the
+>> 2nd NS uart. (I don't really want to add a 4th uart unless
+>> there's some good reason to -- maybe we would turn out to
+>> want it for the secure side, for instance.)
 
+> I'm curious why you don't want to add a 4th UART. It seems trivial to
+> do, and the more the merrier? Or that's a silly attitude? Mostly just
+> curious about that, as having two personally suits my needs.
 
-On 12/05/2017 02:10 AM, Thomas Huth wrote:
-> The same definitions can also be found in include/hw/ide/ahci.h
-> so let's remove these #defines from ahci_internal.h.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Also remove TYPE_ICH9_AHCI as suggested by John
-> 
->  hw/ide/ahci_internal.h | 12 ------------
->  1 file changed, 12 deletions(-)
-> 
-> diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
-> index ce2e818..e3e3ed2 100644
-> --- a/hw/ide/ahci_internal.h
-> +++ b/hw/ide/ahci_internal.h
-> @@ -311,11 +311,6 @@ struct AHCIPCIState {
->      AHCIState ahci;
->  };
->  
-> -#define TYPE_ICH9_AHCI "ich9-ahci"
-> -
-> -#define ICH_AHCI(obj) \
-> -    OBJECT_CHECK(AHCIPCIState, (obj), TYPE_ICH9_AHCI)
-> -
->  extern const VMStateDescription vmstate_ahci;
->  
->  #define VMSTATE_AHCI(_field, _state) {                               \
-> @@ -375,11 +370,4 @@ void ahci_uninit(AHCIState *s);
->  
->  void ahci_reset(AHCIState *s);
->  
-> -#define TYPE_SYSBUS_AHCI "sysbus-ahci"
-> -#define SYSBUS_AHCI(obj) OBJECT_CHECK(SysbusAHCIState, (obj), TYPE_SYSBUS_AHCI)
-> -
-> -#define TYPE_ALLWINNER_AHCI "allwinner-ahci"
-> -#define ALLWINNER_AHCI(obj) OBJECT_CHECK(AllwinnerAHCIState, (obj), \
-> -                       TYPE_ALLWINNER_AHCI)
-> -
->  #endif /* HW_IDE_AHCI_H */
-> 
+As I say, if we add it for the non-secure world we can't
+make it a secure uart later if that turns out to be what we need.
+The "4 uarts max" limit is a compile time one.
+(Also it uses physical address space in a region which is
+relatively small and which we might want for a different device.)
 
-With edits:
-
-Thanks, applied to my IDE tree:
-
-https://github.com/jnsnow/qemu/commits/ide
-https://github.com/jnsnow/qemu.git
-
---js
-
-(PR will be sent when 2.12 opens; there's time to fiddle with it.)
+thanks
+-- PMM
 
