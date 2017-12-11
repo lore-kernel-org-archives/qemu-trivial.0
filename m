@@ -1,58 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eORMV-00023V-Fa
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 11:55:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34158)
+	id 1eOT3P-0005Go-Mp
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 13:43:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39951)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eORMT-00023M-FX
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:26 -0500
+	(envelope-from <george.kennedy@oracle.com>) id 1eORbI-00059z-Ps
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 12:10:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eORMP-0003sc-8m
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:25 -0500
-Received: from mail-wm0-f53.google.com ([74.125.82.53]:37027)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1eORMP-0003rk-22
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:21 -0500
-Received: by mail-wm0-f53.google.com with SMTP id f140so15408950wmd.2
-	for <qemu-trivial@nongnu.org>; Mon, 11 Dec 2017 08:55:20 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=NKJ7MsWpvTvQ5D11UlZVBldvTgOC/AvDfTdi50n9LAc=;
-	b=X2ZTfGB9idtEk3kemrajBBJX9whMQOPDDnZ52jSoVvuFkatnLW0JKQ7x4BiId+mrPG
-	/TXDi1eEghr0dFfm92VnsmJyEWopdNuQo0aiNduTY+C2UjoGs4QX5a40MuaZz7EhGsQD
-	+OjruBd5HzVb4Ha1vpPxhjfhyGeVgKFbZQCsI9XuaqOhgA4EhasDLtx6xLhaQYfb94a1
-	Ci2z79eaLv0sOirU6o3XBm9G1rSG03s+D276dADDIcH49Mx1d82Fm9bCU5UN1s5bcXBr
-	GlOsbiFNBwNKJBtBnUYl6/rsc8btjXo9mwxlPgVvBt6WmT1W1qpXRQwVIbGRax6qhTb5
-	a9Dg==
-X-Gm-Message-State: AKGB3mJCQZcBxDJdlkSSw80BY1DRPL2q5svgR2xS1exm5hSUQqZEnYeB
-	lyX/WiRQm4MkthUP5QNB4c/82QUPkyY=
-X-Google-Smtp-Source: ACJfBotKlWg807O+QPDdUxN7SpyO0vVCv1/JyyALA77MWKqpj4MpFiDOgv7kdgUHs7wJHRDzc9Fv0g==
-X-Received: by 10.80.181.33 with SMTP id y30mr1924910edd.150.1513011319677;
-	Mon, 11 Dec 2017 08:55:19 -0800 (PST)
-Received: from [192.168.10.150] (dynamic-adsl-78-12-251-125.clienti.tiscali.it.
-	[78.12.251.125]) by smtp.gmail.com with ESMTPSA id
-	f11sm7039596edf.28.2017.12.11.08.55.18
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 11 Dec 2017 08:55:18 -0800 (PST)
-To: George Kennedy <george.kennedy@oracle.com>, qemu-devel@nongnu.org
+	(envelope-from <george.kennedy@oracle.com>) id 1eORbF-0000ts-EO
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 12:10:44 -0500
+Received: from aserp2130.oracle.com ([141.146.126.79]:49633)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <george.kennedy@oracle.com>)
+	id 1eORbF-0000tN-5G; Mon, 11 Dec 2017 12:10:41 -0500
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+	by aserp2130.oracle.com (8.16.0.21/8.16.0.21) with SMTP id
+	vBBH6wGQ018945; Mon, 11 Dec 2017 17:10:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+	h=subject : to : cc :
+	references : from : message-id : date : mime-version : in-reply-to :
+	content-type; s=corp-2017-10-26;
+	bh=tVeHGCy5OMDAPuJbIWgr61JBjc5paZ+EqkYdplEMVJ0=;
+	b=ncGr28J6FBEfqTyr1CGCj+XkpaCfT/t6zfji2vdDGVaWLbBFKJcIEt+nIpRGItjmh3CZ
+	dCy79+tEMlZPlwCI9rRUtJyn+DZQV+z36SoBbYFVzjPLAZPEbUTba6YXdeGhpxKdXHEJ
+	FhMVypE++qJ97S+X19LLk2Ae+nz+xLyaYVkrUXIJl5550Sqp/kmyn72E3gFQmDNJnxo7
+	ZAcbuvsPD6TwHVMs8YhxHYPakuKZwWaFFE4d0LMwDttSa9fy6O9iw+HYI6UlHR/+yoP7
+	SMvD1eNb0l+9cuUDM4lLMl4W5ncSXo1iCdPfpk0ndYpcwrlS1WBbxZRFLlYghz9UV24N
+	lA== 
+Received: from aserv0021.oracle.com (aserv0021.oracle.com [141.146.126.233])
+	by aserp2130.oracle.com with ESMTP id 2eswny89j4-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NOT); Mon, 11 Dec 2017 17:10:39 +0000
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by aserv0021.oracle.com (8.14.4/8.14.4) with ESMTP id vBBHAdnt006629
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 11 Dec 2017 17:10:39 GMT
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id vBBHAcpS030914;
+	Mon, 11 Dec 2017 17:10:39 GMT
+Received: from [10.152.35.216] (/10.152.35.216)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Mon, 11 Dec 2017 09:10:38 -0800
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
 References: <a2b410dd-1150-16a4-9376-069117a14c98@oracle.com>
 	<5b24ac58-738a-ac39-f4ed-6cffb3727a26@oracle.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <bd3649e6-0268-7329-0574-0767fe04b3c9@redhat.com>
-Date: Mon, 11 Dec 2017 17:55:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	<bd3649e6-0268-7329-0574-0767fe04b3c9@redhat.com>
+From: George Kennedy <george.kennedy@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <35a0dce9-896a-300c-ae39-bb89f6d7d374@oracle.com>
+Date: Mon, 11 Dec 2017 12:11:00 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.0
 MIME-Version: 1.0
-In-Reply-To: <5b24ac58-738a-ac39-f4ed-6cffb3727a26@oracle.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <bd3649e6-0268-7329-0574-0767fe04b3c9@redhat.com>
+Content-Type: multipart/alternative;
+	boundary="------------B8BDAC2C65055A5961B57B77"
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.53
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=8742
+	signatures=668644
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+	malwarescore=0
+	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+	engine=8.0.1-1711220000 definitions=main-1712110253
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 141.146.126.79
+X-Mailman-Approved-At: Mon, 11 Dec 2017 13:43:50 -0500
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] lsi_scsi: add support for
  PPR Extended Message
 X-BeenThere: qemu-trivial@nongnu.org
@@ -66,43 +79,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Dec 2017 16:55:26 -0000
+X-List-Received-Date: Mon, 11 Dec 2017 17:10:46 -0000
 
-On 11/12/2017 17:45, George Kennedy wrote:
-> The LSI 53c895a code does not handle the PPR Extended Message. Add
-> support to handle PPR Extended Message like SDTR and WDTR are handled.
-> That is, to skip past the message bytes and ignore the message.
-> 
-> ---
->  hw/scsi/lsi53c895a.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-> index 595c260..1e02a89 100644
-> --- a/hw/scsi/lsi53c895a.c
-> +++ b/hw/scsi/lsi53c895a.c
-> @@ -961,6 +961,10 @@ static void lsi_do_msgout(LSIState *s)
->                  DPRINTF("WDTR (ignored)\n");
->                  lsi_skip_msgbytes(s, 1);
->                  break;
-> +            case 4:
-> +                DPRINTF("PPR (ignored)\n");
-> +                lsi_skip_msgbytes(s, 5);
-> +                break;
->              default:
->                  goto bad;
->              }
+This is a multi-part message in MIME format.
+--------------B8BDAC2C65055A5961B57B77
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: base64
+X-MIME-Autoconverted: from 8bit to base64 by aserp2130.oracle.com id vBBH6wGQ018945
 
-Hi George,
+VGhhbmsgeW91IFBhb2xvLA0KDQoiU2lnbmVkLW9mZi1ieTogR2VvcmdlIEtlbm5lZHk8Z2Vv
+cmdlLmtlbm5lZHlAb3JhY2xlLmNvbT4iDQoNCkdlb3JnZQ0KDQpPbiAxMi8xMS8yMDE3IDEx
+OjU1IEFNLCBQYW9sbyBCb256aW5pIHdyb3RlOg0KPiBPbiAxMS8xMi8yMDE3IDE3OjQ1LCBH
+ZW9yZ2UgS2VubmVkeSB3cm90ZToNCj4+IFRoZSBMU0kgNTNjODk1YSBjb2RlIGRvZXMgbm90
+IGhhbmRsZSB0aGUgUFBSIEV4dGVuZGVkIE1lc3NhZ2UuIEFkZA0KPj4gc3VwcG9ydCB0byBo
+YW5kbGUgUFBSIEV4dGVuZGVkIE1lc3NhZ2UgbGlrZSBTRFRSIGFuZCBXRFRSIGFyZSBoYW5k
+bGVkLg0KPj4gVGhhdCBpcywgdG8gc2tpcCBwYXN0IHRoZSBtZXNzYWdlIGJ5dGVzIGFuZCBp
+Z25vcmUgdGhlIG1lc3NhZ2UuDQo+Pg0KPj4gLS0tDQo+PiAgwqBody9zY3NpL2xzaTUzYzg5
+NWEuYyB8IDQgKysrKw0KPj4gIMKgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQ0K
+Pj4NCj4+IGRpZmYgLS1naXQgYS9ody9zY3NpL2xzaTUzYzg5NWEuYyBiL2h3L3Njc2kvbHNp
+NTNjODk1YS5jDQo+PiBpbmRleCA1OTVjMjYwLi4xZTAyYTg5IDEwMDY0NA0KPj4gLS0tIGEv
+aHcvc2NzaS9sc2k1M2M4OTVhLmMNCj4+ICsrKyBiL2h3L3Njc2kvbHNpNTNjODk1YS5jDQo+
+PiBAQCAtOTYxLDYgKzk2MSwxMCBAQCBzdGF0aWMgdm9pZCBsc2lfZG9fbXNnb3V0KExTSVN0
+YXRlICpzKQ0KPj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIERQUklOVEYo
+IldEVFIgKGlnbm9yZWQpXG4iKTsNCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBsc2lfc2tpcF9tc2dieXRlcyhzLCAxKTsNCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCBicmVhazsNCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNhc2Ug
+NDoNCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgRFBSSU5URigiUFBSIChp
+Z25vcmVkKVxuIik7DQo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxzaV9z
+a2lwX21zZ2J5dGVzKHMsIDUpOw0KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCBicmVhazsNCj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGVmYXVsdDoNCj4+ICDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBnb3RvIGJhZDsNCj4+ICDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgfQ0KPiBIaSBHZW9yZ2UsDQo+DQo+IGZvciBhIHBhdGNoIHRv
+IFFFTVUgdG8gYmUgYWNjZXB0ZWQsIHlvdSBuZWVkIHRvIGNvbmZpcm0gdGhlIG9yaWdpbiBv
+Zg0KPiB5b3VyIHBhdGNoIChhY2NvcmRpbmcgdG8gdGhlICJEZXZlbG9wZXIgQ2VydGlmaWNh
+dGUgb2YgT3JpZ2luIiwgc2VlDQo+IGh0dHBzOi8vZGV2ZWxvcGVyY2VydGlmaWNhdGUub3Jn
+LykuDQo+DQo+IEluIG9yZGVyIHRvIGRvIHRoaXMsIGl0J3MgZW5vdWdoIHRvIHJlcGx5IHRv
+IHRoaXMgbWVzc2FnZSB3aXRoDQo+ICJTaWduZWQtb2ZmLWJ5OiBHZW9yZ2UgS2VubmVkeSA8
+Z2VvcmdlLmtlbm5lZHlAb3JhY2xlLmNvbT4iIGluIHRoZSByZXBseS4NCj4NCj4gVGhhbmtz
+LA0KPg0KPiBQYW9sbw0KDQo=
+--------------B8BDAC2C65055A5961B57B77
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+X-MIME-Autoconverted: from 8bit to base64 by aserp2130.oracle.com id vBBH6wGQ018945
 
-for a patch to QEMU to be accepted, you need to confirm the origin of
-your patch (according to the "Developer Certificate of Origin", see
-https://developercertificate.org/).
-
-In order to do this, it's enough to reply to this message with
-"Signed-off-by: George Kennedy <george.kennedy@oracle.com>" in the reply.
-
-Thanks,
-
-Paolo
+PGh0bWw+DQogIDxoZWFkPg0KICAgIDxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIg
+Y29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCiAgPC9oZWFkPg0KICA8Ym9k
+eSB0ZXh0PSIjMDAwMDAwIiBiZ2NvbG9yPSIjRkZGRkZGIj4NCiAgICA8cHJlIHdyYXA9IiI+
+VGhhbmsgeW91IFBhb2xvLA0KDQoiU2lnbmVkLW9mZi1ieTogR2VvcmdlIEtlbm5lZHkgPGEg
+Y2xhc3M9Im1vei10eHQtbGluay1yZmMyMzk2RSIgaHJlZj0ibWFpbHRvOmdlb3JnZS5rZW5u
+ZWR5QG9yYWNsZS5jb20iPiZsdDtnZW9yZ2Uua2VubmVkeUBvcmFjbGUuY29tJmd0OzwvYT4i
+PC9wcmU+DQogICAgR2VvcmdlPGJyPg0KICAgIDxicj4NCiAgICA8ZGl2IGNsYXNzPSJtb3ot
+Y2l0ZS1wcmVmaXgiPk9uIDEyLzExLzIwMTcgMTE6NTUgQU0sIFBhb2xvIEJvbnppbmkNCiAg
+ICAgIHdyb3RlOjxicj4NCiAgICA8L2Rpdj4NCiAgICA8YmxvY2txdW90ZSB0eXBlPSJjaXRl
+Ig0KICAgICAgY2l0ZT0ibWlkOmJkMzY0OWU2LTAyNjgtNzMyOS0wNTc0LTA3NjdmZTA0YjNj
+OUByZWRoYXQuY29tIj4NCiAgICAgIDxwcmUgd3JhcD0iIj5PbiAxMS8xMi8yMDE3IDE3OjQ1
+LCBHZW9yZ2UgS2VubmVkeSB3cm90ZToNCjwvcHJlPg0KICAgICAgPGJsb2NrcXVvdGUgdHlw
+ZT0iY2l0ZSI+DQogICAgICAgIDxwcmUgd3JhcD0iIj5UaGUgTFNJIDUzYzg5NWEgY29kZSBk
+b2VzIG5vdCBoYW5kbGUgdGhlIFBQUiBFeHRlbmRlZCBNZXNzYWdlLiBBZGQNCnN1cHBvcnQg
+dG8gaGFuZGxlIFBQUiBFeHRlbmRlZCBNZXNzYWdlIGxpa2UgU0RUUiBhbmQgV0RUUiBhcmUg
+aGFuZGxlZC4NClRoYXQgaXMsIHRvIHNraXAgcGFzdCB0aGUgbWVzc2FnZSBieXRlcyBhbmQg
+aWdub3JlIHRoZSBtZXNzYWdlLg0KDQotLS0NCsKgaHcvc2NzaS9sc2k1M2M4OTVhLmMgfCA0
+ICsrKysNCsKgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQ0KDQpkaWZmIC0tZ2l0
+IGEvaHcvc2NzaS9sc2k1M2M4OTVhLmMgYi9ody9zY3NpL2xzaTUzYzg5NWEuYw0KaW5kZXgg
+NTk1YzI2MC4uMWUwMmE4OSAxMDA2NDQNCi0tLSBhL2h3L3Njc2kvbHNpNTNjODk1YS5jDQor
+KysgYi9ody9zY3NpL2xzaTUzYzg5NWEuYw0KQEAgLTk2MSw2ICs5NjEsMTAgQEAgc3RhdGlj
+IHZvaWQgbHNpX2RvX21zZ291dChMU0lTdGF0ZSAqcykNCsKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIERQUklOVEYoIldEVFIgKGlnbm9yZWQpXG4iKTsNCsKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxzaV9za2lwX21zZ2J5dGVzKHMsIDEpOw0KwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7DQorwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBjYXNlIDQ6DQorwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIERQUklOVEYo
+IlBQUiAoaWdub3JlZClcbiIpOw0KK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBs
+c2lfc2tpcF9tc2dieXRlcyhzLCA1KTsNCivCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgYnJlYWs7DQrCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGVmYXVsdDoNCsKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGdvdG8gYmFkOw0KwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIH0NCjwvcHJlPg0KICAgICAgPC9ibG9ja3F1b3RlPg0KICAgICAgPHByZSB3cmFw
+PSIiPg0KSGkgR2VvcmdlLA0KDQpmb3IgYSBwYXRjaCB0byBRRU1VIHRvIGJlIGFjY2VwdGVk
+LCB5b3UgbmVlZCB0byBjb25maXJtIHRoZSBvcmlnaW4gb2YNCnlvdXIgcGF0Y2ggKGFjY29y
+ZGluZyB0byB0aGUgIkRldmVsb3BlciBDZXJ0aWZpY2F0ZSBvZiBPcmlnaW4iLCBzZWUNCjxh
+IGNsYXNzPSJtb3otdHh0LWxpbmstZnJlZXRleHQiIGhyZWY9Imh0dHBzOi8vZGV2ZWxvcGVy
+Y2VydGlmaWNhdGUub3JnLyI+aHR0cHM6Ly9kZXZlbG9wZXJjZXJ0aWZpY2F0ZS5vcmcvPC9h
+PikuDQoNCkluIG9yZGVyIHRvIGRvIHRoaXMsIGl0J3MgZW5vdWdoIHRvIHJlcGx5IHRvIHRo
+aXMgbWVzc2FnZSB3aXRoDQoiU2lnbmVkLW9mZi1ieTogR2VvcmdlIEtlbm5lZHkgPGEgY2xh
+c3M9Im1vei10eHQtbGluay1yZmMyMzk2RSIgaHJlZj0ibWFpbHRvOmdlb3JnZS5rZW5uZWR5
+QG9yYWNsZS5jb20iPiZsdDtnZW9yZ2Uua2VubmVkeUBvcmFjbGUuY29tJmd0OzwvYT4iIGlu
+IHRoZSByZXBseS4NCg0KVGhhbmtzLA0KDQpQYW9sbw0KPC9wcmU+DQogICAgPC9ibG9ja3F1
+b3RlPg0KICAgIDxicj4NCiAgPC9ib2R5Pg0KPC9odG1sPg0K
+--------------B8BDAC2C65055A5961B57B77--
 
