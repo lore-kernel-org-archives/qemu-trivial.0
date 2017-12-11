@@ -1,73 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eO68Z-00020t-9m
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Dec 2017 13:15:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45193)
+	id 1eOR6A-000761-R8
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 11:38:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56627)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eO68X-00020c-8Q
-	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:38 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1eOR68-00074a-Lk
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:38:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eO68W-0002HX-Ee
-	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:37 -0500
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:35027)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eO68W-0002Gj-9A
-	for qemu-trivial@nongnu.org; Sun, 10 Dec 2017 13:15:36 -0500
-Received: by mail-ot0-x242.google.com with SMTP id q3so13007085oth.2
-	for <qemu-trivial@nongnu.org>; Sun, 10 Dec 2017 10:15:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nSUgL9HHKTnhvTUH3BFAnIS7vj2bFWU2M+5B/bquaAo=;
-	b=QGZu0UIiO3AxmCG0kqkG+A9Ja7i1VfpL5jWUqhDnLG3HwMnsWMYa2yJ0BIP6UhXRB5
-	DWN0gUKG96ACDwahKSVLKcY3wHUlC8eILWOwuhEQrxrZiTaeNZu8YZrwXCK/iwEvcKxE
-	s4ofp2cSvv/GVGJEZTGq5O5EmHO0bXhzSAWFw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=nSUgL9HHKTnhvTUH3BFAnIS7vj2bFWU2M+5B/bquaAo=;
-	b=kzcPVoSCubGDay15c6hode5YPZ2rCTTk6mRk8R1QNl4rH02Q5MojHPoSlZQ8HskovS
-	I59EZMeASk0/uc8i8M5zU1DCnf+2xEEaXDvh8FgmJz3v1vbJCEbuZmrJYlal8SZ5ehyI
-	WKJuIrKPM61mmniO0qFQUYqbUKYigQS9RV3KgSoMmWYl3tEOLpa4LB9mPpRLu4FndfMI
-	TdUk4Y71R8CWBa+qqVvppBJmvfJZCyuT+m04C2kHuFBUbvwul0UuAVM0Z39A2poqUGku
-	ScEZQnPtukV8+LccPA6Y4afmXJi+zXka3vvb8+j9jl5ZIMOwP5e2BBQJ6Hy8D8z6yQEN
-	H9EA==
-X-Gm-Message-State: AJaThX4G9+fVb1CMxrG461+r+J3N1cqFsWnAXHqg8Ih2cMl/URthlo5n
-	OoypyXBxdHXe0BEalt5KXEgApjZAYmXlja0efr2OeQ==
-X-Google-Smtp-Source: AGs4zMZ0YQgqV22vWm4e5ZauIeZQ7vZt+73+pyTEt20mtTsEQLCqlAPC6MGvzP0+GlCDyderTpXUzSad8aHWbZa4qHo=
-X-Received: by 10.157.80.24 with SMTP id a24mr30449807oth.335.1512929735128;
-	Sun, 10 Dec 2017 10:15:35 -0800 (PST)
+	(envelope-from <pbonzini@redhat.com>) id 1eOR67-0006z1-TJ
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:38:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49714)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1eOR63-0006vF-Vu; Mon, 11 Dec 2017 11:38:28 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7B7DA356DD;
+	Mon, 11 Dec 2017 16:38:26 +0000 (UTC)
+Received: from [10.36.116.85] (ovpn-116-85.ams2.redhat.com [10.36.116.85])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EEA415E9C6;
+	Mon, 11 Dec 2017 16:38:24 +0000 (UTC)
+To: Stefan Weil <sw@weilnetz.de>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <20171113064845.29142-1-sw@weilnetz.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <c3436f32-29b6-9fb9-c718-4db3cc9330c8@redhat.com>
+Date: Mon, 11 Dec 2017 17:38:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Sun, 10 Dec 2017 10:15:14 -0800 (PST)
-In-Reply-To: <CAHmME9rSEtwg=n1gtqOVh=Et5yn45Yveh3LEFj357aqRZXwwcQ@mail.gmail.com>
-References: <20171023122719.17199-1-Jason@zx2c4.com>
-	<CAFEAcA_PM5Fjx2Pk58h75p9vaZwFcusQdXuwy9tbDtc=EaoOJg@mail.gmail.com>
-	<10e16ca3-175b-9f34-65e7-031b883b7201@amsat.org>
-	<CAHmME9qtBiuAEnkCeuMd7EdeZveTVa4UOf+AQhMCFye0SYJY=Q@mail.gmail.com>
-	<20171026133445.kemzfgvpbmtcogsl@kamzik.brq.redhat.com>
-	<CAHmME9oyBvAV8FF9QMHyF46n8Ct6KZqThQVih2ipQmivD94Cag@mail.gmail.com>
-	<CAFEAcA8O6YyS1tSzaydckFpsqpb8HXgW5PJe-VTWud_5YGdW5A@mail.gmail.com>
-	<CAHmME9pE79krWx-zD=VGiScT4c=4TZ1wVxYFiF3m+8wsx9Fqeg@mail.gmail.com>
-	<CAFEAcA9XoeXDCQCmRBehntWSo0WGRBsaMDmC8QCqgU1K8jAF_A@mail.gmail.com>
-	<CAHmME9qSJSPjANce_cWN6nm=qJsncfczgk7PoPa0xkOHmZjLUA@mail.gmail.com>
-	<CAFEAcA-bKPNwJpcny=1azScO8bzHsi0Ou+m3rYPq-=v52Gf26g@mail.gmail.com>
-	<CAHmME9qNnqYEbW_m8LG0E0HBKUE38YjUodbBihnSi2k0FrZJtw@mail.gmail.com>
-	<CAFEAcA-5F2GMx9UNoH=LJAa-m1DXg2HW8PJZ47kurjx5x3NhWA@mail.gmail.com>
-	<CAHmME9rSEtwg=n1gtqOVh=Et5yn45Yveh3LEFj357aqRZXwwcQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 10 Dec 2017 18:15:14 +0000
-Message-ID: <CAFEAcA9R4=+aTuvrkkOBTTFnu5jnOKaVWLY9t+2Hj+dQrtdaHA@mail.gmail.com>
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Cc: Andrew Jones <drjones@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-arm] [PATCH] hw/arm/virt:
- support 4 serial ports
+In-Reply-To: <20171113064845.29142-1-sw@weilnetz.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 11 Dec 2017 16:38:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH for 2.12] target/i386: Fix compiler
+ warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,28 +56,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Dec 2017 18:15:38 -0000
+X-List-Received-Date: Mon, 11 Dec 2017 16:38:33 -0000
 
-On 8 December 2017 at 18:39, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
-> On Fri, Dec 8, 2017 at 12:49 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> My suggestion is that we should add a second non-secure UART
->> to the virt board, so if you're using secure=no then you
->> get serial 1 and 2, and for secure=yes serial 1 is the first
->> NS uart, serial 2 is the secure uart and serial 3 is the
->> 2nd NS uart. (I don't really want to add a 4th uart unless
->> there's some good reason to -- maybe we would turn out to
->> want it for the secure side, for instance.)
+On 13/11/2017 07:48, Stefan Weil wrote:
+> These gcc warnings are fixed:
+>=20
+> target/i386/translate.c:4461:12: warning:
+>  variable =E2=80=98prefixes=E2=80=99 might be clobbered by =E2=80=98lon=
+gjmp=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
+> target/i386/translate.c:4466:9: warning:
+>  variable =E2=80=98rex_w=E2=80=99 might be clobbered by =E2=80=98longjm=
+p=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
+> target/i386/translate.c:4466:16: warning:
+>  variable =E2=80=98rex_r=E2=80=99 might be clobbered by =E2=80=98longjm=
+p=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
+>=20
+> Tested with x86_64-w64-mingw32-gcc from Debian stretch.
+>=20
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  target/i386/translate.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/target/i386/translate.c b/target/i386/translate.c
+> index 088a9d9766..f410938244 100644
+> --- a/target/i386/translate.c
+> +++ b/target/i386/translate.c
+> @@ -4467,10 +4467,7 @@ static target_ulong disas_insn(DisasContext *s, =
+CPUState *cpu)
+>      target_ulong pc_start =3D s->base.pc_next;
+> =20
+>      s->pc_start =3D s->pc =3D pc_start;
+> -    prefixes =3D 0;
+>      s->override =3D -1;
+> -    rex_w =3D -1;
+> -    rex_r =3D 0;
+>  #ifdef TARGET_X86_64
+>      s->rex_x =3D 0;
+>      s->rex_b =3D 0;
+> @@ -4484,6 +4481,10 @@ static target_ulong disas_insn(DisasContext *s, =
+CPUState *cpu)
+>          return s->pc;
+>      }
+> =20
+> +    prefixes =3D 0;
+> +    rex_w =3D -1;
+> +    rex_r =3D 0;
+> +
+>   next_byte:
+>      b =3D x86_ldub_code(env, s);
+>      /* Collect prefixes.  */
+>=20
 
-> I'm curious why you don't want to add a 4th UART. It seems trivial to
-> do, and the more the merrier? Or that's a silly attitude? Mostly just
-> curious about that, as having two personally suits my needs.
+Queued, thanks.
 
-As I say, if we add it for the non-secure world we can't
-make it a secure uart later if that turns out to be what we need.
-The "4 uarts max" limit is a compile time one.
-(Also it uses physical address space in a region which is
-relatively small and which we might want for a different device.)
-
-thanks
--- PMM
+Paolo
 
