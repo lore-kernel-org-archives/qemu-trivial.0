@@ -1,50 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eOR6A-000761-R8
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 11:38:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56627)
+	id 1eORMV-00023V-Fa
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 11:55:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eOR68-00074a-Lk
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:38:33 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1eORMT-00023M-FX
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eOR67-0006z1-TJ
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:38:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49714)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1eOR63-0006vF-Vu; Mon, 11 Dec 2017 11:38:28 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7B7DA356DD;
-	Mon, 11 Dec 2017 16:38:26 +0000 (UTC)
-Received: from [10.36.116.85] (ovpn-116-85.ams2.redhat.com [10.36.116.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EEA415E9C6;
-	Mon, 11 Dec 2017 16:38:24 +0000 (UTC)
-To: Stefan Weil <sw@weilnetz.de>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20171113064845.29142-1-sw@weilnetz.de>
+	(envelope-from <pbonzini@redhat.com>) id 1eORMP-0003sc-8m
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:25 -0500
+Received: from mail-wm0-f53.google.com ([74.125.82.53]:37027)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1eORMP-0003rk-22
+	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:55:21 -0500
+Received: by mail-wm0-f53.google.com with SMTP id f140so15408950wmd.2
+	for <qemu-trivial@nongnu.org>; Mon, 11 Dec 2017 08:55:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=NKJ7MsWpvTvQ5D11UlZVBldvTgOC/AvDfTdi50n9LAc=;
+	b=X2ZTfGB9idtEk3kemrajBBJX9whMQOPDDnZ52jSoVvuFkatnLW0JKQ7x4BiId+mrPG
+	/TXDi1eEghr0dFfm92VnsmJyEWopdNuQo0aiNduTY+C2UjoGs4QX5a40MuaZz7EhGsQD
+	+OjruBd5HzVb4Ha1vpPxhjfhyGeVgKFbZQCsI9XuaqOhgA4EhasDLtx6xLhaQYfb94a1
+	Ci2z79eaLv0sOirU6o3XBm9G1rSG03s+D276dADDIcH49Mx1d82Fm9bCU5UN1s5bcXBr
+	GlOsbiFNBwNKJBtBnUYl6/rsc8btjXo9mwxlPgVvBt6WmT1W1qpXRQwVIbGRax6qhTb5
+	a9Dg==
+X-Gm-Message-State: AKGB3mJCQZcBxDJdlkSSw80BY1DRPL2q5svgR2xS1exm5hSUQqZEnYeB
+	lyX/WiRQm4MkthUP5QNB4c/82QUPkyY=
+X-Google-Smtp-Source: ACJfBotKlWg807O+QPDdUxN7SpyO0vVCv1/JyyALA77MWKqpj4MpFiDOgv7kdgUHs7wJHRDzc9Fv0g==
+X-Received: by 10.80.181.33 with SMTP id y30mr1924910edd.150.1513011319677;
+	Mon, 11 Dec 2017 08:55:19 -0800 (PST)
+Received: from [192.168.10.150] (dynamic-adsl-78-12-251-125.clienti.tiscali.it.
+	[78.12.251.125]) by smtp.gmail.com with ESMTPSA id
+	f11sm7039596edf.28.2017.12.11.08.55.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 11 Dec 2017 08:55:18 -0800 (PST)
+To: George Kennedy <george.kennedy@oracle.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <a2b410dd-1150-16a4-9376-069117a14c98@oracle.com>
+	<5b24ac58-738a-ac39-f4ed-6cffb3727a26@oracle.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <c3436f32-29b6-9fb9-c718-4db3cc9330c8@redhat.com>
-Date: Mon, 11 Dec 2017 17:38:23 +0100
+Message-ID: <bd3649e6-0268-7329-0574-0767fe04b3c9@redhat.com>
+Date: Mon, 11 Dec 2017 17:55:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.0
 MIME-Version: 1.0
-In-Reply-To: <20171113064845.29142-1-sw@weilnetz.de>
+In-Reply-To: <5b24ac58-738a-ac39-f4ed-6cffb3727a26@oracle.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 11 Dec 2017 16:38:27 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for 2.12] target/i386: Fix compiler
- warnings
+X-Received-From: 74.125.82.53
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] lsi_scsi: add support for
+ PPR Extended Message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,59 +66,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Dec 2017 16:38:33 -0000
+X-List-Received-Date: Mon, 11 Dec 2017 16:55:26 -0000
 
-On 13/11/2017 07:48, Stefan Weil wrote:
-> These gcc warnings are fixed:
->=20
-> target/i386/translate.c:4461:12: warning:
->  variable =E2=80=98prefixes=E2=80=99 might be clobbered by =E2=80=98lon=
-gjmp=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
-> target/i386/translate.c:4466:9: warning:
->  variable =E2=80=98rex_w=E2=80=99 might be clobbered by =E2=80=98longjm=
-p=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
-> target/i386/translate.c:4466:16: warning:
->  variable =E2=80=98rex_r=E2=80=99 might be clobbered by =E2=80=98longjm=
-p=E2=80=99 or =E2=80=98vfork=E2=80=99 [-Wclobbered]
->=20
-> Tested with x86_64-w64-mingw32-gcc from Debian stretch.
->=20
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+On 11/12/2017 17:45, George Kennedy wrote:
+> The LSI 53c895a code does not handle the PPR Extended Message. Add
+> support to handle PPR Extended Message like SDTR and WDTR are handled.
+> That is, to skip past the message bytes and ignore the message.
+> 
 > ---
->  target/i386/translate.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
->=20
-> diff --git a/target/i386/translate.c b/target/i386/translate.c
-> index 088a9d9766..f410938244 100644
-> --- a/target/i386/translate.c
-> +++ b/target/i386/translate.c
-> @@ -4467,10 +4467,7 @@ static target_ulong disas_insn(DisasContext *s, =
-CPUState *cpu)
->      target_ulong pc_start =3D s->base.pc_next;
-> =20
->      s->pc_start =3D s->pc =3D pc_start;
-> -    prefixes =3D 0;
->      s->override =3D -1;
-> -    rex_w =3D -1;
-> -    rex_r =3D 0;
->  #ifdef TARGET_X86_64
->      s->rex_x =3D 0;
->      s->rex_b =3D 0;
-> @@ -4484,6 +4481,10 @@ static target_ulong disas_insn(DisasContext *s, =
-CPUState *cpu)
->          return s->pc;
->      }
-> =20
-> +    prefixes =3D 0;
-> +    rex_w =3D -1;
-> +    rex_r =3D 0;
-> +
->   next_byte:
->      b =3D x86_ldub_code(env, s);
->      /* Collect prefixes.  */
->=20
+>  hw/scsi/lsi53c895a.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+> index 595c260..1e02a89 100644
+> --- a/hw/scsi/lsi53c895a.c
+> +++ b/hw/scsi/lsi53c895a.c
+> @@ -961,6 +961,10 @@ static void lsi_do_msgout(LSIState *s)
+>                  DPRINTF("WDTR (ignored)\n");
+>                  lsi_skip_msgbytes(s, 1);
+>                  break;
+> +            case 4:
+> +                DPRINTF("PPR (ignored)\n");
+> +                lsi_skip_msgbytes(s, 5);
+> +                break;
+>              default:
+>                  goto bad;
+>              }
 
-Queued, thanks.
+Hi George,
+
+for a patch to QEMU to be accepted, you need to confirm the origin of
+your patch (according to the "Developer Certificate of Origin", see
+https://developercertificate.org/).
+
+In order to do this, it's enough to reply to this message with
+"Signed-off-by: George Kennedy <george.kennedy@oracle.com>" in the reply.
+
+Thanks,
 
 Paolo
 
