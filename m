@@ -1,71 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eOzRf-0000GY-V3
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2017 00:19:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54987)
+	id 1eP6wd-00015d-8r
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2017 08:19:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzRc-0000DV-Vi
-	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:19:01 -0500
+	(envelope-from <darren.kenny@oracle.com>) id 1eP308-0003ok-QC
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 04:06:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzRc-0004fR-27
-	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:19:00 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:37110)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzRZ-0004e9-LF; Wed, 13 Dec 2017 00:18:57 -0500
-Received: by mail-qk0-x242.google.com with SMTP id i130so584603qke.4;
-	Tue, 12 Dec 2017 21:18:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=mxhooxRP6D79PhQsASDOKeJRzpNGCSz4Xd1Uu5VCMq8=;
-	b=pec2CduFDstcA6PMjr6Dw039dZPVVSB33dl8QX9Sbyq9oy58ZtXCcbkl04wu1W5GBp
-	8kzG8eHzRuPyCVDfrsD2PbIKmUDYZGIKA8wlfke786PvDA50uJ6XNWJg0P+AeI+CUd6D
-	qOPa+3samk0ejlKQt/RsJqqThAPuKkHSJ6tJ7YNriUe8ZpD9DkbAmOQj0ry7cFkufGkz
-	NDeAuwcv4bszioy4YQnBlP3+G5Mra4BKm7RsmilYwxXS/4gnpg+ntyQsd4Nh9I4dbhGW
-	gG2Vy8ZHVr4dEwRrrR68hQPhdCN+0X6cSx2t2Wc9WJpRibvT5e4UvyClqBFyn5hXZXzB
-	rpzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=mxhooxRP6D79PhQsASDOKeJRzpNGCSz4Xd1Uu5VCMq8=;
-	b=Im/4Or4yvDla8bzAUBbLgPAd+pXC0Df97dSggEyrd816pLdK+5qaHYTP+ONzoZPU10
-	zQIF/2yoATqrnlHC0cCJXmfh6WAL5v2h9z/yAhDM9AF9qgtWpYR16ysUkPei4qj5Ur0r
-	qWgu7v2W1RT7TChjuK2Quel9IElVMmQt4huwtlnGd1ghA4YvP4FU3LOWQJRVC9ZFdv04
-	U65lSp46L0r66FXjQPAdN9YcjXMExXpD1k7CDOZowVkMkasn7emo+V06io1E8wXJiUMy
-	AiLFOkLfhSzlJnl/o1IFs4Epa4YwDGzZRbn7N41RMSwI1h5L/M9s2Tq7vndu73rX6oz9
-	vQvg==
-X-Gm-Message-State: AKGB3mIF+KOtX7HCF2f4HfujF3Md/oY7FQVi6Sh/bCshgnR1DJQanDgU
-	HdKNVW1CluXAi4F3woCM9mc=
-X-Google-Smtp-Source: ACJfBou89/3Jg2uA/MFLAKzf7cpyyvI9DTDT0O2fRrM5p251wujHGuqojX0h+sv36fe550oBuS08IA==
-X-Received: by 10.55.21.18 with SMTP id f18mr5161208qkh.257.1513142337243;
-	Tue, 12 Dec 2017 21:18:57 -0800 (PST)
-Received: from x1.local ([138.117.48.211])
-	by smtp.gmail.com with ESMTPSA id d15sm522318qkc.26.2017.12.12.21.18.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Dec 2017 21:18:56 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Alistair Francis <alistair.francis@xilinx.com>,
+	(envelope-from <darren.kenny@oracle.com>) id 1eP303-0003dT-4z
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 04:06:52 -0500
+Received: from aserp2130.oracle.com ([141.146.126.79]:52268)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <darren.kenny@oracle.com>)
+	id 1eP302-0003ch-Tk; Wed, 13 Dec 2017 04:06:47 -0500
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+	by aserp2130.oracle.com (8.16.0.21/8.16.0.21) with SMTP id
+	vBD91S89140212; Wed, 13 Dec 2017 09:06:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+	h=date : from : to : cc
+	: subject : message-id : references : mime-version : content-type :
+	content-transfer-encoding : in-reply-to; s=corp-2017-10-26;
+	bh=LuhmxrmDAasgmUn4nXBQh82efRHR+CH5LzO1EyuaaAE=;
+	b=tSwdK+fbccw5oqd10pljhKc6vOMUYm/NmedekQmY/i6WdvVRFXkTVdSTxbFIMflYEqx4
+	0N+XqXUMwoQgDKXh4PPn/PIQoQRza6/dkH8sZyBNJ8LF1ffqU4XICsLD/zPWuoPXD+6L
+	gCM0jCcm53Y+swpgJZyEot2y/m1pD0pTHysWwCUUs7RwoFGfExuPUIxer5IIA3sPCpam
+	gLBNqV38k0VGHystTnOIj8/NMfWLqBKTN3pSs4NbHRtJnE/5L+XXWNJ93A4xqAG6pCxG
+	ARz64GR8mdt9S/Ld/BmKagGNiw+eH+ZHKaNpZkeS6iHnckNtsHAd3yF6evqexAf9Nkus
+	cQ== 
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by aserp2130.oracle.com with ESMTP id 2eu0ya05k6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 13 Dec 2017 09:06:41 +0000
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id vBD96dpK031252
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Wed, 13 Dec 2017 09:06:39 GMT
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id vBD96YoT026827;
+	Wed, 13 Dec 2017 09:06:35 GMT
+Received: from starbug-vm.ie.oracle.com (/10.175.171.71)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Wed, 13 Dec 2017 01:06:34 -0800
+Date: Wed, 13 Dec 2017 09:06:30 +0000
+From: Darren Kenny <darren.kenny@oracle.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
 	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Eric Blake <eblake@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Wed, 13 Dec 2017 02:17:36 -0300
-Message-Id: <20171213051736.17755-5-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20171213051736.17755-1-f4bug@amsat.org>
+	Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+Message-ID: <20171213090630.fht4xlnvqhnxb7wj@starbug-vm.ie.oracle.com>
+Mail-Followup-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 References: <20171213051736.17755-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-trivial] [PATCH 4/4] hw/registerfields: add missing include
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20171213051736.17755-1-f4bug@amsat.org>
+User-Agent: NeoMutt/20171027
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=8743
+	signatures=668646
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+	malwarescore=0
+	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=804
+	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+	engine=8.0.1-1711220000 definitions=main-1712130130
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by aserp2130.oracle.com id
+	vBD91S89140212
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 141.146.126.79
+X-Mailman-Approved-At: Wed, 13 Dec 2017 08:19:30 -0500
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] Trivial changes in
+ "registerfields.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,38 +87,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Dec 2017 05:19:02 -0000
+X-List-Received-Date: Wed, 13 Dec 2017 09:06:54 -0000
 
-This allows to use this header in qtests.
+Looks good to me, for all patches:
 
-This fixes:
-    CC      tests/test.o
-  include/hw/registerfields.h:32:41: error: implicit declaration of function ‘MAKE_64BIT_MASK’ [-Werror=implicit-function-declaration]
-              MAKE_64BIT_MASK(shift, length)};
-              ^
-  include/hw/registerfields.h:39:5: error: implicit declaration of function ‘extract64’; [-Werror=implicit-function-declaration]
-       extract64((storage), R_ ## reg ## _ ## field ## _SHIFT,
-       ^
+Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/registerfields.h | 2 ++
- 1 file changed, 2 insertions(+)
+Thanks,
 
-diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-index f59e7f47bd..44e0b94edf 100644
---- a/include/hw/registerfields.h
-+++ b/include/hw/registerfields.h
-@@ -11,6 +11,8 @@
- #ifndef REGISTERFIELDS_H
- #define REGISTERFIELDS_H
- 
-+#include <qemu/bitops.h>
-+
- /* Define constants for a 32 bit register */
- 
- /* This macro will define A_FOO, for the byte address of a register
--- 
-2.15.1
+Darren.
 
+On Wed, Dec 13, 2017 at 02:17:32AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>Philippe Mathieu-Daud=C3=A9 (4):
+>  MAINTAINERS: add "hw/registerfields.h" in Register API entry
+>  hw/registerfields: fix a typo in the FIELD() documentation
+>  hw/registerfields: add 64-bit extract/deposit macros
+>  hw/registerfields: add missing include
+>
+> include/hw/registerfields.h | 15 ++++++++++++++-
+> MAINTAINERS                 |  1 +
+> 2 files changed, 15 insertions(+), 1 deletion(-)
+>
+>--=20
+>2.15.1
+>
+>
 
