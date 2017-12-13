@@ -1,70 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eOzR2-00088Q-KJ
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2017 00:18:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54812)
+	id 1eOzRH-0008S2-Uv
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2017 00:18:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54852)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzR0-00082C-Ng
-	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:23 -0500
+	id 1eOzRG-0008Qg-67
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzR0-0004Mn-0n
-	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:22 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:44298)
+	id 1eOzRF-0004Tq-AL
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:38 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35542)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eOzQt-0004L6-TT; Wed, 13 Dec 2017 00:18:15 -0500
-Received: by mail-qk0-x243.google.com with SMTP id h19so580696qkj.11;
-	Tue, 12 Dec 2017 21:18:15 -0800 (PST)
+	id 1eOzR9-0004Qv-1q; Wed, 13 Dec 2017 00:18:31 -0500
+Received: by mail-qt0-x242.google.com with SMTP id u10so2361976qtg.2;
+	Tue, 12 Dec 2017 21:18:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=PJd+sGAm/Zifxt2pgLc38IAziMDBBKlALK667l2ek4Q=;
-	b=NEDNaOT4clUAXuYaEvbqIkP7BmXIQW1t1Pj6FwuVYQSbuAXPH4l6nSk3mJ5gSvNtpZ
-	118ffX3VRKqRktXjJIEzNo8kVoRCUxH61iZlOb/5zrBWfn4yfi5KV6totdNpr6afIoF8
-	R3LqQtTK52cxyBF9XO5CqJ2UYZ6Gfjir/D9sI9MJBabNlDwGmv3Ji4oiJTIXI1TjooQU
-	QE/a1hpBNo71Fizn0kFynp1TliM9EvWRU3wO9cvVBTiQma1xUDjjTIEsl7PNi5+PEv8h
-	pkbBW5/2mJt/uObk0bjXuqLzhkVT9gevVkkWHHbYKolBs1KFFQD2RIlaj4hz5au8KGB+
-	/zWA==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=88ecjEgcsQIfCP+k/SXC4oWCMR94MxwRRYySEdUNKrc=;
+	b=WpeZA8Mbk3LtmkrgKfGlQPiklEjtw2NLuVHZotqctAFktyP1FBc8otUinYE5ENtzSb
+	0w701tP2mXtkaG74zXBF4xSnB45jN39E11dhxbwwGbitIuhqfukCKwcRNoJ32URw5EwI
+	Hipq6R5lWC8WpacXZ+Xpgl5XnVKdMvHYKd3xhEPRAh12sGIZVDfwDG5wOHRcVdRae5Ks
+	uWrc6aW49y/oOWnGziEyLdM9f5KJd+VqkIesANauNFZabhhy7ja5Gebj4wDpCbtNJq68
+	XXoTFkRAOGAA/8SqYh039dphaFRPuHyRhWrMiePuHD7foABL1L3HNxOnVNbz0R+LQKau
+	DJfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=PJd+sGAm/Zifxt2pgLc38IAziMDBBKlALK667l2ek4Q=;
-	b=ftZ4jCLXxD3IXKglcKp3E+3/lwmEmyPwvamZfat2w1EpHUoq2HcvFhO4Fiu38N7Y0P
-	q+cXdlBQOgHoCCznd37eAk3w+4ZHlZlHa5ER7JjDajuit7dn9ZwOVQihui3tLYiikB2m
-	/XjStn3H7ZqRYwJra7B8X+98qTWZ29OBdZhcFKwJYSjwGRfEI6F5p1gQmEfbPh3rsJdB
-	02VA0KySU3YomZE4ahky+S1ZBPk1bIYxSoKc9SWy4kCCUKQcYJIxg28/u/TD0ezWOrzc
-	u0XTCTeLqyGR5sMXgBDxvBgcRXKTpOMksEbFFIbYZ5HdomhXjjWMymFM3RDopX6USE9e
-	Q9cA==
-X-Gm-Message-State: AKGB3mL14BHd4DEizd2pll5Qruc4qx18hPOw8EWVW/+rGThX8Ee2nV98
-	lZhsRt3h9AaOr7bxf6V2vVk=
-X-Google-Smtp-Source: ACJfBov8WDVrc6uPTzB2hk0YdX7Eo4R4+9kFve36wGEIzQ2bEofzQctMse0u5+3DfP76Nzu6aXQ59A==
-X-Received: by 10.55.137.135 with SMTP id l129mr332659qkd.294.1513142294953;
-	Tue, 12 Dec 2017 21:18:14 -0800 (PST)
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=88ecjEgcsQIfCP+k/SXC4oWCMR94MxwRRYySEdUNKrc=;
+	b=GdwWs9VPYmXtH/EhXTGjt0YmDOk/xx7RcSN5etkqIhA2us0igqt1UmXLd8sXxrJan+
+	ttMX0EcFwHjhMsYuuhSKebOcs+ipzJctcx2wMX2g8xyqOKpgBliwDD/TXbq57OOlGmkj
+	GLMz8xoqVJD4hGYyv3Cqq3QP2InzP8NpQapYC1u6SMH9Z49jrD+dDgSScItdnC6+z00j
+	rPEigAJs1cD0tj+dWRTRF6Dyf+Hf0W3EL35+ivQKjAAii4LRT0x13T+eDeW/Nny98dUa
+	XLK1mzZuDB8MNBOUC4qTInbnA59jTqOq6CyELwCCL1YyuR6P+SLIoMelKDSSTGBTLmKM
+	nP5A==
+X-Gm-Message-State: AKGB3mIWRzwbEnzrGMM0q7Uxjuwwm5FHrc7pdSpVcQco7cYgoTGk1NmW
+	yoLOKM6l0Zr6CTzNxiCPzL4=
+X-Google-Smtp-Source: ACJfBov7/toeycWwkDI0N94T99j7EeZTZzKTDwNPikxHWeZX2dE2mHkqpxMk0/2S+T9IsDSu3BiCMA==
+X-Received: by 10.200.6.4 with SMTP id d4mr9262174qth.15.1513142310625;
+	Tue, 12 Dec 2017 21:18:30 -0800 (PST)
 Received: from x1.local ([138.117.48.211])
-	by smtp.gmail.com with ESMTPSA id d15sm522318qkc.26.2017.12.12.21.18.11
+	by smtp.gmail.com with ESMTPSA id d15sm522318qkc.26.2017.12.12.21.18.27
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Dec 2017 21:18:14 -0800 (PST)
+	Tue, 12 Dec 2017 21:18:29 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair.francis@xilinx.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Eric Blake <eblake@redhat.com>
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
-Date: Wed, 13 Dec 2017 02:17:32 -0300
-Message-Id: <20171213051736.17755-1-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Wed, 13 Dec 2017 02:17:33 -0300
+Message-Id: <20171213051736.17755-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20171213051736.17755-1-f4bug@amsat.org>
+References: <20171213051736.17755-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH 0/4] Trivial changes in "registerfields.h"
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH 1/4] MAINTAINERS: add "hw/registerfields.h"
+ in Register API entry
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,18 +77,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Dec 2017 05:18:23 -0000
+X-List-Received-Date: Wed, 13 Dec 2017 05:18:39 -0000
 
-Philippe Mathieu-Daudé (4):
-  MAINTAINERS: add "hw/registerfields.h" in Register API entry
-  hw/registerfields: fix a typo in the FIELD() documentation
-  hw/registerfields: add 64-bit extract/deposit macros
-  hw/registerfields: add missing include
+Orphan since afb3141c660
 
- include/hw/registerfields.h | 15 ++++++++++++++-
- MAINTAINERS                 |  1 +
- 2 files changed, 15 insertions(+), 1 deletion(-)
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 0255113470..7edfa25542 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1538,6 +1538,7 @@ M: Alistair Francis <alistair.francis@xilinx.com>
+ S: Maintained
+ F: hw/core/register.c
+ F: include/hw/register.h
++F: include/hw/registerfields.h
+ 
+ SLIRP
+ M: Samuel Thibault <samuel.thibault@ens-lyon.org>
 -- 
 2.15.1
 
