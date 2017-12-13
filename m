@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eOT3Q-0005HI-H6
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Dec 2017 13:43:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58407)
+	id 1eOzR2-00088Q-KJ
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2017 00:18:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <george.kennedy@oracle.com>) id 1eORCB-0001mn-NE
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:44:48 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eOzR0-00082C-Ng
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <george.kennedy@oracle.com>) id 1eORC9-0003VK-4n
-	for qemu-trivial@nongnu.org; Mon, 11 Dec 2017 11:44:47 -0500
-Received: from aserp2130.oracle.com ([141.146.126.79]:44305)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <george.kennedy@oracle.com>)
-	id 1eORC8-0003U7-QT; Mon, 11 Dec 2017 11:44:45 -0500
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.21/8.16.0.21) with SMTP id
-	vBBGgDGl189084; Mon, 11 Dec 2017 16:44:42 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
-	h=subject : references
-	: to : cc : from : message-id : date : mime-version : in-reply-to :
-	content-type : content-transfer-encoding; s=corp-2017-10-26;
-	bh=FOAHM0FQrftOqD63P0uyDV184yr4rgRLG566PY+iZmc=;
-	b=kIuoewedI9NAuNqG1i98wc+fvTYl3MQwUwmz2AbW8/FZt9D52ARB3PVl02W99Vg8u78Q
-	03G2Ad/QuP7KRpME6JvkUJA/ZjHf9ZxsfXaU9TvDF9tAm8C5kp9xqqBOR35SfH0QkVg7
-	O32+Fu6D7CvmGr1PB9gNMqZ+Z4SPQcAqdJBfU0dwUIWzyphTrgmtfvO00BQ3nytVBQhQ
-	sAeDKP5R/TUxgCFD4UoAmEQHw2nJb5h+cWYEyrotHZlm8CANYz1SnMVWSjrTV9tNKbMJ
-	0IPtFnNU0qS4W7lNpIgD8cuQvHeyJmaDAZHf3ruzPIZEobl+w7Ve7yj+GtRhGDflj5vy
-	yg== 
-Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
-	by aserp2130.oracle.com with ESMTP id 2eswny82qq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NOT); Mon, 11 Dec 2017 16:44:42 +0000
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id vBBGifSI032151
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 11 Dec 2017 16:44:41 GMT
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id vBBGiev2017002;
-	Mon, 11 Dec 2017 16:44:41 GMT
-Received: from [10.152.35.216] (/10.152.35.216)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Mon, 11 Dec 2017 08:44:40 -0800
-References: <a2b410dd-1150-16a4-9376-069117a14c98@oracle.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-From: George Kennedy <george.kennedy@oracle.com>
-Organization: Oracle Corporation
-X-Forwarded-Message-Id: <a2b410dd-1150-16a4-9376-069117a14c98@oracle.com>
-Message-ID: <5b24ac58-738a-ac39-f4ed-6cffb3727a26@oracle.com>
-Date: Mon, 11 Dec 2017 11:45:02 -0500
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eOzR0-0004Mn-0n
+	for qemu-trivial@nongnu.org; Wed, 13 Dec 2017 00:18:22 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:44298)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eOzQt-0004L6-TT; Wed, 13 Dec 2017 00:18:15 -0500
+Received: by mail-qk0-x243.google.com with SMTP id h19so580696qkj.11;
+	Tue, 12 Dec 2017 21:18:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=PJd+sGAm/Zifxt2pgLc38IAziMDBBKlALK667l2ek4Q=;
+	b=NEDNaOT4clUAXuYaEvbqIkP7BmXIQW1t1Pj6FwuVYQSbuAXPH4l6nSk3mJ5gSvNtpZ
+	118ffX3VRKqRktXjJIEzNo8kVoRCUxH61iZlOb/5zrBWfn4yfi5KV6totdNpr6afIoF8
+	R3LqQtTK52cxyBF9XO5CqJ2UYZ6Gfjir/D9sI9MJBabNlDwGmv3Ji4oiJTIXI1TjooQU
+	QE/a1hpBNo71Fizn0kFynp1TliM9EvWRU3wO9cvVBTiQma1xUDjjTIEsl7PNi5+PEv8h
+	pkbBW5/2mJt/uObk0bjXuqLzhkVT9gevVkkWHHbYKolBs1KFFQD2RIlaj4hz5au8KGB+
+	/zWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=PJd+sGAm/Zifxt2pgLc38IAziMDBBKlALK667l2ek4Q=;
+	b=ftZ4jCLXxD3IXKglcKp3E+3/lwmEmyPwvamZfat2w1EpHUoq2HcvFhO4Fiu38N7Y0P
+	q+cXdlBQOgHoCCznd37eAk3w+4ZHlZlHa5ER7JjDajuit7dn9ZwOVQihui3tLYiikB2m
+	/XjStn3H7ZqRYwJra7B8X+98qTWZ29OBdZhcFKwJYSjwGRfEI6F5p1gQmEfbPh3rsJdB
+	02VA0KySU3YomZE4ahky+S1ZBPk1bIYxSoKc9SWy4kCCUKQcYJIxg28/u/TD0ezWOrzc
+	u0XTCTeLqyGR5sMXgBDxvBgcRXKTpOMksEbFFIbYZ5HdomhXjjWMymFM3RDopX6USE9e
+	Q9cA==
+X-Gm-Message-State: AKGB3mL14BHd4DEizd2pll5Qruc4qx18hPOw8EWVW/+rGThX8Ee2nV98
+	lZhsRt3h9AaOr7bxf6V2vVk=
+X-Google-Smtp-Source: ACJfBov8WDVrc6uPTzB2hk0YdX7Eo4R4+9kFve36wGEIzQ2bEofzQctMse0u5+3DfP76Nzu6aXQ59A==
+X-Received: by 10.55.137.135 with SMTP id l129mr332659qkd.294.1513142294953;
+	Tue, 12 Dec 2017 21:18:14 -0800 (PST)
+Received: from x1.local ([138.117.48.211])
+	by smtp.gmail.com with ESMTPSA id d15sm522318qkc.26.2017.12.12.21.18.11
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 12 Dec 2017 21:18:14 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+	Eric Blake <eblake@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Date: Wed, 13 Dec 2017 02:17:32 -0300
+Message-Id: <20171213051736.17755-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
 MIME-Version: 1.0
-In-Reply-To: <a2b410dd-1150-16a4-9376-069117a14c98@oracle.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=8742
-	signatures=668644
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
-	malwarescore=0
-	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=865
-	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
-	engine=8.0.1-1711220000 definitions=main-1712110248
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 141.146.126.79
-X-Mailman-Approved-At: Mon, 11 Dec 2017 13:43:50 -0500
-Subject: [Qemu-trivial] [PATCH] lsi_scsi: add support for PPR Extended
- Message
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH 0/4] Trivial changes in "registerfields.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,32 +76,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Dec 2017 16:44:48 -0000
+X-List-Received-Date: Wed, 13 Dec 2017 05:18:23 -0000
 
-The LSI 53c895a code does not handle the PPR Extended Message. Add 
-support to handle PPR Extended Message like SDTR and WDTR are handled. 
-That is, to skip past the message bytes and ignore the message.
+Philippe Mathieu-Daudé (4):
+  MAINTAINERS: add "hw/registerfields.h" in Register API entry
+  hw/registerfields: fix a typo in the FIELD() documentation
+  hw/registerfields: add 64-bit extract/deposit macros
+  hw/registerfields: add missing include
 
----
-  hw/scsi/lsi53c895a.c | 4 ++++
-  1 file changed, 4 insertions(+)
+ include/hw/registerfields.h | 15 ++++++++++++++-
+ MAINTAINERS                 |  1 +
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-index 595c260..1e02a89 100644
---- a/hw/scsi/lsi53c895a.c
-+++ b/hw/scsi/lsi53c895a.c
-@@ -961,6 +961,10 @@ static void lsi_do_msgout(LSIState *s)
-                  DPRINTF("WDTR (ignored)\n");
-                  lsi_skip_msgbytes(s, 1);
-                  break;
-+            case 4:
-+                DPRINTF("PPR (ignored)\n");
-+                lsi_skip_msgbytes(s, 5);
-+                break;
-              default:
-                  goto bad;
-              }
 -- 
-1.8.3.1
+2.15.1
 
 
