@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePXJk-0007Cv-NO
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 12:29:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38672)
+	id 1ePXKQ-0007or-1c
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 12:29:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39113)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ePXJi-0007BF-Qu
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 12:29:07 -0500
+	(envelope-from <alistair23@gmail.com>) id 1ePXKO-0007nZ-JT
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 12:29:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ePXJh-0008IT-U6
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 12:29:06 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:37743)
+	(envelope-from <alistair23@gmail.com>) id 1ePXKI-0000Mx-B0
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 12:29:48 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:46820)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ePXJh-0008HI-MT; Thu, 14 Dec 2017 12:29:05 -0500
-Received: by mail-wr0-x242.google.com with SMTP id k61so5803893wrc.4;
-	Thu, 14 Dec 2017 09:29:05 -0800 (PST)
+	id 1ePXKI-0000Lz-4w; Thu, 14 Dec 2017 12:29:42 -0500
+Received: by mail-wr0-x243.google.com with SMTP id x49so5792224wrb.13;
+	Thu, 14 Dec 2017 09:29:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
 	:subject:to:cc:content-transfer-encoding;
-	bh=tFVYU+Xo66KyRUXUKdYJeS3CYA1u73JJO6/MlDqPtt0=;
-	b=KRblUZbB/tIBtupd2HwrBKcXHedAgfGHZlPg+amnPg02fyQ7xDncFNeRgaqP5/cf2y
-	0AmIFD6WpXyrMcogOEqrKIqUgqC9Fuse2rMtO7VSLblB7FSt95gdBGrBj+2SFvoYNEB5
-	cr5cRs1NxBgrS9BLfrHoxft4l29jGVgHmTVAh30KId6mj2qMR+FMtciiCrpfbude3xiu
-	Mf4Wm6U88tNqmNSbD1jn5Dq15A2IO5cb9eAlj2VbHOtq4y5yyV53eae/4y5rs4g65mX/
-	0eOnGDNc1rJJB8/YxHrFcKHk2r4zIBCiSVbd/E0B/t/Q4wzHhiRXs5fMlv2dnCGV1QFN
-	jCJw==
+	bh=r8XX5/FtLLFZFos3gW2J97jE4RH8+3i675M+yRbQbss=;
+	b=tILo7gVr5dwzwLGuxXgdycvVkB0XQuNc0vM/oHJKLRUIPr6GEZZ2TSKQ9EhEBBtqs8
+	KsZnPnbM+zXiyb0kKLOWPEfaeIOf/FuzQf2IYjn8NT5FUsbjhKVY2REFlmM1AfvIJ4Fi
+	DDn6icnvV6i3zwgwa9S23jbz8uNEtIonGAxyMq+57eXEp2I0I+KVTIFWaAsBdJLcuriH
+	mw3xfkKVlJth/gR9Y3Fom+pCDWCkp7QlvleaQZz7qwYpEBTBxP+D6NteRb1GUkJSfomp
+	TJvy+Gaba6imm91SLMoZe0UVOCWh9E7GL1+Z+OeMLMh+XOzspz9r2d5zwG5aOecuRIat
+	3lOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
 	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=tFVYU+Xo66KyRUXUKdYJeS3CYA1u73JJO6/MlDqPtt0=;
-	b=Mc08NgANA7I+jr6XRxR4AqKmpDiGipaQZDBzxl0cz7VTQDOhM9XdV5R0xGCtxZRQ62
-	et9vi7Df5GfqzFGaOpfeAuUJ74YoogInF96hcdOjM07BhMl6xRMWTrkP1D4wepdTrg0v
-	6oL6AhLL8s3Fj1ritTrUvSrT8O1rK/x51MxijixENLhfGyr7GQ+UC47+8g7OFsl28aJo
-	DiTbgTPSiCWn6JhvZC2ZNQ1j3faFjR6mc/z2orbxhrd51zsrNv6k7fN5Tz1KCi5eEvVT
-	2d7RaeWYfkBeHqabrN3srLZPHvhut9ATqzXOWPwdd3tCF+JoGYg9lWtATMJddBroUuHt
-	6gRg==
-X-Gm-Message-State: AKGB3mLvqWWyAGIAcVEplFvOrQOUk2P+1NVwY7sxHF7nGCWrK3CHeikV
-	/5M1TK5PrM7YRY2aLb9AYZ8Suqu/of/H35z4wwc=
-X-Google-Smtp-Source: ACJfBovGC7uxBIBOLpN8lM+6Gkk3fmWyDrcN4e8JhOdAAHjWqoQRZtTbxrKp0TCWEk7kgu4uz+/7zg/XVg/6mqNBP7M=
-X-Received: by 10.223.160.125 with SMTP id l58mr6749832wrl.56.1513272544623;
-	Thu, 14 Dec 2017 09:29:04 -0800 (PST)
+	bh=r8XX5/FtLLFZFos3gW2J97jE4RH8+3i675M+yRbQbss=;
+	b=tGULTYhEsoTDMg2QDzOtCyp2YUkIzaXIcIEZzsKBsskrtoWHqwgnh2Qx6jnV5oCV2e
+	tLltrcp36AdLmDEbr8zH6ebROZOlFUPob36cGpuh+1T9X+oeOoCog3MLM1M0r2Jq93Ts
+	gF6cC3lNQEkOaR+rbAKj3j6RfHF3yofjSuxUVJp0PWBt0fxSqxI9AEQzx3qmbvewft88
+	ZBPEhHveG4patj6UB0HBhUi/uvHetCtR0Zumw/E0TkE3cX3YT+1gwEeCNfYhE674xUFk
+	8dFAwpXrJJe3DNUYvma+yHZevG7PCrWBq9ISNYvfnp/LB4Cb9Vu5/wAnb3vTMoFsYvc1
+	H67g==
+X-Gm-Message-State: AKGB3mL7LCvv+6O3wKfHAxhQu3hCakJJUnAoqK6FECJxAvo7kYVzDHZO
+	jDLmc2Mid8bHTsSYzFupgnjEedFsdVIlGghpLiU=
+X-Google-Smtp-Source: ACJfBouewZr+N1p92X2GwISwlU7zjgobkFH5il3yzUIxmQ4h+u21NQ7MBoIwoCpc1p+dhx1M0BgtmV/+AGuizebXIZI=
+X-Received: by 10.223.153.4 with SMTP id x4mr1534054wrb.219.1513272581169;
+	Thu, 14 Dec 2017 09:29:41 -0800 (PST)
 MIME-Version: 1.0
 Sender: alistair23@gmail.com
-Received: by 10.28.164.69 with HTTP; Thu, 14 Dec 2017 09:28:34 -0800 (PST)
-In-Reply-To: <20171213195852.30439-5-f4bug@amsat.org>
+Received: by 10.28.164.69 with HTTP; Thu, 14 Dec 2017 09:29:10 -0800 (PST)
+In-Reply-To: <20171213195852.30439-6-f4bug@amsat.org>
 References: <20171213195852.30439-1-f4bug@amsat.org>
-	<20171213195852.30439-5-f4bug@amsat.org>
+	<20171213195852.30439-6-f4bug@amsat.org>
 From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Thu, 14 Dec 2017 09:28:34 -0800
-X-Google-Sender-Auth: eUn0O3yNd1RYFQWgmemTrJ2sYV8
-Message-ID: <CAKmqyKPvAL3+LAqMBtUOc=0igkSwg4Jmf+Q0ySL7C+oech7AMw@mail.gmail.com>
+Date: Thu, 14 Dec 2017 09:29:10 -0800
+X-Google-Sender-Auth: OYoTZy_vkOuG3m8BDrp0uUPUATE
+Message-ID: <CAKmqyKPspMpoLAUCqj9DC8AKqiRhyuAVxv8jsQcRq-WFZ-YLEQ@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: Alistair Francis <alistair.francis@xilinx.com>, 
 	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
@@ -66,8 +66,9 @@ Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 04/14] sdhci: use deposit64()
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 05/14] sdhci: move
+ MASK_TRNMOD with other SDHC_TRN* defines in "sd-internal.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,49 +80,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Dec 2017 17:29:07 -0000
+X-List-Received-Date: Thu, 14 Dec 2017 17:29:49 -0000
 
 On Wed, Dec 13, 2017 at 11:58 AM, Philippe Mathieu-Daud=C3=A9
 <f4bug@amsat.org> wrote:
-> This makes the code slightly safer, also easier to review.
->
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/sd/sdhci.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index e39623baba..295a89e5d3 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -1123,12 +1123,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t=
- val, unsigned size)
->          MASKED_WRITE(s->admaerr, mask, value);
->          break;
->      case SDHC_ADMASYSADDR:
-> -        s->admasysaddr =3D (s->admasysaddr & (0xFFFFFFFF00000000ULL |
-> -                (uint64_t)mask)) | (uint64_t)value;
-> +        s->admasysaddr =3D deposit64(s->admasysaddr, 32, 0, value);
 
-This doesn't look right.
-
-Originally we were masking admasysaddr with (mask and
-0xFFFFFFFF00000000). Then ORing in the value.
-
-Now we are depositing value into a bit field that starts at bit 32 and
-has 0 length. I don't see how value will be deposited at all with a 0
-length.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
 Alistair
 
->          break;
->      case SDHC_ADMASYSADDR + 4:
-> -        s->admasysaddr =3D (s->admasysaddr & (0x00000000FFFFFFFFULL |
-> -                ((uint64_t)mask << 32))) | ((uint64_t)value << 32);
-> +        s->admasysaddr =3D deposit64(s->admasysaddr, 0, 32, value);
->          break;
->      case SDHC_FEAER:
->          s->acmd12errsts |=3D value;
+> ---
+>  hw/sd/sdhci-internal.h | 1 +
+>  hw/sd/sdhci.c          | 3 +--
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+> index 248fd027f9..e941bc2386 100644
+> --- a/hw/sd/sdhci-internal.h
+> +++ b/hw/sd/sdhci-internal.h
+> @@ -43,6 +43,7 @@
+>  #define SDHC_TRNS_ACMD12               0x0004
+>  #define SDHC_TRNS_READ                 0x0010
+>  #define SDHC_TRNS_MULTI                0x0020
+> +#define SDHC_TRNMOD_MASK               0x0037
+>
+>  /* R/W Command Register 0x0 */
+>  #define SDHC_CMDREG                    0x0E
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 295a89e5d3..a56c0c273e 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -120,7 +120,6 @@
+>      (SDHC_CAPAB_BASECLKFREQ << 8) | (SDHC_CAPAB_TOUNIT << 7) | \
+>      (SDHC_CAPAB_TOCLKFREQ))
+>
+> -#define MASK_TRNMOD     0x0037
+>  #define MASKED_WRITE(reg, mask, val)  (reg =3D (reg & (mask)) | (val))
+>
+>  static uint8_t sdhci_slotint(SDHCIState *s)
+> @@ -1043,7 +1042,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t v=
+al, unsigned size)
+>          if (!(s->capareg & SDHC_CAN_DO_DMA)) {
+>              value &=3D ~SDHC_TRNS_DMA;
+>          }
+> -        MASKED_WRITE(s->trnmod, mask, value & MASK_TRNMOD);
+> +        MASKED_WRITE(s->trnmod, mask, value & SDHC_TRNMOD_MASK);
+>          MASKED_WRITE(s->cmdreg, mask >> 16, value >> 16);
+>
+>          /* Writing to the upper byte of CMDREG triggers SD command gener=
+ation */
 > --
 > 2.15.1
 >
