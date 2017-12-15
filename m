@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgiK-00021C-N2
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33850)
+	id 1ePgiT-000278-E5
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34001)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgiJ-0001z9-02
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:07 -0500
+	id 1ePgiQ-00024c-VQ
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgiI-00047d-7l
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:07 -0500
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:44177)
+	id 1ePgiP-0004Jq-PD
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:14 -0500
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:39231)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgiF-00044k-9I; Thu, 14 Dec 2017 22:31:03 -0500
-Received: by mail-qt0-x243.google.com with SMTP id m59so10546848qte.11;
-	Thu, 14 Dec 2017 19:31:03 -0800 (PST)
+	id 1ePgiK-0004Ac-MQ; Thu, 14 Dec 2017 22:31:08 -0500
+Received: by mail-qt0-x243.google.com with SMTP id k19so10585932qtj.6;
+	Thu, 14 Dec 2017 19:31:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=sqSPjkpaKuw+YzItKf0cLrmEo5izjoT1sb7jg1F4dEM=;
-	b=fWppzoVUqOwndnmSDRR5VT14dhgbsN5x+6P1GagFXX2tMoB4xKZvCvZZ/TnIB22Kw0
-	/0+uBKaKdx59qxlYLwv2khcbqAd+2kux7NhBPueeiJbAwujWNS7SEnh+JcHjvBdnt8PB
-	5G5bV58NLhXSiizvLHiTlTCTAPiVQ+B6kWE0iq3eB70dTTtZwiQgSFKtzc/v+xuDPon+
-	qWUj81t8CXdlmR8Bvd5GA8vXP/DXSCKMPPRiif1TTon44cqV/v/yCV6ZqaFsC9cfgK3z
-	hkez3OlO7AwDwWXMUNJoxeENsmG3PNiSsVEwc1MqklA8w9L04YyjcJXhf96CcvtacmkQ
-	SaCg==
+	bh=OMTbYx7OUfxE0iL183JOL1X6CbAn8hxwjtmH7oU7lU4=;
+	b=NgNCS10+4j6ft32INpy5nkdLdd9oYuHCtxFjcqkjNceeKOWI4ab6e3clcDr5GhItjm
+	UWggrPQRhICEcj6ptY+km93KCKv7Lya5FZsCi9SMVNWngFT1C+If/6VGEZYRuOpxvo+b
+	kQ+GhtgjItFWbFO0Sru6j4AEcU0jWPYqGVxT3n2fhzCqsTnljUgnBhVwjcQd2yEZ823L
+	zUhzrOzMm8pzHdKdJS1WAF1IcISrEiA3wUQYm3E/h/bna8FPhtOvqB8WwhKF34NOzbyW
+	bz5AfWhpCqnhRGA6xe3+mivPkhaHktd3i0Yuw3C1Nk0eIzbIeihM8Hj1r+yL56SfK92U
+	4/UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=sqSPjkpaKuw+YzItKf0cLrmEo5izjoT1sb7jg1F4dEM=;
-	b=Axlzi0ccmt17/m6hiAvb8jSaV66LwBi4S2JlrN02gUD1k6SVVI0YcEO0Hu6zPpxGVZ
-	fabz0Hgi5VdDokLXmfKqy4MZxnNcKsDryTPBif33MqgYYyg03rCLVkBGzSrzXZgdbkke
-	aRwI0WRjV3DwZmIaxTTldGDwM6sDhNw/mmRi1Ez0GgvjlpQWKTQlGV6jXOglAMfvIKDh
-	RYUEHHvbCs6Rc2X639kkjsbOOriQhGgnqVA30jPyN46EWE82+nLE1RFRopyY0K21iMbR
-	nw+JfUMWKeQ24j/kvrf7pkRkwVFaOLHsYxEmoHiw13fcZjXHnhxYOXR6AjswNBn4MR23
-	wEpA==
-X-Gm-Message-State: AKGB3mJN4t2Hy1hbi2ihgokRxJiHqUMn+g69dx5gy7hjL3EJF1KhmzlX
-	tg6cgUxN0GzZj9z5DS6h7nE=
-X-Google-Smtp-Source: ACJfBov1btRyey+GAQ+attXek4lq7tigfDmVuKGCvdr9QPjsP/06M2t5CytFPH2XGlwZdzNXFL9Rdw==
-X-Received: by 10.237.48.193 with SMTP id 59mr20681103qtf.45.1513308662726;
-	Thu, 14 Dec 2017 19:31:02 -0800 (PST)
+	bh=OMTbYx7OUfxE0iL183JOL1X6CbAn8hxwjtmH7oU7lU4=;
+	b=ZRnolutzQjn6OVPgmLB6TWlBUDH99S9VBXEjlf5PMwIrbq2yhtEnEzuA1nx9MMeJyd
+	7ssDPSVWsiSCvwGxTu0vFXVgC9/A2WACePxgEw1PZzez9VoYCFRwL86bq/GH+iArLkjl
+	8AQBaWYCOri0sh8mxy+JKmHiYYPTHnya7QGEownhZSMu3qNstWU6t+quRrRpgjWY/Pig
+	5rxiU0GjKWppmTMY2TSciY82UUVHTdUm01riTCbHs1f7hv1FNIldN88dp3vYlucXjj4D
+	G/5TtAXYzTnF4tfTtMtkYwjZOWoRS56E2xfQCQiOgLelKv3GucFgWMWnFAjFciCXtVlL
+	P60w==
+X-Gm-Message-State: AKGB3mJUKCq+KhnPQLZ+Yrq3irNob/gG10NZ3J3vyQtUpOYl7DUM44gA
+	yhc8TMILR1FfQpfpbLZp7d4=
+X-Google-Smtp-Source: ACJfBou4M+r3ICQRA8Lpx+4uTKNvp9GgV3QM6DUC0aCFQTRu0+UBMiMFpawWGrp3jQhIKJdw8e3Gkg==
+X-Received: by 10.200.45.215 with SMTP id q23mr18984332qta.134.1513308668179; 
+	Thu, 14 Dec 2017 19:31:08 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.30.59
+	q24sm3794605qkq.63.2017.12.14.19.31.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:31:02 -0800 (PST)
+	Thu, 14 Dec 2017 19:31:07 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -55,10 +55,15 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org (open list:Block layer core)
-Date: Fri, 15 Dec 2017 00:29:43 -0300
-Message-Id: <20171215033015.738-12-f4bug@amsat.org>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <laurent@vivier.eu>, Zhang Chen <zhangckid@gmail.com>,
+	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Ben Warren <ben@skyportsystems.com>
+Date: Fri, 15 Dec 2017 00:29:44 -0300
+Message-Id: <20171215033015.738-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -68,8 +73,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v4 11/43] block: remove "qemu/osdep.h" from
- header file
+Subject: [Qemu-trivial] [PATCH v4 12/43] misc: remove headers implicitly
+ included
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,28 +86,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:31:08 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:31:16 -0000
 
 applied using ./scripts/clean-includes
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- block/dmg.h | 1 -
- 1 file changed, 1 deletion(-)
+ hw/audio/fmopl.h             | 1 -
+ bsd-user/main.c              | 1 -
+ chardev/wctablet.c           | 4 ----
+ hw/scsi/vhost-user-scsi.c    | 1 -
+ linux-user/main.c            | 1 -
+ net/colo-compare.c           | 1 -
+ tests/test-aio-multithread.c | 1 -
+ tests/test-clone-visitor.c   | 1 -
+ tests/vmgenid-test.c         | 3 ---
+ 9 files changed, 14 deletions(-)
 
-diff --git a/block/dmg.h b/block/dmg.h
-index b592d6fa8b..2ecf239ba5 100644
---- a/block/dmg.h
-+++ b/block/dmg.h
-@@ -26,7 +26,6 @@
- #ifndef BLOCK_DMG_H
- #define BLOCK_DMG_H
+diff --git a/hw/audio/fmopl.h b/hw/audio/fmopl.h
+index f4065f425c..e7e578a48e 100644
+--- a/hw/audio/fmopl.h
++++ b/hw/audio/fmopl.h
+@@ -1,7 +1,6 @@
+ #ifndef FMOPL_H
+ #define FMOPL_H
  
--#include "qemu/osdep.h"
+-#include <stdint.h>
+ 
+ typedef void (*OPL_TIMERHANDLER)(void *param, int channel, double interval_Sec);
+ 
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index f1b244b59b..efef5ff8c5 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -32,7 +32,6 @@
+ #include "qemu/envlist.h"
+ #include "exec/log.h"
+ #include "trace/control.h"
+-#include "glib-compat.h"
+ 
+ int singlestep;
+ unsigned long mmap_min_addr;
+diff --git a/chardev/wctablet.c b/chardev/wctablet.c
+index 6c13c2c58a..969d014574 100644
+--- a/chardev/wctablet.c
++++ b/chardev/wctablet.c
+@@ -25,10 +25,6 @@
+  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  * THE SOFTWARE.
+  */
+-#include <stdlib.h>
+-#include <string.h>
+-#include <sys/time.h>
+-#include <time.h>
+ 
+ #include "qemu/osdep.h"
  #include "qemu-common.h"
- #include "block/block_int.h"
- #include <zlib.h>
+diff --git a/hw/scsi/vhost-user-scsi.c b/hw/scsi/vhost-user-scsi.c
+index f7561e23fa..9389ed48e0 100644
+--- a/hw/scsi/vhost-user-scsi.c
++++ b/hw/scsi/vhost-user-scsi.c
+@@ -18,7 +18,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+-#include "qemu/typedefs.h"
+ #include "qom/object.h"
+ #include "hw/fw-path-provider.h"
+ #include "hw/qdev-core.h"
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 6286661bd3..2fd2a143ed 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -35,7 +35,6 @@
+ #include "elf.h"
+ #include "exec/log.h"
+ #include "trace/control.h"
+-#include "glib-compat.h"
+ 
+ char *exec_path;
+ 
+diff --git a/net/colo-compare.c b/net/colo-compare.c
+index 1ce195f877..0ebdec936c 100644
+--- a/net/colo-compare.c
++++ b/net/colo-compare.c
+@@ -23,7 +23,6 @@
+ #include "qom/object_interfaces.h"
+ #include "qemu/iov.h"
+ #include "qom/object.h"
+-#include "qemu/typedefs.h"
+ #include "net/queue.h"
+ #include "chardev/char-fe.h"
+ #include "qemu/sockets.h"
+diff --git a/tests/test-aio-multithread.c b/tests/test-aio-multithread.c
+index d396185972..c8bec81520 100644
+--- a/tests/test-aio-multithread.c
++++ b/tests/test-aio-multithread.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ #include "block/aio.h"
+ #include "qapi/error.h"
+ #include "qemu/coroutine.h"
+diff --git a/tests/test-clone-visitor.c b/tests/test-clone-visitor.c
+index 96982163e4..ac6afc562e 100644
+--- a/tests/test-clone-visitor.c
++++ b/tests/test-clone-visitor.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <glib.h>
+ 
+ #include "qemu-common.h"
+ #include "qapi/clone-visitor.h"
+diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
+index 5a86b40775..68ff954578 100644
+--- a/tests/vmgenid-test.c
++++ b/tests/vmgenid-test.c
+@@ -8,9 +8,6 @@
+  * See the COPYING file in the top-level directory.
+  */
+ 
+-#include <glib.h>
+-#include <string.h>
+-#include <unistd.h>
+ #include "qemu/osdep.h"
+ #include "qemu/bitmap.h"
+ #include "qemu/uuid.h"
 -- 
 2.15.1
 
