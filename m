@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgjo-0003R3-Id
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:32:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35531)
+	id 1ePgjq-0003TR-BD
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:32:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35558)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjm-0003OZ-5L
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:39 -0500
+	id 1ePgjn-0003Pu-Bs
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjl-0006Td-9X
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:38 -0500
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:46950)
+	id 1ePgjm-0006WF-A0
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:39 -0500
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:39424)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjg-0006IE-UX; Thu, 14 Dec 2017 22:32:32 -0500
-Received: by mail-qt0-x241.google.com with SMTP id r39so10551799qtr.13;
-	Thu, 14 Dec 2017 19:32:32 -0800 (PST)
+	id 1ePgjk-0006QS-BR; Thu, 14 Dec 2017 22:32:36 -0500
+Received: by mail-qk0-x243.google.com with SMTP id u184so8865174qkd.6;
+	Thu, 14 Dec 2017 19:32:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=XoPo/RZmR9MSg/VyfmEeOtUBI6JhBlsnNzYpQBrgs2I=;
-	b=Gsm4qE2m0oFmv6MWuZuGXyoDZlBtuDXn6hvHXHZQUuvhcc1m+Paf8UlnzGV7MIeJm4
-	zOi+Mfx+tXmxRtu14Vsd21I3lPTg63cCsv6AmgFXOzSvsU/1SnXphUZvXI4ypN8n4x8v
-	JvksaAzQJVhFcwUHvpmP+3ZMzIMxWVb3UgTSx9T0ZdpCxG05cDsRGGKQoOS3OLBf++RJ
-	nH5Qc9+ZhAKiX3fbLk83jQY1lei6dTaWiIIc43L47gClD/SCAaIsETth5gP2dZifFFn2
-	gbl5v3+JAu4m9Kx5E4hyYqIC/Nt/2MAQOS/OVD2mMh02m5GIRaObebdMSjoqAUxuc+vf
-	G/EA==
+	bh=JhkZWm9edmPhjMG5NmEpJkxVu3C3w9IufgjUN3kTYK0=;
+	b=jMF1hmTGtAJbAWpkFwxoJY25CsZJ9XqAt/TGeJlxb2GIHoT7NZKatLyF8SS5Dr8XpJ
+	kdOd0Zi/nH4owAzj2Myg9ZKx4F6zrYQAHPvuolzSc/jG4+sCUB0LP40LDkI926tgItER
+	/BcCih/qG4ZvLBwAbd4lSucq+YW7WbBpHAdDDWYwq0gwSO4JMf6j4jpvf7x4ipPhSw9A
+	3N5uS3VaWoSC+ANLLkLTm50HZBLwDKHZOuV0N/siBk0DaKW7AzMXdv9qt2OSQJZn6QjT
+	nCpc8xuEfMWOe6xtrY7XYNfnw4avZwpke/ezJxLbhXz3NCFu4onEruU3NLRSNqr9bNLj
+	QzZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=XoPo/RZmR9MSg/VyfmEeOtUBI6JhBlsnNzYpQBrgs2I=;
-	b=OWbm/XH5CKfCpGrenFV3VGs/ch067aBWot52haK9eTWB9EcyaW4uDRFNts3titdJZx
-	x9bnyOq7umIo9xnzXY1mP0giMs5YHe275s3WifpxyJoHCitybAD1g0aas6qX61Qo4pFY
-	sJ/kp38gfn4hZ09eoA9akQ64RcBDF9qQ0sx/cPXhNDLOYRr+ghVKJTaf2naybJ9VN22K
-	Q4v/UdSBbznxpzNmrNyKKSnwiek6OrPNsxDUE3CY8MNVle6zw0wnYzqBGdGHCfg7uXgk
-	BzGGCKSJeYl63P8w7JYMYEooaHY8VW3k5Y9dqOwcm/XnGAGNL3a+3nhK9RRCeX/rMtGb
-	wPig==
-X-Gm-Message-State: AKGB3mKCL4+YKkDi4a6G4kUt4fZcNjUf2R9joVut0LN8VsCEdwmFMXbn
-	Qhw6qK/e6Hhv0hq4gu8Uavg=
-X-Google-Smtp-Source: ACJfBov5Y0WxSahu9NH8Za5kfYChENUNUPF5VqoM53FvoTTZgaaV+N9suV0qJ38i4cJ7ZDBAjwECEg==
-X-Received: by 10.200.50.116 with SMTP id y49mr20256336qta.10.1513308752497;
-	Thu, 14 Dec 2017 19:32:32 -0800 (PST)
+	bh=JhkZWm9edmPhjMG5NmEpJkxVu3C3w9IufgjUN3kTYK0=;
+	b=kWW9C2PubXtux2bd4P17sNBRqIXqdriIbZodSObs+eoxzauwQX+EVNrGpFjeiFwxDY
+	ciCnx6y8eDYzZ0rxpEQ0NC4VVA/0ZQvk6CExZB0lOA25YiXkzaNwM8DnRCRU2Dxuoilw
+	XGRvDyNNqd36kvJmDvOa13cA6c6UG9IE+k8NT6YEzGQ/u0WpIZFDjsUK1aEFheP8JmLU
+	wYGNeQFPssh7BKBwUJ6VDBYpsDvXphp6mnW7PzmD6lwmOwBIOpJZXc1FUmuwNxjQyUV5
+	y+i8gyNPtA0xwR3Luggn5gvgU4mAIaddCr6DjofjtmEDiQIZSPNwRV7qYob76aLisr7c
+	FbpQ==
+X-Gm-Message-State: AKGB3mKFX6CQsgCO6f3ItnRXe1SX7iaW6udnuVHhT/s5fbEGoVz6X/mY
+	DJW7jf+4Ygisk67nZFkk3wM=
+X-Google-Smtp-Source: ACJfBotqIAmGP/IhhIyISzUUAUqn17uMEmz6woFYce7DJINq94JubeZtDQy8YlWiZl0syvUc7YTk6A==
+X-Received: by 10.55.181.66 with SMTP id e63mr19279740qkf.130.1513308755907;
+	Thu, 14 Dec 2017 19:32:35 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.32.29
+	q24sm3794605qkq.63.2017.12.14.19.32.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:32:31 -0800 (PST)
+	Thu, 14 Dec 2017 19:32:35 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,10 +54,9 @@ To: "Michael S. Tsirkin" <mst@redhat.com>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>
-Date: Fri, 15 Dec 2017 00:30:06 -0300
-Message-Id: <20171215033015.738-35-f4bug@amsat.org>
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Dec 2017 00:30:07 -0300
+Message-Id: <20171215033015.738-36-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -66,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v4 34/43] hw/acpi/ich9: extract
- ACPI_PM_PROP_TCO_ENABLED from i386/pc
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH v4 35/43] hw/display/vga: "vga.h" only
+ contains registers defs, rename it "vga_regs.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,44 +79,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:32:39 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:32:40 -0000
 
-enable_tco is specific to i386/pc.
-
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- include/hw/acpi/ich9.h | 2 ++
- include/hw/i386/pc.h   | 2 --
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/display/{vga.h => vga_regs.h} | 0
+ hw/display/vga.c                 | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename hw/display/{vga.h => vga_regs.h} (100%)
 
-diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
-index a352c94fde..59aeb06393 100644
---- a/include/hw/acpi/ich9.h
-+++ b/include/hw/acpi/ich9.h
-@@ -63,6 +63,8 @@ typedef struct ICH9LPCPMRegs {
-     TCOIORegs tco_regs;
- } ICH9LPCPMRegs;
- 
-+#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
-+
- void ich9_pm_init(PCIDevice *lpc_pci, ICH9LPCPMRegs *pm,
-                   bool smm_enabled,
-                   qemu_irq sci_irq);
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 252526e600..3794473108 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -151,8 +151,6 @@ struct PCMachineClass {
- #define PC_MACHINE_CLASS(klass) \
-     OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
- 
--#define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
--
- /* parallel.c */
- 
- void parallel_hds_isa_init(ISABus *bus, int n);
+diff --git a/hw/display/vga.h b/hw/display/vga_regs.h
+similarity index 100%
+rename from hw/display/vga.h
+rename to hw/display/vga_regs.h
+diff --git a/hw/display/vga.c b/hw/display/vga.c
+index a64a0942da..ce95b40e5c 100644
+--- a/hw/display/vga.c
++++ b/hw/display/vga.c
+@@ -24,11 +24,11 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+-#include "vga.h"
+ #include "ui/console.h"
+ #include "hw/i386/pc.h"
+ #include "hw/pci/pci.h"
+ #include "vga_int.h"
++#include "vga_regs.h"
+ #include "ui/pixel_ops.h"
+ #include "qemu/timer.h"
+ #include "hw/xen/xen.h"
 -- 
 2.15.1
 
