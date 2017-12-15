@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgit-0002XE-IX
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34459)
+	id 1ePgiv-0002Zj-Tg
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34538)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgin-0002TG-Fa
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:40 -0500
+	id 1ePgir-0002XA-Vb
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgim-0004wz-LU
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:37 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36914)
+	id 1ePgir-00053Z-4a
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:41 -0500
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:32821)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgik-0004tu-JM; Thu, 14 Dec 2017 22:31:34 -0500
-Received: by mail-qk0-x241.google.com with SMTP id i130so8868456qke.4;
-	Thu, 14 Dec 2017 19:31:34 -0800 (PST)
+	id 1ePgin-0004yC-RC; Thu, 14 Dec 2017 22:31:37 -0500
+Received: by mail-qk0-x244.google.com with SMTP id 63so8865109qke.0;
+	Thu, 14 Dec 2017 19:31:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=AE0xPxY8Laa3NxlROs5TwGpZnOQdsaN6k646u+533tA=;
-	b=IGgM97dK5Lgdnt6JWJQbBvNqTnIM+yqfjVerLoqKK+MiV8So2U8xgAASCCJJB/kslW
-	oUjvoiF/dZNkVhz+/jo/Ep4Bpgd8e7JaBKbxKn7TEDKTtpOE03dNtntJhpHfiykrNW6b
-	eFMTtal4WX9ZeUGQnyzVhbMkjljLAizxuvRz85IxPotcwhZpxkBxcxemKKdZveyWDZKV
-	/SH+rNrwtifulSDwr2eh32RikXBVvcwXTMd5jJODMxvDp2t+Zh34Zf9upE/8MDaBBXZH
-	c3yZoYIFKWPtyDrxmniVscxte938SWjqvECjEY509REbfweVHvJBWeC5OWoqGT1uuG20
-	rL+g==
+	bh=hsNhItPXt7QRb7/Ebl+VbktqresP2BTn9qexIVfPLFo=;
+	b=AQLiX5FP0q+bJvCUI7tT5cXR4PTi7tDLAPaQCfe0I2ut9mo8AteQgyU2cln/WTC4lY
+	evvVYSR9k4WnwXC7rfHf/KxUxlakBuST2hPYyxaPqgOhae+Fl/+7ytfbsIo+0+nAM4/f
+	U7Z8M+SHixqKhKfy0La1sWZR3YOgEwJv6UMnb2lH2Jfvv0hSE+6Uug6R2iHCQbYOVLoU
+	65fpWi+gAKunA+xqFnpplvxBKaiUo/o7AZ0Is3y2QhhhwJfZuntFXG4ykQ9bbq2S2NVv
+	rxvKStRQFygu/Hejx+7zOwCg69jtNhcMhdTfSMQD+J9DDzmkV9cujkcgImkPFWTBcc1K
+	g2mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=AE0xPxY8Laa3NxlROs5TwGpZnOQdsaN6k646u+533tA=;
-	b=Z/kK38i8H1WH8n1MGIrAZhTN7Nca1NqPEvtJjs1ydEawlsWPsEZn7LNv5XlPljhPQU
-	JTuAoL+nkW47ignmtubFlSF5ubdYe8dn8tydD2rtu5vRkuzTQn7jh03mMtx7nqpq1z7y
-	V5M7AhoMj2Z/WJPedI+tWjfyqXTdagRWPkMg80RaX84U8VE60nwRQp+OPM5ISBxhWszp
-	jL6o/ej3+xBVy8L/+6QG5lW/U//ZmYB/JdufS11jrzl5q900o8yQDNmg7srt4O4pCKYu
-	7MwSYFFIT+9sl9ksp2RSIFs0L0EHtUdWNZJeU8TYUAhtXkCOJKKcGsYWZ080WbrkMezO
-	+POQ==
-X-Gm-Message-State: AKGB3mIKvtYMBXQI/Ka/HKbrhMJsi1KBUYAEYpXacHv4P4jgzPh+Tjz9
-	IZ0IsPfkhVogv7mqG7nv8i8=
-X-Google-Smtp-Source: ACJfBosG7xOEREVR/mXeM0pA8vnJhzpk7P61rUhHNZOShaXYS49cPoHL5Px0X9dvUcioNtslnpHyUQ==
-X-Received: by 10.55.152.129 with SMTP id a123mr18989677qke.142.1513308694128; 
-	Thu, 14 Dec 2017 19:31:34 -0800 (PST)
+	bh=hsNhItPXt7QRb7/Ebl+VbktqresP2BTn9qexIVfPLFo=;
+	b=RDIzO9mvG+hQalwkUaacw/LHjg23LPtyLrjGg2QuGI0+Tj2/Yn2KksYSROhYL9BAMX
+	6D958O5OtknZgFTaDGVEyHWmc2I0B1eS6q7sMI1qcf2heMx4JON/BOfSArm8sLHZ1ICS
+	IfU+UCeynDuxV0oZPi9fhYRjigMbIHuQLzqxN4FvqLIBi4qGNg9sR6t2gvf1k4pKCirA
+	L0IZvM/034T8C6shEiNq1WG5x6vJVAXpEZDVF+1ou18m9PTtK0WvBhze0+n6Gz2rt64W
+	grBtj688vasAA4SIyRhXMGi+phE+hJGydg8QH7OLGn0tK0LzbQNWQN1suB8hs/ouXA8t
+	1K+w==
+X-Gm-Message-State: AKGB3mJ6o/ZTBb5dQ/DUxTWJ1Wq89Q5ura5ob1bhd72ePz88EsSiPRh9
+	NuRWUa9sT6f2byZLeXL0apE=
+X-Google-Smtp-Source: ACJfBouElEmyLuQR95dJ4ThGrtsqPDreWrLtY/TzItEvkhrNBLBXYKVuDupM1LNhXTFj+uwMHGdmuQ==
+X-Received: by 10.55.25.18 with SMTP id k18mr19323311qkh.336.1513308697368;
+	Thu, 14 Dec 2017 19:31:37 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.31.30
+	q24sm3794605qkq.63.2017.12.14.19.31.34
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:31:33 -0800 (PST)
+	Thu, 14 Dec 2017 19:31:36 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,11 +54,9 @@ To: "Michael S. Tsirkin" <mst@redhat.com>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Date: Fri, 15 Dec 2017 00:29:50 -0300
-Message-Id: <20171215033015.738-19-f4bug@amsat.org>
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Dec 2017 00:29:51 -0300
+Message-Id: <20171215033015.738-20-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -67,9 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH v4 18/43] misc: avoid "include/" in include
- path
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH v4 19/43] numa: remove unused #include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,42 +78,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:31:40 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:31:44 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/input/adb.c      | 2 +-
- hw/ssi/aspeed_smc.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ numa.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/input/adb.c b/hw/input/adb.c
-index fcca3a8eb9..924a3f9fd5 100644
---- a/hw/input/adb.c
-+++ b/hw/input/adb.c
-@@ -24,8 +24,8 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/input/adb.h"
-+#include "hw/input/adb-keys.h"
- #include "ui/console.h"
--#include "include/hw/input/adb-keys.h"
- #include "ui/input.h"
- #include "sysemu/sysemu.h"
- 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index cb515730c5..992617fd3a 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -26,7 +26,7 @@
- #include "hw/sysbus.h"
- #include "sysemu/sysemu.h"
- #include "qemu/log.h"
--#include "include/qemu/error-report.h"
-+#include "qemu/error-report.h"
- #include "exec/address-spaces.h"
- 
- #include "hw/ssi/aspeed_smc.h"
+diff --git a/numa.c b/numa.c
+index 7151b24d1c..20bdb5a4b1 100644
+--- a/numa.c
++++ b/numa.c
+@@ -29,7 +29,6 @@
+ #include "qemu/bitmap.h"
+ #include "qom/cpu.h"
+ #include "qemu/error-report.h"
+-#include "include/exec/cpu-common.h" /* for RAM_ADDR_FMT */
+ #include "qapi-visit.h"
+ #include "qapi/opts-visitor.h"
+ #include "hw/boards.h"
 -- 
 2.15.1
 
