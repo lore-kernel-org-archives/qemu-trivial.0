@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgoX-000826-5W
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:37:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38461)
+	id 1ePgv1-0005vS-LX
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:44:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42441)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgoV-0007vH-8O
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:37:32 -0500
+	id 1ePguy-0005t0-HG
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:44:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgoU-0005yl-6p
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:37:31 -0500
-Received: from mail-it0-x242.google.com ([2607:f8b0:4001:c0b::242]:39198)
+	id 1ePgut-0005S6-MA
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:44:12 -0500
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:36076)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgoR-0005t6-S3; Thu, 14 Dec 2017 22:37:27 -0500
-Received: by mail-it0-x242.google.com with SMTP id 68so15914473ite.4;
-	Thu, 14 Dec 2017 19:37:27 -0800 (PST)
+	id 1ePgur-0005Q5-H2; Thu, 14 Dec 2017 22:44:05 -0500
+Received: by mail-qt0-x244.google.com with SMTP id a16so10641528qtj.3;
+	Thu, 14 Dec 2017 19:44:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=SvvvDtMSVmv45XfKMl1Wo2I/k0frRieH6XrrFbBdkcg=;
-	b=Tyvj2gLiw7Sy2TMUQb+iH3tsDTL7U5JWTSJQtrFWpZfEan/W75MiefqpxZr7DWDlre
-	TbT5a44y75FnodxooUBf0E3eh19gpL/s2sOyQh3yGk3VFtTkPU6+2QLXEtShjcg9u6Gm
-	UUVbYgdPLqo9+hNqOs1AyOP/XTZ0znqhaW3HDLEFLb10kMFSJvE+zxS707npoQiaemtM
-	xkugpwdt+utqdk42D45rw5J7vGoyJ1vtXkyuu96OwkTtSF38QeiQe/XhQ7BO7CyCFLKZ
-	oyXgr8nqEd0O6YiJHM5UaSAQj1pf2v5T5UnVYmrzaBVxhrkNH8KRl7Jo8qYf83js7MuM
-	VUYA==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=/RRxTZobcO21pHtK/RmOxTQ5gbnzDHAhadLyYEkQw34=;
+	b=ajlSgMhaqPy0KoW3m9H+kBYv8teYUevHCvJ2C4YifQXjJcrNcd3eWoSjcpNINSQ6Tz
+	KZBRG+1ZdQvoEKasjEvYzzKV+nKbJNRmM46P/W5U3EKFLsibN5yZxSlZ9rXURv/gtH/v
+	KFnpADF9UP1VGVCWky1/9k2dhX86CUHJfGlyZGbp0HSkGTdT4OQpdmRCzNoaVCqJ++KK
+	7J9LIs0jmzpgUE+HZwZkgWJLUkA2sriT9U45E5flyz2T95VqGbb1cHo92j16aqbkRrbW
+	lfN1B9Ap1uC3ErXGcCaBDZ5WuPp4J4xKdqvvxr+o2U7WbqVyE3nHemQ3HZ+BT/+egVku
+	7I2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=SvvvDtMSVmv45XfKMl1Wo2I/k0frRieH6XrrFbBdkcg=;
-	b=eVQbhVZ3hrroi9hTuKiq5362VIWXkl4LnwsUJIl443H7mvLXxK85X+x7WUuNDnIwoT
-	GAss++8yguIihm0J+tU8VX2Gkdk/LWpDeHb3fcQYAG+i+8WyRTuxG3z4U9T8RDNctpfE
-	DvZw+VpNL8NzVptp04MtcJbHeXv3xbq5q9inzrUT/SF6JVN6JDNRpLRjZRzVihBIU9E3
-	6eqbkHbxc0a7ndQn48Sx9lVxrv/7jVo9S3jCzcEHsfhFsCmCwUXbsHuJjF0obK9x/cZq
-	UavXQ7DDioyJaaVGfmSwCDqsMWDfCkxQsHUZlnd+uO43PPFHWsqqp6jnA1TUBDdSbeHC
-	Adig==
-X-Gm-Message-State: AKGB3mJhcIiFgmtJ21cD48MCfw74Ze/cyxCWp839qAiqFA9cHEEt/0tW
-	kt6rZaaha8AO0EUE1oigb+mTVbvjNBEbO+T7Myk=
-X-Google-Smtp-Source: ACJfBoseiAJ49TTqqRL7T9JaBpJwek90Rl2oWkB1Ic7DRNg88/Ik8K8nTYR5DXeMvJ0V6HNLbYkWxmYWL1pLpboRovw=
-X-Received: by 10.107.174.222 with SMTP id n91mr9772052ioo.43.1513309047106;
-	Thu, 14 Dec 2017 19:37:27 -0800 (PST)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=/RRxTZobcO21pHtK/RmOxTQ5gbnzDHAhadLyYEkQw34=;
+	b=NNABtljOLVK9dl2k9XYiGugZ9kDD+1nBgk0w8jEJWeeLiEHxWsXyuklSBkJrlqwkVc
+	egAwZWAENPu7q3shVZBOINIzI2ffoY+euOkTVTLfIkuEhjIrVP8BtbkzPGmti1tG84Xv
+	JTKwA1Dh7kwMJoeUYUnXb4gI2jifUaQ8ZpkuHBbWuizFR7+zScySfS7j6pBjmqOKJWpt
+	uzxRODjiH3aWcgPHJVJVLslhPtcYbD5xMAkvBaoqSjsykMUlZ8o4PusEsOpLYB4eR0EA
+	Zj75UAy/2xw2pbWL+SMJj+CdDCBCPJ8vPMTrJQZZhpNktYK6TUPg3bg8ibp32e6K1Yol
+	3vug==
+X-Gm-Message-State: AKGB3mIdBXVGCY9n7E2YQk3iKyYqhCyf3mgLyAjR1p4Ozs7g/BMbMi2C
+	bgelvxIM1sd2ybc0dyCxvaA=
+X-Google-Smtp-Source: ACJfBougyvdJpdqmA7G/Il/HUrEKR6IxNw9I8zX0pBVKN0VJaVFXX/FKMfUlm6RLq/ZYSrdGFKO6wQ==
+X-Received: by 10.200.44.243 with SMTP id 48mr18658645qtx.99.1513309444908;
+	Thu, 14 Dec 2017 19:44:04 -0800 (PST)
+Received: from x1.local ([181.91.222.165])
+	by smtp.gmail.com with ESMTPSA id n3sm3543633qte.14.2017.12.14.19.44.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 14 Dec 2017 19:44:04 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Dec 2017 00:43:54 -0300
+Message-Id: <20171215034356.4449-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
 MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 10.2.183.19 with HTTP; Thu, 14 Dec 2017 19:37:26 -0800 (PST)
-In-Reply-To: <20171215033015.738-43-f4bug@amsat.org>
-References: <20171215033015.738-1-f4bug@amsat.org>
-	<20171215033015.738-43-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Fri, 15 Dec 2017 00:37:26 -0300
-X-Google-Sender-Auth: hAt2Ztmtho-z0j3vcgkeKT11kz0
-Message-ID: <CAAdtpL4tJ3Q4iyTV9=ezb=VjisF9SAV9+uJXRU4cqGSMz2_sZQ@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::242
-Subject: Re: [Qemu-trivial] [PATCH v4 42/43] hw/i386/vmport: replace
- fprintf() by trace events
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH v5 0/2] remove i386/pc dependency from non-PC
+ world (part 1) fix
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,82 +77,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:37:32 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:44:13 -0000
 
-Oops I sent the wrong file :(
+Fix patch 42 from previous series (v4) so patchew can build, and if a maintainer
+is willing to take the previous series with the last 2 patches, I don't need to
+respam a v6.
 
-On Fri, Dec 15, 2017 at 12:30 AM, Philippe Mathieu-Daud=C3=A9
-<f4bug@amsat.org> wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/i386/vmport.c     | 8 +++-----
->  hw/i386/trace-events | 4 ++++
->  2 files changed, 7 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/i386/vmport.c b/hw/i386/vmport.c
-> index eb880c6def..b5585a009a 100644
-> --- a/hw/i386/vmport.c
-> +++ b/hw/i386/vmport.c
-> @@ -27,8 +27,7 @@
->  #include "hw/i386/pc.h"
->  #include "sysemu/hw_accel.h"
->  #include "hw/qdev.h"
-> -
-> -/* #define VMPORT_DEBUG */
-> +#include "trace.h"
->
->  #define VMPORT_CMD_GETVERSION 0x0a
->  #define VMPORT_CMD_GETRAMSIZE 0x14
-> @@ -54,6 +53,7 @@ void vmport_register(unsigned char command, VMPortReadF=
-unc *func, void *opaque)
->          return;
->      }
->
-> +    trace_vmport_register(command, func, opaque);
->      port_state->func[command] =3D func;
->      port_state->opaque[command] =3D opaque;
->  }
-> @@ -80,9 +80,7 @@ static uint64_t vmport_ioport_read(void *opaque, hwaddr=
- addr,
->          return eax;
->      }
->      if (!s->func[command]) {
-> -#ifdef VMPORT_DEBUG
-> -        fprintf(stderr, "vmport: unknown command %x\n", command);
-> -#endif
-> +        trace_vmport_ioport_read_unknown_command(command, addr);
->          return eax;
->      }
->
-> diff --git a/hw/i386/trace-events b/hw/i386/trace-events
-> index d43b4b6cd3..f0522ea5e5 100644
-> --- a/hw/i386/trace-events
-> +++ b/hw/i386/trace-events
-> @@ -113,3 +113,7 @@ amdvi_mode_invalid(uint8_t level, uint64_t addr)"erro=
-r: translation level 0x%"PR
->  amdvi_page_fault(uint64_t addr) "error: page fault accessing guest physi=
-cal address 0x%"PRIx64
->  amdvi_iotlb_hit(uint8_t bus, uint8_t slot, uint8_t func, uint64_t addr, =
-uint64_t txaddr) "hit iotlb devid %02x:%02x.%x gpa 0x%"PRIx64" hpa 0x%"PRIx=
-64
->  amdvi_translation_result(uint8_t bus, uint8_t slot, uint8_t func, uint64=
-_t addr, uint64_t txaddr) "devid: %02x:%02x.%x gpa 0x%"PRIx64" hpa 0x%"PRIx=
-64
-> +
-> +# hw/i386/vmport.c
-> +vmport_register(unsigned char command, void *func, void *opaque) "comman=
-d: 0x%02x func: %p opaque: %p"
-> +vmport_ioport_read_unknown_command(unsigned char command, hwaddr addr) "=
-unknown command: 0x%02x addr: 0x" HWADDR_PRIx
+Regards,
 
-a '%' is missing here: 0x%" HWADDR_PRIx
+Phil.
 
--vmport_ioport_read_unknown_command(unsigned char command, hwaddr
-addr) "unknown command: 0x%02x addr: 0x" HWADDR_PRIx
-+vmport_ioport_read_unknown_command(unsigned char command, hwaddr
-addr) "unknown command: 0x%02x addr: 0x%" HWADDR_PRIx
+Based-on: 20171215033015.738-42-f4bug@amsat.org
+          (remove i386/pc dependency from non-PC world v4)
 
-> --
-> 2.15.1
->
+Philippe Mathieu-Daudé (2):
+  hw/i386/vmport: replace fprintf() by trace events
+  misc: drop old i386 dependency
+
+ hw/char/debugcon.c      | 1 -
+ hw/i386/vmport.c        | 8 +++-----
+ hw/intc/lm32_pic.c      | 1 -
+ hw/moxie/moxiesim.c     | 1 -
+ hw/sparc/sun4m.c        | 1 -
+ hw/watchdog/wdt_ib700.c | 1 -
+ hw/i386/trace-events    | 4 ++++
+ 7 files changed, 7 insertions(+), 10 deletions(-)
+
+-- 
+2.15.1
+
 
