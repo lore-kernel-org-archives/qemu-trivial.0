@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgjH-0002tq-Cd
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:32:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34877)
+	id 1ePgjK-0002xX-UJ
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:32:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35002)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjD-0002qv-3n
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:05 -0500
+	id 1ePgjI-0002vB-Ob
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjB-0005Vn-RE
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:03 -0500
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:40413)
+	id 1ePgjF-0005bM-LE
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:08 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35420)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgj9-0005SM-C1; Thu, 14 Dec 2017 22:31:59 -0500
-Received: by mail-qt0-x241.google.com with SMTP id u42so10582547qte.7;
-	Thu, 14 Dec 2017 19:31:59 -0800 (PST)
+	id 1ePgjC-0005Wl-FI; Thu, 14 Dec 2017 22:32:02 -0500
+Received: by mail-qt0-x242.google.com with SMTP id u10so10619516qtg.2;
+	Thu, 14 Dec 2017 19:32:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Kl2VcQk5Hk+K5B8fm8pC5SfjU8DAEJBGZukO8Z7pTPw=;
-	b=TKXGlPLxWdKTURr2cQ/DLAbJeqnzMu+oM7TQVK1IK6j9KCmZzEZUICpmXkhIoa2GWT
-	L3u0Cpgn82ZGEjYB7++M6s3p0voW26Ed/Efc6+uyn5Q/0jyEsfszgVgd4fNu/rOc50+1
-	brBaZeiMBR8SaF94DXtovDZtFtseH5SGXBUc6QHxvj9LSGnr2pKv3sdlM7X0ZJFqCGda
-	edwBx/K89b896E7/5SxF092yGF/p1r4lWRi5yuFCkzWru543bk+c+LFdxwL33zl7Ft3C
-	H3Nb8G4E82OgCky2GJc0qRwXKsCtmU4f+/fIwukaM+LDQzuFp+8GcsVta7l81gem5dYB
-	xxFQ==
+	bh=gIH+QVz4MaaE7W7uyjQdjkamrPdjHVMbI6qUQhSSTeg=;
+	b=Gz6apJgg4mlrwxTOUcpdMtn6/T6SGpZZP4jQNOmA1nCvgHORyB9Ewz2/giBZUTbRej
+	EU1tXqd4CoIldnC2iUB4AJdyRDTe9xAvmpLdNtMit20lHYZZyTWf1mfMZDfvpXdahIoj
+	owsVDQ76F+V5bryCKxO1au4Dhilf2u9xFRPnA5by0iqDQTAqnnk1u9rABKGIVTxUP0+2
+	JUwqdKFd3IVMw1u0fd/1s1VmEA82yeu3F/n2feMEnBihspLNLe7u74f6vTwj1gyKPMt3
+	hYKsSRpeoyfjHn8G7Al2SEE3zi6gkjzCJwgGV4OLrqVj+efqdnytfXnBlbhPBCnFBRsF
+	ceGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Kl2VcQk5Hk+K5B8fm8pC5SfjU8DAEJBGZukO8Z7pTPw=;
-	b=rUlKQiZ5vrNeiOIPK6G8pnCfHKzext5FNl+hdXsp7zf40M4J6Km0QRX9C+synfwDHA
-	4XRG8urluSqQYg4/iuh/6cpdOhck4ojLcT+ikVRJrU5BTiLm0FrnkCqe/J8kqIWJTJbM
-	+0gjwBuV/+NMc9XryAXbFYh+xagbVy2u4My/U3SibJe2DZpZXCODNt5NlBNRtpczfar+
-	/ViIL/g1ATlyaJgOEVuUgzjJsxA6MML6JgE5pm0VJ5OmTPyuef0qCT358C4kC0OgJKW+
-	p6hZuN2JtUewRwyB79ECcB5W7EB/MicsjrjNJbaIBJa3cqaWoclNts0UpVjIUQEj3jtq
-	Uq8w==
-X-Gm-Message-State: AKGB3mJG2wWG+zqI+nfkO+yQYBfyRUJ2AfED3UxoefTKQyNeiFeAeXjE
-	if7McN+WR7UeE3m+vWwgg9sqLi3bW0Q=
-X-Google-Smtp-Source: ACJfBovyaxpOUTWkSb8B934s+l8jqdmcog6NcPf0ZJXjpLbhPoB9GTFuVcltSwqTNyeqCXOpVLLIJA==
-X-Received: by 10.200.55.75 with SMTP id p11mr19762402qtb.298.1513308718848;
-	Thu, 14 Dec 2017 19:31:58 -0800 (PST)
+	bh=gIH+QVz4MaaE7W7uyjQdjkamrPdjHVMbI6qUQhSSTeg=;
+	b=Hgd2Nbo7Wa8BOnvuyo6GQPm0pt/6iEolljdZFeDwmxjP3kpL6dose6viiu8BwQoivs
+	J/4ziktYbnzl4Sf8oJ3upl9mghVj+jSHWapcgr4pAHtHfrE27383RBB65pqHe6i/Wolt
+	XAt8q9kLcy7eexLLI2BKrfe9MVZQYwUQl3KY5FNuy+LOutE8X2I52gHH8r+BQDbRzwcq
+	Q2WO7KgWjaWdKJcUS7yxd6IYK2DCjw3EmtAbjo3zm8lfC71zCTpzNy/acj5XN+pjsNlo
+	GzQpP0LtjMh0+u/h3Z2YkflpoMgj6X/Nh7tSxWA+pMpyfj1DHNTFvwAQE/wMspIFIRc/
+	+jrA==
+X-Gm-Message-State: AKGB3mLd6Ne6BNGpJr5SLMljBEsApIGoHSX4shUj4qdOZpAFzW4RumbI
+	j52S1Wko1JOLjkYYp+9D5lI=
+X-Google-Smtp-Source: ACJfBosR8e4W2ogt9ISXtjTD45zeIqywiddCeYD1PXA+8lCterb5Sc7AZ6AB436J/kClC7g6WyiUiQ==
+X-Received: by 10.200.57.40 with SMTP id s37mr21011652qtb.41.1513308722007;
+	Thu, 14 Dec 2017 19:32:02 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.31.55
+	q24sm3794605qkq.63.2017.12.14.19.31.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:31:58 -0800 (PST)
+	Thu, 14 Dec 2017 19:32:01 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,10 +54,9 @@ To: "Michael S. Tsirkin" <mst@redhat.com>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	John Snow <jsnow@redhat.com>, qemu-block@nongnu.org (open list:IDE)
-Date: Fri, 15 Dec 2017 00:29:57 -0300
-Message-Id: <20171215033015.738-26-f4bug@amsat.org>
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Dec 2017 00:29:58 -0300
+Message-Id: <20171215033015.738-27-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -66,8 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v4 25/43] hw/ide: remove old i386 dependency
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v4 26/43] hw/ipmi: remove old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,148 +78,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:32:05 -0000
-
-and remove a duplicated include
+X-List-Received-Date: Fri, 15 Dec 2017 03:32:09 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Tested-by: Corey Minyard <cminyard@mvista.com>
 ---
- hw/ide/ahci.c       | 1 -
- hw/ide/cmd646.c     | 1 -
- hw/ide/core.c       | 3 +--
- hw/ide/ich.c        | 1 -
- hw/ide/isa.c        | 1 -
- hw/ide/microdrive.c | 1 -
- hw/ide/pci.c        | 1 -
- hw/ide/piix.c       | 2 +-
- hw/ide/via.c        | 1 -
- 9 files changed, 2 insertions(+), 10 deletions(-)
+ hw/ipmi/isa_ipmi_bt.c  | 1 -
+ hw/ipmi/isa_ipmi_kcs.c | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-index 373311f91a..451b18b419 100644
---- a/hw/ide/ahci.c
-+++ b/hw/ide/ahci.c
-@@ -24,7 +24,6 @@
- #include "qemu/osdep.h"
+diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
+index 2fcc3d2e7c..e098fd5206 100644
+--- a/hw/ipmi/isa_ipmi_bt.c
++++ b/hw/ipmi/isa_ipmi_bt.c
+@@ -26,7 +26,6 @@
  #include "hw/hw.h"
- #include "hw/pci/msi.h"
+ #include "hw/ipmi/ipmi.h"
+ #include "hw/isa/isa.h"
 -#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
  
- #include "qemu/error-report.h"
-diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
-index 86b2a8f504..65aff518ec 100644
---- a/hw/ide/cmd646.c
-+++ b/hw/ide/cmd646.c
-@@ -24,7 +24,6 @@
-  */
- #include "qemu/osdep.h"
+ /* Control register */
+ #define IPMI_BT_CLR_WR_BIT         0
+diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
+index 80444977a0..689587b65d 100644
+--- a/hw/ipmi/isa_ipmi_kcs.c
++++ b/hw/ipmi/isa_ipmi_kcs.c
+@@ -26,7 +26,6 @@
  #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
+ #include "hw/ipmi/ipmi.h"
  #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
-diff --git a/hw/ide/core.c b/hw/ide/core.c
-index 471d0c928b..1ea5812b7e 100644
---- a/hw/ide/core.c
-+++ b/hw/ide/core.c
-@@ -24,17 +24,16 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
 -#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
- #include "qemu/error-report.h"
- #include "qemu/timer.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/blockdev.h"
- #include "sysemu/dma.h"
- #include "hw/block/block.h"
- #include "sysemu/block-backend.h"
- #include "qemu/cutils.h"
--#include "qemu/error-report.h"
  
- #include "hw/ide/internal.h"
- #include "trace.h"
-diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-index 8dd0ced6b3..c01b24ecbe 100644
---- a/hw/ide/ich.c
-+++ b/hw/ide/ich.c
-@@ -63,7 +63,6 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/pci/msi.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
-diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-index 40213d662c..9fb24fc92b 100644
---- a/hw/ide/isa.c
-+++ b/hw/ide/isa.c
-@@ -24,7 +24,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/dma.h"
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-index 17917c0b30..fde4d4645e 100644
---- a/hw/ide/microdrive.c
-+++ b/hw/ide/microdrive.c
-@@ -24,7 +24,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/pcmcia.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/dma.h"
-diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-index 25f1d36f3a..1ab0a892d0 100644
---- a/hw/ide/pci.c
-+++ b/hw/ide/pci.c
-@@ -24,7 +24,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index dfb21f65fa..a3afe1fd29 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -25,11 +25,11 @@
- 
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/blockdev.h"
- #include "sysemu/dma.h"
- 
- #include "hw/ide/pci.h"
-diff --git a/hw/ide/via.c b/hw/ide/via.c
-index 35c3059325..117ac4d95e 100644
---- a/hw/ide/via.c
-+++ b/hw/ide/via.c
-@@ -25,7 +25,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
+ #define IPMI_KCS_OBF_BIT        0
+ #define IPMI_KCS_IBF_BIT        1
 -- 
 2.15.1
 
