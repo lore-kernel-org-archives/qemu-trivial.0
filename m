@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgif-0002Jh-6a
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34185)
+	id 1ePgik-0002Q2-8G
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:31:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34360)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgic-0002GK-9r
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:27 -0500
+	id 1ePgii-0002NI-4r
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgib-0004dA-5j
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:26 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:43808)
+	id 1ePgih-0004pt-Dh
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:31:32 -0500
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:42476)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgiY-0004We-VL; Thu, 14 Dec 2017 22:31:23 -0500
-Received: by mail-qk0-x241.google.com with SMTP id j207so8863648qke.10;
-	Thu, 14 Dec 2017 19:31:22 -0800 (PST)
+	id 1ePgid-0004gy-5N; Thu, 14 Dec 2017 22:31:27 -0500
+Received: by mail-qk0-x244.google.com with SMTP id a193so158950qkc.9;
+	Thu, 14 Dec 2017 19:31:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ud2cfL6BDP/tdlluUdEjOU/Dj1d9b1xVKOh72vNyZ1I=;
-	b=obgN4ypQxlNdfgemESlIWekNL/oiQ8+Fv6k2sGobHZa09Czv0fytZzqhIUlFR6rgHo
-	vDSpwjDJBEY57RyuVnRe/FIIL/SoTPYOftx5xwfB4B1lWQ+8YhXwN08VebdC1d4ZKrxI
-	+xUxNg9DgF2Njr5rv9+i+Xmo0R6XlP4k1WIzi303XMmC7BrvgxnFsk3djRcJcKriBkat
-	Yj+zvkvDy4UcIlE5oJzHnq3pc0n+S9JKLQ6hwmRb2gelfQSWK3NUUcKE7efNQIXjGM7p
-	ygAfdWkkayZ6zObGo1F5kH5EH4g4koOcOI7qQ/Jzu8A9PVlsxvZOBOl9Muy0BLa2HZC5
-	WmYg==
+	bh=ee2+P/ohJHk81s7UreqToLgpc0sPfiU6+exQo1cBF4g=;
+	b=QfCTOulZHdRmQI5JMZj9Lz7uNn3g7cL9sg+sI7A3iwW2Ii/kGjvm9m0BOG0LgIQbFz
+	SOJ8YRfvgMpBEfkxpyGXmPqaQeWBIjZ6E3CRzN7k3V1IpdU4lge7EJYzIBNQ+WASdx2W
+	uogjc2LjyyJjtlazpwp9ecWWSpHESG3xJmUgOHZqrQXgpkKF09uVZRnsLii2tMzuMBfb
+	DIJPouobxIrL0NUYQM/5fbGJ2q9UMNaqjVDrbN+JboXRzqYgs0MpY9+zSr7e1n6HgYvy
+	Y2aC+cKqk7dMoIRh77S0hUparXJrNYVIqouDrKpicdTAW6qmei4/pTHdaLTmsBCr/Mhb
+	gAWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ud2cfL6BDP/tdlluUdEjOU/Dj1d9b1xVKOh72vNyZ1I=;
-	b=EWyDOXHiz39Qdi2BJnv+84i9yQXKN25eNArmREKD0iCEhh5eocqz8KitF2kgLBOxFy
-	tLZ9swF0e0lmmsF8ZiNZgqw/pcrAgKdoa8PCdsj2mNdNnDo5JvXGo+KbOHiBhnaHTuFG
-	I3Mq2a41+1sU6iEzXdw7YodzfhyCJjnBrkYGnJREihg8/po4Lka/XNk6YoJOqlPqecU2
-	qwm4Mq44IMf43UP38WMKMWMMOD8Yr9bvaTVnQDVySMKmF93wwz04BbBdrnnie51+sG/5
-	q2MJMP7uT+ArWP8J9K0t7kMLofS1Tj51/OI9PSTzbgrFnoNc4/54pBOSHkIW2DVbzVDB
-	C8Vw==
-X-Gm-Message-State: AKGB3mKxC0u4k/eO7Kr0M+XEX9MR/2+Va6MwcN69scrw+85OQbsTYZV9
-	KZgYIGvDgXMGj9unH0doy9c=
-X-Google-Smtp-Source: ACJfBosRJ0STErERc94Li5wwUFBrHMevg3w7Zn96RGaGxpvZ+pveJUdTzoh5UiiZWOhgp45FQS20gA==
-X-Received: by 10.55.181.66 with SMTP id e63mr19275432qkf.130.1513308682496;
-	Thu, 14 Dec 2017 19:31:22 -0800 (PST)
+	bh=ee2+P/ohJHk81s7UreqToLgpc0sPfiU6+exQo1cBF4g=;
+	b=dnbDAd4Szy9xjSTUQsqZxMMlk/6dr2CGIdaqWA1rxdCO9wHF+6HBjGPV2xLuJvULxF
+	9Ie2zTMcGC0GasOatlNrO+yIqxvtpcbTIs8kqB4ze5haTjFr1QqM9lxzuT/cYA58aO1x
+	2yLlrv/QvT5B6BMM56L8jA0V5Xyph9bFtqY/03Ckp3HxHJUSStdElKxd7/SL/T4k/wJA
+	tiFJ8kgRMkboZ+94BHAczBpRfmNEZgOg8clE3GpyxAdHMk+HPvxvcyAKsjB4XKycvZH1
+	QSVXPFmyDZtjFZWfju5eyU/YH3zBy5Blx80tInFTUFcRxmVu3YPSwNtfhO9DEkcxHYHs
+	YSrA==
+X-Gm-Message-State: AKGB3mIUnjXiQlF2R8NZd+Uqe3F0nD2Z+9NpGxOjI4WFi9ro2nz5y45m
+	NCnOhXAFZVxXt80aB61L4yg=
+X-Google-Smtp-Source: ACJfBovrHCqrHA9WPQO9Bm13qSgYikb/h0XVx5xSsDt1af2ZB6SuKz97XTslyLEfLc7fqRt6bNcfjg==
+X-Received: by 10.55.97.135 with SMTP id v129mr18077468qkb.305.1513308686725; 
+	Thu, 14 Dec 2017 19:31:26 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.31.19
+	q24sm3794605qkq.63.2017.12.14.19.31.22
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:31:22 -0800 (PST)
+	Thu, 14 Dec 2017 19:31:25 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -56,8 +56,8 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
 	Richard Henderson <rth@twiddle.net>
-Date: Fri, 15 Dec 2017 00:29:47 -0300
-Message-Id: <20171215033015.738-16-f4bug@amsat.org>
+Date: Fri, 15 Dec 2017 00:29:48 -0300
+Message-Id: <20171215033015.738-17-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -66,8 +66,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH v4 15/43] i386/hax: remove duplicated includes
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH v4 16/43] i386/hax: remove duplicated include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,78 +79,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:31:27 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:31:33 -0000
 
-applied using ./scripts/clean-includes
+this file in include in "target/i386/hax-i386.h":
 
+    #ifdef CONFIG_WIN32
+    #include "target/i386/hax-windows.h"
+    #endif
+
+which guaranties that sysemu/os-win32.h is previously included (CONFIG_WIN32)
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/sysemu/hax.h      | 1 -
- target/i386/hax-darwin.h  | 3 ---
- target/i386/hax-windows.h | 2 --
- target/i386/hax-darwin.c  | 6 +-----
- 4 files changed, 1 insertion(+), 11 deletions(-)
+ target/i386/hax-windows.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/include/sysemu/hax.h b/include/sysemu/hax.h
-index 232a68ab1b..f252399623 100644
---- a/include/sysemu/hax.h
-+++ b/include/sysemu/hax.h
-@@ -22,7 +22,6 @@
- #ifndef QEMU_HAX_H
- #define QEMU_HAX_H
- 
--#include "config-host.h"
- #include "qemu-common.h"
- 
- int hax_sync_vcpus(void);
-diff --git a/target/i386/hax-darwin.h b/target/i386/hax-darwin.h
-index 0c0968b77d..fb8e25a096 100644
---- a/target/i386/hax-darwin.h
-+++ b/target/i386/hax-darwin.h
-@@ -15,10 +15,7 @@
- #ifndef TARGET_I386_HAX_DARWIN_H
- #define TARGET_I386_HAX_DARWIN_H
- 
--#include <sys/types.h>
- #include <sys/ioctl.h>
--#include <sys/mman.h>
--#include <stdarg.h>
- 
- #define HAX_INVALID_FD  (-1)
- static inline int hax_invalid_fd(hax_fd fd)
 diff --git a/target/i386/hax-windows.h b/target/i386/hax-windows.h
-index 1d8f68de91..f7c3e99246 100644
+index f7c3e99246..004f867694 100644
 --- a/target/i386/hax-windows.h
 +++ b/target/i386/hax-windows.h
-@@ -24,8 +24,6 @@
+@@ -20,7 +20,6 @@
+ #ifndef TARGET_I386_HAX_WINDOWS_H
+ #define TARGET_I386_HAX_WINDOWS_H
+ 
+-#include <windows.h>
  #include <memory.h>
  #include <malloc.h>
  #include <winioctl.h>
--#include <string.h>
--#include <stdio.h>
- #include <windef.h>
- 
- #define HAX_INVALID_FD INVALID_HANDLE_VALUE
-diff --git a/target/i386/hax-darwin.c b/target/i386/hax-darwin.c
-index 1c5bbd0a2d..ee9417454c 100644
---- a/target/i386/hax-darwin.c
-+++ b/target/i386/hax-darwin.c
-@@ -11,13 +11,9 @@
-  */
- 
- /* HAX module interface - darwin version */
--#include <sys/types.h>
--#include <sys/stat.h>
--#include <fcntl.h>
--#include <errno.h>
-+#include "qemu/osdep.h"
- #include <sys/ioctl.h>
- 
--#include "qemu/osdep.h"
- #include "target/i386/hax-i386.h"
- 
- hax_fd hax_mod_open(void)
 -- 
 2.15.1
 
