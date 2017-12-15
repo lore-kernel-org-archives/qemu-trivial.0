@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePght-0001c7-PV
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:30:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33329)
+	id 1ePghx-0001eP-0H
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:30:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33386)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePghq-0001Yf-4Y
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:39 -0500
+	id 1ePghs-0001b5-SW
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePghp-0003Cb-Aw
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:38 -0500
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:46818)
+	id 1ePghs-0003JJ-2F
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:40 -0500
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:41154)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePghl-00030l-N6; Thu, 14 Dec 2017 22:30:33 -0500
-Received: by mail-qk0-x243.google.com with SMTP id b184so8877569qkc.13;
-	Thu, 14 Dec 2017 19:30:33 -0800 (PST)
+	id 1ePghp-0003BY-Bw; Thu, 14 Dec 2017 22:30:37 -0500
+Received: by mail-qk0-x242.google.com with SMTP id r184so1184059qke.8;
+	Thu, 14 Dec 2017 19:30:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=g3GbvBlD7/fDLjwTioFswSOZyl5iBvnB5etQn30JqMg=;
-	b=U27lJ6J1cv+o4PaOYWVMrmvQ+DfuRSHO64UPlzVuK3pSny36QmaqCz3B+qAyF43/1a
-	mw4iMpzsd5UymOKSYfUnusGXNPZXWmoXQPqhriDv/MsJsikg0TkEu/b/2EXxbA5jyk3O
-	hxaCrMd2tMJiyBcw6MesxgGPBVnjPXeY7pWoIlfNyT1ussBNLdzvzYA/sgGj4VjsBI7X
-	W/ueWeR8x30lRvdtL46Xu03iTKr9/wzXwUQ6DYh3PiqMB/N0csfhg4M/W3bNOiSvH4QD
-	Bey5gixkn5YfAHUDi2R580ErSYt296AqCIsRg9HoFOOWsG703aO6A+jg6V0w8YHsNNCc
-	LMpw==
+	bh=dyEYGRrQDvUL+p5hOO+BEkk2Iv/ddRidl4P8N6IWAyU=;
+	b=o3DpsCzgLwnwE5hmstwg1ivuAMlT+aoGDASAxxpHNCOW3nPQ4wwMHbITbGSN6+bRy/
+	DKTuw89ZW8X2BknrhCLrOdaU4RGs7YFmuLIAlqZKIuWdVRciAxZ9U3aLSdn6YxN+OtiW
+	pNE7HuiBiQZGCWEZyR/7Bg8mQDhumNW3bUVs2u2d4TVCC3k1ffjWXj02AgAuGU1UTDFz
+	hop3QlV/57/BwGxWfmFY3/GkXXIdQe329kg0m3TZpLzERppijWmRZkFbz8M9FeZYrxcX
+	7iwyZX9xl8QTT5ZILhk4UhlvY5IWLnuhXWV/ljl2/UzPdAdnJDK3wiT34EnXc/1m5oTn
+	SMBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=g3GbvBlD7/fDLjwTioFswSOZyl5iBvnB5etQn30JqMg=;
-	b=fAmKASlsYOaNuA0A6/tdaK+TjoHhtolkJVL68eYsRCY61kH393dRvDZVtWSSVdjQD7
-	HaUshfJ+vr1KtwonEn69TiI+EVJlMPSCXUQIpvO+Jv97YVxYV2q21m5bAF8dXuGkHDsc
-	4+MgemHZoIII9G1zV5oLqR0x6ouRDnSsd2rfgcDAsg7Mwxa04i2kjtFh/O5Go/vJmrTy
-	lgBUJRM58C4v8FUxG4JBsb2DRqFQjun7cwlfrz+hNByjMVK4F289XXJT3/RO5N4To7LR
-	LVSGthX3haQb93kTCXF8Euukx66/XZUgK93wRKgghdUlUJmL2Xg/ZNAxt/XhKKnlLXf9
-	v8kw==
-X-Gm-Message-State: AKGB3mIOB2Zt4WJ+YNbN0a99h4IbgiagEAc6zZqWcmxkya9vwxsroL9o
-	OHLamDuOmi5WAnULEDFb1dw=
-X-Google-Smtp-Source: ACJfBosWkdzihS+c6l8ZiSB/kWsO1HHeFySMiXM1g9CD9q7jIvz0oHGzS17wUX9Bvn0ruTX8jsQbaQ==
-X-Received: by 10.55.152.129 with SMTP id a123mr18986143qke.142.1513308633181; 
-	Thu, 14 Dec 2017 19:30:33 -0800 (PST)
+	bh=dyEYGRrQDvUL+p5hOO+BEkk2Iv/ddRidl4P8N6IWAyU=;
+	b=C4m+nLWTZu8uilzcS1t7HftxDwjPr079meGgdanyzxuIZ8Pjaab0mIVqLkDTw8UTvg
+	0S46etHh1/2zI9eynCGDt3bT9UvdsNC3fsJOwNCOcgDN/68GYg4lQ04jzdYHCh6Tk8rK
+	dFji4iei4DyWpae9KrmlA2CdtmtGaWdGJiPryxmGXExlXCCZXw19EsdvohoC5RfB0NnF
+	MYx+JqeaGXScPXOhuIK5kwWOGuB19Ucp5zSiOxJgvmQydxIYRG+3sMiKz2id10pZGYpX
+	SfdwZXXojg5Nm+r6ZtQJk6NT1rIFmmxO15NRYNwmtqb3dc/hUD2cAOcgyiv5PJ7LEgzX
+	aoeA==
+X-Gm-Message-State: AKGB3mJZe7nCbqMLw6o5Nx6RprRjV49q68ZzR1oy0rCzjItzuo2HTAlG
+	lC9OnDLNpZCxTiBbJTdJ7pc=
+X-Google-Smtp-Source: ACJfBouVS3P0XnXJTezCrW+FKdQNsWOD5iKUOr9+8GuHmy4N9FhnVgiMVMCdg2QXRfbZHAHn2LJkZg==
+X-Received: by 10.55.64.134 with SMTP id n128mr20084984qka.23.1513308636435;
+	Thu, 14 Dec 2017 19:30:36 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.30.29
+	q24sm3794605qkq.63.2017.12.14.19.30.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:30:32 -0800 (PST)
+	Thu, 14 Dec 2017 19:30:35 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -55,8 +55,8 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
-Date: Fri, 15 Dec 2017 00:29:35 -0300
-Message-Id: <20171215033015.738-4-f4bug@amsat.org>
+Date: Fri, 15 Dec 2017 00:29:36 -0300
+Message-Id: <20171215033015.738-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -65,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH v4 03/43] MAINTAINERS: add an entry for the
- i8257 (DMA controller)
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH v4 04/43] MAINTAINERS: add an entry for the
+ i82378 (superio)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,25 +79,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:30:40 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:30:42 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
+Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
 ---
  MAINTAINERS | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index eb1646fbfe..31c673d60a 100644
+index 31c673d60a..4618f9b4db 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -877,6 +877,7 @@ F: hw/timer/hpet*
- F: hw/timer/i8254*
- F: hw/timer/mc146818rtc*
- F: include/hw/i2c/pm_smbus.h
-+F: include/hw/isa/i8257.h
- F: include/hw/timer/hpet.h
- F: include/hw/timer/i8254*
- F: include/hw/timer/mc146818rtc*
+@@ -732,6 +732,7 @@ F: hw/ppc/prep.c
+ F: hw/ppc/prep_systemio.c
+ F: hw/ppc/rs6000_mc.c
+ F: hw/pci-host/prep.[hc]
++F: hw/isa/i82378.c
+ F: hw/isa/pc87312.[hc]
+ F: hw/dma/i82374.c
+ F: pc-bios/ppc_rom.bin
 -- 
 2.15.1
 
