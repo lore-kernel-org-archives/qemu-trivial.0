@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePgjk-0003M5-2S
+	id 1ePgjk-0003Ms-H8
 	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:32:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35345)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35399)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgje-0003Fc-9a
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:31 -0500
+	id 1ePgjg-0003KD-HA
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjd-0006CV-0e
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:30 -0500
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:37574)
+	id 1ePgjf-0006GZ-Jf
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:32:32 -0500
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:34512)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePgjZ-00067T-QC; Thu, 14 Dec 2017 22:32:25 -0500
-Received: by mail-qt0-x244.google.com with SMTP id f2so10607869qtj.4;
-	Thu, 14 Dec 2017 19:32:25 -0800 (PST)
+	id 1ePgjd-0006Cs-Ak; Thu, 14 Dec 2017 22:32:29 -0500
+Received: by mail-qt0-x242.google.com with SMTP id 33so10640383qtv.1;
+	Thu, 14 Dec 2017 19:32:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=O/xy8gy9vVBCoHDOEqZtwjHG1y0hLQlY841wjutBin0=;
-	b=Fch4CFSnLSZwONiFj0Lj5sw5x9jxo/XJIyj42pZxqIcpqUaW+pPy68YS2AFu05sFOt
-	jvScTI/lk8eu6byqZAtUEMEuIWqLkEEsaADWq7FJpKEqalVwpdGFJdG407f7YTTPcID6
-	pgxbM2PvH/tf984Z+pB4txkOomiHsp7w1yyIe5AiaO4vYtuo+KAv6z5wuwGez+1JleMQ
-	58AYUPUFT5SLva/kcTZFwd/4nnUkb3ENnzpCdNEMO0Zvf5qgxwpXVSn7UP66YIfEEM9V
-	U44CazcMTMqguPB56+hjMRCECyLEeKK5zxBR/9EFTNXxfR+xtk8cj9E28t4HqqW/pqdu
-	ftqA==
+	bh=6aE4J53AQg2NMSm2wYea90LRla3zFu9AEcN6eCIJw4I=;
+	b=fFJMS+JheCTj0fOLzPMS4OVzP2lVmx4UdLC/2ltEENk7jtWd8mwlOvSqDSgbJ5Ajac
+	MVdZP/6f8erAvmNf4+gm56atOwnxf6WmV4bChxRIHgH/F2vZAvI9WqQkoB8n1GLfF9HF
+	YG9OaF6OU4QnhPfolnDGM0kgwBDScapykbAT0QQFF1DUsTddGugvp8J2p5TUGp50gDJy
+	L02kFpHtdzCRqgXSgvTP0+ISJI22h44HTd/SvQ/8HVpgB4WJ/Qv91dqonOjf3h1KNtsA
+	15AAI6wip+xZKL18VUP42Wdp+ObuSBPO8JVjcJwIgMLxqyOEy8wrENSxiI/AcyPmTJip
+	O0Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=O/xy8gy9vVBCoHDOEqZtwjHG1y0hLQlY841wjutBin0=;
-	b=cScr1Zi18y/MDGVH172qD+oDpORjdThijaCFibzA+eNCLuBPEAe9/vLB+zyveCe8D9
-	RX7jAke8wcvsqunjVClfG+lhqIRNxkVm5MMs3A/cwQu+0XSsrhkD8TANrIzBDMjiezql
-	WS7H38QRo2FYw4loNLjBE8hvPeam9BuSUwk+a2XtlQ7SC0GftZMpNhqntS5zA0jD7mnW
-	eHOuioCI5a1ahtnD1cPyQMxPsH0t2Zr4vjVcEChclCCqgRDdASCyqNslOPpaekqFnZQJ
-	KneySOhWeWiCa54ogIpqFyz1MuC4cfnoN8x8ky3dcF4l474WqPnzxMovbANHtopfKewb
-	iOjA==
-X-Gm-Message-State: AKGB3mLHe6vPMqHCZOBtT5yU3YGP6uPxFZDgwEFrWCsvkfF6GJDF0vsp
-	W4VP48z2+LoAB6sFXtPRBHA=
-X-Google-Smtp-Source: ACJfBotwNny4CfbdGHHzUekMT2En6aJI1sLRkZndSfkIqvwcQmA7PnXw/Ik3m5FqugQN4FhYjirtZg==
-X-Received: by 10.200.38.6 with SMTP id u6mr19464894qtu.1.1513308745227;
-	Thu, 14 Dec 2017 19:32:25 -0800 (PST)
+	bh=6aE4J53AQg2NMSm2wYea90LRla3zFu9AEcN6eCIJw4I=;
+	b=eomzUNogx0xxz56rA1+u0Pn82yXAFhLBUGnXI4ECZE3wqTvvMjp3txSewgnXJk+iFA
+	ITUYXiRPfkNMp1+YcjsCfNhjgVl2KLyo8GPCqbXtKitm+UsG0xPNm6J9fg1OayfsKs5d
+	ip80k5buda3UaVDiOuyF54bHLH1cc3sTPRa692OUngdE88n0fuft/1R3iVBZrFdYuVdM
+	5dL4XLEKi4x7dACWEEDo1nC0ncrlnvLvF/Wc1hCdo+KhLI3grWD28t0ryeeJyxXgF36D
+	YBRngXREmH1JQEj6jE4mQ5PmP/hCGaICjA1qhmBSPf8RlcR8qdzJBKa5bTaRMx1zJUw8
+	4YTQ==
+X-Gm-Message-State: AKGB3mKLHHv0FvR5pAo3/p2prTW6Ykct8uk9ElJAeuXvPFy1SCxEydRi
+	MU4hk5xXvPjJxEPFrODRiyZdcW+RGJk=
+X-Google-Smtp-Source: ACJfBovCp+pP8XzNE/DeU/4nJX9iXfAopOVTx8kum1gerouaQPSZTyybA7hrF246UKi8t5OWXsMeqA==
+X-Received: by 10.200.27.200 with SMTP id m8mr19260753qtk.102.1513308748853;
+	Thu, 14 Dec 2017 19:32:28 -0800 (PST)
 Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
-	q24sm3794605qkq.63.2017.12.14.19.32.20
+	q24sm3794605qkq.63.2017.12.14.19.32.25
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Dec 2017 19:32:24 -0800 (PST)
+	Thu, 14 Dec 2017 19:32:28 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -55,13 +55,9 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Yongbok Kim <yongbok.kim@mips.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
-	qemu-ppc@nongnu.org (open list:PReP)
-Date: Fri, 15 Dec 2017 00:30:04 -0300
-Message-Id: <20171215033015.738-33-f4bug@amsat.org>
+	Igor Mammedov <imammedo@redhat.com>
+Date: Fri, 15 Dec 2017 00:30:05 -0300
+Message-Id: <20171215033015.738-34-f4bug@amsat.org>
 X-Mailer: git-send-email 2.15.1
 In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
 References: <20171215033015.738-1-f4bug@amsat.org>
@@ -70,9 +66,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH v4 32/43] hw/timer/mc146818: rename
- rtc_init() -> mc146818_rtc_init()
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v4 33/43] hw/acpi: ACPI_PM_* defines are not
+ restricted to i386 arch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,163 +80,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 03:32:31 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:32:36 -0000
+
+this allows to remove the old i386/pc dependency on acpi/core.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/timer/mc146818rtc.h | 3 ++-
- hw/alpha/dp264.c               | 2 +-
- hw/i386/pc.c                   | 2 +-
- hw/isa/i82378.c                | 3 ++-
- hw/mips/mips_fulong2e.c        | 2 +-
- hw/mips/mips_jazz.c            | 2 +-
- hw/mips/mips_malta.c           | 2 +-
- hw/mips/mips_r4k.c             | 2 +-
- hw/ppc/pnv.c                   | 2 +-
- hw/timer/mc146818rtc.c         | 2 +-
- 10 files changed, 12 insertions(+), 10 deletions(-)
+ include/hw/acpi/acpi.h | 11 +++++++++++
+ include/hw/i386/pc.h   | 11 -----------
+ hw/acpi/core.c         |  1 -
+ 3 files changed, 11 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/timer/mc146818rtc.h
-index 7c8e64b203..fe6ed63f71 100644
---- a/include/hw/timer/mc146818rtc.h
-+++ b/include/hw/timer/mc146818rtc.h
-@@ -6,7 +6,8 @@
+diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+index 7b3d93cf0d..39ff512129 100644
+--- a/include/hw/acpi/acpi.h
++++ b/include/hw/acpi/acpi.h
+@@ -39,6 +39,17 @@
+ #define ACPI_PM2_REGISTER_WIDTH         8
+ #define ACPI_PM_TIMER_WIDTH             32
  
- #define TYPE_MC146818_RTC "mc146818rtc"
++/* PC-style peripherals (also used by other machines).  */
++#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
++#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
++#define ACPI_PM_PROP_S4_VAL "s4_val"
++#define ACPI_PM_PROP_SCI_INT "sci_int"
++#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
++#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
++#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
++#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
++#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
++
+ /* PM Timer ticks per second (HZ) */
+ #define PM_TIMER_FREQUENCY  3579545
  
--ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq);
-+ISADevice *mc146818_rtc_init(ISABus *bus, int base_year,
-+                             qemu_irq intercept_irq);
- void rtc_set_memory(ISADevice *dev, int addr, int val);
- int rtc_get_memory(ISADevice *dev, int addr);
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index ef438bd765..252526e600 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -151,17 +151,6 @@ struct PCMachineClass {
+ #define PC_MACHINE_CLASS(klass) \
+     OBJECT_CLASS_CHECK(PCMachineClass, (klass), TYPE_PC_MACHINE)
  
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 887a7401f1..766373eec7 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -78,7 +78,7 @@ static void clipper_init(MachineState *machine)
-                            clipper_pci_map_irq);
+-/* PC-style peripherals (also used by other machines).  */
+-
+-#define ACPI_PM_PROP_S3_DISABLED "disable_s3"
+-#define ACPI_PM_PROP_S4_DISABLED "disable_s4"
+-#define ACPI_PM_PROP_S4_VAL "s4_val"
+-#define ACPI_PM_PROP_SCI_INT "sci_int"
+-#define ACPI_PM_PROP_ACPI_ENABLE_CMD "acpi_enable_cmd"
+-#define ACPI_PM_PROP_ACPI_DISABLE_CMD "acpi_disable_cmd"
+-#define ACPI_PM_PROP_PM_IO_BASE "pm_io_base"
+-#define ACPI_PM_PROP_GPE0_BLK "gpe0_blk"
+-#define ACPI_PM_PROP_GPE0_BLK_LEN "gpe0_blk_len"
+ #define ACPI_PM_PROP_TCO_ENABLED "enable_tco"
  
-     /* Since we have an SRM-compatible PALcode, use the SRM epoch.  */
--    rtc_init(isa_bus, 1900, rtc_irq);
-+    mc146818_rtc_init(isa_bus, 1900, rtc_irq);
- 
-     i8254_pit_init(isa_bus, 0x40, 0, NULL);
-     isa_create_simple(isa_bus, "i8042");
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 6a6041573f..fe5e8b53bb 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1565,7 +1565,7 @@ void pc_basic_device_init(ISABus *isa_bus, qemu_irq *gsi,
-             rtc_irq = qdev_get_gpio_in(hpet, HPET_LEGACY_RTC_INT);
-         }
-     }
--    *rtc_state = rtc_init(isa_bus, 2000, rtc_irq);
-+    *rtc_state = mc146818_rtc_init(isa_bus, 2000, rtc_irq);
- 
-     qemu_register_boot_set(pc_boot_set, *rtc_state);
- 
-diff --git a/hw/isa/i82378.c b/hw/isa/i82378.c
-index a9c15f858d..a5d67bc6d7 100644
---- a/hw/isa/i82378.c
-+++ b/hw/isa/i82378.c
-@@ -21,6 +21,7 @@
- #include "hw/pci/pci.h"
- #include "hw/i386/pc.h"
- #include "hw/timer/i8254.h"
-+#include "hw/timer/mc146818rtc.h"
- #include "hw/audio/pcspk.h"
- 
- #define TYPE_I82378 "i82378"
-@@ -106,7 +107,7 @@ static void i82378_realize(PCIDevice *pci, Error **errp)
-     isa = isa_create_simple(isabus, "i82374");
- 
-     /* timer */
--    isa_create_simple(isabus, "mc146818rtc");
-+    isa_create_simple(isabus, TYPE_MC146818_RTC);
- }
- 
- static void i82378_init(Object *obj)
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index 2a2a09c9de..725e25a134 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -365,7 +365,7 @@ static void mips_fulong2e_init(MachineState *machine)
-     /* Super I/O */
-     isa_create_simple(isa_bus, "i8042");
- 
--    rtc_init(isa_bus, 2000, NULL);
-+    mc146818_rtc_init(isa_bus, 2000, NULL);
- 
-     serial_hds_isa_init(isa_bus, 0, MAX_SERIAL_PORTS);
-     parallel_hds_isa_init(isa_bus, 1);
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 995419344d..22a3d5169c 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -288,7 +288,7 @@ static void mips_jazz_init(MachineState *machine,
-     fdctrl_init_sysbus(qdev_get_gpio_in(rc4030, 1), -1, 0x80003000, fds);
- 
-     /* Real time clock */
--    rtc_init(isa_bus, 1980, NULL);
-+    mc146818_rtc_init(isa_bus, 1980, NULL);
-     memory_region_init_io(rtc, NULL, &rtc_ops, NULL, "rtc", 0x1000);
-     memory_region_add_subregion(address_space, 0x80004000, rtc);
- 
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 88b4733743..37f19428d6 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -1214,7 +1214,7 @@ void mips_malta_init(MachineState *machine)
-     /* Super I/O */
-     isa_create_simple(isa_bus, "i8042");
- 
--    rtc_init(isa_bus, 2000, NULL);
-+    mc146818_rtc_init(isa_bus, 2000, NULL);
-     serial_hds_isa_init(isa_bus, 0, 2);
-     parallel_hds_isa_init(isa_bus, 1);
- 
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index 58d7bac18b..9884ee7e9f 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -270,7 +270,7 @@ void mips_r4k_init(MachineState *machine)
-     i8259 = i8259_init(isa_bus, env->irq[2]);
-     isa_bus_irqs(isa_bus, i8259);
- 
--    rtc_init(isa_bus, 2000, NULL);
-+    mc146818_rtc_init(isa_bus, 2000, NULL);
- 
-     pit = i8254_pit_init(isa_bus, 0x40, 0, NULL);
- 
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index c35c439d81..94ffc8e137 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -655,7 +655,7 @@ static void ppc_powernv_init(MachineState *machine)
-     serial_hds_isa_init(pnv->isa_bus, 0, MAX_SERIAL_PORTS);
- 
-     /* Create an RTC ISA device too */
--    rtc_init(pnv->isa_bus, 2000, NULL);
-+    mc146818_rtc_init(pnv->isa_bus, 2000, NULL);
- 
-     /* OpenPOWER systems use a IPMI SEL Event message to notify the
-      * host to powerdown */
-diff --git a/hw/timer/mc146818rtc.c b/hw/timer/mc146818rtc.c
-index 7764be25ec..35a05a64cc 100644
---- a/hw/timer/mc146818rtc.c
-+++ b/hw/timer/mc146818rtc.c
-@@ -999,7 +999,7 @@ static void rtc_realizefn(DeviceState *dev, Error **errp)
-     qdev_init_gpio_out(dev, &s->irq, 1);
- }
- 
--ISADevice *rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq)
-+ISADevice *mc146818_rtc_init(ISABus *bus, int base_year, qemu_irq intercept_irq)
- {
-     DeviceState *dev;
-     ISADevice *isadev;
+ /* parallel.c */
+diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+index cd0a1d357b..eb9b76f70b 100644
+--- a/hw/acpi/core.c
++++ b/hw/acpi/core.c
+@@ -21,7 +21,6 @@
+ #include "qemu/osdep.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/hw.h"
+-#include "hw/i386/pc.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "qemu/config-file.h"
 -- 
 2.15.1
 
