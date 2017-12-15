@@ -1,78 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePfA0-0006UY-QD
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 20:51:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49235)
+	id 1ePghk-0001TT-BP
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2017 22:30:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33175)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePf9y-0006TG-Ka
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 20:51:35 -0500
+	id 1ePghi-0001P9-1o
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePf9x-00023Q-Lm
-	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 20:51:34 -0500
-Received: from mail-it0-x244.google.com ([2607:f8b0:4001:c0b::244]:43473)
+	id 1ePghh-0002mu-7b
+	for qemu-trivial@nongnu.org; Thu, 14 Dec 2017 22:30:30 -0500
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:36009)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ePf9v-0001z4-Ex; Thu, 14 Dec 2017 20:51:31 -0500
-Received: by mail-it0-x244.google.com with SMTP id u62so16018425ita.2;
-	Thu, 14 Dec 2017 17:51:31 -0800 (PST)
+	id 1ePghe-0002fL-Kk; Thu, 14 Dec 2017 22:30:26 -0500
+Received: by mail-qt0-x241.google.com with SMTP id a16so10616878qtj.3;
+	Thu, 14 Dec 2017 19:30:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=o3XrStNBZuuansXkoj10t3cnx4otsQuwa4U0Z98RlE0=;
-	b=btUeSBuUsxxRYGuAT4QY5SyCJYFot6K2kvbgdNrNRu4A0rcSCxIXAllMzQsUD3hRK6
-	51qLEgY8ViXfJbelX8ocb1+w61qLgI96/HjuKUVZRM7YzeqkmBtTAhMjuAYfoeTm2aK0
-	/9dxdAuC+2UUgJtkkhyqEmeaFjAqQRb1Ljyy7+ODivzjlmXXMHPMW3DBDbIe21zn+NJl
-	m0C+2zUomjrh7DcZs1h6AGwcIJ1qMRficp75fEtlUR+7hoTCy1+a9FJtmrdboY2FdfyF
-	ZS4L1kTeCJfIvVLG1vXF/zmhi14T3AiafCkNkUnDUrrd90HiWkX0EfPWYBQDG4HnNqZ0
-	gFUw==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=gaEL4yVs8X18wOqjRMaIsry0SAQ21QCV4RouqStulfA=;
+	b=Opthbe1w4gxS9+/8/yQdBBzqCp9tHp7ya3UM7tIOefkRr3JevqvjL0H1SvK8/Y2ORR
+	JYIwZbQDPfR5e6cFXgb/qg0hDunIK1NsKJLNRbSJ/0TuimblIEudGOdwz9ylgE1M25lC
+	WVwVumCF6SXCHCutLGoXs7xwSQHQJ4aqrOyTLRzQgaU6etQdStc2eMwA4YQrIncBbu9I
+	2S+j5SD27xogkhyMYNesv5Zrj9S0CbR/bAU3pUtQKdLIcPE5B35++pgXv0FzFoFVA16s
+	vwn6dw4r8WmSJ6BGW9WbOdZ4IhdP1TRces95MxfzQ51eBgQw8bd0uX/sBgt8YDVu+5md
+	W5aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=o3XrStNBZuuansXkoj10t3cnx4otsQuwa4U0Z98RlE0=;
-	b=nDLtBgsseG35XIk5DvC4H+cqGbJbQ9CT1JMYYu9bgfqB/HaiAz0y8s9Gt7WHDyaZuj
-	5eSwbmTcPFPaEV1KUQrCJj5L1yxhd7gvgJx3bM6gwkupE2iKyWCTfFqxeRrEFo94GB68
-	UOxHhnNRa8SmInLKdVmOuPki+gYWHUKXSs9gJkNzvTqHA2XI+k6f0U6Q5oka3dDJIziC
-	3C2JYNh8z53u8sgssEYM2673FXXEkCwp2HfJPac8/2CfJvtjrUHABH6XTgWJQVwyS+yK
-	oqlODr0SmnTUnaZDTPW644FFC8H32PAXNlMuDAwXSKK1wWt3qozk/FXhsHXMEXWGNKD+
-	8J3Q==
-X-Gm-Message-State: AKGB3mLpUb4mE9h/8g5Q1ATQSdgbYZrs1A5+k4RG3cNRg5FHTqMpi3Yo
-	aujB6U5YDksG/508kF0l7K3YWlbuvwcZLZ8EGzM=
-X-Google-Smtp-Source: ACJfBou7DDbrc/2aqJVQSP1mUeGyFYWfTOOHk7cd+QJ76lUeGFA3SwpBo6H+AHdtC68NFuXyYdh57tmY2gLy4WHJTaE=
-X-Received: by 10.36.70.195 with SMTP id j186mr1563883itb.32.1513302690384;
-	Thu, 14 Dec 2017 17:51:30 -0800 (PST)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=gaEL4yVs8X18wOqjRMaIsry0SAQ21QCV4RouqStulfA=;
+	b=TztNinWY3N8M8UHJVHpvV++EBarIiFirXnx+zfFMcIYgJJiASCjHrVSW75PX3SAtFS
+	FtOPNw8njjvewxE8tPOP+b3tAIKO1L/MY9Y/9MxpdvzeH1Lo2ysnwuBsYFNfatmf6hYW
+	yf/4QjOMvOZAKtYoqEqv8h9c3fChK36U1Ni8VNzm2Pq7Z8UnEfyzXCMLZ/Eu2/Ttf2ay
+	3UMjCaY4V+3XBDXl/EQHa1nhzapBDoFgHeUl07njn/qfTkUqL6yVnPGFvkT8QGoZhbtL
+	Igs7PLBpQLa0yNKVfvRI1TRcUxpOxHVrAYdBs6Z2cB0MscCHstiomMFs1OdVNzpMRtqN
+	Gg3Q==
+X-Gm-Message-State: AKGB3mKJDXGPkTDRFSpz5iMfJJO0D7Hmc0iN/vsbN+aT3HJqE3apG4DX
+	EYf+XkMdYdb8aPIUOXRnTYPNL+s9wxU=
+X-Google-Smtp-Source: ACJfBovLQ2AhSe4I6wzotbWff7PwWsJNxM+UfKNGwg2tK9MFIC1LZuvxfO1sRCPCMKDO4RYRLjSsEg==
+X-Received: by 10.200.33.143 with SMTP id 15mr19652406qty.165.1513308626147;
+	Thu, 14 Dec 2017 19:30:26 -0800 (PST)
+Received: from x1.local ([181.91.222.165]) by smtp.gmail.com with ESMTPSA id
+	q24sm3794605qkq.63.2017.12.14.19.30.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 14 Dec 2017 19:30:25 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Dec 2017 00:29:33 -0300
+Message-Id: <20171215033015.738-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.15.1
+In-Reply-To: <20171215033015.738-1-f4bug@amsat.org>
+References: <20171215033015.738-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 10.2.183.19 with HTTP; Thu, 14 Dec 2017 17:51:29 -0800 (PST)
-In-Reply-To: <CAKmqyKNZDeF63PrjUAU4MM8C6VbaJj2Ac6Y4zV1rbF2W9QaYtg@mail.gmail.com>
-References: <20171213195852.30439-1-f4bug@amsat.org>
-	<20171213195852.30439-5-f4bug@amsat.org>
-	<CAKmqyKPvAL3+LAqMBtUOc=0igkSwg4Jmf+Q0ySL7C+oech7AMw@mail.gmail.com>
-	<CAAdtpL6pT0GD+xkV5P+-J=SGr8_kTrNVBxc207g4mRuojrGe3w@mail.gmail.com>
-	<CAKmqyKMU46dmqEDhm9My=4ZM4GQf3n_ZLdm5JnFTi-mf3hz7SQ@mail.gmail.com>
-	<CAAdtpL7ybSzQHHucZTfYtKVR6xwa+r7y0_67b8nJpF_EXMZv6Q@mail.gmail.com>
-	<CAKmqyKNZDeF63PrjUAU4MM8C6VbaJj2Ac6Y4zV1rbF2W9QaYtg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Thu, 14 Dec 2017 22:51:29 -0300
-X-Google-Sender-Auth: lqmmBgoPhipx5UfOtJuRhvRaDTk
-Message-ID: <CAAdtpL7c6cCWPH_x-JoPuzY6CoTMtqZactvLcfuwGFGRARScZw@mail.gmail.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Andrey Smirnov <andrew.smirnov@gmail.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>, 
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Andrey Yurovsky <yurovsky@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 04/14] sdhci: use deposit64()
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH v4 01/43] MAINTAINERS: add entries for
+ i2c/ppc4xx
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,58 +79,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 01:51:35 -0000
+X-List-Received-Date: Fri, 15 Dec 2017 03:30:31 -0000
 
->>>> good catch :) I'll respin with:
->>>>
->>>>     case SDHC_ADMASYSADDR:
->>>>         s->admasysaddr = deposit64(s->admasysaddr, 0, 32, value)
->>>>         break;
->>>>     case SDHC_ADMASYSADDR + 4:
->>>>         s->admasysaddr = deposit64(s->admasysaddr, 32, 32, value);
->>>>         break;
->>>
->>> This still doesn't take the mask value into account though.
->>>
->>> Also, doesn't deposit() shift value up in this case? We want to mask
->>> the low bits out. I don't have the code in front of me though, so I
->>> could be wrong here.
->>
->> We have sdhci_mmio_ops.max_access_size = 4, so value will be at most 32bits.
->
-> Ah! Good point.
->
->> Now ADMASYSADDR is a 64-bit register, accessible in 2x32-bit.
->>
->> /**
->>  * Deposit @fieldval into the 64 bit @value at the bit field specified
->>  * by the @start and @length parameters, and return the modified
->>  * @value. Bits of @value outside the bit field are not modified.
->>
->> uint64_t deposit64(uint64_t value, int start, int length, uint64_t fieldval);
->>
->> in both access we use length=32
->>
->> at SDHC_ADMASYSADDR we use start=0,
->> while at SDHC_ADMASYSADDR + 4 we use start=32.
->>
->> both deposit the 32b value (32b masked) into a 64b s->admasysaddr.
->>
->> This is good to clarify this now, because the Spec v3 series (and
->> v4.20 if we want it) add a lot of them.
->
-> Ok, this sounds fine to me then.
->
-> The mask variable is still being ignored though. value should be anded
-> with mask.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+---
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-This is what deposit64() does:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 45e2e2009b..8582c7d6b5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -976,7 +976,9 @@ M: Alexander Graf <agraf@suse.de>
+ L: qemu-ppc@nongnu.org
+ S: Odd Fixes
+ F: hw/ppc/ppc4*.c
++F: hw/i2c/ppc4xx_i2c.c
+ F: include/hw/ppc/ppc4xx.h
++F: include/hw/i2c/ppc4xx_i2c.h
+ 
+ ppce500
+ M: Alexander Graf <agraf@suse.de>
+-- 
+2.15.1
 
-uint64_t deposit64(uint64_t value, int start, int length, uint64_t fieldval)
-{
-    uint64_t mask;
-    assert(start >= 0 && length > 0 && length <= 64 - start);
-    mask = (~0ULL >> (64 - length)) << start;
-    return (value & ~mask) | ((fieldval << start) & mask);
-}
 
