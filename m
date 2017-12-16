@@ -1,76 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ePrFk-000149-IQ
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Dec 2017 09:46:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35817)
+	id 1eQLXH-0007pY-OR
+	for mharc-qemu-trivial@gnu.org; Sat, 16 Dec 2017 18:06:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37288)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ben@skyportsystems.com>) id 1ePrFi-00013y-4i
-	for qemu-trivial@nongnu.org; Fri, 15 Dec 2017 09:46:19 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1eQLXF-0007oM-Q1
+	for qemu-trivial@nongnu.org; Sat, 16 Dec 2017 18:06:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ben@skyportsystems.com>) id 1ePrFe-0004gC-VU
-	for qemu-trivial@nongnu.org; Fri, 15 Dec 2017 09:46:18 -0500
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:44086)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ben@skyportsystems.com>)
-	id 1ePrFe-0004fN-LY
-	for qemu-trivial@nongnu.org; Fri, 15 Dec 2017 09:46:14 -0500
-Received: by mail-pg0-x244.google.com with SMTP id j9so5917775pgc.11
-	for <qemu-trivial@nongnu.org>; Fri, 15 Dec 2017 06:46:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=skyportsystems.com; s=google;
-	h=from:message-id:mime-version:subject:date:in-reply-to:cc:to
-	:references; bh=3yRqiwPVNF2YctXd1NraJIPvzAVwirU+JXVoyjutZ7M=;
-	b=p389WNIqPnldOfx9oIPBmjFTiBtUlnn4EcVvyKeYdgt8/7jSdJNWP1z03mkkfT4kFa
-	ldNo77AriILUXiY4vyzDTw2Lz1t9QE92GRwFJhd1AHFHdWqNUwDoBi7xkaya8uaTRpQ4
-	Hv09C5if23OJQtyRc8q8jDMgP/wrLacryD7cM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:message-id:mime-version:subject:date
-	:in-reply-to:cc:to:references;
-	bh=3yRqiwPVNF2YctXd1NraJIPvzAVwirU+JXVoyjutZ7M=;
-	b=NvoOSXeC3m+p6ATfnYBRPLG1pA198pgwCTVn0bJqzipw4eziOHpl7CjINW/1/3hBkf
-	Iq5KvDASdt9RYN3yZzvbSukCvpp0VdWRnEHgV0lkbaejhrZTfvr4563yIn8F5H9quyv5
-	6/0qTAh3ooqSxWEEby7VYhZiADKfJrYKCxIcKRwQ4JBUOEhxfuAq4oLUjtD6UtofkiTr
-	VbXEbjg9932BWqeSVvKAxD+lZXHK8jK4nI72J4eqTv+GatfTF6SztLhxHSRS9jUpifs7
-	Bzz6Jmv/DXYXubtqyljz2noifN/+XuhXFe0MGwqDuYEHjq7KPB640sfHPodpVntOp2iY
-	C7oA==
-X-Gm-Message-State: AKGB3mJLXcPwLuCexmqYveI+j3aYsQdfFXcTHZ2/n0zwuuoKkcjCmqjO
-	HymrR6HNdbKXSkGJKhp4Xsd2SQ==
-X-Google-Smtp-Source: ACJfBosNokxd065X9L2poYA47sgnIZYzH/2JgPTV5xRsky/bOAGL0jRyqPU/56fTUqx2n29murTWug==
-X-Received: by 10.84.131.65 with SMTP id 59mr8411787pld.156.1513349173227;
-	Fri, 15 Dec 2017 06:46:13 -0800 (PST)
-Received: from [172.16.1.49] (76-236-31-201.lightspeed.sntcca.sbcglobal.net.
-	[76.236.31.201]) by smtp.gmail.com with ESMTPSA id
-	u18sm12385644pgn.72.2017.12.15.06.46.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 15 Dec 2017 06:46:11 -0800 (PST)
-From: Ben Warren <ben@skyportsystems.com>
-Message-Id: <04B393D5-2FF3-4694-9BA7-BBD3B8EAB3CB@skyportsystems.com>
-Content-Type: multipart/signed;
-	boundary="Apple-Mail=_D8429623-1F95-419C-9365-FB24BA33CBE0";
-	protocol="application/pkcs7-signature"; micalg=sha1
-Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
-Date: Thu, 14 Dec 2017 23:40:49 -0800
-In-Reply-To: <20171215033015.738-13-f4bug@amsat.org>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	qemu trival <qemu-trivial@nongnu.org>,
-	=?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>, Zhang Chen <zhangckid@gmail.com>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-References: <20171215033015.738-1-f4bug@amsat.org>
-	<20171215033015.738-13-f4bug@amsat.org>
-X-Mailer: Apple Mail (2.3273)
+	(envelope-from <balaton@eik.bme.hu>) id 1eQLXE-0006dw-Rx
+	for qemu-trivial@nongnu.org; Sat, 16 Dec 2017 18:06:25 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:42645)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1eQLXA-0006W1-Jm; Sat, 16 Dec 2017 18:06:20 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id E999974569D;
+	Sun, 17 Dec 2017 00:06:18 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 5CAD37456B4; Sun, 17 Dec 2017 00:06:18 +0100 (CET)
+Message-Id: <e62d7163d0026dacd7e469a81508ee90d51d6dfa.1513465066.git.balaton@eik.bme.hu>
+In-Reply-To: <cover.1513465066.git.balaton@eik.bme.hu>
+References: <cover.1513465066.git.balaton@eik.bme.hu>
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Sat, 16 Dec 2017 23:57:46 +0100
+To: qemu-devel@nongnu.org,
+    qemu-trivial@nongnu.org
+Cc: Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: Re: [Qemu-trivial] [PATCH v4 12/43] misc: remove headers implicitly
- included
+X-Received-From: 2001:738:2001:2001::2001
+Subject: [Qemu-trivial] [PATCH 2/2] sm501: Add some more unimplemented
+ registers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,232 +43,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2017 14:46:19 -0000
+X-List-Received-Date: Sat, 16 Dec 2017 23:06:26 -0000
 
+These are not really implemented (just return zero or default values)
+but add these so guests accessing them can run.
 
---Apple-Mail=_D8429623-1F95-419C-9365-FB24BA33CBE0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ hw/display/sm501.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index b9b6111..4f7dc59b2 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -795,6 +795,8 @@ static uint64_t sm501_system_config_read(void *opaque, hwaddr addr,
+     case SM501_ARBTRTN_CONTROL:
+         ret = s->arbitration_control;
+         break;
++    case SM501_COMMAND_LIST_STATUS:
++        ret = 0x00180002; /* FIFOs are empty, everything idle */
+     case SM501_IRQ_MASK:
+         ret = s->irq_mask;
+         break;
+@@ -812,6 +814,9 @@ static uint64_t sm501_system_config_read(void *opaque, hwaddr addr,
+     case SM501_POWER_MODE_CONTROL:
+         ret = s->power_mode_control;
+         break;
++    case SM501_ENDIAN_CONTROL:
++        ret = 0; /* Only default little endian mode is supported */
++        break;
+ 
+     default:
+         printf("sm501 system config : not implemented register read."
+@@ -865,6 +870,12 @@ static void sm501_system_config_write(void *opaque, hwaddr addr,
+     case SM501_POWER_MODE_CONTROL:
+         s->power_mode_control = value & 0x00000003;
+         break;
++    case SM501_ENDIAN_CONTROL:
++        if (value & 0x00000001) {
++            printf("sm501 system config : big endian mode not implemented.\n");
++            abort();
++        }
++        break;
+ 
+     default:
+         printf("sm501 system config : not implemented register write."
+@@ -924,6 +935,9 @@ static uint64_t sm501_disp_ctrl_read(void *opaque, hwaddr addr,
+     case SM501_DC_PANEL_PANNING_CONTROL:
+         ret = s->dc_panel_panning_control;
+         break;
++    case SM501_DC_PANEL_COLOR_KEY:
++        /* Not implemented yet */
++        break;
+     case SM501_DC_PANEL_FB_ADDR:
+         ret = s->dc_panel_fb_addr;
+         break;
+@@ -1035,6 +1049,9 @@ static void sm501_disp_ctrl_write(void *opaque, hwaddr addr,
+     case SM501_DC_PANEL_PANNING_CONTROL:
+         s->dc_panel_panning_control = value & 0xFF3FFF3F;
+         break;
++    case SM501_DC_PANEL_COLOR_KEY:
++        /* Not implemented yet */
++        break;
+     case SM501_DC_PANEL_FB_ADDR:
+         s->dc_panel_fb_addr = value & 0x8FFFFFF0;
+         break;
+-- 
+2.7.6
 
-> On Dec 14, 2017, at 7:29 PM, Philippe Mathieu-Daud=C3=A9 =
-<f4bug@amsat.org> wrote:
->=20
-> applied using ./scripts/clean-includes
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Ben Warren <ben@skyportsystems.com>
-
-> ---
-> hw/audio/fmopl.h             | 1 -
-> bsd-user/main.c              | 1 -
-> chardev/wctablet.c           | 4 ----
-> hw/scsi/vhost-user-scsi.c    | 1 -
-> linux-user/main.c            | 1 -
-> net/colo-compare.c           | 1 -
-> tests/test-aio-multithread.c | 1 -
-> tests/test-clone-visitor.c   | 1 -
-> tests/vmgenid-test.c         | 3 ---
-> 9 files changed, 14 deletions(-)
->=20
-> diff --git a/hw/audio/fmopl.h b/hw/audio/fmopl.h
-> index f4065f425c..e7e578a48e 100644
-> --- a/hw/audio/fmopl.h
-> +++ b/hw/audio/fmopl.h
-> @@ -1,7 +1,6 @@
-> #ifndef FMOPL_H
-> #define FMOPL_H
->=20
-> -#include <stdint.h>
->=20
-> typedef void (*OPL_TIMERHANDLER)(void *param, int channel, double =
-interval_Sec);
->=20
-> diff --git a/bsd-user/main.c b/bsd-user/main.c
-> index f1b244b59b..efef5ff8c5 100644
-> --- a/bsd-user/main.c
-> +++ b/bsd-user/main.c
-> @@ -32,7 +32,6 @@
-> #include "qemu/envlist.h"
-> #include "exec/log.h"
-> #include "trace/control.h"
-> -#include "glib-compat.h"
->=20
-> int singlestep;
-> unsigned long mmap_min_addr;
-> diff --git a/chardev/wctablet.c b/chardev/wctablet.c
-> index 6c13c2c58a..969d014574 100644
-> --- a/chardev/wctablet.c
-> +++ b/chardev/wctablet.c
-> @@ -25,10 +25,6 @@
-> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER =
-DEALINGS IN
-> * THE SOFTWARE.
-> */
-> -#include <stdlib.h>
-> -#include <string.h>
-> -#include <sys/time.h>
-> -#include <time.h>
->=20
-> #include "qemu/osdep.h"
-> #include "qemu-common.h"
-> diff --git a/hw/scsi/vhost-user-scsi.c b/hw/scsi/vhost-user-scsi.c
-> index f7561e23fa..9389ed48e0 100644
-> --- a/hw/scsi/vhost-user-scsi.c
-> +++ b/hw/scsi/vhost-user-scsi.c
-> @@ -18,7 +18,6 @@
-> #include "qemu/osdep.h"
-> #include "qapi/error.h"
-> #include "qemu/error-report.h"
-> -#include "qemu/typedefs.h"
-> #include "qom/object.h"
-> #include "hw/fw-path-provider.h"
-> #include "hw/qdev-core.h"
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 6286661bd3..2fd2a143ed 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -35,7 +35,6 @@
-> #include "elf.h"
-> #include "exec/log.h"
-> #include "trace/control.h"
-> -#include "glib-compat.h"
->=20
-> char *exec_path;
->=20
-> diff --git a/net/colo-compare.c b/net/colo-compare.c
-> index 1ce195f877..0ebdec936c 100644
-> --- a/net/colo-compare.c
-> +++ b/net/colo-compare.c
-> @@ -23,7 +23,6 @@
-> #include "qom/object_interfaces.h"
-> #include "qemu/iov.h"
-> #include "qom/object.h"
-> -#include "qemu/typedefs.h"
-> #include "net/queue.h"
-> #include "chardev/char-fe.h"
-> #include "qemu/sockets.h"
-> diff --git a/tests/test-aio-multithread.c =
-b/tests/test-aio-multithread.c
-> index d396185972..c8bec81520 100644
-> --- a/tests/test-aio-multithread.c
-> +++ b/tests/test-aio-multithread.c
-> @@ -11,7 +11,6 @@
-> */
->=20
-> #include "qemu/osdep.h"
-> -#include <glib.h>
-> #include "block/aio.h"
-> #include "qapi/error.h"
-> #include "qemu/coroutine.h"
-> diff --git a/tests/test-clone-visitor.c b/tests/test-clone-visitor.c
-> index 96982163e4..ac6afc562e 100644
-> --- a/tests/test-clone-visitor.c
-> +++ b/tests/test-clone-visitor.c
-> @@ -8,7 +8,6 @@
-> */
->=20
-> #include "qemu/osdep.h"
-> -#include <glib.h>
->=20
-> #include "qemu-common.h"
-> #include "qapi/clone-visitor.h"
-> diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
-> index 5a86b40775..68ff954578 100644
-> --- a/tests/vmgenid-test.c
-> +++ b/tests/vmgenid-test.c
-> @@ -8,9 +8,6 @@
-> * See the COPYING file in the top-level directory.
-> */
->=20
-> -#include <glib.h>
-> -#include <string.h>
-> -#include <unistd.h>
-> #include "qemu/osdep.h"
-> #include "qemu/bitmap.h"
-> #include "qemu/uuid.h"
-> --=20
-> 2.15.1
->=20
-
-
---Apple-Mail=_D8429623-1F95-419C-9365-FB24BA33CBE0
-Content-Disposition: attachment;
-	filename=smime.p7s
-Content-Type: application/pkcs7-signature;
-	name=smime.p7s
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIILJTCCBTcw
-ggQfoAMCAQICED9ye6B5k0+gA4CVDazylRowDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNVBAYTAkdC
-MRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNVBAoT
-EUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50aWNh
-dGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTE3MDcxOTAwMDAwMFoXDTE4MDcxOTIzNTk1OVow
-JzElMCMGCSqGSIb3DQEJARYWYmVuQHNreXBvcnRzeXN0ZW1zLmNvbTCCASIwDQYJKoZIhvcNAQEB
-BQADggEPADCCAQoCggEBAKNRYZm9a+xmI5BPBvGwd5GTtRYq3MeP41a2WqewywtPjLGDhanKK0wI
-BghAAqwmQSfs1dukqG1N9fprI5+R+IqOqYle90tdF/P1YdEw6QGYxIfNLJP4Awc3No2LajOw4FcC
-zRkkfCTnetztBMX7Jj2mu9+TRDlH/5nlRHZsXLbUgA5jiqha5u4RlgWCrcIdB3f1IBrQeDEaaWqc
-XUiTbzqqUgTHEMAmwMf0g587n6tU/l6GhLCzPc49rF1ZD6fQoLN0Mxa/zt81MZrsXgaoz2mzvzn5
-ty+9rhGIlKprjnn4vrOzYaU2ieciRLQdAz3B16/nrlVge+EwAe8KCPPIj20CAwEAAaOCAewwggHo
-MB8GA1UdIwQYMBaAFIKvbIz4xf6WYXzoHz0rcUhexIvAMB0GA1UdDgQWBBQCjA79fz82hhynuOG0
-ET1twIBPlzAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAgBgNVHSUEGTAXBggrBgEFBQcD
-BAYLKwYBBAGyMQEDBQIwEQYJYIZIAYb4QgEBBAQDAgUgMEYGA1UdIAQ/MD0wOwYMKwYBBAGyMQEC
-AQEBMCswKQYIKwYBBQUHAgEWHWh0dHBzOi8vc2VjdXJlLmNvbW9kby5uZXQvQ1BTMFoGA1UdHwRT
-MFEwT6BNoEuGSWh0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQUNsaWVudEF1dGhlbnRp
-Y2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYsGCCsGAQUFBwEBBH8wfTBVBggrBgEFBQcwAoZJ
-aHR0cDovL2NydC5jb21vZG9jYS5jb20vQ09NT0RPUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRT
-ZWN1cmVFbWFpbENBLmNydDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMCEG
-A1UdEQQaMBiBFmJlbkBza3lwb3J0c3lzdGVtcy5jb20wDQYJKoZIhvcNAQELBQADggEBAERxWav/
-xDSN35gLVL+7SiNwEUTMMI11WRTwYzP4uhcA5cihdsQDdT8+jljvIcVAQmSd/mLZBjbkYsJa4zpC
-fX2D/EtB2D547Fj63efh0vyjLpX4hzhToiLXSXUaLWUhjUQKgGyBpDTpb/2Xbwpg7clWBHy/h4Ax
-75RfOdWpaZtQ6g/VxR2mten4dQ8NhtDiv+TlB89LRlQbcGk5A0k/++HlXKwRdTlOXee8+YePAENO
-OVUV4C3xuI6eXhxcHuZnBZdVdMTsb5WBsSUTONBTNR5BOUE7xLxcEchP8kHqmqaLSiN7unuUTrug
-EYpB7jWGysgKCeKgkEpI9dF++Oqqp70wggXmMIIDzqADAgECAhBqm+E4O/8ra58B1dm4p1JWMA0G
-CSqGSIb3DQEBDAUAMIGFMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDErMCkGA1UEAxMi
-Q09NT0RPIFJTQSBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTAeFw0xMzAxMTAwMDAwMDBaFw0yODAx
-MDkyMzU5NTlaMIGXMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAw
-DgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDE9MDsGA1UEAxM0Q09N
-T0RPIFJTQSBDbGllbnQgQXV0aGVudGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQTCCASIwDQYJ
-KoZIhvcNAQEBBQADggEPADCCAQoCggEBAL6znlesKHZ1QBbHOAOY08YYdiFQ8yV5C0y1oNF9Olg+
-nKcxLqf2NHbZhGra0D00SOTq9bus3/mxgUsg/Wh/eXQ0pnp8tZ8XZWAnlyKMpjL+qUByRjXCA6RQ
-yDMqVaVUkbIr5SU0RDX/kSsKwer3H1pT/HUrBN0X8sKtPTdGX8XAWt/VdMLBrZBlgvnkCos+KQWW
-Co63OTTqRvaq8aWccm+KOMjTcE6s2mj6RkalweyDI7X+7U5lNo6jzC8RTXtVV4/Vwdax720YpMPJ
-QaDaElmOupyTf1Qib+cpukNJnQmwygjD8m046DQkLnpXNCAGjuJy1F5NATksUsbfJAr7FLUCAwEA
-AaOCATwwggE4MB8GA1UdIwQYMBaAFLuvfgI9+qbxPISOre44mOzZMjLUMB0GA1UdDgQWBBSCr2yM
-+MX+lmF86B89K3FIXsSLwDAOBgNVHQ8BAf8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB/wIBADARBgNV
-HSAECjAIMAYGBFUdIAAwTAYDVR0fBEUwQzBBoD+gPYY7aHR0cDovL2NybC5jb21vZG9jYS5jb20v
-Q09NT0RPUlNBQ2VydGlmaWNhdGlvbkF1dGhvcml0eS5jcmwwcQYIKwYBBQUHAQEEZTBjMDsGCCsG
-AQUFBzAChi9odHRwOi8vY3J0LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FBZGRUcnVzdENBLmNydDAk
-BggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMA0GCSqGSIb3DQEBDAUAA4ICAQB4
-XLKBKDRPPO5fVs6fl1bsj6JrF/bz9kkIBtTYLzXN30D+03Hj6OxCDBEaIeNmsBhrJmuubvyE7Hto
-SmR809AgcYboW+rcTNZ/8u/Hv+GTrNI/AhqX2/kiQNxmgUPt/eJPs92Qclj0HnVyy9TnSvGkSDU7
-I5Px+TbO+88G4zipA2psZaWeEykgzClZlPz1FjTCkk77ZXp5cQYYexE6zeeN4/0OqqoAloFrjAF4
-o50YJafX8mnahjp3I2Y2mkjhk0xQfhNqbzlLWPoT3m7j7U26u7zg6swjOq8hITYc3/np5tM5aVyu
-6t99p17bTbY7+1RTWBviN9YJzK8HxzObXYWBf/L+VGOYNsQDTxAk0Hbvb1j6KjUhg7fO294F29QI
-hhmiNOr84JHoy+fNLpfvYc/Q9EtFOI5ISYgOxLk3nD/whbUe9rmEQXLp8MB933Ij474gwwCPUpwv
-9mj2PMnXoc7mbrS22XUSeTwxCTP9bcmUdp4jmIoWfhQm7X9w/Zgddg+JZ/YnIHOwsGsaTUgj7fIv
-xqith7DoJC91WJ8Lce3CVJqb1XWeKIJ84F7YLXZN0oa7TktYgDdmQVxYkZo1c5noaDKH9Oq9cbm/
-vOYRUM1cWcef20Wkyk5S/GFyyPJwG0fR1nRas3DqAf4cXxMiEKcff7PNa4M3RGTqH0pWR8p6EjGC
-A7cwggOzAgEBMIGsMIGXMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDE9MDsGA1UEAxM0
-Q09NT0RPIFJTQSBDbGllbnQgQXV0aGVudGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIQP3J7
-oHmTT6ADgJUNrPKVGjAJBgUrDgMCGgUAoIIB3zAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
-CSqGSIb3DQEJBTEPFw0xNzEyMTUwNzQwNTBaMCMGCSqGSIb3DQEJBDEWBBR6uKdpsiWT/mhVD3Sn
-JlIdRd3+6jCBvQYJKwYBBAGCNxAEMYGvMIGsMIGXMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
-YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGlt
-aXRlZDE9MDsGA1UEAxM0Q09NT0RPIFJTQSBDbGllbnQgQXV0aGVudGljYXRpb24gYW5kIFNlY3Vy
-ZSBFbWFpbCBDQQIQP3J7oHmTT6ADgJUNrPKVGjCBvwYLKoZIhvcNAQkQAgsxga+ggawwgZcxCzAJ
-BgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQx
-GjAYBgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBB
-dXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhA/cnugeZNPoAOAlQ2s8pUaMA0GCSqG
-SIb3DQEBAQUABIIBAIC/ERe6W87w6pg04Z1eRcXKKTxK4t8ByR9+VRBxDNM2QNLGwGk4knW7+MGX
-qcdNPsw4kC1vGaE0vqA3kAx7s2exeiZFLYz75hCI9Lmgtd+2FUVPMMEJAelXuu/jYbseGRMywGF+
-+vxmwSkva4QA6xTQKVewDzxFzco01/XG1TfEDn3AXEE8QYagznLnMrxPt+4Kb15yc2UPAAn1Qxec
-3kQkWT8OWJI8f3rCyfefVdKUP5FnA5Dfp6z7KL92e/m92efmigeibeE//H0XRkuo9Die54CH/kR6
-3SYVzS18IdHFdy51oYbs5VOv69wDF6EV5Ja31GBtQZrgy+PwM0F5f5cAAAAAAAA=
---Apple-Mail=_D8429623-1F95-419C-9365-FB24BA33CBE0--
 
