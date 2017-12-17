@@ -1,68 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQkiz-0001B5-Jz
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 21:00:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51948)
+	id 1eQkxQ-0005a9-N4
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 21:15:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54170)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eQkix-000188-CJ
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 21:00:12 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1eQkxN-0005WH-EM
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 21:15:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eQkiw-00028n-Mv
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 21:00:11 -0500
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34603)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eQkiq-00021V-Cr; Sun, 17 Dec 2017 21:00:04 -0500
-Received: by mail-qk0-x241.google.com with SMTP id d66so16644766qkg.1;
-	Sun, 17 Dec 2017 18:00:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=k2uNGvsbUTv22oh2fkukrfwUnyrHtfkhU2p4MdgHtLk=;
-	b=NvUKU1tBAOohs9eV+LYyYE2OmLwNpJGY6RfRYmUlUDcXNdKvohlSt37iq8xWVNAV9/
-	WoB8L4thaGaOe/rpOUNV277VX9NczlUGa9WHjmowI1kzR5oojq48BwULPI+WYhC425Yn
-	i7rN5/P9fKhogN7BYay8VS5IkSItHn1SvnACkt/Je5aWBrmHRspAPkCK0+xPkIseGmyJ
-	2BmIdefx5mZAe919vIsYjpwsbGwZqM2J7aZmOj8ZFIkDFOJNf3Tj+2QDmXS+q+acmAqF
-	6lYkkR5tpv+xOUr8upRSy0Q/pWYHfszwtRL6xQGDYA81jIcizyQh0C4LhYDHdnoggNFi
-	C9MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=k2uNGvsbUTv22oh2fkukrfwUnyrHtfkhU2p4MdgHtLk=;
-	b=mKENFjvCNZ+aPwym73IPu3Smir1yBN9U39i5nR/WPx1e/GIU3Cd3I3GkSQKDRC3Lty
-	K37DaYL6ozgutsePOrlQgBGEw8O9K51+lcqD6bVMLkA0J72GJ1dX8kqQoRQWCXZjd7cm
-	oSmFVRYMvFOP5Ha0Hehg9ktHEv9ga1Upf+LNFfehLRtuOhSCMx3qylBlDF2zfoNnZuTe
-	JNHf3BHV+2vwjWfFlMFi8pj3h+urzDidxNobqyNfBzKcyPbDeF9a0ANWbuTMVVJO9eFO
-	0/dTF/mtS2yukifEHFqwOni3nJFA/RqyuNxYgy4Ho4SGaicDbQc/jorcMVgNiQVhNAeu
-	x13A==
-X-Gm-Message-State: AKGB3mIo6TsiB6b2n+hrjPHuAP5rGtb6+zW35m3/ZDwH3w5WdTjvzJYi
-	0Q/gEfDFKcciyXlgXlTrRPQ=
-X-Google-Smtp-Source: ACJfBotRDwwHrtCNOo8ON/gAIODRyAv4MUy/uj2eCfofcmRXEsarEn6w5a33a2d9wKiZu+0sPbmaXA==
-X-Received: by 10.55.106.129 with SMTP id f123mr32624641qkc.7.1513562403686;
-	Sun, 17 Dec 2017 18:00:03 -0800 (PST)
-Received: from x1.local ([138.117.48.211]) by smtp.gmail.com with ESMTPSA id
-	r194sm7299893qke.65.2017.12.17.18.00.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 17 Dec 2017 18:00:02 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Michael Tokarev <mjt@tls.msk.ru>
+	(envelope-from <mjt@tls.msk.ru>) id 1eQkxM-0007jM-LA
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 21:15:05 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:48023)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1eQkxH-0007bs-1k; Sun, 17 Dec 2017 21:14:59 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id D6B34411A8;
+	Mon, 18 Dec 2017 05:14:55 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id CFE2CD4A;
+	Mon, 18 Dec 2017 00:25:48 +0300 (MSK)
+Received: (nullmailer pid 30975 invoked by uid 1000);
+	Sun, 17 Dec 2017 21:28:08 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sun, 17 Dec 2017 22:59:47 -0300
-Message-Id: <20171218015947.17293-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.15.1
+	qemu-trivial@nongnu.org
+Date: Mon, 18 Dec 2017 00:27:50 +0300
+Message-Id: <7969e8d79f6bd8a363cd79b0ed0c86f4d352ac41.1513545944.git.mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: [Qemu-trivial] [PATCH] hw/tpm: remove old i386 dependency
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PULL 45/61] hw/ipmi: remove old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,42 +49,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 02:00:12 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 02:15:06 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Tested-by: Corey Minyard <cminyard@mvista.com>
 ---
-Based-on: 1513446109-9013-33-git-send-email-stefanb@linux.vnet.ibm.com
----
- hw/tpm/tpm_emulator.c    | 1 -
- hw/tpm/tpm_passthrough.c | 1 -
+ hw/ipmi/isa_ipmi_bt.c  | 1 -
+ hw/ipmi/isa_ipmi_kcs.c | 1 -
  2 files changed, 2 deletions(-)
 
-diff --git a/hw/tpm/tpm_emulator.c b/hw/tpm/tpm_emulator.c
-index 3ae8bf6c5a..38b6f175a1 100644
---- a/hw/tpm/tpm_emulator.c
-+++ b/hw/tpm/tpm_emulator.c
-@@ -33,7 +33,6 @@
- #include "sysemu/tpm_backend.h"
- #include "tpm_int.h"
+diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
+index 2fcc3d2e7c..e098fd5206 100644
+--- a/hw/ipmi/isa_ipmi_bt.c
++++ b/hw/ipmi/isa_ipmi_bt.c
+@@ -26,7 +26,6 @@
  #include "hw/hw.h"
+ #include "hw/ipmi/ipmi.h"
+ #include "hw/isa/isa.h"
 -#include "hw/i386/pc.h"
- #include "tpm_util.h"
- #include "tpm_ioctl.h"
- #include "migration/blocker.h"
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index 487aae2043..149fae63e6 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -29,7 +29,6 @@
- #include "sysemu/tpm_backend.h"
- #include "tpm_int.h"
+=20
+ /* Control register */
+ #define IPMI_BT_CLR_WR_BIT         0
+diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
+index 80444977a0..689587b65d 100644
+--- a/hw/ipmi/isa_ipmi_kcs.c
++++ b/hw/ipmi/isa_ipmi_kcs.c
+@@ -26,7 +26,6 @@
  #include "hw/hw.h"
+ #include "hw/ipmi/ipmi.h"
+ #include "hw/isa/isa.h"
 -#include "hw/i386/pc.h"
- #include "qapi/clone-visitor.h"
- #include "tpm_util.h"
- 
--- 
-2.15.1
+=20
+ #define IPMI_KCS_OBF_BIT        0
+ #define IPMI_KCS_IBF_BIT        1
+--=20
+2.11.0
 
 
