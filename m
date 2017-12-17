@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQgd3-0007MB-62
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 16:37:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42110)
+	id 1eQgk3-0004pj-HM
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 16:45:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44375)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQgcz-0007HG-C2
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:37:46 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1eQgk1-0004n9-9S
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:45:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQgcy-00018D-A1
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:37:45 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:55313)
+	(envelope-from <mjt@tls.msk.ru>) id 1eQgk0-0006GI-Hh
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:45:01 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:40373)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQgct-00014L-9z; Sun, 17 Dec 2017 16:37:39 -0500
+	id 1eQgjv-0006Cv-W9; Sun, 17 Dec 2017 16:44:56 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 2FDAD41175;
-	Mon, 18 Dec 2017 00:28:09 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 5082B41175;
+	Mon, 18 Dec 2017 00:44:55 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1A5A1C8E;
-	Mon, 18 Dec 2017 00:25:46 +0300 (MSK)
-Received: (nullmailer pid 30886 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id A89B6D1A;
+	Mon, 18 Dec 2017 00:25:47 +0300 (MSK)
+Received: (nullmailer pid 30980 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 18 Dec 2017 00:27:07 +0300
-Message-Id: <e2b830d4d61fda8631e1a880734121fa26e92c78.1513545944.git.mjt@msgid.tls.msk.ru>
+	qemu-trivial@nongnu.org
+Date: Mon, 18 Dec 2017 00:27:52 +0300
+Message-Id: <e738d974d3afe69b914cf15165cb81a69eb429d0.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
@@ -37,8 +37,7 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 02/61] hw/alpha/typhoon: simplify using the
- "unimplemented" sysbus device
+Subject: [Qemu-trivial] [PULL 47/61] hw/tpm: remove old i386 dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,96 +49,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2017 21:37:46 -0000
+X-List-Received-Date: Sun, 17 Dec 2017 21:45:02 -0000
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
 ---
- hw/alpha/alpha_sys.h |  1 -
- hw/alpha/pci.c       | 26 --------------------------
- hw/alpha/typhoon.c   |  6 ++----
- 3 files changed, 2 insertions(+), 31 deletions(-)
+ hw/tpm/tpm_passthrough.c | 1 -
+ hw/tpm/tpm_tis.c         | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/hw/alpha/alpha_sys.h b/hw/alpha/alpha_sys.h
-index b6d8369ed7..9e67f78c60 100644
---- a/hw/alpha/alpha_sys.h
-+++ b/hw/alpha/alpha_sys.h
-@@ -15,7 +15,6 @@ PCIBus *typhoon_init(ram_addr_t, ISABus **, qemu_irq *,=
- AlphaCPU *[4],
-                      pci_map_irq_fn);
-=20
- /* alpha_pci.c.  */
--extern const MemoryRegionOps alpha_pci_ignore_ops;
- extern const MemoryRegionOps alpha_pci_conf1_ops;
- extern const MemoryRegionOps alpha_pci_iack_ops;
-=20
-diff --git a/hw/alpha/pci.c b/hw/alpha/pci.c
-index 8dde637bfe..e0bcde9f70 100644
---- a/hw/alpha/pci.c
-+++ b/hw/alpha/pci.c
-@@ -14,32 +14,6 @@
- #include "trace.h"
-=20
-=20
--/* Fallback for unassigned PCI I/O operations.  Avoids MCHK.  */
--
--static uint64_t ignore_read(void *opaque, hwaddr addr, unsigned size)
--{
--    return 0;
--}
--
--static void ignore_write(void *opaque, hwaddr addr, uint64_t v, unsigned=
- size)
--{
--}
--
--const MemoryRegionOps alpha_pci_ignore_ops =3D {
--    .read =3D ignore_read,
--    .write =3D ignore_write,
--    .endianness =3D DEVICE_LITTLE_ENDIAN,
--    .valid =3D {
--        .min_access_size =3D 1,
--        .max_access_size =3D 8,
--    },
--    .impl =3D {
--        .min_access_size =3D 1,
--        .max_access_size =3D 8,
--    },
--};
--
--
- /* PCI config space reads/writes, to byte-word addressable memory.  */
- static uint64_t bw_conf1_read(void *opaque, hwaddr addr,
-                               unsigned size)
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index ae11e012c7..d8e2cac3f3 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -11,6 +11,7 @@
- #include "cpu.h"
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+index c440aff4b2..d904d8e33f 100644
+--- a/hw/tpm/tpm_passthrough.c
++++ b/hw/tpm/tpm_passthrough.c
+@@ -29,7 +29,6 @@
+ #include "sysemu/tpm_backend.h"
+ #include "tpm_int.h"
  #include "hw/hw.h"
- #include "hw/devices.h"
-+#include "hw/misc/unimp.h"
- #include "sysemu/sysemu.h"
- #include "alpha_sys.h"
+-#include "hw/i386/pc.h"
+ #include "qapi/clone-visitor.h"
+ #include "tpm_util.h"
+=20
+diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+index 42d647d363..3c38fd8b2c 100644
+--- a/hw/tpm/tpm_tis.c
++++ b/hw/tpm/tpm_tis.c
+@@ -29,7 +29,6 @@
+ #include "sysemu/block-backend.h"
  #include "exec/address-spaces.h"
-@@ -876,10 +877,7 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus **i=
-sa_bus,
-                                 &s->pchip.reg_mem);
-=20
-     /* Pchip0 PCI I/O, 0x801.FC00.0000, 32MB.  */
--    memory_region_init_io(&s->pchip.reg_io, OBJECT(s), &alpha_pci_ignore=
-_ops,
--                          NULL, "pci0-io", 32*MB);
--    memory_region_add_subregion(addr_space, 0x801fc000000ULL,
--                                &s->pchip.reg_io);
-+    create_unimplemented_device("pci0-io", 0x801fc000000ULL, 32 * MB);
-=20
-     b =3D pci_register_bus(dev, "pci",
-                          typhoon_set_irq, sys_map_irq, s,
+ #include "hw/hw.h"
+-#include "hw/i386/pc.h"
+ #include "hw/pci/pci_ids.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
 --=20
 2.11.0
 
