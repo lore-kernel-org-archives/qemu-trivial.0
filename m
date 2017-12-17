@@ -1,44 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQh3V-00030c-GA
+	id 1eQh3V-00031B-VJ
 	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 17:05:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47782)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47785)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQh3T-0002yG-1M
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:07 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1eQh3T-0002yH-5W
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQh3S-00068j-Bw
+	(envelope-from <mjt@tls.msk.ru>) id 1eQh3S-00068Z-A3
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:07 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:48687)
+Received: from isrv.corpit.ru ([86.62.121.231]:54919)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQh3N-00065j-Uk; Sun, 17 Dec 2017 17:05:02 -0500
+	id 1eQh3N-00065k-Up; Sun, 17 Dec 2017 17:05:02 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 31E2841176;
-	Mon, 18 Dec 2017 01:04:56 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 035074115E;
+	Mon, 18 Dec 2017 01:04:55 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B668BD1B;
-	Mon, 18 Dec 2017 00:25:47 +0300 (MSK)
-Received: (nullmailer pid 30930 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id B8C0ACDC;
+	Mon, 18 Dec 2017 00:25:46 +0300 (MSK)
+Received: (nullmailer pid 30903 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org
-Date: Mon, 18 Dec 2017 00:27:28 +0300
-Message-Id: <730c6c56049500ff4d4916334093b6c3bf4830dc.1513545944.git.mjt@msgid.tls.msk.ru>
+Cc: Vicente Jimenez Aguilar <googuy@gmail.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 18 Dec 2017 00:27:15 +0300
+Message-Id: <2b5490ad0f8bbe152d2356ec322c93941a73b777.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 23/61] MAINTAINERS: add an entry for the
- i82378 (superio)
+Subject: [Qemu-trivial] [PULL 10/61] Document pretty parameter for mon option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,28 +48,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 17 Dec 2017 22:05:08 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Vicente Jimenez Aguilar <googuy@gmail.com>
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Documentation: document pretty parameter for mon option
+that turns on JSON pretty printing
+
+Signed-off-by: Vicente Jimenez Aguilar <googuy@gmail.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ qemu-options.hx | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index b48065aad6..1a379edc80 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -732,6 +732,7 @@ F: hw/ppc/prep.c
- F: hw/ppc/prep_systemio.c
- F: hw/ppc/rs6000_mc.c
- F: hw/pci-host/prep.[hc]
-+F: hw/isa/i82378.c
- F: hw/isa/pc87312.[hc]
- F: hw/dma/i82374.c
- F: pc-bios/ppc_rom.bin
---=20
+diff --git a/qemu-options.hx b/qemu-options.hx
+index fe0c29271f..32d9378172 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3487,11 +3487,12 @@ Like -qmp but uses pretty JSON formatting.
+ ETEXI
+ 
+ DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
+-    "-mon [chardev=]name[,mode=readline|control]\n", QEMU_ARCH_ALL)
++    "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
+ STEXI
+-@item -mon [chardev=]name[,mode=readline|control]
++@item -mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]
+ @findex -mon
+-Setup monitor on chardev @var{name}.
++Setup monitor on chardev @var{name}. @code{pretty} turns on JSON pretty printing
++easing human reading and debugging.
+ ETEXI
+ 
+ DEF("debugcon", HAS_ARG, QEMU_OPTION_debugcon, \
+-- 
 2.11.0
 
 
