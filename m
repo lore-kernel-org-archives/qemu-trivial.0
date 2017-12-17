@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQjrc-00045j-Fa
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 20:05:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45600)
+	id 1eQjrf-00048V-DO
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 20:05:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45610)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQjra-00043l-N7
+	(envelope-from <mjt@tls.msk.ru>) id 1eQjrb-00043u-13
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 20:05:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQjrZ-0007Za-Rq
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 20:05:02 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:39179)
+	(envelope-from <mjt@tls.msk.ru>) id 1eQjra-0007Zy-7U
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 20:05:03 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:42979)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQjrU-0007Om-Ej; Sun, 17 Dec 2017 20:04:56 -0500
+	id 1eQjrV-0007Rc-5y; Sun, 17 Dec 2017 20:04:57 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7694441198;
+	by isrv.corpit.ru (Postfix) with ESMTP id 7A67341199;
 	Mon, 18 Dec 2017 04:04:55 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 46404D32;
-	Mon, 18 Dec 2017 00:25:48 +0300 (MSK)
-Received: (nullmailer pid 30916 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 418EBD52;
+	Mon, 18 Dec 2017 00:25:49 +0300 (MSK)
+Received: (nullmailer pid 30924 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 18 Dec 2017 00:27:21 +0300
-Message-Id: <238fc6e6bfd6afcd1ba6d905c998b67afcac120e.1513545944.git.mjt@msgid.tls.msk.ru>
+	qemu-trivial@nongnu.org
+Date: Mon, 18 Dec 2017 00:27:25 +0300
+Message-Id: <67d292f5e74f32442af2f65109bc03a504584480.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
@@ -37,8 +37,7 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 16/61] hw/registerfields: fix a typo in the
- FIELD() documentation
+Subject: [Qemu-trivial] [PULL 20/61] MAINTAINERS: add entries for i2c/ppc4xx
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,36 +49,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 01:05:03 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 01:05:04 -0000
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
 ---
- include/hw/registerfields.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
-index af101d5ae6..ad9d7a82a3 100644
---- a/include/hw/registerfields.h
-+++ b/include/hw/registerfields.h
-@@ -22,7 +22,7 @@
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 55e403833f..331c2efeaf 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -976,7 +976,9 @@ M: Alexander Graf <agraf@suse.de>
+ L: qemu-ppc@nongnu.org
+ S: Odd Fixes
+ F: hw/ppc/ppc4*.c
++F: hw/i2c/ppc4xx_i2c.c
+ F: include/hw/ppc/ppc4xx.h
++F: include/hw/i2c/ppc4xx_i2c.h
 =20
- /* Define SHIFT, LENGTH and MASK constants for a field within a register=
- */
-=20
--/* This macro will define FOO_BAR_MASK, FOO_BAR_SHIFT and FOO_BAR_LENGTH=
-=20
-+/* This macro will define R_FOO_BAR_MASK, R_FOO_BAR_SHIFT and R_FOO_BAR_=
-LENGTH
-  * constants for field BAR in register FOO.
-  */
- #define FIELD(reg, field, shift, length)                                =
-  \
+ ppce500
+ M: Alexander Graf <agraf@suse.de>
 --=20
 2.11.0
 
