@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQn8v-0008DS-Fu
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 23:35:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58305)
+	id 1eQn8x-0008Dj-WF
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 23:35:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58315)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQn8s-0008Aa-AQ
+	(envelope-from <mjt@tls.msk.ru>) id 1eQn8s-0008BD-Mm
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 23:35:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQn8r-0003h6-FZ
+	(envelope-from <mjt@tls.msk.ru>) id 1eQn8r-0003hU-Su
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 23:35:06 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:50093)
+Received: from isrv.corpit.ru ([86.62.121.231]:43515)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQn8l-0003d0-Gk; Sun, 17 Dec 2017 23:34:59 -0500
+	id 1eQn8m-0003eV-8F; Sun, 17 Dec 2017 23:35:00 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id EF4D9411C0;
-	Mon, 18 Dec 2017 07:34:56 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 07107411C2;
+	Mon, 18 Dec 2017 07:34:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id E0A47D5E;
-	Mon, 18 Dec 2017 00:25:49 +0300 (MSK)
-Received: (nullmailer pid 30926 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 19CA0D61;
+	Mon, 18 Dec 2017 00:25:50 +0300 (MSK)
+Received: (nullmailer pid 30936 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org
-Date: Mon, 18 Dec 2017 00:27:26 +0300
-Message-Id: <cedc82d12021092c78106bc7dc50af4853ef604a.1513545944.git.mjt@msgid.tls.msk.ru>
+Date: Mon, 18 Dec 2017 00:27:31 +0300
+Message-Id: <e641024062399f57abaa56f64f587c57d1b9678e.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
@@ -37,8 +37,8 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 21/61] MAINTAINERS: add an entry for the
- i82374 (southbridge)
+Subject: [Qemu-trivial] [PULL 26/61] MAINTAINERS: add entries for
+ timer/m48t59
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,21 +55,21 @@ X-List-Received-Date: Mon, 18 Dec 2017 04:35:07 -0000
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 331c2efeaf..10079f4a21 100644
+index baeec72802..33cd4f6bed 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -733,6 +733,7 @@ F: hw/ppc/prep_systemio.c
- F: hw/ppc/rs6000_mc.c
- F: hw/pci-host/prep.[hc]
+@@ -735,6 +735,8 @@ F: hw/pci-host/prep.[hc]
+ F: hw/isa/i82378.c
  F: hw/isa/pc87312.[hc]
-+F: hw/dma/i82374.c
+ F: hw/dma/i82374.c
++F: hw/timer/m48t59-isa.c
++F: include/hw/timer/m48t59.h
  F: pc-bios/ppc_rom.bin
 =20
  sPAPR
