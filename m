@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQh3V-00031B-VJ
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 17:05:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47785)
+	id 1eQh3X-00032b-5G
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 17:05:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQh3T-0002yH-5W
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:08 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQh3S-00068Z-A3
+	(envelope-from <mjt@tls.msk.ru>) id 1eQh3T-0002yF-02
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:07 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:54919)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1eQh3S-00068e-BO
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 17:05:06 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:54167)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQh3N-00065k-Up; Sun, 17 Dec 2017 17:05:02 -0500
+	id 1eQh3N-00065i-Ug; Sun, 17 Dec 2017 17:05:02 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 035074115E;
+	by isrv.corpit.ru (Postfix) with ESMTP id 10FFA41174;
 	Mon, 18 Dec 2017 01:04:55 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id B8C0ACDC;
-	Mon, 18 Dec 2017 00:25:46 +0300 (MSK)
-Received: (nullmailer pid 30903 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id B7837D5B;
+	Mon, 18 Dec 2017 00:25:49 +0300 (MSK)
+Received: (nullmailer pid 30955 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Vicente Jimenez Aguilar <googuy@gmail.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 18 Dec 2017 00:27:15 +0300
-Message-Id: <2b5490ad0f8bbe152d2356ec322c93941a73b777.1513545944.git.mjt@msgid.tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org
+Date: Mon, 18 Dec 2017 00:27:40 +0300
+Message-Id: <b0dff39d4e47c1d358b97a45b74a0510c80342eb.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 10/61] Document pretty parameter for mon option
+Subject: [Qemu-trivial] [PULL 35/61] i386/hax: remove duplicated include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,40 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2017 22:05:08 -0000
+X-List-Received-Date: Sun, 17 Dec 2017 22:05:07 -0000
 
-From: Vicente Jimenez Aguilar <googuy@gmail.com>
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Documentation: document pretty parameter for mon option
-that turns on JSON pretty printing
+this file in include in "target/i386/hax-i386.h":
 
-Signed-off-by: Vicente Jimenez Aguilar <googuy@gmail.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+    #ifdef CONFIG_WIN32
+    #include "target/i386/hax-windows.h"
+    #endif
+
+which guaranties that sysemu/os-win32.h is previously included (CONFIG_WI=
+N32)
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
- qemu-options.hx | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ target/i386/hax-windows.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index fe0c29271f..32d9378172 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3487,11 +3487,12 @@ Like -qmp but uses pretty JSON formatting.
- ETEXI
- 
- DEF("mon", HAS_ARG, QEMU_OPTION_mon, \
--    "-mon [chardev=]name[,mode=readline|control]\n", QEMU_ARCH_ALL)
-+    "-mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]\n", QEMU_ARCH_ALL)
- STEXI
--@item -mon [chardev=]name[,mode=readline|control]
-+@item -mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]
- @findex -mon
--Setup monitor on chardev @var{name}.
-+Setup monitor on chardev @var{name}. @code{pretty} turns on JSON pretty printing
-+easing human reading and debugging.
- ETEXI
- 
- DEF("debugcon", HAS_ARG, QEMU_OPTION_debugcon, \
--- 
+diff --git a/target/i386/hax-windows.h b/target/i386/hax-windows.h
+index f7c3e99246..004f867694 100644
+--- a/target/i386/hax-windows.h
++++ b/target/i386/hax-windows.h
+@@ -20,7 +20,6 @@
+ #ifndef TARGET_I386_HAX_WINDOWS_H
+ #define TARGET_I386_HAX_WINDOWS_H
+=20
+-#include <windows.h>
+ #include <memory.h>
+ #include <malloc.h>
+ #include <winioctl.h>
+--=20
 2.11.0
 
 
