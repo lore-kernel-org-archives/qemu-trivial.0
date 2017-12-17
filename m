@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQgk4-0004rS-Ei
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 16:45:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44409)
+	id 1eQgk6-0004tf-Ma
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 16:45:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQgk2-0004o8-0c
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:45:03 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQgk0-0006Ga-Q8
+	(envelope-from <mjt@tls.msk.ru>) id 1eQgk1-0004n5-78
 	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:45:02 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:55633)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>) id 1eQgk0-0006GN-Ig
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 16:45:01 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:38659)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQgjv-0006Cq-VE; Sun, 17 Dec 2017 16:44:56 -0500
+	id 1eQgjv-0006Ck-UT; Sun, 17 Dec 2017 16:44:56 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 46CB441174;
+	by isrv.corpit.ru (Postfix) with ESMTP id 43BFF41172;
 	Mon, 18 Dec 2017 00:44:55 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id AB284D5A;
-	Mon, 18 Dec 2017 00:25:49 +0300 (MSK)
-Received: (nullmailer pid 30957 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id A867DCD1;
+	Mon, 18 Dec 2017 00:25:46 +0300 (MSK)
+Received: (nullmailer pid 30899 invoked by uid 1000);
 	Sun, 17 Dec 2017 21:28:08 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org
-Date: Mon, 18 Dec 2017 00:27:41 +0300
-Message-Id: <721320d511ade48643e30a19a54704a1d7fbd620.1513545944.git.mjt@msgid.tls.msk.ru>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Mon, 18 Dec 2017 00:27:13 +0300
+Message-Id: <443a26d223b2451de74bbc10947c880af4c72cec.1513545944.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
 References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
@@ -37,8 +37,7 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 36/61] nios2: remove duplicated includes (in
- code commented out)
+Subject: [Qemu-trivial] [PULL 08/61] .gitignore: remove vscclient
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,110 +49,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2017 21:45:03 -0000
+X-List-Received-Date: Sun, 17 Dec 2017 21:45:02 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-applied using ./scripts/clean-includes
+It was removed with libcacard, since:
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+commit 7b02f5447c64d1854468f758398c9f6fe9e5721f
+Author: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Date:   Sun Aug 30 11:48:40 2015 +0200
+
+    libcacard: use the standalone project
+
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- disas/nios2.c            | 3 ---
- hw/nios2/boot.c          | 1 -
- target/nios2/cpu.h       | 1 -
- target/nios2/helper.c    | 5 +----
- target/nios2/op_helper.c | 1 +
- target/nios2/translate.c | 1 +
- 6 files changed, 3 insertions(+), 9 deletions(-)
+ .gitignore | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/disas/nios2.c b/disas/nios2.c
-index b342936d21..de11f04cc4 100644
---- a/disas/nios2.c
-+++ b/disas/nios2.c
-@@ -1756,7 +1756,6 @@ extern const int nios2_num_r2_reg_range_mappings;
- #endif /* _NIOS2_H */
-=20
- /*#include "sysdep.h"
--#include <stdio.h>
- #include "opcode/nios2.h"
- */
- /* Register string table */
-@@ -2521,8 +2520,6 @@ const int nios2_num_r2_reg_range_mappings =3D 8;
- #include "dis-asm.h"
- #include "opcode/nios2.h"
- #include "libiberty.h"
--#include <string.h>
--#include <assert.h>
- */
- /* No symbol table is available when this code runs out in an embedded
-    system as when it is used for disassembler support in a monitor.  */
-diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index 2b31f5b844..94f436e7fb 100644
---- a/hw/nios2/boot.c
-+++ b/hw/nios2/boot.c
-@@ -34,7 +34,6 @@
- #include "qemu/option.h"
- #include "qemu/config-file.h"
- #include "qemu/error-report.h"
--#include "qemu-common.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/sysemu.h"
- #include "hw/loader.h"
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 9119eee587..88823a6d4d 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -20,7 +20,6 @@
- #ifndef CPU_NIOS2_H
- #define CPU_NIOS2_H
-=20
--#include "qemu/osdep.h"
- #include "qemu-common.h"
-=20
- #define TARGET_LONG_BITS 32
-diff --git a/target/nios2/helper.c b/target/nios2/helper.c
-index ef9ee05798..9f741a8f19 100644
---- a/target/nios2/helper.c
-+++ b/target/nios2/helper.c
-@@ -18,12 +18,9 @@
-  * <http://www.gnu.org/licenses/lgpl-2.1.html>
-  */
-=20
--#include <stdio.h>
--#include <string.h>
--#include <assert.h>
-+#include "qemu/osdep.h"
-=20
- #include "cpu.h"
--#include "qemu/osdep.h"
- #include "qemu/host-utils.h"
- #include "qapi/error.h"
- #include "exec/exec-all.h"
-diff --git a/target/nios2/op_helper.c b/target/nios2/op_helper.c
-index efb1c489c9..c853aeae02 100644
---- a/target/nios2/op_helper.c
-+++ b/target/nios2/op_helper.c
-@@ -18,6 +18,7 @@
-  * <http://www.gnu.org/licenses/lgpl-2.1.html>
-  */
-=20
-+#include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
- #include "exec/cpu_ldst.h"
-diff --git a/target/nios2/translate.c b/target/nios2/translate.c
-index 72329002ac..51a54ff760 100644
---- a/target/nios2/translate.c
-+++ b/target/nios2/translate.c
-@@ -21,6 +21,7 @@
-  * <http://www.gnu.org/licenses/lgpl-2.1.html>
-  */
-=20
-+#include "qemu/osdep.h"
- #include "cpu.h"
- #include "tcg-op.h"
- #include "exec/exec-all.h"
+diff --git a/.gitignore b/.gitignore
+index 588769b250..433f64f429 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -53,7 +53,6 @@
+ /qemu-version.h.tmp
+ /module_block.h
+ /scsi/qemu-pr-helper
+-/vscclient
+ /vhost-user-scsi
+ /fsdev/virtfs-proxy-helper
+ *.tmp
 --=20
 2.11.0
 
