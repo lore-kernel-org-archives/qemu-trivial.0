@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQm3E-00062v-IT
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 22:25:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41481)
+	id 1eQma5-0007L2-Pe
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2017 22:59:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQm39-0005vN-UP
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 22:25:11 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1eQma3-0007Jd-Il
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 22:59:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQm33-00016j-LN
-	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 22:25:07 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:55787)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQm2y-00013b-UF; Sun, 17 Dec 2017 22:24:57 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id BC30E411BC;
-	Mon, 18 Dec 2017 06:24:55 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 85804D17;
-	Mon, 18 Dec 2017 00:25:47 +0300 (MSK)
-Received: (nullmailer pid 30949 invoked by uid 1000);
-	Sun, 17 Dec 2017 21:28:08 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org
-Date: Mon, 18 Dec 2017 00:27:37 +0300
-Message-Id: <7fcd1ffeceac14d56cf6f47f93f0b35114a403e5.1513545944.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <dgibson@ozlabs.org>) id 1eQma2-0006LK-Ow
+	for qemu-trivial@nongnu.org; Sun, 17 Dec 2017 22:59:07 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:33087)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1eQma0-0006Gj-A0; Sun, 17 Dec 2017 22:59:04 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3z0S2Y63fsz9s84; Mon, 18 Dec 2017 14:59:01 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1513569541;
+	bh=AQXBCfM04tp2x1HugJ2+nUaPHY+YbonUg9NQ8SYXIV4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MreMez4ygp2lr3AYlI4WJQJCBn8qeomVW3Cc1DyK9FkrhdsSTNI4kzK4GWNf/jBZs
+	P7OnyfkU5yUZeR241FrDgaLNS3bqQV/SL7cn2wCNu7oef5UxW0ThGtpuNCVBLFK8ys
+	jN8yx9kTuNPKsdx3ao6AqVRTPEY+T8GWV4Eac2Ec=
+Date: Mon, 18 Dec 2017 14:57:04 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Magnus Damm <magnus.damm@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20171218035704.GP7753@umbus.fritz.box>
+References: <cover.1513465066.git.balaton@eik.bme.hu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 32/61] misc: remove duplicated includes
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="b5sSX5qSQrSInIHt"
+Content-Disposition: inline
+In-Reply-To: <cover.1513465066.git.balaton@eik.bme.hu>
+User-Agent: Mutt/1.9.1 (2017-09-22)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [PATCH 0/2] More SM501 improvements
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,162 +50,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 03:25:11 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 03:59:08 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-exec: housekeeping (funny since 02d0e095031)
+--b5sSX5qSQrSInIHt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-applied using ./scripts/clean-includes
+On Sat, Dec 16, 2017 at 11:57:46PM +0100, BALATON Zoltan wrote:
+> Two simple patches to add some more registers that were found to be
+> accessed by some guests.
+>=20
+> BALATON Zoltan (3):
+>   sm501: Add panel hardware cursor registers also to read function
+>   sm501: Add some more unimplemented registers
+>=20
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
----
- accel/tcg/translate-all.c          | 1 -
- exec.c                             | 3 ---
- hw/arm/spitz.c                     | 1 -
- hw/char/xen_console.c              | 1 -
- hw/core/machine.c                  | 1 -
- hw/s390x/css.c                     | 1 -
- target/openrisc/exception_helper.c | 1 -
- tests/vhost-user-test.c            | 1 -
- util/qemu-sockets.c                | 1 -
- vl.c                               | 1 -
- 10 files changed, 12 deletions(-)
+Applied to ppc-for-2.12, with Philippe's suggested addition to the
+commit message.
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 02dfa361bb..7736257085 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -31,7 +31,6 @@
- #include "tcg.h"
- #if defined(CONFIG_USER_ONLY)
- #include "qemu.h"
--#include "exec/exec-all.h"
- #if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
- #include <sys/param.h>
- #if __FreeBSD_version >=3D 700104
-diff --git a/exec.c b/exec.c
-index 03238a3449..3e7c57e914 100644
---- a/exec.c
-+++ b/exec.c
-@@ -18,8 +18,6 @@
-  */
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#ifndef _WIN32
--#endif
-=20
- #include "qemu/cutils.h"
- #include "cpu.h"
-@@ -51,7 +49,6 @@
- #include "trace-root.h"
-=20
- #ifdef CONFIG_FALLOCATE_PUNCH_HOLE
--#include <fcntl.h>
- #include <linux/falloc.h>
- #endif
-=20
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-index feccdb00d3..ac1e15cbbc 100644
---- a/hw/arm/spitz.c
-+++ b/hw/arm/spitz.c
-@@ -29,7 +29,6 @@
- #include "sysemu/block-backend.h"
- #include "hw/sysbus.h"
- #include "exec/address-spaces.h"
--#include "sysemu/sysemu.h"
- #include "cpu.h"
-=20
- #undef REG_FMT
-diff --git a/hw/char/xen_console.c b/hw/char/xen_console.c
-index 3643dfe067..5e68326c19 100644
---- a/hw/char/xen_console.c
-+++ b/hw/char/xen_console.c
-@@ -27,7 +27,6 @@
- #include "hw/hw.h"
- #include "chardev/char-fe.h"
- #include "hw/xen/xen_backend.h"
--#include "qapi/error.h"
-=20
- #include <xen/io/console.h>
-=20
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 36c2fb069c..c857f3f934 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -20,7 +20,6 @@
- #include "sysemu/numa.h"
- #include "qemu/error-report.h"
- #include "qemu/cutils.h"
--#include "sysemu/numa.h"
- #include "sysemu/qtest.h"
-=20
- static char *machine_get_accel(Object *obj, Error **errp)
-diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-index f071e1394b..1c526fd7e2 100644
---- a/hw/s390x/css.c
-+++ b/hw/s390x/css.c
-@@ -13,7 +13,6 @@
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "hw/qdev.h"
--#include "qemu/error-report.h"
- #include "qemu/bitops.h"
- #include "qemu/error-report.h"
- #include "exec/address-spaces.h"
-diff --git a/target/openrisc/exception_helper.c b/target/openrisc/excepti=
-on_helper.c
-index a8a5f69b05..6073a5b21c 100644
---- a/target/openrisc/exception_helper.c
-+++ b/target/openrisc/exception_helper.c
-@@ -21,7 +21,6 @@
- #include "cpu.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
--#include "exec/exec-all.h"
- #include "exception.h"
-=20
- void HELPER(exception)(CPUOpenRISCState *env, uint32_t excp)
-diff --git a/tests/vhost-user-test.c b/tests/vhost-user-test.c
-index 4b98018478..e2c89ed376 100644
---- a/tests/vhost-user-test.c
-+++ b/tests/vhost-user-test.c
-@@ -21,7 +21,6 @@
- #include "libqos/libqos.h"
- #include "libqos/pci-pc.h"
- #include "libqos/virtio-pci.h"
--#include "qapi/error.h"
-=20
- #include "libqos/malloc-pc.h"
- #include "hw/virtio/virtio-net.h"
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index a1cf47e625..af4f01211a 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -26,7 +26,6 @@
- #include "qapi/error.h"
- #include "qemu/sockets.h"
- #include "qemu/main-loop.h"
--#include "qapi/clone-visitor.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qobject-output-visitor.h"
- #include "qapi-visit.h"
-diff --git a/vl.c b/vl.c
-index fc8bd9372f..c1ba52306a 100644
---- a/vl.c
-+++ b/vl.c
-@@ -95,7 +95,6 @@ int main(int argc, char **argv)
- #include "sysemu/kvm.h"
- #include "sysemu/hax.h"
- #include "qapi/qobject-input-visitor.h"
--#include "qapi/qobject-input-visitor.h"
- #include "qapi-visit.h"
- #include "qapi/qmp/qjson.h"
- #include "qemu/option.h"
 --=20
-2.11.0
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
+--b5sSX5qSQrSInIHt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlo3PI0ACgkQbDjKyiDZ
+s5IkAw//YyQEn4layfxdDsAhPBD1O6jHK5zKmOPMsxg2Uwm4C2k/1eLHmtlfpuHP
+uqY+1d/++WXUapF2N19TrQuCCqXccEQxZrv4mQ8xp2rGbsYHnpWJZDC4EX4W3uCZ
+txcQxpBNDr9Ne/2ubQxVqD9+wvmh6B0ETNNLKve0tVg3n+CM8w5rCEDzzFPToHq0
+A3ARn/+VXyzIOtLJtyDwqvM/1YJdqZzVL7QdSU/U0O7fg1qm5pAivhIuO/j2fxQU
+wjpTJhNRKiRrJ016s+Ep+wa8jwANs7y4OJjs6kWdXUGHeGIx0jaUgmrz+PaCGCr6
+gxiYvfIn5r/G6411hAcIq7Ie9KjwPNNjs+txkg4+xVjp7W++8yon+FEdcngxSgPt
++F8gqfZ1WA9h2Ks1iSIZSoyLCBrwv+iJnABNriqeo/Oy0rdB6pK8cmajjUVp6l0L
+P4PWTzn6HF01IpHdQJkDJvsCWqZCiF5IpnhBA2bNZodLzh1wlr+MPxNEgPcXu7ss
+VO7nmPBhJK/ran4iLXeZXHF3p/QVXJDmA2PoHDIR0x/h7fD4hZVsdEPpBWEHqK1w
+nm84+mAndJspNPBvqFtgL8R7EkHaPzz00yt0/K1zOOQMqtAd8gjSnaUqQAKnDo2J
+rIyKuvb55Yk2kqJ6T5jhG52UlJsNINiUcjPxDeCT2GTp37tjNr8=
+=TEX+
+-----END PGP SIGNATURE-----
+
+--b5sSX5qSQrSInIHt--
 
