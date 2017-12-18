@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQxz2-0001tT-Ef
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 11:09:40 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:58983)
+	id 1eQybG-0006aJ-8P
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 11:49:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1eQx8j-0007TI-Gl
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:42 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eQybE-0006Z7-6P
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 11:49:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry@daynix.com>) id 1eQx8T-0003Np-Ji
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:37 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33073)
+	(envelope-from <peter.maydell@linaro.org>) id 1eQybA-0004vy-FH
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 11:49:08 -0500
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:39294)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <dmitry@daynix.com>) id 1eQx8T-0003MU-67
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:21 -0500
-Received: by mail-wm0-x244.google.com with SMTP id g130so8010937wme.0
-	for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2017 07:15:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=daynix-com.20150623.gappssmtp.com; s=20150623;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=IMxAxx9Bq4FnsOfAR1QvAWMwDf2zcd2LJiTz10kKWl8=;
-	b=AKTa0dfNlvFr4fVrpDVxzQAo/wF1wKDcVDzCO/j9w6FiNTh7pZ7Qem7TSGEi0grnzP
-	PQzC20gKYLOD4wwW5icsanbR4+4C733IvTd57ToEGJFTeZVDwqHCi/ANmCs2Umwar53M
-	TWH6eB1jV9oOwzOBQQVOgD4gXVDb/IDW3xyg0yy0yasZ0XnGbN2CXxisaumWhj+0Ymk9
-	DasFA1po1Gxc6auvO8jWO2jmjz5+Oai+TPiTJWrMOT5w9KlHd6RfyHU6W4IkRkhTxCM5
-	bcui/iEerW92HtKB388i8XK/EgUDe1Xu+piwfyz2aL7BtNViiJnZnf+ZqrQ1vrZAx5NP
-	lYtQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eQybA-0004v6-Bb
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 11:49:04 -0500
+Received: by mail-ot0-x241.google.com with SMTP id v21so13896381oth.6
+	for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2017 08:49:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=bK8g/3LfhM14wz8HUyolyM8e5hWVBcuP2MNmBfInKdw=;
+	b=GbLHsmRcNYZ0eif2R9EElfR5Z7DaYysViv96yKmWrKgNyBgzOb36bVuzlvdn9NL8uU
+	THYc949w37qDt3yFOtDejz0wivEsBZaLTF66VFiOgxHdcPQTfzZfAnx8t5++vIdupwFV
+	Mw/tUvFDjIcd/kRVLJE486oj7+bFvIIM6U7xU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=IMxAxx9Bq4FnsOfAR1QvAWMwDf2zcd2LJiTz10kKWl8=;
-	b=fSkh90Ndawx5EQypZQQkkzqcPYv4b+Dqhdf7Z7qPfHYvbFUMqpsAOqcEuV2wcG5zMZ
-	pvvmpzM49m9iDgHKwJAjFenrm2Y57mCfT8ZS88VbITls5wjq336D9K2nqZupKZVC/qTb
-	zvvT/6/WU8VsQUbrFVhuFIvAF/U3kOoFfQkx3/uHv3dRD50n0N6a1vJoZjIZLkEvUfM7
-	Se8uJ7x95uStblEg3Io1ChX2Zx6Al/Jzcn/op84Jd7bVtCxF8OzSPkcDru11EQ+7exMd
-	aMFJUnRG+8VAdhhSBrjVGhGok+l0DesSJGZoKZ7u7b9R1JZnyuKBz2qWgONG8tIYmrVl
-	V8GQ==
-X-Gm-Message-State: AKGB3mKRpGp27NI8Cm6ZmVphu9g0T5Hjj/1NCaPL47+lNvzUhjKxfh+h
-	1LOKJyfYF2d78lIqJQa96cGGIbGbtr4=
-X-Google-Smtp-Source: ACJfBosPxCkuln8VLFMp2WQJhel3JT1FOjAuuANzS7I+JtZ9e+p3vPthlADugljPrQrAg12qYEkC1Q==
-X-Received: by 10.28.138.142 with SMTP id m136mr15330wmd.40.1513610119712;
-	Mon, 18 Dec 2017 07:15:19 -0800 (PST)
-Received: from dmitry-linux.local ([141.226.29.227])
-	by smtp.gmail.com with ESMTPSA id
-	g92sm18475931wrd.72.2017.12.18.07.15.18
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 18 Dec 2017 07:15:18 -0800 (PST)
-Sender: Dmitry Fleytman <dmitry@daynix.com>
-From: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Date: Mon, 18 Dec 2017 17:15:10 +0200
-Message-Id: <20171218151510.2901-1-dmitry.fleytman@gmail.com>
-X-Mailer: git-send-email 2.14.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=bK8g/3LfhM14wz8HUyolyM8e5hWVBcuP2MNmBfInKdw=;
+	b=isSjtSUaz/lfBWh3Sb1ARs3QC+KQJ+RG9+g7+CzxrXG/nBDKiOPMAsQGFwG7nim6xU
+	nHIsUeoOPt78NqSmul3FX4F1xHIi7y6XNBAVTpfk6n4ETzlZ3mgE0fJ4v/OXu47tygbR
+	mFQ4EvKJuaGlOGS1FxSkhnz7Lk3PFIWUaNZKwQz+gaur32tvddS8TPXsIA7+WQDoeeod
+	OFktFw3femw+U/qzKuT7x+9u0oizGHCOOU7byJiOdEEebgrhkxhaxh1Z64Bwd7BvkNvf
+	ul9s4PUJc96zlxpqVSde8yOzOnfx/5fDtXz3oylavgy0CWs3B3M8DqTVN3vmr83sxEVr
+	SP1Q==
+X-Gm-Message-State: AKGB3mJ9U5vyS+UKhLRMp0VA4dM54NsBc8O91oTMtyxowkirChBfLJ4d
+	gdr8k982+8NvbvSENIhVqWyTxSyCM+Bc6JKUHJjgXg==
+X-Google-Smtp-Source: ACJfBovz+GUUzSPTSASi+/vQ3RHJXCJoXTQEdLQjaNX1hP4yBvg8E5P7Oha/JfZxsMNZY7VQI9dKbSfj4Ldqj5bsrFY=
+X-Received: by 10.157.90.6 with SMTP id v6mr189471oth.54.1513615743366; Mon,
+	18 Dec 2017 08:49:03 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.63.74 with HTTP; Mon, 18 Dec 2017 08:48:42 -0800 (PST)
+In-Reply-To: <cover.1513606137.git.mjt@msgid.tls.msk.ru>
+References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+	<cover.1513606137.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Dec 2017 16:48:42 +0000
+Message-ID: <CAFEAcA_qw3t5rC0_cj__7ax5FmYdD12e3FQSB3xBccVEH-x2Hw@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-X-Mailman-Approved-At: Mon, 18 Dec 2017 11:09:38 -0500
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Update e-mail address
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v3 00/60] Trivial patches for
+ 2017-12-18
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,53 +67,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 15:15:43 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 16:49:09 -0000
 
-Updating MAINTAINERS with my current e-mail address.
+On 18 December 2017 at 14:13, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's another, 3rd, attempt for a pull request for the trivial-patches
+> tree. Not resending whole thing once again.
+>
+> I've removed the patch that caused previous failure, which was
+> =C2=ABhw/alpha/typhoon: simplify using the "unimplemented" sysbus device=
+=C2=BB,
+> and updated another patch, =C2=ABhw/tpm: remove old i386 dependency=C2=BB
+> to resolve slight resolve conflicts, also rebased on top of current maste=
+r.
+>
+> Please consider pulling.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 411ad78115ebeb3411cf4b7622784b93dfabe2=
+59:
+>
+>   Merge remote-tracking branch 'remotes/stefanberger/tags/pull-tpm-2017-1=
+2-15-1' into staging (2017-12-17 15:27:41 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to c0578de60fcc3a07a881e9c4b7b8262faf6abbc7:
+>
+>   misc: drop old i386 dependency (2017-12-18 17:07:03 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2017-12-18
 
-Signed-off-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
----
- MAINTAINERS | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Applied, thanks.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 45e2e2009b..d51273e656 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1145,7 +1145,7 @@ F: hw/scsi/mfi.h
- F: tests/megasas-test.c
- 
- Network packet abstractions
--M: Dmitry Fleytman <dmitry@daynix.com>
-+M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
- S: Maintained
- F: include/net/eth.h
- F: net/eth.c
-@@ -1153,7 +1153,7 @@ F: hw/net/net_rx_pkt*
- F: hw/net/net_tx_pkt*
- 
- Vmware
--M: Dmitry Fleytman <dmitry@daynix.com>
-+M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
- S: Maintained
- F: hw/net/vmxnet*
- F: hw/scsi/vmw_pvscsi*
-@@ -1174,12 +1174,12 @@ F: hw/mem/nvdimm.c
- F: include/hw/mem/nvdimm.h
- 
- e1000x
--M: Dmitry Fleytman <dmitry@daynix.com>
-+M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
- S: Maintained
- F: hw/net/e1000x*
- 
- e1000e
--M: Dmitry Fleytman <dmitry@daynix.com>
-+M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
- S: Maintained
- F: hw/net/e1000e*
- 
--- 
-2.14.1
-
+-- PMM
 
