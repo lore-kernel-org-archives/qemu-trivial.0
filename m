@@ -1,43 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQwAr-0005aZ-1S
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 09:13:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43110)
+	id 1eQxz2-0001tT-Ef
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 11:09:40 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58983)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQwAm-0005WQ-HT
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 09:13:43 -0500
+	(envelope-from <dmitry@daynix.com>) id 1eQx8j-0007TI-Gl
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQwAi-00081p-17
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 09:13:37 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:44469)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQwAc-0007yS-JE; Mon, 18 Dec 2017 09:13:30 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 69E1D4120C;
-	Mon, 18 Dec 2017 17:13:29 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 5F225CD0;
-	Mon, 18 Dec 2017 17:11:06 +0300 (MSK)
-Received: (nullmailer pid 6820 invoked by uid 1000);
-	Mon, 18 Dec 2017 14:13:29 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Mon, 18 Dec 2017 17:13:27 +0300
-Message-Id: <4c22db44859af80dfca946070d155f5dd43e5492.1513606137.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1513606137.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513606137.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1513606137.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513606137.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 46/60] hw/tpm: remove old i386 dependency
+	(envelope-from <dmitry@daynix.com>) id 1eQx8T-0003Np-Ji
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:37 -0500
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33073)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <dmitry@daynix.com>) id 1eQx8T-0003MU-67
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 10:15:21 -0500
+Received: by mail-wm0-x244.google.com with SMTP id g130so8010937wme.0
+	for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2017 07:15:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=daynix-com.20150623.gappssmtp.com; s=20150623;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=IMxAxx9Bq4FnsOfAR1QvAWMwDf2zcd2LJiTz10kKWl8=;
+	b=AKTa0dfNlvFr4fVrpDVxzQAo/wF1wKDcVDzCO/j9w6FiNTh7pZ7Qem7TSGEi0grnzP
+	PQzC20gKYLOD4wwW5icsanbR4+4C733IvTd57ToEGJFTeZVDwqHCi/ANmCs2Umwar53M
+	TWH6eB1jV9oOwzOBQQVOgD4gXVDb/IDW3xyg0yy0yasZ0XnGbN2CXxisaumWhj+0Ymk9
+	DasFA1po1Gxc6auvO8jWO2jmjz5+Oai+TPiTJWrMOT5w9KlHd6RfyHU6W4IkRkhTxCM5
+	bcui/iEerW92HtKB388i8XK/EgUDe1Xu+piwfyz2aL7BtNViiJnZnf+ZqrQ1vrZAx5NP
+	lYtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+	bh=IMxAxx9Bq4FnsOfAR1QvAWMwDf2zcd2LJiTz10kKWl8=;
+	b=fSkh90Ndawx5EQypZQQkkzqcPYv4b+Dqhdf7Z7qPfHYvbFUMqpsAOqcEuV2wcG5zMZ
+	pvvmpzM49m9iDgHKwJAjFenrm2Y57mCfT8ZS88VbITls5wjq336D9K2nqZupKZVC/qTb
+	zvvT/6/WU8VsQUbrFVhuFIvAF/U3kOoFfQkx3/uHv3dRD50n0N6a1vJoZjIZLkEvUfM7
+	Se8uJ7x95uStblEg3Io1ChX2Zx6Al/Jzcn/op84Jd7bVtCxF8OzSPkcDru11EQ+7exMd
+	aMFJUnRG+8VAdhhSBrjVGhGok+l0DesSJGZoKZ7u7b9R1JZnyuKBz2qWgONG8tIYmrVl
+	V8GQ==
+X-Gm-Message-State: AKGB3mKRpGp27NI8Cm6ZmVphu9g0T5Hjj/1NCaPL47+lNvzUhjKxfh+h
+	1LOKJyfYF2d78lIqJQa96cGGIbGbtr4=
+X-Google-Smtp-Source: ACJfBosPxCkuln8VLFMp2WQJhel3JT1FOjAuuANzS7I+JtZ9e+p3vPthlADugljPrQrAg12qYEkC1Q==
+X-Received: by 10.28.138.142 with SMTP id m136mr15330wmd.40.1513610119712;
+	Mon, 18 Dec 2017 07:15:19 -0800 (PST)
+Received: from dmitry-linux.local ([141.226.29.227])
+	by smtp.gmail.com with ESMTPSA id
+	g92sm18475931wrd.72.2017.12.18.07.15.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 18 Dec 2017 07:15:18 -0800 (PST)
+Sender: Dmitry Fleytman <dmitry@daynix.com>
+From: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Date: Mon, 18 Dec 2017 17:15:10 +0200
+Message-Id: <20171218151510.2901-1-dmitry.fleytman@gmail.com>
+X-Mailer: git-send-email 2.14.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::244
+X-Mailman-Approved-At: Mon, 18 Dec 2017 11:09:38 -0500
+Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Update e-mail address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,44 +67,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 14:13:43 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 15:15:43 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Updating MAINTAINERS with my current e-mail address.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
 ---
- hw/tpm/tpm_emulator.c    | 1 -
- hw/tpm/tpm_passthrough.c | 1 -
- 2 files changed, 2 deletions(-)
+ MAINTAINERS | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/tpm/tpm_emulator.c b/hw/tpm/tpm_emulator.c
-index 3ae8bf6c5a..38b6f175a1 100644
---- a/hw/tpm/tpm_emulator.c
-+++ b/hw/tpm/tpm_emulator.c
-@@ -33,7 +33,6 @@
- #include "sysemu/tpm_backend.h"
- #include "tpm_int.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "tpm_util.h"
- #include "tpm_ioctl.h"
- #include "migration/blocker.h"
-diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
-index 487aae2043..149fae63e6 100644
---- a/hw/tpm/tpm_passthrough.c
-+++ b/hw/tpm/tpm_passthrough.c
-@@ -29,7 +29,6 @@
- #include "sysemu/tpm_backend.h"
- #include "tpm_int.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
- #include "qapi/clone-visitor.h"
- #include "tpm_util.h"
-=20
---=20
-2.11.0
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 45e2e2009b..d51273e656 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1145,7 +1145,7 @@ F: hw/scsi/mfi.h
+ F: tests/megasas-test.c
+ 
+ Network packet abstractions
+-M: Dmitry Fleytman <dmitry@daynix.com>
++M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+ S: Maintained
+ F: include/net/eth.h
+ F: net/eth.c
+@@ -1153,7 +1153,7 @@ F: hw/net/net_rx_pkt*
+ F: hw/net/net_tx_pkt*
+ 
+ Vmware
+-M: Dmitry Fleytman <dmitry@daynix.com>
++M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+ S: Maintained
+ F: hw/net/vmxnet*
+ F: hw/scsi/vmw_pvscsi*
+@@ -1174,12 +1174,12 @@ F: hw/mem/nvdimm.c
+ F: include/hw/mem/nvdimm.h
+ 
+ e1000x
+-M: Dmitry Fleytman <dmitry@daynix.com>
++M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+ S: Maintained
+ F: hw/net/e1000x*
+ 
+ e1000e
+-M: Dmitry Fleytman <dmitry@daynix.com>
++M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+ S: Maintained
+ F: hw/net/e1000e*
+ 
+-- 
+2.14.1
 
 
