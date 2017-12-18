@@ -1,44 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eQoEe-0003o4-El
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 00:45:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49129)
+	id 1eQs1u-00045d-NH
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2017 04:48:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56730)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQoEb-0003kH-Kk
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 00:45:06 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eQs1s-00044F-Ge
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 04:48:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1eQoEa-0003sg-K1
-	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 00:45:05 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:38229)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1eQoET-0003o2-U8; Mon, 18 Dec 2017 00:44:58 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 65CA7411CB;
-	Mon, 18 Dec 2017 08:44:56 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1D205D24;
-	Mon, 18 Dec 2017 00:25:48 +0300 (MSK)
-Received: (nullmailer pid 30998 invoked by uid 1000);
-	Sun, 17 Dec 2017 21:28:08 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org
-Date: Mon, 18 Dec 2017 00:28:01 +0300
-Message-Id: <1bfaedcf482e324498a80f3544468207f60b48a6.1513545944.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
-References: <cover.1513545944.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eQs1m-0000Hr-QQ
+	for qemu-trivial@nongnu.org; Mon, 18 Dec 2017 04:48:12 -0500
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:34372)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1eQs1j-0000Fh-U4; Mon, 18 Dec 2017 04:48:04 -0500
+Received: by mail-wr0-x244.google.com with SMTP id y21so13457846wrc.1;
+	Mon, 18 Dec 2017 01:48:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=YC9i6RaCm8TNEAPM1CiQF5jxy/vJoY6st+tu+kXpgv0=;
+	b=RgINEvoxuPTLUxv4oo8uB57cH8CF+9d45AOUY8w7DQMYFwxXVSqmNEMozefox7Avxg
+	I7D50WBch4R+Gh7ZkhyaNQjjtcY95moyDaTh8eV7oJKDcsqx3ua2ChG0Dt7JvYcvQRjg
+	8NYXJ58mdQ3W25vfkzHGsoBhA0EBQoQDGwqVZ2B4hm3OjQsNx/vKUM3FOjhEImWqqfrY
+	7Rqmt2MQTDA+0z9yyD9O12tJFP0iz/g9M4seRUh5lFMuij+MliJpGnHrndjTn56zflQ9
+	nvatmB16qVOuQ6tMcO6xL9CoeL4a0M+dBXgvb4H9mo9LavtSI2BVd8uHGJIqVbWM2+J0
+	3/mA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=YC9i6RaCm8TNEAPM1CiQF5jxy/vJoY6st+tu+kXpgv0=;
+	b=dDrVZPhOxOhuAnGhj6IggYn2xBJ1c5U52lT6ks0o8g2VPBIVjg234cTOHYc3tAfNU4
+	g2fjDRlbcc8RR10/STtqD7QjlEzjuv4R72mpS1odcJGON8Oz8HHFdMy4U0BI9iYfH8z/
+	gZaB/QGxQ0Fi9pJNr91GP2LLnWXBi8lPKtRFxD7rP+w0OgROojjtlDyRHFLvTV3WipuK
+	7rVEv8taQ/l3EbKcUk2QfH4b0k1pcb4uNnpFwOSIx39YdEibS7u8RMxUsrju4TTQ/Ajn
+	cvwAJj2aI+AqJBiUSo1qA6/gR9BLK42MKq5pOFt38A6Av59cJhrApnHS8Rpuk2+GGXED
+	J7bg==
+X-Gm-Message-State: AKGB3mKZQ+0eV84ahowaQnyUUhySic4lY9V37XDr3qxseDwmozZAmeI/
+	UzCBQwSXo9rO/XOuArLVmONbyMo5WvT6KThqF7c=
+X-Google-Smtp-Source: ACJfBotrRCR8xekHBPXDcW4c8GpyxWdBpmJU/eI8/OSQPM+NGuy0594xZ1HS99cfRi9QFZ62+CLKFLwid93rX5wA9Vg=
+X-Received: by 10.223.187.210 with SMTP id z18mr15521880wrg.117.1513590482568; 
+	Mon, 18 Dec 2017 01:48:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 56/61] hw/display/vga: extract public API from
- i386/pc to "hw/display/vga.h"
+References: <20171218015947.17293-1-f4bug@amsat.org>
+In-Reply-To: <20171218015947.17293-1-f4bug@amsat.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Mon, 18 Dec 2017 09:47:52 +0000
+Message-ID: <CAJ+F1C+42pi5=9KX6811ndi6P_8z_Yr75gRYpzmgZ3ZZRruPZA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-devel@nongnu.org, 
+	qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="089e0820ee800c8bbb05609a3fd1"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/tpm: remove old i386
+ dependency
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,164 +66,112 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2017 05:45:06 -0000
+X-List-Received-Date: Mon, 18 Dec 2017 09:48:13 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+--089e0820ee800c8bbb05609a3fd1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-and remove the old i386/pc dependency.
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com>
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS              |  1 +
- hw/display/vga-isa-mm.c  |  3 +--
- hw/display/vga-isa.c     |  2 +-
- hw/display/vga.c         |  2 +-
- hw/mips/mips_jazz.c      |  1 +
- include/hw/display/vga.h | 25 +++++++++++++++++++++++++
- include/hw/i386/pc.h     | 12 ------------
- vl.c                     |  2 +-
- 8 files changed, 31 insertions(+), 17 deletions(-)
- create mode 100644 include/hw/display/vga.h
+Le lun. 18 d=C3=A9c. 2017 =C3=A0 03:01, Philippe Mathieu-Daud=C3=A9 <f4bug@=
+amsat.org> a
+=C3=A9crit :
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index acbff2f1bb..8859a50c36 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -881,6 +881,7 @@ F: hw/timer/hpet*
- F: hw/timer/i8254*
- F: hw/timer/mc146818rtc*
- F: hw/watchdog/wdt_ib700.c
-+F: include/hw/display/vga.h
- F: include/hw/i2c/pm_smbus.h
- F: include/hw/isa/i8257.h
- F: include/hw/timer/hpet.h
-diff --git a/hw/display/vga-isa-mm.c b/hw/display/vga-isa-mm.c
-index 68c4d6e23e..e887b45651 100644
---- a/hw/display/vga-isa-mm.c
-+++ b/hw/display/vga-isa-mm.c
-@@ -23,10 +23,9 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/display/vga.h"
- #include "vga_int.h"
- #include "ui/pixel_ops.h"
--#include "qemu/timer.h"
-=20
- #define VGA_RAM_SIZE (8192 * 1024)
-=20
-diff --git a/hw/display/vga-isa.c b/hw/display/vga-isa.c
-index 26f69fd40a..469834add5 100644
---- a/hw/display/vga-isa.c
-+++ b/hw/display/vga-isa.c
-@@ -25,7 +25,7 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/isa/isa.h"
- #include "vga_int.h"
- #include "ui/pixel_ops.h"
- #include "qemu/timer.h"
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 4163b532e0..a0412000a5 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -24,7 +24,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
--#include "hw/i386/pc.h"
-+#include "hw/display/vga.h"
- #include "hw/pci/pci.h"
- #include "vga_int.h"
- #include "vga_regs.h"
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 22a3d5169c..0d2c0683ba 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -39,6 +39,7 @@
- #include "hw/loader.h"
- #include "hw/timer/mc146818rtc.h"
- #include "hw/timer/i8254.h"
-+#include "hw/display/vga.h"
- #include "hw/audio/pcspk.h"
- #include "sysemu/block-backend.h"
- #include "hw/sysbus.h"
-diff --git a/include/hw/display/vga.h b/include/hw/display/vga.h
-new file mode 100644
-index 0000000000..0401a3a292
---- /dev/null
-+++ b/include/hw/display/vga.h
-@@ -0,0 +1,25 @@
-+/*
-+ * QEMU VGA Emulator.
-+ *
-+ * Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#ifndef QEMU_HW_DISPLAY_VGA_H
-+#define QEMU_HW_DISPLAY_VGA_H
-+
-+#include "exec/memory.h"
-+
-+enum vga_retrace_method {
-+    VGA_RETRACE_DUMB,
-+    VGA_RETRACE_PRECISE
-+};
-+
-+extern enum vga_retrace_method vga_retrace_method;
-+
-+int isa_vga_mm_init(hwaddr vram_base,
-+                    hwaddr ctrl_base, int it_shift,
-+                    MemoryRegion *address_space);
-+
-+#endif
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 3794473108..1d55ba3322 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -302,18 +302,6 @@ PCIBus *find_i440fx(void);
- extern PCIDevice *piix4_dev;
- int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
-=20
--/* vga.c */
--enum vga_retrace_method {
--    VGA_RETRACE_DUMB,
--    VGA_RETRACE_PRECISE
--};
--
--extern enum vga_retrace_method vga_retrace_method;
--
--int isa_vga_mm_init(hwaddr vram_base,
--                    hwaddr ctrl_base, int it_shift,
--                    MemoryRegion *address_space);
--
- /* ne2000.c */
- static inline bool isa_ne2000_init(ISABus *bus, int base, int irq, NICIn=
-fo *nd)
- {
-diff --git a/vl.c b/vl.c
-index c1ba52306a..e9012bb009 100644
---- a/vl.c
-+++ b/vl.c
-@@ -57,9 +57,9 @@ int main(int argc, char **argv)
- #include "hw/boards.h"
- #include "sysemu/accel.h"
- #include "hw/usb.h"
--#include "hw/i386/pc.h"
- #include "hw/isa/isa.h"
- #include "hw/scsi/scsi.h"
-+#include "hw/display/vga.h"
- #include "hw/bt.h"
- #include "sysemu/watchdog.h"
- #include "hw/smbios/smbios.h"
---=20
-2.11.0
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> ---
+> Based-on: 1513446109-9013-33-git-send-email-stefanb@linux.vnet.ibm.com
+> ---
+>  hw/tpm/tpm_emulator.c    | 1 -
+>  hw/tpm/tpm_passthrough.c | 1 -
+>  2 files changed, 2 deletions(-)
+>
+> diff --git a/hw/tpm/tpm_emulator.c b/hw/tpm/tpm_emulator.c
+> index 3ae8bf6c5a..38b6f175a1 100644
+> --- a/hw/tpm/tpm_emulator.c
+> +++ b/hw/tpm/tpm_emulator.c
+> @@ -33,7 +33,6 @@
+>  #include "sysemu/tpm_backend.h"
+>  #include "tpm_int.h"
+>  #include "hw/hw.h"
+> -#include "hw/i386/pc.h"
+>  #include "tpm_util.h"
+>  #include "tpm_ioctl.h"
+>  #include "migration/blocker.h"
+> diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c
+> index 487aae2043..149fae63e6 100644
+> --- a/hw/tpm/tpm_passthrough.c
+> +++ b/hw/tpm/tpm_passthrough.c
+> @@ -29,7 +29,6 @@
+>  #include "sysemu/tpm_backend.h"
+>  #include "tpm_int.h"
+>  #include "hw/hw.h"
+> -#include "hw/i386/pc.h"
+>  #include "qapi/clone-visitor.h"
+>  #include "tpm_util.h"
+>
+> --
+> 2.15.1
+>
+>
+> --
+Marc-Andr=C3=A9 Lureau
 
+--089e0820ee800c8bbb05609a3fd1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@=
+gmail.com">marcandre.lureau@gmail.com</a>&gt;<br><br><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr">Le lun. 18 d=C3=A9c. 2017 =C3=A0 03:01, Philippe Math=
+ieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&g=
+t; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Signed-off-b=
+y: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org" targe=
+t=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+Reviewed-by: Stefan Berger &lt;<a href=3D"mailto:stefanb@linux.vnet.ibm.com=
+" target=3D"_blank">stefanb@linux.vnet.ibm.com</a>&gt;<br>
+---<br>
+Based-on: <a href=3D"mailto:1513446109-9013-33-git-send-email-stefanb@linux=
+.vnet.ibm.com" target=3D"_blank">1513446109-9013-33-git-send-email-stefanb@=
+linux.vnet.ibm.com</a><br>
+---<br>
+=C2=A0hw/tpm/tpm_emulator.c=C2=A0 =C2=A0 | 1 -<br>
+=C2=A0hw/tpm/tpm_passthrough.c | 1 -<br>
+=C2=A02 files changed, 2 deletions(-)<br>
+<br>
+diff --git a/hw/tpm/tpm_emulator.c b/hw/tpm/tpm_emulator.c<br>
+index 3ae8bf6c5a..38b6f175a1 100644<br>
+--- a/hw/tpm/tpm_emulator.c<br>
++++ b/hw/tpm/tpm_emulator.c<br>
+@@ -33,7 +33,6 @@<br>
+=C2=A0#include &quot;sysemu/tpm_backend.h&quot;<br>
+=C2=A0#include &quot;tpm_int.h&quot;<br>
+=C2=A0#include &quot;hw/hw.h&quot;<br>
+-#include &quot;hw/i386/pc.h&quot;<br>
+=C2=A0#include &quot;tpm_util.h&quot;<br>
+=C2=A0#include &quot;tpm_ioctl.h&quot;<br>
+=C2=A0#include &quot;migration/blocker.h&quot;<br>
+diff --git a/hw/tpm/tpm_passthrough.c b/hw/tpm/tpm_passthrough.c<br>
+index 487aae2043..149fae63e6 100644<br>
+--- a/hw/tpm/tpm_passthrough.c<br>
++++ b/hw/tpm/tpm_passthrough.c<br>
+@@ -29,7 +29,6 @@<br>
+=C2=A0#include &quot;sysemu/tpm_backend.h&quot;<br>
+=C2=A0#include &quot;tpm_int.h&quot;<br>
+=C2=A0#include &quot;hw/hw.h&quot;<br>
+-#include &quot;hw/i386/pc.h&quot;<br>
+=C2=A0#include &quot;qapi/clone-visitor.h&quot;<br>
+=C2=A0#include &quot;tpm_util.h&quot;<br>
+<br>
+--<br>
+2.15.1<br>
+<br>
+<br>
+</blockquote></div><div dir=3D"ltr">-- <br></div><div class=3D"gmail_signat=
+ure" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">Marc-Andr=C3=A9 Lu=
+reau<br></div></div>
+
+--089e0820ee800c8bbb05609a3fd1--
 
