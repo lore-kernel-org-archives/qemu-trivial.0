@@ -1,61 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRF40-00086v-IH
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 05:23:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41960)
+	id 1eRKaP-0002Ng-M5
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 11:17:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38675)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eRF3y-00084Z-2Z
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 05:23:54 -0500
+	(envelope-from <thuth@redhat.com>) id 1eRKaN-0002LO-8M
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 11:17:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1eRF3x-0008VR-5S
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 05:23:54 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:41846)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1eRF3q-0008Rh-6S; Tue, 19 Dec 2017 05:23:46 -0500
-Received: by mail-wr0-x242.google.com with SMTP id p69so9724061wrb.8;
-	Tue, 19 Dec 2017 02:23:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=fvDPYrrC3CRy0OYYLH6xzfN3UATLblSrptu/xxdQ6H8=;
-	b=jlDNwzwY5kOVXEHrRIKtGv9wXKjtCkChrU2Y3Mxct6R9JPbvV4m5Zv357V+mSHVmt8
-	ZFAoBiWKX4TYio/ylkKR155crMEhUV6CVg/mTCXPT47PRIb5ue8xl+436aWkippVbGbD
-	+yZ8W9PvCWrs1ivJI6w/n367iJGGh8F4kTRMOlkhkCCGu612MOxRpML5u0vfvLuIOS+8
-	bg6eGJACjbsT1jzDAlCF2lBKp39s4ewRQnXnL0CJV3+iLRDdapofGWgoxRKqVa4JOkp4
-	l4X1cUal96y67oJ9D4ajx+D59fG4OMmzjn/OsRs9ZX/R/YvoqohiCyeWB16DT5jO+wcn
-	/wIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=fvDPYrrC3CRy0OYYLH6xzfN3UATLblSrptu/xxdQ6H8=;
-	b=l0R9R/RsbyAgMZu8sVMjKmPe+k/uYPCkWhO9jpGfN8o1Gcxnbiv42LEueAEwRhZ0hN
-	w1JShO1V1XvECsZN9f+LTkSNZxrcRQVr+X9o0Qh3gR8wU+TsywXVoNDHTgOt42iHLrlO
-	q7ceCL0JCuYA/b9V1sJhdWKNL8SuU/aH/PSsChL63VX8KpMHwq4whGmNnNFhn0+0MVko
-	bYlgu2KD7uWvUE/2IzZqWgMn0NmuFH9ceyDxsW2Bl/vSHpXKoM0wPCn0t2wTh+WfMPxa
-	eRBFKswjEcjRPF+sFFRfvb0Vl87HSNmjUzalIGKX0QGb6v6Jp4oDQ4+sJeYDh2OC+4k4
-	HQFQ==
-X-Gm-Message-State: AKGB3mJQYmW4ufMQu28SkOViYqHumdCpXRy+U1wlap9uT3WmqK/jHq2Z
-	vZ+wIepqs2bSsqgfLPHxb3Weqm1LEglYRmnC4clJ27kF
-X-Google-Smtp-Source: ACJfBoug6U5W/kFtroiiI7mrnc3EWbUDXacsozKHJsk8tAUR67O36iY+gh7dZVgYm5OMO8+4+flLbv3oPPOTU2wASZw=
-X-Received: by 10.223.158.13 with SMTP id u13mr4335952wre.134.1513679024676;
-	Tue, 19 Dec 2017 02:23:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.223.165.153 with HTTP; Tue, 19 Dec 2017 02:23:43 -0800 (PST)
-In-Reply-To: <20171219082518.19724-1-lma@suse.com>
-References: <20171219082518.19724-1-lma@suse.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 19 Dec 2017 11:23:43 +0100
-Message-ID: <CAJ+F1CL-ohuLUdDvLC5GPZOX81tUMSXo_LkwNWFw47UEJ9ivWA@mail.gmail.com>
-To: Lin Ma <lma@suse.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Fix typo in
- scripts/git-submodule.sh
+	(envelope-from <thuth@redhat.com>) id 1eRKaM-0004Ac-5k
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 11:17:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56791)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eRKaH-00046M-Ja; Tue, 19 Dec 2017 11:17:37 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 975122DACD8;
+	Tue, 19 Dec 2017 16:17:36 +0000 (UTC)
+Received: from thh440s.str.redhat.com (dhcp-192-189.str.redhat.com
+	[10.33.192.189])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BD98018667;
+	Tue, 19 Dec 2017 16:17:33 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Date: Tue, 19 Dec 2017 17:17:33 +0100
+Message-Id: <1513700253-10045-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 19 Dec 2017 16:17:36 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] monitor: Remove legacy "-mon default=on"
+ parameter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,41 +50,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Dec 2017 10:23:55 -0000
+X-List-Received-Date: Tue, 19 Dec 2017 16:17:44 -0000
 
-On Tue, Dec 19, 2017 at 9:25 AM, Lin Ma <lma@suse.com> wrote:
-> Signed-off-by: Lin Ma <lma@suse.com>
-> ---
->  scripts/git-submodule.sh | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/scripts/git-submodule.sh b/scripts/git-submodule.sh
-> index bc7224a..807ca0b 100755
-> --- a/scripts/git-submodule.sh
-> +++ b/scripts/git-submodule.sh
-> @@ -28,7 +28,7 @@ error() {
->      echo
->      echo "and then manually update submodules prior to running make, wit=
-h:"
->      echo
-> -    echo " $ scripts/git-sbumodule.sh update $modules"
-> +    echo " $ scripts/git-submodule.sh update $modules"
->      echo
->      exit 1
->  }
-> --
-> 2.9.2
+The "default" parameter of the "-mon" option is useless since
+QEMU v2.4.0, and marked as deprecated since QEMU v2.8.0. That
+should have been long enough to let people update their scripts,
+so time to remove it now.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ monitor.c     | 3 ---
+ qemu-doc.texi | 9 ---------
+ vl.c          | 4 ----
+ 3 files changed, 16 deletions(-)
 
-CC: trivial
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+diff --git a/monitor.c b/monitor.c
+index e36fb53..e53c6e1 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -4141,9 +4141,6 @@ QemuOptsList qemu_mon_opts = {
+             .name = "chardev",
+             .type = QEMU_OPT_STRING,
+         },{
+-            .name = "default",  /* deprecated */
+-            .type = QEMU_OPT_BOOL,
+-        },{
+             .name = "pretty",
+             .type = QEMU_OPT_BOOL,
+         },
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index d9861b3..6913b32 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -2401,15 +2401,6 @@ setting ``-machine kernel_irqchip=off''.
+ The ``-no-kvm'' argument is now a synonym for setting
+ ``-machine accel=tcg''.
+ 
+-@subsection -mon default=on (since 2.4.0)
+-
+-The ``default'' option to the ``-mon'' argument is
+-now ignored. When multiple monitors were enabled, it
+-indicated which monitor would receive log messages
+-from the various subsystems. This feature is no longer
+-required as messages are now only sent to the monitor
+-in response to explicitly monitor commands.
+-
+ @subsection -vnc tls (since 2.5.0)
+ 
+ The ``-vnc tls'' argument is now a synonym for setting
+diff --git a/vl.c b/vl.c
+index 2644400..4e7a7e4 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2438,10 +2438,6 @@ static int mon_init_func(void *opaque, QemuOpts *opts, Error **errp)
+     if (qemu_opt_get_bool(opts, "pretty", 0))
+         flags |= MONITOR_USE_PRETTY;
+ 
+-    if (qemu_opt_get_bool(opts, "default", 0)) {
+-        error_report("option 'default' does nothing and is deprecated");
+-    }
+-
+     chardev = qemu_opt_get(opts, "chardev");
+     chr = qemu_chr_find(chardev);
+     if (chr == NULL) {
+-- 
+1.8.3.1
 
-
->
->
-
-
-
---=20
-Marc-Andr=C3=A9 Lureau
 
