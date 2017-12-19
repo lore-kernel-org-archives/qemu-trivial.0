@@ -1,49 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRMXm-0003nE-9Y
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 13:23:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49316)
+	id 1eRP5R-0002V3-KP
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 16:06:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32777)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1eRMXj-0003kl-7p
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 13:23:08 -0500
+	(envelope-from <sw@weilnetz.de>) id 1eRP5P-0002Sm-Bz
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 16:06:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1eRMXi-0006d8-7p
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 13:23:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54630)
+	(envelope-from <sw@weilnetz.de>) id 1eRP5O-0007yG-JF
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 16:06:03 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:32988
+	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1eRMXc-0006Z8-Q2; Tue, 19 Dec 2017 13:23:01 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1eRP5K-0007uH-NZ; Tue, 19 Dec 2017 16:05:58 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 97A10DA9D49;
+	Tue, 19 Dec 2017 22:05:56 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id GSY7mlCV3Tyr; Tue, 19 Dec 2017 22:05:55 +0100 (CET)
+Received: from edv32.bib.uni-mannheim.de (pD9E01653.dip0.t-ipconnect.de
+	[217.224.22.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D06816016A;
-	Tue, 19 Dec 2017 18:22:59 +0000 (UTC)
-Received: from work-vm (ovpn-117-219.ams2.redhat.com [10.36.117.219])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BFA405D6A2;
-	Tue, 19 Dec 2017 18:22:52 +0000 (UTC)
-Date: Tue, 19 Dec 2017 18:22:50 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-trivial@nongnu.org, sw@weilnetz.de
-Message-ID: <20171219182249.GE2730@work-vm>
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id A03B5DA9D43; 
+	Tue, 19 Dec 2017 22:05:55 +0100 (CET)
+To: Thomas Huth <thuth@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org
 References: <1513700253-10045-1-git-send-email-thuth@redhat.com>
 	<20171219162157.GD3567@redhat.com>
 	<7d919cca-4dc1-6591-1a01-4143d3fe2b3b@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <2114e43c-e755-523c-9035-6bd1bafbaae9@weilnetz.de>
+Date: Tue, 19 Dec 2017 22:05:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <7d919cca-4dc1-6591-1a01-4143d3fe2b3b@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 19 Dec 2017 18:22:59 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 37.120.169.71
 Subject: Re: [Qemu-trivial] [PATCH] monitor: Remove legacy "-mon default=on"
  parameter
 X-BeenThere: qemu-trivial@nongnu.org
@@ -57,91 +62,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Dec 2017 18:23:08 -0000
+X-List-Received-Date: Tue, 19 Dec 2017 21:06:04 -0000
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> On 19.12.2017 17:21, Daniel P. Berrange wrote:
-> > On Tue, Dec 19, 2017 at 05:17:33PM +0100, Thomas Huth wrote:
-> >> The "default" parameter of the "-mon" option is useless since
-> >> QEMU v2.4.0, and marked as deprecated since QEMU v2.8.0. That
-> >> should have been long enough to let people update their scripts,
-> >> so time to remove it now.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >> ---
-> >>  monitor.c     | 3 ---
-> >>  qemu-doc.texi | 9 ---------
-> >>  vl.c          | 4 ----
-> >>  3 files changed, 16 deletions(-)
-> >>
-> >> diff --git a/monitor.c b/monitor.c
-> >> index e36fb53..e53c6e1 100644
-> >> --- a/monitor.c
-> >> +++ b/monitor.c
-> >> @@ -4141,9 +4141,6 @@ QemuOptsList qemu_mon_opts = {
-> >>              .name = "chardev",
-> >>              .type = QEMU_OPT_STRING,
-> >>          },{
-> >> -            .name = "default",  /* deprecated */
-> >> -            .type = QEMU_OPT_BOOL,
-> >> -        },{
-> >>              .name = "pretty",
-> >>              .type = QEMU_OPT_BOOL,
-> >>          },
-> >> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> >> index d9861b3..6913b32 100644
-> >> --- a/qemu-doc.texi
-> >> +++ b/qemu-doc.texi
-> >> @@ -2401,15 +2401,6 @@ setting ``-machine kernel_irqchip=off''.
-> >>  The ``-no-kvm'' argument is now a synonym for setting
-> >>  ``-machine accel=tcg''.
-> >>  
-> >> -@subsection -mon default=on (since 2.4.0)
-> >> -
-> >> -The ``default'' option to the ``-mon'' argument is
-> >> -now ignored. When multiple monitors were enabled, it
-> >> -indicated which monitor would receive log messages
-> >> -from the various subsystems. This feature is no longer
-> >> -required as messages are now only sent to the monitor
-> >> -in response to explicitly monitor commands.
-> >> -
-> >>  @subsection -vnc tls (since 2.5.0)
-> > 
-> > It occurs to me that qemu.org only ever displays the very latest version
-> > of the qemu-tech doc.
-> > 
-> > So if someone has deployed QEMU 2.11, and reads the doc online, once your
-> > patches are commited, all the info about deprecated features that affect
-> > their 2.11 version will have gone, despite 2.12 not yet existing.
-> 
+Am 19.12.2017 um 17:34 schrieb Thomas Huth:
 > No, as far as I know, the online qemu-doc is only updated for release
 > candidates and releases, so the current information will stay there a
 > little bit longer.
-> 
-> > So rather than deleting entries from the deprecation appendix, should
-> > we move them to a separate appendix, or "Formerly deprecated, now
-> > deleted" features. Or just change the annotation
-> > 
-> >   (since 2.4.0)
-> > 
-> > to
-> > 
-> >   (deprecated since 2.4.0, deleted in 2.12.0)
-> 
-> Please, no. I really don't think that we should carry around the old
-> cruft forever, even if it's just in the deprecation chapter of the
-> qemu-doc. At one point in time, we should really just let it go. If
-> users still want to get information about this afterwards, they can use
-> Google to dig out older versions of the qemu-doc or the various
-> ChangeLog pages in our Wiki, where we describe the deprecation of
-> parameters, too.
 
-I agree this is a job for a separate page; either the ChangeLog or
-a separate 'defunct' wikipage.
+It's normally updated when I create new QEMU installers for Windows.
+I can update it when needed, and it is also possible to provide
+additional qemu-doc for releases (https://qemu.weilnetz.de/doc/).
 
-Dave
-
->  Thomas
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Regards,
+Stefan
 
