@@ -1,49 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRCl3-0004jt-Vy
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 02:56:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40674)
+	id 1eRF40-00086v-IH
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2017 05:23:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41960)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eRCkz-0004hn-9W
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 02:56:12 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eRF3y-00084Z-2Z
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 05:23:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eRCku-0006PB-5C
-	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 02:56:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33942)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eRCkl-0006Es-Td; Tue, 19 Dec 2017 02:55:56 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E74E085363;
-	Tue, 19 Dec 2017 07:55:54 +0000 (UTC)
-Received: from [10.36.116.178] (ovpn-116-178.ams2.redhat.com [10.36.116.178])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 63F967FB42;
-	Tue, 19 Dec 2017 07:55:52 +0000 (UTC)
-To: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>, qemu-devel@nongnu.org
-References: <20171219020921.23887-1-maozy.fnst@cn.fujitsu.com>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <0f40be05-5e06-fae5-a82f-4ce17d29ce13@redhat.com>
-Date: Tue, 19 Dec 2017 08:55:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	(envelope-from <marcandre.lureau@gmail.com>) id 1eRF3x-0008VR-5S
+	for qemu-trivial@nongnu.org; Tue, 19 Dec 2017 05:23:54 -0500
+Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:41846)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1eRF3q-0008Rh-6S; Tue, 19 Dec 2017 05:23:46 -0500
+Received: by mail-wr0-x242.google.com with SMTP id p69so9724061wrb.8;
+	Tue, 19 Dec 2017 02:23:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=fvDPYrrC3CRy0OYYLH6xzfN3UATLblSrptu/xxdQ6H8=;
+	b=jlDNwzwY5kOVXEHrRIKtGv9wXKjtCkChrU2Y3Mxct6R9JPbvV4m5Zv357V+mSHVmt8
+	ZFAoBiWKX4TYio/ylkKR155crMEhUV6CVg/mTCXPT47PRIb5ue8xl+436aWkippVbGbD
+	+yZ8W9PvCWrs1ivJI6w/n367iJGGh8F4kTRMOlkhkCCGu612MOxRpML5u0vfvLuIOS+8
+	bg6eGJACjbsT1jzDAlCF2lBKp39s4ewRQnXnL0CJV3+iLRDdapofGWgoxRKqVa4JOkp4
+	l4X1cUal96y67oJ9D4ajx+D59fG4OMmzjn/OsRs9ZX/R/YvoqohiCyeWB16DT5jO+wcn
+	/wIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=fvDPYrrC3CRy0OYYLH6xzfN3UATLblSrptu/xxdQ6H8=;
+	b=l0R9R/RsbyAgMZu8sVMjKmPe+k/uYPCkWhO9jpGfN8o1Gcxnbiv42LEueAEwRhZ0hN
+	w1JShO1V1XvECsZN9f+LTkSNZxrcRQVr+X9o0Qh3gR8wU+TsywXVoNDHTgOt42iHLrlO
+	q7ceCL0JCuYA/b9V1sJhdWKNL8SuU/aH/PSsChL63VX8KpMHwq4whGmNnNFhn0+0MVko
+	bYlgu2KD7uWvUE/2IzZqWgMn0NmuFH9ceyDxsW2Bl/vSHpXKoM0wPCn0t2wTh+WfMPxa
+	eRBFKswjEcjRPF+sFFRfvb0Vl87HSNmjUzalIGKX0QGb6v6Jp4oDQ4+sJeYDh2OC+4k4
+	HQFQ==
+X-Gm-Message-State: AKGB3mJQYmW4ufMQu28SkOViYqHumdCpXRy+U1wlap9uT3WmqK/jHq2Z
+	vZ+wIepqs2bSsqgfLPHxb3Weqm1LEglYRmnC4clJ27kF
+X-Google-Smtp-Source: ACJfBoug6U5W/kFtroiiI7mrnc3EWbUDXacsozKHJsk8tAUR67O36iY+gh7dZVgYm5OMO8+4+flLbv3oPPOTU2wASZw=
+X-Received: by 10.223.158.13 with SMTP id u13mr4335952wre.134.1513679024676;
+	Tue, 19 Dec 2017 02:23:44 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20171219020921.23887-1-maozy.fnst@cn.fujitsu.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 19 Dec 2017 07:55:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RESEND PATCH] build: Fix error
- script name in git-submodule
+Received: by 10.223.165.153 with HTTP; Tue, 19 Dec 2017 02:23:43 -0800 (PST)
+In-Reply-To: <20171219082518.19724-1-lma@suse.com>
+References: <20171219082518.19724-1-lma@suse.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 19 Dec 2017 11:23:43 +0100
+Message-ID: <CAJ+F1CL-ohuLUdDvLC5GPZOX81tUMSXo_LkwNWFw47UEJ9ivWA@mail.gmail.com>
+To: Lin Ma <lma@suse.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c0c::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Fix typo in
+ scripts/git-submodule.sh
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,36 +67,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Dec 2017 07:56:12 -0000
+X-List-Received-Date: Tue, 19 Dec 2017 10:23:55 -0000
 
-On 19.12.2017 03:09, Mao Zhongyi wrote:
-> When I follow the command line prompts to run
-> "$ scripts/git-sbumodule.sh update  ui/keycodemapdb dtc capstone"
-> 
-> this is what I got:
-> -bash: ./scripts/git-sbumodule.sh: No such file or directory
-> 
-> Cc: Daniel P. Berrange <berrange@redhat.com>
-> Fixes: f62bbee55d503f639ee9498878ebf42ff4f4299a
-> Signed-off-by: Mao Zhongyi <maozy.fnst@cn.fujitsu.com>
+On Tue, Dec 19, 2017 at 9:25 AM, Lin Ma <lma@suse.com> wrote:
+> Signed-off-by: Lin Ma <lma@suse.com>
 > ---
 >  scripts/git-submodule.sh | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>
 > diff --git a/scripts/git-submodule.sh b/scripts/git-submodule.sh
 > index bc7224a..807ca0b 100755
 > --- a/scripts/git-submodule.sh
 > +++ b/scripts/git-submodule.sh
 > @@ -28,7 +28,7 @@ error() {
 >      echo
->      echo "and then manually update submodules prior to running make, with:"
+>      echo "and then manually update submodules prior to running make, wit=
+h:"
 >      echo
 > -    echo " $ scripts/git-sbumodule.sh update $modules"
 > +    echo " $ scripts/git-submodule.sh update $modules"
 >      echo
 >      exit 1
 >  }
-> 
+> --
+> 2.9.2
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+CC: trivial
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+
+>
+>
+
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
