@@ -1,143 +1,139 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRiBI-00086Q-Rd
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:29:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32971)
+	id 1eRiBQ-0008EU-TB
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:29:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33104)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiBE-00081s-Gm
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:21 -0500
+	(envelope-from <alistai@xilinx.com>) id 1eRiBO-0008Bw-CN
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiBB-0007OH-Gm
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:20 -0500
-Received: from mail-bn3nam01on0051.outbound.protection.outlook.com
-	([104.47.33.51]:39886
-	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
+	(envelope-from <alistai@xilinx.com>) id 1eRiBL-0007UM-CY
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:30 -0500
+Received: from mail-bl2nam02on0078.outbound.protection.outlook.com
+	([104.47.38.78]:3274
+	helo=NAM02-BL2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eRiBB-0007Ni-Au; Wed, 20 Dec 2017 12:29:17 -0500
+	id 1eRiBL-0007Tn-57; Wed, 20 Dec 2017 12:29:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=ffeJIWsqd2ZCCY0V+CMTHt700F/DxtyN/FUVlJuAC7A=;
-	b=aQ00fOZhg3Ml+M25BTFt6WhlCmQqmKB5/pGwgcP10ZOu5W+nffnP7wmzVpA/itcmPYdDpx9nW6GZVExNNZ/dr2kc/OUtr0Oagz+dj+JrCUW7a2t4vHkmkQfU3m+1TMtJQjDfukv3eLwcJ+gXtDVApKd/wk+p4vwKAfU7N2q5OFk=
-Received: from BN6PR02CA0046.namprd02.prod.outlook.com (10.173.146.160) by
-	CY1PR02MB1336.namprd02.prod.outlook.com (10.161.170.27) with Microsoft
+	bh=Z2U4po5LNZUJvZ5LT45duS3gINJFEXVTxuAqqNneCfU=;
+	b=Zq4VoR+pzttujxKLBc2PwKyxgwGeHT9JE6FMz2IifCrAPCb1OxshoQYcaS3PjFOw8JVc69xLC85ZujO7l+3D6T9GiWy7Zg9D/WevjGdHgypo+Qpul55IPiXYNPdFYhUQo6oEdqVL6PE9POIp9OONMDzr7tK+az0lQ5MlQJ9GnKQ=
+Received: from MWHPR0201CA0101.namprd02.prod.outlook.com (10.167.161.42) by
+	CY1PR02MB1333.namprd02.prod.outlook.com (10.161.170.24) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.345.14; Wed, 20 Dec 2017 17:29:14 +0000
-Received: from CY1NAM02FT042.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e45::205) by BN6PR02CA0046.outlook.office365.com
-	(2603:10b6:404:5f::32) with Microsoft SMTP Server (version=TLS1_2,
+	15.20.323.15; Wed, 20 Dec 2017 17:29:24 +0000
+Received: from SN1NAM02FT006.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::205) by MWHPR0201CA0101.outlook.office365.com
+	(2603:10b6:301:75::42) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.323.15 via
-	Frontend Transport; Wed, 20 Dec 2017 17:29:14 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
-	header.d=none;redhat.com; dmarc=bestguesspass action=none
-	header.from=xilinx.com;
+	Frontend Transport; Wed, 20 Dec 2017 17:29:24 +0000
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	CY1NAM02FT042.mail.protection.outlook.com (10.152.75.136) with
-	Microsoft SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	SN1NAM02FT006.mail.protection.outlook.com (10.152.72.68) with Microsoft
+	SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.302.6
-	via Frontend Transport; Wed, 20 Dec 2017 17:29:13 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:50672
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	via Frontend Transport; Wed, 20 Dec 2017 17:29:23 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiB6-0003t9-V9; Wed, 20 Dec 2017 09:29:12 -0800
+	id 1eRiBH-0004tg-C0; Wed, 20 Dec 2017 09:29:23 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiB6-0003vN-SY; Wed, 20 Dec 2017 09:29:12 -0800
-Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
+	id 1eRiBH-0003wk-9k; Wed, 20 Dec 2017 09:29:23 -0800
+Received: from xsj-pvapsmtp01 (xsj-smtp1.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vBKHT3Zl019990; Wed, 20 Dec 2017 09:29:03 -0800
+	vBKHTEht020050; Wed, 20 Dec 2017 09:29:14 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiAx-0003rz-IT; Wed, 20 Dec 2017 09:29:03 -0800
+	id 1eRiB8-0003vk-2K; Wed, 20 Dec 2017 09:29:14 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>, <armbru@redhat.com>
-Date: Wed, 20 Dec 2017 09:24:47 -0800
-Message-ID: <488ba8d4c562ea44119de8ea0f385a898bd8fa1e.1513790495.git.alistair.francis@xilinx.com>
+Date: Wed, 20 Dec 2017 09:24:58 -0800
+Message-ID: <9b753b5f5ebb48982b1cbe98881c3e7073aceb46.1513790495.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1513790494.git.alistair.francis@xilinx.com>
 References: <cover.1513790494.git.alistair.francis@xilinx.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23540.006
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(39380400002)(396003)(346002)(39860400002)(376002)(2980300002)(438002)(199004)(189003)(4326008)(39060400002)(106002)(54906003)(2906002)(77096006)(316002)(47776003)(6666003)(16586007)(110136005)(5660300001)(81166006)(8676002)(8936002)(81156014)(50226002)(2950100002)(9786002)(356003)(59450400001)(478600001)(48376002)(50466002)(36756003)(76176011)(7696005)(36386004)(575784001)(106466001)(305945005)(51416003)(63266004)(118296001)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:CY1PR02MB1336; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com;
-	A:1; MX:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT042;
-	1:ef9InP9s84JtrB89VS7dWT9rT0WmbhAFAPuJUV8PckvyVmgaJ0hSCZBqHg+z1folTSMDuOBEIXOWIFfwsUviASrasZlM12UWsOljlB+7oN3L7cCR026pHrruznlHY9X7
-MIME-Version: 1.0
-Content-Type: text/plain
+	SFS:(10009020)(39380400002)(396003)(346002)(376002)(39860400002)(2980300002)(438002)(189003)(199004)(50466002)(110136005)(6666003)(81156014)(81166006)(54906003)(478600001)(47776003)(2950100002)(2906002)(7696005)(36756003)(23676004)(2870700001)(76176011)(118296001)(356003)(77096006)(8936002)(106466001)(50226002)(5820100001)(316002)(6306002)(305945005)(5660300001)(36386004)(4326008)(59450400001)(9786002)(63266004)(39060400002)(106002)(8676002)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:CY1PR02MB1333; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT006;
+	1:LymBn7DgX61bmHh8iHwRxRVTpDbR3ZBOH/we+YStDSC4opyYM8A+U/lA+zF2Agx0h8TsC3rsQdaV6zvzGr25e909LQfilKAH2O1intajpUlCRKEV1iiynFOkyyOtp9Lx
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c4b9b5ba-4116-4977-adb9-08d547cf3059
+X-MS-Office365-Filtering-Correlation-Id: f0646013-05e2-4d4e-0e92-08d547cf367b
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(5600026)(4604075)(4608076)(2017052603307)(7153060);
-	SRVR:CY1PR02MB1336; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1336;
-	3:RzaG63UhxrHIZEk6lfHW01TMr1tvuS7POMLT4kKNssLhIhsS6Mnhee/0ZjTGVNsrofoqyniUxmzPQ+J+jLlycQIC2ZV7wyyf+xeFRWxCF4lHax2LPFovRHWeTYk6yw5e5JBi6892NwyGWguaiRDX4BB/ec+Y3UIV2K1nJl0e7WjUcV+/vkvjeEnh2S/K8MkkWN8NTWhSAub9bIJ8CsRfnxCbB+07kpUk3bB1CS8GhCqujneCuJDzFXtbNVuZVOcqi8sBzW63K3uw4Oe7kRBrHTlMSVhE0AcNlIczeEpjNBOtPIxwktxKRLTXn3qdZ1k1wSK4A6pAZWv9tK+7T1q3XhARVS13JPSDtZHdDbZlklg=;
-	25:H8ahuWQ739oM/0GgT2wZliFoIhPXcm0rZg6Gtez3AFZCE7KzMh1i3tUj4EHbWlgIAYX6He1CxHh/TlrbUmuGa3HGScM3VZcbN6N03c+w9xSdKf9SIEwbAxIw2dDxz44exDMJw63/A8ZiyJU4qcd+a2omUwM8AiO11KjREa8JoQBJmjfUQW55FAYBdAzhpj1OjfeCDzKukPTMYfDRkTRSnkQvQeVhTmkA52NqhpP1YbD5LbBFfWC18VSc1USMzJUL7ozyQazEUIUQ/ZYJx7jR9gzYmrYyQXvTqSAPmBg6qoZVrVN91QL8Tr34459IGGwLom1LAqL8P9KAeHglWrVCjg==
-X-MS-TrafficTypeDiagnostic: CY1PR02MB1336:
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1336;
-	31:TP/fw8ZFGu15O5fuFy0Ik9EUpVDXwyl7l/nG1vJdcr/zP1eI5gfnAO+c6YWMIGXKjL3OJkw078q509BY0j0xBO2TMv+ZL2bdNyuoC+jfF+/l4ahlVu6GMOMAaAGxSg/iRe5v4T/f+4hDA9f3NVUgHZHzntGpStLaOycg+X9xlbJgpYfcU0DX+Hd9AeBQMKel7rsmPPv2kE5xcCcgXy+h2im4aXTazypLlmL2pU3RMrY=;
-	20:K0HMaxZjGyy7jRJI+mrHtlyLljsjYUCft3GAj1hgXlGhDlRMycwo7iSOijFKnaE9dq1jrE+30rnddMajlJ7WQLu7homldnDR19J4cPMGn0QYWyN6IRfKNnmCzcjbMd5UlxvaBsnZP+mGyt5fz3HFA+1hkUXYjbAJc9ErxnTrH5kfbZxg1qJI4NxQG13uehiWAQ4JxOH3JmEMRcR7NmvN++E9sqzoQyHWAa2yoLVjkLhOsh9GhF6P3ffQCBaO6ng0IcO/9vugl1FkRVrNNngHVhyALeLimV99ucs47GvXot1b4/FYE+0d06TTVCcdvqLHQZj+TZcaAiNhXjA9hG+3IWUf66IDYq5Uv+K5+vYTomuR/Zn8wBfbLi8/bPifzYyYIHVxAZPPjI+MOA7Ofm9yQohXwvVoi8DDsk6mKqx4+79MicNPmt9d6f3orIyfu6SkXwYeOj4UwBXRBk8xTX05detOIfEsycOkJmDQnY+hXPVWjOmNStFygmy0EKfHToAe
-X-Microsoft-Antispam-PRVS: <CY1PR02MB1336F8ACC5C1CB19E939A5F2DC0C0@CY1PR02MB1336.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
+	RULEID:(5600026)(4604075)(4608076)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603307)(7153060);
+	SRVR:CY1PR02MB1333; 
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1333;
+	3:XIhaGoyWzL+YTc4VbEhlFgGr/fCbHL9Cox/MoGGjkzMaHIqiStvgxhoFg6B9Qz6r6420iyn4fJ9sGJdMG2gFk8U9j5WIQVuLBDnFX4BCmF+2b3PAYBBQ3nd1ppvFT6bSwjSANCNWAfk75q/R9NVAHYcv/FcMTUoBAWvCQXVRDWjuJeuptOqRKGOds6DOTiyplqAyWRWdlh+kNw4pSlV89DHBn+sDHHNtOTKnJzzo+FwRJOTGsgtbOPlP0maH7vVAf6TCWxg5JuJ/ZxxVB/xpV7JkPOaJPVgqAVxZRptDywFiWL2XUKYHcxOg2pylwjA8KRzYh3nln6q9Py+9noHISvG7zTrrk583NnMirntmAKs=;
+	25:lz9yCg9ZxoCTr7Kx5leRexyS/s+X/idP8F5F8dnQ9MnPGK57/aLyb8hyAVEfXJz7BWxjVOa3jxdtLMTN0BDnTuGgkgO3Tt4j1ILjIDkMxEePgUD5pYLlpE49l4GQkP54Vc9jao7QS+raGhT1JFxVrBATaQ4RexndAVBmrFYdPHh/U4ji/1qX9CjDI5/kVcVaIwW+vxPqI+/VW67f/f19k5TOurbM8Zvi0+hs7BOIaT8UnqN8eE5VLSx5kchK5ndgnzf/Qkt6yLFFxNh5zMg0gTAbHGNB94CNO21YWWvwZi7DCJSTiA2K1VJbi9s4x+q9E7qsjW45bpEV3Xfky6uFhA==
+X-MS-TrafficTypeDiagnostic: CY1PR02MB1333:
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1333;
+	31:5/uVWVMFbJ6MRplgM1XrUevPFKRDEKL4npXkHpjA+IHJ3FNNoN6a9AUAaxywIPT71xQaAWY2sciDcqHDeQmSQTFwUrkC53Fu/P0T+/3Lv+QWkgr5IavpDApyK9DT27SPYi9VHwc5rmq9h6mQwqYmcwEJABZ0Gi5nPPfALlg3MrrodnRclYGaNqKgSUFYLVQjVtk67+swsO09pjvEOzFXUjY0vnII3CnOHwBk3RlZjr4=;
+	20:R+i/a0uKDhm+Bn2Bhw5KAk8Gxe6qwErrfledMGQQUaC0bAZVfCy5QikpPsMUKEs/wd/+zduVD0jPO0z1KfW7Cw4Nih4zdO0LM67QKmCdtFGPUFBomuIfpoRYxIewMkYbys+SGsxWkym2O0o9IGtCU0J8lQoV4t8uKcgCu3fcpFPUPoi4CfKqgPfHfXvy0NMmwr8MdIvrPwR677OQJnfZVFgSk1RzZWc7LEO7jyHkxy+kc9FN8XlykOAu40C6bXLVqFWxoo2FROFqKqKlQ/w4aPpbbF9l8n8sUUDrSpElQ+ucknCIXUXfcGhl0Uxv2jnYwlzcOwwfPuGz7Dv1EkDhi4s5rTvPqlqn42Dn3nQI8EAAD49tqKJfr90QzKE/HoVWVH1Aje1FibZP8lrHDyFMdN9sS3PMr2AkVE461oESCEYV37NcpssaRcspgLH2lFsdPTB1hSXHoe954p6OhSJ2XDEkq6/xbe+Dhi94T01vKSQz1fkvZbP1+r99sguZcm4N
+X-Microsoft-Antispam-PRVS: <CY1PR02MB13332EE79823684D71A8A4D5DC0C0@CY1PR02MB1333.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(250305191791016)(22074186197030)(788757137089)(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(5005006)(8121501046)(10201501046)(3231023)(93006095)(93004095)(3002001)(6055026)(6041268)(20161123558120)(20161123562045)(20161123564045)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
-	SRVR:CY1PR02MB1336; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:CY1PR02MB1336; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1336;
-	4:cgXcBdnTu/xo/GOP3DLq47PX3VstINW6xS2Civ34mOEwUwhY/9TmBV4gSDp7+6IJG2qlF6tFVVz+Lc9/HzjaGNym+IinNRzAPhf6PD44ceyQ6QM4tX4oX6kiom9qR56OSYlqPkdA05ok6bWWlstPhrCrKd4qK5/mS9I3EvAJAASW8k1E2M2Yeu58kGB+qglNZ+AvkWGROQETfX+qbEygNQb/ykgcZ6otPn4aEK47QfQ5x1TR7fkrXpPlw9q0JJbHbBddG5EhSIfgKCAfHwZaeju7GCSzExjmjNoNnslCr2XelJiwWMItWj+nXYrvBgIwlxJW1Vsg+rTsJTQ0wHypgA==
+	RULEID:(6040470)(2401047)(8121501046)(5005006)(3231023)(10201501046)(93006095)(93004095)(3002001)(6055026)(6041268)(20161123560045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123564045)(6072148)(201708071742011);
+	SRVR:CY1PR02MB1333; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:CY1PR02MB1333; 
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1333;
+	4:8uERfb4V+yG+WI3RW+/cTDh8gns9Xkumt/6EFIv5+1hu9dQZSTrDNalt2tn5UsTotnqSCzp2s/7xjyFQOsaYJv53wc06heF1hKqGonpYImQmgZIttgfrKEsZ9ZDi4Zw7rMQyassqfZqAuKH12KWoFw1itUntXqiwina/OCcQgQy/eH6cx2ZFYrkyXeAe3x9EiitpeUGH7qgHbG2caHS8BXrO5CdVbsosYDugMbOv+edqYMV0UVTrvuOvPgZxIcXJcD1fQOsiZLulHh4epJEGKEwAEmTwIzq3X6hcNsPxcnAjwKi/D7wzF11reBNRfm2mkP5gfG00J80uq8QHT4DQ9BCkiJiHbcOMzGsOcg+E0hmv/APY+IPoAtfO3QoC4xJcAzSkXM1lFZzoRbjek4PlITzBHFjWQtbQI7lubI3gDgU=
 X-Forefront-PRVS: 0527DFA348
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR02MB1336;
-	23:LJo/YWpE78dWOYFeeJNpv7uqnifgKSR/JpzK20ZNC?=
-	=?us-ascii?Q?zqGPqyP0QLCZGdZvPbpmHt/1sxVLveIQa6hjHahGz/jcWIAYLtpP6rIshUxA?=
-	=?us-ascii?Q?MVQzjDswHWlacJBdSWGZn/ePgvkc/sZpEQcCQmX8lrDR1Spf/P6UYoVmGw5Q?=
-	=?us-ascii?Q?ZBNGrL4u96vkDqsZ2NlYpDTC6iouRAxADNZZJhEjnbq5g48OGRX4926ITOx+?=
-	=?us-ascii?Q?zDwJaskBO060G4AOkCocJTG74XQSWNAybIYpb4XSDQXi32CSNkSDpKBSvL5r?=
-	=?us-ascii?Q?2VHmvtcRxAfexbiaiqDJbz+GEBTXahebAuCNm93GzDiDame7vFl0ayvM4cM8?=
-	=?us-ascii?Q?TIZUU06wS3d6Yvzm2SePfgUIivDFMz0zwg2qIv+ePBSs8z0t1dJjn0aSZoFl?=
-	=?us-ascii?Q?qm70wJyugzluenAafeB1ZRRs1GeXqi1fxEMgTGsrw4CSyQqieXpYbgy/ExEM?=
-	=?us-ascii?Q?EBigj85sxII/tD1wmB9GOYtLbqpmfH+O411k7V+vyLkMP2m4ZmIrB/kDo3c9?=
-	=?us-ascii?Q?oCF5pmW69iu/cDh8K0wWdC2Ox2fuJ+gn23abGIj9hn1IgQdkaBNEPqTS4bHW?=
-	=?us-ascii?Q?HDK8SKopyNcNfpnKDxmfQBTMSBg7ydWISzML6/SCV3PUfXXV302093l9lDkB?=
-	=?us-ascii?Q?pMWZ35arAmrxSLa0rUwDApN6Hpn+06s7NCEQKQozWB4P7oQLG5F3Fup4XTRJ?=
-	=?us-ascii?Q?5N/1ExH4cQ3y6FNbIScP4S+dTmjEsnGvgEsEgut5T6UyAIn92HKSAU+eKT4S?=
-	=?us-ascii?Q?ZWRjn0MO5sisg1ZqS7BBq5Iv5YCD8aZ4Fa157XPqJFH0fYSFkaGSqksAi3lc?=
-	=?us-ascii?Q?uEUg3tA1F6w1HFUT+M3zF7WkU9JG/pqMeu7SQfYKlZKvgBNKbxrJ1U2zoATu?=
-	=?us-ascii?Q?Kw1fM/SYqe5JRL+Sc7pnpZrBH6tmD/FakU7xOH6J51JMbtG2F96jc9npWy46?=
-	=?us-ascii?Q?x16YTMh+3uRLNyTpqM/le4xJc/VUHsp68WlBGFuGFwZM5XqW9FWARjr55V4O?=
-	=?us-ascii?Q?nVTRwc7jC3hDX1mO+OwzEKVMreuRok91mzqkbQf4P8y41dLap4LZK6fJX08w?=
-	=?us-ascii?Q?Jc1cHF4fVjt2FvBlM6ZnhLHVZhU?=
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1336;
-	6:trUCH4a2OiFGYMlhn30N7kWJBuviHNEI4iniPLmzcwdC/p1beHw5Dsg8XJTx10+Riaa3WhKrqejlmFtBMf1d4r+0p/4SInIcdDvj++JWgViOhuhwHPQmu+Q5dxxCzACUg7bFwGvCieAz3GKtyNLeevLQ6jmLfPoyPP5Nqu5BYi4tNQ214xj2Sm4GEbP0z4eHUkSJ49aa1POkqI1noGkDdg8MccgI0gY4pRWmM4VlJ4dYFicFWcM22B60kcM7NSHfj0ZIMeZnmHwcsviBBy7NaK48yvehplCfKaqlp5gMcItVaXqc6A29s1UExZJ9DGT60AiUDieHdhy0x13IoDGtoN9s/M8idn12HMH9rRCT/Fo=;
-	5:wws3qDOTWkE17Pd6il0XzTeatpKrzDOKUkWPA0LydyrMZg7iccNV3RszB4LsnAcgYNfYG64s290tSYuETWMp/CB5KoEK7NQn1/K+mOspBB734vRnE1LXDFyjSF29lc0qdzyPiagb2tJuIPOc2uz0qAFgOjyiSgC2byrCFBp2IOU=;
-	24:Pf7I/9klzZwnIbVehXQo+kLSnOlN2b8Y98ZZo3SMwXzvs83OCt9tFnGPTuw0E8luOpYk+kLnsmyuIS+LWIrcNGBdV8KREwNSvvtUWHBwPVQ=;
-	7:jWBrXDlgdmgLlpnmMiPMiECiqhmnfPKq6cdDj7Mjd3RcsyL+AB+oRgHeTWybXBg8MEdusWmdTWRx7TC5Y6joNAH3SzlvIKTqucjspYI5b6a7emQBs6mqA/83eQuKtxG+m27KFeJwGZL7oIVyA4IMuAdkCwvwWOMRppmeo8QxM9+uYLAThe1b8eChso5VY19HLgL2nimlrnYRU1gPiLNlmU4JPCFxTte/UmiuSq+VIUaqcZcJutsfUhOmzJrB+LJ1
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR02MB1333;
+	23:cWoMywMOy5JDKpl2oFVx35NMaSXH3PxCtrg58bhg6?=
+	=?us-ascii?Q?k2AynYfVygXEq3p764zm3sNLwJwqEHHOrq+9DDiABws3IvLggNOxzv3HP9Cp?=
+	=?us-ascii?Q?uO+FDkwYSMG9D7xO+8EFa4attmF1q4wVwRExCW5p4n5NuG1XCx1SdlxQACkj?=
+	=?us-ascii?Q?my/wOeBtc3x0K+QGJbeB0EuTyyQ2QlgM3yKzL40gXblGheu7MNfLSWkUU5u5?=
+	=?us-ascii?Q?eB3Mh8R2dPSSAAxJ9L6yfVnl4A9kYiMfOXrSk14II3StSNesltdJx+6HVCVy?=
+	=?us-ascii?Q?7h5BfdVvZozA4FSbh+4IlOdGXvZziMhFqKflnk8zVAiEp+8/BlFuUuo32zrY?=
+	=?us-ascii?Q?n3ORmmPTYVPH2SI1oLJoSfg9dKvcFoT/OL0ARo8DZ3at6lJwUcfchGAs8Sxz?=
+	=?us-ascii?Q?/uI8QPMhZnUqxARai6NA/4xR2LaYKQI3ou8VukEhgsM6oIC/ZAMPfhMdbJvT?=
+	=?us-ascii?Q?IfSy2l0uRyd6ESHrVoEaI38mMifRUrGuyko4MPq8rsYIq+VTTcc6Vlcb8ghp?=
+	=?us-ascii?Q?eQVuBFiYBsXDWQklToOQpE5Wf2oH0FUaY5CNrPWgjfboZMGH79adZad9Tb6+?=
+	=?us-ascii?Q?oENLKUhD7yYyrILpRj6Xyx09b1ULpyfmPGpJepzsE4IabrRV5JNKcKcjbP24?=
+	=?us-ascii?Q?WgICAPZTaDVhvU5WJ5hsuVtyAFvbtFsWPW1OY4p0QRYTpiZvwgv+WZedUNwG?=
+	=?us-ascii?Q?Io5zCXhCdPhuAPQpHlgQhc1wuyGoL+SEHoLRTn9ha5X12xK2j2djyb2P9Odm?=
+	=?us-ascii?Q?1Yr51YdLJhHAT2BbtC8S0hQBUvFIFZltQWdlXsi8JVkdgKMdKAgwuLD4juaB?=
+	=?us-ascii?Q?03kH//ps8+FAF7NaevxfnPeeGT+mkrp+s8I8575Uz1tgS1OaJLvjJezfpw31?=
+	=?us-ascii?Q?NRligXXNmoEhmcq5MRSkzAGFSttR3LNA3vA/oUyDXUIuQHp8pHX7myS3Pu/w?=
+	=?us-ascii?Q?EXC47mEXc68hWqL7LWnAvUhY1yg3VV0pzcaSVWqRN2Z0XSAV+MBokAeIfeHT?=
+	=?us-ascii?Q?UwJcWk86tEXxMpJqoU40xDNL0MFqOz9s7kCgYfLUhUdGkwreNm4cZLEzhRNg?=
+	=?us-ascii?Q?CDHZ5Y=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR02MB1333;
+	6:BKe4382wF3T9SdkOFA0sW5s7FHjEH59e8w9ZSblElLfGnbMCboOKZYw/cAa8B+xMgN9S3IdC6b2j48LNeLh8MdEkR6dlr0JDkOI6A3TkpMOwrghwiKeWPnIAc3qSiw5IBgmhANCY+GvXMvnHn+cs9SOtQDcySV7XOaCFhOCtRRb9NJZVPHSpX5pcMQv12ADGgmYWprZaOUbj8E1mMeAU9bp+0xWsI6XpgKaFZ39AGxQW4ie/bGQzvTSX+cAu1SmM1xm/7G+SLdL2mb81qqEXSvnzscY95yoWTSox7E73vp+5KRQ2A+jlX3r/UYjeuaSGl9URuRnuUzRL7lrx9+Tsfttu3jFvUg1FM+r0od9HCXk=;
+	5:IruFsn4GjN8+AWgHlnaHyzH/6g1cMu4/NBDjJZhLw0MEHsYi8eU/d4+Mf70EKGksKLQUZDfKpUsXHfUI76NEoVBsRcRAgHHiT653zjfLUtyMGQfX9vvIPYKEMMxpO4XYyle9hF61MLdee/Lxe7rQvgVpdipUxjd+dCD/xTuIOXI=;
+	24:ytlO7cKYs5PiVwIrPVyEvSDunXzDwNQ8gernjtAVtV3BZwMWnJCGxjK553eUrDcaa8fxBOqIDLAMVutO3SDdprSSdIR/ySu9lAnSR1zor8I=;
+	7:XwkhUoKgmdl+AmHw/h6+lcmB0JIYUZkN+2oLC6Io2/P6xkjC+FQs3RQQZnGpyhAXoDo3O1nZRglc2gwFW3oK2V06rhAx8dhLN5l/X21kA2lva3y4+GMhin/nz1P7vDXSA9FAwu5uFtrnlVWgp8BfuMieh6vxktqYgEM08BDwCG/ZmZHvAR4NygVInJjun3tCOO/9ztHSi8ysSpHowm63vmj7mJzNeUqcR+3k072UgLyCYjl3bkPIWfwlRSdZjml4
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:29:13.4341 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c4b9b5ba-4116-4977-adb9-08d547cf3059
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:29:23.8129 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f0646013-05e2-4d4e-0e92-08d547cf367b
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR02MB1336
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR02MB1333
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.33.51
-Subject: [Qemu-trivial] [PATCH v6 23/29] hw/sd: Replace fprintf(stderr,
+X-Received-From: 104.47.38.78
+Subject: [Qemu-trivial] [PATCH v6 26/29] hw/timer: Replace fprintf(stderr,
  "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -150,41 +146,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 17:29:22 -0000
+X-List-Received-Date: Wed, 20 Dec 2017 17:29:32 -0000
 
 Replace a large number of the fprintf(stderr, "*\n" calls with
 error_report(). The functions were renamed with these commands and then
 compiler issues where manually fixed.
 
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
+report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_re=
+port("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
+("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
+\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
+"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
+2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
+;|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
+Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
+}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
+ \
     {} +
 find ./* -type f -exec sed -i \
     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
@@ -192,105 +198,122 @@ find ./* -type f -exec sed -i \
 
 Some lines where then manually tweaked to pass checkpatch.
 
-Some of the prints in hw/sd/sd.c were manually converted to using
-DPRINTF() instead.
-
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Philippe Mathieu-Daud <f4bug@amsat.org>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
-V3:
- - Fixup some DPRINTF() prints being wrong
+V6:
+ - Fix indentation
 V2:
  - Split hw patch into individual directories
 
- hw/sd/pl181.c |  5 +++--
- hw/sd/sd.c    | 15 ++++++++-------
- 2 files changed, 11 insertions(+), 9 deletions(-)
+ hw/timer/omap_gptimer.c | 12 ++++++------
+ hw/timer/twl92230.c     |  3 +--
+ hw/timer/xilinx_timer.c | 10 +++++-----
+ 3 files changed, 12 insertions(+), 13 deletions(-)
 
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index 55c8098ecd..2b878a0c5e 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -8,6 +8,7 @@
+diff --git a/hw/timer/omap_gptimer.c b/hw/timer/omap_gptimer.c
+index ae2dc99832..ddd8d9e9d0 100644
+--- a/hw/timer/omap_gptimer.c
++++ b/hw/timer/omap_gptimer.c
+@@ -18,6 +18,7 @@
+  * with this program; if not, see <http://www.gnu.org/licenses/>.
   */
- 
  #include "qemu/osdep.h"
 +#include "qemu/error-report.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/blockdev.h"
- #include "hw/sysbus.h"
-@@ -146,7 +147,7 @@ static void pl181_fifo_push(PL181State *s, uint32_t value)
-     int n;
- 
-     if (s->fifo_len == PL181_FIFO_LEN) {
--        fprintf(stderr, "pl181: FIFO overflow\n");
-+        error_report("pl181: FIFO overflow");
-         return;
+ #include "hw/hw.h"
+ #include "qemu/timer.h"
+ #include "hw/arm/omap.h"
+@@ -356,8 +357,7 @@ static void omap_gp_timer_write(void *opaque, hwaddr ad=
+dr,
+     case 0x10:	/* TIOCP_CFG */
+         s->config =3D value & 0x33d;
+         if (((value >> 3) & 3) =3D=3D 3)				/* IDLEMODE */
+-            fprintf(stderr, "%s: illegal IDLEMODE value in TIOCP_CFG\n",
+-                            __func__);
++            error_report("%s: illegal IDLEMODE value in TIOCP_CFG", __func=
+__);
+         if (value & 2)						/* SOFTRESET */
+             omap_gp_timer_reset(s);
+         break;
+@@ -394,11 +394,11 @@ static void omap_gp_timer_write(void *opaque, hwaddr =
+addr,
+         s->ar =3D (value >> 1) & 1;
+         s->st =3D (value >> 0) & 1;
+         if (s->inout && s->trigger !=3D gpt_trigger_none)
+-            fprintf(stderr, "%s: GP timer pin must be an output "
+-                            "for this trigger mode\n", __func__);
++            error_report("%s: GP timer pin must be an output "
++                         "for this trigger mode", __func__);
+         if (!s->inout && s->capture !=3D gpt_capture_none)
+-            fprintf(stderr, "%s: GP timer pin must be an input "
+-                            "for this capture mode\n", __func__);
++            error_report("%s: GP timer pin must be an input "
++                         "for this capture mode", __func__);
+         if (s->trigger =3D=3D gpt_trigger_none)
+             omap_gp_timer_out(s, s->scpwm);
+         /* TODO: make sure this doesn't overflow 32-bits */
+diff --git a/hw/timer/twl92230.c b/hw/timer/twl92230.c
+index ef116c636c..fb4c37b4e4 100644
+--- a/hw/timer/twl92230.c
++++ b/hw/timer/twl92230.c
+@@ -614,8 +614,7 @@ static void menelaus_write(void *opaque, uint8_t addr, =
+uint8_t value)
+             break;
+         rtc_badness:
+         default:
+-            fprintf(stderr, "%s: bad RTC_UPDATE value %02x\n",
+-                            __func__, value);
++            error_report("%s: bad RTC_UPDATE value %02x", __func__, value)=
+;
+             s->status |=3D 1 << 10;				/* RTCERR */
+             menelaus_update(s);
+         }
+diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
+index 59439c05be..2d658b5791 100644
+--- a/hw/timer/xilinx_timer.c
++++ b/hw/timer/xilinx_timer.c
+@@ -127,7 +127,7 @@ timer_read(void *opaque, hwaddr addr, unsigned int size=
+)
+             break;
+=20
      }
-     n = (s->fifo_pos + s->fifo_len) & (PL181_FIFO_LEN - 1);
-@@ -160,7 +161,7 @@ static uint32_t pl181_fifo_pop(PL181State *s)
-     uint32_t value;
- 
-     if (s->fifo_len == 0) {
--        fprintf(stderr, "pl181: FIFO underflow\n");
-+        error_report("pl181: FIFO underflow");
-         return 0;
-     }
-     value = s->fifo[s->fifo_pos];
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 35347a5bbc..5d7fa3e418 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -700,7 +700,7 @@ static void sd_lock_command(SDState *sd)
-         sd->card_status &= ~CARD_IS_LOCKED;
-         sd->pwd_len = 0;
-         /* Erasing the entire card here! */
--        fprintf(stderr, "SD: Card force-erased by CMD42\n");
-+        error_report("SD: Card force-erased by CMD42");
-         return;
-     }
- 
-@@ -1282,7 +1282,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd,
-         return sd_r1;
- 
-     case 56:	/* CMD56:  GEN_CMD */
--        fprintf(stderr, "SD: GEN_CMD 0x%08x\n", req.arg);
-+        error_report("SD: GEN_CMD 0x%08x", req.arg);
- 
-         switch (sd->state) {
-         case sd_transfer_state:
-@@ -1564,9 +1564,10 @@ send_response:
-     if (rsplen) {
-         int i;
-         DPRINTF("Response:");
--        for (i = 0; i < rsplen; i++)
--            fprintf(stderr, " %02x", response[i]);
--        fprintf(stderr, " state %d\n", sd->state);
-+        for (i = 0; i < rsplen; i++) {
-+            DPRINTF(" %02x", response[i]);
-+        }
-+        DPRINTF(" state %d\n", sd->state);
-     } else {
-         DPRINTF("No response %d\n", sd->state);
-     }
-@@ -1580,14 +1581,14 @@ static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
-     DPRINTF("sd_blk_read: addr = 0x%08llx, len = %d\n",
-             (unsigned long long) addr, len);
-     if (!sd->blk || blk_pread(sd->blk, addr, sd->data, len) < 0) {
--        fprintf(stderr, "sd_blk_read: read error on host side\n");
-+        error_report("sd_blk_read: read error on host side");
-     }
+-    D(fprintf(stderr, "%s timer=3D%d %x=3D%x\n", __func__, timer, addr * 4=
+, r));
++    D(error_report("%s timer=3D%d %x=3D%x", __func__, timer, addr * 4, r))=
+;
+     return r;
  }
- 
- static void sd_blk_write(SDState *sd, uint64_t addr, uint32_t len)
+=20
+@@ -135,8 +135,8 @@ static void timer_enable(struct xlx_timer *xt)
  {
-     if (!sd->blk || blk_pwrite(sd->blk, addr, sd->data, len, 0) < 0) {
--        fprintf(stderr, "sd_blk_write: write error on host side\n");
-+        error_report("sd_blk_write: write error on host side");
-     }
- }
- 
--- 
+     uint64_t count;
+=20
+-    D(fprintf(stderr, "%s timer=3D%d down=3D%d\n", __func__,
+-              xt->nr, xt->regs[R_TCSR] & TCSR_UDT));
++    D(error_report("%s timer=3D%d down=3D%d", __func__,
++                   xt->nr, xt->regs[R_TCSR] & TCSR_UDT));
+=20
+     ptimer_stop(xt->ptimer);
+=20
+@@ -160,7 +160,7 @@ timer_write(void *opaque, hwaddr addr,
+     addr >>=3D 2;
+     timer =3D timer_from_addr(addr);
+     xt =3D &t->timers[timer];
+-    D(fprintf(stderr, "%s addr=3D%x val=3D%x (timer=3D%d off=3D%d)\n",
++    D(error_report("%s addr=3D%x val=3D%x (timer=3D%d off=3D%d)",
+              __func__, addr * 4, value, timer, addr & 3));
+     /* Further decoding to address a specific timers reg.  */
+     addr &=3D 3;
+@@ -197,7 +197,7 @@ static void timer_hit(void *opaque)
+ {
+     struct xlx_timer *xt =3D opaque;
+     struct timerblock *t =3D xt->parent;
+-    D(fprintf(stderr, "%s %d\n", __func__, xt->nr));
++    D(error_report("%s %d", __func__, xt->nr));
+     xt->regs[R_TCSR] |=3D TCSR_TINT;
+=20
+     if (xt->regs[R_TCSR] & TCSR_ARHT)
+--=20
 2.14.1
 
 
