@@ -1,48 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRe6q-0007bS-0L
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 08:08:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41889)
+	id 1eReFn-0002tk-C1
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 08:17:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52894)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eRe6n-0007bF-OL
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 08:08:30 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eReFk-0002rb-DB
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 08:17:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eRe6j-0000Qn-Iv
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 08:08:29 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:57769)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eRe6j-0000NQ-9D; Wed, 20 Dec 2017 08:08:25 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue104 [212.227.15.183]) with ESMTPSA
-	(Nemesis)
-	id 0Mgw4G-1eenFH2B0q-00M5tu; Wed, 20 Dec 2017 14:08:23 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Date: Wed, 20 Dec 2017 14:08:15 +0100
-Message-Id: <20171220130815.20708-1-laurent@vivier.eu>
-X-Mailer: git-send-email 2.14.3
-X-Provags-ID: V03:K0:Wh3SMR7FbI0jdPf4zo2w4T05WOxvh2CZy+jSfxTn9PgOb76GP8N
-	QY5RbLwKy5uYMNozl0myEULh7xIzsEn6v84R18/OBiGt/hb1JWk313qXOoOINyvaOXmXvQ+
-	KvEsJrjfQblqjSb6Z6SVYcvuv/IUnEajVyqJvfCv8ZnqATxjZhLQjsBBINConS8Fjh4AP2W
-	BrUR3/stcGeS3/h9AkMJA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:lSJNFpLL900=:73aM6lchZydN24jhucJCxD
-	Kx9N4F6F7qiN0RnmKn6D9PBRWsmnPfuIJjuCqj5OZ9KT4Zv55ZmDDMbdV/3WJ0tW3lUqEU3H2
-	PSvm+4hnsOwZfBR2GX7Jl3fSGBfUfUXwv4zvZkJVsDE+OGurxZrjytJWWtV2SLwA8nAgn09Tg
-	9M+5Tym/C0GEuwSLwwT4D3HLVD+9OjIhqC5VreSu/+sYjLqkq7hBad5a3ObBGmntUwcojTt0s
-	YjW4VpT8M7OVxDmquhnuL6/TzqttNPxqB0Oh3vylyZQpGLc+qvc1eMPR9X3CgwGRRosI3ZSYN
-	H1sjZ4+rELDJ4PMz/meXyHpKFB1x4ZLi8UpGG3U041XOZXobMKXOXyw36A6kxoPiJvVUsgG68
-	ZebZDLAQy3ggavGHwB2+2lkiv/B4JePFVM+mLRHZ3reluKuw2sR5BpqEq3pDHjOnS4y8DWX/A
-	+EbfigzegKDF3qge4CuXL/uhk/eXWMRtaXa/VYjZ2fCwKp6hrfP7H3vpnPaza9ODE9uvaR5lL
-	js9NDBTHXBv0dF53XWEcxgfa0S6XO1phMLq/frJR4cHl6Mb0mekUv84IvLQ9PijF2xRDtk/PX
-	+/dnJWqIrJJPW3Z6TAQ9MwFIwuJ6wZ1KXrHvJq2GrD2iKDFLm/J8Va8ttC29lrIbFtQxe2tFY
-	VMF1C5bu+A3j+1Vckou7T3yGcSDtSBOV73hA1QGkV9umyvsYw+YlwlBZ/dVi4VhZLK9W6ubGw
-	zYA1ON1KIzCYqBP9sHb3QuEZ7DVVJJzO8iyWvg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PATCH] target/m68k: remove unused variable
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eReFj-0003DJ-CJ
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 08:17:44 -0500
+Received: from mail-it0-x241.google.com ([2607:f8b0:4001:c0b::241]:35619)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eReFh-00038l-7B; Wed, 20 Dec 2017 08:17:41 -0500
+Received: by mail-it0-x241.google.com with SMTP id f143so6819781itb.0;
+	Wed, 20 Dec 2017 05:17:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=q4pumUioOSdfYQc2ywruf0aoo+gGLSEqelTSk/rbq6o=;
+	b=QZYft7QPPh6K3gvM+1tSMoE5Cg02XVqBwT/KLSpDclEjLqR1Ej2VnVVkfP4/Mka383
+	hcbOQJGXii2qS7xJ+ATcCUG2i5cdkPh6dRBXWck7YJI1yArtx+S18BLo8hWWC7bnQ5SV
+	s5XaY9dg2bOZiio1lgbbHDUIPfHG6EHbVDBkfZt//n539ArBlzJiN8uLFCo3298DuinE
+	S7gy1Ykpbq6rzuZZPmNqwSfp3ZO/LvLQRxxtRBcvs5QcSZ9lTr5S2CKXVocQT7Xa0fCt
+	tf5meTVFOFBNUswaMjx9HefbKEkFIIvIkqASQoOgxHzh4ezp+JJZ/n1j45t7L15UocjE
+	mArg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=q4pumUioOSdfYQc2ywruf0aoo+gGLSEqelTSk/rbq6o=;
+	b=ahaj1R7HCCbjh9AyeivqP/0x23IVAdmrkwxDjhy1Q4vY/ZRtEXnvtawWGNLMLomjCV
+	+aKgXgwVac76UFjUXu0tInU5SdaMKrfssQuJhvlTeqKzmlGwA3QyQc406FRyJYrbvivS
+	Gjc8Iu0HB8wQLpETrj1xJs3B2hEunY+TkIXy7AXGe1HG3HS6Nxay6tiCFYOsQuWFV8DY
+	PrmRUUVH8/eqjbx/tdsWlCVoJ1MfZ2iz5INJsaY2/T0aNdhLUEuOKZmWqMh1xDtrkwt9
+	3vrQciIM+AxXsitM09O59q7XByP24UO4EK8ym9LNuuk1WPA9/PrgsedppixA+EULthJa
+	VXIw==
+X-Gm-Message-State: AKGB3mIq3eSdsmJ823JeDwRS6eZRfrxMMQRm255aZ9CCAO3VQb/chD5s
+	iZ1De7pX0pvehQfG4hXxTkfqgOnzv7k7wo1fdDqhSQzQ
+X-Google-Smtp-Source: ACJfBos4LGCvS4EOBVeMyt+mqG68EcxZlQNGxXLZIg1hA2ef/PK95mpz4hwXswsBqbeGikTTw8lRU/fYxceidYYq/K0=
+X-Received: by 10.36.73.9 with SMTP id z9mr3440436ita.88.1513775860572; Wed,
+	20 Dec 2017 05:17:40 -0800 (PST)
+MIME-Version: 1.0
+Sender: philippe.mathieu.daude@gmail.com
+Received: by 10.2.183.19 with HTTP; Wed, 20 Dec 2017 05:17:40 -0800 (PST)
+In-Reply-To: <20171220130815.20708-1-laurent@vivier.eu>
+References: <20171220130815.20708-1-laurent@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Wed, 20 Dec 2017 10:17:40 -0300
+X-Google-Sender-Auth: _TOHew15Wqe3b06iIwrZksNBzZc
+Message-ID: <CAAdtpL6byoHzPmYOJexD33SrJszK0s6neqgo=PxXfK92X4w5Qw@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::241
+Subject: Re: [Qemu-trivial] [PATCH] target/m68k: remove unused variable
  gen_throws_exception
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -55,73 +72,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 13:08:30 -0000
+X-List-Received-Date: Wed, 20 Dec 2017 13:17:45 -0000
 
-It has been introduced by e6e5906b6e ("ColdFire target."),
-but the content is never used.
+On Wed, Dec 20, 2017 at 10:08 AM, Laurent Vivier <laurent@vivier.eu> wrote:
+> It has been introduced by e6e5906b6e ("ColdFire target."),
+> but the content is never used.
+>
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/m68k/translate.c | 10 ----------
- 1 file changed, 10 deletions(-)
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index b60909222c..dfb2d5dad2 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -181,11 +181,6 @@ static void do_writebacks(DisasContext *s)
- #define IS_USER(s) s->user
- #endif
- 
--/* XXX: move that elsewhere */
--/* ??? Fix exceptions.  */
--static void *gen_throws_exception;
--#define gen_last_qop NULL
--
- typedef void (*disas_proc)(CPUM68KState *env, DisasContext *s, uint16_t insn);
- 
- #ifdef DEBUG_DISPATCH
-@@ -310,7 +305,6 @@ static inline TCGv gen_load(DisasContext * s, int opsize, TCGv addr, int sign)
-     default:
-         g_assert_not_reached();
-     }
--    gen_throws_exception = gen_last_qop;
-     return tmp;
- }
- 
-@@ -331,7 +325,6 @@ static inline void gen_store(DisasContext *s, int opsize, TCGv addr, TCGv val)
-     default:
-         g_assert_not_reached();
-     }
--    gen_throws_exception = gen_last_qop;
- }
- 
- typedef enum {
-@@ -1001,7 +994,6 @@ static void gen_load_fp(DisasContext *s, int opsize, TCGv addr, TCGv_ptr fp)
-     }
-     tcg_temp_free(tmp);
-     tcg_temp_free_i64(t64);
--    gen_throws_exception = gen_last_qop;
- }
- 
- static void gen_store_fp(DisasContext *s, int opsize, TCGv addr, TCGv_ptr fp)
-@@ -1056,7 +1048,6 @@ static void gen_store_fp(DisasContext *s, int opsize, TCGv addr, TCGv_ptr fp)
-     }
-     tcg_temp_free(tmp);
-     tcg_temp_free_i64(t64);
--    gen_throws_exception = gen_last_qop;
- }
- 
- static void gen_ldst_fp(DisasContext *s, int opsize, TCGv addr,
-@@ -5561,7 +5552,6 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
-     gen_tb_start(tb);
-     do {
-         pc_offset = dc->pc - pc_start;
--        gen_throws_exception = NULL;
-         tcg_gen_insn_start(dc->pc, dc->cc_op);
-         num_insns++;
- 
--- 
-2.14.3
-
+> ---
+>  target/m68k/translate.c | 10 ----------
+>  1 file changed, 10 deletions(-)
+>
+> diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+> index b60909222c..dfb2d5dad2 100644
+> --- a/target/m68k/translate.c
+> +++ b/target/m68k/translate.c
+> @@ -181,11 +181,6 @@ static void do_writebacks(DisasContext *s)
+>  #define IS_USER(s) s->user
+>  #endif
+>
+> -/* XXX: move that elsewhere */
+> -/* ??? Fix exceptions.  */
+> -static void *gen_throws_exception;
+> -#define gen_last_qop NULL
+> -
+>  typedef void (*disas_proc)(CPUM68KState *env, DisasContext *s, uint16_t =
+insn);
+>
+>  #ifdef DEBUG_DISPATCH
+> @@ -310,7 +305,6 @@ static inline TCGv gen_load(DisasContext * s, int ops=
+ize, TCGv addr, int sign)
+>      default:
+>          g_assert_not_reached();
+>      }
+> -    gen_throws_exception =3D gen_last_qop;
+>      return tmp;
+>  }
+>
+> @@ -331,7 +325,6 @@ static inline void gen_store(DisasContext *s, int ops=
+ize, TCGv addr, TCGv val)
+>      default:
+>          g_assert_not_reached();
+>      }
+> -    gen_throws_exception =3D gen_last_qop;
+>  }
+>
+>  typedef enum {
+> @@ -1001,7 +994,6 @@ static void gen_load_fp(DisasContext *s, int opsize,=
+ TCGv addr, TCGv_ptr fp)
+>      }
+>      tcg_temp_free(tmp);
+>      tcg_temp_free_i64(t64);
+> -    gen_throws_exception =3D gen_last_qop;
+>  }
+>
+>  static void gen_store_fp(DisasContext *s, int opsize, TCGv addr, TCGv_pt=
+r fp)
+> @@ -1056,7 +1048,6 @@ static void gen_store_fp(DisasContext *s, int opsiz=
+e, TCGv addr, TCGv_ptr fp)
+>      }
+>      tcg_temp_free(tmp);
+>      tcg_temp_free_i64(t64);
+> -    gen_throws_exception =3D gen_last_qop;
+>  }
+>
+>  static void gen_ldst_fp(DisasContext *s, int opsize, TCGv addr,
+> @@ -5561,7 +5552,6 @@ void gen_intermediate_code(CPUState *cs, Translatio=
+nBlock *tb)
+>      gen_tb_start(tb);
+>      do {
+>          pc_offset =3D dc->pc - pc_start;
+> -        gen_throws_exception =3D NULL;
+>          tcg_gen_insn_start(dc->pc, dc->cc_op);
+>          num_insns++;
+>
+> --
+> 2.14.3
+>
+>
 
