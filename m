@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRiAy-0007mD-U7
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:29:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60951)
+	id 1eRiBC-0007zP-6H
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:29:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiAs-0007fx-Il
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:01 -0500
+	(envelope-from <alistai@xilinx.com>) id 1eRiB8-0007vw-M6
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiAp-0006wa-Hg
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:28:58 -0500
-Received: from mail-cys01nam02on0056.outbound.protection.outlook.com
-	([104.47.37.56]:26993
-	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+	(envelope-from <alistai@xilinx.com>) id 1eRiB6-0007Ki-Ci
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:14 -0500
+Received: from mail-bn3nam01on0063.outbound.protection.outlook.com
+	([104.47.33.63]:40181
+	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eRiAp-0006vo-76; Wed, 20 Dec 2017 12:28:55 -0500
+	id 1eRiB0-0007Gx-Gq; Wed, 20 Dec 2017 12:29:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=rpl2mMZTR7srl96jfSlHAMKQXbJDJe8RpKhDUoN5SfQ=;
-	b=thqFhn9lgV7fgvffPdm8T6kuFIvX/vL3sW+nKN0JuaOl03o04ZQS3IJ71cJHq4rNWSddTn68JiIr83vS4JFPWyMkx/oW6STuvHbzcZ/lMtz5n2Th/pPt/UNX5WeAr4eBAWa3DLH5ZZPSlNk+pZw4/mQW7MzhE0vv4L5Q2S7aPv8=
-Received: from BN6PR02CA0033.namprd02.prod.outlook.com (10.173.146.147) by
-	BN6PR02MB3378.namprd02.prod.outlook.com (10.161.152.166) with Microsoft
+	bh=9ZLdBgh0DXKAFEXwVRkYDLnmRZztFchnZ4rLl5gJ1p8=;
+	b=0hYmLPJscPIm4PXvR1Wkq1gs6sTEV32joJtDesB4akCo05n+/dmtbY9l4+qlU/9QKIBXmsO9ty+kEFwj5jUhfBXIoBU6GgFiVBxd7c62lbDuR0GWkyVCzJaUlNFhRCA9UyrVmcvhiqocFv8yi38BvaoJiDFhEqrjXaJ+J8OwvLI=
+Received: from CY4PR02CA0021.namprd02.prod.outlook.com (10.169.188.31) by
+	CY4PR02MB3383.namprd02.prod.outlook.com (10.165.89.154) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.323.15; Wed, 20 Dec 2017 17:28:53 +0000
-Received: from SN1NAM02FT064.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e44::202) by BN6PR02CA0033.outlook.office365.com
-	(2603:10b6:404:5f::19) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.345.14 via
-	Frontend Transport; Wed, 20 Dec 2017 17:28:52 +0000
+	15.20.345.14; Wed, 20 Dec 2017 17:29:04 +0000
+Received: from BL2NAM02FT042.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e46::201) by CY4PR02CA0021.outlook.office365.com
+	(2603:10b6:903:18::31) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.323.15 via
+	Frontend Transport; Wed, 20 Dec 2017 17:29:04 +0000
 Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
-	header.d=none;redhat.com; dmarc=bestguesspass action=none
+	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+	header.d=none;nongnu.org; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
 	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
 	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
 Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	SN1NAM02FT064.mail.protection.outlook.com (10.152.72.143) with
+	BL2NAM02FT042.mail.protection.outlook.com (10.152.76.193) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.302.6
-	via Frontend Transport; Wed, 20 Dec 2017 17:28:52 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:49913
+	via Frontend Transport; Wed, 20 Dec 2017 17:29:03 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66]:50354
 	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiAm-0003sg-4v; Wed, 20 Dec 2017 09:28:52 -0800
+	id 1eRiAw-0003ss-Cb; Wed, 20 Dec 2017 09:29:02 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiAm-0003lo-2U; Wed, 20 Dec 2017 09:28:52 -0800
-Received: from xsj-pvapsmtp01 (xsj-smtp1.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vBKHSfi3008424; Wed, 20 Dec 2017 09:28:42 -0800
+	id 1eRiAw-0003rN-AG; Wed, 20 Dec 2017 09:29:02 -0800
+Received: from xsj-pvapsmtp01 (xsj-mail.xilinx.com [149.199.38.66])
+	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	vBKHSrX8019902; Wed, 20 Dec 2017 09:28:53 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiAb-0003l3-SE; Wed, 20 Dec 2017 09:28:41 -0800
+	id 1eRiAn-0003mJ-JK; Wed, 20 Dec 2017 09:28:53 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>, <armbru@redhat.com>
-Date: Wed, 20 Dec 2017 09:24:26 -0800
-Message-ID: <9a855de62a1da7499c589c4984b4673a9312aa7f.1513790495.git.alistair.francis@xilinx.com>
+CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>,
+	<armbru@redhat.com>, <qemu-ppc@nongnu.org>
+Date: Wed, 20 Dec 2017 09:24:37 -0800
+Message-ID: <4c91df850ffd16249c62680148150c15a2b4c9ff.1513790495.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1513790494.git.alistair.francis@xilinx.com>
 References: <cover.1513790494.git.alistair.francis@xilinx.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23540.006
 X-TM-AS-User-Approved-Sender: Yes;Yes
@@ -74,71 +72,73 @@ X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
 X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(376002)(346002)(396003)(39860400002)(39380400002)(2980300002)(438002)(189003)(199004)(81156014)(47776003)(118296001)(50466002)(50226002)(8936002)(5820100001)(23676004)(7696005)(478600001)(8676002)(36756003)(356003)(2906002)(305945005)(2950100002)(6666003)(575784001)(76176011)(63266004)(36386004)(5660300001)(2870700001)(4326008)(77096006)(39060400002)(81166006)(106466001)(316002)(106002)(54906003)(9786002)(110136005)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR02MB3378; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com;
-	MX:1; A:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT064;
-	1:EMLRcxOozlur9psDdFOezm+jw/RcjDxYW9a57O2dP7FpL8UakNLDyenPLTUT51e6Eas8q73oTcyU9PieinsY3H0SM7egP0zDU0V8GTiArynEKNXYxrBSoIApPJd7w5uA
+	SFS:(10009020)(39860400002)(346002)(376002)(39380400002)(396003)(2980300002)(438002)(199004)(189003)(316002)(8676002)(106002)(2906002)(9786002)(81166006)(36386004)(47776003)(48376002)(59450400001)(81156014)(54906003)(110136005)(36756003)(50466002)(356003)(305945005)(4326008)(8936002)(50226002)(5660300001)(16586007)(51416003)(7696005)(76176011)(77096006)(2950100002)(106466001)(6666003)(39060400002)(118296001)(63266004)(478600001)(21314002)(107986001)(5001870100001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:CY4PR02MB3383; H:xsj-pvapsmtpgw02;
+	FPR:; SPF:Pass; PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com;
+	A:1; MX:1; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT042;
+	1:O0+1ZhacEWnDz58JOxnCyuegpsK8QOyEWVqX+cUsA5LULuIqP+FN5IRzUGjRplTO5hHy19mtWwldTupBuYH0s3oAYVHaJPS1I89BYxPh2APjUfWx+1s01qYbHvwLOTeu
+MIME-Version: 1.0
+Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ece6b101-683d-4758-6bec-08d547cf23c4
+X-MS-Office365-Filtering-Correlation-Id: bbf0cf65-9317-4c50-9055-08d547cf2a31
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(5600026)(4604075)(4608076)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603307)(7153060);
-	SRVR:BN6PR02MB3378; 
-X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	3:okp62GxT2X/fGYwil18WDCwfzKW7bUTIEsba95XSsqsmYYK0Nr2cnWcCLHUYDg8GUp2DkTucMRTntux40noS3/gXbHJk8zY1Fw5fmdodGKKhbcVb4QD76bYEtP9Tjf3Q7yXEB+a4t2JmmzzxE/1C7xSedwkSpA8IQJbQflQ7HFHwltQZ6xHjf2nwBuMdPbEWk8sfZiWTBzC4WOlEtSIdBuEwpoeCs4eLOebM/sK99gt8CbVO4T6JHMWoxOjzZ+kOOfwMXSlZfL/smELtWJBYfLRaBtTIOP+IwUtK0ZNV9i5yLCIKO0/nfA6eAtMgFq+jFOhQplXRXMBTUIqkIX2vYlYrp/64Vd4P8D1MN1kkXOk=;
-	25:g4jM5SseWVzEPMuJhr2grPanyKg113c/eocabU7MmvxA2FeeSL1DadSBVkLGSb1slAoFSm1WBYu25LJT4/DiJeFtFU4UYL7TlcmjK9brZ3fCJFVMmuvETA1PpQcV2JXwIxtnwnFJt6lju/E9zLJbzEgYFl9apkaabHuAvcNjLEczPrBsPcS2BcWkaFpSvckHMjCGm9AzZWcwxdGpdMQywF6vieDzwK4ssTWBQX5+8+qmX1f1MF1EdQwa75R34kZTEBanMJi+seRt4ATAGEDkhziafMyIwRJJ3PSuWZAPHkjQ6ZSCfjBJmxe6l1krHle2AibSxoOaKcA/9qEJxf8OAQ==
-X-MS-TrafficTypeDiagnostic: BN6PR02MB3378:
-X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	31:5HiZa+Xf/nOybiXCoaekgwqAd0ih1EBu7L12Qo/Dmj6w8TKCHKNwqPV5EJNj5lDcOoEtLKQXVd0qVAhDfbBTXCnkcR0Xmfwi0F3nIXF25bHdJdzuDDBCa+/ANjmSHfkpnxgaR9IMeOBOF7RWaiq/pl8QNrFDBXklCvDwjMTNO6xuHB+JloCAHh4BtxYR1044GgAtJkE9+YELB/tKOfgXv1I69tSYhkX6Lz97Zc23UDw=;
-	20:xo/GhAb2SCF7yCmN7j7u/tJFQ/4I5EqtsET3GJ/eNUenQez4MsnXiUbCkBWVeTs0JcpyIECLFd2SE10FuI32bmjmyW5OPblFrcPFw52cRNM41U/wsRA8OdE4SC7htVKjm1ylRiBFufzCSySBvp7/v2a2C9klzeVmVLkogiC6xmP0lsdvglBx9e8cRO/9gbRwUDQ7Ls4urhEVdQxYfvfkKSQ93lCWlFY+RrYUzzV5hFrMazSOEstdgNTFpCTBRPVVtz1iGty8/FWDBbT0JpkyBOAYZt+SwlsL4Iu8ZgPRPFCakt6GbGa0UBMIxtKM4IgNVVsY1mI/Sh6CC7A88v0b7/ffZ1v1DsGDgZt02bqBicm+LKPIOOEhQ7FtWe9JLBOTTWwtmTkPBYfZksD3ToGSx6NrkHaSzg4KJ/Mqc1HOSRZB7WQ1sMH5vBLUvO/pUYQzpez97f5cyfkODtRwtLL2egExlGRLV+q/dhnENN0SunjWyJarO/ymeXwidZNiFljc
-X-Microsoft-Antispam-PRVS: <BN6PR02MB3378A84668132DB1E4A4F3EFDC0C0@BN6PR02MB3378.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
+	RULEID:(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(5600026)(4604075)(4608076)(2017052603307)(7153060);
+	SRVR:CY4PR02MB3383; 
+X-Microsoft-Exchange-Diagnostics: 1; CY4PR02MB3383;
+	3:F40iHp7cHCSyqhg3VCyDbxApFyf8UFdrLor2wiAx3MSSNxo9rJ4AapWtn8HX2rtvqdqrms5zg8O0FA+bsQDgW8g5bqmW4k4Bmtpry0Ob77wX2TdLVM/4L+1AiIarskNzFgjakPRbSO44GR6GRE43qpo8OwaQCn8PnHeM1xQBYdISAYB/fqbiNjuWvzz3/7vgClTGdn677M61nVS/kICNOVxhigK/nHPf4OL9hi61F3Ohk6ZnM2jTrOEg3CLqM1Qk4KPvum+P21VEZkyGSThdMuM7p5Ozq5UtY4XbWA6qz4I62GTucw8ItYs/Q0YROCV3Cks9Hh4eX/vQs9TU4mLhB4pzx0NX9P55p5N0lfvdduw=;
+	25:Z+5CzRN0qvoIEo3V3FK3vDVdMhferfkd3jbS1TpEtW8Ux0Zt1WHAMevfM0rmFc4VmqRuOAzzJSihZrJpeGwpiotHvwZnuZsrMNtoNe0RR4fXkUvWuNenLQfXZelk8lostnrbwvmrnn7gLrf9Lv1tu9E/+xLYvMT1hO1cbmDxU5XSq+P1l3MoweCnpmP8RT8fMMmNNrJ6nyhrIgMqVfgMsjmJCvoCl6SLqMH3jgTI7InofUg2d/Rx9/ByZp/f0LHJgxdufEFCHeY/I+t4iiPv/Iq40uOLhy6orBBhN1x4TfhrEKJTbzRN85lQr7snHd+JvzkqafybO0d1i/q6gVjmYQ==
+X-MS-TrafficTypeDiagnostic: CY4PR02MB3383:
+X-Microsoft-Exchange-Diagnostics: 1; CY4PR02MB3383;
+	31:N9qmVuPYIhMF9Gxu6EtWkjQ5qPqGsrKmcXF6wQ1HjrO0n2s2u0rzRvVPQIg2yRnbV/x9A0jI7a2ETAGz62EFFFYO+MJZVLPQlZNFOhsgR+dimJrB97ytT1QB5hvsIGREgr6o5r4+xP9HENIwmZ0v06tbf+JkcL/Ej1wlZ6KWBQGsrWaiTLo9zNRJk8mZrkdyazTRyFcI5+Tgf9gL+pBHeGgv2PWFH9EOYrnHC+5oB4M=;
+	20:KvICNqjsvFeyo6wRxNsHn2aDLhPzSB0DiNi+c1FoJhLK0DwTQt64KHO5AoAblOnARb+wRI21Frqgfg5b4qacZeO3+gYbVNUuk8zoc1Qe8VTz72wXyAl/WR4v1gnszwIZrdd7Q1xIhXa8dfEfOGMIIeVxMNbW/PEjMHGaeTY4ePb4bmU7hvrD/hljMRUHpyph+Vh1zujnmoIxrAsF0/cHAC8Zpgukbqtrih+nVxZV+WDxvg7o6cTVLvfb2eYYW8fgEM2uei0buwVfalrPUAPnQJhLygBf/TnmJrWbOGA0o1MtF7WuXEi+b24k8sYqxvvEUD1lFk5xandFHlyATnuv3prpm80RD5RmyNe2PsuyGPIdM9UMasnFCBBNh1801xlNeNcIQan8/3Zf6TjhfJZcMfo1ImUYHvqU4kWEijNkKPl4Iuq9JBPXCn1YLiWFFbT6ppRH0y6owrBSFg1ZZxiNclN44QveEdkWViIo1wsza5LeQmc7kGdH901agBz0WxLf
+X-Microsoft-Antispam-PRVS: <CY4PR02MB33832C7AE921C4C88BB1AB29DC0C0@CY4PR02MB3383.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(142945433499172)(788757137089)(192813158149592)(21532816269658);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(5005006)(8121501046)(93006095)(93004095)(3231023)(10201501046)(3002001)(6055026)(6041268)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
-	SRVR:BN6PR02MB3378; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:BN6PR02MB3378; 
-X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	4:6fmJQF3bBTJ0KiViOHth/5iGgyr9iokG5Zy4D8c4OKdgqlZRW3R0zzeEkh2Z3buoY7VVVh9JLgC+yXc+hIQK6sKlK+Jw1TeT1/2ERiHqLta12bvXjt2ThCutK9kOQgD3rBWcLrTJPS3hqjJPmDsbRtv3LKyFqkej0U6Bhdw3ZBqxlELMXJrhSZ/TujIJUb54JuqAkrapbD/R/6tM8XMbQEtJKTWE9jGg3D4gogQ13KIp6Cjvf/pkKDqHN/nYvnkgfJxG1gGkWtnU20DTbqUNiqp7PUNaOfIpaI2DHVWt0fvD2tiS7autUHXy43597rpHgn2hNnyuNIXWWW9ynd7GVQ==
+	RULEID:(6040470)(2401047)(8121501046)(5005006)(3002001)(93006095)(93004095)(10201501046)(3231023)(6055026)(6041268)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(6072148)(201708071742011);
+	SRVR:CY4PR02MB3383; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:CY4PR02MB3383; 
+X-Microsoft-Exchange-Diagnostics: 1; CY4PR02MB3383;
+	4:RDCkCME7Jsbb1OO6Wo7EQsM6Bq2gmJxZmuv1EMbdLAqjYk8U7R75Za8855a7gWHJMlpKRir0aNksGUiPWtlbw3eu8REyrevVQx7GwzXGzdcZc0PcL6WQXamLomyrH/bUN/a6uBDEYpvUDj3o4pfbisw6ggw0667g11atSl1eXw7O+ZkwJT3jEFXBKTDp8OPBcFqq//74lmpaYdJ0YXCOzuwZt1YymaBlzG6bP0BFDNlan3yqil0DJI+UQqeA8VRVrDXzsNwd9FOGaL3PYmNzcrMCQuGb9r55v+1sl//xEnC4PIzPcU7/R1q05h0Bd+52ZjXKdwwdfStzrfPuF5itPRR/XWj3QFzBhVNwzKd9/fov/yyBg125ZQKwBiOkyTMb+KiNju0PZzu/4q+yRHATwTAE00H6HgrFlFUaQArJA2E=
 X-Forefront-PRVS: 0527DFA348
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BN6PR02MB3378;
-	23:nGpkuAQsgF4EjpdsrtUInw71NSNrcE8LqTLyl24M6?=
-	=?us-ascii?Q?HNNAavoY2arugqY5gG8iHoJYr9C6mWXggE2/GZ9EhizXTMSXGuglAd4DDLjx?=
-	=?us-ascii?Q?Q2z4FsR964cUGQYsj6g/Xt5o5FEvGziCJR5ssnJ7nNQBNoeIQ/XXjhDw1AZt?=
-	=?us-ascii?Q?qjziIGDwZiWnj6aIAIP2P4Lv5BRKQWpOZs8IBPX/aQTSSQkARU67VqMuWywC?=
-	=?us-ascii?Q?jHQKjPcDBHG3WBcy5KPmIDniyFQn5sYM+xMY5IjqualS3uIjlIPFt4nRWaNw?=
-	=?us-ascii?Q?BVoR1gaRJsR0ViNSQg9nc7YG9+73JO1PNhg5LGiLxYGi2ypyL4ZGWH1N1hpg?=
-	=?us-ascii?Q?exQjJV8qCnwfgcKIoab+Y3RsLsozww1WLJVNk5BdwYMGsHOecEbnc9I9T0w0?=
-	=?us-ascii?Q?SwReVboYk8Y/u1KJLKS1NkcQaKlyfLLtt5XN1BskR4xCKxoF4ErvpiErzP1F?=
-	=?us-ascii?Q?9WJ6bWDhznaK/3KpAwQYsiNzOrupiS1y9/02wFmWWbCK2NVPhFBPvQsv1ouv?=
-	=?us-ascii?Q?LA5vzxJUS49tbLFC0775180vQI0Bd8qZ18K4rLzqA8eMuibRqKulF4Wt+etR?=
-	=?us-ascii?Q?Adctg4Ks1lvRm8oXHf70Za4Qg8QNCK/BcUfTl1tZOSX/ujq40darGlyM3Lc1?=
-	=?us-ascii?Q?hi5rCgZmhLyWx9XtZXxPLCxdY8glLDK9U+B6hwHkw6i8chXj7MF4KoagPLnR?=
-	=?us-ascii?Q?riBRu4fL7zY4XfjAsS7t5jA9ayPhcUrinLTUts959GyQkupCrTcWtBH+IraR?=
-	=?us-ascii?Q?haXiwOLFtTKva1wlMpiGCJ6SFkjWr4xKBzk+dZANBNQhZTWxRNOqLpQfkKwC?=
-	=?us-ascii?Q?QVk/rCHMr2qCG01+aRBk76PdEmLdvCPm6KNkuIGHohcSGoGWGDIIHaE/oVum?=
-	=?us-ascii?Q?bb/vNfBIbJIrFumUxVS17b1dBZ3N7Yj9+qbxfm/VwoBbiSCL4UGUxG15u78O?=
-	=?us-ascii?Q?e4aBZ/k9g8I1qSvhfQY4V1w8mlGFhp1rqd/kwhafUfyol0Ig1tJ5TJn3s2Y5?=
-	=?us-ascii?Q?+wxP/IBYxruiaiXWd4Sm7CVOGJ6zM50HgRg6z8jcq9vB8wQhawSSftxfJsPA?=
-	=?us-ascii?Q?IjPSMvjMN/SEKJnIYuXkJEQD2Yf?=
-X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	6:2SloTtjGivt6iCeNHqsCJAINqOj8wmLMH8Gv9feABLwYYr7UVlodGzhRe6cu/DWc1MbNI7XrfPS7f6K4uJRw8M+N31G0a5JoEgH++HS5iYgl7H5Jw8kWSN+taFbt3/lRnCg89bmjnFP44T7cPcn/9jhh/TxIuVHnRRQsuK6mqFYYxgT0jlBcijFqc+cRAMh/byx/nEQGocJ1tzpjrX/njjkEIiL8HL0kvYiLjCHNLoDCFqHsfqBmLV021Y7kg//fJsKk2ewe4ejeRNPcpn1cc4ZAk1fjUVSciLxzTuJxJ8RQBV6yIw7iWJ5KkiOkPE7z56/O1a75+aCz+LI7zLqA9UyrybS8so049q+X6gFW9U8=;
-	5:7B+Rk0eYFByiTa4x3RU1ypfYVqnltHW5VCPslBZnoi/kGork593eR/xBpUS9ox+bfWUjCveZ2Fmc7POMB7xfPojA/7eK6zCgWXWg4/nVkgD5Nm/Qi4wzx0mw1JCY5ZyB183CzgfketOBauFsz5nlgk6Y8AoieiRtAx61rrUDDc0=;
-	24:7UXB78NIQzcaXI2gIGkTXhKeqBQCRKxNijob03SmaEhDvNT9n9Mod4NUSKs45uZMQ8DRPdEydaL3e67hFgPMmQXdArpx6OhR5ld+YMXx0XQ=;
-	7:0vttdtbBUymwuG3BvX/nvIj/LHj2G4tSWHON4iznr2tjluwdSqSH+IBB9GfGa4W3I0J1gSUjDFLHky+x29eClGsPAeH2R3LtBvf4oZWXHYY9F9scW4hQ6DTUBy61gsK4UVKhESxyqX7V52lX9L75RwTUaZxz7VaRbkfI5dmlev8lZIBisT4TBgZal0NgPQXjk0Juw01G6EXr8fKfYB0S5H0Ld9+Z0mBuQJ0LO2XLP75nON86MtzZ62zNyB6VcZb4
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY4PR02MB3383;
+	23:sGRW7lSEojqlmPf4VDbEirw9l2UwfPrdlETcdngOr?=
+	=?us-ascii?Q?JZwMOID4Jv3v+j1sQPYBVyZfIhMbeccDOpw6R9D8lRqqzhIaKIvUPqK1H6lU?=
+	=?us-ascii?Q?/xRrNaqEXvdcxMigg7UXtdS5rHf+w9wwKwWGnKpPYLDNAeJSnCEbp1zRSINn?=
+	=?us-ascii?Q?f0+vvdTv4fqH2X39OGY2MbEaNgM1hkkdPjYaTjBUHYktsb+IBDKYS+mVHedP?=
+	=?us-ascii?Q?9bKHZj02Yx6BoZIH723+6NTBzwL1HVpT+Ji/5ESpJsJ94zI2TJQT2FqXxkdO?=
+	=?us-ascii?Q?ox8o6pokbwUKIqQsEF623UrsJqT+IT8s/cCsRwvM5jZTvEVYAmy3PGK8TjDu?=
+	=?us-ascii?Q?8EMHSjFuKB3JOj9Fu8SRMRF41ShSPW5K/+vEs85dtCAn/+RKc9G/B1uk3Ne/?=
+	=?us-ascii?Q?ejReStOfCEdGZxpP5cv0TlY7h3/puEieklJueHdFB5Gbf0h21qexc6KY8qTL?=
+	=?us-ascii?Q?qJQAaQVXjBSXCifBwJXDaTC6d8yDM8ufIdKh+LQJGX08ZSZ2DHjiK7zKJkdc?=
+	=?us-ascii?Q?Mzz2SQMY3TyG8JGSLBovJMqrmFx2yUe9Yvj+Byj9tTWZhUVUTVWpW41BReKz?=
+	=?us-ascii?Q?sQzQR62OLB98KydLztiin16+A574aVjpC4jNUfGvxakEP66+UjFCnucX1ssV?=
+	=?us-ascii?Q?9tJ3+XXgk3vB6tnGZ4djiFMA5oeesCuX/DLsH/b2WMOwlfr7UumAjLOsiTWd?=
+	=?us-ascii?Q?oJpulrMGiOQ98Yj9YgjgfGJcHHEhtM4RppjqKqLSdW7HsynWSEu6AlWUex6G?=
+	=?us-ascii?Q?X9OsPZ3c9E0a+7ZW69TBDooZk3C6tZrByjNKebTBtsiIHx4ec9/kcg7EoHZ3?=
+	=?us-ascii?Q?58Uesg5i4m/3tjb5UZsDN48UEK0b2myfabrwZBapcRoe7nEWcl26pjy7oxPM?=
+	=?us-ascii?Q?EZn35yZHNvrJj+KKu4KxeX2MsUpLx0O7ZAwZ70zrd1AfbATN79NOcZraLkKC?=
+	=?us-ascii?Q?qpOPMgugYGw+B2jiNNTtW5Br5E50wASC1qQVF74bFGqOTb4gPDWo6fFl3GXi?=
+	=?us-ascii?Q?qyjL3xH+8jgJjyIc1CN75fbe/zFlg4sJ+qGNQkrW2I3cJG6V2qZOCTPfVNdP?=
+	=?us-ascii?Q?BAyiWAdKEhy/X+ovzunb1cb4Bft?=
+X-Microsoft-Exchange-Diagnostics: 1; CY4PR02MB3383;
+	6:HAlAaYQhfugipUMaKSfZp9zT0hnMY5oESY93tkJgBXQjLj7a1ROAVLrkOWxKcobIC4ojf25L0t/IRmPDvXETnefEJizILLQLhRGsSCPmnaRQ28Zf7WLtdUv02hq1fBtNWLvGP4oMDbDAE5raSVQtiK8kTYgJYy4ZrO5BBnEMkgiVa3JyLYBeWgsfNVuh5zr8Ipgq0UdOP0rfjQCBV5rKmQPWYtnwf9I4IEAcpBeA1CE4HXdPNvMCZTJyTGGuLBl6t0FLzQClK9KZPLRKxv0GMEyEVAfXL/Ip9xOWXzf4wpoS1pmK+DtcKMKM6dbuxxPyByAXsMYaZ2mBFhj97K4UTNPQPjcZ9JP7tsMto+Tj/Bk=;
+	5:0BtGnONMVimzohfhnrEBud2KlujpSEfklWC1cymNbVWMtBeZF5+lgCWU3f700cQwNZtaj9D21w0e8QCfgizVKrSDhOfI36GCnZx24DDahwaAZW0s4esTg+qv1g/w1k6OdIChWCxGeeuQNiLXsFu3UMme8A33ktYXaWfUmnZGkus=;
+	24:8s9vJ+kRL0sz2ViHN7iONp775qR/hJI1vAkHNjIiWbnoDd4ngL8bNZSzq/SLIABBoQX/DeLwghDSBQQ5541TaQEP+LkS/y+ywEnq6J9cm14=;
+	7:EPQ7WS6wDkJGvlK+U0fRNEJOqdtqcnViXah/vnPwFSfR3nzvErzrSoc6RROkT+cJz5wwfXJn+k0z0dZhssQz4bcUI6I4z0WbIgACyejm7EgKIubd9MoUDQr2r/0aueps3ZEwjykgyn2Ak8HfcvccSgEKRJtOwnHjtJU153eq9hFjILXul+wI29wgx1p7LdlhvGdSYHij0AhL4IK+j+YO1v7J5RY4BY9h2VJAGXBGzTg+J2GVYOq/HxK+3OU8HvJv
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:28:52.4170 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ece6b101-683d-4758-6bec-08d547cf23c4
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:29:03.0736 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bbf0cf65-9317-4c50-9055-08d547cf2a31
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
 	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR02MB3378
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR02MB3383
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.37.56
-Subject: [Qemu-trivial] [PATCH v6 17/29] hw/nvram: Replace fprintf(stderr,
+X-Received-From: 104.47.33.63
+Subject: [Qemu-trivial] [PATCH v6 20/29] hw/ppc: Replace fprintf(stderr,
  "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -151,122 +151,430 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 17:29:01 -0000
+X-List-Received-Date: Wed, 20 Dec 2017 17:29:17 -0000
 
 Replace a large number of the fprintf(stderr, "*\n" calls with
 error_report(). The functions were renamed with these commands and then
 compiler issues where manually fixed.
 
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
-report("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_re=
-port("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
-("\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
-\1"\2);|Ig}' \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
-"\2);|Ig}' \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
-2);|Ig}' \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
-;|Ig}' \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
-Ig}' \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
-}' \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
-    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
- \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 find ./* -type f -exec sed -i \
     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 
-Some lines where then manually tweaked to pass checkpatch.
-
-Some of the message in put_unused() was removed and replaced with
-g_assert_not_reached() and some of the messages were updated.
+Some lines were then manually tweaked to pass checkpatch and some curly
+braces were added to match QEMU style.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Cc: qemu-ppc@nongnu.org
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 ---
-V3:
- - Add g_assert_not_reached() in unused function
+V6:
+ - Fix indentation
+ - Add curly braces
 V2:
  - Split hw patch into individual directories
 
- hw/nvram/eeprom93xx.c | 7 ++++---
- hw/nvram/fw_cfg.c     | 4 ++--
- 2 files changed, 6 insertions(+), 5 deletions(-)
+ hw/ppc/e500.c          | 28 ++++++++++++++--------------
+ hw/ppc/mac_newworld.c  |  2 +-
+ hw/ppc/mac_oldworld.c  |  2 +-
+ hw/ppc/mpc8544_guts.c  |  7 ++++---
+ hw/ppc/ppc405_boards.c | 15 ++++++---------
+ hw/ppc/ppc440_bamboo.c | 27 ++++++++++++++-------------
+ hw/ppc/ppc4xx_pci.c    |  3 ++-
+ hw/ppc/prep.c          |  4 ++--
+ hw/ppc/virtex_ml507.c  |  9 +++++----
+ 9 files changed, 49 insertions(+), 48 deletions(-)
 
-diff --git a/hw/nvram/eeprom93xx.c b/hw/nvram/eeprom93xx.c
-index 2fd0e3c29f..6ffce745ae 100644
---- a/hw/nvram/eeprom93xx.c
-+++ b/hw/nvram/eeprom93xx.c
-@@ -36,6 +36,7 @@
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index c4fe06ea2a..c826f4b667 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -333,13 +333,13 @@ static int ppce500_load_device_tree(MachineState *machine,
+         ret = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start",
+                                     initrd_base);
+         if (ret < 0) {
+-            fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
++            error_report("couldn't set /chosen/linux,initrd-start");
+         }
+ 
+         ret = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
+                                     (initrd_base + initrd_size));
+         if (ret < 0) {
+-            fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
++            error_report("couldn't set /chosen/linux,initrd-end");
+         }
+ 
+     }
+@@ -352,8 +352,9 @@ static int ppce500_load_device_tree(MachineState *machine,
+ 
+     ret = qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
+                                       machine->kernel_cmdline);
+-    if (ret < 0)
+-        fprintf(stderr, "couldn't set /chosen/bootargs\n");
++    if (ret < 0) {
++        error_report("couldn't set /chosen/bootargs");
++    }
+ 
+     if (kvm_enabled()) {
+         /* Read out host's frequencies */
+@@ -722,8 +723,7 @@ static DeviceState *ppce500_init_mpic_kvm(PPCE500Params *params,
+ 
+     CPU_FOREACH(cs) {
+         if (kvm_openpic_connect_vcpu(dev, cs)) {
+-            fprintf(stderr, "%s: failed to connect vcpu to irqchip\n",
+-                    __func__);
++            error_report("%s: failed to connect vcpu to irqchip", __func__);
+             abort();
+         }
+     }
+@@ -811,8 +811,8 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+         cs = CPU(cpu);
+ 
+         if (env->mmu_model != POWERPC_MMU_BOOKE206) {
+-            fprintf(stderr, "MMU model %i not supported by this machine.\n",
+-                env->mmu_model);
++            error_report("MMU model %i not supported by this machine.",
++                         env->mmu_model);
+             exit(1);
+         }
+ 
+@@ -959,8 +959,8 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+                                           cur_base,
+                                           ram_size - cur_base);
+         if (kernel_size < 0) {
+-            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                    machine->kernel_filename);
++            error_report("could not load kernel '%s'",
++                         machine->kernel_filename);
+             exit(1);
+         }
+ 
+@@ -974,8 +974,8 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+                                           ram_size - initrd_base);
+ 
+         if (initrd_size < 0) {
+-            fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
+-                    machine->initrd_filename);
++            error_report("could not load initial ram disk '%s'",
++                         machine->initrd_filename);
+             exit(1);
+         }
+ 
+@@ -1016,7 +1016,7 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+         kernel_size = load_uimage(filename, &bios_entry, &loadaddr, NULL,
+                                   NULL, NULL);
+         if (kernel_size < 0) {
+-            fprintf(stderr, "qemu: could not load firmware '%s'\n", filename);
++            error_report("could not load firmware '%s'", filename);
+             exit(1);
+         }
+     }
+@@ -1029,7 +1029,7 @@ void ppce500_init(MachineState *machine, PPCE500Params *params)
+                                        initrd_base, initrd_size,
+                                        kernel_base, kernel_size);
+     if (dt_size < 0) {
+-        fprintf(stderr, "couldn't load device tree\n");
++        error_report("couldn't load device tree");
+         exit(1);
+     }
+     assert(dt_size < DTB_MAX_SIZE);
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 3fa7c429d5..b832417a56 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -270,7 +270,7 @@ static void ppc_core99_init(MachineState *machine)
+             }
+         }
+         if (ppc_boot_device == '\0') {
+-            fprintf(stderr, "No valid boot device for Mac99 machine\n");
++            error_report("No valid boot device for Mac99 machine");
+             exit(1);
+         }
+     }
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 010ea36bf2..d1f4546613 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -218,7 +218,7 @@ static void ppc_heathrow_init(MachineState *machine)
+ #endif
+         }
+         if (ppc_boot_device == '\0') {
+-            fprintf(stderr, "No valid boot device for G3 Beige machine\n");
++            error_report("No valid boot device for G3 Beige machine");
+             exit(1);
+         }
+     }
+diff --git a/hw/ppc/mpc8544_guts.c b/hw/ppc/mpc8544_guts.c
+index ce1254b5d4..0a1adb04d2 100644
+--- a/hw/ppc/mpc8544_guts.c
++++ b/hw/ppc/mpc8544_guts.c
+@@ -18,6 +18,7 @@
   */
-=20
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+ #include "hw/hw.h"
+@@ -83,7 +84,7 @@ static uint64_t mpc8544_guts_read(void *opaque, hwaddr addr,
+         value = env->spr[SPR_E500_SVR];
+         break;
+     default:
+-        fprintf(stderr, "guts: Unknown register read: %x\n", (int)addr);
++        error_report("guts: Unknown register read: %x", (int)addr);
+         break;
+     }
+ 
+@@ -102,8 +103,8 @@ static void mpc8544_guts_write(void *opaque, hwaddr addr,
+         }
+         break;
+     default:
+-        fprintf(stderr, "guts: Unknown register write: %x = %x\n",
+-                (int)addr, (unsigned)value);
++        error_report("guts: Unknown register write: %x = %x",
++                     (int)addr, (unsigned)value);
+         break;
+     }
+ }
+diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+index e92db2c66a..fae9c76174 100644
+--- a/hw/ppc/ppc405_boards.c
++++ b/hw/ppc/ppc405_boards.c
+@@ -324,8 +324,7 @@ static void ref405ep_init(MachineState *machine)
+         kernel_size = load_image_targphys(kernel_filename, kernel_base,
+                                           ram_size - kernel_base);
+         if (kernel_size < 0) {
+-            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                    kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+         printf("Load kernel size %ld at " TARGET_FMT_lx,
+@@ -336,8 +335,8 @@ static void ref405ep_init(MachineState *machine)
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+-                fprintf(stderr, "qemu: could not load initial ram disk '%s'\n",
+-                        initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+                 exit(1);
+             }
+         } else {
+@@ -607,8 +606,7 @@ static void taihu_405ep_init(MachineState *machine)
+         kernel_size = load_image_targphys(kernel_filename, kernel_base,
+                                           ram_size - kernel_base);
+         if (kernel_size < 0) {
+-            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                    kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+         /* load initrd */
+@@ -617,9 +615,8 @@ static void taihu_405ep_init(MachineState *machine)
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+-                fprintf(stderr,
+-                        "qemu: could not load initial ram disk '%s'\n",
+-                        initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+                 exit(1);
+             }
+         } else {
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index 693c215108..02a80eef67 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -12,6 +12,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qemu-common.h"
+ #include "net/net.h"
+ #include "hw/hw.h"
+@@ -80,22 +81,23 @@ static int bamboo_load_device_tree(hwaddr addr,
+     ret = qemu_fdt_setprop(fdt, "/memory", "reg", mem_reg_property,
+                            sizeof(mem_reg_property));
+     if (ret < 0)
+-        fprintf(stderr, "couldn't set /memory/reg\n");
++        error_report("couldn't set /memory/reg");
+ 
+     ret = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start",
+                                 initrd_base);
+     if (ret < 0)
+-        fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
++        error_report("couldn't set /chosen/linux,initrd-start");
+ 
+     ret = qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
+                                 (initrd_base + initrd_size));
+     if (ret < 0)
+-        fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
++        error_report("couldn't set /chosen/linux,initrd-end");
+ 
+     ret = qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
+                                   kernel_cmdline);
+-    if (ret < 0)
+-        fprintf(stderr, "couldn't set /chosen/bootargs\n");
++    if (ret < 0) {
++        error_report("couldn't set /chosen/bootargs");
++    }
+ 
+     /* Copy data from the host device tree into the guest. Since the guest can
+      * directly access the timebase without host involvement, we must expose
+@@ -186,8 +188,8 @@ static void bamboo_init(MachineState *machine)
+     env = &cpu->env;
+ 
+     if (env->mmu_model != POWERPC_MMU_BOOKE) {
+-        fprintf(stderr, "MMU model %i not supported by this machine.\n",
+-            env->mmu_model);
++        error_report("MMU model %i not supported by this machine.",
++                     env->mmu_model);
+         exit(1);
+     }
+ 
+@@ -220,7 +222,7 @@ static void bamboo_init(MachineState *machine)
+                                 NULL);
+     pcibus = (PCIBus *)qdev_get_child_bus(dev, "pci.0");
+     if (!pcibus) {
+-        fprintf(stderr, "couldn't create PCI controller!\n");
++        error_report("couldn't create PCI controller!");
+         exit(1);
+     }
+ 
+@@ -261,8 +263,7 @@ static void bamboo_init(MachineState *machine)
+         }
+         /* XXX try again as binary */
+         if (success < 0) {
+-            fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                    kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+     }
+@@ -273,8 +274,8 @@ static void bamboo_init(MachineState *machine)
+                                           ram_size - RAMDISK_ADDR);
+ 
+         if (initrd_size < 0) {
+-            fprintf(stderr, "qemu: could not load ram disk '%s' at %x\n",
+-                    initrd_filename, RAMDISK_ADDR);
++            error_report("could not load ram disk '%s' at %x",
++                         initrd_filename, RAMDISK_ADDR);
+             exit(1);
+         }
+     }
+@@ -283,7 +284,7 @@ static void bamboo_init(MachineState *machine)
+     if (kernel_filename) {
+         if (bamboo_load_device_tree(FDT_ADDR, ram_size, RAMDISK_ADDR,
+                                     initrd_size, kernel_cmdline) < 0) {
+-            fprintf(stderr, "couldn't load device tree\n");
++            error_report("couldn't load device tree");
+             exit(1);
+         }
+     }
+diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+index 4765dcecca..807e91b8fa 100644
+--- a/hw/ppc/ppc4xx_pci.c
++++ b/hw/ppc/ppc4xx_pci.c
+@@ -20,6 +20,7 @@
+  * 4xx SoCs, such as the 440EP. */
+ 
  #include "qemu/osdep.h"
 +#include "qemu/error-report.h"
  #include "hw/hw.h"
- #include "hw/nvram/eeprom93xx.h"
-=20
-@@ -105,9 +106,9 @@ static int get_uint16_from_uint8(QEMUFile *f, void *pv,=
- size_t size,
- static int put_unused(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
-eld,
-                       QJSON *vmdesc)
- {
--    fprintf(stderr, "uint16_from_uint8 is used only for backwards compatib=
-ility.\n");
--    fprintf(stderr, "Never should be used to write a new state.\n");
--    exit(0);
-+    error_report("uint16_from_uint8 is used only for backwards compatibili=
-ty.");
-+    error_report("It should never be used to write a new state.");
-+    g_assert_not_reached();
-=20
-     return 0;
+ #include "hw/ppc/ppc.h"
+ #include "hw/ppc/ppc4xx.h"
+@@ -254,7 +255,7 @@ static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
+ 
+     trace_ppc4xx_pci_set_irq(irq_num);
+     if (irq_num < 0) {
+-        fprintf(stderr, "%s: PCI irq %d\n", __func__, irq_num);
++        error_report("%s: PCI irq %d", __func__, irq_num);
+         return;
+     }
+     qemu_set_irq(pci_irqs[irq_num], level);
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index af08ac319a..794698d240 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -574,7 +574,7 @@ static void ppc_prep_init(MachineState *machine)
+             }
+         }
+         if (ppc_boot_device == '\0') {
+-            fprintf(stderr, "No valid boot device for Mac99 machine\n");
++            error_report("No valid boot device for Mac99 machine");
+             exit(1);
+         }
+     }
+@@ -595,7 +595,7 @@ static void ppc_prep_init(MachineState *machine)
+     qdev_init_nofail(dev);
+     pci_bus = (PCIBus *)qdev_get_child_bus(dev, "pci.0");
+     if (pci_bus == NULL) {
+-        fprintf(stderr, "Couldn't create PCI host controller.\n");
++        error_report("Couldn't create PCI host controller.");
+         exit(1);
+     }
+     sysctrl->contiguous_map_irq = qdev_get_gpio_in(dev, 0);
+diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+index 5ac4f76613..abd13cb7af 100644
+--- a/hw/ppc/virtex_ml507.c
++++ b/hw/ppc/virtex_ml507.c
+@@ -186,8 +186,9 @@ static int xilinx_load_device_tree(hwaddr addr,
+     }
+ 
+     r = qemu_fdt_setprop_string(fdt, "/chosen", "bootargs", kernel_cmdline);
+-    if (r < 0)
+-        fprintf(stderr, "couldn't set /chosen/bootargs\n");
++    if (r < 0) {
++        error_report("couldn't set /chosen/bootargs");
++    }
+     cpu_physical_memory_write(addr, fdt, fdt_size);
+     return fdt_size;
  }
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 753ac0e4ea..49375485ef 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -518,8 +518,8 @@ static int get_uint32_as_uint16(QEMUFile *f, void *pv, =
-size_t size,
- static int put_unused(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
-eld,
-                       QJSON *vmdesc)
- {
--    fprintf(stderr, "uint32_as_uint16 is only used for backward compatibil=
-ity.\n");
--    fprintf(stderr, "This functions shouldn't be called.\n");
-+    error_report("uint32_as_uint16 is only used for backward compatibility=
-.");
-+    g_assert_not_reached();
-=20
-     return 0;
- }
---=20
+@@ -215,8 +216,8 @@ static void virtex_init(MachineState *machine)
+     env = &cpu->env;
+ 
+     if (env->mmu_model != POWERPC_MMU_BOOKE) {
+-        fprintf(stderr, "MMU model %i not supported by this machine.\n",
+-            env->mmu_model);
++        error_report("MMU model %i not supported by this machine.",
++                     env->mmu_model);
+         exit(1);
+     }
+ 
+-- 
 2.14.1
 
 
