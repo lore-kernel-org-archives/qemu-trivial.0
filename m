@@ -1,69 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRiBU-0008I1-2i
+	id 1eRiBU-0008Id-FH
 	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:29:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33113)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiBP-0008Cx-BI
+	(envelope-from <alistai@xilinx.com>) id 1eRiBQ-0008E3-F2
 	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRiBM-0007VF-8z
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:31 -0500
-Received: from mail-sn1nam01on0084.outbound.protection.outlook.com
-	([104.47.32.84]:9696
-	helo=NAM01-SN1-obe.outbound.protection.outlook.com)
+	(envelope-from <alistai@xilinx.com>) id 1eRiBN-0007W0-Cw
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:29:32 -0500
+Received: from mail-by2nam01on0081.outbound.protection.outlook.com
+	([104.47.34.81]:63264
+	helo=NAM01-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eRiBL-0007UQ-Vg; Wed, 20 Dec 2017 12:29:28 -0500
+	id 1eRiBN-0007VA-0c; Wed, 20 Dec 2017 12:29:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=eCZ3qSlE4X94BDBnVz0nG6/8FayYGVlbt5bL8KscFWo=;
-	b=RqmZ8mSMGKrOXlQCOqnS7kP9ISYOargtc9JGJWpQt77RxQDV/KtRT6/nVIiqJN7DzFjBhYhjIaxTZK2Q8k63HV6cemu3klHJBPl2qhB4ZEJ3oUQqGlhc9QOcN6bujC+crdPO/LTu2u1r0Z41tq4j4qD+1moixwekoNHTnLidZpw=
-Received: from SN4PR0201CA0021.namprd02.prod.outlook.com (10.161.238.159) by
-	DM5PR02MB3388.namprd02.prod.outlook.com (10.164.153.11) with Microsoft
-	SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
-	15.20.323.15; Wed, 20 Dec 2017 17:29:24 +0000
-Received: from BL2NAM02FT057.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e46::207) by SN4PR0201CA0021.outlook.office365.com
-	(2603:10b6:803:2b::31) with Microsoft SMTP Server (version=TLS1_2,
+	bh=PDCinLXX35Rum3GsICMGyEJuI9fgFvdd3vb6PP8Lvfg=;
+	b=G5tzDXAp1M/VVn4UvtjGrWwhE+ijpiV8zgqfQ5sC54QkT6qxGZFpoPJmnBIqFGrNiAPPmxwPS4V86JxVMPpwmmKPaAuLTKtzNbb0oQqVFlwLAx6X+99/+Owv/G5DjVhSAKh/mkwvuGWk1qJSbNf9RVuSaFpUM4gN1jWmzJo7iEY=
+Received: from MWHPR0201CA0062.namprd02.prod.outlook.com
+	(2603:10b6:301:73::39) by DM2PR02MB1337.namprd02.prod.outlook.com
+	(2a01:111:e400:50c8::24) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.323.15;
+	Wed, 20 Dec 2017 17:29:25 +0000
+Received: from BL2NAM02FT064.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e46::201) by MWHPR0201CA0062.outlook.office365.com
+	(2603:10b6:301:73::39) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.323.15 via
-	Frontend Transport; Wed, 20 Dec 2017 17:29:24 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; weilnetz.de; dkim=none (message not signed)
-	header.d=none;weilnetz.de; dmarc=bestguesspass action=none
+	Frontend Transport; Wed, 20 Dec 2017 17:29:25 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+	smtp.mailfrom=xilinx.com; citrix.com; dkim=none (message not signed)
+	header.d=none;citrix.com; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	BL2NAM02FT057.mail.protection.outlook.com (10.152.77.36) with Microsoft
-	SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	BL2NAM02FT064.mail.protection.outlook.com (10.152.77.119) with
+	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.302.6
 	via Frontend Transport; Wed, 20 Dec 2017 17:29:23 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:50792
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiBH-0003tG-5j; Wed, 20 Dec 2017 09:29:23 -0800
+	id 1eRiBH-0004ta-AV; Wed, 20 Dec 2017 09:29:23 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiBH-0003wk-33; Wed, 20 Dec 2017 09:29:23 -0800
-Received: from xsj-pvapsmtp01 (smtp.xilinx.com [149.199.38.66])
+	id 1eRiBH-0003wk-86; Wed, 20 Dec 2017 09:29:23 -0800
+Received: from xsj-pvapsmtp01 (smtp3.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vBKHTK6s020062; Wed, 20 Dec 2017 09:29:20 -0800
+	vBKHTHqT020054; Wed, 20 Dec 2017 09:29:17 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRiBE-0003wE-34; Wed, 20 Dec 2017 09:29:20 -0800
+	id 1eRiBB-0003vy-2B; Wed, 20 Dec 2017 09:29:17 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>,
-	<armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite
-	<crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Stefan
-	Weil <sw@weilnetz.de>
-Date: Wed, 20 Dec 2017 09:25:04 -0800
-Message-ID: <72c03424e08841aa025b4be8e3b20ee02fddb1a4.1513790495.git.alistair.francis@xilinx.com>
+	<armbru@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>, Anthony
+	Perard <anthony.perard@citrix.com>
+Date: Wed, 20 Dec 2017 09:25:01 -0800
+Message-ID: <59c2dce96ca7e14c38fd889afea1d1f0ed3fc371.1513790495.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1513790494.git.alistair.francis@xilinx.com>
 References: <cover.1513790494.git.alistair.francis@xilinx.com>
@@ -72,75 +71,75 @@ X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23540.006
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(346002)(396003)(39380400002)(376002)(39860400002)(2980300002)(438002)(189003)(199004)(50226002)(81166006)(2906002)(8936002)(7696005)(36756003)(16586007)(316002)(4326008)(6666003)(48376002)(51416003)(110136005)(36386004)(76176011)(50466002)(106002)(47776003)(5660300001)(59450400001)(9786002)(54906003)(478600001)(39060400002)(81156014)(118296001)(77096006)(2950100002)(106466001)(63266004)(356003)(305945005)(8676002)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR02MB3388; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com;
-	MX:1; A:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT057;
-	1:i1tdO/xtpA75MTtD/8mUtm2PKZBjLDbAk+Sq1VxCJCDqaRQYPfc8cUlqU9LqTdjtDk5LlGgxkdSqgxCSYPSxg+gNkx2XLSsFTTHP0VKjDtUVYLr8kIvUVpQ8Q3B4X9ro
+	SFS:(10009020)(979002)(346002)(39860400002)(376002)(39380400002)(396003)(2980300002)(438002)(189003)(199004)(9786002)(48376002)(8936002)(50226002)(5660300001)(81166006)(81156014)(8676002)(77096006)(36386004)(478600001)(50466002)(8666007)(47776003)(76176011)(305945005)(106466001)(2906002)(4326008)(110136005)(54906003)(63266004)(316002)(16586007)(36756003)(118296001)(6666003)(356003)(106002)(2950100002)(51416003)(39060400002)(7696005)(107986001)(969003)(989001)(999001)(1009001)(1019001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:DM2PR02MB1337; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT064;
+	1:UmsmSEXMYHhlkflsT8y9WN8dkpfOYU8RWeHr0SQWs/IS+GI+rC5ft/ZfbbkGBRl82wXX0umzJkGckXcwl/A1K4t8CEMInx4skUUfrARsjIBYckeEYjqTYvD3i1Pp/tKR
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8e86521f-44a5-49a4-27a9-08d547cf3695
+X-MS-Office365-Filtering-Correlation-Id: 0972cc90-7186-484a-9a47-08d547cf3690
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
-	RULEID:(5600026)(4604075)(4608076)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603307)(7153060);
-	SRVR:DM5PR02MB3388; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3388;
-	3:O0ai2WxOgytUNhrEuuPpV9y5jD6Tno38UFPrfhyrmWtU9iwNYc4kEqoOQlbm7W87jobwzJDMMHRNF8XWoOMS1vM+O7nwbHS6EmcAjLV8SUUINZZivojCbgzt2+hmPmnb8EmIJUqRK/nHF9EcMSUh8nPUohWb4xNrKNbc9vD7eBZ4OM2aecOxn6ViTUlHzqFsQpXOQnqA7duZjmfoHZj4+fMxZTkWuCLZo6W1C1eAqCdz/Ooy1KB1tcW/rg4WrY1+foYZB4F2oiipq49wOwBiKautvErbxDH5YzJzgB84bUEYGFfFEc+3MFQdg7ywTpvluCYHD63goso74e9XhVQuzaiTHXYMAGBLwP3x+SfQ7a8=;
-	25:Jc4vlo2RVpIVoI/2GboBYq5g1J40PZ/aMQZTVuEV2KoLC4uA8NfvvMXBmP68TKL2GJhE/6hhjfDqA3iRZx0qOTYrNP1wXeSN52OvcPxOxko/oa4M5bAh3KXS9DD9GGy08dKL8F3lcGy27zAAeAgkGiA39MhxiV9AEDy5k30Is/la6C7FQBGNjRbkxizqKxNjZFIlW6YOgW6/8gXgXpCRA05UOMPUjblckZttNOA9B3jWCoIwDRkZk6WRN8Zx9L+1ivfeIzOK/VECdLAAJu+UQj2puqD60mLPI7ZSIs907f/9c9rExGX5QUqfYP+ZywYsR5sV7gRvv5CuBwHyBzJkeg==
-X-MS-TrafficTypeDiagnostic: DM5PR02MB3388:
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3388;
-	31:O3lHj15lsjcwEwPb1Xmsf5nKQKHImLpAR7sQrYMlmCCBV17OA/DA6fWvoRPhqyLyxleapMLAYrsXbgPltng4nK1b++EEWy7msocsY/9hk5aLGfSdT4AwaKRnw/Yn0CLq6p67HvF6mxA+ZPuVTayK6T8H0R4RZ1RF+4YVAHqOJ96MEae6R8jEVm/wr/QOO7gUVlPP3fkfcUt7aIgmvtrfdv6mxYdDWehQBiEMlx6R6L8=;
-	20:8iaDUplwWpkMTOGgk/33gSEnR459kp71hTLAAd0B2Wsdi0uef4GyGTMH2zA70ncEMVB9lmP4lLUHnMsOQIZoDi+diu0MA49A4OLSzLV5aMAAJLU2ujQtwDi0gjM8yBRhA/Ca/lihRE6gZTBHROsvr9uD/GrGOomi6VjhUdnknFdLS4ciCFaFYCtzp1LIZEC3U1LbRZgkWqicFPPYDEqr0fopKkH/4aN3QT8K3aFUoBxJnriHeXsCi+clQRLdjEyTgBGZl+lZVnEQ6TFZ2f4h9GOnBB/jNYy7AIzmNVdBLOK7+I5pLohVTcfIIG2OWE7DHtj82Y+ZGAlJ7PhWzqIYGZn/GVtjYkVEw2flIEBAKj0zjbSP2EtZk1v/y0qrTFA6rnA6fngQ+eyfAG8w10xDcRSyMnT+U2sde2rH0uNi4QJXg2GhAec2cYW2W/3DvR9ti/r1gJ28veRN04q/M8n1TBq2wPSaoF8O8WWErwFOyrG+4oPAXEg4PeUV7ZqYlLE9
-X-Microsoft-Antispam-PRVS: <DM5PR02MB33884818841A04564C5AFF38DC0C0@DM5PR02MB3388.namprd02.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
+	RULEID:(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(5600026)(4604075)(4608076)(2017052603307)(7153060);
+	SRVR:DM2PR02MB1337; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1337;
+	3:qRtbKMOpEfbs+vpWKbgx3LnpnLsOfGR24i8AFODOdMXrZ/NPyNYYN40FaR/Izd+Jgx8F7bxJ5YV7ev+u0eR5ykJWmaScLhlfTxuZn4P11z+imxwRqhWK2/1xTdVZmut4fsX1wdllBOQP5UDxdvd+ZjD1Tx8CXugRn2xzo1L5NMXBZFLDIU2mDvnGSzHTYEHer/kreqUapeLydvC7fpEKA/kI7WKgcIRqxeztc+CaTI0N2RnWBJssQkN0dw9MKGFLBQaLJ3rd7PDET1B+VeqRzILJWlnLJoRc+q77VmwpitPBNG90ZXwLXorix8RRjntUHu+4f5KXPNjMnj1IAcF+jtcmCv2yaVUpsoPMthXJuCQ=;
+	25:fnhfGqVnowDurhIR/T358UsqkqiAshO14ScDs4cyggI3D6+VCYdWyHnI+Fd1ncx24rvd8yFOBywwBJZrgn/tikffVfQP+/hi3hU78ncsqC7EWMYDygAMbDry7ivyfUY06Y4tdQ0GTe5FmMLpOpfL9qLFwG4+oAq7Kdh3Ce0I3d5S7PE0wUhAvSQ8gSKL9Ur5nn0o/EG+YwSg9VnOGjsrak6+SOHoQ5yavGbrLAj4LgR7ysK4zvIJBGvG3fQbjn8F7J18K6ynYfhckPVzIlys6Amzj9t7gpEgo9i2/H3adepmi6GGyqFGYYyMke3k58jFXL3QcCZKovmYuPtueO4a7dWMzYHpGke1LWcejMN8IBo=
+X-MS-TrafficTypeDiagnostic: DM2PR02MB1337:
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1337;
+	31:9SP1bbUKEgX8VaeUMAv5jqPLu0H1dpuRvp9RYXkqx1k+/ajlahvFn+fziXMbyKfO7IPF32WwRRdNubMbBqsCmZHJlkf/pLjpGen9O1OIzHQLHFhYzv0wnYrIModsDoLYOH0+/GoxNs4U00pvehVoEtwtP4Q5vc1jfjrGWQi1GX2NMadDVAVaQvocvfvhpmO0KH6u10xl2Bqr1vioW916RvAg7pftXfHkdMQlDjxtP2M=;
+	20:QQEpSMovRLatoM4RQee44PG9+Yxf0ze7fKkkgEx7b+u/1Erw0weVLVNv6fziGSJe0acQF/s9R0tw7eHLw+v/LUkBe8Y5VJaZq77GUQO7fyB7n9zfIEH2z2C5eA2QFc/5pMln4EkIfNuXJ0sIVyopSsgqfB0tBEqVS19N1yLE9OGQOp9cklIRDQOFNiPhpEYRc2siA1WQjNVDR6tUqN0xxRtAcrtDnCyKP6yHRWPqofWLgk0jFG2XyIaUfhO+ZA5RKBADK6012vfLHKJQug0Oy2anHXlqaTXCtYVWtVziLRCUTI5uYWmplrj4oDHh41CuH4GjVkwL1GAOdoh7SgZS9gXbWDmVIsw4jVN2IgFbKmleH00dl5UfIB7L8ExMSRVy3qGfKkcNw+pXa9Wz+BRU3z6SsZ2LShEQs2vXhw0uftZhDMcuP7oNJ9351Jrhfdd6/5jpfzda/wteb3gU6dWJxc5J4mJNv5BbJiAf3LmAQrEuafPLRDJdj8mirBxPbeWE
+X-Microsoft-Antispam-PRVS: <DM2PR02MB1337969B15F6001122137B2ADC0C0@DM2PR02MB1337.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592)(70601490899591); 
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040470)(2401047)(8121501046)(5005006)(3231023)(3002001)(93006095)(93004095)(10201501046)(6055026)(6041268)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
-	SRVR:DM5PR02MB3388; BCL:0; PCL:0;
-	RULEID:(100000803101)(100110400095); SRVR:DM5PR02MB3388; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3388;
-	4:Okz893U9A0yPixFJlF4V6FpjtPjS5cEO7a8xwepjj4SvFLhwBfClqmlG/zbOgomU8WC43TKJW79aJVgwQ2MGNsGz57+AZdJclP+FMMChJ5kTRCbysoeBzR3UCyTkPTjG4rwBP4kUmKdUK6tRE0X0jnfiAYi3U0/g9c94WW5G+y9VLOQDAGP/e1K8VLK4BpJyzPDdYqgLfiv4YWCpunTbijK/Vx2Wya0WQgahN/1K7+ou0EgSAlwpEC6YrWCP8yb/o2Zz9IcFJOcBYt3fII3mr4NMGrBz0pBz3wtmSWyB2B2W7nfLIYn0vlXx/yHF1kfPZvYM1ZI3F1WmwWT0hWzpdA==
+	RULEID:(6040470)(2401047)(8121501046)(5005006)(3002001)(3231023)(10201501046)(93006095)(93004095)(6055026)(6041268)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
+	SRVR:DM2PR02MB1337; BCL:0; PCL:0;
+	RULEID:(100000803101)(100110400095); SRVR:DM2PR02MB1337; 
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1337;
+	4:oX7arxSMTdZZkiGBhz0toy+bPeYCMsFSYJV+dj3KnE1NGitLr0lX5tCg+dDYIFPzZtI3aNSEKsnfNn460Nni6dBGZeABtVncCTTr1YxvsrmBP7KM8fuuNG5jQjznJ/ZEj9XvNtD7yGRPVZVnrGwE79kGlpMs3e0Ud53WPGO8TJ6rPCxwvFlSVmDo20RGfsfgt5ANhqF7IjgtN5BXbEAajixnOncdKR9P6Te4YcK/HWq0+gB5tUQcG+zGy1V/DnTTyXEKMLef73xpjbgD9lWV4pSYJV3REkgdvE1gwjbXoEvWHIwYdrXgPvWq3UZBYhZlMYFlK9rE0+O7tz+bn5EuBnJ8vk5z0BWjkaFLQ932WuRa7r1dvOsFPuJKuEQy76lF
 X-Forefront-PRVS: 0527DFA348
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM5PR02MB3388;
-	23:Ot4+aJkc+eMc5kSW5BPYxqvBP1Liew5Znmq9Y5jzX?=
-	=?us-ascii?Q?fX9sl0LW77VGtPCrJPkYtUumc37PQFDJMJFPpvuAj5SBTRBPcQ1nT4LsdZx9?=
-	=?us-ascii?Q?9iUP5e//IdUe/Ru/MfpuZ1kazaB/mQUnmfa4FP8BpNNb8rdND34WZ9e5xu43?=
-	=?us-ascii?Q?mV2ZoDYcSE3u7RHyTj477o4De6UHdMrTzH8Lny62F7qyIJfosJnyI2167+bL?=
-	=?us-ascii?Q?idNkxbmBHa5bnJj8WoZSs1S8+9qxkggBB//qmKMV2K6m5JTYsbsyJkiGSPNe?=
-	=?us-ascii?Q?TTioDTEtz7f9YOJQ0PQ7CFs0ClAsVQYtXEPjJSekmc9vYb70B2DEN4mx1IPO?=
-	=?us-ascii?Q?vq54m9PDJdc5Mwtqgza7YAR7Idak5oIKH5L6AKPrNd9Li+hVwbKCbiT2VGBt?=
-	=?us-ascii?Q?qXr0Fn6S/kBsYdPlwGm93ni0b4vQkCEdQ4/SuGN6IWFo4kBUAeecsQg3gn1M?=
-	=?us-ascii?Q?JRF8IaEK3yffLwT9aLzIo6RLULPe5vFN1eRvCluYt+gtPA6W6BN0Lr6HyQ7t?=
-	=?us-ascii?Q?m+yMAPPU79vJp+0PJuUZAMjNLsJCcq+bcQIW1XqmnMIRxQXgYLqfMyhBKI1m?=
-	=?us-ascii?Q?vHded7BNehacSjbtA2TZZZbULUlsp/Z4ar+qEoZW8ew6SGsBRvVcwR4Zo1wV?=
-	=?us-ascii?Q?6UbRbPAhD9Qb8/KlN7P/RvVF9MfxWy3OwPy6vomYibcr8Z2quxuYHRsBYAWg?=
-	=?us-ascii?Q?5J19ze8lLwkeaKF2YDWBTX5aJfihN16AVTr5h07f96nHfys3VmO+qfZEg6mj?=
-	=?us-ascii?Q?md+Q4LWYX8enhvf2624Pp2KBqxwjrk314UrqipqdW0NjAkvc0JupUieGkOH6?=
-	=?us-ascii?Q?s30335zgri/z3PiU2+atSF9hCVwW4fP2J0ONtRfRrgNJ8NbKv4V3wdr8hW4m?=
-	=?us-ascii?Q?PYVxmhL/0KGCV0t1HQICy4cL3TQRKeodqW002ieN9cSY6zvNEt/bzcC7rNYC?=
-	=?us-ascii?Q?q1r40OQU5kz4PEU9AL+4q0dxWC5Io5aNDp3l1VIM5UKkOmn579V5i53fDkDb?=
-	=?us-ascii?Q?Sp1J+pfHEvNsaR5GjnunX1xFzzTkEJ5y2yH8+vJakZjSCDwCguG1jqYUbxdP?=
-	=?us-ascii?Q?buv3/o=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR02MB3388;
-	6:hjv/+5Y1gTSV/FpQcQZd06m3FZc/3sPqki1ZrYF7S1LQRrQfRg+BRIkepTvxUaUw6z3iPeIKgBBI0nsgWjH6RjjNuwZ2rlNzerlTK3XPiW65SaQWYnhhT1RMKHJx98zcPg/EQSda4GoSY91EAJoyealam+u11+vbTIFIjnwm7Z7ISZR8lIP0P2t90rIAwrYdojoR/UnjHg4gtNCVlVM8Ka1K2C+wm4M6lYuYJb+IZPP/EnYMnTBTjeuGu98fxiutlmLGdlmW1m36LcXCeDKnXXSXPxv7bFOVMKtOdLr8HuEl5bPp26u2sZrGpN69kGkuB9eifGRAWn7oIHnSU3ynSw8tCvrn/33ZAO0T5ok2DPk=;
-	5:9vf6oJ1sUs8B4WiCwUVtWKVysh9tk6a2ukDR2FiSzX8YHnmOpLB/ybSmsPFZfR4pZeHkHqP5xk2V5Ubb8ieX/YdiPbJ/cofxji35Juah2j/IfilJQQacP+BiO/0ipXYy472XxW3dPdjEEff9F+9Qa/oV6ytzj898v+jA69aW0MY=;
-	24:85n6BqRZuxuoTf8Ludky4EnMew8ambxtXVEHuIDqhg1RCe8uUe/qCHkWHqUDv7B5HD2IHcQTQEAtmeShGGNZYi3U+6lZlrwIWDda9OIr1nQ=;
-	7:LOwXqlBSccgEEBbuEOG492JF/cudgvuzIkJDFPbxZwg/t55TkmXaOwp0fJoOnsyq9wtWo8NdCTMGA21P9nVhnz/e/4KUKIZvEXemqJKvT94L7V5nTrR2EYkQrje+sag1F6KvPtVRPRZXi3RmNSBmz8iSRmqRm2/QYqVJSuNKQ/PoeXp5R8+AlZkM+GsZ7+RUBPJlRa9eo8W/9lK3oQClRixXmlj0qvOKi18rhYa4k3SCcUYX5b6Cq53p7bAzapXV
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM2PR02MB1337;
+	23:ptnrUGW5WssXbDzrCcT8B166bPKnEffnRr+BO4oe2?=
+	=?us-ascii?Q?GZQwF95zdIkENUe81l/OmNvmSscwgQmq1cK/CWfQj47Ls3ceiiEyoB9wu3Zo?=
+	=?us-ascii?Q?44Qhl+qXZ7kVxECeUN3/NN8T48MBGrnSmUQWTnlyBFDFxFw+iombmIIN9Y84?=
+	=?us-ascii?Q?iZ/IYtIEIzjbKH+cqOdLvYScgxmSAYbeq86EciZhGD/vU1y3xzEKSUmbLwhZ?=
+	=?us-ascii?Q?1bXNFjf5R9y0JM8eJSAs2b0Vm+o29v1XOAif4j1xfg+NMbXDLc9dFJNBPu4c?=
+	=?us-ascii?Q?yt+rEunk/W7AQ7B2DewW45sqy7jv4rXnr+XHNU8IwiU8pjP+azBZfYCtIFAc?=
+	=?us-ascii?Q?s7GUOkldjxhFCb8OHaO4MDiCvPd1QbjAkp9YpqYj3/5TPwBcUFtLDmzv/oLL?=
+	=?us-ascii?Q?k3Bp1itNaE53LLZy4Ntj6D0hD/mWZEPps64AmX2zz6DO6E3CPMkw3xT3oyE+?=
+	=?us-ascii?Q?OVRFG2CudXIUuh0q/oZTjhCrviwbhAEnrZYzm6gRCxRWvCuDyncv1sFHrSzO?=
+	=?us-ascii?Q?Dpwe3A1KKHnQvwqCB39OmfcrgkSWVFwH5Nm3wnrjOd0kLvk5vGL3TdbSFUXF?=
+	=?us-ascii?Q?hS2xk735V9KDJxE+5OpCZK+H5WpUDUx1khOMuADk0DDoANJwcC3nicYZO6Vc?=
+	=?us-ascii?Q?rhY4C4loLLiBtioxDNobSkSGrZkYUJ3glkyt+sW3vMCR20cohW6RCyH2f5dT?=
+	=?us-ascii?Q?q7E+p2Urp53cmUDBHAQjhvsxuIAd5GYbxyy0a7bjUIwNpDdony/Vluq5zcI3?=
+	=?us-ascii?Q?VwyDmWhv0XhcXi9tDsdQ5wVBvX6+mqBWHZHJIU/50QEmaUESqBXTL/hpv4og?=
+	=?us-ascii?Q?UXo42uJl35npMTuJZFlRA5WoC0yjAlirscoy5s1TzT9LBLE4dEZ/yjLga6Cf?=
+	=?us-ascii?Q?itnimfqozI/SA3DrupXsdikC/WFL6zIEJSqQMXd71n+fscQNJ/HvfZu7WFzJ?=
+	=?us-ascii?Q?qc3YwIEO6LMDP+8p9QVixWXOTsn0b+iwLcSWkLAPi1xiJIGvKk2VXFzlpE49?=
+	=?us-ascii?Q?tbcWIYF4ebSwhqVr0usiondacPhNAuL1uCezrLTjdeaOJYcSeNGJtaVlfrew?=
+	=?us-ascii?Q?3J7GDGY2jZez52ebPBavjmukVFqJ+SFwgCPQOyuF307XkwAW4owJzlkH0u4P?=
+	=?us-ascii?Q?nIuTWzWadI=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; DM2PR02MB1337;
+	6:qZDbWwI93IK/gP05lSj79qS3qa8CKhZiTyi2xRzJAmVnlL8GdADR/TeSWwXdA8pCO2XHwLU4An9O3eOnKyPoicmV2zy86sDEg4HZf0Yq3/UfASyXh1u4+Za6Fn+MBv82uboNa+VKJP9CgGKfVtZWANVjuITg9vRLlCvUMEFEyjpLuhxZ/4J++kPgK5xDo+L6ai9huQYgKTdYIw9DOOgYDG2CiO7lv4bTBD+iIEXU5RJEl3K5kxGM3QQied1Co+CPxWso8R2CQVjr7+Wo0KZLJFICr6C+6LyMWtCNKjRCUDfHM6seerlKJKLbSrku7hpM0ZKrfhvYAhzNOfEqvrpcfXp5e8x6Q0YS0E3x2hQp9BY=;
+	5:ONdeo1XYbbuQQWXyGe9jb/jHmY+9oJ+DzofETA4fRkAbl8WunU3TFw4Cg0lldS//MlVl0ZGw4F0feIrV40WRLCOWIOfol4pIFHqUFFhpFovVSxWLQEyQ2x2tr5/kdspbX52IfNnHUJ0TSBVtuxd95flYMnMlL8zZ82oRjIsly2E=;
+	24:O/4URTO5qoZqIXODO+hXc0dnFapeuQH8t27dlvuSd0TKYwl7R7Jf6oRqIv/w292Mn0Z+UhfImQoSkbqIRbKcB7hFgRKnNkHbtX3U9DRdEUI=;
+	7:eWKHQDrWZZFVsbUtQqasPurYCM43211mAWdK7a6YWWtvNGTVRVDRsFMkbPAzNFeX8BZMsOXs0l1xIvlLJSLGxvm7wcmszdAtKmtGvMWfrwcXxoBYDT5j8Y2vPPRPAxWtELzjGga/eA0QV3c/hAlkiShsZg+mARKgfWvi4BOGwXiyGbeMypSU9skNd90D14sazDTb97zd1NKaEwBG7BCglYiDrlmZNGnMTgQjRO3nj3/RlGfZZjY32ErgAlx1DuCE
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:29:23.9371 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e86521f-44a5-49a4-27a9-08d547cf3695
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:29:23.9073 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0972cc90-7186-484a-9a47-08d547cf3690
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB3388
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM2PR02MB1337
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.32.84
-Subject: [Qemu-trivial] [PATCH v6 28/29] tcg: Replace fprintf(stderr,
+X-Received-From: 104.47.34.81
+Subject: [Qemu-trivial] [PATCH v6 27/29] hw/xen*: Replace fprintf(stderr,
  "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -193,237 +192,205 @@ find ./* -type f -exec sed -i \
     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
     {} +
 
+Some lines where then manually tweaked to pass checkpatch.
+
+xen_pt_log() was left with an fprintf(stderr,
+
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Cc: Richard Henderson <rth@twiddle.net>
-Cc: Stefan Weil <sw@weilnetz.de>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Cc: Stefano Stabellini <sstabellini@kernel.org>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
+V3:
+ - Don't change xen_pt_log()
+V2:
+ - Split hw patch into individual directories
 
- cpus.c                   | 10 +++++-----
- exec.c                   | 20 ++++++++++----------
- tcg/optimize.c           |  8 ++++----
- tcg/tcg.c                |  2 +-
- tcg/tcg.h                |  3 ++-
- tcg/tci.c                |  3 +--
- tcg/tci/tcg-target.inc.c |  7 +++----
- vl.c                     |  2 +-
- 8 files changed, 27 insertions(+), 28 deletions(-)
+ hw/xen/xen-common.c        | 11 ++++++-----
+ hw/xenpv/xen_domainbuild.c | 24 ++++++++++++------------
+ hw/xenpv/xen_machine_pv.c  |  9 +++++----
+ 3 files changed, 23 insertions(+), 21 deletions(-)
 
-diff --git a/cpus.c b/cpus.c
-index 114c29b6a0..6f8ab24421 100644
---- a/cpus.c
-+++ b/cpus.c
-@@ -258,7 +258,7 @@ int64_t cpu_get_icount_raw(void)
+diff --git a/hw/xen/xen-common.c b/hw/xen/xen-common.c
+index 632a938dcc..42ada2ac05 100644
+--- a/hw/xen/xen-common.c
++++ b/hw/xen/xen-common.c
+@@ -9,6 +9,7 @@
+  */
  
-     if (cpu && cpu->running) {
-         if (!cpu->can_do_io) {
--            fprintf(stderr, "Bad icount read\n");
-+            error_report("Bad icount read");
-             exit(1);
-         }
-         /* Take into account what has run */
-@@ -1113,7 +1113,7 @@ static void *qemu_kvm_cpu_thread_fn(void *arg)
- 
-     r = kvm_init_vcpu(cpu);
-     if (r < 0) {
--        fprintf(stderr, "kvm_init_vcpu failed: %s\n", strerror(-r));
-+        error_report("kvm_init_vcpu failed: %s", strerror(-r));
-         exit(1);
-     }
- 
-@@ -1143,7 +1143,7 @@ static void *qemu_kvm_cpu_thread_fn(void *arg)
- static void *qemu_dummy_cpu_thread_fn(void *arg)
- {
- #ifdef _WIN32
--    fprintf(stderr, "qtest is not supported under Windows\n");
-+    error_report("qtest is not supported under Windows");
-     exit(1);
- #else
-     CPUState *cpu = arg;
-@@ -1527,8 +1527,8 @@ static void qemu_cpu_kick_thread(CPUState *cpu)
- #else /* _WIN32 */
-     if (!qemu_cpu_is_self(cpu)) {
-         if (!QueueUserAPC(dummy_apc_func, cpu->hThread, 0)) {
--            fprintf(stderr, "%s: QueueUserAPC failed with error %lu\n",
--                    __func__, GetLastError());
-+            error_report("%s: QueueUserAPC failed with error %lu", __func__,
-+                         GetLastError());
-             exit(1);
-         }
-     }
-diff --git a/exec.c b/exec.c
-index 3e7c57e914..365bea7ada 100644
---- a/exec.c
-+++ b/exec.c
-@@ -1068,7 +1068,7 @@ static RAMBlock *qemu_get_ram_block(ram_addr_t addr)
-         }
-     }
- 
--    fprintf(stderr, "Bad ram offset %" PRIx64 "\n", (uint64_t)addr);
-+    error_report("Bad ram offset %" PRIx64 "", (uint64_t)addr);
-     abort();
- 
- found:
-@@ -1681,8 +1681,8 @@ static ram_addr_t find_ram_offset(ram_addr_t size)
-     }
- 
-     if (offset == RAM_ADDR_MAX) {
--        fprintf(stderr, "Failed to find gap of requested size: %" PRIu64 "\n",
--                (uint64_t)size);
-+        error_report("Failed to find gap of requested size: %" PRIu64 "",
-+                     (uint64_t)size);
-         abort();
-     }
- 
-@@ -1711,8 +1711,8 @@ static void qemu_ram_setup_dump(void *addr, ram_addr_t size)
-         ret = qemu_madvise(addr, size, QEMU_MADV_DONTDUMP);
-         if (ret) {
-             perror("qemu_madvise");
--            fprintf(stderr, "madvise doesn't support MADV_DONTDUMP, "
--                            "but dump_guest_core=off specified\n");
-+            error_report("madvise doesn't support MADV_DONTDUMP, "
-+                         "but dump_guest_core=off specified");
-         }
-     }
- }
-@@ -1748,8 +1748,8 @@ void qemu_ram_set_idstr(RAMBlock *new_block, const char *name, DeviceState *dev)
-     RAMBLOCK_FOREACH(block) {
-         if (block != new_block &&
-             !strcmp(block->idstr, new_block->idstr)) {
--            fprintf(stderr, "RAMBlock \"%s\" already registered, abort!\n",
--                    new_block->idstr);
-+            error_report("RAMBlock \"%s\" already registered, abort!",
-+                         new_block->idstr);
-             abort();
-         }
-     }
-@@ -2176,9 +2176,9 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
-                                 flags, -1, 0);
-                 }
-                 if (area != vaddr) {
--                    fprintf(stderr, "Could not remap addr: "
--                            RAM_ADDR_FMT "@" RAM_ADDR_FMT "\n",
--                            length, addr);
-+                    error_report("Could not remap addr: "
-+                                 RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
-+                                 length, addr);
-                     exit(1);
-                 }
-                 memory_try_enable_merging(vaddr, length);
-diff --git a/tcg/optimize.c b/tcg/optimize.c
-index 438321c6cc..3ea12cc094 100644
---- a/tcg/optimize.c
-+++ b/tcg/optimize.c
-@@ -122,8 +122,8 @@ static TCGOpcode op_to_mov(TCGOpcode op)
-     case 64:
-         return INDEX_op_mov_i64;
-     default:
--        fprintf(stderr, "op_to_mov: unexpected return value of "
--                "function op_bits.\n");
-+        error_report("op_to_mov: unexpected return value of "
-+                     "function op_bits.");
-         tcg_abort();
-     }
- }
-@@ -136,8 +136,8 @@ static TCGOpcode op_to_movi(TCGOpcode op)
-     case 64:
-         return INDEX_op_movi_i64;
-     default:
--        fprintf(stderr, "op_to_movi: unexpected return value of "
--                "function op_bits.\n");
-+        error_report("op_to_movi: unexpected return value of "
-+                     "function op_bits.");
-         tcg_abort();
-     }
- }
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index c22f1c4441..ca5d841c23 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1035,7 +1035,7 @@ static void tcg_temp_free_internal(TCGTemp *ts)
- #if defined(CONFIG_DEBUG_TCG)
-     s->temps_in_use--;
-     if (s->temps_in_use < 0) {
--        fprintf(stderr, "More temporaries freed than allocated!\n");
-+        error_report("More temporaries freed than allocated!");
-     }
- #endif
- 
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index cb7b329876..eadad66f7d 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -29,6 +29,7 @@
- #include "cpu.h"
- #include "exec/tb-context.h"
- #include "qemu/bitops.h"
+ #include "qemu/osdep.h"
 +#include "qemu/error-report.h"
- #include "tcg-mo.h"
- #include "tcg-target.h"
+ #include "hw/xen/xen_backend.h"
+ #include "qmp-commands.h"
+ #include "chardev/char.h"
+@@ -47,19 +48,19 @@ static int store_dev_info(int domid, Chardev *cs, const char *string)
+     /* We now have everything we need to set the xenstore entry. */
+     xs = xs_open(0);
+     if (xs == NULL) {
+-        fprintf(stderr, "Could not contact XenStore\n");
++        error_report("Could not contact XenStore");
+         goto out;
+     }
  
-@@ -948,7 +949,7 @@ typedef struct TCGTargetOpDef {
+     path = xs_get_domain_path(xs, domid);
+     if (path == NULL) {
+-        fprintf(stderr, "xs_get_domain_path() error\n");
++        error_report("xs_get_domain_path() error");
+         goto out;
+     }
+     newpath = realloc(path, (strlen(path) + strlen(string) +
+                 strlen("/tty") + 1));
+     if (newpath == NULL) {
+-        fprintf(stderr, "realloc error\n");
++        error_report("realloc error");
+         goto out;
+     }
+     path = newpath;
+@@ -96,13 +97,13 @@ static void xenstore_record_dm_state(struct xs_handle *xs, const char *state)
+     char path[50];
  
- #define tcg_abort() \
- do {\
--    fprintf(stderr, "%s:%d: tcg fatal error\n", __FILE__, __LINE__);\
-+    error_report("%s:%d: tcg fatal error", __FILE__, __LINE__);\
-     abort();\
- } while (0)
- 
-diff --git a/tcg/tci.c b/tcg/tci.c
-index 63f2cd54ab..f7fd5cafab 100644
---- a/tcg/tci.c
-+++ b/tcg/tci.c
-@@ -35,8 +35,7 @@
- /* Marker for missing code. */
- #define TODO() \
-     do { \
--        fprintf(stderr, "TODO %s:%u: %s()\n", \
--                __FILE__, __LINE__, __func__); \
-+        error_report("TODO %s:%u: %s()", __FILE__, __LINE__, __func__); \
-         tcg_abort(); \
-     } while (0)
- 
-diff --git a/tcg/tci/tcg-target.inc.c b/tcg/tci/tcg-target.inc.c
-index 913c3802a3..20346508b8 100644
---- a/tcg/tci/tcg-target.inc.c
-+++ b/tcg/tci/tcg-target.inc.c
-@@ -29,8 +29,7 @@
- /* Marker for missing code. */
- #define TODO() \
-     do { \
--        fprintf(stderr, "TODO %s:%u: %s()\n", \
--                __FILE__, __LINE__, __func__); \
-+        error_report("TODO %s:%u: %s()", __FILE__, __LINE__, __func__); \
-         tcg_abort(); \
-     } while (0)
- 
-@@ -403,8 +402,8 @@ static const char *target_parse_constraint(TCGArgConstraint *ct,
- void tci_disas(uint8_t opc)
- {
-     const TCGOpDef *def = &tcg_op_defs[opc];
--    fprintf(stderr, "TCG %s %u, %u, %u\n",
--            def->name, def->nb_oargs, def->nb_iargs, def->nb_cargs);
-+    error_report("TCG %s %u, %u, %u",
-+                 def->name, def->nb_oargs, def->nb_iargs, def->nb_cargs);
- }
- #endif
- 
-diff --git a/vl.c b/vl.c
-index e9012bb009..c8171825ec 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2187,7 +2187,7 @@ static DisplayType select_display(const char *p)
-         display_opengl = 1;
-         display = DT_EGL;
- #else
--        fprintf(stderr, "egl support is disabled\n");
-+        error_report("egl support is disabled");
+     if (xs == NULL) {
+-        fprintf(stderr, "xenstore connection not initialized\n");
++        error_report("xenstore connection not initialized");
          exit(1);
+     }
+ 
+     snprintf(path, sizeof (path), "device-model/%u/state", xen_domid);
+     if (!xs_write(xs, XBT_NULL, path, state, strlen(state))) {
+-        fprintf(stderr, "error recording dm state\n");
++        error_report("error recording dm state");
+         exit(1);
+     }
+ }
+diff --git a/hw/xenpv/xen_domainbuild.c b/hw/xenpv/xen_domainbuild.c
+index 027f76fad1..f5514ffec2 100644
+--- a/hw/xenpv/xen_domainbuild.c
++++ b/hw/xenpv/xen_domainbuild.c
+@@ -25,22 +25,22 @@ static int xenstore_domain_mkdir(char *path)
+     int i;
+ 
+     if (!xs_mkdir(xenstore, 0, path)) {
+-        fprintf(stderr, "%s: xs_mkdir %s: failed\n", __func__, path);
+-	return -1;
++        error_report("%s: xs_mkdir %s: failed", __func__, path);
++        return -1;
+     }
+     if (!xs_set_permissions(xenstore, 0, path, perms_ro, 2)) {
+-        fprintf(stderr, "%s: xs_set_permissions failed\n", __func__);
+-	return -1;
++        error_report("%s: xs_set_permissions failed", __func__);
++        return -1;
+     }
+ 
+     for (i = 0; writable[i]; i++) {
+         snprintf(subpath, sizeof(subpath), "%s/%s", path, writable[i]);
+         if (!xs_mkdir(xenstore, 0, subpath)) {
+-            fprintf(stderr, "%s: xs_mkdir %s: failed\n", __func__, subpath);
++            error_report("%s: xs_mkdir %s: failed", __func__, subpath);
+             return -1;
+         }
+         if (!xs_set_permissions(xenstore, 0, subpath, perms_rw, 2)) {
+-            fprintf(stderr, "%s: xs_set_permissions failed\n", __func__);
++            error_report("%s: xs_set_permissions failed", __func__);
+             return -1;
+         }
+     }
+@@ -235,7 +235,7 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+     memcpy(uuid, &qemu_uuid, sizeof(uuid));
+     rc = xen_domain_create(xen_xc, ssidref, uuid, flags, &xen_domid);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_domain_create() failed\n");
++        error_report("xen: xc_domain_create() failed");
+         goto err;
+     }
+     qemu_log("xen: created domain %d\n", xen_domid);
+@@ -248,21 +248,21 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+ 
+     rc = xc_domain_max_vcpus(xen_xc, xen_domid, smp_cpus);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_domain_max_vcpus() failed\n");
++        error_report("xen: xc_domain_max_vcpus() failed");
+         goto err;
+     }
+ 
+ #if 0
+     rc = xc_domain_setcpuweight(xen_xc, xen_domid, 256);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_domain_setcpuweight() failed\n");
++        error_report("xen: xc_domain_setcpuweight() failed");
+         goto err;
+     }
  #endif
-     } else if (strstart(p, "curses", &opts)) {
+ 
+     rc = xc_domain_setmaxmem(xen_xc, xen_domid, ram_size >> 10);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_domain_setmaxmem() failed\n");
++        error_report("xen: xc_domain_setmaxmem() failed");
+         goto err;
+     }
+ 
+@@ -275,7 +275,7 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+                         xenstore_port, &xenstore_mfn,
+                         console_port, &console_mfn);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_linux_build() failed\n");
++        error_report("xen: xc_linux_build() failed");
+         goto err;
+     }
+ 
+@@ -285,7 +285,7 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+     qemu_log("xen: unpausing domain %d\n", xen_domid);
+     rc = xc_domain_unpause(xen_xc, xen_domid);
+     if (rc < 0) {
+-        fprintf(stderr, "xen: xc_domain_unpause() failed\n");
++        error_report("xen: xc_domain_unpause() failed");
+         goto err;
+     }
+ 
+diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
+index 69a52a9f93..44d67b87c4 100644
+--- a/hw/xenpv/xen_machine_pv.c
++++ b/hw/xenpv/xen_machine_pv.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "hw/hw.h"
+ #include "hw/boards.h"
+ #include "hw/xen/xen_backend.h"
+@@ -36,7 +37,7 @@ static void xen_init_pv(MachineState *machine)
+ 
+     /* Initialize backend core & drivers */
+     if (xen_be_init() != 0) {
+-        fprintf(stderr, "%s: xen backend core setup failed\n", __func__);
++        error_report("%s: xen backend core setup failed", __func__);
+         exit(1);
+     }
+ 
+@@ -51,18 +52,18 @@ static void xen_init_pv(MachineState *machine)
+         const char *initrd_filename = machine->initrd_filename;
+         if (xen_domain_build_pv(kernel_filename, initrd_filename,
+                                 kernel_cmdline) < 0) {
+-            fprintf(stderr, "xen pv domain creation failed\n");
++            error_report("xen pv domain creation failed");
+             exit(1);
+         }
+         break;
+     }
+ #endif
+     case XEN_EMULATE:
+-        fprintf(stderr, "xen emulation not implemented (yet)\n");
++        error_report("xen emulation not implemented (yet)");
+         exit(1);
+         break;
+     default:
+-        fprintf(stderr, "unhandled xen_mode %d\n", xen_mode);
++        error_report("unhandled xen_mode %d", xen_mode);
+         exit(1);
+         break;
+     }
 -- 
 2.14.1
 
