@@ -1,44 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRf1M-00073T-Ah
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 09:06:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56382)
+	id 1eRgto-0001iv-LX
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 11:07:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60824)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1eRf1G-0006y6-69
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 09:06:54 -0500
+	(envelope-from <th.huth@gmail.com>) id 1eRgtQ-0001W1-VB
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 11:07:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1eRf1D-0007Vf-55
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 09:06:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40452)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1eRf14-0007KP-T4; Wed, 20 Dec 2017 09:06:39 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 444AD356D3;
-	Wed, 20 Dec 2017 14:06:36 +0000 (UTC)
-Received: from localhost (ovpn-112-57.ams2.redhat.com [10.36.112.57])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AE8DE600D4;
-	Wed, 20 Dec 2017 14:06:30 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Date: Wed, 20 Dec 2017 15:06:18 +0100
-Message-Id: <20171220140618.12701-1-marcandre.lureau@redhat.com>
+	(envelope-from <th.huth@gmail.com>) id 1eRgt8-0003nD-Iw
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 11:06:52 -0500
+Received: from mail-wm0-f67.google.com ([74.125.82.67]:44510)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
+	id 1eRgt8-0003m6-DC; Wed, 20 Dec 2017 11:06:34 -0500
+Received: by mail-wm0-f67.google.com with SMTP id t8so10820840wmc.3;
+	Wed, 20 Dec 2017 08:06:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Z9EAN/mSzlVKbVtoTTpemnozijPI+l+a2i3SKd1NR7Q=;
+	b=aSE3gJKKjsKabei2JgChvA44mDpXRFVcmBklA0oHqdCEFTgD1P3nGrsgJQkhrP6Hq0
+	lSjuF2zoQ+3y2bkplcBY9QzjsniV/iCJnojTDqr4e9KcIACV7+jfYkXMSAnn5srB6yBW
+	xS15GYJwBOrjkfR+DBuc27PaQaVXzDTvFN9z0sCndJqAq4pGdL6vuuzwnNYM7poD2ntT
+	Jw7WPOBS++qBJcFi+ffmKAZpP4PyTY05bqyvjxjONPl9w9QYFjltdkiOqzon0Q+FKi0p
+	0Q6SjP9Jfe/Inr1+aiGmSji9JjcHOymuWpblLxX4yBjnfwUJ1JgFBAd5Ns305LEHoIdr
+	dPng==
+X-Gm-Message-State: AKGB3mJ8lP3pqWHGelVNxaud/4BdvrGF7WTD9GC+nZOLduXTmBNZ+/k5
+	EFksl+j2kqaUP+/pcfPVOC1A/h/K
+X-Google-Smtp-Source: ACJfBosc+479CMzABcZeY0/OcFfAqJaT6jIm5qcG7HtKg5Ez/umHdjNDYhiegVWPCMkHETf6a8x+2Q==
+X-Received: by 10.80.207.143 with SMTP id h15mr6088084edk.189.1513785992498;
+	Wed, 20 Dec 2017 08:06:32 -0800 (PST)
+Received: from [10.200.209.8] (nat-pool-str-u.redhat.com. [149.14.88.107])
+	by smtp.gmail.com with ESMTPSA id
+	b2sm16693111edd.26.2017.12.20.08.06.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 20 Dec 2017 08:06:31 -0800 (PST)
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20171220130815.20708-1-laurent@vivier.eu>
+From: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <b99e47fa-458f-9e62-4074-ac689464c4e6@tuxfamily.org>
+Date: Wed, 20 Dec 2017 17:06:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 20 Dec 2017 14:06:36 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20171220130815.20708-1-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] vnc: fix debug spelling
+X-Received-From: 74.125.82.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/m68k: remove unused
+ variable gen_throws_exception
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,29 +65,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 14:06:54 -0000
+X-List-Received-Date: Wed, 20 Dec 2017 16:07:15 -0000
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- ui/vnc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 20.12.2017 14:08, Laurent Vivier wrote:
+> It has been introduced by e6e5906b6e ("ColdFire target."),
+> but the content is never used.
+> 
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  target/m68k/translate.c | 10 ----------
+>  1 file changed, 10 deletions(-)
 
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 9f8d5a1b1f..7d537b5c6b 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -2255,7 +2255,7 @@ static int protocol_client_msg(VncState *vs, uint8_=
-t *data, size_t len)
-                 }
-                 vs->as.nchannels =3D read_u8(data, 5);
-                 if (vs->as.nchannels !=3D 1 && vs->as.nchannels !=3D 2) =
-{
--                    VNC_DEBUG("Invalid audio channel coount %d\n",
-+                    VNC_DEBUG("Invalid audio channel count %d\n",
-                               read_u8(data, 5));
-                     vnc_client_error(vs);
-                     break;
---=20
-2.15.1.355.g36791d7216
+Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+
 
 
