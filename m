@@ -1,146 +1,147 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRi9W-0006L0-Hb
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:27:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60032)
+	id 1eRi9Y-0006NA-RK
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 12:27:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRi9P-0006E9-Fc
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:27:30 -0500
+	(envelope-from <alistai@xilinx.com>) id 1eRi9U-0006JK-NI
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:27:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistai@xilinx.com>) id 1eRi9M-00055K-77
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:27:27 -0500
+	(envelope-from <alistai@xilinx.com>) id 1eRi9R-00058P-Kj
+	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 12:27:32 -0500
 Received: from mail-cys01nam02on0046.outbound.protection.outlook.com
 	([104.47.37.46]:44491
 	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alistai@xilinx.com>)
-	id 1eRi9L-00054C-Uj; Wed, 20 Dec 2017 12:27:24 -0500
+	id 1eRi9L-00054C-Cb; Wed, 20 Dec 2017 12:27:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=S+6VqGilA9q9s60aMvy85ngvbYlkB6KAAnWs63Kk+sQ=;
-	b=OilIO0IW8SlydtQza8nXuOc9qNfYGxBorRnZPOFv1jO+bshQ8uJ5Et/pF5/walXcINB5+G6XoFfoLFUsOY92x3qpxaDbws1CdivSCp0hM9AHPu5Y/J2wV0i4R2b5xgngbk505HQxwcfXjwm+PQZLqbrX2JOlWCWUosV/Hc8O+I4=
-Received: from MWHPR0201CA0039.namprd02.prod.outlook.com (10.167.160.16) by
+	bh=Ona3BFSznjIm5mepcn9LC5FrUwSlKp5HWyNb3SEz9AU=;
+	b=5V9X6YjmCk55v9bd3sM498lmjwG42955QMY+74cOI0XFbWEmRpRHCQJEZIWouGlmeBCsn2npuzDymYV8IR2nlki0aQLx9onw9HjjFPiI5T645jNlo4k4p9bEPnrSBqXctnnOQFmq99OCObq380L+2pOAnnWVIJvWKh7I/YMnk5I=
+Received: from BY2PR02CA0110.namprd02.prod.outlook.com (10.163.44.164) by
 	BN6PR02MB3378.namprd02.prod.outlook.com (10.161.152.166) with Microsoft
 	SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id
 	15.20.323.15; Wed, 20 Dec 2017 17:27:21 +0000
-Received: from CY1NAM02FT022.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e45::201) by MWHPR0201CA0039.outlook.office365.com
-	(2603:10b6:301:73::16) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.345.14 via
+Received: from SN1NAM02FT036.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e44::208) by BY2PR02CA0110.outlook.office365.com
+	(2a01:111:e400:5261::36) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.323.15 via
 	Frontend Transport; Wed, 20 Dec 2017 17:27:20 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
-	header.d=none;redhat.com; dmarc=bestguesspass action=none
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+	header.d=none;nongnu.org; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	CY1NAM02FT022.mail.protection.outlook.com (10.152.75.185) with
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	SN1NAM02FT036.mail.protection.outlook.com (10.152.72.149) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.302.6
 	via Frontend Transport; Wed, 20 Dec 2017 17:27:19 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:48544
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRi9H-0003qB-82; Wed, 20 Dec 2017 09:27:19 -0800
+	id 1eRi9H-0004rl-9W; Wed, 20 Dec 2017 09:27:19 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRi9H-0003VY-5b; Wed, 20 Dec 2017 09:27:19 -0800
-Received: from xsj-pvapsmtp01 (xsj-pvapsmtp01.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	vBKHR8lG008100; Wed, 20 Dec 2017 09:27:08 -0800
+	id 1eRi9H-0003VY-77; Wed, 20 Dec 2017 09:27:19 -0800
+Received: from xsj-pvapsmtp01 (xsj-mail.xilinx.com [149.199.38.66])
+	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	vBKHRGtK019493; Wed, 20 Dec 2017 09:27:17 -0800
 Received: from [172.19.2.220] (helo=xsjalistai50.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1eRi96-0003UA-BU; Wed, 20 Dec 2017 09:27:08 -0800
+	id 1eRi9E-0003VI-P8; Wed, 20 Dec 2017 09:27:16 -0800
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <alistair.francis@xilinx.com>, <alistair23@gmail.com>,
-	<armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Date: Wed, 20 Dec 2017 09:22:52 -0800
-Message-ID: <62349d20b956f70019eb532b34263b77ed037ce2.1513790495.git.alistair.francis@xilinx.com>
+	<armbru@redhat.com>, <qemu-arm@nongnu.org>
+Date: Wed, 20 Dec 2017 09:23:01 -0800
+Message-ID: <6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <cover.1513790494.git.alistair.francis@xilinx.com>
 References: <cover.1513790494.git.alistair.francis@xilinx.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23540.006
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(376002)(346002)(396003)(39860400002)(39380400002)(2980300002)(438002)(189003)(199004)(81156014)(47776003)(118296001)(50466002)(48376002)(50226002)(8936002)(5890100001)(7696005)(478600001)(8676002)(36756003)(356003)(2906002)(51416003)(305945005)(2950100002)(6666003)(575784001)(76176011)(63266004)(59450400001)(36386004)(5660300001)(4326008)(77096006)(39060400002)(81166006)(106466001)(16586007)(316002)(106002)(54906003)(9786002)(110136005)(107986001)(21314002)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR02MB3378; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com;
-	MX:1; A:1; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT022;
-	1:2D2Hr0U9FLXOtAQ6dJwO91zFwGCvDCI6a50G7P1zYeiLyYXBZv95giZCZKtRgc4ZEj+bQ6tTS+eCiq/MS10aaH6RMhpttkuvkkMBnjCnAFNrP8aFMcYDsLzJJouAN9Nl
-MIME-Version: 1.0
-Content-Type: text/plain
+	SFS:(10009020)(979002)(376002)(346002)(396003)(39860400002)(39380400002)(2980300002)(438002)(189003)(199004)(81156014)(47776003)(118296001)(50466002)(50226002)(8936002)(5890100001)(5820100001)(23676004)(7696005)(478600001)(8676002)(36756003)(356003)(2906002)(305945005)(2950100002)(6666003)(575784001)(76176011)(63266004)(59450400001)(36386004)(5660300001)(2870700001)(4326008)(77096006)(39060400002)(81166006)(106466001)(316002)(106002)(54906003)(9786002)(110136005)(107986001)(969003)(989001)(999001)(1009001)(1019001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BN6PR02MB3378; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; PTR:unknown-60-83.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT036;
+	1:sLXKFckyjPM3QiI3shgmzLuu+NREBYrIrnkCbhBMGruk6mKt96gBhL+jcfQOldk5jshCaIj6RNQAORYqwGFm7Wlcxc2zEmLEs9RT2ZZL40RnTzY4D/EZ1DLeLaZi8wk0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 40a4c980-dccf-46cd-e80b-08d547ceecb1
+X-MS-Office365-Filtering-Correlation-Id: 3dc8aaea-a62b-47b6-1351-08d547ceec96
 X-Microsoft-Antispam: UriScan:; BCL:0; PCL:0;
 	RULEID:(5600026)(4604075)(4608076)(4534020)(4602075)(4627115)(201703031133081)(201702281549075)(2017052603307)(7153060);
 	SRVR:BN6PR02MB3378; 
 X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	3:9kibkaYN1CL83WqgbX0jyGdHvrWJlDr0O2WWzpzdrK7yIZKhqrwQxFV9BPDVuZTZHfVD1Tms+wq6XUZvYwqH5NvfATK9pY0SaHO3WfOTQEgNanEPay/7af8udEuos83MkEcMrc50Lt7Cqsv6fiAXsm3C5LvhrXLdix2qHRPSvlY2htdoVK6I6NFIBdoXWSppUj9bjSvAxrOsainyelUyxB9Y1bOFWL0BMQEJCi/h1HTfJP9xtXxAOxhoNrKvaml3igGQwKO6/A24iHG5NtlPPeFOaejaxqsHU2AgvqSCekWOEWDLMiTfTEaJ197f6u4X46fNwFQLRvWKgSz2+8piSO++hXrRWI5DM34sETjcwCw=;
-	25:izyWLxw+J7XWc7LcvJEL5YsPuHeDVpytsBk4988HfaI33CI51+T8wIXRtMIbdWIs3CU+C0k7cfdYg7VFaEb8ZmmedjGpshWxBlieSrQSBNgoPcimZdX462YD3dxhtjDIPxuknMSs5iT0bm6qPnrATDPcEvwrfUMuEkqugBWmF+cdRy0YNccAEsfuFecVqIqiIgTjcMJ6bVLMpnsBDNzzMzR1wgyP5ZPVddKWmQSw+VrIGPc+NBMo6F3EpPh55lRBxlJfrLoPgPAH+U08eebz30WuemmqyQ/KNp0pkekln0cSyixTf0cIhIXlEKXRqWfc6Y6+fMUqHv/IuAZRLSKnqg==
+	3:NEnp5qOTWsUZwRKL1oW6OyfrapfX0/4Xw3OJtjXtK5s0kNVWDiaxKnC6V8Q8H7b40kWrBDF818uFh9YAreHDG4Ajqab131FDstXweF8ltVrysI1aR7Ie1TikD7hSPioGlA5bRG5qK2hyqlmvb5Y4bKEwFhtgHw2iTad6XrUa3WfYchTuieysxdmKv3YbhFTJMNNZestPGmU4bEBs+8yjLkFHEIm5klzdFtIxaxiKtu08hka36xA6KPCMrwa93QWgr6oF8ta8Rz78pdTPNmpBZH7JfXAoBgNoOeB6F6biGvWtvcBre/lpuJI8oeYYwfRYhXKW40pE57XVzlywOQB8+Ibumf2g9IC98VSIBdMoAgM=;
+	25:mLm+u6HhFSdzBup+eKajRp+6VLuYjdG1T+lg7dB4cIfm7i24Nhmqw391QKHsinfXaAQJKC0Dgl0rbvBbcgzGJK7fADWZ6HViX69elsELXZn4hcAz1MslAd9oIlGKIQ/RKwMqRn0sVC3hr1s6v7quH436JxZ20btfk+/fjX8C6qnVZL+Me2ogkeMEE6fhZbv5CPveLqfuIE6wF4BFLTn1e4LtR7/NzHUxPYy56F8L3oWwGfQNYiuArdZJE1zOMWrOatbAJM55+ZYu9GFdoPuLYwxL8hBfQHxK6HDGiO8c5QAH7no84RTj43aJopVSVl03jJdP30PXxnVkiEXUTtwz8A==
 X-MS-TrafficTypeDiagnostic: BN6PR02MB3378:
 X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	31:v/fGwlCgrgB/Tfdf4FDQiWIGVnggK4SjlApowo/EiRwVUxdai0GXIivhpI/w7Lv/KQYLKQHO/kTNYX82LvMYZrDqD26ktObulsjKChxkc1vLC6CJY9kfqVLtEghWx0EyJnzSidN4dIGOm2f3d8ye4MoRk8vHNJO+TiAv8wQss89gVbFjNAiLVqp7UxNUfE/ej+lLjR3qBFartxQwunGtMcs/0WC22JhSPIN4qlLRdfE=;
-	20:aBDSC8ORkJWriaJqBh6uddd4mjK3ehi9TuFZgoZ9CaW74ufEfyQe41aOboURr8tjHVA92Dt0PgHaG2rsf77+kvXJ9Q9+whmhw/7IRZNCgJtgyTKrDHplSVB04GKd/cHaif6UrDWg4Hwao7WeScX/sVHOf4eB5Squ5qOQ9hQ4PPUGNx1iv7D/S9Db150LMrykKwQ10J43u8qhQo2jQurlaIIpfxlLeEHonpQRd0Nq3ucbKmuZNx4fkQdZjvOxbfMVEfeoYaNkqC1gRbjGfiD72ierhro/vfezNMpdMeLaTJx2Ndhf9LEA1+IIq1tBr5W7DFlIet1oFy2ge5n+degAvZwJZLRz+Itv/X66kYTDVG/KLTJVP1uavFYao2xEHQLX11DXDhz9MPMY5Ke596+Vb4gnSPkX0ymASY6xuPz2D9+p90+owgWq6KHKVzA+auLiZlGRRXGlOzlkYceBZERndL3S7wOmYj+da4Offp8VC8X6HyBAWpHZV+47oIFfhUCI
-X-Microsoft-Antispam-PRVS: <BN6PR02MB3378631722EE94F4DF24959CDC0C0@BN6PR02MB3378.namprd02.prod.outlook.com>
+	31:5eQrPSmdTwvil4BG9vuJLnW2wEk1UW0+io+C6Sfb+s5ntuRMWZ06cmzVagoH+kJHAZ6ls5YY+56BsUr/8aEADWrTCfzJGkkdrCYs409VvZqJPPTyhM7EsFOxu4qQhvM98NGwX0BShOFDYUljJWIBqu8sZCaeamUjQgwkTfEPXgz8whxEF8wMZ9arecbLdHnfMQ4+TFwnWL5tjeOuZKcl1Z72y+0A1dohZ5nPv6LPbjA=;
+	20:6EvBP3cBZi/03xuBd1K0gNLJhHvdFx3ZuXuP5CmzFAaOnwbXKXUCJ3LRljDt7xJADodCAe2LLeNDAYLjcF21io3HfjZvUd6t0DyBC7U7ZDVcztCrr9Yfhb94UZP79VLDr995xHteJlY6VQ8xhBhGlpuxLz9/nqgP1Fj8QoJrjw7QOd14Ll24iRL40mGKYWPcW/GZV6yqGsJxRhKy3kDjqlrZg6ntY7RRlBxb5XHoTCEvGgb7fBfYotGpqpP4Pkg0jUwcUsFZut0gCIMwbm+XFBEDCB3htwQ4L0VCJnbZ3EpPjiYI+W23jpiYoyKgIlNoM9tHHrdiZPN3BZ0V3nmF2EwINecqtZwpgJRy7m1nX6OnIU4DvQQHddAY+E4ZQPqLesFRQcQm6EwpKE7NLhbuCdvO8XLuyAcqPm+b4SnqrOqdatlCK/5pfHw0N9kKlfOxYgPjYwhQGW3xdyTw++GXqVguISg3XlanV5uG6/qGfLPed/e2yVF8fpj2WFfGnhdd
+X-Microsoft-Antispam-PRVS: <BN6PR02MB33786FCD603339D316E191FDDC0C0@BN6PR02MB3378.namprd02.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(788757137089)(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(6040470)(2401047)(5005006)(8121501046)(93006095)(93004095)(3231023)(10201501046)(3002001)(6055026)(6041268)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(6072148)(201708071742011);
 	SRVR:BN6PR02MB3378; BCL:0; PCL:0;
 	RULEID:(100000803101)(100110400095); SRVR:BN6PR02MB3378; 
 X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	4:wZQKa6mmsbGrttMUVDJ1Ye7+LYP2CRhL4bqe0IBK2U6g2aic99mU2LcVy5BnOZdq+eEWmG1RH3DByr+cBcGbPTjGGoMNZx17xaDWN4CezIP4m8nIWPf6xOUQ/kP9OE3RF8PhGU/+MQSziLXqe602TLp4x4zwTVOlTuB+tWpXrn4BdBEKpDcaeF83wqumuiFUv9FRMAAjnoIb7iZKbnNKfYu1HYh28XLMFKunJIH6QZQpUCC4nB9QOvYI12cVOATZIk4Q4L/mgOV/l9DvoJPlLgSNhG/+mcaZyzVy5w9Mf8gZfVULE/IHM3BXs9Zy5jagGpkoEaxCo9EsuKfPdIlqhg==
+	4:oNgniXeg6z0Sq81sxrEUKbIK/8rtLzbIJOU1XKA23Hm17uVocpWQmtu6/otzh0mNyX80aNxLSnJI6bDy+liPLK66kFGBgaqeqBKNTYK39r6ECC0HoKBQqLY+S/jNOsvBpJdBzpFV4m7eyoXb++MKt2BkbUnxU5ZVzBm5YZFrIyPUYaUXuxPDAub++ajrpSpY+PZScaPM/6w0abCi/N9GOLVTcFN47mHH07h+62PmjORWAmjg+OxWW3PaKAHxPb2sCvaTt0itbkPvEEE7k3d5tyudnSJxLe5tdd3rDcZKBR66FtQEHEXp2Sbda1ba2hMqYbSujgQAXR3RcTl8rwbkfA==
 X-Forefront-PRVS: 0527DFA348
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BN6PR02MB3378;
-	23:SLO5M5oFSbk/xPW4DE4iyXXCiZjoR0eVxSRt9L4DI?=
-	=?us-ascii?Q?jPI1oR9yURQAv2ncDY/1pxF2VdYdta+8DDdB/qy8Zj6yvCwUcwxSsiQXTekP?=
-	=?us-ascii?Q?ADw1QfuVl5F5/wxqfL1TgzwJq9PSX+cFLCWuXAkTsa2T34nEarKXX/FdL8QG?=
-	=?us-ascii?Q?hm0KBTqRtqyoE7qMrnoQ5WE7lpWM6r4d2OK3UYnKcyopeDLqdfrmy7AqJCrS?=
-	=?us-ascii?Q?vaE5dDCu4HY/tSVIKHY2i0eo7w2mkexdD1uWS6Wko6wkL3t+q1wcdCNWq1SC?=
-	=?us-ascii?Q?vsGfMFFDVQutqn1voKzxXeIdYKvRu7d9GB0GGKkE7K8Bu+qeGFQK9GrGrytF?=
-	=?us-ascii?Q?j4Q5c+v0eDtBqjINM+/z23yMnJR9EmKcHVTN97p+iE2K1xGL8U6OJo438vx1?=
-	=?us-ascii?Q?yHjX6i7Bt/zkzUcG+cNOU+14P4o+eJyDIIv/8A6Vza7Zw1yrr1ajwEpFq6Sg?=
-	=?us-ascii?Q?a1L2MKmW3wjfxzpR/pQJJg6VDhwkcpF5DIIn+IHCWqJVO9By/HUdtSCVsEio?=
-	=?us-ascii?Q?W5aWI7sVN+TfjMmfcKjpJVIq3Z0NOU7YnaqgvH4tGeFW81buZm4OHQKZAYB9?=
-	=?us-ascii?Q?RdH3CCQ8VDEdJMMdtgr5IhlO/8ySYG17rpNkCLORHmDYq/mC+9Re01PJ+Vlp?=
-	=?us-ascii?Q?KeNtZm8xVpGDDga1HjamZ+b2DDAmrL5xbm0Yb4hCjkVKZltM9gBaFFAkPALz?=
-	=?us-ascii?Q?WCOjtRtLnRu6fyNIc9GjyR7dyvB76Qs7aaB7lXZZE0AMV5oKMtiRU2DHvH+Z?=
-	=?us-ascii?Q?JKPuu+tHXSdciT2eobOXyjQFlQg7oQZP7gVHErwVVpK9M9Oep5uwfM1znHwD?=
-	=?us-ascii?Q?G/2YlAgfvVNM7sli3jjAWTQskPxuFum90nrkwNYx8z3lFjA/TdJZT66RCMCC?=
-	=?us-ascii?Q?Z2wOHyK9KkghPedskFxq1m4dqCzt1yPMWpa9YkBpdr5kQ58IH0UrK4MOyIEH?=
-	=?us-ascii?Q?dbx7bzzLGq5D8NBgwO6pQYs/EoodCDFrinPmVBF/W/9r3l/ki2ptwKAkno5M?=
-	=?us-ascii?Q?qFWB/Zvq0Ai+FyRBiz3c3cstnibECdzYuY+Je1X9uOPsn24CsuustVeOHRuW?=
-	=?us-ascii?Q?6uvrD/rj1i2KBIEh0ESRFGrKQlZ29GqPwvt27Q4NcM1PJSACXYERwwK4CMEj?=
-	=?us-ascii?Q?41WBTeKSxojDay4kb/55Q5/jVceDl/f?=
+	23:FJHuJ+1jEnHKRzm+r6RUEspji0f9B25CRr0NmQPKM?=
+	=?us-ascii?Q?st2VbHTv6Xn/mViYxTdb2GLWvFKRW1h1euuOvFgl4AxXZtvahF3QlwFZrqvt?=
+	=?us-ascii?Q?byQlrR3RCV5wjVns0OpIcWZvdLg3BlfN2QOwAPgOzJQdWpy/VNj45aZDMi1F?=
+	=?us-ascii?Q?dsyhzCQyMf/HRA7PGq7gUKpYrkOlAuc8XFlg9T8KyyI7IlfQcgH8fYyuBbsn?=
+	=?us-ascii?Q?Fx+8fnsa6zIZFJZRoxrm3UWvVcAbQ7vkg41Rs7lyM+xhjTvmZLUFAsQCOItn?=
+	=?us-ascii?Q?/FmitI2Tb+SH7bGIcwADDkG+yx2cDI+Si1SiZIhcnDM1Q4mkWqDRIRsAX8fV?=
+	=?us-ascii?Q?bmcPt8sRfd08ajp54DjQMq7twF5D7FW72k7zg7Pz4MFtwHjdoRH73AswLpPC?=
+	=?us-ascii?Q?2ewXdSlJnJI0U4q+xn50qWmplAh2I8qKpyeOGkd0UMXXJRTyBwZsWYsrInSz?=
+	=?us-ascii?Q?BiibzHZgE6BQbRzwdhvFTB/IGJD5DWuyb9Fton0ddvqnSDj1/CYD6Ux5KgYe?=
+	=?us-ascii?Q?Uy4FeYStd6nkfD7FnV3F8h/3dX3pqznqHzrc+FV6q7A3p0Be4HukxPsOhzf4?=
+	=?us-ascii?Q?tw1lWL9RP9hNZYN27gUh7p5Fe9CeS5FR96P9MI4u5SwJrGLePS1Or4tt40gH?=
+	=?us-ascii?Q?HBqNDZacocYXEMxr9riGqdWAhs/1u23PTjMUm5MfLW3G0+5jVeTtFtP7rB7F?=
+	=?us-ascii?Q?5nl6vu1VaAQoauNqRekRA31fTZVeNsoVKmk9R6N5ooNsZ1NOBWLXClhX28za?=
+	=?us-ascii?Q?t6us1YfjIjipnSzuIqk7Ky560in3kkAzgwgzDQUz9FRmbzX9//4sLdw82YMM?=
+	=?us-ascii?Q?mLDFXk7koRLmni3lk6dnf5swWF/nyFbhsPgTMlBZad1gjdYJe7fLL4/YfP5Q?=
+	=?us-ascii?Q?XKaPOwHYeqhBSuMVz5zpAp7PY4VNyLha4c82jmUNWi/iaWGhYM9x0yP8o9dO?=
+	=?us-ascii?Q?wLQGYawNONEI3K2d/QSNhyJ6iLToyvzg4IkRn4UouWyzLMtr8OviBFe3t4EI?=
+	=?us-ascii?Q?iUeAAl0TEwMmdNQF3iT5t7ChRF4wUtjhAil2LrGWTd9m8f6XWfmiaXFBySSF?=
+	=?us-ascii?Q?EOYAq0ojFQgduWZwdozGjb5qsWpLTMg5pz0BSb7y6dsKnwLXYyZxeYAgRi8d?=
+	=?us-ascii?Q?L+z20b33+QrGmHuOk+AXdLTntbID43ArwjS3U/OBVz4eO0QjK+rpLMfdLl8t?=
+	=?us-ascii?Q?Dqwddm41tf3K5M=3D?=
 X-Microsoft-Exchange-Diagnostics: 1; BN6PR02MB3378;
-	6:8yqhDGKEwt/QdSU15WbR3uJxZXfs2Y9qTkRqOb0/iw2Nhkxw1PvQhI9MqiFrB1/ljtCa/lieLehhkVD9he4OENwQr/RChEDoUHcqM8Vvu2BRUJBrHYH0qwPhGHBAIRjfZQwFgodMWLDL1aaQdhR/RWZB4wbG2N/7utSwwF0q80zuPYe6K8vwuIbtRz75ok6VEj5Sm5o1jyANox0lKIMuepQnugRlBBfSjjQ6Ymj1GxA4WVF2+n6NYYGvAVZc6s/ou2QJ+d4VBHc1SqvLSo0WWC7N8ew+Ik4a1YGTwZHepvdYouDfLES5BdXr9xFPxcoMF6TKT5t3O+BluYSBtENe58/1xL6q8SuCa1vqNEjACOM=;
-	5:3/my6crpcSC4CN6GcvkWHw0Y2LVVJO3IFteqak+MmcQjGLFiqSbDSJCZ5COq7FMyTBrKsk05sGdexMHlg1e9w8sGf7WE6kqRhDHP/3XzlwOXnWKHjZfcCvO5MV2s7IWIcGr2oCMH5HKH6xxPdtnm5wuRxL24NUK0Zpc9TNZAwYQ=;
-	24:7Nynl8WIObnHvAiWi32pjOoz68GYyFu59JR4O7HrQxb6BuIIemzFiD22w5BIRtTtwxYM5WuqVY/nejQlBzuiiMSQji2HRjdeDoW/hu6butc=;
-	7:l5KTBQasJ0SiziTzewZjnJKAAVthuJPqdLyIZ/4TngIM5Nex+thLybZJ6dsLd7XI2htzeYrJCgt7fkGmagBUVvLTvW7AQ3DcT2+NKZo2mndgkXaL8D9fo5kBRdlj6eS07lMgrRVzNtVsVHJtSWL7TwWWhmNnRYy802fBUgaGDQJsPSctrCAX0lI62bGK/ud8NzcDIPJVetPXFc+/biILZnIlbyngz9EbLpPyw+9eyvpt9dGL3+kvhYohtiI9UhDE
+	6:odTfzAFJLh5/bo/SAMI9+MSr/sW1SoYcBO/BuzHeD+k+gcfNt5PO6GnqNonuDK7RS4xWEA2BSrarh3KinXAWtkUatWMwvHyAxmr+//Jzgol1rT/lL25V0WNkhbJn67fZDXSkNul3h6Xg5ADxl/n1Ec/WpeMue4uoKPa88iwZA894gidpZMfiNNfAntptgvxdN1gpR1rYVOhRIAuill9/V+7TH2cxrhlHKe0fqcPbexS5bF6DU0gVkdRdHitep0OAiSnpSO7zC96Du5+M/h2g0O+BB7nEo/mdIn9ZpW3huy7gvHwlAsunuf2g/UkDhf7KXAAnDl8bs8wMvrenMEs1UhdU6JcUJaKY+Iz4GNZc5xA=;
+	5:GVORv8mL+QJ5+CBc1hrr8pWOO6WJoip5bdHkhmPXwrhXxsPOMx8xtOlaSa5wuqeSwVtXHcjjHL/Dua3Jc1s+uQjpW1K0X88VCRXHgwd5iMD2ALprf4gw+VxhFuBENswmbq7ZqDPOx7e2d9RbNNvBqf2d8NA2XPgZTsizIX+Wn40=;
+	24:bwEHddV/9paHdmIicSoCk8kVjNFB/SY6/piYXKkbiDdedAynyVn+yG6IquNXWDhFrA3oCrQmc5z8KcS9J455Jgd8Itsq3NkRXdL+hRktidw=;
+	7:4cqgx5Xa/quRMfTXs7xMrrPNxON9MtAij9i9eRnIoUP67ueGkYYyreSV7xfHehdlVLHWQ0WnIFzD6jd69FM88SkSY0bh4Grk505CWsZhQlojy3XYO1ZOr5pQqxTH6A3iE1I06Hd/Qm2UXgP+dU7qHPWhhxpXs5rk6KOCg39NsE18FbtUZPhXfl7rcfJroK/g/uWRaE/NrHHs6ROoVUsekBk5ZeAEhxIHCUHZKAaqvZ5k4Ub6222/Fz8JXAF77TlL
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:27:19.7866 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 40a4c980-dccf-46cd-e80b-08d547ceecb1
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2017 17:27:19.7136 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3dc8aaea-a62b-47b6-1351-08d547ceec96
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR02MB3378
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
 X-Received-From: 104.47.37.46
-Subject: [Qemu-trivial] [PATCH v6 01/29] audio: Replace AUDIO_FUNC with
- __func__
+Subject: [Qemu-trivial] [PATCH v6 04/29] hw/arm: Replace fprintf(stderr,
+ "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -152,767 +153,771 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 17:27:30 -0000
+X-List-Received-Date: Wed, 20 Dec 2017 17:27:36 -0000
 
-Apparently we don't use __MSC_VER as a compiler anymore and we always
-require a C99 compiler (which means we always have __func__) so we don't
-need a special AUDIO_FUNC macro. We can just replace AUDIO_FUNC with
-__func__ instead.
+Replace a large number of the fprintf(stderr, "*\n" calls with
+error_report(). The functions were renamed with these commands and then
+compiler issues where manually fixed.
 
-Checkpatch failures were manually fixed.
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_=
+report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_re=
+port("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report=
+("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("=
+\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1=
+"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\=
+2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2)=
+;|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|=
+Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig=
+}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}'=
+ \
+    {} +
+find ./* -type f -exec sed -i \
+    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+
+Some lines where then manually tweaked to pass checkpatch.
+
+The 'qemu: ' prefix was manually removed from the hw/arm/boot.c file.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
+V6:
+ - Fix indendation
+V3:
+ - Remoave 'qemu: ' prefix
+V2:
+ - Split hw patch into individual directories
 
- audio/alsaaudio.c      |  4 ++--
- audio/audio.c          | 40 ++++++++++++++++++------------------
- audio/audio_int.h      |  6 ------
- audio/audio_pt_int.c   | 28 ++++++++++++-------------
- audio/audio_template.h | 26 +++++++++++------------
- audio/dsoundaudio.c    |  2 +-
- audio/mixeng.c         |  2 +-
- audio/ossaudio.c       | 10 ++++-----
- audio/paaudio.c        | 56 +++++++++++++++++++++++++-------------------------
- audio/sdlaudio.c       |  2 +-
- audio/wavaudio.c       |  2 +-
- 11 files changed, 85 insertions(+), 93 deletions(-)
+ hw/arm/armv7m.c      |  2 +-
+ hw/arm/boot.c        | 37 ++++++++++++++++++-------------------
+ hw/arm/gumstix.c     | 13 +++++++------
+ hw/arm/mainstone.c   |  7 ++++---
+ hw/arm/musicpal.c    |  2 +-
+ hw/arm/omap1.c       |  5 +++--
+ hw/arm/omap2.c       | 23 ++++++++++++-----------
+ hw/arm/omap_sx1.c    |  8 +++-----
+ hw/arm/palm.c        | 10 +++++-----
+ hw/arm/pxa2xx.c      |  7 ++++---
+ hw/arm/stellaris.c   |  3 ++-
+ hw/arm/tosa.c        | 18 +++++++++---------
+ hw/arm/versatilepb.c |  2 +-
+ hw/arm/vexpress.c    |  8 ++++----
+ hw/arm/z2.c          |  6 +++---
+ 15 files changed, 77 insertions(+), 74 deletions(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 3652a7b5fa..92a96f8b2b 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -823,7 +823,7 @@ static int alsa_init_out(HWVoiceOut *hw, struct audsettings *as,
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = obt.samples;
- 
--    alsa->pcm_buf = audio_calloc (AUDIO_FUNC, obt.samples, 1 << hw->info.shift);
-+    alsa->pcm_buf = audio_calloc(__func__, obt.samples, 1 << hw->info.shift);
-     if (!alsa->pcm_buf) {
-         dolog ("Could not allocate DAC buffer (%d samples, each %d bytes)\n",
-                hw->samples, 1 << hw->info.shift);
-@@ -934,7 +934,7 @@ static int alsa_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = obt.samples;
- 
--    alsa->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+    alsa->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-     if (!alsa->pcm_buf) {
-         dolog ("Could not allocate ADC buffer (%d samples, each %d bytes)\n",
-                hw->samples, 1 << hw->info.shift);
-diff --git a/audio/audio.c b/audio/audio.c
-index beafed209b..7658d2af66 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -424,12 +424,12 @@ static void audio_process_options (const char *prefix,
-     const char qemu_prefix[] = "QEMU_";
-     size_t preflen, optlen;
- 
--    if (audio_bug (AUDIO_FUNC, !prefix)) {
-+    if (audio_bug(__func__, !prefix)) {
-         dolog ("prefix = NULL\n");
-         return;
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index bb2dfc942b..56770a7048 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -278,7 +278,7 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel=
+_filename, int mem_size)
+ #endif
+=20
+     if (!kernel_filename && !qtest_enabled()) {
+-        fprintf(stderr, "Guest image must be specified (using -kernel)\n")=
+;
++        error_report("Guest image must be specified (using -kernel)");
+         exit(1);
      }
- 
--    if (audio_bug (AUDIO_FUNC, !opt)) {
-+    if (audio_bug(__func__, !opt)) {
-         dolog ("opt = NULL\n");
-         return;
-     }
-@@ -792,7 +792,7 @@ static int audio_attach_capture (HWVoiceOut *hw)
-         SWVoiceOut *sw;
-         HWVoiceOut *hw_cap = &cap->hw;
- 
--        sc = audio_calloc (AUDIO_FUNC, 1, sizeof (*sc));
-+        sc = audio_calloc(__func__, 1, sizeof(*sc));
-         if (!sc) {
-             dolog ("Could not allocate soft capture voice (%zu bytes)\n",
-                    sizeof (*sc));
-@@ -848,7 +848,7 @@ static int audio_pcm_hw_find_min_in (HWVoiceIn *hw)
- int audio_pcm_hw_get_live_in (HWVoiceIn *hw)
- {
-     int live = hw->total_samples_captured - audio_pcm_hw_find_min_in (hw);
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > hw->samples)) {
-+    if (audio_bug(__func__, live < 0 || live > hw->samples)) {
-         dolog ("live=%d hw->samples=%d\n", live, hw->samples);
-         return 0;
-     }
-@@ -886,7 +886,7 @@ static int audio_pcm_sw_get_rpos_in (SWVoiceIn *sw)
-     int live = hw->total_samples_captured - sw->total_hw_samples_acquired;
-     int rpos;
- 
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > hw->samples)) {
-+    if (audio_bug(__func__, live < 0 || live > hw->samples)) {
-         dolog ("live=%d hw->samples=%d\n", live, hw->samples);
-         return 0;
-     }
-@@ -909,7 +909,7 @@ int audio_pcm_sw_read (SWVoiceIn *sw, void *buf, int size)
-     rpos = audio_pcm_sw_get_rpos_in (sw) % hw->samples;
- 
-     live = hw->total_samples_captured - sw->total_hw_samples_acquired;
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > hw->samples)) {
-+    if (audio_bug(__func__, live < 0 || live > hw->samples)) {
-         dolog ("live_in=%d hw->samples=%d\n", live, hw->samples);
-         return 0;
-     }
-@@ -935,7 +935,7 @@ int audio_pcm_sw_read (SWVoiceIn *sw, void *buf, int size)
-         }
-         osamp = swlim;
- 
--        if (audio_bug (AUDIO_FUNC, osamp < 0)) {
-+        if (audio_bug(__func__, osamp < 0)) {
-             dolog ("osamp=%d\n", osamp);
-             return 0;
-         }
-@@ -990,7 +990,7 @@ static int audio_pcm_hw_get_live_out (HWVoiceOut *hw, int *nb_live)
-     if (nb_live1) {
-         int live = smin;
- 
--        if (audio_bug (AUDIO_FUNC, live < 0 || live > hw->samples)) {
-+        if (audio_bug(__func__, live < 0 || live > hw->samples)) {
-             dolog ("live=%d hw->samples=%d\n", live, hw->samples);
-             return 0;
-         }
-@@ -1014,7 +1014,7 @@ int audio_pcm_sw_write (SWVoiceOut *sw, void *buf, int size)
-     hwsamples = sw->hw->samples;
- 
-     live = sw->total_hw_samples_mixed;
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > hwsamples)){
-+    if (audio_bug(__func__, live < 0 || live > hwsamples)) {
-         dolog ("live=%d hw->samples=%d\n", live, hwsamples);
-         return 0;
-     }
-@@ -1263,7 +1263,7 @@ static int audio_get_avail (SWVoiceIn *sw)
-     }
- 
-     live = sw->hw->total_samples_captured - sw->total_hw_samples_acquired;
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > sw->hw->samples)) {
-+    if (audio_bug(__func__, live < 0 || live > sw->hw->samples)) {
-         dolog ("live=%d sw->hw->samples=%d\n", live, sw->hw->samples);
-         return 0;
-     }
-@@ -1287,7 +1287,7 @@ static int audio_get_free (SWVoiceOut *sw)
- 
-     live = sw->total_hw_samples_mixed;
- 
--    if (audio_bug (AUDIO_FUNC, live < 0 || live > sw->hw->samples)) {
-+    if (audio_bug(__func__, live < 0 || live > sw->hw->samples)) {
-         dolog ("live=%d sw->hw->samples=%d\n", live, sw->hw->samples);
-         return 0;
-     }
-@@ -1354,7 +1354,7 @@ static void audio_run_out (AudioState *s)
-             live = 0;
-         }
- 
--        if (audio_bug (AUDIO_FUNC, live < 0 || live > hw->samples)) {
-+        if (audio_bug(__func__, live < 0 || live > hw->samples)) {
-             dolog ("live=%d hw->samples=%d\n", live, hw->samples);
-             continue;
-         }
-@@ -1389,7 +1389,7 @@ static void audio_run_out (AudioState *s)
-         prev_rpos = hw->rpos;
-         played = hw->pcm_ops->run_out (hw, live);
-         replay_audio_out(&played);
--        if (audio_bug (AUDIO_FUNC, hw->rpos >= hw->samples)) {
-+        if (audio_bug(__func__, hw->rpos >= hw->samples)) {
-             dolog ("hw->rpos=%d hw->samples=%d played=%d\n",
-                    hw->rpos, hw->samples, played);
-             hw->rpos = 0;
-@@ -1410,7 +1410,7 @@ static void audio_run_out (AudioState *s)
-                 continue;
-             }
- 
--            if (audio_bug (AUDIO_FUNC, played > sw->total_hw_samples_mixed)) {
-+            if (audio_bug(__func__, played > sw->total_hw_samples_mixed)) {
-                 dolog ("played=%d sw->total_hw_samples_mixed=%d\n",
-                        played, sw->total_hw_samples_mixed);
-                 played = sw->total_hw_samples_mixed;
-@@ -1513,7 +1513,7 @@ static void audio_run_capture (AudioState *s)
-                 continue;
-             }
- 
--            if (audio_bug (AUDIO_FUNC, captured > sw->total_hw_samples_mixed)) {
-+            if (audio_bug(__func__, captured > sw->total_hw_samples_mixed)) {
-                 dolog ("captured=%d sw->total_hw_samples_mixed=%d\n",
-                        captured, sw->total_hw_samples_mixed);
-                 captured = sw->total_hw_samples_mixed;
-@@ -1924,7 +1924,7 @@ CaptureVoiceOut *AUD_add_capture (
-         goto err0;
-     }
- 
--    cb = audio_calloc (AUDIO_FUNC, 1, sizeof (*cb));
-+    cb = audio_calloc(__func__, 1, sizeof(*cb));
-     if (!cb) {
-         dolog ("Could not allocate capture callback information, size %zu\n",
-                sizeof (*cb));
-@@ -1942,7 +1942,7 @@ CaptureVoiceOut *AUD_add_capture (
-         HWVoiceOut *hw;
-         CaptureVoiceOut *cap;
- 
--        cap = audio_calloc (AUDIO_FUNC, 1, sizeof (*cap));
-+        cap = audio_calloc(__func__, 1, sizeof(*cap));
-         if (!cap) {
-             dolog ("Could not allocate capture voice, size %zu\n",
-                    sizeof (*cap));
-@@ -1955,8 +1955,8 @@ CaptureVoiceOut *AUD_add_capture (
- 
-         /* XXX find a more elegant way */
-         hw->samples = 4096 * 4;
--        hw->mix_buf = audio_calloc (AUDIO_FUNC, hw->samples,
--                                    sizeof (struct st_sample));
-+        hw->mix_buf = audio_calloc(__func__, hw->samples,
-+                                   sizeof(struct st_sample));
-         if (!hw->mix_buf) {
-             dolog ("Could not allocate capture mix buffer (%d samples)\n",
-                    hw->samples);
-@@ -1965,7 +1965,7 @@ CaptureVoiceOut *AUD_add_capture (
- 
-         audio_pcm_init_info (&hw->info, as);
- 
--        cap->buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+        cap->buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-         if (!cap->buf) {
-             dolog ("Could not allocate capture buffer "
-                    "(%d samples, each %d bytes)\n",
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 5bcb1c60e1..5b25da0a37 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -252,10 +252,4 @@ static inline int audio_ring_dist (int dst, int src, int len)
- #define AUDIO_STRINGIFY_(n) #n
- #define AUDIO_STRINGIFY(n) AUDIO_STRINGIFY_(n)
- 
--#if defined _MSC_VER || defined __GNUC__
--#define AUDIO_FUNC __FUNCTION__
--#else
--#define AUDIO_FUNC __FILE__ ":" AUDIO_STRINGIFY (__LINE__)
--#endif
--
- #endif /* QEMU_AUDIO_INT_H */
-diff --git a/audio/audio_pt_int.c b/audio/audio_pt_int.c
-index 21ff9c5803..3fe56d8514 100644
---- a/audio/audio_pt_int.c
-+++ b/audio/audio_pt_int.c
-@@ -31,7 +31,7 @@ int audio_pt_init (struct audio_pt *p, void *(*func) (void *),
- 
-     err = sigfillset (&set);
-     if (err) {
--        logerr (p, errno, "%s(%s): sigfillset failed", cap, AUDIO_FUNC);
-+        logerr(p, errno, "%s(%s): sigfillset failed", cap, __func__);
-         return -1;
-     }
- 
-@@ -57,8 +57,8 @@ int audio_pt_init (struct audio_pt *p, void *(*func) (void *),
- 
-     err2 = pthread_sigmask (SIG_SETMASK, &old_set, NULL);
-     if (err2) {
--        logerr (p, err2, "%s(%s): pthread_sigmask (restore) failed",
--                cap, AUDIO_FUNC);
-+        logerr(p, err2, "%s(%s): pthread_sigmask (restore) failed",
-+               cap, __func__);
-         /* We have failed to restore original signal mask, all bets are off,
-            so terminate the process */
-         exit (EXIT_FAILURE);
-@@ -74,17 +74,17 @@ int audio_pt_init (struct audio_pt *p, void *(*func) (void *),
-  err2:
-     err2 = pthread_cond_destroy (&p->cond);
-     if (err2) {
--        logerr (p, err2, "%s(%s): pthread_cond_destroy failed", cap, AUDIO_FUNC);
-+        logerr(p, err2, "%s(%s): pthread_cond_destroy failed", cap, __func__);
-     }
- 
-  err1:
-     err2 = pthread_mutex_destroy (&p->mutex);
-     if (err2) {
--        logerr (p, err2, "%s(%s): pthread_mutex_destroy failed", cap, AUDIO_FUNC);
-+        logerr(p, err2, "%s(%s): pthread_mutex_destroy failed", cap, __func__);
-     }
- 
-  err0:
--    logerr (p, err, "%s(%s): %s failed", cap, AUDIO_FUNC, efunc);
-+    logerr(p, err, "%s(%s): %s failed", cap, __func__, efunc);
-     return -1;
- }
- 
-@@ -94,13 +94,13 @@ int audio_pt_fini (struct audio_pt *p, const char *cap)
- 
-     err = pthread_cond_destroy (&p->cond);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_cond_destroy failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_cond_destroy failed", cap, __func__);
-         ret = -1;
-     }
- 
-     err = pthread_mutex_destroy (&p->mutex);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_mutex_destroy failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_mutex_destroy failed", cap, __func__);
-         ret = -1;
-     }
-     return ret;
-@@ -112,7 +112,7 @@ int audio_pt_lock (struct audio_pt *p, const char *cap)
- 
-     err = pthread_mutex_lock (&p->mutex);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_mutex_lock failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_mutex_lock failed", cap, __func__);
-         return -1;
-     }
-     return 0;
-@@ -124,7 +124,7 @@ int audio_pt_unlock (struct audio_pt *p, const char *cap)
- 
-     err = pthread_mutex_unlock (&p->mutex);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_mutex_unlock failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_mutex_unlock failed", cap, __func__);
-         return -1;
-     }
-     return 0;
-@@ -136,7 +136,7 @@ int audio_pt_wait (struct audio_pt *p, const char *cap)
- 
-     err = pthread_cond_wait (&p->cond, &p->mutex);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_cond_wait failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_cond_wait failed", cap, __func__);
-         return -1;
-     }
-     return 0;
-@@ -148,12 +148,12 @@ int audio_pt_unlock_and_signal (struct audio_pt *p, const char *cap)
- 
-     err = pthread_mutex_unlock (&p->mutex);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_mutex_unlock failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_mutex_unlock failed", cap, __func__);
-         return -1;
-     }
-     err = pthread_cond_signal (&p->cond);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_cond_signal failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_cond_signal failed", cap, __func__);
-         return -1;
-     }
-     return 0;
-@@ -166,7 +166,7 @@ int audio_pt_join (struct audio_pt *p, void **arg, const char *cap)
- 
-     err = pthread_join (p->thread, &ret);
-     if (err) {
--        logerr (p, err, "%s(%s): pthread_join failed", cap, AUDIO_FUNC);
-+        logerr(p, err, "%s(%s): pthread_join failed", cap, __func__);
-         return -1;
-     }
-     *arg = ret;
-diff --git a/audio/audio_template.h b/audio/audio_template.h
-index 99b27b285e..7de227d2d1 100644
---- a/audio/audio_template.h
-+++ b/audio/audio_template.h
-@@ -57,13 +57,13 @@ static void glue (audio_init_nb_voices_, TYPE) (struct audio_driver *drv)
-         glue (s->nb_hw_voices_, TYPE) = max_voices;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, !voice_size && max_voices)) {
-+    if (audio_bug(__func__, !voice_size && max_voices)) {
-         dolog ("drv=`%s' voice_size=0 max_voices=%d\n",
-                drv->name, max_voices);
-         glue (s->nb_hw_voices_, TYPE) = 0;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, voice_size && !max_voices)) {
-+    if (audio_bug(__func__, voice_size && !max_voices)) {
-         dolog ("drv=`%s' voice_size=%d max_voices=0\n",
-                drv->name, voice_size);
-     }
-@@ -77,7 +77,7 @@ static void glue (audio_pcm_hw_free_resources_, TYPE) (HW *hw)
- 
- static int glue (audio_pcm_hw_alloc_resources_, TYPE) (HW *hw)
- {
--    HWBUF = audio_calloc (AUDIO_FUNC, hw->samples, sizeof (struct st_sample));
-+    HWBUF = audio_calloc(__func__, hw->samples, sizeof(struct st_sample));
-     if (!HWBUF) {
-         dolog ("Could not allocate " NAME " buffer (%d samples)\n",
-                hw->samples);
-@@ -105,7 +105,7 @@ static int glue (audio_pcm_sw_alloc_resources_, TYPE) (SW *sw)
- 
-     samples = ((int64_t) sw->hw->samples << 32) / sw->ratio;
- 
--    sw->buf = audio_calloc (AUDIO_FUNC, samples, sizeof (struct st_sample));
-+    sw->buf = audio_calloc(__func__, samples, sizeof(struct st_sample));
-     if (!sw->buf) {
-         dolog ("Could not allocate buffer for `%s' (%d samples)\n",
-                SW_NAME (sw), samples);
-@@ -238,17 +238,17 @@ static HW *glue (audio_pcm_hw_add_new_, TYPE) (struct audsettings *as)
-         return NULL;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, !drv)) {
-+    if (audio_bug(__func__, !drv)) {
-         dolog ("No host audio driver\n");
-         return NULL;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, !drv->pcm_ops)) {
-+    if (audio_bug(__func__, !drv->pcm_ops)) {
-         dolog ("Host audio driver without pcm_ops\n");
-         return NULL;
-     }
- 
--    hw = audio_calloc (AUDIO_FUNC, 1, glue (drv->voice_size_, TYPE));
-+    hw = audio_calloc(__func__, 1, glue(drv->voice_size_, TYPE));
-     if (!hw) {
-         dolog ("Can not allocate voice `%s' size %d\n",
-                drv->name, glue (drv->voice_size_, TYPE));
-@@ -266,7 +266,7 @@ static HW *glue (audio_pcm_hw_add_new_, TYPE) (struct audsettings *as)
-         goto err0;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, hw->samples <= 0)) {
-+    if (audio_bug(__func__, hw->samples <= 0)) {
-         dolog ("hw->samples=%d\n", hw->samples);
-         goto err1;
-     }
-@@ -339,7 +339,7 @@ static SW *glue (audio_pcm_create_voice_pair_, TYPE) (
-         hw_as = *as;
-     }
- 
--    sw = audio_calloc (AUDIO_FUNC, 1, sizeof (*sw));
-+    sw = audio_calloc(__func__, 1, sizeof(*sw));
-     if (!sw) {
-         dolog ("Could not allocate soft voice `%s' (%zu bytes)\n",
-                sw_name ? sw_name : "unknown", sizeof (*sw));
-@@ -379,7 +379,7 @@ static void glue (audio_close_, TYPE) (SW *sw)
- void glue (AUD_close_, TYPE) (QEMUSoundCard *card, SW *sw)
- {
-     if (sw) {
--        if (audio_bug (AUDIO_FUNC, !card)) {
-+        if (audio_bug(__func__, !card)) {
-             dolog ("card=%p\n", card);
-             return;
-         }
-@@ -399,7 +399,7 @@ SW *glue (AUD_open_, TYPE) (
- {
-     AudioState *s = &glob_audio_state;
- 
--    if (audio_bug (AUDIO_FUNC, !card || !name || !callback_fn || !as)) {
-+    if (audio_bug(__func__, !card || !name || !callback_fn || !as)) {
-         dolog ("card=%p name=%p callback_fn=%p as=%p\n",
-                card, name, callback_fn, as);
-         goto fail;
-@@ -408,12 +408,12 @@ SW *glue (AUD_open_, TYPE) (
-     ldebug ("open %s, freq %d, nchannels %d, fmt %d\n",
-             name, as->freq, as->nchannels, as->fmt);
- 
--    if (audio_bug (AUDIO_FUNC, audio_validate_settings (as))) {
-+    if (audio_bug(__func__, audio_validate_settings(as))) {
-         audio_print_settings (as);
-         goto fail;
-     }
- 
--    if (audio_bug (AUDIO_FUNC, !s->drv)) {
-+    if (audio_bug(__func__, !s->drv)) {
-         dolog ("Can not open `%s' (no host audio driver)\n", name);
-         goto fail;
-     }
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 516846eb80..bc39cb9b4d 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -543,7 +543,7 @@ static int dsound_run_out (HWVoiceOut *hw, int live)
-         }
-     }
- 
--    if (audio_bug (AUDIO_FUNC, len < 0 || len > bufsize)) {
-+    if (audio_bug(__func__, len < 0 || len > bufsize)) {
-         dolog ("len=%d bufsize=%d old_pos=%ld ppos=%ld\n",
-                len, bufsize, old_pos, ppos);
-         return 0;
-diff --git a/audio/mixeng.c b/audio/mixeng.c
-index 0bf9b5360f..2ab22df2aa 100644
---- a/audio/mixeng.c
-+++ b/audio/mixeng.c
-@@ -344,7 +344,7 @@ struct rate {
+=20
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c2720c8046..6e6b8c0c6a 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -8,6 +8,7 @@
   */
- void *st_rate_start (int inrate, int outrate)
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include <libfdt.h>
+ #include "hw/hw.h"
+@@ -418,13 +419,13 @@ static int load_dtb(hwaddr addr, const struct arm_boo=
+t_info *binfo,
+         char *filename;
+         filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, binfo->dtb_filena=
+me);
+         if (!filename) {
+-            fprintf(stderr, "Couldn't open dtb file %s\n", binfo->dtb_file=
+name);
++            error_report("Couldn't open dtb file %s", binfo->dtb_filename)=
+;
+             goto fail;
+         }
+=20
+         fdt =3D load_device_tree(filename, &size);
+         if (!fdt) {
+-            fprintf(stderr, "Couldn't open dtb file %s\n", filename);
++            error_report("Couldn't open dtb file %s", filename);
+             g_free(filename);
+             goto fail;
+         }
+@@ -432,7 +433,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+     } else {
+         fdt =3D binfo->get_dtb(binfo, &size);
+         if (!fdt) {
+-            fprintf(stderr, "Board was unable to create a dtb blob\n");
++            error_report("Board was unable to create a dtb blob");
+             goto fail;
+         }
+     }
+@@ -451,7 +452,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+     scells =3D qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
+                                    NULL, &error_fatal);
+     if (acells =3D=3D 0 || scells =3D=3D 0) {
+-        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0=
+)\n");
++        error_report("dtb file invalid (#address-cells or #size-cells 0)")=
+;
+         goto fail;
+     }
+=20
+@@ -459,8 +460,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+         /* This is user error so deserves a friendlier error message
+          * than the failure of setprop_sized_cells would provide
+          */
+-        fprintf(stderr, "qemu: dtb file not compatible with "
+-                "RAM size > 4GB\n");
++        error_report("dtb file not compatible with RAM size > 4GB");
+         goto fail;
+     }
+=20
+@@ -480,7 +480,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+                                               acells, mem_base,
+                                               scells, mem_len);
+             if (rc < 0) {
+-                fprintf(stderr, "couldn't set %s/reg for node %d\n", noden=
+ame,
++                error_report("couldn't set %s/reg for node %d", nodename,
+                         i);
+                 goto fail;
+             }
+@@ -505,7 +505,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+                                           acells, binfo->loader_start,
+                                           scells, binfo->ram_size);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set /memory/reg\n");
++            error_report("couldn't set /memory/reg");
+             goto fail;
+         }
+     }
+@@ -519,7 +519,7 @@ static int load_dtb(hwaddr addr, const struct arm_boot_=
+info *binfo,
+         rc =3D qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
+                                      binfo->kernel_cmdline);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set /chosen/bootargs\n");
++            error_report("couldn't set /chosen/bootargs");
+             goto fail;
+         }
+     }
+@@ -528,14 +528,14 @@ static int load_dtb(hwaddr addr, const struct arm_boo=
+t_info *binfo,
+         rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-start",
+                                    binfo->initrd_start);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
++            error_report("couldn't set /chosen/linux,initrd-start");
+             goto fail;
+         }
+=20
+         rc =3D qemu_fdt_setprop_cell(fdt, "/chosen", "linux,initrd-end",
+                                    binfo->initrd_start + binfo->initrd_siz=
+e);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
++            error_report("couldn't set /chosen/linux,initrd-end");
+             goto fail;
+         }
+     }
+@@ -690,7 +690,7 @@ static void load_image_to_fw_cfg(FWCfgState *fw_cfg, ui=
+nt16_t size_key,
+         gsize length;
+=20
+         if (!g_file_get_contents(image_name, &contents, &length, NULL)) {
+-            fprintf(stderr, "failed to load \"%s\"\n", image_name);
++            error_report("failed to load \"%s\"", image_name);
+             exit(1);
+         }
+         size =3D length;
+@@ -956,8 +956,7 @@ static void arm_load_kernel_notify(Notifier *notifier, =
+void *data)
+         is_linux =3D 1;
+     }
+     if (kernel_size < 0) {
+-        fprintf(stderr, "qemu: could not load kernel '%s'\n",
+-                info->kernel_filename);
++        error_report("could not load kernel '%s'", info->kernel_filename);
+         exit(1);
+     }
+     info->entry =3D entry;
+@@ -976,8 +975,8 @@ static void arm_load_kernel_notify(Notifier *notifier, =
+void *data)
+                                                   info->initrd_start);
+             }
+             if (initrd_size < 0) {
+-                fprintf(stderr, "qemu: could not load initrd '%s'\n",
+-                        info->initrd_filename);
++                error_report("could not load initrd '%s'",
++                             info->initrd_filename);
+                 exit(1);
+             }
+         } else {
+@@ -1021,9 +1020,9 @@ static void arm_load_kernel_notify(Notifier *notifier=
+, void *data)
+         } else {
+             fixupcontext[FIXUP_ARGPTR] =3D info->loader_start + KERNEL_ARG=
+S_ADDR;
+             if (info->ram_size >=3D (1ULL << 32)) {
+-                fprintf(stderr, "qemu: RAM size must be less than 4GB to b=
+oot"
+-                        " Linux kernel using ATAGS (try passing a device t=
+ree"
+-                        " using -dtb)\n");
++                error_report("RAM size must be less than 4GB to boot"
++                             " Linux kernel using ATAGS (try passing a dev=
+ice tree"
++                             " using -dtb)");
+                 exit(1);
+             }
+         }
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index bba9e9f57a..8f11b03066 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -35,6 +35,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "hw/hw.h"
+ #include "hw/arm/pxa.h"
+ #include "net/net.h"
+@@ -62,8 +63,8 @@ static void connex_init(MachineState *machine)
+=20
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "A flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("A flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -76,7 +77,7 @@ static void connex_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                                sector_len, connex_rom / sector_len,
+                                2, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory.");
+         exit(1);
+     }
+=20
+@@ -99,8 +100,8 @@ static void verdex_init(MachineState *machine)
+=20
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "A flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("A flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -113,7 +114,7 @@ static void verdex_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                                sector_len, verdex_rom / sector_len,
+                                2, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory.");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index d07972a966..189febf8b7 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -12,6 +12,7 @@
+  * GNU GPL, version 2 or (at your option) any later version.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+ #include "hw/arm/pxa.h"
+@@ -143,8 +144,8 @@ static void mainstone_common_init(MemoryRegion *address=
+_space_mem,
+             if (qtest_enabled()) {
+                 break;
+             }
+-            fprintf(stderr, "Two flash images must be given with the "
+-                    "'pflash' parameter\n");
++            error_report("Two flash images must be given with the "
++                         "'pflash' parameter");
+             exit(1);
+         }
+=20
+@@ -154,7 +155,7 @@ static void mainstone_common_init(MemoryRegion *address=
+_space_mem,
+                                    blk_by_legacy_dinfo(dinfo),
+                                    sector_len, MAINSTONE_FLASH / sector_le=
+n,
+                                    4, 0, 0, 0, 0, be)) {
+-            fprintf(stderr, "qemu: Error registering flash memory.\n");
++            error_report("Error registering flash memory.");
+             exit(1);
+         }
+     }
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b648770882..06127a873d 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1626,7 +1626,7 @@ static void musicpal_init(MachineState *machine)
+         flash_size =3D blk_getlength(blk);
+         if (flash_size !=3D 8*1024*1024 && flash_size !=3D 16*1024*1024 &&
+             flash_size !=3D 32*1024*1024) {
+-            fprintf(stderr, "Invalid flash image size\n");
++            error_report("Invalid flash image size");
+             exit(1);
+         }
+=20
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 92e58f09c8..b3a23a83d1 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -18,6 +18,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -2313,7 +2314,7 @@ void omap_uwire_attach(struct omap_uwire_s *s,
+                 uWireSlave *slave, int chipselect)
  {
--    struct rate *rate = audio_calloc (AUDIO_FUNC, 1, sizeof (*rate));
-+    struct rate *rate = audio_calloc(__func__, 1, sizeof(*rate));
- 
-     if (!rate) {
-         dolog ("Could not allocate resampler (%zu bytes)\n", sizeof (*rate));
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 0edd7ea5fe..a0428881c2 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -582,11 +582,9 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+     if (chipselect < 0 || chipselect > 3) {
+-        fprintf(stderr, "%s: Bad chipselect %i\n", __func__, chipselect);
++        error_report("%s: Bad chipselect %i", __func__, chipselect);
+         exit(-1);
      }
- 
-     if (!oss->mmapped) {
--        oss->pcm_buf = audio_calloc (
--            AUDIO_FUNC,
--            hw->samples,
--            1 << hw->info.shift
--            );
-+        oss->pcm_buf = audio_calloc(__func__,
-+                                    hw->samples,
-+                                    1 << hw->info.shift);
-         if (!oss->pcm_buf) {
-             dolog (
-                 "Could not allocate DAC buffer (%d samples, each %d bytes)\n",
-@@ -705,7 +703,7 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+=20
+@@ -3987,7 +3988,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegio=
+n *system_memory,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
      }
- 
-     hw->samples = (obt.nfrags * obt.fragsize) >> hw->info.shift;
--    oss->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+    oss->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-     if (!oss->pcm_buf) {
-         dolog ("Could not allocate ADC buffer (%d samples, each %d bytes)\n",
-                hw->samples, 1 << hw->info.shift);
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 65beb6f010..8cf19c51d0 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -206,7 +206,7 @@ static void *qpa_thread_out (void *arg)
-     PAVoiceOut *pa = arg;
-     HWVoiceOut *hw = &pa->hw;
- 
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+    if (audio_pt_lock(&pa->pt, __func__)) {
-         return NULL;
-     }
- 
-@@ -222,7 +222,7 @@ static void *qpa_thread_out (void *arg)
-                 break;
-             }
- 
--            if (audio_pt_wait (&pa->pt, AUDIO_FUNC)) {
-+            if (audio_pt_wait(&pa->pt, __func__)) {
-                 goto exit;
-             }
-         }
-@@ -230,7 +230,7 @@ static void *qpa_thread_out (void *arg)
-         decr = to_mix = audio_MIN (pa->live, pa->g->conf.samples >> 2);
-         rpos = pa->rpos;
- 
--        if (audio_pt_unlock (&pa->pt, AUDIO_FUNC)) {
-+        if (audio_pt_unlock(&pa->pt, __func__)) {
-             return NULL;
-         }
- 
-@@ -251,7 +251,7 @@ static void *qpa_thread_out (void *arg)
-             to_mix -= chunk;
-         }
- 
--        if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+        if (audio_pt_lock(&pa->pt, __func__)) {
-             return NULL;
-         }
- 
-@@ -261,7 +261,7 @@ static void *qpa_thread_out (void *arg)
-     }
- 
-  exit:
--    audio_pt_unlock (&pa->pt, AUDIO_FUNC);
-+    audio_pt_unlock(&pa->pt, __func__);
-     return NULL;
+     s->mmc =3D omap_mmc_init(0xfffb7800, system_memory,
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index b53878b8b9..3a1d995d6a 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -19,6 +19,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s =
+*s)
+     /* TODO: update clocks */
+=20
+     if (mode[0] =3D=3D 1 || mode[0] =3D=3D 2 || mode[1] =3D=3D 1 || mode[1=
+] =3D=3D 2)
+-        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+-                        __func__);
++        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
++                     __func__);
  }
- 
-@@ -270,7 +270,7 @@ static int qpa_run_out (HWVoiceOut *hw, int live)
-     int decr;
-     PAVoiceOut *pa = (PAVoiceOut *) hw;
- 
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+    if (audio_pt_lock(&pa->pt, __func__)) {
-         return 0;
+=20
+ static void omap_prcm_dpll_update(struct omap_prcm_s *s)
+@@ -1331,7 +1332,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s =
+*s)
+     s->dpll_lock =3D 0;
+     switch (mode) {
+     case 0:
+-        fprintf(stderr, "%s: bad EN_DPLL\n", __func__);
++        error_report("%s: bad EN_DPLL", __func__);
+         break;
+     case 1:	/* Low-power bypass mode (Default) */
+     case 2:	/* Fast-relock bypass mode */
+@@ -1358,7 +1359,7 @@ static void omap_prcm_dpll_update(struct omap_prcm_s =
+*s)
+         omap_clk_reparent(core, dpll_x2);
+         break;
+     case 3:
+-        fprintf(stderr, "%s: bad CORE_CLK_SRC\n", __func__);
++        error_report("%s: bad CORE_CLK_SRC", __func__);
+         break;
      }
- 
-@@ -279,10 +279,10 @@ static int qpa_run_out (HWVoiceOut *hw, int live)
-     pa->live = live - decr;
-     hw->rpos = pa->rpos;
-     if (pa->live > 0) {
--        audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
-+        audio_pt_unlock_and_signal(&pa->pt, __func__);
-     }
-     else {
--        audio_pt_unlock (&pa->pt, AUDIO_FUNC);
-+        audio_pt_unlock(&pa->pt, __func__);
-     }
-     return decr;
  }
-@@ -298,7 +298,7 @@ static void *qpa_thread_in (void *arg)
-     PAVoiceIn *pa = arg;
-     HWVoiceIn *hw = &pa->hw;
- 
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+    if (audio_pt_lock(&pa->pt, __func__)) {
-         return NULL;
+@@ -1627,8 +1628,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
+,
+=20
+     case 0x500:	/* CM_CLKEN_PLL */
+         if (value & 0xffffff30)
+-            fprintf(stderr, "%s: write 0s in CM_CLKEN_PLL for "
+-                            "future compatibility\n", __func__);
++            error_report("%s: write 0s in CM_CLKEN_PLL for "
++                         "future compatibility", __func__);
+         if ((s->clken[9] ^ value) & 0xcc) {
+             s->clken[9] &=3D ~0xcc;
+             s->clken[9] |=3D value & 0xcc;
+@@ -1646,8 +1647,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
+,
+         break;
+     case 0x540:	/* CM_CLKSEL1_PLL */
+         if (value & 0xfc4000d7)
+-            fprintf(stderr, "%s: write 0s in CM_CLKSEL1_PLL for "
+-                            "future compatibility\n", __func__);
++            error_report("%s: write 0s in CM_CLKSEL1_PLL for "
++                         "future compatibility", __func__);
+         if ((s->clksel[5] ^ value) & 0x003fff00) {
+             s->clksel[5] =3D value & 0x03bfff28;
+             omap_prcm_dpll_update(s);
+@@ -1658,8 +1659,8 @@ static void omap_prcm_write(void *opaque, hwaddr addr=
+,
+         break;
+     case 0x544:	/* CM_CLKSEL2_PLL */
+         if (value & ~3)
+-            fprintf(stderr, "%s: write 0s in CM_CLKSEL2_PLL[31:2] for "
+-                            "future compatibility\n", __func__);
++            error_report("%s: write 0s in CM_CLKSEL2_PLL[31:2] for "
++                         "future compatibility", __func__);
+         if (s->clksel[6] !=3D (value & 3)) {
+             s->clksel[6] =3D value & 3;
+             omap_prcm_dpll_update(s);
+@@ -2486,7 +2487,7 @@ struct omap_mpu_state_s *omap2420_mpu_init(MemoryRegi=
+on *sysmem,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
      }
- 
-@@ -314,7 +314,7 @@ static void *qpa_thread_in (void *arg)
-                 break;
-             }
- 
--            if (audio_pt_wait (&pa->pt, AUDIO_FUNC)) {
-+            if (audio_pt_wait(&pa->pt, __func__)) {
-                 goto exit;
-             }
+     s->mmc =3D omap2_mmc_init(omap_l4tao(s->l4, 9),
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index 9a14270795..253f7cad5c 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -158,8 +158,7 @@ static void sx1_init(MachineState *machine, const int v=
+ersion)
+                                    blk_by_legacy_dinfo(dinfo),
+                                    sector_size, flash_size / sector_size,
+                                    4, 0, 0, 0, 0, be)) {
+-            fprintf(stderr, "qemu: Error registering flash memory %d.\n",
+-                           fl_idx);
++            error_report("Error registering flash memory %d.", fl_idx);
          }
-@@ -322,7 +322,7 @@ static void *qpa_thread_in (void *arg)
-         incr = to_grab = audio_MIN (pa->dead, pa->g->conf.samples >> 2);
-         wpos = pa->wpos;
- 
--        if (audio_pt_unlock (&pa->pt, AUDIO_FUNC)) {
-+        if (audio_pt_unlock(&pa->pt, __func__)) {
-             return NULL;
-         }
- 
-@@ -342,7 +342,7 @@ static void *qpa_thread_in (void *arg)
-             to_grab -= chunk;
-         }
- 
--        if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+        if (audio_pt_lock(&pa->pt, __func__)) {
-             return NULL;
-         }
- 
-@@ -352,7 +352,7 @@ static void *qpa_thread_in (void *arg)
+         fl_idx++;
      }
- 
-  exit:
--    audio_pt_unlock (&pa->pt, AUDIO_FUNC);
-+    audio_pt_unlock(&pa->pt, __func__);
-     return NULL;
+@@ -182,8 +181,7 @@ static void sx1_init(MachineState *machine, const int v=
+ersion)
+                                    blk_by_legacy_dinfo(dinfo),
+                                    sector_size, flash1_size / sector_size,
+                                    4, 0, 0, 0, 0, be)) {
+-            fprintf(stderr, "qemu: Error registering flash memory %d.\n",
+-                           fl_idx);
++            error_report("Error registering flash memory %d.", fl_idx);
+         }
+         fl_idx++;
+     } else {
+@@ -194,7 +192,7 @@ static void sx1_init(MachineState *machine, const int v=
+ersion)
+     }
+=20
+     if (!machine->kernel_filename && !fl_idx && !qtest_enabled()) {
+-        fprintf(stderr, "Kernel or Flash image must be specified\n");
++        error_report("Kernel or Flash image must be specified");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+index 285f43709d..7f3637041a 100644
+--- a/hw/arm/palm.c
++++ b/hw/arm/palm.c
+@@ -233,8 +233,8 @@ static void palmte_init(MachineState *machine)
+     if (nb_option_roms) {
+         rom_size =3D get_image_size(option_rom[0].name);
+         if (rom_size > flash_size) {
+-            fprintf(stderr, "%s: ROM image too big (%x > %x)\n",
+-                            __func__, rom_size, flash_size);
++            error_report("%s: ROM image too big (%x > %x)",
++                         __func__, rom_size, flash_size);
+             rom_size =3D 0;
+         }
+         if (rom_size > 0) {
+@@ -243,13 +243,13 @@ static void palmte_init(MachineState *machine)
+             rom_loaded =3D 1;
+         }
+         if (rom_size < 0) {
+-            fprintf(stderr, "%s: error loading '%s'\n",
+-                            __func__, option_rom[0].name);
++            error_report("%s: error loading '%s'",
++                         __func__, option_rom[0].name);
+         }
+     }
+=20
+     if (!rom_loaded && !kernel_filename && !qtest_enabled()) {
+-        fprintf(stderr, "Kernel or ROM image must be specified\n");
++        fprintf(stderr, "Kernel or ROM image must be specified");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index db860c238e..0386a0d8bf 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -8,6 +8,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -2062,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
+     s =3D g_new0(PXA2xxState, 1);
+=20
+     if (strncmp(cpu_type, "pxa27", 5)) {
+-        fprintf(stderr, "Machine requires a PXA27x processor.\n");
++        error_report("Machine requires a PXA27x processor.");
+         exit(1);
+     }
+=20
+@@ -2095,7 +2096,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
+@@ -2220,7 +2221,7 @@ PXA2xxState *pxa255_init(MemoryRegion *address_space,=
+ unsigned int sdram_size)
+=20
+     dinfo =3D drive_get(IF_SD, 0, 0);
+     if (!dinfo) {
+-        fprintf(stderr, "qemu: missing SecureDigital device\n");
++        error_report("missing SecureDigital device");
+         exit(1);
+     }
+     s->mmc =3D pxa2xx_mmci_init(address_space, 0x41100000,
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index de7c0fc4a6..f6f295b363 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -8,6 +8,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "hw/sysbus.h"
+ #include "hw/ssi/ssi.h"
+@@ -559,7 +560,7 @@ static void ssys_write(void *opaque, hwaddr offset,
+     case 0x040: /* SRCR0 */
+     case 0x044: /* SRCR1 */
+     case 0x048: /* SRCR2 */
+-        fprintf(stderr, "Peripheral reset not implemented\n");
++        error_report("Peripheral reset not implemented");
+         break;
+     case 0x054: /* IMC */
+         s->int_mask =3D value & 0x7f;
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index a55b1a369c..7e6e4b35ac 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -12,6 +12,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+ #include "hw/arm/pxa.h"
+@@ -70,19 +71,19 @@ static void tosa_out_switch(void *opaque, int line, int=
+ level)
+ {
+     switch (line) {
+         case 0:
+-            fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
++            error_report("blue LED %s.", level ? "on" : "off");
+             break;
+         case 1:
+-            fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
++            error_report("green LED %s.", level ? "on" : "off");
+             break;
+         case 2:
+-            fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
++            error_report("amber LED %s.", level ? "on" : "off");
+             break;
+         case 3:
+-            fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
++            fprintf(stderr, "wlan LED %s.", level ? "on" : "off");
+             break;
+         default:
+-            fprintf(stderr, "Uhandled out event: %d =3D %d\n", line, level=
+);
++            fprintf(stderr, "Uhandled out event: %d =3D %d", line, level);
+             break;
+     }
  }
- 
-@@ -361,7 +361,7 @@ static int qpa_run_in (HWVoiceIn *hw)
-     int live, incr, dead;
-     PAVoiceIn *pa = (PAVoiceIn *) hw;
- 
--    if (audio_pt_lock (&pa->pt, AUDIO_FUNC)) {
-+    if (audio_pt_lock(&pa->pt, __func__)) {
-         return 0;
-     }
- 
-@@ -372,10 +372,10 @@ static int qpa_run_in (HWVoiceIn *hw)
-     pa->dead = dead - incr;
-     hw->wpos = pa->wpos;
-     if (pa->dead > 0) {
--        audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
-+        audio_pt_unlock_and_signal(&pa->pt, __func__);
-     }
-     else {
--        audio_pt_unlock (&pa->pt, AUDIO_FUNC);
-+        audio_pt_unlock(&pa->pt, __func__);
-     }
-     return incr;
+@@ -133,7 +134,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
+=20
+ static uint32_t tosa_ssp_tansfer(SSISlave *dev, uint32_t value)
+ {
+-    fprintf(stderr, "TG: %d %02x\n", value >> 5, value & 0x1f);
++    error_report("TG: %d %02x", value >> 5, value & 0x1f);
+     return 0;
  }
-@@ -579,7 +579,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as,
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = g->conf.samples;
--    pa->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+    pa->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-     pa->rpos = hw->rpos;
-     if (!pa->pcm_buf) {
-         dolog ("Could not allocate buffer (%d bytes)\n",
-@@ -587,7 +587,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as,
-         goto fail2;
+=20
+@@ -159,14 +160,13 @@ static int tosa_dac_send(I2CSlave *i2c, uint8_t data)
+     s->buf[s->len] =3D data;
+     if (s->len ++ > 2) {
+ #ifdef VERBOSE
+-        fprintf(stderr, "%s: message too long (%i bytes)\n", __func__, s->=
+len);
++        error_report("%s: message too long (%i bytes)", __func__, s->len);
+ #endif
+         return 1;
      }
- 
--    if (audio_pt_init (&pa->pt, qpa_thread_out, hw, AUDIO_CAP, AUDIO_FUNC)) {
-+    if (audio_pt_init(&pa->pt, qpa_thread_out, hw, AUDIO_CAP, __func__)) {
-         goto fail3;
+=20
+     if (s->len =3D=3D 2) {
+-        fprintf(stderr, "dac: channel %d value 0x%02x\n",
+-                s->buf[0], s->buf[1]);
++        error_report("dac: channel %d value 0x%02x", s->buf[0], s->buf[1])=
+;
      }
- 
-@@ -636,7 +636,7 @@ static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = g->conf.samples;
--    pa->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+    pa->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-     pa->wpos = hw->wpos;
-     if (!pa->pcm_buf) {
-         dolog ("Could not allocate buffer (%d bytes)\n",
-@@ -644,7 +644,7 @@ static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
-         goto fail2;
+=20
+     return 0;
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 418792cd02..56f9d60bed 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -364,7 +364,7 @@ static void versatile_init(MachineState *machine, int b=
+oard_id)
+                           VERSATILE_FLASH_SECT_SIZE,
+                           VERSATILE_FLASH_SIZE / VERSATILE_FLASH_SECT_SIZE=
+,
+                           4, 0x0089, 0x0018, 0x0000, 0x0, 0)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory.");
      }
- 
--    if (audio_pt_init (&pa->pt, qpa_thread_in, hw, AUDIO_CAP, AUDIO_FUNC)) {
-+    if (audio_pt_init(&pa->pt, qpa_thread_in, hw, AUDIO_CAP, __func__)) {
-         goto fail3;
+=20
+     versatile_binfo.ram_size =3D machine->ram_size;
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index efb5a29475..508629dfe9 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -266,7 +266,7 @@ static void a9_daughterboard_init(const VexpressMachine=
+State *vms,
+=20
+     if (ram_size > 0x40000000) {
+         /* 1GB is the maximum the address space permits */
+-        fprintf(stderr, "vexpress-a9: cannot model more than 1GB RAM\n");
++        error_report("vexpress-a9: cannot model more than 1GB RAM");
+         exit(1);
      }
- 
-@@ -667,17 +667,17 @@ static void qpa_fini_out (HWVoiceOut *hw)
-     void *ret;
-     PAVoiceOut *pa = (PAVoiceOut *) hw;
- 
--    audio_pt_lock (&pa->pt, AUDIO_FUNC);
-+    audio_pt_lock(&pa->pt, __func__);
-     pa->done = 1;
--    audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
--    audio_pt_join (&pa->pt, &ret, AUDIO_FUNC);
-+    audio_pt_unlock_and_signal(&pa->pt, __func__);
-+    audio_pt_join(&pa->pt, &ret, __func__);
- 
-     if (pa->stream) {
-         pa_stream_unref (pa->stream);
-         pa->stream = NULL;
-     }
- 
--    audio_pt_fini (&pa->pt, AUDIO_FUNC);
-+    audio_pt_fini(&pa->pt, __func__);
-     g_free (pa->pcm_buf);
-     pa->pcm_buf = NULL;
- }
-@@ -687,17 +687,17 @@ static void qpa_fini_in (HWVoiceIn *hw)
-     void *ret;
-     PAVoiceIn *pa = (PAVoiceIn *) hw;
- 
--    audio_pt_lock (&pa->pt, AUDIO_FUNC);
-+    audio_pt_lock(&pa->pt, __func__);
-     pa->done = 1;
--    audio_pt_unlock_and_signal (&pa->pt, AUDIO_FUNC);
--    audio_pt_join (&pa->pt, &ret, AUDIO_FUNC);
-+    audio_pt_unlock_and_signal(&pa->pt, __func__);
-+    audio_pt_join(&pa->pt, &ret, __func__);
- 
-     if (pa->stream) {
-         pa_stream_unref (pa->stream);
-         pa->stream = NULL;
-     }
- 
--    audio_pt_fini (&pa->pt, AUDIO_FUNC);
-+    audio_pt_fini(&pa->pt, __func__);
-     g_free (pa->pcm_buf);
-     pa->pcm_buf = NULL;
- }
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index e8d91d22af..e92135bd2f 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -277,7 +277,7 @@ static void sdl_callback (void *opaque, Uint8 *buf, int len)
-             return;
+=20
+@@ -355,7 +355,7 @@ static void a15_daughterboard_init(const VexpressMachin=
+eState *vms,
+          */
+         uint64_t rsz =3D ram_size;
+         if (rsz > (30ULL * 1024 * 1024 * 1024)) {
+-            fprintf(stderr, "vexpress-a15: cannot model more than 30GB RAM=
+\n");
++            error_report("vexpress-a15: cannot model more than 30GB RAM");
+             exit(1);
          }
- 
--        if (audio_bug (AUDIO_FUNC, sdl->live < 0 || sdl->live > hw->samples)) {
-+        if (audio_bug(__func__, sdl->live < 0 || sdl->live > hw->samples)) {
-             dolog ("sdl->live=%d hw->samples=%d\n",
-                    sdl->live, hw->samples);
-             return;
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index 341eec3121..068a595732 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -139,7 +139,7 @@ static int wav_init_out(HWVoiceOut *hw, struct audsettings *as,
-     audio_pcm_init_info (&hw->info, &wav_as);
- 
-     hw->samples = 1024;
--    wav->pcm_buf = audio_calloc (AUDIO_FUNC, hw->samples, 1 << hw->info.shift);
-+    wav->pcm_buf = audio_calloc(__func__, hw->samples, 1 << hw->info.shift);
-     if (!wav->pcm_buf) {
-         dolog ("Could not allocate buffer (%d bytes)\n",
-                hw->samples << hw->info.shift);
--- 
+     }
+@@ -640,7 +640,7 @@ static void vexpress_common_init(MachineState *machine)
+     pflash0 =3D ve_pflash_cfi01_register(map[VE_NORFLASH0], "vexpress.flas=
+h0",
+                                        dinfo);
+     if (!pflash0) {
+-        fprintf(stderr, "vexpress: error registering flash 0.\n");
++        error_report("vexpress: error registering flash 0.");
+         exit(1);
+     }
+=20
+@@ -655,7 +655,7 @@ static void vexpress_common_init(MachineState *machine)
+     dinfo =3D drive_get_next(IF_PFLASH);
+     if (!ve_pflash_cfi01_register(map[VE_NORFLASH1], "vexpress.flash1",
+                                   dinfo)) {
+-        fprintf(stderr, "vexpress: error registering flash 1.\n");
++        error_report("vexpress: error registering flash 1.");
+         exit(1);
+     }
+=20
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index 60561c7b7c..ee59142667 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -319,8 +319,8 @@ static void z2_init(MachineState *machine)
+ #endif
+     dinfo =3D drive_get(IF_PFLASH, 0, 0);
+     if (!dinfo && !qtest_enabled()) {
+-        fprintf(stderr, "Flash image must be given with the "
+-                "'pflash' parameter\n");
++        error_report("Flash image must be given with the "
++                     "'pflash' parameter");
+         exit(1);
+     }
+=20
+@@ -329,7 +329,7 @@ static void z2_init(MachineState *machine)
+                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+                                sector_len, Z2_FLASH_SIZE / sector_len,
+                                4, 0, 0, 0, 0, be)) {
+-        fprintf(stderr, "qemu: Error registering flash memory.\n");
++        error_report("Error registering flash memory.");
+         exit(1);
+     }
+=20
+--=20
 2.14.1
 
 
