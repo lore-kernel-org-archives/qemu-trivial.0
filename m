@@ -1,52 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eRmZi-0008NW-Ko
-	for mharc-qemu-trivial@gnu.org; Wed, 20 Dec 2017 17:10:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55388)
+	id 1eSOAL-0003jz-Hz
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Dec 2017 09:19:13 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:56534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eRmZg-0008MO-LJ
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 17:10:53 -0500
+	(envelope-from <lists@eitanadler.com>) id 1eSGna-0002ok-3e
+	for qemu-trivial@nongnu.org; Fri, 22 Dec 2017 01:27:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1eRmZf-0006Zf-P8
-	for qemu-trivial@nongnu.org; Wed, 20 Dec 2017 17:10:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35590)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1eRmZa-0006XB-7q; Wed, 20 Dec 2017 17:10:46 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4962CC0587D1;
-	Wed, 20 Dec 2017 22:10:45 +0000 (UTC)
-Received: from localhost (ovpn-116-7.gru2.redhat.com [10.97.116.7])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1B4C660BEC;
-	Wed, 20 Dec 2017 22:10:41 +0000 (UTC)
-Date: Wed, 20 Dec 2017 20:10:40 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair23@gmail.com,
-	armbru@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>
-Message-ID: <20171220221040.GI24025@localhost.localdomain>
-References: <cover.1513790494.git.alistair.francis@xilinx.com>
-	<97bff6488fbc4c6b2c10879798aa149a43426fd9.1513790495.git.alistair.francis@xilinx.com>
+	(envelope-from <lists@eitanadler.com>) id 1eSGnZ-0006s7-1y
+	for qemu-trivial@nongnu.org; Fri, 22 Dec 2017 01:27:14 -0500
+Received: from mail-yw0-x241.google.com ([2607:f8b0:4002:c05::241]:36917)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <lists@eitanadler.com>)
+	id 1eSGnY-0006pm-T3
+	for qemu-trivial@nongnu.org; Fri, 22 Dec 2017 01:27:12 -0500
+Received: by mail-yw0-x241.google.com with SMTP id v190so3779531ywg.4
+	for <qemu-trivial@nongnu.org>; Thu, 21 Dec 2017 22:27:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=eitanadler.com; s=0xdeadbeef;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=GUGF9bnsT+5SBQizHG6g/FW6RO+uRXuVSdrBSF5zxtM=;
+	b=KYrBXj6C7mBgDx5Ez8dUz1jdrd5I53odFnMc3xL02NdUa9o7opHIEEbuaT6ovgoiBW
+	/BjvEMID7eoWQj4rYAHitOlrXN3QYVM1KFP0v10nRD3Cbcc/IGPCBsCBEhVd6JewmjUA
+	Wkj7jUR8GwyUm95FZKajTFVOVsFBc7i7qtjRc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=GUGF9bnsT+5SBQizHG6g/FW6RO+uRXuVSdrBSF5zxtM=;
+	b=SK/sy+vXeT7+bPwjqznb0QNtKdPW6UfP+59wgFOXk48pUCRAy4Y9ER+Kkwk3ltGZGX
+	2GXZ/fPmZHeQZ2uv+hfIw2FawjkTkXQufgnXw2wO7FYzahXW2d/dKjH+H/Ap8hoZIngp
+	pMxhi75wX0koj0wo6fuXMkQNRRej0XYb/OgussEl4LoP+YnI1X/3iitWkGzqRe8H887K
+	BnwE0UpLlgZoVNxXFSjjYbm/PDZ4l25nP0Nvp3xKrzkdv41kCeK5NY96D71uQewXhJEy
+	vp7BxalHPi43qnFNBxfBMrffDKIsrIIq5GTAeHkmfjRC1lqTfS9whSvt2ZxLA93ABknA
+	FMpA==
+X-Gm-Message-State: AKGB3mIbTbMEjENa62RzaNvCNzSkXsGzHK7Zq4qq+oAnD/YOhjJ8Ter1
+	TvfDxH0abGcbIg3PFEiLcj2p+jikY56RlDLzUP6wEA==
+X-Google-Smtp-Source: ACJfBov+KNGppcdRro/X0OLRA7ofVPQJA7CXXPAtg51fTGO1Rql/udUbWDud3Tqq3ggYOYH3I44PO8XXiFDL+yHJTTM=
+X-Received: by 10.129.82.212 with SMTP id g203mr9747663ywb.207.1513924031584; 
+	Thu, 21 Dec 2017 22:27:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <97bff6488fbc4c6b2c10879798aa149a43426fd9.1513790495.git.alistair.francis@xilinx.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 20 Dec 2017 22:10:45 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v6 08/29] hw/i386: Replace fprintf(stderr,
- "*\n" with error_report()
+Received: by 10.37.217.21 with HTTP; Thu, 21 Dec 2017 22:26:41 -0800 (PST)
+In-Reply-To: <20171218010209.98713-1-lists@eitanadler.com>
+References: <20171218010209.98713-1-lists@eitanadler.com>
+From: Eitan Adler <lists@eitanadler.com>
+Date: Thu, 21 Dec 2017 22:26:41 -0800
+Message-ID: <CAF6rxgnknhn5e26ibO8=n70P6VP3mWzQLMLtigNWv6kz11kUug@mail.gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: Eitan Adler <lists@eitanadler.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c05::241
+X-Mailman-Approved-At: Fri, 22 Dec 2017 09:19:12 -0500
+Subject: Re: [Qemu-trivial] [qemu-web PATCH] Explain how to install QEMU via
+ macports
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,60 +65,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2017 22:10:53 -0000
+X-List-Received-Date: Fri, 22 Dec 2017 06:27:14 -0000
 
-On Wed, Dec 20, 2017 at 09:23:16AM -0800, Alistair Francis wrote:
-> Replace a large number of the fprintf(stderr, "*\n" calls with
-> error_report(). The functions were renamed with these commands and then
-> compiler issues where manually fixed.
-> 
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> find ./* -type f -exec sed -i \
->     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->     {} +
-> 
-> Some lines where then manually tweaked to pass checkpatch.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <rth@twiddle.net>
-> Cc: Eduardo Habkost <ehabkost@redhat.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Acked-by: Anthony PERARD <anthony.perard@citrix.com> (Xen part)
+ping?
 
-Acked-by: Eduardo Habkost <ehabkost@redhat.com>
+On 17 December 2017 at 17:02, Eitan Adler <lists@eitanadler.com> wrote:
+> Signed-off-by: Eitan Adler <lists@eitanadler.com>
+> ---
+>  _download/macos.md | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+>
+> diff --git a/_download/macos.md b/_download/macos.md
+> index dbb312c..e5b9983 100644
+> --- a/_download/macos.md
+> +++ b/_download/macos.md
+> @@ -1,4 +1,8 @@
+> -QEMU can be installed from Homebrew:
+> +QEMU can be installed via MacPorts or Homebrew:
+> +
+> +<pre>port install qemu</pre>
+> +
+> +or
+>
+>  <pre>brew install qemu</pre>
+>
+> --
+> 2.15.1
+>
+
+
 
 -- 
-Eduardo
+Eitan Adler
 
