@@ -1,63 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eWITr-0004NM-DV
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2018 04:03:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53064)
+	id 1eWMAV-0002CT-Jl
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2018 07:59:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47217)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lepton@google.com>) id 1eWITp-0004Mo-6V
-	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:30 -0500
+	(envelope-from <armbru@redhat.com>) id 1eWMAQ-0002B1-Ln
+	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 07:59:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lepton@google.com>) id 1eWITo-0008AY-8m
-	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:29 -0500
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:39883)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <lepton@google.com>) id 1eWITo-00089t-2O
-	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:28 -0500
-Received: by mail-wr0-x241.google.com with SMTP id o101so19266041wrb.6
-	for <qemu-trivial@nongnu.org>; Tue, 02 Jan 2018 01:03:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=blLkhzRVf8hCDNu6fX/QcvhZVo7eWLAfwQdzrk4uHZI=;
-	b=r4YqPSw1MqZ/QpdWqUjxQwSFV8+GI5INP9oUYh0A5Zv2YkQ1Kt4A8QwB+ELZqB5H6A
-	tLMwl0IredszJc3PF9sHpCu956W+VZOHgpsqAa+/rxmNON6/Bnleu0AFr5VLmqaRa48s
-	Xyasnv7EyOi0Ti/PBDdXL/DmJGCEK0nCVKtJpmwOWWSJn0rtsTh268MC1bBJwbGKHcTP
-	c37DHYWS2BgI1YhQ7JiQpcq0LoRgs+7M4gIHiaDDu7jTbUjyWjTMBKwoWakigvzOZJ+n
-	3+vQvVh+O0n/EnS6bKCcO2i24reCe/OKG4u0tjv3Khzchq3Bvh/pKIu52Z6IO99B8RT9
-	L95Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=blLkhzRVf8hCDNu6fX/QcvhZVo7eWLAfwQdzrk4uHZI=;
-	b=owFZQ8JcxLmijNuz54I+xSoddqw9mJCktcBsJCCFkx/X7PM+cYNINfkqV/XlJuzK5E
-	AgSrxs2fUuGrMu+GPCaehaB8LynvLdMWXcpjFFZAVj8IRg9E673ib2qEu8ZPXSEpnOtP
-	qdcoU8XX2HLdG8Zwyi4Ux9GCjUR+po6w0pfbACp5MtZ5vw8k0TFFQ2R/bpeepcULYHSE
-	p5gu3d4VZ89iz/uVouYRWNU2nuAG/yoQ6LHn5VK9q9JwiXa6cvm28jYdR9h+ZK6CplGy
-	7DFbjoenNTnhZMcjbc3cP/j2xPQvvssJBKh9DfXcHyIwNMsBC6kDBA9btcO8ThC4W7k0
-	+KFQ==
-X-Gm-Message-State: AKGB3mJ323gPHoqs99y69prVAWU1tTwBq6/Ny2FibEXJHf73AMoawHbV
-	dCd6LYXzNRjuSpsbwCyXoMqWSsFC+MomjximtFYjKg==
-X-Google-Smtp-Source: ACJfBovOnJxwn+z5oi9x6wbezfMdF/g+9QqBXLxh+46xh5b/ofVKXm4THI1zYimAaLFezBwd+uizv6uk5ExNabPxwZ8=
-X-Received: by 10.223.202.18 with SMTP id o18mr13158438wrh.275.1514883805998; 
-	Tue, 02 Jan 2018 01:03:25 -0800 (PST)
+	(envelope-from <armbru@redhat.com>) id 1eWMAN-0003Sy-IM
+	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 07:59:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52124)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1eWMAE-0003RG-EU; Tue, 02 Jan 2018 07:59:30 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CD0819D1F8;
+	Tue,  2 Jan 2018 12:59:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-115.ams2.redhat.com
+	[10.36.116.115])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 338865D965;
+	Tue,  2 Jan 2018 12:59:28 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A7687113864C; Tue,  2 Jan 2018 13:59:26 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel\@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>
+References: <cover.1513790494.git.alistair.francis@xilinx.com>
+	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
+	<87lghulqno.fsf@dusky.pond.sub.org>
+	<1cfb1217-e32d-8e91-da46-07f1c72be77f@redhat.com>
+	<CAKmqyKPyL8B5ZjEUePkqVbzP8kVmM48vWML41PRXVVO7LVmMpg@mail.gmail.com>
+	<87a7yah5ea.fsf@dusky.pond.sub.org>
+	<CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
+Date: Tue, 02 Jan 2018 13:59:26 +0100
+In-Reply-To: <CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
+	(Alistair Francis's message of "Fri, 22 Dec 2017 12:58:53 -0800")
+Message-ID: <87608k4dsh.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.28.131.208 with HTTP; Tue, 2 Jan 2018 01:03:25 -0800 (PST)
-In-Reply-To: <CAOvqHj4P17JQ=bJqpZsA3n-sfw927Sad3-YD2FUHff1zhpanGA@mail.gmail.com>
-References: <20171207065639.164900-1-lepton@google.com>
-	<CAOvqHj4P17JQ=bJqpZsA3n-sfw927Sad3-YD2FUHff1zhpanGA@mail.gmail.com>
-From: =?UTF-8?B?VGFvIFd1KOWQtOa2m0BFbmcp?= <lepton@google.com>
-Date: Tue, 2 Jan 2018 01:03:25 -0800
-Message-ID: <CAOvqHj7Cx7dJLq2kYgpG3M-RoeBd64XM-BT0Hs4=vvnTg9zgAQ@mail.gmail.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, mjt@tls.msk.ru, 
-	Laurent Vivier <laurent@vivier.eu>, Tao Wu <lepton@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: Re: [Qemu-trivial] [PATCH] hw/input/hid: Add support for several
- keys.
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 02 Jan 2018 12:59:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
+ fprintf(stderr, "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,58 +64,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jan 2018 09:03:30 -0000
+X-List-Received-Date: Tue, 02 Jan 2018 12:59:43 -0000
 
-Ping?
+Alistair Francis <alistair.francis@xilinx.com> writes:
 
-On Thu, Dec 14, 2017 at 1:25 PM, Tao Wu(=E5=90=B4=E6=B6=9B@Eng) <lepton@goo=
-gle.com> wrote:
-> Anybody can merge this?
->
-> It's a simple change:  actually it only changed 4 bytes in hid usage
-> table to enable 4 keys: audiomute volumeup volumedown and power.
->
-> It's easy to verify what the patch is doing:
->
-> Boot some guest os with argument "-usbdevice keyboard"  and use qemu
-> monitor console to do "sendkey audiomute", without this patch, nothing
-> happend inside guest os. with this patch,  all these 4 keys work correctl=
-y.
->
-> On Wed, Dec 6, 2017 at 10:56 PM, Tao Wu <lepton@google.com> wrote:
->> Add support for these keys: audiomute volumedown volumeup power.
->> Tested with "sendkey" command in monitor and verify the behavior
->> in guest OS.
+> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>> Alistair Francis <alistair.francis@xilinx.com> writes:
 >>
->> Signed-off-by: Tao Wu <lepton@google.com>
->> ---
->>  hw/input/hid.c | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
+>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
+>>>>> Second thoughts...
+>>>>>
+>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>>>> [...]
+>>>>>>  #include "qemu/osdep.h"
+>>>>>> +#include "qemu/error-report.h"
+>>>>>>  #include "qapi/error.h"
+>>>>>>  #include "qemu-common.h"
+>>>>>>  #include "cpu.h"
+>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
+>>>>>>      /* TODO: update clocks */
+>>>>>>
+>>>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
+>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
+>>>>>> -                        __func__);
+>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>>>>> +                     __func__);
+>>>>>>  }
+>>>>>
+>>>>> This one's different: we neither exit() nor return a "failed" status to
+>>>>> the caller.
+>>>>>
+>>>>> We get here when the guest writes something funny to a certain
+>>>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
+>>>>> a user error.  I doubt it should be reported with error_report().
+>>>>> Peter, do we have a canonical way to report or log  guest misbehavior?
+>>>>
+>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
+>>>
+>>> That seems like the best option to me.
 >>
->> diff --git a/hw/input/hid.c b/hw/input/hid.c
->> index 0d049ff61c..aa4fb826fd 100644
->> --- a/hw/input/hid.c
->> +++ b/hw/input/hid.c
->> @@ -57,14 +57,14 @@ static const uint8_t hid_usage_keys[0x100] =3D {
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x58, 0xe4, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x54, 0x00, 0x46,
->> +    0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x00,
->> +    0x80, 0x00, 0x00, 0x00, 0x00, 0x54, 0x00, 0x46,
->>      0xe6, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x48, 0x4a,
->>      0x52, 0x4b, 0x00, 0x50, 0x00, 0x4f, 0x00, 0x4d,
->>      0x51, 0x4e, 0x49, 0x4c, 0x00, 0x00, 0x00, 0x00,
->> -    0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65, 0x00, 0x00,
->> +    0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65, 0x66, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
->> --
->> 2.15.1.424.g9478a66081-goog
+>> Suggest:
 >>
+>> 1. Keep converting fatal errors (the ones that exit())
+>>
+>> 2. Keep converting recoverable errors (the ones that return failure)
+>>
+>> 3. You can leave the prints that are neither alone.  You can also
+>>    convert to logging or tracing, as appropriate, but that requires
+>>    understanding the code.
+>>
+>> Makes sense?
+>
+> Does this apply to new patches after this series or to this series as
+> well? The series is mostly just mechanical find/replace. I really
+> don't want to have to dig through every patch to figure out what to
+> change/not change.
+
+I understand your reluctance to sort patch hunks into buckets 1., 2. and
+3. manually: there's an awful lot of hunks to sort.
+
+We know we have many fprintf() that should be error_report(),
+error_setg(), logging or tracing.
+
+We know we have error_report() that should be error_setg().
+
+Converting fprintf() to error_report() where we should really use
+something else makes the situation worse, I'm afraid.
+
+Since we need to sort, and sorting manually isn't practical, we need to
+automate.
+
+The patterns to recognize are 1. fprintf() followed by exit() and
+2. fprintf() followed by return failure.
+
+Recognizing the patterns when there's stuff between fprintf() and exit()
+/ return may exceed sed's power.  Feels like a Coccinelle job to me.
+Let's focus on the common case where exit() / return follows fprintf()
+immediately.
+
+Let's start with the easiest case: exit().  I figure that's still in
+reach of your find + sed tooling.
+
+Recognizing "return failure" is slightly harder, because error values
+aren't always obvious.  Common ones are return NULL, return -1, return
+-EFOO.
+
+I hope that peeling off truly simple cases like this will reduce the
+remaining hunks sufficiently to permit manual review.  If it doesn't, we
+should still get a major part of your work without making the situation
+worse.
 
