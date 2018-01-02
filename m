@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eVgmc-0008Mi-9O
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Dec 2017 11:48:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46992)
+	id 1eWITr-0004NM-DV
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2018 04:03:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry.fleytman@gmail.com>) id 1eVgma-0008Ma-5k
-	for qemu-trivial@nongnu.org; Sun, 31 Dec 2017 11:48:20 -0500
+	(envelope-from <lepton@google.com>) id 1eWITp-0004Mo-6V
+	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry.fleytman@gmail.com>) id 1eVgmV-0007R2-6d
-	for qemu-trivial@nongnu.org; Sun, 31 Dec 2017 11:48:20 -0500
-Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:40608)
+	(envelope-from <lepton@google.com>) id 1eWITo-0008AY-8m
+	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:29 -0500
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:39883)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <dmitry.fleytman@gmail.com>)
-	id 1eVgmU-0007Q9-Vi
-	for qemu-trivial@nongnu.org; Sun, 31 Dec 2017 11:48:15 -0500
-Received: by mail-wr0-x243.google.com with SMTP id p17so21533526wre.7
-	for <qemu-trivial@nongnu.org>; Sun, 31 Dec 2017 08:48:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:content-transfer-encoding:mime-version:subject:date:references
-	:to:in-reply-to:message-id;
-	bh=unsEfAtw3D40LzPqRG6itPAWzrKf0M4bWF7IJHrSz2M=;
-	b=o9nbJzFkiGeS6P3zFBook4w3+qaqlI2TmRQwd5/vWR6K0ABCkZik+93a2u+mgpUngX
-	nlSzNYAzdWC1XDfQhhfSZ8UClkDcCacEKQHkXB4oaKMCJBHX73Q3crXaBGPsRI15lsma
-	saiMe0w93vG/3y42UHTpPe9cLNe5jaaw7+TyVuJiEfZprFPRj524tcAIJxC4YhP1PJoV
-	PFiTD8qCjEAP5POZ30KxS5K9JlM7BwrvGMTrPEiOKKiQV+GXAkKbSeBZtdhJtlBRpAj/
-	bUZmAMIhGwDt87H2s/ICSZVruN0zBGXln2mniJ5MDk4qJ33nKHCbWbiG5elJmxIvcOgv
-	e0oQ==
+	(Exim 4.71) (envelope-from <lepton@google.com>) id 1eWITo-00089t-2O
+	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 04:03:28 -0500
+Received: by mail-wr0-x241.google.com with SMTP id o101so19266041wrb.6
+	for <qemu-trivial@nongnu.org>; Tue, 02 Jan 2018 01:03:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=blLkhzRVf8hCDNu6fX/QcvhZVo7eWLAfwQdzrk4uHZI=;
+	b=r4YqPSw1MqZ/QpdWqUjxQwSFV8+GI5INP9oUYh0A5Zv2YkQ1Kt4A8QwB+ELZqB5H6A
+	tLMwl0IredszJc3PF9sHpCu956W+VZOHgpsqAa+/rxmNON6/Bnleu0AFr5VLmqaRa48s
+	Xyasnv7EyOi0Ti/PBDdXL/DmJGCEK0nCVKtJpmwOWWSJn0rtsTh268MC1bBJwbGKHcTP
+	c37DHYWS2BgI1YhQ7JiQpcq0LoRgs+7M4gIHiaDDu7jTbUjyWjTMBKwoWakigvzOZJ+n
+	3+vQvVh+O0n/EnS6bKCcO2i24reCe/OKG4u0tjv3Khzchq3Bvh/pKIu52Z6IO99B8RT9
+	L95Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:content-transfer-encoding:mime-version
-	:subject:date:references:to:in-reply-to:message-id;
-	bh=unsEfAtw3D40LzPqRG6itPAWzrKf0M4bWF7IJHrSz2M=;
-	b=DgI820qwNaS3ycQuv/dGrJxk5NmplMIDuGv2iraoLZbaQtcLz5ZWdjIndR+8Z5sq9y
-	BkVRWe93Zut6XygLQSeTAmC512DVHhx111Niwugb6kCjjCb2qcYQ/zCFyq6GzdoFqn9/
-	Enqq7z1XPZhBnW5xScW10KSazzMgRmfwOZgQpIyktGHQ4MNnebkHjEyle1imHjgNG747
-	vt8TT/5B/qTEX43XYMl38GDmu4E2RwO8TAS2wD+7BfhAYuZpMy1q+3XeqPZxkbVRSO58
-	RK8o0rXT56iTX11OHKEgupBd8Mv8muuOqGddFLsefNdwgOxEHMLPHTTsPy47jmiuGZCO
-	X2pQ==
-X-Gm-Message-State: AKGB3mKEHCwG46aTNKmafezHYQrbEJxDoLdZPQtu07UYGD427mPN/yUU
-	GzugnqSrsgMrI5CEXMNW/Z4/l/L3
-X-Google-Smtp-Source: ACJfBov8MPltqbxY3Hp457BVaf5pOl53qYVwk5p/kQgDYjQF9QIpuq6+xxl0EZOe3MFgBLljEVYlGw==
-X-Received: by 10.223.169.8 with SMTP id u8mr42409186wrc.232.1514738893381;
-	Sun, 31 Dec 2017 08:48:13 -0800 (PST)
-Received: from [10.0.1.36] ([141.226.29.227]) by smtp.gmail.com with ESMTPSA id
-	q196sm41060316wmb.22.2017.12.31.08.48.12
-	for <qemu-trivial@nongnu.org>
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 31 Dec 2017 08:48:12 -0800 (PST)
-From: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Content-Type: text/plain;
-	charset=us-ascii
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=blLkhzRVf8hCDNu6fX/QcvhZVo7eWLAfwQdzrk4uHZI=;
+	b=owFZQ8JcxLmijNuz54I+xSoddqw9mJCktcBsJCCFkx/X7PM+cYNINfkqV/XlJuzK5E
+	AgSrxs2fUuGrMu+GPCaehaB8LynvLdMWXcpjFFZAVj8IRg9E673ib2qEu8ZPXSEpnOtP
+	qdcoU8XX2HLdG8Zwyi4Ux9GCjUR+po6w0pfbACp5MtZ5vw8k0TFFQ2R/bpeepcULYHSE
+	p5gu3d4VZ89iz/uVouYRWNU2nuAG/yoQ6LHn5VK9q9JwiXa6cvm28jYdR9h+ZK6CplGy
+	7DFbjoenNTnhZMcjbc3cP/j2xPQvvssJBKh9DfXcHyIwNMsBC6kDBA9btcO8ThC4W7k0
+	+KFQ==
+X-Gm-Message-State: AKGB3mJ323gPHoqs99y69prVAWU1tTwBq6/Ny2FibEXJHf73AMoawHbV
+	dCd6LYXzNRjuSpsbwCyXoMqWSsFC+MomjximtFYjKg==
+X-Google-Smtp-Source: ACJfBovOnJxwn+z5oi9x6wbezfMdF/g+9QqBXLxh+46xh5b/ofVKXm4THI1zYimAaLFezBwd+uizv6uk5ExNabPxwZ8=
+X-Received: by 10.223.202.18 with SMTP id o18mr13158438wrh.275.1514883805998; 
+	Tue, 02 Jan 2018 01:03:25 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.28.131.208 with HTTP; Tue, 2 Jan 2018 01:03:25 -0800 (PST)
+In-Reply-To: <CAOvqHj4P17JQ=bJqpZsA3n-sfw927Sad3-YD2FUHff1zhpanGA@mail.gmail.com>
+References: <20171207065639.164900-1-lepton@google.com>
+	<CAOvqHj4P17JQ=bJqpZsA3n-sfw927Sad3-YD2FUHff1zhpanGA@mail.gmail.com>
+From: =?UTF-8?B?VGFvIFd1KOWQtOa2m0BFbmcp?= <lepton@google.com>
+Date: Tue, 2 Jan 2018 01:03:25 -0800
+Message-ID: <CAOvqHj7Cx7dJLq2kYgpG3M-RoeBd64XM-BT0Hs4=vvnTg9zgAQ@mail.gmail.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com, mjt@tls.msk.ru, 
+	Laurent Vivier <laurent@vivier.eu>, Tao Wu <lepton@google.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Mac OS X Mail 11.2 \(3445.5.20\))
-Date: Sun, 31 Dec 2017 18:48:10 +0200
-References: <20171218151510.2901-1-dmitry.fleytman@gmail.com>
-To: qemu trival <qemu-trivial@nongnu.org>
-In-Reply-To: <20171218151510.2901-1-dmitry.fleytman@gmail.com>
-Message-Id: <2940E43C-4EF3-4D5E-8559-2CA4C343B01D@gmail.com>
-X-Mailer: Apple Mail (2.3445.5.20)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::243
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Update e-mail address
+X-Received-From: 2a00:1450:400c:c0c::241
+Subject: Re: [Qemu-trivial] [PATCH] hw/input/hid: Add support for several
+ keys.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,59 +69,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 31 Dec 2017 16:48:21 -0000
+X-List-Received-Date: Tue, 02 Jan 2018 09:03:30 -0000
 
-Ping.
+Ping?
 
-> On 18 Dec 2017, at 17:15, Dmitry Fleytman <dmitry.fleytman@gmail.com> =
-wrote:
->=20
-> Updating MAINTAINERS with my current e-mail address.
->=20
-> Signed-off-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-> ---
-> MAINTAINERS | 8 ++++----
-> 1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 45e2e2009b..d51273e656 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1145,7 +1145,7 @@ F: hw/scsi/mfi.h
-> F: tests/megasas-test.c
->=20
-> Network packet abstractions
-> -M: Dmitry Fleytman <dmitry@daynix.com>
-> +M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-> S: Maintained
-> F: include/net/eth.h
-> F: net/eth.c
-> @@ -1153,7 +1153,7 @@ F: hw/net/net_rx_pkt*
-> F: hw/net/net_tx_pkt*
->=20
-> Vmware
-> -M: Dmitry Fleytman <dmitry@daynix.com>
-> +M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-> S: Maintained
-> F: hw/net/vmxnet*
-> F: hw/scsi/vmw_pvscsi*
-> @@ -1174,12 +1174,12 @@ F: hw/mem/nvdimm.c
-> F: include/hw/mem/nvdimm.h
->=20
-> e1000x
-> -M: Dmitry Fleytman <dmitry@daynix.com>
-> +M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-> S: Maintained
-> F: hw/net/e1000x*
->=20
-> e1000e
-> -M: Dmitry Fleytman <dmitry@daynix.com>
-> +M: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-> S: Maintained
-> F: hw/net/e1000e*
->=20
-> --=20
-> 2.14.1
->=20
-
+On Thu, Dec 14, 2017 at 1:25 PM, Tao Wu(=E5=90=B4=E6=B6=9B@Eng) <lepton@goo=
+gle.com> wrote:
+> Anybody can merge this?
+>
+> It's a simple change:  actually it only changed 4 bytes in hid usage
+> table to enable 4 keys: audiomute volumeup volumedown and power.
+>
+> It's easy to verify what the patch is doing:
+>
+> Boot some guest os with argument "-usbdevice keyboard"  and use qemu
+> monitor console to do "sendkey audiomute", without this patch, nothing
+> happend inside guest os. with this patch,  all these 4 keys work correctl=
+y.
+>
+> On Wed, Dec 6, 2017 at 10:56 PM, Tao Wu <lepton@google.com> wrote:
+>> Add support for these keys: audiomute volumedown volumeup power.
+>> Tested with "sendkey" command in monitor and verify the behavior
+>> in guest OS.
+>>
+>> Signed-off-by: Tao Wu <lepton@google.com>
+>> ---
+>>  hw/input/hid.c | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/input/hid.c b/hw/input/hid.c
+>> index 0d049ff61c..aa4fb826fd 100644
+>> --- a/hw/input/hid.c
+>> +++ b/hw/input/hid.c
+>> @@ -57,14 +57,14 @@ static const uint8_t hid_usage_keys[0x100] =3D {
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x58, 0xe4, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0x00, 0x00, 0x54, 0x00, 0x46,
+>> +    0x7f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0x00,
+>> +    0x80, 0x00, 0x00, 0x00, 0x00, 0x54, 0x00, 0x46,
+>>      0xe6, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x48, 0x4a,
+>>      0x52, 0x4b, 0x00, 0x50, 0x00, 0x4f, 0x00, 0x4d,
+>>      0x51, 0x4e, 0x49, 0x4c, 0x00, 0x00, 0x00, 0x00,
+>> -    0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65, 0x00, 0x00,
+>> +    0x00, 0x00, 0x00, 0xe3, 0xe7, 0x65, 0x66, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> --
+>> 2.15.1.424.g9478a66081-goog
+>>
 
