@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eYZwS-0004nt-1p
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2018 11:06:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50380)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYZwM-0004iC-0M
-	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 11:06:25 -0500
+	id 1eYZyC-0006LV-TK
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2018 11:08:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51200)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
+	id 1eYZyB-0006Jq-0h
+	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 11:08:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eYZwG-00078q-Gb
-	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 11:06:21 -0500
-Received: from mail-oi0-x233.google.com ([2607:f8b0:4003:c06::233]:34614)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eYZwG-00077b-B7
-	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 11:06:16 -0500
-Received: by mail-oi0-x233.google.com with SMTP id a70so1323486oib.1
-	for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2018 08:06:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=cZUfC7VrnbxO2MYhic15PShLuC9HpDEBPOR9YI6rUTA=;
-	b=f3tsdQkLhFARP7nlK9YssqQ7SLFCft84EJR5QGif1XVVwKLcAafd+we8wrT+E1CyxR
-	q7qeU5277CfTUBaaUC1PUxLPWiCnJtSeTPWrsNOuNpM+gS6ca0NGPD83D252rrqmKalu
-	Gf88R4yMoO5LD3LhBEOlFQlNZGcnpaU+s0CkU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=cZUfC7VrnbxO2MYhic15PShLuC9HpDEBPOR9YI6rUTA=;
-	b=V5XmBpkiIboEL91O/1S+t1r3MuYx4gpri3PxWU+s49/JeBIC/1NMe3XTWH9Ch82O3n
-	YE7yL/g9emN0VW508NYZAwInowMXedSDIfb9DIzARNBt6yWosNl6+Hz2eY2s+22I3qL6
-	W1zQvRc4bFy58Owkip29eKJj7M1EyCDzChxHoOXSN+v5xcviwCjA1sIIiJHqpKLaPxv0
-	Qb5m2C7Gf8IsEoYMK0adhddE76J51oWwlQ+h2pjV0d3uhB0Ddn3lGWLkGI71agI8ewpy
-	Mw2iE8964mHGqIcCSimkZr7RkNCv3WMb9YnKDqEUsdJ/4634cR4IgJRSbloasrUS9poe
-	qm0A==
-X-Gm-Message-State: AKwxytcz+okD1z5WP9kzo/BjqHeJOfBpRXXS7xuZu8kKKc3pwhaCO/xv
-	t1pRHR2mrGkyPAJCdPV/fFwvsXI9C0Ja7dg1l+TCIw==
-X-Google-Smtp-Source: ACJfBovaWaBkwL4MkKJ0aErJ9sOMG/hE/MUJXKZvd+QKOnI/GcDmQtVDGIjvkm5wcaCRUsZBDldEZarZBYHhLJsGlCw=
-X-Received: by 10.202.252.73 with SMTP id a70mr360544oii.256.1515427575493;
-	Mon, 08 Jan 2018 08:06:15 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Mon, 8 Jan 2018 08:05:55 -0800 (PST)
-In-Reply-To: <23123.38373.555937.75671@guava.gson.org>
+	(envelope-from <n54@gmx.com>) id 1eYZy5-0008H9-VJ
+	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 11:08:14 -0500
+Received: from mout.gmx.net ([212.227.17.21]:55972)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <n54@gmx.com>)
+	id 1eYZy5-0008GE-IE; Mon, 08 Jan 2018 11:08:09 -0500
+Received: from [192.168.1.3] ([89.78.252.225]) by mail.gmx.com (mrgmx102
+	[212.227.17.174]) with ESMTPSA (Nemesis) id 0LbxQO-1fHZLt37Ey-00jLfd;
+	Mon, 08 Jan 2018 17:08:05 +0100
+To: Andreas Gustafsson <gson@gson.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Kamil Rytarowski <kamil@netbsd.org>, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <23118.26328.811644.330716@guava.gson.org>
 	<CAFEAcA_iPT14HSkMG4T43H3vykqBu=rFJpBe4idoVh9LFUEJaA@mail.gmail.com>
 	<23123.38373.555937.75671@guava.gson.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jan 2018 16:05:55 +0000
-Message-ID: <CAFEAcA8E9DxY7AA7fvFze5HFD_aQPn0T4Cn1u+C40Tqs7qefSQ@mail.gmail.com>
-To: Andreas Gustafsson <gson@gson.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Kamil Rytarowski <kamil@netbsd.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::233
+From: Kamil Rytarowski <n54@gmx.com>
+Message-ID: <ab633982-25e7-5620-9d9c-7287c6b8b67e@gmx.com>
+Date: Mon, 8 Jan 2018 17:10:32 +0100
+User-Agent: Mozilla/5.0 (X11; NetBSD amd64; rv:52.0) Gecko/20100101
+	Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <23123.38373.555937.75671@guava.gson.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="JbKfp9bIJSlSheR8ST4ftrNWV6Gro3UL2"
+X-Provags-ID: V03:K0:nwR+BprlHfRQfMEEixPlWS081lM5Twtkmfm2xg3JU+e0E3KCa6G
+	fI1yTYApi03ZB50pxfkYlTWowAciBpBARSf9XSnwUefMMGaS3uZK2tJMX0N0vK055gJvmrM
+	vR42La/qp0t3K0EyIEGA8NPfK2+ClVAOsSI6lApJQ0dxKZjp2KRBOKbHZkqrsXRsdcs389x
+	wRvFtnHr9iKgrdh30eX9w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:yV0bP1UBVaw=:DiWNhbbV8qK6mm2+LCrJvS
+	ISI4biQlNKn8KyrWnlW0mAQgpStEc9rbfmLgzfivqrlQ+WR/1l1lC0+vGZatIDdFM7MUSmGqd
+	jWeaEHneS1rRqS61g/2UOsjp3hZEszoUbSAtLZ5N/YGoiqkZV8/ITsb+Zh5H+ebt672C+hyMu
+	/DkxvPS/vxI40yQHuuU7pIw8gDE9lnV4u1XfZnx+2KTL4yw8DhMACKlHC7XVMXBwgXNBt4djR
+	+tlW5v23X3DUfyIFWsgPIdFolm6eLgqmDw4zclyRUkFKflxl9QdQRL/sgrLpfFes5Q/inPQqm
+	TBEUSFYkpKqU1j3LuCJk0A6Z6hxBKUzMjHnFjm/XjJt+W0T6Ec1T9lKKkn3pYPl9J2SuVZN27
+	8LJumRix0fUXYDznsTrIteRd1d+gOBPDCfEGO/4DhY43KXwgK0HuP2rFMadeQWAU5dvEIvWvm
+	kZmTui6MRaEZaeStRlA5nD8hz4UDX0Cc3t0by7n+jgsXUISMjpvryyXAvhVe7DfjWx9iMTHW6
+	M90g2AH3gLe8lt00fysQCAuv9Xz5MFGRvzroqQwYiJhy08xxNOARvnZwOZd2x/IhsiSmZYOol
+	CSXd9nvlhy7JbBvDEPUpSzyw/hfdQSuOQ/q9MBS1qimc1qC/cdbbSQ2kdtwtPyahjzf5XHdYY
+	XG3tkXsZkx9+wBm0RVKZjRFql7QtdfbrbHoc63mhUz6YYOa87+RjTbWh7X3xJ0DC6tDRSsYMW
+	k1WUXHoeFNmyI4JoQ9IGDe2EJ74MsZzPZUJCEWxTpQ5OOoYzcwYAm1k5fkmR0ncu/ovrI/Tea
+	cuaNP48suDQCnlS7B2Zh9x7YqhUug==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.17.21
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib-posix: check for
  posix_memalign in configure script
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,18 +65,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jan 2018 16:06:26 -0000
+X-List-Received-Date: Mon, 08 Jan 2018 16:08:16 -0000
 
-On 8 January 2018 at 16:01, Andreas Gustafsson <gson@gson.org> wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--JbKfp9bIJSlSheR8ST4ftrNWV6Gro3UL2
+Content-Type: multipart/mixed; boundary="W36OFWwlcacOjksgLSjGvDBthj2lSIlJN";
+ protected-headers="v1"
+From: Kamil Rytarowski <n54@gmx.com>
+To: Andreas Gustafsson <gson@gson.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Kamil Rytarowski <kamil@netbsd.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <ab633982-25e7-5620-9d9c-7287c6b8b67e@gmx.com>
+Subject: Re: [Qemu-devel] [PATCH] oslib-posix: check for posix_memalign in
+ configure script
+References: <23118.26328.811644.330716@guava.gson.org>
+ <CAFEAcA_iPT14HSkMG4T43H3vykqBu=rFJpBe4idoVh9LFUEJaA@mail.gmail.com>
+ <23123.38373.555937.75671@guava.gson.org>
+In-Reply-To: <23123.38373.555937.75671@guava.gson.org>
+
+--W36OFWwlcacOjksgLSjGvDBthj2lSIlJN
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 08.01.2018 17:01, Andreas Gustafsson wrote:
 > Peter Maydell wrote:
 >> Can we put this through the -trivial tree? (cc'd)
->
+>=20
 > I'm not sufficiently familiar with the intenal workflows of the qemu
 > project to give a meaningful answer to that question.
+>=20
 
-Sorry, I should have been clearer, that question was aimed
-at the qemu-trivial queue maintainers.
+I don't maintain a NetBSD merge queue and NetBSD patches go through
+other developers (e.g. qemu-trivial).
 
-thanks
--- PMM
+I would comaintain a BSD merge queue, but so far there are no active
+volunteers from other BSDs.
+
+
+--W36OFWwlcacOjksgLSjGvDBthj2lSIlJN--
+
+--JbKfp9bIJSlSheR8ST4ftrNWV6Gro3UL2
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJABAEBCAAqFiEELaxVpweEzw+lMDwuS7MI6bAudmwFAlpTl/kMHG41NEBnbXgu
+Y29tAAoJEEuzCOmwLnZsrisQAIQPjOt2JHsyzbBUZyCs3CdXeeAPU0OvMU7sQbXv
+esAqIQKVSsJZlADgTW4wKckA86SXN/7YGADWhaO53GjK5uZuKyislZncOJD/GQQm
+Jvz517XoFwEjCQf3FVpbkl84tGgUXljj8cyZmFo3TDGInSq4YqpFkzW4Fru/OPEQ
+D6YyFV2qzxAVjVuMLLsE6Di0Hss6vpXevOeG2S//VJ7+RiX3BSO1k19a8HkE2+Rl
+Sm1lwUmJQ3IW5XL3gmOtvjVTGcw37M1UWOLCr64F5rgGKpU2Hgcy0ZJw/yzIKhlG
+4eUWO/6Icp+gKuG7TLUESef9hbBiwGpBfq2KXLjLRilp2VEdqMYDA2zQWfcbb426
++m1tj4apKWWQOkAF8QV18QNcI3adMgdzHy2q1vF4L81Zz4Zb39OpIt7MsMpffyZt
+ttB4D2rix1ooc0hXW4A2IItY17KFdB9ER8hJInL23RBR8ywK13EXRuucLMVV7tyV
+iPFWASOtEkpsjmhvjRvW7R6lICXdWE22FNezY6VXJSDMAofgKMl8Qt+MxW8RT+Lk
+VaIhvBe2x/gExNwmjpbDgXNCuxlvDN56NxB4c9juRoSeWl7LSyB3lP59QTQMIiRj
+7oyii59TBzcqo1RNa+2z9PUwjyQIAxJdNYYoxFxCog4Rju9Cqd5F6ILDKI3Dq/cL
+l5JM
+=/2kk
+-----END PGP SIGNATURE-----
+
+--JbKfp9bIJSlSheR8ST4ftrNWV6Gro3UL2--
 
