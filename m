@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eWRDU-0004EJ-Qs
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2018 13:23:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46374)
+	id 1eYZRx-0004sk-4m
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2018 10:34:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38041)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eWRDS-0004E3-P4
-	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 13:23:11 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1eYZRu-0004qb-LP
+	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 10:34:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eWRDQ-0007VH-36
-	for qemu-trivial@nongnu.org; Tue, 02 Jan 2018 13:23:10 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:62878)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eWRDP-0007T0-Pt; Tue, 02 Jan 2018 13:23:08 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue003 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0Lvx61-1ezgvX3Aar-017pwQ; Tue, 02 Jan 2018 19:22:42 +0100
-To: Thomas Huth <thuth@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1514910326-31234-1-git-send-email-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <684d262d-8966-b399-707a-f0d44cb91167@vivier.eu>
-Date: Tue, 2 Jan 2018 19:22:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.0
+	(envelope-from <peter.maydell@linaro.org>) id 1eYZRt-0001HY-Nj
+	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 10:34:54 -0500
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:43480)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1eYZRt-0001Gl-IG
+	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 10:34:53 -0500
+Received: by mail-ot0-x241.google.com with SMTP id 3so1411254oty.10
+	for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2018 07:34:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=BkuDB1S+MKcRP4q69JF0p8ex07OuakmBYNF1rDn0VAs=;
+	b=CrVpOuQpTYXFn/bb5NidJ8C3zhQ7QbIjukepQG4/+uHLo6P6KYP+yqSur6ebXZQ4ko
+	vJzjmaNuDZYTcTkSqAD7UzK1iejkw4GlbzsL2Gx01plfsFIgvXth04wkY/NbRRhRB2Eg
+	vrtZHD4s3zPnlBy/lk5dAEfIr3NWqlNmp+Zhw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=BkuDB1S+MKcRP4q69JF0p8ex07OuakmBYNF1rDn0VAs=;
+	b=AU2oi2W1Zm6zW9HjlkIcJiGK7/SSrVyZ1hArzJaupdnpLPqFKOol6q2xKpdx2RMVza
+	yy5vyJqVyN+phG49nCdZkIJOtN23sH2HFrIohZmO9ji0cXDzRrtt0nr9DIJQSL+66kdR
+	HCVLUZ5/puOSACGjD292PnWLrMIN+0wf3qqkauqThQz+F1EiacNwu1beQmCi1USG1T28
+	1hm8S/gkT8+q+8us85MeFkLn/chT17SGcQjXfa5IhxeW4GwdF7z2YYcgr6GO1avtcWog
+	FU5RhVgEQbNpW//3bHD5BYuen4QewDTqIPMwxBfmQaygq0hlkF6z7Oq7gSbxsDAmB2q6
+	bJRg==
+X-Gm-Message-State: AKwxytddMz70qH3tstlEFUz3pfpg59Arng2Q2Tp1FOf+p3JTFBWMAb81
+	Z5XI6NpC28P15tu8fiT9B31CBceyguAruDhvFSjBuQ==
+X-Google-Smtp-Source: ACJfBot6fnvSnOR37/hb1MQWSR26UrFllb3Z0Ka+DVfy9C+bywDFtlca6J5AnaYyDhvw3PA4ojOK6Fcquwc9DV45ylw=
+X-Received: by 10.157.8.172 with SMTP id 41mr6476833otf.116.1515425692753;
+	Mon, 08 Jan 2018 07:34:52 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1514910326-31234-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:mXx9CyZ7CcISNtqYjOuos3Vg6LNH5feim3/ZZnyf5uEktKk0I+P
-	vhktqvt3jnaGFQIAADJV7UFnan8bbD+2l6vQrQm+hdSVhpttscqunCxtpYw68/jBX0wnOmP
-	t4PlIjbBH1v7e5VA6AmVtq0KankCBI9HHEIHQoA9lCU7rZW9PvpBhuq2DWj97oyxdPpbzdk
-	zPBSUEkQmzvZGehZlJjhA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:VpY89pl5+68=:QFZMpKhpFofCTe2YTD+w6s
-	MeNDiEadNU9ow/CRxwSnx+XS+K1yKrUfQP/jqlF0Be+6ZeG+WLFVMW24UAGP8eO5km79lRnHj
-	CtO9YIQWV2fOv4LNqSa04aYszFNtvIlyPnve0SRk2byWOXX6YthccJbiKhuE8eKErbabv2jbG
-	VHIqSPZsMV1h2d+HZxsgSOGbGpUNqaYSp3QNc/mHn/ylQ/c8iDGVqcrJ94zpWGIyxQ5QUeZNW
-	NUgdZvi66SrUQ5QEQlyE0a4oOzb85/bT7Pvwytn/B24G6XES5CToUo9O7NHLB7Y21YJLW2OFC
-	+4+yiBe4zW86xm/ZjIMOIRkQe09rV4I3U7PjPlXGEujaIYn0vjzHAQVLoBZMuq62HfUULYyNu
-	FrKhd2E8n2cF8hoSv11wDtUex0ThkhW1QiBaSn5V5VoTkG52J9OBPltutDTGqEsReP1PwShrQ
-	fRft29lVp8cy1ukPo9BX2IYx6NRah0+FbGG8HmDeFff8gYsEdxZ47PZSV0CJqmgvGW9rbeV4T
-	Xj1GTByaA6SBZ/zfzG6M89LOQDTYyo4m+IXH3HyoM+Or46bUEwqO+UljKZ4b+S8eY1uRQ0OT3
-	dDVjQq7j2snogEHVDwHAUqSLoK1pK43DST+24GFgIkRaow0Jr5fVd0tXwvhvzo4y+YJGDRzt+
-	aDb8O92d8nzfMP8SwclPycJCz3qNduNKgQdHK71qS/7kPiX7BnVvaFSBZTjUGNFKamBkQQD06
-	Hn5Y8BMc/fpDmX4+EyfDH2poMuVOdVD4qxqRyPACG6eUiUic7cJWdoSAOfcVd3HXiwZG+/rnn
-	fMO9UB1MD81taZykUOckBQISWYfCJdP3tkOVnfgPJBMOGTHSAsJXD5edVhFlOUL1zf3NiW6LZ
-	F8FgpfjksRmXtKQ6kBEqJAjmQurzfDYfGL2rGszCk=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add qemu-binfmt-conf.sh
- script
+Received: by 10.157.15.71 with HTTP; Mon, 8 Jan 2018 07:34:32 -0800 (PST)
+In-Reply-To: <23118.26328.811644.330716@guava.gson.org>
+References: <23118.26328.811644.330716@guava.gson.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Jan 2018 15:34:32 +0000
+Message-ID: <CAFEAcA_iPT14HSkMG4T43H3vykqBu=rFJpBe4idoVh9LFUEJaA@mail.gmail.com>
+To: Andreas Gustafsson <gson@gson.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Kamil Rytarowski <kamil@netbsd.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] oslib-posix: check for
+ posix_memalign in configure script
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,31 +65,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jan 2018 18:23:11 -0000
+X-List-Received-Date: Mon, 08 Jan 2018 15:34:55 -0000
 
-Le 02/01/2018 à 17:25, Thomas Huth a écrit :
-> qemu-binfmt-conf.sh is used for the Linux usermode emulation, so
-> let's add this file to that section in the MAINTAINERS file.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 4 January 2018 at 17:39, Andreas Gustafsson <gson@gson.org> wrote:
+> Check for the presence of posix_memalign() in the configure script,
+> not using "defined(_POSIX_C_SOURCE) && !defined(__sun__)".  This
+> lets qemu use posix_memalign() on NetBSD versions that have it,
+> instead of falling back to valloc() which is wasteful when the
+> required alignment is smaller than a page.
+>
+> Signed-off-by: Andreas Gustafsson <gson@gson.org>
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 73a5555..e92618f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1713,6 +1713,7 @@ R: Laurent Vivier <laurent@vivier.eu>
->  S: Maintained
->  F: linux-user/
->  F: default-configs/*-linux-user.mak
-> +F: scripts/qemu-binfmt-conf.sh
->  
->  Tiny Code Generator (TCG)
->  -------------------------
-> 
+>  configure          | 19 +++++++++++++++++++
+>  util/oslib-posix.c |  2 +-
+>  2 files changed, 20 insertions(+), 1 deletion(-)
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+Can we put this through the -trivial tree? (cc'd)
+
+thanks
+-- PMM
 
