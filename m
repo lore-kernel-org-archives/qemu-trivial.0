@@ -1,49 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eYhr6-0002LB-7F
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2018 19:33:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35768)
+	id 1eYvsV-0005lU-IT
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jan 2018 10:31:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38146)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYhr3-0002IH-SI
-	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 19:33:26 -0500
+	(envelope-from <thuth@redhat.com>) id 1eYvsR-0005hd-6P
+	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 10:31:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYhr1-0000Nq-An
-	for qemu-trivial@nongnu.org; Mon, 08 Jan 2018 19:33:25 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:36810)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eYhr0-0000NW-Qi; Mon, 08 Jan 2018 19:33:23 -0500
-Received: by mail-wm0-x244.google.com with SMTP id b76so17542207wmg.1;
-	Mon, 08 Jan 2018 16:33:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=KlmCdve/cVN0vZ3zxijjiV174ba7i7AY1fgWMYvI2aM=;
-	b=ejuEAGdAwdoTeT47L5R5QAdSEECom1C31DtKdfaWs5ZtsDULsE5rrgfXEpNqcY4m7u
-	FITjf0xHBw+LKh3DsPd/mYrsV9c7vaS1cb312Aw0DtVVnl28rPO1Dl/rMN0dQ/Ay+yur
-	Wq3S0mu/XOkR2NQMSY+wEp7aw7O6KhjqAiE/tboGXU5jKoEYVbRBsV+K3cgQTMbMeKcg
-	sy7Cim1qlrh0zmlgKkhpmTKSRcppn8lYpbbsu0JxvFvg1EeCSbgalXi5ipN7LucOaU5a
-	kmFrIaNaLDr6siakBlCBewgkzdyM5gG+weAukSTPqZ7ncmmvivN+yI4npyX/M34GIVAu
-	TAOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=KlmCdve/cVN0vZ3zxijjiV174ba7i7AY1fgWMYvI2aM=;
-	b=pxJXyPzVJPh26N9kJs+5wesm+NoW+67cVgrFfwnCik2iaBf/infSlmR82a6G4XoH5c
-	f194GRSS3rX90cPNSdUO0C1qwJyF/YsYtlMldG++GjwXdlexP7kehjdBG6O5eRDw9aLs
-	E6FGd+WHOgoxRcT7RoouuIke2ff/C9hahqtON7fE8+UagAW9/LagansQEjfF8uoYL71m
-	PEsrWO6CU2oc+gD0mrAx5pvUrtDH6RWM8Hu0HfywqIiUebxsDwHf/ADAS3l3FP8dVvGO
-	bmIgZFUogvJOId1p+MhWum2mDb8UJU4MDNboDCXf4O9YK0MPOIkRZbLXhJl1tDWFTxO4
-	oDsg==
-X-Gm-Message-State: AKGB3mKPR7srUSJ0aLijSEaXlaKazoEuCGcwIzepIUi9JyrmpX75XDAb
-	DdoBFgMHIHodGnxYbDyUwErtDNJaiw5kSqN+Np1PLfJDUas=
-X-Google-Smtp-Source: ACJfBot9iiSwRebjSo+OChnWeYNXYG70AhN2V+Y252K7djIH8iZ0xES/gwVHyLkwgOfH2jtxfYfpDKFpWOFUY9dzfR0=
-X-Received: by 10.28.208.79 with SMTP id h76mr9523465wmg.77.1515458001597;
-	Mon, 08 Jan 2018 16:33:21 -0800 (PST)
-MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.164.69 with HTTP; Mon, 8 Jan 2018 16:32:51 -0800 (PST)
-In-Reply-To: <87608k4dsh.fsf@dusky.pond.sub.org>
+	(envelope-from <thuth@redhat.com>) id 1eYvsM-000858-SV
+	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 10:31:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46690)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eYvsD-0007nR-92; Tue, 09 Jan 2018 10:31:33 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 29F64C047B98;
+	Tue,  9 Jan 2018 15:31:32 +0000 (UTC)
+Received: from [10.36.116.118] (ovpn-116-118.ams2.redhat.com [10.36.116.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 59D957FB7C;
+	Tue,  9 Jan 2018 15:31:30 +0000 (UTC)
+To: Alistair Francis <alistair.francis@xilinx.com>,
+	Markus Armbruster <armbru@redhat.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
 References: <cover.1513790494.git.alistair.francis@xilinx.com>
 	<6bad4084f4cbc290e2e9f1a72fcfcda7223383ec.1513790495.git.alistair.francis@xilinx.com>
 	<87lghulqno.fsf@dusky.pond.sub.org>
@@ -52,20 +34,24 @@ References: <cover.1513790494.git.alistair.francis@xilinx.com>
 	<87a7yah5ea.fsf@dusky.pond.sub.org>
 	<CAKmqyKO5sKdiZJ65teDxa16PCE71WCLay7cOAQJQdyS-EVNOJg@mail.gmail.com>
 	<87608k4dsh.fsf@dusky.pond.sub.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 8 Jan 2018 16:32:51 -0800
-X-Google-Sender-Auth: DDtYIhOfMHXLX15Au4LaJKcU1_0
-Message-ID: <CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
+	<CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <5b3489d6-de5e-27ff-8981-a3dc50794696@redhat.com>
+Date: Tue, 9 Jan 2018 16:31:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <CAKmqyKMz2tfJwu0Q5joHm99QLbJ-psU=sSgDQtLuFKjyKRmO-A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 09 Jan 2018 15:31:32 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 04/29] hw/arm: Replace
  fprintf(stderr, "*\n" with error_report()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,107 +65,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jan 2018 00:33:27 -0000
+X-List-Received-Date: Tue, 09 Jan 2018 15:31:48 -0000
 
-On Tue, Jan 2, 2018 at 4:59 AM, Markus Armbruster <armbru@redhat.com> wrote:
-> Alistair Francis <alistair.francis@xilinx.com> writes:
->
->> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.com> wrote:
->>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>
->>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wrote:
->>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
->>>>>> Second thoughts...
->>>>>>
->>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
->>>>> [...]
->>>>>>>  #include "qemu/osdep.h"
->>>>>>> +#include "qemu/error-report.h"
->>>>>>>  #include "qapi/error.h"
->>>>>>>  #include "qemu-common.h"
->>>>>>>  #include "cpu.h"
->>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct omap_prcm_s *s)
->>>>>>>      /* TODO: update clocks */
->>>>>>>
->>>>>>>      if (mode[0] == 1 || mode[0] == 2 || mode[1] == 1 || mode[1] == 2)
->>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n",
->>>>>>> -                        __func__);
->>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
->>>>>>> +                     __func__);
->>>>>>>  }
->>>>>>
->>>>>> This one's different: we neither exit() nor return a "failed" status to
->>>>>> the caller.
->>>>>>
->>>>>> We get here when the guest writes something funny to a certain
->>>>>> memory-mapped I/O register.  In other words, it's guest misbehavior, not
->>>>>> a user error.  I doubt it should be reported with error_report().
->>>>>> Peter, do we have a canonical way to report or log  guest misbehavior?
->>>>>
->>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
->>>>
->>>> That seems like the best option to me.
->>>
->>> Suggest:
->>>
->>> 1. Keep converting fatal errors (the ones that exit())
->>>
->>> 2. Keep converting recoverable errors (the ones that return failure)
->>>
->>> 3. You can leave the prints that are neither alone.  You can also
->>>    convert to logging or tracing, as appropriate, but that requires
->>>    understanding the code.
->>>
->>> Makes sense?
+On 09.01.2018 01:32, Alistair Francis wrote:
+> On Tue, Jan 2, 2018 at 4:59 AM, Markus Armbruster <armbru@redhat.com> w=
+rote:
+>> Alistair Francis <alistair.francis@xilinx.com> writes:
 >>
->> Does this apply to new patches after this series or to this series as
->> well? The series is mostly just mechanical find/replace. I really
->> don't want to have to dig through every patch to figure out what to
->> change/not change.
->
-> I understand your reluctance to sort patch hunks into buckets 1., 2. and
-> 3. manually: there's an awful lot of hunks to sort.
->
-> We know we have many fprintf() that should be error_report(),
-> error_setg(), logging or tracing.
->
-> We know we have error_report() that should be error_setg().
->
-> Converting fprintf() to error_report() where we should really use
-> something else makes the situation worse, I'm afraid.
->
-> Since we need to sort, and sorting manually isn't practical, we need to
-> automate.
->
-> The patterns to recognize are 1. fprintf() followed by exit() and
-> 2. fprintf() followed by return failure.
->
-> Recognizing the patterns when there's stuff between fprintf() and exit()
-> / return may exceed sed's power.  Feels like a Coccinelle job to me.
-> Let's focus on the common case where exit() / return follows fprintf()
-> immediately.
->
-> Let's start with the easiest case: exit().  I figure that's still in
-> reach of your find + sed tooling.
->
-> Recognizing "return failure" is slightly harder, because error values
-> aren't always obvious.  Common ones are return NULL, return -1, return
-> -EFOO.
->
-> I hope that peeling off truly simple cases like this will reduce the
-> remaining hunks sufficiently to permit manual review.  If it doesn't, we
-> should still get a major part of your work without making the situation
-> worse.
+>>> On Fri, Dec 22, 2017 at 12:30 PM, Markus Armbruster <armbru@redhat.co=
+m> wrote:
+>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>>>>
+>>>>> On Fri, Dec 22, 2017 at 9:17 AM, Thomas Huth <thuth@redhat.com> wro=
+te:
+>>>>>> On 22.12.2017 16:37, Markus Armbruster wrote:
+>>>>>>> Second thoughts...
+>>>>>>>
+>>>>>>> Alistair Francis <alistair.francis@xilinx.com> writes:
+>>>>>> [...]
+>>>>>>>>  #include "qemu/osdep.h"
+>>>>>>>> +#include "qemu/error-report.h"
+>>>>>>>>  #include "qapi/error.h"
+>>>>>>>>  #include "qemu-common.h"
+>>>>>>>>  #include "cpu.h"
+>>>>>>>> @@ -1311,8 +1312,8 @@ static void omap_prcm_apll_update(struct o=
+map_prcm_s *s)
+>>>>>>>>      /* TODO: update clocks */
+>>>>>>>>
+>>>>>>>>      if (mode[0] =3D=3D 1 || mode[0] =3D=3D 2 || mode[1] =3D=3D =
+1 || mode[1] =3D=3D 2)
+>>>>>>>> -        fprintf(stderr, "%s: bad EN_54M_PLL or bad EN_96M_PLL\n=
+",
+>>>>>>>> -                        __func__);
+>>>>>>>> +        error_report("%s: bad EN_54M_PLL or bad EN_96M_PLL",
+>>>>>>>> +                     __func__);
+>>>>>>>>  }
+>>>>>>>
+>>>>>>> This one's different: we neither exit() nor return a "failed" sta=
+tus to
+>>>>>>> the caller.
+>>>>>>>
+>>>>>>> We get here when the guest writes something funny to a certain
+>>>>>>> memory-mapped I/O register.  In other words, it's guest misbehavi=
+or, not
+>>>>>>> a user error.  I doubt it should be reported with error_report().
+>>>>>>> Peter, do we have a canonical way to report or log  guest misbeha=
+vior?
+>>>>>>
+>>>>>> qemu_log_mask(LOG_GUEST_ERROR, ...) ?
+>>>>>
+>>>>> That seems like the best option to me.
+>>>>
+>>>> Suggest:
+>>>>
+>>>> 1. Keep converting fatal errors (the ones that exit())
+>>>>
+>>>> 2. Keep converting recoverable errors (the ones that return failure)
+>>>>
+>>>> 3. You can leave the prints that are neither alone.  You can also
+>>>>    convert to logging or tracing, as appropriate, but that requires
+>>>>    understanding the code.
+>>>>
+>>>> Makes sense?
+>>>
+>>> Does this apply to new patches after this series or to this series as
+>>> well? The series is mostly just mechanical find/replace. I really
+>>> don't want to have to dig through every patch to figure out what to
+>>> change/not change.
+>>
+>> I understand your reluctance to sort patch hunks into buckets 1., 2. a=
+nd
+>> 3. manually: there's an awful lot of hunks to sort.
+>>
+>> We know we have many fprintf() that should be error_report(),
+>> error_setg(), logging or tracing.
+>>
+>> We know we have error_report() that should be error_setg().
+>>
+>> Converting fprintf() to error_report() where we should really use
+>> something else makes the situation worse, I'm afraid.
+>>
+>> Since we need to sort, and sorting manually isn't practical, we need t=
+o
+>> automate.
+>>
+>> The patterns to recognize are 1. fprintf() followed by exit() and
+>> 2. fprintf() followed by return failure.
+>>
+>> Recognizing the patterns when there's stuff between fprintf() and exit=
+()
+>> / return may exceed sed's power.  Feels like a Coccinelle job to me.
+>> Let's focus on the common case where exit() / return follows fprintf()
+>> immediately.
+>>
+>> Let's start with the easiest case: exit().  I figure that's still in
+>> reach of your find + sed tooling.
+>>
+>> Recognizing "return failure" is slightly harder, because error values
+>> aren't always obvious.  Common ones are return NULL, return -1, return
+>> -EFOO.
+>>
+>> I hope that peeling off truly simple cases like this will reduce the
+>> remaining hunks sufficiently to permit manual review.  If it doesn't, =
+we
+>> should still get a major part of your work without making the situatio=
+n
+>> worse.
+>=20
+> Ok. So it is becoming apparent that this series is not going to be
+> accepted. I might just drop it and try and re-group with Coccinelle at
+> some point in the future.
+>=20
+> If there is a subset of this series that is fine to go in I'm happy to
+> rebase and keep going, but at the moment it looks like starting again
+> is gong to be the least painful effort.
 
-Ok. So it is becoming apparent that this series is not going to be
-accepted. I might just drop it and try and re-group with Coccinelle at
-some point in the future.
+Sorry to hear that. But I somewhat agree with Markus - lots of the
+patches were not trivial and need close review to see whether the
+fprintf should be replaced with error_report, warn_report, qemu_log_mask
+or a tracepoint, so primary blindly converting everything to
+error_report is really just the wrong way.
 
-If there is a subset of this series that is fine to go in I'm happy to
-rebase and keep going, but at the moment it looks like starting again
-is gong to be the least painful effort.
+If I may suggest something: Don't send the patches as a huge series, but
+send single patches (that you've reviewed on your own first), with the
+individual subsystem maintainers in CC. That should help to get better
+review, and the single patches then have a higher chance to get picked
+up through the maintainers' trees.
 
-Alistair
-
->
+ Thomas
 
