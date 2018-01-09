@@ -1,67 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eYyLr-0002pF-A0
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jan 2018 13:10:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52810)
+	id 1eZ0tJ-0007Ld-AM
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jan 2018 15:53:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYyLo-0002lj-Gw
-	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 13:10:17 -0500
+	(envelope-from <eblake@redhat.com>) id 1eZ0tG-0007JN-9C
+	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 15:52:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eYyLn-0007UD-Am
-	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 13:10:16 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:40673)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eYyLk-0007RZ-Ao; Tue, 09 Jan 2018 13:10:12 -0500
-Received: by mail-wm0-x243.google.com with SMTP id f206so22329880wmf.5;
-	Tue, 09 Jan 2018 10:10:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=Y2LHrcCDq5TuSRWFl8sFjD2rjZV6GvJUowLDOyJ7uZs=;
-	b=rAWx7Gd3hUuIfG/uy9oCRNGcSlKD3E4eL6oKg35h9a5atbUywuxQU5XEXZW+qzLq1a
-	ouKADCUlxBtiV0yN+r/wloLCRbimSrm4bsA5v4649sMahy1IaVu180uhCufSlPm1LrWV
-	laZE4TSs//AsZQl+cVba2k8tCVlEDa4qXIEBnawkxT6znj+EunrzFZQxkqSCFjggtvtY
-	uLDEpCVVEcjZgfCbAL0kP6zj7FEQakuPB9GyZclRhjCJbTgLEuPIELaMNRZgylJsRU2W
-	k3B86FXy2iPIZq9JFhkZYtF2+56SLXnfhbW8cZxsvxKYokcDruHRcZ14wDHm1RE0Ih/e
-	ZYtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=Y2LHrcCDq5TuSRWFl8sFjD2rjZV6GvJUowLDOyJ7uZs=;
-	b=GJa25nR6BMsJ9+Ca2DQc+DpcrRH0tseSUXzZWGXoC7cr2EQWq2KmNP57F7ra0MZ8m6
-	nW/Jgl08gxE1NYumc2MSba95iQJQemPH5Aml4qNYUz9ia18/fNhSolymQ2mgLEfqIW6U
-	gzgPYAYardMNj3OZaSWes6VD29BjuB6N2fPxgyEXQEIU1jgHegZ15zcamPUaDQ3bid9d
-	B5ASzgnKBU6F7TfEVC+Jpby5M9QkqTQsXpx8UQ8oAq8yCxSbsjt56CvhtngBHrypS/4Z
-	5yPZ3iZ+ndtOJVkhGo57U5C97Jt8uonWpCbwy29n7OvMTw2QNEcyABrI3Lf2tGfLU8jc
-	Jzhw==
-X-Gm-Message-State: AKGB3mLHYJxXcPEa1s2QuoRzDeS6uGPyWg11TN/9MQD3LwVv3Q3bU9RP
-	n13GUogrVeRSsFwF0n29Y3LPdmQarYqtSLYchlE=
-X-Google-Smtp-Source: ACJfBouWCY37VLtV/o0B7SavwwFvvSil2lbomkPbcBR0f7Y1XV+BdMjQGSdX+n8j0znBnVPtzubx5gaR24Q1n269IUo=
-X-Received: by 10.28.55.74 with SMTP id e71mr13434868wma.50.1515521411198;
-	Tue, 09 Jan 2018 10:10:11 -0800 (PST)
+	(envelope-from <eblake@redhat.com>) id 1eZ0tF-0005qP-5S
+	for qemu-trivial@nongnu.org; Tue, 09 Jan 2018 15:52:58 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38088)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eZ0tA-0005kq-Lx; Tue, 09 Jan 2018 15:52:52 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 72F50780F0;
+	Tue,  9 Jan 2018 20:52:51 +0000 (UTC)
+Received: from [10.10.124.124] (ovpn-124-124.rdu2.redhat.com [10.10.124.124])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 79EDB620A5;
+	Tue,  9 Jan 2018 20:52:50 +0000 (UTC)
+To: qemu-devel@nongnu.org
+References: <20171201232433.25193-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, armbru@redhat.com
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <3323b23f-ad82-fff5-26cb-bf4c9622c36d@redhat.com>
+Date: Tue, 9 Jan 2018 14:52:44 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.0
 MIME-Version: 1.0
-Sender: alistair23@gmail.com
-Received: by 10.28.164.69 with HTTP; Tue, 9 Jan 2018 10:09:40 -0800 (PST)
-In-Reply-To: <20180109184523.3d0aab51.cohuck@redhat.com>
-References: <cover.1513790494.git.alistair.francis@xilinx.com>
-	<3f49c0ff601f27534d4536c87c00d01c233e067f.1513790495.git.alistair.francis@xilinx.com>
-	<20180109184523.3d0aab51.cohuck@redhat.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 9 Jan 2018 10:09:40 -0800
-X-Google-Sender-Auth: IN14lmWeXiENk5mLI1Lmi4ea5gI
-Message-ID: <CAKmqyKN9HVzOfRK57keymYHe1k31sQE1WMTEUGVgawkOxug2RQ@mail.gmail.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Markus Armbruster <armbru@redhat.com>, qemu-s390x@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v6 21/29] hw/s390x: Replace
- fprintf(stderr, "*\n" with error_report()
+In-Reply-To: <20171201232433.25193-1-eblake@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="64hBCI1K9HMN0RpgvyYCUsQLYjFTNpNSe"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 09 Jan 2018 20:52:51 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/7] macro do/while (0)
+ cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,89 +56,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jan 2018 18:10:17 -0000
+X-List-Received-Date: Tue, 09 Jan 2018 20:52:59 -0000
 
-On Tue, Jan 9, 2018 at 9:45 AM, Cornelia Huck <cohuck@redhat.com> wrote:
-> On Wed, 20 Dec 2017 09:24:41 -0800
-> Alistair Francis <alistair.francis@xilinx.com> wrote:
->
->> Replace a large number of the fprintf(stderr, "*\n" calls with
->> error_report(). The functions were renamed with these commands and then
->> compiler issues where manually fixed.
->>
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->> find ./* -type f -exec sed -i \
->>     'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
->>     {} +
->>
->> Some lines where then manually tweaked to pass checkpatch.
->>
->> One fprintf(stderr, was manually converted to a
->> qemu_log_mask(LOG_GUEST_ERROR,
->>
->> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
->> ---
->> V3:
->>  - Use a qemu_log_mask(LOG_GUEST_ERROR,
->> V2:
->>  - Split hw patch into individual directories
->>
->>  hw/s390x/virtio-ccw.c | 5 +++--
->>  1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
->> index 38f6a8afc9..3d8f26949b 100644
->> --- a/hw/s390x/virtio-ccw.c
->> +++ b/hw/s390x/virtio-ccw.c
->> @@ -426,8 +426,9 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
->>                   * passes us zeroes for those we don't support.
->>                   */
->>                  if (features.features) {
->> -                    fprintf(stderr, "Guest bug: features[%i]=%x (expected 0)\n",
->> -                            features.index, features.features);
->> +                    qemu_log_mask(LOG_GUEST_ERROR,
->> +                                  "Guest bug: features[%i]=%x (expected 0)",
->> +                                  features.index, features.features);
->>                      /* XXX: do a unit check here? */
->>                  }
->>              }
->
-> I'll queue this to s390-next so this doesn't get lost.
->
-> I'll also tweak the commit message, as nothing is converted to
-> error_report().
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--64hBCI1K9HMN0RpgvyYCUsQLYjFTNpNSe
+Content-Type: multipart/mixed; boundary="XkEMyrBFhsUV7Es6BWl1qR8SaobuRJWFz";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, armbru@redhat.com
+Message-ID: <3323b23f-ad82-fff5-26cb-bf4c9622c36d@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v2 0/7] macro do/while (0) cleanup
+References: <20171201232433.25193-1-eblake@redhat.com>
+In-Reply-To: <20171201232433.25193-1-eblake@redhat.com>
 
-Thanks!
+--XkEMyrBFhsUV7Es6BWl1qR8SaobuRJWFz
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Alistair
+ping
+
+On 12/01/2017 05:24 PM, Eric Blake wrote:
+> Noticed this by chance in the tests/ directory, so I broadened
+> it to a grep of the entire code base.  I suspect^wKNOW many of
+> the bad macros were the victims of copy-and-paste from some
+> other bad location (particularly given how many bit-rotten
+> debug print macros were involved).
+>=20
+> https://wiki.qemu.org/BiteSizedTasks#Bitrot_prevention is still
+> left for someone else, for another day.
+>=20
+> In v2:
+> - add review tags
+> - audit that the maint patch has no semantic change (all callers
+> were indeed supplying ';' at the macro call-sites)
+> - improved commit messages
+> - more patches for some additional cleanups
+> - tighten the checkpatch rule to also flag 'while (false);'
+>=20
+> Eric Blake (7):
+>   net: Drop unusual use of do { } while (0);
+>   mips: Tweak location of ';' in macros
+>   chardev: Use goto/label instead of do/break/while(0)
+>   chardev: Clean up previous patch indentation
+>   tests: Avoid 'do/while(false);' in vhost-user-bridge
+>   maint: Fix macros with broken 'do/while(0);' usage
+>   checkpatch: Enforce proper do/while (0) style
+>=20
+>  tests/acpi-utils.h         |  8 ++---
+>  ui/sdl_zoom_template.h     |  8 ++---
+>  audio/paaudio.c            |  4 +--
+>  chardev/char-serial.c      | 75 ++++++++++++++++++++++++--------------=
+--------
+>  hw/adc/stm32f2xx_adc.c     |  2 +-
+>  hw/block/m25p80.c          |  2 +-
+>  hw/char/cadence_uart.c     |  2 +-
+>  hw/char/stm32f2xx_usart.c  |  2 +-
+>  hw/display/cg3.c           |  2 +-
+>  hw/display/dpcd.c          |  2 +-
+>  hw/display/xlnx_dp.c       |  2 +-
+>  hw/dma/pl330.c             |  2 +-
+>  hw/dma/xlnx-zynq-devcfg.c  |  2 +-
+>  hw/dma/xlnx_dpdma.c        |  2 +-
+>  hw/i2c/i2c-ddc.c           |  2 +-
+>  hw/misc/auxbus.c           |  2 +-
+>  hw/misc/macio/mac_dbdma.c  |  4 +--
+>  hw/misc/mmio_interface.c   |  2 +-
+>  hw/misc/stm32f2xx_syscfg.c |  2 +-
+>  hw/misc/zynq_slcr.c        |  2 +-
+>  hw/net/cadence_gem.c       |  2 +-
+>  hw/net/pcnet.c             | 20 ++++++-------
+>  hw/ssi/mss-spi.c           |  2 +-
+>  hw/ssi/stm32f2xx_spi.c     |  2 +-
+>  hw/ssi/xilinx_spi.c        |  2 +-
+>  hw/ssi/xilinx_spips.c      |  2 +-
+>  hw/timer/a9gtimer.c        |  2 +-
+>  hw/timer/cadence_ttc.c     |  2 +-
+>  hw/timer/mss-timer.c       |  2 +-
+>  hw/timer/stm32f2xx_timer.c |  2 +-
+>  hw/tpm/tpm_passthrough.c   |  2 +-
+>  hw/tpm/tpm_tis.c           |  2 +-
+>  migration/rdma.c           |  2 +-
+>  target/arm/translate-a64.c |  2 +-
+>  target/mips/msa_helper.c   | 34 +++++++++++----------
+>  target/s390x/kvm.c         |  2 +-
+>  tests/tcg/test-mmap.c      |  2 +-
+>  tests/vhost-user-bridge.c  |  6 ++--
+>  scripts/checkpatch.pl      |  5 ++++
+>  39 files changed, 119 insertions(+), 105 deletions(-)
+>=20
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--XkEMyrBFhsUV7Es6BWl1qR8SaobuRJWFz--
+
+--64hBCI1K9HMN0RpgvyYCUsQLYjFTNpNSe
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlpVK5wACgkQp6FrSiUn
+Q2oi1QgAgHGfkA0BBrrr6tim11chBKKJmsfdwTfwW4ND6CB2w7kKzvnS/DsB2yy9
+TdOA0T3VgTsSSDZYVoviAJF6AjoS0WxbH1PydAI7SD9gR4tBdXHvsQemjxz97/ZA
+J7yPIlGNegc7WKkx8Pdcf4N5UnhTz+y/dczpHRbXwPICzmw/GDuQHg1A6x2OFZrt
+r1/YvBFk5IomzZdYLoxLOzMcgSUMfCe9JivgrJwrflaB2/4LabxD1MJ6z1Eb1O+U
+b3z7k8KiJAI5nY0ghd3I8LKh7fmfGhXyUyAampmqY2ZP/8pgkdF01ZjcicR4jBev
+MxtUHvdidedpaFTyFdJqyqnW2pPT8g==
+=6uQH
+-----END PGP SIGNATURE-----
+
+--64hBCI1K9HMN0RpgvyYCUsQLYjFTNpNSe--
 
