@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eZKmL-0003Bz-G3
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jan 2018 13:07:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33356)
+	id 1eZdjm-000186-4Y
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2018 09:21:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53049)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eZKmJ-0003Ai-1J
-	for qemu-trivial@nongnu.org; Wed, 10 Jan 2018 13:07:07 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1eZdjj-00014k-0z
+	for qemu-trivial@nongnu.org; Thu, 11 Jan 2018 09:21:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1eZKmI-0004qb-3v
-	for qemu-trivial@nongnu.org; Wed, 10 Jan 2018 13:07:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43760)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1eZKmD-0004nO-O9; Wed, 10 Jan 2018 13:07:01 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B60A75C9D0;
-	Wed, 10 Jan 2018 18:06:55 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-117-81.ams2.redhat.com [10.36.117.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A18B665608;
-	Wed, 10 Jan 2018 18:06:49 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
+	(envelope-from <mjt@tls.msk.ru>) id 1eZdji-0003V5-76
+	for qemu-trivial@nongnu.org; Thu, 11 Jan 2018 09:21:43 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:36437)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1eZdjc-0003FA-2h; Thu, 11 Jan 2018 09:21:36 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 44C314093E;
+	Thu, 11 Jan 2018 17:21:27 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 15B76E09;
+	Thu, 11 Jan 2018 17:21:27 +0300 (MSK)
+Received: (nullmailer pid 17078 invoked by uid 1000);
+	Thu, 11 Jan 2018 14:21:27 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-trivial@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Date: Wed, 10 Jan 2018 19:06:48 +0100
-Message-Id: <1515607608-18250-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 10 Jan 2018 18:06:55 +0000 (UTC)
+Date: Thu, 11 Jan 2018 17:21:25 +0300
+Message-Id: <20180111142125.17034-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] ui/sdl2: Ignore key repeats for shortcut keys
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PATCH trivial] qapi-schema.json: spelling
+ (independant comparation)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,34 +44,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jan 2018 18:07:08 -0000
+X-List-Received-Date: Thu, 11 Jan 2018 14:21:45 -0000
 
-Holding down a shortcut key currently continuesly triggers the shortcut
-event, e.g. holding CTRL-ALT-f continuesly switches between windowed and
-fullscreen mode, or holding CTRL-ALT-u even crashes QEMU with a segfault.
-This is ugly, we should rather ignore automatic key repeats when handling
-the keyboard shortcuts.
-
-Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- ui/sdl2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qapi-schema.json | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/ui/sdl2.c b/ui/sdl2.c
-index 8718cf3..18664b4 100644
---- a/ui/sdl2.c
-+++ b/ui/sdl2.c
-@@ -349,7 +349,7 @@ static void handle_keydown(SDL_Event *ev)
-     }
-     gui_key_modifier_pressed = mod_state;
- 
--    if (gui_key_modifier_pressed) {
-+    if (gui_key_modifier_pressed && !ev->key.repeat) {
-         switch (ev->key.keysym.scancode) {
-         case SDL_SCANCODE_2:
-         case SDL_SCANCODE_3:
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 5c06745c79..0262b9f20b 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -2023,7 +2023,7 @@
+ #
+ # @static: Expand to a static CPU model, a combination of a static base
+ #          model name and property delta changes. As the static base model will
+-#          never change, the expanded CPU model will be the same, independant of
++#          never change, the expanded CPU model will be the same, independent of
+ #          independent of QEMU version, machine type, machine options, and
+ #          accelerator options. Therefore, the resulting model can be used by
+ #          tooling without having to specify a compatibility machine - e.g. when
+@@ -2102,7 +2102,7 @@
+ ##
+ # @CpuModelCompareResult:
+ #
+-# An enumeration of CPU model comparation results. The result is usually
++# An enumeration of CPU model comparison results. The result is usually
+ # calculated using e.g. CPU features or CPU generations.
+ #
+ # @incompatible: If model A is incompatible to model B, model A is not
 -- 
-1.8.3.1
+2.11.0
 
 
