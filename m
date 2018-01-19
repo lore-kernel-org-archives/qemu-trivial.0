@@ -1,59 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ecVbT-0007zL-Nf
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jan 2018 07:17:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49173)
+	id 1ecXlI-0001z2-AF
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jan 2018 09:35:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1ecVbR-0007xf-46
-	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 07:17:02 -0500
+	(envelope-from <eblake@redhat.com>) id 1ecXlC-0001uN-Bb
+	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 09:35:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1ecVbM-0007T6-4d
-	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 07:17:01 -0500
-Received: from mail-wr0-f195.google.com ([209.85.128.195]:41368)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1ecVbL-0007SU-UJ; Fri, 19 Jan 2018 07:16:56 -0500
-Received: by mail-wr0-f195.google.com with SMTP id o7so1393446wro.8;
-	Fri, 19 Jan 2018 04:16:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=M7RyJFO+8vp+53BZtJho1ure2PokD0y0Vc+njQUJ8o8=;
-	b=t8wn38DMpYphd/fd6ntbeUtCZJIpco5DyHq/2eGgsCgmy7lFSDuGCrgO5ciTiNwNej
-	4TBmIdd/T83Sbvrb7KbK/k7+2PjPY/hVaB86OxKO90IvzWo/tvo3xQ6RbkG4vRRFW8GN
-	szTbIiWuHhLo1YwZB8bZVyI6DB05Ds9vEjsPXm5gdKFk367SxBOyymAY0Y5GtW86ib4L
-	oVIaJd6EH1FTfVGhTmKGjll7H81ieQyHPk2TsMaJ8hkBr1qz+uJHVKhCxIjS+yJYf1kp
-	MgXDuCPRkQr7oGgG2d05KvzyRUFg2RrnWznTc3t0yFHHUVDHSiu6MbbtJfIpEaEfoqfa
-	XC6Q==
-X-Gm-Message-State: AKwxytcIjBgnUGGPWkqD3HgmVlkeeYxvQtoUXP3CXmONnuyQs88zDr+X
-	FiaSUvofjT0D+8A4ryiqCwI=
-X-Google-Smtp-Source: ACJfBot4FIvnryKWTjl1e/o6GMsSMvCCUSUfQokC2IeBqxcVI/nTSMJgxfvV2q8AFkqasm8PveWa8Q==
-X-Received: by 10.223.158.5 with SMTP id u5mr2323261wre.197.1516364214669;
-	Fri, 19 Jan 2018 04:16:54 -0800 (PST)
-Received: from [192.168.178.23] (pD9E83675.dip0.t-ipconnect.de.
-	[217.232.54.117])
-	by smtp.gmail.com with ESMTPSA id r3sm1809416wmg.31.2018.01.19.04.16.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 19 Jan 2018 04:16:54 -0800 (PST)
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-References: <20180119114444.7590-1-laurent@vivier.eu>
-From: Thomas Huth <huth@tuxfamily.org>
-Message-ID: <d3d62aeb-435b-86eb-15a6-fa96f6e28d4c@tuxfamily.org>
-Date: Fri, 19 Jan 2018 13:16:52 +0100
+	(envelope-from <eblake@redhat.com>) id 1ecXlB-0003qh-Gx
+	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 09:35:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46710)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ecXl1-0003W4-Ce; Fri, 19 Jan 2018 09:35:03 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 81698C07F9A9;
+	Fri, 19 Jan 2018 14:35:02 +0000 (UTC)
+Received: from [10.10.126.198] (ovpn-126-198.rdu2.redhat.com [10.10.126.198])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2AB2580D9D;
+	Fri, 19 Jan 2018 14:34:58 +0000 (UTC)
+To: Laurent Vivier <lvivier@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>
+References: <20180119103233.26075-1-lvivier@redhat.com>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-devel@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <35f2a7e0-7926-f3b5-017f-ad769eff854d@redhat.com>
+Date: Fri, 19 Jan 2018 08:34:57 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180119114444.7590-1-laurent@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20180119103233.26075-1-lvivier@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="Hro2GlSoQ4hGMFtxKbWPtkz7ZutmTIc1r"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 19 Jan 2018 14:35:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.195
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/m68k: fix TCG
- variable double free
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: fix typo in error
+ message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,29 +58,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jan 2018 12:17:02 -0000
+X-List-Received-Date: Fri, 19 Jan 2018 14:35:18 -0000
 
-On 19.01.2018 12:44, Laurent Vivier wrote:
-> t64 is also unconditionally freed after the switch () { ... }
-> 
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Hro2GlSoQ4hGMFtxKbWPtkz7ZutmTIc1r
+Content-Type: multipart/mixed; boundary="Kc8fzxD92mZCV2e9VKxCrhDAJq8rhGB0w";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-devel@nongnu.org
+Message-ID: <35f2a7e0-7926-f3b5-017f-ad769eff854d@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] build: fix typo in error message
+References: <20180119103233.26075-1-lvivier@redhat.com>
+In-Reply-To: <20180119103233.26075-1-lvivier@redhat.com>
+
+--Kc8fzxD92mZCV2e9VKxCrhDAJq8rhGB0w
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 01/19/2018 04:32 AM, Laurent Vivier wrote:
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 > ---
->  target/m68k/translate.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-> index f0e86a73d4..ea18df940a 100644
-> --- a/target/m68k/translate.c
-> +++ b/target/m68k/translate.c
-> @@ -969,7 +969,6 @@ static void gen_load_fp(DisasContext *s, int opsize, TCGv addr, TCGv_ptr fp)
->      case OS_DOUBLE:
->          tcg_gen_qemu_ld64(t64, addr, index);
->          gen_helper_extf64(cpu_env, fp, t64);
-> -        tcg_temp_free_i64(t64);
->          break;
->      case OS_EXTENDED:
->          if (m68k_feature(s->env, M68K_FEATURE_CF_FPU)) {
-> 
+>  scripts/git-submodule.sh | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+Duplicate of:
+https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg04178.html
+https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg03875.html
+https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg03798.html
+
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
+
+
+--Kc8fzxD92mZCV2e9VKxCrhDAJq8rhGB0w--
+
+--Hro2GlSoQ4hGMFtxKbWPtkz7ZutmTIc1r
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlpiAhEACgkQp6FrSiUn
+Q2qBLwgAqhHSnY/hZpEGDJpEob4YWjWGEBxviPfLntj7I5qiCAEki7SQrc9rke44
+XEAtXOYKlcyGsFZ7BT8C4RcWACiLvoi5LkmLhMaNgvz/uGIlRz1pCMK7TyJbWgF9
+SfXEK2fSE86PJWhwtZ9qgyRIyGmBz4sMpexRvPApm4samr84RyqsRS8ejIYV3WiW
+wPnVIZuZZRkk+UfptKxUokPoCpBQtAdZi8u4UohnbkmTNYk2pM5BMxByDBCYVQBx
+fDGAVZE688i/RBQnY9hRaoBos81kKNXyu36vAzoFCRPUqP9uJb3r+WAOUNCzgw66
+Bww0EE9bu1v9yyI+39bE/J3vfV8fhg==
+=dnkU
+-----END PGP SIGNATURE-----
+
+--Hro2GlSoQ4hGMFtxKbWPtkz7ZutmTIc1r--
 
