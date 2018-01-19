@@ -1,58 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ecZfH-0007zM-Ux
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jan 2018 11:37:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46718)
+	id 1ecfBq-00075n-La
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jan 2018 17:31:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57348)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ecZfF-0007wh-7R
-	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 11:37:13 -0500
+	(envelope-from <jsnow@redhat.com>) id 1ecfBo-000742-VB
+	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 17:31:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ecZfB-00082l-8V
-	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 11:37:13 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:51181)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ecZfA-00082V-UY; Fri, 19 Jan 2018 11:37:09 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue103 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0LsNui-1ennys3I2y-011xLs; Fri, 19 Jan 2018 17:37:06 +0100
-To: Marco A L Barbosa <malbarbo@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <20180111183714.22834-2-malbarbo@gmail.com>
-	<CAFEAcA9Qo8uQ10FHP7XfuC+sgb4i8e_fxo7EvZGtVVWddqpxVA@mail.gmail.com>
-	<CAHpsRN8rkMpcNmwwjpDFD3LDogZzCUqbitH-fHHWomc+GupLKw@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <1ad70940-1a7f-1645-ed9d-6556c404b36c@vivier.eu>
-Date: Fri, 19 Jan 2018 17:37:05 +0100
+	(envelope-from <jsnow@redhat.com>) id 1ecfBo-0004Xk-7k
+	for qemu-trivial@nongnu.org; Fri, 19 Jan 2018 17:31:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36602)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1ecfBg-0004Qm-A2; Fri, 19 Jan 2018 17:31:04 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 61FEAC056826;
+	Fri, 19 Jan 2018 22:31:03 +0000 (UTC)
+Received: from [10.18.17.231] (dhcp-17-231.bos.redhat.com [10.18.17.231])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B10425D9CC;
+	Fri, 19 Jan 2018 22:31:02 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
+References: <1512457825-3847-1-git-send-email-thuth@redhat.com>
+	<ee0ee3e4-f8d4-048f-b772-49d15ada4254@redhat.com>
+	<2b2dd271-451c-04cb-044e-ee5b8619559e@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <e2628195-8f80-fbc8-474d-fb7c54570d11@redhat.com>
+Date: Fri, 19 Jan 2018 17:31:02 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <CAHpsRN8rkMpcNmwwjpDFD3LDogZzCUqbitH-fHHWomc+GupLKw@mail.gmail.com>
+In-Reply-To: <2b2dd271-451c-04cb-044e-ee5b8619559e@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:n0czJfzMrqnE0ZBxIZONYodDr6owgOzcfmAmOG2GxIHXpz10Lur
-	MQV1N3RsvY+jw73FHl1Xv9AqdulaeS7hA4qs4ZDf+5CPo9hQyT0/cwRofIOweuiaiwVGDAq
-	RzxeW+yyhX+W2BiSOFIRhvdC0+DT+cv2gIB0HwhM2di0h/v2JcrCjSEdXXRVmMv5/fgy3BG
-	/kgYYkEEhX7tPJRt6k8OQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:g3UGF9eKmWA=:ibbM/IcxWt+u3xARsIewj8
-	1M3CqnNlx8FC5jdvDxb05lqr1O0/wY+IWj91l4rZjAQYZUpKm+c1USH1uZeZ4NhviHulErt4u
-	Gpg6ffMaxsdVIu3NxzhgxPMiUFbfqVwqSUPN+xFawLVtc/Xff1HkYLVj+LUcDTkXsukCEVG/Y
-	O6z5bIkNr2fqeRqp8NM/A0PNhAkJHysKeQvycCS5rObLWSpgmQiGO9aL78RMrxED72t458e9k
-	IFMtW9755gM6BPbWKv601J3Bh/yu2ytvIq03j6Mb1M+3sOwvI/AGrkZLPELdobDTpSeIrN5eA
-	rqvLuAgGCEvitJ4BSBm8AUows7R3D7ZEiDL8iH6SE0+xl4I/o0aYeI0s+B9KAleBlJZGt/6e1
-	knOqCIKyIRpK0YuT5lbTw3IEuD7e5pagills5315Gs6dzt6ktdr05zsQwPN18aq07e7KPYhbi
-	z31P2GKqL/N0TyppFRKXkkaP4gtOHqKpIcA2THtucIHhvBOCQzrrmLZbGA1gkIlx6F9EtU00A
-	C6mlotLif/TuaA6kEVP7MQlSQ1j88p3C+xFkBKJo/uSaTjHS3eTbtzPOg9Bt5JzkHbmSX58X9
-	Exea+1lMUWRhaJwWuegPPMzgs2X9p121LF+s8fLcSMpT6COgtxH4hOqcS+PZtuRc5cNpqi22f
-	1lxHpwOYeeElzTzkwhPjFUOu0sZ16/vUCAS7SbqhaUh8rdUenAAgcyyRJizACTCvBOHVEiZZ0
-	q0XYRxdx4J7NJZtn6cQoFUO8/bK/EQObM5jZsMW4zJb18c/IrU0JyiVK5i8=
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 19 Jan 2018 22:31:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] linux-user: Add
- AT_SECURE auxval
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/ide: Remove
+ duplicated definitions from ahci_internal.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,16 +56,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jan 2018 16:37:14 -0000
+X-List-Received-Date: Fri, 19 Jan 2018 22:31:13 -0000
 
-Le 11/01/2018 à 19:56, Marco A L Barbosa a écrit :
-> Thanks Peter,
+
+
+On 12/07/2017 12:47 AM, Thomas Huth wrote:
+> On 06.12.2017 23:16, John Snow wrote:
+>> I tweaked this again, sorry:
+>>
+>> The names need to stay public, but the wrappers to manipulate the
+>> objects can stay internal. Minor difference.
+>>
+>> If that's okay, I'll just merge this in.
+>> OK?
 > 
-> Signed-off-by: Marco A L Barbosa <malbarbo@gmail.com>
+> Sure. Feel also free to replace my "Signed-off-by" with "Reported-by" in
+> that case if you like.
+> 
+>  Thomas
+> 
 
-With this S-o-b, applied to my linux-user branch.
-
-Thanks,
-Laurent
-
+I forgot about this. Sending the PR now.
 
