@@ -1,66 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1edT7c-0002hV-Q2
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Jan 2018 22:50:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33525)
+	id 1edWZS-0000P7-9o
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2018 02:31:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37897)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1edT7a-0002cY-8K
-	for qemu-trivial@nongnu.org; Sun, 21 Jan 2018 22:50:11 -0500
+	(envelope-from <thuth@redhat.com>) id 1edWZP-0000MM-PU
+	for qemu-trivial@nongnu.org; Mon, 22 Jan 2018 02:31:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1edT7Z-00021V-JP
-	for qemu-trivial@nongnu.org; Sun, 21 Jan 2018 22:50:10 -0500
-Received: from mail-pg0-x232.google.com ([2607:f8b0:400e:c05::232]:41265)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1edT7Z-00020w-F6
-	for qemu-trivial@nongnu.org; Sun, 21 Jan 2018 22:50:09 -0500
-Received: by mail-pg0-x232.google.com with SMTP id 136so6096042pgd.8
-	for <qemu-trivial@nongnu.org>; Sun, 21 Jan 2018 19:50:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=Th+oNakTVW6Ib8qNPisJ2guXhgUaLhVNwx+ReeGVYxs=;
-	b=OFjS2fH33ID1mX6+56fpQ67Xv354QJOU6khwwrGO/ZJTIvYlCvYZQvwfTk/5k9p0gk
-	z3XhWnNv5JfOmMqdiBvEqXZu4014A/Tx5VC4fsfJXEK4XAgPKF+pqMxZDg1gBmVAnba1
-	JCW+S4iJt0aVYPtoCKga9F+H2V+I83xyUBR5k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Th+oNakTVW6Ib8qNPisJ2guXhgUaLhVNwx+ReeGVYxs=;
-	b=dF4kf0l6P6Nq3DGb5iIOejP1xcJhihxSkVM620ry2szQAkV749A+dtLjiDOSQpoK+n
-	Z71PwkIuZnr5ivP8NVPX23QKD5hStLCOozBtvAA+K2wm3H14pj35tztlFsQzW7OFe1/2
-	A2NRZsSj94I0NE/SBlp8Q9OLXcjM4oAV3L/d6wBJOgkWKYgC+GGulg4qbYzqaN+mex1q
-	mn0wWX+U4daYnMqMzSSwvvFvyPywg8uuX7WshlRIH1rntUbnUi16A7zppSG0gfiHIAPv
-	CY0PGxYgreQwcEOFT95FZ6qnsoR70C9dmMp7rYmNJSmxmIC8+2hzGS4gGc8rA4OM+V1F
-	IQWQ==
-X-Gm-Message-State: AKwxytcORSiWTj0ipgAk21oawMx41C41D033FaElrQ4gyWyJ3ExRjhMp
-	2pgFSGsAJna1JKD2wlpbCL70aHPKo/o=
-X-Google-Smtp-Source: AH8x227wk4kqoxeI8u9p9TJcR7U6ydW8183bQoiuaa7mJs6QyOB+FxIxccamDYnSvGRTWg/hh2PhcQ==
-X-Received: by 10.101.64.67 with SMTP id h3mr6114913pgp.168.1516593008145;
-	Sun, 21 Jan 2018 19:50:08 -0800 (PST)
-Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
-	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
-	p75sm28840532pfi.148.2018.01.21.19.50.06
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 21 Jan 2018 19:50:07 -0800 (PST)
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20180119114444.7590-1-laurent@vivier.eu>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <58589c41-6866-e26f-8743-015d91fe2fbc@linaro.org>
-Date: Sun, 21 Jan 2018 19:50:05 -0800
+	(envelope-from <thuth@redhat.com>) id 1edWZO-00083u-U2
+	for qemu-trivial@nongnu.org; Mon, 22 Jan 2018 02:31:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53542)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1edWZK-00081D-C8; Mon, 22 Jan 2018 02:31:02 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8E21181240;
+	Mon, 22 Jan 2018 07:31:01 +0000 (UTC)
+Received: from [10.36.116.91] (ovpn-116-91.ams2.redhat.com [10.36.116.91])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EFB9D7A2E0;
+	Mon, 22 Jan 2018 07:30:49 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <1513700253-10045-1-git-send-email-thuth@redhat.com>
+Message-ID: <0314bfe1-fa6d-cdd6-fd35-3d718249d59f@redhat.com>
+Date: Mon, 22 Jan 2018 08:30:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180119114444.7590-1-laurent@vivier.eu>
+In-Reply-To: <1513700253-10045-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c05::232
-Subject: Re: [Qemu-trivial] [PATCH] target/m68k: fix TCG variable double free
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 22 Jan 2018 07:31:01 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] monitor: Remove legacy
+ "-mon default=on" parameter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,18 +57,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jan 2018 03:50:11 -0000
+X-List-Received-Date: Mon, 22 Jan 2018 07:31:08 -0000
 
-On 01/19/2018 03:44 AM, Laurent Vivier wrote:
-> t64 is also unconditionally freed after the switch () { ... }
+On 19.12.2017 17:17, Thomas Huth wrote:
+> The "default" parameter of the "-mon" option is useless since
+> QEMU v2.4.0, and marked as deprecated since QEMU v2.8.0. That
+> should have been long enough to let people update their scripts,
+> so time to remove it now.
 > 
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  target/m68k/translate.c | 1 -
->  1 file changed, 1 deletion(-)
+>  monitor.c     | 3 ---
+>  qemu-doc.texi | 9 ---------
+>  vl.c          | 4 ----
+>  3 files changed, 16 deletions(-)
+> 
+> diff --git a/monitor.c b/monitor.c
+> index e36fb53..e53c6e1 100644
+> --- a/monitor.c
+> +++ b/monitor.c
+> @@ -4141,9 +4141,6 @@ QemuOptsList qemu_mon_opts = {
+>              .name = "chardev",
+>              .type = QEMU_OPT_STRING,
+>          },{
+> -            .name = "default",  /* deprecated */
+> -            .type = QEMU_OPT_BOOL,
+> -        },{
+>              .name = "pretty",
+>              .type = QEMU_OPT_BOOL,
+>          },
+> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> index d9861b3..6913b32 100644
+> --- a/qemu-doc.texi
+> +++ b/qemu-doc.texi
+> @@ -2401,15 +2401,6 @@ setting ``-machine kernel_irqchip=off''.
+>  The ``-no-kvm'' argument is now a synonym for setting
+>  ``-machine accel=tcg''.
+>  
+> -@subsection -mon default=on (since 2.4.0)
+> -
+> -The ``default'' option to the ``-mon'' argument is
+> -now ignored. When multiple monitors were enabled, it
+> -indicated which monitor would receive log messages
+> -from the various subsystems. This feature is no longer
+> -required as messages are now only sent to the monitor
+> -in response to explicitly monitor commands.
+> -
+>  @subsection -vnc tls (since 2.5.0)
+>  
+>  The ``-vnc tls'' argument is now a synonym for setting
+> diff --git a/vl.c b/vl.c
+> index 2644400..4e7a7e4 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -2438,10 +2438,6 @@ static int mon_init_func(void *opaque, QemuOpts *opts, Error **errp)
+>      if (qemu_opt_get_bool(opts, "pretty", 0))
+>          flags |= MONITOR_USE_PRETTY;
+>  
+> -    if (qemu_opt_get_bool(opts, "default", 0)) {
+> -        error_report("option 'default' does nothing and is deprecated");
+> -    }
+> -
+>      chardev = qemu_opt_get(opts, "chardev");
+>      chr = qemu_chr_find(chardev);
+>      if (chr == NULL) {
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Ping?
 
-
-r~
+ Thomas
 
