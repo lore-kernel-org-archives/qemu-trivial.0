@@ -1,69 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eg3Be-0000BX-3y
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2018 01:45:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60997)
+	id 1eg3QO-0005Rg-Ix
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2018 02:00:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35409)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1eg3Bc-0000Av-Ix
-	for qemu-trivial@nongnu.org; Mon, 29 Jan 2018 01:45:01 -0500
+	(envelope-from <thuth@redhat.com>) id 1eg3QD-0005Fm-KS
+	for qemu-trivial@nongnu.org; Mon, 29 Jan 2018 02:00:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1eg3BZ-0008Eh-GB
-	for qemu-trivial@nongnu.org; Mon, 29 Jan 2018 01:45:00 -0500
-Received: from mail-io0-x244.google.com ([2607:f8b0:4001:c06::244]:45465)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1eg3BZ-0008EP-9A
-	for qemu-trivial@nongnu.org; Mon, 29 Jan 2018 01:44:57 -0500
-Received: by mail-io0-x244.google.com with SMTP id p188so6446803ioe.12
-	for <qemu-trivial@nongnu.org>; Sun, 28 Jan 2018 22:44:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=wyjTSA3aEzDISjEp34a18pmn8ixmEKSuM95Dp2qEw+A=;
-	b=fFr0tzuO55fXoD8L0XC7qSa24QWpiXFwnzsQd0E1h94H/S3tEbRzniUjzF7wEW4ljN
-	q4SJSOvuceWqDnfn6P9cOsq7ways1dYRG3+3hg2y0PrSdhfkz3O1eUE1KyIr3gXXV9cR
-	dfMTRJ6MF7ZGWGXwZOJa38WMiL23iF1gG+ZVWcGYpfe11HLdnMD8qUzQOHZSi3mYUs7h
-	/i0s+WmMURG3Owzmr7vp9W9aKScybCe1q8tTL9feENVJoxT/bdYhMlvqJ7WN7sUn/8pC
-	y60MgrYq6u29SbccficY96tvqVSljS79EFs80BPoOhr4OpYiDL3s/fnzbkmpj80qZ8OA
-	YMSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=wyjTSA3aEzDISjEp34a18pmn8ixmEKSuM95Dp2qEw+A=;
-	b=oiqB1FWGqOdndlfkzy40aDD42BTFJzkfcZySx7KEmJMXamRsZkQ3PdejAzWteFLbkE
-	WyftNzup9ojylOAQEeCOkXVZ22iC50IlHMuAesO0dtQ/I1IaG4QmHy/i2bRZWJzqXuiG
-	DxhbIRrBKIOTMyCO8BKu53wJzvuwQCfszae7zzwRoMzHRrI0wln2hWlfw76QC1iFvIvF
-	WnTGrdroA3iEA7LQfD3/nu+wujU06eTSmH4XI4Av2jYGy7Rlw3diIa6cgKxncYHb2glJ
-	X9OhOT6YnfAmbdNcqsx61Cmw6uEEEVGY0mHIwQ62lJze2JRyaA4lKfY67POFgTzgtic7
-	GYlA==
-X-Gm-Message-State: AKwxytfWEZNBr9Dkui/DN1MB47806UgR/scmmrw67gSY4KV6n6Ky23+X
-	Xubvvfin3Pg8uTTw3aPjcyIqa2Mp
-X-Google-Smtp-Source: AH8x224yLh7oxYBu5LRFiO19HJ5O3sh9HvkpPCbaozfGjcJ7g5c6nPhNjxBCYr/tGAH4PUGZFXkrhA==
-X-Received: by 10.107.191.130 with SMTP id p124mr23340367iof.228.1517208295754;
-	Sun, 28 Jan 2018 22:44:55 -0800 (PST)
-Received: from [10.61.2.175] ([122.99.82.10])
-	by smtp.googlemail.com with ESMTPSA id
-	s99sm3733733ioe.63.2018.01.28.22.44.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 28 Jan 2018 22:44:55 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+	(envelope-from <thuth@redhat.com>) id 1eg3Q7-0006pR-SN
+	for qemu-trivial@nongnu.org; Mon, 29 Jan 2018 02:00:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38330)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1eg3Pw-0006kf-OE; Mon, 29 Jan 2018 01:59:48 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04DD976520;
+	Mon, 29 Jan 2018 06:59:47 +0000 (UTC)
+Received: from [10.36.116.124] (ovpn-116-124.ams2.redhat.com [10.36.116.124])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B616E7D534;
+	Mon, 29 Jan 2018 06:59:42 +0000 (UTC)
+To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
 References: <20180115023501.37361-1-aik@ozlabs.ru>
 	<7b942fc7-a061-789a-4223-030d234602ca@redhat.com>
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <4482df3b-8700-9b5f-43f4-08d5fe31d42a@ozlabs.ru>
-Date: Mon, 29 Jan 2018 17:44:51 +1100
+	<4482df3b-8700-9b5f-43f4-08d5fe31d42a@ozlabs.ru>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <3b7ec8e0-451b-eed6-f9d6-592902752dc6@redhat.com>
+Date: Mon, 29 Jan 2018 07:59:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <7b942fc7-a061-789a-4223-030d234602ca@redhat.com>
+In-Reply-To: <4482df3b-8700-9b5f-43f4-08d5fe31d42a@ozlabs.ru>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-AU
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c06::244
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 29 Jan 2018 06:59:47 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH qemu] configure: Allow
  capstone=git only if git update is not disabled
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,40 +57,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jan 2018 06:45:01 -0000
+X-List-Received-Date: Mon, 29 Jan 2018 07:00:15 -0000
 
-On 15/01/18 17:48, Thomas Huth wrote:
-> On 15.01.2018 03:35, Alexey Kardashevskiy wrote:
->> Even with --disable-git-update, ./configure tries updating the capstone
->> submodule instead of marking it "no"; this disables capstone submodule
->> if git update is disabled.
+On 29.01.2018 07:44, Alexey Kardashevskiy wrote:
+> On 15/01/18 17:48, Thomas Huth wrote:
+>> On 15.01.2018 03:35, Alexey Kardashevskiy wrote:
+>>> Even with --disable-git-update, ./configure tries updating the capstone
+>>> submodule instead of marking it "no"; this disables capstone submodule
+>>> if git update is disabled.
+>>>
+>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+>>> ---
+>>>  configure | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/configure b/configure
+>>> index 89bd662..92c21b3 100755
+>>> --- a/configure
+>>> +++ b/configure
+>>> @@ -4502,7 +4502,7 @@ case "$capstone" in
+>>>    "" | yes)
+>>>      if $pkg_config capstone; then
+>>>        capstone=system
+>>> -    elif test -e "${source_path}/.git" ; then
+>>> +    elif test -e "${source_path}/.git" -a $git_update = 'yes' ; then
+>>>        capstone=git
+>>>      elif test -e "${source_path}/capstone/Makefile" ; then
+>>>        capstone=internal
+>>>
 >>
->> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->> ---
->>  configure | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/configure b/configure
->> index 89bd662..92c21b3 100755
->> --- a/configure
->> +++ b/configure
->> @@ -4502,7 +4502,7 @@ case "$capstone" in
->>    "" | yes)
->>      if $pkg_config capstone; then
->>        capstone=system
->> -    elif test -e "${source_path}/.git" ; then
->> +    elif test -e "${source_path}/.git" -a $git_update = 'yes' ; then
->>        capstone=git
->>      elif test -e "${source_path}/capstone/Makefile" ; then
->>        capstone=internal
->>
+>> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Thanks mate. What's next? :)
 
+Put Paolo on CC in the hope that he can take it through the misc tree?
+Or wait for the next trivial PULL request...
 
-Thanks mate. What's next? :)
+ Thomas
 
-
--- 
-Alexey
 
