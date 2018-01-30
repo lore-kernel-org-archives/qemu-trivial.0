@@ -1,32 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1egVnA-0005f3-5b
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2018 08:17:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48973)
+	id 1egVpF-0007GA-CA
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2018 08:19:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1egVn7-0005bt-UW
-	for qemu-trivial@nongnu.org; Tue, 30 Jan 2018 08:17:38 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1egVpB-0007CE-MA
+	for qemu-trivial@nongnu.org; Tue, 30 Jan 2018 08:19:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1egVn1-0001sb-Ui
-	for qemu-trivial@nongnu.org; Tue, 30 Jan 2018 08:17:36 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:27342)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1egVmn-0001lN-OC; Tue, 30 Jan 2018 08:17:17 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id 7A2D47456D8;
-	Tue, 30 Jan 2018 14:17:16 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id 5899D7456D5; Tue, 30 Jan 2018 14:17:16 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-Date: Tue, 30 Jan 2018 14:10:10 +0100
-To: qemu-devel@nongnu.org,
-    qemu-trivial@nongnu.org
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Message-Id: <20180130131716.5899D7456D5@zero.eik.bme.hu>
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: [Qemu-trivial] [PATCH] sii3112: Change angle brackets to quotes in
- #include lines
+	(envelope-from <peter.maydell@linaro.org>) id 1egVpA-00038k-T8
+	for qemu-trivial@nongnu.org; Tue, 30 Jan 2018 08:19:45 -0500
+Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:34645)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1egVpA-00037g-O5
+	for qemu-trivial@nongnu.org; Tue, 30 Jan 2018 08:19:44 -0500
+Received: by mail-oi0-x229.google.com with SMTP id k15so7759271oib.1
+	for <qemu-trivial@nongnu.org>; Tue, 30 Jan 2018 05:19:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=kS7vJyq5rWSGXNS6bQJAUGGAYMob585J5+HqjXxtPdY=;
+	b=Bh1udXvV8dSKjiv4sOzgS3RoteQpAhFBYAlTsVnYCYk77T7Dp89Wk2z1Cq6fUGIRTp
+	8t9rnShEUaZBpJcXowT9U8oC3H5AwVchPz5orIYLoV3KXij3g/0f16yi1fPMWBa2caa8
+	Q1HHqXonzXVGgkFZqZjAIU5H8VtduX5aXg4u8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=kS7vJyq5rWSGXNS6bQJAUGGAYMob585J5+HqjXxtPdY=;
+	b=maZ+rPQJzV01AZ/BuDXk1Fgzn3VDSzLnYKQTHZLWWuQsX8azdQhsQrIUa98XjoGT3p
+	KY8vxfNeSn+qe2Jq/QHn+6BvimagM5Uc7wjjRBV8os4d1paX2aBL2Jj5LVEvjtsvNbeM
+	ai/jVjBXbtBEZIun3EqOIU9m1O0fkh0fG58MTT5WjtlcOL1/Heodtqoe653xRht+3Yx7
+	BmEgAZErBtCcFVWiBwODvCTo7Yno9fyd0RNqS4KbllMWHt8TMCI7zdE4BXRcYCuAwvYc
+	lG0ktxkEHR/MOoFQgOjyqX86E6kG3e6CVDlYfu3rJOrcLfkDSCDo8yQY3d/MPZ4OHrkZ
+	WRrg==
+X-Gm-Message-State: AKwxytcAfalF+f5ASV/Ns/Yavt6ZYyTs6dcZgOuYzaOoFIyVGOc9MWP0
+	AN86JGjG695kJBAfMFLQtZz0telTBsj1gHAi8UK+BA==
+X-Google-Smtp-Source: AH8x227gMpwbR0iY1tK+m4noay9yqYWPOSLXSzlK/dRmuIX7K+xiyYRkImZS1FYgvb8Ov8Ysfoi7em8QtF43tZhxnck=
+X-Received: by 10.202.26.13 with SMTP id a13mr3966150oia.8.1517318383821; Tue,
+	30 Jan 2018 05:19:43 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.157.61.133 with HTTP; Tue, 30 Jan 2018 05:19:23 -0800 (PST)
+In-Reply-To: <20180130131716.5899D7456D5@zero.eik.bme.hu>
+References: <20180130131716.5899D7456D5@zero.eik.bme.hu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Jan 2018 13:19:23 +0000
+Message-ID: <CAFEAcA-ZQ7pnRCwuFj51pqdgjyBAz9S5hkLTczCSwq5Lmaompg@mail.gmail.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::229
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] sii3112: Change angle
+ brackets to quotes in #include lines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -38,31 +65,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jan 2018 13:17:39 -0000
+X-List-Received-Date: Tue, 30 Jan 2018 13:19:46 -0000
 
-This matches what other files do for qemu includes
+On 30 January 2018 at 13:10, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+> This matches what other files do for qemu includes
+>
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
----
- hw/ide/sii3112.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-index 17aa930..e3896c6 100644
---- a/hw/ide/sii3112.c
-+++ b/hw/ide/sii3112.c
-@@ -12,8 +12,8 @@
-  * http://wiki.osdev.org/User:Quok/Silicon_Image_Datasheets
-  */
- 
--#include <qemu/osdep.h>
--#include <hw/ide/pci.h>
-+#include "qemu/osdep.h"
-+#include "hw/ide/pci.h"
- #include "trace.h"
- 
- #define TYPE_SII3112_PCI "sii3112"
--- 
-2.7.6
-
+thanks
+-- PMM
 
