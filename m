@@ -1,43 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eh3Y9-00064M-TF
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2018 20:20:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43344)
+	id 1ehBIN-0000vT-O6
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Feb 2018 04:36:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59431)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1eh3Y8-00063E-7s
-	for qemu-trivial@nongnu.org; Wed, 31 Jan 2018 20:20:25 -0500
+	(envelope-from <aik@ozlabs.ru>) id 1ehBIJ-0000tH-QE
+	for qemu-trivial@nongnu.org; Thu, 01 Feb 2018 04:36:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1eh3Y7-0006pZ-2o
-	for qemu-trivial@nongnu.org; Wed, 31 Jan 2018 20:20:24 -0500
-Received: from ozlabs.org ([103.22.144.67]:47531)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1eh3Y1-0006hu-H5; Wed, 31 Jan 2018 20:20:18 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3zX2NX3qR0z9sP9; Thu,  1 Feb 2018 12:20:12 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1517448012;
-	bh=NCoFnAhVrYFNqiR/BJam76onmyeommt1Ht3W4m8csR0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cF8OQJdfRI5rvowf1IDzb15tqHa/b0wUf2egzNHahrp3X3uiBrmTkqBRP17QU39rJ
-	uLnsAtMAz7834Z5ypn8NpmOWgXHgg+ghhpKXbwX7NjhLUconFHRx4QmsxZTlsBhjEH
-	0ad67ya6GSuSYfw4MqV4kJ1xcVwAwyvdBpDASico=
-Date: Wed, 31 Jan 2018 06:49:35 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20180130194935.GL12900@umbus>
-References: <20180130131716.5899D7456D5@zero.eik.bme.hu>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="q6mBvMCt6oafMx9a"
-Content-Disposition: inline
-In-Reply-To: <20180130131716.5899D7456D5@zero.eik.bme.hu>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] sii3112: Change angle brackets to quotes
- in #include lines
+	(envelope-from <aik@ozlabs.ru>) id 1ehBIF-00030p-Rf
+	for qemu-trivial@nongnu.org; Thu, 01 Feb 2018 04:36:35 -0500
+Received: from ozlabs.ru ([107.173.13.209]:48820)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <aik@ozlabs.ru>)
+	id 1ehBI4-0002hM-7a; Thu, 01 Feb 2018 04:36:20 -0500
+Received: from vpl1.ozlabs.ibm.com (localhost [IPv6:::1])
+	by ozlabs.ru (Postfix) with ESMTP id 6DA8A3A60012;
+	Thu,  1 Feb 2018 04:35:44 -0500 (EST)
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+To: qemu-devel@nongnu.org
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
+	qemu-trivial@nongnu.org
+Date: Thu,  1 Feb 2018 20:35:45 +1100
+Message-Id: <20180201093545.33741-1-aik@ozlabs.ru>
+X-Mailer: git-send-email 2.11.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 107.173.13.209
+Subject: [Qemu-trivial] [PATCH qemu] slirp/debug: Print IP addresses in
+ human readable form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,66 +37,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Feb 2018 01:20:25 -0000
+X-List-Received-Date: Thu, 01 Feb 2018 09:36:39 -0000
 
+Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+---
+ slirp/arp_table.c | 4 ++--
+ slirp/socket.c    | 8 ++++----
+ slirp/udp.c       | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
---q6mBvMCt6oafMx9a
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/slirp/arp_table.c b/slirp/arp_table.c
+index 3547043..bac608f 100644
+--- a/slirp/arp_table.c
++++ b/slirp/arp_table.c
+@@ -33,7 +33,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
+     int i;
+ 
+     DEBUG_CALL("arp_table_add");
+-    DEBUG_ARG("ip = 0x%x", ip_addr);
++    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
+     DEBUG_ARGS((dfd, " hw addr = %02x:%02x:%02x:%02x:%02x:%02x\n",
+                 ethaddr[0], ethaddr[1], ethaddr[2],
+                 ethaddr[3], ethaddr[4], ethaddr[5]));
+@@ -67,7 +67,7 @@ bool arp_table_search(Slirp *slirp, uint32_t ip_addr,
+     int i;
+ 
+     DEBUG_CALL("arp_table_search");
+-    DEBUG_ARG("ip = 0x%x", ip_addr);
++    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
+ 
+     /* If broadcast address */
+     if (ip_addr == 0xffffffff || ip_addr == broadcast_addr) {
+diff --git a/slirp/socket.c b/slirp/socket.c
+index cb7b5b6..61347d1 100644
+--- a/slirp/socket.c
++++ b/slirp/socket.c
+@@ -701,10 +701,10 @@ tcp_listen(Slirp *slirp, uint32_t haddr, u_int hport, uint32_t laddr,
+ 	memset(&addr, 0, addrlen);
+ 
+ 	DEBUG_CALL("tcp_listen");
+-	DEBUG_ARG("haddr = %x", haddr);
+-	DEBUG_ARG("hport = %d", hport);
+-	DEBUG_ARG("laddr = %x", laddr);
+-	DEBUG_ARG("lport = %d", lport);
++	DEBUG_ARG("haddr = %s", inet_ntoa(*(struct in_addr *)&haddr));
++	DEBUG_ARG("hport = %d", ntohs(hport));
++	DEBUG_ARG("laddr = %s", inet_ntoa(*(struct in_addr *)&laddr));
++	DEBUG_ARG("lport = %d", ntohs(lport));
+ 	DEBUG_ARG("flags = %x", flags);
+ 
+ 	so = socreate(slirp);
+diff --git a/slirp/udp.c b/slirp/udp.c
+index 227d779..e5bf065 100644
+--- a/slirp/udp.c
++++ b/slirp/udp.c
+@@ -241,8 +241,8 @@ int udp_output(struct socket *so, struct mbuf *m,
+ 	DEBUG_CALL("udp_output");
+ 	DEBUG_ARG("so = %p", so);
+ 	DEBUG_ARG("m = %p", m);
+-	DEBUG_ARG("saddr = %lx", (long)saddr->sin_addr.s_addr);
+-	DEBUG_ARG("daddr = %lx", (long)daddr->sin_addr.s_addr);
++	DEBUG_ARG("saddr = %s", inet_ntoa(saddr->sin_addr));
++	DEBUG_ARG("daddr = %s", inet_ntoa(daddr->sin_addr));
+ 
+ 	/*
+ 	 * Adjust for header
+-- 
+2.11.0
 
-On Tue, Jan 30, 2018 at 02:10:10PM +0100, BALATON Zoltan wrote:
-> This matches what other files do for qemu includes
->=20
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-
-Applied, thanks.
-
-> ---
->  hw/ide/sii3112.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-> index 17aa930..e3896c6 100644
-> --- a/hw/ide/sii3112.c
-> +++ b/hw/ide/sii3112.c
-> @@ -12,8 +12,8 @@
->   * http://wiki.osdev.org/User:Quok/Silicon_Image_Datasheets
->   */
-> =20
-> -#include <qemu/osdep.h>
-> -#include <hw/ide/pci.h>
-> +#include "qemu/osdep.h"
-> +#include "hw/ide/pci.h"
->  #include "trace.h"
-> =20
->  #define TYPE_SII3112_PCI "sii3112"
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---q6mBvMCt6oafMx9a
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlpwzEwACgkQbDjKyiDZ
-s5I3Jw/+Lqjx2XjqZARB/sUxhIi2JLstx0+GbDv/rVc6cni7k4qYIVdFFXjs4lGJ
-4dzzBjXlgC2wnL18ljEy2+QlqeEbC4WORplwTzWi/IUDiLxYm39qGTUazFSGgzFw
-DRkhdeiMnKUXSxLGmbyQpVR+oSYYdQn/aVvs9G9jPBdPYJm9RFBiu4N8hqIzTjdL
-jwsC8YIWJnzlCdY77YKpbqCdgiR3GgoDqaaGk+Z8jcalhdGO2qau6MQo37XQohfF
-OYhaqaXAkNvFiGf5wX6IujDMUN7D72KDNjHh4w2a1cLoBiFRLb0d01iJ5p9rQOgM
-lXbvSiPQ/vFVYukNr1CNQ0pTKd6Rle86h1hG6l0eYhrBu6l+LRD1mdKd9CspohDb
-CZbqkhORWA4hNlESP4jeO9joJCP/qcWrMRFIN1IrJ31abaPrRon2qSur9ej0LyJZ
-Cj5WSlzV++jCWOuqxlhKssvT25KY/2vN8aHmA23qJi912T3nPt9LsuTUeVESJrLm
-aBewaxfTGC2Awv2tUJ2Q1b+ny27LrITr9zSpJ9pcIJbtElNO+kT7Dffvk664xKPW
-Zw54Vo9eIRVWWJsX/dwwwY9WQFGS9MlmzbOaUMp5Q9uVvTt79gcCyZhd3DD0Psj+
-IVvtg+fG+0401KWqTj1LE/zkFHysdj+jG0McY014+xV2b6Iuk4k=
-=WhmF
------END PGP SIGNATURE-----
-
---q6mBvMCt6oafMx9a--
 
