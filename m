@@ -1,71 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ehRNn-0006L0-8G
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Feb 2018 21:47:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40390)
+	id 1ehcmK-0003vL-1A
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Feb 2018 09:57:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1ehRMh-00066w-MP
-	for qemu-trivial@nongnu.org; Thu, 01 Feb 2018 21:47:17 -0500
+	(envelope-from <mreitz@redhat.com>) id 1ehcmH-0003sh-TA
+	for qemu-trivial@nongnu.org; Fri, 02 Feb 2018 09:57:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1ehRLd-0007dc-KD
-	for qemu-trivial@nongnu.org; Thu, 01 Feb 2018 21:46:11 -0500
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:41139)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1ehRLd-0007bn-9c
-	for qemu-trivial@nongnu.org; Thu, 01 Feb 2018 21:45:05 -0500
-Received: by mail-pf0-x243.google.com with SMTP id c6so16523182pfi.8
-	for <qemu-trivial@nongnu.org>; Thu, 01 Feb 2018 18:45:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
-	h=subject:from:to:references:message-id:date:user-agent:mime-version
-	:in-reply-to:content-language:content-transfer-encoding;
-	bh=8ymqUaYaztpIoyupv0aSA12OmiQ2BJFuGgPjnreC/x0=;
-	b=WVkAz4AWr4hXj2Huapr/rlKvyWWv8HHYa9ljEEOo8kSx8uD8C33tQsx/YikzuXlKcH
-	L7rIFyoj5INQa8se0dpUgQQkwxdn1pSdK636I9fuQMQzsfwna/cK1PRvTb5g6XcSYLwk
-	ty/OZoGQ1YhgfwgJD7cZ6ZJye3uMiQSXVUIfKeLolzqIYILZGNsiQPyXRnpVoOkx/ojU
-	F6hrMqUL/RoPiGgN7gkpaCVLNn8pcSyu7zxRK1o7Cn+HiWN1WDSGjGlBklKUAJ/pSfEF
-	DeCy7+MXZwkHMhQ+j7M4k9tkkNBKf//OZqZA7u6NPCEwLSK2foKKo26B2cEXkr8uhKig
-	Nm/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:from:to:references:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=8ymqUaYaztpIoyupv0aSA12OmiQ2BJFuGgPjnreC/x0=;
-	b=bnLNXZu0U5L3hxi9nef7T5WRfwRPnnsg1GyJeTiqls7NG4541dOylqzgMHNR8kKSGv
-	G8l1F+JPsBsT0yrH4rehcmOV8bc0HBnzkpQd2tCdir1JpmEdfwUqWgEgCTANVCogpHIu
-	AsQ8bmb6w11iB73O/A6D9O5b3ZvQaIW6p+yEC4qLZzreMYEqqYf7UoSYLrjx2QGCzRl8
-	zk7UnC9xnqOEBgxJYUZwiq1DH1n3VhuC5o0uxI26wPY9cQu1LGbf3bURfQrL9HEue4lg
-	UBl0C9wfEQiRG9S09i+9dhnP513/fmn3TuFEUGf3b+1mQiyh8evqb855jGLd0R6e/1sn
-	cJLQ==
-X-Gm-Message-State: AKwxytcNsljcWdLgVKwm3UkTrq3jsktyQvu5v4R8Z9K5883WpPm0EOlQ
-	4a/9bFEL07y96StrsAbjXXthLkZp
-X-Google-Smtp-Source: AH8x224sG2ED3wI17zhFnYMnlEmnPQjk96gA8RTqfQtjx5w2avHdEULlmy5Zr2NFywvAIf2h7t2S/g==
-X-Received: by 10.98.102.135 with SMTP id s7mr38244811pfj.209.1517539503735;
-	Thu, 01 Feb 2018 18:45:03 -0800 (PST)
-Received: from [10.61.2.175] ([122.99.82.10])
-	by smtp.googlemail.com with ESMTPSA id
-	r88sm1093863pfb.17.2018.02.01.18.45.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 01 Feb 2018 18:45:03 -0800 (PST)
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-To: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20171026014139.46221-1-aik@ozlabs.ru>
-	<82b6cfcf-70ae-2817-8eb8-fe630d3bec95@ozlabs.ru>
-	<70dce2ac-5278-d7c1-744d-83de8e111faf@ozlabs.ru>
-Message-ID: <bebff732-86de-d7e2-93d5-a33fa44f5763@ozlabs.ru>
-Date: Fri, 2 Feb 2018 13:45:00 +1100
+	(envelope-from <mreitz@redhat.com>) id 1ehcmG-0001fH-Qh
+	for qemu-trivial@nongnu.org; Fri, 02 Feb 2018 09:57:21 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40402)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mreitz@redhat.com>)
+	id 1ehcmA-0001YV-Qz; Fri, 02 Feb 2018 09:57:14 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 503AEC03674D;
+	Fri,  2 Feb 2018 13:37:32 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-204-169.brq.redhat.com
+	[10.40.204.169])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 47D0E77D48;
+	Fri,  2 Feb 2018 13:37:30 +0000 (UTC)
+To: Shravan Rajinikanth <shravan2x@utexas.edu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
+From: Max Reitz <mreitz@redhat.com>
+Message-ID: <be898714-bffb-7fdf-0b91-e3c276559fc7@redhat.com>
+Date: Fri, 2 Feb 2018 14:37:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <70dce2ac-5278-d7c1-744d-83de8e111faf@ozlabs.ru>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-AU
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: Re: [Qemu-trivial] [PATCH qemu v2] machine: Polish -machine xxx,
- help
+In-Reply-To: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="eZXqLa86VdqzCXcM2PheLQD9sCCVMmimv"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 02 Feb 2018 13:37:32 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-img: Fixed grammatical
+ error in dump_human_image_check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,63 +55,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Feb 2018 02:47:17 -0000
+X-List-Received-Date: Fri, 02 Feb 2018 14:57:23 -0000
 
-On 29/01/18 16:03, Alexey Kardashevskiy wrote:
-> On 15/12/17 15:47, Alexey Kardashevskiy wrote:
->> On 26/10/17 12:41, Alexey Kardashevskiy wrote:
->>> The "-machine xxx,help" prints kernel-irqchip possible values as
->>> "OnOffSplit", this adds separators to the printed line.
->>>
->>> Also, since only lower case letters are specified in qapi/common.json,
->>> this changes the letter cases too.
->>>
->>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
->>
->> ping?
-> 
-> 
-> anyone?
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--eZXqLa86VdqzCXcM2PheLQD9sCCVMmimv
+Content-Type: multipart/mixed; boundary="mWI70zzteN82vShgTZrN8MAeHRuZKgsdX";
+ protected-headers="v1"
+From: Max Reitz <mreitz@redhat.com>
+To: Shravan Rajinikanth <shravan2x@utexas.edu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Message-ID: <be898714-bffb-7fdf-0b91-e3c276559fc7@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] qemu-img: Fixed grammatical error in
+ dump_human_image_check
+References: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
+In-Reply-To: <1512254273-7567-1-git-send-email-shravan2x@utexas.edu>
 
-Let's try trivial list now :)
+--mWI70zzteN82vShgTZrN8MAeHRuZKgsdX
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
+On 2017-12-02 23:37, Shravan Rajinikanth wrote:
+> Signed-off-by: Shravan Rajinikanth <shravan2x@utexas.edu>
+> ---
+>  qemu-img.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/qemu-img.c b/qemu-img.c
+> index 68b375f..bea9268 100644
+> --- a/qemu-img.c
+> +++ b/qemu-img.c
+> @@ -580,7 +580,7 @@ static void dump_human_image_check(ImageCheck *chec=
+k, bool quiet)
+>          if (check->leaks) {
+>              qprintf(quiet,
+>                      "\n%" PRId64 " leaked clusters were found on the i=
+mage.\n"
+> -                    "This means waste of disk space, but no harm to da=
+ta.\n",
+> +                    "This means disk space is wasted, but data is safe=
+=2E\n",
+>                      check->leaks);
+>          }
 
-> 
->>
->>
->>> ---
->>>
->>> aik@fstn1-p1:~$ ./qemu-system-ppc64 -machine pseries,help 2>&1 | grep kernel-irqchip
->>>
->>> Was:
->>> pseries-2.11.kernel-irqchip=OnOffSplit (Configure KVM in-kernel irqchip)
->>>
->>> Now:
->>> pseries-2.11.kernel-irqchip=on|off|split (Configure KVM in-kernel irqchip)
->>> ---
->>>  hw/core/machine.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>> index 36c2fb069c..bd3db14e12 100644
->>> --- a/hw/core/machine.c
->>> +++ b/hw/core/machine.c
->>> @@ -506,7 +506,7 @@ static void machine_class_init(ObjectClass *oc, void *data)
->>>      object_class_property_set_description(oc, "accel",
->>>          "Accelerator list", &error_abort);
->>>  
->>> -    object_class_property_add(oc, "kernel-irqchip", "OnOffSplit",
->>> +    object_class_property_add(oc, "kernel-irqchip", "on|off|split",
->>>          NULL, machine_set_kernel_irqchip,
->>>          NULL, NULL, &error_abort);
->>>      object_class_property_set_description(oc, "kernel-irqchip",
->>>
->>
->>
-> 
-> 
+Sorry, somehow I never applied this.  (Maybe I thought it would go
+through trivial...)
+
+Applied to my block tree:
+
+https://github.com/XanClic/qemu/commits/block
+
+Max
 
 
--- 
-Alexey
+--mWI70zzteN82vShgTZrN8MAeHRuZKgsdX--
+
+--eZXqLa86VdqzCXcM2PheLQD9sCCVMmimv
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFGBAEBCAAwFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAlp0aZkSHG1yZWl0ekBy
+ZWRoYXQuY29tAAoJEPQH2wBh1c9AvFAH/3sRKKws4yVA23nAYpoIbrlKnhq4EKTs
+KkMNiAWg9iOE5ZIJUgOxsp7TkWCqG1vbbpptP28Nu9OpbzW8KqqsikKtzZeHcxxf
+ywCVGQwy7h4ixhDypzHylxPjjvNjvjPzj9Dx9FHu/zH42hto3NdVGw+6nn4RdOxF
+nmcIDia+0tJUDGzjP+sLBn/n7RrokZesuw7gRq2LW5fmAplXjyuQet1VTw9P8WsK
+Up9fWsngIr6XlBIevTNcYuZrulseoSd1niwackz55T6BYbLHNUE+655krsnFKCtz
+G+/0JkhpNomA4WO21WeCbVxcIkUndCx2Ff+oyOJODa9jjETXc6vRzyY=
+=6Ao1
+-----END PGP SIGNATURE-----
+
+--eZXqLa86VdqzCXcM2PheLQD9sCCVMmimv--
 
