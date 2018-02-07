@@ -1,45 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ehvTT-0007He-DM
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Feb 2018 05:55:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54667)
+	id 1ejSCD-0002nJ-5A
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Feb 2018 11:03:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50133)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ehvTQ-0007H4-UN
-	for qemu-trivial@nongnu.org; Sat, 03 Feb 2018 05:55:10 -0500
+	(envelope-from <eblake@redhat.com>) id 1ejSC7-0002jP-3r
+	for qemu-trivial@nongnu.org; Wed, 07 Feb 2018 11:03:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1ehvTN-0003SA-R0
-	for qemu-trivial@nongnu.org; Sat, 03 Feb 2018 05:55:09 -0500
-Received: from chuckie.co.uk ([82.165.15.123]:36318
-	helo=s16892447.onlinehome-server.info)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1ehvTN-0003Rz-Ic; Sat, 03 Feb 2018 05:55:05 -0500
-Received: from host86-175-243-217.range86-175.btcentralplus.com
-	([86.175.243.217] helo=[192.168.1.65])
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1ehvTX-0000qV-3Z; Sat, 03 Feb 2018 10:55:17 +0000
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1517559331-6388-1-git-send-email-thuth@redhat.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <7422455d-c0bb-9bde-4e82-251dafcbb2ef@ilande.co.uk>
-Date: Sat, 3 Feb 2018 10:54:56 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <1517559331-6388-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.175.243.217
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 82.165.15.123
-Subject: Re: [Qemu-trivial] [PATCH] hw/timer/mt48t59: Fix bit-rotten
- NVRAM_PRINTF format strings
+	(envelope-from <eblake@redhat.com>) id 1ejSC2-0003mJ-II
+	for qemu-trivial@nongnu.org; Wed, 07 Feb 2018 11:03:35 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58116 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ejSBt-0003gt-NQ; Wed, 07 Feb 2018 11:03:21 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2DEA67C6BB;
+	Wed,  7 Feb 2018 16:03:11 +0000 (UTC)
+Received: from red.redhat.com (ovpn-122-122.rdu2.redhat.com [10.10.122.122])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 921A02166BAE;
+	Wed,  7 Feb 2018 16:03:04 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: armbru@redhat.com, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Date: Wed,  7 Feb 2018 10:03:02 -0600
+Message-Id: <20180207160302.15651-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 07 Feb 2018 16:03:11 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 07 Feb 2018 16:03:11 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [PATCH] Drop unneeded system header includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,89 +51,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Feb 2018 10:55:10 -0000
+X-List-Received-Date: Wed, 07 Feb 2018 16:03:39 -0000
 
-On 02/02/18 08:15, Thomas Huth wrote:
+<memory.h> is a non-standard obsolete header that was long ago
+replaced by <string.h>.
 
-> When compiling with NVRAM_PRINTF enabled, gcc currently bails out with:
-> 
->    CC      hw/timer/m48t59.o
->    CC      hw/timer/m48t59-isa.o
-> hw/timer/m48t59.c: In function ‘NVRAM_writeb’:
-> hw/timer/m48t59.c:460:5: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘hwaddr’ [-Werror=format=]
->       NVRAM_PRINTF("%s: 0x%08x => 0x%08x\n", __func__, addr, val);
->       ^
-> hw/timer/m48t59.c:460:5: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 4 has type ‘uint64_t’ [-Werror=format=]
-> hw/timer/m48t59.c: In function ‘NVRAM_readb’:
-> hw/timer/m48t59.c:492:5: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘hwaddr’ [-Werror=format=]
->       NVRAM_PRINTF("%s: 0x%08x <= 0x%08x\n", __func__, addr, retval);
-> 
-> Fix it by using the correct format strings and while we're at it,
-> also change the definition of NVRAM_PRINTF so that this can not
-> bit-rot so easily again.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/timer/m48t59-internal.h | 9 +++------
->   hw/timer/m48t59.c          | 4 ++--
->   2 files changed, 5 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/timer/m48t59-internal.h b/hw/timer/m48t59-internal.h
-> index 32ae957..d0f0caf 100644
-> --- a/hw/timer/m48t59-internal.h
-> +++ b/hw/timer/m48t59-internal.h
-> @@ -25,13 +25,10 @@
->   #ifndef HW_M48T59_INTERNAL_H
->   #define HW_M48T59_INTERNAL_H 1
->   
-> -//#define DEBUG_NVRAM
-> +#define M48T59_DEBUG 0
->   
-> -#if defined(DEBUG_NVRAM)
-> -#define NVRAM_PRINTF(fmt, ...) do { printf(fmt , ## __VA_ARGS__); } while (0)
-> -#else
-> -#define NVRAM_PRINTF(fmt, ...) do { } while (0)
-> -#endif
-> +#define NVRAM_PRINTF(fmt, ...) do { \
-> +    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
->   
->   /*
->    * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 has
-> diff --git a/hw/timer/m48t59.c b/hw/timer/m48t59.c
-> index 844aad5..4abb4ac 100644
-> --- a/hw/timer/m48t59.c
-> +++ b/hw/timer/m48t59.c
-> @@ -457,7 +457,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, uint64_t val,
->   {
->       M48t59State *NVRAM = opaque;
->   
-> -    NVRAM_PRINTF("%s: 0x%08x => 0x%08x\n", __func__, addr, val);
-> +    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" => 0x%"PRIx64"\n", __func__, addr, val);
->       switch (addr) {
->       case 0:
->           NVRAM->addr &= ~0x00FF;
-> @@ -489,7 +489,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr, unsigned size)
->           retval = -1;
->           break;
->       }
-> -    NVRAM_PRINTF("%s: 0x%08x <= 0x%08x\n", __func__, addr, retval);
-> +    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <= 0x%08x\n", __func__, addr, retval);
->   
->       return retval;
->   }
+<malloc.h> is a non-standard header; it is not obsolete (we must
+use it for malloc_trim, for example), but generally should not
+be used in files that just need malloc() and friends, where
+<stdlib.h> is the standard header.
 
-Hi Thomas,
+And since osdep.h already guarantees string.h and stdlib.h, we
+can drop these unusual system header includes as redundant
+rather than replacing them.
 
-I agree with Philippe here that given you've got this far then is it not 
-worth going all the way with a trace-events conversion?
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
-Then again fixing this is enough of an improvement that I'm happy to 
-give my R-B regardless:
+Based-on: <20180207124009.12376-1-armbru@redhat.com>
+([PULL 00/20] Miscellaneous patches for 2018-02-07)
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+ target/i386/hax-windows.h | 2 --
+ target/i386/hvf/x86_mmu.c | 1 -
+ 2 files changed, 3 deletions(-)
 
+diff --git a/target/i386/hax-windows.h b/target/i386/hax-windows.h
+index 004f8676949..20e2f85407b 100644
+--- a/target/i386/hax-windows.h
++++ b/target/i386/hax-windows.h
+@@ -20,8 +20,6 @@
+ #ifndef TARGET_I386_HAX_WINDOWS_H
+ #define TARGET_I386_HAX_WINDOWS_H
 
-ATB,
+-#include <memory.h>
+-#include <malloc.h>
+ #include <winioctl.h>
+ #include <windef.h>
 
-Mark.
+diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
+index c6be2cca357..d5a0efe7188 100644
+--- a/target/i386/hvf/x86_mmu.c
++++ b/target/i386/hvf/x86_mmu.c
+@@ -17,7 +17,6 @@
+  */
+
+ #include "qemu/osdep.h"
+-#include <memory.h>
+ #include "panic.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+-- 
+2.14.3
+
 
