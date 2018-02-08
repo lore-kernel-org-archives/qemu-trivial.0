@@ -1,60 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ejpRo-0003O8-WA
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Feb 2018 11:53:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43390)
+	id 1ejvdY-0001FM-Mm
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Feb 2018 18:29:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32958)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ejpRi-0003Hu-BT
-	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 11:53:19 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1ejvdW-0001Do-QW
+	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 18:29:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ejpRh-0005iv-GI
-	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 11:53:14 -0500
-Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:38003)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ejpRh-0005i9-B7
-	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 11:53:13 -0500
-Received: by mail-ot0-x241.google.com with SMTP id h14so4937014otj.5
-	for <qemu-trivial@nongnu.org>; Thu, 08 Feb 2018 08:53:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=Z23TvmUzvPRYx2qQ+UDFbqfZswvLmd4TjrWmw8R9NS0=;
-	b=b4ifC2RJHmodsfoRLv89M81INz9qqxBX352JTZ6JKnsCZSFN0an5/30K5riGsUt1V9
-	axmAgIVm/AXB1/SoxQ5B4LTiuP2tF3XNhuWpM4jqwSpkQGw6bIcxwRFsULVMnxhPvuas
-	z2cD5X1uSvy7GBdbaulWtQv5mzBkpk40bY0UE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Z23TvmUzvPRYx2qQ+UDFbqfZswvLmd4TjrWmw8R9NS0=;
-	b=bGju9omHXs1AIdXEg+5ZV8p4KLe1zOaa8MzLPGgvG9kVNY0rWjWkeVqGTECRmgKUFx
-	9lOv0HiNqwSPV80DVOqITKWPBHXws6k0s++XEui/L4ppzIBvk1jlo7wd1hJxSNOCgdBq
-	hb4mqs6YIl0ta4ObKZa1guN8TLpSjRaKn4fi5NkNQEnZxJutybNE5ecL9sCxduHuLXKD
-	M7Ivf4leN1Ms4q0O6s7MC8iyb1lSFb8vdNfcMlZnuPi+Vlb++y+P8/yUe2/cjaQZr+ry
-	2NlA+2N91OsifF8H7RqaN1cI5g1dK7YRrIIakORd2oVWTlGt23NPI0nFMv5Jsh9FkFYJ
-	Jysg==
-X-Gm-Message-State: APf1xPBAK1Z+pxZxJEfTZ1bQHckYDQ4WMOe43+7/P5m6E0SMgo+dIsM2
-	O1NS/Ex85xbS3jqWfjya3e8hsK/bHJ8FQy3J+Yk+IQ==
-X-Google-Smtp-Source: AH8x226Jw0FQnPsW41D1zgyckqH0bCE2WCThbMdBvru+NhIKt5P5jf8j6moDdOMvH9P6U37UQhV1hphBjsslJRcqedI=
-X-Received: by 10.157.29.211 with SMTP id w19mr993969otw.24.1518108792319;
-	Thu, 08 Feb 2018 08:53:12 -0800 (PST)
+	(envelope-from <dgibson@ozlabs.org>) id 1ejvdV-0001ZW-QC
+	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 18:29:50 -0500
+Received: from ozlabs.org ([103.22.144.67]:34143)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1ejvdS-0001Wa-Ev; Thu, 08 Feb 2018 18:29:46 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3zcvYN0nT6z9s4q; Fri,  9 Feb 2018 10:29:44 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1518132584;
+	bh=NHmhrqS/K118+ne/g/gjlpblmfc9EJ8vwqua5Oj0imk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Bbmr1jjCOVWEgVl02I9scNKMhSIzJQOurWevNFEi1QLmH3cxJPKoozWyUKafbPgU0
+	86TKBRBy5awUDzYbmNt7zY6KsYQA0iWJKGZwJlyywX/zP8VD5EWY4zo/qy8JBS+5d2
+	JgZIR/2BdlyFJ8OEsJr1cUsJ9t/rDeKP2Doomaxc=
+Date: Fri, 9 Feb 2018 10:29:08 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20180208232908.GD11634@umbus.fritz.box>
+References: <20180130131716.5899D7456D5@zero.eik.bme.hu>
+	<20180130194935.GL12900@umbus>
+	<alpine.BSF.2.21.1802011250090.39992@zero.eik.bme.hu>
 MIME-Version: 1.0
-Received: by 10.157.34.163 with HTTP; Thu, 8 Feb 2018 08:52:51 -0800 (PST)
-In-Reply-To: <20180208162447.10851-1-marcandre.lureau@redhat.com>
-References: <20180208162447.10851-1-marcandre.lureau@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2018 16:52:51 +0000
-Message-ID: <CAFEAcA_WixzeBt-pJtgpqptd47nAq40GYPxqH4r0VpH8V6qENQ@mail.gmail.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: fix spelling
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Hf61M2y+wYpnELGG"
+Content-Disposition: inline
+In-Reply-To: <alpine.BSF.2.21.1802011250090.39992@zero.eik.bme.hu>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-trivial] [PATCH] sii3112: Change angle brackets to quotes
+ in #include lines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,40 +51,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Feb 2018 16:53:19 -0000
+X-List-Received-Date: Thu, 08 Feb 2018 23:29:52 -0000
 
-On 8 February 2018 at 16:24, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
-> s/pupulate/populate
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  util/qemu-coroutine-lock.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/util/qemu-coroutine-lock.c b/util/qemu-coroutine-lock.c
-> index 846ff9167f..3d0152ebec 100644
-> --- a/util/qemu-coroutine-lock.c
-> +++ b/util/qemu-coroutine-lock.c
-> @@ -87,7 +87,7 @@ void qemu_co_queue_run_restart(Coroutine *co)
->       * invalid memory.  Therefore, use a temporary queue and do not touc=
-h
->       * the "co" coroutine as soon as you enter another one.
->       *
-> -     * In its turn resumed "co" can pupulate "co_queue_wakeup" queue wit=
-h
-> +     * In its turn resumed "co" can populate "co_queue_wakeup" queue wit=
-h
->       * new coroutines to be woken up.  The caller, who has resumed "co",
->       * will be responsible for traversing the same queue, which may caus=
-e
->       * a different wakeup order but not any missing wakeups.
-> --
-> 2.16.1.73.g5832b7e9f2
->
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+--Hf61M2y+wYpnELGG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-thanks
--- PMM
+On Thu, Feb 01, 2018 at 12:51:04PM +0100, BALATON Zoltan wrote:
+> On Wed, 31 Jan 2018, David Gibson wrote:
+> > On Tue, Jan 30, 2018 at 02:10:10PM +0100, BALATON Zoltan wrote:
+> > > This matches what other files do for qemu includes
+> > >=20
+> > > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> >=20
+> > Applied, thanks.
+>=20
+> Thanks but Markus instead included this in his cleanup patches here:
+> http://lists.nongnu.org/archive/html/qemu-devel/2018-02/msg00075.html
+> so you can drop this from your tree now.
+
+Ok, done.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--Hf61M2y+wYpnELGG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlp83UQACgkQbDjKyiDZ
+s5IspBAAsia6f+f/NNkZBp28CoAD83341pLadU9y238RKiLf8DN3Kw1RFgltLcFn
+O4+dX36mNeueEQ9Yr4R7N30rs/oEkIjA0xIff/92EeiTDWj69iwAKWNfirNGvUNA
+Kk9XB2g5LiBfFHiBXPud2VPp2vSJC4aMauYgIxyE8+MSwTiIDCyC/eyrDPU4akmj
+h33KAfopAg66/0T4LMOV9wy2Pvk6JW/1DKKmczA23spbaDnUfZPoHOR+tFvWz614
+l6yR3hjBlrelb2RMN1FEf+QZQWVDPGWw8mkmJZhSt2yKZX38sB4vNoLlbJPj0d15
+9QBOjV+Y2QiXndWj6ojh3/T8g0ol0L2b3R+u381Q/3p840UFUwy8uHQ6WVOVOc1j
+Ka/FmVaGroQBnJZRwjbGhHjejlU5sQh35HZ8AvlpXgbSN3TrjQDX9B6CE5F/u57g
+T4zfHcMN2jgSC3MzZWVuCyE9SmLw3mTs8q8MBiIn8FCzRVzqJQHDpfuYdX0A3/tS
+5EWsxrV1+aUbm5idAriIso70TVgf3kwew6Hcadqtl08NYOKmjjEEiLjP1rho0sPL
+chlvGEnOQyY+SPwAZ/vSGgzpXNVBpz+OWFoCjBHGorS3jtnnALOLUoY69SCSJuWm
+Op4LE9MINz06MtrPQgnZyGCq4g4e6zfB66vJWX6N3vO2wGO0B34=
+=LRdY
+-----END PGP SIGNATURE-----
+
+--Hf61M2y+wYpnELGG--
 
