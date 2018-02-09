@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekFfi-0002za-4e
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2018 15:53:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41254)
+	id 1ekFjs-0005kI-QK
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2018 15:57:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42632)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ekFff-0002xq-G6
-	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:53:24 -0500
+	(envelope-from <eblake@redhat.com>) id 1ekFjq-0005iX-3l
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:57:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ekFfe-000351-JK
-	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:53:23 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47032 helo=mx1.redhat.com)
+	(envelope-from <eblake@redhat.com>) id 1ekFjo-0005ix-Q3
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:57:42 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44298 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1ekFfZ-00033Y-7Z; Fri, 09 Feb 2018 15:53:17 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1ekFjj-0005Xj-Dk; Fri, 09 Feb 2018 15:57:35 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 965A18182D0A;
-	Fri,  9 Feb 2018 20:53:06 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D98EA4022905;
+	Fri,  9 Feb 2018 20:57:34 +0000 (UTC)
 Received: from [10.10.122.122] (ovpn-122-122.rdu2.redhat.com [10.10.122.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0BC22FA2AF;
-	Fri,  9 Feb 2018 20:52:59 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2CED02166BAE;
+	Fri,  9 Feb 2018 20:57:34 +0000 (UTC)
 To: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20180209193138.97198-1-yasmins@linux.vnet.ibm.com>
+References: <20180209202621.97852-1-yasmins@linux.vnet.ibm.com>
 Cc: qemu-trivial@nongnu.org, joserz@linux.vnet.ibm.com
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <c8cf6861-042a-4c6e-0163-b49b38b577d3@redhat.com>
-Date: Fri, 9 Feb 2018 14:52:59 -0600
+Message-ID: <baf09d46-934f-1f82-1f68-21ae22ffd2f9@redhat.com>
+Date: Fri, 9 Feb 2018 14:57:33 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180209193138.97198-1-yasmins@linux.vnet.ibm.com>
+In-Reply-To: <20180209202621.97852-1-yasmins@linux.vnet.ibm.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 09 Feb 2018 20:53:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 09 Feb 2018 20:53:06 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 20:57:34 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 20:57:34 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] dump: Show custom message
- for ENOSPC
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: Show custom
+ message for ENOSPC
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,9 +60,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2018 20:53:24 -0000
+X-List-Received-Date: Fri, 09 Feb 2018 20:57:43 -0000
 
-On 02/09/2018 01:31 PM, Yasmin Beatriz wrote:
+On 02/09/2018 02:26 PM, Yasmin Beatriz wrote:
 > This patch intends to make a more specific message for when
 > the system has not enough space to save guest memory.
 > 
@@ -70,38 +70,23 @@ On 02/09/2018 01:31 PM, Yasmin Beatriz wrote:
 > Cc: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
 > Signed-off-by: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>
 > ---
->   dump.c | 9 ++++++++-
->   1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/dump.c b/dump.c
-> index e9dfed060a..eb56ff53f6 100644
-> --- a/dump.c
-> +++ b/dump.c
-> @@ -106,6 +106,9 @@ static int fd_write_vmcore(const void *buf, size_t size, void *opaque)
->   
->       written_size = qemu_write_full(s->fd, buf, size);
->       if (written_size != size) {
-> +        if (errno == ENOSPC) {
-> +            return -ENOSPC;
-> +        }
->           return -1;
 
-Mixing a return of -1 and negative errno is ugly (as -1 is 
-indistinguishable from -EPERM on many, but not all, operating systems). 
-If you need to distinguish between different error types, then return 
-negative errno in all places.
-
->       }
->   
-> @@ -364,7 +367,11 @@ static void write_data(DumpState *s, void *buf, int length, Error **errp)
+> @@ -364,7 +364,11 @@ static void write_data(DumpState *s, void *buf, int length, Error **errp)
 >   
 >       ret = fd_write_vmcore(buf, length, s);
 >       if (ret < 0) {
 > -        error_setg(errp, "dump: failed to save memory");
+> +        if (ret == -ENOSPC) {
+> +            error_setg(errp, "dump: not enough space to save memory");
+> +        } else {
+> +            error_setg(errp, "dump: failed to save memory");
+> +        }
 
-Or, if you really want better error messages, it might make sense to 
-push errp setting down into fd_write_vmcore() (all callers have to be 
-updated).
+Why is this caller the only one in the file that gets distinguished 
+error messages?  And why not use error_setg_errno() instead of 
+open-coding just one special errno value?  If you're changing the return 
+value of fd_write_vmcore() anyways, I'd suggest that ALL callers in the 
+file be updated to use error_setg_errno().
 
 -- 
 Eric Blake, Principal Software Engineer
