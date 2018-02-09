@@ -1,45 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ejvdY-0001FM-Mm
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Feb 2018 18:29:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32958)
+	id 1ek96E-0002Uh-W1
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2018 08:52:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ejvdW-0001Do-QW
-	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 18:29:51 -0500
+	(envelope-from <stefanha@redhat.com>) id 1ek96C-0002Sd-34
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 08:52:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ejvdV-0001ZW-QC
-	for qemu-trivial@nongnu.org; Thu, 08 Feb 2018 18:29:50 -0500
-Received: from ozlabs.org ([103.22.144.67]:34143)
+	(envelope-from <stefanha@redhat.com>) id 1ek96B-0005TI-8y
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 08:52:20 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60316 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1ejvdS-0001Wa-Ev; Thu, 08 Feb 2018 18:29:46 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3zcvYN0nT6z9s4q; Fri,  9 Feb 2018 10:29:44 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1518132584;
-	bh=NHmhrqS/K118+ne/g/gjlpblmfc9EJ8vwqua5Oj0imk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Bbmr1jjCOVWEgVl02I9scNKMhSIzJQOurWevNFEi1QLmH3cxJPKoozWyUKafbPgU0
-	86TKBRBy5awUDzYbmNt7zY6KsYQA0iWJKGZwJlyywX/zP8VD5EWY4zo/qy8JBS+5d2
-	JgZIR/2BdlyFJ8OEsJr1cUsJ9t/rDeKP2Doomaxc=
-Date: Fri, 9 Feb 2018 10:29:08 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20180208232908.GD11634@umbus.fritz.box>
-References: <20180130131716.5899D7456D5@zero.eik.bme.hu>
-	<20180130194935.GL12900@umbus>
-	<alpine.BSF.2.21.1802011250090.39992@zero.eik.bme.hu>
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1ek965-0005Mi-Jj; Fri, 09 Feb 2018 08:52:13 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2673C4022905;
+	Fri,  9 Feb 2018 13:52:13 +0000 (UTC)
+Received: from localhost (ovpn-117-210.ams2.redhat.com [10.36.117.210])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8E511F41C0;
+	Fri,  9 Feb 2018 13:52:10 +0000 (UTC)
+Date: Fri, 9 Feb 2018 10:16:30 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>
+Message-ID: <20180209101630.GB30827@stefanha-x1.localdomain>
+References: <20180208162447.10851-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Hf61M2y+wYpnELGG"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="eJnRUKwClWJh1Khz"
 Content-Disposition: inline
-In-Reply-To: <alpine.BSF.2.21.1802011250090.39992@zero.eik.bme.hu>
+In-Reply-To: <20180208162447.10851-1-marcandre.lureau@redhat.com>
 User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 13:52:13 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 09 Feb 2018 13:52:13 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-trivial] [PATCH] sii3112: Change angle brackets to quotes
- in #include lines
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH] misc: fix spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,54 +57,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Feb 2018 23:29:52 -0000
+X-List-Received-Date: Fri, 09 Feb 2018 13:52:21 -0000
 
 
---Hf61M2y+wYpnELGG
-Content-Type: text/plain; charset=us-ascii
+--eJnRUKwClWJh1Khz
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Feb 01, 2018 at 12:51:04PM +0100, BALATON Zoltan wrote:
-> On Wed, 31 Jan 2018, David Gibson wrote:
-> > On Tue, Jan 30, 2018 at 02:10:10PM +0100, BALATON Zoltan wrote:
-> > > This matches what other files do for qemu includes
-> > >=20
-> > > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> >=20
-> > Applied, thanks.
+On Thu, Feb 08, 2018 at 05:24:47PM +0100, Marc-Andr=E9 Lureau wrote:
+> s/pupulate/populate
 >=20
-> Thanks but Markus instead included this in his cleanup patches here:
-> http://lists.nongnu.org/archive/html/qemu-devel/2018-02/msg00075.html
-> so you can drop this from your tree now.
+> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  util/qemu-coroutine-lock.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Ok, done.
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Stefan
 
---Hf61M2y+wYpnELGG
+--eJnRUKwClWJh1Khz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlp83UQACgkQbDjKyiDZ
-s5IspBAAsia6f+f/NNkZBp28CoAD83341pLadU9y238RKiLf8DN3Kw1RFgltLcFn
-O4+dX36mNeueEQ9Yr4R7N30rs/oEkIjA0xIff/92EeiTDWj69iwAKWNfirNGvUNA
-Kk9XB2g5LiBfFHiBXPud2VPp2vSJC4aMauYgIxyE8+MSwTiIDCyC/eyrDPU4akmj
-h33KAfopAg66/0T4LMOV9wy2Pvk6JW/1DKKmczA23spbaDnUfZPoHOR+tFvWz614
-l6yR3hjBlrelb2RMN1FEf+QZQWVDPGWw8mkmJZhSt2yKZX38sB4vNoLlbJPj0d15
-9QBOjV+Y2QiXndWj6ojh3/T8g0ol0L2b3R+u381Q/3p840UFUwy8uHQ6WVOVOc1j
-Ka/FmVaGroQBnJZRwjbGhHjejlU5sQh35HZ8AvlpXgbSN3TrjQDX9B6CE5F/u57g
-T4zfHcMN2jgSC3MzZWVuCyE9SmLw3mTs8q8MBiIn8FCzRVzqJQHDpfuYdX0A3/tS
-5EWsxrV1+aUbm5idAriIso70TVgf3kwew6Hcadqtl08NYOKmjjEEiLjP1rho0sPL
-chlvGEnOQyY+SPwAZ/vSGgzpXNVBpz+OWFoCjBHGorS3jtnnALOLUoY69SCSJuWm
-Op4LE9MINz06MtrPQgnZyGCq4g4e6zfB66vJWX6N3vO2wGO0B34=
-=LRdY
+iQEcBAEBAgAGBQJafXT+AAoJEJykq7OBq3PIIocH/jkdS/XpdqTzQaQFgaW0MBET
+wIMLchHdZAWbia50ZAZK6O/s+OqxE24tKG05jQJwPZocARM9aF63ODPbzaMSEE+p
+1FfRcv03Xe5HwUL0kNrgO7UxZ8zwzEBu+nRIAbcUBnq3F6BNJyW0lH29/9DkTt5v
+vwKDklqlWuptTHVLmQnMYcC4KE2EOrNsP1dpFipfIo7jSGHFSrYw7LJNjLHscnjd
+8s+G6wC/8i93D3uk2z5kmdmVwz3KRcKxYR2w/eTP7BE1TheaELUCj4di2/TsFRL9
+eVBpwFO7e5FSdxHKj/ZVsfoMPaPBtzPRxJumQDTonq7U3Q99a7j4ppzEYP8w1f8=
+=z0qL
 -----END PGP SIGNATURE-----
 
---Hf61M2y+wYpnELGG--
+--eJnRUKwClWJh1Khz--
 
