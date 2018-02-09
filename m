@@ -1,52 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekFjs-0005kI-QK
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2018 15:57:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42632)
+	id 1ekGLh-0001vS-QW
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2018 16:36:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ekFjq-0005iX-3l
-	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:57:43 -0500
+	(envelope-from <joserz@linux.vnet.ibm.com>) id 1ekGLe-0001tr-Bs
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 16:36:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ekFjo-0005ix-Q3
-	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 15:57:42 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44298 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1ekFjj-0005Xj-Dk; Fri, 09 Feb 2018 15:57:35 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D98EA4022905;
-	Fri,  9 Feb 2018 20:57:34 +0000 (UTC)
-Received: from [10.10.122.122] (ovpn-122-122.rdu2.redhat.com [10.10.122.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2CED02166BAE;
-	Fri,  9 Feb 2018 20:57:34 +0000 (UTC)
-To: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+	(envelope-from <joserz@linux.vnet.ibm.com>) id 1ekGLb-0000qH-77
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 16:36:46 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:40430
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <joserz@linux.vnet.ibm.com>)
+	id 1ekGLb-0000po-0Y
+	for qemu-trivial@nongnu.org; Fri, 09 Feb 2018 16:36:43 -0500
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.22/8.16.0.22) with SMTP id
+	w19LY6Gx045056
+	for <qemu-trivial@nongnu.org>; Fri, 9 Feb 2018 16:36:41 -0500
+Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2g1fqx94du-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Fri, 09 Feb 2018 16:36:40 -0500
+Received: from localhost
+	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <joserz@linux.vnet.ibm.com>;
+	Fri, 9 Feb 2018 16:36:40 -0500
+Received: from b01cxnp23034.gho.pok.ibm.com (9.57.198.29)
+	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 9 Feb 2018 16:36:39 -0500
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+	[9.57.199.109])
+	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	w19LaciS47710260; Fri, 9 Feb 2018 21:36:38 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 15FC0112040;
+	Fri,  9 Feb 2018 16:34:41 -0500 (EST)
+Received: from pacoca (unknown [9.80.226.196])
+	by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTPS id 886BA112034;
+	Fri,  9 Feb 2018 16:34:39 -0500 (EST)
+Date: Fri, 9 Feb 2018 19:36:31 -0200
+From: joserz@linux.vnet.ibm.com
+To: Eric Blake <eblake@redhat.com>
+Cc: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org
 References: <20180209202621.97852-1-yasmins@linux.vnet.ibm.com>
-Cc: qemu-trivial@nongnu.org, joserz@linux.vnet.ibm.com
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <baf09d46-934f-1f82-1f68-21ae22ffd2f9@redhat.com>
-Date: Fri, 9 Feb 2018 14:57:33 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	<baf09d46-934f-1f82-1f68-21ae22ffd2f9@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20180209202621.97852-1-yasmins@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 09 Feb 2018 20:57:34 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 09 Feb 2018 20:57:34 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <baf09d46-934f-1f82-1f68-21ae22ffd2f9@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-TM-AS-GCONF: 00
+x-cbid: 18020921-0008-0000-0000-000002CF5FEA
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00008506; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000251; SDB=6.00987373; UDB=6.00501170;
+	IPR=6.00766730; 
+	BA=6.00005821; NDR=6.00000001; ZLA=6.00000005; ZF=6.00000009;
+	ZB=6.00000000; 
+	ZP=6.00000000; ZH=6.00000000; ZU=6.00000002; MB=3.00019468;
+	XFM=3.00000015; UTC=2018-02-09 21:36:40
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 18020921-0009-0000-0000-00003834D8FC
+Message-Id: <20180209213631.GA23661@pacoca>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2018-02-09_11:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 impostorscore=0 adultscore=0
+	classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1709140000
+	definitions=main-1802090273
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] dump: Show custom
  message for ENOSPC
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,36 +90,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2018 20:57:43 -0000
+X-List-Received-Date: Fri, 09 Feb 2018 21:36:47 -0000
 
-On 02/09/2018 02:26 PM, Yasmin Beatriz wrote:
-> This patch intends to make a more specific message for when
-> the system has not enough space to save guest memory.
+On Fri, Feb 09, 2018 at 02:57:33PM -0600, Eric Blake wrote:
+> On 02/09/2018 02:26 PM, Yasmin Beatriz wrote:
+> > This patch intends to make a more specific message for when
+> > the system has not enough space to save guest memory.
+> > 
+> > Reported-by: yilzhang@redhat.com
+> > Cc: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
+> > Signed-off-by: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>
+> > ---
 > 
-> Reported-by: yilzhang@redhat.com
-> Cc: Jose Ricardo Ziviani <joserz@linux.vnet.ibm.com>
-> Signed-off-by: Yasmin Beatriz <yasmins@linux.vnet.ibm.com>
-> ---
+> > @@ -364,7 +364,11 @@ static void write_data(DumpState *s, void *buf, int length, Error **errp)
+> >       ret = fd_write_vmcore(buf, length, s);
+> >       if (ret < 0) {
+> > -        error_setg(errp, "dump: failed to save memory");
+> > +        if (ret == -ENOSPC) {
+> > +            error_setg(errp, "dump: not enough space to save memory");
+> > +        } else {
+> > +            error_setg(errp, "dump: failed to save memory");
+> > +        }
+> 
+> Why is this caller the only one in the file that gets distinguished error
+> messages?  And why not use error_setg_errno() instead of open-coding just
+> one special errno value?  If you're changing the return value of
+> fd_write_vmcore() anyways, I'd suggest that ALL callers in the file be
+> updated to use error_setg_errno().
 
-> @@ -364,7 +364,11 @@ static void write_data(DumpState *s, void *buf, int length, Error **errp)
->   
->       ret = fd_write_vmcore(buf, length, s);
->       if (ret < 0) {
-> -        error_setg(errp, "dump: failed to save memory");
-> +        if (ret == -ENOSPC) {
-> +            error_setg(errp, "dump: not enough space to save memory");
-> +        } else {
-> +            error_setg(errp, "dump: failed to save memory");
-> +        }
+Hello Eric, thanks for reviewing it! :)
 
-Why is this caller the only one in the file that gets distinguished 
-error messages?  And why not use error_setg_errno() instead of 
-open-coding just one special errno value?  If you're changing the return 
-value of fd_write_vmcore() anyways, I'd suggest that ALL callers in the 
-file be updated to use error_setg_errno().
+Yes, only this part has this distiguished error handling because
+the whole big amount of data is managed in here, as far as we can tell
+it.
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+It's triggered when you have one of those huge memory guests that
+crashes and want to dump its memory into a host that can't offer all
+these requirements. AFAIK, other callers doesn't handle so much data,
+so we decided to handle only in this part to be the less intrusive
+possible.
+
+Your suggestions will be applied then!
+
+> 
+> -- 
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org
+> 
+
 
