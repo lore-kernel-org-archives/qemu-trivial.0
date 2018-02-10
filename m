@@ -1,43 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekQHf-0007Vr-0d
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 03:13:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60484)
+	id 1ekYoq-0005MH-NJ
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 12:20:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQHY-0007Ni-D1
-	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:13:14 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1ekYom-0005KR-JE
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 12:20:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQHV-0003NC-Jx
-	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:13:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:51315)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>)
-	id 1ekQHQ-0003HO-ML; Sat, 10 Feb 2018 03:13:04 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C428E40C59;
-	Sat, 10 Feb 2018 11:13:02 +0300 (MSK)
-Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 17AAF758;
-	Sat, 10 Feb 2018 10:55:16 +0300 (MSK)
-Received: (nullmailer pid 22794 invoked by uid 1000);
-	Sat, 10 Feb 2018 07:55:14 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat, 10 Feb 2018 10:54:59 +0300
-Message-Id: <38272f2d02fb855a2f76c510d4386f699b88cae5.1518249254.git.mjt@msgid.tls.msk.ru>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
-References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
-In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
-References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
+	(envelope-from <richard.henderson@linaro.org>) id 1ekYoi-0001BW-O9
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 12:20:04 -0500
+Received: from mail-pf0-x231.google.com ([2607:f8b0:400e:c00::231]:46399)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1ekYoi-0001A6-Hk
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 12:20:00 -0500
+Received: by mail-pf0-x231.google.com with SMTP id z79so2498843pff.13
+	for <qemu-trivial@nongnu.org>; Sat, 10 Feb 2018 09:20:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:references:from:message-id:date:user-agent:mime-version
+	:in-reply-to:content-language:content-transfer-encoding;
+	bh=Y4brWbiPhk9l+yts/pq/+QE/eVU0EbM8hDo67+M00bc=;
+	b=ZXWl77rFlmPqXFGWK4ryG11QH2HhAP0J+ofg0TSQemHij7rM14Ec/ruLi7UnQ5bRm8
+	hnbG+YZ4TUuU7N7fXZuQAN74wOaso0CNzjJ4QJj2nVJU+mhaHAZA8W2GtNzPgORdCMz/
+	OIXO8h2guh187EU+rOhxeuM3PBB+94PfsbXjk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Y4brWbiPhk9l+yts/pq/+QE/eVU0EbM8hDo67+M00bc=;
+	b=nDggPZiHgjeUIXxeCs113Uq5sYCd49Ydhcz7n7skjhvgWPw41N93Z6+IyT6VTqUdwY
+	8bNJoXlIkhUytVHbVNH/FEE+luldVM2jn9AUzHmPuRvpFkR5iLjOOTOWeY5NzRvBXlSR
+	4ou9GvY1gH1gYHlDoth7tT+hW35N/PA0hpfjB45qUgGjxDlEUfcraS38MBsDzat1Y71j
+	eBmvUOXP9Hbxnuu0Oy5FuvzY5JnmqG5tUu1+8AdIarEuYp/Ypu7X+/y2NzfSVGJk0+lG
+	G7L8fjilnGJreXxXjrM9xwIndCbBlIzjxnpTABTpOhtviItjvpUwjg1QtY8L9MDd7mMd
+	MZ3A==
+X-Gm-Message-State: APf1xPCSNU9CAGRPk7iV/1k6/EuOGWhchgsMro4C1exumsmEicGgOrJT
+	PeXUI9HhCPGdnUbzqd6k46ICcg==
+X-Google-Smtp-Source: AH8x225wq/k1PNDVUuw83ZUE95IFXjg/q6YOdu7WtHJCCZdsrukLd+Kqt78c6h6hALPiB3Yiv+a+zA==
+X-Received: by 10.99.110.206 with SMTP id j197mr5358772pgc.152.1518283199103; 
+	Sat, 10 Feb 2018 09:19:59 -0800 (PST)
+Received: from cloudburst.twiddle.net (174-21-6-47.tukw.qwest.net.
+	[174.21.6.47]) by smtp.gmail.com with ESMTPSA id
+	q16sm15993222pfg.43.2018.02.10.09.19.57
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 10 Feb 2018 09:19:58 -0800 (PST)
+To: Michael Tokarev <mjt@tls.msk.ru>, info@mobile-stream.com,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
+References: <1954640316.20171226142913@mobile-stream.com>
+	<751c9675-7e93-a907-4b9e-998c50155e84@msgid.tls.msk.ru>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <29427bc8-d37d-a20c-e0ed-aaebffd1c265@linaro.org>
+Date: Sat, 10 Feb 2018 09:19:55 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 04/17] Drop unneeded system header includes
+In-Reply-To: <751c9675-7e93-a907-4b9e-998c50155e84@msgid.tls.msk.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::231
+Subject: Re: [Qemu-trivial] [Qemu-devel] fix evsrwu and others for powerpcspe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,57 +74,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Feb 2018 08:13:15 -0000
+X-List-Received-Date: Sat, 10 Feb 2018 17:20:07 -0000
 
-From: Eric Blake <eblake@redhat.com>
+On 02/09/2018 11:25 PM, Michael Tokarev wrote:
+> 26.12.2017 14:29, info@mobile-stream.com wrote:
+>> GEN_SPEOP_ARITH2 declares non-local temporaries then calls gen_op_evsrwu/evsrws/evslw which generates branch insn.
+> 
+> I'm Cc'ing qemu-devel@ for review, since I don't know much about how ppc works.
+> 
+> Thanks,
+> 
+> /mjt
+> 
+>> --- target/ppc/translate/spe-impl.inc.c.orig
+>> +++ target/ppc/translate/spe-impl.inc.c
+>> @@ -158,8 +158,8 @@
+>>          gen_exception(ctx, POWERPC_EXCP_SPEU);                                \
+>>          return;                                                               \
+>>      }                                                                         \
+>> -    t0 = tcg_temp_new_i32();                                                  \
+>> -    t1 = tcg_temp_new_i32();                                                  \
+>> +    t0 = tcg_temp_local_new_i32();                                                  \
+>> +    t1 = tcg_temp_local_new_i32();                                                  \
 
-<memory.h> is a non-standard obsolete header that was long ago
-replaced by <string.h>.
+While that's one possible solution, it would be better to rewrite the helpers
+not to use branches.  E.g.
 
-<malloc.h> is a non-standard header; it is not obsolete (we must
-use it for malloc_trim, for example), but generally should not
-be used in files that just need malloc() and friends, where
-<stdlib.h> is the standard header.
+    tcg_gen_andi_i32(t0, arg2, 0x1f);
+    tcg_gen_andi_i32(t1, arg2, 0x20);
+    tcg_gen_shr_i32(ret, arg1, t0);
+    tcg_gen_movi_i32(t0, 0);
+    tcg_gen_movcond_i32(TCG_COND_NE, ret, t1, t0, t0, ret);
 
-And since osdep.h already guarantees string.h and stdlib.h, we
-can drop these unusual system header includes as redundant
-rather than replacing them.
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- target/i386/hax-windows.h | 2 --
- target/i386/hvf/x86_mmu.c | 1 -
- 2 files changed, 3 deletions(-)
-
-diff --git a/target/i386/hax-windows.h b/target/i386/hax-windows.h
-index 004f867694..20e2f85407 100644
---- a/target/i386/hax-windows.h
-+++ b/target/i386/hax-windows.h
-@@ -20,8 +20,6 @@
- #ifndef TARGET_I386_HAX_WINDOWS_H
- #define TARGET_I386_HAX_WINDOWS_H
-=20
--#include <memory.h>
--#include <malloc.h>
- #include <winioctl.h>
- #include <windef.h>
-=20
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index c6be2cca35..d5a0efe718 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -17,7 +17,6 @@
-  */
-=20
- #include "qemu/osdep.h"
--#include <memory.h>
- #include "panic.h"
- #include "qemu-common.h"
- #include "cpu.h"
---=20
-2.11.0
-
+r~
 
