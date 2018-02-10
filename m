@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekQ0N-0002m6-F9
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 02:55:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44089)
+	id 1ekQ7v-0000DM-I1
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 03:03:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ0K-0002he-1q
-	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 02:55:25 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7s-00009g-OX
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ0I-0000j4-0a
-	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 02:55:24 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:57163)
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7q-0000fQ-LW
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:12 -0500
+Received: from isrv.corpit.ru ([86.62.121.231]:47669)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ekQ0B-0000dF-EA; Sat, 10 Feb 2018 02:55:15 -0500
+	id 1ekQ7k-0000VK-9v; Sat, 10 Feb 2018 03:03:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 5129240C57;
-	Sat, 10 Feb 2018 10:55:14 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id 8C6EE40C58;
+	Sat, 10 Feb 2018 11:03:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id CCE9E7AC;
-	Sat, 10 Feb 2018 10:55:15 +0300 (MSK)
-Received: (nullmailer pid 22798 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id 939F17B4;
+	Sat, 10 Feb 2018 10:55:16 +0300 (MSK)
+Received: (nullmailer pid 22817 invoked by uid 1000);
 	Sat, 10 Feb 2018 07:55:14 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat, 10 Feb 2018 10:55:01 +0300
-Message-Id: <16fdc56a690be9dec55435365a4afbb52befb956.1518249254.git.mjt@msgid.tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Sat, 10 Feb 2018 10:55:10 +0300
+Message-Id: <f96c18965ced5f5502c9547d12f07a255062e4f1.1518249254.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 06/17] qemu-options.hx: Remove confusing
- spaces in parameter listings
+Subject: [Qemu-trivial] [PULL 15/17] tests/hbitmap: use ARRAY_SIZE macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,221 +49,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Feb 2018 07:55:25 -0000
+X-List-Received-Date: Sat, 10 Feb 2018 08:03:14 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-The spaces between the parameters in the chardev and tpmdev sections
-are rather confusing than helpful, and prevent that the lists can be
-copy-n-pasted easily for real usage. We also don't use such spaces
-in other sections in the documentation, e.g. with the -netdev option,
-so let's be consistent and remove the spaces in the chardev and tpmdev
-sections, too.
+Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.=
+cocci
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
 ---
- qemu-options.hx | 48 ++++++++++++++++++++++++------------------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+ tests/test-hbitmap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index d15c1713d1..5050a49a5e 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2522,7 +2522,7 @@ STEXI
- 
- The general form of a character device option is:
- @table @option
--@item -chardev @var{backend} ,id=@var{id} [,mux=on|off] [,@var{options}]
-+@item -chardev @var{backend},id=@var{id}[,mux=on|off][,@var{options}]
- @findex -chardev
- Backend is one of:
- @option{null},
-@@ -2541,7 +2541,7 @@ Backend is one of:
- @option{tty},
- @option{parallel},
- @option{parport},
--@option{spicevmc}.
-+@option{spicevmc},
- @option{spiceport}.
- The specific backend will determine the applicable options.
- 
-@@ -2605,11 +2605,11 @@ opened.
- The available backends are:
- 
- @table @option
--@item -chardev null ,id=@var{id}
-+@item -chardev null,id=@var{id}
- A void device. This device will not emit any data, and will drop any data it
- receives. The null backend does not take any options.
- 
--@item -chardev socket ,id=@var{id} [@var{TCP options} or @var{unix options}] [,server] [,nowait] [,telnet] [,reconnect=@var{seconds}] [,tls-creds=@var{id}]
-+@item -chardev socket,id=@var{id}[,@var{TCP options} or @var{unix options}][,server][,nowait][,telnet][,reconnect=@var{seconds}][,tls-creds=@var{id}]
- 
- Create a two-way stream socket, which can be either a TCP or a unix socket. A
- unix socket will be created if @option{path} is specified. Behaviour is
-@@ -2636,7 +2636,7 @@ TCP and unix socket options are given below:
- 
- @table @option
- 
--@item TCP options: port=@var{port} [,host=@var{host}] [,to=@var{to}] [,ipv4] [,ipv6] [,nodelay]
-+@item TCP options: port=@var{port}[,host=@var{host}][,to=@var{to}][,ipv4][,ipv6][,nodelay]
- 
- @option{host} for a listening socket specifies the local address to be bound.
- For a connecting socket species the remote host to connect to. @option{host} is
-@@ -2664,7 +2664,7 @@ required.
- 
- @end table
- 
--@item -chardev udp ,id=@var{id} [,host=@var{host}] ,port=@var{port} [,localaddr=@var{localaddr}] [,localport=@var{localport}] [,ipv4] [,ipv6]
-+@item -chardev udp,id=@var{id}[,host=@var{host}],port=@var{port}[,localaddr=@var{localaddr}][,localport=@var{localport}][,ipv4][,ipv6]
- 
- Sends all traffic from the guest to a remote host over UDP.
- 
-@@ -2683,12 +2683,12 @@ available local port will be used.
- @option{ipv4} and @option{ipv6} specify that either IPv4 or IPv6 must be used.
- If neither is specified the device may use either protocol.
- 
--@item -chardev msmouse ,id=@var{id}
-+@item -chardev msmouse,id=@var{id}
- 
- Forward QEMU's emulated msmouse events to the guest. @option{msmouse} does not
- take any options.
- 
--@item -chardev vc ,id=@var{id} [[,width=@var{width}] [,height=@var{height}]] [[,cols=@var{cols}] [,rows=@var{rows}]]
-+@item -chardev vc,id=@var{id}[[,width=@var{width}][,height=@var{height}]][[,cols=@var{cols}][,rows=@var{rows}]]
- 
- Connect to a QEMU text console. @option{vc} may optionally be given a specific
- size.
-@@ -2699,12 +2699,12 @@ the console, in pixels.
- @option{cols} and @option{rows} specify that the console be sized to fit a text
- console with the given dimensions.
- 
--@item -chardev ringbuf ,id=@var{id} [,size=@var{size}]
-+@item -chardev ringbuf,id=@var{id}[,size=@var{size}]
- 
- Create a ring buffer with fixed size @option{size}.
- @var{size} must be a power of two and defaults to @code{64K}.
- 
--@item -chardev file ,id=@var{id} ,path=@var{path}
-+@item -chardev file,id=@var{id},path=@var{path}
- 
- Log all traffic received from the guest to a file.
- 
-@@ -2712,7 +2712,7 @@ Log all traffic received from the guest to a file.
- created if it does not already exist, and overwritten if it does. @option{path}
- is required.
- 
--@item -chardev pipe ,id=@var{id} ,path=@var{path}
-+@item -chardev pipe,id=@var{id},path=@var{path}
- 
- Create a two-way connection to the guest. The behaviour differs slightly between
- Windows hosts and other hosts:
-@@ -2729,14 +2729,14 @@ be present.
- @option{path} forms part of the pipe path as described above. @option{path} is
- required.
- 
--@item -chardev console ,id=@var{id}
-+@item -chardev console,id=@var{id}
- 
- Send traffic from the guest to QEMU's standard output. @option{console} does not
- take any options.
- 
- @option{console} is only available on Windows hosts.
- 
--@item -chardev serial ,id=@var{id} ,path=@option{path}
-+@item -chardev serial,id=@var{id},path=@option{path}
- 
- Send traffic from the guest to a serial device on the host.
- 
-@@ -2745,33 +2745,33 @@ not only serial lines.
- 
- @option{path} specifies the name of the serial device to open.
- 
--@item -chardev pty ,id=@var{id}
-+@item -chardev pty,id=@var{id}
- 
- Create a new pseudo-terminal on the host and connect to it. @option{pty} does
- not take any options.
- 
- @option{pty} is not available on Windows hosts.
- 
--@item -chardev stdio ,id=@var{id} [,signal=on|off]
-+@item -chardev stdio,id=@var{id}[,signal=on|off]
- Connect to standard input and standard output of the QEMU process.
- 
- @option{signal} controls if signals are enabled on the terminal, that includes
- exiting QEMU with the key sequence @key{Control-c}. This option is enabled by
- default, use @option{signal=off} to disable it.
- 
--@item -chardev braille ,id=@var{id}
-+@item -chardev braille,id=@var{id}
- 
- Connect to a local BrlAPI server. @option{braille} does not take any options.
- 
--@item -chardev tty ,id=@var{id} ,path=@var{path}
-+@item -chardev tty,id=@var{id},path=@var{path}
- 
- @option{tty} is only available on Linux, Sun, FreeBSD, NetBSD, OpenBSD and
- DragonFlyBSD hosts.  It is an alias for @option{serial}.
- 
- @option{path} specifies the path to the tty. @option{path} is required.
- 
--@item -chardev parallel ,id=@var{id} ,path=@var{path}
--@itemx -chardev parport ,id=@var{id} ,path=@var{path}
-+@item -chardev parallel,id=@var{id},path=@var{path}
-+@itemx -chardev parport,id=@var{id},path=@var{path}
- 
- @option{parallel} is only available on Linux, FreeBSD and DragonFlyBSD hosts.
- 
-@@ -2780,7 +2780,7 @@ Connect to a local parallel port.
- @option{path} specifies the path to the parallel port device. @option{path} is
- required.
- 
--@item -chardev spicevmc ,id=@var{id} ,debug=@var{debug}, name=@var{name}
-+@item -chardev spicevmc,id=@var{id},debug=@var{debug},name=@var{name}
- 
- @option{spicevmc} is only available when spice support is built in.
- 
-@@ -2790,7 +2790,7 @@ required.
- 
- Connect to a spice virtual machine channel, such as vdiport.
- 
--@item -chardev spiceport ,id=@var{id} ,debug=@var{debug}, name=@var{name}
-+@item -chardev spiceport,id=@var{id},debug=@var{debug},name=@var{name}
- 
- @option{spiceport} is only available when spice support is built in.
- 
-@@ -2898,7 +2898,7 @@ STEXI
- The general form of a TPM device option is:
- @table @option
- 
--@item -tpmdev @var{backend} ,id=@var{id} [,@var{options}]
-+@item -tpmdev @var{backend},id=@var{id}[,@var{options}]
- @findex -tpmdev
- 
- The specific backend type will determine the applicable options.
-@@ -2913,7 +2913,7 @@ The available backends are:
- 
- @table @option
- 
--@item -tpmdev passthrough, id=@var{id}, path=@var{path}, cancel-path=@var{cancel-path}
-+@item -tpmdev passthrough,id=@var{id},path=@var{path},cancel-path=@var{cancel-path}
- 
- (Linux-host only) Enable access to the host's TPM using the passthrough
- driver.
-@@ -2950,7 +2950,7 @@ To create a passthrough TPM use the following two options:
- Note that the @code{-tpmdev} id is @code{tpm0} and is referenced by
- @code{tpmdev=tpm0} in the device option.
- 
--@item -tpmdev emulator, id=@var{id}, chardev=@var{dev}
-+@item -tpmdev emulator,id=@var{id},chardev=@var{dev}
- 
- (Linux-host only) Enable access to a TPM emulator using Unix domain socket based
- chardev backend.
--- 
+diff --git a/tests/test-hbitmap.c b/tests/test-hbitmap.c
+index 9091c639b3..f29631f939 100644
+--- a/tests/test-hbitmap.c
++++ b/tests/test-hbitmap.c
+@@ -813,7 +813,7 @@ static void test_hbitmap_serialize_basic(TestHBitmapD=
+ata *data,
+     size_t buf_size;
+     uint8_t *buf;
+     uint64_t positions[] =3D { 0, 1, L1 - 1, L1, L2 - 1, L2, L2 + 1, L3 =
+- 1 };
+-    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
++    int num_positions =3D ARRAY_SIZE(positions);
+=20
+     hbitmap_test_init(data, L3, 0);
+     g_assert(hbitmap_is_serializable(data->hb));
+@@ -838,7 +838,7 @@ static void test_hbitmap_serialize_part(TestHBitmapDa=
+ta *data,
+     size_t buf_size;
+     uint8_t *buf;
+     uint64_t positions[] =3D { 0, 1, L1 - 1, L1, L2 - 1, L2, L2 + 1, L3 =
+- 1 };
+-    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
++    int num_positions =3D ARRAY_SIZE(positions);
+=20
+     hbitmap_test_init(data, L3, 0);
+     buf_size =3D L2;
+@@ -880,7 +880,7 @@ static void test_hbitmap_serialize_zeroes(TestHBitmap=
+Data *data,
+     int64_t next;
+     uint64_t min_l1 =3D MAX(L1, 64);
+     uint64_t positions[] =3D { 0, min_l1, L2, L3 - min_l1};
+-    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
++    int num_positions =3D ARRAY_SIZE(positions);
+=20
+     hbitmap_test_init(data, L3, 0);
+=20
+--=20
 2.11.0
 
 
