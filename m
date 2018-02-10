@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekQ7w-0000FQ-61
+	id 1ekQ7w-0000Fa-CF
 	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 03:03:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51380)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51386)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7s-00008c-26
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7s-00008h-4P
 	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7q-0000ef-Gb
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7q-0000fJ-Kk
 	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:60771)
+Received: from isrv.corpit.ru ([86.62.121.231]:41955)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ekQ7k-0000VD-7u; Sat, 10 Feb 2018 03:03:04 -0500
+	id 1ekQ7k-0000Ux-61; Sat, 10 Feb 2018 03:03:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 7DB5E40C56;
+	by isrv.corpit.ru (Postfix) with ESMTP id 5A2BB40C55;
 	Sat, 10 Feb 2018 11:03:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 0142A7BA;
-	Sat, 10 Feb 2018 10:55:17 +0300 (MSK)
-Received: (nullmailer pid 22820 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id B65577B7;
+	Sat, 10 Feb 2018 10:55:16 +0300 (MSK)
+Received: (nullmailer pid 22807 invoked by uid 1000);
 	Sat, 10 Feb 2018 07:55:14 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat, 10 Feb 2018 10:55:11 +0300
-Message-Id: <9a6555e21a80498aeac28d3276bbde61ddb30c05.1518249254.git.mjt@msgid.tls.msk.ru>
+Cc: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sat, 10 Feb 2018 10:55:05 +0300
+Message-Id: <a348f64d4652d68212886019ca74825aa1667969.1518249254.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 16/17] tests/qapi: use QEMU_IS_ALIGNED macro
+Subject: [Qemu-trivial] [PULL 10/17] maint: Mention web site maintenance in
+ README
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,34 +49,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 10 Feb 2018 08:03:14 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Eric Blake <eblake@redhat.com>
 
-Applied using the Coccinelle semantic patch scripts/coccinelle/use_osdep.=
-cocci
+Now that we have a website that accepts patches on the list, the
+main project should make it easier to find information about that
+process.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Fam Zheng <famz@redhat.com>
 ---
- tests/test-qobject-output-visitor.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ README | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/tests/test-qobject-output-visitor.c b/tests/test-qobject-out=
-put-visitor.c
-index 3cf942414c..11e8c5aa40 100644
---- a/tests/test-qobject-output-visitor.c
-+++ b/tests/test-qobject-output-visitor.c
-@@ -572,7 +572,7 @@ static void init_native_list(UserDefNativeListUnion *=
-cvalue)
-         boolList **list =3D &cvalue->u.boolean.data;
-         for (i =3D 0; i < 32; i++) {
-             *list =3D g_new0(boolList, 1);
--            (*list)->value =3D (i % 3 =3D=3D 0);
-+            (*list)->value =3D QEMU_IS_ALIGNED(i, 3);
-             (*list)->next =3D NULL;
-             list =3D &(*list)->next;
-         }
---=20
+diff --git a/README b/README
+index b92a07a61a..2c8e1c8cc4 100644
+--- a/README
++++ b/README
+@@ -68,6 +68,10 @@ the QEMU website
+   https://qemu.org/Contribute/SubmitAPatch
+   https://qemu.org/Contribute/TrivialPatches
+ 
++The QEMU website is also maintained under source control.
++
++  git clone git://git.qemu.org/qemu-web.git
++  https://www.qemu.org/2017/02/04/the-new-qemu-website-is-up/
+ 
+ Bug reporting
+ =============
+-- 
 2.11.0
 
 
