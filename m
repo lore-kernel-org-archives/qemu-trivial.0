@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ekQ7v-0000DM-I1
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 03:03:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51416)
+	id 1ekQ7v-0000EP-UL
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2018 03:03:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51383)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7s-00009g-OX
-	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:14 -0500
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7s-00008d-3D
+	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7q-0000fQ-LW
+	(envelope-from <mjt@tls.msk.ru>) id 1ekQ7q-0000f5-Js
 	for qemu-trivial@nongnu.org; Sat, 10 Feb 2018 03:03:12 -0500
-Received: from isrv.corpit.ru ([86.62.121.231]:47669)
+Received: from isrv.corpit.ru ([86.62.121.231]:39017)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1ekQ7k-0000VK-9v; Sat, 10 Feb 2018 03:03:04 -0500
+	id 1ekQ7k-0000WE-V9; Sat, 10 Feb 2018 03:03:05 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 8C6EE40C58;
+	by isrv.corpit.ru (Postfix) with ESMTP id 9A35640C59;
 	Sat, 10 Feb 2018 11:03:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 939F17B4;
+	by tsrv.corpit.ru (Postfix) with SMTP id 6BA117A3;
 	Sat, 10 Feb 2018 10:55:16 +0300 (MSK)
-Received: (nullmailer pid 22817 invoked by uid 1000);
+Received: (nullmailer pid 22822 invoked by uid 1000);
 	Sat, 10 Feb 2018 07:55:14 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sat, 10 Feb 2018 10:55:10 +0300
-Message-Id: <f96c18965ced5f5502c9547d12f07a255062e4f1.1518249254.git.mjt@msgid.tls.msk.ru>
+Date: Sat, 10 Feb 2018 10:55:12 +0300
+Message-Id: <d40d74a645feea0ad01482da2358804f6574dce0.1518249254.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
 References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
@@ -37,7 +37,7 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 15/17] tests/hbitmap: use ARRAY_SIZE macro
+Subject: [Qemu-trivial] [PULL 17/17] tests/qapi: use ARRAY_SIZE macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Feb 2018 08:03:14 -0000
+X-List-Received-Date: Sat, 10 Feb 2018 08:03:13 -0000
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -59,47 +59,25 @@ cocci
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: John Snow <jsnow@redhat.com>
 ---
- tests/test-hbitmap.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/test-string-output-visitor.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/test-hbitmap.c b/tests/test-hbitmap.c
-index 9091c639b3..f29631f939 100644
---- a/tests/test-hbitmap.c
-+++ b/tests/test-hbitmap.c
-@@ -813,7 +813,7 @@ static void test_hbitmap_serialize_basic(TestHBitmapD=
+diff --git a/tests/test-string-output-visitor.c b/tests/test-string-outpu=
+t-visitor.c
+index fa4b4ca288..02766c0f65 100644
+--- a/tests/test-string-output-visitor.c
++++ b/tests/test-string-output-visitor.c
+@@ -95,7 +95,7 @@ static void test_visitor_out_intList(TestOutputVisitorD=
 ata *data,
-     size_t buf_size;
-     uint8_t *buf;
-     uint64_t positions[] =3D { 0, 1, L1 - 1, L1, L2 - 1, L2, L2 + 1, L3 =
-- 1 };
--    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
-+    int num_positions =3D ARRAY_SIZE(positions);
+     Error *err =3D NULL;
+     char *str;
 =20
-     hbitmap_test_init(data, L3, 0);
-     g_assert(hbitmap_is_serializable(data->hb));
-@@ -838,7 +838,7 @@ static void test_hbitmap_serialize_part(TestHBitmapDa=
-ta *data,
-     size_t buf_size;
-     uint8_t *buf;
-     uint64_t positions[] =3D { 0, 1, L1 - 1, L1, L2 - 1, L2, L2 + 1, L3 =
-- 1 };
--    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
-+    int num_positions =3D ARRAY_SIZE(positions);
-=20
-     hbitmap_test_init(data, L3, 0);
-     buf_size =3D L2;
-@@ -880,7 +880,7 @@ static void test_hbitmap_serialize_zeroes(TestHBitmap=
-Data *data,
-     int64_t next;
-     uint64_t min_l1 =3D MAX(L1, 64);
-     uint64_t positions[] =3D { 0, min_l1, L2, L3 - min_l1};
--    int num_positions =3D sizeof(positions) / sizeof(positions[0]);
-+    int num_positions =3D ARRAY_SIZE(positions);
-=20
-     hbitmap_test_init(data, L3, 0);
-=20
+-    for (i =3D 0; i < sizeof(value) / sizeof(value[0]); i++) {
++    for (i =3D 0; i < ARRAY_SIZE(value); i++) {
+         *tmp =3D g_malloc0(sizeof(**tmp));
+         (*tmp)->value =3D value[i];
+         tmp =3D &(*tmp)->next;
 --=20
 2.11.0
 
