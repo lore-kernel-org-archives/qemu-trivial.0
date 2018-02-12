@@ -1,41 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1elEw4-0001NH-Kp
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Feb 2018 09:18:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46721)
+	id 1elFTX-0008MH-GI
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Feb 2018 09:52:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46662)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1elEw1-0001JB-Kp
-	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:18:22 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1elFTV-0008K6-Dp
+	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:52:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1elEvy-0003ju-Tp
-	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:18:21 -0500
-Received: from 4.mo179.mail-out.ovh.net ([46.105.36.149]:33673)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1elEvy-0003fw-Ns
-	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:18:18 -0500
-Received: from player755.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 17ABCA1B8A
-	for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2018 15:18:16 +0100 (CET)
-Received: from [192.168.0.243] (lns-bzn-46-82-253-208-248.adsl.proxad.net
-	[82.253.208.248]) (Authenticated sender: groug@kaod.org)
-	by player755.ha.ovh.net (Postfix) with ESMTPA id 4773D2600B2;
-	Mon, 12 Feb 2018 15:18:14 +0100 (CET)
-From: Greg Kurz <groug@kaod.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Date: Mon, 12 Feb 2018 15:18:08 +0100
-Message-ID: <151844508814.7999.5257918627784684957.stgit@bahia>
-User-Agent: StGit/0.17.1-46-g6855-dirty
+	(envelope-from <peter.maydell@linaro.org>) id 1elFTU-0002da-IS
+	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:52:57 -0500
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:39818)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1elFTU-0002cp-DU
+	for qemu-trivial@nongnu.org; Mon, 12 Feb 2018 09:52:56 -0500
+Received: by mail-oi0-x244.google.com with SMTP id j188so11337507oib.6
+	for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2018 06:52:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=1JTWFHccjJGxWdDbTvZFmTI/m+L6wnXeYbUk+stt/O0=;
+	b=Mksxc8ED2mCBEsdctdhy6zzvmFATu3m6+t59U3NRtfwFvlHR0w8aPE/HjQ6JzFE/Z/
+	8c9uYu5X2k45BAdJb1y2Ob7BdJfIuAecKgm2BxLMxTrJw7D7ENIgFv2KK3mFxyXEjv4O
+	eqZNNyWcc8mXZ/b5D2bHzJs6fpD7Sv1Ckv+cc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=1JTWFHccjJGxWdDbTvZFmTI/m+L6wnXeYbUk+stt/O0=;
+	b=WjN2ePc5F1KJQQsXeT2o32vq1l8Eh3EHhASzB6mzkEQgZkbirJ8lAext+veIZeUYMY
+	yhmoVyUCVg7erg/u85E23FhL/0c46bnf+04FC1wFXVl/xZRoYgi9pIP3uSkctneExUHs
+	IFgAN/SqLQc29UklgyU2Gq4pDI7Ge1fb0G35D9Q7Sx3YQlYfn17rvfz0oDRsgCUwDxSY
+	seJySrLqxi9qvPi0nsm+tdMw11By7UkP9EN2jqT6OSRJ3gyFoopZjbgiwj02j+/sDJ0V
+	xXtNwn04NQ5xboh+39KU6fit3D6YFOrLJ/oLrNMKgseUUM7BOkYtEPl1/XZXcep1sBoM
+	7u3g==
+X-Gm-Message-State: APf1xPAFtvJuImB4Nx44XkjhSXrxzjSNlDsmPNLkFlIDfiuWL1YP11gf
+	VbC6ZvFvzpmdhG0XOGhUO8apguOJ4Uu3avHn2VDfNQ==
+X-Google-Smtp-Source: AH8x22795ucOZHfyL7ulqTnbJT7SwVgMEEJqP+asl0UikNI7/b8UQV8viIBNTxjbhNOZhGmbfxb0ifK01Z5rWShEe5I=
+X-Received: by 10.202.244.137 with SMTP id s131mr8355654oih.327.1518447175516; 
+	Mon, 12 Feb 2018 06:52:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 11684589235233331691
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtfedrvdeigdeihecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecu
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.36.149
-Subject: [Qemu-trivial] [PATCH] virtio-pci: trivial fixes in error message
+Received: by 10.157.34.163 with HTTP; Mon, 12 Feb 2018 06:52:35 -0800 (PST)
+In-Reply-To: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
+References: <cover.1518249254.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Feb 2018 14:52:35 +0000
+Message-ID: <CAFEAcA_K6Ybm44JykAvtGDNb_ZKt-EFuC1D8_O9NfFDx4boteA@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/17] Trivial patches for
+ 2018-02-10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,25 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Feb 2018 14:18:23 -0000
+X-List-Received-Date: Mon, 12 Feb 2018 14:52:58 -0000
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
----
- hw/virtio/virtio-pci.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 10 February 2018 at 07:54, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Here's a next pull request for the trivial-patches tree.
+> After a very long delay.
+>
+> Hopefully I still remember how to apply patches :)
+>
+> The following changes since commit c7b02d7d032d6022060e4b393827c963c93ce63f:
+>
+>   Merge remote-tracking branch 'remotes/stsquad/tags/pull-travis-speedup-090218-1' into staging (2018-02-09 16:12:34 +0000)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to d40d74a645feea0ad01482da2358804f6574dce0:
+>
+>   tests/qapi: use ARRAY_SIZE macro (2018-02-10 10:45:14 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2018-02-10
+>
+> ----------------------------------------------------------------
 
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index c20537f31de7..ae3e8e1ca9b8 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -1585,7 +1585,7 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
-     if (legacy) {
-         if (virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
-             error_setg(errp, "VIRTIO_F_IOMMU_PLATFORM was supported by"
--                       "neither legacy nor transitional device.");
-+                       " neither legacy nor transitional device");
-             return ;
-         }
-         /*
+Applied, thanks.
 
+-- PMM
 
