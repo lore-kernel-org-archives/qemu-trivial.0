@@ -1,51 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1em3TW-0000rH-KA
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Feb 2018 15:16:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58704)
+	id 1em3bL-0006A0-ND
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Feb 2018 15:24:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1em3TU-0000or-Ut
-	for qemu-trivial@nongnu.org; Wed, 14 Feb 2018 15:16:18 -0500
+	(envelope-from <eblake@redhat.com>) id 1em3bJ-00068M-8z
+	for qemu-trivial@nongnu.org; Wed, 14 Feb 2018 15:24:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1em3TT-0002Pl-HM
-	for qemu-trivial@nongnu.org; Wed, 14 Feb 2018 15:16:16 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53432 helo=mx1.redhat.com)
+	(envelope-from <eblake@redhat.com>) id 1em3bI-0000F1-8C
+	for qemu-trivial@nongnu.org; Wed, 14 Feb 2018 15:24:21 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53594 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1em3TO-0002Lt-Q2; Wed, 14 Feb 2018 15:16:10 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1em3bD-0008Un-VC; Wed, 14 Feb 2018 15:24:16 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4DA8B402243B;
-	Wed, 14 Feb 2018 20:16:00 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7EF1440201A0;
+	Wed, 14 Feb 2018 20:24:05 +0000 (UTC)
 Received: from [10.10.122.122] (ovpn-122-122.rdu2.redhat.com [10.10.122.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D4AE5FA287;
-	Wed, 14 Feb 2018 20:15:53 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B2E542024CA4;
+	Wed, 14 Feb 2018 20:23:58 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
 References: <1518629505-22480-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA-R0aq7Sp6P2TYrMDE0p0ewwpuXPp6=RzF1bU11FQwJxA@mail.gmail.com>
-	<8d49363d-7569-e95d-1d06-17a572c922db@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <ab218589-ebb1-b7dd-0e99-3db89d6a2f28@redhat.com>
-Date: Wed, 14 Feb 2018 14:15:53 -0600
+Message-ID: <9a9ac3ae-5974-f462-7321-9ae2ad5b78ae@redhat.com>
+Date: Wed, 14 Feb 2018 14:23:58 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <8d49363d-7569-e95d-1d06-17a572c922db@redhat.com>
+In-Reply-To: <1518629505-22480-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.6]);
-	Wed, 14 Feb 2018 20:16:00 +0000 (UTC)
+	Wed, 14 Feb 2018 20:24:05 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Wed, 14 Feb 2018 20:16:00 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	Wed, 14 Feb 2018 20:24:05 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
@@ -63,81 +59,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Feb 2018 20:16:18 -0000
+X-List-Received-Date: Wed, 14 Feb 2018 20:24:22 -0000
 
-On 02/14/2018 02:00 PM, Thomas Huth wrote:
-> On 14.02.2018 19:33, Peter Maydell wrote:
->> On 14 February 2018 at 17:31, Thomas Huth <thuth@redhat.com> wrote:
->>> When running configure with --with-pkgversion=foo there is no
->>> space anymore between the version number and the parentheses:
->>>
->>> $ m68k-softmmu/qemu-system-m68k -version
->>> QEMU emulator version 2.11.50(foo)
-
-It would be nice to document this as '--version' rather than '-version' 
-(both work; but see our BiteSized task: 
-https://wiki.qemu.org/BiteSizedTasks#Consistent_option_usage_in_documentation)
-
->>
->> -- does this patch change the QMP reported string
->> unexpectedly?
+On 02/14/2018 11:31 AM, Thomas Huth wrote:
+> When running configure with --with-pkgversion=foo there is no
+> space anymore between the version number and the parentheses:
 > 
-> Without my patch and with --with-pkgversion=foo :
+> $ m68k-softmmu/qemu-system-m68k -version
+> QEMU emulator version 2.11.50(foo)
 > 
-> { "execute": "query-version" }
-> {"return": {"qemu": {"micro": 50, "minor": 11, "major": 2}, "package": "(foo)"}}
-
-Looks nice.  And the version info is ALSO passed as part of the initial 
-handshake, even before you call query-version.
-
+> Fix it by moving the space from the configure script to the Makefile.
 > 
-> With my patch and with --with-pkgversion=foo :
+> Fixes: 67a1de0d195a6185c39b436159c9ffc7720bf979
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1673373
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   Makefile  | 2 +-
+>   configure | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> { "execute": "query-version" }
-> {"return": {"qemu": {"micro": 50, "minor": 11, "major": 2}, "package": " (foo)"}}
+> diff --git a/Makefile b/Makefile
+> index 4ec7a3c..41adbc9 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -369,7 +369,7 @@ qemu-version.h: FORCE
+>   		(cd $(SRC_PATH); \
+>   		printf '#define QEMU_PKGVERSION '; \
+>   		if test -n "$(PKGVERSION)"; then \
+> -			printf '"$(PKGVERSION)"\n'; \
+> +			printf '" ($(PKGVERSION))"\n'; \
 
-Potential regression (arguably cosmetic, though)
+I would argue that putting a space here is awkward; wouldn't it instead 
+be easier to have all CLIENTS of QEMU_PKGVERSION in the source code 
+assume that the macro does NOT have a leading space, and to supply a 
+space themselves?
 
-> 
-> Without my patch and without --with-pkgversion :
-> 
-> { "execute": "query-version" }
-> {"return": {"qemu": {"micro": 50, "minor": 11, "major": 2}, "package": " (v2.11.0-1512-g02f4fbe)"}}
+That is, change THESE locations:
 
-And that means we're already inconsistent, so your patch at least made 
-things consistent,
+bsd-user/main.c:    printf("qemu-" TARGET_NAME " version " QEMU_VERSION 
+QEMU_PKGVERSION
+linux-user/main.c:    printf("qemu-" TARGET_NAME " version " 
+QEMU_VERSION QEMU_PKGVERSION
+qemu-img.c:#define QEMU_IMG_VERSION "qemu-img version " QEMU_VERSION 
+QEMU_PKGVERSION \
+qemu-io.c:            printf("%s version " QEMU_VERSION QEMU_PKGVERSION "\n"
+qemu-nbd.c:"%s " QEMU_VERSION QEMU_PKGVERSION "\n"
+qga/main.c:"QEMU Guest Agent " QEMU_VERSION QEMU_PKGVERSION "\n"
+scsi/qemu-pr-helper.c:"%s " QEMU_VERSION QEMU_PKGVERSION "\n"
+ui/cocoa.m:    @"QEMU emulator version %s%s", QEMU_VERSION, 
+QEMU_PKGVERSION];
+vl.c:    printf("QEMU emulator version " QEMU_VERSION QEMU_PKGVERSION "\n"
 
-> 
-> Using the old QEMU version 67a1de0d19~1 with  --with-pkgversion=foo :
-> 
-> { "execute": "query-version" }
-> {"return": {"qemu": {"micro": 50, "minor": 6, "major": 2}, "package": " (foo)"}}
+to instead supply the missing space, and have configure/Makefile always 
+generate without a leading space.
 
-and that means we've already "regressed", which further means:
-- it definitely is cosmetic, if no one is complaining
-- changing it to look nicer won't break anyone
+> +++ b/configure
+> @@ -1162,7 +1162,7 @@ for opt do
+>     ;;
+>     --disable-blobs) blobs="no"
+>     ;;
+> -  --with-pkgversion=*) pkgversion=" ($optarg)"
+> +  --with-pkgversion=*) pkgversion="$optarg"
 
-> 
-> So yes, this patch changes the behavior of query-version, but the new
-> behavior is now the same behavior that you get without --with-pkgversion
-> (i.e. a space is included) and it is the same as the behavior that we had
-> in the past, before commit 67a1de0d19 has been merged. So I think this
-> is the right way to go.
-> Alternatively, we could maybe change query-version to always skip the
-> initial space?
+Hmm - here you're changing who supplies the ().  But that argues that 
+maybe the callsites should supply " (" and ")" themselves.
 
-Yes, I like that option.
+Here's how coreutils does it, by using gnulib's version-etc module:
 
-So, if I'm summarizing correctly, your v2 patch will have:
+src/local.mk:     $(AM_V_at)printf 'char const *Version = 
+"$(PACKAGE_VERSION)";\n' >> $@t
 
-$ qemu --version
-QEMU emulator version 2.11.50 (foo)
+src/system.h:    version_etc (stdout, Program_name, PACKAGE_NAME, 
+Version, Authors,
 
-QMP query-version
-{"return": {"qemu": {"micro": 50, "minor": 6, "major": 2}, "package": 
-"(foo)"}}
+version_etc_arn (FILE *stream,
+                  const char *command_name, const char *package,
+                  const char *version,
+                  const char * const * authors, size_t n_authors)
+{
+   if (command_name)
+     fprintf (stream, "%s (%s) %s\n", command_name, package, version);
 
-regardless of whether --with-pkgversion was used during configure.
+which means that the Makefile magic outputs JUST the text that goes 
+inside the (), and the callsite that outputs version information is what 
+supplies the " (" and ")".
 
 -- 
 Eric Blake, Principal Software Engineer
