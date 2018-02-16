@@ -1,64 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1emNT4-0000fI-9k
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2018 12:37:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50755)
+	id 1emiic-00009j-6M
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Feb 2018 11:18:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47452)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1emNT1-0000cs-W9
-	for qemu-trivial@nongnu.org; Thu, 15 Feb 2018 12:37:08 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1emiiX-00006V-SS
+	for qemu-trivial@nongnu.org; Fri, 16 Feb 2018 11:18:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1emNT1-0001fd-9s
-	for qemu-trivial@nongnu.org; Thu, 15 Feb 2018 12:37:08 -0500
-Received: from mail-yw0-x235.google.com ([2607:f8b0:4002:c05::235]:33852)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
-	id 1emNSz-0001eh-DE; Thu, 15 Feb 2018 12:37:05 -0500
-Received: by mail-yw0-x235.google.com with SMTP id z77so295423ywa.1;
-	Thu, 15 Feb 2018 09:37:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=mBNQ7VgSwTWo+Eb3WdWOvgDOmN66cesnjLWGa7+rZM8=;
-	b=oBUqlPHmbnhTLb5IoQlR/kTxBT4AhT+UL/sFrT4pBDRgmbwe1Ml+LIXfjIPyXnN/Sn
-	Au5jfEaONIRX5R9oWLWfF08BWFY1xZ94nK1AHMgnhdFAqMQXIWj5qH71Wm4JmI3H66dj
-	L611t3R62CSHCCLI4f66+UOfLZgeUzWyqhS2eP46npgAFY9M1+2H3bvE92TuYYRfxG0k
-	0E6feV7+RC5ZwBq2bB9ymiOIGt8xORurz03P2XZcuYtDG7MMS88eH9JoSdKkdfffGwem
-	RMczeLXsqzoTjipHjfHIjxKuP6CYx9uIqmAJuMjuaQMNpKPFTq7+q8Fszju33XlWucJP
-	BCDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=mBNQ7VgSwTWo+Eb3WdWOvgDOmN66cesnjLWGa7+rZM8=;
-	b=ZTutVzYgjQNVU9hZ1WYC0rf8jynPX9jUl+gKYMQ3twoQhK0VPwNIUfPgwrLCROGrhB
-	bUFkzJjFL9KgTnY5JLRVzNJBqU9ZwCxl0HHa5DtG4yZnvga3EWr/T7frsPaHib/s8ZdY
-	W4jKOotBA1N93yy5SvbZbS1mspa28QV1QcgvlchLukdXZ8hg7BXVlA2vgHODcWauo7DH
-	Si8/sUASkrxJvjM1VYDFZ+cmh+LzhugeTiAepfh7mOmQ9zi4eUGb3wwIOHIu/XFImslt
-	BWDGI23fcumYb5+atjsd8M6t+OVRa0XPPycw6Z+i5W0MD8p3EDNK3dmmZMSEttPfrEzM
-	6xkA==
-X-Gm-Message-State: APf1xPCrPvbvBcC1MYt+o8vJeiFPDc8TinFGe0K5ZbOj40DsJQfmV25L
-	RbhOdK+XPinqQYPjEqKuq1IeJH+CTqQHPBSodlU=
-X-Google-Smtp-Source: AH8x224U7ggtCGrpFlNm6P0d6GT6su5v05HmA5sbYDUGsdC+eetVkKzSdJmAr0r/VnaOt/mQTYBrvEd7soiWyojXk0A=
-X-Received: by 10.129.153.5 with SMTP id q5mr2597568ywg.389.1518716224643;
-	Thu, 15 Feb 2018 09:37:04 -0800 (PST)
+	(envelope-from <dgilbert@redhat.com>) id 1emiiX-0005ZA-0c
+	for qemu-trivial@nongnu.org; Fri, 16 Feb 2018 11:18:33 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46130 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1emiiP-0005XE-V1; Fri, 16 Feb 2018 11:18:26 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5C0EE8182D2F;
+	Fri, 16 Feb 2018 16:18:15 +0000 (UTC)
+Received: from work-vm (unknown [10.36.118.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 29F32213AEE2;
+	Fri, 16 Feb 2018 16:18:09 +0000 (UTC)
+Date: Fri, 16 Feb 2018 16:18:07 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Message-ID: <20180216161806.GA22220@work-vm>
+References: <1513700253-10045-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a25:2d4d:0:0:0:0:0 with HTTP; Thu, 15 Feb 2018 09:37:04
-	-0800 (PST)
-In-Reply-To: <20180215042900.16078-14-f4bug@amsat.org>
-References: <20180215042900.16078-1-f4bug@amsat.org>
-	<20180215042900.16078-14-f4bug@amsat.org>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Thu, 15 Feb 2018 09:37:04 -0800
-Message-ID: <CAMo8BfJoU3b8aphOs1szfGh9StkHP-W3tuxA7V6aqPE1YgJovA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c05::235
-Subject: Re: [Qemu-trivial] [PATCH 13/30] hw/xtensa: use the BYTE-based
- definitions
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1513700253-10045-1-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Fri, 16 Feb 2018 16:18:15 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Fri, 16 Feb 2018 16:18:15 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'dgilbert@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] monitor: Remove legacy
+ "-mon default=on" parameter
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,22 +59,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Feb 2018 17:37:09 -0000
+X-List-Received-Date: Fri, 16 Feb 2018 16:18:36 -0000
 
-On Wed, Feb 14, 2018 at 8:28 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> It ease code review, unit is explicit.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+* Thomas Huth (thuth@redhat.com) wrote:
+> The "default" parameter of the "-mon" option is useless since
+> QEMU v2.4.0, and marked as deprecated since QEMU v2.8.0. That
+> should have been long enough to let people update their scripts,
+> so time to remove it now.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Queued for HMP (at last...)
+
+Dave
+
 > ---
->  hw/xtensa/xtfpga.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
-
-Michael, could you please take it into the qemu-trivial?
-
---=20
-Thanks.
--- Max
+>  monitor.c     | 3 ---
+>  qemu-doc.texi | 9 ---------
+>  vl.c          | 4 ----
+>  3 files changed, 16 deletions(-)
+> 
+> diff --git a/monitor.c b/monitor.c
+> index e36fb53..e53c6e1 100644
+> --- a/monitor.c
+> +++ b/monitor.c
+> @@ -4141,9 +4141,6 @@ QemuOptsList qemu_mon_opts = {
+>              .name = "chardev",
+>              .type = QEMU_OPT_STRING,
+>          },{
+> -            .name = "default",  /* deprecated */
+> -            .type = QEMU_OPT_BOOL,
+> -        },{
+>              .name = "pretty",
+>              .type = QEMU_OPT_BOOL,
+>          },
+> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> index d9861b3..6913b32 100644
+> --- a/qemu-doc.texi
+> +++ b/qemu-doc.texi
+> @@ -2401,15 +2401,6 @@ setting ``-machine kernel_irqchip=off''.
+>  The ``-no-kvm'' argument is now a synonym for setting
+>  ``-machine accel=tcg''.
+>  
+> -@subsection -mon default=on (since 2.4.0)
+> -
+> -The ``default'' option to the ``-mon'' argument is
+> -now ignored. When multiple monitors were enabled, it
+> -indicated which monitor would receive log messages
+> -from the various subsystems. This feature is no longer
+> -required as messages are now only sent to the monitor
+> -in response to explicitly monitor commands.
+> -
+>  @subsection -vnc tls (since 2.5.0)
+>  
+>  The ``-vnc tls'' argument is now a synonym for setting
+> diff --git a/vl.c b/vl.c
+> index 2644400..4e7a7e4 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -2438,10 +2438,6 @@ static int mon_init_func(void *opaque, QemuOpts *opts, Error **errp)
+>      if (qemu_opt_get_bool(opts, "pretty", 0))
+>          flags |= MONITOR_USE_PRETTY;
+>  
+> -    if (qemu_opt_get_bool(opts, "default", 0)) {
+> -        error_report("option 'default' does nothing and is deprecated");
+> -    }
+> -
+>      chardev = qemu_opt_get(opts, "chardev");
+>      chr = qemu_chr_find(chardev);
+>      if (chr == NULL) {
+> -- 
+> 1.8.3.1
+> 
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
