@@ -1,54 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eo4My-00039i-Id
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2018 04:37:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48602)
+	id 1eo4oW-0003NK-RX
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2018 05:06:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54204)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kchamart@redhat.com>) id 1eo4Mw-000384-6a
-	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 04:37:51 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1eo4oP-0003Hy-JS
+	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 05:06:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kchamart@redhat.com>) id 1eo4Mv-0007SM-FA
-	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 04:37:50 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53408 helo=mx1.redhat.com)
+	(envelope-from <pbonzini@redhat.com>) id 1eo4oJ-0004YJ-U6
+	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 05:06:13 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54014 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kchamart@redhat.com>)
-	id 1eo4Mr-0007Rh-Kp; Tue, 20 Feb 2018 04:37:45 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1eo4oD-0004R3-7T; Tue, 20 Feb 2018 05:06:01 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 91D0540FB646;
-	Tue, 20 Feb 2018 09:37:41 +0000 (UTC)
-Received: from eukaryote.localdomain (ovpn-117-234.ams2.redhat.com
-	[10.36.117.234])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 608072026E04;
-	Tue, 20 Feb 2018 09:37:37 +0000 (UTC)
-Received: by eukaryote.localdomain (Postfix, from userid 1000)
-	id 3A56B241FF4; Tue, 20 Feb 2018 10:37:35 +0100 (CET)
-Date: Tue, 20 Feb 2018 10:37:35 +0100
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20180220093735.j5sshv7d357ayp3h@eukaryote>
+	by mx1.redhat.com (Postfix) with ESMTPS id D3380EB6F0;
+	Tue, 20 Feb 2018 10:05:55 +0000 (UTC)
+Received: from [10.36.118.42] (unknown [10.36.118.42])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 52B5F10A9DC2;
+	Tue, 20 Feb 2018 10:05:50 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Daniel Berrange <berrange@redhat.com>
 References: <1519071820-4062-1-git-send-email-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <de1d7a3b-6e8c-2973-1810-4ead57228057@redhat.com>
+Date: Tue, 20 Feb 2018 11:05:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <1519071820-4062-1-git-send-email-thuth@redhat.com>
-User-Agent: NeoMutt/20171215
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 20 Feb 2018 09:37:41 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 20 Feb 2018 09:37:41 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kchamart@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 20 Feb 2018 10:05:55 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 20 Feb 2018 10:05:55 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Remove the deprecated -tdf
- option
+Subject: Re: [Qemu-trivial] [PATCH] Remove the deprecated -tdf option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,9 +57,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2018 09:37:51 -0000
+X-List-Received-Date: Tue, 20 Feb 2018 10:06:19 -0000
 
-On Mon, Feb 19, 2018 at 09:23:40PM +0100, Thomas Huth wrote:
+On 19/02/2018 21:23, Thomas Huth wrote:
 > It's been marked as deprecated since a very long time already, and
 > the parameter is not doing anything useful anymore except for printing
 > a warning, so it's now time to finally get rid of this option.
@@ -72,13 +69,42 @@ On Mon, Feb 19, 2018 at 09:23:40PM +0100, Thomas Huth wrote:
 >  qemu-doc.texi | 7 -------
 >  vl.c          | 3 ---
 >  2 files changed, 10 deletions(-)
+> 
+> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> index 56388b5..eac8e8b 100644
+> --- a/qemu-doc.texi
+> +++ b/qemu-doc.texi
+> @@ -2606,13 +2606,6 @@ which is the default.
+>  
+>  @section System emulator command line arguments
+>  
+> -@subsection -tdf (since 1.3.0)
+> -
+> -The ``-tdf'' argument is ignored. The behaviour implemented
+> -by this argument is now the default when using the KVM PIT,
+> -but can be requested explicitly using
+> -``-global kvm-pit.lost_tick_policy=slew''.
+> -
+>  @subsection -no-kvm-pit-reinjection (since 1.3.0)
+>  
+>  The ``-no-kvm-pit-reinjection'' argument is now a
+> diff --git a/vl.c b/vl.c
+> index 81724f5..3956e53 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3849,9 +3849,6 @@ int main(int argc, char **argv, char **envp)
+>                      exit(1);
+>                  }
+>                  break;
+> -            case QEMU_OPTION_tdf:
+> -                warn_report("ignoring deprecated option");
+> -                break;
+>              case QEMU_OPTION_name:
+>                  opts = qemu_opts_parse_noisily(qemu_find_opts("name"),
+>                                                 optarg, true);
+> 
 
-Nice catch.
+Good one!  Queued, thanks.
 
-Reviewed-by: Kashyap Chamarthy <kchamart@redhat.com>
-
-[...]
-
--- 
-/kashyap
+Paolo
 
