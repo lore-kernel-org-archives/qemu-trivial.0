@@ -1,51 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eo4oW-0003NK-RX
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2018 05:06:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54204)
+	id 1eoyt7-0001NO-Ry
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2018 16:58:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38868)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eo4oP-0003Hy-JS
-	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 05:06:19 -0500
+	(envelope-from <eblake@redhat.com>) id 1eoyt5-0001Lc-LO
+	for qemu-trivial@nongnu.org; Thu, 22 Feb 2018 16:58:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1eo4oJ-0004YJ-U6
-	for qemu-trivial@nongnu.org; Tue, 20 Feb 2018 05:06:13 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54014 helo=mx1.redhat.com)
+	(envelope-from <eblake@redhat.com>) id 1eoyt4-0004RT-Ss
+	for qemu-trivial@nongnu.org; Thu, 22 Feb 2018 16:58:47 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51404 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1eo4oD-0004R3-7T; Tue, 20 Feb 2018 05:06:01 -0500
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1eoysz-0004Pc-8A; Thu, 22 Feb 2018 16:58:41 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D3380EB6F0;
-	Tue, 20 Feb 2018 10:05:55 +0000 (UTC)
-Received: from [10.36.118.42] (unknown [10.36.118.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 52B5F10A9DC2;
-	Tue, 20 Feb 2018 10:05:50 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Daniel Berrange <berrange@redhat.com>
-References: <1519071820-4062-1-git-send-email-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <de1d7a3b-6e8c-2973-1810-4ead57228057@redhat.com>
-Date: Tue, 20 Feb 2018 11:05:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <1519071820-4062-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+	by mx1.redhat.com (Postfix) with ESMTPS id B9308EB6ED;
+	Thu, 22 Feb 2018 21:58:40 +0000 (UTC)
+Received: from red.redhat.com (ovpn-122-122.rdu2.redhat.com [10.10.122.122])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 60A611049460;
+	Thu, 22 Feb 2018 21:58:40 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org,
+	qemu-trivial@nongnu.org
+Date: Thu, 22 Feb 2018 15:58:38 -0600
+Message-Id: <20180222215838.18223-1-eblake@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.1]);
-	Tue, 20 Feb 2018 10:05:55 +0000 (UTC)
+	Thu, 22 Feb 2018 21:58:40 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Tue, 20 Feb 2018 10:05:55 +0000 (UTC) for IP:'10.11.54.3'
+	Thu, 22 Feb 2018 21:58:40 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH] Remove the deprecated -tdf option
+Subject: [Qemu-trivial] [PATCH] checkpatch: Exempt long URLs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,54 +50,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2018 10:06:19 -0000
+X-List-Received-Date: Thu, 22 Feb 2018 21:58:48 -0000
 
-On 19/02/2018 21:23, Thomas Huth wrote:
-> It's been marked as deprecated since a very long time already, and
-> the parameter is not doing anything useful anymore except for printing
-> a warning, so it's now time to finally get rid of this option.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  qemu-doc.texi | 7 -------
->  vl.c          | 3 ---
->  2 files changed, 10 deletions(-)
-> 
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 56388b5..eac8e8b 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -2606,13 +2606,6 @@ which is the default.
->  
->  @section System emulator command line arguments
->  
-> -@subsection -tdf (since 1.3.0)
-> -
-> -The ``-tdf'' argument is ignored. The behaviour implemented
-> -by this argument is now the default when using the KVM PIT,
-> -but can be requested explicitly using
-> -``-global kvm-pit.lost_tick_policy=slew''.
-> -
->  @subsection -no-kvm-pit-reinjection (since 1.3.0)
->  
->  The ``-no-kvm-pit-reinjection'' argument is now a
-> diff --git a/vl.c b/vl.c
-> index 81724f5..3956e53 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -3849,9 +3849,6 @@ int main(int argc, char **argv, char **envp)
->                      exit(1);
->                  }
->                  break;
-> -            case QEMU_OPTION_tdf:
-> -                warn_report("ignoring deprecated option");
-> -                break;
->              case QEMU_OPTION_name:
->                  opts = qemu_opts_parse_noisily(qemu_find_opts("name"),
->                                                 optarg, true);
-> 
+Sometimes, we want to refer to really long URLs, but checkpatch
+balks, and we have to manually bypass the check.  URL shorterners
+may be nice at reducing long links, but it's hard to guarantee the
+shortened link will live as long as the real target, and it is
+also nice to see the original target without having to load the
+shortened URL through a browser.  So exempt a line containing
+only a URL from the long-line syntax check.
 
-Good one!  Queued, thanks.
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ scripts/checkpatch.pl | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Paolo
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 1b4b812e28f..0d3f753c665 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1447,9 +1447,10 @@ sub process {
+ # check we are in a valid source file if not then ignore this hunk
+ 		next if ($realfile !~ /$SrcFile/);
+
+-#90 column limit
++#90 column limit; exempt URLs, if no other words on line
+ 		if ($line =~ /^\+/ &&
+ 		    !($line =~ /^\+\s*"[^"]*"\s*(?:\s*|,|\)\s*;)\s*$/) &&
++		    !($rawline =~ /^[^[:alnum:]]*https?:\S*$/) &&
+ 		    $length > 80)
+ 		{
+ 			if ($length > 90) {
+-- 
+2.14.3
+
 
