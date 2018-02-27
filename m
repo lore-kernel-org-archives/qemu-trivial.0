@@ -1,52 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ep91A-0004XL-6n
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Feb 2018 03:47:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45064)
+	id 1eqZ0c-0007ON-7W
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Feb 2018 01:45:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ep915-0004Vq-Hu
-	for qemu-trivial@nongnu.org; Fri, 23 Feb 2018 03:47:44 -0500
+	(envelope-from <thuth@redhat.com>) id 1eqZ0a-0007N6-3s
+	for qemu-trivial@nongnu.org; Tue, 27 Feb 2018 01:45:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ep914-0001xS-Pw
-	for qemu-trivial@nongnu.org; Fri, 23 Feb 2018 03:47:43 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40002 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1eqZ0Z-0005Cn-Ct
+	for qemu-trivial@nongnu.org; Tue, 27 Feb 2018 01:45:04 -0500
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47124 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ep911-0001vu-Rb; Fri, 23 Feb 2018 03:47:39 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	id 1eqZ0S-00059R-Iy; Tue, 27 Feb 2018 01:44:56 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 40284406F970;
-	Fri, 23 Feb 2018 08:47:39 +0000 (UTC)
-Received: from [10.36.116.144] (ovpn-116-144.ams2.redhat.com [10.36.116.144])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8C4B710A971D;
-	Fri, 23 Feb 2018 08:47:36 +0000 (UTC)
-To: Su Hang <suhang16@mails.ucas.ac.cn>, stefanha@redhat.com
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1519372278-20644-1-git-send-email-suhang16@mails.ucas.ac.cn>
+	by mx1.redhat.com (Postfix) with ESMTPS id AEB2E8185920;
+	Tue, 27 Feb 2018 06:44:51 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-62.ams2.redhat.com [10.36.116.62])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E995B213AEF4;
+	Tue, 27 Feb 2018 06:44:45 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <c3078a4e-24f4-cc37-ca7f-9f40213639bb@redhat.com>
-Date: Fri, 23 Feb 2018 09:47:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <1519372278-20644-1-git-send-email-suhang16@mails.ucas.ac.cn>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Tue, 27 Feb 2018 07:44:44 +0100
+Message-Id: <1519713884-2346-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 23 Feb 2018 08:47:39 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 23 Feb 2018 08:47:39 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.8]);
+	Tue, 27 Feb 2018 06:44:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Tue, 27 Feb 2018 06:44:51 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/3] util/uri.c: only
- remove `return`'s brackets
+Subject: [Qemu-trivial] [PATCH] tests/libqos: Check for valid dev pointer
+ when looking for PCI devices
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,20 +50,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Feb 2018 08:47:44 -0000
+X-List-Received-Date: Tue, 27 Feb 2018 06:45:05 -0000
 
-On 23.02.2018 08:51, Su Hang wrote:
-> only remove brackets that wrap `return` statements' content.
-> 
-> use `perl -pi -e "s/return \((.*?)\);/return \1;/g" util/uri.c`
-> to remove pattern like this: "return (1);"
-> 
-> Signed-off-by: Su Hang <suhang16@mails.ucas.ac.cn>
-> ---
->  util/uri.c | 160 ++++++++++++++++++++++++++++++-------------------------------
->  1 file changed, 80 insertions(+), 80 deletions(-)
+dev could be NULL if the PCI device can not be found due to some
+reasons, so we must not dereference the pointer in this case.
 
-Looks good to me:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/libqos/virtio-pci.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/tests/libqos/virtio-pci.c b/tests/libqos/virtio-pci.c
+index 7ac15c0..550dede 100644
+--- a/tests/libqos/virtio-pci.c
++++ b/tests/libqos/virtio-pci.c
+@@ -315,7 +315,9 @@ QVirtioPCIDevice *qvirtio_pci_device_find(QPCIBus *bus, uint16_t device_type)
+     qvirtio_pci_foreach(bus, device_type, false, 0,
+                         qvirtio_pci_assign_device, &dev);
+ 
+-    dev->vdev.bus = &qvirtio_pci;
++    if (dev) {
++        dev->vdev.bus = &qvirtio_pci;
++    }
+ 
+     return dev;
+ }
+-- 
+1.8.3.1
+
 
