@@ -1,66 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eqi60-0000zz-Ik
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Feb 2018 11:27:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57994)
+	id 1erL3G-0002Pj-An
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Mar 2018 05:03:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1eqi5y-0000yq-Oq
-	for qemu-trivial@nongnu.org; Tue, 27 Feb 2018 11:27:15 -0500
+	(envelope-from <frederic.konrad@adacore.com>) id 1erL39-0002KQ-E0
+	for qemu-trivial@nongnu.org; Thu, 01 Mar 2018 05:03:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1eqi5x-0004f1-SQ
-	for qemu-trivial@nongnu.org; Tue, 27 Feb 2018 11:27:14 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:35357)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1eqi5t-0004ca-8o; Tue, 27 Feb 2018 11:27:09 -0500
-Received: by mail-wr0-x242.google.com with SMTP id l43so25531293wrc.2;
-	Tue, 27 Feb 2018 08:27:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=SHTi1ptFg4tj3FN7MGUs7sLtaP//gJml1zOSaC2b4J0=;
-	b=Wm2BGxxxUnEtI4B6ZLo2m19wfN8ZTN3CSdShu5Fr45csvA2sbzRJ+quuaDX+t9mO3g
-	JuNsPsFhHxgqPsGDw03Iwi6HacciHfPtLfs2I2c9EMZwf43CbCxq3KicR+xgqYEsd8Li
-	WtnfxirJmExti4F20qaH8coGy1CguT6TXm770ZfvZ/Tllbhkvk1n4Lb0hvREsfwtP+8f
-	8dUF31o56Hyepy9EVQuGhWZrnNJqNDw50veYpBf47KOxIz1X2ygsLS8h3u8BAUROMKdb
-	Op8JALOaUSfAAsl37m0RV393SGIrLJPmyiBomNW6kqBYBGJ9bp22FBOQ/ooXhA8Xikwb
-	P75A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=SHTi1ptFg4tj3FN7MGUs7sLtaP//gJml1zOSaC2b4J0=;
-	b=nCQEKrNK6c9nwhQzlwdnDsD4DE/vrIN+GDpAf3SgSGlWi8Ccq32EEmKnHjd/H4nS29
-	rRHuA0BtF9jsB0bmm3n+QRSxBZ25JYiM4Ctk+2ub6FOoPpx32ygOBJ+OPNrGRv4zDJ1m
-	OjNLHNfue9Xs91DLNS/9+ombPWqX5IaQBwnFH9op1ce2nr9ioeVrat8ru31natt1dnUm
-	MGkm8vwzjw6z9Mio6DoD6HT8ihg/XVhoSVpympt3KW2AamX4fJN5kEvJbQ3EPp5v2fg8
-	UBh2aUXLRjyMUtPFCoXjOGsPbteTIAAKaD61hsdkIIC7LBFmSFLRHfoL1E/LZaf3Yp28
-	tS5g==
-X-Gm-Message-State: APf1xPDigmoEdeS4xy3HOSd2jga1Jo6IKkUAaINujO71hZmTXAn4tR8D
-	k7OtK1rsJO7os67QGBYxoaE=
-X-Google-Smtp-Source: AH8x227VKOLZpyFPoh/Br2eEqLRHdba/6iFiIF6aOmWwEalhyzkGzAgub/oSn81pWaZWIzy8MzoHOg==
-X-Received: by 10.223.164.221 with SMTP id h29mr14268358wrb.259.1519748828280; 
-	Tue, 27 Feb 2018 08:27:08 -0800 (PST)
-Received: from localhost ([51.15.41.238])
-	by smtp.gmail.com with ESMTPSA id v4sm9641873wme.43.2018.02.27.08.27.07
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 27 Feb 2018 08:27:07 -0800 (PST)
-Date: Tue, 27 Feb 2018 16:27:06 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20180227162706.GE32480@stefanha-x1.localdomain>
-References: <1519713884-2346-1-git-send-email-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ZInfyf7laFu/Kiw7"
-Content-Disposition: inline
-In-Reply-To: <1519713884-2346-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/libqos: Check for
- valid dev pointer when looking for PCI devices
+	(envelope-from <frederic.konrad@adacore.com>) id 1erL34-0002IV-Jl
+	for qemu-trivial@nongnu.org; Thu, 01 Mar 2018 05:02:55 -0500
+Received: from mel.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:59058
+	helo=smtp.eu.adacore.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
+	id 1erL2t-000241-LT; Thu, 01 Mar 2018 05:02:39 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id B78AD8139B;
+	Thu,  1 Mar 2018 11:02:36 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hwg_uIcJRKcg; Thu,  1 Mar 2018 11:02:36 +0100 (CET)
+Received: from localhost.localdomain (unknown [46.218.167.194])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id 90C4A8139A;
+	Thu,  1 Mar 2018 11:02:35 +0100 (CET)
+From: KONRAD Frederic <frederic.konrad@adacore.com>
+To: qemu-devel@nongnu.org
+Cc: jcd@tribudubois.net, chouteau@adacore.com, mark.cave-ayland@ilande.co.uk,
+	qemu-trivial@nongnu.org, frederic.konrad@adacore.com
+Date: Thu,  1 Mar 2018 11:02:16 +0100
+Message-Id: <1519898536-19027-1-git-send-email-frederic.konrad@adacore.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a02:2ab8:224:1::a0a:d2
+Subject: [Qemu-trivial] [PATCH] grlib_apbuart: always enable tx and rx
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,44 +46,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Feb 2018 16:27:15 -0000
+X-List-Received-Date: Thu, 01 Mar 2018 10:03:01 -0000
 
+We often use a bootloader for this board. So lets set the uart in a state
+which it can emit characters as if we were using a bootloader.
 
---ZInfyf7laFu/Kiw7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
+---
+ hw/char/grlib_apbuart.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Tue, Feb 27, 2018 at 07:44:44AM +0100, Thomas Huth wrote:
-> dev could be NULL if the PCI device can not be found due to some
-> reasons, so we must not dereference the pointer in this case.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/libqos/virtio-pci.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+diff --git a/hw/char/grlib_apbuart.c b/hw/char/grlib_apbuart.c
+index bac11be..a8020ea 100644
+--- a/hw/char/grlib_apbuart.c
++++ b/hw/char/grlib_apbuart.c
+@@ -265,8 +265,8 @@ static void grlib_apbuart_reset(DeviceState *d)
+ 
+     /* Transmitter FIFO and shift registers are always empty in QEMU */
+     uart->status =  UART_TRANSMIT_FIFO_EMPTY | UART_TRANSMIT_SHIFT_EMPTY;
+-    /* Everything is off */
+-    uart->control = 0;
++    /* Enable Tx and Rx as the bootloader would do */
++    uart->control = UART_RECEIVE_ENABLE | UART_TRANSMIT_ENABLE;
+     /* Flush receive FIFO */
+     uart->len = 0;
+     uart->current = 0;
+-- 
+1.8.3.1
 
-There is no maintainer for tests/libqos/virtio-pci.c in MAINTAINERS so
-I'll take this patch.
-
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
-
-Stefan
-
---ZInfyf7laFu/Kiw7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJalYbaAAoJEJykq7OBq3PIeWYH+wQc1uvX6qBxs7PR/wAKFLcJ
-uVXFMxSX1rjTOVtmYqmt6/OvYVBwiichpDPhq8ScG38DRgGuMbysPsOzIRABSTPZ
-aKGjmcywA/a2gjzPMDnjaYPJAmOsDbe7BU+AuFRry8AVZNzuq6boJHdKDnF0U5Ok
-xonBXSKXvQwcodgai/PdhkTKLXHQ/MmVqn9aohxZDlqQ1c/pSJylWgfZ10/s16jL
-lcOJ80sRSOIC1TvUTkB9d9BB110I6u7QByMraV+Q341+kCyHqUAPptfcuCNt92+q
-C/MTGTTso2c4CrYylu635pMTzoJXhUVPI85cs2RUA5iQy9j2HtahSX4qGgBFSkY=
-=/65K
------END PGP SIGNATURE-----
-
---ZInfyf7laFu/Kiw7--
 
