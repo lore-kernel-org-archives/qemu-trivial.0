@@ -1,61 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1esoI5-0004Gf-GM
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41839)
+	id 1esoI8-0004KG-8j
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41904)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoI0-00040U-Bd
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:21 -0500
+	id 1esoI2-00048S-5a
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHz-0007I1-7P
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:20 -0500
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:45838)
+	id 1esoI0-0007KQ-Jb
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:22 -0500
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:40975)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHz-0007H6-0X; Mon, 05 Mar 2018 06:28:19 -0500
-Received: by mail-wr0-x241.google.com with SMTP id p104so16838022wrc.12;
-	Mon, 05 Mar 2018 03:28:18 -0800 (PST)
+	id 1esoI0-0007Iw-C5; Mon, 05 Mar 2018 06:28:20 -0500
+Received: by mail-wr0-x244.google.com with SMTP id f14so16847588wre.8;
+	Mon, 05 Mar 2018 03:28:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=h3L4J8NwVJKTMCN72SId4QOb9WYbk4Lgkhvd7rMPnFU=;
-	b=f3T5xlXc6jXkKtzo7w4aS4XffChYELQjmKUc+h34SLuVkzG0bW7I9vjBweRT++JiGy
-	OWinQGCIGhiyuAJn+/+dhmQPsvGYL6HTS118Kcyj0kPrb7nAfuaTyhsZ6MLrCzV+HHkU
-	DKhFZ60wUdTuoER5+Jct/BL0/aN7ThI0wtqbuBgpgSw5+GT4HuReL33ury4D/+eTmNps
-	pn6xgxAWkUCAo3AwG+jE9bP43PiyIiSiMJJRw5yKweNTtZQhp9Z0OD7S957Dwmt8Pe+A
-	OoiszX0wiD7dLGpztWVbIwmdVsEqTaDJWv73WS3QeYkVfyj59Px+bVRne0f0PzagyAG1
-	oVww==
+	bh=YcuE8ic3EBzyS6+02HOEOP6CGIkcnCDTYKPTphkP5Ms=;
+	b=aewdRfGAX+VzFsXATzERGt4OcmyznTS74W8j7muzOtszCN0Re8+0it+bz1t3fNkcAG
+	o/ceUjZYhmfALnip7co8Tmq5iGi6tXFk8lx7lRsw5v80YhKF+dtwNL2WWtqleOgXmx8i
+	uea3aQyKAQAsiiwOwAdGXF8Ziynop1wzHOEY+x7ygI0uewsQCFoKEleFGnWTt7f9dj5d
+	a4y2sDrBj8RwbuT/ywz6Ac85DCQkenC7Y+3kaANjW3TvnmQd5Dde3D424nMQOshQ0RAS
+	M0+wi4Te25UdLrmliiw2MKzfOU3tLqFYhw8D59sVlhp1e+8fX13TsuH1ixoW7Nvh+aFv
+	LtOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=h3L4J8NwVJKTMCN72SId4QOb9WYbk4Lgkhvd7rMPnFU=;
-	b=eBMaiT3MkGNo7S/PzaxtC+PcVy/d95xb3HK89pX/6hAJ9toU5XA7nhehz1ClvpOqaH
-	m4ChtgIV0HVBUHcVSh6DTzc26ocAKOs4LOD2DcnnJWo/KygQ3eCp+6xSILfln000AwYS
-	JsLo0B2t/fzTNh5EyD/vL6QcmgWqVRW4WtDSZn7kWMvPdagNvv+JR6S+UF48bArmeCcv
-	yHkBiPq29wdc+3PkvHXZu0ilnP1MOlz1LO/uqDiQm7IhHFDu1V8oePSSxUB2T5jEDxea
-	7ehVjrYTGUXlIHFkNQ9vFhlaQ5Ic44DBlPO5SNFQNfXy2TcH+hrcEgEMeY2AY2p6kz3P
-	tgmA==
-X-Gm-Message-State: APf1xPC+htv8yWZhzLoIJF1em6LmtREHy5Vy4M7zStJObhcCAOZ7feiU
-	IoAQ6HTg+eCNS9D8q2JbNll6Mi3S7+4=
-X-Google-Smtp-Source: AG47ELvvCxcJV+KJXkvDeWCku5Zwo6q5dRJwtalfusrGGcBuCrWUFBsj9pDfQbiMkFxFZn8B0cwKxA==
-X-Received: by 10.223.133.182 with SMTP id 51mr11268568wrt.226.1520249297844; 
-	Mon, 05 Mar 2018 03:28:17 -0800 (PST)
+	bh=YcuE8ic3EBzyS6+02HOEOP6CGIkcnCDTYKPTphkP5Ms=;
+	b=QHPjkidSU7zAJaylWO1Bweo8ryxjlZJWXPpKDyVy9Kq0wElc+T2Jf0PdxLRqFX6u/Y
+	j/kzmiRD0KoBLUuGXkGvAeoA/Rlp/Uv0Ju0MfiTFBN/OKiiRtqEiSyxRMSdvJU5PqVQ8
+	ORgIo/edG6AkS9A3djyBJIA7KftQv2acj4mHTWqOIx60ACOVZHjyFKCcsFRLPq9JXj2H
+	2GJIkxKgPvX2AS50Z9+DVs+VUt7RlEataNdpVa7+aSt/NkZ/WlgyC0BhLtPji0mVj54X
+	RsA/06j1JJwJUH63VA/TbBKIa8fM8xigHy5BvN0RoC9PCZvB7fdJAPU2VWxTeS6hDj0L
+	+X5g==
+X-Gm-Message-State: APf1xPBsFOnoMCENhYRhUQFSGxzi2sx490fxKEY9BS+O9vO4BXQHf6cI
+	C1awk8A6iwj5EPNwrViHwRza/TE4AOQ=
+X-Google-Smtp-Source: AG47ELtISRPQr4Hh16t9YYbOIU0Q1tOeP1J5f/7AiFmXgPpmuFKyMdwDNrjtLLV3EafumsCGue76aw==
+X-Received: by 10.223.134.193 with SMTP id 1mr11416379wry.245.1520249299129;
+	Mon, 05 Mar 2018 03:28:19 -0800 (PST)
 Received: from x1.local (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
 	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
-	k45sm11744388wrf.62.2018.03.05.03.28.16
+	k45sm11744388wrf.62.2018.03.05.03.28.17
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 05 Mar 2018 03:28:17 -0800 (PST)
+	Mon, 05 Mar 2018 03:28:18 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Date: Mon,  5 Mar 2018 08:27:31 -0300
-Message-Id: <20180305112732.26471-30-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	xen-devel@lists.xenproject.org (open list:X86),
+	qemu-block@nongnu.org (open list:Block layer core)
+Date: Mon,  5 Mar 2018 08:27:32 -0300
+Message-Id: <20180305112732.26471-31-f4bug@amsat.org>
 X-Mailer: git-send-email 2.16.2
 In-Reply-To: <20180305112732.26471-1-f4bug@amsat.org>
 References: <20180305112732.26471-1-f4bug@amsat.org>
@@ -64,8 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::241
-Subject: [Qemu-trivial] [PATCH v2 29/30] tpm: use the BYTE-based definitions
+X-Received-From: 2a00:1450:400c:c0c::244
+Subject: [Qemu-trivial] [PATCH v2 30/30] xen: use the BYTE-based definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,7 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Mar 2018 11:28:21 -0000
+X-List-Received-Date: Mon, 05 Mar 2018 11:28:23 -0000
 
 It eases code review, unit is explicit.
 
@@ -88,24 +91,63 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Alan Robinson <Alan.Robinson@ts.fujitsu.com>
 ---
- include/hw/acpi/tpm.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/block/xen_disk.c        |  4 ++--
+ hw/xenpv/xen_domainbuild.c | 10 +++++-----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/acpi/tpm.h b/include/hw/acpi/tpm.h
-index 46ac4dc581..c01e3441f5 100644
---- a/include/hw/acpi/tpm.h
-+++ b/include/hw/acpi/tpm.h
-@@ -176,7 +176,7 @@ REG32(CRB_DATA_BUFFER, 0x80)
- #define TPM_CRB_ADDR_CTRL           (TPM_CRB_ADDR_BASE + A_CRB_CTRL_REQ)
- #define TPM_CRB_R_MAX               R_CRB_DATA_BUFFER
+diff --git a/hw/block/xen_disk.c b/hw/block/xen_disk.c
+index f74fcd42d1..557005b5e5 100644
+--- a/hw/block/xen_disk.c
++++ b/hw/block/xen_disk.c
+@@ -1153,9 +1153,9 @@ static int blk_connect(struct XenDevice *xendev)
+     }
  
--#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * 1024)
-+#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * K_BYTE)
+     xen_pv_printf(xendev, 1, "type \"%s\", fileproto \"%s\", filename \"%s\","
+-                  " size %" PRId64 " (%" PRId64 " MB)\n",
++                  " size %" PRId64 " (%llu MB)\n",
+                   blkdev->type, blkdev->fileproto, blkdev->filename,
+-                  blkdev->file_size, blkdev->file_size >> 20);
++                  blkdev->file_size, blkdev->file_size / M_BYTE);
  
- #define TPM_TCPA_ACPI_CLASS_CLIENT  0
- #define TPM_TCPA_ACPI_CLASS_SERVER  1
+     /* Fill in number of sector size and number of sectors */
+     xenstore_write_be_int(&blkdev->xendev, "sector-size", blkdev->file_blk);
+diff --git a/hw/xenpv/xen_domainbuild.c b/hw/xenpv/xen_domainbuild.c
+index 027f76fad1..7c8bde20cd 100644
+--- a/hw/xenpv/xen_domainbuild.c
++++ b/hw/xenpv/xen_domainbuild.c
+@@ -75,9 +75,9 @@ int xenstore_domain_init1(const char *kernel, const char *ramdisk,
+     xenstore_write_str(dom, "vm",     vm);
+ 
+     /* memory */
+-    xenstore_write_int(dom, "memory/target", ram_size >> 10);  // kB
+-    xenstore_write_int(vm, "memory",         ram_size >> 20);  // MB
+-    xenstore_write_int(vm, "maxmem",         ram_size >> 20);  // MB
++    xenstore_write_int(dom, "memory/target", ram_size / K_BYTE);
++    xenstore_write_int(vm, "memory",         ram_size / M_BYTE);
++    xenstore_write_int(vm, "maxmem",         ram_size / M_BYTE);
+ 
+     /* cpus */
+     for (i = 0; i < smp_cpus; i++) {
+@@ -260,7 +260,7 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+     }
+ #endif
+ 
+-    rc = xc_domain_setmaxmem(xen_xc, xen_domid, ram_size >> 10);
++    rc = xc_domain_setmaxmem(xen_xc, xen_domid, ram_size / K_BYTE);
+     if (rc < 0) {
+         fprintf(stderr, "xen: xc_domain_setmaxmem() failed\n");
+         goto err;
+@@ -269,7 +269,7 @@ int xen_domain_build_pv(const char *kernel, const char *ramdisk,
+     xenstore_port = xc_evtchn_alloc_unbound(xen_xc, xen_domid, 0);
+     console_port = xc_evtchn_alloc_unbound(xen_xc, xen_domid, 0);
+ 
+-    rc = xc_linux_build(xen_xc, xen_domid, ram_size >> 20,
++    rc = xc_linux_build(xen_xc, xen_domid, ram_size / M_BYTE,
+                         kernel, ramdisk, cmdline,
+                         0, flags,
+                         xenstore_port, &xenstore_mfn,
 -- 
 2.16.2
 
