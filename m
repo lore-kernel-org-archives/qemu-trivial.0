@@ -1,61 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1esoHy-0003s7-QY
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41750)
+	id 1esoHz-0003yM-V9
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41702)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHv-0003jr-2U
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:15 -0500
+	id 1esoHs-0003gs-S6
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHu-0007DU-6h
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:15 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:38255)
+	id 1esoHr-0007BL-Ti
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:12 -0500
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:36237)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHt-0007D2-Vv; Mon, 05 Mar 2018 06:28:14 -0500
-Received: by mail-wm0-x242.google.com with SMTP id z9so14699600wmb.3;
-	Mon, 05 Mar 2018 03:28:13 -0800 (PST)
+	id 1esoHr-0007AJ-Mp; Mon, 05 Mar 2018 06:28:11 -0500
+Received: by mail-wm0-x242.google.com with SMTP id 188so14712854wme.1;
+	Mon, 05 Mar 2018 03:28:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=C9MlX7olMSRCJMYhoNTcDXHx9ew1KLDHPWhJVZ4yDPI=;
-	b=MC35k9eRTypVpa/zngU6mhs6tTioMe/CfD2I8Er578ieWreUuMHhQ7bmGmGKb5MU4F
-	/tvB+vZ8FdBVcaDol3EJunyxWJTDu9E2Ki+qG5kGem3cvM/X5M7Tc4+lp2f65iy0oO+e
-	QIfjRg8ImtkpHp1wG9LJhABgZAEVmjWJN8YQ+LkOvve75fnw2pG6oe6KIfQcJKRPOjfQ
-	ucXp0v0Fms8AZVq69jwwfS6iVmsgIPdESue4Qk7ifuuOdgBsYfT677N4klHjnj/5mKxX
-	by1nrGQzNtoXl+YSxABVIY5UHCkiOKQ1QEXdYns+NchwAtRqKrwqfzZ/0/HHZlcVbZmf
-	MXSQ==
+	bh=CAb+wta0wEs2+Mdeu4nRoeUEL/WV+6Oly8onn57JaZY=;
+	b=g0uKD8Bz41lLLpCdd7h2n1k/d/ABz17jHPoLxsT0pojJ/Jz5vXTr2/9WRAa/7t3maU
+	lL7PEGK1rI3BOeW1D1Q8pXtncg/l4ExrA6JD6NXvuJPetWELCg1xzOXHsdaBihslca5H
+	tmiYPgRYG5BXrxyWgKfxvf/8QN78ZEvnsoorHVhuzpRbXsNXffr4fw/tas01JPaU49cS
+	3hK0xSle69AQWb7Ns439u5d6Ddi+j1t0/ITB630LnZ0Wuwv8La8cFAKuV3QMZhoaKAbH
+	fIYjZuTHzoH1vhftxNLmVXw74r2mcitb08iITiGEsR9vwURRtckytRv5AO/oceDj+9XZ
+	xc5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=C9MlX7olMSRCJMYhoNTcDXHx9ew1KLDHPWhJVZ4yDPI=;
-	b=no2jSeI355+GJQxycc9mFhYge/Bhipnd/SpRB6+5Ri5B6AIhPe/P94t1am88HvRKoz
-	KsbcimSBN/XXjDd6wjFLL636VPpklXgL8VuFV+P4HfKeu/bFD/3KjYZMd0RAvl+dOK8w
-	43myqy8mQxnOKARF76smZNJG3EAFvkCIWUlyJy6IDMGAq/55jj7MEv3d5gV82i/xVv3i
-	4iRGUBCPHsvN0GjQ7yPmk9weWk3gcdT+Urb6c2UUe7U8D/+7BxUfJwV+zn++UW2R+SQz
-	pllaJlXF6IONk7CarXX86tCy31aoxZn2/gumrwTYavRzPNofwl6M2SmfzielnG3l/ZAH
-	83mA==
-X-Gm-Message-State: AElRT7EVlU7Ot7EFxaiwBCrVCcm7VC57z1hv5GIN+H+queRG8pUz7Pe9
-	vn6kCo8Al64a4GhO7SntkyBmaQ7sVr4=
-X-Google-Smtp-Source: AG47ELt3EwdBPrmAFqe3WqXT0cY25Q5cupZDGyjmgp1qoEtn3Vt39EsCT4rlK123iZ+st1HhHpKl4g==
-X-Received: by 10.28.20.84 with SMTP id 81mr8572092wmu.70.1520249292811;
-	Mon, 05 Mar 2018 03:28:12 -0800 (PST)
+	bh=CAb+wta0wEs2+Mdeu4nRoeUEL/WV+6Oly8onn57JaZY=;
+	b=YCgAqhLJKBjTo6dzXghc0LLdEMQ+y0+GG41iIrf/yR6u7zGAzvA643pybNfVQpUU89
+	/LyZ9XcO2oQZzeytTtnitb0I28cjEHPV1++qhxWXWQ6/soBN3YE4o0eYOPNkxb4Nb8Nl
+	55d+aeGMKcHN+eDzzaZMUzdVkBn+lRt678ewlf1/MHAKD3n4vufZR92UzWu1VzIAQvkY
+	p4ZuAb6c5b6nRB6H6tbNOG1trc864CivvOrEX76+KE/YPX/5EJs0arYycK04O4wk/NfZ
+	askSuBVk3ryWHEq2p/Zda9kb5dWpNtdEcQk8wUpI42RCboU7oVuiirx0sXbddvUPlLd7
+	ACkA==
+X-Gm-Message-State: AElRT7EZmTKYwTuGFIobn8pvNt6+OFZyukZp/wVDkJbzI+YKpyHJgX8x
+	TyQD7Wqi6EzRVv1qjaBp9ffMOv/mZQs=
+X-Google-Smtp-Source: AG47ELu2tnAC0mco3mDAFVzU7v42opkTpmZMd+/6tI2SWGR7zpbz+B/MATvXU2Is2d9TvVWds++AEg==
+X-Received: by 10.28.223.212 with SMTP id w203mr8465248wmg.96.1520249290532;
+	Mon, 05 Mar 2018 03:28:10 -0800 (PST)
 Received: from x1.local (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
 	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
-	k45sm11744388wrf.62.2018.03.05.03.28.11
+	k45sm11744388wrf.62.2018.03.05.03.28.09
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 05 Mar 2018 03:28:12 -0800 (PST)
+	Mon, 05 Mar 2018 03:28:09 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Fam Zheng <famz@redhat.com>
-Date: Mon,  5 Mar 2018 08:27:27 -0300
-Message-Id: <20180305112732.26471-26-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	qemu-arm@nongnu.org (open list:Allwinner-a10)
+Date: Mon,  5 Mar 2018 08:27:25 -0300
+Message-Id: <20180305112732.26471-24-f4bug@amsat.org>
 X-Mailer: git-send-email 2.16.2
 In-Reply-To: <20180305112732.26471-1-f4bug@amsat.org>
 References: <20180305112732.26471-1-f4bug@amsat.org>
@@ -65,7 +67,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2a00:1450:400c:c09::242
-Subject: [Qemu-trivial] [PATCH v2 25/30] hw/scsi: use the BYTE-based
+Subject: [Qemu-trivial] [PATCH v2 23/30] hw/net: use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,7 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Mar 2018 11:28:16 -0000
+X-List-Received-Date: Mon, 05 Mar 2018 11:28:18 -0000
 
 It eases code review, unit is explicit.
 
@@ -90,31 +92,69 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/scsi/scsi-disk.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/net/allwinner_emac.h | 4 ++--
+ hw/net/e1000e.c                 | 6 +++---
+ hw/net/eepro100.c               | 6 ++----
+ 3 files changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 49d2559d93..bfdb34a71c 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -44,13 +44,13 @@ do { printf("scsi-disk: " fmt , ## __VA_ARGS__); } while (0)
- #include <scsi/sg.h>
- #endif
+diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
+index 4cc8aab7ec..93ec0e7067 100644
+--- a/include/hw/net/allwinner_emac.h
++++ b/include/hw/net/allwinner_emac.h
+@@ -125,8 +125,8 @@
+ #define EMAC_INT_RX         (1 << 8)
  
--#define SCSI_WRITE_SAME_MAX         524288
--#define SCSI_DMA_BUF_SIZE           131072
-+#define SCSI_WRITE_SAME_MAX         (512 * K_BYTE)
-+#define SCSI_DMA_BUF_SIZE           (128 * K_BYTE)
- #define SCSI_MAX_INQUIRY_LEN        256
- #define SCSI_MAX_MODE_LEN           256
+ /* Due to lack of specifications, size of fifos is chosen arbitrarily */
+-#define TX_FIFO_SIZE        (4 * 1024)
+-#define RX_FIFO_SIZE        (32 * 1024)
++#define TX_FIFO_SIZE        (4 * K_BYTE)
++#define RX_FIFO_SIZE        (32 * K_BYTE)
  
--#define DEFAULT_DISCARD_GRANULARITY 4096
--#define DEFAULT_MAX_UNMAP_SIZE      (1 << 30)   /* 1 GB */
-+#define DEFAULT_DISCARD_GRANULARITY (4 * K_BYTE)
-+#define DEFAULT_MAX_UNMAP_SIZE      (1 * G_BYTE)
- #define DEFAULT_MAX_IO_SIZE         INT_MAX     /* 2 GB - 1 block */
+ #define NUM_TX_FIFOS        2
+ #define RX_HDR_SIZE         8
+diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+index 16a9417a85..767b35fca8 100644
+--- a/hw/net/e1000e.c
++++ b/hw/net/e1000e.c
+@@ -81,10 +81,10 @@ typedef struct E1000EState {
+ #define E1000E_IO_IDX       2
+ #define E1000E_MSIX_IDX     3
  
- #define TYPE_SCSI_DISK_BASE         "scsi-disk-base"
+-#define E1000E_MMIO_SIZE    (128 * 1024)
+-#define E1000E_FLASH_SIZE   (128 * 1024)
++#define E1000E_MMIO_SIZE    (128 * K_BYTE)
++#define E1000E_FLASH_SIZE   (128 * K_BYTE)
+ #define E1000E_IO_SIZE      (32)
+-#define E1000E_MSIX_SIZE    (16 * 1024)
++#define E1000E_MSIX_SIZE    (16 * K_BYTE)
+ 
+ #define E1000E_MSIX_TABLE   (0x0000)
+ #define E1000E_MSIX_PBA     (0x2000)
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index a07a63247e..6fdeb05259 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -60,8 +60,6 @@
+  * changed to pad short packets itself. */
+ #define CONFIG_PAD_RECEIVED_FRAMES
+ 
+-#define KiB 1024
+-
+ /* Debug EEPRO100 card. */
+ #if 0
+ # define DEBUG_EEPRO100
+@@ -104,9 +102,9 @@
+ /* Use 64 word EEPROM. TODO: could be a runtime option. */
+ #define EEPROM_SIZE     64
+ 
+-#define PCI_MEM_SIZE            (4 * KiB)
++#define PCI_MEM_SIZE            (4 * K_BYTE)
+ #define PCI_IO_SIZE             64
+-#define PCI_FLASH_SIZE          (128 * KiB)
++#define PCI_FLASH_SIZE          (128 * K_BYTE)
+ 
+ #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+ 
 -- 
 2.16.2
 
