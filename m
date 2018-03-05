@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1esvfa-0006hG-0l
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 14:21:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50282)
+	id 1esvgb-0007PT-Az
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 14:22:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50809)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <prvs=595409ade=anthony.perard@citrix.com>)
-	id 1esvfY-0006ea-CB
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:21:09 -0500
+	id 1esvgZ-0007OD-CR
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:22:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <prvs=595409ade=anthony.perard@citrix.com>)
-	id 1esvfS-0001Hu-Fe
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:21:08 -0500
-Received: from smtp.citrix.com ([66.165.176.89]:10417)
+	id 1esvgW-0001ip-OE
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:22:11 -0500
+Received: from smtp.citrix.com ([66.165.176.89]:31188)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
 	(envelope-from <prvs=595409ade=anthony.perard@citrix.com>)
-	id 1esvfS-0001Fi-9Z
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:21:02 -0500
-X-IronPort-AV: E=Sophos;i="5.47,428,1515456000"; d="scan'208";a="466384339"
-Date: Mon, 5 Mar 2018 18:51:49 +0000
+	id 1esvgW-0001iY-HT
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 14:22:08 -0500
+X-IronPort-AV: E=Sophos;i="5.47,428,1515456000"; d="scan'208";a="466384539"
+Date: Mon, 5 Mar 2018 18:52:51 +0000
 From: Anthony PERARD <anthony.perard@citrix.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, Eduardo Habkost
-	<ehabkost@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>, Stefano
+CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>, Gerd Hoffmann
+	<kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Stefano
 	Stabellini <sstabellini@kernel.org>, "open list:X86"
 	<xen-devel@lists.xenproject.org>
-Message-ID: <20180305185149.GA1921@perard.uk.xensource.com>
+Message-ID: <20180305185251.GB1921@perard.uk.xensource.com>
 References: <20180305112732.26471-1-f4bug@amsat.org>
-	<20180305112732.26471-9-f4bug@amsat.org>
+	<20180305112732.26471-23-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20180305112732.26471-9-f4bug@amsat.org>
+In-Reply-To: <20180305112732.26471-23-f4bug@amsat.org>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 66.165.176.89
-Subject: Re: [Qemu-trivial] [PATCH v2 08/30] hw/i386: use the BYTE-based
+Subject: Re: [Qemu-trivial] [PATCH v2 22/30] hw/display: use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -50,9 +48,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Mar 2018 19:21:09 -0000
+X-List-Received-Date: Mon, 05 Mar 2018 19:22:12 -0000
 
-On Mon, Mar 05, 2018 at 08:27:10AM -0300, Philippe Mathieu-Daudé wrote:
+On Mon, Mar 05, 2018 at 08:27:24AM -0300, Philippe Mathieu-Daudé wrote:
 > It eases code review, unit is explicit.
 > 
 > Patch generated using:
@@ -62,24 +60,26 @@ On Mon, Mar 05, 2018 at 08:27:10AM -0300, Philippe Mathieu-Daudé wrote:
 > and modified manually.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->  hw/i386/xen/xen-mapcache.c |  2 +-
-> 
-> diff --git a/hw/i386/xen/xen-mapcache.c b/hw/i386/xen/xen-mapcache.c
-> index efa35dc6e0..5f48fde799 100644
-> --- a/hw/i386/xen/xen-mapcache.c
-> +++ b/hw/i386/xen/xen-mapcache.c
-> @@ -47,7 +47,7 @@
->   * From empirical tests I observed that qemu use 75MB more than the
->   * max_mcache_size.
->   */
-> -#define NON_MCACHE_MEMORY_SIZE (80 * 1024 * 1024)
-> +#define NON_MCACHE_MEMORY_SIZE (80 * M_BYTE)
+>  hw/display/xenfb.c      |  2 +-
+> diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+> index f5afcc0358..1ae660519a 100644
+> --- a/hw/display/xenfb.c
+> +++ b/hw/display/xenfb.c
+> @@ -889,7 +889,7 @@ static int fb_initialise(struct XenDevice *xendev)
+>  	return rc;
 >  
->  typedef struct MapCacheEntry {
->      hwaddr paddr_index;
+>      fb_page = fb->c.page;
+> -    rc = xenfb_configure_fb(fb, videoram * 1024 * 1024U,
+> +    rc = xenfb_configure_fb(fb, videoram * M_BYTE,
+>  			    fb_page->width, fb_page->height, fb_page->depth,
+>  			    fb_page->mem_length, 0, fb_page->line_length);
+>      if (rc != 0)
 
 Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+
+Thanks,
 
 -- 
 Anthony PERARD
