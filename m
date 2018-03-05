@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1esoHm-0003Zx-DB
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41433)
+	id 1esoHn-0003bl-UI
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Mar 2018 06:28:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41505)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHj-0003Ve-2l
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:04 -0500
+	id 1esoHl-0003YL-6c
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHh-00070G-Hk
-	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:03 -0500
-Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:37937)
+	id 1esoHk-00073v-4S
+	for qemu-trivial@nongnu.org; Mon, 05 Mar 2018 06:28:05 -0500
+Received: from mail-wr0-x241.google.com ([2a00:1450:400c:c0c::241]:37784)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1esoHh-0006zV-AW; Mon, 05 Mar 2018 06:28:01 -0500
-Received: by mail-wr0-x241.google.com with SMTP id n7so16865385wrn.5;
-	Mon, 05 Mar 2018 03:28:01 -0800 (PST)
+	id 1esoHj-00072x-TL; Mon, 05 Mar 2018 06:28:04 -0500
+Received: by mail-wr0-x241.google.com with SMTP id z12so16871106wrg.4;
+	Mon, 05 Mar 2018 03:28:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=se0KOlZfVzJW70ugYHJWJu6vHwneo8YsF/YDa+Ai6bw=;
-	b=UonL+50mlZbGHGdHHdve7RG1EuqbgjFxo8bcXXG/OBwiFPfo3AYYOPUf26gTqGHyWX
-	OW3QcP7nBoQ8fvWwGhHaZH9rAd+W1Eyn+UHUOyIvvLLXv2+mA3zZh2iKx7PUTioraO8J
-	o2mxKyYYGftHPyiOBERF4RghWOc/ey0G9phwybOscLArvlA23pb/6RuCB8sev5W7y8G6
-	ASM75P6gJePjDm+y/7Z0TYJAAPlClSWO7rQvk9of2wE1yIsWS21gx/wUkxdARlQ2FCQo
-	Bmt2L5or6Q4UukiKl16skCXeQ4bkgMVmYiywdw/r5mlsJVS8j8EynKMUfzXZOceNCPdX
-	Dzhw==
+	bh=kOIm2lUMwivZjQy8r/MLvTGi/BQD/c0Hby3HssmLRI8=;
+	b=hkwTJ8gjtoG1DJ/pzF9qANebUgdK2OdvWEi+weBU65LE6L6FwS9Bc34Fj8ZeyYg2/f
+	npX8gDJEAIeDFJvpJpcP126aI7UfHVxgTgW8sO9SWEjzBKDebbhSypv75QCaMynWL53V
+	xbmEI7yQrAxOHms7pOAXkYA7cicSidRgiRoNxDmEwvemJb5kWkLpEjrNJjR7Zc028CR7
+	7LqpA3263T7rLDrDFzSgZlcRdpxO7jeajWlKPtQbOWfDI3jcAuzPDf+jla9GeTKUQ4b3
+	ZFTsr+Kqm4k2eIf59yj6uA0PeLa1WIyBtJ099tqFZlcIAYs9vWdTPGofohL3C8DkyPPr
+	HaBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=se0KOlZfVzJW70ugYHJWJu6vHwneo8YsF/YDa+Ai6bw=;
-	b=AcFplkb9su2aeBfCO0HRSwwtj2qKGOM/LzDjxF8SCDq5YAVtre8EqeGfQynW5YEIgf
-	ITCZQw66Ex0hvom3QsLl7Qyc+C2W3CkH1TD7VIkhOsc6OAxqmuyp4ArRb8J0hcfk1uGf
-	GisL2BelnCmBVbi38nuXQEWdv/7OAsESbM3TB0+atIOS2WZNHoJn1ppfaeX4DWtRrFkt
-	hn7Xn2L5L1/LLuCDmOzaDzqJrvGl4s0rci9Yc7Pb2uUIxS2D7BMXFzq2hqENFkUZWW2/
-	Wj09fGK2tXQ6SyeVEBF9wAl+VP+/A7kJfjQ60TuigrdN6E+/uVP70dCytyG/+IHoPZgW
-	Cdkg==
-X-Gm-Message-State: APf1xPBzNWYKEmprFYBzZRYsCmZxLX2Nv6IzJ9/8fuSDiTwE8zMyljNU
-	mnoSPlqwvPn2//mhGg7/brTFIN5Y
-X-Google-Smtp-Source: AG47ELtcSIAqq9RJKDF4zWVGsF0Ts7bgDfyD7H6bFjPzliB8tRsgijaJdruZQIKXSZ1+53BaBNf0Fw==
-X-Received: by 10.223.208.141 with SMTP id y13mr12247506wrh.13.1520249280128; 
-	Mon, 05 Mar 2018 03:28:00 -0800 (PST)
+	bh=kOIm2lUMwivZjQy8r/MLvTGi/BQD/c0Hby3HssmLRI8=;
+	b=G5j0+mpdOl88UyfoRC3r+3bbII2ux5y6zu4q68FtIxO8xSJkb56KP6dWEU01i1XQlx
+	ldWrRlppUJ3wJb9WwjDu5Mu0mfnZwY9AI87SZzVS7ZcMUQy4tGR+EwdE8ql7CjWETRUE
+	Pi4cz+TWnSEIYsB4+fqcdXx+UTHvCaXTcuv+coImBMwrYhVsUmI+bP2JzXMOjG7plXrM
+	ADkLKKweaVBuGqoaDaKkXrM2leT5CuIHi1bOwAeRE7riFUUObKtVC+AYlivY7pABka3Q
+	/5cOGLbUbpwCK8nh4SjCguHeWi22bBmpGSYq7uBKewilahhccZUr9vfkKfAHaoLBhSfW
+	L5ww==
+X-Gm-Message-State: APf1xPCmOP/ObL2+92FSYYiPRd3mBOdcl930JkJQfdMcBbFRwFvmkxzt
+	H2h3GWIoKvL2oXPFVCDunxJON7Io
+X-Google-Smtp-Source: AG47ELsadpZm4RI3Sm4zzZnygKDSaEC1oFrXcjc4iq5/zyTo/8l/O7Iwim72fAAQswPRiwSrZMQeQQ==
+X-Received: by 10.223.178.206 with SMTP id g72mr11599612wrd.135.1520249282705; 
+	Mon, 05 Mar 2018 03:28:02 -0800 (PST)
 Received: from x1.local (ABayonne-654-1-79-224.w86-222.abo.wanadoo.fr.
 	[86.222.222.224]) by smtp.gmail.com with ESMTPSA id
-	k45sm11744388wrf.62.2018.03.05.03.27.59
+	k45sm11744388wrf.62.2018.03.05.03.28.01
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 05 Mar 2018 03:27:59 -0800 (PST)
+	Mon, 05 Mar 2018 03:28:02 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Michael Walle <michael@walle.cc>
-Date: Mon,  5 Mar 2018 08:27:17 -0300
-Message-Id: <20180305112732.26471-16-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Date: Mon,  5 Mar 2018 08:27:19 -0300
+Message-Id: <20180305112732.26471-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.16.2
 In-Reply-To: <20180305112732.26471-1-f4bug@amsat.org>
 References: <20180305112732.26471-1-f4bug@amsat.org>
@@ -64,7 +64,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2a00:1450:400c:c0c::241
-Subject: [Qemu-trivial] [PATCH v2 15/30] hw/lm32: use the BYTE-based
+Subject: [Qemu-trivial] [PATCH v2 17/30] hw/tricore: use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -77,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Mar 2018 11:28:04 -0000
+X-List-Received-Date: Mon, 05 Mar 2018 11:28:06 -0000
 
 It eases code review, unit is explicit.
 
@@ -88,70 +88,39 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 ---
- hw/lm32/lm32_boards.c | 12 ++++++------
- hw/lm32/milkymist.c   |  8 ++++----
- 2 files changed, 10 insertions(+), 10 deletions(-)
+ hw/tricore/tricore_testboard.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
-index 527bcc229c..15315101be 100644
---- a/hw/lm32/lm32_boards.c
-+++ b/hw/lm32/lm32_boards.c
-@@ -88,10 +88,10 @@ static void lm32_evr_init(MachineState *machine)
+diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboard.c
+index ac75eb2128..032bcc8efb 100644
+--- a/hw/tricore/tricore_testboard.c
++++ b/hw/tricore/tricore_testboard.c
+@@ -74,17 +74,17 @@ static void tricore_testboard_init(MachineState *machine, int board_id)
+     cpu = TRICORE_CPU(cpu_create(machine->cpu_type));
+     env = &cpu->env;
+     memory_region_init_ram(ext_cram, NULL, "powerlink_ext_c.ram",
+-                           2 * 1024 * 1024, &error_fatal);
++                           2 * M_BYTE, &error_fatal);
+     memory_region_init_ram(ext_dram, NULL, "powerlink_ext_d.ram",
+-                           4 * 1024 * 1024, &error_fatal);
+-    memory_region_init_ram(int_cram, NULL, "powerlink_int_c.ram", 48 * 1024,
++                           4 * M_BYTE, &error_fatal);
++    memory_region_init_ram(int_cram, NULL, "powerlink_int_c.ram", 48 * K_BYTE,
+                            &error_fatal);
+-    memory_region_init_ram(int_dram, NULL, "powerlink_int_d.ram", 48 * 1024,
++    memory_region_init_ram(int_dram, NULL, "powerlink_int_d.ram", 48 * K_BYTE,
+                            &error_fatal);
+     memory_region_init_ram(pcp_data, NULL, "powerlink_pcp_data.ram",
+-                           16 * 1024, &error_fatal);
++                           16 * K_BYTE, &error_fatal);
+     memory_region_init_ram(pcp_text, NULL, "powerlink_pcp_text.ram",
+-                           32 * 1024, &error_fatal);
++                           32 * K_BYTE, &error_fatal);
  
-     /* memory map */
-     hwaddr flash_base  = 0x04000000;
--    size_t flash_sector_size       = 256 * 1024;
--    size_t flash_size              = 32 * 1024 * 1024;
-+    size_t flash_sector_size       = 256 * K_BYTE;
-+    size_t flash_size              = 32 * M_BYTE;
-     hwaddr ram_base    = 0x08000000;
--    size_t ram_size                = 64 * 1024 * 1024;
-+    size_t ram_size                = 64 * M_BYTE;
-     hwaddr timer0_base = 0x80002000;
-     hwaddr uart0_base  = 0x80006000;
-     hwaddr timer1_base = 0x8000a000;
-@@ -174,10 +174,10 @@ static void lm32_uclinux_init(MachineState *machine)
- 
-     /* memory map */
-     hwaddr flash_base   = 0x04000000;
--    size_t flash_sector_size        = 256 * 1024;
--    size_t flash_size               = 32 * 1024 * 1024;
-+    size_t flash_sector_size        = 256 * K_BYTE;
-+    size_t flash_size               = 32 * M_BYTE;
-     hwaddr ram_base     = 0x08000000;
--    size_t ram_size                 = 64 * 1024 * 1024;
-+    size_t ram_size                 = 64 * M_BYTE;
-     hwaddr uart0_base   = 0x80000000;
-     hwaddr timer0_base  = 0x80002000;
-     hwaddr timer1_base  = 0x80010000;
-diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-index c28379399f..b884b825bc 100644
---- a/hw/lm32/milkymist.c
-+++ b/hw/lm32/milkymist.c
-@@ -36,7 +36,7 @@
- 
- #define BIOS_FILENAME    "mmone-bios.bin"
- #define BIOS_OFFSET      0x00860000
--#define BIOS_SIZE        (512*1024)
-+#define BIOS_SIZE        (512 * K_BYTE)
- #define KERNEL_LOAD_ADDR 0x40000000
- 
- typedef struct {
-@@ -95,10 +95,10 @@ milkymist_init(MachineState *machine)
- 
-     /* memory map */
-     hwaddr flash_base   = 0x00000000;
--    size_t flash_sector_size        = 128 * 1024;
--    size_t flash_size               = 32 * 1024 * 1024;
-+    size_t flash_sector_size        = 128 * K_BYTE;
-+    size_t flash_size               = 32 * M_BYTE;
-     hwaddr sdram_base   = 0x40000000;
--    size_t sdram_size               = 128 * 1024 * 1024;
-+    size_t sdram_size               = 128 * M_BYTE;
- 
-     hwaddr initrd_base  = sdram_base + 0x1002000;
-     hwaddr cmdline_base = sdram_base + 0x1000000;
+     memory_region_add_subregion(sysmem, 0x80000000, ext_cram);
+     memory_region_add_subregion(sysmem, 0xa1000000, ext_dram);
 -- 
 2.16.2
 
