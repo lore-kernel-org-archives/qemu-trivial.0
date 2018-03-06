@@ -1,48 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1etCtC-00038C-Lf
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 08:44:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53608)
+	id 1etCwN-0005uT-NI
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 08:47:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1etCtA-00035g-94
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 08:44:21 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1etCwI-0005qQ-07
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 08:47:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1etCt9-0007gf-AM
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 08:44:20 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49530 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1etCt4-0007a3-Ls; Tue, 06 Mar 2018 08:44:14 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 14EED84222;
-	Tue,  6 Mar 2018 13:44:11 +0000 (UTC)
-Received: from t460.redhat.com (unknown [10.33.36.54])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 165141C710;
-	Tue,  6 Mar 2018 13:44:05 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Date: Tue,  6 Mar 2018 13:44:02 +0000
-Message-Id: <20180306134402.997-1-berrange@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1etCwC-0001eA-6B
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 08:47:34 -0500
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33003)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1etCwC-0001dZ-1c
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 08:47:28 -0500
+Received: by mail-oi0-x242.google.com with SMTP id e9so8199728oii.0
+	for <qemu-trivial@nongnu.org>; Tue, 06 Mar 2018 05:47:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=xJBR2iKIs2NlQeD+LKBxLjmqWO5RKixcHM+lBZaIZ0s=;
+	b=CtBHfBwvv73iQfQhkUlN7fe1OZCr2NicLCKxoK5HY36jtRLfddx3dl4oBssq6WzI5n
+	zAK/n3n+2d8H+/dRI94JGp8rbYim/M++WtPk40LiODGk8jzzfTdGR+Zk6CQqAH4qj+9P
+	wf06z4pM2I6VNk+TyX9qrDT4kQXDvt6jIOsKo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=xJBR2iKIs2NlQeD+LKBxLjmqWO5RKixcHM+lBZaIZ0s=;
+	b=cFmEllDpR078kCIaD2xbGMxEvOOLKs+5KSYfv1lZ4ZEwffbSlF9BL7vG/zrUaqrj9v
+	cnJNoKkzpvznhIDJyaQWFoANMVa2TRfyKssL5DU2+2fd8Xhss10RMz3XaTAfgERcgO2P
+	sUge6626rJvt5A7kqLZUhRMAJ98bQDHQSYtaPq8Nkh3hm8S7gPP59vMGAZlJVQO+ufNU
+	eVlMVY97wP7Uy3/u8YtdYNTKBxWQ9fgtwdBDjmmiDS+TIAMexHNEvzI6TK9f634GaEkP
+	QqxrURDcmJHMlm4STO0+dfQAqQJFGlbhYNR7YrFQ66NJIdNZXrbTSTITLBhVs8m7aM+H
+	01+Q==
+X-Gm-Message-State: AElRT7FxQGwYR+M++73Cf5Lp81NUPgucoA0ZXBOa6aS8U8mWIJZPFcpE
+	PL8RB6xSEErc4Zc45dzrnhmp/E0Mj8rXqtiwwipAAw==
+X-Google-Smtp-Source: AG47ELtsnL7+iA7m08l5PIqRJx0Igee54HDqGk8ExZvwQp/8a/OZR89WlxGzL/esM+IJGXpIikS/6FZxokjv4ScZ140=
+X-Received: by 10.202.61.198 with SMTP id k189mr11882940oia.252.1520344047269; 
+	Tue, 06 Mar 2018 05:47:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 06 Mar 2018 13:44:11 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 06 Mar 2018 13:44:11 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
+Received: by 10.157.33.100 with HTTP; Tue, 6 Mar 2018 05:47:06 -0800 (PST)
+In-Reply-To: <20180306134317.836-1-berrange@redhat.com>
+References: <20180306134317.836-1-berrange@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Mar 2018 13:47:06 +0000
+Message-ID: <CAFEAcA84nJvwBZhrkZdoHjLerD7_ixfXf8HqiXE9aZnvGe=+WQ@mail.gmail.com>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH] misc,
- ide: remove use of HWADDR_PRIx in trace events
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-trivial] [PATCH v2] misc: don't use hwaddr as a type in
+ trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,73 +67,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Mar 2018 13:44:21 -0000
+X-List-Received-Date: Tue, 06 Mar 2018 13:47:38 -0000
 
-The trace events all use a uint64_t data type, so should be using the
-corresponding PRIx64 format, not HWADDR_PRIx which is intended for use
-with the 'hwaddr' type.
+On 6 March 2018 at 13:43, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wro=
+te:
+> Use types that are defined by QEMU in trace events caused build failures
+> for the UST trace backend:
+>
+>   In file included from trace-ust-all.c:13:0:
+>   trace-ust-all.h:11844:206: error: unknown type name =E2=80=98hwaddr=E2=
+=80=99
+>
+> It only knows about C built-in types, and any types that are pulled in
+> from includs of qemu-common.h and lttng/tracepoint.h. This does not
+> include the 'hwaddr' type, so replace it with a uint64_t which is what
+> exec/hwaddr.h defines 'hwaddr' as. This fixes the build failure
+> introduced by
+>
+>   commit 9eb8040c2d2b38e1a40bb6129b1b668fa178fcab
+>   Author: Peter Maydell <peter.maydell@linaro.org>
+>   Date:   Fri Mar 2 10:45:39 2018 +0000
+>
+>     hw/misc/tz-ppc: Model TrustZone peripheral protection controller
+>
+> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> ---
 
-Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
----
- hw/ide/trace-events  | 4 ++--
- hw/misc/trace-events | 8 ++++----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/ide/trace-events b/hw/ide/trace-events
-index 0c39cabe72..5c0e59ec42 100644
---- a/hw/ide/trace-events
-+++ b/hw/ide/trace-events
-@@ -108,8 +108,8 @@ ahci_dma_prepare_buf_fail(void *s, int port) "ahci(%p=
-)[%d]: sglist population fa
- ahci_dma_rw_buf(void *s, int port, int l) "ahci(%p)[%d] len=3D0x%x"
- ahci_cmd_done(void *s, int port) "ahci(%p)[%d]: cmd done"
- ahci_reset(void *s) "ahci(%p): HBA reset"
--allwinner_ahci_mem_read(void *s, void *a, uint64_t addr, uint64_t val, u=
-nsigned size) "ahci(%p): read a=3D%p addr=3D0x%"HWADDR_PRIx" val=3D0x%"PR=
-Ix64", size=3D%d"
--allwinner_ahci_mem_write(void *s, void *a, uint64_t addr, uint64_t val, =
-unsigned size) "ahci(%p): write a=3D%p addr=3D0x%"HWADDR_PRIx" val=3D0x%"=
-PRIx64", size=3D%d"
-+allwinner_ahci_mem_read(void *s, void *a, uint64_t addr, uint64_t val, u=
-nsigned size) "ahci(%p): read a=3D%p addr=3D0x%"PRIx64" val=3D0x%"PRIx64"=
-, size=3D%d"
-+allwinner_ahci_mem_write(void *s, void *a, uint64_t addr, uint64_t val, =
-unsigned size) "ahci(%p): write a=3D%p addr=3D0x%"PRIx64" val=3D0x%"PRIx6=
-4", size=3D%d"
-=20
- # Warning: Verbose
- handle_reg_h2d_fis_dump(void *s, int port, const char *fis) "ahci(%p)[%d=
-]: %s"
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 562d9ed005..ec5a9f0da1 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -69,13 +69,13 @@ mps2_fpgaio_reset(void) "MPS2 FPGAIO: reset"
- mps2_fpgaio_leds(char led1, char led0) "MPS2 FPGAIO LEDs: %c%c"
-=20
- # hw/misc/msf2-sysreg.c
--msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sy=
-sreg write: addr 0x%08" HWADDR_PRIx " data 0x%" PRIx32 " prev 0x%" PRIx32
--msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr =
-0x%08" HWADDR_PRIx " data 0x%08" PRIx32
-+msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sy=
-sreg write: addr 0x%08" PRIx64 " data 0x%" PRIx32 " prev 0x%" PRIx32
-+msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr =
-0x%08" PRIx64 " data 0x%08" PRIx32
- msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL statu=
-s register"
-=20
- #hw/misc/imx7_gpr.c
--imx7_gpr_read(uint64_t offset) "addr 0x%08" HWADDR_PRIx
--imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" HWADDR_PRIx=
- "value 0x%08" HWADDR_PRIx
-+imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
-+imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "val=
-ue 0x%08" PRIx64
-=20
- # hw/misc/mos6522.c
- mos6522_set_counter(int index, unsigned int val) "T%d.counter=3D%d"
---=20
-2.14.3
+I'll apply this to master, since it will fix the travis build.
 
+thanks
+-- PMM
 
