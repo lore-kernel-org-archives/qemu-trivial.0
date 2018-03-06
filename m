@@ -1,51 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1et8UY-000779-7x
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 04:02:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47702)
+	id 1etB0v-0001Dg-6z
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 06:44:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56337)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1et8US-000757-Gh
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 04:02:35 -0500
+	(envelope-from <stefanha@gmail.com>) id 1etAyu-0007zE-Gj
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 06:42:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1et8UM-0005eb-Rk
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 04:02:32 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55662 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1et8UC-0005UX-1d; Tue, 06 Mar 2018 04:02:16 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 84E574023150;
-	Tue,  6 Mar 2018 09:02:15 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DF3392026DFD;
-	Tue,  6 Mar 2018 09:02:14 +0000 (UTC)
-Date: Tue, 6 Mar 2018 10:02:14 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org
-Message-ID: <20180306100214.32c99c12@redhat.com>
-In-Reply-To: <20180305112732.26471-27-f4bug@amsat.org>
-References: <20180305112732.26471-1-f4bug@amsat.org>
-	<20180305112732.26471-27-f4bug@amsat.org>
+	(envelope-from <stefanha@gmail.com>) id 1etAyq-0006oR-Nb
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 06:42:08 -0500
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:52085)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1etAym-0006kN-8z; Tue, 06 Mar 2018 06:42:00 -0500
+Received: by mail-wm0-x229.google.com with SMTP id h21so22098552wmd.1;
+	Tue, 06 Mar 2018 03:41:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=usT1uTZTzxshCPCxX/JOUbST/og6W2U+kKwtnFiKoEo=;
+	b=EMzwzub0Yd00ak+djOo4QIR6QkJm1mTAKZjabkStL3UNZ39REqoDxbzhX3Q1evOOgh
+	iyyAwKx2/yzb02rZ4bMz4rRBK+YvJgvJOG1kdc2bwUpsc+FcWPcC8j4TABsnGNRFV1el
+	Jt0+5nGKyyW7Q0iyxrjl9hNw/+WRKj5VdC2aQl6w0Bx9PgmYhCt44UlG0KqEZFDsJxpF
+	v2fklDIYiIrytoAEIx8e3PD1Z1/pgQXMAMgcrrdLsIljV9kj7w5fO5m2sPUEeFG7woM8
+	lsDpr03rPiPU6pY3LlzFnapCC7UxM7knS6JD+tymPNjb4yPLcTSSlyEjrlaUGnp3NIcR
+	HZOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=usT1uTZTzxshCPCxX/JOUbST/og6W2U+kKwtnFiKoEo=;
+	b=gR75bsYpV6Qek7dvILTDP6IS2qfRtMV152WD7rgZl/EM8Hl5GiPtB+1eDWHmosPax1
+	5c+0zb0NnT3yaxuMLClftElPRdWkVAFWAl5Onw9tbNx03jN6S5FZUQbr+BZmYHqKViHR
+	wpj7xWJlkCjyCi1nciKsY8bGZNXmgk2SB6b02PhMCa1eqoA99RsupcmiKm4xlU+DlMzR
+	S6jHIEJ2ddhVEv0KMCE7Y1kgyfL1xd+Na28jqxawZxoKNzZhRhF7RZ7/7XMomUtcBdhX
+	3ueeFfNeb2pAukG/i3wiU1j05lkBGuYVhpoXGe0BLx4ULMWXx1CPq4pFNCkhx7sT/oQX
+	XqFQ==
+X-Gm-Message-State: AElRT7FgFxp3aAIU52tuwL2KrTpx84KyOiMj8aWs2DYh/4dELSmgURaH
+	BJenb7ik1BSI7BaaWEhIRyU=
+X-Google-Smtp-Source: AG47ELvq3j2u6KCUtTFnE3+WmKVOR63oAfBmjXKSviesPyfbL3SBvRN6Gk7EmcBcEgJ/vGn9oNeqwA==
+X-Received: by 10.28.227.86 with SMTP id a83mr11739838wmh.3.1520336518821;
+	Tue, 06 Mar 2018 03:41:58 -0800 (PST)
+Received: from localhost ([51.15.41.238])
+	by smtp.gmail.com with ESMTPSA id 7sm8796759wmq.42.2018.03.06.03.41.57
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 06 Mar 2018 03:41:57 -0800 (PST)
+Date: Tue, 6 Mar 2018 11:41:57 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	peter.maydell@linaro.org
+Message-ID: <20180306114157.GF31045@stefanha-x1.localdomain>
+References: <20180222215838.18223-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 06 Mar 2018 09:02:15 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 06 Mar 2018 09:02:15 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 26/30] hw/smbios: use the
- BYTE-based definitions
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="WlEyl6ow+jlIgNUh"
+Content-Disposition: inline
+In-Reply-To: <20180222215838.18223-1-eblake@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::229
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] checkpatch: Exempt long URLs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,86 +72,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Mar 2018 09:02:35 -0000
+X-List-Received-Date: Tue, 06 Mar 2018 11:44:12 -0000
 
-On Mon,  5 Mar 2018 08:27:28 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-> It eases code review, unit is explicit.
->=20
-> Patch generated using:
->=20
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
-w/
->=20
-> and modified manually.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+--WlEyl6ow+jlIgNUh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Thu, Feb 22, 2018 at 03:58:38PM -0600, Eric Blake wrote:
+> Sometimes, we want to refer to really long URLs, but checkpatch
+> balks, and we have to manually bypass the check.  URL shorterners
+> may be nice at reducing long links, but it's hard to guarantee the
+> shortened link will live as long as the real target, and it is
+> also nice to see the original target without having to load the
+> shortened URL through a browser.  So exempt a line containing
+> only a URL from the long-line syntax check.
+>=20
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
->  hw/smbios/smbios.c | 14 +++++---------
->  1 file changed, 5 insertions(+), 9 deletions(-)
->=20
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 27a07e96f4..fa02f9ce3f 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -625,10 +625,6 @@ static void smbios_build_type_11_table(void)
->      SMBIOS_BUILD_TABLE_POST;
->  }
-> =20
-> -#define ONE_KB ((ram_addr_t)1 << 10)
-> -#define ONE_MB ((ram_addr_t)1 << 20)
-> -#define ONE_GB ((ram_addr_t)1 << 30)
-> -
->  #define MAX_T16_STD_SZ 0x80000000 /* 2T in Kilobytes */
-> =20
->  static void smbios_build_type_16_table(unsigned dimm_cnt)
-> @@ -640,7 +636,7 @@ static void smbios_build_type_16_table(unsigned dimm_=
-cnt)
->      t->location =3D 0x01; /* Other */
->      t->use =3D 0x03; /* System memory */
->      t->error_correction =3D 0x06; /* Multi-bit ECC (for Microsoft, per S=
-eaBIOS) */
-> -    size_kb =3D QEMU_ALIGN_UP(ram_size, ONE_KB) / ONE_KB;
-> +    size_kb =3D QEMU_ALIGN_UP(ram_size, K_BYTE) / K_BYTE;
->      if (size_kb < MAX_T16_STD_SZ) {
->          t->maximum_capacity =3D cpu_to_le32(size_kb);
->          t->extended_maximum_capacity =3D cpu_to_le64(0);
-> @@ -668,7 +664,7 @@ static void smbios_build_type_17_table(unsigned insta=
-nce, uint64_t size)
->      t->memory_error_information_handle =3D cpu_to_le16(0xFFFE); /* Not p=
-rovided */
->      t->total_width =3D cpu_to_le16(0xFFFF); /* Unknown */
->      t->data_width =3D cpu_to_le16(0xFFFF); /* Unknown */
-> -    size_mb =3D QEMU_ALIGN_UP(size, ONE_MB) / ONE_MB;
-> +    size_mb =3D QEMU_ALIGN_UP(size, M_BYTE) / M_BYTE;
->      if (size_mb < MAX_T17_STD_SZ) {
->          t->size =3D cpu_to_le16(size_mb);
->          t->extended_size =3D cpu_to_le32(0);
-> @@ -707,8 +703,8 @@ static void smbios_build_type_19_table(unsigned insta=
-nce,
-> =20
->      end =3D start + size - 1;
->      assert(end > start);
-> -    start_kb =3D start / ONE_KB;
-> -    end_kb =3D end / ONE_KB;
-> +    start_kb =3D start / K_BYTE;
-> +    end_kb =3D end / K_BYTE;
->      if (start_kb < UINT32_MAX && end_kb < UINT32_MAX) {
->          t->starting_address =3D cpu_to_le32(start_kb);
->          t->ending_address =3D cpu_to_le32(end_kb);
-> @@ -869,7 +865,7 @@ void smbios_get_tables(const struct smbios_phys_mem_a=
-rea *mem_array,
-> =20
->          smbios_build_type_11_table();
-> =20
-> -#define MAX_DIMM_SZ (16ll * ONE_GB)
-> +#define MAX_DIMM_SZ (16 * G_BYTE)
->  #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
->                                          : ((ram_size - 1) % MAX_DIMM_SZ)=
- + 1)
-> =20
+>  scripts/checkpatch.pl | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--WlEyl6ow+jlIgNUh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJann6FAAoJEJykq7OBq3PIjksH/1udaa9BV34N3rBWH+aWNZSz
+ZDWmwfaf4sf1i30czTDghtRRolnoPiQbeDkxmblv3jy6JoSvhv/L+OthhqSWSYRF
+z0V/+NxWacXCowKzvzwAV379yRhyB6QkJxj/CY/QOAbB/haSyVMN+XTbdYQ5MMBI
+S6+yrLdRoXoD3std8GoUpOyhqrF5UaSo2XDze4c9Yh60M8lFh7rY+CDzzdsTb4bY
+O95/N1S+HXOOWGr27J6WHF4NVmFMA5qHK5qyRGta9+obyB+M2PtEZtd/jw9Kuil1
+MWZ+s7WSx1xWNI/dOmfx+lNEHs1sZRbcv3jvcPDPzT9HFPXplHHn2XUgk+sccRk=
+=uyIe
+-----END PGP SIGNATURE-----
+
+--WlEyl6ow+jlIgNUh--
 
