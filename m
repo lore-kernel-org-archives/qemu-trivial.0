@@ -1,78 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1etHk3-0000G4-Ds
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 13:55:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48191)
+	id 1etHmB-0002O7-DA
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Mar 2018 13:57:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48924)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1etHk1-0000DA-RG
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 13:55:14 -0500
+	id 1etHm9-0002MU-5M
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 13:57:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1etHjx-0004Gg-5J
-	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 13:55:13 -0500
-Received: from mail-wr0-x242.google.com ([2a00:1450:400c:c0c::242]:38971)
+	id 1etHm4-00055l-Aa
+	for qemu-trivial@nongnu.org; Tue, 06 Mar 2018 13:57:25 -0500
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:32955)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1etHjw-0004GD-Ux; Tue, 06 Mar 2018 13:55:09 -0500
-Received: by mail-wr0-x242.google.com with SMTP id w77so22045121wrc.6;
-	Tue, 06 Mar 2018 10:55:08 -0800 (PST)
+	id 1etHm4-000545-3t; Tue, 06 Mar 2018 13:57:20 -0500
+Received: by mail-wr0-x243.google.com with SMTP id v18so21387893wrv.0;
+	Tue, 06 Mar 2018 10:57:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=aLrK75OYBW7f+ytQHXQo27s1sOaT4sE8CWJbJN/Bxas=;
-	b=PpFwLPF3rS0lEz7bHHWbFA4JYezZPbV688PBfDU1ZClZZZA/u7Hk68OE8JC6q5teID
-	ivdYyE/ss+fGZGVszl5wU+ax2m1v4qY+5+wcH38nMo7leQE9/42s56eBQdB4r9qv7HN9
-	bjce3kADWSwEYAHD/pfX7utuWSMStT7z0uYfDIBdjXAwxdJcmiAf4bcnM9Ac96usJr9a
-	F2du3hCENGPu/qJpJnArW11D3j+i9AWiYlJJfKSQnKn2uGfc2UZTJr/mEW5Am7DQGQAs
-	9sQ6ZxKZVRtJg1/lQcChrkOGnI2fGhdABDmoRjLTaP5zsKh+wzPUKkU1aSKHG9Sgng0w
-	7iwg==
+	bh=IdH/MJ2n7dbrpZnuDcnTY7asKy+/wlma9w6s/tkzZU4=;
+	b=ehaeJMemjkhv73f+2dD5P0EtZZBx5Oao8/GIwmA8msE9OQcFJiUWvehT4oB2BEAgio
+	TKcx22+VDy9VX9mjK4wCwHOWvr2N7iI4/Rw72FNUDIRhe2DRg4icQ54fIvNRMaVXm9dR
+	QRY8NjpGNZrJcwlHjVA3ZirEZbKO7sR+8US0s1WvESR+YXYCQshTx1AqEv+bPeFEr7Ix
+	znOBDoxYwnJXwQgubLe8Dh1Z3L/BtSIiRFipSTX4lJcduJcuBFMPH0t3vdNLv5+rOvhI
+	qb5TyFe26NNsK0d87yM/8IzVeAXZE3aMNO0iuaZAJnwBU/G0/TOJVn9+fcSAuc0++Iwo
+	XAhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=aLrK75OYBW7f+ytQHXQo27s1sOaT4sE8CWJbJN/Bxas=;
-	b=iHoKYeY2VLBHMm7kbG7WGz7/vxGQGhsQ7eSSq0NU7vmA2vEIlsfbd74aqDOCy92qLU
-	dWWmLJgaJeA8S0orDpUiiV43My8r971JMBgMWbxddid4z/C9K6GrERwxDSA4tRzNmCwv
-	VzqEWH9OE6/B3M3oLs3ZxqYKUxlukdlwQ4aYm8bbaIbTnflFAv57PDHu+xKR4EsCc3ji
-	sQJfi8tCT+rQi7avEkycAtNTnAPN3aqgPVu04UmfZmmu+1d80oM+ZNDKe8xb9tDLLlb1
-	cjMeI6oCB8PBPi08NeFXobRuhAJVMmIVJ94/h1RHxAnqlCMd2pCR+HK+hfIXWwWdbFiD
-	qsFw==
-X-Gm-Message-State: APf1xPAWmxNzPXMfLXIg5zyMm7FtDQCRN64A+gT2d47ePtz2F2xgPTaB
-	0b/a6nTZ6eEwYjWGW7oB8p/vG9ntNlk=
-X-Google-Smtp-Source: AG47ELuBmM3kEGeFdqyES+ZV60oNlzjgaIiCvUOPrCtLaRURY1wdm5oMrkHN5ze4fVT8W7MMZ/okLw==
-X-Received: by 10.223.208.132 with SMTP id y4mr15676261wrh.185.1520362507815; 
-	Tue, 06 Mar 2018 10:55:07 -0800 (PST)
+	bh=IdH/MJ2n7dbrpZnuDcnTY7asKy+/wlma9w6s/tkzZU4=;
+	b=jaBqI3OjwBZo2XIVIaSw4Gn8ISwTTOcQlj3CV8s3hYLAt/Q/pVgtYMJMzCNbsMvfBX
+	agQQypgFMTsviES0mDmZNl89CTfPsolXiWjeeTGEeo7Dvx9ZvJApqHk/Don9jfUKR8Pg
+	r4wbxJTBu1SmFbOHq6YIRlMYcf2/UuDPBpEcprkOczU5e1Z00GzhNzlM32FtreMPfKp5
+	L4P6WSFh/Gi0zW6N/0zLq3114pzljDbbILjqDoc6U9kNhptpDwNuA0JmF3sFyps3wZia
+	BMwN5ZTx3D+QN1pafXdTwYUqncSJSehOGEju1Vw4IughPHeBuzldgEaPrBJWfQ2vBn2l
+	uTfA==
+X-Gm-Message-State: APf1xPC1FpvP8rFzn71H+H3waxkl36ECGIlLFJ22gBfP9EthWl56Kbm9
+	Hc57GYuxZ8j1ysYQqaUCZh8=
+X-Google-Smtp-Source: AG47ELsrJ5bgaS4vY4j7yhEsUuNAxzHv9oLXOnWbfaxqTFuNATTTK6PjoVvv0F/n+V8LLbQEPq0r4Q==
+X-Received: by 10.223.201.15 with SMTP id m15mr15674914wrh.54.1520362638980;
+	Tue, 06 Mar 2018 10:57:18 -0800 (PST)
 Received: from [192.168.182.119]
 	(ABordeaux-653-1-285-17.w90-38.abo.wanadoo.fr. [90.38.129.17])
-	by smtp.gmail.com with ESMTPSA id x82sm7900764wmg.7.2018.03.06.10.55.06
+	by smtp.gmail.com with ESMTPSA id
+	b28sm16144936wrg.66.2018.03.06.10.57.18
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 06 Mar 2018 10:55:07 -0800 (PST)
+	Tue, 06 Mar 2018 10:57:18 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
 	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-References: <20180306134317.836-1-berrange@redhat.com>
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+References: <20180306134402.997-1-berrange@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <0a375694-3228-11fb-0f80-7e31f3df53f1@amsat.org>
-Date: Tue, 6 Mar 2018 15:55:06 -0300
+Message-ID: <b55b5536-5db9-a396-a35e-12b1218b37aa@amsat.org>
+Date: Tue, 6 Mar 2018 15:57:17 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <20180306134317.836-1-berrange@redhat.com>
+In-Reply-To: <20180306134402.997-1-berrange@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c0c::242
-Subject: Re: [Qemu-trivial] [PATCH v2] misc: don't use hwaddr as a type in
- trace events
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-trivial] [PATCH] misc,
+ ide: remove use of HWADDR_PRIx in trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,49 +84,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Mar 2018 18:55:14 -0000
+X-List-Received-Date: Tue, 06 Mar 2018 18:57:26 -0000
 
-On 03/06/2018 10:43 AM, Daniel P. Berrangé wrote:
-> Use types that are defined by QEMU in trace events caused build failures
-> for the UST trace backend:
-> 
->   In file included from trace-ust-all.c:13:0:
->   trace-ust-all.h:11844:206: error: unknown type name ‘hwaddr’
-> 
-> It only knows about C built-in types, and any types that are pulled in
-> from includs of qemu-common.h and lttng/tracepoint.h. This does not
-> include the 'hwaddr' type, so replace it with a uint64_t which is what
-> exec/hwaddr.h defines 'hwaddr' as. This fixes the build failure
-> introduced by
-> 
->   commit 9eb8040c2d2b38e1a40bb6129b1b668fa178fcab
->   Author: Peter Maydell <peter.maydell@linaro.org>
->   Date:   Fri Mar 2 10:45:39 2018 +0000
-> 
->     hw/misc/tz-ppc: Model TrustZone peripheral protection controller
+On 03/06/2018 10:44 AM, Daniel P. Berrangé wrote:
+> The trace events all use a uint64_t data type, so should be using the
+> corresponding PRIx64 format, not HWADDR_PRIx which is intended for use
+> with the 'hwaddr' type.
 > 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/misc/trace-events | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/ide/trace-events  | 4 ++--
+>  hw/misc/trace-events | 8 ++++----
+>  2 files changed, 6 insertions(+), 6 deletions(-)
 > 
+> diff --git a/hw/ide/trace-events b/hw/ide/trace-events
+> index 0c39cabe72..5c0e59ec42 100644
+> --- a/hw/ide/trace-events
+> +++ b/hw/ide/trace-events
+> @@ -108,8 +108,8 @@ ahci_dma_prepare_buf_fail(void *s, int port) "ahci(%p)[%d]: sglist population fa
+>  ahci_dma_rw_buf(void *s, int port, int l) "ahci(%p)[%d] len=0x%x"
+>  ahci_cmd_done(void *s, int port) "ahci(%p)[%d]: cmd done"
+>  ahci_reset(void *s) "ahci(%p): HBA reset"
+> -allwinner_ahci_mem_read(void *s, void *a, uint64_t addr, uint64_t val, unsigned size) "ahci(%p): read a=%p addr=0x%"HWADDR_PRIx" val=0x%"PRIx64", size=%d"
+> -allwinner_ahci_mem_write(void *s, void *a, uint64_t addr, uint64_t val, unsigned size) "ahci(%p): write a=%p addr=0x%"HWADDR_PRIx" val=0x%"PRIx64", size=%d"
+> +allwinner_ahci_mem_read(void *s, void *a, uint64_t addr, uint64_t val, unsigned size) "ahci(%p): read a=%p addr=0x%"PRIx64" val=0x%"PRIx64", size=%d"
+> +allwinner_ahci_mem_write(void *s, void *a, uint64_t addr, uint64_t val, unsigned size) "ahci(%p): write a=%p addr=0x%"PRIx64" val=0x%"PRIx64", size=%d"
+>  
+>  # Warning: Verbose
+>  handle_reg_h2d_fis_dump(void *s, int port, const char *fis) "ahci(%p)[%d]: %s"
 > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index eb5ffcc0a8..562d9ed005 100644
+> index 562d9ed005..ec5a9f0da1 100644
 > --- a/hw/misc/trace-events
 > +++ b/hw/misc/trace-events
-> @@ -92,8 +92,8 @@ tz_ppc_cfg_sec_resp(int level) "TZ PPC: cfg_sec_resp = %d"
->  tz_ppc_irq_enable(int level) "TZ PPC: int_enable = %d"
->  tz_ppc_irq_clear(int level) "TZ PPC: int_clear = %d"
->  tz_ppc_update_irq(int level) "TZ PPC: setting irq line to %d"
-> -tz_ppc_read_blocked(int n, hwaddr offset, bool secure, bool user) "TZ PPC: port %d offset 0x%" HWADDR_PRIx " read (secure %d user %d) blocked"
-> -tz_ppc_write_blocked(int n, hwaddr offset, bool secure, bool user) "TZ PPC: port %d offset 0x%" HWADDR_PRIx " write (secure %d user %d) blocked"
-> +tz_ppc_read_blocked(int n, uint64_t offset, bool secure, bool user) "TZ PPC: port %d offset 0x%" PRIx64 " read (secure %d user %d) blocked"
-> +tz_ppc_write_blocked(int n, uint64_t offset, bool secure, bool user) "TZ PPC: port %d offset 0x%" PRIx64 " write (secure %d user %d) blocked"
+> @@ -69,13 +69,13 @@ mps2_fpgaio_reset(void) "MPS2 FPGAIO: reset"
+>  mps2_fpgaio_leds(char led1, char led0) "MPS2 FPGAIO LEDs: %c%c"
 >  
->  # hw/misc/iotkit-secctl.c
->  iotkit_secctl_s_read(uint32_t offset, uint64_t data, unsigned size) "IoTKit SecCtl S regs read: offset 0x%x data 0x%" PRIx64 " size %u"
+>  # hw/misc/msf2-sysreg.c
+> -msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" HWADDR_PRIx " data 0x%" PRIx32 " prev 0x%" PRIx32
+> -msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr 0x%08" HWADDR_PRIx " data 0x%08" PRIx32
+> +msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" PRIx64 " data 0x%" PRIx32 " prev 0x%" PRIx32
+> +msf2_sysreg_read(uint64_t offset, uint32_t val) "msf2-sysreg read: addr 0x%08" PRIx64 " data 0x%08" PRIx32
+>  msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL status register"
+>  
+>  #hw/misc/imx7_gpr.c
+> -imx7_gpr_read(uint64_t offset) "addr 0x%08" HWADDR_PRIx
+> -imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" HWADDR_PRIx "value 0x%08" HWADDR_PRIx
+> +imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
+> +imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
+>  
+>  # hw/misc/mos6522.c
+>  mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
 > 
 
