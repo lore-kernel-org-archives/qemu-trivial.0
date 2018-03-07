@@ -1,51 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1etSVC-0000pD-95
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2018 01:24:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54332)
+	id 1etSdD-0003f5-2l
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2018 01:32:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56572)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1etSVA-0000oY-N1
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 01:24:37 -0500
+	(envelope-from <aik@ozlabs.ru>) id 1etSdB-0003er-EY
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 01:32:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1etSV9-0006mw-VT
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 01:24:36 -0500
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37182 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1etSV5-0006kg-Io; Wed, 07 Mar 2018 01:24:31 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D34384068032;
-	Wed,  7 Mar 2018 06:24:22 +0000 (UTC)
-Received: from [10.36.116.104] (ovpn-116-104.ams2.redhat.com [10.36.116.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C9F8A2024CAD;
-	Wed,  7 Mar 2018 06:24:17 +0000 (UTC)
-To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
+	(envelope-from <aik@ozlabs.ru>) id 1etSd8-00038s-Af
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 01:32:53 -0500
+Received: from mail-it0-x243.google.com ([2607:f8b0:4001:c0b::243]:37388)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1etSd8-00038g-4P
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 01:32:50 -0500
+Received: by mail-it0-x243.google.com with SMTP id k79so2032034ita.2
+	for <qemu-trivial@nongnu.org>; Tue, 06 Mar 2018 22:32:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=HDNYVf/t5DVE0z1J6RN6VkDUJyVJmQ6uoVCOWBVgHOY=;
+	b=f9+mkPw5flKEUl+meBPvobYipWweo05B5vJpimaJ6uV6v0Rr0NFxNbPfVZxVrcULZG
+	pVuMippfkHuTYPbSK3e0CXSe7B/nd9E7mu6dKpp8o0WrC+rei+jqqsWt6ElzaIfzFvMY
+	XnBgkwTXKw9NZ7Tmpag/Hw1Rj1NiRXgOuGxd9Et82hGtD31i38bhLPO6o4eySvaqsxqX
+	i01Jz1QS/1YhEzRM1q6VdqM6kHshB7YettTcirlJJcoi4RziO8YjvgVKryRsnP7CO/8P
+	KZZMRkv996OlquH5lwbSNcw9nKOa0j+4nx3gUVCWl7zn7sQvECsQKtXNyaUc9Xyxkgx9
+	lolw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=HDNYVf/t5DVE0z1J6RN6VkDUJyVJmQ6uoVCOWBVgHOY=;
+	b=KPdi74uwKij7zNlHDxuR9cW0QsdO5Zp0KVL/2BgjuIlnGbnIMZGVj1lO+rqyeUT0YD
+	wZEHbwsk/Gw1ShisSAM8Cb4kEu/JhnvL2uKP7AQ97JiHV2GByr78tcbWqlPSD9/trIVH
+	bdueJb/3CqAU7TRQ56jGSV5u5uAcC+toGySqoF8XIX7BL8cjcBQF5N8dqeG12SV2VeEs
+	OJII7/KIBf1cxDDROIavjGpGtY/6YCDFXCrCth/Qwt0WWe0PkMUuDtUpDvJi0M62azaS
+	Fk9qNrT1Le+hs+m5tukd/F5moaYTYYVrTByERuq3djIPo+C1KtLcFJLixEWFJfVZopHO
+	xfxA==
+X-Gm-Message-State: AElRT7HJel1lJWM+tyijZ4UFrSbVnpJl9zwzg+8il4iHF/HFtAhTy9Oo
+	cNEuolrOZgSmGiOIpvyMF2llwA==
+X-Google-Smtp-Source: AG47ELusmmlKWFzlPRtLzTpFQhbFwUJlw45/vLLEtQv7EJJpcuxfZqY/bJbsnw1UxYjm6/EaHX8icA==
+X-Received: by 10.36.160.136 with SMTP id o130mr21320982ite.37.1520404369505; 
+	Tue, 06 Mar 2018 22:32:49 -0800 (PST)
+Received: from [10.61.2.175] ([122.99.82.10])
+	by smtp.googlemail.com with ESMTPSA id
+	h90sm11521410ioi.61.2018.03.06.22.32.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 06 Mar 2018 22:32:48 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Samuel Thibault <samuel.thibault@ens-lyon.org>
 References: <20180201093545.33741-1-aik@ozlabs.ru>
 	<38e2df74-c7d7-a062-8385-494adae0ef89@ozlabs.ru>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <727e34b6-0f7f-bd0c-9a34-51d5bc844c73@redhat.com>
-Date: Wed, 7 Mar 2018 07:24:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	<727e34b6-0f7f-bd0c-9a34-51d5bc844c73@redhat.com>
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+Message-ID: <e878fb8c-e33b-54bc-545d-bd4a80d92a88@ozlabs.ru>
+Date: Wed, 7 Mar 2018 17:32:44 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+	Thunderbird/59.0
 MIME-Version: 1.0
-In-Reply-To: <38e2df74-c7d7-a062-8385-494adae0ef89@ozlabs.ru>
+In-Reply-To: <727e34b6-0f7f-bd0c-9a34-51d5bc844c73@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Wed, 07 Mar 2018 06:24:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Wed, 07 Mar 2018 06:24:22 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::243
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH qemu] slirp/debug: Print IP
  addresses in human readable form
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,35 +78,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Mar 2018 06:24:37 -0000
+X-List-Received-Date: Wed, 07 Mar 2018 06:32:54 -0000
 
-On 07.03.2018 04:38, Alexey Kardashevskiy wrote:
-> On 01/02/18 20:35, Alexey Kardashevskiy wrote:
->> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
-> 
-> Ping?
-> 
-> 
->> ---
->>  slirp/arp_table.c | 4 ++--
->>  slirp/socket.c    | 8 ++++----
->>  slirp/udp.c       | 4 ++--
->>  3 files changed, 8 insertions(+), 8 deletions(-)
+On 7/3/18 5:24 pm, Thomas Huth wrote:
+> On 07.03.2018 04:38, Alexey Kardashevskiy wrote:
+>> On 01/02/18 20:35, Alexey Kardashevskiy wrote:
+>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
 >>
->> diff --git a/slirp/arp_table.c b/slirp/arp_table.c
->> index 3547043..bac608f 100644
->> --- a/slirp/arp_table.c
->> +++ b/slirp/arp_table.c
->> @@ -33,7 +33,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
->>      int i;
->>  
->>      DEBUG_CALL("arp_table_add");
->> -    DEBUG_ARG("ip = 0x%x", ip_addr);
->> +    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
+>> Ping?
+>>
+>>
+>>> ---
+>>>  slirp/arp_table.c | 4 ++--
+>>>  slirp/socket.c    | 8 ++++----
+>>>  slirp/udp.c       | 4 ++--
+>>>  3 files changed, 8 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/slirp/arp_table.c b/slirp/arp_table.c
+>>> index 3547043..bac608f 100644
+>>> --- a/slirp/arp_table.c
+>>> +++ b/slirp/arp_table.c
+>>> @@ -33,7 +33,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
+>>>      int i;
+>>>  
+>>>      DEBUG_CALL("arp_table_add");
+>>> -    DEBUG_ARG("ip = 0x%x", ip_addr);
+>>> +    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
+> 
+> Is this endianness safe? The man-page of inet_ntoa says that the
+> function is expecting network byte order, so I wonder whether this works
+> right on both, big and little endian hosts?
 
-Is this endianness safe? The man-page of inet_ntoa says that the
-function is expecting network byte order, so I wonder whether this works
-right on both, big and little endian hosts?
 
- Thomas
+
+arp_table_add() is called for either sin_addr (network order) or
+slirp_arphdr::ar_sip which is initialized from sin_addr (network order)
+with no order conversion. Bugs are still possible, of course :)
+
+
+-- 
+Alexey
 
