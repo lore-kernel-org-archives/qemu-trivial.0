@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1etaLc-0007BH-LM
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2018 09:47:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54593)
+	id 1etaMD-0007dQ-1n
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Mar 2018 09:47:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54774)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1etaLZ-00078j-9Z
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:15 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1etaM9-0007as-BP
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1etaLS-0007If-Vs
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:13 -0500
-Received: from mail-wm0-f65.google.com ([74.125.82.65]:35660)
+	(envelope-from <pbonzini@redhat.com>) id 1etaM4-0007aQ-51
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:49 -0500
+Received: from mail-wr0-f178.google.com ([209.85.128.178]:37568)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1etaLS-0007IE-L3
-	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:06 -0500
-Received: by mail-wm0-f65.google.com with SMTP id x7so5213683wmc.0
-	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2018 06:47:06 -0800 (PST)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1etaM3-0007a6-U0
+	for qemu-trivial@nongnu.org; Wed, 07 Mar 2018 09:47:44 -0500
+Received: by mail-wr0-f178.google.com with SMTP id z12so2445914wrg.4
+	for <qemu-trivial@nongnu.org>; Wed, 07 Mar 2018 06:47:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=yGzHwwxFu9hIJFrL9nC9nzPgAGrAd/ytgdxCTWjucPg=;
-	b=dU/gQyRNzN99YwSlliK5z7LfUR6c4t6hqA7XJC43BihdHUwO/UevntgNK65PLx990h
-	sYyDRNQGPyal6VpIfUcTfPlQt2pk54wrWdvSw4xePSYQsJS1iauBXFnBYn/I6Bsx0YFb
-	EXkjwpwS3wT/H2fBQH8I3AXWuQddnsakhl61bTItrtEaastmG9OZvvOyi5fvNdzBUVr1
-	e0xzBCw0zN7vLqwJq1VbvIcPPXEP96U7/qI76ZLKHYBsfZYI1w4gh3HaxXjOloyXV8N+
-	nT4FiKlI8sTNLhCc0x2lve98rM80gNCht+cdAiAacDRxikNxc7njlYyTtu2/yvDpBWVQ
-	1f7A==
-X-Gm-Message-State: AElRT7FBrydh0P8u/QFHbk7BqhoPRqV2LGSJotjq93DCaPseWZJrElhL
-	jy58C4oprllOzgSnY08KobRZ5A==
-X-Google-Smtp-Source: AG47ELtW9f3ZTtFiehtZ379IrPYZZpQysEbGJ6z5ySyTlzEj5STU2FAku/7dqUkE95MSGiATU8+RlQ==
-X-Received: by 10.28.95.139 with SMTP id t133mr15755787wmb.88.1520434025491;
-	Wed, 07 Mar 2018 06:47:05 -0800 (PST)
+	bh=Rw4m9LDscTPLcOH864rbLaBy2vWtVwdLK3XtQKrryN8=;
+	b=biZYXMy1ubftI8Htm4KDl2JWwwGPSqTLAmgKhUyVbH3sz4Dk2ouHtwtYC3aF17Lvfa
+	olAWs9CkpPN1/AVf7BX2BpmrBXe+Ru/2AZTKjzsTklkwmTBa4fxRL8jNsGLjH2BP0m/q
+	zzI6U+BjgOSObUoS3Tt/QfqYXnWDHyZastb/AS4qMfsMw4gZE8Het+Z6wxZFHlQj10QQ
+	ltKCJrSHlAbCNaAqi8vebmOL0DP/vkkUIkNGNQ4/JnoWfjD0mNrZYBDrNmERFh7tLyGQ
+	uEroYANBIEQjwz0WcLiLbxXMlQ9YmEd9qmWcQpsUvjqlY4WWyFJnp3xVIXtQNzYG4aBr
+	zaYg==
+X-Gm-Message-State: APf1xPCkCXVbRYK6U1pSPUdZN/MRaBsv/brvMZx6FEb1n4XA4cOVs0dp
+	OIK82Nd1zWFRb4dnJGQDHmT4AXnX3/8=
+X-Google-Smtp-Source: AG47ELtA0zf8dcxIiDIx4nIH5NjfPCNqLag9hvHyVdnnlhP0vE18go/I6RSMc0Z78F+4fbT1hsw+WQ==
+X-Received: by 10.223.177.194 with SMTP id r2mr20740471wra.89.1520434062651;
+	Wed, 07 Mar 2018 06:47:42 -0800 (PST)
 Received: from [192.168.10.165] (94-36-191-219.adsl-ull.clienti.tiscali.it.
 	[94.36.191.219]) by smtp.gmail.com with ESMTPSA id
-	t91sm28182230wrc.21.2018.03.07.06.47.04
+	v63sm50331410wrc.69.2018.03.07.06.47.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 07 Mar 2018 06:47:04 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, qemu-block@nongnu.org
-References: <1518684912-31637-1-git-send-email-thuth@redhat.com>
+	Wed, 07 Mar 2018 06:47:42 -0800 (PST)
+To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Samuel Thibault <samuel.thibault@gnu.org>,
+	"Jason Wang (jasowang@redhat.com)" <jasowang@redhat.com>
+References: <20180201093545.33741-1-aik@ozlabs.ru>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <bb5b7bc7-f0cd-d735-293a-68b336ef7c27@redhat.com>
-Date: Wed, 7 Mar 2018 15:47:03 +0100
+Message-ID: <79532a0f-4cbe-5b85-b113-91cbd3c7f81d@redhat.com>
+Date: Wed, 7 Mar 2018 15:47:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <1518684912-31637-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20180201093545.33741-1-aik@ozlabs.ru>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.65
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] hw: Do not include
- "sysemu/block-backend.h" if it is not necessary
+X-Received-From: 209.85.128.178
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH qemu] slirp/debug: Print IP
+ addresses in human readable form
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,299 +66,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Mar 2018 14:47:15 -0000
+X-List-Received-Date: Wed, 07 Mar 2018 14:47:51 -0000
 
-On 15/02/2018 09:55, Thomas Huth wrote:
-> After reviewing a patch from Philippe that removes block-backend.h
-> from hw/lm32/milkymist.c, I noticed that this header is included
-> unnecessarily in a lot of other files, too. Remove those unneeded
-> includes to speed up the compilation process a little bit.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 01/02/2018 10:35, Alexey Kardashevskiy wrote:
+> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+> ---
+>  slirp/arp_table.c | 4 ++--
+>  slirp/socket.c    | 8 ++++----
+>  slirp/udp.c       | 4 ++--
+>  3 files changed, 8 insertions(+), 8 deletions(-)
 
-Michael seems busy, so I'll pick this up.
+Samuel, Jason, can you pick this up?
+
+Thanks,
 
 Paolo
 
-> ---
->  hw/arm/highbank.c              | 1 -
->  hw/arm/msf2-soc.c              | 1 -
->  hw/arm/realview.c              | 1 -
->  hw/arm/tosa.c                  | 1 -
->  hw/i386/pc.c                   | 2 --
->  hw/i386/pc_piix.c              | 1 -
->  hw/ide/ahci-allwinner.c        | 1 -
->  hw/ide/cmd646.c                | 1 -
->  hw/ide/ich.c                   | 1 -
->  hw/ide/isa.c                   | 1 -
->  hw/ide/microdrive.c            | 1 -
->  hw/ide/mmio.c                  | 1 -
->  hw/mips/mips_fulong2e.c        | 1 -
->  hw/mips/mips_jazz.c            | 1 -
->  hw/ppc/mac_newworld.c          | 1 -
->  hw/ppc/mac_oldworld.c          | 1 -
->  hw/ppc/prep.c                  | 1 -
->  hw/scsi/mptendian.c            | 1 -
->  hw/sd/core.c                   | 1 -
->  hw/sparc/sun4m.c               | 1 -
->  hw/tricore/tricore_testboard.c | 2 --
->  21 files changed, 23 deletions(-)
-> 
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index 287392b..1742cf6 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -27,7 +27,6 @@
->  #include "sysemu/kvm.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
-> -#include "sysemu/block-backend.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/error-report.h"
->  #include "hw/char/pl011.h"
-> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> index a8ec2cd..f68df56 100644
-> --- a/hw/arm/msf2-soc.c
-> +++ b/hw/arm/msf2-soc.c
-> @@ -29,7 +29,6 @@
->  #include "exec/address-spaces.h"
->  #include "hw/char/serial.h"
->  #include "hw/boards.h"
-> -#include "sysemu/block-backend.h"
->  #include "qemu/cutils.h"
->  #include "hw/arm/msf2-soc.h"
->  #include "hw/misc/unimp.h"
-> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-> index 87cd1e5..2139a62 100644
-> --- a/hw/arm/realview.c
-> +++ b/hw/arm/realview.c
-> @@ -20,7 +20,6 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
->  #include "hw/i2c/i2c.h"
-> -#include "sysemu/block-backend.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/error-report.h"
->  #include "hw/char/pl011.h"
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index a55b1a3..7a925fa 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -22,7 +22,6 @@
->  #include "hw/boards.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/ssi/ssi.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/sysbus.h"
->  #include "exec/address-spaces.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 55e69d6..7670b45 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -50,8 +50,6 @@
->  #include "sysemu/qtest.h"
->  #include "kvm_i386.h"
->  #include "hw/xen/xen.h"
-> -#include "sysemu/block-backend.h"
-> -#include "hw/block/block.h"
->  #include "ui/qemu-spice.h"
->  #include "exec/memory.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 456dc9e..527c922 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -40,7 +40,6 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/sysbus.h"
->  #include "sysemu/arch_init.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/i2c/smbus.h"
->  #include "hw/xen/xen.h"
->  #include "exec/memory.h"
-> diff --git a/hw/ide/ahci-allwinner.c b/hw/ide/ahci-allwinner.c
-> index c3f1604..5397483 100644
-> --- a/hw/ide/ahci-allwinner.c
-> +++ b/hw/ide/ahci-allwinner.c
-> @@ -18,7 +18,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "qemu/error-report.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/dma.h"
->  #include "hw/ide/internal.h"
->  #include "hw/ide/ahci_internal.h"
-> diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
-> index 65aff51..6bb92d7 100644
-> --- a/hw/ide/cmd646.c
-> +++ b/hw/ide/cmd646.c
-> @@ -26,7 +26,6 @@
->  #include "hw/hw.h"
->  #include "hw/pci/pci.h"
->  #include "hw/isa/isa.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/dma.h"
+> diff --git a/slirp/arp_table.c b/slirp/arp_table.c
+> index 3547043..bac608f 100644
+> --- a/slirp/arp_table.c
+> +++ b/slirp/arp_table.c
+> @@ -33,7 +33,7 @@ void arp_table_add(Slirp *slirp, uint32_t ip_addr, uint8_t ethaddr[ETH_ALEN])
+>      int i;
 >  
-> diff --git a/hw/ide/ich.c b/hw/ide/ich.c
-> index c01b24e..134478e 100644
-> --- a/hw/ide/ich.c
-> +++ b/hw/ide/ich.c
-> @@ -65,7 +65,6 @@
->  #include "hw/pci/msi.h"
->  #include "hw/pci/pci.h"
->  #include "hw/isa/isa.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/dma.h"
->  #include "hw/ide/pci.h"
->  #include "hw/ide/ahci_internal.h"
-> diff --git a/hw/ide/isa.c b/hw/ide/isa.c
-> index 9fb24fc..028bd61 100644
-> --- a/hw/ide/isa.c
-> +++ b/hw/ide/isa.c
-> @@ -25,7 +25,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "hw/isa/isa.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/dma.h"
+>      DEBUG_CALL("arp_table_add");
+> -    DEBUG_ARG("ip = 0x%x", ip_addr);
+> +    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
+>      DEBUG_ARGS((dfd, " hw addr = %02x:%02x:%02x:%02x:%02x:%02x\n",
+>                  ethaddr[0], ethaddr[1], ethaddr[2],
+>                  ethaddr[3], ethaddr[4], ethaddr[5]));
+> @@ -67,7 +67,7 @@ bool arp_table_search(Slirp *slirp, uint32_t ip_addr,
+>      int i;
 >  
->  #include "hw/ide/internal.h"
-> diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-> index 58e4f52..34bb98d 100644
-> --- a/hw/ide/microdrive.c
-> +++ b/hw/ide/microdrive.c
-> @@ -25,7 +25,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "hw/pcmcia.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/dma.h"
+>      DEBUG_CALL("arp_table_search");
+> -    DEBUG_ARG("ip = 0x%x", ip_addr);
+> +    DEBUG_ARG("ip = %s", inet_ntoa(*(struct in_addr *)&ip_addr));
 >  
->  #include "hw/ide/internal.h"
-> diff --git a/hw/ide/mmio.c b/hw/ide/mmio.c
-> index 6f12f45..42fcf13 100644
-> --- a/hw/ide/mmio.c
-> +++ b/hw/ide/mmio.c
-> @@ -25,7 +25,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "hw/sysbus.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/dma.h"
+>      /* If broadcast address */
+>      if (ip_addr == 0xffffffff || ip_addr == broadcast_addr) {
+> diff --git a/slirp/socket.c b/slirp/socket.c
+> index cb7b5b6..61347d1 100644
+> --- a/slirp/socket.c
+> +++ b/slirp/socket.c
+> @@ -701,10 +701,10 @@ tcp_listen(Slirp *slirp, uint32_t haddr, u_int hport, uint32_t laddr,
+>  	memset(&addr, 0, addrlen);
 >  
->  #include "hw/ide/internal.h"
-> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-> index f68c625..be4f839 100644
-> --- a/hw/mips/mips_fulong2e.c
-> +++ b/hw/mips/mips_fulong2e.c
-> @@ -27,7 +27,6 @@
->  #include "net/net.h"
->  #include "hw/boards.h"
->  #include "hw/i2c/smbus.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/block/flash.h"
->  #include "hw/mips/mips.h"
->  #include "hw/mips/cpudevs.h"
-> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-> index b09871a..08e6f62 100644
-> --- a/hw/mips/mips_jazz.c
-> +++ b/hw/mips/mips_jazz.c
-> @@ -41,7 +41,6 @@
->  #include "hw/timer/i8254.h"
->  #include "hw/display/vga.h"
->  #include "hw/audio/pcspk.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/sysbus.h"
->  #include "exec/address-spaces.h"
->  #include "sysemu/qtest.h"
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index b832417..2c909d1 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -68,7 +68,6 @@
->  #include "sysemu/kvm.h"
->  #include "kvm_ppc.h"
->  #include "hw/usb.h"
-> -#include "sysemu/block-backend.h"
->  #include "exec/address-spaces.h"
->  #include "hw/sysbus.h"
->  #include "qemu/cutils.h"
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index d1f4546..e35575c 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -43,7 +43,6 @@
->  #include "qemu/error-report.h"
->  #include "sysemu/kvm.h"
->  #include "kvm_ppc.h"
-> -#include "sysemu/block-backend.h"
->  #include "exec/address-spaces.h"
->  #include "qemu/cutils.h"
+>  	DEBUG_CALL("tcp_listen");
+> -	DEBUG_ARG("haddr = %x", haddr);
+> -	DEBUG_ARG("hport = %d", hport);
+> -	DEBUG_ARG("laddr = %x", laddr);
+> -	DEBUG_ARG("lport = %d", lport);
+> +	DEBUG_ARG("haddr = %s", inet_ntoa(*(struct in_addr *)&haddr));
+> +	DEBUG_ARG("hport = %d", ntohs(hport));
+> +	DEBUG_ARG("laddr = %s", inet_ntoa(*(struct in_addr *)&laddr));
+> +	DEBUG_ARG("lport = %d", ntohs(lport));
+>  	DEBUG_ARG("flags = %x", flags);
 >  
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 096d4d4..c9d8950 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -43,7 +43,6 @@
->  #include "hw/timer/mc146818rtc.h"
->  #include "hw/isa/pc87312.h"
->  #include "hw/net/ne2000-isa.h"
-> -#include "sysemu/block-backend.h"
->  #include "sysemu/arch_init.h"
->  #include "sysemu/kvm.h"
->  #include "sysemu/qtest.h"
-> diff --git a/hw/scsi/mptendian.c b/hw/scsi/mptendian.c
-> index 3415229..8ae39a7 100644
-> --- a/hw/scsi/mptendian.c
-> +++ b/hw/scsi/mptendian.c
-> @@ -24,7 +24,6 @@
->  #include "hw/hw.h"
->  #include "hw/pci/pci.h"
->  #include "sysemu/dma.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/pci/msi.h"
->  #include "qemu/iov.h"
->  #include "hw/scsi/scsi.h"
-> diff --git a/hw/sd/core.c b/hw/sd/core.c
-> index 3c6eae6..820345f 100644
-> --- a/hw/sd/core.c
-> +++ b/hw/sd/core.c
-> @@ -21,7 +21,6 @@
+>  	so = socreate(slirp);
+> diff --git a/slirp/udp.c b/slirp/udp.c
+> index 227d779..e5bf065 100644
+> --- a/slirp/udp.c
+> +++ b/slirp/udp.c
+> @@ -241,8 +241,8 @@ int udp_output(struct socket *so, struct mbuf *m,
+>  	DEBUG_CALL("udp_output");
+>  	DEBUG_ARG("so = %p", so);
+>  	DEBUG_ARG("m = %p", m);
+> -	DEBUG_ARG("saddr = %lx", (long)saddr->sin_addr.s_addr);
+> -	DEBUG_ARG("daddr = %lx", (long)daddr->sin_addr.s_addr);
+> +	DEBUG_ARG("saddr = %s", inet_ntoa(saddr->sin_addr));
+> +	DEBUG_ARG("daddr = %s", inet_ntoa(daddr->sin_addr));
 >  
->  #include "qemu/osdep.h"
->  #include "hw/qdev-core.h"
-> -#include "sysemu/block-backend.h"
->  #include "hw/sd/sd.h"
->  #include "trace.h"
->  
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index f9892e3..c980096 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -44,7 +44,6 @@
->  #include "hw/empty_slot.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> -#include "sysemu/block-backend.h"
->  #include "trace.h"
->  #include "qemu/cutils.h"
->  
-> diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboard.c
-> index ac75eb2..8e61dfc 100644
-> --- a/hw/tricore/tricore_testboard.c
-> +++ b/hw/tricore/tricore_testboard.c
-> @@ -28,9 +28,7 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
-> -#include "sysemu/block-backend.h"
->  #include "exec/address-spaces.h"
-> -#include "hw/block/flash.h"
->  #include "elf.h"
->  #include "hw/tricore/tricore.h"
->  #include "qemu/error-report.h"
+>  	/*
+>  	 * Adjust for header
 > 
 
 
