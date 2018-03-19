@@ -1,78 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1evNlW-0006zK-Ef
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Mar 2018 09:45:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56654)
+	id 1ey2iz-0002Ww-CH
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Mar 2018 17:53:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42445)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1evNlU-0006xm-Gy
-	for qemu-trivial@nongnu.org; Mon, 12 Mar 2018 09:45:25 -0400
+	(envelope-from <eblake@redhat.com>) id 1ey2ix-0002UZ-50
+	for qemu-trivial@nongnu.org; Mon, 19 Mar 2018 17:53:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1evNlQ-0005Jy-DF
-	for qemu-trivial@nongnu.org; Mon, 12 Mar 2018 09:45:24 -0400
-Received: from mail-ot0-x231.google.com ([2607:f8b0:4003:c0f::231]:40944)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1evNlQ-0005Fb-8n; Mon, 12 Mar 2018 09:45:20 -0400
-Received: by mail-ot0-x231.google.com with SMTP id l12so15290031otj.7;
-	Mon, 12 Mar 2018 06:45:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=TBtdgv5rVfYV0FP6oyGcnlUAkcasCx7T5yXBmKgu0Gw=;
-	b=CHKdpi+OKnuOpmNMrswyhg8kmZCWOQfI3wdVQLHWWT008jK+Jj8Riqe1Ib8CHuWLRE
-	doCqiax1JS0jpHx3Rt45kzMZTDyG8VL9+wWENPuFk/yuOtEth7ZFkloWxevEpLCdrctz
-	Gkhl4dBEXmgcjUrdbSZ7zYqYUZDUQ8Gy00Ys2cjsRYjCFBP2hohoFDSFdr7Dh5tj6/7o
-	l3MbYtv1PFU5QBGpnj+vH82oiAkk3819WhHhDPMYYXKSzqW9guyTnYDrsGObWi7wY4NE
-	9wbp2+F6LGOohr4+fgblSirJSXIGzN8rkn5Szd7+a7J6GFJW4dDuN+Gik4wOlkra2gsl
-	crTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=TBtdgv5rVfYV0FP6oyGcnlUAkcasCx7T5yXBmKgu0Gw=;
-	b=mtB5t0/zn3Pj3q/VcfS4sOAFqKyPfOqgvnVGDh2ksYqH+0fOeZgXxn4NH51aqJ0rqu
-	Tp9oBehaT5IPV3jRyNBE63t4DS9hZsM4W1K8Q2gixtOH/7MOPRRHs7AVK52YaAe68tHU
-	gVNiPhHRB+bqg8/GeF9l0O7uCdyzB9Wmi3G7vZpUHN8z6OvCsUPvwdcJErcNJAxocLfk
-	Txt14S2AGKZGemIe0xXLJ1cZsO9uSk5FM0pHcvjSR7yjOqwiG5X2l8yoSsKW+3v2pDrZ
-	fBVTWEOgX8svtB11aluG1Tc/yoH4Mr9rEhktWus9yGaLTdjFPbZ38/DKkF+kKtB1MkEc
-	NVNg==
-X-Gm-Message-State: AElRT7F9R0lSSVmMb2gg0quHHuLjjpd2Ml7/peAbV3iEbPuzPxu2N0f0
-	Pk1Yd9f7+PLz60EUF3KxxTH8g5wN
-X-Google-Smtp-Source: AG47ELs5Axhn1KCHOX0sYuaKfG6GSWVEdZuj2inRXlLaOKVUKx1tgPwba2BRsB4NzuWvBqrSShExag==
-X-Received: by 10.157.80.131 with SMTP id b3mr5220703oth.74.1520862317802;
-	Mon, 12 Mar 2018 06:45:17 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([172.56.7.167])
-	by smtp.googlemail.com with ESMTPSA id
-	s11sm3874491ots.18.2018.03.12.06.45.13
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 12 Mar 2018 06:45:17 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>,
-	Anatoly Trosinenko <anatoly.trosinenko@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20180127134908.24095-1-anatoly.trosinenko@gmail.com>
-	<20180127134908.24095-2-anatoly.trosinenko@gmail.com>
-	<aab013fb-5ada-6ee5-d038-0277d8ef0b24@weilnetz.de>
-	<CAE5jQCfxjM9ykBCes0oDhrc0B6g8AC5Se39sXBsbZo=-dKQpyg@mail.gmail.com>
-	<CAE5jQCe8O3BT=6SDdm2p7J_wxgzZTcqhyS1mfnEr=4tci9fipg@mail.gmail.com>
-	<efe4a642-a220-5a40-b1e0-769a4216389d@twiddle.net>
-	<CAE5jQCcCA=3kkVa=5eMZs-BGAM_p4fZG+GPu1SmQMg7_sPAH5Q@mail.gmail.com>
-	<57abe9de-1258-3624-2f8a-882f1de1d19d@weilnetz.de>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <3f76df88-f08e-1178-52ab-2d9906793540@twiddle.net>
-Date: Mon, 12 Mar 2018 15:45:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <57abe9de-1258-3624-2f8a-882f1de1d19d@weilnetz.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::231
-Subject: Re: [Qemu-trivial] [PATCH 1/1] tci: eliminate UB due to unaligned
- reads
+	(envelope-from <eblake@redhat.com>) id 1ey2iw-0000mk-CF
+	for qemu-trivial@nongnu.org; Mon, 19 Mar 2018 17:53:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52202 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ey2ir-0000c0-UQ; Mon, 19 Mar 2018 17:53:42 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6EDD68E684;
+	Mon, 19 Mar 2018 21:53:41 +0000 (UTC)
+Received: from red.redhat.com (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DBC351134CCC;
+	Mon, 19 Mar 2018 21:53:38 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Yuval Shaia <yuval.shaia@oracle.com>,
+	Marcel Apfelbaum <marcel@redhat.com>
+Date: Mon, 19 Mar 2018 16:53:35 -0500
+Message-Id: <20180319215335.1119213-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 19 Mar 2018 21:53:41 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 19 Mar 2018 21:53:41 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [PATCH for-2.12] rdma: Fix 32-bit compilation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,20 +50,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Mar 2018 13:45:25 -0000
+X-List-Received-Date: Mon, 19 Mar 2018 21:53:48 -0000
 
-On 03/03/2018 05:41 PM, Stefan Weil wrote:
-> Richard, the discussion about non-portable calls to helper functions is
-> not new, but I still have no test case which fails. Do you think of a
-> special case (architecture, helper function)?
+Use the correct printf formats, so that a 32-bit compile doesn't
+spit out lots of warnings about %lx being incompatible with uint64_t.
+Broken since initial commit ef6d4ccd.
 
-The two that come to mind immediately are:
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
-i386 with a compiler defaulting to stdcall (which I admit is unlikely; it also
-would not work for TCG without modification).
+I don't know if 'make vm-build-ubuntu.i368' would catch this (it failed
+for me for other reasons); I found it via a 32-bit rawhide VM.
 
-m68k (pointers passed in address registers; integrals passed in data registers).
+ hw/rdma/rdma_backend.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+index e306fba5344..89020fdcf62 100644
+--- a/hw/rdma/rdma_backend.c
++++ b/hw/rdma/rdma_backend.c
+@@ -656,7 +656,8 @@ void rdma_backend_destroy_qp(RdmaBackendQP *qp)
+ #define CHK_ATTR(req, dev, member, fmt) ({ \
+     pr_dbg("%s="fmt","fmt"\n", #member, dev.member, req->member); \
+     if (req->member > dev.member) { \
+-        warn_report("%s = 0x%lx is higher than host device capability 0x%lx", \
++        warn_report("%s = 0x%" PRIx64 " is higher than host device " \
++                    "capability 0x%" PRIx64, \
+                     #member, (uint64_t)req->member, (uint64_t)dev.member); \
+         req->member = dev.member; \
+     } \
+-- 
+2.14.3
 
-r~
 
