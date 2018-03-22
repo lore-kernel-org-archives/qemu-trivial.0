@@ -1,69 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ez5eI-0007VF-Pm
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 15:13:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40325)
+	id 1ez5jF-0002Ln-GY
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 15:18:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ez5eG-0007T5-IB
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 15:13:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ez5jA-0002IH-HU
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 15:18:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ez5eF-0007ke-L5
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 15:13:16 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56052 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1ez5e2-0007ZB-0z; Thu, 22 Mar 2018 15:13:02 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 499FD722C1;
-	Thu, 22 Mar 2018 19:12:51 +0000 (UTC)
-Received: from [10.10.121.135] (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9CD742166BAE;
-	Thu, 22 Mar 2018 19:12:41 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1ez5j8-0002FP-SF
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 15:18:20 -0400
+Received: from mail-ot0-x22b.google.com ([2607:f8b0:4003:c0f::22b]:43278)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ez5j8-0002Ek-MM
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 15:18:18 -0400
+Received: by mail-ot0-x22b.google.com with SMTP id m22-v6so10692309otf.10
+	for <qemu-trivial@nongnu.org>; Thu, 22 Mar 2018 12:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6RxeY6euEZxhYAbNdzMXC9j8BvCtveMDyLGwXgNGgXY=;
+	b=OIcNWpT7AiHfIDXqS2ni4b/et3JdiuSP3UQSoPpYhXMB0AGT8LDBZ3EYFeccmCohJi
+	W/I00oGvcILmhd9+MNjbAM7UvXgfIrowu/u5rgfniEMFqgUGMQts+jEHuJaoged4KMa1
+	QPV6noy9GgnhOaXnCFO+Ff/nNRUgk3/LfKnsI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6RxeY6euEZxhYAbNdzMXC9j8BvCtveMDyLGwXgNGgXY=;
+	b=O+DXDP1UQJ4yFM/Cg/M/lUwI1k1v49tfgLN+d8AWbsLeDaC+65Ver1EaMHEGGlTO1+
+	0YxhEwsFC4VsiKa/Dlas7J0jt+pf3rsk4A/LmW2k61aK4FuRvyIYBNlEZCT8ZgCnYHAZ
+	NXUIzTNXQMhbkOp403Q93SF+8lxCFpRZnGvL5Ryr7OnLO3y0rjYk4JrvIZ4mXPMWIp/g
+	klBDUZSE1EdYf464b7s3ZzafFyMKABaKEZMfZEpJrkceXvloBUWg6zANky+nb7yXiPMD
+	oE+MBA1DG2aVStN+DTQuNEPuKYCIranC9nJNjzy1ATygu37N/0C+VLhwObW1FU4RqShN
+	f/+A==
+X-Gm-Message-State: AElRT7GeBQePW1N44BegV/BKrCaMHhsaO2x5GlrhSPaAlBWQ6FWywVX9
+	Jvj0y2+FT1/G3Pl9shG9V2/BBgwF59VliVkOpzEtTg==
+X-Google-Smtp-Source: AG47ELvtb2EQQyKOGpqlXQmOWCr1GRXU9MvdG4OnAHZVcaZAK1pBwI6+ClppdYwQbb3EoFiLhKzc0UMRA0kKvLdKkZ8=
+X-Received: by 2002:a9d:2ae1:: with SMTP id
+	e88-v6mr17171317otb.308.1521746298042; 
+	Thu, 22 Mar 2018 12:18:18 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 12:17:57
+	-0700 (PDT)
+In-Reply-To: <6137f1be-98a0-1b3f-6bed-ca94be1b5d1a@redhat.com>
 References: <20180322161226.29796-1-lvivier@redhat.com>
 	<152174145840.240.3926671265619235661@71c20359a636>
 	<CAFEAcA_Uxhrh2L+FghG7y2r7n36rfo41jKw9vdGZYo32nk28cg@mail.gmail.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+	<6137f1be-98a0-1b3f-6bed-ca94be1b5d1a@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Mar 2018 19:17:57 +0000
+Message-ID: <CAFEAcA8K=dBh1SJUWCZtPGphDngiYMjqeVJG5LurSXOZ-KDk+g@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>, 
 	Yongbok Kim <yongbok.kim@mips.com>, Alberto Garcia <berto@igalia.com>, 
 	Qemu-block <qemu-block@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
 	Markus Armbruster <armbru@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Laurent Vivier <lvivier@redhat.com>, Fam Zheng <famz@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>, 
+	Laurent Vivier <lvivier@redhat.com>, Fam Zheng <famz@redhat.com>, 
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
 	qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>,
-	Kevin Wolf <kwolf@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>, 
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Reitz <mreitz@redhat.com>, 
-	qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <6137f1be-98a0-1b3f-6bed-ca94be1b5d1a@redhat.com>
-Date: Thu, 22 Mar 2018 14:12:41 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Uxhrh2L+FghG7y2r7n36rfo41jKw9vdGZYo32nk28cg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 22 Mar 2018 19:12:51 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 22 Mar 2018 19:12:51 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, 
+	Max Reitz <mreitz@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::22b
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] coccinelle: re-run
  scripts from scripts/coccinelle
 X-BeenThere: qemu-trivial@nongnu.org
@@ -77,28 +85,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 19:13:17 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 19:18:21 -0000
 
-On 03/22/2018 01:00 PM, Peter Maydell wrote:
-> On 22 March 2018 at 17:57,  <no-reply@patchew.org> wrote:
->> Checking PATCH 4/4: Remove unnecessary variables for function return value...
->> ERROR: return is not a function, parentheses are not required
->> #251: FILE: target/mips/dsp_helper.c:3281:
->> +    return (temp[1] << 63) | (temp[0] >> 1);
-> 
-> This looks like a bug in checkpatch. I guess to fix it you'd need
-> to make checkpatch count opening and closing parens in the line
-> to see if it goes to 0 somewhere other than just before the ';'...
+On 22 March 2018 at 19:12, Eric Blake <eblake@redhat.com> wrote:
+> Or if we don't patch the false negative, you can bypass checkpatch with an
+> ugly hack:
+>
+> return 0 + (...) | (...);
+>
+> (I'm NOT going to do that bypass - it's too ugly for my taste)
 
-Or if we don't patch the false negative, you can bypass checkpatch with 
-an ugly hack:
+Yeah, that's definitely not something we should be doing.
+checkpatch has plenty of false positives anyway, ignoring one
+more is no big deal.
 
-return 0 + (...) | (...);
-
-(I'm NOT going to do that bypass - it's too ugly for my taste)
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+thanks
+-- PMM
 
