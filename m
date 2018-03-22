@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ez3wI-000893-5U
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 13:23:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38678)
+	id 1ez3zL-0000w8-46
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 13:26:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39473)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ez3wF-00087z-Uc
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:23:44 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3zJ-0000ur-Aa
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:26:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ez3wF-0002IY-5X
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:23:43 -0400
-Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:44078)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3zI-0003Xy-JG
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:26:53 -0400
+Received: from mail-yw0-x241.google.com ([2607:f8b0:4002:c05::241]:36605)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ez3wE-0002I1-Vc
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:23:43 -0400
-Received: by mail-oi0-x22e.google.com with SMTP id 23-v6so8027931oir.11
-	for <qemu-trivial@nongnu.org>; Thu, 22 Mar 2018 10:23:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
+	id 1ez3zE-0003WB-TN; Thu, 22 Mar 2018 13:26:48 -0400
+Received: by mail-yw0-x241.google.com with SMTP id y64so3086097ywa.3;
+	Thu, 22 Mar 2018 10:26:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TohuQrZ8hh0OSjq4v96Bg1ahElj6lVZOp+pKGTG7sto=;
-	b=c8oxz5+zCGPkX/iJPRH14oIQSQ1mRkLsF8y6WIf8qISGvRB1OwRpOMaI6soFuxiIfm
-	5tA0iUiSJ/ocEjngX35AHmrAzo+ptom4tm3ax8/OS54VvjVyOpzDQ47hMcjwnreJdnwd
-	GDhSd67titIE2/WgGmfPnp3lpJkQuGZziN7T4=
+	:cc; bh=zZ45YUQBXpXDewsgbNgQ7duZnSkv0sLfWA63ALPNlSQ=;
+	b=cRP772+lCNT1yNukrT2yVSA/UJ8somw54HIXVG4t5U4iKRMvU61bZ8Q5sLN3L/saU8
+	CePpQ7Z4G7s9dJSJYaxHttoOBWyCmHlKPYypcY/rNsD4edfurJTgiuZbaVBTzGSn1dcb
+	U7NwwMCIbpL4F19n/2/ksWO1cwWH2AlSDM/2GIB4fpyHAamWI7LQxUw91G109HILGfK9
+	/9dPQX6prnDWlTxwKqeLtavS0ca7m8EeswMKaxpi9HMfw2r0lkbtCujWxRjS+rhG1DPr
+	mytguFBSHBoYU6cGHQvz3yPccYEBgqahHVNH5OUHa39brZaD6bqy4+m4tWvFs3jdA3w5
+	Hi9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=TohuQrZ8hh0OSjq4v96Bg1ahElj6lVZOp+pKGTG7sto=;
-	b=hSofqh55ewuYpKwLg6wiv3DP16CuNZeW6lVoVQRV30L4KV583/ookB4vrBmr3Y4fFR
-	YlO0ZQCSjqnYWnP8AizMFPTCLofoSHLmuUEnoxR/YMcLgMPefurYvK3MiGEMX+BkS3OB
-	r+Zn4OQP2uhJc0t08gtNp0JU4i+H66SFccL11pzCrbCIhA+n49V71H6EOcAuWcVsnWCI
-	MDRdndALPqxmVSi2H/XtGn6/a4UElPpSQH+EZTKzfPibcwCXYDeSZV5L1eQJJr7SNugb
-	Ijc8fzCnG5l7u7EmklOfqciUboV5Ox2LKIpxfZDGG6vIAD2u52q/AZAXOq2G1Cnlhygj
-	UvFA==
-X-Gm-Message-State: AElRT7Hmd3ddQcZP2pEqkpbi+80CQLriDrOLJcnQajPR89D4dKiyfSNc
-	MouwWHDlcIx2JSPKgrrz0Uwuoz2SySxmHsasU2qqXw==
-X-Google-Smtp-Source: AG47ELsKrzTbf5QCqofFZh9rWMIdxck1Wchig/aHm8rpYrt44+guWkqfzcXZBrr4hIYhBugPHbv8mJVqevWSGtJaiHE=
-X-Received: by 10.202.63.85 with SMTP id m82mr13357686oia.252.1521739421946;
-	Thu, 22 Mar 2018 10:23:41 -0700 (PDT)
+	bh=zZ45YUQBXpXDewsgbNgQ7duZnSkv0sLfWA63ALPNlSQ=;
+	b=luo+besK5cN95z3OE8d5gQkMWLYBsJzzwkBytK04wAz4dMpv/b4Gr8a8se1fa7JEaF
+	8Lz1X3AOGO7a1L3x2V0vKUmnaLSf8GNvq0VpbD6ZjBOTmDSQoJNSJsvbmuWjA8BPKVEb
+	xSp+gdmqLVXlDbT796wFa0ASR3JssHPNrRXVpKZhsbTyiQZsVUx8bGqQQKVacH8EFHAs
+	QqN8iyK77mB50hYa3+AHsW+WziPC0EoDSJJka1D3qAyZAfqAyAfTc+W7UiasKHEUb2wT
+	Z/eEJHxthMz/DqG+KuwbcdcBprpSZU+m3NmeYFumTIcjpm78UcZSkb40gYWbl6+L5lxG
+	eQhA==
+X-Gm-Message-State: AElRT7HGg2ZvkzuyRRmBw+xaUXRdlNctXwtWnwKF4goECXLz67/G1g1z
+	8oJsDFGCALGULc0DuwAtWzLV5pM+QqFL6iz187Q=
+X-Google-Smtp-Source: AG47ELtQw/MxKyCvM0ZvNsqSU39biilqOiS2w5iRIKiOwBiievHLhYIwoUsRBLff6pIoRXnPODPxebFGVtMF6spOGbU=
+X-Received: by 10.129.83.215 with SMTP id h206mr15615001ywb.388.1521739608277; 
+	Thu, 22 Mar 2018 10:26:48 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 10:23:21
+Received: by 2002:a25:b047:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 10:26:47
 	-0700 (PDT)
-In-Reply-To: <CAMo8Bf+K_XCsZ2tLVT15v5v0ssEbGSmYj+HuT-x5UMYZTKBZ4Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA8iVaYmnCgQ9-2D=3w_sf6Zs_oAvXBDPL3KVBpomA3PxQ@mail.gmail.com>
 References: <20180322161226.29796-1-lvivier@redhat.com>
 	<20180322161226.29796-5-lvivier@redhat.com>
 	<CAMo8BfKkwM0wzX1yCBvwJ-Av4SZbgSrxmOGzD+Z_+bY0DTcgYg@mail.gmail.com>
 	<6fd26097-aa7e-38cf-0d9e-09d0d36bd88b@redhat.com>
 	<CAMo8Bf+K_XCsZ2tLVT15v5v0ssEbGSmYj+HuT-x5UMYZTKBZ4Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Mar 2018 17:23:21 +0000
-Message-ID: <CAFEAcA8iVaYmnCgQ9-2D=3w_sf6Zs_oAvXBDPL3KVBpomA3PxQ@mail.gmail.com>
-To: Max Filippov <jcmvbkbc@gmail.com>
+	<CAFEAcA8iVaYmnCgQ9-2D=3w_sf6Zs_oAvXBDPL3KVBpomA3PxQ@mail.gmail.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Thu, 22 Mar 2018 10:26:47 -0700
+Message-ID: <CAMo8BfJc9A9bJoNHs3wT1jmVyDkRKXxm6NV3OPJ0hXC-qpbWUg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, 
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
@@ -71,7 +74,7 @@ Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22e
+X-Received-From: 2607:f8b0:4002:c05::241
 Subject: Re: [Qemu-trivial] [PATCH 4/4] Remove unnecessary variables for
  function return value
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,22 +88,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 17:23:45 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 17:26:54 -0000
 
-On 22 March 2018 at 17:19, Max Filippov <jcmvbkbc@gmail.com> wrote:
-> Ok, I can add a fixup that changes #include <xtensa-isa.h> to #include
-> "xtensa-isa.h".
-> Adding #include "qemu/osdep.h" there seems pointless to me.
+On Thu, Mar 22, 2018 at 10:23 AM, Peter Maydell
+<peter.maydell@linaro.org> wrote:
+> On 22 March 2018 at 17:19, Max Filippov <jcmvbkbc@gmail.com> wrote:
+>> Ok, I can add a fixup that changes #include <xtensa-isa.h> to #include
+>> "xtensa-isa.h".
+>> Adding #include "qemu/osdep.h" there seems pointless to me.
+>
+> Every top level .c file must start with including osdep.h.
+> Other headers that it might include rely on that.
+> It looks like these files aren't actually top level .c files,
+> but are only compiled by being #included from some other file.
+> Our convention for that kind of thing is to give the file
+> a .inc.c extension. If you follow that then clean-includes
+> will skip the file rather than trying to apply the requirements
+> for a top level .c file to it.
 
-Every top level .c file must start with including osdep.h.
-Other headers that it might include rely on that.
-It looks like these files aren't actually top level .c files,
-but are only compiled by being #included from some other file.
-Our convention for that kind of thing is to give the file
-a .inc.c extension. If you follow that then clean-includes
-will skip the file rather than trying to apply the requirements
-for a top level .c file to it.
+Ok, thanks. Will do that too.
 
-thanks
--- PMM
+-- 
+Thanks.
+-- Max
 
