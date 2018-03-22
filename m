@@ -1,53 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1eyuyI-0007cB-Lu
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 03:49:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36403)
+	id 1eyvXV-0003zF-I9
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 04:25:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45322)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mapfelba@redhat.com>) id 1eyuyE-0007X7-03
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 03:49:14 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eyvXT-0003xk-Av
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 04:25:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mapfelba@redhat.com>) id 1eyuyA-0000cM-7Q
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 03:49:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58130)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mapfelba@redhat.com>)
-	id 1eyuy1-0000Xk-S8; Thu, 22 Mar 2018 03:48:57 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5C84CC057FA0;
-	Thu, 22 Mar 2018 07:48:56 +0000 (UTC)
-Received: from colo-mx.corp.redhat.com
-	(colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CD555D9C7;
-	Thu, 22 Mar 2018 07:48:56 +0000 (UTC)
-Received: from zmail21.collab.prod.int.phx2.redhat.com
-	(zmail21.collab.prod.int.phx2.redhat.com [10.5.83.24])
-	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 426ED4CA98;
-	Thu, 22 Mar 2018 07:48:56 +0000 (UTC)
-Date: Thu, 22 Mar 2018 03:48:56 -0400 (EDT)
-From: Marcel Apfelbaum <marcel@redhat.com>
-To: yuval shaia <yuval.shaia@oracle.com>, qemu-devel@nongnu.org
-Cc: famz@redhat.com, eblake@redhat.com, qemu-trivial@nongnu.org
-Message-ID: <1232053152.12730389.1521704936150.JavaMail.zimbra@redhat.com>
-In-Reply-To: <152169525471.222.10982135661238361362@71c20359a636>
-References: <152169525471.222.10982135661238361362@71c20359a636>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eyvXQ-0003b8-M6
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 04:25:35 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:33085)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1eyvXQ-0003ai-GQ; Thu, 22 Mar 2018 04:25:32 -0400
+Received: by mail-qt0-x244.google.com with SMTP id i8so8065582qtj.0;
+	Thu, 22 Mar 2018 01:25:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=V3wL9dZn7aYFpOV7S/Z7xRm+BjoSe/IG37Q9B3OgyjM=;
+	b=PApknRn0Va7OEXNOFLS5YwzvP4pV6e4DkeTWo2FuhudbPE1+zTS1SWhCQ9nFjUJxoz
+	cC0rvUeiHJFiGmFB7H7Ilod877KCy0sifbHMUJqBIWoij7tYOX+cSv28rM4iwLZxdu2B
+	STwNP3Hp2qwVu3l/GU2MBphg0/diHr1Mj0x1bHRG2Va9nky0PR2HwtwZd/0kxEVKFUDJ
+	kV4rksT08vbSeWFPm6osyn9JM56TSRZQAy3o4TFgWqPfAZmF1jxhgJtpy8fJaelzRRv2
+	cCC/N1AO35rxqPRMvzdZh6UyOGllfHzsLdvwqc8YRK2VDG1ffDFi5CYX2kNHLxOASZ7h
+	hYKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=V3wL9dZn7aYFpOV7S/Z7xRm+BjoSe/IG37Q9B3OgyjM=;
+	b=XMj6tn0MsCyJpAFSUfKS1Mu8x/c6Jod3SfL70Tlr47HG5t2M35Cl2hj+/VnHiATYJ4
+	0K8kxlRmIw/bW7+6gMbTivElFouJkNlmGIErMLjZJMJIOEV6XDIb571KMOeVIifi9az2
+	txh34Rr9xXw25POpfRsqUtPcTKNgoKiKN8C0JulQ+0NVohWXRsc/OEY+JIZz9MADnJFz
+	OILbVYS/E35lOtjLEC06iWY8jdTiISPeQx8l0sF41hOarmF8mCF7zX1tbvbGRgdH42Bk
+	W0236L1U62lCt06HHGJZ+110HrQhv0bYfhM4998i6bYX5J2eLfcsLCcggWXU6IPSidak
+	qxsQ==
+X-Gm-Message-State: AElRT7FDtowhMKXaKRmT/Z3PZWUGAL0A1hz0fBQZqt2RtETe0A4weh7g
+	qyII9wDwyOMgjrQsAaeVp2nt10Vj
+X-Google-Smtp-Source: AG47ELvK9QEivFaks1P/0IaowwtBNGm7VlguNNUOBSf9vj0pJVPpZrJ14uwlkoN+7su5KWCeUbNDJA==
+X-Received: by 10.237.62.130 with SMTP id n2mr34908720qtf.81.1521707131846;
+	Thu, 22 Mar 2018 01:25:31 -0700 (PDT)
+Received: from [10.66.0.177] (host157.181-15-149.telecom.net.ar.
+	[181.15.149.157]) by smtp.gmail.com with ESMTPSA id
+	n58sm4417128qta.34.2018.03.22.01.25.29
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 22 Mar 2018 01:25:31 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Yuval Shaia <yuval.shaia@oracle.com>, marcel@redhat.com,
+	eblake@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20180321211056.3339-1-yuval.shaia@oracle.com>
+	<20180321211056.3339-2-yuval.shaia@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <1679c87d-9378-03d7-6292-5d17818bab32@amsat.org>
+Date: Thu, 22 Mar 2018 05:25:26 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
+In-Reply-To: <20180321211056.3339-2-yuval.shaia@oracle.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.35.206.35, 10.4.195.7]
-Thread-Topic: hw/rdma: Fix 32-bit compilation
-Thread-Index: NYqADLZJFpLUSo9mDWWgkexij9WICw==
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 22 Mar 2018 07:48:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] hw/rdma: Fix 32-bit
- compilation
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-trivial] [PATCH 1/3] hw/rdma: Change host_virt to void *
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,63 +82,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 07:49:14 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 08:25:36 -0000
 
+On 03/21/2018 06:10 PM, Yuval Shaia wrote:
+> To avoid compilation warnings on 32-bit machines:
+> rdma_backend.c: In function 'rdma_backend_create_mr':
+> rdma_backend.c:409:37: error: cast to pointer from integer of different
+> size [-Werror=int-to-pointer-cast]
+> 	mr->ibmr = ibv_reg_mr(pd->ibpd, (void *)addr, length, access);
+> 
+> Reported-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
 
-Hi Yuval,
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
------ Original Message -----
-> From: no-reply@patchew.org
-> To: "yuval shaia" <yuval.shaia@oracle.com>
-> Cc: famz@redhat.com, "yuval shaia" <yuval.shaia@oracle.com>, marcel@redhat.com, eblake@redhat.com,
-> qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-> Sent: Thursday, March 22, 2018 7:07:35 AM
-> Subject: Re: [Qemu-devel] [PATCH 0/3] hw/rdma: Fix 32-bit compilation
-> 
-> Hi,
-> 
-> This series seems to have some coding style problems. See output below for
-> more information:
-> 
-
-[...]
-
-> === OUTPUT BEGIN ===
-> Checking PATCH 1/3: hw/rdma: Change host_virt to void *...
-> Checking PATCH 2/3: hw/rdma: Use correct print format in CHK_ATTR macro...
-> Checking PATCH 3/3: hw/rdma: Fix 32-bit compilation...
-> WARNING: line over 80 characters
-> #40: FILE: hw/rdma/rdma_backend.c:180:
-> +            pr_dbg("ibv_create_ah failed for gid <0x%" PRIx64 ", 0x%" PRIx64
-> ">\n",
-> 
-> ERROR: space prohibited before that close parenthesis ')'
-> #78: FILE: hw/rdma/rdma_backend.c:673:
-> +    CHK_ATTR(dev_attr, backend_dev->dev_attr, max_mr_size, "%" PRId64 );
-> 
-> WARNING: line over 80 characters
-> #244: FILE: hw/rdma/vmw/pvrdma_main.c:345:
-> +        pr_err("Error trying to set REG value, addr=0x%" PRIx64 ", val=0x%"
-> PRIx64 "\n",
-> 
-> total: 1 errors, 2 warnings, 248 lines checked
-> 
-
-Can you please fix and resend?
-
-Thanks,
-Marcel
-
-> Your patch has style problems, please review.  If any of these errors
-> are false positives report them to the maintainer, see
-> CHECKPATCH in MAINTAINERS.
-> 
-> === OUTPUT END ===
-> 
-> Test command exited with code: 1
-> 
-> 
 > ---
-> Email generated automatically by Patchew [http://patchew.org/].
-> Please send your feedback to patchew-devel@freelists.org
+>  hw/rdma/rdma_backend.c |  8 ++++----
+>  hw/rdma/rdma_backend.h |  2 +-
+>  hw/rdma/rdma_rm.c      | 10 +++++-----
+>  hw/rdma/rdma_rm_defs.h |  2 +-
+>  4 files changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+> index e306fba534..f1a37ba4a2 100644
+> --- a/hw/rdma/rdma_backend.c
+> +++ b/hw/rdma/rdma_backend.c
+> @@ -222,7 +222,7 @@ static int build_host_sge_array(RdmaDeviceResources *rdma_dev_res,
+>              return VENDOR_ERR_INVLKEY | ssge[ssge_idx].lkey;
+>          }
+>  
+> -        dsge->addr = mr->user_mr.host_virt + ssge[ssge_idx].addr -
+> +        dsge->addr = (uintptr_t)mr->user_mr.host_virt + ssge[ssge_idx].addr -
+>                       mr->user_mr.guest_start;
+>          dsge->length = ssge[ssge_idx].length;
+>          dsge->lkey = rdma_backend_mr_lkey(&mr->backend_mr);
+> @@ -401,12 +401,12 @@ void rdma_backend_destroy_pd(RdmaBackendPD *pd)
+>      }
+>  }
+>  
+> -int rdma_backend_create_mr(RdmaBackendMR *mr, RdmaBackendPD *pd, uint64_t addr,
+> +int rdma_backend_create_mr(RdmaBackendMR *mr, RdmaBackendPD *pd, void *addr,
+>                             size_t length, int access)
+>  {
+> -    pr_dbg("addr=0x%lx\n", addr);
+> +    pr_dbg("addr=0x%p\n", addr);
+>      pr_dbg("len=%ld\n", length);
+> -    mr->ibmr = ibv_reg_mr(pd->ibpd, (void *)addr, length, access);
+> +    mr->ibmr = ibv_reg_mr(pd->ibpd, addr, length, access);
+>      if (mr->ibmr) {
+>          pr_dbg("lkey=0x%x\n", mr->ibmr->lkey);
+>          pr_dbg("rkey=0x%x\n", mr->ibmr->rkey);
+> diff --git a/hw/rdma/rdma_backend.h b/hw/rdma/rdma_backend.h
+> index 68f2b05ca7..07f6fed768 100644
+> --- a/hw/rdma/rdma_backend.h
+> +++ b/hw/rdma/rdma_backend.h
+> @@ -61,7 +61,7 @@ int rdma_backend_query_port(RdmaBackendDev *backend_dev,
+>  int rdma_backend_create_pd(RdmaBackendDev *backend_dev, RdmaBackendPD *pd);
+>  void rdma_backend_destroy_pd(RdmaBackendPD *pd);
+>  
+> -int rdma_backend_create_mr(RdmaBackendMR *mr, RdmaBackendPD *pd, uint64_t addr,
+> +int rdma_backend_create_mr(RdmaBackendMR *mr, RdmaBackendPD *pd, void *addr,
+>                             size_t length, int access);
+>  void rdma_backend_destroy_mr(RdmaBackendMR *mr);
+>  
+> diff --git a/hw/rdma/rdma_rm.c b/hw/rdma/rdma_rm.c
+> index b5fc45ddab..296e40518e 100644
+> --- a/hw/rdma/rdma_rm.c
+> +++ b/hw/rdma/rdma_rm.c
+> @@ -146,7 +146,7 @@ int rdma_rm_alloc_mr(RdmaDeviceResources *dev_res, uint32_t pd_handle,
+>      RdmaRmMR *mr;
+>      int ret = 0;
+>      RdmaRmPD *pd;
+> -    uint64_t addr;
+> +    void *addr;
+>      size_t length;
+>  
+>      pd = rdma_rm_get_pd(dev_res, pd_handle);
+> @@ -165,10 +165,10 @@ int rdma_rm_alloc_mr(RdmaDeviceResources *dev_res, uint32_t pd_handle,
+>          /* TODO: This is my guess but not so sure that this needs to be
+>           * done */
+>          length = TARGET_PAGE_SIZE;
+> -        addr = (uint64_t)g_malloc(length);
+> +        addr = g_malloc(length);
+>      } else {
+> -        mr->user_mr.host_virt = (uint64_t) host_virt;
+> -        pr_dbg("host_virt=0x%lx\n", mr->user_mr.host_virt);
+> +        mr->user_mr.host_virt = host_virt;
+> +        pr_dbg("host_virt=0x%p\n", mr->user_mr.host_virt);
+>          mr->user_mr.length = guest_length;
+>          pr_dbg("length=0x%lx\n", guest_length);
+>          mr->user_mr.guest_start = guest_start;
+> @@ -216,7 +216,7 @@ void rdma_rm_dealloc_mr(RdmaDeviceResources *dev_res, uint32_t mr_handle)
+>  
+>      if (mr) {
+>          rdma_backend_destroy_mr(&mr->backend_mr);
+> -        munmap((void *)mr->user_mr.host_virt, mr->user_mr.length);
+> +        munmap(mr->user_mr.host_virt, mr->user_mr.length);
+>          res_tbl_dealloc(&dev_res->mr_tbl, mr_handle);
+>      }
+>  }
+> diff --git a/hw/rdma/rdma_rm_defs.h b/hw/rdma/rdma_rm_defs.h
+> index 6522dca68f..fc646da61f 100644
+> --- a/hw/rdma/rdma_rm_defs.h
+> +++ b/hw/rdma/rdma_rm_defs.h
+> @@ -56,7 +56,7 @@ typedef struct RdmaRmCQ {
+>  } RdmaRmCQ;
+>  
+>  typedef struct RdmaRmUserMR {
+> -    uint64_t host_virt;
+> +    void *host_virt;
+>      uint64_t guest_start;
+>      size_t length;
+>  } RdmaRmUserMR;
+> 
 
