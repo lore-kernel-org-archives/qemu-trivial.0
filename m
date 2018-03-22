@@ -1,65 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ez3fc-0002Tz-RJ
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 13:06:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35126)
+	id 1ez3sJ-0006bl-9q
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 13:19:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3fb-0002Sx-F4
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:06:32 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3sF-0006ao-U3
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:19:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3fa-0002OR-HK
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:06:31 -0400
-Received: from mail-yw0-x244.google.com ([2607:f8b0:4002:c05::244]:45814)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3sF-00015W-0p
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:19:35 -0400
+Received: from mail-yb0-x244.google.com ([2607:f8b0:4002:c09::244]:43016)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
-	id 1ez3fW-0002Ji-AM; Thu, 22 Mar 2018 13:06:26 -0400
-Received: by mail-yw0-x244.google.com with SMTP id r29so3061901ywa.12;
-	Thu, 22 Mar 2018 10:06:26 -0700 (PDT)
+	id 1ez3sB-00014a-1r; Thu, 22 Mar 2018 13:19:31 -0400
+Received: by mail-yb0-x244.google.com with SMTP id z5-v6so3188793ybo.10;
+	Thu, 22 Mar 2018 10:19:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Tq/qMvUVnS2abCFuqzDyaN2w84NsL21FWM2sFX8tWUw=;
-	b=T2HWpyfA2kzePy1CtWxAP0fKGujlROL3CypPAMMnhPdSB/U+RpHK58IJzR3h/VcTOi
-	hdfX0OeKJH7U8+kZCJxAf3S2Eo4OENSVZLfM7pT0+4QLxfgg9aD8iXi6h+e8BmNQg2zC
-	PcozEDtspBgoLmKXhlUVOar+IPQi5zWxNjMrogmuqDZSBhJd5HxhZytFJWdtNSNZJkMM
-	V1dSugbWMAJ4It5Y7Cj8scDdK/C97B3CNlMWsWDZPYBr+BYQUbQL4spEgPLUN+77f1eR
-	WE3gjA6+FqwAQhihfYHRRkRZbUlKqWx7h6ZgaLU00y7Hs9YFw1RWWro9TsAYxTT2lpIh
-	4lYQ==
+	:cc; bh=tYFNc2IdbpPczobcXpxuEROiVrlVgFUt/OuHCwUxt7Y=;
+	b=V7e7civxvLzW0ns9+15DyaOotH/WHqWFI9YTVvIrvFDrNn5UvINT3+Wn2cF+g/UPEh
+	xYGjnZzQUzmJVrxpmBMIrbDjY2sODVNI0Xl8bCH5Tnd+3ZugH0Of7xXhpe1Gr6eyV4jD
+	CDa3RzMWG8TcjFr9866YSkY1m/s3hXZnQunPzvGhoyxDJjX2xip3GXCOt1iQjrx5V49a
+	cw3vkeSgAn+gczWIAkcACrb8/QdpMomrXRR2glkSQDTSeQR+7tBLf8HUZQHJlNXrJLoq
+	jzntIRDw9pnChjk6ntNE65H7d0fAav3zFNXk4d0skv7/VA9FvuG29NYqPN0dSV2JNoHt
+	zkMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Tq/qMvUVnS2abCFuqzDyaN2w84NsL21FWM2sFX8tWUw=;
-	b=RX+bKV6BZqaij10RGVCiwEAeIXacHinDillqrW+wawjiK3QhD7L+q0Uk4CQxFxNOJJ
-	YG8xN+M19SiavpI7xluhm+oqqXzQECPKqcsJmNaUsmUuesAYYkY575whrUqpi17ZBUW6
-	oct1+faBif+CCy3rkHWGUePPd3bpwj7S7ufycovWf5DZIld76mptBQAqgo0AUJOYYivU
-	A/rNASx3TsrFJpHpBfj1eDmSvi2eaAn4Jw/UgPpXiAyJAF9GOS0x8KOmtWXfJ3KgyHDf
-	UYcZJuDcfU2Z/Grjqq0CQA29ernmUi1vGV3qgpGmfcInjTtmVbN9kjyquT/PyLlzHg3i
-	Xw/A==
-X-Gm-Message-State: AElRT7EZl1vCVq7WccG5Vm8ONcwkxqKZVop2KZo5VqCheNutKJh8qpdC
-	A+b3KaITrZXXZM7Dv+oTBGDxNAlKcPrU1sM1pk8=
-X-Google-Smtp-Source: AG47ELs8Jf7YSF3dPhRdOLIYe6UnXwAplq3825CW9XgUXG6HBEd5xDTr1lGC4cXWwZxeledEbkUtUEazMuKynCGfMks=
-X-Received: by 10.129.83.215 with SMTP id h206mr15551335ywb.388.1521738385637; 
-	Thu, 22 Mar 2018 10:06:25 -0700 (PDT)
+	bh=tYFNc2IdbpPczobcXpxuEROiVrlVgFUt/OuHCwUxt7Y=;
+	b=egBMuIT22gAGV49E+AX9WKGhAco3W8OGaT+a5VUR2k9ktGL27Ti5x2IZwEQNnunuZw
+	bvVG6AL0p+Wr4VWS695mJB+yC48QdbfwlMDSoxP2jtcLtyQQAfNgV5Hlyf+hRHFo9/4P
+	z2p4/CWrL1a1jb1fGxnBXaiOZ7rBRRAe8eQWCL6J82Ue/D2AKby5Y5+uaU9EgWqHwxE1
+	pkXC69zyjT3o/FdGaGBQiNjAErngqdgYSDM/pDGI7eKbdZ8aPR+h6Oqzyb41fpsS5LOR
+	Ud/m9kQM0Vjb4B3OxuVlgm1uedH3cxpYfIh7oAh0P5Ps5ToIuKOfWxYpxp8SmvDmne9X
+	qKiQ==
+X-Gm-Message-State: AElRT7FtRRTebq4nPFkXdH6mLeBFUpwXOeKsm5S7uvr7nZ0o8yEUgdJo
+	VlUl5V3TbWPU8jx+LZlNnU/0b+YToyreJ7FdGy8=
+X-Google-Smtp-Source: AG47ELtxyPvqRmmqMwxbVHDf4X92zoTTOxIJlswvw5meGa4+FKWe7SM9pJ2t2iDU16Bz8e+NFa9Bw7BeLR9rZL/lN0s=
+X-Received: by 2002:a25:9988:: with SMTP id
+	p8-v6mr15106630ybo.239.1521739170316; 
+	Thu, 22 Mar 2018 10:19:30 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a25:b047:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 10:06:25
+Received: by 2002:a25:b047:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 10:19:29
 	-0700 (PDT)
-In-Reply-To: <72681a04-d10d-3e88-0671-118a03466eca@redhat.com>
+In-Reply-To: <6fd26097-aa7e-38cf-0d9e-09d0d36bd88b@redhat.com>
 References: <20180322161226.29796-1-lvivier@redhat.com>
 	<20180322161226.29796-5-lvivier@redhat.com>
 	<CAMo8BfKkwM0wzX1yCBvwJ-Av4SZbgSrxmOGzD+Z_+bY0DTcgYg@mail.gmail.com>
-	<72681a04-d10d-3e88-0671-118a03466eca@redhat.com>
+	<6fd26097-aa7e-38cf-0d9e-09d0d36bd88b@redhat.com>
 From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Thu, 22 Mar 2018 10:06:25 -0700
-Message-ID: <CAMo8BfJuGFPt+tv5g33yyZJxhOXWmQ=d3yDZaB9NHV_n_hdWtQ@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel <qemu-devel@nongnu.org>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+Date: Thu, 22 Mar 2018 10:19:29 -0700
+Message-ID: <CAMo8Bf+K_XCsZ2tLVT15v5v0ssEbGSmYj+HuT-x5UMYZTKBZ4Q@mail.gmail.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
 	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, 
 	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>, 
 	Richard Henderson <rth@twiddle.net>, qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>, 
-	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>, 
+	Eric Blake <eblake@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Fam Zheng <famz@redhat.com>, 
 	QEMU Trivial <qemu-trivial@nongnu.org>, Alexander Graf <agraf@suse.de>,
 	qemu-ppc <qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
 	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org, 
@@ -71,7 +73,7 @@ Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4002:c05::244
+X-Received-From: 2607:f8b0:4002:c09::244
 Subject: Re: [Qemu-trivial] [PATCH 4/4] Remove unnecessary variables for
  function return value
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,48 +87,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 17:06:32 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 17:19:38 -0000
 
-On Thu, Mar 22, 2018 at 9:59 AM, Eric Blake <eblake@redhat.com> wrote:
-> On 03/22/2018 11:51 AM, Max Filippov wrote:
->>
->> On Thu, Mar 22, 2018 at 9:12 AM, Laurent Vivier <lvivier@redhat.com>
->> wrote:
->>>
+On Thu, Mar 22, 2018 at 9:58 AM, Laurent Vivier <lvivier@redhat.com> wrote:
+> On 22/03/2018 17:51, Max Filippov wrote:
+>> On Thu, Mar 22, 2018 at 9:12 AM, Laurent Vivier <lvivier@redhat.com> wrote:
 >>> Re-run Coccinelle script scripts/coccinelle/return_directly.cocci
 >>>
 >>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
 >>> ---
->>>   target/xtensa/core-dc232b/xtensa-modules.c         | 56
->>> ++++++----------------
->>>   target/xtensa/core-dc233c/xtensa-modules.c         | 56
->>> ++++++----------------
->>>   target/xtensa/core-de212/xtensa-modules.c          | 48
->>> +++++--------------
->>>   target/xtensa/core-fsf/xtensa-modules.c            | 32 ++++---------
->>>   .../xtensa/core-sample_controller/xtensa-modules.c | 24 +++-------
->>
+>>>  target/xtensa/core-dc232b/xtensa-modules.c         | 56 ++++++----------------
+>>>  target/xtensa/core-dc233c/xtensa-modules.c         | 56 ++++++----------------
+>>>  target/xtensa/core-de212/xtensa-modules.c          | 48 +++++--------------
+>>>  target/xtensa/core-fsf/xtensa-modules.c            | 32 ++++---------
+>>>  .../xtensa/core-sample_controller/xtensa-modules.c | 24 +++-------
 >>
 >> These files were autogenerated, fixing them doesn't make much sense.
 >
+> Good to know. They have been already updated by a couple of patches:
 >
-> How frequently is the generator rerun?  Is it something where we are likely
-> to revert the change because it needs to be rerun soon?  If so, then is it
-> worth fixing the generator to output more concise code?
+> 8f0a3716e4 Clean up includes
+> d8e39b7062 Use #include "..." for our own headers, <...> for others
+>
+> Perhaps import_core.sh can be updated?
 
-They were generated once and are not supposed to be regenerated.
-
-> Conversely, if they were generated up front, but likely to remain unchanged
-> into the future, then fixing them (even though the fix differs from the
-> generator) will mean they no longer show up as false positives in future
-> runs of the Coccinelle script.
-
-Ok.
-
-> I'm also fine removing the changes to these files as part of preparing the
-> PULL request, if that's what you would prefer.
-
-The changes are fine, if they make maintenance easier they should stay.
+Ok, I can add a fixup that changes #include <xtensa-isa.h> to #include
+"xtensa-isa.h".
+Adding #include "qemu/osdep.h" there seems pointless to me.
 
 -- 
 Thanks.
