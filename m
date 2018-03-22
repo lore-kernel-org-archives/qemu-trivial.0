@@ -1,80 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ez4Cq-0007yl-AU
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 13:40:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42969)
+	id 1ez4VO-0005Nb-4R
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 14:00:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ez4Co-0007wz-1B
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:40:50 -0400
+	(envelope-from <no-reply@patchew.org>) id 1ez4VL-0005L4-7u
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 14:00:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ez4Cn-0003dK-8b
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:40:50 -0400
-Received: from mail-oi0-x22b.google.com ([2607:f8b0:4003:c06::22b]:39852)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ez4Cn-0003ci-2H
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:40:49 -0400
-Received: by mail-oi0-x22b.google.com with SMTP id q71-v6so8069936oic.6
-	for <qemu-trivial@nongnu.org>; Thu, 22 Mar 2018 10:40:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=53Xrb8r2MbypbpD835QHDw+xwptuXVUTEmstOZalxRo=;
-	b=Nn00tKwNhLk4thz8iOMb4fy5TUL2LSUm29YYOrRqSAR82xySavU04dZAAM/CyU+wCQ
-	M0397iNL3p27m/x3CHC9LXHwR/rpMBwwkAtMwG+GKKqFdYWEMjg8RJZai/gzg6MzYH/P
-	oPkOOjCysyA75X1KYbzO5cVWCRR0GpDSJSUwg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=53Xrb8r2MbypbpD835QHDw+xwptuXVUTEmstOZalxRo=;
-	b=UveDX4PTZN8huRbsw/Njsgv+DDuY0ip4AOvbyPHKv0IynvLH5bxMTnRd4HVVbIu+3u
-	TiRjTa/4izKIUuxCwOJQlKhgaZOy8BPsd9tp2vEETL1rcT67Rha0kkhR0RyT1WnRluSw
-	epSHsN1NmaIvNTomfzPOANZdyDNMPoaN7cRF1RjBinWR+oTh1B+Jv8E4oij1W/T80jhf
-	La+Gzeri/ngevdQKe0sL/hEYxXgWddAW27S2KX6xebpHhqGNEuLVYBY+fiDyq1ZFlEnc
-	sBKWXTlbBOE8GdHzhW/NbYllSMzggHsz+GUuijD8B2A+XsLwJBVmwLsV2fhzF2+ELeM7
-	2AZQ==
-X-Gm-Message-State: AElRT7FyQdQOagBRY+NuR8KKpEH+66fOyuY1+SYrBqU4xTnM16+cKrGl
-	LN3QOa3J7luUPcjXsQRYPkNJmzY3wrT1dNIQkcclgg==
-X-Google-Smtp-Source: AG47ELsiKbSth57y6FaeM5rF51FJytDZxKQpvuBxwvlN2Ex849hxGjDlWg9WIgjC/HMvmN2BrxVXhLOFEa6qtu0e4hA=
-X-Received: by 10.202.178.195 with SMTP id b186mr13743297oif.337.1521740448239;
-	Thu, 22 Mar 2018 10:40:48 -0700 (PDT)
+	(envelope-from <no-reply@patchew.org>) id 1ez4VK-0004Ve-2Z
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 13:59:59 -0400
+Resent-Date: Thu, 22 Mar 2018 13:59:59 -0400
+Resent-Message-Id: <E1ez4VK-0004Ve-2Z@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21050)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1ez4V8-0004IY-KW; Thu, 22 Mar 2018 13:59:46 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1521741460598621.2674785906428;
+	Thu, 22 Mar 2018 10:57:40 -0700 (PDT)
+In-Reply-To: <20180322161226.29796-1-lvivier@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <152174145840.240.3926671265619235661@71c20359a636>
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Thu, 22 Mar 2018 10:40:27
-	-0700 (PDT)
-In-Reply-To: <4886c0dc-e017-8e39-649c-058b5f7b65f3@redhat.com>
-References: <20180322161226.29796-1-lvivier@redhat.com>
-	<20180322161226.29796-5-lvivier@redhat.com>
-	<CAMo8BfKkwM0wzX1yCBvwJ-Av4SZbgSrxmOGzD+Z_+bY0DTcgYg@mail.gmail.com>
-	<6fd26097-aa7e-38cf-0d9e-09d0d36bd88b@redhat.com>
-	<CAMo8Bf+K_XCsZ2tLVT15v5v0ssEbGSmYj+HuT-x5UMYZTKBZ4Q@mail.gmail.com>
-	<4886c0dc-e017-8e39-649c-058b5f7b65f3@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Mar 2018 17:40:27 +0000
-Message-ID: <CAFEAcA85YZB3_k2o0QQtbboaYr=t5k5=ePUwuc0qtcq3ioDwvg@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Max Filippov <jcmvbkbc@gmail.com>, Laurent Vivier <lvivier@redhat.com>, 
-	qemu-devel <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
-	Jason Wang <jasowang@redhat.com>, 
-	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Alexander Graf <agraf@suse.de>,
-	qemu-ppc <qemu-ppc@nongnu.org>, 
-	Alberto Garcia <berto@igalia.com>, Qemu-block <qemu-block@nongnu.org>, 
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22b
-Subject: Re: [Qemu-trivial] [PATCH 4/4] Remove unnecessary variables for
- function return value
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: lvivier@redhat.com
+Cc: famz@redhat.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+	mst@redhat.com, jasowang@redhat.com, armbru@redhat.com,
+	jcmvbkbc@gmail.com, yongbok.kim@mips.com, berto@igalia.com,
+	qemu-block@nongnu.org, qemu-trivial@nongnu.org, agraf@suse.de,
+	david@gibson.dropbear.id.au, lvivier@redhat.com, famz@redhat.com,
+	ehabkost@redhat.com, dgilbert@redhat.com, qemu-arm@nongnu.org,
+	rth@twiddle.net, kwolf@redhat.com, crosthwaite.peter@gmail.com,
+	i.mitsyanko@gmail.com, mreitz@redhat.com, qemu-ppc@nongnu.org,
+	pbonzini@redhat.com, aurelien@aurel32.net
+Date: Thu, 22 Mar 2018 10:57:40 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] coccinelle: re-run
+ scripts from scripts/coccinelle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,25 +53,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 17:40:51 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 18:00:00 -0000
 
-On 22 March 2018 at 17:30, Eric Blake <eblake@redhat.com> wrote:
-> I'm less certain of whether our Coccinelle scripts have easy ways to exclude
-> specific files.  We already have scripts/cocci-macro-file.h to help
-> Coccinelle not choke on some our existing files, but I'm not sure if
-> Coccinelle has a config-file like way that is easy to maintain as a data
-> file in-tree for blacklist files to leave alone (right now, when I run
-> Coccinelle, I have to manually remember to pass a long command line cribbed
-> out of the commit message of an earlier run to pick up things like
-> cocci-macro-file.h, instead of an easy formula that points to a single
-> config file to pull in all the usual options).
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwMzIyMTYxMjI2LjI5Nzk2LTEtbHZpdmllckByZWRoYXQuY29tClN1Ympl
+Y3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggMC80XSBjb2NjaW5lbGxlOiByZS1ydW4gc2NyaXB0cyBm
+cm9tIHNjcmlwdHMvY29jY2luZWxsZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
+YmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3
+YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
+LmFsZ29yaXRobSBoaXN0b2dyYW0KCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJl
+dmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcg
+UEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAgICBp
+ZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwg
+LS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBmaQog
+ICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0K
+ClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBo
+dHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKIHQgW3RhZyB1cGRhdGVdICAg
+ICAgICAgICAgcGF0Y2hldy8yMDE4MDMyMTE0NDEwNy4yMjc3MC0xLWt3b2xmQHJlZGhhdC5jb20g
+LT4gcGF0Y2hldy8yMDE4MDMyMTE0NDEwNy4yMjc3MC0xLWt3b2xmQHJlZGhhdC5jb20KU3dpdGNo
+ZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwphMWM3Mjc1YjU3IFJlbW92ZSB1bm5lY2Vzc2FyeSB2
+YXJpYWJsZXMgZm9yIGZ1bmN0aW9uIHJldHVybiB2YWx1ZQphNTMwZmE1YTcyIHFkaWN0OiByZW1v
+dmUgdXNlbGVzcyBjYXN0CmMxYmZlMjZiMTEgZXJyb3I6IFJlbW92ZSBOVUxMIGNoZWNrcyBvbiBl
+cnJvcl9wcm9wYWdhdGUoKSBjYWxscwpkYjNkNTVlNThlIGVycm9yOiBTdHJpcCB0cmFpbGluZyAn
+XG4nIGZyb20gZXJyb3Igc3RyaW5nIGFyZ3VtZW50cyAoYWdhaW4gYWdhaW4pCgo9PT0gT1VUUFVU
+IEJFR0lOID09PQpDaGVja2luZyBQQVRDSCAxLzQ6IGVycm9yOiBTdHJpcCB0cmFpbGluZyAnXG4n
+IGZyb20gZXJyb3Igc3RyaW5nIGFyZ3VtZW50cyAoYWdhaW4gYWdhaW4pLi4uCkNoZWNraW5nIFBB
+VENIIDIvNDogZXJyb3I6IFJlbW92ZSBOVUxMIGNoZWNrcyBvbiBlcnJvcl9wcm9wYWdhdGUoKSBj
+YWxscy4uLgpDaGVja2luZyBQQVRDSCAzLzQ6IHFkaWN0OiByZW1vdmUgdXNlbGVzcyBjYXN0Li4u
+CkNoZWNraW5nIFBBVENIIDQvNDogUmVtb3ZlIHVubmVjZXNzYXJ5IHZhcmlhYmxlcyBmb3IgZnVu
+Y3Rpb24gcmV0dXJuIHZhbHVlLi4uCkVSUk9SOiByZXR1cm4gaXMgbm90IGEgZnVuY3Rpb24sIHBh
+cmVudGhlc2VzIGFyZSBub3QgcmVxdWlyZWQKIzI1MTogRklMRTogdGFyZ2V0L21pcHMvZHNwX2hl
+bHBlci5jOjMyODE6CisgICAgcmV0dXJuICh0ZW1wWzFdIDw8IDYzKSB8ICh0ZW1wWzBdID4+IDEp
+OwoKRVJST1I6IHJldHVybiBpcyBub3QgYSBmdW5jdGlvbiwgcGFyZW50aGVzZXMgYXJlIG5vdCBy
+ZXF1aXJlZAojMjcwOiBGSUxFOiB0YXJnZXQvbWlwcy9kc3BfaGVscGVyLmM6MzMwODoKKyAgICBy
+ZXR1cm4gKHRlbXBbMV0gPDwgNjMpIHwgKHRlbXBbMF0gPj4gMSk7CgpFUlJPUjogcmV0dXJuIGlz
+IG5vdCBhIGZ1bmN0aW9uLCBwYXJlbnRoZXNlcyBhcmUgbm90IHJlcXVpcmVkCiMyODk6IEZJTEU6
+IHRhcmdldC9taXBzL2RzcF9oZWxwZXIuYzozMzQxOgorICAgIHJldHVybiAodGVtcFsxXSA8PCA2
+MykgfCAodGVtcFswXSA+PiAxKTsKCnRvdGFsOiAzIGVycm9ycywgMCB3YXJuaW5ncywgODEzIGxp
+bmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3
+LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVt
+IHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBP
+VVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgotLS0KRW1h
+aWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3Jn
+L10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBmcmVlbGlzdHMu
+b3Jn
 
-Coccinelle itself doesn't seem to have a config file mechanism.
-We could probably approximate one by using a wrapper script
-that skips some files and run the passed spatch file on the rest;
-scripts/clean-includes has some "skip files we don't want to try
-to run on" code that could perhaps be generalized.
-
-thanks
--- PMM
 
