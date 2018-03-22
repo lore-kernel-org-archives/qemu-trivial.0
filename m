@@ -1,68 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ez3MF-0005hW-C9
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 12:46:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56878)
+	id 1ez3RE-0000i0-F5
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Mar 2018 12:51:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58904)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ez3M7-0005ay-EK
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 12:46:29 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3RD-0000gy-1H
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 12:51:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1ez3M6-0003Bn-MJ
-	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 12:46:23 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47248 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1ez3Ls-00033G-3u; Thu, 22 Mar 2018 12:46:08 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 55652406804D;
-	Thu, 22 Mar 2018 16:46:03 +0000 (UTC)
-Received: from [10.10.121.135] (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4D88C2166BAE;
-	Thu, 22 Mar 2018 16:45:57 +0000 (UTC)
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+	(envelope-from <jcmvbkbc@gmail.com>) id 1ez3RC-00065l-9y
+	for qemu-trivial@nongnu.org; Thu, 22 Mar 2018 12:51:39 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:40456)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
+	id 1ez3R8-00061s-7O; Thu, 22 Mar 2018 12:51:34 -0400
+Received: by mail-qt0-x243.google.com with SMTP id y6so9637410qtm.7;
+	Thu, 22 Mar 2018 09:51:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=yosD7plg4f9hIVR7FZHVCGilOJRomb0s4aLx89+su1o=;
+	b=h24ItFDgVp5NYNl2p9XasONfAmiJuNJOPB2PPhMTYTnilE5bvtDb0CPOhOsyCBxYTh
+	+Xsld29msQINxc7KypO1Rm/xZjQBtjBuW0rpgcqkoTOU2Wb18LRX+QWK7C/C3yxhMVfR
+	wIrAfrTsBPd0AB3U3v9UFO8lvy3B7qr/+36HSzoMuxAVmxdd3LJR/94QnSLuoy/HrWe0
+	fZsrTnhsij9XjEeiY733ySs6xOF3WP3CqGmsYnS1JIOI4Ov2dIW1A8cDnE3ojkUCBkxu
+	CMsx8ui7DhsfqXfI+iqsL4bBT9UDL9dYyhFivWHwMkrzBeLiqtFmyLZwqFvoNnj3JwUd
+	Zvog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=yosD7plg4f9hIVR7FZHVCGilOJRomb0s4aLx89+su1o=;
+	b=pG52TScaNZRrjXC268LIE6ec2x3wG4jsouS/0ymIVWHPQLuRhCarRmIkVeVZ4z72wu
+	RAXHIahXduaMti90CksAVmU2lNDk1eEUXqGEzv8yHhLwwd7gbWZlcKXfyLIX8FfSCxfk
+	JVz4Q/iHqtTMPidaQQYeierNRsfZTMrbSEXHOkGfXQxbP5NeRC1cBkuetTB79QNVdFoN
+	mtbGIDHBQrwTf+0QQQ5xZChIHmstKIguENCcQKZnJYWAB2PZ6i2Ew1SlvzO7ogFFbcs+
+	RtxpwleK3eyXtA1XAN+01SiVCymKzL0gIorPYBee3V1D+KO/HhjAd9dxwQxNxcYPwqAU
+	wgTw==
+X-Gm-Message-State: AElRT7H0eBOYxHTeapaKUMz8lvA6QrI0W6+qnNzH2ABHt3VudCCKc451
+	WbSzSkQAgwplTI9AlnhkzemJO6mkgCmmrFzOZrU=
+X-Google-Smtp-Source: AG47ELuQNAwSWkCCHf6kifnDPjXLVPWjbLdMBeNkbLof3Yo3nIo8silM4MOMjgo6fNg+DJeQGmSFYOSIuhQsHAmthCI=
+X-Received: by 10.237.60.204 with SMTP id e12mr34594328qtf.243.1521737493412; 
+	Thu, 22 Mar 2018 09:51:33 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.237.60.212 with HTTP; Thu, 22 Mar 2018 09:51:32 -0700 (PDT)
+In-Reply-To: <20180322161226.29796-5-lvivier@redhat.com>
 References: <20180322161226.29796-1-lvivier@redhat.com>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
+	<20180322161226.29796-5-lvivier@redhat.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Thu, 22 Mar 2018 09:51:32 -0700
+Message-ID: <CAMo8BfKkwM0wzX1yCBvwJ-Av4SZbgSrxmOGzD+Z_+bY0DTcgYg@mail.gmail.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, 
 	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>, 
 	Richard Henderson <rth@twiddle.net>, qemu-arm@nongnu.org,
+	Eric Blake <eblake@redhat.com>, 
 	Jason Wang <jasowang@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Fam Zheng <famz@redhat.com>, qemu-trivial@nongnu.org,
-	Alexander Graf <agraf@suse.de>, qemu-ppc@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alberto Garcia <berto@igalia.com>, 
-	qemu-block@nongnu.org, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Eduardo Habkost
-	<ehabkost@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Fam Zheng <famz@redhat.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	qemu-ppc <qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org, 
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Yongbok Kim <yongbok.kim@mips.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, 
+	Eduardo Habkost <ehabkost@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <07d291be-bec3-666c-15d9-90ba310bdb88@redhat.com>
-Date: Thu, 22 Mar 2018 11:45:56 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <20180322161226.29796-1-lvivier@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 22 Mar 2018 16:46:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 22 Mar 2018 16:46:03 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH 0/4] coccinelle: re-run scripts from
- scripts/coccinelle
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-trivial] [PATCH 4/4] Remove unnecessary variables for
+ function return value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,27 +83,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Mar 2018 16:46:29 -0000
+X-List-Received-Date: Thu, 22 Mar 2018 16:51:40 -0000
 
-On 03/22/2018 11:12 AM, Laurent Vivier wrote:
-> I've re-run some scripts from the coccinelle directory,
-> and they have found some problems.
-> 
-> This series fixes them.
-> 
-> Laurent Vivier (4):
->    error: Strip trailing '\n' from error string arguments (again again)
->    error: Remove NULL checks on error_propagate() calls
->    qdict: remove useless cast
->    Remove unnecessary variables for function return value
+On Thu, Mar 22, 2018 at 9:12 AM, Laurent Vivier <lvivier@redhat.com> wrote:
+> Re-run Coccinelle script scripts/coccinelle/return_directly.cocci
+>
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  target/xtensa/core-dc232b/xtensa-modules.c         | 56 ++++++----------------
+>  target/xtensa/core-dc233c/xtensa-modules.c         | 56 ++++++----------------
+>  target/xtensa/core-de212/xtensa-modules.c          | 48 +++++--------------
+>  target/xtensa/core-fsf/xtensa-modules.c            | 32 ++++---------
+>  .../xtensa/core-sample_controller/xtensa-modules.c | 24 +++-------
 
-I've gone through all the patches to double-check for no surprises; and 
-found some formatting nits on 4 that can be touched up on pull request. 
-Series:
-Reviewed-by: Eric Blake <eblake@redhat.com>
+These files were autogenerated, fixing them doesn't make much sense.
 
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Thanks.
+-- Max
 
