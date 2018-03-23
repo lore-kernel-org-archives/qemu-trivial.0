@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ezbWH-0005aP-GF
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 01:15:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45419)
+	id 1ezeJa-0004NA-Qm
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 04:14:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1ezbWF-0005YI-Jr
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 01:15:08 -0400
+	(envelope-from <no-reply@patchew.org>) id 1ezeJX-0004Lu-Hm
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mprivozn@redhat.com>) id 1ezbWE-00068S-OJ
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 01:15:07 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54468 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mprivozn@redhat.com>)
-	id 1ezbW7-00061J-3I; Sat, 24 Mar 2018 01:14:59 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BDAE88151D49;
-	Sat, 24 Mar 2018 05:14:58 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-204-18.brq.redhat.com
-	[10.40.204.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6BC7F1DB24;
-	Sat, 24 Mar 2018 05:14:55 +0000 (UTC)
-From: Michal Privoznik <mprivozn@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, famz@redhat.com,
-	qemu-block@nongnu.org
-Date: Sat, 24 Mar 2018 06:14:49 +0100
-Message-Id: <6f10cd53d361a395aa0e85a9311ec4e9a8fc11e5.1521868451.git.mprivozn@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Sat, 24 Mar 2018 05:14:58 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Sat, 24 Mar 2018 05:14:58 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mprivozn@redhat.com' RCPT:''
+	(envelope-from <no-reply@patchew.org>) id 1ezeJV-0000cP-Rv
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:11 -0400
+Resent-Date: Sat, 24 Mar 2018 04:14:11 -0400
+Resent-Message-Id: <E1ezeJV-0000cP-Rv@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21125)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1ezeJV-0000bs-MW
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:09 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 152182238122531.5608797995676;
+	Fri, 23 Mar 2018 09:26:21 -0700 (PDT)
+In-Reply-To: <20180323143202.28879-1-lvivier@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <152182237902.291.10506431455446754776@71c20359a636>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: lvivier@redhat.com
+Cc: famz@redhat.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+	mst@redhat.com, jasowang@redhat.com, agraf@suse.de,
+	jcmvbkbc@gmail.com, berto@igalia.com, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, yongbok.kim@mips.com, armbru@redhat.com,
+	rth@twiddle.net, lvivier@redhat.com, famz@redhat.com,
+	ehabkost@redhat.com, dgilbert@redhat.com, qemu-arm@nongnu.org,
+	david@gibson.dropbear.id.au, kwolf@redhat.com,
+	crosthwaite.peter@gmail.com, i.mitsyanko@gmail.com,
+	mreitz@redhat.com, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	aurelien@aurel32.net
+Date: Fri, 23 Mar 2018 09:26:21 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH] qemu-pr-helper: Actually allow users to
- specify pidfile
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/5] coccinelle: re-run
+ scripts from scripts/coccinelle
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,50 +55,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Mar 2018 05:15:08 -0000
+X-List-Received-Date: Sat, 24 Mar 2018 08:14:12 -0000
 
-Due to wrong specification of arguments to getopt_long() any
-attempt to set pidfile resulted in:
-
-1) the default to be leaked
-2) the @pidfile variable to be set to NULL (because optarg is
-NULL without this patch).
-
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
----
- scsi/qemu-pr-helper.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/scsi/qemu-pr-helper.c b/scsi/qemu-pr-helper.c
-index 3facbba170..21e1b8ea60 100644
---- a/scsi/qemu-pr-helper.c
-+++ b/scsi/qemu-pr-helper.c
-@@ -903,12 +903,12 @@ static int drop_privileges(void)
- 
- int main(int argc, char **argv)
- {
--    const char *sopt = "hVk:fdT:u:g:vq";
-+    const char *sopt = "hVk:f:dT:u:g:vq";
-     struct option lopt[] = {
-         { "help", no_argument, NULL, 'h' },
-         { "version", no_argument, NULL, 'V' },
-         { "socket", required_argument, NULL, 'k' },
--        { "pidfile", no_argument, NULL, 'f' },
-+        { "pidfile", required_argument, NULL, 'f' },
-         { "daemon", no_argument, NULL, 'd' },
-         { "trace", required_argument, NULL, 'T' },
-         { "user", required_argument, NULL, 'u' },
-@@ -952,7 +952,8 @@ int main(int argc, char **argv)
-             }
-             break;
-         case 'f':
--            pidfile = optarg;
-+            g_free(pidfile);
-+            pidfile = g_strdup(optarg);
-             break;
- #ifdef CONFIG_LIBCAP
-         case 'u': {
--- 
-2.16.1
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwMzIzMTQzMjAyLjI4ODc5LTEtbHZpdmllckByZWRoYXQuY29tClN1Ympl
+Y3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggdjIgMC81XSBjb2NjaW5lbGxlOiByZS1ydW4gc2NyaXB0
+cyBmcm9tIHNjcmlwdHMvY29jY2luZWxsZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9i
+aW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4g
+fCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
+Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBk
+aWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAt
+LXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tp
+bmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAg
+ICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gu
+cGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBm
+aQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9
+PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dp
+dGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo4NGEwZTM0YjZjIFJlbW92ZSB1bm5lY2Vzc2Fy
+eSB2YXJpYWJsZXMgZm9yIGZ1bmN0aW9uIHJldHVybiB2YWx1ZQoxNzU5NDExOGRjIHFkaWN0OiBy
+ZW1vdmUgdXNlbGVzcyBjYXN0CjkyZTBlNjQ2YzIgZXJyb3I6IFJlbW92ZSBOVUxMIGNoZWNrcyBv
+biBlcnJvcl9wcm9wYWdhdGUoKSBjYWxscwpkMzRlZDIzMTczIGVycm9yOiBTdHJpcCB0cmFpbGlu
+ZyAnXG4nIGZyb20gZXJyb3Igc3RyaW5nIGFyZ3VtZW50cyAoYWdhaW4gYWdhaW4pCmExZDE1ODFh
+ZDUgbWFrZTogaW1wcm92ZSBjaGVjayBmb3Igc3RhbGUgZ2VuZXJhdGVkIGZpbGVzIGluIHNvdXJj
+ZSBkaXIKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvNTogbWFrZTogaW1w
+cm92ZSBjaGVjayBmb3Igc3RhbGUgZ2VuZXJhdGVkIGZpbGVzIGluIHNvdXJjZSBkaXIuLi4KQ2hl
+Y2tpbmcgUEFUQ0ggMi81OiBlcnJvcjogU3RyaXAgdHJhaWxpbmcgJ1xuJyBmcm9tIGVycm9yIHN0
+cmluZyBhcmd1bWVudHMgKGFnYWluIGFnYWluKS4uLgpDaGVja2luZyBQQVRDSCAzLzU6IGVycm9y
+OiBSZW1vdmUgTlVMTCBjaGVja3Mgb24gZXJyb3JfcHJvcGFnYXRlKCkgY2FsbHMuLi4KQ2hlY2tp
+bmcgUEFUQ0ggNC81OiBxZGljdDogcmVtb3ZlIHVzZWxlc3MgY2FzdC4uLgpDaGVja2luZyBQQVRD
+SCA1LzU6IFJlbW92ZSB1bm5lY2Vzc2FyeSB2YXJpYWJsZXMgZm9yIGZ1bmN0aW9uIHJldHVybiB2
+YWx1ZS4uLgpFUlJPUjogcmV0dXJuIGlzIG5vdCBhIGZ1bmN0aW9uLCBwYXJlbnRoZXNlcyBhcmUg
+bm90IHJlcXVpcmVkCiMyNTM6IEZJTEU6IHRhcmdldC9taXBzL2RzcF9oZWxwZXIuYzozMjgxOgor
+ICAgIHJldHVybiAodGVtcFsxXSA8PCA2MykgfCAodGVtcFswXSA+PiAxKTsKCkVSUk9SOiByZXR1
+cm4gaXMgbm90IGEgZnVuY3Rpb24sIHBhcmVudGhlc2VzIGFyZSBub3QgcmVxdWlyZWQKIzI3Mjog
+RklMRTogdGFyZ2V0L21pcHMvZHNwX2hlbHBlci5jOjMzMDg6CisgICAgcmV0dXJuICh0ZW1wWzFd
+IDw8IDYzKSB8ICh0ZW1wWzBdID4+IDEpOwoKRVJST1I6IHJldHVybiBpcyBub3QgYSBmdW5jdGlv
+biwgcGFyZW50aGVzZXMgYXJlIG5vdCByZXF1aXJlZAojMjkxOiBGSUxFOiB0YXJnZXQvbWlwcy9k
+c3BfaGVscGVyLmM6MzM0MToKKyAgICByZXR1cm4gKHRlbXBbMV0gPDwgNjMpIHwgKHRlbXBbMF0g
+Pj4gMSk7Cgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3MsIDgxNyBsaW5lcyBjaGVja2VkCgpZ
+b3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0
+aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRh
+aW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0K
+ClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBh
+dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2Vu
+ZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 
 
