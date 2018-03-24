@@ -1,49 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ezeJa-0004NA-Qm
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 04:14:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39611)
+	id 1ezid5-0006FC-TD
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 08:50:39 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:37741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1ezeJX-0004Lu-Hm
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:12 -0400
+	(envelope-from <mprivozn@redhat.com>) id 1ezic1-00062V-FH
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 08:50:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1ezeJV-0000cP-Rv
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:11 -0400
-Resent-Date: Sat, 24 Mar 2018 04:14:11 -0400
-Resent-Message-Id: <E1ezeJV-0000cP-Rv@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21125)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1ezeJV-0000bs-MW
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 04:14:09 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 152182238122531.5608797995676;
-	Fri, 23 Mar 2018 09:26:21 -0700 (PDT)
-In-Reply-To: <20180323143202.28879-1-lvivier@redhat.com>
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <152182237902.291.10506431455446754776@71c20359a636>
+	(envelope-from <mprivozn@redhat.com>) id 1eziYO-00014w-FN
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 08:49:33 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50744 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mprivozn@redhat.com>)
+	id 1eziTY-0007Yd-AD; Sat, 24 Mar 2018 08:40:48 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D6B51722C4;
+	Sat, 24 Mar 2018 12:40:44 +0000 (UTC)
+Received: from [10.40.204.18] (ovpn-204-18.brq.redhat.com [10.40.204.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8537A10B0F2C;
+	Sat, 24 Mar 2018 12:40:39 +0000 (UTC)
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>
+References: <4e8dcc24123a09587ecc427f2e80727ba41a7866.1521868380.git.mprivozn@redhat.com>
+	<CAJ+F1CJgXUY888Bo-SQ2yiDWeKk0NKe06bdzkZFL7A-6B4FusQ@mail.gmail.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Message-ID: <82d1bda3-36a9-e5b9-1aa0-8319750c57f7@redhat.com>
+Date: Sat, 24 Mar 2018 13:40:37 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: lvivier@redhat.com
-Cc: famz@redhat.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
-	mst@redhat.com, jasowang@redhat.com, agraf@suse.de,
-	jcmvbkbc@gmail.com, berto@igalia.com, qemu-block@nongnu.org,
-	qemu-trivial@nongnu.org, yongbok.kim@mips.com, armbru@redhat.com,
-	rth@twiddle.net, lvivier@redhat.com, famz@redhat.com,
-	ehabkost@redhat.com, dgilbert@redhat.com, qemu-arm@nongnu.org,
-	david@gibson.dropbear.id.au, kwolf@redhat.com,
-	crosthwaite.peter@gmail.com, i.mitsyanko@gmail.com,
-	mreitz@redhat.com, qemu-ppc@nongnu.org, pbonzini@redhat.com,
-	aurelien@aurel32.net
-Date: Fri, 23 Mar 2018 09:26:21 -0700 (PDT)
-X-ZohoMailClient: External
+In-Reply-To: <CAJ+F1CJgXUY888Bo-SQ2yiDWeKk0NKe06bdzkZFL7A-6B4FusQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Sat, 24 Mar 2018 12:40:44 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Sat, 24 Mar 2018 12:40:44 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mprivozn@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/5] coccinelle: re-run
- scripts from scripts/coccinelle
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ccid-card: include
+ libcacard.h only
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,50 +60,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Mar 2018 08:14:12 -0000
+X-List-Received-Date: Sat, 24 Mar 2018 12:50:39 -0000
 
-SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
-c3NhZ2UtaWQ6IDIwMTgwMzIzMTQzMjAyLjI4ODc5LTEtbHZpdmllckByZWRoYXQuY29tClN1Ympl
-Y3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggdjIgMC81XSBjb2NjaW5lbGxlOiByZS1ydW4gc2NyaXB0
-cyBmcm9tIHNjcmlwdHMvY29jY2luZWxsZQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9i
-aW4vYmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4g
-fCB3YyAtbCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
-Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBk
-aWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAt
-LXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tp
-bmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAg
-ICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gu
-cGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBm
-aQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9
-PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dp
-dGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0Jwo4NGEwZTM0YjZjIFJlbW92ZSB1bm5lY2Vzc2Fy
-eSB2YXJpYWJsZXMgZm9yIGZ1bmN0aW9uIHJldHVybiB2YWx1ZQoxNzU5NDExOGRjIHFkaWN0OiBy
-ZW1vdmUgdXNlbGVzcyBjYXN0CjkyZTBlNjQ2YzIgZXJyb3I6IFJlbW92ZSBOVUxMIGNoZWNrcyBv
-biBlcnJvcl9wcm9wYWdhdGUoKSBjYWxscwpkMzRlZDIzMTczIGVycm9yOiBTdHJpcCB0cmFpbGlu
-ZyAnXG4nIGZyb20gZXJyb3Igc3RyaW5nIGFyZ3VtZW50cyAoYWdhaW4gYWdhaW4pCmExZDE1ODFh
-ZDUgbWFrZTogaW1wcm92ZSBjaGVjayBmb3Igc3RhbGUgZ2VuZXJhdGVkIGZpbGVzIGluIHNvdXJj
-ZSBkaXIKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvNTogbWFrZTogaW1w
-cm92ZSBjaGVjayBmb3Igc3RhbGUgZ2VuZXJhdGVkIGZpbGVzIGluIHNvdXJjZSBkaXIuLi4KQ2hl
-Y2tpbmcgUEFUQ0ggMi81OiBlcnJvcjogU3RyaXAgdHJhaWxpbmcgJ1xuJyBmcm9tIGVycm9yIHN0
-cmluZyBhcmd1bWVudHMgKGFnYWluIGFnYWluKS4uLgpDaGVja2luZyBQQVRDSCAzLzU6IGVycm9y
-OiBSZW1vdmUgTlVMTCBjaGVja3Mgb24gZXJyb3JfcHJvcGFnYXRlKCkgY2FsbHMuLi4KQ2hlY2tp
-bmcgUEFUQ0ggNC81OiBxZGljdDogcmVtb3ZlIHVzZWxlc3MgY2FzdC4uLgpDaGVja2luZyBQQVRD
-SCA1LzU6IFJlbW92ZSB1bm5lY2Vzc2FyeSB2YXJpYWJsZXMgZm9yIGZ1bmN0aW9uIHJldHVybiB2
-YWx1ZS4uLgpFUlJPUjogcmV0dXJuIGlzIG5vdCBhIGZ1bmN0aW9uLCBwYXJlbnRoZXNlcyBhcmUg
-bm90IHJlcXVpcmVkCiMyNTM6IEZJTEU6IHRhcmdldC9taXBzL2RzcF9oZWxwZXIuYzozMjgxOgor
-ICAgIHJldHVybiAodGVtcFsxXSA8PCA2MykgfCAodGVtcFswXSA+PiAxKTsKCkVSUk9SOiByZXR1
-cm4gaXMgbm90IGEgZnVuY3Rpb24sIHBhcmVudGhlc2VzIGFyZSBub3QgcmVxdWlyZWQKIzI3Mjog
-RklMRTogdGFyZ2V0L21pcHMvZHNwX2hlbHBlci5jOjMzMDg6CisgICAgcmV0dXJuICh0ZW1wWzFd
-IDw8IDYzKSB8ICh0ZW1wWzBdID4+IDEpOwoKRVJST1I6IHJldHVybiBpcyBub3QgYSBmdW5jdGlv
-biwgcGFyZW50aGVzZXMgYXJlIG5vdCByZXF1aXJlZAojMjkxOiBGSUxFOiB0YXJnZXQvbWlwcy9k
-c3BfaGVscGVyLmM6MzM0MToKKyAgICByZXR1cm4gKHRlbXBbMV0gPDwgNjMpIHwgKHRlbXBbMF0g
-Pj4gMSk7Cgp0b3RhbDogMyBlcnJvcnMsIDAgd2FybmluZ3MsIDgxNyBsaW5lcyBjaGVja2VkCgpZ
-b3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0
-aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRh
-aW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0K
-ClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBh
-dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2Vu
-ZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
+On 03/24/2018 12:01 PM, Marc-Andr=C3=A9 Lureau wrote:
+> Hi
+>=20
+> On Sat, Mar 24, 2018 at 6:13 AM, Michal Privoznik <mprivozn@redhat.com>=
+ wrote:
+>> When trying to build with latest libcacard-2.5.1, I hit the
+>> following error:
+>>
+>> In file included from hw/usb/ccid-card-passthru.c:12:0:
+>> /usr/include/cacard/vscard_common.h:26:2: error: #warning "Only <libca=
+card.h> can be included directly" [-Werror=3Dcpp]
+>>  #warning "Only <libcacard.h> can be included directly"
+>>
+>=20
+> The warning was promptly removed in 2.5.2:
+> https://cgit.freedesktop.org/spice/libcacard/commit/?id=3D998db1e88eb82=
+19264476c022d1446f3cb4330e8
 
+Cool. But We can still include just top level header file instead of
+individual files, can't we?
+
+Michal
 
