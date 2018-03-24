@@ -1,62 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ezlGj-0001qa-3S
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 11:39:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48413)
+	id 1ezlsI-0008Oq-UB
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Mar 2018 12:18:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52306)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ezlD6-0007kd-LY
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 11:39:44 -0400
+	(envelope-from <eblake@redhat.com>) id 1ezlrD-00065m-ST
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 12:18:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1ezkrB-0008OJ-OX
-	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 11:17:05 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:39236)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1ezgvL-000759-8e; Sat, 24 Mar 2018 07:01:23 -0400
-Received: by mail-wm0-x242.google.com with SMTP id f125so7609688wme.4;
-	Sat, 24 Mar 2018 04:01:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=gdbAJnupvGPKnVc59o4JIktL3rpneBd+/IeyPvt4ULo=;
-	b=chfJAspNyzwp0R5vusuwV43mijEiE3/Hxp+bvefu0mIuqhPerJg/zLmYgeFBUGPLv/
-	zeJOlCRZK85syiQRKdNqM7i/pzLuXCxclUklppoSz5SH51NgWD/B6SFk1fm5dRW4wot5
-	uuGrEyuRga6qNx5qZrtg+nbyu/DOlKLag8PcU2L4O7K58nasPkLJnUjC9l4T/4B+3bHu
-	brALYUgqblhTtelRilsCuzYtlTtNdxl6hN9PRZJLePYFnY9ZvYABL/8Og7L/jW6bTEm8
-	BaoHqtfLIdBVYYFYBTpZDk8Evw2Lew6CXRx5VVjczLVNsnI3KKVG6kk71v8dVNtYX9Kx
-	SXig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=gdbAJnupvGPKnVc59o4JIktL3rpneBd+/IeyPvt4ULo=;
-	b=oqbt/HeSuUxfyIk/ju14AXqejj9mKlJsvvre+LZtys6nciZreTtGr2LqrCAkg+66Zg
-	K3tFCj9Db4l/nIJIFsx7eJ5deRXX6sdSWKmR8mQFC9eZNS66XiKell4YmsdEbQMz7NY8
-	8ck1dO02kezHRfzmCSunSeJ+gTAdy8eDsErO6OFHu0n4vMpW7bWE2C9FqOrmw/DYt2mc
-	IJDmkNYtdMryezhZj+I5plWTMfJrZjfdea6jKBplKKsiCBtU1dkATK5TNlhtRqsA6lI1
-	K2S/3SfUJIEPSUeLgW8fqxFY3uOD9/nwMPMwrmwMMcnZDhYSc2Gg/bwcByfgezBHW2dt
-	/Heg==
-X-Gm-Message-State: AElRT7Gqjb9YuPxxQltj4LizuihKzG/ejSf881RG7HWENECpwb8U2MfG
-	Xr2796G7QzGva9wi9d58pyXi93Lzzu0/c0wD7eM=
-X-Google-Smtp-Source: AG47ELtcTTkTIcpwQjE9I+5qcGFlvBLYQ5Ms8RTBxNxeqnZCwfP7/VRmMGvwRwUpWuyo4K5o4IjrOsL+08FNsWuayHY=
-X-Received: by 10.28.138.6 with SMTP id m6mr11645042wmd.146.1521889281708;
-	Sat, 24 Mar 2018 04:01:21 -0700 (PDT)
+	(envelope-from <eblake@redhat.com>) id 1ezlpH-0000Da-Lw
+	for qemu-trivial@nongnu.org; Sat, 24 Mar 2018 12:16:33 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49046 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1ezhb7-0002HH-3H; Sat, 24 Mar 2018 07:44:33 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 93E35722C6;
+	Sat, 24 Mar 2018 11:44:32 +0000 (UTC)
+Received: from [10.10.121.135] (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 82D56D7DFC;
+	Sat, 24 Mar 2018 11:44:29 +0000 (UTC)
+To: Michal Privoznik <mprivozn@redhat.com>, qemu-devel@nongnu.org
+References: <6f10cd53d361a395aa0e85a9311ec4e9a8fc11e5.1521868451.git.mprivozn@redhat.com>
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, famz@redhat.com,
+	qemu-block@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <be650180-7aaf-8a7a-6601-92fce6ca2a95@redhat.com>
+Date: Sat, 24 Mar 2018 06:44:28 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-Received: by 10.223.128.226 with HTTP; Sat, 24 Mar 2018 04:01:20 -0700 (PDT)
-In-Reply-To: <4e8dcc24123a09587ecc427f2e80727ba41a7866.1521868380.git.mprivozn@redhat.com>
-References: <4e8dcc24123a09587ecc427f2e80727ba41a7866.1521868380.git.mprivozn@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Sat, 24 Mar 2018 12:01:20 +0100
-Message-ID: <CAJ+F1CJgXUY888Bo-SQ2yiDWeKk0NKe06bdzkZFL7A-6B4FusQ@mail.gmail.com>
-To: Michal Privoznik <mprivozn@redhat.com>
-Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
-	Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] ccid-card: include
- libcacard.h only
+In-Reply-To: <6f10cd53d361a395aa0e85a9311ec4e9a8fc11e5.1521868451.git.mprivozn@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Sat, 24 Mar 2018 11:44:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Sat, 24 Mar 2018 11:44:32 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-pr-helper: Actually
+ allow users to specify pidfile
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,67 +60,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Mar 2018 15:39:44 -0000
+X-List-Received-Date: Sat, 24 Mar 2018 16:18:34 -0000
 
-Hi
+On 03/24/2018 12:14 AM, Michal Privoznik wrote:
+> Due to wrong specification of arguments to getopt_long() any
+> attempt to set pidfile resulted in:
+> 
+> 1) the default to be leaked
+> 2) the @pidfile variable to be set to NULL (because optarg is
+> NULL without this patch).
 
-On Sat, Mar 24, 2018 at 6:13 AM, Michal Privoznik <mprivozn@redhat.com> wro=
-te:
-> When trying to build with latest libcacard-2.5.1, I hit the
-> following error:
->
-> In file included from hw/usb/ccid-card-passthru.c:12:0:
-> /usr/include/cacard/vscard_common.h:26:2: error: #warning "Only <libcacar=
-d.h> can be included directly" [-Werror=3Dcpp]
->  #warning "Only <libcacard.h> can be included directly"
->
+Broken in introduction with commit b855f8d, in 2.11.
 
-The warning was promptly removed in 2.5.2:
-https://cgit.freedesktop.org/spice/libcacard/commit/?id=3D998db1e88eb821926=
-4476c022d1446f3cb4330e8
-
+> 
 > Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-> ---
->  hw/usb/ccid-card-emulated.c | 5 +----
->  hw/usb/ccid-card-passthru.c | 2 +-
->  2 files changed, 2 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-> index ea42e4681d..7b538ae6da 100644
-> --- a/hw/usb/ccid-card-emulated.c
-> +++ b/hw/usb/ccid-card-emulated.c
-> @@ -27,10 +27,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include <eventt.h>
-> -#include <vevent.h>
-> -#include <vreader.h>
-> -#include <vcard_emul.h>
-> +#include <cacard/libcacard.h>
->
->  #include "qemu/thread.h"
->  #include "qemu/main-loop.h"
-> diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-> index b7dd3602dc..982d575edd 100644
-> --- a/hw/usb/ccid-card-passthru.c
-> +++ b/hw/usb/ccid-card-passthru.c
-> @@ -9,7 +9,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include <cacard/vscard_common.h>
-> +#include <cacard/libcacard.h>
->  #include "chardev/char-fe.h"
->  #include "qemu/error-report.h"
->  #include "qemu/sockets.h"
-> --
-> 2.16.1
->
->
 
+CC: qemu-stable@nongnu.org
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-
---=20
-Marc-Andr=C3=A9 Lureau
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
