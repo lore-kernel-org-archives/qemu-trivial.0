@@ -1,55 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f0Q1T-0008Gh-Ac
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Mar 2018 07:10:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45672)
+	id 1f0X4C-0006Yg-NF
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Mar 2018 14:42:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1f0Q1R-0008Bn-0J
-	for qemu-trivial@nongnu.org; Mon, 26 Mar 2018 07:10:41 -0400
+	(envelope-from <eblake@redhat.com>) id 1f0X4A-0006WR-3n
+	for qemu-trivial@nongnu.org; Mon, 26 Mar 2018 14:41:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1f0Q1P-0001WF-T3
-	for qemu-trivial@nongnu.org; Mon, 26 Mar 2018 07:10:40 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57734 helo=mx1.redhat.com)
+	(envelope-from <eblake@redhat.com>) id 1f0X48-0002Do-Ql
+	for qemu-trivial@nongnu.org; Mon, 26 Mar 2018 14:41:58 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45756 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1f0Q1C-0001PK-OP; Mon, 26 Mar 2018 07:10:26 -0400
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1f0X44-0002B3-36; Mon, 26 Mar 2018 14:41:52 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 60AC2EBFFC;
-	Mon, 26 Mar 2018 11:10:26 +0000 (UTC)
-Received: from [10.36.117.130] (ovpn-117-130.ams2.redhat.com [10.36.117.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 96A0BD7DE0;
-	Mon, 26 Mar 2018 11:10:21 +0000 (UTC)
-To: Eric Blake <eblake@redhat.com>, Michal Privoznik <mprivozn@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, famz@redhat.com, qemu-block@nongnu.org,
-	qemu-stable <qemu-stable@nongnu.org>
-References: <6f10cd53d361a395aa0e85a9311ec4e9a8fc11e5.1521868451.git.mprivozn@redhat.com>
-	<73a91502-7cda-c3c3-b439-78d7bae0f2e2@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <631c6561-01f3-aca1-c886-369d723208ef@redhat.com>
-Date: Mon, 26 Mar 2018 13:10:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 9A039EBFF4;
+	Mon, 26 Mar 2018 18:41:51 +0000 (UTC)
+Received: from red.redhat.com (ovpn-121-135.rdu2.redhat.com [10.10.121.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 41711D7E02;
+	Mon, 26 Mar 2018 18:41:51 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	peter.maydell@linaro.org
+Date: Mon, 26 Mar 2018 13:41:47 -0500
+Message-Id: <20180326184147.1565719-1-eblake@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <73a91502-7cda-c3c3-b439-78d7bae0f2e2@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.1]);
-	Mon, 26 Mar 2018 11:10:26 +0000 (UTC)
+	Mon, 26 Mar 2018 18:41:51 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Mon, 26 Mar 2018 11:10:26 +0000 (UTC) for IP:'10.11.54.5'
+	Mon, 26 Mar 2018 18:41:51 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.12] qemu-pr-helper:
- Actually allow users to specify pidfile
+Subject: [Qemu-trivial] [PATCH for-2.12] maint: Add .mailmap entries for
+ patches claiming list authorship
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,29 +54,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Mar 2018 11:10:42 -0000
+X-List-Received-Date: Mon, 26 Mar 2018 18:41:59 -0000
 
-On 24/03/2018 12:46, Eric Blake wrote:
-> On 03/24/2018 12:14 AM, Michal Privoznik wrote:
->> Due to wrong specification of arguments to getopt_long() any
->> attempt to set pidfile resulted in:
->>
->> 1) the default to be leaked
->> 2) the @pidfile variable to be set to NULL (because optarg is
->> NULL without this patch).
-> 
-> Broken since the introduction in commit b855f8d, in 2.11 (documentation
-> has always mentioned the argument, code has never supported it).
+The list did not author any patches, but it does rewrite the
+'From:' header of messages sent from any domain with restrictive
+SPF policies that would otherwise prevent the message from reaching
+all list recipients.  If a maintainer is not careful to undo the
+list header rewrite, and the author did not include a manual
+'From:' line in the body to fix the munged header, then 'git am'
+happily attributes the patch to the list.  Add some mailmap
+entries to correct the few that have escaped our attention; while
+we also work on improving the tooling to catch the problem in
+the future before a merge is even made.
 
-Queued, thanks.
+Also improve the comments occurring in the file, including line
+length improvements.
 
-Paolo
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
->>
->> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-> 
-> CC: qemu-stable@nongnu.org
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> 
+Probably worth inclusion in 2.12-rc1, since it makes statistics
+about the release easier to follow.
+
+ .mailmap | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/.mailmap b/.mailmap
+index cf689b9ec99..b02c357e9a1 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -1,6 +1,7 @@
+-# This mailmap just translates the weird addresses from the original imp=
+ort into git
+-# into proper addresses so that they are counted properly in git shortlo=
+g output.
+-#
++# This mailmap fixes up author names/addresses.
++
++# The first section translates weird addresses from the original git imp=
+ort
++# into proper addresses so that they are counted properly by git shortlo=
+g.
+ Andrzej Zaborowski <balrogg@gmail.com> balrog <balrog@c046a42c-6fe2-441c=
+-8c8c-71466251a162>
+ Anthony Liguori <anthony@codemonkey.ws> aliguori <aliguori@c046a42c-6fe2=
+-441c-8c8c-71466251a162>
+ Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm=
+.com>
+@@ -15,10 +16,19 @@ Paul Burton <paul.burton@mips.com> <paul.burton@imgte=
+c.com>
+ Paul Burton <paul.burton@mips.com> <paul@archlinuxmips.org>
+ Thiemo Seufer <ths@networkno.de> ths <ths@c046a42c-6fe2-441c-8c8c-714662=
+51a162>
+ malc <av1474@comtv.ru> malc <malc@c046a42c-6fe2-441c-8c8c-71466251a162>
++
+ # There is also a:
+ #    (no author) <(no author)@c046a42c-6fe2-441c-8c8c-71466251a162>
+ # for the cvs2svn initialization commit e63c3dc74bf.
+-#
++
++# Next, translate a few commits where mailman rewrote the From: line due
++# to strict SPF, although we prefer to avoid adding more entries like th=
+at.
++Ed Swierk <eswierk@skyportsystems.com> Ed Swierk via Qemu-devel <qemu-de=
+vel@nongnu.org>
++Ian McKellar <ianloic@google.com> Ian McKellar via Qemu-devel <qemu-deve=
+l@nongnu.org>
++Julia Suvorova <jusual@mail.ru> Julia Suvorova via Qemu-devel <qemu-deve=
+l@nongnu.org>
++Justin Terry (VM) <juterry@microsoft.com> Justin Terry (VM) via Qemu-dev=
+el <qemu-devel@nongnu.org>
++
++
+ # Also list preferred name forms where people have changed their
+ # git author config
+ Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+--=20
+2.14.3
 
 
