@@ -1,51 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f0x4O-00049k-7a
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Mar 2018 18:27:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58360)
+	id 1f2AKn-0001WP-1Y
+	for mharc-qemu-trivial@gnu.org; Sat, 31 Mar 2018 02:49:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58279)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1f0x4M-00049W-Bo
-	for qemu-trivial@nongnu.org; Tue, 27 Mar 2018 18:27:55 -0400
+	(envelope-from <no-reply@patchew.org>) id 1f2AKh-0001Sq-Av
+	for qemu-trivial@nongnu.org; Sat, 31 Mar 2018 02:49:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1f0x4J-0004NS-8H
-	for qemu-trivial@nongnu.org; Tue, 27 Mar 2018 18:27:54 -0400
-Received: from mail-it0-f68.google.com ([209.85.214.68]:50853)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1f0x4J-0004N7-3o
-	for qemu-trivial@nongnu.org; Tue, 27 Mar 2018 18:27:51 -0400
-Received: by mail-it0-f68.google.com with SMTP id r19-v6so1245399itc.0
-	for <qemu-trivial@nongnu.org>; Tue, 27 Mar 2018 15:27:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=3MQa23SSntmtYAlCTmje35Klf9aT64mrSFD5Lva/pnc=;
-	b=gaTF2BcmMWuovDkU1escSh3PJboFFJtaaqhVeJ5i9oTQmSGR55iQEVZhhOV7/d7JZC
-	5EZPrJt5s8GrK1srqVI1OF5BRmymfYBNBcVnK+aBCLcgU46eEBAVdXxp0loW3SxNf47a
-	JpfHGXUJSZ+XMyg3uYvBMJifyNr1qDQJ2XNmtUyT/Z5ogZF1IcnmcwsjkXd60scx3eqQ
-	BPSBA7iAJ0K/BUlWeBXN1/cHZwtSn6dMbyAwuP7FrNciH0rqXxE+edh6ut27xdSznHEl
-	VdMx8t5xBJWHr+IWFjOPyJAxVSpvNfodThY8HAhTNf4/vckFQoR/aVzvc4Xk0FG4NjNw
-	2ucA==
-X-Gm-Message-State: AElRT7HUrbuyMIlrz4U4dIZGaEBm7Z2kYqazHFuAPqtuPp0BDnO+/mx9
-	Rym1ZUwkzC7ZwksenNYaEAg9ri0hoanKwsam4o7NDg==
-X-Google-Smtp-Source: AIpwx4/1w99ChRnYjBHlgCx+uVrQ4U+VXLkGSVhsnG63XB03YLMI9CL9XT23BOQ/98IdAUzrwx6QxZV0BMf8JaLGPJ8=
-X-Received: by 2002:a24:5bd5:: with SMTP id
-	g204-v6mr1111792itb.55.1522189670278; 
-	Tue, 27 Mar 2018 15:27:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.79.151.212 with HTTP; Tue, 27 Mar 2018 15:27:49 -0700 (PDT)
+	(envelope-from <no-reply@patchew.org>) id 1f2AKf-0006HG-Sm
+	for qemu-trivial@nongnu.org; Sat, 31 Mar 2018 02:49:47 -0400
+Resent-Date: Sat, 31 Mar 2018 02:49:47 -0400
+Resent-Message-Id: <E1f2AKf-0006HG-Sm@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21048)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1f2AKZ-0006Aw-7G; Sat, 31 Mar 2018 02:49:39 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1522478970820735.9142802704911;
+	Fri, 30 Mar 2018 23:49:30 -0700 (PDT)
 In-Reply-To: <20180327202152.1799131-1-eblake@redhat.com>
-References: <20180327202152.1799131-1-eblake@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Wed, 28 Mar 2018 00:27:49 +0200
-Message-ID: <CAMxuvayh20TQem5X=NNqWauLaRJdFhcOELhs+Aaq4Ji66b71rA@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <152247896990.861.529694332099930400@71c20359a636>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: eblake@redhat.com
+Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	marcandre.lureau@redhat.com
+Date: Fri, 30 Mar 2018 23:49:30 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.214.68
-Subject: Re: [Qemu-trivial] [PATCH for-2.12] dump: Fix build with newer gcc
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.12] dump: Fix build
+ with newer gcc
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,56 +46,132 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Mar 2018 22:27:55 -0000
+X-List-Received-Date: Sat, 31 Mar 2018 06:49:49 -0000
 
-On Tue, Mar 27, 2018 at 10:21 PM, Eric Blake <eblake@redhat.com> wrote:
-> gcc 8 on rawhide is picky enough to complain:
->
-> /home/dummy/qemu/dump.c: In function 'create_header32':
-> /home/dummy/qemu/dump.c:817:5: error: 'strncpy' output truncated before t=
-erminating nul copying 8 bytes from a string of the same length [-Werror=3D=
-stringop-truncation]
->      strncpy(dh->signature, KDUMP_SIGNATURE, strlen(KDUMP_SIGNATURE));
->      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->
-> But we already have SIG_LEN defined as the right length without needing
-> to do a strlen(), and memcpy() is better than strncpy() when we know
-> we do not want a trailing NUL byte.
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+SGksCgpUaGlzIHNlcmllcyBmYWlsZWQgZG9ja2VyLWJ1aWxkQG1pbi1nbGliIGJ1aWxkIHRlc3Qu
+IFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cu
+IElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNl
+IGl0CmxvY2FsbHkuCgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxODAzMjcyMDIxNTIuMTc5
+OTEzMS0xLWVibGFrZUByZWRoYXQuY29tClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggZm9y
+LTIuMTJdIGR1bXA6IEZpeCBidWlsZCB3aXRoIG5ld2VyIGdjYwoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojIS9iaW4vYmFzaApzZXQgLWUKZ2l0IHN1Ym1vZHVsZSB1cGRhdGUgLS1pbml0IGR0
+YwojIExldCBkb2NrZXIgdGVzdHMgZHVtcCBlbnZpcm9ubWVudCBpbmZvCmV4cG9ydCBTSE9XX0VO
+Vj0xCmV4cG9ydCBKPTgKdGltZSBtYWtlIGRvY2tlci10ZXN0LWJ1aWxkQG1pbi1nbGliCj09PSBU
+RVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0
+NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKY2M4ZWY2YTZiZSBk
+dW1wOiBGaXggYnVpbGQgd2l0aCBuZXdlciBnY2MKCj09PSBPVVRQVVQgQkVHSU4gPT09ClN1Ym1v
+ZHVsZSAnZHRjJyAoZ2l0Oi8vZ2l0LnFlbXUtcHJvamVjdC5vcmcvZHRjLmdpdCkgcmVnaXN0ZXJl
+ZCBmb3IgcGF0aCAnZHRjJwpDbG9uaW5nIGludG8gJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRt
+cC12czNzZGpwai9zcmMvZHRjJy4uLgpTdWJtb2R1bGUgcGF0aCAnZHRjJzogY2hlY2tlZCBvdXQg
+J2U1NDM4ODAxNWFmMWZiNGJmMDRkMGJjYTk5Y2FiYTEwNzRkOWNjNDInCiAgQlVJTEQgICBtaW4t
+Z2xpYgptYWtlWzFdOiBFbnRlcmluZyBkaXJlY3RvcnkgJy92YXIvdG1wL3BhdGNoZXctdGVzdGVy
+LXRtcC12czNzZGpwai9zcmMnCiAgR0VOICAgICAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAt
+dnMzc2RqcGovc3JjL2RvY2tlci1zcmMuMjAxOC0wMy0zMS0wMi40OC40OS44NzAwL3FlbXUudGFy
+CkNsb25pbmcgaW50byAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXZzM3NkanBqL3NyYy9k
+b2NrZXItc3JjLjIwMTgtMDMtMzEtMDIuNDguNDkuODcwMC9xZW11LnRhci52cm9vdCcuLi4KZG9u
+ZS4KQ2hlY2tpbmcgb3V0IGZpbGVzOiAgMzglICgyMzQwLzYwNjYpICAgCkNoZWNraW5nIG91dCBm
+aWxlczogIDM5JSAoMjM2Ni82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA0MCUgKDI0Mjcv
+NjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNDElICgyNDg4LzYwNjYpICAgCkNoZWNraW5n
+IG91dCBmaWxlczogIDQyJSAoMjU0OC82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA0MyUg
+KDI2MDkvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNDQlICgyNjcwLzYwNjYpICAgCkNo
+ZWNraW5nIG91dCBmaWxlczogIDQ1JSAoMjczMC82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6
+ICA0NiUgKDI3OTEvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNDclICgyODUyLzYwNjYp
+ICAgCkNoZWNraW5nIG91dCBmaWxlczogIDQ4JSAoMjkxMi82MDY2KSAgIApDaGVja2luZyBvdXQg
+ZmlsZXM6ICA0OSUgKDI5NzMvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNTAlICgzMDMz
+LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDUxJSAoMzA5NC82MDY2KSAgIApDaGVja2lu
+ZyBvdXQgZmlsZXM6ICA1MiUgKDMxNTUvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNTIl
+ICgzMTc4LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDUzJSAoMzIxNS82MDY2KSAgIApD
+aGVja2luZyBvdXQgZmlsZXM6ICA1NCUgKDMyNzYvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVz
+OiAgNTUlICgzMzM3LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDU2JSAoMzM5Ny82MDY2
+KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA1NyUgKDM0NTgvNjA2NikgICAKQ2hlY2tpbmcgb3V0
+IGZpbGVzOiAgNTglICgzNTE5LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDU4JSAoMzUy
+Ni82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA1OSUgKDM1NzkvNjA2NikgICAKQ2hlY2tp
+bmcgb3V0IGZpbGVzOiAgNjAlICgzNjQwLzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDYx
+JSAoMzcwMS82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA2MiUgKDM3NjEvNjA2NikgICAK
+Q2hlY2tpbmcgb3V0IGZpbGVzOiAgNjMlICgzODIyLzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxl
+czogIDY0JSAoMzg4My82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA2NSUgKDM5NDMvNjA2
+NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNjYlICg0MDA0LzYwNjYpICAgCkNoZWNraW5nIG91
+dCBmaWxlczogIDY3JSAoNDA2NS82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA2OCUgKDQx
+MjUvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNjklICg0MTg2LzYwNjYpICAgCkNoZWNr
+aW5nIG91dCBmaWxlczogIDcwJSAoNDI0Ny82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA3
+MSUgKDQzMDcvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNzIlICg0MzY4LzYwNjYpICAg
+CkNoZWNraW5nIG91dCBmaWxlczogIDczJSAoNDQyOS82MDY2KSAgIApDaGVja2luZyBvdXQgZmls
+ZXM6ICA3NCUgKDQ0ODkvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNzUlICg0NTUwLzYw
+NjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDc2JSAoNDYxMS82MDY2KSAgIApDaGVja2luZyBv
+dXQgZmlsZXM6ICA3NyUgKDQ2NzEvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNzglICg0
+NzMyLzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDc5JSAoNDc5My82MDY2KSAgIApDaGVj
+a2luZyBvdXQgZmlsZXM6ICA4MCUgKDQ4NTMvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAg
+ODElICg0OTE0LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDgyJSAoNDk3NS82MDY2KSAg
+IApDaGVja2luZyBvdXQgZmlsZXM6ICA4MyUgKDUwMzUvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZp
+bGVzOiAgODQlICg1MDk2LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDg1JSAoNTE1Ny82
+MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA4NiUgKDUyMTcvNjA2NikgICAKQ2hlY2tpbmcg
+b3V0IGZpbGVzOiAgODclICg1Mjc4LzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDg4JSAo
+NTMzOS82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA4OSUgKDUzOTkvNjA2NikgICAKQ2hl
+Y2tpbmcgb3V0IGZpbGVzOiAgOTAlICg1NDYwLzYwNjYpICAgCkNoZWNraW5nIG91dCBmaWxlczog
+IDkxJSAoNTUyMS82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA5MiUgKDU1ODEvNjA2Nikg
+ICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgOTMlICg1NjQyLzYwNjYpICAgCkNoZWNraW5nIG91dCBm
+aWxlczogIDk0JSAoNTcwMy82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA5NSUgKDU3NjMv
+NjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgOTYlICg1ODI0LzYwNjYpICAgCkNoZWNraW5n
+IG91dCBmaWxlczogIDk3JSAoNTg4NS82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA5OCUg
+KDU5NDUvNjA2NikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgOTklICg2MDA2LzYwNjYpICAgCkNo
+ZWNraW5nIG91dCBmaWxlczogMTAwJSAoNjA2Ni82MDY2KSAgIApDaGVja2luZyBvdXQgZmlsZXM6
+IDEwMCUgKDYwNjYvNjA2NiksIGRvbmUuCllvdXIgYnJhbmNoIGlzIHVwLXRvLWRhdGUgd2l0aCAn
+b3JpZ2luL3Rlc3QnLgpTdWJtb2R1bGUgJ2R0YycgKGdpdDovL2dpdC5xZW11LXByb2plY3Qub3Jn
+L2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGggJ2R0YycKQ2xvbmluZyBpbnRvICcvdmFyL3Rt
+cC9wYXRjaGV3LXRlc3Rlci10bXAtdnMzc2RqcGovc3JjL2RvY2tlci1zcmMuMjAxOC0wMy0zMS0w
+Mi40OC40OS44NzAwL3FlbXUudGFyLnZyb290L2R0YycuLi4KU3VibW9kdWxlIHBhdGggJ2R0Yyc6
+IGNoZWNrZWQgb3V0ICdlNTQzODgwMTVhZjFmYjRiZjA0ZDBiY2E5OWNhYmExMDc0ZDljYzQyJwpT
+dWJtb2R1bGUgJ3VpL2tleWNvZGVtYXBkYicgKGdpdDovL2dpdC5xZW11Lm9yZy9rZXljb2RlbWFw
+ZGIuZ2l0KSByZWdpc3RlcmVkIGZvciBwYXRoICd1aS9rZXljb2RlbWFwZGInCkNsb25pbmcgaW50
+byAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXZzM3NkanBqL3NyYy9kb2NrZXItc3JjLjIw
+MTgtMDMtMzEtMDIuNDguNDkuODcwMC9xZW11LnRhci52cm9vdC91aS9rZXljb2RlbWFwZGInLi4u
+ClN1Ym1vZHVsZSBwYXRoICd1aS9rZXljb2RlbWFwZGInOiBjaGVja2VkIG91dCAnNmIzZDcxNmUy
+YjY0NzJlYjcxODlkMzIyMDU1MjI4MGVmM2Q4MzJjZScKdGFyOiAvdmFyL3RtcC9wYXRjaGV3LXRl
+c3Rlci10bXAtdnMzc2RqcGovc3JjL2RvY2tlci1zcmMuMjAxOC0wMy0zMS0wMi40OC40OS44NzAw
+L3FlbXUudGFyOiBXcm90ZSBvbmx5IDIwNDggb2YgMTAyNDAgYnl0ZXMKdGFyOiBFcnJvciBpcyBu
+b3QgcmVjb3ZlcmFibGU6IGV4aXRpbmcgbm93CmZhaWxlZCB0byBjcmVhdGUgdGFyIGZpbGUKICBD
+T1BZICAgIFJVTk5FUgogICAgUlVOIHRlc3QtYnVpbGQgaW4gcWVtdTptaW4tZ2xpYiAKdGFyOiBV
+bmV4cGVjdGVkIEVPRiBpbiBhcmNoaXZlCnRhcjogVW5leHBlY3RlZCBFT0YgaW4gYXJjaGl2ZQp0
+YXI6IEVycm9yIGlzIG5vdCByZWNvdmVyYWJsZTogZXhpdGluZyBub3cKL3Zhci90bXAvcWVtdS9y
+dW46IGxpbmUgMzI6IHByZXBfZmFpbDogY29tbWFuZCBub3QgZm91bmQKRW52aXJvbm1lbnQgdmFy
+aWFibGVzOgpIT1NUTkFNRT0xMDE0NjIzZTBmYmYKTUFLRUZMQUdTPSAtajgKSj04CkNDQUNIRV9E
+SVI9L3Zhci90bXAvY2NhY2hlCkVYVFJBX0NPTkZJR1VSRV9PUFRTPQpWPQpTSE9XX0VOVj0xClBB
+VEg9L3Vzci9saWIvY2NhY2hlOi91c3IvbGliNjQvY2NhY2hlOi91c3IvbG9jYWwvc2JpbjovdXNy
+L2xvY2FsL2JpbjovdXNyL3NiaW46L3Vzci9iaW46L3NiaW46L2JpbgpQV0Q9LwpUQVJHRVRfTElT
+VD0KU0hMVkw9MQpIT01FPS9yb290ClRFU1RfRElSPS90bXAvcWVtdS10ZXN0CkZFQVRVUkVTPSBk
+dGMKREVCVUc9Cl89L3Vzci9iaW4vZW52CgpDb25maWd1cmUgb3B0aW9uczoKLS1lbmFibGUtd2Vy
+cm9yIC0tdGFyZ2V0LWxpc3Q9eDg2XzY0LXNvZnRtbXUsYWFyY2g2NC1zb2Z0bW11IC0tcHJlZml4
+PS90bXAvcWVtdS10ZXN0L2luc3RhbGwKCkVSUk9SOiBEVEMgKGxpYmZkdCkgdmVyc2lvbiA+PSAx
+LjQuMiBub3QgcHJlc2VudC4KICAgICAgIFBsZWFzZSBpbnN0YWxsIHRoZSBEVEMgKGxpYmZkdCkg
+ZGV2ZWwgcGFja2FnZQoKVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUg
+Ii4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNDA3LCBpbiA8bW9kdWxlPgogICAgc3lz
+LmV4aXQobWFpbigpKQogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNDA0
+LCBpbiBtYWluCiAgICByZXR1cm4gYXJncy5jbWRvYmoucnVuKGFyZ3MsIGFyZ3YpCiAgRmlsZSAi
+Li90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAyNjEsIGluIHJ1bgogICAgcmV0dXJuIERv
+Y2tlcigpLnJ1bihhcmd2LCBhcmdzLmtlZXAsIHF1aWV0PWFyZ3MucXVpZXQpCiAgRmlsZSAiLi90
+ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAyMjksIGluIHJ1bgogICAgcXVpZXQ9cXVpZXQp
+CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAxNDcsIGluIF9kb19jaGVj
+awogICAgcmV0dXJuIHN1YnByb2Nlc3MuY2hlY2tfY2FsbChzZWxmLl9jb21tYW5kICsgY21kLCAq
+Kmt3YXJncykKICBGaWxlICIvdXNyL2xpYjY0L3B5dGhvbjIuNy9zdWJwcm9jZXNzLnB5IiwgbGlu
+ZSAxODYsIGluIGNoZWNrX2NhbGwKICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2Rl
+LCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ2RvY2tlcics
+ICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPTliYjNiZGZjMzRhZjEx
+ZThiYTZkNTI1NDAwNjljODMwJywgJy11JywgJzAnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29t
+cD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLS1uZXQ9bm9uZScsICctZScsICdUQVJHRVRfTElTVD0n
+LCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9OCcs
+ICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FDSEVfRElSPS92
+YXIvdG1wL2NjYWNoZScsICctdicsICcvcm9vdC8uY2FjaGUvcWVtdS1kb2NrZXItY2NhY2hlOi92
+YXIvdG1wL2NjYWNoZTp6JywgJy12JywgJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC12czNz
+ZGpwai9zcmMvZG9ja2VyLXNyYy4yMDE4LTAzLTMxLTAyLjQ4LjQ5Ljg3MDA6L3Zhci90bXAvcWVt
+dTp6LHJvJywgJ3FlbXU6bWluLWdsaWInLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1idWls
+ZCddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAxCm1ha2VbMV06ICoqKiBbdGVzdHMv
+ZG9ja2VyL01ha2VmaWxlLmluY2x1ZGU6MTI5OiBkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06
+IExlYXZpbmcgZGlyZWN0b3J5ICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtdnMzc2RqcGov
+c3JjJwptYWtlOiAqKiogW3Rlc3RzL2RvY2tlci9NYWtlZmlsZS5pbmNsdWRlOjE2MzogZG9ja2Vy
+LXJ1bi10ZXN0LWJ1aWxkQG1pbi1nbGliXSBFcnJvciAyCgpyZWFsCTBtNDUuMzY3cwp1c2VyCTBt
+OS41NTZzCnN5cwkwbTYuNzE0cwo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0
+ZWQgd2l0aCBjb2RlOiAyCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBh
+dGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
+IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
-
-> ---
->  dump.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/dump.c b/dump.c
-> index 669f715274d..b54cd42b217 100644
-> --- a/dump.c
-> +++ b/dump.c
-> @@ -814,7 +814,7 @@ static void create_header32(DumpState *s, Error **err=
-p)
->      size =3D sizeof(DiskDumpHeader32);
->      dh =3D g_malloc0(size);
->
-> -    strncpy(dh->signature, KDUMP_SIGNATURE, strlen(KDUMP_SIGNATURE));
-> +    memcpy(dh->signature, KDUMP_SIGNATURE, SIG_LEN);
->      dh->header_version =3D cpu_to_dump32(s, 6);
->      block_size =3D s->dump_info.page_size;
->      dh->block_size =3D cpu_to_dump32(s, block_size);
-> @@ -926,7 +926,7 @@ static void create_header64(DumpState *s, Error **err=
-p)
->      size =3D sizeof(DiskDumpHeader64);
->      dh =3D g_malloc0(size);
->
-> -    strncpy(dh->signature, KDUMP_SIGNATURE, strlen(KDUMP_SIGNATURE));
-> +    memcpy(dh->signature, KDUMP_SIGNATURE, SIG_LEN);
->      dh->header_version =3D cpu_to_dump32(s, 6);
->      block_size =3D s->dump_info.page_size;
->      dh->block_size =3D cpu_to_dump32(s, block_size);
-> --
-> 2.14.3
->
 
