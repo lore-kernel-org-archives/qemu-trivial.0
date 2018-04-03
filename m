@@ -1,73 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f2m4c-00037z-8Z
-	for mharc-qemu-trivial@gnu.org; Sun, 01 Apr 2018 19:07:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36870)
+	id 1f3Qw9-0004sM-Sk
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Apr 2018 14:45:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56648)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f2m4Z-000364-Kz
-	for qemu-trivial@nongnu.org; Sun, 01 Apr 2018 19:07:40 -0400
+	(envelope-from <eblake@redhat.com>) id 1f3Qw7-0004rJ-FM
+	for qemu-trivial@nongnu.org; Tue, 03 Apr 2018 14:45:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f2m4Y-0004fY-G5
-	for qemu-trivial@nongnu.org; Sun, 01 Apr 2018 19:07:39 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:34846)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f2m4R-0004Xg-JX; Sun, 01 Apr 2018 19:07:31 -0400
-Received: by mail-qt0-x242.google.com with SMTP id s2so14059347qti.2;
-	Sun, 01 Apr 2018 16:07:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=9jbb4R5mDu4dplLlwXp0BFPzARqrvFTutIzsXeF3Cw4=;
-	b=Ylp0OShijBw244wF+8g7JWlDcBRDtHUeCnD+V+FH+x7cvLIvIqmA69AwUM100sqa3Z
-	is2ImlrT8WwVX0R6yn4aRr/DFSKd3rWmje7udA8U/STC/+TSG9HQr940I82AwGgfbm68
-	Aw1lJQ2GswbaJhkUUmioPvtsmZDKE5FNbvcRpGUtfwxrpR1yg9umq5Oi+33dq88OTsEa
-	C3R5+IfLoaEQ1OxcMqeoDOKFcI4T6Q/d/tsNlK+jQA6buIfdEdzJbmvwva83e3y2vFzB
-	tul2xMl4ll1bR9LINKG19RpoyqoysK4WLWHXyLn+dP3MSazqszUMopQYu/74IsHhG2WE
-	exJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=9jbb4R5mDu4dplLlwXp0BFPzARqrvFTutIzsXeF3Cw4=;
-	b=dyS6+bblkT760Mxu9WRz33E2ORuJkgGQfYuVqubMDBS7toNrtsUcep2qpdgeNIjvOt
-	qwZEOFOPQcCdD+lCDGoc9dwQRErqmmXqhLhSKUwu66pYKbI7ChvMl9DkloHDu5iU3xpg
-	83W2rcscXZqmAGTI0kQX7p3f2glF/3Y8SXJX2qx/RYmQnd2U5ZsJYy/2qkr9BFgOWvRe
-	9xhh1VJHKlr2sBREs1g2hPMBWnBcCBgSU30Iwg0sBvjyKuMUWn9y32ahkDfNtuySkmKt
-	rqv8Bkay1S9L9aeU26BJOBhK0Jm9JYsqUDpx5J/sXaNajASU7LVUipy+uQHvflt5Mdqe
-	ecxw==
-X-Gm-Message-State: ALQs6tCGsRdAx0XahY58mpar4OqO8UqyRJe2wmc4XdvcNmJcWXGkH3eq
-	1OV7RL9Dlxk1hi8/JOk2/rn+3qCC
-X-Google-Smtp-Source: AIpwx4/UNunxPFUUnfR6oBQC7edglOA2WWZiE0QQInEvOs9/qejFHMLlcA1zrXvJIZsxFIRE+X6cXw==
-X-Received: by 10.200.112.214 with SMTP id g22mr11094029qtp.95.1522624050807; 
-	Sun, 01 Apr 2018 16:07:30 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id f13sm9637650qtj.6.2018.04.01.16.07.27
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 01 Apr 2018 16:07:29 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Jan Kiszka <jan.kiszka@web.de>, qemu-trivial <qemu-trivial@nongnu.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>
-References: <0dd4c8f5-d60e-e564-652f-cd0101f6ee68@web.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <bf67848e-d6ea-1c23-0350-ba16e9674905@amsat.org>
-Date: Sun, 1 Apr 2018 20:07:21 -0300
+	(envelope-from <eblake@redhat.com>) id 1f3Qw6-0008VS-Jz
+	for qemu-trivial@nongnu.org; Tue, 03 Apr 2018 14:45:39 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34600 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1f3Qw2-0008TQ-1q; Tue, 03 Apr 2018 14:45:34 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 70E12406EA52;
+	Tue,  3 Apr 2018 18:45:29 +0000 (UTC)
+Received: from [10.10.123.104] (ovpn-123-104.rdu2.redhat.com [10.10.123.104])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A5647C54;
+	Tue,  3 Apr 2018 18:45:25 +0000 (UTC)
+To: qemu-devel@nongnu.org
+References: <20180326184147.1565719-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <cceeaa0f-946d-5c26-2fad-55cebbb73027@redhat.com>
+Date: Tue, 3 Apr 2018 13:45:24 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <0dd4c8f5-d60e-e564-652f-cd0101f6ee68@web.de>
-Content-Type: multipart/signed; micalg=pgp-sha512;
+In-Reply-To: <20180326184147.1565719-1-eblake@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="Ibp6JaQbChb3lSPiKgTt6iRuLsFRmFOkm"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Silence dtc
- directory creation
+	boundary="fMrb6uERX3NjXmOY2DMtI2stMHhjjNb7B"
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Tue, 03 Apr 2018 18:45:29 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Tue, 03 Apr 2018 18:45:29 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-2.12] maint: Add
+ .mailmap entries for patches claiming list authorship
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,83 +60,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 01 Apr 2018 23:07:40 -0000
+X-List-Received-Date: Tue, 03 Apr 2018 18:45:40 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Ibp6JaQbChb3lSPiKgTt6iRuLsFRmFOkm
-Content-Type: multipart/mixed; boundary="0TqnPxc3FasZQV0YzRObHDTF6fi2jL0vq";
+--fMrb6uERX3NjXmOY2DMtI2stMHhjjNb7B
+Content-Type: multipart/mixed; boundary="Hi0JRBfB4ajtSmauGz43kurhmBrCPI7vr";
  protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Jan Kiszka <jan.kiszka@web.de>, qemu-trivial <qemu-trivial@nongnu.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>
-Message-ID: <bf67848e-d6ea-1c23-0350-ba16e9674905@amsat.org>
-Subject: Re: [Qemu-devel] [PATCH] build: Silence dtc directory creation
-References: <0dd4c8f5-d60e-e564-652f-cd0101f6ee68@web.de>
-In-Reply-To: <0dd4c8f5-d60e-e564-652f-cd0101f6ee68@web.de>
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
+Message-ID: <cceeaa0f-946d-5c26-2fad-55cebbb73027@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH for-2.12] maint: Add .mailmap entries for
+ patches claiming list authorship
+References: <20180326184147.1565719-1-eblake@redhat.com>
+In-Reply-To: <20180326184147.1565719-1-eblake@redhat.com>
 
---0TqnPxc3FasZQV0YzRObHDTF6fi2jL0vq
+--Hi0JRBfB4ajtSmauGz43kurhmBrCPI7vr
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On 04/01/2018 08:23 AM, Jan Kiszka wrote:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
+On 03/26/2018 01:41 PM, Eric Blake wrote:
+> The list did not author any patches, but it does rewrite the
+> 'From:' header of messages sent from any domain with restrictive
+> SPF policies that would otherwise prevent the message from reaching
+> all list recipients.  If a maintainer is not careful to undo the
+> list header rewrite, and the author did not include a manual
+> 'From:' line in the body to fix the munged header, then 'git am'
+> happily attributes the patch to the list.  Add some mailmap
+> entries to correct the few that have escaped our attention; while
+> we also work on improving the tooling to catch the problem in
+> the future before a merge is even made.
 >=20
-> Align with other mkdir calls.
+> Also improve the comments occurring in the file, including line
+> length improvements.
 >=20
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/Makefile b/Makefile
-> index 727ef118f3..fc6f21001f 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -485,7 +485,7 @@ subdir-dtc: .git-submodule-status dtc/libfdt dtc/te=
-sts
->  	$(call quiet-command,$(MAKE) $(DTC_MAKE_ARGS) CPPFLAGS=3D"$(DTC_CPPFL=
-AGS)" CFLAGS=3D"$(DTC_CFLAGS)" LDFLAGS=3D"$(LDFLAGS)" ARFLAGS=3D"$(ARFLAG=
-S)" CC=3D"$(CC)" AR=3D"$(AR)" LD=3D"$(LD)" $(SUBDIR_MAKEFLAGS) libfdt/lib=
-fdt.a,)
-> =20
->  dtc/%: .git-submodule-status
-> -	mkdir -p $@
-> +	@mkdir -p $@
-> =20
->  # Overriding CFLAGS causes us to lose defines added in the sub-makefil=
-e.
->  # Not overriding CFLAGS leads to mis-matches between compilation modes=
-=2E
->=20
+> Probably worth inclusion in 2.12-rc1, since it makes statistics
+> about the release easier to follow.
+
+I'll include this in my qapi+misc pull for 2.12-rc2
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
 
---0TqnPxc3FasZQV0YzRObHDTF6fi2jL0vq--
+--Hi0JRBfB4ajtSmauGz43kurhmBrCPI7vr--
 
---Ibp6JaQbChb3lSPiKgTt6iRuLsFRmFOkm
+--fMrb6uERX3NjXmOY2DMtI2stMHhjjNb7B
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlrBZi0ACgkQ4+MsLN6t
-wN5NRw/7BL+zqobas2+aA4X5OQOT3A6p23YS0LnJjBy63I63Rhyr1QwRaGaepai/
-ji24OYdGhP2nkASW270AjMWAN6XbI/0BVCOIaPBC4hQFBWFn09/sRhiFEtk7l4Gu
-RZ7DmBSpzM8F0BjnB3xr7RnUmdzOwmzVMHz/VEKZo58yf+PjiZrrsBfTm7sbBqYu
-XcAG8foLYVVZRrFs7OlIN8MF/qYuQ4oNh5SqSFDA6vVdt7shVBFkXiUvscDWU9Zv
-AVOBr77//NOoRhWvstenfeG1ZKMFMZJ8WoNea8TZFGX281qOUWwau31+B2ceSgtP
-RMiK5kgOFEDVk++GMbLMo4mfBBUMQBftFpDW8OobIBNQ2+DOiSCwr35Eu1/X3vRW
-aAS8mEfM4Ldj+KsGU0HRZodtZ1XWMoIk7NmHO9E68tAK6ZNg7Ao6LEHxl5XQLN6j
-BvchYY4S6dT8OsmlSnip8AvrCO3/v3s5ebyRl4XW4MTvNT4FzIgQpwqmUsS/KT8j
-NlGpX5xzl/xwHOI4GIMVZ+Wj4LZLVnyyOMMdZfscaYoeXpWAJMoOF5FpHUSdQsAx
-HTreE7CKL+ml/y2Blt+OZB8Lz+VJdMQEonn67PibS/Ur2GMwD1VRk9kQ5sVgPraz
-vSGSV4vfIG8lHSvudAM4kc9QfTok+CBipnJ8iZDPszz19dClRfs=
-=RzaJ
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlrDy8UACgkQp6FrSiUn
+Q2pXSQf/dUqCBhdowFfbfUuHPinKrGtXQOU08oyO4I9MkIw2Ph74puutW/wEWOVg
+2pxmOy0u1KXfmrjqmZopoHG7DnDyFugk0+NB6WyftcPAulfh3FIJWH/LkkyJJ7Ix
+1RyhzK1l/Vt1fPQQ+RseICf7cFha3C5LmaKQXUpWp9E0zhnV//jCDm2qCM6e0qiQ
+OK35f+9Tbbz/RtIPiAHBy4UfRG4WOWTIbJgJyeW8E/DU1XkUkJO2yUqqQUR+Ktrt
+7l99YL01yZWmu6KCmBIsnP+ixhXP02w7aeNG3okSpx+D5nyKZ+izge2kutJ8WRyJ
++Fs5G9fOQq0muLqdVmE7613lAR5Glw==
+=4yDl
 -----END PGP SIGNATURE-----
 
---Ibp6JaQbChb3lSPiKgTt6iRuLsFRmFOkm--
+--fMrb6uERX3NjXmOY2DMtI2stMHhjjNb7B--
 
