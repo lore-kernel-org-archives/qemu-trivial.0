@@ -1,58 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f44EE-0001Ik-0q
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Apr 2018 08:42:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54109)
+	id 1f47Bo-0007aJ-MA
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Apr 2018 11:52:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1f44EB-0001HQ-5n
-	for qemu-trivial@nongnu.org; Thu, 05 Apr 2018 08:42:56 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1f47Bm-0007Yn-Kz
+	for qemu-trivial@nongnu.org; Thu, 05 Apr 2018 11:52:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1f44E6-0000BD-7n
-	for qemu-trivial@nongnu.org; Thu, 05 Apr 2018 08:42:55 -0400
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38481)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1f47Bj-0003tD-KO
+	for qemu-trivial@nongnu.org; Thu, 05 Apr 2018 11:52:38 -0400
+Received: from mail-wr0-x244.google.com ([2a00:1450:400c:c0c::244]:34524)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1f44E6-0000B1-0k; Thu, 05 Apr 2018 08:42:50 -0400
-Received: by mail-wm0-x230.google.com with SMTP id i3so6671534wmf.3;
-	Thu, 05 Apr 2018 05:42:49 -0700 (PDT)
+	id 1f47Bj-0003sq-9x; Thu, 05 Apr 2018 11:52:35 -0400
+Received: by mail-wr0-x244.google.com with SMTP id d17so13847289wre.1;
+	Thu, 05 Apr 2018 08:52:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=qsOlNG6ytV+REPtdXt3owBOP0prVBYwMRASoLqdvnHA=;
-	b=Qs9kxzbgGp1wq40r+5xnhuNaNus9jHDVfZOjvduWk5ujih3CKOrDSMr254+J+vWQjO
-	Sfb7LgtSFmLvZcDiVBKN33G53aS249cJZ7Jd6lGu11nGrO4BHxDDpINgy9eMxPyM0k48
-	UHPoYtcKhl0RpnIcuh9hDQ09aW1Xd/a7FVgPXKWrN4ZQY4tyhU80gtqFXThJ8aQQ445y
-	AFbIMWzfBy3y0TOci5n7eSgksDAMBWJNBR3YKuO3V076fP4mOOODYxAXRRLJ28ox9l6+
-	ztbQqlZUAQ6UfqGtlJS347eCcBqti4MYH2ci+6aI6IDLCp9HjXhQzfNIZ0DNLa8xjVyK
-	Tb/w==
+	bh=KAV4vyMyEWA29EZcL/JqEhJdZQZ5KKM5m7bSykPwMxk=;
+	b=CRt4gT9hQRwPjNEc3tkN6WETJz/qQbm41iKR/k1Y65vFGFcxJSW+xVcKXrqgIk0W0+
+	uVBQSX16GT8GIilHLoUCCNrl2v52VlLnrEHosZyzi39j+h89/P2PuNZIuMWMsYW/0N5C
+	Wyupn9lAPw5vmkc0nJwSborChMZSi0MYemobcRj1gy4TUobT7VlEdqsPqi+zkgd6WqJ6
+	tlpRTcW+hLu3/ie7HuwrVRn9tEbUWsUIRpaVSVTcDcidwyff8H3UHz9JB+2sS0JTNsc5
+	xX6hjcvGO3Y36XNA04fVf7W40gFkSu5x5y/kvWEa1ahrqMeRClsMdujzdJAP58dKdFbR
+	4ifQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=qsOlNG6ytV+REPtdXt3owBOP0prVBYwMRASoLqdvnHA=;
-	b=c8rFrydodlw9BYLWAfrhgFZ8LP05Tjhg4Jf0nmisgxH9d5XyQCd6SgO8IdbLuwsZVq
-	3GbBghnJZLO5X15ryKOMaWYKKXqgkgSha82jKsrqyyVoc3MKQ3s+7nDRfkveboaGnlUu
-	HmnBCeOA632adS2EJZ/H80YeHifx8SWW7lkdG+l7N7qWjeorEwZJ9+0SUwfoo0/M321K
-	KuzHmHjEvN3uF94BZJO2RjY1vG8h1sRSqiR6qMfKfjuaPvX2NzKXdM5JSE9l24LxLbhS
-	39YrykA1FNLeTW821g0Hyk16eSVCwNsRVUO5Xmm0Qnx+Y4qz0uyO7GyDhyOGwbQDZK/X
-	lDUQ==
-X-Gm-Message-State: ALQs6tANp5aGdj/DgpnOrMMW7RulIn9w86Ih5Jyjg5ChHtmIhdNHu+ao
-	Tkt3LJPEe5nGJ7pY1yqvJ6bgJ7Na
-X-Google-Smtp-Source: AIpwx48Tk4dm/VIFN09lFZw5JRcpT9AfNBscGRb7pwWY1BAn0BP8njKP0f6myXbjC7eryiX8XDL3tQ==
-X-Received: by 10.80.215.138 with SMTP id w10mr2815954edi.10.1522932168572;
-	Thu, 05 Apr 2018 05:42:48 -0700 (PDT)
+	bh=KAV4vyMyEWA29EZcL/JqEhJdZQZ5KKM5m7bSykPwMxk=;
+	b=ePcUGAbHKoVWG0fBAjqwyP55gY8WnQqWLLbrEoQewmdlHSLyEbzRO1nfI+c8Ao0UzD
+	VfKl8Yyo732WEdwkSww3uE39wVFIWtpZYoz7pz1BAvH8kuWPwqWp/PSLAEoXgnRP8+Fb
+	x6ZN+thPWHEOKEoudew42Cc2f16xL5x/nkNz5TrY1/7AVDpf+rBpJfu/CJcYploXnjGI
+	1TBYfSeBEiNjFmxpJ4M/zql5pNslczWKV3J9WQltZvHAAxN69hCBzWiZHK47Lc5mQhfH
+	q+CQKtVNCwpFhgA/d7oYtXH1qavMyS60bycOKE/VtEOF/4hAbwVCh8o5/SrpBDSK5kff
+	O1ig==
+X-Gm-Message-State: AElRT7F5Q1bIJGpLqKyn8Tec0DjPV/apGyMoUJGxEDacY0f/qwONgkPR
+	Fb/aITisX3d/RDHdnJJz16E=
+X-Google-Smtp-Source: AIpwx48Ik3R9CkQzJpGZjhdTi1JOs7EiP4iwk9UTGZyifGnaLxr20CSdVZbM54DleMr+5wejSo6AVQ==
+X-Received: by 10.223.209.132 with SMTP id h4mr17362027wri.12.1522943554098;
+	Thu, 05 Apr 2018 08:52:34 -0700 (PDT)
 Received: from [192.168.10.150] (94-36-194-48.adsl-ull.clienti.tiscali.it.
 	[94.36.194.48]) by smtp.googlemail.com with ESMTPSA id
-	u59sm4846146edc.30.2018.04.05.05.42.47
+	n49sm7971706wrn.50.2018.04.05.08.52.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 05 Apr 2018 05:42:47 -0700 (PDT)
+	Thu, 05 Apr 2018 08:52:33 -0700 (PDT)
 Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-To: Eric Blake <eblake@redhat.com>, Su Hang <suhang16@mails.ucas.ac.cn>,
-	vsementsov@virtuozzo.com
-Cc: qemu-devel@nongnu.org, qemu-trivial <qemu-trivial@nongnu.org>
-References: <1522029982-4650-1-git-send-email-suhang16@mails.ucas.ac.cn>
-	<2cc2bda7-aeb9-f632-f658-06273fd70311@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <1522163370-18544-1-git-send-email-thuth@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; keydata=
@@ -90,20 +88,20 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <871e05e7-fe17-5531-37d1-d5f41af62eff@redhat.com>
-Date: Thu, 5 Apr 2018 14:42:45 +0200
+Message-ID: <2b988a68-3e2b-f762-7e81-53c0bff2522c@redhat.com>
+Date: Thu, 5 Apr 2018 17:52:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.6.0
 MIME-Version: 1.0
-In-Reply-To: <2cc2bda7-aeb9-f632-f658-06273fd70311@redhat.com>
+In-Reply-To: <1522163370-18544-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::230
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RFC v3 for-2.12?]
- scripts/checkpatch.pl: Bug fix
+X-Received-From: 2a00:1450:400c:c0c::244
+Subject: Re: [Qemu-trivial] [PATCH] configure: Add missing configure options
+ to help text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,17 +113,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Apr 2018 12:42:56 -0000
+X-List-Received-Date: Thu, 05 Apr 2018 15:52:39 -0000
 
-On 04/04/2018 20:28, Eric Blake wrote:
-> Perl is not my strongest point, so take my review with a grain of salt.
-> However, since I already have a couple of other random patches that may
-> still be appropriate for -rc3, I can pick this up in a pull request if I
-> get at least one more review (and if no one else picks it up first, such
-> as the qemu-trivial process or Paolo's misc tree)
+On 27/03/2018 17:09, Thomas Huth wrote:
+> We forgot to mention --with-git, --libexecdir and --with-pkgversion
+> so far.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  configure | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/configure b/configure
+> index 4d0e92c..a473609 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1497,16 +1497,19 @@ Advanced options (experts only):
+>    --install=INSTALL        use specified install [$install]
+>    --python=PYTHON          use specified python [$python]
+>    --smbd=SMBD              use specified smbd [$smbd]
+> +  --with-git=GIT           use specified git [$git]
+>    --static                 enable static build [$static]
+>    --mandir=PATH            install man pages in PATH
+>    --datadir=PATH           install firmware in PATH$confsuffix
+>    --docdir=PATH            install documentation in PATH$confsuffix
+>    --bindir=PATH            install binaries in PATH
+>    --libdir=PATH            install libraries in PATH
+> +  --libexecdir=PATH        install helper binaries in PATH
+>    --sysconfdir=PATH        install config in PATH$confsuffix
+>    --localstatedir=PATH     install local state in PATH (set at runtime on win32)
+>    --firmwarepath=PATH      search PATH for firmware files
+>    --with-confsuffix=SUFFIX suffix for QEMU data inside datadir/libdir/sysconfdir [$confsuffix]
+> +  --with-pkgversion=VERS   use specified string as sub-version of the package
+>    --enable-debug           enable common debug build options
+>    --enable-sanitizers      enable default sanitizers
+>    --disable-strip          disable stripping binaries
 > 
 
-I'll pick this up.  Thanks!
+Queued, thanks.
 
 Paolo
+
 
