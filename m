@@ -1,48 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f71py-0002wF-Gv
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2018 12:46:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43534)
+	id 1f76t7-0006gO-AM
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2018 18:09:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1f71pw-0002uY-11
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 12:46:08 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f76t5-0006e7-8R
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 18:09:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1f71pv-0000qy-9M
-	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 12:46:08 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40068 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1f71pq-0000pU-2y; Fri, 13 Apr 2018 12:46:02 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7873D814F0A8;
-	Fri, 13 Apr 2018 16:45:57 +0000 (UTC)
-Received: from localhost (ovpn-112-61.ams2.redhat.com [10.36.112.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1E5AB215CDC8;
-	Fri, 13 Apr 2018 16:45:52 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 13 Apr 2018 18:45:45 +0200
-Message-Id: <20180413164545.18409-1-marcandre.lureau@redhat.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f76t0-0000PL-A1
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 18:09:43 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:46264)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1f76t0-0000P9-5i; Fri, 13 Apr 2018 18:09:38 -0400
+Received: by mail-qk0-x244.google.com with SMTP id l16so9762036qke.13;
+	Fri, 13 Apr 2018 15:09:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=6U1wYdvA3ia+2Qcp/e0uB9gqV1FtZHe63BZ84blQBiI=;
+	b=n7ZjHolhLRTz6p2dS82CMn2VWPbWFr2JzjdYaE9sIELWJteoaY5M8wioOr2U84rM90
+	q2UfvgVDMNrLSLBs3JZ2IY+tbtCwCdiMhEIQcnZVcD3mP0UpslrO1cLIQMk48qoM0Sy+
+	HSY8GcSkRU1SgXtOQiZX3vyUpGvRaQzGExM4l7/CGWTGd2BFKD9ThPRc+cppZ6ZW7Rdk
+	+YSrV/QnsQDQBaBPnag9Ja0JAi05U+or+5Jsajt841KakwhH9zmtPmTN4d0CbXZL0Sq+
+	x/zQB3mNL2IBVeTTH1XYYqRLZ5fObnQeJswxPVnHW000j3myZhJB2AKRtuRjt+01B8Ob
+	yr9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=6U1wYdvA3ia+2Qcp/e0uB9gqV1FtZHe63BZ84blQBiI=;
+	b=pMyGS7EVAtA6KLVHkgFHvFrxKPRWTYb2BzV59e4qnjNZ4HB5nZhiDNa23iiQctSrO+
+	HcHYFB32O02MnzAv7wY8kWNEqLSuZa2f+qiPO3XArS2mkLEl3SnSX5sY7Fx65N7nyTrN
+	BhIdAlYDqB2RQGn47bZV71NbSvwKgnGKC0Fu13IDcLKZ8qdZLKtCHuNfbb0JYwUV2nxm
+	wcFkfcl/n7xDeF+q7d2PC5uB+kWyIpDti+6TqGAT7QIHnhsvsq1s0bpV+/v6VFJXkElo
+	/Bfl52bqK1tD7VpmxuzNX5pDinCJn4UGv/nX1r+X0ietFRo5eDg1WY5etHr52pqLTzot
+	kCXQ==
+X-Gm-Message-State: ALQs6tCLgQUedmbrZkUa4ymCgIvzFKEd85BfzGbDo+rmvv9JpURB9rbp
+	JANtwYS29ZdB9z1M598RcMTuniKl
+X-Google-Smtp-Source: AIpwx4+jhjo7viJuQkAc0Rh97TkY4B00RiG7X/3kAETIIwgEibVS064sSFp4ItyGq4WmfbGmBY3law==
+X-Received: by 10.55.172.5 with SMTP id e5mr6383225qkm.81.1523657377614;
+	Fri, 13 Apr 2018 15:09:37 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.212])
+	by smtp.gmail.com with ESMTPSA id
+	u51sm5647114qtk.58.2018.04.13.15.09.31
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 13 Apr 2018 15:09:37 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20180413164545.18409-1-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <87db1aab-1bcb-7ba8-f871-017b7a9c0f6c@amsat.org>
+Date: Fri, 13 Apr 2018 19:09:26 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Apr 2018 16:45:57 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Apr 2018 16:45:57 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'marcandre.lureau@redhat.com'
-	RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH] acpi: fix a comment about aml_call0()
+In-Reply-To: <20180413164545.18409-1-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] acpi: fix a comment about
+ aml_call0()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,27 +83,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Apr 2018 16:46:08 -0000
+X-List-Received-Date: Fri, 13 Apr 2018 22:09:44 -0000
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/acpi/aml-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 04/13/2018 01:45 PM, Marc-André Lureau wrote:
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 3fa557cea1..1e43cd736d 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -627,7 +627,7 @@ Aml *aml_notify(Aml *arg1, Aml *arg2)
-     return var;
- }
-=20
--/* helper to call method with 1 argument */
-+/* helper to call method without argument */
- Aml *aml_call0(const char *method)
- {
-     Aml *var =3D aml_alloc();
---=20
-2.17.0.rc1.36.gcedb63ea2f
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> ---
+>  hw/acpi/aml-build.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 3fa557cea1..1e43cd736d 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -627,7 +627,7 @@ Aml *aml_notify(Aml *arg1, Aml *arg2)
+>      return var;
+>  }
+>  
+> -/* helper to call method with 1 argument */
+> +/* helper to call method without argument */
+>  Aml *aml_call0(const char *method)
+>  {
+>      Aml *var = aml_alloc();
+> 
 
