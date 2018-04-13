@@ -1,46 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f57NT-0002W1-Qv
-	for mharc-qemu-trivial@gnu.org; Sun, 08 Apr 2018 06:16:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36180)
+	id 1f71py-0002wF-Gv
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Apr 2018 12:46:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>) id 1f57NQ-0002Ri-OT
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2018 06:16:50 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1f71pw-0002uY-11
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 12:46:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>) id 1f57NN-0005D2-KJ
-	for qemu-trivial@nongnu.org; Sun, 08 Apr 2018 06:16:47 -0400
-Received: from smtp64.cstnet.cn ([159.226.251.64]:58112 helo=cstnet.cn)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>)
-	id 1f57NH-00053A-1N; Sun, 08 Apr 2018 06:16:39 -0400
-Received: by ajax-webmail-APP-18 (Coremail) ; Sun, 8 Apr 2018 18:16:32 +0800
-	(GMT+08:00)
-X-Originating-IP: [140.82.32.61]
-Date: Sun, 8 Apr 2018 18:16:32 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Su Hang" <suhang16@mails.ucas.ac.cn>
-To: "eric blake" <eblake@redhat.com>
-Cc: vsementsov@virtuozzo.com, qemu-trivial <qemu-trivial@nongnu.org>, 
-	"paolo bonzini" <pbonzini@redhat.com>, qemu-devel@nongnu.org
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.5 build 20161025(89512.9021)
-	Copyright (c) 2002-2018 www.mailtech.cn cstnet
-In-Reply-To: <2cc2bda7-aeb9-f632-f658-06273fd70311@redhat.com>
-References: <1522029982-4650-1-git-send-email-suhang16@mails.ucas.ac.cn>
-	<2cc2bda7-aeb9-f632-f658-06273fd70311@redhat.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <marcandre.lureau@redhat.com>) id 1f71pv-0000qy-9M
+	for qemu-trivial@nongnu.org; Fri, 13 Apr 2018 12:46:08 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40068 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1f71pq-0000pU-2y; Fri, 13 Apr 2018 12:46:02 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7873D814F0A8;
+	Fri, 13 Apr 2018 16:45:57 +0000 (UTC)
+Received: from localhost (ovpn-112-61.ams2.redhat.com [10.36.112.61])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1E5AB215CDC8;
+	Fri, 13 Apr 2018 16:45:52 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Fri, 13 Apr 2018 18:45:45 +0200
+Message-Id: <20180413164545.18409-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Message-ID: <6c0a5eba.72cc.162a4c1e16b.Coremail.suhang16@mails.ucas.ac.cn>
-X-Coremail-Locale: en_US
-X-CM-TRANSID: 2ACowAB3inQB7MlaDQxnAA--.15925W
-X-CM-SenderInfo: pvxkt0rjrwqzpdlo2hpxfd2hldfou0/1tbiCQEJEllo+Ra5SwABs+
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
-	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
-	daVFxhVjvjDU=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 159.226.251.64
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RFC v3 for-2.12?]
- scripts/checkpatch.pl: Bug fix
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Fri, 13 Apr 2018 16:45:57 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Fri, 13 Apr 2018 16:45:57 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'marcandre.lureau@redhat.com'
+	RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [PATCH] acpi: fix a comment about aml_call0()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,72 +54,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 08 Apr 2018 10:16:50 -0000
+X-List-Received-Date: Fri, 13 Apr 2018 16:46:08 -0000
 
-U29ycnkgZm9yIHJlcGx5aW5nIGxhdGUsIGl0J3MgdW50aWwgdG9kYXkgdGhhdCBJIHNhdyB5b3Vy
-IG1haWwuCgpJbiBvcmRlciB0byBmaW5kIG91dCB3aHkgdGhlIGZvcm1lciBlZGl0aW9uIGRvZXNu
-J3QgY29tcGxhaW4gYWJvdXQKYGRve313aGlsZShjb25kKTtgIHBhdHRlcm4sIEkgcmVncmVzcyBi
-YWNrIHRvCmVkMjc5YTA2YzUzNzg0YzhjNmM5YjQxYWEwMzg4YTRjZThhNzA0MTAsIG9uZSBiZWZv
-cmUgdGhlIGJ1ZyB3YXMgaW50cm9kdWNlZC4KVGhlbiBJIGZvdW5kIGluIExpbmUgMjQzNSB0byBM
-aW5lIDI0NDMgZGlkIHNwZWNpYWwganVkZ21lbnQgZm9yCmBkb3t9d2hpbGUoY29uZCk7YCBwYXR0
-ZXJuLgoKQXMgZm9yIHdoeSBJIHVzZSBgaWYgKCRsaW5lICF+IC9lbHNlLylgIGluc3RlYWQgb2Yg
-YGlmICgkbGluZSA9fiAvd2hpbGUvKWAsCkFuZCB3aHkgSSB1c2UgYCgkbGluZSAgPX4gLyhcfS4q
-KSQvKWAsIGluc3RlYWQgb2YgYChzdWJzdHIoJGxpbmUsIDAsICQtWzBdKSA9fiAvKFx9XHMqKSQv
-KWAuClNpbmNlIHRoZXkgd29yayB0aGUgc2FtZSwgc28gSSdtIHRyeWluZyB0byBtaW5pbWl6ZSB0
-aGUgbW9kaWZpY2F0aW9uCnRvIGN1cnJlbnQgY29kZSBhbmQgbm90IHRvIGludHJvZHVjZSBuZXcg
-Y29kZSBsb2dpYywgSSByZXVzZSBtb3N0IG9mCjI0MzUgLSAyNDQzIExpbmVzIGZyb20gZWQyNzlh
-MDZjNTM3ODRjOGM2YzliNDFhYTAzODhhNGNlOGE3MDQxMCBpbiBteSBwYXRjaC4KCj4gV2h5IGFy
-ZSB5b3UgdXNpbmcgbWluaW1hbCBtYXRjaCBjb3VwbGVkIHdpdGggYW4gYW5jaG9yZWQgZXhwcmVz
-c2lvbj8KPiBJc24ndCAnKCRsaW5lICA9fiAvKFx9LiopJC8pJyBnb2luZyB0byBtYXRjaCB0aGUg
-c2FtZSBzdWJleHByZXNzaW9uCj4gKG5hbWVseSwgYW55IGxpbmUgY29udGFpbmluZyB9IGJ1dCBu
-b3QgYXMgdGhlIGxhc3QgY2hhcmFjdGVyKT8KCicoJGxpbmUgID1+IC8oXH0uKikkLyknIHdvbid0
-IG1hdGNoICJhbnkgbGluZSBjb250YWluaW5nIH0gYnV0IG5vdCBhcwp0aGUgbGFzdCBjaGFyYWN0
-ZXIiLCBiZWN1YXNlCmBgYAppZiAoJGxpbmUgPX4gLyheLiopXGIoPzppZnx3aGlsZXxmb3IpXGIv
-ICYmCgkJCSRsaW5lICF+IC9cI1xzKmlmLykgewpgYGAgdGhhdCB3cmFwcyAnKCRsaW5lICA9fiAv
-KFx9LiopJC8pJyBsaW1pdHMgdGhlIHNjb3BlIG9mIHRoZSBtYXRjaC4KCkJlc3QsClN1IEhhbmcK
-CgoKPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2VzLS0tLS0KPiBGcm9tOiAiRXJpYyBCbGFrZSIgPGVi
-bGFrZUByZWRoYXQuY29tPgo+IFNlbnQgVGltZTogMjAxOC0wNC0wNSAwMjoyODoxMyAoVGh1cnNk
-YXkpCj4gVG86ICJTdSBIYW5nIiA8c3VoYW5nMTZAbWFpbHMudWNhcy5hYy5jbj4sIHZzZW1lbnRz
-b3ZAdmlydHVvenpvLmNvbQo+IENjOiBxZW11LXRyaXZpYWwgPHFlbXUtdHJpdmlhbEBub25nbnUu
-b3JnPiwgIlBhb2xvIEJvbnppbmkiIDxwYm9uemluaUByZWRoYXQuY29tPiwgcWVtdS1kZXZlbEBu
-b25nbnUub3JnCj4gU3ViamVjdDogUmU6IFtRZW11LXRyaXZpYWxdIFtRZW11LWRldmVsXSBbUEFU
-Q0ggUkZDIHYzIGZvci0yLjEyP10gc2NyaXB0cy9jaGVja3BhdGNoLnBsOiBCdWcgZml4Cj4gCj4g
-W2FkZGluZyBhIGZldyBtb3JlIGNjJ3NdCj4gCj4gT24gMDMvMjUvMjAxOCAwOTowNiBQTSwgU3Ug
-SGFuZyB3cm90ZToKPiA+IENvbW1pdCAyYjlhZWY2ZmNkOTZiYTdlZDhjMWVlNzIzZTM5MTkwMTg1
-MmQzNDRjIGludHJvZHVjZWQgYSByZWdyZXNzaW9uOgo+ID4gY2hlY2twYXRjaC5wbCBzdGFydGVk
-IGNvbXBsYWluaW5nIGFib3V0IHRoZSBmb2xsb3dpbmcgdmFsaWQgcGF0dGVybjoKPiA+IGRvIHsK
-PiA+ICAgICAgLyogc29tZXRoaW5nICovCj4gPiB9IHdoaWxlIChjb25kaXRpb24pOwo+ID4gCj4g
-PiBGaXggdGhlIHNjcmlwdCB0byBvbmNlIGFnYWluIHBlcm1pdCB0aGlzIHBhdHRlcm4uCj4gCj4g
-V2UgY2FuIHByb2JhYmx5IGRyb3AgdGhlIFJGQyBmcm9tIHRoZSB0aXRsZSAoUkZDIG1lYW5zIHlv
-dSBhcmUgdW5zdXJlIGlmCj4gdGhlIHBhdGNoIGlzIGluIGl0cyBmaW5hbCBmb3JtKSwgYW5kIHBy
-b2JhYmx5IHdhbnQgdGhpcyBwYXRjaCBpbmNsdWRlZAo+IGluIDIuMTIgYXMgd2UgYXJlIHN0aWxs
-IGdldHRpbmcgZW1haWxzIHRoYXQgaGl0IHRoZSBmYWxzZSBwb3NpdGl2ZToKPiAKPiBodHRwczov
-L2xpc3RzLmdudS5vcmcvYXJjaGl2ZS9odG1sL3FlbXUtZGV2ZWwvMjAxOC0wNC9tc2cwMDQwMy5o
-dG1sCj4gCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFN1IEhhbmcgPHN1aGFuZzE2QG1haWxzLnVj
-YXMuYWMuY24+Cj4gPiAtLS0KPiA+IHYxOiBmaXggYnVnLgo+ID4gdjI6IGNvcnJlY3QgaW5hcHBy
-b3ByaWF0ZSBwYXRjaCBkZXNjcmlwdGlvbi4KPiA+IHYzOiBwdXQgdmVyc2lvbiBkZXNjcmlwdGlv
-biB1bmRlciBTaWduZWQtb2ZmLWJ5IGxpbmUuCj4gPiAKPiA+ICBzY3JpcHRzL2NoZWNrcGF0Y2gu
-cGwgfCAxNSArKysrKysrKysrKysrLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9u
-cygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBQZXJsIGlzIG5vdCBteSBzdHJvbmdlc3QgcG9pbnQs
-IHNvIHRha2UgbXkgcmV2aWV3IHdpdGggYSBncmFpbiBvZiBzYWx0Lgo+IEhvd2V2ZXIsIHNpbmNl
-IEkgYWxyZWFkeSBoYXZlIGEgY291cGxlIG9mIG90aGVyIHJhbmRvbSBwYXRjaGVzIHRoYXQgbWF5
-Cj4gc3RpbGwgYmUgYXBwcm9wcmlhdGUgZm9yIC1yYzMsIEkgY2FuIHBpY2sgdGhpcyB1cCBpbiBh
-IHB1bGwgcmVxdWVzdCBpZiBJCj4gZ2V0IGF0IGxlYXN0IG9uZSBtb3JlIHJldmlldyAoYW5kIGlm
-IG5vIG9uZSBlbHNlIHBpY2tzIGl0IHVwIGZpcnN0LCBzdWNoCj4gYXMgdGhlIHFlbXUtdHJpdmlh
-bCBwcm9jZXNzIG9yIFBhb2xvJ3MgbWlzYyB0cmVlKQo+IAo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEv
-c2NyaXB0cy9jaGVja3BhdGNoLnBsIGIvc2NyaXB0cy9jaGVja3BhdGNoLnBsCj4gPiBpbmRleCA1
-N2RhYWUwNWVhMTguLmQ1MjIwN2EzY2M5ZCAxMDA3NTUKPiA+IC0tLSBhL3NjcmlwdHMvY2hlY2tw
-YXRjaC5wbAo+ID4gKysrIGIvc2NyaXB0cy9jaGVja3BhdGNoLnBsCj4gPiBAQCAtMjM1Niw2ICsy
-MzU2LDE4IEBAIHN1YiBwcm9jZXNzIHsKPiA+ICAjIGNoZWNrIGZvciBtaXNzaW5nIGJyYWNpbmcg
-YXJvdW5kIGlmIGV0Ywo+ID4gIAkJaWYgKCRsaW5lID1+IC8oXi4qKVxiKD86aWZ8d2hpbGV8Zm9y
-KVxiLyAmJgo+ID4gIAkJCSRsaW5lICF+IC9cI1xzKmlmLykgewo+ID4gKwkJCW15ICRhbGxvd2Vk
-ID0gMDsKPiA+ICsKPiA+ICsJCQkjIENoZWNrIHRoZSBwcmUtY29udGV4dC4KPiA+ICsJCQlpZiAo
-JGxpbmUgPX4gLyhcfS4qPykkLykgewo+IAo+IFdoeSBhcmUgeW91IHVzaW5nIG1pbmltYWwgbWF0
-Y2ggY291cGxlZCB3aXRoIGFuIGFuY2hvcmVkIGV4cHJlc3Npb24/Cj4gSXNuJ3QgJygkbGluZSAg
-PX4gLyhcfS4qKSQvKScgZ29pbmcgdG8gbWF0Y2ggdGhlIHNhbWUgc3ViZXhwcmVzc2lvbgo+IChu
-YW1lbHksIGFueSBsaW5lIGNvbnRhaW5pbmcgfSBidXQgbm90IGFzIHRoZSBsYXN0IGNoYXJhY3Rl
-cik/Cj4gCj4gT3RoZXJ3aXNlLAo+IFJldmlld2VkLWJ5OiBFcmljIEJsYWtlIDxlYmxha2VAcmVk
-aGF0LmNvbT4KPiAKPiAtLSAKPiBFcmljIEJsYWtlLCBQcmluY2lwYWwgU29mdHdhcmUgRW5naW5l
-ZXIKPiBSZWQgSGF0LCBJbmMuICAgICAgICAgICArMS05MTktMzAxLTMyNjYKPiBWaXJ0dWFsaXph
-dGlvbjogIHFlbXUub3JnIHwgbGlidmlydC5vcmcKPiAK
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ hw/acpi/aml-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 3fa557cea1..1e43cd736d 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -627,7 +627,7 @@ Aml *aml_notify(Aml *arg1, Aml *arg2)
+     return var;
+ }
+=20
+-/* helper to call method with 1 argument */
++/* helper to call method without argument */
+ Aml *aml_call0(const char *method)
+ {
+     Aml *var =3D aml_alloc();
+--=20
+2.17.0.rc1.36.gcedb63ea2f
+
 
