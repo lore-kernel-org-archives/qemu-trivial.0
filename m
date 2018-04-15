@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7rKd-000696-7s
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:45:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52318)
+	id 1f7rKh-0006FL-5m
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:45:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52388)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKa-00065A-FF
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:13 -0400
+	id 1f7rKd-00069q-Jy
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKY-0001Tw-VJ
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:12 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:39893)
+	id 1f7rKc-0001X5-3A
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:15 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:39892)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKY-0001Tc-Qd; Sun, 15 Apr 2018 19:45:10 -0400
-Received: by mail-qk0-x243.google.com with SMTP id j73so14799144qke.6;
-	Sun, 15 Apr 2018 16:45:10 -0700 (PDT)
+	id 1f7rKb-0001WT-UC; Sun, 15 Apr 2018 19:45:13 -0400
+Received: by mail-qk0-x241.google.com with SMTP id j73so14799216qke.6;
+	Sun, 15 Apr 2018 16:45:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=86o8dKC93x01hL9xCcRHnNJazGc4w4JtLIf3gq6jfbs=;
-	b=kU5mZHGyhsIGeqpHAszZ64Y5Lz57g4t9CG4wwPV7gPpOWJI6VfWTSyqn1JOiwyRMun
-	85ppD4/R2XURtQMT7eCfLjlvUi91NZwW8LIBduujLGwDjd3n25+rTSPoOV4GZRazcF7T
-	NxcbhUa4xYuTHLXB7jmQfwcMhiQW4pF6+RR5tP6My+bX+fLfUKXTo8+D32bm/2Vy8nH4
-	mkMX24VM1FRAKc8+wr4munlYj6rAhASOupgTk4MXYb4PZsQ4k6Ux+rTvQhwi96T30JxI
-	NExKlSis3ydfusIevqKssR71J9+Fp+VzPds/EeSTWXeUrUj2O4yEnqfR/Vm+QHOJRE1+
-	Io5w==
+	bh=hAiTWt/cLNCWV6HpjmnXBCyzuKWByOAdZsKK5v2xBQY=;
+	b=C+lvTEzTOVnYwiBqs2z7qmEUthkRcNoRImkOA2Odxcblln5VeDwJDyE94/P3PbYo6Z
+	0wB+d8p5bflmdwjn89SlZtJwZ7tEHO3zpyU48ZJqbDqWwd2K6wJat20WptSEMvaKtZQM
+	3MyNWSIn0Crqac1/yNpkNCiKhDjkX6X9VIme/5Wa7PB/EdPO/pwdSyNTquDFQ87UMyHO
+	WRd5NSqLwagXASxSk0SWBoUciT8ouIiMld0jC9z+NzWk1Ue8nejpCnzfMmCSk7lgtZJv
+	7H5uSuboNPkddZypoJw3852i+cRC4mfa5nxPYEPhZebMhmQkE1JMIzuKvoSvsjOVd2ov
+	KOeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=86o8dKC93x01hL9xCcRHnNJazGc4w4JtLIf3gq6jfbs=;
-	b=SCtENUfZRM+5FUrBwsXlxHmSiX+Sbf5Vnhj+q2C6birv+RiwWhluulmghP1Paphp+K
-	kCJbGgvOB5nkEPmeYgu1jQzdKmqnErEM4XDH929QsM97Y6KWvAQEokQcOLXN+a0y1c2n
-	Nbi4vo436RgDgEqaFi71Wam5QnCyKnASKv940k2Cd66FFzn7Rus7SiDv98Myw3o7Y8fF
-	Hv0lAAT5EE+e6e9KRtNdU3pU41U6Ogxz8GR/B+V1y5QKyquRiAEwtVqtmuvo+NzXuAmM
-	dZNAJDYfLQltrFU24tEulM6N+/4erjT7aE5FB4EYyR62DrVYfeABDG5Iyyu7uD82y7Xx
-	IuAw==
-X-Gm-Message-State: ALQs6tCrXCH/0Gd8QROTsyyx9FeL2bsF3uCnxa0z/T0c37x8uVQmsgSU
-	wz/XllBNpeSzq/v4VwbeBR4m6lZfWYU=
-X-Google-Smtp-Source: AIpwx4991B9QEMwf8JoTfj4r9rm69l6KlQ4eb0ezENI4ff7LtRsc8vjsULgX+D0p23no3o1uOdYJig==
-X-Received: by 10.55.195.217 with SMTP id r86mr7514017qkl.267.1523835909939;
-	Sun, 15 Apr 2018 16:45:09 -0700 (PDT)
+	bh=hAiTWt/cLNCWV6HpjmnXBCyzuKWByOAdZsKK5v2xBQY=;
+	b=dgLtUMpMUXT5uJI6PpZvmmuCSY1BqwDLeZahPt4p8v1lM33LpVYSYq7//VBgArJ1ct
+	1IPx7Lx01KtGSymUJ6cQwlmS9t1sc/B9VlmBgrIidcKoXToDrlVbtjt/gA2uphcPpFQ0
+	buOhw7ol6etfyB9QbjUIq+KLnVf10ZfRRFKkPpmrSscxggy03qLNub9EtZgymd9CCoLK
+	wnJff339uF2LRz6tiSWgivh6KFHpkN6QD0jvvc50qCL3h3/N29EUUXRvA/xwyAqaVmU2
+	ZEl//4dvJQdwRdKml2glqPGh3OvdybMOzXLrg7cRYnKbz4CE4uhDrJDqZvHUQyM+dw5o
+	TjEg==
+X-Gm-Message-State: ALQs6tCG8y32GK311aJIvEWiC22tbUZelfhT++uSao4PzUWH0a/22G43
+	q5YU7t9uFdz/3NLRnPJyxsF0S4paOMk=
+X-Google-Smtp-Source: AIpwx4925sLUvO9YNNUjA9sM89YrD+uCPcIpyTp3KVHzvhYLt+7lWh+Wc36qwd/lGEsJk9EMwQA8Pg==
+X-Received: by 10.55.182.70 with SMTP id g67mr14246593qkf.314.1523835913273;
+	Sun, 15 Apr 2018 16:45:13 -0700 (PDT)
 Received: from x1.local ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.45.05
+	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.45.10
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 16:45:09 -0700 (PDT)
+	Sun, 15 Apr 2018 16:45:12 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Jason Wang <jasowang@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	qemu-arm@nongnu.org (open list:Allwinner-a10)
-Date: Sun, 15 Apr 2018 20:42:59 -0300
-Message-Id: <20180415234307.28132-34-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Date: Sun, 15 Apr 2018 20:43:00 -0300
+Message-Id: <20180415234307.28132-35-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
@@ -66,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH v3 33/41] hw/net: Use the BYTE-based
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: [Qemu-trivial] [PATCH v3 34/41] hw/usb: Use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -80,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Apr 2018 23:45:13 -0000
+X-List-Received-Date: Sun, 15 Apr 2018 23:45:17 -0000
 
 It eases code review, unit is explicit.
 
@@ -92,115 +89,105 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/net/allwinner_emac.h | 5 +++--
- hw/net/e1000e.c                 | 7 ++++---
- hw/net/e1000x_common.c          | 3 ++-
- hw/net/eepro100.c               | 7 +++----
- 4 files changed, 12 insertions(+), 10 deletions(-)
+ hw/usb/ccid-card-passthru.c   | 5 +++--
+ hw/usb/combined-packet.c      | 3 ++-
+ hw/usb/dev-smartcard-reader.c | 3 ++-
+ hw/usb/redirect.c             | 3 ++-
+ 4 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner_emac.h
-index 4cc8aab7ec..4b53b6485c 100644
---- a/include/hw/net/allwinner_emac.h
-+++ b/include/hw/net/allwinner_emac.h
-@@ -23,6 +23,7 @@
- #ifndef ALLWINNER_EMAC_H
- #define ALLWINNER_EMAC_H
- 
-+#include "qemu/units.h"
- #include "net/net.h"
- #include "qemu/fifo8.h"
- #include "hw/net/mii.h"
-@@ -125,8 +126,8 @@
- #define EMAC_INT_RX         (1 << 8)
- 
- /* Due to lack of specifications, size of fifos is chosen arbitrarily */
--#define TX_FIFO_SIZE        (4 * 1024)
--#define RX_FIFO_SIZE        (32 * 1024)
-+#define TX_FIFO_SIZE        (4 * K_BYTE)
-+#define RX_FIFO_SIZE        (32 * K_BYTE)
- 
- #define NUM_TX_FIFOS        2
- #define RX_HDR_SIZE         8
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index 16a9417a85..101efe7c83 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -34,6 +34,7 @@
- */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "net/net.h"
- #include "net/tap.h"
- #include "qemu/range.h"
-@@ -81,10 +82,10 @@ typedef struct E1000EState {
- #define E1000E_IO_IDX       2
- #define E1000E_MSIX_IDX     3
- 
--#define E1000E_MMIO_SIZE    (128 * 1024)
--#define E1000E_FLASH_SIZE   (128 * 1024)
-+#define E1000E_MMIO_SIZE    (128 * K_BYTE)
-+#define E1000E_FLASH_SIZE   (128 * K_BYTE)
- #define E1000E_IO_SIZE      (32)
--#define E1000E_MSIX_SIZE    (16 * 1024)
-+#define E1000E_MSIX_SIZE    (16 * K_BYTE)
- 
- #define E1000E_MSIX_TABLE   (0x0000)
- #define E1000E_MSIX_PBA     (0x2000)
-diff --git a/hw/net/e1000x_common.c b/hw/net/e1000x_common.c
-index eb0e097137..58c8db77e9 100644
---- a/hw/net/e1000x_common.c
-+++ b/hw/net/e1000x_common.c
-@@ -23,6 +23,7 @@
- */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
- #include "net/net.h"
-@@ -111,7 +112,7 @@ bool e1000x_is_oversized(uint32_t *mac, size_t size)
-     static const int maximum_ethernet_vlan_size = 1522;
-     /* this is the size past which hardware will
-        drop packets when setting LPE=1 */
--    static const int maximum_ethernet_lpe_size = 16384;
-+    static const int maximum_ethernet_lpe_size = 16 * K_BYTE;
- 
-     if ((size > maximum_ethernet_lpe_size ||
-         (size > maximum_ethernet_vlan_size
-diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
-index a07a63247e..a02e2b55e8 100644
---- a/hw/net/eepro100.c
-+++ b/hw/net/eepro100.c
-@@ -41,6 +41,7 @@
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index b7dd3602dc..4bd1e2232e 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -9,6 +9,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
- #include "net/net.h"
-@@ -60,8 +61,6 @@
-  * changed to pad short packets itself. */
- #define CONFIG_PAD_RECEIVED_FRAMES
+ #include <cacard/vscard_common.h>
+ #include "chardev/char-fe.h"
+ #include "qemu/error-report.h"
+@@ -40,7 +41,7 @@ static const uint8_t DEFAULT_ATR[] = {
+  0x13, 0x08
+ };
  
--#define KiB 1024
--
- /* Debug EEPRO100 card. */
- #if 0
- # define DEBUG_EEPRO100
-@@ -104,9 +103,9 @@
- /* Use 64 word EEPROM. TODO: could be a runtime option. */
- #define EEPROM_SIZE     64
+-#define VSCARD_IN_SIZE 65536
++#define VSCARD_IN_SIZE      (64 * K_BYTE)
  
--#define PCI_MEM_SIZE            (4 * KiB)
-+#define PCI_MEM_SIZE            (4 * K_BYTE)
- #define PCI_IO_SIZE             64
--#define PCI_FLASH_SIZE          (128 * KiB)
-+#define PCI_FLASH_SIZE          (128 * K_BYTE)
+ /* maximum size of ATR - from 7816-3 */
+ #define MAX_ATR_SIZE        40
+@@ -276,7 +277,7 @@ static void ccid_card_vscard_read(void *opaque, const uint8_t *buf, int size)
  
- #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
+     if (card->vscard_in_pos + size > VSCARD_IN_SIZE) {
+         error_report(
+-            "no room for data: pos %d +  size %d > %d. dropping connection.",
++            "no room for data: pos %d +  size %d > %llu. dropping connection.",
+             card->vscard_in_pos, size, VSCARD_IN_SIZE);
+         ccid_card_vscard_drop_connection(card);
+         return;
+diff --git a/hw/usb/combined-packet.c b/hw/usb/combined-packet.c
+index 48cac87f6a..2f068af927 100644
+--- a/hw/usb/combined-packet.c
++++ b/hw/usb/combined-packet.c
+@@ -20,6 +20,7 @@
+  * along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qemu-common.h"
+ #include "hw/usb.h"
+ #include "qemu/iov.h"
+@@ -171,7 +172,7 @@ void usb_ep_combine_input_packets(USBEndpoint *ep)
+         if ((p->iov.size % ep->max_packet_size) != 0 || !p->short_not_ok ||
+                 next == NULL ||
+                 /* Work around for Linux usbfs bulk splitting + migration */
+-                (totalsize == 16348 && p->int_req)) {
++                (totalsize == (16 * K_BYTE - 36) && p->int_req)) {
+             usb_device_handle_data(ep->dev, first);
+             assert(first->status == USB_RET_ASYNC);
+             if (first->combined) {
+diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+index e6468057a0..0cdee70f82 100644
+--- a/hw/usb/dev-smartcard-reader.c
++++ b/hw/usb/dev-smartcard-reader.c
+@@ -35,6 +35,7 @@
+  */
  
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "qemu/error-report.h"
+@@ -63,7 +64,7 @@ do { \
+  * or handle the migration complexity - VMState doesn't handle this case.
+  * sizes are expected never to be exceeded, unless guest misbehaves.
+  */
+-#define BULK_OUT_DATA_SIZE 65536
++#define BULK_OUT_DATA_SIZE  (64 * K_BYTE)
+ #define PENDING_ANSWERS_NUM 128
+ 
+ #define BULK_IN_BUF_SIZE 384
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 65a9196c1a..3ed4a39be1 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "qemu/timer.h"
+@@ -1298,7 +1299,7 @@ static int usbredir_chardev_can_read(void *opaque)
+     }
+ 
+     /* usbredir_parser_do_read will consume *all* data we give it */
+-    return 1024 * 1024;
++    return 1 * M_BYTE;
+ }
+ 
+ static void usbredir_chardev_read(void *opaque, const uint8_t *buf, int size)
 -- 
 2.17.0
 
