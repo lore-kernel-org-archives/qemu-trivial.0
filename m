@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7rJ0-0004Kv-Ap
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:43:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50340)
+	id 1f7rJ2-0004N3-7X
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:43:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50411)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rIx-0004Hi-9H
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:43:32 -0400
+	id 1f7rJ0-0004KY-2K
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:43:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rIw-000056-IN
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:43:31 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:40965)
+	id 1f7rIz-00009C-9x
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:43:34 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38590)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rIw-0008WL-Dn; Sun, 15 Apr 2018 19:43:30 -0400
-Received: by mail-qt0-x242.google.com with SMTP id d3so13549281qth.8;
-	Sun, 15 Apr 2018 16:43:30 -0700 (PDT)
+	id 1f7rIz-00008a-5I; Sun, 15 Apr 2018 19:43:33 -0400
+Received: by mail-qt0-x241.google.com with SMTP id z23so13561766qti.5;
+	Sun, 15 Apr 2018 16:43:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=W9rPcOalcqA0InRVjx6nWOjU2qNw6igt6HlV0JQwQcY=;
-	b=S+WgY4HgxJRtZPkd9uCD83t0e5FuX4++u/nwsujzk3DuoOGD/ukY2mbZobxtpa3Ho3
-	00RN21DEbvu11xM1qTYJ9p4BjhA8pD6DuICugYa4yb4UXOugXe2z/ZibGYsudtKEUhxn
-	SaQPnCkEYgY8IBV7KMFUNGYViL0ZF/Pt1qdP7/W7fEk4ICsUcqwnzoPnaqACQ5ggPZE4
-	uCkjD+3XL1SOP728XB1C9WEKu3BDHuezpT0QijF39+Tj5vqS7x94ztK5mXBVhM+wI4Mk
-	q1qo63id5vfOHTsdj6TA2hDCbn7mHXaBb1JVrbPI/Dq0D/ypMO4wgqhhogx9K8ZG1DT4
-	yXbw==
+	bh=QhY06qKl3znwZvKZLIq0uZmF4mSh89y+JxRVcxXXcaE=;
+	b=YXxTTGn4oT+46bXPEUs3q5N50FR3rfrwXAYetRWagYJxB+nctE194tcyRwOEcZ8OnQ
+	8HlD7wOCY+iKLKhGZJhsthRMENBCFm9gMsSAYEhWKwlDT1bu0xzWhzQkwq5uzkBbEXdF
+	0hxp3Y1RqjRaZe1r04EJnGsZNO/ITAyb/NUj0BFHX/TGnLCHETBLIYvvZStRdrCOJ+sv
+	o1c0GBT94nSVghtW6a+oJq0oSFI6tjF52RqPy6nhgHj4XjDvXJSjKBhMpSq8xbxOL3CY
+	F/t84BfA4S6TSAJr7+W/iME91/OS/d3D8Uhr9UIzDlwTFpoJ++AIIHpaMUz/LPxzZvKr
+	K+WQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=W9rPcOalcqA0InRVjx6nWOjU2qNw6igt6HlV0JQwQcY=;
-	b=FvzaYSuPt6AW0ucAz9SIsSQGFSyxSfuue9tyrZb0Mrl1SMueA5mIdhgt26oE6Y1l6x
-	bFTqKZ53DxlHRBpm3RPRfwPh2a1xNemkkCSfM9HofSd3JsWQI0rF7qP47iAJumyQmiMR
-	yxxV9d6gw8Pfje6cDX35DGQBdw6Zi0stHoI1//MUj8FfgpZBopVs9eP/dlrmgKfHy8XO
-	qWFENNWD38iMTIzVx+zbDZhY6tgwlhAK2diPE8pa38/+i2XkkglXZ08DvOTYVlDHj3Ue
-	7rh2OblVbN60MUNMzFWL0fYw7J6t2roel3ZFaYbXcF6WjBOqgep47qmrmcj5SKFuh9zD
-	VzJw==
-X-Gm-Message-State: ALQs6tDABOaJEuQ8Yd1J7wnGZDSpyePwyQMOW2Ct24KLvxEYJZtcB9+Z
-	h5QPqF2sxZyhOmgG5Aj9gFZTKddE
-X-Google-Smtp-Source: AIpwx4+M9ldViECKrs4f3VXKApSfND1TeOFKEWxLAQL3Hr+9GeYyphowdbR5OZz78CEtzGHYIFESRQ==
-X-Received: by 10.200.70.21 with SMTP id p21mr13592928qtn.320.1523835809749;
-	Sun, 15 Apr 2018 16:43:29 -0700 (PDT)
+	bh=QhY06qKl3znwZvKZLIq0uZmF4mSh89y+JxRVcxXXcaE=;
+	b=MQxW1PWs6f7u+S/aXPin5fHLWc/jAvEl+wvCR1Nl9qOj1SwqjCJEOja1u2oVu7JLoS
+	rkzp5Ev2le7ozBM/+bMWqSLcm7cpiAygkowoLAkJFN2Y0LANfIZi+wgkEpMpwhc9GjxS
+	fZXNNdbzG+3EsINjlzqnh0RHFwRXIK0Usv7xQs+WzMxSOng3i/t+ZZc1vZUjmUt9oIK7
+	4T4TNz73Z3Qr5/VzswDxSf+sQsJe28E8eWqKYYzVsCN0kpdtHxkUuCeq12Sws0KTUV0z
+	UumvBgZjLH5PwQvLhjUVRzmZI2jMyde+gN9Gj2wS1kQt3xmBvrjtCVPhOE75A310hg+v
+	TL9A==
+X-Gm-Message-State: ALQs6tBRsKn437kGI0zJ+FhxqJFfxKAfI4en3e/j+NyZNY4LS1VuAglf
+	LCHn9X1VtjGwrdttVbLDwHunGBk1
+X-Google-Smtp-Source: AIpwx49nXR+d6X8ksrs8nXY9GdjxtDeofEyJvJ4+Xju0V591gyDsXqOWYGmtOGotb9cf3doN6CDCAQ==
+X-Received: by 10.200.47.180 with SMTP id l49mr465993qta.195.1523835812542;
+	Sun, 15 Apr 2018 16:43:32 -0700 (PDT)
 Received: from x1.local ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.43.27
+	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.43.30
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 16:43:29 -0700 (PDT)
+	Sun, 15 Apr 2018 16:43:32 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,8 +54,8 @@ To: qemu-trivial@nongnu.org,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
 	Yongbok Kim <yongbok.kim@mips.com>
-Date: Sun, 15 Apr 2018 20:42:30 -0300
-Message-Id: <20180415234307.28132-5-f4bug@amsat.org>
+Date: Sun, 15 Apr 2018 20:42:31 -0300
+Message-Id: <20180415234307.28132-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
@@ -64,8 +64,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: [Qemu-trivial] [PATCH v3 04/41] hw/misc/mips_itu: Sort includes
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH v3 05/41] hw/mips/r4k: Constify params_size
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,46 +77,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Apr 2018 23:43:32 -0000
+X-List-Received-Date: Sun, 15 Apr 2018 23:43:35 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/mips_itu.h | 2 ++
- hw/misc/mips_itu.c         | 5 +----
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ hw/mips/mips_r4k.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/misc/mips_itu.h b/include/hw/misc/mips_itu.h
-index b3a4532036..030eb4ac62 100644
---- a/include/hw/misc/mips_itu.h
-+++ b/include/hw/misc/mips_itu.h
-@@ -20,6 +20,8 @@
- #ifndef MIPS_ITU_H
- #define MIPS_ITU_H
+diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+index aeadc4a340..c26a44da06 100644
+--- a/hw/mips/mips_r4k.c
++++ b/hw/mips/mips_r4k.c
+@@ -80,8 +80,9 @@ typedef struct ResetData {
  
-+#include "hw/sysbus.h"
-+
- #define TYPE_MIPS_ITU "mips-itu"
- #define MIPS_ITU(obj) OBJECT_CHECK(MIPSITUState, (obj), TYPE_MIPS_ITU)
+ static int64_t load_kernel(void)
+ {
++    const size_t params_size = 264;
+     int64_t entry, kernel_high;
+-    long kernel_size, initrd_size, params_size;
++    long kernel_size, initrd_size;
+     ram_addr_t initrd_offset;
+     uint32_t *params_buf;
+     int big_endian;
+@@ -129,7 +130,6 @@ static int64_t load_kernel(void)
+     }
  
-diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
-index c84a48bbb7..ccc4c7d98a 100644
---- a/hw/misc/mips_itu.c
-+++ b/hw/misc/mips_itu.c
-@@ -18,13 +18,10 @@
-  */
+     /* Store command line.  */
+-    params_size = 264;
+     params_buf = g_malloc(params_size);
  
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "qapi/error.h"
- #include "cpu.h"
--#include "qemu/log.h"
- #include "exec/exec-all.h"
--#include "hw/hw.h"
--#include "hw/sysbus.h"
--#include "sysemu/sysemu.h"
- #include "hw/misc/mips_itu.h"
+     params_buf[0] = tswap32(ram_size);
+@@ -144,7 +144,7 @@ static int64_t load_kernel(void)
+     }
  
- #define ITC_TAG_ADDRSPACE_SZ (ITC_ADDRESSMAP_NUM * 8)
+     rom_add_blob_fixed("params", params_buf, params_size,
+-                       (16 << 20) - 264);
++                       (16 << 20) - params_size);
+ 
+     g_free(params_buf);
+     return entry;
 -- 
 2.17.0
 
