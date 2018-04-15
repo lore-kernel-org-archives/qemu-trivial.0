@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7rKv-0006UZ-UB
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:45:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52637)
+	id 1f7rL1-0006YE-MB
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:45:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52681)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKt-0006SE-DV
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:32 -0400
+	id 1f7rKw-0006VY-Nc
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKs-0001oR-GG
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:31 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:38599)
+	id 1f7rKv-0001qi-Lx
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:45:34 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:38600)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rKs-0001oD-8I; Sun, 15 Apr 2018 19:45:30 -0400
-Received: by mail-qt0-x243.google.com with SMTP id z23so13564515qti.5;
-	Sun, 15 Apr 2018 16:45:30 -0700 (PDT)
+	id 1f7rKv-0001qQ-Fh; Sun, 15 Apr 2018 19:45:33 -0400
+Received: by mail-qt0-x244.google.com with SMTP id z23so13564646qti.5;
+	Sun, 15 Apr 2018 16:45:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=P/eYd0gYK9XBPzUYbdxuExY/CGzG8++sxns3+Lwdmhc=;
-	b=Ao3WQTAnkyuJ7rf6pEuQPEBj6mqyvHTkk9EYPDsnMC36JzwUGG7xagcRC3yFP1bYn1
-	mc+XzDal39i7hqBbRM7MG70IJV8V2E1yIUN1KKUOt7iay6kkvFfTENuI1WGXo/rY/c5T
-	JM2H0gLtytfuNq/Mwy1aotNi35ZivEWIqhXBmhoHgr44lfRwzv+iFzH56+G/PiT8rfWv
-	gSBocv4ma6mIG/w9GnWHpWqEMTyubG8tE9A+WJcyCi9VW/8USOppwXuoUUd1Q6bo0ENt
-	Yig4/WESc5fTUOPSnXv7DIotUTXGdprmChKzwVoQIF9pru3vAr9N/daYIXi6Z1XKkTcV
-	nP6Q==
+	bh=+WqG1Y6FRlxIu3Tc3DagXW6yWpRzWHsMpc65faz12FM=;
+	b=nxf+k5MZE1QpewKo5fb8kgTmZ+DujcgU6jlO7ineY9FuacO1h3AU+ZRWCsYwKEadyF
+	wjFMZOBJojjk8l6/prvZgzKobcEmW9JnZ9BH9aQhZugYgoR7HOctQFF6FtuenSwwnwsA
+	dIDC7/lWAz2i63ieITpHLrEJ3gxbpeIwzfUnCF22mlsZaOkYH4Vdx0sSW8WpFKJc8qAL
+	2ozAVR83p/9ZvjlmMGLBvfxrOW2Szp66oWKXE3bRgZmgGnOVsgVqbcCqTFQaLMrKCJ7l
+	v8KOB0UL4no+usctW2pvhxOzArICVP/YAxl3ocMrU7t+/jO518TJaG+PgBQxQGsRxtpc
+	ZSRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=P/eYd0gYK9XBPzUYbdxuExY/CGzG8++sxns3+Lwdmhc=;
-	b=Cqhm3zqwVWwKkBLaxnFXge/fAgins+/vgO3Jb1elhiHohiaxzwRZdIlIL7aewfxRAO
-	MICpnMrOzk1dIc6FEa0fcy7CZfPTdpb1TZQ6E8f4AY9MpNHsD6QRUwcUysTtG5wKUKKw
-	jaK+7CIoadoWM6C+f9XRAVzabfKUGFS30e6kfbpgATL6p5i4KvZZZ8sFUD6SrK4kdeu+
-	xE+spYhUP/O7gFx71JqcgT6SNL4XbRX6grjWoDekJbttu6aw79IgYrY2qSVqLV9npGG6
-	dCXEKcDHmYDWXHGxKRLfu+4gehmGj41NMIA5HA4ez0zzRo86OuWiSniXBP4Kq/cWS3sY
-	x8Lg==
-X-Gm-Message-State: ALQs6tB7z8NK9DVcCj5FHszetuLNVgOrU+Sy0oDUf5J8zF+Oye+za3WD
-	It7M7ytHYkN+aX3yq05GevZp7KItppo=
-X-Google-Smtp-Source: AIpwx48/bgVZK9NvwJBQX8xzHhK5PxP+qmSiVs+EwFJOlCi/ID/2tA0/WkAIkXGuZLO0/lpJtT91Wg==
-X-Received: by 10.200.3.207 with SMTP id z15mr4010097qtg.119.1523835929620;
-	Sun, 15 Apr 2018 16:45:29 -0700 (PDT)
+	bh=+WqG1Y6FRlxIu3Tc3DagXW6yWpRzWHsMpc65faz12FM=;
+	b=L5IypdJM9Y6UK8vLeQBvNoNXsDIaEgepRpv6GnPHYEYt7fw3gmll1Hv/TQ8b0OQjug
+	hWPmtfLIG58r2tRQ6nfr5mDSzqHF6hDvWtttV7rwO54xuzFAG9ctTopj4b0NzShfyF3b
+	TOewQovHrjDYInUP+p6dtBqHMD0CkK98WKcSGLwPyaWeL86jEk+B08rJS1Sd5ucneBhh
+	owrrwErTZSUKMzdYkDpc8F721NXn0k1oe4Hta/evNdUMMBxJcK3DSrQGickiX/Iy1k6H
+	eQj0PJKpGoZfHT9q/hfJHsBbVYqdtz0b2nH/bIGBCvbN92VrS4/91ViQGSomoA/YrpE5
+	T8wg==
+X-Gm-Message-State: ALQs6tBC0qLRd7yQ3HwyajerbGDWnI3fMVRLS+PdqvepQWruAqvPKVt6
+	GEljuG3uZmY/dDNuDi9G00j3eoIqUgg=
+X-Google-Smtp-Source: AIpwx48lAP+KbY3j10M4RnrkmTlNrf3rvE35Wk6lhr/TL8UWnp8DcXnYVE7y4u58kcPCbYOdx5+Z7g==
+X-Received: by 10.237.62.25 with SMTP id l25mr4658023qtf.143.1523835932828;
+	Sun, 15 Apr 2018 16:45:32 -0700 (PDT)
 Received: from x1.local ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.45.27
+	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.45.29
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 16:45:29 -0700 (PDT)
+	Sun, 15 Apr 2018 16:45:32 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Date: Sun, 15 Apr 2018 20:43:05 -0300
-Message-Id: <20180415234307.28132-40-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Paul Burton <paul.burton@mips.com>
+Date: Sun, 15 Apr 2018 20:43:06 -0300
+Message-Id: <20180415234307.28132-41-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
@@ -64,8 +63,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v3 39/41] hw/nvdimm: Use the BYTE-based
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH v3 40/41] hw/loader: Use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,7 +77,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Apr 2018 23:45:32 -0000
+X-List-Received-Date: Sun, 15 Apr 2018 23:45:38 -0000
 
 It eases code review, unit is explicit.
 
@@ -90,44 +89,51 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/mem/nvdimm.h | 3 ++-
- hw/mem/nvdimm.c         | 2 +-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ include/hw/loader.h  | 5 +++--
+ hw/core/loader-fit.c | 2 +-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
-index 7fd87c4e1c..fda855ad1a 100644
---- a/include/hw/mem/nvdimm.h
-+++ b/include/hw/mem/nvdimm.h
-@@ -23,6 +23,7 @@
- #ifndef QEMU_NVDIMM_H
- #define QEMU_NVDIMM_H
- 
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 5ed3fd8ae6..2222ca4184 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -1,5 +1,6 @@
+ #ifndef LOADER_H
+ #define LOADER_H
 +#include "qemu/units.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/nvram/fw_cfg.h"
  
-@@ -40,7 +41,7 @@
-  *   "NVDIMMs following the NVDIMM Block Mode Specification use an area
-  *    at least 128KB in size, which holds around 1000 labels."
+ /* loader.c */
+@@ -52,7 +53,7 @@ int load_image_mr(const char *filename, MemoryRegion *mr);
+  * load_image_gzipped_buffer() and load_image_gzipped() will read. It prevents
+  * g_malloc() in those functions from allocating a huge amount of memory.
   */
--#define MIN_NAMESPACE_LABEL_SIZE      (128UL << 10)
-+#define MIN_NAMESPACE_LABEL_SIZE      (128 * K_BYTE)
+-#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 << 20)
++#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 * M_BYTE)
  
- #define TYPE_NVDIMM      "nvdimm"
- #define NVDIMM(obj)      OBJECT_CHECK(NVDIMMDevice, (obj), TYPE_NVDIMM)
-diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-index acb656b672..0f83e9fb4c 100644
---- a/hw/mem/nvdimm.c
-+++ b/hw/mem/nvdimm.c
-@@ -54,7 +54,7 @@ static void nvdimm_set_label_size(Object *obj, Visitor *v, const char *name,
-     }
-     if (value < MIN_NAMESPACE_LABEL_SIZE) {
-         error_setg(&local_err, "Property '%s.%s' (0x%" PRIx64 ") is required"
--                   " at least 0x%lx", object_get_typename(obj),
-+                   " at least 0x%llx", object_get_typename(obj),
-                    name, value, MIN_NAMESPACE_LABEL_SIZE);
-         goto out;
-     }
+ int load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
+                               uint8_t **buffer);
+@@ -253,6 +254,6 @@ int rom_add_option(const char *file, int32_t bootindex);
+ 
+ /* This is the usual maximum in uboot, so if a uImage overflows this, it would
+  * overflow on real hardware too. */
+-#define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
++#define UBOOT_MAX_GUNZIP_BYTES (64 * M_BYTE)
+ 
+ #endif
+diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+index 0c4a7207f4..0117104d69 100644
+--- a/hw/core/loader-fit.c
++++ b/hw/core/loader-fit.c
+@@ -22,7 +22,7 @@
+ #include "exec/memory.h"
+ #include "hw/loader.h"
+ #include "hw/loader-fit.h"
+-#include "qemu/cutils.h"
++#include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/sysemu.h"
 -- 
 2.17.0
 
