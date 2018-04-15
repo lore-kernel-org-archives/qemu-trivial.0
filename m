@@ -1,60 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7rKA-0005cs-Gw
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:44:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51880)
+	id 1f7rKD-0005iQ-Fn
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 19:44:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51947)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rK8-0005aL-9e
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:44:45 -0400
+	id 1f7rKB-0005df-3W
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:44:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rK7-000184-Dp
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:44:44 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:45043)
+	id 1f7rKA-0001Bh-Af
+	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 19:44:47 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:46635)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7rK7-00017b-9A; Sun, 15 Apr 2018 19:44:43 -0400
-Received: by mail-qk0-x244.google.com with SMTP id n139so14807225qke.11;
-	Sun, 15 Apr 2018 16:44:43 -0700 (PDT)
+	id 1f7rKA-0001BT-5G; Sun, 15 Apr 2018 19:44:46 -0400
+Received: by mail-qt0-x242.google.com with SMTP id h4so13547028qtn.13;
+	Sun, 15 Apr 2018 16:44:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=rm8uCbkt1FliNsXrPMp8YsDleAzMga33Rrvo5+eHS2k=;
-	b=SywEtQ4QOqIXzvRdPOx7AnKOqtzRunt/K077c18PVrFHvilpIUbuu95d90vYV4nFVF
-	p7jeBD2vfaTdU3NndMPi21xyfK6QeSA3VGCDscOl3ve1Ipuur+j0EJlD++PsJ2r6SXu0
-	VyOYzZct7MiKLg3aIHLTXCVpFAa/2XSYnOpwALJGDkUKMY8Je9se00w3TExMIF6GMNtH
-	5/fyyupQXygTaDD/x0WdcNq/sUcgisgulQj8SbOqycFr8fng0Ix2J3/3smzTMZbGyBww
-	zLFIUKJGYiwoZmTVzZuwBFwf2FHLvAR23izQ8kTWgICPziqGepp5nMpR061ks0P98x0K
-	xxEw==
+	bh=bJb/S6njg5FkQ1s+XJZO8fLy4KJHFyEpU1L1v+N6DJs=;
+	b=Zrq4vfESr+Jhc/FdnHTgAxz1VvlpB/3CFEWNRC0aucp2tHPZAczBx2RmY826Y/T5Q4
+	TZozuz4LUcHZCEVfjs8UydAVcraaS/l9vdexHDPZXNBDlZfalG8KmuoNS1pkA0rOz520
+	fb5qRTUfwDep3S4BKZsOqYFmzZNqhIEQV2jiOKsPTqhXnlhXHblRXtQo6DSpCzpJKQyL
+	lnfECV+106HimUvIAH+hH6STqAvwdMfwJzospuO2413kdFDVsQr7hsZWdzb1GrWXdOKi
+	P0E/U1lpNvmQ0GlppFDCHvtIEa+qQHkYKwpgttupIPgKNVmSeHFGaVFJDVxxdT6CPt2c
+	7ynQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=rm8uCbkt1FliNsXrPMp8YsDleAzMga33Rrvo5+eHS2k=;
-	b=ivjsuyb0qHXK+YcLdgMN/3D4rzq1w/yWOOKyxIFi6Bb8b8UmBMsn6vTg4YY42HgU7R
-	bJiq+MJh/qiCYzSkrnT+kllUfop/Sh+8bvFkbQtiWFEcnsryGFJ31FzvvmKU1RdTzSkT
-	FzXwll/DZm1rmzdexHP+kLg5MUWE7YfOFLbQpiiGX7L4VU5RrYD1TOfGT+7VXd90aKAd
-	FMl6K7hR1dpZmmyIxFap2Cesh70NdDOVxxpuNE5/CN5gyyOqDdSsOmUweChPJ4o/xYkv
-	jxUfzsGc9IX8MB7TfWlOem3SFTMs9Avpq7TAH9Nso6CNvfGIxKeICspjQzSCwecaHRPx
-	gJbA==
-X-Gm-Message-State: ALQs6tCVYaBGMW3aI8z3Iz33d4MAnQqhGXP/Lxp8WcAqXwo8nBm6DgB8
-	fILfua6uaQu0Ay+Ehnp5ToPuw/Wh
-X-Google-Smtp-Source: AIpwx488Z3Cy2l9ymEk4P1kAG+JMD7LCuorHfpL8v5e9X1J37JiOK3eYJMT8ZvnwTZa3U145XXCElw==
-X-Received: by 10.55.49.8 with SMTP id x8mr14400080qkx.66.1523835882618;
-	Sun, 15 Apr 2018 16:44:42 -0700 (PDT)
+	bh=bJb/S6njg5FkQ1s+XJZO8fLy4KJHFyEpU1L1v+N6DJs=;
+	b=IN/jg+YbLKoK1sLNpRzNOpWe8rqerEEtCkdW769QRl20u2DgWYymv9vzatKJpOqSPT
+	g2n3bWCO8zw+tNoWg1Pl9IsQ4HM9HoYAS6wTdNThTCEWiODViuKo7fgLoKy0dC9ch+Mo
+	fIISpCLh0nuPrXnc9IlTdK+CA+6MmGZ4j7uAu+gRKrHRtNMe5oMvZvEsO5gB2COBqkFd
+	T/5HkloaL27aKwMxNgIEQNc+yOOUECclT6cMAyc8mihwNKN+CeQKoBYE/9inAD6JqG1S
+	tUWJY7yYg/rQ3z8w0m5SWXrCwZBxiuJXf7K3zi7sZOm1WJjmCWEvBUwe0VxXNRsQGiNO
+	3EWA==
+X-Gm-Message-State: ALQs6tCUt0KRyXW3o+u4H2VM0TvMW4wuHQNPPZy56EN8Zxa7RseP7zuV
+	0dz3JuSgqKkeLrh/7Km7pCog/GlF
+X-Google-Smtp-Source: AIpwx4/rgIi1SD77qlJor41Xq+s5WCmMWaU4NIl5+ZIvCRrnWlttVr0eJSQINUO3jbMX35n2HpsfFg==
+X-Received: by 10.200.102.131 with SMTP id d3mr14370087qtp.305.1523835885547; 
+	Sun, 15 Apr 2018 16:44:45 -0700 (PDT)
 Received: from x1.local ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.44.39
+	by smtp.gmail.com with ESMTPSA id d1sm1081394qtk.57.2018.04.15.16.44.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 16:44:42 -0700 (PDT)
+	Sun, 15 Apr 2018 16:44:45 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-trivial@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Michael Walle <michael@walle.cc>
-Date: Sun, 15 Apr 2018 20:42:53 -0300
-Message-Id: <20180415234307.28132-28-f4bug@amsat.org>
+	qemu-devel@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Date: Sun, 15 Apr 2018 20:42:54 -0300
+Message-Id: <20180415234307.28132-29-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180415234307.28132-1-f4bug@amsat.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
@@ -63,8 +64,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH v3 27/41] hw/lm32: Use the BYTE-based
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: [Qemu-trivial] [PATCH v3 28/41] hw/sh4: Use the BYTE-based
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -77,7 +78,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Apr 2018 23:44:45 -0000
+X-List-Received-Date: Sun, 15 Apr 2018 23:44:48 -0000
 
 It eases code review, unit is explicit.
 
@@ -89,89 +90,30 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/lm32/lm32_boards.c | 13 +++++++------
- hw/lm32/milkymist.c   | 10 +++++-----
- 2 files changed, 12 insertions(+), 11 deletions(-)
+ hw/sh4/r2d.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
-index 527bcc229c..ef229dd315 100644
---- a/hw/lm32/lm32_boards.c
-+++ b/hw/lm32/lm32_boards.c
-@@ -18,6 +18,7 @@
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index f5f3deab37..e488fd49b1 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -24,6 +24,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qemu/error-report.h"
+ #include "qapi/error.h"
  #include "qemu-common.h"
  #include "cpu.h"
-@@ -88,10 +89,10 @@ static void lm32_evr_init(MachineState *machine)
+@@ -291,7 +292,7 @@ static void r2d_init(MachineState *machine)
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+     pflash_cfi02_register(0x0, NULL, "r2d.flash", FLASH_SIZE,
+                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
+-                          (16 * 1024), FLASH_SIZE >> 16,
++                          16 * K_BYTE, FLASH_SIZE >> 16,
+                           1, 4, 0x0000, 0x0000, 0x0000, 0x0000,
+                           0x555, 0x2aa, 0);
  
-     /* memory map */
-     hwaddr flash_base  = 0x04000000;
--    size_t flash_sector_size       = 256 * 1024;
--    size_t flash_size              = 32 * 1024 * 1024;
-+    size_t flash_sector_size       = 256 * K_BYTE;
-+    size_t flash_size              = 32 * M_BYTE;
-     hwaddr ram_base    = 0x08000000;
--    size_t ram_size                = 64 * 1024 * 1024;
-+    size_t ram_size                = 64 * M_BYTE;
-     hwaddr timer0_base = 0x80002000;
-     hwaddr uart0_base  = 0x80006000;
-     hwaddr timer1_base = 0x8000a000;
-@@ -174,10 +175,10 @@ static void lm32_uclinux_init(MachineState *machine)
- 
-     /* memory map */
-     hwaddr flash_base   = 0x04000000;
--    size_t flash_sector_size        = 256 * 1024;
--    size_t flash_size               = 32 * 1024 * 1024;
-+    size_t flash_sector_size        = 256 * K_BYTE;
-+    size_t flash_size               = 32 * M_BYTE;
-     hwaddr ram_base     = 0x08000000;
--    size_t ram_size                 = 64 * 1024 * 1024;
-+    size_t ram_size                 = 64 * M_BYTE;
-     hwaddr uart0_base   = 0x80000000;
-     hwaddr timer0_base  = 0x80002000;
-     hwaddr timer1_base  = 0x80010000;
-diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-index 85d64fe58d..f530997abb 100644
---- a/hw/lm32/milkymist.c
-+++ b/hw/lm32/milkymist.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/error-report.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -34,11 +35,10 @@
- #include "milkymist-hw.h"
- #include "lm32.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- 
- #define BIOS_FILENAME    "mmone-bios.bin"
- #define BIOS_OFFSET      0x00860000
--#define BIOS_SIZE        (512*1024)
-+#define BIOS_SIZE        (512 * K_BYTE)
- #define KERNEL_LOAD_ADDR 0x40000000
- 
- typedef struct {
-@@ -97,10 +97,10 @@ milkymist_init(MachineState *machine)
- 
-     /* memory map */
-     hwaddr flash_base   = 0x00000000;
--    size_t flash_sector_size        = 128 * 1024;
--    size_t flash_size               = 32 * 1024 * 1024;
-+    size_t flash_sector_size        = 128 * K_BYTE;
-+    size_t flash_size               = 32 * M_BYTE;
-     hwaddr sdram_base   = 0x40000000;
--    size_t sdram_size               = 128 * 1024 * 1024;
-+    size_t sdram_size               = 128 * M_BYTE;
- 
-     hwaddr initrd_base  = sdram_base + 0x1002000;
-     hwaddr cmdline_base = sdram_base + 0x1000000;
 -- 
 2.17.0
 
