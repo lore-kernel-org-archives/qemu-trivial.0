@@ -1,54 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7w93-0004em-9w
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 00:53:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51091)
+	id 1f7wEF-0006VL-SR
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 00:58:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53635)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1f7w91-0004dk-R3
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:53:36 -0400
+	(envelope-from <th.huth@gmail.com>) id 1f7wEB-0006TK-LQ
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:58:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1f7w90-00011G-WD
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:53:35 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36042 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1f7w8w-0000zN-LY; Mon, 16 Apr 2018 00:53:30 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D56334067EF0;
-	Mon, 16 Apr 2018 04:53:26 +0000 (UTC)
-Received: from [10.36.116.76] (ovpn-116-76.ams2.redhat.com [10.36.116.76])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 019CF7C5C;
-	Mon, 16 Apr 2018 04:53:23 +0000 (UTC)
+	(envelope-from <th.huth@gmail.com>) id 1f7wEA-0003wJ-Rw
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:58:55 -0400
+Received: from mail-wr0-f196.google.com ([209.85.128.196]:42304)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
+	id 1f7wE6-0003uR-FP; Mon, 16 Apr 2018 00:58:50 -0400
+Received: by mail-wr0-f196.google.com with SMTP id s18so22087546wrg.9;
+	Sun, 15 Apr 2018 21:58:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=gyeeR5XtLNDWHjJYcnx3UKrDG+x5evyL+MRkVwPMXNI=;
+	b=BDF9yqJlqyyZ4Q81IJeMgm95/qQLqxMuJTh/LsC4STaOM8pkZKWpV3icOO3QdD29Jx
+	KzR+WKPItyFMGGTHg3o0xRmMgRAgu6L3Fi9sr+08cB0F+HcaM7/lq8usKi7OTukUXAuW
+	PtgL+KU+9LB8vAiVoYbfwHLVridgenD1c/Pwv2WkQhLJg4rjDZnlCZV9oWYjbuxVjjMk
+	jKQTu92T3wlzsz8iGAooUCFvgIQjomST4BiW1dhcADKc0qLr61X/J0H6CpT8bTXYin1m
+	rZd+UVbsK86liHBZOv1YKUlI/K8+v54BhejGO3MYn+cqyzeZXZjvxs9I971YkqLZG1mK
+	HGmQ==
+X-Gm-Message-State: ALQs6tAyqFLRaDCcArQSvHP60zzCRyKr3p1amB8V5dGzZYE+xCCf4esW
+	r6OrKbbfl1aX7tVhiqH4YXE=
+X-Google-Smtp-Source: AIpwx4+MFRHt6jNE9QAT3LiL7vKVUybyeaTYstr3hi0hS8y6b5DkZVs8Hb0ai24sDlbv2h4H/jdrmA==
+X-Received: by 10.223.166.248 with SMTP id t111mr111461wrc.161.1523854728968; 
+	Sun, 15 Apr 2018 21:58:48 -0700 (PDT)
+Received: from [192.168.178.23] (pD9575865.dip0.t-ipconnect.de.
+	[217.87.88.101]) by smtp.gmail.com with ESMTPSA id
+	r8sm11389442wmg.44.2018.04.15.21.58.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 15 Apr 2018 21:58:47 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
+Cc: qemu-devel@nongnu.org, Thomas Huth <huth@tuxfamily.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
-	<20180415234307.28132-2-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <a2d59a3a-0176-6065-68ae-60fee97c2332@redhat.com>
-Date: Mon, 16 Apr 2018 06:53:22 +0200
+	<20180415234307.28132-18-f4bug@amsat.org>
+From: Thomas Huth <huth@tuxfamily.org>
+Message-ID: <16a3d8ff-2361-27c8-d93a-e210d7080063@tuxfamily.org>
+Date: Mon, 16 Apr 2018 06:58:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180415234307.28132-2-f4bug@amsat.org>
+In-Reply-To: <20180415234307.28132-18-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Apr 2018 04:53:26 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Apr 2018 04:53:26 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v3 01/41] hw: Clean "hw/devices.h"
- includes
+X-Received-From: 209.85.128.196
+Subject: Re: [Qemu-trivial] [PATCH v3 17/41] hw/m68k: Use the BYTE-based
+ definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,37 +67,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Apr 2018 04:53:36 -0000
+X-List-Received-Date: Mon, 16 Apr 2018 04:58:58 -0000
 
-On 16.04.2018 01:42, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 16.04.2018 01:42, Philippe Mathieu-Daudé wrote:
+> It eases code review, unit is explicit.
+> 
+> Patch generated using:
+> 
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
+> 
+> and modified manually.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  include/hw/devices.h | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
->=20
-> diff --git a/include/hw/devices.h b/include/hw/devices.h
-> index 861ddea8af..0e27feb0c2 100644
-> --- a/include/hw/devices.h
-> +++ b/include/hw/devices.h
-> @@ -1,13 +1,10 @@
->  #ifndef QEMU_DEVICES_H
->  #define QEMU_DEVICES_H
-> =20
-> -#include "hw/irq.h"
-> -
-> -/* ??? Not all users of this file can include cpu-common.h.  */
-> -struct MemoryRegion;
-> -
->  /* Devices that have nowhere better to go.  */
-> =20
-> +#include "hw/hw.h"
-> +
->  /* smc91c111.c */
->  void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
+>  hw/m68k/mcf5208.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+> index fac0d09cbc..673d65f8fd 100644
+> --- a/hw/m68k/mcf5208.c
+> +++ b/hw/m68k/mcf5208.c
+> @@ -6,6 +6,7 @@
+>   * This code is licensed under the GPL
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+> @@ -241,7 +242,7 @@ static void mcf5208evb_init(MachineState *machine)
+>      memory_region_add_subregion(address_space_mem, 0x40000000, ram);
+>  
+>      /* Internal SRAM.  */
+> -    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16384, &error_fatal);
+> +    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16 * K_BYTE, &error_fatal);
+>      memory_region_add_subregion(address_space_mem, 0x80000000, sram);
+>  
+>      /* Internal peripherals.  */
+> 
 
-IMHO we should rather get rid of devices.h (in a separate patch series)
-and introduce proper small headers =C3=A0 la smc91c111.h for the single
-sections in here... Just my 0.02 =E2=82=AC.
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@tuxfamily.org>
 
