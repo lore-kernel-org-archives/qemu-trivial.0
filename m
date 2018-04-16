@@ -1,61 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7wEF-0006VL-SR
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 00:58:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53635)
+	id 1f7wcM-0006Pl-Uu
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 01:23:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38502)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1f7wEB-0006TK-LQ
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:58:56 -0400
+	(envelope-from <sw@weilnetz.de>) id 1f7wcH-0006LU-3f
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 01:23:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <th.huth@gmail.com>) id 1f7wEA-0003wJ-Rw
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:58:55 -0400
-Received: from mail-wr0-f196.google.com ([209.85.128.196]:42304)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
-	id 1f7wE6-0003uR-FP; Mon, 16 Apr 2018 00:58:50 -0400
-Received: by mail-wr0-f196.google.com with SMTP id s18so22087546wrg.9;
-	Sun, 15 Apr 2018 21:58:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=gyeeR5XtLNDWHjJYcnx3UKrDG+x5evyL+MRkVwPMXNI=;
-	b=BDF9yqJlqyyZ4Q81IJeMgm95/qQLqxMuJTh/LsC4STaOM8pkZKWpV3icOO3QdD29Jx
-	KzR+WKPItyFMGGTHg3o0xRmMgRAgu6L3Fi9sr+08cB0F+HcaM7/lq8usKi7OTukUXAuW
-	PtgL+KU+9LB8vAiVoYbfwHLVridgenD1c/Pwv2WkQhLJg4rjDZnlCZV9oWYjbuxVjjMk
-	jKQTu92T3wlzsz8iGAooUCFvgIQjomST4BiW1dhcADKc0qLr61X/J0H6CpT8bTXYin1m
-	rZd+UVbsK86liHBZOv1YKUlI/K8+v54BhejGO3MYn+cqyzeZXZjvxs9I971YkqLZG1mK
-	HGmQ==
-X-Gm-Message-State: ALQs6tAyqFLRaDCcArQSvHP60zzCRyKr3p1amB8V5dGzZYE+xCCf4esW
-	r6OrKbbfl1aX7tVhiqH4YXE=
-X-Google-Smtp-Source: AIpwx4+MFRHt6jNE9QAT3LiL7vKVUybyeaTYstr3hi0hS8y6b5DkZVs8Hb0ai24sDlbv2h4H/jdrmA==
-X-Received: by 10.223.166.248 with SMTP id t111mr111461wrc.161.1523854728968; 
-	Sun, 15 Apr 2018 21:58:48 -0700 (PDT)
-Received: from [192.168.178.23] (pD9575865.dip0.t-ipconnect.de.
-	[217.87.88.101]) by smtp.gmail.com with ESMTPSA id
-	r8sm11389442wmg.44.2018.04.15.21.58.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 21:58:47 -0700 (PDT)
+	(envelope-from <sw@weilnetz.de>) id 1f7wcF-00087P-QD
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 01:23:49 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:50610
+	helo=v2201612906741603.powersrv.de)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1f7wc6-00080U-5O; Mon, 16 Apr 2018 01:23:38 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 6BB49DABF79;
+	Mon, 16 Apr 2018 07:23:36 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id n2Ke-glL8Ama; Mon, 16 Apr 2018 07:23:33 +0200 (CEST)
+Received: from edv32.bib.uni-mannheim.de (pD9E018D8.dip0.t-ipconnect.de
+	[217.224.24.216])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id EBAB7DABF60; 
+	Mon, 16 Apr 2018 07:23:32 +0200 (CEST)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Thomas Huth <huth@tuxfamily.org>
+	qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>, 
+	"open list:Allwinner-a10" <qemu-arm@nongnu.org>
 References: <20180415234307.28132-1-f4bug@amsat.org>
-	<20180415234307.28132-18-f4bug@amsat.org>
-From: Thomas Huth <huth@tuxfamily.org>
-Message-ID: <16a3d8ff-2361-27c8-d93a-e210d7080063@tuxfamily.org>
-Date: Mon, 16 Apr 2018 06:58:46 +0200
+	<20180415234307.28132-34-f4bug@amsat.org>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <f11c4eac-fcbf-0aa3-06bf-570ff57144c4@weilnetz.de>
+Date: Mon, 16 Apr 2018 07:23:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180415234307.28132-18-f4bug@amsat.org>
+In-Reply-To: <20180415234307.28132-34-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Language: de-DE
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.196
-Subject: Re: [Qemu-trivial] [PATCH v3 17/41] hw/m68k: Use the BYTE-based
- definitions
+X-Received-From: 37.120.169.71
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 33/41] hw/net: Use the
+ BYTE-based definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,44 +60,140 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Apr 2018 04:58:58 -0000
+X-List-Received-Date: Mon, 16 Apr 2018 05:23:54 -0000
 
-On 16.04.2018 01:42, Philippe Mathieu-Daudé wrote:
+Am 16.04.2018 um 01:42 schrieb Philippe Mathieu-Daud=C3=A9:
 > It eases code review, unit is explicit.
-> 
+>=20
 > Patch generated using:
-> 
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
-> 
+>=20
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include=
+/hw/
+>=20
 > and modified manually.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/m68k/mcf5208.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-> index fac0d09cbc..673d65f8fd 100644
-> --- a/hw/m68k/mcf5208.c
-> +++ b/hw/m68k/mcf5208.c
-> @@ -6,6 +6,7 @@
->   * This code is licensed under the GPL
->   */
+>  include/hw/net/allwinner_emac.h | 5 +++--
+>  hw/net/e1000e.c                 | 7 ++++---
+>  hw/net/e1000x_common.c          | 3 ++-
+>  hw/net/eepro100.c               | 7 +++----
+>  4 files changed, 12 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/include/hw/net/allwinner_emac.h b/include/hw/net/allwinner=
+_emac.h
+> index 4cc8aab7ec..4b53b6485c 100644
+> --- a/include/hw/net/allwinner_emac.h
+> +++ b/include/hw/net/allwinner_emac.h
+> @@ -23,6 +23,7 @@
+>  #ifndef ALLWINNER_EMAC_H
+>  #define ALLWINNER_EMAC_H
+> =20
+> +#include "qemu/units.h"
+>  #include "net/net.h"
+>  #include "qemu/fifo8.h"
+>  #include "hw/net/mii.h"
+> @@ -125,8 +126,8 @@
+>  #define EMAC_INT_RX         (1 << 8)
+> =20
+>  /* Due to lack of specifications, size of fifos is chosen arbitrarily =
+*/
+> -#define TX_FIFO_SIZE        (4 * 1024)
+> -#define RX_FIFO_SIZE        (32 * 1024)
+> +#define TX_FIFO_SIZE        (4 * K_BYTE)
+> +#define RX_FIFO_SIZE        (32 * K_BYTE)
+> =20
+>  #define NUM_TX_FIFOS        2
+>  #define RX_HDR_SIZE         8
+> diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+> index 16a9417a85..101efe7c83 100644
+> --- a/hw/net/e1000e.c
+> +++ b/hw/net/e1000e.c
+> @@ -34,6 +34,7 @@
+>  */
+> =20
 >  #include "qemu/osdep.h"
 > +#include "qemu/units.h"
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
-> @@ -241,7 +242,7 @@ static void mcf5208evb_init(MachineState *machine)
->      memory_region_add_subregion(address_space_mem, 0x40000000, ram);
->  
->      /* Internal SRAM.  */
-> -    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16384, &error_fatal);
-> +    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16 * K_BYTE, &error_fatal);
->      memory_region_add_subregion(address_space_mem, 0x80000000, sram);
->  
->      /* Internal peripherals.  */
-> 
+>  #include "net/net.h"
+>  #include "net/tap.h"
+>  #include "qemu/range.h"
+> @@ -81,10 +82,10 @@ typedef struct E1000EState {
+>  #define E1000E_IO_IDX       2
+>  #define E1000E_MSIX_IDX     3
+> =20
+> -#define E1000E_MMIO_SIZE    (128 * 1024)
+> -#define E1000E_FLASH_SIZE   (128 * 1024)
+> +#define E1000E_MMIO_SIZE    (128 * K_BYTE)
+> +#define E1000E_FLASH_SIZE   (128 * K_BYTE)
+>  #define E1000E_IO_SIZE      (32)
+> -#define E1000E_MSIX_SIZE    (16 * 1024)
+> +#define E1000E_MSIX_SIZE    (16 * K_BYTE)
+> =20
+>  #define E1000E_MSIX_TABLE   (0x0000)
+>  #define E1000E_MSIX_PBA     (0x2000)
+> diff --git a/hw/net/e1000x_common.c b/hw/net/e1000x_common.c
+> index eb0e097137..58c8db77e9 100644
+> --- a/hw/net/e1000x_common.c
+> +++ b/hw/net/e1000x_common.c
+> @@ -23,6 +23,7 @@
+>  */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/pci/pci.h"
+>  #include "net/net.h"
+> @@ -111,7 +112,7 @@ bool e1000x_is_oversized(uint32_t *mac, size_t size=
+)
+>      static const int maximum_ethernet_vlan_size =3D 1522;
+>      /* this is the size past which hardware will
+>         drop packets when setting LPE=3D1 */
+> -    static const int maximum_ethernet_lpe_size =3D 16384;
+> +    static const int maximum_ethernet_lpe_size =3D 16 * K_BYTE;
+> =20
+>      if ((size > maximum_ethernet_lpe_size ||
+>          (size > maximum_ethernet_vlan_size
+> diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+> index a07a63247e..a02e2b55e8 100644
+> --- a/hw/net/eepro100.c
+> +++ b/hw/net/eepro100.c
+> @@ -41,6 +41,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/pci/pci.h"
+>  #include "net/net.h"
+> @@ -60,8 +61,6 @@
+>   * changed to pad short packets itself. */
+>  #define CONFIG_PAD_RECEIVED_FRAMES
+> =20
+> -#define KiB 1024
+> -
+>  /* Debug EEPRO100 card. */
+>  #if 0
+>  # define DEBUG_EEPRO100
+> @@ -104,9 +103,9 @@
+>  /* Use 64 word EEPROM. TODO: could be a runtime option. */
+>  #define EEPROM_SIZE     64
+> =20
+> -#define PCI_MEM_SIZE            (4 * KiB)
+> +#define PCI_MEM_SIZE            (4 * K_BYTE)
+>  #define PCI_IO_SIZE             64
+> -#define PCI_FLASH_SIZE          (128 * KiB)
+> +#define PCI_FLASH_SIZE          (128 * K_BYTE)
+> =20
+>  #define BITS(n, m) (((0xffffffffU << (31 - n)) >> (31 - n + m)) << m)
 
-Reviewed-by: Thomas Huth <thuth@tuxfamily.org>
+
+Technically this is fine, therefore
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+Practically I'd prefer replacing all K_BYTE by KiB, because that is the
+standard name with a precise definition:
+https://en.wikipedia.org/wiki/Kibibyte.
+
+Stefan
 
